@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/02/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 2dc59a631107df6a9e77722b98fa77f7936f07aa
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 9216d43bd6431bb16c14e0bf2d8fb7d174365417
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437293"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37902696"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Položky Azure Marketplace k dispozici pro službu Azure Stack
 
@@ -228,6 +228,7 @@ Microsoft Azure Stack podporuje následující virtuální počítače Azure Mar
 | ![F5](media/azure-stack-marketplace-azure-items/f5.png) | [Edice virtuálního F5 Big-IP](https://azuremarketplace.microsoft.com/marketplace/apps/f5-networks.f5-big-ip-best)  | Pokročilé Vyrovnávání zatížení, GSLB, síťová brána Firewall, DNS, WAF a přístup k aplikaci. | F5 Networkss |
 | ![Sandbox Hortonworks Data Platform (HDP)](media/azure-stack-marketplace-azure-items/hortonworks.png) | [Sandbox Hortonworks Data Platform (HDP)](https://azuremarketplace.microsoft.com/marketplace/apps/hortonworks.hortonworks-sandbox) | Používá technologii HDP 2,5 100 % open source platforma pro Hadoop, Spark, Storm, HBase, Kafka, Hive, Ambari. | Hortonworks |
 | ![KEMP LoadMaster zatížení vyrovnávání ADC obsah přepínače](media/azure-stack-marketplace-azure-items/kemp.png) | [KEMP LoadMaster zatížení vyrovnávání ADC obsah přepínače](https://azuremarketplace.microsoft.com/marketplace/apps/kemptech.vlm-azure) | Vrstvy 4 – 7 Application Delivery Controller (ADC) nástroj pro vyrovnávání zatížení, obsahu přepínače a Traffic Manageru. | KEMP Technologies Inc. |
+| ![Webu NRI mPLAT Suite - Multicloudové Conductor](media/azure-stack-marketplace-azure-items/nri.png) | [mPLAT Suite - Multicloudové Conductor](https://azuremarketplace.microsoft.com/marketplace/apps/nri.mplatmc2018-vm) | Jediné podokno skla chcete monitorovat, konfigurovat, zřízení, automatizovat a řídí jakékoli úlohy nebo cloudu. | WEBU NRI |
 | ![Kompatibilní NooBaa hybridní AWS S3 – Community Edition](media/azure-stack-marketplace-azure-items/noobaa.png) | [Compatibe NooBaa hybridní AWS S3 – Community Edition](https://azuremarketplace.microsoft.com/marketplace/apps/noobaa.noobaa-hybrid-s3-archive-05) | Služba úložiště kompatibilního se S3, která překlenuje veřejné a místní prostředky kapacity. | NooBaa |
 | ![PT Application firewallu](media/azure-stack-marketplace-azure-items/pt.png) | [PT Application firewallu](https://azuremarketplace.microsoft.com/marketplace/apps/ptsecurity.ptaf) | PT Application firewallu detekuje známé & Neznámý ohrožení zabezpečení a zabraňuje útokům ve službě web apps. **Stažení položek z obou PT Marketplace.** | Pozitivní technologie |
 | ![Puppet Enterprise](media/azure-stack-marketplace-azure-items/puppet.png) | [Puppet Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-2017-2) | Puppet Enterprise umožňuje automatizovat celý životní cyklus vaší infrastruktury Azure stacku. **Stažení položek z obou Puppet Marketplace.** | Puppet |

@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr
-ms.openlocfilehash: eb8e55b3763c66dd2c8aabe92376bcb1278a0f45
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 291eb9ef7d8d089b443b55ac181e9fdd65fcb413
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346752"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37888853"
 ---
 # <a name="language-understanding-faq"></a>Language Understanding – nejčastější dotazy
 
@@ -183,7 +183,7 @@ Ne.
 |Sestavení aplikace LUIS programově pomocí [Node.js](luis-tutorial-node-import-utterances-csv.md)|
 |Použití [složený entity](luis-tutorial-composite-entity.md) extrahovat seskupených dat|
 |Přidat [seznam entit](luis-tutorial-list-entity.md) k detekci zvýšení entity pomocí Node.js|
-|Zvyšte přesnost předpovědi pomocí [seznam frází](luis-tutorial-interchangeable-phrase-list.md), [vzory](luis-tutorial-pattern.md), a [testování služby batch](luis-tutorial-batch-testing.md)|
+|Zvyšte přesnost předpovědi pomocí [seznam frází](luis-quickstart-primary-and-secondary-data.md), [vzory](luis-tutorial-pattern.md), a [testování služby batch](luis-tutorial-batch-testing.md)|
 |[Opravte pravopis](luis-tutorial-batch-testing.md) API kontrola pravopisu Bingu v7
 
 ### <a name="at-the-build-2018-conference-i-heard-about-a-language-understanding-feature-or-demo-but-i-dont-remember-what-it-was-called"></a>Na konferenci Build 2018 funkce umožňující porozumět jazyku nebo ukázka slyšeli, ale nepamatuji byla volána? 
@@ -213,5 +213,3 @@ Projekty:
 Další informace o LUIS, najdete v následujících zdrojích:
 * [Dotazy přetečení zásobníku označené LUIS](https://stackoverflow.com/questions/tagged/luis)
 * [MSDN Language Understanding Intelligent Services (LUIS) fórum](https://social.msdn.microsoft.com/forums/azure/home?forum=LUIS) 
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website

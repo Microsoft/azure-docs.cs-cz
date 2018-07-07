@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: v-geberr
-ms.openlocfilehash: 9b8556a30169561488a7b46f93af87b31e049e7a
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 4a3571acade7b7bd304c91eadc90b1a9f6e53860
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37345504"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37886837"
 ---
 # <a name="utterances-in-luis"></a>Projevy v LUIS
 
@@ -23,7 +23,7 @@ ms.locfileid: "37345504"
 Shromážděte frázích, které si myslíte, že budou uživatelé zadávat. Zahrňte projevy, které mají stejný význam, ale jsou vytvořeny jinak než délka slova a umístění aplikace word. 
 
 ## <a name="how-to-choose-varied-utterances"></a>Jak zvolit pohyblivá podle projevy
-Pokud můžete nejprve začít tím, že [přidání projevů příklad] [ add-example-utterances] do modelu LUIS, tady jsou některé zásady týkající se brát v úvahu.
+Pokud můžete nejprve začít tím, že [přidání projevů příklad](luis-how-to-add-example-utterances.md) do modelu LUIS, tady jsou některé zásady týkající se brát v úvahu.
 
 ### <a name="utterances-arent-always-well-formed"></a>Projevy nejsou vždy ve správném
 To může být věty, jako je "Rezervovat z mě lístek do Paříže" nebo fragment věty, stejně jako "Rezervace" nebo "Paříž let."  Uživatelé často musíte dělat pravopisných chyb. Při plánování vaší aplikace, zvažte, zda je kontrola pravopisu vstupu uživatele před předáním LUIS. [API kontrola pravopisu Bingu] [ BingSpellCheck] integruje do služby LUIS. Můžete přidružit aplikace LUIS externí klíč pro rozhraní API Bingu pro kontrolu pravopisu zkontrolovat při jejím publikování. Pokud není pravopisu kontrola uživatele projevy, by měl trénování LUIS na projevy, které zahrnují překlepy nebo chybně napsaných slov.
@@ -69,8 +69,7 @@ Po modelu trénovaného publikované a přijímající [koncový bod](luis-gloss
 ## <a name="best-practices"></a>Osvědčené postupy
 Kontrola [osvědčené postupy](luis-concept-best-practices.md) Další informace.
 
-## <a name="next-steps"></a>Další kroky
-Zobrazit [přidání projevů příklad] [ add-example-utterances] informace o školení aplikace LUIS pochopit projevy uživatele.
+## <a name="next-steps"></a>Další postup
+Zobrazit [přidání projevů příklad](luis-how-to-add-example-utterances.md) informace o školení aplikace LUIS pochopit projevy uživatele.
 
-[add-example-utterances]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-add-example-utterances
 [BingSpellCheck]: https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/proof-text

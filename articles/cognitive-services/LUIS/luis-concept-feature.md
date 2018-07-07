@@ -1,6 +1,6 @@
 ---
-title: Pochopili funkcí v LEOŠ aplikace v Azure | Microsoft Docs
-description: Další informace o funkcích, které pomoct zlepšit výkon LEOŠ aplikace. Funkce zahrnují frázi seznamy a vzory pro rozpozná regulární výrazy.
+title: Pochopení funkce v aplikacích LUIS v Azure | Dokumentace Microsoftu
+description: Další informace o funkcích, které pomůže zlepšit výkon aplikace LUIS. Funkce zahrnují seznamy frázi a vzory pro rozpoznání regulární výrazy.
 services: cognitive-services
 author: v-geberr
 manager: kaiqb
@@ -9,55 +9,55 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 04/18/2018
 ms.author: v-geberr
-ms.openlocfilehash: 416fadaf52d7a71dcaab81aab3bf6099213e5af5
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: 597948947303b7fdf16f24576620d6f39d7c51f4
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35345999"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37887442"
 ---
-# <a name="phrase-list-features-in-luis"></a>Seznam funkcí frázi v LEOŠ
+# <a name="phrase-list-features-in-luis"></a>Seznam funkcí frázi v LUIS
 
-Ve strojovém učení se *funkce* je rozlišovací znak nebo atribut dat, které dodržuje systému. 
+Ve službě machine learning *funkce* rozlišovací vlastností nebo atribut data, která dodržuje vašeho systému. 
 
-Přidání funkce do modelu jazyk zajistit pomocné parametry o tom, jak rozpoznat vstup, který chcete popisku nebo klasifikovat. Funkce pomoci LEOŠ rozpoznat tříd Intent a entity, ale funkce nejsou záměry nebo entity sami. Místo toho může funkce obsahují příklady související podmínky.  
+Přidání funkcí do jazykového modelu poskytnout nápovědu, jak rozpoznat vstup, který chcete klasifikovat a označovat. Funkce pomáhají LUIS rozpoznat záměry a entity, ale funkce nejsou záměry a entity sami. Místo toho funkce může poskytnout příklady jejími podmínkami.  
 
-## <a name="what-is-a-phrase-list-feature"></a>Co je funkce seznamu frázi?
-Seznam frázi obsahuje skupinu hodnot (slova nebo fráze), které patří do stejné třídy a musí být považované podobně (například názvy města nebo produkty). Co LEOŠ dozví o jeden z nich je automaticky použita pro ostatní také. Toto není uzavřenou [seznamu entity](luis-concept-entity-types.md#types-of-entities) (přesnou text odpovídá) odpovídající slov.
+## <a name="what-is-a-phrase-list-feature"></a>Co je součástí seznamu frází?
+Fráze seznam obsahuje skupinu hodnot (slova nebo fráze), která patří do stejné třídy a musí být zacházeno podobně (například názvy města nebo produkty). Služba LUIS dozvídá o jeden z nich se automaticky využije na ostatní také. Toto není uzavřená [seznam entit](luis-concept-entity-types.md#types-of-entities) (přesné shody text) z odpovídajících slov.
 
-Seznam frázi přidá do slovníku doména aplikace jako druhý signál k LEOŠ o tato slova.
+Seznam frází přidá do slovníku domény aplikace jako druhý signál k LUIS o těchto slov.
 
 ## <a name="how-to-use-phrase-lists"></a>Použití seznamů fráze
-V aplikaci agenta cesta vytvořte seznam frázi s názvem "Města", obsahující hodnoty, Londýn, Paříž a Káhiře. Pokud jeden z těchto hodnot označovat jako jednoduché entity v [příklad utterance](luis-how-to-add-example-utterances.md#add-simple-entity-label) v záměrem, LEOŠ zjišťuje ostatní rozpoznat. 
+V aplikaci agenta cesty vytvořte seznam frázi s názvem "Cities", který obsahuje hodnoty, Londýn, Paříž a Cairo. Pokud jedna z těchto hodnot označit jako jednoduchou entitu v [příklad utterance](luis-how-to-add-example-utterances.md#add-simple-entity-label) v záměru, naučí rozeznat ostatní LUIS. 
 
-Seznam frázi může být zaměňovat nebo zaměnitelné. *Zaměňovat* je frázi seznam hodnot, které jsou synonyma, a *-zaměňovat* frázi seznam je určený pro hodnoty, které nejsou synonyma, ale jsou podobné jiným způsobem. 
+Fráze seznamu může být zaměnitelné nebo zaměnitelné. *Zaměnitelné* je frázi seznam hodnot, které jsou synonyma, a *-zaměnitelné* frázi seznam je určený pro hodnoty, které nejsou synonyma, ale jsou podobné jiným způsobem. 
 
-## <a name="phrase-lists-help-identify-simple-exchangeable-entities"></a>Fráze uvádí nápovědy identifikovat jednoduché exchangeable entity
-Exchangeable frázi seznamy jsou vhodné pro optimalizaci výkonu LEOŠ aplikace. Pokud vaše aplikace obsahuje řešení problémů predikci utterances do správné záměr nebo rozpozná entity, rozmyslete si, jestli utterances obsahovat neobvyklou slova nebo slova, která může být v význam nejednoznačný. Slova jsou vhodnými kandidáty pro zahrnutí do seznamu frázi.
+## <a name="phrase-lists-help-identify-simple-exchangeable-entities"></a>Fráze uvádí nápovědy identifikovat jednoduchých exchangeable entit
+Exchangeable frázi seznamy jsou dobrým způsobem, jak optimalizovat výkon vaší aplikace LUIS. Pokud má vaše aplikace potíže při predikci projevy na správné záměr nebo rozpoznávání entit, zamyslete se, jestli projevy obsahovat neobvyklé slova ani slova, která může být nejednoznačný ve smyslu. Tato slova jsou vhodnými kandidáty zahrnout do seznamu frázi.
 
-## <a name="phrase-lists-help-identify-intents-by-better-understanding-context"></a>Fráze uvádí nápovědy identifikovat záměry lepší pochopení kontext
-Pomocí seznamů frázi pro taková situace vzácná, proprietární a cizí slova. LEOŠ může nemůže rozpoznat výjimečná a vlastnické slova, jakož i cizí slova (mimo jazykovou verzi aplikace), a proto musí být přidaní do seznamu frázi. Tento seznam frázi by měl být označen jiný zaměňovat, označíte, že sada výjimečných slova forms třídu, která by měl LEOŠ další rozpoznat, ale nejsou synonyma nebo zaměňovat mezi sebou.
+## <a name="phrase-lists-help-identify-intents-by-better-understanding-context"></a>Fráze uvádí nápovědy identifikovat záměry lepší porozumění kontextu
+Použijte frázi seznamy pro vzácné, proprietární a cizí slova. LUIS možná nebude moci rozpoznat vzácné a proprietární slova, jakož i cizí slova (mimo jazykovou verzi aplikace), a proto měly by být přidány do seznamu frázi. Tento seznam frázi by měla být označena bez zaměňovat, označuje, že sadu výjimečných slova tvoří třídu, která by měla služba LUIS učení se rozpoznávání, ale nejsou synonyma nebo mezi sebou vzájemně zaměnitelné.
 
-Seznam frázi není instrukce k LEOŠ provést striktní odpovídající nebo vždy popisku všechny podmínky v seznamu frázi stejně. Je jednoduše nápovědu. Například můžete mít seznam frázi, která označuje, že "Patti" a "Selma" jsou názvy, ale LEOŠ můžete dál používat kontextové informace rozpoznat jejich znamenat něco jiného v "Provést rezervaci 2 na Diner na Patti večeře" a "pět me řídí Pokyny k Selma, Georgie". 
+Seznam frázi není instrukce k LUIS provést odpovídající strict nebo vždy označit všechny podmínky v seznamu frázi stejně. Je jednoduše nápovědu. Například můžete mít seznam frázi, která označuje, že "Patti" a "Selma" jsou názvy, ale LUIS můžete stále použít kontextové informace k rozpoznání něco jiného v znamenají "Provést rezervaci 2 ve vaší Patti Diner večeře" a "Nepracuju, řízení Pokyny k Selma, Gruzie". 
 
-Přidávání seznamu frázi představuje alternativu k přidání další příklad utterances do záměrem. 
+Přidání seznamu frázi je alternativa k přidání další příklad projevy záměru. 
 
-## <a name="when-to-use-phrase-lists-versus-list-entities"></a>Kdy použít seznamy frázi oproti seznamu entit
-Při seznam frázi a seznamu entit může mít vliv na utterances napříč všechny záměry, každý tomu jiným způsobem. Použijte seznam frázi ovlivnit skóre záměrné předpovědi. Pomocí seznamu entity ovlivnit entity extrakce text přesnou shodu. 
+## <a name="when-to-use-phrase-lists-versus-list-entities"></a>Kdy použít seznamy frázi a seznam entit
+Zatímco frázi seznamu a seznam entit může mít vliv na projevy přes všechny záměrů, mají funkce to jiným způsobem. Pomocí seznamu frázi vliv na skóre záměru předpovědi. Použijte seznam entit ovlivnit extrakce entity shodu přesný text. 
 
 ### <a name="use-a-phrase-list"></a>Použijte seznam fráze
-S seznam frázi LEOŠ stále vezměte v úvahu kontextu a generalize k identifikaci položek, které jsou podobné, ale ne přesnou shodu, jako položky v seznamu. Pokud potřebujete LEOŠ aplikaci, aby mohli generalize a identifikaci nových položek v kategorii, použijte seznam frázi. 
+Se seznamem frázi LUIS stále vezměte v úvahu kontext a generalizace k identifikaci položky, které jsou podobné, ale není přesná shoda, jako položky v seznamu. Pokud potřebujete aplikaci LUIS tak, aby mohli generalize a identifikaci nových položek v kategorii, použijte seznam frázi. 
 
-Pokud chcete být schopni rozpoznat nové instance entity, jako plánovače schůzky, který by měl rozpoznat názvy nové kontakty nebo inventáře aplikaci, která by měla rozpoznat nové produkty, použít jiný typ počítač naučili entity, jako je například jednoduchou nebo Hierarchická entity. Pak vytvořte seznam slova slovní spojení a fráze, které pomáhá LEOŠ vyhledejte jiná slova podobné entity. Tento seznam provede LEOŠ rozpoznat příklady entity přidáním dalších násobek. hodnota tato slova. 
+Pokud chcete být schopni rozpoznat nové instance entity, jako je plánovače schůzku, který by měl rozpoznávat názvy nových kontaktů, nebo aplikaci inventář, který by měl rozpoznat nové produkty, použijte jiný typ počítače zjistili entitu, jako je jednoduchý nebo hierarchické entity. Pak vytvořte frázi seznam slova a slovní spojení, která pomáhá LUIS, hledání podobně jako v entitě jiná slova. Tento seznam provede LUIS rozpoznat příklady entity tak, že přidáte další význam hodnotu z těchto slov. 
 
-Seznamy frázi se jako slovník specifické pro doménu, která usnadní zlepšení kvality pochopení tříd Intent a entity. Použití běžných frázi seznamu je správné podstatná jména, například města názvy. Název města může být několik slova, včetně pomlček nebo apostrofy.
+Fráze seznamy jsou jako slovník jazyka specifického pro doménu, která usnadní vylepšení kvality znalost záměry a entity. Běžné použití seznamu frázi je podstatná jména správných například názvy měst. Název města, může být několik slova, včetně pomlček nebo apostrofy.
  
-### <a name="dont-use-a-phrase-list"></a>Nepoužívejte seznam fráze 
-Seznam entity explicitně definuje každé hodnotě entity, může trvat a identifikuje pouze hodnoty, které se přesně shodují. Entity seznamu může být vhodné pro aplikaci, ve kterém se ví, že všechny instance entity a jako jídlo položky v nabídce restaurace, která se zřídka mění často neměnit. Pokud potřebujete entity v případě shody přesný text, nepoužívejte seznam frázi. 
+### <a name="dont-use-a-phrase-list"></a>Nepoužívejte seznam frází 
+Seznam entit explicitně definuje každá hodnota může trvat entity a identifikuje pouze hodnoty, které přesně odpovídají. Seznam entit může být vhodné pro aplikace 00Z všechny instance entity jsou známé a nemění často, stejně jako potravin položky v nabídce restaurace, která mění jen zřídka. Pokud potřebujete přesný text výskyty entity, nepoužívejte seznam frázi. 
 
 ## <a name="best-practices"></a>Osvědčené postupy
-Další informace [osvědčené postupy](luis-concept-best-practices.md).
+Přečtěte si [osvědčené postupy](luis-concept-best-practices.md).
 
 ## <a name="next-steps"></a>Další postup
 
-V tématu [přidat funkce](luis-how-to-add-features.md) Další informace o tom, jak přidat do aplikace LEOŠ funkce.
+Zobrazit [přidat funkce](luis-how-to-add-features.md) získat další informace o tom, jak přidat funkce do vaší aplikace LUIS.

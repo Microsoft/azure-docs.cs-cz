@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 07/03/2018
+ms.date: 07/06/2018
 ms.author: jonbeck
-ms.openlocfilehash: fe581ca45d88c88c4892e80f2c72a9b21e697ea5
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 435dc3a4815d9fe554ccba57a49ed9a772b53529
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37442874"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37904075"
 ---
 # <a name="gpu-optimized-virtual-machine-sizes"></a>GPU optimalizované velikosti virtuálních počítačů
 

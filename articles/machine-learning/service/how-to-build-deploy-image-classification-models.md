@@ -1,6 +1,6 @@
 ---
-title: Vytvořit a nasadit model klasifikace bitovou kopii pomocí Azure Machine Learning balíčku pro počítač vize.
-description: Zjistěte, jak pro vytváření, trénování, testování a nasazení pomocí Azure Machine Learning balíčku pro počítač vize model klasifikace image počítače vize.
+title: Sestavit a nasadit model klasifikace obrázků pomocí balíčku Azure Machine Learning pro počítačové zpracování obrazu.
+description: Zjistěte, jak sestavit, trénování, testování a nasazování modelem počítačového zpracování obrazu image klasifikace pomocí balíčku Azure Machine Learning pro počítačové zpracování obrazu.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -9,68 +9,62 @@ ms.reviewer: jmartens
 ms.author: netahw
 author: nhaiby
 ms.date: 04/23/2018
-ms.openlocfilehash: 2c988f8651d0ae9a8662b502ca2ba2dbabb2defe
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 6b7f73573cb1465b89e54e30894b3549153e4acb
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37115926"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37888428"
 ---
-# <a name="build-and-deploy-image-classification-models-with-azure-machine-learning"></a>Sestavení a nasazení bitové kopie klasifikační modely pomocí Azure Machine Learning
+# <a name="build-and-deploy-image-classification-models-with-azure-machine-learning"></a>Sestavování a nasazování modelů klasifikace obrázků s Azure Machine Learning
 
-V tomto článku, Naučte se používat **Azure Machine Learning balíček pro počítač vize** (AMLPCV) pro trénování, testování a nasadit model klasifikace bitové kopie. 
+V tomto článku najdete další informace o použití **Azure Machine Learning balíček pro počítačové zpracování obrazu** (AMLPCV) pro trénování, testování a nasazení modelu klasifikace obrázků. 
 
-Velký počet problémy v doméně vize počítače lze vyřešit pomocí bitové kopie klasifikace. Mezi tyto problémy patří vytváření modelů, které odpovědi na otázky, jako:
-+ _OBJEKT nachází v bitové kopii? Například "pes", "auto", "dodávat" a tak dále_
-+ _Jaké třída závažnosti nákazy oko je evinced retinal kontrolou tento pacienta?_
+Velký počet problémů v doméně počítače pro zpracování obrazu můžete vyřešit pomocí klasifikace obrázků. Tyto problémy patří vytváření modelů, které odpovídají otázky jako:
++ _OBJEKT je k dispozici v bitové kopii? Například "pes", "auto", "dodání" a tak dále_
++ _Jaké třídy závažnost stádiu oka je evinced podle této pacienta retinal kontrolu?_
 
-Při vytváření a nasazování tento model se AMLPCV, můžete přejít pomocí následujících kroků:
+Při vytváření a nasazování tento model s AMLPCV, můžete přejít pomocí následujících kroků:
 1. Vytvoření datové sady
-2. Vizualizace bitové kopie a poznámky
-3. Rozšíření bitové kopie
+2. Obrázek vizualizace a poznámky
+3. Image rozšíření
 4. Definice modelu hluboké Neuronové sítě (DNN)
-5. Školení třídění
-6. Vyhodnocení a vizualizaci
+5. Třídění školení
+6. Vyhodnocení a vizualizace
 7. Nasazení webové služby
 8. Webová služba zátěžové testování
 
-[CNTK](https://www.microsoft.com/en-us/cognitive-toolkit/) slouží jako rozhraní hloubkové learning školení je prováděn lokálně na počítači GPU používá technologii, jako ([hloubkové učení datové vědy VM](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning?tab=Overview)), a nasazení používá rozhraní příkazového řádku Azure ML Operationalization.
+[CNTK](https://www.microsoft.com/en-us/cognitive-toolkit/) slouží jako rozhraní hloubkového učení školení se provádí místně na počítači s využitím GPU, jako ([hloubkového učení virtuální počítač pro datové vědy](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning?tab=Overview)), a nasazení pomocí rozhraní příkazového řádku Azure ML Operacionalizace.
 
-Obrátit [balíček referenční dokumentaci k nástroji](https://aka.ms/aml-packages/vision) pro podrobné referenční informace pro každý modul a třída.
+Najdete [balíček referenční dokumentaci](https://aka.ms/aml-packages/vision) pro podrobné referenční dokumentace pro každý modul a třídy.
 
 ## <a name="prerequisites"></a>Požadavky
 
 1. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-1. Následující účty a aplikace musí být nastavení a nainstalován:
+1. Následující účty a aplikace musí mít nastavení a instalaci:
    - Účet Experimentování ve službě Azure Machine Learning 
-   - Účet Azure Machine Learning Model správy
+   - Účet správy modelů Azure Machine Learning
    - Nainstalovanou aplikaci Azure Machine Learning Workbench
 
-   Pokud tyto tři jsou ještě vytvořen nebo nainstalován, postupujte podle kroků [Azure Machine Learning Quickstart a Workbench instalace](../service/quickstart-installation.md) článku. 
+   Pokud tyto tři jsou ještě vytvořen nebo nainstalován, postupujte [Quickstart pro Azure Machine Learning a Workbench instalace](../service/quickstart-installation.md) článku. 
 
-1. Balíček Azure Machine Learning pro vize počítače musí být nainstalován. Zjistěte, jak [instalaci tohoto balíčku zde](https://aka.ms/aml-packages/vision).
+1. Musíte nainstalovat balíček Azure Machine Learning pro počítačové zpracování obrazu. Zjistěte, jak [instalaci tohoto balíčku zde](https://aka.ms/aml-packages/vision).
 
 ## <a name="sample-data-and-notebook"></a>Ukázková data a poznámkového bloku
 
-### <a name="get-the-jupyter-notebook"></a>Získat poznámkového bloku Jupyter
+### <a name="get-the-jupyter-notebook"></a>Získání poznámkového bloku Jupyter
 
-Stažení poznámkového bloku ke spuštění ukázky popsaného sami.
+Stáhnout ho na spuštění ukázky popsané sami.
 
 > [!div class="nextstepaction"]
-> [Získat poznámkového bloku Jupyter](https://aka.ms/aml-packages/vision/notebooks/image_classification)
+> [Získání poznámkového bloku Jupyter](https://aka.ms/aml-packages/vision/notebooks/image_classification)
 
-### <a name="load-the-sample-data"></a>Načíst ukázková data
+### <a name="load-the-sample-data"></a>Načtení ukázkových dat.
 
-Následující příklad používá skládající se z bitové kopie 63 stolní datové sady. Každé bitové kopie je označený jako náležící do jedné ze čtyř různých tříd (misku, cup, příbory, štítek). Počet bitové kopie v tomto příkladu je malá, aby tato ukázka lze rychle provést. V praxi by je třeba zadat nejméně 100 bitové kopie na třídu. Všechny bitové kopie jsou umístěné na *".. /sample_data/imgs_recycling / "*, podadresáře s názvem"misku","cup","příbory"a"štítku".
+Následující příklad používá datovou sadu skládající se z 63 stolní imagí. Každé image je označen jako patřící do jednoho z čtyři různé třídy (bowl, cup, příbory, talíře). Počet obrázků v tomto příkladu je malá tak, aby tato ukázka je možné provést rychle. V praxi musí být zadána nejméně 100 obrázků na třídy. Všechny bitové kopie jsou umístěny na *".. /sample_data/imgs_recycling / "*, v podadresářích nazývá"bowl","cupu","příbory"a"štítku".
 
-![Datové sadě služby Azure Machine Learning](media/how-to-build-deploy-image-classification-models/recycling_examples.jpg)
-
-## <a name="storage-context"></a>Kontext úložiště
-
-Kontext úložiště slouží k určení, kde bude uložena různých výstupních souborů, jako je například rozšířená bitové kopie nebo DNN modelu soubory. Další informace o kontextech úložiště najdete v tématu [StorageContext dokumentaci](https://review.docs.microsoft.com/en-us/python/api/cvtk.core.context.storagecontext?view=azure-python&branch=smoke-test). 
-
-Obsah úložiště za normálních okolností nemusí být explicitně nastaveno. Ale abyste se vyhnuli limitu 25 MB na velikost projektu způsobené Azure Machine Learning Workbench, nastavit výstupy adresář pro balíček Azure Machine Learning pro počítač vize do umístění mimo projekt Azure Machine Learning (".. /.. /.. /.. / cvtk_output "). Ujistěte se, že jakmile již není potřeba odebrat adresář "cvtk_output".
+![Datová sada Azure Machine Learning](media/how-to-build-deploy-image-classification-models/recycling_examples.jpg)
 
 
 ```python
@@ -84,49 +78,39 @@ from sklearn import svm
 from cvtk import ClassificationDataset, CNTKTLModel, Context, Splitter, StorageContext
 from cvtk.augmentation import augment_dataset
 from cvtk.core.classifier import ScikitClassifier
-from cvtk.evaluation import ClassificationEvaluation, graph_roc_curve, graph_pr_curve, graph_confusion_matrix, basic_plot
+from cvtk.evaluation import ClassificationEvaluation, graph_roc_curve, graph_pr_curve, graph_confusion_matrix
 import matplotlib.pyplot as plt
+
+from classification.notebook.ui_utils.ui_annotation import AnnotationUI
+from classification.notebook.ui_utils.ui_results_viewer import ResultsUI
+from classification.notebook.ui_utils.ui_precision_recall import PrecisionRecallUI
+
 %matplotlib inline
 
 # Disable printing of logging messages
 from azuremltkbase.logging import ToolkitLogger
 ToolkitLogger.getInstance().setEnabled(False)
-
-# Set storage context.
-out_root_path = "../../../cvtk_output"
-Context.create(outputs_path=out_root_path, persistent_path=out_root_path, temp_path=out_root_path)
 ```
-
-
-
-
-    {
-        "storage": {
-            "outputs_path": "../../../cvtk_output",
-            "persistent_path": "../../../cvtk_output",
-            "temp_path": "../../../cvtk_output"
-        }
-    }
 
 
 
 ## <a name="create-a-dataset"></a>Vytvoření datové sady
 
-Po importu závislosti a nastavit kontext úložiště, můžete vytvořit objekt datové sady.
+Po importu závislosti a nastavit kontext úložiště, můžete vytvořit objekt dataset.
 
-Pokud chcete vytvořit tento objekt s Azure Machine Learning balíčkem pro počítač vize, zadejte do kořenového adresáře bitové kopie na místním disku. Tento adresář musí vycházet ze stejné obecné struktury jako stolní datovou sadu, to znamená, obsahovat podadresářů pomocí skutečného bitové kopie:
-- kořenové
+Chcete-li vytvořit tento objekt pomocí Azure Machine Learning balíčku pro počítačové zpracování obrazu, zadejte kořenový adresář bitové kopie na místním disku. Tento adresář musí dodržet obecnou strukturu danou stejnou datovou sadou stolní, to znamená, obsahují podadresáře s skutečné imagí:
+- Kořenové
     - Popisek 1
     - Popisek 2
     - ...
     - Popisek n
   
-Cvičení model klasifikace image pro různé datové sady je stejně snadná jako změna kořenovou cestu `dataset_location` v následujícím kódu tak, aby odkazoval na jiné bitové kopie.
+Trénování modelu klasifikace obrázků pro různé datové sady je stejně snadné jako změna kořenové cestě `dataset_location` v následujícím kódu tak, aby odkazovala na jinou Image.
 
 
 ```python
-# Root image directory 
-dataset_location = os.path.abspath(os.path.join(os.getcwd(), "../sample_data/imgs_recycling"))
+# Root image directory
+dataset_location = os.path.abspath("classification/sample_data/imgs_recycling")
 
 dataset_name = 'recycling'
 dataset = ClassificationDataset.create_from_dir(dataset_name, dataset_location)
@@ -140,13 +124,13 @@ print("Select information for image 2: name={}, label={}, unique id={}.".format(
     Dataset consists of 63 images with 4 labels.
     Select information for image 2: name=msft-plastic-bowl20170725152154282.jpg, label=bowl, unique id=3.
 
-Datové sady objektu poskytuje funkce, které stáhnout pomocí bitové kopie [rozhraní API Search bitové kopie Bingu](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/). 
+Objekt dataset poskytuje funkce ke stažení imagí pomocí [API pro vyhledávání obrázků Bingu](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/). 
 
-Podporuje dva typy vyhledávací dotazy: 
+Dva druhy vyhledávacích dotazů jsou podporovány: 
 + Běžný textový dotazy
 + Dotazy na adresu URL obrázku
 
-Je třeba zadat tyto dotazy společně s popisek třída uvnitř zakódovaná ve formátu JSON textového souboru. Příklad:
+Tyto dotazy společně s popisek třídy je třeba zadat uvnitř zakódovaná ve formátu JSON textového souboru. Příklad:
 
 ```json
 {
@@ -171,31 +155,30 @@ Je třeba zadat tyto dotazy společně s popisek třída uvnitř zakódovaná ve
 }
 ```
 
-Kromě toho musí explicitně vytvořit objekt kontextu obsahovat klíč rozhraní API pro vyhledávání bitové kopie Bingu. To vyžaduje rozhraní API Search bitové kopie Bingu předplatné.
+Kromě toho musíte explicitně vytvořit objekt kontextu obsahovat klíč rozhraní API pro vyhledávání obrázků Bingu. To vyžaduje předplatné API Bingu pro vyhledávání obrázků.
 
-## <a name="visualize-and-annotate-images"></a>Vizualizaci a opatřit poznámkami bitové kopie
+## <a name="visualize-and-annotate-images"></a>Vizualizace a imagí opatřit poznámkami
 
-Můžete vizualizovat správné popisky v objektu datové sady pomocí následující pomůcky a bitové kopie. 
+Můžete vizualizovat imagí a správné popisky v objektu dataset pomocí následující widgetu. 
 
-Pokud dojde k chybě "Widgetů Javascript nebyl zjištěn", spusťte tento příkaz jeho řešení:
+Pokud narazíte na chybu "Widget Javascript nenajde", spusťte tento příkaz k jeho řešení:
 <br>`jupyter nbextension enable --py --sys-prefix widgetsnbextension`
 
 
 ```python
-from ui_utils.ui_annotation import AnnotationUI
 annotation_ui = AnnotationUI(dataset, Context.get_global_context())
 display(annotation_ui.ui)
 ```
 
-![Datové sadě služby Azure Machine Learning](media/how-to-build-deploy-image-classification-models/image_annotation.png)
+![Datová sada Azure Machine Learning](media/how-to-build-deploy-image-classification-models/image_annotation.png)
 
-## <a name="augment-images"></a>Posílení bitové kopie
+## <a name="augment-images"></a>Posílení imagí
 
-[ `augmentation` Modulu](https://docs.microsoft.com/en-us/python/api/cvtk.augmentation) poskytuje funkce, které posílení objekt datové sady pomocí těchto transformací popsané v [imgaug](https://github.com/aleju/imgaug) knihovny. Transformace bitové kopie mohou být seskupeny do jednoho kanálu, v takovém případě jsou všechny transformace v kanálu současně použít každé bitové kopie. 
+[ `augmentation` Modulu](https://docs.microsoft.com/en-us/python/api/cvtk.augmentation) poskytuje funkce, které rozšiřují pomocí všechny transformace je popsáno v objektu dataset [imgaug](https://github.com/aleju/imgaug) knihovny. Transformace bitové kopie mohou být seskupeny do jednoho kanálu, v takovém případě jsou všechny transformace v kanálu použít současně každé image. 
 
-Pokud byste chtěli použít kroky různých rozšíření, samostatně nebo v různých způsobem, můžete definovat více kanálů a předat je do *augment_dataset* funkce. Další informace a příklady rozšíření image, najdete v článku [imgaug dokumentaci](https://github.com/aleju/imgaug).
+Pokud chcete použít jiné rozšíření samostatně nebo v různých způsobem, můžete definovat více kanálů a předat je do *augment_dataset* funkce. Další informace a příklady rozšíření image, najdete v článku [imgaug dokumentaci](https://github.com/aleju/imgaug).
 
-Přidávání obrázků rozšířená do trénovací sady je obzvláště užitečné pro malé datové sady. Vzhledem k tomu, že je proces školení DNN pomalejší z důvodu vyšší počet bitových kopií, školení, doporučujeme že spustit experimentování bez rozšíření.
+Přidání rozšířená obrázků na cvičnou sadou je obzvláště užitečné pro malé datové sady. Protože DNN školení proces je pomalejší z důvodu zvýšeného počtu trénovacích obrázků, doporučujeme, abyste že spuštění služby experimentování ve službě bez rozšíření.
 
 
 ```python
@@ -225,20 +208,20 @@ else:
     train_set = train_set_orig  
 ```
 
-## <a name="define-dnn-models"></a>Definovat DNN modely
+## <a name="define-dnn-models"></a>Definovat modely DNN
 
-S tímto balíčkem jsou podporovány následující pretrained modely hluboké Neuronové sítě: 
-+ Resnet 18
-+ Resnet 34
-+ Resnet – 50
-+ Resnet 101
-+ Resnet 152
+S tímto balíčkem jsou podporovány následující modely pretrained hluboké Neuronové sítě: 
++ Modelem Resnet-18
++ Modelem Resnet-34
++ Modelem Resnet-50
++ Modelem Resnet-101
++ Modelem Resnet-152
 
-Tyto DNNs slouží jako třídění, nebo jako featurizer. 
+Tyto dopředné slouží jako třídění, nebo jako featurizer. 
 
-Další informace o sítích naleznete [zde](https://github.com/Microsoft/CNTK/blob/master/PretrainedModels/Image.md), a základní informace o přenosu Learning [zde](https://blog.slavv.com/a-gentle-intro-to-transfer-learning-2c0b674375a0).
+Další informace o sítích najdete [tady](https://github.com/Microsoft/CNTK/blob/master/PretrainedModels/Image.md), a je základní informace o přenosu Learning [tady](https://blog.slavv.com/a-gentle-intro-to-transfer-learning-2c0b674375a0).
 
-Výchozí parametry klasifikace bitovou kopii tohoto balíčku jsou rozlišení 224 x 224 pixelů a DNN Resnet 18. Tyto parametry byly vybrány pro dobré fungování i na širokou škálu úloh. Přesnost lze často zvýšit, například zvýšení rozlišení obrázku na 500 x 500 pixelů, nebo výběrem hlubší modelu (Resnet – 50). Ale změna parametrů můžou mít v významné zvýšení čas školení. Najdete v článku na [postupy a zvyšte tak přesnost](https://docs.microsoft.com/azure/machine-learning/service/how-to-improve-accuracy-for-computer-vision-models).
+Výchozí parametry klasifikace obrázků pro tento balíček se rozlišení 224 x 224 pixelů a modelem Resnet-18 DNN. Tyto parametry byly vybrány pro práci i na širokou škálu úloh. Přesnost lze často vylepšit, například zvýšení rozlišení obrázku na 500 x 500 pixelů a/nebo výběrem hlubší modelu (modelem Resnet-50). Ale změna parametrů může nacházet pouze na velký nárůst čas školení. Přečtěte si článek na [jak zlepšit přesnost](https://docs.microsoft.com/azure/machine-learning/service/how-to-improve-accuracy-for-computer-vision-models).
 
 
 ```python
@@ -264,18 +247,18 @@ dnn_model = CNTKTLModel(train_set.labels,
     Successfully downloaded ResNet18_ImageNet_CNTK
     
 
-## <a name="train-the-classifier"></a>Cvičení třídění
+## <a name="train-the-classifier"></a>Trénování třídění
 
-Vyberte jednu z následujících metod pro předem vyškolení DNN.
+Můžete vybrat jednu z následujících metod pro předem vytrénovaných DNN.
 
-  - **Vylepšení DNN**, který provede DNN ke klasifikaci přímo. Při školení DNN je pomalé, ho obvykle vede k dosažení nejlepších výsledků vzhledem k tomu, že všechny váhu sítě je možné zlepšit během cvičení umožnit nejlepší přesnost.
+  - **Vylepšení DNN**, který trénovat DNN ke klasifikaci přímo. DNN školení je pomalá, je obvykle vede k nejlepších výsledků protože všechny sítě vah se může zlepšit během cvičení poskytnout největší přesností.
 
-  - **DNN featurization**, která se spouští DNN jako-je použít k získání znázornění nižší dimenzí bitové kopie (512, 2048 nebo 4096 jako plovoucí). Aby reprezentace pak používá jako vstup pro učení samostatné třídění. Vzhledem k tomu, že DNN je udržováno beze změny, tento přístup je mnohem rychlejší ve srovnání s DNN upřesnění, ale přesnost není stejně dobře. Nicméně školení externí třídění například lineární SVM (jak je znázorněno v následujícím kódu) můžete poskytnout základní přehled o silné a pomůže při pochopení, vhodnosti k potížím.
+  - **Snadné DNN**, která se spouští DNN jako-je použít k získání nižší rozměrné reprezentace bitovou kopii (512 a 2048, 4096 čísel s plovoucí čárkou). Tohoto vyjádření se pak použije jako vstup pro trénování zvláštní třídění. Vzhledem k tomu, DNN zůstane beze změny, tento přístup je mnohem rychleji ve srovnání s DNN vylepšení, ale není tak dobré přesnost. Však školení externí třídění například lineární SVM (jak je znázorněno v následujícím kódu) můžete poskytnout silné standardní hodnoty a usnadní pochopení proveditelnosti problém.
   
-TensorBoard umožňuje vizualizace průběhu školení. Chcete-li aktivovat TensorBoard:
-1. Přidejte parametr `tensorboard_logdir=PATH` jak je znázorněno v následujícím kódu
-1. Spusťte službu klienta TensorBoard pomocí příkazu `tensorboard --logdir=PATH` v nové konzole.
-1. Podle pokynů TensorBoard, který ve výchozím nastavení je localhost:6006, otevřete webový prohlížeč. 
+TensorBoard umožňuje znázornit průběh školení. Chcete-li aktivovat TensorBoard:
+1. Přidat parametr `tensorboard_logdir=PATH` jak je znázorněno v následujícím kódu
+1. Spuštění klienta TensorBoard pomocí příkazu `tensorboard --logdir=PATH` v nové konzole.
+1. Podle pokynů TensorBoard, která ve výchozím nastavení je localhost:6006, otevřete webový prohlížeč. 
 
 
 ```python
@@ -356,15 +339,15 @@ if classifier_name == "dnn":
 ![PNG](media/how-to-build-deploy-image-classification-models/output_17_0.png)
 
 
-## <a name="evaluate-and-visualize-model-performance"></a>Vyhodnocení a vizualizovat výkon modelu
+## <a name="evaluate-and-visualize-model-performance"></a>Vyhodnocení a Vizualizujte výkon modelů
 
-Můžete vyhodnotit výkon pro cvičný model u nezávislé testovací datové pomocí modulu vyhodnocení. Vyhodnocení metriky, které se vypočítá patří:
+Můžete si vyzkoušet výkonu pro datovou sadu nezávislé testu pomocí modulu vyhodnocování trénovaného modelu. Metriky hodnocení, který vypočítává patří:
  
-+ Přesnost (ve výchozím nastavení třídy průměrem)
-+ Kód PR křivky
-+ Křivka ROC
++ Přesnost (ve výchozím nastavení byla třída)
++ Žádost o přijetí změn křivky
++ Křivka roc s více TŘÍDAMI
 + Oblasti v rámci křivky
-+ Matice nedorozuměním
++ Chybová matice
 
 
 ```python
@@ -407,12 +390,11 @@ labels = [l.name for l in dataset.labels]
 pred_scores = ce.scores #classification scores for all images and all classes
 pred_labels = [labels[i] for i in np.argmax(pred_scores, axis=1)]
 
-from ui_utils.ui_results_viewer import ResultsUI
 results_ui = ResultsUI(test_set, Context.get_global_context(), pred_scores, pred_labels)
 display(results_ui.ui)
 ```
 
-![Datové sadě služby Azure Machine Learning](media/how-to-build-deploy-image-classification-models/Image_Classification_Results.png)
+![Datová sada Azure Machine Learning](media/how-to-build-deploy-image-classification-models/Image_Classification_Results.png)
 
 
 ```python
@@ -420,38 +402,37 @@ display(results_ui.ui)
 precisions, recalls, thresholds = ce.compute_precision_recall_curve() 
 thresholds = list(thresholds)
 thresholds.append(thresholds[-1])
-from ui_utils.ui_precision_recall import PrecisionRecallUI
 pr_ui = PrecisionRecallUI(100*precisions[::-1], 100*recalls[::-1], thresholds[::-1])
 display(pr_ui.ui) 
 ```
 
-![Datové sadě služby Azure Machine Learning](media/how-to-build-deploy-image-classification-models/image_precision_curve.png)
+![Datová sada Azure Machine Learning](media/how-to-build-deploy-image-classification-models/image_precision_curve.png)
 
-## <a name="operationalization-deploy-and-consume"></a>Operationalization: nasazení a využívat
+## <a name="operationalization-deploy-and-consume"></a>Operacionalizace: nasazení a využití
 
-Operationalization se proces publikování modely a kód jako webové služby a spotřebě těchto služeb k vytvoření obchodní výsledky. 
+Operacionalizace je proces publikování kódu jako webové služby a modely a využití těchto služeb obchodní výsledky. 
 
-Jakmile je cvičení modelu, můžete nasadit tento model jako webovou službu pro spotřebu pomocí [příkazového řádku Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/cli-for-azure-machine-learning). Modely se dá nasadit do místního počítače nebo clusteru Azure Container Service (ACS). Pomocí služby ACS, můžete škálovat webovou službu ručně nebo použít funkci Automatické škálování.
+Jakmile váš model se trénuje, můžete nasadit tento model jako webovou službu pro spotřebu pomocí [CLI aplikace Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/cli-for-azure-machine-learning). Je možné nasadit modely do místního počítače nebo clusteru Azure Container Service (ACS). Pomocí služby ACS, můžete ruční škálování webové služby nebo pomocí funkce automatického škálování.
 
-**Přihlaste se pomocí rozhraní příkazového řádku Azure**
+**Přihlaste se pomocí Azure CLI**
 
-Pomocí [Azure](https://azure.microsoft.com/) účet s platným předplatným, přihlaste se pomocí rozhraní příkazového řádku následující příkaz:
+Pomocí [Azure](https://azure.microsoft.com/) účet s platným předplatným, přihlaste se pomocí následujícího příkazu rozhraní příkazového řádku:
 <br>`az login`
 
-+ Chcete-li přepnout do jiného předplatného Azure, použijte příkaz:
++ Pokud chcete přepnout do jiného předplatného Azure, použijte příkaz:
 <br>`az account set --subscription [your subscription name]`
 
-+ Pokud chcete zobrazit aktuální účet správy modelu, použijte příkaz:
++ Pokud chcete zobrazit aktuální účet správy modelů, použijte příkaz:
   <br>`az ml account modelmanagement show`
 
 **Vytvoření a nastavení prostředí pro nasazení clusteru**
 
-Stačí nastavit prostředí pro nasazení jednou. Pokud nemáte ještě, nastavit prostředí pro nasazení teď pomocí [tyto pokyny](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/deployment-setup-configuration#environment-setup). 
+Stačí nastavit prostředí pro nasazení jednou. Pokud nemáte ještě, nastavte si nyní pomocí prostředí pro nasazení [tyto pokyny](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/deployment-setup-configuration#environment-setup). 
 
-Pokud chcete zobrazit prostředí aktivní nasazení, použijte následující příkaz rozhraní příkazového řádku:
+Pokud chcete zobrazit aktivní nasazení prostředí, použijte následující příkaz rozhraní příkazového řádku:
 <br>`az ml env show`
    
-Ukázka příkazu příkazového řádku Azure CLI pro vytvoření a nastavení prostředí pro nasazení
+Ukázky rozhraní příkazového řádku Azure k vytvoření a nastavení prostředí nasazení
 
 ```CLI
 az provider register -n Microsoft.MachineLearningCompute
@@ -462,25 +443,25 @@ az ml env set -n [environment name] -g [resource group]
 az ml env cluster
 ```
     
-### <a name="manage-web-services-and-deployments"></a>Správa webové služby a nasazení
+### <a name="manage-web-services-and-deployments"></a>Správa webových služeb a nasazení
 
-Následující rozhraní API umožňuje nasazovat modely jako webové služby, spravovat tyto webové služby a správu nasazení.
+Následující rozhraní API slouží k nasazení modelů jako webové služby, spravovat tyto webové služby a správu nasazení.
 
 |Úkol|Rozhraní API|
 |----|----|
 |Vytvoření objektu nasazení|`deploy_obj = AMLDeployment(deployment_name=deployment_name, associated_DNNModel=dnn_model, aml_env="cluster")`
 |Nasazení webové služby|`deploy_obj.deploy()`|
 |Obrázek skóre|`deploy_obj.score_image(local_image_path_or_image_url)`|
-|Odstranění webové služby|`deploy_obj.delete()`|
-|Sestavení docker bitová kopie bez webové služby|`deploy_obj.build_docker_image()`|
-|Seznam stávajícího nasazení|`AMLDeployment.list_deployment()`|
-|Odstranit, pokud tato služba existuje s názvem nasazení|`AMLDeployment.delete_if_service_exist(deployment_name)`|
+|Odstranit webovou službu|`deploy_obj.delete()`|
+|Sestavit image dockeru bez webové služby|`deploy_obj.build_docker_image()`|
+|Seznam existujících nasazení|`AMLDeployment.list_deployment()`|
+|Odstranit, pokud služba existuje s názvem nasazení|`AMLDeployment.delete_if_service_exist(deployment_name)`|
 
-**Dokumentaci k rozhraní API:** obrátit [balíček referenční dokumentaci k nástroji](https://aka.ms/aml-packages/vision) pro podrobné referenční informace pro každý modul a třída.
+**Dokumentace k rozhraní API:** najdete [balíček referenční dokumentaci](https://aka.ms/aml-packages/vision) pro podrobné referenční dokumentace pro každý modul a třídy.
 
-**Referenční dokumentace rozhraní příkazového řádku:** více pokročilé operace související s nasazením, naleznete [model správy referenční dokumentace rozhraní příkazového řádku](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/model-management-cli-reference).
+**Referenční dokumentace rozhraní příkazového řádku:** pokročilejší operace související s nasazením, najdete [odkaz na rozhraní příkazového řádku pro správu modelů](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/model-management-cli-reference).
 
-**Správa nasazení na portálu Azure**: můžete sledovat a spravovat nasazení v [portál Azure](https://ms.portal.azure.com/). Z portálu Azure najít stránku účtu Machine Learning Model správy pomocí jeho názvu. Potom přejděte na stránku účtu Model správy > Model správy > služby.
+**Správa nasazení na webu Azure portal**: můžete sledovat a spravovat svá nasazení v [webu Azure portal](https://ms.portal.azure.com/). Na webu Azure Portal najdete stránce účtu správy modelů Machine Learning pomocí jeho názvu. Potom přejděte na stránku účtu správy modelů > Správa modelů ve službě > služby.
 
 
 ```python
@@ -535,17 +516,17 @@ deploy_obj.deploy()
 print("Deployment DONE")
 ```
 
-### <a name="consume-the-web-service"></a>Využívají webové služby 
+### <a name="consume-the-web-service"></a>Používání této webové služby 
 
-Jakmile nasadíte model jako webovou službu, můžete stanovení skóre bitové kopie k webové službě pomocí jedné z těchto metod:
+Po nasazení modelu jako webové služby můžete hodnotit bitové kopie s webovou službou pomocí jedné z těchto metod:
 
-- Stanovení skóre přímo s objekt nasazení pomocí webové služby `deploy_obj.score_image(image_path_or_url)`
+- Skóre webové služby přímo s použitím objektu nasazení `deploy_obj.score_image(image_path_or_url)`
 
-- Pomocí koncový bod adresy URL a služby klíče služby (žádné místní nasazení): `AMLDeployment.score_existing_service_with_image(image_path_or_url, service_endpoint_url, service_key=None)`
+- Pomocí služby klíče koncového bodu adresy URL a Service (žádné místní nasazení): `AMLDeployment.score_existing_service_with_image(image_path_or_url, service_endpoint_url, service_key=None)`
 
-- Tvoří své žádosti HTTP přímo ke stanovení skóre koncový bod webové služby. Tato možnost je pro zkušené uživatele.
+- Vytvářejí požadavky HTTP přímo ke stanovení skóre pro koncový bod webové služby. Tato možnost je určená pro zkušené uživatele.
 
-### <a name="score-with-existing-deployment-object"></a>Stanovení skóre s existující objekt nasazení
+### <a name="score-with-existing-deployment-object"></a>Skóre pomocí existujícího objektu nasazení
 
 ```
 deploy_obj.score_image(image_path_or_url)
@@ -591,7 +572,7 @@ for img_index, img_obj in enumerate(test_set.images[:10]):
     print(return_json)
 ```
 
-### <a name="score-with-service-endpoint-url-and-service-key"></a>Stanovení skóre s adresu url koncového bodu služby a klíč služby
+### <a name="score-with-service-endpoint-url-and-service-key"></a>Skóre se adresa url koncového bodu služby a klíč služby
 
 `AMLDeployment.score_existing_service_with_image(image_path_or_url, service_endpoint_url, service_key=None)`
 
@@ -614,9 +595,9 @@ serialized_result_in_json = AMLDeployment.score_existing_service_with_image(imag
 print("serialized_result_in_json:", serialized_result_in_json)
 ```
 
-### <a name="score-endpoint-with-http-request-directly"></a>Koncový bod skóre s přímo požadavku http
+### <a name="score-endpoint-with-http-request-directly"></a>Skóre přímo na koncový bod s požadavkem http
 
-Následující příklad kódu tvoří požadavek HTTP přímo v Pythonu. Však můžete provést v jinými programovací jazyky.
+Následující příklad kódu vytvoří požadavek HTTP přímo v Pythonu. Však můžete provést v jiných programovacích jazycích.
 
 
 ```python
@@ -669,7 +650,7 @@ score_image_list_with_http(images, service_endpoint_url, service_key)
 
 ### <a name="parse-serialized-result-from-web-service"></a>Výsledek analýzy serializovat z webové služby
 
-Výstup z webové služby je řetězec formátu JSON. Tento řetězec formátu JSON s různými třídami modelu DNN můžete analyzovat.
+Výstup z webové služby je řetězec formátu JSON. Tento řetězec JSON s různými třídami DNN modelu je možné analyzovat.
 
 
 ```python
@@ -695,12 +676,12 @@ print("Class label:", dnn_model.class_map[class_index])
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o Azure Machine Learning balíčku pro počítač vize v těchto článcích:
+Další informace o balíčku pro Azure Machine Learning pro počítačové zpracování obrazu v těchto článcích:
 
 + Zjistěte, jak [zlepšit přesnost tohoto modelu](how-to-improve-accuracy-for-computer-vision-models.md).
 
-+ Pro čtení [balíček přehled a zjistěte, jak ji nainstalovat](https://aka.ms/aml-packages/vision).
++ Přečtěte si [balení – přehled a zjistěte, jak ji nainstalovat](https://aka.ms/aml-packages/vision).
 
-+ Prozkoumejte [referenční dokumentace](https://docs.microsoft.com/python/api/overview/azure-machine-learning/computer-vision) pro tento balíček.
++ Prozkoumejte [referenční dokumentaci](https://docs.microsoft.com/python/api/overview/azure-machine-learning/computer-vision) pro tento balíček.
 
 + Další informace o [další balíčky Python pro Azure Machine Learning](reference-python-package-overview.md).

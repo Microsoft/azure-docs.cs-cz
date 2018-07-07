@@ -1,79 +1,104 @@
 ---
-title: Zlepšení vaší třídění pomocí vlastní vize služby - kognitivní služeb Azure | Microsoft Docs
-description: Zjistěte, jak ke zlepšení kvality třídění vaše vlastní vize služby.
+title: Vylepšení klasifikátoru pomocí služby Custom Vision Service - služeb Azure Cognitive Services | Dokumentace Microsoftu
+description: Zjistěte, jak zlepšit kvalitu klasifikátoru Custom Vision Service.
 services: cognitive-services
-author: anrothMSFT
-manager: corncar
+author: noellelacharite
+manager: nolachar
 ms.service: cognitive-services
 ms.component: custom-vision
 ms.topic: article
-ms.date: 05/03/2018
-ms.author: anroth
-ms.openlocfilehash: 65b1424f259066c7d5bd6b2b508d2a4052ff0527
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.date: 07/05/2018
+ms.author: nolachar
+ms.openlocfilehash: 7c6cbd996d0c35b96fde78daf391bebb36feddce
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342861"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37888172"
 ---
-# <a name="how-to-improve-your-classifier"></a>Jak ke zlepšení vaší třídění
+# <a name="how-to-improve-your-classifier"></a>K vylepšení klasifikátoru
 
-Zjistěte, jak ke zlepšení kvality třídění vaše vlastní vize služby. Kvalitu vaší třídění je závislá na kvalitu s popiskem data, která zadáte na ni. 
+Zjistěte, jak zlepšit kvalitu klasifikátoru Custom Vision Service. Kvalita klasifikátor je závislá na množství, kvality a řadu s popisky dat, které poskytnete a jak vyvážené tato datová sada je. Dobré třídění obvykle obsahuje vyvážené trénovací datovou sadu, která dobře vystihuje co bude odeslán do třídění. Často je iterativní proces vytváření těchto třídění. Je běžné trvat pár zaokrouhlí školení k dosažení očekávané výsledky.
 
-## <a name="train-more-varied-images"></a>Cvičení více různým bitové kopie
+Tady jsou běžné kroky k vylepšení klasifikátoru. Tyto kroky nejsou pevné a rychlé pravidla, ale heuristickými metodami, který vám pomůže vytvářet lepší třídění.
 
-Poskytování různých úhlů, pozadí, velikost objektu s příznakem bitové kopie, skupiny fotografie a ostatní varianty zlepšuje třídění. Fotografie v kontextu jsou lepší, než fotografie před neutrální pozadí. Zahrnout bitové kopie, které jsou zástupce co bude odeslána do třídění během normálního použití.
+1. První kruhové školení
+1. Přidat další Image a vyvážení dat
+1. Přeučování
+1. Přidání obrázků s různou na pozadí, osvětlení, velikost objektu, úhel kamery a stylu
+1. Přeučování & kanálu obrázku k předpovědi
+1. Zkontrolujte výsledky předpovědí
+1. Upravit existující trénovacích dat
 
-Další informace o přidávání obrázků, najdete v článku [sestavení třídění](getting-started-build-a-classifier.md) dokumentu.
+## <a name="data-quantity-and-data-balance"></a>Množství a data vyvážení dat
 
-> [!IMPORTANT]
-> Mějte na paměti, ke cvičení třídění po přidání bitových kopií.
+Nejdůležitějším principem je nahrát dostatek obrázků k trénování třídění. Jako výchozí bod doporučují se nejméně 50 obrázků na popisek pro trénovací sady. S menším počtem obrázky je silné riziko, že jste overfitting. Zatímco vaše čísla výkonu může navrhnout kvalitní, může potýkají s daty v reálném světě. Školení třídění s další Image se obecně zvýšíte přesnost tohoto predikované výsledky.
 
-## <a name="use-images-submitted-for-prediction"></a>Používat Image odeslané pro předpověď
+Je potřeba zamyslet se, měli byste zajistit, že jsou vaše data rovnoměrně. Například 500 bitových kopií pro jeden popisek a 50 bitových kopií pro jiné návěstí vytvoří imbalanced trénovací datové sady, způsobí modelu, který má být přesnější předpovídat jeden popisek než jiný. Budete pravděpodobně uvidíte lepší výsledky, pokud chcete zachovat nejméně s 1:2 poměr mezi popisek s nejmenším počtem bitových kopií a popisek se většina imagí. Například pokud má popisek s nejvyšší počet imagí 500 imagí, popisek s nejnižší imagí musí má alespoň 250 obrázků k trénování.
 
-Službu vize vlastní ukládá odeslané ke koncovému bodu předpovědi bitové kopie. Chcete-li zlepšit třídění pomocí těchto bitových kopií, použijte následující kroky:
+## <a name="train-more-diverse-images"></a>Trénování více různorodých obrázků
 
-1. Chcete-li zobrazit obrázky odeslané do třídění, otevřete [vize vlastní webové stránky](https://customvision.ai) a vyberte __předpovědi__ kartě.
+Zadejte bitové kopie, které jsou zástupce co bude odeslán do třídění během normálního používání. Například pokud se supervizí trénujete "apple" třídění, klasifikátoru nemusí být přesné, pokud pouze trénování fotografie jablka talířů ale zkontrolujte předpovědi na fotografie jablek na stromové struktury. Včetně širokou škálu imagí budete mít jistotu, že klasifikátoru není tendenční a můžete také zobecnit. Tady jsou některé způsoby, které provedete trénování nastavené různorodější:
 
-    ![Obrázek na kartě předpovědi](./media/getting-started-improving-your-classifier/predictions-tab.png)
+__Na pozadí:__ poskytují image objektu před různá pozadí (to znamená, ovoce na desce oproti ovoce v kontejneru a blízkým). Fotografie v kontextu jsou lepší než fotografie před neutrální pozadími, jako poskytují další informace pro třídění.
 
-    > [!TIP]
-    > Výchozí zobrazení ukazuje bitové kopie z na aktuální iteraci. Můžete použít __iterace__ rozevírací pole, které chcete zobrazit obrázky odeslaných během předchozí iterací.
+![Obrázek pozadí ukázky](./media/getting-started-improving-your-classifier/background.png)
 
-2. Podržte ukazatel nad najdete v části značky, které byly předpovědět třídění bitovou kopii.
+__Osvětlení:__ bitové kopie poskytnout různé osvětlení (to znamená, vytvořených ve vystavení flash, vysoká, atd.), zejména v případě imagí použitých pro předpověď mají různé osvětlení. Také je užitečné zahrnout i obrázky pomocí různých sytost, hue a jas.
 
-    > [!TIP]
-    > Bitové kopie, jsou seřazeny, tak, aby bitové kopie, které můžete zahrnout dostane většině k třídění v horní části. Pokud chcete vybrat jiný řazení, použijte __řazení__ části.
+![Obrázek ukázky osvětlení](./media/getting-started-improving-your-classifier/lighting.png)
 
-    Chcete-li přidat bitovou kopii do Cvičná data, vyberte bitovou kopii, vyberte značky a pak vyberte __uložte a zavřete__. Obrázek se odebere z __předpovědi__ a přidat do bitové kopie školení. Můžete ji zobrazit výběrem __školení image__ kartě.
+__Velikost objektu:__ zadejte Image, ve kterých jsou objekty z nejrůznějších velikosti zachytávání různé části objektu. Například fotku svazcích bananas a Detail jeden banánu. Různé velikosti pomáhá třídění generalize lépe.
 
-    ![Obrázek označování stránky](./media/getting-started-improving-your-classifier/tag-image.png)
+![Obrázek ukázky velikost](./media/getting-started-improving-your-classifier/size.png)
 
-3. Použití __Train__ tlačítko přeučování třídění.
+__Úhel kamery:__ poskytují Image pořízené různých kamer. Pokud vaše fotografie pocházejí sadu pevné kamery (například bezpečnostních kamer), nezapomeňte že přiřadit jiný popisek pro každou kameru i v případě, že dojde k zachycení stejné objekty, aby se zabránilo overfitting – modelování nesouvisející objekty (například lampposts) jako klíčovou funkcí.
 
-## <a name="visually-inspect-predictions"></a>Vizuální kontrola předpovědi
+![Obrázek ukázky úhel](./media/getting-started-improving-your-classifier/angle.png)
 
-Chcete-li prověřit předpovědi bitové kopie, vyberte __školení image__ a pak vyberte __iterace historie__. Bitové kopie, které jsou uvedeny s červeným polem byly nesprávně předpovědět.
+__Style:__ poskytují Image různé styly stejné třídy (to znamená, že různé druhy citrusových). Ale pokud máte Image objektů výrazně různé styly (to znamená, Mickey myš a reálných zkušeností rat), doporučujeme označit je jako samostatné třídy pro lepší reprezentaci jejich různé prvky.
 
-![Obrázek historie iterace](./media/getting-started-improving-your-classifier/iteration-history.png)
+![Obrázek ukázky styl](./media/getting-started-improving-your-classifier/style.png)
 
-Někdy visual kontroly můžete identifikovat vzorů, které pak můžete vyřešit tak, že přidáte další Cvičná data. Například třídění pro růže oproti daises může nesprávně popisku všechny bílé růže jako daises. Je možné, že tento problém opravili přidáním a poskytování školení dat, která obsahuje s příznakem bitových kopií bílé růží.
+## <a name="use-images-submitted-for-prediction"></a>Použití imagí odeslané pro předpověď
+
+Custom Vision Service ukládá Image odeslat do koncového bodu předpovědi. Pokud chcete zlepšit třídění pomocí těchto bitových kopií, postupujte následovně:
+
+1. Chcete-li zobrazit Image odeslat do třídění, otevřete [vizi vlastní webovou stránku](https://customvision.ai), přejděte na svůj projekt a vyberte __předpovědi__ kartu. Výchozí zobrazení zobrazuje obrázky z aktuální iteraci. Můžete použít __iterace__ rozevírací nabídka pole k zobrazení obrázků odeslaných během předchozími iteracemi.
+
+    ![Obrázek karty predikcí](./media/getting-started-improving-your-classifier/predictions.png)
+
+2. Najeďte myší na obrázek zobrazíte značky, které byly předpovídané pomocí třídění. Bitové kopie jsou seřazené tak, že jsou obrázky, které přinést většina zisky třídění v horní části. Chcete-li vybrat jinou řazení, použijte __řazení__ oddílu. Přidání obrázku na existující trénovací data, vyberte bitovou kopii, vyberte správné značku a klikněte na __uložte a zavřete__. Na obrázku se odebere z __předpovědi__ a přidán do trénovacích obrázků. Můžete ho zobrazit výběrem __Trénovacích obrázků__ kartu.
+
+    ![Obrázek označení stránky](./media/getting-started-improving-your-classifier/tag.png)
+
+3. Použití __trénování__ tlačítko přeučování třídění.
+
+## <a name="visually-inspect-predictions"></a>Vizuálně zkoumat predikcí
+
+Chcete-li prověřit predikcí bitové kopie, vyberte __Trénovacích obrázků__ kartu a potom vyberte __iterace historie__. Bitové kopie, které jsou uvedeny s červeným rámečkem byly správně předpovědět.
+
+![Snímek historie iterace](./media/getting-started-improving-your-classifier/iteration.png)
+
+Někdy vizuální kontrolu můžete rozpoznat vzorce, které potom můžete opravit přidáním dalších trénovacích dat nebo úpravou existující trénovací data. Například třídění pro apple vs. Limetkově mohou nesprávně označit všechny zelené jablka jako vápna. Je možné, že problém vyřešíte přidáním a poskytuje trénovací data, která obsahuje označené obrázky zelené jablka.
 
 ## <a name="unexpected-classification"></a>Neočekávané klasifikace
 
-Někdy třídění zjišťuje charakteristiky, které mají společnou obrázků. Například chcete vytvořit třídění pro růže oproti Tulipány. Můžete zadat Image Tulipány v polích a růží v red váza před blue wall. Zadané tato data, může pro pole oproti wall + váza místo růže oproti Tulipány cvičení třídění.
+Třídění někdy nesprávně zjišťuje vlastnosti, které váš obrázky mají společnou. Například pokud vytváříte třídění pro jablka vs. citrusových a jsou zadané Image jablka do rukou a citrus v bílé tabulky, může pro rukou vs. bílé talířů místo jablka vs. citrusových trénování třídění.
 
-Chcete-li tento problém opravili, použijte pokyny v školení s více nejrůznější bitové kopie: poskytnout různých úhlů, pozadí, velikost objektu, skupiny a další variant bitové kopie.
+![Obrázek neočekávané klasifikace](./media/getting-started-improving-your-classifier/unexpected.png)
 
-## <a name="negative-image-handling"></a>Zpracování záporné obrázku
+Tento problém vyřešit, použijte výše uvedené pokyny pro vzdělávání s větším různorodé Image: Zadejte Image pomocí různých úhlů, pozadí, velikost objektu, skupiny a další varianty.
 
-Služba vlastní vize podporuje zpracování některé automatické záporné obrázku. Pokud vytváříte cat oproti PSA třídění a odeslání image čelisti pro předpověď, třídění musí stanovení skóre této bitové kopie jako blížící se 0 % cat a PSA. 
+## <a name="negative-image-handling"></a>Zpracování negativní obrázku
 
-> [!WARNING]
-> Automatické přístup funguje pro jasně záporné bitové kopie. Se nemusí fungovat i v případech, kdy záporné bitové kopie jsou právě varianta obrázků použitých v školení. 
->
-> Například pokud máte husky oproti corgi třídění a kanál v bitové kopie Pomeranian, může dosáhnout Pomeranian jako Husky. Pokud vaše záporné Image této povahy, vytvořte novou značku (například "ostatní") a použijte ho pro obrázky záporné školení.
+Custom Vision Service podporuje zpracování některých automatické negativní obrázku. V případě, kde zodpovídají za tvorbu hroznového vs. banánů třídění a odešlete image bot pro predikci by měl třídění hroznového a banánů skóre této bitové kopie jako blízko 0 %.
+
+Na druhé straně v případech, kdy negativní bitové kopie jsou jen varianta Image použité v školení, je pravděpodobné, že model bude klasifikovat negativní bitové kopie jako třída s popiskem obarvené skvělé. Například pokud máte oranžová vs. grapefruity třídění a kanálu v obraze clementine, může skóre clementine jako oranžová. K tomu může dojít, protože mnoho funkcí clementine (barva, tvar, textury, přirozené prostředí atd.) vypadat podobně jako u oranges.  Pokud jsou záporné imagí z této povaha, doporučujeme vytvořit jeden nebo více klíčová ("ostatní") a popisek negativní obrázky s touto značkou při školení, které umožňují modelu, který má lepší rozlišit mezi těmito třídami.
 
 ## <a name="next-steps"></a>Další postup
 
-[Použít předpovědi rozhraní API](use-prediction-api.md)
+Zjistěte, jak můžete otestovat imagí prostřednictvím kódu programu, odešlete jim Predikcí rozhraní API.
+
+> [!div class="nextstepaction"]
+[Použití prediktivního rozhraní API](use-prediction-api.md)

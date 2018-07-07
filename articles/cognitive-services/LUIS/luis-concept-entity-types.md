@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 06/28/2018
 ms.author: v-geberr
-ms.openlocfilehash: 3b87f89c8f0cb6a5b22923513d78fff9085f3598
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 83e5a8db9162ef1587664c0a353252c04ade45d8
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37345324"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37887799"
 ---
 # <a name="entities-in-luis"></a>Entity v LUIS
 
@@ -197,7 +197,7 @@ Složený entity představují část celku. Například složenou entitu s náz
 
 Služba LUIS také poskytuje seznam typ entity, která není se naučili počítače, ale umožňuje aplikaci LUIS, chcete-li určit pevnou seznam hodnot. Zobrazit [LUIS hranice](luis-boundaries.md) odkazu ke kontrole omezení typu entity. 
 
-Pokud jste za hierarchické, složený a seznamu entit a stále potřebovat vyšší limit, obraťte se na podporu. Uděláte to tak, získat podrobné informace o systému, přejděte [LUIS] [ LUIS] webu a pak vyberte **podporu**. Pokud vaše předplatné Azure zahrnuje odbornou pomoc, obraťte se na [technické podpoře Azure](https://azure.microsoft.com/support/options/). 
+Pokud jste za hierarchické, složený a seznamu entit a stále potřebovat vyšší limit, obraťte se na podporu. Uděláte to tak, získat podrobné informace o systému, přejděte [LUIS](luis-reference-regions.md#luis-website) webu a pak vyberte **podporu**. Pokud vaše předplatné Azure zahrnuje odbornou pomoc, obraťte se na [technické podpoře Azure](https://azure.microsoft.com/support/options/). 
 
 ## <a name="best-practices"></a>Osvědčené postupy
 
@@ -211,10 +211,8 @@ V rámci kontroly zvažte možnost Přidat frázi seznamu se přidá signál k L
 
 Zobrazit [osvědčené postupy](luis-concept-best-practices.md) Další informace.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další koncepty o dobré [projevy](luis-concept-utterance.md). 
 
 Zobrazit [přidat entity](luis-how-to-add-entities.md) získat další informace o přidání entity do aplikace LUIS.
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website

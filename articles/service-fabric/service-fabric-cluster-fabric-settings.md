@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/27/2018
 ms.author: aljo
-ms.openlocfilehash: c1bff75ebdba656127f7860bdb72d368a94ef20b
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 499c7182fba9d8efeebfb22e22a692d431dcb7ac
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/06/2018
-ms.locfileid: "37866538"
+ms.locfileid: "37888649"
 ---
 # <a name="customize-service-fabric-cluster-settings-and-fabric-upgrade-policy"></a>Přizpůsobení nastavení clusteru Service Fabric a zásady upgradu prostředků infrastruktury
 Tento dokument vysvětluje, jak přizpůsobit různá nastavení prostředků infrastruktury a zásady pro váš cluster Service Fabric upgradu prostředků infrastruktury. Můžete je přizpůsobit [webu Azure portal](https://portal.azure.com) nebo pomocí šablony Azure Resource Manageru.
@@ -752,6 +752,7 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 |FabricLogRoot |Řetězec | Nepovolené |Service fabric protokolu kořenový adresář. Je to, kde jsou umístěny SF protokoly a trasování. |
 |NodesToBeRemoved|řetězec, výchozí hodnota je ""| Dynamická |Uzly, které byste měli odebrat jako součást konfigurace upgradu. (Pouze pro samostatné nasazení)|
 |ServiceRunAsAccountName |Řetězec | Nepovolené |Název účtu, pod kterým chcete spustit service fabric hostitele. |
+|SkipContainerNetworkResetOnReboot|Logická hodnota, výchozí hodnotu FALSE|Nepovoleno|Určuje, zda se mají přeskočit obnovení kontejner sítě při restartování.|
 |SkipFirewallConfiguration |Logická hodnota, výchozí hodnota je false | Nepovolené |Určuje, pokud nastavení brány firewall, který je potřeba nastavit v systému nebo ne. To platí jenom v případě, že používáte bránu windows firewall. Pokud používáte brány firewall třetích stran, pak je nutné otevřít porty pro systém a aplikace, aby používaly |
 
 ## <a name="tokenvalidationservice"></a>TokenValidationService

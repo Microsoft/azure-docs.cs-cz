@@ -1,6 +1,6 @@
 ---
-title: Vytvoření složeného entity extrahovat komplexní data - Azure | Microsoft Docs
-description: Informace o vytváření složených entity ve vaší aplikaci LEOŠ extrahovat různé typy dat entity.
+title: Vytvoření složeného entity k extrakci komplexní dat – Azure | Dokumentace Microsoftu
+description: Zjistěte, jak vytvořit složenou entitu ve vaší aplikaci LUIS k extrakci různé typy dat entity.
 services: cognitive-services
 author: v-geberr
 manager: kaiqb
@@ -9,35 +9,35 @@ ms.component: luis
 ms.topic: article
 ms.date: 03/28/2018
 ms.author: v-geberr
-ms.openlocfilehash: cb581ee60dea2b0810332933455a03a8b68e16ea
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 375b52f9206f55e620d5e664844b8fa1d7249a07
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36264381"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37888741"
 ---
-# <a name="use-composite-entity-to-extract-complex-data"></a>Pomocí složeného entity komplexní data
-Tato jednoduchá aplikace má dva [záměry](luis-concept-intent.md) a několik entit. Jejím účelem je sešit lety, jako je například "1 lístek z Prahy Káhiře na pátek", a vraťte všechny specifikace rezervace jako jediný data. 
+# <a name="use-composite-entity-to-extract-complex-data"></a>Extrahovat komplexní data pomocí složeného entity
+Tato jednoduchá aplikace má dva [záměry](luis-concept-intent.md) a několik entit. Jeho účelem je rezervuje lety, jako je například "1 lístku ze Seattlu Cairo v pátek" a vrátí všechny specifikace rezervace jako jednu část dat. 
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-* Přidat datetimeV2 předem entity a číslo
+* Přidat datetimeV2 předem připravených entit a číslo
 * Vytvoření složeného entity
-* Dotaz LEOŠ a přijímat složené entity data
+* Dotazování služby LUIS a přijímat složené entity data
 
 ## <a name="before-you-begin"></a>Než začnete
-* LEOŠ aplikaci z  **[hierarchické rychlý Start](luis-tutorial-composite-entity.md)**. 
+* Aplikace LUIS z  **[hierarchické quickstart](luis-tutorial-composite-entity.md)**. 
 
 > [!Tip]
-> Pokud již nemáte předplatné, můžete si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/).
+> Pokud ještě nemáte předplatné, si můžete zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="composite-entity-is-a-logical-grouping"></a>Složené entity je logické seskupení 
-Účelem entity, která je k vyhledání a kategorizace části textu v utterance. A [složené](luis-concept-entity-types.md) entity se skládá z jiné typy entit naučili z kontextu. Pro tuto aplikaci cesta, která přebírá letu rezervace jsou několik informací jako je například data, umístění a počtu licencí. 
+## <a name="composite-entity-is-a-logical-grouping"></a>Složený entity je logické seskupení 
+Účelem této entity je vyhledat v promluvě části textu a uspořádat je do kategorií. A [složené](luis-concept-entity-types.md) entity se skládá z jiných typů entit se dozvěděli, z kontextu. Cestovní aplikace, která přebírá rezervace letenek existují různé druhy informace, jako jsou data, umístění a počet licencí. 
 
-Informace existuje jako samostatné entity, před vytvořením složené. Vytvořte složenou entitu, když samostatné entity je možné logicky seskupit a toto logické seskupení je vhodné chatbot nebo jinou aplikaci LEOŠ využívání. 
+Informace o existuje jako samostatný entity před vytvořením složeného. Vytvoření složeného entity při samostatné entity je možné logicky seskupit a tato logická seskupení je vhodné chatovací robot nebo jiné aplikace LUIS využívání. 
 
-Jednoduchý příklad utterances od uživatelů patří:
+Mezi jednoduché ukázkové promluvy od uživatelů patří:
 
 ```
 Book a flight to London for next Monday
@@ -45,98 +45,98 @@ Book a flight to London for next Monday
 Reserve a seat from New York to Paris on the first of April
 ```
  
-Složené entity odpovídá počtu stanici, původní umístění, cílové umístění a datum. 
+Složený entity odpovídá počet licencovaných míst, původní umístění, cílové umístění a data. 
 
-## <a name="what-luis-does"></a>Jaké jsou LEOŠ
-Když jsou identifikuje záměr a entity utterance, [extrahovat](luis-concept-data-extraction.md#list-entity-data)a vrátí ve formátu JSON z [koncový bod](https://aka.ms/luis-endpoint-apis), LEOŠ se provádí. Volání aplikace nebo chatbot trvá této odpovědi JSON a splní požadavek – ať způsobem aplikace nebo chatbot slouží k provést. 
+## <a name="what-luis-does"></a>Co dělá služba LUIS
+Když se záměr a entity promluvy identifikují, [extrahují](luis-concept-data-extraction.md#list-entity-data) a vrátí z [koncového bodu](https://aka.ms/luis-endpoint-apis) ve formátu JSON, služba LUIS je hotová. Volající aplikace nebo chatbot převezme tuto odpověď JSON a splní požadavek způsobem, pro který jsou aplikace nebo chatbot určené. 
 
-## <a name="add-prebuilt-entities-number-and-datetimev2"></a>Přidat číslo předem entity a datetimeV2
-1. Vyberte `MyTravelApp` aplikace ze seznamu aplikací na [LEOŠ] [ LUIS] webu.
+## <a name="add-prebuilt-entities-number-and-datetimev2"></a>Přidat počtu předem připravených entit a datetimeV2
+1. Vyberte `MyTravelApp` aplikace ze seznamu aplikací na [LUIS](luis-reference-regions.md#luis-website) webu.
 
-2. Když se otevře aplikaci, vyberte **entity** levé navigační odkaz.
+2. Když se aplikace otevře, vyberte **entity** levé navigační odkaz.
 
-    ![Kliknutím na tlačítko entity](./media/luis-tutorial-composite-entity/intents-page-select-entities.png)    
+    ![Vyberte tlačítko entity](./media/luis-tutorial-composite-entity/intents-page-select-entities.png)    
 
-3. Vyberte **spravovat předem entity**.
+3. Vyberte **Manage prebuilt entities** (Spravovat předem připravené entity).
 
-    ![Kliknutím na tlačítko entity](./media/luis-tutorial-composite-entity/manage-prebuilt-entities-button.png)
+    ![Vyberte tlačítko entity](./media/luis-tutorial-composite-entity/manage-prebuilt-entities-button.png)
 
-4. V dialogovém okně automaticky otevírané okno Vyberte **číslo** a **datetimeV2**.
+4. V dialogovém okně místní vyberte **číslo** a **datetimeV2**.
 
-    ![Kliknutím na tlačítko entity](./media/luis-tutorial-composite-entity/prebuilt-entity-ddl.png)
+    ![Vyberte tlačítko entity](./media/luis-tutorial-composite-entity/prebuilt-entity-ddl.png)
 
-5. Chcete-li, aby nové entity k extrakci, vyberte **Train** v horním navigačním panelu.
+5. Aby nové entity, které chcete extrahovat, vyberte **Train** v horním navigačním panelu.
 
-    ![Vyberte train tlačítko](./media/luis-tutorial-composite-entity/train.png)
+    ![Výběr tlačítka Train (Trénovat)](./media/luis-tutorial-composite-entity/train.png)
 
-## <a name="use-existing-intent-to-create-composite-entity"></a>Použít existující záměr k vytvoření složeného entity
-1. Vyberte **záměry** z levé navigaci. 
+## <a name="use-existing-intent-to-create-composite-entity"></a>Použít existující záměr mohla vytvořit entita složený
+1. Vyberte **záměry** z levé navigace. 
 
-    ![Vyberte stránku záměry](./media/luis-tutorial-composite-entity/intents-from-entities-page.png)
+    ![Vyberte stránku záměrů](./media/luis-tutorial-composite-entity/intents-from-entities-page.png)
 
 2. Vyberte `BookFlight` z **záměry** seznamu.  
 
-    ![Vyberte BookFlight záměr ze seznamu](./media/luis-tutorial-composite-entity/intent-page-with-prebuilt-entities-labeled.png)
+    ![Vyberte ze seznamu BookFlight záměr](./media/luis-tutorial-composite-entity/intent-page-with-prebuilt-entities-labeled.png)
 
-    Počet a datetimeV2 předem entity jsou označeny na utterances.
+    Číslo a datetimeV2 na projevy jsou označeny předem připravených entit.
 
-3. Pro utterance `book 2 flights from seattle to cairo next monday`, vyberte modrý `number` entity, pak vyberte **zalomení v složené entity** ze seznamu. Zelená řádku, v části slova, následuje kurzor při jejich přesunu doprava označující složené entity. Pak přesuňte doprava, abyste vyberte poslední předem entity `datetimeV2`, pak zadejte `FlightReservation` v textovém poli okna automaticky otevírané okno, pak vyberte **vytvořit nové složené**. 
+3. Pro utterance `book 2 flights from seattle to cairo next monday`, vyberte modrý `number` entity, pak vyberte **zabalit do složeného entity** ze seznamu. Zelená čára, v části slova, se ale řídí kurzor přesune na pravé straně označující složený entity. Posuňte doprava a vyberte poslední předem připravených entit `datetimeV2`, zadejte `FlightReservation` do textového pole v automaticky otevíraném okně vyberte **vytvořit nové kompozitní**. 
 
-    ![Na stránce záměry vytvořit složené entity](./media/luis-tutorial-composite-entity/create-new-composite.png)
+    ![Vytvoření složeného entity na stránce záměrů](./media/luis-tutorial-composite-entity/create-new-composite.png)
 
-4. Se zobrazí automaticky otevírané okno dialogové okno, umožňuje ověřte, děti složené entity. Vyberte **provádí**.
+4. Zobrazení dialogu se zobrazí, vám umožní ověřit složený entity podřízené objekty. Vyberte **Done** (Hotovo).
 
-    ![Na stránce záměry vytvořit složené entity](./media/luis-tutorial-composite-entity/validate-composite-entity.png)
+    ![Vytvoření složeného entity na stránce záměrů](./media/luis-tutorial-composite-entity/validate-composite-entity.png)
 
-## <a name="wrap-the-entities-in-the-composite-entity"></a>Zalomení entity v složené entity
-Po vytvoření složeného entity popisku zbývající utterances složené entity. K zabalení frázi jako složený entitu, je třeba vybrat slovo nejvíce vlevo a pak vyberte **zalomení v složené entity** ze seznamu, který se zobrazí, pak vyberte slovo nejvíce vpravo a pak vyberte pojmenované složené entity `FlightReservation`. To je rychlý a smooth krok pro výběr rozdělené podle následujících kroků:
+## <a name="wrap-the-entities-in-the-composite-entity"></a>Zabalit entity do složeného entity
+Po vytvoření složeného entity popisek zbývající projevy složený entity. Pokud chcete zabalit fráze jako složený entity, je potřeba vybrat slovo nejvíce vlevo a pak vyberte **zabalit do složeného entity** ze seznamu, který se zobrazí, pak vybrat slovo úplně vpravo a pak vyberte pojmenovaná entita složený `FlightReservation`. Toto je rychlý a hladký průběh krok výběrů rozdělené podle následujících kroků:
 
-1. V utterance `schedule 4 seats from paris to london for april 1`, vyberte na 4 jako číslo předem entity.
+1. V utterance `schedule 4 seats from paris to london for april 1`, vyberte na 4 jako číslo předem připravených entit.
 
-    ![Vyberte aplikace word nejvíce vlevo](./media/luis-tutorial-composite-entity/wrap-composite-step-1.png)
+    ![Vybrat slovo nejvíce vlevo](./media/luis-tutorial-composite-entity/wrap-composite-step-1.png)
 
-2. Vyberte **zalomení v složené entity** ze seznamu, který se zobrazí.
+2. Vyberte **zabalit do složeného entity** ze seznamu, který se zobrazí.
 
-    ![Vyberte wrap ze seznamu](./media/luis-tutorial-composite-entity/wrap-composite-step-2.png)
+    ![Wrap vyberte ze seznamu](./media/luis-tutorial-composite-entity/wrap-composite-step-2.png)
 
-3. Vyberte slovo nejvíce vpravo. Zelená řádku se zobrazí pod fráze, označující složené entity.
+3. Vyberte slovo úplně vpravo. Zelená čára se zobrazí pod frázi označující složený entity.
 
-    ![Vyberte aplikace word nejvíce vpravo](./media/luis-tutorial-composite-entity/wrap-composite-step-3.png)
+    ![Vybrat slovo úplně vpravo](./media/luis-tutorial-composite-entity/wrap-composite-step-3.png)
 
 4. Vyberte název složený `FlightReservation` ze seznamu, který se zobrazí.
 
-    ![Vyberte možnost s názvem složené entity](./media/luis-tutorial-composite-entity/wrap-composite-step-4.png)
+    ![Vyberte složené pojmenovaných entit](./media/luis-tutorial-composite-entity/wrap-composite-step-4.png)
 
-    Poslední utterance zabalení `London` a `tomorrow` složené entity pomocí stejných pokynů. 
+    Poslední utterance zabalení `London` a `tomorrow` složený entity pomocí stejných pokynů. 
 
-## <a name="train-the-luis-app"></a>Cvičení LEOŠ aplikace
-LEOŠ neví o změnách tříd Intent a entit (modelu), dokud není nastavena. 
+## <a name="train-the-luis-app"></a>Trénování aplikace LUIS
+Služba LUIS nemá informace o změnách záměrů a entit (tedy modelu), dokud se nenatrénuje. 
 
-1. V horní pravé straně LEOŠ webu, vyberte **Train** tlačítko.
+1. V pravé horní části webu LUIS vyberte tlačítko **Train** (Trénovat).
 
-    ![Cvičení aplikace](./media/luis-tutorial-composite-entity/train-button.png)
+    ![Trénování aplikace](./media/luis-tutorial-composite-entity/train-button.png)
 
-2. Školení je dokončena, když se zobrazí zelená stavového řádku v horní části webu potvrzení úspěšné.
+2. Trénování je dokončené, když se v horní části webu zobrazí zelený stavový řádek potvrzující úspěch.
 
-    ![Cvičení úspěšně vytvořila.](./media/luis-tutorial-composite-entity/trained.png)
+    ![Trénování proběhlo úspěšně](./media/luis-tutorial-composite-entity/trained.png)
 
-## <a name="publish-the-app-to-get-the-endpoint-url"></a>Publikování aplikace získat adresu URL koncového bodu
-Chcete-li získat LEOŠ předpovědi chatbot nebo jiné aplikace, budete muset publikování aplikace. 
+## <a name="publish-the-app-to-get-the-endpoint-url"></a>Publikování aplikace a získání adresy URL koncového bodu
+Abyste mohli využít předpověď služby LUIS v chatbotu nebo jiné aplikaci, musíte aplikaci publikovat. 
 
-1. V horní pravé straně LEOŠ webu, vyberte **publikovat** tlačítko. 
+1. V pravé horní části webu LUIS vyberte tlačítko **Publish** (Publikovat). 
 
-2. Vyberte produkční slot a **publikovat** tlačítko.
+2. Vyberte slot Production (Produkční) a tlačítko **Publish** (Publikovat).
 
-    ![Publikování aplikace](./media/luis-tutorial-composite-entity/publish-to-production.png)
+    ![publikování aplikace](./media/luis-tutorial-composite-entity/publish-to-production.png)
 
-3. Publikování bylo dokončeno, když se zobrazí zelená stavového řádku v horní části webu potvrzení úspěšné.
+3. Publikování je dokončené, když se v horní části webu zobrazí zelený stavový řádek potvrzující úspěch.
 
-## <a name="query-the-endpoint-with-a-different-utterance"></a>Dotaz na koncový bod s jinou utterance
-1. Na **publikovat** vyberte **koncový bod** odkaz ve spodní části stránky. Tato akce otevře další okno prohlížeče s adresou URL koncového bodu v panelu Adresa. 
+## <a name="query-the-endpoint-with-a-different-utterance"></a>Odeslání dotazu na koncový bod s jinou promluvou
+1. V dolní části stránky **Publish** (Publikovat) vyberte odkaz na **koncový bod**. Tato akce otevře další okno prohlížeče s adresou URL koncového bodu v adresním řádku. 
 
     ![Vyberte adresu URL koncového bodu](./media/luis-tutorial-composite-entity/publish-select-endpoint.png)
 
-2. Přejděte na konec adresy URL v adrese a zadejte `reserve 3 seats from London to Cairo on Sunday`. Poslední parametr řetězce dotazu je `q`, utterance dotazu. Tento utterance není stejný jako kterákoli ze s popiskem utterances proto je vhodný test a by měla vrátit `BookFlight` záměrné s entitou hierarchické extrahovat.
+2. Na konec adresy URL zadejte `reserve 3 seats from London to Cairo on Sunday`. Poslední parametr querystring `q`, dotaz utterance. Tato promluva není stejná jako žádná z označených promluv, proto je to dobrý test a měl by se vrátit záměr `BookFlight` s extrahovanou hierarchickou entitou.
 
 ```
 {
@@ -234,20 +234,16 @@ Chcete-li získat LEOŠ předpovědi chatbot nebo jiné aplikace, budete muset p
 }
 ```
 
-Tato utterance vrátí pole složené entity včetně **flightreservation** objekt se dat extrahovaných.  
+Vrátí tento utterance složené entit pole včetně **flightreservation** objekt se dat extrahovaných.  
 
-## <a name="what-has-this-luis-app-accomplished"></a>Co má provést tato LEOŠ aplikace?
-Tato aplikace se ještě dvě záměry a složenou entitu, identifikovány záměr dotazu přirozeného jazyka a vrátí extrahovaná data. 
+## <a name="what-has-this-luis-app-accomplished"></a>Co tato aplikace LUIS udělala?
+Tuto aplikaci pouze dvě záměry a složené entity identifikované záměru dotazu přirozeného jazyka a vrátí extrahovaná data. 
 
-Vaše chatbot teď má dostatek informací k určení primární akce `BookFlight`a informace o rezervaci v utterance nalezen. 
+Váš robot teď obsahuje dostatek informací k určení primární akce `BookFlight`a informace o rezervacích součástí utterance. 
 
-## <a name="where-is-this-luis-data-used"></a>Kde se používá tato data LEOŠ? 
-LEOŠ se provádí s touto žádostí. Volající aplikace, jako je například chatbot, může trvat výsledek topScoringIntent a data z entity, která má-li přejít k dalšímu kroku. LEOŠ neprovádí které programový pracují pro robota nebo volající aplikace. LEOŠ pouze určuje, co je mimo jiné uživatele. 
+## <a name="where-is-this-luis-data-used"></a>Kde se tato data služby LUIS používají? 
+Služba LUIS s tímto požadavkem skončila. Volající aplikace, například chatbot, může převzít výsledek topScoringIntent a data z entity a provést další krok. Služba LUIS neprovádí tuto programovou práci za chatbota ani nevolá aplikaci. Služba LUIS pouze určuje, co je záměrem uživatele. 
 
 ## <a name="next-steps"></a>Další postup
 
 [Další informace o entitách](luis-concept-entity-types.md). 
-
-<!--References-->
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website
-[LUIS-regions]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#publishing-regions

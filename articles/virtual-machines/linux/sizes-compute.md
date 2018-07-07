@@ -1,6 +1,6 @@
 ---
-title: Velikosti virtuálního počítače Azure Linux – výpočetní optimalizované | Microsoft Docs
-description: Uvádí různé výpočetní optimalizované velikosti k dispozici pro virtuální počítače s Linuxem v Azure. Uvádí informace o počtu Vcpu, datové disky a síťové adaptéry, jakož i úložiště propustnost a šířku pásma sítě pro velikosti této série.
+title: Velikosti virtuálních počítačů Azure s Linuxem – optimalizované pro výpočetní služby | Dokumentace Microsoftu
+description: Umožňuje zobrazit seznam velikostí různých optimalizováno pro výpočty, k dispozici pro virtuální počítače s Linuxem v Azure. Obsahuje informace o počtu virtuálních procesorů, datové disky a síťové adaptéry, jakož i úložiště propustnost a šířku pásma sítě pro velikosti této série.
 services: virtual-machines-linux
 documentationcenter: ''
 author: jonbeck7
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 11/08/2017
+ms.date: 07/06/2018
 ms.author: jonbeck
-ms.openlocfilehash: 1a13efb271713ea4f47469b4261b278e1b350650
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 4733a4c92a5bdfe2eabd2144a1c6c8738ac6693e
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "34654517"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37902448"
 ---
-# <a name="compute-optimized-virtual-machine-sizes"></a>Výpočetní optimalizované velikosti virtuálních počítačů
+# <a name="compute-optimized-virtual-machine-sizes"></a>Optimalizováno pro výpočty velikostí virtuálních počítačů
 
 [!INCLUDE [virtual-machines-common-sizes-compute](../../../includes/virtual-machines-common-sizes-compute.md)]
 
@@ -35,7 +35,7 @@ ms.locfileid: "34654517"
 - [Optimalizované z hlediska úložiště](sizes-storage.md)
 - [GPU](sizes-gpu.md)
 - [Vysokovýkonné výpočetní prostředí](sizes-hpc.md)
-- [Starší generace](sizes-previous-gen.md)
+- [Předchozí generace](sizes-previous-gen.md)
 
 ## <a name="next-steps"></a>Další postup
-Další informace o [Azure výpočetní jednotky (ACU)](acu.md) můžete porovnat výpočetní výkon v Azure SKU.
+Další informace o tom [Azure výpočetních jednotek (ACU)](acu.md) můžete porovnat výpočetní výkon jednotlivých SKU v Azure.

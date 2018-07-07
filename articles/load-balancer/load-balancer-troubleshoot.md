@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží pro vyrovnávání zatížení Azure | Microsoft Docs
-description: Řešení známých problémů s nástrojem pro vyrovnávání zatížení Azure
+title: Řešení potíží s nástroji Azure Load Balancer | Dokumentace Microsoftu
+description: Řešení známých problémů s nástrojem Azure Load Balancer
 services: load-balancer
 documentationcenter: na
 author: chadmath
@@ -12,123 +12,122 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/25/2017
+ms.date: 07/06/2018
 ms.author: genli
-ms.openlocfilehash: 294bb6dd780d1df642d6e793b29267da1e8b8336
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 6777842f3ca336eb4ae0d134cbc7ffd062bc6f29
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32774909"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37889508"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Řešení potíží s nástrojem pro vyrovnávání zatížení Azure
 
 [!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
-Tato stránka obsahuje informace o odstraňování potíží pro běžné otázky nástroj pro vyrovnávání zatížení Azure. Když je nástroj pro vyrovnávání zatížení připojení není k dispozici, nejčastěji jsou následující: 
-- Virtuální počítače za nástrojem pro vyrovnávání zatížení nereagují na sondy stavu služby 
-- Virtuální počítače za nástrojem pro vyrovnávání zatížení nereagují na provoz na konfigurovaném portu
+Tato stránka obsahuje informace o odstraňování potíží pro běžné dotazy pro Azure Load Balancer. Při připojení nástroje pro vyrovnávání zatížení není k dispozici, nejběžnější příznaky jsou následující: 
+- Virtuální počítače za nástrojem pro vyrovnávání zatížení neodpovídají na sond stavu 
+- Virtuální počítače za nástrojem pro vyrovnávání zatížení neodpovídají na provoz na konfigurovaném portu
 
-## <a name="symptom-vms-behind-the-load-balancer-are-not-responding-to-health-probes"></a>Příznak: Virtuální počítače za nástrojem pro vyrovnávání zatížení nereagují sondy stavu služby
-Pro back-end serverů k účasti v sadě nástroje pro vyrovnávání zatížení se musí projít kontrola testu. Další informace o sondy stavu najdete v tématu [sondy nástroje pro vyrovnávání zatížení Principy](load-balancer-custom-probe-overview.md). 
+## <a name="symptom-vms-behind-the-load-balancer-are-not-responding-to-health-probes"></a>Příznak: Virtuální počítače za nástrojem pro vyrovnávání zatížení neodpovídají na sond stavu
+Pro back-end serverů k účasti v sadě nástroje pro vyrovnávání zatížení se musí předat kontrola testu. Další informace o sond stavu najdete v tématu [sondy nástroje pro vyrovnávání zatížení Principy](load-balancer-custom-probe-overview.md). 
 
-Back-endový fond Vyrovnávání zatížení virtuálních počítačů nemusí odpovídat na sondy z některého z následujících důvodů: 
-- Fond back-end pro vyrovnávání zatížení virtuálního počítače není v pořádku 
-- Načíst back-endový fond vyrovnávání, které se virtuální počítač nenaslouchá na portu testu 
-- Brána firewall nebo skupinu zabezpečení sítě je blokování port na back-endový fond Vyrovnávání zatížení virtuálních počítačů 
-- Další chybné konfigurace pro vyrovnávání zatížení
+Je možné, neodpovídá back-endového fondu nástroje pro vyrovnávání zatížení virtuálních počítačů pro testy z některého z následujících důvodů: 
+- Back-endového fondu nástroje pro vyrovnávání zatížení virtuálního počítače není v pořádku 
+- Načíst back-endového fondu nástroje pro vyrovnávání, kterou virtuální počítač nenaslouchá na portu sondy 
+- Brána firewall nebo skupinu zabezpečení sítě neblokuje port v back-endového fondu nástroje pro vyrovnávání zatížení virtuálních počítačů 
+- Další konfigurace v nástroji pro vyrovnávání zatížení
 
-### <a name="cause-1-load-balancer-backend-pool-vm-is-unhealthy"></a>Příčina 1: Back-endový fond Vyrovnávání zatížení virtuálního počítače není v pořádku 
+### <a name="cause-1-load-balancer-backend-pool-vm-is-unhealthy"></a>Příčina 1: Back-endového fondu nástroje pro vyrovnávání zatížení virtuálních počítačů není v pořádku 
 
-**Ověření a řešení**
+**Ověřování a řešení**
 
-Chcete-li vyřešit tento problém, přihlášení do zúčastněných virtuálních počítačů a zkontrolujte, jestli je v pořádku stav virtuálního počítače a může reagovat na **Pspingu** nebo **TCPing** z jiného virtuálního počítače ve fondu. Pokud virtuální počítač není v pořádku nebo je schopna odpovědět na sondy, musíte opravit problém a získat virtuální počítač zpět do stavu v pořádku, aby se mohl účastnit vyrovnávání zatížení.
+Chcete-li vyřešit tento problém, přihlášení do zúčastněných virtuálních počítačů a zkontrolujte, jestli je stav virtuálního počítače v pořádku a můžou reagovat na **PsPing** nebo **použít příkaz TCPing** z jiného virtuálního počítače ve fondu. Pokud virtuální počítač není v pořádku nebo je schopna odpovědět na test, musíte mohli problém vyřešit a získat virtuální počítač zpět do stavu v pořádku, předtím, než se mohl podílet na Vyrovnávání zatížení.
 
-### <a name="cause-2-load-balancer-backend-pool-vm-is-not-listening-on-the-probe-port"></a>Příčina 2: Back-endový fond Vyrovnávání zatížení virtuální počítač nenaslouchá na portu testu
-Pokud virtuální počítač je v pořádku, ale nereaguje na sondy, pak jednou z možných důvodů může být, že port testu není otevřen v účasti virtuálního počítače nebo virtuální počítač nenaslouchá na tomto portu.
+### <a name="cause-2-load-balancer-backend-pool-vm-is-not-listening-on-the-probe-port"></a>2. příčina: Back-endového fondu nástroje pro vyrovnávání zatížení virtuálních počítačů nenaslouchá na portu sondy
+Pokud virtuální počítač je v pořádku, ale neodpovídá na test, pak jednou z možných důvodů může být, že port testu není otevřen v účasti virtuální počítač nebo virtuální počítač nenaslouchá na portu.
 
-**Ověření a řešení**
+**Ověřování a řešení**
 
-1. Přihlaste se k back-end virtuálních počítačů. 
-2. Otevřete příkazový řádek a spusťte následující příkaz k ověření, že je aplikace, která naslouchá na portu testu:   
-            netstat - an
-3. Pokud stav portu není uvedena jako **NASLOUCHAJÍCÍ**, nakonfigurujte správný port. 
-4. Nebo můžete vybrat jiný port, který je uveden jako **NASLOUCHAJÍCÍ**a aktualizovat konfiguraci nástroje pro vyrovnávání zatížení odpovídajícím způsobem.              
+1. Přihlaste se k back-endového virtuálního počítače. 
+2. Otevřete příkazový řádek a spusťte následující příkaz k ověření, že je aplikace, která naslouchá na portu sondy:   
+            příkaz netstat - an
+3. Pokud státu port není uvedena jako **NASLOUCHAJÍCÍ**, nakonfigurujte správný port. 
+4. Můžete také vybrat jiný port, který je uveden jako **NASLOUCHAJÍCÍ**a aktualizujte konfiguraci nástroje pro vyrovnávání zatížení odpovídajícím způsobem.              
 
-### <a name="cause-3-firewall-or-a-network-security-group-is-blocking-the-port-on-the-load-balancer-backend-pool-vms"></a>Příčina 3: Brána Firewall nebo skupinu zabezpečení sítě je blokování port na back-endový fond Vyrovnávání zatížení virtuálních počítačů  
-Pokud brána firewall na virtuálním počítači blokuje port testu nebo jeden nebo více skupin zabezpečení, které jsou nakonfigurované v podsíti nebo na virtuálním počítači sítě, která není umožňují test k dosažení port, virtuální počítač se nemůže reagovat na test stavu.          
+### <a name="cause-3-firewall-or-a-network-security-group-is-blocking-the-port-on-the-load-balancer-backend-pool-vms"></a>3. důvod: Brána Firewall nebo skupinu zabezpečení sítě neblokuje port v back-endového fondu nástroje pro vyrovnávání zatížení virtuálních počítačů  
+Pokud brána firewall na virtuálním počítači blokuje port testu nebo jeden nebo více síťové skupiny zabezpečení nakonfigurované v podsíti nebo na virtuálním počítači, neumožňuje testu a Oslovte port, je schopna odpovědět na sondu stavu virtuálního počítače.          
 
-**Ověření a řešení**
+**Ověřování a řešení**
 
-* Pokud je zapnutá brána firewall, zkontrolujte, jestli je konfigurovaný k povolení kontroly portu. Pokud ne, nakonfigurovat bránu firewall, aby povolovala přenosy na portu test a vyzkoušejte znovu. 
-* Ze seznamu skupin zabezpečení sítě zkontrolujte, jestli má příchozí nebo odchozí přenosy na portu testu narušení. 
-* Zkontrolujte také, pokud **Odepřít všechny** skupin zabezpečení sítě pravidla na síťový adaptér virtuálního počítače nebo podsítě, který má vyšší prioritu než výchozí pravidlo, které umožňuje LB sondy & provoz (skupiny zabezpečení sítě musí umožňovat IP nástroje pro vyrovnávání zatížení 168.63.129.16). 
-* Pokud žádné z těchto pravidel, blokují přenosy testu, odebrat a znovu nakonfigurovat pravidla, které chcete povolit přenosy testu.  
-* Test-li virtuální počítač je nyní spuštěna neodpovídá na požadavky sondy stavu. 
+* Pokud je povolená brána firewall, zkontrolujte, pokud je nakonfigurovaná k povolení portu sondy. V opačném případě konfigurace brány firewall pro povolení provozu na portu sondy a znovu otestujte. 
+* Ze seznamu skupin zabezpečení sítě zkontrolujte, jestli má příchozí nebo odchozí přenosy na portu sondy rušení. 
+* Zkontrolujte taky, pokud **odmítnout všechny** pravidla skupiny zabezpečení sítě u síťového rozhraní virtuálního počítače nebo podsíť, která má vyšší prioritu než výchozí pravidlo, které umožňuje sondy LB & provoz (skupiny zabezpečení sítě musí umožňovat IP adresu nástroje pro vyrovnávání zatížení z 168.63.129.16). 
+* Pokud některý z těchto pravidel, blokují přenosy testu, odeberte a znovu nakonfigurovat pravidla pro povolení provozu testu.  
+* Test, pokud spuštění virtuálního počítače teď reagovat na požadavky sondy stavu. 
 
-### <a name="cause-4-other-misconfigurations-in-load-balancer"></a>4 příčina: Ostatní chybné konfigurace pro vyrovnávání zatížení
-Pokud předchozí příčiny zdá se, že k ověření a analyzovat správně, a back-end virtuální počítač stále nereaguje test stavu a potom ručně testování pro připojení k síti a shromažďovat některé trasování pochopit připojení.
+### <a name="cause-4-other-misconfigurations-in-load-balancer"></a>4 příčina: Ostatní chyby v konfiguraci ve službě Load Balancer
+Pokud předchozí příčiny zdá se, že se ověří a analyzovat správně, a back-endový virtuální počítač stále nereaguje na sondu stavu a pak ručně test pro připojení a shromažďování některá trasování o připojení.
 
-**Ověření a řešení**
+**Ověřování a řešení**
 
-* Použití **Pspingu** z jednoho z ostatních virtuálních počítačů v rámci virtuální sítě k otestování portu odpovědi testu (Příklad: 10.0.0.4:3389.\psping.exe -t) a zaznamenejte výsledky. 
-* Použití **TCPing** z jednoho z ostatních virtuálních počítačů v rámci virtuální sítě k otestování portu odpovědi testu (Příklad:.\tcping.exe 10.0.0.4 3389) a zaznamenejte výsledky. 
-* Pokud je v těchto testech ping pak přijata žádná odpověď
-    - Spusťte souběžných příkazu Netsh trace na cílový fond back-end virtuálního počítače a jiné testovací virtuální počítač z stejnou virtuální síť. Nyní spuštění testu Pspingu nějakou dobu, shromažďovat některé trasování sítě a poté jej zastavit test. 
-    - Analýza zachycení dat ze sítě a podívejte se, pokud jsou příchozí a odchozí pakety související s příkazem ping dotaz. 
-        - Pokud žádné příchozí pakety jsou dodržovány na back-end fondu virtuálních počítačů, je potenciálně skupin zabezpečení sítě nebo UDR chybná konfigurace blokování provozu. 
-        - Pokud žádná odchozí pakety jsou dodržovány na back-end fondu virtuálních počítačů, virtuální počítač je potřeba zkontrolovat pro potíže, které nejsou (pro eample, aplikace blokování port testu). 
-    - Ověřte, pokud jsou pakety testu vynucené na jiný cíl (případně prostřednictvím nastavení UDR) dříve, než dorazila nástroje pro vyrovnávání zatížení. To může způsobit provozu, který nikdy nedorazí back-end virtuálních počítačů. 
-* Změnit typ testu (například HTTP do protokolu TCP) a nakonfigurovat příslušný port skupiny zabezpečení sítě seznamy řízení přístupu a brány firewall, ověřte, jestli je problém s konfigurací testu odpovědi. Další informace o Konfigurace testu stavu najdete v tématu [koncový bod Vyrovnávání zatížení Konfigurace testu stavu](https://blogs.msdn.microsoft.com/mast/2016/01/26/endpoint-load-balancing-heath-probe-configuration-details/).
+* Použití **Psping** z jednoho z ostatních virtuálních počítačů v rámci virtuální sítě k otestování odpovědi portu sondy (Příklad: -t 10.0.0.4:3389.\psping.exe) a zaznamenejte výsledky. 
+* Použití **použít příkaz TCPing** z jednoho z ostatních virtuálních počítačů v rámci virtuální sítě k otestování odpovědi portu sondy (Příklad:.\tcping.exe 10.0.0.4 3389) a zaznamenejte výsledky. 
+* Pokud je v tyto testy, pak přijata žádná odpověď
+    - Spusťte současné trasování Netsh na cílový fond back-endového virtuálního počítače a jiném testovacím virtuálním počítači z stejné virtuální síti. Nyní spusťte PsPing test nechystáte nějakou dobu, shromažďování některá trasování sítě a pak test zastavte. 
+    - Analýza zachytávání sítě a zjistíte, jestli jsou příchozí i odchozí pakety týkající se dotaz ping. 
+        - Pokud žádná příchozí pakety jsou dodržovány na virtuálních počítačích back-endového fondu, je potenciálně skupiny zabezpečení sítě nebo UDR chybná konfigurace blokování provozu. 
+        - Pokud žádná odchozí pakety jsou dodržovány na virtuálních počítačích back-endového fondu, je potřeba zkontrolovat problémy nesouvisejících (pro Příkladem může být aplikace blokuje portu sondy) virtuálního počítače. 
+    - Ověření, pokud jsou pakety test vynutit do jiné cíle (případně prostřednictvím nastavení UDR) před dosažením nástroje pro vyrovnávání zatížení. To může způsobit provoz do nikdy nedorazí back-endového virtuálního počítače. 
+* Změnit typ testu (například HTTP na TCP) a nakonfigurovat příslušný port do skupiny zabezpečení sítě ACL a brány firewall, ověřte, jestli je problém s konfigurací testu odpovědi. Další informace o konfiguraci sondy stavu najdete v tématu [koncový bod Vyrovnávání zatížení konfiguraci sondy stavu](https://blogs.msdn.microsoft.com/mast/2016/01/26/endpoint-load-balancing-heath-probe-configuration-details/).
 
-## <a name="symptom-vms-behind-load-balancer-are-not-responding-to-traffic-on-the-configured-data-port"></a>Příznak: Virtuální počítače za službou Vyrovnávání zatížení nereagují přenosy na portu nakonfigurované dat
+## <a name="symptom-vms-behind-load-balancer-are-not-responding-to-traffic-on-the-configured-data-port"></a>Příznak: Virtuální počítače za nástrojem pro vyrovnávání zatížení neodpovídají na provoz na portu nakonfigurované dat
 
-Pokud k back-end fondu virtuálních počítačů je uveden jako v pořádku a odpovídá na sondy stavu, ale stále se neúčastní vyrovnávání zatížení nebo nereaguje na přenos dat, může být z některého z následujících důvodů: 
-* Načíst fond back-end pro vyrovnávání, kterou virtuální počítač nenaslouchá na portu dat 
-* Skupina zabezpečení sítě je blokování port na back-endový fond Vyrovnávání zatížení virtuálních počítačů  
-* Přístup k vyrovnávání zatížení ze stejné virtuálních počítačů a síťový adaptér 
-* Přístup k Internetu VIP pro vyrovnávání zatížení od zúčastněných back-endový fond Vyrovnávání zatížení virtuálních počítačů 
+Pokud back-endový fond, virtuální počítač je uveden jako v pořádku a odpovídá sond stavu, ale není stále účastní Vyrovnávání zatížení nebo nereaguje na přenos dat, může být příčinou některého z následujících důvodů: 
+* Načíst nástroj pro vyrovnávání back-endový fond, který virtuální počítač není připraven na datovém portu 
+* Skupina zabezpečení sítě neblokuje port v back-endového fondu nástroje pro vyrovnávání zatížení virtuálních počítačů  
+* Přístup k nástroje pro vyrovnávání zatížení ze stejného virtuálního počítače a síťovou kartu 
+* Přístup k VIP pro nástroje pro vyrovnávání zatížení Internet ze zúčastněných back-endového fondu nástroje pro vyrovnávání zatížení virtuálních počítačů 
 
-### <a name="cause-1-load-balancer-backend-pool-vm-is-not-listening-on-the-data-port"></a>Příčina 1: Back-endový fond Vyrovnávání zatížení virtuální počítač nenaslouchá na portu dat 
-Pokud virtuální počítač neodpovídá na přenos dat, může to být proto cílový port není otevřen v zúčastněných virtuální počítač nebo virtuální počítač nenaslouchá na tomto portu. 
+### <a name="cause-1-load-balancer-backend-pool-vm-is-not-listening-on-the-data-port"></a>Příčina 1: Back-endového fondu nástroje pro vyrovnávání zatížení virtuálních počítačů nenaslouchá na datovém portu 
+Pokud virtuální počítač neodpovídá na přenos dat, může být vzhledem k tomu, že cílový port není otevřen v zapojený virtuální počítač nebo virtuální počítač nenaslouchá na portu. 
 
-**Ověření a řešení**
+**Ověřování a řešení**
 
-1. Přihlaste se k back-end virtuálních počítačů. 
-2. Otevřete příkazový řádek a spusťte následující příkaz k ověření, že je aplikace, která naslouchá na portu dat:  
-            netstat - an 
-3. Pokud není port uvedené se stavem "Naslouchá", nakonfigurovat port správné naslouchacího procesu 
-4. Pokud port je označen jako naslouchající, zkontrolujte cílová aplikace na tomto portu pro všechny možné problémy. 
+1. Přihlaste se k back-endového virtuálního počítače. 
+2. Otevřete příkazový řádek a spusťte následující příkaz k ověření, že je aplikace, která naslouchá na datovém portu:  
+            příkaz netstat - an 
+3. Pokud port není uvedená se stavem "NASLOUCHÁNÍ", nakonfigurovat na port naslouchacího procesu správné 
+4. Pokud port, který je označen jako naslouchající, zkontrolujte cílové aplikace na tomto portu pro všechny možné problémy. 
 
-### <a name="cause-2-network-security-group-is-blocking-the-port-on-the-load-balancer-backend-pool-vm"></a>Příčina 2: Skupina zabezpečení sítě je blokování port na back-endový fond Vyrovnávání zatížení virtuálních počítačů  
+### <a name="cause-2-network-security-group-is-blocking-the-port-on-the-load-balancer-backend-pool-vm"></a>2. příčina: Skupina zabezpečení sítě neblokuje port v back-endového fondu nástroje pro vyrovnávání zatížení virtuálních počítačů  
 
-Pokud jeden nebo více skupin zabezpečení sítě nakonfigurované v podsíti nebo na virtuálním počítači, je blokování zdrojové IP adresy nebo portu, potom virtuální počítač není schopen odpovídat.
+Pokud jeden nebo více skupin zabezpečení sítě nakonfigurované v podsíti nebo na virtuálním počítači, blokuje Zdrojová IP adresa nebo portu pro virtuální počítač se nemůže odpovědět.
 
-* Zobrazí seznam skupin zabezpečení sítě nakonfigurované na back-end virtuálních počítačů. Další informace najdete v tématu [spravovat skupiny zabezpečení sítě](../virtual-network/manage-network-security-group.md).
+* Seznam skupin zabezpečení sítě nakonfigurované na back-endového virtuálního počítače. Další informace najdete v tématu [Správa skupin zabezpečení sítě](../virtual-network/manage-network-security-group.md).
 * Ze seznamu skupin zabezpečení sítě zkontrolujte, zda:
-    - příchozí nebo odchozí přenosy na portu dat má narušení. 
-    - **Odepřít všechny** pravidlo skupiny zabezpečení na síťový adaptér virtuálního počítače nebo podsítě, který má vyšší prioritu, která sondy výchozí pravidlo, které umožňuje Vyrovnávání zatížení sítě a provoz (skupiny zabezpečení sítě musí umožňovat IP nástroje pro vyrovnávání zatížení 168.63.129.16, který je port testu) 
-* Pokud žádné z pravidel, blokují přenosy dat, odebrat a znovu nakonfigurujte tato pravidla, aby se povolily přenosy dat.  
-* Test-li virtuální počítač je nyní spuštěna reagovat na sondy stavu.
+    - příchozí nebo odchozí přenosy na datovém portu se rušení. 
+    - **odmítnout všechny** pravidlo skupiny zabezpečení v síťovém adaptéru virtuálního počítače nebo podsíť, která má vyšší prioritu, která sondy výchozí pravidlo, které umožňuje nástroje pro vyrovnávání zatížení sítě a provozu (skupiny zabezpečení sítě musí umožňovat IP adresu nástroje pro vyrovnávání zatížení z adresy 168.63.129.16, port testu je) 
+* Pokud žádné z pravidel, blokují přenosy, odeberte a znovu nakonfigurovat pravidla pro povolení provozu data.  
+* Test, pokud virtuální počítač má teď začali reagovat na sond stavu.
 
-### <a name="cause-3-accessing-the-load-balancer-from-the-same-vm-and-network-interface"></a>Příčina 3: Přístupu ke službě Vyrovnávání zatížení ze stejné rozhraní virtuálního počítače a sítě 
+### <a name="cause-3-accessing-the-load-balancer-from-the-same-vm-and-network-interface"></a>3. příčina: Přístup k nástroje pro vyrovnávání zatížení virtuálních počítačů a síťových rozhraní 
 
-Pokud vaše aplikace hostované na back-end virtuálních počítačů služby Vyrovnávání zatížení se pokouší o přístup jiná aplikace hostované na stejnou back-end virtuálních počítačů přes rozhraní stejné sítě, se o nepodporovaný scénář a se nezdaří. 
+Pokud vaše aplikace hostované v back-endového virtuálního počítače nástroje pro vyrovnávání zatížení pokouší o přístup k jiné aplikace hostované na stejnou back-endového virtuálního počítače přes stejném síťovém rozhraní, se o nepodporovaný scénář a se nezdaří. 
 
-**Řešení** vyřešíte tento problém prostřednictvím jednoho z následujících metod:
-* Nakonfigurujte samostatné back-end fondu virtuálních počítačů na aplikaci. 
-* Nakonfigurujte aplikace ve virtuálních počítačích duální síťovou kartu, tak, aby byla každá aplikace pomocí vlastní rozhraní sítě a IP adresu. 
+**Rozlišení** vyřešíte tento problém některou z následujících metod:
+* Nakonfigurujte samostatné back-endový fond virtuálních počítačů na aplikaci. 
+* Nakonfigurujte aplikaci ve dvou virtuálních počítačích síťové karty, každá aplikace používala vlastní síťové rozhraní a IP adresu. 
 
-### <a name="cause-4-accessing-the-internal-load-balancer-vip-from-the-participating-load-balancer-backend-pool-vm"></a>4 příčina: Přístup k interní VIP pro vyrovnávání zatížení od zúčastněných back-endový fond Vyrovnávání zatížení virtuálních počítačů
+### <a name="cause-4-accessing-the-internal-load-balancer-vip-from-the-participating-load-balancer-backend-pool-vm"></a>4. příčina: Přístup k interní VIP nástroje pro vyrovnávání zatížení od zúčastněných back-endového fondu nástroje pro vyrovnávání zatížení virtuálních počítačů
 
-Pokud je nakonfigurovaný ILB VIP uvnitř virtuální sítě, a jeden z virtuálních počítačů účastnické back-end je pokusu o přístup k interní VIP pro vyrovnávání zatížení, která způsobuje selhání. Tento scénář se nepodporuje.
-**Řešení** vyhodnotit aplikační bránou nebo jiné servery proxy (například nginx nebo haproxy) pro podporu tento druh scénář. Další informace o Application Gateway najdete v tématu [Přehled služby Application Gateway](../application-gateway/application-gateway-introduction.md)
+Pokud se virtuálních IP adres s ILB je nakonfigurován v síti VNet a jeden z virtuálních počítačů účastníka back-end se snaží získat přístup k interní VIP nástroje pro vyrovnávání zatížení, jehož výsledkem selhání. Tento scénář se nepodporuje.
+**Rozlišení** vyhodnotit Application Gateway nebo jiné servery proxy (například nginx nebo haproxy), aby podporovaly tento druh scénář. Další informace o službě Application Gateway najdete v tématu [Přehled služby Application Gateway](../application-gateway/application-gateway-introduction.md)
 
-## <a name="additional-network-captures"></a>Dalších síťových přenosů
-Pokud se rozhodnete otevřít případ podpory, shromážděte následující informace pro rychlejší řešení. Vyberte jeden back-end virtuálních počítačů k provedení následujících testů:
-- Pomocí Pspingu z jednoho z back-end virtuálních počítačů v rámci virtuální sítě k otestování portu odpovědi testu (Příklad: pspingu 10.0.0.4:3389) a zaznamenejte výsledky. 
-- Použít TCPing z jednoho z back-end virtuálních počítačů v rámci virtuální sítě k otestování portu odpovědi testu (Příklad: pspingu 10.0.0.4:3389) a zaznamenejte výsledky.
-- Pokud je v těchto testech ping žádná odpověď, spusťte souběžných příkazu Netsh trace v back-end virtuálního počítače a virtuální síť testovacího virtuálního počítače při spuštění Pspingu pak Zastavit trasování Netsh. 
+## <a name="additional-network-captures"></a>Zachytávání dalších síťových
+Pokud se rozhodnete otevírat případ podpory, shromážděte následující informace pro rychlejší řešení. Zvolte jeden back-endu. virtuální počítač k provádění následujících testů:
+- Pomocí Pspingu z jednoho z back-endový virtuální počítače v rámci virtuální sítě k otestování odpovědi portu sondy (Příklad: psping 10.0.0.4:3389) a zaznamenejte výsledky. 
+- Pokud není žádná odpověď v tyto testy, a současně spusťte PsPing pak Zastavit trasování Netsh spusťte souběžných Netsh trasování na back-endového virtuálního počítače a virtuální síť testovacího virtuálního počítače. 
   
 ## <a name="next-steps"></a>Další postup
 

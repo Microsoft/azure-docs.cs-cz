@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 03/15/2018
+ms.date: 07/06/2018
 ms.author: jonbeck
-ms.openlocfilehash: d8ab1531c4e1fa33fbdba12a4ecbeb8908dd6a94
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 31e81741d2a627888e478b3871bdbab4e6b6d6f5
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/04/2018
-ms.locfileid: "34654347"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37902635"
 ---
 # <a name="high-performance-compute-vm-sizes"></a>Velikosti virtuálních počítačů vysokovýkonné výpočty
 

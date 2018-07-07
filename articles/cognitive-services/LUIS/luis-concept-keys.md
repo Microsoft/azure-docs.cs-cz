@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/23/2018
 ms.author: v-geberr
-ms.openlocfilehash: fe6bd0803098854c7ced1a7d816ebbc8cce23b09
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: eb3487a304ec2e4045ff76253c456dc4b6ee19b5
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37340609"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37888618"
 ---
 # <a name="keys-in-luis"></a>Klíče v LUIS
 Služba LUIS používá dva klíče: [vytváření](#programmatic-key) a [koncový bod](#endpoint-key). Vytváření klíč je vytvořen automaticky při vytvoření účtu služby LUIS. Až budete připraveni k publikování aplikace LUIS, budete muset [vytvořit klíče koncového bodu](luis-how-to-azure-subscription.md#create-luis-endpoint-key), [ji přiřadit](luis-how-to-manage-keys.md#assign-endpoint-key) do vaší aplikace LUIS a [pomocí dotazu koncový bod](#use-endpoint-key-in-query). 
@@ -31,7 +31,7 @@ Je důležité vytvářet aplikace LUIS v [oblastech](luis-reference-regions.md#
 
 Vytváření klíč, označované také jako počáteční klíč, je vytvořen automaticky při vytvoření účtu služby LUIS a je zdarma. Máte jeden klíč pro vytváření obsahu napříč všemi vašimi aplikacemi LUIS pro každou vytváření [oblasti](luis-reference-regions.md). Vytváření klíč poskytuje vytvářet aplikace LUIS nebo testování dotazů koncový bod. 
 
-Najít klíč pro vytváření, přihlaste se k [LUIS] [ LUIS] a klikněte na název účtu v pravém horním navigačním panelu otevřete **nastavení účtu**.
+Najít klíč pro vytváření, přihlaste se k [LUIS](luis-reference-regions.md#luis-website) a klikněte na název účtu v pravém horním navigačním panelu otevřete **nastavení účtu**.
 
 ![Klíč pro tvorbu](./media/luis-concept-keys/programatic-key.png)
 
@@ -70,10 +70,8 @@ Zobrazit [klíče omezení](luis-boundaries.md#key-limits) a [oblastí Azure](lu
 Publikování oblastech se liší od vytváření oblastí. Ujistěte se, že vytvoříte aplikaci pro vytváření oblasti odpovídajících k publikování oblast, kterou chcete.
 
 ## <a name="key-limit-errors"></a>Omezení klíče chyby
-Při překročení vaší za druhé kvóty, obdržíte chybu HTTP 429. Při překročení vaší za měsíc kvóty, obdržíte chybu HTTP 403. Tyto chyby opravit tím, že získáme LUIS [koncový bod](#endpoint-key) klíč, [přiřazení](luis-how-to-manage-keys.md#assign-endpoint-key) klíč do aplikace na **publikovat** stránku [LUIS] [ LUIS] webu.
+Při překročení vaší za druhé kvóty, obdržíte chybu HTTP 429. Při překročení vaší za měsíc kvóty, obdržíte chybu HTTP 403. Tyto chyby opravit tím, že získáme LUIS [koncový bod](#endpoint-key) klíč, [přiřazení](luis-how-to-manage-keys.md#assign-endpoint-key) klíč do aplikace na **publikovat** stránku [LUIS](luis-reference-regions.md#luis-website) webu.
 
 ## <a name="next-steps"></a>Další postup
 
 * Přečtěte si [koncepty](luis-how-to-manage-keys.md#assign-endpoint-key) o klíčích pro vytváření a koncového bodu.
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website

@@ -1,12 +1,12 @@
 ---
-title: Vytvořit nástroj pro vyrovnávání zatížení veřejnou s IPv6 – rozhraní příkazového řádku Azure | Microsoft Docs
-description: Naučte se vytvářet Vyrovnávání zatížení veřejnou s IPv6 pomocí rozhraní příkazového řádku Azure.
+title: Vytvořte veřejný load balancer s IPv6 – rozhraní příkazového řádku Azure | Dokumentace Microsoftu
+description: Informace o vytvoření veřejného load balanceru s protokolem IPv6 pomocí rozhraní příkazového řádku Azure.
 services: load-balancer
 documentationcenter: na
 author: KumudD
 manager: jeconnoc
 tags: azure-resource-manager
-keywords: protokol IPv6, nástroje pro vyrovnávání zatížení azure, duálním zásobníkem, veřejnou IP adresu, nativní protokol ipv6, mobilní, iot
+keywords: protokol IPv6, nástroje pro vyrovnávání zatížení azure, duálním zásobníkem, veřejné IP adresy, nativní protokol ipv6, mobilní zařízení, iot
 ms.assetid: a1957c9c-9c1d-423e-9d5c-d71449bc1f37
 ms.service: load-balancer
 ms.devlang: na
@@ -15,51 +15,51 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: kumud
-ms.openlocfilehash: 10698c79b11a47a465604f90bf63e180615a5ed7
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 3172736edf4e38f53858620ebac95b711857010b
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37112730"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37901261"
 ---
-# <a name="create-a-public-load-balancer-with-ipv6-using-azure-cli"></a>Vytvoření veřejné služba Vyrovnávání zatížení s IPv6 pomocí rozhraní příkazového řádku Azure
+# <a name="create-a-public-load-balancer-with-ipv6-using-azure-cli"></a>Vytvoření veřejného load balanceru s protokolem IPv6 pomocí rozhraní příkazového řádku Azure
 
 
-Azure Load Balancer je nástroj pro vyrovnávání zatížení úrovně 4 (TCP, UDP). Nástroje pro vyrovnávání zatížení zajištění vysoké dostupnosti distribucí příchozí komunikaci mezi instance pořádku služby ve cloudových službách nebo virtuálních počítačů v sadě nástroje pro vyrovnávání zatížení. Nástroje pro vyrovnávání zatížení můžete také k dispozici tyto služby na víc portů nebo více IP adres nebo obojí.
+Azure Load Balancer je nástroj pro vyrovnávání zatížení úrovně 4 (TCP, UDP). Nástroje pro vyrovnávání zatížení poskytuje vysokou dostupnost díky distribuci příchozích přenosů mezi funkční instance cloud services nebo virtual machines v sadě nástroje pro vyrovnávání zatížení. Nástroje pro vyrovnávání zatížení ale může také představovat tyto služby ve více portech, více IP adres nebo obojí.
 
 ## <a name="example-deployment-scenario"></a>Příklad scénáře nasazení
 
-Následující diagram znázorňuje řešení, které je nasazeno pomocí popsaných v tomto článku příklad šablony Vyrovnávání zatížení.
+Následující diagram znázorňuje řešení, která se nasazuje s použitím Ukázková šablona popsaných v tomto článku Vyrovnávání zatížení.
 
 ![Scénář nástroje pro vyrovnávání zatížení](./media/load-balancer-ipv6-internet-cli/lb-ipv6-scenario-cli.png)
 
 V tomto scénáři vytvoříte následující prostředky Azure:
 
 * Dva virtuální počítače (VM)
-* Rozhraní virtuální sítě pro každý virtuální počítač s oba protokoly IPv4 a IPv6 adresy přiřazené
-* Vyrovnávání zatížení veřejnou IPv4 a IPv6 veřejnou IP adresu
+* Rozhraní virtuální sítě pro každý virtuální počítač s protokoly IPv4 a IPv6 adresy přiřazené
+* Nástroj pro vyrovnávání zatížení veřejnou adresu IPv4 a IPv6 veřejnou IP adresu
 * Skupinu dostupnosti, která obsahuje dva virtuální počítače
-* Dvě pravidla vyrovnávání mapovat veřejné virtuální privátní koncové body zatížení
+* Dvě pravidla vyrovnávání přiřadit privátní koncových bodů veřejných virtuálních IP adres zatížení
 
-## <a name="deploy-the-solution-by-using-azure-cli"></a>Nasazení řešení pomocí rozhraní příkazového řádku Azure
+## <a name="deploy-the-solution-by-using-azure-cli"></a>Nasazení řešení pomocí Azure CLI
 
-Následující kroky ukazují, jak vytvořit nástroj pro vyrovnávání zatížení veřejnou pomocí rozhraní příkazového řádku Azure. Pomocí rozhraní příkazového řádku, můžete vytvořit a nakonfigurovat každý objekt jednotlivě a pak je vložte dohromady a vytvoří prostředek.
+Následující kroky ukazují postup vytvoření veřejného load balanceru úrovně pomocí Azure CLI. Pomocí rozhraní příkazového řádku, vytvoříte a nakonfigurujete každý objekt jednotlivě a potom se spojí dohromady a vytvoří prostředek je.
 
-Pokud chcete nasadit nástroj pro vyrovnávání zatížení, vytvořit a nakonfigurovat následující objekty:
+Pokud chcete nasadit nástroj pro vyrovnávání zatížení, vytvořte a nakonfigurujte následující objekty:
 
-* **Konfiguraci front-end IP adresy**: obsahuje veřejné IP adresy pro příchozí síťový provoz.
-* **Fond back-end adres**: obsahuje síťová rozhraní (NIC) pro virtuální počítače přijímat síťový provoz z nástroje pro vyrovnávání zatížení.
-* **Pravidla Vyrovnávání zatížení**: obsahuje pravidla, které mapují veřejný port ve vyrovnávání zátěže na port ve fondu adres back-end.
-* **Příchozí pravidla NAT**: obsahuje síťové adresy překlad (NAT) pravidla, která mapování veřejný port ve vyrovnávání zátěže na port pro konkrétní virtuální počítač ve fondu adres back-end.
-* **Sondy**: obsahuje sondy stavu, které slouží ke kontrole dostupnosti instancí virtuálního počítače ve fondu adres back-end.
+* **Front-endové konfigurace protokolu IP**: obsahuje veřejné IP adresy pro příchozí síťový provoz.
+* **Back endový fond adres**: obsahuje síťová rozhraní (NIC) pro virtuální počítače přijímají síťový provoz z nástroje pro vyrovnávání zatížení.
+* **Pravidla Vyrovnávání zatížení**: obsahuje pravidla, která mapují veřejný port v nástroji pro vyrovnávání zatížení na port ve fondu back endových adres.
+* **Příchozí pravidla NAT**: obsahuje pravidel překladu adres (NAT), která mapují veřejný port v nástroji pro vyrovnávání zatížení na port konkrétního virtuálního počítače ve fondu back endových adres.
+* **Sondy**: obsahuje testy stavu, které se používají ke kontrole dostupnosti instancí virtuálních počítačů ve fondu back endových adres.
 
 ## <a name="set-up-azure-cli"></a>Nastavení rozhraní příkazového řádku Azure
 
-V tomto příkladu spusťte v příkazovém okně prostředí PowerShell nástrojů příkazového řádku Azure. Ke zlepšení čitelnosti a opakované použití, můžete použít možnosti skriptování Powershellu, není rutin prostředí Azure PowerShell.
+V tomto příkladu spustíte nástroje Azure CLI v příkazovém okně prostředí PowerShell. Pokud chcete zlepšit čitelnost a opakované použití, použijete možností skriptování Powershellu, ne rutiny Azure Powershellu.
 
-1. [Instalace a konfigurace rozhraní příkazového řádku Azure]((https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)) podle následujících kroků v článku propojené a přihlaste se k účtu Azure.
+1. [Instalace a konfigurace rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) pomocí následujících kroků v odkazovaném článku a přihlaste se ke svému účtu Azure.
 
-2. Nastavení proměnných prostředí PowerShell pro použití s příkazy rozhraní příkazového řádku Azure:
+2. Nastavte proměnné prostředí PowerShell pro použití s příkazy rozhraní příkazového řádku Azure:
 
     ```powershell
     $subscriptionid = "########-####-####-####-############"  # enter subscription id
@@ -75,15 +75,15 @@ V tomto příkladu spusťte v příkazovém okně prostředí PowerShell nástro
     $lbName = "myIPv4IPv6Lb"
     ```
 
-## <a name="create-a-resource-group-a-load-balancer-a-virtual-network-and-subnets"></a>Vytvoření skupiny prostředků, nástroj pro vyrovnávání zatížení, virtuální sítě a podsítě
+## <a name="create-a-resource-group-a-load-balancer-a-virtual-network-and-subnets"></a>Vytvořit skupinu prostředků, nástroj pro vyrovnávání zatížení, virtuální sítě a podsítě
 
 1. Vytvořte skupinu prostředků:
 
     ```azurecli
-    az group create $rgName $location
+    az group create --name $rgName --location $location
     ```
 
-2. Vytvořte nástroj pro vyrovnávání zatížení:
+2. Vytvoření load balanceru úrovně:
 
     ```azurecli
     $lb = az network lb create --resource-group $rgname --location $location --name $lbName
@@ -95,41 +95,41 @@ V tomto příkladu spusťte v příkazovém okně prostředí PowerShell nástro
     $vnet = az network vnet create  --resource-group $rgname --name $vnetName --location $location --address-prefixes $vnetPrefix
     ```
 
-4. V této virtuální sítě vytvořte dvě podsítě:
+4. V této virtuální síti vytvořte dvě podsítě:
 
     ```azurecli
     $subnet1 = az network vnet subnet create --resource-group $rgname --name $subnet1Name --address-prefix $subnet1Prefix --vnet-name $vnetName
     $subnet2 = az network vnet subnet create --resource-group $rgname --name $subnet2Name --address-prefix $subnet2Prefix --vnet-name $vnetName
     ```
 
-## <a name="create-public-ip-addresses-for-the-front-end-pool"></a>Vytvoření veřejné IP adresy pro front-end fond
+## <a name="create-public-ip-addresses-for-the-front-end-pool"></a>Vytvoření veřejné IP adresy pro front-endový fond
 
-1. Nastavení proměnných prostředí PowerShell:
+1. Nastavte proměnné prostředí PowerShell:
 
     ```powershell
     $publicIpv4Name = "myIPv4Vip"
     $publicIpv6Name = "myIPv6Vip"
     ```
 
-2. Vytvoření veřejné IP adresy pro front-end fond IP adres:
+2. Vytvoření veřejné IP adresy pro front-endový fond IP adres:
 
     ```azurecli
-    $publicipV4 = az network public-ip create --resource-group $rgname --name $publicIpv4Name --location $location --ip-version IPv4 --allocation-method Dynamic --domain-name-label $dnsLabel
-    $publicipV6 = az network public-ip create --resource-group $rgname --name $publicIpv6Name --location $location --ip-version IPv6 --allocation-method Dynamic --domain-name-label $dnsLabel
+    $publicipV4 = az network public-ip create --resource-group $rgname --name $publicIpv4Name --location $location --version IPv4 --allocation-method Dynamic --dns-name $dnsLabel
+    $publicipV6 = az network public-ip create --resource-group $rgname --name $publicIpv6Name --location $location --version IPv6 --allocation-method Dynamic --dns-name $dnsLabel
     ```
 
     > [!IMPORTANT]
-    > Nástroje pro vyrovnávání zatížení používá popisek domény veřejné IP adresy jako jeho plně kvalifikovaný název domény (FQDN). Tato změna z klasického nasazení, který používá cloudové služby název jako nástroj pro vyrovnávání zatížení plně kvalifikovaný název domény.
+    > Nástroje pro vyrovnávání zatížení používá název domény veřejné IP adresy jako svůj plně kvalifikovaný název domény (FQDN). To změnit z modelu nasazení classic, který používá cloudovou službu pojmenujte jako plně kvalifikovaný název domény pro vyrovnávání zatížení.
     >
-    > V tomto příkladu je plně kvalifikovaný název domény *contoso09152016.southcentralus.cloudapp.azure.com*.
+    > V tomto příkladu plně kvalifikovaný název domény je *contoso09152016.southcentralus.cloudapp.azure.com*.
 
-## <a name="create-front-end-and-back-end-pools"></a>Vytvořte front-end a back endové fondy
+## <a name="create-front-end-and-back-end-pools"></a>Vytvořte front-endovými a back endové fondy
 
-V této části můžete vytvořit následující fondy IP adres:
-* Front-end IP fond, který přijme příchozí síťový provoz na nástroje pro vyrovnávání zatížení.
-* Fond back-end IP, kde front-end fondu odešle síťový provoz s vyrovnáváním zatížení.
+V této části vytvoříte tyto fondy IP adres:
+* Front-endového fondu IP, která bude přijímat příchozí síťový provoz do nástroje pro vyrovnávání zatížení.
+* Back endového fondu IP kam front-endový fond odesílá síťový provoz s vyrovnáváním zatížení.
 
-1. Nastavení proměnných prostředí PowerShell:
+1. Nastavte proměnné prostředí PowerShell:
 
     ```powershell
     $frontendV4Name = "FrontendVipIPv4"
@@ -138,27 +138,27 @@ V této části můžete vytvořit následující fondy IP adres:
     $backendAddressPoolV6Name = "BackendPoolIPv6"
     ```
 
-2. Vytvoření fondu IP front-endu a přidružte ji k veřejné IP adresy, kterou jste vytvořili v předchozím kroku a nástroje pro vyrovnávání zatížení.
+2. Vytvořte front-endový fond IP adres a přidružte jej k veřejné IP adresy, kterou jste vytvořili v předchozím kroku a nástroje pro vyrovnávání zatížení.
 
     ```azurecli
-    $frontendV4 = az network lb frontend-ip create --resource-group $rgname --name $frontendV4Name --public-ip-name $publicIpv4Name --lb-name $lbName
-    $frontendV6 = az network lb frontend-ip create --resource-group $rgname --name $frontendV6Name --public-ip-name $publicIpv6Name --lb-name $lbName
+    $frontendV4 = az network lb frontend-ip create --resource-group $rgname --name $frontendV4Name --public-ip-address $publicIpv4Name --lb-name $lbName
+    $frontendV6 = az network lb frontend-ip create --resource-group $rgname --name $frontendV6Name --public-ip-address $publicIpv6Name --lb-name $lbName
     $backendAddressPoolV4 = az network lb address-pool create --resource-group $rgname --name $backendAddressPoolV4Name --lb-name $lbName
     $backendAddressPoolV6 = az network lb address-pool create --resource-group $rgname --name $backendAddressPoolV6Name --lb-name $lbName
     ```
 
-## <a name="create-the-probe-nat-rules-and-load-balancer-rules"></a>Vytvoření testu, pravidla NAT a pravidla pro vyrovnávání zatížení
+## <a name="create-the-probe-nat-rules-and-load-balancer-rules"></a>Vytvoření testu, pravidla překladu adres a pravidla služby load balancer
 
 Tento příklad vytvoří následující položky:
 
-* Pravidlo testu, zkontrolujte připojení k portům TCP 80 k.
-* Pravidlo NAT přeložit všechny příchozí přenosy na portu 3389 k portu 3389 pro protokol RDP.\*
-* Pravidlo NAT přeložit všechny příchozí přenosy na portu 3391 k portu 3389 pro protokolu vzdálené plochy (RDP).\*
-* Pravidlo Vyrovnávání zatížení vyvážit všechny příchozí přenosy na portu 80 na portu 80 pro adresy ve fondu back-end.
+* Pravidlo testu, zkontrolujte připojení k portu TCP 80.
+* Pravidlo NAT pro převod veškerý příchozí provoz na portu 3389 na port 3389 pro protokol RDP.\*
+* Pravidlo NAT pro převod veškerý příchozí provoz na portu 3391 na port 3389 pro protokol remote desktop protocol (RDP).\*
+* Pravidlo nástroje pro vyrovnávání zatížení, které veškerý příchozí provoz na portu 80 na port 80 na adresách v back endového fondu.
 
-\* Pravidla NAT jsou spojeny s konkrétní instanci virtuálního počítače za nástrojem pro vyrovnávání zatížení. Síťový provoz, který dorazí na portu 3389 posílá konkrétní virtuální počítač a port, který je spojen s je pravidlo překladu adres. Pro pravidlo překladu adres (NAT) je nutné zadat protokol (UDP nebo TCP). Oba protokoly nelze přiřadit stejný port.
+\* Pravidla NAT jsou spojeny s konkrétní instanci virtuálního počítače za nástrojem pro vyrovnávání zatížení. Síťový provoz přicházející na portu 3389 je odeslána do konkrétního virtuálního počítače a port, který má přidružená k pravidlu překladu adres. Pro pravidlo překladu adres (NAT) je nutné zadat protokol (UDP nebo TCP). Na stejný port nelze přiřadit oba protokoly.
 
-1. Nastavení proměnných prostředí PowerShell:
+1. Nastavte proměnné prostředí PowerShell:
 
     ```powershell
     $probeV4V6Name = "ProbeForIPv4AndIPv6"
@@ -168,12 +168,12 @@ Tento příklad vytvoří následující položky:
     $lbRule1V6Name = "LBRuleForIPv6-Port80"
     ```
 
-2. Vytvořte test.
+2. Vytvořte test paměti.
 
-    Následující příklad vytvoří sondou TCP, který kontroluje pro připojení k back-end port TCP 80 každých 15 sekund. Po dvou po sobě jdoucích selhání označuje back-end prostředků jako nedostupné.
+    Následující příklad vytvoří sondu protokolu TCP, který kontroluje pro připojení k back-end port TCP 80 každých 15 sekund. Po dvou po sobě následujících selhání označí prostředek back-end jako nedostupné.
 
     ```azurecli
-    $probeV4V6 = az network lb probe create --resource-group $rgname --name $probeV4V6Name --protocol tcp --port 80 --interval 15 --count 2 --lb-name $lbName
+    $probeV4V6 = az network lb probe create --resource-group $rgname --name $probeV4V6Name --protocol tcp --port 80 --interval 15 --threshold 2 --lb-name $lbName
     ```
 
 3. Vytvoření příchozích pravidel NAT, které umožňují připojení RDP k back endové prostředky:
@@ -183,11 +183,11 @@ Tento příklad vytvoří následující položky:
     $inboundNatRuleRdp2 = az network lb inbound-nat-rule create --resource-group $rgname --name $natRule2V4Name --frontend-ip-name $frontendV4Name --protocol Tcp --frontend-port 3391 --backend-port 3389 --lb-name $lbName
     ```
 
-4. Vytvořte pravidla nástroje pro vyrovnávání zatížení, které odesílá data na jiné porty back-end, v závislosti na front-end, který přijala požadavek.
+4. Vytvoření pravidla nástroje pro vyrovnávání zatížení, odesílat provoz na různé back endové porty, v závislosti na front-endu, který přijal požadavek.
 
     ```azurecli
-    $lbruleIPv4 = az network lb rule create --resource-group $rgname --name $lbRule1V4Name --frontend-ip-name $frontendV4Name --backend-address-pool-name $backendAddressPoolV4Name --probe-name $probeV4V6Name --protocol Tcp --frontend-port 80 --backend-port 80 --lb-name $lbName
-    $lbruleIPv6 = az network lb rule create --resource-group $rgname --name $lbRule1V6Name --frontend-ip-name $frontendV6Name --backend-address-pool-name $backendAddressPoolV6Name --probe-name $probeV4V6Name --protocol Tcp --frontend-port 80 --backend-port 8080 --lb-name $lbName
+    $lbruleIPv4 = az network lb rule create --resource-group $rgname --name $lbRule1V4Name --frontend-ip-name $frontendV4Name --backend-pool-name $backendAddressPoolV4Name --probe-name $probeV4V6Name --protocol Tcp --frontend-port 80 --backend-port 80 --lb-name $lbName
+    $lbruleIPv6 = az network lb rule create --resource-group $rgname --name $lbRule1V6Name --frontend-ip-name $frontendV6Name --backend-pool-name $backendAddressPoolV6Name --probe-name $probeV4V6Name --protocol Tcp --frontend-port 80 --backend-port 8080 --lb-name $lbName
     ```
 
 5. Zkontrolujte nastavení:
@@ -238,9 +238,9 @@ Tento příklad vytvoří následující položky:
 
 ## <a name="create-nics"></a>Vytvoření síťových rozhraní
 
-Vytvoření síťové adaptéry a přiřadit je k pravidla NAT, pravidla nástroje pro vyrovnávání zatížení a sondy.
+Vytvoření síťových rozhraní a přiřaďte je k pravidla NAT, pravidla nástroje pro vyrovnávání zatížení a testům.
 
-1. Nastavení proměnných prostředí PowerShell:
+1. Nastavte proměnné prostředí PowerShell:
 
     ```powershell
     $nic1Name = "myIPv4IPv6Nic1"
@@ -253,61 +253,48 @@ Vytvoření síťové adaptéry a přiřadit je k pravidla NAT, pravidla nástro
     $natRule2V4Id = "/subscriptions/$subscriptionid/resourceGroups/$rgname/providers/Microsoft.Network/loadbalancers/$lbName/inboundNatRules/$natRule2V4Name"
     ```
 
-2. Vytvořit síťovou kartu pro každý back-end a konfigurace protokolu IPv6:
+2. Vytvořte síťové rozhraní pro každý back-end a přidání konfigurace protokolu IPv6:
 
     ```azurecli
-    $nic1 = az network nic create --name $nic1Name --resource-group $rgname --location $location --private-ip-version "IPv4" --subnet-id $subnet1Id --lb-address-pool-ids $backendAddressPoolV4Id --lb-inbound-nat-rule-ids $natRule1V4Id
-    $nic1IPv6 = az network nic ip-config create --resource-group $rgname --name "IPv6IPConfig" --private-ip-version "IPv6" --lb-address-pool-ids $backendAddressPoolV6Id --nic-name $nic1Name
+    $nic1 = az network nic create --name $nic1Name --resource-group $rgname --location $location --private-ip-address-version "IPv4" --subnet $subnet1Id --lb-address-pools $backendAddressPoolV4Id --lb-inbound-nat-rules $natRule1V4Id
+    $nic1IPv6 = az network nic ip-config create --resource-group $rgname --name "IPv6IPConfig" --private-ip-address-version "IPv6" --lb-address-pools $backendAddressPoolV6Id --nic-name $nic1Name
 
-    $nic2 = az network nic create --name $nic2Name --resource-group $rgname --location $location --subnet-id $subnet1Id --lb-address-pool-ids $backendAddressPoolV4Id --lb-inbound-nat-rule-ids $natRule2V4Id
-    $nic2IPv6 = azure network nic ip-config create --resource-group $rgname --name "IPv6IPConfig" --private-ip-version "IPv6" --lb-address-pool-ids $backendAddressPoolV6Id --nic-name $nic2Name
+    $nic2 = az network nic create --name $nic2Name --resource-group $rgname --location $location --private-ip-address-version "IPv4" --subnet $subnet1Id --lb-address-pools $backendAddressPoolV4Id --lb-inbound-nat-rules $natRule2V4Id
+    $nic2IPv6 = az network nic ip-config create --resource-group $rgname --name "IPv6IPConfig" --private-ip-address-version "IPv6" --lb-address-pools $backendAddressPoolV6Id --nic-name $nic2Name
     ```
 
-## <a name="create-the-back-end-vm-resources-and-attach-each-nic"></a>Vytvořte prostředky virtuálních počítačů back-end a připojte každý síťový adaptér
+## <a name="create-the-back-end-vm-resources-and-attach-each-nic"></a>Vytvoření back endové prostředky virtuálního počítače a připojení každé síťové rozhraní
 
-Pokud chcete vytvořit virtuální počítače, musí mít účet úložiště. Pro vyrovnávání zatížení, musí být členy skupiny dostupnosti virtuálních počítačů. Další informace o vytváření virtuálních počítačů najdete v tématu [vytvoření virtuálního počítače Azure pomocí prostředí PowerShell](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json).
+Pokud chcete vytvořit virtuální počítače, musíte mít účet úložiště. Pro vyrovnávání zatížení virtuálních počítačů musí být členy skupiny dostupnosti. Další informace o vytváření virtuálních počítačů najdete v tématu [vytvoření virtuálního počítače Azure pomocí prostředí PowerShell](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json).
 
-1. Nastavení proměnných prostředí PowerShell:
+1. Nastavte proměnné prostředí PowerShell:
 
     ```powershell
-    $storageAccountName = "ps08092016v6sa0"
     $availabilitySetName = "myIPv4IPv6AvailabilitySet"
     $vm1Name = "myIPv4IPv6VM1"
     $vm2Name = "myIPv4IPv6VM2"
     $nic1Id = "/subscriptions/$subscriptionid/resourceGroups/$rgname/providers/Microsoft.Network/networkInterfaces/$nic1Name"
     $nic2Id = "/subscriptions/$subscriptionid/resourceGroups/$rgname/providers/Microsoft.Network/networkInterfaces/$nic2Name"
-    $disk1Name = "WindowsVMosDisk1"
-    $disk2Name = "WindowsVMosDisk2"
-    $osDisk1Uri = "https://$storageAccountName.blob.core.windows.net/vhds/$disk1Name.vhd"
-    $osDisk2Uri = "https://$storageAccountName.blob.core.windows.net/vhds/$disk2Name.vhd"
-    $imageurn "MicrosoftWindowsServer:WindowsServer:2012-R2-Datacenter:latest"
+    $imageurn = "MicrosoftWindowsServer:WindowsServer:2012-R2-Datacenter:latest"
     $vmUserName = "vmUser"
     $mySecurePassword = "PlainTextPassword*1"
     ```
 
     > [!WARNING]
-    > Tento příklad používá uživatelské jméno a heslo pro virtuální počítače ve formě prostého textu. Při dostatečně opatrní použít tyto přihlašovací údaje ve formě prostého textu. Bezpečnější způsob zpracování pověření v prostředí PowerShell, najdete v článku [ `Get-Credential` ](https://technet.microsoft.com/library/hh849815.aspx) rutiny.
+    > Tento příklad používá uživatelské jméno a heslo pro virtuální počítače v nešifrovaném textu. Využijte opatrní při použití tyto přihlašovací údaje v nešifrovaném textu. Bezpečnější způsob zpracování pověření v prostředí PowerShell, najdete v článku [ `Get-Credential` ](https://technet.microsoft.com/library/hh849815.aspx) rutiny.
 
-2. Vytvořte sadu dostupnosti a účet úložiště.
-
-    Při vytváření virtuálních počítačů, můžete použít existující účet úložiště. Pomocí následujícího příkazu vytvoříte nový účet úložiště:
-
-    ```azurecli
-    $storageAcc = az storage account create $storageAccountName --resource-group $rgName --location $location --sku-name "LRS" --kind "Storage"
-    ```
-
-3. Vytvořte skupinu dostupnosti:
+2. Vytvořte skupinu dostupnosti:
 
     ```azurecli
     $availabilitySet = az vm availability-set create --name $availabilitySetName --resource-group $rgName --location $location
     ```
 
-4. Vytvoření virtuálních počítačů s přidružených síťových karet:
+3. Vytvoření virtuálních počítačů s přidružených síťových karet:
 
     ```azurecli
-    $vm1 = az vm create --resource-group $rgname --location $location --availability-set $availabilitySet --name $vm1Name --nic-id $nic1Id --os-disk-vhd $osDisk1Uri --os-type "Windows" --admin-username $vmUserName --admin-password $mySecurePassword --vm-size "Standard_A1" --image-urn $imageurn --storage-account-name $storageAccountName --disable-bginfo-extension
+    az vm create --resource-group $rgname --name $vm1Name --image $imageurn --admin-username $vmUserName --admin-password $mySecurePassword --nics $nic1Id --location $location --availability-set $availabilitySetName --size "Standard_A1" 
 
-    $vm2 = azure vm create --resource-group $rgname --location $location --availability-set $availabilitySet --name $vm2Name --nic-id $nic2Id --os-disk-vhd $osDisk2Uri --os-type "Windows" --admin-username $vmUserName --admin-password $mySecurePassword --vm-size "Standard_A1" --image-urn $imageurn --storage-account-name $storageAccountName --disable-bginfo-extension
+    az vm create --resource-group $rgname --name $vm2Name --image $imageurn --admin-username $vmUserName --admin-password $mySecurePassword --nics $nic2Id --location $location --availability-set $availabilitySetName --size "Standard_A1" 
     ```
 
 ## <a name="next-steps"></a>Další postup

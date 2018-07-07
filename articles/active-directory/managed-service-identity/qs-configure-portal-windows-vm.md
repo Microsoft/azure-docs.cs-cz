@@ -1,6 +1,6 @@
 ---
-title: Postup konfigurace MSI ve virtuálním počítači Azure pomocí portálu Azure
-description: Krok podle podrobné pokyny pro konfiguraci a spravovaná služba Identity (MSI) ve virtuálním počítači Azure, pomocí portálu Azure.
+title: Konfigurace MSI ve Virtuálním počítači Azure pomocí webu Azure portal
+description: Projděte pokyny ke konfiguraci Identity spravované služby (MSI) na virtuálním počítači Azure pomocí webu Azure portal.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -9,78 +9,78 @@ editor: ''
 ms.service: active-directory
 ms.component: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/19/2017
 ms.author: daveba
-ms.openlocfilehash: 62b8504f5c10f338539d263bb231cf96eb405ba6
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 9d9c18d576f3975d4c8272efff7161366f3f53fe
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33930336"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37901353"
 ---
-# <a name="configure-a-vm-managed-service-identity-msi-using-the-azure-portal"></a>Konfigurace virtuálních počítačů spravovaných služba Identity (MSI) pomocí portálu Azure
+# <a name="configure-a-vm-managed-service-identity-msi-using-the-azure-portal"></a>Konfigurace virtuálním počítači Identity spravované služby (MSI) pomocí webu Azure portal
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Identita spravované služby poskytuje Azure služby automaticky spravované identity v Azure Active Directory. Tuto identitu můžete použít k ověření jakoukoli službu, která podporuje ověřování Azure AD, bez nutnosti přihlašovací údaje ve vašem kódu. 
+Identita spravované služby poskytuje služby Azure se automaticky spravované identity v Azure Active Directory. Tuto identitu můžete použít k ověření na libovolnou službu, která podporuje ověřování Azure AD, aniž by bylo přihlašovací údaje ve vašem kódu. 
 
-V tomto článku se dozvíte, jak povolit a zakázat systému přiřazené identity pro virtuální počítač Azure, pomocí portálu Azure. Přiřazení a odebrání uživatele přiřazené identit z virtuálních počítačů Azure přes portál Azure aktuálně nepodporuje.
+V tomto článku se dozvíte, jak povolit a zakázat systému identity přiřazené pro virtuální počítač Azure, pomocí webu Azure portal. Přiřazení a odebrání uživatele identit přiřazených z virtuálních počítačů Azure prostřednictvím webu Azure Portal momentálně nepodporuje.
 
 > [!NOTE]
-> Uživatel s přiřazenou identity operations v současné době nejsou podporovány prostřednictvím portálu Azure. Vraťte se zpět pro aktualizace. 
+> Operace identity přiřazené uživateli nejsou v současnosti podporované prostřednictvím webu Azure Portal. Sledujte novinky. 
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Pokud jste obeznámeni s identita spravované služby, podívejte se [oddílu přehled](overview.md).
-- Pokud ještě nemáte účet Azure [si zaregistrovat bezplatný účet](https://azure.microsoft.com/free/) než budete pokračovat.
+- Pokud nejste obeznámeni s identita spravované služby, podívejte se [oddílu přehled](overview.md).
+- Pokud ještě nemáte účet Azure [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) než budete pokračovat.
 
-## <a name="managed-service-identity-during-creation-of-an-azure-vm"></a>Identita spravované služby během vytváření virtuální počítač Azure
+## <a name="managed-service-identity-during-creation-of-an-azure-vm"></a>Identita spravované služby během vytváření virtuálního počítače Azure
 
-Vytvoření virtuálního počítače prostřednictvím portálu Azure v současné době nepodporuje operace identita spravované služby. Místo toho přejděte k některému z následujících článků rychlý start vytvoření virtuálního počítače nejprve vytvořit virtuální počítač:
+Vytvoření virtuálního počítače prostřednictvím webu Azure portal v současné době nepodporuje operace Identity spravované služby. Místo toho najdete jednu z následujících článků rychlý start vytvoření virtuálního počítače k vytvoření virtuálního počítače:
 
-- [Vytvoření virtuálního počítače s Windows pomocí portálu Azure](../../virtual-machines/windows/quick-create-portal.md#create-virtual-machine)
-- [Vytvořit virtuální počítač s Linuxem pomocí portálu Azure](../../virtual-machines/linux/quick-create-portal.md#create-virtual-machine)  
+- [Vytvoření virtuálního počítače Windows pomocí webu Azure portal](../../virtual-machines/windows/quick-create-portal.md#create-virtual-machine)
+- [Vytvoření virtuálního počítače s Linuxem pomocí webu Azure portal](../../virtual-machines/linux/quick-create-portal.md#create-virtual-machine)  
 
-Přejděte k části Další informace o povolení spravované identita služby ve virtuálním počítači.
+Pokračujte k další části Podrobnosti o povolení Identity spravované služby na virtuálním počítači.
 
-## <a name="enable-managed-service-identity-on-an-existing-azure-vm"></a>Povolit spravované služby Identita na existující virtuální počítač Azure
+## <a name="enable-managed-service-identity-on-an-existing-azure-vm"></a>Povolit identitu spravované služby na existujícím virtuálním počítači Azure
 
-Chcete-li povolit systém přiřadit identita na virtuální počítač, který byl původně zřizovat bez ho:
+Pokud chcete povolit identitu na virtuálním počítači, který byl původně zřízený bez něho přiřazenou systémem:
 
-1. Přihlaste se k [portál Azure](https://portal.azure.com) pomocí účtu spojené s předplatným služby Azure, která obsahuje virtuální počítač. Dále zkontrolujte, zda váš účet patří do role, která vám dává oprávnění k zápisu do virtuálního počítače, jako je například "Přispěvatel virtuálních počítačů".
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com) použijte účet spojený s předplatným služby Azure, která obsahuje virtuální počítač. Také ujistěte se, že váš účet patří do role, která poskytuje oprávnění k zápisu na virtuálním počítači, jako je například "Přispěvatel virtuálních počítačů".
 
 2. Přejděte na požadovaný virtuální počítač a vyberte stránku "Konfigurace".
 
-3. Povolit identity přiřazené systému ve virtuálním počítači tak, že vyberete "Ano" v části "Identita spravované služby" a pak klikněte na tlačítko **Uložit**. Tato operace může trvat 60 sekund nebo více k dokončení:
+3. Povolit identitu přiřazenou systémem ve virtuálním počítači tak, že vyberete "Ano" v části "Identita spravované služby" a potom klikněte na tlačítko **Uložit**. Tato operace může trvat 60 sekund nebo informace k dokončení:
 
     > [!NOTE]
-    > Přidání identitu uživatele přiřazené k virtuálnímu počítači se aktuálně nepodporuje prostřednictvím portálu Azure.
+    > Přidání identity přiřazené uživateli k virtuálnímu počítači se momentálně nepodporuje prostřednictvím webu Azure Portal.
 
    ![Snímek obrazovky stránky konfigurace](../media/msi-qs-configure-portal-windows-vm/create-windows-vm-portal-configuration-blade.png)  
 
-## <a name="remove-managed-service-identity-from-an-azure-vm"></a>Odebrání virtuálního počítače Azure identita spravované služby
+## <a name="remove-managed-service-identity-from-an-azure-vm"></a>Odebrání virtuálního počítače Azure Identity spravované služby
 
-Pokud máte virtuální počítač, který už nepotřebuje systému přiřazené identity:
+Pokud máte virtuální počítač se už nepotřebuje identitou přiřazenou systémem:
 
-1. Přihlaste se k [portál Azure](https://portal.azure.com) pomocí účtu spojené s předplatným služby Azure, která obsahuje virtuální počítač. Dále zkontrolujte, zda váš účet patří do role, která vám dává oprávnění k zápisu do virtuálního počítače, jako je například "Přispěvatel virtuálních počítačů".
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com) použijte účet spojený s předplatným služby Azure, která obsahuje virtuální počítač. Také ujistěte se, že váš účet patří do role, která poskytuje oprávnění k zápisu na virtuálním počítači, jako je například "Přispěvatel virtuálních počítačů".
 
 2. Přejděte na požadovaný virtuální počítač a vyberte stránku "Konfigurace".
 
-3. Zakázat systému přiřazené identity ve virtuálním počítači tak, že vyberete "Ne" v části "Identita spravované služby" a potom klikněte na Uložit. Tato operace může trvat 60 sekund nebo více k dokončení:
+3. Zakázat systém přiřadil identity ve virtuálním počítači tak, že vyberete "Ne" v části "Identita spravované služby" a potom klikněte na Uložit. Tato operace může trvat 60 sekund nebo informace k dokončení:
 
     > [!NOTE]
-    > Přidání identitu uživatele přiřazené k virtuálnímu počítači se aktuálně nepodporuje prostřednictvím portálu Azure.
+    > Přidání identity přiřazené uživateli k virtuálnímu počítači se momentálně nepodporuje prostřednictvím webu Azure Portal.
 
    ![Snímek obrazovky stránky konfigurace](../media/msi-qs-configure-portal-windows-vm/create-windows-vm-portal-configuration-blade-disable.png)  
 
 ## <a name="related-content"></a>Související obsah
 
-- Přehled identita spravované služby najdete v tématu [přehled](overview.md).
+- Přehled Identity spravované služby najdete v tématu [přehled](overview.md).
 
 ## <a name="next-steps"></a>Další postup
 
-- Pomocí portálu Azure, přidělte virtuálnímu počítači Azure MSI [přístup k jiným prostředkem Azure](howto-assign-access-portal.md).
+- Pomocí webu Azure portal, zadejte MSI virtuálního počítače Azure na [přístup do jiného prostředku Azure](howto-assign-access-portal.md).
 

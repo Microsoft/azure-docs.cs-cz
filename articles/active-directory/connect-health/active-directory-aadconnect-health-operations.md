@@ -1,9 +1,9 @@
 ---
-title: Operace v Azure Active Directory Connect Health
-description: Tento článek popisuje další operace, které lze provést po nasazení Azure AD Connect Health.
+title: Na provoz Azure Active Directory Connect Health
+description: Tento článek popisuje další operace, které lze provést po nasazení služby Azure AD Connect Health.
 services: active-directory
 documentationcenter: ''
-author: karavar
+author: zhiweiw
 manager: mtillman
 ms.assetid: 86cc3840-60fb-43f9-8b2a-8598a9df5c94
 ms.service: active-directory
@@ -13,148 +13,148 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 4377e9902696a4ee3b5bbb5fcb44d972ec14f822
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: 68be732b2a375d1667c743ac277ce653c78105f1
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36958721"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37886865"
 ---
-# <a name="azure-active-directory-connect-health-operations"></a>Operace v Azure Active Directory Connect Health
-Toto téma popisuje různé operace, které můžete provádět pomocí Azure Active Directory (Azure AD) Connect Health.
+# <a name="azure-active-directory-connect-health-operations"></a>Na provoz Azure Active Directory Connect Health
+Toto téma popisuje různé operace, které můžete provést pomocí Azure Active Directory (Azure AD) Connect Health.
 
 ## <a name="enable-email-notifications"></a>Povolení e-mailových oznámení
-Můžete nakonfigurovat službu Azure AD Connect Health k odesílání e-mailová oznámení, pokud výstrahy indikují, že infrastruktury identity není v pořádku. K tomu dojde, pokud je vygenerována výstraha a pokud je vyřešený.
+Můžete nakonfigurovat službu Azure AD Connect Health k odesílání e-mailová oznámení, pokud výstrahy indikují, že vaší infrastruktury identit není v pořádku. K tomu dochází, když je vygenerována výstraha a když je vyřešený.
 
-![Nastavení oznámení e-mailu snímek Azure AD Connect Health](./media/active-directory-aadconnect-health/email_noti_discover.png)
+![Nastavení oznámení e-mailu snímek obrazovky s Azure AD Connect Health](./media/active-directory-aadconnect-health/email_noti_discover.png)
 
 > [!NOTE]
 > E-mailová oznámení jsou ve výchozím nastavení povolené.
 >
 >
 
-### <a name="to-enable-azure-ad-connect-health-email-notifications"></a>Chcete-li povolit e-mailová oznámení Azure AD Connect Health
-1. Otevřete **výstrahy** okno pro službu, pro který chcete dostávat e-mailové oznámení.
+### <a name="to-enable-azure-ad-connect-health-email-notifications"></a>Chcete-li povolit e-mailová oznámení služby Azure AD Connect Health
+1. Otevřít **výstrahy** okno pro službu, pro kterou chcete dostávat e-mailové oznámení.
 2. Na panelu akcí klikněte na **nastavení oznámení**.
-3. V e-mailové oznámení přepínači, vyberte **ON**.
+3. V přepínači e-mailové oznámení, vyberte **ON**.
 4. Zaškrtněte políčko, pokud chcete, aby všichni globální správci pro příjem e-mailová oznámení.
-5. Pokud chcete dostávat e-mailová oznámení na jiné e-mailové adresy, zadejte je do **další příjemců e-mailu** pole. Chcete-li odebrat e-mailovou adresu z tohoto seznamu, klikněte pravým tlačítkem myši na položku a vyberte **odstranit**.
-6. Chcete-li dokončení změn, klikněte na tlačítko **Uložit**. Změny se projeví až po uložení.
+5. Pokud chcete dostávat e-mailová oznámení na jiné e-mailové adresy, zadejte je **další příjemci e-mailu** pole. Chcete-li odebrat e-mailovou adresu z tohoto seznamu, klikněte pravým tlačítkem na položku a vyberte **odstranit**.
+6. Pro dokončení změny, klikněte na tlačítko **Uložit**. Změny se projeví až po uložení.
 
-## <a name="delete-a-server-or-service-instance"></a>Odstranění instance serveru nebo služby
+## <a name="delete-a-server-or-service-instance"></a>Odstranění instance služby nebo serveru
 
 >[!NOTE] 
-> Je nutné postup odstranění Azure AD premium licenci.
+> Postup odstranění vyžádáním licenci premium služby Azure AD.
 
-V některých případech můžete chtít odebrání serveru z monitorovány. Zde je, co potřebujete vědět o odebrání serveru z služby Azure AD Connect Health.
+V některých případech můžete chtít odebrat server ze monitorovány. Zde je, co potřebujete vědět o odebrání serveru ze služby Azure AD Connect Health.
 
-Pokud odstraňujete serveru, nezapomeňte z následujících akcí:
+Pokud při odstraňování serveru, nezapomeňte z následujících akcí:
 
-* Tato akce zastaví sběr žádná další data z tohoto serveru. Tento server je odebrán ze služby sledování. Po této akci nejste schopni zobrazit nové výstrahy, monitorování nebo využití analytická data pro tento server.
-* Tato akce neodinstaluje agenta stavu ze serveru. Pokud jste agenta stavu neodinstalovali před provedením tohoto kroku, může se zobrazit chyby související s agenta stavu na serveru.
-* Tato akce neodstraní data již shromážděná z tohoto serveru. Data odstraněna podle zásad uchovávání dat Azure.
-* Po provedení této akce, pokud chcete začít monitorovat stejný server znovu, musíte odinstalovat a znovu nainstalujte agenta stavu na tomto serveru.
+* Tato akce přestane shromažďovat další data z tohoto serveru. Tento server bude odebrán ze služby sledování. Po této akci nejste schopni zobrazíte nové výstrahy, monitorování nebo využití analytická data pro tento server.
+* Tato akce neodinstaluje agenta stavu ze serveru. Pokud jste před provedením tohoto kroku agenta stavu neodinstalovali, můžou se zobrazovat chyby vztahujících se k agentovi stavu na serveru.
+* Tato akce neodstraní data již shromážděná z tohoto serveru. Tato data se odstraní v souladu se zásadami uchovávání dat Azure.
+* Po provedení této akce, pokud chcete začít monitorovat na stejný server znovu, musíte odinstalovat a znovu nainstalujte agenta stavu na tomto serveru.
 
 ### <a name="delete-a-server-from-the-azure-ad-connect-health-service"></a>Odstranění serveru ze služby Azure AD Connect Health
 
 >[!NOTE] 
-> Je nutné postup odstranění Azure AD premium licenci.
+> Postup odstranění vyžádáním licenci premium služby Azure AD.
 
 Azure AD Connect Health pro Active Directory Federation Services (AD FS) a Azure AD Connect (Sync):
 
-1. Otevřete **Server** okno z **seznam serverů** tak, že vyberete serveru název odeberou.
-2. Na **Server** , z panelu akcí klikněte na **odstranit**.
-3. Potvrďte zadáním názvu serveru v poli potvrzení.
+1. Otevřít **Server** oknu **seznam serverů** okno tak, že vyberete název serveru, která se má odebrat.
+2. Na **Server** oknu, na panelu akcí klikněte na tlačítko **odstranit**.
+3. Potvrďte zadáním názvu serveru v potvrzovacím okně.
 4. Klikněte na **Odstranit**.
 
 Azure AD Connect Health pro službu Azure Active Directory Domain Services:
 
-1. Otevřete **řadiče domény** řídicího panelu.
-2. Vyberte řadič domény odeberou.
+1. Otevřít **řadiče domény** řídicího panelu.
+2. Vyberte řadič domény, která se má odebrat.
 3. Na panelu akcí klikněte na **odstranit vybrané**.
-4. Potvrzení této akce se odstranit server.
+4. Potvrďte akci odstranění serveru.
 5. Klikněte na **Odstranit**.
 
-### <a name="delete-a-service-instance-from-azure-ad-connect-health-service"></a>Odstranění instance služby ze služby Azure AD Connect Health
-V některých případech můžete chtít odebrat instanci služby. Zde je, co potřebujete vědět, abyste mohli odebrat instanci služby ze služby Azure AD Connect Health.
+### <a name="delete-a-service-instance-from-azure-ad-connect-health-service"></a>Odstraňte instanci služby ze služby Azure AD Connect Health
+V některých případech můžete chtít odebrat instanci služby. Zde je, co potřebujete vědět o odebrání instance služby ze služby Azure AD Connect Health.
 
-Pokud odstraňujete instance služby, uvědomte si z následujících akcí:
+Když se odstranění instance služby, mějte na paměti toto:
 
 * Tato akce odebere aktuální instanci služby ze služby sledování.
-* Tato akce neodinstaluje ani neodebere agenta stavu ze všech serverů, které byly monitorovány v rámci této instance služby. Pokud jste agenta stavu neodinstalovali před provedením tohoto kroku, může se zobrazit chyby související s agenta stavu na serveru.
-* Všechna data z této instance služby se odstraní podle zásad uchovávání dat Azure.
-* Po provedení této akce, pokud chcete začít sledovat tuto službu, odinstalujte a znovu nainstalujte agenta stavu ve všech serverech. Po provedení této akce, pokud chcete začít monitorovat stejný server znovu, odinstalovat, přeinstalovat a registrace agenta stavu na tomto serveru.
+* Tato akce neodinstaluje ani neodebere agenta stavu z libovolného serveru, které byly sledovány v rámci této instance služby. Pokud jste před provedením tohoto kroku agenta stavu neodinstalovali, můžou se zobrazovat chyby související s agentem Health na serverech.
+* Všechna data z této instance služby se odstraní v souladu se zásadami uchovávání dat Azure.
+* Po provedení této akce, pokud chcete začít sledovat tuto službu, odinstalujte a znovu nainstalujte agenta stavu ve všech serverech. Po provedení této akce, pokud chcete začít monitorovat na stejný server znovu, odinstalovat, přeinstalovat a registrace agenta stavu na tomto serveru.
 
 #### <a name="to-delete-a-service-instance-from-the-azure-ad-connect-health-service"></a>Chcete-li odstranit instanci služby ze služby Azure AD Connect Health
-1. Otevřete **služby** okno z **seznam služeb** okno výběrem identifikátor služby (název farmy), který chcete odebrat.
-2. Na **Server** , z panelu akcí klikněte na **odstranit**.
-3. Potvrďte zadáním názvu služby do pole pro potvrzení (například:. sts.contoso.com).
+1. Otevřít **služby** oknu **seznamu služeb** okno tak, že vyberete identifikátor služby (název farmy), který chcete odebrat.
+2. Na **Server** oknu, na panelu akcí klikněte na tlačítko **odstranit**.
+3. V potvrzovacím okně zadejte název služby (například: sts.contoso.com).
 4. Klikněte na **Odstranit**.
    <br><br>
 
-[//]: # (Začátek RBAC oddílu)
-## <a name="manage-access-with-role-based-access-control"></a>Správa přístupu pomocí řízení přístupu na základě rolí
-[Řízení přístupu na základě rolí (RBAC)](../../role-based-access-control/role-assignments-portal.md) pro Azure AD Connect Health poskytuje přístup uživatelům a skupinám než globální správci. RBAC přiřadí role pro příslušné uživatele a skupiny a poskytuje mechanismus pro omezení globálních správců v adresáři.
+[//]: # (Začátek části RBAC)
+## <a name="manage-access-with-role-based-access-control"></a>Správa přístupu prostřednictvím řízení přístupu na základě Role
+[Řízení přístupu na základě rolí (RBAC)](../../role-based-access-control/role-assignments-portal.md) pro Azure AD Connect Health poskytuje přístup pro uživatele a skupiny než globální správci. Přiřadí role RBAC odpovídající uživatelé a skupiny a poskytuje mechanismus pro omezení globálních správců ve svém adresáři.
 
 ### <a name="roles"></a>Role
 Azure AD Connect Health podporuje následující předdefinované role:
 
 | Role | Oprávnění |
 | --- | --- |
-| Vlastník |Mohou vlastníci *spravovat přístup* (například přiřazení role uživatele nebo skupiny), *prohlížet všechny informace* (například zobrazení výstrahy) z portálu, a *změnit nastavení* (pro Příklad, e-mailových oznámení) v rámci Azure AD Connect Health. <br>Ve výchozím nastavení tuto roli nemají přiřazenou globální správce Azure AD a toto nastavení nelze změnit. |
+| Vlastník |Můžou vlastníci *spravovat přístup* (například přiřadit roli uživatele nebo skupiny), *prohlížet všechny informace* (například zobrazení výstrahy) z portálu, a *změnit nastavení* (pro například, e-mailová oznámení) v rámci Azure AD Connect Health. <br>Ve výchozím nastavení tuto roli nemají přiřazenou globální správce Azure AD a toto nastavení nedá změnit. |
 | Přispěvatel |Přispěvatelé můžou *prohlížet všechny informace* (například zobrazení výstrahy) z portálu, a *změnit nastavení* (například e-mailová oznámení) v rámci Azure AD Connect Health. |
-| Čtenář |Můžete čtečky *prohlížet všechny informace* (například zobrazení výstrahy) z portálu v Azure AD Connect Health. |
+| Čtenář |Čtenáři můžou *prohlížet všechny informace* (například zobrazení výstrahy) v rámci Azure AD Connect Health na portálu. |
 
-Všechny ostatní role (například uživatel přístup správci nebo uživatelé DevTest Labs) nemají žádný vliv na přístup v rámci Azure AD Connect Health, i když tyto role jsou k dispozici v prostředí portálu.
+Všechny ostatní role (jako je například správci přístupu uživatelů nebo uživatelů DevTest Labs) mít žádný vliv na přístup v rámci Azure AD Connect Health, i když tyto role jsou dostupné v prostředí portálu.
 
 ### <a name="access-scope"></a>Obor přístupu
 Azure AD Connect Health podporuje správu přístupu na dvou úrovních:
 
-* **Všechny instance služby**: Jedná se o doporučený ve většině případů. Určuje přístup pro všechny instance služby (například farmu služby AD FS), typů role, které jsou monitorovány pomocí Azure AD Connect Health.
-* **Instance služby**: V některých případech možná budete muset oddělit přístupu založených na typech role nebo instance služby. V takovém případě můžete spravovat přístup na úrovni instance služby.  
+* **Všechny instance služby**: Toto je doporučený ve většině případů. Určuje přístup pro všechny instance služby (například farmu služby AD FS) napříč všemi typy rolí, které jsou monitorovány pomocí služby Azure AD Connect Health.
+* **Instance služby**: V některých případech možná budete muset oddělit přístupu na základě typů role nebo instance služby. V takovém případě můžete spravovat přístup na úrovni instance služby.  
 
-Je povoleno, pokud koncový uživatel má přístup buď na directory nebo služby na úrovni instance.
+Pokud koncový uživatel má přístup buď na adresář nebo služby je uděleno oprávnění instance úroveň.
 
-### <a name="allow-users-or-groups-access-to-azure-ad-connect-health"></a>Povolit uživatelů nebo skupin přístup k Azure AD Connect Health
+### <a name="allow-users-or-groups-access-to-azure-ad-connect-health"></a>Povolit uživatelům nebo skupinám přístup k Azure AD Connect Health
 Následující kroky ukazují, jak povolit přístup.
-#### <a name="step-1-select-the-appropriate-access-scope"></a>Krok 1: Vyberte odpovídající přístup obor
-Povolit přístup uživatele na *všech instancí služby* úrovně v rámci Azure AD Connect Health, otevřete okno hlavní v Azure AD Connect Health.<br>
+#### <a name="step-1-select-the-appropriate-access-scope"></a>Krok 1: Vyberte odpovídající přístup oboru
+Pokud chcete povolit přístup uživatele na *všech instancí služby* úrovně v rámci Azure AD Connect Health, otevřete hlavní okno ve službě Azure AD Connect Health.<br>
 
-#### <a name="step-2-add-users-and-groups-and-assign-roles"></a>Krok 2: Přidání uživatelů a skupin a přiřadit role
-1. Z **konfigurace** klikněte na tlačítko **uživatelé**.<br>
-   ![Snímek obrazovky Azure AD Connect Health prostředků bočním panelu](./media/active-directory-aadconnect-health/startRBAC.png)
+#### <a name="step-2-add-users-and-groups-and-assign-roles"></a>Krok 2: Přidání uživatelů a skupin a přiřazování rolí
+1. Z **konfigurovat** klikněte na tlačítko **uživatelé**.<br>
+   ![Snímek obrazovky s Azure AD Connect Health prostředků bočního panelu](./media/active-directory-aadconnect-health/startRBAC.png)
 2. Vyberte **Přidat**.
-3. V **vyberte roli** podokně, vyberte roli (například **vlastníka**).<br>
-   ![Snímek Azure AD Connect Health RBAC uživatelé okno](./media/active-directory-aadconnect-health/RBAC_add.png)
-4. Zadejte název nebo identifikátor cílové uživatele nebo skupinu. Současně můžete vybrat jeden nebo více uživatelů nebo skupin. Klikněte na **Vybrat**.
-   ![Snímek Azure AD Connect Health RBAC uživatelé okno](./media/active-directory-aadconnect-health/RBAC_select_users.png)
+3. V **vybrat roli** podokně, vyberte roli (například **vlastníka**).<br>
+   ![Snímek obrazovky s Azure AD Connect stavu RBAC uživatelům okna](./media/active-directory-aadconnect-health/RBAC_add.png)
+4. Zadejte název nebo identifikátor cíloví uživatelé nebo skupiny. Současně můžete vybrat jeden nebo více uživatelů nebo skupin. Klikněte na **Vybrat**.
+   ![Snímek obrazovky s Azure AD Connect stavu RBAC uživatelům okna](./media/active-directory-aadconnect-health/RBAC_select_users.png)
 5. Vyberte **OK**.<br>
-6. Po dokončení přiřazení role uživatele a skupiny v seznamu se zobrazí.<br>
-   ![Připojení stavu RBAC uživatelům okno snímek obrazovky Azure AD, s nových uživatelů zvýrazněných](./media/active-directory-aadconnect-health/RBAC_user_list.png)
+6. Po dokončení přiřazení role se zobrazí v seznamu uživatelů a skupin.<br>
+   ![Snímek obrazovky s Azure AD Connect stavu RBAC uživatelům okna se noví uživatelé zvýrazněnou](./media/active-directory-aadconnect-health/RBAC_user_list.png)
 
-Nyní uvedené uživatele a skupiny mají přístup, podle jejich přiřazené role.
-
-> [!NOTE]
-> * Globální správci vždy mají plný přístup ke všem operacím, ale nejsou k dispozici v předchozím seznamu účtů globální správce.
-> * Funkce pozvat uživatele není podporována v rámci Azure AD Connect Health.
->
->
-
-#### <a name="step-3-share-the-blade-location-with-users-or-groups"></a>Krok 3: Sdílejte okno umístění k uživatelům nebo skupinám
-1. Po přiřazení oprávnění, může uživatel získat přístup Azure AD Connect Health přechodem [zde](https://aka.ms/aadconnecthealth).
-2. V okně uživatele můžete Připnout okno nebo různé části, na řídicí panel. Jednoduše klikněte **připnout na řídicí panel** ikonu.<br>
-   ![Snímek Azure AD Connect Health RBAC Připnout okno, se zvýrazněnou ikonu Připnutí](./media/active-directory-aadconnect-health/RBAC_pin_blade.png)
+Uvedení uživatelé a skupiny teď mají přístup, podle jejich přiřazených rolí.
 
 > [!NOTE]
-> Uživatel s přiřazenou roli čtečky není možné získat rozšíření Azure AD Connect Health z Azure Marketplace. Uživatele nelze provést nezbytné operace Uděláte to tak "vytvoření". Uživatele můžete pořád dostat do okna přechodem předchozí odkaz na. Pro následné použití můžete uživatele Připnout okno na řídicí panel.
+> * Globální Správci mají vždy úplný přístup ke všem operacím, ale nejsou k dispozici v předchozím seznamu účty globálních správců.
+> * Pozvat uživatele funkce není podporována v rámci Azure AD Connect Health.
 >
 >
 
-### <a name="remove-users-or-groups"></a>Odebrat uživatele nebo skupiny
-Můžete odebrat uživatele nebo skupinu přidat do Azure AD Connect Health RBAC. Jednoduše klikněte pravým tlačítkem na uživatele nebo skupinu a vyberte **odebrat**.<br>
-![Připojení stavu RBAC uživatelům okno snímek obrazovky Azure AD, s odebrat zvýrazněná](./media/active-directory-aadconnect-health/RBAC_remove.png)
+#### <a name="step-3-share-the-blade-location-with-users-or-groups"></a>Krok 3: Umístění okno sdílejte s uživateli nebo skupinami
+1. Po přiřazení oprávnění má uživatel přístup Azure AD Connect Health tak, že přejdete [tady](https://aka.ms/aadconnecthealth).
+2. V okně uživatele můžete Připnout okno nebo jiné části na řídicí panel. Stačí kliknout **připnout na řídicí panel** ikonu.<br>
+   ![Snímek obrazovky s Azure AD Connect Health RBAC Připnout okno, s ikona připnout zvýrazněná](./media/active-directory-aadconnect-health/RBAC_pin_blade.png)
 
-[//]: # (Konci části RBAC)
+> [!NOTE]
+> Uživatel s přiřazenou roli čtenáře není možné získat rozšíření Azure AD Connect Health z Azure Marketplace. Uživatel nemůže provést nezbytné k tomu operace "vytvoření". Uživatel může stále získat do okna tak, že přejdete na předchozím odkazu. Za další využití může uživatel Připnout okno na řídicí panel.
+>
+>
+
+### <a name="remove-users-or-groups"></a>Odebrání uživatele nebo skupiny
+Uživatel nebo skupina přidaná k Azure AD Connect Health RBAC můžete odebrat. Jednoduše klikněte pravým tlačítkem na uživatele nebo skupinu a vyberte **odebrat**.<br>
+![Snímek obrazovky s Azure AD Connect stavu RBAC uživatelům okna se odebrat zvýrazněnou](./media/active-directory-aadconnect-health/RBAC_remove.png)
+
+[//]: # (Konec oddílu RBAC)
 
 ## <a name="next-steps"></a>Další postup
 * [Azure AD Connect Health](active-directory-aadconnect-health.md)

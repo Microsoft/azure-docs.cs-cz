@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: larryfr
-ms.openlocfilehash: 95dea2896bf1d116a14d8b51ada9e17f186d4373
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 7a314ada1c25b57b6d1701bf414a42a58397e1f0
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37856252"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37903128"
 ---
 # <a name="write-to-hdfs-from-apache-storm-on-hdinsight"></a>Zápis do HDFS z Apache Storm v HDInsight
 
@@ -133,7 +133,7 @@ Tato YAML definuje následující položky:
 * `rotationPolicy`: Určuje, kdy obměna soubory. V tomto příkladu se provádí bez otočení.
 * `hdfs-bolt`: Používá předchozí komponenty jako parametry konfigurace pro `HdfsBolt` třídy.
 
-Další informace o rozhraní tok, najdete v části [ https://storm.apache.org/releases/1.1.0/flux.html ](https://storm.apache.org/releases/1.1.0/flux.html).
+Další informace o rozhraní tok, najdete v části [ https://storm.apache.org/releases/1.1.2/flux.html ](https://storm.apache.org/releases/1.1.2/flux.html).
 
 ## <a name="configure-the-cluster"></a>Konfigurace clusteru
 

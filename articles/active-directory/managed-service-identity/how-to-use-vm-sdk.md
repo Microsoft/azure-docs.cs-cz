@@ -1,6 +1,6 @@
 ---
-title: Jak používat Azure virtuálního počítače spravované služby Identity se sadami SDK služby Azure
-description: Ukázky kódu pro MSI virtuálních počítačů Azure pomocí sady Azure SDK.
+title: Použití Azure VM identita spravované služby pomocí sady Azure SDK
+description: Ukázky kódu pro soubor MSI virtuálních počítačů Azure pomocí sady Azure SDK.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -9,46 +9,46 @@ editor: ''
 ms.service: active-directory
 ms.component: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: daveba
-ms.openlocfilehash: 389b9967003c681b974f4580264701d22c103b7e
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 1c7a0d10f8ff005d90bb77f33bf40a00f97e078f
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33929056"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37901748"
 ---
-# <a name="how-to-use-an-azure-vm-managed-service-identity-msi-with-azure-sdks"></a>Jak používat Azure virtuálního počítače spravované služby Identity (MSI) s SDK služby Azure 
+# <a name="how-to-use-an-azure-vm-managed-service-identity-msi-with-azure-sdks"></a>Použití Azure VM Identity spravované služby (MSI) pomocí sady Azure SDK 
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]  
-Tento článek obsahuje seznam ukázky sady SDK, které ukazují použití podpory jejich odpovídajících Azure SDK pro MSI.
+Tento článek obsahuje seznam vzorků, sady SDK, které ukazují použití podporu jejich odpovídajících Azure SDK pro Instalační služby MSI.
 
 ## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
 > [!IMPORTANT]
-> - Všechny ukázkový kód nebo skript v tomto článku předpokládá klienta běží na virtuálním počítači povolená MSI. Použijte funkci "Připojit" virtuální počítač na portálu Azure se vzdáleně připojit k virtuálnímu počítači. Informace o povolení MSI na virtuálním počítači, v [konfigurace virtuálních počítačů spravovaných služba Identity (MSI) pomocí portálu Azure](qs-configure-portal-windows-vm.md), nebo jeden z typu variant článků (pomocí prostředí PowerShell, rozhraní příkazového řádku, šablonu nebo Azure SDK). 
+> - Všechny ukázky kódu či skript v tomto článku předpokládá, klient je spuštěný na virtuálním počítači povolená MSI. Pomocí funkce "Připojení" virtuálního počítače na webu Azure Portal, se vzdáleně připojit k virtuálnímu počítači. Podrobnosti o povolení MSI virtuálního počítače najdete v tématu [nakonfigurovat virtuálním počítači Identity spravované služby (MSI) pomocí webu Azure portal](qs-configure-portal-windows-vm.md), nebo jeden z variant článků (pomocí Powershellu, rozhraní příkazového řádku, šablonu nebo pomocí sady Azure SDK). 
 
 ## <a name="sdk-code-samples"></a>Ukázky kódu SDK
 
 | Sada SDK             | Ukázka kódu |
 | --------------- | ----------- |
-| .NET            | [Nasadit šablonu Azure Resource Manager ze systému Windows virtuálního počítače pomocí identita spravované služby](https://github.com/Azure-Samples/windowsvm-msi-arm-dotnet) |
-| .NET Core       | [Volání služby Azure z virtuálního počítače s Linuxem pomocí identita spravované služby](https://github.com/Azure-Samples/linuxvm-msi-keyvault-arm-dotnet/) |
-| Node.js         | [Správa prostředků pomocí identita spravované služby](https://azure.microsoft.com/resources/samples/resources-node-manage-resources-with-msi/) |
-| Python          | [K ověření jednoduše z uvnitř virtuálního počítače použít MSI](https://azure.microsoft.com/resources/samples/resource-manager-python-manage-resources-with-msi/) |
-| Ruby            | [Spravovat prostředky z virtuálního počítače povoleným MSI](https://azure.microsoft.com/resources/samples/resources-ruby-manage-resources-with-msi/) |
+| .NET            | [Nasazení šablony Azure Resource Manageru z virtuálního počítače s Windows pomocí Identity spravované služby](https://github.com/Azure-Samples/windowsvm-msi-arm-dotnet) |
+| .NET Core       | [Volání služby Azure z virtuálního počítače s Linuxem pomocí Identity spravované služby](https://github.com/Azure-Samples/linuxvm-msi-keyvault-arm-dotnet/) |
+| Node.js         | [Správa prostředků pomocí Identity spravované služby](https://azure.microsoft.com/resources/samples/resources-node-manage-resources-with-msi/) |
+| Python          | [Použití MSI pro ověření jednoduše z uvnitř virtuálního počítače](https://azure.microsoft.com/resources/samples/resource-manager-python-manage-resources-with-msi/) |
+| Ruby            | [Správa prostředků z virtuálního počítače s podporou MSI](https://azure.microsoft.com/resources/samples/resources-ruby-manage-resources-with-msi/) |
 
 ## <a name="related-content"></a>Související obsah
 
-- V tématu [sady Azure SDK](https://azure.microsoft.com/downloads/) úplný seznam prostředků sady SDK Azure, včetně knihovny stahování, dokumentace a další.
-- Pokud chcete povolit MSI ve virtuálním počítači Azure, najdete v části [konfigurace virtuálních počítačů spravovaných služba Identity (MSI) pomocí portálu Azure](qs-configure-portal-windows-vm.md).
+- Zobrazit [sady Azure SDK](https://azure.microsoft.com/downloads/) úplný seznam prostředků sady Azure SDK, včetně souborů ke stažení knihovny, dokumentaci a další.
+- Povolení MSI ve Virtuálním počítači Azure, najdete v článku [nakonfigurovat virtuálním počítači Identity spravované služby (MSI) pomocí webu Azure portal](qs-configure-portal-windows-vm.md).
 
-Použijte následující sekci komentáře k poskytnutí zpětné vazby a Pomozte nám vylepšit a utvářejí náš obsah.
+Pomocí následujícího oddílu pro komentáře na svůj názor a Pomozte nám vylepšit a obrazce náš obsah.
 
 
 

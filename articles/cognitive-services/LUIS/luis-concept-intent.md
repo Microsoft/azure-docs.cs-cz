@@ -1,6 +1,6 @@
 ---
-title: Vysvětlení tříd Intent v aplikacích LEOŠ v Azure | Microsoft Docs
-description: Popisuje, co záměry jsou v aplikacích jazyka Principy inteligentního služby (LEOŠ).
+title: Principy záměry LUIS aplikací v Azure | Dokumentace Microsoftu
+description: Popisuje, co jsou příkazy v aplikacích Language Understanding Intelligent Service (LUIS).
 services: cognitive-services
 author: v-geberr
 manager: kaiqb
@@ -9,96 +9,94 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 06/04/2018
 ms.author: v-geberr
-ms.openlocfilehash: 5c2feb0240b676d4e106cbda65aaaed7604a35c5
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: cbf1ad2da3bbc86f8c6861458ae9e5d5c49c56ce
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265148"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37888574"
 ---
-# <a name="intents-in-luis"></a>Záměry v LEOŠ
+# <a name="intents-in-luis"></a>Příkazy v LUIS
 
-Záměrem reprezentuje úlohu nebo chce provést akce uživatele. Je to účel nebo cílem vyjádřené v uživatele [utterance](luis-concept-utterance.md).
+Záměru představuje úkol nebo akci uživatel chce provést. Jedná o účely nebo cíl vyjádřeny uživatele [utterance](luis-concept-utterance.md).
 
-Definujte sadu tříd Intent, která odpovídá na akce, které uživatelé chtít využít ve vaší aplikaci. Například cesta aplikace definuje několik tříd Intent:
+Definujte sadu příkazů, který odpovídá na akce, které uživatelé chtějí využít ve vaší aplikaci. Například definuje cestovní aplikaci několika způsoby:
 
-Cesta aplikace záměry   |   Příklad utterances   | 
+Cestovní záměry aplikace   |   Ukázkové promluvy   | 
 ------|------|
- BookFlight     |   "Sešit mi cestě a Rio příští týden" <br/> "Fyzicky dostavili mi Rio na 24th" <br/> "Potřebuji rovinu lístku další neděle do Rio de Janeiro"    |
- Pozdrav     |   "Hi" <br/>Text "hello" <br/>"Dobré ráno"  |
- CheckWeather | "Co je počasí jako v Boston?" <br/> "Ukázat předpovědi pro tento víkendu" |
- Žádný         | "Get z mi recepturách souboru cookie"<br>"Lakers win?" |
+ BookFlight     |   "Rezervovat mě cestě a Rio příští týden" <br/> "Plout mě na Rio na 24th" <br/> "Potřebuji lístek roviny další pondělí až Rio de Janeiro"    |
+ Pozdrav     |   "Hi" <br/>"Hello" <br/>"Dobrým ráno"  |
+ CheckWeather | "Jak se o počasí v Bostonu jako"? <br/> "Zobrazit předpovědi pro tento víkendu" |
+ Žádný         | "Si předpisu soubor cookie"<br>"Lakers win?" |
 
-Všechny aplikace pocházet předdefinované záměrem "[žádné](#none-intent-is-fallback-for-app)" což je záložní záměr. 
+Všechny aplikace, které jsou součástí předdefinovaných záměr "[žádný](#none-intent-is-fallback-for-app)" tedy záložní záměr. 
 
-## <a name="prebuilt-domains-provide-intents"></a>Předkompilované domény poskytují záměry
-Kromě záměry, které definujete můžete předem záměry z jednoho předem domén. Další informace najdete v tématu [použít předem domén v aplikacích LEOŠ](luis-how-to-use-prebuilt-domains.md) Další informace o tom, jak přizpůsobit záměry z předem domény pro použití ve vaší aplikaci.
+## <a name="prebuilt-domains-provide-intents"></a>Předem připravených domén poskytují záměrů
+Kromě záměrů, které definujete můžete použít předem připravených záměry z jednoho z předem připravených domén. Další informace najdete v tématu [použití předem připravených domén v aplikacích LUIS](luis-how-to-use-prebuilt-domains.md) Další informace o tom, jak přizpůsobit příkazy z předem připravených domény pro použití ve vaší aplikaci.
 
 ## <a name="return-all-intents-scores"></a>Vrátí všechny záměry skóre
-Přiřadíte utterance jeden záměr. Když LEOŠ obdrží utterance v koncovém bodě, vrátí jeden hlavní záměr pro tento utterance. Pokud chcete použít pro všechny záměry pro utterance skóre, můžete zadat `verbose=true` příznak v řetězci dotazu API [koncový bod volání](https://aka.ms/v1-endpoint-api-docs). 
+Přiřadit utterance na jedné záměr. Přijetí LUIS utterance v koncovém bodě, vrátí jeden hlavní záměr pro tento utterance. Pokud chcete pro všechny příkazy pro utterance skóre, můžete zadat `verbose=true` příznak v řetězci dotazu API [volání koncového bodu](https://aka.ms/v1-endpoint-api-docs). 
 
 ## <a name="intent-compared-to-entity"></a>Záměr ve srovnání s entity
-Záměr představuje akci chatbot provést pro uživatele a je založena na celý utterance. Entita představuje slova nebo fráze obsažené uvnitř utterance. Utterance může mít pouze jeden horní vyhodnocování záměr ale může mít mnoho entit. 
+Záměr představuje akci chatovací robot by měla trvat pro uživatele a je založena na celý utterance. Entita představuje slova nebo fráze obsažené uvnitř utterance. Utterance může mít pouze jeden nejvyšší hodnocení záměr, ale může mít mnoho entit. 
 
-<a name="how-do-intents-relate-to-entities"></a> Vytvoření záměrem při uživatele _záměr_ by aktivují akci v aplikaci klienta, například volání funkce checkweather(). Vytvořte entitu představují parametrů požadovaných pro spuštění akce. 
+<a name="how-do-intents-relate-to-entities"></a> Vytvoření záměru při uživatele _záměr_ aktivuje akci v klientské aplikaci, jako je volání funkce checkweather(). Vytvořte entitu k reprezentování parametrů potřebných k provedení akce. 
 
-|Příklad záměru   | Entita | Entity v příkladu utterances   | 
+|Příklad záměr   | Entita | Entity v příkladu projevy   | 
 |------------------|------------------------------|------------------------------|
-| CheckWeather | {"typ": "místo", "entita": "seattle"}<br>{"typ": "builtin.datetimeV2.date","entity": "zítra", "řešení": "2018-05-23"} | Co počasí stejně jako v nástroji `Seattle` `tomorrow`? |
-| CheckWeather | {"typ": "date_range", "entita": "Tento víkendu"} | Zobrazit mi předpovědi pro `this weekend` | 
+| CheckWeather | {"type": "umístění", "osoba": "seattle"}<br>{"type": "builtin.datetimeV2.date","entity": "den", "řešení": "2018-05-23"} | Co počasí, jako jsou v `Seattle` `tomorrow`? |
+| CheckWeather | {"type": "date_range", "osoba": "Tento víkendu"} | Zobrazit předpovědi pro `this weekend` | 
 
-## <a name="custom-intents"></a>Vlastní záměry
+## <a name="custom-intents"></a>Vlastní příkazy
 
-Podobně míněný [utterances](luis-concept-utterance.md) odpovídají jedné záměr. Utterances ve vašich představ, můžete použít některou [entity](luis-concept-entity-types.md) v aplikaci, protože entity nejsou specifické pro záměr. 
+Podobně míněný [projevy](luis-concept-utterance.md) odpovídají jedné záměr. Projevy v máte v úmyslu použít libovolnou [entity](luis-concept-entity-types.md) v aplikaci, protože se nejedná o entity specifické cílem. 
 
-## <a name="prebuilt-domain-intents"></a>Předkompilované domény záměry
+## <a name="prebuilt-domain-intents"></a>Předem připravené domény záměrů
 
-[Předkompilované domén](luis-how-to-use-prebuilt-domains.md) mít záměry s utterances.  
+[Předem připravených domén](luis-how-to-use-prebuilt-domains.md) mají záměry s projevy.  
 
-## <a name="none-intent-is-fallback-for-app"></a>Žádná záměrné není záložního pro aplikaci
-**Žádné** je záměr catch-all nebo záložní. Slouží k naučit LEOŠ utterances, které nejsou důležité v doméně aplikace (subjektu oblast). **Žádné** záměr by měl mít mezi 10 a 20 procent celkového utterances v aplikaci. Nenechávejte ho prázdný. 
+## <a name="none-intent-is-fallback-for-app"></a>Žádná záměru není pro aplikaci pro použití náhradní lokality
+**Žádný** pokrývající vše nebo záložní záměr je cílem. Používá se naučit LUIS projevy, které nejsou důležité v doméně aplikace (oblastí). **Žádný** záměr by měl mít 10 až 20 procent celkového projevy v aplikaci. Nenechávejte ho prázdný. 
 
-### <a name="none-intent-helps-conversation-direction"></a>Žádné záměrné pomáhá konverzace směr
-Pokud je jako parametr None předpovědět utterance záměrné a vrácený do chatbot s předpovědi, robota můžete klást otázky další nebo zadejte nabídky se má nasměrovat uživatele platné možnosti v chatbot. 
+### <a name="none-intent-helps-conversation-direction"></a>Žádný záměru pomáhá směr konverzace
+Když utterance očekává se, že jako žádný záměru a vrácené chatovací robot s predikcí, robota můžete další otázky nebo nabídky nasměrovat uživatele na platné možnosti v chatovací robot. 
 
-### <a name="no-utterances-in-none-intent-skews-predictions"></a>Žádné utterances v žádné záměrné zkosí předpovědi
-Pokud je nemůžete přidat žádné utterances pro **žádné** záměrné, vynutí LEOŠ utterance, který je mimo doménu do jedné domény záměry. Ve výukových LEOŠ nesprávný záměr pro utterance to bude zkreslit skóre předpovědi. 
+### <a name="no-utterances-in-none-intent-skews-predictions"></a>Žádné projevy v žádné záměru zkosí predikcí
+Pokud nepřidáte pro jakékoli projevy **žádný** záměru, LUIS vynutí utterance, která je mimo doménu do jedné ze tříd Intent domény. To bude zkosení skóre předpovědi ve výuce LUIS nesprávné záměr pro utterance. 
 
-### <a name="add-utterances-to-the-none-intent"></a>Přidat utterances záměrné none
-**Žádné** záměr vytvoří, ale s cílem prázdné. Vyplňte v něm s utterances, které jsou mimo doménu. Dobrý utterance pro **žádné** je něco úplně mimo aplikaci, jakož i odvětví aplikace slouží. Například cesta aplikace neměli používat pro všechny utterances **žádné** které se týkají projít, jako je například rezervace, fakturace, jídlo, pohoštění, nákladní, aktivních pořadových Zábava. 
+### <a name="add-utterances-to-the-none-intent"></a>Přidání projevů na hodnotu None záměru
+**Žádný** záměr je vytvořen, ale zůstane prázdná záměrně. Vyplňte projevy, které jsou mimo vaši doménu. Dobré utterance pro **žádný** je něco úplně mimo aplikace, stejně jako v oboru aplikace slouží. Například cestovní aplikaci neměli používat jakékoli projevy pro **žádný** , které se týkají projít, jako je například rezervace, fakturace, food, nákladní ubytování, pohostinství probíhající Zábava. 
 
-Jaký typ utterances jsou ponechána pro žádný záměrné? Začněte s nějaké konkrétní vaší robota nesmí zodpovědět takové "jaký druh dinosaur má modré zuby?" To je velmi konkrétní dotaz daleko mimo cesta aplikace. 
+Jaký typ projevy jsou ponechána pro žádný záměru? Začněte s nějaké konkrétní váš robot by neměl odpovědět takové "jaký druh dinosaurů má modré zuby?" To je velmi konkrétní dotaz úplně mimo cestovní aplikaci. 
 
-### <a name="none-is-a-required-intent"></a>Žádná není požadovaný záměr
-**Žádné** záměr je požadovaný záměr a nemůže být odstraněna nebo přejmenována.
+### <a name="none-is-a-required-intent"></a>Žádná není požadované záměr
+**Žádný** záměr je požadovaná záměr a nemůže smazány nebo přejmenovány.
 
-## <a name="negative-intentions"></a>Záporné záměry 
-Pokud chcete určit kladné a záporné záměry, jako například "I **má** automobilu" a "I **nemáte** má automobilu", můžete vytvořit dvě záměry (jeden kladnou a jeden záporné) a přidejte příslušné utterances pro Každý. Nebo můžete vytvořit jeden záměr a označit dva různé kladné a záporné podmínky jako entity.  
+## <a name="negative-intentions"></a>Záporná záměry 
+Pokud chcete určit kladnému i záměrů, jako například "můžu **má** automobilu" a "můžu **není** má automobilu", můžete vytvořit dvě záměry (jednu pozitivní a negativní jeden) a přidejte odpovídající projevy pro Každý. Nebo můžete vytvořit jeden záměr a označit dvě různé kladné a záporné podmínky jako entity.  
 
-## <a name="intent-balance"></a>Záměrné zůstatek
-Záměry domény aplikace by měl mít rovnováhu utterances mezi každou záměr. Nemají jeden záměr s 10 utterances a jiné záměr s 500 utterances. Toto není vyvážit. Pokud máte tuto situaci, zkontrolujte záměr s 500 utterances chcete zobrazit, pokud řadu záměry může být znovu uspořádat do [vzor](luis-concept-patterns.md). 
+## <a name="intent-balance"></a>Záměru zůstatek
+Domény záměry aplikace by měl mít rovnováhu projevy mezi každou záměr. Není nutné jeden záměr s 10 projevy a jiný účel s 500 projevy. To se rovnováha. Pokud máte tuto situaci, přečtěte si záměr s 500 projevy zobrazíte, pokud řadu příkazů může být znovu uspořádat do [vzor](luis-concept-patterns.md). 
 
-**Žádné** záměr není součástí rovnováhu mezi. Aby záměr musí obsahovat 10 % z celkové utterances v aplikaci.
+**Žádný** záměr není součástí zůstatek na účtu. 10 % celkové projevy v aplikaci by měla obsahovat tohoto záměru.
 
-## <a name="intent-limits"></a>Záměrné omezení
-Zkontrolujte [omezení](luis-boundaries.md#model-boundaries) zjistit, kolik záměry můžete přidat k modelu. 
+## <a name="intent-limits"></a>Omezení záměru
+Kontrola [omezení](luis-boundaries.md#model-boundaries) o tom, kolik záměry můžete přidat do modelu. 
 
-### <a name="if-you-need-more-than-the-maximum-number-of-intents"></a>Pokud potřebujete více než maximální počet záměry 
-Nejprve zvažte, zda systém používá příliš mnoho tříd Intent. 
+### <a name="if-you-need-more-than-the-maximum-number-of-intents"></a>Pokud potřebujete více než maximální počet příkazů 
+Nejprve zvažte, zda váš systém používá příliš mnoho příkazů. 
 
-### <a name="can-multiple-intents-be-combined-into-single-intent-with-entities"></a>Více tříd Intent zkombinovat do jednoho záměr s entity 
-Záměry, které jsou příliš podobné může být obtížnější pro LEOŠ k rozlišení mezi nimi. Záměry by měla být nejrůznější dost pro zachycení hlavní úlohy, které uživatel požaduje, ale není nutné zaznamenat všechny cesty kódu trvá. Například samostatné záměry v aplikaci cesta může být BookFlight a FlightCustomerService, ale BookInternationalFlight a BookDomesticFlight jsou příliš podobné. Pokud systém je nutné je odlišili, použijte entity nebo jiných logiku, nikoli tříd Intent. 
+### <a name="can-multiple-intents-be-combined-into-single-intent-with-entities"></a>Více záměry zkombinovat do jedné záměr s entitami 
+Příkazy, které jsou příliš podobná může to ztížit pro LUIS k rozlišení mezi nimi. Příkazy by měl být dost informací k zachycení hlavních úloh, která uživatele žádá, ale není potřeba zachytit každá cesta kódu má měnit. Například samostatné příkazy v cestovní aplikaci můžou být BookFlight a FlightCustomerService ale BookInternationalFlight a BookDomesticFlight jsou příliš podobné. Pokud váš systém potřebuje k jejich rozlišení, používejte entity nebo jiných logic namísto záměry. 
 
 ### <a name="dispatcher-model"></a>Dispečer modelu
-Další informace o kombinování LEOŠ a QnA maker aplikací pomocí [odesílání modelu](luis-concept-enterprise.md#when-you-need-to-combine-several-luis-and-qna-maker-apps). 
+Další informace o kombinování aplikace LUIS a QnA maker pomocí [odesílání modelu](luis-concept-enterprise.md#when-you-need-to-combine-several-luis-and-qna-maker-apps). 
 
-### <a name="request-help-for-apps-with-significant-number-of-intents"></a>Nápověda pro žádost o u aplikací s velký počet záměry
-Pokud pro vás nebude fungovat snížit počet tříd Intent nebo dělení vaše záměry do více aplikací, obraťte se na podporu. Pokud vaše předplatné zahrnuje služby podpory, obraťte se na [Azure technickou podporu](https://azure.microsoft.com/support/options/). 
+### <a name="request-help-for-apps-with-significant-number-of-intents"></a>Požádat o pomoc pro aplikace s velký počet záměrů
+Pokud pro vás nebude fungovat snížení počtu záměry nebo rozdělení vaše záměry do více aplikací, obraťte se na podporu. Pokud vaše předplatné Azure zahrnuje odbornou pomoc, obraťte se na [technické podpoře Azure](https://azure.microsoft.com/support/options/). 
 
 ## <a name="next-steps"></a>Další postup
 
 * Další informace o [entity](luis-concept-entity-types.md), které jsou relevantní pro záměry důležité slova
-* Zjistěte, jak [přidávat a spravovat záměry](luis-how-to-add-intents.md) ve vaší aplikaci LEOŠ.
+* Zjistěte, jak [přidávat a spravovat záměry](luis-how-to-add-intents.md) ve vaší aplikaci LUIS.
 * Zkontrolujte záměr [osvědčené postupy](luis-concept-best-practices.md)
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website

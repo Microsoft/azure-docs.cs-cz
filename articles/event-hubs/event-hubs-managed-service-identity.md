@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: sethm
-ms.openlocfilehash: 7c8f7fff5e3cf7334ce30a3fa90ae950f841662c
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: abff3f715a1fccba172147f02b83f7209f87cf9e
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37865293"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37902512"
 ---
 # <a name="managed-service-identity-preview"></a>Identita spravované služby (Preview)
 
@@ -60,6 +60,9 @@ Identita spravované služby pro webové aplikace teď má přístup k oboru ná
 ### <a name="run-the-app"></a>Spuštění aplikace
 
 Nyní můžete upravte výchozí stránku, kterou jste vytvořili aplikaci ASP.NET. Můžete také použít kódu webové aplikace z [úložiště GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/MSI/EventHubsMSIDemoWebApp). 
+
+>[!NOTE] 
+> Funkce MSI je ve verzi preview, je potřeba použít [verze preview knihovny služby Service Bus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/4.2.2-preview) za účelem přístupu k nová rozhraní API. 
 
 Po spuštění aplikace, přejděte v prohlížeči EventHubsMSIDemo.aspx. Alternativně nastavte ji jako úvodní stránku. Kód můžete najít v souboru EventHubsMSIDemo.aspx.cs. Výsledkem je minimální webové aplikace s několika polí pro zadávání a **odeslat** a **přijímat** tlačítka, která připojení do služby Event Hubs k odesílání nebo příjem událostí. 
 

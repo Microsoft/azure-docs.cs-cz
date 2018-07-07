@@ -1,29 +1,29 @@
 ---
-title: Ověření pomocí Azure kontejneru registru ze služby Azure Kubernetes
-description: Zjistěte, jak poskytnout přístup k bitové kopie v registru vaší privátní kontejneru z Kubernetes služby Azure pomocí Azure Active Directory instanční objekt.
+title: Ověřování pomocí Azure Container Registry ze služby Azure Kubernetes
+description: Zjistěte, jak zajistit přístup k obrázkům v váš privátní registr kontejnerů ze služby Azure Kubernetes Service pomocí instančního objektu služby Azure Active Directory.
 services: container-service
-author: iainfoulds
+author: mmacy
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 02/24/2018
-ms.author: iainfou
-ms.openlocfilehash: 8cfd70275caa13c708f7d2f46cdc71e0f190ca0e
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.author: marsma
+ms.openlocfilehash: 36b66fdcd157e4c44fcd451c8cc07ba68242b583
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37100619"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37888758"
 ---
-# <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Ověření pomocí Azure kontejneru registru ze služby Azure Kubernetes
+# <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Ověřování pomocí Azure Container Registry ze služby Azure Kubernetes
 
-Pokud používáte Azure kontejneru registru (ACR) s Azure Kubernetes služby (AKS), je potřeba navázat mechanismus ověřování. Tento dokument podrobně popisuje doporučené konfigurace pro ověřování mezi těmito dvěma službami Azure.
+Pokud používáte Azure Container Registry (ACR) s Azure Kubernetes Service (AKS), je potřeba navázat mechanismus ověřování. Tento dokument podrobně popisuje doporučené konfigurace pro ověřování mezi těmito dvěma službami Azure.
 
-## <a name="grant-aks-access-to-acr"></a>AKS udělit přístup k ACR
+## <a name="grant-aks-access-to-acr"></a>AKS udělit přístup do služby ACR
 
-Při vytváření clusteru služby AKS instanční objekt se vytvoří také ke správě clusteru požadavky na provoz s prostředky Azure. Tento objekt zabezpečení služby mohou sloužit také pro ověřování pomocí ACR registru. K tomu je potřeba vytvořit k udělení přístupu služby hlavní pro čtení k prostředku ACR přiřazení role.
+Když se vytvoří AKS cluster, hlavního názvu služby se vytvoří také spravovat požadavky na provoz clusteru s prostředky Azure. Tento instanční objekt služby je také použít pro ověřování pomocí registru ACR. Uděláte to tak, přiřazení role musí být vytvořen pro udělení přístupu služby instančního objektu pro čtení k prostředku služby ACR.
 
-Následující příklad slouží k dokončení této operace.
+Následující příklad je možné k dokončení této operace.
 
 ```bash
 #!/bin/bash
@@ -43,11 +43,11 @@ ACR_ID=$(az acr show --name $ACR_NAME --resource-group $ACR_RESOURCE_GROUP --que
 az role assignment create --assignee $CLIENT_ID --role Reader --scope $ACR_ID
 ```
 
-## <a name="access-with-kubernetes-secret"></a>Přístup s Kubernetes tajný klíč
+## <a name="access-with-kubernetes-secret"></a>Přístup pomocí tajného klíče Kubernetes
 
-V některých případech nelze vymezovat službu hlavní používá AKS ACR registru. Pro tyto případy můžete vytvořit objekt jedinečné služby a obor pouze ACR registru.
+V některých případech objektu, která je používána ve AKS služby nelze zařadit do oboru do registru ACR. Pro tyto případy můžete vytvořit objekt jedinečné služby a obor do registru ACR.
 
-Následující skript slouží k vytvoření objektu služby.
+Tento skript slouží k vytvoření instančního objektu služby.
 
 ```bash
 #!/bin/bash
@@ -70,15 +70,15 @@ echo "Service principal ID: $CLIENT_ID"
 echo "Service principal password: $SP_PASSWD"
 ```
 
-Nyní se uloží pověření hlavní služby Kubernetes [tajný klíč pro vyžádání obsahu k image] [ image-pull-secret] a při spuštění kontejnery v clusteru služby AKS na něj odkazovat.
+Můžete teď budou ukládat přihlašovací údaje instančního objektu služby v Kubernetes [tajný klíč o přijetí změn image] [ image-pull-secret] a odkazované při spouštění kontejnerů v clusteru AKS.
 
-Následující příkaz vytvoří Kubernetes tajný. Nahraďte název serveru se serverem ACR přihlášení, uživatelské jméno s id objektu zabezpečení služby a heslo, hlavní heslo služby.
+Následující příkaz vytvoří tajného kódu Kubernetes. Nahraďte název serveru pomocí přihlašovacího serveru ACR, uživatelské jméno id instančního objektu a hesla se heslo instančního objektu služby.
 
 ```bash
 kubectl create secret docker-registry acr-auth --docker-server <acr-login-server> --docker-username <service-principal-ID> --docker-password <service-principal-password> --docker-email <email-address>
 ```
 
-Tajný klíč Kubernetes mohou být používány pod nasazení pomocí `ImagePullSecrets` parametr.
+Tajného kódu Kubernetes můžete použít v nasazení pod `ImagePullSecrets` parametru.
 
 ```yaml
 apiVersion: apps/v1beta1

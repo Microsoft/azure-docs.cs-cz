@@ -14,15 +14,15 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: ellacroi
-ms.openlocfilehash: cee313f2f648de987fde8c769435264048a12eff
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 49da9f58ff99c5d844c41a575deaf2f4cc84d426
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37344025"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37888462"
 ---
 # <a name="preferred-solutions-in-azure-marketplace-and-appsource"></a>Upřednostňované řešení v Azure Marketplace a AppSource
 
-Upřednostňované řešení společnosti Microsoft je Cloudová aplikace vybrané pro jeho kvality, výkonu a schopnost adresu zákaznické potřeby v určité odvětví svislé nebo řešení oblasti. Tým odborníků Microsoftu odvětví a prodej vybere řešení z programu Microsoft Partner Network [Gold členství](https://partner.microsoft.com/en-us/membership/core-benefits) partnerů. Tato řešení jsou způsobilé pro poskytuje funkci v našich cloudových prodejní místa. Zákazníci najdou využívá celá řada odvětví upřednostňované řešení vybrané na stránkách odvětví AppSource, zatímco úloha upřednostňované řešení může být umístěná v Azure Marketplace. 
+Microsoft upřednostňováno, že je řešení cloudové aplikace, vybrané pro jeho kvality, výkonu a schopnost adresu zákaznické potřeby v určité odvětví svislé nebo řešení oblasti. Tým odborníků Microsoftu odvětví a prodej vybere řešení z programu Microsoft Partner Network [Gold členství](https://partner.microsoft.com/en-us/membership/core-benefits) partnerů. Tato řešení jsou vybrané v našich cloudových prodejní místa: Azure Marketplace a AppSource. Upřednostňované řešení na AppSource se dají zobrazit tak vertikální vazby odvětví, když na webu Azure Marketplace můžete kliknout na v rámci kategorie řešení 
 
-Microsoft může spolupracovat s těchto zprostředkovatelů na společného marketingu a prodeje závazky. Microsoft bude kontaktovat poskytovatele řešení, pokud jeden nebo více z jejich řešení byla vybrána pro štítků upřednostňované. 
+Microsoft bude kontaktovat poskytovatele řešení, pokud jeden nebo více z jejich řešení byla vybrána jako upřednostňované řešení.

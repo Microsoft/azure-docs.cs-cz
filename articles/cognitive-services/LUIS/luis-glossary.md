@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr
-ms.openlocfilehash: 3016d1318d031494057f4a8ce61af37576a7c4f2
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: c7a57ad13bbab66f0c100ed0a5bdb3fb20064806
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346803"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37887670"
 ---
 # <a name="glossary"></a>Glosář
 
@@ -92,15 +92,15 @@ Příkladem koncového bodu vypadá takto:
 
 ## <a name="f-measure"></a>F – – Měrná jednotka
 
-V [batch testování][batch-testing], míru testu přesnosti.
+V [batch testování](interactive-test.md#batch-testing), míru testu přesnosti.
 
 ## <a name="false-negative"></a>Záporné hodnoty false (TN)
 
-V [batch testování][batch-testing], datových bodů představují projevy, ve kterých aplikace správně předpovědět neexistence cílové záměr na entitu.
+V [batch testování](interactive-test.md#batch-testing), datových bodů představují projevy, ve kterých aplikace správně předpovědět neexistence cílové záměr na entitu.
 
 ## <a name="false-positive"></a>Falešně pozitivní (TP)
 
-V [batch testování][batch-testing], datových bodů představují projevy, ve kterých vaše aplikace správně předpovědět existenci cílové záměr na entitu.
+V [batch testování](interactive-test.md#batch-testing), datových bodů představují projevy, ve kterých vaše aplikace správně předpovědět existenci cílové záměr na entitu.
 
 ## <a name="features"></a>Funkce
 
@@ -138,7 +138,7 @@ A [předem připravených domény](luis-how-to-use-prebuilt-domains.md) je aplik
 A [předem připravených entit](luis-prebuilt-entities.md) je entita LUIS poskytuje pro běžné typy informace, jako je číslo, adresy URL a e-mailu. Můžete přidat do svojí aplikace předem připravených entit. 
 
 ## <a name="precision"></a>Přesnost
-V [batch testování][batch-testing], přesnost (také nazývané kladného prediktivní) je část relevantní projevy mezi načtený projevy.
+V [batch testování](interactive-test.md#batch-testing), přesnost (také nazývané kladného prediktivní) je část relevantní projevy mezi načtený projevy.
 
 ## <a name="programmatic-key"></a>Klíče prostřednictvím kódu programu
 
@@ -153,7 +153,7 @@ Publikování znamená přijetí LUIS [aktivní verze](#active-version) k dispoz
 Služba LUIS kvóta je omezení [úroveň předplatného Azure](https://aka.ms/luis-price-tier). Služba LUIS kvóty může omezit pomocí obou požadavků za sekundu (HTTP 429 stav) a celkový počet požadavků za měsíc (HTTP 403 stav). 
 
 ## <a name="recall"></a>Odvolání
-V [batch testování][batch-testing], si možná Vzpomínáte (označovaný také jako citlivosti), je schopnost LUIS k zobecnění. 
+V [batch testování](interactive-test.md#batch-testing), si možná Vzpomínáte (označovaný také jako citlivosti), je schopnost LUIS k zobecnění. 
 
 ## <a name="semantic-dictionary"></a>Sémantické slovník
 Sémantické slovník je k dispozici na stránce seznamu entity, jakož i stránka seznamu frázi. Sémantické slovníku nabízí návrhy slov na základě aktuálního oboru.
@@ -196,11 +196,11 @@ Token je nejmenší jednotka, která mohou být označeny v entitě. Tokenizace 
 
 ## <a name="true-negative"></a>Záporné hodnoty true (TN)
 
-V [batch testování][batch-testing], datových bodů představují projevy, ve kterých vaše aplikace správně předpovědět neexistence cílové záměr na entitu.
+V [batch testování](interactive-test.md#batch-testing), datových bodů představují projevy, ve kterých vaše aplikace správně předpovědět neexistence cílové záměr na entitu.
 
 ## <a name="true-positive"></a>Pravdivě pozitivní upozornění (TP)
 
-V [batch testování][batch-testing], datových bodů představují projevy, ve kterých vaše aplikace správně předpovědět existenci cílové záměr na entitu.
+V [batch testování](interactive-test.md#batch-testing), datových bodů představují projevy, ve kterých vaše aplikace správně předpovědět existenci cílové záměr na entitu.
 
 ## <a name="utterance"></a>Utterance
 
@@ -209,5 +209,3 @@ Utterance je přirozený jazyk frázi, jako je například "book 2 lístky pro S
 ## <a name="version"></a>Verze
 
 LUIS [verze](luis-how-to-manage-versions.md) je konkrétní datový model přidružené k ID aplikace LUIS a publikované koncového bodu. Každá aplikace LUIS má alespoň jednu verzi.
-
-[batch-testing]: https://docs.microsoft.com/azure/cognitive-services/luis/interactive-test#batch-testing

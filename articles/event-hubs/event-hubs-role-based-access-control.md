@@ -1,67 +1,63 @@
 ---
-title: Azure preview Event Hubs Role-Based řízení přístupu (RBAC) | Microsoft Docs
-description: Řízení přístupu založené na Role Azure Event Hubs
+title: Azure ve verzi preview Event Hubs Role-Based řízení přístupu (RBAC) | Dokumentace Microsoftu
+description: Řízení přístupu podle Role Azure Event Hubs
 services: event-hubs
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: ''
-ms.assetid: ''
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 12/19/2017
+ms.date: 07/05/2018
 ms.author: sethm
-ms.openlocfilehash: 0d3a779eb2cccf242bcd42d82c1a90048b3512ab
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 9c38f74cd4499fad1feaadb6c1bbc99da791ebd6
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2017
-ms.locfileid: "26783410"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37888363"
 ---
 # <a name="active-directory-role-based-access-control-preview"></a>Aktivní Directory Role-Based řízení přístupu (preview)
 
-Microsoft Azure poskytuje správu řízení integrované přístupu k prostředkům a aplikacím, které jsou založené na Azure Active Directory (Azure AD). S Azure AD, můžete buď spravovat uživatelské účty a aplikace speciálně pro vaši Azure na základě aplikací, nebo můžete vytvořit federaci stávající infrastruktury služby Active Directory s Azure AD pro společnosti jednotného přihlašování, která také zahrnuje prostředků Azure a Azure hostované aplikace. Aby bylo možné udělit přístup k prostředkům Azure pak můžete přiřadit tyto identity uživatelů a aplikací Azure AD pro globální a specifickou pro službu role.
+Microsoft Azure poskytuje správu řízení integrované přístupu k prostředkům a aplikace založené na Azure Active Directory (Azure AD). S Azure AD můžete buď spravovat uživatelské účty a aplikace konkrétně pro aplikace založené na Azure, nebo může provést federaci stávající infrastrukturu služby Active Directory s Azure AD pro pořádaného microsoftem single-sign-on, která také zahrnuje prostředky Azure a aplikace hostované v Azure. Aby bylo možné udělit přístup k prostředkům Azure pak můžete přiřadit tyto identity uživatelů a aplikací Azure AD pro globální a specifické pro služby role.
 
-Pro Azure Event Hubs, správu oborů názvů a všechny související prostředky prostřednictvím portálu Azure a rozhraní API pro správu prostředků Azure už je chráněný pomocí *řízení přístupu na základě role* modelu (RBAC). Funkce RBAC pro modul runtime operace je nyní ve verzi public preview. 
+Pro Azure Event Hubs, Správa oborů názvů a všech souvisejících prostředků na webu Azure portal a rozhraní API pro správu prostředků Azure už je chráněný pomocí *řízení přístupu na základě rolí* modelu (RBAC). RBAC pro modul runtime operace funkce je teď ve verzi public preview. 
 
-Aplikace, která používá Azure AD RBAC nemusí zpracování pravidel SAS a klíče nebo jiných přístupových tokenů specifické pro službu Event Hubs. Klientská aplikace komunikuje se službou Azure AD k navázání kontext ověřování a získá token přístupu pro službu Event Hubs. S uživatelskými účty domény, které vyžadují interaktivní přihlášení aplikace nikdy zpracovává všechny přihlašovací údaje přímo.
+Aplikace, která používá Azure AD RBAC není potřeba zpracovat pravidla SAS a klíče nebo jiné přístupové tokeny specifické pro službu Event Hubs. Klientská aplikace komunikuje se službou Azure AD k navázání kontext ověřování a získá přístupový token pro službu Event Hubs. S uživatelskými účty domény, které vyžadují interaktivního přihlášení aplikace nikdy zpracovává všechny přihlašovací údaje přímo.
 
 ## <a name="event-hubs-roles-and-permissions"></a>Event Hubs role a oprávnění
 
-Pro počáteční verzi public preview můžete pouze přidat účty Azure AD a objekty služby rolí "Vlastník" nebo "Přispěvatel" oboru názvů služby Event Hubs. Tato operace udělují oprávnění Úplné řízení všech entit v oboru názvů identity. Operace správy, které mění topologii obor názvů se původně podporované správy prostředků, když Azure a ne prostřednictvím rozhraní pro správu nativní REST centra událostí. Tato podpora také znamená, že klient pro rozhraní .NET Framework [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) objekt nelze použít s účtem Azure AD.  
+Počáteční verze public Preview můžete pouze přidat účty služby Azure AD a instanční objekty "Vlastník" nebo "Přispěvatel" rolí obor názvů služby Event Hubs. Tato operace udělují oprávnění Úplné řízení všech entit v oboru názvů identity. Operace správy, které se mění topologii obor názvů jsou zpočátku pouze podporované i když Azure resource management a ne přes rozhraní nativní Správa Event Hubs REST. Tato podpora také znamená, že rozhraní .NET Framework client [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) objekt nelze použít s účtem služby Azure AD.  
 
-## <a name="use-event-hubs-with-an-azure-ad-domain-user-account"></a>Uživatelský účet domény služby Azure AD pomocí služby Event Hubs
+## <a name="use-event-hubs-with-an-azure-ad-domain-user-account"></a>Uživatelský účet domény Azure AD pomocí služby Event Hubs
 
-Následující část popisuje kroky potřebné k vytvoření a spuštění ukázkové aplikace, která zobrazí výzvu pro interaktivní Azure AD přihlášení uživatele, jak k udělení přístupu Event Hubs s daným uživatelským účtem a jak používat tuto identitu pro přístup k Event Hubs. 
+Následující část popisuje kroky potřebné k vytvoření a spuštění ukázkové aplikace, který zobrazí výzvu k zadání interaktivní Azure AD přihlášení uživatele, jak udělit přístup k Event Hubs s daným uživatelským účtem a tom, jak použít tuto identitu pro přístup k Event Hubs. 
 
-Tento úvod popisuje jednoduché konzolové aplikace [kód, pro který je na Githubu](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Rbac/EventHubsSenderReceiverRbac/)
+Tento úvod popisuje jednoduchou konzolovou aplikaci, [kód, pro který je na Githubu](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Rbac/EventHubsSenderReceiverRbac/)
 
-### <a name="create-an-active-directory-user-account"></a>Vytvořit uživatelský účet služby Active Directory
+### <a name="create-an-active-directory-user-account"></a>Vytvoření účtu uživatele služby Active Directory
 
-Tento první krok je volitelný. Každé předplatné služby Azure automaticky spárují se klienta služby Azure Active Directory a zda máte přístup k předplatnému Azure, váš uživatelský účet je již zaregistrován. To znamená, že používáte na váš účet. 
+Tento první krok je volitelný. Každé předplatné služby Azure se automaticky páruje s oblastí tenanta služby Azure Active Directory a pokud máte přístup k předplatnému Azure, váš uživatelský účet je už zaregistrovaný. To znamená, že používáte na váš účet. 
 
-Pokud chcete vytvořit účet specifické pro tento scénář [postupujte podle těchto kroků](../automation/automation-create-aduser-account.md). Musíte mít oprávnění k vytváření účtů v klientovi služby Azure Active Directory, která nemusí být případ větší podnikové scénáře.
+Pokud chcete vytvořit zvláštní účet pro tento scénář [postupujte podle těchto kroků](../automation/automation-create-aduser-account.md). Musíte mít oprávnění k vytváření účtů v tenantovi Azure Active Directory, která nemusí být v případě větší podnikové scénáře.
 
-### <a name="create-an-event-hubs-namespace"></a>Vytvoření oboru názvů Event Hubs
+### <a name="create-an-event-hubs-namespace"></a>Vytvořte obor názvů služby Event Hubs
 
-Dále [vytvoření oboru názvů Event Hubs](event-hubs-create.md) v jedné oblasti Azure, které mají Event Hubs preview podporu pro RBAC: **USA – východ**, **USA – východ 2**, nebo **západní Evropa** . 
+Dále [vytvořte obor názvů služby Event Hubs](event-hubs-create.md) v jedné oblasti Azure, které podporují službu Event Hubs ve verzi preview pro RBAC: **oblasti USA – východ**, **USA – východ 2**, nebo **západní Evropa** . 
 
-Po vytvoření oboru názvů, přejděte do jeho **řízení přístupu (IAM)** na portálu a pak klikněte na tlačítko **přidat** k Azure AD uživatelský účet přidal k roli vlastníka. Pokud používáte vlastní uživatelský účet a vytvoříte obor názvů, jste již v roli vlastníka. Pokud chcete přidat jiný účet k roli, vyhledejte název webové aplikace **přidat oprávnění** panel **vyberte** pole a pak klikněte na položku. Potom klikněte na **Uložit**.
+Jakmile se vytvoří obor názvů, přejděte do jeho **řízení přístupu (IAM)** stránky na portálu a potom klikněte na **přidat** přidání do role vlastníka účtu uživatele Azure AD. Pokud používáte vlastní uživatelský účet a vytvořili obor názvů, jste již v roli vlastník. Pokud chcete přidat jiný účet k roli, vyhledejte název webové aplikace v **přidat oprávnění** panel **vyberte** pole a potom klikněte na položku. Potom klikněte na **Uložit**.
  
 ![](./media/event-hubs-role-based-access-control/rbac1.PNG)
 
-Uživatelský účet má teď přístup k oboru názvů služby Event Hubs a do centra událostí jste předtím vytvořili.
+Uživatelský účet má teď přístup k oboru názvů služby Event Hubs a do centra událostí, kterou jste vytvořili dřív.
  
 ### <a name="register-the-application"></a>Zaregistrovat aplikaci
 
-Před spuštěním ukázkovou aplikaci zaregistrovat ve službě Azure AD a schválit řádku souhlasu, která umožňuje aplikaci pro přístup Event Hubs jeho jménem. 
+Předtím, než spustíte ukázkovou aplikaci zaregistrovat ve službě Azure AD a schválit výzva k povolení spuštění, který umožňuje aplikaci přístup k Event Hubs svým jménem. 
 
-Protože vzorová aplikace je konzolovou aplikaci, musíte registrovat nativní aplikaci a přidejte oprávnění rozhraní API pro **Microsoft.EventHub** do sady "požadovaná oprávnění". Nativní aplikace je také nutné **redirect-URI** ve službě Azure AD, která slouží jako identifikátor URI není nutné do cílového umístění v síti. Použití `http://eventhubs.microsoft.com` v tomto příkladu protože ukázku kódu již používá tento identifikátor URI.
+Protože ukázková aplikace je konzolová aplikace, musí registrovat nativní aplikaci a přidejte oprávnění k rozhraní API pro **Microsoft.EventHub** do sady "požadováno oprávnění". Nativní aplikace také potřebují **redirect-URI** ve službě Azure AD, který slouží jako identifikátor URI není potřeba se cílové sítě. Použití `http://eventhubs.microsoft.com` v tomto příkladu vzhledem k tomu, že ukázkový kód již používá tento identifikátor URI.
 
-Registrace podrobný postup je podrobně [v tomto kurzu](../active-directory/develop/active-directory-integrating-applications.md). Postupujte podle kroků k registraci **nativní** aplikace a pak postupujte podle pokynů aktualizace a přidejte **Microsoft.EventHub** rozhraní API požadovaná oprávnění. Jak budete postupovat podle kroků, poznamenejte si **TenantId** a **ApplicationId**, jak je budete potřebovat tyto hodnoty ke spuštění aplikace.
+Podrobné registrační kroky jsou vysvětlené v [v tomto kurzu](../active-directory/develop/active-directory-integrating-applications.md). Postupujte podle pokynů pro registraci **nativní** aplikace a pak postupujte podle pokynů aktualizace a přidejte **Microsoft.EventHub** rozhraní API požadovaná oprávnění. Jak budete postupovat podle kroků, poznamenejte si **TenantId** a **ApplicationId**, protože ji budete potřebovat tyto hodnoty ke spuštění aplikace.
 
 ### <a name="run-the-app"></a>Spuštění aplikace
 
@@ -69,14 +65,14 @@ Před spuštěním ukázky, upravte soubor App.config a v závislosti na scéná
 
 - `tenantId`: Nastavte na **TenantId** hodnotu.
 - `clientId`: Nastavte na **ApplicationId** hodnotu. 
-- `clientSecret`: Pokud se chcete přihlásit pomocí tajný klíč klienta, vytvořte ho ve službě Azure AD. Navíc místo nativní aplikace použijte na webovou aplikaci nebo rozhraní API. Navíc přidat aplikaci v části **řízení přístupu (IAM)** v oboru názvů, které jste předtím vytvořili.
-- `eventHubNamespaceFQDN`: Nastavte na úplný název DNS vašeho nově vytvořeného oboru názvů služby Event Hubs; například `example.servicebus.windows.net`.
-- `eventHubName`: Nastavte na název centra událostí, kterou jste vytvořili.
-- Identifikátor URI přesměrování, který jste zadali ve vaší aplikaci v předchozích krocích.
+- `clientSecret`: Pokud chcete k přihlášení pomocí tajného klíče klienta, vytvořte ho ve službě Azure AD. Také můžete použijte webovou aplikaci nebo API namísto nativní aplikaci. Přidejte také aplikaci v rámci **řízení přístupu (IAM)** v oboru názvů, kterou jste vytvořili dřív.
+- `eventHubNamespaceFQDN`: Nastavte na plně kvalifikovaný název DNS vašeho nově vytvořeného oboru názvů služby Event Hubs; například `example.servicebus.windows.net`.
+- `eventHubName`: Nastavte na název centra událostí, které jste vytvořili.
+- Identifikátor URI pro přesměrování, který jste zadali ve vaší aplikaci v předchozích krocích.
  
-Při spuštění konzolové aplikace, budete vyzváni k výběru scénáři; Klikněte na tlačítko **interaktivní přihlášení uživatele** zadáním jeho číslo a stisknutím klávesy ENTER. Aplikace zobrazí okno přihlášení, požádá o váš souhlas pro přístup k Event Hubs a pak je spustit prostřednictvím scénáři odesílání a přijímání pomocí identity přihlášení pomocí služby.
+Když spustíte aplikaci konzoly, zobrazí se výzva k výběru scénáře; Klikněte na tlačítko **interaktivní přihlášení uživatele** zadáním příslušného čísla a stisknutím klávesy ENTER. Aplikace zobrazí okno přihlášení, vyzve k zadání vašeho svolení pro přístup k Event Hubs a potom použije službu pro spuštění prostřednictvím scénář posílání a přijímání pomocí identity přihlášení.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o službě Event Hubs naleznete pod těmito odkazy:
 

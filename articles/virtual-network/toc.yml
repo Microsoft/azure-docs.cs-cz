@@ -69,10 +69,10 @@
       items:
         - name: Skupiny zabezpečení sítě
           items:
+            - name: Azure PowerShell
+              href: tutorial-filter-network-traffic-powershell.md
             - name: Azure CLI
               href: tutorial-filter-network-traffic-cli.md
-            - name: Azure Portal
-              href: virtual-networks-create-nsg-arm-pportal.md
         - name: Směrovací tabulky
           items:
             - name: Azure PowerShell

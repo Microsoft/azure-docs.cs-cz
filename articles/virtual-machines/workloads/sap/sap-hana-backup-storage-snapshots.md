@@ -13,12 +13,12 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: rclaus
-ms.openlocfilehash: c7c90a2e24d8dbe7764825abe18c5a1e73b67499
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 1d3089052a67b899e2e4b38123145bd4ae51693f
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37868734"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37902295"
 ---
 # <a name="sap-hana-backup-based-on-storage-snapshots"></a>Zálohování SAP HANA založené na snímcích úložiště
 
@@ -90,7 +90,8 @@ Podrobnosti, ve kterém můžete zkopírovat tyto skripty a podrobnosti o tom, j
 
 - [Plánování infrastruktury zálohování virtuálních počítačů v Azure](https://docs.microsoft.com/en-us/azure/backup/backup-azure-vms-introduction)
 - [Žádosti konzistentní konzistentní zálohování virtuálních počítačů Azure s Linuxem](https://docs.microsoft.com/en-us/azure/backup/backup-azure-linux-app-consistent)
-- 
+
+
 
 V tomto okamžiku v okamžiku, nepublikoval Microsoft připraví a po pořízení snímku skriptů pro SAP HANA. Jako zákazník nebo systém integrátor musíte vytvořit tyto skripty a nakonfigurovat postupem podle dokumentace výše uvedenými.
 
@@ -99,7 +100,7 @@ V tomto okamžiku v okamžiku, nepublikoval Microsoft připraví a po pořízen�
 Proces obnovení konzistentní vzhledem k aplikacím zálohu aplikace pořízeným službou Azure backup je popsána v článku [obnovení souborů ze záloh virtuálních počítačů Azure](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm). 
 
 > [!IMPORTANT]
-> V následujícím článku [obnovení souborů ze záloh virtuálních počítačů Azure](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm)neexistuje seznam výjimek a kroků uvedených při použití disku prokládané sady. Prokládané disky jsou tak pravděpodobnou příčinou regulární konfigurace virtuálního počítače pro SAP HANA. Proto je důležité najdete v článku a otestovat proces obnovení pro případy, jak je uvedeno v následujícím článku. 
+> V následujícím článku [obnovení souborů ze záloh virtuálních počítačů Azure](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm) je seznam výjimek a kroky uvedené při použití disku prokládané sady. Prokládané disky jsou tak pravděpodobnou příčinou regulární konfigurace virtuálního počítače pro SAP HANA. Proto je důležité najdete v článku a otestovat proces obnovení pro případy, jak je uvedeno v následujícím článku. 
 
 
 

@@ -1,6 +1,6 @@
 ---
-title: Hostování Ruby, na které webu na virtuální počítač s Linuxem | Microsoft Docs
-description: Nastavení a hostitelem Ruby na web na základě které v Azure pomocí virtuální počítač s Linuxem.
+title: Hostování Ruby on Rails webu na Linuxovém virtuálním počítači | Dokumentace Microsoftu
+description: Nastavení a hostovat Ruby on Rails podle webu v Azure pomocí virtuálního počítače s Linuxem.
 services: virtual-machines-linux
 documentationcenter: ruby
 author: rmcmurray
@@ -15,17 +15,17 @@ ms.devlang: ruby
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: robmcm
-ms.openlocfilehash: fa19f3dc7dded712102d4ba9b66dd4df1bfd20dd
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 6ea1d249b7f9aec3a45923b162a97ce7f83d0d31
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29397593"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37901149"
 ---
 # <a name="ruby-on-rails-web-application-on-an-azure-vm"></a>Webová aplikace Ruby on Rails na virtuálním počítači Azure
-Tento kurz ukazuje, jak k hostování Ruby, na které webu v Azure pomocí virtuální počítač s Linuxem.  
+Tento kurz ukazuje, jak hostovat Ruby on Rails webu v Azure pomocí virtuálního počítače s Linuxem.  
 
-V tomto kurzu se ověřila pomocí Ubuntu Server 14.04 LTS. Pokud chcete použít jiný distribuční Linux, může musíte upravit postup instalace které.
+V tomto kurzu se ověřila pomocí Ubuntu Server 14.04 LTS. Pokud používáte jiné distribuce Linuxu, můžete potřebovat upravit kroky instalace Rails.
 
 > [!IMPORTANT]
 > Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Resource Manager a klasický model](../../../azure-resource-manager/resource-manager-deployment-model.md).  Tento článek se věnuje použití klasického modelu nasazení. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager.
@@ -33,31 +33,31 @@ V tomto kurzu se ověřila pomocí Ubuntu Server 14.04 LTS. Pokud chcete použí
 >
 
 ## <a name="create-an-azure-vm"></a>Vytvoření virtuálního počítače Azure
-Začněte vytvořením virtuálního počítače Azure s bitovou kopii systému Linux.
+Začněte tím, že vytvoříte virtuální počítač Azure s imagí Linuxu.
 
-Pokud chcete vytvořit virtuální počítač, můžete použít portál Azure nebo rozhraní příkazového řádku Azure (CLI).
+Pokud chcete vytvořit virtuální počítač, můžete na webu Azure portal nebo rozhraní příkazového řádku Azure (CLI).
 
 ### <a name="azure-portal"></a>Azure Portal
-1. Přihlaste se k [portálu Azure](https://portal.azure.com)
-2. Klikněte na tlačítko **vytvořit prostředek**, zadejte do vyhledávacího pole "Ubuntu Server 14.04". Klikněte na položku nalezené. Pro model nasazení vyberte **Classic**, pak klikněte na tlačítko "Vytvořit".
-3. V okně základy zadat hodnoty povinných polí: název (pro virtuální počítač), uživatelské jméno, typ ověřování a odpovídající údaje předplatného Azure, skupinu prostředků a umístění.
+1. Přihlaste se [webu Azure portal](https://portal.azure.com)
+2. Klikněte na tlačítko **vytvořit prostředek**, do vyhledávacího pole zadejte "Ubuntu Server 14.04". Klikněte na položku vrácenou při hledání. Pro model nasazení vyberte **Classic**, pak klikněte na možnost "Vytvořit".
+3. V okně základy zadat hodnoty pro požadované pole: název (pro virtuální počítač), uživatelské jméno, typ ověřování a odpovídající přihlašovací údaje předplatného Azure, skupinu prostředků a umístění.
 
-   ![Vytvořit novou bitovou kopii Ubuntu](./media/virtual-machines-linux-classic-ruby-rails-web-app/createvm.png)
+   ![Vytvořte novou Ubuntu Image](./media/virtual-machines-linux-classic-ruby-rails-web-app/createvm.png)
 
-4. Po zřízení virtuálního počítače, klikněte na název virtuálního počítače a klikněte na tlačítko **koncové body** v **nastavení** kategorie. Najít koncový bod SSH, uvedené v části **samostatné**.
+4. Po zřízení virtuálního počítače, klikněte na název virtuálního počítače a klikněte na tlačítko **koncové body** v **nastavení** kategorie. Najít koncový bod SSH, uvedený v části **samostatné**.
 
    ![Výchozí koncový bod](./media/virtual-machines-linux-classic-ruby-rails-web-app/endpointsnewportal.png)
 
 ### <a name="azure-cli"></a>Azure CLI
-Postupujte podle kroků v [vytvořit virtuálním počítači systémem Linux][vm-instructions].
+Postupujte podle kroků v [vytvořit s Linuxem spuštěný virtuální počítač][vm-instructions].
 
-Po zřízení virtuálního počítače, můžete získat koncový bod SSH spuštěním následujícího příkazu:
+Po zřízení virtuálního počítače, získáte koncový bod SSH pomocí následujícího příkazu:
 
     azure vm endpoint list <vm-name>  
 
-## <a name="install-ruby-on-rails"></a>Nainstalujte na které Ruby
-1. Použití SSH se připojit k virtuálnímu počítači.
-2. Z relace SSH použijte následující příkazy pro instalaci Ruby ve virtuálním počítači:
+## <a name="install-ruby-on-rails"></a>Nainstalovat rámec Ruby on Rails
+1. Pomocí SSH se připojte k virtuálnímu počítači.
+2. Z relace SSH pomocí následujících příkazů nainstalujte Ruby na virtuálním počítači:
 
         sudo apt-get update -y
         sudo apt-get upgrade -y
@@ -69,25 +69,25 @@ Po zřízení virtuálního počítače, můžete získat koncový bod SSH spuš
         > [!TIP]
         > The brightbox repository contains the current Ruby distribution.
 
-    Instalace může trvat několik minut. Po dokončení, ověřte, zda je nainstalován Ruby pomocí následujícího příkazu:
+    Instalace může trvat několik minut. Po dokončení, použijte následující příkaz k ověření, že je nainstalovaná Ruby:
 
         ruby -v
 
-3. Použijte následující příkaz k instalaci které:
+3. Pomocí následujícího příkazu nainstalujte Rails:
 
         sudo gem install rails --no-rdoc --no-ri -V
 
-    Použití--ne rdoc a--ne ri příznaky tak, aby přeskočil instalace dokumentace, která je rychlejší.
-    Tento příkaz bude pravděpodobně trvat dlouhou dobu spuštění, takže přidání -V se zobrazí informace o průběhu instalace.
+    Použití příznaky--no-rdoc a – ne rezervované instance přeskočte instalaci dokumentace, která je rychlejší.
+    Tento příkaz bude pravděpodobně trvat dlouhou dobu spuštění, tak přidání -V se zobrazí informace o průběhu instalace.
 
 ## <a name="create-and-run-an-app"></a>Vytvoření a spuštění aplikace
-Při přihlášení se stále pomocí protokolu SSH, spusťte následující příkazy:
+Zůstaňte přihlášení přes protokol SSH, spusťte následující příkazy:
 
     rails new myapp
     cd myapp
     rails server -b 0.0.0.0 -p 3000
 
-[Nové](http://guides.rubyonrails.org/command_line.html#rails-new) příkaz vytvoří novou aplikaci které. [Server](http://guides.rubyonrails.org/command_line.html#rails-server) příkaz spustí WEBrick webový server, který se dodává s které. (Pro použití v provozním prostředí, by pravděpodobně chcete použít jiný server, jako je například Unicorn nebo osobní.)
+[Nové](http://guides.rubyonrails.org/command_line.html#rails-new) příkaz vytvoří novou aplikaci Rails. [Server](http://guides.rubyonrails.org/command_line.html#rails-server) příkaz spustí WEBrick webový server, který je součástí Rails. (Pro použití v produkčním prostředí by pravděpodobně chcete použít jiný server, jako je například Unicornu nebo osobní.)
 
 Zobrazený výstup by měl vypadat přibližně takto:
 
@@ -100,44 +100,44 @@ Zobrazený výstup by měl vypadat přibližně takto:
     [2015-06-09 23:34:23] INFO  WEBrick::HTTPServer#start: pid=27766 port=3000
 
 ## <a name="add-an-endpoint"></a>Přidání koncového bodu
-1. Přejděte k [portálu Azure] [https://portal.azure.com] a vyberte virtuální počítač.
+1. Přejděte na [webu Azure portal] [https://portal.azure.com] a vyberte svůj virtuální počítač.
 
 2. Vyberte **koncové body** v **nastavení** na levé straně okraj stránky.
 
 3. Klikněte na tlačítko **přidat** v horní části stránky.
 
-4. V **přidání koncového bodu** dialogové okno stránky, zadejte následující informace:
+4. V **přidat koncový bod** dialogového okna stránky, zadejte následující informace:
 
    * **Název**: HTTP
    * **Protokol**: TCP
    * **Veřejný port**: 80
    * **Privátní port**: 3000
-   * **Plovoucí PÍ adresu**: zakázáno
-   * **Seznam řízení přístupu – pořadí**: 1001 nebo jinou hodnotu, která nastavuje prioritu Toto přístupové pravidlo.
+   * **Plovoucí adresa PI**: zakázáno
+   * **Seznam řízení přístupu – pořadí**: 1001 nebo jinou hodnotu, která nastaví prioritu Toto přístupové pravidlo.
    * **Seznam řízení přístupu – název**: allowHTTP
    * **Seznam řízení přístupu – akce**: Povolit
-   * **Seznam řízení přístupu – vzdálené podsíti**: 1.0.0.0/16
+   * **Seznam řízení přístupu – vzdálené podsítě**: 1.0.0.0/16
 
-     Tento koncový bod má veřejný port 80, který bude směrovat provoz privátní port 3000, kde je server které přijímá. Pravidlo seznamu řízení přístupu umožňuje veřejné přenosy na portu 80.
+     Tento koncový bod má veřejný port 80, který bude směrovat provoz do privátní port 3000, ve kterém naslouchá Rails server. Pravidlo seznamu řízení přístupu umožňuje veřejné provozu na portu 80.
 
      ![Nový koncový bod](./media/virtual-machines-linux-classic-ruby-rails-web-app/createendpoint.png)
 
-5. Klikněte na tlačítko OK uložíte koncový bod.
+5. Kliknutím na OK uložte koncový bod.
 
-6. Měli zobrazí zpráva s oznámením **ukládání koncový bod virtuálního počítače**. Jakmile se tato zpráva zmizí, koncový bod je aktivní. Teď může otestovat aplikaci tak, že přejdete na název DNS virtuálního počítače. Web by měl vypadat přibližně takto:
+6. By měla zobrazit zpráva s oznámením **ukládá se koncový bod virtuálního počítače**. Jakmile se tato zpráva zmizí, koncový bod je aktivní. Nyní může otestovat aplikaci tak, že přejdete na název DNS virtuálního počítače. Web by měl vypadat nějak takto:
 
-    ![Výchozí stránka které][default-rails-cloud]
+    ![Výchozí stránka rails][default-rails-cloud]
 
 ## <a name="next-steps"></a>Další postup
-V tomto kurzu jste to udělali většinu kroky ručně. V produkčním prostředí by zapsat aplikaci na vývojovém počítači a nasazení virtuálního počítače Azure. Většině produkčních prostředích hostovat které aplikace ve spojení s jiným procesem serveru, jako je například Apache či NginX, která zpracovává požadavků směrování na více instancí, které aplikace a obsluhuje statické prostředky. Další informace najdete v tématu http://rubyonrails.org/deploy/.
+V tomto kurzu jste provedli většina kroků ručně. V produkčním prostředí by zápisu do aplikace na vývojovém počítači a nasaďte ji do virtuálního počítače Azure. Většina produkční prostředí také hostování aplikace Rails ve spojení s jiným procesem serveru, jako je Apache nebo NginX, která zpracovává žádosti na několik instancí aplikace Rails směrování a obsluhující statické prostředky. Další informace najdete v tématu http://guides.rubyonrails.org/routing.html.
 
-Další informace o Ruby, na které, najdete [Ruby, na které příručky][rails-guides].
+Další informace o Ruby on Rails, přejděte [Ruby on Rails vodítka][rails-guides].
 
-Použití služeb Azure z Ruby aplikace naleznete v tématu:
+Chcete-li využívají služby Azure z vaší aplikace v Ruby, naleznete v tématu:
 
-* [Ukládání nestrukturovaných dat pomocí objektů BLOB][blobs]
-* [Páry klíč – hodnota úložiště pomocí tabulky][tables]
-* [Poskytovat obsah velkou šířku pásma s sítě pro doručování obsahu][cdn-howto]
+* [Store nestrukturovaných dat s využitím objektů BLOB][blobs]
+* [Store páry klíč/hodnota pomocí tabulek][tables]
+* [Obsluha širokopásmového obsahu s Content Delivery Network][cdn-howto]
 
 <!-- WA.com links -->
 [blobs]:../../../storage/blobs/storage-ruby-how-to-use-blob-storage.md

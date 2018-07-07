@@ -1,6 +1,6 @@
 ---
-title: Použít Azure soubor s AKS
-description: Disky systému Azure pomocí AKS
+title: Použijte Azure soubor s AKS
+description: Použití disků v Azure s AKS
 services: container-service
 author: iainfoulds
 manager: jeconnoc
@@ -9,22 +9,22 @@ ms.topic: article
 ms.date: 03/08/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 25ae0e508223b50219e40245cc9dfbc407b96bba
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 0479e4d80b7490db170255d47ef3190bb744d2d8
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37096692"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37901489"
 ---
-# <a name="volumes-with-azure-files"></a>Svazky s soubory Azure
+# <a name="volumes-with-azure-files"></a>Svazky se soubory Azure
 
-Aplikace založené na kontejneru často potřebují přístup a uchovávat data v svazku externí data. Soubory Azure můžete použít jako tohle úložiště dat externí. Tento článek údaje pomocí Azure souborů jako svazek Kubernetes ve službě Azure Kubernetes Service.
+Kontejnerových aplikací často potřebují přístup k a zachovat data ve svazku externí data. Služba soubory Azure může sloužit jako úložiště tuto externí data. Tento článek podrobně popisuje použití Azure files jako svazek Kubernetes ve službě Azure Kubernetes Service.
 
-Další informace o svazcích Kubernetes najdete v tématu [Kubernetes svazky][kubernetes-volumes].
+Další informace o Kubernetes svazky, naleznete v tématu [Kubernetes svazky][kubernetes-volumes].
 
 ## <a name="create-an-azure-file-share"></a>Vytvoření sdílené složky Azure
 
-Před použitím sdílení souborů Azure jako svazek Kubernetes, je nutné vytvořit účet úložiště Azure a sdílené složky. K dokončení těchto úloh můžete použít následující skript. Všimněte si nebo aktualizujte hodnoty parametru, některé z nich je třeba při vytváření svazku Kubernetes.
+Před použitím sdílení souborů Azure jako svazek Kubernetes, musíte vytvořit účet služby Azure Storage a sdílené složky. Následující skript můžete použít k provedení těchto úloh. Všimněte si nebo aktualizujte hodnoty parametrů, některé z nich jsou potřeba při vytváření svazku Kubernetes.
 
 ```azurecli-interactive
 #!/bin/bash
@@ -52,14 +52,14 @@ STORAGE_KEY=$(az storage account keys list --resource-group $AKS_PERS_RESOURCE_G
 
 # Echo storage account name and key
 echo Storage account name: $AKS_PERS_STORAGE_ACCOUNT_NAME
-echo Storgae account key: $STORAGE_KEY
+echo Storage account key: $STORAGE_KEY
 ```
 
-## <a name="create-kubernetes-secret"></a>Vytvoření tajného klíče Kubernetes
+## <a name="create-kubernetes-secret"></a>Vytvoření tajného kódu Kubernetes
 
-Kubernetes potřebuje přihlašovací údaje pro přístup ke sdílené složce. Tyto přihlašovací údaje jsou uložené v [tajný klíč Kubernetes][kubernetes-secret], který se odkazuje při vytváření Kubernetes pod.
+Kubernetes potřebuje přihlašovací údaje pro přístup ke sdílené složce. Tyto přihlašovací údaje jsou uložené v [tajného kódu Kubernetes][kubernetes-secret], který se odkazuje při vytváření podu Kubernetes.
 
-Použijte následující příkaz k vytvoření tajný klíč. Nahraďte `STORAGE_ACCOUNT_NAME` s názvem svého účtu úložiště a `STORAGE_ACCOUNT_KEY` s klíče účtu úložiště.
+Následujícím příkazem vytvořte tajný kód. Nahraďte `STORAGE_ACCOUNT_NAME` s názvem vašeho účtu úložiště a `STORAGE_ACCOUNT_KEY` se klíče účtu úložiště.
 
 ```console
 kubectl create secret generic azure-secret --from-literal=azurestorageaccountname=STORAGE_ACCOUNT_NAME --from-literal=azurestorageaccountkey=STORAGE_ACCOUNT_KEY
@@ -67,7 +67,7 @@ kubectl create secret generic azure-secret --from-literal=azurestorageaccountnam
 
 ## <a name="mount-file-share-as-volume"></a>Připojení sdílené složky jako svazek
 
-Připojte do sdílené složky Azure soubory do vaší pod nakonfigurováním svazek v jeho specifikace. Vytvořte nový soubor s názvem `azure-files-pod.yaml` s tímto obsahem. Aktualizace `aksshare` s názvem uvedeným k Azure Files sdílet.
+Připojení vaší sdílenou složku služby soubory Azure do podu pomocí konfigurace svazku v jeho specifikace. Vytvořte nový soubor s názvem `azure-files-pod.yaml` s následujícím obsahem. Aktualizace `aksshare` název použitý pro soubory Azure sdílet.
 
 ```yaml
 apiVersion: v1
@@ -89,17 +89,17 @@ spec:
       readOnly: false
 ```
 
-K vytvoření pod použijte kubectl.
+Můžete vytvořit pod kubectl.
 
 ```azurecli-interactive
 kubectl apply -f azure-files-pod.yaml
 ```
 
-Nyní máte kontejner spuštěné s Azure sdílené složky připojené `/mnt/azure` adresáře.  Zobrazí připojení při kontrole vaší pod prostřednictvím svazku `kubectl describe pod azure-files-pod`.
+Teď máte spuštěný kontejner se sdílenou složkou Azure připojené `/mnt/azure` adresáře.  Vidíte připojení při kontrole podu prostřednictvím svazku `kubectl describe pod azure-files-pod`.
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o Kubernetes svazky s využitím Azure Files.
+Další informace o svazcích Kubernetes pomocí služby soubory Azure.
 
 > [!div class="nextstepaction"]
 > [Modul plug-in Kubernetes pro Azure Files][kubernetes-files]

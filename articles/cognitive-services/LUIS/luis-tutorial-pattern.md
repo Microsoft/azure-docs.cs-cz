@@ -10,12 +10,12 @@ ms.technology: luis
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr;
-ms.openlocfilehash: 9793b98c384346dc0de68061d42b4bcb3c513ed4
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 12105829f62b988760d3bbf18000466fd27b9aff
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/06/2018
-ms.locfileid: "37866198"
+ms.locfileid: "37888326"
 ---
 # <a name="tutorial-use-patterns-to-improve-predictions"></a>Kurz: Použití vzorců k vylepšení predikce
 
@@ -29,7 +29,7 @@ V tomto kurzu pomocí vzorů zvýšit předpovědi záměr a entity.
 * Jak přidat roli do entity k vyhledání kontextově založené na entity
 * Postup přidání Pattern.any najít entity volného tvaru
 
-Pro účely tohoto článku potřebujete bezplatný účet [LUIS][LUIS], abyste mohli vytvořit svou aplikaci LUIS.
+Pro účely tohoto článku potřebujete bezplatný účet [LUIS](luis-reference-regions.md), abyste mohli vytvořit svou aplikaci LUIS.
 
 ## <a name="import-humanresources-app"></a>Importovat aplikaci lidských zdrojů
 V tomto kurzu importuje aplikaci lidských zdrojů. Aplikace obsahuje tři záměry: None, GetEmployeeOrgChart, GetEmployeeBenefits. Dvě entity, které k němu má aplikace: předem připravených číslo a zaměstnance. Entita zaměstnanců je jednoduché entity k extrakci jméno zaměstnance. 
@@ -250,6 +250,4 @@ Pokud už aplikaci LUIS nepotřebujete, odstraňte ji. Uděláte to tak, vyberte
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Použijte frázi seznam k vylepšení predikce](luis-tutorial-interchangeable-phrase-list.md)
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions
+> [Přečtěte si osvědčené postupy pro aplikace LUIS](luis-concept-best-practices.md)

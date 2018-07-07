@@ -1,24 +1,24 @@
 ---
-title: Správa clusteru Azure DC/OS pomocí rozhraní REST API Marathonu
-description: Nasazení kontejnerů do clusteru Azure Container Service DC/OS pomocí rozhraní REST API Marathonu.
+title: Správa clusteru Azure DC/OS pomocí API REST systému Marathon
+description: Nasazení kontejnerů do clusteru Azure Container Service DC/OS pomocí rozhraní API REST systému Marathon.
 services: container-service
-author: dlepow
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 04/04/2017
-ms.author: danlep
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: edd66be25bf2571a7315372898300476fec101ca
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 34fc6f946d172f1431367e84f9d4d8a6855003ed
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32165601"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37901753"
 ---
-# <a name="dcos-container-management-through-the-marathon-rest-api"></a>Správa kontejnerů DC/OS přes rozhraní REST API Marathonu
+# <a name="dcos-container-management-through-the-marathon-rest-api"></a>Správa kontejnerů DC/OS prostřednictvím rozhraní REST API Marathonu
 
-DC/OS poskytuje prostředí pro nasazování a škálování clusterových úloh a zároveň poskytuje abstrakci používaného hardwaru. Nad DC/OS je rozhraní, které spravuje plánování a provádění výpočetních úloh. I když jsou k dispozici pro mnoho populárních úloh rozhraní, tento dokument vám pomůže začít vytváření a škálování nasazení kontejnerů pomocí rozhraní REST API Marathonu. 
+DC/OS poskytuje prostředí pro nasazování a škálování clusterových úloh a zároveň poskytuje abstrakci používaného hardwaru. Nad DC/OS je rozhraní, které spravuje plánování a provádění výpočetních úloh. I když jsou k dispozici pro mnoho populárních úloh rozhraní, tento dokument vám pomůže začít vytváření a škálování kontejnerových nasazení pomocí rozhraní API REST systému Marathon. 
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -27,13 +27,13 @@ Než si projdete tyto příklady, budete potřebovat cluster DC/OS nakonfigurova
 * [Nasazení clusteru Azure Container Service](container-service-deployment.md)
 * [Připojení ke clusteru Azure Container Service](../container-service-connect.md)
 
-## <a name="access-the-dcos-apis"></a>Přístup k rozhraní API DC/OS
-Po připojení ke clusteru Azure Container Service, můžete přístup k DC/OS a související rozhraní REST API prostřednictvím http://localhost:local-port. Příklady v tomto dokumentu předpokládají, že máte k dispozici tunel na portu 80. Například Marathon koncové body k dispozici na adrese identifikátory URI počínaje `http://localhost/marathon/v2/`. 
+## <a name="access-the-dcos-apis"></a>Přístup k rozhraním API DC/OS
+Až se připojíte ke clusteru Azure Container Service, dostanete DC/OS a související rozhraní REST API přes http://localhost:local-port. Příklady v tomto dokumentu předpokládají, že máte k dispozici tunel na portu 80. Například se dá kontaktovat koncové body nástroje Marathon na identifikátory URI začínající `http://localhost/marathon/v2/`. 
 
 Další informace o různých rozhraních API najdete v dokumentaci Mesosphere pro rozhraní [Marathon API](https://mesosphere.github.io/marathon/docs/rest-api.html) a [Chronos API](https://mesos.github.io/chronos/docs/api.html) a v dokumentaci Apache pro rozhraní [Mesos Scheduler API](http://mesos.apache.org/documentation/latest/scheduler-http-api/).
 
 ## <a name="gather-information-from-dcos-and-marathon"></a>Získání informací z DC/OS a Marathonu
-Než do clusteru DC/OS nasadíte kontejnery, zjistěte si určité informace o clusteru DC/OS, například názvy a stav agentů DC/OS. To provedete tak, že zašlete dotaz na koncový bod `master/slaves` rozhraní REST API DC/OS. Pokud všechno proběhne správně, dotaz vrátí seznam agentů DC/OS a u každého z nich několik vlastností.
+Před nasazení kontejnerů do clusteru DC/OS, zjistěte si určité informace o clusteru DC/OS, jako jsou názvy a stav agentů DC/OS. To provedete tak, že zašlete dotaz na koncový bod `master/slaves` rozhraní REST API DC/OS. Pokud všechno proběhne správně, dotaz vrátí seznam agentů DC/OS a u každého z nich několik vlastností.
 
 ```bash
 curl http://localhost/mesos/master/slaves
@@ -48,7 +48,7 @@ curl localhost/marathon/v2/apps
 ```
 
 ## <a name="deploy-a-docker-formatted-container"></a>Nasazení kontejneru formátovaného Dockerem
-Kontejnery formátované Dockerem prostřednictvím rozhraní REST API Marathonu nasadíte pomocí souboru JSON, který popisuje zamýšlené nasazení. Následující ukázka nasadí kontejner Nginx do privátní agenta v clusteru. 
+Nasadit kontejnery formátované jako Docker pomocí rozhraní API REST systému Marathon pomocí souboru JSON, který popisuje zamýšlené nasazení. Následující ukázka nasadí kontejner Nginx privátnímu agentovi v clusteru. 
 
 ```json
 {
@@ -69,7 +69,7 @@ Kontejnery formátované Dockerem prostřednictvím rozhraní REST API Marathonu
 }
 ```
 
-Abyste mohli nasadit kontejner formátovaný, ukládat do přístupného umístění souboru JSON. Pak následujícím příkazem nasaďte kontejner. Zadejte název souboru JSON (`marathon.json` v tomto příkladu).
+Pokud chcete nasadit kontejner formátovaný Dockerem, uložení souboru JSON na dostupném místě. Pak následujícím příkazem nasaďte kontejner. Zadejte název souboru JSON (`marathon.json` v tomto příkladu).
 
 ```bash
 curl -X POST http://localhost/marathon/v2/apps -d @marathon.json -H "Content-type: application/json"
@@ -87,18 +87,18 @@ Nyní když Marathonu odešlete dotaz na aplikace, zobrazí se tato nová aplika
 curl localhost/marathon/v2/apps
 ```
 
-## <a name="reach-the-container"></a>Dosažení kontejneru
+## <a name="reach-the-container"></a>Oslovte kontejneru
 
-Můžete ověřit, že Nginx běží v kontejneru na jednom ze soukromých agentů v clusteru. Chcete-li najít hostitele a portu, na kterém je spuštěný kontejneru, dotaz Marathon pro spuštěné úlohy: 
+Můžete ověřit, že je na jednom z privátních agentů v clusteru serveru Nginx běží v kontejneru. Najít hostitele a port, ve kterém je kontejner spuštěný, Marathonu dotaz pro úlohy spuštěné: 
 
 ```bash
 curl localhost/marathon/v2/tasks
 ```
 
-Vrátí hodnotu `host` ve výstupu (podobně jako IP adresu `10.32.0.x`) a hodnota `ports`.
+Vrátí hodnotu `host` ve výstupu (podobně jako na IP adresu `10.32.0.x`) a hodnota `ports`.
 
 
-Nyní terminálu připojení SSH (ne tunelového propojení) proveďte správu plně kvalifikovaný název domény clusteru. Po připojení, zkontrolujte následující požadavek, nahraďte správné hodnoty z `host` a `ports`:
+Teď vytvořte připojení SSH terminálu (ne tunelového propojení) ke správě plně kvalifikovaný název domény clusteru. Po připojení se provést požadavek na následující, kde nahradíte správné hodnoty `host` a `ports`:
 
 ```bash
 curl http://host:ports
@@ -106,22 +106,22 @@ curl http://host:ports
 
 Výstup serveru Nginx je podobný následujícímu:
 
-![Nginx z kontejneru](./media/container-service-mesos-marathon-rest/nginx.png)
+![Server Nginx z kontejneru](./media/container-service-mesos-marathon-rest/nginx.png)
 
 
 
 
 ## <a name="scale-your-containers"></a>Škálování kontejnerů
-Můžete použít rozhraní API Marathonu horizontální navýšení kapacity nebo škálování v nasazení aplikace. V předchozím příkladu jste nasadili jednu instanci aplikace. Nyní škálování aplikace navyšme na tři instance. To provedete tak, že pomocí následujícího textu JSON vytvoříte soubor JSON a uložíte ho na dostupném místě.
+Vám pomůže rozhraním API Marathonu vertikálně nebo horizontálně navýšit kapacitu v nasazení aplikace. V předchozím příkladu jste nasadili jednu instanci aplikace. Nyní škálování aplikace navyšme na tři instance. To provedete tak, že pomocí následujícího textu JSON vytvoříte soubor JSON a uložíte ho na dostupném místě.
 
 ```json
 { "instances": 3 }
 ```
 
-Z tunelového propojení spusťte následující příkaz pro horizontální škálování aplikace.
+Z tunelového připojení spusťte následující příkaz pro horizontální navýšení kapacity aplikace.
 
 > [!NOTE]
-> Identifikátor URI je http://localhost/marathon/v2/apps/ následuje Identifikátor aplikace škálování. Pokud používáte ukázku Nginx, která se zde, identifikátor URI by http://localhost/marathon/v2/apps/nginx.
+> Identifikátor URI je http://localhost/marathon/v2/apps/ za nímž následuje Identifikátor škálování aplikace. Pokud používáte ukázku Nginx, která je k dispozici, identifikátor URI by http://localhost/marathon/v2/apps/nginx.
 > 
 > 
 
@@ -138,7 +138,7 @@ curl localhost/marathon/v2/apps
 ## <a name="equivalent-powershell-commands"></a>Ekvivalentní příkazy PowerShellu
 V systému Windows můžete tyto stejné akce provést pomocí příkazů PowerShellu.
 
-Získat informace o clusteru DC/OS, jako jsou názvy agentů a stavu agentů, spusťte následující příkaz:
+Jak získat informace o clusteru DC/OS, jako jsou názvy agentů a stavu agentů, spusťte následující příkaz:
 
 ```powershell
 Invoke-WebRequest -Uri http://localhost/mesos/master/slaves
@@ -165,7 +165,7 @@ Kontejnery formátované Dockerem nasadíte přes Marathon pomocí souboru JSON,
 }
 ```
 
-Abyste mohli nasadit kontejner formátovaný, ukládat do přístupného umístění souboru JSON. Pak následujícím příkazem nasaďte kontejner. Zadejte cestu k souboru JSON (`marathon.json` v tomto příkladu).
+Pokud chcete nasadit kontejner formátovaný Dockerem, uložení souboru JSON na dostupném místě. Pak následujícím příkazem nasaďte kontejner. Zadejte cestu k souboru JSON (`marathon.json` v tomto příkladu).
 
 ```powershell
 Invoke-WebRequest -Method Post -Uri http://localhost/marathon/v2/apps -ContentType application/json -InFile 'c:\marathon.json'
@@ -177,10 +177,10 @@ Rozhraní Marathon API je možné použít i k nasazením aplikací se škálov�
 { "instances": 3 }
 ```
 
-Spusťte následující příkaz pro horizontální škálování aplikace:
+Spusťte následující příkaz pro horizontální navýšení kapacity aplikace:
 
 > [!NOTE]
-> Identifikátor URI je http://localhost/marathon/v2/apps/ následuje Identifikátor aplikace škálování. Pokud používáte ukázku Nginx poskytuje zde, identifikátor URI by http://localhost/marathon/v2/apps/nginx.
+> Identifikátor URI je http://localhost/marathon/v2/apps/ za nímž následuje Identifikátor škálování aplikace. Pokud používáte ukázku Nginx, které jsou k dispozici zde, identifikátor URI by http://localhost/marathon/v2/apps/nginx.
 > 
 > 
 
@@ -190,5 +190,5 @@ Invoke-WebRequest -Method Put -Uri http://localhost/marathon/v2/apps/nginx -Cont
 
 ## <a name="next-steps"></a>Další postup
 * [Další informace o koncových bodech Mesos HTTP](http://mesos.apache.org/documentation/latest/endpoints/)
-* [Další informace o rozhraní REST API Marathonu](https://mesosphere.github.io/marathon/docs/rest-api.html)
+* [Další informace o rozhraní API REST systému Marathon](https://mesosphere.github.io/marathon/docs/rest-api.html)
 

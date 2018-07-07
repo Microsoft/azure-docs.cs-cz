@@ -1,19 +1,19 @@
 ---
 title: Mít klasických upozornění na metriku oznámení do systému mimo Azure, pomocí webhooku
 description: Zjistěte, jak přesměrovat Azure upozornění metrik, která mimo Azure systémů.
-author: johnkemnetz
+author: snehithm
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 04/03/2017
-ms.author: johnkem
+ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: 429c68c009e3784546b15dbcc1286d551274d2be
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 74a4066e3d30b1e91fe558fcfeb6f39220e41c02
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37856269"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37887340"
 ---
 # <a name="configure-a-webhook-on-an-azure-metric-alert"></a>Konfigurace webhooku v upozornění metriky Azure
 Použití webhooků pro směrování Azure oznámení s dalšími systémy pro následné zpracování nebo vlastní akce. Webhooku v upozornění můžete směrovat do služby, které posílat SMS zprávy do protokolu chyb, které chcete upozornit tým prostřednictvím chatu nebo zasílání zpráv služby, nebo pro různé další akce. 

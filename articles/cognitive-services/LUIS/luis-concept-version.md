@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/13/2018
 ms.author: v-geberr
-ms.openlocfilehash: 694b195440936a6eb42520c3343b6ff13194cc79
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: f897a3c85bebff3c4534679d45e8af49aacba44a
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346327"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37888112"
 ---
 # <a name="versions"></a>Verze
 Vytvořit stejnou aplikaci pomocí různých modelů [verze](luis-how-to-manage-versions.md). 
@@ -26,7 +26,7 @@ ID verze se skládá ze znaků, číslic nebo '.' a nesmí být delší než 10 
 Počáteční verze (0,1) je výchozí verze aktivní. 
 
 ## <a name="active-version"></a>Aktivní verze
-K [nastavit verzi](luis-how-to-manage-versions.md#set-active-version) jako aktivní znamená, že je aktuálně upravovat a testovat v [LUIS] [ LUIS] webu. Nastavte verzi jako aktivní, aby přístup k jeho datům, proveďte aktualizace, a jde o test a publikujete ji.
+K [nastavit verzi](luis-how-to-manage-versions.md#set-active-version) jako aktivní znamená, že je aktuálně upravovat a testovat v [LUIS](luis-reference-regions.md) webu. Nastavte verzi jako aktivní, aby přístup k jeho datům, proveďte aktualizace, a jde o test a publikujete ji.
 
 Název aktuálně aktivní verze se zobrazí v horní, levý panel za názvem aplikace. 
 
@@ -62,5 +62,3 @@ Vlastníka a všechny [spolupracovníci](luis-how-to-collaborate.md) úplný př
 Zjistěte, jak přidat [správy verzí](luis-how-to-manage-versions.md) na stránce nastavení aplikace. 
 
 Zjistěte, jak navrhnout [záměry](luis-concept-intent.md) do modelu.
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions

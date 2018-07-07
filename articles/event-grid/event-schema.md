@@ -1,29 +1,29 @@
 ---
-title: Azure schématu události událostí mřížky
-description: Popisuje vlastnosti, které jsou k dispozici pro události se Azure událostí mřížky
+title: Schéma událostí služby Azure Event Grid
+description: Popisuje vlastnosti, které jsou k dispozici pro události pomocí služby Azure Event Grid
 services: event-grid
 author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 04/17/2018
+ms.date: 07/06/2018
 ms.author: babanisa
-ms.openlocfilehash: 3e0b7fd825b8e985cea2c32301986b3a7f8bb619
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 266ddced5f1949fa72508d914f76953101a7aac6
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34304058"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37902221"
 ---
-# <a name="azure-event-grid-event-schema"></a>Azure schématu události událostí mřížky
+# <a name="azure-event-grid-event-schema"></a>Schéma událostí služby Azure Event Grid
 
 Tento článek popisuje vlastnosti a schéma, které jsou k dispozici pro všechny události. Události obsahují sadu pěti řetězec požadované vlastnosti a objekt požadovaná data. Vlastnosti jsou společné pro všechny události z libovolného vydavatele. Datový objekt obsahuje vlastnosti, které jsou specifické pro každý vydavatele. Témata systému tyto vlastnosti jsou specifické pro poskytovatele prostředků, jako je například Azure Storage nebo Azure Event Hubs.
 
-Zdroje událostí odesílají události do Azure událostí mřížky v pole, která může obsahovat více objektů událostí. Při publikování události mřížky téma události, může mít pole Celková velikost až 1 MB. Každá událost v poli je omezená na 64 KB. Pokud událost nebo pole přesahuje omezení velikosti, obdržíte odpověď **413 datové části příliš velký**.
+Zdroje událostí v poli, který může mít několik objektů událostí odesílání událostí do služby Azure Event Grid. Při odesílání událostí do téma event gridu, může pole mít celková velikost až 1 MB. Každá událost v poli je omezena na 64 KB. Pokud událost nebo pole je větší než omezení velikosti, obdržíte odpověď **413 datové části příliš velké**.
 
-Mřížky událostí odesílá události odběratelům v pole, které obsahuje jednu událost. Toto chování může v budoucnu změnit.
+Event Grid odesílá události odběratelům pole, které má jednu událost. Toto chování se může v budoucnu změnit.
 
-Můžete najít schéma JSON pro událost událostí mřížky a každý Azure vydavatele datová část [úložiště schématu události](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/eventgrid/data-plane).
+Můžete najít schéma JSON pro události Event gridu a každý Azure vydavatele datová část [schématu události úložiště](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/eventgrid/data-plane).
 
 ## <a name="event-schema"></a>Schéma událostí
 
@@ -46,7 +46,7 @@ Následující příklad ukazuje vlastnosti, které jsou používány všechny z
 ]
 ```
 
-Schéma publikována pro událost úložiště objektů Blob v Azure je například:
+Schéma publikována pro událost Azure Blob storage je například:
 
 ```json
 [
@@ -78,35 +78,36 @@ Schéma publikována pro událost úložiště objektů Blob v Azure je napřík
 
 ## <a name="event-properties"></a>Vlastnosti události
 
-Všechny události obsahovat stejné nejvyšší úrovně následující data:
+Všechny události mají stejné nejvyšší úrovně následující data:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| Téma | řetězec | Úplné prostředků cesta ke zdroji událostí. Toto pole není možné zapisovat. Událost mřížky poskytuje tuto hodnotu. |
-| Předmět | řetězec | Cesta definované vydavatele události předmět. |
-| Typ události | řetězec | Jeden z typů událostí registrovaných pro tento zdroj událostí. |
-| eventTime | řetězec | Čas, který se vygeneruje událost založené na čas UTC poskytovatele. |
+| téma | řetězec | Úplné prostředků cesta ke zdroji události. Toto pole není zapisovatelná. Event gridu poskytuje tuto hodnotu. |
+| předmět | řetězec | Vydavatel definované cesta předmět události. |
+| Typ události | řetězec | Jeden z typů registrované události pro tento zdroj událostí. |
+| čas události | řetězec | Vygenerování události podle času UTC poskytovatele. |
 | id | řetězec | Jedinečný identifikátor pro událost. |
 | data | objekt | Data události specifické pro poskytovatele prostředků. |
-| dataVersion | řetězec | Verze schématu datového objektu Vydavatel definuje verze schématu. |
-| metadataVersion | řetězec | Verze schématu metadat události Událost mřížky definuje schéma vlastnosti nejvyšší úrovně. Událost mřížky poskytuje tuto hodnotu. |
+| dataVersion | řetězec | Verze schématu datového objektu Vydavatel Určuje verzi schématu. |
+| verze metadataVersion | řetězec | Verze schématu metadat události Event Grid definuje schéma vlastnosti nejvyšší úrovně. Event gridu poskytuje tuto hodnotu. |
 
-Další informace o vlastnosti v objektu data, najdete v části Zdroj události:
+Další informace o vlastnosti datového objektu, naleznete v tématu zdroje událostí:
 
 * [Předplatná Azure (operace správy)](event-schema-subscriptions.md)
 * [Blob Storage](event-schema-blob-storage.md)
 * [Event Hubs](event-schema-event-hubs.md)
-* [Service Bus](event-schema-service-bus.md)
 * [IoT Hub](event-schema-iot-hub.md)
+* [Media Services](../media-services/latest/media-services-event-schemas.md?toc=%2fazure%2fevent-grid%2ftoc.json)
 * [Skupiny prostředků (operace správy)](event-schema-resource-groups.md)
+* [Service Bus](event-schema-service-bus.md)
 
-Pro vlastní témata určuje vydavatel události datový objekt. Nejvyšší úrovně data by měla obsahovat stejná pole jako standardní událostí definovaných prostředků.
+Zdroj události pro vlastní témata, určuje datový objekt. Nejvyšší úrovně dat by měl mít stejné pole jako standardní událostí definovaných prostředků.
 
-Při publikování událostí do vlastní témata, vytvořte témata pro vaše události, které usnadňují Odběratelé, kteří potřebují vědět, jestli se zájem o události. Odběratelé použijte subjektu na filtr a trasy události. Zvažte, zadat cestu pro kde došlo k události, tak odběratele můžete filtrovat podle segmenty dané cesty. Cesta umožňuje odběratelům nechat úzce nebo široce filtrování událostí. Pokud zadáte cestu tři segment jako například `/A/B/C` v předmětu, Odběratelé, kteří můžete filtrovat podle první segment `/A` získat širokou škálu události. Tyto odběratele získání událostí s témata jako `/A/B/C` nebo `/A/D/E`. Další odběratele můžete filtrovat podle `/A/B` získat užší sadu událostí.
+Při publikování událostí do vlastní témata, vytvořte předměty pro události, které usnadňují předplatitelům vědět, jestli máte zájem o události. Předplatitelé využít subjektu k filtrování a směrování událostí. Vezměte v úvahu zajišťující cesta kde k události došlo, takže předplatitelé můžete filtrovat podle segmentů cesty. Cesta umožňuje předplatitelům úzce nebo široce filtrovat události. Například, pokud zadáváte cestu tři segmentu jako `/A/B/C` v předmětu, můžete filtrovat předplatitele první segment `/A` zobrazíte široké škály události. Tyto předplatitelé získají události s popsány oblasti jako `/A/B/C` nebo `/A/D/E`. Ostatní účastníky můžete filtrovat podle `/A/B` zobrazíte užší sadu událostí.
 
-Někdy vaší subjektu musí více podrobností o co se stalo. Například **účty úložiště** vydavatele poskytuje předmět `/blobServices/default/containers/<container-name>/blobs/<file>` po přidání souboru do kontejneru. Odběratel může filtrovat podle cesty `/blobServices/default/containers/testcontainer` zobrazíte všechny události pro tento kontejner, ale ne jiné kontejnery v účtu úložiště. Může také filtrovat odběratele nebo trasa podle přípona `.txt` pouze pracovat s textovými soubory.
+Někdy vašich vztahuje potřebuje více podrobností o co se stalo. Například **účty úložiště** vydavatele poskytuje předmět `/blobServices/default/containers/<container-name>/blobs/<file>` při přidání souboru do kontejneru. Může předplatitel filtrovat podle cesty `/blobServices/default/containers/testcontainer` zobrazíte všechny události pro tohoto kontejneru, ale ne další kontejnery v účtu úložiště. Může také filtrovat předplatitele nebo trasy podle přípony `.txt` pracovat pouze s textovými soubory.
 
 ## <a name="next-steps"></a>Další postup
 
-* Úvod do Azure událostí mřížky, najdete v části [co je mřížky událostí?](overview.md)
-* Další informace o vytváření předplatného služby Azure událostí mřížky, najdete v části [schématu odběru událostí mřížky](subscription-creation-schema.md).
+* Úvod do služby Azure Event Grid najdete v tématu [novinky služby Event Grid?](overview.md)
+* Další informace o vytváření předplatného služby Azure Event Grid najdete v tématu [schéma předplatného služby Event Grid](subscription-creation-schema.md).

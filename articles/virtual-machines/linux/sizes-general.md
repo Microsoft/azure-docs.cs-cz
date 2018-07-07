@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 04/10/2018
+ms.date: 07/06/2018
 ms.author: jonbeck
-ms.openlocfilehash: 3dc2a3baa77a6aed1a8128d8172089efc2958e5c
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 7335a81f4fc7feefbda558cb21f645e69ea687d5
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/04/2018
-ms.locfileid: "34654085"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37902594"
 ---
 # <a name="general-purpose-virtual-machine-sizes"></a>Velikosti virtuálních počítačů pro obecné účely
 

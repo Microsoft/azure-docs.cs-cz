@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: kgremban
-ms.openlocfilehash: c78de020e3cbaae6fccf2f981bb3601269ceba58
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 3672b26c07974d0fb2897953a05f7233c4d43c3b
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37859829"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37903111"
 ---
 # <a name="install-azure-iot-edge-runtime-on-linux-arm32v7armhf"></a>Instalace modulu runtime Azure IoT Edge v Linuxu (ARM32v7/armhf)
 
@@ -142,7 +142,6 @@ Pokud máte problémy s modulu runtime Edge instalaci správně, rezervace [ře�
 <!-- Links -->
 [lnk-dcs]: how-to-register-device-portal.md
 [lnk-dps]: how-to-auto-provision-simulated-device-linux.md
-[lnk-trouble]: https://review.docs.microsoft.com/en-us/azure/iot-edge/troubleshoot#stability-issues-on-resource-constrained-devices
+[lnk-trouble]: https://docs.microsoft.com/azure/iot-edge/troubleshoot#stability-issues-on-resource-constrained-devices
 [lnk-oci]: https://www.opencontainers.org/
 [lnk-moby]: https://mobyproject.org/
-[lnk-trouble]: troubleshoot.md

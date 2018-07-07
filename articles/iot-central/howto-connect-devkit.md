@@ -1,6 +1,6 @@
 ---
-title: Připojení zařízení DevKit do aplikace Azure IoT centrální | Microsoft Docs
-description: Jako vývojář zařízení zjistěte, jak se připojit k aplikaci Azure IoT centrální zařízení s MXChip IoT DevKit.
+title: Připojte zařízení za DevKit do aplikace Azure IoT Central | Dokumentace Microsoftu
+description: Jako vývojář zařízení zjistěte, jak připojit zařízení MXChip IoT DevKit do aplikace Azure IoT Central.
 author: tbhagwat3
 ms.author: tanmayb
 ms.date: 04/16/2018
@@ -8,25 +8,25 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: d7b92359e8875c281fd460f1f5307a7941c11c1f
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 237a19b76268e1207c9de438a4f79d3dc8382476
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261572"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37903805"
 ---
-# <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Připojte zařízení MXChip IoT DevKit do aplikace Azure IoT centrální
+# <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Připojení MXChip IoT DevKit zařízení do aplikace Azure IoT Central
 
-Tento článek popisuje, jak jako vývojář zařízení pro připojení k aplikaci Microsoft Azure IoT centrální zařízení IoT DevKit MXChip (DevKit).
+Tento článek popisuje, jak jako vývojář zařízení pro připojení MXChip IoT DevKit (DevKit) zařízení do aplikace Microsoft Azure IoT Central.
 
 ## <a name="before-you-begin"></a>Než začnete
 
 K dokončení kroků v tomto článku budete potřebovat následující:
 
-1. Azure IoT centrální aplikace vytvořené pomocí **Devkits ukázka** šablony aplikace. Další informace najdete v tématu [vytvořit aplikaci Azure IoT centrální](howto-create-application.md).
-1. DevKit zařízení. Chcete-li zakoupit DevKit zařízení, najdete [MXChip IoT DevKit](http://mxchip.com/az3166).
+1. Azure IoT Central aplikace vytvořené z **ukázka Devkits** šablony aplikace. Další informace najdete v tématu [vytvoření aplikace Azure IoT Central](howto-create-application.md).
+1. DevKit zařízení. Koupit DevKit zařízení, najdete v tématu [MXChip IoT DevKit](http://mxchip.com/az3166).
 
-Aplikace vytvořené z **ukázka Devkits** obsahuje šablony aplikace **MXChip** šablona zařízení s následujícími charakteristikami:
+Aplikace vytvořené z **ukázka Devkits** zahrnuje šablony aplikace **MXChip** šablona zařízení s následujícími charakteristikami:
 
 ### <a name="measurements"></a>Měření
 
@@ -34,8 +34,8 @@ Aplikace vytvořené z **ukázka Devkits** obsahuje šablony aplikace **MXChip**
 
 | Název pole     | Jednotky  | Minimální | Maximum | Desetinná místa |
 | -------------- | ------ | ------- | ------- | -------------- |
-| vlhkosti       | %      | 0       | 100     | 0              |
-| dočasné           | ° C     | -40     | 120     | 0              |
+| vlhkost       | %      | 0       | 100     | 0              |
+| temp           | ° C     | -40     | 120     | 0              |
 | pressure       | hPa    | 260     | 1260    | 0              |
 | magnetometerX  | mgauss | -1000   | 1000    | 0              |
 | magnetometerY  | mgauss | -1000   | 1000    | 0              |
@@ -51,13 +51,13 @@ Aplikace vytvořené z **ukázka Devkits** obsahuje šablony aplikace **MXChip**
 
 | Název          | Zobrazované jméno   | NORMÁLNÍ | UPOZORNĚNÍ: | NEBEZPEČÍ | 
 | ------------- | -------------- | ------ | ------- | ------ | 
-| DeviceState   | Stav zařízení   | Zelená  | Orange  | Červená    | 
+| Devicestate povolená   | Stav zařízení   | Zelená  | Orange  | Červená    | 
 
 #### <a name="events"></a>Události 
 
 | Název             | Zobrazované jméno      | 
 | ---------------- | ----------------- | 
-| ButtonBPressed   | Bylo stisknuto tlačítko B  | 
+| ButtonBPressed   | Stiskne tlačítko B  | 
 
 
 
@@ -67,40 +67,40 @@ Aplikace vytvořené z **ukázka Devkits** obsahuje šablony aplikace **MXChip**
 
 | Zobrazované jméno | Název pole | Jednotky | Desetinná místa | Minimální | Maximum | Počáteční |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
-| Napětí      | setVoltage | Intenzita | 0              | 0       | 240     | 0       |
+| Snímač napětí      | setVoltage | Intenzita | 0              | 0       | 240     | 0       |
 | Aktuální      | setCurrent | A  | 0              | 0       | 100     | 0       |
-| Ventilátor rychlosti    | fanSpeed   | OT. / MIN   | 0              | 0       | 1000    | 0       |
+| Ventilátor rychlost    | fanSpeed   | OT. / MIN   | 0              | 0       | 1000    | 0       |
 
-Přepnutí nastavení
+Přepínací tlačítko Nastavení
 
 | Zobrazované jméno | Název pole | Na text | Vypnout text | Počáteční |
 | ------------ | ---------- | ------- | -------- | ------- |
-| REAKCÍ NA INCIDENTY           | activateIR | ON      | OFF      | Vypnuto     |
+| PROSTŘEDÍ IR           | activateIR | ON      | OFF      | Vypnuto     |
 
 ### <a name="properties"></a>Vlastnosti
 
 | Typ            | Zobrazované jméno | Název pole | Typ dat |
 | --------------- | ------------ | ---------- | --------- |
-| Vlastnosti zařízení | Kostka číslo   | dieNumber  | číslo    |
+| Vlastnosti zařízení | Kostka čísla   | dieNumber  | číslo    |
 | Text            | Umístění     | location   | neuvedeno       |
 
 
 ### <a name="add-a-real-device"></a>Přidání skutečného zařízení
 
-V aplikaci Azure IoT centrální přidat skutečné zařízení z **MXChip** šablona zařízení a je zaznamenána připojovací řetězec zařízení. Další informace najdete v tématu [přidat skutečné zařízení Azure IoT centrální aplikace](tutorial-add-device.md).
+V aplikaci Azure IoT Central přidat z reálného zařízení **MXChip** šablona zařízení a zkontrolujte poznamenejte si připojovací řetězec zařízení. Další informace najdete v tématu [skutečné zařízení přidat do aplikace Azure IoT Central](tutorial-add-device.md).
 
 ## <a name="prepare-the-devkit-device"></a>Připravte zařízení DevKit
 
-> [!TIP]
-> Zařízení DevKit pokyny při řešení potíží, najdete v části [IoT DevKit Začínáme](https://microsoft.github.io/azure-iot-developer-kit/docs/get-started/).
+> [!NOTE]
+> Pokud jste už dřív použili zařízení a máte Wi-Fi přihlašovací údaje uloženy a chcete změnit konfiguraci zařízení používat jinou síť Wi-Fi, připojovací řetězec nebo telemetrická data měření, stiskněte klávesu i **A** a **B** tlačítka na panelu současně. Pokud to nepomůže, stiskněte **resetování** tlačítko a zkuste to znovu.
 
-Příprava DevKit zařízení:
+K přípravě DevKit zařízení:
 
-1. Stáhněte si nejnovější předdefinovaných Azure IoT centrální firmware pro MXChip z [uvolní](https://github.com/Azure/iot-central-firmware/releases) stránky na Githubu. Název souboru ke stažení na stránce vydání vypadá `AZ3166-IoT-Central-X.X.X.bin`.
+1. Stáhněte si nejnovější předem sestavených Azure IoT Central firmware pro MXChip z [uvolní](https://github.com/Azure/iot-central-firmware/releases) stránku na Githubu. Název souboru ke stažení na stránce vydání vypadá jako `AZ3166-IoT-Central-X.X.X.bin`.
 
-1. Připojte zařízení DevKit na vývojovém počítači pomocí kabelu USB. V systému Windows otevře se okno Průzkumníka souborů na jednotce namapované na úložiště DevKit zařízení. Například může být například jednotky **AZ3166 (D:)**.
+1. Připojte zařízení DevKit na vývojovém počítači pomocí kabelu USB. Ve Windows otevře se okno Průzkumníka souborů na jednotce namapované na úložiště na zařízení DevKit. Například může být volán na jednotce **AZ3166 (D:)**.
 
-1. Přetáhněte **iotCentral.bin** soubor do okna jednotky. Po dokončení kopírování zařízení restartuje se nový firmwaru.
+1. Přetáhněte **iotCentral.bin** soubor do okna jednotky. Po dokončení kopírování s novým firmwarem restartování zařízení.
 
 1. Po restartu zařízení DevKit, zobrazí se následující obrazovka:
 
@@ -112,98 +112,97 @@ Příprava DevKit zařízení:
     ```
 
     > [!NOTE]
-    > Pokud na obrazovce zobrazí cokoliv jiného, stiskněte **resetovat** na zařízení tlačítko. 
+    > Pokud na obrazovce se zobrazí cokoli jiného, stiskněte **resetování** na zařízení tlačítko. 
 
-1. Zařízení je nyní v režimu bodů (AP) přístup. Z počítače nebo mobilního zařízení můžete připojit k tomuto bodu přístup přes Wi-Fi.
+1. Zařízení je nyní v režimu přístupu bod (přístupový bod). Můžete se připojit k této přístupový bod Wi-Fi ze svého počítače nebo mobilního zařízení.
 
-1. V počítači telefon nebo tablet připojit k názvu sítě Wi-Fi uvedené na obrazovce zařízení. Jakmile se připojíte k této síti, nemáte přístup k Internetu. Tento stav se očekává a pouze připojení k této síti po krátkou dobu při konfiguraci zařízení.
+1. V počítači telefon nebo tablet připojit k názvu sítě Wi-Fi na obrazovce zařízení. Když se připojíte k této síti, nemáte přístup k Internetu. Tento stav se očekává a jste pouze připojení k této síti krátkou dobu při konfiguraci zařízení.
 
-1. Otevřete webový prohlížeč a přejděte do [ http://192.168.0.1/start ](http://192.168.0.1/start). Následující webové stránky zobrazí:
+1. Otevřete webový prohlížeč a přejděte do [ http://192.168.0.1/start ](http://192.168.0.1/start). Následující příkaz zobrazí webová stránka:
 
     ![Stránka Konfigurace zařízení](media/howto-connect-devkit/configpage.png)
 
     Na webové stránce: 
-    - Přidejte název sítě Wi-Fi 
-    - heslo sítě Wi-Fi 
-    - PIN kód zobrazený na zařízení LCD 
-    - připojovací řetězec vašeho zařízení. 
-      Můžete najít připojovací řetězec @ `https://apps.iotcentral.com`  ->  `Device Explorer`  ->  `Device`  ->  `Select or Create a new Real Device`  ->  `Connect this device` (na vpravo nahoře) 
+    - Přidat název sítě Wi-Fi 
+    - vaše heslo sítě Wi-Fi 
+    - KÓD PIN, zobrazí na zařízení LCD 
+    - připojovací řetězec zařízení. 
+      Můžete najít připojovací řetězec @ `https://apps.iotcentral.com`  ->  `Device Explorer`  ->  `Device`  ->  `Select or Create a new Real Device`  ->  `Connect this device` (v pravém horním rohu) 
     - Vyberte všechny dostupné telemetrie měření! 
 
-1. Když vyberete **nakonfigurovat zařízení**, zobrazí tato stránka:
+1. Po zvolení **konfigurovat zařízení**, zobrazí tato stránka:
 
     ![Zařízení nakonfigurovaná](media/howto-connect-devkit/deviceconfigured.png)
 
-1. Stiskněte **resetovat** tlačítko na vašem zařízení.
+1. Stisknutím klávesy **resetování** tlačítko na vašem zařízení.
 
-> [!NOTE]
-> Chcete-li překonfigurovat zařízení používat jinou síť Wi-Fi, připojovací řetězec nebo měření telemetrie, stiskněte i **A** a **B** tlačítka na panel současně. Pokud nefunguje, stiskněte klávesu **resetovat** tlačítko a zkuste to znovu. 
 
-## <a name="view-the-telemetry"></a>Zobrazení telemetrie
 
-Po restartu zařízení DevKit ukazuje obrazovku na zařízení:
+## <a name="view-the-telemetry"></a>Zobrazení telemetrických dat
 
-* Počet odeslaných zpráv telemetrie.
+Po restartu zařízení DevKit obrazovku na zařízení zobrazí:
+
+* Počet telemetrické zprávy odesílané.
 * Počet chyb.
-* Počet přijatých požadované vlastnosti a počet odeslaných hlášen vlastností.
+* Počet přijatých požadované vlastnosti a počet ohlášených vlastností odeslaných.
 
-Zatřesením přírůstek zařízení počet odeslaných hlášen vlastností. Zařízení odesílá náhodné číslo jako **kostka číslo** vlastnosti zařízení.
+Zatřeste zařízením přírůstek počet ohlášených vlastností odeslaných. Zařízení odesílá náhodné číslo jako **kostka číslo** vlastnosti zařízení.
 
-Můžete zobrazit telemetrii měření a hodnoty hlášené vlastností a konfigurace nastavení v Azure IoT centrální:
+Můžete zobrazit telemetrická data měření a hodnoty ohlášených vlastností a nastavení v Azure IoT Central:
 
-1. Použití **Explorer zařízení** přejděte na **měření** stránky pro skutečné zařízení MXChip jste přidali:
+1. Použití **Device Explorer** přejděte **měření** stránky pro skutečné zařízení MXChip jste přidali:
 
-    ![Přejděte na skutečné zařízení](media/howto-connect-devkit/realdevice.png)
+    ![Přejděte na skutečných zařízení](media/howto-connect-devkit/realdevice.png)
 
-1. Na **měření** stránky, můžete zobrazit telemetrii z MXChip zařízení:
+1. Na **měření** stránky, můžete zobrazit telemetrická data přicházející z MXChip zařízení:
 
     ![Zobrazení telemetrie z reálného zařízení](media/howto-connect-devkit/realtelemetry.png)
 
-1. Na **vlastnosti** stránky, můžete zobrazit poslední číslo hlášených zařízení:
+1. Na **vlastnosti** stránky, můžete zobrazit poslední číslo oznámí zařízení:
 
     ![Zobrazení vlastností zařízení](media/howto-connect-devkit/deviceproperties.png)
 
-1. Na **nastavení** stránky, můžete aktualizovat nastavení v zařízení MXChip:
+1. Na **nastavení** stránce nastavení na zařízení MXChip lze aktualizovat:
 
     ![Zobrazení nastavení zařízení](media/howto-connect-devkit/settings.png)
 
-## <a name="download-the-source-code"></a>Stáhnout zdrojový kód
+## <a name="download-the-source-code"></a>Stáhněte si zdrojový kód
 
-Pokud chcete prozkoumat a upravit kód zařízení, můžete ji stáhnout z webu GitHub. Pokud máte v úmyslu změnit kód, postupujte podle těchto pokynů můžete [Příprava vývojového prostředí](https://microsoft.github.io/azure-iot-developer-kit/docs/get-started/#step-5-prepare-the-development-environment) plochy operačního systému.
+Pokud chcete prozkoumat a upravit kód zařízení, můžete si ho stáhnout z Githubu. Pokud budete chtít upravit kód, postupujte podle těchto pokynů a [Příprava vývojového prostředí](https://microsoft.github.io/azure-iot-developer-kit/docs/get-started/#step-5-prepare-the-development-environment) pro desktopové operační systém.
 
-Chcete-li stáhnout zdrojový kód, spusťte následující příkaz na počítači klientů:
+Pokud chcete stáhnout zdrojový kód, spusťte následující příkaz na desktopovém počítači:
 
 ```cmd/sh
 git clone https://github.com/Azure/iot-central-firmware
 ```
 
-Předchozí příkaz načte zdrojový kód pro složku s názvem `iot-central-firmware`. 
+Předchozí příkaz načte zdrojový kód do složky s názvem `iot-central-firmware`. 
 
 > [!NOTE]
-> Pokud **git** není nainstalován ve vašem vývojovém prostředí si můžete stáhnout z [ https://git-scm.com/download ](https://git-scm.com/download).
+> Pokud **git** není nainstalovaný ve vašem vývojovém prostředí, můžete ji stáhnout [ https://git-scm.com/download ](https://git-scm.com/download).
 
 ## <a name="review-the-code"></a>Kontrola kódu
 
-Použít Visual Studio Code, která byla nainstalována během přípravy vývojového prostředí, chcete-li otevřít `AZ3166` složku `iot-central-firmware` složky: 
+Použití Visual Studio Code, která byla nainstalována během přípravy vývojového prostředí, otevřete `AZ3166` složky `iot-central-firmware` složky: 
 
 ![Visual Studio Code](media/howto-connect-devkit/vscodeview.png)
 
-Chcete-li zjistit, jak je odesílat telemetrii do Azure IoT centrální aplikace, otevřete **main_telemetry.cpp** soubor ve zdrojové složce.
+Chcete-li zjistit, jak je odesílají telemetrická data do aplikace Azure IoT Central, otevřete **main_telemetry.cpp** souboru ve zdrojové složce.
 
-Funkce `buildTelemetryPayload` vytvoří datové části JSON telemetrie pomocí dat z snímače na zařízení.
+Funkce `buildTelemetryPayload` vytvoří datovou část JSON telemetrická data pomocí dat z snímačům na zařízení.
 
-Funkce `sendTelemetryPayload` volání `sendTelemetry` v **iotHubClient.cpp** odeslat datové části JSON do služby IoT Hub vaše Azure IoT centrální používá aplikace.
+Funkce `sendTelemetryPayload` volání `sendTelemetry` v **iotHubClient.cpp** Odeslat datovou část JSON pro Centrum IoT Azure IoT Central aplikace používá.
 
-Pokud chcete zobrazit, jak jsou hodnoty vlastností oznamovány Azure IoT centrální aplikaci, otevřete **main_telemetry.cpp** soubor ve zdrojové složce.
+Chcete-li zjistit, jak hodnoty vlastností jsou k aplikaci Azure IoT Central, otevřete **main_telemetry.cpp** souboru ve zdrojové složce.
 
-Funkce `telemetryLoop` odešle **doubleTap** hlášené vlastnosti, když zrychlení zjistí dvojité klepnutím. Použije `sendReportedProperty` v fungovat **iotHubClient.cpp** zdrojový soubor.
+Funkce `telemetryLoop` odešle **doubleTap** hlášené vlastnosti, když zjistí akcelerometr dvojitým klepnutím. Používá `sendReportedProperty` fungovat v **iotHubClient.cpp** zdrojový soubor.
 
-Kód **iotHubClient.cpp** zdrojový soubor používá funkce z [ SDK služby Microsoft Azure IoT a knihovny pro C](https://github.com/Azure/azure-iot-sdk-c) k interakci s centrem IoT.
+Kód v **iotHubClient.cpp** zdrojový soubor používá funkce z [ sadami SDK služby Microsoft Azure IoT a knihovny pro jazyk C](https://github.com/Azure/azure-iot-sdk-c) k interakci se službou IoT Hub.
 
-Informace o tom, jak změnit, vytvoření a odeslání ukázkového kódu do vašeho zařízení najdete v tématu **readme.md** v soubor `AZ3166` složky.
+Informace o tom, jak změnit, vytvořit a nahrát ukázkový kód do vašeho zařízení, najdete v článku **readme.md** soubor `AZ3166` složky.
 
 ## <a name="next-steps"></a>Další postup
 
-Teď, když jste se naučili jak se připojit k aplikaci Azure IoT centrální DevKit zařízení, tady jsou navrhované další kroky:
+Teď, když jste se naučili, jak připojit zařízení DevKit do aplikace Azure IoT Central, tady jsou další navrhované kroky:
 
 * [Příprava a připojení Raspberry Pi](howto-connect-raspberry-pi-python.md)

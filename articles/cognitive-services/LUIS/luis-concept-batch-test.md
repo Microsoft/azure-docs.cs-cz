@@ -7,14 +7,14 @@ manager: kaiqb
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 07/05/2018
+ms.date: 07/06/2018
 ms.author: v-geberr
-ms.openlocfilehash: f0366e805c9ae809a2800b0f4be53d08d9fc3d60
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: d4f00e2470bac08c333411646dca90b3e2105073
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857904"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37900476"
 ---
 # <a name="batch-testing-in-luis"></a>Testování v LUIS služby batch
 

@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/19/2018
 ms.author: v-geberr
-ms.openlocfilehash: 4a5ace10c171d17235051c5bd666526318829fd7
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 27d6bbc628ac3183032a90d8f3ad98998c76a957
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/06/2018
-ms.locfileid: "37867337"
+ms.locfileid: "37888826"
 ---
 # <a name="use-batch-testing-to-find-prediction-accuracy-issues"></a>Najít problémy, přesnost předpovědi pomocí služby batch testu
 
@@ -33,7 +33,7 @@ V tomto kurzu se naučíte:
 ## <a name="prerequisites"></a>Požadavky
 
 > [!div class="checklist"]
-> * V tomto článku budete také potřebovat [LUIS][LUIS] účet, aby bylo možné vytvořit aplikace LEOŠ.
+> * Pro účely tohoto článku budete potřebovat [LUIS](luis-reference-regions.md) účtu, aby bylo možné vytvářet aplikace LUIS.
 
 > [!Tip]
 > Pokud ještě nemáte předplatné, si můžete zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/).
@@ -41,7 +41,7 @@ V tomto kurzu se naučíte:
 ## <a name="create-new-app"></a>Vytvoření nové aplikace
 Tento článek používá předem připravených domény HomeAutomation. Předem připravená doména má záměrů, entit a projevy pro řízení HomeAutomation zařízení, jako jsou světla. Vytvořit aplikaci, přidat doménu, trénování a publikování.
 
-1. V [LUIS] webu, vytvořte novou aplikaci tak, že vyberete **vytvořit novou aplikaci** na **MyApps** stránky. 
+1. V [LUIS](luis-reference-regions.md) webu, vytvořte novou aplikaci tak, že vyberete **vytvořit novou aplikaci** na **MyApps** stránky. 
 
     ![Vytvoření nové aplikace](./media/luis-tutorial-batch-testing/create-app-1.png)
 

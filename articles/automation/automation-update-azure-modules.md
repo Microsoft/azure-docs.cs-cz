@@ -1,6 +1,6 @@
 ---
-title: Aktualizovat Azure modulů ve službě Azure Automation
-description: Tento článek popisuje, jak můžete nyní aktualizovat společnými moduly prostředí Azure PowerShell, které jsou dostupné ve výchozím nastavení ve službě Azure Automation.
+title: Aktualizovat moduly Azure ve službě Azure Automation
+description: Tento článek popisuje, jak můžete nyní aktualizovat běžných modulů Azure Powershellu, které jsou k dispozici ve výchozím nastavení ve službě Azure Automation.
 services: automation
 ms.service: automation
 ms.component: process-automation
@@ -9,26 +9,29 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: fe263346d8794b3dc85b6420d8b9b02efa5f9684
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f968bd75c7aee4ad390f9206bb1fa210e7fcd8ff
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34193501"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37903145"
 ---
-# <a name="how-to-update-azure-powershell-modules-in-azure-automation"></a>Postup aktualizace modulů prostředí Azure PowerShell ve službě Azure Automation
+# <a name="how-to-update-azure-powershell-modules-in-azure-automation"></a>Aktualizace modulů Azure Powershellu ve službě Azure Automation
 
-Nejběžnější modulů prostředí Azure PowerShell jsou dostupné ve výchozím nastavení v jednotlivých účtů Automation. Tým Azure Azure moduly aktualizuje pravidelně, tak v účtu Automation jsou k dispozici způsob, jak aktualizovat moduly v účtu, pokud je nová verze dostupná z portálu.  
+Ve výchozím nastavení v jednotlivých účtů Automation jsou k dispozici většiny běžných modulů Azure Powershellu. Tým Azure moduly Azure aktualizuje pravidelně, tak účet služby Automation jsou k dispozici způsob, jak aktualizovat moduly v účtu, když je nová verze dostupná z portálu.
 
-Protože moduly se pravidelně aktualizují v product group, změny můžou nastat pomocí rutiny zahrnuté, což může mít negativní vliv na vaše sady runbook v závislosti na typu změnu, jako je například přejmenování parametr nebo zcela místo začne rutiny. Abyste se vyhnuli, runbooků a procesy, které budou automatizovat, které mají vliv, se doporučuje, testování a než budete pokračovat, ověřte. Pokud nemáte určené pro tento účel vyhrazený účet Automation, zvažte vytvoření jednoho tak, aby při vývoji vaší sady runbook, kromě iterativní změny jako aktualizace moduly Powershellu můžete otestovat mnoha různých scénářů a permutací. Po ověření výsledky a jste použili potřebné změny, pokračovat v migraci žádné sady runbook, který vyžaduje úpravu koordinace a provést následující aktualizace, jak je popsáno v produkčním prostředí.
+Protože moduly jsou pravidelně aktualizovány produktovou skupinou, změny můžou nastat s zahrnuté rutin, které může mít negativní vliv na vaše sady runbook v závislosti na typ změny, jako například přejmenování parametru nebo zcela vyřazení rutiny. Aby se zabránilo dopadu na vaše sady runbook a procesy, které jsou automatizovat, se doporučuje otestovat a ověřit před pokračováním. Pokud nemáte určené pro tento účel vyhrazený účet služby Automation, zvažte vytvoření jednoho tak, aby můžete otestovat mnoho různých scénářů a permutací při vývoji vaší sady runbook kromě iterativní změny, jako je aktualizace Moduly Powershellu. Po výsledcích ověření a použili jste potřebné změny, pokračujte v koordinaci migrace všechny runbooky, který vyžaduje úpravu a proveďte následující aktualizace, jak je popsáno v produkčním prostředí.
 
-## <a name="updating-azure-modules"></a>Aktualizace Azure moduly
+> [!NOTE]
+> Nový účet Automation nemusí obsahovat nejnovější moduly.
 
-1. Na stránce modulů účtu Automation je možnost **moduly Azure aktualizace**. Je vždy povolena.<br><br> ![Aktualizovat moduly Azure možnost stránce modulů](media/automation-update-azure-modules/automation-update-azure-modules-option.png)
+## <a name="updating-azure-modules"></a>Aktualizace modulů Azure
 
-2. Klikněte na tlačítko **moduly Azure aktualizace**, se zobrazí oznámení o potvrzení, která požádá, pokud chcete pokračovat.<br><br> ![Moduly Azure oznámení o aktualizaci](media/automation-update-azure-modules/automation-update-azure-modules-popup.png)
+1. Na stránce modulů vašeho účtu Automation je možnost **aktualizace modulů Azure**. Je vždy povoleno.<br><br> ![Aktualizace modulů Azure možnost na stránce modulů](media/automation-update-azure-modules/automation-update-azure-modules-option.png)
 
-3. Klikněte na tlačítko **Ano** a zahájí se proces aktualizace modulu. Proces aktualizace trvá asi 15-20 minut aktualizovat následující moduly:
+2. Klikněte na tlačítko **aktualizace modulů Azure**, zobrazí potvrzení oznámení, která požádá, pokud chcete pokračovat.<br><br> ![Aktualizace modulů Azure oznámení](media/automation-update-azure-modules/automation-update-azure-modules-popup.png)
+
+3. Klikněte na tlačítko **Ano** a zahájí se proces aktualizace modulu. Proces aktualizace trvá asi 15 až 20 minut a aktualizujte následující moduly:
 
   * Azure
   * Azure.Storage
@@ -39,15 +42,15 @@ Protože moduly se pravidelně aktualizují v product group, změny můžou nast
   * AzureRm.Sql
   * AzureRm.Storage
 
-    Pokud moduly jsou již aktuální, proces dokončení za několik sekund. Po dokončení procesu aktualizace, budete upozorněni.<br><br> ![Aktualizovat stav aktualizace moduly Azure](media/automation-update-azure-modules/automation-update-azure-modules-updatestatus.png)
+    Pokud moduly jsou již aktuální, proces dokončí za pár sekund. Po dokončení procesu aktualizace, budete upozorněni.<br><br> ![Aktualizovat stav aktualizace modulů Azure](media/automation-update-azure-modules/automation-update-azure-modules-updatestatus.png)
 
 > [!NOTE]
-> Při spuštění novou naplánovanou úlohu automatizace Azure používá nejnovější modulů ve vašem účtu Automation.    
+> Při spuštění novou naplánovanou úlohu Azure Automation používá nejnovější moduly ve vašem účtu Automation.    
 
-Pokud používáte rutiny z těchto modulů prostředí Azure PowerShell ve vašich sadách runbook, chcete tento proces aktualizace spustit každý měsíc nebo, ujistěte se, že máte nejnovější moduly.
+Pokud používáte rutiny z těchto modulů Azure Powershellu ve vašich sadách runbook, chcete spustit tento proces aktualizace každý měsíc nebo proto ujistěte se, že máte nejnovější moduly.
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o integrační moduly a jak vytvořit vlastní moduly k další integraci automatizace s jinými systémy, služby nebo řešení, najdete v části [moduly integrace](automation-integration-modules.md).
+* Další informace o integrační moduly a vytvoření vlastních modulů k další integraci s jinými systémy, služby nebo řešení automatizace, naleznete v tématu [moduly integrace](automation-integration-modules.md).
 
-* Zvažte použití integrace zdroj ovládacího prvku [Githubu Enterprise](automation-scenario-source-control-integration-with-github-ent.md) nebo [Visual Studio Team Services](automation-scenario-source-control-integration-with-vsts.md) centrálně spravovat a řídit verzích portfolio automatizace sady runbook a konfigurace.  
+* Zvažte použití integrace zdrojového ovládacího prvku [Githubu Enterprise](automation-scenario-source-control-integration-with-github-ent.md) nebo [Visual Studio Team Services](automation-scenario-source-control-integration-with-vsts.md) centrálně spravovat a řídit verzích portfolio automatizace sady runbook a konfigurace.  

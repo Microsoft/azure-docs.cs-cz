@@ -8,12 +8,12 @@ ms.date: 06/26/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d814bed6f126cb3b81d85c4e797a22d2ac22ddfb
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 4862e3aa976287512fd69fdfe9295e3f3328d5a7
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37856201"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37887772"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Běžné potíže se službou Azure IoT Edge a jejich řešení
 
@@ -245,9 +245,13 @@ Centrum edge, která je součástí modulu runtime edge, je optimalizován pro v
 ### <a name="resolution"></a>Řešení
 Centrum pro na hraničních zařízeních nastavení proměnné prostředí **OptimizeForPerformance** k **false**. Chcete-li to provést dvěma způsoby:
 
-V uživatelském rozhraní: na portálu ze *podrobnosti o zařízení*->*nastavit moduly*->*konfigurovat rozšířená nastavení modulu Runtime Edge*, vytvořit prostředí proměnné s názvem *OptimizeForPerformance* , která je nastavena na *false* pro *Centrum Edge*.
+V uživatelském rozhraní: 
+
+Na portálu ze *podrobnosti o zařízení*->*nastavit moduly*->*konfigurovat rozšířená nastavení modulu Runtime Edge*, vytvořte proměnnou prostředí volá se, *OptimizeForPerformance* , která je nastavena na *false* pro *Centrum Edge*.
 
 ![optimizeforperformance][img-optimize-for-perf]
+
+**OR**
 
 V manifestu nasazení:
 

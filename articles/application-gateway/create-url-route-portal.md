@@ -1,6 +1,6 @@
 ---
-title: Vytvoření služby application gateway s pravidel adres URL na základě cestu směrování - portálu Azure | Microsoft Docs
-description: Naučte se vytvořit adresu URL na základě cesty pravidla směrování pro aplikační bránu a škálování virtuálních počítačů, nastavit pomocí portálu Azure.
+title: Vytvoření služby application gateway pomocí adresy URL na základě cest pravidla směrování – Azure portal | Dokumentace Microsoftu
+description: Zjistěte, jak vytvořit na základě cest pravidly směrování adres URL pro application gateway a virtuálního počítače škálovací sady pomocí webu Azure portal.
 services: application-gateway
 author: vhorne
 manager: jpconnock
@@ -11,25 +11,25 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/26/2018
 ms.author: victorh
-ms.openlocfilehash: ecb8a46c57d31c8a19f3a7b75306e42a7d3981bd
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: feb9b0c3d90aea9d5e0351b6691e93186dbfb9f6
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36335733"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37902074"
 ---
-# <a name="create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>Vytvoření služby application gateway s cesta pravidla založená na směrování pomocí portálu Azure
+# <a name="create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>Vytvoření služby application gateway s na základě cest pravidla směrování pomocí webu Azure portal
 
-Na portálu Azure můžete použít ke konfiguraci [pravidla směrování na základě cesty adresy URL](url-route-overview.md) při vytváření [Aplikační brána](overview.md). V tomto kurzu vytvoříte back-endové fondy používání virtuálních počítačů. Potom můžete vytvořit pravidla směrování pro Ujistěte se, že web přenos dorazí na příslušné servery ve fondech.
+Na webu Azure portal můžete použít ke konfiguraci [pravidla směrování na základě cest URL](url-route-overview.md) při vytváření [služba application gateway](overview.md). V tomto kurzu vytvoříte back-endové fondy pomocí virtuálních počítačů. Pak vytvoříte pravidla směrování, která Ujistěte se, že webový provoz dorazí na příslušné servery ve fondech.
 
 V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Vytvoření služby Application Gateway
-> * Vytváření virtuálních počítačů pro back-end serverů
+> * Vytvoření virtuálního počítače pro back-end serverů
 > * Vytvoření back-endové fondy s back-end serverů
-> * Vytvořit naslouchací proces back-end
-> * Vytvoření pravidla směrování na základě cesty
+> * Vytvořit naslouchací proces back-endu
+> * Vytvořte pravidlo směrování na základě cest
 
 ![Příklad směrování na základě adresy URL](./media/create-url-route-portal/scenario.png)
 
@@ -41,9 +41,9 @@ Přihlaste se k portálu Azure Portal na adrese [http://portal.azure.com](http:/
 
 ## <a name="create-an-application-gateway"></a>Vytvoření služby Application Gateway
 
-Virtuální síť je požadován pro komunikaci mezi prostředky, které vytvoříte. V tomto příkladu jsou vytvořeny dvě podsítě: jedna pro aplikační bránu a druhá pro back-endové servery. Virtuální síť můžete vytvořit současně s aplikační bránou.
+Virtuální sítě je potřeba ke komunikaci mezi prostředky, které vytvoříte. V tomto příkladu jsou vytvořeny dvě podsítě: jedna pro aplikační bránu a druhá pro back-endové servery. Virtuální síť můžete vytvořit současně s aplikační bránou.
 
-1. Klikněte na tlačítko **nový** najít v levém horním rohu portálu Azure.
+1. Klikněte na tlačítko **nový** v levém horním rohu webu Azure portal.
 2. Vyberte **Sítě** a potom v seznamu Doporučené vyberte **Application Gateway**.
 3. Pro aplikační bránu zadejte tyto hodnoty:
 
@@ -53,7 +53,7 @@ Virtuální síť je požadován pro komunikaci mezi prostředky, které vytvoř
     ![Vytvoření nové aplikační brány](./media/create-url-route-portal/application-gateway-create.png)
 
 4. U ostatních nastavení ponechejte výchozí hodnoty a potom klikněte na **OK**.
-5. Klikněte na tlačítko **vyberte virtuální síť**, klikněte na tlačítko **vytvořit nový**a potom zadejte tyto hodnoty pro virtuální síť:
+5. Klikněte na tlačítko **zvolit virtuální síť**, klikněte na tlačítko **vytvořit nový**a potom zadejte tyto hodnoty pro virtuální síť:
 
     - *myVNet* – tuto hodnotu zadejte jako název virtuální sítě.
     - *10.0.0.0/16* – tuto hodnotu zadejte jako adresní prostor virtuální sítě.
@@ -64,13 +64,13 @@ Virtuální síť je požadován pro komunikaci mezi prostředky, které vytvoř
 
 6. Kliknutím na **OK** vytvořte virtuální síť a podsíť.
 7. Klikněte na tlačítko **zvolte veřejnou IP adresu**, klikněte na tlačítko **vytvořit nový**a potom zadejte název veřejné IP adresy. V tomto příkladu se veřejná IP adresa nazývá *myAGPublicIPAddress*. U ostatních nastavení ponechejte výchozí hodnoty a potom klikněte na **OK**.
-8. Přijměte výchozí hodnoty pro konfiguraci naslouchacího procesu nechte zakázáno brány firewall webových aplikací a pak klikněte na tlačítko **OK**.
-9. Zkontrolujte nastavení na stránce Souhrn a pak klikněte na tlačítko **OK** vytvoření síťové prostředky a aplikační brány. Ho může trvat několik minut, než aplikační brány, aby lze vytvořit, počkejte na dokončení nasazení přejde k další části úspěšně.
+8. Přijměte výchozí hodnoty pro konfiguraci naslouchacího procesu, nechat zakázané brány firewall webových aplikací a pak klikněte na **OK**.
+9. Zkontrolujte nastavení na stránce Souhrn a pak klikněte na tlačítko **OK** k vytvoření síťových prostředků a aplikační brány. Může trvat několik minut, než pro službu application gateway, chcete-li vytvořit, počkejte na úspěšné dokončení nasazení přejde k další části.
 
 ### <a name="add-a-subnet"></a>Přidání podsítě
 
 1. V nabídce nalevo klikněte na **Všechny prostředky** a potom v seznamu prostředků klikněte na **myVNet**.
-2. Klikněte na tlačítko **podsítě**a potom klikněte na **podsítě**.
+2. Klikněte na tlačítko **podsítě**a potom klikněte na tlačítko **podsítě**.
 
     ![Vytvoření podsítě](./media/create-url-route-portal/application-gateway-subnet.png)
 
@@ -78,10 +78,10 @@ Virtuální síť je požadován pro komunikaci mezi prostředky, které vytvoř
 
 ## <a name="create-virtual-machines"></a>Vytvoření virtuálních počítačů
 
-V tomto příkladu můžete vytvořit tři virtuální počítače, který se má použít jako back-end serverů pro službu application gateway. Na virtuální počítače také nainstalujete službu IIS, abyste ověřili, že se aplikační brána úspěšně vytvořila.
+V tomto příkladu vytvoříte tři virtuální počítače má být použit jako servery back-end pro službu application gateway. Na virtuální počítače také nainstalujete službu IIS, abyste ověřili, že se aplikační brána úspěšně vytvořila.
 
 1. Klikněte na možnost **Nové**.
-2. Klikněte na tlačítko **výpočetní** a pak vyberte **Windows Server 2016 Datacenter** v seznamu doporučený.
+2. Klikněte na tlačítko **Compute** a pak vyberte **systému Windows Server 2016 Datacenter** v seznamu vybrané.
 3. Zadejte pro virtuální počítač tyto hodnoty:
 
     - *myVM1* – název virtuálního počítače.
@@ -116,42 +116,42 @@ V tomto příkladu můžete vytvořit tři virtuální počítače, který se m�
       -Settings $publicSettings
     ```
 
-3. Vytvořte dva další virtuální počítače a instalace služby IIS pomocí kroky, které právě dokončila. Zadejte názvy *Můjvp2* a *myVM3* pro názvy a hodnoty VMName v AzureRmVMExtension sady.
+3. Vytvořte dva další virtuální počítače a instalace služby IIS pomocí kroky, které jste právě dokončili. Zadejte názvy *myVM2* a *myVM3* pro názvy a hodnoty VMName v Set-AzureRmVMExtension.
 
 ## <a name="create-backend-pools-with-the-virtual-machines"></a>Vytvoření back-endové fondy s virtuálními počítači
 
-1. Klikněte na tlačítko **všechny prostředky** a pak klikněte na **myAppGateway**.
+1. Klikněte na tlačítko **všechny prostředky** a potom klikněte na tlačítko **myAppGateway**.
 2. Klikněte na **Back-endové fondy**. V aplikační bráně je automaticky vytvořen výchozí fond. Klikněte na tlačítko **appGateayBackendPool**.
 3. Klikněte na tlačítko **přidat cíl** přidat *myVM1* k appGatewayBackendPool.
 
     ![Přidání back-endových serverů](./media/create-url-route-portal/application-gateway-backend.png)
 
 4. Klikněte na **Uložit**.
-5. Klikněte na tlačítko **back-endové fondy** a pak klikněte na **přidat**.
-6. Zadejte název *imagesBackendPool* a přidejte *Můjvp2* pomocí **přidat cíl**.
+5. Klikněte na tlačítko **back-endové fondy** a potom klikněte na tlačítko **přidat**.
+6. Zadejte název *imagesBackendPool* a přidejte *myVM2* pomocí **přidat cíl**.
 7. Klikněte na **OK**.
-8. Klikněte na tlačítko **přidat** znovu a přidat jiného fondu back-end s názvem *videoBackendPool* a přidejte *myVM3* k němu.
+8. Klikněte na tlačítko **přidat** přidat jiný back-endový fond s názvem *videoBackendPool* a přidejte *myVM3* k němu.
 
-## <a name="create-a-backend-listener"></a>Vytvořit naslouchací proces back-end
+## <a name="create-a-backend-listener"></a>Vytvořit naslouchací proces back-endu
 
-1. Klikněte na tlačítko **naslouchací procesy** a kliknutím na možnost **základní**.
-2. Zadejte *myBackendListener* pro název, *myFrontendPort* pro název front-endový port a potom *8080* jako port pro naslouchací proces.
+1. Klikněte na tlačítko **naslouchacích procesů** a kliknutím na **základní**.
+2. Zadejte *myBackendListener* název *myFrontendPort* pro název front-endový port a potom *8080* jako port pro naslouchací proces.
 3. Klikněte na **OK**.
 
-## <a name="create-a-path-based-routing-rule"></a>Vytvoření pravidla směrování na základě cesty
+## <a name="create-a-path-based-routing-rule"></a>Vytvořte pravidlo směrování na základě cest
 
-1. Klikněte na tlačítko **pravidla** a pak klikněte na **na základě cesty**.
+1. Klikněte na tlačítko **pravidla** a potom klikněte na tlačítko **na základě cest**.
 2. Zadejte *rule2* pro název.
-3. Zadejte *bitové kopie* pro název první cesty. Zadejte */images/* \* pro cestu. Vyberte **imagesBackendPool** pro fond back-end.
-4. Zadejte *Video* pro název druhé cesty. Zadejte */video/* \* pro cestu. Vyberte **videoBackendPool** pro fond back-end.
+3. Zadejte *Imagí* pro název prvního cesty. Zadejte */images/* \* pro danou cestu. Vyberte **imagesBackendPool** pro back-endový fond.
+4. Zadejte *Video* pro název druhé cesty. Zadejte */video/* \* pro danou cestu. Vyberte **videoBackendPool** pro back-endový fond.
 
-    ![Vytvoření pravidla, na základě cesty](./media/create-url-route-portal/application-gateway-route-rule.png)
+    ![Vytvořit pravidlo na základě cest](./media/create-url-route-portal/application-gateway-route-rule.png)
 
 5. Klikněte na **OK**.
 
 ## <a name="test-the-application-gateway"></a>Otestování aplikační brány
 
-1. Klikněte na tlačítko **všechny prostředky**a potom klikněte na **myAGPublicIPAddress**.
+1. Klikněte na tlačítko **všechny prostředky**a potom klikněte na tlačítko **myAGPublicIPAddress**.
 
     ![Záznam veřejné IP adresy aplikační brány](./media/create-url-route-portal/application-gateway-record-ag-address.png)
 
@@ -159,23 +159,23 @@ V tomto příkladu můžete vytvořit tři virtuální počítače, který se m�
 
     ![Otestování základní adresy URL v aplikační bráně](./media/create-url-route-portal/application-gateway-iistest.png)
 
-3. Změňte adresu URL k http://&lt;ip adresu&gt;: 8080/video/test.htm, nahraďte &lt;ip adresu&gt; s IP adresu a měli vidět něco podobného jako v následujícím příkladu:
+3. Změňte adresu URL na http://&lt;ip-address&gt;: 8080/images/test.htm, nahraďte &lt;ip-address&gt; vaši IP adresu kde by měl vypadat přibližně jako v následujícím příkladu:
 
     ![Testování adresy URL obrázků v aplikační bráně](./media/create-url-route-portal/application-gateway-iistest-images.png)
 
-4. Změňte adresu URL k http://&lt;ip adresu&gt;: 8080/video/test.htm, nahraďte &lt;ip adresu&gt; s IP adresu a měli vidět něco podobného jako v následujícím příkladu:
+4. Změňte adresu URL na http://&lt;ip-address&gt;: 8080/video/test.htm, nahraďte &lt;ip-address&gt; vaši IP adresu kde by měl vypadat přibližně jako v následujícím příkladu:
 
     ![Testování adresy URL videa v aplikační bráně](./media/create-url-route-portal/application-gateway-iistest-video.png)
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto článku jste se dozvěděli, jak
+V tomto článku jste zjistili, jak
 
 > [!div class="checklist"]
 > * Vytvoření služby Application Gateway
-> * Vytváření virtuálních počítačů pro back-end serverů
+> * Vytvoření virtuálního počítače pro back-end serverů
 > * Vytvoření back-endové fondy s back-end serverů
-> * Vytvořit naslouchací proces back-end
-> * Vytvoření pravidla směrování na základě cesty
+> * Vytvořit naslouchací proces back-endu
+> * Vytvořte pravidlo směrování na základě cest
 
-Další informace o aplikačních bran a jejich přidružené prostředky, i nadále články s návody.
+Další informace o aplikačních bran a jejich souvisejících prostředcích najdete i nadále články s postupy.

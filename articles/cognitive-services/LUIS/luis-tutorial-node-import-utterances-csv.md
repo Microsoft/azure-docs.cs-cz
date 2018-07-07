@@ -1,7 +1,7 @@
 ---
-title: Vytvořit aplikaci LEOŠ programově pomocí Node.js | Microsoft Docs
+title: Sestavení aplikace LUIS programově pomocí Node.js | Dokumentace Microsoftu
 titleSuffix: Azure
-description: Naučte se vytvářet aplikace LEOŠ prostřednictvím kódu programu z dříve existující data ve formátu CSV pomocí rozhraní API pro tvorbu LEOŠ.
+description: Informace o sestavení aplikace LUIS prostřednictvím kódu programu z dříve existující data ve formátu CSV pomocí rozhraní API pro vytváření LUIS.
 services: cognitive-services
 author: DeniseMak
 manager: rstand
@@ -10,45 +10,45 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: v-geberr
-ms.openlocfilehash: e97dc184266bc9518ee5f909891bd97f7c71804b
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 54c7565dd00305d3ce1faba5d7cc5616c53dd026
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37113048"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37888152"
 ---
-# <a name="build-a-luis-app-programmatically-using-nodejs"></a>Vytvořit aplikaci LEOŠ programově pomocí Node.js
+# <a name="build-a-luis-app-programmatically-using-nodejs"></a>Sestavení aplikace LUIS programově pomocí Node.js
 
-LEOŠ poskytuje programovací rozhraní API, které nemá všechno, která [LEOŠ] [ LUIS] nemá webu. To můžete ušetřit čas, pokud máte stávající data a je rychlejší k vytvoření aplikace LEOŠ prostřednictvím kódu programu než zadáním informace ručně. 
+LUIS poskytuje programový rozhraní API, která provádí všechno, co, který [LUIS](luis-reference-regions.md) webu nepodporuje. To můžete ušetřit čas, pokud máte existující data a bude rychlejší k vytvoření aplikace LUIS programově než ručně zadáním informací. 
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Přihlaste se k [LEOŠ] [ LUIS] webu a najít váš [vytváření klíč](luis-concept-keys.md#authoring-key) v nastavení účtu. Tento klíč použijete k volání rozhraní API pro vytváření obsahu.
+* Přihlaste se k [LUIS](luis-reference-regions.md) webu a hledání vaší [vytváření klíč](luis-concept-keys.md#authoring-key) v nastavení účtu. Tento klíč použijete k volání rozhraní API pro vytváření.
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
-* V tomto kurzu začíná sdílený svazek clusteru pro soubory protokolů hypotetický společnosti uživatelských požadavků. Stažení [zde](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/IoT.csv).
-* Nainstalujte nejnovější Node.js pomocí NPM. Stažení z [zde](https://nodejs.org/en/download/).
-* **[Doporučeno]**  Technologie IntelliSense a ladění, visual Studio Code stažení z [sem](https://code.visualstudio.com/) zdarma.
+* Tento kurz pracuje s sdíleného svazku clusteru pro soubory protokolů hypotetické společnosti uživatelských požadavků. Stáhněte si ho [tady](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/IoT.csv).
+* Nainstalujte nejnovější Node.js pomocí NPM. Stáhněte si ji z [tady](https://nodejs.org/en/download/).
+* **[Doporučuje]**  Visual Studio Code pro technologii IntelliSense a ladění, si ji stáhnout z [tady](https://code.visualstudio.com/) zdarma.
 
-## <a name="map-preexisting-data-to-intents-and-entities"></a>Mapování dříve existující dat tříd Intent a entit
-I v případě, že máte systém, který nebyl vytvořen s LEOŠ pamatovat, pokud obsahuje textové data, která mapuje uživatele na různých věcí chcete udělat, je možné spolu s mapování z existující kategorie vstupu uživatele na záměry v LEOŠ. V případě, že můžete identifikovat důležité slova nebo fráze v co uvedená uživatele, může tato slova mapování entity.
+## <a name="map-preexisting-data-to-intents-and-entities"></a>Dříve existující data mapy a záměry a entity
+I když máte systému, který nebyl vytvořen pomocí služby LUIS v úvahu, pokud obsahuje textová data, která mapuje se na různé věci uživatele chcete udělat, je možné a navrhněte mapování z existující kategorie záměry v LUIS vstup uživatele. Pokud můžete identifikovat důležité slova nebo fráze v co říci uživatelům, může tato slova namapovat na entity.
 
-Otevřete soubor `IoT.csv`. Obsahuje protokolu uživatelských dotazů hypotetický domácí automatizace služby, včetně jak byly klasifikovány, co uživatel uvedená a některé sloupce s vyžádat mimo je užitečné informace. 
+Otevřete soubor `IoT.csv`. Obsahuje protokol dotazy uživatelů hypotetické domácí automatizace služby, včetně jak byly do kategorií, co říká uživatele a některé sloupce s užitečnými informacemi získaných z nich. 
 
 ![Soubor CSV](./media/luis-tutorial-node-import-utterances-csv/csv.png) 
 
-Uvidíte, že **RequestType** sloupec může být záměry a **požadavku** sloupci se zobrazuje utterance příklad. Pokud se vyskytují v utterance, může být v ostatních polích entity. Protože jsou záměry, entit a příklad utterances, máte požadavky na jednoduchý, ukázkovou aplikaci.
+Uvidíte, že **RequestType** sloupce může být záměrů a **žádosti** sloupci se zobrazuje příkladu utterance. Ostatní pole může být entity, když se vyskytují v utterance. Protože záměrů, entit a příklad projevy, máte požadavky na jednoduchý, ukázkovou aplikaci.
 
-## <a name="steps-to-generate-a-luis-app-from-non-luis-data"></a>Kroky pro vygenerování LEOŠ aplikace z jiných LEOŠ dat
-Pokud chcete vygenerovat novou aplikaci LEOŠ ze zdrojového souboru, nejprve můžete analyzovat data ze souboru CSV a tato data převést do formátu, který nahrajete do LEOŠ pomocí rozhraní API pro vytváření obsahu. Z analyzovaná data shromáždit informace o co tříd Intent a entity existují. Potom můžete provádět volání rozhraní API pro vytvoření aplikace a přidat záměry a entitami, které byly získány z analyzovaných datech. Po vytvoření aplikace LEOŠ, můžete přidat utterances příklad z analyzovaných datech. Zobrazí se tento tok v poslední části následující kód. Kopírování nebo [Stáhnout](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/index.js) tento kód a uložit ho v `index.js`.
+## <a name="steps-to-generate-a-luis-app-from-non-luis-data"></a>Kroky pro vygenerování aplikace LUIS z dat bez LUIS
+Generovat nové aplikace LUIS ze zdrojového souboru, nejprve analyzovat data ze souboru CSV a tato data převést do formátu, který nahrajete do služby LUIS pomocí rozhraní API pro vytváření. Z analyzovaná data shromáždit informace o jaké záměry a entity jsou existuje. Pak můžete provádět volání rozhraní API k vytvoření aplikace a přidat záměry a entity, které byly získány z analyzovaných datech. Po vytvoření aplikace LUIS můžete přidat projevy příklad z analyzovaných datech. Zobrazí se tento tok v poslední části následujícího kódu. Kopírování nebo [Stáhnout](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/index.js) tento kód a uložte ho do `index.js`.
 
    [!code-javascript[Node.js code for calling the steps to build a LUIS app](~/samples-luis/examples/build-app-programmatically-csv/index.js)]
 
 
 ## <a name="parse-the-csv"></a>Analyzovat sdílený svazek clusteru
 
-Položky sloupce, které obsahují utterances ve sdíleném svazku clusteru musí být získány do formátu JSON, který můžete porozumět LEOŠ. Musí obsahovat tento formát JSON `intentName` pole, které identifikují záměr utterance. Musí obsahovat také `entityLabels` pole, které může být prázdný, pokud nejsou žádné entity v utterance. 
+Sloupec položky, které obsahují projevy ve sdíleném svazku clusteru musí být získány do formátu JSON, který by rozuměla služba LUIS. Musí obsahovat tento formát JSON `intentName` pole, které identifikuje záměr utterance. Musí obsahovat také `entityLabels` pole, které může být prázdný, pokud neexistují žádné entity v utterance. 
 
-Například zadání "Zapnout indikátory" mapy tento formát JSON:
+Například zadání "Vypnul světla" mapuje na tento dokument JSON:
 
 ```json
         {
@@ -69,33 +69,33 @@ Například zadání "Zapnout indikátory" mapy tento formát JSON:
         }
 ```
 
-V tomto příkladu `intentName` pochází z požadavku uživatele v části **požadavku** v souboru CSV záhlaví sloupce a `entityName` pochází z ostatních sloupců s informací o klíči. Například, pokud je položka pro **operace** nebo **zařízení**a že řetězec dochází také v skutečné požadavku, a potom může být označený jako entity. Následující kód ukazuje, to analýzu procesu. Můžete zkopírovat nebo [Stáhnout](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/_parse.js) ho a uložte ho do `_parse.js`.
+V tomto příkladu `intentName` pochází z uživatelského požadavku v rámci **požadavek** záhlaví sloupce v souboru CSV a `entityName` pochází z ostatních sloupců s informací o klíči. Například, pokud je záznam pro **operace** nebo **zařízení**a že v aktuálního požadavku dojde také k řetězec a pak mohou být označeny jako entity. Následující kód ukazuje, tento proces analýzy. Můžete zkopírovat nebo [Stáhnout](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/_parse.js) jej a uložit ho. tím `_parse.js`.
 
    [!code-javascript[Node.js code for parsing a CSV file to extract intents, entities, and labeled utterances](~/samples-luis/examples/build-app-programmatically-csv/_parse.js)]
 
 
 
-## <a name="create-the-luis-app"></a>Vytvoření aplikace LEOŠ
-Po analýze dat do formátu JSON, přidejte ji do aplikace LEOŠ. Následující kód vytvoří LEOŠ aplikaci. Kopírování nebo [Stáhnout](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/_create.js) a uložte ho do `_create.js`.
+## <a name="create-the-luis-app"></a>Vytvoření aplikace LUIS
+Jakmile se data má být do formátu JSON, můžete ho přidáte do aplikace LUIS. Následující kód vytvoří aplikaci služby LUIS. Kopírování nebo [Stáhnout](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/_create.js) a uložte ho do `_create.js`.
 
    [!code-javascript[Node.js code for creating a LUIS app](~/samples-luis/examples/build-app-programmatically-csv/_create.js)]
 
 
 ## <a name="add-intents"></a>Přidání záměrů
-Jakmile máte aplikace, budete muset záměry k němu. Následující kód vytvoří LEOŠ aplikaci. Kopírování nebo [Stáhnout](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/_intents.js) a uložte ho do `_intents.js`.
+Jakmile budete mít aplikaci, budete muset záměry na ni. Následující kód vytvoří aplikaci služby LUIS. Kopírování nebo [Stáhnout](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/_intents.js) a uložte ho do `_intents.js`.
 
    [!code-javascript[Node.js code for creating a series of intents](~/samples-luis/examples/build-app-programmatically-csv/_intents.js)]
 
 
 ## <a name="add-entities"></a>Přidání entit
-Následující kód přidá do aplikace LEOŠ entity. Kopírování nebo [Stáhnout](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/_entities.js) a uložte ho do `_entities.js`.
+Následující kód přidá entity do aplikace LUIS. Kopírování nebo [Stáhnout](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/_entities.js) a uložte ho do `_entities.js`.
 
    [!code-javascript[Node.js code for creating entities](~/samples-luis/examples/build-app-programmatically-csv/_entities.js)]
    
 
 
 ## <a name="add-utterances"></a>Přidání projevů
-Jakmile entit a tříd Intent byly definovány v aplikaci LEOŠ, můžete přidat utterances. Následující kód používá [Utterances_AddBatch](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09) rozhraní API, které umožňuje přidat až 100 utterances najednou.  Kopírování nebo [Stáhnout](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/_upload.js) a uložte ho do `_upload.js`.
+Po entity a záměry byly definovány v aplikaci LUIS, můžete přidat projevy. Následující kód používá [Utterances_AddBatch](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09) rozhraní API, které vám umožní přidat až 100 projevy najednou.  Kopírování nebo [Stáhnout](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/_upload.js) a uložte ho do `_upload.js`.
 
    [!code-javascript[Node.js code for adding utterances](~/samples-luis/examples/build-app-programmatically-csv/_upload.js)]
 
@@ -103,17 +103,17 @@ Jakmile entit a tříd Intent byly definovány v aplikaci LEOŠ, můžete přida
 ## <a name="run-the-code"></a>Spuštění kódu
 
 
-### <a name="install-nodejs-dependencies"></a>Nainstalovat Node.js závislosti
-Nainstalujte Node.js závislosti z NPM v terminálu nebo příkazového řádku.
+### <a name="install-nodejs-dependencies"></a>Nainstalujte Node.js závislosti
+Instalace Node.js závislosti z NPM, v terminálu nebo příkazového řádku.
 
 ````
 > npm install
 ````
 
-### <a name="change-configuration-settings"></a>Změňte nastavení konfigurace
-Chcete-li používat tuto aplikaci, musíte změnit hodnoty v souboru index.js na klíč koncového bodu a zadejte název chcete aplikaci tak, aby měl. Můžete také nastavit jazykovou verzi aplikace nebo změnit číslo verze.
+### <a name="change-configuration-settings"></a>Změna nastavení konfigurace
+Pokud chcete používat tuto aplikaci, budete muset změnit hodnoty v souboru index.js na vlastní klíče koncového bodu a zadejte název, který chcete aplikaci. Můžete také nastavit jazykovou verzi aplikace nebo změňte číslo verze.
 
-Otevřete soubor index.js a změňte tyto hodnoty v horní části souboru.
+Otevřete soubor index.js a změnit tyto hodnoty v horní části souboru.
 
 
 ````JavaScript
@@ -124,7 +124,7 @@ const LUIS_appCulture = "en-us";
 const LUIS_versionId = "0.1";
 ````
 ### <a name="run-the-script"></a>Spusťte skript
-Spusťte skript z terminálu nebo příkazového řádku s Node.js.
+Spusťte skript z terminálu nebo příkazového řádku s využitím Node.js.
 
 ````
 > node index.js
@@ -135,7 +135,7 @@ nebo
 ````
 
 ### <a name="application-progress"></a>Průběh aplikace
-Když aplikace běží, příkazového řádku zobrazí průběh. Výstup příkazového řádku zahrnuje formát odpovědi z LEOŠ.
+Když je spuštěná aplikace příkazového řádku zobrazuje průběh. Výstup příkazového řádku obsahuje formátu odpovědi ze služby LUIS.
 
 ````
 > node index.js
@@ -162,24 +162,21 @@ upload done
 
 
 
-## <a name="open-the-luis-app"></a>Otevřete aplikaci LEOŠ
-Po dokončení skriptu, se můžete se přihlásit k [LEOŠ] [ LUIS] a LEOŠ aplikace jste vytvořili v části **Moje aplikace**. Nyní byste měli mít zobrazíte utterances jste přidali v části **TurnOn**, **vypnutí**, a **žádné** tříd Intent.
+## <a name="open-the-luis-app"></a>Otevřete aplikaci LUIS
+Po dokončení skriptu se můžete přihlásit k [LUIS](luis-reference-regions.md) a zobrazte aplikaci LUIS vytvořené v rámci **Moje aplikace**. Byste měli vidět projevy, které jste přidali v rámci **TurnOn**, **vypnutí**, a **žádný** záměry.
 
-![Záměr TurnOn](./media/luis-tutorial-node-import-utterances-csv/imported-utterances-661.png)
+![TurnOn záměr](./media/luis-tutorial-node-import-utterances-csv/imported-utterances-661.png)
 
 
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Testování a cvičení aplikace v rámci LEOŠ webu](interactive-test.md)
+> [Testování a jejich trénování vaší aplikace na webu služby LUIS](interactive-test.md)
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-Tato ukázková aplikace používá následující LEOŠ rozhraní API:
+Tato ukázková aplikace používá následující rozhraní LUIS API:
 - [Vytvoření aplikace](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c36)
-- [Přidat záměry](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0c)
-- [Přidání entity](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0e) 
-- [Přidat utterances](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09) 
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions
-
+- [Přidání záměrů](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0c)
+- [Přidání entit](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0e) 
+- [Přidání projevů](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09)

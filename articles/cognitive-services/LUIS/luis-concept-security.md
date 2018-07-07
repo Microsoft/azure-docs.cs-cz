@@ -9,18 +9,18 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr
-ms.openlocfilehash: c581c26f867ca78a5ed12922c9e8760f5f903881
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: f55574f7a9ffbcc2a1c8bd160bb66336b59c348c
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37345854"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37888593"
 ---
 # <a name="authoring-and-endpoint-user-access"></a>Vytváření a koncového bodu přístupu uživatelů
 Vytváření přístup je k dispozici pro vlastníky a spolupracovníky. Privátní aplikaci je k dispozici pro vlastníky a spolupracovníci přístup koncového bodu. Veřejné aplikace koncový bod přístup je k dispozici pro všechny uživatele, který má svůj vlastní účet služby LUIS a má ID veřejné aplikace. 
 
 ## <a name="access-to-authoring"></a>Přístup k vytváření obsahu
-Přístup k aplikaci z [LUIS] [ LUIS] webu nebo [rozhraní API pro vytváření](https://aka.ms/luis-authoring-apis) řídí vlastník aplikace. 
+Přístup k aplikaci z [LUIS](luis-reference-regions.md#luis-website) webu nebo [rozhraní API pro vytváření](https://aka.ms/luis-authoring-apis) řídí vlastník aplikace. 
 
 Vlastníka a spolupracovníky všechny mají přístup k vytváření aplikací. 
 
@@ -77,8 +77,6 @@ Můžete řídit, kdo uvidí vaše klíče koncového bodu služby LUIS volání
 ## <a name="security-compliance"></a>Dodržování předpisů zabezpečení
 Služba LUIS se úspěšně dokončila, ISO 27001: 2013 a 27018:2014 auditu podle standardu ISO s NULOVOU nedodržení (výsledky) v sestavě auditu. Kromě toho LUIS také získané certifikace CSA STAR s nejvyšší možné zlaté ocenění pro posouzení vyspělosti funkce. Azure je jenom významnější veřejná Cloudová poskytovatel služeb si tohoto certifikátu. Další podrobnosti můžete najít LUIS součástí příkazu aktualizované oboru v Azure hlavní [přehled dodržování předpisů](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) dokument, který se odkazuje na [Centrum](https://www.microsoft.com/en-us/trustcenter/compliance/iso-iec-27001) ISO stránky.  
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Zobrazit [osvědčené postupy](luis-concept-best-practices.md) na další informace o použití záměry a entity, pro nejlepší předpovědi.
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website

@@ -1,6 +1,6 @@
 ---
-title: Sestavení a nasazení modelu prognózy lze pomocí Azure Machine Learning balíčku pro vytváření prognóz.
-description: Zjistěte, jak pro vytváření, trénování, otestovat a nasadit model prognózy lze pomocí Azure Machine Learning balíčku pro vytváření prognóz.
+title: Sestavení a nasazení modelu prognózy lze pomocí Azure Machine Learning balíčku pro Prognózování.
+description: Zjistěte, jak sestavit, trénování, testování a nasazení modelu prognózy lze pomocí balíčku Azure Machine Learning pro Prognózování.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -9,60 +9,60 @@ ms.reviewer: jmartens
 ms.author: mattcon
 author: matthewconners
 ms.date: 05/07/2018
-ms.openlocfilehash: 320a7cf4a34657138c9096cdc4b573170be376e9
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 44093dfde926b92d1617b85d27e362a8e40e5c56
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37035861"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37888666"
 ---
-# <a name="build-and-deploy-forecasting-models-with-azure-machine-learning"></a>Vytváření a nasazování modelů prognózy lze pomocí Azure Machine Learning
+# <a name="build-and-deploy-forecasting-models-with-azure-machine-learning"></a>Vytváření a nasazování modelů prognóz službou Azure Machine Learning
 
-V tomto článku, Naučte se používat **Azure Machine Learning balíček pro vytváření prognóz** (AMLPF) rychle vytvořit a nasadit model prognózy. Pracovní postup je následující:
+V tomto článku najdete další informace o použití **Azure Machine Learning balíček pro prognózování** (AMLPF) rychle sestavit a nasadit model Prognózování. Pracovní postup je následující:
 
-1. Načtení a zkoumat data
+1. Načíst a zkoumání dat
 2. Vytvoření funkcí
-3. Trénování a vyberte doporučené modelu
-4. Model nasadit a používat webovou službu
+3. Trénování a vybrat nejlepší model
+4. Model nasazení a používání této webové služby
 
-Obrátit [balíček referenční dokumentaci k nástroji](https://aka.ms/aml-packages/forecasting) pro úplný seznam transformátory a modely, jakož i podrobné referenční dokumentace pro každý modul a třída.
+Najdete [balíček referenční dokumentaci](https://aka.ms/aml-packages/forecasting) úplný seznam transformátory a modely, stejně jako podrobné referenční dokumentace pro každý modul a třídy.
 
 ## <a name="prerequisites"></a>Požadavky
 
 1. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-1. Následující účty a aplikace musí být nastavení a nainstalován:
+1. Následující účty a aplikace musí mít nastavení a instalaci:
    - Účet Experimentování ve službě Azure Machine Learning 
-   - Účet Azure Machine Learning Model správy
+   - Účet správy modelů Azure Machine Learning
    - Nainstalovanou aplikaci Azure Machine Learning Workbench 
 
-    Pokud tyto tři jsou ještě vytvořen nebo nainstalován, postupujte podle kroků [Azure Machine Learning Quickstart a Workbench instalace](../service/quickstart-installation.md) článku.
+    Pokud tyto tři jsou ještě vytvořen nebo nainstalován, postupujte [Quickstart pro Azure Machine Learning a Workbench instalace](../service/quickstart-installation.md) článku.
 
-1. Balíček Azure Machine Learning pro vytváření prognóz, musí být nainstalován. Zjistěte, jak [instalaci tohoto balíčku zde](https://aka.ms/aml-packages/forecasting).
+1. Musíte nainstalovat balíček Azure Machine Learning pro Prognózování. Zjistěte, jak [instalaci tohoto balíčku zde](https://aka.ms/aml-packages/forecasting).
 
-## <a name="sample-data-and-jupyter-notebook"></a>Ukázková data a poznámkového bloku Jupyter
+## <a name="sample-data-and-jupyter-notebook"></a>Ukázková data a aplikace Jupyter notebook
 
 ### <a name="sample-workflow"></a>Ukázkový pracovní postup 
 Následuje příklad pracovního postupu:
  
-1. **Načítání dat**: načíst datové sady a převádět je do TimeSeriesDataFrame. Tento dataframe je časových řad dat struktura poskytované Azure Machine Learning balíčku pro vytváření prognóz, v tomto dokumentu označuje jako **AMLPF**.
+1. **Ingestování dat**: načíst datovou sadu a převádět je do TimeSeriesDataFrame. Tento datový rámec se data časových řad strukturu Azure Machine Learning balíčkem pro prognózování v tomto dokumentu označovány jako **AMLPF**.
 
-2. **Vytvoření funkce**: různé featurization transformátory poskytované AMLPF použít k vytvoření funkce.
+2. **Vytvoření funkcí**: pomocí různých snadné transformátory poskytované AMLPF můžete vytvořit funkce.
 
-3. **Train a vyberte doporučené Model**: porovnejte výkon různé popisná časové řady modely a modely machine learning. 
+3. **Trénování a vybrat nejlepší Model**: porovnání výkonu různých kritérií čas řady modely a modely strojového učení. 
 
-4. **Nasazení modelu**: nasaďte kanál trained model jako webovou službu pomocí Azure Machine Learning Workbench, mohou být využívány třetími stranami.
+4. **Nasazení modelu**: nasaďte kanál trénovaného modelu jako webové služby pomocí Azure Machine Learning Workbench tak může být upotřebena jinými uživateli.
 
-### <a name="get-the-jupyter-notebook"></a>Získat poznámkového bloku Jupyter
+### <a name="get-the-jupyter-notebook"></a>Získání poznámkového bloku Jupyter
 
-Stažení poznámkového bloku ke spuštění ukázky kódu popsaných v tomto dokumentu sami.
+Stahování Poznámkový blok jupyter spustit ukázky kódu jsou popsány zde sami.
 
 > [!div class="nextstepaction"]
-> [Získat poznámkového bloku Jupyter](https://aka.ms/aml-packages/forecasting/notebooks/sales_forecasting)
+> [Získání poznámkového bloku Jupyter](https://aka.ms/aml-packages/forecasting/notebooks/sales_forecasting)
 
 ### <a name="explore-the-sample-data"></a>Prozkoumejte ukázková data
 
-Machine learning, prognózy příklady v kódu postupujte podle ukázky spoléhají na [jemnějšího potravin Dominick univerzity z Chicaga na datovou sadu](https://research.chicagobooth.edu/kilts/marketing-databases/dominicks) k prognózy prodeje oranžové šťávy. Na Dominick se řetěz supermarketu v Chicagu metropolitní oblasti.
+Strojové učení, Prognózování v kódu postupujte podle ukázky Spolehněte se na příklady [Dominick University z Chicaga na jemnější Foods dataset](https://research.chicagobooth.edu/kilts/marketing-databases/dominicks) o prognózu prodeje oranžové džusu. Společnosti Dominick byla řetěz blízkým v Chicagu datům metropolitní oblasti města.
 
 ### <a name="import-any-dependencies-for-this-sample"></a>Importovat všechny závislosti pro tuto ukázku
 
@@ -103,9 +103,9 @@ print('imports done')
     imports done
     
 
-## <a name="load-data-and-explore"></a>Načtení dat a seznamte se s
+## <a name="load-data-and-explore"></a>Načtení dat a prozkoumejte
 
-Tento fragment kódu ukazuje typickým procesem od verze sady nezpracovaných dat v tomto případě [data z jemnějšího potravin na Dominick](https://research.chicagobooth.edu/kilts/marketing-databases/dominicks).  Můžete také použít funkce usnadnění práce [load_dominicks_oj_data](https://docs.microsoft.com/en-us/python/api/ftk.data.dominicks_oj.load_dominicks_oj_data).
+Tento fragment kódu ukazuje typické proces od nezpracovaných datové sady, v tomto případě [data z vaší Dominick jemnější Foods](https://research.chicagobooth.edu/kilts/marketing-databases/dominicks).  Můžete použít také funkce usnadnění [load_dominicks_oj_data](https://docs.microsoft.com/en-us/python/api/ftk.data.dominicks_oj.load_dominicks_oj_data).
 
 
 ```python
@@ -130,7 +130,7 @@ whole_df.head()
       <th>price</th>
       <th>AGE60</th>
       <th>EDUC</th>
-      <th>ETNICKÉHO</th>
+      <th>RASOVOU</th>
       <th>PŘÍJEM</th>
       <th>HHLARGE</th>
       <th>WORKWOM</th>
@@ -152,7 +152,7 @@ whole_df.head()
       <td>3,87</td>
       <td>0.23</td>
       <td>0.25</td>
-      <td>0.11</td>
+      <td>0,11</td>
       <td>10.55</td>
       <td>0.10</td>
       <td>0,30</td>
@@ -172,7 +172,7 @@ whole_df.head()
       <td>3,87</td>
       <td>0.23</td>
       <td>0.25</td>
-      <td>0.11</td>
+      <td>0,11</td>
       <td>10.55</td>
       <td>0.10</td>
       <td>0,30</td>
@@ -192,7 +192,7 @@ whole_df.head()
       <td>3,87</td>
       <td>0.23</td>
       <td>0.25</td>
-      <td>0.11</td>
+      <td>0,11</td>
       <td>10.55</td>
       <td>0.10</td>
       <td>0,30</td>
@@ -212,7 +212,7 @@ whole_df.head()
       <td>3,87</td>
       <td>0.23</td>
       <td>0.25</td>
-      <td>0.11</td>
+      <td>0,11</td>
       <td>10.55</td>
       <td>0.10</td>
       <td>0,30</td>
@@ -232,7 +232,7 @@ whole_df.head()
       <td>3,87</td>
       <td>0.23</td>
       <td>0.25</td>
-      <td>0.11</td>
+      <td>0,11</td>
       <td>10.55</td>
       <td>0.10</td>
       <td>0,30</td>
@@ -247,10 +247,10 @@ whole_df.head()
 
 
 
-Data se skládají z týdenní prodeje podle značky a úložiště. Probíhá logaritmus prodané množství _logmove_ sloupce. Data také zahrnuje některé funkce demografické údaje zákazníka. 
+Data se skládají z týdenní prodeje podle značky a úložiště. Probíhá logaritmus prodané množství _logmove_ sloupce. Data obsahují také některé funkce demografické zákazníka. 
 
-Chcete-li model časové řady extrahovat z této dataframe následující prvky: 
-+ Datum a čas osy 
+Pro model časové řady, je potřeba extrahovat z tohoto datového rámce následující prvky: 
++ Časová osa 
 + Prodejní množství, které má být prognózy
 
 
@@ -334,11 +334,11 @@ print('{} time series in the data frame.'.format(nseries))
     249 time series in the data frame.
     
 
-Data obsahují přibližně 250 různé kombinace úložiště a brand datové rámce. Každé kombinaci definuje vlastní časové řady prodeje. 
+Data obsahují přibližně 250 různých kombinací úložiště a značky v datovém rámci. Každá kombinace definuje vlastní časové řady prodeje. 
 
-Můžete použít [TimeSeriesDataFrame](https://docs.microsoft.com/en-us/python/api/ftk.dataframe_ts.timeseriesdataframe?view=azure-ml-py-latest) třídy pohodlně více řad pomocí struktura single – datový model _intervalem_. Je zadána intervalem `store` a `brand` sloupce.
+Můžete použít [TimeSeriesDataFrame](https://docs.microsoft.com/en-us/python/api/ftk.dataframe_ts.timeseriesdataframe?view=azure-ml-py-latest) třídy pohodlně více řad pomocí struktura single – datový model _intervalem_. Je určená interval `store` a `brand` sloupce.
 
-Rozdíl mezi _intervalem_ a _skupiny_ je, že intervalem je vždy fyzicky smysluplný v praxi, a když skupina nemá být. Funkce vnitřní balíček použít skupinu k sestavení jeden model z několika časovými řadami, pokud uživatel dochází k závěru, že toto seskupení pomáhá zlepšit výkon modelu. Ve výchozím nastavení skupina nastavení rovnat intervalem a jeden model sestavuje pro každý intervalem. 
+Rozdíl mezi _intervalem_ a _skupiny_ je skutečnost, že interval vždy fyzicky smysl v praxi, zatímco skupina nemusí být. Interní balíček funkcí pomocí skupiny můžete sestavit jeden model z několika časovými řadami, když uživatel domnívá, že toto seskupení pomáhá zlepšit výkon modelů. Ve výchozím nastavení skupina nastavena rovná intervalem a jednoho modelu je sestaven pro každý úsek. 
 
 
 ```python
@@ -409,7 +409,7 @@ whole_tsdf[['Quantity']].head()
 
 
 
-V rámci reprezentace TimeSeriesDataFrame časová osa a intervalem jsou teď součástí index rámečku data a povolit snadný přístup k řezů funkce data a času pandas.
+V reprezentaci TimeSeriesDataFrame časové osy a intervalem jsou teď součástí index snímku data a umožňují snadný přístup k dělení funkce data a času pandas.
 
 
 ```python
@@ -498,7 +498,7 @@ whole_tsdf.loc[pd.IndexSlice['1990-06':'1990-09', 2, 'dominicks'], ['Quantity']]
 
 
 
-[TimeSeriesDataFrame.ts_report](https://docs.microsoft.com/en-us/python/api/ftk.dataframe_ts.timeseriesdataframe?view=azure-ml-py-latest#ts-report) funkce generuje komplexní zprávu časový interval, data řady. Sestava obsahuje popis obecné data jak statistiky, které jsou specifické pro data časové řady. 
+[TimeSeriesDataFrame.ts_report](https://docs.microsoft.com/en-us/python/api/ftk.dataframe_ts.timeseriesdataframe?view=azure-ml-py-latest#ts-report) funkce generuje komplexní sestavu časový interval, data řady. Zpráva obsahuje popis obecných dat i statistiky, které jsou specifické pro data časových řad. 
 
 
 ```python
@@ -663,11 +663,16 @@ whole_tsdf.ts_report()
 
 ![PNG](./media/how-to-build-deploy-forecast-models/output_15_6.png)
 
+![PNG](./media/how-to-build-deploy-forecast-models/output_59_0.png)
+![png](./media/how-to-build-deploy-forecast-models/output_61_0.png)
+![png](./media/how-to-build-deploy-forecast-models/output_63_0.png)
+![png](./media/how-to-build-deploy-forecast-models/output_63_1.png)
+ 
 
 
-## <a name="integrate-with-external-data"></a>Integrovat externích dat
+## <a name="integrate-with-external-data"></a>Integrace s externími daty
 
-Někdy je užitečné pro integraci externích dat jako další funkce prognózy. V této ukázce kódu připojíte TimeSeriesDataFrame s externí data související s počasí.
+Někdy je užitečné integrace externích dat jako další funkce pro vytváření předpovědí. V této ukázce kódu musíte připojit TimeSeriesDataFrame externí data týkající se počasí.
 
 
 ```python
@@ -714,7 +719,7 @@ whole_tsdf.head()
       <th>price</th>
       <th>AGE60</th>
       <th>EDUC</th>
-      <th>ETNICKÉHO</th>
+      <th>RASOVOU</th>
       <th>PŘÍJEM</th>
       <th>HHLARGE</th>
       <th>WORKWOM</th>
@@ -725,7 +730,7 @@ whole_tsdf.head()
       <th>CPWVOL5</th>
       <th>Množství</th>
       <th>WeekFirstDay</th>
-      <th>DOČASNÉ</th>
+      <th>TEMP</th>
       <th>DEWP</th>
       <th>WDSP</th>
       <th>PRCP</th>
@@ -768,7 +773,7 @@ whole_tsdf.head()
       <td>1.59</td>
       <td>0.23</td>
       <td>0.25</td>
-      <td>0.11</td>
+      <td>0,11</td>
       <td>10.55</td>
       <td>0.10</td>
       <td>0,30</td>
@@ -792,7 +797,7 @@ whole_tsdf.head()
       <td>3.17</td>
       <td>0.23</td>
       <td>0.25</td>
-      <td>0.11</td>
+      <td>0,11</td>
       <td>10.55</td>
       <td>0.10</td>
       <td>0,30</td>
@@ -816,7 +821,7 @@ whole_tsdf.head()
       <td>3,87</td>
       <td>0.23</td>
       <td>0.25</td>
-      <td>0.11</td>
+      <td>0,11</td>
       <td>10.55</td>
       <td>0.10</td>
       <td>0,30</td>
@@ -839,7 +844,7 @@ whole_tsdf.head()
       <td>7.49</td>
       <td>1</td>
       <td>1.59</td>
-      <td>0.12</td>
+      <td>0,12</td>
       <td>0.32</td>
       <td>0,05</td>
       <td>Maska 10.92</td>
@@ -847,7 +852,7 @@ whole_tsdf.head()
       <td>0.41</td>
       <td>...</td>
       <td>3,80</td>
-      <td>0.68</td>
+      <td>0,68</td>
       <td>1.60</td>
       <td>0.74</td>
       <td>1 792</td>
@@ -863,7 +868,7 @@ whole_tsdf.head()
       <td>8.35</td>
       <td>0</td>
       <td>2.99</td>
-      <td>0.12</td>
+      <td>0,12</td>
       <td>0.32</td>
       <td>0,05</td>
       <td>Maska 10.92</td>
@@ -871,7 +876,7 @@ whole_tsdf.head()
       <td>0.41</td>
       <td>...</td>
       <td>3,80</td>
-      <td>0.68</td>
+      <td>0,68</td>
       <td>1.60</td>
       <td>0.74</td>
       <td>4224</td>
@@ -887,14 +892,14 @@ whole_tsdf.head()
 
 ## <a name="preprocess-data-and-impute-missing-values"></a>Předzpracování dat a dává chybějící hodnoty
 
-Začněte tím, že rozdělení dat do trénovací sady a testování s [ftk.tsutils.last_n_periods_split](https://docs.microsoft.com/en-us/python/api/ftk.ts_utils?view=azure-ml-py-latest) nástroj funkce. Výsledná sada testování obsahuje poslední 40 připomínky každé časové řady. 
+Začněte tím, že rozdělení dat do sady pro trénování a testování sadu s [ftk.tsutils.last_n_periods_split](https://docs.microsoft.com/en-us/python/api/ftk.ts_utils?view=azure-ml-py-latest) pomocnou funkci. Výsledná sada testování obsahuje poslední 40 pozorování každá Časová řada. 
 
 
 ```python
 train_tsdf, test_tsdf = last_n_periods_split(whole_tsdf, 40)
 ```
 
-Základní časové řady modely vyžadují souvislý časové řady. Zkontrolujte, jestli jsou řady pravidelné, což znamená, že mají indexem čas odebírána data v pravidelných intervalech, pomocí [check_regularity_by_grain](https://docs.microsoft.com/en-us/python/api/ftk.dataframe_ts.timeseriesdataframe?view=azure-ml-py-latest#check-regularity-by-grain) funkce.
+Základní čas řady modely vyžadují souvislých časových řad. Zkontrolujte, jestli jsou pravidelné, což znamená, že mají čas index odebírána data v pravidelných intervalech pomocí řady [check_regularity_by_grain](https://docs.microsoft.com/en-us/python/api/ftk.dataframe_ts.timeseriesdataframe?view=azure-ml-py-latest#check-regularity-by-grain) funkce.
 
 
 ```python
@@ -969,7 +974,7 @@ print(ts_regularity[ts_regularity['regular'] == False])
     [213 rows x 2 columns]
     
 
-Uvidíte, že většina řady (213 mimo 249) jsou nestandardní. [Imputace transformace](https://docs.microsoft.com/en-us/python/api/ftk.transforms.ts_imputer?view=azure-ml-py-latest) se vyžaduje k doplnění chybějících hodnot prodejní množství. Existuje řada možností imputace, používá následující vzorový kód lineární interpolace.
+Uvidíte, že většina řady (213 z 249) je nestandardní. [Imputace transformace](https://docs.microsoft.com/en-us/python/api/ftk.transforms.ts_imputer?view=azure-ml-py-latest) je potřeba vyplnit chybějící hodnoty prodeje množství. Přestože existuje mnoho možností imputace, následující vzorový kód používá lineární interpolace.
 
 
 ```python
@@ -982,7 +987,7 @@ imputer = TimeSeriesImputer(input_column='Quantity',
 train_imputed_tsdf = imputer.transform(train_tsdf)
 ```
 
-Po provedení kód imputace mít všechny řady regulární frekvence:
+Po spuštění kódu imputace mít všechny řady frekvenci regulární:
 
 
 ```python
@@ -995,18 +1000,18 @@ print(ts_regularity_imputed[ts_regularity_imputed['regular'] == False])
     Index: []
     
 
-## <a name="univariate-time-series-models"></a>Popisná časové řady modely
+## <a name="univariate-time-series-models"></a>Popisná čas řady modelů
 
-Teď, když mají vyčistit data, můžete začít modelování.  Začněte vytvořením tři modely popisná: model "naïve", "sezónní naïve" model a model "ARIMA".
-* Algoritmus Naive předpovědi používá hodnotu proměnné skutečné cíl poslední období jako předpovězená hodnota aktuální období.
+Teď, když vyčistili data, můžete začít modelování.  Začněte vytvořením tři modely popisná: model "naivní", "sezónní naivní" model a model "ARIMA".
+* Použitý algoritmus předpovědi Naive používá skutečný cílová hodnota proměnné z poslední doby jako předpovězená hodnota v aktuálním období.
 
-* Sezónní Naive algoritmus používá hodnotu proměnné skutečné cíl stejný čas bodu předchozí sezóny jako předpovězená hodnota aktuální čas bodu. Mezi příklady patří použití se skutečnou hodnotou stejném měsíci minulý rok k prognózy měsíců od aktuálního roku; tutéž hodinu včerejšek použijte k předpovědi čas ještě dnes. 
+* Algoritmus Naive sezónní používá skutečný cílová hodnota proměnné se stejným bodem čas předchozího období jako předpovězená hodnota aktuální časový bod. Mezi příklady patří pomocí prognózy měsíců od aktuálního roku; skutečná hodnota stejném měsíci minulý rok pomocí jedné hodiny včerejška prognózy hodin ještě dnes. 
 
-* Exponenciální vyhlazování (ETS) algoritmus computing váženým průměrem za posledních pozorování s váhou Slábnoucí exponenciálnímu jako připomínky získat starší vygeneruje prognózy. 
+* Exponenciální vyhlazování (ETS) algoritmus generuje prognózy výpočtem vážené průměry posledních vyjádření s váhy Slábnoucí exponenciálně, jak získat starší připomínky. 
 
-* Algoritmus AutoRegressive integrované přesunutí průměrná (ARIMA) zaznamená autocorrelation v data časové řady. Další informace o ARIMA najdete v tématu [tento odkaz](https://en.wikipedia.org/wiki/Autoregressive_integrated_moving_average)
+* Algoritmus Autoregresivní integrovaný přesun průměr (ARIMA) zachycuje autocorrelation v datech časové řady. Další informace o ARIMA, naleznete v tématu [tento odkaz](https://en.wikipedia.org/wiki/Autoregressive_integrated_moving_average)
 
-Začněte nastavením určité parametry modelu podle vaší zkoumání dat. 
+Začněte tím, že nastavení některých parametrů modelu podle vašeho zkoumání dat. 
 
 
 ```python
@@ -1014,7 +1019,7 @@ oj_series_freq = 'W-WED'
 oj_series_seasonality = 52
 ```
 
-### <a name="initialize-models"></a>Inicializace modely
+### <a name="initialize-models"></a>Inicializovat modelů
 
 
 ```python
@@ -1035,7 +1040,7 @@ arima_model = Arima(oj_series_freq, arima_order)
 
 ### <a name="combine-multiple-models"></a>Kombinovat více modelů
 
-[ForecasterUnion](https://docs.microsoft.com/en-us/python/api/ftk.models.forecaster_union.forecasterunion?view=azure-ml-py-latest) odhadu můžete kombinovat více odhadů a přizpůsobit a prognózu s nimi pomocí jeden řádek kódu.
+[ForecasterUnion](https://docs.microsoft.com/en-us/python/api/ftk.models.forecaster_union.forecasterunion?view=azure-ml-py-latest) estimator umožňuje kombinovat více odhady a přizpůsobit/předpověď na nich pomocí jeden řádek kódu.
 
 
 ```python
@@ -1046,10 +1051,10 @@ forecaster_union = ForecasterUnion(
 
 ### <a name="fit-and-predict"></a>Přizpůsobit a předvídání
 
-Odhadů v AMLPF podle stejné rozhraní API jako scikit-další odhadů: shody metodu pro trénování modelu a předpovědi metody pro generování prognózy. 
+Odhady v AMLPF postupujte podle stejného rozhraní API jako scikit-informace odhady: přizpůsobit metodu pro trénování modelu a predict metodu pro vytváření předpovědí. 
 
-**Cvičení modely**  
-Vzhledem k tomu, že tyto modely jsou všechny modely popisná, je vhodné každý intervalem dat jeden model. Pomocí AMLPF, můžete začlenit všechny modely 249 s jedním funkce volání.
+**Trénování modelů**  
+Vzhledem k tomu, že tyto modely jsou všechny modely kritérií, jeden model je vhodný pro každý interval data. Pomocí AMLPF, všechny modely 249 přizpůsobit pomocí právě jednu funkci volání.
 
 
 ```python
@@ -1057,16 +1062,16 @@ forecaster_union_fitted = forecaster_union.fit(train_imputed_tsdf)
 ```
 
 **Prognózy prodeje na testovací data**  
-Podobně jako metodu shody, můžete vytvořit předpovědi pro všechny řady 249 v testovací sadě dat pomocí jednoho volání `predict` funkce. 
+Podobně jako metodu přizpůsobit, můžete vytvořit předpovědi pro všechny řady 249 v testovací sadě dat pomocí volání `predict` funkce. 
 
 
 ```python
 forecaster_union_prediction = forecaster_union_fitted.predict(test_tsdf, retain_feature_column=True)
 ```
 
-**Vyhodnocení modelu výkonu**   
+**Vyhodnocení výkonu modelu**   
 
-Teď můžete vypočítat prognózy chyby na testovací sada. Tady můžete použít procento střední absolutní chyba (MAPE). MAPE je střední absolutní chyba procenta relativně k prodeje skutečnými hodnotami. ```calc_error``` Funkce poskytuje několik integrovaných funkcí pro běžně používané chyba metriky. Můžete také definovat naše vlastní chybové funkce pro výpočet MedianAPE a předejte ji do err_fun argument.
+Nyní můžete vypočítat prognózy chyby v testovací sadě. Tady můžete použít procento střední absolutní chyba (MAPE). MAPE je střední absolutní chyba procento vzhledem ke skutečné hodnoty prodeje. ```calc_error``` Funkce poskytuje několik integrovaných funkcí pro běžně používané chybové metriky. Můžete také definovat naše vlastní chybovou funkci pro výpočet MedianAPE a předat err_fun argument.
 
 
 ```python
@@ -1128,7 +1133,7 @@ univariate_model_errors
     </tr>
     <tr>
       <th>2</th>
-      <td>naïve</td>
+      <td>naivní</td>
       <td>103.57</td>
       <td>59.14</td>
     </tr>
@@ -1143,16 +1148,16 @@ univariate_model_errors
 
 
 
-## <a name="build-machine-learning-models"></a>Vytvářet modely machine learning
+## <a name="build-machine-learning-models"></a>Vytváření modelů strojového učení
 
-Kromě tradičních popisná modely Azure Machine Learning balíček pro vytváření prognóz také umožňuje vytvářet modely machine learning.
+Kromě tradičních popisná modely Azure Machine Learning balíček pro prognózování také umožňuje vytvářet modely strojového učení.
 
-Pro tyto modely začněte tím, že vytváření funkcí.
+Pro tyto modely začněte vytvořením funkce.
 
-### <a name="feature-engineering"></a>Funkce inženýrství
+### <a name="feature-engineering"></a>Vytváření funkcí
 
 **Transformátory**   
-Balíček obsahuje mnoho transformátory pro data řady čas předběžného zpracování a featurization. Následující příklady ukazují některé funkce předběžného zpracování a featurization.
+Balíček obsahuje mnoho transformátory pro předzpracování dat časových řad a snadné. Následující příklady ukazují některé funkce předběžného zpracování a snadné.
 
 
 ```python
@@ -1182,7 +1187,7 @@ grain_featurizer = GrainIndexFeaturizer(overwrite_columns=True, ts_frequency=oj_
 ```
 
 **Kanály**   
-Objekty kanálu usnadňují uložit sadu kroků, takže se můžete opakovaně použít k různým objektům. Navíc může být kanálu objekty pickled aby byly snadno přenosné ostatní počítače pro nasazení. Můžete zřetězené všechny transformátory jste vytvořili, pokud pomocí kanálu. 
+Objekty kanálu usnadňují uložit sadu kroků, takže je možné použít opakovaně pro různé objekty. Navíc může být objekty kanálu pickled aby se daly snadno přenosné na jiné počítače pro nasazení. Můžete zřetězit všechny transformátory jste vytvořili, zatím pomocí kanálu. 
 
 
 ```python
@@ -1249,7 +1254,7 @@ print(train_feature_tsdf.head())
 
  **RegressionForecaster**
 
-[RegressionForecaster](https://docs.microsoft.com/en-us/python/api/ftk.models.regression_forecaster.regressionforecaster?view=azure-ml-py-latest) funkce zabalí sklearn regrese odhadů tak, aby může být trénink na TimeSeriesDataFrame. Zabalená uživatel také umístí každou skupinu v tomto úložišti případu do stejného modelu. Uživatel další jeden model pro skupinu série, která se považuje podobné a můžete ve fondu společně. Data z řady delší jeden model pro skupinu řady často používá ke zlepšení prognózy pro krátké řady. Můžete nahradit tyto modely pro všechny ostatní modely v knihovně, které podporují regrese. 
+[RegressionForecaster](https://docs.microsoft.com/en-us/python/api/ftk.models.regression_forecaster.regressionforecaster?view=azure-ml-py-latest) funkce zabalí skriptu sklearn regrese odhady tak, aby může být trénovaných na TimeSeriesDataFrame. Zabalená uživatel taky umisťuje každou skupinu v tomto případě úložišti do stejného modelu. Uživatel další jeden model pro skupinu série, která se považují za podobný a můžete ve fondu společně. Jeden model pro skupinu řad často používá data z řady delší ke zlepšení předpovědi pro krátké řady. Můžete nahradit tyto modely pro všechny ostatní modely v knihovně, které podporují regrese. 
 
 
 ```python
@@ -1318,7 +1323,7 @@ all_errors.sort_values('MedianAPE')
     </tr>
     <tr>
       <th>2</th>
-      <td>naïve</td>
+      <td>naivní</td>
       <td>103.57</td>
       <td>59.14</td>
     </tr>
@@ -1363,13 +1368,13 @@ all_errors.sort_values('MedianAPE')
 
 
 
-Některé modely machine learning bylo možné využít výhod funkce přidání a podobnosti mezi řady získat lepší přesnost prognózy.
+Některé modely strojového učení se dokáže využívat funkce přidané a podobnosti mezi řadami získat vyšší přesnost předpovědi.
 
-**Křížové ověření a parametr (vymetání) komínů**    
+**Cross-Validation a Sweeping parametr**    
 
-Balíček přizpůsobuje některé tradiční strojového učení funkce pro prognózy aplikace.  [RollingOriginValidator](https://docs.microsoft.com/python/api/ftk.model_selection.cross_validation.rollingoriginvalidator) dočasně, nemá křížové ověření dodržování co by a nebude známý v prognózy framework. 
+Balíčku přizpůsobuje některé tradiční strojového učení funkce předpovědi aplikace.  [RollingOriginValidator](https://docs.microsoft.com/python/api/ftk.model_selection.cross_validation.rollingoriginvalidator) nemá křížového ověření časově, ale současně zachovává co by a nebude známo v rámci prognóz. 
 
-Na obrázku níže představuje každý čtvereček data z jednoho bodu čas. Modré čtverce představují školení a oranžové čtverce představují testování v každé násobek. Testování dat musí pocházet z bodů čas po největší čas bodu školení. V opačném budoucí dat došlo k úniku do Cvičná data způsobuje vyhodnocení modelu ztratí platnost. 
+Na následujícím obrázku představuje každý čtvereček data z jednoho bodu v čase. Modré čtverec představují školení a oranžová čtverce představují testování v každé fáze. Testování dat musí pocházet ze body v čase po největší časový bod školení. V opačném případě je úniku dat do trénovací data, způsobující vyhodnocení modelu stanou neplatnými. 
 
 ![PNG](./media/how-to-build-deploy-forecast-models/cv_figure.PNG)
 
@@ -1391,8 +1396,8 @@ print('Best paramter: {}'.format(randomforest_cv_fitted.best_params_))
     Best paramter: {'estimator__n_estimators': 100}
     
 
-**Sestavení konečné kanálu**   
-Teď, když jste našli nejlepší modelu, můžete sestavit a přizpůsobit svůj poslední kanál s všechny transformátory a nejlepší modelu. 
+**Poslední kanálu pro sestavování**   
+Teď, když jste identifikovali nejvhodnějšího modelu, můžete vytvořit a přizpůsobit konečné kanálu s všechny transformátory a tento nejlepší model. 
 
 
 ```python
@@ -1411,13 +1416,13 @@ print('Median of APE of final pipeline: {0}'.format(final_median_ape))
     Median of APE of final pipeline: 42.54336821266968
     
 
-## <a name="operationalization-deploy-and-consume"></a>Operationalization: nasazení a využívat
+## <a name="operationalization-deploy-and-consume"></a>Operacionalizace: nasazení a využití
 
-V této části nasaďte kanál jako webové služby Azure Machine Learning a využívat pro školení a vyhodnocování. Vyhodnocování nasazenou webovou službu retrains modelu a vygeneruje prognózy na nová data.
+V této části nasazení kanálu jako webové služby Azure Machine Learning a používat ji pro trénování a vyhodnocování. Vyhodnocování nasazenou webovou službu retrains modelu a vytváří předpovědi na nová data.
 
-### <a name="set-model-deployment-parameters"></a>Nastavit parametry modelu nasazení
+### <a name="set-model-deployment-parameters"></a>Nastavit parametry nasazení modelu
 
-Změňte následující parametry vlastní hodnoty. Zkontrolujte, že vaše prostředí Azure Machine Learning, model správy účtů a skupin prostředků, které jsou umístěny ve stejné oblasti.
+Změňte následující parametry vlastními hodnotami. Ujistěte se, že vaše prostředí Azure Machine Learning, účet služby Správa modelů a skupina prostředků se nacházejí ve stejné oblasti.
 
 
 ```python
@@ -1491,9 +1496,9 @@ aml_deployment = ForecastWebserviceFactory(deployment_name=deployment_name,
 aml_deployment.deploy()
 ```
 
-### <a name="score-the-web-service"></a>Stanovení skóre webové služby
+### <a name="score-the-web-service"></a>Skóre webové služby
 
-Ke stanovení skóre na malou datovou sadu, použijte [skóre](https://docs.microsoft.com/python/api/ftk.operationalization.deployment.amlwebservice) volání metody k odeslání jeden webové služby pro všechna data.
+Ke stanovení skóre pro malé datové sady, použijte [skóre](https://docs.microsoft.com/python/api/ftk.operationalization.deployment.amlwebservice) volání metody k odeslání mezi webovými službami pro všechna data.
 
 
 ```python
@@ -1514,7 +1519,7 @@ aml_web_service = aml_deployment.get_deployment()
 results = aml_web_service.score(score_context=score_context)
 ```
 
-Ke stanovení skóre velké datové sady, použijte [paralelní vyhodnocování](https://docs.microsoft.com/python/api/ftk.operationalization.deployment.amlwebservice) volá režimu odeslat více webové služby, jeden pro každou skupinu data.
+Ke stanovení skóre pro velkou datovou sadu, použijte [paralelní vyhodnocování](https://docs.microsoft.com/python/api/ftk.operationalization.deployment.amlwebservice) volá režimu odeslat více webovou službu, jeden pro každou skupinu data.
 
 
 ```python
@@ -1523,9 +1528,9 @@ results = aml_web_service.score(score_context=score_context, method='parallel')
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o balíčku Azure Machine Learning pro vytváření prognóz v těchto článcích:
+Další informace o balíčku Azure Machine Learning pro prognózování v těchto článcích:
 
-+ Pro čtení [balíček přehled a zjistěte, jak ji nainstalovat](https://aka.ms/aml-packages/forecasting).
++ Přečtěte si [balení – přehled a zjistěte, jak ji nainstalovat](https://aka.ms/aml-packages/forecasting).
 
 + Prozkoumejte [referenční dokumentace](https://aka.ms/aml-packages/forecasting) pro tento balíček.
 

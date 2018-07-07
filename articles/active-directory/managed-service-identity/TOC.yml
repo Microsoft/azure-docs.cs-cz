@@ -66,6 +66,8 @@
           href: qs-configure-powershell-windows-vm.md
         - name: Šablona Azure Resource Manageru
           href: qs-configure-template-windows-vm.md
+        - name: REST
+          href: qs-configure-rest-vm.md
         - name: Sady Azure SDK
           href: qs-configure-sdk-windows-vm.md
     - name: Konfigurace identity pro škálovací sadu virtuálních počítačů Azure
@@ -78,6 +80,8 @@
           href: qs-configure-powershell-windows-vmss.md
         - name: Šablona Azure Resource Manageru
           href: qs-configure-template-windows-vmss.md
+        - name: REST
+          href: qs-configure-rest-vmss.md
     - name: Použití MSI virtuálních počítačů
       items:
         - name: Získání přístupového tokenu
@@ -96,6 +100,8 @@
           href: how-to-manage-ua-identity-powershell.md
         - name: Šablona Azure Resource Manageru
           href: how-to-manage-ua-identity-arm.md
+        - name: REST
+          href: how-to-manage-ua-identity-rest.md
 - name: Referenční informace
   items:
     - name: Rozhraní příkazového řádku

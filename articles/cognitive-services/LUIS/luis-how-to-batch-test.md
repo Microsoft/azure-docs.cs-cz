@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: v-geberr
-ms.openlocfilehash: 0844ec9c421afd4cd1e9e8b2e6ab5fbe93b23d04
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: ec023ad796c57141cb35cce15b3d982adf2b8659
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/06/2018
-ms.locfileid: "37868901"
+ms.locfileid: "37887755"
 ---
 # <a name="batch-testing"></a>Dávkové testování
  Testování služby batch je komplexní test na aktuální trénovaný model pro měření jejího výkonu v LUIS. 
@@ -77,13 +77,6 @@ Filtrování grafu specifické cílem nebo entity, vyberte na pravé straně pan
  
 ![Výsledek testu vizualizovaný služby Batch](./media/luis-how-to-batch-test/filter-by-entity.png) 
 
-<!--
-## Investigate false sections
-Data points on the **[False Positive][false-positive]** and **[False Negative][false-negative]** sections indicate errors, which should be investigated. If all data points are on the **[True Positive][true-positive]** and **[True Negative][true-negative]** sections, then your application's performance is perfect on this dataset.
-
-
-The graph indicates [F-measure][f-measure], [recall][recall], and [precision][precision].  
--->
 ## <a name="view-single-point-utterance-data"></a>Zobrazení jednoho bodu utterance dat
 V diagramu najeďte myší na datový bod zobrazíte skóre jistoty jeho předpovědí. Vyberte datový bod k načtení jeho odpovídajícího utterance v seznamu projevy v dolní části stránky. 
 
@@ -111,12 +104,3 @@ Pokud testování označuje, že aplikace LUIS nedokáže rozpoznat správný z�
 * [Použití funkcí pro zvýšení výkonu aplikace LUIS](luis-how-to-add-features.md) 
 * [Vysvětlení služby batch testování v tomto kurzu](luis-tutorial-batch-testing.md)
 * [Další dávky testování konceptů](luis-concept-batch-test.md).
-
-[true-positive]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-glossary#true-positive
-[true-negative]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-glossary#true-negative
-[false-positive]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-glossary#false-positive
-[false-negative]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-glossary#false-negative
-[f-measure]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-glossary#f-measure
-[recall]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-glossary#recall
-[precision]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-glossary#precision
-

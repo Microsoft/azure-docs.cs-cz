@@ -5,15 +5,15 @@ services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/22/2018
+ms.date: 07/06/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 15f21fd03b0373c189f3b6c4972280d128024217
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 83dbe4b7bad8935e7d047a06d6d01ca74329027d
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "36943517"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37906639"
 ---
 Paměťově optimalizované velikosti nabídky virtuálních počítačů vysoký poměr paměti procesoru, které jsou velmi vhodné pro servery relačních databází, střední a velké mezipaměti a analýzu v paměti. Tento článek obsahuje informace o počtu virtuálních procesorů, datové disky a síťové adaptéry, jakož i úložiště propustnost a šířku pásma sítě pro jednotlivé velikosti v této skupině. 
 
@@ -31,6 +31,10 @@ Paměťově optimalizované velikosti nabídky virtuálních počítačů vysok�
 ## <a name="esv3-series"></a>Esv3-series 
 
 ACU: 160-190 <sup>1</sup>
+
+Storage úrovně Premium: podporováno
+
+Ukládání do mezipaměti služby Premium Storage: podporováno
 
 Instance ESv3-series jsou založené na procesorech 2,3 GHz Intel XEON® E5-2673 v4 (Broadwell), jejichž frekvence se s technologií Intel Turbo Boost 2.0 může zvýšit až na 3,5 GHz, a používají službu Premium Storage. Instance Ev3-series jsou ideální pro podnikové aplikace s vysokými nároky na paměť.
 
@@ -57,6 +61,10 @@ Instance ESv3-series jsou založené na procesorech 2,3 GHz Intel XEON® E5-267
 
 ACU: 160-190 <sup>1</sup>
 
+Storage úrovně Premium: Není podporováno.
+
+Premium Storage ukládání do mezipaměti: Není podporováno
+
 Instance Ev3-series jsou založené na procesorech 2,3 GHz Intel XEON® E5-2673 v4 (Broadwell) a s technologií Intel Turbo Boost 2.0 se jejich frekvence může zvýšit až na 3,5 GHz. Instance Ev3-series jsou ideální pro podnikové aplikace s vysokými nároky na paměť.
 
 Úložiště datových disků se účtuje nezávisle na virtuálních počítačích. Pokud chcete použít disky Premium Storage, použijte velikosti ESv3. Měřiče cen a účtování pro velikosti ESv3 jsou stejné jako pro Ev3-series. 
@@ -80,6 +88,12 @@ Instance Ev3-series jsou založené na procesorech 2,3 GHz Intel XEON® E5-2673
 ## <a name="m-series"></a>M-Series 
 
 ACU: 160 – 180 <sup>1</sup>
+
+Storage úrovně Premium: podporováno
+
+Ukládání do mezipaměti služby Premium Storage: podporováno
+
+Akcelerátor zápisu: [podporována](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/how-to-enable-write-accelerator)
 
 | Velikost            | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost dočasného úložiště a úložiště v mezipaměti: IOPS / MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku bez mezipaměti: IOPS / MB/s | Maximální počet síťových karet / očekávaný šířka pásma (MB/s) |
 |-----------------|------|-------------|----------------|----------------|-----------------------------------------------------------------------|-------------------------------------------|------------------------------|
@@ -113,6 +127,10 @@ ACU: 160 – 180 <sup>1</sup>
 
 ACU: 180-240 <sup>1</sup>
 
+Storage úrovně Premium: podporováno
+
+Ukládání do mezipaměti služby Premium Storage: podporováno
+
 | Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost dočasného úložiště a úložiště v mezipaměti: IOPS / MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku bez mezipaměti: IOPS / MB/s | Maximální počet síťových karet / očekávaný šířka pásma (MB/s) |
 |---|---|---|---|---|---|---|---|
 | Standard_GS1 |2 |28 |56 |8 |10 000 / 100 (264) |5 000 / 125 |2 / 2 000 |
@@ -133,6 +151,10 @@ ACU: 180-240 <sup>1</sup>
 
 ACU: 180–240
 
+Storage úrovně Premium: Není podporováno.
+
+Premium Storage ukládání do mezipaměti: Není podporováno
+
 | Velikost         | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Maximální propustnost dočasného úložiště: IOPS / čtení v MB/s / zápis v MB/s | Maximální propustnost datových disků: IOPS | Maximální počet síťových karet / očekávaný šířka pásma (MB/s) |
 |--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
 | Standard_G1  | 2         | 28          | 384            | 6000 / 93 / 46                                           | 8 / 8 × 500                       | 2 / 2 000                     |
@@ -148,6 +170,10 @@ ACU: 180–240
 ## <a name="dsv2-series-11-15"></a>DSv2-series 11-15
 
 ACU: 210 – 250 <sup>1</sup>
+
+Storage úrovně Premium: podporováno
+
+Premium Storage ukládání do mezipaměti: Není podporováno
 
 | Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost dočasného úložiště a úložiště v mezipaměti: IOPS / MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku bez mezipaměti: IOPS / MB/s | Maximální počet síťových karet / očekávaný šířka pásma (MB/s) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -171,6 +197,10 @@ ACU: 210 – 250 <sup>1</sup>
 ## <a name="dv2-series-11-15"></a>Řady Dv2-series 11-15
 
 ACU: 210–250
+
+Storage úrovně Premium: Není podporováno.
+
+Premium Storage ukládání do mezipaměti: Není podporováno
 
 | Velikost              | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Maximální propustnost dočasného úložiště: IOPS / čtení v MB/s / zápis v MB/s | Maximální propustnost datových disků: IOPS | Maximální počet síťových karet / očekávaný šířka pásma (MB/s) |
 |-------------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|

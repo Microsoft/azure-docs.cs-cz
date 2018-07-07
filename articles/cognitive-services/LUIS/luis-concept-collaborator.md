@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr
-ms.openlocfilehash: 93fda0b49f5f4893f80ee60f16ef16bc35edc5ee
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 54a7ecec653218af8f92b405bd0cf8c049d18616
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37341268"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37888445"
 ---
 # <a name="collaborating"></a>Spolupráce
 
@@ -39,7 +39,7 @@ Vlastník aplikace můžete přidat spolupracovníky do aplikace. Vlastník je p
 Pokud chcete sdílet více aplikací s spolupracovníky, každé aplikaci, která musí přidat e-mailu spolupracovníka. 
 
 ## <a name="managing-multiple-authors"></a>Správa více uživatelů
-[LUIS] [ LUIS] webu nenabízí aktuálně vytváření úroveň transakce. Můžete povolit autoři pracovat na nezávislé verze ze základní verze. Dvě různé metody jsou popsány v následujících částech.
+[LUIS](luis-reference-regions.md#luis-website) webu nenabízí aktuálně vytváření úroveň transakce. Můžete povolit autoři pracovat na nezávislé verze ze základní verze. Dvě různé metody jsou popsány v následujících částech.
 
 ### <a name="manage-multiple-versions-inside-the-same-app"></a>Spravovat více verzí uvnitř stejné aplikace
 Začněte tím, že [klonování](luis-how-to-manage-versions.md#clone-a-version), od základní verze, pro jednotlivé autory. 
@@ -62,6 +62,3 @@ Vysvětlení [správy verzí](luis-concept-version.md) koncepty.
 Zobrazit [nastavení aplikace](luis-how-to-collaborate.md) na další informace o správě spolupracovníky ve vaší aplikaci LUIS.
 
 Zobrazit [e-mailu přidejte do seznamu přístupu](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/58fcccdd5aca2f08a4104342) s rozhraními API pro vytváření obsahu.
-
-[luis-reference-prebuilt-domains]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-prebuilt-domains
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website

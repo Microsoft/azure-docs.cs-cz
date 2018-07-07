@@ -164,8 +164,16 @@
           href: azure-operational-security-checklist.md
 - name: Zásady správného řízení a dodržování předpisů
   items:
-    - name: Finanční služby pro regulované úlohy
-      href: ./blueprints/financial-services-regulated-workloads.md
+    - name: FFIEC
+      items:
+        - name: Analýzy dat
+          href: ./blueprints/ffiec-analytics-overview.md
+        - name: Datový sklad
+          href: ./blueprints/ffiec-dw-overview.md
+        - name: Webová aplikace IaaS
+          href: ./blueprints/ffiec-iaaswa-overview.md
+        - name: Webová aplikace PaaS
+          href: ./blueprints/ffiec-paaswa-overview.md
     - name: GDPR
       items:
         - name: Analýzy dat
@@ -187,34 +195,15 @@
         - name: Webová aplikace PaaS
           href: ./blueprints/fedramp-paaswa-overview.md
     - name: PCI DSS
-      href: ./blueprints/payment-processing-blueprint.md
       items:
-        - name: Přehled požadavků
-          href: ./blueprints/pci-dss-requirements-overview.md
-        - name: Požadavek 1 – brány firewall
-          href: ./blueprints/pci-dss-requirement-1-firewall.md
-        - name: Požadavek 2 – hesla
-          href: ./blueprints/pci-dss-requirement-2-password.md
-        - name: Požadavek 3 – CHD
-          href: ./blueprints/pci-dss-requirement-3-chd.md
-        - name: Požadavek 4 – šifrování
-          href: ./blueprints/pci-dss-requirement-4-encryption.md
-        - name: Požadavek 5 – malware
-          href: ./blueprints/pci-dss-requirement-5-malware.md
-        - name: Požadavek 6 – zabezpečené systémy
-          href: ./blueprints/pci-dss-requirement-6-secure-system.md
-        - name: Požadavek 7 – přístup
-          href: ./blueprints/pci-dss-requirement-7-access.md
-        - name: Požadavek 8 – identita
-          href: ./blueprints/pci-dss-requirement-8-identity.md
-        - name: Požadavek 9 – fyzický přístup
-          href: ./blueprints/pci-dss-requirement-9-physical-access.md
-        - name: Požadavek 10 – monitorování
-          href: ./blueprints/pci-dss-requirement-10-monitoring.md
-        - name: Požadavek 11 – testování
-          href: ./blueprints/pci-dss-requirement-11-testing.md
-        - name: Požadavek 12 – zásady
-          href: ./blueprints/pci-dss-requirement-12-policy.md
+        - name: Analýzy dat
+          href: ./blueprints/pcidss-analytics-overview.md
+        - name: Datový sklad
+          href: ./blueprints/pcidss-dw-overview.md
+        - name: Webová aplikace IaaS
+          href: ./blueprints/pcidss-iaaswa-overview.md
+        - name: Webová aplikace PaaS
+          href: ./blueprints/pcidss-paaswa-overview.md
     - name: UK NHS
       items:
         - name: Analýzy dat

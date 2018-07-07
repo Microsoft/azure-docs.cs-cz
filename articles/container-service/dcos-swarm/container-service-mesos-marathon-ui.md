@@ -2,25 +2,25 @@
 title: Správa clusteru Azure DC/OS pomocí uživatelského rozhraní Marathon
 description: Využijte webového uživatelského rozhraní Marathon k nasazení kontejnerů do clusteru Azure Container Service.
 services: container-service
-author: dlepow
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 04/04/2017
-ms.author: danlep
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 43407d40db0aab2772cb1baeab3471be68aee2ab
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: a22bddf48f97d961d481e2aedb42f7d645f3e678
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32166979"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37903077"
 ---
 # <a name="manage-an-azure-container-service-dcos-cluster-through-the-marathon-web-ui"></a>Správa clusteru Azure Container Service DC/OS přes webové uživatelské rozhraní Marathon
 
 DC/OS poskytuje prostředí pro nasazování a škálování clusterových úloh a zároveň poskytuje abstrakci používaného hardwaru. Nad DC/OS je rozhraní, které spravuje plánování a provádění výpočetních úloh.
 
-Jsou k dispozici pro mnoho populárních úloh rozhraní, tento dokument popisuje, jak začít nasazení kontejnerů pomocí Marathonu. 
+K dispozici pro mnoho populárních úloh jsou rozhraní, tento dokument popisuje, jak začít nasazení kontejnerů pomocí Marathonu. 
 
 
 ## <a name="prerequisites"></a>Požadavky
@@ -30,16 +30,16 @@ Než si projdete tyto příklady, budete potřebovat cluster DC/OS nakonfigurova
 * [Připojení ke clusteru Azure Container Service](../container-service-connect.md)
 
 > [!NOTE]
-> Tento článek předpokládá, že máte k dispozici tunel na clusteru DC/OS prostřednictvím místního portu 80.
+> Tento článek předpokládá, že máte k dispozici tunel ke clusteru DC/OS prostřednictvím místního portu 80.
 >
 
 ## <a name="explore-the-dcos-ui"></a>Zkoumáme uživatelské rozhraní DC/OS
-S tunel Secure Shell (SSH) [navázat](../container-service-connect.md), přejděte do http://localhost/. Načte se webové uživatelské rozhraní DC/OS a zobrazí se informace o clusteru, například využité prostředky, aktivní agenti a spuštěné služby.
+Tunelu Secure Shell (SSH) [navázat](../container-service-connect.md), přejděte na http://localhost/. Načte se webové uživatelské rozhraní DC/OS a zobrazí se informace o clusteru, například využité prostředky, aktivní agenti a spuštěné služby.
 
 ![Uživatelské rozhraní DC/OS](./media/container-service-mesos-marathon-ui/dcos2.png)
 
 ## <a name="explore-the-marathon-ui"></a>Zkoumáme uživatelské rozhraní Marathon
-Pokud chcete zobrazit uživatelské rozhraní Marathon, přejděte do http://localhost/marathon. Prostřednictvím této obrazovky můžete spustit nový kontejner nebo jinou aplikaci z clusteru Azure Container Service na bázi DC/OS. Taky uvidíte informace o spuštěných kontejnerech a aplikacích.  
+Pokud chcete zobrazit uživatelské rozhraní Marathon, přejděte na http://localhost/marathon. Prostřednictvím této obrazovky můžete spustit nový kontejner nebo jinou aplikaci z clusteru Azure Container Service na bázi DC/OS. Taky uvidíte informace o spuštěných kontejnerech a aplikacích.  
 
 ![Uživatelské rozhraní Marathon](./media/container-service-mesos-marathon-ui/dcos3.png)
 
@@ -83,7 +83,7 @@ Když se vrátíte na hlavní stránku Marathonu, uvidíte stav nasazení danéh
 
 ![Hlavní stránka uživatelského rozhraní Marathon – stav nasazení kontejneru](./media/container-service-mesos-marathon-ui/dcos7.png)
 
-Pokud přepnete zpět na DC/OS webové uživatelské rozhraní (http://localhost/), uvidíte, že úloha (v tomto případě formátovaný dockerem) běží na clusteru DC/OS.
+Když přepnete zpět do rozhraní DC/OS webového uživatelského rozhraní (http://localhost/), uvidíte, že úloha (v tomto případě kontejner formátovaný Dockerem) je spuštěná na clusteru DC/OS.
 
 ![Webové uživatelské rozhraní DC/OS – úloha spuštěná na clusteru](./media/container-service-mesos-marathon-ui/dcos8.png)
 
@@ -91,14 +91,14 @@ Pokud chcete zobrazit uzel clusteru, na kterém je úloha spuštěná, klikněte
 
 ![Webové uživatelské rozhraní DC/OS – uzel clusteru úlohy](./media/container-service-mesos-marathon-ui/dcos9.png)
 
-## <a name="reach-the-container"></a>Dosažení kontejneru
+## <a name="reach-the-container"></a>Oslovte kontejneru
 
-V tomto příkladu aplikace běží na uzlu veřejného agenta. Nedostanete aplikaci z Internetu procházením agenta plně kvalifikovaný název domény clusteru: `http://[DNSPREFIX]agents.[REGION].cloudapp.azure.com`, kde:
+V tomto příkladu aplikace běží na uzlu veřejného agenta. Aplikace z Internetu dosáhnete tak, že přejdete do agenta plně kvalifikovaný název domény clusteru: `http://[DNSPREFIX]agents.[REGION].cloudapp.azure.com`, kde:
 
 * **DNSPREFIX** je předpona DNS zadaná ve chvíli, kdy jste nasadili cluster.
 * **REGION** je oblast, ve které je umístěna skupina prostředků.
 
-    ![Nginx z Internetu](./media/container-service-mesos-marathon-ui/nginx.png)
+    ![Server Nginx z Internetu](./media/container-service-mesos-marathon-ui/nginx.png)
 
 
 ## <a name="next-steps"></a>Další postup

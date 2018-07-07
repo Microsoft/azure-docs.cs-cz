@@ -1,6 +1,6 @@
 ---
-title: Jak vytvářet a odstraňovat uživatele přiřazené identita spravované služby pomocí Azure Resource Manager
-description: Podrobné pokyny, jak vytvářet a odstraňovat uživatele přiřazené identita spravované služby pomocí prostředků Azure.
+title: Jak vytvářet a odstraňovat uživatele přiřazeny identita spravované služby pomocí Azure Resource Manageru
+description: Pokyny, jak vytvářet a odstraňovat uživatele krok za krokem přiřazené Identity spravované služby pomocí Azure Resource.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -9,49 +9,49 @@ editor: ''
 ms.service: active-directory
 ms.component: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/16/2018
 ms.author: daveba
-ms.openlocfilehash: ce8221cd7bf427084e63f8b13dcf6f0f1cc7a35e
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 74e4c28130fb49a3cb81420913f71dfa3a7c00bf
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34698998"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37903965"
 ---
-# <a name="create-list-and-delete-a-user-assigned-identity-using-azure-resource-manager"></a>Vytvoření seznamu a odstraňte identitu uživatele přiřazené pomocí Azure Resource Manager
+# <a name="create-list-and-delete-a-user-assigned-identity-using-azure-resource-manager"></a>Vytváření, výpisu a odstranění identity přiřazené uživateli, pomocí Azure Resource Manageru
 
 [!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
-Identita spravované služby poskytuje Azure služby spravovanou identitu ve službě Azure Active Directory. Tuto identitu můžete použít k ověření služby, které podporují ověřování Azure AD, bez nutnosti přihlašovací údaje ve vašem kódu. 
+Identita spravované služby poskytuje služby Azure s využitím spravované identity v Azure Active Directory. Tuto identitu můžete použít k ověření služby, které podporují ověřování Azure AD, aniž by bylo přihlašovací údaje ve vašem kódu. 
 
-V tomto článku vytvořit uživatele přiřazené spravované identity pomocí Azure Resource Manageru.
+V tomto článku vytvoříte uživatele přiřazeny spravovanou identitu pomocí Azure Resource Manageru.
 
-Není možné zobrazit seznam a odstraňovat uživatele přiřazené identity pomocí šablony Azure Resource Manager.  Najdete v následujících článcích a vytvořit seznam identitu uživatele přiřazené:
+Není možné vypsat a odstranit uživatele přiřazeny identity pomocí šablony Azure Resource Manageru.  Naleznete v následujících článcích a vytvoření seznamu identity přiřazené uživateli:
 
-- [Seznam přiřazeného identity uživatele](how-to-manage-ua-identity-cli.md#list-user-assigned-identities)
-- [Odstranit identitu uživatele přiřazené](how-to-manage-ua-identity-cli.md#delete-a-user-assigned-identity)
+- [Seznam identity přiřazené uživateli](how-to-manage-ua-identity-cli.md#list-user-assigned-identities)
+- [Odstranit identity přiřazené uživateli](how-to-manage-ua-identity-cli.md#delete-a-user-assigned-identity)
 ## <a name="prerequisites"></a>Požadavky
 
-- Pokud jste obeznámeni s identita spravované služby, podívejte se [oddílu přehled](overview.md). **Nezapomeňte si přečíst [rozdíl mezi systémem přiřazený a uživatel s přiřazenou identity](overview.md#how-does-it-work)**.
-- Pokud ještě nemáte účet Azure [si zaregistrovat bezplatný účet](https://azure.microsoft.com/free/) než budete pokračovat.
+- Pokud nejste obeznámeni s identita spravované služby, podívejte se [oddílu přehled](overview.md). **Nezapomeňte si přečíst [rozdíl mezi přiřazenou systémem a identity přiřazené uživateli](overview.md#how-does-it-work)**.
+- Pokud ještě nemáte účet Azure [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) než budete pokračovat.
 
-Ať už místně se přihlaste k Azure nebo prostřednictvím portálu Azure pomocí účtu, který je přidružený k předplatnému Azure, která obsahuje virtuální počítač. Ujistěte se také, že váš účet patří do role, která vám dává oprávnění k zápisu do virtuálního počítače (například role "Přispěvatel virtuálních počítačů").
+Ať už místně se přihlaste do Azure nebo prostřednictvím portálu Azure portal pomocí účtu, který je přidružený k předplatnému Azure, která obsahuje virtuální počítač. Také se ujistěte, že váš účet patří do role, která poskytuje oprávnění k zápisu na virtuálním počítači (například role "Přispěvatel virtuálních počítačů").
 
-## <a name="template-creation-and-editing"></a>Vytvoření šablony a úpravy
+## <a name="template-creation-and-editing"></a>Vytváření šablon a úpravy
 
-S Azure portálu a skriptování, šablony Azure Resource Manager poskytuje schopnost nasadit nové nebo upravené zdroje, které jsou definované skupiny prostředků Azure. Několik možností, jak jsou k dispozici pro úpravy šablony a nasazení, místní i založené na portálu, včetně:
+Jak s Azure portal a vytváření skriptů, šablon Azure Resource Manageru umožňují nasazovat nové nebo upravené zdroje, které jsou definované ve skupině prostředků Azure. Několik možností, jak jsou k dispozici pro úpravy šablony a nasazení, místních i založené na portálu, včetně:
 
-- Použití [vlastní šablonu z Azure Marketplace](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template), který umožňuje vytvořit šablonu od začátku, nebo ji založit na existující běžné nebo [šablony rychlý Start](https://azure.microsoft.com/documentation/templates/).
-- Odvozování z existující skupinu prostředků, tak, že vyexportujete šablonu buď z [původního nasazení](../../azure-resource-manager/resource-manager-export-template.md#view-template-from-deployment-history), nebo z [aktuální stav nasazení](../../azure-resource-manager/resource-manager-export-template.md#export-the-template-from-resource-group).
-- Pomocí místní [editor JSON (například VS Code)](../../azure-resource-manager/resource-manager-create-first-template.md)a pak nahrání a nasazení pomocí prostředí PowerShell nebo rozhraní příkazového řádku.
+- Použití [vlastní šablonu z Azure Marketplace](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template), která umožňuje vytvoření zcela nové šablony, nebo ji založit na existující běžné nebo [šablonu pro rychlý Start](https://azure.microsoft.com/documentation/templates/).
+- Odvozování z existující skupinu prostředků, tak, že vyexportujete šablonu buď z [původního nasazení](../../azure-resource-manager/resource-manager-export-template.md#view-template-from-deployment-history), nebo [aktuální stav nasazení](../../azure-resource-manager/resource-manager-export-template.md#export-the-template-from-resource-group).
+- Pomocí místní [editor JSON (například VS Code)](../../azure-resource-manager/resource-manager-create-first-template.md)a nahrání a nasazení pomocí Powershellu nebo rozhraní příkazového řádku.
 - Pomocí sady Visual Studio [projekt skupiny prostředků Azure](../../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) jak vytvořit a nasadit šablonu. 
 
-## <a name="create-a-user-assigned-identity"></a>Vytvoření uživatele přiřazené identity 
+## <a name="create-a-user-assigned-identity"></a>Vytvoření identity přiřazené uživateli 
 
-Vytvoření uživatele přiřazené identity, použijte následující šablonu. Nahraďte `<USER ASSIGNED IDENTITY NAME>` hodnotu s vlastními hodnotami:
+Pokud chcete vytvořit identity přiřazené uživateli, pomocí následující šablony. Nahradit `<USER ASSIGNED IDENTITY NAME>` hodnoty vlastními hodnotami:
 
 [!INCLUDE[ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
@@ -85,7 +85,7 @@ Vytvoření uživatele přiřazené identity, použijte následující šablonu.
 ```
 ## <a name="related-content"></a>Související obsah
 
-Informace o tom, jak přiřadit identitu uživatele přiřazené na virtuální počítač Azure pomocí šablony k Azure Resource Manageru naleznete [konfigurace Identity služby virtuálních počítačů spravovaných pomocí šablony](qs-configure-template-windows-vm.md).
+Informace o tom, jak přiřadit identity přiřazené uživateli na Virtuálním počítači Azure pomocí Azure Resource Manageru šablony naleznete v tématu [konfigurace virtuálních počítačů spravovaná identita služby s použitím šablony](qs-configure-template-windows-vm.md).
 
 
  

@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/21/2018
 ms.author: v-geberr
-ms.openlocfilehash: 80064584468c109d0bad49f1a22c485fa9cce846
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 99ba867b10c82d226948b13fda448cd24a33c553
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37344514"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37888724"
 ---
 # <a name="manage-your-luis-keys"></a>Spravovat klíče pro služby LUIS
 Klíč umožňuje vytvářet a publikovat aplikace LUIS nebo dotazu váš koncový bod. 
@@ -69,8 +69,6 @@ Další informace o publikování [oblastech](luis-reference-regions.md) včetn�
 > [!NOTE]
 > Zrušení přiřazení klíč LUIS neodstraní z vašeho předplatného Azure.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Publikování aplikace v pomocí svého klíče **publikovat aplikaci** stránky. Pokyny k publikování najdete v tématu [publikovat aplikaci](luis-how-to-publish-app.md).
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website

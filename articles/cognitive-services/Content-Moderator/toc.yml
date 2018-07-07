@@ -115,6 +115,8 @@
   items:
     - name: Nejčastější dotazy
       href: FAQs.md
+    - name: Regionální dostupnost
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/content-moderator'
     - name: Export nebo odstranění dat účtu

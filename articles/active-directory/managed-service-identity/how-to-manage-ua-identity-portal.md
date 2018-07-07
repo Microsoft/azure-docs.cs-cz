@@ -1,6 +1,6 @@
 ---
-title: Jak spravovat uživatele přiřazené spravované služby Identity (MSI) pomocí portálu Azure
-description: Podrobné pokyny, jak vytvářet, seznamu a odstraňovat uživatele přiřazené spravované služby Identity.
+title: Správa uživatel přiřazené Identity spravované služby (MSI) pomocí webu Azure portal
+description: Podrobné pokyny o tom, jak vytvořit, vypsat a odstranit uživatel přiřazený spravovaná služba Identity.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -9,22 +9,22 @@ editor: ''
 ms.service: active-directory
 ms.component: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/16/2018
 ms.author: daveba
-ms.openlocfilehash: 206f508ca8df13cdc8194cc9a95d828397ea0b85
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 02073742264e4f65d3c582174348495d86f47d43
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "33929348"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37903931"
 ---
-# <a name="create-list-or-delete-a-user-assigned-managed-service-identity-msi-using-the-azure-portal"></a>Vytvoření seznamu nebo odstranění uživatele přiřazené spravované služby Identity (MSI) pomocí portálu Azure
+# <a name="create-list-or-delete-a-user-assigned-managed-service-identity-msi-using-the-azure-portal"></a>Vytvoření seznamu nebo odstranění uživatele přiřazeny Identity spravované služby (MSI) pomocí webu Azure portal
 
 [!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
-Identita spravované služby poskytuje Azure služby spravovanou identitu ve službě Azure Active Directory. Tuto identitu můžete použít k ověření služby, které podporují ověřování Azure AD, bez nutnosti přihlašovací údaje ve vašem kódu. 
+Identita spravované služby poskytuje služby Azure s využitím spravované identity v Azure Active Directory. Tuto identitu můžete použít k ověření služby, které podporují ověřování Azure AD, aniž by bylo přihlašovací údaje ve vašem kódu. 
 
-V současné době není možné vytvořit, vypsat nebo odstranit uživatel přiřazený spravované identity pomocí portálu Azure.  Vraťte se zpět pro aktualizace.
+V tuto chvíli není možné vytvořit, vypsat nebo odstranit uživatel přiřazený spravovanou identitu pomocí webu Azure portal.  Sledujte novinky.

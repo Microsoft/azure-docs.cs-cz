@@ -1,6 +1,6 @@
 ---
-title: Testování aplikace LEOŠ - Azure | Microsoft Docs
-description: Pomocí jazyka Principy (LEOŠ) nepřetržitě fungovat ve vaší aplikaci ji upravit a zlepšovat její znalosti jazyka.
+title: Otestujte aplikaci LUIS – Azure | Dokumentace Microsoftu
+description: Language Understanding (LUIS) umožňuje neustále pracovat na aplikaci zpřesnit jej a zvýšit jeho umožňující porozumět jazyku.
 services: cognitive-services
 author: v-geberr
 manager: kaiqb
@@ -9,54 +9,52 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: v-geberr
-ms.openlocfilehash: 8c702d2adbadd2736eed05c7580e8aabf69affbf
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 6c9bd93cf6e67aa815d289260f2b37bd3189c1d1
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266324"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37887583"
 ---
-# <a name="testing-in-luis"></a>Testování v LEOŠ
+# <a name="testing-in-luis"></a>Testování v LUIS
 
-Testování je proces poskytování ukázka utterances LEOŠ a odezvy rozpoznána LEOŠ tříd Intent a entity. 
+Testování je proces poskytování ukázka projevy LUIS a získat odpověď ze služby LUIS rozpoznán záměry a entity. 
 
-Můžete [testování](interactive-test.md) LEOŠ interaktivně, jeden utterance najednou, nebo zadejte [batch](luis-concept-batch-test.md) z utterances. Při testování, porovnat aktuální [active](luis-concept-version.md#active-version) modelu do publikovaného modelu. 
+Můžete [testování](interactive-test.md) LUIS interaktivně, jeden utterance najednou, nebo poskytněte [batch](luis-concept-batch-test.md) z projevy. Při testování, porovnávat aktuální [aktivní](luis-concept-version.md#active-version) modelů do publikovaného modelu. 
 
 <a name="A-test-score"></a>
 <a name="Score-all-intents"></a>
 <a name="E-(exponent)-notation"></a>
-## <a name="what-is-a-score-in-testing"></a>Co je skóre při testování?
+## <a name="what-is-a-score-in-testing"></a>Co je skóre v testování?
 V tématu [předpovědi skóre](luis-concept-prediction-score.md) koncepty, které další informace o předpovědi skóre.
 
 ## <a name="interactive-testing"></a>Interaktivní testování
-Interaktivní testování se provádí z **Test** panelu webu. Můžete zadat utterance na tom, jak jsou identifikovány a skóre pro magnitudu tříd Intent a entity. Pokud LEOŠ není predikci tříd Intent a entity podle očekávání na utterance v podokně testování, zkopírujte ho do **záměr** stránce jako nový utterance. Pak označte části tohoto utterance a cvičení LEOŠ. 
+Interaktivní testování probíhá prostřednictvím **Test** panelu na webu. Můžete zadat utterance zobrazíte jak záměry a entity jsou identifikovány a skóre. Pokud služba LUIS není podle očekávání v utterance v podokně testování předpověď záměry a entity, zkopírujte ho do **záměr** stránku jako nové utterance. Pak označte části této utterance a trénování služby LUIS. 
 
-## <a name="batch-testing"></a>Testování batch
-V tématu [testování batch](luis-concept-batch-test.md) Pokud testujete více než jeden utterance najednou.
+## <a name="batch-testing"></a>Dávkové testování
+Zobrazit [batch testování](luis-concept-batch-test.md) Pokud testujete utterance více než jeden po druhém.
 
-## <a name="endpoint-testing"></a>Koncový bod testování
-Můžete otestovat pomocí [koncový bod](luis-glossary.md#endpoint) s maximálně dvě verze vaší aplikace. Ve vaší verzi aplikace nastavit jako hlavní nebo za provozu **produkční** koncový bod, přidejte druhý verzi **pracovní** koncový bod. Tento přístup vám tři verze utterance: na aktuální model, v podokně Test [LEOŠ] [ LUIS] webu a dvě verze na dva různé koncové body. 
+## <a name="endpoint-testing"></a>Testování koncového bodu
+Můžete otestovat pomocí [koncový bod](luis-glossary.md#endpoint) s délkou maximálně dvě verze vaší aplikace. Ve vaší verzi aplikace nastavit jako hlavní nebo za provozu **produkční** koncový bod, přidejte druhý verzi **pracovní** koncový bod. Tento přístup poskytuje tři verze utterance: aktuální model v podokně Test [LUIS](luis-reference-regions.md) webu a dvě verze na dvou různých koncových bodů. 
 
-Všechny koncový bod testování počty směrem k vaší kvóty využití. 
+Všechny koncový bod testování počty směrem k kvótu využití. 
 
-## <a name="do-not-log-tests"></a>Neprotokolujte testů
-Pokud testování proti koncový bod a nechcete, aby utterance protokolována, nezapomeňte použít `logging=false` konfigurace řetězec dotazu.
+## <a name="do-not-log-tests"></a>Neprotokolujte testy
+Pokud testování koncového bodu a nechcete, aby utterance protokolována, nezapomeňte použít `logging=false` konfigurace řetězce dotazu.
 
-## <a name="where-to-find-utterances"></a>Kde najít utterances
-LEOŠ ukládá do protokolu dotazu, který je k dispozici ke stažení na všechny zaznamenané utterances [LEOŠ] [ LUIS] webu **aplikace** seznamu stránku, stejně jako LEOŠ [vytváření rozhraní API ](https://aka.ms/luis-authoring-apis). 
+## <a name="where-to-find-utterances"></a>Kde najít projevy
+LUIS ukládá do protokolu dotazu, který je k dispozici ke stažení na všechny zaznamenané projevy [LUIS](luis-reference-regions.md) webu **aplikace** stránka seznamu, jakož i LUIS [rozhraní API pro vytváření](https://aka.ms/luis-authoring-apis). 
 
-Všechny utterances LEOŠ je jisti, jaké jsou uvedeny v **[zkontrolujte koncový bod utterances](label-suggested-utterances.md)** stránky [LEOŠ] [ LUIS] webu. 
+Jakékoli projevy služba LUIS je jistí, jaké jsou uvedeny v **[zkontrolujte koncový bod projevy](label-suggested-utterances.md)** stránku [LUIS](luis-reference-regions.md) webu. 
 
-![Zkontrolujte utterances koncový bod](./media/luis-concept-test/review-endpoint-utterances.png)
+![Kontrola promluv koncového bodu](./media/luis-concept-test/review-endpoint-utterances.png)
  
-## <a name="remember-to-train"></a>Mějte na paměti, ke cvičení
-Nezapomeňte [cvičení](luis-how-to-train.md) LEOŠ po provedení změn do modelu. Změny aplikace LEOŠ nevidí při testování, dokud je vycvičena aplikace. 
+## <a name="remember-to-train"></a>Mějte na paměti k trénování
+Nezapomeňte [trénování](luis-how-to-train.md) LUIS, když provedete změny modelu. Změny v aplikaci LUIS neuvidí při testování, dokud se trénuje aplikace. 
 
 ## <a name="best-practices"></a>Osvědčené postupy
-Další informace [osvědčené postupy](luis-concept-best-practices.md).
+Přečtěte si [osvědčené postupy](luis-concept-best-practices.md).
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o [testování](interactive-test.md) vaše utterances.
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions
+* Další informace o [testování](interactive-test.md) vaše projevy.

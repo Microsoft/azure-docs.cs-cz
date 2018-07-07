@@ -1,6 +1,6 @@
 ---
-title: Jak používat Azure virtuálního počítače spravované služby Identity pro přihlášení
-description: Podrobné pokyny a příklady pro použití, přihlaste se objektu služby MSI virtuálních počítačů Azure pro skript klienta a prostředku přístup.
+title: Použití Azure VM identita spravované služby pro přihlášení
+description: Podrobné pokyny a příklady pro použití přihlášení instančního objektu MSI virtuálního počítače Azure pro skript klienta a prostředků přístupu.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -9,48 +9,48 @@ editor: ''
 ms.service: active-directory
 ms.component: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: daveba
-ms.openlocfilehash: c48e4bdf9a8c4b8515028fe45cdf724f5ff9f666
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 4a811c5354a9ff2aaa48a300d9b2655f91fdab23
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33929191"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37901088"
 ---
-# <a name="how-to-use-an-azure-vm-managed-service-identity-msi-for-sign-in"></a>Jak používat Azure virtuálního počítače spravované služby Identity (MSI) pro přihlášení 
+# <a name="how-to-use-an-azure-vm-managed-service-identity-msi-for-sign-in"></a>Použití Azure VM Identity spravované služby (MSI) pro přihlášení 
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]  
-Tento článek obsahuje příklady skriptů prostředí PowerShell a rozhraní příkazového řádku pro přihlašování pomocí služby MSI instančního objektu a pokyny na důležité oblastech, jako je zpracování chyb.
+Tento článek obsahuje příklady skriptů Powershellu a rozhraní příkazového řádku pro přihlášení pomocí instančního objektu MSI a doprovodné materiály o důležitých tématech, jako je zpracování chyb.
 
 ## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
-Pokud budete chtít použít v prostředí Azure PowerShell nebo rozhraní příkazového řádku Azure příkladech v tomto článku, je nutné nainstalovat nejnovější verzi [prostředí Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM) nebo [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli). 
+Pokud máte v plánu pomocí prostředí Azure PowerShell nebo rozhraní příkazového řádku Azure příklady v tomto článku, nezapomeňte nainstalovat nejnovější verzi [prostředí Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM) nebo [příkazového řádku Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli). 
 
 > [!IMPORTANT]
-> - Všechny ukázkový skript v tomto článku předpokládá, že klient příkazového řádku běží na virtuálním počítači povolená MSI. Použijte funkci "Připojit" virtuální počítač na portálu Azure se vzdáleně připojit k virtuálnímu počítači. Informace o povolení MSI na virtuálním počítači, v [konfigurace virtuálních počítačů spravovaných služba Identity (MSI) pomocí portálu Azure](qs-configure-portal-windows-vm.md), nebo jeden z typu variant článků (pomocí prostředí PowerShell, rozhraní příkazového řádku, šablonu nebo Azure SDK). 
-> - Aby se zabránilo chybám při přístupu k prostředkům, MSI Virtuálního počítače musí mít alespoň "Čtečky" získat přístup v oboru příslušné (virtuálního počítače nebo vyšší) umožňuje Azure Resource Manager operace na virtuálním počítači. V tématu [přiřadit identita spravované služby (MSI) přístup k prostředku na portálu Azure](howto-assign-access-portal.md) podrobnosti.
+> - Všechny ukázkový skript v tomto článku předpokládá, že klient příkazového řádku běží na virtuálním počítači s povoleným MSI. Pomocí funkce "Připojení" virtuálního počítače na webu Azure Portal, se vzdáleně připojit k virtuálnímu počítači. Podrobnosti o povolení MSI virtuálního počítače najdete v tématu [nakonfigurovat virtuálním počítači Identity spravované služby (MSI) pomocí webu Azure portal](qs-configure-portal-windows-vm.md), nebo jeden z variant článků (pomocí Powershellu, rozhraní příkazového řádku, šablonu nebo pomocí sady Azure SDK). 
+> - Aby se zabránilo chybám při přístupu k prostředkům, MSI Virtuálního počítače se musí předávat aspoň "Čtenář, získat přístup v příslušeného oboru (virtuální počítač nebo vyšší) umožňující operace Azure Resource Manageru ve virtuálním počítači. Zobrazit [přiřadit Identity spravované služby (MSI) přístup k prostředku na webu Azure portal](howto-assign-access-portal.md) podrobnosti.
 
 ## <a name="overview"></a>Přehled
 
-Poskytuje MSI [objekt zabezpečení služby](../develop/active-directory-dev-glossary.md#service-principal-object) , což je [při povolení MSI vytvářeny](overview.md#how-does-it-work) ve virtuálním počítači. Objekt služby můžete poskytnut přístup k prostředkům Azure a použít jako identita skriptu nebo příkazového-řádku klienti pro přihlašování a přístupu k prostředkům. Tradičně aby bylo možné získat přístup k zabezpečeným prostředkům v rámci své vlastní identity, klient skriptu by bylo potřeba:  
+Poskytuje MSI [instanční objekt](../develop/active-directory-dev-glossary.md#service-principal-object) , což je [vytvořené při povolení MSI](overview.md#how-does-it-work) na virtuálním počítači. Instanční objekt můžete udělen přístup k prostředkům Azure a použít jako identitu, skript nebo příkazového řádku klienti pro přihlašování a přístupu k prostředkům. Tradičně aby bylo možné přistupovat k zabezpečeným prostředkům v rámci své vlastní identity, skript klienta by potřeba:  
 
-   - zaregistrovat a dá souhlas s Azure AD jako důvěrné nebo webové klientské aplikace
-   - Přihlaste se pod jeho instanční objekt, pomocí přihlašovacích údajů aplikace (které by mohly vložená ve skriptu)
+   - být registrován a vyjádření souhlasu s Azure AD jako důvěrné nebo webové klientské aplikace
+   - Přihlaste se pod jeho instančnímu objektu služby, pomocí přihlašovacích údajů aplikace (které by mohly vložené do skriptu)
 
-Pomocí Instalační služby MSI vašeho skriptu klienta už nepotřebuje udělat, jak můžete přihlásit v rámci objektu služby MSI. 
+Pomocí MSI skript klienta už musí udělat, jak se můžete přihlásit pod instančního objektu MSI. 
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Následující skript ukazuje, jak:
+Tento skript ukazuje, jak:
 
 1. Přihlaste se k Azure AD v rámci objektu služby MSI Virtuálního počítače  
-2. Volání správce prostředků Azure a získat ID Virtuálního počítače službu objektu zabezpečení. Rozhraní příkazového řádku se stará o správu tokenu získávání nebo použití pro vás automaticky. Nezapomeňte nahradit název virtuálního počítače pro `<VM-NAME>`.  
+2. Volání Azure Resource Manageru a získat ID instančního objektu služby Virtuálního počítače. Rozhraní příkazového řádku se stará o správu token pořízení a použití pro vás automaticky. Nezapomeňte nahradit název vašeho virtuálního počítače `<VM-NAME>`.  
 
    ```azurecli
    az login --identity
@@ -61,10 +61,10 @@ Následující skript ukazuje, jak:
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
-Následující skript ukazuje, jak:
+Tento skript ukazuje, jak:
 
 1. Přihlaste se k Azure AD v rámci objektu služby MSI Virtuálního počítače  
-2. Volání rutiny Azure Resource Manager získat informace o virtuálním počítači. Prostředí PowerShell se stará o správu využití tokenu pro vás automaticky.  
+2. Volání Azure Resource Manageru rutiny pro získání informací o virtuálním počítači. Prostředí PowerShell se stará o správu využití tokenu pro vás automaticky.  
 
    ```azurepowershell
    Add-AzureRmAccount -identity
@@ -75,29 +75,29 @@ Následující skript ukazuje, jak:
    echo "The MSI service principal ID is $spID"
    ```
 
-## <a name="resource-ids-for-azure-services"></a>ID prostředků pro služby Azure
+## <a name="resource-ids-for-azure-services"></a>ID prostředků služeb Azure
 
-V tématu [služeb Azure, podpora Azure AD ověření](services-support-msi.md#azure-services-that-support-azure-ad-authentication) seznam prostředků, které podporují Azure AD a byly testovány s MSI a jejich odpovídající ID prostředku.
+Zobrazit [, že podpora Azure AD ověřování služby Azure](services-support-msi.md#azure-services-that-support-azure-ad-authentication) seznam prostředků, které podporují služby Azure AD a prošel testováním s využitím MSI a jejich odpovídající ID prostředků.
 
 ## <a name="error-handling-guidance"></a>Pokyny pro zpracování chyb 
 
-Odpovědi, například následující může znamenat, že MSI Virtuálního počítače nebyla nakonfigurována správně:
+Odpovědi, jako je například následující může znamenat, že MSI Virtuálního počítače není nakonfigurovaná správně:
 
 - Prostředí PowerShell: *Invoke-WebRequest: Nelze se připojit ke vzdálenému serveru*
-- Rozhraní příkazového řádku: *MSI: se nepovedlo získat token z 'http://localhost:50342/oauth2/token' s chybou "HTTPConnectionPool (hostitele = localhost, port = 50342)* 
+- Rozhraní příkazového řádku: *MSI: nepovedlo se načíst token z "http://localhost:50342/oauth2/token" s chybou "HTTPConnectionPool (hostitele ="localhost", port = 50342)* 
 
-Pokud se zobrazí jednu z těchto chyb, vraťte se do virtuálního počítače Azure v [portál Azure](https://portal.azure.com) a:
+Pokud se zobrazí jedna z těchto chyb, vraťte se k virtuálnímu počítači Azure ve [webu Azure portal](https://portal.azure.com) a:
 
-- Přejděte na **konfigurace** stránky a "Identita spravované služby" je nastavena na "Ano".
-- Přejděte na **rozšíření** stránky a zkontrolujte příponou MSI úspěšně nasazena.
+- Přejděte **konfigurace** stránku a zkontrolujte "Se identita spravované služby" je nastavená na "Ano".
+- Přejděte **rozšíření** stránky a ověřte rozšíření MSI úspěšné nasazení.
 
-Pokud je buď nesprávný, musíte znovu nasaďte MSI v prostředku znovu, nebo vyřešit potíže s selhání nasazení. V tématu [konfigurace virtuálních počítačů spravovaných služba Identity (MSI) pomocí portálu Azure](qs-configure-portal-windows-vm.md) Pokud potřebujete pomoc s konfigurací virtuálních počítačů.
+Pokud je buď nesprávný, budete muset znovu znovu provádět nasazení MSI pro váš prostředek ani řešení potíží s nasazení se nezdařilo. Zobrazit [nakonfigurovat virtuálním počítači Identity spravované služby (MSI) pomocí webu Azure portal](qs-configure-portal-windows-vm.md) Pokud potřebujete pomoc s konfigurací virtuálního počítače.
 
 ## <a name="related-content"></a>Související obsah
 
-- Povolit MSI ve virtuálním počítači Azure, najdete v části [konfigurace virtuálních počítačů spravovaných služba Identity (MSI) pomocí prostředí PowerShell](qs-configure-powershell-windows-vm.md), nebo [konfigurace virtuálních počítačů spravovaných služba Identity (MSI) pomocí rozhraní příkazového řádku Azure](qs-configure-cli-windows-vm.md)
+- Povolení MSI ve Virtuálním počítači Azure, najdete v článku [nakonfigurovat virtuálním počítači Identity spravované služby (MSI) pomocí prostředí PowerShell](qs-configure-powershell-windows-vm.md), nebo [nakonfigurovat virtuálním počítači Identity spravované služby (MSI) pomocí rozhraní příkazového řádku Azure](qs-configure-cli-windows-vm.md)
 
-Použijte následující sekci komentáře k poskytnutí zpětné vazby a Pomozte nám vylepšit a utvářejí náš obsah.
+Pomocí následujícího oddílu pro komentáře na svůj názor a Pomozte nám vylepšit a obrazce náš obsah.
 
 
 
