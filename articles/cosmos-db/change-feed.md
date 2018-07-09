@@ -1,7 +1,7 @@
 ---
-title: Práce se změnami kanálu podpory v Azure Cosmos DB | Microsoft Docs
-description: Použijte Azure Cosmos DB změnu informačního kanálu podporu sledování změn v dokumentech a provádět na základě událostí zpracování jako aktivační události a průběžná aktualizace mezipaměti a analýzy systémy.
-keywords: změnit informačního kanálu
+title: Podpora práce s Změna kanálu ve službě Azure Cosmos DB | Dokumentace Microsoftu
+description: Pomocí podpory informačního kanálu změn služby Azure Cosmos DB sledovat změny v dokumentech a provádět zpracování jako aktivační události na základě událostí a průběžná mezipaměti a analytické systémy.
+keywords: kanálu změn
 services: cosmos-db
 author: rafats
 manager: kfile
@@ -10,93 +10,93 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: rafats
-ms.openlocfilehash: 6b0aaa075b8b2881e269d79a67e75528d0d9a86a
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: e53f1e62b9265d2eec2f49537cc05c865e1436f3
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37129854"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37902958"
 ---
-# <a name="working-with-the-change-feed-support-in-azure-cosmos-db"></a>Práce se změnami kanálu podpory v Azure Cosmos DB
+# <a name="working-with-the-change-feed-support-in-azure-cosmos-db"></a>Práce s změnu podpora kanálu ve službě Azure Cosmos DB
 
-[Azure Cosmos DB](../cosmos-db/introduction.md) je rychlého a flexibilní globálně replikované databáze, dobře hodí pro IoT, hry, maloobchodní a provozní protokolování aplikace. Běžné vzoru návrhu v těchto aplikacích je použití změny dat na ji další akce. Tyto další akce může být jedno z následujících akcí: 
+[Azure Cosmos DB](../cosmos-db/introduction.md) je rychlé a flexibilní globálně replikovat databázi, skvěle se hodí pro IoT, hraní her, maloobchod a provozní protokolování aplikací. Běžný vzor návrhu v těchto aplikacích je použít změny v datech aktivovala další akce. Tyto další akce může být jedno z následujících akcí: 
 
-* Když je dokument vložit nebo upravit, která aktivuje oznámení nebo volání rozhraní API.
-* Datový proud zpracování pro IoT nebo provádění analýzy.
-* Přesun dat další synchronizaci s mezipaměti, vyhledávací web nebo datového skladu nebo archivací dat na studené úložiště.
+* Při vložení nebo upravit dokumentu, která aktivuje upozornění nebo volání rozhraní API.
+* Stream zpracování pro IoT nebo provádění analýz.
+* Přesun dat další synchronizaci s mezipaměti, vyhledávací web nebo datového skladu nebo archivaci dat do studeného úložiště.
 
-**Změnu kanálu podporu** v Azure Cosmos DB umožňuje vytvářet efektivní a škálovatelné řešení pro každou z těchto vzory, jak je znázorněno na následujícím obrázku:
+**Podpora kanálu změn** ve službě Azure Cosmos DB vám umožní sestavovat efektivní a škálovatelné řešení pro každou z těchto vzorců, jak je znázorněno na následujícím obrázku:
 
-![Pomocí Azure Cosmos DB změnu kanálu power analýzu v reálném čase a událostmi řízené výpočetní scénáře](./media/change-feed/changefeedoverview.png)
+![Použití změn databáze Azure Cosmos DB informační kanál k založený na událostech výpočetní scénáře a analýzy v reálném čase power](./media/change-feed/changefeedoverview.png)
 
 > [!NOTE]
-> Změna kanálu podpory se poskytuje pro všechny datové modely a kontejnerů v Azure Cosmos DB. Ale informačního kanálu změn je pro čtení pomocí klienta SQL a serializuje položky do formátu JSON. Z důvodu JSON formátování, MongoDB, bude mít klienti ve formátu neshody mezi dokumenty formátu BSON a JSON změnu informačního kanálu.
+> Podpora kanálu změn se poskytuje pro všechny datové modely a kontejnerů ve službě Azure Cosmos DB. Kanál změn, ale je pro čtení pomocí nástroje SQL client a položky serializuje do formátu JSON. Z důvodu formátování JSON MongoDB klientů bude docházet k neshodě mezi dokumenty ve formátu BSON a JSON ve formátu kanálu změn.
 
-V následujícím videu Azure manažer programu DB Cosmos Andrew Liu ukazuje, jak změnit Azure Cosmos DB kanálu funguje.
+V následujícím videu Azure Cosmos DB programový manažer Andrew Liu ukazuje, jak kanálu změn databáze Azure Cosmos DB funguje.
 
 > [!VIDEO https://www.youtube.com/embed/mFnxoxeXlaU]
 >
 >
 
-## <a name="how-does-change-feed-work"></a>Jak změnit kanálu pracovní?
+## <a name="how-does-change-feed-work"></a>Jak změnit informační kanál k práci?
 
-Změníte informačního kanálu podpory v Azure Cosmos DB funguje naslouchá na kolekci Azure Cosmos DB žádné změny. Potom vypíše seřazený seznam dokumenty, které byly změněny v pořadí, ve kterém byly upraveny. Změny jsou nastavené jako trvalé, může být zpracována asynchronně a postupně a výstupu mohou být distribuovány na jeden nebo více příjemce pro paralelní zpracování. 
+Podpora ve službě Azure Cosmos DB funguje kanálu změn prostřednictvím naslouchání na kolekci Azure Cosmos DB k nějakým změnám. Potom vypíše seřazený seznam dokumentů, které byly změněny v pořadí, ve kterém byly změněny. Změny jsou trvalé, může být zpracována asynchronně a postupně a výstupu mohou být distribuovány na jeden nebo více příjemců pro paralelní zpracování. 
 
-Jak je popsáno dále v tomto článku si můžete přečíst změnu kanálu třemi různými způsoby:
+Kanál třemi různými způsoby, změn si můžete přečíst, jak je popsáno dále v tomto článku:
 
-*   [Pomocí Azure Functions](#azure-functions)
-*   [Pomocí Azure Cosmos DB SDK](#sql-sdk)
-*   [Pomocí Azure Cosmos DB změnu kanálu procesoru knihovny](#change-feed-processor)
+*   [Pomocí služby Azure Functions](#azure-functions)
+*   [Pomocí služby Azure Cosmos DB SDK](#sql-sdk)
+*   [Použití změn databáze Azure Cosmos DB kanálu knihovny procesoru](#change-feed-processor)
 
-Změna informačního kanálu je k dispozici pro každý oddíl klíče rozsahem v rámci kolekce dokumentů a proto mohou být distribuovány na jeden nebo více příjemce pro paralelní zpracování jak je znázorněno na následujícím obrázku.
+Kanál změn je k dispozici pro každým rozsahem klíče oddílu v rámci kolekce dokumentů a proto mohou být distribuovány na jeden nebo více příjemců pro paralelní zpracování jak je znázorněno na následujícím obrázku.
 
-![Distribuované zpracování změn Azure Cosmos DB kanálu](./media/change-feed/changefeedvisual.png)
+![Distribuované zpracování kanálu změn služby Azure Cosmos DB](./media/change-feed/changefeedvisual.png)
 
 Další podrobnosti:
-* Informační kanál změn je povoleno ve výchozím nastavení pro všechny účty.
-* Můžete použít vaše [zřízené propustnosti](request-units.md) ve vaší oblasti zápisu ani žádné [číst oblast](distribute-data-globally.md) číst z změnu kanálu, stejně jako všechny ostatní operace Azure Cosmos DB.
-* Informační kanál změnu zahrnuje vložení a operace aktualizace provedené na dokumenty v rámci kolekce. Můžete zaznamenat odstranění nastavením příznak "soft odstranění" v rámci dokumentů místo odstranění. Alternativně můžete nastavit konečný platnosti pro dokumentů prostřednictvím [TTL schopností](time-to-live.md), například 24 hodin a použití hodnota této vlastnosti k zachycení odstranění. S tímto řešením je nutné zpracovat změny v časovém intervalu kratší než doba TTL vypršení platnosti.
-* Každé změně do dokumentu se zobrazí právě jednou v změnu kanálu a klienti spravovat své logiku vytváření kontrolních bodů. Knihovna informačního kanálu procesoru změn poskytuje automatické vytváření kontrolních bodů a "alespoň jednou" sémantiku.
-* Protokol změn je součástí pouze poslední změny u daného dokumentu. Přechodných změn nemusí být k dispozici.
-* Změna informačního kanálu je řazen u úpravy v rámci každé hodnotu klíče oddílu. Neexistuje žádné zaručenou objednávka napříč hodnoty klíč oddílu.
-* Změny mohou být synchronizovány z jakékoli bodu v čase, tedy neexistuje žádné období uchovávání pevné dat, pro které jsou k dispozici změny.
-* Změny jsou k dispozici v bloky rozsahy klíčů oddílů. Tato možnost umožňuje změny z rozsáhlých kolekcí, které mají být zpracovány současně více příjemci nebo servery.
-* Aplikace můžete požadovat více informačních kanálů změnu současně na stejné kolekci.
-* ChangeFeedOptions.StartTime slouží k poskytování počáteční počáteční bod, třeba, aby najít odpovídající dané času hodin token pro pokračování. ContinuationToken, pokud zadaný, wins přes hodnoty StartTime a StartFromBeginning. Přesnost ChangeFeedOptions.StartTime je ~ 5 sekund. 
+* Kanál změn je povoleno standardně pro všechny účty.
+* Můžete použít vaše [zřízená propustnost](request-units.md) v oblasti pro zápis nebo jakékoli [čtení oblasti](distribute-data-globally.md) čtení z kanálu změn, stejně jako všechny ostatní operace služby Azure Cosmos DB.
+* Kanál změn zahrnuje operace INSERT a update operace provedené na dokumenty v kolekci. Můžete zaznamenat odstraní nastavením příznaku "obnovitelného odstranění" v rámci dokumentů místo odstraní. Alternativně můžete nastavit dobu konečná platnosti pro dokumentů prostřednictvím [interval TTL, ZÍSKÁ možnost](time-to-live.md), například 24 hodin a použijte hodnotu této vlastnosti k zachycení odstraní. Pomocí tohoto řešení je nutné zpracovat změny v časovém intervalu kratší než interval TTL, ZÍSKÁ dobu vypršení platnosti.
+* Jednotlivé změny do dokumentu se zobrazí pouze jednou v kanálu změn a klienti spravovat své logiky vytváření kontrolních bodů. Knihovnou change feed processor automatické vytváření kontrolních bodů a "alespoň jednou" poskytuje sémantiku.
+* Protokol změn je součástí pouze poslední změny pro daný dokument. Přechodných změn nemusí být k dispozici.
+* Kanál změn je řazen cyklicky úpravy v rámci každé hodnotu klíče oddílu. Není zaručeno pořadí napříč hodnotami klíče oddílu.
+* Změny můžete synchronizované z libovolný bod za běhu, to znamená, neexistuje žádné pevné data uchovávají, pro které změny jsou k dispozici.
+* Změny jsou dostupné v blocích rozsahů klíče oddílů. Tato funkce umožňuje, aby změny z rozsáhlých kolekcí pro paralelní zpracování více příjemců/servery.
+* Aplikace můžou požádat o více kanálů změnit současně ve stejné kolekci.
+* ChangeFeedOptions.StartTime slouží k poskytování počátečního bodu, například, najít odpovídající danému čas token pro pokračování. Token ContinuationToken, je-li zadána, wins přes hodnoty StartTime a StartFromBeginning. Přesnost ChangeFeedOptions.StartTime je přibližně 5 sekund. 
 
-## <a name="use-cases-and-scenarios"></a>Případy použití a scénáře
+## <a name="use-cases-and-scenarios"></a>Scénáře a případy použití
 
-Informační kanál změnu umožňuje efektivní zpracování rozsáhlých datových sad k velkému počtu zápisy a nabízí alternativu k dotazování celá sada dat k identifikaci, co se změnilo. 
+Kanál změn umožňuje efektivní zpracování velkých datových sad s velký počet zápisů a nabízí alternativu k dotazování celou datovou sadu k identifikaci, co se změnilo. 
 
-Například pomocí změnu kanálu, můžete provádět následující úlohy efektivně:
+Například se změnou datového kanálu, můžete provádět následující úlohy efektivně:
 
-* Aktualizace mezipaměti, index vyhledávání nebo datového skladu s daty uloženými v databázi Azure Cosmos.
-* Aplikační úrovni využití dat vrstvení a archivaci, tedy ukládání "horkých dat." v Azure Cosmos DB a po určité době odstraněny "pomaleji přístupná data" k [Azure Blob Storage](../storage/common/storage-introduction.md) nebo [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md).
-* Provést nulové době migrací na jiný účet Azure Cosmos DB jiné schéma rozdělení oddílů.
-* Implementace [lambda kanály v Azure](https://blogs.technet.microsoft.com/msuspartner/2016/01/27/azure-partner-community-big-data-advanced-analytics-and-lambda-architecture/) s Azure Cosmos DB. Azure Cosmos DB poskytuje řešení škálovatelná databáze, které může zpracovat přijímání a dotazů a implementovat lambda architektury s nízkou celkové náklady na vlastnictví. 
-* Přijímat a ukládání dat události ze zařízení, senzorů, infrastruktury a aplikace a zpracování těchto událostí v reálném čase s [Azure Stream Analytics](../stream-analytics/stream-analytics-documentdb-output.md), [Apache Storm](../hdinsight/storm/apache-storm-overview.md), nebo [Apache Spark](../hdinsight/spark/apache-spark-overview.md). 
+* Aktualizujte mezipaměť, index vyhledávání nebo datový sklad s daty uloženými ve službě Azure Cosmos DB.
+* Implementace dat na úrovni aplikace vrstvení a archivace, to znamená, ukládání "horkých dat." ve službě Azure Cosmos DB a stáří "studených dat" na [Azure Blob Storage](../storage/common/storage-introduction.md) nebo [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md).
+* Provádět nula dolů čas migrace na jiný účet služby Azure Cosmos DB pomocí jiné schéma rozdělení oddílů.
+* Implementace [lambda kanály v Azure](https://blogs.technet.microsoft.com/msuspartner/2016/01/27/azure-partner-community-big-data-advanced-analytics-and-lambda-architecture/) pomocí služby Azure Cosmos DB. Azure Cosmos DB poskytuje řešení škálovatelná databáze, které lze zpracovat příjem dat a dotazu a implementace architektury lambda s nízkou celkových nákladů na vlastnictví. 
+* Zobrazí data události ze zařízení, senzorů, infrastruktury a aplikací a ukládat zpracování těchto událostí v reálném čase pomocí [Azure Stream Analytics](../stream-analytics/stream-analytics-documentdb-output.md), [Apache Storm](../hdinsight/storm/apache-storm-overview.md), nebo [Apache Spark](../hdinsight/spark/apache-spark-overview.md). 
 
-Následující obrázek ukazuje, jak změnit lambda kanály, které obě ingestování a pomocí dotazu pomocí Azure Cosmos DB informačního kanálu podpory: 
+Následující obrázek ukazuje, jak změnit lambda kanály, které přijmout a dotaz pomocí služby Azure Cosmos DB můžete použít informační kanály podpory: 
 
-![Azure na základě Cosmos DB lambda kanálu pro přijímání a dotazů](./media/change-feed/lambda.png)
+![Azure Cosmos DB na základě lambda kanál pro příjem dat a dotazu](./media/change-feed/lambda.png)
 
-Také v rámci vaší [bez serveru](http://azure.com/serverless) webových a mobilních aplikací, můžete sledovat události, jako jsou například změny do vašeho zákazníka profilu, předvolby nebo umístění pro spuštění určitých akcí, jako je odesílání nabízených oznámení do jejich zařízení pomocí [Azure Functions](#azure-functions). Pokud používáte databázi Cosmos Azure k vytvoření hry, můžete, například použití změnit informačního kanálu v reálném čase tabulky podle skóre z dokončené hry implementovat.
+Také v rámci vaší [bez serveru](http://azure.com/serverless) webových a mobilních aplikací, můžete sledovat události, jako jsou například změny vašeho zákazníka profilu, předvolby nebo umístění pro aktivaci určité akce, jako je odesílání nabízených oznámení do zařízení pomocí [Azure Functions](#azure-functions). Pokud používáte službu Azure Cosmos DB k vytvoření hry, je možné, například použití změnit informační kanál k implementaci v reálném čase žebříčky podle skóre, které se od dokončených hry.
 
 <a id="azure-functions"></a>
-## <a name="using-azure-functions"></a>Pomocí Azure Functions 
+## <a name="using-azure-functions"></a>Pomocí služby Azure Functions 
 
-Pokud používáte Azure Functions, nejjednodušší způsob, jak se připojit k Azure Cosmos DB změnu kanálu je přidat do aplikace Azure Functions aktivační procedury Azure Cosmos DB. Když vytvoříte aktivační procedury Azure Cosmos DB v aplikaci Azure Functions, vyberte kolekci Azure Cosmos DB pro připojení k a funkce se aktivuje vždy, když ke změně do kolekce. 
+Pokud používáte Azure Functions, nejjednodušší způsob, jak připojit ke kanálu změn Azure Cosmos DB je přidání aktivační událost Azure Cosmos DB k aplikaci Azure Functions. Když vytvoříte aktivační událost Azure Cosmos DB v aplikaci Azure Functions, vyberete kolekci Azure Cosmos DB se připojit k a funkce se aktivuje vždy, když do kolekce dojde ke změně. 
 
-Aktivační události lze vytvořit na portálu Azure Functions na portálu Azure Cosmos DB nebo prostřednictvím kódu programu. Další informace najdete v tématu [Cosmos databázi Azure: bez serveru databáze computing pomocí Azure Functions](serverless-computing-database.md).
+Aktivační události lze vytvořit na portálu Azure Functions na portálu služby Azure Cosmos DB nebo prostřednictvím kódu programu. Další informace najdete v tématu [služby Azure Cosmos DB: výpočetní prostředí bez serveru databázi s využitím Azure Functions](serverless-computing-database.md).
 
 <a id="sql-sdk"></a>
 ## <a name="using-the-sdk"></a>Použití sady SDK
 
-[SQL SDK](sql-api-sdk-dotnet.md) pro Azure Cosmos DB vám dává všechny ke čtení a správa změn, kanálu. Ale s skvělé power obsahuje příliš velké množství odpovědnosti. Pokud chcete spravovat kontrolní body, řeší dokumentu pořadová čísla a mít podrobnou kontrolu nad klíče oddílů, pak pomocí sady SDK může mít správný přístup.
+[SQL SDK](sql-api-sdk-dotnet.md) pro službu Azure Cosmos DB poskytuje veškerou sílu ke čtení a správa změn informačního kanálu. Ale s větší možnosti je příliš velké množství odpovědnosti. Pokud chcete spravovat kontrolní body, řešil dokumentu pořadová čísla a mít podrobnou kontrolu nad klíči oddílů, může být potom pomocí sady SDK služby správný přístup.
 
-Tato část vás provede jak používat sadu SDK SQL pro práci s změnu informačního kanálu.
+Tato část vás provede pomocí sady SQL SDK pracovat a změní informačního kanálu.
 
-1. Nejdříve si přečtěte následující prostředky z appconfig. Pokyny k načítání koncový bod a autorizační klíč jsou k dispozici v [aktualizovat připojovací řetězec](create-sql-api-dotnet.md#update-your-connection-string).
+1. Začněte tím, že v následujících zdrojích, z appconfig. Pokyny k načítání koncového bodu a autorizačního klíče jsou k dispozici v [aktualizovat připojovací řetězec](create-sql-api-dotnet.md#update-your-connection-string).
 
     ``` csharp
     DocumentClient client;
@@ -115,7 +115,7 @@ Tato část vás provede jak používat sadu SDK SQL pro práci s změnu informa
     }
     ```
 
-3. Získáte oddílu rozsahy klíčů:
+3. Získáte oddíl rozsahy klíčů:
 
     ```csharp
     FeedResponse pkRangesResponse = await client.ReadPartitionKeyRangeFeedAsync(
@@ -127,7 +127,7 @@ Tato část vás provede jak používat sadu SDK SQL pro práci s změnu informa
     pkRangesResponseContinuation = pkRangesResponse.ResponseContinuation;
     ```
 
-4. Volání ExecuteNextAsync pro každý rozsah klíče oddílu:
+4. Pro každý rozsah klíče oddílu volejte ExecuteNextAsync:
 
     ```csharp
     foreach (PartitionKeyRange pkRange in partitionKeyRanges){
@@ -158,75 +158,75 @@ Tato část vás provede jak používat sadu SDK SQL pro práci s změnu informa
     ```
 
 > [!NOTE]
-> Místo `ChangeFeedOptions.PartitionKeyRangeId`, můžete použít `ChangeFeedOptions.PartitionKey` zadat jeden oddíl klíč pro který má být získána změnu informačního kanálu. Například, `PartitionKey = new PartitionKey("D8CFA2FD-486A-4F3E-8EA6-F3AA94E5BD44")`.
+> Místo `ChangeFeedOptions.PartitionKeyRangeId`, můžete použít `ChangeFeedOptions.PartitionKey` k určení jednoho klíče oddílu pro který má být získána změnu informačního kanálu. Například, `PartitionKey = new PartitionKey("D8CFA2FD-486A-4F3E-8EA6-F3AA94E5BD44")`.
 > 
 >
 
-Pokud máte více čtenářů, můžete použít **ChangeFeedOptions** čtení rozdělovat do různých vláknech nebo různých klientů.
+Pokud máte více čtenářům, můžete použít **ChangeFeedOptions** distribuci další zátěže do různých vláken nebo různých klientů.
 
-A je to, tyto několika řádků kódu můžete spouštět čtení změnu informačního kanálu. Kód dokončení použít v tomto článku můžete získat [úložiště GitHub](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/ChangeFeed).
+A to je vše, tyto několik řádků kódu můžete začít čtení kanálu změn. Získáte kompletní kód použitý v tomto článku si [úložiště GitHub se vzorovými](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/ChangeFeed).
 
-V kódu v kroku 4 výše **ResponseContinuation** v poslední řádek obsahuje poslední logické pořadové číslo (položky LSN) dokumentu, který budete používat při příštím číst nové dokumenty po této pořadové číslo. Pomocí **StartTime** z **ChangeFeedOption** rozšířit vaše net získat dokumenty. Ano, pokud vaše **ResponseContinuation** má hodnotu null, ale vaše **StartTime** přejde zpět v čase a zobrazí se všechny dokumenty, které od změnila **StartTime**. Ale pokud vaše **ResponseContinuation** má hodnotu, pak systém získáte všechny dokumenty od tohoto pořadové číslo položky.
+V kódu v kroku 4 výše **ResponseContinuation** v poslední řádek obsahuje poslední logické pořadové číslo (položky LSN) dokumentu, který budete používat při dalším přečíst nové dokumenty po tomto Pořadové číslo. S použitím **StartTime** z **ChangeFeedOption** lze rozšířit vaše net získat dokumenty. Ano, pokud vaše **ResponseContinuation** má hodnotu null, ale vaše **StartTime** přejde zpět v čase, pak se zobrazí všechny dokumenty, které se změnily od **StartTime**. Ale pokud vaše **ResponseContinuation** má hodnotu, pak systém vám pomůže se všechny dokumenty od této hodnoty LSN.
 
-Ano pole kontrolní bod je právě uchovávání pořadové číslo položky pro každý oddíl. Ale pokud nechcete, aby jak nakládat s oddíly, kontrolní body, pořadové číslo položky, počáteční čas, atd. jednodušší možnost je použít změnu kanálu procesoru knihovny.
+Vaše pole kontrolního bodu tak, je pouze zachování pořadové číslo položky pro každý oddíl. Ale pokud nechcete, aby se oddíly, kontrolní body, hodnota LSN, počáteční čas, atd. možnost jednodušší, je použití kanálu knihovny procesoru změn.
 
 <a id="change-feed-processor"></a>
-## <a name="using-the-change-feed-processor-library"></a>Pomocí změnu kanálu procesoru knihovny 
+## <a name="using-the-change-feed-processor-library"></a>Změny pomocí kanálu knihovny procesoru 
 
-[Azure Cosmos DB změnu kanálu procesoru knihovny](https://docs.microsoft.com/azure/cosmos-db/sql-api-sdk-dotnet-changefeed) můžete snadno distribuovat zpracování událostí napříč více příjemců. Tato knihovna zjednodušuje čtení změny mezi oddílů a paralelně fungujících více vláken.
+[Kanálu změn databáze Azure Cosmos DB knihovny procesoru](https://docs.microsoft.com/azure/cosmos-db/sql-api-sdk-dotnet-changefeed) vám umožňují usnadňuje distribuci zpracování událostí mezi několik příjemců. Tato knihovna usnadňuje čtení změny napříč oddíly a fungujících paralelně několik vláken.
 
-Hlavní výhodou knihovna informačního kanálu procesoru změn je, že nemusíte spravovat každý oddíl a token pokračování a vy nemusíte ručně dotazování každou kolekci.
+Hlavní výhodou knihovnou change feed processor je, že není nutné spravovat každý oddíl a token pro pokračování a vy nemusíte ručně dotazovat každou kolekci.
 
-Knihovna informačního kanálu procesoru změn zjednodušuje čtení změny mezi oddílů a paralelně fungujících více vláken.  Automaticky spravuje čtení změny napříč oddíly používající mechanismus zapůjčení. Jak vidíte na následujícím obrázku, pokud spustíte dvě klienty, kteří používají změnu kanálu procesoru knihovny se rozdělují práci mezi sebou. Při dalším zvýšit klientů zachovat jako podíl práci mezi sebou.
+Knihovnou change feed processor usnadňuje čtení změn napříč oddíly a fungujících paralelně několik vláken.  Automaticky spravuje čtení změn napříč oddíly, použití mechanismu zapůjčení. Jak vidíte na následujícím obrázku, pokud spustíte dvě klienty, kteří používají kanálu knihovny procesoru změn, rozdělení práce mezi servery. V průběhu zvýšit klienty, zachovat jako podíl práce mezi servery.
 
-![Distribuované zpracování změn Azure Cosmos DB kanálu](./media/change-feed/change-feed-output.png)
+![Distribuované zpracování kanálu změn služby Azure Cosmos DB](./media/change-feed/change-feed-output.png)
 
-Levé klient byl spuštěn první a jeho spuštění, monitorování, které se všechny oddíly, pak klient druhý byla spuštěna a potom první umožní přejít některých zapůjčení pro druhý klienta. Jak vidíte, to je dobrý způsob, jak rozložení práce mezi různé počítače a klienty.
+Byl spuštěn první levé klienta a jeho spuštění, sledování, které všechny oddíly, pak druhého klienta byla spuštěna a potom první opustila některých zapůjčení pro druhého klienta. Jak je vidět, to je dobrý způsob, jak k rozložení práce mezi různé počítače a klienty.
 
-Poznámka: Pokud máte dva bez serveru Azure funkcí monitorování stejné kolekce a pomocí stejné zapůjčení, pak dvě funkce může dojít k různých dokumenty v závislosti na způsobu knihovně procesoru rozhodne zpracujte oddíly.
+Poznámka: Pokud máte dva bez serveru Azure funkcí monitorování stejné kolekce a pomocí stejného zapůjčení, pak tyto dvě funkce může získat různé dokumenty v závislosti na způsobu knihovny procesoru rozhodne zpracujte oddíly.
 
 <a id="understand-cf"></a>
-### <a name="understanding-the-change-feed-processor-library"></a>Principy změn kanálu procesoru knihovny
+### <a name="understanding-the-change-feed-processor-library"></a>Principy změn kanálu knihovny procesoru
 
-Existují čtyři hlavní součásti implementace knihovna informačního kanálu procesoru změn: monitorovaných kolekce, kolekce zapůjčení, procesoru hostitele a uživatelé. 
+Existují čtyři hlavní součásti implementace knihovnou change feed processor: monitorované kolekci, kolekci zapůjčení, procesoru hostitele a spotřebitele. 
 
 > [!WARNING]
 > Za vytvoření kolekce se hradí poplatky, protože rezervujete propustnost pro komunikaci aplikace se službou Azure Cosmos DB. Další podrobnosti najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/).
 > 
 > 
 
-**Monitorované kolekci:** monitorovaných kolekce je dat, ze které se generuje změnu informačního kanálu. Všechny operace INSERT a změny monitorovaných kolekce se projeví v informačním kanálu změnu kolekce. 
+**Monitorované kolekci:** monitorované kolekci se data, ze kterého je generován kanál změn. Všechny operace vložení a změny v monitorované kolekci se projeví v kanálu změn kolekce. 
 
-**Kolekce zapůjčení:** souřadnice kolekce zapůjčení zpracování změn kanálu napříč více pracovníků. Samostatné kolekce slouží k uložení zapůjčení jeden zapůjčení na jeden oddíl. Je výhodné pro uložení této kolekce zapůjčení na jiný účet s oblasti zápisu blíže na kterém je spuštěný změnu kanálu procesoru. Objekt zapůjčení obsahuje následující atributy: 
+**Kolekci zapůjčení:** souřadnice kolekci zapůjčení, zpracování kanálu změn napříč několika pracovních procesů. Samostatné kolekce slouží k uložení zapůjčení s jeden zapůjčení na oddíl. Je výhodné pro uložení této kolekci zapůjčení na jiný účet s oblastí zápisu blíže na kterém je spuštěný kanálu procesoru změn. Objekt zapůjčení obsahuje následující atributy: 
 * Vlastník: Určuje hostitele, který vlastní zapůjčení
-* Pokračování: Určuje pozici (token pokračování) v kanálu pro určitý oddíl změn
-* Časové razítko: Čas poslední zapůjčení byla aktualizována; časové razítko slouží ke kontrole, jestli zapůjčení je považována za ukončenou 
+* Pokračování: Určuje umístění (token pro pokračování) v kanálu pro konkrétní oddíl změn
+* Časové razítko: Čas poslední byla aktualizována zapůjčení; časové razítko slouží ke kontrole, jestli zapůjčení je považována za ukončenou 
 
-**Procesor hostitele:** každého hostitele Určuje, kolik oddíly procesu na základě kolik instancí hostitelů mají aktivní zapůjčení. 
-1.  Po spuštění hostitele získá zapůjčení vyrovnávat zatížení ve všech hostitelích. Hostitel pravidelně obnovuje zapůjčení, aby zůstala aktivní zapůjčení. 
-2.  Kontrolní body hostitele poslední token pokračování jeho zapůjčení pro každou přečíst. K zajištění bezpečnosti souběžnosti, zkontroluje hostitele ETag pro jednotlivé aktualizace zapůjčení. Jsou podporovány také další strategie kontrolního bodu.  
-3.  Při vypnutí počítače Hostitel uvolní všechny zapůjčení, ale zachová pokračování informace, takže ho můžete obnovit čtení z uložené kontrolního bodu později. 
+**Hostitel procesoru:** každého hostitele Určuje, kolik oddíly k procesu v závislosti na tom, kolik instancí hostitelů máte aktivní zapůjčení. 
+1.  Při spuštění hostitele, získá zapůjčení vyrovnávat zatížení na všech hostitelích. Hostitel pravidelně obnoví zapůjčení, tak zůstanou aktivní zapůjčení. 
+2.  Kontrolní body hostitele poslední token pro pokračování k zapůjčení pro každé čtení. K zajištění bezpečnosti souběžnosti, zkontroluje hostitele ETag pro každou aktualizaci zapůjčení. Podporují se také další strategie zaměřené na kontrolní bod.  
+3.  Při vypnutí počítače Hostitel uvolní všechny zapůjčení ale uchovává informace o pokračování, abyste ho mohli obnovit čtení z uložené kontrolního bodu později. 
 
-V tuto chvíli nemůže být větší než počet oddílů (zapůjčení) počtu hostitelů.
+Počet hostitelů v tuto chvíli nemůže být větší než počet oddílů (zapůjčení).
 
-**Příjemci knihovny:** příjemci nebo pracovníci, jsou vláken, které provádějí změnu kanálu zpracování iniciovaná každého hostitele. Každý hostitel procesoru může mít více příjemců. Jednotliví spotřebitelé přečte změnu kanálu z oddílu, který je přiřazen k a upozorní jeho hostitel změny a platnost zapůjčení.
+**Příjemci:** spotřebitelům nebo zaměstnanců, jsou vlákna, které provádějí zpracování kanálu změn inicializuje v každém hostiteli. Každý procesor hostitel může mít několik příjemců. Každý příjemce čte změnu datového kanálu z oddílu, který je přiřazen k a upozorní jeho hostitel změny a vypršení platnosti zapůjčení.
 
-Abyste pochopili, jak tyto čtyři prvky změnu kanálu procesoru pracovní společně, podíváme se na příklad na následujícím diagramu. Monitorované kolekci ukládá dokumenty a používá "city" jako klíč oddílu. Vidíte, že blue oddíl obsahuje dokumentů s poli "city" od "A-E" a tak dále. Existují dva hostitele, každý se dvěma spotřebiteli čtení ze čtyř oddílů souběžně. Šipky zobrazují příjemci čtení z na určité místo v změn informačního kanálu. Do prvního oddílu představuje tmavšího blue nepřečtená změny při světla blue představuje již čtení změny při změně kanálu. Hostitele použít k ukládání hodnotu "pokračování" ke sledování aktuální pozici čtení pro každý příjemce kolekci zapůjčení. 
+Abyste pochopili, jak tyto čtyři prvky z kanálu změn práce procesoru společně, Pojďme se podívat na příklad na následujícím diagramu. Monitorované kolekci ukládá dokumenty a používá "city" jako klíč oddílu. Vidíme, že modrý oddíl obsahuje dokumenty s polem "city" z "A-E –" a tak dále. Existují dva hostitele, každou s dvěma čtením čtyři oddíly paralelní konzumenty. Šipky zobrazují příjemci čtení z určité místo v kanálu změn. Do prvního oddílu představuje tmavší modrá nepřečtené změny, zatímco světle modrá představuje už další změny v kanálu změn. Hostitele použít kolekci zapůjčení pro uložení hodnoty "pokračování" ke sledování na aktuální pozici čtení pro každého příjemce. 
 
-![Pomocí Azure Cosmos DB změnu kanálu procesor hostitele](./media/change-feed/changefeedprocessornew.png)
+![Eventprocessorhost změn databáze Azure Cosmos DB pomocí kanálu.](./media/change-feed/changefeedprocessornew.png)
 
-### <a name="working-with-the-change-feed-processor-library"></a>Práce se změnami kanálu procesoru knihovny
+### <a name="working-with-the-change-feed-processor-library"></a>Práce s kanálu knihovny procesoru změn
 
-Před instalací změnu kanálu balíček NuGet procesoru, nejprve nainstalujte: 
+Před instalací změnu informačního kanálu balíčku NuGet procesoru, nejprve nainstalujte: 
 
-* Microsoft.Azure.DocumentDB, nejnovější verzi.
+* Microsoft.Azure.DocumentDB, nejnovější verze.
 * Newtonsoft.Json, nejnovější verze
 
-Poté nainstalujte [balíček Microsoft.Azure.DocumentDB.ChangeFeedProcessor Nuget](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/) a její zahrnutí jako odkaz.
+Nainstalujte [balíček Microsoft.Azure.DocumentDB.ChangeFeedProcessor Nuget](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/) a zahrnout ho jako odkaz.
 
-K implementaci knihovna informačního kanálu procesoru změn, je nutné provést následující:
+K implementaci knihovnou change feed processor, musíte udělat následující:
 
-1. Implementace **DocumentFeedObserver** objekt, který implementuje **IChangeFeedObserver**.
+1. Implementace **DocumentFeedObserver** objektu, který implementuje **IChangeFeedObserver**.
     ```csharp
     using System;
     using System.Collections.Generic;
@@ -299,7 +299,7 @@ K implementaci knihovna informačního kanálu procesoru změn, je nutné prové
     }
     ```
 
-2. Implementace **DocumentFeedObserverFactory**, který implementuje **IChangeFeedObserverFactory**.
+2. Implementace **DocumentFeedObserverFactory**, která implementuje **IChangeFeedObserverFactory**.
     ```csharp
      using Microsoft.Azure.Documents.ChangeFeedProcessor.FeedProcessing;
 
@@ -335,7 +335,7 @@ K implementaci knihovna informačního kanálu procesoru změn, je nutné prové
     private readonly ChangeFeedProcessorBuilder builder = new ChangeFeedProcessorBuilder();
     ```
 
-5. sestavení **ChangeFeedProcessorBuilder** po definování relevantní objekty 
+5. sestavení **ChangeFeedProcessorBuilder** po definování souvisejících objektů 
 
     ```csharp
             string hostName = Guid.NewGuid().ToString();
@@ -383,89 +383,89 @@ K implementaci knihovna informačního kanálu procesoru změn, je nutné prové
             await result.StartAsync();
             Console.Read();
             await result.StopAsync();    
-            ```
+    ```
 
-That’s it. After these few steps documents will start showing up into the **DocumentFeedObserver.ProcessChangesAsync** method.
+Je to. Po provedení těchto kroků několik dokumentů se začnou zobrazovat do **DocumentFeedObserver.ProcessChangesAsync** metody.
 
-Above code is for illustration purpose to show different kind of objects and their interaction. You have to define proper variables and initiate them with correct values. You can get the complete code used in this article from the [GitHub repo](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/ChangeFeedProcessorV2).
+Nad kód je pro účely ilustrace zobrazíte jiný druh objekty a jejich interakce. Je nutné definovat správné proměnné a inicializujte u správné hodnoty. Získáte kompletní kód použitý v tomto článku si [úložiště GitHub se vzorovými](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/ChangeFeedProcessorV2).
 
 > [!NOTE]
-> You should never have a master key in your code or in config file as shown in above code. Please see [how to use Key-Vault to retrive the keys](https://sarosh.wordpress.com/2017/11/23/cosmos-db-and-key-vault/).
+> Nikdy byste měli mít hlavní klíč ve vašem kódu nebo v konfiguračním souboru, jak je znázorněno výše kódu. Podrobnosti najdete na [použití služby Key Vault k načtení klíčů](https://sarosh.wordpress.com/2017/11/23/cosmos-db-and-key-vault/).
 
 
-## FAQ
+## <a name="faq"></a>Nejčastější dotazy
 
-### What are the different ways you can read Change Feed? and when to use each method?
+### <a name="what-are-the-different-ways-you-can-read-change-feed-and-when-to-use-each-method"></a>Jaké jsou různé způsoby, jak si můžete přečíst Change Feed? a kdy používat jednotlivé metody?
 
-There are three options for you to read change feed:
+Existují tři možnosti, můžete ke čtení kanálu změn:
 
-* **[Using Azure Cosmos DB SQL API .NET SDK](#sql-sdk)**
+* **[Pomocí služby Azure Cosmos DB SQL SDK pro .NET API](#sql-sdk)**
    
-   By using this method, you get low level of control on change feed. You can manage the checkpoint, you can access a particular partition key etc. If you have multiple readers, you can use [ChangeFeedOptions](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.changefeedoptions?view=azure-dotnet) to distribute read load to different threads or different clients. .
+   Tímto způsobem získáte nízké úrovni ovládacího prvku na kanál změn. Můžete spravovat kontrolní bod, můžete přistupovat konkrétní oddíl klíčů atd. Pokud máte více čtenářům, můžete použít [ChangeFeedOptions](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.changefeedoptions?view=azure-dotnet) distribuci další zátěže do různých vláken nebo různých klientů. .
 
-* **[Using the Azure Cosmos DB change feed processor library](#change-feed-processor)**
+* **[Použití změn databáze Azure Cosmos DB kanálu knihovny procesoru](#change-feed-processor)**
 
-   If you want to outsource lot of complexity of change feed then you can use change feed processor library. This library hides lot of complexity, but still gives you complete control on change feed. This library follows an [observer pattern](https://en.wikipedia.org/wiki/Observer_pattern), your processing function is called by the SDK. 
+   Pokud chcete, můžete použít knihovnou change feed processor využívající spoustu složitost kanálu změn. Tuto knihovnu skryje hodně složité, ale stále získáte tak úplnou kontrolu v kanálu změn. Tato knihovna používá stejné postupy [vzor pozorovatel](https://en.wikipedia.org/wiki/Observer_pattern), volá funkci pro zpracování sady SDK. 
 
-   If you have a high throughput change feed, you can instantiate multiple clients to read the change feed. Because you are using “change feed processor library”, it will automatically divide the load among different clients. You do not have to do anything. All the complexity is handled by SDK. However, if you want to have your own load balancer, then you can implement IParitionLoadBalancingStrategy for custom partition strategy. Implement IPartitionProcessor – for custom processing changes on a partition. However, with SDK, you can process a partition range but if you want to process a particular partition key then you have to use SDK for SQL API.
+   Pokud máte kanálu změn vysokou propustnost, můžete vytvořit instanci více klientů ke čtení kanálu změn. Vzhledem k tomu, že používáte "Změna knihovny feed processor", rozdělí automaticky zatížení mezi různé klienty. Není nutné nic dělat. Všem složitosti zařizuje služba SDK. Ale pokud chcete mít vlastní nástroje pro vyrovnávání zatížení, pak můžete implementovat IParitionLoadBalancingStrategy pro vlastní oddíl strategie. Implementujte IPartitionProcessor – pro vlastní zpracování změn na oddíl. Sada SDK a může zpracovat rozsah oddílu ale pokud chcete zpracovat klíč oddílu konkrétní pak budete muset používat sadu SDK pro rozhraní SQL API.
 
-* **[Using Azure Functions](#azure-functions)** 
+* **[Pomocí služby Azure Functions](#azure-functions)** 
    
-   The last option Azure Function is the simplest option. We recommend using this option. When you create an Azure Cosmos DB trigger in an Azure Functions app, you select the Azure Cosmos DB collection to connect to and the function is triggered whenever a change to the collection is made. watch a [screen cast](https://www.youtube.com/watch?v=Mnq0O91i-0s&t=14s) of using Azure function and change feed
+   Funkce Azure Functions jako poslední možnost je nejjednodušší možnost. Doporučujeme použít tuto možnost. Když vytvoříte aktivační událost Azure Cosmos DB v aplikaci Azure Functions, vyberete kolekci Azure Cosmos DB se připojit k a funkce se aktivuje vždy, když do kolekce dojde ke změně. sledování [obrazovky přetypování](https://www.youtube.com/watch?v=Mnq0O91i-0s&t=14s) funkce pomocí Azure a kanálu změn
 
-   Triggers can be created in the Azure Functions portal, in the Azure Cosmos DB portal, or programmatically. Visual Studio and VS Code has great support to write Azure Function. You can write and debug the code on your desktop, and then deploy the function with one click. For more information, see [Azure Cosmos DB: Serverless database computing using Azure Functions](serverless-computing-database.md) article.
+   Aktivační události lze vytvořit na portálu Azure Functions na portálu služby Azure Cosmos DB nebo prostřednictvím kódu programu. Visual Studio a VS Code má skvělou podporu pro zápis funkce Azure functions. Můžete napsat a ladění kódu na vašem počítači a pak nasadit funkci s jedním kliknutím. Další informace najdete v tématu [služby Azure Cosmos DB: výpočetní prostředí bez serveru databázi s využitím Azure Functions](serverless-computing-database.md) článku.
 
-### What is the sort order of documents in change feed?
+### <a name="what-is-the-sort-order-of-documents-in-change-feed"></a>Co je v pořadí řazení dokumentů v kanálu změn?
 
-Change feed documents comes in order of their modification time. This sort order is guaranteed only per partition.
+Obsahuje dokumenty kanálu změn v pořadí podle jejich čas změny. Toto pořadí řazení je zaručeno pouze na oddíl.
 
-### For a multi-region account, what happens to the change feed when the write-region fails-over? Does the change feed also failover? Would the change feed still appear contiguous or would the fail-over cause change feed to reset?
+### <a name="for-a-multi-region-account-what-happens-to-the-change-feed-when-the-write-region-fails-over-does-the-change-feed-also-failover-would-the-change-feed-still-appear-contiguous-or-would-the-fail-over-cause-change-feed-to-reset"></a>Pro účet více oblastí co se stane kanál, když selže selhání oblasti zápisu změn? Změnu informační kanál také převzetí služeb při selhání? Stále kanálu změn objevuje souvislý nebo by příčině převzetí služeb při selhání změnit informační kanál resetovat?
 
-Yes, change feed will work across the manual failover operation and it will be contiguous.
+Ano, budou fungovat kanálu změn napříč operace ruční převzetí služeb při selhání a bude souvislé.
 
-### How long change feed persist the changed data if I set the TTL (Time to Live) property for the document to -1?
+### <a name="how-long-change-feed-persist-the-changed-data-if-i-set-the-ttl-time-to-live-property-for-the-document-to--1"></a>Jak dlouho kanálu změn zachovat změněná data, je-li nastavit vlastnost hodnota TTL (Time to Live) pro dokument na hodnotu -1?
 
-Change feed will persist forever. If data is not deleted, it will remain in change feed.
+Kanál změn se uloží navždy. Když se neodstraní data, zůstane v kanálu změn.
 
-### How can I configure Azure functions to read from a particular region, as change feed is available in all the read regions by default?
+### <a name="how-can-i-configure-azure-functions-to-read-from-a-particular-region-as-change-feed-is-available-in-all-the-read-regions-by-default"></a>Jak lze nakonfigurovat Azure functions ke čtení z konkrétní oblasti, jako kanál změn je k dispozici ve všech oblastech čtení ve výchozím nastavení?
 
-Currently it’s not possible to configure Azure Functions to read from a particular region. There is a GitHub issue in the Azure Functions repo to set the preferred regions of any Azure Cosmos DB binding and trigger.
+Aktuálně není možné nakonfigurovat Azure Functions ke čtení z konkrétní oblasti. V úložišti Azure Functions k nastavení preferované oblasti všechny aktivační události a vazby Azure Cosmos DB je problém na Githubu.
 
-Azure Functions uses the default connection policy. You can configure connection mode in Azure Functions and by default, it reads from the write region, so it is best to co-locate Azure Functions on the same region.
+Služba Azure Functions využívá výchozí zásady připojení. Režim připojení můžete nakonfigurovat ve službě Azure Functions a ve výchozím nastavení, načte z oblasti pro zápis, takže je vhodné umístit společně Azure Functions ve stejné oblasti.
 
-### What is the default size of batches in Azure Functions?
+### <a name="what-is-the-default-size-of-batches-in-azure-functions"></a>Jaká je výchozí velikost dávek ve službě Azure Functions?
 
-100 documents at every invocation of Azure Functions. However, this number is configurable within the function.json file. Here is complete [list of configuration options](../azure-functions/functions-run-local.md). If you are developing locally, update the application settings within the [local.settings.json](../azure-functions/functions-run-local.md) file.
+100 dokumentů v každé volání služby Azure Functions. Toto číslo je však možné konfigurovat v souboru function.json. Tady je úplný [seznam možností konfigurace](../azure-functions/functions-run-local.md). Pokud vyvíjíte místně, aktualizovat nastavení aplikace v rámci [local.settings.json](../azure-functions/functions-run-local.md) souboru.
 
-### I am monitoring a collection and reading its change feed, however I see I am not getting all the inserted document, some documents are missing. What is going on here?
+### <a name="i-am-monitoring-a-collection-and-reading-its-change-feed-however-i-see-i-am-not-getting-all-the-inserted-document-some-documents-are-missing-what-is-going-on-here"></a>Sleduji kolekce a čtení jeho změn informačního kanálu, ale vidím, že nemám k dispozici vloženého dokumentu, chybí některé dokumenty. K čemu tady?
 
-Please make sure that there is no other function reading the same collection with the same lease collection. It happened to me, and later I realized the missing documents are processed by my other Azure functions, which is also using the same lease.
+Ujistěte se prosím, že neexistuje žádná jiná funkce čtení stejné kolekce ke stejné kolekci zapůjčení. Došlo k sobě a později realizované, že chybí dokumenty jsou zpracovány Moje další Azure functions, což je také pomocí stejné zapůjčení.
 
-Therefore, if you are creating multiple Azure Functions to read the same change feed then they must use different lease collection or use the “leasePrefix” configuration to share the same collection. However, when you use change feed processor library you can start multiple instances of your function and SDK will divide the documents between different instances automatically for you.
+Proto pokud vytvoříte více funkcí Azure ke čtení stejné kanálu změn pak musíte použít kolekci různých zapůjčení nebo pomocí konfigurace "leasePrefix" můžete sdílet stejné kolekce. Při použití knihovnou change feed processor můžete spustit více instancí vaší funkce a sady SDK se bude dělit dokumenty mezi různými instancemi automaticky za vás.
 
-### My document is updated every second, and I am not getting all the changes in Azure Functions listening to change feed.
+### <a name="my-document-is-updated-every-second-and-i-am-not-getting-all-the-changes-in-azure-functions-listening-to-change-feed"></a>Dokument se aktualizuje každou sekundu a nemám k dispozici všechny změny ve službě Azure Functions naslouchání kanálu změn.
 
-Azure Functions polls change feed for every 5 seconds, so any changes made between 5 seconds are lost. Azure Cosmos DB stores just one version for every 5 seconds so you will get the 5th change on the document. However, if you want to go below 5 second, and want to poll change Feed every second, You can configure the polling time “feedPollTime”, see [Azure Cosmos DB bindings](../azure-functions/functions-bindings-cosmosdb.md#trigger---configuration). It is defined in milliseconds with a default of 5000. Below 1 second is possible but not advisable, as you will start burning more CPU.
+Azure Functions hlasování změnit informační kanál pro každých 5 sekund, tak, aby byly ztraceny všechny změny provedené od 5 sekund. Azure Cosmos DB ukládá pouze jednu verzi pro každých 5 sekund, 5. Změna se zobrazí v dokumentu. Nicméně, pokud chcete přejít níže 5 sekund a chcete dotazovat každou sekundu kanálu změn, můžete nakonfigurovat čas dotazování "feedPollTime", naleznete v tématu [vazby Azure Cosmos DB](../azure-functions/functions-bindings-cosmosdb.md#trigger---configuration). Je definován v milisekundách, s výchozí 5000. Nižší než 1 sekundu je možné ale není žádoucí, jak začne vypalování další procesor.
 
-### I inserted a document in the Mongo API collection, but when I get the document in change feed, it shows a different id value. What is wrong here?
+### <a name="i-inserted-a-document-in-the-mongo-api-collection-but-when-i-get-the-document-in-change-feed-it-shows-a-different-id-value-what-is-wrong-here"></a>Vložený dokument v kolekci rozhraní Mongodb API, ale když obdržím dokumentu v kanálu změn, zobrazuje hodnotu jiné id. Co je špatně tady?
 
-Your collection is Mongo API collection. Remember, change feed is read using the SQL client and serializes items into JSON format. Because of the JSON formatting, MongoDB clients will experience a mismatch between BSON formatted documents and the JSON formatted change feed. You are seeing is the representation of a BSON document in JSON. If you use binary attributes in a Mongo accounts, they are converted to JSON.
+Vaše kolekce je kolekce rozhraní Mongodb API. Nezapomeňte, že kanál změn je pro čtení pomocí nástroje SQL client a serializuje položky do formátu JSON. Z důvodu formátování JSON MongoDB klientů bude docházet k neshodě mezi dokumenty ve formátu BSON a JSON ve formátu kanálu změn. Vidíte je reprezentace dokument formátu BSON ve formátu JSON. Pokud používáte binární atributy v účtech Mongo, jsou převedeny na formát JSON.
 
-### Is there a way to control change feed for updates only and not inserts?
+### <a name="is-there-a-way-to-control-change-feed-for-updates-only-and-not-inserts"></a>Existuje způsob, jak řídit kanálu pouze pro aktualizace změn a ne vloží?
 
-Not today, but this functionality is on roadmap. Today, you can add a soft marker on the document for updates.
+Není dnes ale tato funkce je v plánu. V současné době můžete přidat softwarové značky pro dokument pro aktualizace.
 
-### Is there a way to get deletes in change feed?
+### <a name="is-there-a-way-to-get-deletes-in-change-feed"></a>Existuje způsob, jak získat odstraní v kanálu změn?
 
-Currently change feed doesn’t log deletes. Change feed is continuously improving, and this functionality is on roadmap. Today, you can add a soft marker on the document for delete. Add an attribute on the document called “deleted” and set it to “true” and set a TTL on the document so that it can be automatically deleted.
+Kanál změn není aktuálně protokolu odstraní. Kanál změn je průběžně zdokonaluje a tato funkce je v plánu. V současné době můžete přidat softwarové značky pro dokument k odstranění. Přidáte atribut v dokumentu nazývá "odstraněné" a nastavte na hodnotu "true" a nastavit hodnotu TTL v dokumentu tak, aby se dají automaticky odstranit.
 
-### Can I read change feed for historic documents(for example, documents that were added 5 years back) ?
+### <a name="can-i-read-change-feed-for-historic-documentsfor-example-documents-that-were-added-5-years-back-"></a>Může číst kanálu pro historické dokumentů (například dokumenty, které byly přidány zpět 5 let) změn?
 
-Yes, if the document is not deleted you can read the change feed as far as the origin of your collection.
+Ano, pokud se neodstraní dokumentu si můžete přečíst tato změna kanálu až na hodnotu počátek vaší kolekce.
 
-### Can I read change feed using JavaScript?
+### <a name="can-i-read-change-feed-using-javascript"></a>Může číst kanálu změn pomocí jazyka JavaScript
 
-Yes, Node.js SDK initial support for change feed is recently added. It can be used as shown in the following example, please update documentdb module to current version before you run the code:
+Ano, základem je podpora pro kanál změn sady Node.js SDK nedávno přidaly. Můžete použít, jak je znázorněno v následujícím příkladu prosím aktualizace modulu documentdb na aktuální verzi před spuštěním kódu:
 
 ```js
 
@@ -502,54 +502,54 @@ query.executeNext((err, results, headers) =&gt; {
 
 ```
 
-### <a name="can-i-read-change-feed-using-java"></a>Může číst informační kanál změn pomocí Java?
+### <a name="can-i-read-change-feed-using-java"></a>Může číst kanálu změn pomocí Javy
 
-Knihovna Java číst informační kanál změn je k dispozici v [úložiště Github](https://github.com/Azure/azure-documentdb-changefeedprocessor-java). Aktuálně knihovna Java je však několik verzí za knihovny .NET. Obě knihovny bude brzy synchronizované.
+Knihovna Java ke čtení kanálu změn je k dispozici v [úložiště Github](https://github.com/Azure/azure-documentdb-changefeedprocessor-java). Aktuálně Java knihovna je však několik verzí za knihovny .NET. Obě tyto knihovny bude brzy synchronizované.
 
-### <a name="can-i-use-etag-lsn-or-ts-for-internal-bookkeeping-which-i-get-in-response"></a>Můžete použít _etag, _lsn nebo _ts pro účetnictví, který se zobrazí v reakci?
+### <a name="can-i-use-etag-lsn-or-ts-for-internal-bookkeeping-which-i-get-in-response"></a>Můžete použít _etag, _lsn nebo _ts pro interní účetnictví, které můžu získat v reakci?
 
-Formát _etag je interní a nesmí na ní závisí (analyzovat ji) vzhledem k tomu, že můžete kdykoli změnit.
-_ts je časové razítko vytvoření nebo úpravy. _Ts můžete použít pro chronologickém porovnání.
-je _lsn je id dávky, která je přidána pouze pro informační kanál změnu, představuje id transakce z úložiště... Mnoho dokumenty může mít stejný _lsn.
-Jeden krok si uvědomit, značka ETag na FeedResponse se liší od _etag, které se zobrazuje v dokumentu. _etag je interní identifikátor a slouží k concurrency, obsahuje informace o verzi dokumentu a značka ETag se používá pro pořadí úloh informačního kanálu.
+Formát _etag je interní a by neměl jsou na ní závislé (ne analyzuje) vzhledem k tomu, že můžete kdykoli změnit.
+_ts je vytvoření nebo úprava časové razítko. Můžete použít _ts chronologickém porovnání.
+je _lsn je id dávky, která se přidá pouze pro kanál změn, představuje id transakce z úložiště... Stejné _lsn může mít mnoho dokumenty.
+Ještě jedna věc si uvědomit, značku ETag na FeedResponse se liší od _etag, který se zobrazí v dokumentu. _etag je interní identifikátor a používá se souběžností, obsahuje informace o verzi dokumentu a značka ETag pro pořadí úloh informačního kanálu.
 
-### <a name="does-reading-change-feed-add-any-additional-cost-"></a>Čtení změnu kanálu přidat všechny dodatečné náklady?
+### <a name="does-reading-change-feed-add-any-additional-cost-"></a>Nepřidává žádné další poplatky čtení kanálu změn?
 
-Budou se vám účtovat pro RU spotřebované znamená přesun dat do/z Azure Cosmos DB kolekce vždy využívat RU. Uživatelé budou účtovat poplatek za RU spotřebovávají kolekci zapůjčení.
+Bude se vám účtovat pro RU spotřebovaných to znamená přesun dat do a z kolekce Azure Cosmos DB vždy spotřebovávat RU. Uživatelé budou účtovat RU spotřebovaných kolekci zapůjčení.
 
-### <a name="can-multiple-azure-functions-read-one-collections-change-feed"></a>Víc funkcí Azure může číst informační kanál změnu jednu kolekci?
+### <a name="can-multiple-azure-functions-read-one-collections-change-feed"></a>Může číst několik Azure Functions kanálu změn jednu kolekci?
 
-Ano. Víc funkcí Azure může číst informační kanál změnu stejné kolekci. Azure Functions je však nutné mít samostatné leaseCollectionPrefix definované.
+Ano. Víc funkcí Azure můžete čtení kanálu změn stejné kolekce. Azure Functions je však nutné mít samostatné leaseCollectionPrefix definované.
 
-### <a name="should-the-lease-collection-be-partitioned"></a>Oddíly kolekci zapůjčení?
+### <a name="should-the-lease-collection-be-partitioned"></a>By měl být dělené kolekci zapůjčení?
 
-Ne, lze opravit zapůjčení kolekce. Není zapotřebí kolekce oddílů zapůjčení a je aktuálně podporované.
+Ne, lze napravit kolekci zapůjčení. Není potřeba zapůjčení dělené kolekce a aktuálně nepodporuje.
 
-### <a name="can-i-read-change-feed-from-spark"></a>Může číst změnu kanálu z Spark?
+### <a name="can-i-read-change-feed-from-spark"></a>Může číst změny ze Spark?
 
-Ano, je to možné. Najdete v tématu [Azure Cosmos DB Spark konektor](spark-connector.md). Tady je [obrazovky přetypování](https://www.youtube.com/watch?v=P9Qz4pwKm_0&t=1519s) znázorňující, jak můžete změnit kanálu jako strukturovaný stream zpracovat.
+Ano, je to možné. Podrobnosti najdete na [konektor služby Azure Cosmos DB Spark](spark-connector.md). Tady je [obrazovky přetypování](https://www.youtube.com/watch?v=P9Qz4pwKm_0&t=1519s) znázorňující, jak můžete zpracovávat jako strukturovaný stream kanálu změn.
 
-### <a name="if-i-am-processing-change-feed-by-using-azure-functions-say-a-batch-of-10-documents-and-i-get-an-error-at-7th-document-in-that-case-the-last-three-documents-are-not-processed-how-can-i-start-processing-from-the-failed-documentie-7th-document-in-my-next-feed"></a>Pokud zpracování změn kanál pomocí Azure Functions vyslovení dávky 10 dokumenty a zobrazí chybová zpráva na 7. dokumentu. V takovém případě poslední tři dokumenty nebudou zpracovány, jak můžete spustit zpracování z dokumentu se nezdařilo (tj 7. dokument) v mé další kanálu?
+### <a name="if-i-am-processing-change-feed-by-using-azure-functions-say-a-batch-of-10-documents-and-i-get-an-error-at-7th-document-in-that-case-the-last-three-documents-are-not-processed-how-can-i-start-processing-from-the-failed-documentie-7th-document-in-my-next-feed"></a>Pokud zpracování kanálu s využitím Azure Functions změn Řekněme, že batch 10 dokumentů a átovat dokument 7 se zobrazí chyba. V takovém případě poslední tři dokumenty nejsou zpracovány, jak můžete začít zpracování z neúspěšných dokumentu (např.) dokument 7) ve své další informační kanál?
 
-Ke zpracování chyby, je doporučené vzor zabalit kódu s blok try-catch. Catch – chyba a vložit tento dokument ve frontě (nedoručených zpráv) a pak definovat logiku a pracují s dokumenty, které vytváří chyba. Pomocí této metody Pokud máte dokument 200 batch a pouze jeden dokument se nepovedlo, není nutné throw rychle celý batch.
+Doporučený model chybu zpracovat, je zabalit svůj kód pomocí bloku try-catch. Zachytávat chyby a daný dokument umístit do fronty (nedoručené zprávy) a pak definovat logiku a pracují s dokumenty, u kterých došlo k chybě. Pomocí této metody Pokud máte služby batch dokument 200 a pouze jeden dokument se nepovedlo, není nutné zbavovat celý batch.
 
-V případě, že chyby by neměl rewind kontrolní bod zpět na začátku jinak se bude můžete často zobrazuje tyto dokumenty z změnu kanálu. Pamatujte si, že se změny informačního kanálu udržuje poslední snímek konečné snap dokumentů, protože jste to vy, může dojít ke ztrátě předchozí snímek na dokumentu. změnu kanálu zachová jenom jednu poslední verzi dokumentu a v rozmezí můžete jiné procesy pocházet a změnu dokumentu.
+V případě chyby by neměl rewind bodu vrácení zpět na začátek jinak je se můžete stále se zobrazuje tyto dokumenty z kanálu změn. Nezapomeňte, že změna informačního kanálu zachová poslední konečné snap snímek dokumenty, protože jste to vy, může dojít ke ztrátě předchozího snímku v dokumentu. kanál změn udržuje pouze jednu poslední verzi dokumentu a mezi mohou jiné procesy pocházet a změna dokumentu.
 
-Jak zachovat opravě kódu, bude brzy najít žádné dokumenty na frontu nedoručených zpráv.
-Azure Functions je automaticky volána informačního kanálu systémem změny a kontrolní bod atd se spravuje interně pomocí funkce Azure. Pokud chcete vrátit zpět kontrolní bod a řídit všechny aspekty, měli byste zvážit, že pomocí změnu kanálu procesoru SDK.
+Jak zachovat opravu kódu, bude brzy najít žádné dokumenty fronty nedoručených zpráv.
+Služba Azure Functions je automaticky volána informačního kanálu systémem změny a kontrolní bod atd je interně spravuje funkce Azure functions. Pokud chcete vrátit zpět kontrolní bod a řízení všech aspektů, měli byste zvážit použití řešení change kanálu procesoru SDK.
 
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o databázi Cosmos Azure pomocí Azure Functions najdete v části [Cosmos databázi Azure: bez serveru databáze computing pomocí Azure Functions](serverless-computing-database.md).
+Další informace o používání služby Azure Cosmos DB s využitím Azure Functions najdete v části [služby Azure Cosmos DB: výpočetní prostředí bez serveru databázi s využitím Azure Functions](serverless-computing-database.md).
 
-Další informace o použití změn kanálu procesoru knihovny použijte následující prostředky:
+Další informace o použití kanálu knihovny procesoru změn použijte následující prostředky:
 
-* [Stránka informací o](sql-api-sdk-dotnet-changefeed.md) 
+* [Informace o stránce](sql-api-sdk-dotnet-changefeed.md) 
 * [Balíček Nuget](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/)
-* [Ukázkový kód zobrazující kroky 1 až 6 výše](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/ChangeFeedProcessor)
-* [Další ukázky z webu GitHub](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/ChangeFeedProcessor)
+* [Vzorový kód ukazuje kroky 1 až 6 výše](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/ChangeFeedProcessor)
+* [Další ukázky na Githubu](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/ChangeFeedProcessor)
 
-Další informace o použití změn kanálu pomocí sady SDK použijte v následujících zdrojích informací:
+Další informace o použití kanálu pomocí sady SDK změn použijte následující prostředky:
 
 * [Stránka informace o sadě SDK](sql-api-sdk-dotnet.md)
