@@ -36,6 +36,10 @@
           href: contoso-migration-rehost-linux-vm.md
         - name: 8. Contoso – Změna hostitele linuxové aplikace na virtuálních počítačích Azure a Azure MySQL
           href: contoso-migration-rehost-linux-vm-mysql.md
+        - name: 9. Contoso – Refaktorace aplikace v Azure Web Apps a Azure SQL Database
+          href: contoso-migration-refactor-web-app-sql.md
+        - name: 10. Contoso – Refaktorace linuxové aplikace v Azure Web Apps a Azure MySQL
+          href: contoso-migration-refactor-linux-app-service-mysql.md
     - name: Zkoumání a posouzení rozsáhlého prostředí
       href: how-to-scale-assessment.md
     - name: Seskupení počítačů

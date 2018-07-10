@@ -98,7 +98,7 @@
 
 ### Rozšířené scénáře IoT
 #### [Správa zasílání zpráv cloudových zařízení pomocí iothub-exploreru](iot-hub-explorer-cloud-device-messaging.md)
-#### [Uložení zpráv IoT Hub do úložiště dat Azure](iot-hub-store-data-in-azure-table-storage.md)
+#### [Uložení zpráv IoT Hub do služby Azure Blob Storage](iot-hub-store-data-in-azure-table-storage.md)
 #### [Vizualizace dat ve službě Power BI](iot-hub-live-data-visualization-in-power-bi.md)
 #### [Vizualizace dat s využitím Web Apps](iot-hub-live-data-visualization-in-web-apps.md)
 #### [Předpověď počasí s využitím Azure Machine Learningu](iot-hub-weather-forecast-machine-learning.md)

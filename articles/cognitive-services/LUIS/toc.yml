@@ -65,8 +65,10 @@
           href: luis-quickstart-intent-and-key-phrase.md
         - name: 8. Přidání analýzy mínění
           href: luis-quickstart-intent-and-sentiment-analysis.md
-    - name: Zlepšení předpovědi
+    - name: Vylepšení aplikace
       items:
+        - name: Kontrola promluv koncového bodu
+          href: luis-tutorial-review-endpoint-utterances.md
         - name: S využitím vzorů
           href: luis-tutorial-pattern.md
         - name: S využitím seznamu frází
@@ -313,6 +315,8 @@
       href: 'https://github.com/Microsoft/Recognizers-Text'
 - name: Zdroje a prostředky
   items:
+    - name: Regionální dostupnost
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: Plány Azure do budoucna
       href: 'https://aka.ms/luis-roadmap'
     - name: Glosář
@@ -326,7 +330,7 @@
     - name: UserVoice
       href: 'https://aka.ms/luis-uservoice-forum'
     - name: Search
-      href: 'https://docs.microsoft.com/en-us/search/index?search=LUIS'
+      href: 'https://docs.microsoft.com/search/index?search=LUIS'
     - name: Blog
       href: 'https://blog.botframework.com/category/luis/'
     - name: Znalostní báze

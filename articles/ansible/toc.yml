@@ -44,3 +44,7 @@
       href: 'http://docs.ansible.com/ansible/latest/azure_rm_virtualmachine_module.html'
     - name: Všechny moduly pro Azure
       href: 'http://docs.ansible.com/ansible/latest/list_of_cloud_modules.html#azure'
+- name: Nástroje
+  items:
+    - name: Rozšíření editoru Visual Studio Code pro Ansible
+      href: 'https://marketplace.visualstudio.com/items?itemName=vscoss.vscode-ansible'

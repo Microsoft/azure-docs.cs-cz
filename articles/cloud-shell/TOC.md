@@ -5,13 +5,12 @@
 ## [PowerShell – rychlý start](quickstart-powershell.md)
 
 # Funkce a nástroje
-## [Bash – funkce a nástroje](features.md)
-## [PowerShell – funkce a nástroje](features-powershell.md)
+## [Funkce a nástroje](features.md)
 
 # Postupy
-## [Bash – zachování úložiště](persisting-shell-storage.md)
-## [PowerShell – zachování úložiště](persisting-shell-storage-powershell.md)
+## [Zachování úložiště](persisting-shell-storage.md)
 ## [Použití okna](using-the-shell-window.md)
+## [PowerShell Cloud Shell pro uživatele Windows](cloud-shell-windows-users.md)
 
 # Příklady
 ## [Bash – vytváření prostředků s využitím Terraformu](example-terraform-bash.md)

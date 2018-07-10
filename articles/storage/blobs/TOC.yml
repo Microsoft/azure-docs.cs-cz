@@ -20,7 +20,9 @@
       href: storage-quickstart-blobs-cli.md
     - name: Práce s objekty blob – .NET
       href: storage-quickstart-blobs-dotnet.md
-    - name: Práce s objekty blob – Java
+    - name: Práce s objekty blob – Java (Storage SDK V10)
+      href: storage-quickstart-blobs-java-v10.md
+    - name: Práce s objekty blob – Java (Storage SDK V7)
       href: storage-quickstart-blobs-java.md
     - name: Práce s objekty blob – Python
       href: storage-quickstart-blobs-python.md
@@ -192,6 +194,8 @@
           href: storage-blob-immutable-storage.md
         - name: Povolení zabezpečeného TLS pro klienta Azure Storage
           href: ../common/storage-security-tls.md
+        - name: Nabídky pro dodržování předpisů
+          href: ../common/storage-compliance-offerings.md
     - name: Monitorování a odstraňování potíží
       items:
         - name: Kurz odstraňování potíží

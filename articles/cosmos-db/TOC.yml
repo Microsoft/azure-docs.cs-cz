@@ -73,7 +73,7 @@ items:
     items:
       - name: Globální distribuce
         href: distribute-data-globally.md
-      - name: Nastavení s několika hlavními databázemi
+      - name: S několika hlavními databázemi
         href: multi-region-writers.md
       - name: Dělení
         href: partition-data.md
@@ -172,8 +172,6 @@ items:
                 href: bulk-executor-dot-net.md
               - name: BulkExecutor – Java
                 href: bulk-executor-java.md
-              - name: Správa s využitím Průzkumníka služby Azure Storage
-                href: storage-explorer.md
               - name: Dotaz
                 items:
                   - name: Zpracování dotazů SQL
@@ -184,8 +182,6 @@ items:
                 href: indexing-policies.md
               - name: Dělení dat SQL
                 href: sql-api-partition-data.md
-              - name: 'Uložené procedury, triggery a systémy souborů UDF'
-                href: programming.md
               - name: Změna kanálu
                 href: change-feed.md
               - name: Typy dat
@@ -262,8 +258,6 @@ items:
                 href: sql-api-sql-query-reference.md
           - name: Zdroje a prostředky
             items:
-              - name: Správa s využitím Průzkumníka služby Azure Storage
-                href: storage-explorer.md
               - name: Rozšíření editoru Visual Studio Code
                 href: 'https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb'
               - name: SQL Playground
@@ -328,12 +322,8 @@ items:
                 href: mongodb-ttl.md
               - name: Vizualizace dat pomocí Power BI
                 href: powerbi-visualize.md
-              - name: Správa s využitím Průzkumníka služby Azure Storage
-                href: storage-explorer.md
           - name: Zdroje a prostředky
             items:
-              - name: Správa s využitím Průzkumníka služby Azure Storage
-                href: storage-explorer.md
               - name: Rozšíření editoru Visual Studio Code
                 href: 'https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb'
       - name: Dokumentace k rozhraní Graph API
@@ -352,12 +342,8 @@ items:
             items:
               - name: Dělení grafů
                 href: graph-partitioning.md
-              - name: Správa s využitím Průzkumníka služby Azure Storage
-                href: storage-explorer.md
           - name: Zdroje a prostředky
             items:
-              - name: Správa s využitím Průzkumníka služby Azure Storage
-                href: storage-explorer.md
               - name: Rozšíření editoru Visual Studio Code
                 href: 'https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb'
       - name: Dokumentace k rozhraní Table API
@@ -410,8 +396,6 @@ items:
                 href: table-sdk-python.md
           - name: Zdroje a prostředky
             items:
-              - name: Správa s využitím Průzkumníka služby Azure Storage
-                href: storage-explorer.md
               - name: Přehled služby Table Storage
                 href: table-storage-overview.md
               - name: Průvodce návrhem úložiště Table
@@ -450,6 +434,8 @@ items:
         href: regional-failover.md
       - name: Protokolování diagnostiky
         href: logging.md
+      - name: 'Uložené procedury, triggery a systémy souborů UDF'
+        href: programming.md
       - name: Přehled BulkExecutoru
         href: bulk-executor-overview.md
       - name: Nákladově efektivní čtení a zápisy
@@ -460,12 +446,10 @@ items:
         href: manage-account-with-powershell.md
       - name: Správa s využitím Průzkumníka služby Azure Storage
         href: storage-explorer.md
-      - name: Zapisovači pro více oblastí
+      - name: Nastavení s několika hlavními databázemi
         href: multi-master-workaround.md
   - name: Zdroje a prostředky
     items:
-      - name: Správa s využitím Průzkumníka služby Azure Storage
-        href: storage-explorer.md
       - name: Tahák pro dotazy
         href: query-cheat-sheet.md
       - name: 20 dnů tipů

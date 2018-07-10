@@ -40,12 +40,11 @@
 #### [Kognitivní rozšíření](data-lake-analytics-u-sql-cognitive.md)
 #### [Průvodce programovatelností](data-lake-analytics-u-sql-programmability-guide.md)
 
-### U-SQL SDK
-#### [Místní spuštění a ladění](data-lake-analytics-data-lake-tools-local-run.md)
-#### [Spuštění a testování](data-lake-analytics-u-sql-sdk.md) 
-
 ### Visual Studio
 #### [Instalace](data-lake-analytics-data-lake-tools-install.md)
+#### [Místní spuštění](data-lake-analytics-data-lake-tools-local-run.md)
+#### [Místní ladění](data-lake-analytics-data-lake-tools-local-debug.md)
+#### [Vývoj databází U-SQL](data-lake-analytics-data-lake-tools-develop-usql-database.md)
 #### [Procházení a zobrazování úloh](data-lake-analytics-data-lake-tools-view-jobs.md)
 #### [Ladění vlastního kódu v C#](data-lake-analytics-debug-u-sql-jobs.md)
 #### [Řešení potíží s opakovanými úlohami](data-lake-analytics-data-lake-tools-debug-recurring-job.md)
@@ -59,6 +58,11 @@
 #### [Vytváření obsahu](data-lake-analytics-data-lake-tools-for-vscode.md)
 #### [Vlastní kód](data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md)
 #### [Místní spuštění a ladění](data-lake-tools-for-vscode-local-run-and-debug.md)
+
+### Průběžná integrace a průběžné nasazování
+#### [Přehled](data-lake-analytics-cicd-overview.md)
+#### [Nastavení testů](data-lake-analytics-cicd-test.md)
+#### [U-SQL SDK](data-lake-analytics-u-sql-sdk.md)
 
 # Referenční informace
 ## [Azure PowerShell](/powershell/module/azurerm.datalakeanalytics)

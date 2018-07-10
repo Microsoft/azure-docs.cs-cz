@@ -47,6 +47,8 @@
       items:
         - name: Přehled Change Trackingu
           href: automation-change-tracking.md
+        - name: Zobrazení obsahu sledovaných souborů
+          href: change-tracking-file-contents.md
     - name: Inventarizace
       items:
         - name: Správa virtuálního počítače se shromažďování dat pro inventarizaci
