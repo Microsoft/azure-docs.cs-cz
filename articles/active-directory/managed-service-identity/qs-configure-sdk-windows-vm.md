@@ -1,6 +1,6 @@
 ---
-title: Postup konfigurace povoleno MSI virtuálního počítače Azure pomocí sady Azure SDK
-description: Krok podle podrobné pokyny pro konfiguraci a použití ve virtuálním počítači Azure, pomocí sady Azure SDK a spravovaná služba Identity (MSI).
+title: Jak nakonfigurovat povolené MSI virtuálního počítače Azure pomocí sady Azure SDK
+description: Krok pokyny pro konfiguraci a použití Identity spravované služby (MSI) na virtuálním počítači Azure pomocí sady Azure SDK.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -9,43 +9,44 @@ editor: ''
 ms.service: active-directory
 ms.component: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/28/2017
 ms.author: daveba
-ms.openlocfilehash: 781f332b2892d9af536bf9a6f81642842285927b
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: dee4a3e27623150ce3fa648d73542db0cbb23e93
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37901438"
 ---
-# <a name="configure-a-vm-managed-service-identity-msi-using-an-azure-sdk"></a>Konfigurace virtuálních počítačů spravovaných služba Identity (MSI) pomocí sady Azure SDK
+# <a name="configure-a-vm-managed-service-identity-msi-using-an-azure-sdk"></a>Konfigurace VM-Managed identita služby (MSI) pomocí sady Azure SDK
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Identita spravované služby poskytuje Azure služby automaticky spravované identity v Azure Active Directory (AD). Tuto identitu můžete použít k ověření jakoukoli službu, která podporuje ověřování Azure AD, bez nutnosti přihlašovací údaje ve vašem kódu. 
+Identita spravované služby poskytuje služby Azure se automaticky spravované identity v Azure Active Directory (AD). Tuto identitu můžete použít k ověření na libovolnou službu, která podporuje ověřování Azure AD, aniž by bylo přihlašovací údaje ve vašem kódu. 
 
-V tomto článku zjistěte, jak povolit a odebrat MSI pro virtuální počítač Azure, pomocí sady SDK pro Azure.
+V tomto článku se dozvíte, jak povolit a odebrat MSI pro virtuální počítač Azure, pomocí sady Azure SDK.
 
 ## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
-## <a name="azure-sdks-with-msi-support"></a>Azure SDK s podporou MSI 
+## <a name="azure-sdks-with-msi-support"></a>Sady Azure SDK s podporou MSI 
 
-Azure podporuje více platforem programovací prostřednictvím řady [sady Azure SDK](https://azure.microsoft.com/downloads). Několik z nich bylo aktualizováno pro podporu MSI a zadejte odpovídající ukázky k předvedení využití. Tento seznam je aktualizovat, protože je přidat další podporu:
+Azure podporuje různé programovací platformy prostřednictvím řady [sady Azure SDK](https://azure.microsoft.com/downloads). Některé z nich byla aktualizována, aby podporovala MSI a aby poskytovala odpovídající ukázky, které ukazují využití. Tento seznam se aktualizuje, jak přidat další podporu:
 
 | Sada SDK | Ukázka |
 | --- | ------ | 
-| .NET   | [Správa prostředků z virtuálního počítače povoleným MSI](https://azure.microsoft.com/resources/samples/aad-dotnet-manage-resources-from-vm-with-msi/) |
-| Java   | [Spravovat úložiště z virtuálního počítače povoleným MSI](https://azure.microsoft.com/resources/samples/compute-java-manage-resources-from-vm-with-msi-in-aad-group/)|
-| Node.js| [Vytvoření virtuálního počítače s MSI povoleno](https://azure.microsoft.com/resources/samples/compute-node-msi-vm/) |
-| Python | [Vytvoření virtuálního počítače s MSI povoleno](https://azure.microsoft.com/resources/samples/compute-python-msi-vm/) |
-| Ruby   | [Vytvoření virtuálního počítače Azure pomocí souboru MSI](https://azure.microsoft.com/resources/samples/compute-ruby-msi-vm/) |
+| .NET   | [Správa prostředků z virtuálního počítače s podporou MSI](https://azure.microsoft.com/resources/samples/aad-dotnet-manage-resources-from-vm-with-msi/) |
+| Java   | [Správa služby storage z virtuálního počítače s podporou MSI](https://azure.microsoft.com/resources/samples/compute-java-manage-resources-from-vm-with-msi-in-aad-group/)|
+| Node.js| [Vytvoření virtuálního počítače s povolenou službou MSI](https://azure.microsoft.com/resources/samples/compute-node-msi-vm/) |
+| Python | [Vytvoření virtuálního počítače s povolenou službou MSI](https://azure.microsoft.com/resources/samples/compute-python-msi-vm/) |
+| Ruby   | [Vytvoření virtuálního počítače Azure pomocí MSI](https://azure.microsoft.com/resources/samples/compute-ruby-msi-vm/) |
 
 ## <a name="next-steps"></a>Další postup
 
-- Najdete v části související články v části "Konfigurace MSI pro virtuálního počítače Azure", se dozvíte, jak můžete také použít šablony Azure portal, prostředí PowerShell, rozhraní příkazového řádku a prostředků.
+- Zobrazit související články v části "Konfigurace MSI pro Virtuálním počítači Azure", se dozvíte, jak můžete také použít šablony Azure portal, Powershellu, rozhraní příkazového řádku a prostředků.
 
-Použijte následující sekci komentáře k poskytnutí zpětné vazby a Pomozte nám vylepšit a utvářejí náš obsah.
+Pomocí následujícího oddílu pro komentáře na svůj názor a Pomozte nám vylepšit a obrazce náš obsah.

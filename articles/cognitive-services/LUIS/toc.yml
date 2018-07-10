@@ -71,8 +71,6 @@
           href: luis-tutorial-review-endpoint-utterances.md
         - name: S využitím vzorů
           href: luis-tutorial-pattern.md
-        - name: S využitím seznamu frází
-          href: luis-tutorial-interchangeable-phrase-list.md
 - name: Ukázky
   items:
     - name: Ukázky kódů
