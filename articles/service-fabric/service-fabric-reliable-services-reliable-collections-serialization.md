@@ -1,6 +1,6 @@
 ---
-title: Spolehlivé serializace objektu kolekce v Azure Service Fabric | Microsoft Docs
-description: Serializace objektu Azure Service Fabric spolehlivé kolekce
+title: Spolehlivá serializace kolekcí objektů v Azure Service Fabric | Dokumentace Microsoftu
+description: Serializace objektu služby Azure Service Fabric Reliable Collections
 services: service-fabric
 documentationcenter: .net
 author: mcoskun
@@ -14,26 +14,26 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 5/8/2017
 ms.author: mcoskun
-ms.openlocfilehash: b02d8924749abb0e2fe815b555d55767bf1e5cc1
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 8fb6f1767741e950b300fd297250a6b64656191c
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34207661"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952422"
 ---
-# <a name="reliable-collection-object-serialization-in-azure-service-fabric"></a>Spolehlivé serializace objektu kolekce v Azure Service Fabric
-Spolehlivé kolekce replikovat a zachovat jejich položky a ujistěte se, že jsou odolné napříč selhání počítače a výpadky napájení.
-Jak chcete replikovat a zachovat položky, k serializaci je nutné spolehlivé kolekce.
+# <a name="reliable-collection-object-serialization-in-azure-service-fabric"></a>Spolehlivá serializace kolekcí objektů v Azure Service Fabric
+Reliable Collections replikovat a zachování jejich položky, abyste měli jistotu, že jsou trvalé napříč počítači selhání a výpadky napájení.
+Pro replikaci i pro uchování položky, Reliable Collections nutné k serializaci je.
 
-Spolehlivé kolekce získat odpovídající serializátor pro daný typ z spolehlivé správce stavu.
-Správce spolehlivé stavu obsahuje integrovanou serializátorů a umožňuje vlastní serializátorů k registraci pro daného typu.
+Reliable Collections získat příslušný serializátor pro daný typ z Reliable State Manager.
+Reliable State Manager obsahuje integrované serializátory a umožňuje vlastní serializátory k registraci pro daného typu.
 
-## <a name="built-in-serializers"></a>Předdefinované Serializátorů
+## <a name="built-in-serializers"></a>Integrované Serializátorů
 
-Správce spolehlivé stavu zahrnuje integrovanou serializátor pro některé běžné typy tak, aby se Dal serializovat efektivně ve výchozím nastavení. Pro ostatní typy spolehlivé správce stavu se vrátí k použití [DataContractSerializer](https://msdn.microsoft.com/library/system.runtime.serialization.datacontractserializer(v=vs.110).aspx).
-Předdefinované serializátorů jsou efektivnější, protože vědí, nelze změnit jejich typy a není potřeba zahrnovat informace o typu jako její název typu.
+Reliable State Manager zahrnuje integrovanou serializátor pro některé běžné typy tak, aby se lze serializovat efektivně ve výchozím nastavení. U jiných typů Reliable State Manager přejde zpět k použití [DataContractSerializer](https://msdn.microsoft.com/library/system.runtime.serialization.datacontractserializer(v=vs.110).aspx).
+Integrované serializátory jsou efektivnější, protože nelze změnit jejich typy a není potřeba zahrnovat informace o typu jako jeho název typu, které znají.
 
-Správce spolehlivé stavu má integrovanou serializátor pro následující typy: 
+Reliable State Manager má integrované serializátor pro následující typy: 
 - Guid
 - BOOL
 - byte
@@ -44,18 +44,18 @@ Správce spolehlivé stavu má integrovanou serializátor pro následující typ
 - Decimal
 - double
 - float
-- celá čísla
+- int
 - uint
 - zem. šířka
 - ulong
-- krátký
+- krátké
 - ushort
 
 ## <a name="custom-serialization"></a>Vlastní serializace
 
-Vlastní serializátorů se běžně používají, pokud chcete zvýšit výkon, nebo k šifrování dat přenášených v síti a na disku. Mezi z jiných důvodů jsou často efektivnější než obecné serializátor vlastní serializátorů, vzhledem k tomu nepotřebují k serializaci informace o typu. 
+Vlastní serializátory se běžně používají ke zvýšení výkonu nebo k šifrování dat při přenosu i na disku. Mezi z jiných důvodů jsou obvykle efektivnější než obecné serializátor vlastní serializátory, protože není potřeba serializovat informace o typu. 
 
-[IReliableStateManager.TryAddStateSerializer<T> ](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.ireliablestatemanager.tryaddstateserializer--1?Microsoft_ServiceFabric_Data_IReliableStateManager_TryAddStateSerializer__1_Microsoft_ServiceFabric_Data_IStateSerializer___0__) slouží k registraci vlastní serializátor pro daný typ T. Tato registrace musí dojít při sestavování StatefulServiceBase, před zahájením obnovení, všechny spolehlivé kolekce získali přístup k příslušné serializátor číst jejich trvalá data.
+[IReliableStateManager.TryAddStateSerializer<T> ](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.ireliablestatemanager.tryaddstateserializer) se použije k registraci uživatelský serializátor pro daný typ T. Tuto registrace se stane v konstrukci StatefulServiceBase před zahájením obnovení všech Reliable Collections měli přístup k příslušné serializátor přečíst trvalá data.
 
 ```csharp
 public StatefulBackendService(StatefulServiceContext context)
@@ -69,16 +69,16 @@ public StatefulBackendService(StatefulServiceContext context)
 ```
 
 > [!NOTE]
-> Vlastní serializátorů dané priority nad předdefinované serializátorů. Například když je zaregistrovaný vlastní serializátor int, použije se k serializaci celých čísel namísto integrované serializátor pro int.
+> Vlastní serializátory přednost nad integrované serializátory. Například když je zaregistrovaný vlastní serializátor pro int, používá se k serializaci celá čísla namísto integrovaných serializátor pro int.
 
 ### <a name="how-to-implement-a-custom-serializer"></a>Jak implementovat vlastní serializátor
 
-Vlastní serializátor musí implementovat [IStateSerializer<T> ](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.istateserializer-1) rozhraní.
+Uživatelský serializátor musí implementovat [IStateSerializer<T> ](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.istateserializer-1) rozhraní.
 
 > [!NOTE]
-> IStateSerializer<T> zahrnuje přetížení pro zápis a čtení, která přebírá další t označuje základní hodnota. Toto rozhraní API je pro rozdílové serializace. Aktuálně nebude vystavena, funkce rozdílové serializace. Proto nejsou tyto dvě přetížení volá dokud rozdílové serializace je vystavený a povolený.
+> IStateSerializer<T> zahrnuje přetížení pro zápis a čtení, která přebírá další t volá základní hodnoty. Toto rozhraní API je pro rozdílovou serializace. Aktuálně není dostupná funkce rozdílové serializace. Tyto dvě přetížení nejsou volány proto dokud rozdílové serializace je vystavený a povolený.
 
-Následuje příklad vlastního typu, v názvem OrderKey, který obsahuje čtyři vlastnosti
+Tady je příklad vlastního typu, v volá OrderKey, který obsahuje čtyři vlastnosti
 
 ```csharp
 public class OrderKey : IComparable<OrderKey>, IEquatable<OrderKey>
@@ -96,8 +96,8 @@ public class OrderKey : IComparable<OrderKey>, IEquatable<OrderKey>
 }
 ```
 
-Následuje příklad implementace IStateSerializer<OrderKey>.
-Všimněte si, že čtení a zápis přetížení, které provést ve baseValue, jejich příslušné přetížení volání pro předávání kompatibility.
+Tady je příklad implementace IStateSerializer<OrderKey>.
+Všimněte si, že čtení a zápis v baseValue, přetížení, která přijímají volání jejich odpovídajících přetížení pro předávání kompatibility.
 
 ```csharp
 public class OrderKeySerializer : IStateSerializer<OrderKey>
@@ -136,23 +136,23 @@ public class OrderKeySerializer : IStateSerializer<OrderKey>
 ```
 
 ## <a name="upgradability"></a>Zdokonalovány
-V [vrácení upgradu aplikace](service-fabric-application-upgrade.md), upgradu se použije pro dílčí sadu uzlů, jednu upgradovací doménu najednou. Během tohoto procesu několik domén upgradu bude v novější verzi aplikace a některé domén upgradu bude na starší verzi aplikace. Při zavedení nová verze aplikace musí být možné číst stará verze vaše data a starší verzi aplikace musí být možné číst novou verzi vaše data. Pokud formát dat není vpřed a zpětně kompatibilní, upgrade může selhat nebo horší, mohou být data ztrátě nebo poškození.
+V [aplikace upgrade se zajištěním provozu](service-fabric-application-upgrade.md), upgrade se použije pro dílčí sadu uzlů, jednu upgradovací doménu najednou. Během tohoto procesu některé upgradovacích doménách budou na novější verzi aplikace a některé upgradovacích doménách budou na starší verzi aplikace. Během zavádění novou verzi vaší aplikace musí být schopni číst staré verze vašich dat a starou verzi vaší aplikace musí být schopni číst novou verzi vaše data. Pokud formát dat není kompatibilní s vpřed a zpět, může upgrade selhat nebo horší, mohou být data ztrátě nebo poškození.
 
-Pokud používáte integrované serializátor, nemáte se starat o kompatibilitě.
-Ale pokud používáte vlastní serializátor nebo objektu DataContractSerializer, data mají být nekonečnou zpět a vpřed kompatibilní.
-Jinými slovy každou verzi serializátor musí být schopen serializovat a deserializovat všechny verze typu.
+Pokud používáte integrované serializátor, není nutné se starat o kompatibilitě.
+Však-pokud používáte vlastní serializátor nebo objektu DataContractSerializer, data musí být neomezeně zpět a vpřed kompatibilní.
+Jinými slovy všechny verze serializátor musí být schopen serializujeme a deserializujeme všechny verze typu.
 
-Uživatelé kontraktu dat postupujte podle pravidla dobře definovaný Správa verzí pro přidání, odebrání a změna pole. Kontrakt dat má také podpora zabývají neznámé pole, zapojování do procesu serializace a deserializace a plánování práce s dědičnosti tříd. Další informace najdete v tématu [pomocí kontrakt dat](https://msdn.microsoft.com/library/ms733127.aspx).
+Uživatelé kontraktu dat postupujte podle pravidla jasně definované správy verzí pro přidání, odebrání a změna polí. Kontrakt dat má také podpora zabývají neznámé pole, zapojení do procesu serializace a deserializace a zabývajících se dědičnost tříd. Další informace najdete v tématu [pomocí kontraktu dat](https://msdn.microsoft.com/library/ms733127.aspx).
 
-Vlastní serializátor uživatelé by měl splňovat pokyny serializátoru, který používají zajistěte, aby je zpětné a předává kompatibilní.
-Běžný způsob podpory všechny verze je přidání informací o velikosti od začátku a jenom přidávání volitelné vlastnosti.
-Tímto způsobem jednotlivých verzí může číst mnohem můžete a přejít přes zbývající část datového proudu.
+Uživatelé uživatelský serializátor by měl splňovat pokyny serializátoru, který používají Ujistěte se, že je zpětně a předává kompatibilní.
+Běžný způsob podporující všechny verze je přidání informací o velikosti na začátku a pouze přidáním volitelné vlastnosti.
+Tímto způsobem jednotlivé verze můžete přečíst mnohem můžete a přeskočit zbývající část datového proudu.
 
 ## <a name="next-steps"></a>Další postup
   * [Serializace a upgrade](service-fabric-application-upgrade-data-serialization.md)
-  * [Referenční informace pro vývojáře pro spolehlivé kolekce](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
-  * [Upgrade vaší aplikace pomocí sady Visual Studio](service-fabric-application-upgrade-tutorial.md) vás provede upgrade aplikace pomocí sady Visual Studio.
-  * [Upgrade vaší aplikace pomocí prostředí Powershell](service-fabric-application-upgrade-tutorial-powershell.md) vás provede upgrade aplikace pomocí prostředí PowerShell.
-  * Řídí, jak vaše aplikace upgraduje pomocí [Upgrade parametry](service-fabric-application-upgrade-parameters.md).
-  * Další informace o použití pokročilých funkcí při upgradu vaší aplikace tím, že odkazuje na [Pokročilá témata](service-fabric-application-upgrade-advanced.md).
-  * Řešení běžných potíží v upgradů aplikací podle kroků v části [řešení potíží s aplikací upgrady](service-fabric-application-upgrade-troubleshooting.md).
+  * [Referenční informace pro vývojáře pro Reliable Collections](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+  * [Upgrade aplikace pomocí sady Visual Studio](service-fabric-application-upgrade-tutorial.md) vás provede upgrade aplikace pomocí sady Visual Studio.
+  * [Upgrade aplikace pomocí Powershellu](service-fabric-application-upgrade-tutorial-powershell.md) vás provede upgrade aplikace pomocí Powershellu.
+  * Řídí, jak vaše aplikace upgradovala pomocí [parametry upgradu](service-fabric-application-upgrade-parameters.md).
+  * Zjistěte, jak používat pokročilé funkce při upgradu aplikace rekapitulací [Pokročilá témata](service-fabric-application-upgrade-advanced.md).
+  * Vyřešit běžné problémy v upgradech aplikací odkazující na kroky v [řešení potíží s upgrady aplikací](service-fabric-application-upgrade-troubleshooting.md).

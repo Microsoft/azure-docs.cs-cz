@@ -1,6 +1,6 @@
 ---
-title: Automatizované skript pro vytvoření aplikace webového portálu Service Manager pro připojení s konektorem správy IT služby v Azure | Microsoft Docs
-description: Vytvoření aplikace webového portálu Service Manager pomocí automatizované skriptu připojit s konektorem správy IT služby ve službě Azure a centrálně monitorovat a spravovat ITSM pracovní položky.
+title: Automatizované skript k vytvoření aplikace webového portálu Service Manager pro připojení s IT Service Management Connector v Azure | Dokumentace Microsoftu
+description: Vytvoření aplikace webového portálu Service Manager pomocí skriptu automatické připojení IT Service Management Connector v Azure a centrálně monitorovat a spravovat pracovní položky ITSM.
 services: log-analytics
 documentationcenter: ''
 author: jyothirmaisuri
@@ -15,34 +15,34 @@ ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: v-jysur
 ms.component: na
-ms.openlocfilehash: 15626a9dd2e889470477e34d6f1ebd47cce1411b
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 0fe987b00da669daf3830e903d53793d9d1edab6
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128652"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37950120"
 ---
-# <a name="create-service-manager-web-app-using-the-automated-script"></a>Vytvoření aplikace webového portálu Service Manager pomocí automatizované skriptu
+# <a name="create-service-manager-web-app-using-the-automated-script"></a>Vytvoření aplikace webového portálu Service Manager pomocí automatického skriptu
 
-Pomocí následujícího skriptu k vytvoření webové aplikace pro instanci portálu Service Manager. Zde jsou další informace o připojení k portálu Service Manager: [portálu Service Manager webové aplikace](log-analytics-itsmc-connections.md#create-and-deploy-service-manager-web-app-service)
+Použijte následující skript k vytvoření webové aplikace pro vaši instanci portálu Service Manager. Další informace o připojení nástroje Service Manager je tady: [aplikace webového portálu Service Manager](log-analytics-itsmc-connections.md#create-and-deploy-service-manager-web-app-service)
 
 Spusťte skript tím, že poskytuje následující požadované podrobnosti:
 
-- Podrobnosti o předplatném Azure
+- Podrobnosti předplatného Azure
 - Název skupiny prostředků
 - Umístění
-- Podrobnosti o serveru portálu Service Manager (název serveru, domény, uživatelské jméno a heslo)
-- Předpona názvu lokality pro vaši webovou aplikaci
+- Podrobnosti serveru portálu Service Manager (název serveru, domény, uživatelské jméno a heslo)
+- Předpona názvu webu pro webové aplikace
 - ServiceBus Namespace.
 
-Skript se vytvoří webovou aplikaci pomocí názvu, který jste zadali (spolu s několika další řetězce, aby byla zajištěna jedinečnost). Vygeneruje **adresa URL webové aplikace**, **ID klienta**, a **tajný klíč klienta**.
+Skript se vytvoří webová aplikace využívající název, který jste zadali (spolu s několika další řetězce pro zajištění jeho jedinečnosti). Generuje **adresa URL webové aplikace**, **ID klienta**, a **tajný kód klienta**.
 
-Uložit tyto hodnoty budete potřebovat tyto hodnoty při vytváření připojení ke konektoru služby správy IT.
+Uložte tyto hodnoty budete potřebovat tyto hodnoty při vytváření připojení s IT Service Management Connector.
 
 ## <a name="prerequisites"></a>Požadavky
 
  Windows Management Framework 5.0 nebo novější.
-Windows 10 má 5.1 ve výchozím nastavení. Si můžete stáhnout rozhraní z [sem](https://www.microsoft.com/download/details.aspx?id=53347):
+Windows 10 obsahuje 5.1 ve výchozím nastavení. Můžete stáhnout z rozhraní framework [tady](https://www.microsoft.com/download/details.aspx?id=50395):
 
 Pomocí následujícího skriptu:
 
@@ -323,4 +323,4 @@ if(!$err)
 
 ```
 ## <a name="next-steps"></a>Další postup
-[Konfigurace hybridní připojení](log-analytics-itsmc-connections.md#configure-the-hybrid-connection).
+[Konfigurace hybridních připojení](log-analytics-itsmc-connections.md#configure-the-hybrid-connection).

@@ -1,9 +1,9 @@
 ---
-title: Kurz – vytvoření kanálu CI/CD v Azure pomocí Team Services | Microsoft Docs
-description: V tomto kurzu zjistěte, jak vytvořit kanál Visual Studio Team Services pro průběžnou integraci a doručení, které nasadí webové aplikace do služby IIS na virtuální počítač s Windows v Azure.
+title: Kurz – vytvoření kanálu CI/CD v Azure pomocí služby Team Services | Dokumentace Microsoftu
+description: V tomto kurzu se dozvíte, jak vytvořit kanál pro průběžnou integraci a doručování, které se nasadí webová aplikace služby IIS na virtuálním počítači s Windows v Azure Visual Studio Team Services.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -14,88 +14,88 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 05/12/2017
-ms.author: iainfou
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: d017f2453bbd757c16e2df034f5879f24ffe42f7
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: b23cec90573c4be73a73daf0bc0e793da012585c
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32192216"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37932088"
 ---
-# <a name="tutorial-create-a-continuous-integration-pipeline-with-visual-studio-team-services-and-iis"></a>Kurz: Vytvoření kanálu průběžnou integraci s Visual Studio Team Services a služby IIS
-K automatizaci sestavení, testování a fáze nasazení pro vývoj aplikací, můžete použít průběžnou integraci a nasazení (CI/CD) kanálu. V tomto kurzu vytvoříte kanál CI/CD pomocí Visual Studio Team Services a virtuálního počítače (VM) s Windows v Azure, který spouští IIS. Získáte informace o těchto tématech:
+# <a name="tutorial-create-a-continuous-integration-pipeline-with-visual-studio-team-services-and-iis"></a>Kurz: Vytvoření kanálu průběžné integrace s Visual Studio Team Services a služby IIS
+K automatizaci sestavování, testování a nasazení fáze vývoje aplikací, můžete použít průběžné integrace a nasazování (CI/CD) kanálu. V tomto kurzu vytvoříte kanál CI/CD pomocí Visual Studio Team Services a virtuální počítač (VM) Windows v Azure, na kterém běží služby IIS. Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Publikovat webovou aplikaci ASP.NET do projektu Team Services
-> * Vytvořit definici sestavení, která se spustí při potvrzení kódu
-> * Instalace a konfigurace služby IIS na virtuální počítač v Azure
-> * Instance služby IIS přidat do skupiny nasazení v Team Services
-> * Vytvořit verzi definice k publikování nové webové nasazení balíčků do služby IIS
-> * Testování CI/CD kanálu
+> * Publikovat webovou aplikaci ASP.NET do projektu služby Team Services
+> * Vytvořte definici sestavení, která se aktivuje při potvrzení změn kódu
+> * Instalace a konfigurace služby IIS na virtuálním počítači v Azure
+> * Instance služby IIS přidat do skupiny nasazení ve službě Team Services
+> * Vytvoření verze definice publikování nového webu nasadit balíčky do služby IIS
+> * Test kanálu CI/CD
 
-Tento kurz vyžaduje prostředí Azure PowerShell verze modulu 5.7.0 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps).
+Tento kurz vyžaduje modul Azure PowerShell verze 5.7.0 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps).
 
 
 ## <a name="create-project-in-team-services"></a>Vytvoření projektu v Team Services
-Visual Studio Team Services umožňuje snadno spolupráce a vývoj bez zachování do řešení pro správu kódu na místě. Team Services poskytuje testování kódu cloudu, sestavení a službu application insights. Můžete IDE, které nejlépe vyhovuje vaší vývoj kódu a verzi ovládací prvek úložiště. V tomto kurzu slouží k vytvoření základní webové aplikace ASP.NET a CI/CD kanálu bezplatný účet. Pokud jste již nemají účet Team Services [vytvořit](http://go.microsoft.com/fwlink/?LinkId=307137).
+Visual Studio Team Services umožňuje snadnou spolupráci a vývoj bez zachování vytváří řešení pro správu místních kódu. Team Services nabízí cloudové testování kódu, sestavení a application insights. Můžete zvolit úložiště správy verzí a integrované vývojové prostředí, která nejlíp odpovídá vývoje kódu. Pro účely tohoto kurzu můžete si bezplatný účet pro vytvoření základní webové aplikace ASP.NET a kanál CI/CD. Pokud ještě nemáte účet služby Team Services [vytvořit](http://go.microsoft.com/fwlink/?LinkId=307137).
 
-Spravovat proces potvrzení kódu, definice sestavení a verze definice, vytvoření projektu v Team Services následujícím způsobem:
+Správa procesu potvrzení kódu, definice sestavení a definice verzí, vytvoření projektu v Team Services následujícím způsobem:
 
-1. Otevřete řídicí panel Team Services ve webovém prohlížeči a zvolte **nový projekt**.
-2. Zadejte *myWebApp* pro **název projektu**. Nechte všechny ostatní výchozí hodnoty pro použití *Git* verzí a *Agile* zpracování pracovní položky.
-3. Zvolte možnost **sdílet s** *členové týmu*, pak vyberte **vytvořit**.
-5. Po vytvoření projektu, zvolte možnost **inicializovat README nebo gitignore**, pak **inicializovat**.
-6. Uvnitř nový projekt, vyberte **řídicí panely** v horní části, pak vyberte **otevřete v sadě Visual Studio**.
+1. Ve webovém prohlížeči otevřete řídicí panel služby Team Services a zvolte **nový projekt**.
+2. Zadejte *myWebApp* pro **název projektu**. Ponechte všechna ostatní výchozí hodnoty pro použití *Git* správy verzí a *Agile* zpracování pracovní položky.
+3. Zvolte možnost **nasdílet** *členové týmu*a pak vyberte **vytvořit**.
+5. Po vytvoření projektu, zvolte možnost **inicializace s README nebo gitignore**, pak **inicializovat**.
+6. Uvnitř nový projekt, zvolte **řídicí panely** v horní části, vyberte **otevřít v sadě Visual Studio**.
 
 
-## <a name="create-aspnet-web-application"></a>Vytvoření webové aplikace ASP.NET
-V předchozím kroku jste vytvořili projektu v Team Services. V posledním kroku otevře nový projekt v sadě Visual Studio. Spravovat vaše potvrzení kódu v **Team Explorer** okno. Vytvořit místní kopii nový projekt, a poté vytvořit webovou aplikaci ASP.NET ze šablony takto:
+## <a name="create-aspnet-web-application"></a>Vytvořte webovou aplikaci ASP.NET
+V předchozím kroku jste vytvořili projekt ve službě Team Services. V posledním kroku otevře nový projekt v sadě Visual Studio. Spravovat vaše potvrzení změn kódu v **Team Exploreru** okna. Vytvořit místní kopii nového projektu a pak vytvořte webovou aplikaci ASP.NET ze šablony následujícím způsobem:
 
-1. Vyberte **klon** k vytvoření úložiště místní git projektu Team Services.
+1. Vyberte **klonování** k vytvoření místního úložiště git vašeho projektu služby Team Services.
     
-    ![Klonování úložiště z projektu Team Services](media/tutorial-vsts-iis-cicd/clone_repo.png)
+    ![Naklonujte úložiště z projektu služby Team Services](media/tutorial-vsts-iis-cicd/clone_repo.png)
 
-2. V části **řešení**, vyberte **nový**.
+2. V části **řešení**vyberte **nový**.
 
     ![Vytvoření řešení webové aplikace](media/tutorial-vsts-iis-cicd/new_solution.png)
 
-3. Vyberte **webové** šablony a potom zvolte **webové aplikace ASP.NET** šablony.
-    1. Zadejte název vaší aplikace, jako například *myWebApp*a zrušte zaškrtnutí políčka pro **vytvořit adresář pro řešení**.
-    2. Pokud možnost je dostupná, zrušte zaškrtnutí políčka **přidat službu Application Insights do projektu**. Application Insights, musíte k autorizaci webové aplikace pomocí služby Azure Application Insights. Chcete-li zachovat jednoduché v tomto kurzu, přeskočte tento proces.
+3. Vyberte **webové** šablony a klikněte na tlačítko **webová aplikace ASP.NET** šablony.
+    1. Zadejte název pro vaši aplikaci, jako například *myWebApp*a zrušte zaškrtnutí políčka pro **vytvořit adresář pro řešení**.
+    2. Pokud je k dispozici možnost, zrušte zaškrtnutí políčka pro **přidat službu Application Insights do projektu**. Application Insights je potřeba povolit webové aplikace pomocí Azure Application Insights. Pro zjednodušení ho v tomto kurzu, přeskočte tento proces.
     3. Vyberte **OK**.
-4. Zvolte **MVC** ze seznamu šablony.
-    1. Vyberte **změna ověřování**, zvolte **bez ověřování**, pak vyberte **OK**.
-    2. Vyberte **OK** k vytvoření řešení.
-5. V **Team Explorer** okně zvolte **změny**.
+4. Zvolte **MVC** ze seznamu šablon.
+    1. Vyberte **změna ověřování**, zvolte **bez ověřování**a pak vyberte **OK**.
+    2. Vyberte **OK** vytvořte řešení.
+5. V **Team Exploreru** okně zvolte **změny**.
 
-    ![Potvrzení změn místní úložiště git Team Services](media/tutorial-vsts-iis-cicd/commit_changes.png)
+    ![Potvrdit místní změny do úložiště git Team Services](media/tutorial-vsts-iis-cicd/commit_changes.png)
 
-6. V textovém poli potvrzení, zadejte zprávu *počáteční potvrzení*. Zvolte **potvrdit všechny a synchronizace** z rozevírací nabídky.
+6. Do textového pole pro potvrzení, zadejte zprávu *prvotní potvrzení*. Zvolte **všechna potvrzení a synchronizace** z rozevírací nabídky.
 
 
-## <a name="create-build-definition"></a>Vytvořit definici sestavení
-V Team Services je možné popisují, jak by měly být vytvořeny vaší aplikace pomocí definice sestavení. V tomto kurzu vytvoříme základní definice, který trvá naše zdrojového kódu sestavení řešení a potom vytvoří web nasadit balíček, který jsme můžete použít ke spuštění webové aplikace na serveru se službou IIS.
+## <a name="create-build-definition"></a>Vytvořte definici sestavení
+Ve službě Team Services použít definici sestavení popisují, jak by měly být sestaveny vaší aplikace. V tomto kurzu vytvoříme základní definici, která přebírá našeho zdrojového kódu, sestaví řešení a pak vytvoří webové nasazení balíčku, které můžeme použít ke spuštění webové aplikace na serveru služby IIS.
 
-1. V projektu Team Services, zvolte **sestavení a verze** v horní části, pak vyberte **sestavení**.
-3. Vyberte **+ novou definici**.
-4. Vyberte **ASP.NET (PREVIEW)** šablony a vyberte **použít**.
-5. Ponechejte všechny výchozí hodnoty úkolů. V části **získat zdroje**, ujistěte se, že *myWebApp* úložiště a *hlavní* jsou vybrat větev.
+1. V projektu služby Team Services, zvolte **sestavení a vydání** v horní části, vyberte **sestavení**.
+3. Vyberte **+ nová definice**.
+4. Zvolte **technologie ASP.NET (verze PREVIEW)** šablony a vyberte **použít**.
+5. Ponechte všechny výchozí hodnoty úkolu. V části **získat zdroje**, ujistěte se, že *myWebApp* úložiště a *hlavní* jsou vybrané větve.
 
-    ![Vytvořit definici sestavení v projektu Team Services](media/tutorial-vsts-iis-cicd/create_build_definition.png)
+    ![Vytvořte definici sestavení v projektu služby Team Services](media/tutorial-vsts-iis-cicd/create_build_definition.png)
 
-6. Na **aktivační události** kartě, přesuňte jezdec pro **povolení této aktivační události** k *povoleno*.
-7. Uložit definici sestavení a fronty nového sestavení tak, že vyberete **Uložit & fronty** , pak **Uložit & fronty** znovu. Ponechte výchozí nastavení a vyberte **fronty**.
+6. Na **triggery** kartu, nastavte posuvník pro **povolit tento trigger** k *povoleno*.
+7. Uložit definici sestavení a fronty nového sestavení tak, že vyberete **Uložit & frontu** , pak **Uložit & frontu** znovu. Ponechte výchozí hodnoty a vyberte **fronty**.
 
-Kukátko jako sestavení je naplánováno na hostovaného agenta, pak začne sestavení. Výstup se podobá následujícímu příkladu:
+Sledování podle sestavení je naplánováno na hostovaný agent potom začne sestavení. Výstup se podobá následujícímu příkladu:
 
-![Úspěšné sestavení projektu Team Services](media/tutorial-vsts-iis-cicd/successful_build.png)
+![Úspěšné sestavení projektu služby Team Services](media/tutorial-vsts-iis-cicd/successful_build.png)
 
 
 ## <a name="create-virtual-machine"></a>Vytvoření virtuálního počítače
-Pokud chcete zadat platformu pro spouštění vaší webové aplikace ASP.NET, je nutné virtuálního počítače s Windows, který spouští IIS. Team Services používá k interakci s instancí služby IIS jako potvrdíte nějaký kód a aktivaci sestavení agenta.
+Poskytovat platformu pro spuštění vaší webové aplikace ASP.NET, je třeba virtuální počítač Windows, na kterém běží služby IIS. Team Services používá k interakci s instancí služby IIS jako potvrzení změn kódu a sestavení se aktivují agenta.
 
-Vytvoření virtuálního počítače s Windows Server 2016 s [nové AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm). Následující příklad vytvoří virtuální počítač s názvem *Můjvp* v *východní USA* umístění. Skupina prostředků *myResourceGroupVSTS* a vytvoří se také podpůrné síťovým prostředkům. Povolit webový provoz, TCP port *80* je otevřen k virtuálnímu počítači. Po zobrazení výzvy zadejte uživatelské jméno a heslo, které má být použit jako přihlašovací údaje pro virtuální počítač:
+Vytvoření virtuálního počítače Windows serveru 2016 s [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm). Následující příklad vytvoří virtuální počítač s názvem *myVM* v *USA – východ* umístění. Skupina prostředků *myResourceGroupVSTS* a vytvoří se také podpůrné síťové prostředky. Pro povolení webového provozu, TCP port *80* otevření k virtuálnímu počítači. Po zobrazení výzvy zadejte uživatelské jméno a heslo, které má být použit jako přihlašovací údaje pro virtuální počítač:
 
 ```powershell
 # Create user object
@@ -115,7 +115,7 @@ New-AzureRmVM `
   -OpenPorts 80
 ```
 
-Chcete-li připojit k virtuálnímu počítači, získat veřejnou IP adresu s [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) následujícím způsobem:
+Pro připojení k vašemu virtuálnímu počítači, získejte veřejnou IP adresu pomocí [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) následujícím způsobem:
 
 ```powershell
 Get-AzureRmPublicIpAddress -ResourceGroupName "myResourceGroup" | Select IpAddress
@@ -127,7 +127,7 @@ Vytvořte relaci vzdálené plochy k virtuálnímu počítači:
 mstsc /v:<publicIpAddress>
 ```
 
-Na virtuální počítač, otevřete **Powershellu správce** příkazového řádku. Instalace IIS a požadované funkce .NET následujícím způsobem:
+Na virtuálním počítači otevřete **Powershellu správce** příkazového řádku. Instalace IIS a požadované součásti .NET následujícím způsobem:
 
 ```powershell
 Install-WindowsFeature Web-Server,Web-Asp-Net45,NET-Framework-Features
@@ -135,89 +135,89 @@ Install-WindowsFeature Web-Server,Web-Asp-Net45,NET-Framework-Features
 
 
 ## <a name="create-deployment-group"></a>Vytvoření skupiny nasazení
-K nabízení balíček nasazení webu pro server služby IIS, můžete definovat skupiny nasazení v Team Services. Tato skupina umožňuje zadat, serverů, které jsou cílem nových sestavení automaticky jako potvrdíte nějaký kód do Team Services a sestavení se dokončí.
+Vydat webu nasadit balíček na server služby IIS, můžete definovat skupiny nasazení ve službě Team Services. Tuto skupinu můžete zadat, serverů, které jsou cílem nové buildy potvrzení změn kódu do služby Team Services a po dokončení sestavení.
 
-1. V Team Services, zvolte **sestavení a verze** a pak vyberte **nasazení skupiny**.
+1. Ve službě Team Services, zvolte **sestavení a vydání** a pak vyberte **skupiny nasazení**.
 2. Zvolte **skupiny přidat nasazení**.
-3. Zadejte název skupiny, jako například *mojeiis*, pak vyberte **vytvořit**.
-4. V **registraci počítačů** se ujistěte, *Windows* je vybrána, a zaškrtněte políčko **používat osobní přístupový token ve skriptu pro ověřování**.
+3. Zadejte název skupiny, jako například *mojeiis*a pak vyberte **vytvořit**.
+4. V **registraci počítačů** části, ujistěte se, *Windows* je vybrána a potom zaškrtněte políčko **pomocí osobního přístupového tokenu ve skriptu pro ověřování**.
 5. Vyberte **zkopírujte skript do schránky**.
 
 
-### <a name="add-iis-vm-to-the-deployment-group"></a>Přidat do skupiny nasazení virtuálních počítačů služby IIS
-Ke skupině nasazení vytvořen přidejte do skupiny každá instance služby IIS. Team Services vytváří skript, který se stáhne a nakonfiguruje agenta na virtuálním počítači, který obdrží nové webové nasazení balíčků a použije ji do služby IIS.
+### <a name="add-iis-vm-to-the-deployment-group"></a>Virtuální počítač služby IIS přidat do skupiny nasazení
+S vytvořenou skupinu nasazení přidejte do skupiny každá instance služby IIS. Vygeneruje skript, který se stáhne a nakonfiguruje agenta na virtuálním počítači, který obdrží nové webové služby Team Services nasazení balíčků a platí pro službu IIS.
 
-1. Zpět v **Powershellu správce** relaci na vašem virtuálním počítači, vložte a spusťte skript zkopírovali z Team Services.
-2. Po zobrazení výzvy ke konfiguraci značky pro agenta, vyberte *Y* a zadejte *webové*.
+1. Zpátky **Powershellu správce** vložte relaci na vašem virtuálním počítači a spusťte skript zkopírovali ze služby Team Services.
+2. Po zobrazení výzvy ke konfiguraci značky pro agent, zvolte *Y* a zadejte *webové*.
 3. Po zobrazení výzvy pro uživatelský účet, stiskněte klávesu *vrátit* přijměte výchozí hodnoty.
-4. Počkejte na dokončení zprávou skriptu *vstsagent.account.computername služby byla úspěšně spuštěna*.
-5. V **nasazení skupiny** stránky **sestavení a verze** nabídky, otevřete *mojeiis* skupiny nasazení. Na **počítače** kartě, zkontrolujte, zda virtuální počítač.
+4. Čekat na dokončení a zobrazí se zpráva skriptu *vstsagent.account.computername služby se úspěšně spustila*.
+5. V **skupiny nasazení** stránku **sestavení a vydání** nabídky, otevřete *mojeiis* skupiny nasazení. Na **počítače** kartu, ověřte, že je uvedený váš virtuální počítač.
 
-    ![Virtuální počítač se úspěšně přidal do skupiny nasazení Team Services](media/tutorial-vsts-iis-cicd/deployment_group.png)
+    ![Virtuální počítač se úspěšně přidal do skupiny nasazení služby Team Services](media/tutorial-vsts-iis-cicd/deployment_group.png)
 
 
-## <a name="create-release-definition"></a>Vytvoření definice verze
-K publikování buildy, můžete vytvořit definici verze v Team Services. Tuto definici se automaticky spustí podle úspěšném sestavení vaší aplikace. Zvolte skupinu nasazení tak, aby nabízel webového nasazení balíčku a zadejte odpovídající nastavení služby IIS.
+## <a name="create-release-definition"></a>Vytvořte definici vydané verze
+Pokud chcete publikovat svá sestavení, vytvoření definice verze v Team Services. Tato definice se automaticky aktivuje úspěšný build vaší aplikace. Zvolte skupinu nasazení tak, aby nabízel webu nasadit balíček a definovat odpovídající nastavení služby IIS.
 
-1. Zvolte **sestavení a verze**, pak vyberte **sestavení**. Zvolte definici sestavení vytvořené v předchozím kroku.
-2. V části **nedávném dokončení**, zvolte poslední sestavení a pak vyberte **verze**.
-3. Zvolte **Ano** k vytvoření definice verzí.
-4. Vyberte **prázdný** šablony, vyberte **Další**.
-5. Zkontrolujte definici sestavení projektu a zdroj se naplní projektu.
+1. Zvolte **sestavení a vydání**a pak vyberte **sestavení**. Vyberte definici sestavení vytvořené v předchozím kroku.
+2. V části **nedávno dokončenou**, zvolte nejnovější sestavení a pak vyberte **vydání**.
+3. Zvolte **Ano** na vytvoření definice verze.
+4. Zvolte **prázdný** šablony, pak vyberte **Další**.
+5. Ověřte definici sestavení projektu a zdroje jsou vyplněna váš projekt.
 6. Vyberte **průběžné nasazování** zaškrtněte políčko a potom vyberte **vytvořit**.
-7. Vyberte pole rozevíracího seznamu vedle **+ přidat úlohy** a zvolte *přidat skupiny fáze nasazení*.
+7. Vyberte rozevírací seznam vedle **+ přidat úkoly** a zvolte *přidat fázi skupiny nasazení*.
     
-    ![Přidat úloha uvolnění definice v Team Services](media/tutorial-vsts-iis-cicd/add_release_task.png)
+    ![Přidat úlohu ve službě Team Services definice vydané verze](media/tutorial-vsts-iis-cicd/add_release_task.png)
 
-8. Zvolte **přidat** vedle **Deploy(Preview) aplikace webové služby IIS**, pak vyberte **Zavřít**.
-9. Vyberte **spustit na skupiny nasazení** nadřazené úlohy.
-    1. Pro **skupiny nasazení**, vyberte nasazení skupinu, kterou jste vytvořili dříve, jako například *mojeiis*.
-    2. V **počítač značky** vyberte **přidat** a zvolte *webové* značky.
+8. Zvolte **přidat** vedle **Deploy(Preview) aplikace webové služby IIS**a pak vyberte **Zavřít**.
+9. Vyberte **spustit ve skupině nasazení** nadřazené úloze.
+    1. Pro **skupina nasazení**, vyberte skupinu nasazení, kterou jste vytvořili dříve, jako například *mojeiis*.
+    2. V **Machine značky** vyberte **přidat** a zvolte *webové* značky.
     
-    ![Verze definice nasazení skupiny úloh pro službu IIS](media/tutorial-vsts-iis-cicd/release_definition_iis.png)
+    ![Verze úlohy nasazení skupiny definic pro službu IIS](media/tutorial-vsts-iis-cicd/release_definition_iis.png)
  
-11. Vyberte **nasadit: nasazení aplikace služby IIS webu** úlohy konfigurace instance nastavení služby IIS následujícím způsobem:
-    1. Pro **název webu**, zadejte *Default Web Site*.
+11. Vyberte **nasazení: nasazení aplikace Web služby IIS** úloh mohli konfigurovat svá nastavení instance služby IIS následujícím způsobem:
+    1. Pro **název webu**, zadejte *výchozí webový server*.
     2. Ponechte všechna ostatní výchozí nastavení.
-12. Zvolte **Uložit**, pak vyberte **OK** dvakrát.
+12. Zvolte **Uložit**a pak vyberte **OK** dvakrát.
 
 
-## <a name="create-a-release-and-publish"></a>Vytvoření vydání a publikování
-Nyní můžete posouvat webového nasazení balíčku jako novou verzi. Tento krok komunikuje s agentem na každou instanci, která je součástí skupiny nasazení, nabízených oznámení webu nasazení balíčku a nakonfiguruje službu IIS ke spuštění aktualizované webové aplikace.
+## <a name="create-a-release-and-publish"></a>Vytvoření vydané verze a publikování
+Teď může nasdílet změny webu nasadit jako novou verzi balíčku. Tento krok komunikuje s agentem na každou instanci, která je součástí skupiny nasazení, nabízených oznámení na webu nasadit balíček a pak nakonfiguruje službu IIS ke spuštění aktualizované webové aplikace.
 
-1. Ve vaší verzi definice, vyberte **+ verze**, zvolte **vytvořit verzi**.
-2. Ověřte, zda je na nejnovější verzi vybrali v rozevíracím seznamu, spolu s **automatizované nasazení: Po vytvoření verze**. Vyberte **Vytvořit**.
-3. Malé hlavička se zobrazí v horní části vaší definice vydání, například *vytvořil vydání verze 1*. Vyberte verzi odkaz.
-4. Otevřete **protokoly** a sledovat průběh verze.
+1. Do definice vydané verze, vyberte **+ vydání**, klikněte na tlačítko **vytvořit vydání**.
+2. Ověřte, zda nejnovější sestavení je vybrána v rozevíracím seznamu, spolu s **automatizované nasazení: Po vytvoření vydání**. Vyberte **Vytvořit**.
+3. V horní části definice vydané verze, jako například zobrazí banner s malé *vydání "Release-1" vytvořil*. Vyberte odkaz pro vydání.
+4. Otevřít **protokoly** kartě sledovat průběh vydání.
     
-    ![Úspěšné verze Team Services a webové nasadit balíček push](media/tutorial-vsts-iis-cicd/successful_release.png)
+    ![Úspěšné vydání verze Team Services a webové nasazení balíčku push](media/tutorial-vsts-iis-cicd/successful_release.png)
 
-5. Po dokončení verze otevřete webový prohlížeč a zadejte veřejnou adresu RP vašeho virtuálního počítače. Je spuštěna webová aplikace ASP.NET.
+5. Po dokončení vydání, otevřete webový prohlížeč a zadejte veřejné Zkoumání adresu svého virtuálního počítače. Webové aplikace v ASP.NET běží.
 
-    ![Webová aplikace ASP.NET spuštěná na virtuálním počítači služby IIS](media/tutorial-vsts-iis-cicd/running_web_app.png)
+    ![Webová aplikace ASP.NET poběží na virtuálním počítači služby IIS](media/tutorial-vsts-iis-cicd/running_web_app.png)
 
 
-## <a name="test-the-whole-cicd-pipeline"></a>Testování celého kanálu CI/CD
-S vaší webové aplikace běžící v IIS zkuste teď celého kanálu CI/CD. Po provedení změny v sadě Visual Studio a potvrzení spuštění kódu, sestavení, který potom aktivuje verzi aktualizované webového nasazení balíčku do služby IIS:
+## <a name="test-the-whole-cicd-pipeline"></a>Otestovat celý kanál CI/CD
+S vaší webovou aplikací ve službě IIS pokuste se nyní celý kanál CI/CD. Když provedete změny v sadě Visual Studio a potvrzení, na které se aktivuje kódu, sestavení, které potom aktivuje verzi aktualizované webové nasaďte balíček do služby IIS:
 
-1. V sadě Visual Studio, otevřete **Průzkumníku řešení** okno.
-2. Přejděte do a otevřete *myWebApp | Zobrazení | Domů | Index.cshtml*
-3. Upravte řádek 6 ke čtení:
+1. V sadě Visual Studio, otevřete **Průzkumníka řešení** okna.
+2. Přejděte na a otevřete *myWebApp | Zobrazení | Domů | Index.cshtml*
+3. Upravte řádek 6 pro čtení:
 
     `<h1>ASP.NET with VSTS and CI/CD!</h1>`
 
 4. Uložte soubor.
-5. Otevřete **Team Explorer** vyberte *myWebApp* projektu, a potom vyberte **změny**.
-6. Zadejte zprávu o potvrzení, jako například *testování CI/CD kanálu*, zvolte **potvrzení všechny a synchronizace** z rozevírací nabídky.
-7. V pracovním prostoru Team Services aktivuje se z kódu potvrzení nového sestavení. 
-    - Zvolte **sestavení a verze**, pak vyberte **sestavení**. 
-    - Vyberte svou definici sestavení a pak vyberte **zařazeno ve frontě & spuštěná** sestavení můžete sledovat v průběhu sestavení.
+5. Otevřít **Team Exploreru** okna, vyberte *myWebApp* projektu a pak zvolte **změny**.
+6. Zadejte zprávu potvrzení změn, jako například *kanálu CI/CD testování*, klikněte na tlačítko **Potvrdit vše a synchronizovat** z rozevírací nabídky.
+7. V pracovním prostoru Team Services se spustí nové sestavení od potvrzení změn kódu. 
+    - Zvolte **sestavení a vydání**a pak vyberte **sestavení**. 
+    - Vyberte definici sestavení a pak vyberte **zařazeno do fronty a spuštění** sestavení ke sledování průběhu sestavení.
 9. Po úspěšném sestavení se aktivuje novou verzi.
-    - Zvolte **sestavení a verze**, pak **verze** zobrazíte webu nasazení balíčku nabídnutých do virtuálního počítače služby IIS. 
-    - Vyberte **aktualizovat** ikonu Aktualizovat stav. Když *prostředí* sloupci se zobrazuje zelená značka zaškrtnutí, vydání úspěšně nasadil do služby IIS.
-11. Chcete-li zobrazit změny použity, aktualizujte váš web služby IIS v prohlížeči.
+    - Zvolte **sestavení a vydání**, pak **verze** zobrazíte na webu nasadit balíček nahrány do vašeho virtuálního počítače služby IIS. 
+    - Vyberte **aktualizovat** ikony pro aktualizaci stavu. Když *prostředí* sloupci se zobrazuje zelená značka zaškrtnutí, vydání úspěšně nasadil do služby IIS.
+11. Pokud chcete zobrazit vaše změny se použily, aktualizujte váš web služby IIS v prohlížeči.
 
-    ![Spuštění virtuálního počítače služby IIS z CI/CD kanálu webové aplikace ASP.NET](media/tutorial-vsts-iis-cicd/running_web_app_cicd.png)
+    ![Webová aplikace ASP.NET poběží na virtuálním počítači služby IIS z kanálu CI/CD](media/tutorial-vsts-iis-cicd/running_web_app_cicd.png)
 
 
 ## <a name="next-steps"></a>Další postup
@@ -225,14 +225,14 @@ S vaší webové aplikace běžící v IIS zkuste teď celého kanálu CI/CD. Po
 V tomto kurzu vytvoříte webovou aplikaci ASP.NET ve službě Team Services a nakonfigurujete sestavení a definice vydání k nasazení nové webové nasazení balíčků do služby IIS na každém potvrzení kódu. Naučili jste se tyto postupy:
 
 > [!div class="checklist"]
-> * Publikovat webovou aplikaci ASP.NET do projektu Team Services
-> * Vytvořit definici sestavení, která se spustí při potvrzení kódu
-> * Instalace a konfigurace služby IIS na virtuální počítač v Azure
-> * Instance služby IIS přidat do skupiny nasazení v Team Services
-> * Vytvořit verzi definice k publikování nové webové nasazení balíčků do služby IIS
-> * Testování CI/CD kanálu
+> * Publikovat webovou aplikaci ASP.NET do projektu služby Team Services
+> * Vytvořte definici sestavení, která se aktivuje při potvrzení změn kódu
+> * Instalace a konfigurace služby IIS na virtuálním počítači v Azure
+> * Instance služby IIS přidat do skupiny nasazení ve službě Team Services
+> * Vytvoření verze definice publikování nového webu nasadit balíčky do služby IIS
+> * Test kanálu CI/CD
 
-Přechod na další kurzu se dozvíte, jak nainstalovat SQL&#92;IIS&#92;.NET zásobníku na dvojice virtuálních počítačů Windows.
+Pokračujte k dalšímu kurzu, kde se naučíte, jak nainstalovat SQL&#92;IIS&#92;zásobník .NET na pár virtuální počítače s Windows.
 
 > [!div class="nextstepaction"]
-> [SQL&#92;IIS&#92;.NET zásobníku](tutorial-iis-sql.md)
+> [SQL&#92;IIS&#92;zásobník .NET](tutorial-iis-sql.md)

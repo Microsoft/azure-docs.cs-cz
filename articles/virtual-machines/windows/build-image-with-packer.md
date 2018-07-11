@@ -1,9 +1,9 @@
 ---
-title: Vytvoření bitové kopie virtuálního počítače Windows Azure s balírna | Microsoft Docs
-description: Další informace o použití balírna k vytvoření bitové kopie virtuálních počítačů s Windows v Azure
+title: Jak vytvořit Image virtuálního počítače Windows v Azure pomocí Packeru | Dokumentace Microsoftu
+description: Zjistěte, jak vytvořit Image virtuálního počítače Windows v Azure pomocí Packeru
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -13,20 +13,20 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 03/29/2018
-ms.author: iainfou
-ms.openlocfilehash: b7f07ec8736086483f91746512f10118ee90762d
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.author: cynthn
+ms.openlocfilehash: 5f19a6cb356332e95f96484953f1be3df006dd09
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36333153"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37931914"
 ---
-# <a name="how-to-use-packer-to-create-windows-virtual-machine-images-in-azure"></a>Jak používat balírna k vytváření bitových kopií systému Windows virtuálního počítače v Azure
-Každý virtuální počítač (VM) v Azure je vytvořený z image, která definuje distribuci systému Windows a verze operačního systému. Bitové kopie může zahrnovat předinstalované aplikace a konfigurace. Azure Marketplace poskytuje celou řadu imagí první a třetí strany pro nejběžnější operačního systému a aplikací prostředí, nebo můžete vytvořit vlastní vlastních bitových kopií přizpůsobit svým potřebám. Tento článek popisuje, jak používat nástroj open-source [balírna](https://www.packer.io/) definovat a vytvářet vlastní bitové kopie v Azure.
+# <a name="how-to-use-packer-to-create-windows-virtual-machine-images-in-azure"></a>Jak vytvořit Image virtuálních počítačů s Windows v Azure pomocí Packeru
+Každý virtuální počítač (VM) v Azure je vytvořený z image, která definuje Windows distribuce a verze operačního systému. Image můžete zahrnout předinstalované aplikace a konfigurace. Na webu Azure Marketplace obsahuje celou řadu imagí první a třetí strany pro nejběžnější operační systém a prostředí aplikace, nebo můžete vytvořit vlastní Image přizpůsobené vašim potřebám. Tento článek podrobně popisuje, jak používat open source nástroj [Packeru](https://www.packer.io/) k definování a vytvoření vlastních imagí v Azure.
 
 
-## <a name="create-azure-resource-group"></a>Vytvoření skupiny prostředků Azure.
-Během procesu vytváření balírna vytvoří dočasný prostředky Azure, jako sestavuje zdrojového virtuálního počítače. Když Pokud chcete zachytit tohoto zdrojového virtuálního počítače pro použití jako bitovou kopii, je nutné zadat skupinu prostředků. Výstup z procesu sestavení balírna je uložený v této skupině prostředků.
+## <a name="create-azure-resource-group"></a>Vytvoření skupiny prostředků Azure
+Během procesu sestavování vytvoří Packeru dočasné prostředky Azure jako sestavení zdrojového virtuálního počítače. K zachycení této zdrojový virtuální počítač pro použití jako image, je nutné definovat skupinu prostředků. V této skupině prostředků se ukládá výstup z procesu sestavení Packeru.
 
 Vytvořte skupinu prostředků pomocí rutiny [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*:
 
@@ -37,9 +37,9 @@ New-AzureRmResourceGroup -Name $rgName -Location $location
 ```
 
 ## <a name="create-azure-credentials"></a>Vytvořit přihlašovací údaje Azure
-Balírna ověřuje s Azure pomocí objektu služby. Objektu zabezpečení služby Azure je identita zabezpečení, která můžete použít s aplikací, služeb a automatizace nástroje, například balírna. Můžete řídit a definovat oprávnění, jaké operace objektu služby můžete provádět v Azure.
+Packeru se ověřuje pomocí Azure s využitím instančního objektu. Instanční objekt Azure je identita zabezpečení, který vám pomůže s aplikací, služeb a nástrojů automatizace, jako je Packeru. Kontrolou a můžete definovat oprávnění, jaké operace lze provádět instanční objekt služby v Azure.
 
-Vytvoření služby hlavní s [New-AzureRmADServicePrincipal](/powershell/module/azurerm.resources/new-azurermadserviceprincipal) a přiřaďte oprávnění pro objekt služby vytvořit a spravovat prostředky s [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment):
+Vytvořit instanční objekt s [New-AzureRmADServicePrincipal](/powershell/module/azurerm.resources/new-azurermadserviceprincipal) a přiřadit oprávnění pro instanční objekt pro vytváření a správě prostředků s [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment):
 
 ```powershell
 $sp = New-AzureRmADServicePrincipal -DisplayName "AzurePacker" `
@@ -48,7 +48,7 @@ Sleep 20
 New-AzureRmRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $sp.ApplicationId
 ```
 
-K ověření do Azure, musíte také získat vaše Azure ID klienta a předplatné s [Get-AzureRmSubscription](/powershell/module/azurerm.profile/get-azurermsubscription):
+Pro ověření do Azure, budete potřebovat získat vaše Azure ID tenanta a předplatné s [Get-AzureRmSubscription](/powershell/module/azurerm.profile/get-azurermsubscription):
 
 ```powershell
 $sub = Get-AzureRmSubscription
@@ -56,21 +56,21 @@ $sub.TenantId[0]
 $sub.SubscriptionId[0]
 ```
 
-V dalším kroku použijete tyto dva identifikátory ID.
+Tyto dva identifikátory ID použijete v dalším kroku.
 
 
-## <a name="define-packer-template"></a>Definovat balírna šablonu
-K vytvoření bitové kopie, vytvořit šablonu jako soubor ve formátu JSON. V šabloně definujete tvůrce a provisioners, které provádějí procesu skutečné sestavení. Má balírna [tvůrce pro Azure](https://www.packer.io/docs/builders/azure.html) , což vám umožní definovat prostředky Azure, jako jsou hlavní přihlašovací údaje služby vytvořili v předchozím kroku.
+## <a name="define-packer-template"></a>Definice šablony Packeru
+Pokud chcete vytvořit Image, vytvořit šablonu jako soubor JSON. V šabloně definujte tvůrci a provisioners, které vykonávají proces skutečné sestavení. Má packeru [tvůrce pro Azure](https://www.packer.io/docs/builders/azure.html) , který umožňuje definovat prostředky Azure, jako jsou pověření instančního objektu služby, vytvořili v předchozím kroku.
 
 Vytvořte soubor s názvem *windows.json* a vložte následující obsah. Zadejte vlastní hodnoty pro následující:
 
 | Parametr                           | Kde můžete získat |
 |-------------------------------------|----------------------------------------------------|
-| *client_id*                         | Zobrazení ID objektu zabezpečení služby s `$sp.applicationId` |
+| *client_id*                         | Zobrazení ID instančního objektu s `$sp.applicationId` |
 | *client_secret*                     | Heslo, které jste zadali v `$securePassword` |
 | *tenant_id*                         | Výstup z `$sub.TenantId` příkaz |
 | *subscription_id*                   | Výstup z `$sub.SubscriptionId` příkaz |
-| *object_id*                         | ID objektu zabezpečení služby zobrazení s `$sp.Id` |
+| *object_id*                         | Zobrazení ID instančního objektu s `$sp.Id` |
 | *managed_image_resource_group_name* | Název skupiny prostředků, kterou jste vytvořili v prvním kroku |
 | *managed_image_name*                | Název bitové kopie spravovaného disku, který je vytvořen |
 
@@ -118,19 +118,19 @@ Vytvořte soubor s názvem *windows.json* a vložte následující obsah. Zadejt
 }
 ```
 
-Tato šablona vytvoří virtuální počítač s Windows Server 2016, nainstaluje službu IIS a pak umožňuje zobecnit virtuální počítač pomocí nástroje Sysprep. Instalace služby IIS ukazuje, jak lze pomocí zajištění webu prostředí PowerShell spustit další příkazy. Finální image balírna potom zahrnuje instalace požadovaného softwaru a konfigurace.
+Tato šablona vytvoří virtuální počítač s Windows serverem 2016, nainstaluje službu IIS a pak umožňuje zobecnit virtuální počítač pomocí nástroje Sysprep. Instalace služby IIS ukazuje, jak můžete pomocí Powershellu zajištění webu spustit další příkazy. Finální image Packeru potom zahrnuje instalace požadovaného softwaru a konfigurace.
 
 
-## <a name="build-packer-image"></a>Sestavení balírna bitové kopie
-Pokud ještě nemáte balírna nainstalována na místním počítači, [postupujte podle pokynů pro instalaci balírna](https://www.packer.io/docs/install/index.html).
+## <a name="build-packer-image"></a>Sestavení image Packeru
+Pokud ještě nemáte nainstalované na místním počítači, Packeru [postupujte podle pokynů k instalaci Packeru](https://www.packer.io/docs/install/index.html).
 
-Vytvořit bitovou kopii zadáním vaší balírna soubor šablony následujícím způsobem:
+Sestavení image tak, že zadáte vaše Packeru soubor šablony následujícím způsobem:
 
 ```bash
 ./packer build windows.json
 ```
 
-Příklad výstupu z předchozích příkazů vypadá takto:
+Příklad výstupu z výše uvedených příkazů vypadá takto:
 
 ```bash
 azure-arm output will be in this color.
@@ -204,11 +204,11 @@ ManagedImageName: myPackerImage
 ManagedImageLocation: eastus
 ```
 
-Jak dlouho trvá několik minut, než balírna k vytvoření virtuálního počítače, spusťte provisioners a vyčistit nasazení.
+Trvá několik minut, než Packeru pro vytvoření virtuálního počítače, spusťte provisioners a vyčištění nasazení.
 
 
-## <a name="create-a-vm-from-the-packer-image"></a>Vytvořte virtuální počítač z bitové kopie balírna
-Nyní můžete vytvořit virtuální počítač z bitové kopie s [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm). Doprovodné materiály sítě se vytvoří, pokud dosud neexistují. Po zobrazení výzvy zadejte správce uživatelské jméno a heslo vytvořit na virtuálním počítači. Následující příklad vytvoří virtuální počítač s názvem *Můjvp* z *myPackerImage*:
+## <a name="create-a-vm-from-the-packer-image"></a>Vytvoření virtuálního počítače z image Packeru
+Nyní můžete vytvořit virtuální počítač z bitové kopie s [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm). Podpůrné síťové prostředky se vytvoří, pokud ještě neexistují. Po zobrazení výzvy zadejte uživatelské jméno správce a heslo má být vytvořen na virtuálním počítači. Následující příklad vytvoří virtuální počítač s názvem *myVM* z *myPackerImage*:
 
 ```powershell
 New-AzureRmVm `
@@ -223,12 +223,12 @@ New-AzureRmVm `
     -Image "myPackerImage"
 ```
 
-Pokud chcete vytvořit virtuální počítače v jiné skupině prostředků nebo oblasti než balírna image, zadejte ID bitové kopie místo název bitové kopie. Můžete získat ID bitové kopie s [Get-AzureRmImage](/powershell/module/AzureRM.Compute/Get-AzureRmImage).
+Pokud chcete vytvořit virtuální počítače v jiné skupině prostředků nebo oblasti než vaší image Packeru, zadejte ID bitové kopie nikoli název image. Můžete získat ID bitové kopie s [Get-AzureRmImage](/powershell/module/AzureRM.Compute/Get-AzureRmImage).
 
-Trvá několik minut vytvořit virtuální počítač z bitové kopie balírna.
+Trvá několik minut, vytvoření virtuálního počítače z image Packeru.
 
 
-## <a name="test-vm-and-webserver"></a>Testovací virtuální počítač a webový server
+## <a name="test-vm-and-webserver"></a>Testovací virtuální počítač a webového serveru
 Získejte veřejnou IP adresu virtuálního počítače pomocí rutiny [Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress). Následující příklad získá dříve vytvořenou IP adresu pro *myPublicIP*:
 
 ```powershell
@@ -237,12 +237,12 @@ Get-AzureRmPublicIPAddress `
     -Name "myPublicIPAddress" | select "IpAddress"
 ```
 
-Zobrazíte virtuálního počítače, který zahrnuje instalace služby IIS z zajištění balírna webu, v akci, zadejte veřejnou IP adresu v do webového prohlížeče.
+Pro virtuální počítač, který zahrnuje instalaci služby IIS z zajištění Packeru webu, v akci, zadejte veřejnou IP adresu do webového prohlížeče.
 
 ![Výchozí web služby IIS](./media/build-image-with-packer/iis.png) 
 
 
 ## <a name="next-steps"></a>Další postup
-V tomto příkladu jste použili balírna k vytvoření image virtuálního počítače s již nainstalovanou službu IIS. Můžete tuto bitovou kopii virtuálního počítače spolu s existující pracovní postupy nasazení, například k nasazení vaší aplikace na virtuální počítače vytvořené z bitové kopie s Team Services, Ansible, Chef nebo Puppet.
+V tomto příkladu používá Packeru pro vytvoření image virtuálního počítače s již nainstalovanou službu IIS. Tato image virtuálního počítače společně s existující pracovní postupy nasazení, například můžete použít k nasazení vaší aplikace na virtuální počítače vytvořené z této Image s Team Services, Ansible, Chef nebo Puppet.
 
-Další příklad šablony balírna pro ostatní distribucích systému Windows, najdete v části [toto úložiště GitHub](https://github.com/hashicorp/packer/tree/master/examples/azure).
+Další příklad šablony Packeru pro jiné distribuce Windows, naleznete v tématu [úložiště GitHub](https://github.com/hashicorp/packer/tree/master/examples/azure).

@@ -13,12 +13,12 @@ ms.component: protection
 ms.date: 06/21/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 28a998647dacdf57390638b8ce1629a76077b450
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 38386de86c83733e3539048de9e263ed6225eee5
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446890"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952156"
 ---
 # <a name="how-to-start-an-access-review-in-azure-ad-privileged-identity-management"></a>Zahájení kontroly přístupu v Azure AD Privileged Identity Management
 Přiřazení rolí stát "zastaralých", když uživatelé privilegovaný přístup, které už nepotřebují. Pokud chcete snížit riziko spojené s tyto zastaralé role přiřazení privilegovaných rolí by správci nebo globální správci pravidelně vytvářet kontroly přístupu požádat správce ke kontrole role, které mají uživatelé. Tento dokument popisuje kroky pro spuštění kontroly přístupu v Azure AD Privileged Identity Management (PIM).
@@ -37,12 +37,12 @@ Na hlavní stránce aplikace PIM existují tři způsoby, jak spustit revizi př
 
 Po kliknutí na **zkontrolujte** tlačítko, **zahájení kontroly přístupu** otevře se okno. V tomto okně budete konfigurace revizi pomocí názvu a časového limitu, vyberte roli, kterou chcete zkontrolovat a rozhodnout, který bude provádět revizi.
 
-![Zahájení kontroly přístupu – snímek obrazovky][1]
+![Zahájení kontroly přístupu – snímek obrazovky](./media/active-directory-privileged-identity-management-how-to-start-security-review/PIM_start_review.png)
 
 ### <a name="configure-the-review"></a>Konfigurace kontroly
 Vytvoření kontroly přístupu, potřebujete název a nastavte počáteční a koncové datum.
 
-![Konfigurace kontroly – snímek obrazovky][2]
+![Konfigurace kontroly – snímek obrazovky](./media/active-directory-privileged-identity-management-how-to-start-security-review/PIM_review_configure.png)
 
 Ujistěte se, délka revize dostatečně dlouhé pro uživatele k jejímu dokončení. Pokud dokončíte dřívější než datum ukončení, můžete vždy ukončit revizi již v rané fázi.
 
@@ -51,7 +51,7 @@ Každou recenzi, zaměřuje na jenom jedné roli. Pokud nezahájíte kontroly p�
 
 1. Přejděte na **kontrola členství v rolích**
    
-    ![Kontrola členství v rolích – snímek obrazovky][3]
+    ![Kontrola členství v rolích – snímek obrazovky](./media/active-directory-privileged-identity-management-how-to-start-security-review/PIM_review_role.png)
 2. V seznamu vyberte jednu roli.
 
 ### <a name="decide-who-will-perform-the-review"></a>Rozhodněte, kdo bude provádět revizi
@@ -59,7 +59,7 @@ Existují tři možnosti pro provádění kontrolu. Revize můžete přiřadit n
 
 1. Přejděte na **vybrat revidující**
    
-    ![Vybrat revidující – snímek obrazovky][4]
+    ![Vybrat revidující – snímek obrazovky](./media/active-directory-privileged-identity-management-how-to-start-security-review/PIM_review_reviewers.png)
 2. Vyberte jednu z možností:
    
    * **Vyberte kontrolora**: tuto možnost použijte, pokud si nejste jisti, který potřebuje přístup. Pomocí této možnosti můžete přiřadit revize vlastník prostředku nebo správce skupiny pro dokončení.
@@ -79,10 +79,3 @@ Až skončí období kontroly, můžete jim Připomeňte dokončení jejich kont
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="pim-table-of-contents"></a>PIM obsahy
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
-
-<!--Image references-->
-
-[1]: ./media/active-directory-privileged-identity-management-how-to-start-security-review/PIM_start_review.png
-[2]: ./media/active-directory-privileged-identity-management-how-to-start-security-review/PIM_review_configure.png
-[3]: ./media/active-directory-privileged-identity-management-how-to-start-security-review/PIM_review_role.png
-[4]: ./media/active-directory-privileged-identity-management-how-to-start-security-review/PIM_review_reviewers.png

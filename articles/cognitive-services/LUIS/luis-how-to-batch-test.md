@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: v-geberr
-ms.openlocfilehash: ec023ad796c57141cb35cce15b3d982adf2b8659
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: bd586c6abb27ae0c07ac7c832fba7c1f38e4e5c6
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37887755"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37950155"
 ---
 # <a name="batch-testing"></a>Dávkové testování
  Testování služby batch je komplexní test na aktuální trénovaný model pro měření jejího výkonu v LUIS. 
@@ -100,7 +100,7 @@ Dva oddíly grafu zeleně odpovídají očekávané předpovědi.
 
 Pokud testování označuje, že aplikace LUIS nedokáže rozpoznat správný záměry a entity, můžete pracovat ke zlepšení výkonu vaší aplikace LUIS označování další projevy nebo přidáním funkcí. 
 
-* [Popisek navrhované projevy služba luis](Label-Suggested-Utterances.md) 
+* [Popisek navrhované projevy služba luis](luis-how-to-review-endoint-utt.md) 
 * [Použití funkcí pro zvýšení výkonu aplikace LUIS](luis-how-to-add-features.md) 
 * [Vysvětlení služby batch testování v tomto kurzu](luis-tutorial-batch-testing.md)
 * [Další dávky testování konceptů](luis-concept-batch-test.md).

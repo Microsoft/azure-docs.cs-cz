@@ -13,12 +13,12 @@ ms.component: protection
 ms.date: 06/06/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: a3de94aa11b9326a9eadfb3385db83724f427ff2
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: fc6376a7bf1abd81e7a5ff17549a7b4a193edec4
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37447230"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37950576"
 ---
 # <a name="how-to-complete-an-access-review-in-azure-ad-privileged-identity-management"></a>Dokončení kontroly přístupu v Azure AD Privileged Identity Management
 Správci privilegovaných rolí můžete zkontrolovat privilegovaný přístup jednou [se spustila kontrola zabezpečení](active-directory-privileged-identity-management-how-to-start-security-review.md). Azure AD Privileged Identity Management (PIM) se automaticky pošle e-mail vyzývá uživatele, aby zkontrolujte svůj přístup. Pokud uživatel nezískaly v e-mailu, můžete jim poslat pokyny [provádění kontroly zabezpečení](active-directory-privileged-identity-management-how-to-perform-security-review.md).
@@ -32,7 +32,7 @@ Po období kontroly zabezpečení nebo dokončení jejich svým přezkoumat vše
 
 V okně podrobností kontroly přístupu jsou čísla možnosti pro správu této revize.
 
-![Tlačítka revize přístupu PIM – snímek obrazovky][1]
+![Tlačítka revize přístupu PIM – snímek obrazovky](./media/active-directory-privileged-identity-management-how-to-complete-review/PIM_review_buttons.png)
 
 ### <a name="remind"></a>Připomenout
 Pokud kontrola přístupu je nastavený tak, aby uživatele zkontrolujte, **připomenutí** tlačítko odešle oznámení. 
@@ -54,7 +54,3 @@ Pokud si nejste zájem o další revizi, odstraňte ho. **Odstranit** tlačítko
 
 ## <a name="next-steps"></a>Další postup
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
-
-<!--Image references-->
-
-[1]: ./media/active-directory-privileged-identity-management-how-to-complete-review/PIM_review_buttons.png

@@ -1,6 +1,6 @@
 ---
 title: Vytvoření upozornění na metriku pomocí šablony Resource Manageru
-description: Další informace o použití šablony Resource Manageru k vytvoření metriky výstrahy.
+description: Zjistěte, jak vytvořit upozornění na metriku pomocí šablony Resource Manageru.
 author: snehithm
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,27 +8,31 @@ ms.topic: conceptual
 ms.date: 4/26/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: 0a4e6c2ebb57aca13a53a8ff12953f0c7a90bc61
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 4dba3d182c7c2927aa4feb88e70fe5711fcc6818
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263442"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37932207"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Vytvoření upozornění na metriku pomocí šablony Resource Manageru
-Tento článek ukazuje, jak můžete použít [šablony Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md) konfigurace [novější metriky výstrahy](monitoring-near-real-time-metric-alerts.md) v Azure monitorování. Šablony Resource Manageru umožňují prostřednictvím kódu programu nastavit výstrahy způsobem, konzistentní a reprodukovatelné napříč vašich prostředích. Novější metriky výstrahy jsou nyní k dispozici na [Tato sada typy prostředků](monitoring-near-real-time-metric-alerts.md#metrics-and-dimensions-supported).
+Tento článek popisuje, jak můžete použít [šablony Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md) konfigurace [novějších upozornění metrik](monitoring-near-real-time-metric-alerts.md) ve službě Azure Monitor. Šablony Resource Manageru umožňují programově nastavit výstrahy konzistentní vzhledem k aplikacím a reprodukovatelné způsobem napříč prostředími. Jsou aktuálně k dispozici na novějších upozornění metrik [tuto sadu typů prostředků](monitoring-near-real-time-metric-alerts.md#metrics-and-dimensions-supported).
+
+> [!IMPORTANT]
+> Šablony Resource Manageru zadaná pro upozornění na metriku nebude fungovat pro typ prostředku: Microsoft.OperationalInsights/workspaces; Díky podpoře metriky z Log Analytics je ve verzi preview. Můžou uživatelé chtěli použít funkci ve verzi preview se šablonou resource kontaktovat [zpětnou vazbu upozornění Azure](mailto:azurealertsfeedback@microsoft.com)
+
 
 Základní kroky jsou následující:
 
-1. Použijte jeden z šablony níže jako soubor JSON, který popisuje, jak vytvořit výstrahu.
-2. Upravit a použít odpovídající soubor parametrů jako JSON k přizpůsobení výstrahy
+1. Použijte jednu z šablon níže jako soubor JSON, který popisuje, jak vytvořit výstrahu.
+2. Upravit a použít odpovídající souboru parametrů jako JSON k přizpůsobení upozornění
 3. Nasazení šablony pomocí [libovolnou metodu nasazení](../azure-resource-manager/resource-group-template-deploy.md).
 
 
-## <a name="resource-manager-template-for-a-simple-metric-alert"></a>Šablony Resource Manageru pro jednoduché metriky výstrahu
-Pokud chcete vytvořit výstrahu pomocí šablony Resource Manageru, vytvořit prostředek typu `Microsoft.Insights/metricAlerts` a vyplňte všechny související vlastnosti. Níže je ukázka šablony, která vytvoří metriky pravidlo výstrahy.
+## <a name="resource-manager-template-for-a-simple-metric-alert"></a>Šablona Resource Manageru pro jednoduché upozornění na metriku
+Aby se vytvořila výstraha pomocí šablony Resource Manageru, vytvoříte prostředek typu `Microsoft.Insights/metricAlerts` a vyplňte všechny související vlastnosti. Níže je ukázka šablony, která vytvoří pravidlo upozornění metriky.
 
-Uložte jako simplemetricalert.json pro účely této ukázce kódu json níže.
+Uložte jako simplemetricalert.json pro účely Tento názorný postup vás provede následující json.
 
 ```json
 {
@@ -180,11 +184,11 @@ Uložte jako simplemetricalert.json pro účely této ukázce kódu json níže.
 }
 ```
 
-Vysvětlení schéma a vlastnosti pro pravidlo výstrahy [Zde jsou k dispozici](https://docs.microsoft.com/en-us/rest/api/monitor/metricalerts/createorupdate).
+Vysvětlení schématu a vlastnosti pro pravidlo výstrahy [je k dispozici tady](https://docs.microsoft.com/en-us/rest/api/monitor/metricalerts/createorupdate).
 
-Můžete nastavit hodnoty pro parametry na příkazovém řádku nebo prostřednictvím soubor s parametry. Ukázkový soubor parametr najdete níže. 
+Na příkazovém řádku nebo pomocí souboru parametrů můžete nastavit hodnoty pro parametry. Ukázkový soubor parametrů jsou uvedeny níže. 
 
-Uložit jako simplemetricalert.parameters.json json níže a podle potřeby upravit.
+Uložte následující json jako simplemetricalert.parameters.json a podle potřeby upravte.
 
 ```json
 {
@@ -226,7 +230,7 @@ Uložit jako simplemetricalert.parameters.json json níže a podle potřeby upra
 ```
 
 
-Můžete vytvořit pomocí šablony a parametry souboru pomocí prostředí PowerShell nebo rozhraní příkazového řádku Azure metriky výstrahy.
+Můžete vytvořit upozornění na metriku pomocí šablony a parametrů souboru pomocí Powershellu nebo rozhraní příkazového řádku Azure.
 
 Použití Azure Powershell
 
@@ -253,12 +257,12 @@ az group deployment create \
 
 > [!NOTE]
 >
-> Při metriky výstraha by bylo možné vytvořit v jiné skupině prostředků pro cílový prostředek, doporučujeme používat stejné skupině prostředků jako cílový prostředek.
+> Zatímco v jiné skupině prostředků pro cílový prostředek může vytvořit upozornění metriky, doporučujeme použít stejnou skupinu prostředků jako cílový prostředek.
 
-## <a name="resource-manager-template-for-a-more-advanced-metric-alert"></a>Šablony Resource Manageru pro pokročilejší metriky výstrahu
-Novější metriky výstrahy podpora výstrahy na multidimenzionální metriky a také podpora několika kritérií. Můžete použít následující šablonu a vytvořte upozornění na pokročilejší metriky na dimenzí metriky, zadejte více kritérií.
+## <a name="resource-manager-template-for-a-more-advanced-metric-alert"></a>Šablona Resource Manageru pro pokročilejší upozornění na metriku
+Novějších upozornění metrik podporují upozorňování na vícerozměrné metriky i podpora více kritérií. Následující šablony můžete použít k vytvoření pokročilejší upozornění na metriku na jednodimenzionální metriky a více kritérií.
 
-Uložte jako advancedmetricalert.json pro účely této ukázce kódu json níže.
+Uložte jako advancedmetricalert.json pro účely Tento názorný postup vás provede následující json.
 
 ```json
 {
@@ -374,9 +378,9 @@ Uložte jako advancedmetricalert.json pro účely této ukázce kódu json níž
 }
 ```
 
-Výše uvedené šablony můžete použít společně s parametrem soubor níže uvedenou. 
+Výše uvedené šablony můžete použít spolu se souborem parametru uvedena níže. 
 
-Uložte a upravit json níže jako advancedmetricalert.parameters.json pro účely této ukázce.
+Uložit a upravte následující json jako advancedmetricalert.parameters.json pro účely Tento názorný postup vás provede.
 
 ```json
 {
@@ -443,7 +447,7 @@ Uložte a upravit json níže jako advancedmetricalert.parameters.json pro úče
 ```
 
 
-Můžete vytvořit pomocí šablony a parametry souboru pomocí prostředí PowerShell nebo rozhraní příkazového řádku Azure z aktuální pracovní adresář metriky výstrahy
+Můžete vytvořit upozornění na metriku pomocí šablony a parametrů soubor z aktuálního pracovního adresáře pomocí Powershellu nebo rozhraní příkazového řádku Azure
 
 Použití Azure Powershell
 ```powershell
@@ -470,8 +474,8 @@ az group deployment create \
 
 >[!NOTE]
 >
-> Při metriky výstraha by bylo možné vytvořit v jiné skupině prostředků pro cílový prostředek, doporučujeme používat stejné skupině prostředků jako cílový prostředek.
+> Zatímco v jiné skupině prostředků pro cílový prostředek může vytvořit upozornění metriky, doporučujeme použít stejnou skupinu prostředků jako cílový prostředek.
 
 ## <a name="next-steps"></a>Další postup
-* Další informace o [výstrahy v Azure](monitoring-overview-unified-alerts.md)
-* Zjistěte, jak [vytvořit skupinu akce pomocí šablony Resource Manageru](monitoring-create-action-group-with-resource-manager-template.md)
+* Další informace o [upozornění v Azure](monitoring-overview-unified-alerts.md)
+* Zjistěte, jak [vytvořit skupinu akcí se šablonami Resource Manageru](monitoring-create-action-group-with-resource-manager-template.md)

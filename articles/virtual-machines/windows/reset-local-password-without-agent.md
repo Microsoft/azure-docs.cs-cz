@@ -3,7 +3,7 @@ title: Resetování místního hesla Windows bez agenta Azure | Dokumentace Micr
 description: Jak resetovat heslo místního uživatelského účtu Windows, pokud agent hosta Azure není nainstalovaná nebo funkční na virtuálním počítači
 services: virtual-machines-windows
 documentationcenter: ''
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: ''
 ms.assetid: cf353dd3-89c9-47f6-a449-f874f0957013
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 01/25/2018
-ms.author: iainfou
-ms.openlocfilehash: 6745d5f7c31ca00c7915874b038488f4487959a9
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.author: cynthn
+ms.openlocfilehash: 791ac9ca7795b5317c7b6e12a67327e7710a71ff
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37342905"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37932513"
 ---
 # <a name="reset-local-windows-password-for-azure-vm-offline"></a>Resetování místního hesla Windows pro virtuální počítač Azure do offline režimu
 Můžete resetovat hesla Windows místního virtuálního počítače v Azure s využitím [webu Azure portal nebo Azure Powershellu](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) předpokladu, že je nainstalovaný agent hosta Azure. Tato metoda je primárním způsob, jak resetování hesla pro virtuální počítač Azure. Pokud narazíte na problémy s neodpovídajícím agentem hosta Azure nebo selhání instalace po nahrání vlastní image, můžete ručně resetovat hesla Windows. Tento článek podrobně popisuje, jak resetovat heslo místního účtu připojením zdrojový OS virtuální disk k jinému virtuálnímu počítači. Podle kroků popsaných v tomto článku se nevztahují na řadiče domény Windows. 
@@ -149,6 +149,6 @@ Vždy se pokusí resetovat heslo pomocí [webu Azure portal nebo Azure Powershel
     * Z %windir%\System32\GroupPolicy
       * Odeberte gpt.ini (pokud existoval gpt.ini a přejmenoval jej na gpt.ini.bak, přejmenujte soubor .bak zpět do gpt.ini)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Pokud se pořád nemůžete připojit pomocí vzdálené plochy, přečtěte si článek [Průvodce odstraňováním potíží RDP](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). [Podrobný průvodce řešením potíží s RDP](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) vypadá na odstraňování potíží u metody spíše než konkrétní kroky. Můžete také [otevřete požadavek na podporu Azure](https://azure.microsoft.com/support/options/) praktickou pomoc.
 

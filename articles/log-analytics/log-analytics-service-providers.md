@@ -3,7 +3,7 @@ title: Log Analytics pro poskytovatele služeb | Dokumentace Microsoftu
 description: Log Analytics může pomoct poskytovatelům spravovaných služeb (MSP) pro velké podniky, nezávislým výrobcům softwaru (ISV) a poskytovatelů hostitelských služeb, spravovat a monitorovat servery v jeho místní nebo cloudovou infrastrukturu.
 services: log-analytics
 documentationcenter: ''
-author: richrundmsft
+author: MeirMen
 manager: jochan
 editor: ''
 ms.assetid: c07f0b9f-ec37-480d-91ec-d9bcf6786464
@@ -12,17 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/27/2018
+ms.date: 07/05/2018
 ms.author: meirm
 ms.component: na
-ms.openlocfilehash: 13f36f67e76b75176940a0f36121be30ba27d519
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: ad0a3b8e0ee5f1114ea1db95cfe2f4176b8e2ddb
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37340861"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37931986"
 ---
-# <a name="log-analytics-features-for-service-providers"></a>Funkce log Analytics pro poskytovatele služeb
+# <a name="log-analytics-for-service-providers"></a>Log Analytics pro poskytovatele služeb
 Log Analytics může pomoct, poskytovatelům spravovaných služeb (MSP), pro velké podniky, nezávislí výrobci softwaru (ISV) a poskytovatelů hostitelských služeb spravovat a monitorovat servery v jeho místní nebo cloudovou infrastrukturu. 
 
 Velké podniky řada podobností s poskytovateli služeb, zejména v případě, že na centralizovaný tým IT, který zodpovídá za správu IT pro mnoho různých organizačních jednotek. Pro zjednodušení tento dokument používá termín *poskytovatele služeb* ale stejné funkce je také k dispozici pro podniky a ostatních zákazníků.
@@ -61,7 +61,8 @@ Výhody této architektury jsou:
 * Poskytovatel služeb můžete provádět analýzy napříč všemi zákazníky.
 
 Nevýhody této architektury jsou:
-* Bude obtížné oddělit data mezi zákazníky. Jediným dobrým metodou k tomu je použít název domény počítače.
+* Tuto architekturu je možné použít pouze data virtuálního počítače založené na agentovi, nebudeme se zabývat PaaS, SaaS a Azure zdroje dat prostředků infrastruktury.
+* Může být obtížné oddělit data mezi zákazníky, když jsou sloučeny do jednoho pracovního prostoru. Je jediným dobrým metodu počítače plně kvalifikovaný název domény (FQDN) nebo prostřednictvím předplatného Azure ID. 
 * Všechna data ze všech zákazníků budou uloženy ve stejné oblasti pomocí faktury a stejné nastavení uchování a konfigurace.
 * Prostředky infrastruktury Azure a PaaS služby, například Azure Diagnostics a auditování Azure vyžaduje pracovní prostor a být ve stejném tenantovi jako prostředek tak, aby nemohli odesílat protokoly do centrální pracovního prostoru.
 * Všichni agenti virtuálního počítače od všech zákazníků bude ověřen na pracovním prostoru cental pomocí stejné ID pracovního prostoru a klíč. Neexistuje žádná metoda blokování protokoly z konkrétního zákazníka, aniž by to ovlivnilo ostatní zákazníci.

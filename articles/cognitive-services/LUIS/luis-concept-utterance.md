@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: v-geberr
-ms.openlocfilehash: 4a3571acade7b7bd304c91eadc90b1a9f6e53860
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 5babe089575d03db1f6bc0dd3f01bd3b6a5475fe
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37886837"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37951895"
 ---
 # <a name="utterances-in-luis"></a>Projevy v LUIS
 
@@ -51,7 +51,7 @@ V každé iteraci modelu nepřidávejte velké množství projevy. Přidání pr
 
 Služba LUIS sestavení efektivní modely s projevy, které jsou vybrány pečlivě. Přidání příliš mnoho projevy není cenné, protože zavádí nejasnostem.  
 
-Je lepší začít s několika projevy, pak [zkontrolujte koncový bod projevy](label-suggested-utterances.md) správné záměru extrakci předpovědi a entity.
+Je lepší začít s několika projevy, pak [zkontrolujte koncový bod projevy](luis-how-to-review-endoint-utt.md) správné záměru extrakci předpovědi a entity.
 
 ## <a name="ignoring-words-and-punctuation"></a>Ignoruje slova a interpunkce
 Pokud chcete ignorovat slova nebo interpunkčním znaménkem v příkladu utterance, použijte [vzor](luis-concept-patterns.md#pattern-syntax) s _Ignorovat_ syntaxe. 
@@ -61,10 +61,10 @@ Pokud chcete ignorovat slova nebo interpunkčním znaménkem v příkladu uttera
 
 ## <a name="testing-utterances"></a>Testování projevy 
 
-Vývojáři by měl spustit testování jejich LUIS aplikace skutečný provozu odesláním projevy ke koncovému bodu. Tyto projevy, které se používají ke zlepšení výkonu záměry a entity, které [zkontrolujte projevy](label-suggested-utterances.md). Testy odeslané s webem služby LUIS testování podokně neodešlou prostřednictvím koncového bodu a proto se nepodílejí na aktivní učení. 
+Vývojáři by měl spustit testování jejich LUIS aplikace skutečný provozu odesláním projevy ke koncovému bodu. Tyto projevy, které se používají ke zlepšení výkonu záměry a entity, které [zkontrolujte projevy](luis-how-to-review-endoint-utt.md). Testy odeslané s webem služby LUIS testování podokně neodešlou prostřednictvím koncového bodu a proto se nepodílejí na aktivní učení. 
 
 ## <a name="review-utterances"></a>Zkontrolujte projevy
-Po modelu trénovaného publikované a přijímající [koncový bod](luis-glossary.md#endpoint) dotazy, [zkontrolujte projevy](label-suggested-utterances.md) navrhovaná službou LUIS. Služba LUIS vybere koncový bod projevy, které mají nízké skóre, které se záměrem nebo entity. 
+Po modelu trénovaného publikované a přijímající [koncový bod](luis-glossary.md#endpoint) dotazy, [zkontrolujte projevy](luis-how-to-review-endoint-utt.md) navrhovaná službou LUIS. Služba LUIS vybere koncový bod projevy, které mají nízké skóre, které se záměrem nebo entity. 
 
 ## <a name="best-practices"></a>Osvědčené postupy
 Kontrola [osvědčené postupy](luis-concept-best-practices.md) Další informace.

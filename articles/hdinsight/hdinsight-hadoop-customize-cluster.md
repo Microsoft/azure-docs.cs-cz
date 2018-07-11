@@ -1,8 +1,7 @@
 ---
-title: Přizpůsobení clusterů HDInsight pomocí akcí skriptů - Azure | Microsoft Docs
-description: Zjistěte, jak přizpůsobit clusterů HDInsight pomocí akce skriptu.
+title: Přizpůsobení clusterů HDInsight pomocí skriptových akcí – Azure | Dokumentace Microsoftu
+description: Informace o přizpůsobení clusterů HDInsight pomocí skriptových akcí.
 services: hdinsight
-documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -14,76 +13,76 @@ ms.topic: conceptual
 ms.date: 10/05/2016
 ms.author: nitinme
 ROBOTS: NOINDEX
-ms.openlocfilehash: 15fa3e7738810ada48f471a685f79a82445ad70c
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 50ef40b3ea3bc8c768e8b4266ef50ad02e02f026
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34808855"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37950610"
 ---
 # <a name="customize-windows-based-hdinsight-clusters-using-script-action"></a>Přizpůsobení clusterů HDInsight se systémem Windows pomocí akce skriptu
-**Skript akce** slouží k vyvolání [vlastní skripty](hdinsight-hadoop-script-actions.md) během procesu vytváření clusteru pro instalaci další software v clusteru.
+**Skript akce** můžete použít k vyvolání [vlastní skripty](hdinsight-hadoop-script-actions.md) během procesu vytváření clusteru pro instalaci dalšího softwaru v clusteru.
 
-Informace v tomto článku jsou specifické pro clustery HDInsight se systémem Windows. V clusterech se systémem Linux naleznete v části [HDInsight se systémem Linux přizpůsobit clustery pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md).
+Informace v tomto článku je specifická pro clustery HDInsight se systémem Windows. Pro clustery založené na Linuxu najdete v článku [HDInsight založených na Linuxu přizpůsobit clustery pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md).
 
 > [!IMPORTANT]
 > HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
-Clustery prostředí HDInsight lze přizpůsobit v různých další způsoby, například včetně další účty Azure Storage, změna Hadoop soubory konfigurace (core-site.xml, hive-site.xml atd.) nebo přidání sdílené knihovny (například Hive, Oozie) do společné umístění v clusteru. Toto vlastní nastavení můžete provést pomocí prostředí Azure PowerShell, .NET SDK služby Azure HDInsight nebo portálu Azure. Další informace najdete v tématu [vytvoření Hadoop clusterů v HDInsight][hdinsight-provision-cluster].
+Clustery HDInsight je možné přizpůsobit v různých i další způsoby, například další účty úložiště Azure, včetně změny Hadoop konfiguračních souborů (core-site.xml, hive-site.xml, atd.), nebo přidávání sdílené knihovny (například Hive, Oozie) do společné umístění v clusteru. Tato přizpůsobení lze provést prostřednictvím Azure Powershellu, Azure HDInsight .NET SDK nebo na webu Azure portal. Další informace najdete v tématu [vytváření clusterů Hadoop v HDInsight][hdinsight-provision-cluster].
 
 [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell-cli-and-dotnet-sdk.md)]
 
 ## <a name="script-action-in-the-cluster-creation-process"></a>Akce skriptu v procesu vytváření clusteru
-Akce skriptu se používá pouze při clusteru je právě vytvářena. Následující diagram znázorňuje, když během procesu vytváření provedení akce skriptu:
+Akce skriptu se používá pouze při clusteru se právě vytváří. Následující diagram znázorňuje při spuštění akce skriptu během procesu vytváření:
 
-![Přizpůsobení cluster HDInsight a fáze při vytváření clusteru][img-hdi-cluster-states]
+![Přizpůsobení clusteru HDInsight a fáze při vytváření clusteru][img-hdi-cluster-states]
 
-Když je skript spuštěn, cluster zadá **ClusterCustomization** fáze. V této fázi skript běží pod účtem správce systému, paralelně na všechny zadané uzly v clusteru a poskytuje úplný správce oprávnění na uzlech.
+Když je spuštěný skript, přejde do clusteru **ClusterCustomization** fázi. V této fázi skript je spuštěn v rámci účtu správce systému a paralelně na všechny zadané uzly v clusteru a poskytuje oprávnění správce na uzlech.
 
 > [!NOTE]
-> Vzhledem k tomu, že máte oprávnění správce na uzlech clusteru během **ClusterCustomization** fáze, můžete použít skript k provedení operací, jako je spouštění a zastavování služeb, včetně služby související s Hadoop. Ano, v rámci skriptu je nutné zajistit, že služby Ambari a další služby související s Hadoop jsou spuštěny před dokončení spuštění skriptu. Tyto služby jsou nezbytné pro úspěšně zjištění stavu a stavu clusteru při jeho vytvoření. Pokud změníte žádnou konfiguraci v clusteru, který má vliv na tyto služby, musíte použít pomocných funkcí, které jsou k dispozici. Další informace o pomocných funkcí najdete v tématu [vyvíjet akce skriptu skripty pro HDInsight][hdinsight-write-script].
+> Vzhledem k tomu, že máte oprávnění správce na uzlech clusteru během **ClusterCustomization** fáze, můžete použít skript k provedení operace, jako je zastavení a spuštění služeb, včetně služby související s Hadoop. Jako součást skriptu, takže je musíte ujistit, že služby Ambari a další služby související s Hadoop zprovoznění před dokončením spuštění skriptu. Tyto služby jsou nezbytné pro úspěšně zjistit stav a stav clusteru při jeho vytváření. Pokud změníte žádnou konfiguraci v clusteru, který má vliv na tyto služby, musíte použít pomocných funkcí, které jsou k dispozici. Další informace o pomocných funkcí najdete v tématu [vývoj skriptových akcí skriptů pro HDInsight][hdinsight-write-script].
 >
 >
 
-Výstup a protokoly chyb pro skript ukládají na výchozí účet úložiště, které jste zadali pro cluster. Protokoly jsou uložené v tabulce s názvem **u < \cluster-name-fragment >< \time-stamp > setuplog**. Toto jsou agregovaná protokoly ze skriptu, spusťte na všech uzlech (hlavního uzlu a pracovní uzly) v clusteru.
+Výstup a protokoly chyb pro skript jsou uloženy v výchozí účet úložiště, který jste zadali pro cluster. Protokoly se ukládají v tabulce s názvem **u < \cluster-name-fragment >< \time-stamp > setuplog**. Jedná se o agregovat protokoly ze skriptu, spusťte na všech uzlech (hlavní uzel a pracovní uzly) v clusteru.
 
-Každý cluster může přijmout víc akcí skriptů, které je vyvolán v pořadí, ve kterém jsou uvedené. Skript může spuštěna v hlavního uzlu, uzlů pracovního procesu nebo obojí.
+Každý cluster může přijmout více akcí skriptů, které jsou vyvolány v pořadí, ve kterém jsou uvedeny. Skript můžete spustit na hlavní uzel a pracovní uzly.
 
-HDInsight nabízí několik skriptů v clusterech HDInsight nainstalovat následující součásti:
+HDInsight poskytuje několik skriptů v clusterech HDInsight nainstalovat následující komponenty:
 
 | Název | Skript |
 | --- | --- |
-| **Nainstalujte Spark** |https://hdiconfigactions.blob.core.windows.net/sparkconfigactionv03/spark-installer-v03.ps1. V tématu [instalací a použitím clustery Spark v HDInsight][hdinsight-install-spark]. |
-| **Nainstalujte jazyk R** |https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1. V tématu [instalací a použitím R v clusterech HDInsight] [hdinsight-install-r]. |
-| **Nainstalujte Solr** |https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1. V tématu [instalace a použití clusterů v HDInsight Solr](hdinsight-hadoop-solr-install.md). |
-| - **Nainstalujte Giraph** |https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1. V tématu [instalace a použití clusterů v HDInsight Giraph](hdinsight-hadoop-giraph-install.md). |
-| **Předběžné načtení knihovny Hive** |https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1. V tématu [přidat Hive knihovny v clusterech prostředí HDInsight](hdinsight-hadoop-add-hive-libraries.md) |
+| **Nainstalovat Spark** | `https://hdiconfigactions.blob.core.windows.net/sparkconfigactionv03/spark-installer-v03.ps1`. Zobrazit [instalace a použití Spark na HDInsight clusterů][hdinsight-install-spark]. |
+| **Nainstalovat jazyk R** | `https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1`. Zobrazit [instalace a použití R na clusterech HDInsight](r-server/r-server-hdinsight-manage.md#install-additional-r-packages-on-the-cluster). |
+| **Nainstalovat Solr** | `https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1`. Zobrazit [instalace a použití Solru na HDInsight clusterů](hdinsight-hadoop-solr-install.md). |
+| **Nainstalovat Giraph** | `https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1`. Zobrazit [instalace a použití Giraphu na HDInsight clusterů](hdinsight-hadoop-giraph-install.md). |
+| **Přednačíst knihovny Hive** | `https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1`. Zobrazit [knihovny přidat Hive v clusterech HDInsight](hdinsight-hadoop-add-hive-libraries.md) |
 
-## <a name="call-scripts-using-the-azure-portal"></a>Volání skripty pomocí portálu Azure
-**Z portálu Azure**
+## <a name="call-scripts-using-the-azure-portal"></a>Volání skriptů pomocí webu Azure portal
+**Na webu Azure Portal**
 
-1. Zahájení vytváření clusteru, jak je popsáno v [vytvoření Hadoop clusterů v HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
-2. V části volitelné konfigurace pro **akcí skriptů** okně klikněte na tlačítko **přidat akce skriptu** poskytnout podrobnosti o akce skriptu, jak je uvedeno níže:
+1. Začněte s vytvářením clusteru, jak je popsáno v [vytváření clusterů Hadoop v HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
+2. V části volitelná konfigurace pro **akcí skriptů** okno, klikněte na tlačítko **přidání akce skriptu** k zajištění podrobných informací o akce skriptu, jak je znázorněno níže:
 
-    ![Použití akce skriptu k přizpůsobení cluster](./media/hdinsight-hadoop-customize-cluster/HDI.CreateCluster.8.png "použití akce skriptu k přizpůsobení clusteru")
+    ![Přizpůsobení clusteru pomocí akce skriptu](./media/hdinsight-hadoop-customize-cluster/HDI.CreateCluster.8.png "přizpůsobení clusteru pomocí akce skriptu")
 
     <table border='1'>
         <tr><th>Vlastnost</th><th>Hodnota</th></tr>
         <tr><td>Název</td>
             <td>Zadejte název akce skriptu.</td></tr>
         <tr><td>Identifikátor URI skriptu</td>
-            <td>Zadejte identifikátor URI skriptu, která je volána, chcete-li přizpůsobit clusteru. s</td></tr>
+            <td>Zadejte identifikátor URI pro skript, který je vyvolán přizpůsobení clusteru. s</td></tr>
         <tr><td>HEAD/pracovního procesu</td>
-            <td>Zadejte uzly (**Head** nebo **pracovní**) podle kterého se spouští skript přizpůsobení.</b>.
+            <td>Zadat uzly (**Head** nebo **pracovního procesu**) podle kterého se spouští skript vlastního nastavení.</b>.
         <tr><td>Parametry</td>
-            <td>Zadejte parametry, pokud se vyžadují skriptem.</td></tr>
+            <td>Zadejte parametry, pokud je to nutné skript.</td></tr>
     </table>
 
-    Stiskněte klávesu ENTER, chcete-li přidat více než jednu akci skriptu pro instalaci více součástí v clusteru.
-3. Klikněte na tlačítko **vyberte** uložit konfiguraci akce skriptu a pokračujte vytvoření clusteru.
+    Stisknutím klávesy ENTER přidejte více než jednu akci se skripty pro instalaci více součástí clusteru.
+3. Klikněte na tlačítko **vyberte** uložit konfigurační skript akce a pokračujte vytvoření clusteru.
 
-## <a name="call-scripts-using-azure-powershell"></a>Volání skripty pomocí Azure PowerShell
-Tento následující skript prostředí PowerShell ukazuje, jak nainstalovat Spark na clusteru HDInsight založené na systému Windows.  
+## <a name="call-scripts-using-azure-powershell"></a>Volání skriptů pomocí Azure Powershellu
+Tento následující skript prostředí PowerShell ukazuje, jak nainstalovat Windows založené na clusteru HDInsight Spark.  
 
     # Provide values for these variables
     $subscriptionID = "<Azure Suscription ID>" # After "Connect-AzureRmAccount", use "Get-AzureRmSubscription" to list IDs.
@@ -167,12 +166,12 @@ Tento následující skript prostředí PowerShell ukazuje, jak nainstalovat Spa
 
 Pokud chcete nainstalovat další software, budete muset nahradit soubor skriptu ve skriptu:
 
-Po zobrazení výzvy zadejte přihlašovací údaje pro cluster. To může trvat několik minut, než je vytvořen cluster.
+Po zobrazení výzvy zadejte přihlašovací údaje pro cluster. Může trvat několik minut, než se cluster vytvoří.
 
-## <a name="call-scripts-using-net-sdk"></a>Volání skripty pomocí sady .NET SDK
-Následující příklad ukazuje, jak nainstalovat Spark na clusteru HDInsight založené na systému Windows. Pokud chcete nainstalovat další software, potřebujete nahradit soubor skriptu v kódu.
+## <a name="call-scripts-using-net-sdk"></a>Volání skriptů pomocí sady .NET SDK
+Následující příklad ukazuje, jak nainstalovat Windows založené na clusteru HDInsight Spark. Pokud chcete nainstalovat další software, je potřeba nahradit soubor skriptu v kódu.
 
-**Vytvoření clusteru HDInsight pomocí Spark**
+**Vytvoření clusteru HDInsight se Spark**
 
 1. Vytvořte konzolovou aplikaci C# v sadě Visual Studio.
 2. Z konzoly Správce balíčků Nuget spusťte následující příkaz.
@@ -191,7 +190,7 @@ Následující příklad ukazuje, jak nainstalovat Spark na clusteru HDInsight z
         using Microsoft.IdentityModel.Clients.ActiveDirectory;
         using Microsoft.Rest;
         using Microsoft.Rest.Azure.Authentication;
-4. Umístěte kód ve třídě, s následujícími službami:
+4. Umístěte kód ve třídě s následujícími možnostmi:
 
         private static HDInsightManagementClient _hdiManagementClient;
 
@@ -283,38 +282,38 @@ Následující příklad ukazuje, jak nainstalovat Spark na clusteru HDInsight z
         }
 5. Stisknutím klávesy **F5** spusťte aplikaci.
 
-## <a name="support-for-open-source-software-used-on-hdinsight-clusters"></a>Podpora pro open-source softwaru použít na clustery HDInsight
-Služba Microsoft Azure HDInsight je flexibilní platforma, která vám umožní sestavovat aplikace velkých objemů dat v cloudu pomocí prostředí technologie open source vytvořen kolem Hadoop. Microsoft Azure poskytuje určitou úroveň podpory pro technologie open source, jak je popsáno v **podporu oboru** části <a href="http://azure.microsoft.com/support/faq/" target="_blank">web Azure podporují – nejčastější dotazy</a>. Služba HDInsight poskytuje další úroveň podpory pro některé součásti, jak je popsáno níže.
+## <a name="support-for-open-source-software-used-on-hdinsight-clusters"></a>Podpora pro open source softwaru používaného v clusterech HDInsight
+Služba Microsoft Azure HDInsight je flexibilní platforma, která vám umožní sestavovat aplikace pro velké objemy dat v cloudu s využitím ekosystém open source technologií formátovaných kolem Hadoop. Microsoft Azure poskytuje obecné úroveň podpory pro open source technologie, jak je popsáno v **rozsah podpory** část <a href="http://azure.microsoft.com/support/faq/" target="_blank">podporují nejčastější dotazy k Azure web</a>. Služba HDInsight poskytuje další úroveň podpory pro některé ze součástí, jak je popsáno níže.
 
-Existují dva typy open-source komponent, které jsou k dispozici ve službě HDInsight:
+Existují dva druhy opensourcové komponenty, které jsou k dispozici ve službě HDInsight:
 
-* **Integrované komponenty** -tyto komponenty jsou předinstalované na clustery HDInsight a poskytují základní funkce služby clusteru. Například YARN ResourceManager, Hive dotazovací jazyk (HiveQL) a knihovně Mahout patří do této kategorie. Úplný seznam součástí clusteru je k dispozici v [co je nového ve verzích clusterů systému Hadoop poskytovaných prostředím HDInsight?](hdinsight-component-versioning.md) </a>.
-* **Vlastní komponenty** -, jako uživatel clusteru, můžete nainstalovat nebo použít v vaše úlohy žádné součásti k dispozici v komunitě nebo vytvořené vámi.
+* **Integrované komponenty** – tyto součásti jsou předem nainstalované na clusterech HDInsight a poskytuje základní funkce clusteru. Například správce prostředků YARN, Hive dotazovacího jazyka (HiveQL) a knihovny Mahout patří do této kategorie. Úplný seznam součástí clusteru je k dispozici v [co je nového ve verzích clusterů Hadoop poskytovaných službou HDInsight?](hdinsight-component-versioning.md) </a>.
+* **Vlastní komponenty** -, jako uživatel clusteru, můžete nainstalovat nebo použít ve vašich úloh žádné součásti k dispozici v komunitě nebo vytvořené vámi.
 
-Integrované komponenty jsou plně podporované a Microsoft Support pomůže k izolování a vyřešení problémů týkajících se těchto součástí.
+Integrované komponenty jsou plně podporované a Microsoft Support pomáhá izolovat a vyřešit problémy týkající se těchto součástí.
 
 > [!WARNING]
-> Součásti, které jsou součástí clusteru HDInsight jsou plně podporované a Microsoft Support pomůže k izolování a vyřešení problémů týkajících se těchto součástí.
+> Součásti, které jsou součástí clusteru HDInsight jsou plně podporované a Microsoft Support pomáhá izolovat a vyřešit problémy týkající se těchto součástí.
 >
-> Vlastní komponenty získat vyvineme podporu k pomoci při další řešení problému. To může způsobit řešení problému nebo s žádostí o zapojení dostupné kanály pro technologie s otevřeným zdrojem, kterých se nachází hluboké znalosti pro tuto technologii. Například existuje mnoho komunity webů, které lze použít jako: [fórum MSDN pro HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [ http://stackoverflow.com ](http://stackoverflow.com). Také Apache projekty mají na projektu serverů [ http://apache.org ](http://apache.org), například: [Hadoop](http://hadoop.apache.org/), [Spark](http://spark.apache.org/).
+> Vlastní komponenty získat obchodně přiměřenou podporu můžete-li dále řešit tento problém. To může vést řeší problém nebo s výzvou k zapojení dostupné kanály pro open source technologie, ve kterých se nachází rozsáhlé znalosti pro tuto technologii. Existuje například mnoho komunitním webům, které lze použít jako: [fórum na webu MSDN pro HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [ http://stackoverflow.com ](http://stackoverflow.com). Také projektů Apache mít projektovým webům na [ http://apache.org ](http://apache.org), například: [Hadoop](http://hadoop.apache.org/), [Spark](http://spark.apache.org/).
 >
 >
 
-Služba HDInsight poskytuje několik způsobů, jak používat vlastní komponenty. Bez ohledu na to, jak součást použít nebo nainstalované v clusteru se vztahuje stejnou úroveň podpory. Níže je seznam nejběžnější způsoby vlastní komponenty lze v clusterech HDInsight:
+Služba HDInsight poskytuje několik způsobů, jak používat vlastní komponenty. Bez ohledu na to, jak je komponenta použít nebo nainstalované v clusteru se vztahuje stejnou úroveň podpory. Tady je seznam nejběžnějších způsobů, aby vlastní komponenty je možné použít v clusterech HDInsight:
 
-1. Úloha odeslání - Hadoop nebo jiné typy úloh, které spustit nebo používat vlastní komponenty lze odeslat do clusteru.
-2. Přizpůsobení clusteru – při vytváření clusteru, můžete zadat další nastavení a vlastní součásti, které se nainstalují na uzlech clusteru.
-3. Ukázky - oblíbených vlastní součásti, Microsoft a ostatní mohou poskytnout ukázky použití těchto součástí v clusterech HDInsight. Tyto soubory jsou uvedeny bez podpory.
+1. Odeslání úlohy - Hadoop nebo jiných typů úloh, které spouštění nebo použít vlastní komponenty můžete odeslat do clusteru.
+2. Přizpůsobení clusteru – při vytváření clusteru, můžete zadat další nastavení a vlastních součástech, které se nainstalují na uzlech clusteru.
+3. Ukázky – pro oblíbené vlastní komponenty, Microsoft a ostatní může poskytnout ukázky použití těchto komponent v clusterech HDInsight. Tyto ukázky jsou k dispozici bez podpory.
 
-## <a name="develop-script-action-scripts"></a>Vývoj skriptů akce skriptu
-V tématu [vyvíjet akce skriptu skripty pro HDInsight][hdinsight-write-script].
+## <a name="develop-script-action-scripts"></a>Vývoj skriptových akcí skriptů
+Zobrazit [vývoj skriptových akcí skriptů pro HDInsight][hdinsight-write-script].
 
 ## <a name="see-also"></a>Další informace najdete v tématech
-* [Vytvoření clusterů systému Hadoop v HDInsight] [ hdinsight-provision-cluster] obsahuje pokyny k vytvoření clusteru HDInsight pomocí jiné možnosti vlastního nastavení.
-* [Vývoj skriptů akce skriptu pro HDInsight][hdinsight-write-script]
-* [Nainstalovat a používat Spark v HDInsight clustery][hdinsight-install-spark]
-* [Nainstalovat a používat Solr v clusterech HDInsight](hdinsight-hadoop-solr-install.md).
-* [Nainstalovat a používat Giraph v clusterech HDInsight](hdinsight-hadoop-giraph-install.md).
+* [Vytvoření clusterů Hadoop v HDInsight] [ hdinsight-provision-cluster] pokyny o tom, jak vytvořit HDInsight cluster s použitím jiné možnosti vlastního nastavení.
+* [Vývoj skriptových akcí skriptů pro HDInsight][hdinsight-write-script]
+* [Instalace a použití Sparku na clusterech HDInsight][hdinsight-install-spark]
+* [Instalace a použití Solru na clusterech HDInsight](hdinsight-hadoop-solr-install.md).
+* [Instalace a použití Giraphu na clusterech HDInsight](hdinsight-hadoop-giraph-install.md).
 
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install.md
 [hdinsight-write-script]: hdinsight-hadoop-script-actions.md

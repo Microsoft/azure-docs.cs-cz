@@ -10,17 +10,17 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: v-geberr
-ms.openlocfilehash: fe035c744e7cbc291fa392205239f331410412dc
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 45289b712a127e70636e225778d7a36578b34fa5
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37866327"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37931622"
 ---
 # <a name="prebuilt-domain-reference"></a>Referenční informace k předem připraveným doménám
 V tomto materiálu najdete informace o [předem připravených domén](luis-how-to-use-prebuilt-domains.md), které jsou předem sestavené kolekce záměry a entity, které nabízí služba LUIS.
 
-[Vlastní domény](create-new-app.md), naopak spustit bez záměry a modely. Všechny předem připravených domény záměry a entity můžete přidat do vlastního modelu.
+[Vlastní domény](luis-how-to-start-new-app.md), naopak spustit bez záměry a modely. Všechny předem připravených domény záměry a entity můžete přidat do vlastního modelu.
 
 ## <a name="list-of-prebuilt-domains"></a>Seznam předem připravených domén
 Služba LUIS nabízí 20 předem připravených domén. 
@@ -154,7 +154,7 @@ Ukazuje, zábava, které doména poskytuje záměry a entity související hled�
 | ContentRating | Hodnocení G nebo R filmů obsahu médií.|Videa pro děti.<br/>PG hodnocení.|
 | Genre | Rozšířením podle tematických videa, hry, aplikace nebo skladby.|Comedies<br/>Hrané filmy<br/>Legrační|
 | Klíčové slovo| Obecný hledané klíčové slovo zadáním atributu neexistuje mezi sloty konkrétnější média.|Nahrávky především<br/>Řeka měsíce<br/>Amelia Earhart|
-| Jazyk | Hodnocení G nebo R filmů obsahu médií.|Francouzština<br/>Angličtina<br/>Korejština|
+| Jazyk | Jazyk použitý v médií, jako jsou mluvený jazyk filmu nebo skladby.|Francouzština<br/>Angličtina<br/>Korejština|
 | MediaFormat | Další technické speciální typ ve kterém je formátováno média.|HD, High Density filmy<br/>3D filmy<br/>Ke stažení|
 | MediaSource | Úložiště nebo webu marketplace k získání média.|Netflix<br/>Prime|
 | MediaSubTypes| Typy médií je menší než filmy a hry.|Ukázky<br/>DLC<br/>Přípojných|

@@ -9,18 +9,18 @@ ms.technology: luis
 ms.topic: article
 ms.date: 06/08/2018
 ms.author: v-geberr;
-ms.openlocfilehash: e416eec29ff9f4ac96eabf11c87424abeba0c75b
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 4144db7474f20f464d14722431d5d4a2546a8c5a
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37855713"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37949845"
 ---
 # <a name="enable-active-learning-by-reviewing-endpoint-utterances"></a>Povolit aktivní učení kontrolou projevy koncového bodu
 Aktivní učení je jednou tři strategie zlepšit přesnost předpovědi a nejjednodušší implementace. 
 
 ## <a name="what-is-active-learning"></a>Co je aktivní učení
-Aktivní učení je dvoustupňový proces. Služba LUIS nejprve vybere projevy, které dostane v koncovém bodu aplikace vyžadující ověření. Druhý krok se provádí pomocí vlastníka aplikace nebo spolupracovníka ověřit vybranou projevy pro [zkontrolujte](label-suggested-utterances.md), včetně správné záměr a všechny entity v rámci záměr. Po zkontrolování projevy, trénování a publikování aplikace znovu. 
+Aktivní učení je dvoustupňový proces. Služba LUIS nejprve vybere projevy, které dostane v koncovém bodu aplikace vyžadující ověření. Druhý krok se provádí pomocí vlastníka aplikace nebo spolupracovníka ověřit vybranou projevy pro [zkontrolujte](luis-how-to-review-endoint-utt.md), včetně správné záměr a všechny entity v rámci záměr. Po zkontrolování projevy, trénování a publikování aplikace znovu. 
 
 ## <a name="which-utterances-are-on-the-review-list"></a>Projevy, které jsou na seznamu revize
 LUIS projevy přidá do seznamu kontrolu, když na začátek ohlásí záměr nízké skóre, nebo hodnocení horní dva příkazy jsou příliš zavřít. 
@@ -39,4 +39,4 @@ Pokud je vaše aplikace velké, můžete zkontrolovat některé projevy a odstra
 
 ## <a name="next-steps"></a>Další postup
 
-* Zjistěte, jak [zkontrolujte](Label-Suggested-Utterances.md) projevy koncového bodu
+* Zjistěte, jak [zkontrolujte](luis-how-to-review-endoint-utt.md) projevy koncového bodu

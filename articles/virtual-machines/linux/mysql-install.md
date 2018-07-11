@@ -1,9 +1,9 @@
 ---
-title: Nastavení databáze MySQL na virtuální počítač s Linuxem v Azure | Microsoft Docs
-description: Informace o instalaci zásobníku MySQL na virtuální počítač s Linuxem (Ubuntu nebo RedHat rodiny operačního systému) v Azure
+title: Nastavení MySQL na virtuální počítač s Linuxem v Azure | Dokumentace Microsoftu
+description: Zjistěte, jak nainstalovat MySQL stack na virtuální počítač s Linuxem (Ubuntu a Red Hat řada operačního systému) v Azure
 services: virtual-machines-linux
 documentationcenter: ''
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager,azure-service-management
@@ -14,60 +14,60 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 02/01/2016
-ms.author: iainfou
-ms.openlocfilehash: d91f8cf8455a60d3e0afb2f209ba07933bcdee1c
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: cynthn
+ms.openlocfilehash: c8043064ac1df40eaa31ae56e9ec31c0152e0130
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30239170"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37934259"
 ---
 # <a name="how-to-install-mysql-on-azure"></a>Jak nainstalovat MySQL v Azure
-V tomto článku se dozvíte, jak nainstalovat a nakonfigurovat MySQL na virtuální počítač Azure s Linuxem.
+V tomto článku se dozvíte, jak nainstalovat a nakonfigurovat MySQL na virtuálním počítači Azure s Linuxem.
 
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
-## <a name="install-mysql-on-your-virtual-machine"></a>Nainstalujte MySQL na virtuálním počítači
+## <a name="install-mysql-on-your-virtual-machine"></a>Instalace MySQL na virtuálním počítači
 > [!NOTE]
-> Musíte už mít virtuálního počítače Microsoft Azure se systémem Linux k dokončení tohoto kurzu. Najdete v tématu [kurzu virtuální počítač Azure s Linuxem](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) k vytvoření a nastavení virtuálního počítače s Linuxem pomocí `mysqlnode` jako název virtuálního počítače a `azureuser` jako uživatel, než budete pokračovat.
+> Musíte již mít na virtuálním počítači Microsoft Azure s Linuxem k dokončení tohoto kurzu. Podrobnosti najdete [Linuxový virtuální počítač Azure kurz](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) k vytvoření a nastavení virtuálního počítače s Linuxem pomocí `mysqlnode` jako název virtuálního počítače a `azureuser` jako uživatel, než budete pokračovat.
 > 
 > 
 
-V takovém případě 3306 port použijte jako MySQL port.  
+V takovém případě použijte 3306 port jako port pro MySQL.  
 
-Připojte k systému Linux vytvořené prostřednictvím putty virtuálních počítačů. Pokud je při prvním použití virtuálního počítače s Linuxem Azure, naleznete v části použití klienta putty připojit k virtuální počítač s Linuxem [zde](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Připojte se k Linuxový virtuální počítač vytvořený pomocí putty. Pokud je při prvním použití Linuxový virtuální počítač Azure, najdete informace o použití klienta putty připojení k virtuálnímu počítači s Linuxem [tady](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-K instalaci MySQL5.6 jako příklad v tomto článku budeme používat úložiště balíčku. Ve skutečnosti MySQL5.6 má další zlepšování výkonu než MySQL5.5.  Další informace [zde](http://www.mysqlperformanceblog.com/2013/02/18/is-mysql-5-6-slower-than-mysql-5-5/).
+K instalaci MySQL5.6 jako příklad v tomto článku budeme používat úložiště balíčků. Ve skutečnosti MySQL5.6 má další vylepšení výkonu než MySQL5.5.  Další informace o [tady](http://www.mysqlperformanceblog.com/2013/02/18/is-mysql-5-6-slower-than-mysql-5-5/).
 
-### <a name="how-to-install-mysql56-on-ubuntu"></a>Postup instalace MySQL5.6 v Ubuntu
-Virtuální počítač s Linuxem s Ubuntu z Azure použijeme sem.
+### <a name="how-to-install-mysql56-on-ubuntu"></a>Postup instalace MySQL5.6 na Ubuntu
+Virtuální počítač s Linuxem s Ubuntu v Azure použijeme tady.
 
-* Krok 1: Instalace MySQL serveru 5.6 přepínač tak, aby `root` uživatele:
+* Krok 1: Instalace MySQL serveru 5.6 přepnout na `root` uživatele:
   
             #[azureuser@mysqlnode:~]sudo su -
   
-    Mysql-server 5.6 nainstalujte:
+    Nainstalujte mysql server 5.6:
   
             #[root@mysqlnode ~]# apt-get update
             #[root@mysqlnode ~]# apt-get -y install mysql-server-5.6
   
-    Během instalace zobrazí se dialogové okno okno poping než zeptejte se, že vám umožní nastavit MySQL kořenové heslo níže a můžete potřebovat nastavit heslo sem.
+    Během instalace zobrazí se dialogového okna okno poping až ask vám umožní nastavit kořenového hesla MySQL níže a budete potřebovat nastavit heslo tady.
   
-    ![Bitové kopie](./media/mysql-install/virtual-machines-linux-install-mysql-p1.png)
+    ![image](./media/mysql-install/virtual-machines-linux-install-mysql-p1.png)
 
     Zadejte heslo znovu pro potvrzení.
 
-    ![Bitové kopie](./media/mysql-install/virtual-machines-linux-install-mysql-p2.png)
+    ![image](./media/mysql-install/virtual-machines-linux-install-mysql-p2.png)
 
-* Krok 2: Server MySQL přihlášení
+* Krok 2: Přihlášení na Server MySQL
   
-    Po dokončení instalace serveru MySQL, spustí se automaticky službu MySQL. Můžete se přihlásit MySQL Server s `root` uživatele.
-    Použití níže příkaz heslo k přihlášení a vstup.
+    Po dokončení instalace serveru MySQL se spustí automaticky službu MySQL. MySQL Server se můžete přihlásit `root` uživatele.
+    Používá následující příkaz k přihlášení a zadání hesla.
   
              #[root@mysqlnode ~]# mysql -uroot -p
-* Krok 3: Spravujte spuštěnou službu MySQL
+* Krok 3: Správa spuštěnou službu MySQL
   
-    (a) získat stav službu MySQL
+    (a) získat stav služby MySQL
   
              #[root@mysqlnode ~]# service mysql status
   
@@ -83,22 +83,22 @@ Virtuální počítač s Linuxem s Ubuntu z Azure použijeme sem.
   
              #[root@mysqlnode ~]# service mysql restart
 
-### <a name="how-to-install-mysql-on-red-hat-os-family-like-centos-oracle-linux"></a>Postup instalace MySQL Red Hat operačních systémů jako CentOS, Oracle Linux
-Virtuální počítač s Linuxem pomocí CentOS nebo Oracle Linux použijeme sem.
+### <a name="how-to-install-mysql-on-red-hat-os-family-like-centos-oracle-linux"></a>Jak nainstalovat MySQL v řadě Red Hat OS jako CentOS, Oracle Linux
+Virtuální počítač s Linuxem s CentOS nebo Oracle Linux použijeme tady.
 
-* Krok 1: Přidání úložiště MySQL Yum přepínače k `root` uživatele:
+* Krok 1: Přidejte úložiště MySQL Yumu přepínač na `root` uživatele:
   
             #[azureuser@mysqlnode:~]sudo su -
   
-    Stáhněte a nainstalujte balíček MySQL verze:
+    Stáhněte a nainstalujte balíček verze MySQL:
   
             #[root@mysqlnode ~]# wget http://repo.mysql.com/mysql-community-release-el6-5.noarch.rpm
             #[root@mysqlnode ~]# yum localinstall -y mysql-community-release-el6-5.noarch.rpm
-* Krok 2: Upravte následující soubor povolit úložiště MySQL pro stažení balíčku MySQL5.6.
+* Krok 2: Upravte následující soubor úložiště MySQL pro stahování balíčku MySQL5.6.
   
             #[root@mysqlnode ~]# vim /etc/yum.repos.d/mysql-community.repo
   
-    Aktualizujte každý hodnotu tohoto souboru do níže:
+    Aktualizujte jednotlivé hodnoty tohoto souboru níže:
   
         \# *Enable to use MySQL 5.6*
   
@@ -112,14 +112,14 @@ Virtuální počítač s Linuxem pomocí CentOS nebo Oracle Linux použijeme sem
         gpgcheck=1
   
         gpgkey=file:/etc/pki/rpm-gpg/RPM-GPG-KEY-mysql
-* Krok 3: Instalace MySQL z úložiště MySQL MySQL nainstalovat:
+* Krok 3: Instalace MySQL z MySQL – úložiště nainstalovat MySQL:
   
            #[root@mysqlnode ~]#yum install mysql-community-server
   
-    Balíček MySQL RPM a všechny související balíčky budou nainstalovány.
+    Balíček MySQL RPM a všechny související balíčky se nainstalují.
 * Krok 4: Správa spuštěnou službu MySQL
   
-    (a) zkontrolujte stav služby MySQL serveru:
+    (a) zkontrolujte stav služby serveru MySQL:
   
            #[root@mysqlnode ~]#service mysqld status
   
@@ -127,29 +127,29 @@ Virtuální počítač s Linuxem pomocí CentOS nebo Oracle Linux použijeme sem
   
            #[root@mysqlnode ~]#netstat  –tunlp|grep 3306
 
-    (c) spusťte server, MySQL:
+    (c) spusťte MySQL server:
 
            #[root@mysqlnode ~]#service mysqld start
 
-    (d) zastavení MySQL serveru:
+    (d) zastavte MySQL server:
 
            #[root@mysqlnode ~]#service mysqld stop
 
-    (e) MySQL sady při spuštění systému spouštěcí up:
+    (e) MySQL sada chcete spustit po spuštění provozu systému:
 
            #[root@mysqlnode ~]#chkconfig mysqld on
 
 
-### <a name="how-to-install-mysql-on-suse-linux"></a>Postup instalace databáze MySQL na SUSE Linux
-Virtuální počítač s Linuxem pomocí OpenSUSE použijeme sem.
+### <a name="how-to-install-mysql-on-suse-linux"></a>Jak nainstalovat MySQL v SUSE Linuxu
+Virtuální počítač s Linuxem pomocí OpenSUSE použijeme tady.
 
 * Krok 1: Stáhněte a nainstalujte MySQL Server
   
-    Přepnout na `root` uživatele prostřednictvím následující příkaz:  
+    Přepnout na `root` uživatele provede následující příkaz:  
   
            #sudo su -
   
-    Stáhněte a nainstalujte balíček MySQL:
+    Stáhněte a nainstalujte MySQL balíčku:
   
            #[root@mysqlnode ~]# zypper update
   
@@ -164,18 +164,18 @@ Virtuální počítač s Linuxem pomocí OpenSUSE použijeme sem.
   
            #[root@mysqlnode ~]# netstat  –tunlp|grep 3306
 
-    (c) spusťte server, MySQL:
+    (c) spusťte MySQL server:
 
            #[root@mysqlnode ~]# rcmysql start
 
-    (d) zastavení MySQL serveru:
+    (d) zastavte MySQL server:
 
            #[root@mysqlnode ~]# rcmysql stop
 
-    (e) MySQL sady při spuštění systému spouštěcí up:
+    (e) MySQL sada chcete spustit po spuštění provozu systému:
 
            #[root@mysqlnode ~]# insserv mysql
 
-### <a name="next-step"></a>Další krok
-Najít další využití a informace týkající se MySQL [zde](https://www.mysql.com/).
+### <a name="next-step"></a>Dalším krokem
+Najít další využití a informace týkající se MySQL [tady](https://www.mysql.com/).
 

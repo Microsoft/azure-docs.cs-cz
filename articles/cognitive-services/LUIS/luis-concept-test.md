@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: v-geberr
-ms.openlocfilehash: 6c9bd93cf6e67aa815d289260f2b37bd3189c1d1
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: d6cbba2a5bf9ff44439c6e98debde5cd47d4bfc3
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37887583"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37950385"
 ---
 # <a name="testing-in-luis"></a>Testování v LUIS
 
@@ -45,7 +45,7 @@ Pokud testování koncového bodu a nechcete, aby utterance protokolována, neza
 ## <a name="where-to-find-utterances"></a>Kde najít projevy
 LUIS ukládá do protokolu dotazu, který je k dispozici ke stažení na všechny zaznamenané projevy [LUIS](luis-reference-regions.md) webu **aplikace** stránka seznamu, jakož i LUIS [rozhraní API pro vytváření](https://aka.ms/luis-authoring-apis). 
 
-Jakékoli projevy služba LUIS je jistí, jaké jsou uvedeny v **[zkontrolujte koncový bod projevy](label-suggested-utterances.md)** stránku [LUIS](luis-reference-regions.md) webu. 
+Jakékoli projevy služba LUIS je jistí, jaké jsou uvedeny v **[zkontrolujte koncový bod projevy](luis-how-to-review-endoint-utt.md)** stránku [LUIS](luis-reference-regions.md) webu. 
 
 ![Kontrola promluv koncového bodu](./media/luis-concept-test/review-endpoint-utterances.png)
  

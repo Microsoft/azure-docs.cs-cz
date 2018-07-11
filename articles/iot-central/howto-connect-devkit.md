@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 237a19b76268e1207c9de438a4f79d3dc8382476
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: c2a7278f4ee6861a1e47610c06fdc6ffcec52247
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37903805"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37931078"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Připojení MXChip IoT DevKit zařízení do aplikace Azure IoT Central
 
@@ -82,7 +82,8 @@ Přepínací tlačítko Nastavení
 | Typ            | Zobrazované jméno | Název pole | Typ dat |
 | --------------- | ------------ | ---------- | --------- |
 | Vlastnosti zařízení | Kostka čísla   | dieNumber  | číslo    |
-| Text            | Umístění     | location   | neuvedeno       |
+| Vlastnosti zařízení | Umístění zařízení   | location  | location    |
+| Text            | Vyroben v     | manufacturedIn   | neuvedeno       |
 
 
 ### <a name="add-a-real-device"></a>Přidání skutečného zařízení
@@ -152,19 +153,24 @@ Můžete zobrazit telemetrická data měření a hodnoty ohlášených vlastnost
 
 1. Použití **Device Explorer** přejděte **měření** stránky pro skutečné zařízení MXChip jste přidali:
 
-    ![Přejděte na skutečných zařízení](media/howto-connect-devkit/realdevice.png)
+    ![Přejděte na skutečných zařízení](media/howto-connect-devkit/realdevicenew.png)
 
 1. Na **měření** stránky, můžete zobrazit telemetrická data přicházející z MXChip zařízení:
 
-    ![Zobrazení telemetrie z reálného zařízení](media/howto-connect-devkit/realtelemetry.png)
+    ![Zobrazení telemetrie z reálného zařízení](media/howto-connect-devkit/devicetelemetrynew.png)
 
-1. Na **vlastnosti** stránky, můžete zobrazit poslední číslo oznámí zařízení:
+1. Na **vlastnosti** stránky, můžete zobrazit poslední číslo a umístění zařízení zařízení:
 
-    ![Zobrazení vlastností zařízení](media/howto-connect-devkit/deviceproperties.png)
+    ![Zobrazení vlastností zařízení](media/howto-connect-devkit/devicepropertynew.png)
 
 1. Na **nastavení** stránce nastavení na zařízení MXChip lze aktualizovat:
 
-    ![Zobrazení nastavení zařízení](media/howto-connect-devkit/settings.png)
+    ![Zobrazení nastavení zařízení](media/howto-connect-devkit/devicesettingsnew.png)
+
+1. Na **řídicí panel** stránky, zobrazí se umístění mapy
+
+    ![Zobrazení řídicího panelu zařízení](media/howto-connect-devkit/devicedashboardnew.png)
+
 
 ## <a name="download-the-source-code"></a>Stáhněte si zdrojový kód
 

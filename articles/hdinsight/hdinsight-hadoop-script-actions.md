@@ -1,50 +1,48 @@
 ---
-title: Vývoj akcí skriptů v prostředí HDInsight - Azure | Microsoft Docs
-description: Zjistěte, jak přizpůsobit clustery Hadoop pomocí akce skriptu. Akce skriptu lze nainstalovat další software spuštěných v clusteru s Hadoop nebo změnit konfiguraci aplikace nainstalované v clusteru.
+title: Vývoj akcí skriptů v HDInsight – Azure | Dokumentace Microsoftu
+description: Zjistěte, jak přizpůsobit clustery Hadoop pomocí skriptových akcí. Akce skriptu lze použít k instalaci dalšího softwaru, které běží na clusteru Hadoop nebo změnit konfiguraci aplikace nainstalované v clusteru.
 services: hdinsight
-documentationcenter: ''
 tags: azure-portal
 author: mumian
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 836d68a8-8b21-4d69-8b61-281a7fe67f21
 ms.service: hdinsight
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: 921da2db8e235e17611788cae7e976597bd76703
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 8b00661e1561b4aa93be26994b20e33feac97ff6
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34271611"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952364"
 ---
-# <a name="develop-script-action-scripts-for-hdinsight-windows-based-clusters"></a>Vývoj skriptů akce skriptu pro clustery se systémem HDInsight Windows
-Zjistěte, jak k psaní skriptů akce skriptu pro HDInsight. Informace o použití akce skriptu skriptů najdete v tématu [HDInsight přizpůsobit clustery pomocí akce skriptu](hdinsight-hadoop-customize-cluster.md). Stejný článek napsán pro clustery HDInsight se systémem Linux, najdete v části [vyvíjet akce skriptu skripty pro HDInsight](hdinsight-hadoop-script-actions-linux.md).
+# <a name="develop-script-action-scripts-for-hdinsight-windows-based-clusters"></a>Vývoj skriptových akcí skriptů pro clustery se systémem Windows pro HDInsight
+Zjistěte, jak psát skripty akci skriptu pro HDInsight. Informace o pomocí skriptových akcí skriptů najdete v tématu [HDInsight přizpůsobit clustery pomocí akce skriptu](hdinsight-hadoop-customize-cluster.md). Stejného článku napsané pro clustery HDInsight se systémem Linux, najdete v části [vývoj skriptových akcí skriptů pro HDInsight](hdinsight-hadoop-script-actions-linux.md).
 
 
 
 > [!IMPORTANT]
-> Kroky v tomto dokumentu fungovat pouze pro clustery HDInsight se systémem Windows. HDInsight je k dispozici pouze v systému Windows verze nižší než HDInsight 3.4. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement). Informace o použití akce skriptu s clustery se systémem Linux najdete v tématu [vývoj akcí skriptů v prostředí HDInsight (Linux)](hdinsight-hadoop-script-actions-linux.md).
+> Kroky v tomto dokumentu fungovat pouze pro clustery HDInsight se systémem Windows. HDInsight je dostupná jenom ve Windows pro verze nižší než HDInsight 3.4. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement). Informace o použití akcí skriptů v clusterech se systémem Linux najdete v tématu [vývoj akcí skriptů v HDInsight (Linux)](hdinsight-hadoop-script-actions-linux.md).
 >
 >
 
 
 
-Akce skriptu lze nainstalovat další software spuštěných v clusteru s Hadoop nebo změnit konfiguraci aplikace nainstalované v clusteru. Akce skriptů jsou skripty, které jsou spuštěny na uzlech clusteru při nasazených clusterů HDInsight, a jsou prováděna po dokončení konfigurace HDInsight uzly v clusteru. Akce skriptu se spustí v části oprávnění k účtu správce systému a poskytuje úplná přístupová práva pro uzly clusteru. Každý cluster lze zadat seznam akcí skriptů spouštění v pořadí, ve kterém jsou uvedené.
+Akce skriptu lze použít k instalaci dalšího softwaru, které běží na clusteru Hadoop nebo změnit konfiguraci aplikace nainstalované v clusteru. Akce skriptů jsou skripty, které běží na uzlech clusteru při nasazení clusterů HDInsight, a proveden, jakmile uzly v clusteru dokončete konfiguraci HDInsight. Akce skriptu se spouští v oprávnění k účtu správce systému a poskytuje úplná přístupová práva k uzlům clusteru. Každý cluster můžete zadat seznam akcí skriptů, které mají být provedeny v pořadí, ve kterém jsou uvedeny.
 
 > [!NOTE]
 > Pokud se setkáte se následující chybová zpráva:
 >
-> System.Management.Automation.CommandNotFoundException; ExceptionMessage: Termín 'Uložit-HDIFile' nebyl rozpoznán jako název rutiny, funkce, soubor skriptu nebo spustitelného programu. Zkontrolujte, zda název, nebo pokud byl zahrnut cestu, ověřte, zda je cesta správná a zkuste to znovu.
-> Je to proto, že jste nezahrnuli pomocné metody.  V tématu [pomocné metody pro vlastní skripty](hdinsight-hadoop-script-actions.md#helper-methods-for-custom-scripts).
+> System.Management.Automation.CommandNotFoundException; ExceptionMessage: Termín 'Save-HDIFile' nebyl rozpoznán jako název rutiny, funkce, soubor skriptu nebo spustitelného programu. Zkontrolujte, zda název, nebo pokud cesty byl zahrnut, ověřte správnost cesty a zkuste to znovu.
+> Je, protože jste nezahrnuli pomocné metody.  Zobrazit [pomocné metody pro vlastní skripty](hdinsight-hadoop-script-actions.md#helper-methods-for-custom-scripts).
 >
 >
 
 ## <a name="sample-scripts"></a>Ukázkové skripty
-Akce skriptu pro vytváření clusterů HDInsight v operačním systému Windows, je skript prostředí Azure PowerShell. Následující skript je ukázkou pro konfiguraci lokality konfigurační soubory:
+Akci skriptu pro vytváření clusterů HDInsight v operačním systému Windows, je skript Azure Powershellu. Následující skript je ukázka konfigurace lokality konfigurační soubory:
 
 [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 
@@ -91,32 +89,34 @@ Akce skriptu pro vytváření clusterů HDInsight v operačním systému Windows
 
     Write-HDILog "$configFileName has been configured."
 
-Skript používá čtyři parametry, název konfiguračního souboru, vlastnosti, kterou chcete upravit, hodnotu, kterou chcete nastavit a popis. Příklad:
+Skript používá čtyři parametry, název konfiguračního souboru, vlastnosti, kterou chcete upravit, hodnota, kterou chcete nastavit a popis. Příklad:
 
     hive-site.xml hive.metastore.client.socket.timeout 90
 
-Tyto parametry nastavit hodnotu hive.metastore.client.socket.timeout a 90 v souboru hive-site.xml.  Výchozí hodnota je 60 sekund.
+Tyto parametry nastavte hive.metastore.client.socket.timeout hodnotu na 90 v souboru hive-site.xml.  Výchozí hodnota je 60 sekund.
 
-Tento vzorový skript naleznete také v [ https://hditutorialdata.blob.core.windows.net/customizecluster/editSiteConfig.ps1 ](https://hditutorialdata.blob.core.windows.net/customizecluster/editSiteConfig.ps1).
+Tento ukázkový skript najdete také v [ https://hditutorialdata.blob.core.windows.net/customizecluster/editSiteConfig.ps1 ](https://hditutorialdata.blob.core.windows.net/customizecluster/editSiteConfig.ps1).
 
-HDInsight nabízí několik skriptů k instalaci dalších součástí v clusterech HDInsight:
+HDInsight poskytuje několik skriptů k instalaci dalších komponent v clusterech HDInsight:
 
 | Název | Skript |
 | --- | --- |
-| **Nainstalujte Spark** |https://hdiconfigactions.blob.core.windows.net/sparkconfigactionv03/spark-installer-v03.ps1. V tématu [instalací a použitím clustery Spark v HDInsight][hdinsight-install-spark]. |
-| **Nainstalujte jazyk R** |https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1. V tématu [instalací a použitím R v clusterech HDInsight] [hdinsight skripty r]. |
-| **Nainstalujte Solr** |https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1. V tématu [instalace a použití clusterů v HDInsight Solr](hdinsight-hadoop-solr-install.md). |
-| - **Nainstalujte Giraph** |https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1. V tématu [instalace a použití clusterů v HDInsight Giraph](hdinsight-hadoop-giraph-install.md). |
+| **Nainstalovat Spark** | `https://hdiconfigactions.blob.core.windows.net/sparkconfigactionv03/spark-installer-v03.ps1`. Zobrazit [instalace a použití Spark na HDInsight clusterů][hdinsight-install-spark]. |
+| **Nainstalovat jazyk R** | `https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1`. Zobrazit [instalace a použití R na clusterech HDInsight](r-server/r-server-hdinsight-manage.md#install-additional-r-packages-on-the-cluster). |
+| **Nainstalovat Solr** | `https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1`. Zobrazit [instalace a použití Solru na HDInsight clusterů](hdinsight-hadoop-solr-install.md). |
+| **Nainstalovat Giraph** | `https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1`. Zobrazit [instalace a použití Giraphu na HDInsight clusterů](hdinsight-hadoop-giraph-install.md). |
+| **Přednačíst knihovny Hive** | `https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1`. Zobrazit [knihovny přidat Hive v clusterech HDInsight](hdinsight-hadoop-add-hive-libraries.md) |
 
-Akce skriptu se dá nasadit na portálu Azure, Azure PowerShell nebo pomocí sady .NET SDK HDInsight.  Další informace najdete v tématu [HDInsight přizpůsobit clustery pomocí akce skriptu][hdinsight-cluster-customize].
+
+Akce skriptu je možné nasadit z portálu Azure portal, prostředí Azure PowerShell nebo pomocí sady HDInsight .NET SDK.  Další informace najdete v tématu [HDInsight přizpůsobit clustery pomocí akce skriptu][hdinsight-cluster-customize].
 
 > [!NOTE]
-> Ukázkové skripty pracovat pouze s verze clusteru HDInsight verze 3.1 nebo vyšší. Další informace o verzích clusterů HDInsight, naleznete v části [verze clusteru HDInsight](hdinsight-component-versioning.md).
+> Ukázkové skripty fungují jenom s verze clusteru HDInsight verze 3.1 nebo vyšší. Další informace o verzích clusterů HDInsight, naleznete v tématu [verze clusterů HDInsight](hdinsight-component-versioning.md).
 >
 >
 
 ## <a name="helper-methods-for-custom-scripts"></a>Pomocné metody pro vlastní skripty
-Pomocné metody akcí skriptů jsou nástroje, které můžete použít při zápisu vlastních skriptů. Tyto metody jsou definovány v [ https://hdiconfigactions.blob.core.windows.net/configactionmodulev05/HDInsightUtilities-v05.psm1 ](https://hdiconfigactions.blob.core.windows.net/configactionmodulev05/HDInsightUtilities-v05.psm1)a můžou být součástí skripty pomocí následující ukázka:
+Pomocné metody akcí skriptů jsou nástroje, které můžete použít při zápisu vlastních skriptů. Tyto metody jsou definovány v [ https://hdiconfigactions.blob.core.windows.net/configactionmodulev05/HDInsightUtilities-v05.psm1 ](https://hdiconfigactions.blob.core.windows.net/configactionmodulev05/HDInsightUtilities-v05.psm1)a mohou být zahrnuty do skriptu následující ukázka:
 
     # Download config action module from a well-known directory.
     $CONFIGACTIONURI = "https://hdiconfigactions.blob.core.windows.net/configactionmodulev05/HDInsightUtilities-v05.psm1";
@@ -135,73 +135,73 @@ Pomocné metody akcí skriptů jsou nástroje, které můžete použít při zá
         exit;
     }
 
-Zde jsou pomocné metody, které jsou poskytovány tento skript:
+Tady jsou pomocné metody, které jsou k dispozici v tento skript:
 
 | Pomocná metoda | Popis |
 | --- | --- |
-| **Save-HDIFile** |Stažení souboru z zadaný identifikátor URI (Uniform Resource) do umístění na místní disk, který je přidružený k uzlu virtuálního počítače Azure přiřadili ke clusteru. |
+| **Save-HDIFile** |Stáhne soubor do umístění na místním disku, který je přidružený k uzlu virtuálního počítače Azure se přiřazuje z zadaný identifikátor URI (Uniform Resource). |
 | **Expand-HDIZippedFile** |Rozbalte soubor ZIP. |
 | **Invoke-HDICmdScript** |Spusťte skript z cmd.exe. |
-| **Write-HDILog** |Zapište výstup z vlastní skript používané pro akci skriptu. |
-| **Get-Services** |Získáte seznam služeb, které jsou spuštěny na počítači, kde se skript spustí. |
-| **Get-Service** |S názvem konkrétní služby jako vstup, získat podrobné informace pro konkrétní službu (název služby, zpracovat ID, stavu, atd.) v počítači, kde se skript spustí. |
-| **Get-HDIServices** |Získejte seznam HDInsight služby spuštěné v počítači, kde se skript spustí. |
-| **Get-HDIService** |S konkrétním názvem služby HDInsight jako vstup, získat podrobné informace pro konkrétní službu (název služby, zpracovat ID, stavu, atd.) v počítači, kde se skript spustí. |
-| **Get-ServicesRunning** |Získání seznamu služeb, které jsou spuštěné v počítači, kde se skript spustí. |
-| **Get-ServiceRunning** |Zkontrolujte, zda specifické služby (podle názvu) je spuštěn v počítači, kde se skript spustí. |
-| **Get-HDIServicesRunning** |Získejte seznam HDInsight služby spuštěné v počítači, kde se skript spustí. |
-| **Get-HDIServiceRunning** |Zkontrolujte, zda specifické služby HDInsight (podle názvu) je spuštěn v počítači, kde se skript spustí. |
-| **Get-HDIHadoopVersion** |Získá verzi Hadoop nainstalovaná na počítači, kde se skript spustí. |
-| **Test IsHDIHeadNode** |Zkontrolujte, jestli je počítač, kde se skript spustí hlavního uzlu. |
-| **Test IsActiveHDIHeadNode** |Zkontrolujte, jestli je počítač, kde se skript spustí active hlavního uzlu. |
-| **Test IsHDIDataNode** |Zkontrolujte, jestli je počítač, kde se skript spustí datový uzel. |
+| **Write-HDILog** |Zapisovat výstup z vlastního skriptu používané pro akci skriptu. |
+| **Get-Services** |Získáte seznam služeb, které běží na počítači, ve kterém se skript spustí. |
+| **Get-Service** |Název konkrétní služby jako vstup, získat podrobné informace pro konkrétní službu (název služby, zpracování ID, stav, atd.) na počítači, ve kterém se skript spustí. |
+| **Get-HDIServices** |Získáte seznam služeb HDInsight, které jsou spuštěné v počítači, ve kterém se skript spustí. |
+| **Get-HDIService** |S konkrétním názvem služby HDInsight jako vstup, získat podrobné informace pro konkrétní službu (název služby, zpracování ID, stav, atd.) na počítači, ve kterém se skript spustí. |
+| **Get-ServicesRunning** |Získání seznamu služeb, které jsou spuštěny v počítači, ve kterém se skript spustí. |
+| **Get-ServiceRunning** |Kontrola, zda konkrétní službu (podle názvu) je spuštěná v počítači, ve kterém se skript spustí. |
+| **Get-HDIServicesRunning** |Získáte seznam služeb HDInsight, které jsou spuštěné v počítači, ve kterém se skript spustí. |
+| **Get-HDIServiceRunning** |Kontrola, zda konkrétní služby HDInsight (podle názvu) je spuštěná v počítači, ve kterém se skript spustí. |
+| **Get-HDIHadoopVersion** |Získání verze nainstalované na počítači, ve kterém se skript spustí Hadoop. |
+| **Test-IsHDIHeadNode** |Zkontrolujte, zda je počítač, ve kterém se skript spustí hlavního uzlu. |
+| **Test-IsActiveHDIHeadNode** |Zkontrolujte, zda je počítač, ve kterém se skript spustí aktivní hlavní uzel. |
+| **Test-IsHDIDataNode** |Zkontrolujte, zda je počítač, ve kterém se skript spustí datový uzel. |
 | **Edit-HDIConfigFile** |Upravte konfigurační soubory hive-site.xml, core-site.xml, hdfs-site.xml, mapred-site.xml nebo yarn-site.xml. |
 
 ## <a name="best-practices-for-script-development"></a>Osvědčené postupy pro vývoj skriptů
-Při vývoji vlastních skriptů pro cluster služby HDInsight, existuje několik doporučených postupech pro mějte na paměti:
+Když vyvíjíte vlastní skript pro HDInsight cluster, existuje několik osvědčených postupů brát v úvahu:
 
-* Kontrola verze Hadoop
+* Kontrola verze systému Hadoop
 
-    Pouze HDInsight verze 3.1 (Hadoop 2.4) a vyšší podporu pomocí akce skriptu k instalaci vlastní součásti v clusteru. Ve vašem vlastního skriptu, je nutné použít **Get-HDIHadoopVersion** pomocnou metodu, zkontrolujte verzi Hadoop, než budete pokračovat v provádění další úloh ve skriptu.
-* Zadejte stabilní odkazy na zdroje skriptu
+    Jenom HDInsight verze 3.1 (Hadoop 2.4) a vyšší podporu pomocí akce skriptu k instalaci vlastních komponent clusteru. Vlastní skript, je nutné použít **Get-HDIHadoopVersion** pomocnou metodu, pokud chcete zkontrolovat verzi Hadoop před pokračováním v provádění dalších úloh ve skriptu.
+* Stabilní odkazy skriptu prostředků
 
-    Uživatelé měli ujistit, všechny skripty a další artefaktů použít do vlastního nastavení clusteru s podporou zůstaly dostupné v celém dobu životnosti clusteru a že verze těchto souborů se po dobu trvání nemění. Pokud obnovování uzly v clusteru se vyžaduje, je nutné tyto prostředky. Osvědčeným postupem je ke stažení a archivaci vše v účtu úložiště, který uživatelské ovládací prvky. Tento účet může být výchozí účet úložiště nebo některé z dalších účtů úložiště, zadaný v době nasazení pro vlastní cluster.
-    V Spark a R přizpůsobit clusteru ukázky předpokladu, dokumentace, například, že je místní kopie prostředků v rámci tohoto účtu úložiště: https://hdiconfigactions.blob.core.windows.net/.
-* Zajistěte, aby byl skript přizpůsobení clusteru idempotent
+    Uživatelé měli ujistit, že všechny skripty a další artefakty používaných pro přizpůsobení clusteru nadále k dispozici v průběhu životního cyklu clusteru a, že verze těchto souborů se nezmění po dobu trvání. Tyto prostředky jsou povinné, pokud obnovování z Image uzly v clusteru se vyžaduje. Osvědčeným postupem je ke stažení a archivovat vše, co v účtu úložiště, který řídí uživatele. Tento účet může být výchozí účet úložiště nebo některé z dalších účtů úložiště zadaný v době nasazování pro vlastní cluster.
+    Ve Spark a R přizpůsobit clusteru ukázky, dokumentace, například, pokud je místní kopie prostředků v tomto účtu úložiště: https://hdiconfigactions.blob.core.windows.net/.
+* Ujistěte se, že cluster přizpůsobení skript je idempotentní
 
-    Měli očekávat, že jsou uzly clusteru služby HDInsight obnovit z Image po dobu životnosti clusteru. Spuštění skriptu přizpůsobení clusteru vždy, když je obnovit z Image clusteru. Tento skript musí být navržena pro uzpůsobeny idempotent v tom smyslu, že při obnovování, skript by měl zajištění, že clusteru je vráceny do stejného stavu, který byl právě po skript spustili poprvé původně vytvoření clusteru. Například pokud vlastní skript nainstalován při prvním spuštění aplikace v D:\AppLocation, pak na každé následné spuštění při obnovování, skript by měl zkontrolujte, zda aplikace existuje v umístění D:\AppLocation předtím, než budete pokračovat v dalších krocích skript.
-* Vlastní součásti nainstalovat na optimální umístění
+    Musíte očekávat, že uzly clusteru HDInsight se znovu připojit bitovou kopii po celou dobu životnosti clusteru. Přizpůsobení skript clusteru se spustí pokaždé, když clusteru je obnoví z Image. Tento skript musí být navržen tak, že přizpůsobit idempotentní v tom smyslu, že při obnovování z Image, skript se ujistěte, že cluster se vrátí do stejného stavu, ve kterém byla poslední po skript spustili poprvé, kdy byla původně vytvořena clusteru. Například pokud vlastní skript nainstalovat aplikace na D:\AppLocation při prvním spuštění, na každé následné spuštění, při obnovování z Image, skript by měl zkontrolujte, jestli aplikace existuje v umístění D:\AppLocation předtím, než budete pokračovat s jinými kroky skript.
+* Instalace vlastních součástech optimální umístění
 
-    Pokud uzly clusteru se obnoví z Image, jednotku C:\ prostředků a systémové jednotce D:\ můžete naformátována, což vede ke ztrátě dat a aplikací nainstalovaných na těchto jednotkách. Tato ztráta může také dojít, pokud do virtuálních počítačů (VM) Azure uzlu, který je součástí clusteru přestane fungovat a bude nahrazen nový uzel. Součásti můžete nainstalovat na jednotku D:\, nebo v umístění C:\apps v clusteru. Všech jiných umístění na jednotce C:\ jsou vyhrazené. Zadejte umístění, kde aplikace nebo knihovny se nainstalují ve skriptu přizpůsobení clusteru.
+    Když se uzly clusteru se znovu připojit bitovou kopii, prostředek jednotky C:\ a systémové jednotce D:\ můžete naformátována, čímž dojde ke ztrátě dat a aplikace nainstalované v těchto jednotek. To může také dojít, pokud ocitne mimo provoz do virtuálních počítačů (VM) Azure uzlu, který je součástí clusteru a nahrazuje nový uzel. Součásti můžete nainstalovat na jednotku D:\, nebo v umístění C:\apps v clusteru. Všechna místa na jednotce C:\, jsou vyhrazena. Zadejte umístění, kde se aplikace nebo knihovny nainstalovaný v clusteru přizpůsobení skriptu.
 * Zajištění vysoké dostupnosti architektury clusteru
 
-    HDInsight má aktivní – pasivní architekturu pro vysokou dostupnost, ve kterém jednou z hlavního uzlu je v aktivním režimu (které jsou spuštěny služby HDInsight) a z hlavního uzlu je v pohotovostním režimu (v HDInsight, které nejsou spuštěny služby). Uzly přepínače aktivní a pasivní režim, pokud jsou přerušení služby HDInsight. Pokud akce skriptu se používá k instalaci služby na obou head uzlů pro vysokou dostupnost, Všimněte si, že není možné automaticky převzít tyto služby uživatel nainstaloval mechanismus převzetí služeb při selhání HDInsight. Proto uživatel nainstaloval služeb v HDInsight hlavních uzlech, které jsou očekávané k zajištění vysoké dostupnosti musí mít vlastní mechanismus převzetí služeb při selhání, pokud v režimu aktivní pasivní nebo v režimu aktivní aktivní.
+    HDInsight obsahuje architekturu aktivní-pasivní vysoká dostupnost pro zajištění vysoké dostupnosti, ve kterém jedním z hlavního uzlu je v aktivním režimu (ve kterém jsou spuštěny služby HDInsight) a k hlavnímu uzlu je v pohotovostním režimu (v HDInsight, které nejsou spuštěny). Uzly mezi aktivními a pasivními režimy přepínat, pokud jsou přerušení služby HDInsight. Pokud akci skriptu se používá k instalaci služby na oba hlavní uzly pro zajištění vysoké dostupnosti, mějte na paměti, že mechanismus převzetí služeb při selhání HDInsight není možné automaticky převzít služby při selhání tyto služby uživatelé nainstalují. Proto uživatel nainstaloval služby na HDInsight hlavní uzly, u kterých se očekává k zajištění vysoké dostupnosti musí mít své vlastní mechanismus převzetí služeb při selhání, pokud v režimu aktivní pasivní nebo v režimu aktivní aktivní.
 
-    Příkaz akce skriptu HDInsight spustí na obou hlavních uzlech při roli Hlavní uzel je zadán jako hodnota v *ClusterRoleCollection* parametr. Proto při návrhu vlastní skript, ujistěte se, že váš skript známa tento instalační program. Nespouštějte k potížím, kde jsou stejné služby instalaci a spuštění na obou hlavních uzlech a jejich skončili neslučitelných mezi sebou. Navíc mějte na paměti, že dojde ke ztrátě dat během obnovování, takže softwaru nainstalované prostřednictvím akce skriptu musí být odolné vůči tyto události. Aplikace by měl být pro práci s vysokou dostupností data, která se distribuuje do mnoha uzly. Současně lze obnovit z Image až 1/5 uzlů v clusteru.
-* Konfigurace vlastní součásti, které budou používat úložiště objektů Blob v Azure
+    Příkaz akce skriptu HDInsight spustí na oba hlavní uzly při roli Hlavní uzel je zadán jako hodnotu *ClusterRoleCollection* parametru. Proto při navrhování vlastních skriptů, ujistěte se, že váš skript se vědět, toto nastavení. Byste neměli spouštět na problémy, kde je nainstalovaný a spuštěný oba hlavní uzly na stejné služby a jejich skončit vzájemně konkurují. Také mějte na paměti, že data nejsou ztracena během obnovování z Image, takže software nainstalován pomocí akce skriptu musí být odolné vůči tyto události. Aplikace by se měly navrhovat pro práci s daty s vysokou dostupností, která je distribuovaná napříč mnoha uzly. Až 1/5 uzlů v clusteru můžete obnovit z Image ve stejnou dobu.
+* Konfigurace vlastních součástech používání úložiště objektů Blob v Azure
 
-    Vlastní komponenty, které instalujete na uzlech clusteru může mít výchozí konfiguraci, kterou chcete používat Hadoop Distributed File System (HDFS) úložiště. Měli byste změnit konfiguraci místo toho používat úložiště objektů Blob Azure. Na obnovení z Image clusteru systému souborů HDFS získá formátu a by ztratíte všechna data, která je uložena existuje. Použití úložiště objektů Blob v Azure místo toho zajišťuje, aby vaše data se uchovávají.
+    Vlastní komponenty, které instalujete na uzlech clusteru může být výchozí konfiguraci, kterou chcete použít soubor systému HDFS (Hadoop Distributed) úložiště. Měli byste změnit konfiguraci místo toho použít úložiště objektů Blob v Azure. Na clusteru obnovení z Image získá ve formátu systému souborů HDFS a ztratí všechna data, která je uložena existuje. Použití úložiště objektů Blob v Azure místo toho zajistí, že vaše data uchovávat.
 
-## <a name="common-usage-patterns"></a>Obecné vzory využití
-Tato část obsahuje pokyny k implementaci některých běžných vzorů využití, které se mohou vyskytnout při zápisu vlastních skriptů.
+## <a name="common-usage-patterns"></a>Běžné vzory využití
+Tato část obsahuje pokyny k implementaci některých běžných vzorů využití, které můžete narazit na při zápisu vlastních skriptů.
 
 ### <a name="configure-environment-variables"></a>Konfigurace proměnných prostředí
-Často v vývoj akcí skriptů, si myslíte, že třeba nutnost nastavení proměnných prostředí. Například je nejpravděpodobnější scénář při stahování binární z externího webu, nainstalujte ji na clusteru a přidejte umístění, kde je instalována do proměnné prostředí vaší 'PATH'. Následující fragment kódu ukazuje, jak nastavení proměnných prostředí ve vlastních skriptů.
+Často v vývoj skriptových akcí, máte pocit, že potřeba nastavit proměnné prostředí. Nejpravděpodobnější situací pro instanci, je při stahování binární soubor z externího, nainstalujte ho na clusteru a přidejte umístění, kde je nainstalovaný do proměnné prostředí 'PATH'. Následující fragment kódu ukazuje, jak nastavit proměnné prostředí ve vlastních skriptů.
 
     Write-HDILog "Starting environment variable setting at: $(Get-Date)";
     [Environment]::SetEnvironmentVariable('MDS_RUNNER_CUSTOM_CLUSTER', 'true', 'Machine');
 
-Tento příkaz nastaví proměnnou prostředí **MDS_RUNNER_CUSTOM_CLUSTER** na hodnotu "true" a také nastaví rozsah této proměnné můžete být celého systému. Je důležité, aby proměnné prostředí se nastavují v příslušné oboru – počítače nebo uživatele. Odkazovat [sem] [ 1] Další informace o nastavení proměnných prostředí.
+Tento příkaz nastaví proměnnou prostředí **MDS_RUNNER_CUSTOM_CLUSTER** na hodnotu "true" a také nastaví rozsah této proměnné na úrovni počítače. Je důležité, aby proměnné prostředí se nastavují v oboru odpovídající – počítače nebo uživatele. Přečtěte si [tady] [ 1] Další informace o nastavení proměnných prostředí.
 
-### <a name="access-to-locations-where-the-custom-scripts-are-stored"></a>Přístup k umístění, kde jsou uloženy vlastní skripty
-Skripty použít pro přizpůsobení cluster musí buď nacházet ve výchozí účet úložiště pro cluster nebo ve veřejném kontejneru jen pro čtení na jiný účet úložiště. Pokud skript odkazuje na prostředky, které se nacházejí jinde prostředky musí být veřejně čitelné. Můžete například chtít přístup k souboru a uložte ho pomocí příkazu SaveFile HDI.
+### <a name="access-to-locations-where-the-custom-scripts-are-stored"></a>Přístup k umístění, kde jsou uloženy vlastních skriptů
+Skripty používané k úpravám cluster musí buď být ve výchozí účet úložiště pro cluster nebo ve veřejném kontejneru jen pro čtení na jiný účet úložiště. Pokud vaše skripty využívají prostředky jinde prostředky musí být veřejně čitelné. Můžete například chtít přístup k souboru a uložit ho pomocí příkazu SaveFile HDI.
 
     Save-HDIFile -SrcUri 'https://somestorageaccount.blob.core.windows.net/somecontainer/some-file.jar' -DestFile 'C:\apps\dist\hadoop-2.4.0.2.1.9.0-2196\share\hadoop\mapreduce\some-file.jar'
 
-V tomto příkladu, musíte zajistit, aby kontejneru `somecontainer` v účtu úložiště `somestorageaccount` veřejně přístupný. Skript, jinak hodnota vyhodí výjimku "Nebyl nalezen" a selhání.
+V tomto příkladu musíte zajistit, aby kontejneru `somecontainer` v účtu úložiště `somestorageaccount` je veřejně dostupná. V opačném případě skript výjimku "Nebyl nalezen" a selhání.
 
-### <a name="pass-parameters-to-the-add-azurermhdinsightscriptaction-cmdlet"></a>Předat parametry do rutiny přidat AzureRmHDInsightScriptAction
-Chcete-li předat do rutiny přidat AzureRmHDInsightScriptAction několik parametrů, je potřeba formátu řetězcovou hodnotu tak, aby obsahovala všechny parametry pro skript. Příklad:
+### <a name="pass-parameters-to-the-add-azurermhdinsightscriptaction-cmdlet"></a>Předání parametrů do rutiny Add-AzureRmHDInsightScriptAction
+K rutině Add-AzureRmHDInsightScriptAction předat více parametrů, budete muset formátování řetězcovou hodnotu obsahující všechny parametry skriptu. Příklad:
 
     "-CertifcateUri wasb:///abc.pfx -CertificatePassword 123456 -InstallFolderName MyFolder"
 
@@ -210,8 +210,8 @@ nebo
     $parameters = '-Parameters "{0};{1};{2}"' -f $CertificateName,$certUriWithSasToken,$CertificatePassword
 
 
-### <a name="throw-exception-for-failed-cluster-deployment"></a>Throw – výjimka pro nasazení clusteru se nezdařilo
-Pokud chcete získat přesně informováni o nebylo úspěšné skutečnost, že přizpůsobení clusteru podle očekávání, je nutné vyvolat výjimku a selhání vytvoření clusteru. Můžete například chtít zpracovat soubor, pokud existuje a zpracování chyby případu, kdy soubor neexistuje. To by zajistěte, aby skript ukončí řádně a stav clusteru správně je známý. Následující fragment kódu poskytuje příklad toho, jak to můžete udělat:
+### <a name="throw-exception-for-failed-cluster-deployment"></a>Vyvolat výjimku pro nasazení clusteru se nezdařilo
+Pokud chcete získat přesné upozorněni nebyla úspěšná na skutečnost, že přizpůsobení clusteru podle očekávání, je potřeba vytvořit výjimku a navrácení služeb po vytvoření clusteru. Můžete například chtít zpracovat soubor, pokud existuje a zpracování chyb případu, pokud soubor neexistuje. To zajistí, že skript řádně ukončí a stav clusteru správně se označuje. Následující fragment kódu obsahuje příklad toho, jak toho dosáhnout:
 
     If(Test-Path($SomePath)) {
         #Process file in some way
@@ -221,7 +221,7 @@ Pokud chcete získat přesně informováni o nebylo úspěšné skutečnost, že
     exit
     }
 
-V tento fragment kódu Pokud soubor neexistuje, by vedlo ke stavu, kde skript ve skutečnosti řádně ukončí po tisku chybovou zprávu, a cluster dosáhne stavu spuštěno za předpokladu, že ji "úspěšně" dokončit proces přizpůsobení clusteru. Pokud chcete lépe informováni o skutečnost, že cluster přizpůsobení v podstatě se nezdařilo z důvodu chybějícího souboru očekávaným způsobem, je vhodnější a vyvolána výjimka, selžou krok přizpůsobení clusteru. K dosažení tohoto cíle musíte použít následující fragment kódu ukázka.
+V tomto fragmentu kódu Pokud soubor neexistuje, by vedlo ke stavu, ve kterém skript ve skutečnosti řádně ukončí potom, co Tisk chybové zprávě a cluster dosáhne spuštěném stavu, za předpokladu, že "úspěšně" dokončit proces přizpůsobení clusteru. Pokud chcete přesně upozorněni na skutečnost, že přizpůsobení v podstatě clusteru se nezdařilo z důvodu chybějícího souboru očekávaným způsobem, je vhodnější vyvolat výjimku a navrácení služeb po kroku vlastního nastavení clusteru. Toho lze dosáhnout musíte použít následující fragment kódu ukázky.
 
     If(Test-Path($SomePath)) {
         #Process file in some way
@@ -232,29 +232,29 @@ V tento fragment kódu Pokud soubor neexistuje, by vedlo ke stavu, kde skript ve
     }
 
 
-## <a name="checklist-for-deploying-a-script-action"></a>Kontrolní seznam pro nasazení akce skriptu
-Zde jsou kroky, které jsme trvalo při přípravě nasazení těchto skriptů:
+## <a name="checklist-for-deploying-a-script-action"></a>Kontrolní seznam pro nasazení skriptových akcí
+Tady jsou kroky, které jsme podnikli při přípravě nasazení těchto skriptů:
 
-1. Uveďte soubory, které obsahují vlastní skripty na místě, která je přístupná na uzlech clusteru během nasazení. To může být libovolná z výchozí nebo další účty úložiště zadaný v době nasazení clusteru nebo jiných veřejně přístupná úložiště kontejneru.
-2. Přidejte kontroly na skripty a ujistěte se, že spouštění idempotently, tak, aby skript můžete spustit několikrát na stejném uzlu.
-3. Použití `Write-Output` rutiny Azure Powershellu tisknout do STDOUT a také STDERR. Nepoužívejte `Write-Host`.
-4. Použijte složku dočasného souboru, jako například `$env:TEMP`, abyste mohli udržovat stažený soubor používá skripty a pak vyčištění je po mají spouštět skripty.
-5. Nainstalujte jenom na D:\ nebo C:\apps vlastní software. Jiných umístění na jednotce C: není vhodné používat, protože se jedná o vyhrazené. Instalace souborů na jednotce C: mimo složku C:\apps může vést k selhání instalace během reimages uzlu.
-6. V případě, že nastavení na úrovni operačního systému nebo Hadoop služby konfigurační soubory se změnily, můžete tak, aby se vyzvedávat všechna nastavení, úrovni operačního systému, jako je například proměnné prostředí, které jsou nastavené ve skriptech restartovat služby HDInsight.
+1. Umístěte soubory, které obsahují vlastní skripty na místě, které je přístupné uzly clusteru během nasazení. To může být výchozí nebo další účty úložiště zadaný v době nasazení clusteru nebo jiném kontejneru veřejně dostupné úložiště.
+2. Přidáte kontroly na skripty, abyste měli jistotu, že se provedou idempotently, tak, aby skript můžete spustit více než jednou ve stejném uzlu.
+3. Použití `Write-Output` rutiny Azure Powershellu pro tisk do STDOUT i STDERR. Nepoužívejte `Write-Host`.
+4. Použít složce dočasných souborů, například `$env:TEMP`, abyste mohli zachovat staženého souboru, které skripty používají a následnému vyčištění po jejich po uzavřeli dohodu o skripty.
+5. Instalujte vlastní software pouze na D:\ nebo C:\apps. Ty jsou vyhrazené se nemá používat jiné umístění na jednotce C:. Instalace souborů na jednotce C: mimo složku C:\apps může způsobit chyby instalačního programu při obnoví uzlu.
+6. V případě, že nastavení na úrovni operačního systému nebo Hadoop služby konfigurační soubory byly změněny, můžete chtít restartujte služby HDInsight, takže můžete vybrat nastavení jakékoli úrovni operačního systému, jako jsou proměnné prostředí nastavené ve skriptech.
 
-## <a name="debug-custom-scripts"></a>Ladění vlastních skriptů
-Spolu s další výstupu v výchozí účet úložiště, který jste zadali pro clusteru při jeho vytváření jsou uložené v souborech protokolů chyb skriptu. Protokoly jsou uložené v tabulce s názvem *u < \cluster-name-fragment >< \time-stamp > setuplog*. Toto jsou agregovaná protokoly, které mají záznamy ze všech uzlů (hlavního uzlu a pracovní uzly), na kterých bude skript spuštěn v clusteru.
+## <a name="debug-custom-scripts"></a>Ladit skripty
+Protokoly chyb skript ukládají společně s další výstup do výchozího účtu úložiště, který jste zadali pro clusteru při jeho vytvoření. Protokoly se ukládají v tabulce s názvem *u < \cluster-name-fragment >< \time-stamp > setuplog*. Jedná se o agregované protokoly, které mají záznamy ze všech uzlů (hlavní uzel a pracovní uzly), na kterých se skript spustí v clusteru.
 
-Snadný způsob, jak v protokolech je používat nástroje HDInsight pro Visual Studio. Instalace nástrojů, najdete v části [začněte používat nástroje Visual Studio Hadoop pro HDInsight](hadoop/apache-hadoop-visual-studio-tools-get-started.md#install-or-update-data-lake-tools-for-visual-studio)
+Použití nástrojů HDInsight pro Visual Studio je snadný způsob, jak v protokolech. Instalace nástrojů, naleznete v tématu [začněte používat nástroje Visual Studio Hadoop pro HDInsight](hadoop/apache-hadoop-visual-studio-tools-get-started.md#install-or-update-data-lake-tools-for-visual-studio)
 
-**Zkontrolujte protokol pomocí sady Visual Studio**
+**Chcete-li zkontrolovat protokol, pomocí sady Visual Studio**
 
 1. Otevřete sadu Visual Studio.
-2. Klikněte na tlačítko **zobrazení**a potom klikněte na **Průzkumníka serveru**.
-3. Klikněte pravým tlačítkem na "Azure", klikněte na tlačítko Připojit k **předplatná Microsoft Azure**a pak zadejte svoje přihlašovací údaje.
-4. Rozbalte položku **úložiště**, rozbalte účet úložiště Azure používat jako výchozí systém souborů, rozbalte položku **tabulky**a potom dvakrát klikněte na název tabulky.
+2. Klikněte na tlačítko **zobrazení**a potom klikněte na tlačítko **Průzkumníka serveru**.
+3. Klikněte pravým tlačítkem na "Azure", klikněte na připojit k **předplatná Microsoft Azure**a pak zadejte svoje přihlašovací údaje.
+4. Rozbalte **úložiště**, rozbalte účet úložiště Azure používat jako výchozí systém souborů, rozbalte položku **tabulky**a potom dvakrát klikněte na název tabulky.
 
-Můžete také vzdáleného do uzlů clusteru zobrazíte STDOUT a STDERR pro vlastní skripty. Protokoly na každém uzlu jsou určené jenom pro tento uzel a jsou zaznamenány do **C:\HDInsightLogs\DeploymentAgent.log**. Tyto soubory protokolu zaznamenejte všechny výstupy z vlastních skriptů. Fragment kódu příklad protokolu pro akci skriptu Spark vypadá takto:
+Můžete také vzdálené do uzlů clusteru, čímž zobrazíte STDOUT a STDERR pro vlastní skripty. Protokoly na každém uzlu jsou určené jenom pro tento uzel a jsou zaznamenány do **C:\HDInsightLogs\DeploymentAgent.log**. Tyto soubory protokolu zaznamenat všechny výstupy z vlastního skriptu. Fragment kódu příkladu protokolu pro akci skriptu Spark vypadá takto:
 
     Microsoft.Hadoop.Deployment.Engine.CustomPowershellScriptCommand; Details : BEGIN: Invoking powershell script https://configactions.blob.core.windows.net/sparkconfigactions/spark-installer.ps1.;
     Version : 2.1.0.0;
@@ -294,15 +294,15 @@ Můžete také vzdáleného do uzlů clusteru zobrazíte STDOUT a STDERR pro vla
     Exception : ;
 
 
-Tento protokol je jasné, že akce skriptu Spark byla provedena ve virtuálním počítači s názvem HEADNODE0 a že žádné výjimky došlo k během provádění.
+V tomto protokolu je jasné, že byla provedena akce skriptu Spark na virtuálním počítači s názvem HEADNODE0 a že žádné výjimky byly vyvolány během provádění.
 
-V případě, že dojde k chybě provádění, výstup popisující je také součástí tohoto souboru protokolu. Informací uvedených v těchto protokolech by měl být užitečné při ladění skriptu problémy, které by mohlo dojít.
+V případě, že dojde k selhání spuštění, výstup popisující ho také obsažené v tomto souboru protokolu. Informace uvedené v těchto protokolech by měl být užitečné při ladění skriptu problémy, které mohou nastat.
 
 ## <a name="see-also"></a>Další informace najdete v tématech
-* [Přizpůsobení clusterů HDInsight pomocí akce skriptu][hdinsight-cluster-customize]
-* [Nainstalovat a používat Spark v HDInsight clustery][hdinsight-install-spark]
-* [Nainstalovat a používat Solr v clusterech HDInsight](hdinsight-hadoop-solr-install.md).
-* [Nainstalovat a používat Giraph v clusterech HDInsight](hdinsight-hadoop-giraph-install.md).
+* [Přizpůsobení clusterů HDInsight pomocí skriptových akcí][hdinsight-cluster-customize]
+* [Instalace a použití Sparku na clusterech HDInsight][hdinsight-install-spark]
+* [Instalace a použití Solru na clusterech HDInsight](hdinsight-hadoop-solr-install.md).
+* [Instalace a použití Giraphu na clusterech HDInsight](hdinsight-hadoop-giraph-install.md).
 
 [hdinsight-provision]: hdinsight-provision-clusters.md
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster.md

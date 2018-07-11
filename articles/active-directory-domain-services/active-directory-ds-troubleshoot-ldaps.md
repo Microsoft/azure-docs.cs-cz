@@ -1,6 +1,6 @@
 ---
-title: 'Azure Active Directory Domain Services: Řešení potíží s konfigurací zabezpečení LDAP | Microsoft Docs'
-description: Řešení potíží s zabezpečený LDAP pro Azure AD Domain Services
+title: 'Azure Active Directory Domain Services: Řešení potíží s konfigurací protokolu Secure LDAP | Dokumentace Microsoftu'
+description: Řešení potíží s protokol Secure LDAP pro službu Azure AD Domain Services
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
@@ -15,54 +15,54 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: ergreenl
-ms.openlocfilehash: dbe2715d76f18daf87b65871c26d73205ec2f7fd
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 8304ffa7c0cd225f258064d3c1a36a754c684241
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36218839"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37950712"
 ---
-# <a name="azure-ad-domain-services---troubleshooting-secure-ldap-configuration"></a>Azure AD Domain Services – konfigurace řešení potíží s zabezpečení LDAP
+# <a name="azure-ad-domain-services---troubleshooting-secure-ldap-configuration"></a>Azure AD Domain Services - konfigurace řešení potíží s Secure LDAP
 
-Tento článek poskytuje řešení pro běžné problémy při [konfigurace zabezpečeného LDAP](active-directory-ds-admin-guide-configure-secure-ldap.md) pro Azure AD Domain Services.
+Tento článek poskytuje řešení pro běžné potíže při [konfiguruje protokol secure LDAP](active-directory-ds-admin-guide-configure-secure-ldap.md) pro službu Azure AD Domain Services.
 
-## <a name="aadds101-secure-ldap-network-security-group-configuration"></a>AADDS101: Konfigurace zabezpečeného skupinu zabezpečení sítě LDAP
+## <a name="aadds101-secure-ldap-network-security-group-configuration"></a>AADDS101: Konfigurace skupiny zabezpečení sítě zabezpečený LDAP
 
 **Zpráva s výstrahou:**
 
-*Zabezpečený LDAP přes internet je povoleno pro spravované domény. Přístup k portu 636 však není uzamčené pomocí skupiny zabezpečení sítě. To může vystavit uživatelské účty ve spravované doméně k útoku hrubou silou heslo.*
+*Pro spravovanou doménu je povolený protokol Secure LDAP přes internet. Přístup k portu 636 ale není uzamčen pomocí skupiny zabezpečení sítě. To může vystavit uživatelské účty ve spravované doméně vůči útokům hrubou silou heslo.*
 
-### <a name="secure-ldap-port"></a>Zabezpečený port LDAP
+### <a name="secure-ldap-port"></a>Zabezpečený port protokolu LDAP
 
-Pokud je povoleno zabezpečené LDAP, doporučujeme vytvořit další pravidla povolit příchozí LDAPS přístup pouze z určité IP adresy. Tato pravidla chránit před útoky hrubou silou, které může představovat bezpečnostní hrozby vaší domény. Port 636 umožňuje přístup k vaší spravované domény. Chcete-li aktualizovat vaše skupina NSG pro povolení přístupu pro zabezpečené LDAP:
+Když je povolený protokol secure LDAP, doporučujeme vytvořit další pravidla, která povolí příchozí LDAPS přístup pouze z určité IP adresy. Tato pravidla chránit před útoky hrubou silou, které by mohly představovat ohrožení zabezpečení domény. Port 636 umožňuje přístup ke spravované doméně. Tady je postup, chcete-li aktualizovat vaše skupiny zabezpečení sítě umožňující přístup pro protokol Secure LDAP:
 
-1. Přejděte na [kartě skupiny zabezpečení sítě](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FNetworkSecurityGroups) na portálu Azure
-2. Zvolte NSG přidružené k vaší doméně z tabulky.
+1. Přejděte [skupiny zabezpečení sítě kartu](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FNetworkSecurityGroups) na webu Azure Portal
+2. Vyberte skupiny zabezpečení sítě přidružené k vaší doméně z tabulky.
 3. Klikněte na **příchozí pravidla zabezpečení**
 4. Vytvořit pravidlo portu 636
-   1. Klikněte na tlačítko **přidat** v horním navigačním panelu.
+   1. Klikněte na tlačítko **přidat** na horním navigačním panelu.
    2. Zvolte **IP adresy** zdroje.
-   3. Zadejte rozsahy portů zdroj pro toto pravidlo.
-   4. Zadejte "636" pro cílové rozsahy portů.
+   3. Zadejte rozsahy zdrojových portů pro toto pravidlo.
+   4. Vstup "636" pro rozsahy cílových portů.
    5. Protokol je **TCP**.
-   6. Zadejte pro pravidlo vhodný název, popis a priority. Toto pravidlo s prioritou musí být vyšší než pravidla "Deny všechny" priority, pokud nemáte.
+   6. Pravidlo poskytněte vhodný název, popis a priority. Priorita tohoto pravidla by měla být vyšší než priorita tohoto pravidla "Odepřít všechny", pokud nemáte.
    7. Klikněte na **OK**.
 5. Ověřte, zda byl vytvořen pravidla.
-6. Zkontrolujte stav vaší domény ve dvou hodin k zajištění, že jste dokončili postup správně.
+6. Kontrola stavu domény do dvou hodin k zajištění, že jste dokončili postup správně.
 
 > [!TIP]
-> Port 636 není pouze pravidlo, které jsou potřebné pro Azure AD Domain Services plynulejší. Další informace najdete [sítě pokyny](active-directory-ds-networking.md) nebo [NSG řešení potíží s konfigurací](active-directory-ds-troubleshoot-nsg.md) články.
+> Port 636 není jediné pravidlo, které jsou potřebné pro Azure AD Domain Services běží plynule. Další informace najdete [pokyny pro sítě](active-directory-ds-networking.md) nebo [NSG řešení potíží s konfigurací](active-directory-ds-troubleshoot-nsg.md) články.
 >
 
-## <a name="aadds502-secure-ldap-certificate-expiring"></a>AADDS502: Zabezpečené vypršení platnosti certifikátu LDAP
+## <a name="aadds502-secure-ldap-certificate-expiring"></a>AADDS502: Zabezpečení vypršení platnosti certifikátu protokolu LDAP
 
 **Zpráva s výstrahou:**
 
-*Zabezpečený LDAP certifikát pro spravované doméně vyprší XX.*
+*Certifikát protokolu secure LDAP pro spravovanou doménu vyprší [date]].*
 
 **Řešení:**
 
-Vytvořit nový certifikát zabezpečený LDAP podle kroků uvedených v [konfigurace zabezpečeného LDAP](active-directory-ds-admin-guide-configure-secure-ldap.md) článku.
+Vytvořit nový certifikát protokolu secure LDAP podle kroků uvedených v [nakonfigurovat protokol secure LDAP](active-directory-ds-admin-guide-configure-secure-ldap.md) článku.
 
 ## <a name="contact-us"></a>Kontaktujte nás
-Obraťte se na produktový tým Azure Active Directory Domain Services na [sdílet zpětnou vazbu nebo pro podporu](active-directory-ds-contact-us.md).
+Obraťte se na Azure Active Directory Domain Services produktovému týmu a [podělit se o názory, nebo pro podporu](active-directory-ds-contact-us.md).

@@ -9,24 +9,24 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: v-geberr
-ms.openlocfilehash: 24e179e24423412a5ff25a64157e273b1a025a6f
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 515bcf4e06de562d1c83082824daa4dca0b54226
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37888690"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37950511"
 ---
 # <a name="data-storage-and-removal"></a>Úložiště dat a odstranění
 Služba LUIS ukládá data šifrovaná v úložišti Azure dat. odpovídající oblast učená klíčem. Tato data jsou ukládána po dobu 30 dnů. 
 
 ## <a name="export-and-delete-app"></a>Exportovat a odstranit aplikaci
-Uživatelé mají plnou kontrolu nad [export](create-new-app.md#export-app) a [odstranění](create-new-app.md#delete-app) aplikace. 
+Uživatelé mají plnou kontrolu nad [export](luis-how-to-start-new-app.md#export-app) a [odstranění](luis-how-to-start-new-app.md#delete-app) aplikace. 
 
 ## <a name="utterances-in-an-intent"></a>Projevy v záměru
 Odstranit projevy příklad používá pro školení [LUIS](luis-reference-regions.md). Pokud odstraníte utterance příklad z vaší aplikace LUIS, se odebere z webové služby LUIS a není k dispozici pro export.
 
 ## <a name="utterances-in-review"></a>Projevy v revizi
-Projevy můžete odstranit ze seznamu uživatelů projevy, které navrhuje LUIS v  **[kontrolní koncový bod projevy stránku](label-suggested-utterances.md)**. Odstraňuje se z tohoto seznamu projevy brání jejich navržena, ale nedojde k jejich odstranění z protokolů.
+Projevy můžete odstranit ze seznamu uživatelů projevy, které navrhuje LUIS v  **[kontrolní koncový bod projevy stránku](luis-how-to-review-endoint-utt.md)**. Odstraňuje se z tohoto seznamu projevy brání jejich navržena, ale nedojde k jejich odstranění z protokolů.
 
 ## <a name="accounts"></a>Účty
 Pokud odstraníte účet, se odstraní všechny aplikace, spolu s jejich příklad projevy a protokoly. Data se uchovávají po dobu 60 dní, než účet a data se trvale odstraní.
@@ -44,4 +44,4 @@ Pro účely uchovávání dat a odstranění neaktivních aplikace LUIS může _
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Další informace o exportu a odstranění aplikace](create-new-app.md)
+> [Další informace o exportu a odstranění aplikace](luis-how-to-start-new-app.md)

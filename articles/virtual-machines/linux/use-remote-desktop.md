@@ -1,9 +1,9 @@
 ---
-title: Použití služby Vzdálená plocha pro virtuální počítač s Linuxem v Azure | Microsoft Docs
-description: Postup instalace a konfigurace vzdálené plochy (xrdp) pro připojení k virtuální počítač s Linuxem v Azure pomocí nástroje s grafickým rozhraním
+title: Použití vzdálené plochy k virtuálnímu počítači s Linuxem v Azure | Dokumentace Microsoftu
+description: Zjistěte, jak nainstalovat a nakonfigurovat vzdálené plochy (xrdp) pro připojení k virtuálnímu počítači s Linuxem v Azure pomocí grafických nástrojů
 services: virtual-machines-linux
 documentationcenter: ''
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: ''
 ms.assetid: ''
@@ -13,39 +13,39 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2018
-ms.author: iainfou
-ms.openlocfilehash: fb3639b8ce5c50773bec0ee429e1fa2f7277671b
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.author: cynthn
+ms.openlocfilehash: 5e79cfa2c428323d8531bec7eab875a2dace4ff2
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34716614"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37934749"
 ---
-# <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>Instalace a konfigurace vzdálené plochy pro připojení k virtuální počítač s Linuxem v Azure
-Linux virtuálních počítačů (VM) v Azure jsou obvykle spravovat z příkazového řádku pomocí připojení zabezpečené shell (SSH). Při vydání nových do systému Linux, nebo pro rychlé řešení potíží scénáře, může být snazší pomocí vzdálené plochy. Tento článek podrobně popisují postup instalace a konfigurace prostředí plochy ([xfce](https://www.xfce.org)) a vzdálené plochy ([xrdp](http://www.xrdp.org)) pro váš virtuální počítač s Linuxem pomocí modelu nasazení Resource Manager.
+# <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>Instalace a konfigurace vzdálené plochy pro připojení k virtuálnímu počítači s Linuxem v Azure
+Virtuální počítače s Linuxem (VM) v Azure jsou obvykle spravovat z příkazového řádku pomocí připojení (SSH secure shell). Při nové po Linux, nebo pro rychlé řešení problémů s scénáře, využívání vzdálené plochy může být jednodušší. Tento článek podrobně popisuje, jak nainstalovat a nakonfigurovat desktopové prostředí ([xfce](https://www.xfce.org)) a vzdálené plochy ([xrdp](http://www.xrdp.org)) pro virtuální počítač s Linuxem pomocí modelu nasazení Resource Manager.
 
 
 ## <a name="prerequisites"></a>Požadavky
-Tento článek vyžaduje existující 16.04 LTS virtuálního počítače s Ubuntu v Azure. Pokud potřebujete k vytvoření virtuálního počítače, použijte jednu z následujících metod:
+Tento článek vyžaduje existující Ubuntu 16.04 LTS virtuální počítač v Azure. Pokud potřebujete vytvořit virtuální počítač, použijte jednu z následujících metod:
 
-- [Rozhraní příkazového řádku Azure 2.0](quick-create-cli.md)
-- [Portálu Azure](quick-create-portal.md)
+- [Azure CLI 2.0](quick-create-cli.md)
+- [Azure Portal](quick-create-portal.md)
 
 
-## <a name="install-a-desktop-environment-on-your-linux-vm"></a>Instalace prostředí plochy na virtuálním počítačům s Linuxem
-Většina virtuální počítače s Linuxem v Azure, nemají prostředí plochy nainstalované ve výchozím nastavení. Virtuální počítače s Linuxem se běžně spravují pomocí připojení SSH a místo prostředí plochy. Existují různé prostředí plochy v systému Linux, které můžete. V závislosti na zvoleném prostředí plochy může využívat jeden až 2 GB místa na disku a trvat 5 až 10 minut, nainstalovat a nakonfigurovat všechny požadované balíčky.
+## <a name="install-a-desktop-environment-on-your-linux-vm"></a>Instalovat desktopové prostředí na virtuální počítač s Linuxem
+Většina virtuálních počítačů s Linuxem v Azure nemají desktopové prostředí, ve výchozím nastavení nainstalovaná. Virtuální počítače s Linuxem se běžně spravují pomocí připojení SSH a místo desktopové prostředí. Existují různé desktopové prostředí v Linuxu, která můžete použít. V závislosti na vašem výběru desktopové prostředí může využívat jeden až 2 GB místa na disku a trvat 5 až 10 minut, než instalace a konfigurace požadované balíčky.
 
-Následující příklad nainstaluje jednoduchá [xfce4](https://www.xfce.org/) prostředí plochy na virtuálního počítače s Ubuntu 16.04 LTS. Příkazy pro jiné distribuce jsou mírně odlišné (použijte `yum` na Red Hat Enterprise Linux nainstalovat a nakonfigurovat příslušný `selinux` pravidla, nebo použijte `zypper` k instalaci na SUSE, třeba).
+Následující příklad nainstaluje jednoduchá [xfce4](https://www.xfce.org/) desktopové prostředí na virtuální počítač s Ubuntu 16.04 LTS. Příkazy pro jiné distribuce se mírně liší (použijte `yum` instalace na Red Hat Enterprise Linux a konfigurace odpovídající `selinux` pravidla, nebo použijte `zypper` k instalaci na SUSE, třeba).
 
-První, SSH k virtuálnímu počítači. V následujícím příkladu se připojuje k virtuálnímu počítači s názvem *myvm.westus.cloudapp.azure.com* k uživatelskému jménu *azureuser*. Použijte vlastní hodnoty:
+První, přístup k vašemu virtuálnímu počítači přes SSH. Následující příklad se připojí k virtuálnímu počítači s názvem *myvm.westus.cloudapp.azure.com* k uživatelskému jménu *azureuser*. Použijte vlastní hodnoty:
 
 ```bash
 ssh azureuser@myvm.westus.cloudapp.azure.com
 ```
 
-Pokud používáte systém Windows a jsou nutné další informace o používání SSH, přečtěte si téma [klíče použití SSH se systémem Windows](ssh-from-windows.md).
+Pokud používáte Windows a potřebujete další informace o používání SSH, přečtěte si téma [klíče, jak použít SSH s Windows](ssh-from-windows.md).
 
-Dále nainstalujte pomocí xfce `apt` následujícím způsobem:
+V dalším kroku nainstalovat s použitím xfce `apt` následujícím způsobem:
 
 ```bash
 sudo apt-get update
@@ -53,13 +53,13 @@ sudo apt-get install xfce4
 ```
 
 ## <a name="install-and-configure-a-remote-desktop-server"></a>Instalace a konfigurace serveru vzdálené plochy
-Teď, když máte prostředí plochy nainstalovat, nakonfigurujte služby vzdálené plochy k přijímat příchozí připojení. [xrdp](http://xrdp.org) serveru protokolu RDP (Remote Desktop) s otevřeným zdrojem, která je k dispozici na většině Linuxových distribucích a pracuje s xfce. Nainstalujte xrdp vašeho virtuálního počítače s Ubuntu následujícím způsobem:
+Teď, když máte desktopové prostředí nainstalovaná, nakonfigurujte služby vzdálené plochy k naslouchání pro příchozí připojení. [xrdp](http://xrdp.org) je opensourcový server protokolu RDP (Remote Desktop), který je k dispozici ve většině distribucí systému Linux a dobře funguje s xfce. Na svém virtuálním počítači se systémem Ubuntu nainstalujte xrdp následujícím způsobem:
 
 ```bash
 sudo apt-get install xrdp
 ```
 
-Řekněte xrdp jaké prostředí plochy použít při spuštění relace. Nakonfigurujte xrdp používat xfce jako prostředí plochy následujícím způsobem:
+Řekněte xrdp jaké desktopové prostředí pro použití při spuštění relace. Nakonfigurujte xrdp určený xfce jako desktopové prostředí:
 
 ```bash
 echo xfce4-session >~/.xsession
@@ -73,69 +73,71 @@ sudo service xrdp restart
 
 
 ## <a name="set-a-local-user-account-password"></a>Nastavení hesla místního uživatelského účtu
-Pokud jste vytvořili heslo pro uživatelský účet při vytváření virtuálního počítače, tento krok přeskočte. Pokud používáte ověření pomocí klíče SSH pouze a nemají heslo místního účtu nastaven, zadejte heslo, než použijete xrdp k přihlášení k virtuálnímu počítači. xrdp nemůže přijmout klíče SSH pro ověřování. Následující příklad určuje heslo pro uživatelský účet *azureuser*:
+Pokud heslo pro uživatelský účet vytvořili jste vytvořili virtuální počítač, tento krok přeskočte. Pokud používáte ověřování pomocí klíče SSH pouze a nemají heslo místního účtu nastavit, zadejte heslo, než použijete xrdp přihlásit ke svému virtuálnímu počítači. xrdp nemůže přijmout klíče SSH pro ověřování. Následující příklad určuje heslo pro uživatelský účet *azureuser*:
 
 ```bash
 sudo passwd azureuser
 ```
 
 > [!NOTE]
-> Zadání hesla nelze aktualizovat konfiguraci SSHD k povolení přihlášení heslo, pokud je aktuálně nepoužívá. Z hlediska zabezpečení, můžete se chcete připojit k virtuálnímu počítači pomocí tunelového propojení SSH pomocí ověřování na základě klíčů a potom se připojte k xrdp. Pokud ano, přejděte na vytváření pravidla skupiny zabezpečení sítě umožňující vzdálené plochy přenos následující krok.
+> Zadání hesla neaktualizuje konfigurace SSHD tak, aby povolovala přihlašování pomocí hesla, pokud aktuálně neexistuje. Z hlediska zabezpečení může se chcete připojit k virtuálnímu počítači pomocí tunelu SSH pomocí ověřování založeného na klíč a připojte se k xrdp. Pokud ano, přeskočte následující kroky k vytvoření pravidlo skupiny zabezpečení sítě umožňující provoz vzdálené plochy.
 
 
-## <a name="create-a-network-security-group-rule-for-remote-desktop-traffic"></a>Vytvoření pravidla skupiny zabezpečení sítě pro přenosy vzdálené plochy
-Pokud chcete povolit přenosy vzdálené plochy k dosažení virtuálním počítačům s Linuxem, zabezpečení sítě skupiny pravidlo musí být vytvořen, který umožňuje TCP na portu 3389 k dosažení virtuálního počítače. Další informace o pravidel skupiny zabezpečení sítě najdete v tématu [co je skupina zabezpečení sítě?](../../virtual-network/security-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Můžete také [pomocí portálu Azure k vytvoření pravidla skupiny zabezpečení sítě](../windows/nsg-quickstart-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+## <a name="create-a-network-security-group-rule-for-remote-desktop-traffic"></a>Vytvoření pravidla skupiny zabezpečení sítě pro provoz vzdálené plochy
+Pro povolení provozu vzdálené plochy k dosažení virtuálního počítače s Linuxem, zabezpečení sítě skupiny pravidlo musí být vytvořen, který umožňuje TCP na portu 3389 pro přístup k virtuálnímu počítači. Další informace o pravidlech skupiny zabezpečení sítě najdete v tématu [co je skupina zabezpečení sítě?](../../virtual-network/security-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Můžete také [pomocí webu Azure portal k vytvoření pravidla skupiny zabezpečení sítě](../windows/nsg-quickstart-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Následující příklad vytvoří pravidlo skupiny zabezpečení sítě s [az virtuálních počítačů open-port](/cli/azure/vm#az-vm-open-port) na portu *3389*. Azure CLI 2.0 není relace SSH do virtuálního počítače, otevřete následující pravidla skupiny zabezpečení sítě:
+Následující příklad vytvoří pravidlo skupiny zabezpečení sítě s [az vm open-port](/cli/azure/vm#az-vm-open-port) na portu *3389*. Pomocí Azure CLI 2.0 ne relaci SSH k virtuálnímu počítači, otevřete následující pravidlo skupiny zabezpečení sítě:
 
 ```azurecli
 az vm open-port --resource-group myResourceGroup --name myVM --port 3389
 ```
 
 
-## <a name="connect-your-linux-vm-with-a-remote-desktop-client"></a>Připojení virtuálním počítačům s Linuxem pomocí klienta vzdálené plochy
-Otevřete váš místní klient vzdálené plochy a připojení k IP adresu nebo název DNS vašeho virtuálního počítače s Linuxem. Zadejte uživatelské jméno a heslo pro uživatelský účet na vašem virtuálním počítači následujícím způsobem:
+## <a name="connect-your-linux-vm-with-a-remote-desktop-client"></a>Připojení virtuálního počítače s Linuxem pomocí klienta vzdálené plochy
+Otevřete váš místní klient služby Vzdálená plocha a připojte k IP adresu nebo název DNS virtuálního počítače s Linuxem. Zadejte uživatelské jméno a heslo pro uživatelský účet na váš virtuální počítač následujícím způsobem:
 
-![Připojení k xrdp pomocí vašeho klienta vzdálené plochy](./media/use-remote-desktop/remote-desktop-client.png)
+![Připojte se k xrdp pomocí klienta vzdálené plochy](./media/use-remote-desktop/remote-desktop-client.png)
 
-Po ověření prostředí plochy xfce načíst a vypadat podobně jako v následujícím příkladu:
+Po ověření, se načtou xfce desktopové prostředí a vypadat podobně jako v následujícím příkladu:
 
-![prostředí plochy xfce prostřednictvím xrdp](./media/use-remote-desktop/xfce-desktop-environment.png)
+![desktopové prostředí xfce prostřednictvím xrdp](./media/use-remote-desktop/xfce-desktop-environment.png)
+
+Pokud váš místní klient RDP používá ověření na úrovni sítě (NLA), budete muset zakázat toto nastavení připojení. XRDP NLA aktuálně nepodporuje. Můžete se také podívat na alternativní řešení RDP, které podporují NLA, jako je například [FreeRDP](http://www.freerdp.com).
 
 
 ## <a name="troubleshoot"></a>Řešení potíží
-Pokud se nemůžete připojit k virtuálním počítačům s Linuxem pomocí klienta vzdálené plochy, použijte `netstat` na virtuálním počítačům s Linuxem k ověření, že je váš virtuální počítač nenaslouchá pro připojení RDP:
+Pokud se nemůžete připojit k virtuálním počítačům s Linuxem pomocí klienta vzdálené plochy, použijte `netstat` na virtuální počítač s Linuxem k ověření, že je váš virtuální počítač naslouchání pro připojení RDP:
 
 ```bash
 sudo netstat -plnt | grep rdp
 ```
 
-Následující příklad ukazuje, virtuální počítač naslouchá na TCP port 3389 podle očekávání:
+Následující příklad ukazuje virtuální počítač naslouchá na portu TCP 3389 podle očekávání:
 
 ```bash
 tcp     0     0      127.0.0.1:3350     0.0.0.0:*     LISTEN     53192/xrdp-sesman
 tcp     0     0      0.0.0.0:3389       0.0.0.0:*     LISTEN     53188/xrdp
 ```
 
-Pokud *xrdp sesman* nenaslouchá služby, na virtuálního počítače s Ubuntu restartujte službu následujícím způsobem:
+Pokud *xrdp sesman* služba nenaslouchá, na Virtuálním počítači se systémem Ubuntu restartujte službu následujícím způsobem:
 
 ```bash
 sudo service xrdp restart
 ```
 
-Zkontrolujte protokoly */var/log* na vaše virtuálního počítače s Ubuntu pro indikaci, proč služba nereaguje. Také můžete monitorovat syslog při pokusu o připojení ke vzdálené ploše zobrazíte všechny chyby:
+Zkontrolujte protokoly */var/log* na vašem virtuálním počítači se systémem Ubuntu pro označení důvod, proč služba nereaguje. Během pokusu o připojení ke vzdálené ploše Chcete-li zobrazit všechny chyby, můžete také sledovat syslog:
 
 ```bash
 tail -f /var/log/syslog
 ```
 
-Další Linuxových distribucích například Red Hat Enterprise Linux a SUSE může mít různé způsoby, jak restartujte služby a umístění souborů alternativní protokolu ke kontrole.
+Ostatní Linuxové distribuce, jako je Red Hat Enterprise Linux a SUSE může mít různé způsoby, jak restartování služby a umístění souboru protokolu alternativní ke kontrole.
 
-Pokud neobdrží všechny odpovědi v klientovi vzdálené plochy a nejsou vidět všechny události v systémovém protokolu, toto chování Určuje, že vzdálené plochy provoz nemůže připojit virtuální počítač. Zkontrolujte vaše pravidel skupiny zabezpečení sítě k zajištění, že máte pravidlo pro povolení TCP na portu 3389. Další informace najdete v tématu [problémů s připojením aplikace](../windows/troubleshoot-app-connection.md).
+Pokud neobdrží žádnou odpověď klientovi vzdálené plochy a nezobrazí všechny události v protokolu systému, toto chování znamená, že provozu vzdálené plochy nelze kontaktovat virtuálního počítače. Zkontrolujte vaše pravidla skupin zabezpečení sítě k zajištění, že máte pravidlo pro povolení protokolu TCP na portu 3389. Další informace najdete v tématu [řešit problémy s připojením aplikace](../windows/troubleshoot-app-connection.md).
 
 
 ## <a name="next-steps"></a>Další postup
-Další informace o vytváření a používání klíčů SSH s virtuální počítače s Linuxem najdete v tématu [vytvořit SSH klíče pro virtuální počítače s Linuxem v Azure](mac-create-ssh-keys.md).
+Další informace o vytváření a používání klíčů SSH s Linuxovými virtuálními počítači najdete v tématu [vytvoření klíčů SSH pro virtuální počítače s Linuxem v Azure](mac-create-ssh-keys.md).
 
-Informace o používání SSH ze systému Windows najdete v tématu [klíče použití SSH se systémem Windows](ssh-from-windows.md).
+Informace o použití SSH z Windows najdete v tématu [klíče, jak použít SSH s Windows](ssh-from-windows.md).
 

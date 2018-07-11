@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2017
 ms.author: v-geberr
-ms.openlocfilehash: 66036da19b0c7f49935b32272e963b3766497605
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 2ce202bbb1479db18fb88cfef4d510ae4cb39a78
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37438172"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952096"
 ---
 # <a name="plan-your-luis-app"></a>Plánování aplikace LUIS
 
@@ -53,7 +53,7 @@ Hierarchické entita je zvláštní druh **jednoduché** entity; definuje katego
 
 Zobrazit [extrakce dat](luis-concept-data-extraction.md#hierarchical-entity-data) Další informace o extrahování hierarchické entity z koncového bodu odpověď na dotaz JSON. Zkuste hierarchické entity [rychlý Start](luis-quickstart-intent-and-hier-entity.md) získat další informace o tom, jak používat hierarchické entity.
 
-### <a name="composite-entity"></a>Složený entity
+### <a name="composite-entity"></a>složený entity
 Složený entity je tvořena jinými entitami, které tvoří část celku. 
 
 ![složený entity](./media/luis-plan-your-app/composite-entity.png)
@@ -82,7 +82,7 @@ Entita regulárního výrazu umožňuje LUIS extrahovat data z utterance podle u
 Zobrazit [extrakce dat](luis-concept-data-extraction.md#regular-expression-entity-data) Další informace o extrahování entity regulárního výrazu z koncového bodu odpověď na dotaz JSON. Zkuste [rychlý Start](luis-quickstart-intents-regex-entity.md) získat další informace o tom, jak používat entity regulární výraz.
 
 ## <a name="after-getting-endpoint-utterances"></a>Po získání projevy koncového bodu
-Poté, co vaše aplikace získá projevy koncový bod, v úmyslu implementovat vylepšení predikce s [aktivně učit](label-suggested-utterances.md), [frázi seznamy](luis-concept-feature.md), a [vzory](luis-concept-patterns.md). 
+Poté, co vaše aplikace získá projevy koncový bod, v úmyslu implementovat vylepšení predikce s [aktivně učit](luis-how-to-review-endoint-utt.md), [frázi seznamy](luis-concept-feature.md), a [vzory](luis-concept-patterns.md). 
 
 ### <a name="patternany-entity"></a>Pattern.Any entity
 Patterns.any je zástupný symbol proměnné délky použít pouze ve [vzorku](luis-concept-patterns.md) utterance šablony k označení, ve kterém entita začíná a končí. Projevy šablony v souladu s [správnou syntaxi](luis-concept-patterns.md#pattern-syntax) k identifikaci entity a ignorable text.

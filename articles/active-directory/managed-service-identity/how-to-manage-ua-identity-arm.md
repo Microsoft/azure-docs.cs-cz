@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/16/2018
 ms.author: daveba
-ms.openlocfilehash: 74e4c28130fb49a3cb81420913f71dfa3a7c00bf
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: a7ddcb834b135d2177355a0523c7e99bcc599e99
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37903965"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37931510"
 ---
 # <a name="create-list-and-delete-a-user-assigned-identity-using-azure-resource-manager"></a>Vytváření, výpisu a odstranění identity přiřazené uživateli, pomocí Azure Resource Manageru
 
@@ -70,7 +70,7 @@ Pokud chcete vytvořit identity přiřazené uživateli, pomocí následující 
   "resources": [
     {
       "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
-      "name": "[parameters('<USER ASSIGNED IDENTITY NAME>')]",
+      "name": "[parameters('resourceName')]",
       "apiVersion": "2015-08-31-PREVIEW",
       "location": "[resourceGroup().location]"
     }
@@ -78,7 +78,7 @@ Pokud chcete vytvořit identity přiřazené uživateli, pomocí následující 
   "outputs": {
       "identityName": {
           "type": "string",
-          "value": "[parameters('<USER ASSIGNED IDENTITY NAME>')]"
+          "value": "[parameters('resourceName')]"
       }
   }
 }

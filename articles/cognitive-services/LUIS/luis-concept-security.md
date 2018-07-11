@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr
-ms.openlocfilehash: f55574f7a9ffbcc2a1c8bd160bb66336b59c348c
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 90b53bf1334a68fcea813653a7f6d28f362fbd2e
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37888593"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37950644"
 ---
 # <a name="authoring-and-endpoint-user-access"></a>Vytváření a koncového bodu přístupu uživatelů
 Vytváření přístup je k dispozici pro vlastníky a spolupracovníky. Privátní aplikaci je k dispozici pro vlastníky a spolupracovníci přístup koncového bodu. Veřejné aplikace koncový bod přístup je k dispozici pro všechny uživatele, který má svůj vlastní účet služby LUIS a má ID veřejné aplikace. 
@@ -33,7 +33,7 @@ Vlastníka a spolupracovníky všechny mají přístup k vytváření aplikací.
 |Zveřejnit aplikaci|Pokud aplikace je veřejný, kdokoli s klíčem s vytvářením nebo koncový bod aplikace dotazu.|
 |Upravit model|
 |Publikování|
-|Zkontrolujte projevy koncový bod pro [aktivní učení](label-suggested-utterances.md)|
+|Zkontrolujte projevy koncový bod pro [aktivní učení](luis-how-to-review-endoint-utt.md)|
 |Trénování|
 
 ## <a name="access-to-endpoint"></a>Přístup ke koncovému bodu

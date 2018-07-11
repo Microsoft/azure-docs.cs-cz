@@ -1,9 +1,9 @@
 ---
-title: Vytvoření kompletní prostředí Linux pomocí Azure CLI 1.0 | Microsoft Docs
-description: Vytvoření úložiště, virtuální počítač s Linuxem, virtuální síť a podsíť, nástroj pro vyrovnávání zatížení, seskupování, veřejnou IP adresu a skupinu zabezpečení sítě, všechny od základů pomocí Azure CLI 1.0.
+title: Vytvoření kompletního linuxového prostředí pomocí rozhraní příkazového řádku Azure CLI 1.0 | Dokumentace Microsoftu
+description: Vytvoření úložiště, virtuální počítač s Linuxem, virtuální sítě a podsítě, nástroj pro vyrovnávání zatížení, síťové rozhraní, veřejné IP adresy a skupinu zabezpečení sítě, vše od základů pomocí rozhraní příkazového řádku Azure CLI 1.0.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,45 +14,45 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/09/2017
-ms.author: iainfou
-ms.openlocfilehash: 4a43e138d3497e01fe9e0e5c55a4a66adac767c6
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.author: cynthn
+ms.openlocfilehash: 1fb5542af77fbb584effca24a74b9e233359cf0e
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30910760"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37932324"
 ---
-# <a name="create-a-complete-linux-environment-with-the-azure-cli-10"></a>Vytvoření kompletní prostředí Linux pomocí Azure CLI 1.0
-V tomto článku jsme sestavení jednoduchá síť se nástroj pro vyrovnávání zatížení a dvojice virtuálních počítačů, které jsou užitečné pro vývoj a jednoduchý computing. Provede jsme proces příkazu command, dokud nebudete mít dvě funkční a zabezpečené virtuální počítače s Linuxem do kterých můžete připojit z kdekoli v síti Internet. Potom můžete přesunout složitější sítě a prostředí.
+# <a name="create-a-complete-linux-environment-with-the-azure-cli-10"></a>Vytvoření kompletního linuxového prostředí pomocí rozhraní příkazového řádku Azure CLI 1.0
+V tomto článku jsme integrovali jednoduchá síť s nástroji pro vyrovnávání zatížení a dvojice virtuálních počítačů, které jsou užitečné pro vývoj a jednoduché výpočetního prostředí. Provedeme procesem příkazu command, dokud nebudete mít dvě funkční, zabezpečené virtuální počítače s Linuxem ke kterým se můžete připojit z kdekoliv na Internetu. Potom můžete přesunout složitější sítě a prostředí.
 
-Na cestě můžete další informace o hierarchii závislostí modelu nasazení Resource Manager nabízí, a o tom, kolik ho zapněte poskytuje. Jakmile uvidíte, jak se sestaví systém, můžete znovu sestavit je mnohem rychlejší pomocí [šablon Azure Resource Manageru](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Kromě toho po zjistíte, jak jsou navzájem propojené části vašeho prostředí, vytváření šablon pro automatizaci je jednodušší.
+Cestou se dozvíte o hierarchii závislostí, že modelu nasazení Resource Manager nabízí, a o tom, kolik energie se poskytuje. Jakmile se zobrazí, jak se sestaví systém, můžete znovu sestavit ji mnohem rychleji s využitím [šablon Azure Resource Manageru](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Také Jakmile se dozvíte, jak jsou součástí vašeho prostředí navzájem propojené, vytváření šablony k automatizaci jejich je jednodušší.
 
 Prostředí obsahuje:
 
-* Dva virtuální počítače uvnitř skupiny dostupnosti.
-* Vyrovnávání zatížení s pravidlem Vyrovnávání zatížení na portu 80.
-* Pravidla skupiny (NSG) zabezpečení sítě k ochraně virtuálního počítače z nevyžádaný provoz.
+* Dva virtuální počítače ve skupině dostupnosti.
+* Nástroj pro vyrovnávání zatížení s pravidlem Vyrovnávání zatížení na portu 80.
+* Pravidla skupiny zabezpečení (NSG) k ochraně vašeho virtuálního počítače z nevyžádaný provoz v síti.
 
-K vytvoření tohoto vlastního prostředí, je třeba nejnovější [Azure CLI 1.0](../../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) v režimu Resource Manager (`azure config mode arm`). Musíte taky analýza nástroj JSON. Tento příklad používá [jq](https://stedolan.github.io/jq/).
+Pokud chcete vytvořit vlastní prostředí, budete potřebovat nejnovější [příkazového řádku Azure CLI 1.0](../../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) v režimu Resource Manageru (`azure config mode arm`). Musíte také nástroj pro analýzu JSON. Tento příklad používá [jq](https://stedolan.github.io/jq/).
 
 
 ## <a name="cli-versions-to-complete-the-task"></a>Verze rozhraní příkazového řádku pro dokončení úlohy
 K dokončení úlohy můžete využít jednu z následujících verzí rozhraní příkazového řádku:
 
-- [Azure CLI 1.0](#quick-commands) – naše rozhraní příkazového řádku pro classic a resource správu modelech nasazení (v tomto článku)
+- [Azure CLI 1.0](#quick-commands) – naše rozhraní příkazového řádku pro classic a resource management modelech nasazení (Tento článek)
 - [Azure CLI 2.0](create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) – naše rozhraní příkazového řádku nové generace pro model nasazení správy prostředků
 
 
 ## <a name="quick-commands"></a>Rychlé příkazy
-Pokud potřebujete rychle provedení úlohy, následující část podrobně popisuje základní příkazy k nahrání virtuálního počítače do Azure. Podrobnější informace a kontext pro každý krok naleznete ve zbývající části dokumentu, od [zde](#detailed-walkthrough).
+Pokud je potřeba rychle provést úlohu, následující část podrobně popisuje základní příkazy k odesílání virtuálního počítače do Azure. Podrobnější informace a kontext pro každý krok najdete ve zbývající části dokumentu, od [tady](#detailed-walkthrough).
 
-Ujistěte se, že máte [Azure CLI 1.0](../../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) přihlášení a použití režimu Resource Manager:
+Ujistěte se, že máte [rozhraní příkazového řádku Azure CLI 1.0](../../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) přihlášení a v režimu Resource Manageru:
 
 ```azurecli
 azure config mode arm
 ```
 
-V následujících příkladech nahraďte názvy parametrů příklad vlastní hodnoty. Zahrnout názvy parametrů příklad `myResourceGroup`, `mystorageaccount`, a `myVM`.
+V následujících příkladech nahraďte ukázkové názvy parametrů s vlastními hodnotami. Zahrnout názvy parametrů příklad `myResourceGroup`, `mystorageaccount`, a `myVM`.
 
 Vytvořte skupinu prostředků. Následující příklad vytvoří skupinu prostředků s názvem `myResourceGroup` v `westeurope` umístění:
 
@@ -60,20 +60,20 @@ Vytvořte skupinu prostředků. Následující příklad vytvoří skupinu prost
 azure group create -n myResourceGroup -l westeurope
 ```
 
-Skupina prostředků ověřte pomocí analyzátoru JSON:
+Zkontrolujte skupinu prostředků pomocí analyzátoru JSON:
 
 ```azurecli
 azure group show myResourceGroup --json | jq '.'
 ```
 
-Vytvořte účet úložiště. Následující příklad vytvoří účet úložiště s názvem `mystorageaccount`. (Název účtu úložiště musí být jedinečný, takže zadejte svůj vlastní jedinečný název.)
+Vytvořte účet úložiště. Následující příklad vytvoří účet úložiště s názvem `mystorageaccount`. (Název účtu úložiště musí být jedinečný, takže poskytují vlastním jedinečným názvem.)
 
 ```azurecli
 azure storage account create -g myResourceGroup -l westeurope \
   --kind Storage --sku-name GRS mystorageaccount
 ```
 
-Ověřte účet úložiště pomocí analyzátoru JSON:
+Ověření účtu úložiště pomocí analyzátoru JSON:
 
 ```azurecli
 azure storage account show -g myResourceGroup mystorageaccount --json | jq '.'
@@ -86,47 +86,47 @@ azure network vnet create -g myResourceGroup -l westeurope\
   -n myVnet -a 192.168.0.0/16
 ```
 
-Vytvoření podsítě. Následující příklad vytvoří podsíť s názvem `mySubnet`:
+Vytvořte podsíť. Následující příklad vytvoří podsíť s názvem `mySubnet`:
 
 ```azurecli
 azure network vnet subnet create -g myResourceGroup \
   -e myVnet -n mySubnet -a 192.168.1.0/24
 ```
 
-Ověřte virtuální síť a podsíť pomocí analyzátoru JSON:
+Ověření virtuální sítě a podsítě s použitím analyzátor JSON:
 
 ```azurecli
 azure network vnet show myResourceGroup myVnet --json | jq '.'
 ```
 
-Vytvořte veřejnou IP adresu. Následující příklad vytvoří veřejnou IP adresu s názvem `myPublicIP` s názvem DNS `mypublicdns`. (Název DNS musí být jedinečný, takže zadejte svůj vlastní jedinečný název.)
+Vytvoření veřejné IP adresy. Následující příklad vytvoří veřejnou IP adresu s názvem `myPublicIP` s názvem služby DNS `mypublicdns`. (Název DNS musí být jedinečný, takže poskytují vlastním jedinečným názvem.)
 
 ```azurecli
 azure network public-ip create -g myResourceGroup -l westeurope \
   -n myPublicIP  -d mypublicdns -a static -i 4
 ```
 
-Vytvořte nástroj pro vyrovnávání zatížení. Následující příklad vytvoří nástroj pro vyrovnávání zatížení s názvem `myLoadBalancer`:
+Vytvoření nástroje pro vyrovnávání zatížení. Následující příklad vytvoří nástroj pro vyrovnávání zatížení s názvem `myLoadBalancer`:
 
 ```azurecli
 azure network lb create -g myResourceGroup -l westeurope -n myLoadBalancer
 ```
 
-Vytvořte fond IP front-endu nástroje pro vyrovnávání zatížení a přidružte veřejnou IP adresu. Následující příklad vytvoří front-end IP fond s názvem `mySubnetPool`:
+Vytvořte front-endový fond IP adres nástroje pro vyrovnávání zatížení a přidružte veřejnou IP adresu. Následující příklad vytvoří front-endový fond IP s názvem `mySubnetPool`:
 
 ```azurecli
 azure network lb frontend-ip create -g myResourceGroup -l myLoadBalancer \
   -i myPublicIP -n myFrontEndPool
 ```
 
-Vytvořte fond back-end IP nástroje pro vyrovnávání zatížení. Následující příklad vytvoří fond back-end IP s názvem `myBackEndPool`:
+Vytvořte fond back-end IP adres nástroje pro vyrovnávání zatížení. Následující příklad vytvoří back endový fond IP `myBackEndPool`:
 
 ```azurecli
 azure network lb address-pool create -g myResourceGroup -l myLoadBalancer \
   -n myBackEndPool
 ```
 
-Vytvoření příchozích síťových SSH pravidla překladu adres nástroje pro vyrovnávání zatížení. Následující příklad vytvoří dvě pravidla nástroje pro vyrovnávání zatížení, `myLoadBalancerRuleSSH1` a `myLoadBalancerRuleSSH2`:
+Vytvoření pravidel překladu adres (NAT) pro nástroj pro vyrovnávání zatížení příchozích síťových SSH. Následující příklad vytvoří dvě pravidla nástroje pro vyrovnávání zatížení, `myLoadBalancerRuleSSH1` a `myLoadBalancerRuleSSH2`:
 
 ```azurecli
 azure network lb inbound-nat-rule create -g myResourceGroup -l myLoadBalancer \
@@ -135,7 +135,7 @@ azure network lb inbound-nat-rule create -g myResourceGroup -l myLoadBalancer \
   -n myLoadBalancerRuleSSH2 -p tcp -f 4223 -b 22
 ```
 
-Vytvoření webu příchozí pravidla NAT nástroje pro vyrovnávání zatížení. Následující příklad vytvoří pravidlo Vyrovnávání zatížení s názvem `myLoadBalancerRuleWeb`:
+Vytvoření webu příchozí pravidla NAT nástroje pro vyrovnávání zatížení. Následující příklad vytvoří pravidlo nástroje pro vyrovnávání zatížení s názvem `myLoadBalancerRuleWeb`:
 
 ```azurecli
 azure network lb rule create -g myResourceGroup -l myLoadBalancer \
@@ -143,22 +143,22 @@ azure network lb rule create -g myResourceGroup -l myLoadBalancer \
   -t myFrontEndPool -o myBackEndPool
 ```
 
-Vytvořte test stavu nástroje pro vyrovnávání zatížení. Následující příklad vytvoří sondou TCP s názvem `myHealthProbe`:
+Vytvoření sondy stavu nástroje pro vyrovnávání zatížení. Následující příklad vytvoří sondu protokolu TCP s názvem `myHealthProbe`:
 
 ```azurecli
 azure network lb probe create -g myResourceGroup -l myLoadBalancer \
   -n myHealthProbe -p "tcp" -i 15 -c 4
 ```
 
-Ověřte nástroj pro vyrovnávání zatížení, fondy IP adres a pravidla NAT pomocí analyzátoru JSON:
+Ověřte nástroj pro vyrovnávání zatížení, fondy IP adres a pravidel překladu adres pomocí analyzátoru JSON:
 
 ```azurecli
 azure network lb show -g myResourceGroup -n myLoadBalancer --json | jq '.'
 ```
 
-Vytvoření první síťové karty (NIC). Nahraďte `#####-###-###` oddíly s vlastními ID předplatného Azure. Vaše předplatné ID je uvedeno ve výstupu **jq** při kontrole prostředků, kterou vytváříte. Můžete také zobrazit svoje ID předplatného s `azure account list`.
+Vytvoření první síťovou kartu (NIC). Nahradit `#####-###-###` oddíly s vlastním ID předplatného Azure. Vaše předplatné ID je uvedeno ve výstupu příkazu **jq** při zkoumání prostředků, kterou vytváříte. Můžete také zobrazit ID vašeho předplatného s `azure account list`.
 
-Následující příklad vytvoří síťový adaptér s názvem `myNic1`:
+Následující příklad vytvoří síťové rozhraní s názvem `myNic1`:
 
 ```azurecli
 azure network nic create -g myResourceGroup -l westeurope \
@@ -167,7 +167,7 @@ azure network nic create -g myResourceGroup -l westeurope \
   -e "/subscriptions/########-####-####-####-############/resourceGroups/myResourceGroup/providers/Microsoft.Network/loadBalancers/myLoadBalancer/inboundNatRules/myLoadBalancerRuleSSH1"
 ```
 
-Vytvořte druhý síťový adaptér. Následující příklad vytvoří síťový adaptér s názvem `myNic2`:
+Vytvořte druhé síťové rozhraní Následující příklad vytvoří síťové rozhraní s názvem `myNic2`:
 
 ```azurecli
 azure network nic create -g myResourceGroup -l westeurope \
@@ -190,7 +190,7 @@ azure network nsg create -g myResourceGroup -l westeurope \
   -n myNetworkSecurityGroup
 ```
 
-Přidejte dva příchozích pravidel pro skupinu zabezpečení sítě. Následující příklad vytvoří dvě pravidla `myNetworkSecurityGroupRuleSSH` a `myNetworkSecurityGroupRuleHTTP`:
+Přidání dvou příchozích pravidel pro skupiny zabezpečení sítě. Následující příklad vytvoří dvě pravidla `myNetworkSecurityGroupRuleSSH` a `myNetworkSecurityGroupRuleHTTP`:
 
 ```azurecli
 azure network nsg rule create -p tcp -r inbound -y 1000 -u 22 -c allow \
@@ -199,20 +199,20 @@ azure network nsg rule create -p tcp -r inbound -y 1001 -u 80 -c allow \
   -g myResourceGroup -a myNetworkSecurityGroup -n myNetworkSecurityGroupRuleHTTP
 ```
 
-Skupina zabezpečení sítě a ověřte příchozí pravidla pomocí analyzátoru JSON:
+Ověřte skupiny zabezpečení sítě a příchozích pravidel pomocí analyzátoru JSON:
 
 ```azurecli
 azure network nsg show -g myResourceGroup -n myNetworkSecurityGroup --json | jq '.'
 ```
 
-Vytvořit skupinu zabezpečení sítě vazbu na dva síťové adaptéry:
+Skupina zabezpečení sítě svázat dva síťové adaptéry:
 
 ```azurecli
 azure network nic set -g myResourceGroup -o myNetworkSecurityGroup -n myNic1
 azure network nic set -g myResourceGroup -o myNetworkSecurityGroup -n myNic2
 ```
 
-Vytvořte sadu dostupnosti. Následující příklad vytvoří sadu s názvem dostupnosti `myAvailabilitySet`:
+Vytvořte skupinu dostupnosti. Následující příklad vytvoří skupinu dostupnosti `myAvailabilitySet`:
 
 ```azurecli
 azure availset create -g myResourceGroup -l westeurope -n myAvailabilitySet
@@ -254,32 +254,32 @@ azure vm create \
     --admin-username azureuser
 ```
 
-Pomocí analyzátoru JSON ověřte, zda vše, co byla vytvořena:
+Pomocí analyzátoru JSON ověřte, že vše, co byl vytvořen:
 
 ```azurecli
 azure vm show -g myResourceGroup -n myVM1 --json | jq '.'
 azure vm show -g myResourceGroup -n myVM2 --json | jq '.'
 ```
 
-Exportujte do šablony rychle znovu vytvořit nové instance nové prostředí:
+Exportujte jako šablonu k rychlému vytvoření nové instance znovu nové prostředí:
 
 ```azurecli
 azure group export myResourceGroup
 ```
 
 ## <a name="detailed-walkthrough"></a>Podrobný postup
-Podrobné kroky, které následují popisují, co každý příkaz probíhá při sestavování na vašem prostředí. Tyto koncepty jsou užitečné, když vytváříte vlastní vlastní prostředí pro vývoj nebo produkčního prostředí.
+Podrobné kroky, které následují vysvětlete, co každý příkaz dělá, když sestavujete vašeho prostředí. Tyto koncepty jsou užitečné při vytváření vlastního prostředí pro vývojové nebo produkční prostředí.
 
-Ujistěte se, že máte [Azure CLI 1.0](../../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) přihlášení a použití režimu Resource Manager:
+Ujistěte se, že máte [rozhraní příkazového řádku Azure CLI 1.0](../../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) přihlášení a v režimu Resource Manageru:
 
 ```azurecli
 azure config mode arm
 ```
 
-V následujících příkladech nahraďte názvy parametrů příklad vlastní hodnoty. Zahrnout názvy parametrů příklad `myResourceGroup`, `mystorageaccount`, a `myVM`.
+V následujících příkladech nahraďte ukázkové názvy parametrů s vlastními hodnotami. Zahrnout názvy parametrů příklad `myResourceGroup`, `mystorageaccount`, a `myVM`.
 
-## <a name="create-resource-groups-and-choose-deployment-locations"></a>Vytvoření skupiny prostředků a vyberte umístění nasazení
-Skupiny prostředků Azure jsou logické nasazení entit, které obsahují informace o konfiguraci a metadata povolení logické správy nasazení prostředků. Následující příklad vytvoří skupinu prostředků s názvem `myResourceGroup` v `westeurope` umístění:
+## <a name="create-resource-groups-and-choose-deployment-locations"></a>Vytvoření skupiny prostředků a zvolte umístění nasazení
+Skupiny prostředků Azure jsou logické nasazení entity, které obsahují informace o konfiguraci a metadata k povolení logické správy nasazení prostředků. Následující příklad vytvoří skupinu prostředků s názvem `myResourceGroup` v `westeurope` umístění:
 
 ```azurecli
 azure group create --name myResourceGroup --location westeurope
@@ -302,9 +302,9 @@ info:    group create command OK
 ```
 
 ## <a name="create-a-storage-account"></a>vytvořit účet úložiště
-Budete potřebovat účty úložiště pro disky virtuálního počítače a pro jakýchkoli dalších datových disků, které chcete přidat. Můžete vytvořit účty úložiště téměř okamžitě po vytvoření skupiny prostředků.
+Budete potřebovat účty úložiště pro disky virtuálních počítačů a pro všechny další datové disky, které chcete přidat. Účty úložiště můžete vytvořit téměř okamžitě po vytvoření skupiny prostředků.
 
-Tady používáme `azure storage account create` příkazu předávání umístění účtu, skupinu prostředků, které řídí a typ úložiště s podporou chcete. Následující příklad vytvoří účet úložiště s názvem `mystorageaccount`:
+Tady používáme `azure storage account create` příkazu předávání umístění účtu, skupinu prostředků, která řídí a typ má podpora úložiště. Následující příklad vytvoří účet úložiště s názvem `mystorageaccount`:
 
 ```azurecli
 azure storage account create \  
@@ -322,7 +322,7 @@ info:    Executing command storage account create
 info:    storage account create command OK
 ```
 
-Prozkoumat naše skupinu prostředků s použitím `azure group show` příkaz, použijeme [jq](https://stedolan.github.io/jq/) nástroj spolu s `--json` možnost příkazového řádku Azure CLI. (Můžete použít **jsawk** nebo všechny knihovny jazyka dáváte přednost analyzovat ve formátu JSON.)
+Prozkoumat naše skupiny prostředků s použitím `azure group show` příkazu, použijeme [jq](https://stedolan.github.io/jq/) nástroj spolu s `--json` možnost příkazového řádku Azure. (Můžete použít **jsawk** nebo všechny knihovny jazyka chcete analyzovat ve formátu JSON.)
 
 ```azurecli
 azure group show myResourceGroup --json | jq '.'
@@ -360,13 +360,13 @@ Výstup:
 }
 ```
 
-K prozkoumání účet úložiště pomocí rozhraní příkazového řádku, musíte nejdřív nastavit názvy účtů a klíčů. Nahraďte název, který zvolíte, název účtu úložiště v následujícím příkladu:
+K prozkoumání účtu úložiště pomocí rozhraní příkazového řádku, musíte nejdřív nastavit názvy účtů a klíčů. Název účtu úložiště v následujícím příkladu nahraďte název, který zvolíte:
 
 ```bash
 export AZURE_STORAGE_CONNECTION_STRING="$(azure storage account connectionstring show mystorageaccount --resource-group myResourceGroup --json | jq -r '.string')"
 ```
 
-Potom můžete zobrazit informace z vašeho úložiště snadno:
+Pak můžete zobrazit údaje o úložiště snadno:
 
 ```azurecli
 azure storage container list
@@ -384,7 +384,7 @@ info:    storage container list command OK
 ```
 
 ## <a name="create-a-virtual-network-and-subnet"></a>Vytvoření virtuální sítě a podsítě
-Potom budete muset vytvořit virtuální síť spuštěná ve službě Azure a podsíť, ve kterém můžete vytvořit virtuální počítače. Následující příklad vytvoří virtuální síť s názvem `myVnet` s `192.168.0.0/16` předpona adresy:
+Dále budete muset vytvořit virtuální síť spuštěná v Azure a podsíť, ve kterém můžete vytvořit virtuální počítače. Následující příklad vytvoří virtuální síť s názvem `myVnet` s `192.168.0.0/16` předpona adresy:
 
 ```azurecli
 azure network vnet create --resource-group myResourceGroup --location westeurope \
@@ -408,7 +408,7 @@ data:      192.168.0.0/16
 info:    network vnet create command OK
 ```
 
-Znovu, budeme používat možnost--json `azure group show` a `jq` zobrazíte jak vytváříme naše prostředky. Nyní je k dispozici `storageAccounts` prostředků a `virtualNetworks` prostředků.  
+Znovu použijeme možnost--json `azure group show` a `jq` zobrazíte, jakým způsobem vytváříme naše zdroje. Nyní je k dispozici `storageAccounts` prostředků a `virtualNetworks` prostředků.  
 
 ```azurecli
 azure group show myResourceGroup --json | jq '.'
@@ -453,7 +453,7 @@ Výstup:
 }
 ```
 
-Nyní vytvoříme podsíť v `myVnet` virtuální sítě, do které jsou nasazené virtuální počítače. Používáme `azure network vnet subnet create` příkazu, spolu s prostředky, které jste už vytvořili: `myResourceGroup` skupinu prostředků a `myVnet` virtuální sítě. V následujícím příkladu přidáme podsíť s názvem `mySubnet` s předponou adresy podsítě z `192.168.1.0/24`:
+Nyní Pojďme vytvořit podsíť v `myVnet` virtuální síť, do které jsou nasazené virtuální počítače. Používáme `azure network vnet subnet create` příkaz spolu s prostředky jsme už vytvořili: `myResourceGroup` skupinu prostředků a `myVnet` virtuální sítě. V následujícím příkladu přidáme podsíť s názvem `mySubnet` s předponou adresy podsítě `192.168.1.0/24`:
 
 ```azurecli
 azure network vnet subnet create --resource-group myResourceGroup \
@@ -476,7 +476,7 @@ data:
 info:    network vnet subnet create command OK
 ```
 
-Protože podsíť je logicky ve virtuální síti, podíváme pro informace o podsíti pomocí příkazu mírně lišit. Příkaz používáme je `azure network vnet show`, ale budeme pokračovat, vyhledejte ve výstupu JSON pomocí `jq`.
+Vzhledem k tomu, že podsíť je logicky ve virtuální síti, vyhledáme informace o podsíti mírně odlišné příkazem. Pomocí příkazu používáme `azure network vnet show`, ale můžeme dál prohlédněte si výstup JSON pomocí `jq`.
 
 ```azurecli
 azure network vnet show myResourceGroup myVnet --json | jq '.'
@@ -514,7 +514,7 @@ Výstup:
 ```
 
 ## <a name="create-a-public-ip-address"></a>Vytvoření veřejné IP adresy
-Nyní vytvoříme veřejnou IP adresu (PIP), který jsme přiřadit nástroj pro vyrovnávání zatížení. Umožňuje připojení k virtuální počítače z Internetu pomocí `azure network public-ip create` příkaz. Protože výchozí adresa je dynamická, můžeme vytvořit záznam DNS s názvem v **cloudapp.azure.com** domény pomocí `--domain-name-label` možnost. Následující příklad vytvoří veřejnou IP adresu s názvem `myPublicIP` s názvem DNS `mypublicdns`. Vzhledem k tomu, že název DNS musí být jedinečný, zadáte svůj vlastní jedinečný název DNS:
+Teď vytvoříme veřejné IP adresy (PIP), můžeme přiřadit nástroj pro vyrovnávání zatížení. Umožňuje připojení k vašim virtuálním počítačům z Internetu s použitím `azure network public-ip create` příkazu. Protože výchozí adresa je dynamická, můžeme vytvořit položku DNS s názvem v **cloudapp.azure.com** domény pomocí `--domain-name-label` možnost. Následující příklad vytvoří veřejnou IP adresu s názvem `myPublicIP` s názvem služby DNS `mypublicdns`. Protože název DNS musí být jedinečný, zadejte jedinečný název DNS:
 
 ```azurecli
 azure network public-ip create --resource-group myResourceGroup \
@@ -540,7 +540,7 @@ data:    FQDN                            : mypublicdns.westeurope.cloudapp.azure
 info:    network public-ip create command OK
 ```
 
-Veřejná IP adresa je také prostředek nejvyšší úrovně, zobrazí se s `azure group show`.
+Veřejná IP adresa je také prostředku nejvyšší úrovně, abyste ji viděli `azure group show`.
 
 ```azurecli
 azure group show myResourceGroup --json | jq '.'
@@ -592,7 +592,7 @@ Výstup:
 }
 ```
 
-Můžete prozkoumat další podrobnosti prostředků, včetně plně kvalifikovaný název domény (FQDN) subdomény, pomocí kompletní `azure network public-ip show` příkaz. Logicky byl přidělen prostředek veřejné IP adresy, ale ještě nebyly přiřazeny konkrétní adresu. Pokud chcete získat IP adresu, budete potřebovat pro vyrovnávání zatížení, které jste dosud nevytvořili.
+Můžete prozkoumat další podrobnosti o prostředku, včetně plně kvalifikovaný název domény (FQDN) subdomény, s využitím kompletní `azure network public-ip show` příkazu. Prostředek veřejné IP adresy přiřazené logicky, ale konkrétní adresu ještě se nepřiřadily. Chcete-li získat IP adresu, budete potřebovat nástroj pro vyrovnávání zatížení, která jsme dosud nebyla vytvořena.
 
 ```azurecli
 azure network public-ip show myResourceGroup myPublicIP --json | jq '.'
@@ -617,8 +617,8 @@ Výstup:
 }
 ```
 
-## <a name="create-a-load-balancer-and-ip-pools"></a>Vytvořit nástroj pro vyrovnávání zatížení a fondy IP adres
-Když vytvoříte Vyrovnávání zatížení, umožňuje distribuci přenosů mezi několika virtuálními počítači. Také poskytuje redundance, aby vaše aplikace s spuštění několika virtuálních počítačů, které reagují na požadavky uživatele v případě údržby nebo velkým zatížením. Následující příklad vytvoří nástroj pro vyrovnávání zatížení s názvem `myLoadBalancer`:
+## <a name="create-a-load-balancer-and-ip-pools"></a>Vytvořte nástroj pro vyrovnávání zatížení a fondy IP adres
+Když vytvoříte nástroj pro vyrovnávání zatížení, umožňuje vám za účelem distribuce provozu napříč několika virtuálními počítači. Také poskytuje redundanci pro vaši aplikaci ve spuštění několika virtuálních počítačů, které reagují na požadavky uživatelů v případě údržby nebo velkým zatížením. Následující příklad vytvoří nástroj pro vyrovnávání zatížení s názvem `myLoadBalancer`:
 
 ```azurecli
 azure network lb create --resource-group myResourceGroup --location westeurope \
@@ -639,9 +639,9 @@ data:    Provisioning state              : Succeeded
 info:    network lb create command OK
 ```
 
-Naše nástroj pro vyrovnávání zatížení je docela prázdná, takže vytvoříme některé fondy IP adres. Chceme vytvořit dva fondy IP adres pro naše nástroj pro vyrovnávání zatížení, jeden pro front-endu a jeden pro back-end. Front-endu fond IP adres je veřejně viditelný. Je také umístění, do které budeme přiřadit PIP, kterou jsme vytvořili předtím. Potom používáme fond back-end jako umístění pro naše virtuální počítače pro připojení k. Tímto způsobem můžete provoz procházet skrz nástroje pro vyrovnávání zatížení pro virtuální počítače.
+Naše nástroje pro vyrovnávání zatížení je poměrně prázdný, takže vytvoříme některé fondy IP adres. Chceme vytvořit dva fondy IP adres pro naše nástroje pro vyrovnávání zatížení, jednu pro front-end a jednu pro back-endu. Front-endový fond IP adres je veřejně viditelné. Je také umístění, do kterého můžeme přiřadit PIP, který jsme vytvořili dříve. Potom použijeme back endovém fondu jako umístění pro naše virtuální počítače pro připojení k. Tímto způsobem provoz může probíhat přes nástroj pro vyrovnávání zatížení pro virtuální počítače.
 
-Nejdříve vytvoříme naše front-end fond IP adres. Následující příklad vytvoří front-end fond s názvem `myFrontEndPool`:
+Nejprve vytvoříme naši front-endový fond IP adres. Následující příklad vytvoří front-endový fond s názvem `myFrontEndPool`:
 
 ```azurecli
 azure network lb frontend-ip create --resource-group myResourceGroup \
@@ -663,9 +663,9 @@ data:    Public IP address id            : /subscriptions/guid/resourceGroups/my
 info:    network lb mySubnet-ip create command OK
 ```
 
-Všimněte si, jak jsme použili `--public-ip-name` přepínač předávat `myPublicIP` kterou jsme vytvořili předtím. Přiřazení veřejnou IP adresu nástroji pro vyrovnávání zatížení, můžete dosáhnout na virtuální počítače na Internetu.
+Všimněte si, jak můžete využít `--public-ip-name` přepínače a zajistěte tak předání `myPublicIP` , kterou jsme vytvořili dříve. Přiřadíte veřejnou IP adresu nástroji pro vyrovnávání zatížení, můžete kontaktovat vaše virtuální počítače přes Internet.
 
-V dalším kroku vytvoříme naše druhý fond IP této doby provozu našich back-end. Následující příklad vytvoří fond back-end s názvem `myBackEndPool`:
+V dalším kroku vytvoříme naši druhý fond IP adres, tentokrát pro naše provoz back-end. Následující příklad vytvoří back endový fond s názvem `myBackEndPool`:
 
 ```azurecli
 azure network lb address-pool create --resource-group myResourceGroup \
@@ -683,7 +683,7 @@ data:    Provisioning state              : Succeeded
 info:    network lb address-pool create command OK
 ```
 
-Vidíme úspěšnost naše nástroj pro vyrovnávání zatížení tak, že vyhledá s `azure network lb show` a prozkoumání výstup JSON:
+Můžeme vidět, jak naše nástroje pro vyrovnávání zatížení dělá vyhledáváním s `azure network lb show` a prozkoumání výstupu JSON:
 
 ```azurecli
 azure network lb show myResourceGroup myLoadBalancer --json | jq '.'
@@ -728,8 +728,8 @@ Výstup:
 }
 ```
 
-## <a name="create-load-balancer-nat-rules"></a>Vytvoření pravidla NAT nástroje pro vyrovnávání zatížení
-Získat provoz v našem nástroj pro vyrovnávání zatížení, je potřeba vytvořit síťová adresa pravidla překlad (NAT), která zadejte příchozí nebo odchozí akce. Můžete zadat protokol používat a pak mapování externí porty na interní porty podle potřeby. Pro naše prostředí vytvoříme některá pravidla, které umožňují SSH pomocí našich nástroj pro vyrovnávání zatížení pro naše virtuální počítače. Porty TCP 4222 a 4223 jsme nastavení pro přesměrování na TCP port 22 na našem virtuálních počítačích (které vytvoříme později). Následující příklad vytvoří pravidlo s názvem `myLoadBalancerRuleSSH1` mapovat TCP port 4222 port 22:
+## <a name="create-load-balancer-nat-rules"></a>Vytvoření pravidel NAT nástroje pro vyrovnávání zatížení
+Chcete-li získat provozu přes naše nástroje pro vyrovnávání zatížení, potřebujeme vytvořit síťová adresa pravidel překladu (NAT), které určují akce příchozí nebo odchozí. Můžete zadat protokol bude použit pak mapování externí portů na vnitřních portech podle potřeby. Pro naše prostředí vytvoříme některá pravidla, které umožňují SSH prostřednictvím naše nástroje pro vyrovnávání zatížení k virtuálním počítačům. Nastavíme porty TCP 4222 a 4223 pro přesměrování na TCP port 22 na naše virtuální počítače (které vytvoříme později). Následující příklad vytvoří pravidlo `myLoadBalancerRuleSSH1` na portu TCP 4222 mapují na port 22:
 
 ```azurecli
 azure network lb inbound-nat-rule create --resource-group myResourceGroup \
@@ -757,7 +757,7 @@ data:    mySubnet IP configuration id    : /subscriptions/guid/resourceGroups/my
 info:    network lb inbound-nat-rule create command OK
 ```
 
-Opakujte postup pro druhý pravidla NAT pro SSH. Následující příklad vytvoří pravidlo s názvem `myLoadBalancerRuleSSH2` mapovat TCP port 4223 port 22:
+Opakujte tento postup pro druhé pravidlo NAT pro SSH. Následující příklad vytvoří pravidlo `myLoadBalancerRuleSSH2` na portu TCP 4223 mapují na port 22:
 
 ```azurecli
 azure network lb inbound-nat-rule create --resource-group myResourceGroup \
@@ -765,7 +765,7 @@ azure network lb inbound-nat-rule create --resource-group myResourceGroup \
   --frontend-port 4223 --backend-port 22
 ```
 
-Můžeme také pokračujte a vytvořte tak pravidlo NAT pro port TCP 80 webových přenosů, zapojování pravidlo až naše fondy IP adres. Pokud jsme spojit pravidlo k fondu IP adres, místo zapojování pravidlo naše virtuálních počítačů jednotlivě, jsme můžete přidat nebo odebrat z fondu IP adres virtuálních počítačů. Nástroje pro vyrovnávání zatížení automaticky upraví tok provozu. Následující příklad vytvoří pravidlo s názvem `myLoadBalancerRuleWeb` k mapování TCP port 80 na portu 80:
+Můžeme také pokračujte a vytvořte tak pravidlo NAT pro port TCP 80 pro webový provoz, zapojení pravidlo až po naše fondy IP adres. Pokud jsme připojení pravidlo fondu IP adres, namísto zapojování pravidlo k virtuálním počítačům jednotlivě, můžeme přidat nebo odebrat virtuální počítače z fondu IP adres. Nástroje pro vyrovnávání zatížení automaticky přizpůsobí toku provozu. Následující příklad vytvoří pravidlo `myLoadBalancerRuleWeb` mapování portu TCP 80 na port 80:
 
 ```azurecli
 azure network lb rule create --resource-group myResourceGroup \
@@ -797,7 +797,7 @@ info:    network lb rule create command OK
 ```
 
 ## <a name="create-a-load-balancer-health-probe"></a>Vytvoření sondy stavu nástroje pro vyrovnávání zatížení
-Stavu testů pravidelně kontroluje virtuálních počítačů, které jsou za naše pro vyrovnávání zatížení a ujistěte se, že jsou operační a reagovat na požadavky, jak jsou definovány. V opačném případě se odebere z operace zajistit, že uživatelé nejsou směrovat na ně. Můžete definovat vlastní kontroly pro kontrolu stavu, spolu s intervalech a hodnoty časového limitu. Další informace o sondy stavu najdete v tématu [nástroj pro vyrovnávání zatížení sondy](../../load-balancer/load-balancer-custom-probe-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Následující příklad vytvoří TCP stavu zjištěný pojmenované `myHealthProbe`:
+Stavu testu paměti pravidelně kontroluje na virtuálních počítačích, které jsou za naše nástroje pro vyrovnávání zatížení Ujistěte se, že se provoz a reakce na žádosti, jak jsou definovány. V opačném případě budou odebráni z operace Ujistěte se, že uživatelé nejsou nasměrování na ně. Můžete definovat vlastní kontroly pro sondu stavu, spolu s intervalech a hodnoty časového limitu. Další informace o sond stavu najdete v tématu [sondy nástroje pro vyrovnávání zatížení](../../load-balancer/load-balancer-custom-probe-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Následující příklad vytvoří TCP stavu zjištěný pojmenované `myHealthProbe`:
 
 ```azurecli
 azure network lb probe create --resource-group myResourceGroup \
@@ -821,18 +821,18 @@ data:    Number of probes                : 4
 info:    network lb probe create command OK
 ```
 
-Zde jsme zadali interval 15 sekund pro naše kontroly stavu. Jsme můžete neproběhly maximálně čtyři sondy (jedné minuty) před nástroje pro vyrovnávání zatížení domnívá, že hostitel již není funkční.
+Tady jsme zadali interval 15 sekund pro naše kontroly stavu. Můžete kdybychom promeškali maximálně čtyři sondy (jednu minutu) před spuštěním nástroje pro vyrovnávání zatížení bere v úvahu, že hostitele již není funkční.
 
-## <a name="verify-the-load-balancer"></a>Ověřte, nástroje pro vyrovnávání zatížení
-Nyní se provádí konfigurace služby Vyrovnávání zatížení. Tady jsou kroky, které jste pořídili:
+## <a name="verify-the-load-balancer"></a>Ověřte, nástroj pro vyrovnávání zatížení
+Nyní se provádí konfigurace služby Vyrovnávání zatížení. Tady jsou kroky, které jste provedli:
 
-1. Vytvořili jste nástroj pro vyrovnávání zatížení.
-2. Vytvořit fond IP front-endu a přiřazenou veřejnou IP adresu.
-3. Můžete vytvořit fond back-end IP, které se mohou připojit virtuální počítače.
-4. Můžete vytvořit pravidla NAT, které umožňují SSH pro virtuální počítače pro správu, společně s pravidlo, které umožní port TCP 80 pro webovou aplikaci.
-5. Jste přidali test stavu na pravidelně kontrolovat, virtuální počítače. Tento test stavu zajistí, že si uživatelé pokusí o přístup virtuální počítač, který je už funguje nebo poskytování obsahu.
+1. Jste vytvořili nástroj pro vyrovnávání zatížení.
+2. Vytvoření front-endový fond IP a přiřazenou veřejnou IP adresu.
+3. Vytvoříte back endového fondu IP, která virtuálním počítačům můžete připojit k.
+4. Můžete vytvořit pravidla překladu adres, které umožňují SSH k virtuálním počítačům pro správu, spolu s pravidlo, které povolí port TCP 80 pro naši webovou aplikaci.
+5. Můžete přidat sondu stavu, aby pravidelně kontrolovaly, virtuální počítače. Tato sonda stavu zajišťuje, že není uživatelé pokusí o přístup k virtuálnímu počítači, který je už nebude fungovat nebo odeslání obsahu.
 
-Pojďme si shrnout, co nástroj pro vyrovnávání zatížení vypadá jako nyní:
+Pojďme se podívat na nástroj pro vyrovnávání zatížení, která bude vypadat jako nyní:
 
 ```azurecli
 azure network lb show --resource-group myResourceGroup \
@@ -955,12 +955,12 @@ Výstup:
 }
 ```
 
-## <a name="create-an-nic-to-use-with-the-linux-vm"></a>Vytvořte síťovou kartu k použití s virtuálního počítače s Linuxem
-Síťové adaptéry jsou prostřednictvím kódu programu k dispozici, protože pravidla můžete použít pro jejich použití. Také můžete mít více než jednu. V následujícím `azure network nic create` příkaz spojit síťový adaptér a fond zatížení back-end IP a přidružte ji k pravidlo NAT pro povolení komunikace SSH.
+## <a name="create-an-nic-to-use-with-the-linux-vm"></a>Vytvořte síťové rozhraní pro použití s virtuálního počítače s Linuxem
+Síťové adaptéry představují prostřednictvím kódu programu k dispozici, protože pravidla lze použít k jejich použití. Také můžete mít více než jeden. V následujícím `azure network nic create` příkaz Připojit síťovou kartu pro fond zatížení back-end IP adres a přidružte jej k pravidlo překladu adres tak, aby povolovala provoz SSH.
 
-Nahraďte `#####-###-###` oddíly s vlastními ID předplatného Azure. Vaše předplatné ID je uvedeno ve výstupu `jq` při kontrole prostředků, kterou vytváříte. Můžete také zobrazit svoje ID předplatného s `azure account list`.
+Nahradit `#####-###-###` oddíly s vlastním ID předplatného Azure. Vaše předplatné ID je uvedeno ve výstupu příkazu `jq` při zkoumání prostředků, kterou vytváříte. Můžete také zobrazit ID vašeho předplatného s `azure account list`.
 
-Následující příklad vytvoří síťový adaptér s názvem `myNic1`:
+Následující příklad vytvoří síťové rozhraní s názvem `myNic1`:
 
 ```azurecli
 azure network nic create --resource-group myResourceGroup --location westeurope \
@@ -996,7 +996,7 @@ data:
 info:    network nic create command OK
 ```
 
-Prověřením přímo prostředek můžete zobrazit podrobnosti. Zkontrolujte prostředek pomocí `azure network nic show` příkaz:
+Zobrazit podrobnosti prozkoumáním prostředek přímo. Zkontrolujte prostředek s použitím `azure network nic show` příkaz:
 
 ```azurecli
 azure network nic show myResourceGroup myNic1 --json | jq '.'
@@ -1044,7 +1044,7 @@ Výstup:
 }
 ```
 
-Nyní vytvoříme druhý síťový adaptér, zapojování v do našich fondu back-end IP znovu. Toto pravidlo NAT čas druhý povolí provoz SSH. Následující příklad vytvoří síťový adaptér s názvem `myNic2`:
+Teď vytvoříme druhý síťový adaptér, zapojení do k naší back endového fondu IP znovu. Tento čas druhé pravidlo NAT povoluje provoz SSH. Následující příklad vytvoří síťové rozhraní s názvem `myNic2`:
 
 ```azurecli
 azure network nic create --resource-group myResourceGroup --location westeurope \
@@ -1053,15 +1053,15 @@ azure network nic create --resource-group myResourceGroup --location westeurope 
   --lb-inbound-nat-rule-ids /subscriptions/########-####-####-####-############/resourceGroups/myResourceGroup/providers/Microsoft.Network/loadBalancers/myLoadBalancer/inboundNatRules/myLoadBalancerRuleSSH2
 ```
 
-## <a name="create-a-network-security-group-and-rules"></a>Vytvořte skupinu zabezpečení sítě a pravidla
-Teď vytvoříme skupinu zabezpečení sítě a příchozích pravidel, které řídí přístup na síťový adaptér. Skupina zabezpečení sítě je použít pro síťový adaptér nebo podsíť. Můžete definovat pravidla pro řízení toku provozu do a z virtuálních počítačů. Následující příklad vytvoří skupinu zabezpečení sítě s názvem `myNetworkSecurityGroup`:
+## <a name="create-a-network-security-group-and-rules"></a>Vytvoření skupiny zabezpečení sítě a pravidel
+Teď vytvoříme skupinu zabezpečení sítě a příchozí pravidla, kterými se řídí přístup k síťové kartě Skupinu zabezpečení sítě můžete použít u síťové karty nebo podsítě. Můžete definovat pravidla pro řízení toku přenosů do a z vašich virtuálních počítačů. Následující příklad vytvoří skupinu zabezpečení sítě s názvem `myNetworkSecurityGroup`:
 
 ```azurecli
 azure network nsg create --resource-group myResourceGroup --location westeurope \
   --name myNetworkSecurityGroup
 ```
 
-Umožňuje přidat příchozí pravidlo skupiny nsg umožňuje příchozí připojení na portu 22 (pro podporu SSH). Následující příklad vytvoří pravidlo s názvem `myNetworkSecurityGroupRuleSSH` umožňující TCP na portu 22:
+Pojďme přidat příchozí pravidlo pro skupinu NSG umožňuje příchozí připojení na portu 22 (pro podporu SSH). Následující příklad vytvoří pravidlo `myNetworkSecurityGroupRuleSSH` umožňující TCP na portu 22:
 
 ```azurecli
 azure network nsg rule create --resource-group myResourceGroup \
@@ -1070,7 +1070,7 @@ azure network nsg rule create --resource-group myResourceGroup \
   --name myNetworkSecurityGroupRuleSSH
 ```
 
-Nyní Pojďme přidat příchozí pravidlo skupiny nsg umožňuje příchozí připojení na portu 80 (pro podporu webový provoz). Následující příklad vytvoří pravidlo s názvem `myNetworkSecurityGroupRuleHTTP` umožňující TCP na portu 80:
+Nyní Pojďme přidat příchozí pravidlo pro skupinu NSG umožňuje příchozí připojení na portu 80 (pro podporu webového provozu). Následující příklad vytvoří pravidlo `myNetworkSecurityGroupRuleHTTP` umožňující TCP na portu 80:
 
 ```azurecli
 azure network nsg rule create --resource-group myResourceGroup \
@@ -1080,12 +1080,12 @@ azure network nsg rule create --resource-group myResourceGroup \
 ```
 
 > [!NOTE]
-> Příchozí pravidlo je filtr pro příchozí síťová připojení. V tomto příkladu jsme vazbu NSG na virtuální počítače virtuální síťový adaptér, což znamená, že všechny žádosti na port 22 předána do síťového adaptéru na našem virtuálních počítačů. Toto pravidlo příchozí je o připojení k síti a není o koncový bod, který je co by bylo o v nasazení classic. Otevření portu, musí zůstat `--source-port-range` nastavena na "\*" (výchozí hodnota) pro příjem příchozích požadavků z **všechny** požaduje port. Porty jsou obvykle dynamická.
+> Příchozí pravidlo je filtr pro příchozí síťová připojení. V tomto příkladu jsme vytvořit vazbu skupiny zabezpečení sítě pro virtuální počítače virtuální síťové karty, což znamená, že všechny žádosti na port 22 se předává do síťového rozhraní na našich virtuálních počítačů. Toto pravidlo se týká připojení k síti, a o koncový bod, který není co by se jednat o v klasických nasazeních. Otevření portu, ponechte `--source-port-range` nastavena na "\*" (výchozí hodnota) tak, aby přijímal příchozí žádosti od **jakékoli** žádosti o portu. Porty jsou obvykle dynamická.
 >
 >
 
 ## <a name="bind-to-the-nic"></a>Vytvořit vazbu na síťový adaptér
-Vazbu NSG k síťové karty. Je potřeba připojit naše síťové adaptéry s naše skupinu zabezpečení sítě. Spuštění obou příkazů, spojit i naše síťových karet:
+Vytvoření vazby NSG na síťové karty. Musíme připojit náš síťové adaptéry s naší skupiny zabezpečení sítě. Spusťte oba příkazy, abyste připojili i naše síťových karet:
 
 ```azurecli
 azure network nic set --resource-group myResourceGroup --name myNic1 \
@@ -1098,32 +1098,32 @@ azure network nic set --resource-group myResourceGroup --name myNic2 \
 ```
 
 ## <a name="create-an-availability-set"></a>Vytvoření skupiny dostupnosti
-Dostupnost nastaví nápovědu šíření virtuální počítače napříč domén selhání a domén upgradu. Umožňuje vytvořit sadu dostupnosti pro virtuální počítače. Následující příklad vytvoří sadu s názvem dostupnosti `myAvailabilitySet`:
+Skupiny dostupnosti nápovědy rozšíření virtuálních počítačů napříč doménami selhání a upgradovacích domén. Pojďme vytvořit skupinu dostupnosti pro virtuální počítače. Následující příklad vytvoří skupinu dostupnosti `myAvailabilitySet`:
 
 ```azurecli
 azure availset create --resource-group myResourceGroup --location westeurope
   --name myAvailabilitySet
 ```
 
-Domén selhání definovat seskupování virtuálních počítačů, které sdílejí společné přepínač zdroje a sítě power. Ve výchozím nastavení jsou oddělené virtuální počítače, které jsou nakonfigurované v rámci vaší skupiny dostupnosti v rámci až tři domény selhání. Cílem je, že problémem hardwaru v jednom z těchto domén selhání nemá vliv na každý virtuální počítač, který běží vaše aplikace. Virtuální počítače Azure automaticky distribuuje mezi doménami selhání, když umístění do nastavení dostupnosti.
+Domény selhání definují seskupení virtuálních počítačů, které sdílejí společný power přepínač zdroje a sítě. Ve výchozím nastavení virtuální počítače, které jsou nakonfigurované v rámci skupiny dostupnosti rozdělené až do tří domén selhání. Cílem je, že hardwarové potíže v jednom z těchto domén selhání nemá vliv na každý virtuální počítač, na kterém běží vaše aplikace. Virtuální počítače Azure automaticky distribuuje napříč doménami selhání, při vkládání je ve skupině dostupnosti.
 
-Domén upgradu označují skupiny virtuálních počítačů a základní fyzický hardware, který může být restartován ve stejnou dobu. Pořadí, ve kterém se restartují upgradu domény nemusí být po sobě jdoucích během plánované údržby, ale jenom jeden upgradu po restartu najednou. Znovu Azure automaticky distribuuje virtuální počítače napříč doménami upgradu, když umístění do stránku dostupnosti.
+Upgradovací domény označují skupiny virtuálních počítačů a podřízeného fyzického hardwaru, který lze restartovat současně. Pořadí, ve které se restartují upgradovací domény nemusí být sekvenční během plánované údržby, ale pouze jeden upgrade se restartuje. Znovu Azure automaticky distribuuje do upgradovacích doménách při uvedení na webu dostupnosti.
 
 Další informace o [Správa dostupnosti virtuálních počítačů](manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-## <a name="create-the-linux-vms"></a>Vytvořit virtuální počítače Linux
-Vytvoření úložiště a síťové prostředky pro podporu přístupné z Internetu virtuálních počítačů. Nyní Pojďme vytvořit ty virtuální počítače a zabezpečit protokolem klíč SSH, který nemá heslo. V tomto případě vytvoříme vytvořit Ubuntu podle nejnovější LTS virtuálních počítačů. Nemůžeme najít informace o tomto obrázku pomocí `azure vm image list`, jak je popsáno v [hledání Image virtuálního počítače Azure](../windows/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+## <a name="create-the-linux-vms"></a>Vytvoření virtuálních počítačů s Linuxem
+Vytvořili jste úložné a síťové prostředky pro podporu přístupné z Internetu virtuálních počítačů. Nyní Pojďme vytvořit tyto virtuální počítače a zabezpečení pomocí klíče SSH, který nemá heslo. V tomto případě chceme vytvořit virtuální počítač založený na nejnovější LTS Ubuntu. Pomocí vyhledat informace o této bitové kopii `azure vm image list`, jak je popsáno v [vyhledání imagí virtuálních počítačů Azure](../windows/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Jsme vybrali bitovou kopii pomocí příkazu `azure vm image list westeurope canonical | grep LTS`. V tomto případě používáme `canonical:UbuntuServer:16.04.0-LTS:16.04.201608150`. V poli poslední jsme předat `latest` tak, aby v budoucnu nám vždycky získat nejnovější sestavení. (Je řetězec používáme `canonical:UbuntuServer:16.04.0-LTS:16.04.201608150`).
+Jsme vybrali jste image pomocí příkazu `azure vm image list westeurope canonical | grep LTS`. V tomto případě používáme `canonical:UbuntuServer:16.04.0-LTS:16.04.201608150`. Poslední pole předáme `latest` tak, aby v budoucnu vždy získáme nejnovějšího sestavení. (Je řetězec použijeme `canonical:UbuntuServer:16.04.0-LTS:16.04.201608150`).
 
-Tento další krok je pro každý, kdo již vytvořen ssh veřejného a privátního klíče rsa spárujte na systému Linux nebo Mac. pomocí **ssh-keygen - t rsa -b 2048**. Pokud nemáte žádné páry klíčů certifikátů vaší `~/.ssh` adresáře, můžete je vytvořit:
+Jsou známy všem uživatelům, kteří už vytvořil tento další krok ssh veřejného a privátního klíče rsa spárovat v systému Linux nebo Mac pomocí **ssh-keygen - t rsa -b 2048**. Pokud nemáte žádné páry klíčů certifikátu vaší `~/.ssh` adresáře, můžete je vytvořit:
 
 * Automaticky pomocí `azure vm create --generate-ssh-keys` možnost.
-* Ručně pomocí [pokyny pro vytvoření sami](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+* Ručně pomocí [pokyny k vytvoření sami](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Alternativně můžete použít `--admin-password` metodu pro ověřování připojení SSH po vytvoření virtuálního počítače. Tato metoda je obvykle méně bezpečné.
+Alternativně můžete použít `--admin-password` metodu k ověření připojení SSH po vytvoření virtuálního počítače. Tato metoda je obvykle méně bezpečné.
 
-Nemůžeme vytvořit virtuální počítač tak, že převedou všechny naše prostředky a informace o společně s `azure vm create` příkaz:
+Vytvoříme virtuální počítač tak, že všechny naše materiály a informace spolu s `azure vm create` příkaz:
 
 ```azurecli
 azure vm create \
@@ -1160,7 +1160,7 @@ info:    The storage URI 'https://mystorageaccount.blob.core.windows.net/' will 
 info:    vm create command OK
 ```
 
-Připojením k virtuálnímu počítači okamžitě pomocí klíče SSH výchozí. Ujistěte se, zadejte odpovídající port, protože jsme se prošla pro vyrovnávání zatížení. (Pro naše první virtuální počítač, nastavíme pravidlo NAT předávání port 4222 do našich virtuálního počítače.)
+Můžete připojit k virtuálnímu počítači okamžitě pomocí klíče SSH výchozí. Je nutné zadat příslušný port, protože jsme se předá prostřednictvím nástroje pro vyrovnávání zatížení. (Pro naši první virtuální počítač, nastavíme pravidlo NAT port 4222 předat virtuálního počítače.)
 
 ```bash
 ssh ops@mypublicdns.westeurope.cloudapp.azure.com -p 4222
@@ -1206,7 +1206,7 @@ azure vm create \
   --admin-username azureuser
 ```
 
-A teď můžete použít `azure vm show myResourceGroup myVM1` příkaz zjistit, co jste vytvořili. V tomto okamžiku používáte Ubuntu virtuálních počítačů za službou Vyrovnávání zatížení v Azure, který můžete se přihlaste pouze s dvojici klíčů SSH (protože hesla jsou zakázané). Můžete nainstalovat nginx nebo httpd, nasazení webové aplikace a sledovat provoz toku prostřednictvím nástroje pro vyrovnávání zatížení do obou virtuálních počítačů.
+A teď můžete použít `azure vm show myResourceGroup myVM1` příkaz pro zjištění, co jste vytvořili. V tuto chvíli používáte vaše virtuální počítače s Ubuntu za nástrojem pro vyrovnávání zatížení v Azure, které se můžete přihlásit pouze pomocí páru klíčů SSH (protože hesla jsou zakázány). Můžete nainstalovat server nginx nebo httpd, nasaďte webovou aplikaci a sledovat provoz toku prostřednictvím nástroje pro vyrovnávání zatížení do obou virtuálních počítačů.
 
 ```azurecli
 azure vm show --resource-group myResourceGroup --name myVM1
@@ -1271,22 +1271,22 @@ info:    vm show command OK
 
 
 ## <a name="export-the-environment-as-a-template"></a>Export prostředí jako šablonu
-Teď, který jste vytvořili na tomto prostředí, jak postupovat, pokud chcete vytvořit další vývoj prostředí se stejnými parametry nebo produkčním prostředí, který odpovídá jeho? Správce prostředků používá šablony JSON, které definují všech parametrů pro vaše prostředí. Můžete vytvořit na celé prostředí podle odkazující na tuto šablonu JSON. Můžete [vytvořit šablony JSON ručně](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) nebo exportovat stávajícího prostředí pro vytvoření šablony JSON pro vás:
+Teď, když jste vytvořili mimo toto prostředí, co dělat, pokud chcete vytvořit další vývojová prostředí se stejnými parametry nebo produkčním prostředí, který mu odpovídá? Správce prostředků pomocí šablon JSON, které definují parametry vašeho prostředí. Pomocí odkazu na tuto šablonu JSON sestavujete celé prostředí. Je možné [ručně vytvářet šablony JSON](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) nebo exportovat stávající prostředí pro vás vytvořit šablonu JSON:
 
 ```azurecli
 azure group export --name myResourceGroup
 ```
 
-Tento příkaz vytvoří `myResourceGroup.json` souboru v aktuální pracovní adresář. Při vytváření prostředí z této šablony, zobrazí se výzva pro všechny názvy prostředků, včetně názvů pro nástroj pro vyrovnávání zatížení, síťová rozhraní nebo virtuální počítače. Tyto názvy v souboru šablony může vyplnit přidáním `-p` nebo `--includeParameterDefaultValue` parametru `azure group export` příkaz, který byl dříve vidět. Upravte svou šablonu JSON zadat názvy prostředků, nebo [vytvoření souboru parameters.JSON tímto kódem](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) určující názvy prostředků.
+Tento příkaz vytvoří `myResourceGroup.json` soubor v aktuálním pracovním adresáři. Při vytváření prostředí z této šablony se zobrazí výzva k zadání všech prostředků názvy, včetně názvů pro nástroj pro vyrovnávání zatížení, síťová rozhraní nebo virtuální počítače. Tyto názvy můžete naplnit v souboru šablony tak, že přidáte `-p` nebo `--includeParameterDefaultValue` parametr `azure group export` příkaz, který byl je uvedeno výše. Upravte svou šablonu JSON k určení názvy prostředků, nebo [vytvoření souboru parameters.json](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) , který určuje názvy prostředků.
 
-K vytvoření prostředí z vaší šablony:
+Vytvoření prostředí ze šablony:
 
 ```azurecli
 azure group deployment create --resource-group myNewResourceGroup \
   --template-file myResourceGroup.json
 ```
 
-Můžete chtít číst [Další informace o tom, jak nasadit ze šablon](../../resource-group-template-deploy-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Další informace o tom, jak přírůstkově aktualizovat prostředí, použijte soubor parametrů a přístup k šablony z jedno umístění úložiště.
+Můžete chtít číst [Další informace o tom, jak nasadit ze šablon](../../resource-group-template-deploy-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Další informace o tom, jak přírůstkově aktualizovat prostředí, použijte soubor parametrů a přístup k šablony jedno umístění úložiště.
 
 ## <a name="next-steps"></a>Další postup
-Nyní jste připraveni začít pracovat s více síťovými součástmi a virtuálními počítači. Tato ukázka prostředí můžete vytváří vaše aplikace pomocí základních komponent zavedená sem.
+Nyní jste připraveni začít pracovat s více síťovými součástmi a virtuální počítače. Toto ukázkové prostředí můžete použít k sestavení aplikace s použitím základních komponent zavedené zde.
