@@ -1,50 +1,50 @@
 ---
-title: Konfigurace Linkedinu v Azure Active Directory B2C | Dokumentace Microsoftu
-description: Zadejte registrace a přihlášení pro uživatele s účtem LinkedIn ve svých aplikacích, které jsou zabezpečené pomocí Azure Active Directory B2C.
+title: Nastavení registrace a přihlášení s účtem LinkedIn pomocí Azure Active Directory B2C | Dokumentace Microsoftu
+description: Zaregistrujte se a přihlaste se poskytují zákazníkům s účty LinkedIn ve svých aplikacích pomocí služby Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/06/2016
+ms.date: 07/06/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 7588711bd1c2a02e2e9a100d2ba182f43e7df488
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 84b1ad2ecd2c027c7d8a105579059ceb957f41c6
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446066"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37928994"
 ---
-# <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-linkedin-accounts"></a>Azure Active Directory B2C: Zadejte registrace a přihlášení pro uživatele s účtem LinkedIn
+# <a name="set-up-sign-up-and-sign-in-with-a-linkedin-account-using-azure-active-directory-b2c"></a>Nastavení registrace a přihlášení s účtem LinkedIn pomocí Azure Active Directory B2C
+
 ## <a name="create-a-linkedin-application"></a>Vytvoření aplikace LinkedIn
-Použití LinkedIn jako zprostředkovatele identity v Azure Active Directory (Azure AD) B2C, budete muset vytvořit aplikaci, LinkedIn a zadejte správné parametry. Budete potřebovat účet LinkedIn, chcete-li to provést. Pokud ho nemáte, můžete získat na [ https://www.linkedin.com/ ](https://www.linkedin.com/).
 
-1. Přejděte [web vývojáře LinkedIn](https://www.developer.linkedin.com/) a přihlaste se pomocí přihlašovacích údajů k účtu LinkedIn.
-2. Klikněte na tlačítko **Moje aplikace** v horním řádku nabídek a pak klikněte na tlačítko **vytvořit aplikaci**.
-   
-    ![LinkedIn – nové aplikace](./media/active-directory-b2c-setup-li-app/linkedin-new-app.png)
-3. V **vytvořte novou aplikaci** formulářů, zadejte příslušné informace (**název společnosti**, **název**, **popis**, **Adresa URL loga aplikace**, **využívání aplikací**, **adresu URL webu**, **e-mailová adresa** a **Telefondozaměstnání**).
+Použít účet LinkedIn jako zprostředkovatele identity v Azure Active Directory (Azure AD) B2C, budete muset vytvořit aplikaci ve vašem tenantovi, který ho zastupuje. Pokud ještě nemáte účet LinkedIn, získáte ji na [ https://www.linkedin.com/ ](https://www.linkedin.com/).
+
+1. Přihlaste se k [web vývojáře LinkedIn](https://www.developer.linkedin.com/) pomocí svých přihlašovacích údajů účtu LinkedIn.
+2. Vyberte **Moje aplikace**a potom klikněte na tlačítko **vytvořit aplikaci**.
+3. Zadejte **název společnosti**, **název_aplikace**, **popis aplikace**, **Logo aplikace**, **využívání aplikací** , **Adresu URL webu**, **e-mailová adresa**, a **Telefon do zaměstnání**.
 4. Souhlas s **LinkedIn API Terms of Use** a klikněte na tlačítko **odeslat**.
-   
-    ![LinkedIn – registrace aplikace](./media/active-directory-b2c-setup-li-app/linkedin-register-app.png)
-5. Zkopírujte hodnoty **ID klienta** a **tajný kód klienta**. (Můžete najít v rámci **ověřovací klíče**.) Budete potřebovat oba poskytovatelé konfigurace LinkedIn jako zprostředkovatele identity ve vašem tenantovi.
-   
-   > [!NOTE]
-   > **Tajný kód klienta** je důležitým bezpečnostním pověřením.
-   > 
-   > 
-6. Zadejte `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` v **oprávnění adresy URL pro přesměrování** pole (v části **OAuth 2.0**). Nahraďte **{klient}** s názvem vašeho tenanta (například contoso.onmicrosoft.com). Klikněte na tlačítko **přidat**a potom klikněte na tlačítko **aktualizace**. **{Klient}** hodnota by měla být malými písmeny.
-   
-    ![LinkedIn – instalační program aplikace](./media/active-directory-b2c-setup-li-app/linkedin-setup.png)
+5. Zkopírujte hodnoty **ID klienta** a **tajný kód klienta**. Najdete je v části **ověřovací klíče**. Budete potřebovat oba poskytovatelé konfigurace LinkedIn jako zprostředkovatele identity ve vašem tenantovi. **Tajný kód klienta** je důležitým bezpečnostním pověřením.
+6. Zadejte `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` v **oprávnění adresy URL pro přesměrování**. Nahraďte **{klient}** s názvem vašeho tenanta (například contoso.onmicrosoft.com). Vyberte **přidat**a potom klikněte na tlačítko **aktualizace**.
 
-## <a name="configure-linkedin-as-an-identity-provider-in-your-tenant"></a>Konfigurace LinkedIn jako zprostředkovatele identity ve vašem tenantovi
-1. Postupujte podle těchto kroků [přejděte do okna s funkcemi B2C](active-directory-b2c-app-registration.md#navigate-to-b2c-settings) na portálu Azure portal.
-2. V okně funkcí B2C, klikněte na **zprostředkovatelé Identity**.
-3. Klikněte na **Přidat** v horní části okna.
-4. Zadejte popisný **název** pro konfigurace zprostředkovatele identity. Zadejte například "LI".
-5. Klikněte na tlačítko **typ zprostředkovatele identit**vyberte **LinkedIn**a klikněte na tlačítko **OK**.
-6. Klikněte na tlačítko **nastavit tohoto zprostředkovatele identity** a zadejte ID klienta a tajný kód klienta LinkedIn aplikace, kterou jste vytvořili dříve.
-7. Klikněte na tlačítko **OK** a potom klikněte na tlačítko **vytvořit** uložte konfiguraci LinkedIn.
+## <a name="configure-a-linkedin-account-as-an-identity-provider"></a>Nakonfigurujte účet LinkedIn jako zprostředkovatele identity
+
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com/) jako globální správce tenanta Azure AD B2C.
+2. Přepněte v pravém horním rohu portálu Azure Portal na adresář, který obsahuje tenanta Azure AD B2C, a ujistěte se tak, že používáte správný adresář. Vyberte informace o předplatném a pak **Přepnout adresář**. 
+
+    ![Přepnutí na tenanta Azure AD B2C](./media/active-directory-b2c-setup-li-app/switch-directories.png)
+
+    Vyberte adresář, který obsahuje vašeho tenanta.
+
+    ![Výběr adresáře](./media/active-directory-b2c-setup-li-app/select-directory.png)
+
+3. Zvolte **Všechny služby** v levém horním rohu portálu Azure Portal a vyhledejte a vyberte **Azure AD B2C**.
+4. Vyberte **zprostředkovatelé Identity**a pak vyberte **přidat**.
+5. Zadejte **název**. Zadejte například *LinkedIn*.
+6. Vyberte **typ zprostředkovatele identit**vyberte **LinkedIn**a klikněte na tlačítko **OK**.
+7. Vyberte **nastavit tohoto zprostředkovatele identity** a zadejte Id klienta, který jste si poznamenali dříve, jako **ID klienta** a zadejte tajný kód klienta, který jste si poznamenali jako **tajný kód klienta**aplikace účet LinkedIn, který jste vytvořili dříve.
+8. Klikněte na tlačítko **OK** a potom klikněte na tlačítko **vytvořit** uložte konfiguraci účtu LinkedIn.
 

@@ -1,6 +1,6 @@
 ---
-title: Týmové projekty - Azure platformy a nástroje pro vědecké zpracování dat | Microsoft Docs
-description: Rozepisuje a pojednává o prostředcích data a analýzy, které jsou k dispozici pro podniky standardizace v procesu Team dat vědecké účely.
+title: Platformy a nástroje pro datové vědy týmové projekty – Azure | Dokumentace Microsoftu
+description: Najdete výčet a popisuje prostředky dat a analýz, které jsou dostupné pro podniky standardizují používáním vědecké zpracování týmových dat.
 documentationcenter: ''
 author: deguhath
 manager: cgronlun
@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: deguhath
-ms.openlocfilehash: f447378816f137517a3d542a27841d0cab351473
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 4b0c5d55c8a62dadbe11382997f4d258e66e1a31
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37112676"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37951137"
 ---
-# <a name="platforms-and-tools-for-data-science-team-projects"></a>Týmové projekty platformy a nástroje pro vědecké zpracování dat
+# <a name="platforms-and-tools-for-data-science-team-projects"></a>Týmové projekty platformy a nástroje pro datové vědy
 
-Společnost Microsoft poskytuje úplné spektrum data a analýzy službám a prostředkům platforem cloudu nebo místně. Je lze nasadit, aby provádění projekty vědecké účely data efektivní a škálovatelné. Řídí pokyny pro implementaci datové vědy projekty v organizovaným týmy, verze, a poskytuje způsob spolupráce [proces vědecké účely dat Team](overview.md) (TDSP).  Přehled role pracovníky a jejich přidružených úloh, které zpracovávají datové vědy team standardizace na tento proces, najdete v části [proces vědecké účely dat Team rolí a úloh](roles-tasks.md).
+Společnost Microsoft poskytuje komplexní opensourcová data a analýzy služby a prostředky pro na místní i cloudové platformy. Je možné nasadit efektivního a škálovatelného provést spuštění vaše projekty datových věd. Pokyny pro týmy, které implementují projekty datových věd v organizovaným verzi řízen a je poskytována spolupráce [vědecké zpracování týmových dat](overview.md) (TDSP).  Přehled rolí pracovníky a jejich přidružených úloh, které jsou zpracovávány standardizací data science týmu o tomto procesu najdete v části [vědecké zpracování týmových dat role a úlohy](roles-tasks.md).
 
-Služby data a analýzy, které jsou k dispozici týmů vědecké účely dat pomocí TDSP patří:
+Data a analýzy služby k dispozici pro datové vědy týmy použití TDSP patří:
 
-- Datové vědy virtuálních počítačů (Windows a Linux CentOS)
+- Virtuální počítače pro datové vědy (Windows i Linux CentOS)
 - Clustery HDInsight Spark
 - SQL Data Warehouse
 - Azure Data Lake
@@ -35,109 +35,109 @@ Služby data a analýzy, které jsou k dispozici týmů vědecké účely dat po
 - Azure File Storage
 - SQL Server 2016 R Services
 
-V tomto dokumentu jsme stručně popisují prostředky a obsahují odkazy na kurzy a návody týmy TDSP publikovali. Můžou vám Naučte se používat krok za krokem a začněte je používat k vytvoření aplikace inteligentního pomoct. Další informace na tyto prostředky jsou k dispozici na stránkách produktu. 
+V tomto dokumentu jsme stručně popisují prostředky a poskytují odkazy na kurzy a názorné postupy publikování TDSP týmy. Že vám můžou pomoct při tom, jak využít krok za krokem a začít používat k sestavování inteligentních aplikací. Další informace o těchto prostředků je k dispozici na stránkách produktu. 
 
-## <a name="data-science-virtual-machine-dsvm"></a>Datové vědy virtuálního počítače (DSVM)
+## <a name="data-science-virtual-machine-dsvm"></a>Virtuální počítač pro datové vědy (DSVM)
 
-Virtuální počítač datové vědy nabízí v systému Windows a Linux společností Microsoft, obsahuje oblíbených nástrojů pro vývoj a modelování aktivit vědecké účely dat. Obsahuje nástroje, jako:
+Virtuální počítač pro datové vědy nabízíme na Windows i Linuxem microsoftem, obsahuje oblíbené nástroje pro datové vědy modelování a vývojové aktivity. Obsahuje nástroje, jako:
 
 - Microsoft R Server Developer Edition 
-- Anaconda distribuci jazyka Python
-- Poznámkové bloky Jupyter pro Python a R 
-- Visual Studio Community Edition s Python a R nástrojů v systému Windows / Eclipse v systému Linux
-- Power BI desktop pro Windows
-- SQL Server 2016 Developer Edition v systému Windows nebo Postgres v systému Linux
+- Anacondu, distribuci jazyka Python
+- Poznámkové bloky Jupyter pro Python a r. 
+- Visual Studio Community Edition pomocí Pythonu a nástroje jazyka R na Windows / Eclipse v Linuxu
+- Power BI desktopu pro Windows
+- SQL Server 2016 Developer Edition na Windows / Postgres v Linuxu
 
-Zahrnuje také **nástroje ML a AI** jako CNTK (nástrojů Microsoft otevřený zdroj hloubkové Learning), xgboost, mxnet a Vowpal k dispozici.
+Zahrnuje také **nástroje ML a AI** jako CNTK (otevřený zdroj obsáhlého learningu sada nástrojů od Microsoftu), xgboost, mxnet a Vowpal Wabbit.
 
-Aktuálně jsou k dispozici v DSVM **Windows** a **Linux CentOS** operační systémy. Zvolte velikost vašeho DSVM (počet jader procesoru) a velikost paměti na základě potřeb projektů vědecké účely dat, které máte v úmyslu provést na něm. 
+Aktuálně je k dispozici v DSVM **Windows** a **Linux CentOS** operačních systémů. Vyberte velikost vašeho DSVM (počet jader procesoru) a velikost paměti na základě potřeb projekty datových věd, které máte v úmyslu spustit na ní. 
 
-Další informace o verzi systému Windows, DSVM najdete v tématu [virtuální počítač Microsoft Data vědecké účely](https://azure.microsoft.com/marketplace/partners/microsoft-ads/standard-data-science-vm/) v Azure marketplace. Edice Linux DSVM, najdete v části [Linux datové vědy virtuální počítač](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm/).
+Další informace o edici Windows DSVM najdete v tématu [virtuálního počítače Microsoft Data Science](https://azure.microsoft.com/marketplace/partners/microsoft-ads/standard-data-science-vm/) na Azure marketplace. Edice systému Linux datové VĚDY, naleznete v tématu [virtuální počítač s Linuxem Data Science](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm/).
 
-Zjistěte, jak provést některé běžné úlohy, vědecké účely data DSVM efektivně, najdete v tématu [deset způsobů, jak na vědecké zpracování dat virtuálního počítače](../data-science-virtual-machine/vm-do-ten-things.md)
+Zjistěte, jak efektivně některé z běžných úloh datových věd zpracování pro datové VĚDY, najdete v článku [deset věcí, které můžete provést na virtuální počítač pro datovou vědu](../data-science-virtual-machine/vm-do-ten-things.md)
 
 
-## <a name="azure-hdinsight-spark-clusters"></a>Azure HDInsight Spark clusterů
+## <a name="azure-hdinsight-spark-clusters"></a>Clustery Azure HDInsight Spark
 
-Apache Spark je open-source paralelní zpracování rozhraní, které podporuje zpracování v paměti pro zvýšení výkonu velkých objemů dat analytických aplikací. Modul zpracování Spark je vytvořené pro rychlost, snadné použití a sofistikované analytics. Možnosti výpočtů v paměti Spark díky správnou volbu pro iterativní algoritmy v machine learning a grafů výpočty. Spark je také kompatibilní s Azure Blob storage (WASB), takže existující data uložená v Azure lze snadno zpracovat pomocí Spark.
+Apache Spark je open source paralelní zpracování architektura, která podporuje zpracování v paměti pro zvýšení výkonu velkých objemů dat analytických aplikací. Modul zpracování Spark je postaven pro rychlost, snadné použití a sofistikované analýzy. Možnosti výpočtů v paměti Spark usnadňují dobrou volbou pro iterativní algoritmy ve službě machine learning a grafů výpočty. Spark je také kompatibilní s Azure Blob storage (WASB), takže svá stávající data uložená v Azure lze snadno zpracovat pomocí Sparku.
 
-Když vytvoříte cluster Spark v HDInsight, vytvoříte výpočetní prostředky Azure s nainstalovaným a nakonfigurovaným Spark. Vytvořte Spark cluster v HDInsight trvá přibližně 10 minut. Uložte data, která mají být zpracovány v Azure Blob storage. Informace o používání Azure Blob Storage s clusterem, najdete v tématu [použití HDFS kompatibilní úložiště Azure Blob s Hadoop v HDInsight](../../hdinsight/hdinsight-hadoop-use-blob-storage.md).
+Když vytvoříte cluster Spark v HDInsight, vytvoříte výpočetní prostředky Azure s nainstalovaným a nakonfigurovaným Spark. Vytvoření clusteru Spark v HDInsight trvá asi 10 minut. Store data ke zpracování ve službě Azure Blob storage. Informace o používání služby Azure Blob Storage s clusterem, naleznete v tématu [použití HDFS kompatibilního úložiště Azure Blob s Hadoop v HDInsight](../../hdinsight/hdinsight-hadoop-use-blob-storage.md).
 
-Tým TDSP od společnosti Microsoft byla publikována dvě začátku do konce návody o tom, jak použít clustery Spark HDInsight Azure k vytvoření řešení vědecké účely data, jeden používáním Pythonu a dalších Scala. Další informace o Azure HDInsight **clustery Spark**, najdete v části [přehled: Apache Spark v HDInsight Linux](../../hdinsight/spark/apache-spark-overview.md). Další informace o sestavení pomocí řešení datové vědy **Python** v clusteru Azure HDInsight Spark, najdete v části [přehled o vědecké zpracování dat pomocí Spark v Azure HDInsight](spark-overview.md). Další informace o sestavení pomocí řešení datové vědy **Scala** v clusteru Azure HDInsight Spark, najdete v části [vědecké zpracování dat pomocí Scala a Spark v Azure](scala-walkthrough.md). 
+TDSP týmu společnosti Microsoft publikovala dvě začátku do konce návody, jak používat clustery Azure HDInsight Spark a vytvářet tak řešení datové vědy, jeden pomocí Pythonu a dalších jazyků Scala. Další informace o Azure HDInsight **clustery Spark**, naleznete v tématu [přehled: Apache Spark v HDInsight Linux](../../hdinsight/spark/apache-spark-overview.md). Další informace o sestavení pomocí řešení datové vědy **Python** na Azure HDInsight Spark Cluster, naleznete v tématu [přehled datové vědy pomocí Sparku v Azure HDInsight](spark-overview.md). Další informace o sestavení pomocí řešení datové vědy **Scala** na Azure HDInsight Spark Cluster, naleznete v tématu [vědecké zkoumání dat pomocí Scala a Spark v Azure](scala-walkthrough.md). 
 
 
 ##  <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
 
-Azure SQL Data Warehouse umožňuje škálovat výpočetní prostředky bez předimenzování nebo přepsání platební snadno a v sekundách. Nabízí také jedinečný možnost pozastavit použití výpočetní prostředky, dává volnost lépe spravovat náklady na cloudu. Možnost nasazení škálovatelných výpočetních prostředků umožňuje uvést vaše data do Azure SQL Data Warehouse. Jsou minimální, náklady na úložiště a výpočetní lze spustit pouze na části datové sady, které chcete analyzovat. 
+Azure SQL Data Warehouse umožňuje škálovat výpočetní prostředky jednoduše a během několika sekund, aniž by bylo potřeba zřizovat nebo platit cokoli navíc. Také nabízí jedinečnou možnost pozastavit využívání výpočetních prostředků, vám dá volnost, aby lépe spravovaly nákladů na cloud. Možnost nasadit škálovatelnou výpočetní prostředky, umožňuje mít všechna data do Azure SQL Data Warehouse. Jsou minimální náklady na úložiště a výpočetní prostředky lze použít pouze v části datové sady, které chcete analyzovat. 
 
-Další informace o Azure SQL Data Warehouse, najdete v článku [SQL Data Warehouse](https://azure.microsoft.com/services/sql-data-warehouse) webu. Naučte se vytvářet řešení pokročilou analýzu začátku do konce s SQL Data Warehouse, najdete v tématu [Team datové vědy procesu v akci: pomocí SQL Data Warehouse](sqldw-walkthrough.md).
+Další informace o Azure SQL Data Warehouse, najdete v článku [SQL Data Warehouse](https://azure.microsoft.com/services/sql-data-warehouse) webu. Zjistěte, jak sestavit začátku do konce Pokročilá analytická řešení s využitím SQL Data Warehouse, najdete v článku [vědecké zpracování týmových dat v akci: použití služby SQL Data Warehouse](sqldw-walkthrough.md).
 
 
 ## <a name="azure-data-lake"></a>Azure Data Lake
 
-Azure data lake je jako úložiště celopodnikové každý typ dat shromažďovaných na jednom místě, před žádné formální požadavky nebo schéma uložené. Tato možnost umožňuje každý typ dat, která se mají uchovat v data lake, bez ohledu na jeho velikost nebo struktura nebo jak rychle je konzumována. Organizace můžou pak pomocí Hadoop nebo vzory pokročilou analýzu najít v těchto datového jezera. Datového jezera může taky sloužit jako úložiště pro přípravu dat nižší náklady než Správa data a přesun do datového skladu.
+Azure data lake je jako je úložiště na podnikové úrovni všechny typy dat soustředěné na jednom místě, před žádné formální požadavků nebo schématu se uložila. Díky této flexibilitě umožňuje všechny typy dat, které budou uloženy v data lake, bez ohledu na její velikost nebo strukturu nebo rychlost zpracování. Organizace pak může použít Hadoop nebo pokročilou analýzu k vyhledání vzory v těchto datech jezera. Datová jezera současně může sloužit jako úložiště pro přípravu dat s nižšími náklady než Správa dat a jeho přesunutím do datového skladu.
 
-Další informace o Azure Data Lake najdete v tématu [Introducing Azure Data Lake](https://azure.microsoft.com/blog/introducing-azure-data-lake/). Další postupy k vytvoření řešení vědecké účely škálovatelné začátku do konce dat s Azure Data Lake najdete v tématu [škálovatelné vědecké zpracování dat v Azure Data Lake: návod začátku do konce](data-lake-walkthrough.md)
+Další informace o Azure Data Lake najdete v tématu [Introducing Azure Data Lake](https://azure.microsoft.com/blog/introducing-azure-data-lake/). Zjistěte, jak sestavit řešení škálovatelné začátku do konce datové vědy s Azure Data Lake, najdete v článku [škálovatelné vědecké zkoumání dat ve službě Azure Data Lake: návod začátku do konce](data-lake-walkthrough.md)
 
 
-## <a name="azure-hdinsight-hive-hadoop-clusters"></a>Clustery HDInsight Hive Azure (Hadoop)
+## <a name="azure-hdinsight-hive-hadoop-clusters"></a>Clustery Azure HDInsight Hive (Hadoop)
 
-Apache Hive je systém datového skladu pro Hadoop, která umožňuje shrnutí dat, dotazy a analýzy dat pomocí HiveQL, podobně jako SQL dotazovací jazyk. Hive lze interaktivně zkoumat data nebo vytvořte znovu použitelné dávkové úlohy zpracování.
+Apache Hive se systémem datového skladu pro Hadoop, která umožňuje souhrnů dat, dotazování a analýze dat pomocí HiveQL dotazovací jazyk podobný SQL. Hive je možné pro interaktivní prozkoumávání dat a vytvářet opakovaně použitelné dávkové zpracování úlohy.
 
-Hive umožňuje strukturu projektu na do značné míry Nestrukturovaná data. Po definování strukturu, můžete použít Hive k dotazování dat v clusteru Hadoop bez nutnosti použít, nebo i vědět, Java nebo MapReduce. HiveQL (jazyk dotazu Hive) umožňuje psát dotazy s příkazy, které jsou podobné T-SQL.
+Struktura projektu do značné míry nestrukturovaných dat vám umožní Hive. Potom co definujete strukturu, můžete bez nutnosti použít, nebo ani vědět, Java nebo MapReduce dotazování těchto dat v clusteru Hadoop Hive. HiveQL (jazyk dotazu Hive) umožňuje psát dotazy s příkazy, které jsou podobné T-SQL.
 
-Pro datových vědců Hive v dotazů Hive ke zpracování záznamů spouštět Python User-Defined funkcí (UDF). Tato schopnost rozšiřuje možnosti dotazů Hive v analýzu dat podstatně. Konkrétně umožňuje datových vědců umožňuje provádět inženýrství škálovatelné funkce v jazycích, většinou se seznámíte s: HiveQL podobné jazyku SQL a Python. 
+Pro odborníky přes data Hive v dotazů Hive ke zpracování záznamů spouštět Python User-Defined funkce (UDF). Tato schopnost rozšiřuje možnosti dotazů Hive v data analysis výrazně. Konkrétně umožňuje datovým vědcům provádět vytváření škálovatelných funkcí v jazyce jsou většinou znáte: HiveQL podobném SQL a Pythonu. 
 
-Další informace o Azure HDInsight Hive clustery najdete v tématu [použití Hive a HiveQL s Hadoop v HDInsight](../../hdinsight/hadoop/hdinsight-use-hive.md). Další postupy k vytvoření řešení vědecké účely škálovatelné začátku do konce dat s clustery HDInsight Hive Azure najdete v tématu [Team datové vědy procesu v akci: pomocí clusterů systému HDInsight Hadoop](hive-walkthrough.md).
+Další informace o clusterech Azure HDInsight Hive, najdete v části [použití Hive a HiveQL s Hadoop v HDInsight](../../hdinsight/hadoop/hdinsight-use-hive.md). Zjistěte, jak sestavit řešení škálovatelné začátku do konce datové vědy s Azure HDInsight Hive clustery, najdete v článku [vědecké zpracování týmových dat v akci: clusterů systému HDInsight Hadoop](hive-walkthrough.md).
 
 
 ## <a name="azure-file-storage"></a>Azure File Storage 
 
-Úložiště Azure File je služba, která nabízí sdílené složky v cloudu přes standardní protokol Server Message Block (SMB). Podporují se SMB 2.1 i SMB 3.0. S Azure File Storage můžete rychle a bez nákladných přepisů migrovat starší aplikace, které spoléhají na sdílené složky, do Azure. Aplikace běžící v cloudových službách nebo virtuálních počítačích Azure nebo spuštěné z lokálních klientů můžou připojit sdílenou složku v cloudu stejným způsobem, jako desktopová aplikace připojí typickou sdílenou složku SMB. Potom může sdílenou složku File Storage připojit a používat libovolný počet aplikací.
+Azure File Storage je služba, která nabízí sdílené složky v cloudu přes standardní protokol zprávy bloku SMB (Server). Podporují se SMB 2.1 i SMB 3.0. S Azure File Storage můžete rychle a bez nákladných přepisů migrovat starší aplikace, které spoléhají na sdílené složky, do Azure. Aplikace běžící v cloudových službách nebo virtuálních počítačích Azure nebo spuštěné z lokálních klientů můžou připojit sdílenou složku v cloudu stejným způsobem, jako desktopová aplikace připojí typickou sdílenou složku SMB. Potom může sdílenou složku File Storage připojit a používat libovolný počet aplikací.
 
-Zvláště užitečná pro projekty vědecké účely dat je možnost vytvořit úložiště Azure file jako umístění pro sdílení dat projektu se členové týmu projektu. Každý z nich pak má přístup k stejnou kopii dat v úložišti Azure file. Může také používat úložiště tento soubor sdílet vygenerována během provádění projektu sady funkcí. Pokud je projekt engagement klienta, můžete vytvořit vaši klienti Azure file storage v rámci své vlastní předplatné sdílet data projektu a funkce s vámi. Tímto způsobem klient má oprávnění k úplnému řízení projektu datových prostředků. Další informace o Azure File Storage najdete v tématu [Začínáme s Azure File storage ve Windows](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-files) a [postup používání Azure File Storage s Linuxem](../../storage/files/storage-how-to-use-files-linux.md).
+Užitečné zejména pro projekty datových věd je schopnost vytvářet úložiště služby Azure file jako místem, kde můžete sdílet data projektu s členy svého týmu projektu. Každý z nich pak má přístup k stejnou kopii dat ve službě Azure file storage. Tento soubor úložiště lze také použít ke sdílení sady funkcí, které jsou generovány během spuštění projektu. Pokud je projekt engagement klienta, můžete vytvořit vaši klienti služby Azure file storage v rámci svého vlastního předplatného Azure sdílet data projektu a funkcí s vámi. Tímto způsobem klient má plnou kontrolu nad projektu datové assety. Další informace o Azure File Storage najdete v tématu [Začínáme s Azure File storage ve Windows](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-files) a [postupy používání Azure File Storage s Linuxem](../../storage/files/storage-how-to-use-files-linux.md).
 
 
 ## <a name="sql-server-2016-r-services"></a>SQL Server 2016 R Services
 
-R služby (v databázi) poskytují platformu pro vývoj a nasazení inteligentního aplikací, které můžete odhalovat nové souvislosti. Bohatý a výkonné R jazyk, včetně mnoha balíčků R Společenství, můžete použít k vytváření modelů a vytvářet předpovědi z dat systému SQL Server. Protože R služby (v databázi) integrované jazyka R se systémem SQL Server, jsou blízko data, která eliminuje náklady a bezpečnostních rizicích spojených s přesouvání dat v analytics.
+Služby R (v databázi) poskytují model platforma pro vývoj a nasazování inteligentních aplikací, které můžete odhalit nové poznatky. Bohaté a výkonné jazyka R, včetně mnoha balíčků poskytovaných komunitou R, můžete vytvářet modely a generovat předpovědi ze svých dat serveru SQL Server. Protože služby R (v databázi) integrace jazyka R s SQL serverem, analytics zachovány blízko data, která se eliminují náklady a rizika zabezpečení, které jsou spojené s přesunem dat.
 
-R služby (v databázi) podporují jazyk R s otevřeným zdrojem s komplexní sadou nástrojů SQL serveru a technologie. Nabízí vyšší výkon, zabezpečení, spolehlivost a možnosti správy. Můžete nasadit řešení R pomocí pohodlný a známých nástrojů. Výrobní aplikace můžete volat R runtime a načtení předpovědi a vizuální prvky používající Transact-SQL. Je také použít ke zlepšení škálování a výkon řešení R ScaleR knihovny. Další informace najdete v tématu [R služby serveru SQL Server](https://msdn.microsoft.com/library/mt604845.aspx)
+Služby R (v databázi) podporují jazyk opensourcového jazyka R s komplexní sadu nástrojů SQL serveru a technologie. Nabízejí špičkový výkon, zabezpečení, spolehlivost a možnosti správy. Můžete nasadit řešení R s využitím praktické a známé nástroje. Vaše produkční aplikace můžete volat modulem runtime r. a načíst předpovědi a vizuály s použitím příkazů jazyka Transact-SQL. Pomocí knihoven ScaleR také zvýšit výkon svých řešení R a škálování. Další informace najdete v tématu [SQL Server R Services](https://docs.microsoft.com/sql/advanced-analytics/r/sql-server-r-services).
 
-Týmem TDSP od společnosti Microsoft byla publikována dvě návody začátku do konce, které ukazují, jak sestavit řešení vědecké účely data ve službě SQL Server 2016 R: jeden pro programátory v jazyce R a jeden pro vývojáře SQL. Pro **programátory v jazyce R**, najdete v části [vědecké zpracování dat pro kompletní návod](https://msdn.microsoft.com/library/mt612857.aspx). Pro **SQL vývojáři**, najdete v části [v databázi pokročilé analýzy pro vývojáře SQL (kurz)](https://msdn.microsoft.com/library/mt683480.aspx).
+Tým TDSP od Microsoftu publikoval dvě začátku do konce návody, které ukazují, jak vytvářet řešení pro vědu dat ve službě SQL Server 2016 R Services: jeden pro programátorům v R a jeden pro vývojáře SQL. Pro **programátorům v R**, naleznete v tématu [návod začátku do konce pro datovou vědu](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough). Pro **vývojáři SQL**, naleznete v tématu [v databázi pokročilé analýzy pro vývojáře SQL (kurz)](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers).
 
 
-## <a name="appendix"></a>Dodatek: Nástroje pro nastavení dat vědecké účely projekty
+## <a name="appendix"></a>Dodatek: Nástroje pro nastavení projekty datových věd
 
-### <a name="install-git-credential-manager-on-windows"></a>Instalace správce přihlašovacích údajů Git v systému Windows
+### <a name="install-git-credential-manager-on-windows"></a>Nainstalovat Git Credential Manageru na Windows
 
-Použijete-li TDSP **Windows**, je potřeba nainstalovat **Git přihlašovacích údajů správce (GCM)** ke komunikaci s úložiště Git. Pokud chcete nainstalovat GCM, musíte nejprve nainstalovat **Chocolaty**. Chcete-li nainstalovat Chocolaty a GCM, spusťte následující příkazy v prostředí Windows PowerShell jako **správce**:  
+Pokud postupujete TDSP **Windows**, je potřeba nainstalovat **Git Credential Manageru (GCM)** ke komunikaci s úložišti Git. Pokud chcete nainstalovat GCM, musíte nejprve nainstalovat **Chocolaty**. Pokud chcete nainstalovat Chocolaty a služby GCM, spusťte následující příkazy v prostředí Windows PowerShell jako **správce**:  
 
     iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
     choco install git-credential-manager-for-windows -y
     
 
-### <a name="install-git-on-linux-centos-machines"></a>Nainstalovat Git na počítače se systémem Linux (CentOS)
+### <a name="install-git-on-linux-centos-machines"></a>Nainstalovat Git na počítačích s Linuxem (CentOS)
 
-Spusťte následující příkaz bash nainstalovat Git na počítače se systémem Linux (CentOS):
+Spusťte následující příkaz prostředí bash instalace Git na počítačích s Linuxem (CentOS):
 
     sudo yum install git
 
 
-### <a name="generate-public-ssh-key-on-linux-centos-machines"></a>Generování veřejného klíče SSH na počítače se systémem Linux (CentOS)
+### <a name="generate-public-ssh-key-on-linux-centos-machines"></a>Generovat veřejný klíč SSH na počítačích s Linuxem (CentOS)
 
-Pokud používáte počítače se systémem Linux (CentOS) ke spuštění příkazů git, budete muset přidat veřejný klíč SSH počítače na server služby VSTS, tak, aby tento počítač je serverem služby VSTS rozpoznán. Nejdřív musíte vygenerovat veřejný klíč SSH a přidejte klíč k veřejné klíče SSH na stránce nastavení zabezpečení služby VSTS. 
+Pokud používáte počítače s Linuxem (CentOS) ke spuštění příkazů git, musíte přidat veřejný klíč SSH z vašeho počítače k serveru VSTS tak, aby tento počítač je rozpoznáno serverem VSTS. Nejprve musíte vytvořit veřejný klíč SSH a přidejte klíč k veřejné klíče SSH na stránce nastavení zabezpečení VSTS. 
 
-- Chcete-li vygenerovat klíč SSH, spusťte následující dva příkazy: 
+- Vygenerujte klíč SSH, spusťte následující dva příkazy: 
 
         ssh-keygen
         cat .ssh/id_rsa.pub
 
 ![](./media/platforms-and-tools/resources-1-generate_ssh.png)
 
-- Zkopírujte celou ssh klíče včetně *ssh-rsa*. 
-- Přihlaste se k serveru služby VSTS. 
-- Klikněte na tlačítko **< název vašeho\>**  v pravém horním rohu stránky a klikněte na tlačítko **zabezpečení**. 
+- Zkopírujte celý ssh včetně klíče *ssh-rsa*. 
+- Přihlaste se k serveru VSTS. 
+- Klikněte na tlačítko **< jméno\>**  v pravém horním rohu stránky a klikněte na tlačítko **zabezpečení**. 
     
     ![](./media/platforms-and-tools/resources-2-user-setting.png)
 
@@ -145,11 +145,11 @@ Pokud používáte počítače se systémem Linux (CentOS) ke spuštění přík
 
     ![](./media/platforms-and-tools/resources-3-add-ssh.png)
 
-- Vložení ssh klíč právě zkopírovali do textového pole a uložte.
+- Vložit ssh klíč zkopírovali do textového pole a uložení.
 
 
 ## <a name="next-steps"></a>Další postup
 
-Úplné návody začátku do konce, které ukazují všechny kroky v procesu pro **konkrétních scénářů** jsou také uvedeny. Jsou uvedena v seznamu a propojené s miniatur popisy v [příklad návody](walkthroughs.md) tématu. Se ukazují, jak kombinovat cloud, místní nástroje a služby do pracovního postupu nebo kanálu vytvoření inteligentního aplikace. 
+Úplné začátku do konce návody, které ukazují všechny kroky v procesu pro **konkrétních scénářů** jsou také k dispozici. Jsou uvedena v seznamu a propojené s Miniatura popisy v [příklad návody](walkthroughs.md) tématu. Jejich ukazují, jak zkombinovat cloudové, místní nástroje a služby do pracovního postupu nebo kanálu pro vytváření inteligentních aplikací. 
 
-Příklady provedením kroků v procesu Team dat. vědecké účely, které používají Azure Machine Learning Studio najdete v tématu [s Azure ML](http://aka.ms/datascienceprocess) kurzů.
+Příklady provádět kroky v vědecké zpracování týmových dat, které používají Azure Machine Learning Studio, najdete v článku [pomocí Azure ML](http://aka.ms/datascienceprocess) výuky.

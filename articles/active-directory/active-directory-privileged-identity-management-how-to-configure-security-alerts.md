@@ -13,18 +13,18 @@ ms.component: protection
 ms.date: 06/06/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: d054ca015fd97b3ec45f18b2d3a795eccf606993
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: fee4344be2875140a2e9c35bd83eb668bd1efa3f
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37447553"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952452"
 ---
 # <a name="how-to-configure-security-alerts-in-azure-ad-privileged-identity-management"></a>Postup konfigurace výstrah zabezpečení ve službě Azure AD Privileged Identity Management
 ## <a name="security-alerts"></a>Výstrahy zabezpečení
 Azure Privileged Identity Management (PIM) generuje výstrahy, když je aktivita podezřelého nebo nebezpečné ve vašem prostředí. Když se aktivuje upozornění, zobrazí na řídicím panelu PIM. Vyberte výstrahu, pokud chcete zobrazit sestavu obsahující seznam uživatelů nebo rolí, které aktivuje výstrahu.
 
-![Výstrahy zabezpečení řídicí panel PIM – snímek obrazovky][1]
+![Výstrahy zabezpečení řídicí panel PIM – snímek obrazovky](./media/active-directory-privileged-identity-management-how-to-configure-security-alerts/PIM_security_dash.png)
 
 | Výstrahy | Severity | Trigger | Doporučení |
 | --- | --- | --- | --- |
@@ -45,7 +45,7 @@ Můžete přizpůsobit některé z výstrah zabezpečení ve službě PIM pro pr
 1. Přihlaste se k [webu Azure portal](https://portal.azure.com/) a vyberte **Azure AD Privileged Identity Management** dlaždici na řídicím panelu.
 2. Vyberte **spravovat privilegované role** > **nastavení** > **nastavení upozornění**.
    
-    ![Přejděte do nastavení výstrah zabezpečení][2]
+    ![Přejděte do nastavení výstrah zabezpečení](./media/active-directory-privileged-identity-management-how-to-configure-security-alerts/PIM_security_settings.png)
 
 ### <a name="roles-are-being-activated-too-frequently-alert"></a>Výstraha "Role jsou aktivované příliš často"
 Tato výstraha se aktivuje, pokud uživatel aktivuje stejné privilegovaných rolí více než jednou v zadaném období. Můžete nakonfigurovat časové období a počet aktivací.
@@ -66,8 +66,3 @@ Tato výstraha se aktivuje, pokud uživatel přejde určitou dobu bez aktivace r
 
 ## <a name="next-steps"></a>Další postup
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
-
-<!--Image references-->
-
-[1]: ./media/active-directory-privileged-identity-management-how-to-configure-security-alerts/PIM_security_dash.png
-[2]: ./media/active-directory-privileged-identity-management-how-to-configure-security-alerts/PIM_security_settings.png

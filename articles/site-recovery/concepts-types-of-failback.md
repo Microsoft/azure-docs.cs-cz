@@ -1,53 +1,53 @@
 ---
-title: Navrácení služeb po obnovení ve službě Azure Site Recovery | Microsoft Docs
-description: Tento článek obsahuje přehled různých typů navrácení služeb po obnovení a upozornění, aby byla považována za při selhání zpátky do místního se službou Azure Site Recovery.
+title: Navrácení služeb po obnovení ve službě Azure Site Recovery | Dokumentace Microsoftu
+description: Tento článek obsahuje přehled různých typů navrácení služeb po obnovení a upozornění, aby bylo považováno za při selhání, zpět do místně pomocí služby Azure Site Recovery.
 services: site-recovery
 author: rajani-janaki-ram
 manager: guaravd
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 07/06/2018
 ms.author: rajanki
-ms.openlocfilehash: 372a7867b47960338d7a1bf7e646fb9fffbe72e1
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 2a9ee380fc16c4088d98875dd465509c4023d037
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
-ms.locfileid: "29803548"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37920385"
 ---
 # <a name="overview-of-failback"></a>Přehled o navrácení služeb po obnovení
 
-Až budete mít převzetí služeb při selhání do Azure, může selhat zpět do místního webu. Existují dva různé typy navrácení služeb po obnovení, které je možné s Azure Site Recovery: 
+Jakmile budete mít převzetí služeb při selhání do Azure, můžete navrátit služby zpět do místní lokality. Existují dva různé typy navrácení služeb po obnovení, které je možné pomocí Azure Site Recovery: 
 
 - Navrácení služeb po obnovení do původního umístění 
-- Selhání zpátky do alternativního umístění
+- Navrácení služeb po obnovení alternativního umístění
 
-Pokud jste při selhání virtuálního počítače VMware, můžete Pokud můžou selhat zpět do stejného zdrojového místní virtuální počítače stále existuje. V tomto scénáři jsou replikovány pouze změny zpět. Tento scénář se označuje jako **obnovení do původního umístění**. Pokud na místním virtuálním počítači neexistuje, tento scénář je **alternativní umístění obnovení**.
+Pokud jste převzetí služeb při selhání virtuálního počítače VMware, můžete navrátit služby zpět do stejného zdrojového virtuálního počítače v místním Pokud stále existuje. V tomto scénáři se replikují jenom změny zpět. Tento scénář se označuje jako **obnovení do původního umístění**. Pokud na místním virtuálním počítači buď neexistuje, tento scénář je **obnovení do alternativního umístění**.
 
 > [!NOTE]
-> Můžete pouze navrácení služeb po obnovení do původního vCenter a konfigurační server. Nelze nasadit na nový server konfigurace a selhání zpět jeho použití. Navíc nelze přidat nový vCenter existující konfigurační server a navrácení služeb po obnovení do nové vCenter.
+> Můžete pouze navrácení služeb po obnovení do původní vCenter a konfigurační server. Nelze nasadit nové konfigurační server a selhání, zpět pomocí. Navíc nelze přidat nový vCenter na existující konfigurační server a navrácení služeb po obnovení do nového serveru vCenter.
 
-## <a name="original-location-recovery-olr"></a>Obnovení do původního umístění (OLR)
-Pokud si zvolíte selhání zpět do původního virtuálního počítače, musí být splněny následující podmínky:
+## <a name="original-location-recovery-olr"></a>Původní umístění (Olr)
+Pokud se rozhodnete selhání zpět na původní virtuální počítač, musí být splněny následující podmínky:
 
-* Pokud je virtuální počítač spravovaný vCenter server, hostitele ESX se hlavní cíl měli přístup k úložišti dat virtuálního počítače.
-* Pokud virtuální počítač na hostiteli ESX, ale není spravován nástrojem vCenter, musí být pevný disk virtuálního počítače v úložiště dat, které se hlavní cíl hostitelé mají přístup.
-* Pokud virtuální počítač na hostiteli ESX a nepoužívá vCenter, by měl předtím, než můžete znovu nastavte ochranu dokončit zjišťování hostitele ESX hlavního cíle. To platí, pokud po obnovení zpět fyzických serverů, příliš.
-* Vám může selhat zpět k virtuální síti SAN (vSAN) nebo disk, který podle nezpracované zařízení mapování (RDM), pokud již existují a jsou připojené k virtuálnímu počítači místní disky.
+* Pokud virtuální počítač je spravován serverem vCenter, hostitel ESX hlavního cílového by měl mít přístup k úložišti dat virtuálního počítače.
+* Pokud virtuální počítač na hostitele ESX, ale není spravované přes vCenter, musí být pevný disk virtuálního počítače v úložišti dat, s přístupem k hostiteli hlavního cíle.
+* Pokud virtuální počítač na hostitele ESX a nepoužívá vCenter, by měl předtím, než můžete znovu nastavit ochranu dokončit zjišťování hostitele ESX hlavního cíle. To platí, pokud přebíráte obnovení fyzických serverů, příliš.
+* Můžete navrátit služby zpět do virtuální sítě SAN (vSAN) nebo disk, který podle mapování (RDM), pokud už existují a jsou připojené k virtuálnímu počítači s místními disky nezpracované zařízení.
 
 > [!IMPORTANT]
-> Je důležité, aby během navrácení služeb po obnovení, je služba Azure Site Recovery dokáže zjistit původní VMDK na virtuální počítač, na který bude zapsán čekajících změn povolit disk.enableUUID= hodnotu TRUE. Pokud není tato hodnota nastavená na být TRUE, pak služba se pokusí identifikovat odpovídající místní VMDK na kapacita systému dovolí. Pokud není pravé VMDK nalezen, vytvoří další disku a získá k, zapisovat data.
+> Je třeba povolit disk.enableUUID= hodnotu TRUE, aby během navrácení služeb po obnovení, služba Azure Site Recovery je schopen identifikovat původní VMDK na virtuálním počítači, do kterého budou zapsány čekající změny. Pokud tato hodnota není nastavená na být TRUE, pak služba pokusí se určit odpovídající místní VMDK na jak kapacita systému dovolí. Pokud není nalezen správný VMDK, vytvoří další disk a ke, který získá zapsat data.
 
-## <a name="alternate-location-recovery-alr"></a>Obnovení do náhradního umístění (ALR)
-Pokud virtuální počítač na místě před opětovnou ochranu virtuálního počítače neexistuje, tento scénář nazývá obnovení do alternativního umístění. Pracovní postup opětovné ochrany znovu vytvoří na místním virtuálním počítači. Také to způsobí stahování úplná data.
+## <a name="alternate-location-recovery-alr"></a>Obnovení do alternativního umístění (ALR)
+Pokud na místním virtuálním počítači před znovu se zapíná ochrana virtuálního počítače neexistuje, tento scénář je volána obnovení do alternativního umístění. Pracovní postup opětovné zapnutí ochrany vytvoří místní virtuální počítač znovu. Také to způsobí stažení úplná data.
 
-* Pokud žádnou zpět do alternativního umístění, virtuální počítač je obnovena na stejném hostiteli ESX, na kterém je nasazený hlavní cílový server. Úložiště dat, který slouží k vytvoření disku bude stejné úložiště, který byl vybrán při opětovné povolení ochrany virtuálního počítače.
-* Může selhat zpět jenom na systém souborů virtuálního počítače (VMFS) nebo sítě vSAN úložiště. Pokud máte RDM, opětovné ochrany a navrácení služeb po obnovení nebude fungovat.
-* Opětovné ochrany zahrnuje jeden velký počáteční přenos dat, za kterým následuje změny. Tento proces existuje, protože virtuální počítač na místní neexistuje. Kompletní datový musí replikovat zpět. Tato opětovné ochrany bude taky trvat déle než obnovení do původního umístění.
-* Nelze nepodaří zpět na základě RDM disky. V úložišti dat VMFS nebo síť vSAN může vytvořit pouze nové disky virtuálního počítače (VMDKs).
+* Když převezmete služby zpět do alternativního umístění, virtuální počítač bude obnoven do stejného hostitele ESX, na kterém je nasazený na hlavní cílový server. Úložiště dat, který se používá k vytvoření disku budou stejné úložiště, který byl vybrán při znovu se zapíná ochrana virtuálního počítače.
+* Můžete předat zpět pouze na systém souborů virtuálního počítače (VMFS) nebo úložiště dat sítě vSAN. Pokud máte RDM operace opětovného zapnutí ochrany a navrácení služeb po obnovení nebude fungovat.
+* Operace opětovného zapnutí ochrany zahrnuje jeden velký počáteční přenos dat, který je následován změny. Tento proces existuje, protože virtuální počítač neexistuje v místním prostředí. Úplná data musí replikovat zpět. Tato operace opětovného zapnutí ochrany bude taky trvat déle než obnovení do původního umístění.
+* Nemůžete po obnovení zpět na disky RDM založené. Nový virtuální počítač disky (Vmdk) můžete vytvořit pouze na úložiště dat VMFS/síť vSAN.
 
 > [!NOTE]
-> Fyzický počítač, při převzetí služeb při selhání do Azure, můžete se nezdařilo zpět pouze jako virtuální počítač VMware. To odpovídá témže pracovním postupu jako alternativní umístění pro obnovení. Ujistěte se, že zjistíte alespoň jeden hlavní cílový server a potřeby hostitelů ESX/ESXi, na které budete muset navrácení služeb po obnovení.
+> Fyzický počítač, při převzetí služeb při selhání do Azure, můžete se nepodařilo zálohovat pouze jako virtuální počítač VMware. To se řídí stejného pracovního postupu jako obnovení do alternativního umístění. Ujistěte se, že zjistíte alespoň jeden hlavní cílový server a nezbytné hostitelů ESX/ESXi na které je potřeba navrácení služeb po obnovení.
 
 ## <a name="next-steps"></a>Další postup
 

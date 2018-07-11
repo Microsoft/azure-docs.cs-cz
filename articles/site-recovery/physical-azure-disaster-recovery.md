@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/23/2018
+ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: 11053d15eaa2bcd205416d843e7f232df2490f4c
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
-ms.translationtype: MT
+ms.openlocfilehash: 173423c1a578500a990d6a7b43017d06ea96f6e7
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37342578"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37917451"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Nastavení zotavení po havárii do Azure pro místní fyzické servery
 

@@ -1,9 +1,9 @@
 ---
-title: Nainstalujte MongoDB na virtuální počítač s Linuxem pomocí rozhraní příkazového řádku Azure | Microsoft Docs
-description: Zjistěte, jak nainstalovat a nakonfigurovat MongoDB na iusing Linux virtuálního počítače Azure CLI 2.0
+title: Instalace MongoDB na virtuálním počítači s Linuxem pomocí Azure CLI | Dokumentace Microsoftu
+description: Zjistěte, jak nainstalovat a nakonfigurovat MongoDB na 1vytváření virtuálního počítače s Linuxem rozhraní příkazového řádku Azure CLI 2.0
 services: virtual-machines-linux
 documentationcenter: ''
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: ''
 ms.assetid: 3f55b546-86df-4442-9ef4-8a25fae7b96e
@@ -13,24 +13,24 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/15/2017
-ms.author: iainfou
-ms.openlocfilehash: a47c0e2f655f51444dc586f696c26caa63ab6cac
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.author: cynthn
+ms.openlocfilehash: d066b412fb722318824a408861fe7d9595c71537
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36937578"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37928229"
 ---
-# <a name="how-to-install-and-configure-mongodb-on-a-linux-vm"></a>Postup instalace a konfigurace MongoDB na virtuální počítač s Linuxem
-[MongoDB](http://www.mongodb.org) je Oblíbené databáze NoSQL open source a vysoce výkonné. Tento článek ukazuje, jak nainstalovat a nakonfigurovat MongoDB na virtuální počítač s Linuxem pomocí Azure CLI 2.0. Příklady jsou uvedeny této podrobnosti o tom, jak na:
+# <a name="how-to-install-and-configure-mongodb-on-a-linux-vm"></a>Jak nainstalovat a nakonfigurovat MongoDB na virtuálním počítači s Linuxem
+[MongoDB](http://www.mongodb.org) je Oblíbené open source a vysoce výkonnou databází NoSQL. V tomto článku se dozvíte, jak nainstalovat a nakonfigurovat MongoDB na virtuálním počítači s Linuxem pomocí Azure CLI 2.0. Příklady jsou uvedeny této podrobnosti o tom, jak do:
 
-* [Ručně nainstalujte a nakonfigurujte základní instance MongoDB](#manually-install-and-configure-mongodb-on-a-vm)
-* [Vytvořte základní instance MongoDB pomocí šablony Resource Manageru](#create-basic-mongodb-instance-on-centos-using-a-template)
-* [Vytvořit komplexní MongoDB horizontálně dělené clusteru s replikou nastaví pomocí šablony Resource Manageru](#create-a-complex-mongodb-sharded-cluster-on-centos-using-a-template)
+* [Ručně nainstalujte a nakonfigurujte základní instanci databáze MongoDB](#manually-install-and-configure-mongodb-on-a-vm)
+* [Vytvoření základní instanci databáze MongoDB pomocí šablony Resource Manageru](#create-basic-mongodb-instance-on-centos-using-a-template)
+* [Vytvoření komplexní MongoDB horizontálně dělené clusteru s replikou nastaví pomocí šablony Resource Manageru](#create-a-complex-mongodb-sharded-cluster-on-centos-using-a-template)
 
 
 ## <a name="manually-install-and-configure-mongodb-on-a-vm"></a>Ručně nainstalujte a nakonfigurujte MongoDB na virtuálním počítači
-MongoDB [poskytují pokyny k instalaci](https://docs.mongodb.com/manual/administration/install-on-linux/) pro distribucích systému Linux, včetně Red Hat nebo CentOS, SUSE, Ubuntu a Debian. Následující příklad vytvoří *CentOS* virtuálních počítačů. K vytvoření tohoto prostředí, je třeba nejnovější [Azure CLI 2.0](/cli/azure/install-az-cli2) nainstalován a přihlášení k účtu Azure pomocí [az přihlášení](/cli/azure/reference-index#az_login).
+MongoDB [poskytují pokyny k instalaci](https://docs.mongodb.com/manual/administration/install-on-linux/) pro distribuce Linuxu, včetně Red Hat nebo CentOS, SUSE, Ubuntu nebo Debian. Následující příklad vytvoří *CentOS* virtuálního počítače. K vytvoření tohoto prostředí, budete potřebovat nejnovější [příkazového řádku Azure CLI 2.0](/cli/azure/install-az-cli2) nainstalovaný a přihlášení k účtu Azure pomocí [az login](/cli/azure/reference-index#az_login).
 
 Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az_group_create). Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*:
 
@@ -38,7 +38,7 @@ Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/gr
 az group create --name myResourceGroup --location eastus
 ```
 
-Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm#az_vm_create). Následující příklad vytvoří virtuální počítač s názvem *Můjvp* s uživatelem s názvem *azureuser* pomocí ověření veřejného klíče SSH
+Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm#az_vm_create). Následující příklad vytvoří virtuální počítač s názvem *myVM* jako uživatel s názvem *azureuser* pomocí ověření veřejného klíče SSH
 
 ```azurecli
 az vm create \
@@ -49,19 +49,19 @@ az vm create \
     --generate-ssh-keys
 ```
 
-SSH k virtuálnímu počítači pomocí vlastního uživatelského jména a `publicIpAddress` uvedeného ve výstupu z předchozího kroku:
+SSH k virtuálnímu počítači pomocí své uživatelské jméno a `publicIpAddress` uvedená ve výstupu z předchozího kroku:
 
 ```bash
 ssh azureuser@<publicIpAddress>
 ```
 
-Chcete-li přidat zdroje instalace pro MongoDB, vytvořte **yum** soubor úložiště následujícím způsobem:
+Chcete-li přidat zdroje instalace pro MongoDB, vytvořte **yumu** soubor úložiště následujícím způsobem:
 
 ```bash
 sudo touch /etc/yum.repos.d/mongodb-org-3.6.repo
 ```
 
-Otevřete soubor úložišti MongoDB pro úpravy, jako například s `vi` nebo `nano`. Přidejte následující řádky:
+Otevřete soubor úložiště MongoDB pro úpravy, jako například s `vi` nebo `nano`. Přidejte následující řádky:
 
 ```sh
 [mongodb-org-3.6]
@@ -72,13 +72,13 @@ enabled=1
 gpgkey=https://www.mongodb.org/static/pgp/server-3.6.asc
 ```
 
-Nainstalujte MongoDB pomocí **yum** následujícím způsobem:
+Nainstalujte MongoDB pomocí **yumu** následujícím způsobem:
 
 ```bash
 sudo yum install -y mongodb-org
 ```
 
-Ve výchozím nastavení se SELinux vynucuje u CentOS bitové kopie, které brání v přístupu k MongoDB. Instalace nástroje pro správu zásad a konfigurace SELinux umožňující MongoDB pracovat na jeho výchozí port TCP 27017 následujícím způsobem:
+Ve výchozím nastavení je vynucena SELinux na CentOS imagích, které vám brání v přístupu k MongoDB. Instalace nástroje pro správu zásad a konfigurace SELinux umožňující MongoDB má operace provést její výchozí port TCP 27017 následujícím způsobem:
 
 ```bash
 sudo yum install -y policycoreutils-python
@@ -97,7 +97,7 @@ Ověření instalace MongoDB se připojíte pomocí místní `mongo` klienta:
 mongo
 ```
 
-Nyní testovací MongoDB instance přidáním některá data a pak vyhledávání:
+Teď otestujte přidáním nějaká data a poté vyhledáním instanci databáze MongoDB:
 
 ```sh
 > db
@@ -108,38 +108,38 @@ test
 > exit
 ```
 
-V případě potřeby nakonfigurujte MongoDB spustit automaticky při restartu systému:
+V případě potřeby nakonfigurujte MongoDB na automatické spouštění během restartování systému:
 
 ```bash
 sudo chkconfig mongod on
 ```
 
 
-## <a name="create-basic-mongodb-instance-on-centos-using-a-template"></a>Vytvořte základní instance MongoDB na CentOS pomocí šablony
-Na jednom virtuálním počítači CentOS pomocí následující šablony Azure rychlý start z Githubu, můžete vytvořit základní instance MongoDB. Tato šablona používá k přidání rozšíření vlastních skriptů pro Linux **yum** úložiště pro vaše nově vytvořený CentOS virtuálních počítačů a potom nainstalujte MongoDB.
+## <a name="create-basic-mongodb-instance-on-centos-using-a-template"></a>Vytvoření základní instanci databáze MongoDB na CentOS pomocí šablony
+Základní instance MongoDB můžete vytvořit na jednoho virtuálního počítače CentOS pomocí následující šablony rychlý start Azure z Githubu. Tato šablona používá rozšíření vlastních skriptů pro Linux pro přidání **yumu** úložiště k nově vytvořenému virtuálnímu počítači CentOS a nainstalujte MongoDB.
 
 * [Základní instance MongoDB na CentOS](https://github.com/Azure/azure-quickstart-templates/tree/master/mongodb-on-centos) - https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/mongodb-on-centos/azuredeploy.json
 
-K vytvoření tohoto prostředí, je třeba nejnovější [Azure CLI 2.0](/cli/azure/install-az-cli2) nainstalován a přihlášení k účtu Azure pomocí [az přihlášení](/cli/azure/reference-index#az_login). Nejdřív vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az_group_create). Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*:
+K vytvoření tohoto prostředí, budete potřebovat nejnovější [příkazového řádku Azure CLI 2.0](/cli/azure/install-az-cli2) nainstalovaný a přihlášení k účtu Azure pomocí [az login](/cli/azure/reference-index#az_login). Nejdřív vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az_group_create). Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-V dalším kroku nasaďte šablonu MongoDB s [vytvořit nasazení skupiny az](/cli/azure/group/deployment#az_group_deployment_create). Po zobrazení výzvy zadejte své vlastní jedinečné hodnoty pro *newStorageAccountName*, *dnsNameForPublicIP*a uživatelské jméno správce a heslo:
+V dalším kroku nasaďte šablonu MongoDB s [vytvořit nasazení skupiny pro az](/cli/azure/group/deployment#az_group_deployment_create). Po zobrazení výzvy zadejte své vlastní jedinečné hodnoty *newStorageAccountName*, *dnsNameForPublicIP*, uživatelské jméno admin a heslo:
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup \
   --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/mongodb-on-centos/azuredeploy.json
 ```
 
-Přihlaste se k virtuálnímu počítači pomocí veřejné adresy DNS vašeho virtuálního počítače. Můžete zobrazit veřejnou adresu DNS s [az virtuálních počítačů zobrazit](/cli/azure/vm#az_vm_show):
+Přihlaste se k virtuálnímu počítači pomocí veřejné adresy DNS vašeho virtuálního počítače. Můžete zobrazit veřejnou adresu DNS s [az vm show](/cli/azure/vm#az_vm_show):
 
 ```azurecli
 az vm show -g myResourceGroup -n myLinuxVM -d --query [fqdns] -o tsv
 ```
 
-SSH k virtuálnímu počítači pomocí vlastního uživatelského jména a veřejnou adresu DNS:
+SSH k virtuálnímu počítači pomocí uživatelského jména a veřejná adresa DNS:
 
 ```bash
 ssh azureuser@mypublicdns.eastus.cloudapp.azure.com
@@ -151,7 +151,7 @@ Ověření instalace MongoDB se připojíte pomocí místní `mongo` klienta ná
 mongo
 ```
 
-Nyní testovací instance přidáním některá data a hledání následujícím způsobem:
+Otestujte teď instance přidáním nějaká data a hledání následujícím způsobem:
 
 ```sh
 > db
@@ -163,21 +163,21 @@ test
 ```
 
 
-## <a name="create-a-complex-mongodb-sharded-cluster-on-centos-using-a-template"></a>Vytvořit Cluster horizontálně dělené komplexní MongoDB na CentOS pomocí šablony
-Můžete vytvořit komplexní MongoDB horizontálně dělené clusteru pomocí následující šablony Azure rychlý start z Githubu. Tato šablona odpovídá [MongoDB horizontálně dělené clusteru osvědčené postupy](https://docs.mongodb.com/manual/core/sharded-cluster-components/) zajistit redundanci a vysokou dostupnost. Šablona vytvoří dvě horizontálních oddílů, se tři uzly v každé sady replik. Jeden konfigurace serveru repliky s tři uzly se také vytvoří plus dva **mongos** směrovač servery k zajištění konzistence k aplikacím z v horizontálních oddílů.
+## <a name="create-a-complex-mongodb-sharded-cluster-on-centos-using-a-template"></a>Vytvořte Cluster horizontálně dělené komplexní MongoDB na CentOS pomocí šablony
+Můžete vytvořit cluster komplexní horizontálně dělené MongoDB pomocí následující šablony rychlý start Azure z Githubu. Tato šablona se řídí [MongoDB horizontálně dělené clusteru osvědčené postupy](https://docs.mongodb.com/manual/core/sharded-cluster-components/) zajistit redundanci a vysokou dostupnost. Šablona vytvoří dva oddíly se třemi uzly v každé sady replik. Jeden konfigurační server nastavte se třemi uzly také vytvoření repliky, plus dvě **mongos** směrovače serverů pro zajištění konzistence k aplikacím z mezi horizontální oddíly.
 
 * [MongoDB horizontálního dělení clusteru na CentOS](https://github.com/Azure/azure-quickstart-templates/tree/master/mongodb-sharding-centos) - https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/mongodb-sharding-centos/azuredeploy.json
 
 > [!WARNING]
-> Nasazení tohoto komplexní horizontálně dělené clusteru MongoDB vyžaduje víc než 20 jádra, což obvykle představuje výchozí počet jader na oblast pro předplatné. Otevřete zvýšení počtu vaše základní požadavek podporu Azure.
+> Nasazení clusteru horizontálně dělené tento komplexní MongoDB vyžaduje více než 20 jader, což je obvykle výchozí počet jader na oblast a předplatné. Otevřete žádost o podporu Azure o navýšení vaší počet jader.
 
-K vytvoření tohoto prostředí, je třeba nejnovější [Azure CLI 2.0](/cli/azure/install-az-cli2) nainstalován a přihlášení k účtu Azure pomocí [az přihlášení](/cli/azure/reference-index#az_login). Nejdřív vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az_group_create). Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*:
+K vytvoření tohoto prostředí, budete potřebovat nejnovější [příkazového řádku Azure CLI 2.0](/cli/azure/install-az-cli2) nainstalovaný a přihlášení k účtu Azure pomocí [az login](/cli/azure/reference-index#az_login). Nejdřív vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az_group_create). Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-V dalším kroku nasaďte šablonu MongoDB s [vytvořit nasazení skupiny az](/cli/azure/group/deployment#az_group_deployment_create). Definovat vlastní prostředek názvy a velikosti, kde je potřeba, například jako u *mongoAdminUsername*, *sizeOfDataDiskInGB*, a *configNodeVmSize*:
+V dalším kroku nasaďte šablonu MongoDB s [vytvořit nasazení skupiny pro az](/cli/azure/group/deployment#az_group_deployment_create). Definujte vlastní prostředek názvy a velikosti místech, jako u *mongoAdminUsername*, *sizeOfDataDiskInGB*, a *configNodeVmSize*:
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup \
@@ -199,7 +199,7 @@ az group deployment create --resource-group myResourceGroup \
   --no-wait
 ```
 
-Toto nasazení může trvat přes hodinu můžete nasadit a nakonfigurovat všechny instance virtuálních počítačů. `--no-wait` Příznak se používá na konci předchozí příkaz k vrácení řízení na příkazovém řádku, jakmile nasazení šablony přijatá platformou Azure. Potom můžete zobrazit stav nasazení s [az skupiny nasazení zobrazit](/cli/azure/group/deployment#az_group_deployment_show). Následující příklad zobrazení stav *myMongoDBCluster* nasazení v *myResourceGroup* skupiny prostředků:
+Toto nasazení může trvat přes hodinu k nasazení a konfiguraci všech instancí virtuálních počítačů. `--no-wait` Příznak se používá na konci předchozího příkazu k vrácení ovládacího prvku na příkazový řádek po nasazení šablony se přijala platformou Azure. Pak můžete zobrazit stav nasazení s [az skupiny nasazení zobrazit](/cli/azure/group/deployment#az_group_deployment_show). Následující příklad zobrazí stav *myMongoDBCluster* nasazení v *myResourceGroup* skupina prostředků:
 
 ```azurecli
 az group deployment show \
@@ -210,11 +210,11 @@ az group deployment show \
 ```
 
 ## <a name="next-steps"></a>Další postup
-V těchto příkladech můžete připojit k instanci MongoDB místně z virtuálního počítače. Pokud se chcete připojit k instanci MongoDB z jiného virtuálního počítače nebo sítě, zkontrolujte příslušné [vytvoří skupinu zabezpečení sítě pravidla](nsg-quickstart.md).
+V těchto příkladech můžete připojit k instanci MongoDB místně z virtuálního počítače. Pokud se chcete připojit k instanci MongoDB z jiného virtuálního počítače nebo sítě, zajistit odpovídající [pravidla skupiny zabezpečení sítě jsou vytvořeny](nsg-quickstart.md).
 
-Tyto příklady nasadit prostředí základní MongoDB pro účely vývoje. Použít požadované bezpečnostní možnosti konfigurace pro vaše prostředí. Další informace najdete v tématu [MongoDB zabezpečení dokumentace](https://docs.mongodb.com/manual/security/).
+Tyto příklady nasadit prostředí základní MongoDB pro účely vývoje. Použijte požadované konfigurace možnosti zabezpečení pro vaše prostředí. Další informace najdete v tématu [MongoDB zabezpečení dokumentace](https://docs.mongodb.com/manual/security/).
 
-Další informace o vytváření šablon najdete v tématu [přehled Azure Resource Manageru](../../azure-resource-manager/resource-group-overview.md).
+Další informace o vytváření s použitím šablony, najdete v článku [přehled Azure Resource Manageru](../../azure-resource-manager/resource-group-overview.md).
 
-Šablony Azure Resource Manager pomocí rozšíření vlastních skriptů ke stažení a spuštění skriptů na virtuální počítače. Další informace najdete v tématu [pomocí rozšíření vlastních skriptů Azure s virtuálním počítačům s Linuxem](extensions-customscript.md).
+Šablony Azure Resource Manageru pomocí rozšíření vlastních skriptů můžete stáhnout a spustit skripty na virtuálních počítačích. Další informace najdete v tématu [pomocí rozšíření vlastních skriptů Azure s virtuální počítače s Linuxem](extensions-customscript.md).
 

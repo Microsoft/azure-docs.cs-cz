@@ -1,48 +1,48 @@
 ---
-title: Nastavit procesní server v Azure pro virtuální počítač VMware a fyzické server navrácení služeb po obnovení s Azure Site Recovery | Microsoft Docs
-description: Tento článek popisuje, jak nastavit procesní server v Azure, pro navrácení služeb po obnovení virtuálních počítačů Azure k VMware.
+title: Nastavit procesový server v Azure pro virtuální počítač VMware a fyzických serverů navrácení služeb po obnovení pomocí Azure Site Recovery | Dokumentace Microsoftu
+description: Tento článek popisuje, jak nastavit procesový server v Azure a navrátit služby po obnovení virtuálních počítačů Azure do VMware.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 06/10/2018
+ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: 1a6a1276d1a63971fba68dc868aa56ce687a6cc2
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
-ms.translationtype: MT
+ms.openlocfilehash: 20c3642bb9f9ad5089c37bb6da8562e570896cb4
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35300918"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37918940"
 ---
-# <a name="set-up-a-process-server-in-azure-for-failback"></a>Nastavit procesní server v Azure pro navrácení služeb po obnovení
+# <a name="set-up-a-process-server-in-azure-for-failback"></a>Nastavit procesový server v Azure pro navrácení služeb po obnovení
 
-Po selhání virtuální počítače VMware nebo fyzických serverů do Azure pomocí [Site Recovery](site-recovery-overview.md), vám může selhat zpět do místního serveru a když je znovu spuštěn a. Chcete-li navrácení služeb po obnovení, budete muset nastavit dočasný procesní server v Azure, pro zpracování replikace z Azure do místní. Tento virtuální počítač můžete odstranit po dokončení navrácení služeb po obnovení.
+Po převzetí služeb při selhání virtuálních počítačů VMware nebo fyzických serverů do Azure s využitím [Site Recovery](site-recovery-overview.md), které může selhat zpět do místní lokality a až bude znovu spuštěn a pracuje. Aby bylo možné po navrácení služeb po obnovení, budete muset nastavit dočasný procesní server v Azure, pro zpracování replikace z Azure do místní. Po dokončení navrácení služeb po obnovení můžete odstranit tento virtuální počítač.
 
 ## <a name="before-you-start"></a>Než začnete
 
-Další informace o [vytvoření](vmware-azure-reprotect.md) a [navrácení služeb po obnovení](vmware-azure-failback.md) procesu.
+Další informace o [opětovného nastavování ochrany](vmware-azure-reprotect.md) a [navrácení služeb po obnovení](vmware-azure-failback.md) procesu.
 
 [!INCLUDE [site-recovery-vmware-process-server-prerequ](../../includes/site-recovery-vmware-azure-process-server-prereq.md)]
 
-## <a name="deploy-a-process-server-in-azure"></a>Nasadit procesový server v Azure
+## <a name="deploy-a-process-server-in-azure"></a>Nasazení procesového serveru v Azure
 
 1. V trezoru > **infrastruktura Site Recovery**> **spravovat** > **konfigurační servery**, vyberte konfigurační server.
-2. Na stránce serveru klikněte na tlačítko **+ procesového serveru**
-3. V **přidat procesový server** stránku a vyberte, které chcete nasadit procesový server v Azure.
-4. Zadejte nastavení Azure, včetně předplatné použité pro převzetí služeb při selhání, skupinu prostředků, oblast Azure pro převzetí služeb při selhání a virtuální síť, ve které se nacházejí virtuální počítače Azure. Pokud jste použili více sítí Azure, je třeba procesový server v každé z nich.
+2. Na stránce serveru, klikněte na tlačítko **+ procesového serveru**
+3. V **přidat procesový server** stránku a vybrat, zda chcete nasadit procesový server v Azure.
+4. Zadejte nastavení Azure, včetně předplatného, které použijete pro převzetí služeb při selhání, skupinu prostředků, oblast Azure používá pro převzetí služeb při selhání a virtuální síť, ve kterém jsou umístěné virtuální počítače Azure. Pokud jste použili více sítí Azure, je třeba procesový server v každé z nich.
 
   ![Přidat položku Galerie procesového serveru](./media/vmware-azure-set-up-process-server-azure/add-ps-page-1.png)
 
-4. V **název serveru**, **uživatelské jméno**, a **heslo**, zadejte název pro proces serveru a přihlašovací údaje, které budou přiřazeny oprávnění správce na serveru.
-5. Zadejte účet úložiště, který se má použít pro server disky virtuálních počítačů, podsítě, ve kterém budou umístěné na procesní server virtuálního počítače a IP adresu serveru, který bude přiřazen při spuštění virtuálního počítače.
-6. Klikněte na tlačítko **OK** tlačítko začít s nasazením serveru procesu virtuálního počítače.
+4. V **název serveru**, **uživatelské jméno**, a **heslo**, zadejte název k procesového serveru a přihlašovací údaje, které se dají přiřadit oprávnění správce na serveru.
+5. Zadejte účet úložiště pro disky virtuálních počítačů serveru, podsíť, ve kterém bude umístěn na procesovém serveru virtuálního počítače a IP adresu serveru, která bude přiřazena při spuštění virtuálního počítače.
+6. Klikněte na tlačítko **OK** tlačítko Zahájit nasazení procesového serveru virtuálního počítače.
 
 >
 
-## <a name="registering-the-process-server-running-in-azure-to-a-configuration-server-running-on-premises"></a>Registrace serveru procesu (spuštění v Azure) konfigurace serveru (s místní)
+## <a name="registering-the-process-server-running-in-azure-to-a-configuration-server-running-on-premises"></a>Registrace procesového serveru (běžícího v Azure) na konfiguračním serveru (v místním)
 
-Po procesový server virtuálního počítače je spuštěná, je třeba zaregistrovat ji pomocí místní konfigurační server, následujícím způsobem:
+Po vytvoření a spuštění je procesový server VM, budete muset zaregistrovat ji pomocí místní konfigurační server, následujícím způsobem:
 
 [!INCLUDE [site-recovery-vmware-register-process-server](../../includes/site-recovery-vmware-register-process-server.md)]
 

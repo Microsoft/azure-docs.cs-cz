@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/17/2018
 ms.author: brenduns
-ms.openlocfilehash: 52ab831dfaca337cdf803f410d3824b514fd0e8a
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: bfdfc2ff879db11f5a8ba35898069b2b937c49b0
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437150"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37928977"
 ---
 # <a name="virtual-machine-sizes-supported-in-azure-stack"></a>Velikosti virtuálních počítačů, které jsou podporované ve službě Azure Stack
 
@@ -107,7 +107,7 @@ Velikosti virtuálních počítačů pro obecné účely poskytují vyvážený 
 
 |Velikost     |Virtuální procesory     |Paměť (GiB) | Dočasné úložiště (GiB)  | Operační systém maximální propustnost disku (IOPS) | Maximální propustnost dočasného úložiště (IOPS) | Maximální počet datových disků nebo propustnost (IOPS) | Maximální počet síťových karet / očekávaný šířka pásma (MB/s) |
 |-----------------|----|----|-----|----|------|------------|---------|
-|**Standard_F1**  |1   |2   |16   |500 |3000  |4 / 4 × 400   |2 / 750  |
+|**Standard_F1**  |1   |2   |16   |500 |3000  |4 / 4×500   |2 / 750  |
 |**Standard_F2**  |2   |4   |32   |500 |6000  |8 / 8×500   |2 / 1 500 |
 |**Standard_F4**  |4   |8   |64   |500 |12000 |16 / 16×500 |4 / 3 000 |
 |**Standard_F8**  |8   |16  |128  |500 |24000 |32 / 32×500 |8 / 6 000 |

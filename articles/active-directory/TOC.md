@@ -127,11 +127,13 @@
 #### [Multi-Factor Authentication](active-directory-reporting-activity-sign-ins-mfa.md)
 
 
-
 ### Řešení potíží
 #### [Chybějící data auditu](active-directory-reporting-troubleshoot-missing-audit-data.md)
 #### [Chybějící data v souborech ke stažení](active-directory-reporting-troubleshoot-missing-data-download.md)
 #### [Chyby balíčku obsahu protokolů aktivit Azure Active Directory](active-directory-reporting-troubleshoot-content-pack.md)
+#### [Chyby v rozhraní API pro generování sestav v Azure Active Directory](active-directory-reporting-troubleshoot-graph-api.md)
+
+
 ### [Programový přístup](active-directory-reporting-api-getting-started-azure-portal.md)
 #### [Požadavky](active-directory-reporting-api-prerequisites-azure-portal.md)
 #### [Ukázky auditu](active-directory-reporting-api-audit-samples.md)

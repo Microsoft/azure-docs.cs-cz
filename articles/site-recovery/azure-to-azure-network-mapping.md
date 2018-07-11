@@ -1,5 +1,5 @@
 ---
-title: Mapování virtuální sítě mezi dvěma oblastmi Azure ve službě Azure Site Recovery | Microsoft Docs
+title: Mapování virtuálních sítí mezi dvěma oblastmi Azure ve službě Azure Site Recovery | Dokumentace Microsoftu
 description: Azure Site Recovery koordinuje replikaci, převzetí služeb při selhání a obnovení virtuálních počítačů a fyzických serverů. Další informace o převzetí služeb při selhání do Azure nebo do sekundárního datacentra.
 services: site-recovery
 documentationcenter: ''
@@ -12,92 +12,92 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 05/11/2018
+ms.date: 07/06/2018
 ms.author: manayar
-ms.openlocfilehash: 9294940785deb0834a419de8320286783635d68e
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 7b7f9c079a1fc9d74fed4cc4d94d37f336ca5dc7
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34072129"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37916736"
 ---
-# <a name="map-virtual-networks-in-different-azure-regions"></a>Mapování virtuální sítě v různých oblastech Azure
+# <a name="map-virtual-networks-in-different-azure-regions"></a>Mapování virtuálních sítí v různých oblastech Azure
 
 
-Tento článek popisuje způsob namapování dvě instance Azure Virtual Network umístěné v různých oblastech Azure mezi sebou. Mapování sítě zajistí, aby při replikovaného virtuálního počítače se vytvoří v cílové oblasti Azure, virtuální počítač je taky vytvořit ve virtuální síti, který je namapovaný na virtuální síť zdrojového virtuálního počítače.  
+Tento článek popisuje, jak namapovat dvě instance služby Azure Virtual Network umístěné v různých oblastech Azure mezi sebou. Mapování sítě zajišťuje, že při replikovaného virtuálního počítače se vytvoří v cílové oblasti Azure, virtuálního počítače se také vytvoří ve virtuální síti, která je namapovaná na virtuální síť zdrojového virtuálního počítače.  
 
 ## <a name="prerequisites"></a>Požadavky
-Předtím, než je mapovat sítě, ujistěte se, že jste vytvořili [virtuální síť Azure](../virtual-network/virtual-networks-overview.md) v oblasti zdrojové i cílové oblasti Azure.
+Než budete mapovat sítě, ujistěte se, že jste vytvořili [virtuální síť Azure](../virtual-network/virtual-networks-overview.md) ve zdrojové oblasti a cílovou oblastí Azure.
 
-## <a name="map-virtual-networks"></a>Mapování virtuální sítě
+## <a name="map-virtual-networks"></a>Mapování virtuálních sítí
 
-Mapovat Azure virtuální sítě, který je umístěný v jedné oblasti Azure (Zdrojová síť) k virtuální síti, která se nachází v jiné oblasti (Cílová síť) pro virtuální počítače Azure, přejděte na **infrastruktura Site Recovery**  >  **Sítě mapování**. Vytvořte mapování sítě.
+Pokud chcete namapovat virtuální síť Azure, který se nachází v jedné oblasti Azure (Zdrojová síť) k virtuální síti, který se nachází v jiné oblasti (Cílová síť), pro virtuální počítače Azure, přejděte na **infrastruktura Site Recovery**  >  **Síťové mapování**. Vytvořte mapování sítě.
 
-![Okno mapování sítě – vytvoření mapování sítě](./media/site-recovery-network-mapping-azure-to-azure/network-mapping1.png)
-
-
-V následujícím příkladu je virtuální počítač spuštěn v oblasti, východní Asie. Virtuální počítač je právě replikován pro jihovýchodní Asie.
-
-Vytvořit mapování sítě z oblasti východní Asie oblast, jihovýchodní Asie, vyberte umístění zdroje sítě a umístění cílové síti. Pak vyberte **OK**.
-
-![Přidejte okno mapování sítě - vyberte zdrojové a cílové umístění pro zdrojové síti](./media/site-recovery-network-mapping-azure-to-azure/network-mapping2.png)
+![Okno mapování sítě – vytvořit mapování sítě](./media/site-recovery-network-mapping-azure-to-azure/network-mapping1.png)
 
 
-Opakujte předchozí postup k vytvoření mapování sítě z jihovýchodní Asie pro oblast východní Asie.
+V následujícím příkladu je virtuální počítač spuštěn v oblasti východní Asie. Virtuální počítač je právě replikován do oblasti jihovýchodní Asie.
 
-![Přidání podokna mapování sítě - vyberte zdrojové a cílové umístění pro cílové síti](./media/site-recovery-network-mapping-azure-to-azure/network-mapping3.png)
+Pokud chcete vytvořit mapování sítě z oblasti jihovýchodní Asie do oblasti jihovýchodní Asie, vyberte umístění zdrojové síti a umístění cílové síti. Pak vyberte **OK**.
+
+![Přidání okna mapování sítě – vyberte zdrojové a cílové umístění pro zdrojovou síť](./media/site-recovery-network-mapping-azure-to-azure/network-mapping2.png)
 
 
-## <a name="map-a-network-when-you-enable-replication"></a>Mapování sítě, když aktivujete replikaci
+Opakujte předchozí postup vytvoření mapování sítě z oblasti jihovýchodní Asie na oblast východní Asie.
 
-Při replikaci virtuálního počítače z jedné oblasti Azure do jiné oblasti poprvé, pokud neexistuje žádné mapování sítě, můžete nastavit cílovou síť při replikaci. Podle tohoto nastavení, Azure Site Recovery vytvoří mapování sítě z oblasti zdrojové do cílové oblasti a z oblasti cílové oblasti zdroje.   
+![Přidání podokna mapování sítě – vyberte zdrojové a cílové umístění pro cílovou síť](./media/site-recovery-network-mapping-azure-to-azure/network-mapping3.png)
+
+
+## <a name="map-a-network-when-you-enable-replication"></a>Při povolení replikace mapování sítě
+
+Při replikaci virtuálních počítačů z jedné oblasti Azure do jiné oblasti poprvé, pokud neexistuje žádné mapování sítě, můžete nastavit cílové síti, při nastavení replikace. Na základě tohoto nastavení, Azure Site Recovery vytvoří mapování sítí z oblasti zdrojové do cílové oblasti a z cílové oblasti zdrojové oblasti.   
 
 ![Konfigurace nastavení podokně – zvolte cílové umístění](./media/site-recovery-network-mapping-azure-to-azure/network-mapping4.png)
 
-Ve výchozím nastavení Site Recovery vytvoří síť v cílová oblast, která je stejná jako zdrojovou síť. Site Recovery vytvoří síť přidáním **- automatické obnovení systému** jako příponu na název zdrojové síti. Vyberte síť, která již byla vytvořena, vyberte **přizpůsobit**.
+Ve výchozím nastavení vytvoří Site Recovery v cílové oblasti, která je stejný jako zdrojovou síť k síti. Site Recovery vytvoří síť tak, že přidáte **Azure Site Recovery -** jako příponu k názvu zdrojové síti. Chcete-li zvolit sítě, které již byly vytvořeny, vyberte **vlastní**.
 
-![Přizpůsobení podokno nastavení cílové - název skupiny prostředků cílové sady a název cílové virtuální sítě](./media/site-recovery-network-mapping-azure-to-azure/network-mapping5.png)
+![Přizpůsobení podokno nastavení cílové – sada název cílové skupiny prostředků a název cílové virtuální sítě](./media/site-recovery-network-mapping-azure-to-azure/network-mapping5.png)
 
-Pokud už došlo k mapování sítě, nelze změnit cílové virtuální síti, když aktivujete replikaci. V takovém případě změnit cíl virtuální síť, upravte existující mapování sítě.  
+Pokud mapování sítě se už k problému došlo, nelze změnit cílovou virtuální sítí, když povolíte replikaci. V tomto případě Pokud chcete změnit cílovou virtuální sítí, upravte existující mapování sítě.  
 
-![Přizpůsobení cíl podokno nastavení – nastavit název cílové skupiny prostředků](./media/site-recovery-network-mapping-azure-to-azure/network-mapping6.png)
+![Přizpůsobit cílový podokno nastavení – nastavte název cílové skupiny prostředků](./media/site-recovery-network-mapping-azure-to-azure/network-mapping6.png)
 
-![Upravit podokně mapování sítě – upravit stávající název cílové virtuální sítě](./media/site-recovery-network-mapping-azure-to-azure/modify-network-mapping.png)
+![Upravit podokna mapování sítě – upravit existující název cílové virtuální sítě](./media/site-recovery-network-mapping-azure-to-azure/modify-network-mapping.png)
 
 > [!IMPORTANT]
-> Pokud změníte mapování sítě z oblasti A do oblasti B, ujistěte se také upravit mapování sítě z oblasti B oblasti A.
+> Pokud upravíte mapování sítě z oblasti A oblasti B, ujistěte se, že upravíte mapování sítě z oblasti B do oblasti A.
 >
 >
 
 
 ## <a name="subnet-selection"></a>Výběr podsítě
-Podsíť cílového virtuálního počítače je vybrána na základě názvu podsíti zdrojového virtuálního počítače. Pokud podsíť, která má stejný název jako zdrojový virtuální počítač je k dispozici v cílové síti, je pro cílový virtuální počítač nastaven této podsíti. Pokud podsíť s tímto názvem neexistuje v cílové síti, abecedně první podsíť je nastaven jako cílové podsíti.
+Podsíť cílový virtuální počítač je vybrána na základě názvu podsítě zdrojový virtuální počítač. Pokud podsíť, která má stejný název jako zdrojový virtuální počítač je k dispozici v cílové síti, nastaví se pro cílový virtuální počítač této podsíti. Pokud podsíť s tímto názvem neexistuje v cílové síti, podle abecedy první podsíť je nastavená jako cílovou podsíť.
 
-Chcete-li změnit podsíť, přejděte na **výpočty a síť** nastavení pro virtuální počítač.
+Chcete-li změnit podsíť, přejděte **výpočty a síť** nastavení pro virtuální počítač.
 
-![Výpočtů a sítě výpočetní vlastnosti – okno](./media/site-recovery-network-mapping-azure-to-azure/modify-subnet.png)
+![Výpočty a síť výpočetní vlastnosti okna](./media/site-recovery-network-mapping-azure-to-azure/modify-subnet.png)
 
 
 ## <a name="ip-address"></a>IP adresa
 
-Jak je popsáno v následujících částech, je sada adres IP pro každé síťové rozhraní cílového virtuálního počítače.
+IP adresa pro každé síťové rozhraní cílového virtuálního počítače je nastavená, jak je popsáno v následujících částech.
 
 ### <a name="dhcp"></a>DHCP
-Pokud síťové rozhraní zdrojový virtuální počítač používá protokol DHCP, síťové rozhraní cílového virtuálního počítače je také nastavena na používání protokolu DHCP.
+Pokud síťového rozhraní zdrojového virtuálního počítače používá DHCP, síťového rozhraní cílového virtuálního počítače je také nastavena na používání protokolu DHCP.
 
 ### <a name="static-ip-address"></a>Statická IP adresa
-Pokud síťové rozhraní zdrojový virtuální počítač používá statickou IP adresu, síťové rozhraní cílového virtuálního počítače je také nastavena na použijte statickou IP adresu. Následující části popisují, jak nastavit statickou IP adresu.
+Pokud síťového rozhraní zdrojového virtuálního počítače používá statickou IP adresu, síťového rozhraní cílového virtuálního počítače je také nastavena na použijte statickou IP adresu. Následující části popisují, jak nastavit statickou IP adresu.
 
-#### <a name="same-address-space"></a>Stejné adresní prostor
+#### <a name="same-address-space"></a>Stejného adresního prostoru
 
-Podsíť zdrojové a cílové podsíti stejnému adresnímu prostoru adres, IP adresu síťového rozhraní zdrojového virtuálního počítače a nastaví jako cílová IP adresa. Pokud není k dispozici stejnou IP adresu, další dostupnou IP adresu nastavena jako cílová IP adresa.
+Pokud podsíť zdrojové a cílové podsíti máte stejném adresním prostoru, IP adresa síťového rozhraní zdrojového virtuálního počítače je nastavena jako cílová IP adresa. Pokud stejnou IP adresu není k dispozici, nastavit je jako cílová IP adresa další dostupnou IP adresu.
 
 #### <a name="different-address-spaces"></a>Různé adresních prostorů
 
-Pokud podsíť zdrojové a cílové podsíti různých adresní prostory, další dostupnou IP adresu v cílové podsíti nastavena jako cílová IP adresa.
+Pokud podsíť zdrojové a cílové podsíti máte různé adresních prostorů, další dostupnou IP adresu v cílové podsíti je nastavena jako cílová IP adresa.
 
-Chcete-li upravit cílová IP adresa na každé rozhraní sítě, přejděte na **výpočty a síť** nastavení pro virtuální počítač.
+Pokud chcete upravit IP adresu cílového v každé síťové rozhraní, přejděte na **výpočty a síť** nastavení pro virtuální počítač.
 
 ## <a name="next-steps"></a>Další postup
 
-* Zkontrolujte [sítě pokyny pro replikaci virtuálních počítačů Azure](site-recovery-azure-to-azure-networking-guidance.md).
+* Kontrola [sítě pokyny pro replikaci virtuálních počítačů Azure](site-recovery-azure-to-azure-networking-guidance.md).

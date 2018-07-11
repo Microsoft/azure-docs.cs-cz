@@ -1,10 +1,10 @@
 ---
-title: 'Azure AD Connect: Bezproblémové jednotné přihlašování | Microsoft Docs'
-description: Toto téma popisuje Azure Active Directory (Azure AD) bezproblémové jednotné přihlašování a jak ji umožňuje poskytovat true jednotné přihlašování pro podnikové ploše uživatele uvnitř firemní sítě.
+title: 'Azure AD Connect: Bezproblémové jednotné přihlašování | Dokumentace Microsoftu'
+description: Toto téma popisuje Azure Active Directory (Azure AD) bezproblémové jednotné přihlašování a jak umožňuje poskytovat true jednotného přihlašování pro uživatele firemních stolních počítačů v podnikové síti.
 services: active-directory
-keywords: Co je Azure AD Connect, instalace služby Active Directory, požadované součásti pro Azure AD, jednotné přihlašování, jednotné přihlašování
+keywords: Co je Azure AD Connect, instalace Active Directory, požadované součásti pro službu Azure AD, jednotné přihlašování, jednotné přihlašování
 documentationcenter: ''
-author: swkrish
+author: billmath
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
@@ -15,50 +15,50 @@ ms.topic: article
 ms.date: 03/22/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 11a04d40a403231db728d6bf0caade5969bba84d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ad7c412ee92db53dd797e38df2fc6db0a762fe78
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34593655"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37916162"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory bezproblémové jednotné přihlašování
 
 ## <a name="what-is-azure-active-directory-seamless-single-sign-on"></a>Co je Azure Active Directory bezproblémové jednotné přihlašování?
 
-Azure Active Directory bezproblémové jednotné přihlašování (Azure AD bezproblémové jednotné přihlašování) automaticky přihlásí uživatele v když jsou v jejich podnikové zařízení připojená k podnikové síti. Když je povolené, uživatelé nepotřebují ve svých hesel a přihlaste se k Azure AD a obvykle i typu v jejich uživatelských jmen. Tato funkce poskytuje uživatelům snadný přístup k vaší cloudové aplikace bez nutnosti jakékoli další místní komponenty.
+Azure Active Directory bezproblémové jednotné přihlašování (Azure AD bezproblémové jednotné přihlašování) automaticky přihlásí uživatele v případě, že nejsou na firemní zařízení připojených k podnikové síti. Při povolení uživatele není potřeba zadejte své heslo k přihlášení do služby Azure AD a obvykle, dokonce i ve svých uživatelských jmen zadejte. Tato funkce poskytuje uživatelům snadný přístup k vaší cloudové aplikace bez nutnosti jakékoli další místní komponenty.
 
 >[!VIDEO https://www.youtube.com/embed/PyeAC85Gm7w]
 
-Bezproblémové jednotného přihlašování je možné kombinovat s buď [synchronizaci hodnoty Hash hesla](active-directory-aadconnectsync-implement-password-hash-synchronization.md) nebo [předávací ověřování](active-directory-aadconnect-pass-through-authentication.md) metody přihlašování.
+Bezproblémové jednotné přihlašování je možné kombinovat s buď [synchronizaci hodnot Hash hesel](active-directory-aadconnectsync-implement-password-hash-synchronization.md) nebo [předávací ověřování](active-directory-aadconnect-pass-through-authentication.md) metod přihlašování.
 
 ![Bezproblémové jednotné přihlašování](./media/active-directory-aadconnect-sso/sso1.png)
 
 >[!IMPORTANT]
->Bezproblémové jednotného přihlašování je _není_ použít k Active Directory Federation Services (ADFS).
+>Bezproblémové jednotné přihlašování je _není_ vztahuje k Active Directory Federation Services (ADFS).
 
 ## <a name="key-benefits"></a>Klíčové výhody
 
-- *Vysoký výkon uživatele*
-  - Uživatelé jsou automaticky přihlášeni k místní i cloudové aplikace.
-  - Uživatelé nemusí zadávat opakovaně jejich hesla.
-- *Snadné nasazení a správě*
-  - Žádné další součásti potřebné místní správnou.
-  - Funguje s jakékoli metody objektu cloudové ověřování - [synchronizaci hodnoty Hash hesla](active-directory-aadconnectsync-implement-password-hash-synchronization.md) nebo [předávací ověřování](active-directory-aadconnect-pass-through-authentication.md).
-  - Můžete se vrátit na některých nebo všech uživatelů pomocí zásad skupiny.
-  - Registrace zařízení s Windows 10 s Azure AD bez potřeby jakékoliv infrastruktury služby AD FS. Tato funkce musí používat verze 2.1 nebo novější [připojení k pracovišti klienta](https://www.microsoft.com/download/details.aspx?id=53554).
+- *Skvělé uživatelské prostředí*
+  - Uživatelé jsou automaticky přihlášeni k místním i cloudovým aplikacím.
+  - Uživatelé nemají opakovaně zadávat hesla.
+- *Snadné nasazení a Správa*
+  - Žádné další komponenty potřebné v místním provést tuto práci.
+  - Funguje s jakoukoli metodou ověřování cloudu – [synchronizaci hodnot Hash hesel](active-directory-aadconnectsync-implement-password-hash-synchronization.md) nebo [předávací ověřování](active-directory-aadconnect-pass-through-authentication.md).
+  - Jde vydávat na některé nebo všechny uživatele pomocí zásad skupiny.
+  - Registrace zařízení s Windows 10 v Azure AD bez potřeby jakékoli infrastruktury služby AD FS. Tato funkce vyžaduje, abyste použijte verzi 2.1 nebo novější [klientských připojení k pracovní ploše](https://www.microsoft.com/download/details.aspx?id=53554).
 
-## <a name="feature-highlights"></a>Označuje funkce
+## <a name="feature-highlights"></a>Stručný přehled funkcí
 
-- Přihlašovací uživatelské jméno může být buď místní výchozí uživatelské jméno (`userPrincipalName`) nebo jiný atribut, které jsou nakonfigurované v Azure AD Connect (`Alternate ID`). Pracovní případech i použít, protože používá bezproblémové jednotného přihlašování `securityIdentifier` deklarací identity v lístku protokolu Kerberos k vyhledání odpovídající objekt uživatele ve službě Azure AD.
-- Bezproblémové jednotného přihlašování je oportunistické funkce. Pokud z nějakého důvodu selže, přihlašování uživatel přejde zpět regulární chování – tj, uživatel musí zadat svoje heslo na přihlašovací stránce.
-- Pokud aplikace (například https://myapps.microsoft.com/contoso.com) předává `domain_hint` (OpenID Connect) nebo `whr` (SAML) parametr - identifikaci vašeho klienta nebo `login_hint` parametr - identifikace uživatele v Azure AD přihlášení požadavku, jsou uživatelé přihlášení se automaticky bez je vstup uživatelská jména a hesla.
-- Uživatelé také získají tichou prostředí přihlašování, když aplikace (například https://contoso.sharepoint.com) odešle žádostí o přihlášení k Azure AD nevyužívá dělené tabulky koncové body – to znamená, https://login.microsoftonline.com/contoso.com/<..> nebo https://login.microsoftonline.com/<tenant_ID>/<..> – místo Azure AD společný koncový bod - tedy https://login.microsoftonline.com/common/<...>.
-- Odhlásit se podporuje. To umožňuje uživatelům si vybrat jiný účet služby Azure AD přihlásit, místo se automaticky přihlásíte pomocí jednotného přihlašování bezproblémové automaticky.
-- Klienti Office 365 (16.0.8730.xxxx a vyšší) jsou podporované pomocí neinteraktivní toku.
-- Může být povoleno přes Azure AD Connect.
-- Je bezplatné funkce a nepotřebujete žádné placené edice Azure AD pro použití.
-- Je podporováno v webovými klienty založené na prohlížeči a klienti Office, které podporují [moderní ověřování](https://aka.ms/modernauthga) na platformách a prohlížeče podporující ověřování protokolu Kerberos:
+- Přihlašovací uživatelské jméno může být buď místní výchozí uživatelské jméno (`userPrincipalName`) nebo jiný atribut nakonfigurované ve službě Azure AD Connect (`Alternate ID`). Oba použít případy práce, protože používá bezproblémového jednotného přihlašování `securityIdentifier` deklarací identity v lístku protokolu Kerberos k vyhledání odpovídajícího objektu uživatele ve službě Azure AD.
+- Bezproblémové jednotné přihlašování je zaměřený na příležitosti funkce. Pokud z nějakého důvodu selže, přihlášení uživatele se vrátí do běžného chování – tj, uživatel musí zadat heslo na přihlašovací stránku.
+- Pokud manifest aplikace (například https://myapps.microsoft.com/contoso.com) předává `domain_hint` (OpenID Connect) nebo `whr` (SAML) parametr - identifikaci vašeho tenanta, nebo `login_hint` parametr - ne k identifikaci uživatelů, v jeho služby Azure AD žádost o přihlášení, jsou uživatelé přihlášení se automaticky bez jejich zadávání uživatelských jmen a hesel.
+- Uživatelé získají bezobslužné možnosti přihlašování také, pokud manifest aplikace (například https://contoso.sharepoint.com) odešle žádostí o přihlášení k Azure AD bezproblémovým koncové body – to znamená, https://login.microsoftonline.com/contoso.com/<..> nebo https://login.microsoftonline.com/<tenant_ID>/<..> – místo pro běžné koncového bodu Azure AD – to znamená, https://login.microsoftonline.com/common/<...>.
+- Odhlaste se podporuje. To umožňuje uživatelům si vybrat jiný účet služby Azure AD se přihlásit pomocí, namísto automaticky Probíhá přihlašování pomocí bezproblémového jednotného přihlašování automaticky.
+- Klienti Office 365 (16.0.8730.xxxx a vyšší) jsou podporovány při použití toku jako neinteraktivní.
+- Je možné povolit prostřednictvím služby Azure AD Connect.
+- Je funkci a není nutné žádné placené edice Azure AD, aby ho použít.
+- Podporováno od webovými klienty založené na prohlížeči a klienti Office, které podporují [moderní ověřování](https://aka.ms/modernauthga) na platformy a prohlížeče podporující ověřování protokolu Kerberos:
 
 | OS\Browser |Internet Explorer|Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
@@ -71,12 +71,12 @@ Bezproblémové jednotného přihlašování je možné kombinovat s buď [synch
 \*Vyžaduje [další konfigurace](active-directory-aadconnect-sso-quick-start.md#browser-considerations)
 
 >[!NOTE]
->Pro Windows 10, doporučuje se použít [Azure AD Join](../active-directory-azureadjoin-overview.md) zajistit optimální jeden přihlašování v práci s Azure AD.
+>Pro Windows 10, doporučuje se použít [Azure AD Join](../active-directory-azureadjoin-overview.md) zajistit optimální jednotné přihlašování práci s Azure AD.
 
 ## <a name="next-steps"></a>Další postup
 
-- [**Rychlý Start** ](active-directory-aadconnect-sso-quick-start.md) – zprovoznění a systémem Azure bezproblémové jednotného přihlašování k AD.
+- [**Rychlý Start** ](active-directory-aadconnect-sso-quick-start.md) – rychle zprovoznit a systémem Azure bezproblémového jednotného přihlašování AD.
 - [**Podrobné technické informace** ](active-directory-aadconnect-sso-how-it-works.md) -pochopit, jak tato funkce funguje.
-- [**Nejčastější dotazy** ](active-directory-aadconnect-sso-faq.md) -odpovědi na nejčastější dotazy.
-- [**Řešení potíží s** ](active-directory-aadconnect-troubleshoot-sso.md) – zjistěte, jak řešit obvyklé problémy s funkcí.
-- [**UserVoice** ](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) – pro vyplnění žádosti o nové funkce.
+- [**Nejčastější dotazy** ](active-directory-aadconnect-sso-faq.md) – odpovědi na nejčastější dotazy.
+- [**Řešení potíží s** ](active-directory-aadconnect-troubleshoot-sso.md) – zjistěte, jak vyřešit běžné problémy s funkcí.
+- [**UserVoice** ](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) – k podání žádostí o nové funkce.

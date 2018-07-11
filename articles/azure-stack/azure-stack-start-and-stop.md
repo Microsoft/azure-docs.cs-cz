@@ -1,6 +1,6 @@
 ---
-title: Spuštění a zastavení zásobník Azure | Microsoft Docs
-description: Zjistěte, jak pro spuštění a vypnutí zásobník Azure.
+title: Spuštění a zastavení služby Azure Stack | Dokumentace Microsoftu
+description: Zjistěte, jak ke spuštění a vypnutí služby Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
@@ -15,47 +15,50 @@ ms.topic: article
 ms.date: 04/09/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 53015ba5c282bbe9c7b8185b080ffb6d834b6c75
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: dd1e64d5ad6982c85a8205e3036d30a2ede92f7c
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31391129"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37930286"
 ---
-# <a name="start-and-stop-azure-stack"></a>Spuštění a zastavení Azure zásobníku
-Postupujte podle postupů v tomto článku správně vypnutí a restartování služby Azure zásobníku. 
+# <a name="start-and-stop-azure-stack"></a>Spuštění a zastavení služby Azure Stack
+Postupujte podle postupů v tomto článku řádně vypnout a restartovat služby Azure Stack. Vypnutí se fyzicky vypnutí celého prostředí Azure Stack. Po spuštění zapne všechny role infrastruktury a vrátí prostředků tenanta power stavu, ve kterém se nacházely před vypnutí.
 
-## <a name="stop-azure-stack"></a>Zastavit Azure zásobníku 
+## <a name="stop-azure-stack"></a>Zastavení služby Azure Stack 
 
-Pomocí následujících kroků vypněte zásobník Azure:
+Vypnutí služby Azure Stack pomocí následujících kroků:
 
-1. Otevřete privilegovaný koncový bod relace období k virtuálním počítačům Azure zásobníku ERCS z počítače s přístupem k síti. Pokyny najdete v tématu [pomocí privilegované koncový bod v zásobníku Azure](azure-stack-privileged-endpoint.md).
+1. Příprava všechny úlohy běžící v prostředí Azure Stack tenanta prostředky pro nadcházející vypnutí. 
 
-2. Z období spusťte:
+2. Otevřete relaci pro privilegované koncový bod (období) z počítače s přístupem k síti na virtuální počítače Azure Stack ERCS. Pokyny najdete v tématu [pomocí privilegovaných koncového bodu ve službě Azure Stack](azure-stack-privileged-endpoint.md).
+
+3. Z období spusťte:
 
     ```powershell
       Stop-AzureStack
     ```
 
-3. Počkejte všechny fyzické uzly zásobník Azure napájení vypnuto.
+4. Počkejte všech fyzických uzlů Azure Stack k výkonu vypnout.
 
 > [!Note]  
-> Podle pokynů od výrobce (OEM) kdo zadaný hardwaru zásobník Azure můžete ověřit stav napájení fyzického uzlu. 
+> Stav napájení fyzického uzlu lze ověřit podle pokynů od výrobce OEM (OEM), zadali svůj hardware Azure Stack. 
 
-## <a name="start-azure-stack"></a>Spustit Azure zásobníku 
+## <a name="start-azure-stack"></a>Spuštění služby Azure Stack 
 
-Spusťte zásobník Azure pomocí následujících kroků. Postupujte podle těchto kroků bez ohledu na to, jak Azure zásobníku zastavena.
+Spuštění služby Azure Stack pomocí následujících kroků. Postupujte podle těchto kroků bez ohledu na to, jak Azure Stack zastavena.
 
-1. Napájení na všech fyzických uzlů ve vašem prostředí Azure zásobníku. Zapnutí pokyny pro fyzických uzlů ověřte podle pokynů od výrobce (OEM) kdo zadaná hardware pro vaši Azure zásobníku.
+1. Napájení na všech fyzických uzlů ve vašem prostředí Azure Stack. Ověřte zapnutí pokyny, jak fyzických uzlů podle pokynů od výrobce OEM (OEM) který poskytnutý hardware Azure Stack.
 
-2. Počkejte na spuštění služby infrastruktury Azure zásobníku. Služby infrastruktury Azure zásobníku může vyžadovat dvou hodin k dokončení procesu spuštění. Počáteční stav zásobníku Azure s si můžete ověřit [ **Get-ActionStatus** rutiny](#get-the-startup-status-for-azure-stack).
+2. Počkejte, dokud se spustí služby infrastruktury Azure stacku. Služby infrastruktury Azure Stack může vyžadovat dvou hodin k dokončení procesu spuštění. Počáteční stav služby Azure Stack s můžete ověřit [ **Get-ActionStatus** rutiny](#get-the-startup-status-for-azure-stack).
 
+3. Ujistěte se, že všech vašich prostředků tenanta vracet, stavu, ve kterém se nacházely před vypnutí. Úlohy běžící na prostředky tenanta může být potřeba překonfigurovat po spuštění Správce úloh.
 
-## <a name="get-the-startup-status-for-azure-stack"></a>Získat stav spuštění Azure zásobníku
+## <a name="get-the-startup-status-for-azure-stack"></a>Získání stavu po spuštění pro službu Azure Stack
 
-Získáte spuštění pro spuštění rutiny zásobník Azure pomocí následujících kroků:
+Získáte spuštění pro spouštěcí rutiny služby Azure Stack pomocí následujících kroků:
 
-1. Otevřete relaci privilegované koncového bodu z počítače s přístupem k síti na virtuálních počítačích Azure zásobníku ERCS.
+1. Otevřete relaci Privileged koncového bodu z počítače s přístupem k síti na virtuální počítače Azure Stack ERCS.
 
 2. Z období spusťte:
 
@@ -63,11 +66,11 @@ Získáte spuštění pro spuštění rutiny zásobník Azure pomocí následuj�
       Get-ActionStatus Start-AzureStack
     ```
 
-## <a name="troubleshoot-startup-and-shutdown-of-azure-stack"></a>Řešení potíží s spuštění a vypnutí Azure zásobníku
+## <a name="troubleshoot-startup-and-shutdown-of-azure-stack"></a>Řešení potíží při spuštění a ukončení služby Azure Stack
 
-Pokud služby infrastruktury a klientů není úspěšně spustit 2 hodiny po napájení můžete ve vašem prostředí Azure zásobníku, proveďte následující kroky. 
+Pokud služby infrastruktury a klientů není úspěšně spustit dvě hodiny po napájení můžete ve vašem prostředí Azure Stack, proveďte následující kroky. 
 
-1. Otevřete relaci privilegované koncového bodu z počítače s přístupem k síti na virtuálních počítačích Azure zásobníku ERCS.
+1. Otevřete relaci Privileged koncového bodu z počítače s přístupem k síti na virtuální počítače Azure Stack ERCS.
 
 2. Spusťte: 
 
@@ -75,7 +78,7 @@ Pokud služby infrastruktury a klientů není úspěšně spustit 2 hodiny po na
       Test-AzureStack
       ```
 
-3. Zkontrolujte výstup a vyřešte případné chyby stavu. Další informace najdete v tématu [spustit test pro ověření Azure zásobníku](azure-stack-diagnostic-test.md).
+3. Zkontrolujte výstup a vyřešte všechny chyby stavu. Další informace najdete v tématu [spustit test pro ověření služby Azure Stack](azure-stack-diagnostic-test.md).
 
 4. Spusťte:
 
@@ -83,8 +86,8 @@ Pokud služby infrastruktury a klientů není úspěšně spustit 2 hodiny po na
       Start-AzureStack
     ```
 
-5. Pokud systém **Start-AzureStack** důsledkem chyby, obraťte se na zákaznickou podporu služeb společnosti Microsoft. 
+5. Pokud systém **Start AzureStack** neúspěšně, obraťte se na zákaznickou podporu služeb Microsoftu. 
 
 ## <a name="next-steps"></a>Další postup 
 
-Další informace o Azure zásobníku nástroj pro diagnostiku a vystavování protokolování, najdete v části [diagnostické nástroje Azure zásobníku](azure-stack-diagnostics.md).
+Další informace o službě Azure Stack pro diagnostické nástroje a vydávání protokolování, najdete v článku [diagnostické nástroje služby Azure Stack](azure-stack-diagnostics.md).

@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/01/2018
 ms.author: v-geberr
-ms.openlocfilehash: 7174a78aeb339c864b2eea384b794646c215bc25
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: b60aa551d55907fcac7953efa61473c845e3c2ae
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37343998"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37951052"
 ---
 # <a name="api-v2-migration-guide"></a>Pokyny k migraci v2 rozhraní API
 Verze 1 [koncový bod](https://aka.ms/v1-endpoint-api-docs) a [vytváření](https://aka.ms/v1-authoring-api-docs) rozhraní API se přestanou používat. Tento průvodce vám pochopit, jak migrovat na verzi 2 [koncový bod](https://aka.ms/luis-endpoint-apis) a [vytváření](https://aka.ms/luis-authoring-apis) rozhraní API. 
@@ -133,7 +133,7 @@ Několik rozhraní API, které vracejí LUIS metadata mají nové názvy.
 
 
 ## <a name="sample-renamed-to-suggest"></a>"Ukázkový" přejmenovat "navrhnout"
-LUIS navrhuje projevy ze stávajících [koncový bod projevy](label-suggested-utterances.md) modelu, který může vylepšit. V předchozí verzi, to nazýval **ukázka**. V nové verzi, se změní název ze vzorku **navrhnout**. Tento postup se nazývá **[zkontrolujte koncový bod projevy](https://docs.microsoft.com/azure/cognitive-services/LUIS/label-suggested-utterances)** LUIS webu.
+LUIS navrhuje projevy ze stávajících [koncový bod projevy](luis-how-to-review-endoint-utt.md) modelu, který může vylepšit. V předchozí verzi, to nazýval **ukázka**. V nové verzi, se změní název ze vzorku **navrhnout**. Tento postup se nazývá **[zkontrolujte koncový bod projevy](luis-how-to-review-endoint-utt.md)** LUIS webu.
 
 | verze | trasa |
 |--|--|

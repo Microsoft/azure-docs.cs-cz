@@ -1,6 +1,6 @@
 ---
-title: Podpora lokalizace pomocí LEOŠ aplikace v Azure | Microsoft Docs
-description: Další informace o jazyky, které podporuje LEOŠ.
+title: Podpora lokalizace pomocí služby LUIS aplikace v Azure | Dokumentace Microsoftu
+description: Další informace o jazycích, které podporuje služba LUIS.
 services: cognitive-services
 author: cahann
 manager: hsalama
@@ -9,77 +9,77 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 06/04/2017
 ms.author: cahann
-ms.openlocfilehash: 1eabc01ee07f8791680738a156471e3efe2c44ff
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
-ms.translationtype: HT
+ms.openlocfilehash: f2c9514f03019a742044dc077b395025d7d698e3
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "35343926"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37927753"
 ---
-# <a name="culture-specific-understanding-in-luis-apps"></a>Specifické pro jazykovou verzi pochopení LEOŠ aplikace
+# <a name="culture-specific-understanding-in-luis-apps"></a>Pochopení specifické pro jazykovou verzi aplikace LUIS
 
-LEOŠ aplikace je specifické pro jazykovou verzi a po nastavení nejde změnit. 
+Aplikace LUIS je specifické pro jazykovou verzi a nedá se změnit, jakmile je nastavena. 
 
-## <a name="multi-language-luis-apps"></a>LEOŠ vícejazyčné aplikace
-Pokud potřebujete více jazyků LEOŠ klientské aplikace jako je například chatbot, máte několik možností. Pokud LEOŠ podporuje všechny jazyky, vyvíjíte LEOŠ aplikace pro jednotlivé jazyky. Každá aplikace LEOŠ má ID aplikace jedinečný a koncový bod protokolu. Pokud potřebujete poskytovat pochopení pro jazyk LEOŠ nepodporuje, můžete použít jazyk [rozhraní API služby Microsoft překladač](../Translator/translator-info-overview.md) přeložit utterance do podporovaném jazyce, odešlete utterance ke koncovému bodu LEOŠ a přijímat Výsledný skóre.
+## <a name="multi-language-luis-apps"></a>Aplikace LUIS Vícejazyčná verze
+Pokud potřebujete více jazyků LUIS klientské aplikace jako je například chatovacího robota, máte několik možností. Pokud služba LUIS podporuje všechny jazyky, při vývoji aplikace LUIS pro jednotlivé jazyky. Každá aplikace LUIS má ID a jedinečných aplikací a koncového bodu protokolu. Pokud je potřeba zadat jazyka pro jazyk LUIS nepodporuje, můžete použít [Microsoft Translator API](../Translator/translator-info-overview.md) přeložit utterance do podporovaného jazyka, utterance do koncového bodu služby LUIS odesílat a přijímat výsledné skóre.
 
 ## <a name="languages-supported"></a>Podporované jazyky
-LEOŠ rozumí utterances v těchto jazycích:
+Služba LUIS rozumí projevy v následujících jazycích:
 
 
-| Jazyk |Národní prostředí  |  Předkompilované domény | Předkompilované entity | Návrhy fráze | **[Analýza textu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages) | 
+| Jazyk |Národní prostředí  |  Předem připravená doména | Předem připravených entit | Fráze návrhy | **[Analýza textu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages) | 
 |--|--|:--:|:--:|:--:|:--:|
-| Americká angličtina |`en-US` | ✔ | ✔  |✔|✔|
+| Americkou angličtinu |`en-US` | ✔ | ✔  |✔|✔|
 | Francouzština (Kanada) |`fr-CA` |-|   -   |-|✔|
 | *[Čínština](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
-| Holandština |`nl-NL` |-|  -   |-|✔|
+| Nizozemština |`nl-NL` |-|  -   |-|✔|
 | Francouzština (Francie) |`fr-FR` |-| ✔ |✔ |✔|
 | Němčina |`de-DE` |-| ✔ |✔ |✔|
 | italština |`it-IT` |-| ✔ |✔|✔|
-| *[Japonština](#japanese-support-notes) |`ja-JP` |-| ✔ |✔|Pouze klíče fráze|
-| Korejština |`ko-KR` |-|   -   |-|Pouze klíče fráze|
-| Portugalština (Brazílie) |`pt-BR` |-| ✔ |✔ |Ne všechny dílčí jazykové verze|
+| *[Japonština](#japanese-support-notes) |`ja-JP` |-| ✔ |✔|Pouze klíčových frází|
+| Korejština |`ko-KR` |-|   -   |-|Pouze klíčových frází|
+| Portugalština (Brazílie) |`pt-BR` |-| ✔ |✔ |Ne všechny dílčí jazykových verzí|
 | Španělština (Španělsko) |`es-ES` |-| ✔ |✔|✔|
 | Španělština (Mexiko)|`es-MX` |-|  -   |✔|✔|
 
 
-Podpora jazyků se liší u [předem entity](luis-reference-prebuilt-entities.md) a [předem domény](luis-reference-prebuilt-domains.md). 
+Podpora jazyků se liší u [předem připravených entit](luis-reference-prebuilt-entities.md) a [předem připravených domén](luis-reference-prebuilt-domains.md). 
 
 ### <a name="chinese-support-notes"></a>* Čínština podporují poznámky
 
- - V `zh-cn` jazykové verzi, LEOŠ očekává zjednodušená čínština znakové sady místo tradiční znaková sada.
- - Názvy tříd Intent, entity, funkce a regulární výrazy může být v čínština nebo římské znaků.
- - Najdete v článku [předem domén odkaz ](luis-reference-prebuilt-domains.md) informace, které jsou předem domén podporují v `zh-cn` jazykovou verzi.
+ - V `zh-cn` jazykovou verzi, LUIS očekává zjednodušené čínštiny znakové sady namísto tradičních znakovou sadu.
+ - Názvy tříd Intent, entity, funkce a regulární výrazy mohou být znaky čínské nebo římské číslice.
+ - Najdete v článku [předem připravených domén odkaz ](luis-reference-prebuilt-domains.md) informace, na kterém jsou předem připravených domén podporovány v `zh-cn` jazykovou verzi.
 <!--- When writing regular expressions in Chinese, do not insert whitespace between Chinese characters.-->
 
-### <a name="japanese-support-notes"></a>* Poznámky k japonské podpory
+### <a name="japanese-support-notes"></a>* Japonské podporuje poznámky
 
- - Protože LEOŠ neposkytuje syntaktické analýzy a nebude pochopit rozdíl mezi Keigo a neformální japonštině, budete muset mít různé úrovně náležitosti jako příklady školení pro vaše aplikace. 
+ - Protože služba LUIS neposkytuje syntaktické analýzy a nebude pochopili rozdíl mezi Keigo a neformální japonština, budete muset začlenit různé úrovně formální jako příklady školení pro vaše aplikace. 
      - でございます není stejný jako です. 
      - です není stejný jako だ. 
 
-### <a name="text-analytics-support-notes"></a>** Analýza textu podporují poznámky
-Je podporován pouze portugalština pro subkultury: `pt-PT` a `pt-BR`. Všechny ostatní jazykové verze jsou podporovány na úrovni primární jazykovou verzi. Další informace o Analýza textu [podporované jazyky](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages). 
+### <a name="text-analytics-support-notes"></a>** Text analytics podporuje poznámky
+Rozhraní text analytics zahrnuje keyPhrase předem připravených entit a mínění analýzy. Je podporováno pouze portugalština subkultury: `pt-PT` a `pt-BR`. Všechny další jazykové verze se podporují na úrovni primární jazykovou verzi. Další informace o rozhraní Text Analytics [podporované jazyky](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages). 
 
-### <a name="speech-api-supported-languages"></a>Rozpoznávání řeči rozhraní API, podporované jazyky
-V tématu řeči [podporované jazyky](https://docs.microsoft.com/azure/cognitive-services/Speech/api-reference-rest/supportedlanguages##interactive-and-dictation-mode) pro rozpoznávání řeči diktování režimu jazyky.
+### <a name="speech-api-supported-languages"></a>Speech API podporované jazyky
+Zobrazit řeči [podporované jazyky](https://docs.microsoft.com/azure/cognitive-services/Speech/api-reference-rest/supportedlanguages##interactive-and-dictation-mode) jazyků řeči diktování režimu.
 
-### <a name="bing-spell-check-supported-languages"></a>Kontrola pravopisu Bing podporované jazyky
-Najdete v části Kontrola pravopisu Bing [podporované jazyky](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/bing-spell-check-supported-languages) seznam podporovaných jazyků a stav.
+### <a name="bing-spell-check-supported-languages"></a>Jazyky podporované kontrolu pravopisu Bingu
+Zobrazit kontrolu pravopisu Bingu [podporované jazyky](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/bing-spell-check-supported-languages) seznam podporovaných jazyků a stav.
 
-## <a name="rare-or-foreign-words-in-an-application"></a>Výjimečných nebo cizí slova v aplikaci
-V `en-us` jazykové verzi, LEOŠ zjišťuje k rozlišení nejvíce anglická slova, včetně slang. V `zh-cn` jazykové verzi, LEOŠ zjišťuje k rozlišení většina čínské znaky. Pokud používáte výjimečných slova v `en-us` nebo znak v `zh-cn`, a zjistíte, že LEOŠ zdá se, že nelze k rozlišení toto slovo nebo znak, můžete přidat dané slovo nebo znak na [seznam frází funkce](luis-how-to-add-features.md). Například musí být přidaní slova mimo jazykovou verzi aplikace – tj. cizí slova – seznam frází funkce. Tento seznam frázi by měl být označen jiný zaměňovat, označíte, že sada výjimečných slova forms třídu, která by měl LEOŠ další rozpoznat, ale nejsou synonyma nebo zaměňovat mezi sebou.
+## <a name="rare-or-foreign-words-in-an-application"></a>Zřídka nebo cizí slova v aplikaci
+V `en-us` jazykovou verzi, LUIS učí k rozlišení nejvíce anglických slov, včetně slang. V `zh-cn` jazykovou verzi, LUIS učí k rozlišení většina čínské znaky. Pokud používáte výjimečných slova v `en-us` nebo znak `zh-cn`, a uvidíte, že služba LUIS zdá se, že nelze rozlišit toto slovo nebo znak, můžete přidat toto slovo nebo znak do [funkci seznamu frázi](luis-how-to-add-features.md). Slova mimo jazykovou verzi aplikace – tj. cizí slova – například by měl být přidána do funkce seznam frází. Tento seznam frázi by měla být označena bez zaměňovat, označuje, že sadu výjimečných slova tvoří třídu, která by měla služba LUIS učení se rozpoznávání, ale nejsou synonyma nebo mezi sebou vzájemně zaměnitelné.
 
 ### <a name="hybrid-languages"></a>Hybridní jazyky
-Hybridní jazyky kombinovat slova ze dvou jazykové verze, jako je angličtina a čínština. Tyto jazyky nejsou podporované v LEOŠ, protože aplikace je založena na jednom jazykové verzi.
+Hybridní jazyky kombinovat slova a ty dvě jazykové verze, jako je angličtina a čínštinu. Tyto jazyky nepodporuje LUIS protože aplikace je založena na jediné jazykové verze.
 
-## <a name="tokenization"></a>Tokenizaci
-K provedení strojové učení, LEOŠ dělí utterance [tokeny](luis-glossary.md#token) na základě jazykové verze. 
+## <a name="tokenization"></a>Tokenizace
+Pro strojové učení, LUIS, rozdělí do utterance [tokeny](luis-glossary.md#token) založenými na jazykové verzi. 
 
-|Jazyk|  Každý prostor nebo speciální znak | úroveň znak|složených slov|[Tokenizovaná entity vrátil](luis-concept-data-extraction.md#tokenized-entity-returned)
+|Jazyk|  Každý mezera nebo speciální znak | úroveň znak|složených slov|[Vrátí tokenizovaná entity](luis-concept-data-extraction.md#tokenized-entity-returned)
 |--|:--:|:--:|:--:|:--:|
 |Čínština||✔||✔|
-|Holandština|||✔|✔|
+|Nizozemština|||✔|✔|
 |Angličtina (en-us)|✔ ||||
 |Francouzština (fr-FR)|✔||||
 |Francouzština (fr-CA)|✔||||

@@ -1,9 +1,9 @@
 ---
-title: Vzdálená plocha pro virtuální počítač s Linuxem | Microsoft Docs
-description: Postup instalace a konfigurace vzdálené plochy pro připojení k virtuálnímu počítači Microsoft Azure Linux pro model nasazení Classic
+title: Vzdálené plochy k virtuálnímu počítači s Linuxem | Dokumentace Microsoftu
+description: Zjistěte, jak nainstalovat a nakonfigurovat vzdálené plochy pro připojení k virtuálnímu počítači Microsoft Azure Linux pro model nasazení Classic
 services: virtual-machines-linux
 documentationcenter: ''
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-service-management
@@ -15,41 +15,41 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
-ms.author: iainfou
-ms.openlocfilehash: 0e1bfe468e1572ca98be956d39d82df562dce0e6
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: cynthn
+ms.openlocfilehash: 5e68774c3edb7d82fef388c593a6b96c52857be6
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30238609"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37927736"
 ---
 # <a name="using-remote-desktop-to-connect-to-a-microsoft-azure-linux-vm"></a>Použití Vzdálené plochy pro připojení k virtuálnímu počítači Microsoft Azure s Linuxem
 > [!IMPORTANT] 
-> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a klasický](../../../resource-manager-deployment-model.md). Tento článek se zabývá pomocí modelu nasazení Classic. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager. Aktualizovaná verze Resource Manager v tomto článku, najdete v části [zde](../use-remote-desktop.md).
+> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a Classic](../../../resource-manager-deployment-model.md). Tento článek se věnuje modelu nasazení Classic. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager. Aktualizovaná verze správce prostředků v tomto článku najdete v části [tady](../use-remote-desktop.md).
 
 ## <a name="overview"></a>Přehled
-Protokol RDP (Remote Desktop Protocol) je vlastní protokol, pro systém Windows. Jak jsme pomocí protokolu RDP pro vzdálené připojení k virtuální počítač s Linuxem (virtuálním počítači)?
+Protokol RDP (Remote Desktop Protocol) je speciální protokol použitý pro Windows. Jak jsme použitím protokolu RDP pro vzdálené připojení k virtuálnímu počítači s Linuxem (VM)?
 
-Tyto pokyny vám poskytne odpověď! Pomůže k instalaci a konfiguraci xrdp na vašem Microsoft Azure Linux virtuálním počítači, který vám umožní připojit se k němu pomocí vzdálené plochy z počítače s Windows. Linux virtuálního počítače s Ubuntu nebo OpenSUSE jako v příkladu v tomto návodu budeme používat.
+Tento návod vám poskytne odpověď. To pomůže k instalaci a konfiguraci xrdp na Microsoft Azure virtuálního počítače s Linuxem, které vám umožní připojit se k němu přes vzdálenou plochu z počítače s Windows. Budeme používat systém Linux virtuálního počítače s Ubuntu nebo OpenSUSE stejně jako v příkladu v tomto dokumentu.
 
-Nástroj xrdp je serveru RDP s otevřeným zdrojem, která umožňuje připojit Linux server pomocí vzdálené plochy z počítače s Windows. RDP má lepší výkon než VNC (Computing virtuální sítě). VNC vykreslí pomocí grafiky JPEG kvality a může být pomalé, zatímco RDP je rychlý a jasný.
+Nástroj xrdp je server opensourcové RDP, který umožňuje připojení serveru Linux přes vzdálenou plochu z počítače s Windows. Protokol RDP má lepší výkon než VNC (výpočetní virtuální sítě). VNC vykreslí pomocí kvality JPEG grafiky a může být pomalé, že protokol RDP je rychlý a jasný.
 
 > [!NOTE]
-> Již musí mít virtuální počítač Microsoft Azure s Linuxem. Vytvoření a nastavení virtuálního počítače s Linuxem najdete v tématu [kurzu virtuální počítač Azure s Linuxem](createportal-classic.md).
+> Musíte již mít Virtuálním počítači Microsoft Azure s Linuxem. Vytvoření a nastavení virtuálního počítače s Linuxem najdete v tématu [Linuxový virtuální počítač Azure kurz](createportal-classic.md).
 > 
 > 
 
-## <a name="create-an-endpoint-for-remote-desktop"></a>Vytvořit koncový bod pro vzdálené plochy
-Budeme používat výchozí koncový bod 3389 pro vzdálené plochy v této dokumentace. Nastavit 3389 koncový bod jako `Remote Desktop` k virtuálním počítačům s Linuxem jako níže:
+## <a name="create-an-endpoint-for-remote-desktop"></a>Vytvoření koncového bodu pro vzdálenou plochu
+Budeme používat výchozí koncový bod 3389 pro vzdálenou plochu v tomto dokumentu. Nastavení 3389 koncový bod jako `Remote Desktop` k virtuálním počítačům s Linuxem jako níže:
 
-![Bitové kopie](./media/remote-desktop/endpoint-for-linux-server.png)
+![image](./media/remote-desktop/endpoint-for-linux-server.png)
 
-Pokud nevíte jak nastavit koncový bod pro virtuální počítač, najdete v části [v tomto návodu](setup-endpoints.md).
+Pokud si nejste jisti, jak nastavit koncový bod pro virtuální počítač, přečtěte si téma [návod](setup-endpoints.md).
 
-## <a name="install-gnome-desktop"></a>Nainstalujte Gnome plochy
-Připojení k virtuálním počítačům s Linuxem pomocí `putty`a nainstalujte `Gnome Desktop`.
+## <a name="install-gnome-desktop"></a>Nainstalujte Gnome Desktop
+Připojení k virtuálním počítačům s Linuxem prostřednictvím `putty`a nainstalujte `Gnome Desktop`.
 
-Ubuntu použijte:
+Pro Ubuntu použijte:
 
 ```bash
 sudo apt-get update
@@ -63,7 +63,7 @@ sudo zypper install gnome-session
 ```
 
 ## <a name="install-xrdp"></a>Nainstalujte xrdp
-Ubuntu použijte:
+Pro Ubuntu použijte:
 
 ```bash
 sudo apt-get install xrdp
@@ -72,7 +72,7 @@ sudo apt-get install xrdp
 Pro OpenSUSE použijte:
 
 > [!NOTE]
-> Aktualizujte OpenSUSE verze na verzi, kterou používáte v následujícím příkazu. Následující příklad je pro `OpenSUSE 13.2`.
+> Aktualizujte verzi systému OpenSUSE. k verzi, kterou použijete v následujícím příkazu. Následující příklad je určený pro `OpenSUSE 13.2`.
 > 
 > 
 
@@ -89,10 +89,10 @@ sudo systemctl start xrdp
 sudo systemctl enable xrdp
 ```
 
-Ubuntu bude se xrdp spuštění a povolení na spouštěcí up automaticky po instalaci.
+Pro Ubuntu bude spuštěn a automaticky povolí při spuštění po instalaci xrdp.
 
 ## <a name="using-xfce-if-you-are-using-an-ubuntu-version-later-than-ubuntu-1204lts"></a>Pokud používáte verzi Ubuntu později než Ubuntu 12.04LTS pomocí xfce
-Vzhledem k tomu, že aktuální verze xrdp nepodporuje Gnome Desktop pro verze Ubuntu později než Ubuntu 12.04LTS, budeme používat `xfce` plochy místo.
+Vzhledem k tomu, že aktuální verze xrdp nepodporuje Gnome Desktop pro Ubuntu verze novější než Ubuntu 12.04LTS, budeme používat `xfce` Desktopu místo.
 
 Chcete-li nainstalovat `xfce`, použijte tento příkaz:
 
@@ -100,32 +100,32 @@ Chcete-li nainstalovat `xfce`, použijte tento příkaz:
 sudo apt-get install xubuntu-desktop
 ```
 
-Potom povolte `xfce` použití tohoto příkazu:
+Potom povolte `xfce` pomocí tohoto příkazu:
 
 ```bash
 echo xfce4-session >~/.xsession
 ```
 
-Upravte konfigurační soubor `/etc/xrdp/startwm.sh`:
+Upravit konfigurační soubor `/etc/xrdp/startwm.sh`:
 
 ```bash
 sudo vi /etc/xrdp/startwm.sh   
 ```
 
-Přidejte řádek `xfce4-session` před řádek `/etc/X11/Xsession`.
+Přidejte řádek `xfce4-session` před řádkem `/etc/X11/Xsession`.
 
-Chcete-li restartovat službu xrdp, použijte toto:
+Restartujte službu xrdp, použijte toto:
 
 ```bash
 sudo service xrdp restart
 ```
 
-## <a name="connect-your-linux-vm-from-a-windows-machine"></a>Připojení virtuálním počítačům s Linuxem z počítače s Windows
-V počítači s Windows spusťte klienta vzdálené plochy a zadejte název DNS virtuálních počítačů Linux. Přejděte na řídicí panel virtuálního počítače na portálu Azure a klikněte na tlačítko `Connect` připojení virtuálním počítačům s Linuxem. V takovém případě se zobrazí okno přihlášení:
+## <a name="connect-your-linux-vm-from-a-windows-machine"></a>Připojení virtuálního počítače s Linuxem z počítače s Windows
+V počítači s Windows spusťte klienta vzdálené plochy a zadejte název DNS virtuálního počítače Linux. Přejít na řídicí panel virtuálního počítače na webu Azure Portal a klikněte na tlačítko `Connect` pro připojení virtuálního počítače s Linuxem. V takovém případě se zobrazí okno přihlášení:
 
-![Bitové kopie](./media/remote-desktop/no2.png)
+![image](./media/remote-desktop/no2.png)
 
-Přihlaste se pomocí uživatelské jméno a heslo k virtuálním počítačům s Linuxem.
+Přihlaste se pomocí uživatelského jména a hesla z virtuálního počítače s Linuxem.
 
 ## <a name="next-steps"></a>Další postup
 Další informace o používání xrdp najdete v tématu [ http://www.xrdp.org/ ](http://www.xrdp.org/).

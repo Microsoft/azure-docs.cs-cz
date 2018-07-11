@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 66964e4ed0877cc47dd7d2b5f3c6a62f4fa006b1
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 336e6e163178cd6d244460dbf9bee2a5bc9d714e
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37348180"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37935742"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Nejčastější dotazy týkající se disky virtuálního počítače Azure IaaS a spravovaných a nespravovaných prémiové disky
 
@@ -125,6 +125,10 @@ Ne. Nelze aktualizovat vlastnost název počítače. Nový virtuální počíta�
 **Kde najdu ukázkové šablony Azure Resource Manageru k vytvoření virtuálních počítačů se spravovanými disky?**
 * [Seznam šablon využití služby Managed Disks](https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md)
 * https://github.com/chagarw/MDPP
+
+**Můžu na jednom virtuálním počítači vyhledejte společně spravované a nespravované disky?**
+
+Ne.
 
 ## <a name="standard-ssd-disks-preview"></a>Standardní disky SSD (Preview)
 
@@ -286,7 +290,7 @@ Typ oddílu, které Azure podporuje pro disk s operačním systémem je hlavní 
 
 **Co je největší velikost objektu blob stránky, která je podporována?**
 
-Největší velikost objektu blob stránky, které Azure podporuje je 8 TB (8191 GB). Velikost maxmium stránky blogu při připojení k virtuálnímu počítači jako data nebo disky operačního systému je 4 TB (4 095 GB).
+Největší velikost objektu blob stránky, které Azure podporuje je 8 TB (8191 GB). Maximální blogu velikost stránky při připojení k virtuálnímu počítači jako data nebo disky operačního systému je 4 TB (4 095 GB).
 
 **Je nutné použít na novou verzi nástroje Azure a vytvořit, připojit, změna velikosti a nahrát disků větších než 1 TB?**
 

@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr;
-ms.openlocfilehash: 1bd24af0498755b7cdcb170624fd8f9f3b39c85a
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 0f6ba76ede48502e4f3308b11d41bf141f0188fb
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37347392"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37927770"
 ---
 # <a name="publish-your-trained-app"></a>Publikování trénovaného aplikace
 Po dokončení vytváření a testování vaší aplikace LUIS, publikujte ho. Po publikování aplikace na stránce publikování se zobrazí všechny přidružené HTTP [koncové body](luis-glossary.md#endpoint). Tyto koncové body za [oblasti](luis-reference-regions.md) a za [klíč](luis-how-to-manage-keys.md), pak jsou integrované do libovolné aplikace klienta, chatovací robot nebo back-endu. 
@@ -67,7 +67,7 @@ Volba slot je výběr časového pásma. Toto nastavení časového pásma umož
 
 Toto nastavení umožňuje chatovací robot nebo LUIS volající aplikace pro programové rozhodnutí podle skóre vrácené záměry. Horní dva příkazy jsou obecně zajímá nejvíce. Pokud hlavní skóre již není žádný záměru, že váš robot můžete položit dotaz zpracování zajistíte, aby konečná možností volby mezi záměru žádný a vysokým skóre záměr. 
 
-Příkazů a jejich výsledky jsou také zahrnuté protokoly koncového bodu. Je možné [exportovat](create-new-app.md#export-app) tyto protokoly a analyzovat výsledky. 
+Příkazů a jejich výsledky jsou také zahrnuté protokoly koncového bodu. Je možné [exportovat](luis-how-to-start-new-app.md#export-app) tyto protokoly a analyzovat výsledky. 
 
 ```
 {

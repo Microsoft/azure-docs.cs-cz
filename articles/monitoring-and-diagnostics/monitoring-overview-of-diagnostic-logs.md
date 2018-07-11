@@ -1,6 +1,6 @@
 ---
-title: Přehled Azure diagnostických protokolů
-description: Zjistěte, co je Azure diagnostické protokoly a jak je můžete využít pochopit události, ke kterým došlo na prostředek služby Azure.
+title: Přehled o diagnostické protokoly Azure
+description: Další diagnostické protokoly Azure a jak je můžete použít k pochopení události, ke kterým dochází v rámci prostředku Azure.
 author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,53 +8,58 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: e361259bc5ce2dd946d3ea8bc1e69f743a40c6df
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: a6435f74141429cbe4f9a169fd2f234161d486c4
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264397"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37918736"
 ---
-# <a name="collect-and-consume-log-data-from-your-azure-resources"></a>Shromažďování a využití dat protokolu z vašich prostředků Azure
+# <a name="collect-and-consume-log-data-from-your-azure-resources"></a>Shromažďování a zpracování dat protokolu z vašich prostředků Azure
 
-## <a name="what-are-azure-resource-diagnostic-logs"></a>Jaké jsou diagnostické protokoly prostředků Azure
+## <a name="what-are-azure-resource-diagnostic-logs"></a>Co jsou diagnostických protokolů prostředků Azure
 
-**Diagnostické protokoly Azure úrovni prostředků** vygenerované prostředek protokoly, které poskytují bohatou a často data o operaci prostředku. Obsah tyto protokoly se liší podle typu prostředku. Například pravidlo čítače skupinu zabezpečení sítě a audity Key Vault jsou dvě kategorie protokoly prostředku.
+**Diagnostické protokoly Azure úrovni prostředků** jsou protokoly generované prostředek, které poskytují bohatě vybaveným a časté informace o fungování tohoto prostředku. Obsah tyto protokoly se liší podle typu prostředku. Dvě kategorie prostředků protokoly jsou například počítadla pravidel skupin zabezpečení sítě a auditů služby Key Vault.
 
-Diagnostické protokoly na úrovni prostředků se liší od [protokol aktivit](monitoring-overview-activity-logs.md). Protokol aktivit poskytuje náhled do činnosti, které byly provedeny v prostředky ve vašem předplatném pomocí Resource Manager, například vytváření virtuálního počítače nebo odstranění aplikace logiky. Protokol aktivit je protokolu úrovni předplatného. Diagnostické protokoly na úrovni prostředků získat přehled o operace, které byly provedeny v rámci prostředku samostatně, například získání tajného klíče z Key Vault.
+Diagnostické protokoly na úrovni prostředků se liší od [protokolu aktivit](monitoring-overview-activity-logs.md). Protokol aktivit poskytuje podrobné informace o operacích provedených na prostředky ve vašem předplatném pomocí Resource Manageru, třeba vytvoření virtuálního počítače nebo odstranění aplikace logiky. Protokol aktivit je protokol úrovně předplatného. Úroveň prostředků diagnostické protokoly poskytují přehled o operacích provedených v rámci tohoto vlastního prostředku, například získání tajného klíče ze služby Key Vault.
 
-Diagnostické protokoly na úrovni prostředků se také liší od hostovaného operačního systému na úrovni diagnostických protokolů. Diagnostické protokoly hostovaného operačního systému jsou tyto shromažďují agenta spuštěného v rámci virtuálního počítače nebo jiné podporované typ prostředku. Diagnostické protokoly na úrovni prostředků vyžadují specifické pro zdroje dat z Azure k samotné platformě nástroje, žádné agenta a zachycení, zatímco hostovaného operačního systému na úrovni diagnostických protokolů zaznamenání dat z operačního systému a aplikací, které běží na virtuálním počítači.
+Diagnostické protokoly na úrovni prostředků se také liší od hostovaného operačního systému – úroveň diagnostických protokolů. Diagnostické protokoly hostovaného operačního systému jsou tyto shromážděné agentem běžících v rámci virtuálního počítače nebo jiné podporovaný typ prostředku. Diagnostické protokoly na úrovni prostředku vyžadují specifické podle prostředků data z platformy Azure, bez agenta a zachycení, zatímco diagnostické protokoly úrovni operačního systému hosta zachytávat data z operační systém a aplikace běžící na virtuálním počítači.
 
-Ne všechny prostředky podporu nového typu prostředku diagnostické protokoly zde popsané. Tento článek obsahuje oddíl výpis, které typy prostředků podporují nové diagnostické protokoly úrovni prostředků.
+Ne všechny prostředky podpory nového typu prostředku je zde popsáno, diagnostické protokoly. Tento článek obsahuje části informacích, které typy prostředků podporují nové úrovni prostředků diagnostické protokoly.
 
-![Diagnostika prostředků protokoly vs jiné typy protokolů ](./media/monitoring-overview-of-diagnostic-logs/Diagnostics_Logs_vs_other_logs_v5.png)
+![Protokoly diagnostiky zdroje vs jiné typy protokolů ](./media/monitoring-overview-of-diagnostic-logs/Diagnostics_Logs_vs_other_logs_v5.png)
 
-## <a name="what-you-can-do-with-resource-level-diagnostic-logs"></a>Co můžete dělat s diagnostické protokoly na úrovni prostředků
-Tady jsou některé z akcí, které můžete provést prostředků diagnostických protokolů:
+## <a name="what-you-can-do-with-resource-level-diagnostic-logs"></a>Co můžete dělat s diagnostické protokoly na úrovni prostředku
+Tady jsou některé věci, které vám pomůžou s protokolů diagnostiky prostředků:
 
-![Logické umístění prostředků diagnostických protokolů](./media/monitoring-overview-of-diagnostic-logs/Diagnostics_Logs_Actions.png)
+![Logické umístění protokolů diagnostiky prostředků](./media/monitoring-overview-of-diagnostic-logs/Diagnostics_Logs_Actions.png)
 
-* Uložte je do [ **účet úložiště** ](monitoring-archive-diagnostic-logs.md) pro auditování nebo ruční kontroly. Můžete zadat uchování (ve dnech) pomocí **nastavení diagnostiky pro prostředek**.
-* [Stream, aby **Event Hubs** ](monitoring-stream-diagnostic-logs-to-event-hubs.md) pro přijímání službu třetí strany nebo řešení vlastní analýzy, jako je například PowerBI.
-* Analyzovat, s [analýzy protokolů](../log-analytics/log-analytics-azure-storage.md)
+* Uložte je do [ **účtu úložiště** ](monitoring-archive-diagnostic-logs.md) pro auditování nebo ruční kontrolu. Můžete určit pomocí uchování (ve dnech) **nastavení diagnostiky prostředků**.
+* [Stream je **Event Hubs** ](monitoring-stream-diagnostic-logs-to-event-hubs.md) za účelem ingestování datových vlastní analýzy řešení, jako je například Power BI nebo služby třetích stran.
+* Analyzovat pomocí [Log Analytics](../log-analytics/log-analytics-azure-storage.md)
 
-Můžete vytvořit účet úložiště nebo obor názvů služby Event Hubs, který není ve stejném předplatném jako emitování protokoly. Uživatel, který konfiguruje nastavení, musí mít odpovídající RBAC přístup na oba odběry.
+Můžete použít účet úložiště nebo oboru názvů Event Hubs, která není ve stejném předplatném jako ta, které vysílá protokoly. Uživatel, který konfiguruje nastavení, musí mít správný přístup RBAC k oběma předplatným.
 
 > [!NOTE]
->  Nelze archivovat aktuálně dat do úložiště účtu, který za zabezpečené virtuální sítě.
+>  Momentálně nelze archivovat data do úložiště účtu, který za zabezpečené virtuální síti.
 
-## <a name="resource-diagnostic-settings"></a>Nastavení diagnostiky pro prostředek
+> [!WARNING]
+> Formát dat protokolů v účtu úložiště se změní na řádky JSON na 1. listopadu 2018. [Najdete v článku popis dopad a postup aktualizace nástrojů pro zpracování na nový formát.](./monitor-diagnostic-logs-append-blobs.md) 
+>
+> 
 
-Diagnostické protokoly prostředků pro jiné výpočetní, že prostředky jsou nakonfigurovány pomocí nastavení diagnostiky pro prostředek. **Nastavení diagnostiky pro prostředek** pro ovládací prvek prostředku:
+## <a name="resource-diagnostic-settings"></a>Nastavení diagnostiky prostředků
 
-* Kde prostředků diagnostické protokoly a metriky se odesílají (účet úložiště, Event Hubs nebo analýzy protokolů).
-* Kategorie protokolu, které se odesílají a jestli metriky data jsou taktéž odeslána.
-* Jak dlouho každou kategorii protokolu se uchovávají v účtu úložiště
-    - Uchování nulový počet dnů znamená, že jsou protokoly v nekonečné smyčce. Hodnota, jinak hodnota může být libovolný počet dnů od 1 do 2147483647.
-    - Pokud nejsou nastavené zásady uchovávání informací, ale ukládání protokolů v účtu úložiště je zakázaný (například pokud jenom jsou vybrané možnosti služby Event Hubs nebo analýzy protokolů), zásady uchovávání informací nemají žádný vliv.
-    - Zásady uchovávání informací jsou použité denní, takže na konci za den (UTC), protokoly dnem, který je teď nad rámec uchovávání se zásada odstraní. Například pokud jste měli zásady uchovávání informací jeden den, od začátku dnešní den protokoly z včerejšek před den by odstraněn. Proces odstraňování začíná na půlnoc UTC, ale Všimněte si, že může trvat až 24 hodin protokolů k odstranění z vašeho účtu úložiště.
+Protokolů diagnostiky prostředků pro Nevýpočetními, že prostředky budou nakonfigurováni s použitím nastavení diagnostiky prostředku. **Nastavení diagnostiky prostředků** pro ovládací prvek zdroje:
 
-Tato nastavení jsou konfigurována snadno prostřednictvím nastavení diagnostiky pro prostředek v portálu Azure, pomocí prostředí Azure PowerShell a rozhraní příkazového řádku nebo pomocí [REST API služby Azure monitorování](https://msdn.microsoft.com/library/azure/dn931943.aspx).
+* Prostředek diagnostické protokoly a metriky se odešle (účet úložiště, Event Hubs, a/nebo Log Analytics).
+* Kategorie protokolu, které se odesílají a určuje, zda metrika data jsou taktéž odeslána.
+* Jak dlouho se každá kategorie protokolu uchovávat v účtu úložiště
+    - Uchování 0 dnů znamená, že protokoly se uchovávají navždy. V opačném případě hodnota může být libovolný počet dnů mezi 1 a 2147483647.
+    - Pokud nejsou nastavené zásady uchovávání informací, ale ukládání protokolů v účtu úložiště je zakázaný (například pokud pouze jsou vybrané možnosti služby Event Hubs nebo Log Analytics), zásady uchovávání informací nemají žádný vliv.
+    - Zásady uchovávání informací jsou použitých za den, takže na konci za den (UTC), tento počet protokolů ze dne, který je nyní mimo uchovávání se zásada odstraní. Například pokud máte zásady uchovávání informací o jeden den, na začátku dne dnes protokoly ze včerejška před den se odstraní. Proces odstraňování začíná o půlnoci UTC, ale Všimněte si, že může trvat až 24 hodin pro protokoly, které mají být odstraněny z vašeho účtu úložiště.
+
+Tato nastavení se snadno konfigurovat přes nastavení diagnostiky pro prostředek na webu Azure Portal, prostřednictvím Azure Powershellu a příkazy rozhraní příkazového řádku nebo prostřednictvím [REST API služby Azure Monitor](https://msdn.microsoft.com/library/azure/dn931943.aspx).
 
 > [!NOTE]
 > Odesílání vícedimenzionálních metrik přes nastavení diagnostiky se v současné době nepodporuje. Metriky s dimenzemi se exportují jako ploché jednodimenzionální metriky agregované napříč hodnotami dimenzí.
@@ -64,44 +69,44 @@ Tato nastavení jsou konfigurována snadno prostřednictvím nastavení diagnost
 >
 
 > [!WARNING]
-> Diagnostické protokoly a metriky z hostovaného operačního systému vrstvy výpočetní prostředky (například virtuální počítače nebo Service Fabric) použití [samostatné mechanismus konfigurace a výběr výstupy](../azure-diagnostics.md).
+> Diagnostické protokoly a metriky z vrstvy operačního systému hosta využití výpočetních prostředků (například virtuální počítače nebo Service Fabric) [samostatným mechanismem pro konfiguraci a výběr výstupy](../azure-diagnostics.md).
 
-## <a name="how-to-enable-collection-of-resource-diagnostic-logs"></a>Postup povolení shromažďování diagnostických protokolů prostředků
+## <a name="how-to-enable-collection-of-resource-diagnostic-logs"></a>Jak povolit shromažďování diagnostických protokolů prostředků
 
-Povolením shromažďování diagnostických protokolů prostředků [jako součást vytvoření prostředku v šabloně Resource Manager](./monitoring-enable-diagnostic-logs-using-template.md) nebo po vytvoření prostředku ze stránky tohoto prostředku na portálu. Můžete také povolit kolekce v libovolném bodě pomocí příkazů prostředí Azure PowerShell nebo rozhraní příkazového řádku nebo pomocí rozhraní REST API Azure monitorování.
+Shromažďování protokolů diagnostiky prostředků je možné povolit [při vytváření prostředku v šabloně Resource Manageru](./monitoring-enable-diagnostic-logs-using-template.md) nebo po vytvoření prostředku ze stránky tohoto prostředku na portálu. Můžete také povolit shromažďování v libovolném bodě pomocí příkazů prostředí Azure PowerShell nebo rozhraní příkazového řádku nebo pomocí REST API služby Azure Monitor.
 
 > [!TIP]
-> Tyto pokyny nemusí vztahovat přímo na každý prostředek. V tématech schématu v dolní části této stránky pochopit speciální kroky, které se mohou vztahovat k určitým typům prostředků.
+> Tyto pokyny se nemusí vztahovat přímo ke každému prostředku. Zobrazit schéma odkazy v dolní části této stránky můžete porozumět speciální kroky, které se můžou vztahovat na určité typy prostředků.
 
-### <a name="enable-collection-of-resource-diagnostic-logs-in-the-portal"></a>Povolit shromažďování diagnostických protokolů prostředků na portálu
+### <a name="enable-collection-of-resource-diagnostic-logs-in-the-portal"></a>Povolit shromažďování protokolů diagnostiky prostředků na portálu
 
-Po vytvoření prostředku přechodem na konkrétní prostředek nebo přechodem na Azure monitorování můžete povolit shromažďování diagnostických protokolů prostředků na portálu Azure. Uděláte to pomocí Azure monitorování:
+Po vytvoření prostředku tak, že přejdete ke konkrétnímu prostředku nebo tak, že přejdete do Azure monitoru, můžete povolit shromažďování protokolů diagnostiky prostředků na webu Azure Portal. Aby to bylo prostřednictvím služby Azure Monitor:
 
-1. V [portál Azure](http://portal.azure.com), přejděte do monitorování Azure a klikněte na **nastavení diagnostiky**
+1. V [webu Azure portal](http://portal.azure.com), přejděte do Azure monitoru a klikněte na **nastavení diagnostiky**
 
-    ![Monitorování části monitorování Azure](media/monitoring-overview-of-diagnostic-logs/diagnostic-settings-blade.png)
+    ![Monitorování bodu služby Azure Monitor](media/monitoring-overview-of-diagnostic-logs/diagnostic-settings-blade.png)
 
-2. Volitelně můžete seznam filtrovat podle skupiny prostředků nebo typ prostředku, a potom klikněte na prostředek, pro kterou chcete provést nastavení diagnostiky.
+2. Volitelně můžete filtrovat seznam podle skupiny prostředků nebo prostředek typu a potom klikněte na prostředek, pro kterou chcete nastavit nastavení diagnostiky.
 
-3. Pokud neexistuje žádné nastavení na prostředku jste vybrali, zobrazí se výzva k vytvoření nastavení. Klikněte na tlačítko "Zapnout diagnostiky."
+3. Pokud neexistuje žádná nastavení pro prostředek jste vybrali, se zobrazí výzva k vytvoření nastavení. Klikněte na tlačítko "Zapnout diagnostiku."
 
-   ![Přidat nastavení diagnostiky - žádná existující nastavení](media/monitoring-overview-of-diagnostic-logs/diagnostic-settings-none.png)
+   ![Přidejte nastavení diagnostiky – žádná existující nastavení](media/monitoring-overview-of-diagnostic-logs/diagnostic-settings-none.png)
 
-   Pokud máte stávající nastavení na prostředek, zobrazí se seznam nastavení, které jsou již nakonfigurována na tomto prostředku. Klikněte na tlačítko "Přidat nastavení diagnostiky."
+   Pokud existuje stávající nastavení na prostředek, zobrazí se seznam nastavení, které jsou už nakonfigurovaná na tento prostředek. Klikněte na tlačítko "Přidat nastavení diagnostiky."
 
-   ![Přidat nastavení diagnostiky - stávající nastavení](media/monitoring-overview-of-diagnostic-logs/diagnostic-settings-multiple.png)
+   ![Přidejte nastavení diagnostiky – stávající nastavení](media/monitoring-overview-of-diagnostic-logs/diagnostic-settings-multiple.png)
 
-3. Zadejte název nastavení, zaškrtněte políčka pro každý cíl, do které chcete odesílat data a konfigurace, který prostředek se používá pro jednotlivé cíle. Volitelně můžete nastavit počet dní, abyste tyto protokoly uchovávat pomocí **uchovávání dat (dny)** posuvníky (platí jenom pro cílový účet úložiště). Uchování nulový počet dnů po neomezenou dobu ukládá protokoly.
+3. Zadejte název nastavení, zaškrtněte políčka pro každý cíl, do které chcete odesílat data a konfigurace, který prostředek se používá pro jednotlivé cíle. Volitelně můžete nastavit počet dnů uchování tyto protokoly s použitím **uchování (dny)** jezdce (platí jenom pro cílový účet úložiště). 0 dnů uchování dat po neomezenou dobu ukládá protokoly.
 
-   ![Přidat nastavení diagnostiky - stávající nastavení](media/monitoring-overview-of-diagnostic-logs/diagnostic-settings-configure.png)
+   ![Přidejte nastavení diagnostiky – stávající nastavení](media/monitoring-overview-of-diagnostic-logs/diagnostic-settings-configure.png)
 
 4. Klikněte na **Uložit**.
 
-Po chvíli se nové nastavení se zobrazí v seznamu nastavení pro tento prostředek a diagnostické protokoly jsou odeslány do zadaného umístění také se vygeneruje nová data události.
+Po chvíli se nové nastavení se zobrazí v seznamu nastavení pro tento prostředek a diagnostické protokoly jsou odeslány do zadaného umístění poté, co je vygenerována nová data události.
 
-### <a name="enable-collection-of-resource-diagnostic-logs-via-powershell"></a>Povolit shromažďování diagnostických protokolů prostředků prostřednictvím PowerShell
+### <a name="enable-collection-of-resource-diagnostic-logs-via-powershell"></a>Povolit shromažďování protokolů diagnostiky prostředků pomocí Powershellu
 
-Chcete-li povolit shromažďování diagnostických protokolů prostředků pomocí Azure PowerShell, použijte následující příkazy:
+Chcete-li povolit shromažďování protokolů diagnostiky prostředků pomocí Azure Powershellu, použijte následující příkazy:
 
 Pokud chcete povolit ukládání diagnostických protokolů v účtu úložiště, použijte tento příkaz:
 
@@ -111,33 +116,33 @@ Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -StorageAccountId [y
 
 ID účtu úložiště je ID prostředku pro účet úložiště, do kterého chcete odeslat protokoly.
 
-Pokud chcete povolit vysílání datového proudu diagnostických protokolů do centra událostí, použijte tento příkaz:
+Pokud chcete povolit streamování diagnostických protokolů do centra událostí, použijte tento příkaz:
 
 ```powershell
 Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -ServiceBusRuleId [your Service Bus rule id] -Enabled $true
 ```
 
-ID pravidla service bus je řetězec s Tento formát: `{Service Bus resource ID}/authorizationrules/{key name}`.
+ID pravidla služby Service bus je řetězec v tomto formátu: `{Service Bus resource ID}/authorizationrules/{key name}`.
 
-Pokud chcete povolit odesílání diagnostických protokolů do pracovního prostoru analýzy protokolů, použijte tento příkaz:
+Pokud chcete povolit odesílání diagnostických protokolů do pracovního prostoru Log Analytics, použijte tento příkaz:
 
 ```powershell
 Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -WorkspaceId [resource id of the log analytics workspace] -Enabled $true
 ```
 
-Můžete získat ID prostředku pracovní prostor analýzy protokolů pomocí následujícího příkazu:
+Můžete získat ID prostředku pracovního prostoru Log Analytics pomocí následujícího příkazu:
 
 ```powershell
 (Get-AzureRmOperationalInsightsWorkspace).ResourceId
 ```
 
-Tyto parametry povolení více možností výstupu můžete kombinovat.
+Tyto parametry pro povolení více možností výstupu můžete kombinovat.
 
-### <a name="enable-collection-of-resource-diagnostic-logs-via-azure-cli-20"></a>Povolit shromažďování diagnostických protokolů prostředků pomocí Azure CLI 2.0
+### <a name="enable-collection-of-resource-diagnostic-logs-via-azure-cli-20"></a>Povolit shromažďování protokolů diagnostiky prostředků pomocí Azure CLI 2.0
 
-Chcete-li povolit shromažďování diagnostických protokolů prostředků pomocí Azure CLI 2.0, je použít [vytvořit az monitorování diagnostiky nastavení](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) příkaz.
+Chcete-li povolit shromažďování protokolů diagnostiky prostředků prostřednictvím rozhraní příkazového řádku Azure CLI 2.0, použijte [az monitor diagnostiky – nastavení vytváření](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) příkazu.
 
-Chcete-li povolit ukládání diagnostických protokolů v účtu úložiště:
+Pokud chcete povolit ukládání diagnostických protokolů v účtu úložiště:
 
 ```azurecli
 az monitor diagnostic-settings create --name <diagnostic name> \
@@ -155,9 +160,9 @@ az monitor diagnostic-settings create --name <diagnostic name> \
     }]'
 ```
 
-`--resource-group` Argument je jenom v případě požadované `--storage-account` není ID objektu.
+`--resource-group` Argument je pouze požadováno pokud `--storage-account` není ID objektu.
 
-Chcete-li povolit vysílání datového proudu diagnostických protokolů do centra událostí:
+Pokud chcete povolit streamování diagnostických protokolů do centra událostí:
 
 ```azurecli
 az monitor diagnostic-settings create --name <diagnostic name> \
@@ -172,9 +177,9 @@ az monitor diagnostic-settings create --name <diagnostic name> \
     ]'
 ```
 
-ID pravidla je řetězec s Tento formát: `{Service Bus resource ID}/authorizationrules/{key name}`.
+ID pravidla je řetězec v tomto formátu: `{Service Bus resource ID}/authorizationrules/{key name}`.
 
-Chcete-li povolit odesílání diagnostických protokolů do pracovního prostoru analýzy protokolů:
+Pokud chcete povolit odesílání diagnostických protokolů do pracovního prostoru Log Analytics:
 
 ```azurecli
 az monitor diagnostic-settings create --name <diagnostic name> \
@@ -189,34 +194,34 @@ az monitor diagnostic-settings create --name <diagnostic name> \
     ]'
 ```
 
-`--resource-group` Argument je jenom v případě požadované `--workspace` není ID objektu
+`--resource-group` Argument je pouze požadováno pokud `--workspace` není ID objektu
 
-Se všemi příkazy, můžete přidat další kategorie do protokolů diagnostiky přidáním slovník do pole JSON, který je předán jako `--logs` parametr. Můžete kombinovat `--storage-account`, `--event-hub`, a `--workspace` povolení více možností výstupní parametry.
+S jakýkoli příkaz můžete přidat další kategorie do protokolu diagnostiky tak, že přidáte slovníky předané jako pole JSON `--logs` parametru. Můžete kombinovat `--storage-account`, `--event-hub`, a `--workspace` můžete aktivovat více možností výstupu.
 
-### <a name="enable-collection-of-resource-diagnostic-logs-via-rest-api"></a>Povolit shromažďování diagnostických protokolů prostředků prostřednictvím REST API
+### <a name="enable-collection-of-resource-diagnostic-logs-via-rest-api"></a>Povolit shromažďování protokolů diagnostiky prostředků prostřednictvím rozhraní REST API
 
-Chcete-li změnit nastavení pro diagnostiku pomocí rozhraní REST API Azure monitorování, [tento dokument](https://msdn.microsoft.com/library/azure/dn931931.aspx).
+Chcete-li změnit nastavení diagnostiky pomocí REST API služby Azure Monitor, [tento dokument](https://msdn.microsoft.com/library/azure/dn931931.aspx).
 
-## <a name="manage-resource-diagnostic-settings-in-the-portal"></a>Spravovat nastavení pro diagnostiku prostředků na portálu
+## <a name="manage-resource-diagnostic-settings-in-the-portal"></a>Spravovat nastavení diagnostiky prostředků na portálu
 
-Ujistěte se, že všechny vaše prostředky nastavení je nastavení pro diagnostiku. Přejděte na **monitorování** v portálu a otevřete **nastavení pro diagnostiku**.
+Ujistěte se, že všechny prostředky z nastavení je nastavení diagnostiky. Přejděte do **monitorování** v portálu a otevřete **nastavení diagnostiky**.
 
-![Diagnostické protokoly okno na portálu](./media/monitoring-overview-of-diagnostic-logs/diagnostic-settings-nav.png)
+![Okno diagnostické protokoly na portálu](./media/monitoring-overview-of-diagnostic-logs/diagnostic-settings-nav.png)
 
 Možná budete muset klikněte na tlačítko "Všechny služby" najít v části monitorování.
 
-Zde si můžete zobrazit a vyfiltrovat všechny prostředky, které podporují diagnostické nastavení zobrazit, pokud mají diagnostiky povoleno. Můžete také přejít na najdete Pokud několik nastavení jsou nastavené na prostředku a zkontrolujte, které účet úložiště, obor názvů služby Event Hubs a pracovní prostor analýzy protokolů, které jsou k toku dat.
+Tady si můžete zobrazit a filtrovat všechny prostředky, které podporují nastavení diagnostiky. Pokud chcete zobrazit, pokud mají zapnutou diagnostiku. Můžete také přejít na najdete v tématu Pokud několik nastavení jsou nastavené na prostředku a zkontrolujte, které účet úložiště, obor názvů Event Hubs a/nebo pracovní prostor Log Analytics, která tok dat do.
 
 ![Diagnostické protokoly výsledky v portálu](./media/monitoring-overview-of-diagnostic-logs/diagnostic-settings-blade.png)
 
-Přidání nastavení diagnostiky se vyvolá nastavení pro diagnostiku zobrazení, kde můžete povolit, zakázat nebo změnit nastavení diagnostiky pro vybraný zdroj.
+Přidání nastavení diagnostiky zobrazí zobrazení nastavení diagnostiky, kde můžete povolit, zakázat nebo změnit nastavení diagnostiky pro vybraný prostředek.
 
-## <a name="supported-services-categories-and-schemas-for-resource-diagnostic-logs"></a>Podporované služby, kategorie a schémat pro diagnostické protokoly prostředků
+## <a name="supported-services-categories-and-schemas-for-resource-diagnostic-logs"></a>Podporované služby, kategorie a schémata pro diagnostické protokoly prostředků
 
-[Najdete v článku](monitoring-diagnostic-logs-schema.md) úplný seznam podporovaných služeb a kategorií protokolu a schémata v těchto služeb.
+[Najdete v článku](monitoring-diagnostic-logs-schema.md) úplný seznam podporovaných služeb a kategorie protokolu a schémat, které používají tyto služby.
 
 ## <a name="next-steps"></a>Další postup
 
-* [Stream prostředků do diagnostickým protokolům **Event Hubs**](monitoring-stream-diagnostic-logs-to-event-hubs.md)
-* [Změňte nastavení pro diagnostiku prostředků pomocí rozhraní REST API Azure monitorování](https://msdn.microsoft.com/library/azure/dn931931.aspx)
-* [Analýza protokolů z úložiště Azure s analýzy protokolů](../log-analytics/log-analytics-azure-storage.md)
+* [Stream protokolů diagnostiky prostředků k **Event Hubs**](monitoring-stream-diagnostic-logs-to-event-hubs.md)
+* [Změnit nastavení diagnostiky prostředků pomocí REST API služby Azure Monitor](https://msdn.microsoft.com/library/azure/dn931931.aspx)
+* [Analýza protokolů ze služby Azure storage s využitím Log Analytics](../log-analytics/log-analytics-azure-storage.md)

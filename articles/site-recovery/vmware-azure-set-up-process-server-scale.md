@@ -1,43 +1,43 @@
 ---
-title: Nastavit procesní server v Azure pro virtuální počítač VMware a fyzické server navrácení služeb po obnovení s Azure Site Recovery | Microsoft Docs
-description: Tento článek popisuje, jak nastavit procesní server v Azure, pro navrácení služeb po obnovení virtuálních počítačů Azure k VMware.
+title: Nastavit procesový server v Azure pro virtuální počítač VMware a fyzických serverů navrácení služeb po obnovení pomocí Azure Site Recovery | Dokumentace Microsoftu
+description: Tento článek popisuje, jak nastavit procesový server v Azure a navrátit služby po obnovení virtuálních počítačů Azure do VMware.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 06/10/2018
+ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: 3e53954341136a293052f9af755515a5552432fe
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
-ms.translationtype: MT
+ms.openlocfilehash: ade47c59a8db673869ce8c60a062a2a6a6656ca2
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35300843"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37916305"
 ---
-# <a name="set-up-additional-process-servers-for-scalability"></a>Nastavit další proces serverů pro škálovatelnost
+# <a name="set-up-additional-process-servers-for-scalability"></a>Nastavení dalších procesových serverů pro zajištění škálovatelnosti
 
-Ve výchozím nastavení, pokud replikujete virtuální počítače VMware nebo fyzických serverů do Azure pomocí [Site Recovery](site-recovery-overview.md), procesový server je nainstalován na serveru, konfigurace a slouží ke koordinaci přenosu dat mezi Site Recovery a v místní infrastruktuře. Pokud chcete zvýšit kapacitu a škálování nasazení replikace, můžete přidat další samostatný proces serverů. Tento článek popisuje, jak to provést.
+Ve výchozím nastavení se při replikaci virtuálních počítačů VMware nebo fyzických serverů do Azure s využitím [Site Recovery](site-recovery-overview.md), procesový server je nainstalovaný na počítači serveru konfigurace a slouží k přenosu dat mezi Site Recovery koordinuje a v místní infrastruktuře. Ke zvýšení kapacity a horizontální navýšení kapacity nasazení replikace, přidáte další samostatné procesových serverů. Tento článek popisuje, jak to provést.
 
 ## <a name="before-you-start"></a>Než začnete
 
 ### <a name="capacity-planning"></a>Plánování kapacity
 
-Ujistěte se, které jste provedli [plánování kapacity](site-recovery-plan-capacity-vmware.md) pro replikaci VMware. To umožňuje identifikovat jak a kdy měli byste nasadit další proces servery.
+Ujistěte se, že jste provedli [plánování kapacity](site-recovery-plan-capacity-vmware.md) pro replikaci VMware. To pomáhá zjistit, jak a kdy byste měli nasadit dalších procesových serverů.
 
-### <a name="sizing-requirements"></a>Změna velikosti požadavky 
+### <a name="sizing-requirements"></a>Požadavky na velikost 
 
-Ověřte nastavení velikosti požadavky shrnuto v tabulce. Obecně platí Pokud budete muset změnit měřítko nasazení na více než 200 zdrojového počítače, nebo máte celkem denně změn počet více než 2 TB, je třeba servery další proces pro zpracování provozu.
+Zkontrolujte požadavky na velikost uvedené v tabulce. Obecně platí Pokud budete muset škálovat nasazení tak, aby více než 200 zdrojové počítače, nebo máte celkem denní četnost více než 2 TB změn dat, je třeba dalších procesových serverů, které zvládnou objem přenosů.
 
-| **Další procesového serveru** | **Velikost disku mezipaměti** | **Míry změny dat** | **Chráněné počítače** |
+| **Další procesový server** | **Velikost mezipaměti disku** | **Frekvence změny dat** | **Chráněné počítače** |
 | --- | --- | --- | --- |
-|4 Vcpu (2 sockets * 2 jádra @ 2,5 GHz), 8 GB paměti |300 GB |250 GB nebo méně |Replikovat počítače 85 nebo méně. |
-|8 Vcpu (2 sockets * 4 jádra @ 2,5 GHz), 12 GB paměti |600 GB |250 GB až 1 TB |Replikovat mezi 85 150 počítačů. |
-|12 Vcpu (2 sockets * @ 2,5 GHz 6 jader) 24 GB paměti |1 TB |1 TB 2 TB |Replikovat mezi 150 225 počítačů. |
+|4 virtuální procesory (2 sockets * @ 2,5 GHz 2 jádra), 8 GB paměti |300 GB |Aby se 250 GB nebo méně |Replikace počítačů 85 nebo méně. |
+|8 virtuálních procesorů (2 sockets * @ 2,5 GHz 4 jádra), 12 GB paměti |600 GB |250 GB až 1 TB |Replikace mezi 85 150 počítačů. |
+|12 virtuálních procesorů (2 sockets * @ 2,5 GHz 6 jader) 24 GB paměti |1 TB |1 TB na 2 TB |Replikace mezi 150 225 počítačů. |
 
 ### <a name="prerequisites"></a>Požadavky
 
-V následující tabulce jsou shrnuté požadavky na další procesový server.
+V následující tabulce jsou shrnuté požadavky pro další procesový server.
 
 [!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-configuration-and-scaleout-process-server-requirements.md)]
 
@@ -46,20 +46,20 @@ V následující tabulce jsou shrnuté požadavky na další procesový server.
 
 Stáhněte instalační soubor pro procesový server následujícím způsobem:
 
-1. Přihlaste se k portálu Azure a přejděte do trezoru služeb zotavení.
-2. Otevřete **infrastruktury obnovení lokality** > **VMWare a fyzické počítače** > **konfigurační servery** (v části pro VMware a fyzické Počítače).
-3. Vyberte konfigurační server můžete rozbalit podrobnosti serveru. Pak klikněte na tlačítko **+ procesový Server**.
-4. V **přidejte procesový server** >  **zvolte, kam chcete procesový server nasadit**, vyberte **místní Server proces nasazení horizontální**.
+1. Přihlaste se k webu Azure portal a přejděte do vašeho trezoru služby Recovery Services.
+2. Otevřít **infrastruktura Site Recovery** > **VMWare a fyzických počítačů** > **konfigurační servery** (v části pro VMware a fyzické Počítače).
+3. Vyberte konfigurační server přejdete na podrobnosti o serveru. Pak klikněte na tlačítko **+ procesový Server**.
+4. V **přidat procesový server** >  **zvolit, kam chcete procesový server nasadit**vyberte **nasazení Scale-out procesový Server v místním**.
 
   ![Přidat stránku servery](./media/vmware-azure-set-up-process-server-scale/add-process-server.png)
-1. Klikněte na tlačítko **stáhnout Microsoft Azure Site Recovery sjednocený instalační program**. Tato akce stáhne nejnovější verzi instalačního souboru.
+1. Klikněte na tlačítko **stáhněte si Microsoft Azure Site Recovery sjednocené instalace**. Tato akce stáhne nejnovější verzi instalačního souboru.
 
   > [!WARNING]
-  Verze procesového serveru instalace musí být stejná jako, nebo starší než, verze konfigurace serveru, je třeba systémem. Jednoduchý způsob, jak zajistit kompatibilitu verze se má používat stejný instalační program, který jste naposledy použili instalaci nebo aktualizaci konfigurační server.
+  Verze procesového serveru instalace by měla být stejná nebo nižší než, verze konfiguračního serveru máte spuštěné. Jednoduchý způsob, jak zajistit kompatibilitu verze je použijte stejnou instalační program, který jste naposledy použili k instalaci nebo aktualizaci konfiguračního serveru.
 
-## <a name="install-from-the-ui"></a>Nainstalujte z uživatelského rozhraní
+## <a name="install-from-the-ui"></a>Instalace z uživatelského rozhraní
 
-Nainstalujte následujícím způsobem. Po nastavení serveru, migrovat zdrojový počítač používat.
+Nainstalujte následujícím způsobem. Po nastavení serveru, můžete migraci zdrojové počítače jeho použití.
 
 [!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-add-process-server.md)]
 
@@ -85,7 +85,7 @@ UNIFIEDSETUP.EXE /AcceptThirdpartyEULA /servermode "PS" /InstallLocation "D:\" /
 ```
 ### <a name="create-a-proxy-settings-file"></a>Vytvořte soubor nastavení proxy serveru
 
-Pokud potřebujete nastavit proxy server, parametr ProxySettingsFilePath vezme jako vstupní soubor. Můžete vytvořit soubor takto a předejte ji jako vstupní parametr ProxySettingsFilePath.
+Pokud je potřeba nastavit proxy server, přebírá parametr ProxySettingsFilePath soubor jako vstup. Můžete následujícím způsobem vytvořte tento soubor a předat ji jako vstupní parametr ProxySettingsFilePath.
 
 ```
 * [ProxySettings]
@@ -97,4 +97,4 @@ Pokud potřebujete nastavit proxy server, parametr ProxySettingsFilePath vezme j
 ```
 
 ## <a name="next-steps"></a>Další postup
-Další informace o [Správa zpracovat nastavení serveru](vmware-azure-manage-process-server.md)
+Další informace o [server nastavení řízení procesu](vmware-azure-manage-process-server.md)

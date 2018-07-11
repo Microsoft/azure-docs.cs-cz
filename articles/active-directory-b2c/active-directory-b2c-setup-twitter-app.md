@@ -1,48 +1,50 @@
 ---
-title: Konfigurace Twitter pro Azure Active Directory B2C | Dokumentace Microsoftu
-description: Zaregistrujte se a přihlaste se poskytují zákazníkům s účty Twitteru ve svých aplikacích, které jsou zabezpečené pomocí Azure Active Directory B2C.
+title: Nastavení registrace a přihlášení pomocí účtu Twitteru pomocí Azure Active Directory B2C | Dokumentace Microsoftu
+description: Zaregistrujte se a přihlaste se poskytují zákazníkům s účty Twitteru ve svých aplikacích pomocí služby Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 6/13/2018
+ms.date: 07/09/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: d44ea5afca15519fee1bc8a4ebd6c2ba1f36d760
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: bf5ae39d83fd021775fbd18cf23d2e6b9078e748
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37448624"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37927892"
 ---
-# <a name="provide-sign-up-and-sign-in-to-consumers-with-twitter-accounts-using-azure-ad-b2c"></a>Poskytují zaregistrujte se a přihlaste se k zákazníkům Twitteru účtů pomocí Azure AD B2C
+# <a name="set-up-sign-up-and-sign-in-with-a-twitter-account-using-azure-active-directory-b2c"></a>Nastavení registrace a přihlášení pomocí účtu Twitteru pomocí Azure Active Directory B2C
 
 ## <a name="create-a-twitter-application"></a>Vytvoření aplikace Twitter
 
-Pokud chcete použít Twitteru jako zprostředkovatele identity v Azure Active Directory (Azure AD) B2C, budete muset vytvoření aplikace Twitter a zadejte správné parametry. Budete potřebovat k tomu účtu sítě Twitter. Pokud ho nemáte, můžete získat na [ https://twitter.com/signup ](https://twitter.com/signup).
+Použití účtu na Twitteru jako zprostředkovatele identity v Azure Active Directory (Azure AD) B2C, budete muset vytvořit aplikaci ve vašem tenantovi, který ho zastupuje. Pokud ještě nemáte účet na Twitteru, můžete získat na [ https://twitter.com/signup ](https://twitter.com/signup).
 
-1. Přejděte [Twitteru aplikace](https://apps.twitter.com/) a přihlaste se pomocí svých přihlašovacích údajů.
-2. Klikněte na tlačítko **vytvořte novou aplikaci**.
-3. Ve formuláři, zadejte hodnotu **název**, **popis**, a **webu**.
-4. Pro **adresu URL zpětného volání**, zadejte `https://login.microsoftonline.com/te/{tenant}/{policyId}/oauth1/authresp`. Nezapomeňte nahradit **{klient}** s názvem vašeho tenanta (například contosob2c.onmicrosoft.com) a **{policyId}** se svým id zásad (například b2c_1_policy).  **Zpětné volání adresy URL musí být v všechna písmena malá.** Měli byste přidat adresu URL zpětného volání pro všechny zásady, které používají přihlášení Twitter. Ujistěte se, že používáte `b2clogin.com` místo ` login.microsoftonline.com` Pokud používáte ho ve vaší aplikaci.
-5. Zaškrtnutím políčka souhlas **smlouva k vývojářským** a klikněte na tlačítko **vytvoření aplikace Twitter**.
-6. Po vytvoření aplikace, vyberte v seznamu, vyberte **nastavení** kartu a potom klikněte na tlačítko **aktualizovat nastavení**.
+1. Přihlaste se k [Twitteru aplikace](https://apps.twitter.com/) pomocí svých přihlašovacích údajů Twitter.
+2. Vyberte **vytvořte novou aplikaci**.
+3. Zadejte **název**, **popis**, a **webu**.
+4. Zadejte `https://login.microsoftonline.com/te/{tenant}/{policyId}/oauth1/authresp` v **adresy URL zpětného volání**. Nahraďte **{klient}** s názvem vašeho tenanta (například contosob2c.onmicrosoft.com) a **{policyId}** se svým ID zásad (například b2c_1_policy). Měli byste přidat adresu URL zpětného volání pro všechny zásady, které se pomocí účtu sítě Twitter. Ujistěte se, že používáte `b2clogin.com` místo ` login.microsoftonline.com` Pokud používáte ho ve vaší aplikaci.
+5. Souhlas **smlouva k vývojářským** a vyberte **vytvoření aplikace Twitter**.
 7. Vyberte **klíče a přístupové tokeny** kartu.
-8. Zkopírujte hodnotu **uživatelský klíč** a **uživatelský tajný klíč**. Budete potřebovat oba poskytovatelé konfigurace Twitteru jako zprostředkovatele identity ve vašem tenantovi.
+8. Zkopírujte hodnotu **uživatelský klíč** a **uživatelský tajný klíč**. Je nutné jejich konfigurace účtu na Twitteru jako zprostředkovatele identity ve vašem tenantovi.
 
 ## <a name="configure-twitter-as-an-identity-provider-in-your-tenant"></a>Konfigurace Twitteru jako zprostředkovatele identity ve vašem tenantovi
 
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com/) jako globální správce tenanta Azure AD B2C. 
-2. Pokud chcete přepnout na svého tenanta Azure AD B2C, vyberte adresář Azure AD B2C v pravém horním rohu portálu.
-3. Klikněte na tlačítko **všechny služby**a pak vyberte **Azure AD B2C** ze seznamu služeb v rámci **zabezpečení + Identita**.
-4. Klikněte na tlačítko **zprostředkovatelé Identity**.
-5. Zadejte popisný **název** pro konfigurace zprostředkovatele identity. Zadejte například "Twitter".
-6. Klikněte na tlačítko **typ zprostředkovatele identit**vyberte **Twitteru (Preview)** a klikněte na tlačítko **OK**.
-7. Klikněte na tlačítko **nastavit tohoto zprostředkovatele identity** a zadejte Twitteru **uživatelský klíč** pro **id klienta** a Twitter **uživatelský tajný klíč** pro **tajný kód klienta**.
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com/) jako globální správce tenanta Azure AD B2C.
+2. Přepněte v pravém horním rohu portálu Azure Portal na adresář, který obsahuje tenanta Azure AD B2C, a ujistěte se tak, že používáte správný adresář. Vyberte informace o předplatném a pak **Přepnout adresář**. 
+
+    ![Přepnutí na tenanta Azure AD B2C](./media/active-directory-b2c-setup-twitter-app/switch-directories.png)
+
+    Vyberte adresář, který obsahuje vašeho tenanta.
+
+    ![Výběr adresáře](./media/active-directory-b2c-setup-twitter-app/select-directory.png)
+
+3. Zvolte **Všechny služby** v levém horním rohu portálu Azure Portal a vyhledejte a vyberte **Azure AD B2C**.
+4. Vyberte **zprostředkovatelé Identity**a pak vyberte **přidat**.
+5. Zadejte **název**. Zadejte například *Twitter*.
+6. Vyberte **typ zprostředkovatele identit**vyberte **Twitter**a klikněte na tlačítko **OK**.
+7. Vyberte **nastavit tohoto zprostředkovatele identity** a zadejte uživatelský klíč pro **ID klienta** a **uživatelský tajný klíč** pro **tajný kód klienta**.
 8. Klikněte na tlačítko **OK**a potom klikněte na tlačítko **vytvořit** uložte konfiguraci Twitter.
-
-## <a name="next-steps"></a>Další postup
-
-Vytvoření nebo úprava [integrované zásady](active-directory-b2c-reference-policies.md) a přidejte Twitteru jako zprostředkovatele identity.

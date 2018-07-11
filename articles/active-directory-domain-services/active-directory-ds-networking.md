@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Domain Services: Pokyny pro sítě | Microsoft Docs'
-description: Požadavky sítě pro Azure Active Directory Domain Services
+title: 'Služby Azure AD Domain Services: Pokyny pro sítě | Dokumentace Microsoftu'
+description: Důležité informace o sítích pro Azure Active Directory Domain Services
 services: active-directory-ds
 documentationcenter: ''
 author: mahesh-unnikrishnan
@@ -13,136 +13,133 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/08/2018
+ms.date: 12/01/2017
 ms.author: maheshu
-ms.openlocfilehash: a91120e2592e6fdaa38334f36bfd9b67c0f1b50d
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: 07f63eb9ed316f7798bd890bb6125617c6a1e886
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36300991"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37929633"
 ---
-# <a name="networking-considerations-for-azure-ad-domain-services"></a>Požadavky sítě pro Azure AD Domain Services
+# <a name="networking-considerations-for-azure-ad-domain-services"></a>Důležité informace o sítích pro Azure AD Domain Services
 ## <a name="how-to-select-an-azure-virtual-network"></a>Jak vybrat virtuální síť Azure
-Následující pokyny vám pomohou vybrat virtuální sítě pro použití se službou Azure AD Domain Services.
+Následující pokyny vám pomůže vybrat virtuální síť pro použití s Azure AD Domain Services.
 
 ### <a name="type-of-azure-virtual-network"></a>Typ virtuální sítě Azure
-* **Virtuální sítě Resource Manager**: Azure AD Domain Services se dají povolit v virtuální sítě vytvořené pomocí Azure Resource Manager.
-* Nelze povolit Azure AD Domain Services ve klasické virtuální síti Azure.
-* Další virtuální sítě můžete připojit k virtuální síti, ve které je povolili službu Azure AD Domain Services. Další informace najdete v tématu [připojení k síti](active-directory-ds-networking.md#network-connectivity) části.
+* **Virtuální sítě Resource Manageru**: Azure AD Domain Services lze povolit v virtuální sítě vytvořené pomocí Azure Resource Manageru.
+* Nejde povolit Azure AD Domain Services ve klasické virtuální síti Azure.
+* Jiným virtuálním sítím můžete připojit k virtuální síti, ve kterém je povolena služba Azure AD Domain Services. Další informace najdete v tématu [připojení k síti](active-directory-ds-networking.md#network-connectivity) oddílu.
 
 ### <a name="azure-region-for-the-virtual-network"></a>Oblast Azure pro virtuální síť
-* Vaše Azure AD Domain Services spravované domény je nasazená ve stejné oblasti Azure jako virtuální síť rozhodnete povolit služby.
+* Služby Azure AD Domain spravovanou doménu je nasazená ve stejné oblasti Azure jako virtuální síť, budete chtít povolit službu.
 * Vyberte virtuální síť v oblasti Azure podporované službou Azure AD Domain Services.
 * Na stránce [Služby Azure podle oblasti](https://azure.microsoft.com/regions/#services/) se dozvíte, pro jaké oblasti je dostupná služba Azure AD Domain Services.
 
-### <a name="requirements-for-the-virtual-network"></a>Požadavky pro virtuální síť
-* **Blízkosti Azure úlohy**: vyberte virtuální síť, které aktuálně hostitelem virtuálních počítačů, kteří potřebují přístup k Azure AD Domain Services. Pokud vaše úlohy jsou nasazeny v jiné virtuální síti než spravované doméně, můžete také propojit virtuální sítě.
-* **Vlastní nebo přineste vlastní servery DNS**: Ujistěte se, že neexistují žádné vlastní servery DNS, které jsou nakonfigurované pro virtuální síť. Příkladem vlastního serveru DNS je instance virtuálního počítače na serveru Windows, který jste nasadili ve virtuální síti a systémem Windows Server DNS. Služba Azure AD Domain Services nelze integrovat do žádné vlastní servery DNS, které jsou nasazené v rámci virtuální sítě.
-* **Stávajících doménách se stejným názvem domény**: Ujistěte se, že nemáte existující doménu se stejným názvem domény k dispozici ve virtuální síti. Například předpokládejme, že již máte doménu „contoso.com“ k dispozici na vybrané virtuální síti. Později Zkuste povolit spravované doméně služby Azure AD Domain Services s se stejným názvem domény (to znamená "contoso.com") ve virtuální síti. Dojde k chybě při pokusu o povolení služby Azure AD Domain Services. Toto selhání je z důvodu konfliktu názvů pro název domény ve virtuální síti. V této situaci musíte použít jiný název pro nastavení domény spravované službou Azure AD Domain Services. Případně můžete zrušit existující doménu a poté pokračovat v povolení služby Azure AD Domain Services.
+### <a name="requirements-for-the-virtual-network"></a>Požadavky na virtuální síť
+* **Vzdálenost pro vaše úlohy Azure**: vyberte virtuální síť, která aktuálně hostuje/bude hostovat virtuální počítače, které potřebují přístup k Azure AD Domain Services. Pokud vaše úlohy jsou nasazené v jiné virtuální sítě, než spravovaná doména, můžete také propojit virtuální sítě.
+* **Vlastní/přineste vlastní servery DNS**: Ujistěte se, že neexistují žádné vlastní servery DNS, které jsou nakonfigurované pro virtuální síť. Příklad vlastního serveru DNS je instance DNS systému Windows Server běžící na serveru virtuálního počítače s Windows, který jste nasadili ve virtuální síti. Azure AD Domain Services není integrováno se všechny vlastní servery DNS, které jsou nasazené v rámci virtuální sítě.
+* **Stávajících domén se stejným názvem domény**: Ujistěte se, že nemáte existující doménu se stejným názvem domény dostupným v dané virtuální síti. Například předpokládejme, že již máte doménu „contoso.com“ k dispozici na vybrané virtuální síti. Později Zkuste povolit spravované domény služby Azure AD Domain Services se stejným názvem domény (tedy "contoso.com") v dané virtuální síti. Dojde k chybě při pokusu o povolení služby Azure AD Domain Services. To je způsobeno konflikty názvů pro název domény v této virtuální síti. V této situaci musíte použít jiný název pro nastavení domény spravované službou Azure AD Domain Services. Případně můžete zrušit existující doménu a poté pokračovat v povolení služby Azure AD Domain Services.
 
 > [!WARNING]
-> Domain Services nelze přesunout do jiné virtuální síti, poté, co povolíte službu.
+> Domain Services nelze přesunout do jiné virtuální sítě, budete mít povolenou službu.
 >
 >
 
 
-## <a name="guidelines-for-choosing-a-subnet"></a>Pokyny pro výběr podsíť
+## <a name="guidelines-for-choosing-a-subnet"></a>Pokyny pro výběr podsítě
 
-![Doporučené podsíť návrhu](./media/active-directory-domain-services-design-guide/vnet-subnet-design.png)
+![Doporučené podsíti](./media/active-directory-domain-services-design-guide/vnet-subnet-design.png)
 
-* Nasazení Azure AD Domain Services **oddělit vyhrazené podsíť** v rámci virtuální sítě Azure.
-* Neplatí skupiny Nsg k podsíti vyhrazené vaší spravované domény. Pokud musíte použít skupiny Nsg na vyhrazené podsíť, ujistěte se, můžete **nezadávejte blokovat porty vyžadované pro služby a spravovat vaše doména**.
-* Neomezují zbytečně počet IP adres, které jsou k dispozici v rámci podsítě vyhrazené vaší spravované domény. Toto omezení zabrání službu zpřístupnění dva řadiče domény vaší spravované domény.
-* **Nepovolujte Azure AD Domain Services v podsíti brány** virtuální sítě.
-* Neblokují odchozí přístup z podsítě, ve kterém je povolená vaší spravované domény.
+* Nasazení Azure AD Domain Services **oddělení vyhrazenou podsíť** v rámci vaší virtuální sítí Azure.
+* Skupiny Nsg nevztahují na vyhrazenou podsíť vaší spravované domény. Pokud musíte použít skupiny Nsg na vyhrazenou podsíť, zkontrolujte, že jste **nemají blokovat porty vyžadované pro služby a spravovat vaše doména**.
+* Neomezují zbytečně počet IP adres, které jsou k dispozici ve vyhrazené podsíti pro vaši spravovanou doménu. Toto omezení brání službě ve zpřístupnění dva řadiče domény pro spravovanou doménu.
+* **Nepovolujte Azure AD Domain Services v podsíti brány** vaší virtuální sítě.
 
 > [!WARNING]
-> Pokud přidružíte skupinu NSG s podsítí, ve kterém služba Azure AD Domain Services je povoleno, mohou narušit možnost služeb a spravovat doménu společnosti Microsoft. Kromě toho synchronizace mezi vašeho klienta Azure AD a vaší spravované domény dojde k narušení. **Smlouva SLA se nevztahuje na nasazení, kde skupinu NSG použil blokující Azure AD Domain Services z aktualizace a Správa domény.**
+> Pokud přidružíte skupinu NSG k podsíti, ve kterém Azure AD Domain Services je povoleno, mohou narušit schopnost Microsoftu služby a spravovat domény. Kromě toho dojde k narušení synchronizace mezi vaším tenantem Azure AD a vaší spravované domény. **Smlouva SLA nevztahuje na nasazení, ve kterém je skupina zabezpečení sítě byl použit blokující služby Azure AD Domain Services z aktualizace a správa vaší domény.**
 >
 >
 
-## <a name="ports-required-for-azure-ad-domain-services"></a>Porty vyžadované pro Azure AD Domain Services
-Následující porty jsou povinné pro Azure AD Domain Services do služby a údržbu vaší spravované domény. Zajistěte, aby tyto porty nejsou blokováno pro podsíť, ve kterém jste povolili vaší spravované domény.
+## <a name="ports-required-for-azure-ad-domain-services"></a>Porty vyžadované pro službu Azure AD Domain Services
+Následující porty jsou povinné pro Azure AD Domain Services do služby a udržovat vaší spravované domény. Ujistěte se, že tyto porty nejsou blokované pro podsíť, ve kterém jste povolili vaší spravované domény.
 
 | Číslo portu | Povinné? | Účel |
 | --- | --- | --- |
-| 443 | Povinné |Synchronizace se klientovi služby Azure AD |
-| 5986 | Povinné | Správa vaší domény |
-| 3389 | Povinné | Správa vaší domény |
-| 636 | Nepovinné | Zabezpečený LDAP (LDAPS) přístup k spravované doméně |
+| 443 | Povinné |Synchronizace v tenantu Azure AD |
+| 5986 | Povinné | Správa domény |
+| 3389 | Povinné | Správa domény |
+| 636 | Nepovinné | Zabezpečený LDAP (LDAPS) přístup k vaší spravované domény |
 
 **Port 443 (synchronizaci se službou Azure AD)**
-* Slouží k synchronizaci adresáře Azure AD s vaší spravované domény.
-* Je nutné povolit přístup na tento port ve vaší skupině. Bez přístupu na tento port není synchronizována s adresáře Azure AD vaší spravované domény. Uživatelé nebudou moci přihlásit, protože nejsou synchronizovány změny hesla k vaší spravované domény.
-* Příchozí přístup můžete omezit na tento port na IP adresy, které patří do rozsahu Azure IP adres. Všimněte si, že rozsah adres Azure IP jiný rozsah než je rozsah prostředí PowerShell vidět v pravidle níže.
+* Používá se pro synchronizaci adresáře Azure AD s vaší spravované domény.
+* Je nutné povolit přístup na tento port v NSG. Bez přístupu na tento port není synchronizovaná s adresářem Azure AD vaší spravované domény. Uživatelé se možná nebudou moct přihlásit, protože změny hesla se nesynchronizují do spravované domény.
+* Na tento port na IP adresy, které patří do rozsah adres IP adres Azure můžete omezit příchozí přístup. Všimněte si, že rozsah adres IP adres Azure je jiný rozsah než je rozsah prostředí PowerShell je znázorněno v následující pravidlo.
 
 **Port 5986 (Vzdálená komunikace prostředí PowerShell)**
-* Slouží k provádění úloh správy pomocí vzdálenou komunikaci prostředí PowerShell na vaší spravované domény.
-* Je nutné povolit přístup pomocí tohoto portu ve vaší skupině. Bez přístupu na tento port vaší spravované domény nemůže být aktualizované, nakonfigurované, zálohované nebo monitorovaných.
-* Pro nové domény nebo domény k virtuální síti ARM, můžete omezit příchozí přístup na tento port pro následující zdrojové IP adresy: 52.180.179.108, 52.180.177.87, 13.75.105.168, 52.175.18.134, 52.138.68.41, 52.138.65.157, 104.41.159.212, 104.45.138.161 52.169.125.119, 52.169.218.0, 52.187.19.1, 52.187.120.237, 13.78.172.246, 52.161.110.169, 52.174.189.149, 40.68.160.142, 40.83.144.56, 13.64.151.161, 52.180.183.67, 52.180.181.39, 52.175.28.111, 52.175.16.141, 52.138.70.93, 52.138.64.115, 40.80.146.22, 40.121.211.60, 52.138.143.173, 52.169.87.10, 13.76.171.84, 52.187.169.156, 13.78.174.255, 13.78.191.178, 40.68.163.143, 23.100.14.28, 13.64.188.43, 23.99.93.197
-* U domén s klasickou virtuální síť, můžete omezit příchozí přístup na tento port pro následující zdrojové IP adresy: 52.180.183.8, 23.101.0.70, 52.225.184.198, 52.179.126.223, 13.74.249.156, 52.187.117.83, 52.161.13.95, 104.40.156.18, 104.40.87.209, 52.180.179.108, 52.175.18.134, 52.138.68.41, 104.41.159.212, 52.169.218.0, 52.187.120.237, 52.161.110.169, 52.174.189.149, 13.64.151.161
-* Řadiče domény pro vaší spravované domény Nenaslouchat obvykle na tento port. Služba otevře tento port na spravovaných řadičích domény se jenom v případě, že operace údržby nebo správy je nutné provést pro spravovanou doménu. Při dokončení operace vypne službu tento port na spravovaných řadičích domény.
+* Používá se k provádění úloh správy ve vaší spravované doméně pomocí vzdálené komunikace Powershellu.
+* Je nutné povolit přístup přes tento port v NSG. Bez přístupu na tento port nemůže být vaší spravované domény aktualizované, nakonfigurované, zálohovaná nebo monitorované.
+* Pro nové domény nebo domény s virtuální sítí Azure Resource Manageru, můžete omezit příchozí přístup na tento port pro následující zdrojové IP adresy: 52.180.179.108 52.180.177.87, 13.75.105.168, 52.175.18.134, 52.138.68.41, 52.138.65.157, 104.41.159.212 104.45.138.161, 52.169.125.119, 52.169.218.0, 52.187.19.1, 52.187.120.237, 13.78.172.246, 52.161.110.169, 52.174.189.149, 40.68.160.142, 40.83.144.56, 13.64.151.161, 52.180.183.67, 52.180.181.39, 52.175.28.111, 52.175.16.141 , 52.138.70.93 52.138.64.115, 40.80.146.22, 40.121.211.60, 52.138.143.173, 52.169.87.10, 13.76.171.84, 52.187.169.156, 13.78.174.255, 13.78.191.178, 40.68.163.143, 23.100.14.28, 13.64.188.43, 23.99.93.197
+* U domén s klasickou virtuální síť, můžete omezit příchozí přístup na tento port pro následující zdrojové IP adresy: 52.180.183.8 23.101.0.70, 52.225.184.198, 52.179.126.223, 13.74.249.156, 52.187.117.83, 52.161.13.95, 104.40.156.18, 104.40.87.209
+* Řadiče domény vaší spravované domény obvykle Nenaslouchat na tomto portu. Služba otevře tento port na spravovaných řadičích domény se pouze v případě, že operace správy nebo údržby je třeba provést pro spravovanou doménu. Co nejdříve po dokončení této operace ukončení služby tento port spravovaných řadičích domény.
 
 **Port 3389 (Vzdálená plocha)**
 * Používá se pro připojení ke vzdálené ploše na řadiče domény vaší spravované domény.
-* Příchozí přístup můžete omezit na následující zdrojové IP adresy: 207.68.190.32/27, 13.106.78.32/27, 13.106.174.32/27, 13.106.4.96/27
-* Tento port je také zůstane na vaší spravované domény z velké části vypnuty. Tento mechanismus není průběžně použít, protože pro správu a sledování úkolů se provádí pomocí vzdálenou komunikaci prostředí PowerShell. Tento port se používá pouze v výjimečná událost, která Microsoft potřebuje vzdáleně připojit k vaší spravované domény pro pokročilé řešení problémů. Port je zavřený, při řešení potíží operace se dokončila.
+* Můžete omezit příchozí přístup pro následující zdrojové IP adresy: 207.68.190.32/27 13.106.78.32/27, 13.106.174.32/27, 13.106.4.96/27
+* Tento port taky zůstane ve vaší spravované doméně do značné míry vypnuté. Tento mechanismus není průběžně použít, protože správa a monitorování úloh se provádějí pomocí vzdálené komunikace Powershellu. Tento port se používá jenom v výjimečná událost, kterou je potřeba Microsoft vzdálené připojení k vaší spravované domény pro řešení potíží pro pokročilé. Port je zavřen, co nejdříve po dokončení operace odstraňování potíží.
 
-**Port 636 zabezpečený LDAP)**
-* Slouží k povolení zabezpečeného přístupu LDAP k vaší spravované domény přes internet.
-* Otevírání tohoto portu prostřednictvím vaší NSG je volitelný. Otevřete port pouze v případě, že máte zabezpečený LDAP přístup přes internet povoleno.
-* Příchozí přístup můžete omezit na tento port na zdrojové IP adresy, ze kterých plánujete připojit přes zabezpečený LDAP.
-
-**Odchozí přístup** služby AAD Domain Services potřebuje odchozí přístup k různým jiných služeb systému Azure, aby bylo možné spravovat, zálohování a monitorování vaší spravované domény. Neblokují odchozí přístup z vyhrazených podsítě, ve kterém je povolená vaší spravované domény.
+**Port 636 (LDAPS)**
+* Se používá k povolení přístupu k vaší spravované domény secure LDAP přes internet.
+* Otevření prostřednictvím skupina NSG na tento port je volitelné. Otevřete port pouze v případě, že máte přístup protokolu secure LDAP přes internet povolena.
+* Příchozí přístup můžete omezit na tento port na zdrojové IP adresy, ze kterých plánujete připojit přes protokol secure LDAP.
 
 
 ## <a name="network-security-groups"></a>Network Security Groups (Skupiny zabezpečení sítě)
-A [skupina zabezpečení sítě (NSG)](../virtual-network/security-overview.md) obsahuje seznam pravidel seznamu řízení přístupu (ACL), která povolují nebo odpírají síťový provoz instancím virtuálních počítačů ve virtuální síti. Skupiny NSG můžou být přidružené buď k podsítím, nebo k jednotlivým instancím virtuálních počítačů v této podsíti. Pokud je skupina zabezpečení sítě přidružená k podsíti, pravidla seznamu ACL platí pro všechny instance virtuálních počítačů v této podsíti. Kromě toho je možné omezit provoz do konkrétního virtuálního počítače další tím, že přidružíte skupinu NSG přímo do tohoto virtuálního počítače.
+A [skupina zabezpečení sítě (NSG)](../virtual-network/virtual-networks-nsg.md) obsahuje seznam pravidel seznamu řízení přístupu (ACL), která povolují nebo odpírají síťový provoz do vašich instancí virtuálních počítačů ve virtuální síti. Skupiny NSG můžou být přidružené buď k podsítím, nebo k jednotlivým instancím virtuálních počítačů v této podsíti. Pokud je skupina zabezpečení sítě přidružená k podsíti, pravidla seznamu ACL platí pro všechny instance virtuálních počítačů v této podsíti. Kromě toho provoz do konkrétního virtuálního počítače je možné omezit další tím, že přidružíte skupinu NSG přímo k tomuto virtuálnímu počítači.
 
-### <a name="sample-nsg-for-virtual-networks-with-azure-ad-domain-services"></a>Ukázka NSG pro virtuální sítě s Azure AD Domain Services
-Následující tabulka znázorňuje ukázku NSG můžete nakonfigurovat pro virtuální síť s spravované doméně služby Azure AD Domain Services. Toto pravidlo umožňuje příchozí provoz přes požadované porty pro zajištění vaší spravované domény zůstane opravit, aktualizovat a společnost Microsoft se dá sledovat. Výchozí pravidlo, DenyAll, platí pro všechny ostatní příchozí přenosy z Internetu.
+### <a name="sample-nsg-for-virtual-networks-with-azure-ad-domain-services"></a>Ukázková skupina zabezpečení sítě pro virtuální sítě pomocí Azure AD Domain Services
+Následující tabulka uvádí ukázku skupiny zabezpečení sítě můžete nakonfigurovat pro virtuální síť s spravované domény služby Azure AD Domain Services. Toto pravidlo umožňuje příchozí provoz přes požadované porty, aby vaše spravovaná doména zůstanou opravit, aktualizovat a je možné monitorovat společností Microsoft. Výchozí pravidlo "DenyAll" platí pro všechny další příchozí provoz z Internetu.
 
-Kromě toho NSG také ukazuje, jak zamknout zabezpečený LDAP přístup přes internet. Přeskočte toto pravidlo, pokud jste nepovolili zabezpečený LDAP přístup k vaší spravované domény přes internet. NSG obsahuje sadu pravidel, která povolí příchozí LDAPS přístup přes port TCP 636 pouze ze zadané sady IP adres. Pravidla NSG pro povolení LDAPS přístupu přes internet ze zadaných IP adres má vyšší prioritu než skupina NSG DenyAll pravidlo.
+Kromě toho NSG také ukazuje, jak uzamknout protokolu Secure LDAP přes internet. Toto pravidlo přeskočte, pokud jste ještě nepovolili přístup protokolu secure LDAP k vaší spravované doméně přes internet. Skupiny zabezpečení sítě obsahuje sadu pravidel, které umožňují přístup protokolu LDAPS pro příchozí připojení přes port TCP 636 pouze ze zadaných IP adres. Pravidla NSG pro povolení protokolu LDAPS přístup přes internet ze zadaných IP adres má vyšší prioritu než pravidla DenyAll NSG.
 
-![Ukázka skupiny NSG k zabezpečení přístupu k LDAPS přes internet](.\media\active-directory-domain-services-alerts\default-nsg.png)
+![Ukázka skupiny NSG k zabezpečení přístupu k protokolu LDAPS přes internet](.\media\active-directory-domain-services-alerts\default-nsg.png)
 
-**Další informace** - [vytvořit skupinu zabezpečení sítě](../virtual-network/manage-network-security-group.md).
+**Další informace o** - [vytvořte skupinu zabezpečení sítě](../virtual-network/manage-network-security-group.md).
 
 
 ## <a name="network-connectivity"></a>Připojení k síti
-Spravované doméně služby Azure AD Domain Services lze povolit pouze v rámci jedné virtuální sítě v Azure.
+Spravované domény služby Azure AD Domain Services je možné povolit jenom v rámci jedné virtuální sítě v Azure.
 
-### <a name="scenarios-for-connecting-azure-networks"></a>Scénáře pro připojení sítě Azure
-Připojte virtuální sítě Azure používat spravované doméně v některém z těchto scénářích nasazení:
+### <a name="scenarios-for-connecting-azure-networks"></a>Scénáře pro propojení sítí Azure
+Připojení virtuální sítě Azure používat spravovanou doménu v některém z těchto scénářích nasazení:
 
-#### <a name="use-the-managed-domain-in-more-than-one-azure-virtual-network"></a>Používat spravované domény ve více než jednu virtuální síť Azure
-Další virtuální sítě Azure můžete připojit k virtuální síti Azure, ve kterém jste povolili službu Azure AD Domain Services. Toto připojení VPN/VNet partnerského vztahu můžete spravované doméně pomocí úlohy nasazené v jiných virtuálních sítí.
+#### <a name="use-the-managed-domain-in-more-than-one-azure-virtual-network"></a>Používat spravovanou doménu ve více než jednu virtuální síť Azure
+Jiným virtuálním sítím Azure můžete připojit k virtuální síti Azure, ve kterém jste povolili službu Azure AD Domain Services. Toto připojení s partnerským vztahem VPN/virtuální síť umožňuje používat spravovanou doménu pomocí úlohy nasazení v jiné virtuální sítě.
 
 ![Připojení klasické virtuální sítě](./media/active-directory-domain-services-design-guide/classic-vnet-connectivity.png)
 
-#### <a name="use-the-managed-domain-in-a-resource-manager-based-virtual-network"></a>Používat spravované domény ve virtuální síti na základě Resource Manager
-Virtuální síť využívající Resource Manager můžete připojit k Azure klasickou virtuální síť, ve kterém jste povolili službu Azure AD Domain Services. Toto připojení umožňuje spravované doméně pomocí úlohy nasazené ve virtuální síti na základě Resource Manager.
+#### <a name="use-the-managed-domain-in-a-resource-manager-based-virtual-network"></a>Používat spravovanou doménu ve virtuální síti bázi Resource Manageru
+Virtuální sítě založené na Resource Manageru můžete připojit k Azure klasická virtuální síť, ve kterém jste povolili službu Azure AD Domain Services. Toto připojení umožňuje používat spravovanou doménu pomocí vašich úloh nasazených ve virtuální síti bázi Resource Manageru.
 
-![Správce prostředků klasickou virtuální síť připojení](./media/active-directory-domain-services-design-guide/classic-arm-vnet-connectivity.png)
+![Připojení klasické virtuální sítě Resource Manageru](./media/active-directory-domain-services-design-guide/classic-arm-vnet-connectivity.png)
 
 ### <a name="network-connection-options"></a>Možnosti připojení sítě
-* **Připojení VNet-to-VNet pomocí virtuální sítě, partnerský vztah**: partnerský vztah virtuální sítě je mechanismus, který se připojuje prostřednictvím Azure páteřní síti dvou virtuálních sítí ve stejné oblasti. Po navázání partnerského vztahu se tyto dvě virtuální sítě pro všechny účely připojení jeví jako jedna síť. Jsou i nadále spravovány jako samostatné prostředky, ale virtuální počítače v těchto virtuálních sítích spolu mohou komunikovat přímo pomocí privátních IP adres.
+* **Připojení VNet-to-VNet pomocí virtuální sítě partnerských vztahů**: partnerské vztahy virtuálních sítí je mechanismus, který spojuje dvě virtuální sítě ve stejné oblasti prostřednictvím páteřní sítě Azure. Po navázání partnerského vztahu se tyto dvě virtuální sítě pro všechny účely připojení jeví jako jedna síť. Jsou i nadále spravovány jako samostatné prostředky, ale virtuální počítače v těchto virtuálních sítích spolu mohou komunikovat přímo pomocí privátních IP adres.
 
     ![Připojení k virtuální síti pomocí partnerského vztahu](./media/active-directory-domain-services-design-guide/vnet-peering.png)
 
-    [Další informace - virtuální sítě partnerského vztahu](../virtual-network/virtual-network-peering-overview.md)
+    [Další informace – virtuální síť vytvoření partnerského vztahu](../virtual-network/virtual-network-peering-overview.md)
 
-* **Připojení VNet-to-VNet pomocí připojení site-to-site VPN**: propojení virtuální sítě s jinou virtuální sítí (VNet-to-VNet) je podobné propojení virtuální sítě do umístění místního webu. Oba typy připojení využívají bránu VPN k poskytnutí zabezpečeného tunelového propojení prostřednictvím protokolu IPsec/IKE.
+* **Připojení VNet-to-VNet pomocí připojení site-to-site VPN**: propojení virtuální sítě s jinou virtuální sítí (VNet-to-VNet) je podobné propojení virtuální sítě s místním serverem. Oba typy připojení využívají bránu VPN k poskytnutí zabezpečeného tunelového propojení prostřednictvím protokolu IPsec/IKE.
 
-    ![Připojení k virtuální síti s použitím brány VPN](./media/active-directory-domain-services-design-guide/vnet-connection-vpn-gateway.jpg)
+    ![Připojení k virtuální síti pomocí sítě VPN Gateway](./media/active-directory-domain-services-design-guide/vnet-connection-vpn-gateway.jpg)
 
-    [Další informace - připojení virtuální sítě pomocí brány sítě VPN](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)
+    [Další informace – propojení virtuálních sítí pomocí VPN gateway](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)
 
 <br>
 
 ## <a name="related-content"></a>Související obsah
-* [Partnerský vztah virtuální síť Azure](../virtual-network/virtual-network-peering-overview.md)
-* [Nakonfigurujte připojení VNet-to-VNet pro model nasazení classic](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)
+* [Partnerský vztah virtuální sítě Azure](../virtual-network/virtual-network-peering-overview.md)
+* [Konfigurace připojení typu VNet-to-VNet pro model nasazení classic](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)
 * [Skupiny zabezpečení sítě Azure](../virtual-network/security-overview.md)
-* [Vytvořit skupinu zabezpečení sítě](../virtual-network/manage-network-security-group.md)
+* [Vytvořte skupinu zabezpečení sítě](../virtual-network/manage-network-security-group.md)

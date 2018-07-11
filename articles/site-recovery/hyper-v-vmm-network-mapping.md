@@ -1,83 +1,83 @@
 ---
-title: O mapování sítě pro replikaci virtuálního počítače technologie Hyper-V (s VMM) do Azure pomocí Site Recovery | Microsoft Docs
-description: Popisuje, jak nastavit mapování sítě pro replikaci virtuálních počítačů technologie Hyper-V spravované v cloudech VMM s Azure Site Recovery.
+title: Informace o mapování sítí pro replikaci virtuálních počítačů Hyper-V (s VMM) do Azure pomocí Site Recovery | Dokumentace Microsoftu
+description: Popisuje, jak nastavit mapování sítě pro replikaci virtuálních počítačů Hyper-V spravované v cloudech VMM pomocí Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/02/2018
+ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: fa596bf4941ac791fa1bc697399a4591d97ba68f
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 35a2fe2373ccbf24c73cd63c096145da19dc6c4c
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34076362"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37921250"
 ---
 # <a name="prepare-network-mapping-for-hyper-v-vm-replication-to-azure"></a>Příprava mapování sítí pro replikaci virtuálních počítačů Hyper-V do Azure
 
 
-Tento článek vám pomůže pochopit a připravit mapování sítě při replikaci virtuálních počítačů technologie Hyper-V v cloudech System Center Virtual Machine Manager (VMM) do Azure nebo do sekundární lokality pomocí [Azure Site Recovery](site-recovery-overview.md) služby.
+Tento článek vám pomůže pochopit a příprava na mapování sítě při replikaci virtuálních počítačů Hyper-V v cloudech System Center Virtual Machine Manager (VMM) do Azure nebo do sekundární lokality, pomocí [Azure Site Recovery](site-recovery-overview.md) služby.
 
 
-## <a name="prepare-network-mapping-for-replication-to-azure"></a>Příprava mapování sítě pro replikaci do Azure.
+## <a name="prepare-network-mapping-for-replication-to-azure"></a>Příprava mapování sítí pro replikaci do Azure
 
-Když při replikaci do Azure, sítě mapování mapuje sítě virtuálních počítačů na zdrojovém serveru VMM a cílových virtuálních sítí Azure. Mapování provede následující akce:
-    -  **Síťové připojení**– zajišťuje, že replikované virtuální počítače Azure jsou připojené k namapované síti. Všechny počítače, které převzetí služeb při selhání ve stejné síti může připojit k sobě navzájem i v případě, že při selhání v plánech různých obnovení.
-    - **Brána sítě**– Pokud v cílové síti Azure nastavená brána sítě, virtuální počítače připojit k jiné místní virtuální počítače.
+Pokud provádíte replikaci do Azure, sítě mapování mapuje sítě virtuálních počítačů na zdrojovém serveru VMM a cílové virtuální sítě Azure. Mapování provede následující akce:
+    -  **Připojení k síti**– zajišťuje, že replikované virtuální počítače Azure jsou připojené k namapované síti. Všechny počítače, které převzetí služeb při selhání ve stejné síti můžete připojit k sobě navzájem i v případě selhání v plánech obnovení jinou.
+    - **Brána sítě**– Pokud je v cílové síti Azure nastavená síťová brána, virtuální počítače můžete připojit k jiným místním virtuálním počítačům.
 
 Mapování sítě funguje takto:
 
-- Namapujete zdrojové síti virtuálních počítačů nástroje VMM na virtuální síť Azure.
-- Po převzetí služeb při selhání virtuálních počítačů Azure ve zdroji sítě se připojí k namapované cílové virtuální síti.
-- Nové virtuální počítače přidat do zdrojové síti virtuálních počítačů jsou připojené k namapované síti Azure, když dojde k replikaci.
+- Ke službě Azure virtual network namapujete zdrojové síti virtuálních počítačů ve VMM.
+- Po převzetí služeb při selhání virtuálních počítačů Azure ve zdrojové síti připojí pro mapovanou cílovou virtuální sítí.
+- Nové virtuální počítače, které jsou přidány do zdrojové síti virtuálních počítačů jsou připojené k namapované síti Azure, když dojde k replikaci.
 - Pokud má cílová síť více podsítí a jedna z těchto podsítí má stejný název jako podsíť, ve které je umístěný zdrojový virtuální počítač, pak se virtuální počítač repliky po převzetí služeb při selhání připojí k této cílové podsíti.
 - Pokud neexistuje žádná cílová podsíť s odpovídajícím názvem, připojí se virtuální počítač k první podsíti v síti.
 
-## <a name="prepare-network-mapping-for-replication-to-a-secondary-site"></a>Příprava mapování sítě pro replikaci do sekundární lokality
+## <a name="prepare-network-mapping-for-replication-to-a-secondary-site"></a>Příprava mapování sítí pro replikaci do sekundární lokality
 
-Pokud replikujete do sekundární lokality, mapování sítě zajišťuje mapování mezi sítěmi virtuálních počítačů na zdrojovém serveru VMM a sítě virtuálních počítačů na cílovém serveru VMM. Mapování provede následující akce:
+Při replikaci do sekundární lokality, mapování sítě zajišťuje mapování mezi sítěmi virtuálních počítačů na zdrojovém serveru VMM a sítí virtuálních počítačů na cílovém serveru VMM. Mapování provede následující akce:
 
-- **Síťové připojení**– připojí virtuální počítače na odpovídající sítě po převzetí služeb při selhání. Virtuální počítač repliky se připojí k cílové síti, který je namapovaný na zdrojovou síť.
-- **Optimální umístění virtuálních počítačů**– optimálně umístí virtuální počítače replik na hostitelských serverech technologie Hyper-V. Virtuální počítače repliky jsou umístěny na hostitelích, kteří mohou přistupovat k namapovanou síť virtuálních počítačů.
+- **Připojení k síti**– připojí virtuální počítače k příslušným sítím po převzetí služeb při selhání. Virtuální počítač repliky se připojí k cílové síti, která se mapuje na zdrojové síti.
+- **Optimální umístění virtuálního počítače**– virtuální počítače replik optimálně umístí na hostitelské servery technologie Hyper-V. Replikované virtuální počítače jsou umístěny na hostitelích, kteří mohou přistupovat k namapovanou síť virtuálních počítačů.
 - **Žádné mapování sítě**– Pokud nenakonfigurujete mapování sítě, virtuální počítače replik se nepřipojí k žádné síti virtuálních počítačů po převzetí služeb při selhání.
 
 Mapování sítě funguje takto:
 
-- Mapování sítě můžete nakonfigurovat sítě virtuálních počítačů na dvěma servery VMM nebo na jednom serveru VMM, pokud dvě lokality jsou spravovány stejném serveru.
-- Při mapování správně nakonfigurovaná a je povolená replikace, virtuální počítač v primární lokalitě se připojí k síti a jeho repliky v cílovém umístění, budou připojené k jeho namapované síťové.
-- Když vyberete cílovou síť virtuálních počítačů během mapování sítě v Site Recovery, cloudy VMM zdroje, které používají zdrojové síti virtuálních počítačů se zobrazí, společně s sítí dostupných cílových virtuálních počítačů v cílové cloudech, které se používají pro ochranu.
-- Pokud má cílová síť více podsítí a jedna z těchto podsítí má stejný název jako podsíť, na kterém se nachází zdrojový virtuální počítač, pak repliku virtuálního počítače se připojí k této cílové podsíti po převzetí služeb při selhání. Pokud není žádná cílová podsíť s odpovídajícím názvem, virtuální počítač se připojí k první podsíti v síti.
+- Je možné nakonfigurovat mapování sítě mezi sítěmi virtuálních počítačů na dva servery VMM nebo na jeden server VMM, pokud dvě lokality spravuje stejný server.
+- Při mapování je správně nakonfigurovaná a je povolená replikace virtuálního počítače v primární lokalitě se připojí k síti a její repliky v cílovém umístění budou připojeny k její namapované síťové.
+- Když vyberete cílovou síť virtuálních počítačů během mapování sítě v Site Recovery, cloudy VMM zdroje, které používají zdrojové síti virtuálních počítačů se zobrazí, spolu s dostupné cílové sítě virtuálních počítačů v cílové cloudech, které se používají pro ochranu.
+- Pokud má cílová síť více podsítí a jedna z těchto podsítí má stejný název jako podsíť, ve které je umístěný zdrojový virtuální počítač, pak virtuální počítač repliky se připojí k této cílové podsíti po převzetí služeb při selhání. Pokud neexistuje žádná cílová podsíť s odpovídajícím názvem, připojí se k první podsíti v síti virtuálního počítače.
 
 ## <a name="example"></a>Příklad:
 
-Tady je příklad pro ilustraci tento mechanismus. Podívejme se na organizaci s dvěma umístěními v New Yorku a Chicagu.
+Tady je příklad pro ilustraci tohoto mechanismu. Pojďme se na organizaci s dvěma umístěními v Brno a Ostrava.
 
 **Umístění** | **Server VMM** | **Sítě virtuálních počítačů** | **Mapovat na**
 ---|---|---|---
-New York | VMM NewYork| VMNetwork1 NewYork | Mapovat do Chicaga VMNetwork1
- |  | VMNetwork2 NewYork | Není mapováno
-Chicago | VMM Chicago| VMNetwork1 Chicago | Mapovat na VMNetwork1 NewYork
- | | VMNetwork2 Chicago | Není mapováno
+New York | Nástroj VMM NewYork| VMNetwork1 NewYork | Mapovat na VMNetwork1 Chicago
+ |  | VMNetwork2 NewYork | Nemapováno
+Chicago | VMM – Praha| VMNetwork1 Chicago | Mapovat na VMNetwork1 NewYork
+ | | VMNetwork2 Chicago | Nemapováno
 
 V tomto příkladu:
 
-- Pokud repliku, kterou virtuální počítač je vytvořen pro všechny virtuální počítač, který je připojen k VMNetwork1 NewYork, bude připojen k VMNetwork1 Chicagu.
-- Pokud repliku, kterou virtuální počítač je vytvořen pro VMNetwork2 NewYork nebo VMNetwork2 Chicagu, nebude připojen k žádné síti.
+- Pokud replika, kterou virtuální počítač se vytvoří pro jakýkoli virtuální počítač, který je připojený k VMNetwork1 NewYork, budou připojeny k VMNetwork1 Chicagu.
+- Pokud replika, kterou virtuální počítač se vytvoří pro VMNetwork2 NewYork nebo VMNetwork2 Chicago, nebude připojen k žádné síti.
 
-Zde je, jak jsou cloudy VMM nastavit v našem příkladu organizace a logické sítě přidružené ke cloudům.
+Zde je, jak jsou nastavené cloudy VMM v naší ukázkové společnosti a logické sítě přidružené ke cloudům.
 
 ### <a name="cloud-protection-settings"></a>Nastavení ochrany cloudu
 
-**Chráněném cloudu** | **Ochrana cloudu** | **Logické sítě (New Yorku)**  
+**Chráněnému cloudu** | **Ochrana cloudu** | **Logická síť (New York)**  
 ---|---|---
 GoldCloud1 | GoldCloud2 |
 SilverCloud1| SilverCloud2 |
 GoldCloud2 | <p>Není k dispozici</p><p></p> | <p>LogicalNetwork1 NewYork</p><p>LogicalNetwork1 Chicago</p>
 SilverCloud2 | <p>Není k dispozici</p><p></p> | <p>LogicalNetwork1 NewYork</p><p>LogicalNetwork1 Chicago</p>
 
-### <a name="logical-and-vm-network-settings"></a>Nastavení sítě logické a virtuální počítač
+### <a name="logical-and-vm-network-settings"></a>Nastavení logické a VM sítě
 
 **Umístění** | **Logické sítě** | **Přidružené sítě virtuálních počítačů**
 ---|---|---
@@ -87,41 +87,41 @@ Chicago | LogicalNetwork1 Chicago | VMNetwork1 Chicago
 
 ### <a name="target-network-settings"></a>Nastavení cílové sítě
 
-Na základě tohoto nastavení, když vyberete Cílová síť virtuálních počítačů, v následující tabulce jsou možnosti, které budou k dispozici.
+Na základě tohoto nastavení, když vyberete Cílová síť virtuálních počítačů, v následující tabulce jsou uvedeny volby, které bude k dispozici.
 
-**Výběr** | **Chráněném cloudu** | **Ochrana cloudu** | **Cílová síť k dispozici**
+**Výběr** | **Chráněnému cloudu** | **Ochrana cloudu** | **Cílová síť k dispozici**
 ---|---|---|---
-VMNetwork1 Chicago | SilverCloud1 | SilverCloud2 | Dostupné
- | GoldCloud1 | GoldCloud2 | Dostupné
-VMNetwork2 Chicago | SilverCloud1 | SilverCloud2 | Není k dispozici
- | GoldCloud1 | GoldCloud2 | Dostupné
+VMNetwork1 Chicago | SilverCloud1 | SilverCloud2 | K dispozici.
+ | GoldCloud1 | GoldCloud2 | K dispozici.
+VMNetwork2 Chicago | SilverCloud1 | SilverCloud2 | Není k dispozici.
+ | GoldCloud1 | GoldCloud2 | K dispozici.
 
 
-Pokud má cílová síť více podsítí a jedna z těchto podsítí má stejný název jako podsíť, na kterém se nachází zdrojový virtuální počítač, pak virtuální počítač repliky se připojí k této cílové podsíti po převzetí služeb při selhání. Pokud neexistuje žádná cílová podsíť s odpovídajícím názvem, připojí se virtuální počítač k první podsíti v síti.
+Pokud má cílová síť více podsítí a jedna z těchto podsítí má stejný název jako podsíť, ve které je umístěný zdrojový virtuální počítač, pak virtuální počítač repliky se připojí k této cílové podsíti po převzetí služeb při selhání. Pokud neexistuje žádná cílová podsíť s odpovídajícím názvem, připojí se virtuální počítač k první podsíti v síti.
 
 
 ### <a name="failback-behavior"></a>Chování navrácení služeb po obnovení
 
-Pokud chcete zobrazit, co se stane, že v případě navrácení služeb po obnovení (zpětná replikace), Předpokládejme, že VMNetwork1 NewYork je namapována na VMNetwork1-Chicagu s následujícím nastavením.
+Pokud chcete zobrazit, co se stane v případě navrácení služeb po obnovení (zpětná replikace), Předpokládejme, že VMNetwork1 NewYork je namapována na VMNetwork1 Chicagu, s následujícími nastaveními.
 
 
 **VIRTUÁLNÍ POČÍTAČ** | **Připojení k síti virtuálních počítačů**
 ---|---
 VM1 | VMNetwork1 sítě
-Virtuálního počítače 2 (repliky VM1) | VMNetwork1 Chicago
+VM2 (repliky VM1) | VMNetwork1 Chicago
 
-S těmito nastaveními pojďme si shrnout, co se stane, že v několika možných scénářích.
+S těmito nastaveními Pojďme se podívat na co se děje v několika případech je to možné.
 
 **Scénář** | **Výsledek**
 ---|---
-Žádná změna v vlastnosti sítě virtuálních počítačů 2 po převzetí služeb při selhání. | Zůstane připojené ke zdrojové síti virtuálních počítačů 1.
-Vlastnosti sítě virtuálních počítačů 2 se změní po převzetí služeb při selhání a není připojen. | 1 virtuální počítač není připojen.
-Vlastnosti sítě virtuálních počítačů 2 se změní po převzetí služeb při selhání a je připojený k VMNetwork2 Chicagu. | Pokud není namapované VMNetwork2 Chicagu, bude odpojen virtuálních počítačů 1.
-Mapování sítě VMNetwork1 Chicagu se změní. | 1 virtuální počítač bude připojený k síti nyní mapováno na VMNetwork1 Chicagu.
+Žádné změny v okně Vlastnosti sítě virtuálních počítačů 2 po převzetí služeb při selhání. | Zůstává připojené ke zdrojové síti virtuálních počítačů 1.
+Vlastnosti sítě virtuálních počítačů 2 se změní po převzetí služeb při selhání a je odpojený. | 1 virtuální počítač je odpojena.
+Vlastnosti sítě virtuálních počítačů 2 se změní po převzetí služeb při selhání a je připojen k VMNetwork2 Chicagu. | Pokud není namapována VMNetwork2 Chicago, bude odpojen virtuálního počítače 1.
+Mapování sítě z Chicaga VMNetwork1 se změní. | 1 virtuální počítač se připojí k síti do Chicaga VMNetwork1 nyní namapována.
 
 
 
 ## <a name="next-steps"></a>Další postup
 
-- [Další informace o](hyper-v-vmm-networking.md) IP adresování po převzetí služeb při selhání pro sekundární lokalita VMM.
-- [Další informace o](concepts-on-premises-to-azure-networking.md) IP adresování po převzetí služeb při selhání do Azure.
+- [Další informace o](hyper-v-vmm-networking.md) přidělování IP adres po převzetí služeb při selhání do sekundární lokality VMM.
+- [Další informace o](concepts-on-premises-to-azure-networking.md) přidělování IP adres po převzetí služeb při selhání do Azure.

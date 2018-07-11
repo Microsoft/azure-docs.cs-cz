@@ -9,46 +9,46 @@ ms.topic: include
 ms.date: 06/10/2018
 ms.author: raynew
 ms.custom: include file
-ms.openlocfilehash: bc1beb53c5919914919e666ecf1836ec45d32ccf
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: f6053c4ef1fe9ce7cc3f06804822afa98055a645
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36319722"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37967572"
 ---
-**Požadavky na server nebo proces konfigurace**
+**Požadavky na Configuration/Process server**
 
 **Komponenta** | **Požadavek** 
 --- | ---
 **NASTAVENÍ HARDWARU** | 
 Procesorová jádra | 8 
 Paměť RAM | 16 GB
-Počet disků | 3, včetně disku operačního systému, proces disku mezipaměti serveru a jednotka pro uchování pro navrácení služeb po obnovení 
-Volné místo na disku (mezipaměti serveru procesu) | 600 GB
-Volné místo na disku (disku pro uchování) | 600 GB
+Počet disků | 3, včetně operačního systému disku, disk mezipaměti procesového serveru a jednotky pro uchovávání dat pro navrácení služeb po obnovení 
+Volného místa na disku (mezipaměť procesového serveru) | 600 GB
+Volné místo na disku (disk pro uchování) | 600 GB
  | 
 **NASTAVENÍ SOFTWARU** | 
 Operační systém | Windows Server 2012 R2 <br> Windows Server 2016
 Národní prostředí operačního systému | Angličtina (en-us)
-Role Windows Serveru | Nepovolíte tyto role: <br> – Active Directory Domain Services <br>– Internet Information Service <br> – Hyper-V 
-Zásady skupiny | Nemáte povolit tyto zásady skupiny: <br> -Zabránit přístupu do příkazového řádku. <br> -Znemožnit přístup k registru nástroje pro úpravy. <br> -Důvěřujete logiku pro přílohy souborů. <br> -Zapněte provádění skriptu. <br> [Další informace](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
-IIS | -Žádné dříve existující výchozí web <br> -Žádná dříve existující web nebo aplikace naslouchá na portu 443 <br>-Aktivovat [anonymní ověřování](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> -Aktivovat [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) nastavení 
+Role Windows Serveru | Nepovolí pracovníci v těchto rolích: <br> – Active Directory Domain Services <br>– Internet Information Service <br> – Hyper-V 
+Zásady skupiny | Nepovolí tyto zásady skupiny: <br> -Zabránit přístupu do příkazového řádku. <br> -Zabránit přístupu k nástrojům pro úpravu registru. <br> – Logika důvěryhodnosti pro přiložené soubory. <br> -Zapnutí provádění skriptů. <br> [Další informace](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
+IIS | -Žádné dříve existující výchozí web <br> -Žádné stávající web/aplikace naslouchá na portu 443 <br>-Aktivovat [anonymní ověřování](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> -Aktivovat [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) nastavení 
 | 
 **NASTAVENÍ SÍTĚ** | 
 Typ IP adresy | Statická 
-Přístup k internetu | Server potřebuje přístup k tyto adresy URL (přímo nebo prostřednictvím proxy serveru) <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi (Pokud instalujete konfigurační server) <br> - time.nist.gov <br> - time.windows.com 
+Přístup k internetu | Server potřebuje přístup k těmto adresám URL (přímo nebo prostřednictvím proxy serveru) <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com  <br> - https://management.azure.com <br> -*. services.visualstudio.com <br> - time.nist.gov <br> - time.windows.com <br> OVF také potřebují přístup k následujícím adresám URL <br> - https://login.microsoftonline.com <br> - https://secure.aadcdn.microsoftonline-p.com <br> - https://login.live.com  <br> - https://auth.gfx.ms <br> - https://graph.windows.net <br> - https://login.windows.net <br> - https://www.live.com <br> - https://www.microsoft.com <br> - https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi 
 Porty | 443 (orchestrace řídicího kanálu)<br>9443 (přenos dat) 
-Typ síťový adaptér | VMXNET3 (Pokud se konfigurační Server je virtuální počítač VMware)
+Typ NIC | VMXNET3 (pokud jde o virtuální počítač VMware)
  | 
-**K INSTALACI SOFTWARU** | 
-VMware vSphere PowerCLI | [PowerCLI verze 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) by měly být nainstalovány, pokud se konfigurační Server běží na virtuální počítače VMware.
-MYSQL | MySQL by měly být nainstalovány. Můžete nainstalovat ručně nebo ji můžete nainstalovat Site Recovery.
+**SOFTWARE PRO INSTALACI** | 
+VMware vSphere PowerCLI. | [Nástroj PowerCLI verze 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) by měly být nainstalovány, pokud je konfigurační Server běží na virtuálním počítači VMware.
+MYSQL | Je třeba nainstalovat MySQL. Můžete nainstalovat ručně nebo ji můžete nainstalovat Site Recovery.
 
-**Změna velikosti požadavky konfigurace nebo procesového serveru**
+**Configuration/Process server velikosti požadavky**
 
-**CPU** | **Paměť** | **Diskové mezipaměti** | **Míry změny dat** | **Replikované počítače**
+**CPU** | **Paměť** | **Disk mezipaměti** | **Frekvence změny dat** | **Replikované počítače**
 --- | --- | --- | --- | ---
-8 Vcpu<br/><br/> 2 sockets * 4 jádra @ 2,5 GHz | 16GB | 300 GB | 500 GB nebo méně | < 100 počítače
-12 Vcpu<br/><br/> 2 socks * 6 jader @ 2,5 GHz | 18 GB | 600 GB | 500 GB - 1 TB | 100 až 150 počítačů
-16 Vcpu<br/><br/> 2 socks * 8 jader @ 2,5 GHz | 32 GB | 1 TB | 1 – 2 TB | 150 -200 počítačů
+8 virtuálních CPU<br/><br/> sokety 2 * 4 jádra @ 2,5 GHz | 16GB | 300 GB | 500 GB nebo méně | < 100 počítačů
+12 virtuálních procesorů<br/><br/> 2 socks * 6 jader @ 2,5 GHz | 18 GB | 600 GB | 500 GB AŽ 1 TB | 100 až 150 počítačů
+16 virtuálních procesorů<br/><br/> 2 socks * 8 jader @ 2,5 GHz | 32 GB | 1 TB | 1 – 2 TB | 150 -200 počítačů
 

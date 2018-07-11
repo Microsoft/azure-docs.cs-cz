@@ -1,84 +1,84 @@
 ---
-title: Opětovné ochrany převzetí služeb při selhání virtuálních počítačích Azure zpět na primární oblast Azure s Azure Site Recovery | Microsoft Docs
-description: Popisuje, jak znovu nastavte ochranu virtuálních počítačů Azure v sekundární oblasti, po převzetí služeb při selhání z primární oblasti, pomocí Azure Site Recovery.
+title: Operace opětovného zapnutí ochrany převzetí služeb při selhání virtuálních počítačů Azure zpět do primární oblasti Azure pomocí Azure Site Recovery | Dokumentace Microsoftu
+description: Popisuje, jak znovunastavení ochrany virtuálních počítačů Azure do sekundární oblasti po převzetí služeb při selhání z primární oblasti, pomocí Azure Site Recovery.
 services: site-recovery
 author: rajani-janaki-ram
 manager: gauravd
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/31/2018
+ms.date: 07/06/2018
 ms.author: rajanaki
-ms.openlocfilehash: 6a57226f81e626e620033750c58d5998d8e7e894
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 9759e209f15622d70aaa833a993234863ac1053c
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34716580"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37918862"
 ---
-# <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>Opětovné ochrany převzal virtuálních počítačích Azure primární oblasti
+# <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>Operace opětovného zapnutí ochrany převzetí služeb při selhání virtuálních počítačů Azure do primární oblasti
 
 
-Pokud jste [převzetí služeb při selhání](site-recovery-failover.md) virtuálních počítačích Azure z jedné oblasti na jiný pomocí [Azure Site Recovery](site-recovery-overview.md), spouštění virtuálních počítačů se v oblasti sekundární v nechráněném stavu. Pokud selhání zpět na primární oblasti virtuálních počítačů, je třeba provést následující akce:
+Pokud jste [převzetí služeb při selhání](site-recovery-failover.md) virtuálních počítačů Azure z jedné oblasti do druhé pomocí [Azure Site Recovery](site-recovery-overview.md), spouštění virtuálních počítačů v sekundární oblasti, ocitne v nechráněném stavu. Pokud se navrácení služeb po obnovení virtuálních počítačů do primární oblasti, je třeba provést následující kroky:
 
-- Znovu nastavte ochranu virtuálních počítačů v sekundární oblasti, tak, aby spuštění při replikaci na primární oblasti. 
-- Po dokončení vytvoření a jsou replikaci virtuálních počítačů, které můžete převzetí služeb při selhání je ze sekundární primární oblasti.
+- Znovunastavení ochrany virtuálních počítačů v sekundární oblasti, aby se začaly replikovat do primární oblasti. 
+- Po dokončení opětovného nastavování ochrany a replikaci virtuálních počítačů, můžete je převzít služby ze sekundární do primární oblasti.
 
 > [!WARNING]
-> Pokud jste [migrovat](migrate-overview.md#what-do-we-mean-by-migration) počítačů z primárního na sekundární oblasti přesunout virtuální počítač do jiné skupiny prostředků, nebo odstranit virtuální počítač Azure, nelze znovu nastavte ochranu virtuálního počítače, nebo ji návratu.
+> Pokud jste [migrovat](migrate-overview.md#what-do-we-mean-by-migration) počítače z primární do sekundární oblasti, virtuální počítač přesunout do jiné skupiny prostředků nebo odstranění virtuálního počítače Azure, a nemůžete znovunastavení ochrany virtuálního počítače nebo po obnovení navrátit.
 
 
 ## <a name="prerequisites"></a>Požadavky
-1. Virtuálních počítačů převzetí služeb při selhání z primárního na sekundární oblasti musí být potvrzeny.
-2. Primární cílovou lokalitu by měly být dostupné a nyní byste měli mít přístup k nebo vytvářet prostředky v této oblasti.
+1. Převzetí služeb virtuálního počítače z primární do sekundární oblasti musí být potvrzeny.
+2. Cílové primární lokalitě musí být k dispozici. proto byste měli mít přístup k nebo vytvářet prostředky v této oblasti.
 
-## <a name="reprotect-a-vm"></a>Znovu nastavte ochranu virtuálního počítače
+## <a name="reprotect-a-vm"></a>Znovunastavení ochrany virtuálního počítače
 
-1. V **trezoru** > **replikované položky**, klikněte pravým tlačítkem na neúspěšný přes virtuální počítač a vyberte **znovu nastavit ochranu**. Směr došlo by měl zobrazit z sekundární pro primární. 
+1. V **trezor** > **replikované položky**, klikněte pravým tlačítkem na neúspěšný selhání pro virtuální počítač a vyberte **znovu nastavit ochranu**. Směr opětovného nastavování ochrany by měly vykazovat ze sekundární do primární. 
 
-  ![Znovu nastavte ochranu](./media/site-recovery-how-to-reprotect-azure-to-azure/reprotect.png)
+  ![Operace opětovného zapnutí ochrany](./media/site-recovery-how-to-reprotect-azure-to-azure/reprotect.png)
 
-2. Zkontrolujte sady skupiny, sítě, úložiště a dostupnosti prostředků. Pak klikněte na **OK**. Pokud jsou všechny prostředky označené jako nové, jsou vytvořeny jako součást procesu vytvoření.
-3. Vytvoření úlohy doplňuje pro cílovou lokalitu s nejnovější data. Po dokončení, rozdílové replikace probíhá. Potom můžete převzít zpět do primární lokality. Můžete vybrat účet úložiště nebo síť, kterou chcete použít během znovu nastavte ochranu, pomocí možnosti přizpůsobit.
+2. Projděte si sady skupiny, sítě, úložiště a dostupnosti prostředků. Pak klikněte na **OK**. Pokud jsou všechny prostředky označené jako nové, jsou vytvořeny jako součást procesu opětovného nastavování ochrany.
+3. Úloha opětovného nastavování ochrany přidá do cílové lokality nejnovější data. Po dokončení, která se provádí rozdílová replikace. Potom můžete převzít služby zpět do primární lokality. Můžete vybrat účet úložiště nebo sítě, kterou chcete použít během znovu nastavit ochranu, pomocí možnosti přizpůsobit.
 
-  ![Přizpůsobení možnost](./media/site-recovery-how-to-reprotect-azure-to-azure/customize.png)
+  ![Možnost přizpůsobení](./media/site-recovery-how-to-reprotect-azure-to-azure/customize.png)
 
-### <a name="customize-reprotect-settings"></a>Upravit nastavení opětovné ochrany
+### <a name="customize-reprotect-settings"></a>Přizpůsobení nastavení zpětné replikace
 
-Následující vlastnosti cíle VMe můžete přizpůsobit během vytvoření.
+Můžete přizpůsobit následující vlastnosti cíle VMe během opětovného nastavování ochrany.
 
 ![Přizpůsobení](./media/site-recovery-how-to-reprotect-azure-to-azure/customizeblade.png)
 
 |Vlastnost |Poznámky  |
 |---------|---------|
-|Cílová skupina prostředků     | Upravte cílová skupina prostředků, ve kterém je virtuální počítač vytvořený. Jako součást nové provedení ochrany je odstraněn cílovém virtuálním počítači. Můžete novou skupinu prostředků, pod kterým chcete vytvořit virtuální počítač po převzetí služeb při selhání.        |
-|Cílová virtuální síť     | Cílová síť nelze změnit během úloh opětovné ochrany. Chcete-li změnit síť, znovu proveďte mapování sítě.         |
-|Cílové úložiště (sekundární virtuální počítač nepoužívá spravovaných disků)     | Můžete změnit účet úložiště, který používá virtuální počítač po převzetí služeb při selhání.         |
-|Repliky spravované disky (sekundární virtuální počítač používá spravovaných disků)    | Site Recovery vytvoří repliky spravované disky v primární oblasti pro zrcadlení sekundární virtuální počítač spravovaný disky.         | 
-|Úložiště mezipaměti     | Můžete zadat účet úložiště mezipaměti, který se používá během replikace. Ve výchozím nastavení je možné vytvořit nový účet úložiště mezipaměti, pokud neexistuje.         |
-|Skupina dostupnosti     |Pokud virtuální počítač v sekundární oblasti je součástí skupiny dostupnosti, můžete vybrat sadu dostupnosti pro cílový počítač v primární oblasti. Ve výchozím nastavení Site Recovery se pokusí vyhledat existující dostupnosti nastavena v primární oblasti a použít. Během přizpůsobení můžete určit nové sady dostupnosti.         |
+|Cílová skupina prostředků     | Upravte cílovou skupinu prostředků, ve kterém se vytvoří virtuální počítač. Jako součást opětovného nastavování ochrany, cílový virtuální počítač je odstraněný. Můžete zvolit novou skupinu prostředků, pod kterým chcete vytvořit virtuální počítač po převzetí služeb při selhání.        |
+|Cílová virtuální síť     | Cílová síť nelze změnit během úlohy opětovného zapnutí ochrany. Chcete-li změnit síť znovu mapování sítě.         |
+|Cílové úložiště (sekundární virtuální počítač nepoužívá spravované disky)     | Můžete změnit účet úložiště, který používá virtuální počítač po převzetí služeb při selhání.         |
+|Repliky spravovaných disků (sekundární virtuální počítač používá spravované disky)    | Site Recovery vytvoří v primární oblasti zrcadlící spravované disky sekundárního virtuálního počítače repliky spravovaných disků.         | 
+|Úložiště mezipaměti     | Můžete zadat účet úložiště mezipaměti, které se použijí při replikaci. Ve výchozím nastavení je možné vytvořit nový účet úložiště mezipaměti, pokud neexistuje.         |
+|Skupina dostupnosti     |Pokud virtuální počítač v sekundární oblasti je součástí skupiny dostupnosti, můžete sadu dostupnosti pro cílový virtuální počítač v primární oblasti. Ve výchozím nastavení Site Recovery se pokusí vyhledat existující dostupnosti v primární oblasti a použít ho. Během přizpůsobování můžete zadat novou skupinu dostupnosti.         |
 
 
-### <a name="what-happens-during-reprotection"></a>Co se stane při vytvoření?
+### <a name="what-happens-during-reprotection"></a>Co se stane během opětovného nastavování ochrany?
 
 Ve výchozím nastavení dojde k následujícímu:
 
 1. Účet úložiště mezipaměti se vytvoří v primární oblasti
-2. Pokud cílový účet úložiště (původní účet úložiště v primární oblasti) neexistuje, vytvoří se nový. Název účtu úložiště přiřazené je název účtu úložiště používat sekundární virtuální počítač, na konci "Automatické obnovení systému".
-3. Pokud virtuální počítač používá spravované disky, spravovat repliky disků jsou vytvořené v primární oblasti k ukládání dat replikovaných z disků sekundární virtuální počítač. 
-4. Pokud cílovou sadu dostupnosti neexistuje, vytvoří se nový jako součást úlohy opětovné ochrany v případě potřeby. Pokud jste upravili nastavení nové provedení ochrany, je použít vybrané sady.
+2. Pokud cílový účet úložiště (původního účtu úložiště v primární oblasti) neexistuje, vytvoří se nový. Název účtu úložiště přiřazené je název účtu úložiště používá sekundární virtuální počítač, příponu "Azure Site Recovery".
+3. Pokud se váš virtuální počítač používá spravované disky, repliky spravovaných disků se vytvoří v primární oblast pro ukládání dat replikovaných z disků sekundárního virtuálního počítače. 
+4. Pokud cílová skupina dostupnosti neexistuje, je vytvořen nový jako součást úlohy opětovného zapnutí ochrany v případě potřeby. Pokud jste upravili nastavení opětovného nastavování ochrany, použije se vybrané sady.
 
-Když spustíte opětovné ochrany úlohy a cílových virtuálních počítačů existuje, dojde k následující položky:
+Když spustíte úlohu znovunastavení ochrany a cílový virtuální počítač existuje, dojde k následující položky:
 
-1. Požadované součásti jsou vytvořené jako součást opětovné ochrany. Pokud již existují, jsou opakovaně využívány.
-2. Straně cíle, které se virtuální počítač vypnutý, pokud je spuštěná.
-3. Cílový disk virtuálního počítače straně se službou Site Recovery zkopíruje do kontejneru, jako objekt blob počáteční hodnoty.
-4. Straně cíle virtuálních počítačů se odstraní.
-5. Objekt blob počáteční hodnoty je používán aktuální zdroj straně (sekundární) virtuálních počítačů k replikaci. Tím se zajistí, že jsou replikovány pouze rozdíly.
-6. Hlavní změny mezi zdrojového disku a objektů blob počáteční hodnoty jsou synchronizovány. To může trvat delší dobu.
-7. Po dokončení úloh opětovné ochrany rozdílová replikace začne a vytvoří bod obnovení souladu zásady replikace.
-8. Po úspěšné opětovné ochrany úlohy virtuálního počítače zadá chráněném stavu.
+1. Požadované součásti jsou vytvořeny jako součást operace opětovného zapnutí ochrany. Pokud již existují, jsou opakovaně využívány.
+2. Straně cíle, které virtuální počítač je zapnutý vypnuto, pokud běží.
+3. Cílový disk virtuálního počítače na straně je službou Site Recovery zkopírován do kontejneru, jako objekt blob pro dosazení hodnot.
+4. Na cílové straně virtuálního počítače se pak odstraní.
+5. Používá aktuální zdroj objektu blob počáteční hodnoty na straně (sekundární) virtuálního počítače k replikaci. Tím se zajistí, že jsou replikovány pouze rozdíly.
+6. Hlavní změny mezi zdrojový disk a blob počáteční hodnoty jsou synchronizovány. To může trvat nějakou dobu.
+7. Po dokončení operace opětovného zapnutí ochrany úlohy rozdílové replikace začne a vytváří bod obnovení podle zásady replikace.
+8. Po znovunastavení ochrany úloha úspěšně dokončí, virtuální počítač přejde do chráněném stavu.
 
 ## <a name="next-steps"></a>Další postup
 
-Jakmile je chráněný virtuální počítač, můžete spustit převzetí služeb při selhání. Převzetí služeb při selhání vypne virtuální počítač v sekundární oblasti a vytvoří a spustí virtuální počítač v primární oblasti s výpadky malé. Doporučujeme, abyste odpovídajícím způsobem nastavit čas a spustit testovací převzetí služeb, ale inicializaci úplné převzetí služeb při selhání do primární lokality. [Další informace](site-recovery-failover.md) o převzetí služeb při selhání.
+Po aktivaci ochrany virtuálního počítače můžete spustit převzetí služeb při selhání. Převzetí služeb při vypnutí virtuálního počítače v sekundární oblasti a vytvoří a spustí virtuální počítač v primární oblasti s malý výpadek. Doporučujeme proto vyberte čas a spustit testovací převzetí služeb, ale inicializaci úplné převzetí služeb při selhání do primární lokality. [Další informace](site-recovery-failover.md) o převzetí služeb při selhání.
 

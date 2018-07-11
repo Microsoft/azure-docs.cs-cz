@@ -1,109 +1,121 @@
 ---
-title: Data v databázi Azure SQL zjišťování & klasifikace | Microsoft Docs
-description: Data v databázi Azure SQL zjišťování & klasifikace
+title: Azure SQL Database Data zjišťování a klasifikace | Dokumentace Microsoftu
+description: Azure SQL Database Data zjišťování a klasifikace
 services: sql-database
-author: giladm
+author: giladmit
 manager: craigg
 ms.reviewer: carlrab
 ms.service: sql-database
 ms.custom: security
 ms.topic: conceptual
-ms.date: 05/18/2018
+ms.date: 07/10/2018
 ms.author: giladm
-ms.openlocfilehash: 673286c8dc9ec688199fe80cf5a763f249192de5
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: cc093bebb4b3c39140d6fa5370a78d59168990fa
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34646775"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37950801"
 ---
-# <a name="azure-sql-database-data-discovery-and-classification"></a>Data v databázi Azure SQL zjišťování a klasifikace
-Data zjišťování a klasifikace (momentálně ve verzi preview) a poskytuje pokročilé možnosti integrovaný do databáze SQL Azure pro **zjišťování**, **klasifikace**, **označování**  &  **ochranu** citlivá data v databázích máte.
-Zjišťování a klasifikace nejcitlivější data (business, finanční, zdravotní péče, osobní údaje, atd.) můžete přehrát hrají roli v vzrůstem ochrany vaší organizace. Může sloužit jako infrastruktury pro:
-* Vám pomáhá s splnění standardů data o ochraně osobních údajů a dodržování legislativních požadavků.
-* Různé scénáře zabezpečení, jako jsou monitorování (auditování) a výstrah na neobvyklé přístup k citlivým datům.
-* Řízení přístupu k a posílení zabezpečení databáze, které obsahují vysoce důvěrné osobní údaje.
+# <a name="azure-sql-database-data-discovery-and-classification"></a>Azure SQL Database Data zjišťování a klasifikace
+Data zjišťování a klasifikace (aktuálně ve verzi preview) nabízí rozšířené možnosti, které jsou integrované do Azure SQL Database pro **zjišťování**, **klasifikace**, **označování**  &  **ochrana** citlivá data ve vašich databázích.
+Zjišťování a klasifikace vaše nejcitlivější data (business, finanční, zdravotní péče, identifikovatelné osobní údaje, atd.) můžete přehrát velmi důležitou roli v zásadní roli. ochrany vaší organizace. Může sloužit jako infrastruktura pro:
+* Pomáhá splnit požadavky na dodržování legislativních předpisů a data standardy ochrany osobních údajů.
+* Různé scénáře zabezpečení, jako je například monitorování (auditování) a upozorňuje na neobvyklé přístup k citlivým datům.
+* Řízení přístupu k a posílení zabezpečení databáze, které obsahují hodně citlivá data.
 
-Data zjišťování a klasifikaci je součástí [pokročilé ochrana před internetovými útoky SQL](sql-advanced-threat-protection.md) nabídky (ATP), což je jednotná balíček pro rozšířené možnosti zabezpečení SQL. Data zjišťování a klasifikaci lze získat přístup a spravovat prostřednictvím portálu centrální SQL ATP.
+Zjišťování a klasifikace dat je součástí [rozšířené ochrany před internetovými útoky SQL](sql-advanced-threat-protection.md) nabídky (ATP), která je jednotný balíček pro pokročilé funkce zabezpečení SQL. Zjišťování a klasifikace dat je možné získat přístup a spravovat prostřednictvím portálu pro centrální ochrany ATP v programu SQL.
 
 > [!NOTE]
-> Tento dokument se vztahuje pouze k Azure SQL Database. SQL Server (místní), najdete v části [SQL Data zjišťování a klasifikace](https://go.microsoft.com/fwlink/?linkid=866999).
+> Tento dokument se týká pouze ke službě Azure SQL Database. SQL Server (v místním prostředí), najdete v části [SQL Data zjišťování a klasifikace](https://go.microsoft.com/fwlink/?linkid=866999).
 
-## <a id="subheading-1"></a>Co je zjišťování a klasifikace?
-Data zjišťování a klasifikace zavádí sadu pokročilé služby a nové funkce SQL, které tvoří nové zlepší SQL Information Protection zaměřené na ochranu dat, nikoli pouze databázi:
-* **Zjišťování & doporučení** – modul klasifikace skenuje vaši databázi a identifikuje sloupců obsahujících potenciálně citlivá data. Pak poskytuje snadný způsob, jak zkontrolovat a použít příslušné klasifikaci doporučení prostřednictvím portálu Azure.
-* **Označování** – velkých a malých písmen klasifikační štítky lze trvale označit na sloupce pomocí nové atributy metadata klasifikace zasaženo stroj SQL. Tato metadata, můžete pak použít pro rozšířené na základě velkých a malých písmen auditování a ochrany scénáře.
-* **Výsledek dotazu nastavit citlivost** – citlivosti výslednou sadu dotazu se počítá v reálném čase pro účely auditování.
-* **Viditelnost** -klasifikace stav databáze lze zobrazit v podrobné řídicí panel portálu. Kromě toho si můžete stáhnout sestav (ve formátu aplikace Excel) má být použit pro dodržování předpisů a auditování, stejně jako jiné požadavky.
+## <a id="subheading-1"></a>Co je Data zjišťování a klasifikace?
+Zjišťování a klasifikace dat představuje sadu pokročilých služeb a nové funkce SQL vytváříme nové paradigma SQL Information Protection zaměřených na ochranu dat, ne jenom databáze:
+* **Zjišťování a doporučení k** – modul klasifikace skenuje databáze a identifikuje sloupce obsahující potenciálně citlivá data. To pak umožňuje snadný způsob, jak zkontrolovat a použít příslušnou klasifikací doporučení prostřednictvím webu Azure portal.
+* **Označování** – popisky klasifikace citlivosti můžete trvale označené na sloupce pomocí nové atributy metadat na klasifikaci zavedeny do modulu SQL. Tato metadata můžete využít potom pro pokročilé na základě citlivosti auditování a ochranu scénáře.
+* **Výsledek dotazu nastavit citlivost** – citlivosti sady výsledků dotazu se počítá v reálném čase pro účely auditování.
+* **Viditelnost** – stavu databáze klasifikace lze zobrazit v podrobné řídicí panel portálu. Kromě toho si můžete stáhnout sestavu (ve formátu aplikace Excel) má být použit pro dodržování předpisů a auditování, jakož i další požadavky.
 
-## <a id="subheading-2"></a>Zjistit, klasifikovat a označovat citlivé sloupců
-Následující část popisuje kroky pro zjišťování, klasifikaci a označování sloupců obsahujících citlivá data v databázi, a také zobrazení aktuálního stavu klasifikace vaši databázi a export sestav.
+## <a id="subheading-2"></a>Zjistit, klasifikovat & Popisek citlivé sloupce
+Následující část popisuje kroky pro zjišťování, klasifikace a označování popisky sloupců obsahujících citlivá data v databázi, jakož i zobrazení aktuální stav zařazení vaší databáze a export sestav.
 
 Klasifikace obsahuje dva atributy metadat:
-* Popisky – atributy hlavní klasifikace se používá k definování úrovní citlivosti dat uložených ve sloupci.  
-* Informace o typech – zadejte další členitosti do typu dat uložených ve sloupci.
+* Popisky – atributy hlavní klasifikace se používá k definování úroveň citlivosti dat uložených ve sloupci.  
+* Typy informací – poskytují další členitosti do typ dat uložených ve sloupci.
 
-## <a name="classify-your-sql-database"></a>Klasifikovat vaší databázi SQL
+## <a name="classify-your-sql-database"></a>Klasifikace vaše databáze SQL
 
 1. Přejděte na [portál Azure](https://portal.azure.com).
 
-2. Přejděte na **Advanced Threat Protection** v části zabezpečení v podokně pro Azure SQL Database. Kliknutím povolíte Advanced Threat Protection a potom klikněte na **Data zjišťování a klasifikace (preview)** karty.
+2. Přejděte do **Advanced Threat Protection** v záhlaví zabezpečení v podokně pro Azure SQL Database. Klikněte na tlačítko se povolit rozšířenou ochranu před internetovými útoky a potom klikněte na **Data zjišťování a klasifikace (preview)** karty.
 
-   ![Kontrola databáze](./media/sql-data-discovery-and-classification/data_classification.png) 
+   ![Kontrola databáze](./media/sql-data-discovery-and-classification/data_classification.png)
 
-3. **Přehled** karta obsahuje souhrn aktuálního stavu klasifikace databáze, včetně podrobný seznam všechny klasifikovaného sloupce, které můžete také filtrovat zobrazení pouze konkrétní schématu částí typy informací a popisky. Pokud ještě nejsou klasifikovaná žádné sloupce [přejděte ke kroku 5](#step-5).
+3. **Přehled** karta obsahuje shrnutí aktuální stav databáze, včetně podrobný seznam všech klasifikované sloupce, které můžete také filtrovat, chcete-li zobrazit pouze určité schéma částí typy informací a popisky klasifikace. Pokud ještě nebyly žádné sloupce jsou klasifikovány [přejděte ke kroku 5](#step-5).
 
-   ![Souhrn stavu aktuální klasifikace](./media/sql-data-discovery-and-classification/2_data_classification_overview_dashboard.png) 
+   ![Souhrnné informace o aktuálním stavu klasifikace](./media/sql-data-discovery-and-classification/2_data_classification_overview_dashboard.png)
 
-4. Chcete-li stáhnout sestavu ve formátu aplikace Excel, klikněte na **exportovat** možnost v nabídce v horní části okna.
+4. Pokud chcete stáhnout sestavu ve formátu aplikace Excel, klikněte na **exportovat** možnosti v horní nabídce okna.
 
-   ![Exportovat do Excelu](./media/sql-data-discovery-and-classification/3_data_classification_export_report.png) 
+   ![Exportovat do Excelu](./media/sql-data-discovery-and-classification/3_data_classification_export_report.png)
 
-5.  <a id="step-5"></a>Chcete-li začít, klasifikace dat, klikněte na **klasifikace karta** v horní části okna.
+5.  <a id="step-5"></a>Pokud chcete začít, klasifikace dat, klikněte na **klasifikace kartu** v horní části okna.
 
-    ![Můžete klasifikovat data](./media/sql-data-discovery-and-classification/4_data_classification_classification_tab_click.png) 
+    ![Klasifikace dat](./media/sql-data-discovery-and-classification/4_data_classification_classification_tab_click.png)
 
-6. Modul klasifikace kontroly databáze pro sloupců obsahujících potenciálně citlivých data a poskytuje seznam **doporučená klasifikace sloupec**. Zobrazení a použití klasifikaci doporučení:
+6. Klasifikační modul prohledává vaše databáze pro sloupce obsahující potenciálně citlivých data a poskytuje seznam **doporučená klasifikace sloupců**. Zobrazení a použití doporučení klasifikace:
 
-    * Chcete-li zobrazit seznam sloupci klasifikace, klikněte na panelu doporučení v dolní části okna:
-    
-      ![Klasifikace dat](./media/sql-data-discovery-and-classification/5_data_classification_recommendations_panel.png) 
+    * Chcete-li zobrazit seznam klasifikací sloupci, klikněte na panel doporučení v dolní části okna:
 
-    * Projděte si seznam doporučení – přijímala doporučení pro konkrétní sloupec, zaškrtněte políčko v levém sloupci relevantní řádku. Můžete také označit *všechna doporučení* jako přijatý zaškrtnutím políčka v záhlaví tabulky doporučení.
+      ![Klasifikace dat](./media/sql-data-discovery-and-classification/5_data_classification_recommendations_panel.png)
 
-       ![Kontrolní seznam doporučení](./media/sql-data-discovery-and-classification/6_data_classification_recommendations_list.png) 
+    * Projděte si seznam doporučení – přijímala doporučení pro konkrétní sloupce, zaškrtněte políčko v levém sloupci relevantní řádek. Můžete také označit *všechna doporučení* jako přijatý zaškrtnutím políčka v záhlaví tabulky doporučení.
 
-    * Chcete-li použít vybraný doporučení, klikněte na modrý **přijmout vybrané doporučení** tlačítko.
+       ![Zkontrolujte seznam doporučení](./media/sql-data-discovery-and-classification/6_data_classification_recommendations_list.png)
 
-      ![Použít doporučení](./media/sql-data-discovery-and-classification/7_data_classification_accept_selected_recommendations.png) 
+    * Jak používat vybrané doporučení, klikněte na modrý **přijmout vybraná doporučení** tlačítko.
 
-7. Můžete také **klasifikovat ručně** sloupců, jako alternativu, nebo navíc na základě doporučení klasifikaci:
+      ![Použití doporučení](./media/sql-data-discovery-and-classification/7_data_classification_accept_selected_recommendations.png)
 
-    * Klikněte na **přidat klasifikace** v horní nabídce okna.
-  
-      ![Ručně přidejte klasifikace](./media/sql-data-discovery-and-classification/8_data_classification_add_classification_button.png) 
+7. Můžete také **klasifikovat ručně** sloupců jako alternativu nebo navíc na základě doporučení klasifikace:
 
-    * V okně kontextu, které se otevře, vyberte schéma > tabulky > sloupec, který chcete klasifikovat a informace o typu a citlivosti popisek. Potom klikněte na modrý **přidat klasifikace** tlačítko v dolní části okna kontextu.
+    * Klikněte na **přidat klasifikaci** v horní nabídce okna.
 
-      ![Vyberte sloupec pro klasifikaci](./media/sql-data-discovery-and-classification/9_data_classification_manual_classification.png) 
+      ![Ručně přidat klasifikaci](./media/sql-data-discovery-and-classification/8_data_classification_add_classification_button.png)
 
-8. Chcete-li dokončit vaše klasifikace a trvalé označovat sloupců (značka) databáze s novými metadaty klasifikace, klikněte na **Uložit** v horní nabídce okna.
+    * V okně kontextu, které se otevře, vyberte schéma > tabulky > sloupec, který chcete klasifikovat a informace o typu a citlivosti popisek. Potom klikněte na modrý **přidat klasifikaci** tlačítko v dolní části okna kontextu.
 
-   ![Uložení](./media/sql-data-discovery-and-classification/10_data_classification_save.png) 
+      ![Vyberte sloupec pro klasifikaci](./media/sql-data-discovery-and-classification/9_data_classification_manual_classification.png)
+
+8. K dokončení klasifikace a trvale sloupce (značka) databáze s novými metadaty klasifikaci, klikněte na **Uložit** v horní nabídce okna.
+
+   ![Uložení](./media/sql-data-discovery-and-classification/10_data_classification_save.png)
 
 ## <a id="subheading-3"></a>Auditování přístupu k citlivým datům
 
-Důležitým aspektem zlepší ochrany informací je schopnost sledovat přístup k citlivým datům. [Auditování databáze SQL Azure](https://docs.microsoft.com/azure/sql-database/sql-database-auditing) je vylepšená tak, aby zahrnout nové pole do protokolu auditování názvem *data_sensitivity_information*, které protokoly klasifikace citlivosti (popisky) vlastní data, která vrátila dotaz.
+Důležitou součástí ochrany paradigma informace je schopnost sledovat přístup k citlivým datům. [Auditování Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-auditing) má vylepšené a zahrnují nové pole do protokolu auditu volá *data_sensitivity_information*, které protokoly klasifikace citlivosti (popisky) skutečných dat, který byl vrácen dotaz.
 
-![Protokol auditu](./media/sql-data-discovery-and-classification/11_data_classification_audit_log.png) 
+![Protokol auditu](./media/sql-data-discovery-and-classification/11_data_classification_audit_log.png)
 
-## <a id="subheading-4"></a>Další kroky
+## <a id="subheading-4"></a>Automatizované/programátorské klasifikace
+
+T-SQL můžete použít k přidání nebo odebrání klasifikace sloupců, jakož i načíst všechny klasifikace pro celou databázi.
+
+> [!NOTE]
+> Při použití jazyka T-SQL ke správě popisků, neexistuje žádné ověření, která popisky přidané k sloupec existuje v zásadě ochrany informací v organizaci (sadu popisků, které se zobrazují v portálu doporučení). Je pro vás, abyste to ověřit.
+
+* Přidat nebo aktualizovat klasifikaci jeden nebo více sloupců: [přidat klasifikace utajení](https://docs.microsoft.com/en-us/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
+* Odebrání klasifikace z jednoho nebo více sloupců: [VYŘADIT klasifikace utajení](https://docs.microsoft.com/en-us/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
+* Zobrazit všechny klasifikace pro databázi: [sys.sensitivity_classifications](https://docs.microsoft.com/en-us/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
+
+## <a id="subheading-5"></a>Další kroky
 
 - Další informace o [SQL Advanced Threat Protection](sql-advanced-threat-protection.md).
-- Zvažte nakonfigurování [auditování databáze SQL Azure](https://docs.microsoft.com/azure/sql-database/sql-database-auditing) pro sledování a auditování přístupu k vaší klasifikovaný citlivá data.
+- Zvažte možnost nakonfigurovat [auditování služby Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-auditing) pro sledování a auditování přístupu k vaší klasifikované citlivá data.
 
 <!--Anchors-->
 [SQL Data Discovery & Classification overview]: #subheading-1
 [Discovering, classifying & labeling sensitive columns]: #subheading-2
 [Auditing access to sensitive data]: #subheading-3
-[Next Steps]: #subheading-4
+[Automated/Programmatic classification]: #subheading-4
+[Next Steps]: #subheading-5

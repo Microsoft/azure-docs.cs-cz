@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: v-geberr
-ms.openlocfilehash: aca67db88255585355bc59a29e53639bc5eca717
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 0c1cd175649415e811140e45225bd8441071ab19
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37886752"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37950834"
 ---
 # <a name="enterprise-strategies-for-a-luis-app"></a>Podnikové strategie pro aplikace LUIS
 Projděte si tyto strategie návrhu pro podnikové aplikace.
@@ -29,7 +29,7 @@ Chcete-li získat stejnou hlavní záměr mezi všemi aplikacemi, ujistěte se, 
 
 Určete jednu aplikaci jako hlavní server. Jakékoli projevy, které jsou navržené ke kontrole by měl přidá do hlavní aplikace poté přesunut na všechny ostatní aplikace. To je úplné export aplikace, nebo načítání s popiskem projevy od hlavního na podřízené položky. Načítání lze provést buď z [LUIS](luis-reference-regions.md) webu nebo rozhraní API pro vytváření obsahu pro [jednotné utterance](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c08) nebo pro [batch](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09). 
 
-Naplánovat pravidelnou [přehled koncových bodů projevy](label-suggested-utterances.md) pro službu active learning, jako je například každé dva týdny, pak přetrénujete a znovu publikovat. 
+Naplánovat pravidelnou [přehled koncových bodů projevy](luis-how-to-review-endoint-utt.md) pro službu active learning, jako je například každé dva týdny, pak přetrénujete a znovu publikovat. 
 
 ### <a name="assign-multiple-luis-keys-to-same-app"></a>Přiřadit více LUIS klíče pro stejnou aplikaci
 Pokud aplikace LUIS obdrží další koncový bod přístupů než povoluje kvóta jeden klíč, vytvořit a přiřadit aplikace LUIS více klíčů. Vytvoření traffic manager nebo Vyrovnávání zatížení do spravovat dotazy koncový bod v rámci klíče koncového bodu. 
@@ -37,7 +37,7 @@ Pokud aplikace LUIS obdrží další koncový bod přístupů než povoluje kvó
 ## <a name="when-your-monolithic-app-returns-wrong-intent"></a>Když monolitické aplikace vrátí nesprávné záměr
 Pokud se vaše aplikace k předvídání širokou škálu projevy uživatele, zvažte implementaci [odesílání modelu](#dispatch-tool-and-model). Rozdělení monolitické aplikace umožňuje zjišťování fokus mezi záměry úspěšně místo získávání zaměňovat mezi záměry napříč aplikace nadřazené a podřízené aplikace LUIS. 
 
-Naplánovat pravidelnou [přehled koncových bodů projevy](label-suggested-utterances.md) pro službu active learning, jako je například každé dva týdny, pak přetrénujete a znovu publikovat. 
+Naplánovat pravidelnou [přehled koncových bodů projevy](luis-how-to-review-endoint-utt.md) pro službu active learning, jako je například každé dva týdny, pak přetrénujete a znovu publikovat. 
 
 ## <a name="when-you-need-to-have-more-than-500-intents"></a>Když je potřeba mít více než 500 záměrů
 Řekněme například, že vyvíjíte asistent office, který má více než 500 záměry. Pokud 200 záměry se týkají plánování schůzek, 200 se týkají připomenutí, 200 jsou o získání informací o kolegy a 200 jsou určené pro odesílání e-mailů, záměry skupiny tak, aby každá skupina je v jedné aplikaci, vytvořte aplikaci s nejvyšší úrovně obsahující každý záměr. Použití [odeslání nástroje a architektury](#dispatch-tool-and-model) k sestavení aplikace nejvyšší úrovně. Změňte robotům, aby použít jako zobrazení v kaskádové volání [kurz odeslání][dispatcher-application-tutorial]. 

@@ -1,80 +1,80 @@
 ---
-title: Konfiguraci replikace pro virtuální počítače Azure ve službě Azure Site Recovery | Microsoft Docs
-description: Tento článek popisuje, jak ke konfiguraci replikace pro virtuální počítače Azure z jedné oblasti Azure do druhého pomocí Site Recovery.
+title: Konfigurace replikace pro virtuální počítače Azure ve službě Azure Site Recovery | Dokumentace Microsoftu
+description: Tento článek popisuje, jak nakonfigurovat replikaci pro virtuální počítače Azure z jedné oblasti Azure do jiné pomocí služby Site Recovery.
 services: site-recovery
 author: asgang
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/31/2018
+ms.date: 07/06/2018
 ms.author: asgang
-ms.openlocfilehash: 175b71488b429b3fd69d23db6cc9318d8db20568
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: e7cd3032053b3628b94f93f3c7e00b6890afd4ca
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34715968"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37916278"
 ---
-# <a name="replicate-azure-virtual-machines-to-another-azure-region"></a>Jiné oblasti Azure replikovat virtuální počítače Azure
+# <a name="replicate-azure-virtual-machines-to-another-azure-region"></a>Replikace virtuálních počítačů Azure do jiné oblasti Azure
 
 
 
-Tento článek popisuje postup povolení replikace virtuálních počítačů Azure z jedné oblasti Azure do jiné.
+Tento článek popisuje, jak povolit replikaci virtuálních počítačů Azure z jedné oblasti Azure do jiné.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Tento článek předpokládá, že jste již nastavili Site Recovery pro tento scénář, jak je popsáno v [Azure do Azure kurzu](azure-to-azure-tutorial-enable-replication.md). Ujistěte se, že jste připravili předpoklady a vytvořit trezor služeb zotavení.
+Tento článek předpokládá, že jste již nastavili Site Recovery pro tento scénář, jak je popsáno v [Azure do Azure kurz](azure-to-azure-tutorial-enable-replication.md). Ujistěte se, že jste připravili požadavky a vytvořili trezor služby Recovery Services.
 
 
 
 ## <a name="enable-replication"></a>Povolení replikace
 
-Povolte replikaci. Tento postup předpokládá, že primární oblast Azure je východní Asie, přičemž sekundární oblast je jihovýchodní Asie.
+Povolení replikace. Tento postup předpokládá, že primární oblast Azure je východní Asie a jihovýchodní Asie je sekundární oblasti.
 
 1. V trezoru, klikněte na tlačítko **+ replikovat**.
-2. Vezměte na vědomí následující pole:
-    - **Zdroj**: bodem virtuálních počítačů, které v tomto případě je **Azure**.
-    - **Zdrojové umístění**: oblast Azure, ze které chcete chránit virtuální počítače. Pro tento obrázek je umístění zdroje, východní Asie.
+2. Mějte na paměti následující pole:
+    - **Zdroj**: bod počátek virtuálních počítačů, které v tomto případě je **Azure**.
+    - **Umístění zdroje**: oblast Azure, ze kterého má být ochranu virtuálních počítačů. Pro tento obrázek je zdrojové umístění: východní Asie.
     - **Model nasazení**: model nasazení Azure zdrojový počítač.
-    - **Skupina prostředků**: skupině prostředků, do které patří zdroj virtuálních počítačů. Pro ochranu v dalším kroku jsou uvedeny všechny virtuální počítače v části s vybranou skupinou prostředků.
+    - **Skupina prostředků**: skupinu prostředků, do které patří vaše zdrojové virtuální počítače. Všechny virtuální počítače v rámci vybrané skupiny prostředků jsou uvedeny pro ochranu v dalším kroku.
 
     ![Povolení replikace](./media/site-recovery-replicate-azure-to-azure/enabledrwizard1.png)
 
-3. V **virtuální počítače > vyberte virtuální počítače**, klikněte na tlačítko a vyberte každý virtuální počítač, který chcete replikovat. Můžete vybrat pouze počítače, pro které je možné povolit replikaci. Potom klikněte na **OK**.
+3. V **virtuální počítače > Výběr virtuálních počítačů**klikněte a vyberte každý virtuální počítač, který chcete replikovat. Můžete vybrat pouze počítače, pro které je možné povolit replikaci. Potom klikněte na **OK**.
     ![Povolení replikace](./media/site-recovery-replicate-azure-to-azure/virtualmachine_selection.png)
 
-4. V **nastavení**, případně je možné konfigurovat nastavení cílové lokality:
+4. V **nastavení**, Volitelně můžete nakonfigurovat nastavení cílové lokality:
 
-    - **Cílové umístění**: umístění, kde bude replikován zdrojová data virtuálního počítače. V závislosti na vaší umístění vybrané počítače se Site Recovery poskytuje seznam vhodný cílové oblasti. Doporučujeme, abyste cílové umístění stejné jako umístění trezoru služeb zotavení.
-    - **Cílová skupina prostředků**: skupině prostředků, na kterém jsou všechny patřit replikovaných virtuálních počítačů. Ve výchozím nastavení Azure Site Recovery vytvoří novou skupinu prostředků v cílová oblast s názvem, který má příponu "Automatické obnovení systému". Skupiny prostředků vytvořené Azure Site Recovery již existuje, je znovu použít. Můžete také přizpůsobit, jak je znázorněno v následující části. Umístění cílová skupina prostředků může být jakékoli oblast Azure s výjimkou oblast, ve kterém jsou hostované virtuální počítače zdroj.
-    - **Cílové virtuální sítě**: ve výchozím nastavení, Site Recovery vytvoří novou virtuální síť v oblasti cíl s názvem, který má příponu "Automatické obnovení systému". Toto je namapovaný na zdrojové síti a používat pro všechny budoucí ochranu. [Další informace](site-recovery-network-mapping-azure-to-azure.md) o mapování sítě.
-    - **Cíl účty úložiště (Pokud váš zdrojový virtuální počítač nepoužívá spravované disky)**: ve výchozím nastavení, Site Recovery vytvoří nový účet cílového úložiště mimicking konfiguraci zdrojového virtuálního počítače úložiště. V případě, že účet úložiště už existuje, je znovu použít.
-    - **Repliky spravuje disky (Pokud se vaše zdrojového virtuálního počítače používá spravované disky)**: Site Recovery vytvoří nové repliky spravované disky v oblasti cíl pro zrcadlení zdrojového Virtuálního počítače spravované disků se stejným typem úložiště (Standard nebo premium), jako zdrojový virtuální počítač spravovaný disku.
-    - **Účty úložiště mezipaměti**: Site Recovery potřebuje účet úložiště s názvem úložiště mezipaměti v oblasti zdroje. Všechny změny děje na zdrojové virtuální počítače jsou sledovány a odesílat k účtu úložiště mezipaměti před replikaci do cílového umístění.
-    - **Skupina dostupnosti**: ve výchozím nastavení vytvoří Azure Site Recovery novou skupinou dostupnosti ve cílová oblast s názvem, který má příponu "Automatické obnovení systému". V případě, že existuje skupina dostupnosti již vytvořené Azure Site Recovery, se znovu použije.
-    - **Zásady replikace**: definuje nastavení pro obnovení bodu uchování historie a aplikace snímky konzistentní s četnost. Ve výchozím nastavení vytvoří Azure Site Recovery novou zásadu replikace s výchozím nastavením: 24 hodin se pro uchování bodu obnovení a ' 60 minut frekvence snímky konzistentní s aplikací.
+    - **Cílové umístění**: umístění, kde se budou replikovat svá zdrojová data virtuálního počítače. V závislosti na vaší polohy vybrané počítače, Site Recovery získáte seznam vhodný cílové oblasti. Doporučujeme, abyste cílové umístění stejné jako umístění trezoru služby Recovery Services.
+    - **Cílová skupina prostředků**: skupinu prostředků, na kterém jsou všechny vaše replikované virtuální počítače patří. Ve výchozím nastavení vytvoří Azure Site Recovery s názvem, který má příponu "Azure Site Recovery" v cílové oblasti novou skupinu prostředků. V případě, že skupina prostředků Azure Site Recovery vytvoří již existuje, je znovu. Můžete také přizpůsobit, jak je znázorněno v následující části. Umístění cílové skupiny prostředků může být libovolné oblasti Azure, s výjimkou oblasti, ve které jsou hostované zdrojové virtuální počítače.
+    - **Cílová virtuální síť**: ve výchozím nastavení, Site Recovery vytvoří novou virtuální síť v cílové oblasti s názvem, který má příponu "Azure Site Recovery". To je namapována na zdrojovou síť a použít pro všechny budoucí ochrany. [Další informace](site-recovery-network-mapping-azure-to-azure.md) o mapování sítě.
+    - **Cílové účty úložiště (Pokud je váš zdrojový virtuální počítač nepoužívá spravované disky)**: ve výchozím nastavení vytvoří Site Recovery nový cílový účet úložiště tak napodobuje konfiguraci úložiště zdrojového virtuálního počítače. V případě, že účet úložiště už existuje, je znovu.
+    - **Repliky spravovaných disků (Pokud zdrojový virtuální počítač používá spravované disky)**: Site Recovery vytvoří nové spravované disky repliky v cílové oblasti zrcadlící spravované disky zdrojového Virtuálního počítače se stejným typem úložiště (Standard nebo premium), protože zdrojový virtuální počítač spravovaný disk.
+    - **Účty úložiště mezipaměti**: Site Recovery potřebuje účet úložiště s názvem úložiště mezipaměti ve zdrojové oblasti. Všechny změny aktivit ve zdrojových virtuálních počítačů jsou sledovány a odeslat do účtu úložiště mezipaměti před replikaci do cílového umístění.
+    - **Skupina dostupnosti**: ve výchozím nastavení Azure Site Recovery vytvoří novou skupinu s názvem, který má příponu "Azure Site Recovery" v cílové oblasti dostupnosti. V případě, že skupina dostupnosti Azure Site Recovery vytvoří již existuje, je znovu.
+    - **Zásady replikace**: definuje nastavení pro obnovení bodu uchování historie a aplikace konzistentní frekvence pořizování snímků. Ve výchozím nastavení Azure Site Recovery vytvoří novou zásadu replikace s výchozím nastavením ' 24 hodin pro uchování bodu obnovení a "60 minut, než se frekvence snímků konzistentní vzhledem k aplikacím aplikace.
 
     ![Povolení replikace](./media/site-recovery-replicate-azure-to-azure/enabledrwizard3.PNG)
 
 ## <a name="customize-target-resources"></a>Přizpůsobení cílové prostředky
 
-Můžete upravit výchozí nastavení cílové používat Site Recovery.
+Můžete upravit výchozí nastavení cíle používané pro Site Recovery.
 
-1. Klikněte na tlačítko **přizpůsobit:** upravovat výchozí nastavení:
-    - V **cílová skupina prostředků**, vyberte skupinu prostředků ze seznamu všech skupin prostředků v cílovém umístění předplatného.
-    - V **cílové virtuální síti**, vyberte síť, ze seznamu všechny virtuální sítě v cílovém umístění.
-    - V **sadu dostupnosti**, můžete přidat dostupnosti nastavení virtuálního počítače, pokud jsou součástí v oblasti zdroj sadu dostupnosti.
+1. Klikněte na tlačítko **vlastní:** upravit výchozí nastavení:
+    - V **cílová skupina prostředků**, vyberte skupinu prostředků z seznam všech skupin prostředků v cílovém umístění předplatného.
+    - V **cílovou virtuální sítí**, vyberte síť, ze seznamu ve virtuální síti v cílové lokalitě.
+    - V **dostupnosti**, můžete přidat nastavení skupinu dostupnosti pro virtuální počítač, pokud jsou součástí skupiny dostupnosti ve zdrojové oblasti.
     - V **účty úložiště v cíli**, vyberte účet, který chcete použít.
 
         ![Povolení replikace](./media/site-recovery-replicate-azure-to-azure/customize.PNG)
 
-2. Klikněte na tlačítko **vytvořit cílový prostředek** > **povolit replikaci**.
-3. Když virtuální počítače jsou povolená pro replikaci, můžete zkontrolovat stav stavu virtuálního počítače v části **replikované položky**
+2. Klikněte na tlačítko **vytvořit cílový prostředek** > **povolením replikace**.
+3. Po virtuální počítače jsou povolena pro replikaci, můžete zkontrolovat stav stav virtuálního počítače v rámci **replikované položky**
 
 >[!NOTE]
->Během úvodní replikace stavu může trvat nějakou dobu aktualizace bez průběh. Klikněte **aktualizovat** tlačítko, chcete-li získat nejnovější stav.
+>Během počáteční replikace stavu může trvat nějakou dobu aktualizovat, aniž by průběh. Klikněte na tlačítko **aktualizovat** tlačítko, chcete-li získat nejnovější stav.
 >
 
 # <a name="next-steps"></a>Další postup
 
-[Další informace](site-recovery-test-failover-to-azure.md) o spuštění převzetí služeb při selhání.
+[Další informace](site-recovery-test-failover-to-azure.md) o spuštění testovací převzetí služeb při selhání.

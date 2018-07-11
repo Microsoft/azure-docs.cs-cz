@@ -10,15 +10,18 @@ ms.topic: conceptual
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: eb9e4c58343e1f628ff862009b1d12dad07a1c91
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: e56b6f9360bdbfe2c5dcb2e81862cb80310bf54c
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37442436"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37928728"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: Nejčastější dotazy (FAQ) 
 Tato stránka odpovědi na nejčastější dotazy týkající se Azure Active Directory (Azure AD) B2C. Kontrolovat novinky.
+
+### <a name="why-cant-i-access-the-azure-ad-b2c-extension-in-the-azure-portal"></a>Proč nemám přístup k rozšíření Azure AD B2C na webu Azure Portal?
+Existují dva běžné důvody pro proč rozšíření Azure AD nefunguje pro vás.  Azure AD B2C vyžaduje vaše uživatelská role v adresář, který má být globální správce.  Pokud si myslíte, že byste měli mít přístup, kontaktujte prosím svého správce.  Pokud máte oprávnění globálního správce, ujistěte se, že jste v adresáři Azure AD B2C a není adresář služby Azure Active Directory.  Zobrazí se pokyny, jak [vytvoření adresáře Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant).
 
 ### <a name="can-i-use-azure-ad-b2c-features-in-my-existing-employee-based-azure-ad-tenant"></a>Můžete použít funkce Azure AD B2C v tenantovi Azure AD existující, na základě zaměstnanců?
 Azure AD a Azure AD B2C jsou samostatný produkt nabídek a nemůžou být společně ve stejném tenantovi.  Klient služby Azure AD představuje organizace.  Klient služby Azure AD B2C představuje kolekci identit pro použití s aplikacemi předávajících stran.  Pomocí vlastních zásad (ve verzi public preview) může provést federaci Azure AD B2C do služby Azure AD umožňuje ověřování zaměstnanců v organizaci.

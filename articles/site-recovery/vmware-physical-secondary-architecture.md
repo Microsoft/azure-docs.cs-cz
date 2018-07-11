@@ -1,20 +1,21 @@
 ---
-title: "Architektura replikace VMware nebo fyzický server v Azure Site Recovery | Microsoft Docs"
-description: "Tento článek obsahuje přehled součásti a architektura používá při replikovat místní virtuální počítače VMware nebo fyzických serverů Windows nebo Linuxem na sekundární lokalita VMware s Azure Site Recovery"
+title: Architektura replikace VMware nebo fyzický server ve službě Azure Site Recovery | Dokumentace Microsoftu
+description: Tento článek obsahuje přehled komponent a architektury používané při replikaci místních virtuálních počítačů VMware nebo fyzické servery Windows/Linux do sekundární lokality VMware pomocí Azure Site Recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/06/2018
+ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: 97a990aa3ed9043280888900d8fc7b604b6c22b5
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 04591c57f90e3c540963d77c2213498bf0ad2577
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37921399"
 ---
-# <a name="vmware-vmphysical-server-to-vmware-replication-architecture"></a>Virtuální počítač VMware nebo fyzický server s architekturou replikace VMware
+# <a name="vmware-vmphysical-server-to-vmware-replication-architecture"></a>Server virtuálních počítačů VMware/fyzických prostředků do architektury pro replikaci VMware
 
-Tento článek popisuje architektuře a procesech používá při replikaci, převzetí služeb při selhání a obnovení virtuálních počítačů (VM) místní VMware nebo fyzických serverů Windows nebo Linuxem na sekundární lokalitě VMware pomocí [Azure Site Recovery](site-recovery-overview.md).
+Tento článek popisuje, architektury a procesy používané při replikaci, převzetí služeb při selhání a obnovení virtuálních počítačů (VM) v místním VMware nebo fyzické servery Windows/Linux do sekundární lokality VMware pomocí [Azure Site Recovery](site-recovery-overview.md).
 
 
 ## <a name="architectural-components"></a>Komponenty architektury

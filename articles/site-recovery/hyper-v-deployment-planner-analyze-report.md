@@ -6,14 +6,14 @@ author: nsoneji
 manager: garavd
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/14/2018
+ms.date: 07/06/2018
 ms.author: nisoneji
-ms.openlocfilehash: 060d51406f67ad8a55cdf61506cd66f5390ebe4c
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 78350f8e0ab86c7c87c321397bd4e4a4849368b6
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2018
-ms.locfileid: "29467209"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37918845"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>Analýza sestavy Plánovače nasazení služby Azure Site Recovery
 Tento článek popisuje listy v sestavě aplikace Excel vygenerované Plánovačem nasazení služby Azure Site Recovery pro scénář nasazení Hyper-V do Azure.
@@ -158,7 +158,7 @@ Může nastat situace, kdy víte, že pro účely replikace Site Recovery nemů�
 
 **Suggested Account Name:** Název účtu úložiště po zahrnutí navrhované předpony. Název v ostrých závorkách (< a >) nahraďte vlastním názvem.
 
-**Log Storage Account:** Všechny protokoly replikace se ukládají v účtu služby Storage úrovně Standard. Pro virtuální počítače, které se replikují do účtu služby Storage úrovně Premium, nastavte další účet služby Storage úrovně Standard pro ukládání protokolů. Jeden účet úložiště protokolů úrovně Standard může využívat více účtů úložiště replikace úrovně Premium. Virtuální počítače replikované do účtů úložiště úrovně Standard používají stejný účet i k ukládání protokolů.
+**Log Storage Account:** Všechny protokoly replikace se ukládají v účtu služby Storage úrovně Standard. Pro virtuální počítače, které se replikují do účtu služby Premium Storage, nastavte další účet služby Storage úrovně Standard pro ukládání protokolů. Jeden účet úložiště protokolů úrovně Standard může využívat více účtů úložiště replikace úrovně Premium. Virtuální počítače replikované do účtů úložiště úrovně Standard používají stejný účet i k ukládání protokolů.
 
 **Suggested Log Account Name:** Název účtu úložiště protokolů po zahrnutí navrhované předpony. Název v ostrých závorkách (< a >) nahraďte vlastním názvem.
 
@@ -179,7 +179,7 @@ Sestava aplikace Excel vygenerovaná Plánovačem nasazení služby Site Recover
 
 **VM Name:** Název virtuálního počítače, který se použil v souboru VMListFile při generování sestavy. V tomto sloupci jsou uvedeny také disky (VHD) připojené k virtuálním počítačům. Názvy zahrnují názvy hostitelů Hyper-V, kam byly virtuální počítače umístěné, když je nástroj během období profilace rozpoznal.
 
-**VM Compatibility** (Kompatibilita virtuálního počítače): Hodnoty jsou **Yes** (Ano) a **Yes**\* (Ano). **Yes**\* je pro situace, kdy je virtuální počítač vhodný pro [Azure Storage úrovně Premium](https://aka.ms/premium-storage-workload). Tady profilovaný disk s vysokou četností změn nebo IOPS odpovídá větší velikosti disku typu Premium, než je velikost namapovaná na tento disk. Účet úložiště určuje, na jaký typ disku služby Storage úrovně Premium se disk bude mapovat, na základě jeho velikosti: 
+**VM Compatibility** (Kompatibilita virtuálního počítače): Hodnoty jsou **Yes** (Ano) a **Yes**\* (Ano). **Yes**\* je pro situace, kdy je virtuální počítač vhodný pro [Azure Premium Storage](https://aka.ms/premium-storage-workload). Tady profilovaný disk s vysokou četností změn nebo IOPS odpovídá větší velikosti disku typu Premium, než je velikost namapovaná na tento disk. Účet úložiště určuje, na jaký typ disku služby Premium Storage se disk bude mapovat, na základě jeho velikosti: 
 * Menší než 128 GB je P10.
 * 128 GB až 256 GB je P15.
 * 256 GB až 512 GB je P20.
@@ -187,7 +187,7 @@ Sestava aplikace Excel vygenerovaná Plánovačem nasazení služby Site Recover
 * 1 025 GB až 2 048 GB je P40.
 * 2 049 GB až 4 095 GB je P50.
 
-Pokud se například díky charakteristikám úloh disk umístil do kategorie P20 nebo P30, ale kvůli velikosti je mapován na nižší typ disku služby Storage úrovně Premium, nástroj označí tento virtuální počítač jako **Yes**\*. Nástroj také doporučí změnit velikost zdrojového disku tak, aby se vešel do doporučeného typu disku služby Storage úrovně Premium, nebo po převzetí služeb při selhání změnit typ cílového disku.
+Pokud se například díky charakteristikám úloh disk umístil do kategorie P20 nebo P30, ale kvůli velikosti je mapován na nižší typ disku služby Premium Storage, nástroj označí tento virtuální počítač jako **Yes**\*. Nástroj také doporučí změnit velikost zdrojového disku tak, aby se vešel do doporučeného typu disku služby Premium Storage, nebo po převzetí služeb při selhání změnit typ cílového disku.
 
 **Storage Type** (Typ služby Storage): Standard nebo Premium.
 
@@ -238,7 +238,7 @@ Sestava aplikace Excel vygenerovaná Plánovačem nasazení služby Site Recover
 
 * Virtuální počítač není vysoce dostupný. Site Recovery nepodporuje virtuální počítače uzlu clusteru Hyper-V, jejichž virtuální pevné disky jsou uložené na místním disku, a ne na disku clusteru. 
 
-* Celková velikost virtuálního počítače (replikace + testovací převzetí služeb při selhání) překračuje omezení podporované velikosti účtu služby Storage úrovně Premium (35 TB). K této nekompatibilitě obvykle dochází, když je ve virtuálním počítači jeden disk, jehož některé charakteristiky výkonu překračují maximální podporovaná omezení systému Azure nebo Site Recovery pro účet služby Storage úrovně Standard. V takové situaci se virtuální počítač dostává do zóny účtu služby Storage úrovně Premium. Maximální podporovaná velikost účtu služby Storage úrovně Premium je však 35 TB. Jeden virtuální počítač nemůže být chráněný v rámci několika účtů úložiště. 
+* Celková velikost virtuálního počítače (replikace + testovací převzetí služeb při selhání) překračuje omezení podporované velikosti účtu služby Premium Storage (35 TB). K této nekompatibilitě obvykle dochází, když je ve virtuálním počítači jeden disk, jehož některé charakteristiky výkonu překračují maximální podporovaná omezení systému Azure nebo Site Recovery pro účet služby Storage úrovně Standard. V takové situaci se virtuální počítač dostává do zóny účtu služby Premium Storage. Maximální podporovaná velikost účtu služby Premium Storage je však 35 TB. Jeden virtuální počítač nemůže být chráněný v rámci několika účtů úložiště. 
 
     Pokud je pro testovací převzetí služeb při selhání nakonfigurovaný nespravovaný disk a testovací převzetí služeb při selhání se spustí na chráněném virtuálním počítači, poběží v rámci stejného účtu úložiště, ve kterém probíhá replikace. V tomto případě se vyžaduje další prostor úložiště se stejnou velikostí jako u replikace. Tím se zajistí současné pokračování replikace a úspěšné testovací převzetí služeb při selhání. Pokud je pro testovací převzetí služeb při selhání nakonfigurovaný spravovaný disk, pro virtuální počítač testovacího převzetí služeb při selhání není potřeba žádné další místo.
 
@@ -274,8 +274,8 @@ Následující tabulka obsahuje omezení Site Recovery. Tato omezení vycházej�
 **Cíl ukládání replikace** | **Průměrná velikost vstupně-výstupní operace na zdrojovém virtuálním počítači** |**Průměrná četnost změn dat na zdrojovém virtuálním počítači** | **Celková denní četnost změn dat na zdrojovém virtuálním počítači**
 ---|---|---|---
 Storage úrovně Standard | 8 kB | 2 MB/s na virtuální počítač | 168 GB na virtuální počítač
-Storage úrovně Premium | 8 kB  | 5 MB/s na virtuální počítač | 421 GB na virtuální počítač
-Storage úrovně Premium | 16 kB nebo větší| 10 MB/s na virtuální počítač | 842 GB na virtuální počítač
+Premium Storage | 8 kB  | 5 MB/s na virtuální počítač | 421 GB na virtuální počítač
+Premium Storage | 16 kB nebo větší| 10 MB/s na virtuální počítač | 842 GB na virtuální počítač
 
 Tato omezení jsou průměrné hodnoty za předpokladu, že se vstupně-výstupní operace z 30 % překrývají. Služba Site Recovery je schopna zpracovávat větší propustnost v závislosti na poměru překrývání, větší velikosti zápisů a skutečného chování vstupně-výstupních operací úloh. Předchozí čísla předpokládají typický backlog přibližně 5 minut. To znamená, že zpracování nahrávaných dat a vytvoření bodu obnovení proběhne do pěti minut od nahrání.
 

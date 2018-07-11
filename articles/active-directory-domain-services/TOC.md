@@ -54,6 +54,7 @@
 #### [Obnovení chybějících objektů služby](active-directory-ds-troubleshoot-service-principals.md)
 #### [Chyby protokolu Secure LDAP](active-directory-ds-troubleshoot-ldaps.md)
 ### [Řešení chyb neshod tenantů](active-directory-ds-mismatched-tenant-error.md)
+### [Pozastavené domény](active-directory-ds-suspension.md)
 
 
 # Referenční informace

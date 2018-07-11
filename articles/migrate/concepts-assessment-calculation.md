@@ -1,109 +1,109 @@
 ---
-title: Vyhodnocení výpočtů v Azure migrovat | Microsoft Docs
-description: Poskytuje přehled o vyhodnocení výpočtů ve službě Azure migrovat.
+title: Výpočty hodnocení ve službě Azure Migrate | Dokumentace Microsoftu
+description: Poskytuje přehled o vyhodnocení výpočtů ve službě Azure Migrate.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 06/20/2018
+ms.date: 07/05/2018
 ms.author: raynew
-ms.openlocfilehash: 6fd0af65e63e9fc1c09232cd1e002da105a9d086
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 6d5a0b959b25c0ee294b22b3f4066d006806b524
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36287884"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37920919"
 ---
 # <a name="assessment-calculations"></a>Výpočty hodnocení
 
-[Azure migrací](migrate-overview.md) vyhodnocuje místní úlohy pro migraci do Azure. Tento článek obsahuje informace o tom, jak jsou vypočítávány vyhodnocování.
+[Azure Migrate](migrate-overview.md) posuzuje místní úlohy pro migraci do Azure. Tento článek obsahuje informace o tom, jak se počítají posouzení.
 
 
 ## <a name="overview"></a>Přehled
 
-Posouzení migrace Azure má tři fáze. Hodnocení začíná vhodnosti analýzy, za nímž následuje velikosti, a nakonec měsíční náklady odhad. Počítače s pouze přesune na pozdější fázi pokud předává předchozí. Například pokud je počítač selže kontrola Azure vhodnosti, je označen jako není vhodný pro Azure a velikost a nákladů nebude provedeno.
+Posouzení služby Azure Migrate má tři fáze. Posouzení začíná vhodnost analýzy, za nímž následuje velikosti, a nakonec měsíční odhadu nákladů. Počítače s pouze přesune později v případě úspěšného předchozí. Například pokud na počítači selže kontrola vhodnost pro Azure, je označen jako nevhodný pro Azure a změny velikosti a ocenění nebude provedeno.
 
 
-## <a name="azure-suitability-analysis"></a>Analýza Azure vhodnosti
+## <a name="azure-suitability-analysis"></a>Vhodnost pro Azure analysis
 
-Ne všechny počítače jsou vhodné pro spuštění v cloudu jako cloud má svou vlastní omezení a požadavky. Azure migrací vyhodnocuje každý místního počítače pro migraci vhodnosti do Azure a rozděluje se počítače do jedné z následujících kategorií:
-- **Připraveno k Azure** -na počítači mohou být migrovány jako-je do Azure bez uložení změn. Se spustí v Azure s podporu úplné Azure.
-- **Podmíněná připraveni k Azure** -tento počítač může spustit v Azure, ale nemusí mít podporu úplné Azure. Například počítač se starší verzí operačního systému Windows Server nepodporuje v Azure. Budete muset pečlivě před migrací těchto počítačů do Azure a postupujte podle pokynů nápravy navržený v assessment opravit problémy připravenosti, před migrací.
-- **Není připraven pro Azure** – počítač se nespustí v Azure. Například pokud místní počítač disk o velikosti více než 4 TB připojený, ho nemůže být hostovaná v Azure. Budete muset podle pokynů uvedených nápravy navržený v assessment vyřešit problém, připravenosti před migrací do Azure. Pro počítače, které jsou označeny jako není připraven pro Azure neprovádí odhadu optimalizaci velikosti a nákladů.
-- **Neznámá připravenost** -Azure migrovat nelze nalézt připravenost počítače z důvodu nedostatečných data dostupná v systému vCenter Server.
+Ne všechny počítače jsou vhodné pro cloud má svou vlastní omezení a požadavky na spouštění v cloudu. Azure Migrate posuzuje vhodnost k migraci do Azure každý místní počítač a slouží ke kategorizaci počítače do jedné z následujících kategorií:
+- **Připraveno pro Azure** – počítače můžete migrovat, protože – je do Azure bez nutnosti jakkoli měnit. Se spustí v Azure s podporou úplné Azure.
+- **Připraveno pro Azure s podmíněně** -počítač může spustit v Azure, ale nemusí mít podporu úplné Azure. Například počítač se starší verzí operačního systému Windows Server se nepodporuje v Azure. Budete muset pečlivě před migrací těchto počítačů do Azure a postupujte podle pokynů nápravy navržený v posouzení, chcete-li vyřešit problémy s připraveností před migrací.
+- **Nepřipraveno pro Azure** -počítače v Azure se nespustí. Například pokud místní počítač má disk o velikosti více než 4 TB k němu připojená, nelze jej hostovat v Azure. Je nutné podle pokynů uvedených nápravy navržený v hodnocení připravenosti tento problém vyřešit, před migrací do Azure. U počítačů, které jsou označeny jako není připraveno pro Azure není Hotovo odhadu určení správné velikosti a nákladů.
+- **Připravenost Neznámá** – Azure Migrate nelze najít připravenosti počítačů kvůli nedostatku dat k dispozici v systému vCenter Server.
 
-Azure migrací zkontroluje počítač vlastnosti a hostovaného operačního systému k identifikaci Azure připravenosti na místním počítači.
+Azure Migrate posuzuje vlastnosti počítače a operačního systému hosta Chcete-li určit připravenost pro Azure z místního počítače.
 
-### <a name="machine-properties"></a>Vlastnosti počítače.
-Azure migrací zkontroluje následující vlastnosti virtuálního počítače na místě a určete, jestli virtuální počítač můžete spustit v Azure.
+### <a name="machine-properties"></a>Vlastnosti počítače
+Azure Migrate posuzuje následující vlastnosti místní virtuální počítač a zjistěte, jestli virtuální počítač můžete spustit v Azure.
 
-**Vlastnost** | **Podrobnosti** | **Stav připravenosti Azure**
+**Vlastnost** | **Podrobnosti** | **Stav připravenosti pro Azure**
 --- | --- | ---
-**Typ spouštění** | Azure podporuje virtuální počítače s typem spuštění jako systém BIOS a ne rozhraní UEFI. | Podmíněná připravené pro Azure, pokud se spouštěcí typ rozhraní UEFI.
-**Počet jader** | Počet jader na počítačích musí být rovna nebo menší než maximální počet jader (32) podporované pro virtuální počítač Azure.<br/><br/> Pokud není k dispozici historie výkonu, migrovat Azure zvažuje využívané jader pro porovnání. Pokud v nastavení hodnocení je zadán koeficient pohodlí, počet jader využívané vynásobí faktorem pohodlí.<br/><br/> Pokud není žádná historie výkonu, migrovat Azure používá přidělených jader bez použití Multi-Factor pohodlí. | Není připraven Pokud počet jader je větší než 32.
-**Paměť** | Velikost paměti počítače musí být rovna nebo menší než maximální povolenou pro virtuální počítač Azure paměť (448 GB). <br/><br/> Pokud není k dispozici historie výkonu, migrovat Azure zvažuje využívané paměti pro porovnání. Pokud je zadán koeficient pohodlí, využívané paměti vynásobí faktorem pohodlí.<br/><br/> Pokud není žádná historie je použita přidělenou paměť, bez použití Multi-Factor pohodlí.<br/><br/> | Není připraven Pokud velikost paměti je větší než 448 GB.
-**Disk úložiště** | Přidělená velikost disku musí být 4 TB (4096 GB) nebo méně.<br/><br/> Počet disků připojených k počítači musí být 65 nebo méně, včetně disku operačního systému. | Není připraven, pokud existuje disk má velikost větší než 4 TB, nebo pokud existuje víc než 65 disky připojené k počítači.
-**Sítě** | Na počítači musíte mít 32 nebo méně síťové adaptéry připojené k němu. | Není připraven, pokud má počítač více než 32 síťových adaptérů
+**Typ spuštění** | Azure podporuje virtuální počítače s typem spuštění BIOS a není rozhraní UEFI. | Podmíněně připraveno pro Azure, pokud typ spouštění je UEFI.
+**Počet jader** | Počet jader na počítačích musí být větší nebo menší než maximální počet jader (32) pro virtuální počítač Azure nepodporuje.<br/><br/> Pokud není k dispozici historie výkonu, Azure Migrate bere v úvahu jader využívaných pro porovnání. Pokud je v nastavení posouzení Zadaný faktor komfortu, počet jader využívaných se vynásobí faktor komfortu.<br/><br/> Pokud neexistuje žádná historie výkonu, Azure Migrate použije přidělená jádra, bez použití faktor komfortu. | Není připraven, pokud počet jader je větší než 32.
+**Paměť** | Velikost paměti počítače musí být větší nebo menší než maximální velikost paměti (448 GB) povolený pro virtuální počítač Azure. <br/><br/> Pokud není k dispozici historie výkonu, Azure Migrate bere v úvahu využívaných paměť pro porovnání. Pokud je zadaný faktor komfortu, využívaných paměti se násobí hodnotou faktor komfortu.<br/><br/> Pokud neexistuje žádná historie přidělená paměť použijete, bez použití faktor komfortu.<br/><br/> | Není připraven, pokud je větší než 448 GB paměti.
+**Disk úložiště** | Přidělená velikost disku musí mít 4 TB (4096 GB) nebo méně.<br/><br/> Počet disků připojených k počítači musí být 65 nebo méně, včetně disk s operačním systémem. | Není připraven, pokud existuje disk má velikost větší než 4 TB, nebo pokud existuje více než 65 disky připojené k počítači.
+**Sítě** | Počítač musí mít 32 nebo méně síťových adaptérů připojený k němu. | Není připraven, pokud má počítač více než 32 síťových adaptérů
 
 ### <a name="guest-operating-system"></a>Hostovaný operační systém
-Společně s vlastností virtuálního počítače Azure migrovat také vypadá na hostovaný operační systém virtuálního počítače na místě a zjistit, zda virtuální počítač můžete spustit v Azure.
+Spolu s vlastností virtuálního počítače Azure Migrate také vypadá v hostovaném operačním systému virtuálního počítače s místními a zjistěte, jestli virtuální počítač můžete spustit v Azure.
 
 > [!NOTE]
-> Azure migrací zvažuje operačního systému zadané v systému vCenter Server udělat následující analýzy. Vzhledem k tomu, že zjišťování provádí migraci Azure je založen na zařízení, nemá způsob, jak ověřit, zda operačního systému běžících v rámci virtuálního počítače je stejný jako jeden zadaný v systému vCenter Server.
+> Azure Migrate bere v úvahu určený v systému vCenter Server, jak provádět analýzu následující operační systém. Protože zjišťování službou Azure Migrate je založená na zařízení, nemá způsob, jak ověřit, zda operační systém virtuálního počítače je stejný jako jeden zadaný v systému vCenter Server.
 
-Následující logice podle migrovat Azure slouží k identifikaci Azure připravenosti na virtuální počítač založený na operačním systému.
+Podle následujícího postupu lze službou Azure Migrate určit připravenost pro Azure založený na operačním systému virtuálního počítače.
 
-**Operační systém** | **Podrobnosti** | **Stav připravenosti Azure**
+**Operační systém** | **Podrobnosti** | **Stav připravenosti pro Azure**
 --- | --- | ---
-Windows Server 2016 & všechny aktualizace Service Pack | Azure poskytuje úplnou podporu. | Připraveno pro Azure
-Windows Server 2012 R2 a všechny aktualizace Service Pack | Azure poskytuje úplnou podporu. | Připraveno pro Azure
-Windows Server 2012 & všechny aktualizace Service Pack | Azure poskytuje úplnou podporu. | Připraveno pro Azure
-Windows Server 2008 R2 s všechny aktualizace Service Pack | Azure poskytuje úplnou podporu.| Připraveno pro Azure
-Windows Server 2003-2008 R2 | Tyto operační systémy uplynulo jejich koncové datum podpory a nutnost [vlastní podporu smlouvy (CSA)](https://aka.ms/WSosstatement) pro podporu v Azure. | Podmíněná připraveni k Azure, zvažte upgradování operačního systému před migrací do Azure.
-Windows 2000, 98, 95, NT, 3.1, MS-DOS | Předané jejich koncové datum podpory těchto operačních systémů, bude počítač může spustit v Azure, ale žádná podpora operačního systému je k dispozici v Azure. | Podmíněná připravený pro Azure, se doporučuje pro upgrade operačního systému před migrací do Azure.
-Klient Windows 7, 8 a 10 | Azure poskytuje podporu pro předplatné sady Visual Studio. | Připraveno pro Azure s podmínkou
-Windows Vista, XP Professional | Předané jejich koncové datum podpory těchto operačních systémů, bude počítač může spustit v Azure, ale žádná podpora operačního systému je k dispozici v Azure. | Podmíněná připravený pro Azure, se doporučuje pro upgrade operačního systému před migrací do Azure.
-Linux | Azure nezodpovídá tyto [operačních systémů Linux](../virtual-machines/linux/endorsed-distros.md). Jiných operačních systémů Linux může spustit v Azure, ale doporučuje se upgrade operačního systému na potvrzená verzi před migrací do Azure. | Připraveno pro Azure. Pokud je verze schválené.<br/><br/>Podmíněná připravené, pokud není schválené verzi.
-Jiné operační systémy<br/><br/> například Oracle Solaris, atd. Apple Mac OS, FreeBSD atd. | Azure neschvaluje těchto operačních systémů. Tento počítač může spustit v Azure, ale žádná podpora operačního systému je k dispozici v Azure. | Podmíněná připravený pro Azure, se doporučuje nainstalovat podporovaný operační systém před migrací do Azure.  
-Zadaný operační systém jako *jiných* v systému vCenter Server | Azure migrací nemůže v tomto případě identifikovat operačního systému. | Neznámý připravenosti. Ujistěte se, že operačního systému spuštěné ve virtuálním počítači podporovaná v Azure.
-32bitové operační systémy | Tento počítač může spustit v Azure, ale Azure nemusí poskytnout plnou podporu. | Podmíněná připravené pro Azure, zvažte upgrade operačního systému na počítač z 32bitového operačního systému na 64bitový operační systém, před migrací do Azure.
+Windows Server 2016 a všechny aktualizace Service packu | Azure poskytuje plnou podporu. | Připraveno pro Azure
+Windows Server 2012 R2 a všechny aktualizace Service packu | Azure poskytuje plnou podporu. | Připraveno pro Azure
+Windows Server 2012 a všechny aktualizace Service packu | Azure poskytuje plnou podporu. | Připraveno pro Azure
+Windows Server 2008 R2 s všechny aktualizace Service packu | Azure poskytuje plnou podporu.| Připraveno pro Azure
+Windows Server 2003 – 2008 | Tyto operační systémy prošly jejich koncové datum podpory a potřebu [smlouvy podporují vlastní (CSA)](https://aka.ms/WSosstatement) pro podporu v Azure. | Podmíněně připraveno pro Azure, zvažte možnost upgradovat operační systém před migrací do Azure.
+98, 95, Windows 2000 NT, 3.1, zástupného kódu MS-DOS | Tyto operační systémy prošly jejich podporu datum konce, tento počítač může spustit v Azure, ale Azure nenabízí žádnou podporu operačního systému. | Podmíněně připraveno pro Azure, se doporučuje upgradovat operační systém před migrací do Azure.
+Klient Windows 7, 8 a 10 | Azure poskytuje podporu s pouze předplatné sady Visual Studio. | Připraveno pro Azure s podmínkou
+Windows Vista, XP Professional | Tyto operační systémy prošly jejich podporu datum konce, tento počítač může spustit v Azure, ale Azure nenabízí žádnou podporu operačního systému. | Podmíněně připraveno pro Azure, se doporučuje upgradovat operační systém před migrací do Azure.
+Linux | Azure schvaluje tyto [operačních systémů Linux](../virtual-machines/linux/endorsed-distros.md). Jiných operačních systémech Linux mohou spustit v Azure, ale doporučuje se upgradovat operační systém na doporučené verze před migrací do Azure. | Připraveno pro Azure, pokud je verze se schválenou sadou.<br/><br/>Podmíněně připraveno, pokud není schválené verze pro.
+Jiné operační systémy<br/><br/> například Oracle Solaris, atd. Apple Mac OS, FreeBSD atd. | Azure neschvaluje těchto operačních systémů. Tento počítač může spustit v Azure, ale Azure nenabízí žádnou podporu operačního systému Azure. | Podmíněně připraveno pro Azure, se doporučuje instalovat podporovaný operační systém před migrací do Azure.  
+Zadaný operační systém jako *jiných* v systému vCenter Server | Azure Migrate nemůže určit operační systém v tomto případě. | Připravenost neznámá. Ujistěte se, že je podporován operační systém ve virtuálním počítači v Azure.
+32bitové operační systémy | Tento počítač může spustit v Azure, ale Azure nemusí poskytnout plnou podporu. | Podmíněně připraveno pro Azure, zvažte možnost upgradovat operační systém počítače z 32BITOVÉHO do 64BITOVÉHO před migrací do Azure.
 
 ## <a name="sizing"></a>Velikost
 
-Po počítač je označena jako připravena pro Azure, Azure migrovat velikostí virtuálního počítače a jeho disky pro Azure. Je-li toto nastavení velikosti kritérium zadána ve vlastnostech assessment uděláte na základě výkonu nastavení velikosti, migrovat Azure za historie výkonu počítače k identifikaci typ velikosti a disku virtuálního počítače v Azure. Tato metoda je užitečná ve scénářích, kde jste přidělili přepsání místní virtuální počítač, ale je nízkou využití a byste chtěli optimální velikost virtuálních počítačů v Azure se uložit náklady.
+Po na počítači je označen jako připravený pro Azure, Azure Migrate velikost virtuálního počítače a jeho disků pro Azure. Pokud je kritérium určení velikosti zadaného ve vlastnostech posouzení provést určení velikosti na základě výkonu, Azure Migrate se zohlední historie výkonu počítače, abyste mohli identifikovat typ velikosti a disku virtuálního počítače v Azure. Tato metoda je užitečná v situacích, kdy máte nadměrně přidělených místní virtuální počítač, ale využití je nízké a chcete k nastavení správné velikosti virtuálních počítačů v Azure za účelem snížení nákladů.
 
 > [!NOTE]
-> Azure migrací shromažďuje historie výkonu místní virtuálních počítačů ze serveru vCenter Server. Aby přesné optimalizaci velikosti, zkontrolujte, že nastavení statistiky v systému vCenter Server je nastavená na úroveň 3 a počkejte alespoň jeden den před si to chtěl / vypnutí zjišťování místní virtuální počítače. Pokud nastavení statistiky v systému vCenter Server je nižší než úroveň 3, není shromažďovat údaje o výkonu pro disk a síť.
+> Azure Migrate shromažďuje historie výkonu místních virtuálních počítačů ze systému vCenter Server. Aby bylo zajištěno přesné určení správné velikosti, ujistěte se, že nastavení statistiky v systému vCenter Server je nastavené na úroveň 3 a počkat aspoň jeden den před zahájením zjišťování místních virtuálních počítačů. Pokud je nastavení statistiky v systému vCenter Server nižší než úroveň 3, nejsou shromažďována data o výkonu disku a sítě.
 
-Pokud nechcete, zvažte historie výkonu pro virtuální počítač sizing a chcete převzít virtuální počítač jako-je do Azure, můžete zadat kritéria pro změnu velikosti jako *jako místní* a migrovat Azure bude potom velikost založené na místní virtuální počítače konfigurace bez ohledu data o využití. Změna velikosti disku, v takovém případě bude provedeno na základě typu úložiště, které určíte ve vlastnostech assessment (Standard disk nebo Premium)
+Pokud nechcete, vezměte v úvahu historie výkonu pro určení velikosti virtuálního počítače a chcete převést virtuální počítač jako – je do Azure, můžete určit kritérium určení velikosti jako *jako místní* a Azure Migrate se změnit velikost virtuálních počítačů založených na místní konfigurace bez zohlednění data o využití. Změna velikosti disku, v takovém případě se provede na základě typu úložiště, kterou určíte ve vlastnostech posouzení (disk typu Standard nebo Premium disk)
 
-### <a name="performance-based-sizing"></a>Nastavení velikosti na základě výkonu
+### <a name="performance-based-sizing"></a>Určení velikosti na základě výkonu
 
-Pro nastavení velikosti na základě výkonu, síťové adaptéry a potom migrovat Azure začíná disky připojené k virtuálnímu počítači, a pak mapy virtuální počítač Azure na základě požadavky na výpočetní místní virtuálního počítače.
+Pro určení velikosti na základě výkonu začíná Azure Migrate disky připojené k virtuálnímu počítači, za nímž následuje síťových adaptérů a pak mapování virtuálního počítače Azure na základě požadavky na výpočetní prostředky z místní virtuální počítač.
 
-- **Úložiště**: migrace Azure pokusí namapovat všechny disky připojené k počítači na disk v Azure.
+- **Úložiště**: Azure Migrate se pokouší mapovat všechny disky připojené k počítači, na disk v Azure.
 
     > [!NOTE]
-    > Azure migrací podporuje pouze spravované disky pro vyhodnocení.
+    > Azure Migrate podporuje pouze spravované disky pro posouzení.
 
-    - Pokud chcete získat efektivní diskové vstupně-výstupních operací za sekundu (IOPS) a propustnost (MB/s), Azure migrovat vynásobí disku IOPS a propustnost s Multi-Factor pohodlí. Na základě efektivní IOPS a hodnoty propustnosti, migrovat Azure označuje, jestli disk by měly být namapované na standard nebo premium disk v Azure.
-    - Pokud migrace Azure nemůže najít disk s požadované IOPS & propustnost, označí počítač jako není vhodný pro Azure. [Další informace](../azure-subscription-service-limits.md#storage-limits) o Azure omezuje na disk a virtuální počítač.
-    - Pokud najde sadu vhodné disky, Azure migrace vybere ty, které podporují metodu redundance úložiště a k umístění zadanému v nastavení hodnocení.
-    - Pokud existují oprávněné víc disků, vybere jeden s nejnižší náklady.
-    - Pokud se údaje o výkonu pro disky v není k dispozici, všechny disky jsou namapované na standardní disky v Azure.
+    - Pokud chcete získat efektivní vstupně-výstupních operací za sekundu (IOPS) a propustnost (MB/s), Azure Migrate vynásobí disku IOPS a propustnost s faktorem komfortu. Na základě efektivní IOPS a propustnost hodnoty, Azure Migrate odhalí, pokud by měly být namapované na disk na disk úrovně standard nebo premium v Azure.
+    - Pokud Azure Migrate nemůže najít disk s požadované IOPS a propustnost, označí počítače jako vhodný pro Azure. [Další informace](../azure-subscription-service-limits.md#storage-limits) týkající se Azure omezuje na disk a virtuální počítač.
+    - Pokud najde sadu vhodné disky, Azure Migrate vybere ty, které podporují metodu redundance úložiště a umístění zadaného v nastavení posouzení.
+    - Pokud existují oprávněné více disků, vybere tu s nejnižšími náklady.
+    - Pokud data výkonu u disků do nedostupný, všechny disky se mapují na standardní disky v Azure.
 
-- **Sítě**: migrace Azure se pokusí najít virtuálního počítače Azure, který může podporovat počet síťových adaptérech připojených do místního počítače a výkonu vyžadují tyto síťové adaptéry.
-    - Získat efektivní síťový výkon místní virtuální počítač, migrujte Azure agreguje data přenášená za sekundu (MBps) z počítače (síť out), ve všech síťových adaptérech a vztahuje na pohodlí faktor. Toto číslo se používá k vyhledání podporující požadované síťový výkon virtuálním počítači Azure.
-    - Společně s výkon sítě, také považuje pokud virtuální počítač Azure může podporovat požadované počet síťových adaptérů.
-    - Pokud je k dispozici žádná data o výkonu sítě, považuje za pouze počet síťových adaptérů pro nastavení velikosti virtuálních počítačů.
+- **Síť**: Azure Migrate se pokusí vyhledat Virtuálním počítači Azure, který podporuje počet síťových adaptérů připojený k místnímu počítači a výkonu, požadují tyto síťové adaptéry.
+    - Chcete-li získat efektivní síťový výkon místního virtuálního počítače, Azure Migrate agreguje data odeslaných za sekundu (MB/s) z počítače (sítě navýšení kapacity), ve všech síťových adaptérech a faktor komfortu se vztahuje. Toto číslo slouží k vyhledání Virtuálním počítači Azure, který podporuje požadovaný výkon sítě.
+    - Spolu s výkon sítě úvahu se berou také pokud virtuální počítač Azure může podporovat požadovaný počet síťových adaptérů.
+    - Pokud je k dispozici žádná data o výkonu sítě, pouze počet síťových adaptérů se považuje za určení velikosti virtuálního počítače.
 
-- **Výpočetní**: po úložiště a síťové požadavky jsou vypočítávány, migrovat Azure zvažuje procesoru a paměti požadavky najít vhodný velikost virtuálního počítače v Azure.
-    - Azure migrací vyhledá využívané jader a paměti a platí pohodlí faktor, který chcete získat efektivní jader a paměti. Podle toho, že číslo, pokusí se najít vhodnou velikost virtuálního počítače v Azure.
-    - Pokud je nalezen žádný vhodný velikost, tento počítač je označena jako není vhodný pro Azure.
-    - Pokud se nenajde vhodný velikost, migrovat Azure platí výpočty úložiště a sítě. Pak provede umístění a cenovou úroveň nastavení pro konečné doporučení velikost virtuálního počítače.
+- **COMPUTE**: poté, co se počítá požadavky na úložiště a síť, Azure Migrate bere v úvahu požadavky na procesor a paměť najít vhodnou velikost virtuálního počítače v Azure.
+    - Azure Migrate zjistí využívaných jader a paměti a použije faktor komfortu, chcete-li získat efektivní jader a paměti. Na základě čísla, pokusí se najít vhodné velikosti virtuálního počítače v Azure.
+    - Pokud se nenajde žádné vhodné velikosti, tento počítač je označen jako nevhodný pro Azure.
+    - Pokud se nenajde vhodné velikosti, Azure Migrate použije výpočty úložiště a sítě. Poté použije umístění a nastavení cenové úrovně, pro poslední doporučená velikost virtuálního počítače.
     - Pokud existuje více vhodných velikostí virtuálních počítačů Azure, doporučí se virtuální počítač s nejnižšími náklady.
 
-### <a name="as-on-premises-sizing"></a>Jako místní Změna velikosti
-Pokud je toto nastavení velikosti kritérium *jako místní nastavení velikosti*, migrovat Azure nebere v úvahu historie výkonu virtuálních počítačů a disky a přiděluje SKU virtuálních počítačů v Azure, v závislosti na velikosti přidělené místně. Podobně platí pro nastavení velikosti disku, zjistí zadaný ve vlastnostech assessment (Standard nebo Premium) typ úložiště a odpovídajícím způsobem doporučuje typ disku. Výchozí typ úložiště je prémiové disky.
+### <a name="as-on-premises-sizing"></a>Jako místní změny velikosti
+Pokud je kritérium určení velikosti *jako v místním nastavení velikosti*, Azure Migrate nebere v úvahu historie výkonu virtuálních počítačů a disků a přiděluje skladovou Položku virtuálního počítače v Azure na základě velikosti přidělené místní. Podobně jako pro určení velikosti disku, vyhledá úložiště typ určený ve vlastnostech posouzení (Standard nebo Premium) a odpovídajícím způsobem doporučuje typ disku. Výchozí typ úložiště je prémiové disky.
 
 ### <a name="confidence-rating"></a>Hodnocení spolehlivosti
 
@@ -128,16 +128,16 @@ Posouzení nemusí mít k dispozici všechny datové body z některého z násle
 > [!NOTE]
 > Pokud je hodnocení spolehlivosti nějakého posouzení nižší než 4 hvězdičky, doporučujeme změnit nastavení statistiky systému vCenter Server na úroveň 3, počkat po dobu, kterou chcete v posouzení zohlednit (1 den, 1 týden, 1 měsíc), a pak provést zjišťování a posouzení. Pokud to není možné, určení velikosti na základě výkonu nemusí být spolehlivé a doporučuje se změnou vlastností posouzení přepnout na *určování stejné velikosti jako v místním prostředí*.
 
-## <a name="monthly-cost-estimation"></a>Měsíční náklady na odhad
+## <a name="monthly-cost-estimation"></a>Odhad měsíčních nákladů
 
-Po dokončení nastavení velikosti doporučení se migrovat Azure vypočítá náklady na výpočetní a úložnou po migraci.
+Po dokončení doporučení velikosti Azure Migrate vypočítá náklady na výpočetní výkon a úložiště po migraci.
 
-- **Výpočetní náklady**: pomocí doporučená velikost virtuálního počítače Azure, Azure migrovat používá rozhraní API fakturace můžete vypočítat náklady na měsíční pro virtuální počítač. Výpočet trvá operačního systému, programu software assurance, vyhrazenou instancí, virtuálních počítačů provozu, umístění a nastavení měny v úvahu. Ji ve všech počítačích, chcete-li vypočítat celkové měsíční náklady na výpočetní agreguje náklady.
-- **Náklady na úložiště**: měsíční úložiště, náklady pro počítače s je vypočítána agregování měsíční náklady na všechny disky připojené k počítači. Azure migrací se vypočítává agregování náklady na úložiště všech počítačů celkové měsíční náklady na úložiště. V současné době výpočtu neberou nabízí uvedenou v nastavení assessment v úvahu.
+- **Výpočetní náklady**: použití doporučená velikost virtuálního počítače Azure, Azure Migrate používá rozhraní API pro fakturaci vypočítat měsíční náklady pro virtuální počítač. Výpočet má operační systém, program software assurance, rezervované instance, virtuálního počítače doby provozu, umístění a nastavení měny v úvahu. Agreguje ve všech počítačích, k výpočtu celkové měsíční náklady na výpočetní náklady.
+- **Náklady na úložiště**: úložišti měsíční náklady na počítači se vypočítá agregováním měsíční náklady pro všechny disky připojené k počítači. Azure Migrate vypočítá celkové měsíční náklady na úložiště na základě agregace náklady na úložiště všech počítačů. V současné době nepřijímá výpočet nabídky zadaný v nastavení posouzení v úvahu.
 
-Náklady jsou zobrazeny v měny v nastavení hodnocení.
+Náklady jsou zobrazeny v místní měně, zadaný v nastavení posouzení.
 
 
 ## <a name="next-steps"></a>Další postup
 
-[Vytvoření posouzení pro virtuální počítače VMware na místě](tutorial-assessment-vmware.md)
+[Vytvořte posouzení pro místní virtuální počítače VMware](tutorial-assessment-vmware.md)

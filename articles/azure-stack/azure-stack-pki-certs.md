@@ -1,6 +1,6 @@
 ---
-title: Azure požadavky na certifikáty infrastruktury veřejných klíčů zásobníku pro Azure zásobníku integrované systémy | Microsoft Docs
-description: Popisuje požadavky na nasazení certifikát PKI zásobník Azure pro Azure zásobníku integrované systémy.
+title: Integrované systémy pro Azure požadavky na certifikát zásobníku infrastruktura veřejných klíčů pro Azure Stack | Dokumentace Microsoftu
+description: Popisuje požadavky na certifikát nasazení Azure Stack infrastruktury veřejných KLÍČŮ pro integrované systémy Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -15,101 +15,101 @@ ms.topic: article
 ms.date: 06/07/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 9a43179998e8377dfbbb1a41ba7d46936d63aedd
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 13bc82caf5e10f5b35df29d085349ec4c80628a2
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37030151"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37929266"
 ---
-# <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Azure požadavky na certifikáty infrastruktury veřejných klíčů zásobníku
+# <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Požadavky na certifikáty infrastruktury veřejných klíčů Azure Stack
 
-Sada Azure má síť infrastruktury veřejných pomocí externě dostupný veřejné IP adresy přiřazené k malého služeb Azure zásobníku a které by mohly mít klientské virtuální počítače. Certifikáty PKI s odpovídající názvy DNS pro tyto koncové body Azure zásobníku infrastruktury veřejných jsou nezbytné při nasazení Azure zásobníku. Tento článek obsahuje informace o:
+Azure Stack je síť infrastruktury veřejného pomocí zvenku přístupný veřejné IP adresy přiřazené k malé sadě služby Azure Stack a případně klientské virtuální počítače. Certifikáty PKI s příslušnými názvy DNS pro tyto koncové body služby Azure Stack infrastruktury veřejných jsou potřeba při nasazení Azure stacku. Tento článek obsahuje informace o:
 
-- Jaké certifikáty se vyžadují k nasazení Azure zásobníku
-- Proces získání certifikátů odpovídající tyto specifikace
-- Jak připravit, ověření a použití těchto certifikátů během nasazování
+- Jaké certifikáty jsou požadovány pro nasazení Azure Stack
+- Proces získání certifikátů vyhovujících tyto specifikace
+- Příprava, ověřit a použití těchto certifikátů během nasazení
 
 > [!Note]  
-> Během nasazení je nutné zkopírovat certifikáty do složky nasazení, která odpovídá zprostředkovatele identity, které nasazujete proti (Azure AD ani AD FS). Pokud použijete jeden certifikát pro všechny koncové body, je nutné zkopírovat tento soubor certifikátu do každé složky pro nasazení, jak je uvedeno v následujících tabulkách. Struktura složek je předem součástí nasazení virtuálního počítače a naleznete na adrese: C:\CloudDeployment\Setup\Certificates. 
+> Během nasazení musíte zkopírovat certifikáty do složky pro nasazení, který odpovídá zprostředkovatele identity, které nasazujete proti (Azure AD nebo AD FS). Pokud použijete jeden certifikát pro všechny koncové body, musíte zkopírovat daný soubor certifikátu do každé složky pro nasazení, jak je uvedeno v následujících tabulkách. Struktura složek je předem připravené na nasazení virtuálním počítači a najdete tady: C:\CloudDeployment\Setup\Certificates. 
 
 ## <a name="certificate-requirements"></a>Požadavky na certifikát
-Následující seznam popisuje požadavky na certifikát, které jsou nutné k nasazení Azure zásobníku: 
-- Certifikáty musí být vystavené z interní certifikační autority nebo veřejné certifikační autority. Pokud se používá z veřejné certifikační autority, musí být zahrnut v bitové kopii základní operační systém v rámci programu Microsoft důvěryhodné kořenové autoritě. Úplný seznam najdete: https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca 
-- Vaše infrastruktura Azure zásobníku musí mít přístup k síti do umístění seznamu odvolaných certifikátů (CRL) certifikační autority publikován v certifikátu. Tento seznam odvolaných certifikátů musí být koncový bod http
-- Když otáčení certifikátů, certifikáty musí být že buď vystavené stejným interní certifikační autorita používaná k podepisování certifikátů uvedených v nasazení nebo všechny veřejné certifikační autority z výše
-- Použití certifikáty podepsané svým držitelem nejsou podporovány.
-- Certifikát může být jeden zástupný znak certifikát zahrnující všechny obory názvů v poli Alternativní název předmětu (SAN). Alternativně můžete použít jednotlivé certifikáty pomocí zástupné znaky pro koncové body, jako třeba **acs** a Key Vault, kde jsou vyžadovány. 
-- Algoritmus podpisu certifikátu nemůže být SHA1, jako musí být vyšší. 
-- Certifikát musí být ve formátu PFX, jako veřejné a soukromé klíče jsou požadovány pro instalaci zásobník Azure. 
-- Soubory certifikátů pfx musí mít hodnotu "Digitální podpis" a "KeyEncipherment" v jeho poli "Použití klíče".
-- Soubory certifikátů pfx musí mít hodnoty "Ověření serveru (1.3.6.1.5.5.7.3.1)" a "Ověření klienta (1.3.6.1.5.5.7.3.2)" v poli "Použití rozšířeného klíče".
-- Tento certifikát "vystaveno pro:" pole nesmí být stejné jako jeho "vydaný:" pole.
-- Hesla, aby všechny soubory pfx certifikátů musí být stejný v době nasazení
+Následující seznam popisuje požadavky na certifikáty, které jsou nutné k nasazení Azure Stack: 
+- Certifikáty musí být vydány interní certifikační autority nebo veřejné certifikační autority. Pokud se používá z veřejné certifikační autority, musí být součástí image základního operačního systému v rámci aplikace Microsoft důvěryhodné kořenové autoritě. Úplný seznam najdete: https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca 
+- Infrastruktury Azure stacku musí mít přístup k síti do publikované v certifikátu umístění seznamu odvolaných certifikátů (CRL) certifikační autority. Tento seznam odvolaných certifikátů musí být koncový bod http
+- Při obměně certifikátů, certifikáty musí být že buď vydávány stejné interní certifikační autorita používaná k podepisování certifikátů, které jsou k dispozici v nasazení nebo jakékoli veřejné certifikační autority výše
+- Použití certifikátů podepsaných svým držitelem nejsou podporovány.
+- Pro nasazení a otočení můžete buď použít jeden certifikát pokrývající všechny obory názvů v pole název subjektu a alternativní název předmětu (SAN) certifikátu, nebo můžete použít jednotlivé certifikáty pro každý obor názvů níže, která službě Azure Stack služby, které máte v plánu využít vyžadují. Poznámka: oba přístupy vyžadovat pomocí zástupných znaků pro koncové body, ve kterém jsou povinné, například **KeyVault** a **KeyVaultInternal**. 
+- Algoritmus podpisu certifikátu nemůže být SHA1, jako je třeba silnější. 
+- Certifikát musí být ve formátu PFX, veřejné a soukromé klíče jsou požadována pro instalaci služby Azure Stack. 
+- Soubory certifikátů pfx musí mít hodnotu "Digitální podpis" a "KeyEncipherment" v poli "Použití klíče".
+- Soubory certifikátů pfx musí mít hodnotu "Ověření serveru (1.3.6.1.5.5.7.3.1)" a "Ověření klienta (1.3.6.1.5.5.7.3.2)" v poli "Použití rozšířeného klíče".
+- Certifikátu "vystaveno pro:" pole nesmí být stejný jako jeho "Vystavitel:" pole.
+- Hesla, aby všechny soubory certifikátů pfx musí být stejná v době nasazování
 - Heslo pro soubor pfx certifikátu musí být složité heslo.
-- Zajistěte, aby názvy subjektu a alternativní názvy subjektu v rozšíření (x509v3_config) shody alternativní název subjektu. Pole alternativní název subjektu umožňuje zadat názvy další hostitelů (weby, IP adresy, názvy společných) byly chráněny jeden certifikát SSL.
+- Ujistěte se, že názvy subjektu a alternativní názvy subjektu v rozšíření (x509v3_config) shody alternativní název subjektu. Pole alternativní název subjektu umožňuje určit další hostitele (weby, IP adresy, běžné názvy) která bude chráněná funkcí jedním certifikátem SSL.
 
 > [!NOTE]  
 > Vlastní certifikáty podepsaná nejsou podporovány.
 
 > [!NOTE]  
-> Přítomnost prostředník certifikačních autorit v řetězu vztahy důvěryhodnosti je certifikát na podporována. 
+> Přítomnost zprostředkovatel certifikační autority v řetězu vztahy důvěryhodnosti je certifikátu nepodporuje. 
 
 ## <a name="mandatory-certificates"></a>Povinné certifikáty
-V tabulce v této části jsou certifikáty infrastruktury veřejných KLÍČŮ veřejný koncový bod Azure zásobníku, které jsou požadovány pro obě Azure AD a nasazení zásobník Azure AD FS. Požadavky na certifikát jsou seskupené podle oblasti, jakož i oborů názvů používaných a certifikáty, které se vyžadují pro každý obor názvů. V tabulce jsou popsány také složku, ve kterém poskytovatele řešení zkopíruje různé certifikáty za veřejný koncový bod. 
+V tabulce v této části jsou popsány certifikáty infrastruktury veřejných KLÍČŮ veřejný koncový bod služby Azure Stack, které jsou požadovány pro Azure AD a nasazení služby AD FS Azure Stack. Požadavky na certifikát jsou seskupené podle oblasti, jakož i obory názvů používané a certifikáty, které jsou požadovány pro každý obor názvů. Tabulka taky popisuje složku, ve kterém poskytovatele řešení zkopíruje různé certifikáty na veřejný koncový bod. 
 
-Certifikáty s odpovídající názvy DNS pro každý koncový bod Azure zásobníku infrastruktury veřejných se vyžadují. Název DNS každý koncový bod je vyjádřen ve formátu:  *&lt;předpony >.&lt; oblast >. &lt;plně kvalifikovaný název domény >*. 
+Jsou vyžadovány certifikáty s příslušnými názvy DNS pro každý koncový bod veřejné infrastruktury Azure stacku. Název DNS každý koncový bod je vyjádřená ve formátu:  *&lt;předpony >.&lt; oblast >. &lt;plně kvalifikovaný název domény >*. 
 
-Pro vaše nasazení [Oblast] a [externalfqdn] hodnoty musí odpovídat oblasti a názvy externí domény, které jste zvolili pro systém Azure zásobníku. Jako příklad, pokud byl název oblasti *Redmond* a název domény externího byl *contoso.com*, názvy DNS by mít formát *&lt;předpony >. redmond.contoso.com*. *&lt;Předpony >* hodnoty jsou předem definovanou společností Microsoft k popisu zabezpečené certifikát koncového bodu. Kromě toho  *&lt;předpony >* hodnoty koncových bodů externí infrastruktury závisí na službu Azure zásobníku, která používá konkrétní koncový bod. 
+Pro vaše nasazení [Oblast] a [externalfqdn] hodnoty musí odpovídat oblasti a názvy externích domén, které jste zvolili pro váš systém Azure Stack. Jako příklad, pokud byl název oblasti *Redmond* a názvem externí domény *contoso.com*, názvy DNS by mít formát *&lt;předpony >. redmond.contoso.com*. *&lt;Předpony >* hodnoty jsou předem definovanou společností Microsoft k popisu koncový bod zabezpečené pomocí certifikátu. Kromě toho  *&lt;předpony >* hodnoty infrastruktury externí koncové body, závisí na služby Azure Stack, který používá určitého koncového bodu. 
 
 > [!note]  
-> Certifikáty může být zadaný jako certifikát jeden zástupný znak zahrnující všechny obory názvů v polích subjektu a alternativní název předmětu (SAN) zkopírovány do všech adresářů, nebo jako jednotlivé certifikáty pro každý koncový bod zkopírován do příslušné adresáře. Pamatujte si, že obě možnosti vyžadují, abyste pomocí certifikáty se zástupnými znaky pro koncové body, jako například **acs** a Key Vault, kde jsou vyžadovány. 
+> Certifikáty je možné poskytnout jako jeden zástupný certifikát pokrývající všechny obory názvů v subjektu a alternativní název předmětu (SAN) polí zkopírována do všechny adresáře nebo jako jednotlivé certifikáty pro každý koncový bod zkopírována do odpovídající adresář. Nezapomeňte, že obě možnosti vyžadují, abyste pomocí certifikátů se zástupnými znaky pro koncové body, jako **acs** a kde se vyžadují služby Key Vault. 
 
-| Složky pro nasazení | Požadovaný certifikát subjektu a alternativní názvy subjektu (SAN) | Obor (podle oblasti) | SubDomain namespace |
+| Složka pro nasazení | Požadovaný certifikát subjektu a alternativní názvy subjektu (SAN) | Obor (podle oblasti) | SubDomain namespace |
 |-------------------------------|------------------------------------------------------------------|----------------------------------|-----------------------------|
-| Veřejné portálu | portál. &lt;oblast >. &lt;plně kvalifikovaný název domény > | Portály | &lt;oblast >. &lt;plně kvalifikovaný název domény > |
+| Veřejný portál | portál. &lt;oblast >. &lt;plně kvalifikovaný název domény > | Portály | &lt;oblast >. &lt;plně kvalifikovaný název domény > |
 | Portál pro správu | adminportal. &lt;oblast >. &lt;plně kvalifikovaný název domény > | Portály | &lt;oblast >. &lt;plně kvalifikovaný název domény > |
-| Veřejný Azure Resource Manager | Správa. &lt;oblast >. &lt;plně kvalifikovaný název domény > | Azure Resource Manager | &lt;oblast >. &lt;plně kvalifikovaný název domény > |
-| Správce Azure Resource Manager | adminmanagement. &lt;oblast >. &lt;plně kvalifikovaný název domény > | Azure Resource Manager | &lt;oblast >. &lt;plně kvalifikovaný název domény > |
+| Veřejné Azure Resource Manageru | Správa. &lt;oblast >. &lt;plně kvalifikovaný název domény > | Azure Resource Manager | &lt;oblast >. &lt;plně kvalifikovaný název domény > |
+| Správce Azure Resource Manageru | adminmanagement. &lt;oblast >. &lt;plně kvalifikovaný název domény > | Azure Resource Manager | &lt;oblast >. &lt;plně kvalifikovaný název domény > |
 | ACSBlob | *.blob.&lt;region>.&lt;fqdn><br>(Certifikát SSL typu Wildcard) | Blob Storage | objekt BLOB. &lt;oblast >. &lt;plně kvalifikovaný název domény > |
 | ACSTable | * .table. &lt;oblast >. &lt;plně kvalifikovaný název domény ><br>(Certifikát SSL typu Wildcard) | Table Storage | Tabulka. &lt;oblast >. &lt;plně kvalifikovaný název domény > |
 | ACSQueue | * .queue. &lt;oblast >. &lt;plně kvalifikovaný název domény ><br>(Certifikát SSL typu Wildcard) | Queue Storage | fronty. &lt;oblast >. &lt;plně kvalifikovaný název domény > |
 | KeyVault | * .vault. &lt;oblast >. &lt;plně kvalifikovaný název domény ><br>(Certifikát SSL typu Wildcard) | Key Vault | trezor. &lt;oblast >. &lt;plně kvalifikovaný název domény > |
-| KeyVaultInternal | *.adminvault. &lt;oblast >. &lt;plně kvalifikovaný název domény ><br>(Certifikát SSL typu Wildcard) |  Interní Keyvault |  adminvault. &lt;oblast >. &lt;plně kvalifikovaný název domény > |
+| KeyVaultInternal | *.adminvault. &lt;oblast >. &lt;plně kvalifikovaný název domény ><br>(Certifikát SSL typu Wildcard) |  Interní služby Keyvault |  adminvault. &lt;oblast >. &lt;plně kvalifikovaný název domény > |
 
-Pokud nasadíte zásobník Azure pomocí režimu nasazení služby Azure AD, stačí vyžádat certifikáty uvedené v předchozí tabulce. Ale pokud nasazujete zásobník Azure pomocí režimu nasazení služby AD FS, musíte také požádat o certifikáty, které jsou popsané v následující tabulce:
+Pokud provádíte nasazení Azure Stack pomocí režimu nasazení služby Azure AD, stačí pro žádosti o certifikáty uvedené v předchozí tabulce. Nicméně pokud provádíte nasazení Azure Stack pomocí režimu nasazení služby AD FS, musíte také požádat o certifikáty jsou popsané v následující tabulce:
 
-|Složky pro nasazení|Požadovaný certifikát subjektu a alternativní názvy subjektu (SAN)|Obor (podle oblasti)|SubDomain namespace|
+|Složka pro nasazení|Požadovaný certifikát subjektu a alternativní názvy subjektu (SAN)|Obor (podle oblasti)|SubDomain namespace|
 |-----|-----|-----|-----|
-|ADFS|Služba AD FS.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*<br>(Certifikát SSL)|ADFS|*&lt;oblast >. &lt;plně kvalifikovaný název domény >*|
+|ADFS|služby AD FS.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*<br>(Certifikát SSL)|ADFS|*&lt;oblast >. &lt;plně kvalifikovaný název domény >*|
 |Graph|graf.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*<br>(Certifikát SSL)|Graph|*&lt;oblast >. &lt;plně kvalifikovaný název domény >*|
 |
 
 > [!IMPORTANT]
 > Všechny certifikáty, které jsou uvedené v této části musí mít stejné heslo. 
 
-## <a name="optional-paas-certificates"></a>Volitelné PaaS certifikáty
-Pokud plánujete nasadit další služby Azure zásobníku PaaS (SQL, MySQL a služby App Service) po zásobník Azure byla nasazena a nakonfigurována, budete muset požádat o další certifikáty pro koncové body služby PaaS. 
+## <a name="optional-paas-certificates"></a>Volitelné certifikáty PaaS
+Pokud plánujete nasadit další služby Azure Stack PaaS (SQL, MySQL a App Service) po Azure Stack byla nasazena a nakonfigurována, budete muset požádat o další certifikáty pro koncové body služeb modelu PaaS. 
 
 > [!IMPORTANT]
-> Certifikáty, které používáte pro poskytovatele prostředků služby App Service, SQL a MySQL musí mít stejnou kořenovou autoritou jako používaných pro globální koncové body Azure zásobníku. 
+> Certifikáty, které používáte pro poskytovatele prostředků App Service, SQL a MySQL musí mít stejné kořenové autority používané pro globální koncové body služby Azure Stack. 
 
-Následující tabulka popisuje koncové body a certifikáty potřebné pro adaptéry SQL a MySQL a pro službu App Service. Nemusíte tyto certifikáty zkopírovat do složky pro nasazení Azure zásobníku. Tyto certifikáty se místo toho zadejte při instalaci dalších prostředků poskytovatelů. 
+Následující tabulka popisuje koncové body a certifikáty, které jsou nutné pro adaptéry SQL a MySQL a pro službu App Service. Není nutné zkopírovat tyto certifikáty do složky pro nasazení Azure Stack. Tyto certifikáty se místo toho zadejte při instalaci poskytovatele dalších prostředků. 
 
 |Obor (podle oblasti)|Certifikát|Požadovaný certifikát subjektu a alternativní názvy subjektu (SAN)|SubDomain namespace|
 |-----|-----|-----|-----|
 |SQL, MySQL|SQL a MySQL|&#42;.dbadapter.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*<br>(Certifikát SSL typu Wildcard)|dbadapter.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*|
-|App Service|Certifikát SSL výchozí web provoz|&#42;.appservice.*&lt;region>.&lt;fqdn>*<br>&#42;.scm.appservice.*&lt;region>.&lt;fqdn>*<br>&#42;.sso.appservice.*&lt;region>.&lt;fqdn>*<br>(Certifikát SSL typu Wildcard více doménami<sup>1</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
+|App Service|Webové přenosy výchozí certifikát SSL|&#42;.appservice.*&lt;region>.&lt;fqdn>*<br>&#42;.scm.appservice.*&lt;region>.&lt;fqdn>*<br>&#42;.sso.appservice.*&lt;region>.&lt;fqdn>*<br>(Certifikát SSL typu Wildcard více domény<sup>1</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
 |App Service|Rozhraní API|api.appservice.*&lt;region>.&lt;fqdn>*<br>(Certifikát SSL<sup>2</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
 |App Service|FTP|ftp.appservice.*&lt;region>.&lt;fqdn>*<br>(Certifikát SSL<sup>2</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
 |App Service|Jednotné přihlašování|sso.appservice.*&lt;region>.&lt;fqdn>*<br>(Certifikát SSL<sup>2</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
 
-<sup>1</sup> vyžaduje jeden certifikát s více alternativní názvy subjektu zástupný znak. Více zástupné sítí SAN na jeden certifikát nemusí podporovat všechny veřejné certifikačních autorit 
+<sup>1</sup> vyžaduje jeden certifikát s více alternativní názvy subjektu zástupný znak. Všechny veřejné certifikační autority nemusí podporovat více zástupných znaků sítě SAN na jeden certifikát 
 
-<sup>2</sup> A &#42;.appservice. *&lt;oblast >. &lt;plně kvalifikovaný název domény >* zástupný certifikát nelze použít namísto tyto tři certifikáty (api.appservice. *&lt;oblast >. &lt;plně kvalifikovaný název domény >*, ftp.appservice. *&lt;oblast >. &lt;plně kvalifikovaný název domény >* a sso.appservice. *&lt;oblast >. &lt;plně kvalifikovaný název domény >*. Služby App Service explicitně vyžaduje použití samostatných certifikátů pro tyto koncové body. 
+<sup>2</sup> A &#42;.appservice. *&lt;oblast >. &lt;plně kvalifikovaný název domény >* zástupný certifikát nelze použít namísto tyto tři certifikáty (api.appservice. *&lt;oblast >. &lt;plně kvalifikovaný název domény >*, ftp.appservice. *&lt;oblast >. &lt;plně kvalifikovaný název domény >* a sso.appservice. *&lt;oblast >. &lt;plně kvalifikovaný název domény >*. Použití samostatných certifikátů služby App Service explicitně vyžaduje pro tyto koncové body. 
 
 ## <a name="learn-more"></a>Další informace
-Zjistěte, jak [vygenerujete certifikáty infrastruktury veřejných KLÍČŮ pro nasazení Azure zásobníku](azure-stack-get-pki-certs.md). 
+Zjistěte, jak [vygenerovat certifikáty PKI pro nasazení Azure stacku](azure-stack-get-pki-certs.md). 
 
 ## <a name="next-steps"></a>Další postup
 [Integrace identit](azure-stack-integrate-identity.md)

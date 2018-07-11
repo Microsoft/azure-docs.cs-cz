@@ -9,12 +9,12 @@ ms.technology: luis
 ms.topic: article
 ms.date: 05/23/2018
 ms.author: v-geberr;
-ms.openlocfilehash: 8b4f9c17557b405bc5f4e78947952826724fc784
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: af3a96c978a3b22fcbc6296642e4749c863dff9e
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37865058"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37928569"
 ---
 # <a name="export-and-delete-your-customer-data-in-language-understanding-luis-in-cognitive-services"></a>Exportovat a odstraňovat vaše zákaznická data v Language Understanding (LUIS) ve službě Cognitive Services
 
@@ -35,7 +35,7 @@ LUIS uživatelé mají plnou kontrolu nad obsah uživatelů, buď prostřednictv
 
 | | **Uživatelský účet** | **Aplikace** | **Utterance(s)** | **Dotazy koncových uživatelů** |
 | --- | --- | --- | --- | --- |
-| **Azure Portal** | [Odkaz](luis-how-to-account-settings.md) | [Odkaz](create-new-app.md#delete-app) | [Odkaz](create-new-app.md#delete-app) | [Odkaz](create-new-app.md#delete-app) |
+| **Azure Portal** | [Odkaz](luis-how-to-account-settings.md) | [Odkaz](luis-how-to-start-new-app.md#delete-app) | [Odkaz](luis-how-to-start-new-app.md#delete-app) | [Odkaz](luis-how-to-start-new-app.md#delete-app) |
 | **Rozhraní API** | [Odkaz](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c4c) | [Odkaz](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c39) | [Odkaz](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0b) | [Odkaz](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/58b6f32139e2bb139ce823c9) |
 
 

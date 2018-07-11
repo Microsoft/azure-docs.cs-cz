@@ -11,12 +11,12 @@ ms.workload: data-management
 ms.topic: article
 ms.date: 10/27/2016
 ms.author: sumuth
-ms.openlocfilehash: 5e6acf59410099ba36bfa6fa89a576d83b61cf00
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: ff36a67cd09dd1e5cb5635be17d1dd76fc824d1a
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37341500"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37917070"
 ---
 # <a name="faq-for-cleardb-mysql-databases-with-azure-app-service"></a>Nejčastější dotazy k databázím ClearDB MySQL ve službě Azure App Service
 Tyto nejčastější dotazy odpovědi na běžné dotazy týkající se použití a nakupování databází ClearDB MySQL pro Azure Web Apps.
@@ -44,7 +44,6 @@ To závisí na typu vašeho předplatného, který používáte. Tady jsou někt
 * [Bezplatná zkušební verze](https://azure.microsoft.com/pricing/free-trial/): zahrnuje kredity pro použití s Microsoft Azure services, ale neumožňuje nákup materiály třetích stran. K nákupu služeb třetích stran nebo placené databázi MySQL, budete muset použít platební kartu povolené předplatné. Pro webové aplikace můžete vytvořit bezplatný ClearDB MySQL database.
 * [Předplatné MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/) a **MSDN pro vývoj testování průběžných plateb**: podobně jako v případě bezplatné zkušební verze předplatného MSDN vyžaduje, abyste platební kartu zakoupit placené řešení MySQL od ClearDB.
 * [Smlouvy Enterprise (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/): zákazníky se smlouvou EA se účtují podle příslušné smlouvy EA čtvrtletně pro všechny své nákupy na Azure Marketplace (třetí strany) na samostatné, konsolidované faktury. Bude se vám účtovat mimo peněžní závazek pro nákupy na marketplace. Mějte prosím na paměti, že v tuto chvíli není Azure Store dostupný pro zákazníky, které jsou zaregistrované v Ázerbájdžán, Chorvatsko, Norsko a Portoriko. 
-* [DreamSpark](https://www.dreamspark.com/Product/Product.aspx?productid=99): můžete vytvořit pouze databází bezplatný ClearDB pro webové aplikace. Neexistuje žádné omezení počtu databází bezplatný ClearDB MySQL, kterou vytvoříte. Všimněte si, že bezplatných databází není, který se má použít pro produkční webové aplikace, protože tato služba je určena pouze pro zkušební verzi.
 
 ## <a name="why-was-i-charged-350-for-a-web-app--mysql-from-the-azure-marketplace"></a>Proč se mi naúčtovala platba 3.50 pro webové aplikace a MySQL v Azure Marketplace?
 Výchozí možnost databáze je Titan, což je 3.50 $. Jsme nezobrazovat náklady při vytváření databáze, a chybně jste si můžete koupit databázi, kterou jste neměli v úmyslu. Snažíme se najít způsob, jak vylepšit, ale do té doby je nutné zkontrolovat všechny vaše vybrané cenové úrovně pro webovou aplikaci a databázi před kliknutím na tlačítko **vytvořit** a spouští se nasazování prostředků.

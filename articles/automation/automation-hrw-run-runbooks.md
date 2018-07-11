@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/25/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 58ff2b5bbf338f3af78b693aef57cf6293dc08b7
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 899e5dc13dfaf7d7545955e7b4b73939c3275d3f
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37436504"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37930303"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Spouštění runbooků v procesu Hybrid Runbook Worker
 
@@ -158,7 +158,7 @@ Uložit *Export RunAsCertificateToHybridWorker* sady runbook na počítači s `.
 
 ## <a name="job-behavior"></a>Chování úlohy
 
-Úlohy jsou zpracovány mírně liší na procesy Hybrid Runbook Worker než při spuštění v Azure karantény. Jedním klíčovým rozdílem je, že neexistuje žádné omezení na dobu trvání úlohy na procesy Hybrid Runbook Worker. Pokud máte sadu runbook dlouhotrvající chcete zajistit, že je odolný vůči možné restartovat, například pokud restartování počítače, který je hostitelem Hybrid worker. Pokud Hybrid worker hostitelský počítač restartován, všechny spuštěné úlohy runbooku se restartuje, od začátku nebo od posledního kontrolního bodu pro runbooky pracovních postupů Powershellu. Pokud více než 3krát restartování úlohy runbooku, pak je pozastavený.
+Úlohy jsou zpracovány mírně liší na procesy Hybrid Runbook Worker než při spuštění v Azure karantény. Jedním klíčovým rozdílem je, že neexistuje žádné omezení na dobu trvání úlohy na procesy Hybrid Runbook Worker. Spuštění sady Runbook v Azure izolovaných prostorů jsou omezena na 3 hodin z důvodu [spravedlivé sdílení](automation-runbook-execution.md#fair-share). Pokud máte sadu runbook dlouhotrvající chcete zajistit, že je odolný vůči možné restartovat, například pokud restartování počítače, který je hostitelem Hybrid worker. Pokud Hybrid worker hostitelský počítač restartován, všechny spuštěné úlohy runbooku se restartuje, od začátku nebo od posledního kontrolního bodu pro runbooky pracovních postupů Powershellu. Pokud více než 3krát restartování úlohy runbooku, pak je pozastavený.
 
 ## <a name="troubleshoot"></a>Řešení potíží
 

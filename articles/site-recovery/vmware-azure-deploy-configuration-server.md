@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/06/2018
+ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: 0a5eb81ea4456be3d01c9d446798ce1732dff630
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
-ms.translationtype: MT
+ms.openlocfilehash: 240f5270d083fa5f4742f3ed2cd61feee2b635ec
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857244"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37919344"
 ---
 # <a name="deploy-a-configuration-server"></a>Nasazení konfiguračního serveru
 

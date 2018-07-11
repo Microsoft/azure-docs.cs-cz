@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 06/08/2018
 ms.author: v-geberr;
-ms.openlocfilehash: c1d797e3dd3a0926cfce8fee323aaaa1a866a169
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 6c4e4c7acb5083e758aa7c6b94e2464a85ae8e9e
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37436922"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37951105"
 ---
 # <a name="best-practices"></a>Osvědčené postupy
 Proces tvorby aplikace používejte k sestavení aplikace LUIS. 
@@ -77,7 +77,7 @@ Předtím, než je vaše aplikace má přijaté žádosti koncového bodu, vzhle
 Toto je použití náhrady záměr, uvedené všechno mimo vaši aplikaci. Přidejte jeden příklad utterance záměru pro každých 10 příklad projevy ve zbývající části aplikace LUIS None.
 
 ## <a name="do-leverage-the-suggest-feature-for-active-learning"></a>Využijte funkci navrhnout pro aktivní učení
-Použití [aktivně učit](label-suggested-utterances.md)společnosti **zkontrolujte koncový bod projevy** v pravidelných intervalech, nepřidávat další příklad projevy na záměry. Protože aplikace neustále přijímá projevy koncový bod, je tento seznam rozrůstá a změna.
+Použití [aktivně učit](luis-how-to-review-endoint-utt.md)společnosti **zkontrolujte koncový bod projevy** v pravidelných intervalech, nepřidávat další příklad projevy na záměry. Protože aplikace neustále přijímá projevy koncový bod, je tento seznam rozrůstá a změna.
 
 ## <a name="do-monitor-the-performance-of-your-app"></a>Monitorování výkonu vaší aplikace
 Monitorování přesnost předpovědi pomocí sady testů. 

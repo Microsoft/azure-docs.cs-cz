@@ -1,9 +1,9 @@
 ---
-title: Vytvořte prostředí Linux s 2.0 rozhraní příkazového řádku Azure | Microsoft Docs
-description: Vytvoření úložiště, virtuální počítač s Linuxem, virtuální síť a podsíť, nástroj pro vyrovnávání zatížení, seskupování, veřejnou IP adresu a skupinu zabezpečení sítě, všechny od základů pomocí Azure CLI 2.0.
+title: Vytvoření linuxového prostředí pomocí Azure CLI 2.0 | Dokumentace Microsoftu
+description: Vytvoření úložiště, virtuální počítač s Linuxem, virtuální sítě a podsítě, nástroj pro vyrovnávání zatížení, síťové rozhraní, veřejné IP adresy a skupinu zabezpečení sítě, vše od základů pomocí rozhraní příkazového řádku Azure CLI 2.0.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,29 +14,29 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/14/2017
-ms.author: iainfou
-ms.openlocfilehash: f41bfec3c9f950893b69c90a86c2e4a254b72a8b
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.author: cynthn
+ms.openlocfilehash: c566c747d393dbfa3225faf6f8ad78fa8abfa3ac
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29852128"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37929701"
 ---
-# <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>Vytvoření kompletní virtuální počítač Linux pomocí rozhraní příkazového řádku Azure
-Rychle vytvořit virtuální počítač (VM) v Azure, můžete jeden příkaz rozhraní příkazového řádku Azure, kterou použije výchozí hodnoty pro vytvoření všechny požadované podpůrné prostředky. Prostředky, jako je například virtuální sítě, veřejnou IP adresu a pravidel skupiny zabezpečení sítě se vytvářejí automaticky. Pro další ovládací prvek v provozním prostředí použít, můžete vytvořit tyto prostředky předem a pak do nich přidat virtuální počítače. Tento článek vás provede postup vytvoření virtuálního počítače a každý z doprovodné materiály po jednom.
+# <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>Vytvoření kompletní Linuxový virtuální počítač pomocí Azure CLI
+Rychle vytvořit virtuální počítač (VM) v Azure, můžete jediným příkazem Azure CLI, který používá výchozí hodnoty pro vytvoření jakékoli požadované podpůrné prostředky. Prostředky, jako jsou virtuální síť, veřejnou IP adresu a pravidla skupiny zabezpečení sítě se vytvoří automaticky. Pro další kontrolu nad vaším prostředím v produkčním prostředí používat, můžete vytvořit tyto prostředky předem domluvili a pak do nich přidejte virtuální počítače. Tento článek vás provede postupy vytvoření virtuálního počítače a všechny podpůrné prostředky jeden po druhém.
 
-Ujistěte se, že jste nainstalovali nejnovější [Azure CLI 2.0](/cli/azure/install-az-cli2) a přihlášení k účtu Azure s [az přihlášení](/cli/azure/reference-index#az_login).
+Ujistěte se, že máte nainstalovanou nejnovější verzi [příkazového řádku Azure CLI 2.0](/cli/azure/install-az-cli2) a přihlášení k účtu Azure pomocí [az login](/cli/azure/reference-index#az_login).
 
-V následujících příkladech nahraďte názvy parametrů příklad vlastní hodnoty. Zahrnout názvy parametrů příklad *myResourceGroup*, *myVnet*, a *Můjvp*.
+V následujících příkladech nahraďte ukázkové názvy parametrů s vlastními hodnotami. Zahrnout názvy parametrů příklad *myResourceGroup*, *myVnet*, a *myVM*.
 
 ## <a name="create-resource-group"></a>Vytvoření skupiny prostředků
-Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Před virtuální počítač a doprovodné materiály virtuální sítě je třeba vytvořit skupinu prostředků. Vytvořte skupinu prostředků s [vytvořit skupinu az](/cli/azure/group#az_group_create). Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*:
+Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Skupina prostředků musí být vytvořená před virtuální počítač a podpůrné prostředky virtuální sítě. Vytvořte skupinu prostředků s [vytvořit skupiny az](/cli/azure/group#az_group_create). Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-Ve výchozím nastavení výstup rozhraní příkazového řádku Azure je ve formátu JSON (JavaScript Object Notation). Chcete-li změnit výchozí výstup do seznamu nebo tabulka, například použít [konfigurace az--výstup](/cli/azure/reference-index#az_configure). Můžete také přidat `--output` na libovolný příkaz po dobu jednoho změnit ve výstupním formátu. Následující příklad ukazuje výstup JSON `az group create` příkaz:
+Ve výchozím nastavení je výstup příkazů Azure CLI ve formátu JSON (JavaScript Object Notation). Chcete-li změnit výchozí výstup na seznam nebo tabulku, například použít [konfigurace az--výstupu](/cli/azure/reference-index#az_configure). Můžete také přidat `--output` příslušnému příkazu pro jeden čas změnit ve výstupním formátu. Následující příklad ukazuje výstup JSON `az group create` příkaz:
 
 ```json                       
 {
@@ -51,7 +51,7 @@ Ve výchozím nastavení výstup rozhraní příkazového řádku Azure je ve fo
 ```
 
 ## <a name="create-a-virtual-network-and-subnet"></a>Vytvoření virtuální sítě a podsítě
-Další, které vytvoření virtuální sítě v Azure a podsíť v do které můžete vytvořit virtuální počítače. Použití [vytvoření sítě vnet az](/cli/azure/network/vnet#az_network_vnet_create) vytvořit virtuální síť s názvem *myVnet* s *192.168.0.0/16* předponu adresy. Můžete také přidat podsíť s názvem *mySubnet* s předponou adresy z *192.168.1.0/24*:
+Další, které vytvoříte v Azure a podsíť ve virtuální sítě do kterého můžete vytvořit virtuální počítače. Použití [az network vnet vytvořit](/cli/azure/network/vnet#az_network_vnet_create) vytvořit virtuální síť s názvem *myVnet* s *192.168.0.0/16* předponu adresy. Můžete také přidat podsíť s názvem *mySubnet* s předponou adresy *192.168.1.0/24*:
 
 ```azurecli
 az network vnet create \
@@ -62,7 +62,7 @@ az network vnet create \
     --subnet-prefix 192.168.1.0/24
 ```
 
-Výstup se zobrazí logicky vytvořené podsíť ve virtuální síti:
+Výstup ukazuje, že podsíť je logicky vytvořit uvnitř virtuální sítě:
 
 ```json
 {
@@ -103,7 +103,7 @@ Výstup se zobrazí logicky vytvořené podsíť ve virtuální síti:
 
 
 ## <a name="create-a-public-ip-address"></a>Vytvoření veřejné IP adresy
-Nyní vytvoříme veřejnou IP adresu s [vytvoření veřejné sítě az-ip](/cli/azure/network/public-ip#az_network_public_ip_create). Tato veřejná IP adresa umožňuje připojení k virtuální počítače z Internetu. Protože výchozí adresa je dynamická, vytvořit záznam DNS s názvem s `--domain-name-label` parametr. Následující příklad vytvoří veřejnou IP adresu s názvem *myPublicIP* s názvem DNS *mypublicdns*. Vzhledem k tomu, že název DNS musí být jedinečný, zadejte svůj vlastní jedinečný název DNS:
+Nyní Pojďme vytvořit veřejnou IP adresu pomocí [az network public-ip vytvořit](/cli/azure/network/public-ip#az_network_public_ip_create). Tato veřejná IP adresa umožňuje připojení k vašim virtuálním počítačům z Internetu. Protože výchozí adresa je dynamická, vytvořit položku DNS s názvem s `--domain-name-label` parametru. Následující příklad vytvoří veřejnou IP adresu s názvem *myPublicIP* s názvem služby DNS *mypublicdns*. Protože název DNS musí být jedinečný, zadejte jedinečný název DNS:
 
 ```azurecli
 az network public-ip create \
@@ -142,7 +142,7 @@ Výstup:
 
 
 ## <a name="create-a-network-security-group"></a>Vytvoření skupiny zabezpečení sítě
-K řízení toku provozu do a z virtuálních počítačů, použijete skupinu zabezpečení sítě pro virtuální síťový adaptér nebo podsítě. Následující příklad používá [vytvořit az sítě nsg](/cli/azure/network/nsg#az_network_nsg_create) vytvoříte skupinu zabezpečení sítě s názvem *myNetworkSecurityGroup*:
+K řízení toku přenosů do a z vašich virtuálních počítačů, můžete použít skupinu zabezpečení sítě pro virtuální síťové karty nebo podsítě. Následující příklad používá [az network nsg vytvořit](/cli/azure/network/nsg#az_network_nsg_create) vytvoříte skupinu zabezpečení sítě s názvem *myNetworkSecurityGroup*:
 
 ```azurecli
 az network nsg create \
@@ -150,7 +150,7 @@ az network nsg create \
     --name myNetworkSecurityGroup
 ```
 
-Můžete definovat pravidla, která povolují nebo odepírají konkrétní přenosy. Chcete-li povolit příchozí připojení na portu 22 (pro povolení přístupu SSH), vytvořte příchozí pravidlo s [vytvořit pravidla nsg sítě az](/cli/azure/network/nsg/rule#az_network_nsg_rule_create). Následující příklad vytvoří pravidlo s názvem *myNetworkSecurityGroupRuleSSH*:
+Můžete definovat pravidla, která povolují nebo odpírají konkrétní provoz. Pokud chcete povolit příchozí připojení na portu 22 (Chcete-li povolit přístup přes SSH), vytvořte příchozí pravidlo s [az network nsg pravidlo vytvořte](/cli/azure/network/nsg/rule#az_network_nsg_rule_create). Následující příklad vytvoří pravidlo *myNetworkSecurityGroupRuleSSH*:
 
 ```azurecli
 az network nsg rule create \
@@ -163,7 +163,7 @@ az network nsg rule create \
     --access allow
 ```
 
-Chcete-li povolit příchozí připojení na portu 80 (pro webový provoz), přidejte další pravidla skupiny zabezpečení sítě. Následující příklad vytvoří pravidlo s názvem *myNetworkSecurityGroupRuleHTTP*:
+Pokud chcete povolit příchozí připojení na portu 80 (pro webový provoz), přidáte jiné pravidlo skupiny zabezpečení sítě. Následující příklad vytvoří pravidlo *myNetworkSecurityGroupRuleHTTP*:
 
 ```azurecli
 az network nsg rule create \
@@ -176,7 +176,7 @@ az network nsg rule create \
     --access allow
 ```
 
-Podívejte se na skupinu zabezpečení sítě a pravidla s [az sítě nsg zobrazit](/cli/azure/network/nsg#az_network_nsg_show):
+Podívejte se na skupinu zabezpečení sítě a pravidla, jejichž [az network nsg show](/cli/azure/network/nsg#az_network_nsg_show):
 
 ```azurecli
 az network nsg show --resource-group myResourceGroup --name myNetworkSecurityGroup
@@ -332,8 +332,8 @@ Výstup:
 }
 ```
 
-## <a name="create-a-virtual-nic"></a>Vytvořit virtuální síťovou kartu
-Virtuální síťové adaptéry (NIC) jsou prostřednictvím kódu programu k dispozici, protože pravidla můžete použít pro jejich použití. V závislosti na tom [velikost virtuálního počítače](sizes.md), víc virtuálních síťových karet můžete připojit k virtuálnímu počítači. V následujícím [vytvořit síťových adaptérů sítě az](/cli/azure/network/nic#az_network_nic_create) příkazu vytvoříte síťový adaptér s názvem *myNic* a přidružit ho ke skupině zabezpečení sítě. Veřejná IP adresa *myPublicIP* je taky přiřazený virtuální síťový adaptér.
+## <a name="create-a-virtual-nic"></a>Vytvoření virtuálních síťových Adaptérů
+Virtuální síťové karty (síťové adaptéry) jsou prostřednictvím kódu programu k dispozici, protože pravidla lze použít k jejich použití. V závislosti na tom [velikost virtuálního počítače](sizes.md), víc virtuálních síťových karet můžete připojit k virtuálnímu počítači. V následujícím [az network nic vytvořit](/cli/azure/network/nic#az_network_nic_create) příkaz, vytvořte síťové rozhraní s názvem *myNic* a přidružte skupinu zabezpečení sítě. Veřejnou IP adresu *myPublicIP* je rovněž asociována s virtuální síťový adaptér
 
 ```azurecli
 az network nic create \
@@ -437,15 +437,15 @@ Výstup:
 
 
 ## <a name="create-an-availability-set"></a>Vytvoření skupiny dostupnosti
-Dostupnost nastaví nápovědu šíření virtuální počítače napříč domén selhání a aktualizace domény. I když můžete vytvořit pouze jeden virtuální počítač nyní, je osvědčeným postupem použít skupiny dostupnosti, aby bylo snazší v budoucnu rozšířit. 
+Skupiny dostupnosti nápovědy rozšíření virtuálních počítačů napříč doménami selhání a aktualizačních doménách. I když můžete vytvořit pouze jeden virtuální počítač nyní, je osvědčeným postupem je použití skupin dostupnosti, aby bylo snazší v budoucnu rozšířit. 
 
-Domén selhání definovat seskupování virtuálních počítačů, které sdílejí společné přepínač zdroje a sítě power. Ve výchozím nastavení jsou oddělené virtuální počítače, které jsou nakonfigurované v rámci vaší skupiny dostupnosti v rámci až tři domény selhání. Problémem hardwaru v jednom z těchto domén selhání nemá vliv na každý virtuální počítač, který běží vaše aplikace.
+Domény selhání definují seskupení virtuálních počítačů, které sdílejí společný power přepínač zdroje a sítě. Ve výchozím nastavení virtuální počítače, které jsou nakonfigurované v rámci skupiny dostupnosti rozdělené až do tří domén selhání. Hardwarové potíže v jednom z těchto domén selhání nemá vliv na každý virtuální počítač, na kterém běží vaše aplikace.
 
-Aktualizace domén označují skupiny virtuálních počítačů a základní fyzický hardware, který může být restartován ve stejnou dobu. Během plánované údržby pořadí, ve které aktualizace se restartují domény nemusí být po sobě jdoucích, ale po restartu pouze jednu aktualizační doménu najednou.
+Aktualizační domény označují skupiny virtuálních počítačů a podřízeného fyzického hardwaru, který lze restartovat současně. Během plánované údržby pořadí, ve které aktualizace se restartují, domény nemusí být sekvenční, ale vždy se restartuje jenom jedna aktualizační doména.
 
-Virtuální počítače Azure automaticky distribuuje mezi doménami selhání a aktualizace, když umístění do nastavení dostupnosti. Další informace najdete v tématu [Správa dostupnosti virtuálních počítačů](manage-availability.md).
+Virtuální počítače Azure automaticky distribuuje napříč doménami selhání a aktualizačními doménami, při vkládání je ve skupině dostupnosti. Další informace najdete v tématu [Správa dostupnosti virtuálních počítačů](manage-availability.md).
 
-Vytvořit sadu dostupnosti pro virtuální počítač s [az virtuálních počítačů sady dostupnosti. vytváření](/cli/azure/vm/availability-set#az_vm_availability_set_create). Následující příklad vytvoří skupinu dostupnosti s názvem *myAvailabilitySet*:
+Vytvořit skupinu dostupnosti pro virtuální počítač s [az vm skupinu dostupnosti vytvořit](/cli/azure/vm/availability-set#az_vm_availability_set_create). Následující příklad vytvoří skupinu dostupnosti s názvem *myAvailabilitySet*:
 
 ```azurecli
 az vm availability-set create \
@@ -453,7 +453,7 @@ az vm availability-set create \
     --name myAvailabilitySet
 ```
 
-Výstup domén selhání poznámky a aktualizace domény:
+Poznámky k výstupu domén selhání a aktualizačními doménami:
 
 ```json
 {
@@ -478,11 +478,11 @@ Výstup domén selhání poznámky a aktualizace domény:
 
 
 ## <a name="create-a-vm"></a>Vytvoření virtuálního počítače
-Jste vytvořili síťovým prostředkům pro podporu přístupné z Internetu virtuálních počítačů. Teď vytvořte virtuální počítač a zabezpečte ji pomocí klíče SSH. V tomto příkladu vytvoříme Ubuntu podle nejnovější LTS virtuálních počítačů. Můžete najít další Image s [seznamu obrázků virtuálních počítačů az](/cli/azure/vm/image#az_vm_image_list), jak je popsáno v [hledání Image virtuálního počítače Azure](cli-ps-findimage.md).
+Vytvořili jste síťové prostředky pro podporu přístupné z Internetu virtuálních počítačů. Teď vytvořte virtuální počítač a zabezpečte ji pomocí klíče SSH. V tomto příkladu vytvoříme Ubuntu virtuální počítač založený na nejnovější LTS. Můžete najít další Image s [az vm image seznamu](/cli/azure/vm/image#az_vm_image_list), jak je popsáno v [vyhledání imagí virtuálních počítačů Azure](cli-ps-findimage.md).
 
-Zadejte klíč SSH pro ověřování. Pokud nemáte páru veřejného klíče SSH, můžete [jejich vytvoření](mac-create-ssh-keys.md) nebo použít `--generate-ssh-keys` parametr, aby pro vás vytvořil. Pokud již máte pár klíčů, tento parametr používá existující klíče v `~/.ssh`.
+Zadejte klíč SSH pro účely ověření. Pokud nemáte páru veřejného klíče SSH, můžete si [je vytvořit](mac-create-ssh-keys.md) nebo použijte `--generate-ssh-keys` parametr vytvořit za vás. Pokud už máte pár klíčů, tento parametr používá existující klíče v `~/.ssh`.
 
-Vytvoření virtuálního počítače tak, že převedou všechny prostředky a informace o společně s [vytvořit virtuální počítač az](/cli/azure/vm#az_vm_create) příkaz. Následující příklad vytvoří virtuální počítač *myVM*:
+Vytvoření virtuálního počítače tak, že všechny prostředky a informace o spolu s [az vm vytvořit](/cli/azure/vm#az_vm_create) příkazu. Následující příklad vytvoří virtuální počítač *myVM*:
 
 ```azurecli
 az vm create \
@@ -496,7 +496,7 @@ az vm create \
     --generate-ssh-keys
 ```
 
-SSH pro virtuální počítač s položkou DNS, kterou jste zadali při vytvoření veřejné IP adresy. To `fqdn` je zobrazené ve výstupu, jako je vytváření virtuálního počítače:
+Připojte přes SSH k virtuálnímu počítači s položkou DNS, kterou jste zadali při vytvoření veřejné IP adresy. To `fqdn` se zobrazí ve výstupu při vytváření virtuálního počítače:
 
 ```json
 {
@@ -548,26 +548,26 @@ See "man sudo_root" for details.
 azureuser@myVM:~$
 ```
 
-Můžete nainstalovat NGINX a sledovat provoz toku k virtuálnímu počítači. Nainstalujte NGINX následujícím způsobem:
+Můžete nainstalovat server NGINX a sledovat provoz toku k virtuálnímu počítači. Instalaci serveru NGINX následujícím způsobem:
 
 ```bash
 sudo apt-get install -y nginx
 ```
 
-Pokud chcete zobrazit výchozí web NGINX v akci, otevřete webový prohlížeč a zadejte vaše plně kvalifikovaný název domény:
+Pokud chcete zobrazit výchozí web NGINX v akci, otevřete webový prohlížeč a zadejte váš plně kvalifikovaný název domény:
 
-![Výchozí web NGINX na vašem virtuálním počítači](media/create-cli-complete/nginx.png)
+![Výchozí web NGINX na virtuálním počítači](media/create-cli-complete/nginx.png)
 
 ## <a name="export-as-a-template"></a>Exportovat jako šablonu
-Co když teď chcete vytvořit další vývoj prostředí se stejnými parametry nebo produkčním prostředí odpovídající ho? Správce prostředků používá šablony JSON, které definují všech parametrů pro vaše prostředí. Můžete vytvořit na celé prostředí podle odkazující na tuto šablonu JSON. Můžete [vytvořit šablony JSON ručně](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) nebo exportovat stávajícího prostředí pro vytvoření šablony JSON pro vás. Použití [export skupiny az](/cli/azure/group#az_group_export) export skupiny prostředků následujícím způsobem:
+Co dělat, pokud teď chcete vytvořit další vývojová prostředí se stejnými parametry nebo produkčním prostředí, který mu odpovídá? Správce prostředků pomocí šablon JSON, které definují parametry vašeho prostředí. Pomocí odkazu na tuto šablonu JSON sestavujete celé prostředí. Je možné [ručně vytvářet šablony JSON](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) nebo exportovat stávající prostředí k vytvoření šablony JSON za vás. Použití [export skupiny az](/cli/azure/group#az_group_export) export skupiny prostředků následujícím způsobem:
 
 ```azurecli
 az group export --name myResourceGroup > myResourceGroup.json
 ```
 
-Tento příkaz vytvoří `myResourceGroup.json` souboru v aktuální pracovní adresář. Při vytváření prostředí z této šablony, zobrazí se výzva pro všechny názvy prostředků. Tyto názvy v souboru šablony můžete naplnit tak, že přidáte `--include-parameter-default-value` parametru `az group export` příkaz. Upravte svou šablonu JSON zadat názvy prostředků, nebo [vytvoření souboru parameters.JSON tímto kódem](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) určující názvy prostředků.
+Tento příkaz vytvoří `myResourceGroup.json` soubor v aktuálním pracovním adresáři. Při vytváření prostředí z této šablony se zobrazí výzva k zadání všechny názvy prostředků. Tyto názvy můžete naplnit v souboru šablony tak, že přidáte `--include-parameter-default-value` parametr `az group export` příkazu. Upravte svou šablonu JSON k určení názvy prostředků, nebo [vytvoření souboru parameters.json](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) , který určuje názvy prostředků.
 
-K vytvoření prostředí ze šablony, použijte [vytvořit nasazení skupiny az](/cli/azure/group/deployment#az_group_deployment_create) následujícím způsobem:
+K vytvoření prostředí ze šablony, použijte [vytvořit nasazení skupiny pro az](/cli/azure/group/deployment#az_group_deployment_create) následujícím způsobem:
 
 ```azurecli
 az group deployment create \
@@ -575,7 +575,7 @@ az group deployment create \
     --template-file myResourceGroup.json
 ```
 
-Můžete chtít číst [Další informace o tom, jak nasadit ze šablon](../../resource-group-template-deploy-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Další informace o tom, jak přírůstkově aktualizovat prostředí, použijte soubor parametrů a přístup k šablony z jedno umístění úložiště.
+Můžete chtít číst [Další informace o tom, jak nasadit ze šablon](../../resource-group-template-deploy-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Další informace o tom, jak přírůstkově aktualizovat prostředí, použijte soubor parametrů a přístup k šablony jedno umístění úložiště.
 
 ## <a name="next-steps"></a>Další postup
-Nyní jste připraveni začít pracovat s více síťovými součástmi a virtuálními počítači. Tato ukázka prostředí můžete vytváří vaše aplikace pomocí základních komponent zavedená sem.
+Nyní jste připraveni začít pracovat s více síťovými součástmi a virtuální počítače. Toto ukázkové prostředí můžete použít k sestavení aplikace s použitím základních komponent zavedené zde.

@@ -10,12 +10,12 @@ ms.technology: luis
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: v-geberr;
-ms.openlocfilehash: 283dcdc718231e5f0f82fb98fe71b77aa54d741b
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 3b225a012abe4796172327d8a723338e8de67749
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37867680"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37930014"
 ---
 # <a name="integrate-speech-service"></a>Integrace Speech service
 [Speech service](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/) umožňuje použití jednoho požadavku a přijímat zvuk vrátit LUIS předpovědi objekty JSON.
@@ -28,7 +28,7 @@ Pro účely tohoto článku budete potřebovat bezplatný [LUIS] [ LUIS] webu ú
 Na webu Azure Portal [vytvořit](luis-how-to-azure-subscription.md#create-luis-endpoint-key) **Language Understanding** klíč (LUIS). 
 
 ## <a name="import-human-resources-luis-app"></a>Importovat lidských zdrojů LUIS aplikace
-Záměry a projevy pro účely tohoto článku pocházejí z aplikace LUIS lidské zdroje, k dispozici [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples) úložiště Github. Stáhněte si [HumanResources.json](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/HumanResources.json) soubor uložte s příponou *.json a [importovat](create-new-app.md#import-new-app) ji do služby LUIS. 
+Záměry a projevy pro účely tohoto článku pocházejí z aplikace LUIS lidské zdroje, k dispozici [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples) úložiště Github. Stáhněte si [HumanResources.json](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/HumanResources.json) soubor uložte s příponou *.json a [importovat](luis-how-to-start-new-app.md#import-new-app) ji do služby LUIS. 
 
 Tato aplikace nemá záměrů, entit a projevy související s domény lidských zdrojů. Příklad projevy patří:
 

@@ -1,123 +1,123 @@
 ---
-title: Replikace virtuálních počítačů technologie Hyper-V přes PowerShell a Azure Resource Manager | Microsoft Docs
-description: Automatizovat replikaci virtuálních počítačů Hyper-V do Azure s Azure Site Recovery pomocí Powershellu a Azure Resource Manager.
+title: Replikace virtuálních počítačů Hyper-V pomocí Powershellu a Azure Resource Manageru | Dokumentace Microsoftu
+description: Automatizace replikace virtuálních počítačů Hyper-V do Azure pomocí Azure Site Recovery pomocí Powershellu a Azure Resource Manageru.
 services: site-recovery
 author: bsiva
 manager: abhiag
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/08/2018
+ms.date: 07/06/2018
 ms.author: bsiva
-ms.openlocfilehash: 18ed9566cd265ef851f914a59e10f6973bdc0d86
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 13456dc53f85f6f26aab222ab0cb499aabb7d1cc
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31596700"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37916227"
 ---
-# <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>Nastavení zotavení po havárii do Azure pro virtuální počítače Hyper-V pomocí prostředí PowerShell a Azure Resource Manager
+# <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>Nastavení zotavení po havárii do Azure pro virtuální počítače Hyper-V pomocí Powershellu a Azure Resource Manageru
 
-[Azure Site Recovery](site-recovery-overview.md) přispívá k kontinuity podnikových procesů a strategie po havárii (BCDR) tím, že orchestruje replikaci, převzetí služeb při selhání a obnovení virtuálních počítačích Azure (VM) a místní virtuální počítače a fyzické servery.
+[Azure Site Recovery](site-recovery-overview.md) přispívá k vaší obchodní kontinuity podnikových procesů a strategie po havárii (BCDR) tím, že orchestruje replikaci, převzetí služeb při selhání a obnovení virtuálních počítačů Azure (virtuální počítače) a místních virtuálních počítačů a fyzických serverů.
 
-Tento článek popisuje, jak pomocí prostředí Windows PowerShell, společně s Azure Resource Manager, k replikaci virtuálních počítačů Hyper-V do Azure. Příklad používané v tomto článku se dozvíte, jak replikovat jeden virtuální počítač spuštěn v hostiteli technologie Hyper-V do Azure.
+Tento článek popisuje, jak replikovat virtuální počítače Hyper-V do Azure pomocí prostředí Windows PowerShell, společně s Azure Resource Manageru. Příklad použitý v tomto článku se dozvíte, jak replikovat jeden virtuální počítač běží na hostiteli Hyper-V, do Azure.
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
-Prostředí Azure PowerShell obsahuje rutiny pro správu Azure pomocí prostředí Windows PowerShell. Rutiny prostředí PowerShell obnovení lokality pomocí prostředí Azure PowerShell pro Azure Resource Manager, můžete chránit a obnovit vaše servery v Azure.
+Prostředí Azure PowerShell poskytuje rutiny pro správu Azure pomocí prostředí Windows PowerShell. Rutiny prostředí PowerShell pro obnovení lokality pomocí Azure Powershellu pro Azure Resource Manageru umožňují ochrana a obnovení vašich serverů v Azure.
 
-Nemusíte být odborné prostředí PowerShell použít v tomto článku, ale musíte pochopit základní koncepty, jako jsou moduly, rutiny a relace. Čtení [Začínáme pomocí prostředí Windows PowerShell](http://technet.microsoft.com/library/hh857337.aspx), a [použití Azure Powershellu s Azure Resource Manager](../powershell-azure-resource-manager.md).
+Nemusíte být odborné prostředí PowerShell pro použití v tomto článku, ale musíte pochopit základní koncepty, jako jsou moduly, rutiny a relace. Čtení [Začínáme s prostředím Windows PowerShell](http://technet.microsoft.com/library/hh857337.aspx), a [pomocí Azure Powershellu s Azure Resource Managerem](../powershell-azure-resource-manager.md).
 
 > [!NOTE]
-> Microsoft partneři v programu Cloud Solution Provider (CSP) můžete konfigurovat a spravovat ochranu systému serverů zákazníka předplatným jejich odpovídajících CSP (odběry klienta).
+> Partneři Microsoftu v programu Cloud Solution Provider (CSP) můžete konfigurovat a spravovat ochranu zákazníků serverů za účelem jejich odpovídajících předplatných CSP (tenanta předplatná).
 >
 >
 
 ## <a name="before-you-start"></a>Než začnete
-Ujistěte se, že máte zavedenou tyto požadavky:
+Ujistěte se, že jsou splněné tyto požadavky:
 
-* A [Microsoft Azure](https://azure.microsoft.com/) účtu. Můžete začít s [bezplatnou zkušební verzí](https://azure.microsoft.com/pricing/free-trial/). Kromě toho si můžete přečíst o [cenách Azure Site Recovery Manageru](https://azure.microsoft.com/pricing/details/site-recovery/).
-* Azure PowerShell 1.0. Informace o této verzi a k jeho instalaci najdete v tématu [Azure PowerShell 1.0.](https://azure.microsoft.com/)
-* [AzureRM.SiteRecovery](https://www.powershellgallery.com/packages/AzureRM.SiteRecovery/) a [AzureRM.RecoveryServices](https://www.powershellgallery.com/packages/AzureRM.RecoveryServices/) moduly. Můžete získat nejnovější verze tyto moduly z [Galerie prostředí PowerShell](https://www.powershellgallery.com/)
+* A [Microsoft Azure](https://azure.microsoft.com/) účtu. Můžete začít s [bezplatnou zkušební verzí](https://azure.microsoft.com/pricing/free-trial/). Kromě toho si můžete přečíst o [ceny za Azure Site Recovery Manager](https://azure.microsoft.com/pricing/details/site-recovery/).
+* Azure PowerShell 1.0. Informace o této verzi a její instalaci najdete v tématu [příkazového řádku Azure PowerShell 1.0.](https://azure.microsoft.com/)
+* [AzureRM.SiteRecovery](https://www.powershellgallery.com/packages/AzureRM.SiteRecovery/) a [AzureRM.RecoveryServices](https://www.powershellgallery.com/packages/AzureRM.RecoveryServices/) moduly. Můžete získat nejnovější verze těchto modulů z [Galerie prostředí PowerShell](https://www.powershellgallery.com/)
 
-Kromě toho konkrétní příklad popsané v tomto článku má následující požadavky:
+Kromě toho konkrétní příklad popsaných v tomto článku má následující požadavky:
 
-* Hostitele Hyper-V se systémem Windows Server 2012 R2 nebo Microsoft Hyper-V Server 2012 R2, který obsahuje jeden nebo více virtuálních počítačů. Servery Hyper-V by měl být připojen k Internetu, buď přímo nebo prostřednictvím proxy serveru.
-* Virtuální počítače, které chcete replikovat musí být v souladu s [tyto požadavky](hyper-v-azure-support-matrix.md#replicated-vms).
+* Hostitel Hyper-V systémem Windows Server 2012 R2 nebo Microsoft Hyper-V Server 2012 R2 obsahující jeden nebo více virtuálních počítačů. Servery Hyper-V musí být připojené k Internetu, buď přímo nebo prostřednictvím proxy serveru.
+* Virtuální počítače, které chcete replikovat musí být v souladu s [těchto nezbytných podmínkách](hyper-v-azure-support-matrix.md#replicated-vms).
 
-## <a name="step-1-sign-in-to-your-azure-account"></a>Krok 1: Přihlaste se k účtu Azure
+## <a name="step-1-sign-in-to-your-azure-account"></a>Krok 1: Přihlaste se ke svému účtu Azure
 
-1. Otevřete konzolu prostředí PowerShell a spusťte tento příkaz k přihlášení k účtu Azure. Rutina otevře na webové stránce vás vyzve k zadání přihlašovacích údajů účtu: **Connect-AzureRmAccount**.
-    - Alternativně můžete použít přihlašovací údaje účtu jako parametr v **Connect-AzureRmAccount** rutiny, pomocí **-přihlašovacích údajů** parametr.
-    - Pokud jste poskytovatel CSP partnera práce jménem klienta, zadejte zákazníka jako klient, pomocí jejich název primární domény tenantID nebo klienta. Příklad: **Connect-AzureRmAccount-klienta "fabrikam.com"**
-2. Přidružte odběr, který chcete použít s účet, protože účet může mít několik odběrů:
+1. Otevřete konzolu Powershellu a spusťte tento příkaz pro přihlášení ke svému účtu Azure. Vyvolá rutina na webové stránce vás vyzve k zadání přihlašovacích údajů k účtu: **Connect-AzureRmAccount**.
+    - Alternativně můžete zahrnout přihlašovacích údajů k účtu jako parametr v **Connect-AzureRmAccount** rutiny, pomocí **-Credential** parametr.
+    - Pokud jste partner CSP, který spolupracuje jménem klienta, určení zákazníka jako tenant, pomocí názvu primární doména tenanta nebo ID Tenanta. Příklad: **Connect-AzureRmAccount-Tenant "fabrikam.com"**
+2. Přidružte předplatné, které chcete používat účet, protože účet může mít několik předplatných:
 
     `Select-AzureRmSubscription -SubscriptionName $SubscriptionName`
 
-3. Ověřte, že vaše předplatné je registrovaný k použití Azure zprostředkovatele služeb zotavení a obnovení lokality pomocí těchto příkazů:
+3. Ověřte, že vaše předplatné je registrovaný k použití Azure poskytovatelů služby Recovery Services a Site Recovery, pomocí následujících příkazů:
 
     `Get-AzureRmResourceProvider -ProviderNamespace  Microsoft.RecoveryServices` `Get-AzureRmResourceProvider -ProviderNamespace  Microsoft.SiteRecovery`
 
-4. Ověřte, že ve výstupu příkazu **RegistrationState** je nastaven na **registrovaná**, můžete přejít ke kroku 2. Pokud ne, byste měli zaregistrovat chybějící zprostředkovatele v rámci vašeho předplatného, tak, že spustíte tyto příkazy:
+4. Ověřte, že ve výstupu tohoto příkazu **RegistrationState** je nastavena na **registrované**, můžete přejít ke kroku 2. V opačném případě byste měli zaregistrovat chybějící poskytovatele v rámci vašeho předplatného, spuštěním těchto příkazů:
 
     `Register-AzureRmResourceProvider -ProviderNamespace Microsoft.SiteRecovery` `Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices`
 
-5. Ověřte, že registrované zprostředkovatele úspěšně, použijte následující příkazy:
+5. Ověřte, že zprostředkovatele úspěšně zaregistrován, pomocí následujících příkazů:
 
     `Get-AzureRmResourceProvider -ProviderNamespace  Microsoft.RecoveryServices` `Get-AzureRmResourceProvider -ProviderNamespace  Microsoft.SiteRecovery`.
 
 ## <a name="step-2-set-up-the-vault"></a>Krok 2: Nastavení trezoru
 
-1. Vytvořte skupinu prostředků Azure Resource Manager, ve kterém k vytvoření trezoru, nebo použijte existující skupinu prostředků. Vytvořte novou skupinu prostředků takto. Proměnná $ResourceGroupName název skupiny prostředků, kterou chcete vytvořit, a proměnnou $Geo obsahuje oblast Azure, ve kterém chcete vytvořit skupinu prostředků (například "Brazílie – jih").
+1. Vytvořte skupinu prostředků Azure Resource Manageru, ve kterém chcete vytvořit trezor, nebo použijte existující skupinu prostředků. Následujícím způsobem vytvořte novou skupinu prostředků. $ResourceGroupName proměnná obsahuje název skupiny prostředků, kterou chcete vytvořit, a proměnná $Geo obsahuje oblast Azure, ve kterém chcete vytvořit skupinu prostředků (například "Brazílie – jih").
 
     `New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Geo` 
 
-2. K získání seznamu skupin prostředků v rámci vašeho předplatného, spusťte **Get-AzureRmResourceGroup** rutiny.
+2. K získání seznamu skupin prostředků ve vašem předplatném, spusťte **Get-AzureRmResourceGroup** rutiny.
 2. Vytvořte nový trezor služeb zotavení Azure následujícím způsobem:
 
         $vault = New-AzureRmRecoveryServicesVault -Name <string> -ResourceGroupName <string> -Location <string>
 
-    Můžete načíst seznam trezorů existující s **Get-AzureRmRecoveryServicesVault** rutiny.
+    Můžete načíst seznam existujících trezorů klíčů s **Get-AzureRmRecoveryServicesVault** rutiny.
 
 
-## <a name="step-3-set-the-recovery-services-vault-context"></a>Krok 3: Nastavte kontext trezoru služeb zotavení
+## <a name="step-3-set-the-recovery-services-vault-context"></a>Krok 3: Nastavte kontext trezoru služby Recovery Services
 
-Kontext úložiště nastavte takto:
+Nastavte kontext trezoru následujícím způsobem:
 
 `Set-AzureRmSiteRecoveryVaultSettings -ARSVault $vault`
 
-## <a name="step-4-create-a-hyper-v-site"></a>Krok 4: Vytvoření web Hyper-V
+## <a name="step-4-create-a-hyper-v-site"></a>Krok 4: Vytvoření do lokality Hyper-V
 
-1. Vytvoří nový web s technologií Hyper-V následujícím způsobem:
+1. Vytvořte novou lokalitu Hyper-V následujícím způsobem:
 
         $sitename = "MySite"                #Specify site friendly name
         New-AzureRmSiteRecoverySite -Name $sitename
 
-2. Tato rutina se spustí úloha Site Recovery pro vytvoření webu a vrátí objekt úlohy Site Recovery. Počkejte na dokončení a ověřte, zda úlohy úloha byla úspěšně dokončena.
-3. Použití **rutiny Get-AzureRmSiteRecoveryJob**, k načtení objektu úlohy a zkontrolujte aktuální stav úlohy.
-4. Vygenerování a stažení registrační klíč pro lokalitu, následujícím způsobem:
+2. Tato rutina spustí úlohu Site Recovery Vytvořte lokalitu a vrátí objekt úlohy Site Recovery. Počkejte dokončení úlohy a ověřte, že úloha byla úspěšně dokončena.
+3. Použití **rutiny Get-AzureRmSiteRecoveryJob**, k načtení objektu úlohy a zkontrolovat aktuální stav úlohy.
+4. Vygenerování a stažení registračního klíče pro lokalitu, následujícím způsobem:
 
     ```
     $SiteIdentifier = Get-AzureRmSiteRecoverySite -Name $sitename | Select -ExpandProperty SiteIdentifier
         Get-AzureRmRecoveryServicesVaultSettingsFile -Vault $vault -SiteIdentifier $SiteIdentifier -SiteFriendlyName $sitename -Path $Path
     ```
 
-5. Zkopírujte stažený klíč na hostitele Hyper-V. Je nutné klíč k registraci hostitele technologie Hyper-V do lokality.
+5. Zkopírujte stažený klíč na hostitele Hyper-V. Budete potřebovat klíč k registraci hostitele Hyper-V do lokality.
 
-## <a name="step-5-install-the-provider-and-agent"></a>Krok 5: Instalace zprostředkovatel a agent
+## <a name="step-5-install-the-provider-and-agent"></a>Krok 5: Instalace zprostředkovatele a agenta
 
 1. Stažení instalačního programu pro nejnovější verzi zprostředkovatele ze [Microsoft](https://aka.ms/downloaddra).
 2. Spusťte instalační program na hostiteli theHyper-V.
 3. Na konci instalace pokračujte krokem registrace.
-4. Po zobrazení výzvy zadejte stažené klíč a dokončit registraci hostitele technologie Hyper-V.
-5. Ověří, zda hostitel Hyper-V následujícím způsobem registrován do lokality:
+4. Po zobrazení výzvy zadejte klíč stažený a dokončete registraci hostitele Hyper-V.
+5. Ověřte, že je hostitel Hyper-V zaregistrovaný k lokalitě:
 
         $server =  Get-AzureRmSiteRecoveryServer -FriendlyName $server-friendlyname
 
-## <a name="step-6-create-a-replication-policy"></a>Krok 6: Vytvoření zásad replikace
+## <a name="step-6-create-a-replication-policy"></a>Krok 6: Vytvoření zásady replikace
 
-Než začnete, Upozorňujeme, že zadaný účet úložiště by měl být ve stejné oblasti Azure jako trezor a musí mít povolenou geografickou replikací.
+Než začnete, mějte na paměti, že zadaný účet úložiště musí být ve stejné oblasti Azure jako trezor a musí mít povolenou geografickou replikací.
 
-1. Vytvořte zásadu replikace následujícím způsobem:
+1. Vytvoření zásady replikace takto:
 
         $ReplicationFrequencyInSeconds = "300";        #options are 30,300,900
         $PolicyName = “replicapolicy”
@@ -126,29 +126,29 @@ Než začnete, Upozorňujeme, že zadaný účet úložiště by měl být ve st
 
         $PolicyResult = New-AzureRmSiteRecoveryPolicy -Name $PolicyName -ReplicationProvider “HyperVReplicaAzure” -ReplicationFrequencyInSeconds $ReplicationFrequencyInSeconds  -RecoveryPoints $Recoverypoints -ApplicationConsistentSnapshotFrequencyInHours 1 -RecoveryAzureStorageAccountId $storageaccountID
 
-2. Zkontrolujte vrácený úlohu, která zajistí, že úspěšné vytvoření zásad replikace.
+2. Kontrola vrácené úlohy k zajištění, že bude úspěšné vytvoření zásady replikace.
 
-3. Načtení kontejneru ochrany, který odpovídá k lokalitě, následujícím způsobem:
+3. Načtěte kontejner ochrany, která odpovídá na web, následujícím způsobem:
 
         $protectionContainer = Get-AzureRmSiteRecoveryProtectionContainer
-3. Kontejner ochrany přidružte k zásadě replikace, následujícím způsobem:
+3. Kontejner ochrany přidružte k zásadě replikace takto:
 
-     $Policy = get-AzureRmSiteRecoveryPolicy - FriendlyName $PolicyName $associationJob = Start AzureRmSiteRecoveryPolicyAssociationJob-zásady $Policy - PrimaryProtectionContainer $protectionContainer
+     $Policy = get-AzureRmSiteRecoveryPolicy - FriendlyName $PolicyName $associationJob = začátku AzureRmSiteRecoveryPolicyAssociationJob – zásady $Policy - PrimaryProtectionContainer $protectionContainer
 
-4. Počkejte na úlohu přidružení úspěšně dokončit.
+4. Čekání úlohy přidružení úspěšně dokončit.
 
-## <a name="step-7-enable-vm-protection"></a>Krok 7: Povolit ochranu virtuálního počítače
+## <a name="step-7-enable-vm-protection"></a>Krok 7: Povolte ochranu virtuálního počítače
 
-1. Načtení entity ochrany, která odpovídá virtuálních počítačů, které chcete chránit, následujícím způsobem:
+1. Načtete entita ochrany, která odpovídá virtuální počítač, který chcete chránit následujícím způsobem:
 
         $VMFriendlyName = "Fabrikam-app"                    #Name of the VM
         $protectionEntity = Get-AzureRmSiteRecoveryProtectionEntity -ProtectionContainer $protectionContainer -FriendlyName $VMFriendlyName
-2. Ochrana virtuálních počítačů. Pokud chráníte virtuální počítač má více než jeden disk připojený k němu, zadejte disku operačního systému pomocí *OSDiskName* parametr.
+2. Ochranu virtuálního počítače. Pokud chráníte virtuální počítač má více než jeden disk připojený k němu, zadat disk s operačním systémem pomocí *OSDiskName* parametru.
 
         $Ostype = "Windows"                                 # "Windows" or "Linux"
         $DRjob = Set-AzureRmSiteRecoveryProtectionEntity -ProtectionEntity $protectionEntity -Policy $Policy -Protection Enable -RecoveryAzureStorageAccountId $storageaccountID  -OS $OStype -OSDiskName $protectionEntity.Disks[0].Name
 
-3. Počkejte, než pro virtuální počítače dosáhne chráněném stavu po počáteční replikaci. To může nějakou dobu trvat, v závislosti na faktorech, jako je množství dat, které se budou replikovat a dostupnou šířku pásma nadřazeného do Azure. Pokud je chráněný stav v místě, stav úlohy a StateDescription jsou aktualizované následujícím způsobem: 
+3. Vyčkat, než dosáhne stavu chráněné po počáteční replikaci virtuálních počítačů. To může nějakou dobu trvat, v závislosti na faktorech jako objem dat se musí replikovat a dostupnou šířku pásma pro odesílání dat do Azure. Když chráněném stavu, je na místě, se stav úlohy a StateDescription aktualizují následujícím způsobem: 
 
         PS C:\> $DRjob = Get-AzureRmSiteRecoveryJob -Job $DRjob
 
@@ -157,7 +157,7 @@ Než začnete, Upozorňujeme, že zadaný účet úložiště by měl být ve st
 
         PS C:\> $DRjob | Select-Object -ExpandProperty StateDescription
         Completed
-4. Aktualizovat vlastnosti obnovení (například velikost role virtuálního počítače) a síť Azure, ke kterému chcete připojit síťový adaptér virtuálního počítače po převzetí služeb při selhání.
+4. Aktualizovat vlastnosti obnovení (jako je například velikost role virtuálního počítače) a síť Azure, ke kterému chcete připojit síťové rozhraní virtuálnímu počítači po převzetí služeb při selhání.
 
         PS C:\> $nw1 = Get-AzureRmVirtualNetwork -Name "FailoverNw" -ResourceGroupName "MyRG"
 
@@ -191,18 +191,18 @@ Než začnete, Upozorňujeme, že zadaný účet úložiště by měl být ve st
 
 
 
-## <a name="step-8-run-a-test-failover"></a>Krok 8: Spustit testovací převzetí služeb
-1. Spusťte testovací převzetí služeb takto:
+## <a name="step-8-run-a-test-failover"></a>Krok 8: Spuštění testovací převzetí služeb při selhání
+1. Spustíte testovací převzetí služeb takto:
 
         $nw = Get-AzureRmVirtualNetwork -Name "TestFailoverNw" -ResourceGroupName "MyRG" #Specify Azure vnet name and resource group
 
         $protectionEntity = Get-AzureRmSiteRecoveryProtectionEntity -FriendlyName $VMFriendlyName -ProtectionContainer $protectionContainer
 
         $TFjob = Start-AzureRmSiteRecoveryTestFailoverJob -ProtectionEntity $protectionEntity -Direction PrimaryToRecovery -AzureVMNetworkId $nw.Id
-2. Ověřte, že testovací virtuální počítač je vytvořen v Azure. Testovací převzetí služeb při selhání úlohy je pozastaven po vytvoření testovacího virtuálního počítače v Azure.
-3. Vyčištění a dokončete testovací převzetí služeb, spusťte příkaz:
+2. Ověření testovacího virtuálního počítače se vytvoří v Azure. Testovací převzetí služeb při selhání úlohy je pozastavený, po vytvoření testovacího virtuálního počítače v Azure.
+3. Pokud chcete vyčistit a dokončete testovací převzetí služeb, spusťte:
 
         $TFjob = Resume-AzureRmSiteRecoveryJob -Job $TFjob
 
 ## <a name="next-steps"></a>Další postup
-[Další informace](https://msdn.microsoft.com/library/azure/mt637930.aspx) o Azure Site Recovery pomocí rutin prostředí PowerShell Azure Resource Manager.
+[Další informace](https://msdn.microsoft.com/library/azure/mt637930.aspx) o Azure Site Recovery pomocí rutin Powershellu pro Azure Resource Manager.

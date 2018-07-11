@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f968bd75c7aee4ad390f9206bb1fa210e7fcd8ff
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 90aa19d690b1b4ab28c3a65a287a10aaf6a03ac6
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37903145"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37929028"
 ---
 # <a name="how-to-update-azure-powershell-modules-in-azure-automation"></a>Aktualizace modulů Azure Powershellu ve službě Azure Automation
 
@@ -47,7 +47,7 @@ Protože moduly jsou pravidelně aktualizovány produktovou skupinou, změny mů
 > [!NOTE]
 > Při spuštění novou naplánovanou úlohu Azure Automation používá nejnovější moduly ve vašem účtu Automation.    
 
-Pokud používáte rutiny z těchto modulů Azure Powershellu ve vašich sadách runbook, chcete spustit tento proces aktualizace každý měsíc nebo proto ujistěte se, že máte nejnovější moduly.
+Pokud používáte rutiny z těchto modulů Azure Powershellu ve vašich sadách runbook, chcete spustit tento proces aktualizace každý měsíc nebo proto ujistěte se, že máte nejnovější moduly. Azure Automation používá AzureRunAsConnection připojení k ověření při aktualizaci modulů, pokud objekt služby je prošlý nebo už neexistuje na úrovni předplatného, aktualizace modulu se nezdaří.
 
 ## <a name="next-steps"></a>Další postup
 

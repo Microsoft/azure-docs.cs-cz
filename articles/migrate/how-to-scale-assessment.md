@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: raynew
-ms.openlocfilehash: dbd2ef6270d0f270dabb6a1f5461e09fc37102db
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: d7814b976529bf7032edd54e4afd574ce766e5dd
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37859587"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37919858"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>Zkoumání a vyhodnocení rozsáhlých prostředí VMware
 
@@ -39,9 +39,9 @@ Pokud nasazujete v prostředí s tenanty, tady je jeden způsob, jak nastavit tu
 1.  Vytvořit uživatele na klienta a a pomocí [RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal), přiřaďte oprávnění jen pro čtení pro všechny Virtuálního počítače, který patří do konkrétního tenanta. Potom použijte své přihlašovací údaje pro zjišťování. RBAC se zajistí, že odpovídající vCenter uživatel bude mít přístup k tenantovi pouze konkrétní virtuální počítač.
 2. Můžete nastavit RBAC pro uživatele jiného tenanta, jak je popsáno v následujícím příkladu pro uživatele č. 1 a 2 uživatele:
 
-    - V **uživatelské jméno** a **heslo**, určete pověření účtu jen pro čtení, který kolektor použije ke zjištění virtuálních počítačů v 
+    - V **uživatelské jméno** a **heslo**, určete pověření účtu jen pro čtení, který kolektor použije ke zjištění virtuálních počítačů v
     - Datacenter1 – udělení oprávnění jen pro čtení na 1 uživatele a uživatele č. 2. Těmito oprávněními, aby všechny podřízené objekty, není rozšířit, protože budete nastavit oprávnění pro konkrétního virtuálního počítače.
-    
+
       - VM1 (Tenanta č. 1) (pouze oprávnění ke čtení uživatelů č. 1)
       - VM2 (Tenanta č. 1) (pouze oprávnění ke čtení uživatelů č. 1)
       - VM3 (Tenanta č. 2) (pouze oprávnění ke čtení uživatelů č. 2)
@@ -125,6 +125,14 @@ Zkontrolujte, zda soubor OVA zabezpečené před jejím nasazením:
    Příklady použití: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
 
 3. Ujistěte se, že generované hodnoty hash shoduje s následujícím nastavením.
+
+    Pro soubory OVA verze 1.0.9.12
+
+    **Algoritmus** | **Hodnota hash**
+    --- | ---
+    MD5 | d0363e5d1b377a8eb08843cf034ac28a
+    SHA1 | df4a0ada64bfa59c37acf521d15dcabe7f3f716b
+    SHA256 | f677b6c255e3d4d529315a31b5947edfe46f45e4eb4dbc8019d68d1d1b337c2e
 
     Pro soubory OVA verze 1.0.9.8:
 

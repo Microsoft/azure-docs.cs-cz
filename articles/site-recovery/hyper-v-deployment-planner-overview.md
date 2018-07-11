@@ -7,16 +7,16 @@ manager: garavd
 ms.service: site-recovery
 ms.workload: storage-backup-recovery
 ms.topic: article
-ms.date: 02/14/2018
+ms.date: 07/06/2018
 ms.author: nisoneji
-ms.openlocfilehash: 17ff3ece76f854cd539172019f8d154742873bb4
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: f4e8a579e020e81540c1fd52e412c8e6184813d2
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32187299"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37921208"
 ---
-# <a name="site-recovery-deployment-planner-for-hyper-v-to-azure"></a>Site Recovery nasazení Planner pro Hyper-V do Azure
+# <a name="site-recovery-deployment-planner-for-hyper-v-to-azure"></a>Site Recovery Deployment Planner pro Hyper-V do Azure
 
 Tento článek představuje uživatelskou příručku k Plánovači nasazení služby Azure Site Recovery pro produkční nasazení Hyper-V do Azure.
 
@@ -117,9 +117,9 @@ Doporučená konfigurace virtuálního počítače: 8 virtuálních CPU, 16 GB p
 3.  Rozbalte složku .zip.
 Složka obsahuje několik souborů a podsložek. Spustitelný soubor je ASRDeploymentPlanner.exe v nadřazené složce.
 
-Příklad: Zkopírujte soubor .zip na jednotku E:\ a rozbalte jej. Planner_v2.2.zip E:\ASR nasazení
+Příklad: Zkopírujte soubor .zip na jednotku E:\ a rozbalte jej. E:\ASR Deployment Planner_v2.2.zip
 
-Planner_v2.2\ASRDeploymentPlanner.exe E:\ASR nasazení
+E:\ASR Deployment Planner_v2.2\ASRDeploymentPlanner.exe
 
 ### <a name="updating-to-the-latest-version-of-deployment-planner"></a>Aktualizace na nejnovější verzi plánovače nasazení
 Pokud máte předchozí verzi plánovače nasazení, proveďte jednu z následujících akcí:
@@ -134,7 +134,7 @@ Pokud máte předchozí verzi plánovače nasazení, proveďte jednu z následuj
   >Každý nový Deployment Planner je kumulativní aktualizací souboru .zip. Nemusíte kopírovat nejnovější soubory do předchozí složky. Můžete vytvořit a použít novou složku.
 
 ## <a name="version-history"></a>Historie verzí
-Nejnovější verze nástroje Automatické obnovení systému nasazení Planner je 2.2.
+Nejnovější verze nástroje plánovače nasazení ASR je 2.2.
 Opravy přidané v jednotlivých aktualizacích najdete na stránce [historie verzí Plánovače nasazení ASR](https://social.technet.microsoft.com/wiki/contents/articles/51049.asr-deployment-planner-version-history.aspx).
 
 

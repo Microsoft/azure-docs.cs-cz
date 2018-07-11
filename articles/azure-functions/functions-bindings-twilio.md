@@ -1,49 +1,49 @@
 ---
-title: Azure funkce Twilio vazby
-description: Pochopit, jak pomocí Azure Functions Twilio vazby.
+title: Azure Functions Twilio vazby
+description: Vysvětlení použití Twilio vazby s využitím Azure Functions.
 services: functions
 documentationcenter: na
 author: tdykstra
 manager: cfowler
 editor: ''
 tags: ''
-keywords: Funkce Azure, funkce zpracování událostí, dynamické výpočetní architektura bez serveru
+keywords: Azure functions, funkce, zpracování událostí, dynamické výpočty, architektura bez serveru
 ms.service: functions
 ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 07/09/2018
 ms.author: tdykstra
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e6c5a2e11e8b2faa62b04a792f5040ea928d94a3
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: a391c411d0d3608d30309927875a62b366899367
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36318703"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37929497"
 ---
-# <a name="twilio-binding-for-azure-functions"></a>Twilio vazby pro Azure Functions
+# <a name="twilio-binding-for-azure-functions"></a>Vazba Twilio pro službu Azure Functions
 
-Tento článek vysvětluje postup odesílání textové zprávy pomocí [Twilio](https://www.twilio.com/) vazeb v Azure Functions. Azure funkce podporuje výstup vazby pro Twilio.
+Tento článek vysvětluje, jak posílat textové zprávy s použitím [Twilio](https://www.twilio.com/) vazby ve službě Azure Functions. Azure Functions podporuje výstupní vazby pro Twilio.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 ## <a name="packages---functions-1x"></a>Balíčky – funkce 1.x
 
-Vazby Twilio jsou součástí [Microsoft.Azure.WebJobs.Extensions.Twilio](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Twilio) balíček NuGet verze 1.x. Zdrojový kód pro balíček je v [azure webjobs sdk](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.Twilio/) úložiště GitHub.
+Twilio vazeb jsou k dispozici v [Microsoft.Azure.WebJobs.Extensions.Twilio](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Twilio) balíčku NuGet, verzi 1.x. Zdrojový kód pro tento balíček je v [sadu sdk azure webjobs](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.Twilio/) úložiště GitHub.
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
 ## <a name="packages---functions-2x"></a>Balíčky – funkce 2.x
 
-Vazby Twilio jsou součástí [Microsoft.Azure.WebJobs.Extensions.Twilio](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Twilio) balíček NuGet verze 3.x. Zdrojový kód pro balíček je v [azure webjobs sdk](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/) úložiště GitHub.
+Twilio vazeb jsou k dispozici v [Microsoft.Azure.WebJobs.Extensions.Twilio](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Twilio) balíčku NuGet, verze 3.x. Zdrojový kód pro tento balíček je v [sadu sdk azure webjobs](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/) úložiště GitHub.
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
-## <a name="example---functions-1x"></a>Příklad: funkce 1.x
+## <a name="example---functions-1x"></a>Příklad - funkce 1.x
 
-Podívejte se na konkrétní jazyk příklad:
+Podívejte se na příklad specifické pro jazyk:
 
 * [C#](#c-example)
 * [C# skript (.csx)](#c-script-example)
@@ -51,7 +51,7 @@ Podívejte se na konkrétní jazyk příklad:
 
 ### <a name="c-example"></a>Příklad jazyka C#
 
-Následující příklad ukazuje [C# funkce](functions-dotnet-class-library.md) , odešle textovou zprávu při aktivaci pomocí zprávy fronty.
+Následující příklad ukazuje [funkce jazyka C#](functions-dotnet-class-library.md) , který odešle textovou zprávu aktivovaného zprávy fronty.
 
 ```cs
 [FunctionName("QueueTwilio")]
@@ -72,11 +72,11 @@ public static SMSMessage Run(
 }
 ```
 
-Tento příklad používá `TwilioSms` atribut s návratovou hodnotu metody. Další možností je použít atribut s `out SMSMessage` parametr nebo `ICollector<SMSMessage>` nebo `IAsyncCollector<SMSMessage>` parametr.
+V tomto příkladu `TwilioSms` atribut s návratovou hodnotu metody. Další možností je použít atribut s `out SMSMessage` parametr nebo `ICollector<SMSMessage>` nebo `IAsyncCollector<SMSMessage>` parametru.
 
-### <a name="c-script-example"></a>Příklad skriptu jazyka C#
+### <a name="c-script-example"></a>Ukázkový skript jazyka C#
 
-Následující příklad ukazuje výstup Twilio vazby ve *function.json* souboru a [funkce skriptu jazyka C#](functions-reference-csharp.md) používající vazby. Funkce, která používá `out` parametr pro odeslání textové zprávy.
+Následující příklad ukazuje Twilio výstupní vazby ve *function.json* souboru a [funkce skriptu jazyka C#](functions-reference-csharp.md) , který používá vazba. Funkce používá `out` parametr odeslala se textová zpráva.
 
 Zde je vazba dat v *function.json* souboru:
 
@@ -95,7 +95,7 @@ Příklad function.json:
 }
 ```
 
-Zde je kód skriptu jazyka C#:
+Tady je kód skriptu jazyka C#:
 
 ```cs
 #r "Newtonsoft.Json"
@@ -126,7 +126,7 @@ public static void Run(string myQueueItem, out SMSMessage message,  TraceWriter 
 }
 ```
 
-Nelze použít výstupní parametry v asynchronní kódu. Tady je asynchronní C# skript kód příklad:
+Výstupní parametry v asynchronním kódu nelze použít. Tady je asynchronní C# skript kódu příklad:
 
 ```cs
 #r "Newtonsoft.Json"
@@ -161,7 +161,7 @@ public static async Task Run(string myQueueItem, IAsyncCollector<SMSMessage> mes
 
 ### <a name="javascript-example"></a>Příklad v jazyce JavaScript
 
-Následující příklad ukazuje výstup Twilio vazby ve *function.json* souboru a [funkce JavaScript, která](functions-reference-node.md) používající vazby.
+Následující příklad ukazuje Twilio výstupní vazby ve *function.json* souboru a [funkce jazyka JavaScript](functions-reference-node.md) , který používá vazba.
 
 Zde je vazba dat v *function.json* souboru:
 
@@ -206,9 +206,9 @@ module.exports = function (context, myQueueItem) {
 };
 ```
 
-## <a name="example---functions-2x"></a>Příklad: funkce 2.x
+## <a name="example---functions-2x"></a>Příklad - funkce 2.x
 
-Podívejte se na konkrétní jazyk příklad:
+Podívejte se na příklad specifické pro jazyk:
 
 * [2.x C#](#2x-c-example)
 * [skript 2.x C# (.csx)](#2x-c-script-example)
@@ -216,12 +216,12 @@ Podívejte se na konkrétní jazyk příklad:
 
 ### <a name="2x-c-example"></a>Příklad 2.x C#
 
-Následující příklad ukazuje [C# funkce](functions-dotnet-class-library.md) , odešle textovou zprávu při aktivaci pomocí zprávy fronty.
+Následující příklad ukazuje [funkce jazyka C#](functions-dotnet-class-library.md) , který odešle textovou zprávu aktivovaného zprávy fronty.
 
 ```cs
 [FunctionName("QueueTwilio")]
 [return: TwilioSms(AccountSidSetting = "TwilioAccountSid", AuthTokenSetting = "TwilioAuthToken", From = "+1425XXXXXXX" )]
-public static SMSMessage Run(
+public static CreateMessageOptions Run(
     [QueueTrigger("myqueue-items", Connection = "AzureWebJobsStorage")] JObject order,
     TraceWriter log)
 {
@@ -237,11 +237,11 @@ public static SMSMessage Run(
 }
 ```
 
-Tento příklad používá `TwilioSms` atribut s návratovou hodnotu metody. Další možností je použít atribut s `out CreateMessageOptions` parametr nebo `ICollector<CreateMessageOptions>` nebo `IAsyncCollector<CreateMessageOptions>` parametr.
+V tomto příkladu `TwilioSms` atribut s návratovou hodnotu metody. Další možností je použít atribut s `out CreateMessageOptions` parametr nebo `ICollector<CreateMessageOptions>` nebo `IAsyncCollector<CreateMessageOptions>` parametru.
 
-### <a name="2x-c-script-example"></a>Příklad skriptu 2.x C#
+### <a name="2x-c-script-example"></a>Ukázkový skript 2.x C#
 
-Následující příklad ukazuje výstup Twilio vazby ve *function.json* souboru a [funkce skriptu jazyka C#](functions-reference-csharp.md) používající vazby. Funkce, která používá `out` parametr pro odeslání textové zprávy.
+Následující příklad ukazuje Twilio výstupní vazby ve *function.json* souboru a [funkce skriptu jazyka C#](functions-reference-csharp.md) , který používá vazba. Funkce používá `out` parametr odeslala se textová zpráva.
 
 Zde je vazba dat v *function.json* souboru:
 
@@ -260,7 +260,7 @@ Příklad function.json:
 }
 ```
 
-Zde je kód skriptu jazyka C#:
+Tady je kód skriptu jazyka C#:
 
 ```cs
 #r "Newtonsoft.Json"
@@ -292,7 +292,7 @@ public static void Run(string myQueueItem, out CreateMessageOptions message,  Tr
 }
 ```
 
-Nelze použít výstupní parametry v asynchronní kódu. Tady je asynchronní C# skript kód příklad:
+Výstupní parametry v asynchronním kódu nelze použít. Tady je asynchronní C# skript kódu příklad:
 
 ```cs
 #r "Newtonsoft.Json"
@@ -328,7 +328,7 @@ public static async Task Run(string myQueueItem, IAsyncCollector<CreateMessageOp
 
 ### <a name="2x-javascript-example"></a>Příklad v jazyce JavaScript 2.x
 
-Následující příklad ukazuje výstup Twilio vazby ve *function.json* souboru a [funkce JavaScript, která](functions-reference-node.md) používající vazby.
+Následující příklad ukazuje Twilio výstupní vazby ve *function.json* souboru a [funkce jazyka JavaScript](functions-reference-node.md) , který používá vazba.
 
 Zde je vazba dat v *function.json* souboru:
 
@@ -375,9 +375,9 @@ module.exports = function (context, myQueueItem) {
 
 ## <a name="attributes"></a>Atributy
 
-V [knihovny tříd jazyka C#](functions-dotnet-class-library.md), použijte [TwilioSms](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/TwilioSMSAttribute.cs) atribut.
+V [knihoven tříd C#](functions-dotnet-class-library.md), použijte [TwilioSms](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/TwilioSMSAttribute.cs) atribut.
 
-Informace o vlastnostech atributů, které můžete konfigurovat, najdete v tématu [konfigurace](#configuration). Tady je `TwilioSms` atribut příkladu podpis metody:
+Informace o atribut vlastnosti, které můžete nakonfigurovat, najdete v tématu [konfigurace](#configuration). Tady je `TwilioSms` příklad atributů v podpisu metody:
 
 ```csharp
 [FunctionName("QueueTwilio")]
@@ -393,7 +393,7 @@ public static SMSMessage Run(
 }
  ```
 
-Úplný příklad najdete v tématu [příklad jazyka C#](#c-example).
+Kompletní příklad naleznete v tématu [příklad jazyka C#](#c-example).
 
 ## <a name="configuration"></a>Konfigurace
 
@@ -401,18 +401,18 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**type**|| musí být nastavena na `twilioSms`.|
-|**direction**|| musí být nastavena na `out`.|
+|**type**|| Musí být nastaveno na `twilioSms`.|
+|**direction**|| Musí být nastaveno na `out`.|
 |**Jméno**|| Název proměnné používá v kódu funkce pro textovou zprávu Twilio SMS. |
-|**accountSid**|**AccountSid**| Tato hodnota musí být nastavena na název nastavení aplikace, která obsahuje identifikátor Sid účtu Twilio.|
-|**ověřovacího tokenu**|**Ověřovacího tokenu**| Tato hodnota musí být nastavena na název nastavení aplikace, která obsahuje vaše Twilio ověřovací token.|
-|**k**|**Komu**| Tato hodnota nastavena na telefonní číslo, který je odeslán textová zpráva.|
-|**z**|**z**| Tato hodnota nastavena na telefonní číslo, který je odeslán textová zpráva z.|
-|**text**|**Text**| Tato hodnota slouží k pevného code textovou zprávu SMS, pokud nepotřebujete dynamické nastavení v kódu pro funkce. |
+|**AccountSid**|**AccountSid**| Tato hodnota musí být nastavena na název nastavení aplikace, která obsahuje identifikátor Sid účtu Twilio.|
+|**Ověřovacího tokenu**|**Ověřovacího tokenu**| Tato hodnota musí být nastavena na název nastavení aplikace, která obsahuje váš ověřovací token pro Twilio.|
+|**k**|**Komu**| Tato hodnota nastavena na telefonní číslo, která bude zaslána textová zpráva.|
+|**z**|**z**| Tato hodnota nastavena na telefonní číslo, která je odeslána textová zpráva z.|
+|**text**|**Text**| Tato hodnota slouží k intenzivně kód textovou zprávu SMS, když není nutné nastavit dynamicky v kódu funkce. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Další informace o Azure functions triggerů a vazeb](functions-triggers-bindings.md)
+> [Další informace o aktivačních událostech Azure functions a vazby](functions-triggers-bindings.md)

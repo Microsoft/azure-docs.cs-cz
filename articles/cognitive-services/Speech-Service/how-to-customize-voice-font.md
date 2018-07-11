@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: nolach
-ms.openlocfilehash: 9f7fbcc804229de69c3c72fb33ae03c88af70145
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: b9218600db8bd3e20528e61e411bb64c10dd9c84
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857493"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37917631"
 ---
 # <a name="creating-custom-voice-fonts"></a>Vytvoření vlastního hlasového písma
 
@@ -53,7 +53,7 @@ Hlasové trénovací datové sady se skládá ze sady zvukové soubory, spolu s 
 
 Můžete připravit těchto souborů v obou směrech: buď napsat skript a jeho číst talentu hlas, nebo použít veřejně dostupné zvuk a přepisy na text. V takovém případě upravte disfluencies z zvukové soubory, jako je například "um" a dalších přednastavené zvuky, zadrhává, mumbled slova nebo mispronunciations.
 
-K vytvoření dobré hlasové písmo, je důležité, že záznamy se provádějí v tichém místnosti s vysoce kvalitní mikrofon. Konzistentní svazku mluvený míra mluvený rozteč a expresivní zkoušky prezentace řeči jsou nezbytné pro vytváření skvělých hlasových digitální. Pokud chcete vytvořit hlasový vstup pro použití v produkčním prostředí, doporučujeme že použít profesionální záznam studio a způsobu vyjadřování talentu.
+K vytvoření dobré hlasové písmo, je důležité, že záznamy se provádějí v tichém místnosti s vysoce kvalitní mikrofon. Konzistentní svazku mluvený míra mluvený rozteč a expresivní zkoušky prezentace řeči jsou nezbytné pro vytváření skvělých hlasových digitální. Pokud chcete vytvořit hlasový vstup pro použití v produkčním prostředí, doporučujeme že použít profesionální záznam studio a způsobu vyjadřování talentu. Další podrobnosti najdete v tématu [jak záznam hlasu ukázky pro vlastní hlasové](record-custom-voice-samples.md).
 
 ### <a name="audio-files"></a>Zvukové soubory
 

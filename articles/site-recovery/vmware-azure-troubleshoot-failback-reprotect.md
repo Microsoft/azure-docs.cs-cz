@@ -1,86 +1,86 @@
 ---
-title: Řešení chyb během navrácení služeb po obnovení virtuálních počítačů Azure do místní VMware s Azure Site Recovery | Microsoft Docs
-description: Tento článek popisuje způsoby řešení běžných chyb navrácení služeb po obnovení a vytvoření během navrácení služeb po obnovení do VMware z Azure pomocí Azure Site Recovery.
+title: Řešení potíží se selháním během navrácení služeb po obnovení virtuálních počítačů Azure do VMware v místním prostředí pomocí Azure Site Recovery | Dokumentace Microsoftu
+description: Tento článek popisuje způsoby řešení běžných chyb navrácení služeb po obnovení a opětovného nastavování ochrany během navrácení služeb po obnovení do VMware z Azure pomocí Azure Site Recovery.
 services: site-recovery
 documentationcenter: ''
 author: rajani-janaki-ram
 manager: gauravd
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/09/2018
+ms.date: 07/06/2018
 ms.author: rajanaki
-ms.openlocfilehash: 480c3524ad4fb8a8c6ea02f09b8d27f254da9b08
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: c5ba0f1d98f3e4023e767bf3eea7a0b497d47686
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
-ms.locfileid: "29941020"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37920959"
 ---
 # <a name="troubleshoot-failback-from-azure-to-vmware"></a>Řešení potíží s navrácení služeb po obnovení z Azure do VMware
 
-Tento článek popisuje postupy řešení problémů se můžete setkat při selhání zpátky Azure virtuální počítače VMware vaší místní infrastruktuře po převzetí služeb při selhání do Azure pomocí [Azure Site Recovery](site-recovery-overview.md).
+Tento článek popisuje, jak řešit potíže se mohou vyskytnout při předání služeb při obnovení virtuálních počítačů Azure do místní infrastrukturu VMware a po převzetí služeb při selhání do Azure pomocí [Azure Site Recovery](site-recovery-overview.md).
 
-Navrácení služeb po obnovení v podstatě zahrnuje dva hlavní kroky. Pro první krok po převzetí služeb při selhání, je potřeba znovu nastavte ochranu virtuálních počítačů Azure k místnímu tak, aby jejich spuštění replikace. Druhým krokem je pro spouštění převzetí služeb při selhání z Azure k místní lokalitě.
+Navrácení služeb po obnovení v podstatě zahrnuje dva hlavní kroky. Pro první krok po převzetí služeb při selhání, budete muset znovunastavení ochrany virtuálních počítačů Azure do místních, tak, aby se začaly replikovat. Druhým krokem je spuštění převzetí služeb při selhání z Azure a navrácení služeb po obnovení v místní lokalitě.
 
-## <a name="troubleshoot-reprotection-errors"></a>Řešení chyb nové provedení ochrany
+## <a name="troubleshoot-reprotection-errors"></a>Řešení potíží s chybami opětovného nastavování ochrany
 
-V této části jsou běžné chyby nové provedení ochrany a jak je opravit.
+Tato část podrobně popisuje běžné chyby opětovného nastavování ochrany a jak je opravit.
 
-### <a name="error-code-95226"></a>Kód chyby 95226
+### <a name="error-code-95226"></a>Kód chyby: 95226
 
-**Opětovné ochrany se nezdařila, protože virtuální počítač Azure se nepodařilo připojit k místní konfigurace serveru.**
+**Operace opětovného zapnutí ochrany se nezdařila, protože virtuální počítač Azure nemohl kontaktovat místní konfigurační server.**
 
-Tato chyba nastane, když:
+K této chybě dochází při:
 
-* Virtuální počítač Azure nelze kontaktovat konfigurační server místně. Virtuální počítač nelze zjistit a zaregistrovaný na konfiguračním serveru.
-* Služba InMage Scout aplikace není spuštěna na virtuálním počítači Azure po převzetí služeb při selhání. Služba je požadován pro komunikaci s místní konfigurační server.
-
-K vyřešení tohoto problému:
-
-* Zkontrolujte, že síť virtuálních počítačů Azure umožňuje virtuálnímu počítači Azure ke komunikaci s místní konfigurační server. Můžete buď nastavit síť VPN site-to-site do vašeho místního datového centra nebo připojení k Azure ExpressRoute nakonfigurovat soukromý partnerský vztah ve virtuální síti virtuálního počítače Azure.
-* Pokud virtuální počítač může komunikovat s místní konfigurační server, přihlaste se k virtuálnímu počítači. Zkontrolujte služba InMage Scout aplikace. Pokud se zobrazí, že neběží, spusťte službu ručně. Zkontrolujte, že službu spustit typ nastavena na **automatické**.
-
-### <a name="error-code-78052"></a>Kód chyby 78052
-
-**U virtuálního počítače nelze dokončit ochrana.**
-
-Tento problém může dojít, pokud již existuje virtuální počítač se stejným názvem na hlavním cílovém serveru, ke kterému jste se navrácení služeb po obnovení.
+* Virtuální počítač Azure kontaktovat místní konfigurační server. Virtuální počítač nelze zjistit a zaregistrován ke konfiguračnímu serveru.
+* Služba InMage Scout application neběží na virtuálním počítači Azure po převzetí služeb při selhání. Služba je potřeba ke komunikaci s místní konfigurační server.
 
 K vyřešení tohoto problému:
 
-* Vyberte jiný hlavní cílový server na jiného hostitele tak, aby nové provedení ochrany vytvoří na počítači na jiného hostitele, kde není názvy dojít ke konfliktu.
-* Také můžete řešení vMotion přesunout hlavního cíle na jiného hostitele, kde je název kolize neprovede. Pokud je existující virtuální počítač stray počítač, přejmenujte ji, aby bylo možné vytvořit nový virtuální počítač na stejném hostiteli ESXi.
+* Zkontrolujte, že síť virtuálních počítačů Azure umožňuje virtuálnímu počítači Azure ke komunikaci s místní konfigurační server. Můžete nastavit síť site-to-site VPN do vašeho místního datového centra nebo připojení Azure ExpressRoute nakonfigurovat soukromý partnerský vztah virtuální sítě virtuálního počítače Azure.
+* Pokud virtuální počítač může komunikovat s místní konfigurační server, přihlaste se k virtuálnímu počítači. Zkontrolujte službu InMage Scout application. Pokud se zobrazí, že neběží, spusťte službu ručně. Zkontrolujte, že služba spuštěna typ je nastavena na **automatické**.
 
+### <a name="error-code-78052"></a>Kód chyby: 78052
 
-### <a name="error-code-78093"></a>Kód chyby 78093
+**U virtuálního počítače nejde dokončit ochrana.**
 
-**Virtuální počítač neběží ve stavu "zamrzlých", nebo není dostupný.**
-
-K vyřešení tohoto problému:
-
-Virtuální počítač Azure k nastavení opětné virtuálního počítače při selhání, musí být spuštěna, aby služba Mobility zaregistruje se pomocí konfigurace místního serveru a můžete je zahájení replikace pomocí komunikovat s procesovým serverem. Pokud tento počítač je v nesprávné sítí nebo není spuštěná (přestala stavu nebo vypnutí dolů), server konfigurace se nemůže připojit službu Mobility virtuálního počítače zahájíte nové provedení ochrany.
-
-* Restartujte virtuální počítač tak, aby ho můžete spustit komunikaci back místní.
-* Restartujte úlohu, opětovné ochrany po spuštění virtuálního počítače Azure.
-
-### <a name="error-code-8061"></a>Kód chyby 8061
-
-**Úložiště není přístupná z hostitele ESXi.**
-
-Zkontrolujte [hlavní cíl požadavky a podporovanými úložišti dat](vmware-azure-reprotect.md#deploy-a-separate-master-target-server) navrácení služeb po obnovení.
-
-
-## <a name="troubleshoot-failback-errors"></a>Řešení chyb navrácení služeb po obnovení
-
-Tato část popisuje běžné chyby, ke kterým může dojít během navrácení služeb po obnovení.
-
-### <a name="error-code-8038"></a>Kód chyby 8038
-
-**Nepovedlo se zprovoznit místní virtuální počítač z důvodu chyby.**
-
-Tento problém se stane, když je zapínají místní virtuální počítač na hostitele, který nemá dostatek paměti zřízený. 
+Tento problém může dojít, pokud virtuální počítač na hlavním cílovém serveru, ke kterému jste se navrácení služeb po obnovení se stejným názvem již existuje.
 
 K vyřešení tohoto problému:
 
-* Zřídit další paměť na hostiteli ESXi.
-* Kromě toho můžete řešení vMotion přesunout virtuální počítač do jiného hostitele ESXi, který má dostatek paměti ke spuštění virtuálního počítače.
+* Vyberte jiný hlavní cílový server na jiného hostitele tak, aby opětovného nastavování ochrany vytvoří počítače na jiného hostitele, kde není v konfliktu názvů.
+* Také můžete řešení vMotion přesunout na hlavním cíli na jiného hostitele, kde kolize názvů neprovede. Pokud existujícího virtuálního počítače je zapomenutý počítač, přejmenujte ho tak, aby nový virtuální počítač se dají vytvořit na stejném hostiteli ESXi.
+
+
+### <a name="error-code-78093"></a>Kód chyby: 78093
+
+**Virtuální počítač neběží ve stavu, kdy nereaguje, nebo není přístupný.**
+
+K vyřešení tohoto problému:
+
+K znovunastavení ochrany virtuálního počítače s převzetím služeb při selhání, musí být spuštěn virtuální počítač Azure, tak, aby služba Mobility zaregistruje se pomocí konfigurace místního serveru a může spustit replikaci tím, že komunikuje s procesový server. Pokud tento počítač je v nesprávné sítě nebo není spuštěné (přestala stavu nebo vypnout dolů), konfigurační server se nemůže připojit službu Mobility na virtuálním počítači zahajte opětovné nastavování ochrany.
+
+* Aby mohla začít, komunikaci zpět do místních, restartujte virtuální počítač.
+* Po spuštění virtuálního počítače Azure, restartujte tuto úlohu znovunastavení ochrany.
+
+### <a name="error-code-8061"></a>Kód chyby: 8061
+
+**Úložiště není přístupný z hostitele ESXi.**
+
+Zkontrolujte [hlavního cílového požadavky a podporovanými úložišti dat](vmware-azure-reprotect.md#deploy-a-separate-master-target-server) navrácení služeb po obnovení.
+
+
+## <a name="troubleshoot-failback-errors"></a>Řešení potíží s chybami navrácení služeb po obnovení
+
+Tato část popisuje běžné chyby, které mohou nastat během navrácení služeb po obnovení.
+
+### <a name="error-code-8038"></a>Kód chyby: 8038
+
+**Nepovedlo se vyvolat na místním virtuálním počítači z důvodu chyby.**
+
+Tento problém nastane, pokud nedostanete místní virtuální počítač na hostitele, který nemá dostatek paměti zřízené. 
+
+K vyřešení tohoto problému:
+
+* Zřízení více paměti na hostiteli ESXi.
+* Kromě toho můžete použít řešení vMotion pro přesun virtuálního počítače na jiného hostitele ESXi, který má dostatek paměti ke spuštění virtuálního počítače.

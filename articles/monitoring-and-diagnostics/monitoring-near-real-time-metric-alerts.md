@@ -5,18 +5,27 @@ author: snehithm
 services: monitoring
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 04/27/2018
+ms.date: 06/29/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: 01c0b5897ab47a2a5091646aed1977779cf0234c
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 63659b5606e4bab8365f4f7a94c42a0fa5eafee6
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37868016"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37928368"
 ---
-# <a name="supported-metrics-and-creation-methods-for-new-metric-alerts"></a>Podporované metody metrik a vytváření nových metrik výstrah
-Azure teď podporuje sledování [novou výstrahu typu metrika](monitoring-overview-unified-alerts.md) která má významné výhody přes starší [klasického upozornění metrik](insights-alerts-portal.md). Podporují starší výstrahy [velké seznam metrik](monitoring-supported-metrics.md). Novější upozornění podporují podmnožinu větší seznamu (rostoucí). Tento článek uvádí tuto podmnožinu. 
+# <a name="introduction"></a>Úvod
+Azure teď podporuje sledování [novou výstrahu typu metrika](monitoring-overview-unified-alerts.md) která má významné výhody přes starší [klasického upozornění metrik](insights-alerts-portal.md). Metriky jsou k dispozici pro [velké seznam služeb Azure](monitoring-supported-metrics.md). Novější upozornění podporují podmnožinu typů prostředků (rostoucí). Tento článek uvádí tuto podmnožinu. 
+
+Novějších upozornění metrik můžete použít také u oblíbených protokoly analýzy protokolu extrahovat jako metriky jako součást metriky z protokolů (Preview)  
+- [Čítače výkonu](../log-analytics/log-analytics-data-sources-performance-counters.md) u počítačů s Windows a Linuxu
+- [Záznamy prezenčního signálu služby Agent Health](../operations-management-suite/oms-solution-agenthealth.md)
+- [Správa aktualizací](../operations-management-suite/oms-solution-update-management.md) záznamů
+- [Data události](../log-analytics/log-analytics-data-sources-windows-events.md) protokoly
+ 
+> [!NOTE]
+> Určité metriky a/nebo dimenze pouze zobrazí-li data pro něj existuje za vybrané období. Tyto metriky jsou k dispozici pro zákazníky s pracovních prostorů Azure Log Analytics v oblastech východní USA, západní USA, střed USA a západní Evropa. Metriky z Log Analytics je aktuálně ve verzi public preview a může se měnit.
 
 ## <a name="portal-powershell-cli-rest-support"></a>Portálu, Powershellu, rozhraní příkazového řádku, REST podpory
 V současné době můžete pouze na portálu Azure vytvořit novějších upozornění metrik [rozhraní REST API](https://docs.microsoft.com/en-us/rest/api/monitor/metricalerts/createorupdate) nebo [šablon Resource Manageru](monitoring-create-metric-alerts-with-templates.md). Podpora konfigurace novější upozornění pomocí prostředí PowerShell a rozhraní příkazového řádku Azure (Azure CLI 2.0) už brzy bude.
@@ -32,9 +41,11 @@ Tady je úplný seznam podporovaných novější upozornění metriky zdrojů Az
 |Microsoft.Automation/automationAccounts     |     Ano   | [Účty služby Automation](monitoring-supported-metrics.md#microsoftautomationautomationaccounts)|
 |Microsoft.Batch/batchAccounts | neuvedeno| [Účty batch](monitoring-supported-metrics.md#microsoftbatchbatchaccounts)|
 |Microsoft.Cache/Redis     |    neuvedeno     |[Redis Cache](monitoring-supported-metrics.md#microsoftcacheredis)|
+|Microsoft.CognitiveServices/accounts     |    neuvedeno     | [Cognitive Services](monitoring-supported-metrics.md#microsoftcognitiveservicesaccounts)|
 |Microsoft.Compute/virtualMachines     |    neuvedeno     | [Virtual Machines](monitoring-supported-metrics.md#microsoftcomputevirtualmachines)|
 |Microsoft.Compute/virtualMachineScaleSets     |   neuvedeno      |[Škálovací sady virtuálních počítačů](monitoring-supported-metrics.md#microsoftcomputevirtualmachinescalesets)|
 |Microsoft.ContainerInstance/containerGroups | Ano| [Skupiny kontejnerů](monitoring-supported-metrics.md#microsoftcontainerinstancecontainergroups)|
+|Microsoft.ContainerService/managedClusters | Ano | [Spravované clustery](monitoring-supported-metrics.md#microsoftcontainerservicemanagedclusters)|
 |Microsoft.DataFactory/datafactories| Ano| [V1 objekty pro vytváření dat](monitoring-supported-metrics.md#microsoftdatafactorydatafactories)|
 |Microsoft.DataFactory/factories     |   Ano     |[Datové továrny V2](monitoring-supported-metrics.md#microsoftdatafactoryfactories)|
 |Microsoft.DBforMySQL/servers     |   neuvedeno      |[DB for MySQL](monitoring-supported-metrics.md#microsoftdbformysqlservers)|
@@ -43,101 +54,19 @@ Tady je úplný seznam podporovaných novější upozornění metriky zdrojů Az
 |Microsoft.KeyVault/vaults| Ne | [Trezory služby](monitoring-supported-metrics.md#microsoftkeyvaultvaults)|
 |Microsoft.Logic/workflows     |     neuvedeno    |[Logic Apps](monitoring-supported-metrics.md#microsoftlogicworkflows) |
 |Microsoft.Network/applicationGateways     |    neuvedeno     | [Application Gateway](monitoring-supported-metrics.md#microsoftnetworkapplicationgateways) |
+|Microsoft.Network/expressRouteCircuits | neuvedeno |  [Express Route okruhy](monitoring-supported-metrics.md#microsoftnetworkexpressroutecircuits) |
 |Microsoft.Network/dnsZones | neuvedeno| [Zóny DNS](monitoring-supported-metrics.md#microsoftnetworkdnszones) |
 |Microsoft.Network/loadBalancers (pouze pro standardní skladové položky)| Ano| [Nástroje pro vyrovnávání zatížení](monitoring-supported-metrics.md#microsoftnetworkloadbalancers) |
 |Microsoft.Network/publicipaddresses     |  neuvedeno       |[Veřejná IP adresa Addreses](monitoring-supported-metrics.md#microsoftnetworkpublicipaddresses)|
 |Microsoft.PowerBIDedicated/capacities | neuvedeno | [Kapacity](monitoring-supported-metrics.md#microsoftpowerbidedicatedcapacities)|
+|Microsoft.Network/trafficManagerProfiles | Ano | [Profily Traffic Manageru](monitoring-supported-metrics.md#microsoftnetworktrafficmanagerprofiles) |
 |Microsoft.Search/searchServices     |   neuvedeno      |[Vyhledávací služby](monitoring-supported-metrics.md#microsoftsearchsearchservices)|
 |Microsoft.ServiceBus/namespaces     |  Ano       |[Service Bus](monitoring-supported-metrics.md#microsoftservicebusnamespaces)|
 |Microsoft.Storage/storageAccounts     |    Ano     | [Účty úložiště](monitoring-supported-metrics.md#microsoftstoragestorageaccounts)|
 |Microsoft.Storage/storageAccounts/services     |     Ano    | [Objekt BLOB služby](monitoring-supported-metrics.md#microsoftstoragestorageaccountsblobservices), [souborové služby](monitoring-supported-metrics.md#microsoftstoragestorageaccountsfileservices), [fronty služby](monitoring-supported-metrics.md#microsoftstoragestorageaccountsqueueservices) a [tabulky služeb](monitoring-supported-metrics.md#microsoftstoragestorageaccountstableservices)|
 |Microsoft.StreamAnalytics/streamingjobs     |  neuvedeno       | [Stream Analytics](monitoring-supported-metrics.md#microsoftstreamanalyticsstreamingjobs)|
-|Microsoft.CognitiveServices/accounts     |    neuvedeno     | [Cognitive Services](monitoring-supported-metrics.md#microsoftcognitiveservicesaccounts)|
-|Microsoft.OperationalInsights/workspaces (Preview) | Ano|[Pracovní prostory log Analytics](#log-analytics-logs-as-metrics-for-alerting)|
-
-
-## <a name="log-analytics-logs-as-metrics-for-alerting"></a>Log Analytics zaznamená jako metriky pro generování výstrah 
-
-Můžete také novějších upozornění metrik na oblíbené protokoly analýzy protokolu extrahovat jako metriky jako součást metriky z protokolů ve verzi Preview.  
-- [Čítače výkonu](../log-analytics/log-analytics-data-sources-performance-counters.md) u počítačů s Windows a Linuxu
-- [Záznamy prezenčního signálu služby Agent Health](../operations-management-suite/oms-solution-agenthealth.md)
-- [Správa aktualizací](../operations-management-suite/oms-solution-update-management.md) záznamů
- 
-> [!NOTE]
-> Určité metriky a/nebo dimenze pouze zobrazí-li data pro něj existuje za vybrané období. Tyto metriky jsou k dispozici pro zákazníky s pracovními prostory v oblastech východní USA, západní USA, střed USA a západní Evropa, kteří se přihlásili k verzi preview. Pokud chcete být součástí této verze preview, zaregistrujte pomocí [zjišťování](https://aka.ms/MetricLogPreview).
-
-Následující seznam zdrojů metriky založené na protokolu Log Analytics se podporuje:
-
-Metriky názvem/podrobnostmi  |Dimenze podporována  | Typ protokolu  |
-|---------|---------|---------|
-|Average_Avg. Doba disku/čtení     |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Windows      |
-| Average_Avg. Doby disku/zápis     |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Windows      |
-| Délka fronty disku Average_Current   |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Windows      |
-| Average_Disk přečtené strany/s    |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Windows      |
-| Average_Disk přenosy/s    |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Windows      |
-|   Average_ % volného místa    |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Windows      |
-| Average_Available paměť v megabajtech     |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Windows      |
-| Average_ % potvrzených bajtů    |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Windows      |
-| Přijaté Average_Bytes/s    |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Windows      |
-|  Odeslané Average_Bytes/s    |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Windows      |
-|  Average_Bytes celkem/s    |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Windows      |
-|  Average_ % času procesoru    |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Windows      |
-|   Délka fronty Average_Processor    |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Windows      |
-|   Average_ % volných uzlů Inode   |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Linuxu      |
-|    Average_ % volného místa   |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Linuxu      |
-|    Average_ % použitých uzlů Inode  |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Linuxu      |
-|    Average_ % využitého místa   |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Linuxu      |
-|    Average_Disk přečtené bajty/s    |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Linuxu      |
-|    Average_Disk přečtené strany/s |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Linuxu      |
-|    Average_Disk přenosy/s |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Linuxu      |
-|    Average_Disk zapsané bajty/s   |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Linuxu      |
-|    Average_Disk zapsané strany/s    |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Linuxu      |
-|    Average_Free v megabajtech |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Linuxu      |
-|    Average_Logical bajtů disku/s |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Linuxu      |
-|    Dostupná paměť v % Average_ |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Linuxu      |
-|    Average_ % dostupného odkládacího prostoru |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Linuxu      |
-|    Average_ % využité paměti  |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Linuxu      |
-|    Využitý prostor záměny v Average_ %  |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Linuxu      |
-|    Average_Available paměť v MB    |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Linuxu      |
-|    Average_Available prostor záměny v MB  |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Linuxu      |
-|    Average_Page přečtené strany/s |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Linuxu      |
-|    Average_Page zapsané strany/s    |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Linuxu      |
-|    Average_Pages za sekundu  |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Linuxu      |
-|    Average_Used prostor záměny v MB |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Linuxu      |
-|    Average_Used paměť v MB |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Linuxu      |
-|    Odeslané bajty Average_Total    |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Linuxu      |
-|    Přijaté bajty Average_Total   |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Linuxu      |
-|    Average_Total bajtů    |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Linuxu      |
-|    Average_Total pakety odesílané informace  |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Linuxu      |
-|    Average_Total obdržených paketů |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Linuxu      |
-|    Chyby příjmu Average_Total    |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Linuxu      |
-|    Chyby odeslání Average_Total    |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Linuxu      |
-|    Average_Total kolizí   |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Linuxu      |
-|    Average_Avg. Doba disku/čtení |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Linuxu      |
-|    Average_Avg. Doba disku/přenos |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Linuxu      |
-|    Average_Avg. Doby disku/zápis    |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Linuxu      |
-|    Average_Physical bajtů disku/s    |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Linuxu      |
-|    Average_Pct privilegovaného času    |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Linuxu      |
-|    Average_Pct uživatelského času  |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Linuxu      |
-|    KB paměti Average_Used |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Linuxu      |
-|    Average_Virtual sdílené paměti  |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Linuxu      |
-|    % Času DPC Average_ |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Linuxu      |
-|    Average_ čas nečinnosti v %    |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Linuxu      |
-|    % Času přerušení Average_   |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Linuxu      |
-|    Doba čekání na vstupně-výstupních operací Average_ % |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Linuxu      |
-|    Average_ dobrý čas v %    |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Linuxu      |
-|    Average_ % privilegovaného času  |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Linuxu      |
-|    Average_ % času procesoru   |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Linuxu      |
-|    Average_ % uživatelského času    |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Linuxu      |
-|    Average_Free fyzické paměti   |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Linuxu      |
-|    Average_Free místo ve stránkovacích souborech |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Linuxu      |
-|    Average_Free virtuální paměti    |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Linuxu      |
-|    Average_Processes  |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Linuxu      |
-|    Average_Size uložená v stránkovacích souborech    |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Linuxu      |
-|    Average_Uptime |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Linuxu      |
-|    Average_Users  |     Ano – počítače, název_objektu, InstanceName, Cesta_k_čítači & SourceSystem    |   Čítače výkonu Linuxu      |
-|    Prezenční signál  |     Ano – počítače, OSType, verzi a SourceComputerId    |   Záznamy prezenčního signálu |
-|    Aktualizace |     Ano – počítače, produktů, klasifikace, UpdateState volitelné & schválené    |   Update Management |
+| Microsoft.Web/serverfarms | Ano | [Plány služby App Service](monitoring-supported-metrics.md#microsoftwebserverfarms)  |
+|Microsoft.OperationalInsights/workspaces (Preview) | Ano|[Pracovní prostory log Analytics](monitoring-supported-metrics.md#microsoftoperationalinsightsworkspaces)|
 
 
 

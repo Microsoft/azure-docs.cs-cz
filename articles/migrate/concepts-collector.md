@@ -1,208 +1,208 @@
 ---
-title: Kolekce zařízení v Azure migrovat | Microsoft Docs
-description: Poskytuje přehled kolekce zařízení a jeho konfiguraci.
+title: Zařízení kolektoru ve službě Azure Migrate | Dokumentace Microsoftu
+description: Poskytuje přehled zařízení Kolektoru a jeho konfiguraci.
 author: ruturaj
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 06/19/2018
+ms.date: 07/10/2018
 ms.author: ruturajd
 services: azure-migrate
-ms.openlocfilehash: d0f36370f5093f8c1d06c83a62532b3854597fa4
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 8cc5863489c58a0603d8aa464911031a22dba8f3
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36211665"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37951035"
 ---
-# <a name="collector-appliance"></a>Kolekce zařízení
+# <a name="collector-appliance"></a>Zařízení kolektoru
 
-[Azure migrací](migrate-overview.md) vyhodnocuje místní úlohy pro migraci do Azure. Tento článek obsahuje informace o tom, jak používat kolekce zařízení.
+[Azure Migrate](migrate-overview.md) posuzuje místní úlohy pro migraci do Azure. Tento článek obsahuje informace o tom, jak pomocí zařízení Kolektoru.
 
 
 
 ## <a name="overview"></a>Přehled
 
-Migrace kolekce služby Azure je lightweight zařízení, který slouží ke zjištění prostředí místní vCenter. Toto zařízení zjistí počítače VMware na místě a metadata o nich se odešle do služby Azure migrovat.
+Azure Migrate Collector je zjednodušené zařízení, který slouží ke zjišťování vCenter v místním prostředí. Toto zařízení zjistí místních počítačů VMware a odešle jejich metadata do služby Azure Migrate.
 
-Kolekce zařízení je OVF, které si můžete stáhnout z projektu Azure migrovat. Vytvoření instance virtuálního počítače VMware s 4 jádra, 8 GB paměti RAM a jeden disk 80 GB. Operační systém zařízení je Windows Server 2012 R2 (64bitová verze).
+Zařízení Kolektoru je OVF, který si můžete stáhnout z projektu Azure Migrate. Vytvoření instance virtuálního počítače VMware s 4 jádra, 8 GB paměti RAM a jeden disk 80 GB. Operační systém zařízení je Windows Server 2012 R2 (64bitová verze).
 
-Pomocí následujícího postupu můžete vytvořit kolekce zde - [postup vytvoření virtuálního počítače kolekce](tutorial-assessment-vmware.md#create-the-collector-vm).
+Pomocí následujících kroků můžete vytvořit kolektor zde - [vytvoření virtuálního počítače kolektor](tutorial-assessment-vmware.md#create-the-collector-vm).
 
-## <a name="collector-communication-diagram"></a>Diagram komunikace kolekce
+## <a name="collector-communication-diagram"></a>Diagram komunikace kolekcí
 
-![Diagram komunikace kolekce](./media/tutorial-assessment-vmware/portdiagram.PNG)
+![Diagram komunikace kolekcí](./media/tutorial-assessment-vmware/portdiagram.PNG)
 
 
 | Komponenta      | Komunikace s   | Požadovaný port                            | Důvod                                   |
 | -------------- | --------------------- | ---------------------------------------- | ---------------------------------------- |
-| Kolektor      | Služba Azure Migrate | TCP 443                                  | Kolekce musí být schopen komunikovat se službou v portu SSL 443 |
-| Kolektor      | vCenter Server        | Výchozí port 443                             | Kolekce by mohli ke komunikaci se serverem vCenter. Ve výchozím nastavení připojí k vCenter na 443. Pokud vCenter naslouchá na jiný port, že port by měl být k dispozici jako odchozí port v kolekci |
-| Kolektor      | Protokol RDP|   | TCP 3389 | Abyste mohli pro připojení RDP do počítače kolekce |
+| Kolektor      | Služba Azure Migrate | TCP 443                                  | Kolekce by měl být schopen komunikovat se službou service přes port SSL 443. |
+| Kolektor      | vCenter Server        | Výchozí port 443                             | Kolekce by měl být schopen komunikovat se serverem vCenter. Ve výchozím nastavení připojení k vCenter na 443. Pokud server vCenter naslouchá na jiném portu, tento port by měl být k dispozici jako odchozí port na kolektoru |
+| Kolektor      | Protokol RDP|   | TCP 3389 | Pro, abyste mohli pro protokol RDP do počítače Kolektoru |
 
 
 
 
 
-## <a name="collector-pre-requisites"></a>Požadavky kolekce
+## <a name="collector-pre-requisites"></a>Požadavky na kolekce
 
-Kolekce musí předat několik předběžné kontroly, aby se zajistilo může připojit ke službě Azure migrovat a nahrát zjištěná data. Tento článek vypadá na každé požadované součásti a pochopit, proč je vyžadována.
+Kolekce je potřeba předat několik nepotlačí kontroly, aby se může připojit ke službě Azure Migrate a nahrát zjištěná data. Tento článek vypadá na jednotlivé požadavky a pochopit, proč se vyžaduje.
 
 ### <a name="internet-connectivity"></a>Připojení k internetu
 
-Kolekce zařízení musí být připojen k Internetu k odeslání informací o zjištěných počítačů. Na počítači můžete připojit k Internetu v jednom z následujících způsobů.
+Zařízení kolektoru musí být připojené k Internetu, abychom mohli poslat informace o zjištěných počítačů. Na počítači můžete připojit k Internetu v jednom z následujících způsobů.
 
-1. Můžete nakonfigurovat kolekce tak, aby měl přímé připojení k Internetu.
+1. Můžete nakonfigurovat kolekcí s přímým přístupem připojený k Internetu.
 2. Můžete nakonfigurovat kolekce pro připojení prostřednictvím serveru proxy.
     * Pokud proxy server vyžaduje ověření, můžete zadat uživatelské jméno a heslo v nastavení připojení.
-    * IP adresa nebo plně kvalifikovaný název Proxy serveru musí být ve tvaru http://IPaddress nebo http://FQDN. Je podporován pouze server proxy protokolu http.
+    * IP adresu nebo plně kvalifikovaný název domény Proxy serveru by měl být ve tvaru http://IPaddress nebo http://FQDN. Se podporuje jen proxy protokolu http.
 
 > [!NOTE]
-> Kolekce nepodporuje založený na protokolu HTTPS proxy servery.
+> Servery proxy server založený na protokolu HTTPS nepodporuje kolektoru.
 
-#### <a name="whitelisting-urls-for-internet-connection"></a>Vytvoření seznamu povolených adres URL pro připojení k Internetu
+#### <a name="whitelisting-urls-for-internet-connection"></a>Přidávání na seznam povolených adres URL pro připojení k Internetu
 
-Předběžné kontroly je úspěšné, pokud kolekce můžete připojit k Internetu prostřednictvím zadaného nastavení. Zkontrolujte připojení byl ověřen pomocí připojení k seznam adres URL, jak je uvedeno v následující tabulce. Pokud používáte žádné brány firewall založená na adresu URL proxy serveru k řízení odchozí připojení, nezapomeňte seznamu povolených IP adres, že následující požadované adresy URL:
+Předběžné kontroly je úspěšný, pokud kolektor může připojit k Internetu prostřednictvím zadané nastavení. Kontrola připojení se ověří pomocí připojení k seznamu adres URL, jak je uvedeno v následující tabulce. Pokud používáte jakýkoli proxy server brány firewall na základě adresy URL k řízení odchozího připojení, nezapomeňte do seznamu povolených IP adres, že tyto požadované adresy URL:
 
 **Adresa URL** | **Účel**  
 --- | ---
-*.portal.azure.com | Vyžaduje se zkontrolovat připojení ke službě Azure a ověřit synchronizaci času problémy.
+*.portal.azure.com | Vyžaduje se ověřilo připojení ke službě Azure a ověřit synchronizaci času problémy.
 
-Kromě toho kontroly také pokusí se ověřit připojení k následujícím adresám URL, ale neselže kontrolu, pokud není k dispozici. Konfigurace seznamu povolených IP adres pro následující adresy URL je volitelný, ale je potřeba provést ruční kroky ke zmírnění předběžné kontroly.
+Kromě toho kontroly také pokusí o ověření připojení k následujícím adresám URL, ale není selhání kontroly, pokud není k dispozici. Konfigurace seznamu povolených IP adres pro následující adresy URL je volitelný, ale budete muset provést ruční kroky ke zmírnění předběžné kontroly.
 
-**Adresa URL** | **Účel**  | **Co když nemáte seznamu povolených IP adres**
+**Adresa URL** | **Účel**  | **Co když není seznam povolených**
 --- | --- | ---
-*.oneget.org:443 | Vyžaduje ke stažení powershell na základě vCenter PowerCLI modulu. | PowerCLI instalace se nezdaří. Nainstalujte modul ručně.
-*.windows.net:443 | Vyžaduje ke stažení powershell na základě vCenter PowerCLI modulu. | PowerCLI instalace se nezdaří. Nainstalujte modul ručně.
-*.windowsazure.com:443 | Vyžaduje ke stažení powershell na základě vCenter PowerCLI modulu. | PowerCLI instalace se nezdaří. Nainstalujte modul ručně.
-*. powershellgallery.com:443 | Vyžaduje ke stažení powershell na základě vCenter PowerCLI modulu. | PowerCLI instalace se nezdaří. Nainstalujte modul ručně.
-*.msecnd.net:443 | Vyžaduje ke stažení powershell na základě vCenter PowerCLI modulu. | PowerCLI instalace se nezdaří. Nainstalujte modul ručně.
-*.visualstudio.com:443 | Vyžaduje ke stažení powershell na základě vCenter PowerCLI modulu. | PowerCLI instalace se nezdaří. Nainstalujte modul ručně.
+*.oneget.org:443 | Vyžaduje se stáhnout powershell na základě vCenter PowerCLI modulu. | PowerCLI instalace se nezdaří. Ručně nainstalujte modul.
+*.windows.net:443 | Vyžaduje se stáhnout powershell na základě vCenter PowerCLI modulu. | PowerCLI instalace se nezdaří. Ručně nainstalujte modul.
+*.windowsazure.com:443 | Vyžaduje se stáhnout powershell na základě vCenter PowerCLI modulu. | PowerCLI instalace se nezdaří. Ručně nainstalujte modul.
+*. powershellgallery.com:443 | Vyžaduje se stáhnout powershell na základě vCenter PowerCLI modulu. | PowerCLI instalace se nezdaří. Ručně nainstalujte modul.
+*.msecnd.net:443 | Vyžaduje se stáhnout powershell na základě vCenter PowerCLI modulu. | PowerCLI instalace se nezdaří. Ručně nainstalujte modul.
+*.visualstudio.com:443 | Vyžaduje se stáhnout powershell na základě vCenter PowerCLI modulu. | PowerCLI instalace se nezdaří. Ručně nainstalujte modul.
 
-### <a name="time-is-in-sync-with-the-internet-server"></a>Čas je synchronizována s internetového serveru
+### <a name="time-is-in-sync-with-the-internet-server"></a>Čas je synchronizovaný s internetový server
 
-Kolekce musí být synchronizována s čas serveru internet k zajištění, že jsou požadavky na službu ověřen. Stránce portal.azure.com adresa url by měly být dostupné z kolekce, takže čas může být ověřen. Pokud tento počítač není synchronizován, budete muset změnit čas hodiny na virtuálním počítači kolekce tak, aby odpovídaly aktuálního času, následujícím způsobem:
+Kolektor by měl být synchronizovaný s internetovým časovým serverem k zajištění, že ověření požadavků na službu. Adrese portal.azure.com. adresa url by měla být dosažitelný z Kolektoru, tak, aby čas může být ověřen. Pokud počítač není synchronizovaný, budete muset změnit čas na virtuálním počítači Kolektoru tak, aby odpovídaly aktuálního času, následujícím způsobem:
 
 1. Otevřete příkazový řádek správce ve virtuálním počítači.
-1. Chcete-li zkontrolovat časové pásmo, spusťte w32tm /tz.
+1. Ke kontrole časové pásmo, spusťte w32tm /tz.
 1. Chcete-li synchronizovat čas, spusťte w32tm/resync.
 
-### <a name="collector-service-should-be-running"></a>Kolekce služby by měl být spuštěn.
+### <a name="collector-service-should-be-running"></a>By měla být spuštěná služba kolektoru
 
-Služba Azure migraci kolekce by měla být spuštěna v počítači. Tato služba je spuštěna automaticky, když se počítač spustí. Pokud tato služba neběží, můžete spustit *Azure migraci kolekce* služby v Ovládacích panelech. Kolekce služba je zodpovědná k připojení k serveru vCenter, shromažďování dat metadata a výkon počítače a jeho odeslání ke službě.
+Na počítači musí běžet služba Azure Migrate Collector. Tato služba je spuštěna automaticky při spuštění počítače. Pokud služba není spuštěná, můžete spustit *Azure Migrate Collector* service ovládacích panelech. Služba Collector je zodpovědný připojit k serveru vCenter, sběr strojových dat metadata a výkonu a odesílat do služby.
 
 ### <a name="vmware-powercli-65"></a>VMware PowerCLI 6.5
 
-Modul prostředí powershell VMware PowerCLI musí být nainstalovaný, aby kolekce komunikovat se serverem vCenter a dotazy na podrobnosti o počítači a jejich data výkonu. Modul prostředí powershell je automaticky stažen a nainstalován jako součást předběžné kontroly. Automatické stahování vyžaduje několik adresy URL seznam povolených adres, které je nutné zadat buď nedaří získat přístup pomocí povolených je, nebo ruční instalace modulu.
+Modul powershell VMware PowerCLI musí být nainstalovaný tak, aby kolektor může komunikovat se serverem vCenter a dotazy na podrobnosti o počítači a jejich data o výkonu. Modul prostředí powershell je automaticky stažen a nainstalován jako součást předběžné kontroly. Automatické stahování vyžaduje několik seznamu povolených adres URL, jinak je nutné zadat buď přidáním k nim přístup, nebo ruční instalace modulu.
 
 Instalace modulu ručně pomocí následujících kroků:
 
 1. K instalaci PowerCli v kolekci bez připojení k Internetu, postupujte podle kroků uvedených v [tento odkaz](https://blogs.vmware.com/PowerCLI/2017/04/powercli-install-process-powershell-gallery.html) .
-2. Po instalaci modulu prostředí PowerShell v jiném počítači, který má přístup k Internetu, zkopírujte soubory VMware.* z tohoto počítače do kolekce počítačů.
-3. Restartujte kontrolu předpokladů a zkontrolujte, že je nainstalovaná PowerCLI.
+2. Po instalaci modulu prostředí PowerShell v jiném počítači, který má přístup k Internetu, zkopírujte soubory VMware.* z tohoto počítače do počítače kolektor.
+3. Restartujte kontroly splnění podmínek a potvrďte, že je nainstalovaný PowerCLI.
 
-## <a name="connecting-to-vcenter-server"></a>Připojení k systému vCenter Server
+## <a name="connecting-to-vcenter-server"></a>Připojení k serveru vCenter
 
-Kolekce musí připojit k systému vCenter Server a moct dotaz pro virtuální počítače, jejich metadat a jejich čítače výkonu. Tato data se v projektu používá k výpočtu posouzení.
+Kolektor by měl připojit k vCenter serveru a mít možnost provádět dotazy pro virtuální počítače, jejich metadat a jejich čítači výkonu. Tato data se používá v projektu pro výpočet posouzení.
 
-1. Pro připojení k systému vCenter Server, účet jen pro čtení s oprávněními podle údaje v následující tabulce slouží ke spuštění zjišťování.
+1. Pro připojení k serveru vCenter, účet jen pro čtení s oprávněními, jak je uvedeno v následující tabulce je možné spustit zjišťování.
 
-    |Úkol  |Požadované role nebo účtu  |Oprávnění  |
+    |Úkol  |Požadované role a účet  |Oprávnění  |
     |---------|---------|---------|
-    |Zjišťování zařízení na základě kolekce    | Je třeba alespoň uživatele jen pro čtení        |Objekt datového centra –> Rozšířit na podřízený objekt, role=Read-only         |
+    |Zjišťování na základě zařízení kolektoru    | Budete potřebovat alespoň uživatel jen pro čtení        |Objekt datového centra –> Rozšířit na podřízený objekt, role=Read-only         |
 
-2. Pouze těchto datových center, které jsou přístupné pro zadaný účet vCenter je přístupný pro zjišťování.
-3. Je třeba zadat plně kvalifikovaný název domény nebo IP adresu pro připojení k serveru vCenter server vCenter. Ve výchozím nastavení se připojí přes port 443. Pokud jste nakonfigurovali vCenter pro naslouchání na jiné číslo portu, můžete je zadat jako součást adresu serveru ve formě IPAddress:Port_Number nebo FQDN:Port_Number.
-4. Nastavení statistiky pro vCenter Server je nastavit na úroveň 3, před zahájením nasazení. Pokud úroveň je nižší než 3, zjišťování bude dokončen, ale nebudou shromažďovány údaje o výkonu pro úložiště a sítě. Doporučení vyhodnocení velikosti v takovém případě budou založeny na údaje o výkonu pro procesor a paměť a pouze konfigurační data pro disk a síťové adaptéry. [Další informace](./concepts-collector.md) na jaká data se shromažďují a jak se má dopad na hodnocení.
-5. Kolekce by měl mít sítě směrem pohledu k serveru vCenter.
+2. Zjišťování je přístupný pouze datacentra, které jsou přístupné pro zadaný účet vCenter.
+3. Je třeba zadat plně kvalifikovaný název domény nebo IP adresu pro připojení k serveru vCenter server vCenter. Ve výchozím nastavení se připojí přes port 443. Pokud jste nakonfigurovali server vCenter pro naslouchání na jiné číslo portu, můžete je zadat jako součást adresu serveru ve formuláři IPAddress:Port_Number nebo FQDN:Port_Number.
+4. Nastavení statistiky systému vCenter Server by měla nastavit na úroveň 3, před zahájením nasazení. Pokud úroveň je nižší než 3, se dokončí zjišťování, ale nebudou shromažďovat údaje o výkonu pro úložiště a sítě. Doporučení posouzení velikostí v tomto případě bude vycházet údaje o výkonu pro využití procesoru a paměti a pouze konfigurační data pro disk a síťové adaptéry. [Přečtěte si další](./concepts-collector.md) na jaká data se shromažďují a jak to ovlivní posouzení.
+5. Kolekce by měly mít síť dohled k serveru vCenter.
 
 > [!NOTE]
-> Pouze vCenter Server 5.5, 6.0 a verze 6.5 oficiálně podporovaných verzích.
+> Pouze verze serveru vCenter Server 5.5, 6.0 a 6.5 se oficiálně podporuje.
 
 > [!IMPORTANT]
-> Doporučujeme nastavit nejvyšší běžné úroveň (3) pro úroveň statistiky tak, aby všechny čítače jsou shromažďovány správně. Pokud máte vCenter nastavit na nižší úrovni, mohou být pouze několik čítače shromažďovány úplně, se zbytkem nastaven na hodnotu 0. Posouzení pak může zobrazovat neúplná data.
+> Doporučujeme nastavit nejvyšší běžné úroveň (3) pro úroveň statistiky tak, aby všechny čítače se shromažďují správně. Je nutné nastavit na nižší úrovni vCenter, může se zbytkem nastavena na hodnotu 0 úplně, shromažďují pouze několik čítače. Posouzení pak může zobrazit, neúplná data.
 
 ### <a name="selecting-the-scope-for-discovery"></a>Výběr rozsahu zjišťování
 
-Po připojení k serveru vCenter, můžete vybrat obor zjišťování. Výběr obor vyhledá všechny virtuální počítače z cesty zadané vCenter inventáře.
+Po připojení k serveru vCenter, můžete vybrat obor zjišťování. Že se vybere rozsah zjistí všechny virtuální počítače z cesty zadané vCenter inventáře.
 
-1. Datové centrum, složku nebo hostiteli ESXi, může být oboru.
-2. Můžete vybrat pouze jeden obor. Pokud chcete vybrat víc virtuálních počítačů, můžete dokončit jeden zjišťování a restartujte proces zjišťování nového oboru.
-3. Můžete vybrat pouze v rozsahu, který má *menší než 1 500 virtuálních počítačů*.
+1. Rozsah může být datové centrum, složku nebo hostiteli ESXi.
+2. Můžete vybrat pouze jeden obor. Pokud chcete vybrat další virtuální počítače, můžete dokončit jednu zjišťování a restartujte proces zjišťování pomocí nového oboru.
+3. Můžete vybrat jenom obor, který má *menší než 1 500 virtuálních počítačů*.
 
 ## <a name="specify-migration-project"></a>Zadejte projekt migrace
 
-Jakmile je připojen místní vCenter a je určena obor, nyní můžete určit podrobností projektu migrace, které je potřeba použít pro zjišťování a hodnocení. Zadejte ID projektu a klíč a připojení.
+Místní server vCenter je připojený, a je zadán obor, můžete nyní zadat podrobnosti projektu migrace, které je třeba použít pro zjišťování a posouzení. Zadejte ID a klíč projektu a připojení.
 
-## <a name="start-discovery-and-view-collection-progress"></a>Spuštění zjišťování a zobrazení kolekce průběh
+## <a name="start-discovery-and-view-collection-progress"></a>Spustit zjišťování a zobrazit průběh shromažďování
 
-Jakmile se spustí zjišťování, jsou zjišťovány vCenter virtuální počítače a jejich data metadata a výkonu je odeslat na server. Stav průběhu také uvidíte následující ID:
+Jakmile se spustí zjišťování zjištění serveru vCenter virtuálních počítačů a jejich metadat a výkonu data se odesílají na server. Stav průběhu poskytuje také následující ID:
 
-1. ID kolekce: Jedinečné ID, který je přiřazen k vašemu počítači kolekce děti. Toto ID se nezmění napříč různá zjišťování pro daný počítač. Toto ID v případě selhání můžete použít při hlášení problému k Microsoft Support.
-2. ID relace: Jedinečné ID pro spuštěné úlohy kolekce. Po dokončení úlohy zjišťování lze odkazovat na stejné ID relace na portálu. Toto ID změní pro všechny úlohy kolekce. V případě selhání můžete toto ID nahlásit společnosti Microsoft Support.
+1. ID collectoru: Jedinečný Identifikátor, který je přiřazen do svého počítače kolektor. Toto ID se nezmění přes různá zjišťování pro daný počítač. Toto ID v případě selhání můžete použít při hlášení problému na Microsoft Support.
+2. ID relace: Jedinečné ID pro spuštěné úlohy kolekce. Po dokončení úlohy zjišťování mohou odkazovat na stejné ID relace na portálu. Toto ID se změní pro každou kolekci úloh. V případě selhání můžete toto ID nahlásit společnosti Microsoft Support.
 
 ### <a name="what-data-is-collected"></a>Jaká data se shromažďují?
 
-Úlohy kolekce zjistí následující statické metadata o vybraných virtuálních počítačů.
+Kolekce úloh zjišťuje následující statické metadata o vybrané virtuální počítače.
 
-1. Název zobrazení virtuálních počítačů (na vCenter)
+1. Název zobrazení virtuálních počítačů (na serveru vCenter)
 2. Cesta inventáře Virtuálního počítače (hostitele nebo složku v systému vCenter)
 3. IP adresa
 4. Adresa MAC
 5. Operační systém
 5. Počet jader, disků, síťových adaptérů
 6. Velikost paměti, velikosti disků
-7. A čítače výkonu virtuálních počítačů, disku a sítě, jak je uvedeno v následující tabulce.
+7. A z čítačů výkonu virtuálních počítačů, disku a sítě, jak je uvedeno v následující tabulce.
 
-Následující tabulka uvádí čítače výkonu, které se shromažďují a také zobrazuje výsledky hodnocení, které jsou vliv, pokud nejsou zjištěny jednotlivých čítačů.
+V následující tabulce jsou uvedeny čítačů výkonu, které se budou shromažďovat a také výsledky posouzení, které jsou by to vliv na konkrétní čítač nejsou shromažďována.
 
-|Čítač                                  |Úroveň    |Úroveň za zařízení  |Dopad hodnocení                               |
+|Čítač                                  |Úroveň    |Úroveň podle zařízení  |Hodnocení dopadu                               |
 |-----------------------------------------|---------|------------------|------------------------------------------------|
-|CPU.Usage.average                        | 1       |Není k dispozici                |Doporučená velikost virtuálního počítače a náklady                    |
-|mem.usage.average                        | 1       |Není k dispozici                |Doporučená velikost virtuálního počítače a náklady                    |
+|CPU.Usage.average                        | 1       |Není k dispozici                |Doporučené velikosti virtuálních počítačů a náklady                    |
+|mem.usage.average                        | 1       |Není k dispozici                |Doporučené velikosti virtuálních počítačů a náklady                    |
 |virtualDisk.read.average                 | 2       |2                 |Velikost disku, náklady na úložiště a velikost virtuálního počítače         |
 |virtualDisk.write.average                | 2       |2                 |Velikost disku, náklady na úložiště a velikost virtuálního počítače         |
 |virtualDisk.numberReadAveraged.average   | 1       |3                 |Velikost disku, náklady na úložiště a velikost virtuálního počítače         |
 |virtualDisk.numberWriteAveraged.average  | 1       |3                 |Velikost disku, náklady na úložiště a velikost virtuálního počítače         |
-|net.received.average                     | 2       |3                 |Náklady na velikost a sítě virtuálních počítačů                        |
-|net.transmitted.average                  | 2       |3                 |Náklady na velikost a sítě virtuálních počítačů                        |
+|net.received.average                     | 2       |3                 |Cena za virtuální počítače velikosti a sítě                        |
+|net.transmitted.average                  | 2       |3                 |Cena za virtuální počítače velikosti a sítě                        |
 
 > [!WARNING]
-> Pokud jste právě nastavili na vyšší úrovni statistiky, bude trvat jeden den ke generování čítače výkonu. Ano doporučujeme spustit zjišťování po uplynutí jednoho dne.
+> Pokud jste právě nastavili vyšší úroveň statistiky, ji budou trvat až jeden den generovat čítače výkonu. Proto doporučujeme spustit zjišťování po jednom dni.
 
 ### <a name="time-required-to-complete-the-collection"></a>Čas potřebný k dokončení kolekce
 
-Kolekce pouze zjistí počítač data a odešle ji do projektu. Projektu může trvat déle než zjištěná data se zobrazí na portálu a můžete začít s vytvářením posouzení.
+Kolektor pouze zjišťuje data počítačů a odesílá je do projektu. Projekt může trvat déle než zjištěná data se zobrazí na portálu a můžete začít vytvářet posouzení.
 
-Podle počtu virtuálních počítačů v oboru vybrané, trvá až 15 minut odeslat statické metadata do projektu. Jakmile statické metadata jsou dostupné na portálu, můžete zobrazit seznam počítačů v portálu a začít vytvářet skupiny. Posouzení nelze vytvořit, až do dokončení úlohy kolekce a projekt má zpracovat data. Jednou kolekce úloha nebyla dokončena v kolekci, může trvat až jednu hodinu, než výkonu data, která mají být k dispozici na portálu, podle počtu virtuálních počítačů v oboru vybrané.
+Podle počtu virtuálních počítačů ve vybraném oboru, trvá až 15 minut odesílat statická metadata do projektu. Po statické metadata jsou k dispozici na portálu, můžete zobrazit seznam počítačů v portálu a začít vytvářet skupiny. Posouzení nejde vytvořit, až do dokončení úlohy kolekce a projektu má zpracovat data. Jakmile úloha kolekce byla dokončena v kolekci, může trvat až jednu hodinu, než bude k dispozici na portálu, data o výkonu podle počtu virtuálních počítačů ve vybraném oboru.
 
-## <a name="locking-down-the-collector-appliance"></a>Zamykání kolekce zařízení
-Doporučujeme spustit průběžné aktualizace systému Windows na kolekce zařízení. Pokud kolekce není aktualizován 45 dní, kolekce se spustí automaticky vypíná počítač. Pokud zjišťování běží, počítač nebude vypnout, i když je po jeho období 45 dnů. Dokončení POST úloha zjišťování, počítač se vypne. Pokud používáte kolekce déle než 45 dní, doporučujeme zachovat počítač aktualizován na všechny časy spuštěné služby Windows update.
+## <a name="locking-down-the-collector-appliance"></a>Uzamčení zařízení kolektoru
+Doporučujeme spustit průběžné aktualizace Windows na zařízení kolektoru. Pokud kolekce není aktualizován po dobu 60 dnů, se spustí automatické vypínání na počítači kolektoru. Pokud je funkce zjišťování spuštěna, počítače nebudou vypnout, i v případě, že je po jeho 60 dnů. Příspěvek zjišťování úlohy dokončí, počítač se vypne. Pokud používáte více než 45 dnů kolektoru, doporučujeme počítač aktualizoval na celou dobu spuštění aktualizace Windows.
 
-Doporučujeme také následující kroky pro zabezpečení vašeho zařízení
-1. Sdílené složky nebo někam nezaložili hesla správce s neoprávněným stranami.
-2. Vypněte zařízení, když není používán.
-3. Umístíte zařízení do zabezpečené sítě.
-4. Po dokončení migrace pracovní Odstraňte skupinu prostředků zařízení. Ujistěte se, že jste také odstranit disk, na kterém soubory (VMDKs), jako vCenter přihlašovací údaje do mezipaměti na je možné, že disky.
+Doporučujeme následující kroky a zabezpečit vaše zařízení
+1. Sdílet nebo s neoprávněnými osobami někam nezaložili hesla správce.
+2. Vypněte zařízení, když se nepoužívá.
+3. Umístíte zařízení do zabezpečené síti.
+4. Po dokončení migrace práce, odstraňte instanci zařízení. Nezapomeňte si také odstranit disk, na kterém soubory (Vmdk), jako disky může mít přihlašovací údaje k vCenter do mezipaměti na ně.
 
 ## <a name="how-to-upgrade-collector"></a>Postup upgradu kolekce
 
-Kolekce můžete upgradovat na nejnovější verzi bez stahování vajíčka ještě jednou.
+Kolekce můžete upgradovat na nejnovější verzi bez stáhnout soubor OVA jednou znovu.
 
 1. Stáhněte si nejnovější [balíček s upgradem](https://aka.ms/migrate/col/upgrade_9_11) (verze 1.0.9.11).
-2. Pro zajištění zabezpečené stažené opravy hotfix, otevřete příkazové okno správce a spusťte následující příkaz pro vytvoření hodnotu hash pro souboru ZIP. Generované hodnoty hash shodovat se symbolem hash uvedených na konkrétní verzi:
+2. Tak, aby byl zabezpečený stažené oprav hotfix, otevřete okno příkazového řádku pro správce a spusťte následující příkaz, kterým vygenerujete hodnotu hash pro soubor ZIP. Vygenerovaná hodnota hash by měla odpovídat symbolem hash uvedených proti konkrétní verzi:
 
     ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
 
-    (příklad použití C:\>CertUtil - HashFile C:\AzureMigrate\CollectorUpdate_release_1.0.9.7.zip SHA256)
-3. Soubor zip zkopírujte do Azure migraci kolekce virtuální počítač (kolekce zařízení).
-4. Klikněte pravým tlačítkem na soubor zip a vyberte možnost Extrahovat vše.
-5. Klikněte pravým tlačítkem na Setup.ps1 a vyberte spustit v prostředí PowerShell a postupujte podle pokynů na obrazovce instalace aktualizace.
+    (příklady použití C:\>CertUtil - HashFile C:\AzureMigrate\CollectorUpdate_release_1.0.9.7.zip SHA256)
+3. Soubor zip zkopírujte do Azure migrovat virtuální počítač kolektoru (zařízení kolektoru).
+4. Klikněte pravým tlačítkem na soubor zip a vyberte Extrahovat vše.
+5. Klikněte pravým tlačítkem na Setup.ps1 a vyberte spustit s prostředím PowerShell a postupujte podle pokynů na obrazovce instalace aktualizace.
 
 ### <a name="list-of-updates"></a>Seznam aktualizací
 
 #### <a name="upgrade-to-version-10911"></a>Upgrade na verzi 1.0.9.11
 
-Hodnoty hash hodnoty pro upgrade [balíček 1.0.9.11](https://aka.ms/migrate/col/upgrade_9_11)
+Hodnota hash hodnoty pro upgrade [balíček 1.0.9.11](https://aka.ms/migrate/col/upgrade_9_11)
 
 **Algoritmus** | **Hodnota hash**
 --- | ---
@@ -210,9 +210,9 @@ MD5 | 0e36129ac5383b204720df7a56b95a60
 SHA1 | aa422ef6aa6b6f8bc88f27727e80272241de1bdf
 SHA256 | 5f76dbbe40c5ccab3502cc1c5f074e4b4bcbf356d3721fd52fb7ff583ff2b68f
 
-#### <a name="upgrade-to-version-1097"></a>Upgrade na verzi 1.0.9.7
+#### <a name="upgrade-to-version-1097"></a>Upgradovat na verze 1.0.9.7:
 
-Hodnoty hash hodnoty pro upgrade [balíček 1.0.9.7](https://aka.ms/migrate/col/upgrade_9_7)
+Hodnota hash hodnoty pro upgrade [balíček 1.0.9.7:](https://aka.ms/migrate/col/upgrade_9_7)
 
 **Algoritmus** | **Hodnota hash**
 --- | ---
@@ -222,4 +222,4 @@ SHA256 | e3ee031fb2d47b7881cc5b13750fc7df541028e0a1cc038c796789139aa8e1e6
 
 ## <a name="next-steps"></a>Další postup
 
-[Nastavit hodnocení pro virtuální počítače VMware na místě](tutorial-assessment-vmware.md)
+[Nastavení posouzení pro místní virtuální počítače VMware](tutorial-assessment-vmware.md)

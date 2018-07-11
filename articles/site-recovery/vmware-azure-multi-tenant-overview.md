@@ -1,144 +1,144 @@
 ---
-title: Přehled podpory víceklientské pro replikaci virtuálního počítače VMware Azure (CSP) pomocí Azure Site Recovery | Microsoft Docs
-description: Poskytuje přehled o Azure Site Recovery podporu pro klienta odběry v prostředí s více klienty, prostřednictvím programu CSP.
+title: Přehled podpory více tenantů pro replikaci virtuálních počítačů VMware do Azure (CSP) pomocí služby Azure Site Recovery | Dokumentace Microsoftu
+description: Poskytuje přehled podpory Azure Site Recovery pro tenanta předplatná v prostředí s více tenanty, prostřednictvím programu CSP.
 services: site-recovery
 author: mayanknayar
 manager: rochakm
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2018
+ms.date: 07/06/2018
 ms.author: manayar
-ms.openlocfilehash: 0168849c01add3f714b139c7984e3def74f40a5b
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 2f1a158b6ff4ec603c77f834212cb92fa862b424
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34071759"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37919933"
 ---
-# <a name="overview-of-multi-tenant-support-for-vmware-replication-to-azure-with-csp"></a>Přehled podpory víceklientské pro replikace VMware do Azure pomocí zprostředkovatele kryptografických služeb
+# <a name="overview-of-multi-tenant-support-for-vmware-replication-to-azure-with-csp"></a>Přehled podpory více tenantů pro replikaci VMware do Azure s využitím CSP
 
-[Azure Site Recovery](site-recovery-overview.md) podporuje víceklientské prostředí odběrů klienta. Podporuje také více klientů pro klienta předplatné, které jsou vytvořeny a spravovat prostřednictvím programu Microsoft Cloud Solution Provider (CSP).
+[Azure Site Recovery](site-recovery-overview.md) podporuje prostředí více tenantů pro předplatná tenanta. Také podporuje více tenantů pro předplatné tenanta, které jsou vytvořeny a spravovány prostřednictvím programu Microsoft Cloud Solution Provider (CSP).
 
-Tento článek obsahuje přehled implementace a správa víceklientské VMware do Azure replikace.
+Tento článek poskytuje přehled o implementaci a správu více tenantů replikace z VMware do Azure.
 
-## <a name="multi-tenant-environments"></a>Víceklientské prostředí
+## <a name="multi-tenant-environments"></a>Prostředí s více tenanty
 
-Existují tři hlavní modely více klientů:
+Existují tři hlavní modely víceklientské:
 
-* **Sdílené hostování poskytovatele služeb (HSP)**: partnerovi vlastní fyzické infrastruktuře, a používá sdílených prostředků (vCenter, datových center, fyzického úložiště a tak dále) pro hostování více klientské virtuální počítače ve stejné infrastruktuře. Partner můžete zadat zotavení po havárii správu jako spravované služby, nebo klienta můžete vlastní zotavení po havárii jako řešení samoobslužné služby.
+* **Sdílené hostování poskytovatele služeb (HSP)**: partnera vlastní fyzické infrastruktury, a používá sdílené prostředky (vCenter, datová centra, fyzického úložiště a tak dále) pro hostování více klientské virtuální počítače ve stejné infrastruktuře. Partner nabízí správu zotavení po havárii jako spravovanou službu nebo tenanta může vlastnit zotavení po havárii jako řešení samoobslužné služby.
 
-* **Vyhrazené hostování zprostředkovatele služeb**: partnerovi vlastní fyzické infrastruktuře, ale využívá k hostování každého klienta virtuálních počítačů na infrastruktuře samostatné vyhrazených prostředcích (více Vcenter, fyzické datastores a tak dále). Partner můžete zadat zotavení po havárii správu jako spravované služby, nebo klienta můžete vlastní jako řešení samoobslužné služby.
+* **Vyhrazené poskytovatele služby hostingu**: partnera vlastní fyzické infrastruktury, ale používá vyhrazené prostředky (více vCenters fyzických úložišť a tak dále) pro hostování virtuálních počítačů každého tenanta do samostatného infrastruktury. Partner nabízí správu zotavení po havárii jako spravovanou službu nebo tenanta může vlastnit jako řešení samoobslužné služby.
 
-* **Spravované služby zprostředkovatele (MSP)**: zákazník vlastní fyzické infrastruktury, který je hostitelem virtuálních počítačů a partnerovi poskytuje povolování zotavení po havárii a pro správu.
+* **Spravovat poskytovatele služeb (MSP)**: zákazník je vlastníkem fyzické infrastruktury, který hostuje virtuální počítače a partnera poskytuje funkce pro kontrolu zotavení po havárii a správu.
 
-## <a name="shared-hosting-services-provider-hsp"></a>Sdílené hostování zprostředkovatele služeb (HSP)
+## <a name="shared-hosting-services-provider-hsp"></a>Sdílené hostování poskytovatele služeb (HSP)
 
-Příslušné dva scénáře jsou podmnožinou tohoto scénáře sdílené hostování a používají stejné zásady. Na konci pokyny sdílené hostování jsou popsané rozdíly.
+Dva scénáře jsou podmnožinou tohoto scénáře sdílené hostování a používají stejné zásady. Rozdíly jsou popsány na konci průvodce sdílené hostování.
 
-Základní požadavek ve scénáři více klientů je, že je klientům izolované. Jeden klient by neměl být schopný sledovat, co má atribut hosted jiného klienta. Tento požadavek není důležité, protože je v samoobslužné prostředí, kde může být rozhodující, v prostředí spravovaná partnerem. Tento článek předpokládá, že je vyžadována izolaci klientů.
+Základní požadavek ve scénářích s více tenanty je, že klienti musí být izolované. Jednoho tenanta by neměl být schopen sledovat, co má hostovaný jiného tenanta. Tento požadavek není jako důležitý, protože je v samoobslužné prostředí, kde může být rozhodující, v prostředí spravovaná partnerem. Tento článek předpokládá, že je vyžadována izolaci klientů.
 
-Architektura je znázorněno v následujícím diagramu.
+Tato architektura se zobrazí v následujícím diagramu.
 
-![Sdílené HSP s jeden vCenter](./media/vmware-azure-multi-tenant-overview/shared-hosting-scenario.png)  
+![Sdílené HSP s jednomu vCenter](./media/vmware-azure-multi-tenant-overview/shared-hosting-scenario.png)  
 
 **S jedním serverem vCenter hostování sdílených**
 
-V diagramu každou zákazník má server pro správu samostatné. Tato konfigurace omezuje přístup klientů k virtuálním počítačům konkrétního klienta, a umožňuje izolaci klientů. Replikace virtuálních počítačů VMware používá konfigurační server k vyhledání virtuálních počítačů a nainstalovat agenty. Stejné zásady platí pro víceklientské prostředí, a uveďte omezení zjišťování virtuálních počítačů pomocí řízení přístupu vCenter.
+V diagramu každý zákazník má samostatné management server. Tato konfigurace omezuje přístup klientů k virtuálním počítačům specifickým pro tenanta a umožňuje izolaci klientů. Replikace virtuálních počítačů VMware používá konfiguračního serveru k vyhledání virtuálních počítačů a nainstalovat agenty. Stejné zásady platí i pro prostředí více tenantů, a uveďte omezení zjišťování virtuálních počítačů pomocí řízení přístupu na serveru vCenter.
 
-Požadavek na izolaci dat znamená, že všechny infrastruktury citlivé informace (například přihlašovací údaje) zůstane podmínky klientům. Z tohoto důvodu doporučujeme, aby všechny součásti serveru pro správu nadále výhradní řídit partnera. Součásti serveru správy jsou:
+Požadavek na izolaci dat znamená, že všechny informace o citlivých infrastruktury (třeba přihlašovací údaje pro přístup) zůstává utajované klientům. Z tohoto důvodu doporučujeme vám, že všechny součásti serveru pro správu nadále výhradní kontrolu partnera. Součásti serveru pro správu jsou:
 
-* Konfigurace serveru
+* Konfigurační server
 * Procesový server
 * Hlavní cílový server
 
-Samostatný upraveným procesový server je také pod kontrolou partnera.
+Samostatný horizontálním navýšením kapacity procesový server je také v partnerské organizace ovládacího prvku.
 
 ## <a name="configuration-server-accounts"></a>Konfigurace serveru účty
 
-Každý server konfiguraci ve víceklientské scénáři používá dva účty:
+Každý konfiguračního serveru ve scénáři s více tenanty používá dva účty:
 
-- **účet pro přístup k systému vCenter**: Tento účet se používá ke zjišťování klientské virtuální počítače. Má oprávnění k přístupu vCenter přiřazen. Abyste se vyhnuli nevracení přístup, doporučujeme, partneři zadali tyto přihlašovací údaje, sami v konfiguračním nástroji služby.
+- **účet pro přístup k serveru vCenter**: Tento účet se používá ke zjišťování klientské virtuální počítače. Má přiřazena oprávnění k přístupu vCenter. Pokud chcete vyhnout nevracení přístup, doporučujeme, že partneři zadejte tyto přihlašovací údaje, sami v nástroji pro konfiguraci.
 
-- **Účet pro přístup k virtuálnímu počítači**: Tento účet se používá k instalaci agenta služby Mobility na klientské virtuální počítače, pomocí automatické nabízené. Obvykle je účet domény, který klient může poskytovat partnera nebo účet, který partner může spravovat přímo. Pokud klient není chcete sdílet podrobnosti s partnerovi přímo, můžou zadat přihlašovací údaje prostřednictvím přístupu časově omezenou na konfiguračním serveru. Nebo s jeho pomocí se můžete nainstalovat agenta služby Mobility ručně.
+- **Účet pro přístup k virtuální počítač**: Tento účet se používá k instalaci agenta služby Mobility na virtuální počítače, klienta pomocí automatické nabízené oznámení. Obvykle je účet domény, který tenanta může poskytnout s partnerem nebo účet, který partner může spravovat přímo. Pokud klient nechce sdílet podrobnosti přímo s partnerem, mohou zadat přihlašovací údaje prostřednictvím časovým omezením přístupu ke konfiguračnímu serveru. Nebo partnera, podporu, si můžou nainstalovat agenta služby Mobility ručně.
 
 ## <a name="vcenter-account-requirements"></a>požadavky na účet vCenter
 
-Konfigurační server nakonfigurujte účet, který má roli speciální přiřazen.
+Nakonfigurujte konfiguračního serveru pomocí účtu, který má zvláštní roli přiřazenou.
 
-- Přiřazení role musí být použít účet přístupu k vCenter pro každý objekt vCenter a nebyl rozšířen do podřízených objektů. Tato konfigurace zajišťuje izolaci klientů, vzhledem k šíření přístup může být v náhodných přístup k ostatním objektům.
+- Přiřazení role musí být použitý pro účet pro přístup k vCenter pro každý objekt vCenter a nejsou šířeny do podřízených objektů. Tato konfigurace zajišťuje izolaci klientů, protože šíření přístup může vést k náhodným přístupem na jiné objekty.
 
-    ![Propagate možnosti podřízené objekty](./media/vmware-azure-multi-tenant-overview/assign-permissions-without-propagation.png)
+    ![Rozšířit na podřízený objekt možnost](./media/vmware-azure-multi-tenant-overview/assign-permissions-without-propagation.png)
 
-- Alternativní způsob je přiřazení role v objektu datacenter a uživatelský účet a šířit je do podřízených objektů. Potom nového účtu **žádný přístup** role pro každý objekt (například virtuální počítače, které patří do jiných klientů), by měla být dostupná pro konkrétního klienta. Tato konfigurace je náročná. Zpřístupňuje náhodných přístup ovládacích prvků, protože každý nový podřízený objekt je také automaticky udělen přístup, který dědí z nadřazeného objektu. Proto doporučujeme použít první metodu.
+- Alternativním přístupem je přiřazení uživatelského účtu a role na objekt datového centra a jejich šíření do podřízených objektů. Zadejte účet **bez přístupu** role pro každý objekt (jako jsou virtuální počítače, které patří do jiných tenantů), který by ji znepřístupníme pro konkrétního tenanta. Tato konfigurace je náročné. Poskytuje řízení náhodného přístupu, protože každý nový podřízený objekt je také automaticky udělen přístup, který je zděděn z nadřazeného objektu. Proto doporučujeme použít první přístup.
 
-### <a name="create-a-vcenter-account"></a>Vytvoření účtu vCenter
+### <a name="create-a-vcenter-account"></a>Vytvořit účet vCenter
 
-1. Vytvoření nové role klonováním předdefinovanou *jen pro čtení* role a pak mu pohodlný název (například Azure_Site_Recovery, jak je znázorněno v tomto příkladu).
-2. K této roli přiřaďte následující oprávnění:
+1. Vytvoření nové role naklonováním předdefinovaného *jen pro čtení* role a pak poskytněte vhodný název (například Azure_Site_Recovery, jak je znázorněno v tomto příkladu).
+2. K této roli přiřadíte následující oprávnění:
 
-    * **Úložiště dat**: přidělit prostor, procházet úložiště, operace nízké úrovně souborů, odebrat soubor, soubory aktualizace virtuálního počítače
-    * **Sítě**: sítě přiřazení
-    * **Prostředek**: používá technologii migrací přiřazení virtuálního počítače do fondu zdrojů, migrací vypnout virtuální počítač, na virtuálním počítači
-    * **Úlohy**: vytvoření úlohy, úloha aktualizace
-    * **Virtuální počítač – konfigurační**: všechny
-    - **Virtuální počítač – interakce** > odpovědět na otázku, připojení zařízení, nakonfigurovat CD média, konfigurovat disketová média, vypnutí napájení, instalaci nástroje VMware
-    - **Virtuální počítač – inventáře** > vytvořit z existujícího, vytvořit nový, registraci, zrušení registrace
-    - **Virtuální počítač – zřizování** > Povolit stahování virtuálního počítače, nahrávání souborů virtuálního počítače povolit
-    - **Virtuální počítač – Správa snímků** > odebrat snímky
+    * **Úložiště dat**: přidělit prostor, procházet úložiště dat, operace se soubory nízké úrovně, odebrat soubor, soubory aktualizace virtuálního počítače
+    * **Síť**: přiřazení sítě
+    * **Prostředek**: přiřazení virtuálního počítače do fondu zdrojů, migrovat vypnutý virtuální počítač, migrovat zapnutý virtuální počítač
+    * **Úlohy**: vytvořit úlohu, aktualizovat úlohu
+    * **Virtuálního počítače – konfigurace**: všechny
+    - **Virtuální počítač – interakce** > zodpovědět otázky, připojení zařízení, konfigurovat disk CD, konfigurovat disketu, vypnout, zapnout, instalace nástrojů VMware
+    - **Virtuální počítač – inventář** > Vytvoření z existujících, vytvořit, zaregistrovat, zrušit registraci
+    - **Virtuální počítač – zřizování** > Povolit stažení virtuálního počítače, povolit nahrávání souborů virtuálního počítače
+    - **Virtuální počítač – Správa snímku** > odebrat snímky
 
-        ![Dialogové okno Upravit Role](./media/vmware-azure-multi-tenant-overview/edit-role-permissions.png)
+        ![Dialogové okno Upravit roli](./media/vmware-azure-multi-tenant-overview/edit-role-permissions.png)
 
-3. Přiřaďte úrovně přístupu k účtu vCenter (používá se v klientovi konfigurační server) pro různé objekty, následujícím způsobem:
+3. Přiřaďte úrovně přístupu na účet vCenter (používá se v tenantovi konfigurační server) pro různé objekty, následujícím způsobem:
 
 >| Objekt | Role | Poznámky |
 >| --- | --- | --- |
->| vCenter | Jen pro čtení | Potřeba pouze pro povolení přístupu vCenter pro správu různé objekty. Toto oprávnění může odebrat, pokud účet nikdy bude potřeba poskytnout klienta nebo použít pro žádné operace správy na serveru vCenter. |
+>| vCenter | Jen pro čtení | Potřeba pouze na povolit přístup k vCenter pro správu různé objekty. Můžete odebrat toto oprávnění, pokud nikdy být k dispozici tenanta na spravovaného účtu nebo používá pro všechny operace správy na serveru vCenter. |
 >| Datové centrum | Azure_Site_Recovery |  |
->| Hostitele a cluster hostitelů | Azure_Site_Recovery | Znovu zajišťuje, že přístup na úrovni objektu, tak, aby pouze přístupné hostitelů klientské virtuální počítače před převzetí služeb při selhání a po navrácení služeb po obnovení. |
->| Úložiště dat a úložiště clusteru | Azure_Site_Recovery | Stejné jako předcházející. |
+>| Hostitel a cluster hostitele | Azure_Site_Recovery | Znovu zajišťuje, že přístup na úrovni objektu tak, aby pouze přístupné hostiteli klientské virtuální počítače před převzetí služeb při selhání a po navrácení služeb po obnovení. |
+>| Úložiště dat a úložiště dat clusteru | Azure_Site_Recovery | Stejné jako předchozí. |
 >| Síť | Azure_Site_Recovery |  |
->| Server pro správu | Azure_Site_Recovery | Poskytuje přístup k všechny součásti (CS, PS a MT) mimo počítač CS. |
->| Virtuální počítače klienta | Azure_Site_Recovery | Zajišťuje, že všechny nové klientské virtuální počítače konkrétního klienta také získat tento přístup, nebo nebude zjistitelný prostřednictvím portálu Azure. |
+>| Server pro správu | Azure_Site_Recovery | Poskytuje přístup pro všechny součásti (CS, PS a MT) mimo počítač CS. |
+>| Virtuální počítače tenanta | Azure_Site_Recovery | Zajišťuje, že všechny nové klientské virtuální počítače z konkrétního tenanta také získat přístup nebo nebudou zjistitelné prostřednictvím webu Azure portal. |
 
-Přístup k účtu vCenter je nyní dokončen. Tento krok splní požadavek na minimální oprávnění k dokončení operace navrácení služeb po obnovení. Můžete taky těchto oprávnění k přístupu s existující zásady. Právě upravte vaše stávající oprávnění nastavit, aby zahrnovalo oprávnění role z kroku 2, podrobné dříve.
+Přístup k účtu vCenter je nyní dokončena. Tento krok splňuje požadavek na minimální oprávnění k dokončení operace navrácení služeb po obnovení. Tato oprávnění můžete použít také s existující zásady. Upravte existující oprávnění nastavit, aby zahrnovalo oprávnění role z kroku 2, podrobné dříve.
 
 ### <a name="failover-only"></a>Pouze převzetí služeb při selhání
-Omezit operace zotavení po havárii, až se pouze převzetí služeb při selhání (tedy bez možnosti navrácení služeb po obnovení), použít předchozí postup, s těmito výjimkami:
+Omezit operace zotavení po havárii až pouze převzetí služeb při selhání (to znamená bez možnosti navrácení služeb po obnovení), pomocí předchozího postupu s následujícími výjimkami:
 
-- Místo přiřazení *Azure_Site_Recovery* role účet pro přístup k systému vCenter přiřadit jenom *jen pro čtení* role k tomuto účtu. Této sadě oprávnění umožňuje replikace virtuálního počítače a převzetí služeb při selhání a navrácení služeb po obnovení není povolen.
-- Všem ostatním v předchozím procesu zůstane, jako je. K zajištění izolaci klientů a omezte zjišťování virtuálních počítačů, každý oprávnění stále přidělený pouze na úrovni objekt a není rozšíří do podřízených objektů.
+- Namísto přiřazení *Azure_Site_Recovery* pouze přiřazení role na účet pro přístup k serveru vCenter *jen pro čtení* role k tomuto účtu. Tato sada oprávnění umožňuje replikaci virtuálních počítačů a převzetí služeb při selhání, a neumožňuje navrácení služeb po obnovení.
+- Všechno ostatní předchozí probíhající zůstává, dokud je. K zajištění izolaci klientů a omezte zjišťování virtuálních počítačů, každé oprávnění stále přiřazené na úrovni objektu a nejsou šířeny do podřízených objektů.
 
-### <a name="deploy-resources-to-the-tenant-subscription"></a>Nasadit prostředky k předplatnému klienta
+### <a name="deploy-resources-to-the-tenant-subscription"></a>Nasazení prostředků do tenanta předplatného
 
-1. Na portálu Azure vytvořte skupinu prostředků a pak nasadit trezoru služeb zotavení pro obvyklé procesy.
+1. Na portálu Azure portal vytvořte skupinu prostředků a potom nasazovat trezor služby Recovery Services, obvykle proces.
 2. Stáhněte registrační klíč trezoru.
-3. Zaregistrujte CS pro klienta pomocí registračního klíče trezoru.
-4. Zadejte pověření pro dva přístupové účty, účet pro přístup k serveru vCenter a účet přístup k virtuálnímu počítači.
+3. Zaregistrujte se na CS tenanta pomocí registračního klíče trezoru.
+4. Zadejte pověření pro dva přístupové účty, účet pro přístup k serveru vCenter a účet pro přístup k virtuálnímu počítači.
 
     ![Účty serveru configuration Manager](./media/vmware-azure-multi-tenant-overview/config-server-account-display.png)
 
 ### <a name="register-servers-in-the-vault"></a>Zaregistrujte server v trezoru
 
-1. Na portálu Azure v úložišti, který jste vytvořili dříve zaregistrujte server vCenter pro konfigurační server, pomocí účtu vCenter, který jste vytvořili.
-2. Dokončení procesu "Připravit infrastrukturu" pro obnovení lokality podle obvyklé procesu.
-3. Virtuální počítače jsou nyní připraveny k replikaci. Ověřte, že se zobrazují jenom virtuální počítače klienta v **replikovat** > **vybrat virtuální počítače**.
+1. Na webu Azure Portal, v trezoru, který jste vytvořili dříve zaregistrovat server vCenter do konfiguračního serveru, vCenter pomocí účtu, který jste vytvořili.
+2. Dokončení procesu "Příprava infrastruktury" pro Site Recovery za obvykle procesu.
+3. Virtuální počítače jsou nyní připraveny k replikaci. Ověřte, že se zobrazují jenom virtuální počítače tenanta **replikovat** > **výběr virtuálních počítačů**.
 
 ## <a name="dedicated-hosting-solution"></a>Vyhrazené řešení v oblasti hostování
 
-Jak je znázorněno v následujícím diagramu, architektury rozdíl ve vyhrazené hostingu řešení je, je pro tohoto klienta pouze nastavili infrastruktury každého klienta.
+Jak je znázorněno v následujícím diagramu, architektury rozdíl ve vyhrazené řešení hostování je, že každý tenant nastavíte infrastrukturu pro tohoto tenanta pouze.
 
 ![architecture-shared-hsp](./media/vmware-azure-multi-tenant-overview/dedicated-hosting-scenario.png)  
-**Vyhrazený hostitelský scénář s více Vcenter**
+**Vyhrazené scénáři hostování s více vCenters**
 
-## <a name="managed-service-solution"></a>Řešení spravované služby
+## <a name="managed-service-solution"></a>Řešení spravovaných služeb
 
-Jak je znázorněno v následujícím diagramu, architektury rozdíl v řešení spravované služby je každý klient infrastruktury je také fyzicky oddělená od ostatních klientů infrastruktury. Tento scénář obvykle existuje, když klient vlastní infrastrukturu a chce poskytovatele řešení pro správu zotavení po havárii.
+Jak je znázorněno v následujícím diagramu, architektury rozdíl v řešení spravované služby je, že každý tenant infrastruktury i fyzicky oddělená od ostatních tenantů infrastruktury. Tento scénář obvykle existuje, když klient vlastní infrastruktury a chce poskytovatel řešení pro správu zotavení po havárii.
 
 ![architecture-shared-hsp](./media/vmware-azure-multi-tenant-overview/managed-service-scenario.png)  
-**Spravované služby scénář s více Vcenter**
+**Spravovaná služba scénář s více vCenters**
 
 ## <a name="next-steps"></a>Další postup
-- [Další informace](site-recovery-role-based-linked-access-control.md) o řízení přístupu na základě role ve službě Site Recovery.
+- [Další informace](site-recovery-role-based-linked-access-control.md) o řízení přístupu na základě rolí ve službě Site Recovery.
 - Zjistěte, jak [nastavit zotavení po havárii virtuálních počítačů VMware do Azure](vmware-azure-tutorial.md).
-- Další informace o [víceklientský s zprostředkovatele kryptografických služeb pro virtuální počítače VMWare](vmware-azure-multi-tenant-csp-disaster-recovery.md).
+- Další informace o [víceklientské prostředí s CSP pro virtuální počítače VMWare](vmware-azure-multi-tenant-csp-disaster-recovery.md).

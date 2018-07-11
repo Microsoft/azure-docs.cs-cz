@@ -1,5 +1,5 @@
 ---
-title: Tom, jak sdílet prostory Dev Azure | Microsoft Docs
+title: Jak sdílet prostory vývoj Azure | Dokumentace Microsoftu
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
@@ -11,22 +11,27 @@ ms.topic: article
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
 manager: douge
-ms.openlocfilehash: ca644cc412ad0c8f0e2a0781d9419fba58ed8d12
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: 9345015a8732da02ea68711cd807556a543d8d01
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35247700"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37930140"
 ---
-# <a name="share-azure-dev-spaces"></a>Sdílené složky Azure Dev prostory
+# <a name="share-azure-dev-spaces"></a>Sdílené složky Azure Dev mezery
 
-Dev prostory Azure můžete sdílet váš prostor dev s jinými uživateli ve vašem týmu. Každý vývojář může fungovat ve vlastním bez obav z nejnovější jiné. Spolupráci z jediného místa může také povolit budete moct otestovat kód začátku do konce bez nutnosti vytvoření mocks nebo simulovat závislosti. Najdete v článku [Další informace o vývoj v týmu](../get-started-nodejs.md#learn-about-team-development) Průvodce pro další informace.
+Prostory Azure Dev můžete sdílet místa dev s ostatními ve vašem týmu. Každý Vývojář můžete pracovat ve vlastním bez obav z přerušení ostatních. Také spolupracují z jediného místa můžete povolit bez nutnosti vytvoření mocks nebo simulovat závislosti otestovat kód začátku do konce. Najdete v článku [přečtěte si víc o vývoj v týmu](../team-development-nodejs.md) Průvodce pro další informace.
 
-Pro nastavení dev místa pro více vývojáři:
-1. Vytvořte prostor vývojářů v Azure. Zvolte [.NET Core a VS Code](../get-started-netcore.md), [.NET Core a Visual Studio](../get-started-netcore-visualstudio.md), nebo [Node.js a VS Code](../get-started-nodejs.md). Budete potřebovat vlastníkem nebo přispěvatelem přístup k vybrané předplatné Azure.
-1. Nakonfigurujte místo Dev Azure **skupiny prostředků** k [udělit přístup Přispěvatel](/azure/active-directory/role-based-access-control-configure) pro každý člen týmu. Skupina prostředků vývojářů místa můžete zkontrolovat spuštěním tohoto příkazu: `azds list`
-1. Členy týmu požádat **vyberte místo na dev** s cílem vytvořit v něm.
-     * **Příkazový řádek nebo VS Code**: zobrazíte existující prostory Dev Azure máte přístup k: `azds space list`. Vybrat místo dev: `azds space select`.
-     * **Visual Studio IDE**: Otevřete projekt v sadě Visual Studio, vyberte **Azure Dev prostory** z spuštění nastavení rozevíracího seznamu. V dialogovém okně, které se otevře vyberte existující cluster.
+## <a name="set-up-a-dev-space-for-multiple-developers"></a>Nastavení místa vývoj pro více vývojářů
 
-![Visual Studio spusťte nastavení rozevíracího seznamu](../media/get-started-netcore-visualstudio/LaunchSettings.png)
+1. Vytvoření prostoru vývoj v Azure. Zvolte [.NET Core a VS Code](../get-started-netcore.md), [.NET Core a Visual Studio](../get-started-netcore-visualstudio.md), nebo [Node.js a VS Code](../get-started-nodejs.md). Musíte mít roli vlastníka nebo přispěvatele přístup do vybraného předplatného Azure.
+1. Konfigurovat místa vývoj Azure **skupiny prostředků** k [přispěvatelům udělit přístup](/azure/active-directory/role-based-access-control-configure) pro každého člena týmu. Skupina prostředků dev místa můžete zkontrolovat spuštěním tohoto příkazu: `azds list`
+1. Požádejte členy týmu o **vyberte místo dev** Pokud chcete vytvářet v ní.
+     * **Příkazový řádek nebo VS Code**: Pokud chcete zobrazit stávající Azure Dev prostory máte přístup k: `azds space list`. Vyberte místo vývoj: `azds space select`.
+     * **Visual Studio IDE**: Otevřete projekt v sadě Visual Studio, vyberte **Azure Dev prostory** ze spuštění nastavení rozevíracího seznamu. V dialogovém okně, které se otevře vyberte existující cluster.
+
+    ![Visual Studio launch nastavení rozevíracího seznamu](../media/get-started-netcore-visualstudio/LaunchSettings.png)
+
+## <a name="next-steps"></a>Další postup
+
+Zobrazit [přečtěte si víc o vývoj v týmu](../team-development-nodejs.md) Další informace.

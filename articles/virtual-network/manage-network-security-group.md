@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/05/2018
 ms.author: jdial
-ms.openlocfilehash: 774d429b960e56e998e9d964b9de1e6461816734
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 5ca70b085b5ac9db4d108966fa695f042c20489d
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37901693"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37920507"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>Vytvořit, změnit nebo odstranit skupinu zabezpečení sítě
 
@@ -253,21 +253,25 @@ Nelze odstranit skupinu zabezpečení aplikace, pokud má všech síťových roz
 
 K provádění úloh na skupiny zabezpečení sítě, pravidly zabezpečení a skupiny zabezpečení aplikací, musí mít váš účet přiřazenou k [Přispěvatel sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) role nebo [vlastní roli](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) přiřazené příslušná oprávnění uvedená v následujících tabulkách:
 
-### <a name="network-security-groups"></a>Skupiny zabezpečení sítě
+### <a name="network-security-group"></a>Skupina zabezpečení sítě
 
 | Akce                                                        |   Název                                                                |
 |-------------------------------------------------------------- |   -------------------------------------------                         |
-| Microsoft.Network/ruleTables/read                             |   Načíst skupinu zabezpečení sítě                                          |
-| Microsoft.Network/ruleTables/write                            |   Vytvořit nebo aktualizovat skupinu zabezpečení sítě                             |
-| Microsoft.Network/ruleTables/delete                           |   Odstranit skupinu zabezpečení sítě                                       |
-| Microsoft.Network/ruleTables/join/action                      |   Přidružení skupiny zabezpečení sítě k podsíti nebo síťovému rozhraní |
-| Microsoft.Network/ruleTables/rules/read                       |   Získat pravidlo                                                            |
-| Microsoft.Network/ruleTables/rules/write                      |   Vytvořit nebo aktualizovat pravidlo                                               |
-| Microsoft.Network/ruleTables/rules/delete                     |   Odstranit pravidlo                                                         |
-| Microsoft.Network/networkInterfaces/effectiveruleTable/action |   Načíst síťové rozhraní efektivní skupinu zabezpečení sítě              |
-| Microsoft.Network/networkWatchers/nextHop/action              |   Získá další segment směrování z virtuálního počítače                                         |
+| Microsoft.Network/networkSecurityGroups/read                  |   Načíst skupinu zabezpečení sítě                                          |
+| Microsoft.Network/networkSecurityGroups/write                 |   Vytvořit nebo aktualizovat skupinu zabezpečení sítě                             |
+| Microsoft.Network/networkSecurityGroups/delete                |   Odstranit skupinu zabezpečení sítě                                       |
+| Microsoft.Network/networkSecurityGroups/join/action           |   Přidružení skupiny zabezpečení sítě k podsíti nebo síťovému rozhraní 
 
-### <a name="application-security-groups"></a>Skupiny zabezpečení aplikací
+
+### <a name="network-security-group-rule"></a>Pravidlo skupiny zabezpečení sítě
+
+| Akce                                                        |   Název                                                                |
+|-------------------------------------------------------------- |   -------------------------------------------                         |
+| Microsoft.Network/networkSecurityGroups/rules/read            |   Získat pravidlo                                                            |
+| Microsoft.Network/networkSecurityGroups/rules/write           |   Vytvořit nebo aktualizovat pravidlo                                               |
+| Microsoft.Network/networkSecurityGroups/rules/delete          |   Odstranit pravidlo                                                         |
+
+### <a name="application-security-group"></a>Skupiny zabezpečení aplikací
 
 | Akce                                                                     | Název                                                     |
 | --------------------------------------------------------------             | -------------------------------------------              |

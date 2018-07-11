@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 04/18/2018
 ms.author: v-geberr
-ms.openlocfilehash: 597948947303b7fdf16f24576620d6f39d7c51f4
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: b82d5261bbe9d9b153be1cb6e1ff1ba61803c8c2
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37887442"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37928926"
 ---
 # <a name="phrase-list-features-in-luis"></a>Seznam funkcí frázi v LUIS
 
@@ -23,24 +23,31 @@ Ve službě machine learning *funkce* rozlišovací vlastností nebo atribut dat
 Přidání funkcí do jazykového modelu poskytnout nápovědu, jak rozpoznat vstup, který chcete klasifikovat a označovat. Funkce pomáhají LUIS rozpoznat záměry a entity, ale funkce nejsou záměry a entity sami. Místo toho funkce může poskytnout příklady jejími podmínkami.  
 
 ## <a name="what-is-a-phrase-list-feature"></a>Co je součástí seznamu frází?
-Fráze seznam obsahuje skupinu hodnot (slova nebo fráze), která patří do stejné třídy a musí být zacházeno podobně (například názvy města nebo produkty). Služba LUIS dozvídá o jeden z nich se automaticky využije na ostatní také. Toto není uzavřená [seznam entit](luis-concept-entity-types.md#types-of-entities) (přesné shody text) z odpovídajících slov.
+Fráze seznam obsahuje skupinu hodnot (slova nebo fráze), která patří do stejné třídy a musí být zacházeno podobně (například názvy města nebo produkty). Služba LUIS dozvídá o jeden z nich se automaticky využije na ostatní také. Tento seznam není uzavřená [seznam entit](luis-concept-entity-types.md#types-of-entities) (přesné shody text) z odpovídajících slov.
 
 Seznam frází přidá do slovníku domény aplikace jako druhý signál k LUIS o těchto slov.
 
 ## <a name="how-to-use-phrase-lists"></a>Použití seznamů fráze
-V aplikaci agenta cesty vytvořte seznam frázi s názvem "Cities", který obsahuje hodnoty, Londýn, Paříž a Cairo. Pokud jedna z těchto hodnot označit jako jednoduchou entitu v [příklad utterance](luis-how-to-add-example-utterances.md#add-simple-entity-label) v záměru, naučí rozeznat ostatní LUIS. 
+V aplikaci lidských zdrojů [kurz jednoduchou entitu](luis-quickstart-primary-and-secondary-data.md), tato aplikace používá **úlohy** frázi seznam typů úloh, jako je například programátora, roofer a bylo. Pokud popisek jednu z těchto hodnot jako entita se naučili počítač LUIS naučí rozeznat ostatní. 
 
-Fráze seznamu může být zaměnitelné nebo zaměnitelné. *Zaměnitelné* je frázi seznam hodnot, které jsou synonyma, a *-zaměnitelné* frázi seznam je určený pro hodnoty, které nejsou synonyma, ale jsou podobné jiným způsobem. 
+Fráze seznamu může být zaměnitelné nebo zaměnitelné. *Zaměnitelné* je frázi seznam hodnot, které jsou synonyma, a *-zaměnitelné* frázi seznam je určený pro hodnoty, které nejsou synonyma však stále potřebovat další signál v aplikaci. 
 
-## <a name="phrase-lists-help-identify-simple-exchangeable-entities"></a>Fráze uvádí nápovědy identifikovat jednoduchých exchangeable entit
-Exchangeable frázi seznamy jsou dobrým způsobem, jak optimalizovat výkon vaší aplikace LUIS. Pokud má vaše aplikace potíže při predikci projevy na správné záměr nebo rozpoznávání entit, zamyslete se, jestli projevy obsahovat neobvyklé slova ani slova, která může být nejednoznačný ve smyslu. Tato slova jsou vhodnými kandidáty zahrnout do seznamu frázi.
+<a name="phrase-lists-help-identify-simple-exchangeable-entities"></a>
+## <a name="phrase-lists-help-identify-simple-interchangeable-entities"></a>Fráze uvádí nápovědy identifikovat jednoduchých zaměnitelné entit
+Zaměňovat frázi seznamy jsou dobrým způsobem, jak optimalizovat výkon vaší aplikace LUIS. Pokud má vaše aplikace potíže při predikci projevy na správné záměr nebo rozpoznávání entit, zamyslete se, jestli projevy obsahovat neobvyklé slova ani slova, která může být nejednoznačný ve smyslu. Tato slova jsou vhodnými kandidáty zahrnout do seznamu frázi.
 
 ## <a name="phrase-lists-help-identify-intents-by-better-understanding-context"></a>Fráze uvádí nápovědy identifikovat záměry lepší porozumění kontextu
-Použijte frázi seznamy pro vzácné, proprietární a cizí slova. LUIS možná nebude moci rozpoznat vzácné a proprietární slova, jakož i cizí slova (mimo jazykovou verzi aplikace), a proto měly by být přidány do seznamu frázi. Tento seznam frázi by měla být označena bez zaměňovat, označuje, že sadu výjimečných slova tvoří třídu, která by měla služba LUIS učení se rozpoznávání, ale nejsou synonyma nebo mezi sebou vzájemně zaměnitelné.
-
 Seznam frázi není instrukce k LUIS provést odpovídající strict nebo vždy označit všechny podmínky v seznamu frázi stejně. Je jednoduše nápovědu. Například můžete mít seznam frázi, která označuje, že "Patti" a "Selma" jsou názvy, ale LUIS můžete stále použít kontextové informace k rozpoznání něco jiného v znamenají "Provést rezervaci 2 ve vaší Patti Diner večeře" a "Nepracuju, řízení Pokyny k Selma, Gruzie". 
 
 Přidání seznamu frázi je alternativa k přidání další příklad projevy záměru. 
+
+## <a name="an-interchangeable-phrase-list"></a>V seznamu zaměnitelné fráze
+Při vytváření seznamu slov nebo frází třídu nebo skupinu, pomocí seznamu zaměnitelné frázi. Příkladem je seznam měsíců jako "Od", "Února", "Března"; nebo "John", "Jan", "Frank", jako jsou názvy.  Tyto seznamy jsou zaměnitelné, utterance by popisek se stejným cílem nebo entity, pokud byly použity různé slova v seznamu frázi. Například pokud "Zobrazit kalendáře pro leden" má stejnou záměru jako "Zobrazit kalendáře pro dne" a pak slova by měla být v přehledu zaměnitelné. 
+
+## <a name="a-non-interchangeable-phrase-list"></a>Seznam-zaměnitelné frází
+Použijte seznam bez zaměnitelné frázi-synonymní slova nebo fráze, které mohou být seskupeny ve vaší doméně. 
+
+Jako příklad pomocí seznamu-zaměnitelné frázi vzácné, proprietární a cizí slova. Služba LUIS možná nebudete moct rozpoznat vzácné a proprietární slova, jakož i cizí slova (mimo jazykovou verzi aplikace). Zaměnitelné nastavení znamená, že sadu výjimečných slova tvoří třídu, která by měla služba LUIS učení se rozpoznávání, ale nejsou synonyma nebo mezi sebou vzájemně zaměnitelné.
 
 ## <a name="when-to-use-phrase-lists-versus-list-entities"></a>Kdy použít seznamy frázi a seznam entit
 Zatímco frázi seznamu a seznam entit může mít vliv na projevy přes všechny záměrů, mají funkce to jiným způsobem. Pomocí seznamu frázi vliv na skóre záměru předpovědi. Použijte seznam entit ovlivnit extrakce entity shodu přesný text. 
@@ -53,7 +60,7 @@ Pokud chcete být schopni rozpoznat nové instance entity, jako je plánovače s
 Fráze seznamy jsou jako slovník jazyka specifického pro doménu, která usnadní vylepšení kvality znalost záměry a entity. Běžné použití seznamu frázi je podstatná jména správných například názvy měst. Název města, může být několik slova, včetně pomlček nebo apostrofy.
  
 ### <a name="dont-use-a-phrase-list"></a>Nepoužívejte seznam frází 
-Seznam entit explicitně definuje každá hodnota může trvat entity a identifikuje pouze hodnoty, které přesně odpovídají. Seznam entit může být vhodné pro aplikace 00Z všechny instance entity jsou známé a nemění často, stejně jako potravin položky v nabídce restaurace, která mění jen zřídka. Pokud potřebujete přesný text výskyty entity, nepoužívejte seznam frázi. 
+Seznam entit explicitně definuje každá hodnota může trvat entity a identifikuje pouze hodnoty, které přesně odpovídají. Seznam entit může být vhodný pro aplikaci, ve kterém je známo, že všechny instance entity a neměnit často. Příklady jsou potravin položky v nabídce restaurace, která mění jen zřídka. Pokud potřebujete přesný text výskyty entity, nepoužívejte seznam frázi. 
 
 ## <a name="best-practices"></a>Osvědčené postupy
 Přečtěte si [osvědčené postupy](luis-concept-best-practices.md).

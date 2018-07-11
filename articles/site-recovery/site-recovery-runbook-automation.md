@@ -1,6 +1,6 @@
 ---
-title: Přidat Azure Automation runbook do plánů obnovení v Azure Site Recovery | Microsoft Docs
-description: Zjistěte, jak Azure Site Recovery můžete rozšířit plánů obnovení pomocí Azure Automation. Zjistěte, jak dokončit složité úlohy během obnovení do Azure.
+title: Přidání runbooků Azure Automation do plánů obnovení ve službě Azure Site Recovery | Dokumentace Microsoftu
+description: Zjistěte, jak Azure Site Recovery můžete rozšířit plány obnovení s využitím Azure Automation. Zjistěte, jak provést složitější úlohy během obnovení do Azure.
 services: site-recovery
 documentationcenter: ''
 author: ruturaj
@@ -12,54 +12,54 @@ ms.devlang: powershell
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.workload: storage-backup-recovery
-ms.date: 05/02/2018
+ms.date: 07/06/2018
 ms.author: ruturajd@microsoft.com
-ms.openlocfilehash: a0a57e4a604a8cadedd5d715acf5f76a147da6d1
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: e9a1dfc6aa26246db5322a8f4491ab2a5bccfcf5
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33896016"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37917689"
 ---
-# <a name="add-azure-automation-runbooks-to-recovery-plans"></a>Přidání sad Azure Automation runbook do plánů obnovení
-V tomto článku jsme popisují, jak Azure Site Recovery integruje se službou Azure Automation můžete rozšířit plánu obnovení. Plány obnovení můžete orchestraci obnovení virtuálních počítačů, které jsou chráněné službou Site Recovery. Plány obnovení fungovat pro replikaci do sekundární cloudu i pro replikaci do Azure. Plány obnovení také pomoci zajistit, aby obnovení **přesné**, **repeatable**, a **automatizované**. Pokud jste převzetí služeb při selhání virtuálních počítačů do Azure, integraci s Azure Automation rozšiřuje plánu obnovení. Můžete ho spuštění sady runbook, které nabízí výkonné automatizace úloh.
+# <a name="add-azure-automation-runbooks-to-recovery-plans"></a>Přidání runbooků Azure Automation do plánů obnovení
+V tomto článku popisujeme, jak Azure Site Recovery se integruje s Azure Automation, aby vám pomohla rozšířit plány obnovení. Plány obnovení můžete orchestrovat obnovení virtuálních počítačů, které jsou chráněné pomocí služby Site Recovery. Plány obnovení fungovat i pro replikaci do sekundárního cloudu a pro replikaci do Azure. Plány obnovení také pomoci, ujistěte se, obnovení **přesné**, **opakovatelné**, a **automatizované**. Pokud převzetí služeb při selhání virtuálních počítačů do Azure, rozšiřuje integrace s Azure Automation plánech obnovení. Můžete ho použít ke spuštění sady runbook, který nabízí výkonné automatizaci úkolů.
 
-Pokud začínáte Azure Automation, můžete [zaregistrovat](https://azure.microsoft.com/services/automation/) a [stažení ukázkové skripty](https://azure.microsoft.com/documentation/scripts/). Další informace a další informace o orchestraci obnovení do Azure pomocí [plány obnovení](./site-recovery-create-recovery-plans.md), najdete v části [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/).
+Pokud jste ještě Azure Automation, můžete [zaregistrovat](https://azure.microsoft.com/services/automation/) a [stáhnout ukázkové skripty](https://azure.microsoft.com/documentation/scripts/). Další informace a zjistěte, jak orchestrovat obnovení do Azure s použitím [plány obnovení](./site-recovery-create-recovery-plans.md), naleznete v tématu [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/).
 
-V tomto článku jsme popisují, jak můžete integrovat Azure Automation runbook do plánu obnovení. Příklady použít k automatizaci základní úlohy, které dříve vyžadovaly ruční zásah. Můžeme také popisují, jak převést obnovení několika kroky akce obnovení jedním kliknutím.
+V tomto článku popisujeme, jak integrovat Azure Automation. runbooky plány obnovení. Příklady použít k automatizaci základní úkoly, které dříve vyžadovaly ručního zásahu. Také zjistíte, jak převést více kroky obnovení na akci obnovení jedním kliknutím.
 
 ## <a name="customize-the-recovery-plan"></a>Přizpůsobit plán obnovení
-1. Přejděte na **Site Recovery** okna prostředků plánu obnovení. V tomto příkladu plán obnovení má dva virtuální počítače přidat do něj pro obnovení. Chcete-li začít přidávat sady runbook, klikněte na tlačítko **přizpůsobit** kartě.
+1. Přejděte **Site Recovery** okno prostředku plánu obnovení. V tomto příkladu plán obnovení obsahuje dva virtuální počítače přidat do něj pro obnovení. Chcete-li začít přidávat sady runbook, klikněte na tlačítko **vlastní** kartu.
 
-    ![Klikněte na tlačítko Upravit](media/site-recovery-runbook-automation-new/essentials-rp.png)
+    ![Klikněte na tlačítko Přizpůsobit](media/site-recovery-runbook-automation-new/essentials-rp.png)
 
 
-2. Klikněte pravým tlačítkem na **1. skupina: spuštění**a potom vyberte **akce po přidání**.
+2. Klikněte pravým tlačítkem na **skupiny 1: Start**a pak vyberte **přidat akci po**.
 
-    ![Klikněte pravým tlačítkem na skupinu 1: Spuštění a přidejte po akce](media/site-recovery-runbook-automation-new/customize-rp.png)
+    ![Klikněte pravým tlačítkem na skupinu 1: Spuštění a přidat akci po](media/site-recovery-runbook-automation-new/customize-rp.png)
 
 3. Klikněte na tlačítko **vyberte skript**.
 
-4. Na **akce aktualizace** okně Název skriptu **Hello, World**.
+4. Na **akce aktualizace** okna, název skriptu **Hello World**.
 
-    ![V okně Akce aktualizace](media/site-recovery-runbook-automation-new/update-rp.png)
+    ![Okno Akce aktualizace](media/site-recovery-runbook-automation-new/update-rp.png)
 
-5. Zadejte název účtu Automation.
+5. Zadejte název účtu služby Automation.
     >[!NOTE]
     > Účet Automation může být v libovolné oblasti Azure. Účet Automation musí být ve stejném předplatném jako trezor Azure Site Recovery.
 
-6. V účtu Automation vyberte sadu runbook. Tato sada runbook je skript, který běží během provádění plán obnovení po obnovení první skupinu.
+6. Ve vašem účtu Automation vyberte sadu runbook. Tato sada runbook je skript, který se spustí při spuštění plánu zotavení po obnovení do první skupiny.
 
-7. Chcete-li uložit skript, klikněte na tlačítko **OK**. Skript se přidá do **1. skupina: po kroky**.
+7. Pokud chcete uložit skript, klikněte na tlačítko **OK**. Skript se přidá do **1. skupina: kroky prováděné po zpracování**.
 
-    ![1:Start skupiny následné akce](media/site-recovery-runbook-automation-new/addedscript-rp.PNG)
+    ![Akce po skupiny 1:Start](media/site-recovery-runbook-automation-new/addedscript-rp.PNG)
 
 
 ## <a name="considerations-for-adding-a-script"></a>Důležité informace týkající se přidání skriptu
 
-* Pro možnost **odstranit krok** nebo **skript aktualizovat**, klikněte pravým tlačítkem na skript.
-* Skript můžete spustit v Azure při převzetí služeb při selhání z místního počítače do Azure. Ho také můžete spustit v Azure jako skript primární lokalitu před vypnutí, během navrácení služeb po obnovení z Azure do místního počítače.
-* Při spuštění skriptu, vloží kontextu plánu obnovení. Následující příklad ukazuje kontextové proměnné:
+* Možnosti **odstranit krok** nebo **aktualizujte skript v**, klikněte pravým tlačítkem na skript.
+* Skript můžete spustit v Azure během převzetí služeb při selhání z místního počítače do Azure. Je také můžete spustit v Azure jako primární lokality skript před vypnutím, během navrácení služeb po obnovení z Azure do místního počítače.
+* Po spuštění skriptu vkládá kontextu plánu obnovení. Následující příklad ukazuje kontextové proměnné:
 
     ```
             {"RecoveryPlanName":"hrweb-recovery",
@@ -87,33 +87,33 @@ V tomto článku jsme popisují, jak můžete integrovat Azure Automation runboo
             }
     ```
 
-    Následující tabulka uvádí název a popis pro každou proměnnou v kontextu.
+    Následující tabulka uvádí název a popis každou proměnnou v kontextu.
 
     | **Název proměnné** | **Popis** |
     | --- | --- |
-    | RecoveryPlanName |Název plánu spuštěn. Tato proměnná umožňuje provádět různé akce na základě názvu plánu obnovení. Také můžete znovu použít skript. |
-    | FailoverType |Určuje, jestli je převzetí služeb při selhání testu, plánované, nebo neplánované. |
+    | RecoveryPlanName |Název plánu spuštěn. Tato proměnná umožňuje provést různé akce na základě názvu plánu obnovení. Také můžete znovu použít skript. |
+    | FailoverType |Určuje, zda je převzetí služeb při selhání testu, plánované nebo neplánované. |
     | FailoverDirection |Určuje, zda probíhá obnovení do primární nebo sekundární lokality. |
-    | GroupID |Identifikuje číslo skupiny v plánu obnovení, když běží plánu. |
-    | VmMap |Pole všechny virtuální počítače ve skupině. |
-    | Klíč VMMap |Jedinečný klíč (GUID) pro každý virtuální počítač. Je stejný jako Identifikátor Azure Virtual Machine Manager (VMM) virtuálního počítače, kde je to možné. |
-    | SubscriptionId |ID předplatného Azure, ve kterém byl vytvořen virtuální počítač. |
+    | ID skupiny |Označuje číslo skupiny v plánu obnovení při spuštění plánu. |
+    | VmMap |Pole všech virtuálních počítačů ve skupině. |
+    | Klíč VMMap |Jedinečný klíč (GUID) pro každý virtuální počítač. Je stejný jako Azure Virtual Machine Manager (VMM) ID virtuálního počítače, kde je to možné. |
+    | SubscriptionId |ID předplatného Azure, ve kterém byl virtuální počítač vytvořen. |
     | RoleName |Název virtuálního počítače Azure, který se obnovuje. |
-    | CloudServiceName |Název služby cloudu Azure, ve kterém byl vytvořen virtuální počítač. |
-    | ResourceGroupName|Název skupiny prostředků Azure, ve kterém byl vytvořen virtuální počítač. |
+    | CloudServiceName |Název služby Azure cloud v rámci které se vytvoří virtuální počítač. |
+    | ResourceGroupName|Název skupiny prostředků Azure v rámci které se vytvoří virtuální počítač. |
     | RecoveryPointId|Časové razítko pro při obnovení virtuálního počítače. |
 
-* Zkontrolujte, zda má účet služby Automation následující moduly:
+* Zkontrolujte, zda má účet služby Automation tyto moduly:
     * AzureRM.profile
     * AzureRM.Resources
     * AzureRM.Automation
     * AzureRM.Network
     * AzureRM.Compute
 
-Všechny moduly musí být kompatibilní verze. Snadný způsob, jak všechny moduly musí být kompatibilní se má používat nejnovější verze všech modulů.
+Všechny moduly musí být kompatibilní verzí. Snadný způsob, jak zajistit, že jsou kompatibilní všechny moduly, je použití nejnovější verze všech modulů.
 
-### <a name="access-all-vms-of-the-vmmap-in-a-loop"></a>Přístup k všechny virtuální počítače VMMap ve smyčce
-Použijte následující kód na opakování mezi všechny virtuální počítače Microsoft VMMap:
+### <a name="access-all-vms-of-the-vmmap-in-a-loop"></a>Přístup k všechny virtuální počítače z VMMap ve smyčce
+Použijte následující kód k vytvoření smyčky ve všech virtuálních počítačích z VMMap společnosti Microsoft:
 
 ```
 $VMinfo = $RecoveryPlanContext.VmMap | Get-Member | Where-Object MemberType -EQ NoteProperty | select -ExpandProperty Name
@@ -131,17 +131,17 @@ $vmMap = $RecoveryPlanContext.VmMap
 ```
 
 > [!NOTE]
-> Skupina název a role název hodnoty prostředků jsou prázdné po před akcí pro skupinu spouštěcí skript. Pouze v případě, že virtuální počítač této skupiny úspěšné v převzetí služeb při selhání, naplní se hodnoty. Skript je po akce spouštěcí skupiny.
+> Zdroj skupiny název role název hodnoty a jsou prázdné po před akcí pro skupinu spouštěcí skript. Hodnoty se vyplní pouze v případě, že virtuální počítač z této skupiny převzetí služeb při selhání úspěšně. Skript je akce po spuštění skupiny.
 
-## <a name="use-the-same-automation-runbook-in-multiple-recovery-plans"></a>Použijte stejné sady Automation runbook v více plánů obnovení
+## <a name="use-the-same-automation-runbook-in-multiple-recovery-plans"></a>Použít stejnou sadu runbook Automation ve více plánů obnovení
 
-Můžete pomocí jednoho skriptu v více plánů obnovení pomocí externích proměnných. Můžete použít [proměnné automatizace Azure](../automation/automation-variables.md) k uložení parametry, které můžete předat provedení plánu obnovení. Přidáním předpony název plánu obnovení proměnnou můžete vytvořit jednotlivé proměnných pro každý plán obnovení. Pak použijte proměnné jako parametry. Můžete změnit parametr beze změny skript, ale stále Změna způsobu práce skript.
+Jeden skript můžete použít ve více plánů obnovení pomocí externích proměnných. Můžete použít [proměnné služeb automatizace Azure](../automation/automation-variables.md) k uložení parametrů, které můžete předat pro spuštění plánu obnovení. Tak, že přidáte název plánu obnovení jako předpona k proměnné, můžete vytvořit jednotlivé proměnné pro každý plán obnovení. Potom použijte proměnné jako parametry. Změna parametru bez úpravy skriptu, ale stále změnit způsob, jakým funguje skriptu.
 
-### <a name="use-a-simple-string-variable-in-a-runbook-script"></a>Použití jednoduché řetězec proměnné ve skriptu runbook
+### <a name="use-a-simple-string-variable-in-a-runbook-script"></a>Použití jednoduché řetězcové proměnné ve skriptu sady runbook
 
-V tomto příkladu skript přijímá vstup z skupina zabezpečení sítě (NSG) a platí pro virtuální počítače v plánu obnovení.
+V tomto příkladu skript přijímá vstup ze skupiny zabezpečení sítě (NSG) a použije ho k virtuálním počítačům z plánu obnovení.
 
-Pro skript k detekci obnovení, který je spuštěn plán, použijte kontext plánu obnovení:
+Pro skript k detekci obnovení, který je spuštěn plán, použijte kontextu plánu obnovení:
 
 ```
 workflow AddPublicIPAndNSG {
@@ -153,18 +153,18 @@ workflow AddPublicIPAndNSG {
     $RPName = $RecoveryPlanContext.RecoveryPlanName
 ```
 
-Použít existující skupina NSG, musíte znát název skupiny NSG a název skupiny prostředků NSG. Tyto proměnné můžete použijte jako vstupy pro skripty plánu obnovení. K tomu, vytvořte dvě proměnné v prostředky účet Automation. Přidejte název plánu obnovení, který vytváříte parametry jako předpony názvu proměnné.
+Chcete-li použít existující skupině NSG, musíte znát název skupiny zabezpečení sítě a název skupiny prostředků skupiny zabezpečení sítě. Tyto proměnné můžete použijte jako vstupy pro skripty plánu obnovení. K tomu vytvořte dvě proměnné v prostředků účtu Automation. Přidejte název plánu obnovení, kterou vytváříte parametry jako předpony názvu proměnné.
 
-1. Vytvořte proměnnou pro uložení názvu skupiny NSG. Přidání předpony k názvu proměnné pomocí názvu plánu obnovení.
+1. Vytvořte proměnnou pro uložení názvu skupiny zabezpečení sítě. Přidáte předponu názvu proměnné pomocí názvu plánu obnovení.
 
-    ![Vytvořte proměnnou Název skupiny NSG](media/site-recovery-runbook-automation-new/var1.png)
+    ![Vytvořte proměnnou pro název skupiny zabezpečení sítě](media/site-recovery-runbook-automation-new/var1.png)
 
-2. Vytvořte proměnnou pro uložení této skupině název skupiny prostředků. Přidání předpony k názvu proměnné pomocí názvu plánu obnovení.
+2. Vytvořte proměnnou pro uložení skupin zabezpečení sítě a název skupiny prostředků. Přidáte předponu názvu proměnné pomocí názvu plánu obnovení.
 
-    ![Vytvoření názvu skupiny prostředků NSG](media/site-recovery-runbook-automation-new/var2.png)
+    ![Vytvoření skupiny zabezpečení sítě názvu skupiny prostředků](media/site-recovery-runbook-automation-new/var2.png)
 
 
-3.  Ve skriptu použijte následující kód odkaz získat hodnoty proměnné:
+3.  Ve skriptu použijte následující kód odkaz k získání hodnoty proměnných:
 
     ```
     $NSGValue = $RecoveryPlanContext.RecoveryPlanName + "-NSG"
@@ -174,7 +174,7 @@ Použít existující skupina NSG, musíte znát název skupiny NSG a název sku
     $RGnameVar = Get-AutomationVariable -Name $NSGRGValue
     ```
 
-4.  Pomocí proměnné v runbooku použít NSG k síťové rozhraní virtuálního počítače při selhání:
+4.  Použití proměnné v runbooku použít skupinu zabezpečení sítě k síťovému rozhraní virtuálního počítače převzetím služeb při selhání:
 
     ```
     InlineScript {
@@ -189,16 +189,16 @@ Použít existující skupina NSG, musíte znát název skupiny NSG a název sku
     }
     ```
 
-Pro každý plán obnovení vytvořte nezávislých proměnných, takže můžete opakovaně použít skript. Přidání předpony pomocí název plánu obnovení. Pro dokončení, začátku do konce skript pro tento scénář, najdete v části [přidat veřejné IP adresy a NSG na virtuálních počítačích během testovacího převzetí služeb při selhání plánu obnovení Site Recovery](https://gallery.technet.microsoft.com/Add-Public-IP-and-NSG-to-a6bb8fee).
+Pro každý plán obnovení vytvořte nezávislých proměnných, takže můžete znovu použít skript. Přidáte předponu pomocí název plánu obnovení. Kompletní a začátku do konce skript v tomto scénáři najdete v tématu [přidání veřejné IP adresy a skupiny zabezpečení sítě pro virtuální počítače během testovacího převzetí služeb při selhání plánu obnovení Site Recovery](https://gallery.technet.microsoft.com/Add-Public-IP-and-NSG-to-a6bb8fee).
 
 
-### <a name="use-a-complex-variable-to-store-more-information"></a>Použití proměnné komplexní ukládat další informace
+### <a name="use-a-complex-variable-to-store-more-information"></a>Použít komplexní proměnné k ukládání Další informace
 
-Vezměte v úvahu scénář, ve kterém chcete jednoho skriptu zapnout veřejnou IP adresu pro konkrétní virtuální počítače. V jiné scénáři můžete chtít použít odlišné skupiny Nsg na různé virtuální počítače (ne na všech virtuálních počítačích). Můžete použít skript, který je opakovaně použitelné pro každého plánu obnovení. Proměnný počet virtuálních počítačů může mít každý plán obnovení. Například obnovení služby SharePoint má dva elementy front end. Základní-obchodní (LOB) aplikace má pouze jeden front-endu. Nelze vytvořit samostatné proměnných pro každý plán obnovení.
+Představte si třeba situaci, ve kterém chcete jednoho skriptu zapnout veřejnou IP adresu na konkrétní virtuální počítače. V jiném případě můžete chtít použít různé skupiny zabezpečení sítě v různých virtuálních počítačů (ne pro všechny virtuální počítače). Můžete vytvořit skript, který je opakovaně použitelný pro všechny plánu obnovení. Každý plán obnovení může mít proměnný počet virtuálních počítačů. Například obnovení služby SharePoint obsahuje dva front-endů. Základní-obchodní (LOB) aplikace má pouze jeden front-endu. Nelze vytvořit samostatné proměnné pro každý plán obnovení.
 
-V následujícím příkladu jsme nové způsobem a vytvořte [komplexní proměnná](https://msdn.microsoft.com/library/dn913767.aspx?f=255&MSPPError=-2147217396) v prostředky účet Azure Automation. To uděláte tak, že zadáte více hodnot. Pokud chcete provést následující kroky je nutné použít prostředí Azure PowerShell:
+V následujícím příkladu jsme pomocí nové techniky a vytvořit [komplexní proměnné](https://msdn.microsoft.com/library/dn913767.aspx?f=255&MSPPError=-2147217396) v prostředků účtu služby Azure Automation. To provedete tak, že zadáte více hodnot. Pomocí Azure Powershellu musíte provést následující kroky:
 
-1. V prostředí PowerShell Přihlaste se k předplatnému Azure:
+1. V prostředí PowerShell Přihlaste se ke svému předplatnému Azure:
 
     ```
     Connect-AzureRmAccount
@@ -206,24 +206,24 @@ V následujícím příkladu jsme nové způsobem a vytvořte [komplexní promě
     $sub | Select-AzureRmSubscription
     ```
 
-2. Uložit parametry, vytvořte proměnnou komplexní pomocí název plánu obnovení:
+2. Pokud chcete uložit parametry, vytvořte proměnnou komplexní pomocí názvu plánu obnovení:
 
     ```
     $VMDetails = @{"VMGUID"=@{"ResourceGroupName"="RGNameOfNSG";"NSGName"="NameOfNSG"};"VMGUID2"=@{"ResourceGroupName"="RGNameOfNSG";"NSGName"="NameOfNSG"}}
         New-AzureRmAutomationVariable -ResourceGroupName <RG of Automation Account> -AutomationAccountName <AA Name> -Name <RecoveryPlanName> -Value $VMDetails -Encrypted $false
     ```
 
-3. V této proměnné komplexní **VMDetails** je ID virtuálního počítače pro chráněný virtuální počítač. Chcete-li získat ID virtuálního počítače na portálu Azure, zobrazte vlastnosti virtuálního počítače. Následující snímek obrazovky ukazuje proměnné, která jsou uloženy podrobnosti o dva virtuální počítače:
+3. V této proměnné komplexní **VMDetails** je ID virtuálního počítače pro chráněný virtuální počítač. Chcete-li získat ID virtuálního počítače na webu Azure Portal, zobrazte vlastnosti virtuálního počítače. Následující snímek obrazovky ukazuje proměnná, která uchovává podrobnosti dva virtuální počítače:
 
-    ![Pomocí ID virtuálního počítače jako identifikátor GUID](media/site-recovery-runbook-automation-new/vmguid.png)
+    ![Použít jako identifikátor GUID ID virtuálního počítače](media/site-recovery-runbook-automation-new/vmguid.png)
 
-4. Pomocí této proměnné v runbooku. Pokud se najde uvedené identifikátor GUID virtuálního počítače v rámci plánu obnovení, použít NSG na virtuálním počítači:
+4. Pomocí této proměnné v runbooku. Pokud je zadaný identifikátor GUID virtuálního počítače v rámci plánu obnovení, vztahují skupiny zabezpečení sítě na virtuálním počítači:
 
     ```
     $VMDetailsObj = Get-AutomationVariable -Name $RecoveryPlanContext.RecoveryPlanName
     ```
 
-4. V sadě runbook projděte virtuálních počítačů kontextu plánu obnovení. Zkontrolujte, zda existuje virtuální počítač v **$VMDetailsObj**. Pokud existuje, přístup k vlastnostem proměnnou použít NSG:
+4. V sadě runbook projděte virtuální počítače kontextu plánu obnovení. Zkontrolujte, zda virtuální počítač existuje v **$VMDetailsObj**. Pokud existuje, přístup k vlastnostem proměnné, chcete-li použít skupinu zabezpečení sítě:
 
     ```
         $VMinfo = $RecoveryPlanContext.VmMap | Get-Member | Where-Object MemberType -EQ NoteProperty | select -ExpandProperty Name
@@ -243,15 +243,15 @@ V následujícím příkladu jsme nové způsobem a vytvořte [komplexní promě
         }
     ```
 
-Můžete použít stejný skriptu pro různé obnovení plány. Zadejte jiné parametry uložením hodnotu, která odpovídá do plánu obnovení v různých proměnných.
+Stejný skript můžete použít pro plány obnovení jinou. Zadejte jiné parametry uložením hodnota, která odpovídá plánu obnovení v jiné proměnné.
 
 ## <a name="sample-scripts"></a>Ukázkové skripty
 
-Chcete-li nasadit ukázkové skripty do vašeho účtu Automation, klikněte na tlačítko **nasadit do Azure** tlačítko.
+Ukázky skriptů nasazení do vašeho účtu Automation, klikněte na tlačítko **nasadit do Azure** tlačítko.
 
 [![Nasazení do Azure](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
 
-Další příklad najdete v následujícím videu. Ukazuje, jak obnovit dvouvrstvé WordPress aplikace do Azure:
+Další příklad najdete v následujícím videu. Ukazuje, jak obnovit dvouvrstvé aplikace WordPress na Azure:
 
 
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/One-click-failover-of-a-2-tier-WordPress-application-using-Azure-Site-Recovery/player]

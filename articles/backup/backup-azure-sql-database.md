@@ -13,19 +13,19 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/04/2018
+ms.date: 7/6/2018
 ms.author: markgal;anuragm
 ms.custom: ''
-ms.openlocfilehash: 13876991583292ec04120b9d59fb150ad236e864
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
-ms.translationtype: MT
+ms.openlocfilehash: 32f45b66c4b1d22da3ffc4310a8a47c17319301f
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37858557"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37918046"
 ---
 # <a name="back-up-sql-server-database-in-azure"></a>Proveďte zálohu databáze serveru SQL Server v Azure
 
-Databáze systému SQL Server jsou kritické úlohy vyžadující cíl bodu s nízkou obnovení (RPO) a dlouhodobé uchovávání. Azure Backup poskytuje řešení SQL Serverbackup, které nevyžaduje žádnou infrastrukturu, což znamená, že není komplexní záložní server, žádný agent pro správu nebo úložiště pro zálohování pro správu. Azure Backup poskytuje centralizovanou správu pro své zálohy přes všechny SQL servery nebo dokonce během různých úloh.
+Databáze systému SQL Server jsou kritické úlohy vyžadující cíl bodu s nízkou obnovení (RPO) a dlouhodobé uchovávání. Azure Backup poskytuje řešení zálohování serveru SQL Server, který vyžaduje žádnou infrastrukturu, což znamená, že není komplexní záložní server, žádný agent pro správu nebo úložiště pro zálohování pro správu. Azure Backup poskytuje centralizovanou správu pro své zálohy přes všechny SQL servery nebo dokonce během různých úloh.
 
  V tomto článku se dozvíte:
 
@@ -78,7 +78,7 @@ Následující položky jsou známé omezení verze Public Preview.
 
 ## <a name="supported-operating-systems-and-versions-of-sql-server"></a>Podporované operační systémy a verze SQL serveru
 
-Následující podporované operační systémy a verze SQL serveru použít SQL Marketplace virtuálních počítačů Azure a mimo marketplace virtuální počítače (kde je nainstalován SQL Server ručně).
+Podporovány jsou následující operační systémy. SQL-Tržiště Azure virtual machines a virtuálních počítačů mimo marketplace (kde je nainstalován SQL Server ručně), jsou podporovány.
 
 ### <a name="supported-operating-systems"></a>Podporované operační systémy
 
@@ -124,14 +124,14 @@ Jsou kompromisy mezi volby: možnosti správy, podrobnou kontrolu a náklady.
 >Značky služby Azure Backup by měla být podle obecné dostupnosti k dispozici.
 >
 
-| Možnost | Android – systém cesta vrácená procedurou  je přijatelné umístění pro uložení souboru databáze. | Universal Windows Platform – používá  rozhraní API. |
+| Možnost | Výhody | Nevýhody |
 | ------ | ---------- | ------------- |
 | Rozsahy seznamu povolených IP adres | Žádné další náklady. <br/> Pro otevření přístup v skupinu zabezpečení sítě, použijte **Set-AzureNetworkSecurityRule** rutiny. | Složitou správu jako ovlivněný rozsahy IP adres v průběhu času měnit. <br/>Poskytuje přístup k celé Azure, ne jenom úložiště.|
 | Použít proxy server HTTP   | Detailní kontrola v proxy serveru úložiště je povolené adresy URL. <br/>Jeden bod internetový přístup k virtuálním počítačům. <br/> Není v souladu s Azure IP adresa změní. | Další náklady pro spuštění virtuálního počítače se softwarem proxy serveru. |
 
 ## <a name="set-permissions-for-non-marketplace-sql-vms"></a>Nastavení oprávnění pro virtuální počítače s SQL mimo marketplace
 
-Zálohování virtuálního počítače, vyžaduje Azure Backup **AzureBackupWindowsWorkload** nainstalovat rozšíření. Pokud používáte virtuální počítače Azure marketplace, přeskočte k části [databáze serveru SQL zjistit](backup-azure-sql-database.md#discover-sql-server-databases). Pokud virtuální počítač hostujícího vaše databáze SQL nebyl vytvořen na webu Azure Marketplace, dokončete následující část, abyste nainstalovali rozšíření a nastavte příslušná oprávnění. Kromě **AzureBackupWindowsWorkload** rozšíření, Azure Backup vyžaduje oprávnění správce systému SQL pro ochranu databáze SQL. Při zjišťování databází na virtuálním počítači Azure Backup vytvoří účet, NT Service\AzureWLBackupPluginSvc. Azure Backup se zjistit databáze SQL musí mít účet NT Service\AzureWLBackupPluginSvc SQL přihlášení a oprávnění správce systému SQL. Následující postup vysvětluje, jak poskytnout tato oprávnění.
+Zálohování virtuálního počítače, vyžaduje Azure Backup **AzureBackupWindowsWorkload** nainstalovat rozšíření. Pokud používáte virtuální počítače Azure marketplace, přeskočte k části [databáze serveru SQL zjistit](backup-azure-sql-database.md#discover-sql-server-databases). Pokud virtuální počítač hostujícího vaše databáze SQL nebyl vytvořen na webu Azure Marketplace, dokončete následující část, abyste nainstalovali rozšíření a nastavte příslušná oprávnění. Kromě **AzureBackupWindowsWorkload** rozšíření, Azure Backup vyžaduje oprávnění správce systému SQL pro ochranu databáze SQL. Při zjišťování databází na virtuálním počítači Azure Backup vytvoří účet, NT Service\AzureWLBackupPluginSvc. Azure Backup se zjistit databáze SQL, musí mít účet NT Service\AzureWLBackupPluginSvc SQL a SQL oprávnění správce. Následující postup vysvětluje, jak poskytnout tato oprávnění.
 
 Ke konfiguraci oprávnění:
 
@@ -168,7 +168,7 @@ Když přidružíte databáze v trezoru služby Recovery Services, dalším krok
 
 ### <a name="fixing-sql-sysadmin-permissions"></a>Oprava oprávnění správce systému SQL
 
-Během procesu instalace, pokud se zobrazí chyba **UserErrorSQLNoSysadminMembership**, přihlaste do serveru SQL Server Management Studio (SSMS) pomocí účtu, který má oprávnění správce systému SQL. Pokud budete potřebovat speciální oprávnění, je třeba možné rozpoznat účet pomocí ověřování Windows.
+Během procesu instalace, pokud se zobrazí chyba **UserErrorSQLNoSysadminMembership**, použijte účet s oprávněními správce systému SQL pro přihlášení k serveru SQL Server Management Studio (SSMS). Pokud potřebujete speciální oprávnění, by měla fungovat ověřování Windows.
 
 1. Na serveru SQL Server, otevřete **zabezpečení/přihlášení** složky.
 
@@ -190,7 +190,7 @@ Během procesu instalace, pokud se zobrazí chyba **UserErrorSQLNoSysadminMember
 
     Teď by měla existovat požadovaná oprávnění.
 
-6. I když jste opravili chybu oprávnění, je stále potřeba přidružit databázi k trezoru služby Recovery Services. Na webu Azure Portal **chráněné servery** seznamu, klikněte pravým tlačítkem myši klikněte na server s chybou a vyberte **opětovné zjištění databází**.
+6. I když jste opravili chybu oprávnění, je stále potřeba přidružit databázi k trezoru služby Recovery Services. Na webu Azure Portal **chráněné servery** seznamu, klikněte pravým tlačítkem na server v chybě a vyberte **opětovné zjištění databází**.
 
     ![Ověřte, že server má příslušná oprávnění.](./media/backup-azure-sql-database/check-erroneous-server.png)
 
@@ -335,7 +335,7 @@ Konfigurace ochrany pro SQL database:
 
 Vyberte protokoly (časový okamžik) jako možnost obnovení. Zvolte typ bodu obnovení
 
-* V části datum a čas obnovení, klepněte na ikonu kalendáře a otevřete v kalendáři. Kalendářních dat tučným písmem obsahovat body obnovení a zvýrazní se aktuální datum. Vyberte datum v kalendáři se body obnovení. Data se žádné body obnovení nemůžete vybrat. 
+* V části datum a čas obnovení, klepněte na ikonu kalendáře a otevřete v kalendáři. Úplné zálohování obsahuje dostatek protokolu obnovení těchto dat a všechna data v konkrétní databázi nebo sadu skupiny souborů nebo souborů. Vyberte datum v kalendáři se body obnovení. Data se žádné body obnovení nemůžete vybrat. 
 * Otevřít kalendář Jakmile vyberete datum, časová osa grafu zobrazuje dostupné body obnovení v průběžné rozsahu. Pomocí časové osy grafu nebo dialogovém okně čas zadat bod obnovení a klikněte na určitou dobu OK k dokončení kroku bod obnovení. Vyberte bod obnovení zavře nabídky a Upřesnit konfiguraci otevře se nabídka.
 * Nabídka pokročilou konfiguraci Z Upřesnit konfiguraci nabídky:
 
@@ -394,13 +394,16 @@ Můžete také sledovat průběh úlohy obnovení databáze.
 
 8. Azure Backup zobrazí všechny ručně aktivované, nebo ad hoc, úlohy na portálu pro úlohy zálohování. 
 
-   ![K dispozici v portálu zahrnout úlohy: všechny konfigurace zálohování, ručně aktivované zálohování, obnovení operace, registrace a zjistit databázových operací a zastavit zálohování.](./media/backup-azure-sql-database/differential-backup-policy.png)
+   ![přijmout nové zásady](./media/backup-azure-sql-database/backup-policy-click-ok.png)
 
 ## <a name="restore-a-sql-database"></a>Všechny naplánované úlohy zálohování včetně úplné, rozdílového a protokolu zálohování se nezobrazí na portálu a je možné monitorovat pomocí SQL Server Management Studio, jak je popsáno níže.
 
 Pomocí SQL Server Management Studio (SSMS) pro úlohy zálohování Azure Backup používá nativní rozhraní API SQL pro všechny operace zálohování.
 
 Pomocí nativních rozhraní API, můžete načíst všechny informace o úlohách z tabulku záloh SQL v databázi msdb.
+ > [!Note]
+ > Před aktivací obnovení "hlavní" databáze spusťte SQL Server v režimu jednoho uživatele s možností spuštění "-m AzureWorkloadBackup". Argument -m je název klienta, bude povolen pouze tento klient k otevření připojení. Pro všechny systémové databáze (master, model, msdb) zastavte službu agenta SQL před aktivace operace obnovení. Zavřete všechny aplikace, které se mohou pokusit o ukrást připojení k jakémukoli z těchto databází.
+>
 
 Můžete použít pod dotaz jako příklad se načíst všechny úlohy zálohování pro konkrétní databázi s názvem "DB1".
 
@@ -613,7 +616,7 @@ Tato část obsahuje informace o různých Azure Backup správy operací k dispo
 ### <a name="monitor-jobs"></a>Monitorování úloh
 Azure Backup je podnikové řešení třída poskytuje pokročilé zálohování výstrahy a oznámení pro všechny chyby (najdete níže v části výstrahy zálohování). Pokud chcete monitorovat konkrétní úlohy můžete použít některý z následujících možností na základě vašich požadavků:
 
-#### <a name="using-azure-portal---recovery-services-vault-for-all-ad-hoc-operations"></a>Pomocí webu Azure portal -> trezor služby Recovery Services pro všechny operace ad-hoc
+#### <a name="use-azure-portal-for-all-adhoc-operations"></a>Pomocí webu Azure portal pro všechny operace ad hoc
 Azure Backup zobrazí všechny ručně aktivované, nebo ad hoc, úlohy na portálu pro úlohy zálohování. K dispozici v portálu zahrnout úlohy: všechny konfigurace zálohování, ručně aktivované zálohování, obnovení operace, registrace a zjistit databázových operací a zastavit zálohování. 
 ![Nabídka pokročilou konfiguraci](./media/backup-azure-sql-database/jobs-list.png)
 
@@ -621,10 +624,10 @@ Azure Backup zobrazí všechny ručně aktivované, nebo ad hoc, úlohy na port�
 > Všechny naplánované úlohy zálohování včetně úplné, rozdílového a protokolu zálohování se nezobrazí na portálu a je možné monitorovat pomocí SQL Server Management Studio, jak je popsáno níže.
 >
 
-#### <a name="using-sql-server-management-studio-ssms-for-backup-jobs"></a>Pomocí SQL Server Management Studio (SSMS) pro úlohy zálohování
-Azure Backup používá nativní rozhraní API SQL pro všechny operace zálohování. Pomocí nativních rozhraní API, můžete načíst všechny informace o úlohách z [tabulku záloh SQL](https://docs.microsoft.com/sql/relational-databases/system-tables/backupset-transact-sql?view=sql-server-2017) v databázi msdb. 
+#### <a name="use-sql-server-management-studio-for-backup-jobs"></a>Pomocí SQL Server Management Studio pro úlohy zálohování
+Azure Backup používá nativní rozhraní API SQL pro všechny operace zálohování. Pomocí nativních rozhraní API, můžete načíst všechny informace o úlohách z [tabulku záloh SQL](https://docs.microsoft.com/sql/relational-databases/system-tables/backupset-transact-sql?view=sql-server-2017) v databázi msdb.
 
-Můžete použít pod dotaz jako příklad se načíst všechny úlohy zálohování pro konkrétní databázi s názvem "DB1". Můžete přizpůsobit pod dotaz další rozšířené monitorování.
+V následujícím příkladu je dotaz pro načtení všechny úlohy zálohování pro databázi s názvem, **DB1**. Upravte dotaz pro rozšířené monitorování.
 ```
 select CAST (
 Case type
@@ -745,6 +748,42 @@ Zrušit registraci serveru SQL server po odebrání ochrany, ale před odstraně
 5. V nabídce chráněné servery, klikněte pravým tlačítkem na chráněném serveru a vyberte **odstranit**. 
 
    ![obnovení ochrany databáze](./media/backup-azure-sql-database/delete-protected-server.png)
+
+## <a name="sql-database-backup-faq"></a>Nejčastější dotazy SQL database
+
+Následující část obsahuje další informace o zálohování databáze SQL.
+
+### <a name="can-i-throttle-the-speed-of-the-sql-backup-policy-so-it-minimizes-impact-on-the-sql-server"></a>Je možné omezovat rychlost zásady zálohování SQL, minimalizuje dopad na SQL server
+
+Ano, můžete omezit rychlost, jakou zásadu zálohování, která spustí. Chcete-li změnit nastavení:
+
+1. Na serveru SQL Server v `C:\Program Files\Azure Workload Backup\bin` složku, otevřete **TaskThrottlerSettings.json**.
+
+2. V **TaskThrottlerSettings.json** změňte **DefaultBackupTasksThreshold** na nižší hodnotu, například 5.
+
+3. Uložte změny a zavřete soubor.
+
+4. Na serveru SQL Server otevřete Správce úloh a restartujte **služby Koordinátor úloh Azure Backup**.
+
+### <a name="can-i-run-a-full-backup-from-a-secondary-replica"></a>Ze sekundární repliky, spusťte úplné zálohování
+
+Ne, tato funkce není podporována.
+
+### <a name="do-successful-backup-jobs-create-alerts"></a>Úspěšné úlohy zálohování vytvářejí výstrahy
+
+Ne. Úspěšné úlohy zálohování negenerují výstrahy. Oznámení se odešlou jenom pro úlohy zálohování, které selžou.
+
+### <a name="are-scheduled-backup-job-details-shown-in-the-jobs-menu"></a>Zobrazují podrobnosti úlohy zálohování v nabídce úlohy
+
+Ne. V nabídce úlohy se zobrazí podrobnosti úlohy ad hoc, ale nezobrazuje naplánovaných úloh zálohování. Pokud selžou i všechny naplánované úlohy zálohování, všechny podrobnosti najdete u neúspěšné úlohy výstrah. Pokud chcete monitorování všechny plánované a úlohy zálohování ad hoc [pomocí SQL Server Management Studio](backup-azure-sql-database.md#use-sql-server-management-studio-for-backup-jobs).
+
+### <a name="if-i-select-a-sql-server-will-future-databases-automatically-be-added"></a>Při výběru serveru SQL server se budoucí databáze automaticky přidají
+
+Ne. Při konfiguraci ochrany pro SQL server, pokud zaškrtnete políčko na úrovni serveru se přidá všechny databáze. Nicméně pokud chcete přidat databáze na SQL server po dokončení konfigurace ochrany, je třeba ručně přidat nové databáze před nimi chránit. Databáze nejsou automaticky součástí nakonfigurovanou ochranu.
+
+### <a name="if-i-change-the-recovery-model-how-do-i-restart-protection"></a>Jak se v případě, že mi Změna modelu obnovení restartovat ochrany
+
+Pokud změníte model obnovení, aktivujte úplné zálohování a zálohování protokolů začne podle očekávání.
 
 ## <a name="next-steps"></a>Další postup
 

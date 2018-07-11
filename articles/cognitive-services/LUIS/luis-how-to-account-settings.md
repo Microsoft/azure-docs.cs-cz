@@ -8,16 +8,16 @@ manager: Kaiqb
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 06/04/2018
+ms.date: 07/08/2018
 ms.author: v-geberr
-ms.openlocfilehash: 1b5caf199cd5bfe0fa462950cc1f7beb3f2872b2
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 8a1565b3816f2c6597ac941ac9a0ac48bc2c7bb7
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37887602"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37915703"
 ---
-# <a name="manage-your-luis-account"></a>Správa vašeho účtu LUIS
+# <a name="manage-account-and-authoring-key"></a>Správa účtu a klíč pro tvorbu
 Dvě důležité informace pro účet LUIS jsou uživatelský účet a pro tvorbu klíč. Přihlašovací údaje se spravuje na [account.microsoft.com](https://account.microsoft.com). Spravuje se z vašeho klíče pro vytváření obsahu [LUIS](luis-reference-regions.md) webu **nastavení** stránky. 
 
 ## <a name="authoring-key"></a>Klíč pro tvorbu
