@@ -103,6 +103,8 @@
           href: monitoring-stream-diagnostic-logs-to-event-hubs.md
         - name: Povolení diagnostických nastavení s využitím šablon Resource Manageru
           href: monitoring-enable-diagnostic-logs-using-template.md
+        - name: Příprava pro formát řádkových diagnostických protokolů JSON
+          href: monitor-diagnostic-logs-append-blobs.md
     - name: Použití protokolu aktivit
       items:
         - name: Zobrazení událostí v protokolu aktivit

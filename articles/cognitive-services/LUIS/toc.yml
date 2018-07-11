@@ -59,16 +59,20 @@
           href: luis-quickstart-intent-and-list-entity.md
         - name: 5. Přidání hierarchické entity
           href: luis-quickstart-intent-and-hier-entity.md
-        - name: 6. Přidání jednoduché entity a seznamu frází
+        - name: 6. Přidání složené entity
+          href: luis-tutorial-composite-entity.md
+        - name: 7. Přidání jednoduché entity a seznamu frází
           href: luis-quickstart-primary-and-secondary-data.md
-        - name: 7. Přidání entity klíčové fráze
+        - name: 8. Přidání entity klíčové fráze
           href: luis-quickstart-intent-and-key-phrase.md
-        - name: 8. Přidání analýzy mínění
+        - name: 9. Přidání analýzy mínění
           href: luis-quickstart-intent-and-sentiment-analysis.md
     - name: Vylepšení aplikace
       items:
         - name: Kontrola promluv koncového bodu
           href: luis-tutorial-review-endpoint-utterances.md
+        - name: S využitím dávkového testu
+          href: luis-tutorial-batch-testing.md
         - name: S využitím vzorů
           href: luis-tutorial-pattern.md
 - name: Ukázky
@@ -138,7 +142,7 @@
     - name: Plánování aplikace
       href: luis-how-plan-your-app.md
     - name: Vytvoření nové aplikace
-      href: Create-new-app.md
+      href: luis-how-to-start-new-app.md
     - name: Vytvoření modelu
       items:
         - name: Přidání záměrů
@@ -147,15 +151,15 @@
           href: luis-how-to-add-example-utterances.md
         - name: Přidání entit
           href: luis-how-to-add-entities.md
-        - name: Použití složené entity k extrakci seskupených dat
-          href: luis-tutorial-composite-entity.md
-        - name: Použití entity seznamu k hledání přesné shody textu s využitím Node.js
-          href: luis-tutorial-list-entity.md
-        - name: Programové sestavení aplikace s využitím Node.js
-          href: luis-tutorial-node-import-utterances-csv.md
+        - name: S využitím rozhraní API
+          items:
+            - name: Programové sestavení aplikace s využitím Node.js
+              href: luis-tutorial-node-import-utterances-csv.md
+            - name: Použití entity seznamu k hledání přesné shody textu s využitím Node.js
+              href: luis-tutorial-list-entity.md
     - name: Integrace
       items:
-        - name: Oprava pravopisu pomocí rozhraní API Bingu pro kontrolu pravopisu v7
+        - name: S využitím rozhraní API pro kontrolu pravopisu Bingu v7
           href: luis-tutorial-bing-spellcheck.md
         - name: S využitím služby Speech
           href: luis-tutorial-speech-to-intent.md
@@ -176,7 +180,7 @@
     - name: Zlepšení přesnosti předpovědi
       items:
         - name: Kontrola promluv koncového bodu
-          href: Label-Suggested-Utterances.md
+          href: luis-how-to-review-endoint-utt.md
         - name: Přidání seznamu frází
           href: luis-how-to-add-features.md
         - name: Přidání vzorů
@@ -189,36 +193,36 @@
           href: interactive-test.md
         - name: Dávkové testování
           href: luis-how-to-batch-test.md
-        - name: Zlepšení přesnosti s využitím dávkového testování
-          href: luis-tutorial-batch-testing.md
     - name: Publikování aplikace
       href: luis-how-to-publish-app.md
     - name: Použití předem připravených modelů
       items:
-        - name: Použití předem připravených entit
+        - name: Použití entit
           href: luis-prebuilt-entities.md
-        - name: Použití předem připravených domén
+        - name: Použití domén
           href: luis-how-to-use-prebuilt-domains.md
-        - name: Použití předem připravené aplikace Cortana
+        - name: Použití Cortany
           href: luis-how-to-cortana-prebuilt-app.md
-    - name: Správa aplikace LUIS
+    - name: Správa aplikace
       items:
         - name: S využitím řídicího panelu
           href: luis-how-to-use-dashboard.md
-        - name: Vytvoření klíčů
+        - name: Vytvoření klíčů koncového bodu
           href: luis-how-to-azure-subscription.md
-        - name: Přidání klíčů v LUIS
+        - name: Přidání klíčů koncového bodu k aplikaci
           href: luis-how-to-manage-keys.md
-        - name: Zobrazení využití koncového bodu s využitím PowerShellu
-          href: luis-how-to-manage-from-cloud-shell.md
         - name: Správa verzí
           href: luis-how-to-manage-versions.md
         - name: Spolupráce s ostatními autory
           href: luis-how-to-collaborate.md
-        - name: Rozložení kvóty koncových bodů napříč klíči s využitím Traffic Manageru
-          href: traffic-manager.md
-    - name: Správa účtu LUIS
-      href: luis-how-to-account-settings.md
+        - name: Správa klíčů pro vytváření obsahu
+          href: luis-how-to-account-settings.md
+        - name: Správa využití koncových bodů
+          items:
+            - name: Zobrazení využití koncového bodu s využitím PowerShellu
+              href: luis-how-to-manage-from-cloud-shell.md
+            - name: Rozložení kvóty koncových bodů napříč klíči s využitím Traffic Manageru
+              href: traffic-manager.md
     - name: Migrace na API V2
       href: migration-v1-to-v2.md
     - name: Vyhledání oblasti prostřednictvím kódu programu
@@ -251,6 +255,8 @@
           href: luis-reference-prebuilt-deprecated.md
         - name: Entita Email
           href: luis-reference-prebuilt-email.md
+        - name: Entita klíčové fráze
+          href: luis-reference-prebuilt-keyphrase.md
         - name: Entita Number
           href: luis-reference-prebuilt-number.md
         - name: Entita Ordinal

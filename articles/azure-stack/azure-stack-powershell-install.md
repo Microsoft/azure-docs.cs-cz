@@ -1,6 +1,6 @@
 ---
-title: Instalace prostředí PowerShell pro Azure zásobníku | Microsoft Docs
-description: Informace o instalaci prostředí PowerShell pro Azure zásobníku.
+title: Instalace Powershellu pro Azure Stack | Dokumentace Microsoftu
+description: Zjistěte, jak nainstalovat prostředí PowerShell pro Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,34 +11,34 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 5/18/2018
+ms.date: 07/10/2018
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.openlocfilehash: b3c09582f5135655640768bcbcbef91750827bfa
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: e2785b0beeab042d4b1ad9a9eb5f545dbb58b8b9
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34358886"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38487497"
 ---
-# <a name="install-powershell-for-azure-stack"></a>Instalace prostředí PowerShell pro Azure zásobníku
+# <a name="install-powershell-for-azure-stack"></a>Instalace Powershellu pro Azure Stack
 
-*Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
+*Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
-Azure zásobníku kompatibilní prostředí Azure PowerShell moduly jsou nutné k práci s Azure zásobníku. V této příručce budeme vás provede kroky potřebné k instalaci prostředí PowerShell pro Azure zásobníku.
+Moduly prostředí Azure PowerShell kompatibilní služby Azure Stack jsou vyžadována pro práci s Azure Stack. V této příručce budeme vás provede kroky potřebné k instalaci prostředí PowerShell pro Azure Stack.
 
-Tento článek obsahuje podrobné pokyny k instalaci prostředí PowerShell pro Azure zásobníku.
+Tento článek obsahuje podrobné pokyny k instalaci prostředí PowerShell pro Azure Stack.
 
-> [!Note]
-> Následující kroky vyžadují prostředí PowerShell 5.0. Chcete-li zkontrolovat vaší verzí, spusťte $PSVersionTable.PSVersion a porovnat **hlavní** verze.
+> [!Note]  
+> Následující kroky vyžadují prostředí PowerShell 5.0. Pokud chcete zkontrolovat verzi, spusťte $PSVersionTable.PSVersion a porovnat **hlavní** verze.
 
-Příkazy prostředí PowerShell pro Azure zásobníku jsou nainstalovány v galerii prostředí PowerShell. Následující postup slouží k ověření, pokud PSGallery je registrován jako úložiště, otevřete relaci prostředí PowerShell zvýšenými oprávněními a spusťte následující příkaz:
+Příkazy prostředí PowerShell pro Azure Stack jsou nainstalovány v galerii prostředí PowerShell. Následující postup slouží k ověření, zda PSGallery se zaregistruje jako úložiště, otevřete relaci Powershellu se zvýšenými oprávněními a spusťte následující příkaz:
 
 ```PowerShell  
 Get-PSRepository -Name "PSGallery"
 ```
 
-Pokud úložiště není registrované, otevřete relaci prostředí PowerShell zvýšenými oprávněními a spusťte následující příkaz:
+Pokud úložiště není zaregistrovaný, otevřete relaci Powershellu se zvýšenými oprávněními a spusťte následující příkaz:
 
 ```PowerShell  
 Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
@@ -46,11 +46,11 @@ Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
 > [!Note]  
 > Tento krok vyžaduje přístup k Internetu. 
 
-## <a name="uninstall-existing-versions-of-powershell"></a>Odinstalujte stávající verze prostředí PowerShell
+## <a name="uninstall-existing-versions-of-the-azure-stack-powershell-modules"></a>Odinstalovat stávající verze modulů Azure Stack Powershellu
 
-Před instalací požadovanou verzi, ujistěte se, abyste odinstalovali všechny dříve nainstalované moduly Powershellu zásobník Azure. Můžete je odinstalovat pomocí jedné z následujících dvou metod:
+Než začnete instalovat na požadovanou verzi, ujistěte se, že odinstalovat všechny dříve nainstalované moduly Azure Stack AzureRM Powershellu. Můžete je odinstalovat pomocí jedné z těchto dvou metod:
 
- - Chcete-li odinstalovat stávající moduly Powershellu, zavřete všechny aktivní relace prostředí PowerShell a spusťte následující příkaz:
+ - Chcete-li odinstalovat existující moduly AzureRM Powershellu, zavřete všechny aktivní relace prostředí PowerShell a spuštěním následujícího příkazu:
 
   ```PowerShell
     Uninstall-Module AzureRM.AzureStackAdmin -Force
@@ -58,13 +58,13 @@ Před instalací požadovanou verzi, ujistěte se, abyste odinstalovali všechny
     Uninstall-Module -Name AzureStack -Force
   ```
 
- - Odstranit všechny složky, které začínají "Azure" z `C:\Program Files\WindowsPowerShell\Modules` a `C:\Users\AzureStackAdmin\Documents\WindowsPowerShell\Modules` složek. Odstranění těchto složek odebere všechny existující moduly Powershellu.
+ - Odstranit všechny složky, které začínají znakem "Azure" z `C:\Program Files\WindowsPowerShell\Modules` a `C:\Users\AzureStackAdmin\Documents\WindowsPowerShell\Modules` složek. Odstranění těchto složek odebere všechny existující moduly Powershellu.
 
-Následující části popisují kroky potřebné k instalaci prostředí PowerShell pro Azure zásobníku. Prostředí PowerShell můžete nainstalovat v zásobníku Azure, která je provozována v připojené, částečně připojen nebo ve scénáři odpojené.
+Následující části popisují kroky potřebné k instalaci prostředí PowerShell pro Azure Stack. Prostředí PowerShell můžete nainstalovat, ve službě Azure Stack, která je provozována v připojené, částečně připojeno nebo ve scénáři odpojené.
 
-## <a name="install-powershell-in-a-connected-scenario-with-internet-connectivity"></a>Instalace prostředí PowerShell ve scénáři připojené (s připojením k Internetu)
+## <a name="install-the-azure-stack-powershell-modules-in-a-connected-scenario-with-internet-connectivity"></a>Instalace modulů Azure Stack Powershellu v případě propojené v (s připojením k Internetu)
 
-Prostřednictvím rozhraní API verze profily jsou nainstalované Azure AzureRM moduly kompatibilní zásobníku. Vyžaduje Azure zásobníku **2017-03-09profil** profil verze rozhraní API, který je k dispozici po instalaci modulu AzureRM.Bootstrapper. Další informace o rozhraní API verze profily a rutiny poskytované jejich, naleznete [spravovat profily verze rozhraní API](user/azure-stack-version-profiles.md). Kromě AzureRM moduly nainstalujete také moduly Azure PowerShell specifické pro zásobníku. Spusťte následující skript prostředí PowerShell k instalaci těchto modulů na pracovní stanici:
+Moduly AzureRM kompatibilní služby Azure Stack jsou nainstalovány prostřednictvím profilů verzí API. Vyžaduje Azure Stack **2017-03-09-profile** profilu verze rozhraní API, která je k dispozici nainstalováním modulu AzureRM.Bootstrapper. Další informace o profilech verze rozhraní API a rutin poskytovaných je, naleznete [Správa profilů verzí API](user/azure-stack-version-profiles.md). Kromě moduly AzureRM také byste měli nainstalovat moduly Azure Powershellu specifické pro zásobník. Spusťte následující skript prostředí PowerShell k instalaci těchto modulů na pracovní stanici vývoje:
 
   ```PowerShell  
 # Install the AzureRM.Bootstrapper module. Select Yes when prompted to install NuGet 
@@ -80,22 +80,22 @@ Install-Module -Name AzureStack -RequiredVersion 1.3.0
 Install-Module -Name AzureStack -RequiredVersion 1.2.11 
   ```
 
-Pokud chcete potvrdit instalaci, spusťte následující příkaz:
+K potvrzení instalace, spusťte následující příkaz:
 
 ```PowerShell  
 Get-Module -ListAvailable | where-Object {$_.Name -like "Azs*"}
 ```
 
-Pokud je instalace úspěšná, moduly AzureRM a AzureStack se zobrazí ve výstupu.
+Pokud je instalace úspěšná, zobrazí se moduly AzureRM a AzureStack ve výstupu.
 
-## <a name="install-powershell-in-a-disconnected-or-a-partially-connected-scenario-with-limited-internet-connectivity"></a>Nainstalujte prostředí PowerShell odpojený nebo částečně připojené scénář (s omezenou připojení k Internetu)
+## <a name="install-the-azure-stack-powershell-modules-in-a-disconnected-or-a-partially-connected-scenario-with-limited-internet-connectivity"></a>Instalace modulů Azure Stack Powershellu odpojeném nebo částečně připojeného scénáře (s omezenou připojení k Internetu)
 
-Ve scénáři odpojené musíte nejprve stáhnout moduly Powershellu pro počítač, který má připojení k Internetu a potom přenést do Azure zásobníku Development Kit pro instalaci.
+V případě odpojené v musíte nejprve stáhnout modulů prostředí PowerShell do počítače, který má připojení k Internetu a je přenést na Azure Stack Development Kit pro instalaci.
 
 > [!IMPORTANT]  
-> Verze modulu Azure PowerShell zásobníku 1.3.0 obsahuje seznam nejnovější změny. K upgradu z 1.2.11 verze, najdete v článku [příručka k migraci](https://aka.ms/azspowershellmigration).
+> Verze modulu Azure PowerShell zásobníku 1.3.0 obsahuje seznam rozbíjejících změn. K upgradu portálu 1.2.11 verze, najdete v článku [Průvodce migrací](https://aka.ms/azspowershellmigration).
 
-1. Přihlaste se k počítači, kde máte připojení k Internetu a pomocí následujícího skriptu stahování AzureRM a AzureStack balíčky do svého místního počítače:
+1. Přihlaste se k počítači, kde máte připojení k Internetu a použijte tento skript stáhnout AzureRM a AzureStack balíčky do místního počítače:
 
    ```PowerShell  
    $Path = "<Path that is used to save the packages>"
@@ -118,13 +118,13 @@ Ve scénáři odpojené musíte nejprve stáhnout moduly Powershellu pro počít
    ```
 
   > [!Important]  
-  > Pokud používáte Azure zásobníku s aktualizací 1804 nebo vyšší, změnit **requiredversion** hodnota parametru pro `1.2.11`. 
+  > Pokud používáte Azure Stack s aktualizací update 1804 nebo vyšší, změňte **requiredversion** pro parametr `1.2.11`. 
 
-2. Zkopírujte stažených balíčků přes USB zařízení.
+2. Zkopírujte stažených balíčků do zařízení USB.
 
 3. Přihlaste se k pracovní stanici a zkopírujte balíčky ze zařízení USB do umístění na pracovní stanici.
 
-4. Nyní je nutné zaregistrovat toto umístění jako výchozí úložiště a nainstalovat moduly AzureRM a AzureStack z tohoto úložiště:
+4. Nyní musíte zaregistrovat toto umístění jako výchozí úložiště a nainstalujte moduly AzureRM a AzureStack z tohoto úložiště:
 
    ```PowerShell
    $SourceLocation = "<Location on the development kit that contains the PowerShell packages>"
@@ -142,11 +142,11 @@ Ve scénáři odpojené musíte nejprve stáhnout moduly Powershellu pro počít
      -Repository $RepoName 
    ```
 
-## <a name="configure-powershell-to-use-a-proxy-server"></a>Konfigurace prostředí PowerShell k používání proxy serveru
+## <a name="configure-powershell-to-use-a-proxy-server"></a>Konfigurace Powershellu pro použití proxy serveru
 
-Scénáře, které vyžadují připojení proxy serveru pro přístup k Internetu musíte nejdřív nakonfigurovat prostředí PowerShell, chcete-li použít existující server proxy.
+Ve scénářích, které vyžadují přístup k Internetu proxy server je nutné nejprve nakonfigurovat prostředí PowerShell pro použití existujícího proxy serveru.
 
-1. Otevřete prostředí PowerShell řádku se zvýšenými oprávněními.
+1. Otevřete řádku Powershellu se zvýšenými oprávněními.
 2. Spusťte následující příkazy:
 
 ````PowerShell  
@@ -160,7 +160,7 @@ Scénáře, které vyžadují připojení proxy serveru pro přístup k Internet
 
 ## <a name="next-steps"></a>Další postup
 
- - [Stažení nástroje Azure zásobníku z Githubu](azure-stack-powershell-download.md)
- - [Konfigurace prostředí PowerShell Azure zásobník uživatele](user/azure-stack-powershell-configure-user.md)  
- - [Konfigurace prostředí PowerShell Azure zásobníku operátor](azure-stack-powershell-configure-admin.md) 
- - [Správa profilů verze rozhraní API v Azure zásobníku](user/azure-stack-version-profiles.md)  
+ - [Stáhněte si nástroje pro Azure Stack z Githubu](azure-stack-powershell-download.md)
+ - [Konfigurace prostředí PowerShell uživatele Azure stacku](user/azure-stack-powershell-configure-user.md)  
+ - [Konfigurace prostředí PowerShell pro operátory Azure stacku](azure-stack-powershell-configure-admin.md) 
+ - [Správa profilů verzí API ve službě Azure Stack](user/azure-stack-version-profiles.md)  

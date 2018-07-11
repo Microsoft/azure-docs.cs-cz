@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/02/2018
+ms.date: 07/10/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: e8dd425bbb5839b1c2f5ad4e217c61dc50b38ce1
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: c9249de56979d47a29fc9d7c12b99e41b3ada0fd
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346820"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38465833"
 ---
 # <a name="add-hosting-servers-for-the-sql-resource-provider"></a>Přidání hostitelské servery pro poskytovatele prostředků SQL
 
@@ -100,9 +100,6 @@ Chcete-li přidat samostatný server hostingu, který je už nastavený, postupu
    * Pokud chcete použít existující skladové položky, zvolte dostupné skladové položky a pak vyberte **vytvořit**.
    * Chcete-li vytvořit skladovou jednotku, vyberte **+ vytvořit novou skladovou Položku**. V **vytvořit SKU**, zadejte požadované informace a pak vyberte **OK**.
 
-     > [!IMPORTANT]
-     > Speciální znaky, mezery a tečky, včetně nejsou podporovány v **název** pole. Příklady použít na následujícím snímku obrazovky pro zadání hodnot pro **řady**, **úroveň**, a **Edition** pole.
-
      ![Vytvoří skladová jednotka](./media/azure-stack-sql-rp-deploy/sqlrp-newsku.png)
 
 ## <a name="provide-high-availability-using-sql-always-on-availability-groups"></a>Zajištění vysoké dostupnosti pomocí SQL skupin dostupnosti Always On
@@ -119,16 +116,18 @@ Konfigurace instance SQL Always On vyžaduje další kroky a vyžaduje tři virt
 
 Je nutné povolit [Automatická synchronizace replik indexů](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/automatically-initialize-always-on-availability-group) pro každou skupinu dostupnosti pro každou instanci systému SQL Server.
 
-Pokud chcete povolit, automatická synchronizace replik indexů na všechny instance, upravit a pak spusťte následující příkaz SQL pro každou instanci:
+Pokud chcete povolit, automatická synchronizace replik indexů na všechny instance, upravit a pak spusťte následující příkaz SQL na primární replice pro každou sekundární instanci:
 
   ```sql
   ALTER AVAILABILITY GROUP [<availability_group_name>]
-      MODIFY REPLICA ON 'InstanceName'
+      MODIFY REPLICA ON '<secondary_node>'
       WITH (SEEDING_MODE = AUTOMATIC)
   GO
   ```
 
-Na sekundární instance upravte a poté spusťte následující příkaz SQL pro každou instanci:
+Všimněte si, že skupina dostupnosti musí být uzavřena do hranatých závorek.
+
+Na sekundární uzly spusťte následující příkaz SQL:
 
   ```sql
   ALTER AVAILABILITY GROUP [<availability_group_name>] GRANT CREATE ANY DATABASE
@@ -156,7 +155,7 @@ Nastavení možnosti serveru ověřování databáze s omezením pro každou ins
 
    V části **servery hostující SQL**, poskytovatele prostředků SQL serveru se můžete připojit k skutečné instance systému SQL Server, které bude sloužit jako back-endu poskytovatele prostředků.
 
-3. Vyplňte formulář s podrobnostmi o připojení pro vaši instanci SQL serveru. Ujistěte se, že použijete adresu plně kvalifikovaného názvu domény vždy na naslouchací proces (a volitelně také portu číslo.) Zadejte informace pro účet, který jste nakonfigurovali s oprávněními správce systému.
+3. Vyplňte formulář s podrobnostmi o připojení pro vaši instanci SQL serveru. Ujistěte se, že používáte adresu plně kvalifikovaného názvu domény vždy na naslouchací proces (a volitelně také portu číslo a instance name). Zadejte informace pro účet, který jste nakonfigurovali s oprávněními správce systému.
 
 4. Zaškrtněte políčko skupiny dostupnosti Always On k povolení podpory pro instance SQL skupiny dostupnosti Always On.
 

@@ -40,6 +40,8 @@
           href: contoso-migration-refactor-web-app-sql.md
         - name: 10. Contoso – Refaktorace linuxové aplikace v Azure Web Apps a Azure MySQL
           href: contoso-migration-refactor-linux-app-service-mysql.md
+        - name: 11. Contoso – Migrace TFS do VSTS
+          href: contoso-migration-tfs-vsts.md
     - name: Zkoumání a posouzení rozsáhlého prostředí
       href: how-to-scale-assessment.md
     - name: Seskupení počítačů

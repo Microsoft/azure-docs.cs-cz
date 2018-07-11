@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/02/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: 8c758f78b661f492c98ac174d7fbbf8b7e3a5e52
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: e4af3dc8aa7a656fd0020285c3f73ce414ba039c
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37345079"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38305892"
 ---
 # <a name="deploy-the-mysql-resource-provider-on-azure-stack"></a>Nasazení poskytovatele prostředků MySQL ve službě Azure Stack
 
@@ -47,7 +47,6 @@ Existuje několik předpokladů, které musí být splněné před nasazením po
     | --- | --- |
     | Verzi 1804 (1.0.180513.1)|[Poskytovatele prostředků MySQL verze 1.1.24.0](https://aka.ms/azurestackmysqlrp1804) |
     | Verzi 1802 (1.0.180302.1) | [Poskytovatele prostředků MySQL verze 1.1.18.0](https://aka.ms/azurestackmysqlrp1802) |
-    | Verzi 1712 (1.0.180102.3 nebo 1.0.180106.1 (integrované systémy)) | [Poskytovatele prostředků MySQL verze 1.1.14.0](https://aka.ms/azurestackmysqlrp1712) |
 
 ### <a name="certificates"></a>Certifikáty
 
@@ -146,6 +145,6 @@ Po dokončení skriptu instalace poskytovatele prostředků, aktualizujte svůj 
 3. Vyberte **systému.\< umístění\>.mysqladapter** skupinu prostředků.
 4. Na stránce Souhrn pro skupinu prostředků přehled měla by existovat žádná selhání nasazení.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 [Přidat hostitelské servery](azure-stack-mysql-resource-provider-hosting-servers.md)

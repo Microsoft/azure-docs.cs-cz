@@ -41,6 +41,8 @@
       href: how-to-customize-pronunciation.md
     - name: Přizpůsobení hlasových písem (hlas značky robota)
       href: how-to-customize-voice-font.md
+    - name: Záznam hlasových ukázek
+      href: record-custom-voice-samples.md
     - name: Příprava přepisů
       href: prepare-transcription.md
     - name: Použití vlastních zvukových streamů

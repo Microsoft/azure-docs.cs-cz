@@ -1,6 +1,6 @@
 ---
-title: Konfigurace nasazení pro Azure zásobníku Development Kit (ASDK) příspěvků | Microsoft Docs
-description: Popisuje změny doporučené konfigurace po instalaci Azure zásobníku Development Kit (ASDK).
+title: Odeslání konfigurace nasazení pro Azure Stack Development Kit (ASDK) | Dokumentace Microsoftu
+description: Popisuje změny doporučené konfigurace po instalaci Azure Stack Development Kit (ASDK).
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
@@ -15,22 +15,22 @@ ms.topic: article
 ms.date: 06/05/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: ec5947bc68ba95a7b1e1588c444f4b28a7435f1c
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 23d99c498c139da3a145a1df230f419b4591b256
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801533"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38598437"
 ---
 # <a name="post-asdk-installation-configuration-tasks"></a>Po dokončení instalace ASDK úlohy konfigurace
 
-Po [instalace Azure zásobníku Development Kit (ASDK)](asdk-install.md), budete muset změnit některé doporučené konfigurace po instalaci.
+Po [instalaci Azure Stack Development Kit (ASDK)](asdk-install.md), budete muset provést některé doporučené konfigurace po instalaci změny.
 
 ## <a name="install-azure-stack-powershell"></a>Instalace Azure Stack PowerShellu
 
-Azure zásobníku kompatibilní prostředí Azure PowerShell moduly jsou nutné k práci s Azure zásobníku.
+Moduly prostředí Azure PowerShell kompatibilní služby Azure Stack jsou vyžadována pro práci s Azure Stack.
 
-Příkazy prostředí PowerShell pro Azure zásobníku jsou nainstalovány v galerii prostředí PowerShell. Pokud chcete zaregistrovat PSGallery úložiště, otevřete relaci prostředí PowerShell zvýšenými oprávněními a spusťte následující příkaz:
+Příkazy prostředí PowerShell pro Azure Stack jsou nainstalovány v galerii prostředí PowerShell. Registrace PSGallery úložiště, otevřete relaci Powershellu se zvýšenými oprávněními a spusťte následující příkaz:
 
 ``` Powershell
 Set-PSRepository `
@@ -38,14 +38,14 @@ Set-PSRepository `
   -InstallationPolicy Trusted
 ```
 
-Profily verze rozhraní API můžete použít k určení kompatibilní AzureRM moduly Azure zásobníku.  Profily rozhraní API verze poskytují způsob, jak spravovat verze rozdíly mezi Azure a Azure zásobníku. Profilem verze rozhraní API je sada modulů Powershellu AzureRM s konkrétní verze rozhraní API. **AzureRM.Bootstrapper** modul, který je k dispozici prostřednictvím Galerie prostředí PowerShell poskytuje rutiny prostředí PowerShell, které jsou nutné k práci pomocí profilů verze rozhraní API.
+Profilů verzí API můžete použít k určení kompatibilní moduly AzureRM Azure Stack.  Profilů verzí API poskytují způsob, jak spravovat verze rozdíly mezi Azure a Azure Stack. Profilu verze rozhraní API je sada moduly AzureRM Powershellu s konkrétní verzí rozhraní API. **AzureRM.Bootstrapper** modul, který je dostupný v galerii prostředí PowerShell obsahuje rutiny Powershellu, které jsou nutné k práci pomocí profilů verzí API.
 
-S nebo bez připojení k Internetu k hostitelskému počítači ASDK můžete nainstalovat nejnovější modul Azure PowerShell zásobníku:
+Nejnovější modul Azure Stack Powershellu můžete nainstalovat s nebo bez připojení k Internetu na hostitelském počítači ASDK:
 
 > [!IMPORTANT]
-> Před instalací požadovanou verzi, ujistěte se, že jste [odinstalovat všechny existující modulů prostředí Azure PowerShell](.\.\azure-stack-powershell-install.md#uninstall-existing-versions-of-powershell).
+> Než začnete instalovat na požadovanou verzi, ujistěte se, že jste [odinstalujte všechny existující moduly Azure Powershellu](.\.\azure-stack-powershell-install.md#uninstall-existing-versions-of-the-azure-stack-powershell-modules).
 
-- **S připojením k Internetu** od ASDK hostitelského počítače. Spusťte následující skript prostředí PowerShell k instalaci těchto modulů na instalaci development kit:
+- **Připojení k Internetu** od ASDK hostitelského počítače. Spusťte následující skript prostředí PowerShell k instalaci těchto modulů na instalaci development kit:
 
   ``` PowerShell
   # Install the AzureRM.Bootstrapper module. Select Yes when prompted to install NuGet. 
@@ -61,9 +61,9 @@ S nebo bez připojení k Internetu k hostitelskému počítači ASDK můžete na
 
   ```
 
-  Pokud je instalace úspěšná, moduly AzureRM a AzureStack se zobrazí ve výstupu.
+  Pokud je instalace úspěšná, zobrazí se moduly AzureRM a AzureStack ve výstupu.
 
-- **Bez připojení k Internetu** od ASDK hostitelského počítače. Ve scénáři odpojené musíte nejprve stáhnout moduly Powershellu pro počítač, který má připojení k Internetu pomocí těchto příkazů prostředí PowerShell:
+- **Bez připojení k Internetu** od ASDK hostitelského počítače. Ve scénáři odpojené napřed musíte stáhnout moduly Powershellu k počítači, který má připojení k Internetu pomocí následujících příkazů prostředí PowerShell:
 
   ```PowerShell
   $Path = "<Path that is used to save the packages>"
@@ -86,7 +86,7 @@ S nebo bez připojení k Internetu k hostitelskému počítači ASDK můžete na
     -RequiredVersion 1.3.0
   ```
 
-  V dalším kroku zkopírujte stažený balíčky do počítače, ASDK a zaregistrujte umístění jako výchozí úložiště a nainstalujte moduly AzureRM a AzureStack z tohoto úložiště:
+  V dalším kroku zkopírujte stažených balíčků do počítače ASDK a zaregistrujte se umístění jako výchozí úložiště a nainstalujte moduly AzureRM a AzureStack z tohoto úložiště:
 
     ```PowerShell  
     $SourceLocation = "<Location on the development kit that contains the PowerShell packages>"
@@ -104,9 +104,9 @@ S nebo bez připojení k Internetu k hostitelskému počítači ASDK můžete na
       -Repository $RepoName
     ```
 
-## <a name="download-the-azure-stack-tools"></a>Stažení nástroje Azure zásobníku
+## <a name="download-the-azure-stack-tools"></a>Stáhněte si nástroje Azure Stack
 
-[Nástroje AzureStack](https://github.com/Azure/AzureStack-Tools) je úložiště GitHub, který je hostitelem moduly Powershellu pro správu a nasazení prostředků do protokolů Azure. Pokud chcete získat tyto nástroje, naklonujte úložiště GitHub nebo stáhnout složce AzureStack nástroje spuštěním následujícího skriptu:
+[Nástroje AzureStack](https://github.com/Azure/AzureStack-Tools) je úložiště GitHub, který je hostitelem moduly Powershellu pro správu a nasazování prostředků do služby Azure Stack. Pokud chcete získat tyto nástroje, naklonujte úložiště GitHub nebo stažení složce AzureStack nástroje spuštěním následujícího skriptu:
 
   ```PowerShell
   # Change directory to the root directory. 
@@ -128,48 +128,48 @@ S nebo bez připojení k Internetu k hostitelskému počítači ASDK můžete na
   ```
 
 ## <a name="validate-the-asdk-installation"></a>Ověření instalace ASDK
-Aby se zajistilo, že ASDK nasazení proběhlo úspěšně, můžete použít rutinu Test-AzureStack pomocí následujících kroků:
+Aby bylo zajištěno, že ASDK nasazení bylo úspěšné, můžete použít rutinu Test-AzureStack pomocí následujících kroků:
 
 1. Přihlaste se jako AzureStack\AzureStackAdmin na hostitelském počítači ASDK.
-2. Otevřete PowerShell jako správce (není prostředí PowerShell ISE).
+2. Otevřete PowerShell jako správce (ne prostředí PowerShell ISE).
 3. Spusťte: `Enter-PSSession -ComputerName AzS-ERCS01 -ConfigurationName PrivilegedEndpoint`
 4. Spusťte: `Test-AzureStack`
 
-Testy trvat několik minut na dokončení. Pokud byla instalace úspěšná, zobrazí výstup vypadá podobně jako:
+Testy trvat několik minut. Pokud byla instalace úspěšná, zobrazí výstup vypadá podobně jako:
 
 ![test-azurestack](media/asdk-post-deploy/test-azurestack.png)
 
-Pokud došlo k chybě, postup řešení potíží získat nápovědu.
+Pokud došlo k chybě, použijte postup řešení potíží zobrazíte nápovědu.
 
-## <a name="activate-the-administrator-and-tenant-portals"></a>Aktivovat správce a klienta portálech
-Po nasazení, které používají Azure AD je nutné aktivovat obou zásobník Azure správce a klienta portálů. Tato aktivace souhlasí s uvedením zásobník Azure portal a Azure Resource Manager správná oprávnění (uvedené na stránce souhlas) pro všechny uživatele adresáři.
+## <a name="activate-the-administrator-and-tenant-portals"></a>Aktivace portálů správce a tenanta
+Po nasazení, které používají službu Azure AD je nutné aktivovat i Azure Stack správce a tenanta portály. Tato aktivace vyjádří souhlas poskytuje správná oprávnění (uvedené na stránce souhlas) pro všechny uživatele adresáře portálu Azure Stack a Azure Resource Manageru.
 
-- Pro správce portálu, přejděte na https://adminportal.local.azurestack.external/guest/signup, přečtěte si informace a pak klikněte na tlačítko **přijmout**. Po přijetí, můžete přidat správce služby, kteří nejsou také správci klientů adresáře.
+- U portálu správce, přejděte na https://adminportal.local.azurestack.external/guest/signup, přečtěte si informace a pak klikněte na tlačítko **přijmout**. Po přijetí, můžete přidat správce služby, kteří nejsou také správci tenanta adresáře.
 
-- U klienta portálu, přejděte na https://portal.local.azurestack.external/guest/signup, přečtěte si informace a pak klikněte na tlačítko **přijmout**. Po přijetí, můžete uživatele v adresáři přihlásit na portál pro klienty. 
+- Portál pro klienty, přejděte do https://portal.local.azurestack.external/guest/signup, přečtěte si informace a pak klikněte na tlačítko **přijmout**. Po přijetí, můžete uživatele v adresáři přihlásit na portál pro klienty. 
 
 > [!NOTE] 
-> Pokud nejsou aktivovány portálů, pouze správce adresáře může přihlásit a používat portálů. Pokud jiný uživatel přihlásí, zobrazí chybu, která sděluje, že správce nebyla udělena oprávnění ostatním uživatelům. Když správce nepatří do adresáře, který je zaregistrován v Azure zásobníku nativně, musí být adresáři Azure zásobníku připojeno k adrese URL pro aktivaci. Například pokud zásobník Azure je registrován fabrikam.onmicrosoft.com a uživatel s oprávněními správce je admin@contoso.com, přejděte na https://portal.local.azurestack.external/guest/signup/fabrikam.onmicrosoft.com aktivovat na portálu. 
+> Pokud nemáte aktivaci portály, pouze adresáře správce přihlásit a používat na portálech. Pokud jiný uživatel přihlásí, zobrazí se chyba s oznámením, že správce nebyla udělena oprávnění ostatním uživatelům. Když správce nepatří do požadovaného adresáře služby Azure Stack je zaregistrovaná a nativně, musí být adresář služby Azure Stack připojeno k aktivační adrese URL. Například pokud Azure Stack je zaregistrovaná a může fabrikam.onmicrosoft.com a uživatele s rolí správce je admin@contoso.com, přejděte na https://portal.local.azurestack.external/guest/signup/fabrikam.onmicrosoft.com aktivovat na portálu. 
 
-## <a name="reset-the-password-expiration-policy"></a>Resetování zásad vypršení platnosti hesla 
-Pokud chcete mít jistotu, že se heslo pro hostitele development kit nevyprší před ukončením svého zkušební období, postupujte podle těchto kroků po nasazení ASDK.
+## <a name="reset-the-password-expiration-policy"></a>Resetovat zásady vypršení platnosti hesla 
+Pokud chcete mít jistotu, že heslo pro hostitele development kit platnost pasu nevyprší před vám zkušební období skončí, postupujte podle těchto kroků po nasazení ASDK.
 
 ### <a name="to-change-the-password-expiration-policy-from-powershell"></a>Změna zásad vypršení platnosti hesla z prostředí Powershell:
-Z prostředí Powershell konzolu se zvýšenými oprávněními spusťte příkaz:
+Z konzole Powershellu se zvýšenými oprávněními spusťte příkaz:
 
 ```powershell
 Set-ADDefaultDomainPasswordPolicy -MaxPasswordAge 180.00:00:00 -Identity azurestack.local
 ```
 
 ### <a name="to-change-the-password-expiration-policy-manually"></a>Změna zásad vypršení platnosti hesla ručně:
-1. Na hostiteli development kit, otevřete **Správa zásad skupiny** (pro správu zásad skupiny. MMC) a přejděte do **Správa zásad skupiny** – **doménové struktury: azurestack.local** – **domén** – **azurestack.local**.
+1. Na hostiteli development kit, otevřete **Správa zásad skupiny** (pro správu zásad skupiny. Konzoly MMC) a přejděte do **Správa zásad skupiny** – **doménová struktura: azurestack.local** – **domén** – **azurestack.local**.
 2. Klikněte pravým tlačítkem na **výchozí zásady domény** a klikněte na tlačítko **upravit**.
-3. V editoru zásad skupiny správy, přejděte na **konfigurace počítače** – **zásady** – **nastavení systému Windows** – **nastavení zabezpečení**– **Zásady účtů** – **zásady hesel**.
+3. Přejděte v skupiny zásad správy editoru **konfigurace počítače** – **zásady** – **nastavení Windows** – **nastavení zabezpečení**– **Zásady účtů** – **zásady pro hesla**.
 4. V pravém podokně klikněte dvakrát na **maximální stáří hesla**.
-5. V **maximální stáří hesla vlastnosti** dialogové okno, změny **heslo vyprší za** hodnotu **180**a potom klikněte na **OK**.
+5. V **maximální stáří hesla vlastnosti** dialogovém okně Změnit **heslo vyprší za** hodnota, která se **180**a potom klikněte na tlačítko **OK**.
 
 ![Konzola pro správu zásad skupiny](media/asdk-post-deploy/gpmc.png)
 
 
 ## <a name="next-steps"></a>Další postup
-[Registrace ASDK s Azure](asdk-register.md)
+[Zaregistrujte ASDK v Azure](asdk-register.md)

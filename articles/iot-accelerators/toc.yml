@@ -10,6 +10,8 @@
   items:
     - name: Nasazení řešení vzdáleného monitorování
       href: quickstart-remote-monitoring-deploy.md
+    - name: Nasazení řešení simulace zařízení
+      href: quickstart-device-simulation-deploy.md
 - name: Kurzy
   items:
     - name: Monitorování zařízení IoT
@@ -149,10 +151,10 @@
           href: iot-accelerators-connected-factory-customize.md
     - name: Simulace zařízení
       items:
-        - name: Nasazení akcelerátoru řešení
-          href: iot-accelerators-device-simulation-deploy.md
-        - name: Spuštění simulace
-          href: iot-accelerators-device-simulation-explore.md
+        - name: Použití existující služby IoT Hub
+          href: iot-accelerators-device-simulation-choose-hub.md
+        - name: Použití vlastního modelu zařízení
+          href: iot-accelerators-device-simulation-custom-model.md
 - name: Referenční informace
   items:
     - name: Referenční příručka pro vývojáře
