@@ -11,7 +11,7 @@ ms.date: 06/04/2017
 ms.author: cahann
 ms.openlocfilehash: 1eabc01ee07f8791680738a156471e3efe2c44ff
 ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/05/2018
 ms.locfileid: "35343926"

@@ -10,7 +10,7 @@ ms.author: vinagara
 ms.component: alerts
 ms.openlocfilehash: 9ade63c07003ead55e63093ae74e876589ec8d61
 ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/20/2018
 ms.locfileid: "36287833"
