@@ -21,9 +21,9 @@ Azure pravidelně provádí aktualizace za účelem zlepšení spolehlivosti, v�
 
 - Údržba vyžaduje restartování, dostanete oznámení o při plánované údržby. V těchto případech budete také mít k dispozici časový interval, kde můžete začít údržbu sami v čase, která vám vyhovuje.
 
-Tato stránka popisuje, jak Microsoft Azure provede oba typy údržby. Další informace o neplánované události (výpadky) najdete v tématu Správa dostupnosti virtuálních počítačů [Windows] (.. / articles/virtual-machines/windows/manage-availability.md) nebo [Linux](../articles/virtual-machines/linux/manage-availability.md).
+Tato stránka popisuje, jak Microsoft Azure provede oba typy údržby. Další informace o neplánované události (výpadky) najdete v tématu Správa dostupnosti virtuálních počítačů [Windows] (.. /articles/virtual-machines/windows/manage-availability.md) nebo [Linux](../articles/virtual-machines/linux/manage-availability.md).
 
-Aplikace běžící na virtuálním počítači může shromažďovat informace o budoucích aktualizacích pomocí služby Azure Metadata pro [Windows](../articles/virtual-machines/windows/instance-metadata-service.md) nebo [Linux] (.. / articles/virtual-machines/linux/instance-metadata-service.md).
+Aplikace běžící na virtuálním počítači může shromažďovat informace o budoucích aktualizacích pomocí služby Azure Metadata pro [Windows](../articles/virtual-machines/windows/instance-metadata-service.md) nebo [Linux] (.. /articles/virtual-machines/linux/instance-metadata-service.md).
 
 "Postupy:" informace o správě plánované údržby, najdete v části "Zpracování oznámení plánované údržby" pro [Linux](../articles/virtual-machines/linux/maintenance-notifications.md) nebo [Windows](../articles/virtual-machines/windows/maintenance-notifications.md).
 

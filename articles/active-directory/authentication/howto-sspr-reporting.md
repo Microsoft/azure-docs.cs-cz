@@ -23,7 +23,7 @@ Po nasazení, řada organizací chtít vědět, jak nebo pokud samoobslužné re
 
 ![Vytváření sestav][Reporting]
 
-Sestavy, které existují v [portálu Azure portal] (můžete odpovědět na následující otázkyhttps://portal.azure.com/):
+Sestavy, které existují v [portálu Azure portal] (https://portal.azure.com/):
 
 > [!NOTE]
 > Musí být [globálního správce](../users-groups-roles/directory-assign-admin-roles.md), a je nutné vyjádřit výslovný souhlas pro tato data shromáždit jménem svojí organizace. Chcete-li vyjádřit výslovný souhlas, musíte přejít **generování sestav** kartu nebo auditování protokoluje aspoň jednou. Dokud to neuděláte data nejsou shromažďována pro vaši organizaci.
