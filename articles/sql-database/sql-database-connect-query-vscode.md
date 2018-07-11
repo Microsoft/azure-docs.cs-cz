@@ -1,5 +1,5 @@
 ---
-title: 'VS Code: Připojení a dotazování dat ve službě Azure SQL Database | Dokumentace Microsoftu'
+title: 'VS Code: Připojení a dotazování dat ve službě Azure SQL Database | Microsoft Docs'
 description: Zjistěte, jak se připojit ke službě SQL Database pomocí nástroje Visual Studio Code. Potom spustíte příkazy jazyka Transact-SQL (T-SQL) k dotazování a úpravě dat.
 keywords: Připojení k službě SQL Database
 services: sql-database
@@ -10,12 +10,12 @@ ms.custom: mvc,DBs & servers
 ms.topic: quickstart
 ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: 7250b2578db86fdb4cbd591a605256424cb0be55
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: e1294b8f83da2ad6748f051925219cdc7683d032
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31794935"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37441093"
 ---
 # <a name="azure-sql-database-use-visual-studio-code-to-connect-and-query-data"></a>Azure SQL Database: Použití nástroje Visual Studio Code k připojení a dotazování dat
 
@@ -34,7 +34,7 @@ Než začnete, ujistěte se, že máte nainstalovanou nejnovější verzi nástr
 ## <a name="configure-vs-code"></a>Konfigurace VS Code 
 
 ### <a name="mac-os"></a>**Mac OS**
-Pro macOS musíte nainstalovat OpenSSL, což je předpoklad pro DotNet Core, který rozšíření mssql používá. Otevřete terminál a zadejte následující příkazy, abyste nainstalovali **brew** a **OpenSSL**. 
+Pro macOS musíte nainstalovat OpenSSL, což je předpoklad pro .Net Core, který rozšíření mssql používá. Otevřete terminál a zadejte následující příkazy, abyste nainstalovali **brew** a **OpenSSL**. 
 
 ```bash
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"

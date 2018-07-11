@@ -3,7 +3,7 @@ title: Rychlý start – Vytvoření virtuálního počítače s Linuxem na webu
 description: V tomto rychlém startu zjistíte, jak pomocí webu Azure Portal vytvořit virtuální počítač s Linuxem
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/24/2018
-ms.author: iainfou
+ms.date: 07/03/2018
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 18ac0291bff2c0fbfffdd5dfa3097f8a6acb561f
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 03d4ad081a788299bab563ca6b956edc347732da
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34012879"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37447954"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>Rychlý start: Vytvoření virtuálního počítače s Linuxem na webu Azure Portal
 
@@ -63,7 +63,7 @@ Přihlaste se k webu Azure Portal na adrese http://portal.azure.com.
 
     ![Snímek obrazovky zobrazující velikosti virtuálních počítačů](./media/quick-create-portal/create-linux-vm-portal-sizes.png)
 
-5. V části **Nastavení** ponechte výchozí hodnoty a vyberte **OK**.
+5. Na stránce **Nastavení** v části **Síť** > **Skupina zabezpečení sítě** > **Vyberte veřejné příchozí porty** vyberte **HTTP** a **SSH (22)**. Pro ostatní nastavení nechte zvolené výchozí hodnoty a vyberte **OK**.
 
 6. Na stránce Souhrn výběrem možnosti **Vytvořit** spusťte nasazení virtuálního počítače.
 
@@ -99,14 +99,6 @@ sudo apt-get -y install nginx
 
 Až budete hotovi, ukončete relaci SSH příkazem `exit` a vraťte se do vlastností virtuálního počítače na webu Azure Portal.
 
-## <a name="open-port-80-for-web-traffic"></a>Otevření portu 80 pro webový provoz
-
-Skupina zabezpečení sítě (NSG) zabezpečuje příchozí a odchozí provoz. Když se virtuální počítač vytvoří na webu Azure Portal, pro připojení SSH se vytvoří příchozí pravidlo na portu 22. Protože je tento virtuální počítač hostitelem webového serveru, je potřeba vytvořit pravidlo NSG pro port 80.
-
-1. Na stránce přehledu virtuálního počítače vyberte **Sítě**.
-2. Zobrazí se seznam existujících příchozích a odchozích pravidel. Zvolte **Přidat pravidlo portu pro příchozí provoz**.
-3. V horní části vyberte možnost **Basic** a pak v seznamu dostupných služeb zvolte *HTTP*. Port 80, priorita a název už jsou zadané.
-4. Pravidlo vytvoříte výběrem možnosti **Přidat**.
 
 ## <a name="view-the-web-server-in-action"></a>Zobrazení webového serveru v akci
 

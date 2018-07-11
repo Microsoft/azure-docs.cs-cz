@@ -2,19 +2,19 @@
 title: Rychlý start – rychlý start práce na portálu Azure s clusterem Kubernetes
 description: Rychle se naučíte, jak pomocí portálu Azure vytvořit cluster Kubernetes pro kontejnery Linuxu ve službě AKS.
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: quickstart
 ms.date: 04/29/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 90d01ed7cc2483c8467d646ebf9ad056ea1a4baf
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: aa8a1cccd4eeb45e829cd8df73f128dd6cca416d
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36286592"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37344470"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster"></a>Rychlý start: Nasazení clusteru Azure Kubernetes Service (AKS)
 
@@ -28,11 +28,9 @@ Tento rychlý start předpokládá základní znalosti konceptů Kubernetes. Pod
 
 Přihlaste se k webu Azure Portal na adrese http://portal.azure.com.
 
-
-
 ## <a name="create-aks-cluster"></a>Vytvoření clusteru AKS
 
-Zvolte **Vytvořit prostředek** a vyberte **Služba Kubernetes** > **Vytvořit**.
+Zvolte **Vytvořit prostředek** a vyberte **Služba Kubernetes**.
 
 Pod jednotlivými nadpisy formuláře pro vytvoření clusteru AKS proveďte následující kroky.
 

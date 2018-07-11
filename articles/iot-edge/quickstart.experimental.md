@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 5863a8edbb20b2b0c231834259f1bb7b0423a8f6
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 5bde54a65160c58d8bfba2f6c4c3b6a4317e46ed
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37033629"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37436438"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-windows-device---preview"></a>Rychlý start: Nasazení prvního modulu IoT Edge z webu Azure Portal do zařízení s Windows – Preview
 
@@ -81,29 +81,38 @@ Podle pokynů v této části se nakonfiguruje modul runtime IoT Edge s kontejne
 
 2. Stáhněte balíček služby IoT Edge.
 
-   ```powershell
-   Invoke-WebRequest https://conteng.blob.core.windows.net/iotedged/iotedge.zip -o .\iotedge.zip
-   Expand-Archive .\iotedge.zip C:\ProgramData\iotedge -f
-   $env:Path += ";C:\ProgramData\iotedge"
-   SETX /M PATH "$env:Path"
-   ```
+  ```powershell
+  Invoke-WebRequest https://aka.ms/iotedged-windows-latest -o .\iotedged-windows.zip
+  Expand-Archive .\iotedged-windows.zip C:\ProgramData\iotedge -f
+  Move-Item c:\ProgramData\iotedge\iotedged-windows\* C:\ProgramData\iotedge\ -Force
+  rmdir C:\ProgramData\iotedge\iotedged-windows
+  $env:Path += ";C:\ProgramData\iotedge"
+  SETX /M PATH "$env:Path"
+  ```
 
-3. Vytvořte a spusťte službu IoT Edge.
+3. Nainstalujte vcruntime.
+
+  ```powershell
+  Invoke-WebRequest -useb https://download.microsoft.com/download/0/6/4/064F84EA-D1DB-4EAA-9A5C-CC2F0FF6A638/vc_redist.x64.exe -o vc_redist.exe
+  .\vc_redist.exe /quiet /norestart
+  ```
+
+4. Vytvořte a spusťte službu IoT Edge.
 
    ```powershell
    New-Service -Name "iotedge" -BinaryPathName "C:\ProgramData\iotedge\iotedged.exe -c C:\ProgramData\iotedge\config.yaml"
    Start-Service iotedge
    ```
 
-4. Přidejte výjimky brány firewall pro porty, které používá služba IoT Edge.
+5. Přidejte výjimky brány firewall pro porty, které používá služba IoT Edge.
 
    ```powershell
    New-NetFirewallRule -DisplayName "iotedged allow inbound 15580,15581" -Direction Inbound -Action Allow -Protocol TCP -LocalPort 15580-15581 -Program "C:\programdata\iotedge\iotedged.exe" -InterfaceType Any
    ```
 
-5. Vytvořte nový soubor **iotedge.reg** a otevřete ho v textovém editoru. 
+6. Vytvořte nový soubor **iotedge.reg** a otevřete ho v textovém editoru. 
 
-6. Přidejte do souboru následující obsah a uložte ho. 
+7. Přidejte do souboru následující obsah a uložte ho. 
 
    ```input
    Windows Registry Editor Version 5.00
@@ -113,7 +122,7 @@ Podle pokynů v této části se nakonfiguruje modul runtime IoT Edge s kontejne
    "TypesSupported"=dword:00000007
    ```
 
-7. Přejděte k souboru v Průzkumníku souborů a dvakrát na něj klikněte. Tím se změny importují do registru systému Windows. 
+8. Přejděte k souboru v Průzkumníkovi souborů a dvakrát na něj klikněte. Tím se změny importují do registru systému Windows. 
 
 ### <a name="configure-the-iot-edge-runtime"></a>Konfigurace modulu runtime IoT Edge 
 
@@ -131,21 +140,27 @@ Nakonfigurujte modul runtime s použitím připojovacího řetězce zařízení 
 
 4. V konfiguračním souboru vyhledejte část **Edge device hostname** (Název hostitele zařízení Edge). Aktualizujte hodnotu **hostname** s použitím názvu hostitele, který jste si zkopírovali z PowerShellu.
 
-5. V okně PowerShellu s oprávněními správce načtěte IP adresu vašeho zařízení IoT Edge. 
+3. V okně PowerShellu s oprávněními správce načtěte IP adresu vašeho zařízení IoT Edge. 
 
    ```powershell
    ipconfig
    ```
 
-6. Z výstupu zkopírujte hodnotu **IPv4 Address** v části **vEthernet (DockerNAT)**. 
+4. Z výstupu zkopírujte hodnotu **IPv4 Address** v části **vEthernet (DockerNAT)**. 
 
-7. Vytvořte proměnnou prostředí **IOTEDGE_HOST** a nahraďte *\<ip_address\>* IP adresou vašeho zařízení IoT Edge. 
+5. Vytvořte proměnnou prostředí **IOTEDGE_HOST** a nahraďte *\<ip_address\>* IP adresou vašeho zařízení IoT Edge. 
 
-   ```powershell
-   [Environment]::SetEnvironmentVariable("IOTEDGE_HOST", "http://<ip_address>:15580")
-   ```
+  ```powershell
+  [Environment]::SetEnvironmentVariable("IOTEDGE_HOST", "http://<ip_address>:15580")
+  ```
 
-8. V souboru `config.yaml` vyhledejte část **Connect settings** (Nastavení připojení). Aktualizujte hodnoty **management_uri** a **workload_uri** s použitím vaší IP adresy místo **\<GATEWAY_ADDRESS\>** a portů, které jste otevřeli v předchozí části. 
+  Zachovejte proměnnou prostředí mezi restartováními.
+
+  ```powershell
+  SETX /M IOTEDGE_HOST "http://<ip_address>:15580"
+  ```
+
+6. V souboru `config.yaml` vyhledejte část **Connect settings** (Nastavení připojení). Aktualizujte hodnoty **management_uri** a **workload_uri** s použitím vaší IP adresy a portů, které jste otevřeli v předchozí části. Nahraďte **\<GATEWAY_ADDRESS\>** svojí IP adresou. 
 
    ```yaml
    connect: 
@@ -153,7 +168,7 @@ Nakonfigurujte modul runtime s použitím připojovacího řetězce zařízení 
      workload_uri: "http://<GATEWAY_ADDRESS>:15581"
    ```
 
-9. Vyhledejte část **Listen settings** (Nastavení naslouchání) a přidejte stejné hodnoty pro **management_uri** a **workload_uri**. 
+7. Vyhledejte část **Listen settings** (Nastavení naslouchání) a přidejte stejné hodnoty pro **management_uri** a **workload_uri**. 
 
    ```yaml
    listen:
@@ -161,20 +176,15 @@ Nakonfigurujte modul runtime s použitím připojovacího řetězce zařízení 
      workload_uri: "http://<GATEWAY_ADDRESS>:15581"
    ```
 
-10. Vyhledejte část **Moby Container Runtime settings** (Nastavení modulu runtime kontejneru Moby). Zrušte komentář na řádku **network** a ověřte, že je hodnota nastavená na `nat`.
+8. Vyhledejte část **Moby Container Runtime settings** (Nastavení modulu runtime kontejneru Moby) a ověřte, že je hodnota **network** nastavená na `nat`.
 
-   ```yaml
-   moby_runtime:
-     uri: "npipe://./pipe/docker_engine"
-     network: "nat"
-   ```
+9. Uložte konfigurační soubor. 
 
-11. Uložte konfigurační soubor. 
-
-12. V PowerShellu restartujte službu IoT Edge.
+10. V PowerShellu restartujte službu IoT Edge.
 
    ```powershell
-   Stop-Service iotedge
+   Stop-Service iotedge -NoWait
+   sleep 5
    Start-Service iotedge
    ```
 
@@ -194,9 +204,10 @@ Ověřte, že se modul runtime úspěšně nainstaloval a nakonfiguroval.
    # Displays logs from today, newest at the bottom.
 
    Get-WinEvent -ea SilentlyContinue `
-  -FilterHashtable @{ProviderName= "iotedged";
-    LogName = "application"; StartTime = [datetime]::Today} |
-  select TimeCreated, Message | Sort-Object -Descending
+    -FilterHashtable @{ProviderName= "iotedged";
+      LogName = "application"; StartTime = [datetime]::Today} |
+    select TimeCreated, Message |
+    sort-object @{Expression="TimeCreated";Descending=$false}
    ```
 
 3. Zobrazte všechny moduly spuštěné na vašem zařízení IoT Edge. Vzhledem k tomu, že jde o první spuštění služby, měl by se zobrazit pouze spuštěný modul **edgeAgent**. Modul edgeAgent se spouští ve výchozím nastavení a pomáhá s instalací a spouštěním všech dalších modulů, které do zařízení nasadíte. 

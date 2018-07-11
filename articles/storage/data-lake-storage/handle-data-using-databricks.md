@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/27/2018
 ms.author: jamesbak
-ms.openlocfilehash: d9720377beb1973b8ae4e9423fc991aa82646924
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 10aad06d4ac8d76dc023648e8d6c0366bff859e6
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061592"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37344691"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-azure-databricks"></a>Kurz: Extrakce, transformace a načtení dat pomocí Azure Databricks
 
@@ -101,7 +101,7 @@ V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azu
 
 ## <a name="create-storage-account-file-system"></a>Vytvoření systému souborů v účtu úložiště
 
-V této části nejprve vytvoříte v pracovním prostoru Azure Databricks poznámkový blok a pak spustíte fragmenty kódu, které nakonfigurují účet úložiště.
+V této části nejprve vytvoříte v pracovním prostoru Azure Databricks poznámkový blok a pak spustíte fragmenty kódu, kterými nakonfigurujete účet úložiště.
 
 1. Na portálu [Azure Portal](https://portal.azure.com) přejděte do vytvořeného pracovního prostoru Azure Databricks a vyberte **Spustit pracovní prostor**.
 
@@ -117,7 +117,7 @@ V této části nejprve vytvoříte v pracovním prostoru Azure Databricks pozn�
 
 4. Do první buňky zadejte následující kód a spusťte ho:
 
-    ```python
+    ```scala
     spark.conf.set("fs.azure.account.key.<ACCOUNT_NAME>.dfs.core.windows.net", "<ACCOUNT_KEY>") 
     spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "true")
     dbutils.fs.ls("abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/")
@@ -132,11 +132,14 @@ V této části nejprve vytvoříte v pracovním prostoru Azure Databricks pozn�
 
 V dalším kroku nahrajete do účtu úložiště soubor s ukázkovými daty, abyste ho mohli později transformovat v Azure Databricks. 
 
-1. Pokud ještě nemáte vytvořený účet Data Lake Storage Gen2, vytvořte ho podle pokynů v tomto rychlém startu.
-2. Ukázková data (**small_radio_json.json**) jsou dostupná v úložišti [příkladů a sledování problémů U-SQL](https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json). Stáhněte si soubor JSON a poznamenejte si cestu, kam ho uložíte.
-3. Nahrajte data do svého účtu úložiště. Způsob nahrání dat do účtu úložiště se liší podle toho, jestli máte aktivovanou službu hierarchického oboru názvů (HNS).
+> [!NOTE]
+> Pokud ještě nemáte účet, který podporuje Azure Data Lake Storage Gen2, [vytvořte ho podle pokynů v rychlém startu](./quickstart-create-account.md).
 
-    Pokud máte v účtu ADLS Gen2 aktivovanou službu hierarchického oboru názvů, můžete k nahrání použít Azure DataFactory, distp nebo AzCopy (verze 10). Nástroj AzCopy verze 10 mají k dispozici jen zákazníci s verzí Preview. Použití nástroje AzCopy z Cloud Shellu:
+1. Stáhněte si soubor s ukázkovými daty (**small_radio_json.json**) z úložiště [příkladů a sledování problémů U-SQL](https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json) a poznamenejte si cestu, kam jste tento soubor uložili.
+
+2. Potom nahrajete ukázková data do svého účtu úložiště. Způsob nahrání dat do účtu úložiště se liší podle toho, jestli máte aktivovaný hierarchický obor názvů.
+
+    Pokud máte v účtu Azure Storage, který je vytvořený pro účet Gen2, aktivovaný hierarchický obor názvů, můžete k nahrání použít Azure DataFactory, distp nebo AzCopy (verze 10). Nástroj AzCopy verze 10 mají k dispozici jen zákazníci s verzí Preview. Pokud chcete použít AzCopy, vložte do příkazového okna následující kód:
 
     ```bash
     set ACCOUNT_NAME=<ACCOUNT_NAME>
@@ -150,7 +153,7 @@ Vraťte se do poznámkového bloku DataBricks a do nové buňky zadejte následu
 
 1. Do prázdné buňky určené pro kód přidejte následující fragment kódu a zástupné hodnoty nahraďte hodnotami účtu úložiště, které jste uložili v předchozí části.
 
-    ```python
+    ```scala
     dbutils.widgets.text("storage_account_name", "STORAGE_ACCOUNT_NAME", "<YOUR_STORAGE_ACCOUNT_NAME>")
     dbutils.widgets.text("storage_account_access_key", "YOUR_ACCESS_KEY", "<YOUR_STORAGE_ACCOUNT_SHARED_KEY>")
     ```
@@ -159,13 +162,13 @@ Vraťte se do poznámkového bloku DataBricks a do nové buňky zadejte následu
 
 2. Teď můžete ukázkový soubor JSON načíst jako datový rámec do služby Azure Databricks. Následující kód vložte do nové buňky a stiskněte **SHIFT+ENTER** (nezapomeňte nahradit hodnoty zástupných textů):
 
-    ```python
+    ```scala
     val df = spark.read.json("abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/data/small_radio_json.json")
     ```
 
 3. Spuštěním následujícího kódu zobrazíte obsah datového rámce.
 
-    ```python
+    ```scala
     df.show()
     ```
 
@@ -190,7 +193,7 @@ Nezpracovaná ukázková data **small_radio_json.json** obsahují data o posluch
 
 1. Z vytvořeného datového rámce napřed načtěte jenom sloupce *firstName*, *lastName*, *gender*, *location* a *level*.
 
-    ```python
+    ```scala
     val specificColumnsDf = df.select("firstname", "lastname", "gender", "location", "level")
     ```
 
@@ -225,7 +228,7 @@ Nezpracovaná ukázková data **small_radio_json.json** obsahují data o posluch
 
 2.  Teď můžete v datech sloupec **level** přejmenovat na **subscription_type**.
 
-    ```python
+    ```scala
     val renamedColumnsDF = specificColumnsDf.withColumnRenamed("level", "subscription_type")
     renamedColumnsDF.show()
     ```
@@ -267,28 +270,28 @@ Už jsme si řekli, že konektor Azure SQL Data Warehouse používá k nahrává
 
 1. Zadejte konfiguraci pro přístup k účtu Azure Storage z Azure Databricks.
 
-    ```python
+    ```scala
     val storageURI = "<STORAGE_ACCOUNT_NAME>.dfs.core.windows.net"
-    val fileSystemName = "<FILE_SYSTEM_NJAME>"
+    val fileSystemName = "<FILE_SYSTEM_NAME>"
     val accessKey =  "<ACCESS_KEY>"
     ```
 
 2. Zadejte dočasnou složku, která se použije k přesunu dat mezi službami Azure Databricks a Azure SQL Data Warehouse.
 
-    ```python
+    ```scala
     val tempDir = "abfs://" + fileSystemName + "@" + storageURI +"/tempDirs"
     ```
 
 3. Spusťte následující fragment kódu, který v konfiguraci uloží přístupové klíče služby Azure Blob Storage. Tím zajistíte, že přístupový klíč nebudete muset mít v poznámkovém bloku jako obyčejný text.
 
-    ```python
+    ```scala
     val acntInfo = "fs.azure.account.key."+ storageURI
     sc.hadoopConfiguration.set(acntInfo, accessKey)
     ```
 
 4. Zadejte hodnoty pro připojení k instanci Azure SQL Data Warehouse. Vytvoření instance SQL Data Warehouse bylo v předpokladech tohoto článku.
 
-    ```python
+    ```scala
     //SQL Data Warehouse related settings
     val dwDatabase = "<DATABASE NAME>"
     val dwServer = "<DATABASE SERVER NAME>" 
@@ -302,7 +305,7 @@ Už jsme si řekli, že konektor Azure SQL Data Warehouse používá k nahrává
 
 5. Spusťte následující fragment kódu, který načte transformovaný datový rámec **renamedColumnsDF** jako tabulku do datového skladu SQL. Tento fragment kódu vytvoří v SQL databázi tabulku s názvem **SampleTable**.
 
-    ```python
+    ```scala
     spark.conf.set(
         "spark.sql.parquet.writeLegacyFormat",
         "true")

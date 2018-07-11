@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 06/27/2018
 ms.author: jamesbak
 ms.custom: H1Hack27Feb2017,hdinsightactive,mvc
-ms.openlocfilehash: ab1f8a4e406a7a58c46c5831c24b22f67a13a413
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 8f5771ac860d40eab979bf9be92b18da8f5d850d
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062219"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37342364"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-apache-hive-on-azure-hdinsight"></a>Kurz: Extrakce, transformace a načítání dat pomocí Apache Hivu ve službě Azure HDInsight
 
@@ -75,33 +75,33 @@ Do úložiště přidruženého ke clusteru HDInsight můžete data nahrát mnoh
 1. Otevřete příkazový řádek a pomocí následujícího příkazu nahrajte soubor .zip do hlavního uzlu clusteru HDInsight:
 
     ```bash
-    scp <FILENAME>.zip <SSH-USERNAME>@<CLUSTERNAME>-ssh.azurehdinsight.net:<FILENAME.zip>
+    scp <FILE_NAME>.zip <SSH_USER_NAME>@<CLUSTER_NAME>-ssh.azurehdinsight.net:<FILE_NAME.zip>
     ```
 
-    Nahraďte *FILENAME* názvem souboru .zip. Nahraďte *USERNAME* přihlašovacím jménem SSH pro cluster HDInsight. Nahraďte *CLUSTERNAME* názvem clusteru HDInsight.
+    Nahraďte *FILE_NAME* názvem souboru .zip. Nahraďte *SSH_USER_NAME* přihlašovacím jménem SSH pro cluster HDInsight. Nahraďte *CLUSTER_NAME* názvem clusteru HDInsight.
 
    > [!NOTE]
-   > Pokud k ověření přihlášení SSH používáte heslo, zobrazí se výzva k zadání hesla. Pokud používáte veřejný klíč, budete pravděpodobně muset použít parametr `-i` k zadání cesty k odpovídajícímu privátnímu klíči. Například, `scp -i ~/.ssh/id_rsa FILENAME.zip USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:`.
+   > Pokud k ověření přihlášení SSH používáte heslo, zobrazí se výzva k zadání hesla. Pokud používáte veřejný klíč, budete pravděpodobně muset použít parametr `-i` k zadání cesty k odpovídajícímu privátnímu klíči. Například, `scp -i ~/.ssh/id_rsa FILE_NAME.zip USER_NAME@CLUSTER_NAME-ssh.azurehdinsight.net:`.
 
 2. Po dokončení nahrávání se ke clusteru připojte pomocí SSH. Na příkazovém řádku zadejte následující příkaz:
 
     ```bash
-    ssh sshuser@clustername-ssh.azurehdinsight.net
+    ssh <SSH_USER_NAME>@<CLUSTER_NAME>-ssh.azurehdinsight.net
     ```
 
 3. Pomocí následujícího příkazu rozbalte soubor .zip:
 
     ```bash
-    unzip FILENAME.zip
+    unzip <FILE_NAME>.zip
     ```
 
-    Tento příkaz extrahuje přibližně 60MB soubor .csv.
+    Tento příkaz extrahuje přibližně 60MB soubor *.csv*.
 
 4. Pomocí následujících příkazů vytvořte adresář a zkopírujte do něj soubor *.csv*:
 
     ```bash
     hdfs dfs -mkdir -p abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/tutorials/flightdelays/data
-    hdfs dfs -put <FILENAME>.csv abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/tutorials/flightdelays/data/
+    hdfs dfs -put <FILE_NAME>.csv abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/tutorials/flightdelays/data/
     ```
 
 5. Vytvořte systém souborů Data Lake Storage Gen2.
@@ -154,14 +154,14 @@ V rámci úlohy Hive provedete import dat ze souboru .csv do tabulky Hive s náz
     ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
     LINES TERMINATED BY '\n'
     STORED AS TEXTFILE
-    LOCATION 'abfs://<filesystem_name>@<account>.dfs.core.windows.net/tutorials/flightdelays/data';
+    LOCATION 'abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/tutorials/flightdelays/data';
 
     -- Drop the delays table if it exists
     DROP TABLE delays;
     -- Create the delays table and populate it with data
     -- pulled in from the CSV file (via the external table defined previously)
     CREATE TABLE delays
-    LOCATION abfs://<filesystem_name>@<account>.dfs.core.windows.net/tutorials/flightdelays/processed
+    LOCATION abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/tutorials/flightdelays/processed
     AS
     SELECT YEAR AS year,
         FL_DATE AS flight_date,
@@ -203,7 +203,7 @@ V rámci úlohy Hive provedete import dat ze souboru .csv do tabulky Hive s náz
 5. Po zobrazení příkazového řádku `jdbc:hive2://localhost:10001/>` pomocí následujícího dotazu načtěte data z importovaných dat o zpožděných letech:
 
     ```hiveql
-    INSERT OVERWRITE DIRECTORY 'abfs://<filesystem_name>@<account>.dfs.core.windows.net/tutorials/flightdelays/output'
+    INSERT OVERWRITE DIRECTORY 'abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/tutorials/flightdelays/output'
     ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
     SELECT regexp_replace(origin_city_name, '''', ''),
         avg(weather_delay)
@@ -212,7 +212,7 @@ V rámci úlohy Hive provedete import dat ze souboru .csv do tabulky Hive s náz
     GROUP BY origin_city_name;
     ```
 
-    Tento dotaz načte seznam měst, ve kterých došlo ke zpožděním kvůli nepřízni počasí, společně s průměrnou délkou zpoždění a uloží ho do umístění `abfs://<filesystem_name>@<account>.dfs.core.windows.net/tutorials/flightdelays/output`. Později z tohoto umístění data načte Sqoop a exportuje je do služby Azure SQL Database.
+    Tento dotaz načte seznam měst, ve kterých došlo ke zpožděním kvůli nepřízni počasí, společně s průměrnou délkou zpoždění a uloží ho do umístění `abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/tutorials/flightdelays/output`. Později z tohoto umístění data načte Sqoop a exportuje je do služby Azure SQL Database.
 
 6. Beeline ukončíte zadáním `!quit` na příkazovém řádku.
 
@@ -237,7 +237,7 @@ Pokud už máte databázi SQL, musíte získat název serveru. Název serveru m�
 3. Po dokončení instalace se pomocí následujícího příkazu připojte k serveru služby SQL Database. Nahraďte **serverName** názvem serveru služby SQL Database. Nahraďte **adminLogin** a **adminPassword** přihlašovacími údaji pro službu SQL Database. Nahraďte **databaseName** názvem databáze.
 
     ```bash
-    TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <adminLogin> -p 1433 -D <databaseName>
+    TDSVER=8.0 tsql -H <SERVER_NAME>.database.windows.net -U <ADMIN_LOGIN> -p 1433 -D <DATABASE_NAME>
     ```
 
     Po zobrazení výzvy zadejte heslo pro přihlášení správce služby SQL Database.
@@ -284,12 +284,12 @@ Pokud už máte databázi SQL, musíte získat název serveru. Název serveru m�
 
 ## <a name="export-data-to-sql-database-using-sqoop"></a>Export dat do databáze SQL pomocí Sqoopu
 
-V předchozích částech jste zkopírovali transformovaná data do umístění `abfs://<filesystem_name>@<account>.dfs.core.windows.net/tutorials/flightdelays/output`. V této části použijete Sqoop k exportu dat z `abfs://<filesystem_name>@<account>.dfs.core.windows.net/tutorials/flightdelays/output` do tabulky, kterou jste vytvořili v databázi SQL Azure. 
+V předchozích částech jste zkopírovali transformovaná data do umístění `abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/tutorials/flightdelays/output`. V této části použijete Sqoop k exportu dat z `abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/tutorials/flightdelays/output` do tabulky, kterou jste vytvořili v databázi SQL Azure. 
 
 1. Pomocí následujícího příkazu ověřte, že má Sqoop vhled do vaší databáze SQL:
 
     ```bash
-    sqoop list-databases --connect jdbc:sqlserver://<serverName>.database.windows.net:1433 --username <adminLogin> --password <adminPassword>
+    sqoop list-databases --connect jdbc:sqlserver://<SERVER_NAME>.database.windows.net:1433 --username <ADMIN_LOGIN> --password <ADMIN_PASSWORD>
     ```
 
     Tento příkaz vrátí seznam databází včetně databáze, ve které jste předtím vytvořili tabulku delays.
@@ -297,7 +297,7 @@ V předchozích částech jste zkopírovali transformovaná data do umístění 
 2. Pomocí následujícího příkazu exportujte data z tabulky hivesampletable do tabulky delays:
 
     ```bash
-    sqoop export --connect 'jdbc:sqlserver://<serverName>.database.windows.net:1433;database=<databaseName>' --username <adminLogin> --password <adminPassword> --table 'delays' --export-dir 'abfs://<filesystem_name>@.dfs.core.windows.net/tutorials/flightdelays/output' 
+    sqoop export --connect 'jdbc:sqlserver://<SERVER_NAME>.database.windows.net:1433;database=<DATABASE_NAME>' --username <ADMIN_LOGIN> --password <ADMIN_PASSWORD> --table 'delays' --export-dir 'abfs://<FILE_SYSTEM_NAME>@.dfs.core.windows.net/tutorials/flightdelays/output' 
     --fields-terminated-by '\t' -m 1
     ```
 
@@ -306,7 +306,7 @@ V předchozích částech jste zkopírovali transformovaná data do umístění 
 3. Po dokončení příkazu sqoop se pomocí nástroje tsql připojte k databázi:
 
     ```bash
-    TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <adminLogin> -P <adminPassword> -p 1433 -D <databaseName>
+    TDSVER=8.0 tsql -H <SERVER_NAME>.database.windows.net -U <ADMIN_LOGIN> -P <ADMIN_PASSWORD> -p 1433 -D <DATABASE_NAME>
     ```
 
     Pomocí následujících příkazů ověřte, že se data exportovala do tabulky delays:

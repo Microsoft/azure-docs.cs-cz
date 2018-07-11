@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 05/21/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: eec54e0074cbc00fb8c51cf28ba477ef75f99a3c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 42f7d767162f2f403b2cf921e31a38b711a3c773
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34657236"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37438226"
 ---
 # <a name="tutorial-learn-about-windows-virtual-machine-governance-with-azure-powershell"></a>Kurz: Informace o řízení virtuálních počítačů s Windows pomocí Azure PowerShellu
 
@@ -55,7 +55,7 @@ Pro správu řešení virtuálních počítačů existují v závislosti na pros
 * [Přispěvatel sítě](../../role-based-access-control/built-in-roles.md#network-contributor)
 * [Přispěvatel účtů úložiště](../../role-based-access-control/built-in-roles.md#storage-account-contributor)
 
-Místo přiřazení rolí jednotlivým uživatelům je často jednodušší [vytvořit skupinu Azure Active Directory](../../active-directory/active-directory-groups-create-azure-portal.md) pro uživatele, kteří potřebují provádět podobné akce. Potom této skupině přiřaďte odpovídající role. Pro názornost tohoto článku stačí vytvořit skupinu Azure Active Directory bez členů. Této skupině můžete přiřadit role pro některý obor. 
+Místo přiřazení rolí jednotlivým uživatelům je často jednodušší [vytvořit skupinu Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) pro uživatele, kteří potřebují provádět podobné akce. Potom této skupině přiřaďte odpovídající role. Pro názornost tohoto článku stačí vytvořit skupinu Azure Active Directory bez členů. Této skupině můžete přiřadit role pro některý obor. 
 
 Následující příklad vytvoří skupinu Azure Active Directory s názvem *VMDemoContributors* a přezdívkou pro poštu *vmDemoGroup*. Přezdívka pro poštu slouží jako alias pro skupinu.
 
@@ -194,7 +194,7 @@ Set-AzureRmResource -Tag @{ Dept="IT"; Environment="Test"; Project="Documentatio
 
 ### <a name="find-resources-by-tag"></a>Hledání prostředků podle značky
 
-K vyhledání prostředků pomocí názvu značky a hodnoty použijte příkaz [Find-AzureRmResource](/powershell/module/azurerm.resources/find-azurermresource):
+K vyhledání prostředků pomocí názvu značky a hodnoty použijte příkaz [Get-AzureRmResource](/powershell/module/azurerm.resources/get-azurermresource):
 
 ```azurepowershell-interactive
 (Get-AzureRmResource -Tag @{ Environment="Test"}).Name

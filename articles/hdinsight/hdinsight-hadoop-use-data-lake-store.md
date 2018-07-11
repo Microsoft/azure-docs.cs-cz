@@ -1,5 +1,5 @@
 ---
-title: Použití služby Data Lake Store se systémem Hadoop ve službě Azure HDInsight | Dokumentace Microsoftu
+title: Použití služby Data Lake Store se systémem Hadoop ve službě Azure HDInsight | Microsoft Docs
 description: Zjistěte, jak zadávat dotazy na data ze služby Azure Data Lake Store a ukládat výsledky analýzy.
 keywords: blob storage, hdfs, strukturovaná data, nestrukturovaná data, data lake store
 services: hdinsight,storage
@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/14/2018
 ms.author: jgao
-ms.openlocfilehash: 0d0fb9bad8c6120100ae3ee766aea7620dd6105f
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 362a9ae9cb1a1ebc30193b76929f0a683414e5fd
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34201753"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37435293"
 ---
 # <a name="use-data-lake-store-with-azure-hdinsight-clusters"></a>Použití služby Data Lake Store s clustery Azure HDInsight
 
@@ -100,10 +100,10 @@ Přidání účtu Data Lake Store jako dalšího úložiště a přidání více
 
 ## <a name="configure-data-lake-store-access"></a>Konfigurace přístupu ke službě Data Lake Store
 
-Pokud chcete nakonfigurovat přístup ke službě Data Lake Store z clusteru HDInsight, musíte mít instanční objekt Azure Active Directory (Azure AD). Instanční objekt může vytvořit pouze správce Azure AD. Instanční objekt musí být vytvořený s certifikátem. Další informace najdete v části [Konfigurace přístupu ke službě Data Lake Store](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md#configure-data-lake-store-access) a [Vytvoření instančního objektu s certifikátem podepsaným svým držitelem](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-self-signed-certificate).
+Pokud chcete nakonfigurovat přístup ke službě Data Lake Store z clusteru HDInsight, musíte mít instanční objekt Azure Active Directory (Azure AD). Instanční objekt může vytvořit pouze správce Azure AD. Instanční objekt musí být vytvořený s certifikátem. Další informace najdete v tématu s [rychlým startem pro nastavení clusterů ve službě HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md) a v části tématu věnované [vytváření instančních objektů s certifikátem podepsaným jeho držitelem](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-self-signed-certificate).
 
 > [!NOTE]
-> Pokud plánujete službu Azure Data Lake Store používat jako další úložiště pro cluster HDInsight, důrazně doporučujeme to provést během vytváření clusteru, jak je popsáno v tomto článku. Přidání služby Azure Data Lake Store jako dalšího úložiště do existujícího clusteru HDInsight je složitý proces, při kterém může docházet k chybám.
+> Pokud plánujete službu Azure Data Lake Store používat jako další úložiště pro cluster HDInsight, důrazně doporučujeme to provést během vytváření clusteru, jak je popsáno v tomto článku. Přidání služby Azure Data Lake Store jako dalšího úložiště do existujícího clusteru HDInsight se nepodporuje.
 >
 
 ## <a name="access-files-from-the-cluster"></a>Přístup k souborům z clusteru
@@ -130,7 +130,7 @@ Existuje několik způsobů, jak můžete přistupovat k souborům ve službě D
 
 Na následujících odkazech najdete podrobné pokyny k vytvoření clusterů HDInsight s přístupem ke službě Data Lake Store.
 
-* [Pomocí portálu](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)
+* [Pomocí portálu](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
 * [Pomocí PowerShellu (se službou Data Lake Store jako výchozím úložištěm)](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
 * [Pomocí PowerShellu (se službou Data Lake Store jako dalším úložištěm)](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)
 * [Pomocí šablon Azure](../data-lake-store/data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
@@ -142,8 +142,7 @@ V tomto článku jste zjistili, jak používat HDFS kompatibilní službu Azure 
 Další informace naleznete v tématu:
 
 * [Začínáme se službou Azure HDInsight][hdinsight-get-started]
-* [Začínáme se službou Azure Data Lake Store](../data-lake-store/data-lake-store-get-started-portal.md)
-* [Vytvoření clusteru HDInsight pro použití služby Data Lake Store pomocí webu Azure Portal](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)
+* [Rychlý start: Nastavení clusterů ve službě HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
 * [Vytvoření clusteru HDInsight pro použití služby Data Lake Store pomocí Azure PowerShellu](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)
 * [Nahrání dat do služby HDInsight][hdinsight-upload-data]
 * [Použití Hivu se službou HDInsight][hdinsight-use-hive]

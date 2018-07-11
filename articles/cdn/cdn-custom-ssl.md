@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/01/2018
+ms.date: 06/29/2018
 ms.author: v-deasim
 ms.custom: mvc
-ms.openlocfilehash: 3f0ba3034c1ba9e68f83caaaf9aacb96134ca74b
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 5d13c565302ae16b6fb2894f6a5a3843f47f9547
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35235494"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37342221"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Kurz: Konfigurace HTTPS pro vlastní doménu Azure CDN
 
@@ -177,7 +177,7 @@ Váš záznam CNAME by měl mít následující formát, kde *Název* je název 
 
 Další informace o záznamech CNAME najdete v tématu popisujícím [vytvoření záznamu DNS CNAME](https://docs.microsoft.com/azure/cdn/cdn-map-content-to-custom-domain#create-the-cname-dns-records).
 
-Pokud je váš záznam CNAME ve správném formátu, DigiCert automaticky ověří název vaší vlastní domény a přidá ho do certifikátu alternativních názvů subjektů (SAN). DigiCert vám neodešle ověřovací e-mail a vy nebudete muset potvrzovat svou žádost. Certifikát je platný jeden rok a před vypršením platnosti se automaticky obnoví. Pokračujte k části [Čekání na rozšíření](#wait-for-propagation). 
+Pokud je váš záznam CNAME ve správném formátu, DigiCert automaticky ověří váš název vlastní domény a vytvoří pro váš název domény vyhrazený certifikát. DigiCert vám neodešle ověřovací e-mail a vy nebudete muset potvrzovat svou žádost. Certifikát je platný jeden rok a před vypršením platnosti se automaticky obnoví. Pokračujte k části [Čekání na rozšíření](#wait-for-propagation). 
 
 Automatické ověření trvá obvykle několik minut. Pokud se vaše doména neověří do hodiny, otevřete lístek podpory.
 
@@ -214,7 +214,7 @@ Postupujte podle pokynů ve formuláři. Máte na výběr dvě možnosti ověře
 
 - Můžete schválit pouze konkrétní název hostitele použitý v této žádosti. Další požadavky budou vyžadovat dodatečné schválení.
 
-Po schválení DigiCert přidá název vaší vlastní domény do certifikátu SAN. Certifikát je platný jeden rok a před vypršením platnosti se automaticky obnoví.
+Po schválení DigiCert dokončí vytvoření certifikátu pro váš název vlastní domény. Certifikát je platný jeden rok a před vypršením platnosti se automaticky obnoví.
 
 ## <a name="wait-for-propagation"></a>Čekání na rozšíření
 
@@ -288,11 +288,11 @@ Následující tabulka ukazuje průběh operace, která proběhne při zákazu H
 
 1. *Kdo je poskytovatel certifikátu a jaký typ certifikátu se používá?*
 
-    S **Azure CDN od Verizonu** se používá certifikát SAN (Subject Alternative Names) poskytovaný společností DigiCert. Jeden certifikát SAN umožňuje zabezpečení několika plně kvalifikovaných názvů domén. S **Azure CDN Standard od Microsoftu** se používá jeden certifikát poskytovaný společností DigiCert.
+    U **Azure CDN od Verizonu** i **Azure CDN od Microsoftu** slouží pro vaši vlastní doménu vyhrazený/jediný certifikát od Digicertu. 
 
-2. Používáte protokol TLS/SSL založený na IP nebo SNI?
+2. *Používáte protokol TLS/SSL založený na IP nebo SNI?*
 
-    **Azure CDN od Verizonu** používá protokol TLS/SSL založený na IP. **Azure CDN Standard od Microsoftu** používá SNI TLS/SSL.
+    **Azure CDN od Verizonu** i **Azure CDN Standard od Microsoftu** používají SNI TLS/SSL.
 
 3. *Co když neobdržím e-mail pro ověření domény od DigiCert?*
 
@@ -309,6 +309,10 @@ Následující tabulka ukazuje průběh operace, která proběhne při zákazu H
 6. *Potřebuji záznam CAA (Certificate Authority Authorization) pro svého poskytovatele DNS?*
 
     Ne, záznam CAA (Certificate Authority Authorization) se v současné době nevyžaduje. Pokud ho však máte, musí jako platnou certifikační autoritu zahrnovat DigiCert.
+
+7. *20. června 2018 začala síť Azure CDN od Verizonu ve výchozím nastavení používat vyhrazený certifikát s SNI TLS/SSL. Co se stane s mými existujícími vlastními doménami, které používají certifikát SAN (Subject Alternative Names, alternativní názvy subjektů) a protokol TLS/SSL založený na IP adrese?*
+
+    Vaše stávající domény se budou v nadcházejících měsících postupně migrovat na jediný certifikát, pokud Microsoft dojde analýzou k tomu, že do vaší aplikace přicházejí jenom žádosti klientů SNI. Pokud Microsoft zjistí, že do vaší aplikace přicházejí žádosti klientů jiných než SNI, zůstanou domény v certifikátu SAN s protokolem TLS/SSL založeném na IP adrese. V žádném případě nedojde k přerušení poskytování vaší služby nebo podpory pro žádosti vašich klientů bez ohledu na to, jestli jsou tyto žádosti SNI nebo ne.
 
 
 ## <a name="next-steps"></a>Další kroky

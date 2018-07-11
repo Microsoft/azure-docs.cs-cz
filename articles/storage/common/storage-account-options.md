@@ -1,5 +1,5 @@
 ---
-title: Možnosti účtu Azure Storage | Dokumentace Microsoftu
+title: Možnosti účtu Azure Storage | Microsoft Docs
 description: Vysvětlení možností použití služby Azure Storage.
 services: storage
 author: xyh1
@@ -7,14 +7,14 @@ manager: jwillis
 ms.service: storage
 ms.workload: storage
 ms.topic: get-started-article
-ms.date: 06/22/2018
+ms.date: 07/03/2018
 ms.author: hux
-ms.openlocfilehash: 3f1dfa09c0f123d20a7be043aa8d0033a5b6bd72
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 6efc50bfee54c38511fb3346f1341f81741d14eb
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36335767"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37445416"
 ---
 # <a name="azure-storage-account-options"></a>Možnosti účtu Azure Storage
 
@@ -46,7 +46,10 @@ Pro objekty blob bloku v účtu úložiště GPv2 si můžete vybrat mezi horkou
 
 ### <a name="upgrade-a-storage-account-to-gpv2"></a>Upgrade účtu úložiště na účet GPv2
 
-Uživatelé můžou účet GPv1 nebo účet úložiště objektu blob kdykoli upgradovat na účet GPv2 pomocí PowerShellu nebo Azure CLI. Tato změna je nevratná a žádné jiné změny nejsou povoleny.
+Uživatelé můžou účet GPv1 nebo účet úložiště Blob kdykoli upgradovat na účet GPv2 pomocí portálu Azure Portal, PowerShellu nebo Azure CLI. Tato změna je nevratná a žádné jiné změny nejsou povoleny.
+
+#### <a name="upgrade-with-azure-portal"></a>Upgrade pomocí portálu Azure Portal
+Pokud chcete účet GPv1 nebo účet úložiště Blob upgradovat na účet GPv2 pomocí portálu Azure Portal, nejprve se přihlaste k portálu [Azure Portal](https://portal.azure.com) a vyberte účet úložiště. Vyberte **Nastavení** > **Konfigurace**. Uvidíte tlačítko **Upgradovat** a poznámku týkající se procesu upgradu.
 
 #### <a name="upgrade-with-powershell"></a>Upgrade pomocí PowerShellu
 
@@ -262,9 +265,9 @@ Také cena za přenos geograficky replikovaných dat účtů Blob Storage se v p
 
 ## <a name="migrating-existing-data"></a>Migrace existujících dat
 
-Účet GPv1 je možné snadno upgradovat na účet GPv2, a to bez výpadků, změn rozhraní API a nutnosti migrovat data. Z tohoto důvodu důrazně doporučujeme účty GPv1 migrovat na účty GPv2 a ne na účty úložiště blob.
+Účet GPv1 nebo účet úložiště Blob je možné snadno upgradovat na účet GPv2, a to bez výpadků, změn rozhraní API a nutnosti migrovat data. Z tohoto důvodu důrazně doporučujeme účty GPv1 migrovat na účty GPv2 a ne na účty úložiště blob. Další informace o upgradu na účet GPv2 najdete v části [Upgrade účtu úložiště na účet GPv2](#upgrade-a-storage-account-to-gpv2).
 
-Pokud ale potřebujete migrovat na účet úložiště blob a nemůžete používat účty GPv2, můžete postupovat podle následujících pokynů. 
+Pokud ale potřebujete migrovat z účtu GPv1 na účet úložiště Blob a nemůžete používat účty GPv2, můžete postupovat podle následujících pokynů. 
 
 Účet úložiště Blob se specializuje pouze na ukládání objektů blob bloku a doplňovacích objektů blob. Existující účty úložiště pro obecné účely, ve kterých můžete ukládat tabulky, fronty, soubory a disky i objekty blob, se nedají převést na účty Blob Storage. Pokud chcete využívat vrstvy úložiště, budete muset vytvořit nové účty Blob Storage a existující data migrovat do těchto nových účtů. 
 

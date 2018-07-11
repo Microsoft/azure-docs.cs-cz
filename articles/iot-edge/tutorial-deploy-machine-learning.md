@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: afc9e7c0635f9920aa3ec7c9e6012aa4e41edb9d
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 8e6873f45beac281adbc7a9669504f1703a9eaf5
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062037"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37345487"
 ---
 # <a name="deploy-azure-machine-learning-as-an-iot-edge-module---preview"></a>Nasazení Azure Machine Learning jako modulu IoT Edge – Preview
 
@@ -60,7 +60,7 @@ Upravte konfigurační soubor procesu démon IoT Edge:
 sudo nano /etc/iotedge/config.yaml
 ```
 
-Aktualizujte část konfigurace **connect**. Příklad:
+Aktualizujte oddíl **connect** konfigurace svojí IP adresou. Příklad:
 ```yaml
 connect:
   management_uri: "http://172.17.0.1.1:15580"
@@ -125,7 +125,7 @@ Zkontrolujte, že se image kontejneru úspěšně vytvořila a uložila v regist
 1. Pokud máte na zařízení IoT Edge nasazený modul tempSensor, může se automaticky doplnit. Pokud v seznamu modulů není, přidejte ho.
 
     1. Klikněte na **Add** (Přidat) a vyberte **IoT Edge Module** (Module IoT Edge).
-    2. Do pole **Název** zadejte `tempsensor`.
+    2. Do pole **Název** zadejte `tempSensor`.
     3. Do pole **Identifikátor URI image** zadejte `mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0`.
     4. Vyberte **Uložit**.
 
@@ -203,10 +203,10 @@ Následující kroky ukazují, jak nastavit Visual Studio Code k monitorování 
 
 Pokud budete pokračovat k dalšímu doporučenému článku, můžete už vytvořené prostředky a konfigurace zachovat a znovu je použít.
 
-Jinak můžete místní konfigurace a prostředky Azure, které jste vytvořili v tomto článku, odstranit, abyste se vyhnuli poplatkům. 
+Pokud nebudete pokračovat, můžete místní konfigurace a prostředky Azure vytvořené v tomto článku odstranit, abyste se vyhnuli poplatkům. 
 
 > [!IMPORTANT]
-> Odstranění prostředků Azure a skupiny prostředků je nevratná akce. Skupina prostředků i všechny prostředky v ní obsažené se trvale odstraní. Ujistěte se, že nechtěně neodstraníte nesprávnou skupinu prostředků nebo prostředky. Pokud jste službu IoT Hub vytvořili uvnitř existující skupiny prostředků obsahující prostředky, které chcete zachovat, odstraňte místo skupiny prostředků pouze samotný prostředek služby IoT.
+> Odstranění prostředků Azure a skupiny prostředků je nevratná akce. V případě odstranění se skupina prostředků i všechny prostředky, které obsahuje, trvale odstraní. Ujistěte se, že nechtěně neodstraníte nesprávnou skupinu prostředků nebo prostředky. Pokud jste službu IoT Hub vytvořili uvnitř existující skupiny prostředků obsahující prostředky, které chcete zachovat, odstraňte místo skupiny prostředků pouze samotný prostředek služby IoT.
 >
 
 Pokud chcete odstranit jenom IoT Hub, spusťte následující příkaz, ve kterém se použije název vaší služby Hub a název skupiny prostředků:

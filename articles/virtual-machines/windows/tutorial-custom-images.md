@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: a449c1f9781ffc86de4786eaab3cb83999b86a72
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 930f5dc0369c998039b9cc0c089f60de17993be0
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32188044"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37435149"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-azure-powershell"></a>Kurz: Vytvoření vlastní image virtuálního počítače Azure pomocí Azure PowerShellu
 
@@ -121,12 +121,12 @@ New-AzureRmVm `
 
 ## <a name="image-management"></a>Správa imagí 
 
-Tady je několik příkladů běžných úloh správy imagí a postup pro jejich provedení pomocí PowerShellu.
+Tady je několik příkladů běžných úloh se spravovanými imagemi a postup pro jejich provedení pomocí PowerShellu.
 
 Zobrazení seznamu všech imagí podle názvu.
 
 ```azurepowershell-interactive
-$images = Find-AzureRMResource -ResourceType Microsoft.Compute/images 
+$images = Get-AzureRMResource -ResourceType Microsoft.Compute/images 
 $images.name
 ```
 

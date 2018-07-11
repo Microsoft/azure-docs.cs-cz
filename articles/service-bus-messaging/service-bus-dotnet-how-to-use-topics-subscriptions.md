@@ -1,5 +1,5 @@
 ---
-title: Začínáme s tématy a odběry služby Azure Service Bus | Dokumentace Microsoftu
+title: Začínáme s tématy a odběry služby Azure Service Bus | Microsoft Docs
 description: Napíšeme konzolovou aplikaci C# .NET Core využívající témata a odběry zasílání zpráv služby Service Bus.
 services: service-bus-messaging
 documentationcenter: .net
@@ -12,14 +12,14 @@ ms.devlang: tbd
 ms.topic: hero-article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 12/6/2017
+ms.date: 07/03/2018
 ms.author: sethm
-ms.openlocfilehash: aa75ac48d650f28d4aaeb612f2900d705cf71b5b
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 8916ccb430da6bea66de3894201a11a70bb45df9
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29396937"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37447196"
 ---
 # <a name="get-started-with-service-bus-topics"></a>Začínáme s tématy služby Service Bus
 
@@ -52,7 +52,7 @@ Pokud už máte vytvořený obor názvů pro zasílání zpráv služby Service 
 
 ## <a name="2-create-a-topic-using-the-azure-portal"></a>2. Vytvoření tématu pomocí webu Azure Portal
 
-1. Přihlaste se k webu [Azure Portal][azure-portal].
+1. Přihlaste se na web [Azure Portal][azure-portal].
 2. V levém navigačním podokně portálu klikněte na **Service Bus** (pokud položku **Service Bus** nevidíte, klikněte na **Všechny služby**) nebo klikněte na **Všechny prostředky**. Klikněte na obor názvů, ve kterém chcete vytvořit téma. 
 3. Otevře se okno přehledu oboru názvů. Klikněte na **Témata**:
    
@@ -429,7 +429,7 @@ Blahopřejeme! Právě jste s použitím knihovny .NET Standard vytvořili téma
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na naše [úložiště GitHub s ukázkami](https://github.com/Azure/azure-service-bus/tree/master/samples), které předvádějí některé pokročilejší funkce zasílání zpráv služby Service Bus.
+Podívejte se na [úložiště GitHub s ukázkami](https://github.com/Azure/azure-service-bus/tree/master/samples) pro Service Bus, které předvádějí některé pokročilejší funkce zasílání zpráv služby Service Bus.
 
 <!--Image references-->
 

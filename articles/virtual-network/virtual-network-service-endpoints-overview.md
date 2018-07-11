@@ -1,5 +1,5 @@
 ---
-title: Koncové body služby virtuální sítě Azure | Dokumentace Microsoftu
+title: Koncové body služby virtuální sítě Azure | Microsoft Docs
 description: Zjistěte, jak povolit přímý přístup k prostředkům Azure z virtuální sítě pomocí koncových bodů služby.
 services: virtual-network
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 06/06/2018
 ms.author: anithaa
 ms.custom: ''
-ms.openlocfilehash: f612eb9647bf64a9435b1c667700bf717d445931
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: e7e79d51b59d82ebf91d68f0714b8eb7bcaafbe6
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34824682"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37443626"
 ---
 # <a name="virtual-network-service-endpoints"></a>Koncové body služby virtuální sítě
 
@@ -28,11 +28,13 @@ Koncové body služby virtuální sítě rozšiřují privátní adresní prosto
 
 Tato funkce je dostupná pro následující služby a oblasti Azure:
 
-- **Azure Storage**: Obecná dostupnost ve všech oblastech Azure
-- **Azure SQL Database**: Obecná dostupnost ve všech oblastech Azure
-- **Azure Cosmos DB**: Obecná dostupnost ve všech oblastech Azure 
-- **Azure SQL Data Warehouse**: Verze Preview ve všech oblastech veřejného cloudu Azure
+- **[Azure Storage](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)**: Obecná dostupnost ve všech oblastech Azure
+- **[Azure SQL Database](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: Obecná dostupnost ve všech oblastech Azure
+- **[Azure Cosmos DB](../cosmos-db/vnet-service-endpoint.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: Obecná dostupnost ve všech oblastech veřejného cloudu Azure 
+- **[Azure SQL Data Warehouse](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: Verze Preview ve všech oblastech veřejného cloudu Azure
 - **Služby Azure Database for PostgreSQL a Azure Database for MySQL**: Verze Preview v oblastech Azure, kde je k dispozici služba Azure Database
+- **[Azure Service Bus](../service-bus-messaging/service-bus-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: Dostupnost ve verzi Preview
+- **[Azure Event Hubs](../event-hubs/event-hubs-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: Dostupnost ve verzi Preview
 
 Nejaktuálnější oznámení najdete na stránce [Aktualizace služby Azure Virtual Network](https://azure.microsoft.com/updates/?product=virtual-network).
 
@@ -67,8 +69,8 @@ Koncové body služby poskytují následující výhody:
 ### <a name="configuration"></a>Konfigurace
 
 - Koncové body služby se konfigurují v podsíti ve virtuální síti. Koncové body fungují s jakýmkoli typem výpočetních instancí spuštěných v rámci této podsítě.
-- V podsíti můžete konfigurovat několik koncových bodů služby pro všechny podporované služby Azure (například Azure Storage nebo Azure SQL Database).
-- Pro Azure SQL musí být virtuální sítě ve stejné oblasti jako prostředek služby Azure. Pokud používáte pro Azure Storage účty GRS a RA-GRS, primární účet musí být ve stejné oblasti jako virtuální síť. Pro všechny ostatní služby můžou být prostředky služby Azure zabezpečené ve virtuálních sítích v libovolné oblasti. 
+- V podsíti můžete nakonfigurovat několik koncových bodů služby pro všechny podporované služby Azure (například Azure Storage nebo Azure SQL Database).
+- Pro Azure SQL Database musí být virtuální sítě ve stejné oblasti jako prostředek služby Azure. Pokud používáte pro Azure Storage účty GRS a RA-GRS, primární účet musí být ve stejné oblasti jako virtuální síť. Pro všechny ostatní služby můžou být prostředky služby Azure zabezpečené ve virtuálních sítích v libovolné oblasti. 
 - Virtuální síť, ve které je koncový bod nakonfigurovaný, může být ve stejném předplatném jako prostředek služby Azure nebo v jiném předplatném. Další informace o oprávněních požadovaných pro nastavení koncových bodů a zabezpečení služeb Azure najdete v části [Zřizování](#Provisioning).
 - U podporovaných služeb můžete pomocí koncových bodů služby svázat s virtuálními sítěmi nové nebo existující prostředky.
 
@@ -80,7 +82,7 @@ Koncové body služby poskytují následující výhody:
 - S koncovými body služby zůstávají záznamy DNS pro služby Azure tak, jak jsou, a nadále se překládají na veřejné IP adresy přiřazené příslušné službě Azure.
 - Skupiny zabezpečení sítě (NSG) s koncovými body služby:
   - Skupiny zabezpečení sítě ve výchozím nastavení povolují odchozí internetový provoz a tedy povolují i provoz z virtuální sítě do služeb Azure. S koncovými body služby to nadále funguje stejným způsobem. 
-  - Pokud chcete odepřít veškerý odchozí internetový provoz a povolit pouze provoz do konkrétních služeb Azure, můžete to provést použitím __značek služeb Azure__ ve vašich skupinách zabezpečení sítě. V pravidlech NSG můžete zadat podporované služby Azure jako cíl a Azure zajistí údržbu IP adres, na které jednotlivé značky odkazují. Další informace najdete v tématu [Značky služeb Azure pro skupiny zabezpečení sítě](https://aka.ms/servicetags). 
+  - Pokud chcete odepřít veškerý odchozí internetový provoz a povolit pouze provoz do konkrétních služeb Azure, můžete to provést použitím [značek služeb](security-overview.md#service-tags) ve svých skupinách zabezpečení sítě. V pravidlech NSG můžete zadat podporované služby Azure jako cíl a Azure zajistí údržbu IP adres, na které jednotlivé značky odkazují. Další informace najdete v tématu [Značky služeb Azure pro skupiny zabezpečení sítě](security-overview.md#service-tags). 
 
 ### <a name="scenarios"></a>Scénáře
 
@@ -124,5 +126,5 @@ Pro prostředky služeb Azure (například účet služby Azure Storage) můžou
 - Naučte se [svázat účet služby Azure Storage s virtuální sítí](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 - Naučte se [svázat účet služby Azure SQL Database s virtuální sítí](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 - Přečtěte si o [integraci služeb Azure ve virtuálních sítích](virtual-network-for-azure-services.md).
--  Rychlý start: [Šablony Azure Resource Manageru](https://azure.microsoft.com/resources/templates/201-vnet-2subnets-service-endpoints-storage-integration) pro nastavení koncového bodu služby v podsíti virtuální sítě a zabezpečení účtu služby Azure Storage pro tuto podsíť
+-  Rychlý start: [Šablona Azure Resource Manageru](https://azure.microsoft.com/resources/templates/201-vnet-2subnets-service-endpoints-storage-integration) pro nastavení koncového bodu služby v podsíti virtuální sítě a zabezpečení účtu služby Azure Storage pro tuto podsíť
 

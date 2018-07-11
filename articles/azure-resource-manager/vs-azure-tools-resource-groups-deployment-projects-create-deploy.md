@@ -1,39 +1,34 @@
 ---
-title: Projekty skupiny prostředků Azure v sadě Visual Studio | Dokumentace Microsoftu
+title: Projekty skupiny prostředků Azure v sadě Visual Studio | Microsoft Docs
 description: Pomocí sady Visual Studio můžete vytvořit projekt skupiny prostředků Azure a nasadit tyto prostředky do Azure.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.assetid: 4bd084c8-0842-4a10-8460-080c6a085bec
 ms.service: azure-resource-manager
 ms.devlang: multiple
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/09/2018
+ms.date: 07/02/2018
 ms.author: tomfitz
-ms.openlocfilehash: bd2869b35d92ea92261223131476d7cc8eb854eb
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: af8b91ee20ccb4d16e7666c317ea7d08a265e6d6
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34360100"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37435540"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Vytvoření a nasazení skupiny prostředků Azure pomocí sady Visual Studio
-Pomocí sady Visual Studio a [Azure SDK](https://azure.microsoft.com/downloads/) můžete vytvořit projekt, který nasadí vaši infrastrukturu a kód do Azure. Můžete například definovat webového hostitele, webový server a databázi pro vaši aplikaci a nasadit tuto infrastrukturu spolu s kódem. Nebo můžete definovat virtuální počítač, virtuální síť a účet úložiště a nasadit tuto infrastrukturu spolu se skriptem, který se spouští na virtuálním počítači. Projekt nasazení **skupiny prostředků Azure** umožňuje nasadit všechny potřebné prostředky v rámci jedné opakovatelné operace. Další informace o nasazení a správě prostředků najdete v tématu [Přehled Azure Resource Manageru](resource-group-overview.md).
+Pomocí sady Visual Studio můžete vytvořit projekt, který nasadí vaši infrastrukturu a kód do Azure. Můžete například definovat webového hostitele, webový server a databázi pro vaši aplikaci a nasadit tuto infrastrukturu spolu s kódem. Visual Studio poskytuje řadu různých předem připravených šablon pro běžné scénáře nasazení. V tomto článku nasadíte webovou aplikaci a SQL Database.  
 
-Projekty skupiny prostředků Azure obsahují šablony JSON pro Azure Resource Manager, které definují prostředky, nasazované do Azure. Další informace o jednotlivých prvcích šablony Resource Manageru najdete v tématu o [vytváření šablon Azure Resource Manageru](resource-group-authoring-templates.md). Visual Studio umožňuje upravit tyto šablony a poskytuje nástroje, které práci s nimi usnadňují.
-
-V tomto článku nasadíte webovou aplikaci a SQL Database. Postup je však téměř stejný pro libovolný typ prostředku. Stejně snadno můžete nasadit virtuální počítač a prostředky, které s ním souvisejí. Visual Studio poskytuje řadu různých předem připravených šablon pro běžné scénáře nasazení.
-
-Tento článek ukazuje Visual Studio 2017. Pokud používáte Visual Studio 2015 Update 2 a Microsoft Azure SDK pro .NET 2.9, nebo Visual Studio 2013 a Azure SDK 2.9, prostředí je z velké části stejné. Sadu Azure SDK můžete využít ve verzi 2.6 nebo novější. Podoba uživatelského rozhraní se ale může lišit od příkladů uvedených v tomto článku. Důrazně doporučujeme, abyste si před zahájením těchto kroků nainstalovali nejnovější verzi sady [Azure SDK](https://azure.microsoft.com/downloads/). 
+Tento článek popisuje, jak používat [Visual Studio 2017 s nainstalovanými sadami funkcí pro vývoj v Azure a sadami funkcí ASP.NET](/dotnet/azure/dotnet-tools). Pokud používáte Visual Studio 2015 Update 2 a Microsoft Azure SDK pro .NET 2.9, nebo Visual Studio 2013 a Azure SDK 2.9, prostředí je z velké části stejné.
 
 ## <a name="create-azure-resource-group-project"></a>Vytvoření projektu skupiny prostředků Azure
-V tomto postupu vytvoříte projekt skupiny prostředků Azure pomocí šablony **Web app + SQL** (Webová aplikace a SQL).
+V této části vytvoříte projekt skupiny prostředků Azure pomocí šablony **Web app + SQL** (Webová aplikace a SQL).
 
-1. V sadě Visual Studio zvolte **Soubor**, **Nový projekt** a potom vyberte **C#** nebo **Visual Basic** (To, který jazyk zvolíte, nemá žádný vliv na pozdější fáze, protože tyto projekty obsahují jenom obsah JSON a PowerShell). Potom vyberte **Cloud** a projekt **Azure Resource Group** (Skupina prostředků Azure).
+1. V sadě Visual Studio zvolte **Soubor**, **Nový projekt** a potom zvolte **C#** nebo **Visual Basic** (to, který jazyk zvolíte, nemá žádný vliv na pozdější fáze, protože tyto projekty mají jenom obsah JSON a PowerShell). Potom vyberte **Cloud** a projekt **Azure Resource Group** (Skupina prostředků Azure).
    
     ![Projekt nasazení v cloudu](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/create-project.png)
 2. Zvolte šablonu, kterou chcete nasadit do Azure Resource Manageru. Všimněte si, že máte spoustu různých možností v závislosti na typu projektu, který chcete nasadit. Pro tento článek si vyberte šablonu **Web app + SQL** (Webová aplikace a SQL).
@@ -52,18 +47,18 @@ V tomto postupu vytvoříte projekt skupiny prostředků Azure pomocí šablony 
    
     ![zobrazení uzlů](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-items.png)
    
-    Vzhledem k tomu, že jsme pro tento příklad vybrali šablonu Web app + SQL, zobrazí se následující soubory: 
+    Vzhledem k tomu, že jste pro tento příklad zvolili šablonu Web app + SQL, zobrazí se následující soubory: 
    
    | Název souboru | Popis |
    | --- | --- |
-   | Deploy-AzureResourceGroup.ps1 |Skript PowerShellu, který vyvolá příkazy PowerShellu pro nasazení Azure Resource Manageru.<br />**Poznámka** Sada Visual Studio tento skript PowerShellu využívá k nasazení vaší šablony. Libovolné změny tohoto skriptu ovlivní také nasazení v sadě Visual Studio, proto buďte opatrní. |
+   | Deploy-AzureResourceGroup.ps1 |Skript PowerShellu, který spustí příkazy PowerShellu pro nasazení Azure Resource Manageru.<br />**Poznámka** Sada Visual Studio tento skript PowerShellu využívá k nasazení vaší šablony. Libovolné změny tohoto skriptu ovlivní také nasazení v sadě Visual Studio, proto buďte opatrní. |
    | WebSiteSQLDatabase.json |Šablona Resource Manageru, která definuje infrastrukturu, kterou chcete nasadit do Azure, a parametry, které můžete během nasazení zadat. Definuje také závislosti mezi prostředky, takže je Resource Manager nasadí ve správném pořadí. |
-   | WebSiteSQLDatabase.parameters.json |Soubor parametrů, který obsahuje hodnoty požadované šablonou. Předáním hodnot těchto parametrů přizpůsobujete jednotlivá nasazení. |
+   | WebSiteSQLDatabase.parameters.json |Soubor parametrů, který má hodnoty požadované šablonou. Předáním hodnot těchto parametrů přizpůsobujete jednotlivá nasazení. |
    
-    Tyto základní soubory obsahují všechny projekty nasazení skupiny prostředků. Ostatní projekty mohou obsahovat i další soubory, které podporují jiné funkce.
+    Tyto základní soubory mají všechny projekty nasazení skupiny prostředků. Ostatní projekty můžou mít i další soubory, které podporují jiné funkce.
 
 ## <a name="customize-the-resource-manager-template"></a>Přizpůsobení šablony Resource Manageru
-Projekt nasazení lze přizpůsobit úpravou šablony JSON s popisem prostředků, které chcete nasadit. JSON je zkratka pro JavaScript Object Notation. Jedná se o serializovaný datový formát, se kterým se snadno pracuje. Soubory JSON využívají schéma, na které se odkazujete na začátku každého souboru. Pokud chcete schématu lépe porozumět, můžete si ho stáhnout a prohlédnout. Schéma definuje platné prvky, typy a formáty polí, přípustné výčtové hodnoty a tak dále. Další informace o jednotlivých prvcích šablony Resource Manageru najdete v tématu o [vytváření šablon Azure Resource Manageru](resource-group-authoring-templates.md).
+Projekt nasazení lze přizpůsobit úpravou šablony JSON s popisem prostředků, které chcete nasadit. JSON je zkratka pro JavaScript Object Notation. Jedná se o serializovaný datový formát, se kterým se snadno pracuje. Soubory JSON využívají schéma, na které se odkazujete na začátku každého souboru. Pokud chcete schématu lépe porozumět, můžete si ho stáhnout a prohlédnout. Schéma definuje platné prvky, typy a formáty polí a přípustné hodnoty pro vlastnost. Další informace o jednotlivých prvcích šablony Resource Manageru najdete v tématu o [vytváření šablon Azure Resource Manageru](resource-group-authoring-templates.md).
 
 Pokud chcete se svou šablonou začít pracovat, otevřete **WebSiteSQLDatabase.json**.
 
@@ -87,7 +82,7 @@ Všimněte si, že se přidal nejenom tento prostředek, ale také parametr pro 
 
 ![zobrazení osnovy](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-new-items.png)
 
-Parametr **storageType** je předdefinovaný a obsahuje povolené typy a také výchozí typ. Tyto hodnoty můžete ponechat beze změny nebo je můžete podle potřeby upravit. Pokud nechcete, aby pomocí této šablony nasazoval účet úložiště **Premium_LRS**, stačí ho odebrat z povolených typů. 
+Parametr **storageType** je předdefinovaný a obsahuje povolené typy a také výchozí typ. Tyto hodnoty můžete ponechat beze změny nebo je můžete podle potřeby upravit. Pokud nechcete, aby pomocí této šablony někdo nasadil účet úložiště **Premium_LRS**, stačí ho odebrat z povolených typů. 
 
 ```json
 "storageType": {
@@ -116,7 +111,7 @@ Hodnotu **numberOfWorkers** můžete nastavit na 1.
 ```
 
 ## <a name="deploy-the-resource-group-project-to-azure"></a>Nasazení projektu skupiny prostředků do Azure
-Nyní jste připraveni svůj projekt nasadit. Když nasadíte projekt skupiny prostředků Azure, nasadíte ho do skupiny prostředků Azure. Skupina prostředků je logické seskupení prostředků, které sdílejí společný životní cyklus.
+Teď můžete svůj projekt nasadit. Když nasadíte projekt skupiny prostředků Azure, nasadíte ho do skupiny prostředků Azure. Skupina prostředků je logické seskupení prostředků, které sdílejí společný životní cyklus.
 
 1. V místní nabídce uzlu projektu nasazení zvolte **Nasadit** > **Nový**.
    
@@ -141,7 +136,7 @@ Nyní jste připraveni svůj projekt nasadit. Když nasadíte projekt skupiny pr
    
     **administratorLogin** určuje uživatelské jméno správce SQL Serveru. Nepoužívejte běžné názvy správců, například **sa** nebo **admin**. 
    
-    **administratorLoginPassword** určuje heslo správce SQL Serveru. Možnost **Ukládat hesla do souboru parametrů jako prostý text** není bezpečná. Proto ji nepoužívejte. Vzhledem k tomu, že heslo není uložené jako prostý text, budete ho během nasazení muset zadat znovu. 
+    **administratorLoginPassword** určuje heslo správce SQL Serveru. Možnost **Save passwords as plain text in the parameters file** (Ukládat hesla do souboru parametrů jako prostý text) není bezpečná. Proto ji nepoužívejte. Vzhledem k tomu, že heslo není uložené jako prostý text, budete ho během nasazení muset zadat znovu. 
    
     **databaseName** určuje název databáze, kterou chcete vytvořit. 
    
@@ -167,7 +162,7 @@ Nyní jste připraveni svůj projekt nasadit. Když nasadíte projekt skupiny pr
     ![Nasazená skupina prostředků Azure](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/redeploy.png)
 
 ## <a name="deploy-code-with-your-infrastructure"></a>Nasazení kódu do vaší infrastruktury
-V tomto okamžiku jste nasadili infrastrukturu pro vaši aplikaci, ale zatím není v projektu nasazený žádný kód. Tento článek ukazuje, jak nasadit webovou aplikaci a tabulky SQL Database. Pokud nasazujete namísto webové aplikace virtuální počítač, budete v něm asi chtít spouštět nějaký kód. Proces nasazení kódu pro webovou aplikaci nebo pro virtuální počítač je téměř stejný.
+V tomto okamžiku jste nasadili infrastrukturu pro vaši aplikaci, ale zatím není v projektu nasazený žádný kód. Tento článek ukazuje, jak nasadit webovou aplikaci a tabulky SQL Database. Pokud nasazujete namísto webové aplikace virtuální počítač, budete v něm asi chtít spouštět nějaký kód jako součást nasazení. Proces nasazení kódu pro webovou aplikaci nebo pro virtuální počítač je téměř stejný.
 
 1. Přidejte projekt do řešení sady Visual Studio. Klikněte pravým tlačítkem na řešení a vyberte **Přidat** > **Nový projekt**.
    
@@ -194,11 +189,11 @@ V tomto okamžiku jste nasadili infrastrukturu pro vaši aplikaci, ale zatím ne
    
     Mezi vlastnosti patří:
    
-   * Pole **Additional Properties** (Další vlastnosti) obsahuje pracovní umístění balíčku pro nasazení webu, který se vloží do úložiště Azure. Poznamenejte si složku (ExampleApp) a soubor (package.zip). Tyto hodnoty musíte znát, protože je uvádíte jako parametry při nasazování aplikace. 
-   * Pole **Include File Path** (Cesta k souboru pro zahrnutí) obsahuje cestu, kde je balíček vytvořen. Pole **Include Targets** (Zahrnout cíle) obsahuje příkaz, který proces nasazení provede. 
+   * Pole **Additional Properties** (Další vlastnosti) obsahuje pracovní umístění balíčku pro nasazení webu, který se vloží do Azure Storage. Poznamenejte si složku (ExampleApp) a soubor (package.zip). Tyto hodnoty musíte znát, protože je uvádíte jako parametry při nasazování aplikace. 
+   * Pole **Include File Path** (Cesta k souboru pro zahrnutí) obsahuje cestu, kde je balíček vytvořený. Pole **Include Targets** (Zahrnout cíle) obsahuje příkaz, který proces nasazení provede. 
    * Výchozí hodnota **Build;Package** umožňuje sestavení a vytvoření balíčku pro nasazení webu (package.zip).  
      
-     Profil publikování není potřeba, protože nasazení získá informace potřebné k vytvoření balíčku z nastavených vlastností.
+     Profil publikování není potřeba, protože nasazení získá informace potřebné k vytvoření balíčku z vlastností.
 7. Vraťte se k souboru WebSiteSQLDatabase.json a přidejte prostředek do šablony.
    
     ![přidání prostředku](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-resource-2.png)
@@ -218,11 +213,11 @@ V tomto okamžiku jste nasadili infrastrukturu pro vaši aplikaci, ale zatím ne
      ![zobrazení nasazené aplikace](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-deployed-app.png)
 
 ## <a name="add-an-operations-dashboard-to-your-deployment"></a>Přidání řídicího panelu operací do nasazení
-Teď, když jsme vytvořili řešení, je čas na poslední krok, kterým je jeho zprovoznění. Nejste omezeni pouze na prostředky dostupné prostřednictvím rozhraní sady Visual Studio. Můžeme využít sdílené řídicí panely, které se definují jako prostředky v JSON. Provedeme to tak, že upravíme šablonu a přidáme vlastní prostředek. 
+Nejste omezení jenom na prostředky dostupné prostřednictvím rozhraní sady Visual Studio. Nasazení můžete přizpůsobit tak, že přidáte do šablony vlastní prostředek. Pokud chcete zobrazit přidávání prostředku, přidáte provozní řídicí panel pro správu prostředku, který jste nasadili.
 
-1. Otevřete soubor WebsiteSqlDeploy.json a přidejte následující bok kódu za prostředek účtu úložiště, ale před uzavírající závorku ] části resources (prostředky).
+1. Otevřete soubor WebsiteSqlDeploy.json a přidejte následující kód JSON za prostředek účtu úložiště, ale před uzavírající závorku `]` oddílu resources (prostředky).
 
-```json
+  ```json
     ,{
       "properties": {
         "lenses": {
@@ -297,23 +292,19 @@ Teď, když jsme vytvořili řešení, je čas na poslední krok, kterým je jeh
         "hidden-title": "[concat('OPS-',resourceGroup().name)]"
       }
     }
-}
-```
+  }
+  ```
 
-2. Znovu nasaďte skupinu prostředků. Když se podíváte na řídicí panel na webu Azure Portal, uvidíte, že se sdílený řídicí panel přidal do seznamu nabízených možností. 
+2. Znovu nasaďte skupinu prostředků. Podívejte se na řídicí panel na webu Azure Portal a všimněte si, že do seznamu možností je přidaný sdílený řídicí panel.
 
-    ![Vlastní řídicí panel](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/view-custom-dashboards.png)
+   ![Vlastní řídicí panel](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/view-custom-dashboards.png)
 
+3. Vyberte řídicí panel.
 
+   ![Vlastní řídicí panel](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/Ops-DemoSiteGroup-dashboard.png)
 
-   > [!NOTE] 
-   > Přístup k řídicímu panelu je možné spravovat pomocí skupin řízení přístupu na základě role. Přizpůsobení je možné do prostředku publikovat i po jeho nasazení. Mějte na paměti, že po opětovném nasazení se skupina prostředků v šabloně resetuje na výchozí hodnotu. Měli byste zvážit aktualizaci šablony s použitím přizpůsobení. Nápovědu k tomu, jak to provést, najdete v tématu [Vytváření řídicích panelů Azure prostřednictvím kódu programu](../azure-portal/azure-portal-dashboards-create-programmatically.md).
+Přístup k řídicímu panelu je možné spravovat pomocí skupin RBAC. Vzhled řídicího panelu můžete také upravit po nasazení. Pokud ovšem provádíte opakované nasazení skupiny prostředků, uvede se řídicí panel do výchozího stavu ve vaší šabloně. Další informace o vytváření řídicích panelů najdete v tématu [Vytváření řídicích panelů Azure prostřednictvím kódu programu](../azure-portal/azure-portal-dashboards-create-programmatically.md).
 
-
-    ![Vlastní řídicí panel](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/Ops-DemoSiteGroup-dashboard.png)
-    
-    
 ## <a name="next-steps"></a>Další kroky
-* Další informace o správě prostředků prostřednictvím tohoto portálu najdete v článku [Použití webu Azure Portal ke správě prostředků Azure](resource-group-portal.md).
 * Další informace o šablonách najdete v tématu o [vytváření šablon Azure Resource Manageru](resource-group-authoring-templates.md).
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/30/2018
 ms.author: sethm
-ms.openlocfilehash: 1b2c9b3a0b7565e7de40d4dc0e623a62313b79db
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: dde7691d2fe4503de8a671d7f29e36558d474699
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32775519"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37440389"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>Úrovně zasílání zpráv Service Bus Premium a Standard
 
@@ -57,7 +57,7 @@ Pokud je váš kód spuštěný v rámci zasílání zpráv úrovně Standard a 
 
 ## <a name="get-started-with-premium-messaging"></a>Začínáme se zasíláním zpráv na úrovni Premium
 
-Využití zasílání zpráv na úrovni Premium je jednoduché a je podobné standardnímu zasílání zpráv. Začněte [vytvořením oboru názvů](service-bus-create-namespace-portal.md) na webu [Azure Portal](https://portal.azure.com). Zkontrolujte, že jste v části **Volba cenové úrovně** vybrali **Premium**.
+Využití zasílání zpráv na úrovni Premium je jednoduché a je podobné standardnímu zasílání zpráv. Začněte [vytvořením oboru názvů](service-bus-create-namespace-portal.md) na webu [Azure Portal](https://portal.azure.com). Zkontrolujte, že jste v části **Cenová úroveň** vybrali **Premium**. Kliknutím na **Zobrazit všechny podrobnosti o cenách** zobrazíte další informace o jednotlivých úrovních.
 
 ![create-premium-namespace][create-premium-namespace]
 
@@ -65,7 +65,7 @@ Můžete také vytvářet [obory názvů Premium pomocí šablon Azure Resource 
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud se o zasílání zpráv Service Bus chcete dozvědět víc, pročtěte si následující témata.
+Pokud se o zasílání zpráv Service Bus chcete dozvědět více, podívejte se na následující odkazy:
 
 * [Představení zasílání zpráv Azure Service Bus úrovně Premium (příspěvek na blogu)](http://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)
 * [Představení zasílání zpráv Azure Service Bus úrovně Premium (Channel9)](https://channel9.msdn.com/Blogs/Subscribe/Introducing-Azure-Service-Bus-Premium-Messaging)

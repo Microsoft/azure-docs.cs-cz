@@ -17,12 +17,12 @@ ms.workload: big-data
 ms.date: 04/26/2018
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: a76dbb9a232d99615629d1a3fec6010b37e73247
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 2750ddaba4b3fe25e18b6d3b7e9a65656165818f
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37046774"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37446601"
 ---
 # <a name="connect-to-hdinsight-hadoop-using-ssh"></a>Připojení k HDInsightu (Hadoop) pomocí protokolu SSH
 
@@ -137,7 +137,19 @@ Informace o změně hesla uživatelského účtu SSH najdete v dokumentu věnova
 
 ## <a id="domainjoined"></a>Ověřování: HDInsight připojený k doméně
 
-Pokud používáte __cluster HDInsight připojený k doméně__, musíte po připojení pomocí protokolu SSH použít příkaz `kinit`. Tento příkaz vás vyzve k zadání hesla a uživatele domény a ověří platnost vaší relace s využitím domény služby Azure Active Directory přidružené ke clusteru.
+Pokud používáte __cluster HDInsight připojený k doméně__, musíte po připojení pomocí místního uživatele protokolu SSH použít příkaz `kinit`. Tento příkaz vás vyzve k zadání hesla a uživatele domény a ověří platnost vaší relace s využitím domény služby Azure Active Directory přidružené ke clusteru.
+
+U každého uzlu připojeného k doméně (např. hlavního uzlu, hraničního uzlu) můžete povolit ověřování Kerberos, aby protokol SSH mohl používat doménový účet. To vyžaduje úpravu konfiguračního souboru sshd:
+```bash
+sudo vi /etc/ssh/sshd_config
+```
+Zrušte komentář a změňte `KerberosAuthentication` na `yes`.
+
+```bash
+sudo service sshd restart
+```
+
+Kdykoli budete potřebovat ověřit, zda se ověřování Kerberos zdařilo, použijte příkaz `klist`.
 
 Další informace najdete v tématu [Konfigurace clusterů HDInsight připojených k doméně](./domain-joined/apache-domain-joined-configure.md).
 

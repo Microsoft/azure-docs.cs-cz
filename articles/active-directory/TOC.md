@@ -382,8 +382,8 @@
 ### [Integrace místních identit pomocí Azure AD Connect](./connect/active-directory-aadconnect.md)
 
 ## Delegování přístupu k prostředkům
-### [Zobrazení členů role správce](users-groups-roles//directory-manage-roles-portal.md)
 ### [Role správce](users-groups-roles/directory-assign-admin-roles.md)
+#### [Zobrazení členů role správce](users-groups-roles//directory-manage-roles-portal.md)
 #### [Přiřazení role správce uživateli](fundamentals/active-directory-users-assign-role-azure-portal.md)
 #### [Porovnání oprávnění pro členy a uživatele typu host](fundamentals/users-default-permissions.md)
 ### [Zabezpečení role správce](users-groups-roles/directory-admin-roles-secure.md)  

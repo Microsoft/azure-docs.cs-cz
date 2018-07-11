@@ -9,14 +9,14 @@ ms.component: luis
 ms.topic: tutorial
 ms.date: 06/27/2018
 ms.author: v-geberr
-ms.openlocfilehash: 9acdfdde667d37bac5b96e4497b3e86d2cdeccb8
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: f3808620c4527f2971d8eb6d53a09c893b162b59
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063404"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37340946"
 ---
-# <a name="tutorial-learn-how-to-return-data-from-keyphrase-entity"></a>Kurz: Jak vrátit data z entity klíčové fráze 
+# <a name="tutorial-7-add-keyphrase-entity"></a>Kurz: 7. Přidání entity klíčové fráze 
 V tomto kurzu použijete aplikaci, která ukazuje, jak z promluv extrahovat klíčová témata.
 
 <!-- green checkmark -->
@@ -201,10 +201,10 @@ Váš chatbot má teď dostatek informací k určení dalšího kroku v konverza
 Služba LUIS s tímto požadavkem skončila. Volající aplikace, například chatbot, může převzít výsledek topScoringIntent a data entity klíčové fráze z promluvy a provést další krok. Služba LUIS neprovádí tuto programovou práci za chatbota ani nevolá aplikaci. Služba LUIS pouze určuje, co je záměrem uživatele. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Pokud už aplikaci LUIS nepotřebujete, odstraňte ji. Provedete to tak, že vyberete nabídku se třemi tečkami (...) vpravo od názvu aplikace v seznamu aplikací a vyberete **Delete** (Odstranit). V automaticky otevíraném dialogovém okně **Delete app?** (Odstranit aplikaci?) vyberte **Ok**.
+Pokud už aplikaci LUIS nepotřebujete, odstraňte ji. V nabídce vlevo nahoře vyberte **Moje aplikace**. Vyberte nabídku se třemi tečkami (...) vpravo od názvu aplikace v seznamu aplikací a vyberte **Delete** (Odstranit). V automaticky otevíraném dialogovém okně **Delete app?** (Odstranit aplikaci?) vyberte **Ok**.
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Vytvoření aplikace vracející mínění a předpověď záměru](luis-quickstart-intent-and-sentiment-analysis.md)
+> [Přidání analýzy mínění do aplikace](luis-quickstart-intent-and-sentiment-analysis.md)
 

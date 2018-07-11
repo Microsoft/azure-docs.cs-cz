@@ -8,11 +8,12 @@ ms.service: container-service
 ms.topic: overview
 ms.date: 12/05/2017
 ms.author: seozerca
-ms.openlocfilehash: a881b08874a157b0d6781ec3859b05eeaeba6676
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 471b53be4200ff728214876dd187c3c4e427c947
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37342872"
 ---
 # <a name="integrate-with-azure-managed-services-using-open-service-broker-for-azure-osba"></a>Integrace se službami spravovanými Azure s využitím OSBA (Open Service Broker for Azure)
 
@@ -21,7 +22,7 @@ Open Service Broker for Azure (OSBA) společně s modulem [Kubernetes Service Ca
 ## <a name="prerequisites"></a>Požadavky
 * Předplatné Azure
 
-* Azure CLI 2.0: [Nainstalujte ho místně][azure-cli-install] nebo ho použijte ve službě [Azure Cloud Shell][azure-cloud-shell].
+* Azure CLI: [Nainstalujte ho místně][azure-cli-install] nebo ho použijte ve službě [Azure Cloud Shell][azure-cloud-shell].
 
 * Helm CLI 2.7+: [Nainstalujte ho místně][helm-cli-install] nebo ho použijte ve službě [Azure Cloud Shell][azure-cloud-shell].
 
@@ -43,10 +44,16 @@ Teď do úložiště Helmu přidejte diagram modulu Service Catalog:
 helm repo add svc-cat https://svc-catalog-charts.storage.googleapis.com
 ```
 
-Nakonec nainstalujte Service Catalog s diagramem Helmu:
+Nakonec nainstalujte Service Catalog s diagramem Helmu. Pokud váš cluster používá RBAC, spusťte tento příkaz.
 
 ```azurecli-interactive
-helm install svc-cat/catalog --name catalog --namespace catalog --set rbacEnable=false
+helm install svc-cat/catalog --name catalog --namespace catalog --set controllerManager.healthcheck.enabled=false
+```
+
+Pokud váš cluster nepoužívá RBAC, spusťte tento příkaz.
+
+```azurecli-interactive
+helm install svc-cat/catalog --name catalog --namespace catalog --set rbacEnable=false --set apiserver.auth.enabled=false --set controllerManager.healthcheck.enabled=false
 ```
 
 Po spuštění diagramu Helmu ověřte, že se ve výstupu následujícího příkazu zobrazuje `servicecatalog`:
@@ -68,7 +75,7 @@ v1beta1.storage.k8s.io               10
 
 ## <a name="install-open-service-broker-for-azure"></a>Instalace technologie Open Service Broker for Azure
 
-Dalším krokem je instalace zprostředkovatele [Open Service Broker for Azure][open-service-broker-azure], která zahrnuje katalog pro služby spravované Azure. Příkladem dostupných služeb Azure jsou Azure Database for PostgreSQL, Azure Redis Cache, Azure Database for MySQL, Azure Cosmos DB, Azure SQL Database a další.
+Dalším krokem je instalace zprostředkovatele [Open Service Broker for Azure][open-service-broker-azure], která zahrnuje katalog pro služby spravované Azure. Příkladem dostupných služeb Azure jsou Azure Database for PostgreSQL, Azure Database for MySQL a Azure SQL Database.
 
 Začněte přidáním zprostředkovatele Open Service Broker for Azure do úložiště Helmu:
 

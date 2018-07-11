@@ -8,12 +8,12 @@ ms.date: 2/21/2018
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 7429516538c892bea04d38a98abcfb13ba960d22
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: de91559d9c3626bdd07c2e497a8aa0b124f00b57
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36286395"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37434832"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Dotazy týkající se zálohování Souborů Azure
 V tomto článku najdete odpovědi na běžné dotazy týkající se zálohování Souborů Azure. Některé odpovědi zahrnují odkazy na články obsahující komplexní informace. Otázky týkající se služby Azure Backup můžete také publikovat na [diskusním fóru](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -52,8 +52,8 @@ Zálohování sdílených složek Azure je aktuálně ve verzi Preview a je k di
 - Japonsko – západ (JPW)
 -   Indie – střed (INC) 
 - Indie – jih (INS)
-- Korea – střed (KRC)
-- Korea – jih (KRS)
+- Jižní Korea – střed (KRC)
+- Jižní Korea – jih (KRS)
 -   Střed USA – sever (NCUS) 
 -   Severní Evropa (NE) 
 -   Střed USA – jih (SCUS) 
@@ -68,7 +68,7 @@ Zálohování sdílených složek Azure je aktuálně ve verzi Preview a je k di
 Pokud potřebujete zálohování použít v konkrétní zeměpisné oblasti, která není uvedená výše, obraťte se na e-mail [AskAzureBackupTeam@microsoft.com](email:askazurebackupteam@microsoft.com).
 
 ### <a name="how-many-azure-file-shares-can-i-protect-in-a-vaultbr"></a>Kolik sdílených složek Azure můžu chránit v jednom trezoru?<br/>
-Během období Preview můžete v jednom trezoru chránit sdílené složky Azure až z 25 účtů úložiště. Zároveň můžete v jednom trezoru chránit až 200 sdílených složek Azure.
+Během období Preview můžete v jednom trezoru chránit sdílené složky Azure až z 50 účtů úložiště. Zároveň můžete v jednom trezoru chránit až 200 sdílených složek Azure.
 
 ### <a name="can-i-protect-two-different-file-shares-from-the-same-storage-account-to-different-vaults"></a>Můžu chránit dvě různé sdílené složky ze stejného účtu úložiště v jiných trezorech?
 Ne. Všechny sdílené složky v účtu úložiště je možné chránit pouze ve stejném trezoru.

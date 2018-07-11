@@ -2,19 +2,19 @@
 title: Migrace databáze SQL Serveru do služby Azure SQL Database pomocí DMA | Microsoft Docs
 description: Zjistěte, jak migrovat databázi SQL Serveru do služby Azure SQL Database pomocí DMA.
 services: sql-database
-author: CarlRabeler
+author: sachinpMSFT
 manager: craigg
 ms.service: sql-database
 ms.custom: mvc,migrate
 ms.topic: tutorial
-ms.date: 06/20/2018
+ms.date: 07/02/2018
 ms.author: carlrab
-ms.openlocfilehash: d0954627978c7725059e0b678783c8c6ffb9e827
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: ceab627d98149774a3eb767ee56d688f9c11ff99
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36308879"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37346837"
 ---
 # <a name="migrate-your-sql-server-database-to-azure-sql-database-using-dma"></a>Migrace databáze SQL Serveru do služby Azure SQL Database pomocí DMA
 
@@ -88,7 +88,7 @@ Pomocí následujících kroků vytvořte prázdnou databázi SQL.
 8. Přijměte podmínky verze Preview pro použití možnosti **Doplňkové úložiště**. 
 
    > [!IMPORTANT]
-   > Více než 1 TB úložiště na úrovni Premium je aktuálně k dispozici ve všech oblastech s výjimkou následujících: Velká Británie – sever, USA – středozápad, Velká Británie – jih 2, Čína – východ, USDoD – střed, Německo – střed, USDoD – východ, US Gov – jihozápad, US Gov (střed) – jih, Německo – severovýchod, Čína – sever, USGov – východ. V ostatních oblastech je úložiště na úrovni Premium omezeno na 1 TB. Viz [Aktuální omezení pro P11–P15]( sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+   > Více než 1 TB úložiště na úrovni Premium je aktuálně k dispozici ve všech oblastech s výjimkou následujících: USA – středozápad, Čína – východ, USDoD – střed, US Gov – Iowa, Německo – střed, USDoD – východ, US Gov – jihozápad, Německo – severovýchod, Čína – sever. V ostatních oblastech je úložiště na úrovni Premium omezeno na 1 TB. Viz [Aktuální omezení pro P11–P15]( sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
 
 9. Po výběru úrovně služby, počtu DTU a velikosti úložiště klikněte na **Použít**.  
 
@@ -240,7 +240,7 @@ Pomocí aplikace [SQL Server Management Studio](https://docs.microsoft.com/sql/s
 
 4. Klikněte na **Připojit**. V aplikaci SSMS se otevře okno Průzkumníka objektů. 
 
-5. V Průzkumníku objektů zobrazte objekty v ukázkové databázi rozbalením **Databáze** a potom **mySampleDatabase**.
+5. V Průzkumníkovi objektů zobrazte objekty v ukázkové databázi rozbalením **Databáze** a potom **mySampleDatabase**.
 
    ![databázové objekty](./media/sql-database-connect-query-ssms/connected.png)  
 
@@ -248,7 +248,7 @@ Pomocí aplikace [SQL Server Management Studio](https://docs.microsoft.com/sql/s
 
 Pomocí aplikace SQL Server Management Studio můžete změnit úroveň služby, úroveň výkonu a úroveň kompatibility. Během fáze importu doporučujeme pro zajištění nejlepšího výkonu importovat do databáze na vyšší úrovni výkonu, ale po dokončení importu vertikálně snížit kapacitu, abyste ušetřili, dokud nebudete připraveni importovanou databázi aktivně používat. Změna úrovně kompatibility může přinést lepší výkon a přístup k nejnovějším možnostem služby Azure SQL Database. Při migraci starší databáze zůstane její úroveň kompatibility zachována na nejnižší podporované úrovni, která je kompatibilní s importovanou databází. Další informace najdete v tématu [Zvýšení výkonu dotazů s úrovní kompatibility 130 ve službě Azure SQL Database](sql-database-compatibility-level-query-performance-130.md).
 
-1. V Průzkumníku objektů klikněte pravým tlačítkem na **mySampleDatabase** a pak klikněte na **Nový dotaz**. Otevře se okno dotazu připojené k vaší databázi.
+1. V Průzkumníkovi objektů klikněte pravým tlačítkem na **mySampleDatabase** a pak klikněte na **Nový dotaz**. Otevře se okno dotazu připojené k vaší databázi.
 
 2. Provedením následujícího příkazu nastavte úroveň služby na **Standard** a úroveň výkonu na **S1**.
 

@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 05/11/2018
 ms.author: dastanfo
 ms.custom: mvc
-ms.openlocfilehash: 85e6efcc4e213da4d6c650f7543403dd52e8337c
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: 7ba5fa1d4c5b87d1c4828ee98dae36f415d37c20
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248431"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37344151"
 ---
 # <a name="tutorial-install-and-create-service-fabric-cluster"></a>Kurz: Instalace a vytvoření clusteru Service Fabric
 
@@ -61,13 +61,7 @@ Po aktualizaci uzlů vypadají hodnoty takto:
         }
 ```
 
-Pak je třeba aktualizovat několik vlastností.  Na řádku 34 budete muset upravit připojovací řetězec pro diagnostické úložiště, který by měl po úpravě vypadat přibližně takto (IP adresa bude nahrazena vaší IP adresou): `"connectionstring": "\\\\172.31.27.1\\c$\\DiagnosticsStore"`
-
-Po aktualizaci připojovacího řetězce vytvořte složku.  Následující příkaz ji vytvoří, nezapomeňte však IP adresu v následujícím příkladu nahradit IP adresou, kterou jste vložili do připojovacího řetězce:
-
-```powershell
-mkdir \\172.31.27.1\c$\DiagnosticsStore
-```
+Pak je třeba aktualizovat několik vlastností.  Na řádku 34 budete muset upravit připojovací řetězec pro diagnostické úložiště, který by měl vypadat přibližně takto: `"connectionstring": "C:\\ProgramData\\SF\\DiagnosticsStore"`
 
 Nakonec v části `nodeTypes` konfigurace přidejte novou sekci pro namapování dočasných portů, které bude používat systém Windows.  Konfigurační soubor by měl vypadat přibližně takto:
 
