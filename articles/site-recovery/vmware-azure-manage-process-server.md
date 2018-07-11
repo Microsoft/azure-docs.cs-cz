@@ -1,47 +1,47 @@
 ---
-title: Správa procesu serveru v Azure Site Recovery | Microsoft Docs
-description: Tento článek popisuje správu serveru procesu nastavení pro virtuální počítač VMware a replikaci fyzický server v Azure Site Recovery.
-author: AnoopVasudavan
+title: Spravovat procesový server v Azure Site Recovery | Dokumentace Microsoftu
+description: Tento článek popisuje spravovat procesový server nastavit pro virtuální počítač VMware a replikací fyzických serverů v Azure Site Recovery.
+author: Rajeswari-Mamilla
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 06/20/2018
-ms.author: anoopkv
-ms.openlocfilehash: d1f880a5ec9f0343891999ef3bad11279cb0cfe6
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.author: ramamill
+ms.openlocfilehash: df162177c1ff56c1d6fc34d2ce49925a2705a868
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36285526"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37950783"
 ---
 # <a name="manage-process-servers"></a>Správa procesních serverů
 
-Ve výchozím nastavení je procesový server používají při replikaci virtuálních počítačů VMware nebo fyzických serverů do Azure nainstalována na místní počítač konfigurace serveru. Existuje několik instancí, ve kterých budete muset nastavit samostatný procesový server:
+Procesový server použít při replikaci virtuálních počítačů VMware nebo fyzických serverů do Azure je ve výchozím nastavení nainstalován na počítači místní konfigurační server. Existuje několik instancí, ve kterých budete muset nastavit samostatný procesový server:
 
-- Pro nasazení ve velkých organizacích může být nutné další místní servery proces škálování kapacity.
-- Navrácení služeb po obnovení, budete potřebovat dočasný procesní server nastavit v Azure. Tento virtuální počítač můžete odstranit, pokud se provádí navrácení služeb po obnovení. 
+- Pro velká nasazení můžete potřebovat další místní Procesové servery pro horizontální kapacity.
+- Pro navrácení služeb po obnovení, budete potřebovat dočasný procesní server v Azure. Po dokončení navrácení služeb po obnovení můžete odstranit tento virtuální počítač. 
 
-Tento článek obsahuje souhrn typické úlohy správy pro tyto servery další proces.
+Tento článek shrnuje obvyklé úlohy správy těchto dalších procesových serverů.
 
-## <a name="upgrade-a-process-server"></a>Upgrade serveru pro proces
+## <a name="upgrade-a-process-server"></a>Upgrade procesového serveru
 
-Upgrade serveru proces spuštěn místně nebo v Azure (pro účely navrácení služeb po obnovení), následujícím způsobem:
+Upgradujte procesový server spuštěn v místním prostředí nebo v Azure (pro účely navrácení služeb po obnovení), následujícím způsobem:
 
 [!INCLUDE [site-recovery-vmware-upgrade -process-server](../../includes/site-recovery-vmware-upgrade-process-server-internal.md)]
 
 > [!NOTE]
-  Obvykle když použijete Image Galerie Azure k vytvoření procesový server v Azure pro účely navrácení služeb po obnovení, je spuštěna na nejnovější dostupnou verzi. Site Recovery týmy vydání opravy a vylepšení v pravidelných intervalech, a doporučujeme že zachovat aktuální proces servery.
+  Obvykle když použijete k vytvoření procesového serveru v Azure pro účely navrácení služeb po obnovení Image z Galerie Azure, běží nejnovější dostupnou verzi. Týmy, které Site Recovery vydání opravy a vylepšení v pravidelných intervalech, a doporučujeme, abyste že informujte procesových serverů.
 
 
 
 ## <a name="reregister-a-process-server"></a>Opětovná registrace procesového serveru
 
-Pokud potřebujete znovu zaregistrujte procesový server běžících místně nebo v Azure, s konfiguračním serverem, postupujte takto:
+Pokud je potřeba znovu zaregistrujte procesový server spuštěné místně nebo v Azure, s konfiguračním serverem, udělejte toto:
 
 [!INCLUDE [site-recovery-vmware-register-process-server](../../includes/site-recovery-vmware-register-process-server.md)]
 
 Po uložení nastavení, postupujte takto:
 
-1. Na procesní server otevřete příkazový řádek správce.
+1. Na procesovém serveru otevřete příkazový řádek správce.
 2. Přejděte do složky **%PROGRAMDATA%\ASR\Agent**, a spusťte příkaz:
 
     ```
@@ -50,12 +50,12 @@ Po uložení nastavení, postupujte takto:
     net start obengine
     ```
 
-## <a name="modify-proxy-settings-for-an-on-premises-process-server"></a>Upravte nastavení proxy serveru pro místní server procesu
+## <a name="modify-proxy-settings-for-an-on-premises-process-server"></a>Upravit nastavení proxy serveru pro místní procesový server
 
-Pokud procesový server používá proxy server pro připojení k Site Recovery v Azure, použijte tento postup, pokud se budete muset upravit stávající nastavení proxy serveru.
+Pokud na procesovém serveru používá proxy server pro připojení k Site Recovery v Azure, pomocí tohoto postupu, pokud je potřeba upravit stávající nastavení proxy serveru.
 
-1. Přihlaste se k počítači serveru procesu. 
-2. Otevřete okno příkazového prostředí PowerShell pro správce a spusťte následující příkaz:
+1. Přihlaste se do počítače serveru procesu. 
+2. Otevřete okno příkazového řádku Powershellu pro správce a spusťte následující příkaz:
   ```
   $pwd = ConvertTo-SecureString -String MyProxyUserPassword
   Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber –ProxyUserName domain\username -ProxyPassword $pwd
@@ -75,7 +75,7 @@ Pokud procesový server používá proxy server pro připojení k Site Recovery 
   ```
 
 
-## <a name="remove-a-process-server"></a>Odebrání serveru procesu
+## <a name="remove-a-process-server"></a>Odebrat procesového serveru
 
 [!INCLUDE [site-recovery-vmware-unregister-process-server](../../includes/site-recovery-vmware-unregister-process-server.md)]
 

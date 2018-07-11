@@ -1,9 +1,9 @@
 ---
-title: Příklad infrastruktury Azure návod | Microsoft Docs
-description: Další informace o klíčových návrhu a implementace pokyny pro nasazení infrastruktury příklad v Azure.
+title: Průvodce ukázkovou infrastrukturou Azure | Dokumentace Microsoftu
+description: Další informace o klíčových návrh a implementace pokyny pro nasazení do Příklad infrastruktury v Azure.
 documentationcenter: ''
 services: virtual-machines-windows
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,63 +14,63 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
-ms.author: iainfou
+ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c532657951d6d0241a5d8d25a56bb237ad481567
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: ddbaed6704fd32f7fd4fe5a790424cbf829d2f1c
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
-ms.locfileid: "29809865"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37932853"
 ---
-# <a name="example-azure-infrastructure-walkthrough-for-windows-vms"></a>Příklad infrastruktury Azure návod pro virtuální počítače Windows
-Tento článek vás provede vytváření infrastruktury příklad aplikace. Jsme podrobnosti navrhování infrastruktury pro jednoduché online obchodu, která spojuje všechny pokyny a rozhodnutí, která kolem názvů, skupiny dostupnosti, virtuální sítě a nástroje pro vyrovnávání zatížení a ve skutečnosti nasazení virtuálních počítačů (VM).
+# <a name="example-azure-infrastructure-walkthrough-for-windows-vms"></a>Průvodce ukázkovou infrastrukturou Azure pro virtuální počítače s Windows
+Tento článek vás provede vytvoření příkladu infrastruktury aplikace. Můžeme podrobně navrhování infrastruktury pro jednoduché online úložiště, který spojuje všechny zásady a rozhodnutí týkající se vytváření názvů, skupiny dostupnosti, virtuální sítě a nástroje pro vyrovnávání zatížení a skutečného nasazení virtuálních počítačů (VM).
 
 ## <a name="example-workload"></a>Příklad úloh
-Společnosti Adventure Works Cycles chce sestavit aplikaci v Azure, který se skládá z online obchodu:
+Adventure Works Cycles chce, aby se k sestavení aplikace v Azure, která se skládá z online úložiště:
 
-* Dva servery služby IIS se spuštěnou front-endu do vrstvy webového klienta
-* Zpracování dat a objednávky v aplikační vrstvě dva servery služby IIS
-* Dvě instance Microsoft SQL Server se skupinami dostupnosti AlwaysOn (dva servery SQL a určujícího uzlu většina) pro ukládání dat produktu a objednávky v databázové vrstvy
-* Dva řadiče domény služby Active Directory pro účty zákazníků a všichni dodavatelé v vrstvou ověřování
+* Dva servery služby IIS spustit klienta pro front-end webové vrstvy
+* Dva servery služby IIS, zpracování dat a objednávky v aplikační vrstvě
+* Dvě instance Microsoft SQL Server se skupinami dostupnosti AlwaysOn (dva servery SQL a určujícího uzlu majority) pro ukládání dat produktu a objednávky v databázové vrstvě
+* Dva řadiče domény služby Active Directory pro zákazníky a dodavatele v vrstvu ověřování
 * Všechny servery se nacházejí v dvě podsítě:
-  * podsíť front-end pro webové servery 
-  * back-end podsíť pro aplikační servery, clusteru serveru SQL a řadiče domény
+  * front-endové podsítě pro webové servery 
+  * back endovou podsíť pro aplikační servery, clusteru serveru SQL a řadiče domény
 
-![Diagram různých vrstev pro infrastrukturu aplikace](./media/infrastructure-example/example-tiers.png)
+![Diagram různých vrstev infrastruktury aplikace](./media/infrastructure-example/example-tiers.png)
 
-Zabezpečené příchozí webové přenosy musí být vyrovnávání zatížení mezi webovými servery jako zákazníci procházet online obchodu. Pořadí zpracování přenosů dat ve formátu HTTP požadavků z webových serverů musí být rozložena mezi servery aplikací. Kromě toho musí být navrženy infrastruktury pro vysokou dostupnost.
+Zabezpečený příchozí webový provoz musí být vyrovnávání zatížení mezi webovými servery zákazníci procházení online obchodu. Pořadí zpracování provozu ve formě HTTP žádosti z webových serverů musí být rozložena mezi aplikační servery. Kromě toho musí být navrženy infrastruktury pro zajištění vysoké dostupnosti.
 
-Výsledný návrhu musí obsahovat:
+Výsledný návrh musí obsahovat:
 
 * Předplatné Azure a účet
 * Jedna skupina prostředků
 * Azure Managed Disks
 * Virtuální síť se dvěma podsítěmi
-* Sady dostupnosti pro virtuální počítače s podobnou roli
+* Skupiny dostupnosti pro virtuální počítače s podobnou roli
 * Virtuální počítače
 
-Všechny výše použijte tyto zásady vytváření názvů:
+Všechny výše uvedené použijte tyto zásady vytváření názvů:
 
-* Adventure Works Cycles používá **[IT zatížení]-[umístění] – [prostředků Azure]** jako předponu
-  * V tomto příkladu "**azos**" (Online úložiště Azure) je název úlohy IT a "**použít**" (východní USA 2) je umístění
+* Adventure Works Cycles používá **[IT úlohy]-[umístění]-[prostředků Azure]** jako předponu
+  * V tomto příkladu "**azos**" (Azure Store Online) je název úlohy IT a "**použít**" je umístění (východní USA 2)
 * Virtuální sítě pomocí AZOS. POUŽIJTE VN **[číslo]**
-* Pomocí sad dostupnosti azos-použít-jako-**[role]**
-* Názvy virtuálních počítačů pomocí azos-použít-vm -**[vmname]**
+* Skupiny dostupnosti použijte azos-použití-jako-**[role]**
+* Názvy virtuálních počítačů použít azos-použití-vm -**[název_virtuálního_počítače]**
 
-## <a name="azure-subscriptions-and-accounts"></a>Předplatná Azure a účty
-Společnosti Adventure Works Cycles je pomocí své podnikové předplatné s názvem společnosti Adventure Works podnikové předplatné, zajistit fakturace pro tuto úlohu IT.
+## <a name="azure-subscriptions-and-accounts"></a>Účtů a předplatných Azure
+Adventure Works Cycles využívá svoje předplatné Enterprise s názvem předplatného Enterprise společnosti Adventure Works k vyúčtování pro danou úlohu IT.
 
 ## <a name="storage"></a>Úložiště
-Společnosti Adventure Works Cycles určit, že by měli používat Azure spravované disky. Při vytváření virtuálních počítačů, se používají oba vrstev úložiště k dispozici:
+Adventure Works Cycles určit, že by měl použít Azure Managed Disks. Při vytváření virtuálních počítačů, se používají obou úrovní úložiště k dispozici:
 
-* **Standardní úložiště** pro webové servery, aplikační servery a řadiče domény a jejich datových disků.
-* **Storage úrovně Premium** pro virtuální počítače serveru SQL a jejich datových disků.
+* **Storage úrovně standard** pro webové servery, aplikační servery a řadiče domény a jejich datové disky.
+* **Storage úrovně Premium** pro virtuální počítače SQL serveru a jejich datové disky.
 
 ## <a name="virtual-network-and-subnets"></a>Virtuální sítě a podsítě
-Vzhledem k tomu, že virtuální sítě nemusí probíhající připojení k síti společnosti Adventure pracovní cykly místní, rozhodla ve virtuální síti jenom pro cloud.
+Vzhledem k tomu, že virtuální sítě nemusí probíhající připojení k Adventure pracovní cykly v místní síti, se rozhodli v čistě cloudové virtuální síti.
 
-Vytvářely jenom pro cloud virtuální síť s následujícím nastavením pomocí portálu Azure:
+Výhradně cloudový virtuální síť vytvořili s následujícím nastavením pomocí webu Azure portal:
 
 * Název: AZOS-použití VN01
 * Umístění: Východní USA 2
@@ -79,39 +79,39 @@ Vytvářely jenom pro cloud virtuální síť s následujícím nastavením pomo
   * Název: front-endu
   * Adresní prostor: 10.0.1.0/24
 * Druhou podsíť:
-  * Name: BackEnd
+  * Název: back-endu
   * Adresní prostor: 10.0.2.0/24
 
 ## <a name="availability-sets"></a>Skupiny dostupnosti
-Aby se zachovala vysokou dostupnost všechny čtyři úrovně jejich online úložiště, se rozhodli společnosti Adventure Works Cycles čtyři skupiny dostupnosti:
+Kvůli udržení vysoké dostupnosti všechny čtyři úrovně jejich online úložiště, Adventure Works Cycles jste se rozhodli čtyři skupiny dostupnosti:
 
 * **azos použít jako webový** pro webové servery
 * **azos používání jako aplikace** pro aplikační servery
-* **azos použijte jako sql** pro servery SQL Server
+* **azos použijte jako sql** pro servery SQL
 * **azos použijte jako dc** pro řadiče domény
 
 ## <a name="virtual-machines"></a>Virtuální počítače
-Následující názvy pro své virtuální počítače Azure se rozhodli společnosti Adventure Works Cycles:
+Adventure Works Cycles jste se rozhodli následující názvy pro své virtuální počítače Azure:
 
-* **azos použití virtuálních počítačů web01** pro prvního webového serveru
-* **azos použití virtuálních počítačů web02** pro druhého webového serveru
-* **azos použití virtuálních počítačů app01** pro první server pro aplikace
-* **azos použití virtuálních počítačů app02** pro druhý server aplikace
-* **azos použití virtuálních počítačů sql01** pro první server SQL Server v clusteru
-* **azos použití virtuálních počítačů sql02** pro druhý server SQL Server v clusteru
-* **azos použití virtuálních počítačů dc01** pro první řadič domény
-* **azos použití virtuálních počítačů dc02** pro druhý řadič domény
+* **azos použití vm-web01** první webového serveru
+* **azos použití vm-web02** pro druhého webového serveru
+* **azos použití vm-app01** pro první server pro aplikaci
+* **azos použití vm-app02** pro druhý server aplikace
+* **azos použití vm-sql01** pro první SQL Server server v clusteru
+* **azos použití vm-sql02** pro druhý SQL Server server v clusteru
+* **azos použití vm-dc01** pro první řadič domény
+* **azos použití vm-dc02** pro druhého řadiče domény
 
-Zde je Výsledná konfigurace.
+Tady je výsledné konfigurace.
 
-![Infrastruktura konečné aplikace nasazené v Azure](./media/infrastructure-example/example-config.png)
+![Poslední aplikační infrastruktury, které jsou nasazené v Azure](./media/infrastructure-example/example-config.png)
 
 Tato konfigurace zahrnuje:
 
-* Čistě cloudové virtuální síť se dvěma podsítěmi (front-endové a back-end)
-* Disky Azure spravované s disky, Standard a Premium
-* Čtyři skupiny dostupnosti, jeden pro každou vrstvu úložiště online
+* Výhradně cloudový virtuální sítě se dvěma podsítěmi (front-endových a back-end)
+* Služba Azure Managed Disks se disky Standard a Premium
+* Čtyři skupiny dostupnosti, jeden pro každou vrstvu online úložiště
 * Virtuální počítače pro čtyři vrstvy
-* Externí s vyrovnáváním zatížení pro založený na protokolu HTTPS webové přenosy z Internetu webových serverů
-* K interní s vyrovnáváním zatížení pro nezašifrované webový provoz z webových serverů na aplikační servery
+* Skupinu s vyrovnáváním zatížení externí pro založený na protokolu HTTPS webový provoz z Internetu do webových serverů
+* Interní s vyrovnáváním zatížení pro nešifrované webový provoz z webových serverů na aplikační servery
 * Jedna skupina prostředků

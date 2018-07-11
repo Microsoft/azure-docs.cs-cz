@@ -1,9 +1,9 @@
 ---
-title: Vytvoření Image virtuálních počítačů Azure Linux s balírna | Microsoft Docs
-description: Další informace o použití balírna k vytvoření bitové kopie virtuálních počítačích s Linuxem v Azure
+title: Jak vytvořit Linuxové Image virtuálních počítačů Azure pomocí Packeru | Dokumentace Microsoftu
+description: Zjistěte, jak vytvořit Image virtuálních počítačů s Linuxem v Azure pomocí Packeru
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -14,20 +14,20 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/03/2018
-ms.author: iainfou
-ms.openlocfilehash: 7d7ba6a493cca3dd14829e6527136af6df424c05
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.author: cynthn
+ms.openlocfilehash: f84626c5a487d52f53a2c8bf492a124c87599ed0
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33778180"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37932390"
 ---
-# <a name="how-to-use-packer-to-create-linux-virtual-machine-images-in-azure"></a>Jak používat balírna k vytvoření bitové kopie virtuálních počítačů Linux v Azure
-Každý virtuální počítač (VM) v Azure je vytvořený z image, která definuje distribuci systému Linux a verzi operačního systému. Bitové kopie může zahrnovat předinstalované aplikace a konfigurace. Azure Marketplace poskytuje celou řadu imagí první a třetí strany pro aplikaci v prostředích a nejběžnější distribuce, nebo můžete vytvořit vlastní vlastních bitových kopií přizpůsobit svým potřebám. Tento článek popisuje, jak používat nástroj open source [balírna](https://www.packer.io/) definovat a vytvářet vlastní bitové kopie v Azure.
+# <a name="how-to-use-packer-to-create-linux-virtual-machine-images-in-azure"></a>Jak vytvořit Linuxové Image virtuálních počítačů v Azure pomocí Packeru
+Každý virtuální počítač (VM) v Azure je vytvořený z image, která definuje Linuxovou distribuci a verzi operačního systému. Image můžete zahrnout předinstalované aplikace a konfigurace. Na webu Azure Marketplace obsahuje celou řadu imagí první a třetí strany pro nejběžnější distribuce a prostředí aplikace, nebo můžete vytvořit vlastní Image přizpůsobené vašim potřebám. Tento článek podrobně popisuje, jak používat open source nástroj [Packeru](https://www.packer.io/) k definování a vytvoření vlastních imagí v Azure.
 
 
-## <a name="create-azure-resource-group"></a>Vytvoření skupiny prostředků Azure.
-Během procesu vytváření balírna vytvoří dočasný prostředky Azure, jako sestavuje zdrojového virtuálního počítače. Když Pokud chcete zachytit tohoto zdrojového virtuálního počítače pro použití jako bitovou kopii, je nutné zadat skupinu prostředků. Výstup z procesu sestavení balírna je uložený v této skupině prostředků.
+## <a name="create-azure-resource-group"></a>Vytvoření skupiny prostředků Azure
+Během procesu sestavování vytvoří Packeru dočasné prostředky Azure jako sestavení zdrojového virtuálního počítače. K zachycení této zdrojový virtuální počítač pro použití jako image, je nutné definovat skupinu prostředků. V této skupině prostředků se ukládá výstup z procesu sestavení Packeru.
 
 Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az_group_create). Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*:
 
@@ -37,15 +37,15 @@ az group create -n myResourceGroup -l eastus
 
 
 ## <a name="create-azure-credentials"></a>Vytvořit přihlašovací údaje Azure
-Balírna ověřuje s Azure pomocí objektu služby. Objektu zabezpečení služby Azure je identita zabezpečení, která můžete použít s aplikací, služeb a automatizace nástroje, například balírna. Můžete řídit a definovat oprávnění, jaké operace objektu služby můžete provádět v Azure.
+Packeru se ověřuje pomocí Azure s využitím instančního objektu. Instanční objekt Azure je identita zabezpečení, který vám pomůže s aplikací, služeb a nástrojů automatizace, jako je Packeru. Kontrolou a můžete definovat oprávnění, jaké operace lze provádět instanční objekt služby v Azure.
 
-Vytvoření služby hlavní s [az ad sp vytvořit pro rbac](/cli/azure/ad/sp#create-for-rbac) a výstupní přihlašovací údaje, které potřebuje balírna:
+Vytvořit instanční objekt s [az ad sp create-for-rbac](/cli/azure/ad/sp#create-for-rbac) a přihlašovací údaje, které potřebuje Packeru výstup:
 
 ```azurecli
 az ad sp create-for-rbac --query "{ client_id: appId, client_secret: password, tenant_id: tenant }"
 ```
 
-Příklad výstupu z předchozích příkazů vypadá takto:
+Příklad výstupu z výše uvedených příkazů vypadá takto:
 
 ```azurecli
 {
@@ -55,17 +55,17 @@ Příklad výstupu z předchozích příkazů vypadá takto:
 }
 ```
 
-K ověření do Azure, musíte také získat svoje ID předplatného Azure s [az účet zobrazit](/cli/azure/account#az_account_show):
+Pro ověření do Azure, budete potřebovat k získání ID vašeho předplatného Azure s [zobrazit účet az](/cli/azure/account#az_account_show):
 
 ```azurecli
 az account show --query "{ subscription_id: id }"
 ```
 
-V dalším kroku použijete výstup z těchto dvou příkazů.
+Výstup z těchto dvou příkazů použijete v dalším kroku.
 
 
-## <a name="define-packer-template"></a>Definovat balírna šablonu
-K vytvoření bitové kopie, vytvořit šablonu jako soubor ve formátu JSON. V šabloně definujete tvůrce a provisioners, které provádějí procesu skutečné sestavení. Má balírna [zajištění webu pro Azure](https://www.packer.io/docs/builders/azure.html) , což vám umožní definovat prostředky Azure, jako jsou hlavní přihlašovací údaje služby vytvořili v předchozím kroku.
+## <a name="define-packer-template"></a>Definice šablony Packeru
+Pokud chcete vytvořit Image, vytvořit šablonu jako soubor JSON. V šabloně definujte tvůrci a provisioners, které vykonávají proces skutečné sestavení. Má packeru [zajištění webu pro Azure](https://www.packer.io/docs/builders/azure.html) , který umožňuje definovat prostředky Azure, jako jsou pověření instančního objektu služby, vytvořili v předchozím kroku.
 
 Vytvořte soubor s názvem *ubuntu.json* a vložte následující obsah. Zadejte vlastní hodnoty pro následující:
 
@@ -73,7 +73,7 @@ Vytvořte soubor s názvem *ubuntu.json* a vložte následující obsah. Zadejte
 |-------------------------------------|----------------------------------------------------|
 | *client_id*                         | První řádek výstupu z `az ad sp` vytvoření příkazu - *appId* |
 | *client_secret*                     | Druhý řádek výstupu z `az ad sp` vytvoření příkazu - *heslo* |
-| *tenant_id*                         | Třetí řádek výstupu z `az ad sp` vytvoření příkazu - *klienta* |
+| *tenant_id*                         | Třetí řádek výstupu z `az ad sp` vytvoření příkazu - *tenanta* |
 | *subscription_id*                   | Výstup z `az account show` příkaz |
 | *managed_image_resource_group_name* | Název skupiny prostředků, kterou jste vytvořili v prvním kroku |
 | *managed_image_name*                | Název bitové kopie spravovaného disku, který je vytvořen |
@@ -120,23 +120,23 @@ Vytvořte soubor s názvem *ubuntu.json* a vložte následující obsah. Zadejte
 }
 ```
 
-Tato šablona vytvoří bitovou kopii Ubuntu 16.04 LTS, nainstaluje NGINX a pak deprovisions virtuálního počítače.
+Tato šablona vytvoří bitovou kopii se systémem Ubuntu 16.04 LTS, nainstaluje server NGINX a pak deprovisions virtuálního počítače.
 
 > [!NOTE]
-> Pokud rozbalíte na šabloně této zřízení uživatelských přihlašovacích údajů, upravte příkaz zajištění webu, který deprovisions agent Azure číst `-deprovision` místo `deprovision+user`.
+> Pokud rozbalíte na této šabloně zřízení uživatelských přihlašovacích údajů, upravte příkaz zajištění webu, který deprovisions agenta služby Azure ke čtení `-deprovision` spíše než `deprovision+user`.
 > `+user` Příznak odebere všechny uživatelské účty ze zdrojového virtuálního počítače.
 
 
-## <a name="build-packer-image"></a>Sestavení balírna bitové kopie
-Pokud ještě nemáte balírna nainstalována na místním počítači, [postupujte podle pokynů pro instalaci balírna](https://www.packer.io/docs/install/index.html).
+## <a name="build-packer-image"></a>Sestavení image Packeru
+Pokud ještě nemáte nainstalované na místním počítači, Packeru [postupujte podle pokynů k instalaci Packeru](https://www.packer.io/docs/install/index.html).
 
-Vytvořit bitovou kopii zadáním vaší balírna soubor šablony následujícím způsobem:
+Sestavení image tak, že zadáte vaše Packeru soubor šablony následujícím způsobem:
 
 ```bash
 ./packer build ubuntu.json
 ```
 
-Příklad výstupu z předchozích příkazů vypadá takto:
+Příklad výstupu z výše uvedených příkazů vypadá takto:
 
 ```bash
 azure-arm output will be in this color.
@@ -197,11 +197,11 @@ ManagedImageName: myPackerImage
 ManagedImageLocation: eastus
 ```
 
-Jak dlouho trvá několik minut, než balírna k vytvoření virtuálního počítače, spusťte provisioners a vyčistit nasazení.
+Trvá několik minut, než Packeru pro vytvoření virtuálního počítače, spusťte provisioners a vyčištění nasazení.
 
 
-## <a name="create-vm-from-azure-image"></a>Vytvoření virtuálního počítače z Azure Image
-Nyní můžete vytvořit virtuální počítač z bitové kopie s [vytvořit virtuální počítač az](/cli/azure/vm#az_vm_create). Určuje obrázek, který jste vytvořili pomocí `--image` parametr. Následující příklad vytvoří virtuální počítač s názvem *Můjvp* z *myPackerImage* a generuje klíče SSH, pokud už neexistují:
+## <a name="create-vm-from-azure-image"></a>Vytvoření virtuálního počítače z Imagí Azure
+Nyní můžete vytvořit virtuální počítač z bitové kopie s [az vm vytvořit](/cli/azure/vm#az_vm_create). Určete bitovou kopii, která jste vytvořili pomocí `--image` parametru. Následující příklad vytvoří virtuální počítač s názvem *myVM* z *myPackerImage* a vygeneruje klíče SSH, pokud ještě neexistují:
 
 ```azurecli
 az vm create \
@@ -212,9 +212,9 @@ az vm create \
     --generate-ssh-keys
 ```
 
-Pokud chcete vytvořit virtuální počítače v jiné skupině prostředků nebo oblasti než balírna image, zadejte ID bitové kopie místo název bitové kopie. Můžete získat ID bitové kopie s [az image zobrazit](/cli/azure/image#az-image-show).
+Pokud chcete vytvořit virtuální počítače v jiné skupině prostředků nebo oblasti než vaší image Packeru, zadejte ID bitové kopie nikoli název image. Můžete získat ID bitové kopie s [az image show](/cli/azure/image#az-image-show).
 
-Jak dlouho trvá několik minut pro vytvoření virtuálního počítače. Po vytvoření virtuálního počítače, poznamenejte si `publicIpAddress` zobrazí pomocí rozhraní příkazového řádku Azure. Tato adresa se používá pro přístup k webu NGINX prostřednictvím webového prohlížeče.
+Trvá několik minut pro vytvoření virtuálního počítače. Po vytvoření virtuálního počítače, poznamenejte si `publicIpAddress` zobrazí rozhraní příkazového řádku Azure. Tato adresa se používá pro přístup k webu NGINX přes webový prohlížeč.
 
 Pokud chcete umožnit přístup k virtuálnímu počítači webovému provozu, otevřete port 80 z internetu pomocí příkazu [az vm open-port](/cli/azure/vm#open-port):
 
@@ -225,13 +225,13 @@ az vm open-port \
     --port 80
 ```
 
-## <a name="test-vm-and-nginx"></a>Testovací virtuální počítač a NGINX
-Nyní můžete otevřít webový prohlížeč a do adresního řádku zadat `http://publicIpAddress`. Zadejte vlastní veřejnou IP adresu získanou při vytváření virtuálního počítače. Výchozí NGINX stránky se zobrazí jako v následujícím příkladu:
+## <a name="test-vm-and-nginx"></a>Testovací virtuální počítač a server NGINX
+Nyní můžete otevřít webový prohlížeč a do adresního řádku zadat `http://publicIpAddress`. Zadejte vlastní veřejnou IP adresu získanou při vytváření virtuálního počítače. Jako v následujícím příkladu se zobrazí výchozí stránka serveru NGINX:
 
 ![Výchozí web NGINX](./media/build-image-with-packer/nginx.png) 
 
 
 ## <a name="next-steps"></a>Další postup
-V tomto příkladu jste použili balírna k vytvoření image virtuálního počítače s NGINX již nainstalován. Můžete tuto bitovou kopii virtuálního počítače spolu s existující pracovní postupy nasazení, například k nasazení vaší aplikace na virtuální počítače vytvořené z bitové kopie s Ansible, Chef nebo Puppet.
+V tomto příkladu používá Packeru pro vytvoření image virtuálního počítače se serverem NGINX už nainstalovaná. Tato image virtuálního počítače společně s existující pracovní postupy nasazení, například můžete použít k nasazení vaší aplikace na virtuální počítače vytvořené z této Image pomocí Ansible, Chef nebo Puppet.
 
-Další příklad šablony balírna pro ostatní distribucích systému Linux, najdete v části [toto úložiště GitHub](https://github.com/hashicorp/packer/tree/master/examples/azure).
+Další příklad šablony Packeru pro jiné distribuce Linuxu, naleznete v tématu [úložiště GitHub](https://github.com/hashicorp/packer/tree/master/examples/azure).

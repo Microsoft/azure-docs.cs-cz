@@ -4,20 +4,28 @@ description: Nejčastější dotazy k Azure Migrate adresy
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 07/10/2018
 ms.author: snehaa
-ms.openlocfilehash: c85e512dede7c14e7b678297ed524fa7a1d7e79d
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 3f035f38b1ad68e9e39d151ffad3fc650a0a1d80
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37859519"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952745"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate – nejčastější dotazy (FAQ)
 
 Tento článek obsahuje nejčastější dotazy týkající se Azure Migrate. Pokud máte další dotazy, po přečtení tohoto článku, publikujte je na [fórum pro Azure Migrate](http://aka.ms/AzureMigrateForum).
 
 ## <a name="general"></a>Obecné
+
+### <a name="does-azure-migrate-support-assessment-of-only-vmware-workloads"></a>Podporuje Azure Migrate posouzení pouze úloh VMware?
+
+Ano, Azure Migrate aktuálně podporuje pouze posouzení úloh VMware. V budoucnu bude povolena podpora pro Hyper-V a fyzické servery.
+
+### <a name="does-azure-migrate-need-vcenter-server-to-discover-a-vmware-environment"></a>Serveru ke zjištění prostředí VMware vCenter potřebuje Azure Migrate?
+
+Ano, Azure Migrate vyžaduje systém vCenter Server ke zjištění prostředí VMware. Nepodporuje zjišťování hostitelů ESXi, které nejsou spravované přes vCenter Server.
 
 ### <a name="how-is-azure-migrate-different-from-azure-site-recovery"></a>Jak se Azure Migrate liší od Azure Site Recovery?
 
@@ -38,11 +46,9 @@ Azure Migrate je nástroj pro plánování migrace a Azure Site Recovery Deploym
 
 **Zotavení po havárii z VMware/Hyper-V do Azure**: Pokud máte v úmyslu provést zotavení po havárii (DR) v Azure pomocí Azure Site Recovery (služba Site Recovery), použijte Plánovač nasazení služby Site Recovery pro plánování zotavení po Havárii. Plánovač nasazení služby Site Recovery nemá podrobné, specifické pro Azure Site Recovery hodnocení v místním prostředí. Poskytuje doporučení, která jsou vyžadované Site Recovery pro úspěšné operace zotavení po Havárii, jako je replikace, převzetí služeb při selhání virtuálních počítačů.  
 
-### <a name="does-azure-migrate-need-vcenter-server-to-discover-a-vmware-environment"></a>Serveru ke zjištění prostředí VMware vCenter potřebuje Azure Migrate?
-
-Ano, Azure Migrate vyžaduje systém vCenter Server ke zjištění prostředí VMware. Nepodporuje zjišťování hostitelů ESXi, které nejsou spravované přes vCenter Server.
-
 ### <a name="which-azure-regions-are-supported-by-azure-migrate"></a>Které oblasti Azure jsou podporovány službou Azure Migrate?
+
+Azure Migrate aktuálně podporuje východní USA a střed USA – Západ jako umístění projektu migrace. Všimněte si, že i v případě, že projekty migrace můžete vytvořit jenom v západní USA – střed a východní USA, můžete přesto posoudit, s u svých počítačů [více cílových míst](https://docs.microsoft.com/azure/migrate/how-to-modify-assessment#edit-assessment-properties). Umístění projektu slouží pouze k uložení zjištěná data.
 
 ### <a name="how-does-the-on-premises-site-connect-to-azure-migrate"></a>Jak v místní lokalitě připojit k Azure Migrate?
 
@@ -51,7 +57,6 @@ Připojení může být přes internet nebo pomocí veřejného partnerského vz
 ### <a name="can-i-harden-the-vm-set-up-with-the-ova-template"></a>Můžete posílení virtuálního počítače s. Šablony pro soubory OVA?
 
 Další součásti (například antivirový program) mohou být přidány do. Šablony pro soubory OVA za předpokladu, jako jsou ponechána komunikaci a pravidel brány firewall vyžadované pro zařízení Azure Migrate pro práci se.   
-
 
 ## <a name="discovery-and-assessment"></a>Zjišťování a posouzení
 
@@ -89,13 +94,19 @@ Data shromažďovaná společností zařízení kolektoru je uložen v umístěn
 
 Pro vizualizaci závislostí, při instalaci agentů na virtuálních počítačích, data shromážděná agenty závislostí se ukládají v USA v pracovním prostoru OMS vytvoří v předplatném uživatele. Tato data jsou odstraněna při odstranění pracovního prostoru OMS ve vašem předplatném. [Další informace](https://docs.microsoft.com/azure/migrate/concepts-dependency-visualization).
 
+### <a name="is-the-data-encrypted-at-rest-and-while-in-transit"></a>Má tato data šifrovat v klidovém stavu a v průběhu přenosu?
+
+Ano, shromážděná data zašifrovaná v klidu i při přenosu. Metadata shromážděné na zařízení bezpečně posílá do služby Azure Migrate přes internet prostřednictvím protokolu https. Shromážděná metadata uložená v [Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/database-encryption-at-rest) a [úložiště objektů blob v Azure](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) v předplatném Microsoft a se šifrují při nečinnosti.
+
+Data shromážděná agenty závislostí je také šifrovaný v přenosu (secure https channel) a je uložen v pracovním prostoru Log Analytics v předplatném uživatele. To se také šifrují při nečinnosti.
+
 ### <a name="how-does-the-collector-communicate-with-the-vcenter-server-and-the-azure-migrate-service"></a>Způsob, jakým kolektoru komunikují pomocí systému vCenter Server a služby Azure Migrate?
 
 Zařízení kolektoru se připojuje k systému vCenter Server (port 443) pomocí přihlašovacích údajů, které zadal uživatel v zařízení. Vyžádá si vCenter Server s použitím VMware PowerCLI se získat metadata o virtuálních počítačích spravovaných přes vCenter Server. Shromažďuje obou konfiguračních dat o virtuálních počítačích (jader, paměti, disky, NIC atd.) a také historie výkonu každého virtuálního počítače za poslední měsíc z vCenter serveru. Shromážděná metadata se pak posílají do služby Azure Migrate (přes internet prostřednictvím protokolu https) pro posouzení. [Další informace](concepts-collector.md)
 
-### <a name="can-i-connect-to-multiple-vcenter-servers"></a>Můžu se připojit k více serverů vCenter?
+### <a name="can-i-connect-the-same-collector-appliance-to-multiple-vcenter-servers"></a>Můžete připojit stejné zařízení kolektoru na několik serverů vCenter?
 
-Je nutné konektor zařízení nastavit pro každý server.
+Ano, jeden kolektor zařízení je možné zjistit více vCenter servery, ale ne současně. Budete muset spustit zjišťování jeden po druhém.
 
 ### <a name="is-the-ova-template-used-by-site-recovery-integrated-with-the-ova-used-by-azure-migrate"></a>Je. Soubory OVA šablony používané pro Site Recovery integrovaná. Soubory OVA použít se službou Azure Migrate?
 
@@ -104,12 +115,6 @@ Aktuálně neexistuje žádná integrace. Na. Šablony pro soubory OVA ve služb
 ### <a name="i-changed-my-machine-size-can-i-rerun-the-assessment"></a>Můžu změnit svoji velikost počítače. Můžete znovu spustit posouzení?
 
 Pokud změníte nastavení na virtuálním počítači, kterou chcete posoudit, aktivační události zjišťování znovu pomocí zařízení kolektoru. V zařízení, použijte **spustit shromažďování znovu** možnost to udělat. Po dokončení kolekce, vyberte **přepočítat** možnost pro posouzení na portálu, zobrazíte výsledky posouzení aktualizované.
-
-### <a name="is-the-data-encrypted-at-rest-and-while-in-transit"></a>Má tato data šifrovat v klidovém stavu a v průběhu přenosu?
-
-Ano, shromážděná data zašifrovaná v klidu i při přenosu. Metadata shromážděné na zařízení bezpečně posílá do služby Azure Migrate přes internet prostřednictvím protokolu https. Shromážděná metadata uložená v [Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/database-encryption-at-rest) a [úložiště objektů blob v Azure](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) v předplatném Microsoft a se šifrují při nečinnosti.
-
-Data shromážděná agenty závislostí je také šifrovaný v přenosu (secure https channel) a je uložen v pracovním prostoru Log Analytics v předplatném uživatele. To se také šifrují při nečinnosti.
 
 ### <a name="how-can-i-discover-a-multi-tenant-environment-in-azure-migrate"></a>Jak lze zjistit prostředí s více tenanty ve službě Azure Migrate?
 

@@ -1,9 +1,9 @@
 ---
-title: Virtuální počítač Azure PowerShell ukázky | Microsoft Docs
-description: Virtuální počítač Azure PowerShell ukázky
+title: Ukázky Powershellu pro virtuální počítač Azure | Dokumentace Microsoftu
+description: Ukázky Powershellu pro virtuální počítač Azure
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
@@ -14,25 +14,25 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/01/2017
-ms.author: iainfou
-ms.openlocfilehash: c2e8cf79e5d4f7900588108809fc487e36f43b3d
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.author: cynthn
+ms.openlocfilehash: 2e8be5b1183c04b5144eb38ee3c2a7d7dd2946e6
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30911457"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37932761"
 ---
-# <a name="azure-virtual-machine-powershell-samples"></a>Ukázek Azure PowerShell virtuálního počítače
+# <a name="azure-virtual-machine-powershell-samples"></a>Ukázky Azure Powershellu pro virtuální počítač
 
-Následující tabulka obsahuje odkazy na ukázky skripty prostředí PowerShell, které vytvářet a spravovat virtuální počítače s Linuxem.
+Následující tabulka obsahuje odkazy na ukázkové skripty Powershellu vytvářet a spravovat virtuální počítače s Linuxem.
 
 | | |
 |---|---|
 |**Vytvoření virtuálních počítačů**||
-| [Vytvoření kompletně nakonfigurovaný virtuálního počítače](./../scripts/virtual-machines-linux-powershell-sample-create-vm.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Vytvoří skupinu prostředků, virtuální počítač a všechny související prostředky.|
-| [Vytvoření virtuálního počítače s Docker povoleno](./../scripts/virtual-machines-linux-powershell-sample-create-docker-host.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Vytvoří virtuální počítač, nakonfiguruje tento virtuální počítač jako hostitele Docker a spouští kontejner NGINX. |
-| [Vytvořte virtuální počítač a spusťte skript konfigurace](./../scripts/virtual-machines-linux-powershell-sample-create-vm-nginx.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Vytvoří virtuální počítač a používá rozšíření Azure vlastní skript k instalaci NGINX. |
-| [Vytvoření virtuálního počítače s WordPress nainstalován](./../scripts/virtual-machines-linux-powershell-sample-create-vm-wordpress.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Vytvoří virtuální počítač a instalace aplikace WordPress pomocí rozšíření Azure vlastních skriptů. |
+| [Vytvoření plně nakonfigurovaného virtuálního počítače](./../scripts/virtual-machines-linux-powershell-sample-create-vm.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Vytvoří skupinu prostředků, virtuálního počítače a všechny související prostředky.|
+| [Vytvoření Virtuálního počítače s povoleným Dockerem](./../scripts/virtual-machines-linux-powershell-sample-create-docker-host.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Vytvoří virtuální počítač, nakonfiguruje tento virtuální počítač jako hostitele Docker a spuštění kontejneru NGINX. |
+| [Vytvoření virtuálního počítače a spusťte skript pro konfiguraci](./../scripts/virtual-machines-linux-powershell-sample-create-vm-nginx.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Vytvoří virtuální počítač a pomocí rozšíření vlastních skriptů Azure nainstaluje server NGINX. |
+| [Vytvoření virtuálního počítače s Wordpressem nainstalovaná](./../scripts/virtual-machines-linux-powershell-sample-create-vm-wordpress.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Vytvoří virtuální počítač a pomocí rozšíření vlastních skriptů Azure nainstaluje WordPress. |
 |**Monitorování virtuálních počítačů**||
-| [Monitorování virtuálních počítačů pomocí služby Operations Management Suite](./../scripts/virtual-machines-linux-powershell-sample-create-vm-oms.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Vytvoří virtuální počítač, nainstaluje agenta nástroje Operations Management Suite a zaregistruje virtuální počítač v pracovním prostoru OMS.  |
+| [Monitorování virtuálního počítače pomocí Operations Management Suite](./../scripts/virtual-machines-linux-powershell-sample-create-vm-oms.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Vytvoří virtuální počítač, nainstaluje agenta Operations Management Suite a registraci virtuálního počítače v pracovním prostoru OMS.  |
 | | |

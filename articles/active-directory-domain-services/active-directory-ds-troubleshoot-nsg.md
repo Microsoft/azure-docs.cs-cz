@@ -1,6 +1,6 @@
 ---
-title: 'Azure Active Directory Domain Services: Konfigurace řešení potíží s skupinu zabezpečení sítě | Microsoft Docs'
-description: Řešení potíží s konfigurací skupina NSG pro Azure AD Domain Services
+title: 'Azure Active Directory Domain Services: Konfigurace řešení potíží s skupina zabezpečení sítě | Dokumentace Microsoftu'
+description: Řešení potíží s konfigurací NSG pro službu Azure AD Domain Services
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
@@ -15,65 +15,65 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2018
 ms.author: ergreenl
-ms.openlocfilehash: 807dd2bdcc1e2ad18b1a93c3337c8244e3f1366b
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 67f4f0850d0600fc7ca0f1323e7c7801187089f5
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36218975"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37950730"
 ---
-# <a name="troubleshoot-invalid-networking-configuration-for-your-managed-domain"></a>Řešení potíží s neplatná konfigurace sítí pro spravované doméně
-Tento článek pomáhá vyřešit chyby konfigurace související se sítí, kterých se v následující upozornění:
+# <a name="troubleshoot-invalid-networking-configuration-for-your-managed-domain"></a>Řešení potíží s neplatnou konfiguraci sítě pro vaši spravovanou doménu
+Tento článek pomáhá odstraňovat potíže a řešit chyby související se sítí konfigurace, které za následek následující upozornění:
 
-## <a name="alert-aadds104-network-error"></a>Výstrahy AADDS104: Chyba sítě
-**Upozornění:** *společnosti Microsoft je možné vás zastihnout na řadiče domény pro toto spravované domény. To může dojít, pokud skupina zabezpečení sítě (NSG) nakonfigurované na vaší virtuální sítě blokuje přístup k spravované doméně. Dalším důvodem je, pokud je trasy definované uživatelem, které blokuje příchozí provoz z Internetu.*
+## <a name="alert-aadds104-network-error"></a>Upozornění AADDS104: Chyba sítě
+**Zpráva s výstrahou:** *společnost Microsoft se nám kontaktovat řadiče této spravované doméně. To může stát v případě skupinu zabezpečení sítě (NSG) nakonfigurovaná ve vaší virtuální síti blokuje přístup ke spravované doméně. Dalším důvodem je, pokud trasy definované uživatelem, která blokuje příchozí provoz z Internetu.*
 
-Neplatná konfigurace NSG jsou nejběžnější příčina chyby sítě Azure AD Domain Services. Skupina zabezpečení sítě (NSG), nakonfigurovaná pro virtuální síť musí umožňovat přístup k [určité porty](active-directory-ds-networking.md#ports-required-for-azure-ad-domain-services). Pokud jsou tyto porty zablokované, Microsoft nelze sledovat nebo aktualizovat vaší spravované domény. Synchronizace mezi adresáře Azure AD a vaší spravované domény je navíc dopad. Při vytváření vaše skupina NSG, nechte tyto porty otevřít, aby se zabránilo přerušení ve službě.
+Neplatná konfigurace skupiny zabezpečení sítě jsou nejčastější příčina chyby sítě pro službu Azure AD Domain Services. Skupiny zabezpečení sítě (NSG) nakonfigurovaná pro virtuální síť musí umožňovat přístup k [určité porty](active-directory-ds-networking.md#ports-required-for-azure-ad-domain-services). Pokud tyto porty jsou blokované, Microsoft nemůže monitorovat nebo aktualizovat vaší spravované domény. Kromě toho má vliv synchronizace adresáře služby Azure AD a vaší spravované domény. Při vytváření vaší skupiny zabezpečení sítě, nechte tyto porty otevřené zabránili přerušení služby.
 
-### <a name="checking-your-nsg-for-compliance"></a>Kontrola vaše skupina NSG pro dodržování předpisů
+### <a name="checking-your-nsg-for-compliance"></a>Kontroluje se skupina NSG pro dodržování předpisů
 
-1. Přejděte na [skupin zabezpečení sítě](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FNetworkSecurityGroups) na portálu Azure
-2. Z tabulky vyberte skupinu NSG přidružených k podsíti, ve kterém je povolená vaší spravované domény.
-3. V části **nastavení** v levém panelu klikněte na tlačítko **příchozí pravidla zabezpečení**
-4. Zkontrolujte pravidla na místě a určit, která pravidla bude blokují přístup k [tyto porty](active-directory-ds-networking.md#ports-required-for-azure-ad-domain-services).
-5. Upravte skupinu NSG k zajištění dodržování předpisů pro odstranění pravidla, přidávání pravidla, nebo vytvořit zcela nová skupina NSG. Kroky [přidat pravidlo](#add-a-rule-to-a-network-security-group-using-the-azure-portal) nebo [vytvořit nové, kompatibilní s NSG](#create-a-nsg-for-azure-ad-domain-services-using-powershell) jsou níže.
+1. Přejděte [skupiny zabezpečení sítě](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FNetworkSecurityGroups) stránky na webu Azure Portal
+2. Z tabulky zvolte skupinu zabezpečení sítě přidružená k podsíti, ve kterém je povolena vaší spravované domény.
+3. V části **nastavení** na levém panelu klikněte na tlačítko **příchozí pravidla zabezpečení**
+4. Zkontrolujte pravidla na místě a určit, která pravidla blokují přístup k [tyto porty](active-directory-ds-networking.md#ports-required-for-azure-ad-domain-services)
+5. Upravte skupiny NSG k zajištění dodržování předpisů buď odstraňuje se pravidlo, přidání pravidla nebo zcela vytvořením nové skupiny zabezpečení sítě. Kroky pro [přidat pravidlo](#add-a-rule-to-a-network-security-group-using-the-azure-portal) nebo [vytvořit nové, který vyhovuje NSG](#create-a-nsg-for-azure-ad-domain-services-using-powershell) jsou níže
 
-## <a name="sample-nsg"></a>Ukázka NSG
-Následující tabulka znázorňuje ukázku NSG, který by zabezpečit vaší spravované domény současně Microsoft monitorovat, spravovat a aktualizovat informace.
+## <a name="sample-nsg"></a>Ukázková skupina zabezpečení sítě
+Následující tabulka znázorňuje ukázku NSG, která by zabezpečení vaší spravované domény zároveň umožní Microsoftu monitorovat, spravovat a aktualizovat informace.
 
-![Ukázka NSG](.\media\active-directory-domain-services-alerts\default-nsg.png)
+![Ukázková skupina zabezpečení sítě](.\media\active-directory-domain-services-alerts\default-nsg.png)
 
 >[!NOTE]
-> Služba Azure AD Domain Services vyžaduje neomezenou odchozí přístup z virtuální sítě. Doporučujeme Nevytvářet žádné další pravidla NSG, které omezuje odchozí přístup pro virtuální síť.
+> Azure AD Domain Services vyžaduje neomezený odchozího přístupu z virtuální sítě. Doporučujeme nevytvářet jakékoli další pravidlo NSG, která omezuje přístup pro odchozí připojení pro virtuální síť.
 
-## <a name="add-a-rule-to-a-network-security-group-using-the-azure-portal"></a>Přidat pravidlo pro skupinu zabezpečení sítě pomocí portálu Azure
-Pokud nechcete, jak pomocí prostředí PowerShell, můžete ručně přidat jednoho pravidla do skupiny zabezpečení sítě pomocí portálu Azure. K vytvoření pravidel ve skupině zabezpečení sítě, proveďte následující kroky:
+## <a name="add-a-rule-to-a-network-security-group-using-the-azure-portal"></a>Přidejte pravidlo skupiny zabezpečení sítě pomocí webu Azure portal
+Pokud nechcete, jak pomocí prostředí PowerShell, můžete ručně přidat jednoho pravidla do skupin zabezpečení sítě pomocí webu Azure portal. Vytváření pravidel ve skupině zabezpečení sítě, proveďte následující kroky:
 
-1. Přejděte na [skupin zabezpečení sítě](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FNetworkSecurityGroups) na portálu Azure
-2. Z tabulky vyberte skupinu NSG přidružených k podsíti, ve kterém je povolená vaší spravované domény.
-3. V části **nastavení** v levém panelu klikněte na možnost **příchozí pravidla zabezpečení** nebo **odchozí pravidla zabezpečení**.
-4. Kliknutím na vytvořit pravidlo **přidat** a vyplněním informace. Klikněte na **OK**.
-5. Ověřte, zda že byla vytvořena pravidla tím, že v tabulce pravidel.
+1. Přejděte [skupiny zabezpečení sítě](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FNetworkSecurityGroups) stránky na webu Azure Portal.
+2. Z tabulky zvolte skupinu zabezpečení sítě přidružená k podsíti, ve kterém je povolena vaší spravované domény.
+3. V části **nastavení** na levém panelu klikněte na možnost **příchozí pravidla zabezpečení** nebo **odchozí pravidla zabezpečení**.
+4. Vytvořit pravidlo kliknutím **přidat** a vyplníte informace. Klikněte na **OK**.
+5. Ověřte, že vaše pravidlo bylo vytvořené ve vyhledávání v tabulce pravidel.
 
 
-## <a name="create-a-nsg-for-azure-ad-domain-services-using-powershell"></a>Vytvořit skupinu NSG pro Azure AD Domain Services pomocí prostředí PowerShell
-Tato skupina NSG je nakonfigurovat pro povolení příchozí provoz pro porty vyžadované službou Azure AD Domain Services, při odepření další nežádoucí příchozí přístup.
+## <a name="create-a-nsg-for-azure-ad-domain-services-using-powershell"></a>Vytvoření NSG pro Azure AD Domain Services pomocí Powershellu
+Tato skupina zabezpečení sítě nakonfigurována tak, aby umožňovala příchozí provoz na porty vyžadované službou Azure AD Domain Services, při zamítnutí jiné nežádoucí příchozí přístup.
 
-**Předpoklad: Instalace a konfigurace prostředí Azure PowerShell** postupujte podle pokynů a [instalace modulu Azure PowerShell a připojte se k předplatnému Azure](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?toc=%2fazure%2factive-directory-domain-services%2ftoc.json).
+**Předpoklad: Instalace a konfigurace Azure Powershellu** postupujte podle pokynů a [instalace modulu Azure PowerShell a připojte se ke svému předplatnému Azure](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?toc=%2fazure%2factive-directory-domain-services%2ftoc.json).
 
 >[!TIP]
-> Doporučujeme používat nejnovější verzi modulu Azure PowerShell. Pokud již máte starší verzi modulu Azure PowerShell nainstalovaný, aktualizujte na nejnovější verzi.
+> Doporučujeme používat nejnovější verzi modulu Azure PowerShell. Pokud už máte starší verzi modulu Azure PowerShell nainstalovaný, aktualizujte na nejnovější verzi.
 >
 
-Pomocí následujících kroků můžete vytvořit nová skupina NSG pomocí prostředí PowerShell.
-1. Přihlaste se k předplatnému Azure.
+Použijte následující postup k vytvoření nové skupiny zabezpečení sítě pomocí Powershellu.
+1. Přihlaste se ke svému předplatnému Azure.
 
   ```PowerShell
   # Log in to your Azure subscription.
   Connect-AzureRmAccount
   ```
 
-2. Vytvořte skupinu NSG s tři pravidla. Následující skript definuje tři pravidla NSG, které umožní přístup k portům potřebné ke spuštění služby Azure AD Domain Services. Tento skript vytvoří nová skupina NSG, který obsahuje tato pravidla. Chcete-li přidat další pravidla, které umožňují další příchozí provoz, pokud to vyžaduje úlohy nasazené ve virtuální síti, použijte stejný formát.
+2. Vytvořte skupinu zabezpečení sítě s tři pravidla. Následující skript definuje tři pravidla NSG, které umožňují přístup k portům potřebných ke spuštění služby Azure AD Domain Services. Tento skript vytvoří nová skupina NSG, která obsahuje tato pravidla. Chcete-li přidat další pravidla, která umožňují další příchozí provoz, pokud to vyžaduje úloh nasazených ve virtuální síti používají stejný formát.
 
   ```PowerShell
   # Allow inbound HTTPS traffic to enable synchronization to your managed domain.
@@ -107,7 +107,7 @@ Pomocí následujících kroků můžete vytvořit nová skupina NSG pomocí pro
   -Name "AADDomainServices-NSG" -SecurityRules $SyncRule, $PSRemotingRule
   ```
 
-3. Nakonec přidružte NSG virtuální síť a podsíť výběru.
+3. A konečně přidružení NSG virtuální síť a podsíť podle výběru.
 
   ```PowerShell
   # Find vnet and subnet
@@ -119,9 +119,9 @@ Pomocí následujících kroků můžete vytvořit nová skupina NSG pomocí pro
   Set-AzureRmVirtualNetwork -VirtualNetwork $Vnet
   ```
 
-## <a name="full-script-to-create-and-apply-an-nsg-for-azure-ad-domain-services"></a>Úplné skript pro vytvoření a použití skupinu NSG pro Azure AD Domain Services
+## <a name="full-script-to-create-and-apply-an-nsg-for-azure-ad-domain-services"></a>Úplná skript k vytvoření a skupinu zabezpečení sítě pro službu Azure AD Domain Services
 >[!TIP]
-> Doporučujeme používat nejnovější verzi modulu Azure PowerShell. Pokud již máte starší verzi modulu Azure PowerShell nainstalovaný, aktualizujte na nejnovější verzi.
+> Doporučujeme používat nejnovější verzi modulu Azure PowerShell. Pokud už máte starší verzi modulu Azure PowerShell nainstalovaný, aktualizujte na nejnovější verzi.
 >
 
 ```PowerShell
@@ -175,4 +175,4 @@ Set-AzureRmVirtualNetwork -VirtualNetwork $Vnet
 
 
 ## <a name="need-help"></a>Potřebujete pomoct?
-Obraťte se na produktový tým Azure Active Directory Domain Services na [sdílet zpětnou vazbu nebo pro podporu](active-directory-ds-contact-us.md).
+Obraťte se na Azure Active Directory Domain Services produktovému týmu a [podělit se o názory, nebo pro podporu](active-directory-ds-contact-us.md).

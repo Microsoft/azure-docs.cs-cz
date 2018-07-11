@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: af2a6b19d74e02b9368722cadf4d57aef377d43a
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 891059a440189112c834f3402725781a6b4a3960
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37865433"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952820"
 ---
 # <a name="deep-learning-and-ai-frameworks"></a>Architektura AI a hloubkového učení
 [Virtuální počítač pro datové vědy](http://aka.ms/dsvm) (DSVM) a [hloubkového učení VM](http://aka.ms/dsvm/deeplearning) podporuje řadu architektury hloubkového učení, které vám pomůžou vytvářet aplikace umělou inteligenci (AI) k prediktivním analýzám a kognitivní možnosti, jako jsou bitové kopie a umožňující porozumět jazyku. 
@@ -66,7 +66,7 @@ Tady jsou uvedené podrobnosti o všech hloubkového učení architektur, které
 
 |    |           |
 | ------------- | ------------- |
-| Co je to?   | Hloubkové učení      |
+| Co je to?   | Rozhraní API vysoké úrovně obsáhlého learningu      |
 | Podporované DSVM edice      | Windows, Linux     |
 | Jak ho nakonfigurovat či nainstalovaná na datové VĚDY?  | TensorFlow je nainstalován Python 3.5 na [operačních systémů Linux a Windows 2012](dsvm-languages.md#python-linux-and-windows-server-2012-edition) a Python 3.6 na [Windows 2016](dsvm-languages.md#python-windows-server-2016-edition). |
 | Odkazy na ukázky      | https://github.com/fchollet/keras/tree/master/examples      |

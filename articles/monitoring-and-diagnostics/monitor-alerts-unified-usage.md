@@ -1,6 +1,6 @@
 ---
-title: Vytvořit, zobrazit a spravovat výstrahy monitorování pomocí Azure
-description: Pomocí nové sjednocené Azure výstrahy prostředí vytvořit, zobrazit a spravovat metrika a protokolu pravidla výstrah na jednom místě.
+title: Vytvoření, zobrazení a Správa výstrah pomocí Azure monitoru
+description: Nové prostředí upozornění jednotné Azure použijte k vytváření, zobrazení a správa metriky a pravidel upozornění protokolů z jednoho místa.
 author: msvijayn
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,171 +8,171 @@ ms.topic: conceptual
 ms.date: 02/05/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 9ade63c07003ead55e63093ae74e876589ec8d61
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
-ms.translationtype: HT
+ms.openlocfilehash: a913075c051c6b784495917b7edbd7340254a212
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36287833"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952626"
 ---
-# <a name="create-view-and-manage-alerts-using-azure-monitor"></a>Vytvoření, zobrazení a Správa výstrah pomocí Azure monitorování  
+# <a name="create-view-and-manage-alerts-using-azure-monitor"></a>Vytvoření, zobrazení a Správa výstrah pomocí Azure monitoru  
 
 ## <a name="overview"></a>Přehled
-Tento článek ukazuje, jak nastavit výstrah pomocí rozhraní nové výstrahy v portálu Azure. Definice pravidla výstrahy se tří částí:
-- Cíl: Konkrétní prostředků Azure, který má být monitorován
-- Kritéria: Určité podmínky nebo logiku, když zobrazená v signál, by měly aktivovat akce
-- Akce: Odeslané konkrétní volání k příjemce oznámení – e-mailu, SMS, webhooku atd.
+V tomto článku se dozvíte, jak nastavit výstrahy pomocí nového rozhraní výstrahy v portálu Azure portal. Definice pravidla upozornění není ve třech částech:
+- Cíl: Konkrétní Azure prostředek, který se má monitorovat
+- Kritérií: Konkrétní podmínky nebo logiku, která při vidět v signál, by měly aktivovat akce
+- Akce: Konkrétní volání odesílat příjemce oznámení – e-mail, SMS, webhooku atd.
 
-Azure výstrahy také poskytuje jednotný pohled na všechna pravidla výstrah a schopnost spravovat na jednom místě; včetně zobrazení žádné nevyřešené výstrahy. Další informace o funkcích z [Azure upozornění – přehled](monitoring-overview-unified-alerts.md).
+Upozornění Azure také poskytuje jednotné zobrazení všech pravidel upozornění a umožňuje je spravovat na jednom místě; včetně zobrazení žádné nevyřešené výstrahy. Další informace o funkcích od [upozornění v Azure – přehled](monitoring-overview-unified-alerts.md).
 
-Výstrahy pod pojmem **protokolu výstrahy** k popisu výstrahy, kde je signál vlastní dotaz na základě [analýzy protokolů](../log-analytics/log-analytics-tutorial-viewdata.md) nebo [Application Insights](../application-insights/app-insights-analytics.md). [Nová metriky výstrah funkce](monitoring-near-real-time-metric-alerts.md) poskytuje schopnost upozornění na [multidimenzionální metriky](monitoring-metric-charts.md) pro konkrétní prostředky Azure. Výstrahy pro takové prostředků můžete použít další filtry v dimenzích vytváření **Multi-Dimensional metrika výstrahy**.
+Výstraha používá termín **upozornění protokolů** k popisu výstrahy, pokud je signál vlastní dotaz na základě [Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) nebo [Application Insights](../application-insights/app-insights-analytics.md). [Nová funkce upozornění metriky](monitoring-near-real-time-metric-alerts.md) poskytuje možnost upozornění na [vícerozměrné metriky](monitoring-metric-charts.md) pro konkrétní prostředky Azure. Výstrahy pro takové prostředků můžete použít další filtry u dimenzí vytváření **vícerozměrné metriky upozornění**.
 
 
 > [!NOTE]
-> Při Azure výstrahy nabízí nové a vylepšené prostředí pro vytváření výstrah v Azure. Existující [výstrahy (klasické)](monitoring-overview-alerts.md) prostředí zůstává použitelný.
+> Při upozornění v Azure nabízí nové a vylepšené prostředí při vytváření výstrah v Azure. Existující [upozornění (klasická)](monitoring-overview-alerts.md) prostředí zůstává použitelný.
 >
 
-Další podrobné je podrobný návod, jak pomocí Azure výstrahy.
+Další podrobné je podrobného průvodce můžete pomocí upozornění v Azure.
 
-## <a name="create-an-alert-rule-with-the-azure-portal"></a>Pravidlo výstrahy vytvořit pomocí portálu Azure
-1. V [portál](https://portal.azure.com/), vyberte **monitorování** a v části monitorování – zvolte **výstrahy**.  
+## <a name="create-an-alert-rule-with-the-azure-portal"></a>Vytvořit pravidlo upozornění s portálem Azure Portal
+1. V [portál](https://portal.azure.com/)vyberte **monitorování** a v části monitorování – tlačítko **výstrahy**.  
     ![Monitorování](./media/monitor-alerts-unified/AlertsPreviewMenu.png)
 
-2. Vyberte **nové pravidlo výstrahy** tlačítko Vytvořit nové oznámení v Azure.
-    ![Přidání oznámení](./media/monitor-alerts-unified/AlertsPreviewOption.png)
+2. Vyberte **nové pravidlo upozornění** pro vytvoření nového upozornění v Azure.
+    ![Přidat výstrahu](./media/monitor-alerts-unified/AlertsPreviewOption.png)
 
-3. V části Vytvoření upozornění se zobrazí se tří částí, který se skládá z: *definovat výstrahy podmínku*, *definovat podrobnosti výstrahy*, a *definovat akce skupiny*.
+3. V části Vytvoření upozornění se zobrazí s tři části, který se skládá z: *Definujte podmínku upozornění*, *definujte podrobnosti o upozornění*, a *definujte skupinu akcí*.
 
     ![Vytvořit pravidlo](./media/monitor-alerts-unified/AlertsPreviewAdd.png)
 
-4.  Definovat podmínka upozornění pomocí **vyberte prostředek** odkaz a určení cílového výběrem prostředku. Filtrovat podle výběru * předplatného, * typ prostředku a nakonec vyberte požadované *prostředků*.
+4.  Definujte podmínku upozornění pomocí **vybrat prostředek** odkaz a zadáte cíl, tak, že vyberete prostředku. Filtrovat podle výběru * předplatného, * typ prostředku a nakonec vyberte požadované *prostředků*.
 
     >[!NOTE]
 
-    > Než budete pokračovat, ověřte signály dostupné pro vybraný zdroj.
+    > Předtím, než budete pokračovat, ověřte dostupné signály pro vybraný prostředek.
 
     ![Vybrat prostředek](./media/monitor-alerts-unified/Alert-SelectResource.png)
 
- Uživatelské rozhraní umožňuje vytvořit různé typy výstrah z jednoho místa. Na základě typu výstrahy potřeby vyberte jako další krok:
+ Uživatelské rozhraní umožňuje vytvářet různé typy výstrah z jednoho místa. Podle typu upozornění požadovaného zvolte jako další krok:
 
-    - Pro **metrika výstrahy**: postupujte podle kroků 5 až 7; přejít přímo na krok 11
-    - Pro **protokolu výstrahy**, přejít ke kroku 8.
+    - Pro **upozornění metriky**: postupujte podle kroků 5 až 7; přejděte přímo ke kroku 11
+    - Pro **upozornění protokolů**, přejděte ke kroku 8.
 
     > [!NOTE]
 
-    > Aktivity protokolu výstrahy jsou také podporovány, ale jsou ve verzi preview. [Další informace](monitoring-activity-log-alerts-new-experience.md).
+    > Upozornění protokolu aktivit jsou také podporovány, ale jsou ve verzi preview. [Další informace](monitoring-activity-log-alerts-new-experience.md).
 
-5. * Metriky výstrahy: Zkontrolujte **typ prostředku** je vybrána s typem signál jako **metrika**, pak jednou odpovídající **prostředků** je zvolen klikněte na tlačítko *provádí*tlačítko se vrátíte k vytvoření výstrahy. Potom použít **přidat kritéria** tlačítko můžete vybrat ze seznamu možnosti signál, jejich monitorování služby a typ seznamu - určitý signál, které jsou k dispozici pro prostředek vybrali dříve.
+5. *Upozornění na metriku*: Zkontrolujte **typ prostředku** je vybraná signálu typu jako **metrika**, pak po příslušné **prostředků** je vybrán kliknutím  *Provádí* se vrátit na vytvoření výstrahy. Potom pomocí **přidat kritéria** určitý signál ukládat vybírat ze seznamu možností signál, jejich monitorovací službu a typ uvedené – tlačítko, které jsou k dispozici pro prostředků vybrané výše.
 
     ![Vybrat prostředek](./media/monitor-alerts-unified/AlertsPreviewResourceSelection.png)
 
     > [!NOTE]
 
-    >  Všechny [v blízkosti upozornění v reálném čase](monitoring-near-real-time-metric-alerts.md) podporující prostředky jsou uvedené službou monitorování **platformy** a signálu typu jako **metrika**
+    >  Všechny [téměř upozornění v reálném čase](monitoring-near-real-time-metric-alerts.md) podporuje prostředky patří službou monitorování **platformy** a signalizuje, že typ jako **metrika**
 
-6. *Metriky výstrahy*: po signál zaškrtnuto, lze stanovit, logiku pro výstrahy. Pro odkaz, se zobrazí historických dat signálem s možností pro upravit současně pomocí okna **zobrazit historii**, různých z posledních šest hodin k minulého týdne. S vizualizaci na místě **výstrahy logiku** je možné vybrat z zobrazené možnosti podmínku, agregace a nakonec prahovou hodnotu. Jako verze preview poskytuje logiku podmínku se zobrazí v vizualizaci společně s historie signál, o tom, kdy by mít výstraha. Nakonec zadejte pro jaké doby trvání, by měla vypadat výstrahy pro zadanou podmínku tak, že zvolíte **období** možnost společně s jak často se má spouštět výstraha výběrem **frekvence**.
+6. *Upozornění na metriku*: Po výběru signálu může zobrazovat logiku pro výstrahy. Pro srovnání, se zobrazí historických datech signálem pomocí možnosti upravit pomocí okna čas **zobrazit historii**, různou z posledních šest hodin na poslední týden. S vizualizací na místě **Alert Logic** lze vybrat ze zobrazených možností podmínku, agregace a nakonec prahovou hodnotu. Jako logiky k dispozici ve verzi preview podmínka se zobrazí ve vizualizaci spolu s historie signál o tom, kdy bude mít výstraha. Nakonec zadejte pro jakou dobu trvání, by měl vypadat oznámení pro zadanou podmínku výběrem ze **období** možnost spolu s jak často výstraha spouštět tak, že vyberete **frekvence**.
 
-    ![Konfigurovat logiku signál pro metriku](./media/monitor-alerts-unified/AlertsPreviewCriteria.png)
+    ![Konfigurovat logiku signálů metriky](./media/monitor-alerts-unified/AlertsPreviewCriteria.png)
 
-7. *Metriky výstrahy*: Pokud signál je metriky a pak výstrahy okna je možné filtrovat pomocí několika datových bodů nebo dimenze pro dané prostředků Azure. 
+7. *Upozornění na metriku*: Pokud signálu se metrika a okna s upozorněním, dají se filtrovat pomocí více datových bodů nebo dimenze pro uvedené prostředky Azure. 
 
-    a. Vyberte dobu trvání z **zobrazit historii** rozevírací k vizualizaci jiné časové období. Můžete zvolit dimenze pro podporované metriky pro filtrování časové řady; Výběr dimenze je volitelný a až pět dimenze mohou být použity. 
+    a. Zvolte dobu trvání z **zobrazit historii** rozevíracího seznamu k vizualizaci různých časovém intervalu. Můžete také dimenze pro podporované metriky pro filtrování v časové řadě; Výběr dimenze je volitelný a můžou používat až pět dimenze. 
 
-    b. **Výstrahy logiku** je možné vybrat z zobrazené možnosti *podmínku*, * agregace, a *prahová hodnota*. Jako verze preview poskytuje logiku podmínku se zobrazí v vizualizaci společně s signál historie signalizují, že výstraha by byla spuštěna v minulosti. 
+    b. **Upozornění logiky** lze vybrat ze zobrazených možností *podmínku*, * agregace, a *prahová hodnota*. Jako logiky k dispozici ve verzi preview podmínka se zobrazí ve vizualizaci spolu s historie signál o tom, kdy výstraha by byla aktivována v minulosti. 
 
-    c. K určení doby trvání, zvolte **období** společně s jak často má výstraha spustit výběrem **frekvence**.
+    c. Chcete-li určit dobu trvání, zvolte **období** spolu s jak často by měla spustit upozornění tak, že vyberete **frekvence**.
 
-    ![Konfigurovat logiku signál pro multidimenzionální metrika](./media/monitor-alerts-unified/AlertsPreviewCriteriaMultiDim.png)
+    ![Konfigurovat logiku signálů vícerozměrné metriky](./media/monitor-alerts-unified/AlertsPreviewCriteriaMultiDim.png)
 
-8. *Protokolování výstrahy*: Zkontrolujte **typ prostředku** je zdrojem analytics jako *analýzy protokolů* nebo *Application Insights* a signálu typu jako **protokolu** , pak jednou odpovídající **prostředků** je vybraná, klikněte na tlačítko *provádí*. Dále používat **přidat kritéria** tlačítko Zobrazit seznam možností signál k dispozici pro daný prostředek a ze seznamu signál **hledání protokolů vlastní** možnost pro zvolený protokolu monitorování služby jako *protokolu Analýza* nebo *Application Insights*.
+8. *Upozornění protokolů*: Zkontrolujte **typ prostředku** je zdrojem analytics jako *Log Analytics* nebo *Application Insights* a signalizuje, že typ jako **protokolu** , pak po příslušné **prostředků** je vybrán, klikněte na tlačítko *provádí*. Potom pomocí **přidat kritéria** tlačítko Zobrazit seznam možností signál k dispozici pro prostředek a v seznamu signál **prohledávání protokolů vlastní** možnosti zvolené protokolu monitorování službě, jako je *protokolu Analytics* nebo *Application Insights*.
 
-   ![Vyberte prostředek – vlastní protokol hledání](./media/monitor-alerts-unified/AlertsPreviewResourceSelectionLog.png)
+   ![Vyberte prostředek - hledání vlastního protokolu](./media/monitor-alerts-unified/AlertsPreviewResourceSelectionLog.png)
 
    > [!NOTE]
 
-   > Seznamy můžete importovat analytics dotazu jako typ signál – výstrahy **protokolu (uložený dotaz)**, jak je vidět v výše obrázku. Tak, aby uživatelé můžete ideální dotazu v analýzy a pak je uložit pro budoucí použití v upozornění – další podrobnosti o použití uložení dotazu, které jsou k dispozici na [pomocí hledání protokolů v analýzy protokolů](../log-analytics/log-analytics-log-searches.md) nebo [sdílené dotazu ve službě application insights Analýza](../log-analytics/log-analytics-overview.md). 
+   > Upozornění seznamy můžete importovat dotaz analytics jako typ signálu - **protokolu (uložený dotaz)**, jak je znázorněno výše obrázku. Tak, že uživatelé mohou zdokonalujete dotazu v Analytics a pak je ukládejte pro budoucí použití v upozornění – další podrobnosti o použití uložení dotazu, které jsou k dispozici na [pomocí prohledávání protokolů v log analytics](../log-analytics/log-analytics-log-searches.md) nebo [sdíleného dotazu ve službě application insights Analytics](../log-analytics/log-analytics-overview.md). 
 
-9.  *Přihlaste se výstrahy*: Po výběru, v lze stanovit dotazu pro zobrazení výstrah **vyhledávací dotaz** pole; Pokud syntaxe dotazu je nesprávný poli se zobrazí chyba červeně. Pokud syntaxe dotazu je správný – historických dat stanovené dotazu pro referenci zobrazí jako graf s možností pro upravit časový interval z posledních šest hodin minulého týdne.
+9.  *Upozornění protokolů*: Po výběru dotazu pro generování výstrah můžou zobrazovat v **vyhledávací dotaz** pole; Pokud syntaxe dotazu není správná, pole se zobrazí chyba červeně. Pokud je správná syntaxe dotazu – pro referenci historických dat stanovených dotazu se zobrazuje jako graf s možností pro upravit časový interval z posledních šest hodin na poslední týden.
 
- ![Konfigurace pravidla výstrah](./media/monitor-alerts-unified/AlertsPreviewAlertLog.png)
+ ![Konfigurace pravidla výstrahy](./media/monitor-alerts-unified/AlertsPreviewAlertLog.png)
 
  > [!NOTE]
 
-    > Vizualizaci historických dat lze zobrazit pouze pokud výsledky dotazu obsahovat podrobnosti času. Pokud výsledky dotazu v souhrnná data nebo konkrétní sloupec hodnoty - zobrazí se stejné jako singulární vykreslení.
+    > Vizualizaci historických dat mohou být zobrazeny pouze pokud výsledky dotazu obsahovat podrobnosti času. Pokud váš dotaz vrátí souhrnná data nebo konkrétní sloupec hodnot – stejný se zobrazuje jako jednotný vykreslení.
 
-    >  Pro typ měrné metrika protokolu výstrah pomocí Application insights, můžete určit které konkrétní proměnnou pro seskupení dat pomocí **agregační na** možnost; jak je uvedeno v dále:
+    >  Pro typ měření metriky upozornění protokolů pomocí Application insights, můžete zadat které určité proměnné k seskupení dat pomocí **agregační na** možnosti, jak je znázorněno níže:
 
     ![agregace na možnost](./media/monitor-alerts-unified/aggregate-on.png)
 
-10.  *Protokolování výstrahy*: S vizualizaci na místě, **výstrahy logiku** je možné vybrat z zobrazené možnosti podmínku, agregace a nakonec prahovou hodnotu. Nakonec zadejte v logiku, čas pro vyhodnocení zadanou podmínku pomocí **období** možnost. Společně s jak často se má spouštět výstraha výběrem **frekvence**.
-Pro **protokolu výstrahy** výstrahy může být založené na:
-   - *Počet záznamů*: výstraha se vytvoří, pokud je počet záznamů vrácených dotazem větší nebo menší než zadaná hodnota.
-   - *Metriky měření*: vytváří výstrahu, pokud každý *agregovat hodnotu* ve výsledcích překračuje prahovou hodnotu zadaná a je *seskupené podle* vybrali hodnotu. Počet porušení u výstraha je počet, který je prahová hodnota ve zvoleném časovém období. Můžete určit celkový počet porušení u libovolné kombinace narušení přes sadu výsledků nebo po sobě jdoucích narušení tak, aby vyžadovala, musí dojít k porušení v po sobě jdoucích vzorků. Další informace o [protokolu výstrahy a jejich typy](monitor-alerts-unified-log.md).
+10.  *Upozornění protokolů*: S vizualizací na místě, **Alert Logic** lze vybrat ze zobrazených možností podmínku, agregace a nakonec prahovou hodnotu. Nakonec zadejte v logice, čas pro zadanou podmínku pomocí **období** možnost. Spolu s jak často výstraha spouštět tak, že vyberete **frekvence**.
+Pro **upozornění protokolů** výstrahy může být založené na:
+   - *Počet záznamů, které*: Pokud je počet záznamů vrácených dotazem větší nebo menší než hodnota zadaná, vytvoří se výstraha.
+   - *Metriky měření*: vytvoření výstrahy, pokud každý *agregovat hodnotu* ve výsledcích překračuje prahovou hodnotu k dispozici a je *seskupené podle* zvolena hodnota. Počet porušení upozornění je počet pokusů, které se ve zvoleném časovém období překročil prahovou hodnotu. Můžete určit celkový počet porušení pro libovolnou kombinací těchto porušení přes sadu výsledků nebo po sobě jdoucí porušení tak, aby vyžadovala, porušení se musí vyskytovat v po sobě jdoucích vzorků. Další informace o [upozornění protokolů a jejich typy](monitor-alerts-unified-log.md).
 
     > [!TIP]
-    > Aktuálně v výstrahy – výstrahy vyhledávání protokolu může trvat vlastní *období* a *frekvence* hodnota v minuty. Hodnoty se může lišit od 5 minut až 1 440 minut (tj.) 24 hodin. Takže pokud chcete výstrahu limit vyslovte tři hodiny, převeďte ho do minut – 180 minut, než použití
+    > Aktuálně v upozornění – upozornění prohledávání protokolu můžete provést vlastní *období* a *frekvence* hodnotu v min. Hodnoty mohou lišit od 5 sekund až 1 440 minut (to znamená) 24 hodin. Takže pokud chcete upozornění limit Dejme tomu, že tři hodiny, převeďte jej do minut – 180 minut před použitím
 
-11. Druhým krokem, definujte název upozornění v **název pravidla výstrahy** pole spolu s **popis** s podrobnostmi o podrobností pro výstrahu a **závažnost** z hodnoty poskytuje možnosti. Tyto podrobnosti jsou opakovaně v všechny výstrahy e-mailů, oznámení nebo nabízené provádí monitorování Azure. Kromě toho uživatel okamžitě aktivovat pravidlo výstrahy na vytváření správně přepnutím **pravidlo povolit po vytvoření** možnost.
+11. Jako druhý krok definuje název pro upozornění v **název pravidla upozornění** pole společně s **popis** s podrobnostmi o podrobné informace o upozornění a **závažnost** hodnotu možnosti k dispozici. Tyto podrobnosti údaje znovu použijí ve všech výstrah e-mailů, oznámení nebo push provádí Azure Monitor. Kromě toho uživatel může zvolit okamžitě aktivovat pravidlo upozornění na vytvoření odpovídajícím způsobem přepnutím **Povolit pravidlo po vytvoření** možnost.
 
-    Pro **protokolu výstrahy** pouze některé další funkce je k dispozici v podrobnostech výstrahy:
+    Pro **upozornění protokolů** pouze, některé další funkce jsou dostupné v podrobnostech výstrahy:
 
-    - **Potlačit upozornění**: po zapnutí potlačení pro pravidlo výstrahy akce pravidla jsou zakázány definované dobu, po vytvoření nová výstraha. Pravidlo je stále spuštěná a vytváří výstrahy záznamy zadaný splnění kritérií. Povolení je čas k odstranění problému bez spuštění duplicitní akce.
+    - **Potlačit výstrahy**: při zapnutí potlačení pro pravidla upozornění jsou zakázané akce pro pravidlo definované dobu, po vytvoření nové výstrahy. Toto pravidlo je pořád spuštěný a vytvoří záznamy upozornění, pokud je splněna kritéria. Umožňuje vám čas k opravě problému bez spuštění duplicitní akce.
 
         ![Potlačit oznámení pro výstrahy protokolu](./media/monitor-alerts-unified/AlertsPreviewSuppress.png)
 
         > [!TIP]
-        > Zadejte potlačit výstrahy hodnotu větší než četnost upozornění Ujistěte se, že oznámení jsou zastaveny bez překrytí
+        > Zadat potlačit výstrahy hodnotu větší než četnost upozornění, ujistěte se, že oznámení jsou ukončeny bez překrytí
 
-12. Jako třetí a poslední krok, zadejte případných **akce skupiny** musí aktivuje pro pravidlo výstrahy, když je splněna podmínka výstrahy. Můžete vybrat všechny existující skupiny akce s výstraha nebo vytvořte novou skupinu akce. Podle vybrané akce skupiny, když je výstraha bude aktivace Azure: Odeslat email(s), odeslání SMS(s), volání Webhook(s), opravit pomocí Azure Runbooků, nabízené ITSM nástroj, atd. Další informace o [skupiny akcí](monitoring-action-groups.md).
+12. Jako třetí a poslední krok, zadejte případná **skupiny akcí** je potřeba pro pravidlo upozornění aktivuje, když je splněná podmínka výstrahy. Můžete zvolit žádné existující skupiny akcí s výstrahou nebo vytvořte novou skupinu akcí. Podle vybrané skupiny akcí, když je výstraha se aktivační událost Azure: Odeslat email(s), odeslat SMS(s), volání webhooky, opravit pomocí Runbooků Azure, nabízených oznámení do vaší nástroji ITSM atd. Další informace o [skupiny akcí](monitoring-action-groups.md).
 
-    Pro **protokolu výstrahy** některé další funkce, je možné přepsat výchozí akce:
+    Pro **upozornění protokolů** některé další funkce, je možné přepsat výchozí akce:
 
-    - **Oznámení e-mailem**: přepsání *předmět e-mailu* v e-mailu, odeslána prostřednictvím akce skupiny; Pokud jeden nebo více akcí e-mailu neexistuje ve skupině dané akce. Nelze upravit text e-mailu a toto pole je **není** pro e-mailovou adresu.
-    - **Zahrnout vlastní datovou část Json**: přepsání webhooku JSON používané skupiny akcí; Pokud jeden nebo více akcí webhooku neexistuje ve skupině dané akce. Uživatel může určit formát JSON, který se má použít pro všechny webhooků, které jsou nakonfigurované ve skupině přidružené akce; Další informace o formátech webhooku najdete v tématu [akce webhooku pro výstrahy protokolu](monitor-alerts-unified-log-webhook.md). Test Webhooku možnost je k dispozici Zkontrolujte formát a zpracování cílová pomocí ukázkových JSON a tuto možnost jako označený určená pouze pro **testování** účely.
+    - **E-mailová oznámení**: přepíše *předmět e-mailu* v e-mailu, prostřednictvím skupiny akcí; Pokud je jeden nebo více e-mailových akcí v uvedené skupiny akcí. Nelze změnit text e-mailu a toto pole je **není** e-mailových adres.
+    - **Zahrnout vlastní datovou část Json**: přepíše webhooku JSON používá skupiny akcí; Pokud je jeden nebo více akcí webhooku v uvedené skupiny akcí. Uživatel může určit formát JSON, který má být použit pro všechny nakonfigurované ve skupině přidružené akce; webhooků Další informace o formátech webhooku, najdete v části [akce webhooku pro upozornění protokolu](monitor-alerts-unified-log-webhook.md). Test Webhooku možnost je k dispozici ke kontrole formátu a zpracování cílová pomocí ukázky JSON a tuto možnost, jak je označené jako určená pouze pro **testování** účely.
 
         ![Akce přepsání pro výstrahy protokolu](./media/monitor-alerts-unified/AlertsPreviewOverrideLog.png)
 
         > [!NOTE]
-        > Pro **Test Webhooku** možnost pracovat, by měly podporovat koncový bod [křížové sdílení prostředků zdroji (CORS)](https://www.w3.org/TR/cors/) a uživatele můžete použít CORS proxy k vyřešení problému "Žádné hlavičky Access-Control-Allow-Origin"
+        > Pro **otestovat Webhook** možnost pracovat, koncový bod by měl podporovat [napříč sdílení prostředků zdroji (CORS)](https://www.w3.org/TR/cors/) a uživatele můžete použít proxy server CORS k vyřešení problémů "Žádná hlavička Access-Control-Allow-Origin"
 
-13. Pokud všechna pole jsou platné a s zelená značka **vytvořit pravidlo výstrahy** kliknutí na tlačítko a výstraha je vytvořen v Azure monitorování – výstrahy. Z výstrah řídicího panelu lze zobrazit všechny výstrahy.
+13. Pokud všechna pole jsou platná a s zelené značky **vytvořit pravidlo upozornění** kliknutí na tlačítko a výstrahy se vytvoří ve službě Azure Monitor – výstrahy. Všechny výstrahy můžete zobrazit z výstrah řídicí panel.
 
     ![Vytvoření pravidla](./media/monitor-alerts-unified/AlertsPreviewCreate.png)
 
-    Během několika minut výstraha je aktivní a jak se popisuje výš se aktivuje.
+    Během několika minut upozornění je aktivní a aktivuje jak bylo popsáno dříve.
 
-## <a name="view-your-alerts-in-azure-portal"></a>Zobrazit upozornění na portálu Azure
+## <a name="view-your-alerts-in-azure-portal"></a>Zobrazit upozornění na webu Azure Portal
 
-1. V [portál](https://portal.azure.com/), vyberte **monitorování** a v části monitorování – zvolte **výstrahy**.  
+1. V [portál](https://portal.azure.com/)vyberte **monitorování** a v části monitorování – tlačítko **výstrahy**.  
 
-2. **Řídicí panel výstrahy** se zobrazí – ve kterém jsou všechny výstrahy Azure unified a zobrazí v jednotném čísle Tabule ![výstrahy řídicí panel](./media/monitoring-alerts-unified-usage/alerts-preview-overview.png)
-3. Z horní části zleva doprava řídicího panelu ukazuje na první pohled, následující – které sloužící k najdete podrobné informace:
-    - *Aktivováno výstrahy*: počet v současné době výstrahy, které se mají splněna logiku a v aktivováno stavu
-    - *Celkový počet pravidla výstrah*: číslo vytvořit pravidla výstrah a v subtext, číslo, které jsou nyní zapnuta 
+2. **Řídicí panel výstrah** se zobrazí – ve které jsou všechny výstrahy Azure unified a zobrazí v jednotném čísle panel ![řídicí panel výstrah](./media/monitoring-alerts-unified-usage/alerts-preview-overview.png)
+3. Zprava nahoře doleva řídicího panelu ukazuje na první pohled, následující – což se dá kliknout zobrazíte podrobné informace:
+    - *Vyvolané výstrahy*: počet v současné době výstrah, které splněny logiky a v aktivuje stavu
+    - *Celkový počet pravidel upozornění*: číslo pravidla upozornění vytvořená a získat jeho část, číslo, které jsou aktuálně povoleny 
     
 
         > [!NOTE]
-        > K zajištění konzistentní řídicího panelu s podrobnostmi na všechny aktivní výstrahy, včetně protokolu výstrahy pro application insights a analýzy protokolů; [Rozšířené sjednocené výstraha (preview)](monitoring-overview-unified-alerts.md#enhanced-unified-alerts-public-preview) by měl být použit
+        > K zajištění konzistentní řídicího panelu s podrobnostmi o všech aktivovaná upozornění včetně upozornění protokolů pro služby application insights a log analytics; [Rozšířené jednotné upozornění (preview)](monitoring-overview-unified-alerts.md#enhanced-unified-alerts-public-preview) by měla sloužit
   
   
-4. Se zobrazí seznam všechny aktivní výstrahy, které může uživatel kliknutím zobrazíte podrobnosti
-5. Pomoc v konkrétní hledání výstrah; možnosti rozevírací seznam v horní části jeden můžete použít pro filtrování konkrétní *předplatné, skupinu prostředků nebo prostředek*. Další pro žádné nevyřešené výstrahy, jedno použití *upozornění filtru* možnost Najít pro zadaný – klíčové slovo - konkrétní odpovídající výstrahy s *název, výstraha kritéria, skupinu prostředků a cílový prostředek*
+4. Seznam všech aktivovaná upozornění se zobrazí, které může uživatel kliknout, chcete-li zobrazit podrobnosti
+5. Pomoc ve zjištění konkrétní výstrahy; Možnosti rozevíracího seznamu v horní části jedné můžete použít pro filtrování konkrétního *předplatné, skupinu prostředků nebo prostředek*. Další pro žádné nevyřešené výstrahy, jedno použití *upozornění filtru* možnost Najít pro zadaný – klíčové slovo - konkrétní odpovídající výstrahy s *název, výstraha kritéria, skupinu prostředků a cílový prostředek*
 
-## <a name="managing-your-alerts-in-azure-portal"></a>Správa upozornění na portálu Azure
-1. V [portál](https://portal.azure.com/), vyberte **monitorování** a v části monitorování – zvolte **výstrahy**.  
-2. Vyberte **spravovat pravidla** tlačítko na horním panelu přejděte do části Správa pravidlo – kde jsou uvedeny všechny výstrahy pravidla vytvořená; včetně výstrahy, které byly zakázány.
-3. Pro konkrétní pravidla výstrah najdete jednu buď pomocí rozevíracího seznamu filtrů v horní části, které umožňují shortlist pravidla výstrah pro konkrétní *předplatné, skupiny prostředků nebo prostředek*. Můžete také na pomocí vyhledávání označena podokně nad seznamu pravidlo výstrahy *filtrování výstrah*, jeden může poskytnout – klíčové slovo, které je shoda na základě *název výstrahy, podmínku a cílový prostředek*; Chcete-li zobrazit pouze odpovídající pravidla.
+## <a name="managing-your-alerts-in-azure-portal"></a>Správa upozornění na webu Azure Portal
+1. V [portál](https://portal.azure.com/)vyberte **monitorování** a v části monitorování – tlačítko **výstrahy**.  
+2. Vyberte **spravovat pravidla** tlačítko na horním panelu přejděte do části Správa pravidlo – kde jsou uvedeny všechny pravidla upozornění vytvořená; včetně výstrahy, které byly zakázány.
+3. Pro konkrétní pravidla upozornění naleznete jednu můžete použít rozevírací seznam filtrů v horní části, které umožňují shortlist pravidla upozornění pro konkrétní *předplatného, skupiny prostředků nebo prostředek*. Můžete také pomocí vyhledávání označené podokně nad seznamem pravidlo upozornění *filtrovat výstrahy*, jeden zadejte klíčové slovo, které je hledána *název výstrahy, podmínky a cílový prostředek*; Chcete-li zobrazit pouze odpovídající pravidla.
    ![Spravovat pravidla výstrah](./media/monitoring-alerts-unified-usage/alerts-preview-rules.png)
-4. Chcete-li zobrazit nebo upravit konkrétní pravidlo výstrahy, klikněte na jeho název, který se bude zobrazovat jako prokliknutelný odkaz.
-5. Se zobrazí výstraha definované – struktura tři fáze: 1) výstraha podmínka výstrahy 2) podrobností (3) akci skupiny. **Cíl kritéria** sloužící k úpravě logice výstrah nebo novou po použití na ikonu koše odstranit starší logiku lze přidat kritéria. Podobně, v části Podrobnosti výstrahy - **popis** a **závažnost** je možné upravit. A skupina akce lze změnit nebo může být tak nový, aby propojení na výstrahy pomocí **nové skupiny akce** tlačítko.
+4. Chcete-li zobrazit nebo upravit konkrétní pravidlo upozornění, klikněte na jeho název, který bude zobrazen jako prokliknutelný odkaz.
+5. Se zobrazí výstraha definované - ve struktuře tři fáze: 1) oznámení podmínka 2) výstraha podrobností (3) akci skupiny. **Cílová kritéria** můžete ke kliknutí na změnit logika upozornění nebo nová kritéria lze přidat po odstranění starší logiky pomocí ikony koše. Podobně, v části Podrobnosti upozornění - **popis** a **závažnost** je možné upravit. Skupina akcí můžete změnit a nový můžou být tak, aby dokázal propojení na výstrahy pomocí **nová skupina akcí** tlačítko.
 
-   ![Upravit pravidlo výstrahy](./media/monitor-alerts-unified/AlertsPreviewEdit.png)
+   ![Upravit pravidlo upozornění](./media/monitor-alerts-unified/AlertsPreviewEdit.png)
 
-6. Pomocí horním panelu, změny výstrahy může být odrážející včetně: **Uložit** potvrzení změny provést s výstrahou, **zahodit** a vraťte se bez potvrzení změny provedené v výstrahy **zakázat**  deaktivovat výstrahu - po jejímž uplynutí ho už běží nebo se aktivuje žádnou akci. A nakonec **odstranit** trvale odeberete celý pravidlo výstrahy z Azure.
+6. Horní panel, změny výstrahy může být použití reflektivní včetně: **Uložit** potvrďte všechny změny provedené na upozornění, **zahodit** bez potvrzení změny provedené na výstrahu, přejdete zpět **zakázat**  deaktivovat výstrahu - po jejímž uplynutí ho už běží nebo aktivuje žádnou akci. A nakonec **odstranit** trvale odeberete celý pravidla upozornění z Azure.
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o nové [téměř v reálném čase metriky výstrahy](monitoring-near-real-time-metric-alerts.md)
-- Získat [přehled metriky kolekce](insights-how-to-customize-monitoring.md) zkontrolovat služby je k dispozici a dobře reagovaly.
-- Další informace o [protokolu výstrahy ve výstrahách Azure](monitor-alerts-unified-log.md)
-- [Další informace o protokolu upozornění v prostředí výstrahy (Preview)](monitoring-activity-log-alerts-new-experience.md)
+- Další informace o novém [téměř v reálném čase upozornění na metriku](monitoring-near-real-time-metric-alerts.md)
+- Získat [přehled shromažďování metrik](insights-how-to-customize-monitoring.md) k Ujistěte se, že vaše služba není k dispozici a reagují.
+- Další informace o [upozornění protokolů ve výstrahách Azure](monitor-alerts-unified-log.md)
+- [Další informace o upozornění protokolu aktivit v prostředí upozornění (Preview)](monitoring-activity-log-alerts-new-experience.md)

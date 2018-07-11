@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: v-geberr
-ms.openlocfilehash: da8ea6dead6b22d97e7338b2aa57a892be475417
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 1c68c586fb799a540f70804d181aa66b2bda9e97
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37344827"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952534"
 ---
 # <a name="what-is-language-understanding-luis"></a>Co je Language Understanding (LUIS)?
 Language Understanding (LUIS) je Cloudová služba, která se použije vlastní strojového učení na uživatele konverzační, text přirozeného jazyka k předvídání celkové význam a vyžádá si relevantní, podrobné informace. 
@@ -99,7 +99,7 @@ Příklad [utterance](luis-how-to-add-example-utterances.md) je textové zadán�
 Poté, co aplikace LUIS je publikována a přijímá projevy uživatelů, LUIS poskytuje několik metod, zvyšte přesnost předpovědi: [aktivně učit](#active-learning) z koncového bodu projevy [frázi seznamy](#phrase-lists) pro doménu zahrnutí, Word a [vzory](#patterns) a snížit počet projevy, které jsou potřeba.
 
 ### <a name="active-learning"></a>Aktivní vzdělávání
-V [aktivně učit](label-suggested-utterances.md) proces, služba LUIS umožňuje přizpůsobit aplikaci LUIS skutečných projevy tak, že vyberete projevy, jakou přijala v koncovém bodě pro kontrolu. Můžete přijmout nebo opravte předpovědi koncový bod, obsloužených a znovu. LUIS naučí rychle s Tento iterativní proces, přičemž minimální množství času a úsilí. 
+V [aktivně učit](luis-how-to-review-endoint-utt.md) proces, služba LUIS umožňuje přizpůsobit aplikaci LUIS skutečných projevy tak, že vyberete projevy, jakou přijala v koncovém bodě pro kontrolu. Můžete přijmout nebo opravte předpovědi koncový bod, obsloužených a znovu. LUIS naučí rychle s Tento iterativní proces, přičemž minimální množství času a úsilí. 
 
 ### <a name="phrase-lists"></a>Seznamy frází 
 LUIS poskytuje [slovní spojení seznamy](luis-concept-feature.md) tak můžete určit důležité slova nebo fráze do modelu domény. Služba LUIS používá tyto seznamy přidáte další význam těchto slov a vět, které by jinak byly nalezeny v modelu.

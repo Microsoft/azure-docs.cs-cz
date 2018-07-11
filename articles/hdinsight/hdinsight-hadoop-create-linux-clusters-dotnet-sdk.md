@@ -1,8 +1,7 @@
 ---
-title: Vytváření clusterů systému Hadoop pomocí rozhraní .NET – Azure HDInsight | Microsoft Docs
-description: Zjistěte, jak vytvořit clustery Hadoop, HBase, Storm a Spark pro HDInsight pomocí sady .NET SDK HDInsight v systému Linux.
+title: Vytvoření clusterů Hadoop pomocí rozhraní .NET – Azure HDInsight | Dokumentace Microsoftu
+description: Zjistěte, jak vytvářet clustery Hadoop, HBase, Storm nebo Spark na Linuxu pro HDInsight pomocí sady HDInsight .NET SDK.
 services: hdinsight
-documentationcenter: ''
 author: mumian
 manager: jhubbard
 editor: cgronlun
@@ -10,18 +9,17 @@ tags: azure-portal
 ms.assetid: 9c74e3dc-837f-4c90-bbb1-489bc7124a3d
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/14/2018
+ms.date: 07/09/2018
 ms.author: jgao
-ms.openlocfilehash: 8523b012d6ceaf116e6849abaf8952bbde8b41b3
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: a0e5bf4afcd1d02c81597efdab8ff349e6adf856
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34201281"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952922"
 ---
-# <a name="create-linux-based-clusters-in-hdinsight-using-the-net-sdk"></a>Vytvořit clustery se systémem Linux v HDInsight pomocí sady .NET SDK
+# <a name="create-linux-based-clusters-in-hdinsight-using-the-net-sdk"></a>Vytvoření clusterů se systémem Linux v HDInsight pomocí sady .NET SDK
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
@@ -29,7 +27,7 @@ ms.locfileid: "34201281"
 Zjistěte, jak vytvořit Hadoop cluster v clusteru Azure HDInsight pomocí sady .NET SDK.
 
 > [!IMPORTANT]
-> Kroky v tomto dokumentu vytvořte cluster s uzlem jeden pracovní proces. Pokud máte v plánu na víc než 32 uzlů pracovního procesu, při vytváření clusteru nebo škálování clusteru po vytvoření, je nutné vybrat velikost hlavního uzlu s alespoň s 8 jádry a 14GB paměti ram.
+> Kroky v tomto dokumentu vytvořte cluster pomocí jednoho pracovního uzlu. Pokud máte v úmyslu na více než 32 uzly pracovního procesu v clusteru vytváření nebo škálování clusteru po jeho vytvoření, musíte vybrat velikost hlavního uzlu s alespoň s 8 jádry a 14GB paměti ram.
 >
 > Další informace o velikostech uzlů a souvisejících nákladech najdete v [cenách pro HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
 
@@ -38,15 +36,15 @@ Zjistěte, jak vytvořit Hadoop cluster v clusteru Azure HDInsight pomocí sady 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-* **Účet úložiště Azure**. V tématu [vytvořit účet úložiště](../storage/common/storage-create-storage-account.md#create-a-storage-account).
+* **Účet úložiště Azure**. Zobrazit [vytvořit účet úložiště](../storage/common/storage-create-storage-account.md#create-a-storage-account).
 * **Visual Studio 2013, Visual Studio 2015 nebo Visual Studio 2017**.
 
 ## <a name="create-clusters"></a>Vytváření clusterů
 
-1. Otevřete Visual Studio 2017.
-2. Vytvořte novou aplikaci konzoly Visual C#.
-3. Z **nástroje** nabídky, klikněte na tlačítko **Správce balíčků NuGet**a potom klikněte na **Konzola správce balíčků**.
-4. V konzole pro instalaci balíčků, spusťte následující příkaz:
+1. Otevřít Visual Studio 2017.
+2. Vytvoření nové aplikace konzoly Visual C#.
+3. Z **nástroje** nabídky, klikněte na tlačítko **Správce balíčků NuGet**a potom klikněte na tlačítko **Konzola správce balíčků**.
+4. Spuštěním následujícího příkazu v konzole k instalaci balíčků:
 
     ```powershell
     Install-Package Microsoft.Rest.ClientRuntime.Azure.Authentication -Pre
@@ -54,8 +52,8 @@ Zjistěte, jak vytvořit Hadoop cluster v clusteru Azure HDInsight pomocí sady 
     Install-Package Microsoft.Azure.Management.HDInsight
     ```
 
-    Tyto příkazy přidat knihovny .NET a odkazy na ně pro aktuální projekt sady Visual Studio.
-5. V Průzkumníku řešení poklikejte na **Program.cs** otevřete ho vložte následující kód a zadejte hodnoty pro proměnné:
+    Tyto příkazy přidat do aktuálního projektu sady Visual Studio knihovny .NET a odkazy na ně.
+5. V Průzkumníku řešení poklikejte na **Program.cs** Pokud chcete soubor otevřít, vložte následující kód a zadejte hodnoty pro proměnné:
 
     ```csharp
     using System;
@@ -191,13 +189,13 @@ Zjistěte, jak vytvořit Hadoop cluster v clusteru Azure HDInsight pomocí sady 
     ```
 
 6. Nahraďte hodnoty členů třídy.
-7. Stisknutím klávesy **F5** spusťte aplikaci. Okno konzoly by měla otevřít a zobrazit stav aplikace. Zobrazí se výzva k zadání přihlašovacích údajů účtu Azure. Ho může trvat několik minut pro vytvoření clusteru HDInsight, obvykle přibližně 15.
+7. Stisknutím klávesy **F5** spusťte aplikaci. Okna konzoly by měla otevřít a zobrazit stav aplikace. Zobrazí se výzva k zadání přihlašovacích údajů k účtu Azure. Může trvat několik minut, než se vytvoření clusteru HDInsight, obvykle přibližně 15.
 
 ## <a name="use-bootstrap"></a>Použití bootstrap
 
-Pomocí bootstrap, můžete nakonfigurovat nastavení přidání během vytváření clusteru.  Další informace najdete v tématu [clusterů HDInsight přizpůsobit pomocí Bootstrap](hdinsight-hadoop-customize-cluster-bootstrap.md).
+Pomocí bootstrap, můžete nakonfigurovat další nastavení během vytváření clusteru.  Další informace najdete v tématu [HDInsight přizpůsobení clusterů pomocí Bootstrap](hdinsight-hadoop-customize-cluster-bootstrap.md).
 
-Upravte ukázkový v [vytvořit clustery se](#create-clusters) konfigurace nastavení Hive:
+V tuto ukázku upravíte [vytvářet clustery](#create-clusters) ke konfiguraci nastavení Hive:
 
 ```csharp
 static void Main(string[] args)
@@ -324,9 +322,9 @@ static void Main(string[] args)
 
 ## <a name="use-script-action"></a>Použití akce skriptu
 
-Pomocí akce skriptu, můžete nakonfigurovat další nastavení při vytváření clusteru.  Další informace najdete v tématu [HDInsight se systémem Linux přizpůsobit clustery pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md).
+Pomocí akce skriptu, můžete nakonfigurovat další nastavení během vytváření clusteru.  Další informace najdete v tématu [HDInsight založených na Linuxu přizpůsobit clustery pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md).
 
-Upravte ukázkový v [vytvořit clustery se](#create-clusters) volání akce skriptu k instalaci R:
+V tuto ukázku upravíte [vytvářet clustery](#create-clusters) volat akci skriptu pro instalaci R:
 
 ```csharp
 static void Main(string[] args)
@@ -375,30 +373,31 @@ static void Main(string[] args)
 Pokud narazíte na problémy s vytvářením clusterů HDInsight, podívejte se na [požadavky na řízení přístupu](hdinsight-administer-use-portal-linux.md#create-clusters).
 
 ## <a name="next-steps"></a>Další postup
-Teď, když jste úspěšně vytvořili clusteru služby HDInsight, použijte následující informace o práci s vašeho clusteru. 
+Teď, když úspěšně vytvoříte HDInsight cluster, použijte následující postup, jak pracovat s vaším clusterem. 
 
 ### <a name="hadoop-clusters"></a>Clustery Hadoop
 * [Použití Hivu se službou HDInsight](hadoop/hdinsight-use-hive.md)
 * [Použití Pigu se službou HDInsight](hadoop/hdinsight-use-pig.md)
-* [Používání nástroje MapReduce s HDInsight](hadoop/hdinsight-use-mapreduce.md)
+* [Použití MapReduce se službou HDInsight](hadoop/hdinsight-use-mapreduce.md)
 
 ### <a name="hbase-clusters"></a>Clustery HBase
 * [Začínáme s HBase ve službě HDInsight](hbase/apache-hbase-tutorial-get-started-linux.md)
-* [Vývoj aplikací v jazyce Java pro HBase v HDInsight](hbase/apache-hbase-build-java-maven-linux.md)
+* [Vývoj aplikací v Javě pro HBase v HDInsight](hbase/apache-hbase-build-java-maven-linux.md)
 
 ### <a name="storm-clusters"></a>Clustery Storm
 * [Vývoj topologie Java pro Storm v HDInsight](storm/apache-storm-develop-java-topology.md)
-* [Použití komponent, Python v Storm v HDInsight](storm/apache-storm-develop-python-topology.md)
-* [Nasazení a monitorování topologie se Storm v HDInsight](storm/apache-storm-deploy-monitor-topology-linux.md)
+* [Použití komponent v Pythonu v Storm v HDInsight](storm/apache-storm-develop-python-topology.md)
+* [Nasazení a monitorování topologií se Stormem v HDInsight](storm/apache-storm-deploy-monitor-topology-linux.md)
 
 ### <a name="spark-clusters"></a>Clustery Spark
 * [Vytvoření samostatné aplikace pomocí Scala](spark/apache-spark-create-standalone-application.md)
 * [Vzdálené spouštění úloh na clusteru Sparku pomocí Livy](spark/apache-spark-livy-rest-interface.md)
 * [Spark s BI: Provádějte interaktivní analýzy dat pomocí Sparku v HDInsight pomocí nástrojů BI](spark/apache-spark-use-bi-tools.md)
 * [Spark s Machine Learning: Používejte Spark v HDInsight k předpovědím výsledků kontrol potravin](spark/apache-spark-machine-learning-mllib-ipython.md)
+
 ### <a name="run-jobs"></a>Spouštění úloh
-* [Spouštět úlohy Hive v HDInsight pomocí sady .NET SDK](hadoop/apache-hadoop-use-hive-dotnet-sdk.md)
+* [Spouštění úloh Hive v HDInsight pomocí sady .NET SDK](hadoop/apache-hadoop-use-hive-dotnet-sdk.md)
 * [Spuštění úlohy Pig v HDInsight pomocí sady .NET SDK](hadoop/apache-hadoop-use-pig-dotnet-sdk.md)
-* [Spuštění úloh Sqoop v HDInsight pomocí sady .NET SDK](hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md)
-* [Spuštění úloh Oozie v HDInsight](hdinsight-use-oozie.md)
+* [Spouštění úloh Sqoop v HDInsight pomocí sady .NET SDK](hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md)
+* [Spouštění úloh Oozie v HDInsight](hdinsight-use-oozie.md)
 

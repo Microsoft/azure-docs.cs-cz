@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/02/2018
 ms.author: ellacroi
-ms.openlocfilehash: 3ac82d6f0b54846485ed7369d5c9c1bd352f9daa
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: f529459562ec10a7b9bbcca578d8998e545f3f4c
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437738"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952609"
 ---
 # <a name="support-for-azure-marketplace"></a>Podpora pro Azure Marketplace  
 Možnosti podpory pro Azure Marketplace.  
@@ -45,7 +45,7 @@ Možnosti podpory pro Azure Marketplace.
 
 | Podpora kanálu | Popis |  
 |:--- |:--- |  
-| Slack: [join.marketplace.azure.com](https://join.marketplace.azure.com) | Podpora partnerů s technickými potížemi Slack prostředí. Tam o 350 + partneři aktuálně práce v tomto prostředí. |  
+| Slack: [join.marketplace.azure.com](https://social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket) | Podpora partnerů s technickými potížemi Slack prostředí. Tam o 350 + partneři aktuálně práce v tomto prostředí. |  
 | Fóra na webu MSDN: Marketplace umístění [social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket](https://social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket) | Fórum Microsoft Developer Network. |  
 | Stack Overflow: Azure umístěného v [stackoverflow.com/questions/tagged/azure](https://stackoverflow.com/questions/tagged/azure) | Stack Overflow prostředí tak, aby řešení a otázek k opravdu všechno spojené s Azure Marketplace.<ul> <li>Stack Overflow: Azure Marketplace se nachází v [stackoverflow.com/questions/tagged/azure-marketplace](https://stackoverflow.com/questions/tagged/azure-marketplace)</li> <li>Stack Overflow: Azure Resource Manageru se nachází v [stackoverflow.com/questions/tagged/azure-resource-manager](https://stackoverflow.com/questions/tagged/azure-resource-manager)</li> <li>Stack Overflow: virtuální počítače v Azure umístěného v [stackoverflow.com/questions/tagged/azure-virtual-machine](https://stackoverflow.com/questions/tagged/azure-virtual-machine)</li> <li>Stack Overflow: Kontejnery v Azure umístěného v [stackoverflow.com/search?q=azure+container](https://stackoverflow.com/search?q=azure+container)</li> </ul> |
 

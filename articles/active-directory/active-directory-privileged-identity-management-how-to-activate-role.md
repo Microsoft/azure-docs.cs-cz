@@ -13,12 +13,12 @@ ms.component: protection
 ms.date: 02/14/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: e0e9e01baccd71804b26282f288d19abff8ff8fa
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: bc4280d6e0ac362712d3b406e2e32c42cf4a9be2
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37444918"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952677"
 ---
 # <a name="how-to-activate-or-deactivate-roles-in-azure-ad-privileged-identity-management"></a>Postup aktivace nebo deaktivace role v Azure AD Privileged Identity Management
 Azure Active Directory (AD) Privileged Identity Management zjednodušuje, jak podniky spravovat privilegovaný přístup k prostředkům v Azure AD a dalších online službách Microsoftu jako Office 365 nebo Microsoft Intune.  
@@ -44,11 +44,11 @@ Pokud potřebujete provést na roli, můžete požádat o aktivaci, tak, že vyb
 4. Vyberte **aktivovat**. **Žádost o aktivaci role** otevře se okno.
 5. Některé role vyžadují Vícefaktorové ověřování (MFA), než budete aktivovat roli. Stačí jenom jednou za relace ověřování.
    
-    ![Ověření pomocí vícefaktorového ověřování před aktivace role – snímek obrazovky][2]
+    ![Ověření pomocí vícefaktorového ověřování před aktivace role – snímek obrazovky](./media/active-directory-privileged-identity-management-how-to-activate-role/PIM_activation_MFA.png)
 6. Zadejte důvod pro žádost o aktivaci v textovém poli.  Některé role vyžadují, abyste zadat číslo lístku potíže.
 7. Vyberte **OK**.  Pokud roli nevyžaduje schválení, se teď aktivuje a role se zobrazí v seznamu aktivních rolí (přímo pod seznamem přiřazení oprávněné role). Pokud [role vyžaduje schválení](./privileged-identity-management/azure-ad-pim-approval-workflow.md) Pokud chcete aktivovat, se krátce zobrazí oznámení s informační zprávou v pravém horním rohu prohlížeče informování, žádost čeká na schválení.
 
-    ![Žádost čeká na oznámení – snímek obrazovky][3]
+    ![Žádost čeká na oznámení – snímek obrazovky](./media/active-directory-privileged-identity-management-how-to-activate-role/PIM_Request_Pending_Toast2.png)
 
 ## <a name="deactivate-a-role"></a>Deaktivace role
 Po aktivaci role automaticky deaktivuje při dosažení jeho časový limit (doba trvání způsobilosti).
@@ -64,16 +64,9 @@ V případě, že nechcete, aby aktivace role, která vyžaduje schválení, mů
 4. Vyberte **aktivaci čeká na schválení** úvodní nápis v okně Podrobnosti o aktivaci role.
 5. Vyberte **zrušit** v horní části **čekající na schválení** okno.
 
-   ![Zrušení čekající žádosti o snímek obrazovky][4]
+   ![Zrušení čekající žádosti o snímek obrazovky](./media/active-directory-privileged-identity-management-how-to-activate-role/PIM_Request_Pending_Banner_Cancel.png)
 
 ## <a name="next-steps"></a>Další postup
 Pokud vás zajímá dostávat další informace o Azure AD Privileged Identity Management, následující odkazy obsahují další informace.
 
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
-
-<!--Image references-->
-
-[1]: ./media/active-directory-privileged-identity-management-configure/PIM_EnablePim.png
-[2]: ./media/active-directory-privileged-identity-management-how-to-activate-role/PIM_activation_MFA.png
-[3]: ./media/active-directory-privileged-identity-management-how-to-activate-role/PIM_Request_Pending_Toast2.png
-[4]: ./media/active-directory-privileged-identity-management-how-to-activate-role/PIM_Request_Pending_Banner_Cancel.png
