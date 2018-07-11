@@ -1,6 +1,6 @@
 ---
-title: Plán, podle kterého Analytics Azure stavu
-description: Pokyny k nasazení HIPAA nebo HITRUST stavu Analytics plán, podle kterého
+title: Stav Azure Analytics podrobného plánu
+description: Pokyny pro nasazení podrobný plán Analytics stavu HIPAA/HITRUST
 services: security
 documentationcenter: na
 author: jomolesk
@@ -15,62 +15,62 @@ ms.workload: na
 ms.date: 02/27/2018
 ms.author: jomolesk
 ms.openlocfilehash: f58466bb4cc90823d8e75e0371b400ee674e8b5d
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
+ms.lasthandoff: 07/10/2018
 ms.locfileid: "37113227"
 ---
-# <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Zabezpečení Azure a dodržování předpisů plán, podle kterého - HIPAA nebo HITRUST Data o stavu a AI
+# <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Zabezpečení Azure a dodržování předpisů – Data o stavu HIPAA/HITRUST a AI
 
 ## <a name="overview"></a>Přehled
 
-**Zabezpečení Azure a dodržování předpisů plán, podle kterého - HIPAA nebo HITRUST Data o stavu a AI nabízí klíč nasazení řešení Azure PaaS do ukazují, jak bezpečně ingestování, ukládat, analyzovat a interagovat s daty stavu při schopnost dodržet platné předpisy odvětví požadavky. Plán, podle kterého pomůže urychlit přijetí cloudu a využití pro zákazníky s daty, která je upraveno.**
+**Azure zabezpečení a dodržování předpisů – Data o stavu HIPAA/HITRUST a AI nabízí klíč nasazení Azure PaaS řešení, které ukazují, jak bezpečně ingestování, ukládání, analýzu a interakci s daty stavu při schopnost nesplní dodržování oborových předpisů požadavky. Podrobný plán pomáhá zrychlit přechod na cloud a využití pro zákazníky s daty, která je upravena.**
 
-Zabezpečení Azure a dodržování předpisů plán, podle kterého - HIPAA nebo HITRUST Data o stavu a plán, podle kterého AI poskytuje nástroje a pokyny, které pomohou nasadit zabezpečený, zdravotním pojištění a odpovědnosti za Application Compatibility Toolkit (HIPAA) a stavu informace o vztahu důvěryhodnosti Alliance (HITRUST) připraveno Platforma jako služba (PaaS) prostředí pro příjem, ukládání, analýze a interakci s osobní a ne osobní lékařské záznamy v zabezpečené a vícevrstvé cloudové prostředí nasadit jako řešení začátku do konce. To umožňující prezentovat běžné referenční architektura a je navržená tak, aby se zjednodušila přijetí ve službě Microsoft Azure. Tato architektura zadaný znázorňuje řešení ke splnění potřeb organizace, které hledají cloudové přístup ke snížení zatížení a náklady na nasazení.
+Azure zabezpečení a dodržování předpisů – Data o stavu HIPAA/HITRUST a AI podrobný plán poskytuje nástroje a pokyny k nasazení zabezpečeného, údajů o zdravotním pojištění a zdravotním pojištění (HIPAA) a stavu informace důvěřovat Alliance (HITRUST) připravené Platforma jako služba (PaaS) prostředí pro ingestování, ukládání, analýzu a interakci s osobní, tak i mimo osobní zdravotnickými záznamy v zabezpečené a vícevrstvé cloudovém prostředí, nasadit jako řešení začátku do konce. Představuje běžné referenční architekturu a je navržené pro zjednodušení přijetí Microsoft Azure. Tato architektura zadaná znázorňuje řešení, které vyhoví potřebám organizace, které hledají cloudový způsob ke snížení režie a náklady na nasazení.
 
 ![](images/components.png)
 
-Řešení je navrženo, aby využívat datové sady ukázka formátován pomocí funkce rychlého zdravotní péče interoperabilita prostředky (FHIR), po celém světě standard pro výměnu informací zdravotní péče elektronicky a uložte ho zabezpečeným způsobem. Zákazníci pak můžete použít Azure Machine Learning využívat výhod nástroje výkonné business intelligence a analýzy, chcete-li zkontrolovat předpovědí na ukázková data. Jako příklad druh experimentu, který může usnadnit Azure Machine Learning plán, podle kterého obsahuje ukázkovou datovou sadu, skripty a nástroje pro predikci délka pacientova zůstat v budovy měla nemocnice. 
+Řešení je navrženo využívat formátována pomocí rychlé Healthcare Interoperability prostředky (FHIR), po celém světě standard k výměně informací o zdravotní péče elektronicky, ukázkovou datovou sadu a uloží je bezpečným způsobem. Zákazníci pak mohou využívat Azure Machine Learning využívat nástroje výkonné business intelligence a analytické nástroje ke kontrole předpovědí na ukázková data. Jako příklad takového typu, experiment, který může usnadnit Azure Machine Learning obsahuje podrobný plán ukázkovou datovou sadou, skripty a nástroje pro předpověď délky pobytu pacienta v nemocnici zařízení. 
 
-Tento plán, podle kterého se má sloužit jako základ modulární pro zákazníky, chcete-li upravit na jejich specifické požadavky, vývoj nové Azure strojového učení experimentů k řešení obou scénářích případů použití klinické a funkční. Je navržen pro zabezpečené a kompatibilní, při nasazení; ale je zodpovědná za konfiguraci role správně a implementace veškeré úpravy zákazníků. Je třeba počítat s následujícím:
+Tento podrobný plán má sloužit jako základ pro zákazníky, chcete-li upravit jejich konkrétním požadavkům, vyvíjet nové Azure se strojovým učením k řeší oba scénáře použití klinické a provozní modulární. Slouží k zabezpečení a splňovat předpisy při nasazení; Zákazníci však zodpovídají za konfigurace rolí správně a implementaci změny. Je třeba počítat s následujícím:
 
--   Tento plán, podle kterého poskytuje směrný plán pro pomoc zákazníkům používat Microsoft Azure v HITRUST a HIPAA prostředí.
+-   Tento podrobný plán poskytuje základní pomáhá zákazníkům používat Microsoft Azure ve HITRUST a HIPAA prostředí.
 
--   I když plán, podle kterého byl navržený zarovnána s HIPAA a HITRUST (prostřednictvím společného rámce zabezpečení – CSF), nemělo by se používat vyhovující, dokud nebude ověřený auditor externí za HIPAA a HITRUST požadavky na certifikaci.
+-   I když chcete být v souladu s HIPAA a HITRUST (prostřednictvím společného rámce zabezpečení - CSF) je navržená podrobný plán, to by neměl být považované za vyhovující dokud certifikovaný externí auditor podle zákona HIPAA a HITRUST požadavky na certifikaci.
 
--   Je vhodné zabezpečení a dodržování předpisů recenze řešení vytvořená s využitím této základní architektury provádějící zákazníků.
+-   Zákazníci odpovídají za provedení příslušné kontroly zabezpečení a dodržování předpisů vytvořené pomocí této základní architektuře řešení.
 
-## <a name="deploying-the-automation"></a>Nasazení automatizace
+## <a name="deploying-the-automation"></a>Automatizace nasazení
 
 - K nasazení řešení, postupujte podle pokynů uvedených v nasazování aktualizací. 
 
 [![](./images/deploy.png)](https://aka.ms/healthblueprintdeploy)
 
-Pro rychlý přehled o tom, jak toto řešení funguje, si pusťte toto [video](https://aka.ms/healthblueprintvideo) vysvětlením a předvedení jeho nasazení.
+Získejte rychlý přehled toho, jak toto řešení funguje, podívejte se na to [videa](https://aka.ms/healthblueprintvideo) vysvětlí a předvede jeho nasazení.
 
-- Odpovědi na dotaz lze nalézt v [– nejčastější dotazy](https://aka.ms/healthblueprintfaq) pokyny.
+- Nejčastější otázky najdete v [nejčastější dotazy k](https://aka.ms/healthblueprintfaq) pokyny.
 
--   **Diagram architektury.** Diagram znázorňuje referenční architektura používá pro plán, podle kterého a používat v příkladu scénář případu.
+-   **Diagram architektury.** Diagram znázorňuje referenční architektura používá pro podrobný plán a v příkladu scénáři použití.
 
--   **Nasazení šablony**. V tomto nasazení [šablon Azure Resource Manageru](/azure/azure-resource-manager/resource-group-overview#template-deployment) se používají k automaticky nasazení komponent architektury do Microsoft Azure tak, že zadáte parametry konfigurace během instalace.
+-   **Nasazení šablony**. V tomto nasazení [šablon Azure Resource Manageru](/azure/azure-resource-manager/resource-group-overview#template-deployment) umožňují automaticky nasazovat součásti architektury do Microsoft Azure tak, že zadáte parametry konfigurace během instalace.
 
--   **[Automatizované skripty nasazení](https://aka.ms/healthblueprintdeploy)**. Tyto skripty pomoct nasadit řešení. Skripty se zabývají:
+-   **[Automatizované skripty nasazení](https://aka.ms/healthblueprintdeploy)**. Tyto skripty pomáhající s nasazením řešení. Skripty obsahovat:
 
 
--   Instalace modulu a [globálního správce](/azure/active-directory/active-directory-assign-admin-roles-azure-portal) instalační skript se používá k instalaci a ověřte, zda jsou správně nakonfigurovány požadované moduly prostředí PowerShell a rolí globálního správce. 
--   Instalace skriptu prostředí PowerShell slouží k nasazení řešení, poskytnuto prostřednictvím soubor .zip, který obsahuje předem připravené ukázkové funkce.
+-   Instalace modulu a [globálního správce](/azure/active-directory/active-directory-assign-admin-roles-azure-portal) instalační skript se používá k instalaci a ověřte, zda jsou správně nakonfigurovány požadované moduly Powershellu a role globálního správce. 
+-   Instalace powershellu se používá k nasazení řešení, které jsou k dispozici prostřednictvím souboru .zip, který obsahuje předem připravené ukázky funkce.
 
 ## <a name="solution-components"></a>Součásti řešení
 
 
 Základní architektura se skládá z následujících součástí:
 
--   **[Model hrozeb](https://aka.ms/healththreatmodel)**  model komplexní hrozeb je zadané ve formátu tm7 pro použití s [Microsoft Threat modelování nástroj](https://www.microsoft.com/en-us/download/details.aspx?id=49168), zobrazující komponenty řešení, tok dat mezi nimi a vztah důvěryhodnosti hranice. Model může pomoci zákazníky, pochopit body potenciální riziko v infrastruktuře systému při vývoji machine learning součásti nebo jiných úprav.
+-   **[Model hrozeb](https://aka.ms/healththreatmodel)**  komplexní rizik je součástí tm7 formátu pro použití se službou [nástroj pro modelování hrozeb Microsoftu](https://www.microsoft.com/en-us/download/details.aspx?id=49168), zobrazuje součástmi řešení, data proudí mezi a vztah důvěryhodnosti hranice. Model může pomoci zákazníkům pochopit body potenciální riziko v infrastruktuře systému při vývoji součástí machine learning nebo jiné úpravy.
 
--   **[Matice implementace zákazníka](https://aka.ms/healthcrmblueprint)**  sešitu aplikace Microsoft Excel A uvádí relevantní HITRUST požadavky a vysvětluje, jak jsou zodpovědní za splnění každé z nich společnosti Microsoft a Zákazník.
+-   **[Zákaznická implementace matice](https://aka.ms/healthcrmblueprint)**  sešit aplikace Excel A Microsoft je uveden seznam požadavků příslušných HITRUST a vysvětluje, jak jsou zodpovědný za splnění každé z nich Microsoft a zákazníka.
 
--   **[Kontrola stavu.](https://aka.ms/healthreviewpaper)** Řešení bylo zkontrolovány uživatelem Coalfire systems, Inc. Stav dodržování předpisů (HIPAA a HITRUST) zkontrolujte a pokyny pro implementaci poskytuje auditor\'s kontrolu na řešení a důležité informace pro transformaci plán, podle kterého nasazení produkční prostředí.
+-   **[Kontrola stavu.](https://aka.ms/healthreviewpaper)** Toto řešení byl recenzován uživatelem Coalfire systems, Inc. Stav dodržování předpisů (HIPAA a HITRUST) kontrolu a pokyny pro implementaci poskytuje auditor\'s kontrolu řešení a důležité informace pro transformaci podrobného plánu nasazení připravené pro produkční prostředí.
 
 # <a name="architectural-diagram"></a>Diagram architektury
 
@@ -80,235 +80,235 @@ Základní architektura se skládá z následujících součástí:
 ## <a name="roles"></a>Role
 
 
-Plán, podle kterého definuje dvě role pro správce (operátory) a tři role pro uživatele v správu měla nemocnice a pacienta pozor. Šesté role je definována pro auditor k vyhodnocení dodržování předpisů HIPAA a jiné předpisy. Azure na základě rolí řízení přístupu (RBAC) umožňuje přesněji cílených správu přístupu pro každého uživatele řešení pomocí předdefinované a vlastní rolí. V tématu [Začínáme s řízením přístupu na základě rolí na portálu Azure](https://docs.microsoft.com/azure/role-based-access-control/overview) a [předdefinované role pro řízení přístupu Azure na základě rolí](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) podrobné informace o RBAC, rolí a oprávnění.
+Podrobný plán definuje dvě role uživatelů správce (operátoři) a tři role uživatelů v nemocnici správy a péče o pacienty. Šestý role je definována pro auditor k vyhodnocení dodržování zákonů HIPAA a nařízení. Azure na základě rolí řízení přístupu (RBAC) umožňuje přesně zaměřený správu přístupu pro každého uživatele řešení pomocí předdefinovaných a vlastních rolí. Zobrazit [Začínáme s řízením přístupu na základě rolí na portálu Azure portal](https://docs.microsoft.com/azure/role-based-access-control/overview) a [předdefinované role pro řízení přístupu na základě rolí Azure](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) podrobné informace o RBAC, rolích a oprávněních.
 
-### <a name="site-administrator"></a>Správce webu
+### <a name="site-administrator"></a>Správce serveru
 
 
-Správce webu je zodpovědná za předplatné zákazníka. Řízení celkové nasazení, ale nemají přístup k pacienta záznamy.
+Správce serveru je zodpovědná za předplatné Azure zákazníka. Ovládací prvek celkové nasazení, ale nemají přístup k záznamy o pacientech.
 
--   Výchozí přiřazení role: [vlastníka](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)
-
--   Přiřazení vlastních rolí: není k dispozici
-
--   Obor: předplatného
-
-### <a name="database-analyst"></a>Analytik databáze
-
-Analytik databáze spravuje instance systému SQL Server a databáze.
-Žádný přístup k pacienta záznamy mají.
-
--   Předdefinovaná role přiřazení: [Přispěvatel databází SQL](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-db-contributor), [Přispěvatel serveru SQL](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-server-contributor)
+-   Výchozí přiřazení rolí: [vlastníka](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)
 
 -   Přiřazení vlastních rolí: není k dispozici
 
--   Obor: ResourceGroup
+-   Obor: předplatné
 
- ### <a name="data-scientist"></a>Vědecký pracovník dat
+### <a name="database-analyst"></a>Analytické databáze
 
+Analytické databáze spravuje instanci systému SQL Server a databáze.
+Nemají přístup k záznamy o pacientech.
 
-Vědecký pracovník dat funguje službu Azure Machine Learning. Se můžou importovat, exportovat a spravovat data a spouštět sestavy. Data vědecký pracovník má přístup k datům pacienta, ale nemá oprávnění správce.
-
--   Předdefinovaná role přiřazení: [Přispěvatel účtu úložiště](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor)
+-   Integrovaná přiřazení rolí: [Přispěvatel databází SQL](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-db-contributor), [Přispěvatel SQL serveru](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-server-contributor)
 
 -   Přiřazení vlastních rolí: není k dispozici
 
--   Obor: ResourceGroup
+-   Obor: Skupina prostředků
 
-### <a name="chief-medical-information-officer-cmio"></a>Technický ředitel lékařské (CMIO)
-
-
-CMIO překrývá hranici mezi výpočetní techniky či technologie a poskytovatelem zdravotní Odborníci v oblasti zdravotní péče organizace. Jejich úkolů obvykle zahrnují pomocí analytics k určení, pokud v organizaci se správně přidělování zdrojů.
-
--   Předdefinovaná role přiřazení: žádné
-
-### <a name="care-line-manager"></a>Pozor Úsekový manažer
+ ### <a name="data-scientist"></a>Mezi odborníky přes data
 
 
-Úsekový manažer pozor je přímo zahrnut dát pozor pacientů.
-Jeho úkolem je monitorovat stav pacientů a také zajistit, aby byl k dispozici potřebný personál pro zajištění specifických požadavků péče o jednotlivé pacienty. Úsekový manažer pozor zodpovídá za přidávání a aktualizace pacienta záznamů.
+Mezi odborníky přes data provozuje službu Azure Machine Learning. Můžete importovat, exportovat a spravovat data a spouštět sestavy. Má přístup k datům o pacientech mezi odborníky přes data, ale nemá oprávnění správce.
 
--   Předdefinovaná role přiřazení: žádné
+-   Integrovaná přiřazení rolí: [Přispěvatel účtů úložiště](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor)
 
--   Přiřazení vlastních rolí: oprávnění ke spuštění HealthcareDemo.ps1 udělat i jejich příchodu pacienta a plnit.
+-   Přiřazení vlastních rolí: není k dispozici
 
--   Obor: ResourceGroup
+-   Obor: Skupina prostředků
+
+### <a name="chief-medical-information-officer-cmio"></a>Chief Medical Information Officer (CMIO)
+
+
+CMIO přechází propast mezi informatikou/technologiemi a pracovníky v organizaci poskytující zdravotní péči. Jejich povinnosti obvykle patří využití analýz k určení, pokud se prostředky přidělují odpovídajícím způsobem v rámci organizace.
+
+-   Integrovaná přiřazení rolí: žádné
+
+### <a name="care-line-manager"></a>Ředitel úseku péče
+
+
+Ředitel úseku péče se přímo zabývá péče o pacienty.
+Jeho úkolem je monitorovat stav pacientů a také zajistit, aby byl k dispozici potřebný personál pro zajištění specifických požadavků péče o jednotlivé pacienty. Ředitel úseku péče zodpovídá za přidávání a aktualizaci záznamy o pacientech.
+
+-   Integrovaná přiřazení rolí: žádné
+
+-   Přiřazení vlastních rolí: má oprávnění ke spuštění HealthcareDemo.ps1 udělat i přijetí pacienta a plnit.
+
+-   Obor: Skupina prostředků
 
 ### <a name="auditor"></a>Auditor
 
 
-Auditor vyhodnotí řešení pro dodržování předpisů. Mají žádný přímý přístup k síti.
+Auditor je vyhodnocen jako řešení pro dodržování předpisů. Jejich nemají žádný přímý přístup k síti.
 
--   Předdefinovaná role přiřazení: [čtečky](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader)
+-   Integrovaná přiřazení rolí: [čtečky](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader)
 
 -   Přiřazení vlastních rolí: není k dispozici
 
--   Obor: předplatného
+-   Obor: předplatné
 
-## <a name="example-use-case"></a>Příklad případ použití
-
-
-Případ použití příklad součástí tento plán, podle kterého ukazuje, jak plán, podle kterého lze povolit machine learningu a analýzy dat stavu v cloudu. Contosoclinic je malý nemocnice umístěné ve Spojených státech amerických. Správci sítě měla nemocnice chcete lépe předpovědi délka pacientova pobytu v době opravňujících, chcete-li zvýšit efektivitu provozní úlohy a vylepšení kvality pozor, můžete získat pomocí Azure Machine Learning.
-
-### <a name="predicting-length-of-stay"></a>Predikci doba trvání
+## <a name="example-use-case"></a>Případy použití příklad
 
 
-Ukázkový scénář případu použití používá Azure Machine Learning k předvídání nově dovezené pacientova doba trvání tak, že porovnáte lékařské podrobnosti provedených na pacienta příjmu agregované historická data od předchozí pacientů.
-Plán, podle kterého obsahuje velké sady anonymizovaná lékařské záznamy k předvedení funkcí školení a prediktivní řešení. V produkčním nasazení by zákazníkům používat jejich vlastní záznamy ke cvičení řešení pro přesnější předpovědi, které odráží jedinečné podrobnosti jejich prostředí, zařízení a pacientů.
+Tento plán je součástí případ použití příklad ukazuje, jak podrobný plán slouží k povolení strojového učení a analýz na data o stavu v cloudu. Contosoclinic je malý nemocnici nachází ve Spojených státech. Správci sítě nemocniční institucí, která chcete lépe předvídat délku pobytu pacienta v době opravňujících, aby bylo možné zvýšit efektivitu provozu a zvýšit tak kvalitu péče, které můžete zadat pomocí Azure Machine Learning.
+
+### <a name="predicting-length-of-stay"></a>Předpověď délky pobytu
+
+
+Příklad scénáře případu použití využívá Azure Machine Learning k predikci nově dovezené pacienta délky pobytu porovnáním lékařské podrobnosti provedené v pacientů příjmu agregované historických dat z předchozí pacientů.
+Podrobný plán zahrnuje velké sady anonymizované zdravotnickými záznamy na trénovací a prediktivní předvedou možnosti dostupné v řešení. V produkčním nasazení by zákazníci používat jejich vlastní záznamy tak moct trénovat řešení pro přesnějších predikcí odráží jedinečné podrobnosti o jejich prostředí, zařízení a pacientů.
 
 ### <a name="users-and-roles"></a>Uživatelé a role
 
 
-**Správce webu – Alex**
+**Správce serveru – Alex**
 
 *E-mailu: Alex\_SiteAdmin*
 
-Úloha je Alex je vyhodnotit technologie, které může snížit režie správy do místní sítě a snížit náklady na správu. Alex byla vyhodnocování Azure nějakou dobu, ale má měli problémy, ke konfiguraci služby, které mu je potřeba splnit požadavky na dodržování HiTrust k ukládání dat pacienta v cloudu. Alex vybral AI stavu Azure chcete nasadit řešení stavu dodržování předpisů připravené, který má řešit požadavky pro požadavkům zákazníka HiTrust.
+Alex úloha je vyhodnotit technologie, které může snížit režie správy v místní síti a snížit náklady na správu. Alex byla vyhodnocení Azure nějakou dobu, ale má za ke konfiguraci služby, které jsou potřebné pro splnění požadavků na dodržování předpisů HiTrust, ukládat Data o pacientech v cloudu. Alex vybrali Azure AI stavu nasazení připravené pro dodržování předpisů stav řešení, které se zákazníky a vyřešené požadavky, které splňují požadavky zákazníků HiTrust.
 
-**Dat – vědecký pracovník Debra**
+**Mezi odborníky přes data--Debra**
 
 *E-mailu: Debra\_DataScientist*
 
-Debra má na starosti pomocí a vytváření modelů, které analyzovat lékařské záznamy zajistit přehled o pacientech pozor. Debra používá SQL a statistické programovací jazyk R vytváření jeho modelů.
+Debra má na starosti používání a vytváření modelů, které analyzují zdravotnickými záznamy poskytnout přehled o péče o pacienty. Debra používá k vytvoření své modely SQL a statistický programovací jazyk R.
 
-**Analytik databáze – Danny**
+**Analytické databáze--Danny**
 
 *E-mailu: Danny\_DBAnalyst*
 
-Danny je hlavním kontaktem pro všechno, co týkající se Microsoft SQL Server, která ukládá všechny pacienta data pro Contosoclinic. Danny se na zkušeného správce systému SQL Server, který má nedávno seznámit se s Azure SQL Database.
+Danny je hlavním kontaktem pro všechno, co týkající se Microsoft SQL Server, který ukládá všechna data o pacientech Contosoclinic. Danny je zkušeného správce systému SQL Server, který byl nedávno seznámit se s Azure SQL Database.
 
-**Technický lékařské ředitel – Caroline**
+**Chief Medical Information Officer--Caroline**
 
-Caroline ve spolupráci s Jan úsekového manažera pro vás a Debra vědecký pracovník dat k určení, jaké faktory vliv pacienta doba trvání.
-Caroline predikcím ze délka trvání řešení (LOS) používá k určení, pokud v síti měla nemocnice se správně přidělování zdrojů. Například pomocí řídicího panelu, zadaný v tomto řešení.
+Caroline ve spolupráci s Chris ředitel úseku péče a Debra mezi odborníky přes Data, chcete-li zjistit, jaké faktorů, které ovlivňují pacientů délky pobytu.
+Caroline předpovědí z řešení délka pobytu (LOS) používá k určení, pokud se prostředky přidělují odpovídajícím způsobem v nemocniční síti. Například na řídicím panelu v tomto řešení.
 
-**Jan pro vás úsekového manažera--**
+**Care Úsekový manažer – Chris**
 
-*E-mailu: Jan\_CareLineManager*
+*E-mailu: Chris\_CareLineManager*
 
-Jako jednotlivých přímo zodpovědní za správu pacienta jejich příchodu a vypouštění v Contosoclinic, Jan používá předpovědi generuje řešení LOS zajistit, že odpovídající zaměstnanci jsou k dispozici zajistit pozor pacientům, když jsou zůstávají ve zařízení.
+Jako jednotlivec přímo zodpovědného za správu přijetí pacienta a propouštění na Contosoclinic, Chris používá předpovědí vygenerovaných tímto řešením LOS ujistit, že jsou k dispozici péče o pacienty při pobytu v odpovídající zaměstnanci zařízení.
 
-**Auditor – Hanu**
+**Auditor – Han**
 
-*E-mailu: Hanu\_Auditor*
+*E-mailu: Han\_Auditor*
 
-Hanu je certifikovaných auditora, který má prostředí auditování pro ISO, SOC a HiTrust. Hanu byl přijat ke kontrole Contosoclinc na síti. Hanu můžete zkontrolovat matice zákazníka odpovědnost součástí řešení zajistit, že plán, podle kterého a LOS řešení lze použít k uložení, proces a zobrazení důvěrných osobních údajů.
+Hanu je certifikované auditora, který má prostředí auditování pro ISO, SOC a HiTrust. Hanu byl přijat ke kontrole Contosoclinc vaší sítě. Hanu můžete zkontrolovat matice zákazníka odpovědnost řešení opatřeného zajistit, že podrobného plánu a LOS řešení můžete použít k ukládají, zpracovávají a zobrazení důvěrných osobních údajů.
 
 
 # <a name="design-configuration"></a>Konfigurace návrhu
 
 
-Tato část popisuje, o výchozí konfigurace a bezpečnostní opatření, které jsou součástí plán, podle kterého uvedených na:
+Tato část podrobně výchozí konfigurace a bezpečnostních opatření, které jsou součástí podrobného plánu uvedených na:
 
-- **INGESTOVÁNÍ** nezpracovaná zdrojů dat včetně FHIR zdroje dat
-- **ÚLOŽIŠTĚ** citlivé informace
-- **Analýza** a předvídání výstupy
-- **INTERAKCÍ** s výsledky a předpovědi
-- **IDENTITY** správu řešení
+- **INGESTOVÁNÍ** nezpracovaná zdroje dat, včetně FHIR zdroj dat
+- **ÚLOŽIŠTĚ** citlivých informací
+- **ANALYZOVAT** a předvídat výstupy
+- **INTERAKCE** s výsledky a předpovědi
+- **Identita** správy řešení
 - **ZABEZPEČENÍ** povolena funkce
 
 
-## <a name="identity"></a>IDENTITY 
+## <a name="identity"></a>IDENTITA 
 
 ### <a name="azure-active-directory-and-role-based-access-control-rbac"></a>Azure Active Directory a řízení přístupu na základě role (RBAC)
 
 
 **Ověřování:**
 
--   [Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/) je Microsoft\'s víceklientské cloudové adresáře a identity management service. Všechny uživatele pro řešení byly vytvořeny v Azure Active Directory, včetně uživatelů přístup k databázi SQL.
+-   [Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/) je Microsoft\'s více tenanty založené na cloudu adresáři a identitami služby management. Všichni uživatelé pro řešení vytvořené v Azure Active Directory, včetně uživatele, kteří používají SQL Database.
 
 
 
--   Ověřování do aplikace se provádí pomocí služby Azure AD. Další informace najdete v tématu [integrace aplikací s Azure Active Directory](/azure/active-directory/develop/active-directory-integrating-applications).
+-   Používání služby Azure AD se provádí ověřování do aplikace. Další informace najdete v tématu [integrace aplikací s Azure Active Directory](/azure/active-directory/develop/active-directory-integrating-applications).
 
--   [Azure Active Directory Identity Protection](/azure/active-directory/active-directory-identityprotection) zjistí potenciální ohrožení zabezpečení, které ovlivňují identity ve vaší organizaci, nakonfiguruje automatické odpovědi na zjištěné podezřelé akcí souvisejících s identity ve vaší organizaci, a prozkoumá podezřelé incidenty a provede příslušnou akci jejich řešení.
+-   [Azure Active Directory Identity Protection](/azure/active-directory/active-directory-identityprotection) zjistí potenciální ohrožení zabezpečení dopadem na identity vaší organizace, nakonfiguruje automatické odpovědi na zjištěné podezřelé akce související s identity ve vaší organizaci, a prozkoumá podezřelé incidenty a provede příslušnou akci k jejich řešení.
 
--   [Azure na základě rolí řízení přístupu (RBAC)](/azure/role-based-access-control/role-assignments-portal) umožňuje přesněji správu cílených přístupu k Azure. Předplatné přístup je omezen na správce předplatného a Azure Key Vault přístup je omezen na správce webu. Silná hesla (minimální s aspoň jedno velké nebo malé písmeno, číslo a zvláštní znak 12 znaků) se vyžadují.
+-   [Azure na základě rolí řízení přístupu (RBAC)](/azure/role-based-access-control/role-assignments-portal) umožňuje přesněji zaměřené access management pro službu Azure. Přístup k předplatnému je omezená na správce předplatného a služby Azure Key Vault přístup je omezený na správce webu. Silná hesla (minimální s alespoň jedna velká a malá písmena, čísla a speciální znak 12 znaků) jsou povinné.
 
--   Služby Multi-Factor authentication je podporována, pokud je povoleno přepínačem - enableMFA během nasazení.
+-   Ověřování službou Multi-Factor Authentication je podporováno, pokud přepínač - enableMFA je povoleno během nasazení.
 
--   Hesla vyprší po 60 dnech, pokud je povolená přepínačem - enableADDomainPasswordPolicy během nasazení.
+-   Hesla vyprší po uplynutí 60 dnů, pokud je přepínač - enableADDomainPasswordPolicy povolená během nasazení.
 
 **Role:**
 
--   Řešení využívá [předdefinované role](/azure/role-based-access-control/built-in-roles) ke správě přístupu k prostředkům.
+-   Toto řešení využívá [předdefinované role](/azure/role-based-access-control/built-in-roles) ke správě přístupu k prostředkům.
 
--   Všichni uživatelé jsou přiřazeny určité předdefinované role ve výchozím nastavení.
+-   Všichni uživatelé přiřazeni konkrétní předdefinované role ve výchozím nastavení.
 
 ### <a name="azure-key-vault"></a>Azure Key Vault
 
--   Data uložená v Key Vault, zahrnují:
+-   Obsahuje data uložená ve službě Key Vault:
 
-    -   Klíč přehled aplikace
-    -   Klíč pacienta přístup k úložišti dat
-    -   Pacienta připojovací řetězec
-    -   Název tabulky pacienta dat
-    -   Koncový bod Azure ML webové služby
+    -   Klíč Application insight
+    -   O pacientech klíč přístup k úložišti dat
+    -   O pacientech připojovací řetězec
+    -   Název tabulky dat o pacientech
+    -   Koncový bod služby Azure ML Web Service
     -   Klíč rozhraní API služby Azure ML
 
--   Konfigurace zásad pokročilé přístupu na základě potřeba
--   Zásady přístupu Key Vault jsou definovány s minimální požadovaná oprávnění k klíče a tajné klíče
--   Všechny klíče a tajné klíče v Key Vault mají datum vypršení platnosti
--   Všechny klíče v trezoru klíče jsou chráněny HSM \[typu klíč = klíče RSA HSM chráněné 2048 bitů\]
--   Všichni uživatelé nebo identity jsou udělena minimální požadovaná oprávnění pomocí Role na základě řízení přístupu (RBAC)
--   Aplikace nesdílejí Key Vault, pokud si navzájem důvěřují a potřebují přístup ke stejným tajných klíčů za běhu
--   Diagnostické protokoly Key Vault je povolená s dobu uchování o délce alespoň 365 dnů.
--   Povolené kryptografických operací pro klíče jsou omezeny na ty, které vyžaduje
+-   Pokročilé zásady přístupu jsou nakonfigurované na základě potřeby
+-   Zásady přístupu trezoru klíčů, které jsou definovány s minimální požadovaná oprávnění pro klíče a tajné kódy
+-   Všechny klíče a tajné kódy ve službě Key Vault mít data vypršení platnosti
+-   Všechny klíče ve službě Key Vault jsou chráněné pomocí HSM \[typ klíče HSM chráněné 2048bitový klíč RSA =\]
+-   Všechny uživatele a identity jsou udělena minimální požadovaná oprávnění na základě řízení přístupu Role (RBAC) s použitím
+-   Aplikace nesdílejí služby Key Vault, pokud navzájem důvěřují a které potřebují přístup ke stejným tajných kódů v době běhu
+-   Jsou povolené diagnostické protokoly pro Key Vault s dobu uchování o délce alespoň 365 dnů.
+-   Povolené kryptografických operací s klíči jsou omezeny na ty povinné
 
 ## <a name="ingest"></a>INGESTOVÁNÍ 
 
 ### <a name="azure-functions"></a>Azure Functions
-Řešení je navrženo, aby použít [Azure Functions](/azure/azure-functions/) zpracovat délka ukázka zůstat dat používaných v ukázkové analýzy. Tři možnosti funkce byly vytvořeny.
+Řešení byla navržena pro použití [Azure Functions](/azure/azure-functions/) zpracovat ukázka délku pobytu data používaná v ukázce analýzy. Byly vytvořeny tři možnosti ve funkcích.
 
-**1. Hromadný import dat Phi – dat zákazníka**
+**1. Hromadný import dat chráněných zdravotních informací data zákazníků**
 
-Při použití ukázkový skript. . \\HealthcareDemo.ps1 s **BulkPatientAdmission** přepínat, jak je uvedeno v **nasazení a spuštění ukázku** se provede následující kanálu zpracování:
-1. **Azure Blob Storage** -ukázkový soubor .csv data pacienta nahrané do úložiště
-2. **Událost mřížky** -událostí publikuje data funkce Azure (hromadným importem – objekt blob události)
-3. **Funkce Azure** - provede zpracování a ukládá data do úložiště SQL pomocí funkce zabezpečení – událost (Typ; adresa url objektu blob)
-4. **Databáze SQL** – úložiště databáze pro pacienta dat pomocí značky pro klasifikaci a proces ML je spuštěna Uděláte to výukový experiment.
+Při použití ukázkový skript. . \\HealthcareDemo.ps1 s **BulkPatientAdmission** přepínat, jak je uvedeno v **nasazení a spuštění ukázky** provede následující kanálu zpracování:
+1. **Azure Blob Storage** -ukázkový soubor CSV data o pacientech nahrané do úložiště
+2. **Event Grid** -události publikuje data funkce Azure Functions (hromadný import - blob události)
+3. **Funkce Azure Functions** – provádí zpracování a ukládá data do úložiště SQL pomocí zabezpečené funkce – událost (Typ; adresa url objektu blob)
+4. **SQL DB** – databáze úložiště pro Data o pacientech s využitím značek pro klasifikaci a procesu ML je vydáno provedete výukového experimentu.
 
 ![](images/dataflow.png)
 
-Kromě toho azure funkce byl navržen ke čtení a chránit určené citlivá data v sadě dat ukázka pomocí těchto značek:
+Kromě toho funkce azure Functions je navržená ke čtení a chránit určené citlivá data v datové sadě ukázka pomocí následující značky:
 - dataProfile = > "ePHI"
-- Vlastník = > \<UPN správce lokality\>
-- prostředí = > "Pilotního projektu"
-- oddělení = > "Globální ekosystém" označení bylo použito pro sadu ukázkových dat, kde pacienta 'názvy' byla identifikována jako nešifrovaný text.
+- Vlastník = > \<UPN správce serveru\>
+- prostředí = > "Pilotní nasazení"
+- oddělení = > "Globální ekosystém" označení bylo použito na ukázkovou datovou sadu, ve kterém pacient "názvy" byla identifikována jako nešifrovaný text.
 
-**2. Jejich příchodu nových pacientů**
+**2. Přijetí nové pacientů**
 
-Při použití ukázkový skript. . \\HealthcareDemo.ps1 s **BulkPatientadmission** přepínat, jak je uvedeno v **nasazení a spuštění ukázku** se provede následující kanálu zpracování: ![](images/securetransact.png) 
- **1. Funkce Azure** spustit a funkce požadavky [tokenu nosiče](/rest/api/) ze služby Azure Active directory.
+Při použití ukázkový skript. . \\HealthcareDemo.ps1 s **BulkPatientadmission** přepínat, jak je uvedeno v **nasazení a spuštění ukázky** provede následující kanálu zpracování: ![](images/securetransact.png) 
+ **1. Funkce Azure Functions** aktivuje a funkci žádosti o [nosný token](/rest/api/) ze služby Azure Active directory.
 
-**2. Key Vault** požadovaný pro tajný klíč, který je přidružen k požadovaný token.
+**2. Key Vault** požadovaná pro tajný klíč, který je přidružen k požadovaný token.
 
-**3. Azure role ověření žádosti a autorizaci žádost o přístup do služby Key Vault.
+**3. Role Azure ověření žádosti a autorizaci žádost o přístup ke službě Key Vault.
 
 **4. Key Vault** vrací tajný klíč, v tomto případě SQL DB připojovací řetězec.
 
-**5. Funkce Azure** používá připojovací řetězec k bezpečnému připojování k databázi SQL a pokračuje k ukládání dat ePHI další zpracování.
+**5. Funkce Azure Functions** používá připojovací řetězec pro zabezpečené připojení k SQL Database a pokračuje k ukládání dat ePHI další zpracování.
 
-K dosažení úložiště dat, společné schéma rozhraní API implementovat následující rychlé zdravotní péče prostředky Interoperability (FHIR vyslovováno ještě efektivněji). Funkce zadaná následující prvky FHIR exchange:
+K dosažení úložiště dat, společné schéma rozhraní API implementované po rychlé Healthcare prostředky Interoperability (FHIR vyslovováno fire). Funkce byla k dispozici následující prvky FHIR exchange:
 
--   [Pacienta schématu](https://www.hl7.org/fhir/patient.html) "kdo" obsahuje informace o pacienta.
+-   [O pacientech schématu](https://www.hl7.org/fhir/patient.html) "," najdete informace o pacienta.
 
--   [Schéma pozorování](https://www.hl7.org/fhir/observation.html) obsahuje centrální element v zdravotní péče, lze podporovat diagnostiku, sledovat průběh, určit směrné plány a vzory a i zaznamenat demografické charakteristiky. 
+-   [Schéma sledování](https://www.hl7.org/fhir/observation.html) týká ústřední element ve zdravotnictví, používá pro podporu diagnostiky, sledovat průběh, určíte standardní hodnoty a vzorce a dokonce zaznamenat demografickým charakteristiky. 
 
--   [Dojde k schématu](https://www.hl7.org/fhir/encounter.html) obsahuje typy komunikaci například ambulatory nouzový, domácí stav, má za a virtuální komunikaci.
+-   [Dojde k schématu](https://www.hl7.org/fhir/encounter.html) zahrnuje typy narazí, jako je například ambulatory nouzový, home stavu, má za a virtuální narazí.
 
--   [Podmínka schématu](https://www.hl7.org/fhir/condition.html) obsahuje podrobné informace o podmínku, problém, diagnostiku, nebo další události, situaci, problém nebo klinické konceptu, které vzrostla úroveň se jednat o problém.  
+-   [Podmínka schématu](https://www.hl7.org/fhir/condition.html) najdete podrobné informace o podmínku, problém, diagnostiky, nebo další události, situace, problém nebo klinické koncept, který vzrostla na úroveň žádný problém.  
 
 
 
 ### <a name="event-grid"></a>Event Grid
 
 
-Podporuje řešení Azure událostí mřížky, jedinou službu pro správu směrování pro všechny události z jakéhokoli zdroje do žádné cíle, pokud:
+Řešení podporuje Azure Event Grid, jediné služby pro správu směrování všech událostí z jakéhokoli zdroje do libovolného cíle poskytující:
 
 -   [Zabezpečení a ověřování](/azure/event-grid/security-authentication)
 
--   [Řízení přístupu na základě role](/azure/event-grid/security-authentication#management-access-control) pro různé operace správy, například výpis událostí odběrů, vytváření nové a generování klíčů
+-   [Řízení přístupu na základě rolí](/azure/event-grid/security-authentication#management-access-control) pro různé operace správy, jako je například seznam odběrů událostí, vytváření nových a generování klíčů
 
 -   Auditování
 
@@ -317,75 +317,75 @@ Podporuje řešení Azure událostí mřížky, jedinou službu pro správu smě
 ### <a name="sql-database-and-server"></a>SQL Database a serveru 
 
 
--   [Transparentní šifrování šifrování dat (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) poskytuje v reálném čase šifrování a dešifrování dat uložených v databázi SQL Azure, pomocí klíče uloženého v Azure Key Vault.
+-   [Transparentní šifrování dat (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) poskytuje v reálném čase šifrování a dešifrování dat uložených ve službě Azure SQL Database pomocí klíč uložený ve službě Azure Key Vault.
 
--   [Vyhodnocení ohrožení zabezpečení SQL](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment) je snadno konfigurovat nástroj, který lze zjišťovat, sledovat a napravovat potenciální ohrožení zabezpečení databáze.
+-   [Posouzení ohrožení zabezpečení SQL](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment) je snadno konfigurovatelné nástroj, který můžete zjistit, sledování a náprava potenciálních ohrožení zabezpečení databáze.
 
--   [Detekce hrozeb databáze SQL](/azure/sql-database/sql-database-threat-detection) povolena.
+-   [Detekce hrozeb služby SQL Database](/azure/sql-database/sql-database-threat-detection) povolena.
 
--   [Auditování databáze SQL](/azure/sql-database/sql-database-auditing) povolena.
+-   [Auditování služby SQL Database](/azure/sql-database/sql-database-auditing) povolena.
 
--   [Databáze SQL metrik a protokolování diagnostiky](/azure/sql-database/sql-database-metrics-diag-logging) povolena.
+-   [SQL Database metrik a protokolování diagnostiky](/azure/sql-database/sql-database-metrics-diag-logging) povolena.
 
--   [Úroveň serveru a databáze brány firewall pravidla](/azure/sql-database/sql-database-firewall-configure) mít byla zvýšit.
+-   [Pravidla brány firewall úrovni serveru a databáze](/azure/sql-database/sql-database-firewall-configure) mají byla zvýšit.
 
--   [Vždy šifrované sloupce](/azure/sql-database/sql-database-always-encrypted-azure-key-vault) slouží k ochraně pacienta první a poslední názvy.
-    Kromě toho sloupce šifrování databáze také používá Azure Active Directory (AD) k ověřování aplikace do Azure SQL Database.
+-   [Funkce Always Encrypted sloupce](/azure/sql-database/sql-database-always-encrypted-azure-key-vault) slouží k ochraně pacientů, střední, jména a příjmení.
+    Kromě toho šifrování sloupců databáze také používá Azure Active Directory (AD) k ověření aplikace ke službě Azure SQL Database.
 
--   Přístup k SQL Database a SQL Server nakonfigurovaný podle Princip nejnižších nutných oprávnění.
+-   Přístup k SQL Database a SQL Server nakonfigurovaný podle principu nejnižší úrovně oprávnění.
 
--   Přístup přes bránu firewall SQL jsou povoleny pouze požadované IP adresy.
+-   Přístup přes bránu firewall služby SQL jsou povoleny pouze požadované IP adresy.
 
 ### <a name="storage-accounts"></a>Účty úložiště
 
 
--   [Data v provozu se přenáší pomocí protokolu TLS/SSL pouze](/azure/storage/common/storage-require-secure-transfer?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json).
+-   [Data přenášená data se přenáší pomocí protokolu TLS/SSL pouze](/azure/storage/common/storage-require-secure-transfer?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json).
 
 -   Anonymní přístup není povolen pro kontejnery.
 
--   Pravidla výstrah jsou nakonfigurované pro sledování anonymní aktivity.
+-   Pravidla upozornění jsou nakonfigurované pro sledování činnosti anonymous.
 
--   Je požadován pro přístup k prostředkům účtu úložiště protokol HTTPS.
+-   HTTPS je vyžadován pro přístup k prostředkům účtu úložiště.
 
--   Ověřování dat požadavku je zaznamenána a sledovat.
+-   Ověřovací data požadavku je zaznamenána a monitorovat.
 
--   Data v úložišti objektů Blob se šifrují v klidovém stavu.
+-   Data v úložišti objektů Blob se šifrují při nečinnosti.
 
 ## <a name="analyze"></a>ANALÝZA
 
 ### <a name="machine-learning"></a>Machine Learning
 
 
--   [Je povoleno protokolování](/azure/machine-learning/studio/web-services-logging) pro Machine Learning webové služby.
-- pomocí [Machine Learning](/azure/machine-learning/desktop-workbench/experimentation-service-configuration) workbench vyžaduje vývoj experimenty, která poskytuje možnost k předvídání do sady řešení. [Integrace nástroje workbench](/azure/machine-learning/desktop-workbench/using-git-ml-project) můžete zjednodušit správu experimenty.
+-   [Je povoleno protokolování](/azure/machine-learning/studio/web-services-logging) pro Machine Learning web services.
+- pomocí [Machine Learning](/azure/machine-learning/desktop-workbench/experimentation-service-configuration) workbench vyžaduje vývoj experimenty, poskytující možnost predikce délky sadu řešení. [Integrace aplikace workbench](/azure/machine-learning/desktop-workbench/using-git-ml-project) pomáhají zjednodušit správu experimentů.
 
 ## <a name="security"></a>ZABEZPEČENÍ
 
 ### <a name="azure-security-center"></a>Azure Security Center
-- [Azure Security Center](https://azure.microsoft.com/services/security-center/) poskytuje centralizovanou zobrazení stavu zabezpečení všech vašich prostředků Azure. Na první pohled můžete ověřit příslušná bezpečnostní prvky jsou na místě a správně nakonfigurovaný, a můžete rychle zjistit všechny prostředky, které vyžadují pozornost. 
+- [Azure Security Center](https://azure.microsoft.com/services/security-center/) poskytuje centralizovaný pohled stavu zabezpečení všech vašich prostředků Azure. Na první pohled můžete ověřit, že kontrolních mechanismů zabezpečení jsou na místě a správně nakonfigurovaný, a můžete rychle identifikovat všechny prostředky, které vyžadují pozornost. 
 
-- [Azure Advisor](/azure/advisor/advisor-overview) je konzultantem přizpůsobené cloudu, který vám pomůže dodržujte doporučené postupy, chcete-li optimalizovat nasazení Azure. Analyzuje konfiguraci vašich prostředků a telemetrii jejich využívání a následně doporučí řešení, která zlepší finanční úspornost, výkon, dostupnost a zabezpečení vašich prostředků Azure.
+- [Azure Advisor](/azure/advisor/advisor-overview) je individuální cloudový konzultant, který pomáhá dodržovat osvědčené postupy a optimalizovat nasazení Azure. Analyzuje konfiguraci vašich prostředků a telemetrii jejich využívání a následně doporučí řešení, která zlepší finanční úspornost, výkon, dostupnost a zabezpečení vašich prostředků Azure.
 
 ### <a name="application-insights"></a>Application Insights
-- [Application Insights](/azure/application-insights/app-insights-overview) je rozšiřitelný služba Správa výkonu aplikace (APM) pro vývojáře, kteří ve více platformách. Slouží k monitorování živé webové aplikace. Zjistí anomálie výkonu. Obsahuje výkonné analytické nástroje pro diagnostiku problémů a pomáhá porozumět, jak vlastně uživatelé vaši aplikaci používají. Je navržena tak, aby pomáhala průběžně vylepšovat výkon a možnosti využití.
+- [Application Insights](/azure/application-insights/app-insights-overview) je rozšiřitelná služba správu výkonu aplikací (APM) pro webové vývojáře ve více platformách. Slouží k monitorování živé webové aplikace. Detekuje anomálie výkonu. Obsahuje výkonné analytické nástroje pro diagnostiku problémů a pomáhá porozumět, jak vlastně uživatelé vaši aplikaci používají. Je navržena tak, aby pomáhala průběžně vylepšovat výkon a možnosti využití.
 
 ### <a name="azure-alerts"></a>Upozornění Azure
-- [Výstrahy nabízejí metoda monitorování služby Azure a umožňují konfigurovat podmínky nad daty. Výstrahy obsahují i oznámení, když výstražný stav odpovídá data monitorování.
+- [Výstrahy nabízejí způsob sledování služeb Azure a umožňují konfigurovat podmínky nad daty. Výstrahy také poskytují oznámení, když výstražný stav odpovídá data monitorování.
 
-### <a name="operations-management-suite-oms"></a>Služby Operations Management Suite (OMS)
-[Služby Operations Management Suite (OMS)](/azure/operations-management-suite/operations-management-suite-overview) je kolekce služeb pro správu.
+### <a name="operations-management-suite-oms"></a>Operations Management Suite (OMS)
+[Operations Management Suite (OMS)](/azure/operations-management-suite/operations-management-suite-overview) je kolekce služeb pro správu.
 
--   Pracovní prostor je povolený pro Security Center
+-   Pracovní prostor povolený pro Security Center
 
--   Pracovní prostor je povolený pro úlohy monitorování
+-   Pracovní prostor povolený pro úlohy monitorování
 
--   Monitorování úloh je povoleno pro:
+-   Monitorování úloh je povolený pro:
 
     -   Identita a přístup
 
     -   Zabezpečení a audit
 
-    -   Analýza Azure SQL DB
+    -   Azure SQL DB Analytics
 
     -   [Azure WebApp Analytics](/azure/log-analytics/log-analytics-azure-web-apps-analytics) řešení
 
@@ -393,6 +393,6 @@ Podporuje řešení Azure událostí mřížky, jedinou službu pro správu smě
 
     -   Sledování změn
 
--   [Konektor služby Statistika aplikace (Preview)](/azure/log-analytics/log-analytics-app-insights-connector) je povoleno
+-   [Application Insights Connector (Preview)](/azure/log-analytics/log-analytics-app-insights-connector) je povoleno
 
--   [Analýzy protokolů aktivity](/azure/log-analytics/log-analytics-activity) je povoleno
+-   [Aktivita log analytics](/azure/log-analytics/log-analytics-activity) je povoleno

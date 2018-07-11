@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/02/2018
+ms.date: 07/08/2018
 ms.author: magoedte
-ms.openlocfilehash: e7d3fdf9e6f027ab1c23a057ad6e039d50cab9ad
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: a94f7289c75a4f4d466542c608d81cf5b954f4b1
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37436418"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37917322"
 ---
 # <a name="monitor-azure-kubernetes-service-aks-container-health-preview"></a>Monitorovat stav kontejneru Azure Kubernetes Service (AKS) (Preview)
 
@@ -54,7 +54,7 @@ Tato funkce využívá kontejnerizovaných agenta OMS pro Linux ke shromažďov�
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com). 
 
 ## <a name="enable-container-health-monitoring-for-a-new-cluster"></a>Povolit monitorování stavu kontejneru pro nový cluster
-Můžete povolit jenom při nasazení na webu Azure Portal monitorování clusteru AKS.  Postupujte podle kroků v tomto článku rychlý Start [Nasaďte cluster Azure Kubernetes Service (AKS)](../aks/kubernetes-walkthrough-portal.md).  Když jste na **monitorování** stránce **Ano** pro možnost **povolit monitorování** povolit a potom vyberte existující nebo vytvořte nový pracovní prostor Log Analytics.  
+Můžete povolit monitorování nový cluster AKS během nasazení na webu Azure Portal.  Postupujte podle kroků v tomto článku rychlý Start [Nasaďte cluster Azure Kubernetes Service (AKS)](../aks/kubernetes-walkthrough-portal.md).  Když jste na **monitorování** stránce **Ano** pro možnost **povolit monitorování** povolit a potom vyberte existující nebo vytvořte nový pracovní prostor Log Analytics.  
 
 Poté, co je zapnuto monitorování jsou úspěšně dokončeny všechny úlohy konfigurace, můžete sledovat výkon vašeho clusteru z jednoho ze dvou způsobů:
 
@@ -66,7 +66,7 @@ Poté, co je zapnuto monitorování jsou úspěšně dokončeny všechny úlohy 
 Jakmile je zapnuté monitorování, může trvat přibližně 15 minut, než budete moct zobrazit provozní data v clusteru.  
 
 ## <a name="enable-container-health-monitoring-for-existing-managed-clusters"></a>Povolit monitorování stavu kontejneru pro existující spravované clustery
-Povolení monitorování vašeho kontejneru AKS, už nasazená můžete udělat na webu Azure Portal nebo pomocí zadané šablony Azure Resource Manageru pomocí rutiny Powershellu **New-AzureRmResourceGroupDeployment** nebo Azure CLI.  
+Můžete povolit monitorování cluster AKS, už nasazená na webu Azure Portal nebo pomocí zadané šablony Azure Resource Manageru pomocí rutiny Powershellu **New-AzureRmResourceGroupDeployment** nebo rozhraní příkazového řádku Azure.  
 
 
 ### <a name="enable-from-azure-portal"></a>Povolit z portálu Azure portal
@@ -75,13 +75,11 @@ Proveďte následující kroky, pokud chcete povolit monitorování vašeho kont
 1. Na webu Azure Portal klikněte na **Všechny služby**. V seznamu prostředků zadejte **kontejnery**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **služby Kubernetes**.<br><br> ![Azure Portal](./media/monitoring-container-health/azure-portal-01.png)<br><br>  
 2. V seznamu kontejnerů vyberte kontejner.
 3. Na stránce Přehled kontejnerů, vyberte **monitorovat stav kontejneru** a **připojení ke službě stavu kontejneru a protokoly** se zobrazí stránka.
-4. Na **připojení ke službě stavu kontejneru a protokoly** stránky, pokud máte existující Log Analytics pracovní prostor ve stejném předplatném jako cluster, vyberte z rozevíracího seznamu.  V seznamu vybrána hodnota výchozího pracovního prostoru a umístění kontejneru AKS nasazuje v rámci předplatného. Nebo můžete vybrat **vytvořit nový** a zadejte nový pracovní prostor v rámci stejného předplatného.<br><br> ![Povolit monitorování stavu kontejneru AKS](./media/monitoring-container-health/container-health-enable-brownfield.png) 
+4. Na **připojení ke službě stavu kontejneru a protokoly** stránky, pokud máte existující Log Analytics pracovní prostor ve stejném předplatném jako cluster, vyberte z rozevíracího seznamu.  V seznamu vybrána hodnota výchozího pracovního prostoru a umístění kontejneru AKS nasazuje v rámci předplatného.<br><br> ![Povolit monitorování stavu kontejneru AKS](./media/monitoring-container-health/container-health-enable-brownfield-02.png) 
 
-    Pokud vyberete **vytvořit nový**, **vytvořit nový pracovní prostor** otevře se podokno. **Oblasti** výchozí hodnota je v oblasti vašeho kontejneru je prostředek vytvořený a přijmete výchozí hodnoty nebo vyberte jinou oblast a potom zadejte název pracovního prostoru.  Klikněte na tlačítko **vytvořit** potvrďte svůj výběr.<br><br> ![Definování prostor pro monintoring kontejneru](./media/monitoring-container-health/create-new-workspace-01.png)  
-
-    >[!NOTE]
-    >V tuto chvíli nelze vytvořit nový pracovní prostor v oblasti střed USA – západ můžete zvolit pouze existující pracovní prostor v dané oblasti.  I když tuto oblast můžete vybrat ze seznamu, nasazení se spustí, ale selže krátce potom.  
-    >
+>[!NOTE]
+>Pokud chcete vytvořit nový pracovní prostor Log Analytics k ukládání dat monitorování z clusteru, postupujte podle kroků v [Cretae pracovnímu prostoru Log Analytics](../log-analytics/log-analytics-quick-create-workspace.md) a je potřeba vytvořit pracovní prostor v rámci stejného předplatného, který je kontejneru AKS nasadit.  
+>
  
 Jakmile je zapnuté monitorování, může trvat přibližně 15 minut, než budete moct zobrazit provozní data v clusteru. 
 
@@ -243,10 +241,11 @@ Pokud jste se rozhodli používat rozhraní příkazového řádku Azure, musít
         ```
 Jakmile je zapnuté monitorování, může trvat přibližně 15 minut, než budete moct zobrazit provozní data v clusteru.  
 
-## <a name="verify-agent-deployed-successfully"></a>Ověření úspěšného nasazení agenta
+## <a name="verify-agent-and-solution-deployment"></a>Ověření nasazení agenta a řešení
+Verze agenta *06072018* a vyšší, budete moct ověřit, že agent a řešení se úspěšně nasadily.  V předchozích verzích agenta můžete pouze ověření nasazení agenta.
 
 ### <a name="agent-version-06072018-and-higher"></a>Verze agenta 06072018 a vyšší
-Chcete-li ověřit verzi agenta OMS *06072018* nebo vyšší je správně nasazená, spusťte následující příkazy: 
+Spusťte následující příkaz k ověření, že je agent úspěšně nasazen.   
 
 ```
 kubectl get ds omsagent --namespace=kube-system
@@ -260,7 +259,7 @@ NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR 
 omsagent   2         2         2         2            2           beta.kubernetes.io/os=linux   1d
 ```  
 
-Pokud chcete ověřit nové nasazení, spusťte následující příkaz:
+Pokud chcete ověřit nasazení řešení, spusťte následující příkaz:
 
 ```
 kubectl get deployment omsagent-rs -n=kube-system
@@ -524,7 +523,7 @@ Pokud stav kontejneru byl úspěšně povolen a nakonfigurován, ale není zobra
     NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR                 AGE
     omsagent   2         2         2         2            2           beta.kubernetes.io/os=linux   1d
     ```  
-2. Zkontrolujte stav nasazení pro agenta verze *06072018* nebo vyšší spuštěním následujícího příkazu:
+2. Zkontrolujte stav nasazení řešení s verzí agenta *06072018* nebo vyšší spuštěním následujícího příkazu:
 
     `kubectl get deployment omsagent-rs -n=kube-system`
 

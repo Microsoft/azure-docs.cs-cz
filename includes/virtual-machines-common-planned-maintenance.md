@@ -9,13 +9,13 @@ ms.date: 07/05/2018
 ms.author: shants
 ms.custom: include file
 ms.openlocfilehash: abf10177f8ce86309043da92d1f2b690775b6d89
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2018
+ms.lasthandoff: 07/10/2018
 ms.locfileid: "37909978"
 ---
-Azure provádí pravidelné aktualizace zvýšit spolehlivost, výkon a zabezpečení hostitelské infrastruktury pro virtuální počítače. Tyto aktualizace v rozsahu od opravy softwarové komponenty v hostitelské prostředí (např. operační systém, hypervisor a různých agentů nasazených na hostiteli), upgrade síťových součástí, na vyřazení z provozu hardwaru. Většina těchto aktualizací nemá jejich provedení žádný vliv na hostované virtuální počítače. Existují však případy, kdy aktualizace mít vliv:
+Azure pravidelně provádí aktualizace za účelem zlepšení spolehlivosti, výkonu a zabezpečení hostitelské infrastruktury pro virtuální počítače. Rozsah těchto aktualizací je od oprav softwarových komponent v hostitelském prostředí (např. operační systém, hypervisor a různí agenti nasazení v hostiteli) přes upgrade síťových komponent až po vyřazení hardwaru z provozu. Většina těchto aktualizací nemá jejich provedení žádný vliv na hostované virtuální počítače. Existují však případy, kdy aktualizace mít vliv:
 
 - Pokud aktualizace bez restartování počítače je možné, využívá Azure Údržba pro zachování paměti se pozastavit virtuální počítač při aktualizaci hostitele nebo virtuální počítač je úplně přesunout do už aktualizovaného hostitele.
 

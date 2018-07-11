@@ -1,6 +1,6 @@
 ---
-title: Tým datové vědy procesu Team vést úlohy – Azure | Microsoft Docs
-description: Přehled úloh pro tým vést na datové vědě týmového projektu.
+title: Týmu Data Science procesu týmu způsobit úlohy – Azure | Dokumentace Microsoftu
+description: Přehled úloh pro vedoucí týmu v týmovém projektu datové vědy.
 documentationcenter: ''
 author: deguhath
 manager: cgronlun
@@ -15,122 +15,122 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: deguhath
 ms.openlocfilehash: 9d2043808cbd61d5e2a69cbe0f2a5a611e3afa31
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
+ms.lasthandoff: 07/10/2018
 ms.locfileid: "34839754"
 ---
-# <a name="team-lead-tasks"></a>Tým realizace úlohy
+# <a name="team-lead-tasks"></a>Úkoly vedoucí týmu
 
-Toto téma obsahuje přehled úlohy, které je vedoucí týmu očekává dokončení pro jejich tým vědecké účely data. Cílem je vytvoření prostředí pro spolupráci team, standardizující na [proces vědecké účely dat Team](overview.md) (TDSP). TDSP je metodika vědecké účely agilní, iterativní data k poskytování efektivní řešení prediktivní analýzy a inteligentní aplikací. Je určený k vylepšení spolupráce a team learning. Proces je destilace osvědčených postupů a struktury z obou Microsoft i v odvětví, potřebné pro úspěšné dokončení implementace iniciativy vědecké účely data ke společnosti plně pochopit výhody jejich analýzy programy. Přehled role pracovníky a jejich přidružených úloh, které zpracovávají datové vědy tým standardizace tohoto postupu najdete v tématu [proces vědecké účely dat Team rolí a úloh](roles-tasks.md).
+K dokončení pro jejich data science tým byl očekáván tohoto tématu jsou podrobněji popsány dále úlohy, které je vedoucí týmu. Cílem je vytvořit prostředí pro spolupráci týmu, který standardizuje na [vědecké zpracování týmových dat](overview.md) (TDSP). TDSP je metodologie pro efektivně dodávat prediktivní analytická řešení a inteligentní aplikace agile, iterativní datové vědy. Je určená jí pomohou zlepšit spolupráci a učení týmu. Proces je destilace osvědčených postupů a struktur od společnosti Microsoft, a také v odvětví, potřebné pro úspěšnou implementaci iniciativ datových věd umožnit společnostem plně využít výhod jejich analýzy aplikací. Přehled role pracovníky a jejich přidružených úloh, které jsou zpracovávány týmem datové vědy standardizovat o tomto procesu najdete v části [vědecké zpracování týmových dat role a úlohy](roles-tasks.md).
 
-A **vést Team** spravuje tým v jednotce vědecké účely dat organizace. Tým se skládá z několika datových vědců. Pro data vědecké účely jednotku s pouze malý počet datových vědců **správce skupiny** a **vést Team** může být stejná osoba nebo jejich úloh se může delegovat na náhradní. Ale samotné úkoly se nemění. Pracovní postup pro úkoly, které mají být dokončit týmů k nastavení tohoto prostředí je znázorněno na následujícím obrázku:
+A **vedoucí týmu** řídí tým v jednotce data science podniku. Tým se skládá z několika odborníci přes data. Pro datové vědy jednotky s pouze malý počet odborníci přes data **správce skupiny** a **vedoucí týmu** může být stejná osoba nebo jejich úkol, může delegovat náhradní. Avšak nezměníte samotné úkoly. Pracovní postup pro úlohy provést pomocí týmových vedoucích k nastavení tohoto prostředí jsou znázorněné na následujícím obrázku:
 
 ![1](./media/team-lead-tasks/team-leads-1-creating-teams.png)
 
->[AZURE.NOTE] Úlohy v blocích 1 a 2 na obrázku je potřeba, pokud používáte Visual Studio Team Services (VSTS) jako kód hostování platformy a budete chtít mít samostatné týmového projektu pro váš vlastní tým. Po dokončení těchto úloh, lze vytvořit všechny úložiště váš tým pod tímto týmovým projektem. 
+>[AZURE.NOTE] Úkoly v blocích po 1 a 2 na obrázku jsou potřeba, pokud používáte Visual Studio Team Services (VSTS) jako kód hostování platformy a budete chtít mít samostatný týmový projekt pro váš tým. Po dokončení těchto úloh jsou všechna úložiště vašeho týmu mohou být vytvořeny v tomto týmovém projektu. 
 
-Několik požadavků na úkoly uvedené v následující části jsou splněny správcem skupiny, existuje po pěti hlavní úlohy (některé volitelné), můžete dokončit v tomto kurzu. Tyto úlohy odpovídají hlavní číslované částech tohoto tématu:
+Úkoly uvedené v následující části jsou splněny správcem skupiny splnit několik předpokladů, existují po pěti hlavní úkolů (některé volitelné), který je dokončen v tomto kurzu. Tyto úlohy odpovídají hlavní číslované částech tohoto tématu:
 
-1. Vytvoření **týmového projektu** na serveru služby VSTS skupiny skupiny a dvě team úložiště v projektu:
+1. Vytvoření **týmový projekt** na serveru skupiny VSTS skupiny a dvě týmových úložišť v projektu:
     - **ProjectTemplate úložiště** 
     - **TeamUtilities úložiště**
-2. Počáteční hodnoty týmem **ProjectTemplate** úložiště z **GroupProjectTemplate** úložiště, která byla vytvořena správcem vaší skupiny. 
-3. Vytvoření zdroje dat a analýzy týmu:
+2. Počáteční hodnoty tým **ProjectTemplate** úložiště ze **GroupProjectTemplate** úložiště, který je nastavený správcem skupiny. 
+3. Vytvoření zdroje dat a analýz týmu:
     - Přidat tým konkrétní nástroje, které **TeamUtilities** úložiště. 
-    - (Volitelné) Vytvoření **úložiště Azure file** použije k uložení datové prostředky, které mohou být užitečné pro celý tým. 
-4. (Volitelné) Připojte úložiště Azure file **datové vědy virtuální počítač** (DSVM) týmu vést a přidejte datové prostředky na něm.
-5. Nastavit **řízení zabezpečení** nástrojem přidávání členů týmu a nakonfigurujte svá oprávnění.
+    - (Volitelné) Vytvoření **Azure file storage** se použije k uložení datových assetů, které může být užitečné pro celý tým. 
+4. (Volitelné) Připojení Azure file storage pro **virtuální počítač pro datové vědy** (DSVM) týmu způsobit a přidejte datové assety v něm.
+5. Nastavit **řízení zabezpečení** tím, že přidání členů týmu a konfigurovat jejich oprávnění.
 
->[AZURE.NOTE] Jsme popisují kroky potřebné k nastavení prostředí team TDSP pomocí služby VSTS v následujících pokynech. Určíme jak provést tyto úlohy s služby VSTS, protože se jedná, jak jsme implementovat TDSP ve společnosti Microsoft. Pokud jiný kód hostování platformy slouží pro vaši skupinu, úlohy, které je potřeba dokončit vedoucí týmu obecně se nezmění. Ale způsob k dokončení těchto úloh se bude lišit.
+>[AZURE.NOTE] Uvádíme kroky potřebné k nastavení prostředí TDSP týmu pomocí VSTS v následujících pokynech. Zadáme tom, jak provádět tyto úlohy s využitím VSTS, protože to je, jak můžeme implementovat TDSP v Microsoftu. Pokud jiný kód hostování platformy se používá pro vaši skupinu, úlohy, které musíte provést vedoucí týmu obecně se nezmění. Ale způsob k provedení těchto úloh se bude lišit.
 
 ## <a name="repositories-and-directories"></a>Úložiště a adresáře
 
-Toto téma používá zkrácený názvy pro úložiště a adresáře. Názvy těchto usnadňují následovat operace mezi úložiště a adresářů. Tento zápis (**R** pro úložiště Git a **D** pro místní adresáře na vaše DSVM) se používá v následujících částech:
+Toto téma používá zkrácené názvy pro úložiště a adresáře. Tyto názvy usnadňují sledování operací mezi úložišť a adresáře. Tato notace (**R** pro úložiště Git a **D** pro místní adresáře na vaše DSVM) se používá v následujících částech:
 
-- **R1**: **GroupProjectTemplate** úložiště na Git, který váš správce skupiny nastavený na váš server služby VSTS skupiny.
-- **R3**: týmem **ProjectTemplate** úložiště na Git nastavíte.
-- **R4**: **TeamUtilities** úložiště na Git nastavíte.
-- **D1**: místní adresář naklonována ze R1 a zkopírovali do D3.
-- **D3**: místní adresář naklonována ze R3, přizpůsobení a zkopírují se R3.
-- **D4**: místní adresář naklonována ze R4, přizpůsobení a zkopírují se R4.
+- **R1**: **GroupProjectTemplate** úložiště v Gitu, která správce skupiny nastavit na vašem serveru skupiny VSTS.
+- **R3**: tým **ProjectTemplate** úložiště v Gitu můžete nastavit.
+- **R4**: **TeamUtilities** úložiště v Gitu můžete nastavit.
+- **D1**: místní adresář naklonovali z R1 a zkopírován do D3.
+- **D3**: místní adresář naklonovali z R3, přizpůsobení a zkopírována zpět k R3.
+- **D4**: místní adresář naklonovali z R4, přizpůsobení a zkopírována zpět k R4.
 
-Názvy zadané pro úložiště a adresářů v tomto kurzu byly zadány na předpokladu, že váš cíl je k vytvoření samostatné týmového projektu pro váš vlastní tým v rámci skupiny větší vědecké účely data. Ale existují otevřené jako vedoucí týmu další možnosti:
+Názvy stanovené pro úložiště a adresářů v tomto kurzu byly zadány na za předpokladu, že je váš cíl vytvořit samostatný týmový projekt pro váš tým v rámci větší datové vědy skupiny. Ale existují další možnosti Otevřít jako vedoucí týmu:
 
-- Celou skupinu můžete zvolit jeden týmového projektu. Všechny projekty od týmů vědecké účely všechna data, pak bude v tomto projektu jeden tým. Jak toho docílit, můžete určit git správcům postupujte podle těchto pokynů k vytvoření jedné týmového projektu. Tento scénář může být platný, například:
-    -  skupinu vědecké účely malá data, která nemá více týmů data vědecké účely 
-    -  větší vědecké účely skupinu dat s více dat vědecké účely týmy jasném chce optimalizovat mezi Týmová spolupráce s aktivity, například plánování sprintu úrovně seskupení. 
-- Týmy můžete rozhodnout pro specifické pro týmový projekt šablony nebo specifické týmu nástroje v jednom týmového projektu pro celou skupinu. V takovém případě týmů měli vytvořit týmového projektu šablony úložiště nebo týmu nástroje úložiště v rámci stejné týmového projektu. Název tyto úložiště *< TeamName\>ProjectTemplate* a *< TeamName\>nástroje*, například *TeamJohnProjectTemplate*a *TeamJohnUtilities*. 
+- Celé skupině můžete zvolit vytvoření jednoho týmového projektu. Všechny projekty ze všech datové vědy týmy pak bude v rámci této jeden týmový projekt. Za tím účelem můžete určit git správce postupovat podle těchto pokynů a vytvořte jeden týmový projekt. Tento scénář může být platná, třeba:
+    -  Malé datové vědy skupiny, který nemá více týmů datové vědy 
+    -  větší data science skupinu s více týmy vědy data, která však chce, aby k optimalizaci mezi Týmová spolupráce aktivity, jako je plánování sprintu úrovni skupiny. 
+- Týmy mohou zvolit, aby šablon specifické pro týmový projekt nebo nástroje specifické pro tým v rámci jednoho týmového projektu pro celou skupinu. V takovém případě vedoucí týmu měli vytvořit úložiště šablony týmového projektu nebo týmu nástroje úložišť v rámci stejného projektu týmu. Pojmenujte tato úložiště *< TeamName\>ProjectTemplate* a *< TeamName\>nástroje*, například *TeamJohnProjectTemplate*a *TeamJohnUtilities*. 
 
-V každém případě týmů třeba dát členy týmu vědět, které šablony a nástroje pro úložiště přijmout při jejich nastavení a klonování úložiště projektů a nástroje. Projekt zájemců byste měli postupovat podle [projektu vést úlohy pro tým datové vědy](project-lead-tasks.md) k vytvoření projektu úložiště, jestli samostatné týmové projekty, nebo v rámci jedné týmového projektu. 
+V každém případě týmů třeba chcete, aby členové týmu vědět, jaké šablony a nástroje úložiště přijmout při jejich vytvoření a klonování úložišť projektů a nástrojů. Postupujte podle zájemci o projekt [vedoucí projektu úlohy pro datové vědy tým](project-lead-tasks.md) k vytvoření projektu úložišť, ať už vyplývající z samostatné týmové projekty nebo v rámci jednoho týmového projektu. 
 
 
-## <a name="0-prerequisites"></a>0. Požadované součásti
+## <a name="0-prerequisites"></a>0. Požadavky
 
-Požadavky jsou uspokojit dokončení úkolů, které správce vaší skupiny uvedených v [úlohy správce skupiny pro tým datové vědy](group-manager-tasks.md). To Shrneme zde, budou muset splnit před zahájením úloh realizace team následující požadavky: 
+Požadavky splněny dokončení úkolů přiřazena vedoucímu skupiny uvedených v [úkoly správce skupiny pro datové vědy tým](group-manager-tasks.md). Slouží ke shrnutí tady, třeba tyto požadavky splnit, předtím, než začnete s úkoly vedoucí týmu: 
 
-- Vaše **serveru služby VSTS skupiny** (nebo skupinový účet na některé další kód hostování platformy) byla nastavena správcem vaší skupiny.
-- Vaše **GroupProjectTemplate úložiště** (R1) byla nastavena na vašem účtu skupiny správcem skupiny kódu hostování platformu, kterou plánujete použít.
+- Vaše **serveru skupiny VSTS** (nebo skupinový účet na některé další kód hostování platformu) je nastavený správcem skupiny.
+- Vaše **GroupProjectTemplate úložiště** (R1) je nastavený na vašem účtu skupiny správcem skupiny kódu hostování platformy plánujete použít.
 - Byli jste **oprávnění** na vašem účtu skupiny k vytvoření úložiště pro váš tým.
-- Git musí být nainstalován na váš počítač. Pokud používáte datové vědy virtuálního počítače (DSVM), předem nainstaloval Git a můžete se pustit do práce. Jinak, najdete v článku [platformy a nástroje příloha](platforms-and-tools.md#appendix).  
-- Pokud používáte **Windows DSVM**, musíte mít [Git přihlašovacích údajů správce (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) nainstalovaný na počítači. V souboru README.md přejděte dolů k položce **stáhněte a nainstalujte** části a klikněte na tlačítko *nejnovější verzi instalačního programu*. Tím přejdete na stránku nejnovější instalační služby. Stažení instalačního programu .exe z tohoto umístění a spusťte ji. 
-- Pokud používáte **Linux DSVM**, vytvořte veřejný klíč SSH na vaše DSVM a přidejte ho k serveru služby VSTS skupiny. Další informace o SSH naleznete v tématu **vytvořit veřejný klíč SSH** kapitoly [platformy a nástroje příloha](platforms-and-tools.md#appendix). 
+- Git musí být nainstalován na počítači. Pokud používáte Data virtuálního počítače VĚDY, Git je předem nainstalovaný a jste připravení. V opačném případě najdete v článku [platformami a nástroji příloha](platforms-and-tools.md#appendix).  
+- Pokud používáte **Windows DSVM**, musíte mít [Git Credential Manageru (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) na vašem počítači nainstalovaný. V souboru README.md přejděte dolů k položce **stáhněte a nainstalujte** a klikněte *nejnovější instalační program*. Tím přejdete na stránku pro nejnovější instalační program. Stažení instalačního programu .exe odsud a spustíme ji. 
+- Pokud používáte **Linux DSVM**vytvořte veřejný klíč SSH na vaše DSVM a přidejte ke svému serveru skupiny VSTS. Další informace o SSH najdete v tématu **vytvořit veřejný klíč SSH** tématu [platformami a nástroji příloha](platforms-and-tools.md#appendix). 
     
 ## <a name="1-create-a-team-project-and-repositories"></a>1. Vytvoření týmového projektu a úložiště
 
-Dokončení tohoto kroku, pokud používáte služby VSTS jako kód hostování platforma pro správu verzí a spolupráci. Tato část obsahuje, můžete vytvořit tři artefakty na serveru služby VSTS skupiny:
+Tento krok proveďte, pokud používáte VSTS jako svůj kód hostování platforem pro správu verzí a spolupráci. Tato část obsahuje, můžete vytvořit tři artefaktů ve VSTS serveru skupiny:
 
-- **MyTeam** projekt v služby VSTS
+- **MyTeam** projektu ve VSTS
 - **MyProjectTemplate** úložiště (**R3**) na Git
 - **MyTeamUtilities** úložiště (**R4**) na Git
 
 ### <a name="create-the-myteam-project"></a>Vytvoření projektu MyTeam
 
-- Přejděte na domovskou stránku serveru služby VSTS vaší skupiny na adrese URL `https://<VSTS Server Name\>.visualstudio.com`. 
+- Přejděte na domovskou stránku serveru VSTS vaší skupiny na adrese URL `https://<VSTS Server Name\>.visualstudio.com`. 
 - Klikněte na tlačítko **nový** k vytvoření týmového projektu. 
 
     ![2](./media/team-lead-tasks/team-leads-2-create-new-team.png)
 
-- Okno Vytvoření týmového projektu zobrazí výzvu k zadání názvu projektu (**MyTeam** v tomto příkladu). Ujistěte se, že jste vybrali **Agile** jako **šablony procesu** a **Git** jako **verzí**. 
+- Okno Vytvoření týmu projektu vás vyzve k zadání názvu projektu (**MyTeam** v tomto příkladu). Ujistěte se, že jste vybrali **Agile** jako **šablony procesu** a **Git** jako **verzí**. 
 
     ![3](./media/team-lead-tasks/team-leads-3-create-new-team-2.png)
 
-- Klikněte na tlačítko **vytvořit projekt**. Týmový projekt **MyTeam** je vytvořen v menší než 1 minuta. 
+- Klikněte na tlačítko **vytvořit projekt**. Váš týmový projekt **MyTeam** se vytvoří v méně než 1 minuta. 
 
-- Po týmový projekt **MyTeam** je vytvořili, klikněte na **přejděte do projektu** tlačítko přesměrováni na domovské stránce týmového projektu. 
+- Po týmový projekt **MyTeam** je vytvořený, klikněte na tlačítko **Navigovat do projektu** tlačítko, přejdete na domovské stránce týmového projektu. 
 
     ![4](./media/team-lead-tasks/team-leads-4-create-new-team-3.png)
 
-- Pokud se zobrazí **Blahopřejeme!** automaticky otevíraném okně, klikněte **přidejte kód** (tlačítko v červeným rámečkem). Jinak, klikněte na tlačítko **kód** (v žlutý pole). To vás přesměruje na stránce úložiště Git týmového projektu. 
+- Pokud se zobrazí **Blahopřejeme!** automaticky otevíraném okně, klikněte na tlačítko **přidejte kód** (tlačítko v červeným rámečkem). V opačném případě klikněte na tlačítko **kód** (v žlutým rámečkem). To vás přesměruje na stránku úložiště Git vašeho týmového projektu. 
 
     ![5](./media/team-lead-tasks/team-leads-5-team-project-home.png)
 
-### <a name="create-the-myprojecttemplate-repository-r3-on-git"></a>Vytvoření úložiště MyProjectTemplate (R3) na Git
+### <a name="create-the-myprojecttemplate-repository-r3-on-git"></a>Vytvořit úložiště MyProjectTemplate (R3) na Git
 
-- Na stránce úložiště Git týmového projektu, klikněte na šipku dolů vedle názvu úložiště **MyTeam**a vyberte **spravovat úložiště...** .
+- Na stránce úložiště Git vašeho týmového projektu, klikněte na šipku dolů vedle názvu úložiště **MyTeam**a vyberte **spravovat úložiště...** .
 
     ![6](./media/team-lead-tasks/team-leads-6-rename-team-project-repo.png)
 
-- Na **verzí** karta na ovládacím panelu týmového projektu, klikněte na tlačítko **MyTeam**, pak vyberte **přejmenování úložiště...** . 
+- Na **verzí** kartu ovládacího panelu vašeho týmového projektu, klikněte na tlačítko **MyTeam**a pak vyberte **přejmenovat úložiště...** . 
 
     ![7](./media/team-lead-tasks/team-leads-7-rename-team-project-repo-2.png)
 
-- Zadejte nový název do úložiště v **přejmenovat úložiště MyTeam** okno. V tomto příkladu *MyTeamProjectTemplate*. Můžete zvolit něco podobného jako *< název vašeho týmu\>ProjectTemplate*. Klikněte na tlačítko **přejmenovat** pokračujte.
+- Zadejte nový název do úložiště v **přejmenovat úložiště MyTeam** okna. V tomto příkladu *MyTeamProjectTemplate*. Můžete použít něco jako *< název vašeho týmu\>ProjectTemplate*. Klikněte na tlačítko **přejmenovat** pokračujte.
 
     ![8](./media/team-lead-tasks/team-leads-8-rename-team-project-repo-3.png)
 
-### <a name="create-the-myteamutilities-repository-r4-on-git"></a>Vytvoření úložiště MyTeamUtilities (R4) na Git
+### <a name="create-the-myteamutilities-repository-r4-on-git"></a>Vytvořit úložiště MyTeamUtilities (R4) na Git
 
-- Chcete-li vytvořit nové úložiště *< název vašeho týmu\>nástroje* v týmových projektech, klikněte na možnost **nového úložiště...**  na **verzí** kartě týmového projektu ovládací panely.  
+- Chcete-li vytvořit nové úložiště *< název vašeho týmu\>nástroje* ve vašem týmovém projektu, klikněte na tlačítko **nové úložiště...**  na **verzí** kartu ovládacího panelu týmového projektu.  
 
     ![9](./media/team-lead-tasks/team-leads-9-create-team-utilities.png)
 
-- V **vytvořit nové úložiště** okna, která se objeví, zadejte název pro toto úložiště. V tomto příkladu jsme pojmenujte ji jako *MyTeamUtilities*, což je **R4** naše notaci. Zvolte něco podobného jako *< název vašeho týmu\>nástroje*. Ujistěte se, že jste vybrali **Git** pro **typu**. Potom klikněte na **vytvořit** pokračujte.
+- V **vytvořit nové úložiště** okna, která se otevře, zadejte název pro toto úložiště. V tomto příkladu používáme název jako *MyTeamUtilities*, což je **R4** naše notaci. Zvolte něco jako *< název vašeho týmu\>nástroje*. Ujistěte se, že jste vybrali **Git** pro **typ**. Potom klikněte na **vytvořit** pokračujte.
 
     ![10](./media/team-lead-tasks/team-leads-10-create-team-utilities-2.png)
 
-- Zkontrolujte, jestli dva nové úložiště Git se vytvořil v rámci týmový projekt **MyTeam**. V tomto příkladu: 
+- Ověřte, že se dvě nové úložiště Git vytvoří ve vašem týmovém projektu **MyTeam**. V tomto příkladu: 
 
 - **MyTeamProjectTemplate** (R3) 
 - **MyTeamUtilities** (R4).
@@ -138,33 +138,33 @@ Dokončení tohoto kroku, pokud používáte služby VSTS jako kód hostování 
     ![11](./media/team-lead-tasks/team-leads-11-two-repo-in-team.png)
 
 
-## <a name="2-seed-your-team-projecttemplate-and-teamutilities-repositories"></a>2. Počáteční hodnoty váš tým ProjectTemplate a TeamUtilities úložiště
+## <a name="2-seed-your-team-projecttemplate-and-teamutilities-repositories"></a>2. Počáteční hodnoty týmových ProjectTemplate a TeamUtilities úložišť
 
-Synchronizace replik indexů postup používá adresáře na vaše místní DSVM jako zprostředkující pracovní lokality. Pokud potřebujete nastavit vaše **ProjectTemplate** a **TeamUtilities** úložiště ke splnění některé konkrétní týmové vyžaduje, uděláte v předposlední kroku tohoto postupu. Zde je souhrn s postupem počáteční hodnoty obsah **MyTeamProjectTemplate** a **MyTeamUtilities** úložiště pro data vědecké účely tým. Jednotlivé kroky odpovídají témata v procesu synchronizace replik indexů:
+Osazení postup používá adresáře na místním DSVM jako zprostředkující pracovní lokality. Pokud je potřeba upravit vaše **ProjectTemplate** a **TeamUtilities** úložiště pro splnění některé konkrétní potřebám týmu, můžete udělat v předposlední kroku tohoto postupu. Zde je uveden seznam kroky používají naplnit obsah **MyTeamProjectTemplate** a **MyTeamUtilities** úložiště pro datové vědy tým. Témata v postupu osazení odpovídají jednotlivé kroky:
 
-- Klonování úložiště skupiny do místního adresáře: team R1 - na -> místní D1 klonovat
-- Klonování úložiště váš tým do místního adresáře: team R3 & R4 - na -> místní D3 & D4 klonovat
-- Zkopírujte obsah šablony projektu skupiny do složky místní team: D1 - obsah zkopírován do -> D3
+- Klonování úložiště skupiny do místního adresáře: týmu R1 - klonovat do místního D1 ->
+- Klonujte svá úložiště týmu do místních adresářů: týmu R3 & R4 - klonovat na -> místní D3 & D4
+- Zkopírujte obsah šablony skupiny projektu do složky místní týmu: D1 - obsah bude zkopírován do D3 ->
 - (Volitelné) přizpůsobení místní D3 & D4
-- Odešlete obsah místního adresáře do úložiště team: D3 & D4 - na -> přidat obsah team R3 & R4
+- Vložit obsah místní adresáře do týmových úložišť: D3 & D4 - do -> přidat obsah týmu R3 & R4
 
 
-### <a name="initialize-the-team-repositories"></a>Inicializace úložiště team
+### <a name="initialize-the-team-repositories"></a>Inicializovat týmových úložišť
 
-V tomto kroku inicializaci úložiště týmového projektu šablony z úložiště šablony projektu skupiny:
+V tomto kroku inicializovat své úložiště týmových projektů šablony z úložiště šablon projektu skupiny:
 
 - **MyTeamProjectTemplate** úložiště (**R3**) z vaší **GroupProjectTemplate** (**R1**) úložiště
 
 
-### <a name="clone-group-repositories-into-local-directories"></a>Klonování skupiny úložišť do místního adresáře
+### <a name="clone-group-repositories-into-local-directories"></a>Naklonujte úložiště skupiny do místního adresáře
 
-Zahájíte tento postup:
+Chcete-li začít tento postup:
 
-- Vytváření adresářů na místním počítači:
+- Vytvoření adresáře na místním počítači:
     - Pro **Windows**: **C:\GitRepos\GroupCommon** a **C:\GitRepos\MyTeam**
     - Pro **Linux**: **GitRepos\GroupCommon** a **GitRepos\MyTeam** na domovský adresář 
 - Přejděte do adresáře **GitRepos\GroupCommon**.
-- Spusťte následující příkaz, podle potřeby, v operačním systému místního počítače.
+- Spusťte následující příkaz, v závislosti na operačním systému místního počítače.
 
 **Windows**
 
@@ -180,15 +180,15 @@ Zahájíte tento postup:
     
 ![13](./media/team-lead-tasks/team-leads-13-clone_two_group_repos_linux.png)
 
-Tyto příkazy klonovat vaše **GroupProjectTemplate** úložiště (R1) na serveru služby VSTS skupiny do místního adresáře v **GitRepos\GroupCommon** na místním počítači. Po klonování, adresář **GroupProjectTemplate** (D1) je vytvořen v adresáři **GitRepos\GroupCommon**. Zde jsme Předpokládejme, že váš správce skupiny vytvořili týmového projektu **GroupCommon**a **GroupProjectTemplate** úložiště je pod tímto týmovým projektem. 
+Tyto příkazy klonování vaší **GroupProjectTemplate** úložiště (R1) na serveru skupiny VSTS do místního adresáře v **GitRepos\GroupCommon** na místním počítači. Po klonování, adresář **GroupProjectTemplate** (D1) se vytvoří v adresáři **GitRepos\GroupCommon**. Tady předpokládáme, že váš správce skupiny vytvoření týmového projektu **GroupCommon**a **GroupProjectTemplate** úložiště je v tomto týmovém projektu. 
 
 
-### <a name="clone-your-team-repositories-into-local-directories"></a>Klonování úložiště váš tým do místního adresáře
+### <a name="clone-your-team-repositories-into-local-directories"></a>Klonujte svá úložiště týmu do místních adresářů
 
-Tyto příkazy klonovat vaše **MyTeamProjectTemplate** (R3) a **MyTeamUtilities** úložiště (R4) v týmových projektech **MyTeam** na server služby VSTS skupiny, abyste mohli  **MyTeamProjectTemplate** (D3) a **MyTeamUtilities** (D4) adresářů v **GitRepos\MyTeam** na místním počítači. 
+Tyto příkazy klonování vaší **MyTeamProjectTemplate** (R3) a **MyTeamUtilities** úložišť (R4) ve vašem týmovém projektu **MyTeam** na vašem serveru skupiny VSTS a  **MyTeamProjectTemplate** (D3) a **MyTeamUtilities** adresářů (D4) v **GitRepos\MyTeam** na místním počítači. 
 
 - Přejděte do adresáře **GitRepos\MyTeam**
-- Spusťte následující příkazy, podle potřeby, v operačním systému místního počítače. 
+- Spusťte následující příkazy, v závislosti na operačním systému místního počítače. 
 
 **Windows**
 
@@ -204,13 +204,13 @@ Tyto příkazy klonovat vaše **MyTeamProjectTemplate** (R3) a **MyTeamUtilities
     
 ![15](./media/team-lead-tasks/team-leads-15-clone_two_empty_team_repos_linux.png)
 
-Po klonování, dva adresáře **MyTeamProjectTemplate** (D3) a **MyTeamUtilities** (D4) jsou vytvářeny v adresáři **GitRepos\MyTeam**. Můžeme mít předpokládá, že zde název týmového projektu šablony a nástroje pro úložiště **MyTeamProjectTemplate** a **MyTeamUtilities**. 
+Po klonování, dva adresáře **MyTeamProjectTemplate** (D3) a **MyTeamUtilities** (D4) se vytvoří v adresáři **GitRepos\MyTeam**. Budeme mít předpokládá, že tady název týmového projektu šablony a nástroje úložiště **MyTeamProjectTemplate** a **MyTeamUtilities**. 
 
-### <a name="copy-the-group-project-template-content-to-the-local-team-project-template-directory"></a>Kopírovat obsah šablony projektu skupiny k adresáři místní týmového projektu šablony
+### <a name="copy-the-group-project-template-content-to-the-local-team-project-template-directory"></a>Zkopírujte obsah šablony projektu skupiny do šablony adresář místního týmového projektu
 
-Kopírování obsahu místní **GroupProjectTemplate** (D1) složku pro místní **MyTeamProjectTemplate** (D3), spusťte jeden z následujících skriptů prostředí: 
+Kopírování obsahu místní **GroupProjectTemplate** (D1) složku do místní **MyTeamProjectTemplate** (D3), spusťte jeden z následujících skriptů prostředí: 
 
-#### <a name="from-the-powershell-command-line-for-windows"></a>Z příkazového řádku pro Windows PowerShell       
+#### <a name="from-the-powershell-command-line-for-windows"></a>V příkazovém řádku Windows Powershellu       
 
     wget "https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/TDSP/tdsp_local_copy_win.ps1" -outfile "tdsp_local_copy_win.ps1"
     .\tdsp_local_copy_win.ps1 2
@@ -218,28 +218,28 @@ Kopírování obsahu místní **GroupProjectTemplate** (D1) složku pro místní
     
 ![16](./media/team-lead-tasks/team-leads-16-local_copy_team_lead_new.png)
 
-#### <a name="from-the-linux-shell-for-the-linux-dsvm"></a>Z prostředí Linux pro **Linux DSVM**
+#### <a name="from-the-linux-shell-for-the-linux-dsvm"></a>V prostředí Linuxu pro **Linux DSVM**
     
     wget "https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/TDSP/tdsp_local_copy_linux.sh"
     bash tdsp_local_copy_linux.sh 2
     
 ![17](./media/team-lead-tasks/team-leads-17-local-copy-team-lead-linux-new.png)
 
-Skripty vyloučit obsah .git adresáře. Skripty vyzve k zadání **dokončení cesty** zdrojový adresář D1 a cílový adresář D3.
+Skripty vyloučit obsah adresář .Git, na který. Skript vyzve k zadání **dokončení cesty** zdrojový adresář D1 a cílový adresář D3.
         
 
-### <a name="customize-your-team-project-template-or-team-utilities-optional"></a>Přizpůsobení šablony týmového projektu nebo nástroje team (volitelné)
+### <a name="customize-your-team-project-template-or-team-utilities-optional"></a>Přizpůsobení šablony týmového projektu nebo týmu nástroje (volitelné)
 
-Přizpůsobení vaší **MyTeamProjectTemplate** (D3) a **MyTeamUtilities** (D4), v případě potřeby v této fázi procesu instalace. 
+Přizpůsobení vašich **MyTeamProjectTemplate** (D3) a **MyTeamUtilities** (D4), v případě potřeby v této fázi procesu instalace. 
 
-- Pokud chcete přizpůsobit obsah D3 pro konkrétní potřeby vašeho týmu, můžete upravit šablonu dokumenty nebo změnit strukturu adresáře.
+- Pokud chcete upravit obsah D3 pro konkrétní potřeby vašeho týmu, můžete upravit šablony dokumentů nebo změnit strukturu adresářů.
 
-- Pokud váš tým vyvíjí některé nástroje, které chcete sdílet s týmem celý, zkopírujte a vložte do adresáře D4 tyto nástroje. 
+- Pokud váš tým vyvíjí některé nástroje, které chcete sdílet se svým týmem celý, zkopírujte a vložte do adresáře D4 těchto nástrojů. 
 
 
-### <a name="push-local-directory-content-to-team-repositories"></a>Odešlete obsah místního adresáře do týmu úložiště
+### <a name="push-local-directory-content-to-team-repositories"></a>Vložit obsah místní adresáře do týmových úložišť
 
-Pro přidání obsah místního adresáře (volitelně přizpůsobené) D3 a D4 do úložiště team R3 a R4, spusťte následující git bash příkazy z konzoly Windows Powershellu nebo z prostředí Linux. Spusťte příkazy z **GitRepos\MyTeam\MyTeamProjectTemplate** adresáře.
+Přidat obsah k úložištím týmu R3 a R4 (volitelně přizpůsobené) místní adresáře D3 a D4, spusťte následující git bash příkazy z konzoly Windows Powershellu nebo z prostředí Linuxu. Spusťte příkazy z **GitRepos\MyTeam\MyTeamProjectTemplate** adresáře.
 
     git status
     git add .
@@ -248,31 +248,31 @@ Pro přidání obsah místního adresáře (volitelně přizpůsobené) D3 a D4 
     
 ![18](./media/team-lead-tasks/team-leads-18-push-to-group-server-2.png)
 
-Soubory v úložišti MyTeamProjectTemplate vaší skupině služby VSTS serveru se synchronizují téměř okamžitě při spuštění tohoto skriptu.
+Soubory v úložišti MyTeamProjectTemplate serveru pro vaši skupinu VSTS se synchronizují skoro okamžitě při spuštění tohoto skriptu.
 
 ![19](./media/team-lead-tasks/team-leads-19-push-to-group-server-showed-up.png)
 
-Teď spustit stejnou sadu čtyři příkazy gitu z **GitRepos\MyTeam\MyTeamUtilities** adresáře. 
+Nyní spustit stejnou sadu ze čtyř příkazů gitu **GitRepos\MyTeam\MyTeamUtilities** adresáře. 
 
-> [AZURE.NOTE]Pokud je prvním potvrzení do úložiště Git, musíte nakonfigurovat globální parametry *user.name* a *user.email* před spuštěním `git commit` příkaz. Spusťte následující dva příkazy:
+> [AZURE.NOTE]Pokud to je poprvé, kdy jste se zavázali k úložišti Git, musíte nakonfigurovat globální parametry *user.name* a *user.email* předtím, než spustíte `git commit` příkazu. Spusťte následující dva příkazy:
         
     git config --global user.name <your name>
     git config --global user.email <your email address>
  
-> Pokud jsou přiřazeni více úložiště Git, použijte stejný název a e-mailovou adresu při potvrzení pro každé z nich. Pomocí stejné jméno a e-mailovou adresu prokáže pohodlný později při sestavování řídicí panely Power BI a sledovat aktivity Git na více úložiště.
+> Pokud jsou přiřazeni k více úložišť Git, použijte stejný název a e-mailovou adresu když jste se zavázali k každý z nich. Pomocí stejného jména a e-mailovou adresu prokáže pohodlný později při vytváření řídicích panelů Power BI ke sledování aktivit Git na více úložišť.
 
 ![20](./media/team-lead-tasks/team-leads-20-git-config-name.png)
 
 
-## <a name="3-create-team-data-and-analytics-resources-optional"></a>3. Vytvořit tým data a analýzy prostředky (volitelné)
+## <a name="3-create-team-data-and-analytics-resources-optional"></a>3. Vytvoření týmových dat a analýz prostředků (volitelné)
 
-Sdílení prostředků data a analýzy s týmem celý přináší výhody výkon a nákladová: členové týmu může provést jejich projektů na sdílené prostředky, uložte na rozpočty a efektivnější. V této části poskytujeme pokyny o tom, jak vytvořit úložiště Azure file. V další části poskytujeme pokyny o tom, jak úložiště Azure připojit soubor do místního počítače. Další informace o sdílení jiné prostředky, například Data vědecké účely virtuální počítače Azure, Azure clustery Spark HDInsight, naleznete v části [platformy a nástroje](platforms-and-tools.md). Toto téma poskytuje pokyny z hlediska vědecké účely data o výběru prostředky, které jsou vhodné pro vaše potřeby a odkazy na stránky produktu a další relevantní a užitečné kurzy, které jsme publikovali.
+Sdílení dat a analýz prostředků se celý tým má výhody výkonu a nákladů: členové týmu mohou spustit svých projektů na sdílené prostředky, uložte na rozpočty a efektivněji spolupracovat. V této části poskytujeme pokyny o tom, jak vytvořit Azure file storage. V další části poskytujeme pokyny o tom, jak připojení Azure file storage do místního počítače. Další informace o sdílení další prostředky, jako je Azure virtuální počítače pro datové vědy, clusterů Spark Azure HDInsight, naleznete v tématu [platformami a nástroji](platforms-and-tools.md). Toto téma poskytuje pokyny z hlediska datové vědy o výběru prostředky, které jsou vhodné pro vaše potřeby a odkazy na stránky produktu a další důležité a užitečné kurzy, které jsme publikovali.
 
->[AZURE.NOTE] Aby se zabránilo přenosu mezi dat datových center, které může být pomalé a nákladná, ujistěte se, že skupinu prostředků, účet úložiště a virtuální počítač Azure (například DSVM) jsou ve stejném centru Azure data. 
+>[AZURE.NOTE] Aby se zabránilo přenosu dat mezi datových center, které může být pomalé a nákladná, ujistěte se, že skupina prostředků, účet úložiště a virtuálních počítačů Azure (například DSVM) jsou ve stejném datovém centru Azure. 
 
-Spusťte tyto skripty k vytvoření úložiště Azure pro váš tým. Úložiště Azure pro váš tým slouží k ukládání datových prostředků, které jsou užitečné pro celý tým. Skripty výzvu pro vaši Azure účet a předplatné informaci, takže mají připravení zadejte tyto přihlašovací údaje. 
+Spuštěním následujících skriptů k vytvoření Azure file storage pro váš tým. Azure file storage pro váš tým může použít pro ukládání datových assetů, které jsou užitečné pro celý tým. Skripty výzvu vaše informace o Azure účet a předplatné, proto jste připraveni zadejte tyto přihlašovací údaje. 
 
-### <a name="create-azure-file-storage-with-powershell-from-windows"></a>Vytvoření úložiště Azure file pomocí prostředí PowerShell ze systému Windows
+### <a name="create-azure-file-storage-with-powershell-from-windows"></a>Vytvoření Azure file storage pomocí Powershellu z Windows
 
 Spusťte tento skript z prostředí PowerShell příkazového řádku:
 
@@ -285,28 +285,28 @@ Přihlaste se ke svému účtu Microsoft Azure po zobrazení výzvy:
 
 ![22](./media/team-lead-tasks/team-leads-22-file-create-s1.png)
 
-Vyberte předplatné Azure, kterou chcete použít:
+Vyberte předplatné Azure, které chcete použít:
 
 ![23](./media/team-lead-tasks/team-leads-23-file-create-s2.png)
 
-Vyberte účtu úložiště, který se má použít nebo vytvořit novou v rámci svého vybraného předplatného:
+Který účet úložiště nebo vytvořte novou ve vybraném předplatném vyberte:
 
 ![24](./media/team-lead-tasks/team-leads-24-file-create-s3.png)
 
-Zadejte název pro úložiště Azure file k vytvoření. Pouze nižší případ písmen, číslic a - přijímají:
+Zadejte název služby Azure file storage k vytvoření. Pouze dolní malá a velká písmena a čísla a - jsou přijímány:
 
 ![25](./media/team-lead-tasks/team-leads-25-file-create-s4.png)
 
-Pro usnadnění připojení a sdílení Toto úložiště po vytvoření, uložte informace o Azure file úložiště do textového souboru a poznamenejte si cestu k jeho umístění. Konkrétně je nutné tento soubor připojit úložiště Azure file na virtuálních počítačích Azure v další části. 
+K usnadnění připojení a sdílení tohoto úložiště po jeho vytvoření, uložit informace o Azure file storage do textového souboru a poznamenejte si cestu k jeho umístění. Zejména je nutné tento soubor připojte vaše Azure file storage pro virtuální počítače Azure v další části. 
 
-Je vhodné zkontrolovat v tomto souboru do úložiště ProjectTemplate týmu. Doporučujeme, abyste uvést v adresáři **Docs\DataDictionaries**. Proto tento datový prostředek přístupná pomocí všechny projekty ve vašem týmu. 
+Je vhodné zkontrolovat v tomto souboru do úložiště ProjectTemplate vašeho týmu. Doporučujeme umístit do adresáře **Docs\DataDictionaries**. Proto tento datový asset přístupný všech projektů ve vašem týmu. 
 
 ![26](./media/team-lead-tasks/team-leads-26-file-create-s5.png)
 
 
-### <a name="create-azure-file-storage-with-a-linux-script"></a>Vytvoření úložiště Azure file pomocí skriptu Linux
+### <a name="create-azure-file-storage-with-a-linux-script"></a>Vytvoření Azure file storage s Linuxem skriptu
 
-Spusťte tento skript z prostředí Linux:
+Spusťte tento skript v prostředí Linux:
 
     wget "https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/TDSP/CreateFileShare.sh"
     bash CreateFileShare.sh
@@ -319,102 +319,102 @@ Vyberte předplatné Azure, kterou chcete použít:
 
 ![28](./media/team-lead-tasks/team-leads-28-file-create-linux-s2.png)
 
-Vyberte účtu úložiště, který se má použít nebo vytvořit novou v rámci svého vybraného předplatného:
+Který účet úložiště nebo vytvořte novou ve vybraném předplatném vyberte:
 
 ![29](./media/team-lead-tasks/team-leads-29-file-create-linux-s3.png)
 
-Zadejte název úložiště Azure file k vytváření, jenom malá písmena, čísla a - přijímají:
+Zadejte název Azure file storage pro vytvoření, jenom malá písmena, čísla a - jsou přijímány:
 
 ![30](./media/team-lead-tasks/team-leads-30-file-create-linux-s4.png)
 
-Pro usnadnění přístupu k toto úložiště po vytvoření, uložte informace o Azure file úložiště do textového souboru a poznamenejte si cestu k jeho umístění. Konkrétně je nutné tento soubor připojit úložiště Azure file na virtuálních počítačích Azure v další části.
+Pro usnadnění přístupu k toto úložiště po jeho vytvoření, uložit informace o Azure file storage do textového souboru a poznamenejte si cestu k jeho umístění. Zejména je nutné tento soubor připojte vaše Azure file storage pro virtuální počítače Azure v další části.
 
-Je vhodné zkontrolovat v tomto souboru do úložiště ProjectTemplate týmu. Doporučujeme, abyste uvést v adresáři **Docs\DataDictionaries**. Proto tento datový prostředek přístupná pomocí všechny projekty ve vašem týmu. 
+Je vhodné zkontrolovat v tomto souboru do úložiště ProjectTemplate vašeho týmu. Doporučujeme umístit do adresáře **Docs\DataDictionaries**. Proto tento datový asset přístupný všech projektů ve vašem týmu. 
 
 ![31](./media/team-lead-tasks/team-leads-31-file-create-linux-s5.png)
 
 
-## <a name="4-mount-azure-file-storage-optional"></a>4. Úložiště Azure připojit soubor (volitelné)
+## <a name="4-mount-azure-file-storage-optional"></a>4. Připojení Azure file storage (volitelné)
 
-Po úspěšném vytvoření úložiště Azure file může být připojen do místního počítače pomocí jedné z následujících skriptů prostředí PowerShell nebo Linux.
+Po úspěšném vytvoření Azure file storage je možné připojit do místního počítače pomocí jedné z následujících skriptů prostředí PowerShell nebo Linux.
 
-### <a name="mount-azure-file-storage-with-powershell-from-windows"></a>Soubor úložiště Azure připojit pomocí prostředí PowerShell ze systému Windows
+### <a name="mount-azure-file-storage-with-powershell-from-windows"></a>Připojení Azure file storage s využitím Powershellu z Windows
 
     wget "https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/TDSP/AttachFileShare.ps1" -outfile "AttachFileShare.ps1"
     .\AttachFileShare.ps1
     
-Zobrazí se výzva k přihlášení první, pokud není přihlášený. 
+Zobrazí se výzva k přihlášení první, pokud jste ještě přihlášeni. 
 
-Klikněte na tlačítko **Enter** nebo **y** pokračovat po zobrazení dotazu, pokud máte informace úložiště Azure file souboru a poté zadejte ***dokončení název a cesta k** vytvoříte v souboru předchozí krok. Informace o připojení Azure file storage je číst přímo ze souboru a jste připraveni přejděte k dalšímu kroku.
+Klikněte na tlačítko **Enter** nebo **y** k pokračování, zobrazí se výzva, pokud máte Azure storage informace o souboru souboru a pak zadejte ***dokončete cestu a název** vytvoříte v souboru předchozí krok. Informace pro připojení služby Azure file storage je pro čtení přímo z, souboru a jste připraveni přejít k dalšímu kroku.
 
 ![32](./media/team-lead-tasks/team-leads-32-attach-s1.png)
 
-> [AZURE.NOTE] Pokud jste soubor obsahující informace o úložiště Azure file, kroky jako vstup z klávesnice informace jsou uvedeny na konci této části.
+> [AZURE.NOTE] Pokud nemáte soubor obsahující informace o Azure file storage, kroky pro vstup z klávesnice informace jsou k dispozici na konci této části.
 
-Potom budete vyzváni k zadání názvu disku, který se má přidat k virtuálnímu počítači. Seznam názvů stávající disk se vytiskne na obrazovce. Název jednotky, která ještě neexistuje v seznamu by měl poskytovat.
+Pak budete vyzváni k zadání názvu disk přidat do virtuálního počítače. Vytiskne seznam existujících názvů jednotky se na obrazovce. Název jednotky, který již neexistuje v seznamu by měla poskytnout.
 
 ![33](./media/team-lead-tasks/team-leads-33-attach-s2.png)
 
-Potvrďte, že na nový disk F úspěšně připojen k vašemu počítači.
+Potvrďte, že nové jednotky F úspěšně připojil k vašemu počítači.
 
 ![34](./media/team-lead-tasks/team-leads-34-attach-s3.png)
 
-**Jak ručně zadat informace o úložiště Azure file:** Pokud nemáte vaše informace Azure file storage s textovým souborem, můžete podle pokynů na následující obrazovce zadejte požadované předplatné, účet úložiště a Azure informace o souboru úložiště:
+**Jak ručně zadat informace o Azure file storage:** Pokud nemáte údaje o Azure file storage s textovým souborem, může podle pokynů na následující obrazovce zadejte požadované předplatné, účet úložiště a Azure informace o souboru úložiště:
 
 ![35](./media/team-lead-tasks/team-leads-35-attach-s4.png)
 
-Zadejte předplatné Azure název, vyberte účet úložiště, kde se má vytvořit úložiště Azure file, a zadejte název úložiště Azure file:
+Zadejte vaše předplatné Azure název, vyberte účet úložiště, kde se vytvoří Azure file storage, a zadejte název Azure file storage:
 
 ![36](./media/team-lead-tasks/team-leads-36-attach-s5.png)
 
-### <a name="mount-azure-file-storage-with-a-linux-script"></a>Úložiště souborů připojení Azure pomocí skriptu Linux
+### <a name="mount-azure-file-storage-with-a-linux-script"></a>Připojení Azure file storage s Linuxem skriptu
 
     wget "https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/TDSP/AttachFileShare.sh"
     bash AttachFileShare.sh
 
 ![37](./media/team-lead-tasks/team-leads-37-attach-s1-linux.png)
 
-Zobrazí se výzva k přihlášení první, pokud není přihlášený. 
+Zobrazí se výzva k přihlášení první, pokud jste ještě přihlášeni. 
 
-Klikněte na tlačítko **Enter** nebo **y** pokračovat po zobrazení dotazu, pokud máte informace úložiště Azure file souboru a poté zadejte ***dokončení název a cesta k** vytvoříte v souboru předchozí krok. Informace o připojení Azure file storage je číst přímo ze souboru a jste připraveni přejděte k dalšímu kroku.
+Klikněte na tlačítko **Enter** nebo **y** k pokračování, zobrazí se výzva, pokud máte Azure storage informace o souboru souboru a pak zadejte ***dokončete cestu a název** vytvoříte v souboru předchozí krok. Informace pro připojení služby Azure file storage je pro čtení přímo z, souboru a jste připraveni přejít k dalšímu kroku.
 
 ![38](./media/team-lead-tasks/team-leads-38-attach-s2-linux.png)
 
-Potom budete vyzváni k zadání názvu disku, který se má přidat k virtuálnímu počítači. Seznam názvů stávající disk se vytiskne na obrazovce. Název jednotky, která ještě neexistuje v seznamu by měl poskytovat.
+Pak budete vyzváni k zadání názvu disk přidat do virtuálního počítače. Vytiskne seznam existujících názvů jednotky se na obrazovce. Název jednotky, který již neexistuje v seznamu by měla poskytnout.
 
 ![39](./media/team-lead-tasks/team-leads-39-attach-s3-linux.png)
 
-Potvrďte, že na nový disk F úspěšně připojen k vašemu počítači.
+Potvrďte, že nové jednotky F úspěšně připojil k vašemu počítači.
 
 ![40](./media/team-lead-tasks/team-leads-40-attach-s4-linux.png)
 
-**Jak ručně zadat informace o úložiště Azure file:** Pokud nemáte vaše informace Azure file storage s textovým souborem, můžete podle pokynů na následující obrazovce zadejte požadované předplatné, účet úložiště a Azure informace o souboru úložiště:
+**Jak ručně zadat informace o Azure file storage:** Pokud nemáte údaje o Azure file storage s textovým souborem, může podle pokynů na následující obrazovce zadejte požadované předplatné, účet úložiště a Azure informace o souboru úložiště:
 
 - Vstup **n**.
-- Vyberte index název odběru, které bylo vytvořeno úložiště Azure file v předchozím kroku:
+- Vyberte index název předplatného, ve kterém byla vytvořena Azure file storage v předchozím kroku:
 
     ![41](./media/team-lead-tasks/team-leads-41-attach-s5-linux.png)
 
-- Vyberte účet úložiště v rámci předplatného a typ v názvu úložiště Azure:
+- Vyberte účet úložiště v rámci vašeho předplatného a typ v názvu Azure file storage:
 
     ![42](./media/team-lead-tasks/team-leads-42-attach-s6-linux.png)
 
-- Zadejte název jednotky pro přidání do vašeho počítače, které by měly být odlišný od všechny existující:
+- Zadejte název disku, aby se přidají do počítače, které by se měly lišit od všechny existující aplikace:
 
     ![43](./media/team-lead-tasks/team-leads-43-attach-s7-linux.png)
 
 
-## <a name="5-set-up-security-control-policy"></a>5. Nastavte zásady zabezpečení ovládacího prvku 
+## <a name="5-set-up-security-control-policy"></a>5. Nastavení zásad zabezpečení ovládacího prvku 
 
-Ze serveru vaší skupiny služby VSTS domovské stránky, klikněte na tlačítko **ozubené kolečko ikonu** vedle vašeho uživatelského jména v pravém horním rohu vyberte **zabezpečení** kartě. Můžete přidat členy si s týmem zde s různými oprávnění.
+Z domovské stránky serveru skupiny VSTS, klikněte na tlačítko **ikonu ozubeného kola** vedle vaše uživatelské jméno v pravém horním rohu vyberte **zabezpečení** kartu. Přidat členy do týmu tady s různými oprávněními.
 
 ![44](./media/team-lead-tasks/team-leads-44-add-team-members.png)
 
 ## <a name="next-steps"></a>Další postup
 
-Tady jsou odkazy na podrobnější popis jednotlivých rolí a úloh, které jsou definované procesu Team dat vědecké účely:
+Tady jsou odkazy na podrobnější popis role a úlohy určené vědecké zpracování týmových dat:
 
-- [Úlohy správce skupiny pro data tým vědecké účely](group-manager-tasks.md)
-- [Tým realizace úlohy pro data tým vědecké účely](team-lead-tasks.md)
-- [Úlohy realizace projektu pro data tým vědecké účely](project-lead-tasks.md)
-- [Jednotlivé přispěvatele projektu pro data tým vědecké účely](project-ic-tasks.md)
+- [Úlohy správce skupiny pro datové vědy tým](group-manager-tasks.md)
+- [Úkoly vedoucí týmu pro datové vědy tým](team-lead-tasks.md)
+- [Vedoucí úkoly pro datové vědy tým projektu](project-lead-tasks.md)
+- [Jednotlivé přispěvatelé projektu týmu datové vědy](project-ic-tasks.md)

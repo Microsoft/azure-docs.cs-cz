@@ -1,6 +1,6 @@
 ---
-title: Přehled Azure výpočetní jednotky | Microsoft Docs
-description: Přehled konceptu Azure výpočetní jednotky pro Windows. ACU poskytuje způsob porovnání výkonu procesoru mezi Azure SKU.
+title: Přehled Azure výpočetní jednotka | Dokumentace Microsoftu
+description: Přehled konceptů Azure výpočetních jednotek pro Windows. ACU poskytuje způsob porovnání výkonu procesoru jednotlivých SKU v Azure.
 services: virtual-machines-windows
 documentationcenter: ''
 author: jonbeck7
@@ -16,13 +16,13 @@ ms.workload: infrastructure-services
 ms.date: 12/05/2017
 ms.author: jonbeck
 ms.openlocfilehash: baf49856f8f7480ece10e065b3ac002297f06617
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 07/10/2018
 ms.locfileid: "30918077"
 ---
-# <a name="azure-compute-unit-acu"></a>Výpočetní jednotky (ACU)
+# <a name="azure-compute-unit-acu"></a>Jednotka výpočetní prostředky Azure (ACU)
 
 [!INCLUDE [virtual-machines-common-acu](../../../includes/virtual-machines-common-acu.md)]
 

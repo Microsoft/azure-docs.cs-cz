@@ -14,12 +14,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 01/23/2017
   ms.author: carolz
-  ms.openlocfilehash: 9e60a25d8e41de22010a8b1844fdb6267868333c
-  ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+  ms.openlocfilehash: 374e6a75d9ddfb5765418b1044dc525f14f86f67
+  ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 05/10/2018
-  ms.locfileid: "33943691"
+  ms.lasthandoff: 07/10/2018
+  ms.locfileid: "37950806"
 abstract:
   description: Virtuální počítače s Linuxem v Azure poskytují vysoce škálovatelnou zabezpečenou virtualizovanou infrastrukturu na vyžádání s využitím Red Hatu, Ubuntu nebo linuxové distribuce podle vaší volby. Prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek se naučíte vytvářet, konfigurovat, spravovat, aktualizovat a škálovat linuxové virtuální počítače.
   aside:
@@ -74,7 +74,6 @@ sections:
     - html: <a href="/azure/virtual-machines/linux/tutorial-build-deploy-jenkins">CI/CD s Team Services</a>
     - html: Vytvoření zásobníku webového serveru pomocí <a href="/azure/virtual-machines/linux/tutorial-lamp-stack">LAMP</a>, <a href="/azure/virtual-machines/linux/tutorial-lemp-stack">LEMP</a> nebo <a href="/azure/virtual-machines/linux/tutorial-mean-stack">MEAN</a>
     - html: <a href="/azure/virtual-machines/linux/tutorial-secure-web-server">Zabezpečení webového serveru pomocí SSL</a>
-    - html: <a href="https://docs.microsoft.com/learn/deploy-custom-vmss-app/index">Nasazení aplikací do škálovací sady virtuálních počítačů Azure s vlastní imagí Packeru</a>
 - title: Bezplatné školicí video od Pluralsightu
   items:
   - type: list

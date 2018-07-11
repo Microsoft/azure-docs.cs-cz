@@ -51,8 +51,6 @@
       href: tutorial-mean-stack.md
     - name: 16. Zabezpečení webového serveru pomocí SSL
       href: tutorial-secure-web-server.md
-    - name: Nasazení image Packeru a aplikací do škálovací sady
-      href: 'https://docs.microsoft.com/learn/deploy-custom-vmss-app/index'
 - name: Ukázky
   items:
     - name: Azure CLI

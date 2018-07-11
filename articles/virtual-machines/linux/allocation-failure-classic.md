@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží s přidělováním virtuální počítač Azure s Linuxem v modelu nasazení classic | Microsoft Docs
-description: Řešení potíží s přidělením při vytváření, restartování nebo změně velikosti klasické virtuální počítač s Linuxem v Azure
+title: Řešení potíží s chybami přidělení virtuálního počítače Azure s Linuxem v modelu nasazení classic | Dokumentace Microsoftu
+description: Řešení potíží s přidělováním při vytváření, restartování nebo změně velikosti klasický virtuální počítač s Linuxem v Azure
 services: virtual-machines-Linux, azure-resource-manager
 documentationcenter: ''
 author: genlin
@@ -16,13 +16,13 @@ ms.topic: article
 ms.date: 04/13/2018
 ms.author: genli
 ms.openlocfilehash: d03580e688b993b9b0ea5ca0ea436e1a47a4b0bd
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
+ms.lasthandoff: 07/10/2018
 ms.locfileid: "31529475"
 ---
-# <a name="troubleshooting-steps-specific-to-allocation-failure-scenarios-in-the-classic-deployment-model"></a>Řešení potíží s konkrétní kroky pro scénáře selhání přidělení v modelu nasazení classic
+# <a name="troubleshooting-steps-specific-to-allocation-failure-scenarios-in-the-classic-deployment-model"></a>Kroků pro řešení problémů konkrétních chybových scénářů při přidělování v modelu nasazení classic
 
 [!INCLUDE [virtual-machines-common-allocation-failure-classic](../../../includes/virtual-machines-common-allocation-failure-classic.md)]
 

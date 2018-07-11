@@ -14,12 +14,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 04/01/2018
   ms.author: carlrab
-  ms.openlocfilehash: c159eec7a8674e57e6f7a815040527ed60966f46
-  ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+  ms.openlocfilehash: 5fcfe7b12acc943224d3c3158f2b39b4c35de1ee
+  ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 07/06/2018
-  ms.locfileid: "37887279"
+  ms.lasthandoff: 07/09/2018
+  ms.locfileid: "37916145"
 abstract:
   description: Azure SQL Database je relační databáze jako služba (DBaaS), která je založená na nejnovější stabilní verzi databázového stroje Microsoft SQL Server. SQL Database je vysoce výkonná, spolehlivá a zabezpečená databáze, kterou můžete použít k vytváření datových aplikací a webů v programovacím jazyce podle vašeho výběru, aniž by bylo potřeba zabývat se správou infrastruktury. Naučte se používat SQL Database prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek.
   aside:
@@ -48,12 +48,12 @@ sections:
       image:
         src: media/index/i_perftier.svg
       title: Úrovně výkonu a cen
-    - href: /azure/sql-database/sql-database-single-database-scale
+    - href: /azure/sql-database/sql-database-scale-resources
       html: <p>Využijte možnost snadno <a href="/azure/sql-database/sql-database-single-database-scale">vertikálně </a> nebo <a href="/azure/sql-database/sql-database-read-scale-out">horizontálně navýšit kapacitu</a> vašich databází nebo je rozdělit v závislosti na vašich potřebách a zlepšit tak výkon vaší aplikace.</p>
       image:
         src: media/index/i_scale.svg
       title: Škálovatelnost a elasticita
-    - href: /azure/sql-database/sql-database-automatic-tuning
+    - href: /azure/sql-database/sql-database-technical-overview#built-in-intelligence
       html: <p>Inteligence integrovaná do služeb umožňuje <a href="/azure/sql-database/sql-database-automatic-tuning">automaticky vyladit výkon</a> a <a href="/azure/sql-database/sql-advanced-threat-protection">identifikovat hrozby</a> a <a href="/azure/sql-database/sql-vulnerability-assessment">ohrožení zabezpečení</a> ve vašich databázích.</p>
       image:
         src: media/index/i_intelligence.svg

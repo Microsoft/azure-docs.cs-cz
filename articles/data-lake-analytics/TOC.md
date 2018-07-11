@@ -59,10 +59,10 @@
 #### [Vlastní kód](data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md)
 #### [Místní spuštění a ladění](data-lake-tools-for-vscode-local-run-and-debug.md)
 
-### Průběžná integrace a průběžné nasazování
-#### [Přehled](data-lake-analytics-cicd-overview.md)
-#### [Nastavení testů](data-lake-analytics-cicd-test.md)
-#### [U-SQL SDK](data-lake-analytics-u-sql-sdk.md)
+## Průběžná integrace a průběžné nasazování
+### [Přehled](data-lake-analytics-cicd-overview.md)
+### [Nastavení testů](data-lake-analytics-cicd-test.md)
+### [U-SQL SDK](data-lake-analytics-u-sql-sdk.md)
 
 # Referenční informace
 ## [Azure PowerShell](/powershell/module/azurerm.datalakeanalytics)

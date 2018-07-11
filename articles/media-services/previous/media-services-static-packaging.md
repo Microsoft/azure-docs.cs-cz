@@ -1,6 +1,6 @@
 ---
-title: Pomocí Azure Media Balíčkovač k provádění úloh statické balení | Microsoft Docs
-description: Toto téma ukazuje různé úlohy, které jsou provedeny s Balíčkovač média Azure.
+title: Použití služby Azure Media Packager k provádění úloh statické balení | Dokumentace Microsoftu
+description: Toto téma popisuje různé úkoly, které jsou možné díky Azure Media Packageru.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,22 +15,22 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: juliako
 ms.openlocfilehash: 808f25ee2c0b72f557ec72d159318e25cb7387ab
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
+ms.lasthandoff: 07/10/2018
 ms.locfileid: "33790556"
 ---
-# <a name="using-azure-media-packager-to-accomplish-static-packaging-tasks"></a>Pomocí Azure Media Balíčkovač k provádění úloh statické balení
+# <a name="using-azure-media-packager-to-accomplish-static-packaging-tasks"></a>Použití služby Azure Media Packager k provádění úloh statické balení
 > [!NOTE]
-> Koncové datum životnosti pro Microsoft Azure Media Balíčkovač a Microsoft Azure Media modulu pro šifrování se rozšířily na 1. března 2017. Před tímto datem funkce tyto procesorů se přidají k Media Encoder Standard (MES). Zákazníci jsou k dispozici s pokyny o tom, jak migrovat své pracovní postupy pro odesílání úloh do MES. Formát možnosti převodu a šifrování může být také k dispozici prostřednictvím dynamické balením a dynamickým šifrováním.
+> Do 1. března 2017 bylo rozšířeno konci životnosti data pro Microsoft Azure Media Packageru a Microsoft Azure Media Encryptoru. Před tímto datem funkce procesory se přidají do Media Encoder Standard (MES). S pokyny o tom, jak migrovat své pracovní postupy k odeslání úloh pro MES jsou k dispozici zákazníkům. Formát funkce převodu a šifrování můžou být taky dostupné prostřednictvím dynamického balení a dynamického šifrování.
 > 
 > 
 
 ## <a name="overview"></a>Přehled
-Aby bylo možné poskytovat digitální video přes internet, je nutné médium komprimovat. Digitální video soubory jsou velké, může být příliš velký pro doručení přes internet nebo pro zařízení vašich zákazníků a zobrazeny správně. Kódování je proces komprimace videa a zvuku, takže vaši zákazníci mohou zobrazit médiu. Po zakódování video, může být umístěn do kontejnerů jiný soubor. Proces uvádění kódovaného média do kontejneru se nazývá balení. Můžete například využít soubor MP4 a převádět je do technologie Smooth Streaming nebo HLS obsah pomocí Balíčkovač média Azure. 
+Aby bylo možné poskytovat digitální video přes internet, je nutné médium komprimovat. Digitální video soubory jsou velké a může být příliš velký, aby poskytování přes internet nebo pro zařízení vašich zákazníků a zobrazeny správně. Kódování je proces komprese videa a zvuku, takže vaši zákazníci mohou zobrazit médií. Po zakódování videa může být umístěn do jiného souboru kontejnerů. Proces umístění kódovaného médií do kontejneru se nazývá balení. Můžete například provést soubor MP4 a převést do technologie Smooth Streaming nebo HLS obsahu pomocí Azure Media Packageru. 
 
-Služba Media Services podporuje dynamických a statických balení. Při používání statické balení, budete muset vytvořit kopii vašeho obsahu v každé formátu vyžadovanou vašich zákazníků. Dynamické balení všechny, bude nutné vytvořit asset, který obsahuje sadu souborů MP4 nebo technologie Smooth Streaming s adaptivní přenosovou rychlostí. Potom založené na formátu určeného v manifestu nebo fragmentu požadavek streamingu na vyžádání serveru zajistí, aby vaši uživatelé datový proud obdrželi v protokolu, kterou si vyberou. Díky tomu pak stačí uložit (a platit) soubory pouze v jednom úložném formátu a služba Media Services bude sestavovat a dodávat vhodný formát streamování v reakci na požadavky klientů.
+Služba Media Services podporuje statické a dynamické balení. Při používání statické balení, je potřeba vytvořit kopii tohoto obsahu v každé formátu vaši zákazníci požadují. Dynamické balení, všechny, je nutné je pouze vytvořit asset, který obsahuje sadu souborů MP4 nebo technologie Smooth Streaming s adaptivní přenosovou rychlostí. Potom založené na formátu určeného v manifestu nebo fragment požadavek On-Demand Streaming serveru zajistí, že vaši uživatelé datový proud obdrželi v protokolu, které jste vybrali. Díky tomu pak stačí uložit (a platit) soubory pouze v jednom úložném formátu a služba Media Services bude sestavovat a dodávat vhodný formát streamování v reakci na požadavky klientů.
 
 > [!NOTE]
 > Doporučuje se použít [dynamické balení](media-services-dynamic-packaging-overview.md).
@@ -39,25 +39,25 @@ Služba Media Services podporuje dynamických a statických balení. Při použ�
 
 Existují však některé scénáře, které vyžadují statické balení: 
 
-* Ověřování s adaptivní přenosovou rychlostí soubory MP4 s rychlostmi zakódovaných pomocí externí kodéry (například pomocí kodéry třetích stran).
+* Ověřování s adaptivní přenosovou rychlostí soubory MP4 rychlostmi kódovaný pomocí externí kodérů (například použití kodérů třetích stran).
 
 Statické balení můžete také použít k provádění následujících úloh: ale doporučuje se používat dynamické šifrování.
 
-* Použití statické šifrování k ochraně Smooth a MPEG DASH s technologií PlayReady
-* Použití statické šifrování k ochraně HLSv3 s AES-128
-* Použití statické šifrování k ochraně HLSv3 s technologií PlayReady
+* Používat statické šifrování a chránit vaše hladký a MPEG DASH pomocí technologie PlayReady
+* Používat statické šifrování a chránit tak HLSv3 pomocí AES-128
+* Používat statické šifrování a chránit tak HLSv3 pomocí technologie PlayReady
 
-## <a name="validating-adaptive-bitrate-mp4s-encoded-with-external-encoders"></a>Ověřování s adaptivní přenosovou rychlostí soubory MP4 rychlostmi zakódovaných pomocí externí kodéry
-Pokud chcete použít sadu souborů MP4 s adaptivní přenosovou rychlostí (více přenosovými rychlostmi), které nebyly kódovaný s kodéry Media Services, by měl ověřit vaše soubory před další zpracování. Balíčkovač služby média můžete ověřit asset, který obsahuje sadu souborů MP4 a zkontrolujte, zda prostředku se dá zabalit technologie Smooth Streaming nebo HLS. Pokud se úloha ověření nezdaří, dokončí úlohu, která zpracovává úlohu s chybou. Kód XML, který definuje předvolbu pro úlohu ověřování najdete v [přednastavení úloh pro Azure Media Balíčkovač](http://msdn.microsoft.com/library/azure/hh973635.aspx) článku.
+## <a name="validating-adaptive-bitrate-mp4s-encoded-with-external-encoders"></a>Kódování souborů MP4 s rychlostmi se ověřování Adaptivní s externí kodérů
+Pokud chcete použít sadu souborů MP4 s adaptivní přenosovou rychlostí (s více přenosovými rychlostmi), které nebyly kódování pomocí Media Services kodérů, měli byste ověřit svoje soubory před dalším zpracováním. Media Services Packager můžete ověřovat asset, který obsahuje sadu souborů MP4 a zkontrolujte, jestli se dá zabalit asset technologie Smooth Streaming nebo HLS. Pokud se úloha ověření nezdaří, dokončení úlohy, která zpracovává úlohu s chybou. Kód XML, který definuje předvolbu pro úlohu ověřování najdete v [předvolby úloh pro Azure Media Packageru](http://msdn.microsoft.com/library/azure/hh973635.aspx) článku.
 
 > [!NOTE]
-> Použít k vytvoření Media Encoder Standard nebo Balíčkovač služby média k ověření obsahu aby se zabránilo runtime problémy. Pokud server streamingu na vyžádání není schopen analyzovat zdrojové soubory vašeho za běhu, obdržíte chybu HTTP 1.1 "415 Nepodporovaný typ média." Opakovaně způsobuje selhání analyzovat zdrojové soubory vašeho serveru ovlivňuje výkon serveru streamingu na vyžádání a může snížit šířku pásma, které jsou k dispozici pro obsluhující ostatní požadavky. Azure Media Services nabízí o úrovni služeb smlouvy (SLA) na jeho streamování na vyžádání služby; Tato smlouva SLA nepůjde dodržet však v případě serveru je zneužití způsobem popsané výše.
+> Pomocí Media Encoder Standard pro vytvoření nebo Media Packageru služby ověření obsahu předejdete tak problémy za běhu. Pokud server streamingu na vyžádání není možné zpracovat zdrojových souborů v době běhu, se zobrazí chyba HTTP 1.1 "415 Nepodporovaný typ média." Opakovaně způsobující selhání analyzovat zdrojové soubory vašeho serveru má vliv na výkon systému server streamingu na vyžádání a může snížit šířku pásma dostupnou pro poskytování dalších požadavků. Azure Media Services nabízí smlouvu úrovni služeb (SLA) na jeho On-Demand Streaming služby; Tato smlouva SLA nepůjde dodržet, pokud na serveru je potenciálně nebezpečného způsobem je popsáno výše.
 > 
 > 
 
-V této části ukazuje, jak ke zpracování úloh ověření. Také ukazuje, jak zobrazit stav a úlohy, která je dokončena s JobStatus.Error chybová zpráva.
+Tato část ukazuje, jak zpracovat úloha ověření. Také ukazuje, jak zobrazit stav a chybová zpráva, která se dokončí s JobStatus.Error úlohy.
 
-Pro ověření, vaše soubory MP4 s Balíčkovač Media Services, musíte vytvořit vlastní soubor manifestu (.ism) a nahrát ho spolu s zdrojových souborů do účtu Media Services. Níže je ukázkový soubor .ism produkovaný Media Encoder Standard. Názvy souborů rozlišují velká a malá písmena. Taky se ujistěte, že je text v souboru .ism zakódovaných pomocí znakové sady UTF-8.
+Ověřit vaše soubory MP4 s Media Services Packager, musíte vytvořit souboru manifest (.ism) a nahrajte ho spolu s zdrojových souborů do účtu Media Services. Následující ukázkový soubor .ism vytvořil Media Encoder Standard. Názvy souborů jsou malá a velká písmena. Také se ujistěte, že text v soubor .ism je zakódován pomocí kódování UTF-8.
 
 ```xml
     <?xml version="1.0" encoding="utf-8" standalone="yes"?>
@@ -80,9 +80,9 @@ Pro ověření, vaše soubory MP4 s Balíčkovač Media Services, musíte vytvo�
     </smil>
 ```
 
-Až budete mít s adaptivní přenosovou rychlostí sady souborů MP4 můžete využít výhod dynamického balení. Dynamické balení umožňuje doručovat datové proudy v zadaný protokol bez další balení. Další informace najdete v tématu [dynamické balení](media-services-dynamic-packaging-overview.md).
+Jakmile budete mít s adaptivní přenosovou sady souborů MP4, které můžete využít výhody dynamického balení. Dynamické balení můžete doručovat datové proudy v zadaného protokolu bez další balení. Další informace najdete v tématu [dynamické balení](media-services-dynamic-packaging-overview.md).
 
-Následující příklad kódu používá rozšíření Azure Media Services .NET SDK.  Nezapomeňte aktualizovat kód tak, aby odkazoval na složku, kde jsou umístěné vaše vstupní soubory MP4 a soubor .ism. A také kde je umístěn soubor MediaPackager_ValidateTask.xml. Tento soubor XML je definována v [přednastavení úloh pro Azure Media Balíčkovač](http://msdn.microsoft.com/library/azure/hh973635.aspx) článku.
+Následující vzorový kód používá rozšíření Azure Media Services .NET SDK.  Nezapomeňte aktualizovat kód tak, aby odkazoval na složku, ve kterém se nachází váš vstup souborů MP4 a soubor .ism. A také k umístění souboru MediaPackager_ValidateTask.xml. Tento soubor XML je definován v [přednastavení úloh pro Azure Media Packageru](http://msdn.microsoft.com/library/azure/hh973635.aspx) článku.
 
 ```csharp
     using Microsoft.WindowsAzure.MediaServices.Client;
@@ -250,23 +250,23 @@ Následující příklad kódu používá rozšíření Azure Media Services .NE
     }
 ```
 
-## <a name="using-static-encryption-to-protect-your-smooth-and-mpeg-dash-with-playready"></a>Použití statické šifrování k ochraně vaší Smooth a MPEG DASH s technologií PlayReady
-Pokud chcete chránit svůj obsah pomocí PlayReady, máte možnost volby použití [dynamického šifrování](media-services-protect-with-playready-widevine.md) (doporučená možnost) nebo statické šifrování (jak je popsáno v této části).
+## <a name="using-static-encryption-to-protect-your-smooth-and-mpeg-dash-with-playready"></a>Používat statické šifrování a chránit tak vaše hladký a MPEG DASH pomocí technologie PlayReady
+Pokud chcete chránit obsah pomocí technologie PlayReady, máte výběr mezi používáním [dynamického šifrování](media-services-protect-with-playready-widevine.md) (doporučená možnost) nebo statické šifrování (jak je popsáno v této části).
 
-Příklad v této části kóduje soubor mezzanine (v této rozlišují MP4) do souborů MP4. Ji pak balíčky soubory MP4 s rychlostmi do technologie Smooth Streaming a potom šifruje technologie Smooth Streaming s technologií PlayReady. Výsledkem je budete moci stream technologie Smooth Streaming nebo MPEG DASH.
+Příklad v této části kóduje soubor mezzanine (v tomto případu MP4) do souborů MP4. Potom balíčky soubory MP4 rychlostmi do technologie Smooth Streaming a potom šifruje, technologie Smooth Streaming pomocí technologie PlayReady. Díky tomu budete moct Streamovat, technologie Smooth Streaming nebo MPEG DASH.
 
-Služba Media Services nyní poskytuje službu k doručování licencí PlayReady společnosti Microsoft. Příklad v tomto článku ukazuje, jak nakonfigurovat službu doručování licencí Media Services PlayReady (viz metodu ConfigureLicenseDeliveryService definované v kódu níže). Další informace o službě doručování licencí Media Services PlayReady najdete v tématu [pomocí dynamického šifrování PlayReady a službu doručování licencí](media-services-protect-with-playready-widevine.md).
+Služba Media Services teď poskytuje službu k doručování licencí Microsoft PlayReady. V příkladu v tomto článku ukazuje, jak nakonfigurovat službu doručování licencí Media Services PlayReady (viz ConfigureLicenseDeliveryService metody definované v následujícím kódu). Další informace o službu doručování licencí Media Services PlayReady, naleznete v tématu [pomocí dynamického šifrování PlayReady a službou doručování licencí](media-services-protect-with-playready-widevine.md).
 
 > [!NOTE]
-> K poskytování MPEG DASH šifrované pomocí PlayReady, nezapomeňte použít možnosti šifrování CENC nastavením vlastnosti useSencBox a adjustSubSamples (popsané v [přednastavení úloh pro Azure Media modulu pro šifrování](http://msdn.microsoft.com/library/azure/hh973610.aspx) článek) na hodnotu true.  
+> K zajištění MPEG DASH šifrované pomocí technologie PlayReady, ujistěte se, že použití možností CENC nastavením vlastností useSencBox a adjustSubSamples (podle [přednastavení úloh pro Azure Media Encryptoru](http://msdn.microsoft.com/library/azure/hh973610.aspx) článku) na hodnotu true.  
 > 
 > 
 
-Nezapomeňte aktualizovat následující kód tak, aby odkazoval na složku, kde je umístěna vaše vstupní soubor MP4.
+Nezapomeňte aktualizovat následující kód, který odkazoval na složku, ve kterém se nachází váš vstupní soubor MP4.
 
-A také k umístění souborů MediaPackager_MP4ToSmooth.xml a MediaEncryptor_PlayReadyProtection.xml. MediaPackager_MP4ToSmooth.xml je definována v [přednastavení úloh pro Azure Media Balíčkovač](http://msdn.microsoft.com/library/azure/hh973635.aspx) a MediaEncryptor_PlayReadyProtection.xml je definována v [přednastavení úloh pro Azure Media modulu pro šifrování](http://msdn.microsoft.com/library/azure/hh973610.aspx) článku. 
+A také k umístění souborů MediaPackager_MP4ToSmooth.xml a MediaEncryptor_PlayReadyProtection.xml. MediaPackager_MP4ToSmooth.xml je definována v [přednastavení úloh pro Azure Media Packageru](http://msdn.microsoft.com/library/azure/hh973635.aspx) a MediaEncryptor_PlayReadyProtection.xml je definována v [přednastavení úloh pro Azure Media Encryptoru](http://msdn.microsoft.com/library/azure/hh973610.aspx) článku. 
 
-V příkladu definuje UpdatePlayReadyConfigurationXMLFile metodu, která vám pomůže dynamicky aktualizovat soubor MediaEncryptor_PlayReadyProtection.xml. Pokud máte k dispozici klíče počáteční hodnoty, můžete použít metodu CommonEncryption.GeneratePlayReadyContentKey vygenerovat klíč k obsahu na základě keySeedValue a KeyId hodnot.
+V příkladu je definována metoda UpdatePlayReadyConfigurationXMLFile, který vám pomůže se dynamicky aktualizovat soubor MediaEncryptor_PlayReadyProtection.xml. Pokud máte klíče počáteční hodnoty k dispozici, můžete použít metodu CommonEncryption.GeneratePlayReadyContentKey ke generování klíče k obsahu na základě keySeedValue a hodnoty ID klíče.
 
 ```csharp
     using System;
@@ -702,17 +702,17 @@ V příkladu definuje UpdatePlayReadyConfigurationXMLFile metodu, která vám po
     }
 ```
 
-## <a name="using-static-encryption-to-protect-hlsv3-with-aes-128"></a>Použití statické šifrování k ochraně HLSv3 s AES-128
-Pokud chcete zašifrovat vaší HLS s AES-128, máte možnost volby použití dynamického šifrování (doporučená možnost) nebo statické šifrování (jak je znázorněno v této části). Pokud se rozhodnete používat dynamické šifrování, najdete v části [pomocí dynamického šifrování AES-128 a služba pro přenos klíče](media-services-protect-with-aes128.md).
+## <a name="using-static-encryption-to-protect-hlsv3-with-aes-128"></a>Používat statické šifrování a chránit tak HLSv3 pomocí AES-128
+Pokud chcete zašifrovat HLS pomocí AES-128, máte možnost volby použití dynamického šifrování (doporučená možnost) nebo statické šifrování (jak je uvedeno v této části). Pokud se rozhodnete používat dynamické šifrování, najdete v článku [pomocí dynamického šifrování AES-128 a služba doručování klíčů](media-services-protect-with-aes128.md).
 
 > [!NOTE]
-> Chcete-li převést obsah na HLS, můžete musí nejdřív převést nebo zakódovat svůj obsah do technologie Smooth Streaming.
-> Navíc pro HLS získat šifrované pomocí standardu AES nezapomeňte nastavit následující vlastnosti v souboru MediaPackager_SmoothToHLS.xml: nastavte na hodnotu true, nastavte hodnotu klíče a hodnoty keyuri tak, aby odkazovaly na váš server authentication\authorization vlastnost šifrovat.
-> Media Services vytvořte soubor klíče a jeho následné uložení do kontejneru asset. Měli zkopírovat soubor /asset-containerguid/*.key na server (nebo vytvořit svůj vlastní soubor klíče) a pak odstraňte soubor *.key z kontejneru asset.
+> Aby bylo možné převést obsah HLS, je nutné nejprve převést/zakódovat svůj obsah do technologie Smooth Streaming.
+> Kromě toho pro HLS k získání šifrováním pomocí standardu AES, nezapomeňte nastavit následující vlastnosti v souboru MediaPackager_SmoothToHLS.xml: šifrovat vlastnost na hodnotu true, nastavte hodnotu klíče a hodnoty keyuri tak, aby odkazovala na váš server ověřování\autorizaci nastavit.
+> Media Services vytvořit soubor klíče a jeho následné uložení do kontejneru asset. By měl kopírovat soubor /asset-containerguid/*.key k vašemu serveru (nebo vytvořit vlastní soubor klíče) a potom odstraňte soubor *.key z prostředku kontejneru.
 > 
 > 
 
-Příklad v této části kóduje soubor mezzanine (v tomto případě MP4) do multibitrate soubory MP4 a pak balíčky soubory MP4 s rychlostmi do technologie Smooth Streaming. Ji pak balíčky technologie Smooth Streaming do HTTP Live Streaming (HLS) šifrován Advanced Encryption (Standard AES) datového proudu 128bitové šifrování. Nezapomeňte aktualizovat následující kód tak, aby odkazoval na složku, kde je umístěna vaše vstupní soubor MP4. A také k umístění MediaPackager_MP4ToSmooth.xml a MediaPackager_SmoothToHLS.xml konfigurační soubory. Můžete najít definici těchto souborů v [přednastavení úloh pro Azure Media Balíčkovač](http://msdn.microsoft.com/library/azure/hh973635.aspx) článku.
+Příklad v této části kóduje soubor mezzanine (v tomto případě MP4) do souboru MP4 soubory a potom zabalí soubory MP4 rychlostmi do technologie Smooth Streaming. To potom balíčky technologie Smooth Streaming do HTTP Live Streaming (HLS) zašifrovaný pomocí datového proudu 128bitové šifrování Advanced Encryption (Standard AES). Nezapomeňte aktualizovat následující kód, který odkazoval na složku, ve kterém se nachází váš vstupní soubor MP4. A také k umístění konfiguračních souborů MediaPackager_MP4ToSmooth.xml a MediaPackager_SmoothToHLS.xml. Můžete najít definici pro tyto soubory [přednastavení úloh pro Azure Media Packageru](http://msdn.microsoft.com/library/azure/hh973635.aspx) článku.
 
 ```csharp
     using System;
@@ -985,19 +985,19 @@ Příklad v této části kóduje soubor mezzanine (v tomto případě MP4) do m
     }
 ```
 
-## <a name="using-static-encryption-to-protect-hlsv3-with-playready"></a>Použití statické šifrování k ochraně HLSv3 s technologií PlayReady
-Pokud chcete chránit svůj obsah pomocí PlayReady, máte možnost volby použití [dynamického šifrování](media-services-protect-with-playready-widevine.md) (doporučená možnost) nebo statické šifrování (jak je popsáno v této části).
+## <a name="using-static-encryption-to-protect-hlsv3-with-playready"></a>Používat statické šifrování a chránit tak HLSv3 pomocí technologie PlayReady
+Pokud chcete chránit obsah pomocí technologie PlayReady, máte výběr mezi používáním [dynamického šifrování](media-services-protect-with-playready-widevine.md) (doporučená možnost) nebo statické šifrování (jak je popsáno v této části).
 
 > [!NOTE]
-> Pokud chcete chránit obsah pomocí PlayReady můžete musí nejdřív převést nebo zakódovat svůj obsah do formátu, technologie Smooth Streaming.
+> Pokud chcete chránit obsah pomocí technologie PlayReady je musíte nejprve převést/zakódovat svůj obsah do formátu, technologie Smooth Streaming.
 > 
 > 
 
-Příklad v této části kóduje soubor mezzanine (v této rozlišují MP4) do souborů multibitrate MP4. Potom balíčky soubory MP4 s rychlostmi do technologie Smooth Streaming a šifruje technologie Smooth Streaming s technologií PlayReady. K vytvoření HTTP Live Streaming (HLS) šifrovat pomocí PlayReady, technologie Smooth Streaming PlayReady asset musí zabalené do HLS. Tento článek ukazuje, jak provést tyto kroky.
+Příklad v této části kóduje soubor mezzanine (v tomto případu MP4) do souboru MP4 soubory. Potom balíčky soubory MP4 rychlostmi do technologie Smooth Streaming a šifruje, technologie Smooth Streaming pomocí technologie PlayReady. K vytvoření protokolu HTTP Live Streaming (HLS) zašifrovaný pomocí technologie PlayReady, musí být zabaleny do HLS asset PlayReady technologie Smooth Streaming. Tento článek ukazuje, jak provést tyto kroky.
 
-Služba Media Services nyní poskytuje službu k doručování licencí PlayReady společnosti Microsoft. Příklad v tomto článku ukazuje, jak nakonfigurovat službu doručování licencí Media Services PlayReady (najdete v článku **ConfigureLicenseDeliveryService** metoda definované v kódu níže). 
+Služba Media Services teď poskytuje službu k doručování licencí Microsoft PlayReady. V příkladu v tomto článku ukazuje, jak nakonfigurovat službu doručování licencí Media Services PlayReady (viz **ConfigureLicenseDeliveryService** metody definované v následujícím kódu). 
 
-Nezapomeňte aktualizovat následující kód tak, aby odkazoval na složku, kde je umístěna vaše vstupní soubor MP4. A také k umístění MediaPackager_MP4ToSmooth.xml, MediaPackager_SmoothToHLS.xml a MediaEncryptor_PlayReadyProtection.xml souborů. MediaPackager_MP4ToSmooth.xml a MediaPackager_SmoothToHLS.xml jsou definovány v [přednastavení úloh pro Azure Media Balíčkovač](http://msdn.microsoft.com/library/azure/hh973635.aspx) a MediaEncryptor_PlayReadyProtection.xml je definována v [přednastavení úloh pro Azure Media Modul pro šifrování](http://msdn.microsoft.com/library/azure/hh973610.aspx) článku.
+Nezapomeňte aktualizovat následující kód, který odkazoval na složku, ve kterém se nachází váš vstupní soubor MP4. A také k umístění souborů MediaPackager_MP4ToSmooth.xml MediaPackager_SmoothToHLS.xml a MediaEncryptor_PlayReadyProtection.xml. MediaPackager_MP4ToSmooth.xml a MediaPackager_SmoothToHLS.xml jsou definovány v [přednastavení úloh pro Azure Media Packageru](http://msdn.microsoft.com/library/azure/hh973635.aspx) a MediaEncryptor_PlayReadyProtection.xml je definována v [přednastavení úloh pro mediální služby Azure Šifrování](http://msdn.microsoft.com/library/azure/hh973610.aspx) článku.
 
 ```csharp
     using System;
@@ -1467,6 +1467,6 @@ Nezapomeňte aktualizovat následující kód tak, aby odkazoval na složku, kde
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
+## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

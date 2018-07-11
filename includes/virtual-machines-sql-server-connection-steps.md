@@ -1,6 +1,6 @@
 ### <a name="open-tcp-ports-in-the-windows-firewall-for-the-default-instance-of-the-database-engine"></a>Otevření portů TCP v bráně Windows Firewall pro výchozí instanci databázového stroje
 1. Pomocí Vzdálené plochy se připojte k virtuálnímu počítači. Podrobné pokyny pro připojení k virtuálnímu počítači najdete v tématu věnovaném [otevření virtuálního počítače SQL pomocí Vzdálené plochy](../articles/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md#remotedesktop).
-2. Po přihlášení na obrazovce Start zadejte **WF.msc**a pak stiskněte ENTER.
+2. Po přihlášení na úvodní obrazovce zadejte **WF.msc**a potom stiskněte ENTER.
    
     ![Spuštění programu brány firewall](./media/virtual-machines-sql-server-connection-steps/12Open-WF.png)
 3. V levém panelu okna **Brána Windows Firewall s pokročilým zabezpečením** klikněte pravým tlačítkem na **Příchozí pravidla** a potom v podokně akcí klikněte na **Nové pravidlo**.
@@ -42,7 +42,7 @@ Databázový stroj SQL Serveru nemůže používat ověřování systému Window
 1. Zůstaňte připojeni k virtuálnímu počítači a na úvodní stránce zadejte **SQL Server Management Studio** a klikněte na vybranou ikonu.
    
     Při prvním otevření sady Management Studio se musí vytvořit uživatelské prostředí sady Management Studio. Tato operace může chvíli trvat.
-2. Management Studio zobrazí dialogové okno **Připojit k serveru**. Do pole **Název serveru** zadejte název virtuálního počítače, který se má připojit k databázovému stroji s využitím Průzkumníka objektů. (Místo názvu virtuálního počítače můžete také jako **název serveru** použít text **(local)** nebo jednu tečku). Vyberte **ověřování systému Windows**a nechat ***název_virtuálního_počítače * \your_local_administrator** v **uživatelské jméno** pole. Klikněte na **Připojit**.
+2. Management Studio zobrazí dialogové okno **Připojit k serveru**. Do pole **Název serveru** zadejte název virtuálního počítače, který se má připojit k databázovému stroji s využitím Průzkumníka objektů. (Místo názvu virtuálního počítače můžete také jako **název serveru** použít text **(local)** nebo jednu tečku). Vyberte **ověřování Windows**a nechat ***název_virtuálního_počítače * \your_local_administrator** v **uživatelské jméno** pole. Klikněte na **Připojit**.
    
     ![Připojení k serveru](./media/virtual-machines-sql-server-connection-steps/19Connect-to-Server.png)
 3. V Průzkumníku objektů systému SQL Server klikněte pravým tlačítkem na název instance SQL Serveru (název virtuálního počítače) a potom klikněte na **Vlastnosti**.

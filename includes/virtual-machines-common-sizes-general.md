@@ -5,15 +5,15 @@ services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/22/2018
+ms.date: 07/06/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 016aa15f391daedae1b87fc6c7099b72b50f7160
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
-ms.translationtype: HT
+ms.openlocfilehash: 0cd31a6acaa248b53fbe90684894b3bb3e7ebf86
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "34669318"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37907039"
 ---
 Velikosti virtuálních počítačů pro obecné účely poskytují vyvážený poměr procesorů k paměti. Ideální pro testování a vývoj, malé a střední databáze a webové servery s nízkým a středním provozem. Tento článek obsahuje informace o počtu virtuálních procesorů, datové disky a síťové adaptéry, jakož i propustnost úložiště pro velikosti v této skupině. 
 
@@ -25,6 +25,10 @@ Velikosti virtuálních počítačů pro obecné účely poskytují vyvážený 
 
 
 ## <a name="b-series"></a>B-Series
+
+Storage úrovně Premium: podporováno
+
+Premium Storage ukládání do mezipaměti: Není podporováno
 
 Zvládáním výkonových špiček virtuální počítače řady B-series jsou ideální pro úlohy, které nejsou nutné plný výkon procesoru nepřetržitě, jako jsou webové servery, malé databáze a vývoj a testovací prostředí. Tyto úlohy mají obvykle požadavky na výkon zvládáním výkonových špiček. B-Series poskytuje tyto zákazníkům možnost zakoupení velikost virtuálního počítače s výkonem při provádění základní ceny, umožňující instance virtuálního počítače Vybudujte kredity, když virtuální počítač využívá míň než jeho základní výkon. Když virtuální počítač se nashromáždil kredit, můžete převést virtuální počítač nad základní Virtuálního počítače pomocí až 100 % procesoru, když vaše aplikace vyžaduje vyšší výkon procesoru.
 
@@ -43,6 +47,10 @@ Zvládáním výkonových špiček virtuální počítače řady B-series jsou i
 
 ACU: 160–190
 
+Storage úrovně Premium: podporováno
+
+Ukládání do mezipaměti služby Premium Storage: podporováno
+
 Velikosti Dsv3-series jsou založené na procesoru 2,4 GHz Intel Xeon® E5-2673 v3 (Haswell) procesor nebo nejnovější procesorech 2,3 GHz Intel XEON® E5-2673 v4 (Broadwell) procesor, který může s technologií Intel Turbo Boost 2.0 dosáhnout frekvence až 3,5 GHz a používají službu premium storage. Velikosti Dsv3-series nabízejí kombinaci virtuálního procesoru, paměti a dočasného úložiště pro většinu produkčních úloh.
 
 
@@ -60,6 +68,10 @@ Velikosti Dsv3-series jsou založené na procesoru 2,4 GHz Intel Xeon® E5-2673 
 ## <a name="dv3-series-sup1sup"></a>Řada Dv3-series <sup>1</sup>
 
 ACU: 160–190
+
+Storage úrovně Premium: Není podporováno.
+
+Premium Storage ukládání do mezipaměti: Není podporováno
 
 Velikosti Dv3-series jsou založené na procesoru 2,4 GHz Intel Xeon® E5-2673 v3 (Haswell) procesor nebo procesorech 2,3 GHz Intel XEON® E5-2673 v4 (Broadwell) procesor, které můžete dosáhnout s technologií Intel Turbo Boost 2.0 dosáhnout frekvence až 3,5 GHz. Velikosti Dv3-series nabízejí kombinaci virtuálního procesoru, paměti a dočasného úložiště pro většinu produkčních úloh.
 
@@ -82,6 +94,10 @@ Velikosti Dv3-series jsou založené na procesoru 2,4 GHz Intel Xeon® E5-2673 v
 
 ACU: 210–250
 
+Storage úrovně Premium: podporováno
+
+Ukládání do mezipaměti služby Premium Storage: podporováno
+
 | Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost dočasného úložiště a úložiště v mezipaměti: IOPS / MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku bez mezipaměti: IOPS / MB/s | Maximální počet síťových karet / očekávaný šířka pásma (MB/s) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_DS1_v2 |1 |3,5 |7 |4 |4 000 / 32 (43) |3 200 / 48 |2 / 750 |
@@ -96,6 +112,10 @@ ACU: 210–250
 
 ACU: 210–250
 
+Storage úrovně Premium: Není podporováno.
+
+Premium Storage ukládání do mezipaměti: Není podporováno
+
 | Velikost           | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Maximální propustnost dočasného úložiště: IOPS / čtení v MB/s / zápis v MB/s | Max. datových disků | Propustnost: IOPS | Maximální počet síťových karet / očekávaný šířka pásma (MB/s) |
 |----------------|------|-------------|------------------------|------------------------------------------------------------|----------------|------------------|----------------------------------------------|
 | Standard_D1_v2 | 1    | 3,5         | 50                     | 3000 / 46 / 23                                             | 4              | 4×500            | 2 / 750                                      |
@@ -109,7 +129,9 @@ ACU: 210–250
 
 ACU: 100
 
+Storage úrovně Premium: Není podporováno.
 
+Premium Storage ukládání do mezipaměti: Není podporováno
 
 | Velikost            | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Maximální propustnost dočasného úložiště: IOPS / čtení v MB/s / zápis v MB/s | Maximální propustnost datových disků: IOPS | Maximální počet síťových karet / očekávaný šířka pásma (MB/s) | 
 |-----------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|

@@ -3,15 +3,15 @@ title: Instalace služby Mobility (VMware nebo fyzické prostředky do Azure) | 
 description: Zjistěte, jak nainstalovat agenta služby Mobility na ochranu místních virtuálních počítačů VMware a fyzické servery s využitím Azure Site Recovery.
 author: Rajeswari-Mamilla
 ms.service: site-recovery
-ms.topic: conceptual
-ms.date: 06/20/2018
+ms.topic: article
+ms.date: 07/06/2018
 ms.author: ramamill
-ms.openlocfilehash: e98e67c453e909662c509598acc4cf65c5a0a6fa
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: bc0ec09e28c5540eb919ac4e5f970f877ae27e44
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37887653"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37919083"
 ---
 # <a name="install-the-mobility-service"></a>Instalace služby Mobility 
 

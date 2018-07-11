@@ -1,5 +1,5 @@
 ---
-title: 'Postup konfigurace směrování (partnerský vztah) pro ExpressRoute okruh: Azure: classic | Microsoft Docs'
+title: 'Postup konfigurace směrování (partnerského vztahu) pro ExpressRoute okruhu: Azure: classic | Dokumentace Microsoftu'
 description: Tento článek vás provede kroky pro vytváření a zřizování soukromého a veřejného partnerského vztahu a partnerského vztahu Microsoftu okruhu ExpressRoute. Tento článek také ukazuje, jak kontrolovat stav partnerských vztahů pro váš okruh, aktualizovat je nebo je odstranit.
 documentationcenter: na
 services: expressroute
@@ -16,24 +16,24 @@ ms.workload: infrastructure-services
 ms.date: 03/21/2017
 ms.author: ganesr;cherylmc
 ms.openlocfilehash: 9cebb196bd91da704798fb001763a76e6d090472
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
+ms.lasthandoff: 07/10/2018
 ms.locfileid: "31594133"
 ---
-# <a name="create-and-modify-peering-for-an-expressroute-circuit-classic"></a>Vytvářet a upravovat partnerský vztah pro okruh ExpressRoute (klasické)
+# <a name="create-and-modify-peering-for-an-expressroute-circuit-classic"></a>Vytvoření a úprava partnerského vztahu pro okruh ExpressRoute (classic)
 > [!div class="op_single_selector"]
 > * [Azure Portal](expressroute-howto-routing-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-routing-arm.md)
 > * [Azure CLI](howto-routing-cli.md)
-> * [Video - soukromého partnerského vztahu](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit)
-> * [Video - veřejného partnerského vztahu](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit)
-> * [Video - partnerského vztahu Microsoftu](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit)
+> * [Video – privátní partnerské vztahy](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit)
+> * [Video – veřejné partnerské vztahy](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit)
+> * [Video – partnerský vztah Microsoftu](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit)
 > * [PowerShell (Classic)](expressroute-howto-routing-classic.md)
 > 
 
-Tento článek vás provede kroky k vytvoření a správě konfigurace směrování pro okruhu ExpressRoute pomocí Powershellu a modelu nasazení classic. Dál uvedené kroky také ukazují, jak kontrolovat stav partnerských vztahů pro okruh ExpressRoute, aktualizovat je nebo je odstranit a zrušit jejich zřízení.
+Tento článek vás provede kroky k vytvoření a správě konfigurace směrování pro okruh ExpressRoute pomocí Powershellu a modelu nasazení classic. Dál uvedené kroky také ukazují, jak kontrolovat stav partnerských vztahů pro okruh ExpressRoute, aktualizovat je nebo je odstranit a zrušit jejich zřízení.
 
 [!INCLUDE [expressroute-classic-end-include](../../includes/expressroute-classic-end-include.md)]
 
@@ -43,9 +43,9 @@ Tento článek vás provede kroky k vytvoření a správě konfigurace směrová
 
 
 ## <a name="configuration-prerequisites"></a>Předpoklady konfigurace
-* Budete potřebovat nejnovější verzi rutin prostředí PowerShell Azure Service Management (SM). Další informace najdete v tématu [Začínáme s rutinami prostředí Azure PowerShell](/powershell/azure/overview).  
+* Budete potřebovat nejnovější verzi rutin Powershellu pro Azure Service Management (SM). Další informace najdete v tématu [Začínáme s rutinami Azure Powershellu](/powershell/azure/overview).  
 * Před zahájením konfigurace se ujistěte, že jste si přečetli stránku s [předpoklady](expressroute-prerequisites.md), stránku s [požadavky směrování](expressroute-routing.md) a stránku s [pracovními postupy](expressroute-workflows.md).
-* Musí mít aktivní okruh ExpressRoute. Postupujte podle pokynů a [vytvoření okruhu ExpressRoute](expressroute-howto-circuit-classic.md) a mějte ho povolený vaším poskytovatelem připojení, než budete pokračovat. Abyste mohli spouštět rutiny popsané dál, musí být okruh ExpressRoute zřízený a povolený.
+* Musí mít aktivní okruh ExpressRoute. Postupujte podle pokynů a [vytvořit okruh ExpressRoute](expressroute-howto-circuit-classic.md) a mějte ho povolený podle svého poskytovatele připojení, než budete pokračovat. Abyste mohli spouštět rutiny popsané dál, musí být okruh ExpressRoute zřízený a povolený.
 
 > [!IMPORTANT]
 > Tyto pokyny platí jenom pro okruhy vytvořené poskytovateli služeb nabízejícími služby připojení vrstvy 2. Pokud používáte poskytovatele služeb nabízejícího spravované služby vrstvy 3 (obvykle IPVPN, např. MPLS), poskytovatel připojení provede konfiguraci a správu směrování za vás.
@@ -55,7 +55,7 @@ Tento článek vás provede kroky k vytvoření a správě konfigurace směrová
 Můžete nakonfigurovat jeden, dva nebo všechny tři partnerské vztahy (soukromý Azure, veřejný Azure a Microsoft) pro okruh ExpressRoute. Partnerské vztahy můžete konfigurovat v libovolném pořadí. Musíte se ale přesvědčit, že jste vždy konfiguraci každého partnerského vztahu dokončili.
 
 
-### <a name="log-in-to-your-azure-account-and-select-a-subscription"></a>Přihlaste se k účtu Azure a vybrat odběr
+### <a name="log-in-to-your-azure-account-and-select-a-subscription"></a>Přihlaste se ke svému účtu Azure a vyberte předplatné
 1. Otevřete konzolu PowerShellu se zvýšenými oprávněními a připojte se ke svému účtu. Připojení vám usnadní následující ukázka:
 
         Connect-AzureRmAccount
@@ -68,7 +68,7 @@ Můžete nakonfigurovat jeden, dva nebo všechny tři partnerské vztahy (soukro
 
         Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
 
-4. Potom použijte následující rutinu k předplatnému Azure přidat do prostředí PowerShell pro model nasazení classic.
+4. V dalším kroku použijte následující rutinu k vašemu předplatnému Azure přidat do prostředí PowerShell pro model nasazení classic.
 
         Add-AzureAccount
 
@@ -79,7 +79,7 @@ Tato část obsahuje pokyny, jak vytvořit, získat, aktualizovat a odstranit ko
 ### <a name="to-create-azure-private-peering"></a>Vytvoření soukromého partnerského vztahu Azure
 1. **Naimportujte modul Powershellu pro ExpressRoute.**
    
-    Pokud chcete začít používat rutiny pro ExpressRoute, je nutné naimportovat moduly Azure a ExpressRoute do relace prostředí PowerShell. Spusťte následující příkazy a naimportovat moduly Azure a ExpressRoute do relace prostředí PowerShell. Verze se může lišit.    
+    Pokud chcete začít používat rutiny pro ExpressRoute, je nutné naimportovat moduly Azure a ExpressRoute do relace prostředí PowerShell. Spusťte následující příkazy pro import modulů Azure a ExpressRoute do relace prostředí PowerShell. Verze se může lišit.    
    
         Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\Azure\Azure.psd1'
         Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\ExpressRoute\ExpressRoute.psd1'
@@ -101,7 +101,7 @@ Tato část obsahuje pokyny, jak vytvořit, získat, aktualizovat a odstranit ko
         Sku                              : Standard
         Status                           : Enabled
    
-    Ujistěte se, že je okruh zobrazuje jako zajištěno a povoleno. Pokud tomu tak není, fungovat u svého poskytovatele připojení získat váš okruh. požadovaný stav a stav.
+    Ujistěte se, že je okruh ukazovat zřízená a povolen. Pokud ne, spolupracovat se svým poskytovatelem připojení zobrazíte váš okruh k požadovanému stavu a stavu.
    
         ServiceProviderProvisioningState : Provisioned
         Status                           : Enabled
@@ -117,11 +117,11 @@ Tato část obsahuje pokyny, jak vytvořit, získat, aktualizovat a odstranit ko
      
     Spuštěním následující rutiny můžete nakonfigurovat soukromý partnerský vztah Azure pro váš okruh.
      
-        Nové AzureBGPPeering - AccessType privátní - klíč ServiceKey "***" - PrimaryPeerSubnet "10.0.0.0/30" - SecondaryPeerSubnet "10.0.0.4/30" - PeerAsn 1234 - VlanId 100
+        New-AzureBGPPeering - AccessType privátní – klíč ServiceKey "***" - PrimaryPeerSubnet "10.0.0.0/30" - SecondaryPeerSubnet "10.0.0.4/30" - PeerAsn 1234 - VlanId 100
      
     Pokud se rozhodnete použít hodnotu hash MD5, můžete použít následující rutinu.
      
-        Nové AzureBGPPeering - AccessType privátní - klíč ServiceKey "***" - PrimaryPeerSubnet "10.0.0.0/30" - SecondaryPeerSubnet "10.0.0.4/30" - PeerAsn 1234 - VlanId 100 - SharedKey "A1B2C3D4"
+        New-AzureBGPPeering - AccessType privátní – klíč ServiceKey "***" - PrimaryPeerSubnet "10.0.0.0/30" - SecondaryPeerSubnet "10.0.0.4/30" - PeerAsn 1234 - VlanId 100 - SharedKey "A1B2C3D4"
      
      > [!IMPORTANT]
      > Ujistěte se, že své číslo AS zadáváte jako partnerské číslo ASN, ne zákaznické číslo ASN.
@@ -169,7 +169,7 @@ Tato část obsahuje pokyny, jak vytvořit, získat, aktualizovat a odstranit ko
 ### <a name="to-create-azure-public-peering"></a>Vytvoření veřejného partnerského vztahu Azure
 1. **Naimportujte modul Powershellu pro ExpressRoute.**
    
-    Pokud chcete začít používat rutiny pro ExpressRoute, je nutné naimportovat moduly Azure a ExpressRoute do relace prostředí PowerShell. Spusťte následující příkazy a naimportovat moduly Azure a ExpressRoute do relace prostředí PowerShell. Verze se může lišit.   
+    Pokud chcete začít používat rutiny pro ExpressRoute, je nutné naimportovat moduly Azure a ExpressRoute do relace prostředí PowerShell. Spusťte následující příkazy pro import modulů Azure a ExpressRoute do relace prostředí PowerShell. Verze se může lišit.   
    
         Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\Azure\Azure.psd1'
         Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\ExpressRoute\ExpressRoute.psd1'
@@ -191,7 +191,7 @@ Tato část obsahuje pokyny, jak vytvořit, získat, aktualizovat a odstranit ko
         Sku                              : Standard
         Status                           : Enabled
    
-    Ujistěte se, že je okruh zobrazuje jako zajištěno a povoleno. Pokud tomu tak není, fungovat u svého poskytovatele připojení získat váš okruh. požadovaný stav a stav.
+    Ujistěte se, že je okruh ukazovat zřízená a povolen. Pokud ne, spolupracovat se svým poskytovatelem připojení zobrazíte váš okruh k požadovanému stavu a stavu.
    
         ServiceProviderProvisioningState : Provisioned
         Status                           : Enabled
@@ -207,11 +207,11 @@ Tato část obsahuje pokyny, jak vytvořit, získat, aktualizovat a odstranit ko
      
     Spuštěním následující rutiny můžete nakonfigurovat veřejný partnerský vztah Azure pro váš okruh.
      
-        Nové AzureBGPPeering - AccessType veřejný - klíč ServiceKey "***" - PrimaryPeerSubnet "131.107.0.0/30" - SecondaryPeerSubnet "131.107.0.4/30" - PeerAsn 1234 - VlanId 200
+        New-AzureBGPPeering - AccessType veřejné – klíč ServiceKey "***" - PrimaryPeerSubnet "131.107.0.0/30" - SecondaryPeerSubnet "131.107.0.4/30" - PeerAsn 1234 - VlanId 200
      
     Pokud se rozhodnete použít hodnotu hash MD5, můžete použít následující rutinu.
      
-        Nové AzureBGPPeering - AccessType veřejný - klíč ServiceKey "***" - PrimaryPeerSubnet "131.107.0.0/30" - SecondaryPeerSubnet "131.107.0.4/30" - PeerAsn 1234 - VlanId 200 - SharedKey "A1B2C3D4"
+        New-AzureBGPPeering - AccessType veřejné – klíč ServiceKey "***" - PrimaryPeerSubnet "131.107.0.0/30" - SecondaryPeerSubnet "131.107.0.4/30" - PeerAsn 1234 - VlanId 200 - SharedKey "A1B2C3D4"
      
      > [!IMPORTANT]
      > Ujistěte se, že své číslo AS zadáváte jako partnerské číslo ASN, a ne zákaznické číslo ASN.
@@ -255,7 +255,7 @@ Tato část obsahuje pokyny, jak vytvořit, získat, aktualizovat a odstranit ko
 ### <a name="to-create-microsoft-peering"></a>Vytvoření partnerského vztahu Microsoftu
 1. **Naimportujte modul Powershellu pro ExpressRoute.**
    
-    Pokud chcete začít používat rutiny pro ExpressRoute, je nutné naimportovat moduly Azure a ExpressRoute do relace prostředí PowerShell. Spusťte následující příkazy a naimportovat moduly Azure a ExpressRoute do relace prostředí PowerShell. Verze se může lišit.   
+    Pokud chcete začít používat rutiny pro ExpressRoute, je nutné naimportovat moduly Azure a ExpressRoute do relace prostředí PowerShell. Spusťte následující příkazy pro import modulů Azure a ExpressRoute do relace prostředí PowerShell. Verze se může lišit.   
    
         Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\Azure\Azure.psd1'
         Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\ExpressRoute\ExpressRoute.psd1'
@@ -264,7 +264,7 @@ Tato část obsahuje pokyny, jak vytvořit, získat, aktualizovat a odstranit ko
     Podle pokynů vytvořte [okruh ExpressRoute](expressroute-howto-circuit-classic.md) a mějte ho zřízený poskytovatelem připojení. Pokud poskytovatel připojení nabízí spravované služby vrstvy 3, můžete poskytovatele připojení požádat, aby povolil soukromý partnerský vztah Azure za vás. V takovém případě nebudete muset postupovat podle pokynů uvedených v dalších částech. Pokud ale poskytovatel připojení nespravuje směrování, po vytvoření okruhu postupujte podle pokynů dál.
 3. **Zkontrolujte okruh ExpressRoute a ověřte, že je zřízený**
    
-    Nejdřív musíte zkontrolovat, jestli okruh ExpressRoute je ve stavu zajištěno a povoleno.
+    Nejdřív musíte zkontrolovat, jestli je okruh ExpressRoute ve stavu zřízená a povolen.
    
         PS C:\> Get-AzureDedicatedCircuit -ServiceKey "*********************************"
    
@@ -277,11 +277,11 @@ Tato část obsahuje pokyny, jak vytvořit, získat, aktualizovat a odstranit ko
         Sku                              : Standard
         Status                           : Enabled
    
-    Ujistěte se, že je okruh zobrazuje jako zajištěno a povoleno. Pokud tomu tak není, fungovat u svého poskytovatele připojení získat váš okruh. požadovaný stav a stav.
+    Ujistěte se, že je okruh ukazovat zřízená a povolen. Pokud ne, spolupracovat se svým poskytovatelem připojení zobrazíte váš okruh k požadovanému stavu a stavu.
    
         ServiceProviderProvisioningState : Provisioned
         Status                           : Enabled
-4. **Nakonfigurujte partnerský vztah Microsoftu pro okruh**
+4. **Konfigurace partnerského vztahu Microsoftu pro okruh**
    
     Před pokračováním se ujistěte, že máte k dispozici následující informace.
    
@@ -294,9 +294,9 @@ Tato část obsahuje pokyny, jak vytvořit, získat, aktualizovat a odstranit ko
    * Název registru směrování: Můžete zadat RIR/IRR, kde jsou předpony a číslo AS registrované.
    * Hodnota hash MD5, pokud se ji rozhodnete použít. **Tato položka je nepovinná.**
      
-    Spuštěním následující rutiny můžete nakonfigurovat Microsoft pering pro váš okruh.
+    Spuštěním následující rutiny můžete nakonfigurovat pering Microsoftu pro váš okruh
      
-        Nové AzureBGPPeering - AccessType Microsoft - klíč ServiceKey "***" "131.107.0.0/30" - PrimaryPeerSubnet - SecondaryPeerSubnet "131.107.0.4/30" - VlanId 300 - PeerAsn 1234 - CustomerAsn. 2245 - AdvertisedPublicPrefixes " 123.0.0.0/30 "- RoutingRegistryName"ARIN"- SharedKey"A1B2C3D4"
+        Microsoft New-AzureBGPPeering - AccessType – klíč ServiceKey "***" - PrimaryPeerSubnet "131.107.0.0/30" - SecondaryPeerSubnet - PeerAsn 1234 - VlanId 300 "131.107.0.4/30" - CustomerAsn. 2245 - AdvertisedPublicPrefixes " 123.0.0.0/30 "- RoutingRegistryName"ARIN"- SharedKey"A1B2C3D4"
 
 ### <a name="to-view-microsoft-peering-details"></a>Zobrazení podrobností partnerského vztahu Microsoftu
 Můžete získat podrobnosti o konfiguraci pomocí následující rutiny.
@@ -330,6 +330,6 @@ Konfiguraci partnerského vztahu můžete odebrat spuštěním následující ru
 ## <a name="next-steps"></a>Další postup
 Dále [propojení virtuální sítě k okruhu ExpressRoute](expressroute-howto-linkvnet-classic.md).
 
-* Další informace o pracovních postupech najdete v tématu [pracovních postupech](expressroute-workflows.md).
+* Další informace o pracovních postupech najdete v tématu [pracovní postupy ExpressRoute](expressroute-workflows.md).
 * Další informace o partnerském vztahu okruhu najdete v tématu [Okruhy ExpressRoute a domény směrování](expressroute-circuit-peerings.md).
 

@@ -25,12 +25,14 @@
       href: QuickStarts/Python.md
     - name: Ruby
       href: QuickStarts/Ruby.md
+- name: Kurzy
+  items:
+    - name: 'C#'
+      href: Tutorials/FaceAPIinCSharpTutorial.md
 - name: Průvodce postupy
   items:
     - name: První aplikace rozhraní API pro rozpoznávání tváře
       items:
-        - name: 'C#'
-          href: Tutorials/FaceAPIinCSharpTutorial.md
         - name: Java pro Android
           href: Tutorials/FaceAPIinJavaForAndroidTutorial.md
         - name: Python

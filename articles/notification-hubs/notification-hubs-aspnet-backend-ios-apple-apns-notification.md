@@ -1,5 +1,5 @@
 ---
-title: Nabízená oznámení pro konkrétní uživatele pomocí Azure Notification Hubs | Microsoft Docs
+title: Nabízená oznámení odesílaná konkrétním uživatelům pomocí Azure Notification Hubs | Dokumentace Microsoftu
 description: Zjistěte, jak pomocí služby Azure Notification Hubs posílat nabízená oznámení konkrétním uživatelům.
 documentationcenter: ios
 author: dimazaid
@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 04/13/2018
 ms.author: dimazaid
 ms.openlocfilehash: 36d70c40e3de7bd38cdfc566da37060cdcea9060
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
+ms.lasthandoff: 07/10/2018
 ms.locfileid: "33777531"
 ---
-# <a name="tutorial-push-notifications-to-specific-users-using-azure-notification-hubs"></a>Kurz: Nabízená oznámení pro konkrétní uživatele pomocí Azure Notification Hubs
+# <a name="tutorial-push-notifications-to-specific-users-using-azure-notification-hubs"></a>Kurz: Nabízená oznámení odesílaná konkrétním uživatelům pomocí Azure Notification Hubs
 [!INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
 
-V tomto kurzu se dozvíte, jak pomocí služby Azure Notification Hubs posílat nabízená oznámení konkrétním uživatelům aplikace na konkrétním zařízení. Backendu ASP.NET WebAPI slouží k ověřování klientů a ke generování oznámení, jak je znázorněno v tématu pokyny [registrace z back-end aplikace](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend).
+V tomto kurzu se dozvíte, jak pomocí služby Azure Notification Hubs posílat nabízená oznámení konkrétním uživatelům aplikace na konkrétním zařízení. Back-endu ASP.NET WebAPI se používá k ověřování klientů a generování oznámení, jak je znázorněno v tomto tématu pokyny [registrace z back-endu aplikace](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend).
 
 V tomto kurzu provedete následující kroky:
 
@@ -34,37 +34,37 @@ V tomto kurzu provedete následující kroky:
 > * Registrace oznámení pomocí back-endu WebAPI
 > * Odesílání oznámení z back-endu WebAPI
 > * Publikování nového back-endu WebAPI
-> * Upravit aplikaci s iOS
+> * Upravit aplikaci pro iOS
 > * Testování aplikace
 
-## <a name="prerequisites"></a>Požadované součásti
-V tomto kurzu se předpokládá, že jste vytvořili a nakonfigurovali vaše Centrum oznámení, jak je popsáno v [Začínáme s Notification Hubs (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md). V tomto kurzu je také předpokladem pro [zabezpečení Push (iOS)](notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md) kurzu.
-Pokud chcete použít jako back-end služby Mobile Apps, najdete v článku [mobilní aplikace začít pracovat s nabízené](../app-service-mobile/app-service-mobile-ios-get-started-push.md).
+## <a name="prerequisites"></a>Požadavky
+Tento kurz předpokládá, že jste vytvořili a konfiguraci centra oznámení, jak je popsáno v [Začínáme se službou Notification Hubs (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md). Tento kurz je také předpokladem pro [zabezpečení Push (iOS)](notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md) kurzu.
+Pokud chcete použít jako back-end službu Mobile Apps, najdete v článku [Mobile Apps Začínáme s nabízenými oznámeními](../app-service-mobile/app-service-mobile-ios-get-started-push.md).
 
 [!INCLUDE [notification-hubs-aspnet-backend-notifyusers](../../includes/notification-hubs-aspnet-backend-notifyusers.md)]
 
-## <a name="modify-your-ios-app"></a>Upravit aplikaci s iOS
-1. Otevřete aplikaci zobrazení jednu stránku, kterou jste vytvořili v [Začínáme s Notification Hubs (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md) kurzu.
+## <a name="modify-your-ios-app"></a>Upravit aplikaci pro iOS
+1. Otevřete zobrazení jednostránkové aplikace vytvořené v [Začínáme se službou Notification Hubs (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md) kurzu.
    
    > [!NOTE]
-   > Této části se předpokládá, že váš projekt je nakonfigurovaný s názvem prázdné organizace. Pokud ne, budete muset předřazení název vaší organizace na všechny názvy tříd.
+   > V této části se předpokládá, že váš projekt je nakonfigurovaný s názvem prázdné organizace. V opačném případě budete muset název vaší organizace na všechny názvy tříd.
    > 
    > 
-2. V `Main.storyboard`, přidejte součásti ukazuje snímek obrazovky z objektu knihovny.
+2. V `Main.storyboard`, přidejte součásti je znázorněno na snímku obrazovky z objektu knihovny.
    
     ![][1]
    
-   * **Uživatelské jméno**: UITextField A s zástupný text *zadejte uživatelské jméno*bezprostředně pod odesílání výsledky popisku a omezená na levý a pravý okraj a pod návěští odesílání výsledky.
-   * **Heslo**: UITextField A s zástupný text *zadejte heslo*, bezprostředně pod uživatelské jméno textové pole a omezené levý a pravý okraj a pod textové pole uživatelské jméno. Zkontrolujte **zabezpečení zadávání textu** možnost v atributu Inspector, v části *vrátit klíč*.
-   * **Přihlaste se**: A UIButton s názvem bez přípony bezprostředně pod textové pole heslo a zrušte zaškrtnutí políčka **povoleno** možnost Inspector atributy, v části *obsahu ovládacího prvku*
-   * **WNS**: popisek a přepínače, které umožňují odesílání oznámení služby oznámení Windows, pokud ji byla nastavena na rozbočovači. Najdete v článku [Windows Začínáme](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) kurzu.
-   * **GCM**: popisek a přepínače, které umožňují odesílání oznámení pro Google Cloud Messaging, pokud ji byla nastavena na rozbočovači. V tématu [Začínáme Android](notification-hubs-android-push-notification-google-gcm-get-started.md) kurzu.
-   * **APNS**: štítek a přepínače povolíte odesílání oznámení do služby Apple platformy oznámení.
-   * **Příjemce Username:A** UITextField s zástupný text *značky uživatelské jméno příjemce*, bezprostředně pod GCM popisku a omezené levý a pravý okraj a pod popisek GCM.
+   * **Uživatelské jméno**: UITextField A zástupným textem *zadejte uživatelské jméno*bezprostředně pod odeslat výsledky označovat popisky a omezené na levý a pravý okraj a pod popisek výsledky odeslat.
+   * **Heslo**: UITextField A zástupným textem *zadat heslo*, bezprostředně pod uživatelské jméno textové pole a omezené na levý a pravý okraj a pod textové pole uživatelského jména. Zkontrolujte **zabezpečený vstupní Text** možnost v inspektoru atributu v části *vrátit klíč*.
+   * **Přihlaste se**: tlačítka uživatelského rozhraní A označená bezprostředně pod textové pole hesla a zrušte zaškrtnutí políčka **povoleno** možnost v inspektoru atributy v části *obsah ovládacího prvku*
+   * **Wns –**: popisek a přepínač umožnit odesílání oznámení služby oznámení Windows, pokud je nastavena na rozbočovači. Zobrazit [Začínáme se službou Windows](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) kurzu.
+   * **Gcm –**: popisek a přepínač umožnit odesílání oznámení do Google Cloud Messaging, pokud je nastavena na rozbočovači. Zobrazit [Začínáme s Androidem](notification-hubs-android-push-notification-google-gcm-get-started.md) kurzu.
+   * **APNS**: popisek a přepínač umožnit odesílání oznámení do služby Apple Notification platformy.
+   * **Příjemce Username:A** UITextField zástupným textem *značky uživatelského jména příjemců*, bezprostředně pod služby GCM označovat popisky a omezené na levý a pravý okraj a pod popisek služby GCM.
 
-    Některé součásti byly přidány v [Začínáme s Notification Hubs (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md) kurzu.
+    Byly přidány některé součásti [Začínáme se službou Notification Hubs (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md) kurzu.
 
-1. **CTRL** přetáhněte z komponenty v zobrazení ViewController.h a přidejte tyto nové výstupy.
+1. **CTRL** přetáhněte z komponent v zobrazení ViewController.h a přidejte tyto nové výstupy.
    
     ```obj-c
         @property (weak, nonatomic) IBOutlet UITextField *UsernameField;
@@ -83,12 +83,12 @@ Pokud chcete použít jako back-end služby Mobile Apps, najdete v článku [mob
    
         - (IBAction)LogInAction:(id)sender;
     ```
-2. V ViewController.h, přidejte následující `#define` po příkazy pro import. Nahraďte *< Zadejte koncový bod vašeho back-end\>*  zástupný symbol cílová adresa URL můžete použít k nasazení vašeho back-end aplikace v předchozí části. Příklad: *http://you_backend.azurewebsites.net*.
+2. V souboru ViewController.h, přidejte následující `#define` po příkazech pro import. Náhradní *< Zadejte koncový bod vašeho back-endu\>*  zástupný symbol s cílovou adresu URL jste použili k nasazení back-endu aplikace v předchozí části. Příklad: *http://you_backend.azurewebsites.net*.
    
     ```obj-c
         #define BACKEND_ENDPOINT @"<Enter Your Backend Endpoint>"
     ```
-3. V projektu, vytvořte novou **Touch kakao třída** s názvem **RegisterClient** rozhraní s ASP.NET back-end jste vytvořili. Vytvořte třídu, která dědí z `NSObject`. V RegisterClient.h přidejte následující kód.
+3. Ve vašem projektu vytvořte nový **třída Cocoa Touch** s názvem **RegisterClient** rozhraní s ASP.NET back endu jste vytvořili. Vytvořte třídu, která dědí z `NSObject`. V RegisterClient.h přidejte následující kód.
 
     ```obj-c   
         @interface RegisterClient : NSObject
@@ -102,7 +102,7 @@ Pokud chcete použít jako back-end služby Mobile Apps, najdete v článku [mob
    
         @end
     ```
-4. V `RegisterClient.m`, aktualizovat `@interface` části:
+4. V `RegisterClient.m`, aktualizujte `@interface` části:
 
     ```obj-c   
         @interface RegisterClient ()
@@ -119,7 +119,7 @@ Pokud chcete použít jako back-end služby Mobile Apps, najdete v článku [mob
    
         @end
     ```
-5. Nahraďte `@implementation` část v RegisterClient.m následujícím kódem:
+5. Nahradit `@implementation` kapitoly RegisterClient.m následujícím kódem:
 
     ```obj-c
         @implementation RegisterClient
@@ -280,11 +280,11 @@ Pokud chcete použít jako back-end služby Mobile Apps, najdete v článku [mob
         @end
     ```
 
-    Tento kód implementuje logiku popsané v článku pokyny [registrace z back-end aplikace](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend) pomocí NSURLSession k provedení REST zavolá na váš back-end aplikace a NSUserDefaults ukládat místně registrationId vrácené Centrum oznámení.
+    Tento kód implementuje logiku popsaných v článku pokyny [registrace z back-endu aplikace](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend) provést REST pomocí NSURLSession volání do back-endu aplikace a vrácené NSUserDefaults místně uložit registrationId Centrum oznámení.
 
-    Tato třída vyžaduje, aby jeho vlastnost **authorizationHeader** nastavit správné fungování. Tato vlastnost je nastavena **ViewController** třída po přihlášení.
+    Tato třída vyžaduje vlastnost **authorizationHeader** nastavit, aby vše správně fungovalo. Tato vlastnost nastavena **ViewController** třídy po přihlášení.
 
-1. V ViewController.h, přidejte `#import` příkaz pro RegisterClient.h. Pak přidejte deklaraci pro token zařízení a odkaz na `RegisterClient` instance v `@interface` části:
+1. V ViewController.h, přidejte `#import` příkaz pro RegisterClient.h. Pak přidejte deklaraci pro token zařízení a odkazy na `RegisterClient` instance v `@interface` části:
 
     ```obj-c   
         #import "RegisterClient.h"
@@ -292,7 +292,7 @@ Pokud chcete použít jako back-end služby Mobile Apps, najdete v článku [mob
         @property (strong, nonatomic) NSData* deviceToken;
         @property (strong, nonatomic) RegisterClient* registerClient;
     ```
-2. V ViewController.m, přidejte deklaraci soukromá metoda v `@interface` části:
+2. V ViewController.m, přidejte deklaraci privátní metody v `@interface` části:
    
     ```obj-c
         @interface ViewController () <UITextFieldDelegate, NSURLConnectionDataDelegate, NSXMLParserDelegate>
@@ -305,8 +305,8 @@ Pokud chcete použít jako back-end služby Mobile Apps, najdete v článku [mob
     ```
 
     > [!NOTE]
-    > Následující fragment kódu není schéma zabezpečeného ověřování, doporučujeme nahradit implementace **createAndSetAuthenticationHeaderWithUsername:AndPassword:** s vaší konkrétní ověřovací mechanismus, který generuje ověřovací token pro registraci klienta třídu, například OAuth, služby Active Directory.
-1. Potom v `@implementation` části `ViewController.m`, přidejte následující kód, který přidá implementaci nastavení hlavičku tokenu a ověření zařízení.
+    > Následující fragment kódu není schéma zabezpečeného ověřování, musíte nahradit provádění **createAndSetAuthenticationHeaderWithUsername:AndPassword:** s konkrétní ověřovací mechanismus, který vygeneruje ověřovací token využívat třída registru klienta, třeba OAuth, Active Directory.
+1. Pak v `@implementation` část `ViewController.m`, přidejte následující kód, který se přidá implementace pro nastavení hlavičce tokenu a ověření zařízení.
    
     ```obj-c
         -(void) setDeviceToken: (NSData*) deviceToken
@@ -333,8 +333,8 @@ Pokud chcete použít jako back-end služby Mobile Apps, najdete v článku [mob
         }
     ```
    
-    Všimněte si, jak nastavení token zařízení povolí tlačítko přihlásit. Je to proto, že v rámci akce přihlášení se zaregistruje řadiče zobrazení pro nabízená oznámení s back-end aplikace. Proto nechcete, aby akce přihlášení být přístupné, dokud token zařízení správně nastavit. Přihlášení z registraci nabízených můžete oddělit tak dlouho, dokud první se stane před jeho.
-2. V ViewController.m, použijte následující fragmenty implementovat metodu akce pro vaše **protokolu v** tlačítko a metody k odeslání zprávy oznámení pomocí ASP.NET back-end.
+    Všimněte si, jak nastavení token zařízení povolí tlačítko přihlásit. Je to proto, že jako součást přihlášení akci, kontroler zobrazení zaregistruje pro nabízená oznámení s back-endu aplikace. Proto nechcete, aby akce přihlášení být přístupné, dokud token zařízení je správně nastavený. Přihlášení z registrace nabízených oznámení můžete oddělit jako první se provede před ten.
+2. V ViewController.m, použijte následující fragmenty kódu pro implementaci metody akce pro vaše **přihlásit** tlačítko a metody k odeslání zprávy oznámení pomocí back-endu ASP.NET.
    
     ```obj-c
        - (IBAction)LogInAction:(id)sender {
@@ -409,7 +409,7 @@ Pokud chcete použít jako back-end služby Mobile Apps, najdete v článku [mob
         }
     ```
 
-1. Akce pro aktualizace **odeslat oznámení** tlačítko pomocí ASP.NET back-end a poslat jakékoli PNS povoleno přepínač.
+1. Akce pro aktualizace **odeslat oznámení** tlačítko použít back-endu ASP.NET a odesílat na jakékoli systému oznámení platformy, zajišťuje přepínač.
 
     ```obj-c
         - (IBAction)SendNotificationMessage:(id)sender
@@ -435,7 +435,7 @@ Pokud chcete použít jako back-end služby Mobile Apps, najdete v článku [mob
         }
     ```
 
-1. Ve funkci **ViewDidLoad**, přidejte následující instance RegisterClient instance a nastavit delegáta u textových polí.
+1. Ve funkci **ViewDidLoad**, přidejte následující k vytvoření instance RegisterClient instance a nastavit delegáta pro textová pole.
    
     ```obj-c
        self.UsernameField.delegate = self;
@@ -443,7 +443,7 @@ Pokud chcete použít jako back-end služby Mobile Apps, najdete v článku [mob
        self.RecipientField.delegate = self;
        self.registerClient = [[RegisterClient alloc] initWithEndpoint:BACKEND_ENDPOINT];
     ```
-2. Nyní ve **AppDelegate.m**, odeberte všechny obsah metody `application:didRegisterForPushNotificationWithDeviceToken:` a nahraďte ji následujícím a ujistěte se, že řadiče zobrazení obsahuje nejnovější token zařízení načíst ze služby APN:
+2. Teď v **AppDelegate.m**, odeberte všechny obsah metody `application:didRegisterForPushNotificationWithDeviceToken:` a nahraďte ho následujícím abyste měli jistotu, že kontroler zobrazení obsahuje nejnovější token zařízení získaných APNs:
    
     ```obj-c
        // Add import to the top of the file
@@ -456,7 +456,7 @@ Pokud chcete použít jako back-end služby Mobile Apps, najdete v článku [mob
            rvc.deviceToken = deviceToken;
        }
     ```
-3. Nakonec v **AppDelegate.m**, zajistěte, aby byla následující metodu:
+3. Nakonec v **AppDelegate.m**, ujistěte se, že máte následující metodu:
 
     ```obj-c   
        - (void)application:(UIApplication *)application didReceiveRemoteNotification: (NSDictionary *)userInfo {
@@ -466,15 +466,15 @@ Pokud chcete použít jako back-end služby Mobile Apps, najdete v článku [mob
     ```
 
 ## <a name="test-the-application"></a>Testování aplikace
-1. V XCode spusťte aplikaci na fyzickém zařízení iOS (nabízených oznámení v simulátoru nefungují).
-2. V aplikaci pro iOS uživatelského rozhraní zadejte stejnou hodnotu pro uživatelské jméno a heslo. Pak klikněte na tlačítko **protokolu v**.
+1. V XCode spusťte aplikaci na fyzickém zařízení iOS (oznámení nebude fungovat v simulátoru push).
+2. V uživatelském rozhraní aplikací iOS zadejte stejnou hodnotu pro uživatelské jméno a heslo. Pak klikněte na tlačítko **přihlásit**.
    
     ![][2]
-3. Měli byste vidět vyskakovací okno s informacemi o registraci úspěch. Klikněte na **OK**.
+3. Měli byste vidět automaticky otevírané okno vás informuje o úspěšné registraci. Klikněte na **OK**.
    
     ![][3]
-4. V **značky uživatelské jméno příjemce* textové pole, zadejte název značky uživatele použít s registrací z jiného zařízení.
-5. Zadejte zprávu oznámení a klikněte na tlačítko **odeslat oznámení**. Jenom zařízení, která mají registrace pomocí značky jméno příjemce uživatele přijímat oznámení. Pouze odesláním pro tyto uživatele.
+4. V **značky uživatelského jména příjemců* textové pole, zadejte název značky uživatele použít s registrací z jiného zařízení.
+5. Zadejte zprávu oznámení a klikněte na tlačítko **odeslat oznámení**. Jenom zařízení, které mají registrace se značkou jméno příjemce uživatele zpráva oznámení. To je odeslán, pouze na tyto uživatele.
    
     ![][4]
 

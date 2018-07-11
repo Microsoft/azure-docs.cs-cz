@@ -55,10 +55,6 @@
           href: tutorial-autoscale-powershell.md
         - name: Šablona
           href: tutorial-autoscale-template.md
-    - name: Nasazení aplikací na do škálovací sady virtuálních počítačů Azure s vlastní imagí Packeru
-      items:
-        - name: Azure CLI 2.0
-          href: 'https://docs.microsoft.com/learn/deploy-custom-vmss-app/index'
 - name: Ukázky
   items:
     - name: Azure CLI 2.0

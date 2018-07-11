@@ -5,15 +5,15 @@ services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/22/2018
+ms.date: 07/06/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 36d59638984c31a98067b95fded9626f31a7f278
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
-ms.translationtype: HT
+ms.openlocfilehash: ac8686d0ea5704492bfc2e08972a2f70c9b34c43
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "34669345"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37906815"
 ---
 Virtuální počítače Azure řady H-series je nejnovější vydání v vysokovýkonné výpočetní prostředí, že virtuální počítače zaměřené na potřeby dynamiky, jako je molekulární modelování, výpočty dynamiky tekutin a. Tyto 8 a 16 virtuálních procesorů počítače jsou postavené na procesorů Intel Haswell E5-2667 V3 procesoru technologie nabízejí paměti DDR4 a dočasné úložiště založené na SSD. 
 
@@ -24,6 +24,10 @@ Virtuální počítače Azure řady H-series je nejnovější vydání v vysokov
 ## <a name="h-series"></a>H-series
 
 ACU: 290–300
+
+Storage úrovně Premium: Není podporováno.
+
+Premium Storage ukládání do mezipaměti: Není podporováno
 
 | Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost disku: IOPS | Maximální počet síťových karet |
 | --- | --- | --- | --- | --- | --- | --- |
