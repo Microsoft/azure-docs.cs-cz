@@ -1,6 +1,6 @@
 ---
-title: Přidání ověřování do aplikace pro univerzální platformu Windows (UWP) | Microsoft Docs
-description: 'Naučte se používat Azure App Service Mobile Apps ověřovat uživatele vaší aplikace univerzální platformu Windows (UWP) pomocí různých zprostředkovatelů identity, včetně: AAD, Google, Facebook, Twitter a společnosti Microsoft.'
+title: Přidání ověřování do aplikace pro univerzální platformu Windows (UPW) | Dokumentace Microsoftu
+description: 'Zjistěte, jak používat Azure App Service Mobile Apps k ověřování uživatelů vaší aplikace univerzální platformy Windows (UPW) pomocí různých poskytovatelů identit, včetně: AAD, Google, Facebook, Twitter a Microsoft.'
 services: app-service\mobile
 documentationcenter: windows
 author: conceptdev
@@ -15,31 +15,31 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: panarasi
 ms.openlocfilehash: 4cc597f8aca13445034c8a1691b41018d4d9bc4b
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2018
-ms.locfileid: "27592140"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38306570"
 ---
 # <a name="add-authentication-to-your-windows-app"></a>Přidání ověřování do aplikace pro Windows
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
-Toto téma ukazuje, jak přidat cloudové ověřování do mobilní aplikace. V tomto kurzu jste přidání ověřování do projektu pro rychlý start univerzální platformu Windows (UWP) pro mobilní aplikace pomocí zprostředkovatele identity, která je podporována službou Azure App Service. Po se úspěšně ověří a autorizuje váš back-end mobilní aplikace, se zobrazí hodnota ID uživatele.
+Toto téma ukazuje, jak přidat cloudové ověřování do vaší mobilní aplikace. V tomto kurzu přidáte ověřování do projektu univerzální platformu Windows (UPW) pomocí zprostředkovatele identity, který je podporovaný službou Azure App Service Mobile Apps. Po se úspěšně ověří a autorizuje back-endu mobilní aplikace, zobrazí se hodnota ID uživatele.
 
-V tomto kurzu vychází z rychlého startu mobilní aplikace. Musíte nejdřív dokončit tento kurz [Začínáme s Mobile Apps](app-service-mobile-windows-store-dotnet-get-started.md).
+Tento kurz je založený na rychlý start Mobile Apps. Musíte nejdřív dokončit tento kurz [Začínáme s Mobile Apps](app-service-mobile-windows-store-dotnet-get-started.md).
 
-## <a name="register"></a>Registrace aplikace pro ověřování a nakonfigurovat App Service
+## <a name="register"></a>Registrace aplikace pro ověřování a konfigurace služby App Service
 [!INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
 
-## <a name="redirecturl"></a>Přidání aplikace do adresy URL pro povolené externí přesměrování
+## <a name="redirecturl"></a>Přidání aplikace do adresy URL pro povolené externího přesměrování
 
-Zabezpečené ověřování vyžaduje, můžete definovat nové schéma adresy URL pro vaši aplikaci. To umožňuje ověřování systému přesměrovat zpět do aplikace po dokončení procesu ověřování. V tomto kurzu používáme schématu adresy URL _appname_ v průběhu. Můžete však použít žádné schéma adresy URL, které zvolíte. Musí být jedinečné pro mobilní aplikace. Chcete povolit přesměrování na straně serveru:
+Zabezpečené ověřování, musíte definovat nové schéma adresy URL pro vaši aplikaci. To umožňuje ověřování systému přesměrovat zpět do aplikace po dokončení procesu ověřování. V tomto kurzu používáme schéma adresy URL _appname_ v průběhu. Můžete ale použít jakékoli schéma adresy URL, kterou zvolíte. Musí být jedinečné pro vaši mobilní aplikaci. Pokud chcete povolit přesměrování na straně serveru:
 
-1. V [portál Azure] vyberte App Service.
+1. Na [webu Azure Portal] vyberte službu App Service.
 
-2. Klikněte **ověřování / autorizace** možnost nabídky.
+2. Klikněte na tlačítko **ověřování / autorizace** nabídky.
 
-3. V **povoleno externí adres URL pro přesměrování**, zadejte `url_scheme_of_your_app://easyauth.callback`.  **Url_scheme_of_your_app** v tento řetězec je schéma adresy URL pro mobilní aplikace.  Měl by splňovat specifikaci normální adresu URL pro určitý protokol (používejte písmena a čísla pouze a začněte s písmenem).  Měli byste si poznamenat řetězce, který zvolíte, jako je třeba upravit kód mobilní aplikace s schéma adresy URL na několika místech.
+3. V **povolené externí adresy URL pro přesměrování**, zadejte `url_scheme_of_your_app://easyauth.callback`.  **Url_scheme_of_your_app** v tomto řetězci je schéma adresy URL pro vaši mobilní aplikaci.  Měla by odpovídat specifikaci normální adresu URL pro určitý protokol (použití písmena a čísla jenom a začíná písmenem).  By měl poznamenejte řetězce, který zvolíte, jako je třeba upravit kód mobilní aplikace s schéma adresy URL na několika místech.
 
 4. Klikněte na **OK**.
 
@@ -48,12 +48,12 @@ Zabezpečené ověřování vyžaduje, můžete definovat nové schéma adresy U
 ## <a name="permissions"></a>Omezit oprávnění k ověření uživatelé
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
-Nyní můžete ověřit, že byl zakázán anonymní přístup k vaší back-end. S projekt aplikace UPW nastavit jako projekt spuštění, nasazení a spuštění aplikace; Ověřte, že k neošetřené výjimce s stavový kód 401 (Neautorizováno) se vyvolá po spuštění aplikace. K tomu dojde, protože se aplikace pokusí o přístup k kódu mobilní aplikace jako neověřený uživatel, ale *TodoItem* tabulka nyní vyžaduje ověření.
+Teď můžete ověřit, že byl zakázán anonymní přístup k back-endu. Projekt aplikace UPW nastavit jako spouštěcí projekt nasazení a spuštění aplikace; Ověřte, že po spuštění aplikace je vyvolána neošetřená výjimka se stavovým kódem 401 (Neautorizováno). K tomu dojde, protože se aplikace pokusí o přístup k kód mobilní aplikace jako neověřený uživatel, ale *TodoItem* tabulka nyní vyžaduje ověřování.
 
-Potom aktualizujte aplikace k ověření uživatelů před vyžádáním prostředky z vaší služby App Service.
+V dalším kroku se aktualizace aplikace k ověření uživatelů před požadováním prostředky ze služby App Service.
 
 ## <a name="add-authentication"></a>Přidání ověřování do aplikace
-1. Aplikace UWP souboru MainPage.xaml.cs projektu a přidejte následující fragment kódu:
+1. Aplikace na UPW souboru MainPage.xaml.cs projektu a přidejte následující fragment kódu:
    
         // Define a member variable for storing the signed-in user. 
         private MobileServiceUser user;
@@ -86,8 +86,8 @@ Potom aktualizujte aplikace k ověření uživatelů před vyžádáním prostř
             return success;
         }
    
-    Tento kód ověřuje uživatele s přihlašovacími údaji, Facebook. Pokud používáte zprostředkovatele identity než Facebook, změňte hodnotu **MobileServiceAuthenticationProvider** výše na hodnotu pro poskytovatele.
-2. Nahraďte **OnNavigatedTo()** metoda v MainPage.xaml.cs. V dalším kroku přidáte **přihlášení** tlačítko na aplikaci, která aktivuje ověřování.
+    Tento kód se ověřuje uživatele přihlášení k Facebooku. Pokud používáte zprostředkovatelů identity než Facebook, změňte hodnotu vlastnosti **MobileServiceAuthenticationProvider** výše na hodnotu pro poskytovatele.
+2. Nahradit **OnNavigatedTo()** metoda v MainPage.xaml.cs. V dalším kroku přidáte **přihlášení** tlačítko aplikaci, která aktivuje ověřování.
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -111,7 +111,7 @@ Potom aktualizujte aplikace k ověření uživatelů před vyžádáním prostř
                 await RefreshTodoItems();
             }
         }
-4. Otevřete soubor projektu MainPage.xaml, vyhledejte elementu, který definuje **Uložit** tlačítko a nahraďte ji následujícím kódem:
+4. Otevřete soubor projektu souboru MainPage.xaml, vyhledejte element, který definuje **Uložit** tlačítko a nahraďte ho následujícím kódem:
    
         <Button Name="ButtonSave" Visibility="Collapsed" Margin="0,8,8,0" 
                 Click="ButtonSave_Click">
@@ -143,21 +143,21 @@ Potom aktualizujte aplikace k ověření uživatelů před vyžádáním prostř
             Window.Current.Activate();
             base.OnActivated(args);
         }
-6. Otevřete soubor Package.appxmanifest, přejděte na **deklarace**v **dostupné deklarace** rozevíracího seznamu vyberte **protokol** a klikněte na tlačítko **přidat** tlačítko. Teď nakonfigurovat **vlastnosti** z **protokol** deklarace. V **zobrazovaný název**, přidejte název si přejete zobrazit uživatelům vaší aplikace. V **název**, přidejte vaše {url_scheme_of_your_app}.
-7. Stisknutím klávesy F5 spusťte aplikaci, klikněte na tlačítko **přihlášení** tlačítko a přihlaste se k aplikaci pomocí zprostředkovatele identity vybrané. Po přihlášení s úspěšné aplikace běží bez chyb a je možné provést aktualizace dat a dotaz na váš back-end.
+6. Otevřete soubor Package.appxmanifest, přejděte na **deklarace**v **dostupné deklarace** rozevíracího seznamu vyberte **protokol** a klikněte na tlačítko **přidat** tlačítko. Teď nakonfigurovat **vlastnosti** z **protokol** deklarace. V **zobrazovaný název**, přidejte název, které chcete zobrazit uživatelům vaší aplikace. V **název**, přidat vaši {url_scheme_of_your_app}.
+7. Stisknutím klávesy F5 spusťte aplikaci, klikněte na tlačítko **přihlášení** tlačítko a přihlaste se k aplikaci pomocí zprostředkovatele identity zvolená. Po přihlášení úspěšné, aplikace běží bez chyb a je možné provést aktualizace dat a dotazování back-endu.
 
-## <a name="tokens"></a>Ukládání tokenu ověřování na straně klienta
-Předchozí příklad ukázal standardní přihlášení, která vyžaduje, aby klient kontaktovat poskytovatele identit a App Service při každém spuštění aplikace. Ne jenom je neefektivní, můžete spustit tuto metodu do využití-má vztah problémy mnoho zákazníků využít při spuštění aplikace ve stejnou dobu. Lepším řešením je ukládat do mezipaměti autorizační token vrácený App Service a pokuste se použít tento první před použitím u založenou na poskytovateli přihlášení.
+## <a name="tokens"></a>Store ověřovací token na straně klienta
+Předchozí příklad ukázal standardní přihlášení, které vyžaduje klient kontaktovat zprostředkovatele identity a služby App Service při každém spuštění aplikace. Nejenže je tato metoda, můžete spustit do využití souvisí problémy mnoho zákazníků pokuste se spustit aplikaci ve stejnou dobu. Lepším řešením je ukládat do mezipaměti autorizační token vrácený službou App Service a snažte se používat tento první před použitím u založené na zprostředkovatele přihlášení.
 
 > [!NOTE]
-> Můžete mezipaměti tokenem vydaným službou App Services bez ohledu na to, jestli používáte ověřování klienta spravovat nebo spravované služby. Tento kurz používá službu spravovat ověřování.
+> Můžete ukládat do mezipaměti tokenu vydaného službou App Services bez ohledu na to, jestli používáte ověřování klienta spravovat nebo spravované služby. Tento kurz používá spravovaný službou ověřování.
 > 
 > 
 
 [!INCLUDE [mobile-windows-universal-dotnet-authenticate-app-with-token](../../includes/mobile-windows-universal-dotnet-authenticate-app-with-token.md)]
 
 ## <a name="next-steps"></a>Další postup
-Teď, když jste dokončili kurz základní ověřování, vezměte v úvahu pokračovat na jednu z následujících kurzů:
+Teď, když jste dokončili kurz základní ověřování, vezměte v úvahu pokračováním jednu z následujících kurzů:
 
 * [Přidání nabízených oznámení do aplikace](app-service-mobile-windows-store-dotnet-get-started-push.md)  
   Naučte se přidávat do aplikace podporu nabízených oznámení a konfigurovat back-end mobilní aplikace tak, aby k zasílání nabízených oznámení používal Azure Notification Hubs.

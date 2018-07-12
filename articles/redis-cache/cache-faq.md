@@ -1,6 +1,6 @@
 ---
-title: Azure Redis Cache – nejčastější dotazy | Microsoft Docs
-description: Další odpovědi na časté otázky, vzory a osvědčené postupy pro Azure Redis Cache
+title: Azure Redis Cache – nejčastější dotazy | Dokumentace Microsoftu
+description: Přečtěte si odpovědi na běžné dotazy, vzory a osvědčené postupy pro Azure Redis Cache
 services: redis-cache
 documentationcenter: ''
 author: wesmc7777
@@ -15,84 +15,84 @@ ms.topic: article
 ms.date: 07/27/2017
 ms.author: wesmc
 ms.openlocfilehash: 6c308205c5adb05f4c7e1668c67adea414020ea2
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37113268"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38232957"
 ---
 # <a name="azure-redis-cache-faq"></a>Nejčastější dotazy k Azure Redis Cache
-Další odpovědi na časté otázky, vzorce a osvědčené postupy pro Azure Redis Cache.
+Přečtěte si odpovědi na běžné dotazy, vzory a osvědčené postupy pro Azure Redis Cache.
 
-## <a name="what-if-my-question-isnt-answered-here"></a>Co když není zde odpovědi můj dotaz?
-Pokud váš dotaz není zde uvedeno, dejte nám vědět, a pomůžeme vám najít odpověď.
+## <a name="what-if-my-question-isnt-answered-here"></a>Co když můj dotaz zde nenalezl?
+Pokud zde není uveden váš dotaz, dejte nám vědět a pomůžeme vám najít odpověď.
 
-* Můžete odeslat dotaz v komentářích na konci tohoto článku a spojte s týmem Azure Cache a ostatními členy komunity o tomto článku.
-* K dosažení širší cílové skupiny, můžete odeslat dotaz na [fórum MSDN mezipaměti Azure](https://social.msdn.microsoft.com/forums/azure/home?forum=azurecache) a spojte s týmem mezipaměti Azure a ostatní členové komunity.
-* Pokud chcete, aby se žádosti o funkci, můžete odeslat požadavky a nápady, jak [Azure Redis Cache User Voice](https://feedback.azure.com/forums/169382-cache).
-* Můžete také odeslat e-mailu na nás na adrese [externí zpětnou vazbu mezipaměti Azure](mailto:azurecache@microsoft.com).
+* Můžete odeslat dotaz do komentářů na konci tyto Nejčastější dotazy a Spolupracujte s týmem Azure Cache a ostatních členů komunity o tomto článku.
+* K dosažení širší cílovou skupinu, můžete odeslat dotaz na [fórum MSDN pro Azure Cache](https://social.msdn.microsoft.com/forums/azure/home?forum=azurecache) a Spolupracujte s týmem Azure Cache a ostatní členové komunity.
+* Pokud chcete vytvořit žádost o funkci, můžete odeslat žádosti a nápady, jak ho [Azure Redis Cache User Voice](https://feedback.azure.com/forums/169382-cache).
+* Můžete taky poslat e-mailu nám na [externí zpětné vazby mezipaměti Azure](mailto:azurecache@microsoft.com).
 
 ## <a name="azure-redis-cache-basics"></a>Základy služby Azure Redis Cache
-Nejčastější dotazy v této části se věnují některé základní informace o Azure Redis Cache.
+Nejčastější dotazy v této části se věnují několika základní informace o Azure Redis Cache.
 
 * [Co je Azure Redis Cache?](#what-is-azure-redis-cache)
-* [Jak můžete můžu začít pracovat s Azure Redis Cache?](#how-can-i-get-started-with-azure-redis-cache)
+* [Jak mám začít s Azure Redis Cache?](#how-can-i-get-started-with-azure-redis-cache)
 
-Následující nejčastější dotazy zahrnují základní koncepty a otázky týkající se Azure Redis Cache a jsou zodpovězeny v některé z dalších částí – nejčastější dotazy.
+Následující nejčastější dotazy se věnují základní koncepty a dotazy týkající se Azure Redis Cache a jsou zodpovězeny v některé z dalších částí – nejčastější dotazy.
 
 * [Jaké nabídky a velikosti Redis Cache mám použít?](#what-redis-cache-offering-and-size-should-i-use)
-* [Jaké klientů Redis cache mám použít?](#what-redis-cache-clients-can-i-use)
+* [Klientů, kteří mezipaměť Redis můžete použít?](#what-redis-cache-clients-can-i-use)
 * [Je k dispozici místní emulátor pro Azure Redis Cache?](#is-there-a-local-emulator-for-azure-redis-cache)
-* [Jak monitorovat stav a výkon Moje mezipaměti?](#how-do-i-monitor-the-health-and-performance-of-my-cache)
+* [Jak monitorovat stav a výkon své mezipaměti?](#how-do-i-monitor-the-health-and-performance-of-my-cache)
 
 ## <a name="planning-faqs"></a>Plánování nejčastější dotazy
 * [Jaké nabídky a velikosti Redis Cache mám použít?](#what-redis-cache-offering-and-size-should-i-use)
-* [Azure Redis Cache výkonu](#azure-redis-cache-performance)
-* [V oblasti, které by měl I najít Můj mezipaměť?](#in-what-region-should-i-locate-my-cache)
-* [Jak se fakturuje pro Azure Redis Cache?](#how-am-i-billed-for-azure-redis-cache)
-* [Můžete použít Azure Redis Cache pomocí Azure Cloud vlády, Čína cloudu Azure nebo Microsoft Azure v Německu?](#can-i-use-azure-redis-cache-with-azure-government-cloud-azure-china-cloud-or-microsoft-azure-germany)
+* [Výkon Azure Redis Cache](#azure-redis-cache-performance)
+* [V jaké oblasti by měl mi najít mé mezipaměti?](#in-what-region-should-i-locate-my-cache)
+* [Jak se fakturují pro Azure Redis Cache?](#how-am-i-billed-for-azure-redis-cache)
+* [Můžete použít Azure Redis Cache pomocí cloudu Azure Government, Azure China Cloud nebo Microsoft Azure Germany?](#can-i-use-azure-redis-cache-with-azure-government-cloud-azure-china-cloud-or-microsoft-azure-germany)
 
-## <a name="development-faqs"></a>Vývoj nejčastější dotazy
-* [Co udělat možnosti konfigurace StackExchange.Redis?](#what-do-the-stackexchangeredis-configuration-options-do)
-* [Jaké klientů Redis cache mám použít?](#what-redis-cache-clients-can-i-use)
+## <a name="development-faqs"></a>Nejčastějších dotazech týkajících se vývoje
+* [Jaké možnosti konfigurace StackExchange.Redis udělat?](#what-do-the-stackexchangeredis-configuration-options-do)
+* [Klientů, kteří mezipaměť Redis můžete použít?](#what-redis-cache-clients-can-i-use)
 * [Je k dispozici místní emulátor pro Azure Redis Cache?](#is-there-a-local-emulator-for-azure-redis-cache)
-* [Jak můžete spouštět příkazy Redis?](#how-can-i-run-redis-commands)
-* [Proč Azure Redis Cache nemá webu MSDN knihovny tříd jako část jinými službami Azure?](#why-doesnt-azure-redis-cache-have-an-msdn-class-library-reference-like-some-of-the-other-azure-services)
+* [Jak mohu spustit příkazy Redis?](#how-can-i-run-redis-commands)
+* [Proč Azure Redis Cache nemá MSDN knihovny tříd jako některé z dalších služeb Azure?](#why-doesnt-azure-redis-cache-have-an-msdn-class-library-reference-like-some-of-the-other-azure-services)
 * [Můžete použít Azure Redis Cache jako mezipaměť relace PHP?](#can-i-use-azure-redis-cache-as-a-php-session-cache)
-* [Jaké jsou databáze Redis?](#what-are-redis-databases)
+* [Co jsou databáze Redis?](#what-are-redis-databases)
 
 ## <a name="security-faqs"></a>Nejčastější dotazy k zabezpečení
 * [Pokud by měl povolit port bez SSL pro připojení k Redis?](#when-should-i-enable-the-non-ssl-port-for-connecting-to-redis)
 
-## <a name="production-faqs"></a>Nejčastější dotazy k produkční
-* [Jaké jsou některé z osvědčených postupů produkční?](#what-are-some-production-best-practices)
-* [Jaké jsou některé aspekty při pomocí běžných příkazů Redis?](#what-are-some-of-the-considerations-when-using-common-redis-commands)
-* [Jak můžete otestovat a testování výkonu Moje mezipaměti?](#how-can-i-benchmark-and-test-the-performance-of-my-cache)
-* [Důležité podrobnosti o fondu růst](#important-details-about-threadpool-growth)
-* [Povolit serveru globálního katalogu získat další propustnosti na straně klienta při používání StackExchange.Redis](#enable-server-gc-to-get-more-throughput-on-the-client-when-using-stackexchangeredis)
-* [Faktory ovlivňující výkon kolem připojení](#performance-considerations-around-connections)
+## <a name="production-faqs"></a>Nejčastější dotazy k produkčním prostředí
+* [Jaké jsou některé osvědčené postupy produkčního prostředí?](#what-are-some-production-best-practices)
+* [Jaké jsou některé aspekty při používání běžné příkazy Redis?](#what-are-some-of-the-considerations-when-using-common-redis-commands)
+* [Jak můžu srovnávací testy a testování výkonu mezipaměť?](#how-can-i-benchmark-and-test-the-performance-of-my-cache)
+* [Důležité podrobnosti o růstu fondu vláken](#important-details-about-threadpool-growth)
+* [Povolit uvolňování paměti serveru získat větší propustnost na straně klienta při používání StackExchange.Redis](#enable-server-gc-to-get-more-throughput-on-the-client-when-using-stackexchangeredis)
+* [Důležité informace o výkonu po připojení](#performance-considerations-around-connections)
 
 ## <a name="monitoring-and-troubleshooting-faqs"></a>Monitorování a řešení potíží s nejčastější dotazy
-Nejčastější dotazy v této části se věnují běžné monitorování a řešení potíží s dotazy. Další informace o monitorování a řešení potíží s vaší instancí Azure Redis Cache najdete v tématu [jak monitorovat Azure Redis Cache](cache-how-to-monitor.md) a [řešení potíží s Azure Redis Cache](cache-how-to-troubleshoot.md).
+Nejčastější dotazy v této části se věnují běžné monitorování a dotazy ohledně řešení potíží. Další informace o monitorování a řešení potíží s vaší instancí služby Azure Redis Cache najdete v tématu [jak monitorovat Azure Redis Cache](cache-how-to-monitor.md) a [řešení potíží s Azure Redis Cache](cache-how-to-troubleshoot.md).
 
-* [Jak monitorovat stav a výkon Moje mezipaměti?](#how-do-i-monitor-the-health-and-performance-of-my-cache)
-* [Proč se zobrazuje časové limity?](#why-am-i-seeing-timeouts)
-* [Proč byl klient odpojen z mezipaměti?](#why-was-my-client-disconnected-from-the-cache)
+* [Jak monitorovat stav a výkon své mezipaměti?](#how-do-i-monitor-the-health-and-performance-of-my-cache)
+* [Proč se mi zobrazuje časové limity?](#why-am-i-seeing-timeouts)
+* [Proč se můj klient odpojen z mezipaměti?](#why-was-my-client-disconnected-from-the-cache)
 
-## <a name="prior-cache-offering-faqs"></a>Nejčastější dotazy k předchozí mezipaměti nabídky
-* [Jaké nabídky Azure Cache je pro mě nejlepší?](#which-azure-cache-offering-is-right-for-me)
+## <a name="prior-cache-offering-faqs"></a>Nejčastější dotazy k předchozí z variant mezipaměti
+* [Kterou z variant mezipaměti Azure je pro mě nejlepší?](#which-azure-cache-offering-is-right-for-me)
 
 ### <a name="what-is-azure-redis-cache"></a>Co je Azure Redis Cache?
-Služba Azure Redis Cache je založená na oblíbené opensourcové [mezipaměti Redis Cache](http://redis.io). Umožňuje přístup do zabezpečené, vyhrazené mezipaměti Redis, spravované společností Microsoft a přístupná ze všech aplikací v rámci Azure. Podrobnější přehled najdete [Azure Redis Cache](https://azure.microsoft.com/services/cache/) stránky produktu na Azure.com.
+Služba Azure Redis Cache je založená na oblíbené opensourcové [mezipaměti Redis Cache](http://redis.io). Poskytuje přístup k zabezpečené, vyhrazené mezipaměti Redis, spravovaná microsoftem a přístupná z libovolné aplikace v Azure. Podrobnější přehled najdete [Azure Redis Cache](https://azure.microsoft.com/services/cache/) stránky produktu na Azure.com.
 
-### <a name="how-can-i-get-started-with-azure-redis-cache"></a>Jak můžete můžu začít pracovat s Azure Redis Cache?
-Existuje několik způsobů, které můžete začít používat s Azure Redis Cache.
+### <a name="how-can-i-get-started-with-azure-redis-cache"></a>Jak mám začít s Azure Redis Cache?
+Existuje několik způsobů, jimiž můžete začít s Azure Redis Cache.
 
-* Můžete zkontrolovat jednou z našich kurzů k dispozici pro [.NET](cache-dotnet-how-to-use-azure-redis-cache.md), [ASP.NET](cache-web-app-howto.md), [Java](cache-java-get-started.md), [Node.js](cache-nodejs-get-started.md), a [Python](cache-python-get-started.md).
-* Můžete sledovat [postup vytvoření vysoce výkonné aplikace pomocí Microsoft Azure Redis Cache](https://azure.microsoft.com/documentation/videos/how-to-build-high-performance-apps-using-microsoft-azure-cache/).
-* Můžete zkontrolovat na dokumentaci klienta pro klienty, kteří s jazykem vývoj projektu pro naleznete v části Použití Redis. Existuje mnoho klientů Redis, které lze použít s Azure Redis Cache. Seznam klientů Redis, naleznete v části [ http://redis.io/clients ](http://redis.io/clients).
+* Můžete vyzkoušet jedno z našich kurzů, které jsou k dispozici pro [.NET](cache-dotnet-how-to-use-azure-redis-cache.md), [ASP.NET](cache-web-app-howto.md), [Java](cache-java-get-started.md), [Node.js](cache-nodejs-get-started.md), a [Python](cache-python-get-started.md).
+* Můžete sledovat [tom, jak vytvářet výkonné aplikace pomocí Microsoft Azure Redis Cache](https://azure.microsoft.com/documentation/videos/how-to-build-high-performance-apps-using-microsoft-azure-cache/).
+* Si můžete prohlédnout v dokumentaci klienta pro klienty, které odpovídají vývojový jazyk projektu naleznete v tématu Jak používat Redis. Existuje mnoho klientů Redis, které lze použít s Azure Redis Cache. Seznam klientů Redis najdete v tématu [ http://redis.io/clients ](http://redis.io/clients).
 
-Pokud účet Azure nemáte, můžete:
+Pokud ještě nemáte účet Azure, můžete:
 
 * [Otevřít bezplatný účet Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=redis_cache_hero). Získáte kredity, které můžete použít k vyzkoušení placených služeb Azure. I po vyčerpání kreditů si můžete účet ponechat a používat bezplatné funkce a služby Azure.
 * [Aktivovat výhody pro předplatitele sady Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=redis_cache_hero). Díky předplatnému MSDN každý měsíc získáváte kredity, které můžete použít pro placené služby Azure.
@@ -100,69 +100,69 @@ Pokud účet Azure nemáte, můžete:
 <a name="cache-size"></a>
 
 ### <a name="what-redis-cache-offering-and-size-should-i-use"></a>Jakou velikost a kterou nabídku Redis Cache mám použít?
-Každou nabídku Azure Redis Cache poskytuje různé úrovně **velikost**, **šířky pásma**, **vysokou dostupnost**, a **SLA** možnosti.
+Každou z variant mezipaměti Azure redis Cache poskytuje různé úrovně **velikost**, **šířky pásma**, **vysoké dostupnosti**, a **SLA** možnosti.
 
-Níže jsou faktory pro výběr nabídku mezipaměti.
+Následují faktory pro výběr variant mezipaměti.
 
-* **Paměť**: základní a Standard vrstev nabízejí 250 MB – 53 GB. Úroveň Premium nabízí až 530 GB. Další informace najdete v tématu [Azure Redis Cache ceny](https://azure.microsoft.com/pricing/details/cache/).
-* **Výkon sítě**: Pokud máte zatížení, která vyžaduje vysokou propustnost, úroveň Premium nabízí větší šířku pásma ve srovnání s Standard nebo Basic. Také v jednotlivých vrstvách mít větší velikost mezipaměti větší šířku pásma z důvodu základní virtuální počítač, který je hostitelem mezipaměti. Najdete v článku [následující tabulky](#cache-performance) Další informace.
-* **Propustnost**: úroveň Premium poskytuje maximální propustnost k dispozici. Pokud mezipaměti serveru nebo klienta dosáhne omezení šířky pásma, může se zobrazit časové limity na straně klienta. Další informace najdete v následující tabulce.
-* **Vysoká dostupnost nebo SLA**: Azure Redis Cache zaručuje, že mezipaměť Standard nebo Premium je k dispozici minimálně 99,9 % času. Další informace o naší smlouvě SLA najdete v tématu [Azure Redis Cache ceny](https://azure.microsoft.com/support/legal/sla/cache/v1_0/). Smlouva SLA se vztahuje pouze na připojení ke koncovým bodům mezipaměti. Součástí smlouvy SLA není ochrana proti ztrátě dat. Doporučujeme používat funkce trvalosti dat Redis zvyšte odolnost proti ztrátě dat v úrovni Premium.
-* **Trvalosti dat redis**: úroveň Premium vám umožňuje zachovat data v mezipaměti v účtu Azure Storage. V mezipaměti Basic nebo Standard všechna data uložena pouze v paměti. Pokud jsou základní problémy infrastruktury může být potenciální ztrátě dat. Doporučujeme používat funkce trvalosti dat Redis zvyšte odolnost proti ztrátě dat v úrovni Premium. Azure Redis Cache nabízí RDB a AOF (už brzy) možnosti v trvalosti Redis. Další informace najdete v tématu [postup konfigurace trvalosti pro mezipaměť Azure Redis Cache Premium](cache-how-to-premium-persistence.md).
-* **Redis Cluster**: Chcete-li vytvořit ukládá do mezipaměti větší než 53 GB nebo sdílení dat mezi různými uzly Redis, můžete použít Redis clustering, která je dostupná v úrovni Premium. Každý uzel se skládá z dvojice primární/replika mezipaměti pro vysokou dostupnost. Další informace najdete v článku [Postup konfigurace clusterů pro mezipaměť Azure Redis Cache Premium](cache-how-to-premium-clustering.md).
-* **Rozšířené zabezpečení a sítě izolace**: nasazení virtuální sítě Azure (VNET) poskytuje lepší zabezpečení a izolaci pro vaši Azure Redis Cache, stejně jako podsítě, zásady řízení přístupu a další funkce k dalšímu omezení přístupu. Další informace najdete v článku [Postup konfigurace podpory služby Virtual Network pro mezipaměť Azure Redis Cache Premium](cache-how-to-premium-vnet.md).
-* **Konfigurace Redis**: na úrovních Standard a Premium, můžete nakonfigurovat pro oznámení Keyspace Redis.
-* **Maximální počet připojení klienta**: Premium úroveň nabízí maximální počet klientů, které se můžou připojit k Redis, s vyšší počet připojení pro větší velikosti mezipaměti. Clustering nezvyšuje počet připojení, které jsou k dispozici pro Clusterované mezipaměti. Další informace najdete v tématu [cenách Azure Redis Cache](https://azure.microsoft.com/pricing/details/cache/).
-* **Vyhrazené jádra serveru Redis**: V úrovni Premium všech velikostí mezipaměti mají vyhrazené jádra pro Redis. Na úrovních Basic nebo Standard, velikost C1 a vyšší máte vyhrazený jádro serveru Redis.
-* **Redis je jedním podprocesem** tak s více než dvě jádra neposkytuje Další výhodou oproti má jenom dvě jádra, ale větší velikosti virtuálních počítačů obvykle mají větší šířku pásma než menší velikost. Pokud mezipaměti serveru nebo klienta dosáhne omezení šířky pásma, obdržíte vypršení časových limitů na straně klienta.
-* **Vylepšení výkonu**: mezipaměti v úrovni Premium jsou nasazeny na hardware, který má rychlejších procesorů, která poskytuje lepší výkon ve srovnání s úroveň Basic nebo Standard. Premium úroveň mezipaměti mají vyšší propustnost a nižší latenci.
+* **Paměť**: úrovně Basic a Standard nabízejí 250 MB – 53 GB. Úroveň Premium nabízí až 530 GB. Další informace najdete v tématu [Azure Redis Cache ceny](https://azure.microsoft.com/pricing/details/cache/).
+* **Výkon sítě**: Pokud máte úlohu, která vyžaduje vysokou propustnost, na úrovni Premium nabízí větší šířku pásma v porovnání s Standard nebo Basic. Také v každé úrovni mít větší velikost mezipaměti větší šířku pásma z důvodu základní virtuální počítač, který je hostitelem mezipaměti. Zobrazit [následující tabulky](#cache-performance) Další informace.
+* **Propustnost**: úroveň Premium nabízí maximální propustnost k dispozici. Pokud klienta nebo serveru mezipaměti dosáhne omezení šířky pásma, můžete obdržet vypršení časového limitu na straně klienta. Další informace najdete v tématu v následující tabulce.
+* **Vysoká dostupnost/SLA**: Azure Redis Cache zaručuje, že mezipaměť Standard nebo Premium je k dispozici alespoň 99,9 % času. Další informace o smlouvě SLA najdete v tématu [Azure Redis Cache ceny](https://azure.microsoft.com/support/legal/sla/cache/v1_0/). Smlouva SLA pokrývá jenom připojení ke koncovým bodům mezipaměti. Součástí smlouvy SLA není ochrana proti ztrátě dat. Doporučujeme použití funkce trvalosti dat Redis na úrovni Premium ke zvýšení odolnosti proti ztrátě dat.
+* **Trvalost dat redis**: úroveň Premium umožňuje trvalé uchování mezipaměti dat v účtu služby Azure Storage. V mezipaměti Basic nebo Standard všechna data uložena pouze v paměti. Pokud jsou základní problémy infrastrukturu může být potenciální ztráty dat. Doporučujeme použití funkce trvalosti dat Redis na úrovni Premium ke zvýšení odolnosti proti ztrátě dat. Azure Redis Cache nabízí RDB a (již brzy) AOF možnosti trvalosti Redis. Další informace najdete v tématu [konfigurace trvalosti pro mezipaměť redis Cache Premium Azure](cache-how-to-premium-persistence.md).
+* **Redis Cluster**: Chcete-li vytvořit ukládá do mezipaměti větší než 53 GB, nebo sdílení dat mezi více uzlů Redis, můžete použít Redis clustering, která je dostupná na úrovni Premium. Každý uzel se skládá z dvojice primární/replika mezipaměti pro zajištění vysoké dostupnosti. Další informace najdete v článku [Postup konfigurace clusterů pro mezipaměť Azure Redis Cache Premium](cache-how-to-premium-clustering.md).
+* **Rozšířené zabezpečení a síťové izolace**: nasazení Azure Virtual Network (VNET) nabízí vyšší míru zabezpečení a izolace pro vaši Azure Redis Cache, stejně jako podsítě, zásady řízení přístupu a jiné funkce pro další omezení přístupu. Další informace najdete v článku [Postup konfigurace podpory služby Virtual Network pro mezipaměť Azure Redis Cache Premium](cache-how-to-premium-vnet.md).
+* **Konfigurace Redis**: ve vrstvách Standard a Premium, můžete nakonfigurovat pro oznámení Keyspace Redis.
+* **Maximální počet připojení klientů**: úroveň Premium nabízí maximální počet klientů, které se mohou připojit k úložišti Redis, s vyšší počet připojení pro větší velikosti mezipaměti. Clustering nezvyšuje počet připojení, které jsou k dispozici pro clusterové mezipaměti. Další informace najdete v tématu [cenách Azure Redis Cache](https://azure.microsoft.com/pricing/details/cache/).
+* **Vyhrazená jádra serveru Redis**: všech velikostí mezipaměti na úrovni Premium máte vyhrazená jádra pro Redis. Na úrovních Basic nebo Standard, velikost C1 a výše máte vyhrazená jádra pro Redis server.
+* **Redis je jednovláknový** tak s více než dvě jádra neposkytuje výhody oproti s právě dvě jádra, ale větší velikosti virtuálních počítačů obvykle mají větší šířku pásma než menší velikost. Pokud klienta nebo serveru mezipaměti dosáhne omezení šířky pásma, obdržíte vypršení časového limitu na straně klienta.
+* **Vylepšení výkonu**: mezipaměť na úrovni Premium jsou nasazené na hardware, který má rychlejšími procesory, poskytuje lepší výkon ve srovnání s na úrovni Basic nebo Standard. Mezipaměti úrovně Premium má vyšší propustnost a nižší latenci.
 
 <a name="cache-performance"></a>
 
-### <a name="azure-redis-cache-performance"></a>Azure Redis Cache výkonu
-Následující tabulka uvádí maximální šířka pásma hodnotami zjištěnými při testování různých velikostí Standard a Premium ukládá do mezipaměti pomocí `redis-benchmark.exe` z virtuálního počítače Iaas na koncový bod Azure Redis Cache. Pro SSL propustnost redis-srovnávacího testu se používá s stunnel pro připojení ke koncovému bodu Azure Redis Cache.
+### <a name="azure-redis-cache-performance"></a>Výkon Azure Redis Cache
+Následující tabulka uvádí maximální šířka pásma hodnotami zjištěnými při testování různých velikostí úrovně Standard a Premium ukládá do mezipaměti pomocí `redis-benchmark.exe` z virtuálního počítače Iaas na koncový bod Azure Redis Cache. Propustnost SSL používá redis srovnávací test s stunnelu připojení ke koncovému bodu Azure Redis Cache.
 
 >[!NOTE] 
->Tyto hodnoty se nezaručuje a neexistuje žádný SLA pro tyto čísla, ale musí být typické. By se měly načíst otestovat vlastní aplikaci k určení velikosti mezipaměti správné pro vaši aplikaci.
->Tato čísla může změnit, protože pravidelně zanesení novější výsledky.
+>Tyto hodnoty není zaručeno a neexistuje žádná smlouva SLA pro tyto čísla, ale musí být typické. By se měly načíst otestovat vlastní aplikaci k určení velikosti mezipaměti správné pro vaši aplikaci.
+>Tato čísla může změnit, protože publikujeme pravidelně novější výsledky.
 >
 
-Z této tabulky jsme kreslení následující závěry:
+Z této tabulky jsme lze nakreslit následující závěry:
 
-* Propustnost, pro které mají stejnou velikost mezipaměti je vyšší ve vrstvě | Premium porovnání na plán úrovně Standard. Například s 6 GB mezipaměti, je propustnost P1 180 000 RPS ve srovnání se 100 000 pro C3.
-* S Redisem clustering propustnost zvyšuje lineárně zvýšit počet horizontálních oddílů (uzlů) v clusteru. Například pokud vytvoříte cluster P4 10 horizontálními oddíly, pak k dispozici propustnost je 400,000 * 10 = 4 miliony RPS.
-* Propustnost pro větší velikosti klíče je vyšší ve vrstvě | Premium porovnání na plán úrovně Standard.
+* Propustnost pro mezipaměti, které mají stejnou velikost je vyšší ve vrstvě Premium, než na úrovni Standard. Například s 6 GB mezipaměti je propustnost P1 180 000 RPS než 100 000 pro C3.
+* S clusteringem Redis propustnost zvyšuje lineárně zvýšit počet horizontálních oddílů (uzlů) v clusteru. Například pokud vytvoříte cluster P4 10 horizontálními oddíly, pak k dispozici propustnost je 400 000 * 10 = 4 miliony RPS.
+* Propustnost pro větší velikosti klíče je vyšší ve vrstvě Premium, než na úrovni Standard.
 
 | Cenová úroveň | Velikost | Procesorová jádra | Dostupná šířka pásma | Velikost hodnoty 1 KB | Velikost hodnoty 1 KB |
 | --- | --- | --- | --- | --- | --- |
-| **Standardní mezipaměti velikosti** | | |**Megabity za sekundu (Mb/s) nebo megabajtů za sekundu (MB/s)** |**Požadavky na druhý bez SSL (RPS)** |**Požadavky na druhý protokol SSL (RPS)** |
+| **Velikosti Standard mezipaměti** | | |**Megabity za sekundu (Mb/s) nebo megabajtů za sekundu (MB/s)** |**Požadavky na druhý bez SSL (předávajících stran)** |**Požadavky na druhý protokol SSL (předávajících stran)** |
 | C0 |250 MB |Shared |100 / 12.5 |15,000 |7 500 |
 | C1 |1 GB |1 |500 / 62.5 |38,000 |20,720 |
 | C2 |2,5 GB |2 |500 / 62.5 |41,000 |37 000 |
-| C3 |6 GB |4 |1000 / 125 |100,000 |90,000 |
+| C3 |6 GB |4 |1 000 / 125 |100,000 |90,000 |
 | C4 |13 GB |2 |500 / 62.5 |60,000 |55,000 |
 | C5 |26 GB |4 |1,000 / 125 |102 000 |93,000 |
 | C6 |53 GB |8 |2,000 / 250 |126,000 |120,000 |
-| **Velikost mezipaměti Premium** | |**Jader procesoru na horizontální oddíl** | **Megabity za sekundu (Mb/s) nebo megabajtů za sekundu (MB/s)** |**Počet požadavků za druhé (RPS) bez SSL, na horizontální oddíl** |**Požadavky na druhý protokol SSL (RPS), na horizontální oddíl** |
+| **Velikosti mezipaměti úrovně Premium** | |**Počet jader procesoru na horizontálních oddílů** | **Megabity za sekundu (Mb/s) nebo megabajtů za sekundu (MB/s)** |**Požadavky na druhý (předávajících stran) bez SSL, za horizontální oddíl** |**Požadavky na druhý protokol SSL (předávajících stran), za horizontální oddíl** |
 | P1 |6 GB |2 |1,500 / 187.5 |180,000 |172,000 |
 | P2 |13 GB |4 |3,000 / 375 |350,000 |341,000 |
 | P3 |26 GB |4 |3,000 / 375 |350,000 |341,000 |
 | P4 |53 GB |8 |6,000 / 750 |400 000 |373,000 |
 
-Pokyny k nastavení stunnel nebo stahování nástroje Redis jako `redis-benchmark.exe`, najdete v článku [jak můžete spouštět příkazy Redis?](#cache-commands) části.
+Pokyny k nastavení stunnelu nebo stáhli Redis tools jako `redis-benchmark.exe`, najdete v článku [jak mohu spustit příkazy Redis?](#cache-commands) oddílu.
 
 <a name="cache-region"></a>
 
-### <a name="in-what-region-should-i-locate-my-cache"></a>V oblasti, které by měl I najít Můj mezipaměť?
-Pro nejlepší výkon a co nejnižší latencí vyhledejte ve stejné oblasti jako vaše klientská aplikace mezipaměti Azure Redis Cache.
+### <a name="in-what-region-should-i-locate-my-cache"></a>V jaké oblasti by měl mi najít mé mezipaměti?
+Pro zajištění nejlepšího výkonu a nejnižší latenci vyhledejte ve stejné oblasti jako vaše klientská aplikace mezipaměti Azure Redis Cache.
 
 <a name="cache-billing"></a>
 
-### <a name="how-am-i-billed-for-azure-redis-cache"></a>Jak se fakturuje pro Azure Redis Cache?
-Ceny služby Azure Redis Cache je [zde](https://azure.microsoft.com/pricing/details/cache/). Na stránce s cenami uvádí ceny jako hodinové sazby. Mezipaměti se účtují na základě za minutu od okamžiku vytvoření mezipaměti až do mezipaměti se odstraní. Neexistuje žádná možnost pro zastavení nebo pozastavení fakturace mezipaměti.
+### <a name="how-am-i-billed-for-azure-redis-cache"></a>Jak se fakturují pro Azure Redis Cache?
+Ceny za Azure Redis Cache se [tady](https://azure.microsoft.com/pricing/details/cache/). Stránce s cenami uvádí ceny jako hodinové sazby. Mezipaměť se fakturuje po minutách od okamžiku vytvoření mezipaměti až do mezipaměti se odstraní. Neexistuje žádná možnost pro zastavení nebo pozastavení fakturace do mezipaměti.
 
-### <a name="can-i-use-azure-redis-cache-with-azure-government-cloud-azure-china-cloud-or-microsoft-azure-germany"></a>Můžete použít Azure Redis Cache pomocí Azure Cloud vlády, Čína cloudu Azure nebo Microsoft Azure v Německu?
-Ano, Azure Redis Cache je dostupná v cloudu Azure Government, Čína cloudu Azure a Microsoft Azure v Německu. Adresy URL pro přístup a správu Azure Redis Cache se liší v těchto cloudech ve srovnání s veřejném cloudu Azure. 
+### <a name="can-i-use-azure-redis-cache-with-azure-government-cloud-azure-china-cloud-or-microsoft-azure-germany"></a>Můžete použít Azure Redis Cache pomocí cloudu Azure Government, Azure China Cloud nebo Microsoft Azure Germany?
+Ano, Azure Redis Cache je dostupná v cloudu Azure Government Azure China Cloud a Microsoft Azure Germany. Adresy URL pro přístup a správa Azure Redis Cache se liší v těchto cloudech ve srovnání s veřejným cloudem Azure. 
 
 | Cloud   | Přípona DNS pro Redis            |
 |---------|---------------------------------|
@@ -171,53 +171,53 @@ Ano, Azure Redis Cache je dostupná v cloudu Azure Government, Čína cloudu Azu
 | Německo | *.redis.cache.cloudapi.de       |
 | Čína   | *.redis.cache.chinacloudapi.cn  |
 
-Další informace o informace týkající se použití Azure Redis Cache s ostatních cloudů najdete v následujících tématech.
+Další informace o informace týkající se použití Azure Redis Cache s jinými cloudy najdete v následujících tématech.
 
-- [Azure Government databází – mezipaměť Redis systému Azure](../azure-government/documentation-government-services-database.md#azure-redis-cache)
-- [Cloud Azure Čína - mezipaměť Redis systému Azure](https://www.azure.cn/documentation/services/redis-cache/)
-- [Microsoft Azure v Německu](https://azure.microsoft.com/overview/clouds/germany/)
+- [Azure Government databáze – Azure Redis Cache](../azure-government/documentation-government-services-database.md#azure-redis-cache)
+- [Cloud Azure China - Azure Redis Cache](https://www.azure.cn/documentation/services/redis-cache/)
+- [Microsoft Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)
 
-Informace o používání Azure Redis Cache pomocí prostředí PowerShell v cloudu Azure Government, Čína cloudu Azure a Microsoft Azure v Německu najdete v tématu [jak se připojit k ostatních cloudů - Azure Redis Cache PowerShell](cache-howto-manage-redis-cache-powershell.md#how-to-connect-to-other-clouds).
+Informace o používání Azure Redis Cache pomocí Powershellu v cloudu Azure Government Azure China Cloud a Microsoft Azure Germany najdete v tématu [jak se připojit k jiné cloudy - Azure Redis Cache Powershellu](cache-howto-manage-redis-cache-powershell.md#how-to-connect-to-other-clouds).
 
 <a name="cache-configuration"></a>
 
-### <a name="what-do-the-stackexchangeredis-configuration-options-do"></a>Co udělat možnosti konfigurace StackExchange.Redis?
-StackExchange.Redis má mnoho možností. Tato část pojednává o některých běžných nastavení. Podrobné informace o možnostech StackExchange.Redis, najdete v části [StackExchange.Redis konfigurace](https://stackexchange.github.io/StackExchange.Redis/Configuration).
+### <a name="what-do-the-stackexchangeredis-configuration-options-do"></a>Jaké možnosti konfigurace StackExchange.Redis udělat?
+StackExchange.Redis má hodně možností. Tato část pojednává o některých běžných nastavení. Podrobné informace o možnostech StackExchange.Redis, naleznete v tématu [StackExchange.Redis konfigurace](https://stackexchange.github.io/StackExchange.Redis/Configuration).
 
 | ConfigurationOptions | Popis | Doporučení |
 | --- | --- | --- |
-| AbortOnConnectFail |Pokud nebude nastaven na hodnotu true, připojení znovu po selhání sítě. |Nastavte na hodnotu false a nechat StackExchange.Redis automaticky znovu připojit. |
-| ConnectRetry |Počet opakování pokusů o připojení během počáteční připojení. |Viz následující poznámky k pokyny. |
-| ConnectTimeout |Časový limit v ms pro operace connect. |Viz následující poznámky k pokyny. |
+| AbortOnConnectFail |Pokud nebude znovu nastavenou na hodnotu true, připojení připojit po selhání sítě. |Nastavte na hodnotu false a nechat StackExchange.Redis automaticky znovu připojit. |
+| ConnectRetry |Počet opakování pokusů o připojení během počáteční připojení. |Viz následující poznámky pro doprovodné materiály. |
+| ConnectTimeout |Časový limit v ms pro operace připojení. |Viz následující poznámky pro doprovodné materiály. |
 
-Výchozí hodnoty klienta jsou obvykle dostatečná. Můžete upřesnit možnosti založené na úlohu.
+Obvykle jsou výchozí hodnoty klienta dostatečná. Můžete podrobně upravit možnosti na základě vašich úloh.
 
-* **Opakování**
-  * ConnectRetry a ConnectTimeout najdete obecné pokyny je služeb při selhání rychle a akci opakujte. V tomto návodu je založena na úlohy a jak dlouho na průměrném trvá pro vašeho klienta a vydejte příkaz Redis, obdrží odpověď.
-  * Umožní StackExchange.Redis automaticky znovu připojila, namísto Kontrola stavu připojení a připojení sami. **Nepoužívejte vlastnost ConnectionMultiplexer.IsConnected**.
-  * Snowballing – někdy se může spustit na problém, kde jsou opakování a rozrůst opakované pokusy a nikdy dojde k jeho obnovení. Pokud dojde k snowballing, měli byste zvážit použití algoritmu opakování exponenciálního omezení rychlosti jak je popsáno v [opakujte obecné pokyny](../best-practices-retry-general.md) publikována skupina Microsoft Patterns & postupy.
+* **Počet opakování**
+  * Obecné pokyny pro ConnectRetry a ConnectTimeout je rychle vygenerovala chybu a zkuste to znovu. Tento návod vychází z vašich úloh a kolik času na průměr přebírá pro svého klienta do příkaz Redis a přijetí odpovědi.
+  * Umožňuje automaticky znovu připojila, namísto kontroluje se stav připojení a opětovné připojení sami StackExchange.Redis. **Vyhněte se použití vlastnosti ConnectionMultiplexer.IsConnected**.
+  * Snowballing – někdy může narazíte na problém, kde je to zkoušet dál a opakované pokusy rozrůst a nikdy obnoví. Pokud dojde k snowballing, měli byste zvážit, pomocí algoritmu opakování exponenciálního omezení rychlosti, jak je popsáno v [obecné pokyny k opakovaným](../best-practices-retry-general.md) publikoval(a) skupina Microsoft Patterns a postupy.
 * **Hodnoty časového limitu**
-  * Vezměte v úvahu vaše úlohy a odpovídajícím způsobem nastavit hodnoty. Pokud ukládáte velké hodnoty, nastavte časový limit na vyšší hodnotu.
-  * Nastavit `AbortOnConnectFail` na hodnotu false a umožňují StackExchange.Redis znovu připojit za vás.
-  * Používala jedna instance ConnectionMultiplexer pro aplikaci. LazyConnection můžete použít k vytvoření jediné instance, který je vrácen vlastností připojení, jak je znázorněno v [připojení k mezipaměti pomocí třídy ConnectionMultiplexer](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache).
-  * Nastavte `ConnectionMultiplexer.ClientName` vlastnost, která má jedinečný název instance aplikace k diagnostickým účelům.
+  * Vezměte v úvahu vaše úlohy a nastavte hodnoty odpovídajícím způsobem. Pokud ukládáte velké hodnoty, nastavte časový limit na vyšší hodnotu.
+  * Nastavte `AbortOnConnectFail` na false a umožněte StackExchange.Redis znovu připojit za vás.
+  * Použijte jednu instanci ConnectionMultiplexer pro aplikaci. Vám pomůže LazyConnection vytvořte jednu instanci, která je vrácena vlastností připojení, jak je znázorněno v [připojení k mezipaměti horizontálních oddílů pomocí třídy ConnectionMultiplexer](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache).
+  * Nastavte `ConnectionMultiplexer.ClientName` vlastnost jedinečný název instance aplikace pro diagnostické účely.
   * Použití více `ConnectionMultiplexer` instance pro vlastní úlohy.
-      * Tento model můžete provést, pokud máte různých zatížení ve vaší aplikaci. Příklad:
-      * Můžete mít jednu multiplexor pro práci s velké klíče.
+      * Tento model můžete použít, pokud máte proměnlivé zátěže v aplikaci. Příklad:
+      * Můžete mít jednu multiplexor pro nakládání s klíči velkých.
       * Můžete mít jednu multiplexor pro práci s malé klíče.
-      * Můžete nastavit různé hodnoty pro vypršení časových limitů připojení a logika opakovaných pokusů pro každou ConnectionMultiplexer, který používáte.
-      * Nastavte `ClientName` vlastnost na každém multiplexor pomohou s diagnostikou.
-      * Tyto pokyny mohou vést k více zjednodušený latence za `ConnectionMultiplexer`.
+      * Můžete nastavit různé hodnoty pro vypršení časového limitu připojení a logika opakování pro každý ConnectionMultiplexer, který používáte.
+      * Nastavte `ClientName` vlastnost na každém multiplexor pomoct s diagnostikou.
+      * Tyto pokyny mohou vést k více zjednodušené latencí na `ConnectionMultiplexer`.
 
-### <a name="what-redis-cache-clients-can-i-use"></a>Jaké klientů Redis cache mám použít?
-Jedním z užitečných funkcí Redis je, že existuje mnoho klientů podporuje mnoho různých programovacích jazyků. Aktuální seznam klientů najdete v tématu [Redis klienti](http://redis.io/clients). Podrobné pokyny, které zahrnují několik různých jazycích a klienty, najdete v části [použití Azure Redis Cache](cache-dotnet-how-to-use-azure-redis-cache.md) a klikněte na požadovaný jazyk od jazyka přepínači v horní části článku.
+### <a name="what-redis-cache-clients-can-i-use"></a>Klientů, kteří mezipaměť Redis můžete použít?
+Jednou z nejlepších věcí na Redis je, že existují mnoho klientů podporuje mnoho různých programovacích jazyků. Aktuální seznam klientů najdete v tématu [klienti Redis](http://redis.io/clients). Kurzy, které zahrnují několik různých jazycích a klientů najdete na stránce [jak používat Azure Redis Cache](cache-dotnet-how-to-use-azure-redis-cache.md) a klikněte na požadovaný jazyk od jazyka selektoru v horní části tohoto článku.
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-access-keys.md)]
 
 <a name="cache-emulator"></a>
 
 ### <a name="is-there-a-local-emulator-for-azure-redis-cache"></a>Je k dispozici místní emulátor pro Azure Redis Cache?
-Neexistuje žádné místní emulátor pro Azure Redis Cache, ale může spouštět MSOpenTech verzi redis-server.exe z [nástroje příkazového řádku Redis](https://github.com/MSOpenTech/redis/releases/) ve vašem místním počítač a připojte se k němu získat na podobném principu do místní mezipaměti emulátoru, jak je znázorněno v následujícím příkladu:
+Neexistuje žádné místní emulátor pro Azure Redis Cache, ale může spouštět MSOpenTech verzi server.exe redis z [nástroje příkazového řádku Redis](https://github.com/MSOpenTech/redis/releases/) ve vašem místním počítači a připojte se k ji, abyste získali fungují na podobném principu do místní mezipaměti emulátoru, jak je znázorněno v následujícím příkladu:
 
     private static Lazy<ConnectionMultiplexer>
           lazyConnection = new Lazy<ConnectionMultiplexer>
@@ -236,51 +236,51 @@ Neexistuje žádné místní emulátor pro Azure Redis Cache, ale může spoušt
         }
 
 
-Volitelně můžete nakonfigurovat [redis.conf](http://redis.io/topics/config) souboru tak, aby lépe odpovídaly [výchozí nastavení mezipaměti](cache-configure.md#default-redis-server-configuration) pro vaše online Azure Redis Cache v případě potřeby.
+Volitelně můžete nakonfigurovat [redis.conf](http://redis.io/topics/config) souboru tak, aby lépe odpovídaly [výchozí nastavení mezipaměti](cache-configure.md#default-redis-server-configuration) pro online Azure Redis Cache v případě potřeby.
 
 <a name="cache-commands"></a>
 
-### <a name="how-can-i-run-redis-commands"></a>Jak můžete spouštět příkazy Redis?
-Můžete používat kterýkoli z příkazů uvedený na [Redis příkazy](http://redis.io/commands#) s výjimkou příkazy uvedené v [Redis příkazy nejsou podporované ve službě Azure Redis Cache](cache-configure.md#redis-commands-not-supported-in-azure-redis-cache). Máte několik možností ke spuštění příkazů Redis.
+### <a name="how-can-i-run-redis-commands"></a>Jak mohu spustit příkazy Redis?
+Můžete použít některý z příkazů uvedený na [příkazy Redis](http://redis.io/commands#) s výjimkou příkazy uvedené v [Redis příkazy nejsou podporované v Azure Redis Cache](cache-configure.md#redis-commands-not-supported-in-azure-redis-cache). Máte několik možností, jak spouštět příkazy Redis.
 
-* Pokud máte mezipaměti Standard nebo Premium, můžete spouštět příkazy Redis pomocí [konzola Redis](cache-configure.md#redis-console). Konzola Redis poskytuje bezpečný způsob ke spuštění příkazů Redis na portálu Azure.
-* Můžete také použít nástroje příkazového řádku Redis. Používat, proveďte následující kroky:
-* Stažení [nástroje příkazového řádku Redis](https://github.com/MSOpenTech/redis/releases/).
-* Připojení k mezipaměti pomocí `redis-cli.exe`. Předejte mezipaměti koncový bod pomocí -h přepínač a klíč pomocí - a jak je znázorněno v následujícím příkladu:
+* Pokud máte Standard nebo Premium mezipaměti můžete spouštět příkazy Redis pomocí [konzola Redis](cache-configure.md#redis-console). Konzola Redis poskytuje zabezpečený způsob, jak spouštět příkazy Redis na webu Azure Portal.
+* Můžete také použít nástroje příkazového řádku Redis. K jejich použití, proveďte následující kroky:
+* Stáhněte si [nástroje příkazového řádku Redis](https://github.com/MSOpenTech/redis/releases/).
+* Připojení k mezipaměti pomocí `redis-cli.exe`. Předat mezipaměti koncový bod pomocí přepínače -h a klíč pomocí – a jak je znázorněno v následujícím příkladu:
 * `redis-cli -h <redis cache name>.redis.cache.windows.net -a <key>`
 
 > [!NOTE]
-> Nástroje příkazového řádku Redis nefungují s portem SSL, ale můžete pomocí nástroje, jako `stunnel` bezpečně připojit nástroje podle pokynů v SSL port [uvedení ASP.NET poskytovatele stavu relace pro Redis Preview Verze](http://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) příspěvku na blogu.
+> Nástroje příkazového řádku Redis nebude fungovat s portem SSL, ale nástroj, který můžete použít například `stunnel` k bezpečnému propojení nástroje SSL port pomocí následujícího postupu v [oznamujeme zprostředkovatel stavu relací ASP.NET pro redis Cache ve verzi Preview Verze](http://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) blogový příspěvek.
 >
 >
 
 <a name="cache-reference"></a>
 
-### <a name="why-doesnt-azure-redis-cache-have-an-msdn-class-library-reference-like-some-of-the-other-azure-services"></a>Proč Azure Redis Cache nemá webu MSDN knihovny tříd jako část jinými službami Azure?
-Microsoft Azure Redis Cache je založená na populární open source Redis Cache a je přístupný pomocí široké škály [Redis klienti](http://redis.io/clients) pro řadě programovacích jazyků. Každý klient má svou vlastní rozhraní API, které provádí volání pro instanci mezipaměti Redis pomocí [Redis příkazy](http://redis.io/commands).
+### <a name="why-doesnt-azure-redis-cache-have-an-msdn-class-library-reference-like-some-of-the-other-azure-services"></a>Proč Azure Redis Cache nemá MSDN knihovny tříd jako některé z dalších služeb Azure?
+Microsoft Azure Redis Cache je založená na oblíbené open source mezipaměti redis cache a je přístupný širokou škálu [klienti Redis](http://redis.io/clients) pro řadu programovacích jazyků. Každý klient má své vlastní rozhraní API, která provádí volání na instanci mezipaměti Redis pomocí [příkazy Redis](http://redis.io/commands).
 
-Protože každého klienta se liší, není jeden centralizované třída odkaz na webu MSDN a každý klient udržuje vlastní referenční dokumentaci k nástroji. Kromě referenční dokumentaci k nástroji existuje několik kurzy znázorňující postup Začínáme s Azure Redis Cache pomocí různých jazycích a klientů mezipaměti. Tyto kurzy přístup, najdete v části [použití Azure Redis Cache](cache-dotnet-how-to-use-azure-redis-cache.md) a klikněte na požadovaný jazyk od jazyka přepínači v horní části článku.
+Protože každá klient se liší, není jednu centrální třída reference na webu MSDN a každý klient udržuje svůj vlastní referenční dokumentaci. Kromě referenční dokumentaci jsou k dispozici několik kurzů ukazuje, jak začít pracovat s Azure Redis Cache v různých jazycích a klientů mezipaměti. Pro přístup k tyto kurzy, naleznete v tématu [jak používat Azure Redis Cache](cache-dotnet-how-to-use-azure-redis-cache.md) a klikněte na požadovaný jazyk od jazyka selektoru v horní části tohoto článku.
 
 ### <a name="can-i-use-azure-redis-cache-as-a-php-session-cache"></a>Můžete použít Azure Redis Cache jako mezipaměť relace PHP?
-Ano, použití Azure Redis Cache jako mezipaměť relace PHP, zadejte připojovací řetězec k vaší instanci Azure Redis Cache v `session.save_path`.
+Ano, pokud chcete použít Azure Redis Cache jako mezipaměť relace PHP, zadejte připojovací řetězec do instance služby Azure Redis Cache v `session.save_path`.
 
 > [!IMPORTANT]
-> Při použití Azure Redis Cache jako mezipaměť relace PHP, je nutné, aby adresa URL kódování klíč zabezpečení použít pro připojení k mezipaměti, jak je znázorněno v následujícím příkladu:
+> Při použití Azure Redis Cache jako mezipaměť relace PHP, musí adresa URL kódování klíč zabezpečení použít pro připojení k mezipaměti, jak je znázorněno v následujícím příkladu:
 >
 > `session.save_path = "tcp://mycache.redis.cache.windows.net:6379?auth=<url encoded primary or secondary key here>";`
 >
-> Pokud není klíč kódovaná adresou URL, se může zobrazit výjimka zprávu jako: `Failed to parse session.save_path`
+> Pokud není klíč kódování URL, může se zobrazit výjimka se zprávou jako: `Failed to parse session.save_path`
 >
 >
 
-Další informace o používání Redis Cache jako mezipaměť relace PHP s klientem PhpRedis najdete v tématu [obslužné rutiny PHP relace](https://github.com/phpredis/phpredis#php-session-handler).
+Další informace o používání služby Redis Cache jako mezipaměť relace PHP s klientem PhpRedis, naleznete v tématu [obslužné rutiny PHP relace](https://github.com/phpredis/phpredis#php-session-handler).
 
-### <a name="what-are-redis-databases"></a>Jaké jsou databáze Redis?
+### <a name="what-are-redis-databases"></a>Co jsou databáze Redis?
 
-Databáze redis jsou právě logického oddělení dat v rámci stejné instance Redis. Velikost mezipaměti paměti jsou sdílena mezi všechny databáze a skutečný paměti, že spotřeba na danou databázi závisí na klíče nebo hodnotami uloženými v databázi. Například C6 mezipaměti má 53 GB paměti. Můžete uvést všechny 53 GB do jedné databáze nebo je možné ho rozdělit mezi více databází. 
+Databáze redis jsou jenom logické oddělení dat v rámci stejné instance Redis. Mezipaměti jsou sdílena mezi databází a skutečná paměť spotřeby na danou databázi závisí na klíče/hodnoty uložené v této databázi. Například C6 mezipaměti má 53 GB paměti. Je možné převést všechny 53 GB do jedné databáze nebo vám ho rozdělte mezi několika databázemi. 
 
 > [!NOTE]
-> Při použití mezipaměť Azure Redis Cache Premium s povoleným clusteringem, je k dispozici pouze databázi 0. Toto omezení vnitřní omezení Redis a není specifická pro Azure Redis Cache. Další informace najdete v tématu [muset provést jakékoli změny Moje aplikace klienta použít clustering?](cache-how-to-premium-clustering.md#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)
+> Při použití mezipaměti Redis Azure úrovně Premium s aktivovaným clusteringem, je k dispozici pouze databáze 0. Toto omezení je vnitřní omezení Redis a není specifická pro Azure Redis Cache. Další informace najdete v tématu [potřeba dělat žádné změny Moje klientská aplikace použít clustering?](cache-how-to-premium-clustering.md#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)
 > 
 > 
 
@@ -288,192 +288,192 @@ Databáze redis jsou právě logického oddělení dat v rámci stejné instance
 <a name="cache-ssl"></a>
 
 ### <a name="when-should-i-enable-the-non-ssl-port-for-connecting-to-redis"></a>Pokud by měl povolit port bez SSL pro připojení k Redis?
-Redis serveru nativně nepodporuje protokol SSL, ale v Azure Redis Cache. Pokud se připojujete k Azure Redis Cache a váš klient podporuje protokol SSL, jako je StackExchange.Redis, měli byste použít protokol SSL.
+Redis server nepodporuje nativně protokol SSL, ale nemá Azure Redis Cache. Pokud se připojujete k Azure Redis Cache a váš klient podporuje protokol SSL, jako je StackExchange.Redis, měli byste použít protokol SSL.
 
 >[!NOTE]
->Port bez SSL je ve výchozím nastavení pro nové instance služby Azure Redis Cache zakázán. Pokud váš klient nepodporuje protokol SSL, pak je nutné povolit port bez SSL podle pokynů v [přístup k portům](cache-configure.md#access-ports) části [konfigurace mezipaměti ve službě Azure Redis Cache](cache-configure.md) článku.
+>Port bez SSL je ve výchozím nastavení pro nové instance Azure Redis Cache zakázán. Pokud váš klient nepodporuje SSL, pak je nutné povolit port bez SSL pomocí následujícího postupu v [přístup porty](cache-configure.md#access-ports) část [konfigurace mezipaměti v Azure Redis Cache](cache-configure.md) článku.
 >
 >
 
-Nástroje, jako redis `redis-cli` nefungují s portem SSL, ale můžete pomocí nástroje, jako `stunnel` bezpečně připojit nástroje SSL port podle pokynů v [uvedení ASP.NET poskytovatele stavu relace pro Redis Verze Preview](http://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) příspěvku na blogu.
+Redis nástroje, jako `redis-cli` nefungují s portem SSL, ale nástroj, který můžete použít například `stunnel` k bezpečnému propojení nástroje SSL port pomocí následujícího postupu v [oznamujeme zprostředkovatel stavu relací ASP.NET pro Redis Verze Preview](http://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) blogový příspěvek.
 
-Pokyny ke stahování nástroje Redis, najdete v článku [jak můžete spouštět příkazy Redis?](#cache-commands) části.
+Pokyny ke stahování nástroje Redis, najdete v článku [jak mohu spustit příkazy Redis?](#cache-commands) oddílu.
 
-### <a name="what-are-some-production-best-practices"></a>Jaké jsou některé z osvědčených postupů produkční?
+### <a name="what-are-some-production-best-practices"></a>Jaké jsou některé osvědčené postupy produkčního prostředí?
 * [Osvědčené postupy StackExchange.Redis](#stackexchangeredis-best-practices)
 * [Konfigurace a koncepty](#configuration-and-concepts)
 * [Testování výkonu](#performance-testing)
 
 #### <a name="stackexchangeredis-best-practices"></a>Osvědčené postupy StackExchange.Redis
-* Nastavit `AbortConnect` na hodnotu false, nechte ConnectionMultiplexer, automaticky se znovu nepřipojí. [Podrobnosti najdete v](https://gist.github.com/JonCole/36ba6f60c274e89014dd#file-se-redis-setabortconnecttofalse-md).
-* Znovu použít ConnectionMultiplexer – nevytvářejte novou pro každý požadavek. `Lazy<ConnectionMultiplexer>` Vzor [tady uvedené](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache) se doporučuje.
-* Redis funguje nejlépe s menší hodnoty, takže zvažte dělení, jsou větší data do více klíčů. V [toto pojednání Redis](https://groups.google.com/forum/#!searchin/redis-db/size/redis-db/n7aa2A4DZDs/3OeEPHSQBAAJ), 100 kb se považuje za velké. Čtení [v tomto článku](https://gist.github.com/JonCole/db0e90bedeb3fc4823c2#large-requestresponse-size) pro problém s příklad, který může být způsobeno velké hodnoty.
-* Konfigurace vaší [nastavení fondu podprocesů](#important-details-about-threadpool-growth) aby se zabránilo vypršení časových limitů.
-* Použijte alespoň connectTimeout výchozí 5 sekund. Tento interval, získáte dostatek času StackExchange.Redis znovu navázat připojení, v případě blip sítě.
-* Pamatujte na výkon nákladů spojených se různé operace, které používáte. Například `KEYS` příkaz je operace O(n) a je nutno. [Redis.io lokality](http://redis.io/commands/) obsahuje podrobnosti kolem složitost čas pro každou operaci, kterou podporuje. Klikněte na každý příkaz zobrazíte složitost pro každou operaci.
+* Nastavte `AbortConnect` na hodnotu false, pak umožní ConnectionMultiplexer automaticky znovu připojit. [Podrobnosti najdete tady](https://gist.github.com/JonCole/36ba6f60c274e89014dd#file-se-redis-setabortconnecttofalse-md).
+* Znovu použít ConnectionMultiplexer – nevytvářejte nový pro každý požadavek. `Lazy<ConnectionMultiplexer>` Vzor [je vidět tady](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache) se doporučuje.
+* Redis funguje nejlépe s menší hodnoty, proto zvažte dělení větší data do více klíčů. V [této diskuse Redis](https://groups.google.com/forum/#!searchin/redis-db/size/redis-db/n7aa2A4DZDs/3OeEPHSQBAAJ), 100 kb se považují za velké. Čtení [v tomto článku](https://gist.github.com/JonCole/db0e90bedeb3fc4823c2#large-requestresponse-size) pro problém s příklad, který může být způsobeno velké hodnoty.
+* Konfigurace vašeho [nastavení fondu vláken](#important-details-about-threadpool-growth) aby se zabránilo vypršení časového limitu.
+* Použijte alespoň connectTimeout výchozí hodnoty 5 sekund. Tento interval pohrál StackExchange.Redis dostatek času pro opětovné vytvoření připojení v případě blip sítě.
+* Mějte na náklady výkonu související s různé operace, které jsou spuštěné. Například `KEYS` příkaz O(n) operace a mělo by se vyhnout. [Redis.io lokality](http://redis.io/commands/) obsahuje podrobnosti o složitost čas pro každou operaci, která ho podporuje. Klikněte na každém z nich zobrazíte složitost pro každou operaci.
 
 #### <a name="configuration-and-concepts"></a>Konfigurace a koncepty
-* Použijte Standard nebo Premium vrstvy pro produkční systémy. Úroveň Basic je systém jednoho uzlu se žádná data replikace a žádné SLA. Rovněž použijte alespoň C1 mezipaměti. C0 mezipamětí jsou obvykle používány pro scénáře vývoje/testování jednoduché.
-* Mějte na paměti, že je Redis **v paměti** úložišti. Čtení [v tomto článku](https://gist.github.com/JonCole/b6354d92a2d51c141490f10142884ea4#file-whathappenedtomydatainredis-md) tak, že jste si vědomi scénáře, kde může dojít ke ztrátě dat.
-* Vývoj systému tak, aby ji může zpracovat připojení blips [z důvodu opravy a převzetí služeb při selhání](https://gist.github.com/JonCole/317fe03805d5802e31cfa37e646e419d#file-azureredis-patchingexplained-md).
+* Použití úrovně Standard a Premium pro produkční systémy. Úroveň Basic je jeden uzel systém se žádná data replikace a žádná smlouva SLA. Také můžete použijte mezipaměť o velikosti alespoň C1. C0 mezipaměti se obvykle používají pro scénáře vývoje/testování jednoduché.
+* Mějte na paměti, že je Redis **In-Memory** datového úložiště. Čtení [v tomto článku](https://gist.github.com/JonCole/b6354d92a2d51c141490f10142884ea4#file-whathappenedtomydatainredis-md) tak, aby měli přehled o scénářích, kde může dojít ke ztrátě dat.
+* Vývoj systému tak, že dokáže zpracovat připojení blips [z důvodu opravy chyb a převzetí služeb při selhání](https://gist.github.com/JonCole/317fe03805d5802e31cfa37e646e419d#file-azureredis-patchingexplained-md).
 
 #### <a name="performance-testing"></a>Testování výkonu
-* Začněte tím, že pomocí `redis-benchmark.exe` podívat pro možné propustnost před zápisem vlastního výkonu testy. Protože `redis-benchmark` nepodporuje protokol SSL, musíte [povolit port bez SSL prostřednictvím portálu Azure](cache-configure.md#access-ports) předtím, než spustíte test. Příklady najdete v tématu [jak mohu srovnávací test a testování výkonu Moje mezipaměti?](#how-can-i-benchmark-and-test-the-performance-of-my-cache)
-* Klient použít pro testování virtuální počítač musí být ve stejné oblasti jako instance mezipaměti Redis.
-* Doporučujeme používat pro vašeho klienta, dokud budou mít lepší hardwaru a získat nejlepších výsledků dosáhnete pomocí řady Dv2 virtuálních počítačů.
-* Zajistěte, aby váš klient zvolíte virtuální počítač má alespoň tolik výpočetních a testování schopnosti šířky pásma jako mezipaměť.
-* Povolte VRSS v klientském počítači. Pokud jste v systému Windows. [Podrobnosti najdete v](https://technet.microsoft.com/library/dn383582.aspx).
-* Úroveň Premium Redis instance mít lepší sítě latence a propustnosti vzhledem k tomu, že jsou spuštěny v lepší hardwaru pro procesoru a sítě.
+* Začněte tím, že pomocí `redis-benchmark.exe` získat představu možné propustnost před zápisem vlastní výkonu testy. Protože `redis-benchmark` nepodporuje SSL, je nutné [povolit port bez SSL na webu Azure portal](cache-configure.md#access-ports) před spuštěním testu. Příklady najdete v tématu [jak srovnávací testy a testování výkonu mezipaměť?](#how-can-i-benchmark-and-test-the-performance-of-my-cache)
+* Klient použít pro testování virtuální počítač by měl být ve stejné oblasti jako vaší instanci služby Redis cache.
+* Doporučujeme použít virtuální počítač řady Dv2 pro vašeho klienta, dokud budou mít lepší hardwaru a měl dát nejlepších výsledků.
+* Ujistěte se, že váš klient zvolíte virtuální počítač má alespoň tolik výpočetního prostředí a testování šířky pásma funkce jako mezipaměť.
+* Povolte VRSS v klientském počítači. Pokud jste na Windows. [Podrobnosti najdete tady](https://technet.microsoft.com/library/dn383582.aspx).
+* Instance Redis úrovně Premium mají lépe síťová latence a propustnosti vzhledem k tomu, na kterém běží lepší hardwaru pro procesoru a sítě.
 
 <a name="cache-redis-commands"></a>
 
-### <a name="what-are-some-of-the-considerations-when-using-common-redis-commands"></a>Jaké jsou některé aspekty při pomocí běžných příkazů Redis?
-* Nespouštějte určité Redis příkazy, které trvat dlouhou dobu pro dokončení bez porozumění vlivu těchto příkazů.
-  * Například se nespustí [klíče](http://redis.io/commands/keys) příkazů v produkčním prostředí, protože to může trvat dlouhou dobu vrátit v závislosti na počet klíčů. Redis je server jednovláknové a zpracovává příkazy jeden najednou. Pokud máte další příkazy vydané po klíče, nebudou zpracovány až Redis zpracuje příkaz klíče. [Redis.io lokality](http://redis.io/commands/) obsahuje podrobnosti kolem složitost čas pro každou operaci, kterou podporuje. Klikněte na každý příkaz zobrazíte složitost pro každou operaci.
-* Velikosti klíče - použít malé klíč/hodnota nebo velké klíč/hodnota? Obecně platí závisí na scénáři. Pokud váš scénář vyžaduje větší klíčů, můžete upravit ConnectionTimeout a opakujte hodnot a upravit logika opakovaných pokusů. Z hlediska serveru Redis jsou dodržovány menší hodnoty do mají lepší výkon.
-* Tyto aspekty nemáte znamenat vyšší hodnoty nelze uložit do Redis; je potřeba vědět následující aspekty. Latence bude vyšší. Pokud máte jednu sadu dat, která je větší a ten, který je menší, můžete použít několik instancí ConnectionMultiplexer, každý nakonfigurován s jinou sadu hodnot časového limitu a zkuste to znovu, jak je popsáno v předchozí [co dělat StackExchange.Redis Možnosti konfigurace provést](#cache-configuration) části.
+### <a name="what-are-some-of-the-considerations-when-using-common-redis-commands"></a>Jaké jsou některé aspekty při používání běžné příkazy Redis?
+* Byste neměli spouštět některé příkazy Redis, což trvat dlouhou dobu pro dokončení bez informací o dopadu těchto příkazů.
+  * Například, nespouštějte [klíče](http://redis.io/commands/keys) příkaz v produkčním prostředí, protože to může trvat dlouhou dobu vrátit v závislosti na počtu klíčů. Redis je server s jedním vláknem a zpracovává příkazy jeden po druhém. Pokud máte další příkazy vydané po klíče, nebudou zpracovány dokud Redis zpracuje příkaz klíče. [Redis.io lokality](http://redis.io/commands/) obsahuje podrobnosti o složitost čas pro každou operaci, která ho podporuje. Klikněte na každém z nich zobrazíte složitost pro každou operaci.
+* Velikostí klíče - použít klíč/hodnota malé nebo velké klíč/hodnota? Obecně platí závisí na scénáři. Pokud vaše situace vyžaduje větší klíče, můžete upravit hodnota ConnectionTimeout a opakujte hodnot a upravit svoji logiku opakování. Z pohledu serveru Redis jsou dodržovány menší hodnoty mít lepší výkon.
+* Tyto aspekty neznamenají, že nemůžete uložit vyšší hodnoty v Redis; musíte být vědomi následující aspekty. Bude vyšší latencí. Pokud máte jednu sadu dat, která je větší a ten, který je menší, můžete použít několik instancí ConnectionMultiplexer, každý nakonfigurován s jinou sadou hodnot časového limitu a zkuste to znovu, jak je popsáno v předchozí [co dělat StackExchange.Redis Možnosti konfigurace proveďte](#cache-configuration) oddílu.
 
 <a name="cache-benchmarking"></a>
 
-### <a name="how-can-i-benchmark-and-test-the-performance-of-my-cache"></a>Jak můžete otestovat a testování výkonu Moje mezipaměti?
+### <a name="how-can-i-benchmark-and-test-the-performance-of-my-cache"></a>Jak můžu srovnávací testy a testování výkonu mezipaměť?
 * [Povolte diagnostiku mezipaměti](cache-how-to-monitor.md#enable-cache-diagnostics), abyste mohli [monitorovat](cache-how-to-monitor.md) stav svojí mezipaměti. Metriky lze zobrazit na webu Azure Portal a můžete je také [stáhnout a revidovat](https://github.com/rustd/RedisSamples/tree/master/CustomMonitoring) pomocí nástrojů dle vašeho výběru.
-* Redis benchmark.exe můžete zátěžový test serveru Redis.
-* Zajistěte, aby zatížení testování klienta a mezipaměť Redis ve stejné oblasti.
-* Použijte redis cli.exe a monitorovat mezipaměti pomocí příkazu informace.
-* Pokud zatížení způsobuje fragmentace velkého množství paměti, měli škálovat na větší velikost mezipaměti.
-* Pokyny ke stahování nástroje Redis, najdete v článku [jak můžete spouštět příkazy Redis?](#cache-commands) části.
+* Vám pomůže redis benchmark.exe zátěžový test vašeho serveru Redis.
+* Zajistěte, aby byly zátěžové testování klienta a Redis cache ve stejné oblasti.
+* Použití redis-cli.exe a sledování mezipaměti pomocí příkazu informace.
+* Pokud zatížení způsobuje fragmentaci velkého množství paměti, by měla vertikálně navýšit kapacitu na větší velikost mezipaměti.
+* Pokyny ke stahování nástroje Redis, najdete v článku [jak mohu spustit příkazy Redis?](#cache-commands) oddílu.
 
-Následující příkazy uveďte příklad použití redis benchmark.exe. Pro přesné výsledky spusťte tyto příkazy z virtuálního počítače ve stejné oblasti jako vaše mezipaměť.
+Následující příkazy jsou příkladem použití redis benchmark.exe. Pro přesné výsledky spusťte tyto příkazy z virtuálního počítače ve stejné oblasti jako mezipaměť.
 
-* Požadavky testovacího zřetězena SET pomocí datovou část 1 kB
+* Pomocí datové části je 1 kB žádosti o zřetězena nastavení testu
 
   `redis-benchmark.exe -h **yourcache**.redis.cache.windows.net -a **yourAccesskey** -t SET -n 1000000 -d 1024 -P 50`
-* Test zřetězena získat požadavků pomocí datovou část 1 kB.
-  Poznámka: Spustit sadu testů uvedené výše nejprve k naplnění mezipaměti
+* Test zřetězena získat požadavků pomocí datové části je 1 kB.
+  Poznámka: Spustit test sada je uveden výše nejprve k naplnění mezipaměti
 
   `redis-benchmark.exe -h **yourcache**.redis.cache.windows.net -a **yourAccesskey** -t GET -n 1000000 -d 1024 -P 50`
 
 <a name="threadpool"></a>
 
-### <a name="important-details-about-threadpool-growth"></a>Důležité podrobnosti o fondu růst
-Zachovalo CLR má dva typy vláken - "Pracovník" a "Portu dokončení vstupně-výstupních operací" (neboli portu IOCP) vláken.
+### <a name="important-details-about-threadpool-growth"></a>Důležité podrobnosti o růstu fondu vláken
+Fondu vláken CLR má dva typy vláken – "Pracovní" a "Portu dokončení I/O%N" (neboli portu IOCP) vlákna.
 
-* Pracovní vlákna se používají při pro takové věci, jako zpracování `Task.Run(…)` nebo `ThreadPool.QueueUserWorkItem(…)` metody. Tyto vláken používají různé součásti v modulu CLR taky, když pracovní musí provést na vlákna na pozadí.
-* Vlákna portu IOCP se používají při asynchronní vstupně-výstupní operace se stane (např. čtení ze sítě).
+* Pracovní vlákna se používají při pro takové věci, jako jsou zpracování `Task.Run(…)` nebo `ThreadPool.QueueUserWorkItem(…)` metody. Tato vlákna používají různé součásti v CLR také, když pracovní musí dojít na vlákně na pozadí.
+* Portu IOCP vlákna se používají, když asynchronní vstupně-výstupní operace se stane (třeba čtení ze sítě).
 
-Fond vláken poskytuje nové pracovních vláken nebo vláken dokončení vstupně-výstupních operací na vyžádání (bez žádné omezení) dokud nedosáhne nastavení "Minimální" pro každý typ přístup z více vláken. Ve výchozím nastavení minimální počet vláken, nastavena na počet procesorů v systému.
+Fondu vláken poskytuje nové pracovní vlákna nebo vlákna dokončení vstupně-výstupních operací na vyžádání (bez žádné omezení) dokud nedosáhne nastavení "Minimální" pro každý typ vlákna. Ve výchozím nastavení je nastavit minimální počet vláken na počet procesorů v systému.
 
-Jakmile se počet vláken, existující (zaneprázdněn) dotkne "minimální" počet vláken, zachovalo omezení rychlost, jakou se vloží nový vláken na jedno vlákno na jeden 500 milisekund Obvykle se váš systém získá shluku práce portu IOCP přístup z více vláken, která potřebuje, zpracována bude tento pracovní velmi rychle. Ale pokud shluků práce je větší než nakonfigurované nastavení "Minimální", budou existovat některé zpoždění při zpracování některé úkoly, jako zachovalo čeká na jednu ze dvou akcí provést.
+Jakmile narazí na počet vláken existující (zaneprázdněn) "minimální" počet vláken, fondu vláken se omezení rychlost, jakou ji vkládá nová vlákna na jedno vlákno na jeden 500 milisekund. Obvykle Pokud váš systém získá zřízeno práce potřebují portu IOCP vlákna, zpracuje, které pracují velmi rychle. Ale pokud burst práce je větší než nakonfigurované nastavení "Minimální", bude určité zpoždění zpracování určitou část práce fondu vláken čeká na jednu ze dvou kroků, které se provedou.
 
 1. Existující vlákno neuvolní zpracovat práce.
-2. Žádné existující vlákno neuvolní pro 500ms, takže se vytvoří nové vlákno.
+2. Žádné existující vlákno nebude zdarma po dobu 500ms, takže se vytvoří nové vlákno.
 
-V zásadě platí znamená to, že když počet vytížených vláken je vyšší než minimální vláken, pravděpodobně platíte 500ms zpoždění dříve, než je pomocí aplikace síťový provoz. Je také důležité si uvědomit, že když existující vlákno zůstává nečinné po dobu delší než 15 sekund (podle I zapamatovat), se vyčistí a tento cyklus růstu a redukce, můžete opakovat.
+V podstatě znamená, že když počet zaneprázdněných vláken je větší než minimální vláken, pravděpodobně platíte 500ms zpoždění před zpracováním síťového provozu aplikací. Je také důležité si uvědomit, že když existující vlákno zůstává nečinné po dobu delší než 15 sekund (podle pamatuji si), se vyčistí a tento cyklus růstu a snižování můžete opakovat.
 
-Pokud se podíváme na příklad chybovou zprávu z StackExchange.Redis (sestavení 1.0.450 nebo novější), zobrazí se, že nyní vytiskne statistiky fondu (viz níže portu IOCP a pracovní podrobnosti).
+Pokud se podíváme na příklad chybová zpráva z StackExchange.Redis (sestavení 1.0.450 nebo novější), zobrazí se, že nyní vypíše statistiky fondu vláken (viz pracovního procesu a portu IOCP podrobnosti níže).
 
     System.TimeoutException: Timeout performing GET MyKey, inst: 2, mgr: Inactive,
     queue: 6, qu: 0, qs: 6, qc: 0, wr: 0, wq: 0, in: 0, ar: 0,
     IOCP: (Busy=6,Free=994,Min=4,Max=1000),
     WORKER: (Busy=3,Free=997,Min=4,Max=1000)
 
-V předchozím příkladu uvidíte, že pro přístup z více vláken portu IOCP jsou 6 zaneprázdněn vláken a systém je nakonfigurován umožňující 4 minimální počet vláken činí. V tomto případě klient by pravděpodobně viděli jste dva zpoždění 500 ms protože 6 > 4.
+V předchozím příkladu můžete uvidíte, že pro vlákno portu IOCP jsou 6 zaneprázdněná vlákna a systém je nakonfigurován tak, že umožňují 4 minimální počet vláken. V tomto případě klient by pravděpodobně viděli dvě zpoždění 500 ms protože 6 > 4.
 
-Všimněte si, že můžete StackExchange.Redis Pokud získá omezuje růst portu IOCP nebo pracovních vláken dosáhl vypršení časových limitů.
+Všimněte si, že StackExchange.Redis mohli dostat vypršení časového limitu, když získá omezený růstu portu IOCP nebo pracovní vlákna.
 
 ### <a name="recommendation"></a>Doporučení
-Zvážení všech informací, důrazně doporučujeme, aby zákazníci nastavte hodnotu minimální konfigurace pro portu IOCP a pracovních vláken na něco větší než je výchozí hodnota. Jsme nelze udělit univerzálně pokyny k co tato hodnota by měla být hodnota pravé pro jednu aplikaci proto bude příliš vysokou a nízkým pro jinou aplikaci. Tato nastavení mohou ovlivnit výkon dalších částí složitých aplikací, takže každý zákazník musí a systém doladit toto nastavení pro jejich konkrétní potřeby. Je dobré počáteční se 200 nebo 300, pak otestovat a upravit podle potřeby.
+Tyto informace zadané, důrazně doporučujeme, že zákazníci nastavit hodnotu minimální konfiguraci portu IOCP a pracovních vláken na něco větší než je výchozí hodnota. Poskytujeme nelze univerzální doprovodné materiály k co tato hodnota by měla být správné hodnoty pro jednu aplikaci proto bude příliš vysoká nebo Nízká pro jinou aplikaci. Tato nastavení mohou ovlivnit výkon dalších částí složitých aplikací, takže každý zákazník potřebuje pro vyladění toto nastavení pro jejich konkrétní potřeby. Dobrý výchozí bod je 200 a 300, otestujte a upravit podle potřeby.
 
-Postup konfigurace tohoto nastavení:
+Jak nakonfigurovat toto nastavení:
 
-* V technologii ASP.NET, použijte ["minIoThreads" nebo "minWorkerThreads" nastavení konfigurace] [ "minIoThreads" configuration setting] pod `<processModel>` konfiguračního prvku v souboru web.config. Pokud používáte uvnitř weby Azure, toto nastavení nebude vystavena prostřednictvím možnosti konfigurace. Ale nyní byste měli stále mít ke konfiguraci tohoto nastavení prostřednictvím kódu programu (viz níže) z metodu Application_Start v global.asax.cs.
+* V technologii ASP.NET, použijte ["minIoThreads" nebo "minWorkerThreads" nastavení konfigurace] [ "minIoThreads" configuration setting] pod `<processModel>` konfiguračního prvku v souboru web.config. Pokud používáte v rámci Azure WebSites, toto nastavení není dostupná možnosti konfigurace. Ale měli stále budete moci nakonfigurovat tato nastavení programově (viz níže) z vaší metody Application_Start v global.asax.cs.
 
   > [!NOTE] 
-  > Hodnota zadaná v tomto elementu konfigurace je *za jádra* nastavení. Například pokud máte 4jádrový počítač a chcete nastavení minIOThreads na 200 za běhu, byste použili `<processModel minIoThreads="50"/>`.
+  > Hodnota zadaná v tento prvek konfigurace je *na jádro* nastavení. Například pokud máte 4jádrový počítač a chcete nastavení minIOThreads být 200 za běhu, použijete `<processModel minIoThreads="50"/>`.
   >
 
-* Mimo technologii ASP.NET a soubor global.asax weby Azure, použijte [ThreadPool.SetMinThreads (...)] (https://msdn.microsoft.com/library/system.threading.threadpool.setminthreads.aspx) Rozhraní API.
+* Mimo technologii ASP.NET a Azure WebSites global.asax, použijte [ThreadPool.SetMinThreads (...)] (https://msdn.microsoft.com/library/system.threading.threadpool.setminthreads.aspx) Rozhraní API.
 
   > [!NOTE]
-  > Hodnotu zadanou pomocí toto rozhraní API je globální nastavení, které mají vliv na celý domény aplikace. Pokud máte 4jádrový počítač a chcete nastavit minWorkerThreads a minIOThreads na 50 za využití procesoru při běhu, využije ThreadPool.SetMinThreads (200, 200).
+  > Hodnotu zadanou pomocí tohoto rozhraní API je globální nastavení, by to ovlivnilo celé doméně AppDomain. Pokud máte 4jádrový počítač a chcete nastavit minWorkerThreads a minIOThreads až 50 jeden procesor a jsou za běhu, můžete využít ThreadPool.SetMinThreads (200, 200).
 
 <a name="server-gc"></a>
 
-### <a name="enable-server-gc-to-get-more-throughput-on-the-client-when-using-stackexchangeredis"></a>Povolit serveru globálního katalogu získat další propustnosti na straně klienta při používání StackExchange.Redis
-Povolení serveru globálního katalogu, můžete optimalizovat klienta a poskytují lepší výkon a propustnost při používání StackExchange.Redis. Další informace o serveru globálního katalogu a jak ji povolit najdete v následujících článcích:
+### <a name="enable-server-gc-to-get-more-throughput-on-the-client-when-using-stackexchangeredis"></a>Povolit uvolňování paměti serveru získat větší propustnost na straně klienta při používání StackExchange.Redis
+Povolování uvolňování paměti serveru může optimalizovat klienta a zajišťuje lepší výkon a propustnost při použití StackExchange.Redis. Další informace o uvolňování paměti serveru a jak se dá povolit najdete v následujících článcích:
 
-* [Chcete-li povolit serveru globálního katalogu](https://msdn.microsoft.com/library/ms229357.aspx)
+* [Chcete-li povolit uvolňování paměti serveru](https://msdn.microsoft.com/library/ms229357.aspx)
 * [Základy kolekce paměti](https://msdn.microsoft.com/library/ee787088.aspx)
-* [Uvolňování paměti a výkon](https://msdn.microsoft.com/library/ee851764.aspx)
+* [Uvolňování paměti a výkonu](https://msdn.microsoft.com/library/ee851764.aspx)
 
 
-### <a name="performance-considerations-around-connections"></a>Faktory ovlivňující výkon kolem připojení
+### <a name="performance-considerations-around-connections"></a>Důležité informace o výkonu po připojení
 
-Každá cenová úroveň má jiné limity pro připojení klientů, paměti a šířky pásma. Při každém velikost mezipaměti umožňuje *až* určitý počet připojení, každé připojení k Redis má režie spojená s ním spojená. Příkladem takových režie může být využití procesoru a paměti v důsledku šifrování pomocí protokolu TLS/SSL. Připojení maximální limit pro velikost daného mezipaměti předpokládá lehkým načíst mezipaměti. Pokud načíst z režijní náklady na připojení *plus* zatížení z klientské operace překročí kapacitu pro systém, mezipaměti můžete mít problémy kapacitu, i pokud nebyl překročen limit připojení pro aktuální velikost mezipaměti.
+Každá cenová úroveň má jiné omezení pro připojení klientů, paměti a šířky pásma. Zatímco jednotlivé velikosti mezipaměti umožňuje *až* určitý počet připojení, každé připojení k Redis režie k němu má přidružené. Příkladem takových zatížení může být využití procesoru a paměti v důsledku šifrování TLS/SSL. Limit pro velikost daného mezipaměti maximální připojení předpokládá lehce načíst mezipaměti. Pokud načtení z připojení režii *plus* zatížení z klientské operace přesahuje kapacitu pro systém, mezipaměti může docházet potíže s kapacitou, i pokud nebyl překročen limit připojení pro aktuální velikost mezipaměti.
 
-Další informace o omezeních různá připojení pro každou vrstvu najdete v tématu [cenách Azure Redis Cache](https://azure.microsoft.com/pricing/details/cache/). Další informace o připojení a další výchozí konfigurace najdete v tématu [Redis výchozí konfigurace serveru](cache-configure.md#default-redis-server-configuration).
+Další informace o omezeních různých připojení pro jednotlivé úrovně najdete v tématu [cenách Azure Redis Cache](https://azure.microsoft.com/pricing/details/cache/). Další informace o připojení a další výchozí konfigurace najdete v tématu [konfigurace serveru Redis výchozí](cache-configure.md#default-redis-server-configuration).
 
 <a name="cache-monitor"></a>
 
-### <a name="how-do-i-monitor-the-health-and-performance-of-my-cache"></a>Jak monitorovat stav a výkon Moje mezipaměti?
-Instance služby Microsoft Azure Redis Cache lze ji monitorovat na [portál Azure](https://portal.azure.com). Můžete zobrazit metriky, připnout grafy metriky na úvodní panel, přizpůsobení datum a čas rozsah monitorování grafy, přidat a metriky odebrání grafy a nastavit upozornění, pokud jsou splněny určité podmínky. Další informace najdete v tématu [monitorování Azure Redis Cache](cache-how-to-monitor.md).
+### <a name="how-do-i-monitor-the-health-and-performance-of-my-cache"></a>Jak monitorovat stav a výkon své mezipaměti?
+Instance služby Microsoft Azure Redis Cache můžete sledovat v [webu Azure portal](https://portal.azure.com). Můžete zobrazit metriky, připnout grafy metrik na úvodní panel, přizpůsobení datum a čas, množství grafy monitorování, přidání a odebrání grafy metrik a nastavit upozornění při splnění určitých podmínek. Další informace najdete v tématu [monitorování Azure Redis Cache](cache-how-to-monitor.md).
 
-Mezipaměť Redis **prostředků nabídky** také obsahuje několik nástrojů pro monitorování a řešení potíží s své mezipaměti.
+Redis Cache **nabídce prostředků** také obsahuje několik nástrojů pro monitorování a řešení potíží s vaší mezipaměti.
 
-* **Diagnostika a řešení problémů** poskytuje informace o běžných problémech a strategie pro jejich řešení.
-* **Stav prostředku** sleduje prostředku a zjistíte, zda je spuštěn podle očekávání. Další informace o službě stavu prostředků Azure najdete v tématu [přehled stavu prostředků Azure](../resource-health/resource-health-overview.md).
-* **Nová žádost o podporu** nabízí možnosti pro otevření žádosti o podporu pro mezipaměť.
+* **Diagnostikovat a řešit problémy** poskytuje informace o běžných problémech a strategie pro jejich řešení.
+* **Služba Resource health** sleduje váš prostředek a řekne vám, jestli funguje podle očekávání. Další informace o službě Azure Resource health najdete v tématu [přehled Azure Resource health](../resource-health/resource-health-overview.md).
+* **Nová žádost o podporu** nabízí možnosti pro žádost o podporu ke svojí mezipaměti.
 
-Tyto nástroje vám umožňují sledovat stav vaší instance služby Azure Redis Cache a vám pomohou při správě aplikace ukládání do mezipaměti. Další informace najdete v sekci "Podpory a řešení potíží nastavení" [postup konfigurace Azure Redis Cache](cache-configure.md).
+Tyto nástroje umožňují snadno monitorovat stav instancí Azure Redis Cache a vám pomohou při správě ukládání do mezipaměti aplikace. Další informace najdete v části "Podpora a řešení potíží nastavení" z [konfigurace Azure Redis Cache](cache-configure.md).
 
 <a name="cache-timeouts"></a>
 
-### <a name="why-am-i-seeing-timeouts"></a>Proč se zobrazuje časové limity?
-Časové limity dojde v klientovi, který můžete použít ke komunikaci s Redis. Příkaz je odeslán na serveru Redis, příkaz zařazen do fronty a nakonec převezme příkaz serveru Redis a provede ji. Ale klient může vypršení časového limitu během tohoto procesu a pokud ano výjimku se vyvolá při volání straně. Další informace o řešení potíží s vypršení časového limitu, najdete v části [řešení potíží s klientskou](cache-how-to-troubleshoot.md#client-side-troubleshooting) a [výjimkám časového limitu StackExchange.Redis](cache-how-to-troubleshoot.md#stackexchangeredis-timeout-exceptions).
+### <a name="why-am-i-seeing-timeouts"></a>Proč se mi zobrazuje časové limity?
+Dojde k vypršení časového limitu v klientovi, který použijete ke komunikaci s Redis. Při odesílání příkazu k serveru Redis, příkaz je zařazeny do fronty a serveru Redis nakonec vybere příkaz a spustí ho. Ale klient může vypršení časového limitu během tohoto procesu a pokud se výjimka je vyvolána na straně volajícího. Další informace o řešení problémů při vypršení časového limitu najdete v tématu [řešení potíží na straně klienta](cache-how-to-troubleshoot.md#client-side-troubleshooting) a [výjimkám časového limitu StackExchange.Redis](cache-how-to-troubleshoot.md#stackexchangeredis-timeout-exceptions).
 
 <a name="cache-disconnect"></a>
 
-### <a name="why-was-my-client-disconnected-from-the-cache"></a>Proč byl klient odpojen z mezipaměti?
-Níže jsou uvedeny některé běžným důvodem pro odpojení mezipaměti.
+### <a name="why-was-my-client-disconnected-from-the-cache"></a>Proč se můj klient odpojen z mezipaměti?
+Tady jsou některé z běžných důvodů mezipaměti odpojit.
 
 * Způsobí, že na straně klienta
-  * Klientská aplikace byla znovu nasazena.
-  * Klientská aplikace provedla operaci škálování.
-    * V případě cloudové služby nebo webové aplikace může to být způsobeno automatické škálování.
+  * Klientská aplikace byla znovu nasadil.
+  * Klientská aplikace provést operaci škálování.
+    * V případě cloudových služeb nebo webových aplikací může to být způsobeno automatickým Škálováním.
   * Změnit síťovou vrstvou na straně klienta.
-  * Přechodné chyby v klientovi nebo na uzlech sítě mezi klientem a serverem došlo k chybě.
+  * V klientovi nebo síťové uzly mezi klientem a serverem došlo k přechodné chyby.
   * Bylo dosaženo prahové limity šířky pásma.
-  * Procesor vázaný operace trvalo příliš dlouho dokončení.
+  * Procesor vázán operace trvalo moc dlouho.
 * Způsobí, že na straně serveru
-  * U standardní mezipaměti nabídky inicializovat službu Azure Redis Cache selhání z primárního uzlu sekundárního uzlu.
-  * Azure byla opravy instance, kde byla nasazena do mezipaměti
+  * Na standardní mezipaměti nabídky Inicializuje službu Azure Redis Cache převzetí služeb při selhání z primárního uzlu na sekundární uzel.
+  * Azure byl opravy instance nasazená do mezipaměti
     * To může být pro aktualizace serveru Redis nebo Obecná údržba virtuálního počítače.
 
 ### <a name="which-azure-cache-offering-is-right-for-me"></a>Kterou z variant Mezipaměti Azure si mám vybrat?
 > [!IMPORTANT]
-> Podle poslední rok [oznámení](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/), služby Azure spravované mezipaměti Service a Azure v roli Cache **mít bylo vyřazeno z provozu** 30. listopadu 2016. Naše doporučení je použití [Azure Redis Cache](https://azure.microsoft.com/services/cache/). Informace o migraci naleznete v tématu [migrace ze spravované služby mezipaměti Azure Redis Cache](cache-migrate-to-redis.md).
+> Podle loňském turnaji [oznámení](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/), služba Azure Managed Cache Service a mezipaměť In-Role Azure **mají vyřazený** na 30. listopadu 2016. Naše doporučení je použití [Azure Redis Cache](https://azure.microsoft.com/services/cache/). Informace o migraci najdete v tématu [migrace ze služby Managed Cache Service k Azure Redis Cache](cache-migrate-to-redis.md).
 >
 >
 
 ### <a name="azure-redis-cache"></a>Azure Redis Cache
-Azure Redis Cache je všeobecně dostupná v velikostí až do 53 GB a má SLA 99,9 % dostupnosti. Nové [úroveň premium](cache-premium-tier-intro.md) nabízí velikosti až 530 GB a podpora pro clustering, virtuální síť a trvalost s SLA 99,9 %.
+Azure Redis Cache je obecně dostupné ve velikosti až 53 GB a má smlouvu SLA 99,9 % dostupnosti. Nové [úroveň premium](cache-premium-tier-intro.md) nabízí velikosti až 530 GB a podpora pro clustering, virtuální síť a trvalost, se smlouvou SLA 99,9 %.
 
-Azure Redis Cache vám umožňuje používat zabezpečené, vyhrazené mezipaměti Redis spravované microsoftem zákazníků. S touto nabídkou získáte využívat bohaté sadě funkcí a ekosystém poskytované Redis a spolehlivého hostování a monitorování od Microsoftu.
+Azure Redis Cache umožňuje zákazníkům používat zabezpečené, vyhrazené mezipaměti Redis, spravovanou microsoftem. Díky této nabídce přístup k bohaté sadě funkcí a ekosystému Redis a spolehlivé hostování a sledování od Microsoftu.
 
-Na rozdíl od tradičních mezipaměti, která se týkají jenom s páry klíč hodnota je pro jeho vysokou původce datové typy Redis. Redis také podporuje běh atomické operací pro tyto typy, jako je připojení k řetězec; přírůstkovou hodnotou v hodnotu hash; vkládání do seznamu; výpočetní průnik sady, union a rozdíl; nebo člen s nejvyšším pořadím v seřazené sady. Další funkce zahrnují podporu pro transakce, pub nebo sub, Lua skriptování, klíče s omezenou time-to-live a nastavení konfigurace, aby se chovat spíše jako tradiční mezipaměti Redis.
+Na rozdíl od tradičních mezipamětí, které se zabývají pouze páry klíč hodnota je pro jeho vysoce výkonné datové typy Redis. Redis také podporuje spouštění atomické operace na tyto typy, jako je připojení k řetězec; zvyšování hodnoty do hodnoty hash; doručením (push) do seznamu. výpočetní průnik, sjednocení a rozdíl; nebo získání člena s nejvyšším pořadím v seřazené sady. Další funkce zahrnují podporu pro transakce, publikování a odběr, Lua skriptování, klíče s omezenou time-to-live a nastavení konfigurace více zaškrtávacímu tradiční mezipaměti Redis, aby.
 
-Další aspekt klíče na úspěšné provedení Redis je v pořádku, živoucí s otevřeným zdrojem ekosystému vytvořené kolem něj. To se projeví v sadě různých klientů Redis k dispozici v několika jazycích. Tento ekosystém a širokou škálu klientům povolit Azure Redis Cache má být používána skoro všechny úlohy, jež by sestavení v rámci Azure.
+Dalším aspektem klíče na úspěšné provedení Redis je otevřít zdroj v pořádku, živý ekosystém postavené na to. Toto je zohledněno v různorodou sadu klientů Redis k dispozici v různých jazycích. Tento ekosystém a širokou škálu klientů povolit Azure Redis Cache můžete použít prakticky pro každou úlohu, které by sestavení v rámci služby Azure.
 
-Další informace o seznámení se s Azure Redis Cache najdete v tématu [postup použití Azure Redis Cache](cache-dotnet-how-to-use-azure-redis-cache.md) a [dokumentace k Azure Redis Cache](index.md).
+Další informace o zahájení práce s Azure Redis Cache najdete v tématu [tom, jak používat Azure Redis Cache](cache-dotnet-how-to-use-azure-redis-cache.md) a [dokumentace ke službě Azure Redis Cache](index.md).
 
-### <a name="managed-cache-service"></a>Spravované služby mezipaměti
-[Spravované mezipaměti služby vyřazenou 30. listopadu 2016.](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)
+### <a name="managed-cache-service"></a>Služba Managed Cache service
+[Managed Cache service skončil 30. listopadu 2016.](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)
 
-Archivované dokumentaci najdete v tématu [archivovaný spravované dokumentaci mezipaměti služby](https://msdn.microsoft.com/library/azure/dn386094.aspx).
+Chcete-li zobrazit Archivovaná dokumentace, naleznete v tématu [archivované spravovaná mezipaměť dokumentace ke službě](https://msdn.microsoft.com/library/azure/dn386094.aspx).
 
 ### <a name="in-role-cache"></a>Mezipaměť hostovaná v instanci role
-[Mezipaměť hostovaná v instanci Role vyřazenou 30. listopadu 2016.](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)
+[Mezipaměť in-Role skončil 30. listopadu 2016.](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)
 
-Archivované dokumentaci najdete v tématu [archivovaný dokumentace mezipaměť hostovaná v instanci Role](https://msdn.microsoft.com/library/azure/dn386103.aspx).
+Chcete-li zobrazit Archivovaná dokumentace, naleznete v tématu [Archivovaná dokumentace k mezipaměti In-Role](https://msdn.microsoft.com/library/azure/dn386103.aspx).
 
 ["minIoThreads" configuration setting]: https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx

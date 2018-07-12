@@ -1,6 +1,6 @@
 ---
-title: Jak používat fronty Azure Service Bus s Ruby | Microsoft Docs
-description: Naučte se používat fronty Service Bus v Azure. Ukázky kódu jsou vytvořeny v Ruby.
+title: Jak používat fronty služby Azure Service Bus pomocí Ruby | Dokumentace Microsoftu
+description: Naučte se používat fronty Service Bus v Azure. Ukázky kódu napsané v Ruby.
 services: service-bus-messaging
 documentationcenter: ruby
 author: sethmanheim
@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 08/10/2017
 ms.author: sethm
 ms.openlocfilehash: 357a7277dd42b6973cf35a9f642b8eec36a745e3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23868442"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38232934"
 ---
-# <a name="how-to-use-service-bus-queues-with-ruby"></a>Jak používat fronty Service Bus s Ruby
+# <a name="how-to-use-service-bus-queues-with-ruby"></a>Jak používat fronty služby Service Bus pomocí Ruby
 
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
-Tato příručka popisuje, jak používat fronty Service Bus. Ukázky jsou napsané v Ruby a používají Azure gem. Pokryté scénáře zahrnují **vytváření front, odesílání a přijímání zpráv**, a **odstraňování front**. Další informace o fronty Service Bus, najdete v článku [další kroky](#next-steps) části.
+Tato příručka popisuje, jak používat fronty Service Bus. Ukázky jsou napsané v Ruby a používají Azure gem. Mezi popsané scénáře patří **vytváření fronty, odesílání a přijímání zpráv**, a **odstranění front**. Další informace o fronty služby Service Bus, najdete v článku [další kroky](#next-steps) oddílu.
 
 [!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
 
@@ -33,8 +33,8 @@ Tato příručka popisuje, jak používat fronty Service Bus. Ukázky jsou napsa
    
 [!INCLUDE [service-bus-ruby-setup](../../includes/service-bus-ruby-setup.md)]
 
-## <a name="how-to-create-a-queue"></a>Postup vytvoření fronty
-**Azure::ServiceBusService** objektu umožňuje pracovat s fronty. Chcete-li vytvořit frontu, použijte `create_queue()` metoda. Následující příklad vytvoří frontu nebo vytiskne případné chyby.
+## <a name="how-to-create-a-queue"></a>Jak vytvořit frontu
+**Azure::ServiceBusService** objektu umožňuje pracovat s frontami. Chcete-li vytvořit frontu, použijte `create_queue()` metody. Následující příklad vytvoří frontu nebo vytiskne všechny chyby.
 
 ```ruby
 azure_service_bus_service = Azure::ServiceBus::ServiceBusService.new(sb_host, { signer: signer})
@@ -45,7 +45,7 @@ rescue
 end
 ```
 
-Můžete také předat **Azure::ServiceBus::Queue** objektu s další možnosti, které můžete přepsat výchozí nastavení fronty, jako je například čas zprávy do fronty za provozu nebo maximální velikost. Následující příklad ukazuje, jak nastavit maximální velikost fronty 5 GB a čas TTL na 1 minutu:
+Můžete také předat **Azure::ServiceBus::Queue** objekt s další možnosti, které můžete přepsat výchozí nastavení fronty, jako je například čas zprávy do fronty za provozu nebo maximální velikost. Následující příklad ukazuje, jak nastavit maximální velikost fronty 5 GB a čas TTL na 1 minutu:
 
 ```ruby
 queue = Azure::ServiceBus::Queue.new("test-queue")
@@ -55,10 +55,10 @@ queue.default_message_time_to_live = "PT1M"
 queue = azure_service_bus_service.create_queue(queue)
 ```
 
-## <a name="how-to-send-messages-to-a-queue"></a>Odesílání zpráv do fronty
-K odeslání zprávy do fronty Service Bus, vaše aplikace volání `send_queue_message()` metodu **Azure::ServiceBusService** objektu. Zprávy odeslané do (a přijaté z) jsou fronty Service Bus **Azure::ServiceBus::BrokeredMessage** objekty a mají sadu standardních vlastností (jako například `label` a `time_to_live`), slovník, který se používá k ukládání vlastní vlastnosti specifické pro aplikace a tělo s libovolnými aplikačními daty. Aplikace může tělo zprávy nastavit předáním řetězcovou hodnotu jako zprávu, a jakékoliv nezbytné vlastnosti, standardní se naplní výchozí hodnoty.
+## <a name="how-to-send-messages-to-a-queue"></a>Postup odesílání zpráv do fronty
+Odeslat zprávu do fronty služby Service Bus, vaše aplikace volání `send_queue_message()` metodu **Azure::ServiceBusService** objektu. Zprávy odeslané do (a přijatých z) služby Service Bus jsou fronty **Azure::ServiceBus::BrokeredMessage** objektů a mají sadu standardních vlastností (jako například `label` a `time_to_live`), slovník, který se používá k ukládání vlastní vlastnosti specifické pro aplikace a tělo libovolnými aplikačními daty. Aplikace může tělo zprávy nastavit předáním řetězce hodnoty jako zpráva a jakékoliv nezbytné vlastnosti standardní se naplní výchozími hodnotami.
 
-Následující příklad ukazuje, jak odeslat testovací zprávu do fronty s názvem `test-queue` pomocí `send_queue_message()`:
+Následující příklad ukazuje, jak odeslat zkušební zprávu do fronty s názvem `test-queue` pomocí `send_queue_message()`:
 
 ```ruby
 message = Azure::ServiceBus::BrokeredMessage.new("test queue message")
@@ -69,13 +69,13 @@ azure_service_bus_service.send_queue_message("test-queue", message)
 Fronty Service Bus podporují maximální velikost zprávy 256 KB [na úrovni Standard](service-bus-premium-messaging.md) a 1 MB [na úrovni Premium](service-bus-premium-messaging.md). Hlavička, která obsahuje standardní a vlastní vlastnosti aplikace, může mít velikost až 64 KB. Počet zpráv držených ve frontě není omezený, ale celková velikost zpráv držených ve frontě omezená je. Velikost fronty se definuje při vytvoření, maximální limit je 5 GB.
 
 ## <a name="how-to-receive-messages-from-a-queue"></a>Jak přijmout zprávy z fronty
-Přijímání zpráv z fronty pomocí `receive_queue_message()` metodu **Azure::ServiceBusService** objektu. Zprávy jsou ve výchozím nastavení, přečtěte si a uzamčení bez odstraňuje z fronty. Však můžete odstranit zprávy z fronty se čtou nastavením `:peek_lock` možnost k **false**.
+Přijme zprávy z fronty pomocí `receive_queue_message()` metodu **Azure::ServiceBusService** objektu. Zprávy jsou ve výchozím nastavení, přečtěte si a uzamčen bez odstranění z fronty. Však můžete odstranit zprávy z fronty jsou načteny tak, že nastavíte `:peek_lock` umožňuje **false**.
 
-Výchozí chování umožňuje čtení a odstraňování dvoufázová operaci, která také umožňuje podpora aplikací, které nemůžou tolerovat vynechání zpráv. Když Service Bus přijme požadavek, najde zprávu, která je na řadě ke spotřebování, uzamkne ji proti spotřebování jinými spotřebiteli a vrátí ji do aplikace. Když aplikace dokončí zpracování zprávy (nebo ji bezpečně uloží pro pozdější zpracování), tím potvrdí dokončení druhé fáze přijetí volání `delete_queue_message()` metoda a poskytující zprávu odstranit jako parametr. `delete_queue_message()` Metoda bude označí zprávu jako spotřebovávanou a odebrat ji z fronty.
+Výchozí chování umožňuje čtení a odstranění dvoufázová operaci, která také umožňuje podporu aplikací, které nemůžou tolerovat vynechání zpráv. Když Service Bus přijme požadavek, najde zprávu, která je na řadě ke spotřebování, uzamkne ji proti spotřebování jinými spotřebiteli a vrátí ji do aplikace. Poté, co aplikace dokončí zpracování zprávy (nebo spolehlivě uloží pro pozdější zpracování), dokončení druhé fáze přijetí voláním `delete_queue_message()` metoda a poskytující zprávu, která se má odstranit jako parametr. `delete_queue_message()` – Metoda se označí zprávu jako spotřebovávanou a jeho odebrání z fronty.
 
-Pokud `:peek_lock` parametr je nastaven na **false**, čtení a odstranění zprávy stane nejjednodušší model a funguje nejlépe ve scénářích, kde aplikace může tolerovat selhání se zpráva nezpracuje. Pro lepší vysvětlení si představte scénář, ve kterém spotřebitel vyšle požadavek na přijetí, ale než ji může zpracovat, dojde v něm k chybě a ukončí se. Vzhledem k tomu, že Service Bus označila zprávu jako spotřebovávanou, když se aplikace restartuje a začne znovu přijímat zprávy, se neuskutečnily zprávu, která se spotřebovala před havárii.
+Pokud `:peek_lock` parametr je nastaven na **false**, čtení a odstranění stane nejjednodušší model a funguje nejlépe pro scénáře, ve kterých aplikace může tolerovat možnost, zprávy v případě selhání. Pro lepší vysvětlení si představte scénář, ve kterém spotřebitel vyšle požadavek na přijetí, ale než ji může zpracovat, dojde v něm k chybě a ukončí se. Vzhledem k tomu, že Service Bus už ale zprávu jako spotřebovávanou, když se aplikace restartuje a začne znovu přijímat zprávy označila, ho neuskutečnily zprávu, která se spotřebovala před pádem vynechá.
 
-Následující příklad ukazuje, jak přijímat a zpracovávat zprávy pomocí `receive_queue_message()`. V příkladu nejprve přijme a odstraní zprávu pomocí `:peek_lock` nastavena na **false**, pak přijetí další zprávu a poté se odstraní zprávu pomocí `delete_queue_message()`:
+Následující příklad ukazuje, jak pro příjem a zpracování zpráv s použitím `receive_queue_message()`. V příkladu nejdřív přijme a odstraní zprávu s použitím `:peek_lock` nastavena na **false**, pak další zprávu přijme a odstraní zprávu pomocí `delete_queue_message()`:
 
 ```ruby
 message = azure_service_bus_service.receive_queue_message("test-queue",
@@ -85,17 +85,17 @@ azure_service_bus_service.delete_queue_message(message)
 ```
 
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Zpracování pádů aplikace a nečitelných zpráv
-Service Bus poskytuje funkce, které vám pomůžou se elegantně zotavit z chyb v aplikaci nebo vyřešit potíže se zpracováním zprávy. Pokud přijímající aplikace nedokáže zpracovat zprávu z nějakého důvodu, pak může zavolat `unlock_queue_message()` metodu **Azure::ServiceBusService** objektu. Toto volání způsobí, že Service Bus zprávu odemkne ve frontě a zpřístupní ji pro další přijetí, stejnou spotřebitelskou aplikací nebo jinou spotřebitelskou aplikací.
+Service Bus poskytuje funkce, které vám pomůžou se elegantně zotavit z chyb v aplikaci nebo vyřešit potíže se zpracováním zprávy. Pokud přijímající aplikace nedokáže zpracovat zprávu z nějakého důvodu, pak může volat `unlock_queue_message()` metodu **Azure::ServiceBusService** objektu. Toto volání způsobí, že služba Service Bus zprávu odemkne ve frontě a zpřístupní ji pro další přijetí, stejnou spotřebitelskou aplikací nebo jinou spotřebitelskou aplikací.
 
-Je také vypršení časového limitu přidružené zpráva uzamčená ve frontě, a pokud se nepodaří aplikace zprávu nezpracuje zámku vyprší časový limit (například pokud aplikace spadne), pak Service Bus zprávu automaticky odemkne a ji zpřístupní k přijetí.
+K dispozici je také vypršení časového limitu přidružené zpráva uzamčená ve frontě, a pokud aplikace zprávu nezpracuje zámku vyprší časový limit (například pokud aplikace spadne), Service Bus zprávu automaticky odemkne a díky tomu k dispozici pro další přijetí.
 
-V případě, že aplikace spadne po zpracování zprávy, ale předtím, než `delete_queue_message()` metoda je volána, pak zprávy je víckrát do aplikace odešle znovu. Tento proces se často nazývá *zpracování nejméně jednou*; to znamená, že každá zpráva se zpracuje alespoň jednou, ale v některých situacích může doručit víckrát stejnou zprávu. Pokud daný scénář nemůže tolerovat zpracování víc než jednou, vývojáři aplikace by měli přidat další logiku navíc pro zpracování víckrát doručené zprávy. To se často opírá `message_id` vlastnosti zprávy, která zůstává konstantní mezi pokusy o doručení.
+V případě, že aplikace spadne po zpracování zprávy, ale předtím, než `delete_queue_message()` metoda je volána, pak je víckrát do aplikace při restartování. Tento proces se často nazývá *zpracování nejméně jednou*; to znamená, že každá zpráva se zpracuje alespoň jednou, ale v některých situacích může doručit víckrát. Pokud daný scénář nemůže tolerovat zpracování víc než jednou, vývojáři aplikace by měli přidat další logiku navíc pro zpracování víckrát doručené zprávy. To se často opírá `message_id` vlastnosti zprávy, která zůstává konstantní pokusu o doručení.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Naučili jste se základy front Service Bus, další informace se dozvíte na následujících odkazech.
 
 * Přehled [fronty, témata a odběry](service-bus-queues-topics-subscriptions.md).
-* Přejděte [Azure SDK pro Ruby](https://github.com/Azure/azure-sdk-for-ruby) úložišti na Githubu.
+* Přejděte [sady Azure SDK for Ruby](https://github.com/Azure/azure-sdk-for-ruby) úložišti na Githubu.
 
-Porovnání mezi fronty Azure Service Bus, které jsou popsané v tomto článku a fronty Azure, které jsou popsané v [postup používání úložiště Queue z Ruby](../storage/queues/storage-ruby-how-to-use-queue-storage.md) článku najdete v tématu [fronty Azure a Azure fronty služby Service Bus - porovnání a Rozdíl od aktualizovaného](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
+Pro srovnání front Azure Service Bus, které jsou popsané v tomto článku a fronty služby Azure popsané v [postupy používání úložiště Queue z Ruby](../storage/queues/storage-ruby-how-to-use-queue-storage.md) článek, naleznete v tématu [front Azure a fronty Azure Service Bus – porovnání a Rozdíly](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
 

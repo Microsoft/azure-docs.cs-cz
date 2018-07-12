@@ -1,6 +1,6 @@
 ---
-title: Vytvoření aplikační brány s přesměrováním externích přenosů - rozhraní příkazového řádku Azure | Microsoft Docs
-description: Postup vytvoření služby application gateway, který přesměruje interní webové přenosy do fondu odpovídající pomocí rozhraní příkazového řádku Azure.
+title: Vytvoření služby application gateway s přesměrování externího provozu – rozhraní příkazového řádku Azure | Dokumentace Microsoftu
+description: Informace o vytvoření služby application gateway, který přesměruje interní webový provoz do příslušného fondu pomocí Azure CLI.
 services: application-gateway
 author: vhorne
 manager: jpconnock
@@ -13,21 +13,21 @@ ms.workload: infrastructure-services
 ms.date: 01/24/2018
 ms.author: victorh
 ms.openlocfilehash: 3ded6fc0950c82d0aa36da89fdd5635afef7be0b
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33204934"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38306522"
 ---
-# <a name="create-an-application-gateway-with-external-redirection-using-the-azure-cli"></a>Vytvoření služby application gateway s externí přesměrování pomocí rozhraní příkazového řádku Azure
+# <a name="create-an-application-gateway-with-external-redirection-using-the-azure-cli"></a>Vytvoření služby application gateway pomocí externího přesměrování pomocí Azure CLI
 
-Rozhraní příkazového řádku Azure můžete použít ke konfiguraci [webové přenosy přesměrování](application-gateway-multi-site-overview.md) při vytváření [Aplikační brána](application-gateway-introduction.md). V tomto kurzu nakonfigurujete naslouchací proces a pravidel, který přesměruje webových přenosů, které dorazí na službu application gateway na externí web.
+Rozhraní příkazového řádku Azure můžete použít ke konfiguraci [přesměrování webového provozu](application-gateway-multi-site-overview.md) při vytváření [služba application gateway](application-gateway-introduction.md). V tomto kurzu nakonfigurujete naslouchací proces a pravidlo, které přesměruje webový provoz přicházející ve službě application gateway na externí web.
 
 V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Nastavení sítě
-> * Vytvoření pravidla, naslouchací proces a přesměrování
+> * Nastavit síť
+> * Vytvořit pravidlo naslouchací proces a přesměrování
 > * Vytvoření služby Application Gateway
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
@@ -38,9 +38,9 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku 
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Vytvoření skupiny prostředků pomocí [vytvořit skupinu az](/cli/azure/group#create).
+Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#create).
 
-Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroupAG* v *eastus* umístění.
+V následujícím příkladu vytvoříte skupinu prostředků s názvem *myResourceGroupAG* v umístění *eastus*.
 
 ```azurecli-interactive 
 az group create --name myResourceGroupAG --location eastus
@@ -48,7 +48,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>Vytvoření síťových prostředků 
 
-Vytvořit virtuální síť s názvem *myVNet* a podsíť s názvem *myAGSubnet* pomocí [vytvoření sítě vnet az](/cli/azure/network/vnet#az_net). Vytvoření veřejné IP adresy s názvem *myAGPublicIPAddress* pomocí [vytvoření veřejné sítě az-ip](/cli/azure/public-ip#az_network_public_ip_create). Tyto prostředky se používají k poskytování síťové připojení k službě application gateway a její přidružené prostředky.
+Pomocí příkazu [az network vnet create](/cli/azure/network/vnet#az_net) vytvořte virtuální síť s názvem *myVNet* a podsíť s názvem *myAGSubnet*. Pomocí příkazu [az network public-ip create](/cli/azure/public-ip#az_network_public_ip_create) vytvořte veřejnou IP adresu s názvem *myAGPublicIPAddress*. Tyto prostředky slouží k síťovému připojení k aplikační bráně a jejím přidruženým prostředkům.
 
 ```azurecli-interactive
 az network vnet create \
@@ -65,7 +65,7 @@ az network public-ip create \
 
 ## <a name="create-an-application-gateway"></a>Vytvoření služby Application Gateway
 
-Můžete použít [az brány aplikace-vytvořit](/cli/azure/application-gateway#create) k vytvoření aplikační brány s názvem *myAppGateway*. Při vytváření služby application gateway pomocí Azure CLI, je třeba zadat informace o konfiguraci, například kapacitu, sku a nastavení HTTP. Službu application gateway je přiřazena k *myAGSubnet* a *myPublicIPSddress* kterou jste vytvořili. 
+K vytvoření aplikační brány s názvem *myAppGateway* použijte příkaz [az network application-gateway create](/cli/azure/application-gateway#create). Při vytváření aplikační brány pomocí Azure CLI zadáte konfigurační údaje, jako je kapacita, skladová položka nebo nastavení HTTP. Aplikační brána je přiřazená dříve vytvořené podsíti *myAGSubnet* a adrese *myPublicIPAddress*. 
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -83,17 +83,17 @@ az network application-gateway create \
   --public-ip-address myAGPublicIPAddress
 ```
 
-Ho může trvat několik minut pro službu application gateway, který se má vytvořit. Po vytvoření služby application gateway se zobrazí tyto nové funkce:
+Vytvoření aplikační brány může trvat několik minut. Po vytvoření aplikační brány se zobrazí tyto její nové funkce:
 
-- *appGatewayBackendPool* -aplikační brány musí mít alespoň jeden fond adres back-end.
-- *appGatewayBackendHttpSettings* -Určuje, že port 80 a protokol HTTP se používá pro komunikaci.
-- *appGatewayHttpListener* -přidružený naslouchací proces výchozí *appGatewayBackendPool*.
-- *appGatewayFrontendIP* -přiřadí *myAGPublicIPAddress* k *appGatewayHttpListener*.
-- *rule1 New* – výchozí směrování pravidlo, které souvisí s *appGatewayHttpListener*.
+- *appGatewayBackendPool* – aplikační brána musí mít aspoň jeden back-endový fond adres.
+- *appGatewayBackendHttpSettings* – určuje, že se ke komunikaci používá port 80 a protokol HTTP.
+- *appGatewayHttpListener* – výchozí naslouchací proces přidružený k *appGatewayBackendPool*.
+- *appGatewayFrontendIP* – přiřadí adresu *myAGPublicIPAddress* naslouchacímu procesu *appGatewayHttpListener*.
+- *rule1* – výchozí pravidlo směrování přidružené k naslouchacímu procesu *appGatewayHttpListener*.
 
 ### <a name="add-the-redirection-configuration"></a>Přidat konfiguraci přesměrování
 
-Přidat konfiguraci přesměrování, který odesílá provoz z aplikační brány, aby *vyhledávače bing.com* pomocí [vytvoření aplikační brány sítě az přesměrování config](/cli/azure/network/application-gateway/redirect-config#az_network_application_gateway_redirect_config_create).
+Přidat konfiguraci přesměrování, který odesílá síťový provoz z aplikační brány pro *bing.com* pomocí [az network application-gateway přesměrování config vytvořit](/cli/azure/network/application-gateway/redirect-config#az_network_application_gateway_redirect_config_create).
 
 ```azurecli-interactive
 az network application-gateway redirect-config create \
@@ -104,9 +104,9 @@ az network application-gateway redirect-config create \
   --target-url "http://bing.com"
 ```
 
-### <a name="add-a-listener-and-routing-rule"></a>Přidejte naslouchací proces a pravidlo směrování
+### <a name="add-a-listener-and-routing-rule"></a>Přidat naslouchací proces a pravidlo směrování
 
-K povolení aplikační brány, aby správně směrování provozu je potřeba naslouchací proces. Vytvořte naslouchací proces pomocí [az sítě Aplikační brána-naslouchací proces protokolu http vytvořit](/cli/azure/application-gateway#az_network_application_gateway_http_listener_create) s front-endový port vytvořené pomocí [vytvoření aplikační brány sítě az front-endu port](/cli/azure/application-gateway#az_network_application_gateway_frontend_port_create). Pravidlo je vyžadována pro naslouchací proces vědět, kam má posílat příchozí přenosy. Vytvořte základní pravidlo s názvem *redirectRule* pomocí [vytvořit pravidlo Aplikační brána sítě az](/cli/azure/application-gateway#az_network_application_gateway_rule_create) s konfigurací přesměrování.
+Naslouchací proces je nutné povolit aplikační brány pro směrování provozu odpovídajícím způsobem. Vytvořte naslouchací proces, pomocí [az network application-gateway-naslouchací proces protokolu http vytvořit](/cli/azure/application-gateway#az_network_application_gateway_http_listener_create) s front-endový port vytvořené pomocí [az network application-gateway front-endu port vytvořit](/cli/azure/application-gateway#az_network_application_gateway_frontend_port_create). Pravidlo je vyžadováno pro naslouchací proces vědět, kam má odesílat příchozí provoz. Vytvořte základní pravidlo s názvem *redirectRule* pomocí [az network application-gateway pravidlo vytvořte](/cli/azure/application-gateway#az_network_application_gateway_rule_create) s konfigurací přesměrování.
 
 ```azurecli-interactive
 az network application-gateway frontend-port create \
@@ -129,19 +129,19 @@ az network application-gateway rule create \
   --redirect-config myredirect
 ```
 
-## <a name="test-the-application-gateway"></a>Testování služby application gateway
+## <a name="test-the-application-gateway"></a>Otestování aplikační brány
 
-Chcete-li získat veřejnou IP adresu brány, aplikace, můžete použít [az sítě veřejné ip zobrazit](/cli/azure/network/public-ip#az_network_public_ip_show). Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče.
+K získání veřejné IP adresy aplikační brány můžete použít příkaz [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show). Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče.
 
-Měli byste vidět *vyhledávače bing.com* zobrazí v prohlížeči.
+Měli byste vidět *bing.com* se zobrazí v prohlížeči.
 
 ## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili:
 
-> * Nastavení sítě
-> * Vytvoření pravidla, naslouchací proces a přesměrování
+> * Nastavit síť
+> * Vytvořit pravidlo naslouchací proces a přesměrování
 > * Vytvoření služby Application Gateway
 
 > [!div class="nextstepaction"]
-> [Další informace o co můžete dělat s aplikační brány](./application-gateway-introduction.md)
+> [Další informace o možnostech aplikační brány](./application-gateway-introduction.md)

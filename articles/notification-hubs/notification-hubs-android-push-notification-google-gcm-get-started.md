@@ -17,11 +17,11 @@ ms.custom: mvc
 ms.date: 04/05/2018
 ms.author: dimazaid
 ms.openlocfilehash: efad7353a477577e5b5ac862b418ce78b1c4c304
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33778473"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38697248"
 ---
 # <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging"></a>Kurz: Zasílání nabízených oznámení zařízením s Androidem službami Azure Notification Hubs a Google Cloud Messaging
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -148,8 +148,8 @@ Vaše centrum oznámení je nyní nakonfigurováno pro práci se službou GCM. Z
     V následujícím kódu třídy `NotificationSettings` aktualizujte tyto tři zástupné symboly:
    
    * **ID odesílatele**: číslo projektu, které jste získali výše u [konzoly Google Cloud](http://cloud.google.com/console).
-   * **HubListenConnectionString**: připojovací řetězec **DefaultListenAccessSignature** pro rozbočovač. Připojovací řetězec můžete zkopírovat tak, že na webu **Azure Portal** ve svém centru kliknete na stránce **Nastavení** na [Zásady přístupu].
-   * **HubName:** Použijte název centra oznámení, který se zobrazí na stránce centra na webu [Zásady přístupu].
+   * **HubListenConnectionString**: připojovací řetězec **DefaultListenAccessSignature** pro rozbočovač. Připojovací řetězec můžete zkopírovat tak, že na webu [Azure Portal] ve svém centru kliknete na stránce **Nastavení** na **Zásady přístupu**.
+   * **HubName:** Použijte název centra oznámení, který se zobrazí na stránce centra na webu [Azure Portal].
      
      Kód `NotificationSettings`:
      
@@ -447,7 +447,7 @@ Vaše centrum oznámení je nyní nakonfigurováno pro práci se službou GCM. Z
       ![Testování v systému Android – oznámení][21]
 
 ### <a name="test-send-push-notifications-from-the-azure-portal"></a>Odeslání testovacích nabízených oznámení z webu Azure Portal
-Příjem nabízených oznámení aplikací můžete otestovat, když je odešlete z webu [Zásady přístupu]. 
+Příjem nabízených oznámení aplikací můžete otestovat, když je odešlete z webu [Azure Portal]. 
 
 1. V části **Poradce při potížích** vyberte **Poslat na zkoušku**. 
 2. V položce **Platformy** vyberte **Android**.
@@ -496,7 +496,7 @@ Za normálních okolností byste odesílali oznámení pomocí serveru backend. 
     ```
 3. Do souboru `NotificationSetting.java` přidejte následující nastavení na třídu `NotificationSettings`.
    
-    Aktualizujte `HubFullAccess` pomocí připojovacího řetězce **DefaultFullSharedAccessSignature** pro centrum. Připojovací řetězec můžete zkopírovat z webu [Zásady přístupu] tak, že na stránce **Nastavení** kliknete u svého centra oznámení na **Zásady přístupu**.
+    Aktualizujte `HubFullAccess` pomocí připojovacího řetězce **DefaultFullSharedAccessSignature** pro centrum. Připojovací řetězec můžete zkopírovat z webu [Azure Portal] tak, že na stránce **Nastavení** kliknete u svého centra oznámení na **Zásady přístupu**.
    
     ```java
     public static String HubFullAccess = "<Enter Your DefaultFullSharedAccess Connection string>";
@@ -696,7 +696,7 @@ Za normálních okolností byste odesílali oznámení pomocí serveru backend. 
 V tomto kurzu jste poslali oznámení všem zařízením s Androidem registrovaným back-endem. Pokud se chcete naučit zasílat nabízená oznámení určitým zařízením s Androidem, pokračujte následujícím kurzem:  
 
  > [!div class="nextstepaction"] 
- > [Zasílání nabízených oznámení určitým zařízením](notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md) 
+ > [Zasílání nabízených oznámení do konkrétních zařízení](notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md) 
 
 
 <!-- Images. -->
@@ -731,4 +731,4 @@ V tomto kurzu jste poslali oznámení všem zařízením s Androidem registrovan
 [Notification Hubs Guidance]: http://msdn.microsoft.com/library/jj927170.aspx
 [Use Notification Hubs to push notifications to users]: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
 [Use Notification Hubs to send breaking news]: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
-[Zásady přístupu]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com

@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 07/06/2018
 ms.author: raynew
 ms.openlocfilehash: 20c3642bb9f9ad5089c37bb6da8562e570896cb4
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
-ms.translationtype: HT
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37918940"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38308476"
 ---
 # <a name="set-up-a-process-server-in-azure-for-failback"></a>Nastavit procesový server v Azure pro navrácení služeb po obnovení
 

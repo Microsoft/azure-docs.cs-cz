@@ -15,12 +15,12 @@ ms.component: compliance-reports
 ms.date: 06/21/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: 71569da662c5d5e5ef5ad6c7d9783a69e307f2fa
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 452501d5da58d06093f22009c6ecc30e02f581a5
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441178"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38295635"
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Správa přístupu hostů pomocí Azure AD kontroly přístupu
 
@@ -30,7 +30,7 @@ S Azure Active Directory (Azure AD), můžete snadno povolit spolupráce napří
 Můžete také snadno zajistit, že uživatelé typu Host mají odpovídající přístup. Můžete požádat o hostům sami s rozhodovací pravomocí o účast v kontrolu přístupu a znovu Certifikujte (nebo potvrďte) přístup u hostů. Revidující se mohou vyjádřit k nutnosti dalšího přístupu pro jednotlivé uživatele, a to na základě návrhů z Azure AD. Po dokončení kontroly přístupu můžete provést změny a odebrat přístup pro hosty, kteří ho už nepotřebují.
 
 > [!NOTE]
-> Tento dokument se zaměřuje na kontrole přístupu uživatelů typu Host. Pokud chcete kontrolovat přístup všech uživatelů, není stejně hostů, naleznete v tématu [správě přístupu uživatelů pomocí kontrol přístupu](active-directory-azure-ad-controls-manage-user-access-with-access-reviews.md). Pokud chcete kontrolovat členství uživatelů v rolích pro správu, jako je například globální správce, přečtěte si téma [zahájení kontroly přístupu v Azure AD Privileged Identity Management](active-directory-privileged-identity-management-how-to-start-security-review.md). 
+> Tento dokument se zaměřuje na kontrole přístupu uživatelů typu Host. Pokud chcete kontrolovat přístup všech uživatelů, není stejně hostů, naleznete v tématu [správě přístupu uživatelů pomocí kontrol přístupu](active-directory-azure-ad-controls-manage-user-access-with-access-reviews.md). Pokud chcete kontrolovat členství uživatelů v rolích pro správu, jako je například globální správce, přečtěte si téma [zahájení kontroly přístupu v Azure AD Privileged Identity Management](privileged-identity-management/pim-how-to-start-security-review.md). 
 >
 >
 

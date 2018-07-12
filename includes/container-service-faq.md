@@ -64,7 +64,7 @@ Běžně používané adresy URL pro váš cluster najdete na webu Azure Portal,
 
 ### <a name="how-do-i-tell-which-orchestrator-version-is-running-in-my-cluster"></a>Jak zjistím, která verze orchestrátoru je spuštěna v mém clusteru?
 
-* DC/OS: Viz [Dokumentace Mesosphere](https://support.mesosphere.com/hc/en-us/articles/207719793-How-to-get-the-DCOS-version-from-the-command-line-).
+* DC/OS: Viz [Dokumentace Mesosphere](https://docs.mesosphere.com/1.7/usage/cli/command-reference/).
 * Docker Swarm: Spusťte příkaz `docker version`.
 * Kubernetes: Spusťte příkaz `kubectl version`.
 

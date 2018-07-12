@@ -1,8 +1,8 @@
 ---
-title: Chyb zabezpečení detekovaných službou Azure Active Directory Identity Protection | Microsoft Docs
+title: Chyb zabezpečení detekovaných službou Azure Active Directory Identity Protection | Dokumentace Microsoftu
 description: Přehled chyb zabezpečení detekovaných službou Azure Active Directory Identity Protection.
 services: active-directory
-keywords: ochrany identit Azure active directory, zjišťování cloudu, Správa aplikací, zabezpečení, rizik, úroveň rizika, ohrožení zabezpečení, zásady zabezpečení
+keywords: cloud discovery, Správa aplikací, zabezpečení, rizika, úroveň rizika, ohrožení zabezpečení, zásady zabezpečení služby Azure active directory identity protection
 documentationcenter: ''
 author: MarkusVi
 manager: mtillman
@@ -16,50 +16,50 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 534384f8e8fde17c2330831b346d87c50ea24183
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 804ee23a8e27eda89861ef820d266f93013d7ffe
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37084004"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38307326"
 ---
 # <a name="vulnerabilities-detected-by-azure-active-directory-identity-protection"></a>Chyb zabezpečení detekovaných službou Azure Active Directory Identity Protection
-Ohrožení zabezpečení jsou slabá místa ve vašem prostředí, může útočník zneužít. Doporučujeme, abyste tyto nedostatky ke zlepšení postavení zabezpečení vaší organizace a útočníkům zabránit v jejich využití.
+Ohrožení zabezpečení jsou slabá místa ve vašem prostředí, která je někdo zneužije ze strany útočníka. Doporučujeme, abyste řešit tyto nedostatky zabezpečení a zlepšit stav zabezpečení vaší organizace a útočníkům zabránit v jejich využívání.
 
 
 ![ohrožení zabezpečení](./media/active-directory-identityprotection-vulnerabilities/101.png "ohrožení zabezpečení")
 
 
 
-Následující části poskytují přehled o ohrožení zabezpečení hlášené Identity Protection.
+Následující části poskytují přehled o ohrožení hlášená Identity Protection.
 
 ## <a name="multi-factor-authentication-registration-not-configured"></a>Nenakonfigurovaná registrace vícefaktorového ověřování
-Toto ohrožení zabezpečení umožňuje řízení nasazení služby Azure Multi-Factor Authentication ve vaší organizaci. 
+Toto ohrožení zabezpečení pomáhá řídit nastavení ověřování Azure Multi-Factor Authentication ve vaší organizaci. 
 
-Ověřování Azure Multi-Factor authentication poskytuje druhou vrstvu zabezpečení pro ověřování uživatelů. Ho pomáhá zabezpečit přístup k datům a aplikacím při splnění požadavků uživatelů pro jednoduchý proces přihlášení. Zajišťuje silné ověřování přes celou řadu možností snadno ověření – telefonní hovor, textová zpráva nebo mobilní aplikace oznámení nebo ověřovací kód a třetích stran tokeny OATH.
+Ověřování Azure Multi-Factor Authentication poskytuje druhou vrstvu zabezpečení pro ověřování uživatelů. To pomáhá chránit přístup k datům a aplikacím a současně plní požadavky uživatelů na jednoduchý přihlašovací proces. Nabízí silné ověřování pomocí řady jednoduchých – telefonní hovor, textová zpráva nebo mobilní aplikace oznámení nebo ověřovací kód a třetích stran tokenů OATH.
 
-Doporučujeme vám, že vyžadujete ověřování Azure Multi-Factor Authentication pro přihlášení uživatele. Služba Multi-Factor authentication hrají roli klíče v zásadách podmíněného přístupu na základě riziko k dispozici prostřednictvím Identity Protection.
+Doporučujeme vyžadovat ověřování Azure Multi-Factor Authentication pro přihlášení uživatelů. Ověřování službou Multi-Factor Authentication hrají klíčovou roli v rámci zásad podmíněného přístupu na základě rizik k dispozici prostřednictvím služby Identity Protection.
 
 Další informace najdete v tématu [co je Azure Multi-Factor Authentication?](authentication/multi-factor-authentication.md)
 
 ## <a name="unmanaged-cloud-apps"></a>Nespravované cloudové aplikace
-Toto ohrožení zabezpečení pomáhá identifikovat nespravované cloudových aplikací ve vaší organizaci.
+Toto ohrožení zabezpečení pomáhá identifikovat nespravované cloudové aplikace ve vaší organizaci.
 
-V rámci moderní firmy IT oddělení neberou často všechny cloudové aplikace, které uživateli v organizaci používáte ke své práci. Je snadno zjistit, proč by správci mají obavy o neoprávněný přístup k podnikovým datům, možné úniku a další bezpečnostní rizika. 
+V moderních podnicích jsou často IT oddělením vědět o všech cloudových aplikací, které uživatelé v jejich organizaci používají ke své práci. Je snadno zjistit, proč by správci máte obavy o neoprávněný přístup k podnikovým datům, úniku dat a další bezpečnostní rizika. 
 
-Doporučujeme nasadit Cloud Discovery ke zjišťování nespravované cloudových aplikací a ke správě těchto aplikací pomocí služby Azure Active Directory.
+Doporučujeme k nasazení Cloud Discovery ke zjišťování nespravované cloudové aplikace a ke správě těchto aplikací pomocí Azure Active Directory.
 
 Další informace najdete v tématu [Cloud Discovery](/cloud-app-security/set-up-cloud-discovery).
 
 ## <a name="security-alerts-from-privileged-identity-management"></a>Výstrahy zabezpečení z Privileged Identity Managementu
-Toto ohrožení zabezpečení vám pomůže zjistit a vyřešit výstrahy týkající se privilegované identity ve vaší organizaci.  
+Toto ohrožení zabezpečení pomáhá zjistit a řešit oznámení o privilegované identity ve vaší organizaci.  
 
-Pokud chcete povolit uživatelům provádět privilegované operace, organizace potřebují udělit uživatelům dočasné nebo trvalé privilegovaného přístupu ve službě Azure AD, Azure nebo Office 365 prostředků nebo jiných aplikací SaaS. Každý z těchto mohou uživatelé s oprávněním zvětšuje prostor pro útoky vaší organizace. Toto ohrožení zabezpečení pomáhá identifikovat uživatele s nepotřebné privilegovaného přístupu a proveďte příslušné akce k omezit nebo odstranit, které budou představovat riziko. 
+Umožňuje uživatelům provádět privilegované operace organizace potřebují udělit dočasný nebo trvalý privilegovaný přístup uživatelům ve službě Azure AD, prostředky Azure nebo Office 365 nebo jiným aplikacím SaaS. Každá z těchto privilegovaní uživatelé zvyšuje prostor pro napadení vaší organizace. Toto ohrožení zabezpečení vám pomůže identifikovat uživatele s privilegovaným přístupem nepotřebné a přijmout vhodná opatření ke snížení nebo eliminaci, které představují riziko. 
 
-Doporučujeme, abyste vaše organizace používá Azure AD Privileged Identity Management pro správu, řízení a monitorování privilegované identity a jejich přístup k prostředkům ve službě Azure AD, jakož i jiných služeb Microsoft online services jako je Office 365 nebo Microsoft Intune.
+Doporučujeme vám, že vaše organizace používá Azure AD Privileged Identity Management pro správu, řízení a monitorování privilegované identity a jejich přístup k prostředkům ve službě Azure AD, jakož i dalších online službách Microsoftu jako Office 365 nebo Microsoft Intune.
 
-Další informace najdete v tématu [Azure AD Privileged Identity Management](active-directory-privileged-identity-management-configure.md). 
+Další informace najdete v tématu [Azure AD Privileged Identity Management](privileged-identity-management/pim-configure.md). 
 
 ## <a name="see-also"></a>Další informace najdete v tématech
-* [Ochrany identit Azure Active Directory](active-directory-identityprotection.md)
+* [Azure Active Directory Identity Protection](active-directory-identityprotection.md)
 

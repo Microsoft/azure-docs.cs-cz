@@ -1,29 +1,29 @@
 ---
-title: Použití Azure událostí mřížky s událostmi ve schématu CloudEvents
-description: Popisuje, jak nastavit CloudEvents schéma pro události v mřížce událostí Azure.
+title: Pomocí služby Azure Event Grid s událostmi ve schématu CloudEvents
+description: Popisuje, jak nastavit schématu CloudEvents událostí ve službě Azure Event Grid.
 services: event-grid
 author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/22/2018
+ms.date: 06/14/2018
 ms.author: babanisa
-ms.openlocfilehash: a2cccbb4feaa7b6f3f51ac7204af4a3e1efc6349
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f3541fb3dbca6243f6c10611aa968603745f97a1
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34625589"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38314431"
 ---
-# <a name="use-cloudevents-schema-with-event-grid"></a>Použití schématu CloudEvents s událostí mřížky
+# <a name="use-cloudevents-schema-with-event-grid"></a>Použití schématu CloudEvents pomocí služby Event Grid
 
-Kromě jeho [výchozí schéma událostí](event-schema.md), mřížky událostí Azure nativně podporuje události v [schématu CloudEvents JSON](https://github.com/cloudevents/spec/blob/master/json-format.md). [CloudEvents](http://cloudevents.io/) je [otevřete standardní specifikace](https://github.com/cloudevents/spec/blob/master/spec.md) popisujících data události v běžným způsobem.
+Kromě jeho [výchozí událost schéma](event-schema.md), nativně podporuje události v Azure Event Grid [schématu CloudEvents JSON](https://github.com/cloudevents/spec/blob/master/json-format.md). [CloudEvents](http://cloudevents.io/) je [otevřete specifikace standardu](https://github.com/cloudevents/spec/blob/master/spec.md) pro data události popisující běžné způsobem.
 
-CloudEvents zjednodušuje interoperabilita tím, že poskytuje společné schéma událostí pro publikování a využívání cloud na základě událostí. Toto schéma umožňuje uniform nástrojů, standardní způsoby směrování a zpracování událostí a univerzální způsobů deserializaci schématu vnější události. S společné schéma můžete snadno integrovat pracovní napříč platformami.
+CloudEvents zjednodušuje vzájemná funkční spolupráce poskytnutím společné schéma události pro publikování a využívání cloudu na základě událostí. Toto schéma umožňuje jednotnou nástroje, standardních způsobů směrování a zpracování událostí a univerzální způsoby deserializaci schématu vnější události. Se společným schématem lze snadněji práci integrovat napříč platformami.
 
-CloudEvents se sestavení pomocí několika [spolupracovníci](https://github.com/cloudevents/spec/blob/master/community/contributors.md), včetně společnosti Microsoft, prostřednictvím [cloudu nativní výpočetní Foundation](https://www.cncf.io/). Je aktuálně k dispozici jako verze 0,1.
+CloudEvents Probíhá sestavení podle několika [spolupracovníci](https://github.com/cloudevents/spec/blob/master/community/contributors.md), včetně Microsoftu, prostřednictvím [Cloud nativní výpočetní Foundation](https://www.cncf.io/). Je aktuálně k dispozici jako verze 0,1.
 
-Tento článek popisuje použití schématu CloudEvents s událostí mřížky.
+Tento článek popisuje postup použití schématu CloudEvents pomocí služby Event Grid.
 
 [!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
@@ -58,42 +58,42 @@ Tady je příklad událost Azure Blob Storage ve formátu CloudEvents:
 
 CloudEvents v0.1 má k dispozici následující vlastnosti:
 
-| CloudEvents        | Typ     | Příklad hodnota JSON             | Popis                                                        | Mapování mřížky událostí
+| CloudEvents        | Typ     | Příklad hodnoty JSON             | Popis                                                        | Event Grid mapování
 |--------------------|----------|--------------------------------|--------------------------------------------------------------------|-------------------------
 | Typ události          | Řetězec   | "com.example.someevent"          | Typ došlo k výskytu                                   | Typ události
-| eventTypeVersion   | Řetězec   | "1.0"                            | Verze eventType (volitelné)                            | dataVersion
-| cloudEventsVersion | Řetězec   | "0,1"                            | Verze specifikaci CloudEvents, který používá události        | *předána*
-| source             | URI      | "/ mycontext"                     | Popisuje producent událostí                                       | téma #subject
+| eventTypeVersion   | Řetězec   | "1.0"                            | Verze typ eventType (volitelné)                            | dataVersion
+| cloudEventsVersion | Řetězec   | "0.1"                            | Verzi CloudEvents specifikace, které používá událost        | *předat prostřednictvím*
+| source             | URI      | "/ mycontext"                     | Popisuje Tvůrce událostí                                       | téma #subject
 | ID události            | Řetězec   | "1234-1234-1234"                 | ID události                                                    | id
-| eventTime          | Časové razítko| "2018-04-05T17:31:00Z"           | Časové razítko kdy k události došlo (volitelné)                    | eventTime
-| schemaURL          | URI      | https://myschema.com           | Odkaz na schéma odpovídající atribut dat (volitelné) | *nepoužívá se*
-| Typ obsahu        | Řetězec   | "application/json"               | Popisu formátu dat kódování (volitelné)                       | *nepoužívá se*
-| Rozšíření         | Mapa      | {"extA": "vA", "extB", "vB"}  | Žádné další metadata (volitelné)                                 | *nepoužívá se*
-| data               | Objekt   | {"objA": "vA", "objB", "vB"}  | Datová část události (volitelné)                                       | data
+| čas události          | Časové razítko| "2018-04-05T17:31:00Z"           | Časové razítko kdy k události došlo (volitelné)                    | čas události
+| schemaURL          | URI      | https://myschema.com           | Odkaz na schéma, které používá atribut dat (volitelné) | *Nepoužito*
+| contentType        | Řetězec   | "application/json"               | Popište formát kódování dat (volitelné)                       | *Nepoužito*
+| Rozšíření         | Mapa      | {"nadbytečné": "posouzení ohrožení zabezpečení", "extB", "vB"}  | Žádné další metadata (volitelné)                                 | *Nepoužito*
+| data               | Objekt   | {"objA": "posouzení ohrožení zabezpečení", "objB", "vB"}  | Datová část události (volitelné)                                       | data
 
 Další informace najdete v tématu [CloudEvents specifikace](https://github.com/cloudevents/spec/blob/master/spec.md#context-attributes).
 
-## <a name="configure-event-grid-for-cloudevents"></a>Konfigurace událostí mřížky pro CloudEvents
+## <a name="configure-event-grid-for-cloudevents"></a>Konfigurace služby Event Grid pro CloudEvents
 
-V současné době má mřížky událostí Azure preview podpora pro CloudEvents JSON formát vstupu a výstupu v **– Západ střední USA**, **střed USA**, a **Severní Evropa**.
+V současné době se služby Azure Event Grid ve verzi preview, podpora pro CloudEvents JSON formát vstupu a výstupu v **střed USA – západ**, **USA (střed)**, a **Severní Evropa**.
 
-Mřížky událostí můžete použít pro vstupní i výstupní událostí ve schématu CloudEvents. CloudEvents můžete použít pro systémové události, jako úložiště objektů Blob události a události služby IoT Hub a vlastních událostí. Také ho můžete převést tyto události v drátové síti a zpět.
+Event Grid můžete použít pro vstupní i výstupní události ve schématu CloudEvents. CloudEvents můžete použít pro systémové události, jako jsou události služby Blob Storage a události služby IoT Hub a vlastní události. Můžete také transformovat tyto události na lince vpřed a zpět.
 
 
 | Vstupní schéma       | Schéma výstupu
 |--------------------|---------------------
 | Formát CloudEvents | Formát CloudEvents
-| Formát mřížky událostí  | Formát CloudEvents
-| Formát CloudEvents | Formát mřížky událostí
-| Formát mřížky událostí  | Formát mřížky událostí
+| Event Grid formátu  | Formát CloudEvents
+| Formát CloudEvents | Event Grid formátu
+| Event Grid formátu  | Event Grid formátu
 
-Pro všechny události schémata událostí mřížky vyžaduje ověření, při publikování do mřížky téma události a při vytváření předplatného služby událostí. Další informace najdete v tématu [mřížky událostí zabezpečení a ověřování](security-authentication.md).
+Pro všechna schémata událostí služby Event Grid vyžaduje ověřování při publikování na téma event gridu a při vytváření odběru událostí. Další informace najdete v tématu [ověřování a zabezpečení služby Event Grid](security-authentication.md).
 
 ### <a name="input-schema"></a>Vstupní schéma
 
-Pokud chcete nastavit vstupní schéma na téma na vlastní CloudEvents, použijte následující parametr v rozhraní příkazového řádku Azure a když vytvoříte téma `--input-schema cloudeventv01schema`. Vlastní téma nyní očekává, že příchozí události ve formátu v0.1 CloudEvents.
+Pokud chcete nastavit vstupní schéma na odpovídající vlastní téma CloudEvents, použijte následující parametr v rozhraní příkazového řádku Azure a když vytvoříte téma `--input-schema cloudeventv01schema`. Příchozí události vlastního tématu nyní očekává ve formátu CloudEvents v0.1.
 
-Chcete-li vytvořit téma události mřížky, použijte:
+Pokud chcete vytvořit téma event gridu, použijte:
 
 ```azurecli
 # if you have not already installed the extension, do it now.
@@ -107,13 +107,13 @@ az eventgrid topic create \
   --input-schema cloudeventv01schema
 ```
 
-Aktuální verze CloudEvents nepodporuje dávkování událostí. K publikování událostí se schématem CloudEvent do tématu, publikujte všechny události jednotlivě.
+Aktuální verze CloudEvents nepodporuje, dávkové zpracování událostí. K publikování událostí s CloudEvent schématem do tématu, publikujte jednotlivě každou událost.
 
 ### <a name="output-schema"></a>Schéma výstupu
 
-Pokud chcete nastavit výstupního schématu na základě předplatného služby událostí k CloudEvents, použijte tento parametr v rozhraní příkazového řádku Azure a při vytváření předplatného událostí `--event-delivery-schema cloudeventv01schema`. Události pro tento odběr události jsou nyní doručena ve formátu v0.1 CloudEvents.
+Pokud chcete nastavit schéma výstupu na odběr událostí k CloudEvents, použijte následující parametr v rozhraní příkazového řádku Azure a při vytvoření odběru událostí `--event-delivery-schema cloudeventv01schema`. Události pro tento odběr události se doručují teď ve formátu CloudEvents v0.1.
 
-Chcete-li vytvořit odběr událostí, použijte:
+Pokud chcete vytvořit odběr událostí, použijte:
 
 ```azurecli
 az eventgrid event-subscription create \
@@ -124,10 +124,10 @@ az eventgrid event-subscription create \
   --event-delivery-schema cloudeventv01schema
 ```
 
-Aktuální verze CloudEvents nepodporuje dávkování událostí. Všechny události obdrží předplatné událostí, který je nakonfigurován pro CloudEvent schématu jednotlivě. V současné době nelze použít aktivační událost INSTEAD událostí mřížky pro aplikaci Azure Functions při doručování události ve schématu CloudEvents. Musíte použít aktivační událost INSTEAD HTTP.
+Aktuální verze CloudEvents nepodporuje, dávkové zpracování událostí. Odběr událostí, který je nakonfigurovaný pro schéma CloudEvent dostane každá událost jednotlivě. V současné době nelze použít aktivační událost služby Event Grid pro aplikaci Azure Functions ve schématu CloudEvents se doručení události. Je nutné použít aktivační událost HTTP. Příklady implementace, která bude přijímat události ve schématu CloudEvents triggeru HTTP, najdete v článku [použít aktivační událost HTTP jako aktivační událost služby Event Grid](../azure-functions/functions-bindings-event-grid.md#use-an-http-trigger-as-an-event-grid-trigger).
 
 ## <a name="next-steps"></a>Další postup
 
-* Informace o sledování událostí dodávky najdete v tématu [doručení zpráv monitorování událostí mřížky](monitor-event-delivery.md).
-* Doporučujeme vám otestovat, komentáře, a [přispívat](https://github.com/cloudevents/spec/blob/master/CONTRIBUTING.md) k CloudEvents.
-* Další informace o vytváření předplatného služby Azure událostí mřížky, najdete v části [schématu odběru událostí mřížky](subscription-creation-schema.md).
+* Informace o monitorování doručení událostí najdete v tématu [doručování zpráv služby Event Grid monitorování](monitor-event-delivery.md).
+* Doporučujeme vám vyzkoušet, komentáře, a [přispívat](https://github.com/cloudevents/spec/blob/master/CONTRIBUTING.md) k CloudEvents.
+* Další informace o vytváření předplatného služby Azure Event Grid najdete v tématu [schéma předplatného služby Event Grid](subscription-creation-schema.md).

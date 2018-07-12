@@ -1,6 +1,6 @@
 ---
-title: Vytvoření služby application gateway s více hostování lokality - prostředí Azure PowerShell | Microsoft Docs
-description: Postup vytvoření služby application gateway, který je hostitelem více lokalit pomocí prostředí Azure Powershell.
+title: Vytvoření služby application gateway s hostování několika webů – Azure PowerShell | Dokumentace Microsoftu
+description: Informace o vytvoření služby application gateway, který je hostitelem více webů pomocí Azure Powershellu.
 services: application-gateway
 author: vhorne
 manager: jpconnock
@@ -13,36 +13,36 @@ ms.workload: infrastructure-services
 ms.date: 01/26/2018
 ms.author: victorh
 ms.openlocfilehash: beacf3d36c2a74d1744a1048834bf66acfbc1682
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34355963"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38306729"
 ---
-# <a name="create-an-application-gateway-with-multiple-site-hosting-using-azure-powershell"></a>Vytvoření služby application gateway s více lokality hostování pomocí prostředí Azure PowerShell
+# <a name="create-an-application-gateway-with-multiple-site-hosting-using-azure-powershell"></a>Vytvoření služby application gateway s hostování více webů pomocí Azure Powershellu
 
-Prostředí Azure Powershell můžete použít ke konfiguraci [hostování více webů](application-gateway-multi-site-overview.md) při vytváření [Aplikační brána](application-gateway-introduction.md). V tomto kurzu vytvoříte back-endové fondy pomocí sady škálování virtuálních počítačů. Nakonfigurujete naslouchací procesy a pravidla založená na domény, které vlastníte a ujistěte se, že web přenos dorazí na příslušné servery ve fondech. V tomto kurzu se předpokládá, že vlastníte více domén a používá příklady *www.contoso.com* a *www.fabrikam.com*.
+Prostředí Azure Powershell můžete použít ke konfiguraci [hostování více webů](application-gateway-multi-site-overview.md) při vytváření [služba application gateway](application-gateway-introduction.md). V tomto kurzu vytvoříte back-endových fondů škálovací sady virtuálních počítačů. Pak na základě domén, které vám patří, nakonfigurujete naslouchací procesy a pravidla, aby se webový provoz přesměroval na příslušné servery ve fondech. V tomto kurzu se předpokládá, že vlastníte několik domén, a jako příklady se používají domény *www.contoso.com* a *www.fabrikam.com*.
 
 V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Nastavení sítě
+> * Nastavit síť
 > * Vytvoření služby Application Gateway
-> * Vytvořte naslouchací procesy a pravidla směrování
-> * Vytvoření sady škálování virtuálního počítače s back-endové fondy
-> * Vytvořte záznam CNAME ve vaší doméně
+> * Vytvoření naslouchacích procesů a pravidla směrování
+> * Vytvořit z back-endových fondů škálovací sadu virtuálních počítačů
+> * Vytvořit v doméně záznam CNAME
 
-![Příklad směrování více lokalit](./media/application-gateway-create-multisite-azureresourcemanager-powershell/scenario.png)
+![Příklad směrování na více webů](./media/application-gateway-create-multisite-azureresourcemanager-powershell/scenario.png)
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte použít modul Azure PowerShell verze 3.6 nebo novější. Chcete-li najít verzi, spusťte ` Get-Module -ListAvailable AzureRM` . Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzureRmAccount` pro vytvoření připojení k Azure.
+Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte použít modul Azure PowerShell verze 3.6 nebo novější. Verzi zjistíte spuštěním příkazu ` Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzureRmAccount` pro vytvoření připojení k Azure.
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Vytvořit skupinu prostředků Azure pomocí [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup).  
+Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Vytvořte skupinu prostředků Azure příkazem [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup).  
 
 ```azurepowershell-interactive
 New-AzureRmResourceGroup -Name myResourceGroupAG -Location eastus
@@ -50,7 +50,7 @@ New-AzureRmResourceGroup -Name myResourceGroupAG -Location eastus
 
 ## <a name="create-network-resources"></a>Vytvoření síťových prostředků
 
-Nakonfigurujte podsítě s názvem *myBackendSubnet* a *myAGSubnet* pomocí [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig). Vytvořit virtuální síť s názvem *myVNet* pomocí [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork) s konfigurací podsítě. A nakonec vytvořte veřejnou IP adresu s názvem *myAGPublicIPAddress* pomocí [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress). Tyto prostředky se používají k poskytování síťové připojení k službě application gateway a její přidružené prostředky.
+Pomocí rutiny [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig) nakonfigurujte podsítě s názvem *myBackendSubnet* a *myAGSubnet*. Pomocí rutiny [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork) s konfiguračními údaji podsítí vytvořte virtuální síť s názvem *myVNet*. Nakonec pomocí rutiny [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress) vytvořte veřejnou IP adresu s názvem *myAGPublicIPAddress*. Tyto prostředky slouží k síťovému připojení k aplikační bráně a jejím přidruženým prostředkům.
 
 ```azurepowershell-interactive
 $backendSubnetConfig = New-AzureRmVirtualNetworkSubnetConfig `
@@ -74,9 +74,9 @@ $pip = New-AzureRmPublicIpAddress `
 
 ## <a name="create-an-application-gateway"></a>Vytvoření služby Application Gateway
 
-### <a name="create-the-ip-configurations-and-frontend-port"></a>Vytvoření konfigurace protokolu IP a port front-endu
+### <a name="create-the-ip-configurations-and-frontend-port"></a>Vytvoření konfigurací IP adres a front-endového portu
 
-Přidružení *myAGSubnet* aplikace brány pomocí dříve vytvořeného [New-AzureRmApplicationGatewayIPConfiguration](/powershell/module/azurerm.network/new-azurermapplicationgatewayipconfiguration). Přiřadit *myAGPublicIPAddress* do aplikace pomocí brány [New-AzureRmApplicationGatewayFrontendIPConfig](/powershell/module/azurerm.network/new-azurermapplicationgatewayfrontendipconfig).
+Přidružte dříve vytvořenou podsíť *myAGSubnet* k aplikační bráně pomocí rutiny [New-AzureRmApplicationGatewayIPConfiguration](/powershell/module/azurerm.network/new-azurermapplicationgatewayipconfiguration). Přiřaďte aplikační bráně adresu *myAGPublicIPAddress* pomocí rutiny [New-AzureRmApplicationGatewayFrontendIPConfig](/powershell/module/azurerm.network/new-azurermapplicationgatewayfrontendipconfig).
 
 ```azurepowershell-interactive
 $vnet = Get-AzureRmVirtualNetwork `
@@ -94,9 +94,9 @@ $frontendport = New-AzureRmApplicationGatewayFrontendPort `
   -Port 80
 ```
 
-### <a name="create-the-backend-pools-and-settings"></a>Vytvoření back-endové fondy a nastavení
+### <a name="create-the-backend-pools-and-settings"></a>Vytvoření back-endového fondu a nastavení
 
-Vytvoření back-endové fondy s názvem *contosoPool* a *fabrikamPool* pro aplikace pomocí brány [New-AzureRmApplicationGatewayBackendAddressPool](/powershell/module/azurerm.network/new-azurermapplicationgatewaybackendaddresspool). Konfiguruje nastavení pro použití fondu [New-AzureRmApplicationGatewayBackendHttpSettings](/powershell/module/azurerm.network/new-azurermapplicationgatewaybackendhttpsettings).
+Vytvoření back-endové fondy s názvem *contosoPool* a *fabrikamPool* pro aplikační bránu pomocí [New-AzureRmApplicationGatewayBackendAddressPool](/powershell/module/azurerm.network/new-azurermapplicationgatewaybackendaddresspool). Nakonfigurujte nastavení back-endového fondu příkazem [New-AzureRmApplicationGatewayBackendHttpSettings](/powershell/module/azurerm.network/new-azurermapplicationgatewaybackendhttpsettings).
 
 ```azurepowershell-interactive
 $contosoPool = New-AzureRmApplicationGatewayBackendAddressPool `
@@ -111,11 +111,11 @@ $poolSettings = New-AzureRmApplicationGatewayBackendHttpSettings `
   -RequestTimeout 120
 ```
 
-### <a name="create-the-listeners-and-rules"></a>Vytvořte naslouchací procesy a pravidla
+### <a name="create-the-listeners-and-rules"></a>Vytvoření naslouchacích procesů a pravidel
 
-K povolení služby application gateway směrování provozu správně do back-endové fondy je potřeba naslouchací proces. V tomto kurzu vytvoříte naslouchací procesy pro každou dvěma doménami. V tomto příkladu jsou vytvořeny naslouchací procesy pro doménách *www.contoso.com* a *www.fabrikam.com*.
+Naslouchací proces je nutné povolit aplikační brány, aby správně směrovat provoz do back-endové fondy. V tomto kurzu vytvoříte naslouchací procesy pro každý z vašich dvou domén. V tomto příkladu vytvoříte naslouchací procesy pro domény *www.contoso.com* a *www.fabrikam.com*.
 
-Vytvořte naslouchací procesy s názvem *contosoListener* a *fabrikamListener* pomocí [New-AzureRmApplicationGatewayHttpListener](/powershell/module/azurerm.network/new-azurermapplicationgatewayhttplistener) s front-endovou konfiguraci a front-end port, který jste dříve vytvořili. Pravidla jsou vyžadována pro naslouchací procesy vědět, kterému fondu back-end pro příchozí provoz. Vytvořit základní pravidla s názvem *contosoRule* a *fabrikamRule* pomocí [New-AzureRmApplicationGatewayRequestRoutingRule](/powershell/module/azurerm.network/new-azurermapplicationgatewayrequestroutingrule).
+Vytvoření naslouchacích procesů s názvem *contosoListener* a *fabrikamListener* pomocí [New-AzureRmApplicationGatewayHttpListener](/powershell/module/azurerm.network/new-azurermapplicationgatewayhttplistener) s front-endová konfigurace a front-endový port, který jste předtím vytvořili. Pravidla jsou vyžadována pro naslouchací procesy vědět, kterému fondu back-endu pro příchozí provoz. Vytvoření základní pravidla s názvem *contosoRule* a *fabrikamRule* pomocí [New-AzureRmApplicationGatewayRequestRoutingRule](/powershell/module/azurerm.network/new-azurermapplicationgatewayrequestroutingrule).
 
 ```azurepowershell-interactive
 $contosolistener = New-AzureRmApplicationGatewayHttpListener `
@@ -146,7 +146,7 @@ $fabrikamRule = New-AzureRmApplicationGatewayRequestRoutingRule `
 
 ### <a name="create-the-application-gateway"></a>Vytvoření služby Application Gateway
 
-Teď, když jste vytvořili nezbytné doprovodné materiály, zadejte parametry pro službu application gateway s názvem *myAppGateway* pomocí [New-AzureRmApplicationGatewaySku](/powershell/module/azurerm.network/new-azurermapplicationgatewaysku)a pak vytvořit pomocí [ Nový AzureRmApplicationGateway](/powershell/module/azurerm.network/new-azurermapplicationgateway).
+Teď, když jste vytvořili potřebné podpůrné prostředky, zadejte pomocí rutiny [New-AzureRmApplicationGatewaySku](/powershell/module/azurerm.network/new-azurermapplicationgatewaysku) parametry brány Application Gateway s názvem *myAppGateway* a pak bránu vytvořte rutinou [New-AzureRmApplicationGateway](/powershell/module/azurerm.network/new-azurermapplicationgateway).
 
 ```azurepowershell-interactive
 $sku = New-AzureRmApplicationGatewaySku `
@@ -167,9 +167,9 @@ $appgw = New-AzureRmApplicationGateway `
   -Sku $sku
 ```
 
-## <a name="create-virtual-machine-scale-sets"></a>Vytvoření sady škálování virtuálního počítače
+## <a name="create-virtual-machine-scale-sets"></a>Vytvoření škálovacích sad virtuálních počítačů
 
-V tomto příkladu vytvoříte dvě sady škálování virtuálního počítače, které podporují dva back-endové fondy, které jste vytvořili. Jsou pojmenované sady škálování, které vytvoříte *myvmss1* a *myvmss2*. Každá sada škálování obsahuje dvě instance virtuálního počítače, na kterých je nainstalovat službu IIS. Můžete přiřadit měřítka nastaven fond back-end při konfiguraci nastavení IP adresy.
+V tomto příkladu vytvoříte dvě škálovací sady virtuálních počítačů, které podporují dva vytvořené back-endové fondy. Vytvořené škálovací sady se jmenují *myvmss1* a *myvmss2*. Každá škálovací sada obsahuje dvě instance virtuálních počítačů, na které nainstalujete službu IIS. Škálovací sadu přiřadíte back-endovému fondu při konfiguraci nastavení IP adres.
 
 ```azurepowershell-interactive
 $vnet = Get-AzureRmVirtualNetwork `
@@ -248,34 +248,34 @@ for ($i=1; $i -le 2; $i++)
 }
 ```
 
-## <a name="create-cname-record-in-your-domain"></a>Vytvořit záznam CNAME ve vaší doméně
+## <a name="create-cname-record-in-your-domain"></a>Vytvoření názvu CNAME v doméně
 
-Po vytvoření služby application gateway s veřejnou IP adresu můžete získat adresu serveru DNS a používat ho vytvořit záznam CNAME ve vaší doméně. Můžete použít [Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) k získání adresy DNS aplikační brány. Kopírování *plně kvalifikovaný název domény* hodnotu DNSSettings a používejte ho jako hodnota záznam CNAME, který vytvoříte. Použití záznamů A není doporučeno, protože VIP může změnit při restartování služby application gateway.
+Jakmile vytvoříte aplikační bránu s veřejnou IP adresou, získáte adresu DNS, kterou můžete použít k vytvoření záznamu CNAME ve své doméně. K získání adresy DNS aplikační brány použijte příkaz [Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress). Zkopírujte hodnotu *fqdn* z objektu DNESettings a použijte ji jako hodnotu vytvořeného záznamu CNAME. Použití záznamů typu A se nedoporučuje, protože virtuální IP adresa se při restartování aplikační brány může změnit.
 
 ```azurepowershell-interactive
 Get-AzureRmPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress
 ```
 
-## <a name="test-the-application-gateway"></a>Testování služby application gateway
+## <a name="test-the-application-gateway"></a>Otestování aplikační brány
 
-Zadejte název domény do panelu Adresa prohlížeče. Například http://www.contoso.com.
+Do adresního řádku prohlížeče zadejte název domény. Příklad: http://www.contoso.com.
 
-![Testování serveru contoso v aplikační brány](./media/application-gateway-create-multisite-azureresourcemanager-powershell/application-gateway-iistest.png)
+![Testování webu Contoso v aplikační bráně](./media/application-gateway-create-multisite-azureresourcemanager-powershell/application-gateway-iistest.png)
 
-Změna adresy k jiné doméně a měli byste vidět něco podobného jako v následujícím příkladu:
+Změňte adresu na jinou ze svých domén. Měli byste vidět něco podobného jako v následujícím příkladu:
 
-![Testování serveru fabrikam v aplikační brány](./media/application-gateway-create-multisite-azureresourcemanager-powershell/application-gateway-iistest2.png)
+![Testování webu Fabrikam v aplikační bráně](./media/application-gateway-create-multisite-azureresourcemanager-powershell/application-gateway-iistest2.png)
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto článku jste se dozvěděli, jak:
+V tomto článku jste zjistili, jak:
 
 > [!div class="checklist"]
-> * Nastavení sítě
+> * Nastavit síť
 > * Vytvoření služby Application Gateway
-> * Vytvořte naslouchací procesy a pravidla směrování
-> * Vytvoření sady škálování virtuálního počítače s back-endové fondy
-> * Vytvořte záznam CNAME ve vaší doméně
+> * Vytvoření naslouchacích procesů a pravidla směrování
+> * Vytvořit z back-endových fondů škálovací sadu virtuálních počítačů
+> * Vytvořit záznam CNAME v doméně
 
 > [!div class="nextstepaction"]
-> [Další informace o co můžete dělat s aplikační brány](application-gateway-introduction.md)
+> [Další informace o možnostech aplikační brány](application-gateway-introduction.md)

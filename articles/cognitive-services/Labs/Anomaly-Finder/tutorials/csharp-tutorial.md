@@ -1,6 +1,6 @@
 ---
-title: Aplikace anomálií detekce C# – kognitivní služby Microsoft | Microsoft Docs
-description: Prozkoumejte C# aplikaci, která používá rozhraní API detekce anomálií v kognitivní služby společnosti Microsoft. Odesílat původní datové body k rozhraní API a očekávaná hodnota a body anomálií.
+title: Anomálií detekce jazyka C# aplikace – Microsoft Cognitive Services | Dokumentace Microsoftu
+description: Prozkoumání aplikace C#, která používá rozhraní API pro detekci anomálií v Microsoft Cognitive Services. Odeslat původní datové body k rozhraní API a získat očekávanou hodnotu a anomálií body.
 services: cognitive-services
 author: chliang
 manager: bix
@@ -10,46 +10,46 @@ ms.topic: article
 ms.date: 05/01/2018
 ms.author: chliang
 ms.openlocfilehash: 2e4100fd7d8e85a6b103c31000176aaaeb3d7151
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343024"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38317675"
 ---
 # <a name="anomaly-detection-c-application"></a>Aplikace v C# detekce anomálií
 
-Prozkoumejte základní aplikace Windows, která používá rozhraní API detekce anomálií ke zjištění anomálií ze vstupu. V příkladu odešle data časové řady na rozhraní API detekce anomálií s svůj klíč předplatného a pak získá všechny body anomálií a očekávaná hodnota pro každý datový bod z rozhraní API.
+Prozkoumejte základní aplikace Windows, který používá rozhraní API pro detekci anomálií k detekci anomálií ze vstupu. V příkladu s klíči předplatného odešle data časových řad pro rozhraní API pro detekci anomálií a získá všechny body anomálií a očekávaná hodnota pro každý datový bod z rozhraní API.
 
 ## <a name="prerequisites"></a>Požadavky
 
 ### <a name="platform-requirements"></a>Požadavky na platformu
 
-V příkladu byla vyvinuta pro rozhraní .NET Framework pomocí [Visual Studio 2017, Community Edition](https://www.visualstudio.com/products/visual-studio-community-vs). 
+V příkladu jsme vyvinuli pro rozhraní .NET Framework pomocí [Visual Studio 2017, Community Edition](https://www.visualstudio.com/products/visual-studio-community-vs). 
 
-### <a name="subscribe-to-anomaly-detection-and-get-a-subscription-key"></a>Přihlášení k odběru detekce anomálií a získat klíč předplatného 
+### <a name="subscribe-to-anomaly-detection-and-get-a-subscription-key"></a>Přihlaste se k detekci anomálií odběru a získat klíč předplatného 
 
 [!INCLUDE [GetSubscriptionKey](../includes/get-subscription-key.md)]
 
-## <a name="get-and-use-the-example"></a>Získání a použijte tento příklad
+## <a name="get-and-use-the-example"></a>Získat a pomocí příkladu
 
-Může klonovat detekce anomálií ukázková aplikace do počítače z [Githubu](https://github.com/MicrosoftAnomalyDetection/csharp-sample.git). 
+Můžete naklonovat detekce anomálií ukázková aplikace do počítače z [Githubu](https://github.com/MicrosoftAnomalyDetection/csharp-sample.git). 
 <a name="Step1"></a>
-### <a name="install-the-example"></a>Nainstalujte v příkladu
+### <a name="install-the-example"></a>Instalace v příkladu
 
-V Githubu ploše otevřete Sample\AnomalyDetectionSample.sln.
+GitHub Desktop otevřete Sample\AnomalyDetectionSample.sln.
 
 <a name="Step2"></a>
-### <a name="build-the-example"></a>V příkladu sestavení
+### <a name="build-the-example"></a>Sestavení příkladu
 
-Stiskněte kombinaci kláves Ctrl + Shift + B, nebo klikněte na pásu karet na sestavení a potom vyberte sestavit řešení.
+Stiskněte kombinaci kláves Ctrl + Shift + B, nebo na pásu karet klikněte na sestavení a potom vyberte sestavit řešení.
 
 <a name="Step3"></a>
-### <a name="run-the-example"></a>Spuštění ukázkového
+### <a name="run-the-example"></a>Spustit příklad
 
-1. Po dokončení sestavení stiskněte **F5** nebo klikněte na tlačítko **spustit** na pásu karet pro spuštění příkladu.
-2. Vyhledejte okno detekce anomálií uživatelské rozhraní s pole pro úpravy textu čtení "{your_subscription_key}".
-3. Nahraďte vlastními daty request.json soubor, který obsahuje ukázková data, a pak klikněte na tlačítko "Odeslat". Microsoft přijímá data, odesílání a použít je k zjištění všech bodů anomálií mezi potom. Data, která jste aktualizovali nebude uchovávané v serveru společnosti Microsoft. Ke zjištění anomálií bod znovu, budete potřebovat nahrát data znovu.
-4. Pokud data je vhodný, najdete v poli "Odpověď" výsledek detekce anomálií. Pokud dojde k chybě, zobrazí se informace o chybě v poli odpovědi.
+1. Po dokončení sestavení stiskněte **F5** nebo klikněte na tlačítko **Start** na pásu karet pro spuštění příkladu.
+2. Vyhledejte okno pro detekci anomálií uživatelského rozhraní pomocí pole pro úpravy textu "{your_subscription_key}" pro čtení.
+3. Nahraďte vlastními daty request.json soubor, který obsahuje ukázková data, a potom klikněte na tlačítko "Odeslat". Microsoft přijímá data nahrát a použít k detekci všechny body anomálií mezi potom. Data, která jste aktualizovali, nebudou trvale serveru společnosti Microsoft. Ke zjištění anomálií bod znovu, třeba nahrajete data znovu.
+4. Pokud je v pořádku data, najdete v poli "Odpověď" výsledek detekce anomálií. Pokud dojde k jakékoli chybě, zobrazí se informace o chybě v poli odpovědi.
 
 <a name="Review"></a>
 ### <a name="read-the-result"></a>Přečtěte si výsledek
@@ -57,13 +57,13 @@ Stiskněte kombinaci kláves Ctrl + Shift + B, nebo klikněte na pásu karet na 
 [!INCLUDE [diagrams](../includes/diagrams.md)]
 
 <a name="Review"></a>
-### <a name="review-and-learn"></a>Zkontrolujte a další informace
+### <a name="review-and-learn"></a>Zkontrolujte a další
 
-Teď, když máte spuštěné aplikace, umožňuje zkontrolujte, jak se aplikace příklad integruje s technologií kognitivní služby. Tento krok bude usnadňují pokračovat sestavení do této aplikace nebo vytvořte vlastní aplikaci pomocí Microsoft detekce anomálií.
+Teď, když máte spuštěnou aplikaci, Pojďme se podívat na tom, jak ukázková aplikace integruje technologie služeb Cognitive Services. Tento krok se usnadňují pokračujte v sestavování do této aplikace nebo vyvíjet vlastní aplikace pomocí Microsoft pro detekci anomálií.
 
-Tento příklad aplikace využívá rozhraní Restful API detekce anomálií koncový bod.
+Tato ukázková aplikace využívá rozhraní Restful API detekce anomálií koncový bod.
 
-Kontrola, jak získá ukázková aplikace používá rozhraní Restful API, podíváme se na fragment kódu z **AnomalyDetectionClient.cs**. Tento soubor obsahuje komentáře kódu označující "Klíč UKÁZKOVÝ kód SPUSTÍ TADY" a "Klíč ukázka kódu KONČÍ zde" abychom vám pomohli najít kód, který fragmenty uvedeno níže.
+Kontrola, jak se používá rozhraní Restful API v ukázkové aplikaci, Podívejme se na fragment kódu z **AnomalyDetectionClient.cs**. Tento soubor obsahuje komentáře ke kódu označující "Klíč UKÁZKOVÝ kód SPUSTÍ TADY" a "Klíč UKÁZKOVÝ kód ukončení sem" abychom vám pomohli najít kód, který fragmenty uveden níže.
 
 ```csharp
             // ----------------------------------------------------------------------
@@ -77,7 +77,7 @@ Kontrola, jak získá ukázková aplikace používá rozhraní Restful API, pod�
             // ----------------------------------------------------------------------
 
 ```
-**Request(...)**  Níže uvedeného kódu fragment kódu ukazuje způsob použití HttlClient odeslat vaše předplatné klíč a datové body na koncový bod rozhraní API detekce anomálií.
+**Request(...)**  Níže uvedeného kódu fragment kódu ukazuje způsob použití HttlClient odešlete vaše předplatné klíč a datové body do koncového bodu rozhraní API pro detekci anomálií.
 
 ```csharp
     public async Task<string> Request(string baseAddress, string endpoint, string subscriptionKey, string requestData)

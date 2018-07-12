@@ -1,6 +1,6 @@
 ---
-title: Vytvoření oboru názvů a příjemce skupiny Azure Event Hubs pomocí šablony | Microsoft Docs
-description: Vytvoření oboru názvů Event Hubs s centra událostí a skupiny příjemců pomocí šablon Azure Resource Manageru
+title: Vytvoření služby Azure Event Hubs oboru názvů a příjemce skupiny pomocí šablony | Dokumentace Microsoftu
+description: Vytvořte obor názvů služby Event Hubs pomocí centra událostí a příjemce skupiny pomocí šablon Azure Resource Manageru
 services: event-hubs
 documentationcenter: .net
 author: sethmanheim
@@ -15,19 +15,19 @@ ms.workload: na
 ms.date: 04/30/2018
 ms.author: sethm
 ms.openlocfilehash: 4b4dc5be9697bb96aec658fccbdf13b299e79e9e
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32311256"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38309847"
 ---
-# <a name="create-an-event-hubs-namespace-with-event-hub-and-consumer-group-using-an-azure-resource-manager-template"></a>Vytvoření oboru názvů Event Hubs s skupina rozbočovače a příjemce událostí pomocí šablony Azure Resource Manager
+# <a name="create-an-event-hubs-namespace-with-event-hub-and-consumer-group-using-an-azure-resource-manager-template"></a>Vytvořte obor názvů služby Event Hubs s centrem a příjemce skupiny událostí pomocí šablony Azure Resource Manageru
 
-Tento článek ukazuje, jak vytvořit obor názvů typu pomocí šablony Azure Resource Manager [Event Hubs](event-hubs-what-is-event-hubs.md), s rozbočovači jedna událost a jedné skupiny uživatelů. Článek popisuje, jak definovat jsou nasazené prostředky, ke kterým a jak definovat parametry, které jsou zadané, když se spustí nasazení. Tuto šablonu můžete použít pro vlastní nasazení nebo ji upravit, aby splňovala vaše požadavky.
+Tento článek ukazuje, jak použít šablonu Azure Resource Manageru k vytvoření oboru názvů typu [Event Hubs](event-hubs-what-is-event-hubs.md)s jedním centrem událostí a jedné skupiny uživatelů. Tento článek ukazuje, jak definovat prostředků, které jsou nasazené a tom, jak definovat parametry, které jsou zadané při spuštění nasazení. Tuto šablonu můžete použít pro vlastní nasazení nebo ji upravit, aby splňovala vaše požadavky.
 
-Informace o vytváření šablon najdete v tématu [šablon pro tvorbu Azure Resource Manageru][Authoring Azure Resource Manager templates].
+Informace o vytváření šablon najdete v tématu [šablon pro vytváření Azure Resource Manageru][Authoring Azure Resource Manager templates].
 
-Úplnou šablonu, najdete v článku [šablony události rozbočovače a příjemce skupiny] [ Event Hub and consumer group template] na Githubu.
+Úplnou šablonu najdete v článku [šablony skupiny centra a příjemce události] [ Event Hub and consumer group template] na Githubu.
 
 > [!NOTE]
 > Nejnovější šablony můžete zkontrolovat tak, že přejdete do galerie [Šablony Azure pro rychlý start][Azure Quickstart Templates] a vyhledáte Event Hubs.
@@ -36,7 +36,7 @@ Informace o vytváření šablon najdete v tématu [šablon pro tvorbu Azure Res
 
 ## <a name="what-will-you-deploy"></a>Co budete nasazovat?
 
-Pomocí této šablony můžete nasadit na obor názvů služby Event Hubs s centra událostí a skupiny příjemců.
+Pomocí této šablony nasadíte obor názvů služby Event Hubs pomocí centra událostí a skupiny příjemců.
 
 Pokud chcete nasazení spustit automaticky, klikněte na následující tlačítko:
 
@@ -44,7 +44,7 @@ Pokud chcete nasazení spustit automaticky, klikněte na následující tlačít
 
 ## <a name="parameters"></a>Parametry
 
-Pomocí Azure Resource Manageru definujete parametry pro hodnoty, které chcete zadat při nasazení šablony. Šablona obsahuje část `Parameters`, která obsahuje všechny hodnoty parametrů. Měli byste parametr hodnot, které se budou lišit podle prostředí, do které nasazujete nebo na základě projektu, které nasazujete. Nedefinujte parametry pro hodnoty, které jsou vždy stejné. Každá hodnota parametru v šabloně definuje prostředky, které jsou nasazeny.
+Pomocí Azure Resource Manageru definujete parametry pro hodnoty, které chcete zadat při nasazení šablony. Šablona obsahuje část `Parameters`, která obsahuje všechny hodnoty parametrů. Byste měli definovat parametr pro hodnoty, které se budou lišit podle projektu, které nasazujete nebo podle prostředí, do kterého nasazujete. Nedefinujte parametry pro hodnoty, které jsou vždy stejné. Každá hodnota parametru v šabloně definuje prostředky, které jsou nasazené.
 
 Šablona definuje následující parametry:
 
@@ -70,7 +70,7 @@ Název centra událostí vytvořeného v oboru názvů Event Hubs.
 
 ### <a name="eventhubconsumergroupname"></a>eventHubConsumerGroupName
 
-Název skupiny příjemců pro centra událostí vytvořit.
+Název skupiny uživatelů vytvořené pro Centrum událostí.
 
 ```json
 "eventHubConsumerGroupName": {
@@ -90,7 +90,7 @@ Verze rozhraní API šablony.
 
 ## <a name="resources-to-deploy"></a>Prostředky k nasazení
 
-Vytvoří obor názvů typu **EventHubs**, s centra událostí a skupiny příjemců:
+Vytvoří obor názvů tohoto typu **EventHubs**s centra událostí a skupiny příjemců:
 
 ```json
 "resources":[  

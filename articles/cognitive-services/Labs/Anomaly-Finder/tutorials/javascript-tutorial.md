@@ -1,6 +1,6 @@
 ---
-title: Detekce anomálií aplikace Javascript – kognitivní služby Microsoft | Microsoft Docs
-description: Prozkoumejte Javascript webovou aplikaci, která používá rozhraní API detekce anomálií v kognitivní služby společnosti Microsoft. Odesílat původní datové body k rozhraní API a očekávaná hodnota a body anomálií.
+title: Detekce anomálií Javascript aplikace – Microsoft Cognitive Services | Dokumentace Microsoftu
+description: Prozkoumejte službu jazyka Javascript webovou aplikaci, která používá rozhraní API pro detekci anomálií v Microsoft Cognitive Services. Odeslat původní datové body k rozhraní API a získat očekávanou hodnotu a anomálií body.
 services: cognitive-services
 author: wenya
 manager: bix
@@ -10,15 +10,15 @@ ms.topic: article
 ms.date: 05/01/2018
 ms.author: wenya
 ms.openlocfilehash: 42c3941a05efe8b74f818cd99f3606b3073892a9
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343016"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38453165"
 ---
 # <a name="anomaly-detection-javascript-application"></a>Aplikace Javascript detekce anomálií
 
-Prozkoumejte webovou aplikaci, která používá rozhraní API REST detekce anomálií ke zjištění anomálií. V příkladu odešle data časové řady na rozhraní API detekce anomálií s svůj klíč předplatného a pak získá všechny body anomálií a očekávaná hodnota pro každý datový bod z rozhraní API.
+Prozkoumejte službu webové aplikace, která používá rozhraní REST API pro detekci anomálií pro detekci anomálií. V příkladu s klíči předplatného odešle data časových řad pro rozhraní API pro detekci anomálií a získá všechny body anomálií a očekávané hodnotě. pro každý datový bod z rozhraní API.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -26,36 +26,36 @@ Prozkoumejte webovou aplikaci, která používá rozhraní API REST detekce anom
 
 V tomto kurzu byla vyvinuta pomocí jednoduchého textového editoru.
 
-### <a name="subscribe-to-anomaly-detection-and-get-a-subscription-key"></a>Přihlášení k odběru detekce anomálií a získat klíč předplatného 
+### <a name="subscribe-to-anomaly-detection-and-get-a-subscription-key"></a>Přihlaste se k detekci anomálií odběru a získat klíč předplatného 
 
 [!INCLUDE [GetSubscriptionKey](../includes/get-subscription-key.md)]
 
-## <a name="get-and-use-the-example"></a>Získání a použijte tento příklad
+## <a name="get-and-use-the-example"></a>Získat a pomocí příkladu
 
-V tomto kurzu poskytuje dva scénáře pro zjišťování anomálií data časové řady. Můžeme začít.
+Tento kurz obsahuje dva scénáře pro detekci anomálií data řady čas. Pusťme se do práce.
 
 <a name="Step1"></a> 
 ### <a name="download-the-tutorial-project"></a>Stáhněte si kurz projekt
 
-Klon [kognitivní kurzu detekce anomálií služby JavaScript](https://github.com/MicrosoftAnomalyDetection/javascript-sample), nebo ji stáhněte soubor .zip a rozbalte ho prázdný adresář.
+Klonování [Cognitive Services JavaScript anomálií detekce kurzu](https://github.com/MicrosoftAnomalyDetection/javascript-sample), nebo ji stáhněte soubor .zip a rozbalte ho prázdný adresář.
 
 <a name="Step2"></a>
-### <a name="run-the-example"></a>Spuštění ukázkového
+### <a name="run-the-example"></a>Spustit příklad
 
-Existují dva scénáře můžete zkusit v příkladu.
-1. Uveďte vaše **klíč předplatného** do pole klíč předplatného, na zjištění funkce na anomalydetection.html.
-2. Vložit koncový bod rozhraní API detekce anomálií a ověřte, že používáte správné oblast v oblasti předplatného.
-3. Otevřete **anomalydetection.html** soubor ve webovém prohlížeči.
+Existují dva scénáře, můžete zkusit v příkladu.
+1. Vložit vaše **klíč předplatného** do pole klíč předplatného na detekci funkce na anomalydetection.html.
+2. Vložit koncový bod rozhraní API pro detekci anomálií a ověřte, že používáte správnou oblast v oblasti předplatného.
+3. Otevřít **anomalydetection.html** soubor ve webovém prohlížeči.
 
-**Scénář 1 zjistit týdenní časové řady dat**
-1. V poli období, zadejte období **7**. 
-2. Nahraďte váš týdenní čas datové body řady (Json) v poli bodů ukázková data, nebo přímo pomocí ukázková data.
-3. Klikněte na tlačítko detekce anomálií a ověřte výsledek do textového pole pravé odpovědi.
+**Data týdenní časových řad pro scénář 1 rozpoznat**
+1. V období pole zadat období **7**. 
+2. Nahraďte váš týdenní čas datových bodů řady (Json) v poli body ukázková data, nebo přímo použít vzorová data.
+3. Klikněte na tlačítko pro detekci anomálií a ověření výsledku v textovém poli správné odpovědi.
 
-**Scénář 2 zjistit časové údaje řady bez období**
-1. Ponechejte, kterým zařazen prázdný v časovém období, předpokládá, že nevíte období časové řady.
-2. Pomocí stejné data řady čas jako scénář 1.
-3. Klikněte na tlačítko detekce anomálií a ověřte pole období do textového pole pravé odpovědi.
+**Scénář 2 rozpoznat dat časových řad bez období**
+1. Nechte prázdný v časovém období nezaznamenaly, předpokládají neznáte období časové řady.
+2. Scénář 1 pomocí stejného data časových řad.
+3. Klikněte na tlačítko pro detekci anomálií a ověřte pole období v textovém poli správné odpovědi.
 
 <a name="Step3"></a>
 ### <a name="read-the-result"></a>Přečtěte si výsledek
@@ -63,11 +63,11 @@ Existují dva scénáře můžete zkusit v příkladu.
 [!INCLUDE [diagrams](../includes/diagrams.md)]
 
 <a name="Review"></a>
-### <a name="review-and-learn"></a>Zkontrolujte a další informace
+### <a name="review-and-learn"></a>Zkontrolujte a další
 
-Nyní můžete získat běžící aplikaci. Pojďme si, jak se aplikace příklad integruje s technologií kognitivní služby. Tento krok bude usnadňují pokračovat ve vytváření na tuto aplikaci nebo vytvořte vlastní aplikaci pomocí Microsoft detekce anomálií.
-Tento příklad aplikace využívá rozhraní Restful API detekce anomálií koncový bod.
-Kontrola, jak získá ukázková aplikace používá rozhraní Restful API, podíváme se na fragment kódu z anomalydetection.html.
+Teď získáte běžící aplikaci. Pojďme se podívat na tom, jak ukázková aplikace integruje technologie služeb Cognitive Services. Tento krok usnadní pokračujte v sestavování v této aplikaci, nebo vyvíjet vlastní aplikace pomocí Microsoft pro detekci anomálií.
+Tato ukázková aplikace využívá rozhraní Restful API detekce anomálií koncový bod.
+Kontrola, jak se používá rozhraní Restful API v ukázkové aplikaci, Podívejme se na fragment kódu z anomalydetection.html.
 ```JavaScript
 function anomalyDetection(url, subscriptionKey, points, period) {
     var obj = new Object();

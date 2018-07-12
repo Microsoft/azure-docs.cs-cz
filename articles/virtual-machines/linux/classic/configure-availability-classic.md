@@ -1,6 +1,6 @@
 ---
-title: Sady dostupnosti pro klasické virtuální počítače Linux | Microsoft Docs
-description: Nakonfigurujte sadu dostupnosti pro nové nebo existující virtuální počítač s Linuxem v modelu nasazení classic pomocí portálu Azure a prostředí Azure PowerShell.
+title: Skupiny dostupnosti pro klasické virtuální počítače s Linuxem | Dokumentace Microsoftu
+description: Nakonfigurujte skupinu dostupnosti pro nové nebo existující virtuální počítač s Linuxem v modelu nasazení classic pomocí webu Azure portal a Azure Powershellu.
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -17,15 +17,15 @@ ms.topic: article
 ms.date: 07/12/2016
 ms.author: cynthn
 ms.openlocfilehash: c5ca51f854e2358dc57286759d5b219e0d954a15
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30842366"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38308085"
 ---
-# <a name="how-to-configure-an-availability-set-for-linux-virtual-machines-in-the-classic-deployment-model"></a>Jak nakonfigurovat sadu dostupnosti pro virtuální počítače s Linuxem v modelu nasazení classic
+# <a name="how-to-configure-an-availability-set-for-linux-virtual-machines-in-the-classic-deployment-model"></a>Jak nakonfigurovat skupinu dostupnosti pro virtuální počítače s Linuxem v modelu nasazení classic
 > [!IMPORTANT] 
-> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a klasický](../../../resource-manager-deployment-model.md). Tento článek se zabývá pomocí modelu nasazení Classic. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager. Můžete také [konfigurace skupiny dostupnosti](../../azure-cli-arm-commands.md#azure-availset-commands-to-manage-your-availability-sets) v nasazení Resource Manager.
+> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a Classic](../../../resource-manager-deployment-model.md). Tento článek se věnuje modelu nasazení Classic. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager. Můžete také [konfigurace skupin dostupnosti](../../azure-cli-arm-commands.md#azure-availset-commands-to-manage-your-availability-sets) v nasazení Resource Manager.
 > [!INCLUDE [virtual-machines-common-classic-createportal](../../../../includes/virtual-machines-classic-portal.md)]
 
 [!INCLUDE [virtual-machines-common-classic-configure-availability](../../../../includes/virtual-machines-common-classic-configure-availability.md)]

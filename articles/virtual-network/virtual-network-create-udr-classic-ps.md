@@ -1,6 +1,6 @@
 ---
-title: Řídit směrování v Azure Virtual Network - PowerShell – Classic | Microsoft Docs
-description: Zjistěte, jak řídit směrování v virtuální sítě pomocí prostředí PowerShell | Classic
+title: Ovládací prvek v modelu Classic Azure Virtual Network – Powershellu – směrování | Dokumentace Microsoftu
+description: Zjistěte, jak řídit směrování do virtuální sítě s použitím prostředí PowerShell | Classic
 services: virtual-network
 documentationcenter: na
 author: genlin
@@ -16,13 +16,13 @@ ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: genli
 ms.openlocfilehash: 930676a396ae316ec761ba5d03ad1a1d0fd7a425
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31791997"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38232562"
 ---
-# <a name="control-routing-and-use-virtual-appliances-classic-using-powershell"></a>Řídit směrování a použití virtuálních zařízení (klasické) pomocí prostředí PowerShell
+# <a name="control-routing-and-use-virtual-appliances-classic-using-powershell"></a>Řídit směrování a použití virtuálních zařízení (classic) pomocí Powershellu
 
 > [!div class="op_single_selector"]
 > * [PowerShell](tutorial-create-route-table-powershell.md)
@@ -38,21 +38,21 @@ ms.locfileid: "31791997"
 
 [!INCLUDE [virtual-network-create-udr-scenario-include.md](../../includes/virtual-network-create-udr-scenario-include.md)]
 
-Ukázka prostředí Azure PowerShell níže uvedené příkazy očekávat jednoduché prostředí už vytvořený založené na výše uvedené scénáře. Pokud chcete ke spuštění příkazů, jak jsou zobrazeny v tomto dokumentu, vytvoření prostředí ukazuje [vytvoření virtuální sítě (klasické) pomocí prostředí PowerShell](virtual-networks-create-vnet-classic-netcfg-ps.md).
+Ukázky Azure Powershellu následující příkazy očekávat jednoduché prostředí už vytvořený podle výše uvedeného scénáře. Pokud chcete spustit příkazy, jak jsou zobrazeny v tomto dokumentu, vytvoření zobrazeného v prostředí [vytvoření virtuální sítě (classic) pomocí prostředí PowerShell](virtual-networks-create-vnet-classic-netcfg-ps.md).
 
 [!INCLUDE [azure-ps-prerequisites-include.md](../../includes/azure-ps-prerequisites-include.md)]
 
-## <a name="create-the-udr-for-the-front-end-subnet"></a>Vytvoření UDR pro podsítě front end
-Pokud chcete vytvořit směrovací tabulku a směrování, které jsou potřebné pro podsítě front end závislosti na scénáři výše, postupujte podle následujících kroků.
+## <a name="create-the-udr-for-the-front-end-subnet"></a>Vytvoření uživatelem definovaná TRASA pro front-endové podsítě
+Vytvoření směrovací tabulky a trasy potřebné pro podsítě front end, který je založený na výše uvedeném scénáři, postupujte podle následujících kroků.
 
-1. Spusťte následující příkaz, který vytvořit směrovací tabulku front-end podsítě:
+1. Spuštěním následujícího příkazu vytvořte tabulku směrování pro front-endové podsítě:
 
     ```powershell
     New-AzureRouteTable -Name UDR-FrontEnd -Location uswest `
     -Label "Route table for front end subnet"
     ```
 
-2. Spusťte následující příkaz k vytvoření trasy ve směrovací tabulce odeslat veškerý provoz, jehož k podsíti back-end (192.168.2.0/24) na **FW1** virtuálních počítačů (192.168.0.4):
+2. Spusťte následující příkaz k vytvoření trasy ve směrovací tabulce odesílat veškerý provoz směřující do back endové podsítě (192.168.2.0/24) k **FW1** virtuálního počítače (192.168.0.4):
 
     ```powershell
     Get-AzureRouteTable UDR-FrontEnd `
@@ -61,7 +61,7 @@ Pokud chcete vytvořit směrovací tabulku a směrování, které jsou potřebn�
     -NextHopIpAddress 192.168.0.4
     ```
 
-3. Spusťte následující příkaz k přiřazení směrovací tabulka s **front-endu** podsítě:
+3. Spusťte následující příkaz k přidružení směrovací tabulky s **front-endu** podsítě:
 
     ```powershell
     Set-AzureSubnetRouteTable -VirtualNetworkName TestVNet `
@@ -69,10 +69,10 @@ Pokud chcete vytvořit směrovací tabulku a směrování, které jsou potřebn�
     -RouteTableName UDR-FrontEnd
     ```
 
-## <a name="create-the-udr-for-the-back-end-subnet"></a>Vytvoření UDR pro podsíť back-end
-Pokud chcete vytvořit směrovací tabulku a směrování, které jsou potřeba pro back-end podsíť závislosti na scénáři, proveďte následující kroky:
+## <a name="create-the-udr-for-the-back-end-subnet"></a>Vytvoření uživatelem definovaná TRASA pro podsíť back-end
+Pokud chcete vytvořit směrovací tabulku a směrování pro podsíť back-endu na základě uvedeného scénáře potřeba, proveďte následující kroky:
 
-1. Spusťte následující příkaz a vytvořte tabulku směrování pro podsíť back-end:
+1. Spuštěním následujícího příkazu vytvořte tabulku směrování pro podsíť back-end:
 
     ```powershell
     New-AzureRouteTable -Name UDR-BackEnd `
@@ -80,7 +80,7 @@ Pokud chcete vytvořit směrovací tabulku a směrování, které jsou potřeba 
     -Label "Route table for back end subnet"
     ```
 
-2. Spusťte následující příkaz k vytvoření trasy ve směrovací tabulce odeslat veškerý provoz, jehož klientské podsíti (192.168.1.0/24) na **FW1** virtuálních počítačů (192.168.0.4):
+2. Spusťte následující příkaz k vytvoření trasy ve směrovací tabulce odesílat veškerý provoz směřující do front-endové podsítě (. 192.168.1.0/24) k **FW1** virtuálního počítače (192.168.0.4):
 
     ```powershell
     Get-AzureRouteTable UDR-BackEnd
@@ -91,7 +91,7 @@ Pokud chcete vytvořit směrovací tabulku a směrování, které jsou potřeba 
     -NextHopIpAddress 192.168.0.4
     ```
 
-3. Spusťte následující příkaz k přiřazení směrovací tabulka s **back-end** podsítě:
+3. Spusťte následující příkaz k přidružení směrovací tabulky s **back-endu** podsítě:
 
     ```powershell
     Set-AzureSubnetRouteTable -VirtualNetworkName TestVNet `
@@ -99,9 +99,9 @@ Pokud chcete vytvořit směrovací tabulku a směrování, které jsou potřeba 
     -RouteTableName UDR-BackEnd
     ```
 
-## <a name="enable-ip-forwarding-on-the-fw1-vm"></a>Povolení předávání IP ve virtuálním počítači FW1
+## <a name="enable-ip-forwarding-on-the-fw1-vm"></a>Povolit předávání IP na virtuálním počítači FW1
 
-Pokud chcete povolit předávání ve virtuálním počítači FW1 protokolu IP, proveďte následující kroky:
+Pokud chcete povolit předávání ve virtuálním počítači FW1 IP, proveďte následující kroky:
 
 1. Spusťte následující příkaz a zkontrolujte stav předávání IP:
 
@@ -110,7 +110,7 @@ Pokud chcete povolit předávání ve virtuálním počítači FW1 protokolu IP,
     | Get-AzureIPForwarding
     ```
 
-2. Spusťte následující příkaz k povolení předávání protokolu IP pro *FW1* virtuálních počítačů:
+2. Spuštěním následujícího příkazu povolte pro předávání IP *FW1* virtuálního počítače:
 
     ```powershell
     Get-AzureVM -Name FW1 -ServiceName TestRGFW `

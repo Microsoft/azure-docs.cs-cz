@@ -17,11 +17,11 @@ ms.date: 7/6/2018
 ms.author: markgal;anuragm
 ms.custom: ''
 ms.openlocfilehash: 32f45b66c4b1d22da3ffc4310a8a47c17319301f
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
-ms.translationtype: HT
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37918046"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38302819"
 ---
 # <a name="back-up-sql-server-database-in-azure"></a>Proveďte zálohu databáze serveru SQL Server v Azure
 

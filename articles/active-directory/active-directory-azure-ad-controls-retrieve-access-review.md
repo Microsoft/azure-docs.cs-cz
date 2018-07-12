@@ -15,12 +15,12 @@ ms.component: compliance-reports
 ms.date: 06/21/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: 1c1488b2744c25e9b7a191d208cb3f81d336bd3a
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 96676c3ec6d96fd6c6f78aa2dbed8cf4d0a6718d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446686"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38295296"
 ---
 # <a name="retrieve-access-review-results"></a>Načtení výsledků kontroly přístupu
 
@@ -55,6 +55,6 @@ Ve výchozím nastavení zůstane odstraněný uživatel ve službě Azure Activ
 - [Správa přístupu uživatelů typu host pomocí kontrol přístupu Azure AD](active-directory-azure-ad-controls-manage-guest-access-with-access-reviews.md)
 - [Správa programů a ovládacích prvků pro kontroly přístupu Azure AD](active-directory-azure-ad-controls-manage-programs-controls.md)
 - [Vytváření kontroly přístupu pro členy skupiny nebo přístupu k aplikaci](active-directory-azure-ad-controls-create-access-review.md)
-- [Vytváření kontroly přístupu uživatelů v roli správce Azure AD](active-directory-privileged-identity-management-how-to-start-security-review.md)
+- [Vytváření kontroly přístupu uživatelů v roli správce Azure AD](privileged-identity-management/pim-how-to-start-security-review.md)
 
 

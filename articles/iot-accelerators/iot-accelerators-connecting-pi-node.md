@@ -1,6 +1,6 @@
 ---
-title: Zřídit Malinová platformy pro vzdálené monitorování v Node.js – Azure | Microsoft Docs
-description: Popisuje, jak se připojit k používání aplikace napsané v Node.js akcelerátoru řešení vzdáleného monitorování malin platformy zařízení.
+title: Zřízení Raspberry Pi pro vzdálené monitorování v Node.js – Azure | Dokumentace Microsoftu
+description: Popisuje, jak připojit zařízení Raspberry Pi pro aplikace napsané v Node.js pomocí akcelerátoru řešení vzdáleného monitorování.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -9,49 +9,49 @@ ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: dobett
 ms.openlocfilehash: 78647612fc747ec328279536d82fb31bb4858688
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34626866"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38309772"
 ---
-# <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>Připojte malin platformy zařízení k řešení akcelerátoru vzdálené monitorování (Node.js)
+# <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>Připojte Raspberry Pi zařízení k akcelerátor řešení vzdálené monitorování (Node.js)
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-V tomto kurzu se dozvíte, jak se připojit fyzického zařízení k akcelerátoru řešení vzdáleného monitorování. V tomto kurzu použijete Node.js, který je vhodný pro prostředí s minimálními prostředků omezení.
+V tomto kurzu se dozvíte, jak připojení fyzických zařízení k akcelerátoru řešení vzdáleného monitorování. V tomto kurzu použijete Node.js, který je vhodný pro prostředí s minimálním prostředkům.
 
 ### <a name="required-hardware"></a>Požadovaný hardware
 
-Stolní počítač, abyste mohli vzdáleně připojit k na příkazovém řádku malin pí.
+Stolní počítač, která umožňuje vzdáleně připojit k příkazovému řádku na Raspberry Pi.
 
-[Microsoft IoT Starter Kit malin pí 3](https://azure.microsoft.com/develop/iot/starter-kits/) nebo ekvivalentní součásti. V tomto kurzu používá následující položky ze sady kit:
+[Microsoft IoT Starter Kit Raspberry Pi 3](https://azure.microsoft.com/develop/iot/starter-kits/) nebo ekvivalentní součásti. V tomto kurzu používá následující položky ze sady:
 
-- Malinová pí 3
+- Raspberry Pi 3
 - Karta MicroSD (s NOOBS)
-- Kabelu USB malé
-- Kabel Ethernet
+- USB Mini kabel
+- Kabelu Ethernet
 
-### <a name="required-desktop-software"></a>Požadovaný software plochy
+### <a name="required-desktop-software"></a>Požadované desktopového softwaru
 
-Musíte klient SSH na umožňují vzdálený přístup na příkazovém řádku pí malin stolního počítače.
+Na desktopovém počítači povolit vzdálený přístup k příkazového řádku na Raspberry Pi musíte klienta SSH.
 
-- Windows nezahrnuje klientem SSH. Doporučujeme používat [PuTTY](http://www.putty.org/).
-- Většina Linuxových distribucích a Mac OS, obsahují nástroj příkazového řádku SSH. Další informace najdete v tématu [SSH pomocí Linux nebo Mac OS](https://www.raspberrypi.org/documentation/remote-access/ssh/unix.md).
+- Windows nezahrnuje klienta SSH. Doporučujeme používat [PuTTY](http://www.putty.org/).
+- Většině distribucí systému Linux, Mac OS zahrnují příkazový řádek SSH. Další informace najdete v tématu [SSH pomocí systému Linux nebo Mac OS](https://www.raspberrypi.org/documentation/remote-access/ssh/unix.md).
 
-### <a name="required-raspberry-pi-software"></a>Požadovaný software malin platformy
+### <a name="required-raspberry-pi-software"></a>Požadovaný software Raspberry Pi
 
-Pokud jste tak ještě neučinili, nainstalujte Node.js verze 4.0.0 nebo později na vaše malin pí. Následující kroky vám ukážou, jak nainstalovat Node.js v6 na vaše malin platformy:
+Pokud jste tak ještě neučinili, nainstalujte Node.js verze 4.0.0 nebo později na Raspberry Pi. Následující kroky ukazují, jak nainstalovat Node.js v6 v Raspberry Pi:
 
-1. Připojte se k malin pí pomocí `ssh`. Další informace najdete v tématu [SSH (Secure Shell)](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md) na [web Pi malin](https://www.raspberrypi.org/).
+1. Připojte se k Raspberry Pi pomocí `ssh`. Další informace najdete v tématu [SSH (Secure Shell)](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md) na [webu Raspberry Pi](https://www.raspberrypi.org/).
 
-1. Použijte následující příkaz k aktualizaci vašeho malin platformy:
+1. Chcete-li aktualizovat Raspberry Pi, použijte následující příkaz:
 
     ```sh
     sudo apt-get update
     ```
 
-1. Odebrání případné existující instalace Node.js z vaší malin platformy použijte následující příkazy:
+1. Odeberte všechny existující instalace Node.js v Raspberry Pi pomocí následujících příkazů:
 
     ```sh
     sudo apt-get remove nodered -y
@@ -59,24 +59,24 @@ Pokud jste tak ještě neučinili, nainstalujte Node.js verze 4.0.0 nebo pozděj
     sudo apt-get remove npm  -y
     ```
 
-1. Použijte následující příkaz ke stažení a instalaci Node.js v6 na vaše malin platformy:
+1. Ke stažení a instalaci Node.js v6 v Raspberry Pi, použijte následující příkaz:
 
     ```sh
     curl -sL https://deb.nodesource.com/setup_6.x | sudo bash -
     sudo apt-get install nodejs -y
     ```
 
-1. Pomocí následujícího příkazu ověřte, že jste úspěšně nainstalovali Node.js v6.11.4:
+1. Chcete-li ověřit, že máte nainstalované Node.js v6.11.4 úspěšně použijte následující příkaz:
 
     ```sh
     node --version
     ```
 
-## <a name="create-a-nodejs-solution"></a>Vytvoření řešení Node.js
+## <a name="create-a-nodejs-solution"></a>Vytvořte řešení pro Node.js
 
-Proveďte následující kroky pomocí `ssh` připojení k vaší malin platformy:
+Proveďte následující kroky pomocí `ssh` připojení na Raspberry Pi:
 
-1. Vytvořte složku s názvem `remotemonitoring` do domovské složky na malin pí. Přejděte do této složky na příkazovém řádku:
+1. Vytvořte složku s názvem `remotemonitoring` ve vaší domovské složky na Raspberry Pi. Přejděte do této složky v příkazovém řádku:
 
     ```sh
     cd ~
@@ -84,14 +84,14 @@ Proveďte následující kroky pomocí `ssh` připojení k vaší malin platform
     cd remotemonitoring
     ```
 
-1. Chcete-li stáhnout a nainstalovat balíčky, které potřebujete k dokončení ukázkové aplikace, spusťte následující příkazy:
+1. Pokud chcete stáhnout a nainstalovat balíčky, které potřebujete k dokončení ukázkové aplikace, spusťte následující příkazy:
 
     ```sh
     npm init
     npm install async azure-iot-device azure-iot-device-mqtt --save
     ```
 
-1. V `remotemonitoring` složky, vytvořte soubor s názvem **remote_monitoring.js**. Otevřete tento soubor v textovém editoru. Na malin platformy, můžete použít `nano` nebo `vi` textové editory.
+1. V `remotemonitoring` složce vytvořte soubor s názvem **remote_monitoring.js**. Otevřete tento soubor v textovém editoru. Na Raspberry Pi, můžete použít `nano` nebo `vi` textových editorů.
 
 1. V **remote_monitoring.js** soubor, přidejte následující `require` příkazy:
 
@@ -103,14 +103,14 @@ Proveďte následující kroky pomocí `ssh` připojení k vaší malin platform
     var async = require('async');
     ```
 
-1. Přidejte následující deklarace proměnných za příkazy `require`. Nahraďte hodnotu zástupného symbolu `{device connection string}` s hodnotou jste si poznamenali zařízení zřízené v řešení pro vzdálené monitorování:
+1. Přidejte následující deklarace proměnných za příkazy `require`. Nahraďte hodnotu zástupného symbolu `{device connection string}` s hodnotou, kterou jste si poznamenali u zařízení jste zřídili v řešení vzdáleného monitorování:
 
     ```nodejs
     var connectionString = '{device connection string}';
     var deviceId = ConnectionString.parse(connectionString).DeviceId;
     ```
 
-1. Chcete-li definovat některé základní telemetrická data, přidejte následující proměnné:
+1. Pokud chcete definovat některé základní telemetrická data, přidejte následující proměnné:
 
     ```nodejs
     var temperature = 50;
@@ -121,7 +121,7 @@ Proveďte následující kroky pomocí `ssh` připojení k vaší malin platform
     var pressureUnit = 'psig';
     ```
 
-1. Chcete-li definovat některé hodnoty vlastnosti, přidejte následující proměnné:
+1. Pokud chcete definovat některé hodnoty vlastností, přidejte následující proměnné:
 
     ```nodejs
     var temperatureSchema = 'chiller-temperature;v1';
@@ -137,7 +137,7 @@ Proveďte následující kroky pomocí `ssh` připojení k vaší malin platform
     var deviceOnline = true;
     ```
 
-1. Přidejte následující proměnnou k určení hlášené vlastností k odeslání do řešení. Tyto vlastnosti obsahovat metadata k popisu metody a používá telemetrická data zařízení:
+1. Přidejte následující proměnné k definování ohlášené vlastnosti k odeslání do řešení. Tyto vlastnosti zahrnují metadata popisují metody a telemetrii zařízení používá:
 
     ```nodejs
     var reportedProperties = {
@@ -191,7 +191,7 @@ Proveďte následující kroky pomocí `ssh` připojení k vaší malin platform
     }
     ```
 
-1. Pokud chcete vytisknout výsledky operace, přidejte následující funkce, pomocné rutiny:
+1. Chcete-li vytisknout výsledky operace, přidejte následující funkci pomocné rutiny:
 
     ```nodejs
     function printErrorFor(op) {
@@ -201,7 +201,7 @@ Proveďte následující kroky pomocí `ssh` připojení k vaší malin platform
     }
     ```
 
-1. Přidejte následující pomocné funkce sloužící k náhodné telemetrie hodnoty:
+1. Přidejte následující pomocnou funkci používat k náhodné hodnoty telemetrie:
 
     ```nodejs
     function generateRandomIncrement() {
@@ -209,7 +209,7 @@ Proveďte následující kroky pomocí `ssh` připojení k vaší malin platform
     }
     ```
 
-1. Přidejte následující obecné funkci pro zpracování volání metody přímé z řešení. Funkce zobrazí informace o metodě direct, který byl vyvolán, ale v této ukázce neupravuje zařízení žádným způsobem. Toto řešení využívá přímé metody tak, aby fungoval na zařízení:
+1. Přidejte následující obecné funkci ke zpracování volání přímé metody v řešení. Funkce zobrazí informace o přímé metody, která byla vyvolána, ale v této ukázce neupravuje zařízení žádným způsobem. Toto řešení využívá přímé metody tak, aby fungoval na zařízeních:
 
     ```nodejs
     function onDirectMethod(request, response) {
@@ -224,7 +224,7 @@ Proveďte následující kroky pomocí `ssh` připojení k vaší malin platform
     }
     ```
 
-1. Přidejte následující funkci pro zpracování **FirmwareUpdate** přímé volání metod z řešení. Funkce ověřuje parametrů předaných v datové části přímá metoda a poté asynchronně spustí simulaci aktualizace firmwaru:
+1. Přidejte následující funkci pro zpracování **FirmwareUpdate** přímé volání metod z řešení. Funkce ověřuje parametry předané v datové části přímé metody a pak asynchronně spustí simulace aktualizace firmwaru:
 
     ```node.js
     function onFirmwareUpdate(request, response) {
@@ -253,7 +253,7 @@ Proveďte následující kroky pomocí `ssh` připojení k vaší malin platform
     }
     ```
 
-1. Přidejte následující funkci k simulaci toku aktualizace firmwaru dlouho běžící, který sestavy průběhu řešení:
+1. Přidejte následující funkci, která simuluje dlouho běžící aktualizace toku firmwaru, která hlásí průběh zpět do řešení:
 
     ```node.js
     // Simulated firmwareUpdate flow
@@ -331,7 +331,7 @@ Proveďte následující kroky pomocí `ssh` připojení k vaší malin platform
     }
     ```
 
-1. Přidejte následující kód do Neodesílat telemetrická data do řešení. Klientská aplikace přidá vlastnosti zprávy k identifikaci schéma zpráva:
+1. Přidejte následující kód k odesílání telemetrických dat do řešení. Klientská aplikace přidá do zprávy k identifikaci zprávy schéma vlastnosti:
 
     ```node.js
     function sendTelemetry(data, schema) {
@@ -361,9 +361,9 @@ Proveďte následující kroky pomocí `ssh` připojení k vaší malin platform
 
     * Otevření připojení.
     * Nastavte obslužnou rutinu pro požadované vlastnosti.
-    * Odešlete oznámenou vlastnosti.
-    * Zaregistrujte obslužné rutiny pro přímé metody. Příklad používá samostatné obslužnou rutinu pro metodu přímé aktualizace firmwaru.
-    * Zahájit odesílání telemetrie.
+    * Odešlete ohlášené vlastnosti.
+    * Zaregistrujte obslužné rutiny pro přímé metody. Ukázka používá samostatné obslužné rutiny pro přímé metody aktualizace firmwaru.
+    * Začalo odesílat telemetrii.
 
     ```nodejs
     client.open(function (err) {
@@ -439,7 +439,7 @@ Proveďte následující kroky pomocí `ssh` připojení k vaší malin platform
 
 1. Uložit změny **remote_monitoring.js** souboru.
 
-1. Spuštění ukázkové aplikace, spusťte následující příkaz na příkazovém řádku na malin platformy:
+1. Spuštění ukázkové aplikace, spusťte následující příkaz na příkazovém řádku na Raspberry Pi:
 
     ```sh
     node remote_monitoring.js

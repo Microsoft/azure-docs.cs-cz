@@ -15,12 +15,12 @@ ms.component: compliance-reports
 ms.date: 05/02/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: 0180968d85fffcaf1ee5e224e72864d2ab0511ca
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: d2e0f1ecea84398f9e4d43af07b9871f36e8dd48
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446041"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38295005"
 ---
 # <a name="azure-ad-access-reviews"></a>Kontroly přístupu Azure AD
 
@@ -43,4 +43,4 @@ Kontroly přístupu Azure Active Directory (Azure AD) umožňují organizacím e
 - [Správa přístupu uživatelů typu host pomocí kontrol přístupu Azure AD](active-directory-azure-ad-controls-manage-guest-access-with-access-reviews.md)
 - [Správa programů a ovládacích prvků pro kontroly přístupu Azure AD](active-directory-azure-ad-controls-manage-programs-controls.md)
 - [Vytváření kontroly přístupu pro členy skupiny nebo přístupu k aplikaci](active-directory-azure-ad-controls-create-access-review.md)
-- [Vytváření kontroly přístupu uživatelů v roli správce Azure AD](active-directory-privileged-identity-management-how-to-start-security-review.md)
+- [Vytváření kontroly přístupu uživatelů v roli správce Azure AD](privileged-identity-management/pim-how-to-start-security-review.md)

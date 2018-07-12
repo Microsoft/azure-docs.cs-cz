@@ -9,18 +9,18 @@ ms.topic: article
 ms.date: 6/17/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 7ae3818795cddf5dfbb93ca6cc8dfff9d1c44c03
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: e75577ae917cbe14a123ff5e2d44da2edc8062ef
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37341230"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38307309"
 ---
 # <a name="integrate-azure-active-directory-with-aks---preview"></a>Integrace Azure Active Directory s AKS – Preview
 
 Azure Kubernetes Service (AKS) je nakonfigurovat pro použití služby Azure Active Directory k ověřování uživatelů. V této konfiguraci se můžete přihlásit cluster Azure Kubernetes Service pomocí tokenu ověřování Azure Active Directory. Kromě toho Správce clusterů budou moct konfigurovat řízení přístupu na základě rolí Kubernetes podle uživatelů identity nebo adresář členství ve skupině.
 
-Tento dokument podrobně popisuje vytvoření všechny nezbytné požadavky pro Azure AD a AKS, nasazení clusteru Azure AD povolené a vytvoření jednoduchého role RBAC v clusteru AKS.
+Tento dokument podrobně popisuje vytvoření všechny nezbytné požadavky pro Azure AD a AKS, nasazení clusteru Azure AD povolené a vytvoření jednoduchého role RBAC v clusteru AKS. Mějte na paměti, existujícímu clusteru AKS bez RBAC povolené nejde aktualizovat aktuálně v pro použití RBAC.
 
 > [!IMPORTANT]
 > Integrace služby Azure Kubernetes Service (AKS) RBAC a Azure AD je aktuálně ve **ve verzi preview**. Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Některé aspekty této funkce se můžou před zveřejněním změnit.

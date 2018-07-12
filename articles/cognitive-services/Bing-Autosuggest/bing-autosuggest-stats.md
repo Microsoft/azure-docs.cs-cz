@@ -1,7 +1,7 @@
 ---
-title: Analýza Bingu pro rozhraní API pro vyhledávání webové služby Bing | Microsoft Docs
+title: Analýza Bing pro API pro webové vyhledávání Bingu | Dokumentace Microsoftu
 titleSuffix: Cognitive Services
-description: Popisuje, jak získat analytics pro rozhraní API pro automatické návrhy v Bingu.
+description: Popisuje, jak získat analýzy pro rozhraní API pro automatické návrhy Bingu.
 services: cognitive-services
 author: swhite-msft
 manager: rosh
@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 04/10/2018
 ms.author: scottwhi
 ms.openlocfilehash: 03482ce94efe5f5db11f242384d620d401528ccf
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343399"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38237681"
 ---
-# <a name="how-to-get-analytics-for-bing-autosuggest-api"></a>Jak získat analytics pro rozhraní API pro automatické návrhy v Bingu
+# <a name="how-to-get-analytics-for-bing-autosuggest-api"></a>Získání analýzy pro rozhraní API pro automatické návrhy Bingu
 
 [!INCLUDE [cognitive-services-bing-statistics](../../../includes/cognitive-services-bing-statistics.md)]
