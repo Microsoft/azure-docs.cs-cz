@@ -10,11 +10,11 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
 ms.openlocfilehash: 0445817f9ff403156025e38a1e14a3892a9a292b
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37031188"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38667018"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules---preview"></a>Kurz: Nasazení služby Azure Functions jako modulů IoT Edge – Preview
 

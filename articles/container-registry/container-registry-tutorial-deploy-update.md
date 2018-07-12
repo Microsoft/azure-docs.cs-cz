@@ -6,14 +6,15 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-registry
 ms.topic: tutorial
-ms.date: 10/24/2017
+ms.date: 04/30/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 2e9a46f2a99bc9b530ac5859068bde58bf5b5098
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 8edb35b91327bde1fa824ec456b8a98962adb7ce
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38634083"
 ---
 # <a name="tutorial-push-an-updated-image-to-regional-deployments"></a>Kurz: Nahrání aktualizované image do regionálních nasazení
 
@@ -70,7 +71,7 @@ Upravený soubor `Index.cshtml` by měl vypadat nějak takto:
 
 ## <a name="rebuild-the-image"></a>Opětovné sestavení image
 
-Nyní, když jste webovou aplikaci aktualizovali, sestavte znovu její image kontejneru. Stejně jako dříve použijte plně kvalifikovaný název image, včetně adresy URL přihlašovacího serveru pro značku:
+Nyní, když jste webovou aplikaci aktualizovali, sestavte znovu její image kontejneru. Stejně jako dříve použijte plně kvalifikovaný název image včetně plně kvalifikovaného názvu domény přihlašovacího serveru pro značku:
 
 ```bash
 docker build . -f ./AcrHelloworld/Dockerfile -t <acrName>.azurecr.io/acr-helloworld:v1
@@ -78,15 +79,16 @@ docker build . -f ./AcrHelloworld/Dockerfile -t <acrName>.azurecr.io/acr-hellowo
 
 ## <a name="push-image-to-azure-container-registry"></a>Nahrání image do služby Azure Container Registry
 
-Nyní aktualizovanou image kontejneru *acr-helloworld* nahrajte do svého geograficky replikovaného registru. Zde provedete jediný příkaz `docker push`, kterým nasadíte aktualizovanou image do replik registru v obou oblastech (*West US* a *East US*).
+Pak aktualizovanou image kontejneru *acr-helloworld* nahrajte do svého geograficky replikovaného registru. Zde provedete jediný příkaz `docker push`, kterým nasadíte aktualizovanou image do replik registru v obou oblastech (*West US* a *East US*).
 
 ```bash
 docker push <acrName>.azurecr.io/acr-helloworld:v1
 ```
 
-Výstup by měl vypadat přibližně takto:
+Výstup příkazu `docker push` by měl vypadat přibližně takto:
 
-```bash
+```console
+$ docker push uniqueregistryname.azurecr.io/acr-helloworld:v1
 The push refers to a repository [uniqueregistryname.azurecr.io/acr-helloworld]
 5b9454e91555: Pushed
 d6803756744a: Layer already exists
@@ -126,19 +128,17 @@ Ověřte si zobrazením v prohlížeči, že aktualizovaná image kontejneru byl
 
 ![Zobrazení prohlížeče s upravenou webovou aplikací běžící v oblasti East US][deployed-app-eastus-modified]
 
-Jediným příkazem `docker push` jste aktualizovali obě nasazení regionální webové aplikace a služba Azure Container Registry zpracovala image kontejneru z úložišť v síťové blízkosti.
+Jediným příkazem `docker push` jste automaticky aktualizovali webovou aplikaci běžící v obou nasazeních regionální webové aplikace. A služba Azure Container Registry poskytla image kontejnerů z úložišť, která jsou umístěná nejblíže k jednotlivým nasazením.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste aktualizovali a nasadili novou verzi kontejneru webové aplikace do svého geograficky replikovaného registru. Webhooky ve službě Azure Container Registry zaslaly oznámení o aktualizaci službě Web App for Containers, která aktivovala načtení z replik registru.
+V tomto kurzu jste aktualizovali a nasadili novou verzi kontejneru webové aplikace do svého geograficky replikovaného registru. Webhooky ve službě Azure Container Registry zaslaly oznámení o aktualizaci službě Web App for Containers, která aktivovala načtení z nejbližší repliky registru.
 
-V této poslední části série jste:
+### <a name="acr-build-automated-image-build-and-patch"></a>ACR Build: Automatické sestavení a oprava image
 
-> [!div class="checklist"]
-> * Aktualizovali webovou aplikaci protokolu HTML
-> * Sestavili a označili image Dockeru
-> * Nahráli změnu do služby Azure Container Registry
-> * Zobrazili aktualizovanou aplikaci ve dvou různých oblastech
+Vedle geografické replikace je ACR Build další funkcí služby Azure Container Registry, která vám pomůže při optimalizaci kanálu nasazení kontejneru. Začněte přehledem ACR Build, abyste získali představu o možnostech této funkce:
+
+[Automatizace oprav operačního systému a architektury pomocí funkce ACR Build](container-registry-build-overview.md)
 
 <!-- IMAGES -->
 [deployed-app-eastus-modified]: ./media/container-registry-tutorial-deploy-update/deployed-app-eastus-modified.png

@@ -9,12 +9,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 05/29/2018
 ms.author: sangsinh
-ms.openlocfilehash: 4a83ebbcf045ac2b74957effceadfe80609e960c
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 195537b271c442b954d6d6e6fa8d1491c07822e8
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36237391"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970240"
 ---
 # <a name="immutable-storage-feature-of-azure-blob-storage-preview"></a>Funkce Immutable Storage služby Azure Blob Storage (Preview)
 
@@ -42,7 +42,7 @@ Funkce Immutable Storage umožňuje následující:
 
 - **Konfigurace na úrovni kontejneru:** Funkce Immutable Storage umožňuje uživatelům konfigurovat zásady uchovávání informací podle času a značky blokování z právních důvodů na úrovni kontejneru.  Uživatelé můžou vytvořit a uzamknout zásady uchovávání informací podle času, prodloužit intervaly uchovávání informací, nastavit a zrušit blokování z právních důvodů atd. prostřednictvím jednoduchých nastavení na úrovni kontejneru.  Tyto zásady budou platit pro všechny stávající i nové objekty blob v kontejneru.
 
-- **Podpora protokolování auditu:** Každý kontejner obsahuje protokol auditu, který ukazuje až pět příkazů uchovávání informací podle času pro uzamknuté zásady uchovávání informací podle času a maximálně tři protokoly pro prodloužení intervalů uchovávání informací.  V případě uchovávání informací podle času obsahuje protokol ID uživatele, typ příkazu, časová razítka a interval uchovávání informací. V případě blokování z právních důvodů obsahuje protokol ID uživatele, typ příkazu, časová razítka a značky blokování z právních důvodů. Tento protokol se s ohledem na legislativní pokyny v nařízení SEC 17a-4(f) uchovává po celou dobu životnosti kontejneru. Podrobnější protokol všech aktivit roviny řízení najdete v [protokolu aktivit Azure](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs). Uživatel je zodpovědný za trvalé uchování těchto protokolů, protože se můžou vyžadovat pro legislativní nebo jiné účely.
+- **Podpora protokolování auditu:** Každý kontejner obsahuje protokol auditu, který ukazuje až pět příkazů uchovávání informací podle času pro uzamknuté zásady uchovávání informací podle času a maximálně tři protokoly pro prodloužení intervalů uchovávání informací.  V případě uchovávání informací podle času obsahuje protokol ID uživatele, typ příkazu, časová razítka a interval uchovávání informací. V případě blokování z právních důvodů obsahuje protokol ID uživatele, typ příkazu, časová razítka a značky blokování z právních důvodů. Tento protokol se s ohledem na legislativní pokyny v nařízení SEC 17a-4(f) uchovává po celou dobu životnosti kontejneru. Podrobnější protokol všech aktivit roviny řízení najdete v [protokolu aktivit Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs). Uživatel je zodpovědný za trvalé uchování těchto protokolů, protože se můžou vyžadovat pro legislativní nebo jiné účely.
 
  Funkce je povolená ve všech veřejných oblastech Azure.
 
@@ -68,7 +68,7 @@ Další informace o tom, jak nastavit a zrušit blokování z právních důvod�
 
 Pro kontejner může platit blokování z právních důvodů i zásada uchovávání informací podle času současně. Všechny objekty blob v kontejneru zůstanou v neměnném stavu, dokud se nezruší všechna blokování z právních důvodů, a to i poté, co uplyne jejich efektivní doba uchovávání informací. A naopak, objekt blob zůstane v neměnném stavu, dokud neuplyne efektivní doba uchovávání informací, a to i po zrušení všech blokování z právních důvodů.
 Následující tabulka obsahuje typy operací s objekty blob, které se zakáží v různých scénářích neměnnosti.
-Podrobnosti o rozhraní REST API pro objekty blob najdete v dokumentaci k [rozhraní API služby Azure Blob Service](https://docs.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api).
+Podrobnosti o rozhraní REST API pro objekty blob najdete v dokumentaci k [rozhraní API služby Azure Blob Service](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api).
 
 |Scénář  |Stav objektů blob  |Nepovolené operace s objekty blob  |
 |---------|---------|---------|
@@ -79,7 +79,7 @@ Podrobnosti o rozhraní REST API pro objekty blob najdete v dokumentaci k [rozhr
 
 > [!NOTE]
 > V prvních dvou scénářích v předchozí tabulce jsou povolené první operace Put Blob a operace Put Block List a Put Block nezbytné k vytvoření objektu blob, všechny následující operace jsou zakázané.
-> Funkce Immutable Storage je dostupná pouze v účtech GPv2 nebo Blob Storage a musí se vytvořit prostřednictvím [Azure Resource Manageru](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview).
+> Funkce Immutable Storage je dostupná pouze v účtech GPv2 nebo Blob Storage a musí se vytvořit prostřednictvím [Azure Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
 
 ## <a name="pricing"></a>Ceny
 
@@ -94,7 +94,7 @@ Během období Public Preview platí následující omezení:
 
 ## <a name="getting-started"></a>Začínáme
 
-Funkce Azure Immutable Storage pro objekty blob Azure je podporovaná v nejnovějších verzích webu [Azure Portal](http://portal.azure.com), Azure [CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) a Azure [PowerShellu](https://github.com/Azure/azure-powershell/releases/tag/Azure.Storage.v4.4.0-preview-May2018).
+Funkce Azure Immutable Storage pro objekty blob Azure je podporovaná v nejnovějších verzích webu [Azure Portal](http://portal.azure.com), Azure [CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) a Azure [PowerShellu](https://github.com/Azure/azure-powershell/releases/tag/Azure.Storage.v4.4.0-preview-May2018).
 
 ### <a name="azure-portal"></a>Azure Portal
 
@@ -130,7 +130,7 @@ Funkce Azure Immutable Storage pro objekty blob Azure je podporovaná v nejnově
 
 ### <a name="cli-20"></a>CLI 2.0
 
-Nainstalujte [rozšíření rozhraní příkazového řádku](http://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) pomocí příkazu `az extension add -n storage-preview`.
+Nainstalujte [rozšíření rozhraní příkazového řádku](http://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) pomocí příkazu `az extension add -n storage-preview`.
 
 Pokud již máte rozšíření nainstalované, pomocí následujícího příkazu povolte funkci Immutable Storage: `az extension update -n storage-preview`
 

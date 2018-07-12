@@ -1,5 +1,5 @@
 ---
-title: Vytvoření webové aplikace PHP ve službě Azure | Microsoft Docs
+title: Vytvoření webové aplikace PHP ve službě Azure | Dokumentace Microsoftu
 description: Během několika minut můžete nasadit svou první aplikaci PHP Hello World pomocí služby Azure App Service Web Apps.
 services: app-service\web
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 12/13/2017
 ms.author: cephalin;cfowler
 ms.custom: mvc
-ms.openlocfilehash: 4eaae22f1ccbcb73eb7244f55ea4629aae053171
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2d1144a94a74e56cae6ff0a4b026a64540086c11
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34597752"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38968574"
 ---
 # <a name="create-a-php-web-app-in-azure"></a>Vytvoření webové aplikace v PHP v Azure
 
@@ -30,7 +30,7 @@ ms.locfileid: "34597752"
 
 [Azure Web Apps](app-service-web-overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů.  V tomto kurzu Rychlý start se dozvíte, jak nasadit aplikaci PHP pomocí služby Azure Web Apps. Pomocí [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) ve službě Cloud Shell vytvoříte webovou aplikaci a pomocí Gitu do této webové aplikace nasadíte vzorový kód PHP.
 
-![Sample app running in Azure]](media/app-service-web-get-started-php/hello-world-in-browser.png)
+![Ukázková aplikace spuštěná ve službě Azure](media/app-service-web-get-started-php/hello-world-in-browser.png)
 
 Tento postup můžete použít v případě počítačů se systémem Mac, Windows nebo Linux. Pokud máte nainstalované všechny požadované prostředky, zabere vám tento postup zhruba pět minut.
 
@@ -92,6 +92,7 @@ az --% webapp create --resource-group myResourceGroup --plan myAppServicePlan --
 Po vytvoření webové aplikace Azure CLI zobrazí výstup podobný následujícímu příkladu:
 
 ```json
+Local git is configured with url of 'https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git'
 {
   "availabilityState": "Normal",
   "clientAffinityEnabled": true,
@@ -104,6 +105,11 @@ Po vytvoření webové aplikace Azure CLI zobrazí výstup podobný následujíc
   < JSON data removed for brevity. >
 }
 ```
+Vytvořili jste novou prázdnou webovou aplikaci s povoleným nasazením Gitu.
+
+> [!NOTE]
+> Adresa URL vzdáleného úložiště Git se zobrazuje ve vlastnosti `deploymentLocalGitUrl` ve formátu `https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git`. Tuto adresu URL si uložte, protože ji budete potřebovat později.
+>
 
 Přejděte do vaší nově vytvořené webové aplikace. _&lt;Název aplikace>_ nahraďte jedinečným názvem aplikace, který jste vytvořili v předchozím kroku.
 

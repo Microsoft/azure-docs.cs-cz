@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 05/02/2018
 ms.author: sethm
 ms.openlocfilehash: 1e0b76b96029e1a7ed84f1c8cd895090e8acbc6f
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33893389"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38670998"
 ---
 # <a name="get-started-with-relay-hybrid-connections-websockets-in-node"></a>Začínáme s WebSockety Relay Hybrid Connections v Node
 

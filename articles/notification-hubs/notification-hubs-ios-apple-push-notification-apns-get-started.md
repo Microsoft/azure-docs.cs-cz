@@ -17,11 +17,11 @@ ms.custom: mvc
 ms.date: 04/14/2018
 ms.author: dimazaid
 ms.openlocfilehash: 083b0c956055ab5b54a4af2eec57f096613cbe65
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33778214"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38681515"
 ---
 # <a name="tutorial-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>Kurz: Zasílání nabízených oznámení aplikacím pro iOS službou Azure Notification Hubs
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -34,7 +34,7 @@ V tomto kurzu provedete následující kroky:
 > * Vygenerujete soubor s žádostí o podepsání certifikátu
 > * Požádáte aplikaci o nabízená oznámení
 > * Vytvoření zřizovacího profilu pro aplikaci
-> * Nakonfigurujete v centru oznámení nabízená oznámení pro iOS
+> * Konfigurace centra oznámení pro nabízená oznámení iOS
 > * Připojíte aplikaci pro iOS ke službě Notification Hubs
 > * Odešlete nabízená oznámení
 > * Ověříte, že aplikace přijímá oznámení
@@ -68,7 +68,7 @@ V této části vytvoříte centrum oznámení a nakonfigurujete ověřování s
 3. Vyberte **ikonu souboru**.
 4. Vyberte soubor **.p12**, který jste exportovali v předchozích krocích.
 5. Zadejte správné **heslo**.
-6. Vyberte režim **Izolovaný prostor**. Používejte pouze režim **Výroba**, pokud chcete zasílat nabízená oznámení uživatelům, kteří si zakoupili aplikaci z obchodu s aplikacemi.
+6. Vyberte režim **Sandbox**. Používejte pouze režim **Výroba**, pokud chcete zasílat nabízená oznámení uživatelům, kteří si zakoupili aplikaci z obchodu s aplikacemi.
 
     ![Konfigurace certifikační služby APNS na webu Azure Portal][7]
 
@@ -188,7 +188,7 @@ Chcete-li otestovat nabízená oznámení na iOS, musíte aplikaci nasadit do fy
 V tomto příkladu jste vysílali nabízená oznámení pro všechna vaše registrovaná zařízení iOS. Pokud se chcete naučit zasílat nabízená oznámení určitým zařízením s iOSem, pokračujte následujícím kurzem: 
 
 > [!div class="nextstepaction"]
->[Zasílání nabízených oznámení určitým zařízením](notification-hubs-ios-xplat-segmented-apns-push-notification.md)
+>[Zasílání nabízených oznámení do konkrétních zařízení](notification-hubs-ios-xplat-segmented-apns-push-notification.md)
 
 
 <!-- Images. -->

@@ -13,11 +13,11 @@ ms.date: 04/10/2018
 ms.author: sngun
 clicktale: true
 ms.openlocfilehash: 19da0591d61e55cc34a7a0cc17ed13b197cdabab
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37344685"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38652052"
 ---
 # <a name="quickstart-build-a-net-web-app-with-azure-cosmos-db-using-the-sql-api-and-the-azure-portal"></a>Rychlý start: Vytvoření webové aplikace .NET se službou Azure Cosmos DB pomocí rozhraní SQL API a webu Azure Portal
 
@@ -126,7 +126,7 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
     `<add key="authKey" value="FILLME" />`
     
 ## <a name="run-the-web-app"></a>Spuštění webové aplikace
-1. V sadě Visual Studio klikněte v **Průzkumníkovi řešení** pravým tlačítkem myši na projekt a potom klikněte na **Spravovat balíčky NuGet**. 
+1. V sadě Visual Studio klikněte v **Průzkumníku řešení** pravým tlačítkem myši na projekt a potom klikněte na **Spravovat balíčky NuGet**. 
 
 2. Do pole **Procházet** v NuGetu zadejte *DocumentDB*.
 
@@ -138,7 +138,7 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
 
    ![Aplikace seznamu úkolů s ukázkovými daty](./media/create-sql-api-dotnet/azure-comosdb-todo-app-list.png)
 
-Teď se můžete vrátit do Průzkumníkovi dat a zobrazit dotaz nebo provést úpravy a pracovat s těmito novými daty. 
+Teď se můžete vrátit do Průzkumníku dat a zobrazit dotaz nebo provést úpravy a pracovat s těmito novými daty. 
 
 ## <a name="review-slas-in-the-azure-portal"></a>Ověření podmínek SLA na portálu Azure Portal
 

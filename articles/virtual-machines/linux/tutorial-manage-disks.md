@@ -3,7 +3,7 @@ title: Kurz – Správa disků v Azure pomocí Azure CLI | Microsoft Docs
 description: V tomto kurzu zjistíte, jak pomocí Azure CLI 2.0 vytvářet a spravovat disky Azure pro virtuální počítače.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/30/2018
-ms.author: iainfou
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 470e938aa4ef70f9682528003ccdaba2ef6cc013
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 889facbf9612f2462a10c886a428ac052becefd8
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34839686"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38704483"
 ---
 # <a name="tutorial---manage-azure-disks-with-the-azure-cli-20"></a>Kurz – Správa disků v Azure pomocí Azure CLI 2.0
 

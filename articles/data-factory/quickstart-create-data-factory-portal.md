@@ -1,5 +1,5 @@
 ---
-title: Vytvoření datové továrny Azure pomocí uživatelského rozhraní služby Azure Data Factory | Microsoft Docs
+title: Vytvoření datové továrny Azure pomocí uživatelského rozhraní služby Azure Data Factory | Dokumentace Microsoftu
 description: Vytvořte datovou továrnu s kanálem, který kopíruje data z jednoho umístění v úložišti objektů blob v Azure do jiného.
 services: data-factory
 documentationcenter: ''
@@ -12,11 +12,11 @@ ms.topic: hero-article
 ms.date: 06/20/2018
 ms.author: jingwang
 ms.openlocfilehash: 454eaba26155b2bf4a0381af98047dbcbb514bb5
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37046812"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38644897"
 ---
 # <a name="create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Vytvoření datové továrny pomocí uživatelského rozhraní služby Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service that you are using:"]
@@ -55,7 +55,7 @@ Toto video vám pomůže seznámit se s uživatelským rozhraním služby Data F
    - Vyberte **Vytvořit novou** a zadejte název skupiny prostředků.   
          
    Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/resource-group-overview.md).  
-4. V poli **Verze** vyberte **V2**.
+4. Jako **Verzi** vyberte **V2**.
 5. Jako **Umístění** vyberte umístění datové továrny.
 
    V seznamu se zobrazí pouze umístěná, která služba Data Factory podporuje. Úložiště dat (např. Azure Storage nebo Azure SQL Database) a výpočetní prostředí (např. Azure HDInsight) používaná službou Data Factory můžou být v jiných umístěních.

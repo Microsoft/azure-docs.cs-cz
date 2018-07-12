@@ -1,5 +1,5 @@
 ---
-title: Spouštění kanálů a aktivační události v Azure Data Factory | Microsoft Docs
+title: Spouštění kanálů a aktivační události v Azure Data Factory | Dokumentace Microsoftu
 description: Tento článek obsahuje informace o tom, jak spustit kanál v Azure Data Factory, a to buď na vyžádání, nebo pomocí aktivační události.
 services: data-factory
 documentationcenter: ''
@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/20/2018
+ms.date: 07/05/2018
 ms.author: shlo
-ms.openlocfilehash: ceff54b15ef70c9654142566bb1d54b6a7990833
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 0af6ea05b663f0954785ce966440e3f698ad14a8
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37048634"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37867082"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Spouštění kanálů a aktivační události v Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of the Data Factory service that you're using:"]
@@ -105,8 +105,8 @@ Parametry předáváte v těle datové části požadavku. V sadě .NET SDK, Azu
 
 ```json
 {
-  “sourceBlobContainer”: “MySourceFolder”,
-  “sinkBlobCountainer”: “MySinkFolder”
+  "sourceBlobContainer": "MySourceFolder",
+  "sinkBlobCountainer": "MySinkFolder"
 }
 ```
 
@@ -137,7 +137,7 @@ Aktivační události představují další způsob spuštění kanálu. Aktiva�
 
 - Aktivační událost plánovače: Aktivační událost, která volá kanál podle časového plánu.
 
-- Aktivační událost pro přeskakující okno: Aktivační událost, která funguje v pravidelných intervalech a přitom si zachovává svůj stav. Azure Data Factory v současné době nepodporuje aktivační události na základě událostí. Například se nepodporuje aktivační událost pro spuštění kanálu jako reakce na událost přijetí souboru.
+- Aktivační událost pro přeskakující okno: Aktivační událost, která funguje v pravidelných intervalech a přitom si zachovává svůj stav.
 
 - Aktivační událost na základě události: Aktivační událost, která reaguje na událost.
 

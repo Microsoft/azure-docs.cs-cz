@@ -439,7 +439,7 @@
     - name: Rozhraní REST pro Compute
       href: /rest/api/compute
     - name: Rozhraní REST pro Managed Disks
-      href: /rest/api/disks
+      href: /rest/api/compute/disks
 - name: Zdroje a prostředky
   items:
     - name: Tvorba šablon

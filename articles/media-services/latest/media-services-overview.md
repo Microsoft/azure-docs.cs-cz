@@ -16,12 +16,12 @@ ms.workload: media
 ms.date: 06/14/2018
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: 489801852202163ef40d57da0082e39793196d85
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 5205a6746f6a698768a60375e2e77db9cb535a71
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36264090"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38971903"
 ---
 # <a name="what-is-azure-media-services-v3"></a>Co jsou Azure Media Services v3?
 
@@ -45,7 +45,7 @@ Ve službě Media Services můžete vytvářet různé pracovní postupy pro pr�
 * Vytvořit službu odběru videa a streamovat obsah chráněný technologií DRM, pokud zákazník (například filmové studio) potřebuje omezit přístup a pracuje s díly chráněnými autorským zákonem.
 * Poskytovat offline obsah pro přehrávání v letadlech, vlacích a automobilech. Zákazník si může obsah stáhnout do svého telefonu nebo tabletu pro pozdější přehrání, pokud očekává nedostupnost sítě.
 * Přidat do videa titulky nebo skryté titulky, aby bylo dostupné pro více uživatelů (například osoby s postižením sluchu nebo kohokoli, kdo si chce obsah přečíst v jiném jazyce). 
-* Implementovat do e-learningové videoplatformy Azure Media Services a [rozhraní API služby Azure Cognitive Services](https://docs.microsoft.com/en-us/azure/#pivot=products&panel=ai) umožňující převod řeči na text, překlad do více jazyků apod.
+* Implementovat do e-learningové videoplatformy Azure Media Services a [rozhraní API služby Azure Cognitive Services](https://docs.microsoft.com/azure/#pivot=products&panel=ai) umožňující převod řeči na text, překlad do více jazyků apod.
 * Povolit Azure CDN k zajištění širšího škálování pro lepší zvládání náhlého vysokého zatížení (například při uvádění produktu na trh). 
 
 ## <a name="v3-capabilities"></a>Možnosti v3

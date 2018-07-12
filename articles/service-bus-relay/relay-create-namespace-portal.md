@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 12/20/2017
 ms.author: sethm
 ms.openlocfilehash: c4c9c94d369e0ed1ddbfe31484f55b0d276918d3
-ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2017
-ms.locfileid: "27159887"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38701892"
 ---
 # <a name="create-a-relay-namespace-using-the-azure-portal"></a>Vytvoření oboru názvů přenosu pomocí webu Azure Portal
 

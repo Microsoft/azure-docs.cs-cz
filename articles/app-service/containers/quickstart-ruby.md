@@ -1,5 +1,5 @@
 ---
-title: Vytvoření aplikace v Ruby a její nasazení do služby App Service v Linuxu | Microsoft Docs
+title: Vytvoření aplikace v Ruby a její nasazení do služby App Service v Linuxu | Dokumentace Microsoftu
 description: Naučte se vytvářet aplikace v Ruby pomocí služby App Service v Linuxu.
 keywords: azure app service, linux, oss, ruby
 services: app-service
@@ -16,12 +16,12 @@ ms.topic: quickstart
 ms.date: 10/10/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 0707835cf4d6891397579cc41de49fc0462b4521
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 57442cdb28dfce07ec653e2f0a69d19f5bb6c919
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34158605"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38674780"
 ---
 # <a name="create-a-ruby-app-in-app-service-on-linux"></a>Vytvoření aplikace v Ruby ve službě App Service v Linuxu
 
@@ -129,4 +129,4 @@ http://<app name>.azurewebsites.net
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Ruby on Rails s MySQL](tutorial-ruby-mysql-app.md)
+> [Ruby on Rails s MySQL](tutorial-ruby-postgres-app.md)

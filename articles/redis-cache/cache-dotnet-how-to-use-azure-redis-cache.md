@@ -16,11 +16,11 @@ ms.date: 05/18/2018
 ms.author: wesmc
 ms.custom: mvc
 ms.openlocfilehash: 31d93fc8b2034152e61d24a789bba62bfd3b7892
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34639805"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38635434"
 ---
 # <a name="quickstart-use-azure-redis-cache-with-a-net-application"></a>Rychlý start: Použití Azure Redis Cache s aplikací .NET
 
@@ -37,7 +37,7 @@ V tomto rychlém startu budete používat klienta [StackExchange.Redis](https://
 ## <a name="prerequisites"></a>Požadavky
 
 * [Visual Studio](https://www.visualstudio.com/downloads/)
-* Klient StackExchange.Redis vyžaduje [rozhraní .NET Framework 4 nebo vyšší](https://www.microsoft.com/net/download/dotnet-framework-runtime).
+* Klient StackExchange.Redis vyžaduje rozhraní [.NET Framework 4 nebo vyšší](https://www.microsoft.com/net/download/dotnet-framework-runtime).
 
 ## <a name="create-a-cache"></a>Vytvoření mezipaměti
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
@@ -191,7 +191,7 @@ V níže uvedeném příkladu můžete vidět, že klíč `Message` měl předt�
 
 Azure Redis Cache může do mezipaměti ukládat objekty .NET i primitivní datové typy. Objekty .NET je však nutné před uložením do mezipaměti serializovat. Serializaci objektů .NET má na starosti vývojář aplikace, kterému je tak poskytnuta flexibilita při výběru serializátoru.
 
-Jeden snadný způsob, jak serializovat objekty, je použít metody serializace `JsonConvert` v balíčku [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/) a serializovat tak objekty do a z formátu JSON. V této části přidáte do mezipaměti objekt .NET.
+Jeden snadný způsob, jak serializovat objekty, je použít metody serializace `JsonConvert` v balíčku [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/) a serializovat a deserializovat tak objekty do a z formátu JSON. V této části přidáte do mezipaměti objekt .NET.
 
 V sadě Visual Studio klikněte na **Nástroje** > **Správce balíčků NuGet** > **Konzola Správce balíčků** a spusťte následující příkaz z okna konzoly Správce balíčků.
 

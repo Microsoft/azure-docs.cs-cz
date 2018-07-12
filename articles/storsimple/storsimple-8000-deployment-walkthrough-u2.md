@@ -1,5 +1,5 @@
 ---
-title: Nasazení zařízení StorSimple řady 8000 na webu Azure Portal | Microsoft Docs
+title: Nasazení zařízení StorSimple řady 8000 na webu Azure Portal | Dokumentace Microsoftu
 description: Popis kroků a osvědčených postupů pro nasazení zařízení StorSimple řady 8000 s aktualizací Update 3 nebo novější a služby Správce zařízení StorSimple.
 services: storsimple
 documentationcenter: NA
@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 04/23/2018
 ms.author: alkohli
 ms.openlocfilehash: 85a493e05fb87292f303bccdcef65d119223bc76
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32189747"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38698609"
 ---
 # <a name="deploy-your-on-premises-storsimple-device-update-3-and-later"></a>Nasazení místního zařízení StorSimple (Update 3 a novější)
 

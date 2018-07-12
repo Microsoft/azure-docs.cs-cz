@@ -16,11 +16,11 @@ ms.custom: mvc
 ms.date: 04/14/2018
 ms.author: dimazaid
 ms.openlocfilehash: c61a6efaa4a56636400acfe5a212cddad47f4f0c
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33776990"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38652741"
 ---
 # <a name="tutorial-push-notifications-to-specific-windows-phone-devices-by-using-azure-notification-hubs"></a>Kurz: Zasílání nabízených oznámení určitým zařízením Windows Phone službou Azure Notification Hubs
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
@@ -35,9 +35,9 @@ V tomto scénáři při registraci zařízení v centru oznámení přidáte za�
 V tomto kurzu se naučíte: 
 
 > [!div class="checklist"]
-> * Přidat do mobilní aplikace výběr kategorie
+> * Přidání výběru kategorií do mobilní aplikace
 > * Používat značky k registraci oznámení
-> * Posílat označená oznámení
+> * Posílání označených oznámení
 > * Otestování aplikace
 
 ## <a name="prerequisites"></a>Požadavky
