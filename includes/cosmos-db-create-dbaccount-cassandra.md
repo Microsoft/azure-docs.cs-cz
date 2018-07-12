@@ -9,11 +9,11 @@ ms.date: 04/13/2018
 ms.author: sngun
 ms.custom: include file
 ms.openlocfilehash: 3ad250ca2e641ebbf1e280e25aa53ff6f0ad6bd6
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32198494"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38725956"
 ---
 1. V novém okně prohlížeče se přihlaste k webu [Azure Portal](https://portal.azure.com/).
 2. Klikněte na **Vytvořit prostředek** > **Databáze** > **Azure Cosmos DB**.

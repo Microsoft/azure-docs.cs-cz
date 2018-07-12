@@ -9,11 +9,11 @@ ms.date: 05/14/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: f034b1e97ec88125dac0964de2e3be884795a690
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34685051"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38765891"
 ---
 Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Stačí kliknout na **Kopírovat** a zkopírovat kód, vložit ho do Cloud Shellu a potom ho spustit stisknutím Enter. Existuje několik způsobů, jak Cloud Shell spustit:
 

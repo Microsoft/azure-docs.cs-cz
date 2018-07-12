@@ -28,7 +28,7 @@ V této části vytvoříte v úložišti objektů blob v Azure kontejner objekt
 1. Na stránce **Účet úložiště** přepněte na **Přehled** a pak vyberte **Objekty blob**. 
 
    ![Výběr možnosti Objekty blob](media/data-factory-quickstart-prerequisites/select-blobs.png)
-2. Na stránce **Služba Blob** vyberte na panelu nástrojů **+ Kontejner**. 
+2. Na stránce **Blob service** vyberte na panelu nástrojů **+ Kontejner**. 
 
    ![Tlačítko pro přidání kontejneru](media/data-factory-quickstart-prerequisites/add-container-button.png)    
 3. V dialogovém okně **Nový kontejner** jako název zadejte **adftutorial** a pak vyberte **OK**. 

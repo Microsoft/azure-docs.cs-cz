@@ -9,11 +9,11 @@ ms.date: 03/28/2018
 ms.author: wesmc
 ms.custom: include file
 ms.openlocfilehash: 4148370828f4ac2b7e75b49ed13cf1d1dafb8844
-ms.sourcegitcommit: 7de1432648c4ff3bcd09530c079418477d9f4d00
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35719429"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38724390"
 ---
 ### <a name="retrieve-host-name-ports-and-access-keys-by-using-the-azure-portal"></a>Načtení názvu hostitele, portů a přístupových klíčů pomocí webu Azure Portal
 

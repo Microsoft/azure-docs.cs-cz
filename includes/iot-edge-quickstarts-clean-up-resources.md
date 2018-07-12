@@ -9,13 +9,13 @@ ms.date: 06/26/2018
 ms.author: wesmc
 ms.custom: include file
 ms.openlocfilehash: c0b9f9e9808de90df84edf2d3c409a921629baee
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37055043"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38728301"
 ---
-Pokud budete pokračovat dalším doporučeným článkem, můžete vytvořené prostředky a připravené konfigurace zachovat a znovu je použít.
+Pokud budete pokračovat k dalšímu doporučenému článku, můžete už vytvořené prostředky a konfigurace zachovat a znovu je použít.
 
 Pokud nebudete pokračovat, můžete místní konfigurace a prostředky Azure vytvořené v tomto článku odstranit, abyste se vyhnuli poplatkům. 
 
