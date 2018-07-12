@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Použití rozhraní REST API k vytvoření kanálu Azure Data Factory | Microsoft Docs'
+title: 'Kurz: Použití rozhraní REST API k vytvoření kanálu Azure Data Factory | Dokumentace Microsoftu'
 description: V tomto kurzu pomocí rozhraní REST API vytvoříte kanál Azure Data Factory s aktivitou kopírování pro kopírování dat z úložiště objektů blob v Azure do databáze Azure SQL.
 services: data-factory
 documentationcenter: ''
@@ -16,11 +16,11 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 019a5a041d5581ee49eab7e1644f081aa7a52f2d
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37049710"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38237703"
 ---
 # <a name="tutorial-use-rest-api-to-create-an-azure-data-factory-pipeline-to-copy-data"></a>Kurz: Použití rozhraní REST API k vytvoření kanálu Azure Data Factory pro kopírování dat 
 > [!div class="op_single_selector"]

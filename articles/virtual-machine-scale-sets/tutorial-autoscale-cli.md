@@ -3,7 +3,7 @@ title: Kurz – Automatické škálování škálovací sady pomocí Azure CLI 2
 description: Zjistěte, jak pomocí Azure CLI 2.0 automaticky škálovat škálovací sadu virtuálních počítačů s ohledem na zvyšující a snižující se požadavky na CPU.
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/18/2018
-ms.author: iainfou
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: bfd4738797a98fda85053e689e539b93fb6d1b74
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 4dedf4a84d5eaa47018fe0cd1cb6fd9a92d8ef7e
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34364314"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38630148"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli-20"></a>Kurz: Automatické škálování škálovací sady virtuálních počítačů pomocí Azure CLI 2.0
 

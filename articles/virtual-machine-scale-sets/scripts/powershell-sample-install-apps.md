@@ -3,7 +3,7 @@ title: Ukázky Azure PowerShellu – Instalace aplikací | Microsoft Docs
 description: Ukázky Azure PowerShellu
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2018
-ms.author: iainfou
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 622ccac3c99d2e8f2a31849ecc1c33d0d470ca0e
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 4553dba3e7242f9c98f66b4851a1186ccd0cb31b
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30246402"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38605774"
 ---
 # <a name="install-applications-into-a-virtual-machine-scale-set-with-powershell"></a>Instalace aplikací do škálovací sady virtuálních počítačů pomocí Azure PowerShellu
 Tento skript vytvoří škálovací sadu virtuálních počítačů s Windows Serverem 2016 a pomocí rozšíření vlastních skriptů nainstaluje základní webovou aplikaci. Po spuštění skriptu můžete k webové aplikaci přistupovat přes webový prohlížeč.

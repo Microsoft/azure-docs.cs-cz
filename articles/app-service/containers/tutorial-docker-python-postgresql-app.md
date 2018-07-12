@@ -13,11 +13,11 @@ ms.date: 01/28/2018
 ms.author: beverst;cephalin
 ms.custom: mvc
 ms.openlocfilehash: 2728c354a84c4b13b0ad8509d038837733251975
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31788428"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38306890"
 ---
 # <a name="build-a-docker-python-and-postgresql-web-app-in-azure"></a>Vytvoření webové aplikace Docker Python využívající databázi PostgreSQL v Azure
 

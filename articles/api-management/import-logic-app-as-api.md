@@ -14,11 +14,11 @@ ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
 ms.openlocfilehash: 4b5f884fe6e1f1fdc12d7993418f7a10614a4cbe
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33936209"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38602951"
 ---
 # <a name="import-a-logic-app-as-an-api"></a>Import aplikace logiky jako rozhraní API
 
@@ -45,7 +45,7 @@ V tomto článku získáte informace o těchto tématech:
 
     ![Aplikace logiky](./media/import-logic-app-as-api/logic-app-api.png)
 3. Stisknutím **Procházet** zobrazte seznam aplikací logiky ve vašem předplatném.
-4. Vyberte aplikaci. APIM vyhledá swagger přidružený k vybrané aplikaci, načte ho a naimportuje. 
+4. Vyberte aplikaci. APIM najde swagger spojený s vybranou aplikací, načte ho a naimportuje. 
 5. Přidejte příponu adresy URL rozhraní API. Přípona je název, který identifikuje toto konkrétní rozhraní API v této instanci APIM. Musí být v této instanci APIM jedinečná.
 6. Publikujte rozhraní API jeho přidružením k produktu. V tomto případě se použije produkt *Unlimited*.  Pokud chcete, aby bylo rozhraní API publikované a k dispozici pro vývojáře, přidejte ho k produktu. Můžete to udělat při vytváření rozhraní API nebo nastavit později.
 
@@ -65,7 +65,7 @@ Operaci můžete volat přímo z portálu Azure Portal, který nabízí pohodln�
 2. Klikněte na kartu **Test**.
 3. Vyberte nějakou operaci.
 
-    Na stránce se zobrazí pole pro parametry dotazu a pole pro hlavičky. Jednou z hlaviček je klíč „Ocp-Apim-Subscription-Key“. Je to klíč pro přihlášení k odběru produktu, který je k tomuto rozhraní API přidružený. Pokud jste vytvořili instanci služby APIM, jste už správcem a klíč se tedy vyplní automaticky. 
+    Stránka zobrazí pole pro parametry dotazu a pole pro hlavičky. Jednou z hlaviček je klíč „Ocp-Apim-Subscription-Key“. Je to klíč pro přihlášení k odběru produktu, který je k tomuto rozhraní API přidružený. Pokud jste vytvořili instanci služby APIM, jste už správcem a klíč se tedy vyplní automaticky. 
 1. Stiskněte **Odeslat**.
 
     Back-end předá odpověď **200 OK** a nějaká data.

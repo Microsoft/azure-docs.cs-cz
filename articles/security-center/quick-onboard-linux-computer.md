@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 02/22/2018
 ms.author: terrylan
 ms.openlocfilehash: 05e4bed0f9b4dfb6d1879408085447ef53db8655
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2018
-ms.locfileid: "29530162"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38630093"
 ---
 # <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>Rychlý start: Připojení počítačů s Linuxem ke službě Azure Security Center
 Po připojení předplatných Azure můžete zřízením agenta pro Linux povolit službu Security Center pro prostředky Linuxu spuštěné mimo Azure, například v místním prostředí nebo jiných cloudech.

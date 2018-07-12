@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Vytvoření kanálu Azure Data Factory pro kopírování dat (portál Azure Portal) | Microsoft Docs'
+title: 'Kurz: Vytvoření kanálu Azure Data Factory pro kopírování dat (portál Azure Portal) | Dokumentace Microsoftu'
 description: V tomto kurzu pomocí portálu Azure Portal vytvoříte kanál Azure Data Factory s aktivitou kopírování pro kopírování dat z úložiště objektů blob v Azure do databáze Azure SQL.
 services: data-factory
 documentationcenter: ''
@@ -16,11 +16,11 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 09cad6b76b2fdefe1163530e5437427faf29d72f
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37046863"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38299917"
 ---
 # <a name="tutorial-use-azure-portal-to-create-a-data-factory-pipeline-to-copy-data"></a>Kurz: Použití portálu Azure Portal k vytvoření kanálu Data Factory pro kopírování dat 
 > [!div class="op_single_selector"]

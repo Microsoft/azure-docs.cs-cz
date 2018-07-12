@@ -3,7 +3,7 @@ title: Kurz – Vytvoření a použití disků pro škálovací sady pomocí Azu
 description: Zjistěte, jak pomocí Azure PowerShellu vytvořit a používat spravované disky se škálovacími sadami virtuálních počítačů, včetně přidání, přípravy, výpisu a odpojení disků.
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2018
-ms.author: iainfou
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 6543c8fc337e56d3691c2c2eb5ddea63e72fddda
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 17f20ac2313ed4abd4f86bf10b65848a9870a688
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34365504"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38606667"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-azure-powershell"></a>Kurz: Vytvoření a použití disků se škálovací sadou virtuálních počítačů pomocí Azure PowerShellu
 Škálovací sady virtuálních počítačů využívají disky k ukládání operačních systémů, aplikací a dat instancí virtuálních počítačů. Při vytváření a správě škálovací sady je důležité, abyste zvolili vhodnou velikost disku a konfiguraci pro očekávané úlohy. Tento kurz se zabývá vytvořením a správou disků virtuálních počítačů. V tomto kurzu se naučíte:
@@ -37,7 +37,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte v tomto kurzu použít modul Azure PowerShell verze 6.0.0 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzureRmAccount` pro vytvoření připojení k Azure. 
+Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte použít modul Azure PowerShell verze 6.0.0 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzureRmAccount` pro vytvoření připojení k Azure. 
 
 
 ## <a name="default-azure-disks"></a>Výchozí disky v Azure

@@ -17,11 +17,11 @@ ms.date: 03/27/2018
 ms.author: glenga
 ms.custom: mvc, cc996988-fb4f-47
 ms.openlocfilehash: 928ea1dbb68206e128f0593ba15cb48935ab1ccf
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
-ms.locfileid: "30282109"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38602659"
 ---
 # <a name="create-a-function-triggered-by-azure-blob-storage"></a>Vytvoření funkce aktivované službou Azure Blob Storage
 

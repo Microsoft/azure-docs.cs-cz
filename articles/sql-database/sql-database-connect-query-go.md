@@ -12,11 +12,11 @@ ms.topic: quickstart
 ms.date: 04/01/2018
 ms.author: v-daveng
 ms.openlocfilehash: 3585a47e0823a765bd59b28f4b399aed7c5fcae3
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31791065"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38618825"
 ---
 # <a name="use-go-to-query-an-azure-sql-database"></a>Použití jazyka Go k dotazování databáze SQL Azure
 

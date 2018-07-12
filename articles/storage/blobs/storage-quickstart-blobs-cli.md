@@ -10,11 +10,11 @@ ms.topic: quickstart
 ms.date: 04/09/2018
 ms.author: rogarana
 ms.openlocfilehash: b55fe97adc56f4b8f1baeb2d8bb5f905fcd424bd
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31415686"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38232716"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-the-azure-cli"></a>Rychlý start: Nahrávání, stahování a výpis objektů blob pomocí Azure CLI
 

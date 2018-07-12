@@ -13,11 +13,11 @@ ms.custom: mvc
 ms.date: 05/30/2018
 ms.author: juliako
 ms.openlocfilehash: 0faed5d72002f24d7be7602c5f16c18e66a0089e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34651353"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38308609"
 ---
 # <a name="tutorial-upload-encode-and-stream-videos-with-rest"></a>Kurz: Nahrávání, kódování a streamování videí pomocí rozhraní REST
 
@@ -108,7 +108,7 @@ V této části odešleme požadavky relevantní pro kódování a vytvoření a
 
 1. V levém okně nástroje Postman vyberte „Step 1: Get AAD Auth token“ (Krok 1: Získání ověřovacího tokenu AAD).
 2. Potom vyberte „Get Azure AD Token for Service Principal Authentication“ (Získat token služby Azure AD pro ověření instančního objektu).
-3. Stiskněte **Send** (Odeslat).
+3. Stiskněte **Odeslat**.
 
     Odešle se následující operace **POST**.
 
@@ -147,7 +147,7 @@ Můžete použít předdefinovanou předvolbu EncoderNamedPreset, nebo si vytvo�
 
 1. V levém okně nástroje Postman vyberte „Encoding and Analysis“ (Kódování a analýza).
 2. Potom vyberte „Create Transform“ (Vytvořit transformaci).
-3. Stiskněte **Send** (Odeslat).
+3. Stiskněte **Odeslat**.
 
     Odešle se následující operace **PUT**.
 
@@ -163,7 +163,7 @@ V tomto příkladu se vstup úlohy vytvoří na základě adresy URL protokolu H
 
 1. V levém okně nástroje Postman vyberte „Encoding and Analysis“ (Kódování a analýza).
 2. Pak vyberte „Create or Update Job“ (Vytvořit nebo aktualizovat úlohu).
-3. Stiskněte **Send** (Odeslat).
+3. Stiskněte **Odeslat**.
 
     Odešle se následující operace **PUT**.
 
@@ -190,7 +190,7 @@ Počet záznamů StreamingPolicy je pro účty služby Media Service omezený kv
 
 1. V levém okně nástroje Postman vyberte „Streaming Policies“ (Zásady streamování).
 2. Potom vyberte možnost „Create a Streaming Policy“ (Vytvořit zásadu streamování).
-3. Stiskněte **Send** (Odeslat).
+3. Stiskněte **Odeslat**.
 
     Odešle se následující operace **PUT**.
 
@@ -206,7 +206,7 @@ Teď, když máte vytvořený [streamovací lokátor](https://docs.microsoft.com
 
 1. V levém okně nástroje Postman vyberte „Streaming Policies“ (Zásady streamování).
 2. Potom vyberte „List Paths“ (Seznam cest).
-3. Stiskněte **Send** (Odeslat).
+3. Stiskněte **Odeslat**.
 
     Odešle se následující operace **POST**.
 

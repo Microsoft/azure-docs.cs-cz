@@ -16,11 +16,11 @@ ms.date: 10/20/2017
 ms.author: cephalin
 ms.custom: mvc
 ms.openlocfilehash: 4bb6f12781666792aad31789a59d752dd5a822de
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33205709"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38307183"
 ---
 # <a name="tutorial-build-a-php-and-mysql-web-app-in-azure"></a>Kurz: Sestavení webové aplikace PHP s připojením k databázi MySQL v Azure
 

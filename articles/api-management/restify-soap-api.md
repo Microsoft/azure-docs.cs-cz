@@ -14,11 +14,11 @@ ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
 ms.openlocfilehash: 940756917c8f377e7d134818409e6287a4031e15
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33935565"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38239804"
 ---
 # <a name="import-a-soap-api-and-convert-to-rest"></a>Import rozhraní API protokolu SOAP a převod na REST
 
@@ -40,7 +40,7 @@ Projděte si následující rychlý start: [Vytvoření instance služby Azure A
 ## <a name="create-api"> </a>Import a publikování back-endového rozhraní API
 
 1. V části **API MANAGEMENT** vyberte **rozhraní API**.
-2. V seznamu **Přidat nové rozhraní API** vyberte **WSDL**.
+2. Vyberte **WSDL** ze seznamu **Přidat nové rozhraní API**.
 
     ![Rozhraní API protokolu SOAP](./media/restify-soap-api/wsdl-api.png)
 3. Do pole **Specifikace WSDL** zadejte adresu URL s vaším rozhraním API protokolu SOAP.
@@ -50,7 +50,7 @@ Projděte si následující rychlý start: [Vytvoření instance služby Azure A
 
 5. Stiskněte tabulátor.
 
-    Následující pole se vyplní informacemi z rozhraní API protokolu SOAP: Zobrazovaný název, Název, Popis.
+    Následující pole se vyplní informacemi z rozhraní API SOAP: Zobrazovaný název, Název, Popis.
 6. Přidejte příponu adresy URL rozhraní API. Přípona je název, který identifikuje toto konkrétní rozhraní API v této instanci APIM. Musí být v této instanci APIM jedinečná.
 9. Publikujte rozhraní API jeho přidružením k produktu. V tomto případě se použije produkt *Unlimited*.  Pokud chcete, aby bylo rozhraní API publikované a k dispozici pro vývojáře, přidejte ho k produktu. Můžete to udělat při vytváření rozhraní API nebo nastavit později.
 
@@ -70,7 +70,7 @@ Operaci můžete volat přímo z portálu Azure Portal, který nabízí pohodln�
 2. Klikněte na kartu **Test**.
 3. Vyberte nějakou operaci.
 
-    Na stránce se zobrazí pole pro parametry dotazu a pole pro hlavičky. Jednou z hlaviček je klíč „Ocp-Apim-Subscription-Key“. Je to klíč pro přihlášení k odběru produktu, který je k tomuto rozhraní API přidružený. Pokud jste vytvořili instanci služby APIM, jste už správcem a klíč se tedy vyplní automaticky. 
+    Stránka zobrazí pole pro parametry dotazu a pole pro hlavičky. Jednou z hlaviček je klíč „Ocp-Apim-Subscription-Key“. Je to klíč pro přihlášení k odběru produktu, který je k tomuto rozhraní API přidružený. Pokud jste vytvořili instanci služby APIM, jste už správcem a klíč se tedy vyplní automaticky. 
 1. Stiskněte **Odeslat**.
 
     Back-end předá odpověď **200 OK** a nějaká data.

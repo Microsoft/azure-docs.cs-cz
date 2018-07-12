@@ -10,11 +10,11 @@ ms.topic: quickstart
 ms.date: 04/09/2018
 ms.author: seguler
 ms.openlocfilehash: 7ef74fe59400ff38a96e7b1b652393eef60eac81
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31415626"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38606622"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-ruby"></a>Rychlý start: Nahrávání, stahování a výpis objektů blob pomocí Ruby
 
@@ -48,7 +48,7 @@ Tento příkaz naklonuje úložiště do vaší místní složky gitu. Pokud chc
 [!INCLUDE [storage-copy-account-key-portal](../../../includes/storage-copy-account-key-portal.md)]
 
 ## <a name="configure-your-storage-connection-string"></a>Konfigurace připojovacího řetězce úložiště
-V aplikaci musíte zadat název svého účtu úložiště a klíč účtu pro vytvoření instance `BlobService` ve vaší aplikaci. V Průzkumníkovi řešení vašeho integrovaného vývojového prostředí (IDE) otevřete soubor `example.rb`. Hodnoty **accountname** a **accountkey** nahraďte názvem a klíčem vašeho účtu. 
+V aplikaci musíte zadat název svého účtu úložiště a klíč účtu pro vytvoření instance `BlobService` ve vaší aplikaci. V Průzkumníku řešení vašeho integrovaného vývojového prostředí (IDE) otevřete soubor `example.rb`. Hodnoty **accountname** a **accountkey** nahraďte názvem a klíčem vašeho účtu. 
 
 ```ruby 
 blob_client = Azure::Storage::Blob::BlobService.create(
@@ -195,4 +195,4 @@ V tomto rychlém startu jste zjistili, jak přenášet soubory mezi místním di
 > [Operace s úložištěm objektů blob – postupy](./storage-ruby-how-to-use-blob-storage.md)
 
 
-Další informace o Průzkumníkovi služby Storage a objektech blob najdete v tématu [Správa prostředků úložiště objektů blob v Azure pomocí Průzkumníka služby Storage](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+Další informace o Průzkumníku služby Storage a objektech blob najdete v tématu [Správa prostředků úložiště objektů blob v Azure pomocí Průzkumníka služby Storage](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).

@@ -10,11 +10,11 @@ ms.topic: quickstart
 ms.date: 04/09/2018
 ms.author: cshoe
 ms.openlocfilehash: 8b3735380105bca8421e3f1d654425eea465918e
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37767357"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38308196"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-python"></a>Rychlý start: Nahrávání, stahování a výpis objektů blob pomocí Pythonu
 
@@ -44,7 +44,7 @@ Tento příkaz naklonuje úložiště do vaší místní složky gitu. Pokud chc
 [!INCLUDE [storage-copy-account-key-portal](../../../includes/storage-copy-account-key-portal.md)]
 
 ## <a name="configure-your-storage-connection-string"></a>Konfigurace připojovacího řetězce úložiště
-V aplikaci je potřeba zadat název účtu úložiště a klíč úložiště pro vytvoření objektu `BlockBlobService`. V Průzkumníkovi řešení vašeho integrovaného vývojového prostředí (IDE) otevřete soubor `example.py`. Hodnoty **accountname** a **accountkey** nahraďte názvem a klíčem vašeho účtu. 
+V aplikaci je potřeba zadat název účtu úložiště a klíč úložiště pro vytvoření objektu `BlockBlobService`. V Průzkumníku řešení vašeho integrovaného vývojového prostředí (IDE) otevřete soubor `example.py`. Hodnoty **accountname** a **accountkey** nahraďte názvem a klíčem vašeho účtu. 
 
 ```python 
 block_blob_service = BlockBlobService(account_name='accountname', account_key='accountkey') 
@@ -187,4 +187,4 @@ V tomto rychlém startu jste zjistili, jak přenášet soubory mezi místním di
 > [!div class="nextstepaction"]
 > [Operace s úložištěm objektů blob – postupy](./storage-python-how-to-use-blob-storage.md)
  
-Další informace o Průzkumníkovi služby Storage a objektech blob najdete v tématu [Správa prostředků úložiště objektů blob v Azure pomocí Průzkumníka služby Storage](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+Další informace o Průzkumníku služby Storage a objektech blob najdete v tématu [Správa prostředků úložiště objektů blob v Azure pomocí Průzkumníka služby Storage](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).

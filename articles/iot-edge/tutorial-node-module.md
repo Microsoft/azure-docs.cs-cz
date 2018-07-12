@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
 ms.openlocfilehash: cdcd30ea29c5c7066a6ae05f64b5bf0720572599
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061260"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38299202"
 ---
 # <a name="tutorial-develop-and-deploy-a-nodejs-iot-edge-module-to-your-simulated-device"></a>Kurz: Vývoj modulu IoT Edge v jazyce Node.js a jeho nasazení na simulované zařízení
 
@@ -33,7 +33,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Zařízení Azure IoT Edge, které jste vytvořili v rychlém startu pro zařízení s [Linuxem](quickstart-linux.md) nebo [Windows](quickstart.md)
+* Zařízení Azure IoT Edge, které jste vytvořili v rychlém startu pro zařízení s [Linuxem](quickstart-linux.md) nebo [Windows](quickstart.md).
 * [Visual Studio Code](https://code.visualstudio.com/). 
 * [Rozšíření Azure IoT Edge pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) 
 * [Docker](https://docs.docker.com/engine/installation/) na stejném počítači, jako je Visual Studio Code. Pro tento kurz stačí edice Community Edition (CE). 
@@ -147,7 +147,7 @@ Každá šablona zahrnuje ukázkový kód, který simuluje data snímačů z mod
 
 9. Soubor uložte.
 
-## <a name="build-your-iot-edge-solution"></a>Vytvoření řešení IoT Edge
+## <a name="build-your-iot-edge-solution"></a>Sestavení řešení IoT Edge
 
 V předchozí části jste vytvořili řešení IoT a do modulu NodeModule jste přidali kód, který odfiltruje zprávy, ve kterých je hlášená teplota počítače nižší než přípustná mezní hodnota. Teď je potřeba vytvořit toto řešení jako image kontejneru a odeslat ho do registru kontejneru. 
 
@@ -175,7 +175,7 @@ V předchozí části jste vytvořili řešení IoT a do modulu NodeModule jste 
 5. Soubor uložte.
 6. V průzkumníku VS Code klikněte pravým tlačítkem na soubor **deployment.template.json** a vyberte **Build IoT Edge solution** (Vytvořit řešení IoT Edge). 
 
-Když produktu Visual Studio Code sdělíte, že má vytvořit vaše řešení, nejdříve se načtou informace ze šablony nasazení a v nové složce **config** se vygeneruje soubor `deployment.json`. Pak se v integrovaném terminálu spustí dva příkazy: `docker build` a `docker push`. Tyto dva příkazy sestaví kód, provedou kontejnerizaci vašeho kódu Node.js a odešlou ho do kontejneru registru, který jste zadali při inicializaci řešení. 
+Když editoru Visual Studio Code sdělíte, že má sestavit vaše řešení, nejdříve se načtou informace ze šablony nasazení a v nové složce **config** se vygeneruje soubor `deployment.json`. Pak se v integrovaném terminálu spustí dva příkazy: `docker build` a `docker push`. Tyto dva příkazy sestaví kód, provedou kontejnerizaci vašeho kódu Node.js a odešlou ho do kontejneru registru, který jste zadali při inicializaci řešení. 
 
 Úplnou adresu image kontejneru se značkou můžete vidět v příkazu `docker build`, který spouští integrovaný terminál VS Code. Adresa image je sestavená z informací v souboru `module.json` a má formát **\<úložiště\>:\<verze\>-\<platforma\>**. V tomto kurzu by měla vypadat takto: **název_registru.azurecr.io/nodemodule:0.0.1-amd64**.
 
@@ -189,7 +189,7 @@ K nasazení modulu Node.ms na zařízení IoT Edge můžete použít web Azure P
 
 3. Na paletě příkazů vyhledejte a spusťte příkaz **Azure IoT Hub: Select IoT Hub** (Azure IoT Hub: Vybrat IoT Hub). 
 
-4. Vyberte předplatné, které obsahuje váš IoT Hub, a pak vyberte IoT Hub, ke kterému chcete získat přístup.
+4. Vyberte předplatné, které obsahuje vaše centrum IoT, a pak vyberte centrum IoT, ke kterému chcete získat přístup.
 
 5. V průzkumníku VS Code rozbalte oddíl **Azure IoT Hub Devices** (Zařízení Azure IoT Hub). 
 
@@ -212,12 +212,12 @@ K nasazení modulu Node.ms na zařízení IoT Edge můžete použít web Azure P
 
 <!--[!INCLUDE [iot-edge-quickstarts-clean-up-resources](../../includes/iot-edge-quickstarts-clean-up-resources.md)] -->
 
-Pokud budete pokračovat k dalšímu doporučenému článku, můžete již vytvořené prostředky a konfigurace zachovat a znovu je použít.
+Pokud budete pokračovat k dalšímu doporučenému článku, můžete už vytvořené prostředky a konfigurace zachovat a znovu je použít.
 
-Jinak můžete místní konfigurace a prostředky Azure vytvořené v tomto článku odstranit a vyhnout se tak poplatkům. 
+Pokud nebudete pokračovat, můžete místní konfigurace a prostředky Azure vytvořené v tomto článku odstranit, abyste se vyhnuli poplatkům. 
 
 > [!IMPORTANT]
-> Odstranění prostředků Azure a skupiny prostředků je nevratná akce. Skupina prostředků i všechny prostředky v ní obsažené se trvale odstraní. Ujistěte se, že nechtěně neodstraníte nesprávnou skupinu prostředků nebo prostředky. Pokud jste službu IoT Hub vytvořili uvnitř existující skupiny prostředků obsahující prostředky, které chcete zachovat, odstraňte místo skupiny prostředků pouze samotný prostředek služby IoT.
+> Odstranění prostředků Azure a skupiny prostředků je nevratná akce. V případě odstranění se skupina prostředků i všechny prostředky, které obsahuje, trvale odstraní. Ujistěte se, že nechtěně neodstraníte nesprávnou skupinu prostředků nebo prostředky. Pokud jste službu IoT Hub vytvořili uvnitř existující skupiny prostředků obsahující prostředky, které chcete zachovat, odstraňte místo skupiny prostředků pouze samotný prostředek služby IoT.
 >
 
 Pokud chcete odstranit jenom IoT Hub, spusťte následující příkaz, ve kterém se použije název vaší služby Hub a název skupiny prostředků:

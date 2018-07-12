@@ -1,5 +1,5 @@
 ---
-title: Kopírování dat pomocí nástroje pro kopírování dat Azure | Microsoft Docs
+title: Kopírování dat pomocí nástroje pro kopírování dat Azure | Dokumentace Microsoftu
 description: Vytvořte datovou továrnu Azure a pak pomocí nástroje Kopírování dat zkopírujte data z jednoho umístění v úložišti objektů blob v Azure do jiného.
 services: data-factory
 documentationcenter: ''
@@ -12,11 +12,11 @@ ms.topic: hero-article
 ms.date: 06/20/2018
 ms.author: jingwang
 ms.openlocfilehash: 4df392ec7e100ef0efcbb3876079710a6b9ca4fb
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37048022"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38623531"
 ---
 # <a name="use-the-copy-data-tool-to-copy-data"></a>Kopírování dat pomocí nástroje pro kopírování dat 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service that you are using:"]
@@ -49,7 +49,7 @@ V tomto rychlém startu použijete Azure Portal k vytvoření datové továrny. 
    - Vyberte **Vytvořit novou** a zadejte název skupiny prostředků.   
          
    Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/resource-group-overview.md).  
-4. V poli **Verze** vyberte **V2**.
+4. Jako **Verzi** vyberte **V2**.
 5. Jako **Umístění** vyberte umístění datové továrny. 
 
    V seznamu se zobrazují pouze podporovaná umístění. Úložiště dat (např. Azure Storage nebo Azure SQL Database) a výpočetní prostředí (např. Azure HDInsight) používaná službou Data Factory můžou být v jiných umístěních nebo oblastech.

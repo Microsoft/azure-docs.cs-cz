@@ -13,11 +13,11 @@ ms.date: 01/17/2018
 ms.author: msangapu
 ms.custom: mvc
 ms.openlocfilehash: b8fb814aa56465f9dce51de29de37f93213bf58f
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
-ms.locfileid: "29931467"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38317927"
 ---
 # <a name="deploy-a-dockergo-web-app-in-web-app-for-containers"></a>Nasazení webové aplikace v Dockeru/Go ve službě Web App for Containers
 

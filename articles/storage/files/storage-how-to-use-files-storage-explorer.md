@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 02/27/2018
 ms.author: wgries
 ms.openlocfilehash: ea401099ce90248be0ecb99109b845ff9a91f70d
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37029318"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38308493"
 ---
 # <a name="manage-azure-file-shares-with-azure-storage-explorer"></a>Správa sdílených složek Azure pomocí Průzkumníka služby Azure Storage 
 Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cloudový systém souborů od Microsoftu. Tento článek vás provede základy práce se sdílenými složkami Azure pomocí [Průzkumníka služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/). Průzkumník služby Storage je oblíbený klientský nástroj, který je k dispozici pro Windows, macOS a Linux. Můžete ho použít ke správě sdílených složek Azure a dalších prostředků úložiště.

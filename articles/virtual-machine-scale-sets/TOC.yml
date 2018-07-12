@@ -224,6 +224,8 @@
           href: virtual-machine-scale-sets-networking.md
         - name: Převod šablony na spravované disky
           href: virtual-machine-scale-sets-convert-template-to-md.md
+        - name: Plánovaná údržba
+          href: virtual-machine-scale-sets-maintenance-notifications.md
     - name: Řešení potíží
       items:
         - name: Automatické škálování

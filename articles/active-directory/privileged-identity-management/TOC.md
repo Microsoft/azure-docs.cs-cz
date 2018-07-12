@@ -1,27 +1,27 @@
 # Přehled
-## [Co je Azure AD PIM](../active-directory-privileged-identity-management-configure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
+## [Co je Azure AD PIM](pim-configure.md)
 ## [Zabezpečení privilegovaného přístupu](../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
-## [Role adresáře v PIM](../active-directory-privileged-identity-management-roles.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
+## [Role adresáře v PIM](pim-roles.md)
 ## [PIM pro prostředky Azure](azure-pim-resource-rbac.md)
 ## [Schvalovací pracovní postup PIM](azure-ad-pim-approval-workflow.md)
 
 # Začínáme
 ## [Požadavky na předplatné](subscription-requirements.md)
-## [Začínáme na s využitím webu Azure Portal](../active-directory-privileged-identity-management-getting-started.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
-## [Průvodce zabezpečením](../active-directory-privileged-identity-management-security-wizard.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
-## [Poskytnutí přístupu k PIM](../active-directory-privileged-identity-management-how-to-give-access-to-pim.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
+## [Začínáme na s využitím webu Azure Portal](pim-getting-started.md)
+## [Průvodce zabezpečením](pim-security-wizard.md)
+## [Poskytnutí přístupu k PIM](pim-how-to-give-access-to-pim.md)
 ## [Povolení správy předplatného](pim-resource-roles-enable-subscription-management.md)
 ## [Zjišťování prostředků](pim-resource-roles-discover-resources.md)
 ## [Přehledové řídicí panely](pim-resource-roles-overview-dashboards.md)
 
 # Postup
 ## Použití PIM pro role adresáře
-### [Aktivace rolí](../active-directory-privileged-identity-management-how-to-activate-role.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
-### [Přiřazení rolí](../active-directory-privileged-identity-management-how-to-add-role-to-user.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
-### [Změna nastavení role](../active-directory-privileged-identity-management-how-to-change-default-settings.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
-### [Konfigurace upozornění](../active-directory-privileged-identity-management-how-to-configure-security-alerts.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
-### [Vyžadování MFA](../active-directory-privileged-identity-management-how-to-require-mfa.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
-### [Použití protokolu auditu](../active-directory-privileged-identity-management-how-to-use-audit-log.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
+### [Aktivace rolí](pim-how-to-activate-role.md)
+### [Přiřazení rolí](pim-how-to-add-role-to-user.md)
+### [Změna nastavení role](pim-how-to-change-default-settings.md)
+### [Konfigurace upozornění](pim-how-to-configure-security-alerts.md)
+### [Vyžadování MFA](pim-how-to-require-mfa.md)
+### [Použití protokolu auditu](pim-how-to-use-audit-log.md)
 ## Použití PIM pro role prostředků
 ### [Aktivace rolí](pim-resource-roles-activate-your-roles.md)
 ### [Přiřazení rolí](pim-resource-roles-assign-roles.md)
@@ -34,9 +34,9 @@
 
 # Kontrola přístupu
 ## PIM pro role adresáře
-### [Provádění kontroly přístupu](../active-directory-privileged-identity-management-how-to-perform-security-review.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
-### [Zahájení kontroly přístupu](../active-directory-privileged-identity-management-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
-### [Dokončení kontroly přístupu](../active-directory-privileged-identity-management-how-to-complete-review.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
+### [Provádění kontroly přístupu](pim-how-to-perform-security-review.md)
+### [Zahájení kontroly přístupu](pim-how-to-start-security-review.md)
+### [Dokončení kontroly přístupu](pim-how-to-complete-review.md)
 ## PIM pro role prostředků
 ### [Provádění kontroly přístupu](pim-resource-roles-perform-access-review.md)
 ### [Zahájení kontroly přístupu](pim-resource-roles-start-access-review.md)

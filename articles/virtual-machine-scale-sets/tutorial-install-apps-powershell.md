@@ -3,7 +3,7 @@ title: Kurz – Instalace aplikací ve škálovací sadě pomocí Azure PowerShe
 description: Zjistěte, jak pomocí Azure PowerShellu instalovat aplikace do škálovacích sad virtuálních počítačů s využitím rozšíření vlastních skriptů.
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2018
-ms.author: iainfou
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: ce35db90e49e0d2861dd71e80ac61f05db607338
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 4f162dcf58316e6d9f39b71be37abf5626e93c75
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34365062"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38295820"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-azure-powershell"></a>Kurz: Instalace aplikací ve škálovacích sadách virtuálních počítačů pomocí Azure PowerShellu
 Pokud chcete spouštět aplikace na instancích virtuálních počítačů ve škálovací sadě, musíte nejprve nainstalovat komponenty aplikace a požadované soubory. V předchozím kurzu jste zjistili, jak vytvořit a použít vlastní image virtuálního počítače k nasazení instancí virtuálních počítačů. Tato vlastní image zahrnovala ruční instalaci a konfiguraci aplikací. Můžete automatizovat také instalaci aplikací do škálovací sady po nasazení všech instancí virtuálních počítačů nebo aktualizaci aplikace, která je již ve škálovací sadě spuštěná. V tomto kurzu se naučíte:
@@ -35,7 +35,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte v tomto kurzu použít modul Azure PowerShell verze 6.0.0 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzureRmAccount` pro vytvoření připojení k Azure. 
+Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte použít modul Azure PowerShell verze 6.0.0 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzureRmAccount` pro vytvoření připojení k Azure. 
 
 
 ## <a name="what-is-the-azure-custom-script-extension"></a>Co je rozšíření vlastních skriptů Azure?
@@ -88,7 +88,7 @@ $vmss = Add-AzureRmVmssExtension `
   -Name "customScript" `
   -Publisher "Microsoft.Compute" `
   -Type "CustomScriptExtension" `
-  -TypeHandlerVersion 1.8 `
+  -TypeHandlerVersion 1.9 `
   -Setting $customConfig
 
 # Update the scale set and apply the Custom Script Extension to the VM instances
@@ -136,7 +136,7 @@ $vmss = Add-AzureRmVmssExtension `
   -Name "customScript" `
   -Publisher "Microsoft.Compute" `
   -Type "CustomScriptExtension" `
-  -TypeHandlerVersion 1.8 `
+  -TypeHandlerVersion 1.9 `
   -Setting $customConfigv2
 
 # Update the scale set and reapply the Custom Script Extension to the VM instances
