@@ -16,12 +16,12 @@ ms.component: protection
 ms.date: 06/01/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: b4322ab5c90b04cf4eb0591e97e5e026664a2769
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 681169fc3db69c2dfb8aa36d6e2896e0ddba8b56
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37442368"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38548124"
 ---
 # <a name="azure-active-directory-privileged-identity-management-subscription-requirements"></a>Požadavky na předplatné Azure Active Directory Privileged Identity Management
 
@@ -38,7 +38,7 @@ Pokud si nejste jistí, jestli má vaše organizace zkušební verze nebo zakoup
 2. Zadejte `Connect-MsolService` ověřit se jako uživatel ve vašem tenantovi.
 3. Zadejte `Get-MsolSubscription | ft SkuPartNumber,IsTrial,Status`.
 
-Tento příkaz načte seznam předplatných ve vašem tenantovi. Pokud neexistují žádné řádky vrátil, je potřeba získat vyzkoušení, zakoupení Azure AD Premium P2 Azure AD Premium P2 předplatné nebo předplatné EMS E5, které chcete použít Azure AD Privileged Identity Management.  Získejte zkušební verzi a začněte používat Azure AD Privileged Identity Management, přečtěte si téma [Začínáme s Azure AD Privileged Identity Management](../active-directory-privileged-identity-management-getting-started.md).
+Tento příkaz načte seznam předplatných ve vašem tenantovi. Pokud neexistují žádné řádky vrátil, je potřeba získat vyzkoušení, zakoupení Azure AD Premium P2 Azure AD Premium P2 předplatné nebo předplatné EMS E5, které chcete použít Azure AD Privileged Identity Management.  Získejte zkušební verzi a začněte používat Azure AD Privileged Identity Management, přečtěte si téma [Začínáme s Azure AD Privileged Identity Management](pim-getting-started.md).
 
 Pokud tento příkaz vrátí řádek v které SkuPartNumber je "AAD_PREMIUM_P2" nebo "EMSPREMIUM" a IsTrial je "True", znamená to, že je k dispozici v tenantovi zkušební verzi Azure AD Premium P2.  Pokud se stav předplatného není povolená, a nemáte předplatné Azure AD Premium P2 nebo EMS E5 nákupu, pak musíte koupit Azure AD Premium P2 předplatné nebo předplatné EMS E5 a pokračujte v používání Azure AD Privileged Identity Management.
 
@@ -61,5 +61,5 @@ Když vyprší platnost Azure AD Premium P2 předplatné nebo předplatné EMS E
 
 ## <a name="next-steps"></a>Další postup
 
-- [Začínáme s Azure AD Privileged Identity Management](../active-directory-privileged-identity-management-getting-started.md)
-- [Role ve službě Azure AD Privileged Identity Management](../active-directory-privileged-identity-management-roles.md)
+- [Začínáme s Azure AD Privileged Identity Management](pim-getting-started.md)
+- [Role ve službě Azure AD Privileged Identity Management](pim-roles.md)

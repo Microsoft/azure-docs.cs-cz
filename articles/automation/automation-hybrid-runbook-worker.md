@@ -1,6 +1,6 @@
 ---
 title: Azure Automation Hybrid Runbook Worker
-description: Tento článek obsahuje informace o instalaci a použití Hybrid Runbook Worker, což je funkce Azure Automation, který můžete použít ke spuštění sady runbook na počítačích ve vaší místní datacenter nebo poskytovatele cloudových služeb.
+description: Tento článek obsahuje informace o instalaci a použití procesu Hybrid Runbook Worker, což je funkce služby Azure Automation, který používáte ke spuštění sady runbook na počítačích v místním datovém centru nebo poskytovatele cloudu.
 services: automation
 ms.service: automation
 ms.component: process-automation
@@ -9,30 +9,30 @@ ms.author: gwallace
 ms.date: 04/25/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 54b2cab2ad6b1a22d35fcf0755f257063573e58b
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: e834a1cfa7eba3c1ff12523982e6704c73ef8078
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128618"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38488504"
 ---
-# <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Automatizaci prostředků v datovém centru nebo v cloudu pomocí hybridní pracovní proces Runbooku
+# <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Automatizace prostředky v datovém centru nebo v cloudu s využitím procesu Hybrid Runbook Worker
 
-Runbooky ve službě Azure Automation nemusí být možné získat přístup k prostředkům v ostatních cloudů nebo v místním prostředí, protože běží na platformě Azure cloud. Ke spuštění sady runbook přímo na počítači, který je hostitelem role a s prostředky v prostředí pro správu těchto místních prostředků, můžete použít funkci hybridní pracovní proces Runbooku automatizace Azure. Sady Runbook jsou uložené a spravované ve službě Azure Automation a pak doručí jeden nebo více určenými počítači.
+Runbooky ve službě Azure Automation, nebudou moct přistupovat k prostředkům v jiných cloudech nebo v místním prostředí, protože běží na cloudovou platformu Azure. Funkce Hybrid Runbook Worker služby Azure Automation můžete použít ke spuštění sady runbook přímo na počítači, který je hostitelem role a s prostředky v prostředí ke správě místních prostředků. Sady Runbook jsou uloženy a spravovaná ve službě Azure Automation a pak doručí jeden nebo více počítačů určené.
 
-Následující obrázek znázorňuje tuto funkci:
+Následující obrázek ukazuje tuto funkci:
 
 ![Přehled funkce Hybrid Runbook Worker](media/automation-hybrid-runbook-worker/automation.png)
 
-Každý hybridní pracovní proces Runbooku je členem skupiny hybridní pracovní proces Runbooku, který zadáte při instalaci agenta. Skupina může obsahovat jednoho agenta, ale můžete nainstalovat více agentů ve skupině pro vysokou dostupnost.
+Každá funkce Hybrid Runbook Worker je členem skupiny Hybrid Runbook Worker, který zadáváte při instalaci agenta. Skupina může obsahovat jeden agent, ale můžete nainstalovat více agentů ve skupině pro zajištění vysoké dostupnosti.
 
-Při spuštění sady runbook pro Hybrid Runbook Worker, určete skupinu, která běží na. Každý pracovní ve skupině dotáže Azure Automation. Chcete-li zobrazit, pokud jsou k dispozici žádné úlohy. Pokud úloha je k dispozici, má první pracovní proces úlohy ho. Nelze zadat konkrétní pracovního procesu.
+Při spuštění sady runbook v procesu Hybrid Runbook Worker, určete skupinu, která se spouští. Každému pracovnímu procesu ve skupině se dotazuje služby Azure Automation, jestli jsou k dispozici žádné úlohy. Pokud úloha je k dispozici, má první pracovního procesu k dosažení ho. Nelze zadat konkrétní pracovního procesu.
 
-## <a name="install-a-hybrid-runbook-worker"></a>Instalace nástroje Hybrid Runbook Worker
+## <a name="install-a-hybrid-runbook-worker"></a>Instalace procesu Hybrid Runbook Worker
 
-Proces instalace hybridní pracovní proces Runbooku závisí na operačním systémem. Následující tabulka obsahuje odkazy na metody, které můžete použít pro instalaci. 
+Proces instalace procesu Hybrid Runbook Worker závisí na operační systém. Následující tabulka obsahuje odkazy na metody, které můžete použít k instalaci. 
 
-Instalace a konfigurace Windows Hybrid Runbook Worker, můžete použít dvě metody. Doporučený postup je použít runbook služby automatizace zcela automatizovat proces konfigurace počítači se systémem Windows. Druhý způsob je následující podrobný postup při ručně nainstalujte a nakonfigurujte roli. Pro počítače se systémem Linux spusťte skript v jazyce Python pro instalaci agenta na počítači.
+Instalace a konfigurace Windows Hybrid Runbook Worker, můžete použít dvě metody. Doporučený postup je použít runbook služby Automation zcela automatizovat proces konfigurace počítače Windows. Druhá metoda sleduje podrobný postup, jak ručně nainstalovat a nakonfigurovat role. Pro počítače s Linuxem spustili skript Pythonu pro instalaci agenta na počítači.
 
 |Operační systém  |Typy nasazení  |
 |---------|---------|
@@ -40,28 +40,28 @@ Instalace a konfigurace Windows Hybrid Runbook Worker, můžete použít dvě me
 |Linux     | [Python](automation-linux-hrw-install.md#installing-a-linux-hybrid-runbook-worker)        |
 
 > [!NOTE]
-> Pokud chcete spravovat konfiguraci serverů, které podporují roli hybridní pracovní proces Runbooku s potřeby konfigurace stavu (DSC), musíte je přidat jako uzly DSC. Další informace o připojování je pro správu s DSC, najdete v části [registrace počítačů pro správu Azure Automation DSC](automation-dsc-onboarding.md).
+> Ke správě konfigurace serverů, které podporují role Hybrid Runbook Worker s Desired State Configuration (DSC), musíte je přidat jako uzly DSC. Další informace o připojování je pro správu pomocí DSC, naleznete v tématu [připojování počítačů pro správu pomocí Azure Automation DSC](automation-dsc-onboarding.md).
 >
->Pokud povolíte [řešení pro správu aktualizací](automation-update-management.md), jakýkoli počítač, který je připojen k pracovní prostor analýzy protokolů Azure je automaticky nakonfigurovaný jako hybridní pracovní proces Runbooku na podporu sady runbook, které jsou zahrnuté v tomto řešení. Počítač se však není registrován u žádné skupiny hybridní pracovní proces již definována v účtu Automation. Počítač lze přidat do skupiny Hybrid Runbook Worker ve vašem účtu Automation na podporu automatizace sady runbook, dokud používáte stejný účet pro řešení a členství ve skupině hybridní pracovní proces Runbooku. Tato funkce se přidal 7.2.12024.0 verzi hybridní pracovní proces Runbooku.
+>Pokud povolíte [řešení Update Management](automation-update-management.md), jakýkoli počítač, který je připojený k pracovnímu prostoru Azure Log Analytics se automaticky nakonfiguruje jako Hybrid Runbook Worker pro podporu runbooků, které jsou zahrnuté v tomto řešení. Ale počítač není zaregistrovaný u žádných skupin Hybrid Worker, který je již definován ve vašem účtu Automation. Počítač je přidat do skupiny Hybrid Runbook Worker ve vašem účtu Automation pro podporu runbooků Automation za předpokladu, že používáte stejný účet pro řešení a členství ve skupině Hybrid Runbook Worker. Tato funkce byla přidána na verzi 7.2.12024.0 Hybrid Runbook Worker.
 
-Zkontrolujte [informace pro plánování vaší sítě](#network-planning) než začnete nasazovat hybridní pracovní proces Runbooku. Poté, co nasadíte úspěšně pracovního procesu, zkontrolujte [spuštění sad runbook na hybridní pracovní proces Runbooku](automation-hrw-run-runbooks.md) se dozvíte, jak nakonfigurovat své sady runbook k automatizaci procesů ve své místní datové centrum nebo jiné cloudové prostředí.
+Zkontrolujte [informace pro plánování sítě](#network-planning) před zahájením nasazení funkce Hybrid Runbook Worker. Po úspěšně nasazení pracovního procesu, zkontrolujte [spouštění runbooků v procesu Hybrid Runbook Worker](automation-hrw-run-runbooks.md) na další informace o konfiguraci runbooky pro automatizaci procesů do vašeho místního datového centra nebo jiné cloudové prostředí.
 
-## <a name="remove-a-hybrid-runbook-worker"></a>Odebrat hybridní pracovní proces Runbooku
+## <a name="remove-a-hybrid-runbook-worker"></a>Odebrání funkce Hybrid Runbook Worker
 
-Jeden nebo více procesy Hybrid Runbook Worker můžete odebrat ze skupiny, nebo můžete odebrat skupiny, v závislosti na požadavcích. K odebrání hybridní pracovní proces Runbooku místním počítači, proveďte následující kroky:
+Jeden nebo více procesy Hybrid Runbook Worker můžete odebrat ze skupiny, nebo můžete odebrat skupinu, v závislosti na vašich požadavcích. Odebrání funkce Hybrid Runbook Worker v místním počítači, proveďte následující kroky:
 
-1. Na portálu Azure přejděte na svůj účet Automation.
-2. V části **nastavení**, vyberte **klíče** a poznamenejte si hodnoty pro **URL** a **primární přístupový klíč**. Tyto informace jsou potřeba pro další krok.
+1. Na webu Azure Portal přejděte na svůj účet Automation.
+2. V části **nastavení**vyberte **klíče** a poznamenejte si hodnoty pro **URL** a **primární přístupový klíč**. Tyto informace budete potřebovat další krok.
 
 ### <a name="windows"></a>Windows
 
-Otevřete relaci prostředí PowerShell v režimu správce a spusťte následující příkaz. Použití **-Verbose** přepínač pro podrobný protokol proces odebrání.
+Otevřete relaci Powershellu v režimu správce a spusťte následující příkaz. Použití **-Verbose** přepnout podrobný protokol odebrání.
 
 ```powershell
 Remove-HybridRunbookWorker -url <URL> -key <PrimaryAccessKey>
 ```
 
-Pokud chcete odstranit zastaralé počítače z vaší skupinu hybridních pracovních procesů, použijte nepovinný `machineName` parametr.
+Chcete-li odebrat zastaralé počítače ze skupiny Hybrid Worker, použijte volitelný `machineName` parametru.
 
 ```powershell-interactive
 Remove-HybridRunbookWorker -url <URL> -key <PrimaryAccessKey> -machineName <ComputerName>
@@ -74,45 +74,45 @@ sudo python onboarding.py --deregister --endpoint="<URL>" --key="<PrimaryAccessK
 ```
 
 > [!NOTE]
-> Tento kód neodebere agenta Microsoft Monitoring Agent z počítače, funkce a konfiguraci role hybridní pracovní proces Runbooku.
+> Tento kód neodebere agenta Microsoft Monitoring Agent z počítače, funkce a konfigurace role Hybrid Runbook Worker.
 
-## <a name="remove-a-hybrid-worker-group"></a>Odebrat skupinu hybridních pracovních procesů
+## <a name="remove-a-hybrid-worker-group"></a>Odebrat skupiny Hybrid Worker
 
-Chcete-li odebrat skupinu, musíte nejprve odebrat hybridní pracovní proces Runbooku z každý počítač, který je členem skupiny pomocí postupu uvedena výše. Potom proveďte následující kroky k odebrání skupiny:
+Můžete odebrat skupinu, budete nejdřív muset odebrat funkce Hybrid Runbook Worker v každém počítači, který je členem skupiny postupem, jak je uvedeno výše. Potom proveďte následující kroky k odebrání skupiny:
 
-1. Otevřete účet Automation na portálu Azure.
-1. V části **automatizace procesu**, vyberte **skupinám Hybrid worker**. Vyberte skupinu, kterou chcete odstranit. Zobrazí se stránka Vlastnosti pro tuto skupinu.
+1. Na webu Azure Portal otevřete účet Automation.
+1. V části **automatizace procesů**vyberte **skupiny hybridních pracovních procesů**. Vyberte skupinu, kterou chcete odstranit. Zobrazí se stránka Vlastnosti pro tuto skupinu.
 
    ![Stránka Vlastnosti](media/automation-hybrid-runbook-worker/automation-hybrid-runbook-worker-group-properties.png)
 
-1. Na stránce vlastnosti pro vybranou skupinu, vyberte možnost **odstranit**. Výzva k potvrzení této akce. Vyberte **Ano** Pokud jste si jisti, že chcete pokračovat.
+1. Na stránce vlastnosti pro vybranou skupinu, vyberte **odstranit**. Výzva k potvrzení této akce. Vyberte **Ano** Pokud si nejste jisti, že chcete pokračovat.
 
    ![Potvrzovací zpráva](media/automation-hybrid-runbook-worker/automation-hybrid-runbook-worker-confirm-delete.png)
 
-   Tento proces může trvat několik sekund. Průběh zpracování můžete sledovat prostřednictvím možnosti nabídky **Oznámení**.
+   Tento proces může trvat několik sekund na dokončení. Průběh zpracování můžete sledovat prostřednictvím možnosti nabídky **Oznámení**.
 
 ## <a name="network-planning"></a>Konfigurace sítě
 
-### <a name="hybrid-worker-role"></a>Hybridní role pracovního procesu
+### <a name="hybrid-worker-role"></a>Role pracovního procesu hybrid
 
-Pro Runbook Worker hybridní připojení k a zaregistrovat u analýzy protokolů musí mít přístup k adresám URL, které jsou popsané v této části a číslo portu. Tento přístup je kromě [portů a adres URL potřebných pro agenta Microsoft Monitoring Agent](../log-analytics/log-analytics-agent-windows.md) pro připojení k analýze protokolů. 
+Pro Hybrid Runbook Worker mohl připojit a zaregistrovat pomocí Log Analytics musí mít přístup k portu a adresám URL, které jsou popsány v této části. Tento přístup je kromě [portů a adresám URL požadovaným pro agenta Microsoft Monitoring Agent](../log-analytics/log-analytics-agent-windows.md) pro připojení ke službě Log Analytics. 
 
-Pokud používáte proxy server pro komunikaci mezi agentem a analýzy protokolů služby, zajistěte, aby byly dostupné s příslušnými prostředky. Pokud používáte bránu firewall k omezení přístupu k Internetu, musíte nakonfigurovat bránu firewall tak, aby povolovala přístup.
+Pokud používáte proxy server pro komunikaci mezi agentem a službou Log Analytics, ujistěte se, že jsou dostupné příslušné prostředky. Pokud používáte k omezení přístupu k Internetu bránu firewall, musíte nakonfigurovat bránu firewall, aby povolovala přístup. Pokud používáte bránu OMS jako proxy server, ujistěte se, že je nakonfigurovaný pro proces hybrid Worker. Pokyny, jak to udělat, najdete v části [konfigurace brány OMS pro Automation Hybrid Worker](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-oms-gateway#configure-for-automation-hybrid-workers).
 
-Následující portů a adres URL jsou vyžadovány pro roli hybridní pracovní proces Runbooku ke komunikaci s automatizace:
+Následující portů a adres URL jsou požadovány pro role Hybrid Runbook Worker ke komunikaci se službou Automation:
 
-* Port: Pouze TCP 443 je vyžadována pro odchozí přístup k Internetu.
+* Port: Se jenom TCP 443 pro odchozí přístup k Internetu vyžaduje.
 * Globální adresa URL: *.azure-automation.net
-* Globální adresa URL USA verze pro státní správu Virginia: *.azure automation.us
-* Služba agenta: https://\<workspaceId\>.agentsvc.azure-automation.net
+* Globální adresa URL US Gov Virginie: *.azure-automation.us
+* Služba agenta: https://\<ID pracovního prostoru\>.agentsvc.azure-automation.net
 
-Doporučujeme použít adresy uvedené při definování výjimky. Pro IP adresy si můžete stáhnout [Microsoft Azure Datacenter rozsahy IP adres](https://www.microsoft.com/download/details.aspx?id=41653). Tento soubor je aktualizovaný týdně a odráží aktuálně nasazená rozsahy a žádné nadcházející změny rozsahy IP.
+Doporučuje se použít adresy, které uvedete při definování výjimky. Pro IP adresy, které si můžete stáhnout [Microsoft Azure rozsahů IP adres Datacentra](https://www.microsoft.com/download/details.aspx?id=41653). Tento soubor se každý týden aktualizuje a zobrazuje aktuálně nasazené rozsahy a všechny nadcházející změny rozsahů IP adres.
 
-Pokud máte účet Automation, který je definován pro určitou oblast, můžete omezit komunikaci s místní stejné datové centrum. Následující tabulka obsahuje záznam DNS pro každou oblast:
+Pokud máte účet Automation, který je definován pro konkrétní oblasti, můžete omezit komunikaci s místní stejné datové centrum. Následující tabulka obsahuje záznam DNS pro každou oblast:
 
 | **Oblast** | **Záznam DNS** |
 | --- | --- |
-| Západní střed USA | wcus-jobruntimedata-prod-su1.azure-automation.net</br>wcus-agentservice produkčnímu 1.azure-automation.net |
+| Západní střed USA | wcus-jobruntimedata-prod-su1.azure-automation.net</br>wcus-agentservice nepodařilo prod-1.azure-automation.net |
 | Střed USA – jih |scus-jobruntimedata-prod-su1.azure-automation.net</br>scus-agentservice-prod-1.azure-automation.net |
 | Východní USA 2 |eus2-jobruntimedata-prod-su1.azure-automation.net</br>eus2-agentservice-prod-1.azure-automation.net |
 | Střední Kanada |cc-jobruntimedata-prod-su1.azure-automation.net</br>cc-agentservice-prod-1.azure-automation.net |
@@ -122,23 +122,23 @@ Pokud máte účet Automation, který je definován pro určitou oblast, můžet
 | Střed Indie |cid-jobruntimedata-prod-su1.azure-automation.net</br>cid-agentservice-prod-1.azure-automation.net |
 | Japonsko – východ |jpe-jobruntimedata-prod-su1.azure-automation.net</br>jpe-agentservice-prod-1.azure-automation.net |
 | Austrálie – jihovýchod |ase-jobruntimedata-prod-su1.azure-automation.net</br>ase-agentservice-prod-1.azure-automation.net |
-| Spojené království – jih | uks-jobruntimedata-prod-su1.azure-automation.net</br>uks-agentservice produkčnímu 1.azure-automation.net |
-| USA (Gov) – Virginia | usge-jobruntimedata-prod-su1.azure-automation.us<br>usge-agentservice produkčnímu 1.azure-automation.us |
+| Spojené království – jih | uks-jobruntimedata-prod-su1.azure-automation.net</br>uks-agentservice nepodařilo prod-1.azure-automation.net |
+| USA (Gov) – Virginia | usge-jobruntimedata-prod-su1.azure-automation.us<br>usge-agentservice nepodařilo prod-1.azure-automation.us |
 
-Seznam IP adres oblasti namísto názvů oblast, stáhněte si [Azure Datacenter IP adresu](https://www.microsoft.com/download/details.aspx?id=41653) souboru XML z webu Microsoft Download Center.
+Seznam oblastí IP adres místo názvů oblast, stáhněte si [IP adresy Datacentra Azure](https://www.microsoft.com/download/details.aspx?id=41653) XML soubor z webu Microsoft Download Center.
 
 > [!NOTE]
-> Soubor XML adresu IP Datacentra Azure seznam rozsahů IP adres, které se používají v datových centrech Microsoft Azure. Soubor obsahuje rozsahy výpočty, SQL a úložiště.
+> Soubor XML adres Azure Datacenter IP obsahuje rozsahy IP adres, které se používají v datacentrech Microsoft Azure. Soubor obsahuje rozsahy compute, SQL a úložiště.
 >
->Aktualizovaný soubor odeslání každý týden. Soubor odráží aktuálně nasazená rozsahy a žádné nadcházející změny rozsahy IP. Nové rozsahy, které se zobrazují v souboru nebudou používány v datacentru alespoň jeden týden.
+>Aktualizovaný soubor každý týden se zveřejňuje. Soubor odráží aktuálně nasazené rozsahy a všechny nadcházející změny rozsahů IP adres. Nové rozsahy, které se zobrazují v souboru nejsou používány v datových centrech alespoň jeden týden.
 >
-> Je vhodné stáhnout nový soubor XML každý týden. Aktualizujte lokalitu se správně identifikují služby spuštěné v Azure. Azure ExpressRoute uživatelé Upozorňujeme, že tento soubor se používá k aktualizaci inzerování protokolu BGP (Border Gateway) Azure místa v první týden v měsíci.
+> Je vhodné Stáhněte nový soubor XML každý týden. Potom aktualizujte váš web pro zajištění správné identifikace služeb spuštěných v Azure. Uživatelé Azure ExpressRoute upozorňujeme ale, že tento soubor se používá k aktualizaci inzerování protokolu BGP (Border Gateway) prostoru Azure probíhá první týden každého měsíce.
 
 ### <a name="update-management"></a>Update Management
 
-Kromě standardní adresy a porty, které vyžaduje hybridní pracovní proces Runbooku že následující adresy se vyžaduje speciálně pro správu aktualizací. Komunikace na tyto adresy se provádí přes port 443.
+Kromě standardní adresy a porty, které vyžaduje, aby Hybrid Runbook Worker tyto adresy jsou požadovány speciálně pro správu aktualizací. Komunikace na tyto adresy se provádí přes port 443.
 
-|Veřejný Azure  |Azure Government  |
+|Veřejné Azure  |Azure Government  |
 |---------|---------|
 |*.ods.opinsights.azure.com     |*. ods.opinsights.azure.us         |
 |*.oms.opinsights.azure.com     | *. oms.opinsights.azure.us        |
@@ -146,8 +146,8 @@ Kromě standardní adresy a porty, které vyžaduje hybridní pracovní proces R
 
 ## <a name="troubleshoot"></a>Řešení potíží
 
-Další informace o řešení potíží s procesy Hybrid Runbook Worker naleznete v tématu [řešení potíží s procesy Hybrid Runbook Worker](troubleshoot/hybrid-runbook-worker.md#general)
+Další řešení potíží s procesy Hybrid Runbook Worker, najdete v článku [řešení potíží s procesy Hybrid Runbook Worker](troubleshoot/hybrid-runbook-worker.md#general)
 
 ## <a name="next-steps"></a>Další postup
 
-Naučte se konfigurovat své sady runbook k automatizaci procesů ve své místní datové centrum nebo jiné cloudové prostředí, najdete v tématu [spuštění sad runbook na hybridní pracovní proces Runbooku](automation-hrw-run-runbooks.md).
+Další informace o konfiguraci runbooky pro automatizaci procesů do vašeho místního datového centra nebo jiné cloudové prostředí, najdete v článku [spouštění runbooků v procesu Hybrid Runbook Worker](automation-hrw-run-runbooks.md).

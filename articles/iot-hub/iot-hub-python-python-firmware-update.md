@@ -1,6 +1,6 @@
 ---
-title: Aktualizace firmwaru zařízení s Azure IoT Hub (Python) | Microsoft Docs
-description: Jak používat správu zařízení v Azure IoT Hub zahájíte aktualizaci firmwaru zařízení. SDK služby Azure IoT pro jazyk Python použijete k implementaci aplikace simulovaného zařízení a aplikaci služby, která spustí aktualizaci firmwaru.
+title: Aktualizace firmwaru zařízení pomocí služby Azure IoT Hub (Python) | Dokumentace Microsoftu
+description: Jak zahájit aktualizaci firmwaru zařízení pomocí správy zařízení ve službě Azure IoT Hub. Pomocí sady Azure IoT SDK pro Python k implementaci aplikace simulovaného zařízení a app service, která spustí aktualizaci firmwaru.
 author: kgremban
 manager: timlt
 ms.service: iot-hub
@@ -10,29 +10,29 @@ ms.topic: conceptual
 ms.date: 02/16/2018
 ms.author: kgremban
 ms.openlocfilehash: d2ebdf54e595c2f02464c0c2446a6e5f5feefb9c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34634637"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38482016"
 ---
-# <a name="use-device-management-to-initiate-a-device-firmware-update-pythonpython"></a>Použití správy zařízení za účelem zahájení firmwaru zařízení aktualizovat (Python nebo Python)
+# <a name="use-device-management-to-initiate-a-device-firmware-update-pythonpython"></a>Aktualizovat pomocí správy zařízení za účelem zahájení firmwaru zařízení (Python/Python)
 [!INCLUDE [iot-hub-selector-firmware-update](../../includes/iot-hub-selector-firmware-update.md)]
 
-V [Začínáme se správou zařízení] [ lnk-dm-getstarted] kurz, jste viděli, jak používat [dvojče zařízení] [ lnk-devtwin] a [přímé metody ] [ lnk-c2dmethod] primitiv vzdáleně restartování zařízení. Tento kurz používá stejné primitiv IoT Hub a poskytuje pokyny a ukazuje, jak provést aktualizaci firmwaru simulované začátku do konce.  Tento vzor slouží k implementaci aktualizace firmwaru pro vzorovou Intel Edison zařízení.
+V [Začínáme se správou zařízení] [ lnk-dm-getstarted] výukový program, jste viděli, jak používat [dvojče zařízení] [ lnk-devtwin] a [přímé metody ] [ lnk-c2dmethod] primitiv vzdálené restartování zařízení. Tento kurz používá stejný základní služby IoT Hub a obsahuje pokyny a ukazuje, jak provádět aktualizace firmwaru simulované začátku do konce.  Tento model se používá k provedení aktualizace firmwaru Intel Edison ukázkou zařízení.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 V tomto kurzu získáte informace o následujících postupech:
 
-* Vytvořte konzolovou aplikaci Python, která volá metodu přímé firmwareUpdate v aplikaci simulovaného zařízení prostřednictvím služby IoT hub.
-* Vytvoření aplikace simulovaného zařízení, která implementuje **firmwareUpdate** přímá metoda. Tato metoda inicializuje více fáze procesu, který čeká na stažení bitové kopie firmwaru, stáhne bitovou kopii firmware a nakonec platí bitovou kopii firmwaru. Během aktualizace v každé fázi používá zařízení hlášené vlastnosti hlásit průběh.
+* Vytvoření konzolové aplikace v Pythonu, která volá metodu firmwareUpdate s přímým přístupem v aplikaci simulovaného zařízení prostřednictvím služby IoT hub.
+* Vytvoření aplikace simulovaného zařízení, která implementuje **firmwareUpdate** přímá metoda. Tato metoda zahájí vícefázový proces, který čeká na stažením image firmwaru, stáhne image firmwaru a nakonec použije image firmwaru. Během každé fáze aktualizace zařízení využívá ohlášené vlastnosti k podávat zprávy o pokroku.
 
-Na konci tohoto kurzu máte dvě aplikace Python konzoly:
+Na konci tohoto kurzu budete mít dvě aplikace konzoly v Pythonu:
 
-**dmpatterns_fwupdate_service.PY**, která volá metodu přímé v aplikaci simulovaného zařízení, zobrazí odpověď a pravidelně (každých 500ms) zobrazí aktualizovaná hlášené vlastnosti.
+**dmpatterns_fwupdate_service.PY**, která volá metodu s přímým přístupem v aplikaci simulovaného zařízení, zobrazí odpovědi a pravidelně (každých 500ms) zobrazí aktualizovaný ohlášené vlastnosti.
 
-**dmpatterns_fwupdate_device.PY**, který se připojí ke službě IoT hub s identitou zařízení vytvořenou dříve, dostane přímá metoda firmwareUpdate, spustí prostřednictvím více stavu procesu k simulaci, včetně aktualizace firmwaru: čekání bitové kopie stažení, stahování novou bitovou kopii a nakonec použitím bitové kopie.
+**dmpatterns_fwupdate_device.PY**, propojuje službu IoT hub s identitou zařízení vytvořenou dříve, obdrží firmwareUpdate přímé metody, prochází přes více stavu procesu pro simulaci, včetně aktualizace firmwaru: čeká se na obrázku stáhnete, stahuje nové image a nakonec použitím bitové kopie.
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -44,18 +44,18 @@ Pro absolvování tohoto kurzu potřebujete:
 
 [!INCLUDE [iot-hub-get-started-create-device-identity-portal](../../includes/iot-hub-get-started-create-device-identity-portal.md)]
 
-## <a name="trigger-a-remote-firmware-update-on-the-device-using-a-direct-method"></a>Spustit aktualizaci vzdálené firmwaru v zařízení s přímá metoda
-V této části vytvoříte konzolovou aplikaci Python, která zahájí aktualizaci vzdálené firmwaru v zařízení. Přímá metoda používá k zahájení aktualizace a aplikace používá zařízení twin dotazy a pravidelně získat stav aktualizace active firmware.
+## <a name="trigger-a-remote-firmware-update-on-the-device-using-a-direct-method"></a>Aktivace firmwaru vzdálené aktualizace na zařízení s využitím přímé metody
+V této části vytvoříte konzolovou aplikaci v Pythonu, které vyvolává vzdálené firmwaru v zařízení. Aplikace používá přímé metody k zahájení aktualizace a používá dotazů na dvojčata zařízení a pravidelně získat stav aktualizace firmwaru aktivní.
 
-1. Na příkazovém řádku, spusťte následující příkaz k instalaci **azure-iothub-service-client** balíčku:
+1. Na příkazovém řádku spusťte následující příkaz k instalaci **azure-iothub-service-client** balíčku:
    
     ```cmd/sh
     pip install azure-iothub-service-client
     ```
 
-1. Pomocí textového editoru, v pracovním adresáři, vytvořte **dmpatterns_getstarted_service.py** souboru.
+1. Pomocí textového editoru, v pracovním adresáři, vytvořit **dmpatterns_getstarted_service.py** souboru.
 
-1. Přidejte následující, import, příkazy a proměnné na začátku **dmpatterns_getstarted_service.py** souboru. Nahraďte `IoTHubConnectionString` a `deviceId` s hodnoty si dříve poznamenali:
+1. Přidejte následující "import" příkazy a proměnné na začátku **dmpatterns_getstarted_service.py** souboru. Nahraďte `IoTHubConnectionString` a `deviceId` s hodnotami, které jste si poznamenali dříve:
    
     ```python
     import sys
@@ -73,7 +73,7 @@ V této části vytvoříte konzolovou aplikaci Python, která zahájí aktualiz
     MESSAGE_COUNT = 5
     ```
 
-1. Přidejte následující funkce volání přímá metoda a zobrazit hodnotu firmwareUpdate hlášené vlastnost. Také přidat `main` rutiny:
+1. Přidejte následující funkce volání přímé metody a zobrazení hodnoty firmwareUpdate hlášené vlastnost. Také přidat `main` rutinu:
    
     ```python
     def iothub_firmware_sample_run():
@@ -134,11 +134,11 @@ V této části vytvoříte konzolovou aplikaci Python, která zahájí aktualiz
 ## <a name="create-a-simulated-device-app"></a>Vytvoření aplikace simulovaného zařízení
 V této části:
 
-* Vytvořte konzolovou aplikaci Python, která reaguje na přímé metodu s názvem cloudem
+* Vytvoření konzolové aplikace v Pythonu, která bude reagovat na přímou metodu volanou cloudem.
 * Aktivujete simulovanou aktualizaci firmwaru.
 * Pomocí ohlášených vlastností umožníte dotazům na dvojčata zařízení identifikovat zařízení a čas jejich poslední dokončené aktualizace firmwaru.
 
-1. Na příkazovém řádku, spusťte následující příkaz k instalaci **azure-iothub zařízení client** balíčku:
+1. Na příkazovém řádku spusťte následující příkaz k instalaci **azure-iothub-device-client** balíčku:
    
     ```cmd/sh
     pip install azure-iothub-device-client
@@ -146,7 +146,7 @@ V této části:
 
 1. Pomocí textového editoru, vytvořte **dmpatterns_fwupdate_device.py** souboru.
 
-1. Přidejte následující, import, příkazy a proměnné na začátku **dmpatterns_fwupdate_device.py** souboru. Nahraďte `deviceConnectionString` připojovacím řetězcem zařízení ze služby IoT hub:
+1. Přidejte následující "import" příkazy a proměnné na začátku **dmpatterns_fwupdate_device.py** souboru. Nahraďte `deviceConnectionString` připojovacím řetězcem zařízení ze služby IoT hub:
    
     ```python
     import time, datetime
@@ -167,7 +167,7 @@ V této části:
     CLIENT = IoTHubClient(CONNECTION_STRING, PROTOCOL)
     ```
 
-1. Přidejte následující funkce, které se používají k poskytování hlášené aktualizace vlastnosti a implementovat metodu přímé:
+1. Přidejte následující funkce, které se používají k zajištění hlášené vlastností se aktualizuje a implementovat metodu s přímým přístupem:
    
     ```python
     def send_reported_state_callback(status_code, user_context):
@@ -215,7 +215,7 @@ V této části:
         CLIENT.send_reported_state(reported_state, len(reported_state), send_reported_state_callback, SEND_REPORTED_STATE_CONTEXT)
     ```
 
-8. Přidejte následující funkce, která inicializuje dvojče zařízení hlášena vlastnosti a počkejte přímá metoda k volání. Také přidat `main` rutiny:
+8. Přidejte následující funkci, která inicializuje dvojče zařízení ohlášené vlastnosti a počkejte přímé metody, která se má volat. Také přidat `main` rutinu:
    
     ```python
     def iothub_firmware_sample_run():
@@ -248,34 +248,34 @@ V této části:
     ```
 
 > [!NOTE]
-> Za účelem zjednodušení tento kurz neimplementuje žádné zásady opakování. V produkčním kódu, měli byste implementovat zásady opakování (například exponenciální zdvojnásobení) dle pokynů v článku na webu MSDN [přechodných chyb](https://msdn.microsoft.com/library/hh675232.aspx).
+> Za účelem zjednodušení tento kurz neimplementuje žádné zásady opakování. V produkčním kódu by měly implementovat zásady opakování (například exponenciální regresí), jak je navrženo v článku na webu MSDN [zpracování přechodných chyb](https://msdn.microsoft.com/library/hh675232.aspx).
 > 
 
 
 ## <a name="run-the-apps"></a>Spouštění aplikací
 Nyní jste připraveni aplikaci spustit.
 
-1. Na příkazovém řádku spusťte následující příkaz, aby začal přijímat přímá metoda restartování.
+1. Na příkazovém řádku spusťte následující příkaz, který zahájit naslouchání pro přímé metody restartování.
    
     ```cmd/sh
     python dmpatterns_fwupdate_device.py
     ```
 
-1. Jiné příkazového řádku spusťte následující příkaz k aktivační události restartovat vzdálený počítač a dotaz pro dvojče zařízení najít poslední čas restartování počítače.
+1. Jiné příkazového řádku spusťte následující příkaz spustí vzdálené restartování a dotazů pro dvojče zařízení najít poslední čas restartování.
    
     ```cmd/sh
     python dmpatterns_fwupdate_service.py
     ```
 
-1. Zobrazí zařízení odpověď na přímá metoda v konzole. Poznamenejte si změnu v hodnotě vlastnosti hlášené v průběhu aktualizace firmwaru.
+1. Zobrazí se zařízení odpověď na přímé metody v konzole. Poznamenejte si změnu v hodnotě ohlášené vlastnosti v průběhu aktualizace firmwaru.
 
-    ![Výstup programu][1]
+    ![výstup programu][1]
 
 
 ## <a name="next-steps"></a>Další postup
-V tomto kurzu přímá metoda používá k aktivaci aktualizace vzdálené firmwaru v zařízení a umožňuje sledovat průběh aktualizace firmwaru hlášené vlastnosti.
+V tomto kurzu se používá přímé metody k aktivaci vzdáleného firmwaru v zařízení a umožňuje sledovat průběh aktualizace firmwaru ohlášené vlastnosti.
 
-Zjistěte, jak rozšířit vaše IoT řešení a plán metoda volá na několika zařízeních, najdete v článku [plán a všesměrového vysílání úlohy] [ lnk-tutorial-jobs] kurzu.
+Zjistěte, jak rozšířit vaše IoT řešení a plán metoda volá do různých zařízení, najdete v článku [plánování a vysílání úloh] [ lnk-tutorial-jobs] kurzu.
 
 [lnk-devtwin]: iot-hub-devguide-device-twins.md
 [lnk-c2dmethod]: iot-hub-devguide-direct-methods.md

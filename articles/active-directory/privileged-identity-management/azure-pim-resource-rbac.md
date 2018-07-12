@@ -15,12 +15,12 @@ ms.workload: identity
 ms.component: protection
 ms.date: 03/30/2018
 ms.author: rolyon
-ms.openlocfilehash: 7cf628495a79fe775528080ae6ec31df8e9a0f37
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 07fe49be9fcb879b86d2b8a33799d11deb7d7446
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37447573"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38528616"
 ---
 # <a name="pim-for-azure-resources"></a>PIM pro prostředky Azure
 
@@ -59,7 +59,7 @@ Moje role obsahují seznam přiřazení aktivní a oprávnění rolí pro role a
 
 ## <a name="activate-roles"></a>Aktivace role
 
-Aktivace rolí za prostředky Azure, zavádí nové prostředí, která umožňuje členům oprávněné role k plánování aktivace pro budoucí datum/čas a vyberte dobu trvání konkrétní aktivace v rámci maximální (ve Správci nakonfigurované je). Další informace o [aktivace role Azure AD zde](../active-directory-privileged-identity-management-how-to-activate-role.md).
+Aktivace rolí za prostředky Azure, zavádí nové prostředí, která umožňuje členům oprávněné role k plánování aktivace pro budoucí datum/čas a vyberte dobu trvání konkrétní aktivace v rámci maximální (ve Správci nakonfigurované je). Další informace o [aktivace role Azure AD zde](pim-how-to-activate-role.md).
 
 ![](media/azure-pim-resource-rbac/contributor.png)
 
@@ -156,7 +156,7 @@ Kontrola vyberte z panelu akcí vyberte možnost přidat k vytvoření nové kon
 
 ![](media/azure-pim-resource-rbac/owner.png)
 
-[Další informace o kontrolách přístupu](../active-directory-privileged-identity-management-how-to-perform-security-review.md)
+[Další informace o kontrolách přístupu](pim-how-to-perform-security-review.md)
 
 >[!NOTE]
 Kontroly jsou podporovány pouze pro typy prostředků předplatného v tuto chvíli.
@@ -196,5 +196,5 @@ Vyberte Moje role z levé navigační nabídce a vyberte vhodnou roli aktivovat.
 ## <a name="next-steps"></a>Další postup
 
 - [Předdefinované role pro prostředky Azure](../../role-based-access-control/built-in-roles.md)
-- Další informace o [aktivace zde role Azure AD](../active-directory-privileged-identity-management-how-to-activate-role.md)
+- Další informace o [aktivace zde role Azure AD](pim-how-to-activate-role.md)
 - [Pracovní postupy schvalování PIM](azure-ad-pim-approval-workflow.md)

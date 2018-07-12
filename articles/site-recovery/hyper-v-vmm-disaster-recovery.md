@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 07/06/2018
 ms.author: raynew
 ms.openlocfilehash: 4cc4da130d9253bf40e5d02806088a95b2195e7c
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
-ms.translationtype: HT
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37915904"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38531717"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>Nastavení zotavení po havárii pro virtuální počítače Hyper-V do sekundární místní lokality
 

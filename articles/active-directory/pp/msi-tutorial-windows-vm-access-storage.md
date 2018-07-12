@@ -1,6 +1,6 @@
 ---
-title: Používat Windows virtuální počítač MSI pro přístup k Azure Storage
-description: Kurz vás provede procesem použití Windows virtuálního počítače spravované služby Identity (MSI) pro přístup k úložišti Azure.
+title: Použití MSI virtuálního počítače Windows pro přístup k úložišti Azure
+description: Kurz vás provede procesem jeho použití Windows virtuální počítač Identity spravované služby (MSI) pro přístup k úložišti Azure.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -15,23 +15,23 @@ ms.date: 12/15/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 6e1364db9ecba65b90be525141f03fb9b4a33d28
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2018
-ms.locfileid: "28984829"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38610832"
 ---
-# <a name="use-a-windows-vm-managed-service-identity-to-access-azure-storage-via-access-key"></a>Použití virtuálních počítačů spravovaných identitu služby Windows pro přístup k úložišti Azure pomocí přístupového klíče
+# <a name="use-a-windows-vm-managed-service-identity-to-access-azure-storage-via-access-key"></a>Použít Windows virtuálního počítače identitu spravované služby pro přístup k Azure Storage prostřednictvím přístupového klíče
 
 [!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
-V tomto kurzu se dozvíte, jak povolit identita spravované služby (MSI) pro virtuální počítač Windows a pak tuto identitu používat pro načtení přístupových klíčů k účtu úložiště. Můžete použít jako obvykle při provádění operace úložiště, například při použití sady SDK úložiště přístupových klíčů k úložišti. V tomto kurzu jsme nahrávání a stahování objektům BLOB pomocí Azure PowerShell úložiště. Se dozvíte, jak:
+V tomto kurzu se dozvíte, jak povolit Identity spravované služby (MSI) pro virtuální počítač Windows a pak tuto identitu můžete získat přístupové klíče účtu úložiště. Můžete použít jako obvykle při provádění operace úložiště, například při použití sady SDK služby Storage přístupových klíčů k úložišti. Pro účely tohoto kurzu jsme nahrání a stažení objektů BLOB pomocí Powershellu pro Azure Storage. Se dozvíte, jak:
 
 
 > [!div class="checklist"]
-> * Povolit MSI ve virtuálním počítači Windows 
-> * Udělit váš virtuální počítač přístup k přístupových klíčů k účtu úložiště ve Správci prostředků 
-> * Získání přístupového tokenu pomocí identity Virtuálního počítače a použít ho k načtení přístupové klíče k úložišti ze Správce prostředků 
+> * Povolení MSI na virtuálním počítači s Windows 
+> * Udělit váš virtuální počítač přístup k přístupové klíče účtu úložiště v Resource Manageru 
+> * Získání přístupového tokenu pomocí identity Virtuálního počítače a použít ho k získání přístupových klíčů úložiště ze Správce prostředků 
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -43,123 +43,123 @@ V tomto kurzu se dozvíte, jak povolit identita spravované služby (MSI) pro vi
 
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
-## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>Vytvoření virtuálního počítače s Windows v nové skupině prostředků.
+## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>Vytvoření virtuálního počítače s Windows do nové skupiny prostředků
 
 V tomto kurzu vytvoříme nový virtuální počítač s Windows. Můžete také povolit MSI na existující virtuální počítač.
 
-1.  Klikněte **+/ vytvořit novou službu** nalezeno tlačítko v levém horním rohu portálu Azure.
+1.  Klikněte na tlačítko **+/ vytvořit novou službu** nalezeno tlačítko v levém horním rohu webu Azure portal.
 2.  Vyberte **Compute** a potom vyberte **Windows Server 2016 Datacenter**. 
-3.  Zadejte informace o virtuálním počítači. **Uživatelské jméno** a **heslo** vytvořený, zde je přihlašovací údaje, které používáte k přihlášení k virtuálnímu počítači.
-4.  Vyberte správnou **předplatné** pro virtuální počítač v rozevírací nabídce.
-5.  Chcete-li vybrat nový **skupiny prostředků** chcete virtuální počítač lze vytvořit v, zvolte **vytvořit nový**. Jakmile budete hotovi, klikněte na **OK**.
+3.  Zadejte informace o virtuálním počítači. **Uživatelské jméno** a **heslo** vytvořený, tady je přihlašovací údaje použijete k přihlášení k virtuálnímu počítači.
+4.  Zvolte správné **předplatné** pro virtuální počítač v rozevírací nabídce.
+5.  Chcete-li vybrat nový **skupiny prostředků** chcete virtuální počítač, aby se v aplikaci, zvolte **vytvořit nový**. Jakmile budete hotovi, klikněte na **OK**.
 6.  Vyberte velikost virtuálního počítače. Pokud chcete zobrazit další velikosti, vyberte **Zobrazit všechny** nebo změňte filtr **Podporovaný typ disku**. V okně Nastavení ponechte výchozí nastavení a klikněte na **OK**.
 
-    ![Obrázek alternativní text](~/articles/active-directory/media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
+    ![Text ALT obrázku](~/articles/active-directory/media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
 
-## <a name="enable-msi-on-your-vm"></a>Povolit MSI na vašem virtuálním počítači
+## <a name="enable-msi-on-your-vm"></a>Povolení MSI ve virtuálním počítači
 
-Virtuální počítač MSI umožňuje získat přístupové tokeny z Azure AD, aniž by bylo třeba uvést přihlašovací údaje do vašeho kódu. V pozadí, povolení MSI provádí dvě věci: nainstaluje rozšíření virtuálního počítače MSI na vašem virtuálním počítači a umožňuje MSI pro virtuální počítač.  
+MSI virtuálního počítače můžete k získání přístupových tokenů z Azure AD, aniž byste museli vložit pověření do kódu. Pod pokličkou, povolení MSI provede dvě věci: nainstaluje rozšíření MSI virtuálního počítače na virtuálním počítači a umožňují MSI pro virtuální počítač.  
 
 1. Přejděte do skupiny prostředků vašeho nového virtuálního počítače a vyberte virtuální počítač, který jste vytvořili v předchozím kroku.
 2. V části virtuální počítač "Nastavení" na levé straně klikněte na **konfigurace**.
-3. Registrovat a povolit soubor MSI, vyberte **Ano**, pokud chcete zakázat, vyberte Ne.
-4. Ujistěte se, kliknete na tlačítko **Uložit** konfiguraci uložíte.
+3. Chcete-li zaregistrovat a povolit MSI, vyberte **Ano**, pokud chcete zakázat, vyberte Ne.
+4. Zajištění kliknutí na **Uložit** uložte konfiguraci.
 
-    ![Obrázek alternativní text](~/articles/active-directory/media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
+    ![Text ALT obrázku](~/articles/active-directory/media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 
-5. Pokud chcete zkontrolovat rozšíření, které jsou ve virtuálním počítači, klikněte na tlačítko **rozšíření**. Pokud je povoleno MSI, **ManagedIdentityExtensionforWindows** se zobrazí v seznamu.
+5. Pokud chcete zkontrolovat jaká rozšíření jsou na virtuálním počítači, klikněte na tlačítko **rozšíření**. Pokud je povolené MSI, **ManagedIdentityExtensionforWindows** se zobrazí v seznamu.
 
-    ![Obrázek alternativní text](~/articles/active-directory/media/msi-tutorial-linux-vm-access-arm/msi-extension-value.png)
+    ![Text ALT obrázku](~/articles/active-directory/media/msi-tutorial-linux-vm-access-arm/msi-extension-value.png)
 
 ## <a name="create-a-storage-account"></a>vytvořit účet úložiště 
 
-Pokud jste již nemáte, můžete nyní vytvoří účet úložiště. Také můžete tento krok přeskočit a udělit přístup MSI virtuálních počítačů na klíče objektu stávající účet úložiště. 
+Pokud již nemáte, můžete nyní vytvoří účet úložiště. Také můžete tento krok přeskočit a udělit MSI virtuálního počítače přístup ke klíčům existující účet úložiště. 
 
-1. Klikněte **+/ vytvořit novou službu** nalezeno tlačítko v levém horním rohu portálu Azure.
-2. Klikněte na tlačítko **úložiště**, pak **účet úložiště**, a zobrazí nový panel "Vytvořit účet úložiště".
-3. Zadejte název pro účet úložiště, který budete používat později.  
-4. **Model nasazení** a **účet typu** musí být nastavena na "Resource manager" a "Obecné účely", v uvedeném pořadí. 
-5. Ujistěte se, **předplatné** a **skupiny prostředků** odpovídat jsou zadány při vytvoření virtuálního počítače v předchozím kroku.
+1. Klikněte na tlačítko **+/ vytvořit novou službu** nalezeno tlačítko v levém horním rohu webu Azure portal.
+2. Klikněte na tlačítko **úložiště**, pak **účtu úložiště**, a zobrazí nový panel "Vytvoření účtu úložiště".
+3. Zadejte název účtu úložiště, který budete používat později.  
+4. **Model nasazení** a **druh účtu** musí být nastavená na "Resource Manageru" a "Obecné použití", v uvedeném pořadí. 
+5. Zkontrolujte **předplatné** a **skupiny prostředků** shodovat s těmi, které jste zadali při vytváření virtuálního počítače v předchozím kroku.
 6. Klikněte na možnost **Vytvořit**.
 
     ![Vytvořit nový účet úložiště](~/articles/active-directory/media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
 ## <a name="create-a-blob-container-in-the-storage-account"></a>Vytvořte kontejner objektů blob v účtu úložiště
 
-Později jsme se nahrávání a stahování souboru na nový účet úložiště. Protože soubory vyžadují úložiště objektů blob, je potřeba vytvořit kontejner objektů blob pro uložení souboru.
+Dále budeme nahrávat a stáhnout soubor do nového účtu úložiště. Protože soubory vyžadují úložiště objektů blob, potřebujeme vytvořit kontejner objektů blob, do kterého chcete soubor uložit.
 
-1. Přejděte zpět na vaše nově vytvořený účet úložiště.
-2. Klikněte **kontejnery** odkaz na levé straně, v části "Služby objektů Blob."
-3. Klikněte na tlačítko **+ kontejner** nahoře na stránce a "Nový kontejner" panely snímky limitu.
-4. Zadejte název kontejneru, vybrat úroveň přístupu, a pak klikněte na tlačítko **OK**. Zadaný název se použije později v tomto kurzu. 
+1. Přejděte zpět do vaší nově vytvořený účet úložiště.
+2. Klikněte na tlačítko **kontejnery** odkazu na levé straně v části "Blob service."
+3. Klikněte na tlačítko **+ kontejner** horní části stránky a "Nový kontejner" vysune.
+4. Zadejte název kontejneru, vyberte úroveň přístupu a pak klikněte na tlačítko **OK**. Zadaný název se použije v pozdější části kurzu. 
 
     ![Vytvoření kontejneru úložiště](~/articles/active-directory/media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
 
-## <a name="grant-your-vms-msi-access-to-use-storage-account-access-keys"></a>Udělit přístup MSI Virtuálního počítače k použití přístupových klíčů k účtu úložiště 
+## <a name="grant-your-vms-msi-access-to-use-storage-account-access-keys"></a>Udělení přístupu MSI virtuálního počítače a použít přístupové klíče účtu úložiště 
 
-Úložiště Azure nenabízí nativní podporu ověřování Azure AD.  Můžete však použít MSI k načtení přístupových klíčů k účtu úložiště ze Správce prostředků a pak použít klíč pro přístup k úložišti.  V tomto kroku zajišťují vašim MSI virtuální počítač přístup k klíče účtu úložiště.   
+Úložiště Azure nepodporuje nativně ověřování Azure AD.  Můžete však použít soubor MSI k načtení přístupové klíče účtu úložiště správce prostředků a pak použít klíč pro přístup k úložišti.  V tomto kroku udělíte vašeho přístupu MSI virtuálního počítače ke klíčům k vašemu účtu úložiště.   
 
-1. Přejděte zpět na vaše nově vytvořený účet úložiště.  
-2. Klikněte **přístup k ovládacímu prvku (IAM)** odkaz na levém panelu.  
-3. Klikněte na tlačítko **+ přidat** nad stránku přidáte nové přiřazení role pro virtuální počítač
-4. Nastavit **Role** "Úložiště účet klíč operátor služby role" na pravé straně stránky. 
-5. V dalším rozevíracím nastavte **přiřadit přístup** prostředků "Virtuální počítač".  
-6. Dále zkontrolujte správné předplatné, je uvedena ve **předplatné** rozevíracího seznamu, pak nastavte **skupiny prostředků** na "Všechny skupiny prostředků".  
-7. Nakonec v části **vyberte** v rozevírací nabídce vyberte virtuální počítač se systémem Windows a pak klikněte na **Uložit**. 
+1. Přejděte zpět do vaší nově vytvořený účet úložiště.  
+2. Klikněte na tlačítko **řízení přístupu (IAM)** odkaz na levém panelu.  
+3. Klikněte na tlačítko **+ přidat** nad stránky a přidat nové přiřazení role pro váš virtuální počítač
+4. Nastavte **Role** na "Úložiště účtu klíč Role služby operátor", na pravé straně stránky. 
+5. V dalším rozevíracím seznamu, nastavte **přiřadit přístup k** prostředku "Virtuální počítač".  
+6. Dále, zajistit správné předplatné je uvedené v **předplatné** rozevírací seznam, nastavte **skupiny prostředků** na "Všechny skupiny prostředků".  
+7. Nakonec v části **vyberte** zvolte virtuální počítač Windows v rozevíracím seznamu a potom klikněte na tlačítko **Uložit**. 
 
-    ![Obrázek alternativní text](~/articles/active-directory/media/msi-tutorial-linux-vm-access-storage/msi-storage-role.png)
+    ![Text ALT obrázku](~/articles/active-directory/media/msi-tutorial-linux-vm-access-storage/msi-storage-role.png)
 
-## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-call-azure-resource-manager"></a>Získání přístupového tokenu pomocí identity Virtuálního počítače a použít jej k vyvolání Azure Resource Manager 
+## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-call-azure-resource-manager"></a>Získání přístupového tokenu pomocí identity Virtuálního počítače a použít jej k vyvolání Azure Resource Manageru 
 
-Pro zbývající část tohoto kurzu budeme pracovat z virtuálního počítače, které jsme vytvořili předtím. 
+Zbytek tohoto kurzu budeme pracovat z virtuálního počítače, které jsme vytvořili dříve. 
 
-Musíte použít rutiny Powershellu pro Azure Resource Manager v této části.  Pokud nemáte nainstalováno, [stáhnout nejnovější verzi](https://docs.microsoft.com/powershell/azure/overview) než budete pokračovat.
+Je potřeba použít rutiny Powershellu pro Azure Resource Manager v této části.  Pokud nemáte ji nainstalovánu, [stáhnout nejnovější verzi](https://docs.microsoft.com/powershell/azure/overview) než budete pokračovat.
 
-1. Na portálu Azure přejděte do **virtuální počítače**, přejděte na virtuálním počítači se systémem Windows, potom ze **přehled** klikněte na stránce **Connect** v horní části. 
-2. Zadejte ve vaší **uživatelské jméno** a **heslo** pro které jste přidali při vytváření virtuálního počítače Windows. 
-3. Teď, když jste vytvořili **připojení ke vzdálené ploše** s virtuálním počítačem, otevřete v této relaci vzdálené prostředí PowerShell.
-4. Pomocí Powershellu Invoke-WebRequest, vytvořte žádost na místní koncový bod MSI se získat přístupový token pro Azure Resource Manager.
+1. Na webu Azure Portal, přejděte na **virtuálních počítačů**, přejděte na Windows virtuální počítač, pak z **přehled** stránce klikněte na **připojit** v horní části. 
+2. Zadejte vaše **uživatelské jméno** a **heslo** pro které jste přidali po vytvoření virtuálního počítače Windows. 
+3. Teď, když jste vytvořili **připojení ke vzdálené ploše** s virtuálním počítačem, otevřete prostředí PowerShell ve vzdálené relaci.
+4. Použití Powershellu Invoke-WebRequest, vytvořte žádost na místním koncovým bodem MSI pro získání přístupového tokenu pro Azure Resource Manageru.
 
     ```powershell
        $response = Invoke-WebRequest -Uri http://localhost:50342/oauth2/token -Method GET -Body @{resource="https://management.azure.com/"} -Headers @{Metadata="true"}
     ```
     
     > [!NOTE]
-    > Hodnota parametru "prostředek" musí být přesná shoda pro očekávané službou Azure AD. Pokud používáte ID prostředku Azure Resource Manager, je nutné zahrnout do adresy koncové lomítko, v identifikátoru URI.
+    > Hodnota parametru "prostředek" musí být přesná shoda pro co se očekává službou Azure AD. Při použití ID prostředku Azure Resource Manageru, je nutné zahrnout do adresy koncové lomítko v identifikátoru URI.
     
-    V dalším kroku extrahujte "Obsah" elementu, který je uložený jako řetězec formátu JavaScript objekt Notation (JSON) v objektu $response. 
+    V dalším kroku extrahujte "Obsah" element, který je uložený jako řetězec JSON JavaScript Object Notation () ve formátu v objektu $response. 
     
     ```powershell
     $content = $response.Content | ConvertFrom-Json
     ```
-    V dalším kroku extrahujte tokenu přístupu z odpovědi.
+    V dalším kroku extrahujte přístupový token z odpovědi.
     
     ```powershell
     $ArmToken = $content.access_token
     ```
  
-## <a name="get-storage-account-access-keys-from-azure-resource-manager-to-make-storage-calls"></a>Získání přístupových klíčů k účtu úložiště z Azure Resource Manager volání úložiště  
+## <a name="get-storage-account-access-keys-from-azure-resource-manager-to-make-storage-calls"></a>Získejte z Azure Resource Manageru pro volání úložiště přístupové klíče účtu úložiště  
 
-Nyní volání Resource Manager pomocí přístupového tokenu nemůžeme načíst v předchozí části, pomocí prostředí PowerShell k načtení přístupový klíč úložiště. Jakmile jsme přístupový klíč úložiště, jsme můžete volat operace nahrávání nebo stahování úložiště.
+Nyní pomocí prostředí PowerShell Resource Manageru pomocí přístupového tokenu, můžeme načíst v předchozím oddílu volat pro načtení přístupového klíče úložiště. Jakmile budeme mít přístupový klíč úložiště, můžeme volání operací nahrávání a stahování úložiště.
 
 ```powershell
 $keysResponse = Invoke-WebRequest -Uri https://management.azure.com/subscriptions/<SUBSCRIPTION-ID>/resourceGroups/<RESOURCE-GROUP>/providers/Microsoft.Storage/storageAccounts/<STORAGE-ACCOUNT>/listKeys/?api-version=2016-12-01 -Method POST -Headers @{Authorization="Bearer $ARMToken"}
 ```
 > [!NOTE] 
-> Adresa URL je malá a velká písmena, zajistěte proto použijte přesnou stejné velká a malá písmena dříve, můžete s názvem skupiny prostředků, včetně velká písmena "G" v "Skupinyprostředků." 
+> Adresa URL je velká a malá písmena, zajistěte proto používat přesně stejnou velká a malá písmena, s názvem skupiny prostředků, včetně velké písmeno "G" v "resourceGroups." 
 
 ```powershell
 $keysContent = $keysResponse.Content | ConvertFrom-Json
 $key = $keysContent.keys[0].value
 ```
 
-Dále vytvoříme soubor s názvem "test.txt". Pak použijte přístupový klíč úložiště k ověření `New-AzureStorageContent` rutiny nahrát soubor do našich kontejner objektů blob a potom stáhněte soubor.
+Dále vytvoříme soubor s názvem "test.txt". Přístupový klíč úložiště pak používají k ověření `New-AzureStorageContent` rutiny, soubor nahrát do našich kontejner objektů blob a pak si stáhnout soubor.
 
 ```bash
 echo "This is a test text file." > test.txt
 ```
 
-Je nutné nejprve nainstalovat rutiny Azure Storage pomocí `Install-Module Azure.Storage`. Potom nahrát objekt blob, který jste právě vytvořili, pomocí `Set-AzureStorageBlobContent` rutiny prostředí PowerShell:
+Je potřeba nejdřív nainstalovat nejnovější verzi rutin Azure Storage pomocí `Install-Module Azure.Storage`. Pak nahrát objekt blob, které jste právě vytvořili, pomocí `Set-AzureStorageBlobContent` rutinu Powershellu:
 
 ```powershell
 $ctx = New-AzureStorageContext -StorageAccountName <STORAGE-ACCOUNT> -StorageAccountKey $key
@@ -180,7 +180,7 @@ Context           : Microsoft.WindowsAzure.Commands.Storage.AzureStorageContext
 Name              : testblob
 ```
 
-Můžete také stáhnout objektu blob, který jste právě nahráli, pomocí `Get-AzureStorageBlobContent` rutiny prostředí PowerShell:
+Můžete si také stáhnout objekt blob, který jste právě nahráli, pomocí `Get-AzureStorageBlobContent` rutinu Powershellu:
 
 ```powershell
 Get-AzureStorageBlobContent -Blob testblob -Container <CONTAINER-NAME> -Destination test2.txt -Context $ctx
@@ -204,11 +204,11 @@ Name              : testblob
 ## <a name="related-content"></a>Související obsah
 
 - Přehled MSI najdete v tématu [identita spravované služby přehled](msi-overview.md).
-- Další postup Tento stejný kurz pomocí úložiště pověření SAS najdete v tématu [pomocí virtuálních počítačů spravovaných identitu služby Windows pro přístup k úložišti Azure pomocí pověření SAS](msi-tutorial-windows-vm-access-storage-sas.md)
+- Další postup Tento stejný kurz s použitím úložiště pověření SAS najdete v tématu [použít pro přístup k úložišti Azure pomocí pověření SAS Windows virtuálního počítače identitu spravované služby](msi-tutorial-windows-vm-access-storage-sas.md)
 - Další informace o funkci SAS účtu Azure Storage najdete v tématu:
   - [Použití sdílených přístupových podpisů (SAS)](~/articles/storage/common/storage-dotnet-shared-access-signature-part-1.md)
   - [Vytváření SAS služby](/rest/api/storageservices/Constructing-a-Service-SAS.md)
 
-Použít následující sekci komentáře k poskytnutí zpětné vazby a Pomozte nám vylepšit a utvářejí náš obsah
+Pomocí následujícího oddílu pro komentáře na svůj názor a Pomozte nám vylepšit a obrazce náš obsah
 
 

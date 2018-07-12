@@ -1,6 +1,6 @@
 ---
-title: Začínáme se správou zařízení Azure IoT Hub (Python) | Microsoft Docs
-description: Jak používat k zahájení restartu zařízení vzdálenou správou zařízení IoT Hub. Sada Azure IoT SDK pro Python kterou použijete k implementaci aplikaci simulovaného zařízení, která zahrnuje přímá metoda a aplikační služby, která volá metodu direct.
+title: Začínáme se správou zařízení Azure IoT Hub (Python) | Dokumentace Microsoftu
+description: Jak zahajte restartování vzdálené zařízení pomocí správy zařízení služby IoT Hub. Implementace aplikace simulovaného zařízení, která obsahuje metodu s přímým přístupem a app service, která vyvolá přímou metodu pomocí sady Azure IoT SDK pro Python.
 author: kgremban
 manager: timlt
 ms.service: iot-hub
@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 01/02/2018
 ms.author: kgremban
 ms.openlocfilehash: fa966ee2ea26cccc7d841a0e969d8329ac5bc0de
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34635283"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38573413"
 ---
 # <a name="get-started-with-device-management-python"></a>Začínáme se správou zařízení (Python)
 
@@ -22,21 +22,21 @@ ms.locfileid: "34635283"
 
 V tomto kurzu získáte informace o následujících postupech:
 
-* Použití portálu Azure k vytvoření služby IoT Hub a vytvoření identity zařízení ve službě IoT hub.
-* Vytvoření aplikace simulovaného zařízení, která obsahuje přímý metodu, která restartování zařízení. Přímé metody jsou vyvolány z cloudu.
-* Vytvořte konzolovou aplikaci Python, která volá metodu přímé restartování v aplikaci simulovaného zařízení prostřednictvím služby IoT hub.
+* Pomocí webu Azure portal k vytvoření služby IoT Hub a vytvoření identity zařízení ve službě IoT hub.
+* Vytvoření aplikace simulovaného zařízení, která obsahuje přímé metody, která toto zařízení restartuje. Přímé metody jsou vyvolány z cloudu.
+* Vytvoření konzolové aplikace v Pythonu, která volá metodu restartování s přímým přístupem v aplikaci simulovaného zařízení prostřednictvím služby IoT hub.
 
-Na konci tohoto kurzu máte dvě aplikace Python konzoly:
+Na konci tohoto kurzu budete mít dvě aplikace konzoly v Pythonu:
 
-**dmpatterns_getstarted_device.PY**, který připojí ke službě IoT hub s identitou zařízení vytvořenou dříve, obdrží přímá metoda restartování, simuluje restartu fyzické a sestavy čas posledního restartování.
+**dmpatterns_getstarted_device.PY**, propojuje službu IoT hub s identitou zařízení vytvořenou dříve, obdrží restartování přímé metody, simuluje fyzické restartování a ohlásí, čas poslední restartování.
 
-**dmpatterns_getstarted_service.PY**, která volá metodu přímé v aplikaci simulovaného zařízení, zobrazí odpověď a zobrazí aktualizovaná hlášené vlastnosti.
+**dmpatterns_getstarted_service.PY**, která volá metodu s přímým přístupem v aplikaci simulovaného zařízení, zobrazí odpověď a zobrazí aktualizovaný ohlášené vlastnosti.
 
 Pro absolvování tohoto kurzu potřebujete:
 
 * [Python 2.x nebo 3.x][lnk-python-download]. Ujistěte se, že používáte 32bitovou, nebo 64bitovou instalaci podle požadavků vašeho nastavení. Po zobrazení výzvy v průběhu instalace nezapomeňte přidat Python do proměnné prostředí pro konkrétní platformu. Pokud používáte Python 2.x, možná bude nutné [nainstalovat nebo upgradovat *pip*, systém pro správu balíčků Pythonu][lnk-install-pip].
-    * Nainstalujte [azure-iothub zařízení client](https://pypi.org/project/azure-iothub-device-client/) balíčku, pomocí příkazu   `pip install azure-iothub-device-client`
-    * Nainstalujte [azure-iothub-service-client](https://pypi.org/project/azure-iothub-service-client/) balíčku, pomocí příkazu   `pip install azure-iothub-service-client`
+    * Nainstalujte [azure-iothub-device-client](https://pypi.org/project/azure-iothub-device-client/) balíček, pomocí příkazu   `pip install azure-iothub-device-client`
+    * Nainstalujte [azure-iothub-service-client](https://pypi.org/project/azure-iothub-service-client/) balíček, pomocí příkazu   `pip install azure-iothub-service-client`
 * Pokud používáte operační systém Windows, je k povolení používání nativních knihoven DLL z Pythonu potřeba [balíček distribuovatelných součástí Visual C++][lnk-visual-c-redist].
 * Aktivní účet Azure. (Pokud účet nemáte, můžete si během několika minut vytvořit [bezplatný účet][lnk-free-trial].)
 
@@ -47,9 +47,9 @@ Pro absolvování tohoto kurzu potřebujete:
 ## <a name="create-a-simulated-device-app"></a>Vytvoření aplikace simulovaného zařízení
 V této části provedete následující:
 
-* Vytvořte konzolovou aplikaci Python, která reaguje na přímé metodu s názvem cloudem
-* Simulovat restartování zařízení
-* Pomocí hlášen vlastnostech povolit dotazy na twin zařízení k identifikaci zařízení, a když trvají restartovat
+* Vytvoření konzolové aplikace v Pythonu, která bude reagovat na přímou metodu volanou cloudem.
+* Simulaci restartování zařízení
+* Pomocí ohlášených vlastností umožníte dotazů na dvojčata zařízení identifikovat zařízení a kdy se naposledy restartování
 
 1. Pomocí textového editoru, vytvořte **dmpatterns_getstarted_device.py** souboru.
 
@@ -64,7 +64,7 @@ V této části provedete následující:
     from iothub_client import IoTHubClient, IoTHubClientError, IoTHubTransportProvider, IoTHubClientResult, IoTHubError, DeviceMethodReturnValue
     ```
 
-1. Přidání proměnné, včetně **CONNECTION_STRING** proměnnou a inicializace klienta.  Nahraďte připojovacího řetězce připojovacím řetězcem zařízení.  
+1. Přidání proměnné, včetně **CONNECTION_STRING** proměnné a inicializace klienta.  Nahraďte připojovací řetězec připojovacím řetězcem zařízení.  
    
     ```python
     CONNECTION_STRING = "{deviceConnectionString}"
@@ -81,7 +81,7 @@ V této části provedete následující:
     METHOD_CALLBACKS = 0
     ```
 
-1. Přidejte následující zpětná funkce volání a implementovat metodu přímé na zařízení.
+1. Přidejte následující zpětná volání funkce pro implementaci přímé metody v zařízení.
    
     ```python
     def send_reported_state_callback(status_code, user_context):
@@ -112,7 +112,7 @@ V této části provedete následující:
         return device_method_return_value
     ```
 
-1. Spuštění nástroje pro sledování přímá metoda a počkejte.
+1. Spuštění naslouchacího procesu přímé metody a počkat.
    
     ```python
     def iothub_client_init():
@@ -151,8 +151,8 @@ V této části provedete následující:
 > Za účelem zjednodušení tento kurz neimplementuje žádné zásady opakování. V produkčním kódu byte měli implementovat zásady opakování (například exponenciální opakování), jak je navrženo v článku [Řešení přechodných chyb][lnk-transient-faults] na webu MSDN.
 
 
-## <a name="trigger-a-remote-reboot-on-the-device-using-a-direct-method"></a>Aktivační události restartu vzdálené v zařízení s přímá metoda
-V této části vytvoříte konzolovou aplikaci Python, který iniciuje vzdálené restartování na zařízení pomocí přímého metody. Aplikace používá dotazy twin zařízení Pokud chcete zjistit, čas posledního restartování pro toto zařízení.
+## <a name="trigger-a-remote-reboot-on-the-device-using-a-direct-method"></a>Aktivační událost vzdálené restartování zařízení pomocí přímé metody
+V této části vytvoříte konzolovou aplikaci v Pythonu, které vyvolává vzdálené restartování zařízení pomocí přímé metody. Aplikace používá dotazů na dvojčata zařízení ke zjištění poslední čas restartování pro dané zařízení.
 
 1. Pomocí textového editoru, vytvořte **dmpatterns_getstarted_service.py** souboru.
 
@@ -165,7 +165,7 @@ V této části vytvoříte konzolovou aplikaci Python, který iniciuje vzdálen
     from iothub_service_client import IoTHubDeviceMethod, IoTHubError, IoTHubDeviceTwin
     ```
 
-1. Přidejte následující deklarace proměnných. Pouze nahraďte zástupný symbol hodnoty pro _IoTHubConnectionString_ a _deviceId_.
+1. Přidejte následující deklarace proměnných. Jenom nahradit zástupné hodnoty _IoTHubConnectionString_ a _deviceId_.
    
     ```python
     CONNECTION_STRING = "{IoTHubConnectionString}"
@@ -177,7 +177,7 @@ V této části vytvoříte konzolovou aplikaci Python, který iniciuje vzdálen
     WAIT_COUNT = 10
     ```
 
-1. Přidejte následující funkci k vyvolání metody zařízení k restartování cílového zařízení a potom dotaz pro dvojčata zařízení a získat poslední čas restartování.
+1. Přidejte následující funkci, která vyvolat metodu zařízení restartovat cílové zařízení a pak dotaz na dvojčata zařízení a získat poslední čas restartování.
    
     ```python
     def iothub_devicemethod_sample_run():
@@ -234,19 +234,19 @@ V této části vytvoříte konzolovou aplikaci Python, který iniciuje vzdálen
 ## <a name="run-the-apps"></a>Spouštění aplikací
 Nyní jste připraveni aplikaci spustit.
 
-1. Na příkazovém řádku spusťte následující příkaz, aby začal přijímat přímá metoda restartování.
+1. Na příkazovém řádku spusťte následující příkaz, který zahájit naslouchání pro přímé metody restartování.
    
     ```
     python dmpatterns_getstarted_device.py
     ```
 
-1. Jiné příkazového řádku spusťte následující příkaz k aktivační události restartovat vzdálený počítač a dotaz pro dvojče zařízení najít poslední čas restartování počítače.
+1. Jiné příkazového řádku spusťte následující příkaz spustí vzdálené restartování a dotazů pro dvojče zařízení najít poslední čas restartování.
    
     ```
     python dmpatterns_getstarted_service.py
     ```
 
-1. Zobrazí zařízení odpověď na přímá metoda v konzole.
+1. Zobrazí se zařízení odpověď na přímé metody v konzole.
 
 [!INCLUDE [iot-hub-dm-followup](../../includes/iot-hub-dm-followup.md)]
 

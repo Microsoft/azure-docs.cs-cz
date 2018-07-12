@@ -1,9 +1,9 @@
 ---
-title: Simulated malin pí do cloudu (Node.js) – simulátoru webové platformy malin připojit ke službě Azure IoT Hub | Microsoft Docs
-description: Simulátor webové platformy malin připojte ke službě Azure IoT Hub malin pí k odesílání dat do cloudu Azure.
+title: Simulované Raspberry Pi do cloudu (Node.js) – webový simulátor Raspberry Pi připojení ke službě Azure IoT Hub | Dokumentace Microsoftu
+description: Webový simulátor Raspberry Pi připojte ke službě Azure IoT Hub pro Raspberry Pi k odesílání dat do cloudu Azure.
 author: rangv
 manager: ''
-keywords: Simulátor Malinová pi, platformy azure iot Malinová, malinová platformy iot hub, malinová pí odesílání dat do cloudu, malinová pí do cloudu
+keywords: Simulátor Raspberry pi, azure iot raspberry pi, raspberry pi iot hub, raspberry pi odesílání dat do cloudu, raspberry pi s cloudem
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 04/11/2018
 ms.author: rangv
 ms.openlocfilehash: dc8216f6b0a610b556b94637970bfd3e721f38d2
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34636218"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38482111"
 ---
-# <a name="connect-raspberry-pi-online-simulator-to-azure-iot-hub-nodejs"></a>Připojení k Azure IoT Hub (Node.js) online simulátoru malin platformy
+# <a name="connect-raspberry-pi-online-simulator-to-azure-iot-hub-nodejs"></a>Připojte se ke službě Azure IoT Hub (Node.js) online simulátor Raspberry Pi
 
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
-V tomto kurzu zahájíte učení základní informace o práci s online simulátoru malin pí. Pak zjistíte, jak se bezproblémově připojit simulátoru pí do cloudu pomocí [Azure IoT Hub](iot-hub-what-is-iot-hub.md). 
+V tomto kurzu začnete pomocí seznámení se základy práce se simulátor Raspberry Pi online. Pak zjistěte, jak hladce simulátor Pi do cloudu s využitím [Azure IoT Hub](iot-hub-what-is-iot-hub.md). 
 
-Pokud máte fyzické zařízení, navštivte [pí malin připojit ke službě Azure IoT Hub](iot-hub-raspberry-pi-kit-node-get-started.md) začít pracovat. 
+Pokud máte fyzických zařízení, navštivte [připojte Raspberry Pi pro službu Azure IoT Hub](iot-hub-raspberry-pi-kit-node-get-started.md) začít. 
 
 <p>
 <div id="diag" style="width:100%; text-align:center">
@@ -36,57 +36,57 @@ Pokud máte fyzické zařízení, navštivte [pí malin připojit ke službě Az
 <img src="media/iot-hub-raspberry-pi-web-simulator/6_button_default.png" alt="Start Raspberry Pi simulator" width="400" onmouseover="this.src='media/iot-hub-raspberry-pi-web-simulator/5_button_click.png';" onmouseout="this.src='media/iot-hub-raspberry-pi-web-simulator/6_button_default.png';">
 </div>
 
-## <a name="what-you-do"></a>Co dělat
+## <a name="what-you-do"></a>Co můžete dělat
 
-* Přečtěte si základní informace o online simulátoru malin pí.
+* Naučte se základy simulátor Raspberry Pi online.
 * Vytvoření služby IoT hub.
-* Registrovat zařízení pro platformy ve službě IoT hub.
-* Spuštění ukázkové aplikace na platformy k odesílání dat simulované senzor do služby IoT hub.
+* Registrace zařízení ve službě IoT hub pro číslo pí.
+* Spusťte ukázkovou aplikaci v Pi odeslat data ze simulovaných senzorů do služby IoT hub.
 
-Simulované pí malin připojení do služby IoT hub, který vytvoříte. Pak spusťte ukázkovou aplikaci s simulátoru ke generování dat snímačů. Nakonec odeslat data snímačů do služby IoT hub.
+Připojení simulovaného Raspberry Pi do služby IoT hub, kterou vytvoříte. Potom spustíte ukázkovou aplikaci se simulátorem ke generování data ze senzorů. A konečně odeslat data ze senzorů do služby IoT hub.
 
 ## <a name="what-you-learn"></a>Co se naučíte
 
 * Postup vytvoření služby Azure IoT hub a získat nový připojovací řetězec zařízení. Pokud nemáte účet Azure [vytvořit Bezplatný zkušební účet Azure](https://azure.microsoft.com/free/) za několik minut.
-* Jak pracovat s online simulátoru malin pí.
-* Jak odesílat data snímačů do služby IoT hub.
+* Jak pracovat s online simulátor Raspberry Pi.
+* Jak odeslat data ze senzorů do služby IoT hub.
 
-## <a name="overview-of-raspberry-pi-web-simulator"></a>Přehled simulátoru webové platformy malin
+## <a name="overview-of-raspberry-pi-web-simulator"></a>Přehled webový simulátor Raspberry Pi
 
-Klikněte na tlačítko spustit online simulátoru malin pí.
+Klikněte na tlačítko Spustit simulátor Raspberry Pi online.
 
 > [!div class="button"]
-<a href="https://azure-samples.github.io/raspberry-pi-web-simulator/#GetStarted" target="_blank">Spustit simulátoru Malinová platformy</a>
+<a href="https://azure-samples.github.io/raspberry-pi-web-simulator/#GetStarted" target="_blank">Spusťte simulátor Raspberry Pi</a>
 
-Existují tři oblasti v simulátoru web.
-1. Sestavení oblast – výchozí okruh je, že na Pi připojí senzor BME280 a Indikátor. Oblasti uzamčeno ve verzi preview proto nyní nemůže provádět přizpůsobení.
-2. Kódování oblast – editor online kód pro vás kódu s použitím malin pí. Ukázkovou aplikaci výchozí pomáhá ke shromažďování dat snímačů z BME280 senzor a odesílá do služby Azure IoT Hub. Aplikace je plně kompatibilní se skutečné platformy zařízení. 
-3. Okno integrovaného konzoly - zobrazuje výstup z vašeho kódu. V horní části tohoto okna existují tři tlačítka.
-   * **Spustit** -aplikaci spustit v oblasti kódování.
-   * **Resetování** -oblasti kódování resetovat na výchozí ukázkovou aplikaci.
-   * **Násobek/rozšířit** -na pravé straně je tlačítko pro vás násobek nebo rozbalte v okně konzoly.
+Existují tři oblasti v webový simulátor.
+1. Oblast sestavení – výchozí okruh je, že přístup k na Pi BME280 snímačů a kontrolku LED. V oblasti uzamčeno ve verzi preview to aktuálně neumožňuje přizpůsobení.
+2. Kódování oblast – editor online kódu vám umožňuje psát kód s Raspberry Pi. Ukázková aplikace výchozí umožňuje shromažďovat data ze senzorů z BME280 snímačů a odesílá do služby Azure IoT Hub. Aplikace je plně kompatibilní s skutečných platformy zařízení. 
+3. Integrovaná konzola okno - zobrazí výstup kódu. V horní části tohoto okna jsou tři tlačítka.
+   * **Spustit** – spusťte aplikaci v oblasti kódování.
+   * **Resetovat** -obnovíte výchozí ukázkovou aplikaci v oblasti kódování.
+   * **Sbalení a rozbalení** – na pravé straně je tlačítko pro rozbalení/sbalení v okně konzoly.
 
 > [!NOTE] 
-Simulátor webové platformy malin je teď dostupná ve verzi preview. Rádi bychom se slyšet váš hlas v [Gitter Chatroom](https://gitter.im/Microsoft/raspberry-pi-web-simulator). Zdrojový kód je veřejný na [Githubu](https://github.com/Azure-Samples/raspberry-pi-web-simulator).
+Webový simulátor Raspberry Pi je teď dostupná ve verzi preview. Jsme rádi bychom znali váš hlas v [Gitteru Chatroom](https://gitter.im/Microsoft/raspberry-pi-web-simulator). Zdrojový kód je ve veřejné [Githubu](https://github.com/Azure-Samples/raspberry-pi-web-simulator).
 
 ![Přehled platformy online simulátoru](media/iot-hub-raspberry-pi-web-simulator/0_overview.png)
 
 [!INCLUDE [iot-hub-get-started-create-hub-and-device](../../includes/iot-hub-get-started-create-hub-and-device.md)]
 
 
-## <a name="run-a-sample-application-on-pi-web-simulator"></a>Spouštět ukázkovou aplikaci v simulátoru webové platformy
+## <a name="run-a-sample-application-on-pi-web-simulator"></a>Spustit ukázkovou aplikaci v simulátoru web Pi
 
-1. V oblasti kódování, zkontrolujte, zda že pracujete na výchozí ukázkovou aplikaci. Nahraďte zástupný symbol v řádku 15 připojovací řetězec pro zařízení Azure IoT hub.
-   ![Nahraďte řetězec připojení zařízení](media/iot-hub-raspberry-pi-web-simulator/1_connectionstring.png)
+1. V oblasti kódování, ujistěte se, že pracujete na výchozí ukázkovou aplikaci. Nahraďte zástupný text v řádku 15 připojovací řetězec pro zařízení Azure IoT hub.
+   ![Nahraďte připojovací řetězec zařízení](media/iot-hub-raspberry-pi-web-simulator/1_connectionstring.png)
 
 2. Klikněte na tlačítko **spustit** nebo typ `npm start` ke spuštění aplikace.
 
 
-Byste měli vidět následující výstup, který popisuje data snímačů a zprávy, které se odesílají do služby IoT hub ![výstup - data snímačů odeslaný malin pí do služby IoT hub](media/iot-hub-raspberry-pi-web-simulator/2_run_application.png)
+Zobrazí se následující výstup, který zobrazuje data ze senzorů a zprávy, které se odesílají do služby IoT hub ![výstup – data ze senzorů odeslané do služby IoT hub z Raspberry Pi](media/iot-hub-raspberry-pi-web-simulator/2_run_application.png)
 
 
 ## <a name="next-steps"></a>Další postup
 
-Spustíte ukázkovou aplikaci pro shromažďování dat snímačů a odeslat do služby IoT hub.
+Jste spustili ukázkovou aplikaci shromažďovat data ze senzorů a odesílat je do služby IoT hub.
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

@@ -1,6 +1,6 @@
 ---
-title: Azure AD Connect Health a ochrana osobních údajů uživatele | Microsoft Docs
-description: Tento dokument popisuje ochraně osobních údajů uživatelů s Azure AD Connect Health.
+title: Azure AD Connect Health a ochrana osobních údajů uživatelů | Dokumentace Microsoftu
+description: Tento dokument popisuje, ochrana osobních údajů uživatele pomocí služby Azure AD Connect Health.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -14,87 +14,87 @@ ms.topic: article
 ms.date: 04/26/2018
 ms.author: billmath
 ms.openlocfilehash: 5fedbac439636b56da217e7babd30820bce7b342
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33931754"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38442562"
 ---
 # <a name="user-privacy-and-azure-ad-connect-health"></a>Ochrana osobních údajů uživatelů a Azure AD Connect Health 
 
 [!INCLUDE [Privacy](../../../includes/gdpr-intro-sentence.md)]
 
 >[!NOTE] 
->Tento článek se zabývá Azure AD Connect Health a uživatele o ochraně osobních údajů.  Informace o Azure AD Connect a uživatele o ochraně osobních údajů najdete v článku [zde](../../active-directory/connect/active-directory-aadconnect-gdpr.md).
+>Tento článek se zabývá Azure AD Connect Health a uživatele o ochraně osobních údajů.  Informace o službě Azure AD Connect a uživatelské ochrany osobních údajů najdete v článku [tady](../../active-directory/connect/active-directory-aadconnect-gdpr.md).
 
 ## <a name="user-privacy-classification"></a>Klasifikace ochrany osobních údajů uživatele
-Azure AD Connect Health, které patří do **procesor dat** kategorie klasifikace GDPR. Jako procesor dat kanál poskytuje služby zpracování dat služby a klíče partnery a koncoví uživatelé. Azure AD Connect Health negeneruje uživatelská data a nemá žádnou nezávislé kontrolu nad jaké osobní údaje se shromažďují a jak se používají. Načtení dat, agregace, analýzu a vytváření sestav v Azure AD Connect Health jsou založeny na existující místní data. 
+Azure AD Connect Health, které patří do **zpracovatelem** kategorie klasifikace podle nařízení GDPR. Jako zpracovatelem kanál služba poskytuje služby pro zpracování dat klíče partnerů a spotřebitelů end. Azure AD Connect Health negeneruje uživatelská data a nemá žádnou kontrolu nezávislé, jaké osobní data se shromažďují a jak se používají. Načítání dat, agregace, analýzy a generování sestav v Azure AD Connect Health jsou založeny na stávajících datech v místním prostředí. 
 
 ## <a name="data-retention-policy"></a>Zásady uchovávání dat
-Azure AD Connect Health není generování sestav, provádět analýzy nebo nabízejí přehled za 30 dní. Azure AD Connect Health proto není ukládání, zpracovat nebo zachování všech dat za 30 dní. Tento návrh je kompatibilní s předpisy GDPR, Microsoft o ochraně osobních údajů předpisy a zásad uchovávání dat služby Azure AD. 
+Azure AD Connect Health nepodporuje generování sestav, provádět analýzy ani ukázala po uplynutí 30 dnů. Azure AD Connect Health proto není ukládání, zpracování nebo zachovat žádná data se po uplynutí 30 dnů. Tento návrh je kompatibilní s nařízení GDPR, Microsoft o ochraně osobních údajů dodržování předpisů a zásad uchovávání dat služby Azure AD. 
 
-Servery s aktivní **data služby stavu nejsou aktuální** **chyba** výstrahy pro více než 30 dní po sobě jdoucích naznačují, že žádná data dosáhl Connect Health během této časové rozpětí. Tyto servery budou zakázaná a není uvedené na portálu Connect Health. Chcete-li znovu povolit servery, je nutné odinstalovat a [přeinstalujte agenta stavu](active-directory-aadconnect-health-agent-install.md). Upozorňujeme, že to neplatí pro **upozornění** s výstrahy stejného typu. Upozornění označují, že částečná data chybí od serveru, který se zobrazí výstraha, pro. 
+Servery s aktivní **data služby Health service není aktuální** **chyba** výstrahy na více než 30 po sobě jdoucích dní naznačují, že žádná data bylo dosaženo Connect Health během tohoto časového intervalu. Tyto servery budou zakázané a nezobrazují na portálu Connect Health. Chcete-li znovu povolit na serverech, musíte odinstalovat a [přeinstalujte agenta stavu](active-directory-aadconnect-health-agent-install.md). Mějte prosím na paměti, že tato akce není požadována k **upozornění** pomocí výstrahy stejného typu. Upozornění označují, že částečná data ze serveru, který se zobrazí výstraha pro chybí. 
  
-## <a name="disable-data-collection-and-monitoring-in-azure-ad-connect-health"></a>Zakázání shromažďování dat a monitorování v Azure AD Connect Health
-Azure AD Connect Health umožňuje zastavit shromažďování dat pro každý monitorovaných server nebo instanci monitorované služby. Například můžete zastavit shromažďování dat pro jednotlivé servery služby AD FS (Active Directory Federation Services), které jsou monitorovány pomocí Azure AD Connect Health. Můžete také zastavit shromažďování dat pro instanci služby AD FS, který je monitorován pomocí Azure AD Connect Health. Pokud se rozhodnete tak učinit, odpovídající servery se odstraní z portálu Azure AD Connect Health po zastavení shromažďování dat. 
+## <a name="disable-data-collection-and-monitoring-in-azure-ad-connect-health"></a>Zakázat shromažďování dat a monitorování v Azure AD Connect Health
+Azure AD Connect Health umožňuje ukončit shromažďování dat pro každý monitorovaný server nebo instanci monitorované služby. Můžete například zastavit shromažďování dat pro jednotlivé servery služby AD FS (Active Directory Federation Services), které jsou monitorovány pomocí služby Azure AD Connect Health. Můžete také zastavit shromažďování dat pro celou instanci služby AD FS, která je monitorována používání služby Azure AD Connect Health. Pokud budete chtít udělat, se odpovídající servery odstraní po zastavení shromažďování dat z portálu Azure AD Connect Health. 
 
 >[!IMPORTANT]
-> Potřebujete oprávnění globální správce Azure AD nebo roli Přispěvatel v RBAC odstranění monitorované servery z Azure AD Connect Health.
+> Potřebujete oprávnění globálního správce Azure AD nebo roli přispěvatele v RBAC pro odstranění monitorované servery z Azure AD Connect Health.
 >
-> Odebrání serveru nebo instance služby z Azure AD Connect Health je reverzibilního akce. 
+> Odebrání serveru nebo instance služby z Azure AD Connect Health není vrátit zpět akce. 
 
 ### <a name="what-to-expect"></a>Co můžete očekávat?
-Když zastavíte shromažďování dat a monitorování pro jednotlivé monitorovaném serveru nebo instanci monitorované služby, vezměte na vědomí následující:
+Když zastavíte shromažďování dat a monitorování pro jednotlivé monitorovaném serveru nebo instance monitorované služby, vezměte na vědomí následující:
 
-- Při odstranění instance monitorované služby instance se odebere ze seznamu monitorování služby Azure AD Connect Health na portálu. 
-- Při odstranění monitorovaných server nebo instanci monitorované služby agenta stavu se neodinstalují nebo odebrat z vašich serverů. Agent stavu je nakonfigurován tak, aby posílat data do Azure AD Connect Health. Budete muset ručně odinstalovat agenta stavu na dříve monitorované servery.
-- Pokud jste agenta stavu neodinstalovali před provedením tohoto kroku, může na serverech vztahujících se k agentovi stavu objevit události chyb.
+- Po odstranění instance monitorované služby instance je odebrána ze seznamu monitorování služby Azure AD Connect Health na portálu. 
+- Při odstranění monitorovaném serveru nebo instance monitorované služby agenta stavu se neodinstalují nebo odebrány z vašich serverů. Agent stavu je nakonfigurován tak, aby odesílání dat do Azure AD Connect Health. Je potřeba ručně odinstalovat agenta stavu na dříve monitorované servery.
+- Pokud jste před provedením tohoto kroku agenta stavu neodinstalovali, můžou na serverech vztahujících se k agentovi stavu objevit události chyb.
 - Všechna data patřící k instanci monitorované služby se odstraní podle zásad uchovávání dat Microsoft Azure.
 
-### <a name="disable-data-collection-and-monitoring-for-an-instance-of-a-monitored-service"></a>Zakázat monitorování pro instanci monitorované služby a shromažďování dat
-V tématu [postup odebrání instance služby Azure AD Connect Health](active-directory-aadconnect-health-operations.md#delete-a-service-instance-from-azure-ad-connect-health-service).
+### <a name="disable-data-collection-and-monitoring-for-an-instance-of-a-monitored-service"></a>Zakázat shromažďování dat a monitorování pro instanci monitorované služby
+Zobrazit [odebrání instance služby z Azure AD Connect Health](active-directory-aadconnect-health-operations.md#delete-a-service-instance-from-azure-ad-connect-health-service).
 
-### <a name="disable-data-collection-and-monitoring-for-a-monitored-server"></a>Zakázání shromažďování dat a monitorování pro monitorovaném serveru
-V tématu [postup odebrání serveru z Azure AD Connect Health](active-directory-aadconnect-health-operations.md#delete-a-server-from-the-azure-ad-connect-health-service).
+### <a name="disable-data-collection-and-monitoring-for-a-monitored-server"></a>Zakázat shromažďování dat a monitorování pro monitorovaném serveru
+Zobrazit [odebrání serveru z Azure AD Connect Health](active-directory-aadconnect-health-operations.md#delete-a-server-from-the-azure-ad-connect-health-service).
 
-### <a name="disable-data-collection-and-monitoring-for-all-monitored-services-in-azure-ad-connect-health"></a>Zakázání shromažďování dat a monitorování pro všechny sledované služby v Azure AD Connect Health
-Azure AD Connect Health také nabízí možnost zastavit shromažďování dat z **všechny** registrované služby v klientovi. Doporučujeme pečlivě zvážit a všichni globální správci úplné potvrzení před provedením akce. Po zahájení procesu Connect Health service se zastaví přijetí, zpracování a generování sestav žádná data všech služeb. Stávající data v Connect Health service bude uchovávat delší než 30 dní.
-Pokud chcete zastavit shromažďování dat z konkrétní server, postupujte podle kroků uvedených v odstranění konkrétních serverů. Chcete-li zastavit shromažďování dat tenant-wise, postupujte podle následujících kroků shromažďování dat zastavte a odstraňte všechny služby klienta.
+### <a name="disable-data-collection-and-monitoring-for-all-monitored-services-in-azure-ad-connect-health"></a>Zakázat shromažďování dat a monitorování pro všechny monitorované služby v Azure AD Connect Health
+Také poskytuje možnost zastavit shromažďování dat z Azure AD Connect Health **všechny** registrované služby v tenantovi. Doporučujeme, abyste pečlivě promyslet a všichni globální správci úplné potvrzení před provedením akce. Po zahájení procesu služby Connect Health se zastavit příjem, zpracování a generování sestav žádná data všech služeb. Stávající data ve službě Connect Health se uchovají po dobu více než 30 dnů.
+Pokud chcete zastavit shromažďování dat z konkrétní server, postupujte podle kroků uvedených v odstranění konkrétních serverů. Chcete-li zastavit shromažďování dat tenant-wise, následujícím postupem zastavit shromažďování dat a odstranit všechny služby klienta.
 
-1.  Klikněte na **obecné nastavení** v konfiguraci v hlavním okně. 
-2.  Klikněte na **zastavit shromažďování dat** tlačítko nahoře v okně. Další možnosti konfigurace nastavení klienta bude zakázáno, jakmile se spustí proces.  
+1.  Klikněte na **obecné nastavení** podle konfigurace v hlavním okně. 
+2.  Klikněte na **zastavit shromažďování dat** tlačítko v horní části okna. Další možnosti konfigurace nastavení tenanta se deaktivuje, jakmile se spustí proces.  
  
  ![Zastavit shromažďování dat](./media/active-directory-aadconnect-health-gdpr/gdpr4.png)
   
-3.  Zkontrolujte seznam zařazený nemá služeb, které jsou ovlivněné zastavením shromažďování dat. 
-4.  Zadejte název přesný klienta povolit **odstranit** tlačítko akce
-5.  Klikněte na **odstranit** k aktivaci odstranění všech služeb. Připojení stavu zastaví přijetí, zpracování, žádná data odeslaných z vašich zařazený nemá služeb generování sestav. Celý proces může trvat až 24 hodin. Všimněte si, že tento krok není reverzibilního. 
-6.  Po dokončení tohoto procesu, neuvidíte žádné registrované služby v Connect Health víc. 
+3.  Zkontrolujte seznam připojení služby, které jsou ovlivněny kolekce dat se zastavuje. 
+4.  Zadejte název tenanta přesné povolit **odstranit** tlačítko akce
+5.  Klikněte na **odstranit** k aktivaci odstranění všech služeb. Connect Health se zastavit příjem, zpracování, všechna data odeslána z vašich připojení služeb reporting. Celý proces může trvat až 24 hodin. Všimněte si, že tento krok je nevratná operace. 
+6.  Po dokončení procesu se nezobrazí žádné registrované služby ve službě Connect Health více. 
 
  ![Po zastavení shromažďování dat](./media/active-directory-aadconnect-health-gdpr/gdpr5.png)
 
 ## <a name="re-enable-data-collection-and-monitoring-in-azure-ad-connect-health"></a>Opětovné povolení shromažďování dat a monitorování v Azure AD Connect Health
-Chcete-li znovu povolte sledování v Azure AD Connect Health pro dříve odstraněné monitorované služby, je nutné odinstalovat a [přeinstalujte agenta stavu](active-directory-aadconnect-health-agent-install.md) ve všech serverech.
+Opětovné povolení monitorování v Azure AD Connect Health pro dříve odstraněné monitorované služby, je nutné odinstalovat a [přeinstalujte agenta stavu](active-directory-aadconnect-health-agent-install.md) ve všech serverech.
 
 ### <a name="re-enable-data-collection-and-monitoring-for-all-monitored-services"></a>Opětovné povolení shromažďování dat a monitorování pro všechny sledované služby
 
-Shromažďování dat tenant-Wise lze obnovit v Azure AD Connect Health. Doporučujeme pečlivě zvážit a všichni globální správci úplné potvrzení před provedením akce.
+Shromažďování dat tenant-Wise lze obnovit v Azure AD Connect Health. Doporučujeme, abyste pečlivě promyslet a všichni globální správci úplné potvrzení před provedením akce.
 
 >[!IMPORTANT]
-> Po 24 hodin zakázat akci, bude k dispozici následující kroky.
-> Po povolení shromažďování dat, vidění přehledy a data v Connect Health monitorování nezobrazí se žádné starší data shromážděná před. 
+> Po 24 hodinách zakázat akce, bude k dispozici následující kroky.
+> Po povolení shromažďování dat, nebudou zobrazovat žádná starší data shromážděná před prezentovaných přehledů a monitorování dat ve službě Connect Health. 
 
-1.  Klikněte na **obecné nastavení** v konfiguraci v hlavním okně. 
-2.  Klikněte na **povolení shromažďování dat** tlačítko nahoře v okně. 
+1.  Klikněte na **obecné nastavení** podle konfigurace v hlavním okně. 
+2.  Klikněte na **Povolit shromažďování dat** tlačítko v horní části okna. 
  
  ![Povolení shromažďování dat](./media/active-directory-aadconnect-health-gdpr/gdpr6.png)
  
-3.  Zadejte název přesný klienta k aktivaci **povolit** tlačítko.
-4.  Klikněte na **povolit** tlačítko udělit oprávnění shromažďování dat v Connect Health service. Změny se použijí za chvíli. 
-5.  Postupujte podle [procesu instalace](active-directory-aadconnect-health-agent-install.md) přeinstalujte agenta na serveru ke sledování a službami, bude k dispozici na portálu.  
+3.  Zadejte název přesné klienta k aktivaci **povolit** tlačítko.
+4.  Klikněte na **povolit** tlačítko k udělení oprávnění shromažďování dat služby Connect Health. Tato změna uplatní za chvíli. 
+5.  Postupujte podle [procesu instalace](active-directory-aadconnect-health-agent-install.md) a znovu nainstalujte agenta na serveru určeného k monitorování a služby, bude k dispozici na portálu.  
 
 
 ## <a name="next-steps"></a>Další postup
-* [Zkontrolujte nastavení zásad Microsoft Privacy na Centrum zabezpečení](https://www.microsoft.com/trustcenter)
-* [Azure AD Connect a ochraně osobních údajů uživatelů](../../active-directory/connect/active-directory-aadconnect-gdpr.md)
+* [Projděte si zásady Microsoft Privacy Trust Center](https://www.microsoft.com/trustcenter)
+* [Azure AD Connect a ochrana osobních údajů uživatele](../../active-directory/connect/active-directory-aadconnect-gdpr.md)
 

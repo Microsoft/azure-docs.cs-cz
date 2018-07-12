@@ -1,5 +1,5 @@
 ---
-title: Zobrazit členy s rolí správce v Azure Active Directory | Dokumentace Microsoftu
+title: Zobrazit členy s rolí správce a oprávnění role v Azure Active Directory | Dokumentace Microsoftu
 description: Teď můžete zobrazit a spravovat členy role správce Azure AD na portálu. Pro ty, kteří často Spravovat přiřazení rolí.
 services: active-directory
 documentationcenter: ''
@@ -10,18 +10,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 07/02/2018
+ms.date: 07/10/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 588e475a451ea00e52dd995edc3f1bf0e284044f
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 5a42f48e85eea95211b36e0c08dcb0edb4928a20
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37871652"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38489918"
 ---
-# <a name="view-all-members-of-an-administrator-role-in-azure-active-directory"></a>Zobrazit všechny členy s rolí správce v Azure Active Directory
+# <a name="view-members-and-descriptions-of-administrator-roles-in-azure-active-directory"></a>Zobrazit členy a jejich popisy rolí správce ve službě Azure Active Directory
 
 Teď můžete zobrazit a spravovat všechny členy rolí správce v portálu Azure Active Directory. Pokud často Spravovat přiřazení rolí, bude pravděpodobně dáváte přednost toto prostředí. A pokud jste už jste někdy přemýšleli "Co zrušíte pracovníci v těchto rolích ve skutečnosti udělat?", zobrazí se podrobný seznam oprávnění pro každou z role správce Azure AD.
 
@@ -35,7 +35,7 @@ Výběr celého řádku zobrazí seznam přiřazených členů. Můžete vybrat 
 
 Pokud jste globální správce nebo správce privilegovaných rolí, můžete snadno přidat nebo odebrat členy, seznam můžete filtrovat nebo vyberte členy, aby mohli přejít na stránku uživatele, aby zobrazil jejich aktivní přiřazené role. 
 
-## <a name="role-details-in-the-portal"></a>Podrobné informace o roli na portálu
+## <a name="detailed-role-permissions-in-the-portal"></a>Prováděcí role oprávnění na portálu
 
 Při zobrazení členů role, vyberte **popis** zobrazíte úplný seznam všech oprávnění udělená přiřazení role. Stránka obsahuje odkazy na relevantní dokumentaci, která vás provede spravovat role adresáře.
 

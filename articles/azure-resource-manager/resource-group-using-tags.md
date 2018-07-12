@@ -1,6 +1,6 @@
 ---
-title: Označit prostředky Azure pro logické organizaci | Microsoft Docs
-description: Ukazuje způsob použití značek k uspořádání prostředků Azure pro fakturace a správy.
+title: Značky prostředků Azure pro logické uspořádání | Dokumentace Microsoftu
+description: Ukazuje způsob použití značek k uspořádání prostředků Azure pro fakturaci a správu.
 services: azure-resource-manager
 documentationcenter: ''
 author: tfitzmac
@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: tomfitz
 ms.openlocfilehash: 8c828bb49548adfdb02ed6fb1611eb405ebf4ff2
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34602920"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38466256"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>Používání značek k uspořádání prostředků Azure
 
@@ -29,7 +29,7 @@ ms.locfileid: "34602920"
 
 ## <a name="powershell"></a>PowerShell
 
-V příkladech v tomto článku vyžadují verze 6.0 nebo novější prostředí Azure PowerShell. Pokud nemáte verze 6.0 nebo novější, [aktualizujte verzi](/powershell/azure/install-azurerm-ps).
+Příklady v tomto článku vyžadují prostředí Azure PowerShell verze 6.0 nebo novější. Pokud nemáte verzi 6.0 nebo novější, [aktualizovat verzi](/powershell/azure/install-azurerm-ps).
 
 Pokud chcete zobrazit existující značky pro *skupinu prostředků*, použijte:
 
@@ -70,7 +70,7 @@ Pokud chcete získat *prostředky s konkrétní značkou*, použijte:
 (Get-AzureRmResource -Tag @{ Dept="Finance"}).Name
 ```
 
-Chcete-li získat *prostředky, které mají název konkrétní značky*, použijte:
+Chcete-li získat *prostředky, které mají název konkrétní značku*, použijte:
 
 ```powershell
 (Get-AzureRmResource -TagName Dept).Name
@@ -168,25 +168,25 @@ Výstup tohoto skriptu bude v následujícím formátu:
 }
 ```
 
-Nebo, pokud chcete zobrazit stávající značky pro *prostředek, který má zadaný název, typ a prostředků skupinu*, použijte:
+Nebo, pokud chcete zobrazit existující značky pro *prostředek, který má zadaný název, typ a prostředek skupiny*, použijte:
 
 ```azurecli
 az resource show -n examplevnet -g examplegroup --resource-type "Microsoft.Network/virtualNetworks" --query tags
 ```
 
-Když ve smyčce přes kolekce prostředků, můžete chtít zobrazit ID prostředku podle zdroje. Úplný příklad se zobrazí později v tomto článku. Pokud chcete zobrazit existující značky pro *prostředek s konkrétním ID prostředku*, použijte:
+Když ve smyčce přes kolekce prostředků, můžete chtít zobrazit ID prostředků podle prostředku. Kompletní příklad je uveden dále v tomto článku. Pokud chcete zobrazit existující značky pro *prostředek s konkrétním ID prostředku*, použijte:
 
 ```azurecli
 az resource show --id <resource-id> --query tags
 ```
 
-Skupiny prostředků, které mají s konkrétní značkou tag, použijte `az group list`:
+Chcete-li získat skupiny prostředků, které s konkrétní značkou, použijte `az group list`:
 
 ```azurecli
 az group list --tag Dept=IT
 ```
 
-Všechny prostředky, které mají určitý značky a hodnoty, použijte `az resource list`:
+Chcete-li získat všechny potřebné prostředky, které mají určitou značkou a hodnotou, použijte `az resource list`:
 
 ```azurecli
 az resource list --tag Dept=Finance
@@ -206,7 +206,7 @@ Pokud chcete přidat značky k *prostředku bez existujících značek*, použij
 az resource tag --tags Dept=IT Environment=Test -g examplegroup -n examplevnet --resource-type "Microsoft.Network/virtualNetworks"
 ```
 
-Přidání značek k prostředku, který již má značky, načíst existující značky, přeformátujte tuto hodnotu a znovu použít stávající a nové značky: 
+Chcete-li přidat prostředek, který již má značky, načtěte existující značky, přeformátujte tuto hodnotu a znovu použít stávající i nové značky: 
 
 ```azurecli
 jsonrtag=$(az resource show -g examplegroup -n examplevnet --resource-type "Microsoft.Network/virtualNetworks" --query tags)
@@ -230,7 +230,7 @@ do
 done
 ```
 
-Použít všechny značky ze skupiny zdrojů na jeho prostředky, a *zachovat stávající značky na prostředcích*, použijte tento skript:
+Chcete-li použít všechny značky ze skupiny prostředků na prostředky a *zachovat existující značky u prostředků*, pomocí následujícího skriptu:
 
 ```azurecli
 groups=$(az group list --query [].name --output tsv)
@@ -258,22 +258,22 @@ done
 
 ## <a name="rest-api"></a>REST API
 
-Portál Azure a prostředí PowerShell, jak používat [REST API Resource Manageru](https://docs.microsoft.com/rest/api/resources/) na pozadí. Pokud potřebujete integrovat označování do jiného prostředí, můžete získat značky pomocí **získat** na ID prostředku a aktualizace sadu značky pomocí **oprava** volání.
+Webu Azure portal a PowerShell používají [REST API Resource Manageru](https://docs.microsoft.com/rest/api/resources/) na pozadí. Pokud je potřeba integrovat označování do jiného prostředí, můžete získat značky pomocí **získat** na ID prostředku a aktualizaci sady s použitím značky **oprava** volání.
 
 ## <a name="tags-and-billing"></a>Značky a fakturace
 
-Značky můžete použít k seskupení fakturační údaje. Například pokud používáte víc virtuálních počítačů pro jiné organizace, použití značek k použití skupiny podle nákladové středisko. Značky lze použít také ke kategorizaci náklady prostředí runtime, jako je fakturace využití pro virtuální počítače spuštěné v provozním prostředí.
+Značky můžete použít k seskupení fakturačních údajů. Například pokud se spuštění několika virtuálních počítačů pro jiné organizace, použijte nákladové středisko značek k použití skupiny. Značky lze použít také ke kategorizaci náklady podle prostředí modulu runtime, jako je například fakturovaného využití pro virtuální počítače spuštěné v provozním prostředí.
 
-Můžete načíst informace o značkách prostřednictvím [využití prostředků Azure a rozhraní API RateCard](../billing/billing-usage-rate-card-overview.md) nebo využití soubor hodnot oddělených čárkami (CSV). Stáhnout soubor využití z [účet Azure portal](https://account.windowsazure.com/) nebo [EA portál](https://ea.azure.com). Další informace o programový přístup k fakturační informace najdete v tématu [proniknout do vaší spotřeby prostředků Microsoft Azure](../billing/billing-usage-rate-card-overview.md). Operace REST API, najdete v části [referenční dokumentace rozhraní API Azure fakturace REST](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c).
+Můžete načíst informace o značkách prostřednictvím [využití prostředků Azure a RateCard API](../billing/billing-usage-rate-card-overview.md) nebo použití souboru hodnot oddělených čárkami (CSV). Stáhněte si soubor využití z [portál účtů Azure](https://account.windowsazure.com/) nebo [portál EA](https://ea.azure.com). Další informace o programový přístup k fakturačním údajům najdete v tématu [získání přehledů o spotřebě prostředků Microsoft Azure](../billing/billing-usage-rate-card-overview.md). Operace rozhraní REST API najdete v části [Azure Billing Reference k REST API](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c).
 
-Když si stáhnete použití sdíleného svazku clusteru pro služby, které podporují značky s fakturace, značky se zobrazí v **značky** sloupce. Další informace najdete v tématu [porozumět vaší faktuře pro Microsoft Azure](../billing/billing-understand-your-bill.md).
+Když si stáhnete použití sdíleného svazku clusteru pro služby, které podporují značky s využitím fakturace, značky se zobrazí v **značky** sloupce. Další informace najdete v tématu [vysvětlení vašeho vyúčtování služeb Microsoft Azure](../billing/billing-understand-your-bill.md).
 
-![Najdete v části značky k fakturaci](./media/resource-group-using-tags/billing_csv.png)
+![Zobrazit značky ve fakturaci](./media/resource-group-using-tags/billing_csv.png)
 
 ## <a name="next-steps"></a>Další postup
 
-* Pomocí vlastních zásad, můžete použít omezení a pravidla týkající se vašeho předplatného. Zásady, které definujete může vyžadovat, že všechny prostředky obsahovat hodnotu pro konkrétní značku. Další informace najdete v tématu [co je Azure zásad?](../azure-policy/azure-policy-introduction.md)
-* Úvod do pomocí Azure PowerShell, pokud nasazujete prostředky, najdete v části [použití Azure Powershellu s Azure Resource Manager](powershell-azure-resource-manager.md).
-* Úvod do používání rozhraní příkazového řádku Azure, pokud nasazujete prostředky, najdete v části [pomocí rozhraní příkazového řádku Azure CLI pro Mac, Linux a Windows pomocí Azure Resource Manageru](xplat-cli-azure-resource-manager.md).
-* Úvod do portálu, najdete v části [použití portálu Azure ke správě prostředků Azure](resource-group-portal.md).  
+* Pomocí vlastních zásad, můžete použít omezení a pravidla týkající se vašeho předplatného. Zásady, které definujete může být nutné, aby všechny prostředky hodnotu pro konkrétní značku. Další informace najdete v tématu [co je Azure Policy?](../azure-policy/azure-policy-introduction.md)
+* Úvod do při nasazování prostředků pomocí Azure Powershellu najdete v tématu [pomocí Azure Powershellu s Azure Resource Managerem](powershell-azure-resource-manager.md).
+* Úvod do při nasazování prostředků pomocí Azure CLI najdete v tématu [pomocí Azure CLI pro Mac, Linux a Windows pomocí Azure Resource Manageru](xplat-cli-azure-resource-manager.md).
+* Úvodní informace o použití portálu najdete v tématu [pomocí webu Azure portal ke správě vašich prostředků Azure](resource-group-portal.md).  
 * Pokyny k tomu, jak můžou podniky používat Resource Manager k efektivní správě předplatných, najdete v části [Základní kostra Azure Enterprise – zásady správného řízení pro předplatná](/azure/architecture/cloud-adoption-guide/subscription-governance).

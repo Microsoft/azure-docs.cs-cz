@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: d2a63a1a9b335b7765c5eaf8c90e1d755b2ce9c9
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 45dedd8c4d6ae2f9b54873d87f82c2e605a8c2aa
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37867116"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38451695"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory doklad o playbook koncept: stavební bloky
 
@@ -468,24 +468,24 @@ Přibližný čas dokončení: 15 minut
 
 | Předpoklad | Zdroje a prostředky |
 | --- | --- |
-| Identifikujte globálního správce, který bude součástí POC PIM | [Začněte používat Azure AD Privileged Identity Management](active-directory-privileged-identity-management-getting-started.md) |
-| Identifikujte globálního správce, který se stane správce zabezpečení | [Začněte používat Azure AD Privileged Identity Management](active-directory-privileged-identity-management-getting-started.md)<br/> [Různé role pro správu v Azure Active Directory PIM](active-directory-privileged-identity-management-roles.md) |
-| Volitelné: Potvrzení, pokud globální Správci mají přístup k e-mailu k e-mailových oznámení v PIM | [Co je Azure AD Privileged Identity Management?: Konfigurace nastavení aktivace rolí](active-directory-privileged-identity-management-configure.md#configure-the-role-activation-settings)
+| Identifikujte globálního správce, který bude součástí POC PIM | [Začněte používat Azure AD Privileged Identity Management](privileged-identity-management/pim-getting-started.md) |
+| Identifikujte globálního správce, který se stane správce zabezpečení | [Začněte používat Azure AD Privileged Identity Management](privileged-identity-management/pim-getting-started.md)<br/> [Různé role pro správu v Azure Active Directory PIM](privileged-identity-management/pim-roles.md) |
+| Volitelné: Potvrzení, pokud globální Správci mají přístup k e-mailu k e-mailových oznámení v PIM | [Co je Azure AD Privileged Identity Management?: Konfigurace nastavení aktivace rolí](privileged-identity-management/pim-configure.md#configure-the-role-activation-settings)
 
 
 ### <a name="steps"></a>Kroky
 
 | Krok | Zdroje a prostředky |
 | --- | --- |
-| Přihlaste se k https://portal.azure.com jako globální správce (GA) a bootstrap okno PIM. Globální správce, který provádí tento krok je nasazený jako správce zabezpečení.  Pojmenujme tuto GA1 objektu actor | [Pomocí Průvodce zabezpečení v Azure AD Privileged Identity Management](active-directory-privileged-identity-management-security-wizard.md) |
-| Identifikujte globální správce a přesunout z trvalé na oprávněné. To by měl být samostatný správce, než jaký se používá v kroku 1 pro přehlednost. Pojmenujme tuto GA2 objektu actor | [Azure AD Privileged Identity Management: Jak přidat nebo odebrat roli uživatele](active-directory-privileged-identity-management-how-to-add-role-to-user.md)<br/>[Co je Azure AD Privileged Identity Management?: Konfigurace nastavení aktivace rolí](active-directory-privileged-identity-management-configure.md#configure-the-role-activation-settings)  |
+| Přihlaste se k https://portal.azure.com jako globální správce (GA) a bootstrap okno PIM. Globální správce, který provádí tento krok je nasazený jako správce zabezpečení.  Pojmenujme tuto GA1 objektu actor | [Pomocí Průvodce zabezpečení v Azure AD Privileged Identity Management](privileged-identity-management/pim-security-wizard.md) |
+| Identifikujte globální správce a přesunout z trvalé na oprávněné. To by měl být samostatný správce, než jaký se používá v kroku 1 pro přehlednost. Pojmenujme tuto GA2 objektu actor | [Azure AD Privileged Identity Management: Jak přidat nebo odebrat roli uživatele](privileged-identity-management/pim-how-to-add-role-to-user.md)<br/>[Co je Azure AD Privileged Identity Management?: Konfigurace nastavení aktivace rolí](privileged-identity-management/pim-configure.md#configure-the-role-activation-settings)  |
 | Nyní, přihlaste se jako GA2 k https://portal.azure.com a zkuste změnit "Nastavení". Všimněte si, některé možnosti jsou zobrazena šedě. | |
-| Na nové kartě a ve stejné relaci v kroku 3 vyhledejte nyní https://portal.azure.com a přidání PIM okno na řídicí panel. | [Postup aktivace nebo deaktivace role v Azure AD Privileged Identity Management: Přidání aplikace Privileged Identity Management](active-directory-privileged-identity-management-how-to-activate-role.md#add-the-privileged-identity-management-application) |
-| Žádost o aktivaci role Globální správce | [Postup aktivace nebo deaktivace role v Azure AD Privileged Identity Management: aktivaci role](active-directory-privileged-identity-management-how-to-activate-role.md#activate-a-role) |
+| Na nové kartě a ve stejné relaci v kroku 3 vyhledejte nyní https://portal.azure.com a přidání PIM okno na řídicí panel. | [Postup aktivace nebo deaktivace role v Azure AD Privileged Identity Management: Přidání aplikace Privileged Identity Management](privileged-identity-management/pim-how-to-activate-role.md#add-the-privileged-identity-management-application) |
+| Žádost o aktivaci role Globální správce | [Postup aktivace nebo deaktivace role v Azure AD Privileged Identity Management: aktivaci role](privileged-identity-management/pim-how-to-activate-role.md#activate-a-role) |
 | Všimněte si, že pokud GA2 se nikdy zaregistrovali pro vícefaktorové ověřování, registrace pro vícefaktorové ověřování Azure bude nutné |  |
 | Přejděte zpět na původní kartu v kroku 3 a klikněte na tlačítko Aktualizovat v prohlížeči. Všimněte si, že máte teď přístup k nastavení "uživatel" | |
 | Volitelně Pokud globální Správci mají zapnutým e-mailem, můžete zkontrolovat GA1 a GA2 vaší doručené pošty a zobrazit tato zpráva role aktivuje |  |
-| 8 zkontrolujte historie auditu a podívejte se, že sestava potvrďte zvýšení GA2 zobrazí. | [Co je Azure AD Privileged Identity Management?: kontrolní aktivita role](active-directory-privileged-identity-management-configure.md#review-role-activity) |
+| 8 zkontrolujte historie auditu a podívejte se, že sestava potvrďte zvýšení GA2 zobrazí. | [Co je Azure AD Privileged Identity Management?: kontrolní aktivita role](privileged-identity-management/pim-configure.md#review-role-activity) |
 
 ### <a name="considerations"></a>Požadavky
 

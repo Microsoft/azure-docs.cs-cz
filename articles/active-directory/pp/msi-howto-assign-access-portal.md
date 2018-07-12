@@ -1,6 +1,6 @@
 ---
-title: Přiřazení přístupu MSI pro prostředek služby Azure, pomocí portálu Azure
-description: Podrobné pokyny pro přiřazení MSI na jeden přístup k prostředkům na jiný prostředek, a to pomocí portálu Azure.
+title: Přiřazení přístupu MSI k prostředku Azure, pomocí webu Azure portal
+description: Podrobné pokyny pro přiřazování MSI na jeden přístup k prostředkům na jiný prostředek, pomocí webu Azure portal.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -15,50 +15,50 @@ ms.date: 12/15/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 83a56793d08632918a75f6580360a9dd148d7316
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2018
-ms.locfileid: "28978833"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38611064"
 ---
-# <a name="assign-a-managed-service-identity-access-to-a-resource-by-using-the-azure-portal"></a>Přiřadit identitu služby spravovat přístup k prostředku pomocí portálu Azure
+# <a name="assign-a-managed-service-identity-access-to-a-resource-by-using-the-azure-portal"></a>Identita spravované služby se přístup k prostředku přiřadit i pomocí webu Azure portal
 
 [!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
-Po nakonfigurování jste prostředek služby Azure s identita spravované služby (MSI), můžete zajistit přístup MSI pro jiný prostředek, stejně jako jakýkoli zaregistrovaný objekt zabezpečení. Tento článek ukazuje, jak poskytnout přístup MSI Azure virtuálního počítače k účtu úložiště Azure pomocí portálu Azure.
+Po dokončení konfigurace k prostředku Azure s Identity spravované služby (MSI), můžete poskytnout přístup MSI do jiného prostředku, stejně jako jakýkoli zaregistrovaný objekt zabezpečení. Tento článek ukazuje, jak předat přístupu MSI virtuálního počítače Azure na účtu služby Azure storage pomocí webu Azure portal.
 
 ## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [msi-core-prereqs](~/includes/active-directory-msi-core-prereqs-ua.md)]
 
-## <a name="use-rbac-to-assign-the-msi-access-to-another-resource"></a>Používat funkci RBAC přiřazení přístupu MSI pro jiný prostředek
+## <a name="use-rbac-to-assign-the-msi-access-to-another-resource"></a>Využijte RBAC pro přiřazení přístupu MSI k jinému prostředku
 
-Po povolení MSI na prostředek Azure [například virtuální počítač Azure](msi-qs-configure-portal-windows-vm.md):
+Po povolení MSI v prostředku Azure, [jako je například virtuální počítač Azure](msi-qs-configure-portal-windows-vm.md):
 
-1. Přihlaste se k [portál Azure](https://portal.azure.com) pomocí účtu spojené s předplatným Azure, pod kterým jste nakonfigurovali soubor MSI.
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com) pomocí účtu přidružených k předplatnému Azure, ve které jste nakonfigurovali MSI.
 
-2. Přejděte do požadovaného prostředku, na který chcete upravit řízení přístupu. V tomto příkladu nabízíme virtuálního počítače Azure přístup k účtu úložiště, proto jsme přejděte na účet úložiště.
+2. Přejděte na požadovaný prostředek, na který chcete upravit řízení přístupu. V tomto příkladu nabízíme přístupu virtuálních počítačů Azure do účtu úložiště, takže přejdeme k účtu úložiště.
 
-3. Vyberte **přístup k ovládacímu prvku (IAM)** prostředků a vyberte **+ přidat**. Zadejte **Role**, **přiřadit přístup k virtuálnímu počítači**a zadejte odpovídající **předplatné** a **skupiny prostředků** kde se nachází na prostředek. V oblasti kritérií hledání měli byste vidět prostředku. Vyberte prostředek a vyberte **Uložit**. 
+3. Vyberte **řízení přístupu (IAM)** stránce prostředků a vyberte **+ přidat**. Zadejte **Role**, **přiřazení přístupu k virtuálnímu počítači**a zadejte odpovídající **předplatné** a **skupiny prostředků** Pokud je prostředek umístěn. V rámci oblasti kritéria hledání měli byste vidět prostředku. Vyberte prostředek a vyberte **Uložit**. 
 
-   ![Snímek obrazovky přístup ovládacího prvku (IAM)](~/articles/active-directory/media/msi-howto-assign-access-portal/assign-access-control-iam-blade-before.png)  
+   ![Snímek obrazovky přístupu (IAM) ovládacího prvku](~/articles/active-directory/media/msi-howto-assign-access-portal/assign-access-control-iam-blade-before.png)  
 
-4. Jste vráceni do hlavní **přístup k ovládacímu prvku (IAM)** stránky, kde uvidíte nový záznam pro prostředku MSI. V tomto příkladu má "SimpleWinVM" virtuální počítač ze skupiny prostředků ukázku **Přispěvatel** přístup k účtu úložiště.
+4. Budete přesměrováni zpět na hlavní **řízení přístupu (IAM)** stránku, kde uvidíte nový záznam pro zdroje MSI. V tomto příkladu má "SimpleWinVM" virtuálního počítače ze skupiny prostředků ukázka **Přispěvatel** přístup k účtu úložiště.
 
-   ![Snímek obrazovky přístup ovládacího prvku (IAM)](~/articles/active-directory/media/msi-howto-assign-access-portal/assign-access-control-iam-blade-after.png)
+   ![Snímek obrazovky přístupu (IAM) ovládacího prvku](~/articles/active-directory/media/msi-howto-assign-access-portal/assign-access-control-iam-blade-after.png)
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-Pokud soubor MSI pro prostředek nezobrazuje v seznamu dostupných identit, ověřte, aby byla správně povolená soubor MSI. V našem případě jsme můžete přejít zpět na virtuálním počítači Azure a zkontrolujte následující:
+Pokud soubor MSI pro prostředek není uveden v seznamu dostupných identit, ověřte správně povolené MSI. V našem případě můžeme přejít zpět na virtuálním počítači Azure a zkontrolujte následující:
 
-- Podívejte se na **konfigurace** stránky a ujistěte se, že hodnota **MSI povoleno** je **Ano**.
-- Podívejte se na **rozšíření** stránky a ujistěte se, že příponou MSI úspěšně nasazena.
+- Podívejte se na **konfigurace** stránce a ujistěte se, že hodnota **MSI povolené** je **Ano**.
+- Podívejte se na **rozšíření** stránce a ujistěte se, že rozšíření MSI úspěšné nasazení.
 
-Pokud je buď nesprávný, musíte může znovu nasaďte MSI v prostředku znovu, nebo vyřešit potíže s selhání nasazení.
+Pokud je buď nesprávný, potřebujete znovu znovu provádět nasazení MSI pro váš prostředek ani řešení potíží s nasazení se nezdařilo.
 
 ## <a name="related-content"></a>Související obsah
 
 - Přehled MSI najdete v tématu [identita spravované služby přehled](msi-overview.md).
-- Pokud chcete povolit MSI ve virtuálním počítači Azure, najdete v části [konfigurace Azure virtuálního počítače spravované služby Identity (MSI) pomocí portálu Azure](msi-qs-configure-portal-windows-vm.md).
+- Povolení MSI ve Virtuálním počítači Azure, najdete v článku [konfigurace Azure VM Identity spravované služby (MSI) pomocí webu Azure portal](msi-qs-configure-portal-windows-vm.md).
 
 

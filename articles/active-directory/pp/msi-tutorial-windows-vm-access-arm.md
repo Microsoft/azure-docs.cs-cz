@@ -1,6 +1,6 @@
 ---
-title: Používat Windows virtuální počítač MSI pro přístup k Azure Resource Manager
-description: Kurz vás provede procesem použití Windows virtuálního počítače spravované služby Identity (MSI) pro přístup k Azure Resource Manager.
+title: Použití MSI virtuálního počítače Windows pro přístup k Azure Resource Manageru
+description: Kurz vás provede procesem jeho použití Windows virtuální počítač Identity spravované služby (MSI) pro přístup k Azure Resource Manageru.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -14,23 +14,23 @@ ms.workload: identity
 ms.date: 12/15/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 2816a19833f45a7e3a344e31f4131d23d9a8417a
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: a7960ab4aee80c7d15ea0f031790dd089424565d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29382555"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38610253"
 ---
-# <a name="use-a-windows-vm-managed-service-identity-msi-to-access-resource-manager"></a>Používat pro přístup k Resource Manageru Windows virtuálního počítače spravované služby Identity (MSI)
+# <a name="use-a-windows-vm-managed-service-identity-msi-to-access-resource-manager"></a>Použít pro přístup k Resource Manageru Windows virtuální počítač Identity spravované služby (MSI)
 
 [!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
-V tomto kurzu se dozvíte, jak povolit identita spravované služby (MSI) pro Windows virtuální počítač (VM). Potom můžete tuto identitu pro přístup k rozhraní API služby Azure Resource Manager. Identita spravované služby je automaticky prováděna nástrojem Azure a umožňují ověření pro služby, které podporují ověřování Azure AD bez nutnosti vložení přihlašovací údaje do vašeho kódu. Získáte informace o těchto tématech:
+V tomto kurzu se dozvíte, jak povolit Identity spravované služby (MSI) pro Windows virtuální počítač (VM). Potom můžete tuto identitu pro přístup k rozhraní API Azure Resource Manageru. Identita spravované služby je automaticky prováděna nástrojem Azure a umožňují ověření do služeb, které podporují ověřování Azure AD, aniž by bylo nutné vložit pověření do kódu. Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Povolit MSI v systému Windows virtuálního počítače 
-> * Udělit přístup virtuálních počítačů do skupiny prostředků ve službě Správce prostředků Azure 
-> * Získání přístupového tokenu pomocí identity virtuálního počítače a použít jej k vyvolání Azure Resource Manager
+> * Povolení MSI ve virtuálním počítači Windows 
+> * Udělení přístupu vašich virtuálních počítačů do skupiny prostředků v Azure Resource Manageru 
+> * Získání přístupového tokenu pomocí identity virtuálního počítače a použít jej k vyvolání Azure Resource Manageru
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -41,80 +41,80 @@ V tomto kurzu se dozvíte, jak povolit identita spravované služby (MSI) pro Wi
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
-## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>Vytvoření virtuálního počítače s Windows v nové skupině prostředků.
+## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>Vytvoření virtuálního počítače s Windows do nové skupiny prostředků
 
 V tomto kurzu vytvoříme nový virtuální počítač s Windows.  Můžete také povolit MSI na existující virtuální počítač.
 
-1.  Klikněte na tlačítko **vytvořit prostředek** v levém horním rohu portálu Azure.
+1.  Klikněte na tlačítko **vytvořit prostředek** v levém horním rohu webu Azure portal.
 2.  Vyberte **Compute** a potom vyberte **Windows Server 2016 Datacenter**. 
-3.  Zadejte informace o virtuálním počítači. **Uživatelské jméno** a **heslo** vytvořený, zde je přihlašovací údaje, které používáte k přihlášení k virtuálnímu počítači.
-4.  Vyberte správnou **předplatné** pro virtuální počítač v rozevírací nabídce.
-5.  Chcete-li vybrat nový **skupiny prostředků** , během které můžete vytvořit virtuální počítač vyberte **vytvořit nový**. Jakmile budete hotovi, klikněte na **OK**.
-6.  Vyberte velikost virtuálního počítače. Pokud chcete zobrazit další velikosti, vyberte **Zobrazit všechny** nebo změňte filtr **Podporovaný typ disku**. Na stránce nastavení ponechejte výchozí hodnoty a klikněte na tlačítko **OK**.
+3.  Zadejte informace o virtuálním počítači. **Uživatelské jméno** a **heslo** vytvořený, tady je přihlašovací údaje použijete k přihlášení k virtuálnímu počítači.
+4.  Zvolte správné **předplatné** pro virtuální počítač v rozevírací nabídce.
+5.  Chcete-li vybrat nový **skupiny prostředků** ve kterém chcete vytvořit virtuální počítač, zvolte **vytvořit nový**. Jakmile budete hotovi, klikněte na **OK**.
+6.  Vyberte velikost virtuálního počítače. Pokud chcete zobrazit další velikosti, vyberte **Zobrazit všechny** nebo změňte filtr **Podporovaný typ disku**. Na stránce nastavení ponechte výchozí nastavení a klikněte na tlačítko **OK**.
 
-    ![Obrázek alternativní text](~/articles/active-directory/media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
+    ![Text ALT obrázku](~/articles/active-directory/media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
 
-## <a name="enable-msi-on-your-vm"></a>Povolit MSI na vašem virtuálním počítači 
+## <a name="enable-msi-on-your-vm"></a>Povolení MSI ve virtuálním počítači 
 
-Virtuální počítač MSI umožňuje získat přístupové tokeny z Azure AD, aniž by bylo třeba uvést přihlašovací údaje do vašeho kódu. Povolení MSI informuje Azure k vytvoření spravovaného identity pro virtuální počítač. V pozadí, povolení MSI provádí dvě věci: nainstaluje rozšíření virtuálního počítače MSI na vašem virtuálním počítači a umožňuje MSI ve službě Správce prostředků Azure.
+MSI virtuálního počítače můžete k získání přístupových tokenů z Azure AD, aniž byste museli vložit pověření do kódu. Povolení MSI Azure zjistí, chcete-li vytvořit spravovanou identitu pro váš virtuální počítač. Pod pokličkou, povolení MSI provede dvě věci: nainstaluje rozšíření MSI virtuálního počítače na virtuálním počítači a umožňuje MSI v Azure Resource Manageru.
 
-1.  Vyberte **virtuálního počítače** , které chcete povolit MSI v.  
-2.  V levém navigačním panelu klikněte na tlačítko **konfigurace**. 
-3.  Zobrazí **identita spravované služby**. Registrovat a povolit soubor MSI, vyberte **Ano**, pokud chcete zakázat, vyberte Ne. 
-4.  Ujistěte se, kliknete na tlačítko **Uložit** konfiguraci uložíte.  
-    ![Obrázek alternativní text](~/articles/active-directory/media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
+1.  Vyberte **virtuální počítač** , že chcete povolit na MSI.  
+2.  Na navigačním panelu vlevo klikněte na tlačítko **konfigurace**. 
+3.  Zobrazí **identita spravované služby**. Chcete-li zaregistrovat a povolit MSI, vyberte **Ano**, pokud chcete zakázat, vyberte Ne. 
+4.  Zajištění kliknutí na **Uložit** uložte konfiguraci.  
+    ![Text ALT obrázku](~/articles/active-directory/media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 
-5. Pokud chcete zkontrolovat a ověřit, která rozšíření jsou na tomto virtuálním počítači, klikněte na tlačítko **rozšíření**. Pokud je povoleno MSI, pak **ManagedIdentityExtensionforWindows** se zobrazí v seznamu.
+5. Pokud chcete zkontrolovat a ověřit, jaká rozšíření jsou na tomto virtuálním počítači, klikněte na tlačítko **rozšíření**. Pokud je povolené MSI, pak **ManagedIdentityExtensionforWindows** se zobrazí v seznamu.
 
-    ![Obrázek alternativní text](~/articles/active-directory/media/msi-tutorial-windows-vm-access-arm/msi-windows-extension.png)
+    ![Text ALT obrázku](~/articles/active-directory/media/msi-tutorial-windows-vm-access-arm/msi-windows-extension.png)
 
-## <a name="grant-your-vm-access-to-a-resource-group-in-resource-manager"></a>Udělit přístup virtuálních počítačů do skupiny prostředků ve službě Správce prostředků
-Pomocí Instalační služby MSI kódu můžete získat přístupové tokeny k ověřování k prostředkům, které podporují ověřování Azure AD.  Azure Resource Manager podporuje ověřování Azure AD.  Nejprve musíme udělení tohoto Virtuálního počítače identitu přístup k prostředku ve službě Správce prostředků, v tomto případě skupině prostředků, ve kterém se nachází virtuální počítač.  
+## <a name="grant-your-vm-access-to-a-resource-group-in-resource-manager"></a>Udělení přístupu vašich virtuálních počítačů do skupiny prostředků v Resource Manageru
+Použití MSI kódu můžete získat přístupové tokeny k ověření prostředků, které podporují ověřování Azure AD.  Azure Resource Manager podporuje ověřování Azure AD.  Nejdřív potřebujeme k udělení přístupu identity tento virtuální počítač k prostředků v Resource Manageru v tomto případě skupina prostředků, ve kterém se nachází virtuální počítač.  
 
 1.  Přejděte na kartu pro **skupiny prostředků**. 
-2.  Vyberte konkrétní **skupiny prostředků** jste vytvořili pro vaše **virtuální počítač s Windows**. 
-3.  Přejděte na **přístup k ovládacímu prvku (IAM)** na levém panelu. 
-4.  Potom **přidat** nové přiřazení role pro vaše **virtuální počítač s Windows**.  Zvolte **Role** jako **čtečky**. 
-5.  V dalším rozevíracím **přiřadit přístup** prostředek **virtuální počítač**. 
-6.  Dále zkontrolujte správné předplatné, je uvedena ve **předplatné** rozevíracího seznamu. A pro **skupiny prostředků**, vyberte **všechny skupiny zdrojů**. 
-7.  Nakonec v **vyberte** vyberte virtuální počítač Windows v rozevírací nabídce a klikněte na **Uložit**.
+2.  Vyberte konkrétní **skupiny prostředků** jste vytvořili pro vaše **virtuálního počítače Windows**. 
+3.  Přejděte na **řízení přístupu (IAM)** na levém panelu. 
+4.  Potom **přidat** přiřazení nové role pro vaše **virtuálního počítače Windows**.  Zvolte **Role** jako **čtečky**. 
+5.  V dalším rozevíracím seznamu **přiřadit přístup k** prostředek **virtuálního počítače**. 
+6.  Dále, zajistit správné předplatné je uvedené v **předplatné** rozevíracího seznamu. A pro **skupiny prostředků**vyberte **všechny skupiny prostředků**. 
+7.  Nakonec v **vyberte** zvolte v rozevíracím seznamu a klikněte na virtuální počítač Windows **Uložit**.
 
-    ![Obrázek alternativní text](~/articles/active-directory/media/msi-tutorial-windows-vm-access-arm/msi-windows-permissions.png)
+    ![Text ALT obrázku](~/articles/active-directory/media/msi-tutorial-windows-vm-access-arm/msi-windows-permissions.png)
 
-## <a name="get-an-access-token-using-the-vm-identity-and-use-it-to-call-azure-resource-manager"></a>Získání přístupového tokenu pomocí identity virtuálního počítače a použít jej k vyvolání Azure Resource Manager 
+## <a name="get-an-access-token-using-the-vm-identity-and-use-it-to-call-azure-resource-manager"></a>Získání přístupového tokenu pomocí identity virtuálního počítače a použít jej k vyvolání Azure Resource Manageru 
 
-Budete muset použít **prostředí PowerShell** v této části.  Pokud jste si nainstalovali, stáhněte si [zde](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-4.3.1). 
+Budete muset použít **Powershellu** v této části.  Pokud nejsou nainstalována, si ho stáhnout [tady](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-4.3.1). 
 
-1.  Na portálu, přejděte na **virtuální počítače** a přejděte k virtuálnímu počítači Windows a v **přehled**, klikněte na tlačítko **Connect**. 
-2.  Zadejte ve vaší **uživatelské jméno** a **heslo** pro které jste přidali při vytváření virtuálního počítače Windows. 
-3.  Teď, když jste vytvořili **připojení ke vzdálené ploše** s virtuálním počítačem, otevřete **prostředí PowerShell** ve vzdálené relaci. 
-4.  Pomocí Powershellu Invoke-WebRequest, vytvořte žádost na místní koncový bod MSI se získat přístupový token pro Azure Resource Manager.
+1.  Na portálu přejděte na **virtuálních počítačů** a přejděte ke svému virtuálnímu počítači Windows a v **přehled**, klikněte na tlačítko **připojit**. 
+2.  Zadejte vaše **uživatelské jméno** a **heslo** pro které jste přidali po vytvoření virtuálního počítače Windows. 
+3.  Teď, když jste vytvořili **připojení ke vzdálené ploše** s virtuálním počítačem, otevřete **Powershellu** ve vzdálené relaci. 
+4.  Použití Powershellu Invoke-WebRequest, vytvořte žádost na místním koncovým bodem MSI pro získání přístupového tokenu pro Azure Resource Manageru.
 
     ```powershell
        $response = Invoke-WebRequest -Uri http://localhost:50342/oauth2/token -Method GET -Body @{resource="https://management.azure.com/"} -Headers @{Metadata="true"}
     ```
     
     > [!NOTE]
-    > Hodnota parametru "prostředek" musí být přesná shoda pro očekávané službou Azure AD. Pokud používáte ID prostředku Azure Resource Manager, je nutné zahrnout do adresy koncové lomítko, v identifikátoru URI.
+    > Hodnota parametru "prostředek" musí být přesná shoda pro co se očekává službou Azure AD. Při použití ID prostředku Azure Resource Manageru, je nutné zahrnout do adresy koncové lomítko v identifikátoru URI.
     
-    V dalším kroku extrahujte úplnou odpověď, který je uložený jako řetězec formátu JavaScript objekt Notation (JSON) v objektu $response. 
+    V dalším kroku extrahujte úplnou odpověď, která je uložena jako řetězec JSON JavaScript Object Notation () ve formátu $response objektu. 
     
     ```powershell
     $content = $response.Content | ConvertFrom-Json
     ```
-    V dalším kroku extrahujte tokenu přístupu z odpovědi.
+    V dalším kroku extrahujte přístupový token z odpovědi.
     
     ```powershell
     $ArmToken = $content.access_token
     ```
     
-    Nakonec zavolejte Azure Resource Manager pomocí přístupového tokenu. V tomto příkladu také používáme Powershellu Invoke-WebRequest volání do Azure Resource Manageru, a musí zahrnovat přístupový token v hlavičce autorizace.
+    Nakonec proveďte volání Azure Resource Manageru pomocí přístupového tokenu. V tomto příkladu jsme také používáte Powershellu Invoke-WebRequest volání do Azure Resource Manageru a zahrnout přístupového tokenu v autorizační hlavičce.
     
     ```powershell
     (Invoke-WebRequest -Uri https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>?api-version=2016-06-01 -Method GET -ContentType "application/json" -Headers @{ Authorization ="Bearer $ArmToken"}).content
     ```
     > [!NOTE] 
-    > Adresa URL je malá a velká písmena, zajistěte proto, pokud používáte přesný případ stejné, jako jste použili dříve, když jste s názvem skupiny prostředků a velká písmena "G" v "Skupinyprostředků."
+    > Adresa URL je velká a malá písmena, zajistěte proto, pokud používáte rozlišovat velikost písmen stejné, jako jste použili dříve při názvem skupiny prostředků a velká písmena "G" v "resourceGroups."
         
     Následující příkaz vrátí podrobnosti o skupině prostředků:
 
@@ -126,5 +126,5 @@ Budete muset použít **prostředí PowerShell** v této části.  Pokud jste si
 
 - Přehled MSI najdete v tématu [identita spravované služby přehled](msi-overview.md).
 
-Použijte následující sekci komentáře k poskytnutí zpětné vazby a Pomozte nám vylepšit a utvářejí náš obsah.
+Pomocí následujícího oddílu pro komentáře na svůj názor a Pomozte nám vylepšit a obrazce náš obsah.
 

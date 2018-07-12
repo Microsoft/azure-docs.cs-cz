@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží s přidělováním virtuálního počítače Windows Azure | Microsoft Docs
-description: Řešení potíží s přidělením při vytváření, restartování nebo změně velikosti virtuální počítač s Windows v Azure
+title: Řešení potíží s chybami přidělení virtuálního počítače Windows Azure | Dokumentace Microsoftu
+description: Řešení potíží s přidělováním při vytváření, restartování nebo změně velikosti virtuálního počítače s Windows v Azure
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
 author: JiangChen79
@@ -16,13 +16,13 @@ ms.topic: article
 ms.date: 04/13/2018
 ms.author: cjiang
 ms.openlocfilehash: c434e7776539031a905b9d7a4c6032d30d6588e9
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31525416"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38630169"
 ---
-# <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-windows-vms-in-azure"></a>Řešení potíží s přidělením při vytváření, restartování nebo změně velikosti virtuálních počítačů Windows v Azure
+# <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-windows-vms-in-azure"></a>Řešení potíží s přidělováním při vytváření, restartování nebo změně velikosti virtuálních počítačů s Windows v Azure
 
 [!INCLUDE [virtual-machines-common-allocation-failure](../../../includes/virtual-machines-common-allocation-failure.md)]
 

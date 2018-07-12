@@ -3,23 +3,23 @@ title: Analýza hrozeb v Azure Security Center | Dokumentace Microsoftu
 description: Zjistěte, jak používat možnosti analýzy hrozeb v Azure Security Center k identifikaci potenciálních hrozeb na virtuálních počítačích a počítačích.
 services: security-center
 documentationcenter: na
-author: terrylan
+author: TerryLanfear
 manager: mbaldwin
 editor: ''
 ms.assetid: a771a3a1-2925-46ca-8e27-6f6a0746f58b
 ms.service: security-center
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/12/2017
-ms.author: yurid
-ms.openlocfilehash: 9654c25bf6b51d48dc195d6a536b61312fdcbeff
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
-ms.translationtype: HT
+ms.date: 07/10/2018
+ms.author: terrylan
+ms.openlocfilehash: 832998a6028a8977b43e343ed778cc0b60388728
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32774569"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38561360"
 ---
 # <a name="threat-intelligence-in-azure-security-center"></a>Analýza hrozeb v Azure Security Center
 Tento článek vám pomůže s používáním analýzy hrozeb v Azure Security Center k vyřešení problémů souvisejících se zabezpečením.
@@ -43,20 +43,24 @@ Jedním z kroků [procesu reakce na incidenty zabezpečení](https://docs.micros
 - Identifikovat napadené systémy.
 - Identifikujte soubory, ke kterým byl získán přístup, a závažnost takových souborů.
 
-S těmito úlohami vám můžou pomoct informace analýzy hrozeb ve službě Security Center. 
+S těmito úlohami vám můžou pomoct informace analýzy hrozeb ve službě Security Center.
 
 ## <a name="access-the-threat-intelligence"></a>Přístup k analýze hrozeb
 Pokud chcete vizualizovat aktuální analýzu hrozeb pro vaše prostředí, musíte nejprve vybrat pracovní prostor, kde se nacházejí vaše informace. Pokud nemáte více pracovních prostorů, vynecháte selektor pracovního prostoru a přejdete přímo na řídicí panel **Analýza hrozeb**. Přístup k řídicímu panelu:
 
 1. Otevřete řídicí panel **Security Center**.
 
-2. V levém podokně v části **Detekce** vyberte **Analýza hrozeb**. Zobrazí se řídicí panel **Analýza hrozeb**.
+2. V levém podokně v části **ochrana před internetovými útoky** vyberte **hrozeb**. Otevře se mapy.
+
+    ![Mapa analýzy hrozeb](./media/security-center-threat-intel/security-center-threat-intel.png)
+
+3. V horní části stránky na mapě, vyberte **zobrazit classic hrozeb**. **Hrozeb** otevře se řídicí panel.
 
     ![Řídicí panel Analýza hrozeb](./media/security-center-threat-intel/security-center-threat-intel-fig1.png)
 
     > [!NOTE]
-    > Pokud se ve sloupci úplně vpravo zobrazí **UPGRADUJTE PLÁN**, tento pracovní prostor používá bezplatné předplatné. Upgradujte na úroveň Standard, abyste mohli tuto funkci používat. Pokud se ve sloupci úplně vpravo zobrazí **VYŽADUJE AKTUALIZACI**, aktualizujte [Azure Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview), abyste mohli tuto funkci používat. Další informace o cenovém plánu najdete v článku o cenách Azure Security Center. 
-    > 
+    > Pokud se ve sloupci úplně vpravo zobrazí **UPGRADUJTE PLÁN**, tento pracovní prostor používá bezplatné předplatné. Upgradujte na úroveň Standard, abyste mohli tuto funkci používat. Pokud se ve sloupci úplně vpravo zobrazí **VYŽADUJE AKTUALIZACI**, aktualizujte [Azure Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview), abyste mohli tuto funkci používat. Další informace o cenovém plánu najdete v článku o cenách Azure Security Center.
+    >
 3. Pokud máte k prozkoumání více než jeden pracovní prostor, určete prioritu prozkoumání podle sloupce **Škodlivá IP adresa**. Zobrazuje se v něm aktuální počet škodlivých IP adres v tomto pracovním prostoru. Vyberte pracovní prostor, který chcete použít, a pak se zobrazí řídicí panel **Analýza hrozeb**.
 
     ![Informace Analýzy hrozeb](./media/security-center-threat-intel/security-center-threat-intel-fig5.png)
@@ -91,13 +95,12 @@ Pro virtuální počítače Azure se na řídicím panelu **Analýza hrozeb** zo
 - Události DNS (Type=DnsEvents)
 
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 V tomto článku jste zjistili, jak používat analýzu hrozeb ve službě Security Center jako pomoc při identifikování podezřelých aktivit. Další informace o službě Security Center najdete v následujících článcích:
 
 * [Správa a reakce na výstrahy zabezpečení v Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts). Zjistěte, jak spravovat výstrahy a reagovat na incidenty zabezpečení ve službě Security Center.
 * [Monitorování stavu zabezpečení ve službě Azure Security Center](security-center-monitoring.md). Zjistěte, jak monitorovat stav svých prostředků Azure.
 * [Vysvětlení výstrah zabezpečení v Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-type). Seznamte se s dalšími typy výstrah zabezpečení.
-* [Průvodce odstraňováním potíží pro Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide). Zjistěte, jak řešit běžné problémy ve službě Security Center. 
+* [Průvodce odstraňováním potíží pro Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide). Zjistěte, jak řešit běžné problémy ve službě Security Center.
 * [Azure Security Center – nejčastější dotazy](security-center-faq.md). Najděte odpovědi na nejčastější dotazy ohledně používání této služby.
 * [Blog o zabezpečení Azure](http://blogs.msdn.com/b/azuresecurity/). Přečtěte si příspěvky o zabezpečení Azure a dodržování předpisů.
-

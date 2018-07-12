@@ -1,6 +1,6 @@
 ---
-title: Zřízení zařízení pro vzdálené monitorování v Node.js – Azure | Microsoft Docs
-description: Popisuje, jak se připojit zařízení k používání aplikace napsané v Node.js akcelerátoru řešení vzdáleného monitorování.
+title: Zřízení zařízení pro vzdálené monitorování v Node.js – Azure | Dokumentace Microsoftu
+description: Popisuje postup připojení zařízení k akcelerátoru řešení vzdáleného monitorování, který se pomocí aplikace napsané v Node.js.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -9,32 +9,32 @@ ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: dobett
 ms.openlocfilehash: 8bd614fd7aad248612d65717fe50e04a3fc3a9e1
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34627326"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38481877"
 ---
-# <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>Připojte zařízení k řešení akcelerátoru vzdálené monitorování (Node.js)
+# <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>Připojení zařízení k akcelerátor řešení vzdálené monitorování (Node.js)
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-V tomto kurzu se dozvíte, jak se připojit fyzického zařízení k akcelerátoru řešení vzdáleného monitorování. V tomto kurzu použijete Node.js, který je vhodný pro prostředí s minimálními prostředků omezení.
+V tomto kurzu se dozvíte, jak připojení fyzických zařízení k akcelerátoru řešení vzdáleného monitorování. V tomto kurzu použijete Node.js, který je vhodný pro prostředí s minimálním prostředkům.
 
-## <a name="create-a-nodejs-solution"></a>Vytvoření řešení Node.js
+## <a name="create-a-nodejs-solution"></a>Vytvořte řešení pro Node.js
 
-Ujistěte se, že [Node.js](https://nodejs.org/) verze 4.0.0 nebo novější je nainstalován na vývojovém počítači. Můžete spustit `node --version` na příkazovém řádku, které chcete zkontrolovat verzi.
+Ujistěte se, že [Node.js](https://nodejs.org/) verze 4.0.0 nebo novější nainstalován na vývojovém počítači. Můžete spustit `node --version` příkazového řádku, pokud chcete zkontrolovat verzi.
 
 1. Vytvořte složku s názvem `remotemonitoring` na vývojovém počítači. Přejděte do této složky ve vašem prostředí příkazového řádku.
 
-1. Chcete-li stáhnout a nainstalovat balíčky, které potřebujete k dokončení ukázkové aplikace, spusťte následující příkazy:
+1. Pokud chcete stáhnout a nainstalovat balíčky, které potřebujete k dokončení ukázkové aplikace, spusťte následující příkazy:
 
     ```cmd/sh
     npm init
     npm install async azure-iot-device azure-iot-device-mqtt --save
     ```
 
-1. V `remotemonitoring` složky, vytvořte soubor s názvem **remote_monitoring.js**. Otevřete tento soubor v textovém editoru.
+1. V `remotemonitoring` složce vytvořte soubor s názvem **remote_monitoring.js**. Otevřete tento soubor v textovém editoru.
 
 1. V **remote_monitoring.js** soubor, přidejte následující `require` příkazy:
 
@@ -46,14 +46,14 @@ Ujistěte se, že [Node.js](https://nodejs.org/) verze 4.0.0 nebo novější je 
     var async = require('async');
     ```
 
-1. Přidejte následující deklarace proměnných za příkazy `require`. Nahraďte hodnotu zástupného symbolu `{device connection string}` s hodnotou jste si poznamenali zařízení zřízené v řešení pro vzdálené monitorování:
+1. Přidejte následující deklarace proměnných za příkazy `require`. Nahraďte hodnotu zástupného symbolu `{device connection string}` s hodnotou, kterou jste si poznamenali u zařízení jste zřídili v řešení vzdáleného monitorování:
 
     ```nodejs
     var connectionString = '{device connection string}';
     var deviceId = ConnectionString.parse(connectionString).DeviceId;
     ```
 
-1. Chcete-li definovat některé základní telemetrická data, přidejte následující proměnné:
+1. Pokud chcete definovat některé základní telemetrická data, přidejte následující proměnné:
 
     ```nodejs
     var temperature = 50;
@@ -64,7 +64,7 @@ Ujistěte se, že [Node.js](https://nodejs.org/) verze 4.0.0 nebo novější je 
     var pressureUnit = 'psig';
     ```
 
-1. Chcete-li definovat některé hodnoty vlastnosti, přidejte následující proměnné:
+1. Pokud chcete definovat některé hodnoty vlastností, přidejte následující proměnné:
 
     ```nodejs
     var temperatureSchema = 'chiller-temperature;v1';
@@ -80,7 +80,7 @@ Ujistěte se, že [Node.js](https://nodejs.org/) verze 4.0.0 nebo novější je 
     var deviceOnline = true;
     ```
 
-1. Přidejte následující proměnnou k určení hlášené vlastností k odeslání do řešení. Tyto vlastnosti obsahovat metadata k popisu metody a používá telemetrická data zařízení:
+1. Přidejte následující proměnné k definování ohlášené vlastnosti k odeslání do řešení. Tyto vlastnosti zahrnují metadata popisují metody a telemetrii zařízení používá:
 
     ```nodejs
     var reportedProperties = {
@@ -134,7 +134,7 @@ Ujistěte se, že [Node.js](https://nodejs.org/) verze 4.0.0 nebo novější je 
     }
     ```
 
-1. Pokud chcete vytisknout výsledky operace, přidejte následující funkce, pomocné rutiny:
+1. Chcete-li vytisknout výsledky operace, přidejte následující funkci pomocné rutiny:
 
     ```nodejs
     function printErrorFor(op) {
@@ -144,7 +144,7 @@ Ujistěte se, že [Node.js](https://nodejs.org/) verze 4.0.0 nebo novější je 
     }
     ```
 
-1. Přidejte následující pomocné funkce sloužící k náhodné telemetrie hodnoty:
+1. Přidejte následující pomocnou funkci používat k náhodné hodnoty telemetrie:
 
     ```nodejs
     function generateRandomIncrement() {
@@ -152,7 +152,7 @@ Ujistěte se, že [Node.js](https://nodejs.org/) verze 4.0.0 nebo novější je 
     }
     ```
 
-1. Přidejte následující obecné funkci pro zpracování volání metody přímé z řešení. Funkce zobrazí informace o metodě direct, který byl vyvolán, ale v této ukázce neupravuje zařízení žádným způsobem. Toto řešení využívá přímé metody tak, aby fungoval na zařízení:
+1. Přidejte následující obecné funkci ke zpracování volání přímé metody v řešení. Funkce zobrazí informace o přímé metody, která byla vyvolána, ale v této ukázce neupravuje zařízení žádným způsobem. Toto řešení využívá přímé metody tak, aby fungoval na zařízeních:
 
     ```nodejs
     function onDirectMethod(request, response) {
@@ -167,7 +167,7 @@ Ujistěte se, že [Node.js](https://nodejs.org/) verze 4.0.0 nebo novější je 
     }
     ```
 
-1. Přidejte následující funkci pro zpracování **FirmwareUpdate** přímé volání metod z řešení. Funkce ověřuje parametrů předaných v datové části přímá metoda a poté asynchronně spustí simulaci aktualizace firmwaru:
+1. Přidejte následující funkci pro zpracování **FirmwareUpdate** přímé volání metod z řešení. Funkce ověřuje parametry předané v datové části přímé metody a pak asynchronně spustí simulace aktualizace firmwaru:
 
     ```nodejs
     function onFirmwareUpdate(request, response) {
@@ -196,7 +196,7 @@ Ujistěte se, že [Node.js](https://nodejs.org/) verze 4.0.0 nebo novější je 
     }
     ```
 
-1. Přidejte následující funkci k simulaci toku aktualizace firmwaru dlouho běžící, který sestavy průběhu řešení:
+1. Přidejte následující funkci, která simuluje dlouho běžící aktualizace toku firmwaru, která hlásí průběh zpět do řešení:
 
     ```nodejs
     // Simulated firmwareUpdate flow
@@ -274,7 +274,7 @@ Ujistěte se, že [Node.js](https://nodejs.org/) verze 4.0.0 nebo novější je 
     }
     ```
 
-1. Přidejte následující kód do Neodesílat telemetrická data do řešení. Klientská aplikace přidá vlastnosti zprávy k identifikaci schéma zpráva:
+1. Přidejte následující kód k odesílání telemetrických dat do řešení. Klientská aplikace přidá do zprávy k identifikaci zprávy schéma vlastnosti:
 
     ```nodejs
     function sendTelemetry(data, schema) {
@@ -304,9 +304,9 @@ Ujistěte se, že [Node.js](https://nodejs.org/) verze 4.0.0 nebo novější je 
 
     * Otevření připojení.
     * Nastavte obslužnou rutinu pro požadované vlastnosti.
-    * Odešlete oznámenou vlastnosti.
-    * Zaregistrujte obslužné rutiny pro přímé metody. Příklad používá samostatné obslužnou rutinu pro metodu přímé aktualizace firmwaru.
-    * Zahájit odesílání telemetrie.
+    * Odešlete ohlášené vlastnosti.
+    * Zaregistrujte obslužné rutiny pro přímé metody. Ukázka používá samostatné obslužné rutiny pro přímé metody aktualizace firmwaru.
+    * Začalo odesílat telemetrii.
 
     ```nodejs
     client.open(function (err) {
@@ -382,7 +382,7 @@ Ujistěte se, že [Node.js](https://nodejs.org/) verze 4.0.0 nebo novější je 
 
 1. Uložit změny **remote_monitoring.js** souboru.
 
-1. Spuštění ukázkové aplikace, spusťte na příkazovém řádku následující příkaz:
+1. Spuštění ukázkové aplikace, spusťte následující příkaz z příkazového řádku:
 
     ```cmd/sh
     node remote_monitoring.js

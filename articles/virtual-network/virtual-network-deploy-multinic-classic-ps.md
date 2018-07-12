@@ -1,6 +1,6 @@
 ---
-title: Vytvoření virtuálního počítače (klasické) s více síťovými kartami - prostředí Azure PowerShell | Microsoft Docs
-description: Naučte se vytvořit virtuální počítač (klasický) s více síťovými kartami pomocí prostředí PowerShell.
+title: Vytvoření virtuálního počítače (klasické) s několika síťovými kartami – Azure PowerShell | Dokumentace Microsoftu
+description: Zjistěte, jak vytvořit virtuální počítač (klasický) s několika síťovými kartami pomocí Powershellu.
 services: virtual-network
 documentationcenter: na
 author: genlin
@@ -17,40 +17,40 @@ ms.date: 05/22/2018
 ms.author: genli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ca4e9e77d0e0ca62c04fbbfe132a41fb3e01df46
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "34658770"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38477654"
 ---
-# <a name="create-a-vm-classic-with-multiple-nics-using-powershell"></a>Vytvoření virtuálního počítače (klasické) s více síťovými kartami pomocí prostředí PowerShell
+# <a name="create-a-vm-classic-with-multiple-nics-using-powershell"></a>Vytvoření virtuálního počítače (klasické) s několika síťovými kartami pomocí Powershellu
 
 [!INCLUDE [virtual-network-deploy-multinic-classic-selectors-include.md](../../includes/virtual-network-deploy-multinic-classic-selectors-include.md)]
 
-Můžete vytvořit virtuální počítače (VM) v Azure a připojit více síťových rozhraní (NIC) ke každému z virtuálních počítačů. Několik síťových adaptérů povolit oddělení typů přenosů mezi síťové adaptéry. Jeden síťový adaptér může například komunikují přes Internet, zatímco jiné komunikuje jenom s interním prostředkům, které nejsou připojené k Internetu. Schopnost oddělit síťový provoz na několik síťových adaptérů je vyžadována pro mnoho síťových virtuálních zařízení, například doručení aplikace a řešení optimalizace sítě WAN.
+Můžete vytvořit virtuální počítače (VM) v Azure a připojit několik síťových rozhraní (NIC) ke každé z vašich virtuálních počítačů. Několik síťových adaptérů umožňuje oddělení typů přenosů napříč síťovými kartami. Například jednou síťovou KARTOU může komunikovat s Internetem, zatímco jiné komunikuje jenom s interním prostředkům, které nejsou připojené k Internetu. Schopnost oddělit síťový provoz napříč více síťových rozhraní se vyžaduje pro řadu síťových virtuálních zařízení, jako je doručování aplikací a řešení optimalizace sítě WAN.
 
 > [!IMPORTANT]
-> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Resource Manager a klasický model](../resource-manager-deployment-model.md). Tento článek se věnuje použití klasického modelu nasazení. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager. Naučte se provádět tyto kroky, pomocí [modelu nasazení Resource Manager](../virtual-machines/windows/multiple-nics.md).
+> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Resource Manager a klasický model](../resource-manager-deployment-model.md). Tento článek se věnuje použití klasického modelu nasazení. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager. Zjistěte, jak provést tento postup pomocí [modelu nasazení Resource Manager](../virtual-machines/windows/multiple-nics.md).
 
 [!INCLUDE [virtual-network-deploy-multinic-scenario-include.md](../../includes/virtual-network-deploy-multinic-scenario-include.md)]
 
-Následující postup použijte skupinu prostředků s názvem *IaaSStory* pro webové servery a skupinu prostředků s názvem *IaaSStory back-end* pro servery DB.
+Následující postup použijte skupinu prostředků s názvem *IaaSStory* pro webové servery a skupinu prostředků s názvem *IaaSStory back-endu* pro servery DB.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Před vytvořením servery DB, je potřeba vytvořit *IaaSStory* skupina prostředků se všechny potřebné prostředky pro tento scénář. Chcete-li vytvořit tyto prostředky, proveďte kroky, které následují. Vytvoření virtuální sítě pomocí následujících kroků v [vytvořit virtuální síť](virtual-networks-create-vnet-classic-netcfg-ps.md) článku.
+Než budete moct vytvořit servery DB, je potřeba vytvořit *IaaSStory* skupina prostředků se všechny prostředky potřebné pro tento scénář. Pokud chcete vytvořit tyto prostředky, proveďte následující kroky. Vytvoření virtuální sítě pomocí následujících kroků v [vytvoření virtuální sítě](virtual-networks-create-vnet-classic-netcfg-ps.md) článku.
 
 [!INCLUDE [azure-ps-prerequisites-include.md](../../includes/azure-ps-prerequisites-include.md)]
 
-## <a name="create-the-back-end-vms"></a>Vytvořit virtuální počítače back-end
-Virtuální počítače back-end závisí na vytvoření v následujících zdrojích informací:
+## <a name="create-the-back-end-vms"></a>Vytvoření back endové virtuální počítače
+Back endové virtuální počítače jsou závislé na vytváření z následujících prostředků:
 
-* **Back-end podsítě**. Databázové servery budou součástí samostatnou podsíť, oddělit provoz. Níže uvedený skript předpokládá, že tuto podsíť existovat ve virtuální síti s názvem *WTestVnet*.
-* **Účet úložiště pro datové disky**. Pro lepší výkon datové disky v databázových serverech použije technologii SSD jednotky (SSD Solid-State Drive), která vyžaduje účet úložiště premium. Zajistěte, aby umístění Azure, můžete nasadit pro podporu služby storage úrovně premium.
-* **Skupina dostupnosti:** Všechny databázové servery se zařadí do jedné dostupnosti nastavte, ujistěte se, že nejméně jedna z virtuálních počítačů je nahoru a během údržby.
+* **Podsíť back-endu**. Databázové servery budou součástí jiné podsíti, oddělit provoz. Níže uvedený skript předpokládá, že tato podsíť existuje ve virtuální síti s názvem *WTestVnet*.
+* **Účet úložiště pro datové disky**. Pro lepší výkon datové disky v databázových serverech použije SSD (SOLID-State drive) technologii, která vyžaduje účet úložiště úrovně premium. Ujistěte se, že umístění Azure nasazujete do podporují službu premium storage.
+* **Skupina dostupnosti:** Všechny databázové servery se přidají do jednoho dostupnosti nastavena na hodnotu Ujistěte se, že je alespoň jeden z virtuálních počítačů a během údržby.
 
-### <a name="step-1---start-your-script"></a>Krok 1 – spustit skript
-Si můžete stáhnout úplné skript prostředí PowerShell použít [zde](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/classic/virtual-network-deploy-multinic-classic-ps.ps1). Postupujte podle pokynů níže změňte skript pro práci ve vašem prostředí.
+### <a name="step-1---start-your-script"></a>Krok 1: Spusťte svůj skript
+Můžete stáhnout úplná skript prostředí PowerShell použít [tady](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/classic/virtual-network-deploy-multinic-classic-ps.ps1). Postupem uvedeným níže změníte skript fungoval ve vašem prostředí.
 
 1. Změňte hodnoty proměnných níže podle vaší existující skupinu prostředků, které jsou nasazené výše v [požadavky](#Prerequisites).
 
@@ -60,7 +60,7 @@ Si můžete stáhnout úplné skript prostředí PowerShell použít [zde](https
     $backendSubnetName     = "BackEnd"
     ```
 
-2. Změňte hodnoty proměnných níže na základě hodnot, které chcete použít pro vaše nasazení back-end.
+2. Změňte hodnoty proměnných níže podle hodnoty, které chcete použít pro vaše nasazení back-endu.
 
     ```powershell
     $backendCSName         = "IaaSStory-Backend"
@@ -74,8 +74,8 @@ Si můžete stáhnout úplné skript prostředí PowerShell použít [zde](https
     $numberOfVMs           = 2
     ```
 
-### <a name="step-2---create-necessary-resources-for-your-vms"></a>Krok 2 – Vytvoření potřebné prostředky pro virtuální počítače
-Potřebujete vytvořit novou cloudovou službu a účet úložiště pro datové disky pro všechny virtuální počítače. Také musíte zadat bitovou kopii a účet místního správce pro virtuální počítače. Pokud chcete vytvořit tyto prostředky, proveďte následující kroky:
+### <a name="step-2---create-necessary-resources-for-your-vms"></a>Krok 2: vytvoření potřebné prostředky pro virtuální počítače
+Je potřeba vytvořit novou cloudovou službu a účet úložiště pro datové disky pro všechny virtuální počítače. Také musíte zadat bitovou kopii a účet místního správce pro virtuální počítače. Pokud chcete vytvořit tyto prostředky, proveďte následující kroky:
 
 1. Vytvořte novou cloudovou službu.
 
@@ -83,13 +83,13 @@ Potřebujete vytvořit novou cloudovou službu a účet úložiště pro datové
     New-AzureService -ServiceName $backendCSName -Location $location
     ```
 
-2. Vytvořte nový účet úložiště premium.
+2. Vytvořte nový účet úložiště úrovně premium.
 
     ```powershell
     New-AzureStorageAccount -StorageAccountName $prmStorageAccountName `
     -Location $location -Type Premium_LRS
     ```
-3. Nastavte účet úložiště vytvořili výše jako aktuální účet úložiště pro vaše předplatné.
+3. Nastavte účet úložiště vytvořený výše jako aktuální účet úložiště pro vaše předplatné.
 
     ```powershell
     $subscription = Get-AzureSubscription | where {$_.IsCurrent -eq $true}  
@@ -97,7 +97,7 @@ Potřebujete vytvořit novou cloudovou službu a účet úložiště pro datové
     -CurrentStorageAccountName $prmStorageAccountName
     ```
 
-4. Vyberte bitovou kopii pro virtuální počítač.
+4. Vyberte image virtuálního počítače.
 
     ```powershell
     $image = Get-AzureVMImage `
@@ -112,16 +112,16 @@ Potřebujete vytvořit novou cloudovou službu a účet úložiště pro datové
     $cred = Get-Credential -Message "Enter username and password for local admin account"
     ```
 
-### <a name="step-3---create-vms"></a>Krok 3 – vytvoření virtuálních počítačů
-Budete muset použít smyčku vytvořit libovolný počet virtuálních počítačů a vytvořit potřebné síťové karty a virtuální počítače v rámci smyčky. Chcete-li vytvořit síťové karty a virtuální počítače, spusťte následující kroky.
+### <a name="step-3---create-vms"></a>Krok 3: vytvoření virtuálních počítačů
+Budete muset pomocí cyklu můžete vytvořit libovolný počet virtuálních počítačů a vytvořit potřebná síťové karty a virtuální počítače v rámci smyčky. Pokud chcete vytvořit síťové karty a virtuální počítače, proveďte následující kroky.
 
-1. Spuštění `for` cykly opakování příkazů pro vytvoření virtuálního počítače a dva síťové adaptéry tolikrát, kolikrát podle potřeby, na základě hodnoty z `$numberOfVMs` proměnné.
+1. Začněte `for` smyčky k opakování příkazů pro vytvoření virtuálního počítače a dva síťové adaptéry tolikrát, kolikrát podle potřeby, na základě hodnoty z `$numberOfVMs` proměnné.
 
     ```powershell
     for ($suffixNumber = 1; $suffixNumber -le $numberOfVMs; $suffixNumber++){
     ```
 
-2. Vytvoření `VMConfig` objekt obrázku, velikost a sadu dostupnosti pro virtuální počítač.
+2. Vytvoření `VMConfig` určující obrázku, velikost a dostupnosti pro virtuální počítač.
 
     ```powershell
     $vmName = $vmNamePrefix + $suffixNumber
@@ -131,7 +131,7 @@ Budete muset použít smyčku vytvořit libovolný počet virtuálních počíta
         -AvailabilitySetName $avSetName
     ```
 
-3. Zřídit virtuální počítač jako virtuální počítač systému Windows.
+3. Zřízení virtuálního počítače jako virtuální počítač Windows.
 
     ```powershell
     Add-AzureProvisioningConfig -VM $vmConfig -Windows `
@@ -139,7 +139,7 @@ Budete muset použít smyčku vytvořit libovolný počet virtuálních počíta
         -Password $cred.GetNetworkCredential().Password
     ```
 
-4. Nastavit výchozí síťový adaptér a přiřaďte mu statickou IP adresu.
+4. Nastavit výchozí síťové rozhraní a přiřaďte mu statickou IP adresu.
 
     ```powershell
     Set-AzureSubnet         -SubnetNames $backendSubnetName -VM $vmConfig
@@ -155,7 +155,7 @@ Budete muset použít smyčku vytvořit libovolný počet virtuálních počíta
     -VM $vmConfig
     ```
     
-6. Vytvoření datových disků, pro každý virtuální počítač.
+6. Vytvořte pro každý virtuální počítač pro datové disky.
 
     ```powershell
     $dataDisk1Name = $vmName + "-" + $dataDiskSuffix + "-1"    
@@ -171,7 +171,7 @@ Budete muset použít smyčku vytvořit libovolný počet virtuálních počíta
     -LUN 1
     ```
 
-7. Vytvořit jednotlivé virtuální počítače a ukončení smyčky.
+7. Vytvoření každého virtuálního počítače a ukončení smyčky.
 
     ```powershell
     New-AzureVM -VM $vmConfig `
@@ -181,10 +181,10 @@ Budete muset použít smyčku vytvořit libovolný počet virtuálních počíta
     }
     ```
 
-### <a name="step-4---run-the-script"></a>Krok 4 – spuštění skriptu
-Teď, když jste stáhli a změnit skript na základě potřeb, o skript k vytvoření databáze back-end virtuálních počítačů s více síťovými kartami.
+### <a name="step-4---run-the-script"></a>Krok 4 – spustit skript
+Teď, když jste si stáhli a změnit skript na základě vašich potřeb, o tento skript k vytvoření databáze back-end virtuální počítače s několika síťovými kartami.
 
-1. Uložte skript a spusťte jej z **prostředí PowerShell** příkazového řádku, nebo **prostředí PowerShell ISE**. Počáteční výstupu uvidíte, jak je uvedeno níže.
+1. Uložte skript a spusťte jej z **PowerShell** příkazového řádku, nebo **prostředí PowerShell ISE**. Počáteční výstupu se zobrazí, jak je znázorněno níže.
 
         OperationDescription    OperationId                          OperationStatus
 
@@ -192,17 +192,17 @@ Teď, když jste stáhli a změnit skript na základě potřeb, o skript k vytvo
         New-AzureStorageAccount xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Succeeded
         
         WARNING: No deployment found in service: 'IaaSStory-Backend'.
-2. Vyplňte informace potřebné v řádku přihlašovací údaje a klikněte na **OK**. Tento výstup se vrátí.
+2. Zadejte informace potřebné v řádku přihlašovací údaje a klikněte na **OK**. Vrátí se následující výstup.
 
         New-AzureVM             xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Succeeded
         New-AzureVM             xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Succeeded
 
 ### <a name="step-5---configure-routing-within-the-vms-operating-system"></a>Krok 5: Konfigurace směrování v rámci operačního systému Virtuálního počítače
 
-Azure DHCP přiřadí výchozí bránu na první (primární) síťové rozhraní připojené k virtuálnímu počítači. Azure nepřiřazuje výchozí bránu dalším (sekundárním) síťovým rozhraním připojeným k virtuálnímu počítači. Proto ve výchozím nastavení nemůžete komunikovat s prostředky mimo podsíť, ve které sekundární síťové rozhraní je. Sekundární síťová rozhraní může, ale komunikovat s prostředky mimo jejich podsítě. Konfigurace směrování pro sekundární síťová rozhraní, najdete v následujících článcích:
+Azure DHCP přiřadí výchozí bránu první (primární) síťové rozhraní připojené k virtuálnímu počítači. Azure nepřiřazuje výchozí bránu dalším (sekundárním) síťovým rozhraním připojeným k virtuálnímu počítači. Proto ve výchozím nastavení nemůžete komunikovat s prostředky mimo podsíť, ve které sekundární síťové rozhraní je. Sekundární síťová rozhraní, ale komunikovat s prostředky mimo jejich podsíť. Konfigurace směrování pro sekundární síťová rozhraní, naleznete v následujících článcích:
 
-- [Nakonfigurujte virtuální počítač s Windows pro několik síťových adaptérů](../virtual-machines/windows/multiple-nics.md#configure-guest-os-for-multiple-nics
+- [Konfigurace virtuálního počítače s Windows pro více síťových rozhraní](../virtual-machines/windows/multiple-nics.md#configure-guest-os-for-multiple-nics
 )
 
-- [Konfigurace virtuálního počítače s Linuxem pro několik síťových adaptérů](../virtual-machines/linux/multiple-nics.md#configure-guest-os-for-multiple-nics
+- [Konfigurace virtuálního počítače s Linuxem pro více síťových rozhraní](../virtual-machines/linux/multiple-nics.md#configure-guest-os-for-multiple-nics
 )

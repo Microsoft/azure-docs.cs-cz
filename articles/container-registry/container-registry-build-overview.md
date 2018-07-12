@@ -1,6 +1,6 @@
 ---
-title: Automatizovat operačního systému a framework opravy s Azure Container registru sestavení (ACR sestavení)
-description: Úvod do ACR sestavení, sada funkcí v registru kontejner Azure, která poskytuje zabezpečené, automatizované sestavení image kontejneru a opravy chyb v cloudu.
+title: Automatizace operačního systému a rozhraní framework opravy chyb s použitím služby Azure Container Registry Build (ACR buildu)
+description: Úvod do ACR buildu, sadu funkcí ve službě Azure Container Registry, která poskytuje zabezpečené, automatizovat sestavení image kontejneru a používání dílčích oprav v cloudu.
 services: container-registry
 author: mmacy
 manager: jeconnoc
@@ -9,63 +9,63 @@ ms.topic: article
 ms.date: 05/01/2018
 ms.author: marsma
 ms.openlocfilehash: 3ef91270bceb5865bdbdf9c436e4519595a3dc09
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34057770"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38582626"
 ---
-# <a name="automate-os-and-framework-patching-with-acr-build"></a>Automatizovat operačního systému a framework opravy s ACR sestavení
+# <a name="automate-os-and-framework-patching-with-acr-build"></a>Automatizace operačního systému a rozhraní framework opravy s využitím ACR buildu
 
-Kontejnery zadejte nové úrovně virtualizace, izolování aplikací a vývojáře závislostí z infrastruktury a provozních požadavků. Co je ještě, ale je potřeba vyřešit, jak opravit této aplikace application virtualization.
+Kontejnery poskytují nové úrovni, virtualizaci, izolaci závislostí aplikace a pro vývojáře z infrastruktury a provozních požadavků. Co je ještě, ale je potřeba vyřešit, jak je opravit této platformy application virtualization.
 
-**Sestavení ACR**, sada funkcí v rámci Azure registru kontejner, poskytuje nejen kontejneru nativní bitové kopie sestavení možnost, ale také automatizuje [operačního systému a opravy chyb framework](#automate-os-and-framework-patching) pro Docker kontejnerů.
+**ACR buildu**, sadu funkcí v rámci Azure Container Registry poskytuje nejen kontejneru nativní bitové kopie sestavení, ale také automatizuje [operačního systému a používání dílčích oprav framework](#automate-os-and-framework-patching) pro kontejnery Dockeru.
 
 [!INCLUDE [container-registry-build-preview-note](../../includes/container-registry-build-preview-note.md)]
 
-## <a name="what-is-acr-build"></a>Co je ACR sestavení?
+## <a name="what-is-acr-build"></a>Co je ACR buildu?
 
-Sestavení Azure kontejneru registru je služba Azure nativní kontejneru image sestavení. Sestaví sestavení ACR umožňuje vnitřní smyčky vývoj v cloudu pomocí bitové kopie na vyžádání kontejneru a aktualizovat automatizovaných sestaveních na zdrojový kód potvrzení a základní bitovou kopii.
+Azure Container Registry sestavení je služba sestavení image kontejneru nativní pro Azure. Sestaví ACR buildu vývoje vnitřní smyčky umožňuje v cloudu s použitím image kontejnerů na vyžádání a aktualizovat automatizované buildy na zdrojový kód potvrzení a základní image.
 
-Aktivační události kontejneru image vytvoří automaticky když kódu se zaměřuje na úložiště Git, nebo když se aktualizuje základní bitovou kopii kontejneru. S aktivační události update základní bitovou kopii, je možné automatizovat operačním systému a architektura aplikace na opravy pracovního postupu, zachování zabezpečení prostředí při se objekty neměnné kontejnerů.
+Image kontejneru aktivační události sestavení automaticky, když je kód potvrzen do úložiště Git, nebo když se aktualizuje základní image kontejneru. Pomocí aktivační události update základní image, můžete automatizovat vašeho operačního systému a architektura aplikace na opravy chyb pracovního postupu, zachování zabezpečení prostředí při týkajícími se objekty zabezpečení neměnné kontejnerů.
 
 ## <a name="quick-build-inner-loop-extended-to-the-cloud"></a>Rychlé sestavení: vnitřní smyčky rozšířit do cloudu
 
-Začátek – Správa životního cyklu spuštěna před vývojáři potvrdit jejich prvních řádků kódu. ACR sestavení [rychlé vytvoření](container-registry-tutorial-quick-build.md) funkce umožňuje získat integrované místní smyčky vnitřní vývojové prostředí, snižování zátěže sestavení do Azure. S rychlé sestavení můžete ověřit automatizované sestavení definic před potvrzením kódu.
+Začátek správy životního cyklu spuštěna před vývojáře potvrdit své první řádky kódu. ACR buildu [rychlé sestavení](container-registry-tutorial-quick-build.md) funkce umožňuje prostředí integrované místního vývoje vnitřní smyčky, snižování zátěže systému souborů sestavení do Azure. S rychlé sestavení můžete ověřit vaše definice sestavení automatizované před potvrzením kódu.
 
-Pomocí známé `docker build` formát, [az acr sestavení] [ az-acr-build] příkaz v rozhraní příkazového řádku Azure přebírá kontext místní, odešle do služby ACR sestavení a ve výchozím nastavení, nabízených oznámení bitovou kopii integrovaný do jeho registru na dokončení. Sestavení ACR odpovídá vaší registrech geograficky replikované povolení rozmístěné vývojové týmy využít nejbližší replikované registru. Verzi Preview sestavení ACR je k dispozici v oblasti Východ USA a západní Evropa.
+Pomocí známé `docker build` formátu, [az acr sestavení] [ az-acr-build] příkaz v rozhraní příkazového řádku Azure přebírá místní kontext, je odesílá do služby ACR buildu a ve výchozím nastavení, nahraje do jeho registru na sestavenou image dokončení. ACR buildu se řídí vaše geograficky replikované registry povolení rozptýleného vývojovým týmům využívat nejbližší replikovaného registru. Ve verzi preview sestavení ACR je dostupná v oblastech východní USA a západní Evropa.
 
-Sestavení ACR slouží jako kontejner životní primitivní. Například integrované ACR sestavení do řešení CI/CD. Spuštěním [az přihlášení] [ az-login] s [instanční objekt][az-login-service-principal], pak může vydávat řešení CI/CD [az acr sestavení] [ az-acr-build] příkazy, které ji bitové kopie sestavení.
+ACR buildu je navržena jako primitivní životní cyklus kontejneru. Například integrate ACR buildu do vašeho řešení CI/CD. Spuštěním [az login] [ az-login] s [instanční objekt služby][az-login-service-principal], pak vaše řešení CI/CD setkat [az acr buildu] [ az-acr-build] příkazy a podívejte se na obrázku sestavení.
 
-Naučte se používat rychlé sestavení z prvního kurzu ACR sestavení, [vytvářet bitové kopie kontejneru v cloudu s Azure Container registru sestavení](container-registry-tutorial-quick-build.md).
+Další informace o použití rychlé sestavení v prvním kurzu ACR buildu [sestavování imagí kontejneru v cloudu s Azure Container Registry Build](container-registry-tutorial-quick-build.md).
 
 ## <a name="automatic-build-on-source-code-commit"></a>Automatické sestavení na potvrzení zdrojového kódu
 
-Použijte ACR sestavení automaticky spouštět bitovou kopii kontejneru sestavení, když kód se zaměřuje na úložiště Git. Úlohy, konfigurovat pomocí příkazu příkazového řádku Azure CLI sestavení [az acr-úlohu sestavení][az-acr-build-task], umožňují určit úložiště Git a volitelně větve a soubor Docker. Pokud váš tým potvrdí kód do úložiště, webhook ACR sestavení vytvořené aktivuje build bitové kopie kontejneru definované v úložišti.
+Použití ACR buildu pro automatickou aktivaci image kontejneru sestavení, když je kód potvrzen do úložiště Git. Vytvoření úlohy, konfigurovat pomocí příkazového řádku Azure [az acr-úloha sestavení][az-acr-build-task], umožňují zadat úložiště Git a volitelně větve a souboru Dockerfile. Pokud váš tým potvrzení kódu do úložiště, webhook služby ACR buildu vytvořené aktivuje sestavení Image kontejneru, který je definován v úložišti.
 
-Zjistěte, jak aktivovat sestavení na potvrzení zdrojového kódu v kurzu druhý ACR sestavení [automatické kontejneru image sestavení s Azure Container registru sestavení](container-registry-tutorial-build-task.md).
+Zjistěte, jak aktivovat sestavení na potvrzení zdrojového kódu v kurzu druhý ACR buildu [image kontejneru automatizace sestavení s Azure Container Registry Build](container-registry-tutorial-build-task.md).
 
-## <a name="automate-os-and-framework-patching"></a>Automatizovat operačního systému a opravy chyb framework
+## <a name="automate-os-and-framework-patching"></a>Automatizace operačního systému a používání dílčích oprav framework
 
-Výkon sestavení ACR skutečně vylepšit svůj kanál sestavení kontejneru pochází z jeho schopnost rozpoznat aktualizace základní bitovou kopii. Když aktualizovanou bitovou kopii pro základní vložena do registru, ACR sestavení můžete automaticky vytvořit žádné Image aplikací založených na.
+Výkon ACR buildu skutečně vylepšit svůj kanál sestavení kontejneru pochází z jeho schopnost zjišťovat aktualizace základní Image. Při aktualizace základní image je nahrány do vašeho registru, ACR buildu můžete automaticky sestavení jakékoli aplikace bitové kopie na jejím základě.
 
-Kontejner Image může být široce rozdělena do *základní* bitové kopie a *aplikace* bitové kopie. Vaše základní Image obvykle zahrnují operační systém a architektur aplikací, na kterých je postavena aplikace, spolu s jinými. Tyto základní Image jsou sami obvykle založené na veřejné nadřazeného imagích, například [Alpine Linux] [ base-alpine] nebo [Node.js][base-node]. Některé aplikace obrázků by mohly sdílet běžné základní bitovou kopii.
+Image kontejnerů může být široce rozdělena do *základní* bitové kopie a *aplikace* bitové kopie. Základní Image obvykle zahrnují operačního systému a aplikačních architektur, podle kterých je aplikace sestavená, společně s další vlastní nastavení. Tyto základní Image představují samy o sobě obvykle založené na veřejné Image upstream, například [Alpine Linux] [ base-alpine] nebo [Node.js][base-node]. Několik imagí aplikace může sdílet společný základní image.
 
-Když nadřazený funkce maintainer je aktualizováno framework image operačního systému nebo aplikace, například s důležité opravy zabezpečení operačního systému, je nutné také aktualizovat vaše základní Image zahrnout důležité opravy. Každé bitové kopie aplikace musí pak také znovu sestavit zahrnout tyto nadřazeného opravy teď součástí základní bitové kopie.
+Když framework image operačního systému nebo aplikace se aktualizuje pomocí nadřazeného funkce maintainer, například s důležité opravy zabezpečení operačního systému, budete muset taky aktualizovat základní Image zahrnout důležité opravy. Každá image aplikace musíte pak také znovu sestavit, aby zahrnují tyto nadřazeného opravy nyní součástí základní image.
 
-Protože ACR sestavení dynamicky zjišťuje základní image závislosti, při vytváření obrazem kontejneru, může zjistit při aktualizaci základní bitovou kopii image aplikace. S jedním předkonfigurované [úloze sestavení](container-registry-tutorial-base-image-update.md#create-build-task), ACR sestavení potom **automaticky znovu sestaví všechny bitové kopie aplikace** za vás. Toto automatické zjišťování a znovu sestavit, sestavení ACR uloží vytvořením čas a úsilí obvykle vyžaduje, aby ručně sledovat a aktualizovat každé aplikaci bitové kopie odkazující na aktualizovanou základní bitovou kopii.
+Protože ACR buildu dynamicky zjišťuje závislosti základní image, při sestavení image kontejneru, může zjistit, když dojde k aktualizaci image aplikace základní image. S jednou předem [úloha sestavení](container-registry-tutorial-base-image-update.md#create-build-task), ACR buildu pak **automaticky znovu sestaví všechny image aplikace** za vás. Toto automatické zjišťování a znovu sestavit, ACR buildu šetří čas a úsilí obvykle potřebnou k ruční sledování a aktualizaci každého aplikace bitové kopie odkazující na aktualizované základní image.
 
-Další informace o operačního systému a framework opravy v kurzu třetí sestavení ACR [automatické image je založený na aktualizace základní bitovou kopii s Azure Container registru sestavení](container-registry-tutorial-base-image-update.md).
+Další informace o operačním systému a rozhraní framework opravy chyb ve třetím kurzu ACR buildu [automatizace image založena na aktualizací základních imagí s Azure Container Registry Build](container-registry-tutorial-base-image-update.md).
 
 > [!NOTE]
-> Počáteční verzi Preview sestavení aktivační událost základní image aktualizace pouze v případě, že Image základní a aplikace jsou umístěny ve stejné registru kontejner Azure.
+> Aktivační událost aktualizace základní image pro počáteční verzi preview, sestavení pouze v případě, že Image základní a aplikace jsou umístěny ve stejné Azure container registry.
 
 ## <a name="next-steps"></a>Další postup
 
-Až budete připraveni k automatizaci operačního systému a framework opravy ve vytváření bitových kopií kontejneru v cloudu, podívejte se na kurz řady ACR sestavení třemi částmi.
+Až budete připraveni k automatizaci operačního systému a rozhraní framework opravy chyb ve vytváření imagí kontejnerů v cloudu, přečtěte si část třídílné ACR buildu série kurzů.
 
 > [!div class="nextstepaction"]
-> [Vytvářet kontejner bitové kopie v cloudu s Azure Container registru sestavení](container-registry-tutorial-quick-build.md)
+> [Sestavení imagí kontejnerů v cloudu se službou Azure Container Registry Build](container-registry-tutorial-quick-build.md)
 
 <!-- LINKS - External -->
 [base-alpine]: https://hub.docker.com/_/alpine/

@@ -11,16 +11,16 @@ ms.date: 01/26/2017
 ms.author: davidmu
 ms.component: B2C
 ms.openlocfilehash: 5c89f39b2f94309ea3d99230f5265d834c7093d9
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37444811"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38477445"
 ---
 # <a name="azure-active-directory-b2c-built-in-policies"></a>Azure Active Directory B2C: Předdefinované zásady
 
 
-Rozhraní rozšiřitelných zásad služby Azure Active Directory (Azure AD) B2C je základní sílu služby. Zásady například plně popisují činnosti identity uživatelů registrace, přihlašování a úpravy profilu. Například zásadu registrace umožňuje řídit chování konfigurací následujícího nastavení:
+Rozhraní rozšiřitelných zásad služby Azure Active Directory (Azure AD) B2C je základní sílu služby. Zásady například plně popisují činnosti identity uživatelů registrace, přihlašování a úpravy profilu. Například zásada registrace umožňuje řídit chování pomocí konfigurace následujícího nastavení:
 
 * Typy účtů (účtů v sociálních sítích například Facebook) nebo místní účty, jako jsou e-mailové adresy, které uživatele můžete použít k registraci pro aplikaci
 * Atributy (například křestní jméno, PSČ a velikost bot), které se mají shromažďovat od uživatele během registrace

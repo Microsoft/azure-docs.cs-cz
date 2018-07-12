@@ -6,27 +6,23 @@ author: sogup
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 10/13/2017
+ms.date: 7/10/2018
 ms.author: sogup
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 49361aef774e9eb5a0995bc106e73b236a71b0bb
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 16620678c38dcdc1564d8cb18f3393352170cefe
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441127"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38598420"
 ---
 # <a name="back-up-and-restore-encrypted-virtual-machines-with-azure-backup"></a>Zálohování a obnovení šifrovaných virtuálních počítačů pomocí služby Azure Backup
 Tento článek se hovoří o tom, jak zálohovat a obnovovat virtuální počítače (VM) s využitím Azure Backup. Poskytuje také informace o podporované scénáře, požadavky a kroky při řešení potíží pro případy chyb.
 
 ## <a name="supported-scenarios"></a>Podporované scénáře
 
- * Zálohování a obnovení šifrovaných virtuálních počítačů se podporuje jenom pro virtuální počítače, které používají model nasazení Azure Resource Manageru. Nepodporuje se pro virtuální počítače, které používají model nasazení classic. <br>
- * Zálohování a obnovení šifrovaných virtuálních počítačů se podporuje pro Windows a virtuální počítače s Linuxem používající Azure Disk Encryption. Disk Encryption používá funkci odvětví standardní BitLocker systému Windows a funkci dm-crypt systému Linux pro zajištění šifrování disků. <br>
- 
- V následující tabulce jsou uvedeny podporované scénáře pro šifrovací klíč nástroje BitLocker (klíče BEK) – jenom a klíč šifrovacího klíče (KEK) - šifrované virtuální počítače:
- 
- 
+ Zálohování a obnovení šifrovaných virtuálních počítačů se podporuje jenom pro virtuální počítače, které používají model nasazení Azure Resource Manageru. Nepodporuje se pro virtuální počítače, které používají model nasazení classic. Zálohování a obnovení šifrovaných virtuálních počítačů je podporováno pro Windows a virtuální počítače s Linuxem používající Azure Disk Encryption. Disk Encryption používá funkci odvětví standardní BitLocker systému Windows a funkci dm-crypt systému Linux pro zajištění šifrování disků. V následující tabulce jsou uvedeny typ šifrování a podporu pro virtuální počítače.
+
    |  | Klíč BEK a KEK virtuálních počítačů | Klíč BEK jen pro virtuální počítače |
    | --- | --- | --- |
    | **Nespravovaná virtuálních počítačů**  | Ano | Ano  |

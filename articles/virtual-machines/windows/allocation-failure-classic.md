@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 04/13/2018
 ms.author: genli
 ms.openlocfilehash: 659781a16663d815e54454746d017eef29414b95
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "31529496"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38597476"
 ---
 # <a name="troubleshooting-steps-specific-to-allocation-failure-scenarios-in-the-classic-deployment-model"></a>Kroků pro řešení problémů konkrétních chybových scénářů při přidělování v modelu nasazení classic
 

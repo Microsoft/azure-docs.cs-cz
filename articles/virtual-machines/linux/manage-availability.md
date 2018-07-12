@@ -1,6 +1,6 @@
 ---
-title: Správa dostupnosti virtuálních počítačů Linux v Azure | Microsoft Docs
-description: Naučte se používat více virtuálních počítačů k zajištění vysoké dostupnosti pro Linux aplikaci v Azure
+title: Správa dostupnosti virtuálních počítačů s Linuxem v Azure | Dokumentace Microsoftu
+description: Zjistěte, jak používat víc virtuálních počítačů k zajištění vysoké dostupnosti Linuxových aplikací v Azure
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -17,20 +17,20 @@ ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ecddbb54137c018c1acc202e4056672eb626f87d
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30320981"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38531459"
 ---
-# <a name="manage-the-availability-of-linux-virtual-machines"></a>Správa dostupnosti virtuálních počítačů Linux
+# <a name="manage-the-availability-of-linux-virtual-machines"></a>Správa dostupnosti virtuálních počítačů s Linuxem
 
-Další způsoby, jak nastavit a spravovat více virtuálních počítačů k zajištění vysoké dostupnosti pro Linux aplikaci v Azure. Můžete také [Správa dostupnosti virtuálních počítačů Windows](../windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Další způsoby, jak nastavit a spravovat více virtuálních počítačů pro zajištění vysoké dostupnosti Linuxových aplikací v Azure. Můžete také [Správa dostupnosti virtuálních počítačů Windows](../windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-Pokyny pro vytvoření dostupnosti nastavit pomocí rozhraní příkazového řádku v modelu nasazení Resource Manager, najdete v části [azure availset: příkazy ke správě vaší skupiny dostupnosti](../azure-cli-arm-commands.md#azure-availset-commands-to-manage-your-availability-sets).
+Pokyny týkající se vytvoření dostupnosti pomocí rozhraní příkazového řádku v modelu nasazení Resource Manageru najdete v tématu [azure availset: příkazy pro správu vaší skupiny dostupnosti](../azure-cli-arm-commands.md#azure-availset-commands-to-manage-your-availability-sets).
 
 [!INCLUDE [virtual-machines-common-manage-availability](../../../includes/virtual-machines-common-manage-availability.md)]
 
 ## <a name="next-steps"></a>Další postup
-Další informace o virtuálních počítačích Vyrovnávání zatížení, najdete v části [Vyrovnávání zatížení virtuálních počítačů](../virtual-machines-linux-load-balance.md).
+Další informace o vašich virtuálních počítačů pro vyrovnávání zatížení najdete v tématu [Vyrovnávání zatížení virtuálních počítačů](../virtual-machines-linux-load-balance.md).
 

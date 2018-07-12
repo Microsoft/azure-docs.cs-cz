@@ -1,6 +1,6 @@
 ---
-title: Mapování vlastních polí na schéma Azure událostí mřížky
-description: Popisuje, jak převést váš vlastní schéma na schéma mřížky událostí Azure.
+title: Mapování vlastních polí do schématu služby Azure Event Grid
+description: Popisuje, jak převést vaše vlastní schéma do schématu služby Azure Event Grid.
 services: event-grid
 author: tfitzmac
 manager: timlt
@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: tomfitz
 ms.openlocfilehash: 32f93f383ec4044afb0696fcef1705c9ed65d673
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34301963"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38578913"
 ---
-# <a name="map-custom-fields-to-event-grid-schema"></a>Vlastní pole mapy událostí mřížky schématu
+# <a name="map-custom-fields-to-event-grid-schema"></a>Mapování vlastních polí na schéma služby Event Grid
 
-Pokud vaše data události neodpovídá očekávanému [událostí mřížky schématu](event-schema.md), stále můžete mřížky událostí pro událost trasy odběratelům. Tento článek popisuje způsob namapování vašeho schématu do schématu událostí mřížky.
+Pokud vaše data události neodpovídá očekávané [schéma služby Event Grid](event-schema.md), stále můžete služby Event Grid směrování události odběratelům. Tento článek popisuje způsob mapování schématu do schématu služby Event Grid.
 
 [!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
-## <a name="original-event-schema"></a>Původní schématu události
+## <a name="original-event-schema"></a>Původní schéma událostí
 
 Předpokládejme, že máte aplikaci, která odesílá události v následujícím formátu:
 
@@ -35,19 +35,19 @@ Předpokládejme, že máte aplikaci, která odesílá události v následujíc�
 ]
 ```
 
-I když tento formát se neshoduje se požadované schéma, mřížky událostí umožňuje vaše pole mapovány na schéma. Nebo se může zobrazit hodnoty v původní schématu.
+I když tento formát neodpovídá požadovanému schématu, služby Event Grid umožňuje mapování polí na schéma. Nebo se zobrazí hodnoty v původní schématu.
 
-## <a name="create-custom-topic-with-mapped-fields"></a>Vytvořit vlastní téma s namapovanou pole
+## <a name="create-custom-topic-with-mapped-fields"></a>Vytvoření vlastního tématu pomocí namapovaná pole
 
-Při vytváření vlastní téma, určete, jak mapování polí z vašeho původního události schématu mřížky událostí. Existují tři vlastnosti, které můžete použít k přizpůsobení mapování:
+Při vytváření vlastního tématu, určete, jak mapovat pole z původní události mřížka schématu událostí. Existují tři vlastnosti, které můžete použít k přizpůsobení mapování:
 
-* `--input-schema` Parametr určuje typ schématu. Jsou dostupné možnosti *cloudeventv01schema*, *customeventschema*, a *eventgridschema*. Výchozí hodnota je eventgridschema. Při vytváření vlastní mapování mezi schéma a schéma událostí mřížky, použijte customeventschema. Když se události CloudEvents schéma, použijte cloudeventv01schema.
+* `--input-schema` Parametr určuje typ schématu. Dostupné jsou následující možnosti *cloudeventv01schema*, *customeventschema*, a *eventgridschema*. Výchozí hodnota je eventgridschema. Při vytváření vlastních mapování mezi schéma a schéma tabulky událostí použijte customeventschema. Pokud jsou události ve schématu CloudEvents, použijte cloudeventv01schema.
 
-* `--input-mapping-default-values` Parametr určuje výchozí hodnoty pro pole ve schématu událostí mřížky. Můžete nastavit výchozí hodnoty pro *subjektu*, *eventtype*, a *dataversion*. Tento parametr se obvykle používají při vlastní schéma neobsahuje pole, které odpovídá jednomu z těchto tří polí. Například můžete zadat, že dataversion je vždycky nastavený na **1.0**.
+* `--input-mapping-default-values` Parametr určuje výchozí hodnoty pro pole ve schématu služby Event Grid. Můžete nastavit výchozí hodnoty pro *subjektu*, *eventtype*, a *dataversion*. Obvykle použijete tento parametr, když vaše vlastní schéma nezahrnuje pole, které odpovídá jedné z těchto tří polí. Například můžete určit, že dataversion je vždycky nastavený na **1.0**.
 
-* `--input-mapping-fields` Parametr mapuje pole z vašeho schématu do schématu mřížky událostí. Zadejte hodnoty do páry klíč – hodnota oddělených mezerami. Název klíče použijte název pole událostí mřížky. Hodnota použijte název pole. Můžete použít názvy klíčů pro *id*, *tématu*, *eventtime*, *subjektu*, *eventtype*a *dataversion*.
+* `--input-mapping-fields` Parametr mapuje pole z vašeho schématu do mřížky schématu událostí. Zadejte hodnoty do dvojic klíč/hodnota oddělených mezerami. Název klíče použijte název pole event grid. Pro hodnotu použijte název vlastního pole. Můžete použít názvy klíčů pro *id*, *tématu*, *čas události*, *subjektu*, *eventtype*a *dataversion*.
 
-Následující příklad vytvoří vlastní téma s některými namapované a výchozí pole:
+Následující příklad vytvoří vlastní téma s některými mapovat a výchozí pole:
 
 ```azurecli-interactive
 # if you have not already installed the extension, do it now.
@@ -63,13 +63,13 @@ az eventgrid topic create \
   --input-mapping-default-values subject=DefaultSubject dataVersion=1.0
 ```
 
-## <a name="subscribe-to-event-grid-topic"></a>Přihlášení k odběru událostí mřížky tématu
+## <a name="subscribe-to-event-grid-topic"></a>Přihlášení k odběru tématu event gridu
 
-Když se přihlásíte k odběru vlastní tématu, určíte schéma, které chcete použít pro příjem událostí. Můžete použít `--event-delivery-schema` parametr a nastavte ji na *cloudeventv01schema*, *eventgridschema*, nebo *inputeventschema*. Výchozí hodnota je eventgridschema.
+Když se přihlásíte k odběru vlastního tématu, zadejte schéma, které chcete použít pro příjem událostí. Můžete použít `--event-delivery-schema` parametr a nastavte ho na *cloudeventv01schema*, *eventgridschema*, nebo *inputeventschema*. Výchozí hodnota je eventgridschema.
 
-Příklady v této části použijte Queue storage pro obslužné rutiny události. Další informace najdete v tématu [směrovat vlastních událostí Azure Queue storage](custom-event-to-queue-storage.md).
+Příklady v této části pomocí Queue storage pro obslužnou rutinu události. Další informace najdete v tématu [směrování vlastních událostí do úložiště Azure Queue storage](custom-event-to-queue-storage.md).
 
-V následujícím příkladu jako odběratel u mřížky téma události a používá výchozí schéma mřížky událostí:
+V následujícím příkladu odebírá téma event gridu a používá výchozí schéma tabulky událostí:
 
 ```azurecli-interactive
 az eventgrid event-subscription create \
@@ -80,7 +80,7 @@ az eventgrid event-subscription create \
   --endpoint <storage-queue-url>
 ```
 
-Další příklad používá vstupní schéma události:
+Následující příklad používá schéma vstupní události:
 
 ```azurecli-interactive
 az eventgrid event-subscription create \
@@ -94,7 +94,7 @@ az eventgrid event-subscription create \
 
 ## <a name="publish-event-to-topic"></a>Publikování událostí do tématu
 
-Nyní jste připraveni k odeslání události do vlastní tématu a zobrazí výsledek mapování. Následující skript pro událost v příspěvku [příklad schématu](#original-event-schema):
+Nyní jste připraveni k odeslání události do vlastního tématu a zobrazit výsledek mapování. Následující skript pro událost v příspěvku [příkladu schématu](#original-event-schema):
 
 ```azurecli-interactive
 endpoint=$(az eventgrid topic show --name demotopic -g myResourceGroup --query "endpoint" --output tsv)
@@ -105,9 +105,9 @@ body=$(eval echo "'$(curl https://raw.githubusercontent.com/Azure/azure-docs-jso
 curl -X POST -H "aeg-sas-key: $key" -d "$body" $endpoint
 ```
 
-Nyní podívejte se na Queue storage. Obě předplatná událostí doručit v různých schématech.
+Nyní podívejte se na Queue storage. Dva odběry doručení událostí v různých schémat.
 
-První předplatné použít schématu mřížky události. Formát doručené události je:
+První předplatné používá event grid schématu. Formát doručené událostí je:
 
 ```json
 {
@@ -126,9 +126,9 @@ První předplatné použít schématu mřížky události. Formát doručené u
 }
 ```
 
-Tato pole obsahují mapování z vlastní heslo. **myEventTypeField** je namapována na **EventType**. Výchozí hodnoty pro **DataVersion** a **subjektu** se používají. **Data** objekt obsahuje pole původní schématu událostí.
+Tato pole obsahují mapování z vlastního tématu. **myEventTypeField** je namapována na **EventType**. Výchozí hodnoty pro **DataVersion** a **subjektu** se používají. **Data** obsahuje původní pole schématu událostí.
 
-Druhého předplatného používá schéma vstupní událost. Formát doručené události je:
+Druhého předplatného používá schéma vstupních událostí. Formát doručené událostí je:
 
 ```json
 {
@@ -138,10 +138,10 @@ Druhého předplatného používá schéma vstupní událost. Formát doručené
 }
 ```
 
-Všimněte si, že byly dodány původní pole.
+Všimněte si, že byly dodány původního pole.
 
 ## <a name="next-steps"></a>Další postup
 
-* Informace o události doručení a opakovaných pokusů [doručení zpráv událostí mřížky a zkuste to znovu](delivery-and-retry.md).
-* Úvod k mřížce událostí, naleznete v části [o mřížky událostí](overview.md).
-* Chcete-li rychle začít používat událostí mřížky, přečtěte si téma [vytvořit a směrování vlastních událostí s Azure událostí mřížky](custom-event-quickstart.md).
+* Informace o doručování událostí a opakovaných pokusů [doručování zpráv služby Event Grid a zkuste to znovu](delivery-and-retry.md).
+* Úvod do Event Gridu najdete v článku [Informace o službě Event Grid](overview.md).
+* Pokud chcete rychle začít používat služby Event Grid, přečtěte si téma [vytvoření a směrování vlastních událostí pomocí služby Azure Event Grid](custom-event-quickstart.md).

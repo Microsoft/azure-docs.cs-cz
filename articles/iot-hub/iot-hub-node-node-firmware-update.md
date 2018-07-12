@@ -1,6 +1,6 @@
 ---
-title: Aktualizace firmwaru zařízení s Azure IoT Hub (uzel) | Microsoft Docs
-description: Jak používat správu zařízení v Azure IoT Hub zahájíte aktualizaci firmwaru zařízení. Použijete k implementaci aplikace simulovaného zařízení a aplikaci služby, která spustí aktualizaci firmwaru SDK služby Azure IoT pro Node.js.
+title: Aktualizace firmwaru zařízení s Azure IoT Hub (Node) | Dokumentace Microsoftu
+description: Jak zahájit aktualizaci firmwaru zařízení pomocí správy zařízení ve službě Azure IoT Hub. Implementace aplikace s Simulovaná zařízení a app service, která spustí aktualizaci firmwaru pomocí sady Azure IoT SDK pro Node.js.
 author: juanjperez
 manager: cberlin
 ms.service: iot-hub
@@ -9,45 +9,45 @@ ms.topic: conceptual
 ms.date: 09/07/2017
 ms.author: juanpere
 ms.openlocfilehash: 0cd8c019cf9a65e0e72227ba99c1995a45ed4067
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "34634960"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38452426"
 ---
-# <a name="use-device-management-to-initiate-a-device-firmware-update-nodenode"></a>Použití správy zařízení za účelem zahájení aktualizaci firmwaru zařízení (uzel nebo uzel)
+# <a name="use-device-management-to-initiate-a-device-firmware-update-nodenode"></a>Použití správy zařízení za účelem Zahájit aktualizaci firmwaru zařízení (Node/Node)
 [!INCLUDE [iot-hub-selector-firmware-update](../../includes/iot-hub-selector-firmware-update.md)]
 
-V [Začínáme se správou zařízení] [ lnk-dm-getstarted] kurz, jste viděli, jak používat [dvojče zařízení] [ lnk-devtwin] a [přímé metody ] [ lnk-c2dmethod] primitiv vzdáleně restartování zařízení. Tento kurz používá stejné primitiv IoT Hub a poskytuje pokyny a ukazuje, jak provést aktualizaci firmwaru simulované začátku do konce.  Tento vzor slouží k implementaci aktualizace firmwaru pro vzorovou Intel Edison zařízení.
+V [Začínáme se správou zařízení] [ lnk-dm-getstarted] výukový program, jste viděli, jak používat [dvojče zařízení] [ lnk-devtwin] a [přímé metody ] [ lnk-c2dmethod] primitiv vzdálené restartování zařízení. Tento kurz používá stejný základní služby IoT Hub a obsahuje pokyny a ukazuje, jak provádět aktualizace firmwaru simulované začátku do konce.  Tento model se používá k provedení aktualizace firmwaru Intel Edison ukázkou zařízení.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 V tomto kurzu získáte informace o následujících postupech:
 
-* Vytvořte konzolovou aplikaci softwaru Node.js, která volá metodu firmwareUpdate přímé v aplikaci simulovaného zařízení prostřednictvím služby IoT hub.
-* Vytvoření aplikace simulovaného zařízení, která implementuje **firmwareUpdate** přímá metoda. Tato metoda inicializuje více fáze procesu, který čeká na stažení bitové kopie firmwaru, stáhne bitovou kopii firmware a nakonec platí bitovou kopii firmwaru. Během aktualizace v každé fázi používá zařízení hlášené vlastnosti hlásit průběh.
+* Vytvořte konzolovou aplikaci Node.js, která volá metodu firmwareUpdate s přímým přístupem v aplikaci simulovaného zařízení prostřednictvím služby IoT hub.
+* Vytvoření aplikace simulovaného zařízení, která implementuje **firmwareUpdate** přímá metoda. Tato metoda zahájí vícefázový proces, který čeká na stažením image firmwaru, stáhne image firmwaru a nakonec použije image firmwaru. Během každé fáze aktualizace zařízení využívá ohlášené vlastnosti k podávat zprávy o pokroku.
 
-Na konci tohoto kurzu máte dvě aplikace konzoly Node.js:
+Na konci tohoto kurzu budete mít dvě konzolové aplikace Node.js:
 
-**dmpatterns_fwupdate_service.js**, která volá metodu přímé v aplikaci simulovaného zařízení, zobrazí odpověď a pravidelně (každých 500ms) zobrazí aktualizovaná hlášené vlastnosti.
+**dmpatterns_fwupdate_service.js**, která volá metodu s přímým přístupem v aplikaci simulovaného zařízení, zobrazí odpovědi a pravidelně (každých 500ms) zobrazí aktualizovaný ohlášené vlastnosti.
 
-**dmpatterns_fwupdate_device.js**, který se připojí ke službě IoT hub s identitou zařízení vytvořenou dříve, dostane přímá metoda firmwareUpdate, spustí prostřednictvím více stavu procesu k simulaci, včetně aktualizace firmwaru: čekání bitové kopie stažení, stahování novou bitovou kopii a nakonec použitím bitové kopie.
+**dmpatterns_fwupdate_device.js**, propojuje službu IoT hub s identitou zařízení vytvořenou dříve, obdrží firmwareUpdate přímé metody, prochází přes více stavu procesu pro simulaci, včetně aktualizace firmwaru: čeká se na obrázku stáhnete, stahuje nové image a nakonec použitím bitové kopie.
 
 Pro absolvování tohoto kurzu potřebujete:
 
-* Verze Node.js 4.0.x nebo novější, <br/>  [Příprava vývojového prostředí] [ lnk-dev-setup] popisuje postup instalace Node.js pro tento návod v systému Windows nebo Linux.
+* Node.js verze 4.0.x nebo novější, <br/>  [Příprava vývojového prostředí] [ lnk-dev-setup] popisuje postup instalace Node.js pro účely tohoto kurzu ve Windows nebo Linuxu.
 * Aktivní účet Azure. (Pokud účet nemáte, můžete si během několika minut vytvořit [bezplatný účet][lnk-free-trial].)
 
-Postupujte podle [Začínáme se správou zařízení](iot-hub-node-node-device-management-get-started.md) článek k vytvoření služby IoT hub a získat připojovací řetězec služby IoT Hub.
+Postupujte podle [Začínáme se správou zařízení](iot-hub-node-node-device-management-get-started.md) článek k vytvoření služby IoT hub a získejte připojovací řetězec služby IoT Hub.
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 
-## <a name="trigger-a-remote-firmware-update-on-the-device-using-a-direct-method"></a>Spustit aktualizaci vzdálené firmwaru v zařízení s přímá metoda
-V této části vytvoříte konzolovou aplikaci softwaru Node.js, který iniciuje aktualizace vzdálené firmwaru v zařízení. Přímá metoda používá k zahájení aktualizace a aplikace používá zařízení twin dotazy a pravidelně získat stav aktualizace active firmware.
+## <a name="trigger-a-remote-firmware-update-on-the-device-using-a-direct-method"></a>Aktivace firmwaru vzdálené aktualizace na zařízení s využitím přímé metody
+V této části vytvoříte konzolovou aplikaci Node.js, který iniciuje vzdálené firmwaru v zařízení. Aplikace používá přímé metody k zahájení aktualizace a používá dotazů na dvojčata zařízení a pravidelně získat stav aktualizace firmwaru aktivní.
 
-1. Vytvořit prázdnou složku s názvem **triggerfwupdateondevice**.  V **triggerfwupdateondevice** složky, vytvořte soubor package.json pomocí následujícího příkazu na příkazovém řádku.  Přijměte všechny výchozí hodnoty:
+1. Vytvořte prázdnou složku s názvem **triggerfwupdateondevice**.  V **triggerfwupdateondevice** složce vytvořte soubor package.json pomocí následujícího příkazu na příkazovém řádku.  Přijměte všechny výchozí hodnoty:
    
     ```
     npm init
@@ -57,7 +57,7 @@ V této části vytvoříte konzolovou aplikaci softwaru Node.js, který iniciuj
     ```
     npm install azure-iothub --save
     ```
-3. Pomocí textového editoru, vytvořte **dmpatterns_getstarted_service.js** v soubor **triggerfwupdateondevice** složky.
+3. Pomocí textového editoru, vytvořte **dmpatterns_getstarted_service.js** soubor **triggerfwupdateondevice** složky.
 4. Přidejte následující příkazy na začátku "vyžadovat" **dmpatterns_getstarted_service.js** souboru:
    
     ```
@@ -74,7 +74,7 @@ V této části vytvoříte konzolovou aplikaci softwaru Node.js, který iniciuj
     var client = Client.fromConnectionString(connectionString);
     var deviceToUpdate = 'myDeviceId';
     ```
-6. Přidejte následující funkci k vyhledání a zobrazení hodnotu firmwareUpdate jsou uvedeny vlastnosti.
+6. Přidejte následující funkci k vyhledání a zobrazení hodnoty firmwareUpdate hlášené vlastnost.
    
     ```
     var queryTwinFWUpdateReported = function() {
@@ -87,7 +87,7 @@ V této části vytvoříte konzolovou aplikaci softwaru Node.js, který iniciuj
         });
     };
     ```
-7. Přidejte následující funkci k vyvolání metody firmwareUpdate restartování cílového zařízení:
+7. Přidejte následující funkci k vyvolání metody firmwareUpdate restartovat cílové zařízení:
    
     ```
     var startFirmwareUpdateDevice = function() {
@@ -111,7 +111,7 @@ V této části vytvoříte konzolovou aplikaci softwaru Node.js, který iniciuj
       });
     };
     ```
-8. Nakonec přidejte následující funkci k kód pro spuštění pořadí aktualizací firmwaru a spusťte pravidelně zobrazuje hlášené vlastnosti:
+8. Nakonec přidejte následující funkci k kód pro spuštění sekvence aktualizace firmwaru a začne pravidelně zobrazovat ohlášených vlastností:
    
     ```
     startFirmwareUpdateDevice();
@@ -124,22 +124,22 @@ V této části vytvoříte konzolovou aplikaci softwaru Node.js, který iniciuj
 ## <a name="run-the-apps"></a>Spouštění aplikací
 Nyní jste připraveni aplikaci spustit.
 
-1. Na příkazovém řádku v **manageddevice** složky, spusťte následující příkaz, aby začal přijímat přímá metoda restartování.
+1. Na příkazovém řádku v **manageddevice** složky, spuštěním následujícího příkazu zahajte naslouchání pro přímé metody restartování.
    
     ```
     node dmpatterns_fwupdate_device.js
     ```
-2. Na příkazovém řádku v **triggerfwupdateondevice** složky, spusťte následující příkaz k aktivační události restartovat vzdálený počítač a dotaz pro dvojče zařízení najít poslední čas restartování počítače.
+2. Na příkazovém řádku v **triggerfwupdateondevice** složky, spusťte následující příkaz spustí vzdálené restartování a dotazů pro dvojče zařízení najít poslední čas restartování.
    
     ```
     node dmpatterns_fwupdate_service.js
     ```
-3. Zobrazí zařízení odpověď na přímá metoda v konzole.
+3. Zobrazí se zařízení odpověď na přímé metody v konzole.
 
 ## <a name="next-steps"></a>Další postup
-V tomto kurzu přímá metoda používá k aktivaci aktualizace vzdálené firmwaru v zařízení a umožňuje sledovat průběh aktualizace firmwaru hlášené vlastnosti.
+V tomto kurzu se používá přímé metody k aktivaci vzdáleného firmwaru v zařízení a umožňuje sledovat průběh aktualizace firmwaru ohlášené vlastnosti.
 
-Zjistěte, jak rozšířit vaše IoT řešení a plán metoda volá na několika zařízeních, najdete v článku [plán a všesměrového vysílání úlohy] [ lnk-tutorial-jobs] kurzu.
+Zjistěte, jak rozšířit vaše IoT řešení a plán metoda volá do různých zařízení, najdete v článku [plánování a vysílání úloh] [ lnk-tutorial-jobs] kurzu.
 
 [lnk-devtwin]: iot-hub-devguide-device-twins.md
 [lnk-c2dmethod]: iot-hub-devguide-direct-methods.md

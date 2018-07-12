@@ -1,6 +1,6 @@
 ---
-title: Používat Windows virtuální počítač MSI pro přístup k Azure SQL
-description: Kurz vás provede procesem použití Windows virtuálního počítače spravované služby Identity (MSI) pro přístup k Azure SQL.
+title: Použití MSI virtuálního počítače Windows pro přístup k Azure SQL
+description: Kurz vás provede procesem jeho použití Windows virtuální počítač Identity spravované služby (MSI) pro přístup k Azure SQL.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -15,22 +15,22 @@ ms.date: 12/15/2017
 ms.author: skwan
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 682998bb979c9b155b7b1389d8f605018ae135b6
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31589522"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38610928"
 ---
-# <a name="use-a-windows-vm-managed-service-identity-msi-to-access-azure-sql"></a>Použití Windows virtuálního počítače spravované služby Identity (MSI) pro přístup k Azure SQL
+# <a name="use-a-windows-vm-managed-service-identity-msi-to-access-azure-sql"></a>Použít pro přístup k Azure SQL Windows virtuální počítač Identity spravované služby (MSI)
 
 [!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
-V tomto kurzu se dozvíte, jak používat a spravovat službu Identity (MSI) pro virtuální počítač (VM) systému Windows pro přístup k serveru Azure SQL. Identita spravované služby je automaticky prováděna nástrojem Azure a umožňují ověření pro služby, které podporují ověřování Azure AD, aniž by museli přihlašovací údaje vložit do vašeho kódu. Získáte informace o těchto tématech:
+V tomto kurzu se dozvíte, jak používat Identity spravované služby (MSI) pro Windows virtuální počítač (VM) pro přístup k serveru Azure SQL. Identita spravované služby je automaticky prováděna nástrojem Azure a umožňují ověření do služeb, které podporují ověřování Azure AD, aniž by bylo nutné vložit pověření do kódu. Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Povolit MSI v systému Windows virtuálního počítače 
-> * Udělit přístup virtuálních počítačů k serveru Azure SQL
-> * Získání přístupového tokenu pomocí identity virtuálního počítače a použít ho k dotazování server Azure SQL
+> * Povolení MSI ve virtuálním počítači Windows 
+> * Udělit přístup virtuálního počítače k serveru Azure SQL
+> * Získání přístupového tokenu pomocí identity virtuálního počítače a použít ho k dotazování Azure SQL server
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -42,57 +42,57 @@ V tomto kurzu se dozvíte, jak používat a spravovat službu Identity (MSI) pro
 
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
-## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>Vytvoření virtuálního počítače s Windows v nové skupině prostředků.
+## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>Vytvoření virtuálního počítače s Windows do nové skupiny prostředků
 
 V tomto kurzu vytvoříme nový virtuální počítač s Windows.  Můžete také povolit MSI na existující virtuální počítač.
 
-1.  Klikněte na tlačítko **vytvořit prostředek** v levém horním rohu portálu Azure.
+1.  Klikněte na tlačítko **vytvořit prostředek** v levém horním rohu webu Azure portal.
 2.  Vyberte **Compute** a potom vyberte **Windows Server 2016 Datacenter**. 
-3.  Zadejte informace o virtuálním počítači. **Uživatelské jméno** a **heslo** vytvořený, zde je přihlašovací údaje, které používáte k přihlášení k virtuálnímu počítači.
-4.  Vyberte správnou **předplatné** pro virtuální počítač v rozevírací nabídce.
-5.  Chcete-li vybrat nový **skupiny prostředků** , během které můžete vytvořit virtuální počítač vyberte **vytvořit nový**. Jakmile budete hotovi, klikněte na **OK**.
-6.  Vyberte velikost virtuálního počítače. Pokud chcete zobrazit další velikosti, vyberte **Zobrazit všechny** nebo změňte filtr **Podporovaný typ disku**. Na stránce nastavení ponechejte výchozí hodnoty a klikněte na tlačítko **OK**.
+3.  Zadejte informace o virtuálním počítači. **Uživatelské jméno** a **heslo** vytvořený, tady je přihlašovací údaje použijete k přihlášení k virtuálnímu počítači.
+4.  Zvolte správné **předplatné** pro virtuální počítač v rozevírací nabídce.
+5.  Chcete-li vybrat nový **skupiny prostředků** ve kterém chcete vytvořit virtuální počítač, zvolte **vytvořit nový**. Jakmile budete hotovi, klikněte na **OK**.
+6.  Vyberte velikost virtuálního počítače. Pokud chcete zobrazit další velikosti, vyberte **Zobrazit všechny** nebo změňte filtr **Podporovaný typ disku**. Na stránce nastavení ponechte výchozí nastavení a klikněte na tlačítko **OK**.
 
-    ![Obrázek alternativní text](~/articles/active-directory/media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
+    ![Text ALT obrázku](~/articles/active-directory/media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
 
-## <a name="enable-msi-on-your-vm"></a>Povolit MSI na vašem virtuálním počítači 
+## <a name="enable-msi-on-your-vm"></a>Povolení MSI ve virtuálním počítači 
 
-Virtuální počítač MSI umožňuje získat přístupové tokeny z Azure AD, aniž by bylo třeba uvést přihlašovací údaje do vašeho kódu. Povolení MSI informuje Azure k vytvoření spravovaného identity pro virtuální počítač. V pozadí, povolení MSI provádí dvě věci: nainstaluje rozšíření virtuálního počítače MSI na vašem virtuálním počítači a umožňuje MSI ve službě Správce prostředků Azure.
+MSI virtuálního počítače můžete k získání přístupových tokenů z Azure AD, aniž byste museli vložit pověření do kódu. Povolení MSI Azure zjistí, chcete-li vytvořit spravovanou identitu pro váš virtuální počítač. Pod pokličkou, povolení MSI provede dvě věci: nainstaluje rozšíření MSI virtuálního počítače na virtuálním počítači a umožňuje MSI v Azure Resource Manageru.
 
-1.  Vyberte **virtuálního počítače** , které chcete povolit MSI v.  
-2.  V levém navigačním panelu klikněte na tlačítko **konfigurace**. 
-3.  Zobrazí **identita spravované služby**. Registrovat a povolit soubor MSI, vyberte **Ano**, pokud chcete zakázat, vyberte Ne. 
-4.  Ujistěte se, kliknete na tlačítko **Uložit** konfiguraci uložíte.  
-    ![Obrázek alternativní text](~/articles/active-directory/media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
+1.  Vyberte **virtuální počítač** , že chcete povolit na MSI.  
+2.  Na navigačním panelu vlevo klikněte na tlačítko **konfigurace**. 
+3.  Zobrazí **identita spravované služby**. Chcete-li zaregistrovat a povolit MSI, vyberte **Ano**, pokud chcete zakázat, vyberte Ne. 
+4.  Zajištění kliknutí na **Uložit** uložte konfiguraci.  
+    ![Text ALT obrázku](~/articles/active-directory/media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 
-5. Pokud chcete zkontrolovat a ověřit, která rozšíření jsou na tomto virtuálním počítači, klikněte na tlačítko **rozšíření**. Pokud je povoleno MSI, pak **ManagedIdentityExtensionforWindows** se zobrazí v seznamu.
+5. Pokud chcete zkontrolovat a ověřit, jaká rozšíření jsou na tomto virtuálním počítači, klikněte na tlačítko **rozšíření**. Pokud je povolené MSI, pak **ManagedIdentityExtensionforWindows** se zobrazí v seznamu.
 
-    ![Obrázek alternativní text](~/articles/active-directory/media/msi-tutorial-windows-vm-access-arm/msi-windows-extension.png)
+    ![Text ALT obrázku](~/articles/active-directory/media/msi-tutorial-windows-vm-access-arm/msi-windows-extension.png)
 
-## <a name="grant-your-vm-access-to-a-database-in-an-azure-sql-server"></a>Udělit váš virtuální počítač přístup k databázi v serveru Azure SQL
+## <a name="grant-your-vm-access-to-a-database-in-an-azure-sql-server"></a>Udělit váš virtuální počítač přístup k databázi na serveru Azure SQL
 
-Nyní můžete udělit váš virtuální počítač přístup k databázi v serveru Azure SQL.  Pro tento krok můžete použít existující server SQL nebo vytvořte novou.  Pokud chcete vytvořit nový server a databáze pomocí portálu Azure, postupujte podle to [Azure SQL rychlý Start](~/articles/sql-database/sql-database-get-started-portal.md). Existují také – elementy QuickStart, použít rozhraní příkazového řádku Azure a prostředí Azure PowerShell v [dokumentaci k systému Azure SQL](~/articles/sql-database/index.yml).
+Nyní můžete udělit váš virtuální počítač přístup k databázi na serveru Azure SQL.  Pro tento krok můžete použít existující server SQL nebo vytvořte novou.  Pokud chcete vytvořit nový server a databáze pomocí webu Azure portal, postupujte podle to [Azure SQL quickstart](~/articles/sql-database/sql-database-get-started-portal.md). Existují také šablon rychlý start a používat rozhraní příkazového řádku Azure a Azure Powershellu v [dokumentace ke službě Azure SQL](~/articles/sql-database/index.yml).
 
-Existují tři kroky pro udělení váš virtuální počítač přístup k databázi:
+Existují tři kroky pro poskytování váš virtuální počítač přístup k databázi:
 1.  Vytvoření skupiny ve službě Azure AD a nastavte MSI virtuálního počítače jako člena skupiny.
-2.  Povolení ověřování Azure AD pro SQL server.
+2.  Povolte ověřování Azure AD pro SQL server.
 3.  Vytvoření **uživatele** v databázi, která reprezentuje skupinu Azure AD.
 
 > [!NOTE]
-> Obvykle vytvoříte obsahují uživatele, který mapuje přímo do Virtuálního počítače MSI.  Azure SQL v současné době nepovoluje objekt zabezpečení služby Azure AD, který představuje MSI virtuálních počítačů nejde mapovat na uživatele.  Jako podporovaných řešení můžete nastavte MSI virtuálního počítače jako člena skupiny služby Azure AD, a potom vytvořte uživatele v databázi, která reprezentuje skupinu.
+> Obvykle vytvoříte uživatele, který mapuje přímo na MSI Virtuálního počítače.  Azure SQL v současné době neumožňuje instanční objekt služby Azure AD, který představuje MSI virtuálního počítače, který má být mapována na uživatele.  Tento problém obejdete podporované nastavte MSI virtuálního počítače jako člena skupiny Azure AD pak vytvořte uživatele v databázi, která reprezentuje skupinu.
 
 
 ### <a name="create-a-group-in-azure-ad-and-make-the-vm-msi-a-member-of-the-group"></a>Vytvoření skupiny ve službě Azure AD a nastavte MSI virtuálního počítače jako člena skupiny
 
-Můžete použít existující skupinu pro Azure AD, nebo vytvořte novou pomocí Azure AD PowerShell.  
+Můžete použít existující skupinu Azure AD nebo vytvořit novou zásadu pomocí prostředí PowerShell Azure AD.  
 
-Nejdřív nainstalujte [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) modulu. Potom se přihlaste pomocí `Connect-AzureAD`a spusťte následující příkaz pro vytvoření skupiny a uložte ho do proměnné:
+Nejdřív nainstalujte [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) modulu. Potom se přihlaste pomocí `Connect-AzureAD`a spusťte následující příkaz k vytvoření skupiny a uložte ho jako proměnnou:
 
 ```powershell
 $Group = New-AzureADGroup -DisplayName "VM MSI access to SQL" -MailEnabled $false -SecurityEnabled $true -MailNickName "NotSet"
 ```
 
-Výstup vypadá následující text, který také ověří hodnotu proměnné:
+Výstup bude vypadat jako následující text, který také zkontroluje hodnotu proměnné:
 
 ```powershell
 $Group = New-AzureADGroup -DisplayName "VM MSI access to SQL" -MailEnabled $false -SecurityEnabled $true -MailNickName "NotSet"
@@ -102,10 +102,10 @@ ObjectId                             DisplayName          Description
 6de75f3c-8b2f-4bf4-b9f8-78cc60a18050 VM MSI access to SQL
 ```
 
-V dalším kroku přidejte MSI Virtuálního počítače do skupiny.  Je třeba MSI **ObjectId**, které můžete získat pomocí Azure PowerShell.  Nejprve stáhnout [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps). Potom se přihlaste pomocí `Connect-AzureRmAccount`, a spusťte následující příkazy, které:
-- Ujistěte se, že je váš kontext relace nastaven na požadované předplatné Azure, pokud máte několik snímků.
-- Seznam dostupných prostředků ve vašem předplatném Azure, v ověřte správné prostředků skupiny a názvy virtuálních počítačů.
-- Získat vlastnosti Virtuálního počítače MSI, pomocí příslušnými hodnotami pro `<RESOURCE-GROUP>` a `<VM-NAME>`.
+V dalším kroku přidejte MSI Virtuálního počítače do skupiny.  Je třeba MSI **ObjectId**, který můžete získat pomocí Azure Powershellu.  Nejdřív stáhněte [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps). Potom se přihlaste pomocí `Connect-AzureRmAccount`, a spusťte následující příkazy:
+- Ujistěte se, že váš kontext relace nastavená na požadované předplatné Azure, pokud máte několik snímků.
+- Seznam dostupných prostředků ve vašem předplatném Azure, v Ověřte správnou skupinu a názvy virtuálních počítačů.
+- Získání vlastností virtuálního počítače MSI, pomocí příslušné hodnoty pro `<RESOURCE-GROUP>` a `<VM-NAME>`.
 
 ```powershell
 Set-AzureRMContext -subscription "bdc79274-6bb9-48a8-bfd8-00c140fxxxx"
@@ -113,19 +113,19 @@ Get-AzureRmResource
 $VM = Get-AzureRmVm -ResourceGroup <RESOURCE-GROUP> -Name <VM-NAME>
 ```
 
-Výstup vypadá následující text, který také prozkoumá ID objektu zabezpečení objekt služby MSI Virtuálního počítače:
+Výstup bude vypadat jako následující text, který také kontroluje ID instančního objektu objektu MSI Virtuálního počítače:
 ```powershell
 $VM = Get-AzureRmVm -ResourceGroup DevTestGroup -Name DevTestWinVM
 $VM.Identity.PrincipalId
 b83305de-f496-49ca-9427-e77512f6cc64
 ```
 
-Nyní přidejte MSI virtuálních počítačů do skupiny.  Hlavní název služby můžete přidat pouze do skupiny pomocí Azure AD PowerShell.  Spusťte tento příkaz:
+Nyní přidejte MSI virtuálního počítače do skupiny.  Instanční objekt služby můžete přidat pouze do skupiny pomocí Azure AD PowerShell.  Spusťte tento příkaz:
 ```powershell
 Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId $VM.Identity.PrincipalId
 ```
 
-Pokud byste taky zkontrolovat členství ve skupině následně, výstup vypadá takto:
+Pokud byste taky zkontrolovat členství ve skupině později, výstup vypadá takto:
 
 ```powershell
 Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId $VM.Identity.PrincipalId
@@ -136,55 +136,55 @@ ObjectId                             AppId                                Displa
 b83305de-f496-49ca-9427-e77512f6cc64 0b67a6d6-6090-4ab4-b423-d6edda8e5d9f DevTestWinVM
 ```
 
-### <a name="enable-azure-ad-authentication-for-the-sql-server"></a>Povolení ověřování Azure AD pro SQL server
+### <a name="enable-azure-ad-authentication-for-the-sql-server"></a>Povolit ověřování Azure AD pro SQL server
 
-Teď, když jste vytvořili skupinu a přidat MSI virtuálních počítačů do členství, můžete [nakonfigurovat ověřování Azure AD pro SQL server](~/articles/sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance) pomocí následujících kroků:
+Teď, když jste vytvořili skupinu a přidali MSI virtuálního počítače pro členství, můžete [konfigurovat ověřování Azure AD pro SQL server](~/articles/sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance) pomocí následujících kroků:
 
-1.  Na portálu Azure vyberte **servery SQL** z levé navigaci.
-2.  Klikněte na SQL server, aby byl povolen pro ověřování Azure AD.
+1.  Na webu Azure Portal, vyberte **SQL servery** v levém navigačním panelu.
+2.  Klikněte na SQL server, aby byla povolená pro ověřování Azure AD.
 3.  V **nastavení** části okna klikněte na tlačítko **správce Active Directory**.
 4.  Na panelu příkazů klikněte na tlačítko **nastavit správce**.
-5.  Vyberte uživatelský účet služby Azure AD budou správce serveru, a klikněte na **vyberte.**
+5.  Vyberte uživatelský účet služby Azure AD provádí správce serveru, a klikněte na **vyberte.**
 6.  Na panelu příkazů klikněte na tlačítko **uložit.**
 
 ### <a name="create-a-contained-user-in-the-database-that-represents-the-azure-ad-group"></a>Vytvořte uživatele v databázi, která reprezentuje skupinu Azure AD
 
-Pro tento další krok, budete potřebovat [Microsoft SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS). Než začnete, může být také vhodné přečtení následujících článků pro informace o integraci služby Azure AD:
+Tento další krok, budete potřebovat [Microsoft SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS). Než začnete, může být také užitečné si projít informace o integraci služby Azure AD v následujících článcích:
 
-- [Univerzální ověřování se službou SQL Database a SQL Data Warehouse (SSMS podporu vícefaktorového ověřování)](~/articles/sql-database/sql-database-ssms-mfa-authentication.md)
-- [Konfigurovat a spravovat ověřování Azure Active Directory s SQL Database nebo SQL Data Warehouse](~/articles/sql-database/sql-database-aad-authentication-configure.md)
+- [Univerzální ověřování pomocí SQL Database a SQL Data Warehouse (podpora SSMS pro vícefaktorové ověřování)](~/articles/sql-database/sql-database-ssms-mfa-authentication.md)
+- [Konfigurace a Správa ověřování služby Azure Active Directory s SQL Database nebo SQL Data Warehouse](~/articles/sql-database/sql-database-aad-authentication-configure.md)
 
 1.  Spusťte aplikaci SQL Server Management Studio.
-2.  V **připojit k serveru** dialogové okno, zadejte název serveru SQL server **název serveru** pole.
-3.  V **ověřování** pole, vyberte **Universal s podpora vícefaktorového ověřování služby Active Directory -**.
-4.  V **uživatelské jméno** pole, zadejte název účtu služby Azure AD, který nastavíte jako správce serveru, například helen@woodgroveonline.com
+2.  V **připojit k serveru** dialogové okno, zadejte název serveru SQL server v **název serveru** pole.
+3.  V **ověřování** pole, vyberte **univerzální podporující vícefaktorové ověřování služby Active Directory –**.
+4.  V **uživatelské jméno** pole, zadejte název účtu služby Azure AD, kterou jste nastavili jako správce serveru, například helen@woodgroveonline.com
 5.  Klikněte na tlačítko **Možnosti**.
 6.  V **připojit k databázi** pole, zadejte název jiné než systémové databáze, kterou chcete konfigurovat.
-7.  Klikněte na **Připojit**.  Dokončete proces přihlášení.
-8.  V **Průzkumník objektů**, rozbalte **databáze** složky.
-9.  Klikněte pravým tlačítkem na databázi uživatele a klikněte na tlačítko **nový dotaz**.
-10.  V okně dotazu zadejte následující řádek a klikněte na **Execute** na panelu nástrojů:
+7.  Klikněte na **Připojit**.  Dokončete proces přihlašování.
+8.  V **Průzkumník objektů**, rozbalte **databází** složky.
+9.  Klikněte pravým tlačítkem na uživatelskou databázi a klikněte na tlačítko **nový dotaz**.
+10.  V okně dotazu zadejte následující řádek a klikněte na tlačítko **Execute** na panelu nástrojů:
     
      ```
      CREATE USER [VM MSI access to SQL] FROM EXTERNAL PROVIDER
      ```
     
-     Příkaz je úspěšně dokončena, vytvoření obsažené uživatele pro skupinu.
-11.  Zrušte okna dotazu, zadejte následující řádek a klikněte na tlačítko **Execute** na panelu nástrojů:
+     Příkaz je úspěšně dokončena, vytváření omezením uživatele pro skupinu.
+11.  Zrušte v okně dotazu zadejte následující řádek a klikněte na tlačítko **Execute** na panelu nástrojů:
      
      ```
      ALTER ROLE db_datareader ADD MEMBER [VM MSI access to SQL]
      ```
 
-     Příkaz je úspěšně dokončena, udělení oprávnění pro čtení celou databázi obsažené uživatele.
+     Příkaz je úspěšně dokončena, udělení oprávnění ke čtení celé databáze uživatele.
 
-Kód spuštěný ve virtuálním počítači teď můžete získat token z MSI a použití tokenu k ověření serveru SQL.
+Kód spuštěný ve virtuálním počítači, teď můžete získat token z MSI a použití tokenu k ověření serveru SQL.
 
 ## <a name="get-an-access-token-using-the-vm-identity-and-use-it-to-call-azure-sql"></a>Získání přístupového tokenu pomocí identity virtuálního počítače a použít jej k vyvolání Azure SQL 
 
-Azure SQL nativně podporuje Azure AD ověřování, mohl přímo přijímat tokeny přístupu získat pomocí Instalační služby MSI.  Můžete použít **přístupový token** metodu vytváření připojení k SQL.  To je součástí Azure SQL integraci s Azure AD a se liší od zadávání přihlašovacích údajů v připojovacím řetězci.
+Azure SQL nativně podporuje Azure AD ověřování, aby mohl přijímat přímo přístupové tokeny získat pomocí Instalační služby MSI.  Můžete použít **přístupový token** způsob vytváření připojení k SQL.  To je součástí Integrace Azure SQL s Azure AD a se liší od poskytnutí přihlašovacích údajů v připojovacím řetězci.
 
-Tady je příklad kódu .net otevření připojení k SQL pomocí přístupového tokenu.  Tento kód musí být spuštěn na virtuální počítač přístup k koncový bod virtuálního počítače MSI.  **Rozhraní .net framework 4.6** nebo vyšší je vyžadován v případě metody token přístupu.  Nahraďte hodnoty AZURE-SQL-SERVERNAME a databáze odpovídajícím způsobem.  Poznamenejte si ID prostředku pro Azure SQL je "https://database.windows.net/".
+Tady je příklad kódu .net otevření připojení k SQL pomocí přístupového tokenu.  Tento kód musíte spustit na virtuálním počítači bude mít přístup ke koncovému bodu MSI virtuálního počítače.  **Rozhraní .net framework 4.6** nebo vyšší se vyžaduje token metody přístupu.  Nahraďte hodnoty AZURE-SQL-SERVERNAME a databáze odpovídajícím způsobem.  Poznamenejte si ID prostředku pro Azure SQL je "https://database.windows.net/".
 
 ```csharp
 using System.Net;
@@ -228,30 +228,30 @@ if (accessToken != null) {
 }
 ```
 
-Případně je rychlý způsob, jak otestovat koncová nastavení bez nutnosti psaní a nasazení aplikace na virtuální počítač pomocí prostředí PowerShell.
+Další možností je rychlý způsob, jak otestovat komplexní nastavení bez nutnosti psát a nasazovat aplikace na virtuálním počítači pomocí Powershellu.
 
-1.  Na portálu, přejděte na **virtuální počítače** a přejděte k virtuálnímu počítači Windows a v **přehled**, klikněte na tlačítko **Connect**. 
-2.  Zadejte ve vaší **uživatelské jméno** a **heslo** pro které jste přidali při vytváření virtuálního počítače Windows. 
-3.  Teď, když jste vytvořili **připojení ke vzdálené ploše** s virtuálním počítačem, otevřete **prostředí PowerShell** ve vzdálené relaci. 
-4.  Pomocí prostředí PowerShell na `Invoke-WebRequest`, vytvořte žádost na místní koncový bod MSI k získání tokenu přístupu pro Azure SQL.
+1.  Na portálu přejděte na **virtuálních počítačů** a přejděte ke svému virtuálnímu počítači Windows a v **přehled**, klikněte na tlačítko **připojit**. 
+2.  Zadejte vaše **uživatelské jméno** a **heslo** pro které jste přidali po vytvoření virtuálního počítače Windows. 
+3.  Teď, když jste vytvořili **připojení ke vzdálené ploše** s virtuálním počítačem, otevřete **Powershellu** ve vzdálené relaci. 
+4.  Použití Powershellu `Invoke-WebRequest`, vytvořte žádost na místním koncovým bodem MSI pro získání přístupového tokenu pro Azure SQL.
 
     ```powershell
        $response = Invoke-WebRequest -Uri http://localhost:50342/oauth2/token -Method GET -Body @{resource="https://database.windows.net/"} -Headers @{Metadata="true"}
     ```
     
-    Převeďte odpověď z objektu JSON na objekt prostředí PowerShell. 
+    Převeďte odpovědi z objektu JSON na objekt prostředí PowerShell. 
     
     ```powershell
     $content = $response.Content | ConvertFrom-Json
     ```
 
-    Rozbalte tokenu přístupu z odpovědi.
+    Rozbalte přístupový token z odpovědi.
     
     ```powershell
     $AccessToken = $content.access_token
     ```
 
-5.  Otevře připojení k systému SQL server. Nezapomeňte nahradit hodnoty pro AZURE-SQL-název serveru a databáze.
+5.  Otevřete připojení k serveru SQL server. Nezapomeňte nahradit hodnoty pro AZURE-SQL-SERVERNAME a databáze.
     
     ```powershell
     $SqlConnection = New-Object System.Data.SqlClient.SqlConnection
@@ -260,7 +260,7 @@ Případně je rychlý způsob, jak otestovat koncová nastavení bez nutnosti p
     $SqlConnection.Open()
     ```
 
-    V dalším kroku vytvořit a odeslat dotaz na server.  Nezapomeňte nahradit hodnotu pro tabulku.
+    V dalším kroku vytvořit a odeslat dotaz na server.  Nezapomeňte nahradit hodnotu pro tabulky.
 
     ```powershell
     $SqlCmd = New-Object System.Data.SqlClient.SqlCommand
@@ -272,7 +272,7 @@ Případně je rychlý způsob, jak otestovat koncová nastavení bez nutnosti p
     $SqlAdapter.Fill($DataSet)
     ```
 
-Zkontrolujte hodnotu `$DataSet.Tables[0]` pro zobrazení výsledků dotazu.  Blahopřejeme, jste dotaz databáze pomocí MSI virtuálního počítače a bez nutnosti zadat přihlašovací údaje!
+Zkoumat hodnoty `$DataSet.Tables[0]` pro zobrazení výsledků dotazu.  Blahopřejeme, jste dotazovat databázi pomocí MSI virtuálního počítače a bez nutnosti poskytnout přihlašovací údaje.
 
 ## <a name="related-content"></a>Související obsah
 
@@ -281,4 +281,4 @@ Zkontrolujte hodnotu `$DataSet.Tables[0]` pro zobrazení výsledků dotazu.  Bla
 - Další informace o [konfigurace podpory Azure SQL pro ověřování Azure AD](~/articles/sql-database/sql-database-aad-authentication-configure.md).
 - Další informace o [ověřování a přístup v systému SQL server](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions).
 
-Použijte následující sekci komentáře k poskytnutí zpětné vazby a Pomozte nám vylepšit a utvářejí náš obsah.
+Pomocí následujícího oddílu pro komentáře na svůj názor a Pomozte nám vylepšit a obrazce náš obsah.
