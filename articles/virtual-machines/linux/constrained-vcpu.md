@@ -1,6 +1,6 @@
 ---
-title: Azure omezené velikosti virtuálních procesorů - Linux | Microsoft Docs
-description: Uvádí velikosti virtuálních počítačů, které podporují toho, že počet virtuálních procesorů omezené.
+title: Azure omezen velikostí vCPU - Linux | Dokumentace Microsoftu
+description: Seznam velikostí virtuálních počítačů, které jsou schopné s počet omezené virtuálních procesorů.
 services: virtual-machines-linux
 documentationcenter: ''
 author: jonbeck7
@@ -16,13 +16,13 @@ ms.workload: infrastructure-services
 ms.date: 03/09/2018
 ms.author: jonbeck
 ms.openlocfilehash: ec2ee8fa9c374b5870cfcfd325925322c49aa0ca
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2018
-ms.locfileid: "29874085"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38718729"
 ---
-# <a name="constrained-vcpu-capable-vm-sizes"></a>Omezené virtuálních procesorů podporující velikosti virtuálních počítačů
+# <a name="constrained-vcpu-capable-vm-sizes"></a>Velikosti virtuálních počítačů umožňující omezené virtuálních procesorů
 
 
 [!INCLUDE [virtual-machines-common-sizes-general](../../../includes/virtual-machines-common-constrained-vcpu.md)]
@@ -36,5 +36,5 @@ ms.locfileid: "29874085"
 - [Vysokovýkonné výpočetní prostředí](sizes-hpc.md)
 
 ## <a name="next-steps"></a>Další postup
-Další informace o [Azure výpočetní jednotky (ACU)](acu.md) můžete porovnat výpočetní výkon v Azure SKU.
+Další informace o tom [Azure výpočetních jednotek (ACU)](acu.md) můžete porovnat výpočetní výkon jednotlivých SKU v Azure.
 

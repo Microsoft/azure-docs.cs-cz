@@ -1,6 +1,6 @@
 ---
-title: Vizualizovat data vzdálené monitorování pomocí Power BI - Azure | Microsoft Docs
-description: Tento kurz používá Power BI Desktop a Cosmos DB integerate data z řešení vzdáleného monitorování do přizpůsobené vizualizace. Tímto způsobem uživatelé můžete vytvořit své vlastní vlastní řídicí panely a sdílet je uživatelům, nikoli na řešení.
+title: Vizualizovat data vzdálené monitorování pomocí Power BI – Azure | Dokumentace Microsoftu
+description: Tento kurz používá Power BI Desktopu a Cosmos DB k integerate data z řešení vzdáleného monitorování do vlastní vizualizace. Tímto způsobem uživatelé můžete vytvářet své vlastní vlastní řídicí panely a sdílet je pro uživatele, ne na řešení.
 author: asdonald
 manager: hegate
 ms.author: asdonald
@@ -8,99 +8,99 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 05/01/2018
 ms.topic: conceptual
-ms.openlocfilehash: e396d69a61679a85fdfbd3e8fd43216635dec51d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ae039573cf202059114f23cca86207c117a35ead
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34627786"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970395"
 ---
 # <a name="visualize-remote-monitoring-data-using-power-bi"></a>Vizualizovat data vzdálené monitorování pomocí Power BI
 
-Tento kurz vás provede postup zařaďte svá data řešení vzdáleného monitorování z CosmosDB do Power BI. K tomuto připojení navázat můžete pak vytvořit vlastní řídicí panely a přidat je do řídicího panelu řešení vzdáleného monitorování. Tato workstream umožňuje více specializované grafy má být vytvořen, kromě těch mimo pole. Potom můžete v tomto kurzu k integraci s jinými datovými proudy nebo sestavit vlastní řídicí panely a využijí mimo řešení vzdáleného monitorování. Vytváření řídicích panelů v Power BI znamená, můžete provést také jednotlivé panely vzájemné interakce při výběru konkrétní části. Například můžete mít filtr, který vám zobrazí pouze informace o vaší simulované dodávky a každá část řídicího panelu by interakci zobrazit že pouze simulated vůz informace. Pokud jste chtěli použít nástroj než Power BI, můžete také rozšířit následující postup použijte vaše vizualizace nástroje výběru a připojit do databáze Cosmos nebo vlastní databázi, pokud jste nastavili jednu. 
+Tento kurz vás provede jak k řešení vzdáleného monitorování dat z cosmos DB do Power BI. Pomocí tohoto připojení můžete pak vytvoření vlastních řídicích panelů a přidat zpět na řídicí panel řešení vzdáleného monitorování. Tato workstream umožňuje více specializované grafy, abyste vytvořili, kromě těch, které jsou připravené. Potom můžete tento kurz integrace s jinými datovými proudy nebo vytvářet vlastní řídicí panely, který se má používat mimo řešení vzdáleného monitorování. Vytváření řídicích panelů v Power BI znamená, že můžete také provést jednotlivé panely komunikovat mezi sebou při výběru jednotlivých konkrétních. Například můžete mít filtr, který se zobrazí pouze informace o simulovaných vozů a každého jednotlivého řídicího panelu by interakci lze zobrazit, že pouze simulované truck informace. Pokud jste chtěli použít nástroj než Power BI, můžete taky rozšířit tohoto postupu použít váš nástroj na vizualizaci podle výběru a integrovat do databáze Cosmos, nebo vlastní databázi, pokud jste nastavili jeden. 
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Musíte mít aktuálně spuštěných řešení vzdáleného monitorování
-- Musíte mít přístup k [portálu Azure](https://portal.azure.com) ale vaše předplatné, na kterém běží služby IoT Hub a řešení
-- Musíte mít [Power BI desktop](https://powerbi.microsoft.com) nainstalovaná, budou se všechny verze
+- Musíte mít nainstalováno řešení vzdáleného monitorování
+- Musíte mít přístup k [webu Azure Portal](https://portal.azure.com) a vaše předplatné, ve kterém jsou spuštěny služby IoT Hub a řešení
+- Musíte mít [Power BI desktopu](https://powerbi.microsoft.com) nainstalované, bude provádět všechny verze
 
 
-## <a name="information-needed-from-azure-portal"></a>Informace, které potřebujete z portálu Azure
+## <a name="information-needed-from-azure-portal"></a>Informace o potřebné z webu Azure Portal
 
-1. Přejděte na [portálu Azure](https://portal.azure.com) a přihlaste se v případě potřeby
+1. Přejděte do [webu Azure Portal](https://portal.azure.com) a v případě potřeby se přihlaste
 
-2. Na levém panelu klikněte na skupiny prostředků
+2. Na panelu vlevo klikněte na skupiny prostředků
 
-    ![Nav straně panelu](./media/iot-accelerators-integrate-data-powerbi/side_panel.png)
+    ![Boční Panel Nav](./media/iot-accelerators-integrate-data-powerbi/side_panel.png)
 
-3. Přejděte do skupiny prostředků, které běží vaše řešení Iot na a klikněte na tlačítko přejdete na stránku přehled příslušné skupině prostředků. 
+3. Přejděte do skupiny prostředků, z nichž je spuštěn řešení Iot na a klikněte na tlačítko přejdete na stránku přehled této skupiny prostředků. 
 
-4. Na této stránce Přehled klikněte na položku, která má typ "Azure Cosmos DB účet", pak přejdete na stránku přehled Cosmos DB datového proudu pro toto řešení IoT.
+4. Na stránce Přehled klikněte na položku, která má typ "Účet služby Azure Cosmos DB", pak přejdete na stránku přehled streamu Cosmos DB pro příslušné řešení IoT.
 
     ![Skupina prostředků](./media/iot-accelerators-integrate-data-powerbi/resource_groups.png)
 
-5. Na panelu vlevo klikněte sekci "Klíče" a poznamenejte následující hodnoty pro použití v Power BI:
+5. Na panelu vlevo klikněte v části "Klíče" a poznamenejte následující hodnoty, které se použijí ve službě Power BI:
 
     - URI
     - Primární klíč
 
     ![keys](./media/iot-accelerators-integrate-data-powerbi/keys.png)
 
-## <a name="setting-up-the-stream-in-power-bi"></a>Nastavení datového proudu ve službě Power BI
+## <a name="setting-up-the-stream-in-power-bi"></a>Nastavení Stream v Power BI
   
 1. Otevřete aplikaci Power BI desktop a klikněte na možnost "Získat Data" z levého horního rohu. 
 
     ![Získání dat](./media/iot-accelerators-integrate-data-powerbi/get_data.png)
 
-2. Když budete vyzváni k zadávání dat, rozhodnete vyhledejte "Azure Cosmos DB" a vyberte tento konektor. Tento konektor v podstatě čte data přímo z databáze cosmos řešení Azure IoT
+2. Když se zobrazí výzva k zadání dat, zvolte možnost Hledat "Azure Cosmos DB" a vyberte tento konektor. Tento konektor v podstatě čte data přímo z databáze cosmos vašeho řešení Azure IoT
   
     ![Databáze Cosmos](./media/iot-accelerators-integrate-data-powerbi/cosmos_db.png)
   
-3. Zadejte informace, které jste nahráli výše:
+3. Zadejte informace, které jste pořídili jste výše:
 
     * URI
     * Primární klíč
 
-4. Vyberte všechny tabulky, které mají být importována do Power BI. Tato akce bude ji načítání data. Čím delší spuštění řešení, tím déle, může trvat k načtení dat (až několik hodin). 
+4. Vyberte všechny tabulky k importu do Power BI. Tím se spustí řízený načítá data. Čím delší je řešení spuštěné, tím déle, může trvat pro načtení dat (až několik hodin). 
 
-    ![Import tabulek](./media/iot-accelerators-integrate-data-powerbi/import_tables.png)
+    ![Import tabulky](./media/iot-accelerators-integrate-data-powerbi/import_tables.png)
 
-5. Po dokončení data načítání, klikněte na "Upravit dotazy" v horním řádku Power BI a rozbalte všechny tabulky kliknutím šipky v žlutý pruh pro každou tabulku. To v podstatě se rozbalí a zobrazí všechny sloupce. Si všimnete, jak jsou data pro akcí, například vlhkosti, čas rychlost atd není správného typu.
+5. Po dokončení data načítání, klikněte na tlačítko "Upravit dotazy" Power BI do horního řádku a rozšířit všechny tabulky kliknutím na šipky v žlutý pruh pro každou tabulku. V podstatě se rozbalí a zobrazí všechny sloupce. Můžete si všimnout, jak data pro takové věci, jako je například vlhkosti, urychlili čas a podobně nejsou nesprávného typu.
 
     ![Nový sloupec](./media/iot-accelerators-integrate-data-powerbi/new_column.png)
   
-    Například dat pocházejících do Power BI bylo změněno do UNIX čas, kdy pochází prostřednictvím konektoru. Upravit pro tento převod, chvíle jste můžete vytvoří nový sloupec a použít tento rovnice nahrát do formátu času datum: 
+    Například data přicházející do Power BI se změnil na UNIXOVÝ čas, kdy ho byli zaznamenáni v prostřednictvím konektoru. Pro tento převod, upravte od nynějška můžete můžete vytvořit nový sloupec a použít rovnice můžete načíst data formát času: 
 
     ```text
     #datetime(1970, 1, 1, 0, 0, 0) + #duration(0, 0, 0, [Document.device.msg.received]/1000)
     ```
 
-    ![Aktualizované tabulky](./media/iot-accelerators-integrate-data-powerbi/updated_table.png)
+    ![Aktualizovaná tabulka](./media/iot-accelerators-integrate-data-powerbi/updated_table.png)
   
-    Document.Device.msg.Received je právě jeden ze sloupců s UNIX formátování a s ostatními uživateli, které je třeba převod se můžou nahradit. 
+    Document.Device.msg.Received je právě jeden z těchto sloupců se systémem UNIX formátování a s ostatními, které je třeba převodu se můžou nahradit. 
   
-    Ostatní datové body byly převést na typ, který lze změnit řetězec do hodnoty Double nebo Int, kde odpovídající pomocí stejné kroky jako výše.
+    Dalších datových bodů bylo převedeno na typ, řetězec je možné změnit do hodnot datového typu Double nebo Int, ve kterém příslušný pomocí stejných kroků jako výše.
 
 ## <a name="creating-a-dashboard"></a>Vytváření řídicího panelu
 
-Jakmile datový proud byl připojen, jste připraveni vytvořit přizpůsobené řídicí panely! Řídicí panel dole je příklad pořízení, které telemetrii je immmited naše simulované zařízení a zobrazuje různé otáčí kolem něj, jako: 
+Jakmile datový proud byl připojen, budete chtít vytvořit přizpůsobené řídicí panely! Řídicí panel níže je příklad odběr, který otáčí telemetrická data se immmited podle našich Simulovaná zařízení a zobrazuje různé kolem, jako: 
 
-* Umístění zařízení na mapě (napravo)
-* Zařízení s jejich stavu a závažnosti. (vlevo nahoře)
-* Zařízení s pravidly na místě a pokud jsou všechny výstrahy přejdete pro ně (vlevo dole)
+* Umístění zařízení na mapě (vpravo)
+* Zařízení s jejich stavu a závažnosti. (nahoře vlevo)
+* Zařízení s pravidly na místě a pokud neexistují žádné alarmy bude pro ně (vlevo dole)
 
-![Vizualizace PowerBi](./media/iot-accelerators-integrate-data-powerbi/visual_data.png)
+![Vizualizace Power BI](./media/iot-accelerators-integrate-data-powerbi/visual_data.png)
 
 ## <a name="publishing-the-dashboard-and-refreshing-the-data"></a>Publikování řídicího panelu a aktualizace dat
 
-Po úspěšně jste vytvořili svoje řídicí panely, doporučujeme vám [publikovat svoje řídicí panely Power BI](https://docs.microsoft.com/en-us/power-bi/desktop-upload-desktop-files) sdílet s ostatními uživateli.
+Po úspěšném vytvoření řídicích panelů, doporučujeme vám [publikovat řídicí panely Power BI](https://docs.microsoft.com/power-bi/desktop-upload-desktop-files) ke sdílení s ostatními.
 
-Budete také chtít [aktualizuje data](https://docs.microsoft.com/en-us/power-bi/refresh-data) na řídicím panelu publikovaných a ujistěte se, že máte nejnovější datové sady.
+Budete také chtít [aktualizovat data](https://docs.microsoft.com/power-bi/refresh-data) na publikovaný řídicí panel, abyste měli jistotu, že máte nejnovější datové sady.
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto článku jste se dozvěděli o tom, která bude vizualizovat data vzdálené monitorování pomocí Power BI
+V tomto článku jste se dozvěděli o tom, jak vizualizovat vzdáleného monitorování dat pomocí Power BI
 
 Další informace o přizpůsobení řešení vzdáleného monitorování najdete v tématu:
 

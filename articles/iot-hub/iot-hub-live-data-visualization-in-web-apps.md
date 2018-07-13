@@ -1,9 +1,9 @@
 ---
-title: Vizualizace dat v reálném čase s daty ze snímačů z Azure IoT hub – Web Apps | Microsoft Docs
-description: Použijte funkci webové aplikace Microsoft Azure App Service k vizualizaci dat teploty a vlhkosti, který se shromažďují ze senzoru a odesílá do služby Iot hub.
+title: Vizualizace dat v reálném čase s daty ze snímačů ze služby Azure IoT hub – Web Apps | Dokumentace Microsoftu
+description: Použití funkce Web Apps služby Microsoft Azure App Service k vizualizaci dat teploty a vlhkosti, který se shromažďují ze senzoru a odeslané do služby Iot hub.
 author: rangv
 manager: ''
-keywords: vizualizace dat reálném čase, vizualizace dat za provozu, vizualizace dat snímačů
+keywords: vizualizace dat reálném čase, vizualizace dynamických dat, vizualizace dat ze senzorů
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
@@ -11,13 +11,13 @@ ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
 ms.author: rangv
 ms.openlocfilehash: 3d127afa94b761d96db17bcb59700a275a44a265
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34633736"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38677259"
 ---
-# <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-by-using-the-web-apps-feature-of-azure-app-service"></a>Vizualizovat data snímačů v reálném čase ze služby Azure IoT hub pomocí funkce Web Apps služby Azure App Service
+# <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-by-using-the-web-apps-feature-of-azure-app-service"></a>Vizualizovat data ze senzorů v reálném čase ze služby Azure IoT hub pomocí funkce Web Apps služby Azure App Service
 
 ![Diagram začátku do konce](media/iot-hub-get-started-e2e-diagram/5.png)
 
@@ -25,68 +25,68 @@ ms.locfileid: "34633736"
 
 ## <a name="what-you-learn"></a>Co se naučíte
 
-V tomto kurzu zjistěte, jak k vizualizaci dat snímačů v reálném čase, který IoT hub přijímá spuštěním webové aplikace, která je hostovaná ve webové aplikaci. Pokud chcete, zkuste k vizualizaci dat ve službě IoT hub pomocí Power BI, najdete v článku [pomocí Power BI k vizualizaci dat snímačů v reálném čase ze služby Azure IoT Hub](iot-hub-live-data-visualization-in-power-bi.md).
+V tomto kurzu se dozvíte, jak k vizualizaci dat snímačů v reálném čase, který váš IoT hub přijme spuštěním webové aplikace, která je hostovaná ve webové aplikaci. Pokud chcete zkusit k vizualizaci dat ve službě IoT hub s využitím Power BI, najdete v článku [pomocí Power BI k vizualizaci dat snímačů v reálném čase ze služby Azure IoT Hub](iot-hub-live-data-visualization-in-power-bi.md).
 
-## <a name="what-you-do"></a>Co dělat
+## <a name="what-you-do"></a>Co můžete dělat
 
-- Vytvořte webovou aplikaci na portálu Azure.
-- Služby IoT hub připravte pro přístup k datům přidáním skupiny příjemců.
-- Konfigurace webové aplikace načíst data snímačů ze služby IoT hub.
-- Nahrajte webovou aplikaci pro hostování webových aplikací.
-- Otevřete webovou aplikaci se zobrazí v reálném čase teploty a vlhkosti data ze služby IoT hub.
+- Vytvoření webové aplikace na webu Azure Portal.
+- Připravte se službu IoT hub pro přístup k datům tak, že přidáte skupinu příjemců.
+- Konfigurace webové aplikace ke čtení dat ze snímačů ze služby IoT hub.
+- Odešlete webové aplikace hostované ve webové aplikaci.
+- Otevřete webovou aplikaci zobrazíte data v reálném čase teploty a vlhkosti ze služby IoT hub.
 
 ## <a name="what-you-need"></a>Co potřebujete
 
 - [Nastavit vaše zařízení](iot-hub-raspberry-pi-kit-node-get-started.md), která zahrnuje následující požadavky:
   - Aktivní předplatné Azure
-  - Služby Iot hub v rámci svého předplatného
+  - Služby Iot hub v rámci vašeho předplatného
   - Klientská aplikace, která odesílá zprávy do služby Iot hub
 - [Stáhněte si Git](https://www.git-scm.com/downloads)
 
 ## <a name="create-a-web-app"></a>Vytvoření webové aplikace
 
-1. V [portál Azure](https://portal.azure.com/), klikněte na tlačítko **vytvořit prostředek** > **Web + mobilní** > **webové aplikace**.
-2. Zadejte název jedinečné úlohy ověřte předplatné, zadejte skupinu prostředků a umístění, vyberte **připnout na řídicí panel**a potom klikněte na **vytvořit**.
+1. V [webu Azure portal](https://portal.azure.com/), klikněte na tlačítko **vytvořit prostředek** > **Web + mobilní zařízení** > **webovou aplikaci**.
+2. Zadejte jedinečný název úlohy, ověřte, předplatné, zadejte skupinu prostředků a umístění, vyberte **připnout na řídicí panel**a potom klikněte na tlačítko **vytvořit**.
 
-   Doporučujeme vám, vyberte stejné umístění, jako vaší skupiny prostředků. To pomáhá zajistit s rychlost zpracování a snižuje náklady na přenos dat.
+   Doporučujeme vybrat stejné umístění jako u vaší skupiny prostředků. To pomáhá zajistit s rychlost zpracování a snižuje náklady na přenos dat.
 
    ![Vytvoření webové aplikace](media/iot-hub-live-data-visualization-in-web-apps/2_create-web-app-azure.png)
 
 [!INCLUDE [iot-hub-get-started-create-consumer-group](../../includes/iot-hub-get-started-create-consumer-group.md)]
 
-## <a name="configure-the-web-app-to-read-data-from-your-iot-hub"></a>Konfigurace webové aplikace načíst data ze služby IoT hub
+## <a name="configure-the-web-app-to-read-data-from-your-iot-hub"></a>Konfigurace webové aplikace ke čtení dat ze služby IoT hub
 
-1. Otevřete webovou aplikaci, kterou jste právě zřídili.
-2. Klikněte na tlačítko **nastavení aplikace**a pak v části **nastavení aplikace**, přidejte následující páry klíč – hodnota:
+1. Otevřete webovou aplikaci, kterou jste právě jste zřídili.
+2. Klikněte na tlačítko **nastavení aplikace**a pak v části **nastavení aplikace**, přidejte následující dvojice klíč/hodnota:
 
    | Klíč                                   | Hodnota                                                        |
    |---------------------------------------|--------------------------------------------------------------|
-   | Azure.IoT.IoTHub.ConnectionString     | Získat z Průzkumníka iothub                                |
-   | Azure.IoT.IoTHub.ConsumerGroup        | Název skupiny uživatelů, která přidáte do služby IoT hub  |
+   | Azure.IoT.IoTHub.ConnectionString     | Získané z iothub-explorer                                |
+   | Azure.IoT.IoTHub.ConsumerGroup        | Název skupiny příjemců, který přidáte do služby IoT hub  |
 
-   ![Přidat nastavení do vaší webové aplikace s páry klíč – hodnota](media/iot-hub-live-data-visualization-in-web-apps/4_web-app-settings-key-value-azure.png)
+   ![Přidat nastavení do vaší webové aplikace s páry klíč/hodnota](media/iot-hub-live-data-visualization-in-web-apps/4_web-app-settings-key-value-azure.png)
 
-3. Klikněte na tlačítko **nastavení aplikace**v části **obecné nastavení**, přepnutí **webové sokety** a potom klikněte na **Uložit**.
+3. Klikněte na tlačítko **nastavení aplikace**v části **obecné nastavení**, přepnout **webové sokety** možnost a potom klikněte na tlačítko **Uložit**.
 
    ![Přepněte možnost webové sokety](media/iot-hub-live-data-visualization-in-web-apps/10_toggle_web_sockets.png)
 
-## <a name="upload-a-web-application-to-be-hosted-by-the-web-app"></a>Nahrát webovou aplikaci pro hostování webových aplikací
+## <a name="upload-a-web-application-to-be-hosted-by-the-web-app"></a>Odeslat webové aplikace hostované ve webové aplikaci
 
-Na Githubu jsme provedli jsme k dispozici webové aplikace, které se zobrazují data snímačů v reálném čase ze služby IoT hub. Všechny, které musíte udělat, je konfigurace webové aplikace pro práci s úložiště Git, stahování webové aplikace z webu GitHub a nahrajte ho do Azure pro webovou aplikaci na hostitele.
+Na Githubu zpřístupnili jsme webovou aplikaci, která zobrazí data ze senzorů v reálném čase ze služby IoT hub. Všechno, co musíte udělat, je nakonfigurovat ve webové aplikaci pracovat s úložišti Git, stáhnout z webu GitHub webovou aplikaci a nahrajte ho do Azure pro webovou aplikaci do hostitele.
 
-1. Ve webové aplikaci, klikněte na tlačítko **možnosti nasazení** > **zvolit zdroj** > **místní úložiště Git**a potom klikněte na **OK**.
+1. Ve službě web app, klikněte na tlačítko **možnosti nasazení** > **zvolit zdroj** > **místní úložiště Git**a potom klikněte na tlačítko **OK**.
 
-   ![Konfigurace nasazení webové aplikace použít místní úložiště Git](media/iot-hub-live-data-visualization-in-web-apps/5_configure-web-app-deployment-local-git-repository-azure.png)
+   ![Konfigurace nasazení webových aplikací používat místní úložiště Git](media/iot-hub-live-data-visualization-in-web-apps/5_configure-web-app-deployment-local-git-repository-azure.png)
 
-2. Klikněte na tlačítko **přihlašovací údaje nasazení**, vytvořte uživatelské jméno a heslo použít k připojení do úložiště Git v Azure a pak klikněte na tlačítko **Uložit**.
+2. Klikněte na tlačítko **přihlašovací údaje pro nasazení**, uživatelské jméno a heslo použité pro připojení k úložišti Git v Azure a potom klikněte na vytvořit **Uložit**.
 
 3. Klikněte na tlačítko **přehled**a poznamenejte si hodnotu **adresu url pro Git clone**.
 
-   ![Získat adresu URL klonu Git webové aplikace](media/iot-hub-live-data-visualization-in-web-apps/7_web-app-git-clone-url-azure.png)
+   ![Získat adresu URL klonu Git vaší webové aplikace](media/iot-hub-live-data-visualization-in-web-apps/7_web-app-git-clone-url-azure.png)
 
-4. Otevřete okno terminálu v místním počítači nebo příkaz.
+4. Otevřete příkazový nebo okno terminálu na místním počítači.
 
-5. Stažení webové aplikace z webu GitHub a nahrajte ho do Azure pro webovou aplikaci na hostitele. Uděláte to tak, spusťte následující příkazy:
+5. Stáhnout z webu GitHub webovou aplikaci a nahrajte ho do Azure pro webovou aplikaci do hostitele. Chcete-li tak učinit, spusťte následující příkazy:
 
    ```bash
    git clone https://github.com/Azure-Samples/web-apps-node-iot-hub-data-visualization.git
@@ -96,24 +96,24 @@ Na Githubu jsme provedli jsme k dispozici webové aplikace, které se zobrazují
    ```
 
    > [!NOTE]
-   > \<Adresa URL klonu Git\> je adresa URL úložiště Git v nalezen **přehled** stránku webové aplikace.
+   > \<Adresa URL klonu Git\> je adresa URL úložiště Git na **přehled** stránka webové aplikace.
 
-## <a name="open-the-web-app-to-see-real-time-temperature-and-humidity-data-from-your-iot-hub"></a>Otevřete webovou aplikaci se zobrazí v reálném čase teploty a vlhkosti data ze služby IoT hub
+## <a name="open-the-web-app-to-see-real-time-temperature-and-humidity-data-from-your-iot-hub"></a>Otevřít webovou aplikaci zobrazíte data v reálném čase teploty a vlhkosti ze služby IoT hub
 
-Na **přehled** stránku vaší webové aplikace, klikněte na adresu URL otevřete webovou aplikaci.
+Na **přehled** stránce vaší webové aplikace, klikněte na adresu URL pro otevření webové aplikace.
 
 ![Získat adresu URL webové aplikace](media/iot-hub-live-data-visualization-in-web-apps/8_web-app-url-azure.png)
 
 Měli byste vidět data v reálném čase teploty a vlhkosti ze služby IoT hub.
 
-![Webové stránky aplikace zobrazuje v reálném čase teploty a vlhkosti](media/iot-hub-live-data-visualization-in-web-apps/9_web-app-page-show-real-time-temperature-humidity-azure.png)
+![Zobrazení v reálném čase teploty a vlhkosti na stránce webové aplikace](media/iot-hub-live-data-visualization-in-web-apps/9_web-app-page-show-real-time-temperature-humidity-azure.png)
 
 > [!NOTE]
-> Zkontrolujte, jestli že ukázkové aplikace běží na vašem zařízení. Pokud není, zobrazí se prázdný graf, najdete podrobné pokyny v části [nastavit vaše zařízení](iot-hub-raspberry-pi-kit-node-get-started.md).
+> Ujistěte se, že je ukázková aplikace spuštěná ve vašem zařízení. Pokud ne, zobrazí se prázdný graf, najdete v kurzech pod [nastavit zařízení](iot-hub-raspberry-pi-kit-node-get-started.md).
 
 ## <a name="next-steps"></a>Další postup
-Webové aplikace jste úspěšně použili k vizualizaci dat snímačů v reálném čase ze služby IoT hub.
+Úspěšně jste použili vaší webové aplikace k vizualizaci dat snímačů v reálném čase ze služby IoT hub.
 
-Alternativní způsob k vizualizaci dat ze služby Azure IoT Hub, najdete v části [pomocí Power BI k vizualizaci dat snímačů v reálném čase ze služby IoT hub](iot-hub-live-data-visualization-in-power-bi.md).
+Alternativní způsob vizualizace dat ze služby Azure IoT Hub, najdete v části [pomocí Power BI k vizualizaci dat snímačů v reálném čase ze služby IoT hub](iot-hub-live-data-visualization-in-power-bi.md).
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

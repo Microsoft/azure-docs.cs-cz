@@ -1,5 +1,5 @@
 ---
-title: Funkce požadavek dat zákazníka
+title: Zákaznická data žádosti o funkce
 author: dominicbetts
 ms.author: dobett
 manager: timlt
@@ -8,60 +8,60 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: d6355926c8fac62b01c36d28265842b1233ce213
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34629316"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38666934"
 ---
-# <a name="summary-of-customer-data-request-features"></a>Souhrn funkcí požadavek data zákazníků
+# <a name="summary-of-customer-data-request-features"></a>Souhrnné informace o zákaznická data žádosti o funkce
 
-Azure IoT Hub zařízení zřizovací služby je založené na REST API Cloudová služba zaměřený na podnikových zákazníků, která umožňuje bezproblémový, automatizované nula touch zřizování zařízení Azure IoT Hub s zabezpečení, který začíná na zařízení a končí cloudu.
+Azure IoT Hub Device Provisioning Service je založená na rozhraní REST API Cloudová služba určenou pro podnikové zákazníky, které umožňuje bezproblémové a automatizované plně automatizované zřizování zařízení k Azure IoT Hubu se zabezpečením, které začíná u zařízení a končí u cloudu.
 
 [!INCLUDE [gdpr-intro-sentence](../../includes/gdpr-intro-sentence.md)]
 
-Jednotlivá zařízení přiřadil registrace ID a ID zařízení správce klienta. Data z a o těchto zařízení je založena na těchto ID. Společnost Microsoft udržuje žádné informace a nemá přístup k datům, která by umožnilo korelace těchto zařízení až k jednotlivcům.
+Jednotlivá zařízení jsou přiřazené registrace ID a ID zařízení správcem tenanta. Data z a o těchto zařízeních je založená na tyto identifikátory. Společnost Microsoft udržuje žádné informace a nemá přístup k datům, která umožňují korelaci těchto zařízení, aby jednotlivec.
 
-Mnoho zařízení spravovaných v zařízení zřizování služby nejsou osobní zařízení, například služby office Termostat nebo vytváření robot. Zákazníci, však zvažte některá zařízení jako osobní identifikovatelné a podle svého uvážení mohou zachovat své vlastní prostředek nebo inventáře sledování metody, které tie zařízení jednotlivcům. Služba zřizování zařízení spravuje a ukládá všechna data přidružená k zařízení, jako by šlo osobní data.
+Mnoho zařízení spravovaná ve službě Device Provisioning nejsou osobní zařízení, třeba office Termostat nebo objekt pro vytváření robota. Zákazníci mohou, ale vezměte v úvahu některé zařízení, která budou identifikovatelné osobní údaje a podle vlastního uvážení může udržovat vlastní prostředek nebo metod, které jsou zařízení, která jednotlivcům sledování inventáře. Služby Device Provisioning Service spravuje a ukládá všechna data přidružená k zařízení, jako by šlo osobní údaje.
 
-Správci klienta můžete použít portál Azure nebo rozhraní API služby REST pro splnění požadavků na informace tak, že vyexportujete nebo odstranění dat spojených s ID zařízení nebo ID registrace.
-
-> [!NOTE]
-> Zařízení, které se zřizují v Azure IoT Hub prostřednictvím služby zřizování zařízení mají další data uložená ve službě Azure IoT Hub. Najdete v článku [Azure IoT Hub referenční dokumentaci k nástroji](../iot-hub/iot-hub-customer-data-requests.md) aby bylo možné dokončit žádost o úplné pro dané zařízení.
-
-## <a name="deleting-customer-data"></a>Odstraňování dat zákazníka
-
-Služba zřizování zařízení ukládá registrace a záznamy registrace. Registrace obsahují informace o zařízení, která jsou povolena zřídit a zobrazit záznamy registrace, které již šly zařízení prostřednictvím procesu zřizování.
-
-Správci klientů může odebrat registrace z portálu Azure a odebere všechny přidružené registrace záznamy.
-
-Další informace najdete v tématu [jak spravovat registrace zařízení](how-to-manage-enrollments.md).
-
-Také je možné provádět operace delete pro registraci a registrace záznamů pomocí rozhraní REST API:
-
-* Chcete-li odstranit informace o registraci pro jedno zařízení, můžete použít [registrace zařízení - odstranění](https://docs.microsoft.com/rest/api/iot-dps/deviceenrollment/delete).
-* Chcete-li odstranit informace o registraci pro skupinu zařízení, můžete použít [skupiny registrace zařízení - odstranění](https://docs.microsoft.com/rest/api/iot-dps/deviceenrollmentgroup/delete).
-* Chcete-li odstranit informace o zařízení, které byly zřízeny, můžete použít [stav registrace – stav registrace odstranit](https://docs.microsoft.com/rest/api/iot-dps/registrationstate/deleteregistrationstate).
-
-## <a name="exporting-customer-data"></a>Export dat zákazníka
-
-Služba zřizování zařízení ukládá registrace a záznamy registrace. Registrace obsahují informace o zařízení, která jsou povolena zřídit a zobrazit záznamy registrace, které již šly zařízení prostřednictvím procesu zřizování.
-
-Správci klienta můžete zobrazit registrace a záznamy registrace prostřednictvím portálu Azure a exportovat je pomocí kopírování a vkládání.
-
-Další informace o tom, jak spravovat registrace najdete v tématu [jak spravovat registrace zařízení](how-to-manage-enrollments.md).
-
-Také je možné provádět operace exportu pro registraci a registrace záznamů pomocí rozhraní REST API:
-
-* Pokud chcete exportovat informace o registraci pro jedno zařízení, můžete použít [registrace zařízení - Get](https://docs.microsoft.com/rest/api/iot-dps/deviceenrollment/get).
-* Pokud chcete exportovat informace o registraci pro skupinu zařízení, můžete použít [skupiny registrace zařízení - Get](https://docs.microsoft.com/rest/api/iot-dps/deviceenrollmentgroup/get).
-* Pokud chcete exportovat informace o zařízení, které již byly zřízeny, můžete použít [stav registrace – stav registrace Get](https://docs.microsoft.com/rest/api/iot-dps/registrationstate/getregistrationstate).
+Správce tenanta můžete použít na webu Azure portal nebo rozhraní REST API služby ke splnění požadavků na informace tak, že vyexportujete nebo odstranění dat spojené s ID zařízení nebo ID registrace.
 
 > [!NOTE]
-> Při použití služby enterprise společnosti Microsoft generuje některé informace, které jsou známé jako protokoly generované systémem. Některé služby zřizování zařízení generované systémem protokoly nejsou přístupné nebo exportovatelný Správci klienta. Tyto protokoly tvoří konkrétní akce prováděné v rámci služby a diagnostická data související s jednotlivých zařízení.
+> Zařízení, které se zřizují ve službě Azure IoT Hub pomocí služby Azure Device Provisioning mají další data uložená ve službě Azure IoT Hub. Zobrazit [referenční dokumentace služby Azure IoT Hub](../iot-hub/iot-hub-customer-data-requests.md) aby bylo možné dokončit žádost o úplné pro dané zařízení.
+
+## <a name="deleting-customer-data"></a>Odstraňuje se zákaznická data
+
+Služby Device Provisioning ukládá registrace a záznamy registrace. Registrace obsahují informace o zařízení, které můžou být zřízené a registraci záznamy ukazují, které zařízení už prošly přes během procesu zřizování.
+
+Správci klientů mohou odebrat registrace z webu Azure portal a tato operace odebere všechny přidruženou registraci záznamy.
+
+Další informace najdete v tématu [Správa registrace zařízení](how-to-manage-enrollments.md).
+
+Je také možné provést operace odstranění registrace a registraci záznamů pomocí rozhraní REST API:
+
+* Pokud chcete odstranit informace o registraci pro jedno zařízení, můžete použít [registrace zařízení – odstranit](https://docs.microsoft.com/rest/api/iot-dps/deviceenrollment/delete).
+* Pokud chcete odstranit informace o registraci pro skupinu zařízení, můžete použít [skupiny pro registraci zařízení – odstranit](https://docs.microsoft.com/rest/api/iot-dps/deviceenrollmentgroup/delete).
+* Můžete odstranit informace o zařízení, které se zřizují, můžete použít [stav registrace – odstranit stav registrace](https://docs.microsoft.com/rest/api/iot-dps/registrationstate/deleteregistrationstate).
+
+## <a name="exporting-customer-data"></a>Export zákaznických dat
+
+Služby Device Provisioning ukládá registrace a záznamy registrace. Registrace obsahují informace o zařízení, které můžou být zřízené a registraci záznamy ukazují, které zařízení už prošly přes během procesu zřizování.
+
+Správci klienta můžete zobrazit registrace a záznamy registrace na webu Azure portal a je exportovat pomocí zkopírovat a vložit.
+
+Další informace o tom, jak spravovat registrace najdete v tématu [Správa registrace zařízení](how-to-manage-enrollments.md).
+
+Je také možné provádět operace export pro registrace a registraci záznamů pomocí rozhraní REST API:
+
+* Pokud chcete exportovat informace o registraci pro jedno zařízení, můžete použít [registrace zařízení – Get](https://docs.microsoft.com/rest/api/iot-dps/deviceenrollment/get).
+* Pokud chcete exportovat informace o registraci pro skupinu zařízení, můžete použít [skupiny pro registraci zařízení – Get](https://docs.microsoft.com/rest/api/iot-dps/deviceenrollmentgroup/get).
+* Pokud chcete exportovat informace o zařízeních, která už máte zřízená, můžete použít [stav registrace – získat stav registrace](https://docs.microsoft.com/rest/api/iot-dps/registrationstate/getregistrationstate).
+
+> [!NOTE]
+> Při použití služby enterprise od Microsoftu, Microsoft generuje určité informace, označované jako protokoly generované systémem. Některé služby Device Provisioning systémem generované protokoly nejsou přístupné nebo exportovat správci tenanta. Tyto protokoly představují skutečné akce provedené v rámci služby a diagnostických dat týkající se pro jednotlivá zařízení.
 
 ## <a name="links-to-additional-documentation"></a>Odkazy na další dokumentaci
 
-Úplnou dokumentaci k rozhraní API služby pro zřizování zařízení se nachází v [ https://docs.microsoft.com/rest/api/iot-dps ](https://docs.microsoft.com/rest/api/iot-dps).
+Kompletní dokumentaci k rozhraním API služby zřizování zařízení se nachází na [ https://docs.microsoft.com/rest/api/iot-dps ](https://docs.microsoft.com/rest/api/iot-dps).
 
-Azure IoT Hub [zákaznická data žádosti o funkce](../iot-hub/iot-hub-customer-data-requests.md).
+Azure IoT Hub [zákaznická data funkce požadavků](../iot-hub/iot-hub-customer-data-requests.md).

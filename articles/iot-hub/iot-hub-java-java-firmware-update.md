@@ -1,6 +1,6 @@
 ---
-title: Aktualizace firmwaru zařízení s Azure IoT Hub (Java nebo Java) | Microsoft Docs
-description: Jak používat správu zařízení v Azure IoT Hub zahájíte aktualizaci firmwaru zařízení. Použití zařízení Azure IoT SDK pro jazyk Java k implementaci aplikace simulovaného zařízení a implementovat aplikaci služby, která spustí aktualizaci firmwaru.
+title: Aktualizace firmwaru zařízení s Azure IoT Hub (Java/Java) | Dokumentace Microsoftu
+description: Jak zahájit aktualizaci firmwaru zařízení pomocí správy zařízení ve službě Azure IoT Hub. Zařízení Azure IoT SDK pro Javu použijete k implementaci aplikace simulovaného zařízení a provádět app service, která spustí aktualizaci firmwaru.
 author: dominicbetts
 manager: timlt
 ms.service: iot-hub
@@ -10,29 +10,29 @@ ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: dobett
 ms.openlocfilehash: 5991615bca26749e1f138b561260108f8bcf2646
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34634603"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38611323"
 ---
-# <a name="use-device-management-to-initiate-a-device-firmware-update-javajava"></a>Použití správy zařízení za účelem zahájení aktualizaci firmwaru zařízení (Java nebo Java)
+# <a name="use-device-management-to-initiate-a-device-firmware-update-javajava"></a>Použití správy zařízení za účelem Zahájit aktualizaci firmwaru zařízení (Java/Java)
 [!INCLUDE [iot-hub-selector-firmware-update](../../includes/iot-hub-selector-firmware-update.md)]
 
-V [Začínáme se správou zařízení] [ lnk-dm-getstarted] kurz, jste viděli, jak používat [dvojče zařízení] [ lnk-devtwin] a [přímé metody ] [ lnk-c2dmethod] primitiv vzdáleně restartování zařízení. Tento kurz používá stejné primitiv IoT Hub a ukazuje, jak provést aktualizaci firmwaru simulované začátku do konce.  Tento vzor slouží k implementaci firmwaru aktualizace pro [malin platformy zařízení implementace ukázka][lnk-rpi-implementation].
+V [Začínáme se správou zařízení] [ lnk-dm-getstarted] výukový program, jste viděli, jak používat [dvojče zařízení] [ lnk-devtwin] a [přímé metody ] [ lnk-c2dmethod] primitiv vzdálené restartování zařízení. Tento kurz používá stejný základní služby IoT Hub a popisuje, jak provádět aktualizace firmwaru simulované začátku do konce.  Tento model se používá k provedení aktualizace firmwaru pro [ukázková implementace zařízení Raspberry Pi][lnk-rpi-implementation].
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 V tomto kurzu získáte informace o následujících postupech:
 
-* Vytvořte konzolovou aplikaci Java, která volá **firmwareUpdate** přímá metoda na aplikaci simulovaného zařízení prostřednictvím služby IoT hub.
-* Vytvořte konzolovou aplikaci Java, která simuluje zařízení a implementuje **firmwareUpdate** přímá metoda. Tato metoda inicializuje více fáze procesu, který čeká na stažení bitové kopie firmwaru, stáhne bitovou kopii firmware a nakonec platí bitovou kopii firmwaru. Během aktualizace v každé fázi používá zařízení hlášené vlastnosti hlásit průběh.
+* Vytvořte konzolovou aplikaci Java, která volá **firmwareUpdate** přímé metody v aplikaci simulovaného zařízení prostřednictvím služby IoT hub.
+* Vytvořte konzolovou aplikaci Java, která simuluje zařízení a implementuje **firmwareUpdate** přímá metoda. Tato metoda zahájí vícefázový proces, který čeká na stažením image firmwaru, stáhne image firmwaru a nakonec použije image firmwaru. Během každé fáze aktualizace zařízení využívá ohlášené vlastnosti k podávat zprávy o pokroku.
 
-Na konci tohoto kurzu máte dvě aplikace konzoly v jazyce Java:
+Na konci tohoto kurzu budete mít dvě konzolové aplikace Java:
 
-**aktualizace firmwaru**, volá metodu přímé na simulované zařízení, zobrazí odpověď a pravidelně aktualizace hlášené vlastností
+**aktualizace firmwaru**, volá metodu s přímým přístupem v simulovaném zařízení, zobrazí odpovědi a pravidelně ohlášené vlastnosti aktualizace
 
-**simulated-device**, připojuje ke službě IoT hub s identitou zařízení vytvořenou dříve, obdrží volání metody přímé firmwareUpdate a spustí pomocí simulaci aktualizace firmwaru
+**simulated-device**, připojí ke službě IoT hub s identitou zařízení vytvořenou dříve, obdrží volání přímé metody firmwareUpdate a prochází simulace aktualizace firmwaru
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -44,18 +44,18 @@ Pro absolvování tohoto kurzu potřebujete:
 
 [!INCLUDE [iot-hub-get-started-create-device-identity-portal](../../includes/iot-hub-get-started-create-device-identity-portal.md)]
 
-## <a name="trigger-a-remote-firmware-update-on-the-device-using-a-direct-method"></a>Spustit aktualizaci vzdálené firmwaru v zařízení s přímá metoda
-V této části vytvoříte konzolovou aplikaci Java, která zahájí aktualizaci vzdálené firmwaru v zařízení. Přímá metoda používá k zahájení aktualizace a aplikace používá zařízení twin dotazy a pravidelně získat stav aktualizace active firmware.
+## <a name="trigger-a-remote-firmware-update-on-the-device-using-a-direct-method"></a>Aktivace firmwaru vzdálené aktualizace na zařízení s využitím přímé metody
+V této části vytvoříte konzolovou aplikaci Java, který iniciuje vzdálené firmwaru v zařízení. Aplikace používá přímé metody k zahájení aktualizace a používá dotazů na dvojčata zařízení a pravidelně získat stav aktualizace firmwaru aktivní.
 
 1. Vytvořte prázdnou složku s názvem fw-get-started.
 
-1. Ve složce fw-get-started vytvořte projekt Maven s názvem **aktualizaci firmwaru** pomocí následujícího příkazu na příkazovém řádku. Všimněte si, že se jedná o jeden dlouhý příkaz:
+1. Ve složce fw-get-started vytvořte projekt Maven s názvem **aktualizace firmwaru** pomocí následujícího příkazu na příkazovém řádku. Všimněte si, že se jedná o jeden dlouhý příkaz:
 
     `mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=firmware-update -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false`
 
 1. Na příkazovém řádku přejděte do složky aktualizace firmwaru.
 
-1. Pomocí textového editoru otevřete soubor pom.xml ve složce aktualizace firmwaru a přidejte následující závislost na **závislosti** uzlu. Tuto závislost umožňuje komunikovat se službou IoT hub pomocí balíčku klienta služby iot ve vaší aplikaci:
+1. Pomocí textového editoru otevřete soubor pom.xml ve složce aktualizace firmwaru a přidejte následující závislost **závislosti** uzlu. Tato závislost umožňuje komunikovat se službou IoT hub pomocí balíček iot-service-client ve vaší aplikaci:
 
     ```xml
     <dependency>
@@ -67,9 +67,9 @@ V této části vytvoříte konzolovou aplikaci Java, která zahájí aktualizac
     ```
 
     > [!NOTE]
-    > Můžete zkontrolovat pro nejnovější verzi **klienta služby iot** pomocí [Maven vyhledávání](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22).
+    > Můžete vyhledat nejnovější verzi **iot-service-client** pomocí [vyhledávání Maven](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22).
 
-1. Přidejte následující **sestavení** uzlu po **závislosti** uzlu. Tato konfigurace se dá pokyn Maven k sestavení aplikace pomocí Java 1.8:
+1. Přidejte následující **sestavení** uzlu po **závislosti** uzlu. Tuto konfiguraci nastaví Maven k sestavení aplikace pomocí Javy 1.8:
 
     ```xml
     <build>
@@ -89,7 +89,7 @@ V této části vytvoříte konzolovou aplikaci Java, která zahájí aktualizac
 
 1. Soubor pom.xml uložte a zavřete.
 
-1. Pomocí textového editoru otevřete firmware-update\src\main\java\com\mycompany\app\App.java zdrojový soubor.
+1. Pomocí textového editoru otevřete zdrojový soubor firmware-update\src\main\java\com\mycompany\app\App.java.
 
 1. Do souboru přidejte následující příkazy pro **import**:
 
@@ -104,7 +104,7 @@ V této části vytvoříte konzolovou aplikaci Java, která zahájí aktualizac
     import java.util.concurrent.TimeUnit;
     ```
 
-1. Do třídy **App** přidejte následující proměnné na úrovni třídy. Nahraďte **{youriothubconnectionstring}** IoT hub připojovacím řetězcem jste si poznamenali v *vytvoření služby IoT Hub* části:
+1. Do třídy **App** přidejte následující proměnné na úrovni třídy. Nahraďte **{youriothubconnectionstring}** jste si poznamenali v IoT hubu připojovacím řetězcem *vytvoření služby IoT Hub* části:
 
     ```java
     public static final String iotHubConnectionString = "{youriothubconnectionstring}";
@@ -115,7 +115,7 @@ V této části vytvoříte konzolovou aplikaci Java, která zahájí aktualizac
     private static final Long connectTimeout = TimeUnit.SECONDS.toSeconds(5);
     ```
 
-1. Pokud chcete implementovat metodu, která čte hlášené vlastnosti z dvojče zařízení, přidejte následující **aplikace** – třída:
+1. Pokud chcete implementovat metodu, která načteme ohlášené vlastnosti dvojčete zařízení, přidejte následující text do **aplikace** třídy:
 
     ```java
     public static void ShowReportedProperties() 
@@ -174,7 +174,7 @@ V této části vytvoříte konzolovou aplikaci Java, která zahájí aktualizac
     public static void main( String[] args ) throws IOException
     ```
 
-1. K vyvolání metody přímé firmwareUpdate na simulované zařízení, přidejte následující kód, který **hlavní** metoda:
+1. K vyvolání přímé metody firmwareUpdate v simulovaném zařízení, přidejte následující kód, který **hlavní** metody:
 
     ```java
     DeviceMethod methodClient = DeviceMethod.createFromConnectionString(iotHubConnectionString);
@@ -202,13 +202,13 @@ V této části vytvoříte konzolovou aplikaci Java, která zahájí aktualizac
     }
     ```
 
-1. Dotazování hlášen vlastnostech ze simulovaného zařízení, přidejte následující kód, který **hlavní** metoda:
+1. Pokud chcete dotazování spustit ohlášené vlastnosti ze simulovaného zařízení, přidejte následující kód, který **hlavní** metody:
 
     ```java
     ShowReportedProperties();
     ```
 
-1. Chcete-li umožňují zastavte aplikaci, přidejte následující kód do **hlavní** metoda:
+1. Umožňuje zastavit aplikaci, přidejte následující kód, který **hlavní** metody:
 
     ```java
     System.out.println("Press ENTER to exit.");
@@ -218,12 +218,12 @@ V této části vytvoříte konzolovou aplikaci Java, která zahájí aktualizac
 
 1. Uložte a zavřete soubor firmware-update\src\main\java\com\mycompany\app\App.java.
 
-1. Sestavení **aktualizaci firmwaru** back-end aplikace a opravte všechny chyby. Na příkazovém řádku přejděte do složky, aktualizaci firmwaru a spusťte následující příkaz:
+1. Sestavení **aktualizace firmwaru** back endové aplikace a opravíte jakékoli chyby. Na příkazovém řádku přejděte do složky, aktualizace firmwaru a spusťte následující příkaz:
 
     `mvn clean package -DskipTests`
 
-## <a name="simulate-a-device-to-handle-direct-method-calls"></a>Simulovat zařízení pro zpracování volání přímá metoda
-V této části vytvoříte aplikaci Java konzoly simulovaného zařízení, která může přijímat přímá metoda firmwareUpdate. Aplikace se pak spustí prostřednictvím více stavu procesu aktualizace firmwaru pomocí reportedProperties komunikovat stav simulace.
+## <a name="simulate-a-device-to-handle-direct-method-calls"></a>Simulace zařízení ke zpracování volání přímé metody
+V této části vytvoříte konzolovou simulovaného zařízení aplikaci Java, který může přijmout firmwareUpdate přímé metody. Aplikace se pak spustí více stavů procesem simulovat pomocí reportedProperties předkládají stav aktualizace firmwaru.
 
 1. Ve složce fw-get-started vytvořte projekt Maven s názvem **simulated-device** pomocí následujícího příkazu na příkazovém řádku. Všimněte si, že se jedná o jeden dlouhý příkaz:
 
@@ -231,7 +231,7 @@ V této části vytvoříte aplikaci Java konzoly simulovaného zařízení, kte
 
 1. Na příkazovém řádku přejděte do složky simulated-devices.
 
-1. Pomocí textového editoru otevřete soubor pom.xml ve složce aktualizace firmwaru a přidejte následující závislost na **závislosti** uzlu. Tuto závislost umožňuje komunikovat se službou IoT hub pomocí balíčku klienta služby iot ve vaší aplikaci:
+1. Pomocí textového editoru otevřete soubor pom.xml ve složce aktualizace firmwaru a přidejte následující závislost **závislosti** uzlu. Tato závislost umožňuje komunikovat se službou IoT hub pomocí balíček iot-service-client ve vaší aplikaci:
 
     ```xml
     <dependency>
@@ -243,9 +243,9 @@ V této části vytvoříte aplikaci Java konzoly simulovaného zařízení, kte
     ```
 
     > [!NOTE]
-    > Můžete zkontrolovat pro nejnovější verzi **klienta zařízení iot** pomocí [Maven vyhledávání](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-device-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22).
+    > Můžete vyhledat nejnovější verzi **iot-device-client** pomocí [vyhledávání Maven](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-device-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22).
 
-1. Přidejte následující **sestavení** uzlu po **závislosti** uzlu. Tato konfigurace se dá pokyn Maven k sestavení aplikace pomocí Java 1.8:
+1. Přidejte následující **sestavení** uzlu po **závislosti** uzlu. Tuto konfiguraci nastaví Maven k sestavení aplikace pomocí Javy 1.8:
 
     ```xml
     <build>
@@ -265,7 +265,7 @@ V této části vytvoříte aplikaci Java konzoly simulovaného zařízení, kte
 
 1. Soubor pom.xml uložte a zavřete.
 
-1. Pomocí textového editoru, otevřete soubor simulated-device\src\main\java\com\mycompany\app\App.java zdroje.
+1. Pomocí textového editoru otevřete zdrojový soubor simulated-device\src\main\java\com\mycompany\app\App.java.
 
 1. Do souboru přidejte následující příkazy pro **import**:
 
@@ -282,7 +282,7 @@ V této části vytvoříte aplikaci Java konzoly simulovaného zařízení, kte
     import java.util.HashMap;
     ```
 
-1. Do třídy **App** přidejte následující proměnné na úrovni třídy. Nahraďte **{yourdeviceconnectionstring}** jste si poznamenali v připojovacím řetězcem zařízení *vytvoření Identity zařízení* části:
+1. Do třídy **App** přidejte následující proměnné na úrovni třídy. Nahraďte **{yourdeviceconnectionstring}** vaším připojovacím řetězcem zařízení, které jste si poznamenali v *vytvoření Identity zařízení* části:
 
     ```java
     private static final int METHOD_SUCCESS = 200;
@@ -295,7 +295,7 @@ V této části vytvoříte aplikaci Java konzoly simulovaného zařízení, kte
     private static String downloadURL = "unknown";
     ```
 
-1. K implementaci přímá metoda funkcí, zadejte zpětná volání přidáním následující vnořené třídy **aplikace** třídy:
+1. K implementaci funkcionality přímé metody, poskytují zpětná volání přidáním následující vnořené třídy **aplikace** třídy:
 
     ```java
     protected static class DirectMethodStatusCallback implements IotHubEventCallback
@@ -338,7 +338,7 @@ V této části vytvoříte aplikaci Java konzoly simulovaného zařízení, kte
     }
     ```
 
-1. Chcete-li implementovat funkce twin zařízení, zadat zpětná volání přidáním následující vnořené třídy **aplikace** třídy:
+1. K implementaci funkcionality dvojčete zařízení, zadejte zpětná volání přidáním následující vnořené třídy **aplikace** třídy:
 
     ```java
     protected static class DeviceTwinStatusCallback implements IotHubEventCallback
@@ -358,7 +358,7 @@ V této části vytvoříte aplikaci Java konzoly simulovaného zařízení, kte
     }
     ```
 
-1. Chcete-li implementovat aktualizaci firmwaru, přidejte následující vnořenou třídu k **aplikace** třídy:
+1. K provedení aktualizace firmwaru, přidáním následující vnořené třídy **aplikace** třídy:
 
     ```java
     protected static class FirmwareUpdateThread implements Runnable {
@@ -421,7 +421,7 @@ V této části vytvoříte aplikaci Java konzoly simulovaného zařízení, kte
     public static void main(String[] args) throws IOException, URISyntaxException
     ```
 
-1. K zahájení přímé metody a rutiny dvojčata zařízení, přidejte následující kód, který **hlavní** metoda:
+1. K zahájení přímých metod a rutina dvojčata zařízení, přidejte následující kód, který **hlavní** metody:
 
     ```java
     client = new DeviceClient(connString, protocol);
@@ -441,7 +441,7 @@ V této části vytvoříte aplikaci Java konzoly simulovaného zařízení, kte
     }
     ```
 
-1. Pokud chcete povolit, můžete zastavit aplikaci, přidejte následující kód do konce **hlavní** metoda:
+1. Umožňuje zastavit aplikaci, přidejte následující kód na konec objektu **hlavní** metody:
 
     ```java
     System.out.println("Press any key to exit...");
@@ -454,29 +454,29 @@ V této části vytvoříte aplikaci Java konzoly simulovaného zařízení, kte
 
 1. Uložte a zavřete soubor simulated-device\src\main\java\com\mycompany\app\App.java.
 
-1. Sestavení **simulated-device** aplikace a opravte všechny chyby. Na příkazovém řádku přejděte do složky simulated-device a spusťte následující příkaz:
+1. Sestavení **simulated-device** aplikace a opravíte jakékoli chyby. Na příkazovém řádku přejděte do složky s Simulovaná zařízení a spusťte následující příkaz:
 
     `mvn clean package -DskipTests`
 
 ## <a name="run-the-apps"></a>Spouštění aplikací
 Nyní jste připraveni aplikaci spustit.
 
-1. Na příkazovém řádku v **simulated-device** složky, spusťte následující příkaz, aby začal přijímat přímá metoda aktualizace firmwaru.
+1. Na příkazovém řádku v **simulated-device** složky, spuštěním následujícího příkazu zahajte naslouchání pro přímé metody aktualizace firmwaru.
    
     `mvn exec:java -Dexec.mainClass="com.mycompany.app.App"`
 
-1. Na příkazovém řádku v **aktualizaci firmwaru** složky, spusťte následující příkaz pro vyvolání aktualizaci firmwaru a dotaz dvojčata zařízení na simulovaného zařízení ze služby IoT hub:
+1. Na příkazovém řádku v **aktualizace firmwaru** složky, spusťte následující příkaz k vyvolání aktualizace firmwaru a dotazování dvojčat zařízení na zařízení s Simulovaná ze služby IoT hub:
 
     `mvn exec:java -Dexec.mainClass="com.mycompany.app.App"`
 
-3. Můžete zobrazit simulované zařízení neodpovídá na požadavky přímá metoda v konzole.
+3. Zobrazí se simulované zařízení reagovat na přímé metody v konzole.
 
-    ![Firmware aktualizace byla úspěšná.][img-fwupdate]
+    ![Firmware úspěšně aktualizovala.][img-fwupdate]
 
 ## <a name="next-steps"></a>Další postup
-V tomto kurzu přímá metoda používá k aktivaci aktualizace vzdálené firmwaru v zařízení a umožňuje sledovat průběh aktualizace firmwaru hlášené vlastnosti.
+V tomto kurzu se používá přímé metody k aktivaci vzdáleného firmwaru v zařízení a umožňuje sledovat průběh aktualizace firmwaru ohlášené vlastnosti.
 
-Zjistěte, jak rozšířit vaše IoT řešení a plán metoda volá na několika zařízeních, najdete v článku [plán a všesměrového vysílání úlohy] [ lnk-tutorial-jobs] kurzu.
+Zjistěte, jak rozšířit vaše IoT řešení a plán metoda volá do různých zařízení, najdete v článku [plánování a vysílání úloh] [ lnk-tutorial-jobs] kurzu.
 
 <!-- images -->
 [img-fwupdate]: media/iot-hub-java-java-firmware-update/firmwareUpdated.png

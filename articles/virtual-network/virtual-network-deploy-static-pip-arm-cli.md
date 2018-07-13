@@ -1,6 +1,6 @@
 ---
-title: Vytvoření virtuálního počítače se statickou veřejnou IP adresu - rozhraní příkazového řádku Azure | Microsoft Docs
-description: Naučte se vytvořit virtuální počítač se statickou veřejnou IP adresu pomocí rozhraní příkazového řádku Azure (CLI).
+title: Vytvoření virtuálního počítače se statickou veřejnou IP adresu – rozhraní příkazového řádku Azure | Dokumentace Microsoftu
+description: Zjistěte, jak vytvořit virtuální počítač se statickou veřejnou IP adresu pomocí rozhraní příkazového řádku Azure (CLI).
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -17,13 +17,13 @@ ms.date: 03/15/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: bd44971162a79e53b731c5c89316f14e8bb0a1a6
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31524853"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38651955"
 ---
-# <a name="create-a-vm-with-a-static-public-ip-address-using-the-azure-cli"></a>Vytvoření virtuálního počítače se statickou veřejnou IP adresu pomocí rozhraní příkazového řádku Azure
+# <a name="create-a-vm-with-a-static-public-ip-address-using-the-azure-cli"></a>Vytvoření virtuálního počítače se statickou veřejnou IP adresu pomocí Azure CLI
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](virtual-network-deploy-static-pip-arm-portal.md)
@@ -33,18 +33,18 @@ ms.locfileid: "31524853"
 
 [!INCLUDE [virtual-network-deploy-static-pip-intro-include.md](../../includes/virtual-network-deploy-static-pip-intro-include.md)]
 
-Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a klasický](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Tento článek se zabývá pomocí modelu nasazení Resource Manager, které společnost Microsoft doporučuje pro většinu nových nasazení místo modelu nasazení classic.
+Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a classic](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Tento článek se věnuje modelu nasazení Resource Manager, který Microsoft doporučuje pro většinu nových nasazení namísto modelu nasazení classic.
 
 [!INCLUDE [virtual-network-deploy-static-pip-scenario-include.md](../../includes/virtual-network-deploy-static-pip-scenario-include.md)]
 
 ## <a name = "create"></a>Vytvoření virtuálního počítače
 
-Hodnoty v "" pro proměnné v krocích, které následují vytvořit prostředky s nastaveními z scénáře. Změňte hodnoty, jako je vhodné pro vaše prostředí.
+Hodnoty v "" pro proměnné v následujících kroků vytvořte prostředky s nastavením ze scénáře. Změňte hodnoty podle potřeby pro vaše prostředí.
 
-1. Nainstalujte [Azure CLI 2.0](/cli/azure/install-az-cli2) Pokud ještě nemáte nainstalováno.
-2. Vytvoření SSH pár veřejného a privátního klíče pro virtuální počítače s Linuxem pomocí kroků v [vytvoření SSH pár veřejného a privátního klíče pro virtuální počítače s Linuxem](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-3. Z příkazového prostředí, přihlášení pomocí příkazu `az login`.
-4. Vytvoření virtuálního počítače tak, že spustíte skript, který odpovídá na počítači se systémem Linux nebo Mac. Azure veřejnou IP adresu, virtuální sítě, síťové a prostředky virtuálních počítačů musí všechny existovat ve stejném umístění. Když prostředky nebudete mít existovat ve stejné skupině prostředků, v následující skript dělají.
+1. Nainstalujte [příkazového řádku Azure CLI 2.0](/cli/azure/install-az-cli2) Pokud ještě nemáte nainstalovaný.
+2. Vytvoření veřejného a privátního pár klíčů SSH pro virtuální počítače s Linuxem podle postupu uvedeného v [vytvoření veřejného a privátního pár klíčů SSH pro virtuální počítače s Linuxem](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+3. Z příkazového prostředí, přihlaste se pomocí příkazu `az login`.
+4. Vytvoření virtuálního počítače tak, že spustíte skript, který odpovídá na počítači se systémem Linux nebo Mac. Veřejnou IP adresou Azure, virtuální sítě, síťové rozhraní a prostředky virtuálních počítačů musí existovat ve stejném umístění. I když prostředky všechny nemusí existovat ve stejné skupině prostředků, v následujícím skriptu dělají.
 
 ```bash
 RgName="IaaSStory"
@@ -128,28 +128,28 @@ az vm create \
 # If creating a Windows VM, remove the previous line and you'll be prompted for the password you want to configure for the VM.
 ```
 
-Kromě vytvoření virtuálního počítače, vytvoří skript:
-- Jeden premium spravovat disku ve výchozím nastavení, ale máte další možnosti pro typ disku, které lze vytvořit. Pro čtení [vytvoření virtuálního počítače s Linuxem pomocí Azure CLI 2.0](../virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json) článku.
-- Virtuální sítě, podsítě, seskupování a veřejnou IP adresu prostředky. Alternativně můžete použít *existující* virtuální sítě, podsítě, síťový adaptér nebo adresu prostředky veřejné IP adresy. Chcete-li další informace o použití existující síťovým prostředkům, nikoli vytváření další zdroje informací, zadejte `az vm create -h`.
+Kromě vytvoření virtuálního počítače, skript vytvoří:
+- Na úrovni premium jeden spravovaný disk ve výchozím nastavení, ale máte další možnosti pro typ disku, které lze vytvořit. Přečtěte si [vytvořit virtuální počítač s Linuxem pomocí rozhraní příkazového řádku Azure CLI 2.0](../virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , kde najdete podrobnosti.
+- Virtuální sítě, podsítě, síťová karta a prostředky veřejné IP adresy. Alternativně můžete použít *existující* virtuální sítě, podsítě, síťová karta nebo prostředky veřejné IP adresy. Chcete-li další informace o použití stávajících síťových prostředků, namísto vytváření dalších prostředků, zadejte `az vm create -h`.
 
-## <a name = "validate"></a>Ověření vytvoření virtuálních počítačů a veřejnou IP adresu
+## <a name = "validate"></a>Ověřte vytvoření virtuálního počítače a veřejnou IP adresu
 
-1. Zadejte příkaz `az resource list --resouce-group IaaSStory --output table` zobrazíte seznam prostředky vytvořené skriptem. Měla by existovat pět prostředky ve vrácené výstupu: Síťová rozhraní, disk, veřejnou IP adresu, virtuální sítě a virtuální počítač.
-2. Zadejte příkaz `az network public-ip show --name PIPWEB1 --resource-group IaaSStory --output table`. Ve vrácené výstupu si poznamenejte hodnotu **IpAddress** a že hodnota **PublicIpAllocationMethod** je *statické*.
-3. Před spuštěním následujícího příkazu, odeberte <>, nahraďte *uživatelské jméno* s názvem, který jste použili pro **uživatelské jméno** proměnné ve skriptu a nahraďte *ipAddress*s **ipAddress** z předchozího kroku. Spusťte následující příkaz pro připojení k virtuálnímu počítači: `ssh -i ~/.ssh/azure_id_rsa <Username>@<ipAddress>`. 
+1. Zadejte příkaz `az resource list --resouce-group IaaSStory --output table` zobrazíte seznam prostředky vytvořené v rámci skriptu. Ve výstupu vráceného by měl být pět zdrojů: Síťová rozhraní, disk, veřejné IP adresy, virtuální síť a virtuální počítač.
+2. Zadejte příkaz `az network public-ip show --name PIPWEB1 --resource-group IaaSStory --output table`. Ve výstupu vráceného poznamenejte hodnotu **IpAddress** a že hodnota **PublicIpAllocationMethod** je *statické*.
+3. Před spuštěním následujícího příkazu odeberte <>, nahraďte *uživatelské jméno* s názvem, který jste použili pro **uživatelské jméno** proměnné ve skriptu a nahraďte *ipAddress*s **ipAddress** z předchozího kroku. Spusťte následující příkaz pro připojení k virtuálnímu počítači: `ssh -i ~/.ssh/azure_id_rsa <Username>@<ipAddress>`. 
 
-## <a name= "clean-up"></a>Odebrat virtuální počítač a přidružených zdrojů.
+## <a name= "clean-up"></a>Odebrat virtuální počítač a přidružené prostředky
 
-Doporučujeme vám odstranit prostředky vytvořené v tomto cvičení, pokud nebude je používat v produkčním prostředí. Virtuální počítač, veřejnou IP adresu a diskové prostředky platit poplatky, tak dlouho, dokud se jejich zřízení. Odebrat prostředky vytvořené během tohoto cvičení, proveďte následující kroky:
+Doporučuje se, že jste odstranili prostředky vytvořené v tomto cvičení v případě, že služby nebudete používat v produkčním prostředí. Virtuální počítač, veřejnou IP adresu a diskové prostředky účtovat poplatky, tak dlouho, dokud jste zřídili. Pokud chcete odebrat prostředky vytvořené v rámci tohoto cvičení, proveďte následující kroky:
 
-1. Chcete-li zobrazit prostředky ve skupině prostředků, spusťte `az resource list --resource-group IaaSStory` příkaz.
-2. Potvrďte, že neexistují žádné prostředky ve skupině prostředků, než prostředky vytvořené pomocí skriptu, který v tomto článku. 
-3. Chcete-li odstranit všechny prostředky, které jsou vytvořené v tomto cvičení, spusťte `az group delete -n IaaSStory` příkaz. Příkaz odstraní skupinu prostředků a všechny prostředky, které obsahuje.
+1. Chcete-li zobrazit prostředky ve skupině prostředků, spusťte `az resource list --resource-group IaaSStory` příkazu.
+2. Potvrďte, že nejsou žádné prostředky ve skupině prostředků, než prostředky vytvořené v rámci skriptu v tomto článku. 
+3. Pokud chcete odstranit všechny prostředky vytvořené v tomto cvičení, spusťte `az group delete -n IaaSStory` příkazu. Tento příkaz odstraní skupinu prostředků a všechny prostředky, které obsahuje.
  
 ## <a name="set-ip-addresses-within-the-operating-system"></a>Nastavení IP adresy v rámci operačního systému
 
-Byste měli přiřadit nikdy ručně veřejnou IP adresu přiřazené pro virtuální počítač Azure v rámci operačního systému virtuálního počítače. Doporučuje se, že nepřiřadíte staticky privátní IP přiřazené k virtuálnímu počítači Azure v rámci operačního systému virtuálního počítače, pokud nezbytné, jako např. kdy [přiřazení více IP adres pro virtuální počítač s Windows](virtual-network-multiple-ip-addresses-cli.md). Pokud ručně nastavit privátní IP adresu v operačním systému, zajistěte, aby byl stejnou adresu jako přiřazené Azure privátní IP adresy [síťové rozhraní](virtual-network-network-interface-addresses.md#change-ip-address-settings), nebo můžete ztratit připojení k virtuálnímu počítači. Další informace o [privátní IP adresu](virtual-network-network-interface-addresses.md#private) nastavení.
+Veřejná IP adresa přidělená k virtuálnímu počítači Azure v rámci operačního systému virtuálního počítače by nikdy ručně přiřadit. Doporučuje se, že nepřiřadíte staticky privátní IP adresa přiřazená virtuální počítač Azure v rámci operačního systému virtuálního počítače, není-li nezbytné, například kdy [přidělení více IP adres k virtuálnímu počítači s Windows](virtual-network-multiple-ip-addresses-cli.md). Pokud jste ručně nastavili privátní IP adresu v rámci operačního systému, ujistěte se, že se jedná o stejné adrese jako privátní IP adresy přiřazené k Azure [síťové rozhraní](virtual-network-network-interface-addresses.md#change-ip-address-settings), nebo může ztratit připojení k virtuálnímu počítači. Další informace o [privátní IP adresu](virtual-network-network-interface-addresses.md#private) nastavení.
 
 ## <a name="next-steps"></a>Další postup
 
-Síťové přenosy můžete procházet do a z virtuálního počítače vytvořit v tomto článku. Můžete definovat pravidla pro příchozí a odchozí zabezpečení v rámci skupiny zabezpečení sítě, které omezit přenos, který může obtékat do a z rozhraní sítě, podsítě nebo obojí. Další informace o skupinách zabezpečení sítě najdete v tématu [přehled skupiny zabezpečení sítě](security-overview.md).
+Veškerý provoz sítě může téct do a z virtuálního počítače v rámci tohoto článku vytvořili. Můžete definovat příchozích a odchozích pravidel zabezpečení v rámci skupiny zabezpečení sítě neomezují provoz, který může téct do a z rozhraní sítě a podsítě. Další informace o skupinách zabezpečení sítě najdete v tématu [přehled skupin zabezpečení sítě](security-overview.md).

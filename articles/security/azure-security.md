@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: bda8f72de16d1d8d95823de98aab8ec209908e63
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: a1cd2ecc738434fc8d5de03ef538be3ea896fa2b
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437786"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38971002"
 ---
 # <a name="introduction-to-azure-security"></a>Úvod do zabezpečení Azure
 ## <a name="overview"></a>Přehled
@@ -113,7 +113,7 @@ V části poskytuje další informace o klíčových funkcí v aplikaci zabezpe�
 Jeden z nejjednodušších způsobů, jak začít pracovat s testováním ohrožení zabezpečení na vašich [aplikace služby App Service](https://docs.microsoft.com/azure/app-service/app-service-web-overview) , je použít [integrace s Tinfoil Security](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/) k provedení kontroly ve vaší aplikaci jedním kliknutím ohrožení zabezpečení. Můžete zobrazit výsledky testů ve zprávě o snadno pochopit a zjistěte, jak opravit každý ohrožení zabezpečení s využitím podrobných pokynů.
 
 ### <a name="penetration-testing"></a>Testování průniku
-Pokud budete chtít provádět testování průniku nebo chcete použít jiný skener suite nebo poskytovatele, je třeba dodržet [proces schválení testování průniku s Azure](https://docs.microsoft.com/en-us/azure/security/azure-security-pen-testing ) a získat předchozí schválení k provedení požadovaného průniku testy.
+Pokud budete chtít provádět testování průniku nebo chcete použít jiný skener suite nebo poskytovatele, je třeba dodržet [proces schválení testování průniku s Azure](https://docs.microsoft.com/azure/security/azure-security-pen-testing ) a získat předchozí schválení k provedení požadovaného průniku testy.
 
 ### <a name="web-application-firewall"></a>Firewall webových aplikací
 Firewall webových aplikací (WAF) ve [Azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) pomáhá chránit webové aplikace z common webovými útoky, jako jsou Injektáž SQL, útoky skriptování napříč weby a napadení relace. Obsahuje předem nakonfigurovanou ochranu před hrozbami identifikován [Open Web Application zabezpečení projektu (OWASP) jako top 10 nejběžnějších ohrožení zabezpečení](https://msdn.microsoft.com/library/).

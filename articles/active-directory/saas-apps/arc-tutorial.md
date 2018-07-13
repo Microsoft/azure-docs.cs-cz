@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: jeedes
-ms.openlocfilehash: 9decab5c35cda03e8532c48654203be7d95a5801
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: c1bf5ba68d8242a0ef0831987ac6fd041c62ace9
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37858839"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969363"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arc-publishing---sso"></a>Kurz: Integrace Azure Active Directory s oblouk publikování – jednotné přihlašování
 
@@ -149,7 +149,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     1. Klikněte na tlačítko **Ok**
 
     > [!NOTE]
-    > Tady **skupiny** atribut je namapována na žádnou **user.assignedroles**. Jedná se o vlastní role vytvořené ve službě Azure AD k mapování názvů skupin zpět v aplikaci. Můžete najít ještě s něčím poradit [tady](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-enterprise-app-role-management) o tom, jak vytvořit vlastní role ve službě Azure AD. 
+    > Tady **skupiny** atribut je namapována na žádnou **user.assignedroles**. Jedná se o vlastní role vytvořené ve službě Azure AD k mapování názvů skupin zpět v aplikaci. Můžete najít ještě s něčím poradit [tady](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management) o tom, jak vytvořit vlastní role ve službě Azure AD. 
 
 1. Na **podpisový certifikát SAML** klikněte na tlačítko **certifikát (Base64)** a uložte soubor certifikátu v počítači.
 

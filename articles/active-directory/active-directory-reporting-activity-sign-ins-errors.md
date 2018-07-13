@@ -16,12 +16,12 @@ ms.component: compliance-reports
 ms.date: 05/31/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 8892f9a2699d18fbaf9161ffb01906a071ab2243
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: bbd826b636bebca90eacba43ca879a725cddf7d2
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37856752"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38971070"
 ---
 # <a name="sign-in-activity-report-error-codes-in-the-azure-active-directory-portal"></a>Kódy chyb v sestavě aktivit přihlašování na portálu Azure Active Directory
 
@@ -78,7 +78,7 @@ Následující část poskytuje úplný přehled o všech možných chybách a s
 |50012| Toto je obecné chybové zprávy, která označuje, že ověřování se nezdařilo. To může nastat z důvodu například chybí nebo není platný přihlašovací údaje nebo deklarací identity v požadavku. Ujistěte se, že žádost se poslala se správnými přihlašovacími údaji a deklarace identity. |
 |50013|Kontrolní výraz může být neplatný z různých důvodů: vydavatel tokenu se neshoduje s verzí rozhraní API v rámci jeho platného časového rozsahu; vypršela jeho platnost; je poškozený; nebo obnovovací token v kontrolním výrazu není primárním obnovovacím tokenem.|
 |50017|Ověření certifikace se nezdařilo kvůli jednomu z následujících důvodů:<ul><li>Na seznamu důvěryhodných certifikátů nebylo možné najít certifikát vystavitele.</li><li>Nepodařilo se najít očekávaný CrlSegment.</li><li>Na seznamu důvěryhodných certifikátů nebylo možné najít certifikát vystavitele.</li><li>Distribuční bod rozdílového seznamu CRL je nakonfigurovaný bez odpovídajícího distribučního bodu CRL.</li><li>Z důvodu vypršení časového limitu se nepodařilo načíst platné segmenty CRL.</li><li>CRL nejde stáhnout.</li></ul>Obraťte se na správce tenanta.|
-|50020|Uživatel nemá oprávnění – kvůli problému s verzí není možné vystavit tokeny – není zadané jméno vystavitele – problémy se jménem vystavitele (chybí nebo překračuje maximální délku). Obraťte se na vlastníka aplikace.|
+|50020|Uživatel nemá pro jednu z následujících důvodů.<ul><li>Uživatel se pokouší přihlásit pomocí účtu MSA ke koncovému bodu v1</li><li>Uživatel neexistuje v tenantovi.</li></ul> Obraťte se na vlastníka aplikace.|
 |50027|Token JWT může být neplatný z následujících důvodů:<ul><li>Neobsahuje deklaraci identity hodnoty nonce nebo subjektu.</li><li>Identifikátor subjektu se neshoduje.</li><li>Deklarace identity idTokenu má duplicitní deklaraci identity.</li><li>Neočekávaný vystavitel</li><li>Neočekávaná cílová skupina</li><li>Nenachází se v platném časovém rozsahu. </li><li>Nesprávný formát tokenu</li><li>U externího ID tokenu od vystavitele se nezdařilo ověření podpisu.</li></ul>Obraťte se na vlastníka aplikace.|
 |50029|Neplatný identifikátor URI – název domény obsahuje neplatné znaky. Obraťte se na správce tenanta.|
 |50034|Uživatel v adresáři neexistuje. Obraťte se na správce tenanta.|
@@ -100,7 +100,7 @@ Následující část poskytuje úplný přehled o všech možných chybách a s
 |50089|Platnost tokenu toku vypršela – ověření se nezdařilo. Požádejte uživatele, aby se zkusil pomocí uživatelského jména a hesla přihlásit znovu.|
 |50097|Vyžaduje se ověření zařízení – ID zařízení (deviceId) – deklarace identity DeviceAltSecId nejsou vyplněné nebo k identifikátoru zařízení neexistuje odpovídající zařízení.|
 |50099|Podpis JWT je neplatný. Obraťte se na vlastníka aplikace.|
-|50105|Přihlášený uživatel nemá přiřazenou roli k aktuálně přihlášené aplikaci. Přiřaďte uživatele k aplikaci. Další informace najdete na adrese: [https://docs.microsoft.com/en-us/azure/active-directory/application-sign-in-problem-federated-sso-gallery#user-not-assigned-a-role](https://docs.microsoft.com/en-us/azure/active-directory/application-sign-in-problem-federated-sso-gallery#user-not-assigned-a-role).|
+|50105|Přihlášený uživatel nemá přiřazenou roli k aktuálně přihlášené aplikaci. Přiřaďte uživatele k aplikaci. Další informace najdete na adrese: [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#user-not-assigned-a-role](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#user-not-assigned-a-role).|
 |50107|Požadovaný objekt sféry federace neexistuje. Obraťte se na správce tenanta.|
 |50120|Problém s hlavičkou JWT. Obraťte se na správce tenanta.|
 |50124|Transformace deklarací identity obsahuje neplatný vstupní parametr. Obraťte se na správce klienta, aby aktualizovat zásady.|
@@ -174,9 +174,10 @@ Následující část poskytuje úplný přehled o všech možných chybách a s
 |81001|Lístek Kerberos uživatele je příliš velký. K tomu může dojít, když je uživatel členem příliš mnoha skupin a lístek Kerberos obsahuje příliš velký počet členství. Snižte počet členství uživatele ve skupinách a zkuste to znovu.|
 |81005|Ověřovací balíček není podporovaný.|
 |81007|Tenant není povolený pro bezproblémové jednotné přihlašování.|
-|90014| Chybí povinné pole. pro zprávy protokolu, obraťte se na vlastníka aplikace. Pokud jste vlastníkem aplikace, ujistěte se, že máte všechny potřebné parametry pro žádost o přihlášení. 
+|90010|Požadavek není podporován z různých důvodů. Například požadavku pomocí metody Nepodporovaná žádost (podporuje se jenom metody POST) nebo token, který byl vyžádán podpisový algoritmus se nepodporuje. Obraťte se na vývojáře aplikace.|
+|90014| Chybí povinné pole. pro zprávy protokolu, obraťte se na vlastníka aplikace. Pokud jste vlastníkem aplikace, ujistěte se, že máte všechny potřebné parametry pro žádost o přihlášení. |
 |90072| Účet musí být nejprve přidán jako externí uživatel v tenantovi. Odhlášení a přihlaste se znovu pomocí jiné služby Azure AD účtu.|
-|90094| Udělení vyžaduje oprávnění správce. Požádejte správce tenanta k poskytnutí souhlasu pro tuto aplikaci.
+|90094| Udělení vyžaduje oprávnění správce. Požádejte správce tenanta k poskytnutí souhlasu pro tuto aplikaci.|
 
 ## <a name="next-steps"></a>Další postup
 

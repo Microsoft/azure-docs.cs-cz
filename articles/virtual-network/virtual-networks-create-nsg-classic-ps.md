@@ -1,6 +1,6 @@
 ---
-title: Vytvořte skupinu zabezpečení sítě (klasické) pomocí prostředí PowerShell | Microsoft Docs
-description: Zjistěte, jak vytvořit a nasadit skupinu zabezpečení sítě (klasické) pomocí prostředí PowerShell
+title: Vytvořte skupinu zabezpečení sítě (classic) pomocí Powershellu | Dokumentace Microsoftu
+description: Zjistěte, jak vytvořit a nasadit skupinu zabezpečení sítě (classic) pomocí Powershellu
 services: virtual-network
 documentationcenter: na
 author: genlin
@@ -16,28 +16,28 @@ ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: genli
 ms.openlocfilehash: ecb977660ed99a3cea2a71a867f50822b23e568c
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31793187"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38634192"
 ---
-# <a name="create-a-network-security-group-classic-using-powershell"></a>Vytvořit skupinu zabezpečení sítě (klasické) pomocí prostředí PowerShell
+# <a name="create-a-network-security-group-classic-using-powershell"></a>Vytvořte skupinu zabezpečení sítě (classic) pomocí Powershellu
 [!INCLUDE [virtual-networks-create-nsg-selectors-classic-include](../../includes/virtual-networks-create-nsg-selectors-classic-include.md)]
 
 [!INCLUDE [virtual-networks-create-nsg-intro-include](../../includes/virtual-networks-create-nsg-intro-include.md)]
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-Tento článek se týká modelu nasazení Classic. Můžete také [vytvářet skupiny Nsg v modelu nasazení Resource Manager](tutorial-filter-network-traffic.md).
+Tento článek se týká modelu nasazení Classic. Můžete také [vytvořit skupiny Nsg v modelu nasazení Resource Manager](tutorial-filter-network-traffic.md).
 
 [!INCLUDE [virtual-networks-create-nsg-scenario-include](../../includes/virtual-networks-create-nsg-scenario-include.md)]
 
-Ukázka jednoduché prostředí už vytvořený očekávat níže uvedené příkazy prostředí PowerShell založené na výše uvedené scénáře. Pokud chcete ke spuštění příkazů, jak jsou zobrazeny v tomto dokumentu, nejprve vytvořit testovací prostředí podle [vytvoření virtuální sítě](virtual-networks-create-vnet-classic-netcfg-ps.md).
+Ukázka jednoduché prostředí už vytvořili očekávat následující příkazy prostředí PowerShell založený na výše uvedeném scénáři. Pokud chcete spustit příkazy, jak jsou zobrazeny v tomto dokumentu, nejprve vytvořit testovací prostředí podle [vytvoření virtuální sítě](virtual-networks-create-vnet-classic-netcfg-ps.md).
 
-## <a name="create-an-nsg-for-the-front-end-subnet"></a>Vytvořit skupinu NSG pro podsíť front-endu
+## <a name="create-an-nsg-for-the-front-end-subnet"></a>Vytvořte skupinu zabezpečení sítě pro front-endové podsítě
 
-1. Pokud jste prostředí Azure PowerShell nikdy nepoužívali, projděte si téma [postup instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview).
+1. Pokud jste prostředí Azure PowerShell nikdy nepoužívali, přečtěte si téma [instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview).
 
 2. Vytvořte skupinu zabezpečení sítě s názvem *NSG front-endu*:
 
@@ -56,7 +56,7 @@ Ukázka jednoduché prostředí už vytvořený očekávat níže uvedené pří
       -DestinationAddressPrefix '*' -DestinationPortRange '3389'
    ```
 
-4. Vytvořte pravidlo zabezpečení povolení přístupu z Internetu na port 80:
+4. Vytvořte pravidlo zabezpečení umožňuje přístup na port 80 z Internetu:
 
     ```powershell   
     Get-AzureNetworkSecurityGroup -Name "NSG-FrontEnd" `
@@ -66,16 +66,16 @@ Ukázka jednoduché prostředí už vytvořený očekávat níže uvedené pří
       -DestinationAddressPrefix '*' -DestinationPortRange '80'
     ```
 
-## <a name="create-an-nsg-for-the-back-end-subnet"></a>Vytvořit skupinu NSG pro podsíť back-end
+## <a name="create-an-nsg-for-the-back-end-subnet"></a>Vytvořte skupinu zabezpečení sítě pro podsíť back-end
 
-1. Vytvořte skupinu zabezpečení sítě s názvem *NSG back-end*:
+1. Vytvořte skupinu zabezpečení sítě s názvem *NSG back-endu*:
    
     ```powershell
     New-AzureNetworkSecurityGroup -Name "NSG-BackEnd" -Location uswest `
       -Label "Back end subnet NSG"
     ```
 
-2. Vytvořte pravidlo zabezpečení povolení přístupu z podsítě front-endu port 1433 (SQL Server používá výchozí port):
+2. Vytvořte pravidlo zabezpečení povolení přístupu z podsítě front-endový port 1433 (výchozí port používaný systémem SQL Server):
    
     ```powershell
     Get-AzureNetworkSecurityGroup -Name "NSG-FrontEnd" `
@@ -85,7 +85,7 @@ Ukázka jednoduché prostředí už vytvořený očekávat níže uvedené pří
       -DestinationAddressPrefix '*' -DestinationPortRange '1433'
     ```
 
-3. Vytvořte pravidlo zabezpečení blokuje přístup z podsítě k Internetu:
+3. Vytvořte pravidlo zabezpečení, blokovat přístup k Internetu z podsítě:
    
     ```powershell
     Get-AzureNetworkSecurityGroup -Name "NSG-BackEnd" `

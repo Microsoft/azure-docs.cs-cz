@@ -1,9 +1,9 @@
 ---
-title: Nasazení aplikace na sadu škálování virtuálního počítače Azure | Microsoft Docs
-description: Zjistěte, jak nasadit aplikace pro Linux a Windows instancí virtuálního počítače ve škálovací sadě
+title: Nasazení aplikace do škálovací sady virtuálních počítačů Azure | Dokumentace Microsoftu
+description: Zjistěte, jak nasadit aplikace pro Linux a Windows instancí virtuálních počítačů ve škálovací sadě
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,46 +14,46 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
-ms.author: iainfou
-ms.openlocfilehash: ed43dc21c8b7c585abc0a2734a541f760ab3c487
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.author: cynthn
+ms.openlocfilehash: 8817facc21d2a7ac86bdaf198aab3179a93c4914
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37111559"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38718977"
 ---
-# <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>Nasazení aplikace na sady škálování virtuálního počítače
-Pokud chcete spouštět aplikace na instancích virtuálních počítačů ve škálovací sadě, musíte nejprve nainstalovat komponenty aplikace a požadované soubory. Tento článek představuje způsoby, jak vytvořit vlastní image virtuálního počítače pro instance v škálování nastavit nebo automatické spouštění skriptů instalace v existující instance virtuálních počítačů. Také zjistíte, jak spravovat aplikace nebo aktualizace operačního systému v rámci sady škálování.
+# <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>Nasazení aplikace do škálovací sady virtuálních počítačů
+Pokud chcete spouštět aplikace na instancích virtuálních počítačů ve škálovací sadě, musíte nejprve nainstalovat komponenty aplikace a požadované soubory. Tento článek představuje způsobů, jak vytvářet vlastní image virtuálního počítače pro instancí ve škálovací, nastavení nebo automatické spouštění skriptů instalace v existujících instancích virtuálních počítačů. Také se dozvíte, jak spravovat aplikace nebo aktualizace operačního systému na škálovací sadu.
 
 
-## <a name="build-a-custom-vm-image"></a>Sestavení vlastní image virtuálního počítače
-Když použijete jednu z imagí platformy Azure k vytvoření instance ve škálovací sadě, žádný další software je nainstalovaná nebo nakonfigurovaná. Můžete automatizovat instalace těchto součástí, ale která přidává do čas potřebný ke zřízení instance, které chcete škálovací sady virtuálních počítačů. Pokud použijete mnoho změn konfigurace pro instance virtuálních počítačů, je Správa spojené s těmito konfigurační skripty a úlohy.
+## <a name="build-a-custom-vm-image"></a>Vytvoření vlastní image virtuálního počítače
+Pokud používáte některou k imagí platformy Azure k vytvoření instancí ve škálovací sadě, žádný další software je nainstalovaný nebo nakonfigurován. Můžete automatizovat instalaci těchto součástí, ale, který přidá do čas potřebný ke zřízení instance škálovací sady virtuálních počítačů. Pokud použijete mnoho změn konfigurace na instance virtuálních počítačů, je Správa režie pomocí těchto konfigurační skripty a úlohy.
 
-Pokud chcete zkrátit configuration management a čas pro zřízení virtuálního počítače, můžete vytvořit vlastní image virtuálního počítače, který je připraven ke spuštění aplikace v sadě škálování při zřízení instance. Další informace o tom, jak vytvořit a použít vlastní image virtuálního počítače s měřítkem nastavení najdete v následujících kurzech:
+Pokud chcete snížit správu konfigurací a čas pro zřízení virtuálního počítače, můžete vytvořit vlastní image virtuálního počítače, který je připraven ke spuštění aplikace co nejdříve po zřízení instance ve škálovací sadě. Další informace o tom, jak vytvořit a používat vlastní image virtuálního počítače se škálovací sady najdete v následujících kurzech:
 
 - [Azure CLI 2.0](tutorial-use-custom-image-cli.md)
 - [Azure PowerShell](tutorial-use-custom-image-powershell.md)
 
 
-## <a name="already-provisioned"></a>Instalace aplikace s rozšíření vlastních skriptů
-Rozšíření vlastních skriptů stahuje a spouští skripty na virtuálních počítačích Azure. Toto rozšíření je užitečné pro konfiguraci po nasazení, instalaci softwaru nebo jakékoli jiné úlohy konfigurace nebo správy. Skripty si můžete stáhnout z úložiště Azure nebo z GitHubu, případně je za běhu rozšíření najdete na webu Azure Portal. Další informace o tom, jak vytvořit a použít vlastní image virtuálního počítače s měřítkem nastavení najdete v následujících kurzech:
+## <a name="already-provisioned"></a>Instalace aplikace s využitím rozšíření vlastních skriptů
+Rozšíření vlastních skriptů stahuje a spouští skripty na virtuálních počítačích Azure. Toto rozšíření je užitečné pro konfiguraci po nasazení, instalaci softwaru nebo jakékoli jiné úlohy konfigurace nebo správy. Skripty si můžete stáhnout z úložiště Azure nebo z GitHubu, případně je za běhu rozšíření najdete na webu Azure Portal. Další informace o tom, jak vytvořit a používat vlastní image virtuálního počítače se škálovací sady najdete v následujících kurzech:
 
 - [Azure CLI 2.0](tutorial-install-apps-cli.md)
 - [Azure PowerShell](tutorial-install-apps-powershell.md)
 - [Šablona Azure Resource Manageru](tutorial-install-apps-template.md)
 
 
-## <a name="install-an-app-to-a-windows-vm-with-powershell-dsc"></a>Instalace aplikace pro Windows virtuálního počítače pomocí prostředí PowerShell DSC
-[Prostředí PowerShell požadovaného stavu konfigurace (DSC)](https://msdn.microsoft.com/powershell/dsc/overview) je platforma pro správu k definování konfigurace cílových počítačů. Konfigurace DSC definovat, co je potřeba nainstalovat na počítači a postup konfigurace hostitele. Modul Místní Configuration Manager (LCM) běží na každý cílový uzel, který zpracovává požadovaná akce na základě stisknutí konfigurací.
+## <a name="install-an-app-to-a-windows-vm-with-powershell-dsc"></a>Instalace aplikace pro Windows virtuální počítač s prostředím PowerShell DSC
+[Prostředí PowerShell Desired State Configuration (DSC)](https://msdn.microsoft.com/powershell/dsc/overview) je platforma pro správu k definování konfigurace cílových počítačích. Konfigurace DSC definovat, co se má nainstalovat na počítač a jak nakonfigurovat hostitele. Modul místního Configuration Manageru (LCM) běží na každý cílový uzel, který zpracovává nabízená konfigurace požadované akce.
 
-Rozšíření DSC prostředí PowerShell umožňuje přizpůsobit instance virtuálních počítačů v škálování, nastavte pomocí prostředí PowerShell. V následujícím příkladu:
+Rozšíření PowerShell DSC umožňuje přizpůsobit instancí virtuálních počítačů ve škálovací sadě pomocí Powershellu. V následujícím příkladu:
 
-- Dá pokyn instance virtuálních počítačů DSC balíček stáhnout z webu GitHub- *https://github.com/Azure-Samples/compute-automation-configurations/raw/master/dsc.zip*
+- Dává pokyn stáhnout DSC balíček z webu GitHub - instance virtuálních počítačů *https://github.com/Azure-Samples/compute-automation-configurations/raw/master/dsc.zip*
 - Nastaví rozšíření pro spuštění skriptu install- `configure-http.ps1`
-- Získá informace o škálování s [Get-AzureRmVmss](/powershell/module/azurerm.compute/get-azurermvmss)
-- Platí pro instance virtuálních počítačů s příponou [AzureRmVmss aktualizace](/powershell/module/azurerm.compute/update-azurermvmss)
+- Získá informace o škálovací sadu s [Get-AzureRmVmss](/powershell/module/azurerm.compute/get-azurermvmss)
+- Rozšíření se vztahuje na instance virtuálních počítačů s [Update-AzureRmVmss](/powershell/module/azurerm.compute/update-azurermvmss)
 
-Rozšíření DSC se použijí na *myScaleSet* instance virtuálních počítačů ve skupině prostředků s názvem *myResourceGroup*. Zadejte vlastní názvy následujícím způsobem:
+K použití tohoto rozšíření DSC *myScaleSet* instancí virtuálních počítačů ve skupině prostředků s názvem *myResourceGroup*. Zadejte vlastní názvy následujícím způsobem:
 
 ```powershell
 # Define the script for your Desired Configuration to download and run
@@ -87,17 +87,17 @@ Update-AzureRmVmss `
     -VirtualMachineScaleSet $vmss
 ```
 
-Pokud je aktualizace zásad na škálovací sadu *ruční*, aktualizovat instancím virtuálních počítačů s [aktualizace AzureRmVmssInstance](/powershell/module/azurerm.compute/update-azurermvmssinstance). Tato rutina platí konfigurace sady aktualizované škálování pro instance virtuálních počítačů a nainstaluje aplikace.
+Pokud zásady upgradu ve škálovací sadě je *ruční*, aktualizovat vaše instance virtuálních počítačů s [Update-AzureRmVmssInstance](/powershell/module/azurerm.compute/update-azurermvmssinstance). Tato rutina konfigurace aktualizace škálovací sady se vztahuje na instance virtuálních počítačů a nainstaluje vaši aplikaci.
 
 
-## <a name="install-an-app-to-a-linux-vm-with-cloud-init"></a>Instalace aplikace na virtuální počítače Linux s inicializací cloudu
+## <a name="install-an-app-to-a-linux-vm-with-cloud-init"></a>Instalace aplikace na virtuální počítač s Linuxem pomocí cloud-init
 [Cloud-init](https://cloudinit.readthedocs.io/en/latest/index.html) je široce využívaným přístupem k přizpůsobení virtuálního počítače s Linuxem při jeho prvním spuštění. Pomocí cloud-init můžete instalovat balíčky a zapisovat soubory nebo konfigurovat uživatele a zabezpečení. Vzhledem k tomu, že se cloud-init spustí během procesu prvotního spuštění, nevyžaduje použití vaší konfigurace žádné další kroky ani agenty.
 
 Cloud-init navíc funguje v různých distribucích. K instalaci balíčku tak například nepoužijete **apt-get install** ani **yum install**. Místo toho můžete definovat seznam balíčků pro instalaci. Cloud-init automaticky použije nativní nástroj pro správu balíčků pro zvolenou distribuci.
 
-Další informace, včetně příklad *cloudu init.txt* souborů najdete v tématu [použít k přizpůsobení virtuálních počítačích Azure cloud init](../virtual-machines/linux/using-cloud-init.md).
+Další informace, včetně příklad *cloud-init.txt* souborů naleznete v tématu [použití cloud-init přizpůsobí virtuální počítače Azure](../virtual-machines/linux/using-cloud-init.md).
 
-Pokud chcete vytvořit sadu škálování a použít soubor init cloudu, přidejte `--custom-data` parametru [vytvořit az vmss](/cli/azure/vmss#az_vmss_create) příkaz a zadejte název souboru init cloudu. Následující příklad vytvoří škálování nastavení s názvem *myScaleSet* v *myResourceGroup* a nakonfiguruje instance virtuálních počítačů se soubor s názvem *cloudu init.txt*. Zadejte vlastní názvy následujícím způsobem:
+Pokud chcete vytvořit škálovací sadu a používat soubor cloud-init, přidejte `--custom-data` parametr [az vmss vytvořit](/cli/azure/vmss#az_vmss_create) příkaz a zadejte název souboru cloud-init. Následující příklad vytvoří škálovací sadu s názvem *myScaleSet* v *myResourceGroup* a nakonfiguruje instancí virtuálních počítačů pomocí souboru s názvem *cloud-init.txt*. Zadejte vlastní názvy následujícím způsobem:
 
 ```azurecli
 az vmss create \
@@ -111,11 +111,11 @@ az vmss create \
 ```
 
 
-### <a name="install-applications-with-os-updates"></a>Instalovat aplikace s aktualizacemi operačního systému
-Když jsou k dispozici nové verze operačního systému, můžete použít nebo vytvořit novou vlastní bitovou kopii a [nasazení upgradu OS](virtual-machine-scale-sets-upgrade-scale-set.md) na měřítko nastavit. Každá instance virtuálního počítače je upgradován na nejnovější bitovou kopii, která zadáte. Vlastní image s předinstalovaným, aplikací rozšíření vlastních skriptů nebo DSC prostředí PowerShell můžete použít tak, aby měl vaší aplikace, které jsou automaticky dostupné, jak provést upgrade. Potřebujete plánu údržby aplikace, jak provést tento postup zajistěte, aby žádná verze problémy s kompatibilitou.
+### <a name="install-applications-with-os-updates"></a>Instalace aplikací s aktualizacemi operačního systému
+Když novou verzí operačního systému jsou k dispozici, můžete použít nebo vytvořit nové vlastní image a [nasazování upgradů operačního systému](virtual-machine-scale-sets-upgrade-scale-set.md) škálovací nastavte. Všechny instance virtuálních počítačů je upgradovat na nejnovější image, který zadáte. Vlastní image předem nainstalovaná aplikace rozšíření vlastních skriptů nebo prostředí PowerShell DSC můžete mít vaše aplikace automaticky k dispozici při provádění upgradu. Budete muset plánování údržby aplikace při provádění tohoto procesu, abyste zajistili, že zde nejsou žádné verze problémy s kompatibilitou.
 
-Pokud používáte vlastní image virtuálního počítače s předinstalovaným aplikací, může integrovat kanál nasazení a vytvářet nové bitové kopie nasazení operačního systému upgrady v rámci škálovací sadu aktualizací aplikace. Tento přístup umožňuje kanálu, který má být vyzvednutí nejnovější sestavení aplikace, vytvořit a ověřit image virtuálního počítače a pak upgradovat instance virtuálních počítačů v sadě škálování. Pokud chcete spustit nasazení kanálu, který vytvoří a nasadí aplikaci aktualizace napříč vlastní Image virtuálních počítačů, může [bitovou kopii balírna vytvářet a nasazovat s Visual Studio Team Services](/vsts/pipelines/apps/cd/azure/deploy-azure-scaleset), nebo pomocí jiné platformy, jako například [Spinnaker ](https://www.spinnaker.io/) nebo [volaných](https://jenkins.io/).
+Pokud používáte vlastní image virtuálního počítače s předem nainstalovaná aplikace, může aktualizace aplikace integrovat nasazení kanálu pro sestavování nových imagí a nasazování upgradů operačního systému ve škálovací sadě. Tento přístup umožňuje kanálu tak, aby se získaly nejnovější sestavení aplikace, vytvořit a ověřit image virtuálního počítače a potom upgradovat instance virtuálních počítačů ve škálovací sadě. Pokud chcete spustit kanál nasazení, který sestaví a nasadí aktualizace aplikace ve vlastních imagí virtuálních počítačů, může [image Packeru pro vytvoření a nasazení pomocí Visual Studio Team Services](/vsts/pipelines/apps/cd/azure/deploy-azure-scaleset), nebo použít jinou platformu, jako [Spinnaker ](https://www.spinnaker.io/) nebo [Jenkins](https://jenkins.io/).
 
 
 ## <a name="next-steps"></a>Další postup
-Jak vytvořit a nasadit aplikace do vaší sady škálování, můžete zkontrolovat [přehled návrhu nastavení škálování](virtual-machine-scale-sets-design-overview.md). Další informace o tom, jak spravovat škálovací sadu najdete v tématu [použití Powershellu ke správě škálovací sadu](virtual-machine-scale-sets-windows-manage.md).
+Při vývoji a nasazení aplikací do škálovací sady, můžete zkontrolovat [přehled návrhu nastavte škálování](virtual-machine-scale-sets-design-overview.md). Další informace o tom, jak Správa škálovací sady, naleznete v tématu [použití Powershellu ke správě škálovací sady](virtual-machine-scale-sets-windows-manage.md).

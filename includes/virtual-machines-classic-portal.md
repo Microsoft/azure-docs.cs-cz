@@ -1,1 +1,1 @@
-Od 15. listopadu 2017, virtuální počítače budou k dispozici pouze v [portál Azure](https://portal.azure.com). 
+Od 15. listopadu 2017, Virtual Machines vám bude k dispozici pouze [webu Azure portal](https://portal.azure.com). 

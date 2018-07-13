@@ -14,18 +14,18 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/30/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 4f09fa7b3f2aff38a016626af2d538f1eab3f5e8
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 0bc88a510c05e88351b4ac7d69839a37c0e4fdd8
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37856619"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970485"
 ---
 # <a name="durable-functions-overview"></a>Trvalý přehled funkcí
 
 *Odolná služba Functions* je rozšířením [Azure Functions](functions-overview.md) a [Azure WebJobs](../app-service/web-sites-create-web-jobs.md) , který umožňuje zapisovat stavové funkce v prostředí bez serveru. Rozšíření spravuje stav, kontrolní body a restartuje za vás.
 
-Rozšíření umožňuje definovat stavové pracovních postupů v novém typu funkce volaná *funkce orchestrátoru*. Tady jsou některé z výhod funkcí nástroje orchestrator:
+Rozšíření umožňuje definovat stavové pracovních postupů v novém typu funkce volaná [ *funkce orchestrátoru*](durable-functions-types-features-overview.md#orchestrator-functions). Tady jsou některé z výhod funkcí nástroje orchestrator:
 
 * Pracovní postupy definují v kódu. Nejsou potřeba žádné schémat JSON nebo návrháře.
 * Další funkce můžou volat synchronně a asynchronně. Výstup z volané funkce lze uložit do místní proměnné.
@@ -340,7 +340,7 @@ Funkce nástroje Orchestrator spolehlivě Udržovat stav jejich provedení pomoc
 
 Použití modelu Event Sourcing v tomto rozšíření je transparentní. Na pozadí `await` operátor v funkce orchestrátoru vrací řízení vlákna orchestrator zpět do dispečera trvalý Framework úloh. Dispečer pak potvrdí všechny nové akce, které funkce orchestrátoru naplánované (třeba volání jedné nebo více podřízených funkcí nebo plánování trvalý časovače) do úložiště. Tato akce transparentní potvrzení připojí k *historie provádění* instance Orchestrace. Historie je uložena v tabulce úložiště. Potvrzení akce poté přidá zprávy do fronty k naplánování samotnou práci. Funkce orchestrátoru v tomto okamžiku může být uvolněna z paměti. Fakturace se zastaví, pokud používáte plán Consumption funkce Azure.  Při další práci restartování funkce a její stav je znovu vytvořena.
 
-Jakmile funkce protokolem Orchestrace dostane další práci (například doručení zprávy do odpovědi nebo trvalý vyprší), orchestrator probudí znovu a znovu provede celou funkci od samého začátku aby bylo možné znovu sestavit místní stavu. Pokud během tohoto opětovného přehrání kód se pokusí zavolat funkci (nebo provádět jiné asynchronní práce), trvalý Framework úloh consults s *historie provádění* aktuální Orchestrace. Pokud zjistí, že už se provedla aktivita funkce a poskytuje některé výsledek přehrává výsledku této funkce a kód orchestrator bude nadále spuštěn. Tento postup se opakuje dokud funkce kód získá do bodu, kde je dokončeno nebo má nový asynchronní úlohy naplánované děje.
+Jakmile funkce protokolem Orchestrace dostane další práci (například doručení zprávy do odpovědi nebo trvalý vyprší), orchestrator probudí znovu a znovu provede celou funkci od samého začátku aby bylo možné znovu sestavit místní stavu. Pokud během tohoto opětovného přehrání kód se pokusí zavolat funkci (nebo provádět jiné asynchronní práce), trvalý Framework úloh consults s *historie provádění* aktuální Orchestrace. Pokud se zjistí, že [funkce aktivitu](durable-functions-types-features-overview.md#activity-functions) má již spuštěné a některé vrátil výsledek, přehrává výsledku této funkce a kód orchestrator bude nadále spuštěn. Tento postup se opakuje dokud funkce kód získá do bodu, kde je dokončeno nebo má nový asynchronní úlohy naplánované děje.
 
 ### <a name="orchestrator-code-constraints"></a>Omezení kódu produktu Orchestrator
 
@@ -384,7 +384,7 @@ Všechny známé problémy, které mají být sledovány v [problémy Githubu](h
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Pokračujte ve čtení dokumentaci Durable Functions](durable-functions-bindings.md)
+> [Pokračujte ve čtení dokumentaci Durable Functions](durable-functions-types-features-overview.md)
 
 > [!div class="nextstepaction"]
 > [Instalace rozšíření Durable Functions a ukázky](durable-functions-install.md)

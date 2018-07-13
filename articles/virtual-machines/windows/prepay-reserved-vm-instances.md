@@ -1,6 +1,6 @@
 ---
-title: Předem pro virtuální počítače Azure jak ušetřit peníze | Microsoft Docs
-description: Zjistěte, jak zakoupit Azure vyhrazenou instancí uložit na náklady na výpočetní.
+title: Pro virtuální počítače Azure ušetříte peníze, předem | Dokumentace Microsoftu
+description: Informace o možnostech nákupu rezervovaných instancí Azure a Ušetřete na svých výpočetních nákladech.
 services: virtual-machines-windows
 documentationcenter: ''
 author: yashar
@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 06/14/2018
 ms.author: yashar
 ms.openlocfilehash: 50cbd32f5bd64b276e8f58bff040e40d9e989cfe
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063790"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38634230"
 ---
 [!INCLUDE [virtual-machines-buy-compute-reservations](../../../includes/virtual-machines-common-prepay-reserved-vm-instances.md)]
 

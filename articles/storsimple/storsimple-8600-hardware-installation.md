@@ -1,6 +1,6 @@
 ---
-title: Instalace Microsoft Azure StorSimple 8600 zařízení | Microsoft Docs
-description: Popisuje, jak rozbalit, namontujte do racku a zapojení kabeláže zařízení StorSimple 8600 před nasazením a nakonfigurujte software.
+title: Instalace Microsoft Azure StorSimple 8600 zařízení | Dokumentace Microsoftu
+description: Popisuje, jak jeho usazení do racku a zapojení kabeláže zařízení StorSimple 8600 předtím, než můžete nasadit a nakonfigurovat software.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,203 +15,203 @@ ms.workload: TBD
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 5a8b460441323cb668a3d9939cce434636afc44d
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2018
-ms.locfileid: "27743708"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38719001"
 ---
-# <a name="unpack-rack-mount-and-cable-your-storsimple-8600-device"></a>Zařízení vybalit, namontovat do racku a zapojení kabeláže zařízení StorSimple 8600
+# <a name="unpack-rack-mount-and-cable-your-storsimple-8600-device"></a>Rozbalení připojení do racku a zapojení kabeláže zařízení StorSimple 8600
 ## <a name="overview"></a>Přehled
-Vaše Microsoft Azure StorSimple 8600 duální skříň zařízení a skládá se z primárního serveru a EBOD skříň. Tento kurz vysvětluje, jak rozbalit, namontovat do racku a kabel StorSimple 8600 hardwaru zařízení před konfiguraci softwaru zařízení StorSimple.
+Vaše Microsoft Azure StorSimple 8600 je duální skříň zařízení a skládá se z primární a EBOD skříň. Tento kurz vysvětluje, jak rozbalit, do racku a hardwaru zařízení StorSimple 8600 kabel před konfigurace softwaru StorSimple.
 
-## <a name="unpack-your-storsimple-8600-device"></a>Rozbalte zařízení StorSimple 8600
-Následující kroky poskytují jasným a podrobné pokyny o tom, jak rozbalit paměťovém zařízení StorSimple 8600. Toto zařízení je dodáván ve dvou polích, jeden pro skříni primární a druhý pro EBOD skříň. Tyto dva seznamy jsou pak umístěny v jediné pole.
+## <a name="unpack-your-storsimple-8600-device"></a>Rozbalit zařízení StorSimple 8600
+Následující kroky obsahují jasné, podrobné pokyny o tom, jak rozbalit úložného zařízení StorSimple 8600. Toto zařízení se posílá ve dvou polích, jeden pro primární skříň a druhý pro EBOD skříň. Tyto dvě pole jsou poté umístěny v jediné pole.
 
-### <a name="prepare-to-unpack-your-device"></a>Příprava rozbalte zařízení
-Předtím, než můžete zařízení vybalit zařízení, zkontrolujte následující informace.
+### <a name="prepare-to-unpack-your-device"></a>Příprava na jeho usazení do zařízení
+Před jeho usazení do zařízení, zkontrolujte následující informace.
 
-![Ikona upozornění](./media/storsimple-safety/IC740879.png)![velkou váhy ikonu](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) **upozornění!**
+![Ikona upozornění](./media/storsimple-safety/IC740879.png)![Tučná tloušťka ikonu](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) **upozornění!**
 
-1. Ujistěte se, že máte dvou osob, které jsou k dispozici ke správě váhu zařízení, pokud jsou její zpracování ručně. Kompletně nakonfigurovaný skříň můžete naváží až 32 kg (70 kg.).
-2. Umístěte pole na povrchu plochý, úrovně.
+1. Ujistěte se, že máte dvou osob, které jsou k dispozici ke správě váhu zařízení, pokud je její zpracování ručně. Plně nakonfigurovaného skříně můžete zvážit až 32 kg (70 lbs.).
+2. Umístěte pole na povrch bez stromové struktury, úroveň.
 
-Dále proveďte následující kroky rozbalte zařízení.
+Dále proveďte následující kroky k jeho usazení do vašeho zařízení.
 
-#### <a name="to-unpack-your-device"></a>Rozbalte zařízení
-1. Zkontrolujte pole a pěnou balení pro crushes kusy, horních poškození nebo jiných zřejmé poškození. Pokud pole nebo balení vážně poškozen, neotevírejte pole. Prosím [kontaktovat Microsoft Support](storsimple-8000-contact-microsoft-support.md) můžete vyhodnotit, jestli je zařízení v dobrém stavu.
-2. Otevřete vnější pole a pak proveďte na dvě pole odpovídající primární a EBOD skříně. Můžete teď rozbalte primárním serverem a EBOD skříně. Následující obrázek znázorňuje rozbalené zobrazení jednoho skříních.
+#### <a name="to-unpack-your-device"></a>Rozbalte vaše zařízení
+1. Zkontrolujte pole a balení maskota crushes, kusy, vody poškození nebo jiných zřejmé poškození. Pokud pole nebo balení je vážně poškozen, neotevírejte pole. Prosím [obraťte se na Microsoft Support](storsimple-8000-contact-microsoft-support.md) umožňují posoudit, jestli je zařízení v dobrém stavu.
+2. Otevření okna vnější a pak proveďte na dvou políček na primárním serverem a EBOD skříně. Můžete teď rozbalit primární a EBOD skříně. Následující obrázek znázorňuje rozbalené zobrazení jedné skříních.
    
-    ![Rozbalte zařízení úložiště](./media/storsimple-8600-hardware-installation/HCSUnpackyour4Udevice.png)
+    ![Rozbalit zařízení úložiště](./media/storsimple-8600-hardware-installation/HCSUnpackyour4Udevice.png)
    
     **Rozbalené zobrazení vašeho zařízení úložiště**
    
    | Štítek | Popis |
    | --- | --- |
-   |   1 |Okolních pole |
-   |   2 |SAS kabely (v Příslušenství a kabely panelu) |
-   |   3 |Dolní pěnou |
+   |   1 |Balení pole |
+   |   2 |SAS kabely (v Příslušenství a kabely zásobníku) |
+   |   3 |Dolní maskota |
    |   4 |Zařízení |
-   |   5 |Horní pěnou |
+   |   5 |Začátek maskota |
    |   6 |Příslušenství pole |
-3. Po rozbalení dvě pole, ujistěte se, zda máte:
+3. Po rozbalení dvě pole, ujistěte se, že máte:
    
-   * 1 primární skříň (primární skříně a EBOD skříň jsou dvě samostatné polí)
-   * 1 EBOD skříň
+   * 1 primární skříň (primární skříň a EBOD zařízení jsou ve dvou samostatných polích.)
+   * 1 skříň EBOD
    * 4 napájecích kabelů, 2 v každém poli
-   * 2 SAS kabely (pro připojení primární skříň k EBOD skříň)
+   * 2 SAS kabely (pro připojení primární zařízení ke skříni EBOD)
    * 1 kříženého kabelu Ethernet
    * 2 kabely konzoly sériového portu
-   * 1 sériové USB převaděč pro sériový přístup
-   * 4 QSFP-na-SFP + adaptéry pro použití s 10 GbE síťová rozhraní
-   * 2 rack sadách připojení (4 které straně s připojení hardwaru, 2 pro primární skříně a EBOD skříň), 1 v každém poli
-   * Získávání dokumentaci Začínáme
+   * 1 sériové USB převaděč pro sériového přístupu
+   * 4 QSFP-na-SFP + adaptéry pro použití s rozhraní sítí 10 GbE
+   * 2 racku připojení kits (4 na straně rails s připojením hardwaru, 2 pro primární skříň a skříně EBOD), 1 v každém poli
+   * Získání dokumentace Začínáme
      
-     Pokud jste neobdrželi některou z položek uvedených výše, [kontaktovat Microsoft Support](storsimple-8000-contact-microsoft-support.md).  
+     Pokud jste některá z položek uvedených výše, neobdrželi [obraťte se na Microsoft Support](storsimple-8000-contact-microsoft-support.md).  
 
-Dalším krokem je rack připojení zařízení.
+Dalším krokem je namontovat zařízení.
 
-## <a name="rack-mount-your-storsimple-8600-device"></a>Zařízení StorSimple 8600 rack připojení
-Podle další kroky pro instalaci zařízení StorSimple 8600 úložiště v standardní stojanu 19 palců s přední a zadní příspěvky. Toto zařízení se dodává s dvěma skříně: primární skříně a EBOD skříň. Obě tyto musí být skříňová.
+## <a name="rack-mount-your-storsimple-8600-device"></a>Namontovat zařízení StorSimple 8600
+Postupujte podle dalších kroků při instalaci úložného zařízení StorSimple 8600 ve standardní stojanu 19 palce na přední a zadní příspěvky. Toto zařízení se dodává s dvě skříně: primární skříň a EBOD skříň. Obě tyto musí být skříňová.
 
-Instalaci se skládá z více kroků, z nichž každý je popsána v následujících postupech.
+Instalace se skládá z několika kroků, z nichž každý je popsána v následujících postupech.
 
 > [!IMPORTANT]
-> Zařízení StorSimple musí být skříňová pro správný provoz.
+> Musí být zařízení StorSimple skříňová pro správný provoz.
 > 
 > 
 
-### <a name="site-preparation"></a>Příprava lokality
-Skříních musí být nainstalovány ve standardní rack 19 palců, který má přední a zadní příspěvky. Příprava pro instalaci do racku použijte následující postup.
+### <a name="site-preparation"></a>Příprava serveru
+Skříních musí být nainstalován ve standardní 19 palec stojanu, který má přední a zadní příspěvky. Pomocí následujícího postupu připravte instalaci stojanu.
 
-#### <a name="to-prepare-the-site-for-rack-installation"></a>Příprava webu pro instalaci do racku
-1. Ujistěte se, že se primární a skříně EBOD řady bezpečně na ploché, stabilní a úrovně pracovní prostor (nebo podobnou).
-2. Ověřte, zda má lokality, kde chcete nastavit standardní AC napájení z nezávislých zdroje nebo racková skříň jednotky distribuční napájení (PDU) s nepřerušitelný zdroj napájení (UPS).
-3. Zkontrolujte, zda že je k dispozici v racku, ve kterém chcete připojit skříních patice jeden 4U (2 u 2 X).
+#### <a name="to-prepare-the-site-for-rack-installation"></a>Příprava rack instalace lokality
+1. Ujistěte se, že primárním serverem a skříně EBOD jsou řady bezpečně na ploše bez stromové struktury, stabilní a úrovni práce (nebo podobnou).
+2. Ověřte, zda má lokality, kde máte v úmyslu nastavit standardní napájení z nezávislých zdroje nebo racková skříň jednotky distribuci napájení (PDU) s nepřerušitelný zdroj napájení (UPS).
+3. Zajistěte, aby že tento slot jeden 4U (2 u 2 X) je k dispozici na stojan, ve které máte v úmyslu připojit skříních.
 
-![Ikona upozornění](./media/storsimple-safety/IC740879.png)![velkou váhy ikonu](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) **upozornění!**
+![Ikona upozornění](./media/storsimple-safety/IC740879.png)![Tučná tloušťka ikonu](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) **upozornění!**
 
- Ujistěte se, že máte dvou osob, které jsou k dispozici ke správě váhu, pokud jsou zpracování nastavení zařízení ručně. Kompletně nakonfigurovaný skříň můžete naváží až 32 kg (70 kg.).
+ Ujistěte se, že máte dvou osob, které jsou k dispozici ke správě váha, pokud se zpracování nastavení zařízení ručně. Plně nakonfigurovaného skříně můžete zvážit až 32 kg (70 lbs.).
 
-### <a name="rack-prerequisites"></a>Rack požadavky
-Skříních jsou určené pro instalaci v standardní CAB s stojanu palců 19:
+### <a name="rack-prerequisites"></a>Požadavky do racku
+Skříních jsou navržené tak, že při instalaci ve standardní rack 19 palec CAB pomocí:
 
-* Minimální hloubka 27.84 palce z rack post na post
-* Maximální váhu 32 kg pro zařízení
-* Maximální zpětný tlak 5 Pascal (0,5 mm horních měřidla)
+* Minimální hloubky 27.84 palcích od rack příspěvku k příspěvku
+* Maximální tloušťka 32 kg pro zařízení
+* Maximální protitlak 5 Pascal (0,5 mm vody měřidla)
 
-### <a name="rack-mounting-rail-kit"></a>Připojování rack liště kit
-Sadu připojení, které bude poskytnuta pro použití s 19 palců rack CAB. Které byl testován pro zpracování maximální skříň váhu. Tyto které také umožní instalaci více skříní bez ztráty místa v rámci racku. Skříň EBOD nejprve nainstalujte.
+### <a name="rack-mounting-rail-kit"></a>Sada lišty montáže do racku
+Pro použití s soubor CAB 19 palec rack vám poskytneme sadu připojení rails. Byly testovány rails zpracování váha maximální skříň. Tyto rails také umožní instalaci více skříní bez ztráty místa v rámci racku. Nejdříve nainstalujte EBOD skříň.
 
-#### <a name="to-install-the-ebod-enclosure-on-the-rails"></a>Chcete-li nainstalovat skříni EBOD na které
-1. Tento krok proveďte jenom v případě, že vnitřní které nejsou nainstalovány na vašem zařízení. Vnitřní které jsou obvykle nainstalovány na objekt pro vytváření. Pokud které nejsou nainstalovány, nainstalujte na strany skříň skříň liště levé a pravé liště snímky. Jsou připojit pomocí šesti metriky šrouby na každé straně. Usnadní orientaci, jsou označeny snímky liště **LH – přední** a **RH – přední**, a end, který je opatřen dozadu skříni má vřetenovitým end.
+#### <a name="to-install-the-ebod-enclosure-on-the-rails"></a>K instalaci na rails skříň EBOD
+1. Tento krok proveďte jenom v případě, že vnitřní rails nejsou nainstalovány na vašem zařízení. Vnitřní rails se obvykle instaluje na objekt pro vytváření. Pokud nejsou nainstalovány rails, potom nainstalujte snímky lišty vlevo a vpravo lišty stranách skříně skříň. Se připojit s použitím šesti metriky šrouby na každé straně. Abyste při orientaci, jsou označeny snímky lišty **LH – přední** a **RH – přední**, a end, který je připojeno směrem dozadu přílohu má vřetenovitým konec.
    
-    ![Snímky liště se připojuje k skříň skříň](./media/storsimple-8600-hardware-installation/HCSAttachingRailSlidestoEnclosureChassis.png)
+    ![Připojení k skříň skříně snímky lišty](./media/storsimple-8600-hardware-installation/HCSAttachingRailSlidestoEnclosureChassis.png)
    
-    **Připojení k postranní skříni liště snímky**
-   
-   | Štítek | Popis |
-   | --- | --- |
-   |  1 |M 3 × 4 šrouby tlačítko head |
-   |  2 |Skříň snímky |
-2. Připojte liště levé a pravé liště sestavení do racku CAB svislé členů. Jsou označeny hranatých závorkách **LH**, **RH**, a **této straně až** vás provedou správnou orientaci.
-3. Vyhledejte liště PIN v přední a zadní liště sestavení. Rozšiřte liště přizpůsobit mezi příspěvcích racku a vkládání do přední a zadní rack post svislé člen díry kódy PIN. Ujistěte se, že je sestavení liště úroveň.
-4. Zabezpečení liště sestavení do racku svislé členy pomocí dvou metriky šroubů zadat. Použijte jeden šroub na popředí a na zadní jeden.
-5. Opakujte tyto kroky u jiných liště sestavení.
-   
-     ![Snímky liště se připojuje k rack CAB](./media/storsimple-8600-hardware-installation/HCSAttachingRailSlidestoRackCabinet.png)
-   
-    **Připojení liště sestavení do racku**
+    **Snímky lišty se připojuje k okraji přílohu**
    
    | Štítek | Popis |
    | --- | --- |
-   |   1 |Upínací šroubovacím |
-   |   2 |Šroubovacím post front rack hranaté hierarchie |
-   |   3 |Levé front liště umístění PIN |
-   |   4 |Upínací šroubovacím |
-   |   5 |Levé zadní liště umístění PIN |
+   |  1 |M 3 x 4 šrouby hlavní tlačítko |
+   |  2 |Snímky skříně |
+2. Připojení k CAB svislé členy rack lišty levé a pravé liště sestavení. Závorky jsou označeny **LH**, **RH**, a **této straně si** které vás provedou správné orientaci.
+3. Vyhledejte lišty PIN kódy na přední a zadní lišty sestavení. Rozšiřte lišty přizpůsobit mezi příspěvků do racku a vložení do přední a zadní rack příspěvek svislé člen děr kódy PIN. Ujistěte se, že je sestavení lišty úroveň.
+4. Zabezpečte lišty sestavení do racku svislé členy pomocí dvou metriky šrouby k dispozici. Použijte jeden šroub na popředí a na zadní.
+5. Tento postup opakujte pro další lišty sestavení.
+   
+     ![Připojení k rack CAB snímky lišty](./media/storsimple-8600-hardware-installation/HCSAttachingRailSlidestoRackCabinet.png)
+   
+    **Připojení lišty sestavení do racku**
+   
+   | Štítek | Popis |
+   | --- | --- |
+   |   1 |Upnutí šroubovacím |
+   |   2 |Přední rack čtverec riziko příspěvek šroubovacím |
+   |   3 |Left PIN kódy umístění přední lišty |
+   |   4 |Upnutí šroubovacím |
+   |   5 |PIN kódy umístění levé zadní lišty |
 
-### <a name="mounting-the-ebod-enclosure-in-the-rack"></a>Připojení skříni EBOD v racku
-Které rack, které byly nainstalovány právě používá, proveďte následující kroky připojit skříni EBOD v racku.
+### <a name="mounting-the-ebod-enclosure-in-the-rack"></a>Připojení skříň EBOD do racku
+Pomocí rails rack, stačí nainstalované, proveďte následující kroky pro připojení skříň EBOD v racku.
 
-#### <a name="to-mount-the-ebod-enclosure"></a>Chcete-li připojit EBOD skříň
-1. Asistent navýšení skříni a zarovnané s které racku.
-2. Pečlivě vložit do které skříni a pak poslat ho úplně do racku CAB.
+#### <a name="to-mount-the-ebod-enclosure"></a>Připojit skříně EBOD
+1. Asistent přenést skříň a obvyklému rails stojanu.
+2. Pečlivě vložte přílohu rails a potom je nabídnout zcela do racku CAB.
    
     ![Vkládání zařízení do racku](./media/storsimple-8600-hardware-installation/HCSInsertingDeviceintheRack.png)
    
-    **Připojení skříni v racku**
-3. Odeberte CAP levé a pravé front příruby přidáváním CAP volné. Cap příruby jednoduše na příruba snap.
-4. Zabezpečené skříni do racku nainstalováním jeden zadaný šroub Phillips head prostřednictvím každý příruby vlevo a vpravo.
-5. Nainstalujte CAP příruby stisknutím kláves je do pozice a uchycení je na místě.
+    **Připojení zařízení do racku**
+3. Odeberte velká vlevo a vpravo přední ohraničení roztažením bezplatné limity. Ohraničení caps jednoduše do příruba Přichytit.
+4. Zabezpečení skříň do racku nainstalováním jeden poskytnutý Phillips head šroub prostřednictvím jednotlivých ohraničení, levé a pravé.
+5. Nainstalujte caps ohraničení klávesy na místo a přitahování na místě.
    
-     ![Instalace příruby CAP k vzdálené ploše](./media/storsimple-8600-hardware-installation/HCSInstallingFlangeCaps.png)
+     ![Instalaci se limitů ohraničení](./media/storsimple-8600-hardware-installation/HCSInstallingFlangeCaps.png)
    
-    **Instalace příruby CAP k vzdálené ploše**
+    **Instalaci se limitů ohraničení**
    
    | Štítek | Popis |
    | --- | --- |
-   |   1 |Skříň upevnění šroubovacím |
+   |   1 |Šroubovacím upevnění skříň |
 
-### <a name="mounting-the-primary-enclosure-in-the-rack"></a>Připojení primární skříň v racku
-Po dokončení připojení skříni EBOD musíte připojit primární skříň stejně.
+### <a name="mounting-the-primary-enclosure-in-the-rack"></a>Připojení primární zařízení do racku
+Po dokončení připojení EBOD skříni, je potřeba připojit primární skříň stejných kroků.
 
 > [!NOTE]
-> * Je možné, že několik prázdný sloty v racku mezi primární skříň a EBOD skříň.
-> * Použití kabelu zadané 2m SAS pro připojení ke skříni EBOD primární skříň.
-> * Neexistují žádná omezení na relativní umístění head jednotky a jednotek EBOD. Proto se může primární skříň v nejvyšší pozici a níže EBOD skříň – nebo naopak.
+> * Je možné mít několik prázdný sloty do racku mezi primární skříň a EBOD skříň.
+> * Použití kabelu SAS zadané 2 min připojit primární skříň EBOD skříň.
+> * Neexistují žádné omezení na hlavní jednotky a jednotky EBOD relativní umístění. Proto primární zařízení mohou být umístěny v horní slotu a níže EBOD zařízení – a naopak.
 > 
 > 
 
-Dalším krokem je zapojení kabeláže zařízení pro napájení, sítě a sériového přístupu.
+Dalším krokem je zapojení kabeláže zařízení kabeláž napájení, sítě a sériového přístupu.
 
 ## <a name="cable-your-storsimple-8600-device"></a>Zapojení kabeláže zařízení StorSimple 8600
-Následující postupy popisují, jak zapojení kabeláže zařízení StorSimple 8600 pro napájení, sítě a sériové připojení.
+Následující postupy popisují, jak zapojení kabeláže zařízení StorSimple 8600 kabeláž napájení, sítě a sériového portu připojení.
 
 ### <a name="prerequisites"></a>Požadavky
 Než začnete zapojení kabeláže zařízení, budete potřebovat:
 
-* Vaše primární skříně a skříni EBOD zcela vybaleno.
-* 4 napájecích kabelů (2 každé primární a skříň EBOD), které byly dodány s vaším zařízením
-* 2 SAS kabely, které jsou součástí zařízení pro připojení ke skříni primární EBOD skříň
+* Primární skříň a skříně EBOD zcela vybaleno
+* 4 napájecích kabelů (2 pro primární a skříně EBOD), které byly dodány s vaší zařízení
+* 2 SAS kabely dodané se zařízením pro připojení k primární skříň skříň EBOD
 * Přístup k 2 jednotek pro distribuci napájení (PDU) (doporučeno)
 * Síťové kabely
-* Zadat sériové kabely
+* K dispozici sériové kabely
 * Převaděč sériové USB s příslušný ovladač nainstalován ve vašem počítači (v případě potřeby)
-* Poskytuje 4 QSFP-na-SFP + adaptéry pro použití s 10 GbE síťová rozhraní
-* [Podporovaném hardwaru 10 GbE síťových rozhraních zařízení StorSimple](storsimple-supported-hardware-for-10-gbe-network-interfaces.md)
+* K dispozici 4 QSFP-na-SFP + adaptéry pro použití s rozhraní sítí 10 GbE
+* [Podporované hardware pro rozhraní sítí 10 GbE na zařízení StorSimple](storsimple-supported-hardware-for-10-gbe-network-interfaces.md)
 
 ### <a name="sas-and-power-cabling"></a>SAS a kabeláž napájení
-Vaše zařízení má skříni primární i EBOD skříň. To vyžaduje jednotky k být společně kabelové připojení Serial Attached (SCSI SAS) a napájení.
+Vaše zařízení má primární skříň a EBOD skříň. To vyžaduje jednotky být zapojené dohromady pro připojení k rozhraní SCSI SAS (Serial Attached) a napájení.
 
-Při nastavování toto zařízení poprvé, postupujte podle kroků pro SAS kabelů nejprve a potom postupujte podle pokynů pro kabeláž napájení.
+Při nastavování zařízení poprvé, postupujte podle kroků pro SAS kabelů nejprve a potom postupujte podle pokynů pro kabeláž napájení.
 
 [!INCLUDE [storsimple-cable-8600-for-SAS](../../includes/storsimple-sas-cable-8600.md)]
 
 [!INCLUDE [storsimple-cable-8600-for-power](../../includes/storsimple-cable-8600-for-power.md)]
 
 ### <a name="network-cabling"></a>Síťové kabely
-Zařízení je v konfiguraci aktivní pohotovostní: v každém okamžiku je aktivní jeden modul řadiče a zpracování všech diskových a síťových operací při jiné řadiče modul je do úsporného režimu. Pokud dojde k selhání řadiče, pohotovostní řadiče ihned aktivuje a bude pokračovat všechny operace disku a sítě.
+Vaše zařízení je v konfiguraci aktivní pohotovostní: v daném okamžiku je aktivní jeden modul kontroleru a zpracování všech operací disku a sítě při další řadiče modulu je v pohotovostním režimu. Pokud dojde k selhání kontroleru, kontroler v pohotovostním režimu okamžitě aktivuje a bude pokračovat všechny operace disku a sítě.
 
-Pro podporu převzetí této redundantní řadiče, budete muset kabelové síti zařízení, jak je znázorněno v následujícím postupu.
+Pro podporu tohoto redundantní kontroler převzetí služeb při selhání, budete muset kabelové síti zařízení, jak je znázorněno v následujícím postupu.
 
-#### <a name="to-cable-for-network-connection"></a>K kabel pro síťové připojení
-1. Vaše zařízení má šest síťových rozhraní v každém řadiči: čtyři 1 GB/s a dvě 10 GB/s Ethernet porty. Naleznete na následujícím obrázku k identifikaci portů data na propojovacího rozhraní vašeho zařízení.
+#### <a name="to-cable-for-network-connection"></a>K propojení pro připojení k síti
+1. Vaše zařízení má šest síťových rozhraní na každém řadiči: čtyři 1 GB/s a dvě 10 GB/s Ethernet porty. Naleznete na následujícím obrázku, k identifikaci portů data na propojovací rozhraní systému vašeho zařízení.
    
-     ![Propojovací rozhraní systému 8600 zařízení](./media/storsimple-8600-hardware-installation/HCSBackplaneof2UDevicewithPortsLabeled.jpg)
+     ![Propojovací rozhraní systému zařízení 8600](./media/storsimple-8600-hardware-installation/HCSBackplaneof2UDevicewithPortsLabeled.jpg)
    
-    **Zpět z vašeho zařízení zobrazení dat portů**
+    **Zpět z vašeho zařízení zobrazení portů dat**
    
    | Štítek | Popis |
    | --- | --- |
    |   0,1,4,5 |1 GbE síťová rozhraní |
-   |   2,3 |10 GbE síťová rozhraní |
+   |   2,3 |Rozhraní sítí 10 GbE |
    |   6 |Sériové porty |
-2. Podívejte se na následující diagram pro síťové kabely. (Minimální síťová konfigurace se zobrazí modré plné čáry. Pro vysokou dostupnost a výkon další nezbytné konfigurace je zobrazen linkami tečkovaná.)
+2. Podívejte se na následující diagram pro síťové kabely. (Minimální konfigurace se zobrazí modré čáry. Pro vysokou dostupnost a výkon další nezbytné konfigurace se zobrazí jako tečkované čáry.)
 
 ![Zapojení kabeláže zařízení 4U pro síť](./media/storsimple-8600-hardware-installation/HCSCableYour4UDeviceforNetwork.png)
 
-**Sítě kabelů pro vaše zařízení**
+**Síťové kabely pro vaše zařízení**
 
 | Štítek | Popis |
 | --- | --- |
@@ -220,52 +220,52 @@ Pro podporu převzetí této redundantní řadiče, budete muset kabelové síti
 | C |PCM 0 |
 | D |Řadič 1 |
 | E |PCM 1 |
-| F |EBOD řadič 0 |
-| G |EBOD řadiči 1 |
-| H, I |Hostitele (například souborové servery) |
+| F |Kontroleru EBOD 0 |
+| G |Kontroleru EBOD 1 |
+| H, MŮŽU |Hostitelé (třeba souborové servery) |
 | 0-5 |Síťová rozhraní |
-| 6 |Primární skříň |
-| 7 |EBOD skříň |
+| 6 |Primární zařízení |
+| 7 |Skříň EBOD |
 
-Pokud kabeláže zařízení, vyžaduje minimální požadavky na konfiguraci:
+Když kabeláže zařízení, vyžaduje minimální požadavky na konfiguraci:
 
-* Aspoň dvě rozhraní sítě připojené v každém řadiči s jeden pro přístup do cloudu a jeden pro iSCSI. DATA 0 portu je automaticky povolené a nakonfigurované prostřednictvím konzole sériového portu zařízení. Kromě DATA 0 jiný port data také musí být nakonfigurované přes portál Azure classic. V takovém případě připojit DATA 0 port (síť s přístupem k Internetu) v primární síti LAN. Další data porty může být připojen k segmentu sítě SAN nebo iSCSI sítí LAN (VLAN) sítě, v závislosti na roli určený.
-* Stejná rozhraní v každém řadiči připojené ke stejné síti k zajištění dostupnosti, pokud dojde k selhání řadiče. Například pokud zvolíte možnost připojit DATA 0 a DATA 3 pro jedním z řadičů, kterou potřebujete připojit odpovídající DATA 0 a DATA 3 na jiný řadič.
+* Minimálně dvě síťová rozhraní připojená na každém řadiči s jeden cloud přístupu a jeden pro iSCSI. DATA 0 portu je automaticky povolen a nakonfigurován prostřednictvím konzoly sériového portu zařízení. Kromě DATA 0 jiný port data také je potřeba nakonfigurovat prostřednictvím portálu Azure classic. V takovém případě připojit DATA 0 port na primární síť LAN (síti s přístupem k Internetu). Jiné porty dat se dá propojit k segmentu sítě SAN a iSCSI sítě LAN (VLAN) sítě, v závislosti na určené role.
+* Stejné rozhraní v každém řadiči připojeny ke stejné síti k zajištění dostupnosti, pokud dojde k selhání kontroleru. Například pokud budete chtít připojit DATA 0 a DATA 3 pro jeden z řadičů, budete muset připojit odpovídající DATA 0 a DATA 3 na druhý kontroler.
 
 Mějte na paměti pro vysokou dostupnost a výkon:
 
-* Pokud je to možné, nakonfigurujte v každém řadiči pár síťového rozhraní pro přístup do cloudu (1 GbE) a jinou dvojici pro iSCSI (10 GbE doporučené).
-* Pokud je to možné, připojte síťová rozhraní z každého řadiče dva různé přepínače k zajištění dostupnosti proti selhání přepínače. Na obrázku je znázorněn dvě 10 GbE síťová rozhraní, DATA 2 a DATA 3 z každého řadiče připojené k dva různé přepínače. Další informace najdete v části **síťových rozhraní** pod [požadavků na vysokou dostupnost pro zařízení StorSimple](storsimple-8000-system-requirements.md#high-availability-requirements-for-storsimple).
+* Pokud je to možné, nakonfigurujte na každém řadiči pár síťového rozhraní pro přístup k cloudu (1 GbE) a jinou dvojici pro iSCSI (doporučuje se 10 GbE).
+* Pokud je to možné, připojení k dva různé přepínače a zajistit tak dostupnost proti selhání přepínač Síťová rozhraní z každého řadiče. Obrázek znázorňuje 10 dva 10GbE síťové rozhraní DATA 2 a DATA 3 z každého řadiče se připojit k různým přepínačům dvě. Další informace najdete **síťová rozhraní** pod [požadavky na vysokou dostupnost pro zařízení StorSimple](storsimple-8000-system-requirements.md#high-availability-requirements-for-storsimple).
 
 > [!NOTE]
-> Pokud používáte SFP + vysílače s 10 GbE síťové rozhraní, pomocí zadané QSFP-SFP + adaptéry. Další informace, přejděte na [podporovaném hardwaru 10 GbE síťových rozhraních zařízení StorSimple](storsimple-supported-hardware-for-10-gbe-network-interfaces.md).
+> Pokud používáte SFP + vysílače vaše rozhraní sítí 10 GbE, použijte poskytnutý QSFP-SFP + adaptéry. Další informace najdete v části [hardware pro rozhraní sítí 10 GbE na zařízení StorSimple nepodporuje](storsimple-supported-hardware-for-10-gbe-network-interfaces.md).
 > 
 > 
 
-### <a name="serial-port-cabling"></a>Kabeláž sériového portu
-Proveďte následující kroky k zapojení sériového portu.
+### <a name="serial-port-cabling"></a>Kabelů sériového portu
+Proveďte následující kroky a propojení kabely sériového portu.
 
-#### <a name="to-cable-for-serial-connection"></a>K kabel pro sériové připojení
-1. Vaše zařízení má sériového portu v každém řadiči, která je identifikovaná ikona klíče. Vyhledat sériové porty, najdete na obrázku, která zobrazuje data porty na zadní straně zařízení.
-2. Identifikujte řadič active na vaše zařízení propojovacího rozhraní. Blikající blue DIODU označuje, že je aktivní kontroleru.
-3. Pomocí zadané sériový kabel (v případě potřeby, USB sériové převaděč pro přenosný) a připojení konzoly nebo počítače (s emulaci terminálu do zařízení) k sériového portu aktivní řadiče.
+#### <a name="to-cable-for-serial-connection"></a>K zapojení pro sériové připojení
+1. Vaše zařízení má sériového portu v každém řadiči, který je identifikován ikona montážního klíče. Vyhledat sériové porty, naleznete na obrázku, který zobrazuje data porty na zadní straně zařízení.
+2. Identifikace aktivního kontroleru na propojovací rozhraní systému vašeho zařízení. Blikající Indikátor modré označuje, že je aktivní kontroler.
+3. Zadaná sériový kabel (v případě potřeby USB sériové převaděč pro přenosný počítač) a připojení konzoly nebo počítače (emulaci terminálu na zařízení) k sériového portu aktivní kontroler.
 4. Instalace ovladačů sériové USB (dodané se zařízením) v počítači.
-5. Sériové připojení nastavte takto:
+5. Sériové připojení wmm nastavte takto:
    
    * Přenosová 115 200
-   * 8 datových bitů
+   * 8 datové bity
    * 1 stop-bit
-   * Žádná parita
-   * Nastavte na řízení toku **None**
-6. Ověřte, zda je připojení funkční stisknutím klávesy Enter v konzole. By se zobrazit nabídce konzoly sériového portu.
+   * Žádná
+   * Nastavení řízení toku **None**
+6. Ověřte, že připojení funguje stisknutím klávesy Enter v konzole. Nabídka konzoly sériového portu zobrazit.
 
 > [!NOTE]
-> **Správa lights-Out:** když je zařízení nainstalované v datacentru vzdálené nebo v počítači místnosti s omezeným přístupem, ověřte, zda jsou sériové připojení pro oba řadiče vždy připojen do konzoly sériového portu přepínače nebo podobné zařízení. To umožňuje out-of-band vzdáleného řízení a podporu operací v případě přerušení sítě nebo neočekávaných chyb.
+> **Správa ILO:** při instalaci zařízení ve vzdáleném datovém centru nebo v počítačový sál s omezeným přístupem, ujistěte se, že sériové připojení na obou řadičích trvalým připojením k konzoly sériového portu přepínače nebo podobné zařízení. To umožňuje out-of-band vzdáleného řízení a podporu operací v případě výpadků sítě nebo neočekávané chyby.
 > 
 > 
 
 Dokončili jste kabeláž napájení, přístup k síti a sériové připojení zařízení. Dalším krokem je konfigurace softwaru na vašem zařízení.
 
 ## <a name="next-steps"></a>Další postup
-Nyní jste připraveni k [nasaďte a nakonfigurujte místní zařízení StorSimple](storsimple-8000-deployment-walkthrough-u2.md).
+Nyní jste připraveni k [nasazení a konfigurace vašeho místního zařízení StorSimple](storsimple-8000-deployment-walkthrough-u2.md).
 

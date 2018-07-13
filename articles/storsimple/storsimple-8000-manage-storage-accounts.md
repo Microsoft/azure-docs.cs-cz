@@ -1,6 +1,6 @@
 ---
-title: Spravovat vaše zařízení StorSimple přihlašovací údaje pro řadu zařízení Microsoft Azure StorSimple 8000 | Microsoft Docs
-description: Vysvětluje, jak můžete použít stránku konfigurace Správce zařízení StorSimple můžete přidávat, upravovat, odstraňovat nebo otočit zabezpečení klíče pro účet úložiště.
+title: Spravovat přihlašovací údaje účtu úložiště StorSimple pro zařízení s Microsoft Azure StorSimple 8000 series | Dokumentace Microsoftu
+description: Vysvětluje, jak můžete na stránce konfigurace Správce zařízení StorSimple můžete přidat, upravit, odstranit nebo obměna klíčů zabezpečení pro účet úložiště.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,88 +15,88 @@ ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
 ms.openlocfilehash: 36058ad69ea670998b50cf9038741c294a5b79ab
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23875127"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38688724"
 ---
-# <a name="use-the-storsimple-device-manager-service-to-manage-your-storage-account-credentials"></a>Použít službu StorSimple Manager zařízení ke správě přihlašovací údaje účtu úložiště
+# <a name="use-the-storsimple-device-manager-service-to-manage-your-storage-account-credentials"></a>Použití služby Správce zařízení StorSimple pro správu přihlašovacích údajů účtu úložiště
 
 ## <a name="overview"></a>Přehled
 
-**Konfigurace** část v okně service Manager zařízení StorSimple představuje všechny parametry globální služby, které lze vytvořit ve službě StorSimple Manager zařízení. Tyto parametry lze použít pro všechna zařízení připojená k službu a zahrnují:
+**Konfigurace** část v okně služby Správce zařízení StorSimple představuje všechny parametry globální služby, které lze vytvořit ve službě Správce zařízení StorSimple. Tyto parametry můžete použít pro všechna zařízení připojená ke službě a zahrnují:
 
 * Přihlašovací údaje účtu úložiště
 * Šablony šířky pásma 
 * Záznamy řízení přístupu 
 
-Tento kurz vysvětluje, jak přidat, upravit, nebo odstranit přihlašovací údaje pro účet úložiště nebo otočit zabezpečení klíče pro účet úložiště.
+Tento kurz vysvětluje, jak přidat, upravit, odstranit přihlašovací údaje účtu úložiště nebo obměna klíčů zabezpečení pro účet úložiště.
 
  ![Seznam přihlašovacích údajů účtu úložiště](./media/storsimple-8000-manage-storage-accounts/createnewstorageacct6.png)  
 
-Účty úložiště obsahovat přihlašovací údaje, které zařízení StorSimple se používá pro přístup k účtu úložiště pomocí poskytovatele cloudových služeb. Pro účty úložiště Microsoft Azure jsou tyto přihlašovací údaje, jako je například název účtu a primární přístupový klíč. 
+Účty úložiště obsahovat přihlašovací údaje, které zařízení StorSimple používá pro přístup k vašemu účtu úložiště pomocí poskytovatele cloudových služeb. Pro účty úložiště Microsoft Azure jsou tyto přihlašovací údaje, jako je například název účtu a primární přístupový klíč. 
 
-Na **přihlašovacích údajů účtu úložiště** okno, všechny účty úložiště, které jsou vytvořené pro fakturace předplatného se zobrazí v tabulkovém formátu, který obsahuje následující informace:
+Na **přihlašovací údaje účtu úložiště** okno, všechny účty úložiště, které jsou vytvořené pro předplatné pro fakturaci se zobrazí v tabulkovém formátu, který obsahuje následující informace:
 
-* **Název** – jedinečný název přiřazen k účtu, pokud byla vytvořena.
-* **Povoleno zabezpečení SSL** – jestli SSL je povolená a komunikace zařízení cloud je přes zabezpečený kanál.
-* **Používá** – počet svazků pomocí účtu úložiště.
+* **Název** – jedinečný název přiřazený k účtu při vytvoření rovnou uložil.
+* **Protokol SSL povolený** – SSL, zda je povolen a je komunikace typu zařízení cloud přes zabezpečený kanál.
+* **Používá** – počet svazky s využitím účtu úložiště.
 
-Nejběžnější úlohy související s účty úložiště, které lze provést jsou:
+Jsou zvládnout běžné úkoly související s účty úložiště, které lze provést:
 
 * Přidání účtu úložiště 
 * Upravit účet úložiště 
 * Odstranění účtu úložiště 
-* Střídání klíče účtů úložiště 
+* Obměna klíčů účtů úložiště 
 
 ## <a name="types-of-storage-accounts"></a>Typy účtů úložiště
 
-Existují tři typy účtů úložiště, které lze použít s zařízení StorSimple.
+Existují tři typy účtů úložiště, které je možné se zařízením StorSimple.
 
-* **Účty úložiště automaticky generovaný** – jak již název naznačuje, tento typ účtu úložiště se automaticky generuje při prvním vytvoření služby. Další informace o tom, jak vytvořit účet úložiště, najdete v části [krok 1: vytvoření nové služby](storsimple-8000-deployment-walkthrough-u2.md#step-1-create-a-new-service) v [nasazení místního zařízení StorSimple](storsimple-8000-deployment-walkthrough-u2.md). 
-* **Účty úložiště v předplatném služby** – Toto jsou účty úložiště Azure, které jsou přidruženy ke stejnému předplatnému jako službu. Další informace o tom, jak tyto úložiště vytvoření účtů, najdete v části [o účtech úložiště Azure](../storage/common/storage-create-storage-account.md). 
-* **Účty úložiště mimo předplatné služby** – Toto jsou účty úložiště Azure, které nejsou přidružené k vaší službě a pravděpodobně existovala předtím, než byla služba vytvořena.
+* **Účty úložiště pro automaticky generované** – jak název napovídá, tento typ účtu úložiště se automaticky generuje při prvním vytvoření služby. Další informace o vytvoření tohoto účtu úložiště najdete v tématu [krok 1: vytvoření nové služby](storsimple-8000-deployment-walkthrough-u2.md#step-1-create-a-new-service) v [nasazení zařízení StorSimple v místním](storsimple-8000-deployment-walkthrough-u2.md). 
+* **Účty úložiště v předplatném služby** – jedná se účty úložiště Azure, které jsou přidruženy stejném předplatném jako služby. Další informace o tom, jak tyto úložiště se vytvoří účty, najdete v článku [o účtech Azure Storage](../storage/common/storage-create-storage-account.md). 
+* **Účty úložiště mimo předplatné služby** – jedná se účty úložiště Azure, které nejsou přidružené k vaší službě a pravděpodobně existovala předtím, než služba byla vytvořena.
 
 ## <a name="add-a-storage-account"></a>Přidání účtu úložiště
 
-Můžete přidat účet úložiště tím, že poskytuje jedinečný popisný název a přihlašovací údaje přístup, které jsou propojeny s účet úložiště (s poskytovateli zadané cloudové služby). Máte také možnost povolení režimu zabezpečené sockets layer (SSL) vytvořte zabezpečený kanál pro síťovou komunikaci mezi vaším zařízením a cloudem.
+Přidání účtu úložiště tím, že poskytuje jedinečný popisný název a přihlašovacích údajů pro přístup, které jsou propojeny do účtu úložiště (s poskytovateli zadané cloudové služby). Máte také možnost zapnutí režimu secure Sockets Layer (SSL) layer vytvořit zabezpečený kanál pro síťovou komunikaci mezi zařízením a cloudem.
 
-Můžete vytvořit více účtů pro daný cloud poskytovatele služeb. Upozorňujeme ale, že po vytvoření účtu úložiště nemůžete změnit poskytovatele cloudové služby.
+Můžete vytvořit více účtů pro poskytovatele služeb daného cloudu. Mějte na paměti, ale, že po vytvoření účtu úložiště nejde změnit poskytovatele cloudových služeb.
 
-Během ukládání je účet úložiště, služba se pokouší komunikovat s poskytovatele cloudových služeb. V tuto chvíli se ověřit přihlašovací údaje a řádného materiálu přístupu, kterou jste zadali. Účet úložiště se vytvoří pouze v případě, že je ověřování úspěšné. Pokud se ověřování nezdaří, se zobrazí příslušná chybová zpráva.
+Při uložení účtu úložiště se služba pokusí komunikovat se svým poskytovatelem cloudových služeb. V tuto chvíli se ověřit přihlašovací údaje a přístup materiál, který jste zadali. Účet úložiště se vytvoří pouze v případě, že bude ověřování úspěšné. Pokud se ověření nezdaří, se zobrazí příslušná chybová zpráva.
 
-Chcete-li přidat přihlašovací údaje účtu úložiště Azure pomocí následujících postupů:
+Pomocí následujících postupů můžete přidat přihlašovací údaje účtu úložiště Azure:
 
-* Chcete-li přidat přihlašovací údaje účtu úložiště, který má stejné předplatné jako služba Správce zařízení
-* Chcete-li přidat pověření účtu úložiště Azure, který je mimo předplatné služby Správce zařízení
+* Chcete-li přidat přihlašovací údaje účtu úložiště, který má stejné předplatné Azure jako službu Správce zařízení
+* Přidání Azure přihlašovací údaje účtu úložiště, které je mimo předplatné služby Správce zařízení
 
 [!INCLUDE [add-a-storage-account-update2](../../includes/storsimple-8000-configure-new-storage-account-u2.md)]
 
-#### <a name="to-add-an-azure-storage-account-credential-outside-of-the-storsimple-device-manager-service-subscription"></a>Chcete-li přidat pověření účtu úložiště Azure mimo předplatné služby StorSimple Manager zařízení
+#### <a name="to-add-an-azure-storage-account-credential-outside-of-the-storsimple-device-manager-service-subscription"></a>Chcete-li přidat přihlašovacích údajů účtu úložiště Azure mimo předplatné služby Správce zařízení StorSimple
 
-1. Přejděte do služby StorSimple Manager zařízení, vyberte a dvakrát na ni klikněte. Tím se otevře **přehled** okno.
-2. Vyberte **přihlašovacích údajů účtu úložiště** v rámci **konfigurace** části. Rutina Vypíše seznam existující pověření účtu úložiště přidružený k službě StorSimple Manager zařízení.
-3. Klikněte na tlačítko **Přidat**.
-4. V **přidat přihlašovací údaje účtu úložiště** okno, postupujte takto:
+1. Přejděte k vaší službě Správce zařízení StorSimple, vyberte a dvojím kliknutím ho. Tím se otevře **přehled** okno.
+2. Vyberte **přihlašovací údaje účtu úložiště** v rámci **konfigurace** oddílu. Vypíšou se všechny existující přihlašovací údaje účtu úložiště přidruženého ke službě Správce zařízení StorSimple.
+3. Klikněte na tlačítko **Add** (Přidat).
+4. V **přidat přihlašovací údaj účtu úložiště** okno, postupujte takto:
    
-    1. Pro **předplatné**, vyberte **jiných**.
+    1. Pro **předplatné**vyberte **jiných**.
    
-    2. Zadejte název svoje přihlašovací údaje účtu úložiště Azure.
+    2. Zadejte název své přihlašovací údaje účtu úložiště Azure.
    
-    3. V **přístupový klíč účtu úložiště** textové pole, zadejte primární přístupový klíč pro svoje přihlašovací údaje účtu úložiště Azure. Tento klíč, přejděte ke službě Azure Storage vyberte svoje přihlašovací údaje účtu úložiště a klikněte na **spravovat klíče účtu**. Nyní můžete zkopírovat primární přístupový klíč.
+    3. V **přístupový klíč účtu úložiště** textové pole, zadat primární přístupový klíč pro vaše přihlašovací údaje účtu úložiště Azure. Chcete-li tento klíč získat, přejděte do služby Azure Storage, vyberte vaše přihlašovací údaje účtu úložiště a klikněte na **spravovat klíče účtu**. Nyní můžete zkopírovat primární přístupový klíč.
    
-    4. Chcete-li povolit protokol SSL, klikněte na tlačítko **povolit** tlačítko vytvořte zabezpečený kanál pro síťovou komunikaci mezi služby StorSimple Manager zařízení a cloudem. Klikněte **zakázat** tlačítko pouze v případě, že pracujete v privátním cloudu.
+    4. Chcete-li povolit protokol SSL, klikněte na tlačítko **povolit** tlačítko vytvořit zabezpečený kanál pro síťovou komunikaci mezi službou Správce zařízení StorSimple a cloudu. Klikněte na tlačítko **zakázat** tlačítko pouze v případě, že pracujete v privátním cloudu.
    
-    5. Klikněte na tlačítko **Přidat**. Upozornění se zobrazí po přihlašovací údaje účtu úložiště se úspěšně vytvořil.
+    5. Klikněte na tlačítko **Add** (Přidat). Po úspěšném vytvoření přihlašovacích údajů účtu úložiště, se zobrazí oznámení.
 
-5. Přihlašovací údaje účtu nově vytvořené úložiště se zobrazí v okně služby Správce konfigurace zařízení StorSimple v části **přihlašovacích údajů účtu úložiště**.
+5. Zobrazí se přihlašovací údaje účtu úložiště vytvořeného v okně služby Správce zařízení StorSimple nakonfigurujte podle **přihlašovací údaje účtu úložiště**.
    
 
 
 ## <a name="edit-a-storage-account"></a>Upravit účet úložiště
 
-Můžete upravit účet úložiště, který je používán kontejner svazků. Pokud chcete upravit účet úložiště, který se právě používá, je možné upravit pouze pole přístupový klíč pro účet úložiště. Můžete zadat nový přístupový klíč úložiště a uložte aktualizovaná nastavení.
+Můžete upravit účet úložiště, který je používán kontejner svazků. Pokud upravíte účet úložiště, který je aktuálně používán, lze upravit pouze pole se přístupový klíč pro účet úložiště. Můžete zadat nový přístupový klíč úložiště a uložte aktualizované nastavení.
 
 #### <a name="to-edit-a-storage-account"></a>Chcete-li upravit účet úložiště
 
@@ -104,79 +104,79 @@ Můžete upravit účet úložiště, který je používán kontejner svazků. P
 
     ![Přihlašovací údaje účtu úložiště](./media/storsimple-8000-manage-storage-accounts/editstorageacct1.png)
 
-2. V **přihlašovacích údajů účtu úložiště** okno ze seznamu přihlašovacích údajů účtu úložiště, vyberte a klikněte na jeden, který chcete upravit. 
+2. V **přihlašovací údaje účtu úložiště** okno, ze seznamu přihlašovací údaje účtu úložiště, vyberte a klikněte na ta, kterou chcete upravit. 
 
-3. Můžete upravit **povolit šifrování SSL** výběr. Můžete také kliknout na **více...**  a pak vyberte **synchronizace přístupový klíč pro otočit** klíče pro přístup k účtu úložiště. Přejděte na [klíče otočení účtů úložiště](#key-rotation-of-storage-accounts) Další informace o tom, jak provést střídání klíče. Jakmile změníte nastavení, klikněte na tlačítko **Uložit**. 
+3. Můžete upravit **povolit šifrování SSL** výběru. Můžete také kliknout na **více...**  a pak vyberte **synchronizace přístupového klíče k otočení** přístupové klíče účtu úložiště. Přejděte na [klíče otočení účtů úložiště](#key-rotation-of-storage-accounts) Další informace o tom, jak provádět obměny klíče. Po úpravě nastavení, klikněte na tlačítko **Uložit**. 
 
-    ![Uložte upravený úložiště pověření](./media/storsimple-8000-manage-storage-accounts/editstorageacct3.png)
+    ![Uložení přihlašovacích údajů účtu úložiště upravené](./media/storsimple-8000-manage-storage-accounts/editstorageacct3.png)
 
 4. Po zobrazení výzvy k potvrzení klikněte na **Ano**. 
 
-    ![Potvrďte změny](./media/storsimple-8000-manage-storage-accounts/editstorageacct4.png)
+    ![Potvrzení změn](./media/storsimple-8000-manage-storage-accounts/editstorageacct4.png)
 
-Nastavení budou aktualizovány a uloženy pro váš účet úložiště. 
+Nastavení se aktualizuje a uloží pro váš účet úložiště. 
 
 ## <a name="delete-a-storage-account"></a>Odstranění účtu úložiště
 
 > [!IMPORTANT]
-> Účet úložiště můžete odstranit pouze v případě, že není používán kontejner svazků. Pokud účet úložiště je používán kontejner svazků, nejprve odstranit kontejner svazků a pak odstraňte přidruženého účtu úložiště.
+> Účet úložiště můžete odstranit pouze v případě, že není používán kontejner svazků. Pokud účet úložiště používá kontejner svazků, nejprve odstranit kontejner svazků a potom odstraňte přidružený účet úložiště.
 
-#### <a name="to-delete-a-storage-account"></a>Chcete odstranit účet úložiště
+#### <a name="to-delete-a-storage-account"></a>Pokud chcete odstranit účet úložiště
 
 1. Přejděte do služby Správce zařízení StorSimple. V části **Konfigurace** klikněte na **Přihlašovací údaje účtu úložiště**.
 
-2. V tabulkovém seznam účtů úložiště najeďte myší na účet, který chcete odstranit. Klikněte pravým tlačítkem a vyvolání v místní nabídce klikněte na tlačítko **odstranit**.
+2. V tabulkovém seznam účtů úložiště najeďte myší na účet, který chcete odstranit. Kliknutí pravým tlačítkem myši vyvolejte místní nabídku a klikněte na tlačítko **odstranit**.
 
-    ![Odstranit přihlašovací údaje pro účet úložiště](./media/storsimple-8000-manage-storage-accounts/deletestorageacct1.png)
+    ![Odstranit přihlašovací údaje účtu úložiště](./media/storsimple-8000-manage-storage-accounts/deletestorageacct1.png)
 
-3. Po zobrazení výzvy k potvrzení, klikněte na tlačítko **Ano** Chcete-li pokračovat v odstraňování. Tabulkové výpis budou aktualizovány tak, aby odrážely změny.
+3. Po zobrazení výzvy k potvrzení, klikněte na tlačítko **Ano** pro pokračování v odstranění. Tabulkovém výpisu se aktualizují tak, aby odrážely změny.
 
     ![Potvrzení odstranění](./media/storsimple-8000-manage-storage-accounts/deletestorageacct2.png)
 
-## <a name="key-rotation-of-storage-accounts"></a>Střídání klíče účtů úložiště
+## <a name="key-rotation-of-storage-accounts"></a>Obměna klíčů účtů úložiště
 
-Z bezpečnostních důvodů střídání klíčů je často požadavek v datových centrech. Každé předplatné Microsoft Azure může mít jeden nebo více účtů úložiště. Přístup do těchto účtů řídí předplatného a přístupových klíčů pro každý účet úložiště. 
+Z bezpečnostních důvodů obměna klíčů je často požadavek v datových centrech. Každé předplatné Microsoft Azure může mít jeden nebo více účtů přidružené úložiště. Přístup do těchto účtů je řízen předplatného a přístupových klíčů pro každý účet úložiště. 
 
-Při vytváření účtu úložiště vygeneruje Microsoft Azure dva 512bitové přístupové klíče k úložišti, které se používají pro ověření při přístupu k účtu úložiště. Máte dva přístupové klíče k úložišti, můžete vygenerovat klíče bez přerušení poskytování vaší služby úložiště nebo přístupu k této službě. Klíč, který se právě používá, je *primární* a zálohování klíč se označuje jako *sekundární* klíč. Jeden z těchto dvou klíčů musí zadat, když zařízení s Microsoft Azure StorSimple přistupuje k poskytovatele cloudových služeb úložiště.
+Při vytváření účtu úložiště vygeneruje Microsoft Azure dva 512bitové přístupových klíčů k úložišti, které se používají k ověření při přístupu k účtu úložiště. Máte dva přístupové klíče k úložišti, můžete znovu vygenerovat klíče bez přerušení poskytování vaší služby úložiště nebo přístupu k této službě. Klíč, který je aktuálně používána *primární* klíč a záložní klíč se označuje jako *sekundární* klíč. Jeden z těchto dvou klíčů je nutné zadat, když zařízení Microsoft Azure StorSimple přistupuje k poskytovatele cloudových služeb úložiště.
 
-## <a name="what-is-key-rotation"></a>Co je střídání klíčů?
+## <a name="what-is-key-rotation"></a>Co je obměna klíčů?
 
-Obvykle se aplikace používají pouze jeden z klíčů přistupovat k datům. Po určité době dobu může mít vaše aplikace přepnout na používání druhý klíč. Poté, co jste přepnuli aplikace k sekundární klíč, můžete vyřadit z provozu první klíč a pak vygenerovat nový klíč. Pomocí dvou klíčů tímto způsobem umožňuje vaší aplikace přístup k datům, aniž by docházelo k výpadkům.
+Obvykle aplikace použít pouze jeden z klíčů pro přístup k datům. Po určité době času můžete mít vaše aplikace přepnout na druhý klíč. Poté, co jste přešli svoje aplikace na sekundární klíč, můžete vyřadit první klíč a potom vygenerujte nový klíč. Vaše aplikace přístup k datům pomocí dvou klíčů tímto způsobem umožňuje nenastane přitom žádný výpadek.
 
-Klíče účtu úložiště jsou vždy uloženy ve službě v šifrovaném formátu. To však mohou obnovit přes službu StorSimple Manager zařízení. Služby mohou získat primární klíč a sekundární klíč pro všechny účty úložiště ve stejném předplatném, včetně účtů vytvořených v rámci služby úložiště a také výchozí účty úložiště vygeneruje, když služba service Manager zařízení StorSimple nejprve vytvořit. Služby StorSimple Manager zařízení bude vždy získat tyto klíče z portálu Azure classic a uložit je do šifrované způsobem.
+Klíče účtu úložiště jsou vždy uloženy ve službě v šifrovaném tvaru. Však toto nastavení lze změnit prostřednictvím služby Správce zařízení StorSimple. Službu můžete získat primární klíč a sekundární klíč pro všechny účty úložiště ve stejném předplatném, včetně účty vytvořené ve službě Storage i výchozí účty úložiště generovány, pokud byla služba služby Správce zařízení StorSimple prvním vytvoření. Služba Správce zařízení StorSimple bude vždy získat tyto klíče z portálu Azure classic a uložit je do zašifrované.
 
-## <a name="rotation-workflow"></a>Otočení pracovního postupu
+## <a name="rotation-workflow"></a>Střídání pracovních postupů
 
-Microsoft Azure správce můžete znovu vygenerovat nebo změnit primární nebo sekundární klíč tak, že přímý přístup k účtu úložiště (prostřednictvím služby Microsoft Azure Storage). Služby StorSimple Manager zařízení automaticky nezná tuto změnu.
+Správce Microsoft Azure můžete znovu nebo změnit primární nebo sekundární klíč přímý přístup k účtu úložiště (prostřednictvím služby Microsoft Azure Storage). Služba Správce zařízení StorSimple nezobrazují tato změna automaticky.
 
-K informování služby StorSimple Manager zařízení změny, budete potřebovat přístup ke službě StorSimple Manager zařízení přístup k účtu úložiště a potom synchronizovat primární nebo sekundární klíč (podle toho, která byla změněna). Tato služba pak získá nejnovější klíč, zašifruje klíče a odešle zašifrovaný klíč do zařízení.
+Informovat službu Správce zařízení StorSimple změny, můžete bude potřebovat přístup ke službě Správce zařízení StorSimple přístup k účtu úložiště a pak synchronizovat primární nebo sekundární klíč (podle toho, která byla změněna). Služba potom získá nejnovější klíč, šifruje klíčů a odešle zašifrovaný klíč do zařízení.
 
 #### <a name="to-synchronize-keys-for-storage-accounts-in-the-same-subscription-as-the-service"></a>K synchronizaci klíčů pro účty úložiště ve stejném předplatném jako služba 
 1. Přejděte do služby Správce zařízení StorSimple. V části **Konfigurace** klikněte na **Přihlašovací údaje účtu úložiště**.
-2. V tabulkovém seznam účtů úložiště, klikněte na ten, který chcete upravit. 
+2. V tabulkovém výpisu účtů úložiště, klikněte na ten, který chcete upravit. 
 
     ![Synchronizovat klíče](./media/storsimple-8000-manage-storage-accounts/syncaccesskey1.png)
 
-3. Klikněte na tlačítko **... Další** a pak vyberte **synchronizace přístupový klíč pro otočit**.   
+3. Klikněte na tlačítko **... Další** a pak vyberte **synchronizace přístupového klíče k otočení**.   
 
     ![Synchronizovat klíče](./media/storsimple-8000-manage-storage-accounts/syncaccesskey2.png)
 
-4. Ve službě Správce zařízení StorSimple budete muset aktualizovat klíč, který byl dříve změněn ve službě Microsoft Azure Storage. Pokud primární přístupový klíč byl změněn (znova vygeneroval), vyberte **primární** klíč. Pokud se sekundární klíč byl změněn, vyberte **sekundární** klíč. Klikněte na tlačítko **klíč synchronizace**.
+4. Ve službě Správce zařízení StorSimple budete muset aktualizovat klíč, který byl dříve změněn ve službě Microsoft Azure Storage. Pokud primární přístupový klíč se změnil (znovu vygenerovalo), vyberte **primární** klíč. Pokud byl změněn sekundární klíč, vyberte **sekundární** klíč. Klikněte na tlačítko **synchronizovat klíč**.
       
       ![Synchronizovat klíče](./media/storsimple-8000-manage-storage-accounts/syncaccesskey3.png)
 
-Po úspěšně sycnhronized klíč, budete upozorněni.
+Po úspěšném sycnhronized klíč, budete upozorněni.
 
 #### <a name="to-synchronize-keys-for-storage-accounts-outside-of-the-service-subscription"></a>K synchronizaci klíčů pro účty úložiště mimo předplatné služby
-1. Na **služby** klikněte na tlačítko **konfigurace** kartě.
-2. Klikněte na tlačítko **přidat či upravit účty úložiště**.
+1. Na **služby** stránky, klikněte na tlačítko **konfigurovat** kartu.
+2. Klikněte na tlačítko **přidat/upravit účty úložiště**.
 3. V dialogovém okně postupujte takto:
    
-   1. Vyberte účet úložiště s přístupový klíč, který chcete aktualizovat.
-   2. Budete muset aktualizovat přístupový klíč úložiště ve službě StorSimple Manager zařízení. V takovém případě se zobrazí přístupový klíč úložiště. Zadejte nový klíč v **přístupový klíč účtu úložiště** pole. 
+   1. Vyberte účet úložiště se přístupový klíč, který chcete aktualizovat.
+   2. Je potřeba aktualizovat přístupový klíč úložiště ve službě Správce zařízení StorSimple. V takovém případě se zobrazí přístupový klíč úložiště. Zadejte nový klíč v **přístupový klíč účtu úložiště** pole. 
    3. Uložte provedené změny. Nyní je třeba aktualizovat přístupový klíč účtu úložiště.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Další informace o [zabezpečení zařízení StorSimple](storsimple-8000-security.md).
-* Další informace o [pomocí služby StorSimple Manager zařízení ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
+* Další informace o [použití služby Správce zařízení StorSimple ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
 

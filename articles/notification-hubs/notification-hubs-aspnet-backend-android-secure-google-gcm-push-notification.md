@@ -1,8 +1,8 @@
 ---
-title: Odesílání zabezpečené nabízených oznámení pomocí Azure Notification Hubs
-description: Naučte se odesílání zabezpečené nabízených oznámení do aplikace pro Android z Azure. Ukázky kódu jsou vytvořeny v jazyce Java a C#.
+title: Odesílání zabezpečených nabízených oznámení pomocí Azure Notification Hubs
+description: Zjistěte, jak odesílání zabezpečených nabízených oznámení do aplikace pro Android z Azure. Ukázky kódu napsané v jazyce Java a C#.
 documentationcenter: android
-keywords: nabízená oznámení, nabízená oznámení, nabízené zprávy, android nabízená oznámení
+keywords: nabízené oznámení, nabízená oznámení, nabízené zprávy, android nabízená oznámení
 author: dimazaid
 manager: kpiteira
 editor: spelluru
@@ -16,13 +16,13 @@ ms.topic: article
 ms.date: 04/25/2018
 ms.author: dimazaid
 ms.openlocfilehash: 58f6967c59a5060baa10ff83752b9c6ed08226cb
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33776756"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38698024"
 ---
-# <a name="sending-secure-push-notifications-with-azure-notification-hubs"></a>Odesílání zabezpečené nabízených oznámení pomocí Azure Notification Hubs
+# <a name="sending-secure-push-notifications-with-azure-notification-hubs"></a>Odesílání zabezpečených nabízených oznámení pomocí Azure Notification Hubs
 > [!div class="op_single_selector"]
 > * [Univerzální pro Windows](notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md)
 > * [iOS](notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md)
@@ -36,41 +36,41 @@ ms.locfileid: "33776756"
 > 
 > 
 
-Podpora nabízená oznámení v Microsoft Azure umožňuje získat přístup snadno použitelnou, multiplatformní a upraveným nabízená zpráva infrastruktury, což výrazně zjednodušuje implementaci nabízená oznámení spotřebních a podnikových aplikací pro mobilní platformy.
+Podpora nabízená oznámení v Microsoft Azure umožňuje získat přístup k předplatným snadným ovládáním, multiplatformní, horizontálně škálovanou infrastrukturu zpráva, což výrazně zjednodušuje provádění nabízená oznámení pro zákaznické a podnikové aplikace mobilní platformy.
 
-Kvůli zákonným omezení zabezpečení, někdy aplikace může chtít zahrnout něco v oznámení, kterou nelze přenést prostřednictvím infrastrukturu pro standardní nabízená oznámení. Tento kurz popisuje, jak zajistit stejné prostředí posíláním důvěrných informací o prostřednictvím zabezpečeného a ověřené připojení mezi klientské zařízení Android a back-end aplikace.
+Z důvodu dodržování legislativních nebo omezení zabezpečení, někdy aplikace může být vhodné zahrnout něco oznámení, který nemůže být přenesen prostřednictvím infrastrukturu standardní nabízených oznámení. Tento kurz popisuje, jak dosáhnout stejné prostředí tím, že odesílání citlivé informace přes zabezpečené ověřené připojení mezi zařízení s Androidem klienta a aplikačního back-endu.
 
-Na vysoké úrovni tok je následující:
+Na vysoké úrovni tok je následujícím způsobem:
 
 1. Back-end aplikace:
-   * Zabezpečení datové úložiště v databázi back-end.
-   * ID tohoto oznámení se odešle do zařízení s Androidem (zabezpečené nebudou odeslány žádné informace).
+   * Úložiště zabezpečené datové části v back-end databáze.
+   * ID tohoto oznámení se odešle do zařízení s Androidem (se neodesílají žádné informace o zabezpečení).
 2. Aplikace na zařízení, když obdrží oznámení:
-   * Zařízení s Androidem kontaktuje back-end vyžaduje zabezpečené datové části.
-   * Aplikace můžete zobrazit datové části jako upozornění na zařízení.
+   * Zařízení s Androidem kontaktuje back endu, zabezpečené datové části požadavku.
+   * Aplikace můžete zobrazit datovou část jako oznámení na zařízení.
 
-Je důležité si uvědomit, že v předchozím toku (a v tomto kurzu), se předpokládá, že zařízení ukládá ověřovací token do místního úložiště, po přihlášení uživatele. Tento postup zaručuje integrované prostředí jako zařízení můžete načíst pomocí tohoto tokenu zabezpečení datové na oznámení. Pokud vaše aplikace nejsou uložené tokeny ověřování v zařízení, nebo pokud tyto tokeny můžete vypršela platnost, by měla aplikace zařízení při přijetí nabízeného oznámení zobrazit obecné oznámení uživateli zobrazuje výzvu spusťte aplikaci. Aplikace pak ověřuje uživatele a ukazuje datová část oznámení.
+Je důležité si uvědomit, že v předchozím toku (a v tomto kurzu), se předpokládá, že zařízení ukládá ověřovací token v místním úložišti, po přihlášení uživatele. Tento postup zaručuje bezproblémové prostředí, jak zařízení můžete načíst zabezpečené pomocí tohoto tokenu datovou část v oznámení. Pokud vaše aplikace neukládá ověřovacích tokenů na zařízení nebo pokud můžete platnost těchto tokenů, aplikace pro zařízení, při přijetí nabízené oznámení by měl zobrazit obecné oznámení výzvou, aby uživatel ke spuštění aplikace. Aplikace pak ověří uživatele a zobrazuje datová část oznámení.
 
-Tento kurz ukazuje, jak odesílat zabezpečené nabízená oznámení. Vychází [upozornění uživatelů](notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md) kurzu, takže byste měli dokončit kroky v tomto kurzu nejprve Pokud jste tak ještě neučinili.
+Tento kurz ukazuje postupy při odesílání zabezpečených nabízených oznámení. Je nástavbou [oznamování uživatelům pomocí](notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md) kurz, takže byste měli dokončit kroky v tomto kurzu nejprve Pokud jste tak již neučinili.
 
 > [!NOTE]
-> V tomto kurzu se předpokládá, že jste vytvořili a nakonfigurovali vaše Centrum oznámení, jak je popsáno v [Začínáme s Notification Hubs (Android)](notification-hubs-android-push-notification-google-gcm-get-started.md).
+> Tento kurz předpokládá, že jste vytvořili a konfiguraci centra oznámení, jak je popsáno v [Začínáme se službou Notification Hubs (Android)](notification-hubs-android-push-notification-google-gcm-get-started.md).
 > 
 > 
 
 [!INCLUDE [notification-hubs-aspnet-backend-securepush](../../includes/notification-hubs-aspnet-backend-securepush.md)]
 
-## <a name="modify-the-android-project"></a>Upravit projektu pro Android
-Teď, když změnit váš back-end aplikace k odesílání jen na *ID* nabízená oznámení, budete muset změnit svoji aplikaci pro Android ke zpracování tohoto oznámení a zpětné volání váš back-end pro načtení zabezpečenou zprávu, který se má zobrazit.
-K dosažení tohoto cíle, budete muset Ujistěte se, že vaše aplikace pro Android umí ke svému ověření s back-end, když obdrží nabízená oznámení.
+## <a name="modify-the-android-project"></a>Upravit projekt pro Android
+Teď, když jste změnili back endu aplikace k odeslání jenom *ID* nabízeného oznámení, budete muset změnit své aplikace pro Android zpracovat oznámení a zpětné volání back endu k načtení zabezpečené zprávy, který se má zobrazit.
+K dosažení tohoto cíle, budete muset Ujistěte se, že aplikace pro Android umí ke svému ověření s back endu, když obdrží nabízená oznámení.
 
-Nyní změnit *přihlášení* toku a uložte hodnota hlavičky ověřování v sdílet předvolby vaší aplikace. Podobá mechanismy slouží k uložení žádné ověřovací token (například tokenů OAuth), který má aplikace použít bez nutnosti přihlašovací údaje uživatele.
+Nyní, změnit *přihlášení* flow, aby bylo možné uložit hodnota hlavičky ověřování do sdílené předvolby vaší aplikace. Obdobná mechanismy je možné ukládat libovolný ověřovací token (například tokenů OAuth), který má aplikace používat bez nutnosti přihlašovací údaje uživatele.
 
 1. V projektu aplikace pro Android, přidejte následující konstanty v horní části **MainActivity** třídy:
    
         public static final String NOTIFY_USERS_PROPERTIES = "NotifyUsersProperties";
         public static final String AUTHORIZATION_HEADER_PROPERTY = "AuthorizationHeader";
-2. Pořád ještě v **MainActivity** třídy, aktualizaci `getAuthorizationHeader()` metoda obsahuje následující kód:
+2. Pořád ještě v **MainActivity** třídy, aktualizujte `getAuthorizationHeader()` metodu tak, aby obsahovala následující kód:
    
         private String getAuthorizationHeader() throws UnsupportedEncodingException {
             EditText username = (EditText) findViewById(R.id.usernameText);
@@ -83,20 +83,20 @@ Nyní změnit *přihlášení* toku a uložte hodnota hlavičky ověřování v 
    
             return basicAuthHeader;
         }
-3. Přidejte následující `import` příkazy v horní části **MainActivity** souboru:
+3. Přidejte následující `import` příkazů v horní části **MainActivity** souboru:
    
         import android.content.SharedPreferences;
 
-Teď změňte obslužná rutina, která je volána, když bylo přijato oznámení.
+Nyní změníte obslužnou rutinu, která je volána při přijetí oznámení.
 
-1. V **MyHandler** třídy změnu `OnReceive()` metoda obsahuje:
+1. V **MyHandler** třídy změnit `OnReceive()` metoda obsahuje:
    
         public void onReceive(Context context, Bundle bundle) {
             ctx = context;
             String secureMessageId = bundle.getString("secureId");
             retrieveNotification(secureMessageId);
         }
-2. Pak přidejte `retrieveNotification()` metoda, nahraďte zástupný symbol `{back-end endpoint}` s koncovým bodem back-end získali při nasazování back-end:
+2. Pak přidejte `retrieveNotification()` metoda nahraďte zástupnou hodnotu `{back-end endpoint}` s koncovým bodem back-end získané při nasazování back endu:
    
         private void retrieveNotification(final String secureMessageId) {
             SharedPreferences sp = ctx.getSharedPreferences(MainActivity.NOTIFY_USERS_PROPERTIES, Context.MODE_PRIVATE);
@@ -125,15 +125,15 @@ Teď změňte obslužná rutina, která je volána, když bylo přijato oznámen
             }.execute(null, null, null);
         }
 
-Tato metoda volá váš back-end aplikace k získání obsahu oznámení pomocí pověření uložených v sdílet předvolby a zobrazí jako normální oznámení. Oznámení vypadá na uživatele aplikace úplně stejně jako ostatní nabízených oznámení.
+Tato metoda volá back endu aplikace načíst obsah oznámení s použitím přihlašovací údaje uložené ve sdílené předvolby a zobrazí je jako normální oznámení. Bude vypadat oznámení pro uživatele aplikace úplně stejně jako jakékoli jiné nabízené oznámení.
 
-Je vhodnější pro zpracování v případech chybějící vlastnost hlavičky ověřování nebo odmítání back-end. Konkrétní zpracování těchto případech se většinou závisí na cílové činnost koncového uživatele. Jednou z možností je zobrazit oznámení s výzvou obecný pro ověření uživatele pro načtení skutečné oznámení.
+Je vhodnější zpracovat případy chybí vlastnost záhlaví ověřování nebo zamítnutí back-end. Konkrétní zpracování těchto případech většinou závisí na cíl činnost koncového uživatele. Jednou z možností je zobrazení oznámení s výzvou obecný kvůli ověření uživatele k načtení skutečné oznámení.
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 Ke spuštění aplikace, proveďte následující akce:
 
-1. Zajistěte, aby **AppBackend** je nasazené v Azure. Pokud používáte Visual Studio, spusťte **AppBackend** aplikace webového rozhraní API. Zobrazí se webová stránka ASP.NET.
-2. V nástroji Eclipse spusťte aplikaci v emulátoru nebo fyzické zařízení Android.
-3. V systému Android aplikace uživatelského rozhraní zadejte uživatelské jméno a heslo. Mohou to být libovolný řetězec, ale musí být stejnou hodnotu.
-4. V systému Android aplikace uživatelského rozhraní, klikněte na **přihlásit**. Pak klikněte na tlačítko **odeslat nabízené**.
+1. Ujistěte se, že **AppBackend** je nasazené v Azure. Pokud používáte Visual Studio, spusťte **AppBackend** aplikace webového rozhraní API. Zobrazí se webová stránka ASP.NET.
+2. V nástroji Eclipse spusťte aplikaci na fyzické zařízení s Androidem nebo emulátoru.
+3. V aplikaci pro Android uživatelského rozhraní zadejte uživatelské jméno a heslo. Mohou to být libovolný řetězec, ale musí být stejnou hodnotu.
+4. V aplikaci pro Android uživatelského rozhraní, klikněte na tlačítko **přihlášení**. Pak klikněte na tlačítko **odesílání nabízených oznámení**.
 

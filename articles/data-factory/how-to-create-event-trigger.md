@@ -1,6 +1,6 @@
 ---
-title: Vytváření aktivační události na základě událostí v Azure Data Factory | Microsoft Docs
-description: Naučte se vytvořit aktivační událost v Azure Data Factory používající kanál v reakci na událost.
+title: Vytvoření triggery založené na události ve službě Azure Data Factory | Dokumentace Microsoftu
+description: Zjistěte, jak vytvořit trigger v Azure Data Factory, která běží v reakci na událost kanálu.
 services: data-factory
 documentationcenter: ''
 author: douglaslMS
@@ -10,74 +10,79 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/27/2018
+ms.date: 07/10/2018
 ms.author: douglasl
-ms.openlocfilehash: a9c15b239ee0bd0dde0b1f11691565b2676e3d07
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 313f4915a8c522ae2b9fc5ebbbe85fdfb4741cc4
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062117"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969574"
 ---
-# <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>Vytvořit aktivační událost, která běží v reakci na událost kanálu
+# <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>Vytvoření aktivační události, která běží v reakci na událost kanálu
 
-Tento článek popisuje aktivační události na základě událostí, které vytvoříte v objektu pro vytváření dat kanály.
+Tento článek popisuje triggery založené na události, vytvořené v kanálů Data Factory.
 
-Událostmi řízené architektura (Automatizace elektronického designu) je běžný vzor integraci dat, který zahrnuje výroby, detekce, spotřeby a reakce na události. Scénáře integrace dat často vyžadují zákazníci služby Data Factory k aktivaci na základě událostí kanály. Objekt pro vytváření dat je nyní integrována [mřížky událostí Azure](https://azure.microsoft.com/services/event-grid/), které lze spustíte kanálů na události.
+Architektura založená na událostech (EDA) je běžný vzor integrace dat, která zahrnuje produkčního prostředí, detekce, spotřebě a reakce na události. Scénáře integrace dat často vyžadují zákazníci služby Data Factory pro aktivaci kanály na základě událostí. Data Factory je teď integrovaná s [Azure Event Grid](https://azure.microsoft.com/services/event-grid/), který umožní aktivaci kanály pro událost.
+
+> [!NOTE]
+> Integrace popsaných v tomto článku, závisí na [Azure Event Grid](https://azure.microsoft.com/services/event-grid/). Ujistěte se, že vaše předplatné je zaregistrované u poskytovatele prostředků služby Event Grid. Další informace najdete v tématu [poskytovatelé a typy prostředků](../azure-resource-manager/resource-manager-supported-services.md#portal).
 
 ## <a name="data-factory-ui"></a>Uživatelské rozhraní Data Factory
 
 ### <a name="create-a-new-event-trigger"></a>Vytvořit novou aktivační událost
 
-Je typické událost k doručení souboru, nebo došlo k odstranění souboru, ve vašem účtu úložiště Azure. Můžete vytvořit aktivační událost, která odpovídá k této události v kanálu vaše Data Factory.
+Typické události je určení souboru nebo odstranění souboru, ve vašem účtu úložiště Azure. Můžete vytvořit trigger, který odpovídá této události ve vašem kanálu služby Data Factory.
 
 > [!NOTE]
-> Tato integrace podporuje jenom účty úložiště verze 2 (obecné účely).
+> Tato integrace podporuje pouze účty úložiště verze 2 (pro obecné účely).
 
-![Vytvořit novou aktivační událost](media/how-to-create-event-trigger/event-based-trigger-image1.png)
-
-### <a name="select-the-event-trigger-type"></a>Vyberte typ aktivační události
-
-Jakmile soubor dorazí v umístění vašeho úložiště a odpovídající objekt blob se vytvoří, tato událost se aktivuje a spustí vaše kanál služby Data Factory. Můžete vytvořit aktivační událost, která reaguje na vytváření událostí do objektu blob, o událost odstranění objektů blob nebo obou událostí, v kanály Data Factory.
-
-![Vyberte aktivační událost typu jako událost.](media/how-to-create-event-trigger/event-based-trigger-image2.png)
+![Vytvořit novou aktivační proceduru události](media/how-to-create-event-trigger/event-based-trigger-image1.png)
 
 ### <a name="configure-the-event-trigger"></a>Konfigurace aktivační události
 
-S **začíná cesta blobu** a **cesta objektu Blob končí** vlastnosti, můžete zadat kontejnery, složky a názvy objektů blob, pro které chcete přijímat události. Řadu vzorů můžete použít pro obě **začíná cesta blobu** a **cesta objektu Blob končí** vlastnosti, jak je znázorněno v příkladech později v tomto článku. Alespoň jeden z těchto vlastností je povinný.
+S **cesta objektu Blob začíná** a **cesta objektu Blob končí** vlastnosti, můžete zadat, kontejnery, složky a názvy objektů blob, pro které chcete přijímat události. Můžete použít různé vzorce pro obě **začíná cesta objektu Blob** a **končí cesta objektu Blob** vlastnosti, jak ukazují příklady dále v tomto článku. Nejméně jednu z těchto vlastností je povinný.
 
-![Konfigurace aktivační události](media/how-to-create-event-trigger/event-based-trigger-image3.png)
+![Konfigurace aktivační události](media/how-to-create-event-trigger/event-based-trigger-image2.png)
 
-## <a name="json-schema"></a>Schématu JSON
+### <a name="select-the-event-trigger-type"></a>Vyberte typ aktivační události
 
-Následující tabulka obsahuje přehled elementů schématu, které se vztahují k aktivační události na základě událostí:
+Jakmile dorazí soubor v umístění úložiště a vytvořit odpovídající objekt blob, tato událost aktivuje a spuštění kanálu služby Data Factory. Můžete vytvořit aktivační událost, která bude reagovat na události vytvoření objektu blob, události odstranění objektů blob nebo obou událostí v kanálů Data Factory.
 
-| **JSON – Element** | **Popis** | **Typ** | **Povolené hodnoty** | **Požadované** |
+![Typ aktivační události vyberte jako událost](media/how-to-create-event-trigger/event-based-trigger-image3.png)
+
+## <a name="json-schema"></a>Schéma JSON
+
+Následující tabulka obsahuje přehled elementů schématu souvisejících s triggery založené na události:
+
+| **JSON Element** | **Popis** | **Typ** | **Povolené hodnoty** | **Vyžaduje** |
 | ---------------- | --------------- | -------- | ------------------ | ------------ |
-| **Obor** | ID prostředku Azure Resource Manager účtu úložiště. | Řetězec | ID správce prostředků Azure | Ano |
-| **Události** | Typ události, které způsobují tento generovat aktivační událost. | Pole    | Microsoft.Storage.BlobCreated Microsoft.Storage.BlobDeleted | Ano, libovolnou kombinaci. |
-| **blobPathBeginsWith** | Cesta objektu blob musí začínat vzoru zadaná pro generovat aktivační událost. Například '/ záznamy nebo objekty BLOB/prosinec /' bude pouze platit aktivační událost pro objekty BLOB ve složce prosinec v kontejneru záznamy. | Řetězec   | | Je třeba zadat alespoň jednu z těchto vlastností: blobPathBeginsWith blobPathEndsWith. |
-| **blobPathEndsWith** | Cesta objektu blob musí končit vzoru zadaná pro generovat aktivační událost. Například 'december/boxes.csv' bude platit pouze aktivační událost pro objekty BLOB s názvem polí ve složce prosinec. | Řetězec   | | Je třeba zadat alespoň jednu z těchto vlastností: blobPathBeginsWith blobPathEndsWith. |
+| **Obor** | Azure Resource Manageru ID prostředku účtu úložiště. | Řetězec | ID Azure Resource Manageru | Ano |
+| **Události** | Typ události, které způsobují tento aby trigger provedl akci. | Pole    | Microsoft.Storage.BlobCreated Microsoft.Storage.BlobDeleted | Ano, libovolnou kombinaci. |
+| **blobPathBeginsWith** | Cesta objektu blob musí začínat vzor pro aby trigger provedl akci k dispozici. Například "/ záznamy/objekty BLOB nebo prosince /" se pouze aktivoval aktivační událost pro objekty BLOB ve složce dne v kontejneru záznamy. | Řetězec   | | Musí být zadaná aspoň jednu z těchto vlastností: blobPathBeginsWith blobPathEndsWith. |
+| **blobPathEndsWith** | Cesta objektu blob musí končit vzor pro aby trigger provedl akci k dispozici. Například 'december/boxes.csv' bude pouze aktivoval aktivační událost pro objekty BLOB s názvem pole v složku dne. | Řetězec   | | Musí být zadaná aspoň jednu z těchto vlastností: blobPathBeginsWith blobPathEndsWith. |
 
-## <a name="examples-of-event-based-triggers"></a>Příklady aktivační události na základě událostí
+## <a name="examples-of-event-based-triggers"></a>Příklady triggery založené na události
 
-Tato část obsahuje příklady nastavení na základě událostí aktivační události.
+Tato část obsahuje příklady nastavení založeného na událostech aktivační události.
 
--   **Cesta blobu začíná**('/ containername /") – přijímá události pro libovolný objekt blob v kontejneru.
--   **Cesta blobu začíná**('/ containername nebo objekty BLOB/název_složky) – přijímá události pro všechny objekty BLOB v kontejneru containername a název_složky složce.
--   **Cesta blobu začíná**("/ containername/blobs/foldername/file.txt") – přijímá události pro objekt blob s názvem soubor.txt ve složce název_složky v kontejneru containername.
--   **Cesta objektu BLOB končí**('soubor.txt") – Receives události pro objekt blob s názvem soubor.txt na jakoukoli cestu.
--   **Cesta objektu BLOB končí**('/ containername/blobs/file.txt ") – přijímá události pro objekt blob s názvem soubor.txt pod containername kontejneru.
--   **Cesta objektu BLOB končí**('foldername/file.txt') – Receives události pro objekt blob s názvem soubor.txt ve složce název_složky v jakékoli kontejneru.
+-   **Cesta k objektu BLOB začíná**("/ containername /") – přijímá události pro všechny objekty blob v kontejneru.
+-   **Cesta k objektu BLOB začíná**("/ containername/objektů BLOB/foldername") – přijímá události pro všechny objekty BLOB v kontejneru containername a název_složky složky.
+-   **Cesta k objektu BLOB začíná**("/ containername/blobs/foldername/file.txt") – přijímá události pro objekt blob s názvem soubor.txt ve složce název_složky v kontejneru containername.
+-   **Cesta k objektu BLOB končí**("soubor.txt") – přijme události pro objekt blob s názvem soubor.txt v jakékoli cestě.
+-   **Cesta k objektu BLOB končí**("/ containername/blobs/file.txt") – přijímá události pro objekt blob s názvem soubor.txt v kontejneru containername.
+-   **Cesta k objektu BLOB končí**("foldername/file.txt") – přijme události pro objekt blob s názvem soubor.txt v název_složky složce v kontejneru.
 
 > [!NOTE]
-> Je nutné zahrnout `/blobs/` segment cesty vždy, když zadáte kontejneru a složku, kontejner a soubor nebo kontejner, složku a soubor.
+> Je nutné zahrnout `/blobs/` segment cesty pokaždé, když zadáte kontejner a složku, kontejner a složku souboru nebo kontejneru a soubor.
 
-## <a name="using-blob-events-trigger-properties"></a>Pomocí vlastnosti aktivační události objektu Blob
+## <a name="map-trigger-properties-to-pipeline-parameters"></a>Mapování vlastnosti aktivační události na parametry kanálu
 
-Když se aktivuje aktivační události objektu blob, ho zpřístupní dvě proměnné do kanálu: *folderPath* a *fileName*. Chcete-li získat přístup k těmto proměnným, použijte `@triggerBody().fileName` nebo `@triggerBody().folderPath` výrazy.
+Jakmile se spustí aktivační procedura událostí pro konkrétní objekt blob, událost zaznamená název složky a cesta k souboru objektu blob do vlastností `@triggerBody().folderPath` a `@triggerBody().fileName`. V kanálu používat hodnoty těchto vlastností, je nutné mapovat vlastnosti k parametrům kanálu. Po mapování vlastnosti na parametry, můžete přistupovat k hodnotám nezachytává aktivační události prostřednictvím `@pipeline.parameters.parameterName` výrazu v rámci kanálu.
 
-Představte si třeba nakonfigurovat tak, aby fire při vytvoření objektu blob se aktivační událost `.csv` jako hodnotu `blobPathEndsWith`. Pokud soubor .csv se ukončí do účtu úložiště *folderPath* a *fileName* popisují umístění souboru CSV. Například *folderPath* má hodnotu `/containername/foldername/nestedfoldername` a *fileName* má hodnotu `filename.csv`.
+![Mapování vlastností pro parametry kanálu](media/how-to-create-event-trigger/event-based-trigger-image4.png)
+
+Například v předchozím snímku obrazovky. aktivační událost konfigurován tak, aby se aktivují, když cestu objektu blob s koncovkou `.csv` se vytvoří v účtu úložiště. V důsledku toho při objekt blob se `.csv` rozšíření se vytvoří kdekoli v účtu úložiště `folderPath` a `fileName` vlastnosti zachycení umístění nový objekt blob. Například `@triggerBody().folderPath` má hodnotu jako `/containername/foldername/nestedfoldername` a `@triggerBody().fileName` má hodnotu jako `filename.csv`. Tyto hodnoty jsou namapovány v příkladu parametry kanálu `sourceFolder` a `sourceFile`. Můžete je použít v celém kanálu `@pipeline.parameters.sourceFolder` a `@pipeline.parameters.sourceFile` v uvedeném pořadí.
 
 ## <a name="next-steps"></a>Další postup
-Podrobné informace o aktivační události najdete v tématu [kanálu spouštěcí a aktivační události](concepts-pipeline-execution-triggers.md#triggers).
+Podrobné informace o aktivačních událostech najdete v tématu [spouštění kanálů a triggery](concepts-pipeline-execution-triggers.md#triggers).

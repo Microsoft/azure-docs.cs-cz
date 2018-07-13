@@ -1,6 +1,6 @@
 ---
 title: Správa připojení v Azure Functions
-description: Jak se vyhnout problémům s výkonem v Azure Functions pomocí statické připojení klientů.
+description: Zjistěte, jak se vyhnout problémy s výkonem ve službě Azure Functions pomocí statického připojení klientů.
 services: functions
 documentationcenter: ''
 author: tdykstra
@@ -12,36 +12,36 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2018
 ms.author: tdykstra
-ms.openlocfilehash: 4ea2b033d8d67dd3c921fb833462605ba0aeb687
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 6c0af8f6f7e1d4aea8880a7af311aaa21f474f7e
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34654792"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969000"
 ---
 # <a name="how-to-manage-connections-in-azure-functions"></a>Správa připojení v Azure Functions
 
-Funkce v aplikaci funkce sdílet prostředky a mezi tyto sdílené prostředky jsou připojení &mdash; připojení protokolu HTTP, připojení databáze a připojení ke službám Azure, jako je například úložiště. Pokud mnoho funkcí běží souběžně je možné dostatek dostupné připojení. Tento článek vysvětluje, jak kód funkcí předejdete pomocí více připojení, než které skutečně potřebují.
+Funkce v aplikaci function app sdílet prostředky a mezi těmito sdílené prostředky jsou připojení &mdash; připojení HTTP, připojení k databázi a připojení ke službám Azure, jako je například úložiště. Pokud mnoho funkcí jsou spuštěny souběžně je možné mít nedostatek dostupných připojení. Tento článek vysvětluje, jak kód vaší funkce, abyste se vyhnuli použití víc připojení než které skutečně potřebují.
 
 ## <a name="connections-limit"></a>Omezení počtu připojení
 
-Počet připojení k dispozici je omezená částečně, protože funkce aplikace běží v [izolovaného prostoru Azure App Service](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox). Jedním z omezení, které ukládá izolovaný prostor v kódu je [zakončení na počet připojení, aktuálně 300](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#numerical-sandbox-limits). Když tento limit překročíte, functions runtime vytvoří protokolu s následující zprávou: `Host thresholds exceeded: Connections`.
+Počet dostupných připojení je omezený částečně proto, že aplikace function app se spouští v [sandboxu služby Azure App Service](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox). Jedním z omezení, izolovaný prostor ukládá váš kód je [limit počtu připojení, aktuálně 300](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#numerical-sandbox-limits). Při dosažení tohoto limitu, modul runtime služby functions vytvoří protokol s následující zprávou: `Host thresholds exceeded: Connections`.
 
-Pravděpodobnost překračuje limit zvýšit, kdy [škálování řadič přidává funkce aplikace instance](functions-scale.md#how-the-consumption-plan-works). Každá instance funkce aplikace může být vyvolání funkce mnohokrát najednou a všechny tyto funkce používají připojení, které budou započítává k 300 limit.
+Kdy zvýšit pravděpodobnost při překročení tohoto limitu [měřítka řadiče přidána instance aplikace funkce](functions-scale.md#how-the-consumption-plan-works). Každá instance aplikace funkce může být vyvolání funkce v mnoha případech najednou, a všechny tyto funkce používají připojení, které se počítají do 300 limit.
 
-## <a name="use-static-clients"></a>Použít statické klienty
+## <a name="use-static-clients"></a>Použití statických klientů
 
-Abyste se vyhnuli, která uchovává více připojení, než je nutné, znovu použít klienta instancí místo vytváření nové s každým vyvolání funkce. Klientů .NET, jako `HttpClient`, `DocumentClient`, a klienti Azure Storage můžete spravovat připojení, když používáte jednu statickou klienta.
+Aby se zabránilo uchovávající víc připojení než je nutné, opakovaně používat instancí klientů, kteří místo vytvoření nové značky s každým vyvolání funkce. Klientů .NET, jako jsou `HttpClient`, `DocumentClient`, a klienty služby Azure Storage můžete spravovat připojení, pokud používáte statické jednoho klienta.
 
-Zde jsou některé pokyny při používání specifických pro službu klienta v aplikaci Azure Functions:
+Tady jsou některé zásady dodržovat při použití klienta specifickou pro službu v aplikaci Azure Functions:
 
-- **NECHCETE** vytvořit nového klienta s každé volání funkce.
-- **PROVEĎTE** vytvořte jeden statický klienta, které je možné každé volání funkce.
-- **Vezměte v úvahu** vytváření jeden statický klienta v sdílených pomocná třída, pokud různé funkce používaly stejnou službu.
+- **Ne** vytvořit nového klienta se každé volání funkce.
+- **PROVEĎTE** vytvořit jeden, statické klienta, které mohou být využívána každé volání funkce.
+- **Vezměte v úvahu** vytvoření jeden statický klienta ve sdílených pomocnou třídu, pokud různé funkce používaly stejnou službu.
 
 ## <a name="httpclient-code-example"></a>Příklad kódu HttpClient
 
-Tady je příklad funkce kód, který vytvoří statického `HttpClient`:
+Tady je příklad kódu funkce, která vytvoří statickou `HttpClient`:
 
 ```cs
 // Create a single, static HttpClient
@@ -54,11 +54,11 @@ public static async Task Run(string input)
 }
 ```
 
-Běžné otázky o .NET `HttpClient` je "By I být uvolnění Moje klienta?" Obecně platí, uvolnění objektů, které implementují `IDisposable` po dokončení jejich používání. Nemáte dispose statického klienta, protože nejsou provádí, ale používat při ukončení funkce. Chcete statické klientovi za provozu po dobu trvání vaší aplikace.
+Běžné otázky o .NET `HttpClient` je "By měl jsem se připravuje se klient?" Obecně platí, Uvolňujte objekty, které implementují `IDisposable` po dokončení jejich používání. Ale statického klienta není vyřadit, protože není vše nastaveno použití po skončení funkce. Chcete, aby statické klienta na živá po dobu trvání aplikace.
 
 ## <a name="documentclient-code-example"></a>Příklad kódu DocumentClient
 
-`DocumentClient` připojí se k instanci databáze Cosmos. V dokumentaci Cosmos DB doporučuje je [po dobu jeho existence vaší aplikace, použijte klienta Azure Cosmos DB singleton](https://docs.microsoft.com/en-us/azure/cosmos-db/performance-tips#sdk-usage). Následující příklad ukazuje jeden vzor učinit ve funkci.
+`DocumentClient` se připojí k instanci databáze Cosmos DB. Dokumentace ke službě Cosmos DB doporučuje vám [používání klienta služby Azure Cosmos DB jednotlivý prvek po dobu životnosti aplikace](https://docs.microsoft.com/azure/cosmos-db/performance-tips#sdk-usage). Následující příklad ukazuje jeden vzor, který to ve funkci.
 
 ```cs
 #r "Microsoft.Azure.Documents.Client"
@@ -88,6 +88,6 @@ public static async Task Run(string input)
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o tom, proč se doporučují statických klientů najdete v tématu [nesprávné konkretizaci antipattern](https://docs.microsoft.com/azure/architecture/antipatterns/improper-instantiation/).
+Další informace o tom, proč se doporučují statické klientů, přečtěte si téma [antipattern nesprávného vytváření instancí](https://docs.microsoft.com/azure/architecture/antipatterns/improper-instantiation/).
 
-Další tipy výkonu Azure Functions najdete v tématu [optimalizace výkonu a spolehlivosti Azure Functions](functions-best-practices.md).
+Další tipy pro výkon Azure Functions najdete v části [optimalizujete tím její výkon a spolehlivost služby Azure Functions](functions-best-practices.md).

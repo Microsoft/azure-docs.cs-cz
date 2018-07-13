@@ -11,12 +11,12 @@
   items:
     - name: Vytvoření funkce – portál
       href: functions-create-first-azure-function.md
-    - name: Vytvoření funkce – Azure CLI
-      href: functions-create-first-azure-function-azure-cli.md
     - name: Vytvoření funkce – Visual Studio
       href: functions-create-your-first-function-visual-studio.md
     - name: Vytvoření funkce – Java/Maven
       href: functions-create-first-java-maven.md
+    - name: Vytvoření funkce – Azure CLI
+      href: functions-create-first-azure-function-azure-cli.md
     - name: Vytvoření funkce – Linux
       href: functions-create-first-azure-function-azure-cli-linux.md
     - name: Triggery
@@ -97,6 +97,8 @@
       items:
         - name: Přehled
           href: durable-functions-overview.md
+        - name: Typy funkcí
+          href: durable-functions-types-features-overview.md
         - name: Vazby
           href: durable-functions-bindings.md
         - name: Kontrolní bod a opětovného přehrání

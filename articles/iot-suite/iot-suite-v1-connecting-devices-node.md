@@ -1,12 +1,12 @@
 ---
-title: "Připojení zařízení pomocí Node.js | Microsoft Docs"
-description: "Popisuje, jak se připojit zařízení k Azure IoT Suite předkonfigurované řešení vzdáleného monitorování pomocí aplikace napsané v Node.js."
-services: 
+title: Připojení zařízení pomocí Node.js | Dokumentace Microsoftu
+description: Popisuje, jak připojit zařízení k Azure IoT Suite předkonfigurované řešení vzdáleného monitorování pomocí aplikace napsané v Node.js.
+services: ''
 suite: iot-suite
 documentationcenter: na
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: fc50a33f-9fb9-42d7-b1b8-eb5cff19335e
 ms.service: iot-suite
 ms.devlang: na
@@ -16,28 +16,29 @@ ms.workload: na
 ms.date: 11/02/2017
 ms.author: dobett
 ms.openlocfilehash: 87a2e97638508eef1d90a219cfb38d1fcac81d55
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38723879"
 ---
-# <a name="connect-your-device-to-the-remote-monitoring-preconfigured-solution-nodejs"></a>Připojte zařízení k monitorování předkonfigurované řešení vzdáleného (Node.js)
+# <a name="connect-your-device-to-the-remote-monitoring-preconfigured-solution-nodejs"></a>Připojení zařízení předkonfigurovaného řešení vzdáleného monitorování (Node.js)
 [!INCLUDE [iot-suite-v1-selector-connecting](../../includes/iot-suite-v1-selector-connecting.md)]
 
 ## <a name="create-a-nodejs-sample-solution"></a>Vytvoření ukázkové řešení node.js
 
-Ujistěte se, že verze Node.js 0.11.5 nebo novější je nainstalován na vývojovém počítači. Můžete spustit `node --version` na příkazovém řádku, které chcete zkontrolovat verzi.
+Zajistit, že verze Node.js 0.11.5 nebo novější nainstalován na vývojovém počítači. Můžete spustit `node --version` příkazového řádku, pokud chcete zkontrolovat verzi.
 
 1. Vytvořte složku s názvem **RemoteMonitoring** na vývojovém počítači. Přejděte do této složky ve vašem prostředí příkazového řádku.
 
-1. Spusťte následující příkazy ke stažení a instalaci balíčků, že které potřebujete k dokončení ukázkovou aplikaci:
+1. Spusťte následující příkazy ke stažení a instalaci balíčků, že které potřebujete k dokončení ukázkové aplikace:
 
     ```
     npm init
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
 
-1. V **RemoteMonitoring** složky, vytvořte soubor s názvem **remote_monitoring.js**. Otevřete tento soubor v textovém editoru.
+1. V **RemoteMonitoring** složce vytvořte soubor s názvem **remote_monitoring.js**. Otevřete tento soubor v textovém editoru.
 
 1. V **remote_monitoring.js** soubor, přidejte následující `require` příkazy:
 
@@ -57,7 +58,7 @@ Ujistěte se, že verze Node.js 0.11.5 nebo novější je nainstalován na vývo
     var deviceId = ConnectionString.parse(connectionString).DeviceId;
     ```
 
-1. Přidejte následující proměnné na definovat některé základní telemetrická data:
+1. Přidejte následující proměnné k definování některé základní telemetrická data:
 
     ```nodejs
     var temperature = 50;
@@ -65,7 +66,7 @@ Ujistěte se, že verze Node.js 0.11.5 nebo novější je nainstalován na vývo
     var externalTemperature = 55;
     ```
 
-1. Přidejte následující podpůrná funkce Tisknout výsledky operace:
+1. Přidejte následující pomocnou funkci k tisku výsledků operace:
 
     ```nodejs
     function printErrorFor(op) {
@@ -75,7 +76,7 @@ Ujistěte se, že verze Node.js 0.11.5 nebo novější je nainstalován na vývo
     }
     ```
 
-1. Přidejte následující pomocné funkce sloužící k náhodné telemetrie hodnoty:
+1. Přidejte následující pomocnou funkci používat k náhodné hodnoty telemetrie:
 
     ```nodejs
     function generateRandomIncrement() {
@@ -83,7 +84,7 @@ Ujistěte se, že verze Node.js 0.11.5 nebo novější je nainstalován na vývo
     }
     ```
 
-1. Přidejte následující definice pro **DeviceInfo** objektu zařízení odesílá při spuštění:
+1. Přidejte následující definice **DeviceInfo** objektu zařízení odesílá při spuštění:
 
     ```nodejs
     var deviceMetaData = {
@@ -97,7 +98,7 @@ Ujistěte se, že verze Node.js 0.11.5 nebo novější je nainstalován na vývo
     };
     ```
 
-1. Přidejte následující definice dvojče zařízení hlášené hodnoty. Tato definice obsahuje popisy přímé metod, které podporuje zařízení:
+1. Přidejte následující definice dvojčat zařízení hlásí hodnoty. Tato definice obsahuje popisy přímé metody, které zařízení podporuje:
 
     ```nodejs
     var reportedProperties = {
@@ -132,7 +133,7 @@ Ujistěte se, že verze Node.js 0.11.5 nebo novější je nainstalován na vývo
     }
     ```
 
-1. Přidejte následující funkci pro zpracování **restartovat** přímé volání metody:
+1. Přidejte následující funkci pro zpracování **restartování** přímá volání metody:
 
     ```nodejs
     function onReboot(request, response) {
@@ -150,7 +151,7 @@ Ujistěte se, že verze Node.js 0.11.5 nebo novější je nainstalován na vývo
     }
     ```
 
-1. Přidejte následující funkci pro zpracování **InitiateFirmwareUpdate** přímé volání metody. Tato metoda přímé používá parametr k určení umístění bitové kopie firmware ke stažení a iniciuje firmwaru v zařízení asynchronní aktualizace:
+1. Přidejte následující funkci pro zpracování **InitiateFirmwareUpdate** přímá volání metody. Toto přímé metody používá parametr k určení umístění image firmwaru ke stažení a iniciuje firmwaru v zařízení asynchronní aktualizace:
 
     ```nodejs
     function onInitiateFirmwareUpdate(request, response) {
@@ -180,9 +181,9 @@ Ujistěte se, že verze Node.js 0.11.5 nebo novější je nainstalován na vývo
     * Otevření připojení.
     * Odeslat **DeviceInfo** objektu.
     * Nastavte obslužnou rutinu pro požadované vlastnosti.
-    * Odešlete oznámenou vlastnosti.
+    * Odešlete ohlášené vlastnosti.
     * Zaregistrujte obslužné rutiny pro přímé metody.
-    * Zahájit odesílání telemetrie.
+    * Začalo odesílat telemetrii.
 
     ```nodejs
     client.open(function (err) {

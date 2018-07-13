@@ -14,20 +14,20 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/20/2018
 ms.author: tdykstra
-ms.openlocfilehash: 0179a48b74ef0e37d3ac2e7fd18d43e488a89823
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 020a775c45ef3c46f9dfc5da7d4a7e470def4705
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37341378"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969907"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Durable Functions publikování do služby Azure Event Grid (preview)
 
-Tento článek popisuje, jak nastavit Azure Durable Functions k publikování Orchestrace životní cyklus (například, vytvoří se události, dokončenou a neúspěšné) pro vlastní [tématu Azure Event gridu](https://docs.microsoft.com/en-us/azure/event-grid/overview). 
+Tento článek popisuje, jak nastavit Azure Durable Functions k publikování Orchestrace životní cyklus (například, vytvoří se události, dokončenou a neúspěšné) pro vlastní [tématu Azure Event gridu](https://docs.microsoft.com/azure/event-grid/overview). 
 
 Toto jsou některé scénáře, kdy se tato funkce je užitečná:
 
-* **Scénáře DevOps, jako je nasazení modrá nebo zelená**: můžete chtít vědět, pokud jsou všechny úkoly spuštěné před implementací [strategii nasazení vedle sebe](https://docs.microsoft.com/en-us/azure/azure-functions/durable-functions-versioning#side-by-side-deployments).
+* **Scénáře DevOps, jako je nasazení modrá nebo zelená**: můžete chtít vědět, pokud jsou všechny úkoly spuštěné před implementací [strategii nasazení vedle sebe](https://docs.microsoft.com/azure/azure-functions/durable-functions-versioning#side-by-side-deployments).
 
 * **Přidává rozšířenou podporu monitorování a diagnostiku**: vám může udržovat přehled o informace o stavu Orchestrace v externím úložišti optimalizované pro dotazy, jako je SQL database nebo cosmos DB.
 
@@ -36,19 +36,19 @@ Toto jsou některé scénáře, kdy se tato funkce je užitečná:
 ## <a name="prerequisites"></a>Požadavky
 
 * Nainstalujte [Microsoft.Azure.WebJobs.Extensions.DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) 1.3.0-rc nebo později v projektu Durable Functions.
-* Nainstalujte [emulátoru úložiště Azure](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-emulator).
-* Nainstalujte [příkazového řádku Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest) nebo použijte [Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview)
+* Nainstalujte [emulátoru úložiště Azure](https://docs.microsoft.com/azure/storage/common/storage-use-emulator).
+* Nainstalujte [příkazového řádku Azure CLI 2.0](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) nebo použijte [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)
 
 ## <a name="create-a-custom-event-grid-topic"></a>Vytvoření vlastního tématu Event gridu
 
 Vytvořte téma Event gridu pro odesílání událostí z Durable Functions. Následující pokyny ukazují, jak vytvořit téma s použitím rozhraní příkazového řádku Azure. Informace o tom, jak to udělat pomocí Powershellu nebo na webu Azure portal najdete v následujících článcích:
 
-* [EventGrid šablon rychlý start: Vytvoření vlastní události – PowerShell](https://docs.microsoft.com/en-us/azure/event-grid/custom-event-quickstart-powershell)
-* [EventGrid šablon rychlý start: Vytvoření vlastní události – Azure portal](https://docs.microsoft.com/en-us/azure/event-grid/custom-event-quickstart-portal)
+* [EventGrid šablon rychlý start: Vytvoření vlastní události – PowerShell](https://docs.microsoft.com/azure/event-grid/custom-event-quickstart-powershell)
+* [EventGrid šablon rychlý start: Vytvoření vlastní události – Azure portal](https://docs.microsoft.com/azure/event-grid/custom-event-quickstart-portal)
 
 ### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte skupinu prostředků pomocí `az group create` příkazu. Event Grid v současné době nepodporuje všech oblastech. Informace o tom, které oblasti jsou podporovány, naleznete v tématu [Přehled služby Event Grid](https://docs.microsoft.com/en-us/azure/event-grid/overview). 
+Vytvořte skupinu prostředků pomocí `az group create` příkazu. Event Grid v současné době nepodporuje všech oblastech. Informace o tom, které oblasti jsou podporovány, naleznete v tématu [Přehled služby Event Grid](https://docs.microsoft.com/azure/event-grid/overview). 
 
 ```bash
 az group create --name eventResourceGroup --location westus2
@@ -115,7 +115,7 @@ Nastavte nastavení aplikace, které pro klíč tématu do aplikace Function App
 }
 ```
 
-Ujistěte se, že [emulátor úložiště](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-emulator) funguje. Je vhodné spustit `AzureStorageEmulator.exe clear all` před provedením příkazu.
+Ujistěte se, že [emulátor úložiště](https://docs.microsoft.com/azure/storage/common/storage-use-emulator) funguje. Je vhodné spustit `AzureStorageEmulator.exe clear all` před provedením příkazu.
 
 ## <a name="create-functions-that-listen-for-events"></a>Vytvoření funkce, které naslouchat událostem
 
@@ -147,7 +147,7 @@ public static void Run(JObject eventGridEvent, TraceWriter log)
 }
 ```
 
-Vyberte `Add Event Grid Subscription`. Tato operace přidá odběr Event gridu pro téma Event gridu, kterou jste vytvořili. Další informace najdete v tématu [koncepty ve službě Azure Event Grid](https://docs.microsoft.com/en-us/azure/event-grid/concepts)
+Vyberte `Add Event Grid Subscription`. Tato operace přidá odběr Event gridu pro téma Event gridu, kterou jste vytvořili. Další informace najdete v tématu [koncepty ve službě Azure Event Grid](https://docs.microsoft.com/azure/event-grid/concepts)
 
 ![Vyberte odkaz na Trigger služby Event Grid.](media/durable-functions-event-publishing/eventgrid-trigger-link.png)
 
@@ -262,10 +262,10 @@ Následující seznam popisuje schéma události životního cyklu:
 * **ID**: Jedinečný identifikátor události Event gridu.
 * **Předmět**: cesta k předmětu událostí. `durable/orchestrator/{orchestrationRuntimeStatus}`. `{orchestrationRuntimeStatus}` bude `Running`, `Completed`, `Failed`, a `Terminated`.  
 * **data**: trvalý specifických parametrů funkcí.
-    * **hubName**: [TaskHub](https://docs.microsoft.com/en-us/azure/azure-functions/durable-functions-task-hubs) název.
+    * **hubName**: [TaskHub](https://docs.microsoft.com/azure/azure-functions/durable-functions-task-hubs) název.
     * **functionName**: název funkce nástroje Orchestrator.
     * **instanceId**: instanceId Durable Functions.
-    * **z důvodu**: další data přidružená k události sledování. Další informace najdete v tématu [diagnostiky v Durable Functions (Azure Functions)](https://docs.microsoft.com/en-us/azure/azure-functions/durable-functions-diagnostics)
+    * **z důvodu**: další data přidružená k události sledování. Další informace najdete v tématu [diagnostiky v Durable Functions (Azure Functions)](https://docs.microsoft.com/azure/azure-functions/durable-functions-diagnostics)
     * **runtimeStatus**: stav Runtime Orchestrace. Spuštěna, dokončena, se nezdařilo, protože bylo zrušeno. 
 * **Typ eventType**: "orchestratorEvent"
 * **čas události**: čas události (UTC).

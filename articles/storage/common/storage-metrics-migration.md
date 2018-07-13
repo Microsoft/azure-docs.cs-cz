@@ -1,6 +1,6 @@
 ---
-title: Migrace metrik Azure Storage | Microsoft Docs
-description: Zjistěte, jak migrovat staré metriky do nové metriky, které jsou spravovány nástrojem Azure monitorování.
+title: Migrace do Azure Storage metrics | Dokumentace Microsoftu
+description: Zjistěte, jak migrovat na nové metriky, které se spravují přes Azure Monitor staré metriky.
 services: storage
 documentationcenter: na
 author: fhryo-msft
@@ -14,48 +14,48 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 03/30/2018
 ms.author: fryu
-ms.openlocfilehash: c64061aee94e8c08a3f6bcae78cffca0b4172d97
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 9586d0c2b61fe97106378ec684c28be9143b5194
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34650668"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969380"
 ---
-# <a name="azure-storage-metrics-migration"></a>Migrace metrik Azure Storage
+# <a name="azure-storage-metrics-migration"></a>Migrace do Azure Storage metrics
 
-V souladu s strategie sjednocujícího prostředí monitorování v Azure, Azure Storage integruje metriky pro platformu Azure monitorování. V budoucnu službu staré metrik bude končit včasné oznámení na základě zásad Azure. Pokud byste tedy spoléhat na staré metriky úložiště, budete muset migrovat před datem ukončení služby, aby byla zachována informace o metrikách.
+V souladu s strategie sjednocujícího prostředí monitorování v Azure, Azure Storage integruje metriky na platformě Azure Monitor. V budoucnu službu staré metriky bude končit včasné oznámení na základě zásad Azure. Pokud se spoléháte na staré metrik úložiště, které potřebujete migrovat před datem ukončení služby zachování informace o metrikách.
 
-Tento článek ukazuje, jak migrovat z původního metriky nové metriky.
+V tomto článku se dozvíte, jak provést migraci ze staré metrik na novou metriku.
 
-## <a name="understand-old-metrics-that-are-managed-by-azure-storage"></a>Pochopení staré metriky, které jsou spravovány službou Azure Storage
+## <a name="understand-old-metrics-that-are-managed-by-azure-storage"></a>Pochopení původní metriky, které jsou spravovány službou Azure Storage
 
-Úložiště Azure shromažďuje staré metriky hodnoty a shromažďuje a ukládá je do $Metric tabulky ve stejném účtu úložiště. Na portálu Azure můžete použít k nastavení monitorování grafu. Sady SDK úložiště Azure můžete použít také ke čtení dat z $Metric tabulek, které jsou založeny na schéma. Další informace najdete v tématu [Storage Analytics](./storage-analytics.md).
+Úložiště Azure shromáždí staré hodnoty metrik a shromáždí a uloží je v tabulkách $Metric v rámci stejného účtu úložiště. Na webu Azure portal můžete použít k nastavení monitorování grafu. Se sadami SDK služby Azure Storage můžete použít také k načtení dat z $Metric tabulek, které jsou založené na schématu. Další informace najdete v tématu [Storage Analytics](./storage-analytics.md).
 
-Původní metriky zadejte metriky kapacity pouze v úložišti objektů Blob v Azure. Staré metriky uvádějí metriky transakce úložiště objektů Blob, Table storage, Azure soubory a Queue storage. 
+Staré metriky poskytují metriky kapacity pouze v úložišti objektů Blob v Azure. Staré metriky poskytují metriky transakcí v úložišti objektů Blob, Table storage, Azure Files a Queue storage. 
 
-Původní metriky jsou navrženy v ploché schématu. Návrh výsledkem hodnota nula metriky, pokud nemáte vzory přenosů dat aktivován metriku. Například **ServerTimeoutError** hodnota nastavena na 0 v tabulkách $Metric i v případě, že jste neobdrželi žádné chyby vypršení časového limitu serveru z provozu provoz na účet úložiště.
+Staré metriky jsou navržené tak, že v ploché schématu. Návrh výsledkem nula metriky hodnotu, pokud nemáte vzory provozu metriku aktivuje. Například **ServerTimeoutError** hodnota nastavená na 0 v tabulkách $Metric i v případě, že jste neobdrželi žádné chyby časového limitu serveru z živého provozu do účtu úložiště.
 
-## <a name="understand-new-metrics-managed-by-azure-monitor"></a>Pochopení nové metriky spravuje monitorování Azure
+## <a name="understand-new-metrics-managed-by-azure-monitor"></a>Vysvětlení nové metriky, které jsou spravované službou Azure Monitor
 
-Pro nové metriky úložiště Azure Storage vysílá metriky dat do Azure monitorování back-end. Poskytuje jednotné monitorování prostředí, včetně dat z portálu Azure monitorování a také přijímat data. Další informace najdete na to [článku](../../monitoring-and-diagnostics/monitoring-overview-metrics.md).
+Pro nové metriky úložiště Azure Storage vysílá metriky data do back-endu Azure Monitor. Platforma Azure Monitor poskytuje jednotné možnosti monitorování, včetně dat z portálu a také přijímat data. Další podrobnosti najdete na tuto [článku](../../monitoring-and-diagnostics/monitoring-overview-metrics.md).
 
-Nové metriky poskytovat metriky kapacity a metriky transakce na objekt Blob, Table, soubor, fronty a storage úrovně premium.
+Nové metriky poskytují metriky kapacity a metriku transakcí na objekt Blob, tabulky, soubor, frontu a storage úrovně premium.
 
-Více dimenze je jedna z funkcí, které poskytuje Azure monitorování. Úložiště Azure přijme návrhu při definování schématu metriky. Podporované dimenze na metriky můžete najít podrobnosti v [metrik Azure Storage v Azure monitorování](./storage-metrics-in-azure-monitor.md). Více dimenze design poskytuje efektivity nákladů na obou šířky pásma z přijímání a kapacity v ukládání metriky. V důsledku toho pokud provozu ještě aktivována související metriky, se nevygeneruje související data metriky. Například pokud provozu nebyla aktivována všechny chyby vypršení časového limitu serveru, monitorování Azure nevrací žádná data dotazu na hodnotu metriky **transakce** s dimenzí **ResponseType** rovno **ServerTimeoutError**.
+Více dimenzí je jednou z funkcí, které poskytuje Azure Monitor. Azure Storage přijme návrhu při definování nové metriky schéma. Podporované rozměry na metriky, můžete najít podrobnosti v [metrik Azure Storage ve službě Azure Monitor](./storage-metrics-in-azure-monitor.md). Multidimenzionální design poskytuje efektivity nákladů na obou šířky pásma od přijetí a ukládat metriky kapacity. V důsledku toho, pokud je provoz nebylo spuštěno související metriky, související data metriky nevygeneruje. Například pokud se váš provoz nebyl aktivuje všechny chyby časového limitu serveru, Azure Monitor nevrací žádná data dotazu na hodnotu metriky **transakce** s dimenzí **hodnotu ResponseType** rovna **ServerTimeoutError**.
 
 ## <a name="metrics-mapping-between-old-metrics-and-new-metrics"></a>Metriky mapování mezi metriky staré a nové metriky
 
-Pokud číst metriky data prostřednictvím kódu programu, budete muset přijmout nové metriky schéma ve vašich aplikacích. Abyste lépe pochopili změny, můžete odkazovat na mapování uvedené v následující tabulce:
+Pokud načtete data metriky prostřednictvím kódu programu, musíte přijmout nové metriky schéma ve svých programech. Abyste lépe pochopili změny, můžete odkazovat na mapování uvedené v následující tabulce:
 
-**Metriky kapacity**
+**Kapacitní metriky**
 
-| Původní metrika | Nové metrika |
+| Staré metrika | Novou metriku |
 | ------------------- | ----------------- |
 | **Kapacita**            | **BlobCapacity** s dimenzí **BlobType** rovna **BlockBlob** nebo **PageBlob** |
 | **ObjectCount**        | **BlobCount** s dimenzí **BlobType** rovna **BlockBlob** nebo **PageBlob** |
 | **ContainerCount**      | **ContainerCount** |
 
-Následující metriky jsou nové nabídky, které nepodporují staré metriky:
+Nové nabídky, která nepodporují staré metriky jsou následující metriky:
 * **TableCapacity**
 * **TableCount**
 * **TableEntityCount**
@@ -67,44 +67,44 @@ Následující metriky jsou nové nabídky, které nepodporují staré metriky:
 * **FileShareCount**
 * **UsedCapacity**
 
-**Metriky transakce**
+**Metriku transakcí**
 
-| Původní metrika | Nové metrika |
+| Staré metrika | Novou metriku |
 | ------------------- | ----------------- |
-| **AnonymousAuthorizationError** | Transakce se dimenze **ResponseType** rovna **AuthorizationError** |
-| **AnonymousClientOtherError** | Transakce se dimenze **ResponseType** rovna **ClientOtherError** |
-| **AnonymousClientTimeoutError** | Transakce se dimenze **ResponseType** rovna **ClientTimeoutError** |
-| **AnonymousNetworkError** | Transakce se dimenze **ResponseType** rovna **NetworkError** |
-| **AnonymousServerOtherError** | Transakce se dimenze **ResponseType** rovna **ServerOtherError** |
-| **AnonymousServerTimeoutError** | Transakce se dimenze **ResponseType** rovna **ServerTimeoutError** |
-| **AnonymousSuccess** | Transakce se dimenze **ResponseType** rovna **úspěch** |
-| **AnonymousThrottlingError** | Transakce se dimenze **ResponseType** rovna **ClientThrottlingError** nebo **ServerBusyError** |
-| **AuthorizationError** | Transakce se dimenze **ResponseType** rovna **AuthorizationError** |
+| **AnonymousAuthorizationError** | Transakce s dimenzí **hodnotu ResponseType** rovna **AuthorizationError** |
+| **AnonymousClientOtherError** | Transakce s dimenzí **hodnotu ResponseType** rovna **ClientOtherError** |
+| **AnonymousClientTimeoutError** | Transakce s dimenzí **hodnotu ResponseType** rovna **ClientTimeoutError** |
+| **AnonymousNetworkError** | Transakce s dimenzí **hodnotu ResponseType** rovna **NetworkError** |
+| **AnonymousServerOtherError** | Transakce s dimenzí **hodnotu ResponseType** rovna **ServerOtherError** |
+| **AnonymousServerTimeoutError** | Transakce s dimenzí **hodnotu ResponseType** rovna **ServerTimeoutError** |
+| **AnonymousSuccess** | Transakce s dimenzí **hodnotu ResponseType** rovna **úspěch** |
+| **AnonymousThrottlingError** | Transakce s dimenzí **hodnotu ResponseType** rovna **ClientThrottlingError** nebo **ServerBusyError** |
+| **AuthorizationError** | Transakce s dimenzí **hodnotu ResponseType** rovna **AuthorizationError** |
 | **Dostupnost** | **Dostupnost** |
-| **AverageE2ELatency** | **SuccessE2ELatency** |
-| **AverageServerLatency** | **SuccessServerLatency** |
-| **ClientOtherError** | Transakce se dimenze **ResponseType** rovna **ClientOtherError** |
-| **ClientTimeoutError** | Transakce se dimenze **ResponseType** rovna **ClientTimeoutError** |
-| **NetworkError** | Transakce se dimenze **ResponseType** rovna **NetworkError** |
-| **PercentAuthorizationError** | Transakce se dimenze **ResponseType** rovna **AuthorizationError** |
-| **PercentClientOtherError** | Transakce se dimenze **ResponseType** rovna **ClientOtherError** |
-| **PercentNetworkError** | Transakce se dimenze **ResponseType** rovna **NetworkError** |
-| **PercentServerOtherError** | Transakce se dimenze **ResponseType** rovna **ServerOtherError** |
-| **PercentSuccess** | Transakce se dimenze **ResponseType** rovna **úspěch** |
-| **PercentThrottlingError** | Transakce se dimenze **ResponseType** rovna **ClientThrottlingError** nebo **ServerBusyError** |
-| **PercentTimeoutError** | Transakce se dimenze **ResponseType** rovna **ServerTimeoutError** nebo **ResponseType** rovna **ClientTimeoutError** |
-| **SASAuthorizationError** | Transakce se dimenze **ResponseType** rovna **AuthorizationError** |
-| **SASClientOtherError** | Transakce se dimenze **ResponseType** rovna **ClientOtherError** |
-| **SASClientTimeoutError** | Transakce se dimenze **ResponseType** rovna **ClientTimeoutError** |
-| **SASNetworkError** | Transakce se dimenze **ResponseType** rovna **NetworkError** |
-| **SASServerOtherError** | Transakce se dimenze **ResponseType** rovna **ServerOtherError** |
-| **SASServerTimeoutError** | Transakce se dimenze **ResponseType** rovna **ServerTimeoutError** |
-| **SASSuccess** | Transakce se dimenze **ResponseType** rovna **úspěch** |
-| **SASThrottlingError** | Transakce se dimenze **ResponseType** rovna **ClientThrottlingError** nebo **ServerBusyError** |
-| **ServerOtherError** | Transakce se dimenze **ResponseType** rovna **ServerOtherError** |
-| **ServerTimeoutError** | Transakce se dimenze **ResponseType** rovna **ServerTimeoutError** |
-| **Úspěch** | Transakce se dimenze **ResponseType** rovna **úspěch** |
-| **ThrottlingError** | **Transakce** s dimenzí **ResponseType** rovna **ClientThrottlingError** nebo **ServerBusyError**|
+| **Hodnotu AverageE2ELatency** | **SuccessE2ELatency** |
+| **Hodnotu AverageServerLatency.** | **SuccessServerLatency** |
+| **ClientOtherError** | Transakce s dimenzí **hodnotu ResponseType** rovna **ClientOtherError** |
+| **ClientTimeoutError** | Transakce s dimenzí **hodnotu ResponseType** rovna **ClientTimeoutError** |
+| **NetworkError** | Transakce s dimenzí **hodnotu ResponseType** rovna **NetworkError** |
+| **PercentAuthorizationError** | Transakce s dimenzí **hodnotu ResponseType** rovna **AuthorizationError** |
+| **PercentClientOtherError** | Transakce s dimenzí **hodnotu ResponseType** rovna **ClientOtherError** |
+| **PercentNetworkError** | Transakce s dimenzí **hodnotu ResponseType** rovna **NetworkError** |
+| **PercentServerOtherError** | Transakce s dimenzí **hodnotu ResponseType** rovna **ServerOtherError** |
+| **PercentSuccess** | Transakce s dimenzí **hodnotu ResponseType** rovna **úspěch** |
+| **PercentThrottlingError** | Transakce s dimenzí **hodnotu ResponseType** rovna **ClientThrottlingError** nebo **ServerBusyError** |
+| **PercentTimeoutError** | Transakce s dimenzí **hodnotu ResponseType** rovna **ServerTimeoutError** nebo **hodnotu ResponseType** rovna **ClientTimeoutError** |
+| **SASAuthorizationError** | Transakce s dimenzí **hodnotu ResponseType** rovna **AuthorizationError** |
+| **SASClientOtherError** | Transakce s dimenzí **hodnotu ResponseType** rovna **ClientOtherError** |
+| **SASClientTimeoutError** | Transakce s dimenzí **hodnotu ResponseType** rovna **ClientTimeoutError** |
+| **SASNetworkError** | Transakce s dimenzí **hodnotu ResponseType** rovna **NetworkError** |
+| **SASServerOtherError** | Transakce s dimenzí **hodnotu ResponseType** rovna **ServerOtherError** |
+| **SASServerTimeoutError** | Transakce s dimenzí **hodnotu ResponseType** rovna **ServerTimeoutError** |
+| **SASSuccess** | Transakce s dimenzí **hodnotu ResponseType** rovna **úspěch** |
+| **SASThrottlingError** | Transakce s dimenzí **hodnotu ResponseType** rovna **ClientThrottlingError** nebo **ServerBusyError** |
+| **ServerOtherError** | Transakce s dimenzí **hodnotu ResponseType** rovna **ServerOtherError** |
+| **ServerTimeoutError** | Transakce s dimenzí **hodnotu ResponseType** rovna **ServerTimeoutError** |
+| **Úspěch** | Transakce s dimenzí **hodnotu ResponseType** rovna **úspěch** |
+| **ThrottlingError** | **Transakce** s dimenzí **hodnotu ResponseType** rovna **ClientThrottlingError** nebo **ServerBusyError**|
 | **TotalBillableRequests** | **Transakce** |
 | **TotalEgress** | **Výchozí přenos dat** |
 | **TotalIngress** | **Příchozí přenos dat** |
@@ -112,15 +112,15 @@ Následující metriky jsou nové nabídky, které nepodporují staré metriky:
 
 ## <a name="faq"></a>Nejčastější dotazy
 
-### <a name="how-should-i-migrate-existing-alert-rules"></a>Jak mohu migrovat existující pravidla výstrah?
+### <a name="how-should-i-migrate-existing-alert-rules"></a>Jak můžu migrovat stávající pravidla upozornění?
 
-Pokud jste vytvořili na základě původní metriky úložiště classic pravidla výstrah, budete muset vytvořit nové oznámení pravidla založená na nové schéma metriky.
+Pokud jste vytvořili classic pravidla upozornění na základě metrik původní úložiště, musíte vytvořit nové upozornění. pravidla na základě nové metriky schématu.
 
-### <a name="is-new-metric-data-stored-in-the-same-storage-account-by-default"></a>Je nová metriky data uložená ve stejném účtu úložiště ve výchozím nastavení?
+### <a name="is-new-metric-data-stored-in-the-same-storage-account-by-default"></a>Nové metriky data uložená v rámci stejného účtu úložiště ve výchozím nastavení?
 
-Ne. K archivaci metriky dat do účtu úložiště, použijte [monitorování diagnostiky nastavení rozhraní API služby Azure](https://docs.microsoft.com/en-us/rest/api/monitor/diagnosticsettings/createorupdate).
+Ne. Pokud chcete archivovat data metriky pro účet úložiště, použijte [diagnostické nastavení API služby Azure Monitor](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate).
 
 ## <a name="next-steps"></a>Další postup
 
 * [Azure Monitor](../../monitoring-and-diagnostics/monitoring-overview.md)
-* [Metriky úložiště v Azure monitorování](./storage-metrics-in-azure-monitor.md)
+* [Metriky úložiště ve službě Azure Monitor](./storage-metrics-in-azure-monitor.md)

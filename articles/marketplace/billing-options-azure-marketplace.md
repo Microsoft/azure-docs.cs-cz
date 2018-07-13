@@ -14,65 +14,65 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: b5a50b01da220f8da2f518895a61221f80d098f6
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 51a614a2411cf60bf88d384119c26bc9d406e66f
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34825082"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38635137"
 ---
 # <a name="billing-options"></a>Možnosti fakturace  
 
-## <a name="commercial-considerations-on-the-marketplace"></a>Komerční důležité informace na webu marketplace  
-Na webu marketplace nesdílí výnosy pro následující typy výpis.  
+## <a name="commercial-considerations-on-the-marketplace"></a>Důležité obchodní informace na webu marketplace  
+Na webu marketplace nesdílí výnosů pro následující typy výpis.  
 *   Seznam  
 *   Zkušební verze  
-*   Příkaz Transact pomocí fakturační model přineste si vlastní licenci (BYOL)
+*   Příkaz Transact pomocí modelu fakturace používání vlastní licence (BYOL)
 
-Nejste fakturovaná další poplatky za podílejících se na obchodní poutače na webu marketplace.  
-*   Další informace najdete v článku stránky nacházející se v Azure Marketplace zapojení zásady [azure.microsoft.com/support/legal/marketplace/participation-policies](https://azure.microsoft.com/support/legal/marketplace/participation-policies).  
+Nejste billed další poplatky za účast v prodejní místa na webu marketplace.  
+*   Další informace najdete na webu Azure Marketplace zásadách pro účast na stránce umístění [azure.microsoft.com/support/legal/marketplace/participation-policies](https://azure.microsoft.com/support/legal/marketplace/participation-policies).  
 
-## <a name="pay-as-you-go-and-bring-your-own-license-billing-options"></a>Průběžné platby a přineste vlastní možnosti fakturace licence  
-Použijete-li jako možnost publikování průběžnými platbami fakturační model, na základě využití softwaru, které je licencování výnosy sdílené 80/20 mezi vámi a Microsoft. Na jednu nabídku může za cenu pomocí průběžné platby a BYOL fakturačních modelů. Dva modely fakturace existovat vedle sebe na úrovni nabídka jako samostatné jednotky SKU. Nakonfigurujete z fakturačních modelů do vaší nabídky na portál pro partnery cloudu. 
+## <a name="pay-as-you-go-and-bring-your-own-license-billing-options"></a>S průběžnými platbami a přinést vlastní licenci možnosti fakturace  
+Při použití modelu s průběžnými platbami fakturace jako možnost publikování softwaru na základě využití, které licencování výnosy jsou sdílené 80/20 mezi vámi a společností Microsoft. Jediné nabídky může ceny s průběžnými platbami a BYOL modely fakturace. Dva modely fakturace existovat vedle sebe na úrovni nabídka jako samostatné skladové položky. Nakonfigurujte modely fakturace ve vaší nabídce na portál partnerů cloudu. 
 
 Vezměte v úvahu následující příklady.  
-*   Pokud povolíte možnost průběžné platby, máte následující výsledek.  
-    | Licence na aplikaci náklady. | 1,00 za hodinu |  
+*   Pokud povolíte možnost s průběžnými platbami, máte následující výsledek.  
+    | Vaše náklady na licence | 1,00 $ za hodinu |  
     |:--- |:--- |  
-    | Náklady na používání Azure (D1 nebo 1jader) | 0.14 za hodinu |  
-    | *Společnost Microsoft se fakturuje zákazníka* | *1.14 za hodinu* |  
+    | Náklady na využití Azure (D1 / 1jader) | 0.14 za hodinu |  
+    | *Microsoft účtuje* | *1.14 $ za hodinu* |  
 
-    V tomto scénáři bills Microsoft 1.14 za hodinu pro použití vaše publikované image virtuálního počítače.  
-    | Účty Microsoft | 1.14 za hodinu |  
+    V tomto scénáři účtuje Microsoft 1.14 $ za hodinu za použití publikované image virtuálního počítače.  
+    | Microsoft účtuje | 1.14 $ za hodinu |  
     |:--- |:--- |  
-    | Společnost Microsoft platí, 80 % vaše náklady na licence | 0,80 za hodinu |  
-    | Microsoft udržuje 20 % vaše náklady na licence | 0,20 za hodinu |  
-    | Microsoft udržuje náklady na používání Azure | 0.14 za hodinu |  
+    | Společnost Microsoft platí, 80 % vaše náklady na licence | 0,80 $ za hodinu |  
+    | Microsoft si ponechá 20 % vaše náklady na licence | 0.20 za hodinu |  
+    | Microsoft si ponechá náklady na využití Azure | 0.14 za hodinu |  
 
 *   Pokud povolíte možnost BYOL, máte následující výsledek.  
-    | Licence na aplikaci náklady. | Licence poplatek vyjednal a účtují vámi |  
+    | Vaše náklady na licence | Licenční poplatek za vyjednávat a účtuje se podle vás |  
     |:--- |:--- |  
-    | Náklady na používání Azure (D1 nebo 1jader) | 0.14 za hodinu |  
-    | *Společnost Microsoft se fakturuje zákazníka* | *0.14 za hodinu* |  
+    | Náklady na využití Azure (D1 / 1jader) | 0.14 za hodinu |  
+    | *Microsoft účtuje* | *0.14 za hodinu* |  
 
-    V tomto scénáři bills Microsoft 0.14 za hodinu pro použití vaše publikované image virtuálního počítače.  
-    | Účty Microsoft | 0.14 za hodinu |  
+    V tomto scénáři účtuje Microsoft 0.14 $ za hodinu za použití publikované image virtuálního počítače.  
+    | Microsoft účtuje | 0.14 za hodinu |  
     |:--- |:--- |  
-    | Microsoft udržuje náklady na používání Azure | 0.14 za hodinu |  
-    | Microsoft udržuje 0 % vaše náklady na licence | 0,00 Kč za hodinu |  
+    | Microsoft si ponechá náklady na využití Azure | 0.14 za hodinu |  
+    | Microsoft udržuje vaše náklady na licence % 0 | 0,00 USD za hodinu |  
 
-## <a name="single-billing-and-payment-methods"></a>Jedním fakturace a způsoby platby  
-Důležité výhodou používání Transact výpis možnost je, že vaše náklady na licencování a Azure využití jedním účtují přímo do vašich zákazníků.  
+## <a name="single-billing-and-payment-methods"></a>Jedním fakturace a platby  
+Důležitou výhodou použití příkazů jazyka Transact výpis možností je, že náklady na licencování a využití Azure se účtuje jedním přímo pro vaše zákazníky.  
 
-Ve scénáři společnost Microsoft bills a shromažďuje vaším jménem. Microsoft fakturace eliminuje požadavek pro vytvoření vlastní nákup vztah se zákazníkem. Jedním fakturace může ušetřit čas a prostředky. Vám umožňuje zaměřit se na úvodní prodeji, nikoli shromažďování kusovníku mohou pomoci jedním fakturace. 
+Ve scénáři společnost Microsoft fakturuje a shromažďuje vaším jménem. Fakturace Microsoft eliminuje nutnost vytvořit vlastní zajišťování vztah se zákazníkem. Jedním fakturaci může šetřit čas i prostředky. Jedním fakturaci může pomoct vám umožní zaměřit se na úvodní prodeje, a nikoli shromažďování faktury. 
 
 ## <a name="enterprise-agreement"></a>Smlouva Enterprise  
-Pokud jste zákazník Enterprise Agreement (EA) se společností Microsoft, mohou používat vaše EA platit pro produkty společnosti Microsoft. Může účtovat produkty včetně vašeho Azure využití. Používání vaší EA věnovat je navržené pro organizace, které chcete licencí softwaru a cloudové služby na nejméně tři roky. Rozložené platby místo jeden provádění počáteční platby. Pokud používáte průběžné platby transact typ seznamu, pak fakturace náklady na licencování softwaru pro následuje čtvrtletně Nadlimitní fakturačního cyklu EA.  
+Pokud jste zákazníkem Enterprise Agreement (EA) se společností Microsoft, mohou použít příslušné smlouvy EA platí pro produkty společnosti Microsoft. Může se vám účtovat strategickým a důležitým využívání služeb Azure. Pomocí příslušné smlouvy EA platit je navržené pro organizace, které chcete licencí softwaru a cloudových služeb pro tři nebo více let. Rozprostřete platby místo jednoho provádění platbou předem. Pokud použijete s průběžnými platbami transact výpis typ, pak následuje fakturace pro vaše náklady na licencování softwaru čtvrtletní při překročení limitu fakturačního cyklu EA.  
 
 ### <a name="monetary-commitment"></a>Peněžní závazek  
-Pokud jste zákazník EA, může přidat Azure pro vaše smlouvy. Azure přidáte do vaší smlouvy tím, že předem peněžních závazků do Azure. Peněžních závazků obsazením po celý rok. Vaše nasazení obsahuje libovolnou kombinaci využití širokou škálu služeb Azure.  
+Pokud jste zákazník EA, může přidat Azure do vaší smlouvy. Přidat Azure do vaší smlouvy prostřednictvím počátečního peněžního závazku využívání služeb Azure. Svůj peněžní závazek se spotřebovává během roku. Váš závazek obsahuje libovolnou kombinaci využití nejrůznějších služeb v Azure.  
 
 ## <a name="next-steps"></a>Další postup
-*   Přejděte [AppSource vydavatele průvodce a Azure Marketplace](./marketplace-publishers-guide.md) stránky.  
+*   Přejděte [Azure Marketplace a AppSource příručce pro vydavatele](./marketplace-publishers-guide.md) stránky.  
  
 ---  

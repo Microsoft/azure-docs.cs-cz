@@ -1,6 +1,6 @@
 ---
-title: Vizualizace vašeho clusteru pomocí Azure Service Fabric Explorer | Microsoft Docs
-description: Service Fabric Explorer je aplikace pro kontroly a správa cloudových aplikací a uzly v clusteru s podporou Microsoft Azure Service Fabric.
+title: Vizualizace clusteru pomocí Azure Service Fabric Exploreru | Dokumentace Microsoftu
+description: Service Fabric Explorer je aplikace pro kontrolu a správu cloudových aplikací a uzlů v clusteru s Microsoft Azure Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: mikkelhegn
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2018
 ms.author: mikhegn
-ms.openlocfilehash: 916742d89447af4097d37b5d78e97ff86c12834c
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 459dd86fd614cb185801b074cea70c36dc7f6ccb
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34210177"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38972328"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>Vizualizujte cluster pomocí Service Fabric Exploreru
 
-Service Fabric Explorer (SFX) je nástroj open source pro kontroly a správě clusterů Azure Service Fabric. Service Fabric Explorer je aplikace pro Windows a Linux. Podpora systému MacOS tu bude brzo dostupná.
+Service Fabric Exploreru (SFX) je opensourcový nástroj pro kontrolu a správu clusterů Azure Service Fabric. Service Fabric Explorer je desktopová aplikace pro Windows, macOS a Linux.
 
-## <a name="service-fabric-explorer-download"></a>Stažení Service Fabric Exploreru
+## <a name="service-fabric-explorer-download"></a>Stáhnout Service Fabric Exploreru
 
-Chcete-li stáhnout Service Fabric Explorer jako desktopová aplikace pomocí následujících odkazů:
+Chcete-li stáhnout Service Fabric Explorer, jako desktopová aplikace pomocí následujících odkazů:
 
 - Windows
   - https://aka.ms/sfx-windows
@@ -40,87 +40,87 @@ Chcete-li stáhnout Service Fabric Explorer jako desktopová aplikace pomocí n�
   - https://aka.ms/sfx-macos
 
 > [!NOTE]
-> Verze aplikace Service Fabric Explorer může mít více nebo méně funkcí než podpora clusteru. Vám může vrátit zpět na verzi Service Fabric Explorer nasazené na clusteru pro zajištění kompatibility úplné funkce.
+> Desktopová verze Service Fabric Explorer může mít více nebo méně funkcí než podpora clusteru. Vám může vrátit zpět k verzi Service Fabric Explorer nasadí do clusteru pro zajištění kompatibilitě úplné funkce.
 >
 >
 
 ### <a name="running-service-fabric-explorer-from-the-cluster"></a>Spuštění z clusteru Service Fabric Exploreru
 
-Service Fabric Explorer také hostovaná v clusteru Service Fabric koncový bod správy protokolu HTTP. Ke spuštění SFX ve webovém prohlížeči, přejděte do clusteru koncový bod správy protokolu HTTP z libovolného prohlížeče – například https://clusterFQDN:19080.
+Service Fabric Explorer je také hostovaná v clusteru Service Fabric koncový bod správy HTTP. SFX spustit ve webovém prohlížeči, přejděte na koncový bod správy HTTP clusteru z libovolného prohlížeče – například https://clusterFQDN:19080.
 
-Pro vývojáře instalace pracovní stanice, můžete spustit Service Fabric Explorer v místním clusteru přechodem na https://localhost:19080/Explorer. Podívejte se na tomto článku [Příprava vývojového prostředí](service-fabric-get-started.md).
+Pro nastavení pracovní stanici vývojáře, můžete spustit Service Fabric Explorer v místním clusteru tak, že přejdete do https://localhost:19080/Explorer. Podívejte se na tomto článku [Příprava vývojového prostředí](service-fabric-get-started.md).
 
-## <a name="connect-to-a-service-fabric-cluster"></a>Připojení ke clusteru Service Fabric
-Pokud chcete připojit ke clusteru Service Fabric, budete potřebovat koncový bod správy clusterů (plně kvalifikovaný název domény nebo IP adresy) a port pro koncový bod správy protokolu HTTP (19080 ve výchozím nastavení). Například https://mysfcluster.westus.cloudapp.azure.com:19080. Zaškrtnutím políčka "Připojení k localhost" pomocí připojení k místnímu clusteru na pracovní stanici.
+## <a name="connect-to-a-service-fabric-cluster"></a>Připojte se ke clusteru Service Fabric
+K připojení ke clusteru Service Fabric, potřebujete koncový bod správy clusterů (plně kvalifikovaný název domény nebo IP) a protokolu HTTP port koncového bodu správy (clusteru 19080 ve výchozím nastavení). Například https://mysfcluster.westus.cloudapp.azure.com:19080. Zaškrtávací políčko "Připojit k místnímu hostiteli" slouží k připojení k místnímu clusteru na pracovní stanici.
 
 ### <a name="connect-to-a-secure-cluster"></a>Připojení k zabezpečenému clusteru
-Ke svému clusteru Service Fabric pomocí certifikátů nebo pomocí Azure Active Directory (AAD) můžete řídit přístup klienta.
+Řízení přístupu klientů ke clusteru Service Fabric pomocí certifikátů nebo pomocí Azure Active Directory (AAD).
 
-Pokud se pokusíte připojit k zabezpečení clusteru, pak v závislosti na konfiguraci clusteru bude se budete muset certifikát klienta k dispozici nebo se přihlaste pomocí AAD.
+Pokud se pokusíte připojit k zabezpečenému clusteru, pak v závislosti na konfiguraci clusteru budete se muset předložit certifikát klienta nebo přihlášení pomocí AAD.
 
 ## <a name="video-tutorial"></a>Videokurz
 
-Informace o použití Service Fabric Explorer najdete v následujícím videu Microsoft Virtual Academy:
+Naučte se používat Service Fabric Exploreru, podívejte se na následující video Microsoft Virtual Academy:
 
 > [!NOTE]
-> Toto video ukazuje, že Service Fabric Explorer hostovaný Cluster Service Fabric není verzi pro stolní počítače.
+> Toto video ukazuje, že Service Fabric Explorer hostovaný v clusteru Service Fabric, ne desktopová verze.
 >
 >
 
 [<center><img src="./media/service-fabric-visualizing-your-cluster/SfxVideo.png" WIDTH="360" HEIGHT="244"></center>](https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=bBTFg46yC_9806218965)
 
-## <a name="understand-the-service-fabric-explorer-layout"></a>Pochopení rozložení Service Fabric Exploreru
-Pomocí stromové struktury nalevo můžete přejít pomocí Service Fabric Exploreru. Řídicí panel clusteru v kořenu stromu, obsahuje přehled clusteru, včetně shrnutí stavu uzlu a aplikace.
+## <a name="understand-the-service-fabric-explorer-layout"></a>Principy rozložení Service Fabric Exploreru
+Service Fabric Explorer můžete procházet pomocí stromu na levé straně. V kořenovém adresáři stromu řídicí panel clusteru poskytuje přehled o clusteru včetně souhrnu stavu aplikací a uzlů.
 
 ![Řídicí panel clusteru Service Fabric Exploreru][sfx-cluster-dashboard]
 
 ### <a name="view-the-clusters-layout"></a>Zobrazit rozložení clusteru
-Uzly v clusteru Service Fabric se umístí napříč dvourozměrná mřížku domén selhání a upgradu domény. Toto umístění zaručuje, že vaše aplikace zachovány k dispozici v případě selhání hardwaru a upgrady aplikací. Můžete zobrazit, jak aktuální cluster rozložená pomocí mapy clusteru.
+Uzly v clusteru Service Fabric jsou umístěny v dvojrozměrné mřížky domén selhání a upgradovacími doménami. Toto umístění se zajistí, že vaše aplikace zůstanou dostupné i za přítomnosti selhání hardwaru a upgrady aplikací. Můžete zobrazit, jak se aktuální cluster rozloženy pomocí mapy clusterů.
 
 ![Mapa clusteru Service Fabric Exploreru][sfx-cluster-map]
 
-### <a name="view-applications-and-services"></a>Zobrazení aplikace a služby
-Cluster obsahuje dva podstromy: jeden pro aplikace a druhý pro uzly.
+### <a name="view-applications-and-services"></a>Zobrazit aplikace a služby
+Obsahuje dva podstromy clusteru: jeden pro aplikace a druhý pro uzly.
 
-Zobrazení aplikací můžete procházet logické hierarchie Service Fabric: aplikace, služby, oddíly a repliky.
+Zobrazení aplikací můžete použít k procházení mezi logické hierarchie Service Fabric: aplikace, služby, oddíly a repliky.
 
-V příkladu níže aplikace **Moje aplikace** se skládá ze dvou služeb **MyStatefulService** a **WebService**. Vzhledem k tomu **MyStatefulService** je stavová, obsahuje oddíl s jeden primární a dva sekundární repliky. Naopak WebSvcService je bezstavové a obsahuje jednu instanci.
+V příkladu níže použití **MyApp** se skládá ze dvou služeb **MyStatefulService** a **webová služba**. Protože **MyStatefulService** je stavový, obsahuje oddíl s jeden primární a dva sekundární repliky. Naopak WebSvcService je bezstavové a obsahuje jednu instanci.
 
 ![Zobrazení aplikace Service Fabric Exploreru][sfx-application-tree]
 
-Na každé úrovni stromu hlavním podokně zobrazí příslušné informace o položce. Například se zobrazí stav a verze pro konkrétní službu.
+Jednotlivé úrovně stromu hlavním podokně se zobrazí relevantní informace o položce. Například vidíte stav a verze pro konkrétní službu.
 
 ![Podokno essentials Service Fabric Exploreru][sfx-service-essentials]
 
-### <a name="view-the-clusters-nodes"></a>Zobrazení uzlů clusteru
-Zobrazení uzlu obsahuje fyzické rozložení clusteru. Pro daný uzel můžete zjistit, které aplikace mají v uzlu nasazený kód. Přesněji řečeno uvidíte, které repliky jsou aktuálně spuštěné existuje.
+### <a name="view-the-clusters-nodes"></a>Zobrazit uzly clusteru
+Zobrazení uzlu obsahuje fyzické rozložení clusteru. Pro daný uzel můžete zjistit, které aplikace mají v uzlu nasazený kód. Přesněji řečeno zobrazí se replik, které jsou aktuálně spuštěné.
 
 ## <a name="actions"></a>Akce
-Service Fabric Explorer nabízí rychlý způsob, jak vyvolání akce na uzly, aplikace a služby v rámci clusteru.
+Service Fabric Explorer nabízí rychlý způsob, jak vyvolat akce na uzly, aplikace a služby v rámci vašeho clusteru.
 
-Chcete-li odstranit instanci aplikace, například ze stromu na levé straně zvolte aplikaci a poté zvolte **akce** > **odstranit aplikaci**.
+Odstranění instance aplikace, například aplikace vyberte ze stromu na levé straně a klikněte na tlačítko **akce** > **odstranit aplikaci**.
 
-![Odstranění aplikace v Service Fabric Exploreru][sfx-delete-application]
+![Odstraňuje se aplikace v Service Fabric Exploreru][sfx-delete-application]
 
 > [!TIP]
-> Kliknutím na tlačítko se třemi tečkami vedle jednotlivých prvků můžete provádět stejné akce.
+> Stejné akce můžete provést kliknutím na tři tečky vedle každého prvku.
 >
-> Každou akci, která lze provádět pomocí Service Fabric Explorer můžete provést i pomocí prostředí PowerShell nebo rozhraní REST API, jak povolit automatizaci.
+> Každá akce, které lze provést pomocí Service Fabric Explorer lze provést také pomocí Powershellu nebo rozhraní REST API, jak povolit automatizaci.
 >
 >
 
-Můžete také Service Fabric Explorer pro vytvoření instancí aplikace daný typ a verze aplikace. Vyberte typ aplikace, v zobrazení stromu a pak klikněte na **vytvořit instanci aplikace** odkaz vedle verze byste chtěli v pravém podokně.
+Service Fabric Exploreru můžete také použít k vytvoření instance aplikace daný typ a verze aplikace. Vyberte typ aplikace ve stromovém zobrazení klikněte **instance aplikace vytvořit** odkaz vedle verzí byste chtěli v pravém podokně.
 
 ![Vytvoření instance aplikace v Service Fabric Exploreru][sfx-create-app-instance]
 
 > [!NOTE]
-> Service Fabric Explorer nepodporuje parametry, při vytváření instancí aplikace. Instance aplikace používají výchozí hodnoty parametrů.
+> Service Fabric Explorer nepodporuje parametry při vytváření instancí aplikace. Instance aplikace použít výchozí hodnoty parametrů.
 >
 >
 
 ## <a name="next-steps"></a>Další postup
-* [Správu aplikací Service Fabric v sadě Visual Studio](service-fabric-manage-application-in-visual-studio.md)
-* [Nasazení aplikace Service Fabric pomocí prostředí PowerShell](service-fabric-deploy-remove-applications.md)
+* [Správa aplikací Service Fabric v sadě Visual Studio](service-fabric-manage-application-in-visual-studio.md)
+* [Nasazení aplikace Service Fabric pomocí Powershellu](service-fabric-deploy-remove-applications.md)
 
 <!--Image references-->
 [sfx-cluster-dashboard]: ./media/service-fabric-visualizing-your-cluster/SfxClusterDashboard.png

@@ -1,6 +1,6 @@
 ---
-title: Vytvoření virtuální sítě pomocí konfiguračního souboru sítě | Prostředí PowerShell | Classic | Microsoft Docs
-description: Naučte se vytvořit virtuální síť pomocí konfiguračního souboru sítě na portálu Azure.
+title: Vytvoření virtuální sítě pomocí souboru konfigurace sítě | Prostředí PowerShell | Classic | Dokumentace Microsoftu
+description: Zjistěte, jak vytvořit virtuální síť pomocí souboru konfigurace sítě na webu Azure Portal.
 services: virtual-network
 documentationcenter: ''
 author: genlin
@@ -16,13 +16,13 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
 ms.openlocfilehash: 3ca59df7496eeea3c5f8289b10dfa23e403f919f
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31797831"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38712942"
 ---
-# <a name="create-a-virtual-network-classic-using-a-network-configuration-file-with-powershell"></a>Vytvoření virtuální sítě (klasické) pomocí konfiguračního souboru sítě pomocí prostředí PowerShell
+# <a name="create-a-virtual-network-classic-using-a-network-configuration-file-with-powershell"></a>Vytvoření virtuální sítě (classic) pomocí souboru konfigurace sítě pomocí Powershellu
 [!INCLUDE [virtual-networks-create-vnet-selectors-classic-include](../../includes/virtual-networks-create-vnet-selectors-classic-include.md)]
 
 [!INCLUDE [virtual-networks-create-vnet-intro](../../includes/virtual-networks-create-vnet-intro-include.md)]

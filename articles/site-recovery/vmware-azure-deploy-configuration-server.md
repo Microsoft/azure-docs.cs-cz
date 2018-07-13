@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 07/06/2018
 ms.author: raynew
 ms.openlocfilehash: 240f5270d083fa5f4742f3ed2cd61feee2b635ec
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
-ms.translationtype: HT
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37919344"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38718953"
 ---
 # <a name="deploy-a-configuration-server"></a>Nasazení konfiguračního serveru
 

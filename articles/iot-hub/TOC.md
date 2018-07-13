@@ -263,6 +263,11 @@
 ### [Sady SDK pro zařízení IoT](/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks) 
 
 # Zdroje a prostředky
+## [Ukázky Azure IoT pro C# (.NET)](https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/)
+## [Ukázky Azure IoT pro Node.js](https://azure.microsoft.com/resources/samples/azure-iot-samples-node/)
+## [Ukázky Azure IoT pro jazyk Java](https://azure.microsoft.com/resources/samples/azure-iot-samples-java/)
+## [Ukázky Azure IoT pro Python](https://azure.microsoft.com/resources/samples/azure-iot-samples-python/)
+## [Ukázky Azure IoT pro platformu iOS](https://azure.microsoft.com/resources/samples/azure-iot-samples-ios/)
 ## [Katalog zařízení Azure Certified for IoT](https://catalog.azureiotsuite.com/)
 ## [Centrum pro vývojáře Azure IoT](https://azure.microsoft.com/develop/iot/)
 ## [Požadavky na zákaznická data](iot-hub-customer-data-requests.md)

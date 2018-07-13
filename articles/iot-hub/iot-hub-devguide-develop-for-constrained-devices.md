@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub vývoji pro omezené zařízení | Microsoft Docs
-description: Příručka vývojáře – pokyny pro vývoj pomocí sady SDK služby Azure IoT pro omezené zařízení.
+title: Azure IoT Hub vyvíjet pro zařízení s omezením | Dokumentace Microsoftu
+description: Příručka pro vývojáře – pokyny pro vývoj pomocí sady Azure IoT SDK pro zařízení s omezením.
 services: iot-hub
 documentationcenter: c
 author: yzhong94
@@ -14,66 +14,66 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/24/2018
 ms.author: yizhon
-ms.openlocfilehash: 62065b78e3f8191c6423ba9dba4a8f7d16fad114
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 15fc5794c71428b5fb1036060af3e9c4a6890f4f
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34654843"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969057"
 ---
-# <a name="develop-for-constrained-devices-using-azure-iot-sdks"></a>Vývoj pro omezené zařízení pomocí sady SDK služby Azure IoT
+# <a name="develop-for-constrained-devices-using-azure-iot-sdks"></a>Vývoj pro omezené zařízení pomocí sad SDK Azure IoT
 
 ## <a name="develop-using-azure-iot-hub-c-sdk"></a>Vývoj pomocí sady SDK Azure IoT Hub C
-Azure IoT Hub C SDK je napsán v ANSI C (C99), takže je vhodné pracovat mnoha různých platforem s malé nároky disku a paměť.  Doporučená velikost paměti RAM je minimálně 64 KB, ale nároky na paměť přesný závisí na protokol použitý, počet připojení otevřené, jakož i cílové platformy.
+C SDK pro Azure IoT Hub je zapsána ve standardu ANSI C (C99), takže je vhodné pracovat různých platformách s malou stopu disku a paměti.  Doporučená velikost paměti RAM je minimálně 64 KB, ale přesné paměťové nároky závisí na protokol použitý, počet otevřených připojení, stejně jako cílové platformy.
 
-C SDK je k dispozici v podobě balíčku z výstižný get, NuGet a MBED.  Pokud chcete zacílit omezené zařízení, můžete sestavení sady SDK místně pro svou cílovou platformu. Tato dokumentace ukazuje, jak k odebrání některých funkcí zmenšit nároky na používání sady SDK C [cmake][lnk-cmake].  Kromě toho tato dokumentace popisuje nejlepší postup programovací modely pro práci s omezené zařízení.
+SDK pro jazyk C je k dispozici v balíčku formuláře pomocí apt-get, NuGet a MBED.  Chcete-li cílit na zařízení s omezením, je sestavení sady SDK pro cílovou platformu. Tato dokumentace ukazuje, jak odebrat některé funkce pro zmenšení nároky pomocí SDK pro jazyk C [cmake][lnk-cmake].  Kromě toho tato dokumentace popisuje osvědčený postup programovacích modelů pro práci s omezeným zařízení.
 
-### <a name="building-the-c-sdk-for-constrained-devices"></a>Sestavení sady SDK C pro omezené zařízení
+### <a name="building-the-c-sdk-for-constrained-devices"></a>Sestavení C SDK pro zařízení s omezením
 #### <a name="prerequisites"></a>Požadavky
-Potom zadejte [Průvodce nastavením] [ lnk-devbox-setup] Příprava vývojového prostředí pro vytváření C sady SDK.  Předtím, než dojde k kroku pro vytvoření s cmake, můžete vyvolat cmake příznaky tak, aby odebrat nepoužité funkce.
+Použít tento [Průvodce nastavením] [ lnk-devbox-setup] Příprava vývojového prostředí pro sestavení sady SDK C.  Než se ponoříte do kroku pro sestavení pomocí cmake, můžete vyvolat cmake příznaky odebrat nepoužívané funkce.
 
-#### <a name="remove-additional-protocol-libraries"></a>Odeberte další protokol knihovny
-C SDK podporuje pět protokoly dnes: MQTT, MQTT přes protokol WebSocket, AMQPs, AMQP prostřednictvím protokolu WebSocket a HTTPS.    Většina scénářů vyžaduje jednu až dvě protokoly spuštění v klientském počítači, proto je možné odebrat protokol knihovna, kterou nepoužíváte ze sady SDK.  Další informace o volbě příslušnou komunikační protokol, pro váš scénář naleznete v tomto [dokumentu][lnk-choosing-protocol].  Například MQTT je zjednodušený protokol, který je často vhodnější pro omezené zařízení.
+#### <a name="remove-additional-protocol-libraries"></a>Odebrat další protokol knihovny
+SDK pro jazyk C podporuje pět protokoly ještě dnes: protokol MQTT, MQTT přes protokol WebSocket, AMQPs, AMQP přes WebSocket a HTTPS.    Většina scénářů vyžaduje jeden až dva protokoly spuštění v klientském počítači, proto můžete odebrat protokolu knihovny, které nepoužíváte ze sady SDK.  Další informace o výběru příslušné komunikační protokol, pro váš scénář lze najít v tomto [dokumentu][lnk-choosing-protocol].  Například MQTT je jednoduchý protokol, který je často vhodnější pro zařízení s omezením.
 
-Můžete odebrat AMQP a HTTP knihovny pomocí následujícího příkazu cmake:
+Můžete odebrat knihovny AMQP a HTTP pomocí následujícího příkazu cmake:
 ```
 cmake -Duse_amqp=OFF -Duse_http=OFF <Path_to_cmake>
 ```
 
-#### <a name="remove-sdk-logging-capability"></a>Odebrání možnosti protokolování v sadě SDK
-C SDK poskytuje rozsáhlé protokolování v rámci pomoci při ladění. Můžete odebrat možnosti protokolování pro produkční zařízení pomocí následujícího příkazu cmake:
+#### <a name="remove-sdk-logging-capability"></a>Odebrání možnosti protokolování sady SDK
+SDK pro jazyk C poskytuje rozsáhlou protokolování v rámci pomoci s laděním. Můžete odebrat možnosti protokolování pro produkční zařízení pomocí následujícího příkazu cmake:
 ```
 cmake -Dno_logging=OFF <Path_to_cmake>
 ```
 
-#### <a name="remove-upload-to-blob-capability"></a>Odebrat odesílání do objektu blob schopností
-Můžete nahrát velkých souborů do služby Azure Storage pomocí integrované funkce v sadě SDK.  Azure IoT Hub funguje jako dispečera do přidruženého účtu úložiště Azure.  Tato funkce slouží k odesílání souborů médií, velké telemetrie dávky a protokoly.  Další informace o nahrání souborů službou IoT Hub v tomto [dokumentu][lnk-hub-file-upload].  Pokud aplikace nevyžaduje tuto funkci, můžete tuto funkci pomocí následujícího příkazu cmake odebrat:
+#### <a name="remove-upload-to-blob-capability"></a>Odebrat nahrávání do objektu blob funkce
+Nahrávání velkých souborů do služby Azure Storage pomocí integrované funkce v sadě SDK.  Azure IoT Hub funguje jako dispečer do přidruženého účtu Azure Storage.  Tato funkce slouží k odesílání mediálních souborů, velké telemetrických dat dávek a protokoly.  Přečtěte si další informace o nahrávání souborů pomocí služby IoT Hub v tomto [dokumentu][lnk-hub-file-upload].  Pokud vaše aplikace nevyžaduje, aby tuto funkci, můžete odebrat tuto funkci pomocí následujícího příkazu cmake:
 ```
 cmake -Ddont_use_uploadtoblob=ON <Path_to_cmake>
 ```
 #### <a name="running-strip-on-linux-environment"></a>Spuštěné pruhu v prostředí Linux
-Pokud vaše binární soubory spustit v systému Linux, můžete využít [pruhu příkaz] [ lnk-strip] ke snížení velikosti konečné aplikace po kompilace.
+Pokud vaše binární soubory spustit v systému Linux, můžete využít [pruhu příkaz] [ lnk-strip] ke zmenšení velikosti konečné aplikace po kompilaci.
 ```
 strip -s <Path_to_executable>
 ```
 
-### <a name="programming-models-for-constrained-devices"></a>Programování modely pro omezené zařízení
-#### <a name="avoid-using-the-serializer"></a>Nepoužívejte serializátor
-Sada SDK C obsahuje volitelný [serializátor][lnk-serializer], která umožňuje použít k definování metody a vlastnosti zařízení twin deklarativní mapování tabulek.  Serializátor je navržena pro zjednodušení vývoj, ale přidá režie, což není optimální pro omezené zařízení.  V tomto případě zvažte použití jednoduchých rozhraní API klienta a analyzovat json pomocí lightweight analyzátor [parson][lnk-parson].
+### <a name="programming-models-for-constrained-devices"></a>Programovací modely pro omezené zařízení
+#### <a name="avoid-using-the-serializer"></a>Vyhněte se použití serializátoru
+SDK pro jazyk C obsahuje volitelný [serializátor][lnk-serializer], která umožňuje definovat metody a vlastnosti dvojčat zařízení pomocí deklarativní mapování tabulek.  Serializátor je navržené pro zjednodušení vývoje, ale přidá režie, což není ideální pro zařízení s omezením.  V takovém případě zvažte použití primitivní klientských rozhraní API a parsování formátu json pomocí jednoduchý analyzátor [parson][lnk-parson].
 
-#### <a name="use-the-lower-layer-ll"></a>Použití nižší vrstvy (_UDOU_)
-C SDK podporuje dva programovací modely.  Má jedna sada rozhraní API se _UDOU_ infix, což je zkratka pro nižší úrovně.  Tato sada rozhraní API jsou světlejší váhy a není začne pracovat pracovních vláken, což znamená, že uživatel musí ručně řídit plánování.  Například pro klienta zařízení _UDOU_ rozhraní API najdete v tomto [soubor hlaviček](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/inc/iothub_device_client_ll.h).  Další sadu rozhraní API bez _UDOU_ index se nazývá vrstva pohodlí, kde je automaticky spouštějí pracovní vlákno.  Například pohodlí vrstvu rozhraní API pro klienta zařízení najdete v tomto [soubor hlaviček](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/inc/iothub_device_client.h).  Omezené zařízení, kde každé další vlákno, může trvat dlouhou procento prostředky systému, zvažte použití _UDOU_ rozhraní API.
+#### <a name="use-the-lower-layer-ll"></a>Použití nižší vrstvě (_LL_)
+SDK pro jazyk C podporuje dvou programovacích modelů.  Jedna sada obsahuje rozhraní API pomocí _LL_ infix, což je zkratka pro nižší úrovně.  Tato sada rozhraní API jsou míň váha a není uveďte do provozu pracovní vlákna, což znamená, že uživatel musí ručně řídit, plánování.  Například pro klienta zařízení _LL_ rozhraní API najdete v tomto [hlavičkový soubor](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/inc/iothub_device_client_ll.h).  Další sadu rozhraní API bez _LL_ index se nazývá pohodlí vrstva, ve kterém je pracovní podproces podařilo automaticky.  Například pohodlí vrstvu rozhraní API pro klienty zařízení najdete v tomto [hlavičkový soubor](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/inc/iothub_device_client.h).  Pro omezené zařízení, kde každé další vlákno může trvat značné procento systémové prostředky, zvažte použití _LL_ rozhraní API.
 
 ## <a name="next-steps"></a>Další postup
-Další informace o architektuře sady SDK Azure IoT C:
+Další informace o architektuře Azure IoT C SDK:
 -   [Azure IoT C SDK zdrojového kódu](https://github.com/Azure/azure-iot-sdk-c/)
--   [Pro zařízení Azure IoT SDK Úvod C](https://docs.microsoft.com/azure/iot-hub/iot-hub-device-sdk-c-intro)
+-   [Pro zařízení Azure IoT SDK pro C Úvod](https://docs.microsoft.com/azure/iot-hub/iot-hub-device-sdk-c-intro)
 
 ------
 [lnk-cmake]: https://cmake.org/
 [lnk-devbox-setup]:  https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md
 [lnk-choosing-protocol]: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-protocols
-[lnk-hub-file-upload]: https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-file-upload
+[lnk-hub-file-upload]: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-file-upload
 [lnk-strip]: https://en.wikipedia.org/wiki/Strip_(Unix)
 [lnk-serializer]: https://github.com/Azure/azure-iot-sdk-c/tree/master/serializer
 [lnk-parson]: https://github.com/kgabis/parson

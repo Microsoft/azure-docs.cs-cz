@@ -1,6 +1,6 @@
 ---
-title: Rozšíření GeoJSON geometrie v rámci služby Azure Maps | Microsoft Docs
-description: Zjistěte, jak rozšířit GeoJSON geometrie v rámci služby Azure Maps
+title: Rozšíření GeoJSON geometrie ve službě Azure Maps | Dokumentace Microsoftu
+description: Zjistěte, jak rozšířit GeoJSON geometrie ve službě Azure Maps
 author: sataneja
 ms.author: sataneja
 ms.date: 05/17/2018
@@ -8,51 +8,51 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 2cc0e29615ad4fc19040055d847435a9dffa9c95
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 319f9cba23d088553f361b6a0d648bbde94e0743
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34654794"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38968557"
 ---
 # <a name="extending-geojson-geometries"></a>Rozšíření GeoJSON geometrie
 
-Azure Maps obsahuje seznam výkonné rozhraní API pro vyhledávání uvnitř nebo podél zeměpisné funkce.
-Tato rozhraní API standardizovat na [GeoJSON specifikace] [ 1] pro představující funkce zeměpisné (například: stav hranice, trasy).  
+Služba Azure Maps poskytuje seznam výkonné rozhraní API pro hledání vnitřního/podél zeměpisné funkce.
+Tato rozhraní API používají jako standard [specifikaci GeoJSON] [ 1] představující geografické funkce (například: stav hranice, trasy).  
 
-[GeoJSON specifikace] [ 1] podporuje pouze následující geometrie:
+[Specifikaci GeoJSON] [ 1] podporuje pouze následující geometrie:
 
 * GeometryCollection
 * LineString
 * MultiLineString
-* MultiPoint
+* Systému multiPoint
 * MultiPolygon
-* bod
-* mnohoúhelníku
+* Bod
+* Mnohoúhelník
 
-Některé rozhraní API map Azure (například: [vyhledávání uvnitř geometrie](https://docs.microsoft.com/en-us/rest/api/maps/search/postsearchinsidegeometry)) přijměte geometrie jako "Kruh", které nejsou součástí [GeoJSON specifikace][1].
+Některá rozhraní API Azure Maps (například: [hledání uvnitř geometrie](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry)) přijměte geometrie jako "Kruh", které nejsou součástí [specifikaci GeoJSON][1].
 
-Tento článek obsahuje podrobné vysvětlení na tom, jak Azure mapy rozšiřuje [GeoJSON specifikace] [ 1] představují určité geometrie.
+Tento článek poskytuje podrobné vysvětlení na tom, jak Azure Maps rozšiřuje [specifikaci GeoJSON] [ 1] k reprezentaci některých geometrie.
 
-### <a name="circle"></a>kruhu.
+### <a name="circle"></a>Kruh
 
-`Circle` Geometrie není podporována [GeoJSON specifikace][1]. Používáme `GeoJSON Feature` objekt představující kruh.
+`Circle` Geometrie není podporována [specifikaci GeoJSON][1]. Používáme `GeoJSON Feature` objekt reprezentující kruh.
 
-A `Circle` geometrie reprezentovaný pomocí `GeoJSON Feature` objekt __musí__ obsahovat následující:
+A `Circle` vyjadřuje geometrie `GeoJSON Feature` objekt __musí__ obsahovat následující:
 
 1. Na střed
-   >Na kruh center je reprezentována pomocí `GeoJSON Point` typu.
+   >Středu kruhu je reprezentována pomocí `GeoJSON Point` typu.
 
 2. Radius
-   >Na kruh `radius` je reprezentována pomocí `GeoJSON Feature`na vlastnosti. Hodnota poloměru je v _měřidla_ a musí být typu `double`.
+   >Na kruh `radius` se vyjadřuje `GeoJSON Feature`jeho vlastnosti. Hodnota radius _měřiče_ a musí být typu `double`.
 
 3. Podtyp
-   >Kruh geometry, musí také obsahovat `subType` vlastnost. Tato vlastnost musí být součástí `GeoJSON Feature`na vlastnosti a jeho hodnota by měla být _kruhu._
+   >Geometrie kruh musí obsahovat také `subType` vlastnost. Tato vlastnost musí být součástí `GeoJSON Feature`jeho vlastnosti a jeho hodnota by měla být _kruh_
 
 
 #### <a name="example"></a>Příklad:
 
-Zde je, jak budete představují kruh zarovnaný na střed v (šířky: 47.639754, zeměpisné délky:-122.126986) o poloměru rovna 100 měřidla, pomocí `GeoJSON Feature` objektu:
+Zde je, jak budete představují kruh zarovnaný na střed v (zeměpisná šířka: 47.639754, zeměpisná délka:-122.126986) poloměru rovna 100 měřiče pomocí `GeoJSON Feature` objektu:
 
 ```json            
 {

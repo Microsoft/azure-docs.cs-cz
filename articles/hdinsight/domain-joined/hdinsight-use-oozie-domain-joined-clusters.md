@@ -12,12 +12,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/26/2018
 ms.author: omidm
-ms.openlocfilehash: 9e5b7303830f2064f764d2de023b4a3ff9b0ea9f
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 928f6adbb348683a110f7da9b20efaae998290ca
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37449870"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38972209"
 ---
 #<a name="run-apache-oozie-in-domain-joined-hdinsight-hadoop-clusters"></a>Spouštění Apache Oozie v clusterech HDInsight Hadoop připojené k doméně
 Oozie je pracovní postup a koordinaci systém, který spravuje úlohy platformy Hadoop. Oozie integrován do zásobníku Hadoop a podporuje následující úlohy:
@@ -206,7 +206,7 @@ Pracovní postup je rozdělena na dva oddíly:
         examplesRoot=examples
         oozie.wf.application.path=${nameNode}/user/[domainuser]/examples/apps/map-reduce/workflow.xml
         hiveScript1=${nameNode}/user/${user.name}/countrowshive1.hql
-        hiveScript2=${nameNode}/user/${user.name}/countrowshive1.hql
+        hiveScript2=${nameNode}/user/${user.name}/countrowshive2.hql
         oozie.use.system.libpath=true
         user.name=[domainuser]
         jdbcPrincipal=hive/hn0-<ClusterShortName>.<Domain>.com@<Domain>.COM
@@ -229,7 +229,7 @@ Skriptů 2 hive pro hive server 1 a hive server 2 lze vytvořit následujícím 
 -   Soubor Server 1 Hive:
 1.  Použijte následující příkaz k vytvoření a úprava souboru pro hive server 1 akce:
     ```bash
-    nano countrowshive1.xml
+    nano countrowshive1.hql
     ```
 
 2.  Vytvořte skript
@@ -247,7 +247,7 @@ Skriptů 2 hive pro hive server 1 a hive server 2 lze vytvořit následujícím 
 -   Soubor Hive Server 2:
 1.  Použijte následující příkaz k vytvoření a úprava pole pro hive server 2 akce:
     ```bash
-    nano countrowshive2.xml
+    nano countrowshive2.hql
     ```
 
 2.  Vytvořte skript

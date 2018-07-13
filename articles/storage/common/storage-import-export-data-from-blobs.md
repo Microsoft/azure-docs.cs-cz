@@ -1,6 +1,6 @@
 ---
-title: K exportu dat z Azure BLOB pomocí Azure Import/Export | Microsoft Docs
-description: Naučte se vytvářet úlohy exportu na portálu Azure k přenosu dat z Azure BLOB.
+title: Export dat z Azure BLOB pomocí Azure Import/Export | Dokumentace Microsoftu
+description: Informace o vytvoření úlohy exportu na webu Azure portal k přenosu dat z objektů BLOB Azure.
 author: alkohli
 manager: jeconnoc
 services: storage
@@ -9,41 +9,41 @@ ms.topic: article
 ms.date: 05/17/2018
 ms.author: alkohli
 ms.openlocfilehash: eb41708c7446b3139758678c9247ffbb11da8b40
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34660741"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969261"
 ---
-# <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Export dat z Azure Blob storage pomocí služby Azure Import/Export
-Tento článek obsahuje podrobné pokyny o tom, jak používat službu Azure Import/Export bezpečně export velkých objemů dat z Azure Blob storage. Služba vyžaduje, abyste dodávat prázdný jednotek pro datové centrum Azure. Služba exportuje data z vašeho účtu úložiště do jednotky a pak se dodává jednotky zpět.
+# <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Export dat z úložiště objektů Blob v Azure pomocí služby Azure Import/Export
+Tento článek obsahuje podrobné pokyny o tom, jak bezpečně export velkých objemů dat z úložiště objektů Blob v Azure pomocí služby Azure Import/Export. Služba vyžaduje, abyste zasílejte prázdné disky do datacentra Azure. Službu exportuje data z vašeho účtu úložiště do jednotky a potom odešle zpět jednotky.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než vytvoříte úlohy exportu k přenosu dat z Azure Blob Storage, pečlivě zkontrolujte a dokončete následující seznam požadovaných součástí pro tuto službu. Postupujte takto:
+Než začnete vytvářet úlohy exportu pro přenos dat z Azure Blob Storage, pečlivě zkontrolujte a dokončete následující seznam požadovaných součástí pro tuto službu. Musíte mít:
 
 - Máte aktivní předplatné Azure, který lze použít pro službu Import/Export.
-- Máte alespoň jeden účet úložiště Azure. Zobrazit seznam [podporovaný účty úložiště a typy úložiště pro službu Import/Export](storage-import-export-requirements.md). Informace o vytvoření nového účtu úložiště najdete v tématu [postup vytvoření účtu úložiště](storage-create-storage-account.md#create-a-storage-account).
-- Používejte odpovídající počet disky [podporované typy](storage-import-export-requirements.md#supported-disks).
+- Máte alespoň jeden účet služby Azure Storage. Zobrazit seznam [nepodporuje účty úložiště a typy úložiště pro službu Import/Export](storage-import-export-requirements.md). Informace o vytvoření nového účtu úložiště najdete v tématu [způsob vytvoření účtu úložiště](storage-create-storage-account.md#create-a-storage-account).
+- Používejte odpovídající počet disků [podporované typy](storage-import-export-requirements.md#supported-disks).
 
 ## <a name="step-1-create-an-export-job"></a>Krok 1: Vytvoření úlohy exportu
 
-Proveďte následující kroky k vytvoření úlohy exportu na portálu Azure.
+Proveďte následující kroky k vytvoření úlohy exportu na webu Azure Portal.
 
 1. Přihlaste se k https://portal.azure.com/.
-2. Přejděte na **všechny služby > úložiště > úlohy importu a exportu**. 
+2. Přejděte na **všechny služby > úložiště > úlohy Import/export**. 
 
-    ![Přejděte do úlohy importu a exportu](./media/storage-import-export-data-from-blobs/export-from-blob1.png)
+    ![Přejít na úlohy Import/export](./media/storage-import-export-data-from-blobs/export-from-blob1.png)
 
-3. Klikněte na tlačítko **úlohy importu a exportu vytvořit**.
+3. Klikněte na tlačítko **vytvořit úlohu importu/exportu**.
 
     ![Klikněte na úlohu importu/exportu](./media/storage-import-export-data-from-blobs/export-from-blob2.png)
 
 4. V **Základy**:
     
-    - Vyberte **exportovat z Azure**. 
-    - Zadejte popisný název pro úlohu export. Použijte název, který jste se rozhodli sledovat průběh úloh. 
-        - Název může obsahovat jenom malá písmena, číslice, pomlčky a podtržítka.
+    - Vyberte **Export z Azure**. 
+    - Zadejte popisný název pro úlohu exportu. Použijte název, kterou chcete sledovat průběh úlohy. 
+        - Název může obsahovat jenom malá písmena, číslice, spojovníky a podtržítka.
         - Název musí začínat písmenem a nesmí obsahovat mezery. 
     - Vyberte předplatné.
     - Zadejte nebo vyberte skupinu prostředků.
@@ -52,16 +52,16 @@ Proveďte následující kroky k vytvoření úlohy exportu na portálu Azure.
     
 3. V **podrobnosti úlohy**:
 
-    - Vyberte účet úložiště, které se nachází data, která mají být exportovány. 
-    - Odkládací umístění se automaticky vyplní podle oblasti vybrat účet úložiště. 
+    - Vyberte účet úložiště, ve které se nachází data, která mají být exportovány. 
+    - Odkládací umístění se automaticky vyplní podle oblasti pro vybraný účet úložiště. 
     - Zadejte data objektů blob, který chcete exportovat z vašeho účtu úložiště do prázdné jednotku nebo jednotky. 
-    - Zvolit **exportovat všechny** dat v účtu úložiště objektů blob.
+    - Zvolit **exportovat všechny** datům objektu blob na účtu úložiště.
     
-         ![Exportovat veškerý](./media/storage-import-export-data-from-blobs/export-from-blob4.png) 
+         ![Exportovat vše](./media/storage-import-export-data-from-blobs/export-from-blob4.png) 
 
-    - Můžete zadat, které kontejnery a objekty BLOB pro export.
-        - **Chcete-li určit objekt blob pro export**: použití **rovno** selektor. Zadejte relativní cestu do objektu blob, počínaje název kontejneru. Použití *$root* k určení Kořenový kontejner.
-        - **K určení všech objektů BLOB od s předponou**: použití **začíná** selektor. Zadejte předponu, počínaje lomítkem '/'. Předpona, která může být předponu název kontejneru, název dokončení kontejneru nebo název dokončení kontejneru, za nímž následuje předponu názvu objektu blob. Cesty objektů blob v platném formátu. abyste se vyhnuli chybám při zpracování, je nutné zadat, jak je vidět na tomto snímku obrazovky. Další informace najdete v tématu [příklady platný objekt blob cesty](#examples-of-valid-blob-paths). 
+    - Můžete určit, které kontejnery a objekty BLOB k exportu.
+        - **K určení objektu blob k exportu**: použijte **rovno** selektor. Zadejte relativní cestu k objektu blob, počínaje název kontejneru. Použití *$root* určit kořenový kontejner.
+        - **Chcete-li určit všechny objekty BLOB začínajících prefixem**: použití **začíná** selektor. Zadejte předponu, začínající lomítkem (/). Předpona, která může být předpony názvu kontejneru, název kontejneru dokončení nebo kontejner úplný název, za nímž následuje předponu názvu objektu blob. Cesty k objektům blob v platném formátu, aby se zabránilo chybám při zpracování, je nutné zadat, jak je znázorněno na tomto snímku obrazovky. Další informace najdete v tématu [příklady cesty k objektům blob platný](#examples-of-valid-blob-paths). 
    
            ![Exportovat vybrané kontejnery a objekty BLOB](./media/storage-import-export-data-from-blobs/export-from-blob5.png) 
 
@@ -70,83 +70,83 @@ Proveďte následující kroky k vytvoření úlohy exportu na portálu Azure.
         ![Export ze souboru seznamu objektů blob](./media/storage-import-export-data-from-blobs/export-from-blob6.png)  
    
    > [!NOTE]
-   > Pokud při kopírování dat se používá objekt blob pro export, služba Azure Import/Export pořídí snímek objektu blob a zkopíruje snímku.
+   > Pokud objekt blob export se používá při kopírování dat, služba Azure Import/Export pořídí snímek objektu blob a zkopíruje snímek.
  
 
-4. V **vrátí informace o přesouvání**:
+4. V **vrátí informace o expedici**:
 
-    - Z rozevíracího seznamu vyberte zařadit.
-    - Zadejte číslo účtu platný operátora, kterou jste vytvořili pomocí tohoto operátora. Společnost Microsoft používá tento účet pro odeslání jednotky vám po dokončení importu úlohu. 
-    - Zadejte úplný a platné jméno kontaktní osoby, telefon, e-mailu, adresu, města, zip, Kraj a země nebo oblast.
+    - Z rozevíracího seznamu vyberte operátorovi.
+    - Zadejte číslo účtu dopravce platný, kterou jste vytvořili pomocí tohoto operátora. Tento účet Microsoft používá k odeslání jednotky zpět po dokončení úlohy import. 
+    - Zadejte úplné a platné jméno kontaktní osoby, telefonu, e-mailu, adresu, Město, zip, stát/kraj a země/oblast.
    
 5. V **Souhrn**:
 
-    - Zkontrolujte podrobnosti úlohy.
-    - Poznamenejte si adresu přesouvání úlohy název a zadaný datové centrum Azure pro přesouvání disků do Azure. 
+    - Projděte si podrobnosti o úloze.
+    - Poznámka: Úloha názvu a zadané datové centrum Azure dodací adresu pro přesouvání disků do Azure. 
     - Klikněte na tlačítko **OK** k dokončení vytvoření úlohy exportu.
 
 ## <a name="step-2-ship-the-drives"></a>Krok 2: Odeslání jednotky
 
-Pokud neznáte počet jednotek, které potřebujete, přejděte k [Zkontrolujte počet jednotek](#check-the-number-of-drives). Pokud znáte počet jednotek, přejděte k odeslání jednotky.
+Pokud si nejste jisti požadovaný počet jednotek, je nutné, přejděte [zkontrolovat požadovaný počet jednotek](#check-the-number-of-drives). Pokud víte, požadovaný počet jednotek, přejděte k dodávání jednotky.
 
 [!INCLUDE [storage-import-export-ship-drives](../../../includes/storage-import-export-ship-drives.md)]
 
-## <a name="step-3-update-the-job-with-tracking-information"></a>Krok 3: Aktualizace úlohy s informace o sledování
+## <a name="step-3-update-the-job-with-tracking-information"></a>Krok 3: Aktualizace úlohy informace o sledování
 
 [!INCLUDE [storage-import-export-update-job-tracking](../../../includes/storage-import-export-update-job-tracking.md)]
 
 
 ## <a name="step-4-receive-the-disks"></a>Krok 4: Přijímat disky
-Když na řídicím panelu hlásí, že tato úloha skončí, disky jsou sice vám a číslo sledování dodávky je k dispozici na portálu.
+Když řídicím panelu hlásí, že úloha byla dokončena, disky se dodávají se vám a sledovací číslo pro dodávku je k dispozici na portálu.
 
-1. Jakmile se zobrazí na discích s exportovanými daty, které je potřeba získat klíče Bitlockeru k odemknutí jednotky. Přejděte do úlohy exportu na portálu Azure. Klikněte na tlačítko **importu a exportu** kartě. 
-2. Vyberte a klepněte export úlohy ze seznamu. Přejděte na **klíče Bitlockeru** a zkopírujte tyto klíče.
+1. Po přijetí jednotky se exportovaná data, musíte získat klíče Bitlockeru k odemknutí jednotky. Přejděte na úlohu exportu na webu Azure Portal. Klikněte na tlačítko **Import/Export** kartu. 
+2. Vyberte a klikněte v seznamu úloh export. Přejděte na **klíče Bitlockeru** a zkopírování klíče.
    
-   ![Zobrazit klíče nástroje BitLocker pro úlohu export](./media/storage-import-export-service/export-job-bitlocker-keys.png)
+   ![Zobrazovat klíče Bitlockeru pro úlohu exportu](./media/storage-import-export-service/export-job-bitlocker-keys.png)
 
-3. Odemknout disky pomocí klíče Bitlockeru.
+3. Použijte klíče Bitlockeru k odemknutí disky.
 
-Export je dokončena. V tomto okamžiku můžete odstranit úlohy nebo ji získá automaticky odstraněny po 90 dnech.
+Export byl dokončen. V tuto chvíli úlohy můžete odstranit nebo ho získá automaticky odstraněny po 90 dnech.
 
 
-## <a name="check-the-number-of-drives"></a>Zkontrolujte počet jednotek
+## <a name="check-the-number-of-drives"></a>Zkontrolujte požadovaný počet jednotek
 
-To *volitelné* krok pomáhá určuje počet jednotek, které jsou nezbytné pro úlohu exportu. Tento krok proveďte v systému Windows spuštěná [verze operačního systému podporován](storage-import-export-requirements.md#supported-operating-systems).
+To *volitelné* krok pomůže Určuje požadovaný počet jednotek nezbytný k dokončení úlohy exportu. Tento krok proveďte v systému Windows [verze operačního systému nepodporuje](storage-import-export-requirements.md#supported-operating-systems).
 
 1. [Stáhněte si WAImportExport verze 1](https://www.microsoft.com/en-us/download/details.aspx?id=42659) v systému Windows. 
 2. Rozbalte do výchozí složky `waimportexportv1`. Například, `C:\WaImportExportV1`.
-3. Otevřete okno Powershellu nebo příkazového řádku s oprávněními správce. Chcete-li změnit adresář ke složce rozbalené, spusťte následující příkaz:
+3. Otevřete okno Powershellu nebo příkazového řádku s oprávněními správce. Přejít ke složce rozbaleny, spusťte následující příkaz:
     
     `cd C:\WaImportExportV1`
 
-4. Pokud chcete zkontrolovat počet disků, které jsou potřebné pro vybrané objekty BLOB, spusťte následující příkaz:
+4. Pokud chcete zkontrolovat počet disků potřebný pro vybrané objekty BLOB, spusťte následující příkaz:
 
     `WAImportExport.exe PreviewExport /sn:<Storage account name> /sk:<Storage account key> /ExportBlobListFile:<Path to XML blob list file> /DriveSize:<Size of drives used>`
 
-    Parametry jsou popsané v následující tabulce:
+    Parametry jsou popsány v následující tabulce:
     
     |Parametr příkazového řádku|Popis|  
     |--------------------------|-----------------|  
-    |**/logdir:**|Volitelné. K adresáři protokolů. Podrobné soubory protokolu se zapisují do tohoto adresáře. Pokud není zadaný, aktuální adresář se používá jako adresář protokolu.|  
-    |**/sn:**|Povinná hodnota. Název účtu úložiště pro úlohy exportu.|  
-    |**/Sk:**|Povinné, pokud není zadán sdíleného přístupového podpisu kontejneru. Klíč účtu pro účet úložiště pro úlohy exportu.|  
-    |**/csas:**|Povinné, pokud není zadán klíč účtu úložiště. Kontejner SAS pro výpis objekty BLOB ve úloha exportu.|  
-    |**/ ExportBlobListFile:**|Povinná hodnota. Cesta k souboru XML soubor obsahující seznam objektů blob cesty nebo objektu blob předpony cestu pro export objektů BLOB. Formát souboru, který je používán `BlobListBlobPath` element v [Put úlohy](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) operace importu/exportu služby REST API.|  
-    |**/ DriveSize:**|Povinná hodnota. Velikost jednotky použijte pro úlohy exportu, *například*, 500 GB, 1,5 TB.|  
+    |**/logdir:**|Volitelné. Adresář protokolu. Souborů podrobného protokolování se zapisují do tohoto adresáře. Pokud není zadán, aktuální adresář se používá jako adresář protokolu.|  
+    |**/sn:**|Povinná hodnota. Název účtu úložiště pro úlohu exportu.|  
+    |**/Sk:**|Požadováno, pouze pokud není zadán sdíleného přístupového podpisu kontejneru. Klíč účtu pro účet úložiště pro úlohu exportu.|  
+    |**/csas:**|Požadováno, pouze pokud není zadaný klíč účtu úložiště. Sdíleného přístupového podpisu kontejneru pro výpis objektů BLOB nelze exportovat do úlohy exportu.|  
+    |**/ ExportBlobListFile:**|Povinná hodnota. Cesta k souboru XML soubor obsahující seznam cesty k objektům blob nebo objekt blob předpony cesty pro objekty BLOB nelze exportovat. Formát souboru používaný v `BlobListBlobPath` prvek [úlohy umístit](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) operace rozhraní REST API služby Import/Export.|  
+    |**/ DriveSize:**|Povinná hodnota. Velikost disků pro úlohu exportu *třeba*, 500 GB, 1,5 TB.|  
 
-    V tématu [příklad příkaz PreviewExport](#example-of-previewexport-command).
+    Najdete v článku [příklad příkazu PreviewExport](#example-of-previewexport-command).
  
-5. Zkontrolujte, jestli je můžete pro čtení a zápis na discích, které bude dodáno pro úlohu export.
+5. Zkontrolujte, jestli je možné čtení/zápisu pro jednotky, které budou dostupné pro úlohu exportu.
 
-### <a name="example-of-previewexport-command"></a>Příklad PreviewExport příkazu
+### <a name="example-of-previewexport-command"></a>Příklad příkazu PreviewExport
 
-Následující příklad ukazuje `PreviewExport` příkaz:  
+Následující příklad ukazuje, `PreviewExport` příkaz:  
   
 ```  
 WAImportExport.exe PreviewExport /sn:bobmediaaccount /sk:VkGbrUqBWLYJ6zg1m29VOTrxpBgdNOlp+kp0C9MEdx3GELxmBw4hK94f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /ExportBlobListFile:C:\WAImportExport\mybloblist.xml /DriveSize:500GB    
 ```  
   
-Seznam souboru exportu objektu blob může obsahovat názvy objektů blob a objektů blob předpony, jak je vidět tady:  
+Export souboru seznamu objektů blob může obsahovat názvy objektů blob a objektů blob předpony, jak je znázorněno zde:  
   
 ```xml 
 <?xml version="1.0" encoding="utf-8"?>  
@@ -157,9 +157,9 @@ Seznam souboru exportu objektu blob může obsahovat názvy objektů blob a obje
 </BlobList>  
 ```
 
-Nástroj Azure Import/Export obsahuje seznam všech objektů blob pro export a vypočítá postup pack je do jednotky po zadanou velikost vezme v úvahu všechny nezbytné režijní náklady a pak odhadne počet jednotek, které jsou potřebné pro uložení objektů BLOB a informace o využití disku.  
+Nástroje Import/Export Azure vypíše všechny objekty BLOB export a vypočítá jak se zabalit do jednotky zadané velikosti, s ohledem všechny nezbytné režijní náklady a pak odhadne požadovaný počet jednotek, které jsou potřeba pro uložení objektů BLOB a informace o využití disku.  
   
-Tady je příklad výstupu s informační protokoly vynechání:  
+Tady je příklad výstupu s informační protokoly vynechán:  
   
 ```  
 Number of unique blob paths/prefixes:   3  
@@ -175,19 +175,19 @@ Number of drives needed:        3
         Drive #3:       blobs = 2, occupied space = 131.28 GB    
 ```
 
-## <a name="examples-of-valid-blob-paths"></a>Příklady platný objekt blob cesty
+## <a name="examples-of-valid-blob-paths"></a>Příklady cesty k objektům blob platný
 
-Následující tabulka uvádí příklady cesty platný objekt blob:
+Následující tabulka uvádí příklady cesty k objektům blob platné:
    
    | Selektor | Cesta k objektu BLOB | Popis |
    | --- | --- | --- |
-   | Začíná |/ |Exportuje všech objektů BLOB v účtu úložiště |
-   | Začíná |/$root / |Exportuje všech objektů BLOB v kontejneru kořenové |
-   | Začíná |/Book |Exportuje všech objektů BLOB v kontejneru, který začíná předponu **adresáře** |
-   | Začíná |/Music/ |Exportuje všech objektů BLOB v kontejneru **Hudba** |
-   | Začíná |/ Hudba/láska |Exportuje všech objektů BLOB v kontejneru **Hudba** které začínají předponou **rádi** |
-   | Rovno |$root/logo.bmp |Export objektu blob **logo.bmp** v kořenovém kontejneru |
-   | Rovno |videos/Story.MP4 |Export objektu blob **story.mp4** v kontejneru **videa** |
+   | Začíná |/ |Exportuje všechny objekty BLOB v účtu úložiště |
+   | Začíná |/$root / |Exportuje všechny objekty BLOB v kontejneru kořenové |
+   | Začíná |/Book |Exportuje všechny objekty BLOB v kontejneru, který začíná předponou **knihy** |
+   | Začíná |/Music/ |Exportuje všechny objekty BLOB v kontejneru **Hudba** |
+   | Začíná |/ Hudba/láskou |Exportuje všechny objekty BLOB v kontejneru **Hudba** , začínat předponou **máte rádi.** |
+   | Je rovno |$root/logo.bmp |Exporty blob **logo.bmp** v kořenovém kontejneru |
+   | Je rovno |videos/Story.MP4 |Exporty blob **story.mp4** v kontejneru **videa** |
 
 ## <a name="next-steps"></a>Další postup
 

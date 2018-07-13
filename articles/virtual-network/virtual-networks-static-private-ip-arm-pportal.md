@@ -1,6 +1,6 @@
 ---
-title: Nakonfigurovat privátní IP adresy pro virtuální počítače - portálu Azure | Microsoft Docs
-description: Zjistěte, jak nakonfigurovat privátní IP adresy pro virtuální počítače pomocí portálu Azure.
+title: Konfigurace privátních IP adres pro virtuální počítače – Azure portal | Dokumentace Microsoftu
+description: Zjistěte, jak nakonfigurovat privátní IP adresy pro virtuální počítače pomocí webu Azure portal.
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -17,21 +17,21 @@ ms.date: 02/04/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ff9d025980f80cb77246ea12dbf2e9bcedd73f86
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31423273"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38705880"
 ---
-# <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal"></a>Nakonfigurovat privátní IP adresy pro virtuální počítač pomocí portálu Azure
+# <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal"></a>Konfigurace privátních IP adres pro virtuální počítač pomocí webu Azure portal
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](virtual-networks-static-private-ip-arm-pportal.md)
 > * [PowerShell](virtual-networks-static-private-ip-arm-ps.md)
 > * [Azure CLI](virtual-networks-static-private-ip-arm-cli.md)
-> * [Portál Azure (klasický)](virtual-networks-static-private-ip-classic-pportal.md)
+> * [Azure portal (Classic)](virtual-networks-static-private-ip-classic-pportal.md)
 > * [PowerShell (Classic)](virtual-networks-static-private-ip-classic-ps.md)
-> * [Rozhraní příkazového řádku Azure (klasický)](virtual-networks-static-private-ip-classic-cli.md)
+> * [Rozhraní příkazového řádku Azure (Classic)](virtual-networks-static-private-ip-classic-cli.md)
 
 
 [!INCLUDE [virtual-networks-static-private-ip-intro-include](../../includes/virtual-networks-static-private-ip-intro-include.md)]
@@ -42,27 +42,27 @@ Tento článek se týká modelu nasazení Resource Manager. Můžete také [spra
 
 [!INCLUDE [virtual-networks-static-ip-scenario-include](../../includes/virtual-networks-static-ip-scenario-include.md)]
 
-Následující ukázkový postup očekávat jednoduché prostředí již vytvořeny. Pokud chcete spustit kroky, jak jsou zobrazeny v tomto dokumentu, nejprve vytvořit testovací prostředí popsané v [vytvořit virtuální síť](quick-create-portal.md).
+Následující ukázkový postup očekávat jednoduché prostředí už vytvořili. Pokud chcete spustit kroky, jak jsou zobrazeny v tomto dokumentu, nejprve vytvořit testovací prostředí popsané v [vytvoření virtuální sítě](quick-create-portal.md).
 
-## <a name="how-to-create-a-vm-for-testing-static-private-ip-addresses"></a>Postup vytvoření virtuálního počítače pro testování statickou privátní IP adresy
-Statickou privátní IP adresu nelze nastavit při vytváření virtuálního počítače v režimu Resource Manager nasazení pomocí portálu Azure. Je nutné nejprve vytvořit virtuální počítač a potom nastavte její privátní IP adresy na být statická.
+## <a name="how-to-create-a-vm-for-testing-static-private-ip-addresses"></a>Vytvoření virtuálního počítače pro testování statické privátní IP adresy
+Nelze nastavit statickou privátní IP adresu během vytváření virtuálního počítače v režimu nasazení Resource Manageru pomocí webu Azure portal. Je nutné nejprve vytvořit virtuální počítač a potom nastavte jeho privátní IP adresa jako statický.
 
-Vytvoření virtuálního počítače s názvem *DNS01* v *front-endu* podsíť virtuální sítě s názvem *TestVNet*, postupujte takto:
+Vytvoření virtuálního počítače s názvem *DNS01* v *front-endu* podsíti virtuální sítě s názvem *TestVNet*, postupujte podle těchto kroků:
 
 1. V prohlížeči přejděte na http://portal.azure.com a v případě potřeby se přihlaste pomocí účtu Azure.
-2. Klikněte na tlačítko **vytvořit prostředek** > **výpočetní** > **Windows Server 2012 R2 Datacenter**, Všimněte si, že **vyberte nasazení model** seznam již ukazuje **Resource Manager**a potom klikněte na **vytvořit**, jak je vidět na následujícím obrázku.
+2. Klikněte na tlačítko **vytvořit prostředek** > **Compute** > **systému Windows Server 2012 R2 Datacenter**, Všimněte si, že **vyberte nasazení model** seznam již obsahuje **Resource Manageru**a potom klikněte na tlačítko **vytvořit**, jak je znázorněno na následujícím obrázku.
    
-    ![Vytvoření virtuálního počítače na portálu Azure](./media/virtual-networks-static-ip-arm-pportal/figure01.png)
-3. V **Základy** podokně, zadejte název virtuálního počítače vytvořit (*DNS01* ve scénáři), účet místního správce a hesla, jak je vidět na následujícím obrázku.
+    ![Vytvoření virtuálního počítače na webu Azure portal](./media/virtual-networks-static-ip-arm-pportal/figure01.png)
+3. V **Základy** podokně, zadejte název virtuálního počítače k vytvoření (*DNS01* ve scénáři), účet místního správce a heslo, jak je znázorněno na následujícím obrázku.
    
-    ![Základy podokno](./media/virtual-networks-static-ip-arm-pportal/figure02.png)
-4. Zajistěte, aby **umístění** vybraná *střed USA*, pak klikněte na tlačítko **vyberte existující** v části **skupiny prostředků**, klikněte **skupiny prostředků** znovu, klikněte *TestRG*a potom klikněte na **OK**.
+    ![Základní informace o podokně](./media/virtual-networks-static-ip-arm-pportal/figure02.png)
+4. Ujistěte se, že **umístění** vybraného je *USA (střed)*, klikněte na **vybrat existující** pod **skupinu prostředků**, pak klikněte na tlačítko **Skupiny prostředků** znovu, klikněte na *TestRG*a potom klikněte na tlačítko **OK**.
    
-    ![Základy podokno](./media/virtual-networks-static-ip-arm-pportal/figure03.png)
-5. V **zvolte velikost** podokně, vyberte **A1 standardní**a potom klikněte na **vyberte**.
+    ![Základní informace o podokně](./media/virtual-networks-static-ip-arm-pportal/figure03.png)
+5. V **zvolte velikost** vyberte **A1 Standard**a potom klikněte na tlačítko **vyberte**.
    
     ![Zvolte velikost podokna](./media/virtual-networks-static-ip-arm-pportal/figure04.png)    
-6. V **nastavení** podokně, zkontrolujte, že vlastnosti se nastavují s následující hodnoty a pak klikněte na tlačítko **OK**.
+6. V **nastavení** podokně zkontrolujte, že vlastnosti jsou nastaveny následující hodnoty a pak klikněte na tlačítko **OK**.
    
     -**Účet úložiště**: *vnetstorage*
    
@@ -70,45 +70,45 @@ Vytvoření virtuálního počítače s názvem *DNS01* v *front-endu* podsíť 
    * **Podsíť**: *front-endu*
      
      ![Zvolte velikost podokna](./media/virtual-networks-static-ip-arm-pportal/figure05.png)     
-7. V **Souhrn** podokně klikněte na tlačítko **OK**. Všimněte si následujících dlaždice zobrazovaný v řídicím panelu.
+7. V **Souhrn** podokně klikněte na tlačítko **OK**. Všimněte si, že následující dlaždice na řídicím panelu zobrazí.
    
-    ![Vytvoření virtuálního počítače na portálu Azure](./media/virtual-networks-static-ip-arm-pportal/figure06.png)
+    ![Vytvoření virtuálního počítače na webu Azure portal](./media/virtual-networks-static-ip-arm-pportal/figure06.png)
 
-Doporučuje se, že nepřiřadíte staticky privátní IP přiřazené k virtuálnímu počítači Azure v rámci operačního systému virtuálního počítače, pokud nezbytné, jako např. kdy [přiřazení více IP adres pro virtuální počítač s Windows](virtual-network-multiple-ip-addresses-portal.md). Pokud ručně nastavit privátní IP adresu v operačním systému, zajistěte, aby byl stejnou adresu jako přiřazené Azure privátní IP adresy [síťové rozhraní](virtual-network-network-interface-addresses.md#change-ip-address-settings), nebo můžete ztratit připojení k virtuálnímu počítači. Další informace o [privátní IP adresu](virtual-network-network-interface-addresses.md#private) nastavení. Byste měli přiřadit nikdy ručně veřejnou IP adresu přiřazené pro virtuální počítač Azure v rámci operačního systému virtuálního počítače.
+Doporučuje se, že nepřiřadíte staticky privátní IP adresa přiřazená virtuální počítač Azure v rámci operačního systému virtuálního počítače, není-li nezbytné, například kdy [přidělení více IP adres k virtuálnímu počítači s Windows](virtual-network-multiple-ip-addresses-portal.md). Pokud jste ručně nastavili privátní IP adresu v rámci operačního systému, ujistěte se, že se jedná o stejné adrese jako privátní IP adresy přiřazené k Azure [síťové rozhraní](virtual-network-network-interface-addresses.md#change-ip-address-settings), nebo může ztratit připojení k virtuálnímu počítači. Další informace o [privátní IP adresu](virtual-network-network-interface-addresses.md#private) nastavení. Veřejná IP adresa přidělená k virtuálnímu počítači Azure v rámci operačního systému virtuálního počítače by nikdy ručně přiřadit.
 
-## <a name="how-to-retrieve-static-private-ip-address-information-for-a-vm"></a>Jak načíst statickou privátní IP adresu informace pro virtuální počítač
-Chcete-li zobrazit statické informace privátní IP adresu pro virtuální počítač vytvořený s výše uvedených kroků, spusťte následující kroky.
+## <a name="how-to-retrieve-static-private-ip-address-information-for-a-vm"></a>Jak načíst statické privátní informace o IP adrese virtuálního počítače
+Chcete-li zobrazit statické informace privátní IP adresu pro virtuální počítač vytvořený pomocí výše uvedených kroků, proveďte následující kroky.
 
-1. Z portálu Azure klikněte na tlačítko **Procházet vše** > **virtuální počítače** > **DNS01** > **všechna nastavení**  >  **Síťových rozhraní** a potom klikněte na uvedené jenom síťové rozhraní.
+1. Na webu Azure Portal, klikněte na tlačítko **Procházet vše** > **virtuálních počítačů** > **DNS01** > **všechna nastavení**  >  **Síťová rozhraní** a potom klikněte na tlačítko na jedinou síťovém rozhraní uvedené.
    
-    ![Nasazení virtuálních počítačů dlaždice](./media/virtual-networks-static-ip-arm-pportal/figure07.png)
-2. V **síťové rozhraní** podokně klikněte na tlačítko **všechna nastavení** > **IP adresy** a Všimněte si **přiřazení** a  **IP adresa** hodnoty.
+    ![Dlaždice nasazování virtuálních počítačů](./media/virtual-networks-static-ip-arm-pportal/figure07.png)
+2. V **síťové rozhraní** podokně klikněte na tlačítko **všechna nastavení** > **IP adresy** a Všimněte si, že **přiřazení** a  **IP adresa** hodnoty.
    
-    ![Nasazení virtuálních počítačů dlaždice](./media/virtual-networks-static-ip-arm-pportal/figure08.png)
+    ![Dlaždice nasazování virtuálních počítačů](./media/virtual-networks-static-ip-arm-pportal/figure08.png)
 
-## <a name="how-to-add-a-static-private-ip-address-to-an-existing-vm"></a>Postup přidání statickou privátní IP adresu do stávajícího virtuálního počítače
-Chcete-li přidat statickou privátní IP adresu na virtuální počítač vytvořený pomocí výše uvedených kroků, postupujte takto:
+## <a name="how-to-add-a-static-private-ip-address-to-an-existing-vm"></a>Postup přidání statické privátní IP adresu do existujícího virtuálního počítače
+Přidání statické privátní IP adresu pro virtuální počítač vytvořený pomocí výše uvedených kroků, postupujte podle těchto kroků:
 
-1. Z **IP adresy** podokně uvedené výše, klikněte na tlačítko **statické** pod **přiřazení**.
-2. Typ *192.168.1.101* pro **IP adresu**a potom klikněte na **Uložit**.
+1. Z **IP adresy** podokně vidíte výše, klikněte na tlačítko **statické** pod **přiřazení**.
+2. Typ *192.168.1.101* pro **IP adresu**a potom klikněte na tlačítko **Uložit**.
    
-    ![Vytvoření virtuálního počítače na portálu Azure](./media/virtual-networks-static-ip-arm-pportal/figure09.png)
+    ![Vytvoření virtuálního počítače na webu Azure portal](./media/virtual-networks-static-ip-arm-pportal/figure09.png)
 
 > [!NOTE]
-> Pokud po kliknutí na **Uložit**, si všimnete, že je přiřazení stále nastavená na **dynamické**, znamená to zadaná IP adresa je již používán. Zkuste jinou IP adresu.
+> Pokud po kliknutí na tlačítko **Uložit**, Všimněte si, že přiřazení je stále nastaveno na **dynamické**, to znamená, že zadaná adresa IP je již používán. Zkuste jinou IP adresu.
 > 
 > 
 
-Doporučuje se, že nepřiřadíte staticky privátní IP přiřazené k virtuálnímu počítači Azure v rámci operačního systému virtuálního počítače, pokud nezbytné, jako např. kdy [přiřazení více IP adres pro virtuální počítač s Windows](virtual-network-multiple-ip-addresses-portal.md). Pokud ručně nastavit privátní IP adresu v operačním systému, zajistěte, aby byl stejnou adresu jako přiřazené Azure privátní IP adresy [síťové rozhraní](virtual-network-network-interface-addresses.md#change-ip-address-settings), nebo můžete ztratit připojení k virtuálnímu počítači. Další informace o [privátní IP adresu](virtual-network-network-interface-addresses.md#private) nastavení. Byste měli přiřadit nikdy ručně veřejnou IP adresu přiřazené pro virtuální počítač Azure v rámci operačního systému virtuálního počítače.
+Doporučuje se, že nepřiřadíte staticky privátní IP adresa přiřazená virtuální počítač Azure v rámci operačního systému virtuálního počítače, není-li nezbytné, například kdy [přidělení více IP adres k virtuálnímu počítači s Windows](virtual-network-multiple-ip-addresses-portal.md). Pokud jste ručně nastavili privátní IP adresu v rámci operačního systému, ujistěte se, že se jedná o stejné adrese jako privátní IP adresy přiřazené k Azure [síťové rozhraní](virtual-network-network-interface-addresses.md#change-ip-address-settings), nebo může ztratit připojení k virtuálnímu počítači. Další informace o [privátní IP adresu](virtual-network-network-interface-addresses.md#private) nastavení. Veřejná IP adresa přidělená k virtuálnímu počítači Azure v rámci operačního systému virtuálního počítače by nikdy ručně přiřadit.
 
 ## <a name="how-to-remove-a-static-private-ip-address-from-a-vm"></a>Postup odebrání statickou privátní IP adresu z virtuálního počítače
-Chcete-li odebrat statickou privátní IP adresou z virtuálního počítače vytvořili výše, proveďte následující krok:
+Odebrání virtuálního počítače vytvořeného výše statické privátní IP adresy, proveďte následující kroky:
 
-Z **IP adresy** podokně uvedené výše, klikněte na tlačítko **dynamické** pod **přiřazení**a potom klikněte na **Uložit**.
+Z **IP adresy** podokně vidíte výše, klikněte na tlačítko **dynamické** pod **přiřazení**a potom klikněte na tlačítko **Uložit**.
 
 ## <a name="set-ip-addresses-within-the-operating-system"></a>Nastavení IP adresy v rámci operačního systému
 
-Doporučuje se, že nepřiřadíte staticky privátní IP přiřazené k virtuálnímu počítači Azure v rámci operačního systému virtuálního počítače, pokud nezbytné, jako např. kdy [přiřazení více IP adres pro virtuální počítač s Windows](virtual-network-multiple-ip-addresses-portal.md). Pokud ručně nastavit privátní IP adresu v operačním systému, zajistěte, aby byl stejnou adresu jako přiřazené Azure privátní IP adresy [síťové rozhraní](virtual-network-network-interface-addresses.md#change-ip-address-settings), nebo můžete ztratit připojení k virtuálnímu počítači. Další informace o [privátní IP adresu](virtual-network-network-interface-addresses.md#private) nastavení. Byste měli přiřadit nikdy ručně veřejnou IP adresu přiřazené pro virtuální počítač Azure v rámci operačního systému virtuálního počítače.
+Doporučuje se, že nepřiřadíte staticky privátní IP adresa přiřazená virtuální počítač Azure v rámci operačního systému virtuálního počítače, není-li nezbytné, například kdy [přidělení více IP adres k virtuálnímu počítači s Windows](virtual-network-multiple-ip-addresses-portal.md). Pokud jste ručně nastavili privátní IP adresu v rámci operačního systému, ujistěte se, že se jedná o stejné adrese jako privátní IP adresy přiřazené k Azure [síťové rozhraní](virtual-network-network-interface-addresses.md#change-ip-address-settings), nebo může ztratit připojení k virtuálnímu počítači. Další informace o [privátní IP adresu](virtual-network-network-interface-addresses.md#private) nastavení. Veřejná IP adresa přidělená k virtuálnímu počítači Azure v rámci operačního systému virtuálního počítače by nikdy ručně přiřadit.
 
 ## <a name="next-steps"></a>Další postup
 

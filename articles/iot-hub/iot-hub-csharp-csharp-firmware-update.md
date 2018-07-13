@@ -1,6 +1,6 @@
 ---
-title: Aktualizace firmwaru zařízení s Azure IoT Hub (.NET/.NET) | Microsoft Docs
-description: Jak používat správu zařízení v Azure IoT Hub zahájíte aktualizaci firmwaru zařízení. Použití zařízení Azure IoT sady SDK pro .NET k implementaci aplikace simulovaného zařízení a sady SDK pro .NET k implementaci služby aplikaci, která spustí aktualizaci firmwaru služby Azure IoT.
+title: Aktualizace firmwaru zařízení s Azure IoT Hub (.NET/.NET) | Dokumentace Microsoftu
+description: Jak zahájit aktualizaci firmwaru zařízení pomocí správy zařízení ve službě Azure IoT Hub. Použijete k implementaci aplikace simulovaného zařízení a služby Azure IoT SDK pro .NET k implementaci app service, která spustí aktualizaci firmwaru zařízení Azure IoT SDK pro .NET.
 author: dominicbetts
 manager: timlt
 ms.service: iot-hub
@@ -9,51 +9,51 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 10/19/2017
 ms.author: dobett
-ms.openlocfilehash: cd669a9585ac5aecf935202a04065a828a2174be
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 1bf7a647ab2fdc175231133b0cfd8abdd51b6d43
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34736751"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38723928"
 ---
-# <a name="use-device-management-to-initiate-a-device-firmware-update-netnet"></a>Použití správy zařízení za účelem zahájení aktualizaci firmwaru zařízení (.NET/.NET)
+# <a name="use-device-management-to-initiate-a-device-firmware-update-netnet"></a>Zahájit aktualizaci firmwaru zařízení (.NET/.NET) pomocí správy zařízení
 [!INCLUDE [iot-hub-selector-firmware-update](../../includes/iot-hub-selector-firmware-update.md)]
 
 ## <a name="introduction"></a>Úvod
-V [Začínáme se správou zařízení] [ lnk-dm-getstarted] kurz, jste viděli, jak používat [dvojče zařízení] [ lnk-devtwin] a [přímé metody ] [ lnk-c2dmethod] primitiv vzdáleně restartování zařízení. Tento kurz používá stejné primitiv IoT Hub a ukazuje, jak provést aktualizaci firmwaru simulované začátku do konce.  Tento vzor slouží k implementaci firmwaru aktualizace pro [malin platformy zařízení implementace ukázka][lnk-rpi-implementation].
+V [Začínáme se správou zařízení] [ lnk-dm-getstarted] výukový program, jste viděli, jak používat [dvojče zařízení] [ lnk-devtwin] a [přímé metody ] [ lnk-c2dmethod] primitiv vzdálené restartování zařízení. Tento kurz používá stejný základní služby IoT Hub a popisuje, jak provádět aktualizace firmwaru simulované začátku do konce.  Tento model se používá k provedení aktualizace firmwaru pro [ukázková implementace zařízení Raspberry Pi][lnk-rpi-implementation].
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 V tomto kurzu získáte informace o následujících postupech:
 
-* Vytvoření konzolové aplikace .NET, která volá **firmwareUpdate** přímá metoda v aplikaci simulovaného zařízení prostřednictvím služby IoT hub.
-* Vytvoření aplikace simulovaného zařízení, která implementuje **firmwareUpdate** přímá metoda. Tato metoda inicializuje více fáze procesu, který čeká na stažení bitové kopie firmwaru, stáhne bitovou kopii firmware a nakonec platí bitovou kopii firmwaru. Během aktualizace v každé fázi používá zařízení hlášené vlastnosti hlásit průběh.
+* Vytvoření konzolové aplikace .NET, která volá **firmwareUpdate** přímé metody v aplikaci simulovaného zařízení prostřednictvím služby IoT hub.
+* Vytvoření aplikace simulovaného zařízení, která implementuje **firmwareUpdate** přímá metoda. Tato metoda zahájí vícefázový proces, který čeká na stažením image firmwaru, stáhne image firmwaru a nakonec použije image firmwaru. Během každé fáze aktualizace zařízení využívá ohlášené vlastnosti k podávat zprávy o pokroku.
 
-Na konci tohoto kurzu máte zařízení konzolové aplikace .NET (C#) a back-end konzolové aplikace .NET (C#):
+Na konci tohoto kurzu budete mít zařízení konzolovou aplikaci .NET (C#) a back-end konzolovou aplikaci .NET (C#):
 
-* **SimulatedDeviceFwUpdate**, který se připojí ke službě IoT hub s identitou zařízení vytvořenou dříve, obdrží **firmwareUpdate** přímá metoda, spustí prostřednictvím více stavu procesu k simulaci aktualizaci firmwaru včetně: Čekání na stažení bitové kopie, stahování novou bitovou kopii a nakonec použitím bitové kopie.
+* **SimulatedDeviceFwUpdate**, propojuje službu IoT hub s identitou zařízení vytvořenou dříve, dostane **firmwareUpdate** přímé metody, spuštění prostřednictvím více stavu procesu pro simulaci aktualizace firmwaru včetně: čeká na stažení bitové kopie, stahuje nové image a nakonec použitím bitové kopie.
 
-* **TriggerFWUpdate**, které se vzdáleně vyvolání pomocí sady SDK služby **firmwareUpdate** přímá metoda v simulovaném zařízení zobrazí odpověď a pravidelně (každých 500ms) zobrazí aktualizovaná hlášené Vlastnosti.
+* **TriggerFWUpdate**, které se vzdáleně vyvolat pomocí sady SDK služby **firmwareUpdate** přímou metoda v simulovaném zařízení zobrazí odpovědi a pravidelně (každých 500ms) zobrazí aktualizovaný hlášené Vlastnosti.
 
 Pro absolvování tohoto kurzu potřebujete:
 
 * Visual Studio 2015 nebo Visual Studio 2017.
 * Aktivní účet Azure. (Pokud účet nemáte, můžete si během několika minut vytvořit [bezplatný účet][lnk-free-trial].)
 
-Postupujte podle [Začínáme se správou zařízení](iot-hub-csharp-csharp-device-management-get-started.md) článek k vytvoření služby IoT hub a získat připojovací řetězec služby IoT Hub.
+Postupujte podle [Začínáme se správou zařízení](iot-hub-csharp-csharp-device-management-get-started.md) článek k vytvoření služby IoT hub a získejte připojovací řetězec služby IoT Hub.
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
 [!INCLUDE [iot-hub-get-started-create-device-identity-portal](../../includes/iot-hub-get-started-create-device-identity-portal.md)]
 
-## <a name="trigger-a-remote-firmware-update-on-the-device-using-a-direct-method"></a>Spustit aktualizaci vzdálené firmwaru v zařízení s přímá metoda
-V této části vytvoříte konzolové aplikace .NET (pomocí jazyka C#), zahájí aktualizaci vzdálené firmwaru v zařízení. Přímá metoda používá k zahájení aktualizace a aplikace používá zařízení twin dotazy a pravidelně získat stav aktualizace active firmware.
+## <a name="trigger-a-remote-firmware-update-on-the-device-using-a-direct-method"></a>Aktivace firmwaru vzdálené aktualizace na zařízení s využitím přímé metody
+V této části vytvoříte konzolovou aplikaci .NET (s použitím jazyka C#), které vyvolává vzdálené firmwaru v zařízení. Aplikace používá přímé metody k zahájení aktualizace a používá dotazů na dvojčata zařízení a pravidelně získat stav aktualizace firmwaru aktivní.
 
-1. V sadě Visual Studio přidejte k stávajícímu řešení klasický desktopový projekt Visual C# pro systém Windows pomocí šablony projektu **Konzolová aplikace**. Název projektu **TriggerFWUpdate**.
+1. V sadě Visual Studio přidejte k stávajícímu řešení klasický desktopový projekt Visual C# pro systém Windows pomocí šablony projektu **Konzolová aplikace**. Pojmenujte projekt **TriggerFWUpdate**.
 
     ![Nový klasický desktopový projekt Visual C# pro systém Windows][img-createserviceapp]
 
-2. V Průzkumníku řešení klikněte pravým tlačítkem myši **TriggerFWUpdate** projektu a pak klikněte na **spravovat balíčky NuGet**.
+2. V Průzkumníku řešení klikněte pravým tlačítkem myši **TriggerFWUpdate** projektu a pak klikněte na tlačítko **spravovat balíčky NuGet**.
 3. V okně **Správce balíčků NuGet** vyberte **Procházet**, vyhledejte **microsoft.azure.devices**, vyberte možnost **Instalovat**, nainstalujte balíček  **Microsoft.Azure.Devices** a přijměte podmínky používání. Tímto postupem se stáhne a nainstaluje [balíček NuGet sady SDK pro službu Azure IoT][lnk-nuget-service-sdk] a jeho závislosti a přidá se na něj odkaz.
 
     ![Okno Správce balíčků NuGet][img-servicenuget]
@@ -64,7 +64,7 @@ V této části vytvoříte konzolové aplikace .NET (pomocí jazyka C#), zaháj
     using Microsoft.Azure.Devices.Shared;
     ```
 
-5. Do třídy **Program** přidejte následující pole. Více zástupné hodnoty nahraďte připojovací řetězec služby IoT Hub pro rozbočovače, který jste vytvořili v předchozí části a ID vašeho zařízení.
+5. Do třídy **Program** přidejte následující pole. Více zástupné hodnoty nahraďte připojovací řetězec služby IoT Hub, kterou jste vytvořili v předchozí části a ID zařízení centra.
    
     ```csharp   
     static RegistryManager registryManager;
@@ -73,7 +73,7 @@ V této části vytvoříte konzolové aplikace .NET (pomocí jazyka C#), zaháj
     static string targetDevice = "{deviceIdForTargetDevice}";
     ```
         
-6. Do třídy **Program** přidejte následující metodu. Tato metoda dotazuje dvojče zařízení pro aktualizovaný stav každých 500 milisekund. Jenom v případě, že stav se změnil ve skutečnosti, zapíše se do konzoly. Pro tuto ukázku, aby se zabránilo využívání zprávy navíc IoT Hub v rámci vašeho předplatného, dotazování zastaví, když zařízení ohlásí, stav **applyComplete** nebo došlo k chybě.  
+6. Do třídy **Program** přidejte následující metodu. Tato metoda dotazuje dvojče zařízení pro aktualizovaný stav každých 500 milisekund. Pouze v případě, že ve skutečnosti změnu stavu, zapíše se do konzoly. Pro tuto ukázku, aby se zabránilo přijímat další zprávy služby IoT Hub v rámci vašeho předplatného, cyklického dotazování zastaví, když zařízení ohlásí a stav **applyComplete** nebo došlo k chybě.  
    
     ```csharp   
     public static async Task QueryTwinFWUpdateReported(DateTime startTime)
@@ -120,7 +120,7 @@ V této části vytvoříte konzolové aplikace .NET (pomocí jazyka C#), zaháj
     }
     ```
 
-8. Nakonec přidejte následující řádky, které se **hlavní** metoda. Tím se vytvoří soubor registru Správce číst dvojče zařízení se spustí úlohu dotazování na pracovní vlákno a potom spustí aktualizaci firmwaru.
+8. Nakonec přidejte následující řádky do **hlavní** metody. Tím se vytvoří registr správce ke čtení dvojčat zařízení se spustí úloha cyklického dotazování na pracovní podproces a potom aktivuje aktualizace firmwaru.
    
     ```csharp   
     registryManager = RegistryManager.CreateFromConnectionString(connString);
@@ -137,18 +137,18 @@ V této části vytvoříte konzolové aplikace .NET (pomocí jazyka C#), zaháj
 ## <a name="create-a-simulated-device-app"></a>Vytvoření aplikace simulovaného zařízení
 V této části:
 
-* Vytvoření konzolové aplikace .NET, která reaguje na přímé metodu s názvem cloudem
-* Simulovat aktualizaci firmwaru aktivovány back-end službu prostřednictvím přímé metody
+* Vytvoření konzolové aplikace .NET, která bude reagovat na přímou metodu volanou cloudem.
+* Simulace aktualizaci firmwaru aktivované back-end službu prostřednictvím přímé metody
 * Pomocí ohlášených vlastností umožníte dotazům na dvojčata zařízení identifikovat zařízení a čas jejich poslední dokončené aktualizace firmwaru.
 
-1. V sadě Visual Studio přidejte k stávajícímu řešení klasický desktopový projekt Visual C# pro systém Windows pomocí šablony projektu **Konzolová aplikace**. Název projektu **SimulateDeviceFWUpdate**.
+1. V sadě Visual Studio přidejte k stávajícímu řešení klasický desktopový projekt Visual C# pro systém Windows pomocí šablony projektu **Konzolová aplikace**. Pojmenujte projekt **SimulateDeviceFWUpdate**.
    
-    ![Novou aplikaci Visual C# klasické zařízení][img-createdeviceapp]
+    ![Nový Visual C# Windows klasické aplikace pro zařízení][img-createdeviceapp]
     
-2. V Průzkumníku řešení klikněte pravým tlačítkem myši **SimulateDeviceFWUpdate** projektu a pak klikněte na **spravovat balíčky NuGet**.
-3. V **Správce balíčků NuGet** vyberte **Procházet** a vyhledejte **microsoft.azure.devices.client**. Vyberte **nainstalovat** k instalaci **Microsoft.Azure.Devices.Client** balíček a přijměte podmínky použití. Tento postup stáhne, nainstaluje a přidá odkaz na [zařízení Azure IoT SDK] [ lnk-nuget-client-sdk] NuGet balíček a jeho závislé součásti.
+2. V Průzkumníku řešení klikněte pravým tlačítkem myši **SimulateDeviceFWUpdate** projektu a pak klikněte na tlačítko **spravovat balíčky NuGet**.
+3. V **Správce balíčků NuGet** okně **Procházet** a vyhledejte **microsoft.azure.devices.client**. Vyberte **nainstalovat** k instalaci **Microsoft.Azure.Devices.Client** balíček a přijměte podmínky použití. Tento postup stáhne, nainstaluje a přidá odkaz na [zařízení Azure IoT SDK] [ lnk-nuget-client-sdk] NuGet balíček a jeho závislosti.
    
-    ![Správce balíčků NuGet okno klientské aplikace][img-clientnuget]
+    ![Klientská aplikace okno Správce balíčků NuGet][img-clientnuget]
 4. Do horní části souboru **Program.cs** přidejte následující příkazy `using`:
    
     ```csharp   
@@ -157,14 +157,14 @@ V této části:
     using Microsoft.Azure.Devices.Shared;
     ```
 
-5. Do třídy **Program** přidejte následující pole. Nahraďte hodnotu zástupného symbolu připojovacím řetězcem zařízení, kterou jste si poznamenali v **vytvoření identity zařízení** části.
+5. Do třídy **Program** přidejte následující pole. Nahraďte hodnotu zástupného symbolu připojovacím řetězcem zařízení, který jste si poznamenali v **vytvoření identity zařízení** oddílu.
    
     ```csharp   
     static string DeviceConnectionString = "HostName=<yourIotHubName>.azure-devices.net;DeviceId=<yourIotDeviceName>;SharedAccessKey=<yourIotDeviceAccessKey>";
     static DeviceClient Client = null;
     ```
 
-6. Přidejte následující metodu do zprávy o stavu zpět ke cloudu prostřednictvím dvojče zařízení: 
+6. Přidejte následující metodu do hlášení stavu zpět do cloudu prostřednictvím dvojčeti zařízení: 
 
     ```csharp   
     static async Task reportFwUpdateThroughTwin(Twin twin, TwinCollection fwUpdateValue)
@@ -188,7 +188,7 @@ V této části:
     }
     ```
 
-7. Přidejte následující metodu k simulaci stahování firmwaru obrázku:
+7. Přidejte následující metodu pro simulaci stažením image firmwaru:
         
     ```csharp   
     static async Task<byte[]> simulateDownloadImage(string imageUrl)
@@ -204,7 +204,7 @@ V této části:
     }
     ```
 
-8. Přidejte následující metodu pro simulaci použití bitové kopie firmwaru zařízení:
+8. Přidejte následující metodu pro simulaci aplikování image firmwaru zařízení:
         
     ```csharp   
     static async Task simulateApplyImage(byte[] imageData)
@@ -219,7 +219,7 @@ V této části:
     }
     ```
  
-9.  Přidejte následující metodu pro simulaci čeká na stažení bitové kopie firmwaru. Aktualizovat stav na **čekání** a dalších vlastností aktualizaci firmwaru twin zrušte. Tyto vlastnosti jsou vymazány odeberete všechny existující hodnoty z předchozí firmware aktualizace. To je nezbytné, protože hlášené vlastnosti se odesílají jako operace opravy (rozdílovou) a není operace PUT (úplnou sadu vlastností který nahrazuje všechny předchozí hodnoty). Zařízení jsou obvykle informována o dostupné aktualizaci a správcem definovaná zásada způsobí, že začnou stahovat a aplikovat aktualizaci firmwaru. V této funkci by měla běžet logika, která povoluje tuto zásadu. 
+9.  Přidejte následující metodu pro simulaci čeká se na stažením image firmwaru. Aktualizovat stav na **čekání** a zrušte jiné firmware aktualizovat vlastnosti v dvojčeti. Tyto vlastnosti jsou vymazány odebrat všechny existující hodnoty z předchozího firmware aktualizací. To je nezbytné, protože ohlášené vlastnosti jsou odeslány jako operace opravy (položka delta) a ne operace PUT (úplnou sadu vlastností, který nahrazuje všechna předchozí hodnoty). Zařízení jsou obvykle informována o dostupné aktualizaci a správcem definovaná zásada způsobí, že začnou stahovat a aplikovat aktualizaci firmwaru. V této funkci by měla běžet logika, která povoluje tuto zásadu. 
         
     ```csharp   
     static async Task waitToDownload(Twin twin, string fwUpdateUri)
@@ -240,7 +240,7 @@ V této části:
     }
     ```
 
-10. Přidejte následující metodu, který má stažení provést. Aktualizuje na stavu **stahování** prostřednictvím dvojče zařízení volá metodu Simulovat stahování a hlásí stav **downloadComplete** nebo **downloadFailed** prostřednictvím twin v závislosti na výsledku operace stažení. 
+10. Přidejte následující metodu, který má stažení provést. Aktualizuje stav na **stahování** prostřednictvím dvojčeti zařízení volá metodu stahování simulovat a stavu **downloadComplete** nebo **downloadFailed** pomocí dvojčete v závislosti na výsledcích operaci stahování. 
         
     ```csharp   
     static async Task<byte[]> downloadImage(Twin twin, string fwUpdateUri)
@@ -272,7 +272,7 @@ V této části:
     }
     ```
 
-11. Přidejte následující metodu aplikuje bitovou kopii. Aktualizuje na stavu **použití** prostřednictvím dvojče zařízení volání simulovat použít bitovou kopii metoda a stav aktualizace na **applyComplete** nebo **applyFailed** prostřednictvím Twin v závislosti na výsledcích operaci použít. 
+11. Přidejte následující metodu použít bitovou kopii. Aktualizuje stav na **použití** prostřednictvím dvojčeti zařízení simulovat použít volání image metoda a aktualizuje stav na **applyComplete** nebo **applyFailed** prostřednictvím dvojče v závislosti na výsledcích operaci použít. 
         
     ```csharp   
     static async Task applyImage(Twin twin, byte[] imageData)
@@ -304,7 +304,7 @@ V této části:
     }
     ```
 
-12. Přidejte následující metodu do pořadí operace aktualizace firmwaru z čekání na stáhnout bitovou kopii prostřednictvím použitím bitové kopie do zařízení:
+12. Přidejte následující metodu do sekvence operace aktualizace firmwaru z čekání na stáhnout bitovou kopii prostřednictvím použitím bitové kopie do zařízení:
         
     ```csharp   
     static async Task doUpdate(string fwUpdateUrl)
@@ -324,7 +324,7 @@ V této části:
     }
     ```
 
-13. Přidejte následující metodu pro zpracování **updateFirmware** přímá metoda z cloudu. Extrahuje adresu URL k aktualizaci firmwaru z datovou část zprávy a předává jej do **doUpdate** úkol, který je spouštěn na jiné vlákno fondu. Potom okamžitě vrátí odpověď metody do cloudu.
+13. Přidejte následující metodu pro zpracování **updateFirmware** přímá metoda z cloudu. Extrahuje adresu URL k aktualizaci firmwaru z datové části zprávy a předává jej do **doUpdate** úkolu, který se spouští v jiném vláknu fondu vláken. Potom okamžitě vrátí odpověď metody do cloudu.
         
     ```csharp   
     static Task<MethodResponse> onFirmwareUpdate(MethodRequest methodRequest, object userContext)
@@ -339,11 +339,11 @@ V této části:
     }
     ```
 > [!NOTE]
-> Tato metoda se aktivuje simulované aktualizaci, kterou chcete spustit jako **úloh** a pak se okamžitě reaguje na volání metody informuje o službu spuštění aktualizace firmwaru. Stav aktualizace a dokončení odešle do služby je hlášen vlastnostech dvojče zařízení. Odpovíte k volání metody, které při zahájení aktualizace, nikoli po jeho dokončení, protože:
-> * Proces skutečné aktualizace je velmi pravděpodobné, trvá déle, než je časový limit volání metody.
-> * Je velmi pravděpodobně vyžadovat restartování počítače, který by opětovném spuštění této aplikace provádění procesu skutečné aktualizace **MethodRequest** objektu není k dispozici. (Aktualizace hlášené vlastností, je však možné i po restartování systému.) 
+> Tato metoda spustí simulovanou aktualizaci spustit jako **úloh** a okamžitě odpovídá na volání metody, informuje službu spuštění aktualizace firmwaru. Stav aktualizace a dokončení se odešlou do služby pomocí ohlášené vlastnosti dvojčete zařízení. Reagujeme na volání metody, které při zahájení aktualizace, nikoli po jeho dokončení, protože:
+> * Proces skutečné aktualizace je velmi pravděpodobné trvat déle než časový limit volání metody.
+> * Proces skutečné aktualizace je velmi pravděpodobně vyžadují restartování, které by znovu spustit provádění této aplikace **MethodRequest** objektu není k dispozici. (Aktualizaci ohlášených vlastností, je však možné i po restartování.) 
 
-14. Nakonec přidejte následující kód, který **hlavní** metoda k otevření připojení do služby IoT hub a inicializovat naslouchací proces metoda:
+14. Nakonec přidejte následující kód, který **hlavní** metody k otevření připojení do služby IoT hub a inicializovat naslouchací proces – metoda:
    
     ```csharp   
     try
@@ -377,17 +377,17 @@ V této části:
 
 ## <a name="run-the-apps"></a>Spouštění aplikací
 Nyní jste připraveni aplikaci spustit.
-1. Spuštění aplikace .NET zařízení **SimulatedDeviceFWUpdate**.  Klikněte pravým tlačítkem myši **SimulatedDeviceFWUpdate** projekt, vyberte **ladění**a potom vyberte **spustit novou instanci**. By se měl spustit přijímá metoda volání ze služby IoT Hub: 
+1. Spusťte aplikaci .NET pro zařízení **SimulatedDeviceFWUpdate**.  Klikněte pravým tlačítkem myši **SimulatedDeviceFWUpdate** projekt, vyberte **ladění**a pak vyberte **zahájit novou instanci**. By se měl spustit naslouchání pro volání metody ze služby IoT Hub: 
 
-2. Jakmile je zařízení připojené a čekání volání metod, spustit rozhraní .NET **TriggerFWUpdate** aplikace k vyvolání metody aktualizace firmwaru v aplikaci simulovaného zařízení. Klikněte pravým tlačítkem myši **TriggerFWUpdate** projekt, vyberte **ladění**a potom vyberte **spustit novou instanci**. Měli byste vidět aktualizací napsaný v pořadí **SimulatedDeviceFWUpdate** konzoly a také pořadí nahlášené prostřednictvím hlášené vlastnosti zařízení v **TriggerFWUpdate** konzoly. Všimněte si, že tento proces trvat několik sekund. 
+2. Jakmile je zařízení připojené a čeká volání metod, spusťte .NET **TriggerFWUpdate** aplikaci, která se má vyvolat metodu aktualizace firmwaru v aplikaci simulovaného zařízení. Klikněte pravým tlačítkem myši **TriggerFWUpdate** projekt, vyberte **ladění**a pak vyberte **zahájit novou instanci**. By se měla zobrazit aktualizace napsané v pořadí **SimulatedDeviceFWUpdate** konzoly a také pořadí vykazovat prostřednictvím ohlášených vlastností zařízení **TriggerFWUpdate** konzoly. Všimněte si, že tento proces trvá několik sekund na dokončení. 
    
-    ![Aplikace služby a zařízení spustit][img-combinedrun]
+    ![Běh aplikace služby a zařízení][img-combinedrun]
 
 
 ## <a name="next-steps"></a>Další postup
-V tomto kurzu přímá metoda používá k aktivaci aktualizace vzdálené firmwaru v zařízení a umožňuje sledovat průběh aktualizace firmwaru hlášené vlastnosti.
+V tomto kurzu se používá přímé metody k aktivaci vzdáleného firmwaru v zařízení a umožňuje sledovat průběh aktualizace firmwaru ohlášené vlastnosti.
 
-Zjistěte, jak rozšířit vaše IoT řešení a plán metoda volá na několika zařízeních, najdete v článku [plán a všesměrového vysílání úlohy] [ lnk-tutorial-jobs] kurzu.
+Zjistěte, jak rozšířit vaše IoT řešení a plán metoda volá do různých zařízení, najdete v článku [plánování a vysílání úloh] [ lnk-tutorial-jobs] kurzu.
 
 <!-- images -->
 [img-servicenuget]: media/iot-hub-csharp-csharp-firmware-update/servicesdknuget.png
@@ -399,7 +399,7 @@ Zjistěte, jak rozšířit vaše IoT řešení a plán metoda volá na několika
 [lnk-devtwin]: iot-hub-devguide-device-twins.md
 [lnk-c2dmethod]: iot-hub-devguide-direct-methods.md
 [lnk-dm-getstarted]: iot-hub-csharp-csharp-device-management-get-started.md
-[lnk-tutorial-jobs]: iot-hub-csharp-node-schedule-jobs.md
+[lnk-tutorial-jobs]: iot-hub-csharp-csharp-schedule-jobs.md
 
 [lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/blob/master/doc/node-devbox-setup.md
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/

@@ -1,6 +1,6 @@
 ---
-title: Vytvoření virtuální sítě (klasické) pomocí portálu Azure | Microsoft Docs
-description: Naučte se vytvářet virtuální sítě (klasické) pomocí portálu Azure.
+title: Vytvoření virtuální sítě (classic) pomocí webu Azure portal | Dokumentace Microsoftu
+description: Zjistěte, jak vytvořit virtuální síť (classic) pomocí webu Azure portal.
 services: virtual-network
 documentationcenter: ''
 author: genlin
@@ -16,20 +16,20 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
 ms.openlocfilehash: 60e9aa1daaa2edea534dabd549ed666fdcdd1940
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31790215"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38688838"
 ---
-# <a name="create-a-virtual-network-classic-by-using-the-azure-portal"></a>Vytvoření virtuální sítě (klasické) pomocí portálu Azure
+# <a name="create-a-virtual-network-classic-by-using-the-azure-portal"></a>Vytvoření virtuální sítě pomocí webu Azure portal (classic)
 [!INCLUDE [virtual-networks-create-vnet-selectors-classic-include](../../includes/virtual-networks-create-vnet-selectors-classic-include.md)]
 
 [!INCLUDE [virtual-networks-create-vnet-intro](../../includes/virtual-networks-create-vnet-intro-include.md)]
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-Tento dokument popisuje vytvoření virtuální sítě pomocí modelu nasazení classic. Můžete také [vytvořit virtuální síť v modelu nasazení Resource Manager pomocí portálu Azure](quick-create-portal.md).
+Tento dokument popisuje vytvoření virtuální sítě pomocí modelu nasazení classic. Můžete také [vytvoření virtuální sítě v modelu nasazení Resource Manageru pomocí webu Azure portal](quick-create-portal.md).
 
 [!INCLUDE [virtual-networks-create-vnet-scenario-include](../../includes/virtual-networks-create-vnet-scenario-include.md)]
 

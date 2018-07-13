@@ -1,6 +1,6 @@
 ---
-title: Zrušit a odstranit úlohu Azure Import/Export | Microsoft Docs
-description: Zjistěte, jak zrušit a odstraňovat úlohy pro službu Microsoft Azure Import/Export.
+title: Zrušit a odstranit úlohu služby Azure Import/Export | Dokumentace Microsoftu
+description: Zjistěte, jak rušit a odstraňovat úlohy pro službu Microsoft Azure Import/Export.
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -15,22 +15,22 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.openlocfilehash: 3524f1677baaa218b009b8498b851390c7b9da9a
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34367010"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38698685"
 ---
-# <a name="canceling-and-deleting-azure-importexport-jobs"></a>Zrušení a odstranění úlohy Azure Import/Export
+# <a name="canceling-and-deleting-azure-importexport-jobs"></a>Rušení a odstraňování úloh Azure Import/Export
 
- Požádat o zrušit úlohu předtím, než je v `Packaging` stavu, volejte [vlastnosti úlohy aktualizace](/rest/api/storageimportexport/jobs#Jobs_Update) operace a sadu `CancelRequested` element `true`. Úloha je zrušena na základě typu best effort. Pokud jednotky probíhá přenos dat, dat pokračovat v přesunu, i když bylo vyžádáno zrušení.
+ Požádat o zrušit úlohu předtím, než se `Packaging` stavu, volání [aktualizovat vlastnosti úlohy](/rest/api/storageimportexport/jobs#Jobs_Update) operace a sady `CancelRequested` elementu `true`. Na základě best effort dojde ke zrušení úlohy. Pokud jsou jednotky probíhá přenos dat, data mohou nadále přenést i poté, co bylo vyžádáno zrušení.
 
- Zrušené úlohy je přesunuta do `Completed` stavu a je uložen za 90 dnů od této chvíle se odstraní.
+ Zrušené úlohy se přesune do `Completed` stavu a uchovávají po dobu 90 dnů, kdy se odstraní.
 
- Chcete-li odstranit úlohu, volejte [odstranit úlohu](/rest/api/storageimportexport/jobs#Jobs_Delete) operace předtím, než má dodaný úlohy (to znamená, když úloha je v `Creating` stav). Můžete také odstranit úlohu, když je `Completed` stavu. Po odstranění úlohy její informace a stav již nejsou přístupné přes rozhraní REST API nebo portálu Azure.
+ Pokud chcete odstranit úlohu, zavolejte [odstranit úlohu](/rest/api/storageimportexport/jobs#Jobs_Delete) operace předtím, než byla odeslaná úlohy (to znamená, když se úloha aktualizace zobrazí v `Creating` stavu). Můžete také odstranit úlohu, když je v `Completed` stavu. Po odstranění úlohy, její informace a stav již nejsou přístupná přes rozhraní REST API nebo na webu Azure portal.
 
 [!INCLUDE [storage-import-export-delete-personal-info.md](../../../includes/storage-import-export-delete-personal-info.md)]
 
 ## <a name="next-steps"></a>Další postup
 
-* [Pomocí REST API služby importu a exportu](storage-import-export-using-the-rest-api.md)
+* [Pomocí rozhraní REST API služby Import/Export](storage-import-export-using-the-rest-api.md)

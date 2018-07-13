@@ -1,12 +1,12 @@
 ---
-title: "Připojení zařízení pomocí jazyka C v systému Linux | Microsoft Docs"
-description: "Popisuje, jak se připojit zařízení k Azure IoT Suite předkonfigurované řešení vzdáleného monitorování pomocí aplikace napsané v jazyce C systémem Linux."
-services: 
+title: Připojit zařízení s použitím jazyka C v Linuxu | Dokumentace Microsoftu
+description: Popisuje, jak připojit zařízení k Azure IoT Suite předkonfigurované řešení vzdáleného monitorování pomocí aplikace napsané v jazyce C běžící na Linuxu.
+services: ''
 suite: iot-suite
 documentationcenter: na
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 0c7c8039-0bbf-4bb5-9e79-ed8cff433629
 ms.service: iot-suite
 ms.devlang: na
@@ -16,25 +16,26 @@ ms.workload: na
 ms.date: 11/02/2017
 ms.author: dobett
 ms.openlocfilehash: a5768041a13d5ddc355c054dc85ba651b0752aba
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38723872"
 ---
-# <a name="connect-your-device-to-the-remote-monitoring-preconfigured-solution-linux"></a>Připojte zařízení k monitorování předkonfigurované řešení vzdáleného (Linux)
+# <a name="connect-your-device-to-the-remote-monitoring-preconfigured-solution-linux"></a>Připojení zařízení předkonfigurovaného řešení vzdáleného monitorování (Linux)
 [!INCLUDE [iot-suite-v1-selector-connecting](../../includes/iot-suite-v1-selector-connecting.md)]
 
-## <a name="build-and-run-a-sample-c-client-linux"></a>Sestavení a spuštění ukázkových C klienta Linux
-Následující kroky ukazují, jak vytvořit klientskou aplikaci, která komunikuje s předkonfigurovaného řešení vzdáleného monitorování. Tato aplikace napsané v jazyce C a vytvořené a spusťte na Ubuntu Linux.
+## <a name="build-and-run-a-sample-c-client-linux"></a>Sestavte a spusťte ukázkové C klienta systému Linux
+Následující kroky ukazují, jak vytvořit klientskou aplikaci, která komunikuje s předkonfigurovaného řešení vzdáleného monitorování. Tato aplikace je napsaný v jazyce C a vytvořit a spustit v Ubuntu Linux.
 
-K provedení těchto kroků, je třeba zařízení se systémem Ubuntu verze 15.04 nebo 15.10. Než budete pokračovat, nainstalujte požadované balíčky zařízení Ubuntu pomocí následujícího příkazu:
+K dokončení těchto kroků, je potřeba zařízení se systémem Ubuntu verze 15.04 nebo 15.10. Než budete pokračovat, nainstalujte požadované balíčky na vašem zařízení se systémem Ubuntu pomocí následujícího příkazu:
 
 ```
 sudo apt-get install cmake gcc g++
 ```
 
-## <a name="install-the-client-libraries-on-your-device"></a>Nainstalujte klientské knihovny zařízení
-Knihovny klienta Azure IoT Hub jsou k dispozici jako balíček můžete nainstalovat pomocí zařízení Ubuntu **výstižný get** příkaz. Proveďte následující kroky k instalaci balíčku, který obsahuje IoT Hub knihovny a hlavičky souborů klienta v počítači Ubuntu:
+## <a name="install-the-client-libraries-on-your-device"></a>Nainstalujte klientské knihovny na vašem zařízení
+Jsou k dispozici jako balíček můžete nainstalovat na vaše zařízení se systémem Ubuntu pomocí klientských knihoven Azure IoT Hub **apt-get** příkazu. Proveďte následující kroky k instalaci balíčku, který obsahuje službu IoT Hub knihovny a hlavičky souborů klienta v počítači se systémem Ubuntu:
 
 1. V prostředí přidejte do počítače AzureIoT úložiště:
    
@@ -42,28 +43,28 @@ Knihovny klienta Azure IoT Hub jsou k dispozici jako balíček můžete nainstal
     sudo add-apt-repository ppa:aziotsdklinux/ppa-azureiot
     sudo apt-get update
     ```
-2. Nainstalovat balíček azure-iot-sdk-c vývojářů
+2. Instalace balíčku azure-iot-sdk-c-dev
    
     ```
     sudo apt-get install -y azure-iot-sdk-c-dev
     ```
 
 ## <a name="install-the-parson-json-parser"></a>Nainstalujte analyzátor Parson JSON
-Knihovny klienta služby IoT Hub pomocí analyzátoru Parson JSON analyzovat datové části zprávy. Ve složce vhodný ve vašem počítači naklonujte úložiště Parson GitHub pomocí následujícího příkazu:
+Tyto klientské knihovny služby IoT Hub použít k analýze datové části zprávy analyzátor Parson JSON. Ve vhodné složce v počítači naklonujte úložiště Parson GitHub pomocí následujícího příkazu:
 
 ```
 git clone https://github.com/kgabis/parson.git
 ```
 
 ## <a name="prepare-your-project"></a>Příprava projektu
-Na počítači Ubuntu, vytvořte složku s názvem **vzdáleného\_monitorování**. V **vzdáleného\_monitorování** složky:
+Na počítači s Ubuntu, vytvořte složku s názvem **vzdálené\_monitorování**. V **vzdálené\_monitorování** složky:
 
-- Vytvořit čtyři soubory **main.c**, **vzdáleného\_monitoring.c**, **vzdáleného\_monitoring.h**, a **CMakeLists.txt**.
+- Vytvořit čtyři soubory **main.c**, **vzdálené\_monitoring.c**, **vzdálené\_monitoring.h**, a **CMakeLists.txt**.
 - Vytvořte složku s názvem **parson**.
 
-Zkopírujte soubory **parson.c** a **parson.h** z místní kopie Parson úložiště do **vzdáleného\_monitorování nebo parson** složky.
+Zkopírujte soubory **parson.c** a **parson.h** z místní kopie úložiště Parson do **vzdálené\_monitorování/parson** složky.
 
-V textovém editoru otevřete **vzdáleného\_monitoring.c** souboru. Přidejte následující příkazy `#include`:
+V textovém editoru otevřete **vzdálené\_monitoring.c** souboru. Přidejte následující příkazy `#include`:
    
 ```
 #include "iothubtransportmqtt.h"
@@ -78,7 +79,7 @@ V textovém editoru otevřete **vzdáleného\_monitoring.c** souboru. Přidejte 
 
 [!INCLUDE [iot-suite-v1-connecting-code](../../includes/iot-suite-v1-connecting-code.md)]
 
-## <a name="call-the-remotemonitoringrun-function"></a>Volání vzdálených\_monitorování\_run – funkce
+## <a name="call-the-remotemonitoringrun-function"></a>Volání vzdáleného\_monitorování\_run – funkce
 V textovém editoru otevřete **remote_monitoring.h** souboru. Přidejte následující kód:
 
 ```
@@ -101,9 +102,9 @@ int main(void)
 ## <a name="build-and-run-the-application"></a>Sestavení a spuštění aplikace
 Následující kroky popisují způsob použití *CMake* k vytvoření klientské aplikace.
 
-1. V textovém editoru otevřete **CMakeLists.txt** v soubor **remote_monitoring** složky.
+1. V textovém editoru otevřete **CMakeLists.txt** soubor **remote_monitoring** složky.
 
-1. Přidejte podle následujících pokynů můžete definovat, jak vytvořit klientskou aplikaci:
+1. Přidejte následující pokyny k definování, jak vytvořit klientskou aplikaci:
    
     ```
     macro(compileAsC99)
@@ -151,7 +152,7 @@ Následující kroky popisují způsob použití *CMake* k vytvoření klientsk�
         m
     )
     ```
-1. V **remote_monitoring** složky, vytvořte složku pro uložení *Ujistěte se,* soubory, které generuje CMake a znovu spusťte **cmake** a **zkontrolujte** příkazy následujícím způsobem:
+1. V **remote_monitoring** složce vytvořte složku pro uložení *Ujistěte se,* soubory, které generuje CMake a potom spusťte **cmake** a **Ujistěte se,** Následující příkazy:
    
     ```
     mkdir cmake
@@ -160,7 +161,7 @@ Následující kroky popisují způsob použití *CMake* k vytvoření klientsk�
     make
     ```
 
-1. Spusťte aplikaci klienta a odesílat telemetrická data do služby IoT Hub:
+1. Spuštění klientské aplikace a odesílání telemetrických dat do služby IoT Hub:
    
     ```
     ./sample_app

@@ -1,22 +1,22 @@
-## <a name="customize-and-extend-the-device-management-actions"></a>Přizpůsobit a rozšířit akce správy zařízení
+## <a name="customize-and-extend-the-device-management-actions"></a>Přizpůsobení a rozšíření akce správy zařízení
 
-Řešení IoT můžete rozšiřovat definovanou sadu vzory správy zařízení a povolit vlastní vzorky pomocí dvojče zařízení a primitiv metoda cloud zařízení. Další akce správy zařízení příklady obnovení továrního nastavení, aktualizaci firmwaru, aktualizace softwaru, řízení spotřeby, správu sítí a připojení a šifrování dat.
+Řešení IoT můžete rozbalit definovanou sadu vzorů správy zařízení nebo povolit vlastní vzory pomocí dvojče zařízení a primitiv metoda typu cloud zařízení. Ostatní zařízení správu příklady akcí obnovení továrního nastavení, aktualizace firmwaru, aktualizace softwaru, řízení spotřeby, sítě a připojení správy a šifrování dat.
 
-## <a name="device-maintenance-windows"></a>Časová období údržby zařízení
+## <a name="device-maintenance-windows"></a>Časové intervaly pro zařízení
 
-Obvykle můžete nakonfigurovat zařízení k provádění akcí v čase, který minimalizuje přerušení a výpadky. Časová období údržby zařízení jsou běžně používané vzor zadat čas, kdy zařízení musí aktualizovat její konfiguraci. Back-end řešení můžete definovat a aktivace zásady na zařízení, která umožňuje údržby použít požadované vlastnosti dvojče zařízení. Pokud zařízení obdrží zásady okno údržby, slouží vlastnost hlášené dvojče zařízení nahlásit stav zásad. Back-end aplikačním pak můžete použít dotazy twin zařízení ověřit identitu pro dodržování předpisů u zařízení a každou zásadu.
+Obvykle konfigurace zařízení k provádění akcí po jednom, které minimalizuje přerušení a výpadků. Časová období údržby zařízení jsou běžně používané vzor k definování čas, kdy zařízení by měl aktualizovat její konfiguraci. Vaše back-end řešení můžete použít požadované vlastnosti dvojčete zařízení k definování a aktivace zásady na zařízení, která umožňuje časového období údržby. Pokud zařízení obdrží zásady okno údržby, můžete ohlášené vlastnosti dvojčete zařízení nahlásit stav zásad. Back endové aplikace pak můžete pomocí dotazů na dvojčata zařízení ověřit dodržování předpisů u zařízení a každou zásadu.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-V tomto kurzu použít přímá metoda ke spuštění vzdálené restartování na zařízení. Hlášen vlastnostech používají k hlášení čas posledního restartování ze zařízení a dotaz dvojče zařízení chcete zjistit, čas posledního restartování zařízení z cloudu.
+V tomto kurzu jste použili přímé metody k aktivaci vzdálené restartování zařízení. Používají ohlášené vlastnosti k hlášení poslední čas restartování ze zařízení a dotazování dvojčat zařízení ke zjištění poslední čas restartování zařízení z cloudu.
 
-Chcete-li pokračovat, Začínáme se službou IoT Hub a vzory správy zařízení, jako je vzdálené přes aktualizaci firmwaru letecké, najdete v části:
+Chcete-li pokračovat v seznamování se službou IoT Hub a schémata správy zařízení jako vzdálené přes aktualizace firmwaru air, naleznete v tématu:
 
-[Kurz: Jak to provést aktualizaci firmwaru][lnk-fwupdate]
+[Kurz: Jak provést upgrade firmwaru][lnk-fwupdate]
 
-Zjistěte, jak rozšířit vaše IoT řešení a plán metoda volá na několika zařízeních, najdete v článku [plán a všesměrového vysílání úlohy] [ lnk-tutorial-jobs] kurzu.
+Zjistěte, jak rozšířit vaše IoT řešení a plán metoda volá do různých zařízení, najdete v článku [plánování a vysílání úloh] [ lnk-tutorial-jobs] kurzu.
 
-Chcete-li pokračovat, Začínáme se službou IoT Hub, najdete v části [Začínáme se službou IoT Edge][lnk-iot-edge].
+Chcete-li pokračovat v seznamování se službou IoT Hub, přečtěte si téma [Začínáme s IoT Edge][lnk-iot-edge].
 
 [lnk-fwupdate]: ../articles/iot-hub/iot-hub-node-node-firmware-update.md
 [lnk-tutorial-jobs]: ../articles/iot-hub/iot-hub-node-node-schedule-jobs.md

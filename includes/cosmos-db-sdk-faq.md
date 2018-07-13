@@ -1,24 +1,24 @@
-**1. Jak budou zákazníci informováni o retiring SDK?**
+**1. Jak bude zákazníky informovat retiring SDK?**
 
-Společnost Microsoft poskytne 12 měsíce předběžná oznámení za účelem podpory retiring SDK pro usnadnění s hladkým přechodem na podporovanou sadou SDK. Navíc zákazníci budou informováni prostřednictvím různé komunikační kanály – Azure Management Portal, středisku pro vývojáře, blogu, a k přímé komunikaci přiřazených Správci služeb.
+Microsoft bude poskytovat 12 měsíců předem za účelem podpory retiring SDK pro usnadnění s hladkým přechodem na podporovaná sada SDK. Dále budeme zákazníky informovat přes různé komunikační kanály – portál pro správu Azure, Centrum pro vývojáře, blogový příspěvek, a přímá komunikace na přiřazené Správci služeb.
 
-**2. Zákazníci vytvářet aplikace, které používají "obnovovaného" SDK DB Cosmos vyřazeno Azure během dobu 12 měsíců?** 
+**2. Mohou zákazníci vytvářet aplikace používající sadu "takové, jaké budou" vyřazeno Azure Cosmos DB SDK během 12měsíčního období?** 
 
-Ano, zákazníky, bude mít plný přístup k vytváření, nasazení a upravovat aplikace pomocí sady SDK "obnovovaného" DB vyřazeno Cosmos Azure během období odkladu 12 měsíců. Během období odkladu 12 měsíců jsou zákazníci měli migrovat na novější podporovanou verzi sady Azure Cosmos DB SDK podle potřeby.
+Ano, zákazníci budou mít úplný přístup k vytváření, nasazení a upravení aplikací, "takové, jaké budou" vyřazeno Azure Cosmos DB SDK pomocí během 12měsíčního období odkladu. Během 12měsíčního období odkladu doporučujeme migrovat na novější podporovanou verzi sady Azure Cosmos DB SDK podle potřeby zákazníků.
 
-**3. Zákazníci mohou vytvářet a upravovat aplikace, které používají vyřazeno sada SDK Azure DB Cosmos po dobu 12 měsíců oznámení?**
+**3. Zákazníci můžou vytvářet a upravovat aplikace pomocí vyřazeno Azure Cosmos DB SDK po dobu 12 měsíců oznámení?**
 
-Po dobu 12 měsíců oznámení bude vyřazeno sady SDK. Všechny přístupy do databáze Azure Cosmos aplikace pomocí vyřazeno sady SDK není povoleno platformou Azure Cosmos DB. Navíc společnosti Microsoft, nebudou zajišťovat zákaznickou podporu na vyřazeno SDK.
+Po dobu 12 měsíců oznámení budou dostupné jenom sadu SDK. Přístup ke službě Azure Cosmos DB aplikacemi pomocí staré SDK nebude povoleném platformy Azure Cosmos DB. Dále Microsoft neposkytne zákaznickou podporu na staré SDK.
 
-**4. Co se stane zákazníka je spuštění aplikací, které používají nepodporovanou verzi sady SDK DB Cosmos Azure?**
+**4. Co se stane zákazníkovi běží aplikace, které používá nepodporovanou verzi sady Azure Cosmos DB SDK?**
 
-Jakékoli pokusy provedené připojit ke službě Azure Cosmos DB s vyřazené verze sady SDK budou odmítnuty. 
+Odmítne všechny pokusů o připojení ke službě Azure Cosmos DB pomocí staré verze sady SDK. 
 
-**5. Nové funkce a funkce uplatní na všechny sady SDK bez vyřazeno?**
+**5. Nové funkce se uplatní se všechny sady SDK není Vyřazená?**
 
-Nové funkce a funkce budou přidány pouze na nové verze. Pokud používáte starý, bez vyřazeno, verzi sady SDK bude i nadále fungovat jako předchozí vaše požadavky na databázi Cosmos Azure, ale nebudete mít přístup k žádné nové funkce.  
+Nové funkce a funkce budou přidány pouze na nové verze. Pokud používáte starý, není Vyřazená, verzi sady SDK budou i nadále fungovat jako předchozí vašich požadavků ve službě Azure Cosmos DB, ale nebudete mít přístup k žádné nové funkce.  
 
-**6. Co mám dělat, když nelze aktualizovat Moje aplikace před datem oříznutím?**
+**6. Co mám dělat, když nejde mi aktualizovat mé aplikace než datum přerušení?**
 
-Doporučujeme vám, že můžete upgradovat na nejnovější SDK co nejdříve. Jakmile sada SDK, pomocí kterých má byl označen pro vyřazení budete mít dobu 12 měsíců k aktualizaci aplikace. Pokud z jakéhokoliv důvodu, nebude možné dokončit aktualizaci vaší aplikace v rámci této časový rámec a potom obraťte se [Cosmos DB Team](mailto:askcosmosdb@microsoft.com) a požádat o jejich pomoc před datem přerušení.
+Doporučujeme upgradovat na nejnovější SDK co nejdříve. Jakmile označená sady SDK pro vyřazení z provozu bude mít 12 měsíců k aktualizaci aplikace. Pokud z jakéhokoli důvodu nelze dokončit aktualizaci vaší aplikace v tomto časovém rámci, obraťte se prosím [Cosmos DB týmu](mailto:askcosmosdb@microsoft.com) a požádat o jejich pomoc než datum přerušení.
 

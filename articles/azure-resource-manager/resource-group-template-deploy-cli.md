@@ -1,6 +1,6 @@
 ---
-title: Nasazení prostředků pomocí Azure CLI a šablony | Microsoft Docs
-description: Nasazení prostředky do Azure pomocí Azure Resource Manageru a rozhraní příkazového řádku Azure. Prostředky jsou definovány v šabloně Resource Manageru.
+title: Nasazení prostředků pomocí Azure CLI a šablon | Dokumentace Microsoftu
+description: Nasazení prostředků do Azure pomocí Azure Resource Manageru a Azure CLI. Prostředky jsou definovány v šabloně Resource Manageru.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,34 +14,34 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/31/2017
 ms.author: tomfitz
-ms.openlocfilehash: ee8ce8453c24d19b3912d0f6cc506b3d3e72548f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5a6b227cee3765593adbda430d8c47312f996c18
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34603000"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38723837"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>Nasazení prostředků pomocí šablon Resource Manageru a Azure CLI
 
-Tento článek vysvětluje, jak pomocí Azure CLI 2.0 šablony Resource Manageru k nasazení vašich prostředků Azure. Pokud nejste obeznámeni s koncepty nasazení a Správa řešení Azure najdete v části [přehled Azure Resource Manageru](resource-group-overview.md).  
+Tento článek vysvětluje, jak nasadit prostředky do Azure pomocí rozhraní příkazového řádku Azure pomocí šablon Resource Manageru. Pokud nejsou dobře známé koncepty nasazení a správou řešení Azure, najdete v článku [přehled Azure Resource Manageru](resource-group-overview.md).  
 
-Šablony Resource Manageru, který nasazujete, může to být místní soubor na počítači, nebo externí soubor, který je umístěný v úložišti, jako je Githubu. Šablona nasazení v tomto článku je k dispozici v [vzorové šablony](#sample-template) oddílu, nebo jako [Šablona účtu úložiště na webu GitHub](https://github.com/Azure/azure-quickstart-templates/blob/master/101-storage-account-create/azuredeploy.json).
+Šablony Resource Manageru, který nasazujete, může být místní soubor na počítači, nebo externí soubor, který se nachází v úložišti, jako je GitHub. Šablona nasazení v tomto článku je k dispozici v [Ukázková šablona](#sample-template) části nebo [Šablona účtu úložiště v Githubu](https://github.com/Azure/azure-quickstart-templates/blob/master/101-storage-account-create/azuredeploy.json).
 
 [!INCLUDE [sample-cli-install](../../includes/sample-cli-install.md)]
 
-Pokud nemáte nainstalované rozhraní příkazového řádku Azure, můžete použít [cloudové prostředí](#deploy-template-from-cloud-shell).
+Pokud nemáte nainstalované rozhraní příkazového řádku Azure, můžete použít [Cloud Shell](#deploy-template-from-cloud-shell).
 
 ## <a name="deploy-local-template"></a>Nasazení místního šablony
 
 Při nasazování prostředků do Azure, můžete:
 
 1. Přihlaste se ke svému účtu Azure.
-2. Vytvořte skupinu prostředků, která slouží jako kontejner pro nasazené prostředky. Název skupiny prostředků může obsahovat pouze alfanumerické znaky, tečky, podtržítka, pomlčky a závorky. Může být až 90 znaků. Nemůže končit tečkou.
-3. Nasazení do skupiny prostředků definující zdrojů pro vytvoření šablony
+2. Vytvořte skupinu prostředků, která slouží jako kontejner pro nasazených prostředků. Název skupiny prostředků může obsahovat jenom alfanumerické znaky, tečky, podtržítka, pomlčky a závorky. Může být až 90 znaků. Nesmí končit tečkou.
+3. Nasazení do skupiny prostředků, který definuje prostředky k vytvoření šablony
 
-Šablonu může obsahovat parametry, které vám umožní přizpůsobit nasazení. Například můžete zadat hodnoty, které jsou přizpůsobené pro konkrétní prostředí (například vývoj, testování a provozním). Ukázka šablony definuje parametr pro účet úložiště SKU. 
+Šablona může obsahovat parametry, které vám umožní přizpůsobit nasazení. Například můžete zadat hodnoty, které jsou přizpůsobené pro konkrétní prostředí (jako je vývoj, testování a produkce). Ukázková šablona definuje parametr pro SKU účtu úložiště. 
 
-Následující příklad vytvoří skupinu prostředků a nasadí šablonu z místního počítače:
+Následující příklad vytvoří skupinu prostředků a nasadí šablony z místního počítače:
 
 ```azurecli
 az login
@@ -54,7 +54,7 @@ az group deployment create \
     --parameters storageAccountType=Standard_GRS
 ```
 
-Dokončení nasazení může trvat několik minut. Po dokončení zobrazí zprávu, která obsahuje výsledek:
+Dokončení nasazení může trvat několik minut. Po dokončení se zobrazí zprávu, která obsahuje výsledek:
 
 ```azurecli
 "provisioningState": "Succeeded",
@@ -62,9 +62,9 @@ Dokončení nasazení může trvat několik minut. Po dokončení zobrazí zprá
 
 ## <a name="deploy-external-template"></a>Nasazení externí šablony
 
-Místo uložení šablony Resource Manageru na místním počítači, dáváte přednost uložit je do externího umístění. Šablony můžete uložit ve úložiště řízení zdrojů (například Githubu). Nebo byste je uložit v účtu úložiště Azure pro přístup ke sdílenému ve vaší organizaci.
+Místo uložení šablony Resource Manageru na místním počítači, můžete chtít uložit je do externího umístění. Šablony můžete uložit úložiště správy zdrojového kódu (např. GitHub). Nebo můžete je ukládat v účtu úložiště Azure pro zajištění sdíleného přístupu ve vaší organizaci.
 
-Chcete-li nasadit externí šablonu, použijte **šablony uri** parametr. Identifikátor URI v příkladu použijte k nasazení ukázkové šablony z Githubu.
+Chcete-li nasadit externí šablony, použijte **šablona identifikátoru uri** parametru. Použijte identifikátor URI v příkladu nasazení ukázkové šablony z Githubu.
    
 ```azurecli
 az login
@@ -77,11 +77,11 @@ az group deployment create \
     --parameters storageAccountType=Standard_GRS
 ```
 
-V předchozím příkladu vyžaduje veřejně přístupná identifikátor URI pro šablony, která funguje pro většinu scénářů, protože vaše šablona by neměla zahrnovat citlivá data. Pokud budete muset zadat citlivá data (např. heslo správce), předejte jako parametr zabezpečené tuto hodnotu. Ale pokud nechcete, aby vaše šablona veřejně přístupný, můžete chránit jeho uložením v kontejneru privátní úložiště. Informace o nasazení šablony, která vyžaduje token sdílený přístupový podpis (SAS) najdete v tématu [privátní šablony nasazení s tokenem SAS](resource-manager-cli-sas-token.md).
+V předchozím příkladu vyžaduje veřejně přístupné identifikátor URI pro šablony, které lze použít pro většinu scénářů, protože šablony by neměl obsahovat citlivá data. Pokud je třeba zadat citlivá data (jako je zadání hesla správce), předáte tuto hodnotu jako zabezpečený parametr. Ale pokud nechcete, aby se šablony pro veřejně přístupný, budete ho chránit ukládáním do privátního úložiště kontejnerů. Informace o nasazení šablony, která se vyžaduje token sdíleného přístupového podpisu (SAS), najdete v části [nasazení privátní šablony s tokenem SAS](resource-manager-cli-sas-token.md).
 
 [!INCLUDE [resource-manager-cloud-shell-deploy.md](../../includes/resource-manager-cloud-shell-deploy.md)]
 
-V prostředí cloudu použijte následující příkazy:
+Ve službě Cloud Shell použijte následující příkazy:
 
 ```azurecli-interactive
 az group create --name examplegroup --location "South Central US"
@@ -90,13 +90,13 @@ az group deployment create --resource-group examplegroup \
   --parameters storageAccountType=Standard_GRS
 ```
 
-## <a name="deploy-to-more-than-one-resource-group-or-subscription"></a>Nasazení na více než jedné skupiny prostředků nebo předplatného
+## <a name="deploy-to-more-than-one-resource-group-or-subscription"></a>Nasazení do více než jedné skupiny prostředků nebo předplatného
 
-Zpravidla nasazujete, všechny prostředky ve vaší šablony jedna skupina prostředků. Existují však scénáře, ve které chcete nasadit sadu prostředků společně ale umístěte je v různých skupinách prostředků nebo předplatných. Můžete nasadit do pouze pět skupin prostředků v jednom nasazení. Další informace najdete v tématu [prostředky Azure nasazení na více než jedno předplatné nebo skupinu prostředků](resource-manager-cross-resource-group-deployment.md).
+Zpravidla nasazujete, všechny prostředky ve vaší šabloně do jedné skupiny prostředků. Existují ale scénáře, ve které chcete nasadit sadu prostředků společně, ale je umístit do různých skupin prostředků nebo předplatných. Můžete nasadit do pouze pět skupin prostředků v jednom nasazení. Další informace najdete v tématu [Azure nasadit prostředky do více než jedno předplatné nebo skupinu prostředků](resource-manager-cross-resource-group-deployment.md).
 
 ## <a name="parameter-files"></a>Soubory parametrů
 
-Místo předávání parametrů jako vložené hodnoty ve vašem skriptu, možná bude jednodušší použít soubor JSON, který obsahuje hodnoty parametru. Soubor parametrů musí být v následujícím formátu:
+Místo předání parametrů jako hodnoty vložená ve skriptu, možná bude snadněji používá soubor JSON, který obsahuje hodnoty parametrů. Soubor parametrů musí být v následujícím formátu:
 
 ```json
 {
@@ -110,11 +110,11 @@ Místo předávání parametrů jako vložené hodnoty ve vašem skriptu, možn�
 }
 ```
 
-Všimněte si, že sekci parametrů obsahuje název parametru, který odpovídá parametru definované v šabloně (storageAccountType). Soubor parametrů obsahuje hodnotu pro parametr. Tato hodnota se automaticky předán do šablony během nasazení. Můžete vytvořit několik souborů parametr pro různé scénáře nasazení a pak předejte soubor odpovídající parametr. 
+Všimněte si, že sekci parametrů obsahuje název parametru, který odpovídá parametru definovaného v šabloně (storageAccountType). Soubor parametrů obsahuje hodnotu pro parametr. Tato hodnota je automaticky předávaných do šablony během nasazení. Můžete vytvořit více soubory parametrů pro odlišné scénáře nasazení a poté předejte soubor odpovídající parametr. 
 
-V předchozím příkladu zkopírujte a uložte ho jako soubor s názvem `storage.parameters.json`.
+Předchozí příklad zkopírujte a uložte ho jako soubor s názvem `storage.parameters.json`.
 
-Chcete-li předat soubor místní parametrů, použijte `@` zadat místní soubor s názvem storage.parameters.json.
+Chcete-li předat parametr místní soubor, použijte `@` zadat místní soubor s názvem storage.parameters.json.
 
 ```azurecli
 az group deployment create \
@@ -124,9 +124,9 @@ az group deployment create \
     --parameters @storage.parameters.json
 ```
 
-## <a name="test-a-template-deployment"></a>Testovací nasazení šablony
+## <a name="test-a-template-deployment"></a>Test šablony nasazení
 
-K otestování šablony a parametr hodnoty bez ve skutečnosti nasazení všechny prostředky, použijte [ověření nasazení skupiny az](/cli/azure/group/deployment#az_group_deployment_validate). 
+Chcete-li otestovat šablonu a parametry hodnoty bez skutečného nasazení všechny prostředky, použijte [ověřit nasazení skupiny pro az](/cli/azure/group/deployment#az_group_deployment_validate). 
 
 ```azurecli
 az group deployment validate \
@@ -135,7 +135,7 @@ az group deployment validate \
     --parameters @storage.parameters.json
 ```
 
-Pokud nejsou zjištěny žádné chyby, příkaz vrátí informace o testovací nasazení. Konkrétně, Všimněte si, že **chyba** hodnota je null.
+Pokud nejsou zjištěny žádné chyby, příkaz vrátí informace o nasazení testu. Zejména, Všimněte si, že **chyba** hodnotu null.
 
 ```azurecli
 {
@@ -144,7 +144,7 @@ Pokud nejsou zjištěny žádné chyby, příkaz vrátí informace o testovací 
       ...
 ```
 
-Pokud dojde k chybě, příkaz vrátí chybovou zprávu. Probíhá pokus o předání nesprávná hodnota pro účet úložiště SKU, například vrátí následující chybu:
+Pokud dojde k chybě, příkaz vrátí chybovou zprávu. Pokus o předání nesprávnou hodnotu pro účet úložiště skladovou Položku, například vrátí následující chybu:
 
 ```azurecli
 {
@@ -160,7 +160,7 @@ Pokud dojde k chybě, příkaz vrátí chybovou zprávu. Probíhá pokus o před
 }
 ```
 
-Pokud vaše šablona obsahuje chybu syntaxe, příkaz vrátí chybu oznamující, že ho nebylo možné rozložit šablony. Zpráva označuje číslo řádku a pozice chybu analýzy.
+Pokud vaše šablona obsahuje chybu syntaxe, příkaz vrátí chybu s informacemi, že ho nebylo možné rozložit šablony. Zpráva číslo řádku a pozice chybu analýzy.
 
 ```azurecli
 {
@@ -177,7 +177,7 @@ Pokud vaše šablona obsahuje chybu syntaxe, příkaz vrátí chybu oznamující
 
 [!INCLUDE [resource-manager-deployments](../../includes/resource-manager-deployments.md)]
 
-Pokud chcete použít dokončení režimu, použijte `mode` parametr:
+Chcete-li použít úplný režim, použijte `mode` parametr:
 
 ```azurecli
 az group deployment create \
@@ -190,7 +190,7 @@ az group deployment create \
 
 ## <a name="sample-template"></a>Ukázková šablona
 
-Příklady v tomto článku se používá následující šablony. Zkopírujte a uložte ho jako soubor s názvem storage.json. Chcete-li pochopit, jak k vytvoření této šablony, přečtěte si téma [vytvoření vaší první šablony Azure Resource Manager](resource-manager-create-first-template.md).  
+Následující šablony se používá pro příklady v tomto článku. Zkopírujte a uložte ho jako soubor s názvem storage.json. Postup vytvoření této šablony najdete v tématu [vytvoření první šablony Azure Resource Manageru](resource-manager-create-first-template.md).  
 
 ```json
 {
@@ -238,9 +238,9 @@ Příklady v tomto článku se používá následující šablony. Zkopírujte a
 ```
 
 ## <a name="next-steps"></a>Další postup
-* V příkladech v tomto článku nasadit do skupiny prostředků v rámci vašeho předplatného výchozí prostředky. Použijte jiný odběr, najdete v tématu [spravovat víc předplatných Azure](/cli/azure/manage-azure-subscriptions-azure-cli).
-* Pro dokončení ukázkový skript, který nasadí šablonu, najdete v části [skript nasazení šablony Resource Manageru](resource-manager-samples-cli-deploy.md).
-* Chcete-li pochopit, jak definovat parametry v šabloně, přečtěte si téma [pochopit strukturu a syntaxe šablon Azure Resource Manager](resource-group-authoring-templates.md).
-* Tipy k řešení běžných chyb při nasazení, naleznete v části [odstraňování běžných chyb nasazení Azure pomocí Azure Resource Manageru](resource-manager-common-deployment-errors.md).
-* Informace o nasazení šablony, která vyžaduje tokenu SAS naleznete v tématu [privátní šablony nasazení s tokenem SAS](resource-manager-cli-sas-token.md).
+* V příkladech v tomto článku nasazení prostředků do skupiny prostředků ve vašem výchozím předplatném. Pokud chcete použít jiné předplatné, naleznete v tématu [Správa několika předplatných Azure](/cli/azure/manage-azure-subscriptions-azure-cli).
+* Úplný ukázkový skript, který se nasazuje šablony najdete v tématu [skript nasazení šablony Resource Manageru](resource-manager-samples-cli-deploy.md).
+* Chcete-li pochopit, jak definovat parametry v šabloně, přečtěte si téma [Princip struktury a syntaxe šablon Azure Resource Manageru](resource-group-authoring-templates.md).
+* Tipy pro řešení běžných chyb při nasazení, najdete v části [řešit běžné chyby nasazení v Azure pomocí Azure Resource Manageru](resource-manager-common-deployment-errors.md).
+* Informace o nasazení šablony, která se vyžaduje SAS token najdete v tématu [nasazení privátní šablony s tokenem SAS](resource-manager-cli-sas-token.md).
 * Pokyny k tomu, jak můžou podniky používat Resource Manager k efektivní správě předplatných, najdete v části [Základní kostra Azure Enterprise – zásady správného řízení pro předplatná](/azure/architecture/cloud-adoption-guide/subscription-governance).

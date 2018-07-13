@@ -1,6 +1,6 @@
 ---
-title: Použít snímky přírůstkové zálohování a obnovení nespravované disků virtuálního počítače Windows Azure | Microsoft Docs
-description: Vytvořte vlastní řešení pro zálohování a obnovení pomocí přírůstkového snímků disky virtuálního počítače Azure Windows.
+title: Zálohování a obnovení nespravované disky virtuálního počítače Windows Azure pomocí přírůstkových snímků | Dokumentace Microsoftu
+description: Vytvoření vlastního řešení pro zálohování a obnovení disků virtuálního počítače Windows Azure pomocí přírůstkových snímků.
 services: virtual-machines-windows
 documentationcenter: na
 author: aungoo-msft
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: aungoo
 ms.openlocfilehash: aea91f4d402e88d74cc1917efe1b368c458f1322
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23879887"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38696703"
 ---
 [!INCLUDE [virtual-machines-incremental-snapshots](../../../includes/virtual-machines-incremental-snapshots.md)]

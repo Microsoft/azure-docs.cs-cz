@@ -1,6 +1,6 @@
 ---
-title: 'Generování a exportování certifikátů pro Point-to-Site: prostředí PowerShell: Azure | Microsoft Docs'
-description: Vytvořit certifikát podepsaný svým držitelem kořenové, exportujte veřejný klíč a generovat klientské certifikáty pomocí prostředí PowerShell na Windows 10 nebo Windows Server 2016.
+title: 'Generování a export certifikátů pro Point-to-Site: PowerShell: Azure | Dokumentace Microsoftu'
+description: Vytvořit certifikát podepsaný svým držitelem, exportujte veřejný klíč a generovat klientské certifikáty pomocí prostředí PowerShell ve Windows 10 nebo Windows Server 2016.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
@@ -16,35 +16,35 @@ ms.workload: infrastructure-services
 ms.date: 04/12/2018
 ms.author: cherylmc
 ms.openlocfilehash: 385b6ed2e8104fd2e15e6e55d46dcd12b963ec6b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31423044"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38696544"
 ---
-# <a name="generate-and-export-certificates-for-point-to-site-using-powershell"></a>Generování a exportování certifikátů pro Point-to-Site pomocí prostředí PowerShell
+# <a name="generate-and-export-certificates-for-point-to-site-using-powershell"></a>Generování a export certifikátů pro Point-to-Site pomocí Powershellu
 
-Připojení point-to-Site používají certifikáty k ověření. Tento článek ukazuje, jak vytvořit certifikát podepsaný svým držitelem kořenové a generovat klientské certifikáty pomocí prostředí PowerShell na Windows 10 nebo Windows Server 2016. Pokud hledáte kroků konfigurace Point-to-Site, například jak nahrát kořenových certifikátů, vyberte jeden z článků ' konfigurace Point-to-Site, z následujícího seznamu:
+Připojení point-to-Site používat certifikáty k ověřování. Tento článek ukazuje, jak vytvořit certifikát podepsaný svým držitelem a generování klientských certifikátů pomocí prostředí PowerShell ve Windows 10 nebo Windows Server 2016. Pokud chcete postup konfigurace Point-to-Site, například jak nahrát kořenových certifikátů, vyberte jednu z "Konfigurace Point-to-Site" články z následujícího seznamu:
 
 > [!div class="op_single_selector"]
-> * [Vytvořit certifikáty podepsané svým držitelem – prostředí PowerShell](vpn-gateway-certificates-point-to-site.md)
-> * [Vytvořit certifikáty podepsané svým držitelem - MakeCert](vpn-gateway-certificates-point-to-site-makecert.md)
-> * [Konfigurace Point-to-Site - Resource Manager – portál Azure](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
-> * [Konfigurace Point-to-Site - Resource Manager – prostředí PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md)
-> * [Konfigurace Point-to-Site - Classic - portálu Azure](vpn-gateway-howto-point-to-site-classic-azure-portal.md)
+> * [Vytvoření certifikátů podepsaných svým držitelem – PowerShell](vpn-gateway-certificates-point-to-site.md)
+> * [Vytvoření certifikátů podepsaných svým držitelem – použití nástroje MakeCert](vpn-gateway-certificates-point-to-site-makecert.md)
+> * [Konfigurace Point-to-Site – Resource Manager – Azure portal](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
+> * [Konfigurace Point-to-Site – Resource Manager – PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md)
+> * [Konfigurace Point-to-Site – Classic – Azure portal](vpn-gateway-howto-point-to-site-classic-azure-portal.md)
 > 
 > 
 
-Musíte provést kroky v tomto článku v počítači se systémem Windows 10 nebo Windows Server 2016. Rutiny prostředí PowerShell, které používáte pro generování certifikátů jsou součástí operačního systému a nefungují v jiných verzích Windows. K vytvoření certifikátů, je potřeba jenom počítače Windows 10 nebo Windows Server 2016. Po vygenerování certifikátů jsou můžete odešlete, nebo je nainstalovat pro všechny podporované klientské operační systémy. 
+Musíte provést kroky v tomto článku na počítači se systémem Windows 10 nebo Windows Server 2016. Rutiny Powershellu, které můžete použít ke generování certifikátů jsou součástí operačního systému a v jiných verzích Windows, nebudou fungovat. Počítače se Windows 10 nebo Windows Server 2016 je potřeba jenom ke generování certifikátů. Po vygenerování certifikátů můžete nahrávat nebo nainstalovat pro všechny podporované klientské operační systémy. 
 
-Pokud nemáte přístup k počítači se systémem Windows 10 nebo Windows Server 2016, můžete použít [MakeCert](vpn-gateway-certificates-point-to-site-makecert.md) pro generování certifikátů. Certifikáty, které můžete vygenerovat pomocí obou těchto metod se dá nainstalovat na všechny [podporované](vpn-gateway-howto-point-to-site-resource-manager-portal.md#faq) klientský operační systém.
+Pokud nemáte přístup k počítači s Windows 10 nebo Windows Server 2016, můžete použít [MakeCert](vpn-gateway-certificates-point-to-site-makecert.md) ke generování certifikátů. Certifikáty, které vygenerujete pomocí některé z metod může být nainstalován na žádném [podporované](vpn-gateway-howto-point-to-site-resource-manager-portal.md#faq) klientský operační systém.
 
-## <a name="rootcert"></a>1. Vytvořit certifikát podepsaný svým držitelem kořenové
+## <a name="rootcert"></a>1. Vytvořit certifikát podepsaný svým držitelem
 
-Pomocí rutiny New-SelfSignedCertificate vytvořit certifikát podepsaný svým držitelem kořenové. Parametr Další informace najdete v tématu [New-SelfSignedCertificate](https://technet.microsoft.com/itpro/powershell/windows/pkiclient/new-selfsignedcertificate).
+Pomocí rutiny New-SelfSignedCertificate vytvořit certifikát podepsaný svým držitelem. Informace o dalších parametrech najdete v části [New-SelfSignedCertificate](https://technet.microsoft.com/itpro/powershell/windows/pkiclient/new-selfsignedcertificate).
 
-1. Z počítače se systémem Windows 10 nebo Windows Server 2016 otevřete konzolu prostředí Windows PowerShell se zvýšenými oprávněními.
-2. Použijte následující příklad k vytvoření certifikátu podepsaného svým držitelem kořenové. Následující příklad vytvoří certifikát podepsaný svým držitelem kořenové s názvem 'P2SRootCert', který je automaticky nainstalován v 'Certifikáty – aktuální User\Personal\Certificates'. Certifikát můžete zobrazit tak, že otevřete *certmgr.msc*, nebo *Správa uživatelských certifikátů*.
+1. Z počítače se systémem Windows 10 nebo Windows Server 2016 otevřete konzolu Windows Powershellu se zvýšenými oprávněními.
+2. Abyste mohli vytvořit certifikát podepsaný svým držitelem, použijte následující příklad. Následující příklad vytvoří certifikát podepsaný svým držitelem s názvem "P2SRootCert", který je automaticky nainstalován v úložišti "Certificates-Current User\Personal\Certificates". Certifikát můžete zobrazit tak, že otevřete *certmgr.msc*, nebo *správu uživatelských certifikátů*.
 
   ```powershell
   $cert = New-SelfSignedCertificate -Type Custom -KeySpec Signature `
@@ -55,17 +55,17 @@ Pomocí rutiny New-SelfSignedCertificate vytvořit certifikát podepsaný svým 
 
 ## <a name="clientcert"></a>2. Vygenerování klientského certifikátu
 
-Každý klientský počítač, který se připojuje k virtuální síti pomocí připojení Point-to-Site, musí mít nainstalovaný klientský certifikát. Vygenerujte certifikát klienta z podepsaného svým držitelem kořenový certifikát a pak je exportovat a nainstalovat certifikát klienta. Pokud není nainstalován klientský certifikát, ověření se nezdaří. 
+Každý klientský počítač, který se připojuje k virtuální síti pomocí připojení Point-to-Site, musí mít nainstalovaný klientský certifikát. Vygenerování klientského certifikátu z certifikátu podepsaného svým držitelem a exportovat a instalaci klientského certifikátu. Pokud není nainstalovaný klientský certifikát, ověření se nezdaří. 
 
-Následující kroky vás provedou vygenerování klientského certifikátu z certifikát podepsaný svým držitelem kořenové. Z se stejným kořenovým certifikátem může generovat více klientských certifikátů. Při generování klientské certifikáty pomocí následujícího postupu klientský certifikát se automaticky nainstaluje na počítači, který jste použili k vygenerování certifikátu. Pokud chcete nainstalovat certifikát klienta v jiném počítači klienta, můžete exportovat certifikát.
+Následující kroky vás provedou vygenerování klientského certifikátu z certifikátu podepsaného svým držitelem. Více klientských certifikátů můžete nechat vygenerovat z se stejným kořenovým certifikátem. Při generování klientských certifikátů pomocí následujícího postupu klientský certifikát je automaticky nainstalován v počítači, který jste použili k vygenerování certifikátu. Pokud chcete nainstalovat klientský certifikát na jiný klientský počítač, můžete exportovat certifikát.
 
-Příklady pomocí rutiny New-SelfSignedCertificate pro vytvoření klientského certifikátu, který vyprší za jeden rok. Dalším parametr informace, například nastavení hodnoty různých vypršení platnosti certifikátu klienta najdete v části [New-SelfSignedCertificate](https://technet.microsoft.com/itpro/powershell/windows/pkiclient/new-selfsignedcertificate).
+V příkladech pomocí rutiny New-SelfSignedCertificate vygenerování klientského certifikátu, jejíž platnost vyprší jeden rok. Informace o další parametr, jako je například nastavení hodnoty různých vypršení platnosti certifikátu klienta najdete v části [New-SelfSignedCertificate](https://technet.microsoft.com/itpro/powershell/windows/pkiclient/new-selfsignedcertificate).
 
 ### <a name="example-1"></a>Příklad 1
 
-Tento příklad používá proměnnou deklarované '$cert' z předchozí části. Pokud po vytvoření certifikátu podepsaného svým držitelem kořenové uzavřít konzolu PowerShell nebo vytváření dalších klientských certifikátů v nové relaci konzoly prostředí PowerShell, použijte kroky v [příklad 2](#ex2).
+Tento příklad používá proměnnou deklarovanou '$cert' z předchozí části. Pokud uzavřeno konzole PowerShell po vytvoření certifikátu podepsaného svým držitelem nebo vytváření dalších klientských certifikátů v nové relaci konzoly prostředí PowerShell, postupujte podle kroků v [příklad 2](#ex2).
 
-Upravit a spustit v příkladu pro vytvoření klientského certifikátu. Pokud spustíte následující příklad beze změny jeho, výsledkem je klientský certifikát s názvem 'P2SChildCert'.  Pokud chcete název certifikátu podřízené něco jiného, změňte hodnotu CN. Neměňte TextExtension při spuštění v tomto příkladu. Certifikát klienta, který je generovat se automaticky nainstaluje v 'Certifikáty – aktuální User\Personal\Certificates' ve vašem počítači.
+Upravit a spustit příklad pro vytvoření klientského certifikátu. Při spuštění v následujícím příkladu, aniž byste ho upravovali, výsledkem je klientský certifikát s názvem "P2SChildCert".  Pokud chcete certifikát podřízené jiný název, hodnotu CN změníte. Neměňte TextExtension při spuštění v tomto příkladu. Klientský certifikát, který vygenerujete je automaticky nainstalován v "Certificates - Current User\Personal\Certificates" ve vašem počítači.
 
 ```powershell
 New-SelfSignedCertificate -Type Custom -DnsName P2SChildCert -KeySpec Signature `
@@ -77,14 +77,14 @@ New-SelfSignedCertificate -Type Custom -DnsName P2SChildCert -KeySpec Signature 
 
 ### <a name="ex2"></a>Příklad 2
 
-Pokud vytváříte další klientské certifikáty, nebo nejsou pomocí stejné relace prostředí PowerShell, který jste použili k vytvoření vašeho certifikátu podepsaného svým držitelem kořenové, použijte následující postup:
+Pokud vytváříte dalších klientských certifikátů, nebo nepoužívají stejné relaci Powershellu, který jste použili k vytvoření certifikátu podepsaného svým držitelem, použijte následující kroky:
 
-1. Identifikujte podepsaný svým držitelem kořenový certifikát, který je nainstalován v počítači. Tato rutina vrátí seznam certifikátů, které jsou nainstalovány ve vašem počítači.
+1. Identifikujte kořenový certifikát podepsaný držitelem, který je nainstalován v počítači. Tato rutina vrátí seznam certifikátů, které jsou nainstalovány ve vašem počítači.
 
   ```powershell
   Get-ChildItem -Path “Cert:\CurrentUser\My”
   ```
-2. Vyhledejte název subjektu z vráceném seznamu, a poté zkopírujte kryptografický otisk, který je umístěný vedle ho do textového souboru. V následujícím příkladu jsou dva certifikáty. Název CN je název certifikátu podepsaného svým držitelem kořenové ze kterého chcete generovat certifikát podřízené. V tomto případě 'P2SRootCert'.
+2. Název subjektu z vráceném seznamu vyhledejte a pak zkopírujte kryptografický otisk, který se nachází vedle sebe do textového souboru. V následujícím příkladu jsou dva certifikáty. Je název CN název certifikátu podepsaného svým držitelem ze kterého chcete vygenerovat certifikát podřízené. V tomto případě "P2SRootCert".
 
   ```
   Thumbprint                                Subject
@@ -92,18 +92,18 @@ Pokud vytváříte další klientské certifikáty, nebo nejsou pomocí stejné 
   AED812AD883826FF76B4D1D5A77B3C08EFA79F3F  CN=P2SChildCert4
   7181AA8C1B4D34EEDB2F3D3BEC5839F3FE52D655  CN=P2SRootCert
   ```
-3. Deklarujte proměnnou pro kořenový certifikát pomocí kryptografického otisku z předchozího kroku. Nahraďte OTISK kryptografický otisk kořenového certifikátu, ze kterého chcete generovat certifikát podřízené.
+3. Deklarujte proměnnou pro kořenový certifikát pomocí kryptografického otisku z předchozího kroku. Nahraďte OTISK kryptografický otisk kořenového certifikátu, ze kterého chcete vygenerovat certifikát podřízené.
 
   ```powershell
   $cert = Get-ChildItem -Path "Cert:\CurrentUser\My\THUMBPRINT"
   ```
 
-  Například pomocí kryptografického otisku pro P2SRootCert v předchozím kroku, proměnná vypadá takto:
+  Například použitím kryptografického otisku pro P2SRootCert v předchozím kroku, proměnná vypadá takto:
 
   ```powershell
   $cert = Get-ChildItem -Path "Cert:\CurrentUser\My\7181AA8C1B4D34EEDB2F3D3BEC5839F3FE52D655"
   ```
-4.  Upravit a spustit v příkladu pro vytvoření klientského certifikátu. Pokud spustíte následující příklad beze změny jeho, výsledkem je klientský certifikát s názvem 'P2SChildCert'. Pokud chcete název certifikátu podřízené něco jiného, změňte hodnotu CN. Neměňte TextExtension při spuštění v tomto příkladu. Certifikát klienta, který je generovat se automaticky nainstaluje v 'Certifikáty – aktuální User\Personal\Certificates' ve vašem počítači.
+4.  Upravit a spustit příklad pro vytvoření klientského certifikátu. Při spuštění v následujícím příkladu, aniž byste ho upravovali, výsledkem je klientský certifikát s názvem "P2SChildCert". Pokud chcete certifikát podřízené jiný název, hodnotu CN změníte. Neměňte TextExtension při spuštění v tomto příkladu. Klientský certifikát, který vygenerujete je automaticky nainstalován v "Certificates - Current User\Personal\Certificates" ve vašem počítači.
 
   ```powershell
   New-SelfSignedCertificate -Type Custom -DnsName P2SChildCert -KeySpec Signature `
@@ -113,14 +113,14 @@ Pokud vytváříte další klientské certifikáty, nebo nejsou pomocí stejné 
   -Signer $cert -TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.2")
   ```
 
-## <a name="cer"></a>3. Exportujte veřejný klíč kořenového certifikátu (.cer)
+## <a name="cer"></a>3. Export veřejného klíče kořenového certifikátu (.cer)
 
 [!INCLUDE [Export public key](../../includes/vpn-gateway-certificates-export-public-key-include.md)]
 
 
-### <a name="export-the-self-signed-root-certificate-and-private-key-to-store-it-optional"></a>Exportovat certifikát podepsaný svým držitelem kořenové a privátní klíč uložit (volitelné)
+### <a name="export-the-self-signed-root-certificate-and-private-key-to-store-it-optional"></a>Export kořenového certifikátu podepsaného držitelem a privátní klíč a uložit na (volitelné)
 
-Můžete uložit a exportujte certifikát podepsaný svým držitelem kořenové bezpečně zálohování. Pokud třeba, můžete později jej nainstalovat na jiný počítač a generovat další certifiates klienta. Pokud chcete exportovat certifikát podepsaný svým držitelem kořenové jako .pfx, vyberte kořenový certifikát a použít stejný postup, jak je popsáno v [exportovat certifikát klienta](#clientexport).
+Můžete exportovat certifikát podepsaný svým držitelem a uloží je bezpečně zálohování. Pokud třeba, můžete později jej nainstalovat na jiném počítači a generovat další certifiates klienta. Certifikát podepsaný svým držitelem exportovat jako soubor .pfx, vyberte kořenový certifikát a pomocí stejných kroků, jak je popsáno v [exportovat klientský certifikát](#clientexport).
 
 ## <a name="clientexport"></a>4. Export klientského certifikátu
 
@@ -129,14 +129,14 @@ Můžete uložit a exportujte certifikát podepsaný svým držitelem kořenové
 
 ## <a name="install"></a>5. Instalace exportovaného klientského certifikátu
 
-Každý klient, který se připojuje k virtuální síti přes připojení P2S vyžaduje místně nainstalovaný klientský certifikát.
+Každý klient, který se připojuje k virtuální síti přes připojení P2S vyžaduje místně nainstalovaný certifikát klienta.
 
-Chcete-li nainstalovat certifikát klienta, přečtěte si téma [nainstalovat certifikát klienta pro připojení Point-to-Site](point-to-site-how-to-vpn-client-install-azure-cert.md).
+Pokud chcete nainstalovat klientský certifikát, najdete v článku [nainstalovat klientský certifikát pro připojení Point-to-Site](point-to-site-how-to-vpn-client-install-azure-cert.md).
 
-## <a name="install"></a>6. Pokračujte kroky konfigurace P2S
+## <a name="install"></a>6. Pokračujte v krocích konfigurace P2S
 
-V konfiguraci Point-to-Site pokračujte.
+Pokračujte v konfiguraci Point-to-Site.
 
-* Pro **Resource Manager** postup nasazení modelu najdete v tématu [P2S konfigurace ověřování pomocí certifikátů nativní Azure](vpn-gateway-howto-point-to-site-resource-manager-portal.md). 
-* Pro **classic** postup nasazení modelu najdete v tématu [konfigurace připojení typu Point-to-Site VPN do virtuální sítě (klasické)](vpn-gateway-howto-point-to-site-classic-azure-portal.md).
-* P2S řešení potíží s informace najdete v tématu [připojení point-to-site řešení potíží s Azure](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md).
+* Pro **Resource Manageru** postup nasazení modelu najdete v tématu [konfigurace P2S pomocí nativního ověřování certifikátů Azure](vpn-gateway-howto-point-to-site-resource-manager-portal.md). 
+* Pro **classic** postup nasazení modelu najdete v tématu [konfigurace připojení typu Point-to-Site VPN k virtuální síti (classic)](vpn-gateway-howto-point-to-site-classic-azure-portal.md).
+* P2S informace, o odstraňování potíží naleznete v tématu [připojení point-to-site řešení potíží s Azure](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md).

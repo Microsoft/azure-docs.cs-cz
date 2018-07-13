@@ -1,27 +1,27 @@
 ---
-title: Prostředky šablony Azure Resource Manager | Microsoft Docs
-description: Popisuje části zdroje šablon Azure Resource Manager pomocí deklarativní syntaxe JSON.
+title: Prostředky šablon Azure Resource Manageru | Dokumentace Microsoftu
+description: Popisuje části zdroje šablony Azure Resource Manageru pomocí deklarativní syntaxe JSON.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
-manager: timlt
 editor: tysonn
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/13/2017
+ms.date: 07/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: 12dc5921cc1977b53f0457d89537193eadded188
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 1619f3bfdf49820ec529947ea02d1602a7b2aa8c
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38723830"
 ---
-# <a name="resources-section-of-azure-resource-manager-templates"></a>Oddílu prostředků šablon Azure Resource Manager
+# <a name="resources-section-of-azure-resource-manager-templates"></a>Oddíl prostředků šablon Azure Resource Manageru
 
-V části prostředky definujete prostředky, které jsou nasazené a aktualizovat. V této části můžete získat složité, protože je potřeba pochopit, typy, které nasazujete zadejte správné hodnoty.
+V části prostředky definovat prostředky, které jsou nasazené a aktualizovat. V této části můžete získat složité, protože musíte porozumět typům, které nasazení provádíte do zadejte správné hodnoty.
 
 ## <a name="available-properties"></a>Dostupné vlastnosti
 
@@ -83,36 +83,59 @@ Můžete definovat prostředky s následující strukturou:
 
 | Název elementu | Požaduje se | Popis |
 |:--- |:--- |:--- |
-| podmínka | Ne | Logická hodnota, která určuje, jestli je nasazené prostředku. |
-| apiVersion |Ano |Verze rozhraní REST API pro vytvoření prostředku. |
+| podmínka | Ne | Logická hodnota, která určuje, zda je nasazený prostředek. |
+| apiVersion |Ano |Verze rozhraní REST API pro použití při vytváření prostředku. |
 | type |Ano |Typ prostředku. Tato hodnota je kombinací obor názvů zprostředkovatele prostředků a typ prostředku (například **Microsoft.Storage/storageAccounts**). |
-| jméno |Ano |Název prostředku. Název musí splňovat omezení součást URI definované v RFC3986. Kromě toho služby Azure, které zveřejňují názvu prostředku třetí stranou ověřit název, který má Ujistěte se, zda není pokus o zfalšovat jiné identity. |
-| location |Je to různé. |Podporované geografické umístění zadaného prostředku. Můžete vybrat některý z dostupných umístění, ale obvykle má smysl vyberte ten, který je blízko vaši uživatelé. Obvykle také má smysl umístit prostředky, které vzájemně spolupracovat ve stejné oblasti. Většina typů prostředků vyžadují umístění, ale některé typy (například přiřazení role) nevyžadují umístění. |
-| tags |Ne |Značky, které jsou přidružené k prostředku. Použití značek k logicky uspořádání prostředků vašeho předplatného. |
-| Komentáře |Ne |Poznámky pro dokumentaci prostředky ve vaší šabloně |
-| Kopírovat |Ne |V případě potřeby více než jednu instanci počet zdrojů pro vytvoření. Paralelní je výchozí režim. Zadejte sériové režim, když nechcete, aby všechny nebo prostředky do nasazení ve stejnou dobu. Další informace najdete v tématu [vytvořit více instancí prostředků ve službě Správce prostředků Azure](resource-group-create-multiple.md). |
-| dependsOn |Ne |Prostředky, které musí být nasazené, než je nasazený tento prostředek. Správce prostředků vyhodnotí závislosti mezi prostředky a nasadí je ve správném pořadí. Pokud nejsou na sobě navzájem závislé prostředky, jsou nasazeny současně. Hodnota může být čárkami oddělený seznam prostředek názvy nebo jedinečné identifikátory prostředků. Zobrazit seznam pouze těch prostředků, které jsou nasazeny v této šabloně. Prostředky, které nejsou v této šabloně definovány již musí existovat. Vyhněte se přidání nepotřebné závislostí, jak mohou zpomalit nasazení a vytvoření cyklické závislosti. Pokyny v závislosti na nastavení najdete v tématu [definování závislostí v šablonách Azure Resource Manager](resource-group-define-dependencies.md). |
-| properties |Ne |Nastavení konfigurace specifických prostředků. Hodnoty pro vlastnosti jsou stejné jako hodnoty, které zadáte v textu požadavku REST API operaci (metoda PUT) k vytvoření prostředku. Můžete také zadat pole kopie vytvořit více instancí vlastnosti. |
-| SKU | Ne | Některé prostředky povolit hodnoty, které definují SKU pro nasazení. Například můžete zadat typ redundance pro účet úložiště. |
-| Typ | Ne | Některé prostředky povolit hodnotu, která definuje typ prostředku, který nasazujete. Například můžete zadat typ Cosmos DB k vytvoření. |
-| plán | Ne | Některé prostředky povolit hodnoty, které definují plán pro nasazení. Můžete například zadat pro marketplace bitovou kopii virtuálního počítače. | 
-| zdroje |Ne |Podřízené prostředky, které jsou závislé na prostředku definovaný. Zadejte pouze typy prostředků, které jsou povoleny schématem nadřazený prostředek. Plně kvalifikovaný typ prostředku podřízené obsahuje nadřazený typ prostředku, jako například **Microsoft.Web/sites/extensions**. Závislost na nadřazeném prostředku není implicitní. Je nutné explicitně zadat tuto závislost. |
+| jméno |Ano |Název prostředku. Název musí následovat identifikátor URI součásti omezení RFC3986. Kromě toho služby Azure, které zpřístupňují název prostředku se třetími stranami ověřit název, který má ujistit, že není pokus zfalšovat jiné identity. |
+| location |Se liší |Podporované geografické umístění zadaného prostředku. Můžete vybrat některý z dostupných umístění, ale obvykle je vhodné vybrat ten, který je blízko vašim uživatelům. Obvykle je také vhodné umístit prostředky, které spolu interagují ve stejné oblasti. Většina typů prostředků vyžaduje umístění, ale některé typy (jako je například přiřazení role) nevyžadují umístění. |
+| tags |Ne |Značky, které jsou spojeny s prostředkem. Použití značek logicky tak uspořádat prostředky napříč vašeho předplatného. |
+| Komentáře |Ne |Poznámky pro dokumentaci prostředků v šabloně |
+| Kopírovat |Ne |V případě potřeby je více než jednu instanci, kolik prostředků k vytvoření. Paralelní je výchozí režim. Zadejte sériové režim, když nechcete, aby všechny nebo prostředky k nasazení ve stejnou dobu. Další informace najdete v tématu [vytvořit více instancí prostředku v Azure Resource Manageru](resource-group-create-multiple.md). |
+| dependsOn |Ne |Prostředky, které musí být nasazený před nasazením tento prostředek. Resource Manager vyhodnotí závislosti mezi prostředky a nasadí ve správném pořadí. Pokud nejsou na sobě navzájem závislé prostředky, kde jsou nasazeny současně. Hodnota může být čárkou oddělený seznam prostředek názvy nebo jedinečné identifikátory prostředků. Pouze výpis prostředků, které jsou nasazené v této šabloně. Prostředky, které nejsou definovány v této šabloně už musí existovat. Vyhněte se přidává zbytečné závislostí může zpomalit vaše nasazení a vytvoření cyklické závislosti. Pokyny k nastavení závislostí v tématu [definování závislostí v šablonách Azure Resource Manageru](resource-group-define-dependencies.md). |
+| properties |Ne |Nastavení konfigurace specifických pro prostředky. Hodnoty pro tyto vlastnosti jsou stejné jako hodnoty, které zadáte v textu požadavku pro operaci rozhraní REST API (metodu PUT) a vytvoří prostředek. Můžete také zadat pole kopie vytvořit několik instancí vlastnosti. |
+| Skladová položka | Ne | Některé prostředky povolit hodnoty, které definují skladová položka pro nasazení. Můžete například zadat typ redundance účtu úložiště. |
+| Typ | Ne | Některé prostředky povolit hodnotu, která definuje typ prostředku, který nasadíte. Můžete například zadat typ služby Cosmos DB k vytvoření. |
+| plán | Ne | Některé prostředky povolit hodnoty, které definují plán pro nasazení. Můžete například zadat image marketplace pro virtuální počítač. | 
+| zdroje |Ne |Podřízené prostředky, které jsou závislé na prostředku definuje. Zadejte pouze typy prostředků, které jsou povoleny ve schématu nadřazený prostředek. Plně kvalifikovaný typ podřízený prostředek obsahuje nadřazený typ prostředku, jako například **Microsoft.Web/sites/extensions**. Závislost na nadřazený prostředek není zahrnuta. Je nutné explicitně definovat dané závislosti. |
 
-## <a name="resource-specific-values"></a>Hodnoty v závislosti na prostředek
+## <a name="condition"></a>Podmínka
 
-**ApiVersion**, **typ**, a **vlastnosti** elementy se liší pro jednotlivé typy prostředků. **Sku**, **druhu**, a **plán** prvky jsou dostupné pro některé typy prostředků, ale ne všechny. Chcete-li určit hodnoty těchto vlastností, přečtěte si téma [odkaz na šablonu](/azure/templates/).
+Pokud během nasazení musíte rozhodnout, jestli se mají vytvořit prostředek, použijte `condition` elementu. Hodnota pro tento element se přeloží na hodnotu true nebo false. Pokud je hodnota true, je nasazený prostředek. Pokud je hodnota false, není nasazený prostředek. Například, chcete-li určit, jestli je nasazená nový účet úložiště nebo existující účet úložiště se používá, použijte:
+
+```json
+{
+    "condition": "[equals(parameters('newOrExisting'),'new')]",
+    "type": "Microsoft.Storage/storageAccounts",
+    "name": "[variables('storageAccountName')]",
+    "apiVersion": "2017-06-01",
+    "location": "[resourceGroup().location]",
+    "sku": {
+        "name": "[variables('storageAccountType')]"
+    },
+    "kind": "Storage",
+    "properties": {}
+}
+```
+
+Kompletní příklad šablony, která se používá `condition` prvku, naleznete v tématu [virtuálního počítače s novou nebo existující virtuální sítě, úložiště a veřejnou IP adresu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-new-or-existing-conditions).
+
+## <a name="resource-specific-values"></a>Hodnoty specifické podle prostředků
+
+**ApiVersion**, **typ**, a **vlastnosti** prvky se liší pro každý typ prostředku. **Sku**, **druh**, a **plán** prvky jsou k dispozici pro některé typy prostředků, ale ne všechny. Chcete-li zjistit hodnoty těchto vlastností najdete v článku [referenčními informacemi k šablonám](/azure/templates/).
 
 ## <a name="resource-names"></a>Názvy prostředků
-Obecně platí pracujete s tři typy názvy prostředků ve službě Správce prostředků:
+
+Obecně platí práci s tři typy názvů prostředků v Resource Manageru:
 
 * Názvy prostředků, které musí být jedinečný.
-* Názvy prostředků, které nemusí být jedinečný, ale můžete rozhodnout pro poskytnutí název, který vám pomůže určit prostředku.
+* Názvy prostředků, které nemusí být jedinečný, ale můžete rozhodnout pro poskytnutí název, který vám pomůže identifikovat prostředek.
 * Názvy prostředků, které mohou být obecný.
 
-### <a name="unique-resource-names"></a>Názvy jedinečný prostředků
-Je nutné zadat název jedinečný prostředek pro jakýkoli typ prostředku, který má přístup koncový bod data. Některé běžné typy prostředků, které vyžadují jedinečný název patří:
+### <a name="unique-resource-names"></a>Názvy jedinečný prostředek
 
-* Úložiště Azure<sup>1</sup> 
+Zadejte název jedinečné prostředků pro libovolný typ prostředku, který má koncový bod data access. Některé běžné typy prostředků, které vyžadují jedinečný název patří:
+
+* Azure Storage<sup>1</sup> 
 * Funkce Web Apps ve službě Azure App Service
 * SQL Server
 * Azure Key Vault
@@ -122,9 +145,9 @@ Je nutné zadat název jedinečný prostředek pro jakýkoli typ prostředku, kt
 * Azure Search
 * Azure HDInsight
 
-<sup>1</sup> názvy účtů úložiště musí být také malými písmeny, 24 znaků nebo méně, a nemusí být všechny pomlčky.
+<sup>1</sup> názvy účtů úložiště také musí obsahovat malá písmena, 24 znaků nebo méně, a není nutné žádné pomlčky.
 
-Při nastavení názvu, můžete ručně vytvořit jedinečný název nebo používat [uniqueString()](resource-group-template-functions-string.md#uniquestring) funkce při generování názvu. Můžete také chtít přidat předponu nebo příponu k **uniqueString** výsledek. Úprava jedinečný název můžete další snadno identifikovat typ prostředku z názvu. Můžete například vygenerovat jedinečný název pro účet úložiště pomocí následující proměnnou:
+Při nastavování názvu, můžete ručně vytvořit jedinečný název nebo použít [uniqueString()](resource-group-template-functions-string.md#uniquestring) funkci generování názvu. Můžete také chtít přidat předponu nebo příponu k **uniqueString** výsledek. Úprava jedinečný název můžete vám umožní snadno identifikovat typ prostředku z názvu. Můžete například vygenerovat jedinečný název pro účet úložiště pomocí následující proměnnou:
 
 ```json
 "variables": {
@@ -133,7 +156,7 @@ Při nastavení názvu, můžete ručně vytvořit jedinečný název nebo použ
 ```
 
 ### <a name="resource-names-for-identification"></a>Názvy prostředků pro identifikaci
-Některé typy prostředků, které můžete chtít názvu, ale jejich názvy nemusí být jedinečný. Pro tyto typy prostředků můžete zadat název, který identifikuje prostředek kontextu a typ prostředku.
+Některé typy prostředků, které můžete chtít název, ale jejich názvy nemusí být jedinečný. Pro tyto typy prostředků můžete zadat název, který identifikuje prostředek kontextu a typ prostředku.
 
 ```json
 "parameters": {
@@ -147,8 +170,8 @@ Některé typy prostředků, které můžete chtít názvu, ale jejich názvy ne
 }
 ```
 
-### <a name="generic-resource-names"></a>Obecný zdroj názvy
-Pro typy prostředků, které většinou přistupovat prostřednictvím jiného prostředku můžete použít obecný název, který je pevně zakódovaná v šabloně. Například můžete nastavit standardní, obecný název pravidla brány firewall na serveru SQL server:
+### <a name="generic-resource-names"></a>Názvy obecný prostředek
+Pro typy prostředků, které většinou přistupujete prostřednictvím různých prostředků můžete použít obecný název, který je pevně zakódované v šabloně. Můžete třeba nastavit standardní, obecný název pravidla brány firewall na serveru SQL server:
 
 ```json
 {
@@ -159,23 +182,23 @@ Pro typy prostředků, které většinou přistupovat prostřednictvím jiného 
 ```
 
 ## <a name="location"></a>Umístění
-Při nasazování šablony, je nutné zadat umístění každého prostředku. Různé typy prostředků jsou podporovány v různých umístěních. Chcete-li zobrazit seznam umístění, které jsou k dispozici pro vaše předplatné pro konkrétní typ prostředku, použijte prostředí Azure PowerShell nebo rozhraní příkazového řádku Azure. 
+Při nasazování šablony, je nutné zadat umístění každého prostředku. Různé typy prostředků jsou podporovány v různých umístěních. Pokud chcete zobrazit seznam umístění, které jsou k dispozici pro vaše předplatné pro konkrétní typ prostředku, pomocí Azure Powershellu nebo rozhraní příkazového řádku Azure. 
 
-Následující příklad používá prostředí PowerShell a získat umístění pro `Microsoft.Web\sites` typ prostředku:
+Následující příklad používá získat umístění pro prostředí PowerShell `Microsoft.Web\sites` typ prostředku:
 
 ```powershell
 ((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).Locations
 ```
 
-Následující příklad používá Azure CLI 2.0 získat umístění `Microsoft.Web\sites` typ prostředku:
+Následující příklad používá rozhraní příkazového řádku Azure k získání umístění `Microsoft.Web\sites` typ prostředku:
 
 ```azurecli
 az provider show -n Microsoft.Web --query "resourceTypes[?resourceType=='sites'].locations"
 ```
 
-Po určení podporovaná umístění pro vaše prostředky, nastavte toto umístění ve vaší šabloně. Nejjednodušší způsob, jak nastavit tuto hodnotu je vytvoření skupiny prostředků v místě, které podporuje tyto typy prostředků a nastavit každý umístění na `[resourceGroup().location]`. Můžete znovu nasaďte šablonu, kterou chcete skupiny prostředků v různých umístěních a nezmění žádné hodnoty v šabloně nebo parametry. 
+Po určení podporovaná umístění pro prostředky, nastavte toto umístění ve vaší šabloně. Vytvořte skupinu prostředků v umístění, které podporuje typy prostředků, a nastavte každé umístění je nejjednodušší způsob, jak tuto hodnotu nastavit `[resourceGroup().location]`. Můžete znovu nasaďte šablonu do skupin prostředků v různých umístěních a není měnit všechny hodnoty v šabloně nebo parametry. 
 
-Následující příklad ukazuje, účet úložiště, který je nasazen do stejného umístění jako pro skupinu prostředků:
+Následující příklad ukazuje účet úložiště, který je nasazený do stejného umístění jako skupina prostředků:
 
 ```json
 {
@@ -204,7 +227,7 @@ Následující příklad ukazuje, účet úložiště, který je nasazen do stej
 }
 ```
 
-Pokud potřebujete používat pevné kódování umístění v šabloně, zadejte název jednoho z podporovaných oblastí. Následující příklad ukazuje, účet úložiště, který je vždy nasazený do Sever střední USA:
+Pokud potřebujete používat pevné kódování umístění ve vaší šabloně, zadejte název jedné z podporovaných oblastí. Následující příklad ukazuje účet úložiště, který je vždy nasazen na střed USA – sever:
 
 ```json
 {
@@ -233,13 +256,13 @@ Pokud potřebujete používat pevné kódování umístění v šabloně, zadejt
 ## <a name="tags"></a>Značky
 [!INCLUDE [resource-manager-governance-tags](../../includes/resource-manager-governance-tags.md)]
 
-### <a name="add-tags-to-your-template"></a>Do šablony přidat značky
+### <a name="add-tags-to-your-template"></a>Přidání značek do šablony
 
 [!INCLUDE [resource-manager-tags-in-templates](../../includes/resource-manager-tags-in-templates.md)]
 
 ## <a name="child-resources"></a>Podřízené prostředky
 
-V rámci některé typy prostředků můžete také definovat pole podřízené prostředky. Podřízené prostředky jsou prostředky, které existují pouze v kontextu jiný prostředek. Databáze SQL například nemůže existovat bez systému SQL server, databáze je podřízený server. Můžete definovat databáze v definici pro server.
+V rámci některé typy prostředků můžete také definovat pole podřízené prostředky. Podřízené prostředky jsou prostředky, které existují pouze v rámci kontextu jiný prostředek. Například databáze SQL nemůže existovat bez serveru SQL server, databázi je podřízený server. Můžete definovat databáze v rámci definice pro server.
 
 ```json
 {
@@ -258,13 +281,13 @@ V rámci některé typy prostředků můžete také definovat pole podřízené 
 }
 ```
 
-Když vnořený, typ je nastavený na `databases` , ale jeho typ prostředku úplné `Microsoft.Sql/servers/databases`. Nezadáte `Microsoft.Sql/servers/` se předpokládá z nadřazeného typu prostředku. Název prostředku podřízené je nastaven `exampledatabase` ale úplný název obsahuje název nadřazené. Nezadáte `exampleserver` se předpokládá z nadřazené prostředku.
+Pokud vnořený, typ je nastavený na `databases` , ale jeho typ úplné prostředku je `Microsoft.Sql/servers/databases`. Nezadáte `Microsoft.Sql/servers/` se předpokládá z nadřazeného typu prostředku. Název prostředku podřízené nastavený na `exampledatabase` ale úplný název obsahuje název nadřazené. Nezadáte `exampleserver` se předpokládá z nadřazeného zdroje.
 
-Není ve formátu podřízený typ prostředku: `{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}`
+Formát typu podřízeného prostředku je: `{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}`
 
-Formát názvu podřízené prostředků je: `{parent-resource-name}/{child-resource-name}`
+Formát názvu podřízených prostředků je: `{parent-resource-name}/{child-resource-name}`
 
-Ale není nutné definovat databázi v rámci serveru. Můžete definovat podřízených prostředků na nejvyšší úrovni. Tento postup můžete použít, pokud nadřazený prostředek není nasazený ve stejné šablony, nebo pokud chcete použít `copy` vytvořit více podřízené prostředky. S tímto přístupem musíte zadat typ prostředku úplné a zahrnout název nadřazené prostředku v názvu prostředku podřízené.
+Ale není nutné definovat databáze v rámci serveru. Můžete definovat podřízený prostředek na nejvyšší úrovni. Tento přístup může použít, pokud se nadřazený prostředek není nasazený ve stejné šabloně, nebo pokud chcete použít `copy` vytváření více podřízených prostředků. S tímto přístupem poskytují úplnou prostředků a zahrnout název nadřazeného prostředku v názvu prostředku podřízeného.
 
 ```json
 {
@@ -283,7 +306,7 @@ Ale není nutné definovat databázi v rámci serveru. Můžete definovat podř�
 }
 ```
 
-Při vytváření plně kvalifikovaný odkaz na prostředek, není jednoduše zřetězení těchto dvou pořadí kombinovat segmenty z typu a název.  Místo toho po oboru názvů, použijte posloupnost *nebo název typu* dvojice z nejméně specifická k nejvíce:
+Při vytváření plně kvalifikovaný odkaz na prostředek, není pořadí zkombinovat segmenty z typu a název jednoduše zřetězení těchto dvou. Místo toho za názvovým prostorem, použijte sekvenci *typ nebo název* dvojice z nejméně specifická, které budou nejvíce specifické:
 
 ```json
 {resource-provider-namespace}/{parent-resource-type}/{parent-resource-name}[/{child-resource-type}/{child-resource-name}]*
@@ -291,12 +314,12 @@ Při vytváření plně kvalifikovaný odkaz na prostředek, není jednoduše z�
 
 Příklad:
 
-`Microsoft.Compute/virtualMachines/myVM/extensions/myExt` správnost `Microsoft.Compute/virtualMachines/extensions/myVM/myExt` není správný
+`Microsoft.Compute/virtualMachines/myVM/extensions/myExt` správnost `Microsoft.Compute/virtualMachines/extensions/myVM/myExt` není správná
 
 ## <a name="recommendations"></a>Doporučení
 Při práci s prostředky, může být užitečné následující informace:
 
-* Chcete-li jiné přispěvatele pochopit účel prostředku, zadejte **komentáře** pro každý zdroj v šabloně:
+* Chcete-li pomoci ostatních uživatelů pochopit účel prostředku, zadejte **komentáře** pro každý prostředek v šabloně:
    
    ```json
    "resources": [
@@ -311,7 +334,7 @@ Při práci s prostředky, může být užitečné následující informace:
    ]
    ```
 
-* Pokud používáte *veřejný koncový bod* ve vaší šabloně (například Azure Blob storage veřejný koncový bod), *proveďte pevné kódování* obor názvů. Použití **odkaz** funkce, která se dynamicky načíst obor názvů. Tento postup můžete použít k nasazení šablony do prostředí jiný obor názvů veřejné beze změny ručně koncového bodu v šabloně. Verze rozhraní API se nastaví na stejnou verzi, kterou používáte pro účet úložiště v šabloně:
+* Pokud používáte *veřejný koncový bod* v šabloně (třeba Azure Blob storage veřejný koncový bod), *proveďte není pevně zakódovat* obor názvů. Použití **odkaz** funkce, která se dynamicky načíst obor názvů. Tento přístup můžete použít k nasazení šablony do prostředí jiný obor názvů veřejné beze změny ručně koncový bod v šabloně. Nastavte verzi rozhraní API na stejnou verzi, kterou používáte pro účet úložiště v šabloně:
    
    ```json
    "osDisk": {
@@ -322,7 +345,7 @@ Při práci s prostředky, může být užitečné následující informace:
    }
    ```
    
-   Pokud účet úložiště je nasazen do stejné šablony, kterou vytváříte, není potřeba zadat obor názvů zprostředkovatele, když odkazujete na prostředek. Následující příklad ukazuje zjednodušenou syntaxi:
+   Pokud účet úložiště je nasazená ve stejné šabloně, kterou vytváříte, není nutné určit obor názvů poskytovatele při odkazování na prostředek. Následující příklad znázorňuje zjednodušenou syntaxi:
    
    ```json
    "osDisk": {
@@ -333,7 +356,7 @@ Při práci s prostředky, může být užitečné následující informace:
    }
    ```
    
-   Pokud máte jiné hodnoty v šabloně, které jsou nakonfigurovány pro použití veřejného obor názvů, změňte tyto hodnoty tak, aby odrážela stejné **odkaz** funkce. Například můžete nastavit **storageUri** vlastnost diagnostického profilu virtuálního počítače:
+   Pokud máte jiné hodnoty v šabloně, které jsou nakonfigurovány pro použití veřejných obor názvů, změnit tyto hodnoty tak, aby odrážely stejné **odkaz** funkce. Například můžete nastavit **storageUri** vlastnost diagnostického profilu virtuálního počítače:
    
    ```json
    "diagnosticsProfile": {
@@ -344,7 +367,7 @@ Při práci s prostředky, může být užitečné následující informace:
    }
    ```
    
-   Můžete také použít stávající účet úložiště, který je v jiné skupině prostředků:
+   Můžete také využít existující účet úložiště, který je v jiné skupině prostředků:
 
    ```json
    "osDisk": {
@@ -355,16 +378,16 @@ Při práci s prostředky, může být užitečné následující informace:
    }
    ```
 
-* Přiřaďte veřejné IP adresy k virtuálnímu počítači jenom v případě, že aplikace vyžaduje. Pro připojení k virtuálnímu počítači (VM) pro ladění, nebo pro správu nebo správu účely, použijte příchozích pravidel NAT, bránu virtuální sítě nebo jumpbox.
+* Přiřadíte veřejné IP adresy virtuálního počítače pouze v případě, že aplikace vyžaduje. Pro připojení k virtuálnímu počítači (VM) pro ladění nebo pro správu nebo účely správy, použijte pravidla příchozího překladu adres, bránu virtuální sítě nebo jumpbox.
    
-     Další informace o připojení k virtuálním počítačům, najdete v tématu:
+     Další informace o připojení k virtuálním počítačům naleznete v tématu:
    
-   * [Spustit virtuální počítače pro architekturu N-vrstvá v Azure](../guidance/guidance-compute-n-tier-vm.md)
-   * [Nastavit přístup WinRM pro virtuální počítače ve službě Správce prostředků Azure](../virtual-machines/windows/winrm.md)
-   * [Externí přístup k virtuálnímu počítači povolit pomocí portálu Azure](../virtual-machines/windows/nsg-quickstart-portal.md)
-   * [Povolit externí přístup k virtuálnímu počítači pomocí prostředí PowerShell](../virtual-machines/windows/nsg-quickstart-powershell.md)
-   * [Povolit externí přístup k virtuálním počítačům s Linuxem pomocí rozhraní příkazového řádku Azure](../virtual-machines/virtual-machines-linux-nsg-quickstart.md)
-* **DomainNameLabel** vlastnost pro veřejné IP adresy musí být jedinečný. **DomainNameLabel** hodnota musí být v rozmezí 3 až 63 znaků a postupujte podle pravidla určeného tento regulární výraz: `^[a-z][a-z0-9-]{1,61}[a-z0-9]$`. Protože **uniqueString** funkce generuje řetězec, který je 13 znaků, **dnsPrefixString** parametr je omezený na 50 znaků:
+   * [Spuštění virtuálních počítačů pro N-vrstvou architekturu v Azure](../guidance/guidance-compute-n-tier-vm.md)
+   * [Nastavení přístupu WinRM pro virtuální počítače v Azure Resource Manageru](../virtual-machines/windows/winrm.md)
+   * [Povolení externího přístupu k vašemu virtuálnímu počítači pomocí webu Azure portal](../virtual-machines/windows/nsg-quickstart-portal.md)
+   * [Povolení externího přístupu k vašemu virtuálnímu počítači pomocí Powershellu](../virtual-machines/windows/nsg-quickstart-powershell.md)
+   * [Povolení externího přístupu k virtuálním počítačům s Linuxem pomocí Azure CLI](../virtual-machines/virtual-machines-linux-nsg-quickstart.md)
+* **Popisek_názvu_domény** vlastnost pro veřejné IP adresy musí být jedinečný. **Popisek_názvu_domény** hodnota musí být dlouhý 3 až 63 znaků a řídí se pravidly určené tento regulární výraz: `^[a-z][a-z0-9-]{1,61}[a-z0-9]$`. Protože **uniqueString** funkce z nich generuje řetězec, který je 13 znaků dlouhá a **dnsPrefixString** parametr je omezen na 50 znaků:
 
    ```json
    "parameters": {
@@ -401,14 +424,14 @@ Při práci s prostředky, může být užitečné následující informace:
    ```
    
    > [!NOTE]
-   > K zajištění, že tajné klíče se šifrují, pokud jsou předávány jako parametry pro virtuální počítače a rozšíření, použijte **protectedSettings** vlastnost relevantní rozšíření.
+   > Chcete-li zajistit, že tajných kódů se šifrují, pokud jsou předány jako parametry pro virtuální počítače a rozšíření, použijte **protectedSettings** vlastnost příslušné rozšíření.
    > 
    > 
 
 
 ## <a name="next-steps"></a>Další postup
 * Hotové šablony pro mnoho různých typů řešení najdete na stránce [Šablony Azure pro rychlý start](https://azure.microsoft.com/documentation/templates/).
-* Podrobnosti o funkcích, které můžete použít z v rámci šablon najdete v tématu [funkce šablon Azure Resource Manager](resource-group-template-functions.md).
-* Pokud chcete kombinovat několik šablon během nasazení, přečtěte si téma [použití propojených šablon s Azure Resource Manager](resource-group-linked-templates.md).
-* Musíte používat prostředky, které existují v jiné skupině prostředků. Tento scénář je běžný, při práci s účty úložiště a virtuální sítě, které jsou sdíleny více skupin prostředků. Další informace najdete v tématu [resourceId funkce](resource-group-template-functions-resource.md#resourceid).
-* Informace o omezení přístupu názvem prostředků najdete v tématu [doporučená zásady vytváření názvů pro prostředky Azure](../guidance/guidance-naming-conventions.md).
+* Podrobnosti o funkce, které můžete použít z v rámci šablony najdete v tématu [funkce šablon Azure Resource Manageru](resource-group-template-functions.md).
+* Použití více než jedna šablona během nasazení, najdete v článku [použití propojených šablon s Azure Resource Managerem](resource-group-linked-templates.md).
+* Budete muset použít prostředky, které existují v rámci jiné skupiny prostředků. Tento postup je běžný při práci s účty úložiště nebo virtuální sítě, které jsou sdíleny napříč několika skupin prostředků. Další informace najdete v tématu [funkce resourceId](resource-group-template-functions-resource.md#resourceid).
+* Informace o omezení názvů prostředků najdete v tématu [doporučené zásady vytváření názvů pro prostředky Azure](../guidance/guidance-naming-conventions.md).

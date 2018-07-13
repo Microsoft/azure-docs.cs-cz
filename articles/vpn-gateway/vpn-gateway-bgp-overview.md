@@ -1,5 +1,5 @@
 ---
-title: Přehled protokolu BGP se službou Azure VPN Gateways | Microsoft Docs
+title: Přehled protokolu BGP se službou Azure VPN Gateways | Dokumentace Microsoftu
 description: Tento článek obsahuje přehled protokolu BGP se službou Azure VPN Gateways.
 services: vpn-gateway
 documentationcenter: na
@@ -16,13 +16,13 @@ ms.workload: infrastructure-services
 ms.date: 01/12/2017
 ms.author: yushwang
 ms.openlocfilehash: 13a17eb3d78e70a09864bf218f1027d6e98486a6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23883506"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38720046"
 ---
-# <a name="overview-of-bgp-with-azure-vpn-gateways"></a>Přehled protokolu BGP se službou Azure VPN Gateways
+# <a name="overview-of-bgp-with-azure-vpn-gateways"></a>Přehled protokolu BGP se službou Azure VPN Gateway
 Tento článek obsahuje přehled o podpoře protokolu BGP (Border Gateway Protocol) ve službě Azure VPN Gateways.
 
 BGP je standardní směrovací protokol, na internetu běžně používaný k výměně informací o směrování a dostupnosti mezi dvěma nebo více sítěmi. Pokud protokol BGP použijete v rámci virtuálních sítí Azure, umožní službám Azure VPN Gateway a místním zařízením VPN, která se nazývají partnerské uzly protokolu BGP nebo sousedé BGP, výměnu „tras“ informujících obě brány o dostupnosti a dosažitelnosti předpon, které procházejí těmito bránami nebo trasami. Protokol BGP také umožňuje směrování přenosu mezi více sítěmi pomocí šíření tras, které brána s protokolem BGP zjistí od jednoho partnerského uzlu protokolu BGP, do všech dalších partnerských uzlů protokolu BGP. 
@@ -35,10 +35,10 @@ Existuje několik výhod a nových schopností při použití protokolu BGP:
 ### <a name="prefix"></a>Podpora automatických a flexibilních aktualizací předpon
 U protokolu BGP musíte pouze deklarovat minimální předponu určitému partnerskému uzlu protokolu BGP přes tunel S2S VPN s protokolem IPsec. Ta může být malá jako předpona hostitele (/32) IP adresy partnerského uzlu protokolu BGP vašeho místního zařízení VPN. Můžete určit, které předpony místní sítě chcete inzerovat do Azure pro umožnění přístupu službě Azure Virtual Network.
 
-Můžete také inzerovat delší předpony, které mohou obsahovat některé předpony adres vaší virtuální sítě, například velký prostor privátní IP adresy (např. 10.0.0.0/8). Poznámka: když předpony nesmí shodovat s žádnými předponami vaší virtuální sítě. Trasy shodné s předponami vaší virtuální sítě budou odmítnuty.
+Můžete také inzerovat delší předpony, které mohou obsahovat některé předpony adres vaší virtuální sítě, jako je například velké privátní adresní prostor IP adres (např. 10.0.0.0/8). Mějte na paměti, i když předpony nesmí shodovat s žádnými předponami vaší virtuální sítě. Trasy shodné s předponami vaší virtuální sítě budou odmítnuty.
 
-### <a name="multitunnel"></a>Podpora více tunelů mezi virtuální síť a na místní lokalitu se automatické převzetí služeb při selhání na základě protokolu BGP
-Můžete vytvořit více připojení mezi virtuální sítí Azure a místními zařízeními VPN ve stejném umístění. Tato schopnost poskytuje více tunelů (cest) mezi těmito dvěma sítěmi v konfiguraci aktivní-aktivní. Pokud je odpojení jednoho tunelu, odpovídající trasy se odvolají přes protokol BGP a provoz se automaticky přesouvá na zbývající tunely.
+### <a name="multitunnel"></a>Podpora více tunelů mezi virtuální sítí a místní lokality pomocí automatického převzetí služeb při selhání na základě protokolu BGP
+Můžete vytvořit více připojení mezi virtuální sítí Azure a místními zařízeními VPN ve stejném umístění. Tato schopnost poskytuje více tunelů (cest) mezi těmito dvěma sítěmi v konfiguraci aktivní-aktivní. Pokud se odpojí jednoho, odpovídající trasy se odvolají přes protokol BGP a provoz automaticky přesune na zbývající tunely.
 
 Následující diagram ukazuje jednoduchý příklad tohoto vysoce dostupného nastavení:
 
@@ -54,6 +54,6 @@ Následující diagram ukazuje příklad topologie vícenásobného předáván�
 ## <a name="faq"></a>PROTOKOL BGP – NEJČASTĚJŠÍ DOTAZY
 [!INCLUDE [vpn-gateway-faq-bgp-include](../../includes/vpn-gateway-faq-bgp-include.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tématu [Začínáme s protokolem BGP na branách Azure VPN](vpn-gateway-bgp-resource-manager-ps.md) najdete postup konfigurace protokolu BGP pro připojení mezi různými místy a pro připojení mezi virtuálními sítěmi (VNet-to-VNet).
 

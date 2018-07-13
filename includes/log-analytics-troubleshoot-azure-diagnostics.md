@@ -17,8 +17,8 @@ Pokud chcete poskytovatele prostředků registrovat, proveďte na webu Azure Por
 Jakmile bude poskytovatel prostředků *Microsoft.insights* zaregistrovaný, zopakujte konfiguraci diagnostiky.
 
 
-Potřebujete v prostředí PowerShell, pokud se zobrazí následující chybová zpráva, aktualizujte svou verzi prostředí PowerShell:
+Potřebujete v prostředí PowerShell, pokud se zobrazí následující chybová zpráva, aktualizujte na verzi prostředí PowerShell:
 
 `Set-AzureRmDiagnosticSetting : A parameter cannot be found that matches parameter name 'WorkspaceId'.`
 
-Aktualizujte svou verzi prostředí PowerShell na listopadu 2016 (v2.3.0) nebo novější, verze, postupujte podle pokynů v [Začínáme pomocí rutin prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/) článku.
+Aktualizujte na verzi prostředí PowerShell do listopadu 2016 (v2.3.0) nebo novější verzi pomocí pokynů v [Začínáme s rutinami Azure Powershellu](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/) článku.

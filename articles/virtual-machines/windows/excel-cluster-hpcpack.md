@@ -1,6 +1,6 @@
 ---
-title: Cluster HPC Pack pro aplikaci Excel a SOA | Microsoft Docs
-description: Začínáme s rozsáhlé úlohy aplikace Excel a SOA v clusteru HPC Pack v Azure
+title: Cluster HPC Pack pro aplikaci Excel a SOA | Dokumentace Microsoftu
+description: Začínáme se spouštěním rozsáhlých úloh Excelu a SOA v clusteru HPC Pack v Azure
 services: virtual-machines-windows
 documentationcenter: ''
 author: dlepow
@@ -16,87 +16,87 @@ ms.workload: big-compute
 ms.date: 06/01/2017
 ms.author: danlep
 ms.openlocfilehash: aaf26e04fdb38fd76f4ab8211f9fdda8ebafd668
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30917400"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38971855"
 ---
-# <a name="get-started-running-excel-and-soa-workloads-on-an-hpc-pack-cluster-in-azure"></a>Začít a spustit úlohy aplikace Excel a SOA v clusteru HPC Pack v Azure
-Tento článek ukazuje, jak nasadit cluster Microsoft HPC Pack 2012 R2 na virtuálních počítačích Azure pomocí šablony Azure rychlý start, nebo volitelně skript nasazení Azure PowerShell. Cluster využívá Image virtuálního počítače Azure Marketplace, které jsou navrženy pro spouštění úloh orientované na služby architektura (SOA) nebo Microsoft Excel pomocí sady HPC Pack. Clusteru můžete použít ke spuštění aplikace Excel HPC a SOA služby z klientského počítače k místní. Služby HPC pro Excel obsahovat snižování zátěže sešitu aplikace Excel a uživatelem definované funkce aplikace Excel nebo UDF.
+# <a name="get-started-running-excel-and-soa-workloads-on-an-hpc-pack-cluster-in-azure"></a>Začínáme se spouštěním úloh Excelu a SOA v clusteru HPC Pack v Azure
+Tento článek ukazuje, jak nasadit cluster Microsoft HPC Pack 2012 R2 na virtuálních počítačích Azure s použitím šablony Azure pro rychlý start, nebo volitelně nasazení skriptu Azure Powershellu. Cluster využívá určený ke spouštění úloh architektura orientovaná na služby (SOA) nebo Microsoft Excel pomocí sady HPC Pack Image virtuálního počítače Azure Marketplace. Můžete spustit HPC aplikace Excel a SOA služby z klientských počítačů v místním clusteru. Služby HPC pro Excel zahrnují snižování zátěže sešitu aplikace Excel a uživatelsky definovaných funkcí aplikace Excel nebo UDF.
 
 > [!IMPORTANT] 
-> Tento článek vychází z funkce, šablony a skripty pro HPC Pack 2012 R2. Tento scénář není aktuálně podporován v prostředí HPC Pack 2016.
+> Tento článek vychází z funkce, šablony a skripty pro prostředí HPC Pack 2012 R2. Tento scénář není aktuálně podporován v prostředí HPC Pack 2016.
 >
 
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
-Následující diagram znázorňuje na vysoké úrovni clusteru HPC Pack, že který vytvoříte.
+Následující diagram ukazuje na vysoké úrovni clusteru HPC Pack, že kterou vytvoříte.
 
-![Cluster HPC s uzly, které jsou spuštěné úlohy aplikace Excel][scenario]
+![Cluster HPC s uzly, které běží úlohy aplikace Excel][scenario]
 
 ## <a name="prerequisites"></a>Požadavky
-* **Klientský počítač** -potřebujete počítač klienta se systémem Windows k odesílání ukázkové aplikace Excel a SOA úloh do clusteru. Musíte taky počítač se systémem Windows pro spuštění skriptu nasazení clusteru Azure PowerShell (Pokud zvolíte tuto metodu nasazení).
-* **Předplatné Azure** – Pokud nemáte předplatné Azure, můžete vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) si během několika minut.
-* **Kvóta jader** -možná budete muset zvýšit kvótu jádra, zvlášť pokud nasadíte několik uzlů clusteru s vícejádrovými velikosti virtuálních počítačů. Pokud používáte šablonu Azure rychlý start, kvóta jádra ve službě Správce prostředků je za oblast Azure. V takovém případě je potřeba zvýšit kvótu v určité oblasti. V tématu [limity předplatného Azure, kvóty a omezení](../../azure-subscription-service-limits.md). Pokud chcete zvýšit kvótu, [otevřete žádosti o podporu online zákazníka](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) zdarma.
-* **Licenci aplikace Microsoft Office** – Pokud nasadíte výpočetní uzly bitovou kopii virtuálního počítače Marketplace HPC Pack 2012 R2 pomocí aplikace Microsoft Excel, 30denní zkušební verzi Microsoft Excelu Professional Plus 2013 je nainstalována. Po uplynutí zkušebního období musíte zadat platnou licenci aplikace Microsoft Office Excel nadále spouštět úlohy aktivovat. V tématu [aktivace v aplikaci Excel](#excel-activation) dále v tomto článku. 
+* **Klientský počítač** -potřebujete počítač klienta se systémem Windows k odesílání úloh Excelu a SOA ukázka do clusteru. Budete také potřebovat počítače Windows pro spuštění skriptu pro nasazení clusteru Azure PowerShell (Pokud zvolíte tuto metodu nasazení).
+* **Předplatné Azure** – Pokud nemáte předplatné Azure, můžete vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) během několika minut.
+* **Kvóta pro jádra** -může být potřeba zvýšit kvótu jader, zejména v případě, že nasadíte několik uzlů clusteru s vícejádrovými velikosti virtuálních počítačů. Pokud použijete šablony rychlý start Azure, každou oblast Azure je kvótu jader v Resource Manageru. V takovém případě bude potřeba zvýšit kvótu v určité oblasti. Zobrazit [limity předplatného Azure, kvóty a omezení](../../azure-subscription-service-limits.md). Na zvýšení této kvóty, [otevřete žádost o online zákaznickou podporu](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) bez poplatků.
+* **Licence Microsoft Office** – Pokud nasadíte výpočetních uzlů pomocí bitové kopie virtuálního počítače Marketplace HPC Pack 2012 R2 s aplikací Microsoft Excel, 30denní zkušební verze Microsoft Excelu Professional Plus 2013 je nainstalovaný. Po zkušebního období musíte zadat platnou licenci aplikace Microsoft Office aktivovat aplikaci Excel i nadále spouštět úlohy. Zobrazit [Excel aktivace](#excel-activation) dále v tomto článku. 
 
-## <a name="step-1-set-up-an-hpc-pack-cluster-in-azure"></a>Krok 1. Nastavení clusteru služby HPC Pack v Azure
-Ukážeme dvě možnosti pro nastavení clusteru HPC Pack 2012 R2: první, pomocí šablonu Azure rychlý start a webu Azure portal; a Zadruhé, pomocí skript nasazení Azure PowerShell.
+## <a name="step-1-set-up-an-hpc-pack-cluster-in-azure"></a>Krok 1. Nastavení clusteru HPC Pack v Azure
+Ukážeme dvě možnosti, jak nastavit cluster prostředí HPC Pack 2012 R2: první použití, šablony rychlý start Azure a webu Azure portal; a Zadruhé, pomocí skriptu nasazení prostředí Azure PowerShell.
 
-### <a name="option-1-use-a-quickstart-template"></a>Možnost 1. Použít šabloně pro rychlý start
-Rychlé nasazení clusteru HPC Pack na portálu Azure pomocí šablony Azure rychlý start. Když otevřete šablonu na portálu, získáte jednoduchého uživatelského rozhraní, kde můžete zadat nastavení pro váš cluster. Tady jsou kroky. 
+### <a name="option-1-use-a-quickstart-template"></a>Možnost 1. Použít šablonu pro rychlý start
+Pomocí šablony Azure pro rychlý start k rychlému nasazení clusteru HPC Pack na portálu Azure portal. Když otevřete šablonu na portálu, získáte jednoduché uživatelské rozhraní, kde zadejte nastavení pro váš cluster. Tady jsou kroky. 
 
 > [!TIP]
-> Pokud chcete, použijte [šablony Azure Marketplace](https://portal.azure.com/?feature.relex=*%2CHubsExtension#create/microsofthpc.newclusterexcelcn) vytvářející cluster podobné speciálně pro zatížení aplikace Excel. Kroky mírně lišit od následující.
+> Pokud chcete, použijte [šabloně Azure Marketplace](https://portal.azure.com/?feature.relex=*%2CHubsExtension#create/microsofthpc.newclusterexcelcn) vytvářející cluster podobné specificky pro úlohy aplikace Excel. Kroky se mírně liší od následující.
 > 
 > 
 
-1. Přejděte [stránku šablony vytvořit Cluster prostředí HPC na Githubu](https://github.com/Azure/azure-quickstart-templates/tree/master/create-hpc-cluster). Pokud chcete, přečtěte si informace o šabloně a zdrojový kód.
-2. Klikněte na tlačítko **nasadit do Azure** zahájíte nasazení pomocí šablony na portálu Azure.
+1. Přejděte [stránku šablony vytvořit Cluster prostředí HPC na Githubu](https://github.com/Azure/azure-quickstart-templates/tree/master/create-hpc-cluster). Pokud chcete, projděte si informace o šabloně a zdrojový kód.
+2. Klikněte na tlačítko **nasadit do Azure** pro spuštění nasazení pomocí šablony na webu Azure Portal.
    
-   ![Nasazení šablony Azure][github]
-3. Na portálu použijte následující postup zadat parametry šablony clusteru prostředí HPC.
+   ![Nasazení šablony do Azure][github]
+3. Na portálu použijte následující postup zadejte parametry pro šablonu clusteru prostředí HPC.
    
-   a. Na **parametry** stránky zadejte nebo upravte hodnoty pro parametry šablony. (Klikněte na ikonu u kteréhokoli nastavení pro informace nápovědy.) Ukázkové hodnoty jsou uvedené v následující obrazovku. Tento příklad vytvoří cluster s názvem *hpc01* v *hpc.local* domény, který se skládá z hlavního uzlu a 2 výpočetních uzlů. Výpočetní uzly jsou vytvořené z virtuálních počítačů HPC Pack obrázek, který obsahuje aplikace Microsoft Excel.
+   a. Na **parametry** stránky zadejte nebo upravte hodnoty parametrů šablony. (Klikněte na ikonu vedle každého nastavení informace nápovědy.) Ukázkové hodnoty jsou uvedeny na následující obrazovce. Tento příklad vytvoří cluster s názvem *hpc01* v *hpc.local* domény skládající se z hlavního uzlu a 2 výpočetních uzlů. Výpočetní uzly se vytvoří z image virtuálního počítače HPC Pack, která obsahuje aplikaci Microsoft Excel.
    
    ![Zadání parametrů][parameters-new-portal]
    
    > [!NOTE]
-   > Virtuální počítač je automaticky vytvořen z hlavního uzlu [nejnovější image Marketplace](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2onwindowsserver2012r2/) HPC Pack 2012 R2 na Windows Server 2012 R2. Aktuálně bitovou kopii je založena na HPC Pack 2012 R2 Update 3.
+   > Virtuální počítač je automaticky vytvořen z hlavního uzlu [nejnovější image z Marketplace](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2onwindowsserver2012r2/) HPC Pack 2012 R2 na Windows serveru 2012 R2. Na obrázku je aktuálně založená na HPC Pack 2012 R2 Update 3.
    > 
-   > Výpočetní uzel virtuální počítače jsou vytvořeny z nejnovější bitové kopie rodiny vybrané výpočetního uzlu. Vyberte **ComputeNodeWithExcel** možnost pro nejnovější aktualizaci HPC Pack výpočetní uzel image, která obsahuje zkušební verzi Microsoft Excelu Professional Plus 2013. Chcete-li nasadit cluster s podporou pro obecné SOA relací nebo snižování zátěže systému souborů UDF Excelu, zvolte **ComputeNode** možnost (bez nainstalované aplikace Excel).
+   > Výpočetní že uzel virtuální počítače vytvářejí z nejnovějšího image řady vybrané výpočetní uzel. Vyberte **ComputeNodeWithExcel** možnost pro nejnovější sady HPC Pack výpočetní uzel image, která zahrnuje zkušební verze Microsoft Excelu Professional Plus 2013. Chcete-li nasadit cluster obecných seminářů SOA nebo snižování zátěže systému souborů UDF Excelu, zvolte **ComputeNode** možnost (bez nainstalována aplikace Excel).
    > 
    > 
    
-   b. Zvolte předplatné.
+   b. Vyberte předplatné.
    
    c. Vytvořte skupinu prostředků clusteru, například *hpc01RG*.
    
-   d. Vyberte umístění pro skupinu prostředků, jako je například střed USA.
+   d. Vyberte umístění pro skupinu prostředků, jako je USA (střed).
    
-   e. Na **právní podmínky** stránky, přečtěte si podmínky. Pokud souhlasíte, klikněte na tlačítko **nákupu**. Po dokončení nastavení hodnoty pro šablonu, klepněte na **vytvořit**.
-4. Po dokončení nasazení (obvykle trvá přibližně 30 minut), exportovat soubor certifikátu clusteru z hlavního uzlu clusteru. V pozdější fázi importujete tento veřejný certifikát na klientském počítači, aby poskytovala ověřování na straně serveru pro zabezpečené vazby HTTP.
+   e. Na **právní podmínky** stránky, přečtěte si podmínky. Pokud souhlasíte, klikněte na tlačítko **nákupní**. Po dokončení nastavení hodnot šablony, klikněte **vytvořit**.
+4. Až se nasazení dokončí (obvykle trvá přibližně 30 minut), export souboru certifikátu clusteru z hlavního uzlu clusteru. V pozdějším kroku importujte tento veřejný certifikát na klientském počítači se poskytovat ověřování na straně serveru pro bezpečnou vazbu protokolu HTTP.
    
-   a. V portálu Azure, přejděte na řídicí panel, vyberte z hlavního uzlu a klikněte na **Connect** v horní části stránky a připojte se pomocí vzdálené plochy.
+   a. Na webu Azure Portal, přejděte na řídicí panel, vyberte hlavní uzel a klikněte na tlačítko **připojit** v horní části stránky a připojte se pomocí vzdálené plochy.
    
     <!-- ![Connect to the head node][connect] -->
    
-   b. Použijte standardní postupy ve Správci certifikátů a vyexportovat si certifikát hlavního uzlu (nachází se v části Cert: \LocalMachine\My) bez soukromého klíče. V tomto příkladu exportovat *CN = hpc01.eastus.cloudapp.azure.com*.
+   b. Použijte standardní postupy ve Správci certifikátů pro exportování certifikátu hlavní uzel (umístěný ve skupinovém rámečku Cert: \LocalMachine\My) bez soukromého klíče. V tomto příkladu exportovat *CN = hpc01.eastus.cloudapp.azure.com*.
    
    ![Export certifikátu][cert]
 
-### <a name="option-2-use-the-hpc-pack-iaas-deployment-script"></a>Možnost 2. Pomocí tohoto skriptu nasazení IaaS HPC Pack
-Skript nasazení HPC Pack IaaS poskytuje další univerzální způsob nasazení clusteru HPC Pack. Vytvoří cluster v modelu nasazení classic, zatímco šablona používá model nasazení Azure Resource Manager. Skript je také kompatibilní s předplatným ve službě Azure globální nebo Azure China.
+### <a name="option-2-use-the-hpc-pack-iaas-deployment-script"></a>Možnost 2. Použít skript nasazení IaaS sady HPC Pack
+Skriptem nasazení IaaS sady HPC Pack obsahuje další univerzální způsob, jak nasadit cluster prostředí HPC Pack. Vytvoří cluster v modelu nasazení classic, že šablona používá model nasazení Azure Resource Manageru. Skript je také kompatibilní s předplatným služby Azure Global nebo Azure China.
 
 **Další požadavky**
 
 * **Prostředí Azure PowerShell** - [nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/overview) (verze 0.8.10 nebo novější) na klientském počítači.
-* **Skript nasazení HPC Pack IaaS** – stáhněte a rozbalte nejnovější verzi skript z [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=44949). Zkontrolujte verzi skript spuštěním `New-HPCIaaSCluster.ps1 –Version`. Tento článek je založen na verzi 4.5.0 nebo později skript.
+* **Skriptem nasazení IaaS sady HPC Pack** – stažení a rozbalení nejnovější verzi skriptu z [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=44949). Zkontrolujte verzi skriptu spuštěním `New-HPCIaaSCluster.ps1 –Version`. Tento článek je založen na verzi 4.5.0 nebo později tohoto skriptu.
 
 **Vytvoření konfiguračního souboru**
 
- Skript nasazení HPC Pack IaaS používá jako vstup, který popisuje infrastruktura clusteru HPC konfigurační soubor XML. Chcete-li nasadit cluster, který se skládá z hlavního uzlu a 18 výpočetních uzlů vytvořené z image výpočetního uzlu, která obsahuje aplikaci Microsoft Excel, nahraďte hodnoty pro vaše prostředí do následující vzorový konfigurační soubor. Další informace o konfiguračním souboru, najdete v souboru Manual.rtf ve složce skriptu a [vytvoření clusteru prostředí HPC pomocí skriptu pro nasazení HPC Pack IaaS](classic/hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+ Skriptem nasazení IaaS sady HPC Pack konfigurační soubor XML používá jako vstup, který popisuje infrastrukturu clusteru prostředí HPC. Pokud chcete nasadit cluster skládající se z hlavního uzlu a 18 výpočetních uzlů vytvořené z image výpočetního uzlu, který zahrnuje aplikace Microsoft Excel, nahraďte hodnoty pro vaše prostředí do následující vzorový konfigurační soubor. Další informace o konfiguračním souboru, naleznete v souboru Manual.rtf ve složce script a [vytvoření clusteru HPC se skriptem nasazení IaaS sady HPC Pack](classic/hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
 ```
 <?xml version="1.0" encoding="utf-8"?>
@@ -140,11 +140,11 @@ Skript nasazení HPC Pack IaaS poskytuje další univerzální způsob nasazení
 </IaaSClusterConfig>
 ```
 
-**Poznámky k konfiguračního souboru**
+**Poznámky o konfigurační soubor**
 
-* **VMName** hlavního uzlu **musí** být stejný jako **ServiceName**, nebo úlohy architektury SOA se nepodaří spustit.
-* Je nutné zadat **EnableWebPortal** tak, aby je generována a exportovat certifikát hlavního uzlu.
-* Soubor Určuje skript prostředí PowerShell po konfiguraci PostConfig.ps1, která běží na hlavního uzlu. Následující ukázkový skript nakonfiguruje připojovací řetězec úložiště Azure, odebere roli výpočetní uzel z hlavního uzlu a při jejich nasazení přináší všechny uzly online. 
+* **VMName** hlavního uzlu **musí** být stejné jako **ServiceName**, nebo spuštění úlohy architektury SOA se nepovede.
+* Ujistěte se, že zadáte **EnableWebPortal** tak, aby certifikát hlavního uzlu je generována a exportovat.
+* Soubor Určuje skript prostředí PowerShell po konfiguraci PostConfig.ps1, na kterém běží hlavního uzlu. Následující ukázkový skript nastaví připojovací řetězec služby Azure storage, odebere roli výpočetní uzel z hlavního uzlu a přináší všechny uzly online, když jsou nasazená. 
 
 ```
     # add the HPC Pack powershell cmdlets
@@ -182,40 +182,40 @@ Skript nasazení HPC Pack IaaS poskytuje další univerzální způsob nasazení
    ```
    cd E:\IaaSClusterScript
    ```
-3. Nasazení clusteru HPC Pack, spusťte následující příkaz. Tento příklad předpokládá, že konfigurační soubor nachází v E:\HPCDemoConfig.xml.
+3. K nasazení clusteru HPC Pack, spusťte následující příkaz. Tento příklad předpokládá, že konfigurační soubor umístěný v E:\HPCDemoConfig.xml.
    
    ```
    .\New-HpcIaaSCluster.ps1 –ConfigFile E:\HPCDemoConfig.xml –AdminUserName MyAdminName
    ```
 
-Skript nasazení HPC Pack spustí nějakou dobu. Jednou z věcí, které nemá skript je exportovat a stáhněte certifikát clusteru a uložit do složky Dokumenty aktuální uživatel v klientském počítači. Tento skript generuje zprávu podobný následujícímu. V tomto kroku importujete certifikát v úložišti příslušný certifikát.    
+Spuštění skriptu nasazení sady HPC Pack nechystáte nějakou dobu. Jednou z věcí, které skript je exportovat a stáhněte si certifikát clusteru a uložit ve složce Dokumenty aktuální uživatel v klientském počítači. Tento skript generuje zpráva podobná následující. V tomto kroku importujete certifikát v úložišti příslušný certifikát.    
 
     You have enabled REST API or web portal on HPC Pack head node. Please import the following certificate in the Trusted Root Certification Authorities certificate store on the computer where you are submitting job or accessing the HPC web portal:
     C:\Users\hpcuser\Documents\HPCWebComponent_HPCExcelHN004_20150707162011.cer
 
-## <a name="step-2-offload-excel-workbooks-and-run-udfs-from-an-on-premises-client"></a>Krok 2. Snižování zátěže sešitů aplikace Excel a spusťte UDF z místního klienta
+## <a name="step-2-offload-excel-workbooks-and-run-udfs-from-an-on-premises-client"></a>Krok 2. Snižte zátěž Excelové sešity a spuštění UDF z lokálního klienta
 ### <a name="excel-activation"></a>Aktivace aplikace Excel
-Pokud používáte image virtuálního počítače ComputeNodeWithExcel pro úlohy v produkčním prostředí, je třeba zadat platný klíč licence Microsoft Office k aktivaci aplikace Excel na výpočetních uzlech. Jinak po 30 dnech vyprší platnost zkušební verzi aplikace Excel a systémem sešitů aplikace Excel se nezdaří s COMException (0x800AC472). 
+Pokud používáte image virtuálního počítače ComputeNodeWithExcel pro produkční úlohy, musíte poskytnout platný klíč licence Microsoft Office aktivovat aplikace Excel na výpočetních uzlech. V opačném případě po 30 dnech vyprší platnost zkušební verze aplikace Excel a systémem Excelové sešity se nezdaří s COMException (0x800AC472). 
 
-Obnovení aplikace Excel můžete aktivačního období pro jiné 30 dnů od doby vyhodnocení: Přihlaste se k hlavnímu uzlu a clusrun `%ProgramFiles(x86)%\Microsoft Office\Office15\OSPPREARM.exe` na všechny aplikace Excel výpočetní uzly prostřednictvím Správce clusteru HPC. Po obnovení aktivačního období maximálně dvakrát. Potom je nutné zadat platný klíč licence Office.
+Obnovení aplikace Excel můžete aktivačního období o dalších 30 dní doba hodnocení: Přihlaste se k hlavnímu uzlu a clusrun `%ProgramFiles(x86)%\Microsoft Office\Office15\OSPPREARM.exe` na všechny aplikace Excel výpočetních uzlů pomocí Správce clusteru HPC. Obnovení aktivačního období maximálně dvakrát. Poté je nutné zadat platný klíč licence Office.
 
-Office Professional Plus 2013 nainstalovaný na bitovou kopii virtuálního počítače je multilicenční edici s obecné svazku licenční klíč (kód GVLK). Aktivujte ji prostřednictvím služby správy klíčů (KMS) nebo aktivaci prostřednictvím služby (AD-BA) nebo klíč k vícenásobné aktivaci (MAK). 
+Office Professional Plus 2013 v imagi virtuálního počítače nainstalované je multilicenční edici s obecné svazku licenční klíč (kód GVLK). Můžete si ji můžou aktivovat prostřednictvím služby správy klíčů (KMS) nebo Aktivace multilicence (AD BA) nebo klíče MAK (Multiple Activation). 
 
-    * Pomocí služby správy KLÍČŮ/AD-BA, použít existující server služby správy KLÍČŮ nebo nastavit novou pomocí sady Microsoft Office 2013 svazku licence. (Pokud chcete, nastavení serveru z hlavního uzlu.) Potom aktivujte klíč hostitele služby správy KLÍČŮ přes Internet nebo telefon. Potom clusrun `ospp.vbs` nastavit server služby správy KLÍČŮ a port a aktivovat Office na všechny aplikace Excel výpočetních uzlů. 
+    * Použití služby správy KLÍČŮ/AD-BA, použít existující server služby správy KLÍČŮ nebo nastavit nové předplatné s použitím Microsoft Office 2013 svazku licenční balíček. (Pokud chcete, nastavení serveru na hlavní uzel.) Potom aktivujte klíč hostitele služby správy KLÍČŮ přes Internet nebo telefon. Potom clusrun `ospp.vbs` v aplikaci Excel na serveru služby správy KLÍČŮ a portu a aktivovat Office na všech výpočetních uzlech. 
 
-    * Použít klíč k vícenásobné aktivaci, první clusrun `ospp.vbs` k zadejte klíč a poté znovu aktivovat všechny aplikace Excel výpočetní uzly přes Internet nebo telefon. 
+    * Použít klíč k vícenásobné aktivaci, první clusrun `ospp.vbs` k zadání klíče a poté aktivovat všechny aplikace Excel výpočetních uzlů přes Internet nebo telefon. 
 
 > [!NOTE]
-> Prodejní kódy product key pro Office Professional Plus 2013 nelze použít s touto bitovou kopií virtuálního počítače. Pokud máte platné klíče a instalační médium pro edice Office nebo aplikace Excel než tato edice Office Professional Plus 2013 svazku, můžete je používat místo. Nejprve odinstalujte tento multilicenční edici a nainstalujte na edici, ke které máte. Jako vlastní image virtuálního počítače pro nasazení ve velkém měřítku, se dají zachytit přeinstalovaného výpočetním uzlu aplikace Excel.
+> Maloobchodní kódy product key pro Office Professional Plus 2013 nelze použít u této image virtuálního počítače. Pokud máte platný klíčů a instalačními médii pro edice Office nebo aplikace Excel než tato edice Office Professional Plus 2013 svazku, můžete je použít místo. Nejdřív odinstalujte tuto edici svazku a instalaci edice, kterou máte. Přeinstalovaného výpočetním uzlu Excel se dají zachytit jako vlastní image virtuálního počítače pro použití v nasazení ve velkém měřítku.
 > 
 > 
 
-### <a name="offload-excel-workbooks"></a>Snižování zátěže sešitů aplikace Excel
-Postupujte podle těchto kroků snižování zátěže sešitu aplikace Excel, tak, aby běžel v clusteru HPC Pack v Azure. Chcete-li to provést, musí mít aplikaci Excel 2010 nebo 2013 v klientském počítači již nainstalována.
+### <a name="offload-excel-workbooks"></a>Přesměrování zpracování Excelových sešitů
+Použijte následující postup snižování zátěže sešitu aplikace Excel, tak, aby běžel v clusteru HPC Pack v Azure. Chcete-li to provést, musí mít aplikace Excel 2010 nebo 2013 již nainstalována na klientském počítači.
 
-1. Použijte jednu z možností v kroku 1 k nasazení clusteru HPC Pack pomocí aplikace Excel výpočetní uzel image. Získejte clusteru soubor certifikátu (.cer) a cluster uživatelské jméno a heslo.
-2. Na klientském počítači importujte certifikát clusteru pod Cert: \CurrentUser\Root.
-3. Zkontrolujte, zda že je nainstalována aplikace Excel. Vytvořte soubor Excel.exe.config s následující obsah ve stejné složce jako Excel.exe na klientském počítači. Tento krok zajistí, že-in prostředí HPC Pack 2012 R2 Excel COM úspěšně načten.
+1. Použijte jednu z možností v kroku 1 a nasaďte cluster prostředí HPC Pack pomocí aplikace Excel výpočetní uzel image. Získáte clusteru soubor certifikátu (.cer) a clusteru uživatelské jméno a heslo.
+2. Na klientském počítači importujte certifikát clusteru v rámci Cert: \CurrentUser\Root.
+3. Ujistěte se, že je nainstalována aplikace Excel. Vytvořte soubor s příponou Excel.exe.config s použitím následujícího obsahu ve stejné složce jako Excel.exe v klientském počítači. Tento krok zajistí, že – v prostředí HPC Pack 2012 R2 Excel COM úspěšně načte.
    
     ```
     <?xml version="1.0"?>
@@ -225,15 +225,15 @@ Postupujte podle těchto kroků snižování zátěže sešitu aplikace Excel, t
         </startup>
     </configuration>
     ```
-4. Nastavení klienta k odesílání úloh do clusteru HPC Pack. Jednou z možností je stáhnout kompletní [HPC Pack 2012 R2 Update 3 instalace](http://www.microsoft.com/download/details.aspx?id=49922) a instalace sady HPC Pack klienta. Můžete taky stáhnout a nainstalovat [HPC Pack 2012 R2 Update 3 klienta nástroje](https://www.microsoft.com/download/details.aspx?id=49923) a příslušné Visual C++ 2010 redistributable pro tento počítač ([x64](http://www.microsoft.com/download/details.aspx?id=14632), [x86](https://www.microsoft.com/download/details.aspx?id=5555) ).
-5. V tomto příkladu používáme Ukázka sešitu aplikace Excel s názvem ConvertiblePricing_Complete.xlsb. Můžete ho stáhnout [zde](https://www.microsoft.com/en-us/download/details.aspx?id=2939).
-6. Pracovní složky, například D:\Excel\Run zkopírujte sešitu aplikace Excel.
-7. Otevřete sešit aplikace Excel. Na **vývoj** pásu karet, klikněte na tlačítko **doplňky modelu COM** a potvrďte, že-in prostředí HPC Pack Excel COM byla úspěšně zavedena.
+4. Nastavení klienta a odesílat úlohy do clusteru HPC Pack. Jednou z možností je stažení kompletní [HPC Pack 2012 R2 Update 3 instalační](http://www.microsoft.com/download/details.aspx?id=49922) a instalace sady HPC Pack klienta. Můžete také stáhnout a nainstalovat [HPC Pack 2012 R2 Update 3 klientské nástroje](https://www.microsoft.com/download/details.aspx?id=49923) a odpovídající Visual C++ 2010 redistributable pro počítače ([x64](http://www.microsoft.com/download/details.aspx?id=14632), [x86](https://www.microsoft.com/download/details.aspx?id=5555) ).
+5. V tomto příkladu používáme ukázkového sešitu aplikace Excel s názvem ConvertiblePricing_Complete.xlsb. Můžete ji stáhnout [tady](https://www.microsoft.com/en-us/download/details.aspx?id=2939).
+6. Pracovní složky, jako je například D:\Excel\Run zkopírujte Excelový sešit.
+7. Otevřete Excelový sešit. Na **vývoj** pásu karet, klikněte na tlačítko **doplňky modelu COM** a potvrďte, že doplněk HPC Pack Excel COM byla úspěšně zavedena.
    
-   ![Add-in pro prostředí HPC Pack v aplikaci Excel][addin]
-8. Změna řádky komentářů, jak je znázorněno v následující skript upravte makro VBA HPCControlMacros v aplikaci Excel. Nahraďte příslušnými hodnotami pro vaše prostředí.
+   ![Aplikace Excel add-in pro prostředí HPC Pack][addin]
+8. Upravte změnou řádcích s komentářem, jak je znázorněno v následujícím skriptu – makro VBA HPCControlMacros v aplikaci Excel. Nahraďte příslušnými hodnotami pro vaše prostředí.
    
-   ![Makro aplikace Excel pro HPC Pack][macro]
+   ![Makro v Excelu pro HPC Pack][macro]
    
    ```
    'Private Const HPC_ClusterScheduler = "HEADNODE_NAME"
@@ -251,41 +251,41 @@ Postupujte podle těchto kroků snižování zátěže sešitu aplikace Excel, t
    'HPCExcelClient.OpenSession headNode:=HPC_ClusterScheduler, remoteWorkbookPath:=HPCWorkbookPath
    HPCExcelClient.OpenSession headNode:=HPC_ClusterScheduler, remoteWorkbookPath:=HPCWorkbookPath, UserName:="hpc\azureuser", Password:="<YourPassword>"
    ```
-9. Zkopírujte adresář nahrávání například D:\Excel\Upload sešitu aplikace Excel. Tento adresář je určen v konstanta HPC_DependsFiles v makro VBA pro vytváření.
-10. Pokud chcete spustit sešit v clusteru v Azure, klikněte na tlačítko **clusteru** tlačítko na listu.
+9. Zkopírujte Excelový sešit do adresáře například D:\Excel\Upload nahrávání. Tento adresář je zadán v konstantě HPC_DependsFiles v makru VBA.
+10. Ke spuštění v sešitu v clusteru v Azure, klikněte na tlačítko **clusteru** tlačítko na listu.
 
-### <a name="run-excel-udfs"></a>Spusťte systém souborů UDF Excelu
-Pokud chcete spustit systém souborů UDF Excelu, postupujte podle předchozích kroků 1 – 3 můžete nastavit v klientském počítači. Pro systém souborů UDF Excelu nemusíte mít nainstalovanou na výpočetních uzlech aplikaci Excel. Ano při vytváření clusteru výpočetních uzlů, mohli byste normální výpočetní uzel image místo image výpočetního uzlu pomocí aplikace Excel.
+### <a name="run-excel-udfs"></a>Spuštění UDF Excelu
+Ke spuštění souborů UDF Excelu, postupujte podle předchozích kroků 1 – 3 nastavení klientského počítače. U souborů UDF Excelu nemusíte mít aplikace Excel nainstalována na výpočetních uzlech. Ano při vytváření clusteru výpočetních uzlů, můžete se rozhodnout normální výpočetní uzel image místo image výpočetního uzlu pomocí aplikace Excel.
 
 > [!NOTE]
-> Existuje limit 34 znak v aplikaci Excel 2010 a 2013 dialogové okno konektor clusteru. Toto dialogové okno pomůže zadejte požadovaný cluster, který běží UDF. Pokud je název clusteru úplné delší (například hpcexcelhn01.southeastasia.cloudapp.azure.com), v dialogovém okně nevejde. Řešením je třeba nastavit proměnnou celého systému *CCP_IAASHN* s hodnotou název dlouho clusteru. Potom zadejte *CCP_IAASHN %* v dialogovém okně jako název hlavního uzlu clusteru. 
+> Existuje omezení 34 znaků v aplikaci Excel 2010 a 2013 dialogové okno konektoru clusteru. Toto dialogové okno vám zadejte požadovaný cluster, na kterém běží UDF. Pokud je název clusteru úplný delší (například hpcexcelhn01.southeastasia.cloudapp.azure.com), v dialogovém okně nevejde. Alternativním řešením je nastavit proměnnou celého systému, jako *CCP_IAASHN* s použitím hodnoty z clusteru dlouhý název. Potom zadejte *CCP_IAASHN %* v dialogovém okně jako název hlavního uzlu clusteru. 
 > 
 > 
 
-Po úspěšném nasazení clusteru, pokračujte tyto kroky a spusťte ukázku předdefinované UDF Excelu. Vlastní systém souborů UDF Excelu, najdete v těchto [prostředky](http://social.technet.microsoft.com/wiki/contents/articles/1198.windows-hpc-and-microsoft-excel-resources-for-building-cluster-ready-workbooks.aspx) sestavení XLL a nasadit je na IaaS clusteru.
+Po úspěšném nasazení clusteru pokračovat tyto kroky a spusťte ukázku integrovaných UDF Excelu. Pro vlastní souborů UDF Excelu, informace najdete v těchto [prostředky](http://social.technet.microsoft.com/wiki/contents/articles/1198.windows-hpc-and-microsoft-excel-resources-for-building-cluster-ready-workbooks.aspx) sestavení XLL a jejich nasazení v clusteru IaaS.
 
-1. Otevřete nový sešit aplikace Excel. Na **vývoj** pásu karet, klikněte na tlačítko **doplňky**. Klikněte v dialogovém okně **Procházet**, přejděte do složky %CCP_HOME%Bin\XLL32 a vyberte vzorek ClusterUDF32.xll. Pokud ClusterUDF32 neexistuje na klientský počítač, zkopírujte jej ze složky %CCP_HOME%Bin\XLL32 z hlavního uzlu.
+1. Otevřete nový Excelový sešit. Na **vývoj** pásu karet, klikněte na tlačítko **Add-Ins**. Klikněte v dialogovém okně **Procházet**, přejděte do složky %CCP_HOME%Bin\XLL32 a vybrat ukázku ClusterUDF32.xll. Pokud ClusterUDF32 neexistuje v klientském počítači, zkopírujte ho ve složce %CCP_HOME%Bin\XLL32 hlavního uzlu.
    
    ![Vyberte UDF][udf]
-2. Klikněte na tlačítko **soubor** > **možnosti** > **rozšířené**. V části **vzorce**, zkontrolujte **povolit uživatelsky definované funkce XLL ke spuštění výpočetního clusteru**. Pak klikněte na tlačítko **možnosti** a zadejte název clusteru úplné v **název hlavního uzlu clusteru**. (Jak je uvedeno dříve toto vstupní pole je omezený na 34 znaků, proto nemusí podle názvu dlouho clusteru. Proměnnou celého systému může použít pro název dlouho clusteru.)
+2. Klikněte na tlačítko **souboru** > **možnosti** > **Advanced**. V části **vzorce**, zkontrolujte **povolit uživatelem definované funkce XLL ke spuštění výpočetního clusteru**. Pak klikněte na tlačítko **možnosti** a zadejte název clusteru úplný **název hlavního uzlu clusteru**. (Jak je uvedeno dříve toto vstupní pole je omezená na 34 znaků, takže nemusí podle názvu dlouhá Clusterové. Můžete použít proměnnou celého názvu dlouhá Clusterové.)
    
    ![Konfigurace UDF][options]
-3. Chcete-li spustit výpočet UDF v clusteru, klikněte na buňky s hodnotou =XllGetComputerNameC() a stiskněte Enter. Funkce jednoduše načte název výpočetním uzlu, na kterém běží UDF. Pro první spustit dialogové okno přihlašovací údaje vyzve k zadání uživatelského jména a hesla se připojit ke clusteru IaaS.
+3. Pro spuštění výpočtu systému souborů UDF v clusteru, klikněte na buňku s hodnotou =XllGetComputerNameC() a stiskněte klávesu Enter. Funkce jednoduše načte název výpočetním uzlu, na kterém běží UDF. Pro první spuštění dialogové okno pověření vyzve k zadání uživatelského jména a hesla pro připojení ke clusteru IaaS.
    
-   ![Spustit UDF][run]
+   ![Spuštění UDF][run]
    
-   Když dojde k výpočtu velké množství buněk, stiskněte klávesu Alt-Shift-Ctrl + F9 ke spuštění na všechny buňky výpočtu.
+   Pokud je počet buněk k výpočtu, stiskněte Alt-Shift-Ctrl + F9 pro spuštění výpočtu na všechny buňky.
 
-## <a name="step-3-run-a-soa-workload-from-an-on-premises-client"></a>Krok 3. Spuštění úlohy architektury SOA z místního klienta
-Pokud chcete spustit obecné aplikace SOA v clusteru HPC Pack IaaS, nejprve pomocí jedné z metod v kroku 1 nasazení clusteru. Zadejte obecný výpočetní uzel bitové kopie v tomto případě, protože není nutné aplikaci Excel na výpočetních uzlech. Potom postupujte podle těchto kroků.
+## <a name="step-3-run-a-soa-workload-from-an-on-premises-client"></a>Krok 3. Spuštění úlohy SOA z lokálního klienta
+Pokud chcete spustit obecné aplikace SOA v clusteru IaaS sady HPC Pack, nejprve pomocí jedné z metod v kroku 1 k nasazení clusteru. Zadejte obecný výpočetní uzel bitové kopie v tomto případě, protože není nutné aplikaci Excel na výpočetních uzlech. Pak postupujte podle těchto kroků.
 
-1. Po načtení certifikátu clusteru, importujte ho na klientském počítači v rámci Cert: \CurrentUser\Root.
-2. Nainstalujte [HPC Pack 2012 R2 Update 3 SDK](http://www.microsoft.com/download/details.aspx?id=49921) a [HPC Pack 2012 R2 Update 3 klienta nástroje](https://www.microsoft.com/download/details.aspx?id=49923). Tyto nástroje vám umožňují vývoj a spusťte SOA klientské aplikace.
-3. Stažení HelloWorldR2 [ukázkový kód](https://www.microsoft.com/download/details.aspx?id=41633). Otevřete HelloWorldR2.sln v sadě Visual Studio 2010 nebo 2012. (Tato ukázka není momentálně kompatibilní s novější verzí sady Visual Studio.)
-4. Sestavení projektu EchoService nejdřív. Potom nasaďte službu do clusteru IaaS stejným způsobem, který můžete nasadit na místní cluster. Podrobné pokyny najdete v části Readme.doc v HelloWordR2. Upravit a vytvořit HellWorldR2 a další projekty, jak je popsáno v následující části ke generování SOA klientské aplikace, které běží na clusteru služby Azure IaaS.
+1. Po načtení certifikátu clusteru, importujte ho na klientském počítači v části Cert: \CurrentUser\Root.
+2. Nainstalujte [HPC Pack 2012 R2 Update 3 SDK](http://www.microsoft.com/download/details.aspx?id=49921) a [HPC Pack 2012 R2 Update 3 klientské nástroje](https://www.microsoft.com/download/details.aspx?id=49923). Tyto nástroje umožňují vyvíjet a spouštět SOA klientské aplikace.
+3. Stáhněte si HelloWorldR2 [ukázkový kód](https://www.microsoft.com/download/details.aspx?id=41633). Otevřete HelloWorldR2.sln v sadě Visual Studio 2010 nebo 2012. (Tento příklad není momentálně kompatibilní s novější verzí sady Visual Studio.)
+4. Nejdřív sestavte projekt EchoService. Potom nasaďte služby do clusteru IaaS stejným způsobem, který nasazujete na místní cluster. Podrobné pokyny najdete v článku Readme.doc v HelloWordR2. Upravit a vytvořit HellWorldR2 a jiné projekty, jak je popsáno v následující části generovat klientské aplikace SOA, které běží v clusteru služby Azure IaaS.
 
-### <a name="use-http-binding-with-azure-storage-queue"></a>Vazba Http pomocí fronty Azure storage
-Pro použití vazby Http s frontu úložiště Azure, proveďte několik změny ukázkový kód.
+### <a name="use-http-binding-with-azure-storage-queue"></a>Použití vazby protokolu Http s fronty Azure storage
+Pro použití vazby protokolu Http s fronty služby Azure storage, proveďte několik změn do vzorového kódu.
 
 * Aktualizujte název clusteru.
   
@@ -297,13 +297,13 @@ Pro použití vazby Http s frontu úložiště Azure, proveďte několik změny 
   or
   const string headnode = "hpc01.cloudapp.net";
   ```
-* V případě potřeby použijte výchozí TransportScheme v SessionStartInfo nebo explicitně nastavit na Http.
+* Volitelně můžete použít výchozí TransportScheme v SessionStartInfo nebo explicitně nastavit na Http.
 
 ```
     info.TransportScheme = TransportScheme.Http;
 ```
 
-* Používejte výchozí vazbu pro BrokerClient.
+* Použijte výchozí vazby BrokerClient.
   
     ```
   // Before
@@ -312,39 +312,39 @@ Pro použití vazby Http s frontu úložiště Azure, proveďte několik změny 
   using (BrokerClient<IService1> client = new BrokerClient<IService1>(session))
   ```
   
-    Nebo nastavte explicitně pomocí basicHttpBinding.
+    Nebo nastavit explicitně pomocí basicHttpBinding.
   
     ```
   BasicHttpBinding binding = new BasicHttpBinding(BasicHttpSecurityMode.TransportWithMessageCredential);
   binding.Security.Message.ClientCredentialType = BasicHttpMessageCredentialType.UserName;    binding.Security.Transport.ClientCredentialType = HttpClientCredentialType.None;
   ```
-* Volitelně můžete nastavte na hodnotu true v SessionStartInfo příznak UseAzureQueue. Pokud není nastavená, nastaví se hodnotu true ve výchozím nastavení, když se název clusteru má přípony domény Azure a TransportScheme, je Http.
+* Volitelně můžete nastavte příznak UseAzureQueue na hodnotu true v SessionStartInfo. Pokud není nastavená, bude nastavena hodnotu true ve výchozím nastavení, pokud je název clusteru má přípon domén Azure a TransportScheme je Http.
   
     ```
     info.UseAzureQueue = true;
   ```
 
-### <a name="use-http-binding-without-azure-storage-queue"></a>Použít vazbu Http bez fronty Azure storage
-Pokud chcete používat vazby Http bez frontu úložiště Azure, explicitně nastavte příznak UseAzureQueue na hodnotu false v SessionStartInfo.
+### <a name="use-http-binding-without-azure-storage-queue"></a>Použití vazby protokolu Http bez fronty Azure storage
+Použití vazby protokolu Http bez fronty služby Azure storage explicitně nastavena na hodnotu false v SessionStartInfo UseAzureQueue příznak.
 
 ```
     info.UseAzureQueue = false;
 ```
 
-### <a name="use-nettcp-binding"></a>NetTcp vazbu používají
-Pokud chcete použít NetTcp vazby, konfigurace je podobný připojení k místní cluster. Budete muset otevřít několik koncových bodů z hlavního uzlu virtuálního počítače. Pokud skript nasazení HPC Pack IaaS jste použili k vytvoření clusteru, například nastavte koncové body na portálu Azure následujícím způsobem.
+### <a name="use-nettcp-binding"></a>Použití NetTcp vazby
+Konfigurace použití NetTcp vazby, je podobné propojení místního clusteru. Budete muset otevřít několik koncových bodů hlavního uzlu virtuálního počítače. Pokud jste použili k vytvoření clusteru skriptem nasazení IaaS sady HPC Pack, například nastavení koncových bodů na webu Azure Portal následujícím způsobem.
 
 1. Zastavte virtuální počítač.
-2. Přidat porty TCP 9090, 9087, 9091, 9094 pro relaci, zprostředkovatel, respektive zprostředkovatel worker a datové služby
+2. Porty TCP 9090, přidat 9087, 9091, 9094 pro relaci, zprostředkovatel, zprostředkovatel pracovní procesy a datové služby v uvedeném pořadí
    
     ![Konfigurace koncových bodů][endpoint-new-portal]
 3. Spusťte virtuální počítač.
 
-Klientská aplikace SOA nevyžaduje žádné změny kromě změna head název, který má úplný název clusteru IaaS.
+Klientská aplikace SOA nevyžaduje žádné změny, s výjimkou změnit hlavní název pro IaaS úplný název clusteru.
 
 ## <a name="next-steps"></a>Další postup
-* V tématu [tyto prostředky](http://social.technet.microsoft.com/wiki/contents/articles/1198.windows-hpc-and-microsoft-excel-resources-for-building-cluster-ready-workbooks.aspx) pro další informace o spuštění úlohy aplikace Excel pomocí sady HPC Pack.
-* V tématu [Správa služeb SOA v Microsoft HPC Pack](https://technet.microsoft.com/library/ff919412.aspx) Další informace o nasazení a správě SOA services pomocí sady HPC Pack.
+* Zobrazit [tyto prostředky](http://social.technet.microsoft.com/wiki/contents/articles/1198.windows-hpc-and-microsoft-excel-resources-for-building-cluster-ready-workbooks.aspx) Další informace o spouštění úloh aplikace Excel pomocí sady HPC Pack.
+* Zobrazit [Správa služby SOA v Microsoft HPC Pack](https://technet.microsoft.com/library/ff919412.aspx) Další informace o nasazení a správu služeb SOA se sadou HPC Pack.
 
 <!--Image references-->
 [scenario]: ./media/excel-cluster-hpcpack/scenario.png

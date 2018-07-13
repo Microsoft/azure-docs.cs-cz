@@ -1,9 +1,9 @@
 ---
-title: Šifrování disků pro sadách škálování Azure pomocí rozhraní příkazového řádku Azure | Microsoft Docs
-description: Další informace o použití Azure CLI 2.0 k šifrování instance virtuálních počítačů a připojené disky ve škálovací sadě virtuálních počítačů Linux
+title: Šifrování disků pro Azure škálovací sady pomocí rozhraní příkazového řádku Azure | Dokumentace Microsoftu
+description: Zjistěte, jak použít rozhraní příkazového řádku Azure CLI 2.0 k šifrování instancí virtuálních počítačů a připojených disků ve škálovací sadě virtuálních počítačů Linux
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,41 +14,41 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: iainfou
-ms.openlocfilehash: 22d3c763317def137b4e0beb155f28585d7c6ae1
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.author: cynthn
+ms.openlocfilehash: a01a0ae09b91b550af4617a46f7c0d8647a5f4be
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32776410"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38704551"
 ---
-# <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-the-azure-cli-20-preview"></a>Šifrování operačního systému a připojené datové disky v škálování virtuálního počítače s 2.0 rozhraní příkazového řádku Azure (Preview)
+# <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-the-azure-cli-20-preview"></a>Šifrování operačního systému a připojené datové disky ve virtuálním počítači škálovací sadě pomocí Azure CLI 2.0 (Preview)
 
-K ochraně a ochrany dat v klidovém stavu pomocí technologie oborový standard šifrování, podporují sady škálování virtuálního počítače Azure Disk Encryption (ADE). Šifrování lze povolit pro Linux a Windows virtuálního počítače sady škálování. Další informace najdete v tématu [Azure Disk Encryption pro Linux a Windows](../security/azure-security-disk-encryption.md).
+Pro ochranu dat v klidovém stavu pomocí standardní šifrovací technologie, podporují škálovací sady virtuálních počítačů Azure Disk Encryption (ADE). Šifrování je možné povolit pro systémy Linux a Windows virtuálního počítače škálovací sady. Další informace najdete v tématu [Azure Disk Encryption pro systémy Linux a Windows](../security/azure-security-disk-encryption.md).
 
 > [!NOTE]
->  Azure disk encryption pro sady škálování virtuálního počítače je aktuálně ve verzi public preview, k dispozici ve všech oblastech Azure veřejné.
+>  Azure disk encryption pro škálovací sady virtuálních počítačů je aktuálně ve verzi public preview, k dispozici ve všech veřejných oblastech Azure.
 
-Šifrování Azure disku je podporován:
-- pro škálování sady vytvořené s spravovaných disků a nejsou podporovány pro sady škálování nativní (nebo nespravovaný) disku.
-- pro svazky operačního systému a dat v systému Windows sady škálování. Zakázat šifrování je podporované pro svazky operačního systému a dat pro sady škálování systému Windows.
-- pro datové svazky v sadách škálování Linux. Šifrování disku operačního systému není podporován v aktuální verzi preview pro Linux sady škálování.
+Azure disk encryption je podporována:
+- pro škálovací sady se spravovanými disky vytvořené a není podporováno pro nativní (nebo nespravované) disku škálovací sady.
+- pro operační systém a datové svazky ve Windows škálovacích sadách. Zakázat šifrování je podporováno pro operační systém a datové svazky pro Windows škálovací sady.
+- pro datové svazky v Linuxu škálovací sady. Šifrování disku operačního systému není podporován v aktuální verzi preview pro Linux škálovací sady.
 
-Operace obnovení z Image a upgrade sady virtuálních počítačů škálování nejsou podporovány v aktuální verzi preview. Azure disk šifrování pro náhled sady škálování virtuálního počítače se doporučuje jenom v testovacích prostředích. Ve verzi preview nepovolujte šifrování disku v produkčním prostředí, kde je třeba upgradovat image operačního systému v sadě škálování šifrované.
+Škálovací sady virtuálního počítače reimage a upgrade operace nejsou podporovány v aktuální verzi preview. Azure disk encryption pro verzi preview sady škálování virtuálních počítačů se doporučuje jenom v testovacích prostředích. Ve verzi preview Nepovolovat šifrování disku v produkčních prostředích, kde je třeba upgradovat image operačního systému v šifrované škálovací sady.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud si zvolíte instalaci a použití rozhraní příkazového řádku místně, tento kurz vyžaduje, že používáte Azure CLI verze 2.0.31 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli).
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, tento kurz vyžaduje použití Azure CLI verze 2.0.31 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli).
 
-## <a name="register-for-disk-encryption-preview"></a>Registrace pro náhled šifrování disku
+## <a name="register-for-disk-encryption-preview"></a>Zaregistrovat se na disk encryption ve verzi preview
 
-Azure disk encryption pro verzi preview sadách škálování virtuálních počítačů vyžaduje, abyste registrovat předplatné s [zaregistrovat funkci az](/cli/azure/feature#az_feature_register). Potřebujete jenom poprvé, že používáte funkci náhledu šifrování disku proveďte následující kroky:
+Azure disk encryption pro škálovací sady virtuálních počítačů ve verzi preview je potřeba registrovat předplatné s [az funkce register](/cli/azure/feature#az_feature_register). Stačí provést následující kroky při prvním použití funkce ve verzi preview šifrování disku:
 
 ```azurecli-interactive
 az feature register --name UnifiedDiskEncryption --namespace Microsoft.Compute
 ```
 
-To může trvat až 10 minut, než požadavek na rozšíření. Můžete zkontrolovat stav registrace s [zobrazit funkce az](/cli/azure/feature#az_feature_show). Když `State` sestavy *registrovaná*, znovu zaregistrovat *Mirosoft.Compute* zprostředkovatele s [registrace zprostředkovatele az](/cli/azure/provider#az_provider_register):
+Může trvat až 10 minut žádost o registraci rozšíření. Vy můžete zkontrolovat stav registrace s [az funkce Zobrazit](/cli/azure/feature#az_feature_show). Když `State` sestavy *registrované*, přeregistrovat *Mirosoft.Compute* zprostředkovatele s [az provider register](/cli/azure/provider#az_provider_register):
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.Compute
@@ -62,7 +62,7 @@ Než vytvoříte škálovací sadu, vytvořte skupinu prostředků pomocí pří
 az group create --name myResourceGroup --location eastus
 ```
 
-Teď vytvořte škálovací sadu virtuálních počítačů pomocí příkazu [az vmss create](/cli/azure/vmss#az_vmss_create). Následující příklad vytvoří škálovací sadu *myScaleSet* nastavenou tak, aby se při provedení změn automaticky aktualizovala, a vygeneruje klíče SSH v adresáři *~/.ssh/id_rsa*, pokud ještě neexistují. Datový disk 32Gb je připojen k jednotlivým instancím virtuálních počítačů a Azure [rozšíření vlastních skriptů](../virtual-machines/linux/extensions-customscript.md) slouží k přípravě datových disků s [az vmss rozšíření sady](/cli/azure/vmss/extension#az_vmss_extension_set):
+Teď vytvořte škálovací sadu virtuálních počítačů pomocí příkazu [az vmss create](/cli/azure/vmss#az_vmss_create). Následující příklad vytvoří škálovací sadu *myScaleSet* nastavenou tak, aby se při provedení změn automaticky aktualizovala, a vygeneruje klíče SSH v adresáři *~/.ssh/id_rsa*, pokud ještě neexistují. 32Gb datový disk je připojena k jednotlivých instancí virtuálních počítačů a Azure [rozšíření vlastních skriptů](../virtual-machines/linux/extensions-customscript.md) slouží k přípravě datových disků s [az vmss extension set](/cli/azure/vmss/extension#az_vmss_extension_set):
 
 ```azurecli-interactive
 # Create a scale set with attached data disk
@@ -87,11 +87,11 @@ az vmss extension set \
 
 Vytvoření a konfigurace všech prostředků škálovací sady a virtuálních počítačů trvá několik minut.
 
-## <a name="create-an-azure-key-vault-enabled-for-disk-encryption"></a>Vytvoření Azure trezoru klíčů pro šifrování disku povoleno
+## <a name="create-an-azure-key-vault-enabled-for-disk-encryption"></a>Vytvořit trezor klíčů Azure nepovoluje šifrování disku
 
-Azure Key Vault můžete uložit klíčů, tajné klíče nebo hesla, které vám umožní bezpečně je implementovat v vašim aplikacím a službám. Kryptografické klíče ukládají v Azure Key Vault pomocí ochrany proti softwaru, nebo můžete importovat nebo generovat klíče v modulech hardwarového zabezpečení (HSM) certifikovány pro FIPS 140-2 úroveň 2 standardů. Tyto klíče se používají k šifrování a dešifrování virtuálních disků připojených k virtuálnímu počítači. Uchování kontroly nad těchto kryptografické klíče a můžete auditovat jejich použití.
+Azure Key Vault umí ukládat klíče, tajné kódy nebo hesla, které umožňují bezpečný je implementovat ve svých aplikacích a službách. Kryptografické klíče jsou uložené ve službě Azure Key Vault software ochrany, nebo můžete importovat nebo generovat klíče v modulech hardwarového zabezpečení (HSM) certifikovaných podle standardů FIPS 140-2 úrovně 2 standardů. Tyto klíče se používají k šifrování a dešifrování virtuální disky připojené k virtuálnímu počítači. Uchování kontroly nad těmito kryptografické klíče a můžete kontrolovat jejich použití.
 
-Definovat vlastní jedinečné *keyvault_name*. Pak vytvořte KeyVault s [vytvořit az keyvault](/cli/azure/ext/keyvault-preview/keyvault#ext-keyvault-preview-az-keyvault-create) ve stejném předplatném, oblasti jako měřítka nastavit a *– povoleno pro--šifrování disku* zásada přístupu.
+Definovat vlastní jedinečné *keyvault_name*. Vytvořte trezor klíčů s [az keyvault vytvořit](/cli/azure/ext/keyvault-preview/keyvault#ext-keyvault-preview-az-keyvault-create) ve stejném předplatném a oblasti jako škálovací nastavit a nastavit *– povolené pro šifrování disků* zásady přístupu.
 
 ```azurecli-interactive
 # Provide your own unique Key Vault name
@@ -101,11 +101,11 @@ keyvault_name=myuniquekeyvaultname
 az keyvault create --resource-group myResourceGroup --name $keyvault_name --enabled-for-disk-encryption
 ```
 
-### <a name="use-an-existing-key-vault"></a>Použít existující Key Vault
+### <a name="use-an-existing-key-vault"></a>Použít existující služby Key Vault
 
-Tento krok jenom je potřeba, pokud máte existující Key Vault, kterou chcete použít s šifrování disku. Tento krok přeskočte, pokud jste vytvořili v předchozí části Key Vault.
+Tento krok je jenom nutné, pokud máte existující Key Vault, kterou chcete použít šifrování disku. Tento krok přeskočte, pokud jste vytvořili službu Key Vault v předchozí části.
 
-Definovat vlastní jedinečné *keyvault_name*. Potom aktualizovat vaše KeyVault s [az keyvault aktualizace](/cli/azure/ext/keyvault-preview/keyvault#ext-keyvault-preview-az-keyvault-update) a nastavte *– povoleno pro--šifrování disku* zásada přístupu.
+Definovat vlastní jedinečné *keyvault_name*. Potom aktualizovat váš trezor klíčů s [az keyvault update](/cli/azure/ext/keyvault-preview/keyvault#ext-keyvault-preview-az-keyvault-update) a nastavit *– povolené pro šifrování disků* zásady přístupu.
 
 ```azurecli-interactive
 # Provide your own unique Key Vault name
@@ -117,7 +117,7 @@ az keyvault update --name $keyvault_name --enabled-for-disk-encryption
 
 ## <a name="enable-encryption"></a>Povolit šifrování
 
-K šifrování instancí virtuálního počítače ve škálovací sadě, nejdřív získejte některé informace o ID prostředku Key Vault s [az keyvault zobrazit](/cli/azure/ext/keyvault-preview/keyvault#ext-keyvault-preview-az-keyvault-show). Tyto proměnné se používají k spusťte proces šifrování s [povolit šifrování vmss az](/cli/azure/vmss/encryption#az-vmss-encryption-enable):
+K šifrování instancí virtuálních počítačů ve škálovací sadě, nejdřív získejte některé informace o ID prostředku Key Vault s [az keyvault show](/cli/azure/ext/keyvault-preview/keyvault#ext-keyvault-preview-az-keyvault-show). Tyto proměnné se používají k spusťte proces šifrování s [povolit šifrování az vmss](/cli/azure/vmss/encryption#az-vmss-encryption-enable):
 
 ```azurecli-interactive
 # Get the resource ID of the Key Vault
@@ -131,9 +131,9 @@ az vmss encryption enable \
     --volume-type DATA
 ```
 
-Může trvat minutu nebo dvě pro proces šifrování spustit.
+Může trvat minutu nebo dvě spuštění se proces šifrování.
 
-Jako sada škálování je zásad upgradu na rozsahu nastavit vytvořený v předchozím kroku je nastaven na *automatické*, instance virtuálních počítačů automaticky spustit proces šifrování. Na sady škálování, kde je ruční zásad upgradu, spusťte na zásady šifrování na instance virtuálních počítačů s [az vmss aktualizace instance](/cli/azure/vmss#az-vmss-update-instances).
+Jako škálovací sada je zásad upgradu na škálovací sadu vytvořenou v předchozím kroku je nastavena na *automatické*, instance virtuálních počítačů automaticky spustit proces šifrování. Na škálovací sady, ve kterém je zásad upgradu na ruční, spusťte zásady šifrování v instancích virtuálních počítačů s [az vmss update-instances](/cli/azure/vmss#az-vmss-update-instances).
 
 ## <a name="check-encryption-progress"></a>Kontrola průběhu šifrování
 
@@ -143,7 +143,7 @@ Chcete-li zkontrolovat stav šifrování disku, použijte [az vmss šifrování 
 az vmss encryption show --resource-group myResourceGroup --name myScaleSet
 ```
 
-Jsou šifrovaná instance virtuálních počítačů, stavový kód sestavy *EncryptionState/šifrované*, jak ukazuje následující příklad výstupu:
+Když instance virtuálních počítačů jsou zašifrované, stavový kód zprávy *EncryptionState/šifrované*, jak je znázorněno v následujícím příkladu výstupu:
 
 ```bash
 [
@@ -172,7 +172,7 @@ Jsou šifrovaná instance virtuálních počítačů, stavový kód sestavy *Enc
 
 ## <a name="disable-encryption"></a>Zakázat šifrování
 
-Pokud již nechcete používat šifrované disky instancí virtuálních počítačů, můžete zakázat šifrování s [az vmss šifrování zakázat](/cli/azure/vmss/encryption?view=azure-cli-latest#az-vmss-encryption-disable) následujícím způsobem:
+Pokud již nechcete používat šifrovanými disky instancí virtuálních počítačů, můžete zakázat šifrování s [zakázat šifrování az vmss](/cli/azure/vmss/encryption?view=azure-cli-latest#az-vmss-encryption-disable) následujícím způsobem:
 
 ```azurecli-interactive
 az vmss encryption disable --resource-group myResourceGroup --name myScaleSet
@@ -180,6 +180,6 @@ az vmss encryption disable --resource-group myResourceGroup --name myScaleSet
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto článku jste použili 2.0 rozhraní příkazového řádku Azure k šifrování škálovací sadu virtuálních počítačů. Můžete také použít [prostředí Azure PowerShell](virtual-machine-scale-sets-encrypt-disks-ps.md) nebo šablon pro [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox) nebo [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox).
+V tomto článku se používá rozhraní příkazového řádku Azure CLI 2.0 k šifrování škálovací sadu virtuálních počítačů. Můžete také použít [prostředí Azure PowerShell](virtual-machine-scale-sets-encrypt-disks-ps.md) nebo šablony pro [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox) nebo [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox).
 
-Příklad souboru začátku do konce dávky pro šifrování disku Linux škálování sady dat lze nalézt [zde](https://gist.githubusercontent.com/ejarvi/7766dad1475d5f7078544ffbb449f29b/raw/03e5d990b798f62cf188706221ba6c0c7c2efb3f/enable-linux-vmss.bat). Tento příklad vytvoří skupinu prostředků, sadě škálování Linux, připojí 5 GB datový disk a šifruje škálovací sadu virtuálních počítačů.
+Příklad souboru začátku do konce dávky pro Linux škálovací sady dat šifrování disku najdete [tady](https://gist.githubusercontent.com/ejarvi/7766dad1475d5f7078544ffbb449f29b/raw/03e5d990b798f62cf188706221ba6c0c7c2efb3f/enable-linux-vmss.bat). Tento příklad vytvoří skupinu prostředků, škálovací sady pro Linux, připojí disk 5 GB dat a šifruje škálovací sadu virtuálních počítačů.

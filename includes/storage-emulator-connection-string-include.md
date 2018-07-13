@@ -1,4 +1,4 @@
-Emulátor úložiště podporuje jeden pevný účet a dobře známé ověřovací klíč pro ověření sdíleným klíčem. Tento účet a klíč jsou pouze povolené pro použití s emulátor úložiště pověření sdílený klíč. Jsou:
+Emulátor úložiště podporuje jeden účet pevné a dobře známý ověřovací klíč pro ověřování pomocí sdíleného klíče. Tento účet a klíče jsou pouze přihlašovací údaje sdíleného klíče pro použití s emulátorem úložiště. Jsou to tyto:
 
 ```
 Account name: devstoreaccount1
@@ -6,13 +6,13 @@ Account key: Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZ
 ```
 
 > [!NOTE]
-> Ověřovací klíč nepodporuje emulátor úložiště je určena pouze pro testování funkce kód pro ověřování klienta. Neslouží jakýkoli účel zabezpečení. Produkční účtu úložiště a klíč nelze použít s emulátor úložiště. Vývoj pro účet byste neměli používat s provozními daty.
+> Ověřovací klíč nepodporuje emulátor úložiště je určena pouze pro testování funkce kód pro ověřování klientů. Neslouží jakýkoli účel zabezpečení. Produkčního účtu úložiště a klíč nelze použít s emulátorem úložiště. S použitím provozních dat byste neměli používat účet vývoje.
 > 
-> Emulátor úložiště podporuje pouze připojení prostřednictvím protokolu HTTP. Ale HTTPS je protokol doporučené pro přístup k prostředkům v produkční účtu úložiště Azure.
+> Emulátor úložiště podporuje pouze připojení přes protokol HTTP. Ale HTTPS je protokol doporučené pro přístup k prostředkům v produkčním prostředí účtu Azure storage.
 > 
 
-#### <a name="connect-to-the-emulator-account-using-a-shortcut"></a>Připojení k účtu emulátoru pomocí zástupce
-Nejjednodušší způsob, jak připojit k emulátor úložiště z vaší aplikace je nakonfigurovat připojovací řetězec v konfiguračním souboru aplikace, který odkazuje na zástupce `UseDevelopmentStorage=true`. Tady je příklad připojovacího řetězce pro emulátor úložiště v *app.config* souboru: 
+#### <a name="connect-to-the-emulator-account-using-a-shortcut"></a>Připojit k emulátoru účtu pomocí zástupce
+Nejjednodušší způsob, jak se připojit k emulátoru úložiště z vaší aplikace je ke konfiguraci připojovacího řetězce v konfiguračním souboru aplikace, která odkazuje místní `UseDevelopmentStorage=true`. Tady je příklad připojovacího řetězce k emulátoru úložiště v *app.config* souboru: 
 
 ```xml
 <appSettings>
@@ -20,8 +20,8 @@ Nejjednodušší způsob, jak připojit k emulátor úložiště z vaší aplika
 </appSettings>
 ```
 
-#### <a name="connect-to-the-emulator-account-using-the-well-known-account-name-and-key"></a>Připojení k účtu emulátor používá známý účet název a klíč
-Chcete-li vytvořit připojovací řetězec, který odkazuje na emulátoru název účtu a klíč, musíte zadat koncové body pro jednotlivé služby, které chcete použít z emulátoru serveru v připojovacím řetězci. To je nezbytné, aby připojovací řetězec bude odkazovat emulátoru koncových bodů, které se liší od zásad pro účet úložiště produkční. Například hodnota připojovací řetězec bude vypadat takto:
+#### <a name="connect-to-the-emulator-account-using-the-well-known-account-name-and-key"></a>Připojit k emulátoru účtu pomocí dobře známý název a klíč
+Chcete-li vytvořit připojovací řetězec, který odkazuje na emulátor název účtu a klíč, musíte zadat koncové body pro každou ze služeb, které chcete použít z emulátoru serveru v připojovacím řetězci. To je nezbytné, aby připojovací řetězec bude odkazovat na emulátor koncové body, které jsou jiné než požadavky na účet úložiště v produkčním prostředí. Například hodnota připojovací řetězec bude vypadat takto:
 
 ```
 DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;
@@ -31,10 +31,10 @@ TableEndpoint=http://127.0.0.1:10002/devstoreaccount1;
 QueueEndpoint=http://127.0.0.1:10001/devstoreaccount1;
 ```
 
-Tato hodnota je stejná jako zástupce uvedené výše, `UseDevelopmentStorage=true`.
+Tato hodnota se shoduje s místní výše uvedenému `UseDevelopmentStorage=true`.
 
-#### <a name="specify-an-http-proxy"></a>Zadejte proxy serveru HTTP
-Můžete také zadat proxy server HTTP použít při testování služby emulátoru úložiště. To může být užitečné pro sledování požadavků a odpovědí HTTP při ladění operace u služby storage. Chcete-li zadat proxy server, přidejte `DevelopmentStorageProxyUri` možnost připojovací řetězec a jeho hodnotu nastavte identifikátor URI proxy serveru. Zde je například připojovací řetězec, který odkazuje na emulátor úložiště a nakonfiguruje server proxy protokolu HTTP:
+#### <a name="specify-an-http-proxy"></a>Zadejte proxy server HTTP
+Můžete také zadat proxy server HTTP pro použití při testování vaší služby emulátoru úložiště. To může být užitečné pro sledování požadavků a odpovědí HTTP během ladění operace služby úložiště. Chcete-li zadat proxy server, přidejte `DevelopmentStorageProxyUri` možnost připojovacího řetězce a nastavte její hodnotu na identifikátor URI proxy serveru. Tady je například připojovací řetězec, který odkazuje na emulátor úložiště a nakonfiguruje server proxy protokolu HTTP:
 
 ```
 UseDevelopmentStorage=true;DevelopmentStorageProxyUri=http://myProxyUri

@@ -1,19 +1,19 @@
 ---
 title: Přehled akcelerátoru řešení prediktivní údržby – Azure | Microsoft Docs
-description: Přehled akcelerátoru řešení prediktivní údržby Azure IoT.
+description: Přehled akcelerátorů řešení prediktivní údržby Azure IoT.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: conceptual
-ms.date: 11/14/2017
+ms.date: 07/12/2018
 ms.author: dobett
-ms.openlocfilehash: 6bd61f301fa4468ef1d308d4da275c760ee09dc0
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: ed87b3c935fe4032460f8e524f963355fb3157d9
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37088607"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970297"
 ---
 # <a name="predictive-maintenance-solution-accelerator-overview"></a>Přehled akcelerátoru řešení prediktivní údržby
 
@@ -29,7 +29,17 @@ Modré položky jsou služby Azure zřízené v oblasti, kam jste nasadili akcel
 
 Zelená položka je simulované zařízení, které představuje letecký motor. Další informace o těchto simulovaných zařízeních najdete v části [Simulovaná zařízení](#simulated-devices).
 
-Šedé položky představují součásti, které implementují funkce *správy zařízení*. Aktuální verze akcelerátoru řešení prediktivní údržby tyto prostředky neposkytuje. Další informace o správě zařízení naleznete [akcelerátoru řešení vzdáleného monitorování][lnk-remote-monitoring].
+Šedé položky představují součásti, které implementují funkce *správy zařízení*. Aktuální verze akcelerátoru řešení prediktivní údržby tyto prostředky neposkytuje. Další informace o správě zařízení, najdete v tématu [akcelerátor řešení vzdálené monitorování][lnk-remote-monitoring].
+
+## <a name="azure-resources"></a>Prostředky Azure
+
+Na webu Azure Portal přejděte do skupiny prostředků s názvem řešení, které jste si vybrali k zobrazení zřízených prostředků.
+
+![][img-resource-group]
+
+Při zřizování akcelerátoru řešení obdržíte e-mail s odkazem na pracovní prostor Machine Learning. Můžete také přejít do pracovního prostoru Machine Learning z [azureiotsolutions.com] [ lnk-azureiotsuite] stránky zřízeného řešení. Na této stránce je k dispozici dlaždice v případě, že je řešení ve stavu **Připraveno**.
+
+![][img-machine-learning]
 
 ## <a name="simulated-devices"></a>Simulovaná zařízení
 
@@ -61,6 +71,11 @@ Služba IoT Hub zajišťuje potvrzení příkazu zařízení.
 ## <a name="machine-learning"></a>Machine Learning
 Součást Machine Learning používá model odvozený z dat shromážděných z reálných leteckých motorů. Do pracovního prostoru Machine Learning se můžete dostat z dlaždice vašeho řešení na stránce [azureiotsuite.com][lnk-azureiotsuite]. Tato dlaždice je k dispozici v případě, že je řešení ve stavu **Připraveno**.
 
+Model Azure Machine Learning je dostupná jako šablonu, která ukazuje možnosti práce z telemetrických dat zařízení shromážděnými prostřednictvím služeb akcelerátory řešení IoT. Společnost Microsoft vytvořila [regresní model] [ lnk_regression_model] leteckého motoru na základě veřejně dostupných dat<sup>\[1\]</sup>a podrobné pokyny o tom, jak použít model.
+
+Akcelerátor řešení prediktivní údržby Azure IoT používá regresní model vytvořený z této šablony. Model je nasazený do vašeho předplatného Azure a vystavený prostřednictvím automaticky generovaného rozhraní API. Řešení obsahuje podmnožinu testovacích dat, která představují 4 motory (z celkem 100) a 4 datové proudy ze snímačů (z celkem 21). Tato data jsou dostatečná pro poskytování přesných výsledků z trénovaného modelu.
+
+*\[1\] A. Saxena and K. Goebel (2008). „Turbofan Engine Degradation Simulation Data Set“, datové úložiště NASA Ames Prognostics Data Repository (https://c3.nasa.gov/dashlink/resources/139/)), NASA Ames Research Center, Moffett Field, CA*
 
 ## <a name="next-steps"></a>Další postup
 Když jste se seznámili s klíčovými součástmi akcelerátoru řešení prediktivní údržby, můžete si jej přizpůsobit.
@@ -71,10 +86,13 @@ Můžete si také prostudovat některé další funkce a možnosti akcelerátor�
 * [Zabezpečení IoT od počátku][lnk-security-groundup]
 
 [img-architecture]: media/iot-accelerators-predictive-walkthrough/architecture.png
+[img-resource-group]: media/iot-accelerators-predictive-walkthrough/resource-group.png
+[img-machine-learning]: media/iot-accelerators-predictive-walkthrough/machine-learning.png
 
-[lnk-remote-monitoring]: iot-accelerators-remote-monitoring-explore.md
+[lnk-remote-monitoring]: quickstart-predictive-maintenance-deploy.md
 [lnk-cortana-analytics]: http://gallery.cortanaintelligence.com/Collection/Predictive-Maintenance-Template-3
 [lnk-azureiotsuite]: https://www.azureiotsolutions.com/
 [lnk-faq]: iot-accelerators-faq.md
 [lnk-security-groundup]:/azure/iot-fundamentals/iot-security-ground-up
 [lnk-machine-learning]: https://azure.microsoft.com/services/machine-learning/
+[lnk_regression_model]: http://gallery.cortanaanalytics.com/Collection/Predictive-Maintenance-Template-3

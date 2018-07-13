@@ -1,6 +1,6 @@
 ---
-title: Testování pera | Microsoft Docs
-description: Článek obsahuje přehled průnikům testování procesu (pentest) a jak provádět pentest proti vaší aplikace běžící v Azure infrastruktury.
+title: Testování průniku | Dokumentace Microsoftu
+description: Tento článek obsahuje základní informace o testování procesu (pentest) průniku a jak provádět pentest proti svých aplikací spuštěných v infrastruktuře Azure.
 services: security
 documentationcenter: na
 author: terrylan
@@ -15,36 +15,36 @@ ms.workload: na
 ms.date: 03/13/2018
 ms.author: barclayn
 ms.openlocfilehash: a64316eda25bd02f89b5afdd7b98c0193381d023
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33893363"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970815"
 ---
-# <a name="pen-testing"></a>Testování pera
-Jednou z výhod používání Azure pro testování aplikací a nasazení je, můžete rychle získat prostředí vytvořili.  Nemusíte si dělat starosti o žádanek, získávání a "stáčení a překrývání" vlastní místní hardware.
+# <a name="pen-testing"></a>Testování průniku
+Jednou z výhod používání Azure pro testování aplikací a nasazení je, že můžete rychle získat prostředí vytvořená.  Není nutné se starat o žádanek, získání a "r: sledování a stohování" v místním hardwaru.
 
-Toto je skvělým – ale stále nutné a ujistěte se, proveďte běžné zabezpečení kvůli opatrností. Jednou z věcí, musíte udělat je průnikům otestujte nasazení aplikace v Azure.
+To je skvělé – ale je stále potřeba Ujistěte se, že provádíte běžná bezpečnostní vypršení platnosti co nejopatrněji. Jednou z věcí, je třeba provést je ho otestujte nasazení aplikace v Azure.
 
-Možná už víte, že Microsoft provádí [průnikům testování naše prostředí Azure](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e). Tento pomůže jednotky Azure vylepšení. 
+Možná už znáte, aby Microsoft prováděl [testování průniku naše prostředí Azure](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e). To pomáhá vám zajistí vylepšení Azure. 
 
-Jsme nemáte pera testování vaší aplikace pro vás, ale Chápeme, že se má a potřeba provést testování na vaše vlastní aplikace pera. Dobrá vlastnost, je to způsobeno můžete zvýšit zabezpečení aplikací, vám pomoci lépe zabezpečit celý ekosystém Azure.
+Společnost Microsoft není pera otestovat aplikaci za vás, ale rozumí tomu, že se chcete a potřebujete provést na vašich vlastních aplikací testování průniku. To je dobrá věc, protože můžete zlepšit zabezpečení vašich aplikací, vám pomoci lépe zabezpečit celý ekosystém Azure.
 
 Co dělat?
 
-Od 15. června 2017, Microsoft už vyžaduje schválení před vést průnikům testy s prostředky Azure. Doporučujeme, aby vyplnit se zákazníky, kteří chtějí oficiálně dokumentu nadcházející průnikům testování oznámeních podporujících zapojení uživatelů s Microsoft Azure [Azure Service průnikům testování oznámení formuláře](https://portal.msrc.microsoft.com/en-us/engage/pentest). Tento proces se vztahuje pouze k Microsoft Azure a nemusí platit pro všechny ostatní cloudové služby Microsoftu. 
+Od 15. června 2017 Microsoft už nevyžaduje předběžné schválení ho nechali testy s prostředky Azure. Nepodnikovým zákazníkům, kteří chtějí formálně dokumentu nadcházející testování průniku s dokumentem s Microsoft Azure k vyplnění [oznámení testování průniku Azure služby formuláře](https://portal.msrc.microsoft.com/en-us/engage/pentest). Tento proces se týká jenom Microsoft Azure a nevztahuje se na jakékoli jiné cloudové služby Microsoftu. 
 
 >[!IMPORTANT] 
->Při odesílání oznámení o chybách společnosti Microsoft pera testování aktivity se už nevyžaduje zákazníky stále splňovat [Microsoft Cloud Unified průnikům testování pravidla zapojení](https://technet.microsoft.com/mt784683). 
+>Při oznámení Microsoft aktivity testování průniku se už nevyžaduje zákazníci i nadále vyhovět [Microsoft Cloud Unified průniku testování pravidla zapojení](https://technet.microsoft.com/mt784683). 
 
-Standardní testy, které můžete provádět, zahrnují:
+Standardní testy, které můžete provádět, patří:
 
-* Testy na koncové body k odhalení [aplikace otevřete webový projekt zabezpečení (OWASP) top 10 ohrožení zabezpečení](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project)
-* [Testování argumentu neurčité](https://blogs.microsoft.com/cybertrust/2007/09/20/fuzz-testing-at-microsoft-and-the-triage-process/) vaše koncových bodů
-* [Kontrola portů](https://en.wikipedia.org/wiki/Port_scanner) vaše koncových bodů
+* Testování na koncových bodech, a odhalit [Open Web Application zabezpečení projektu (OWASP) top 10 ohrožení zabezpečení](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project)
+* [Testování argumentu neurčité](https://blogs.microsoft.com/cybertrust/2007/09/20/fuzz-testing-at-microsoft-and-the-triage-process/) z vašich koncových bodů
+* [Port scanning](https://en.wikipedia.org/wiki/Port_scanner) z vašich koncových bodů
 
-Druh jeden typ testu, který nelze provést žádné je [útok na dostupnost služby (DoS)](https://en.wikipedia.org/wiki/Denial-of-service_attack) útoku. To zahrnuje inicializaci útoku DoS sám sebe nebo provádění souvisejících testy, které může určit, ukazují nebo simulovat jakýkoli typ útoku DoS.
+Jeden typ testu, který nelze provést, je libovolný druh [útok na dostupnost služby (DoS)](https://en.wikipedia.org/wiki/Denial-of-service_attack) útoku. Jedná se o zahájení útoku DoS, samotné nebo provádění související testy, které může určit, ukazují nebo simulovat jakýkoli typ útoku DoS.
 
 ## <a name="next-steps"></a>Další postup
 
-- Jste připravení začít s pera testování vaší aplikace hostované ve službě Microsoft Azure? Pokud ano, pak přejděte na přes [přehled testovací průnikům](https://technet.microsoft.com/library/mt784683.aspx) (a klikněte na tlačítko požádat o testování v dolní části stránky vytvořit. 
+- Jste připravení začít s pera testování vaší aplikace hostované v Microsoft Azure? Pokud ano, pak přejděte na na [přehled Test průniku](https://technet.microsoft.com/library/mt784683.aspx) stránce (a klikněte na tlačítko vytvořit tlačítko požádat o testování v dolní části stránky. 

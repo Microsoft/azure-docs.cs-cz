@@ -1,6 +1,6 @@
 ---
-title: Aktualizace zásobníku Azure 1803 | Microsoft Docs
-description: Další informace o tom, co je v aktualizaci 1803 pro Azure zásobníku integrované systémy, známé problémy a kde se stáhnout aktualizaci.
+title: Aktualizace služby Azure Stack 1803 | Dokumentace Microsoftu
+description: Další informace o tom, co je ve verzi 1803 aktualizace pro Azure Stack integrované systémy, známé problémy a kde se stáhnout aktualizaci.
 services: azure-stack
 documentationcenter: ''
 author: brenduns
@@ -12,192 +12,192 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/22/2018
+ms.date: 07/11/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: a74e77f84aa70519015a589cbc6e7478c0c41592
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 11430a0d194a722c0c0520c936db3c08b1a6b863
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36318805"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38989567"
 ---
-# <a name="azure-stack-1803-update"></a>Azure aktualizace 1803 zásobníku
+# <a name="azure-stack-1803-update"></a>Aktualizace služby Azure Stack 1803
 
-*Platí pro: Azure zásobníku integrované systémy*
+*Platí pro: integrované systémy Azure Stack*
 
-Tento článek popisuje vylepšení a opravy v balíčku aktualizace 1803, známé problémy pro tuto verzi a toho, kde se stáhnout aktualizaci. Známé problémy se dál dělí na problémy, které jsou přímo souvisí s proces aktualizace a problémy s sestavení (po instalaci).
+Tento článek popisuje vylepšení a opravy v balíčku aktualizace 1803, známé problémy pro tuto verzi a kde se stáhnout aktualizaci. Známé problémy jsou rozděleny do problémy přímo souvisí s proces aktualizace a problémy se sestavením (po instalaci).
 
 > [!IMPORTANT]        
-> Tento balíček aktualizace je pouze pro Azure zásobníku integrované systémy. Tento balíček aktualizace nevztahují na Azure zásobníku Development Kit.
+> Tento balíček aktualizace je pouze pro integrované systémy Azure Stack. Tento balíček aktualizace nevztahují na Azure Stack Development Kit.
 
-## <a name="build-reference"></a>Odkaz na sestavení    
-Číslo sestavení aktualizace 1803 zásobník Azure je **20180329.1**.
+## <a name="build-reference"></a>Referenční informace o buildu    
+Číslo sestavení aktualizace Azure Stack 1803 je **20180329.1**.
 
 
 ## <a name="before-you-begin"></a>Než začnete    
 > [!IMPORTANT]    
-> Nepokoušejte se vytvořit virtuální počítače při instalaci této aktualizace. Další informace o správě aktualizací najdete v tématu [správě aktualizací v přehledu Azure zásobníku](azure-stack-updates.md#plan-for-updates).
+> Nepokoušejte se vytvářet virtuální počítače při instalaci této aktualizace. Další informace o správě aktualizací najdete v tématu [správy aktualizací ve službě Azure Stack přehled](azure-stack-updates.md#plan-for-updates).
 
 
 ### <a name="prerequisites"></a>Požadavky
-- Nainstalovat Azure zásobníku [aktualizovat 1802](azure-stack-update-1802.md) před instalací aktualizace 1803 zásobník Azure.   
+- Instalace služby Azure Stack [aktualizace 1802](azure-stack-update-1802.md) před instalací aktualizace Azure Stack 1803.   
 
-- Nainstalujte **opravu AzS Hotfix – 1.0.180312.1-sestavení 20180222.2** před instalací aktualizace 1803 zásobník Azure. Tato oprava hotfix aktualizace programu Windows Defender a je k dispozici při stahování aktualizací pro Azure zásobníku.
+- Nainstalujte **opravu AzS Hotfix – 1.0.180312.1-sestavení 20180222.2** před instalací aktualizace Azure Stack 1803. Tato oprava hotfix aktualizace programu Windows Defender a je k dispozici při stahování aktualizací pro Azure Stack.
 
-  Chcete-li nainstalovat opravu hotfix, postupujte podle běžné postupy pro [instalace aktualizací pro Azure zásobníku](azure-stack-apply-updates.md). Název aktualizace zobrazí jako **opravu AzS Hotfix – 1.0.180312.1**a obsahuje následující soubory: 
+  Pokud chcete nainstalovat opravu hotfix, postupujte podle běžné postupy pro [instalace aktualizací pro Azure Stack](azure-stack-apply-updates.md). Název aktualizace se zobrazí jako **opravu AzS Hotfix – 1.0.180312.1**a obsahuje následující soubory: 
     - PUPackageHotFix_20180222.2-1.exe
     - PUPackageHotFix_20180222.2-1.bin
     - Metadata.xml
 
-  Po nahrávání těchto souborů do účtu úložiště a kontejneru, spusťte instalaci z dlaždice aktualizace v portálu pro správu. 
+  Po odeslání těchto souborů do účtu úložiště a kontejner, spusťte instalaci z aktualizovat dlaždici v portálu pro správu. 
   
-  Na rozdíl od aktualizace zásobníku Azure instalací této aktualizace se nemění verzi Azure zásobníku. Pokud chcete potvrdit, instalaci této aktualizace, zobrazí se seznam **nainstalované aktualizace**.
+  Na rozdíl od aktualizace do služby Azure Stack instalace této aktualizace se nezmění na verzi služby Azure Stack. Pokud chcete potvrdit, tuto aktualizaci nenainstalujete, zobrazí se seznam **nainstalované aktualizace**.
 
 
 
 ### <a name="new-features"></a>Nové funkce 
-Tato aktualizace zahrnuje následující vylepšení a opravy pro Azure zásobníku.
+Tato aktualizace zahrnuje následující vylepšení a oprav pro službu Azure Stack.
 
-- **Aktualizace zásobníku Azure tajné klíče** – (účty a certifikáty). Další informace o správě tajných klíčů najdete v tématu [otočit tajné klíče v Azure zásobníku](azure-stack-rotate-secrets.md). 
+- **Aktualizace služby Azure Stack tajných klíčů** – (pro účty a certifikáty). Další informace o správě tajných kódů, najdete v části [otočit tajné kódy ve službě Azure Stack](azure-stack-rotate-secrets.md). 
 
-- <!-- 1914853 --> **Automatické přesměrování na HTTPS** při použití protokolu HTTP pro přístup na portály správce a uživatele. Toto vylepšení byla provedena na základě [UserVoice](https://feedback.azure.com/forums/344565-azure-stack/suggestions/32205385-it-would-be-great-if-there-was-a-automatic-redirec) zpětnou vazbu pro Azure zásobníku. 
+- <!-- 1914853 --> **Automatické přesměrování na HTTPS** při přístupu na portálech správce a uživatele pomocí protokolu HTTP. Toto vylepšení byla provedena na základě [UserVoice](https://feedback.azure.com/forums/344565-azure-stack/suggestions/32205385-it-would-be-great-if-there-was-a-automatic-redirec) zpětná vazba pro Azure Stack. 
 
-- <!-- 2202621  --> **Přístup na webu Marketplace** – nyní lze otevřít v Azure Marketplace zásobníku pomocí [+ nový](https://ms.portal.azure.com/#create/hub) možnost z v rámci portálů správců a uživatelů stejným způsobem jako v Azure portálů.
+- <!-- 2202621  --> **Přístup na webu Marketplace** – teď můžete otevřít na webu Marketplace Azure Stack pomocí [+ nová](https://ms.portal.azure.com/#create/hub) možnost v rámci portály správce a uživatele stejným způsobem jako v Azure Portal.
  
-- <!-- 2202621 --> **Azure monitorování** – zásobník Azure přidává [Azure monitorování](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor) na portály správců a uživatelů. To zahrnuje nové průzkumníci pro protokoly metriky a aktivity. Toto monitorování Azure přístup z externí sítě, port **13012** musí být otevřený v konfiguraci brány firewall. Další informace o porty vyžadované službou Azure zásobníku najdete v tématu [zásobník Azure datacenter integrace - Publikování koncové body](azure-stack-integrate-endpoints.md).
+- <!-- 2202621 --> **Azure Monitor** – přidá Azure Stack [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor) pro správce a uživatele portálů. To zahrnuje nové průzkumníci pro metrik a protokolů aktivit. Pro přístup k této Azure Monitor z externích sítí, port **13012** musí být otevřený v konfiguraci brány firewall. Další informace o porty vyžadované službou Azure Stack najdete v tématu [integrace datových center Azure Stack – publikování koncových bodů](azure-stack-integrate-endpoints.md).
 
-   Také jako součást tohoto změnit, v části **další služby**, *protokoly auditu* nyní se zobrazí jako *protokoly aktivity*. Funkce je nyní konzistentní s portálem Azure. 
+   Také jako součást tohoto změnit, v části **další služby**, *protokoly auditu* se teď zobrazí jako *protokoly aktivit*. Funkce je teď konzistentní vzhledem k aplikacím pomocí webu Azure portal. 
 
-- <!-- 1664791 --> **Zhuštěné soubory** – když přidáte novou bitovou kopii do protokolů Azure nebo přidat bitovou kopii prostřednictvím marketplace syndikace bitovou kopii je převeden do zhuštěného souboru. Bitové kopie, které byly přidány před použitím Azure zásobníku verze 1803 nelze převést. Místo toho musíte použít marketplace syndikace odeslat znovu tyto bitové kopie využít této funkce. 
+- <!-- 1664791 --> **Zhuštěné soubory** – při přidání nové image do služby Azure Stack, nebo přidat bitovou kopii prostřednictvím webu marketplace syndikace image je převeden do zhuštěného souboru. Bitové kopie, které byly přidány před použitím služby Azure Stack verze 1803 nelze převést. Místo toho musíte použít syndikace marketplace se znovu spustit těchto imagí, abyste mohli využít tuto funkci. 
  
-   Zhuštěné soubory jsou efektivní formátu použít ke snížení využití prostoru úložiště a zlepšit vstupně-výstupní operace.  Další informace najdete v tématu [Fsutil zhuštěných](https://docs.microsoft.com/windows-server/administration/windows-commands/fsutil-sparse) pro systém Windows Server. 
+   Zhuštěné soubory jsou efektivní formátu použít ke snížení využití prostoru úložiště a zlepšit vstupně-výstupních operací.  Další informace najdete v tématu [Fsutil zhuštěné](https://docs.microsoft.com/windows-server/administration/windows-commands/fsutil-sparse) pro systém Windows Server. 
 
 ### <a name="fixed-issues"></a>Opravené problémy
 
-- <!-- 1739988 --> Interní Vyrovnávání zatížení (ILB) nyní správně zpracovává adresy MAC u virtuálních počítačů v back-end, což způsobí, že ILB odpojení pakety na back endovou síť při použití instance systému Linux na síť back-end. ILB funguje bez problémů s instancí systému Windows na back endovou síť. 
+- <!-- 1739988 --> Interní Vyrovnávání zatížení (ILB) nyní správně zpracovává adresy MAC pro virtuální počítače s back-end, což způsobí, že nástroje pro vyrovnávání zatížení při použití Linuxu instancí na back endovou síť vyřadit pakety do back endovou síť. ILB funguje bez problémů s instancí Windows na back endovou síť. 
 
-- <!-- 1805496 --> Problém kde by se připojení VPN mezi Azure zásobníku odpojeny z důvodu zásobník Azure pomocí různých nastavení pro IKE zásady než Azure. Hodnoty SALifetime (čas) a SALiftetime (bajty) není kompatibilní s Azure a změnily v 1803 tak, aby odpovídaly nastavení Azure. Hodnota SALifetime (v sekundách) před 1803 bylo v 1803 14 400 baudů a nyní změny 27 000. Hodnota pro SALifetime (bajty) před 1803 byla 819,200 a změny 33,553,408 v 1803.
+- <!-- 1805496 --> Chyby, kde by se připojení VPN mezi Azure Stack odpojen z důvodu Azure Stack pomocí různých nastavení pro zásady protokolu IKE než Azure. Hodnoty SALifetime (čas) a SALiftetime (v bajtech) nejsou kompatibilní s Azure a jste změnili ve verzi 1803 tak, aby odpovídaly nastavení Azure. Hodnota pro SALifetime (v sekundách) před 1803 byla ve verzi 1803 14 400 fakturovatelných a nyní změny 27 000. Byla zadána hodnota pro SALifetime (v bajtech) před 1803 819,200 a změny ve verzi 1803 33,553,408.
 
-- <!-- 2209262 --> Problém IP, kde je připojení k síti VPN dříve viditelné v portálu. povolení nebo nastavením předávání IP adres ale nemá žádný vliv. Tato funkce zapnutá ve výchozím nastavení a umožňuje změnit to není dosud podporován.  Ovládací prvek byla odebrána z portálu. 
+- <!-- 2209262 --> Problém IP, kde bylo dříve vidět na portálu; připojení k síti VPN povolení a přepínání předávání IP adres ale nemá žádný vliv. Funkce je zapnutá ve výchozím nastavení a změnit to ještě není podporovaný.  Ovládací prvek byl odebrán z portálu. 
 
-- <!-- 1766332 --> Azure zásobník nepodporuje zásady na základě brány sítě VPN, i když možnost se zobrazí na portálu.  Možnost byla odebrána z portálu. 
+- <!-- 1766332 --> Azure Stack nepodporuje zásady na základě brány sítě VPN, přestože možnost se zobrazí na portálu.  Možnost byla odebrána z portálu. 
 
-- <!-- 1868283 --> Azure zásobníku teď zabraňuje, změnu velikosti virtuálního počítače, který je vytvořen s dynamickými disky. 
+- <!-- 1868283 --> Azure Stack nyní brání, změna velikosti virtuálního počítače, který je vytvořen s dynamickými disky. 
 
-- <!-- 1756324 --> Data o využití pro virtuální počítače je teď oddělená v hodinových intervalech. To je konzistentní s Azure. 
+- <!-- 1756324 --> Data o využití pro virtuální počítače je teď rozdělený v hodinových intervalech. To je konzistentní s Azure. 
 
-- <!--  2253274 --> Problém kde v portálů správců a uživatelů v okně nastavení pro virtuální síť podsítě nepodaří načíst. Jako alternativní řešení, pomocí prostředí PowerShell a [Get-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermvirtualnetworksubnetconfig?view=azurermps-5.5.0) rutiny zobrazit a spravovat tyto informace.
+- <!--  2253274 --> Problém kde portálech správce a uživatele v okně Nastavení podsítě virtuální sítě se nepodaří načíst. Jako alternativní řešení, pomocí prostředí PowerShell a [Get-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermvirtualnetworksubnetconfig?view=azurermps-5.5.0) rutina pro zobrazení a správa těchto informací.
 
-- Když vytvoříte virtuální počítač, zprávu *nejde zobrazit ceny* už se zobrazí při výběru velikost pro velikost virtuálního počítače.
+- Když vytvoříte virtuální počítač, zprávu *nejde zobrazit ceny* už se zobrazí při výběru velikosti pro velikost virtuálního počítače.
 
-- Různé opravy pro výkon, stabilitu, zabezpečení a operační systém, který je používán zásobník Azure.
+- Různé opravy pro výkon, stability, zabezpečení a operační systém, který se používá ve službě Azure Stack.
 
 
 ### <a name="changes"></a>Změny
-- Způsob, jak změnit stav na nově vytvořený nabídku z *privátní* k *veřejné* nebo *vyřazení* došlo ke změně. Další informace najdete v tématu [vytvořit nabídku](azure-stack-create-offer.md).
+- Způsob, jak změnit stav nabídku na nově vytvořený z *privátní* k *veřejné* nebo *Vyřazená z provozu* došlo ke změně. Další informace najdete v tématu [vytvořte nabídku](azure-stack-create-offer.md).
 
 
 ### <a name="known-issues-with-the-update-process"></a>Známé problémy s proces aktualizace    
-<!-- 2328416 --> Během instalace aktualizace 1803 může být výpadek služby objektů blob a interních služeb, které používají služby objektů blob. To zahrnuje některé operace virtuálního počítače. To výpadek může způsobit chyby klienta operace nebo výstrahy ze služeb, které nelze získat přístup k datům. Tento problém vyřeší sám po dokončení instalace aktualizace. 
+<!-- 2328416 --> Během instalace aktualizace 1803 může být výpadek služby blob service a interních služeb, které používají službu blob service. To zahrnuje některé operace virtuálního počítače. Toto časové prodlevy může způsobit chyby tenanta operations Console nebo výstrahy ze služeb, které nemůžou přistupovat k datům. Tento problém vyřeší sám po dokončení instalace aktualizace. 
 
 
 
 ### <a name="post-update-steps"></a>Postup po aktualizaci
-- Po instalaci 1803 nainstalujte všechny použitelné opravy hotfix. Další informace naleznete v následujících článcích znalostní báze knowledge base, a také naše [obsluhy zásad](azure-stack-servicing-policy.md).
+- Po dokončení instalace 1803 nainstalujte všechny příslušné opravy hotfix. Další informace naleznete následující články znalostní báze, stejně jako naše [zásady obsluhy](azure-stack-servicing-policy.md).
 
-  - [KB 4341390 - oprava Hotfix Azure zásobníku 1.0.180424.12](https://support.microsoft.com/en-us/help/4341390).
+  - [KB 4344115 – oprava Hotfix Azure Stack 1.0.180427.15](https://support.microsoft.com/help/4344115).
 
-- Po instalaci této aktualizace, zkontrolujte konfiguraci brány firewall zajistit [nezbytné porty](azure-stack-integrate-endpoints.md) jsou otevřené. Například tato aktualizace zavádí *Azure monitorování* který zahrnuje změnu protokolů auditu na protokoly aktivity. Díky této změně portu 13012 se teď používá a je třeba také otevřít.  
+- Po instalaci této aktualizace, zkontrolujte konfiguraci brány firewall, aby [nezbytné porty](azure-stack-integrate-endpoints.md) jsou otevřené. Například tato aktualizace zavádí *Azure Monitor* což zahrnuje změnu protokolů auditu do protokolů aktivit. Díky této změně portu 13012 se teď používá a také je třeba otevřít.  
 
 
 ### <a name="known-issues-post-installation"></a>Známé problémy (po instalaci)
 Toto jsou známé problémy po instalaci pro sestavení **20180323.2**.
 
 #### <a name="portal"></a>Portál
-- <!-- 2332636 - IS -->  Při použití služby AD FS pro systém identit Azure zásobníku a aktualizace na tuto verzi Azure zásobníku, výchozí vlastník předplatného výchozí zprostředkovatel se resetuje do vestavěné **CloudAdmin** uživatele.  
-  Alternativní řešení: Chcete-li tento problém vyřešit, po instalaci této aktualizace, použijte krok 3 ze [automation aktivační události. ke konfiguraci vztahu důvěryhodnosti zprostředkovatele v zásobníku Azure deklarací](azure-stack-integrate-identity.md#trigger-automation-to-configure-claims-provider-trust-in-azure-stack-1) postup resetovat vlastníka předplatného výchozího zprostředkovatele.   
+- <!-- 2332636 - IS -->  Když používáte službu AD FS pro Azure Stack identitu systému a aktualizace pro tuto verzi sady Azure Stack, výchozí vlastník výchozí předplatné poskytovatele se resetují na předdefinované **CloudAdmin** uživatele.  
+  Alternativní řešení: Chcete-li tento problém vyřešit, po instalaci této aktualizace, použijte krok 3 ze [deklarací aktivování automatizace ke konfiguraci vztahu důvěryhodnosti zprostředkovatele ve službě Azure Stack](azure-stack-integrate-identity.md#trigger-automation-to-configure-claims-provider-trust-in-azure-stack-1) postup resetovat vlastníka výchozí předplatné poskytovatele.   
 
 - Možnost [otevřete novou žádost o podporu z rozevíracího seznamu](azure-stack-manage-portals.md#quick-access-to-help-and-support) z v rámci správce portálu není k dispozici. Místo toho použijte následující odkaz:     
-    - Pro Azure zásobníku integrované systémy, používat https://aka.ms/newsupportrequest.
+    - Pro službu Azure Stack integrované systémy, používat https://aka.ms/newsupportrequest.
 
-- <!-- 2050709 --> V portálu pro správu není možné upravit úložiště metriky pro služby objektů Blob, tabulka služby nebo služby front. Přejděte do úložiště, a potom vyberte objekt blob, tabulka nebo fronty služby dlaždice, otevře se nové okno zobrazující graf metriky pro tuto službu. Pokud pak vyberte Úpravy z horní části dlaždici grafu metriky, v okně upravit graf otevře, ale nezobrazí možnost upravit metriky.
+- <!-- 2050709 --> V portálu pro správu není možné upravit metrik úložiště pro službu Blob service, služba Table service nebo služby front. Když účtu služby Storage a potom vyberte objekt blob, tabulky nebo fronty služby dlaždice, otevře se nové okno, která zobrazuje graf metrik za danou službu. Pokud pak vyberete Úpravy od horního okraje grafu dlaždice metrik, v okně upravit graf se otevře, ale nezobrazuje možnost upravit metriky.
 
-- Nemusí být možné zobrazit úložiště nebo výpočetní prostředky na portálu správce. Příčinou tohoto problému je k chybě při instalaci aktualizace, která způsobí, že aktualizace, která se nesprávně hlásit jako úspěšné. Pokud chcete tento problém opakuje, obraťte se na technickou podporu společnosti Microsoft pro pomoc.
+- Nemusí být možné zobrazit na portálu správce prostředků výpočetního výkonu a úložiště. Příčinou tohoto problému je chyba při instalaci aktualizace, která způsobí, že aktualizace, která se správně hlášené jako úspěšně dokončený. Pokud k tomuto problému dochází, obraťte se na zákaznické podpory Microsoftu o pomoc.
 
-- Může se zobrazit prázdný řídicí panel portálu. Chcete-li obnovit řídicí panel, vyberte ikonu ozubené kolečko v pravém horním rohu portálu a pak vyberte **obnovit výchozí nastavení**.
+- Může se zobrazit prázdný řídicí panel portálu. Obnovit řídicí panel, vyberte ikonu ozubeného kolečka v pravém horním rohu portálu a pak vyberte **obnovit výchozí nastavení**.
 
-- Odstranění odběrů uživatele za následek osamocené prostředky. Jako alternativní řešení nejprve odstraňte prostředky uživatele nebo skupinu celý prostředků a potom odstraňte odběry uživatele.
+- Odstraňuje se předplatné uživatele za následek osamocené prostředky. Jako alternativní řešení nejprve odstranit prostředky uživatele nebo celou skupinu prostředků a pak odstraňte předplatná uživatelů.
 
-- Nelze zobrazit oprávnění k vašemu předplatnému používání portálů zásobník Azure. Jako alternativní řešení ověřte oprávnění pomocí prostředí PowerShell.
+- Nelze zobrazit oprávnění k předplatnému pomocí na portálech Azure Stack. Jako alternativní řešení pomocí prostředí PowerShell mohl ověřit oprávnění.
 
-- V řídicím panelu portálu pro správu se nezdaří aktualizace dlaždice zobrazíte informace o aktualizacích. Chcete-li vyřešit tento problém, klikněte na dlaždici jej aktualizovat.
+- Na řídicím panelu portálu pro správu aktualizovat dlaždici selže k zobrazení informací o aktualizacích. Chcete-li vyřešit tento problém, kliknutím na dlaždici ji aktualizovat.
 
-- V portálu pro správu, můžete se setkat kritickou výstrahu pro *Microsoft.Update.Admin* součásti. Název výstrahy, popis a nápravu všech zobrazit jako:  
-    - *Chyba: šablonu pro FaultType ResourceProviderTimeout nebyl nalezen.*
+- V portálu pro správu, může se zobrazit kritickou výstrahu pro *Microsoft.Update.Admin* komponenty. Název výstrahy, popis a nápravu všech zobrazit jako:  
+    - *Chyba: chybí šablona pro FaultType ResourceProviderTimeout.*
 
-  Tuto výstrahu můžete ignorovat. 
+  Toto upozornění můžete ignorovat. 
 
 
-#### <a name="health-and-monitoring"></a>Sledování stavu a
-- <!-- 1264761 - IS ASDK -->  Může se zobrazit výstrahy *stavu řadiče* součásti, které mají následující podrobnosti:  
+#### <a name="health-and-monitoring"></a>Monitorování stavu a
+- <!-- 1264761 - IS ASDK -->  Může se zobrazit upozornění *stavu řadiče* komponenta, která mají následující podrobnosti:  
 
-   Výstrahy #1:
-   - Název: Infrastruktury role není v pořádku
+   Upozornění #1:
+   - Název: Infrastrukturu role není v pořádku
    - ZÁVAŽNOST: upozornění
-   - SOUČÁSTÍ: Řízení stavu
-   - Popis: Řadičem stavu prezenčního signálu skener není k dispozici. To může ovlivnit sestavy o stavu a metrik.  
+   - KOMPONENTY: Kontroler stavu
+   - Popis: Kontroler stavu prezenčního signálu skener není k dispozici. To může mít vliv sestav o stavu a metriky.  
 
-  Výstrahy #2:
-   - Název: Infrastruktury role není v pořádku
+  Upozornění #2:
+   - Název: Infrastrukturu role není v pořádku
    - ZÁVAŽNOST: upozornění
-   - SOUČÁSTÍ: Řízení stavu
-   - Popis: Řadičem stavu skener chyby není k dispozici. To může ovlivnit sestavy o stavu a metrik.
+   - KOMPONENTY: Kontroler stavu
+   - Popis: Stav řadiče skener selhání není k dispozici. To může mít vliv sestav o stavu a metriky.
 
-  Obě výstrahy můžete bezpečně ignorovat. Se automaticky zavře v čase.  
+  Obě výstrahy můžete bezpečně ignorovat. Zavře se automaticky v čase.  
 
 
 #### <a name="marketplace"></a>Marketplace
-- Uživatelé mohou procházet na kompletní nabídku marketplace bez předplatného a uvidí položky pro správu jako plány a nabízí. Tyto položky jsou pro uživatele funkční.
+- Uživatelům můžete přejít na kompletní nabídku marketplace bez předplatného a vidí správce různé věci, třeba plány a nabídky. Tyto položky jsou pro uživatele nefunkční.
 
 
 
 #### <a name="compute"></a>Compute
-- Nastavení škálování pro sady škálování virtuálního počítače nejsou k dispozici na portálu. Jako alternativní řešení, můžete použít [prostředí Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set). Z důvodu rozdílů verze prostředí PowerShell, je nutné použít `-Name` parametr místo `-VMScaleSetName`.
+- Nastavení škálování pro škálovací sady virtuálních počítačů nejsou k dispozici na portálu. Jako alternativní řešení můžete použít [prostředí Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set). Z důvodu rozdíly mezi verzemi prostředí PowerShell, je nutné použít `-Name` parametr namísto `-VMScaleSetName`.
 
-- Když vytvoříte sadu na portálu přejděte na dostupnosti **nový** > **výpočetní** > **sadu dostupnosti**, můžete vytvořit pouze skupiny dostupnosti s doména selhání a aktualizace domény 1. Jako řešení, při vytváření nového virtuálního počítače, vytvořte skupinu dostupnosti pomocí prostředí PowerShell, rozhraní příkazového řádku, nebo v portálu.
+- Při vytváření skupiny dostupnosti na portálu nastavit tak, že přejdete do **nový** > **Compute** > **dostupnosti**, můžete vytvořit pouze doména selhání a aktualizační doména 1 skupinu dostupnosti. Alternativním řešením je při vytváření nového virtuálního počítače, vytvořte dostupnosti pomocí Powershellu, rozhraní příkazového řádku, nebo v rámci portálu.
 
-- Když vytvoříte virtuální počítače na portálu pro uživatele Azure zásobníku, portál zobrazí nesprávný počet datových disků, které můžete připojit do série D virtuálních počítačů. Všechny podporované řady D virtuální počítače zvládne tolik datových disků jako konfiguraci Azure.
+- Při vytváření virtuálních počítačů na portálu user portal Azure Stack na portálu zobrazuje nesprávný počet datových disků, které můžete připojit k virtuální počítač řady D series. Všechny podporované řady D series virtuálních počítačů může obsahovat libovolný počet datových disků jako konfiguraci Azure.
 
-- Když image virtuálního počítače se nepodaří vytvořit, položku se nezdařilo, nelze odstranit, mohou být přidány do okna výpočetní Image virtuálního počítače.
+- Selhání vytvoření image virtuálního počítače neúspěšné položky, který se nedá odstranit, mohou být přidány do okna výpočetní Image virtuálního počítače.
 
-  Jako alternativní řešení, vytvořte novou bitovou kopii virtuálního počítače s fiktivní virtuální pevný disk vytvořený pomocí technologie Hyper-V (nový virtuální pevný disk-C:\dummy.vhd cesta-Fixed – SizeBytes 1 GB). Tento proces by měla potíže vyřešit, která zabraňuje odstranění položky se nezdařilo. Potom 15 minut po vytvoření fiktivní bitovou kopii, chcete-li úspěšně odstranit.
+  Jako alternativní řešení vytvořte nové image virtuálního počítače s fiktivní virtuálního pevného disku, který je možné vytvářet přes Hyper-V (nový virtuální pevný disk-C:\dummy.vhd cesta-oprava SizeBytes – 1 GB). Tento proces by měla vyřešit problém, který zabraňuje odstranění položky. Pak 15 minut po vytvoření fiktivní image můžete úspěšně ho odstranit.
 
-  Potom můžete zkusit redownload image virtuálního počítače, který předtím selhal.
+  Potom můžete zkusit znovu stáhněte image virtuálního počítače, která původně selhala.
 
--  Pokud zřizování rozšíření na nasazení virtuálního počítače trvá příliš dlouho, uživatelé měli nechat zřizování časový limit namísto pokusu o zastavení procesu navrácení nebo odstranění virtuálního počítače.  
+-  Pokud zřizování rozšíření na nasazení virtuálního počítače trvá příliš dlouho, uživatelé měli nechat zřizování vypršení časového limitu namísto pokusu o zastavení procesu uvolnění nebo odstranění virtuálního počítače.  
 
-- <!-- 1662991 --> Diagnostika virtuálních počítačů Linux není podporována v zásobníku Azure. Při nasazení virtuálního počítače s Linuxem pomocí diagnostiky virtuálních počítačů, které jsou povolené, nasazení se nezdaří. Nasazení se také nezdaří, pokud povolíte základní metriky virtuálního počítače s Linuxem pomocí nastavení pro diagnostiku.  
+- <!-- 1662991 --> Diagnostika virtuálních počítačů Linux není podporována ve službě Azure Stack. Při nasazení virtuálního počítače s Linuxem s povolenou diagnostikou virtuálního počítače, nasazení se nezdaří. Nasazení se také nezdaří, pokud povolíte základní metriky virtuálního počítače s Linuxem prostřednictvím nastavení diagnostiky.  
 
 
 #### <a name="networking"></a>Sítě
-- Po vytvoření virtuálního počítače a související s veřejnou IP adresu, nelze zrušit přidružení tohoto virtuálního počítače z této IP adresy. Zrušení pravděpodobně fungovat, ale pořád přidruženy původní virtuální počítač dříve přiřazenou veřejnou IP adresu.
+- Po vytvoření virtuálního počítače a přidružené k veřejné IP adresy, nelze zrušit přidružení tohoto virtuálního počítače z této IP adresy. Zrušení přidružení zdánlivě fungovat, ale zůstane spojená s původní virtuální počítač dříve přiřazenou veřejnou IP adresu.
 
-  V současné době používejte pouze nové veřejné IP adresy pro nové virtuální počítače, které vytvoříte.
+  V současné době používaly pouze nové veřejné IP adresy pro nové virtuální počítače, které vytvoříte.
 
-  K tomuto chování dochází i v případě, že je přiřadit IP adresu na nový virtuální počítač (obvykle označuje jako *prohození*). Všechny budoucí pokusy o připojení přes tuto IP adresu povede připojení do původně přidružený virtuální počítač a ne do nového.
+  K tomuto chování dochází i v případě, že znovu přiřadit IP adresu do nového virtuálního počítače (obvykle označované jako *prohození virtuálních IP adres*). Všechny budoucí pokusy o připojení přes tuto IP adresu výsledkem připojení do původně přidružený virtuální počítač a ne do nového.
 
 
 
-- Azure zásobníku podporuje jediný *brány místní sítě* podle IP adresy. To platí ve všech předplatných klienta. Po vytvoření první místní síťové brány připojení, další pokusy o vytvoření prostředku brány místní sítě se stejnou adresou IP jsou blokovány.
+- Azure Stack podporuje jediný *bránu místní sítě* na IP adresu. To platí ve všech předplatných tenanta. Po vytvoření první místní síťové brány připojení, následné pokusech o vytvoření prostředku brány místní sítě pomocí stejné IP adresy jsou zablokované.
 
-- Ve virtuální síti, který byl vytvořen s nastavením serveru DNS *automatické*, změna na vlastní selhání serveru DNS. Aktualizované nastavení nejsou nabídnutých do virtuálních počítačů v této virtuální sítě.
+- Ve virtuální síti, který byl vytvořen s nastavením serveru DNS *automatické*, změna vlastní selhání serveru DNS. Aktualizované nastavení nenasdílí do virtuálních počítačů v dané virtuální síti.
 
-- Azure zásobník nepodporuje přidávání dalších síťových rozhraní do instance virtuálního počítače po nasazení virtuálního počítače. Pokud virtuální počítač vyžaduje více než jedno síťové rozhraní, musí být definován v době nasazení.
+- Azure Stack nepodporuje přidávání další síťová rozhraní k instanci virtuálního počítače po nasazení virtuálního počítače. Pokud virtuální počítač vyžaduje více než jedno síťové rozhraní, musí být definován v době nasazení.
 
-- <!-- 2096388 --> Portál pro správu nelze použít k aktualizaci pravidla pro skupinu zabezpečení sítě. 
+- <!-- 2096388 --> Na portálu pro správu nelze použít k aktualizaci pravidel pro skupiny zabezpečení sítě. 
 
-    Alternativní řešení pro službu App Service: Pokud potřebujete vzdálenou plochu instance řadiče, můžete upravit pravidla zabezpečení v rámci skupiny zabezpečení sítě pomocí prostředí PowerShell.  Následují příklady *povolit*a potom obnovte konfiguraci *Odepřít*:  
+    Alternativní řešení pro službu App Service: Pokud je potřeba k instance Kontroleru pomocí vzdálené plochy, upravte pravidla zabezpečení v rámci skupiny zabezpečení sítě pomocí Powershellu.  Níže jsou příklady toho, jak *povolit*a potom obnovit konfiguraci tak, aby *Odepřít*:  
     
     - *Povolte:*
  
@@ -260,30 +260,30 @@ Toto jsou známé problémy po instalaci pro sestavení **20180323.2**.
 
 
 #### <a name="sql-and-mysql"></a>SQL a MySQL
-- Než budete pokračovat, zkontrolujte důležité upozornění v [před zahájením](#before-you-begin) téměř začátek tyto poznámky k verzi.
+- Než budete pokračovat, přečtěte si také důležitou poznámku v [před zahájením](#before-you-begin) dříve v těchto poznámkách k verzi.
 
-- Může trvat až jednu hodinu, než uživatelé mohou vytvářet databází v nové nasazení SQL nebo MySQL.
+- Může trvat až jednu hodinu, než se uživatelé můžou vytvářet databáze v nové nasazení SQL nebo MySQL.
 
-- Vytvoření položek na serverech, že hostitel SQL nebo MySQL je podporována pouze poskytovatele prostředků. Položky vytvořené na hostitelském serveru, které nebyly vytvořeny pomocí poskytovatele prostředků může mít za následek neodpovídající stavu.  
+- Vytvoření položek na serverech, daný hostitel SQL nebo MySQL se podporuje jenom poskytovatele prostředků. Neodpovídající stavu může dojít položky vytvořené na hostitelském serveru, které nebyly vytvořeny pomocí zprostředkovatele prostředků.  
 
-- <!-- IS, ASDK --> Speciální znaky, včetně mezery a tečky, nejsou podporovány v **rodiny** název při vytváření SKU pro poskytovatele prostředků SQL a databáze MySQL.
+- <!-- IS, ASDK --> Speciální znaky, mezery a tečky, včetně nepodporuje **řady** název při vytváření SKU pro poskytovatele prostředků SQL nebo MySQL.
 
 > [!NOTE]  
-> Po provedení aktualizace na 1803 zásobník Azure, můžete nadále používat zprostředkovatele prostředků SQL a MySQL, které jste předtím nasadili.  Doporučujeme, abyste že aktualizujete SQL a MySQL, když je dostupná nová verze. Zásobník Azure, jako je aktualizace pro poskytovatele prostředků SQL a MySQL postupně.  Pokud používáte verzi 1711, nejprve použít verzi 1712 pak 1802 a potom aktualizovat 1803.      
+> Po aktualizaci na verzi 1803 Azure Stack, můžete dál používat poskytovatele prostředků SQL nebo MySQL, které jste předtím nasadili.  Doporučujeme, abyste že aktualizujete SQL nebo MySQL, až bude dostupná nová verze. Jako je Azure Stack použití aktualizací pro poskytovatele prostředků SQL nebo MySQL postupně.  Pokud používáte verzi 1711, nejprve použít verzi 1712 pak 1802 a následně neaktualizují na verzi 1803.      
 >   
-> Instalace aktualizace 1803 nemá vliv na aktuální použití funkce SQL nebo MySQL poskytovatelů prostředků, které vaši uživatelé.
-> Bez ohledu na verzi poskytovateli prostředků, které používáte vaše data uživatelů v své databáze není dotyku a zůstávají dostupné.    
+> Instalace aktualizace 1803 nemá vliv na aktuální použití funkce poskytovatele prostředků SQL nebo MySQL vašich uživatelů.
+> Bez ohledu na verzi poskytovatele prostředků, které můžete použít vaše data uživatelů ve své databáze není dokázal a zůstala přístupná.    
 
 
 
 #### <a name="app-service"></a>App Service
 - Uživatelé musí registrovat poskytovatele prostředků úložiště, dřív, než vytvoří jejich první funkce Azure v rámci předplatného.
 
-- Aby bylo možné škálovat infrastrukturu (pracovních procesů, správy, front-end rolí), musíte použít PowerShell, jak je popsáno v poznámkách k verzi pro výpočet.
+- Aby bylo možné horizontální navýšení kapacity infrastruktury (pracovních procesů, správy, role front-endu), musíte použít PowerShell, jak je popsáno v poznámkách k verzi pro výpočetní prostředky.
 
 
 #### <a name="usage"></a>Využití  
-- Využití veřejné IP adresy využití měření data zobrazují stejné *EventDateTime* hodnotu pro každý záznam místo *TimeDate* razítka, který ukazuje vytvoření záznamu. Tato data v současné době nelze použít pro monitorování přesné veřejnou IP adresu využití.
+- Data o využití veřejné IP adresy využití měřičů zobrazuje stejné *EventDateTime* hodnotu pro každý záznam místo *TimeDate* razítko, které ukazuje, kdy se záznam vytvořil. V současné době nelze pomocí těchto dat pro monitorování přesné použití veřejné IP adresy.
 
 <!--
 #### Identity
@@ -291,20 +291,20 @@ Toto jsou známé problémy po instalaci pro sestavení **20180323.2**.
 
 
 
-#### <a name="downloading-azure-stack-tools-from-github"></a>Stažení nástroje Azure zásobníku z Githubu
-- Při použití *vyvolání webrequest* rutiny prostředí PowerShell ke stažení protokolů Azure nástroje z Githubu, obdržíte chybu:     
-    -  *vyvolání webrequest: požadavek byl přerušen: Nelze vytvořit zabezpečený kanál SSL/TLS.*     
+#### <a name="downloading-azure-stack-tools-from-github"></a>Stažení nástroje pro Azure Stack z Githubu
+- Při použití *invoke-webrequest* rutina prostředí PowerShell pro stažení služby Azure Stack nástroje z Githubu, zobrazí chybová zpráva:     
+    -  *Invoke-webrequest: požadavek byl přerušen: Nelze vytvořit zabezpečený kanál SSL/TLS.*     
 
-  K této chybě dochází z důvodu poslední zastaralá podpora Githubu Tlsv1 a Tlsv1.1 kryptografických standardů (výchozí nastavení pro prostředí PowerShell). Další informace najdete v tématu [slabé kryptografické standardy odebrání oznámení](https://githubengineering.com/crypto-removal-notice/).
+  K této chybě dochází z důvodu poslední vyřazení Githubu podporu protokolu Tlsv1 a Tlsv1.1 kryptografických standardů (výchozí nastavení pro prostředí PowerShell). Další informace najdete v tématu [slabé kryptografické standardy odebrání oznámení](https://githubengineering.com/crypto-removal-notice/).
 
-  Chcete-li vyřešit tento problém, přidejte `[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12` do horní části skript, který chcete vynutit konzole PowerShell pro stahování z úložiště Githubu TLSv1.2.
+  Chcete-li tento problém vyřešit, přidejte `[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12` do horní části souboru, který chcete vynutit konzole Powershellu použít TLSv1.2 při stahování z úložišť GitHub.
 
 
-## <a name="download-the-update"></a>Stažení aktualizace
-Můžete si stáhnout balíček aktualizace 1803 zásobník Azure z [zde](https://aka.ms/azurestackupdatedownload).
+## <a name="download-the-update"></a>Stáhnout aktualizaci.
+Můžete stáhnout aktualizace balíčku Azure Stack 1803 z [tady](https://aka.ms/azurestackupdatedownload).
 
 
 ## <a name="see-also"></a>Další informace najdete v tématech
-- Použití privilegovaných koncového bodu (období) ke sledování a obnovit aktualizací naleznete v části [monitorování aktualizací v zásobníku Azure pomocí privilegované koncový bod](azure-stack-monitor-update.md).
-- Přehled správy aktualizací v zásobníku Azure najdete v tématu [správě aktualizací v přehledu Azure zásobníku](azure-stack-updates.md).
-- Další informace o tom, jak použít aktualizace se zásobníkem Azure najdete v tématu [aktualizace v zásobníku Azure](azure-stack-apply-updates.md).
+- Privilegované koncový bod (období) použít ke sledování a obnovit aktualizace, najdete v článku [monitorování aktualizací ve službě Azure Stack pomocí privilegovaných koncového bodu](azure-stack-monitor-update.md).
+- Přehled správy aktualizací ve službě Azure Stack najdete v tématu [správy aktualizací ve službě Azure Stack přehled](azure-stack-updates.md).
+- Další informace o tom, jak použít aktualizace pomocí služby Azure Stack najdete v tématu [použití aktualizací ve službě Azure Stack](azure-stack-apply-updates.md).

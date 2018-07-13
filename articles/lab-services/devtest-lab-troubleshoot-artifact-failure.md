@@ -1,6 +1,6 @@
 ---
-title: Diagnostikování selhání artefaktů na virtuálním počítači Azure DevTest Labs | Microsoft Docs
-description: Informace o řešení potíží s artefaktů selhání v Azure DevTest Labs.
+title: Diagnostikování selhání artefaktů ve virtuálním počítači s Azure DevTest Labs | Dokumentace Microsoftu
+description: Informace o řešení potíží se selháním artefaktů ve službě Azure DevTest Labs.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -15,48 +15,48 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: ebc64215683989ce07f4dd88dc352ecaefe184cd
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788722"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38697268"
 ---
 # <a name="diagnose-artifact-failures-in-the-lab"></a>Diagnostikování selhání artefaktů v testovacím prostředí 
-Po vytvoření artefakt můžete můžete zkontrolujte, zda byla úspěšná nebo neúspěšná. Protokoly artefaktů v Azure DevTest Labs poskytují informace, které můžete použít k diagnostikování selhání artefaktů. Máte několik možností pro zobrazení informací protokolu artefaktů pro virtuální počítač s Windows:
+Po vytvoření artefakt je můžete zkontrolovat, zda bylo úspěšné nebo neúspěšné. Protokoly artefaktů ve službě Azure DevTest Labs obsahují informace, které vám umožní diagnostikovat selhání artefaktů. Máte několik možností pro zobrazení informací o protokolu artefaktů pro virtuální počítač s Windows:
 
-* Na portálu Azure
+* Na webu Azure Portal
 * Ve virtuálním počítači
 
 > [!NOTE]
-> Zajistit, že chyby jsou správně identifikovat a vysvětlení, je důležité, aby artefaktu má správnou strukturu. Informace o tom, jak správně vytvořit artefakt najdete v tématu [vytvoření vlastních artefaktů](devtest-lab-artifact-author.md). Pokud chcete zobrazit příklad správně strukturovaný artefaktů, podívejte se [testování typy parametrů](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts/windows-test-paramtypes) artefaktů.
+> Zajistíte, že chyby jsou správně identifikovat a vysvětlení, je důležité, že artefakt má správnou strukturu. Informace o tom, jak správně vytvořit artefakt najdete v tématu [při vytváření vlastních artefaktů](devtest-lab-artifact-author.md). K prohlédnutí příkladu správně strukturovaný artefaktu, podívejte se [testování typy parametrů](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts/windows-test-paramtypes) artefaktů.
 
-## <a name="troubleshoot-artifact-failures-by-using-the-azure-portal"></a>Řešení potíží artefaktů selhání pomocí portálu Azure
+## <a name="troubleshoot-artifact-failures-by-using-the-azure-portal"></a>Řešení potíží se selháním artefaktů pomocí webu Azure portal
 
-1. Na portálu Azure v seznamu prostředků vyberte testovacího prostředí.
-2. Vyberte virtuální počítač Windows, který zahrnuje artefaktu, který chcete prozkoumat.
-3. V levém panelu klikněte v části **Obecné**, vyberte **artefakty**. Zobrazí se seznam artefakty související s tohoto virtuálního počítače. Název artefaktu a stav artefaktů jsou vypsány.
+1. Na webu Azure Portal, v seznamu prostředků vyberte testovacího prostředí.
+2. Vyberte virtuální počítač Windows, který obsahuje artefakt, který chcete prozkoumat.
+3. V levém panelu klikněte v části **Obecné**vyberte **artefakty**. Zobrazí se seznam artefakty přidružené k tomuto virtuálnímu počítači. Název artefaktu a stav artefaktů jsou uvedeny.
 
-   ![Stav artefaktů](./media/devtest-lab-troubleshoot-artifact-failure/devtest-lab-artifacts-failure.png)
+   ![Stav artefaktu](./media/devtest-lab-troubleshoot-artifact-failure/devtest-lab-artifacts-failure.png)
 
-4. Vyberte artefakt, který ukazuje **se nezdařilo** stavu. Otevře se artefakt. Se zobrazí zpráva rozšíření, která obsahuje podrobnosti o selhání artefaktu.
+4. Vyberte artefakt, který ukazuje **neúspěšné** stav. Otevře se artefakt. Zobrazí se zpráva rozšíření, která obsahuje podrobnosti o chybě artefaktu.
 
-   ![Artefaktů chybová zpráva](./media/devtest-lab-troubleshoot-artifact-failure/devtest-lab-artifact-error.png)
+   ![Chybová zpráva artefaktu](./media/devtest-lab-troubleshoot-artifact-failure/devtest-lab-artifact-error.png)
 
 
-## <a name="troubleshoot-artifact-failures-from-within-the-virtual-machine"></a>Řešení potíží s selhání artefaktů z virtuálního počítače
+## <a name="troubleshoot-artifact-failures-from-within-the-virtual-machine"></a>Řešení potíží se selháním artefaktů z v rámci virtuálního počítače
 
-1. Přihlaste se k virtuálním počítači, který obsahuje artefaktů, které chcete diagnostikovat.
+1. Přihlaste se k virtuálnímu počítači, který obsahuje artefakt, který chcete diagnostikovat.
 2. Přejděte na C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\\*1.9*\Status, kde *1.9* je číslo verze rozšíření vlastních skriptů Azure.
 
    ![Stav souboru](./media/devtest-lab-troubleshoot-artifact-failure/devtest-lab-artifact-error-vm-status.png)
 
-3. Otevřete **stav** souboru.
+3. Otevřít **stav** souboru.
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## <a name="related-blog-posts"></a>Příspěvky blogu související
-* [Připojení virtuálního počítače do existující domény služby Active Directory pomocí šablony Resource Manageru v DevTest Labs](http://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs)
+## <a name="related-blog-posts"></a>Související blogové příspěvky
+* [Připojte se k virtuální počítač do existující domény služby Active Directory pomocí šablony Resource Manageru ve službě DevTest Labs](http://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs)
 
 ## <a name="next-steps"></a>Další postup
-* Zjistěte, jak [přidejte úložiště Git do testovacího prostředí](devtest-lab-add-artifact-repo.md).
+* Zjistěte, jak [přidání úložiště Git do testovacího prostředí](devtest-lab-add-artifact-repo.md).
 

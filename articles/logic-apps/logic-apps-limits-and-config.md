@@ -1,6 +1,6 @@
 ---
-title: Omezení a konfigurace – Azure Logic Apps | Microsoft Docs
-description: Služba omezení a hodnoty konfigurace pro Azure Logic Apps
+title: Omezení a konfigurace – Azure Logic Apps | Dokumentace Microsoftu
+description: Omezení služby a konfigurační hodnoty pro Azure Logic Apps
 services: logic-apps
 author: ecfan
 manager: jeconnoc
@@ -10,141 +10,141 @@ ms.date: 05/30/2018
 ms.service: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 2534210c903e77462ece91c577d731d9c8e3726f
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 8baca0fc46489a22d587ba6e742615b1da79c19a
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299711"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970223"
 ---
-# <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Omezení a informace o konfiguraci pro Azure Logic Apps
+# <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Omezení a konfigurační informace pro Azure Logic Apps
 
-Tento článek popisuje omezení a podrobnosti o konfiguraci pro vytváření a spouštění automatizované pracovní postupy službou Azure Logic Apps. Microsoft Flow, najdete v části [omezení a konfigurace v Microsoft Flow](https://docs.microsoft.com/flow/limits-and-config).
+Tento článek popisuje, omezeních a konfiguracích pro vytváření a spouštění automatizovaných pracovních postupů s Azure Logic Apps. Microsoft Flow, najdete v části [omezení a konfigurace v Microsoft Flow](https://docs.microsoft.com/flow/limits-and-config).
 
 <a name="definition-limits"></a>
 
-## <a name="definition-limits"></a>Definice omezení
+## <a name="definition-limits"></a>Omezení definic
 
-Zde jsou limity pro definici aplikace logiky jeden:
+Tady jsou limity pro definici aplikace logiky jeden:
 
 | Název | Omezení | Poznámky | 
 | ---- | ----- | ----- | 
-| Akce za pracovního postupu | 500 | Pokud chcete rozšířit tento limit, můžete přidat vnořené pracovní postupy, podle potřeby. |
-| Povolené hloubky vnoření pro akce | 8 | Pokud chcete rozšířit tento limit, můžete přidat vnořené pracovní postupy, podle potřeby. | 
-| Pracovní postupy na oblast na předplatné | 1 000 | | 
-| Aktivační události za pracovního postupu | 10 | Při práci v zobrazení kódu, není návrháře | 
-| Přepínač oboru případech limit | 25 | | 
-| Proměnné za pracovního postupu | 250 | | 
-| Znaků na jednu výraz | 8 192 | | 
-| Maximální velikost `trackedProperties` | 16 000 znaků. | 
-| Název pro `action` nebo `trigger` | 80 znaků | | 
-| Délka `description` | 256 znaků | | 
+| Akce na pracovní postup | 500 | Abychom rozšířili tento limit, můžete přidat vnořené pracovní postupy podle potřeby. |
+| Povolená hloubka vnoření akcí | 8 | Abychom rozšířili tento limit, můžete přidat vnořené pracovní postupy podle potřeby. | 
+| Pracovní postupy na oblast a předplatné | 1 000 | | 
+| Aktivační události na pracovní postup | 10 | Při práci v zobrazení kódu, nikoli návrháře | 
+| Přepínač oboru případů limit | 25 | | 
+| Proměnné na pracovní postup | 250 | | 
+| Znaků na výraz | 8 192 | | 
+| Maximální velikost `trackedProperties` | 16 000 znaků | 
+| Název pro `action` nebo `trigger` | 80 znaků. | | 
+| Délka `description` | 256 znaků. | | 
 | Maximální počet `parameters` | 50 | | 
 | Maximální počet `outputs` | 10 | | 
 ||||  
 
 <a name="run-duration-retention-limits"></a>
 
-## <a name="run-duration-and-retention-limits"></a>Spustit omezení doba trvání a uchovávání
+## <a name="run-duration-and-retention-limits"></a>Limity uchování a doba trvání spuštění
 
-Zde jsou limity pro spuštění aplikace logiky jeden:
+Tady jsou limity pro běh aplikace logiky jeden:
 
 | Název | Omezení | Poznámky | 
 |------|-------|-------| 
-| Doba trvání spuštění | 90 dnů | Chcete-li změnit tento limit, [změnu spustit trvání](#change-duration). | 
-| Uchování úložiště | čas zahájení 90 dnů od spuštění | Chcete-li změnit tento limit, [změnit úložiště uchování](#change-retention). | 
+| Doba trvání běhu | 90 dnů | Chcete-li tento limit změnit, přečtěte si téma [doba trvání běhu změnit](#change-duration). | 
+| Uchování úložiště | čas zahájení 90 dnů od spuštění | Chcete-li tento limit změnit, přečtěte si téma [změnit uchování úložiště](#change-retention). | 
 | Interval minimální opakování | 1 sekunda | | 
-| Maximální počet opakování intervalu | 500 dnů | | 
+| Maximální počet opakování interval | 500 dnů | | 
 |||| 
 
 <a name="change-duration"></a>
 <a name="change-retention"></a>
 
-### <a name="change-run-duration-and-storage-retention"></a>Změna spustit uchovávání doba trvání a ukládání
+### <a name="change-run-duration-and-storage-retention"></a>Změna spuštění uchovávání doba trvání a ukládání
 
-Tuto mez můžete změnit na hodnotu 7 dní až 90 dní. Přejít nad maximální limit [obraťte se na tým Logic Apps](mailto://logicappsemail@microsoft.com) nápovědu k vašim požadavkům.
+Tento limit můžete změnit na hodnotu 7 dní až 90 dnů. Přejít nad maximální limit [obraťte se na tým Logic Apps](mailto://logicappsemail@microsoft.com) nápovědu k vašim požadavkům.
 
-1. Na portálu Azure, v nabídce aplikace logiky, vyberte **nastavení pracovních postupů**. 
+1. Na webu Azure Portal, v nabídce aplikace logiky zvolte **nastavení pracovního postupu**. 
 
-2. V části **Runtime možnosti**, z **spustit historie uchování ve dnech** vyberte **vlastní**. 
+2. V části **možnosti modulu Runtime**, z **uchování historie spuštění ve dnech** klikněte na položku **vlastní**. 
 
-3. Zadejte nebo přetáhněte jezdec pro počet dní, po které chcete.
+3. Zadejte nebo přetažením posuvníku pro počet dní, po které chcete.
 
 <a name="looping-debatching-limits"></a>
 
-## <a name="looping-and-debatching-limits"></a>Ve smyčce a debatching omezení
+## <a name="looping-and-debatching-limits"></a>Cykly a rušení dávek omezení
 
-Zde jsou limity pro spuštění aplikace logiky jeden:
+Tady jsou limity pro běh aplikace logiky jeden:
 
 | Název | Omezení | Poznámky | 
 | ---- | ----- | ----- | 
-| Dokud iterací | 5 000 | | 
-| Foreach – položky | 100,000 | Můžete použít [dotaz akce](../connectors/connectors-native-query.md) vyfiltrujete větší pole, podle potřeby. | 
-| ForEach paralelismus | 50 | Výchozí hodnota je 20. <p>Chcete-li změnit toto výchozí úroveň v smyčka typu ForEach, nastavte `runtimeConfiguration` vlastnost `foreach` akce. <p>Postupně spustit smyčka typu ForEach, nastavte `operationOptions` vlastnost "Sekvenční" v `foreach` akce. | 
-| SplitOn položky | 100,000 | | 
+| Do iterací | 5 000 | | 
+| Položky ForEach | 100,000 | Můžete použít [akce dotazu](../connectors/connectors-native-query.md) k filtrování větších polí podle potřeby. | 
+| Paralelní zpracování ForEach | 50 | Výchozí hodnota je 20. <p>Chcete-li změnit toto výchozí úroveň ve smyčce ForEach, nastavte `runtimeConfiguration` vlastnost `foreach` akce. <p>Postupně spusťte smyčku ForEach, nastavte `operationOptions` vlastnost "Sekvenční" v `foreach` akce. | 
+| Položky SplitOn | 100,000 | | 
 |||| 
 
 <a name="throughput-limits"></a>
 
 ## <a name="throughput-limits"></a>Omezení propustnosti
 
-Zde jsou limity pro spuštění aplikace logiky jeden:
+Tady jsou limity pro běh aplikace logiky jeden:
 
 | Název | Omezení | Poznámky | 
 | ----- | ----- | ----- | 
-| Akce spuštěních za 5 minut | 100,000 | Pokud chcete zvýšit limit než 300 000, můžete spustit aplikace logiky `High Throughput` režimu. Ke konfiguraci režimu vysoké propustnosti, v části `runtimeConfiguration` prostředku pracovního postupu, nastavte `operationOptions` vlastnost `OptimizedForHighThroughput`. <p>**Poznámka:**: režimu vysoké propustnosti je ve verzi preview. Navíc můžete distribuovat zatížení napříč více než jednu aplikaci podle potřeby. | 
-| Souběžných volání odchozí akce | ~2,500 | Snižte počet souběžných požadavků nebo zkrátit dobu trvání podle potřeby. | 
-| Koncový bod modulu runtime: souběžných příchozí volání | ~1,000 | Snižte počet souběžných požadavků nebo zkrátit dobu trvání podle potřeby. | 
-| Modul runtime koncový bod: počet volání za 5 minut pro čtení  | 60,000 | Můžete rozdělit zatížení mezi více než jednu aplikaci, podle potřeby. | 
+| Spuštění akcí za 5 minut | 100,000 | Pokud chcete zvýšit omezení na 300 000, můžete spustit aplikace logiky v `High Throughput` režimu. Ke konfiguraci režimu vysoké propustnosti, v části `runtimeConfiguration` prostředku pracovního postupu, nastavte `operationOptions` vlastnost `OptimizedForHighThroughput`. <p>**Poznámka:**: režim vysoké propustnosti je ve verzi preview. Navíc můžete distribuovat zatížení napříč více než jednu aplikaci podle potřeby. | 
+| Souběžná volání odchozí akce | ~2,500 | Snižte počet souběžných požadavků nebo zkrátit dobu trvání podle potřeby. | 
+| Koncový bod modulu runtime: příchozí souběžných volání | ~1,000 | Snižte počet souběžných požadavků nebo zkrátit dobu trvání podle potřeby. | 
+| Koncový bod modulu runtime: Číst volání za 5 minut  | 60,000 | Můžete rozdělit zatížení mezi více než jednu aplikaci, podle potřeby. | 
 | Koncový bod modulu runtime: vyvolat volání za 5 minut| 45,000 | Můžete rozdělit zatížení mezi více než jednu aplikaci, podle potřeby. | 
 |||| 
 
-Přejděte výše těchto mezních hodnot v normálním zpracování nebo spuštění testování zatížení, které může přejděte výše tyto limity [obraťte se na tým Logic Apps](mailto://logicappsemail@microsoft.com) nápovědu k vašim požadavkům.
+Ambice tato omezení v normálním zpracování nebo spustit zátěžové testování, který může přejít nad tyto limity [obraťte se na tým Logic Apps](mailto://logicappsemail@microsoft.com) nápovědu k vašim požadavkům.
 
 <a name="request-limits"></a>
 
-## <a name="http-request-limits"></a>Omezení požadavků HTTP
+## <a name="http-request-limits"></a>Omezení požadavku HTTP
 
-Zde jsou limity pro jeden požadavek HTTP nebo konektor synchronní volání:
+Tady jsou limity pro jednoho požadavku HTTP nebo volání synchronní konektoru:
 
 #### <a name="timeout"></a>Vypršení časového limitu
 
-Některé operace konektor asynchronní volání nebo naslouchat žádostem webhooku, tak časový limit pro tyto operace může být delší než těchto mezních hodnot. Další informace najdete v tématu technické informace pro konkrétní konektor a také [pracovního postupu triggery a akce](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action).
+Některé konektor operace asynchronního volání nebo naslouchání požadavkům webhooku, abyste časový limit pro tyto operace může být delší než tato omezení. Další informace najdete v tématu technické podrobnosti pro konkrétní konektor a také [triggerů pracovního postupu a akce](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action).
 
 | Název | Omezení | Poznámky | 
 | ---- | ----- | ----- | 
-| Odchozí požadavku | 120 sekund | Pro delší běžící operace, použijte [dotazování asynchronní vzor](../logic-apps/logic-apps-create-api-app.md#async-pattern) nebo [dokud smyčky](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action). | 
-| Synchronní odpovědi | 120 sekund | Pro původní žádost se získat odpověď musíte dokončit všechny kroky v odpovědi v rozsahu limitu Pokud volat jiné aplikace logiky jako vnořený pracovní postup. Další informace najdete v tématu [volat, aktivaci nebo vnořit aplikace logiky](../logic-apps/logic-apps-http-endpoint.md). | 
+| Odchozí žádosti | 120 sekund | Pro delší probíhajících operací, použijte [asynchronního dotazování vzor](../logic-apps/logic-apps-create-api-app.md#async-pattern) nebo [smyčka until](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action). | 
+| Synchronní odpověď | 120 sekund | Pro původní požadavek na získání odpovědi musí dokončit všechny kroky v odpovědi v rámci limitu není-li volat jiné aplikace logiky jako vnořený pracovní postup. Další informace najdete v tématu [volání, aktivační události, nebo vnořené aplikace logiky](../logic-apps/logic-apps-http-endpoint.md). | 
 |||| 
 
 #### <a name="message-size"></a>Velikost zpráv
 
 | Název | Omezení | Poznámky | 
 | ---- | ----- | ----- | 
-| Velikost zpráv | 100 MB | Chcete-li toto omezení obejít, přečtěte si téma [zpracování velkých zprávy s rozdělování](../logic-apps/logic-apps-handle-large-messages.md). Ale některé konektory a rozhraní API nemusí podporovat rozdělování nebo dokonce výchozí limit. | 
-| Velikost zprávy s rozdělování | 1 GB | Toto omezení se vztahuje na akce, které nativně podporují rozdělování nebo umožňují povolit rozdělování ve své konfiguraci modulu runtime. Další informace najdete v tématu [zpracování velkých zprávy s rozdělování](../logic-apps/logic-apps-handle-large-messages.md). | 
-| Limit vyhodnocení výrazu | 131 072 znaků | `@concat()`, `@base64()`, `@string()` Výrazy nesmí být delší než toto omezení. | 
+| Velikost zpráv | 100 MB | Chcete-li toto omezení obejít, přečtěte si téma [zpracování velkých zpráv s dělením dat do bloků](../logic-apps/logic-apps-handle-large-messages.md). Ale některé konektory a rozhraní API nemusí podporovat bloků nebo dokonce výchozí omezení. | 
+| Velikost zprávy s dělením dat do bloků | 1 GB | Toto omezení se vztahuje na akce, které nativně podporují dat nebo umožňují povolit bloků v jejich konfigurace modulu runtime. Další informace najdete v tématu [zpracování velkých zpráv s dělením dat do bloků](../logic-apps/logic-apps-handle-large-messages.md). | 
+| Omezení pro vyhodnocení výrazu | 131 072 znaků | `@concat()`, `@base64()`, `@string()` Výrazů nemůže být delší než toto omezení. | 
 |||| 
 
 #### <a name="retry-policy"></a>Zásady opakování
 
 | Název | Omezení | Poznámky | 
 | ---- | ----- | ----- | 
-| Opakované pokusy | 90 | Výchozí hodnota je 4. Chcete-li změnit výchozí nastavení, použijte [opakujte zásad parametr](../logic-apps/logic-apps-workflow-actions-triggers.md). | 
-| Maximální zpoždění při opakování | 1 den | Chcete-li změnit výchozí nastavení, použijte [opakujte zásad parametr](../logic-apps/logic-apps-workflow-actions-triggers.md). | 
-| Minimální zpoždění při opakování | 5 sekund | Chcete-li změnit výchozí nastavení, použijte [opakujte zásad parametr](../logic-apps/logic-apps-workflow-actions-triggers.md). |
+| Opakované pokusy | 90 | Výchozí hodnota je 4. Chcete-li změnit výchozí nastavení, použijte [opakujte parametr zásad](../logic-apps/logic-apps-workflow-actions-triggers.md). | 
+| Maximální zpoždění při opakování | 1 den | Chcete-li změnit výchozí nastavení, použijte [opakujte parametr zásad](../logic-apps/logic-apps-workflow-actions-triggers.md). | 
+| Min zpoždění při opakování | 5 sekund | Chcete-li změnit výchozí nastavení, použijte [opakujte parametr zásad](../logic-apps/logic-apps-workflow-actions-triggers.md). |
 |||| 
 
 <a name="custom-connector-limits"></a>
 
-## <a name="custom-connector-limits"></a>Vlastní konektor omezení
+## <a name="custom-connector-limits"></a>Omezení vlastního konektoru
 
 Tady jsou limity pro vlastní konektory, které můžete vytvořit z webových rozhraní API.
 
 | Název | Omezení | 
 | ---- | ----- | 
-| Čísla vlastních konektorů | 1 000 na předplatné Azure | 
-| Počet požadavků za minutu pro každé připojení vytvořené vlastním konektorem | 500 požadavky na připojení |
+| Počet vlastních konektorů | 1 000 na předplatné Azure | 
+| Počet požadavků za minutu pro každé připojení vytvořené vlastním konektorem | 500 požadavků za připojení |
 |||| 
 
 <a name="integration-account-limits"></a>
@@ -153,18 +153,18 @@ Tady jsou limity pro vlastní konektory, které můžete vytvořit z webových r
 
 <a name="artifact-number-limits"></a>
 
-### <a name="artifact-limits-per-integration-account"></a>Omezení artefaktů každý účet integrace
+### <a name="artifact-limits-per-integration-account"></a>Omezení pro artefaktu účtu pro integraci
 
-Tady jsou omezení počtu artefaktů pro každý účet integrace. Další informace najdete v tématu [ceny Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps/). 
+Tady je omezený počet artefaktů pro každý účet integrace. Další informace najdete v tématu [ceny Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps/). 
 
 *Úroveň Free*
 
-Úroveň free používejte jenom pro scénáře nahodilého, není produkčních scénářích. Tato úroveň omezuje propustnost a využití a nemá žádné smlouvu úrovně služeb (SLA).
+Úroveň free můžete používejte jenom pro scénáře průzkumného testování, nikoli produkčních scénářů. Tato vrstva omezuje propustnost a využití a nemá žádné smlouvu o úrovni služeb (SLA).
 
-| Artefaktů | Omezení | Poznámky | 
+| Artefakt | Omezení | Poznámky | 
 |----------|-------|-------| 
 | Obchodní partneři EDI | 25 | | 
-| Obchodní smlouvy EDI | 10 | | 
+| Obchodní smluv EDI | 10 | | 
 | Maps | 25 | | 
 | Schémata | 25 | 
 | Sestavení | 10 | | 
@@ -174,10 +174,10 @@ Tady jsou omezení počtu artefaktů pro každý účet integrace. Další infor
 
 *Úroveň Basic*
 
-| Artefaktů | Omezení | Poznámky | 
+| Artefakt | Omezení | Poznámky | 
 |----------|-------|-------| 
 | Obchodní partneři EDI | 2 | | 
-| Obchodní smlouvy EDI | 1 | | 
+| Obchodní smluv EDI | 1 | | 
 | Maps | 500 | | 
 | Schémata | 500 | 
 | Sestavení | 25 | | 
@@ -187,10 +187,10 @@ Tady jsou omezení počtu artefaktů pro každý účet integrace. Další infor
 
 *Úroveň Standard*
 
-| Artefaktů | Omezení | Poznámky | 
+| Artefakt | Omezení | Poznámky | 
 |----------|-------|-------| 
 | Obchodní partneři EDI | 500 | | 
-| Obchodní smlouvy EDI | 500 | | 
+| Obchodní smluv EDI | 500 | | 
 | Maps | 500 | | 
 | Schémata | 500 | 
 | Sestavení | 50 | | 
@@ -200,29 +200,29 @@ Tady jsou omezení počtu artefaktů pro každý účet integrace. Další infor
 
 <a name="artifact-capacity-limits"></a>
 
-### <a name="artifact-capacity-limits"></a>Limity kapacity artefaktů
+### <a name="artifact-capacity-limits"></a>Limity kapacity artefaktu
 
 | Název | Omezení | Poznámky | 
 | ---- | ----- | ----- | 
 | Schéma | 8 MB | Pokud chcete nahrát soubory větší než 2 MB, použijte [identifikátor URI objektu blob](../logic-apps/logic-apps-enterprise-integration-schemas.md). | 
 | Mapu (soubor XSLT) | 2 MB | | 
-| Modul runtime koncový bod: počet volání za 5 minut pro čtení | 60,000 | Můžete distribuovat zatížení napříč více než jeden účet podle potřeby. | 
-| Koncový bod modulu runtime: vyvolat volání za 5 minut | 45,000 | Můžete distribuovat zatížení napříč více než jeden účet podle potřeby. | 
-| Modul runtime koncový bod: počet volání za 5 minut pro sledování | 45,000 | Můžete distribuovat zatížení napříč více než jeden účet podle potřeby. | 
+| Koncový bod modulu runtime: Číst volání za 5 minut | 60,000 | Distribuuje úlohy mezi víc než jeden účet podle potřeby. | 
+| Koncový bod modulu runtime: vyvolat volání za 5 minut | 45,000 | Distribuuje úlohy mezi víc než jeden účet podle potřeby. | 
+| Koncový bod modulu runtime: sledování volání za 5 minut | 45,000 | Distribuuje úlohy mezi víc než jeden účet podle potřeby. | 
 | Koncový bod modulu runtime: blokování souběžných volání | ~1,000 | Můžete snížit počet souběžných požadavků nebo zkrátit dobu trvání podle potřeby. | 
 ||||  
 
 <a name="b2b-protocol-limits"></a>
 
-### <a name="b2b-protocol-as2-x12-edifact-message-size"></a>Velikost zprávy protokolu B2B (AS2, X12, EDIFACT)
+### <a name="b2b-protocol-as2-x12-edifact-message-size"></a>Velikost zprávy B2B protocol (AS2, X12 EDIFACT)
 
-Zde jsou omezení, která se týkají B2B protokoly:
+Tady jsou omezení, které platí pro B2B protokoly:
 
 | Název | Omezení | Poznámky | 
 | ---- | ----- | ----- | 
-| AS2 | 50 MB | Kódování a dekódování se vztahuje | 
-| X12 | 50 MB | Kódování a dekódování se vztahuje | 
-| EDIFACT | 50 MB | Kódování a dekódování se vztahuje | 
+| AS2 | 50 MB | Použije kódování a dekódování | 
+| X12 | 50 MB | Použije kódování a dekódování | 
+| EDIFACT | 50 MB | Použije kódování a dekódování | 
 |||| 
 
 <a name="configuration"></a>
@@ -231,12 +231,12 @@ Zde jsou omezení, která se týkají B2B protokoly:
 
 ### <a name="azure-logic-apps-service"></a>Služba Azure Logic Apps
 
-Všechny aplikace logiky v oblasti použít stejné rozsahy IP adres. Pro podporu volání, které přímo díky logic apps s [HTTP](../connectors/connectors-native-http.md), [HTTP + Swagger](../connectors/connectors-native-http-swagger.md)a další požadavky HTTP, nastavením vaše konfigurace brány firewall tak, že obsahují tyto odchozí a příchozí IP adresy, na základě na logic apps, kde existují:
+Všechny aplikace logiky v oblasti používat stejné rozsahy IP adres. Pro podporu volání, kterým je aplikace logiky přímo s [HTTP](../connectors/connectors-native-http.md), [HTTP + Swagger](../connectors/connectors-native-http-swagger.md)a dalších požadavků protokolu HTTP, nastavte konfiguraci brány firewall, zahrnují tyto odchozí a příchozí IP adresy, na základě v logic apps kde neexistuje:
 
 | Oblasti aplikace logiky | Odchozí IP |
 |-------------------|-------------|
-| Austrálie | 13.73.114.207, 13.77.3.139, 13.70.159.205 |
 | Austrálie – východ | 13.75.149.4, 104.210.91.55, 104.210.90.241 |
+| Austrálie – jihovýchod | 13.73.114.207, 13.77.3.139, 13.70.159.205 |
 | Brazílie – jih | 191.235.82.221, 191.235.91.7, 191.234.182.26 |
 | Střední Kanada | 52.233.29.92, 52.228.39.241, 52.228.39.244 |
 | Východní Kanada | 52.232.128.155, 52.229.120.45, 52.229.126.25 |
@@ -291,19 +291,19 @@ Všechny aplikace logiky v oblasti použít stejné rozsahy IP adres. Pro podpor
 
 ### <a name="connectors"></a>Konektory
 
-Pro podporu volání, [konektory](../connectors/apis-list.md) zpřístupnění, nastavením vaše konfigurace brány firewall tak, že obsahují tyto odchozí IP adresy podle oblasti, kde existují logic apps.
+Pro podporu volání, která [konektory](../connectors/apis-list.md) zkontrolujte nastavení konfigurace brány firewall, zahrnují tyto odchozí IP adresy, podle oblasti, kde existují logic apps.
 
 > [!IMPORTANT]
 >
-> Pokud máte existující konfigurace, aktualizujte je **co nejdříve před 1. září 2018** vždy zahrnovat a shodují s IP adresou v tomto seznamu pro oblasti, kde existují logic apps. 
+> Pokud máte existující konfigurace, aktualizujte je **co nejdříve před 1. září 2018** tak zahrnout a shodují s IP adresou v tomto seznamu pro oblasti, kde existují logic apps. 
 
 | Oblasti aplikace logiky | Odchozí IP | 
 |-------------------|-------------|  
 | Austrálie – východ | 13.70.72.192 - 13.70.72.207, 13.72.243.10, 40.126.251.213 | 
 | Austrálie – jihovýchod | 13.77.50.240 - 13.77.50.255, 13.70.136.174, 40.127.80.34 | 
 | Brazílie – jih | 191.233.203.192 - 191.233.203.207, 104.41.59.51, 191.232.38.129 | 
-| Střední Kanada | 13.71.170.208 - 13.71.170.223, 13.71.170.224 - 13.71.170.239, 52.237.24.126, 52.233.31.197, 52.228.42.205, 52.228.33.76, 52.228.34.13 | 
-| Východní Kanada | 40.69.106.240 - 40.69.106.255, 52.242.35.152, 52.229.123.98, 52.229.120.178, 52.229.126.202, 52.229.120.52 | 
+| Střední Kanada | 13.71.170.208 – 13.71.170.223, 13.71.170.224 – 13.71.170.239 52.237.24.126, 52.233.31.197, 52.228.42.205, 52.228.33.76, 52.228.34.13 | 
+| Východní Kanada | 40.69.106.240 - 40.69.106.255 52.242.35.152, 52.229.123.98, 52.229.120.178, 52.229.126.202, 52.229.120.52 | 
 | Střed Indie | 104.211.81.192 - 104.211.81.207, 52.172.211.12, 104.211.98.164 | 
 | Střed USA | 13.89.171.80 - 13.89.171.95, 52.173.245.164, 40.122.49.51 | 
 | Východní Asie | 13.75.36.64 - 13.75.36.79, 52.175.23.169, 23.99.116.181 | 
@@ -316,16 +316,16 @@ Pro podporu volání, [konektory](../connectors/apis-list.md) zpřístupnění, 
 | Střed USA – jih | 104.214.19.48 - 104.214.19.63, 13.65.86.57, 104.214.70.191 | 
 | Indie – jih | 40.78.194.240 - 40.78.194.255, 13.71.125.22, 104.211.227.225 | 
 | Jihovýchodní Asie | 13.67.8.240 - 13.67.8.255, 52.187.68.19, 13.76.231.68 | 
-| Západní střed USA | 13.71.195.32 - 13.71.195.47, 52.161.102.22, 52.161.27.108, 52.161.30.5, 52.161.29.35, 52.161.26.212 | 
+| Západní střed USA | 13.71.195.32 - 13.71.195.47 52.161.102.22, 52.161.27.108, 52.161.30.5, 52.161.29.35, 52.161.26.212 | 
 | Západní Evropa | 13.69.64.208 - 13.69.64.223, 52.174.88.118, 40.115.50.13 | 
 | Indie – západ | 104.211.146.224 - 104.211.146.239, 104.211.189.218, 104.211.161.203 | 
 | Západní USA | 40.112.243.160 - 40.112.243.175, 104.42.122.49, 104.40.51.248 | 
-| Západní USA 2 | 13.66.140.128 - 13.66.140.143, 52.183.78.157, 13.66.225.219, 13.66.218.78, 13.66.220.135, 13.66.219.14 | 
+| Západní USA 2 | 13.66.140.128 - 13.66.140.143 52.183.78.157, 13.66.225.219, 13.66.218.78, 13.66.220.135, 13.66.219.14 | 
 | Spojené království – jih | 51.140.148.0 - 51.140.148.15, 51.140.80.51, 51.140.80.51 | 
 | Spojené království – západ | 51.140.211.0 - 51.140.211.15, 51.141.47.105, 51.141.47.105 | 
 | | | 
 
 ## <a name="next-steps"></a>Další postup  
 
-* Zjistěte, jak [vytvoření první aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)  
+* Zjistěte, jak [vytvořit svou první aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)  
 * Další informace o [běžných příkladů a scénářů](../logic-apps/logic-apps-examples-and-scenarios.md)

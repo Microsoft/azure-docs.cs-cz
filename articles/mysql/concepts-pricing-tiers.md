@@ -1,6 +1,6 @@
 ---
-title: Cenové úrovně pro databázi Azure pro databázi MySQL
-description: Tento článek popisuje cenové úrovně pro databázi Azure pro databázi MySQL.
+title: Cenové úrovně pro službu Azure Database for MySQL
+description: Tento článek popisuje cenové úrovně pro službu Azure Database for MySQL.
 services: mysql
 author: jan-eng
 ms.author: janeng
@@ -8,42 +8,42 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
-ms.date: 06/21/2018
-ms.openlocfilehash: d42fa432f57def5e4f80480e41c2299098e20d7d
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.date: 07/11/2018
+ms.openlocfilehash: 547839234e15455f3e268bad4d92972ea1f47e4c
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37020685"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38971933"
 ---
-# <a name="azure-database-for-mysql-pricing-tiers"></a>Azure databáze pro databázi MySQL cenové úrovně
+# <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL cenové úrovně
 
-Můžete vytvořit databázi Azure pro server databáze MySQL v jednom ze tří různých cenových úrovní: Basic, obecné účely a paměťově optimalizovaná. Cenové úrovně jsou rozlišené pomocí objem výpočtů v vCores, který může být zřízen, paměť na vCore a technologie úložiště používat k ukládání dat. Všechny prostředky připravené na úrovni serveru MySQL. Server může mít jednu nebo více databází.
+Serveru Azure Database for MySQL můžete vytvořit v jednom ze tří různých cenové úrovně: Basic, General Purpose a Memory Optimized. Cenové úrovně se liší podle množství výpočetních prostředků ve virtuálních jader, které je možné zřídit paměti na vCore a technologie úložiště používají k ukládání dat. Všechny prostředky jsou zřízené na úrovni serveru MySQL. Server může mít jeden nebo více databází.
 
-|    | **Basic** | **Obecné účely** | **Paměťově optimalizované** |
+|    | **Basic** | **Obecné účely** | **Optimalizované z hlediska paměti** |
 |:---|:----------|:--------------------|:---------------------|
-| Výpočetní generování | Gen 4, 5. generace | Gen 4, 5. generace | Gen 5 |
+| Generace výpočetních funkcí | Gen 4, generace 5 | Gen 4, generace 5 | Gen 5 |
 | Virtuální jádra | 1, 2 | 2, 4, 8, 16, 32 |2, 4, 8, 16 |
 | Paměť na vCore | 2 GB | 5 GB | 10 GB |
 | Velikost úložiště | 5 GB až 1 TB | 5 GB až 4 TB | 5 GB až 4 TB |
-| Typ úložiště | Úložiště Azure úrovně Standard | Azure Premium Storage | Azure Premium Storage |
-| Doba uchovávání záloh databáze | 7 až 35 dnů | 7 až 35 dnů | 7 až 35 dnů |
+| Typ úložiště | Azure Storage úrovně Standard | Azure Premium Storage | Azure Premium Storage |
+| Období uchovávání záloh databáze | 7 až 35 dnů | 7 až 35 dnů | 7 až 35 dnů |
 
-Chcete-li zvolte cenovou úroveň, použijte jako výchozí bod v následující tabulce.
+Zvolte cenovou úroveň, použijte jako výchozí bod v následující tabulce.
 
 | Cenová úroveň | Cílová zátěž |
 |:-------------|:-----------------|
-| Basic | Úlohy, které vyžadují světla výpočetní a vstupně-výstupní výkon. Mezi příklady patří servery, které jsou používány pro vývoj nebo testování nebo méně rozsáhlá zřídka používané aplikace. |
-| Obecné použití | Většina obchodní úlohy, které vyžadují vyrovnáváním paměťovou a výpočetní s škálovatelná propustnost vstupu/výstupu. Mezi příklady patří servery pro hostování webové a mobilní aplikace a jiné podnikové aplikace.|
-| Paměťově optimalizované | Databáze vysoce výkonné úlohy, které vyžadují výkon v paměti pro rychlejší zpracování transakcí a vyšší souběžnosti. Mezi příklady patří servery pro zpracování dat v reálném čase a vysoce výkonné transakcí a analytické aplikací.|
+| Basic | Úlohy vyžadující nízký výpočetní a I/O výkon. Mezi příklady patří servery používané pro vývoj a testování nebo rozsáhlé a zřídka používané aplikace. |
+| Obecné použití | Většinu obchodních úloh, které vyžadují vyvážené výpočetní a paměťové prostředky se škálovatelnou I/O propustností. Mezi příklady patří pro servery hostující webové a mobilní aplikace a jiné podnikové aplikace.|
+| Paměťově optimalizované | Vysoce výkonné databázové úlohy, které vyžadují výkon v paměti kvůli rychlejšímu zpracování transakcí a lepší souběžnosti. Mezi příklady patří servery pro zpracování dat v reálném čase a vysoce výkonné transakční a analytické aplikace.|
 
-Po vytvoření serveru, číslo vCores, generování hardwaru a cenovou úroveň (s výjimkou do a z Basic) lze změnit nahoru nebo dolů v sekundách. Také můžete samostatně upravit velikost úložiště nahoru a dobu uchovávání záloh nahoru nebo dolů s žádné výpadky aplikací. Typ zálohování úložiště nelze změnit po vytvoření serveru. Další informace najdete v tématu [škálovat prostředky](#scale-resources) části.
+Po vytvoření serveru, počet virtuálních jader generace hardwaru a cenové úrovně (s výjimkou do a z Basic) lze změnit navýšit nebo snížit kapacitu během několika sekund. Také můžete samostatně upravit velikost úložiště nahoru a období uchovávání záloh navýšit nebo snížit kapacitu bez výpadků aplikace. Typ úložiště pro zálohování nelze změnit po vytvoření serveru. Další informace najdete v tématu [škálovat prostředky](#scale-resources) oddílu.
 
-## <a name="compute-generations-and-vcores"></a>Výpočetní generace a vCores
+## <a name="compute-generations-and-vcores"></a>COMPUTE generace a virtuální jádra
 
-Výpočetní prostředky jsou k dispozici jako vCores, která představují logické procesoru základní hardware. V současné době můžete ze dvou generací výpočetní Gen 4 a 5. generace. Gen 4 logické procesory jsou založené na v3 Intel E5-2673 2,4 GHz procesorů (Haswell). Gen 5 logické procesory jsou založené na Intel E5-2673 v4 procesory 2.3 GHz (Broadwell). Gen 4 a 5 generace jsou k dispozici v následujících oblastech ("X" označuje k dispozici).
+Výpočetní prostředky jsou k dispozici jako virtuální jádra, která představuje logický procesor základního hardwaru. V současné době můžete zvolit ze dvou generací compute Gen 4 a 5 Obecné. Gen 4 logické procesory jsou založeny na Intel E5-2673 v3 (Haswell) 2,4 GHz procesorech. Generace 5 logické procesory jsou založené na Intel E5-2673 v4 (Broadwell) 2.3 GHz procesorech. 4. generace a generace 5 jsou k dispozici v následujících oblastech ("X" označuje k dispozici).
 
-| **Oblast Azure** | **Gen 4** | **Gen 5** |
+| **Oblasti Azure** | **4. generace** | **Generace 5** |
 |:---|:----------:|:--------------------:|
 | Střed USA | X |  |
 | Východ USA | X | X |
@@ -63,54 +63,56 @@ Výpočetní prostředky jsou k dispozici jako vCores, která představují logi
 | Východní Asie | X | X |
 | Jihovýchodní Asie | X | X |
 | Austrálie – východ |  | X |
+| Austrálie – střed |  | X |
+| Austrálie – střed 2 |  | X |
 | Austrálie – jihovýchod |  | X |
 | Střed Indie | X | X |
 | Indie – západ | X | X |
 | Indie – jih |  | X |
 | Japonsko – východ | X | X |
 | Japonsko – západ | X | X |
-| Korea – střed |  | X |
-| Korea – jih |  | X |
+| Jižní Korea – střed |  | X |
+| Jižní Korea – jih |  | X |
 
 ## <a name="storage"></a>Úložiště
 
-Úložiště, který zřídíte je množství kapacity úložiště k dispozici k vaší databázi Azure pro server databáze MySQL. Úložiště se používá pro soubory databáze, dočasné soubory, transakční protokoly a MySQL server protokoly. Celkovou velikost úložiště, který zřídíte také definuje dostupná kapacita vstupně-výstupních operací na váš server.
+Úložiště, které zřizujete je objem úložné kapacity k dispozici pro databáze Azure pro MySQL server. Úložiště se používá pro soubory databáze, dočasných souborů, protokoly transakcí a MySQL server protokoly. Celkový objem úložiště, který zřídíte také definuje vstupně-výstupní kapacity k dispozici pro váš server.
 
-|    | **Basic** | **Obecné účely** | **Paměťově optimalizované** |
+|    | **Basic** | **Obecné účely** | **Optimalizované z hlediska paměti** |
 |:---|:----------|:--------------------|:---------------------|
-| Typ úložiště | Úložiště Azure úrovně Standard | Azure Premium Storage | Azure Premium Storage |
+| Typ úložiště | Azure Storage úrovně Standard | Azure Premium Storage | Azure Premium Storage |
 | Velikost úložiště | 5 GB až 1 TB | 5 GB až 4 TB | 5 GB až 4 TB |
-| Velikost úložiště přírůstku | 1 GB | 1 GB | 1 GB |
-| IOPS | Proměnná |3 IOPS/GB<br/>Min 100 IOPS<br/>Maximální IOPS 6000 | 3 IOPS/GB<br/>Min 100 IOPS<br/>Maximální IOPS 6000 |
+| Zvýšení velikosti úložiště | 1 GB | 1 GB | 1 GB |
+| IOPS | Proměnná |3 IOPS/GB<br/>Minimum 100 vstupně-výstupních operací<br/>Maximální počet 6000 vstupně-výstupních operací | 3 IOPS/GB<br/>Minimum 100 vstupně-výstupních operací<br/>Maximální počet 6000 vstupně-výstupních operací |
 
-Další úložiště kapacity můžete přidat během a po vytvoření serveru. Základní vrstvě neposkytuje záruku IOPS. V obecné účely a paměťově optimalizované cenové úrovně IOPS škálování se velikost zřízeného úložiště v poměru 3:1.
+Můžete přidat další kapacitu, během a po vytvoření serveru. Úroveň Basic neposkytuje záruka vstupně-výstupních operací. V obecné účely a optimalizovaný pro paměť cenové úrovně se škálují vstupně-výstupních operací s velikost zřízeného úložiště poměr 3:1.
 
-Můžete monitorovat vaší spotřeby vstupně-výstupních operací na portálu Azure nebo pomocí rozhraní příkazového řádku Azure. Metriku relevantní pro monitorování jsou [limit úložiště, procento úložiště, používá úložiště a vstupně-výstupní operace procent](concepts-monitoring.md).
+Můžete monitorovat spotřebu vstupně-výstupních operací na webu Azure Portal nebo pomocí příkazů rozhraní příkazového řádku Azure. Jsou důležité metriky pro monitorování [limitu úložiště, procento úložiště, využité úložiště a vstupně-výstupních operací procent](concepts-monitoring.md).
 
 ### <a name="reaching-the-storage-limit"></a>Dosažení limitu úložiště
 
-Server je označen jen pro čtení, když velikost volného místa dosáhne menší než 5 GB nebo zřízené úložiště % 5, podle toho, která je menší. Například, pokud máte zřízen 100 GB úložiště, a skutečné využití prochází přes 95 GB, server je označen jen pro čtení. Alternativně zřízením 5 GB úložiště, server je označen jen pro čtení Pokud volný úložný prostor dosáhne méně než 250 MB.  
+Server je označen jen pro čtení, když velikost volného místa nedosáhne menší než 5 GB nebo 5 % zřízeného úložiště, podle toho, co je menší. Například, pokud jste zřídili 100 GB úložiště a skutečné využití prochází přes 95 GB, na serveru je označen jen pro čtení. Případně pokud jste zřídili 5 GB úložiště, server je označen jen pro čtení dosáhne volný úložný prostor na méně než 250 MB.  
 
-Když se služba pokusí zajistí, že server jen pro čtení, všechny nové požadavky na zápis transakce jsou zablokované a provést bude pokračovat existující aktivních transakcí. Pokud server je nastaven na jen pro čtení, všechny následné zápisu operace a transakce potvrdí selhání. Dotazy pro čtení budou nadále fungovat bez přerušení. Jakmile zvýšíte zřízené úložiště, server bude připravena přijímat transakcí zápisu znovu.
+Když se služba pokusí o nastavení serveru jen pro čtení, jsou blokovány všechny nové požadavky na zápis transakce a existující aktivní transakce budou i nadále spouštět. Navrácení služeb po potvrzení, když serveru je nastavena na jen pro čtení, všechny následné zápisu operace a transakce. Čtení dotazy budou nadále fungovat bez přerušení. Po zvýšíte zřízeného úložiště, server bude možné znovu přijmout transakce zápisu.
 
 ## <a name="backup"></a>Backup
 
-Služba automaticky provede zálohování serveru. Doba uchování minimální zálohy je sedm dní. Můžete nastavit dobu uchování o délce až 35 dnů. Uchovávání lze upravit kdykoli po dobu platnosti na server. Můžete zvolit místně redundantní a geograficky redundantní zálohy. Geograficky redundantní zálohy se také ukládají do [spárovat geografické oblasti](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) oblasti, kde se má vytvořit váš server. Tato redundance poskytuje úroveň ochrany v případě havárie. Získáte také možnost obnovit do jiné Azure oblasti, ve kterém je služba k dispozici s geograficky redundantní zálohy vašeho serveru. Není možné změnit ze dvou možností úložiště záloh, po vytvoření serveru.
+Služby trvá automatické zálohy vašeho serveru. Období minimální doby uchování pro zálohy je sedm dní. Můžete nastavit dobu uchování o délce až po dobu 35 dní. Uchovávání je možné upravit kdykoli během životního cyklu serveru. Můžete vybrat mezi místně redundantní a geograficky redundantní zálohy. Geograficky redundantní zálohy jsou také uloženy v [geograficky spárované oblasti](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) oblasti, kde se vytvoří váš server. Tuto redundanci poskytuje úroveň ochrany v případě havárie. Můžete také získat lepší schopnost obnovení vašeho serveru do libovolné jiné oblasti Azure ve kterém je služba dostupná s geograficky redundantní zálohy. Není možné změnit mezi těmito dvěma možnostmi úložiště záloh po vytvoření serveru.
 
 ## <a name="scale-resources"></a>Škálování prostředků
 
-Po vytvoření serveru, můžete nezávisle změnit vCores, generování hardwaru, cenové úrovně (s výjimkou do a z Basic), velikost úložiště a dobu uchovávání záloh. Typ zálohování úložiště nelze změnit po vytvoření serveru. Počet vCores můžete škálovat nahoru nebo dolů. Doba uchovávání záloh můžete škálovat nahoru nebo dolů z 7 na 35 dní. Velikost úložiště může být pouze zvýšena. Škálování prostředků můžete udělat buď prostřednictvím portálu nebo rozhraní příkazového řádku Azure. Příklad škálování pomocí rozhraní příkazového řádku Azure, naleznete v části [sledování a škálování Azure databáze MySQL server pomocí rozhraní příkazového řádku Azure pro](scripts/sample-scale-server.md).
+Po vytvoření serveru nezávisle na sobě můžete změnit virtuálních jader generace hardwaru, cenovou úroveň (s výjimkou do a z Basic), jaká část úložiště a období uchovávání záloh. Typ úložiště pro zálohování nelze změnit po vytvoření serveru. Počet virtuálních jader je možné škálovat směrem nahoru nebo dolů. Období uchování zálohy je možné škálovat směrem nahoru nebo dolů na 7 pro po dobu 35 dní. Velikost úložiště může být pouze zvýšena. Škálování prostředků můžete udělat buď na portálu nebo rozhraní příkazového řádku Azure. Příklad škálování pomocí Azure CLI najdete v tématu [sledování a škálování serveru Azure Database for MySQL pomocí Azure CLI](scripts/sample-scale-server.md).
 
-Při změně počtu vCores generování hardwaru nebo cenovou úroveň, kopii původního serveru se vytvoří se nové přidělení výpočetní. Po nový server je spuštěný a funkční, připojení se přepnutí na nový server. Během okamžiku, kdy systému přepne na nový server žádná nová připojení lze navázat a jsou všechny nepotvrzené transakce vráceny zpět. Toto okno se liší, ale ve většině případů je méně než minutu.
+Při změně počtu virtuálních jader generace hardwaru nebo cenovou úroveň, kopii původního serveru se vytvoří s nové přidělení výpočetní prostředky. Po vytvoření a spuštění je nový server, připojení se přepnout na nový server. Během okamžiku, kdy systém přepne na nový server je možné navázat nová připojení a jsou všechny nepotvrzené transakce vráceny zpět. Toto okno se liší, ale ve většině případů je méně než minutu.
 
-Škálování úložiště a změnit období uchovávání záloh jsou true online operace. Neexistuje žádné výpadky, a aplikace nemá vliv. Jako IOPS škálování se velikost zřízeného úložiště, můžete zvýšit IOPS, která je k dispozici na váš server ve vertikálním navýšení kapacity úložiště.
+Škálování úložiště a změna období uchování zálohy jsou true online operace. Neexistuje žádný výpadek a vaší aplikace neprojeví. Vstupně-výstupních operací škálování s velikost zřízeného úložiště, můžete zvýšit IOPS k dispozici pro váš server vertikálním navýšení kapacity úložiště.
 
 ## <a name="pricing"></a>Ceny
 
-Aktuální cenová informace najdete v tématu službu [stránce s cenami](https://azure.microsoft.com/pricing/details/mysql/). Zobrazit náklady pro konfiguraci chcete, [portál Azure](https://portal.azure.com/#create/Microsoft.MySQLServer) zobrazuje měsíční náklady na **cenová úroveň** karta podle možností, které zvolíte. Pokud nemáte předplatné Azure, můžete získat odhadované ceny Azure cenové kalkulačky. Na [Azure cenové kalkulačky](https://azure.microsoft.com/pricing/calculator/) web, vyberte **přidat položky**, rozbalte **databáze** kategorie a zvolte **Azure Database pro databázi MySQL**přizpůsobit možnosti.
+Nejnovější informace o cenách najdete v článku Služba [stránce s cenami](https://azure.microsoft.com/pricing/details/mysql/). Zobrazit náklady pro konfigurace, kterou chcete [webu Azure portal](https://portal.azure.com/#create/Microsoft.MySQLServer) ukazuje měsíční náklady na **cenová úroveň** kartu podle možností, které zvolíte. Pokud nemáte předplatné Azure, můžete získat Odhadovaná cena cenovou kalkulačku Azure. Na [cenovou kalkulačku Azure](https://azure.microsoft.com/pricing/calculator/) webu, vyberte **přidat položky**, rozbalte **databází** kategorie a zvolte **– Azure Database for MySQL**přizpůsobit možnosti.
 
 ## <a name="next-steps"></a>Další postup
 
-- Zjistěte, jak [vytvoření databáze MySQL serveru portálu](howto-create-manage-server-portal.md).
-- Zjistěte, jak [sledování a škálování Azure Database MySQL serveru pomocí rozhraní příkazového řádku Azure](scripts/sample-scale-server.md).
+- Zjistěte, jak [vytvoříte MySQL server na portálu](howto-create-manage-server-portal.md).
+- Zjistěte, jak [monitorování a škálování serveru Azure Database for MySQL pomocí Azure CLI](scripts/sample-scale-server.md).
 - Další informace o [služby omezení](concepts-limits.md).

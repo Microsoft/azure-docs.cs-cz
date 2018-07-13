@@ -1,6 +1,6 @@
 ---
-title: Zřídit malin platformy pro vzdálené monitorování pomocí C - Azure | Microsoft Docs
-description: Popisuje, jak se připojit k používání aplikace napsané v c akcelerátoru řešení vzdáleného monitorování malin platformy zařízení
+title: Zřízení Raspberry Pi pro vzdálené monitorování pomocí jazyka C – Azure | Dokumentace Microsoftu
+description: Popisuje, jak připojit Raspberry Pi zařízení pomocí aplikace napsané v C. akcelerátor řešení vzdálené monitorování
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -9,57 +9,57 @@ ms.topic: conceptual
 ms.date: 03/14/2018
 ms.author: dobett
 ms.openlocfilehash: 23e84a8d577bb1c4950de3acd76b0f8528551ae0
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34735490"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38611437"
 ---
-# <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-c"></a>Připojte malin platformy zařízení k řešení akcelerátoru vzdálené monitorování (C)
+# <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-c"></a>Připojte Raspberry Pi zařízení k akcelerátor řešení vzdálené monitorování (C)
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-V tomto kurzu se dozvíte, jak se připojit fyzického zařízení k akcelerátoru řešení vzdáleného monitorování. Stejně jako u aplikací nejvíce embedded, které jsou spuštěné na omezené zařízení, kód klienta pro aplikaci malin platformy zařízení je napsána v C. V tomto kurzu vytvoříte aplikaci na platformy malin systémem Raspbian operačního systému.
+V tomto kurzu se dozvíte, jak připojení fyzických zařízení k akcelerátoru řešení vzdáleného monitorování. Stejně jako u nejvíce vložené aplikace, která běží na zařízeních s omezením, kód klienta pro aplikaci zařízení Raspberry Pi napsané v C. V tomto kurzu vytvoříte aplikaci na Raspberry Pi Raspbian operačním systémem.
 
 ### <a name="required-hardware"></a>Požadovaný hardware
 
-Stolní počítač, abyste mohli vzdáleně připojit k na příkazovém řádku malin pí.
+Stolní počítač, která umožňuje vzdáleně připojit k příkazovému řádku na Raspberry Pi.
 
-[Microsoft IoT Starter Kit malin pí 3](https://azure.microsoft.com/develop/iot/starter-kits/) nebo ekvivalentní součásti. V tomto kurzu používá následující položky ze sady kit:
+[Microsoft IoT Starter Kit Raspberry Pi 3](https://azure.microsoft.com/develop/iot/starter-kits/) nebo ekvivalentní součásti. V tomto kurzu používá následující položky ze sady:
 
-- Malinová pí 3
+- Raspberry Pi 3
 - Karta MicroSD (s NOOBS)
-- Kabelu USB malé
-- Kabel Ethernet
+- USB Mini kabel
+- Kabelu Ethernet
 
-### <a name="required-desktop-software"></a>Požadovaný software plochy
+### <a name="required-desktop-software"></a>Požadované desktopového softwaru
 
-Musíte klient SSH na umožňují vzdálený přístup na příkazovém řádku pí malin stolního počítače.
+Na desktopovém počítači povolit vzdálený přístup k příkazového řádku na Raspberry Pi musíte klienta SSH.
 
-- Windows nezahrnuje klientem SSH. Doporučujeme používat [PuTTY](http://www.putty.org/).
-- Většina Linuxových distribucích a Mac OS, obsahují nástroj příkazového řádku SSH. Další informace najdete v tématu [SSH pomocí Linux nebo Mac OS](https://www.raspberrypi.org/documentation/remote-access/ssh/unix.md).
+- Windows nezahrnuje klienta SSH. Doporučujeme používat [PuTTY](http://www.putty.org/).
+- Většině distribucí systému Linux, Mac OS zahrnují příkazový řádek SSH. Další informace najdete v tématu [SSH pomocí systému Linux nebo Mac OS](https://www.raspberrypi.org/documentation/remote-access/ssh/unix.md).
 
-### <a name="required-raspberry-pi-software"></a>Požadovaný software malin platformy
+### <a name="required-raspberry-pi-software"></a>Požadovaný software Raspberry Pi
 
-Tento článek předpokládá, že jste nainstalovali nejnovější verzi [Raspbian operačního systému na vaše malin pí](https://www.raspberrypi.org/learning/software-guide/quickstart/).
+Tento článek předpokládá, že máte nainstalovanou nejnovější verzi z [Raspbian operační systém na Raspberry Pi](https://www.raspberrypi.org/learning/software-guide/quickstart/).
 
-Následující kroky ukazují, jak připravit vaše malin platformy pro vytvoření aplikace C, která se připojuje k akcelerátoru řešení:
+Následující kroky ukazují, jak připravit Raspberry Pi pro vytváření aplikace v jazyce C, která se připojuje k akcelerátoru řešení:
 
-1. Připojte se k malin pí pomocí **ssh**. Další informace najdete v tématu [SSH (Secure Shell)](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md) na [web Pi malin](https://www.raspberrypi.org/).
+1. Připojte se k Raspberry Pi pomocí **ssh**. Další informace najdete v tématu [SSH (Secure Shell)](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md) na [webu Raspberry Pi](https://www.raspberrypi.org/).
 
-1. Použijte následující příkaz k aktualizaci vašeho malin platformy:
+1. Chcete-li aktualizovat Raspberry Pi, použijte následující příkaz:
 
     ```sh
     sudo apt-get update
     ```
 
-1. Pomocí následujícího příkazu přidejte požadované vývojové nástroje a knihovny pro vaše platformy malin:
+1. Chcete-li přidat požadované vývojářské nástroje a knihovny pro Raspberry Pi, použijte následující příkaz:
 
     ```sh
     sudo apt-get install g++ make cmake gcc git libssl1.0-dev build-essential curl libcurl4-openssl-dev uuid-dev
     ```
 
-1. Použijte následující příkazy ke stažení, sestavit a nainstalovat na vaše platformy malin knihovny klienta služby IoT Hub:
+1. Stáhnout, sestavit a nainstalovat klientské knihovny pro centra IoT na Raspberry Pi, použijte následující příkazy:
 
     ```sh
     cd ~
@@ -73,9 +73,9 @@ Následující kroky ukazují, jak připravit vaše malin platformy pro vytvoře
 
 ## <a name="create-a-project"></a>Vytvoření projektu
 
-Proveďte následující kroky pomocí **ssh** připojení k vaší malin platformy:
+Proveďte následující kroky pomocí **ssh** připojení na Raspberry Pi:
 
-1. Vytvořte složku s názvem `remote_monitoring` do domovské složky na malin pí. Přejděte do této složky ve vašem prostředí:
+1. Vytvořte složku s názvem `remote_monitoring` ve vaší domovské složky na Raspberry Pi. Přejděte do této složky ve vašem prostředí:
 
     ```sh
     cd ~
@@ -85,7 +85,7 @@ Proveďte následující kroky pomocí **ssh** připojení k vaší malin platfo
 
 1. Vytvořit čtyři soubory **main.c**, **remote_monitoring.c**, **remote_monitoring.h**, a **CMakeLists.txt** v `remote_monitoring` složka.
 
-1. V textovém editoru otevřete **remote_monitoring.c** souboru. Na malin platformy, můžete použít buď **nano** nebo **vi** textový editor. Přidejte následující příkazy `#include`:
+1. V textovém editoru otevřete **remote_monitoring.c** souboru. Na Raspberry Pi, můžete použít buď **nano** nebo **vi** textového editoru. Přidejte následující příkazy `#include`:
 
     ```c
     #include "iothubtransportmqtt.h"
@@ -102,7 +102,7 @@ Proveďte následující kroky pomocí **ssh** připojení k vaší malin platfo
 
 Uložit **remote_monitoring.c** soubor a ukončete editor.
 
-## <a name="add-code-to-run-the-app"></a>Přidat kód pro spuštění aplikace
+## <a name="add-code-to-run-the-app"></a>Přidejte kód pro spuštění aplikace
 
 V textovém editoru otevřete **remote_monitoring.h** souboru. Přidejte následující kód:
 
@@ -131,9 +131,9 @@ Uložit **main.c** soubor a ukončete editor.
 
 Následující kroky popisují způsob použití *CMake* k vytvoření klientské aplikace.
 
-1. V textovém editoru otevřete **CMakeLists.txt** v soubor `remote_monitoring` složky.
+1. V textovém editoru otevřete **CMakeLists.txt** soubor `remote_monitoring` složky.
 
-1. Přidejte podle následujících pokynů můžete definovat, jak vytvořit klientskou aplikaci:
+1. Přidejte následující pokyny k definování, jak vytvořit klientskou aplikaci:
 
     ```cmake
     macro(compileAsC99)
@@ -183,7 +183,7 @@ Následující kroky popisují způsob použití *CMake* k vytvoření klientsk�
 
 1. Uložit **CMakeLists.txt** soubor a ukončete editor.
 
-1. V `remote_monitoring` složky, vytvořte složku pro uložení *zkontrolujte* soubory, které generuje CMake. Spusťte **cmake** a **zkontrolujte** příkazy následujícím způsobem:
+1. V `remote_monitoring` složce vytvořte složku pro uložení *Ujistěte se,* soubory, které generuje CMake. Spusťte **cmake** a **zkontrolujte** příkazy následujícím způsobem:
 
     ```sh
     mkdir cmake
@@ -192,7 +192,7 @@ Následující kroky popisují způsob použití *CMake* k vytvoření klientsk�
     make
     ```
 
-1. Spusťte aplikaci klienta a odesílat telemetrická data do služby IoT Hub:
+1. Spuštění klientské aplikace a odesílání telemetrických dat do služby IoT Hub:
 
     ```sh
     ./sample_app

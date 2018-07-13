@@ -1,6 +1,6 @@
 ---
-title: Přístup k rozhraní API služby Azure Media - 2.0 rozhraní příkazového řádku | Microsoft Docs
-description: Postupujte podle tohoto postupy pro přístup k rozhraní API služby Azure Media Services.
+title: Přístup k rozhraní API Azure Media Services – Azure CLI | Dokumentace Microsoftu
+description: Postupujte podle kroků tento návod pro přístup k rozhraní API služby Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,27 +12,27 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 03/19/2018
 ms.author: juliako
-ms.openlocfilehash: 9295c3f9dfabc8ef7749758e926df443843720a1
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e20cac5f1063589bdbfee0f384ac6af5a39811ed
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34639771"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38724026"
 ---
-# <a name="access-azure-media-services-api-with-cli-20"></a>Přístup k Azure Media Services rozhraní API pomocí rozhraní příkazového řádku 2.0
+# <a name="access-azure-media-services-api-with-the-azure-cli"></a>Přístup k Azure Media Services rozhraní API pomocí Azure CLI
  
-Objekt zabezpečení ověřování služby Azure AD má použít pro přístup k rozhraní API služby Azure Media Services. Aplikace musí požádat o tokenu Azure AD, který má následující parametry:
+Ověřování instančního objektu služby Azure AD by měl používat pro připojení k rozhraní API služby Azure Media Services. Vaše aplikace potřebuje k vyžádání tokenu Azure AD, který má následující parametry:
 
 * Koncový bod tenant Azure AD
-* Identifikátor URI prostředku Media Services
+* Identifikátor URI prostředku služby Media Services
 * Identifikátor URI pro REST Media Services
-* Hodnoty aplikace Azure AD: ID klienta a tajný klíč klienta
+* Hodnoty aplikace Azure AD: ID klienta a tajný kód klienta
 
-Tento článek ukazuje, jak vytvořit objekt služby Azure AD aplikace a služby a získat hodnoty, které jsou potřebné pro přístup k prostředkům Azure Media Services pomocí rozhraní příkazového řádku 2.0.
+Tento článek popisuje, jak používat rozhraní příkazového řádku Azure k vytvoření instančního objektu aplikace Azure AD a služby a získat hodnoty, které jsou potřeba pro přístup k prostředkům Azure Media Services.
 
 ## <a name="prerequisites"></a>Požadavky 
 
-Vytvořit nový účet Azure Media Services, jak je popsáno v [tento rychlý Start](create-account-cli-quickstart.md).
+Vytvoření nového účtu Azure Media Services, jak je popsáno v [v tomto rychlém startu](create-account-cli-quickstart.md).
 
 ## <a name="log-in-to-azure"></a>Přihlášení k Azure
 
@@ -40,7 +40,7 @@ Přihlaste se k webu [Azure Portal](http://portal.azure.com) a spusťte **CloudS
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, naleznete v tématu [instalace rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli). 
 
 [!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
 
@@ -51,4 +51,4 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku m
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
-[CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/ams?view=azure-cli-latest)
+[Azure CLI](https://docs.microsoft.com/en-us/cli/azure/ams?view=azure-cli-latest)

@@ -1,6 +1,6 @@
 ---
-title: 'Azure Premium Storage: Návrh pro výkon na virtuálních počítačích Windows | Microsoft Docs'
-description: Návrh vysoce výkonné aplikace pomocí Azure Premium Storage. Premium Storage nabízí podporu vysoce výkonné, nízkou latencí disku pro I náročnými úlohy běžící na virtuálních počítačích Azure.
+title: 'Azure Premium Storage: Návrh pro výkon na virtuálních počítačích s Windows | Dokumentace Microsoftu'
+description: Navrhněte výkonné aplikace pomocí služby Azure Premium Storage. Premium Storage nabízí podporu vysoce výkonných disků s nízkou latencí pro úlohy můžu vstupně-výstupními operacemi na Azure Virtual Machines.
 services: virtual-machines-windows
 documentationcenter: na
 author: aungoo-msft
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/27/2017
 ms.author: aungoo
 ms.openlocfilehash: 788f00d899a57c6734c6f17ff67d2cb766b17394
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2017
-ms.locfileid: "23949479"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38680834"
 ---
 [!INCLUDE [virtual-machines-common-premium-storage-performance.md](../../../includes/virtual-machines-common-premium-storage-performance.md)]

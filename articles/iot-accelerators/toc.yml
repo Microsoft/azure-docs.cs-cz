@@ -10,6 +10,8 @@
   items:
     - name: Nasazení řešení vzdáleného monitorování
       href: quickstart-remote-monitoring-deploy.md
+    - name: Nasazení řešení prediktivní údržby
+      href: quickstart-predictive-maintenance-deploy.md
     - name: Nasazení řešení simulace zařízení
       href: quickstart-device-simulation-deploy.md
 - name: Kurzy

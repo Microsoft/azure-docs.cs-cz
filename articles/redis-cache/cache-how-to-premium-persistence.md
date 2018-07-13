@@ -1,6 +1,6 @@
 ---
-title: Postup konfigurace trvalosti dat pro mezipaměť Azure Redis Cache Premium
-description: Zjistěte, jak konfigurovat a spravovat vaše instance Azure Redis Cache Premium vrstvu trvalosti dat
+title: Postup konfigurace trvalosti dat pro Premium Azure Redis Cache
+description: Zjistěte, jak konfigurovat a spravovat vaše instance Azure Redis Cache na úrovni Premium trvalost dat
 services: redis-cache
 documentationcenter: ''
 author: wesmc7777
@@ -15,175 +15,175 @@ ms.topic: article
 ms.date: 08/24/2017
 ms.author: wesmc
 ms.openlocfilehash: 270158bbf85a58a48a367a091ad2b09a9d114b2b
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
-ms.locfileid: "27910840"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38700879"
 ---
-# <a name="how-to-configure-data-persistence-for-a-premium-azure-redis-cache"></a>Postup konfigurace trvalosti dat pro mezipaměť Azure Redis Cache Premium
-Azure Redis Cache má jiný mezipaměti nabídky, které poskytují flexibilitu při výběru velikost mezipaměti a funkce, včetně funkce úrovně Premium, jako je clustering, trvalosti a podpory služby virtual network. Tento článek popisuje postup konfigurace trvalosti v instanci služby Azure Redis Cache premium.
+# <a name="how-to-configure-data-persistence-for-a-premium-azure-redis-cache"></a>Postup konfigurace trvalosti dat pro Premium Azure Redis Cache
+Azure Redis Cache má jiný nabídek, které poskytují flexibilitu při výběru velikosti mezipaměti a funkcí, včetně novými funkcemi úrovně Premium jako je clustering, trvalé a podpory služby virtual network. Tento článek popisuje postup konfigurace trvalosti v instanci Azure Redis Cache premium.
 
-Informace o dalších funkcí mezipaměti premium najdete v tématu [Úvod do Azure Redis Cache Premium vrstvy](cache-premium-tier-intro.md).
+Informace o dalších prémiových funkcí mezipaměti, naleznete v tématu [Úvod do služby Azure Redis Cache na úrovni Premium](cache-premium-tier-intro.md).
 
-## <a name="what-is-data-persistence"></a>Co je trvalosti dat?
-[Trvalost redis](https://redis.io/topics/persistence) umožňuje zachovat data uložená v Redis. Můžete také pořizovat snímky a zálohovat data, která budete moct načíst v případě selhání hardwaru. Toto je obrovskou výhodu přes úroveň Basic nebo Standard kde všechna data jsou uloženy v paměti a může být potenciální ztrátě dat v případě selhání, kde jsou uzly mezipaměti dolů. 
+## <a name="what-is-data-persistence"></a>Co je trvalost dat?
+[Trvalost redis](https://redis.io/topics/persistence) umožňuje trvalé uchování dat uložených v Redis. Můžete také pořizovat snímky a zálohovat data, které se dají načíst v případě selhání hardwaru. Toto je obrovskou výhodu oproti úrovně Basic nebo Standard, ve kterém všechna data jsou uložená v paměti a můžou být potenciální ztráty dat v případě selhání, kde jsou uzly mezipaměti vypnuté. 
 
-Azure Redis Cache nabízí trvalosti Redis pomocí těchto modelů:
+Azure Redis Cache nabízí trvalost Redis pomocí následující modely:
 
-* **Trvalost RDB** -trvalost při RDB (databáze Redis) je nakonfigurován, Azure Redis Cache potrvají snímek mezipaměti Redis v Redis binární formát disku podle konfigurovat četnost zálohování. Pokud dojde k závažné události, zakazující primární server a repliky mezipaměti, do mezipaměti je znovu vytvořena, pomocí poslední snímek. Další informace o [výhody](https://redis.io/topics/persistence#rdb-advantages) a [nevýhody](https://redis.io/topics/persistence#rdb-disadvantages) z trvalost RDB.
-* **Trvalost AOF** -trvalost při AOF (pouze připojit soubor) je nakonfigurován, Azure Redis Cache uloží každé operace zápisu do protokolu, který je uložený aspoň jednou za sekundu do účtu Azure Storage. Pokud dojde k závažné události, zakazující primární server a repliky mezipaměti, do mezipaměti je znovu vytvořena, pomocí operace uložené zápisu. Další informace o [výhody](https://redis.io/topics/persistence#aof-advantages) a [nevýhody](https://redis.io/topics/persistence#aof-disadvantages) z AOF trvalost.
+* **Trvalost RDB** -trvalost při RDB (databáze Redis) je nakonfigurován, Azure Redis Cache nevyřeší snímek mezipaměti Redis v Redis binární formát na disk podle konfigurovat četnost zálohování. Případě katastrofické události, která zakáže primárním i replikovaném mezipaměti mezipaměti je znovu vytvořena, pomocí nejnovější snímek. Další informace o [výhody](https://redis.io/topics/persistence#rdb-advantages) a [nevýhody](https://redis.io/topics/persistence#rdb-disadvantages) trvalého RDB.
+* **Trvalost AOF** -trvalost při AOF (soubor pouze připojit) je nakonfigurován, Azure Redis Cache ukládá všechny operace zápisu do protokolu, který je uložen alespoň jednou za sekundu do účtu služby Azure Storage. Případě katastrofické události, která zakáže primárním i replikovaném mezipaměti mezipaměti je znovu vytvořena, pomocí operace zápisu uložené. Další informace o [výhody](https://redis.io/topics/persistence#aof-advantages) a [nevýhody](https://redis.io/topics/persistence#aof-disadvantages) AOF trvalého.
 
-Trvalost je nakonfigurovaný z **nová mezipaměť Redis** okno při vytvoření mezipaměti a na **prostředků nabídky** existující premium ukládá do mezipaměti.
+Trvalost nastaven z **novou mezipaměť Redis** během vytváření mezipaměti a v okně **nabídce prostředků** existující premium ukládá do mezipaměti.
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-premium-create.md)]
 
-Jakmile je vybraná cenová úroveň premium, klikněte na možnost **trvalosti Redis**.
+Po výběru cenové úrovně premium, klikněte na tlačítko **trvalost Redis**.
 
 ![Trvalost redis][redis-cache-persistence]
 
-Kroky v následující části popisují postup konfigurace trvalosti Redis na nové mezipaměti premium. Po nakonfigurování trvalosti Redis klikněte na tlačítko **vytvořit** k vytvoření nové mezipaměti premium s trvalosti Redis.
+Kroky v další části popisují postup konfigurace trvalosti Redis na nová mezipaměť premium. Po nakonfigurování trvalosti Redis klikněte na tlačítko **vytvořit** vytvořit nová mezipaměť premium s trvalostí Redis.
 
 ## <a name="enable-redis-persistence"></a>Povolit trvalost Redis
 
-Redis je povolena trvalost na **trvalosti dat Redis** okna tak, že buď zvolíte **RDB** nebo **AOF** trvalost. U nových mezipamětí toto okno přistupuje během procesu vytváření mezipaměti, jak je popsáno v předchozí části. Pro existující mezipamětí **trvalosti dat Redis** okno je k němu přistupovat z **prostředků nabídky** ke svojí mezipaměti.
+Redis je povolena trvalost na **trvalost dat Redis** okno výběrem buď **RDB** nebo **AOF** trvalosti. Pro nové mezipaměti toto okno se přistupuje během procesu vytváření mezipaměti, jak je popsáno v předchozí části. Pro stávající mezipaměti **trvalost dat Redis** okno přistupuje z **nabídce prostředků** ke svojí mezipaměti.
 
-![Nastavení redis][redis-cache-settings]
+![Redis nastavení][redis-cache-settings]
 
 
 ## <a name="configure-rdb-persistence"></a>Konfigurace trvalosti RDB
 
-Chcete-li zapnout stálost RDB, klikněte na tlačítko **RDB**. Chcete-li zakázat trvalost RDB na dříve povoleno premium mezipaměti, klikněte na tlačítko **zakázané**.
+Chcete-li zapnout stálost RDB, klikněte na tlačítko **RDB**. Pokud chcete zakázat trvalost RDB do mezipaměti povolený premium, klikněte na tlačítko **zakázané**.
 
-![RDB trvalosti redis][redis-cache-rdb-persistence]
+![Redis do RDB trvalosti][redis-cache-rdb-persistence]
 
-Pokud chcete nakonfigurovat interval zálohování, vyberte **četnost zálohování** z rozevíracího seznamu. Vybrat možnost **15 minut**, **30 minut**, **60 minut**, **6 hodin**, **12 hodin**a **24 hodin**. Tento interval spustí počítání po úspěšném dokončení předchozí operace zálohování a po jeho uplynutí se zahájí novou zálohu.
+Pokud chcete nakonfigurovat interval zálohování, vyberte **četnost zálohování** z rozevíracího seznamu. Možnosti jsou **15 minut**, **30 minut**, **60 minut**, **6 hodin**, **12 hodin**a **24 hodin**. Tento interval, spustí odpočítávání po úspěšném dokončení předchozí operace zálohování a po jeho uplynutí se zahájí novou zálohu.
 
-Klikněte na tlačítko **účet úložiště** a vyberte účet úložiště, který chcete použít a vyberte buď **primární klíč** nebo **sekundární klíč** z **klíč úložiště** rozevíracího seznamu. Musíte zvolit účet úložiště ve stejné oblasti jako do mezipaměti a **Storage úrovně Premium** účet je doporučená, protože úložiště premium je vyšší propustnost. 
+Klikněte na tlačítko **účtu úložiště** výběrem účtu úložiště, který chcete použít a zvolte buď **primární klíč** nebo **sekundární klíč** ze **klíč úložiště** rozevíracího seznamu. Musíte zvolit účet úložiště ve stejné oblasti jako mezipaměť a **Premium Storage** účtu se doporučuje, protože služby premium storage má vyšší propustnost. 
 
 > [!IMPORTANT]
-> Pokud se znovu vygeneruje klíč úložiště pro váš účet trvalost, je nutné překonfigurovat požadovaný klíč **klíč úložiště** rozevíracího seznamu.
+> Pokud je znovu vygenerovat klíč úložiště pro váš účet trvalost, je nutné překonfigurovat požadovaný klíč **klíč úložiště** rozevíracího seznamu.
 > 
 > 
 
-Klikněte na tlačítko **OK** trvalost konfiguraci uložíte.
+Klikněte na tlačítko **OK** uložení konfigurace trvalosti.
 
-Další zálohování (nebo první zálohy u nových mezipamětí) je zahájena po uplynutí intervalu četnost zálohování.
+Příští zálohování (nebo první zálohy pro nové mezipaměti) je zahájeno, jakmile uplyne četnost zálohování.
 
 ## <a name="configure-aof-persistence"></a>Konfigurace trvalosti AOF
 
-Chcete-li zapnout stálost AOF, klikněte na tlačítko **AOF**. Chcete-li zakázat trvalost AOF na dříve povoleno premium mezipaměti, klikněte na tlačítko **zakázané**.
+Chcete-li zapnout stálost AOF, klikněte na tlačítko **AOF**. Chcete-li zakázat AOF trvalost pro mezipaměť, povolený premium, klikněte na tlačítko **zakázané**.
 
-![AOF trvalosti redis][redis-cache-aof-persistence]
+![AOF trvalost redis][redis-cache-aof-persistence]
 
-Konfigurace trvalosti AOF, zadejte **první účet úložiště**. Tento účet úložiště musí být ve stejné oblasti jako do mezipaměti a **Storage úrovně Premium** účet je doporučená, protože úložiště premium je vyšší propustnost. Volitelně můžete nakonfigurovat účet úložiště s názvem **druhého účtu úložiště**. Pokud je nakonfigurovaný druhý účet úložiště, zapíšou se do této druhé účet úložiště zápisy do mezipaměti repliky. Pro každý účet úložiště zvolit buď **primární klíč** nebo **sekundární klíč** z **klíč úložiště** rozevíracího seznamu. 
+Konfigurace trvalosti AOF, zadejte **první účet úložiště**. Tento účet úložiště musí být ve stejné oblasti jako mezipaměť a **Premium Storage** účtu se doporučuje, protože služby premium storage má vyšší propustnost. Volitelně můžete nakonfigurovat ještě účet úložiště s názvem **druhého účtu úložiště**. Pokud je nakonfigurovaný druhý účet úložiště, zapíšou se do druhého účtu úložiště zapisuje do mezipaměti se repliky. Pro každý účet úložiště, zvolte buď **primární klíč** nebo **sekundární klíč** ze **klíč úložiště** rozevíracího seznamu. 
 
 > [!IMPORTANT]
-> Pokud se znovu vygeneruje klíč úložiště pro váš účet trvalost, je nutné překonfigurovat požadovaný klíč **klíč úložiště** rozevíracího seznamu.
+> Pokud je znovu vygenerovat klíč úložiště pro váš účet trvalost, je nutné překonfigurovat požadovaný klíč **klíč úložiště** rozevíracího seznamu.
 > 
 > 
 
-Když je povolena trvalost AOF, zápisu operace do mezipaměti se uloží do účtu úložiště určený (nebo účty, pokud jste nakonfigurovali druhého účtu úložiště). V případě selhání závažné, která přebírá dolů primární server a repliky mezipaměť protokol uložené AOF slouží k opětovné sestavení mezipaměti.
+Když je povolena trvalost AOF, zápisu operace do mezipaměti se ukládají do účtu úložiště určeného (nebo účty, pokud jste nakonfigurovali druhého účtu úložiště). V případě závažného selhání, která přebírá seznam primárním i replikovaném mezipaměti uložené protokolu AOF slouží k opětovné sestavení mezipaměti.
 
 ## <a name="persistence-faq"></a>Trvalost – nejčastější dotazy
-Následující seznam obsahuje odpovědi na nejčastější dotazy týkající se Azure Redis Cache trvalost.
+Následující seznam obsahuje odpovědi na nejčastější dotazy o Azure Redis Cache trvalosti.
 
-* [Můžete povolit trvalost na dříve vytvořenou mezipaměti?](#can-i-enable-persistence-on-a-previously-created-cache)
-* [Můžete povolit trvalost AOF a RDB současně?](#can-i-enable-aof-and-rdb-persistence-at-the-same-time)
-* [Zvolte trvalost modelu](#which-persistence-model-should-i-choose)
-* [Co se stane, pokud mají I škálovat na jinou velikost a je obnovit zálohu, která byla vytvořená před provedením operace škálování?](#what-happens-if-i-have-scaled-to-a-different-size-and-a-backup-is-restored-that-was-made-before-the-scaling-operation)
+* [Můžete povolit trvalost pro mezipaměť, dříve vytvořený?](#can-i-enable-persistence-on-a-previously-created-cache)
+* [Můžete povolit trvalost AOF a RDB ve stejnou dobu?](#can-i-enable-aof-and-rdb-persistence-at-the-same-time)
+* [Který model trvalého mám zvolit?](#which-persistence-model-should-i-choose)
+* [Co se stane, když mám škálování na jinou velikost a, která byla vytvořená před provedením operace škálování je obnovit zálohu?](#what-happens-if-i-have-scaled-to-a-different-size-and-a-backup-is-restored-that-was-made-before-the-scaling-operation)
 
 
 ### <a name="rdb-persistence"></a>Trvalost RDB
-* [Můžete změnit po vytvoření mezipaměti je četnost záloh RDB?](#can-i-change-the-rdb-backup-frequency-after-i-create-the-cache)
-* [Proč Pokud četnost zálohování v RDB 60 minut je víc než 60 minut mezi zálohování?](#why-if-i-have-an-rdb-backup-frequency-of-60-minutes-there-is-more-than-60-minutes-between-backups)
-* [Co se stane starší zálohy RDB, když je proveden novou zálohu?](#what-happens-to-the-old-rdb-backups-when-a-new-backup-is-made)
+* [Můžete změnit po vytvoření mezipaměti požadovanou četnost zálohování RDB?](#can-i-change-the-rdb-backup-frequency-after-i-create-the-cache)
+* [Proč mám četnost zálohování v RDB 60 minut existuje více než 60 minut mezi zálohy?](#why-if-i-have-an-rdb-backup-frequency-of-60-minutes-there-is-more-than-60-minutes-between-backups)
+* [Co se stane starší zálohy RDB, když se provádí novou zálohu?](#what-happens-to-the-old-rdb-backups-when-a-new-backup-is-made)
 
-### <a name="aof-persistence"></a>Trvalost AOF
-* [Kdy je vhodné použít druhého účtu úložiště?](#when-should-i-use-a-second-storage-account)
-* [Nemá vliv trvalost AOF v celé, latenci nebo výkonu Moje mezipaměti?](#does-aof-persistence-affect-throughout-latency-or-performance-of-my-cache)
-* [Jak můžete odebrat druhého účtu úložiště?](#how-can-i-remove-the-second-storage-account)
-* [Co je přepisování a jak se týká Moje mezipaměti?](#what-is-a-rewrite-and-how-does-it-affect-my-cache)
-* [Co lze očekávat při škálování mezipaměť s AOF povolené?](#what-should-i-expect-when-scaling-a-cache-with-aof-enabled)
-* [Uspořádání AOF data v úložišti](#how-is-my-aof-data-organized-in-storage)
+### <a name="aof-persistence"></a>AOF trvalosti
+* [Kdy mám použít druhého účtu úložiště?](#when-should-i-use-a-second-storage-account)
+* [Nemá vliv AOF přetrvávání v průběhu, latence nebo výkonu mezipaměť?](#does-aof-persistence-affect-throughout-latency-or-performance-of-my-cache)
+* [Jak lze odebrat druhého účtu storage?](#how-can-i-remove-the-second-storage-account)
+* [Co je na přepisování kódu a jak to ovlivní Můj mezipaměti?](#what-is-a-rewrite-and-how-does-it-affect-my-cache)
+* [Co můžu očekávat, když škálování mezipaměti s AOF povoleno?](#what-should-i-expect-when-scaling-a-cache-with-aof-enabled)
+* [Jakým způsobem je organizována AOF data ve službě storage?](#how-is-my-aof-data-organized-in-storage)
 
 
-### <a name="can-i-enable-persistence-on-a-previously-created-cache"></a>Můžete povolit trvalost na dříve vytvořenou mezipaměti?
-Ano, trvalosti Redis lze nakonfigurovat při vytváření mezipaměti i na existující prémiových mezipamětí.
+### <a name="can-i-enable-persistence-on-a-previously-created-cache"></a>Můžete povolit trvalost pro mezipaměť, dříve vytvořený?
+Ano, trvalost Redis je možné nakonfigurovat při vytváření mezipaměti a na stávající mezipaměti úrovně premium.
 
-### <a name="can-i-enable-aof-and-rdb-persistence-at-the-same-time"></a>Můžete povolit trvalost AOF a RDB současně?
+### <a name="can-i-enable-aof-and-rdb-persistence-at-the-same-time"></a>Můžete povolit trvalost AOF a RDB ve stejnou dobu?
 
-Ne, můžete povolit pouze RDB nebo AOF, ale ne obojí ve stejnou dobu.
+Ne, můžete povolit pouze RDB nebo AOF, ale ne obojí současně.
 
-### <a name="which-persistence-model-should-i-choose"></a>Zvolte trvalost modelu
+### <a name="which-persistence-model-should-i-choose"></a>Který model trvalého mám zvolit?
 
-Trvalost AOF uloží každém zápisu do protokolu, který má určitý dopad na propustnost, porovnat s trvalost RDB, které ukládá zálohování podle nakonfigurovaný interval zálohování s minimálním dopadem na výkon. Trvalost AOF zvolte, pokud vaše primární cílem je minimalizovat ztrátu dat a dokáže zpracovat pokles v propustnost pro mezipaměť. Pokud chcete zachovat optimální propustnosti v mezipaměti, ale stále chcete mechanismus pro obnovení dat, vyberte trvalost RDB.
+Trvalost AOF při každém zápisu uloží do protokolu, který má dopad na propustnost, ve srovnání s trvalostí RDB, což jim zálohování podle nakonfigurovaný interval zálohování, s minimálním dopadem na výkon. Trvalost AOF zvolte, pokud primární cílem je minimalizovat ztrátu dat, a dokáže zpracovat pokles propustnosti ke svojí mezipaměti. Pokud chcete zachovat v mezipaměti optimální propustnosti, ale stále má mechanismus pro obnovení dat, zvolte RDB trvalosti.
 
-* Další informace o [výhody](https://redis.io/topics/persistence#rdb-advantages) a [nevýhody](https://redis.io/topics/persistence#rdb-disadvantages) z trvalost RDB.
-* Další informace o [výhody](https://redis.io/topics/persistence#aof-advantages) a [nevýhody](https://redis.io/topics/persistence#aof-disadvantages) z AOF trvalost.
+* Další informace o [výhody](https://redis.io/topics/persistence#rdb-advantages) a [nevýhody](https://redis.io/topics/persistence#rdb-disadvantages) trvalého RDB.
+* Další informace o [výhody](https://redis.io/topics/persistence#aof-advantages) a [nevýhody](https://redis.io/topics/persistence#aof-disadvantages) AOF trvalého.
 
-Další informace o výkonu při použití AOF trvalosti najdete v tématu [AOF nemá vliv trvalost v celé, latenci nebo výkonu Moje mezipaměti?](#does-aof-persistence-affect-throughout-latency-or-performance-of-my-cache)
+Další informace o výkonu při použití AOF trvalost, naleznete v tématu [AOF nemá vliv trvalost v průběhu, latence nebo výkonu mezipaměť?](#does-aof-persistence-affect-throughout-latency-or-performance-of-my-cache)
 
-### <a name="what-happens-if-i-have-scaled-to-a-different-size-and-a-backup-is-restored-that-was-made-before-the-scaling-operation"></a>Co se stane, pokud mají I škálovat na jinou velikost a je obnovit zálohu, která byla vytvořená před provedením operace škálování?
+### <a name="what-happens-if-i-have-scaled-to-a-different-size-and-a-backup-is-restored-that-was-made-before-the-scaling-operation"></a>Co se stane, když mám škálování na jinou velikost a, která byla vytvořená před provedením operace škálování je obnovit zálohu?
 
 RDB a AOF trvalosti:
 
-* Pokud máte škálovat na větší velikost, neexistuje žádný vliv.
-* Pokud máte škálovat na menší velikost, a máte vlastní [databáze](cache-configure.md#databases) nastavení, která je větší než [databáze limit](cache-configure.md#databases) pro novou velikost, není obnovit data v těchto databází. Další informace najdete v tématu [je vlastní databází. nastavení ovlivněných během změny měřítka?](cache-how-to-scale.md#is-my-custom-databases-setting-affected-during-scaling)
-* Pokud máte škálovat na menší velikost a menší velikost pro uložení všech dat z poslední zálohy není dostatek místa, klíče bude vyloučena během procesu obnovení, obvykle pomocí [allkeys lru](http://redis.io/topics/lru-cache) zásady vyřazení.
+* Když provedete škálování na větší velikost, nebude to mít žádný vliv.
+* Pokud provedete škálování menší velikost a máte vlastní [databází](cache-configure.md#databases) nastavení, která je větší než [limit databáze](cache-configure.md#databases) pro novou velikost, neobnoví se data v těchto databázích. Další informace najdete v tématu [je Moje vlastní databáze nastavení ovlivněných během změny měřítka?](cache-how-to-scale.md#is-my-custom-databases-setting-affected-during-scaling)
+* Pokud provedete škálování menší velikost a menší velikost pro uložení všech dat z poslední zálohy není dostatek místa, během procesu obnovení, obvykle s využitím bude vyloučena klíče [allkeys lru](http://redis.io/topics/lru-cache) zásady vyřazení.
 
-### <a name="can-i-change-the-rdb-backup-frequency-after-i-create-the-cache"></a>Můžete změnit po vytvoření mezipaměti je četnost záloh RDB?
-Ano, můžete změnit četnost záloh pro trvalost RDB na **trvalosti dat Redis** okno. Pokyny najdete v tématu [konfigurace Redis trvalost](#configure-redis-persistence).
+### <a name="can-i-change-the-rdb-backup-frequency-after-i-create-the-cache"></a>Můžete změnit po vytvoření mezipaměti požadovanou četnost zálohování RDB?
+Ano, můžete změnit četnost zálohování RDB trvalosti na **trvalost dat Redis** okno. Pokyny najdete v tématu [konfigurovat Redis persistence](#configure-redis-persistence).
 
-### <a name="why-if-i-have-an-rdb-backup-frequency-of-60-minutes-there-is-more-than-60-minutes-between-backups"></a>Proč Pokud četnost zálohování v RDB 60 minut je víc než 60 minut mezi zálohování?
-Interval RDB trvalost četnost záloh se nespustí, dokud předchozí proces zálohování byla úspěšně dokončena. Pokud je četnost záloh je 60 minut a trvá 15 minut pro proces zálohování úspěšně dokončit, další zálohování nezačne 75 minut po času zahájení z předchozí zálohy.
+### <a name="why-if-i-have-an-rdb-backup-frequency-of-60-minutes-there-is-more-than-60-minutes-between-backups"></a>Proč mám četnost zálohování v RDB 60 minut existuje více než 60 minut mezi zálohy?
+Interval četnosti zálohování RDB trvalost nespustí, dokud se předchozí proces zálohování byla úspěšně dokončena. Pokud trvá 15 minut pro proces zálohování a úspěšně dokončete požadovanou četnost zálohování je 60 minut, další zálohování začnou účtovat až 75 minut po času zahájení předchozí zálohy.
 
-### <a name="what-happens-to-the-old-rdb-backups-when-a-new-backup-is-made"></a>Co se stane starší zálohy RDB, když je proveden novou zálohu?
-Všechny zálohy trvalost RDB s výjimkou nejnovějšího se automaticky odstraní. Odstranění nemusí dojít okamžitě, ale nejsou starší zálohy trvalé bez omezení.
+### <a name="what-happens-to-the-old-rdb-backups-when-a-new-backup-is-made"></a>Co se stane starší zálohy RDB, když se provádí novou zálohu?
+Všechna zálohování RDB trvalost s výjimkou nejnovějšího se automaticky odstraní. Odstranění nemusí dojít okamžitě, ale nejsou starší zálohy zachovat po neomezenou dobu.
 
 
-### <a name="when-should-i-use-a-second-storage-account"></a>Kdy je vhodné použít druhého účtu úložiště?
+### <a name="when-should-i-use-a-second-storage-account"></a>Kdy mám použít druhého účtu úložiště?
 
-AOF trvalosti měli použít druhý účet úložiště, pokud se domníváte, že máte vyšší než očekávaný množinové operace v mezipaměti.  Nastavení účtu sekundární úložiště pomáhá zajistit, že mezipaměť nebude dosáhnout omezení šířky pásma úložiště.
+AOF trvalosti by měl použít druhého účtu úložiště, když budete přesvědčeni, že máte vyšší než očekávané sadě operace do mezipaměti.  Nastavení účtu sekundárního úložiště pomáhá zajistit, že mezipaměť nemá přístup do omezení šířky pásma úložiště.
 
-### <a name="does-aof-persistence-affect-throughout-latency-or-performance-of-my-cache"></a>Nemá vliv trvalost AOF v celé, latenci nebo výkonu Moje mezipaměti?
+### <a name="does-aof-persistence-affect-throughout-latency-or-performance-of-my-cache"></a>Nemá vliv AOF přetrvávání v průběhu, latence nebo výkonu mezipaměť?
 
-Trvalost AOF ovlivní propustnost podle přibližně 15 % – 20 % při mezipaměti je menší než maximální zatížení (procesoru a Server načíst i v části 90 %). By neměl být problémy s latencí při mezipaměť je v rámci těchto mezních hodnot. Mezipaměti bude tyto limity však dříve dosáhnout s AOF povolena.
+Trvalost AOF ovlivní propustnost podle přibližně 15 – 20 % mezipaměti je nižší než maximální zatížení (procesoru a Server načíst obě části 90 %). Zde by neměly být problémy s latencí při mezipaměti je v rámci těchto omezení. Mezipaměť se tato omezení však dříve dosáhnout s AOF povoleno.
 
-### <a name="how-can-i-remove-the-second-storage-account"></a>Jak můžete odebrat druhého účtu úložiště?
+### <a name="how-can-i-remove-the-second-storage-account"></a>Jak lze odebrat druhého účtu storage?
 
-Můžete odebrat účet sekundární úložiště trvalosti AOF nastavením druhý účet úložiště, aby byla stejná jako první účet úložiště. Pokyny najdete v tématu [AOF konfigurace trvalosti](#configure-aof-persistence).
+Nastavením druhého účtu úložiště bude stejný jako první účet úložiště můžete odebrat účet AOF trvalost sekundárního úložiště. Pokyny najdete v tématu [trvalost nakonfigurujte AOF](#configure-aof-persistence).
 
-### <a name="what-is-a-rewrite-and-how-does-it-affect-my-cache"></a>Co je přepisování a jak se týká Moje mezipaměti?
+### <a name="what-is-a-rewrite-and-how-does-it-affect-my-cache"></a>Co je na přepisování kódu a jak to ovlivní Můj mezipaměti?
 
-Když se soubor AOF stane dostatečně velké na to, přepište je automaticky zařazeny do fronty v mezipaměti. Přepsání změní velikost souboru AOF s minimální sadu operací, které jsou nutné k vytvoření aktuální datové sady. Během přepisů očekává dříve dosažení omezení výkonu, zejména při plánování práce s velkými datovými sadami. Přepisů docházet k méně často AOF souboru se změní na větší, ale bude trvat poměrně dlouhou dobu, kdy se stane.
+Jakmile je soubor AOF dostatečně velký, přepisování je automaticky zařazeno do fronty v mezipaměti. Přepsání změní velikost souboru AOF s minimální sadu operací, které jsou potřeba k vytvoření aktuální datové sady. Během přepisů můžete očekávat dříve dosažení omezení výkonu, zejména při práci s velkými datovými sadami. Přepisů docházet k méně často AOF soubor bude větší, ale bude trvat poměrně dlouhou dobu, kdy se stane.
 
-### <a name="what-should-i-expect-when-scaling-a-cache-with-aof-enabled"></a>Co lze očekávat při škálování mezipaměť s AOF povolené?
+### <a name="what-should-i-expect-when-scaling-a-cache-with-aof-enabled"></a>Co můžu očekávat, když škálování mezipaměti s AOF povoleno?
 
-Pokud je soubor AOF v době škálování výrazně velký, pak očekávají, že se operace škálování trvá déle, než se očekávalo vzhledem k tomu, že se bude znovu načíst soubor po dokončení škálování.
+Pokud AOF souboru chvíli škálování je výrazně velký, pak očekávat, že se operace škálování trvá déle než obvykle, protože ho bude možné znovu načíst tento soubor po dokončení změny velikosti.
 
-Další informace o škálování najdete v tématu [co se stane, když I mít škálovat na jinou velikost a je obnovit zálohu, která byla vytvořená před provedením operace škálování?](#what-happens-if-i-have-scaled-to-a-different-size-and-a-backup-is-restored-that-was-made-before-the-scaling-operation)
+Další informace o škálování najdete v tématu [co se stane, když mám škálování na jinou velikost a, která byla vytvořená před provedením operace škálování je obnovit zálohu?](#what-happens-if-i-have-scaled-to-a-different-size-and-a-backup-is-restored-that-was-made-before-the-scaling-operation)
 
-### <a name="how-is-my-aof-data-organized-in-storage"></a>Uspořádání AOF data v úložišti
+### <a name="how-is-my-aof-data-organized-in-storage"></a>Jakým způsobem je organizována AOF data ve službě storage?
 
-Data uložená v souborech AOF je rozdělen do více objekty BLOB stránky na uzel, pokud chcete zvýšit výkon při ukládání dat do úložiště. Následující tabulka zobrazuje, kolik objekty BLOB stránky se používají u jednotlivých cenových úrovní:
+Data uložená v soubory AOF je rozdělen do více objekty BLOB stránky podle počtu uzlů pro zvýšení výkonu při ukládání dat do úložiště. Následující tabulka uvádí, kolik objekty BLOB stránky se používají u jednotlivých cenových úrovní:
 
 | Úroveň Premium | Objekty blob |
 |--------------|-------|
-| P1           | 4 na horizontální oddíl    |
-| P2           | 8 na horizontální oddíl    |
-| P3           | 16 na horizontální oddíl   |
+| P1           | 4 za horizontální oddíl    |
+| P2           | 8 / horizontálních oddílů    |
+| P3           | 16 za horizontální oddíl   |
 | P4           | 20 na horizontální oddíl   |
 
-Pokud je povoleno clustering, každý horizontálního oddílu v mezipaměti má vlastní sadu objektů BLOB stránky, jak je uvedeno v předchozí tabulce. Například P2 mezipaměť tři horizontálních oddílů rozděluje jeho AOF souboru na 24 objekty BLOB stránky (8 objekty BLOB na horizontální oddíl s 3 horizontálních oddílů).
+Při zapnuté funkci clustering, každý horizontální oddíl v mezipaměti má svou vlastní sadu objektů BLOB stránky, jak je uvedeno v předchozí tabulce. Například mezipaměť P2 se tři horizontální oddíly distribuuje svůj soubor AOF mezi 24 objekty BLOB stránky (8 objektů blob za horizontální oddíl s 3 horizontální oddíly).
 
-Po přepsání dvě sady AOF soubory existují v úložišti. Přepisů probíhat na pozadí a připojit k první sadu souborů, zatímco připojení množinové operace, které se odesílají do mezipaměti při přepsání v druhé sadě. Zálohy se dočasně ukládají během přepisů v případě selhání, ale bude po dokončení přepište okamžitě odstraněna.
+Po revize existují dvě sady soubory AOF v úložišti. Přepisů probíhá na pozadí a připojení k první sadu souborů, zatímco množinové operace, které se odesílají do mezipaměti při přepsání připojení k druhé sadě. Zálohy jsou dočasně uloženy během přepisů v případě selhání, ale bude po dokončení na přepisování kódu okamžitě odstraněna.
 
 
 ## <a name="next-steps"></a>Další postup
-Naučte se používat další funkce mezipaměti premium.
+Další informace o použití další prémiových funkcí mezipaměti.
 
-* [Úvod do Azure Redis Cache na úrovni Premium](cache-premium-tier-intro.md)
+* [Úvod do služby Azure Redis Cache na úrovni Premium](cache-premium-tier-intro.md)
 
 <!-- IMAGES -->
 

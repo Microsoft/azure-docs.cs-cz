@@ -1,6 +1,6 @@
 ---
-title: Zálohování Azure zásobníku | Microsoft Docs
-description: Proveďte zálohu na vyžádání v zásobníku Azure se zálohováním na místě.
+title: Zálohování Azure stacku | Dokumentace Microsoftu
+description: Proveďte zálohu na vyžádání v Azure stacku pomocí služby backup na místě.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -15,43 +15,60 @@ ms.topic: article
 ms.date: 5/08/2017
 ms.author: mabrigg
 ms.reviewer: hectorl
-ms.openlocfilehash: c2a6727692a7a74b3e5fe32de8800722a9ed91b5
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 2570423a3cae2a15f0cfd294f1d91e6730748f68
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34075183"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38972604"
 ---
-# <a name="back-up-azure-stack"></a>Zálohování Azure zásobníku
+# <a name="back-up-azure-stack"></a>Zálohování Azure stacku
 
-*Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
+*Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
-Proveďte zálohu na vyžádání v zásobníku Azure se zálohováním na místě. Pokud potřebujete aktivovat službu zálohování infrastruktury, najdete v části [povolit zálohování pro zásobník Azure z portálu pro správu](azure-stack-backup-enable-backup-console.md).
+Proveďte zálohu na vyžádání v Azure stacku pomocí služby backup na místě. Pokyny ke konfiguraci prostředí PowerShell najdete v tématu [instalace Powershellu pro Azure Stack ](azure-stack-powershell-install.md). Přihlaste se ke službě Azure Stack, najdete v článku [nakonfigurovat prostředí operátor a přihlaste se ke službě Azure Stack](azure-stack-powershell-configure-admin.md).
 
-> [!Note]  
->  Pokyny ke konfiguraci prostředí PowerShell najdete v tématu [instalaci prostředí PowerShell pro Azure zásobníku ](azure-stack-powershell-install.md).
+## <a name="start-azure-stack-backup"></a>Spustit zálohování Azure stacku
 
-## <a name="start-azure-stack-backup"></a>Spustit zálohování Azure zásobníku
-
-Otevřete prostředí Windows PowerShell se v prostředí správy operátor řádku se zvýšenými oprávněními a spusťte následující příkazy:
+Spustit nové zálohování s proměnnou - AsJob pro sledování průběhu pomocí Start AzSBackup. 
 
 ```powershell
-    Start-AzSBackup -Location $location.Name
+    $backupjob = Start-AzsBackup -Force -AsJob
+    "Start time: " + $backupjob.PSBeginTime;While($backupjob.State -eq "Running"){("Job is currently: " + $backupjob.State+" ;Duration: " + (New-TimeSpan -Start ($backupjob.PSBeginTime) -End (Get-Date)).Minutes);Start-Sleep -Seconds 30};$backupjob.Output
 ```
 
-## <a name="confirm-backup-completed-in-the-administration-portal"></a>Potvrďte zálohování v portálu pro správu bylo dokončeno
+## <a name="confirm-backup-completed-via-powershell"></a>Potvrďte zálohování bylo dokončeno přes PowerShell
 
-1. Otevřete na portálu správy Azure zásobníku na [ https://adminportal.local.azurestack.external ](https://adminportal.local.azurestack.external).
+```powershell
+    if($backupjob.State -eq "Completed"){Get-AzsBackup | where {$_.BackupId -eq $backupjob.Output.BackupId}}
+```
+
+- Výsledek by měl vypadat podobně jako následující výstup:
+
+  ```powershell
+      BackupDataVersion : 1.0.1
+      BackupId          : <backup ID>
+      RoleStatus        : {NRP, SRP, CRP, KeyVaultInternalControlPlane...}
+      Status            : Succeeded
+      CreatedDateTime   : 7/6/2018 6:46:24 AM
+      TimeTakenToCreate : PT20M32.364138S
+      DeploymentID      : <deployment ID>
+      StampVersion      : 1.1807.0.41
+      OemVersion        : 
+      Id                : /subscriptions/<subscription ID>/resourceGroups/System.local/providers/Microsoft.Backup.Admin/backupLocations/local/backups/<backup ID>
+      Name              : local/<local name>
+      Type              : Microsoft.Backup.Admin/backupLocations/backups
+      Location          : local
+      Tags              : {}
+  ```
+
+## <a name="confirm-backup-completed-in-the-administration-portal"></a>Potvrdit dokončení v portálu pro správu zálohování
+
+1. Otevřít na portálu pro správu služby Azure Stack na [ https://adminportal.local.azurestack.external ](https://adminportal.local.azurestack.external).
 2. Vyberte **další služby** > **infrastruktura zálohování**. Zvolte **konfigurace** v **infrastruktura zálohování** okno.
-3. Najít **název** a **datum dokončení** zálohy v **dostupné zálohy** seznamu.
-4. Ověřte **stavu** je **úspěšné**.
-
-<!-- You can also confirm the backup completed from the administration portal. Navigate to `\MASBackup\<datetime>\<backupid>\BackupInfo.xml`
-
-In ‘Confirm backup completed’ section, the path at the end doesn’t make sense (ie relative to what, datetime format, etc?)
-\MASBackup\<datetime>\<backupid>\BackupInfo.xml -->
-
+3. Najít **název** a **datum dokončení** zálohy v **dostupnými zálohami** seznamu.
+4. Ověřte, **stavu** je **proběhlo úspěšně**.
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o pracovním postupu pro obnovení z před událostí ztráty dat. V tématu [zotavit závažné ztráty dat](azure-stack-backup-recover-data.md).
+- Další informace o pracovním postupu pro obnovení z před událostí ztráty. Zobrazit [obnovit ze ztráty dat](azure-stack-backup-recover-data.md).

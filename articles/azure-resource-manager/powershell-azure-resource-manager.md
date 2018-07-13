@@ -1,6 +1,6 @@
 ---
-title: Spravovat řešení Azure pomocí prostředí PowerShell | Microsoft Docs
-description: Ke správě prostředků pomocí Azure PowerShell a správce prostředků.
+title: Spravovat řešení Azure pomocí Powershellu | Dokumentace Microsoftu
+description: Ke správě prostředků pomocí Azure Powershellu a Resource Manageru.
 services: azure-resource-manager
 documentationcenter: ''
 author: tfitzmac
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/16/2018
 ms.author: tomfitz
-ms.openlocfilehash: 02616ef566dd576c3f406d4b9f3059dab27bf3e0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5f7c569eabcf6e4b743f1b6616161787764e8f84
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34603409"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38723858"
 ---
-# <a name="manage-resources-with-azure-powershell"></a>Správa prostředků pomocí Azure PowerShell
+# <a name="manage-resources-with-azure-powershell"></a>Správa prostředků pomocí Azure Powershellu
 
 [!INCLUDE [Resource Manager governance introduction](../../includes/resource-manager-governance-intro.md)]
 
@@ -33,9 +33,9 @@ Pokud se rozhodnete nainstalovat a používat PowerShell místně, přečtěte s
 
 [!INCLUDE [Resource Manager governance scope](../../includes/resource-manager-governance-scope.md)]
 
-V tomto článku použít, můžete snadno odebrat tato nastavení po dokončení všech nastavení pro správu do skupiny prostředků.
+V tomto článku použít všechna nastavení správy do skupiny prostředků, můžete snadno odebrat tato nastavení po dokončení.
 
-Umožňuje vytvořit skupinu prostředků.
+Pojďme vytvořit skupinu prostředků.
 
 ```azurepowershell-interactive
 Set-AzureRmContext -Subscription <subscription-name>
@@ -50,15 +50,15 @@ V tuto chvíli je skupina prostředků prázdná.
 
 ### <a name="assign-a-role"></a>Přiřazení role
 
-V tomto článku nasaďte virtuální počítač a jeho odpovídající virtuální síť. Pro správu řešení virtuálních počítačů existují v závislosti na prostředcích tři role, které poskytují běžný přístup:
+V tomto článku nasadíte virtuální počítač a jeho odpovídající virtuální síť. Pro správu řešení virtuálních počítačů existují v závislosti na prostředcích tři role, které poskytují běžný přístup:
 
 * [Přispěvatel virtuálních počítačů](../role-based-access-control/built-in-roles.md#virtual-machine-contributor)
 * [Přispěvatel sítě](../role-based-access-control/built-in-roles.md#network-contributor)
 * [Přispěvatel účtů úložiště](../role-based-access-control/built-in-roles.md#storage-account-contributor)
 
-Místo přiřazení rolí jednotlivým uživatelům je často jednodušší [vytvořit skupinu Azure Active Directory](../active-directory/active-directory-groups-create-azure-portal.md) pro uživatele, kteří potřebují provádět podobné akce. Potom této skupině přiřaďte odpovídající role. Pro názornost tohoto článku stačí vytvořit skupinu Azure Active Directory bez členů. Této skupině můžete přiřadit role pro některý obor. 
+Místo přiřazení rolí jednotlivým uživatelům je často jednodušší [vytvořit skupinu Azure Active Directory](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) pro uživatele, kteří potřebují provádět podobné akce. Potom této skupině přiřaďte odpovídající role. Pro názornost tohoto článku stačí vytvořit skupinu Azure Active Directory bez členů. Této skupině můžete přiřadit role pro některý obor. 
 
-Následující příklad vytvoří skupinu a přiřadí ji k roli Přispěvatel virtuálních počítačů pro skupinu prostředků. Ke spuštění `New-AzureAdGroup` příkaz, musíte buď použijte [prostředí cloudu Azure](/azure/cloud-shell/overview) nebo [stáhnout modulu Azure AD PowerShell](https://www.powershellgallery.com/packages/AzureAD/).
+Následující příklad vytvoří skupinu a přiřadí ji k roli Přispěvatel virtuálních počítačů pro skupinu prostředků. Ke spuštění `New-AzureAdGroup` příkaz, je nutné použít [Azure Cloud Shell](/azure/cloud-shell/overview) nebo [stažení modulu Azure AD PowerShell](https://www.powershellgallery.com/packages/AzureAD/).
 
 ```azurepowershell-interactive
 $adgroup = New-AzureADGroup -DisplayName VMDemoContributors `
@@ -78,7 +78,7 @@ Obvykle tento postup zopakujete pro role **Přispěvatel sítě** a **Přispěva
 
 ### <a name="apply-policies"></a>Použití zásad
 
-Vaše předplatné už obsahuje několik definic zásad. Pokud chcete zobrazit definice dostupné zásady, použijte:
+Vaše předplatné už obsahuje několik definic zásad. Pokud chcete zobrazit dostupné definice zásad, použijte:
 
 ```azurepowershell-interactive
 (Get-AzureRmPolicyDefinition).Properties | Format-Table displayName, policyType
@@ -87,8 +87,8 @@ Vaše předplatné už obsahuje několik definic zásad. Pokud chcete zobrazit d
 Zobrazí se definice existujících zásad. Typ zásad je buď **Předdefinované** nebo **Vlastní**. Najděte definice zásad popisující podmínku, kterou chcete přiřadit. V tomto článku můžete přiřadit zásady s těmito funkcemi:
 
 * omezení umístění pro všechny prostředky
-* omezit SKU pro virtuální počítače
-* audit virtuálních počítačů, které nepoužívají spravované disky
+* omezit SKU virtuálních počítačů
+* Auditovat virtuální počítače, které nepoužívají spravované disky
 
 ```azurepowershell-interactive
 $locations ="eastus", "eastus2"
@@ -134,9 +134,9 @@ Po dokončení nasazování můžete použít další nastavení pro správu ře
 
 [!INCLUDE [Resource Manager governance locks](../../includes/resource-manager-governance-locks.md)]
 
-### <a name="lock-a-resource"></a>Zamknout prostředku
+### <a name="lock-a-resource"></a>Uzamknout prostředek
 
-Chcete-li uzamčení virtuálního počítače a skupiny zabezpečení sítě, použijte:
+Zamknout virtuálního počítače a skupiny zabezpečení sítě, použijte:
 
 ```azurepowershell-interactive
 New-AzureRmResourceLock -LockLevel CanNotDelete `
@@ -151,7 +151,7 @@ New-AzureRmResourceLock -LockLevel CanNotDelete `
   -ResourceGroupName myResourceGroup
 ```
 
-Virtuální počítač se dá odstranit jenom Pokud konkrétně odebrat zámek. Tento krok najdete v části o [vyčištění prostředků](#clean-up-resources).
+Virtuální počítač můžete odstranit pouze, pokud výslovně odebrat zámek proti. Tento krok najdete v části o [vyčištění prostředků](#clean-up-resources).
 
 ## <a name="tag-resources"></a>Označení prostředků
 
@@ -172,7 +172,7 @@ Set-AzureRmResource -Tag @{ Dept="IT"; Environment="Test"; Project="Documentatio
 
 ### <a name="find-resources-by-tag"></a>Hledání prostředků podle značky
 
-K vyhledání prostředků s názvem značky a hodnoty, použijte:
+K vyhledání prostředků pomocí značek název a hodnotu, použijte:
 
 ```azurepowershell-interactive
 (Find-AzureRmResource -TagName Environment -TagValue Test).Name
@@ -186,21 +186,21 @@ Find-AzureRmResource -TagName Environment -TagValue Test | Where-Object {$_.Reso
 
 ### <a name="view-costs-by-tag-values"></a>Zobrazení nákladů podle hodnoty značky
 
-Po použití značek k prostředkům, můžete zobrazit náklady na prostředky s těmito značkami. Pro analýzu náklady zobrazíte nejnovější využití, se nemusí zobrazovat náklady na ještě chvíli trvá. Když náklady jsou k dispozici, můžete zobrazit náklady pro prostředky ve skupinách prostředků ve vašem předplatném. Uživatelé musí mít [přístupu na úrovni předplatného na fakturační informace](../billing/billing-manage-access.md) zobrazení nákladů.
+Po použití značek k prostředkům, můžete zobrazit náklady na prostředky s těmito značkami. To chvíli trvat, než analýzu nákladů zobrazíte nejnovější využití, tak náklady na nemusíte vidět ještě. Když náklady jsou k dispozici, můžete zobrazit náklady na prostředky napříč skupinami prostředků ve vašem předplatném. Uživatelé musí mít [úrovně přístup k předplatnému na fakturační informace](../billing/billing-manage-access.md) zobrazíte náklady.
 
-Chcete-li zobrazit náklady podle značky na portálu, vyberte své předplatné a vyberte **analýza nákladů**.
+Chcete-li zobrazit náklady podle klíčových slov na portálu, vyberte své předplatné a vyberte **Cost Analysis**.
 
 ![Analýza nákladů](./media/powershell-azure-resource-manager/select-cost-analysis.png)
 
-Potom filtrovat podle hodnoty značky a vyberte **použít**.
+Potom vyfiltrovat hodnotu značky a vyberte **použít**.
 
-![Náklady na zobrazení značky](./media/powershell-azure-resource-manager/view-costs-by-tag.png)
+![Zobrazení nákladů podle značky](./media/powershell-azure-resource-manager/view-costs-by-tag.png)
 
-Můžete také [rozhraní API Správce Azure fakturace](../billing/billing-usage-rate-card-overview.md) prostřednictvím kódu programu zobrazíte náklady.
+Můžete také použít [API pro fakturaci Azure](../billing/billing-usage-rate-card-overview.md) programově zobrazit náklady.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Zamčená skupina zabezpečení sítě nejde odstranit, dokud neodstraníte zámek. Chcete-li odebrat zámek, použijte:
+Zamčená skupina zabezpečení sítě nejde odstranit, dokud neodstraníte zámek. Odebrat zámek, použijte:
 
 ```azurepowershell-interactive
 Remove-AzureRmResourceLock -LockName LockVM `
@@ -220,7 +220,7 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 ```
 
 ## <a name="next-steps"></a>Další postup
-* Další informace o monitorování virtuálních počítačů najdete v tématu [monitorovat a aktualizovat virtuální počítač Windows v prostředí Azure PowerShell](../virtual-machines/windows/tutorial-monitoring.md).
-* Další informace o použití Azure Security Center k implementaci zabezpečení doporučené postupy [monitorovat zabezpečení virtuálního počítače pomocí Azure Security Center](../virtual-machines/windows/tutorial-azure-security.md).
-* Existující prostředky můžete přesunout do nové skupiny prostředků. Příklady najdete v tématu [přesunutí prostředků do nové skupiny prostředků nebo předplatného](resource-group-move-resources.md).
+* Další informace o monitorování virtuálních počítačů najdete v tématu [monitorovat a aktualizovat virtuální počítač Windows s Azure Powershellem](../virtual-machines/windows/tutorial-monitoring.md).
+* Další informace o použití Azure Security Center k implementaci doporučené bezpečnostní postupy [monitorování zabezpečení virtuálních počítačů pomocí Azure Security Center](../virtual-machines/windows/tutorial-azure-security.md).
+* Přesunutí stávajících prostředků do nové skupiny prostředků. Příklady najdete v tématu [přesun prostředků do nové skupiny prostředků nebo předplatného](resource-group-move-resources.md).
 * Pokyny k tomu, jak můžou podniky používat Resource Manager k efektivní správě předplatných, najdete v části [Základní kostra Azure Enterprise – zásady správného řízení pro předplatná](/azure/architecture/cloud-adoption-guide/subscription-governance).

@@ -1,6 +1,6 @@
 ---
-title: Vytvoření databáze Oracle virtuální počítač Azure | Microsoft Docs
-description: Rychle získáte databázi Oracle Database 12c nahoru a spouštění v prostředí Azure.
+title: Vytvoření databáze Oracle na Virtuálním počítači Azure | Dokumentace Microsoftu
+description: Rychle zprovoznit databázi Oracle Database 12c nahoru v prostředí Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: rickstercdn
@@ -16,15 +16,15 @@ ms.workload: infrastructure
 ms.date: 07/17/2017
 ms.author: rclaus
 ms.openlocfilehash: 8ff463b89b395947a66db6d067b6ba32281087ba
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34657894"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38688062"
 ---
-# <a name="create-an-oracle-database-in-an-azure-vm"></a>Vytvoření databáze Oracle na virtuálním počítači Azure
+# <a name="create-an-oracle-database-in-an-azure-vm"></a>Vytvoření databáze Oracle na Virtuálním počítači Azure
 
-Tato příručka podrobně popisuje pomocí rozhraní příkazového řádku Azure k nasazení virtuální počítač z Azure [image Galerie marketplace Oracle](https://azuremarketplace.microsoft.com/marketplace/apps/Oracle.OracleDatabase12102EnterpriseEdition?tab=Overview) k vytvoření databáze Oracle 12 c. Po nasazení serveru se připojí prostřednictvím SSH. Chcete-li nakonfigurovat databázi Oracle. 
+Tato příručka podrobně popisuje použití Azure CLI pro nasazení virtuálního počítače z Azure [image z Galerie marketplace Oracle](https://azuremarketplace.microsoft.com/marketplace/apps/Oracle.OracleDatabase12102EnterpriseEdition?tab=Overview) Chcete-li vytvořit databázi Oracle 12 c. Po nasazení serveru se připojí přes protokol SSH aby bylo možné konfigurovat databáze Oracle. 
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -43,9 +43,9 @@ az group create --name myResourceGroup --location eastus
 ```
 ## <a name="create-virtual-machine"></a>Vytvoření virtuálního počítače
 
-Chcete-li vytvořit virtuální počítač (VM), použijte [vytvořit virtuální počítač az](/cli/azure/vm#az_vm_create) příkaz. 
+Chcete-li vytvořit virtuální počítač (VM), použijte [az vm vytvořit](/cli/azure/vm#az_vm_create) příkazu. 
 
-Následující příklad vytvoří virtuální počítač `myVM`. Pokud už neexistují v umístění klíče výchozí klíče SSH, vytvoří se také. Chcete-li použít konkrétní sadu klíčů, použijte možnost `--ssh-key-value`.  
+Následující příklad vytvoří virtuální počítač `myVM`. Také vytvoří klíče SSH, pokud ještě neexistují ve výchozím umístění klíčů. Chcete-li použít konkrétní sadu klíčů, použijte možnost `--ssh-key-value`.  
 
 ```azurecli-interactive 
 az vm create \
@@ -57,7 +57,7 @@ az vm create \
     --generate-ssh-keys
 ```
 
-Po vytvoření virtuálního počítače Azure CLI zobrazí informace, podobně jako v následujícím příkladu. Poznamenejte si hodnotu pro `publicIpAddress`. Použijte tuto adresu přístup k virtuálnímu počítači.
+Po vytvoření virtuálního počítače se zobrazí Azure CLI informace podobně jako v následujícím příkladu. Poznamenejte si hodnotu pro `publicIpAddress`. Tuto adresu použijete pro přístup k virtuálnímu počítači.
 
 ```azurecli
 {
@@ -74,7 +74,7 @@ Po vytvoření virtuálního počítače Azure CLI zobrazí informace, podobně 
 
 ## <a name="connect-to-the-vm"></a>Připojení k virtuálnímu počítači
 
-Chcete-li vytvořit relace SSH s virtuálním Počítačem, použijte následující příkaz. Nahraďte na IP adresu `publicIpAddress` hodnotu pro virtuální počítač.
+Chcete-li vytvořit relaci SSH s virtuálním Počítačem, použijte následující příkaz. Nahraďte IP adresu s `publicIpAddress` hodnoty pro váš virtuální počítač.
 
 ```bash 
 ssh <publicIpAddress>
@@ -82,9 +82,9 @@ ssh <publicIpAddress>
 
 ## <a name="create-the-database"></a>Vytvoření databáze
 
-Oracle software je již nainstalována na bitovou kopii Marketplace. Vytvoření ukázkové databáze následujícím způsobem. 
+Oracle software je již nainstalována na Marketplace image. Vytvoření ukázkové databáze následujícím způsobem. 
 
-1.  Přepnout *oracle* superuživatele a pak inicializovat naslouchací proces pro protokolování:
+1.  Přepněte *oracle* superuživatele a inicializovat naslouchací proces pro protokolování:
 
     ```bash
     $ sudo su - oracle
@@ -141,17 +141,17 @@ Oracle software je již nainstalována na bitovou kopii Marketplace. Vytvoření
            -ignorePreReqs
     ```
 
-    Jak dlouho trvá několik minut pro vytvoření databáze.
+    Trvá několik minut pro vytvoření databáze.
 
 3. Nastavení proměnných Oracle
 
-Než připojíte, musíte nastavit dvě proměnné prostředí: *ORACLE_HOME* a *ORACLE_SID*.
+Než připojíte, je nutné nastavit dvě proměnné prostředí: *ORACLE_HOME* a *ORACLE_SID*.
 
 ```bash
 ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1; export ORACLE_HOME
 ORACLE_SID=cdb1; export ORACLE_SID
 ```
-Proměnné ORACLE_HOME a ORACLE_SID také můžete přidat do souboru .bashrc. To by uložit proměnných prostředí pro budoucí přihlášení. Potvrďte následující příkazy byly přidány do `~/.bashrc` soubor pomocí zvoleného editoru.
+Také můžete přidat proměnné ORACLE_HOME a ORACLE_SID .bashrc souboru. To by uložit proměnné prostředí pro budoucí přihlášení. Potvrďte následující příkazy jsou přidané do `~/.bashrc` soubor pomocí editoru podle vašeho výběru.
 
 ```bash
 # Add ORACLE_HOME. 
@@ -162,21 +162,21 @@ export ORACLE_SID=cdb1
 
 ## <a name="oracle-em-express-connectivity"></a>Připojení Oracle EM Express
 
-Pro nástroj pro správu grafického uživatelského rozhraní, které můžete použít k prozkoumání databázi nastavení Oracle EM Express. Pokud chcete připojit k Oracle EM Express, musíte nejprve nastavit port v Oracle. 
+Pro nástroj pro správu grafického uživatelského rozhraní, který vám pomůže prozkoumat databázi nastavte Oracle EM Express. Pro připojení k Oracle EM Express, musíte nejdřív nastavit port v databázi Oracle. 
 
-1. Připojení k vaší databázi pomocí sqlplus:
+1. Připojení k databázi pomocí sqlplus:
 
     ```bash
     sqlplus / as sysdba
     ```
 
-2. Po připojení nastavte port 5502 pro expresní EM
+2. Jakmile budete připojeni, nastavte port 5502 pro EM Express
 
     ```bash
     exec DBMS_XDB_CONFIG.SETHTTPSPORT(5502);
     ```
 
-3. Otevřete kontejneru PDB1 není-li již otevřenou, ale první kontrola stavu:
+3. Otevřete kontejneru PDB1 Nepřihlášený otevřené, ale první kontrola stavu:
 
     ```bash
     select con_id, name, open_mode from v$pdbs;
@@ -191,20 +191,20 @@ Pro nástroj pro správu grafického uživatelského rozhraní, které můžete 
       3           PDB1                      MOUNT
     ```
 
-4. Pokud OPEN_MODE pro `PDB1` není ČÍST zápisu, spusťte příkazy tady otevřete PDB1:
+4. Pokud OPEN_MODE pro `PDB1` není čtení ZAPSAT, spusťte příkazy tady otevřete PDB1:
 
    ```bash
     alter session set container=pdb1;
     alter database open;
    ```
 
-Je třeba zadat `quit` k ukončení relace sqlplus a typ `exit` na Odhlásit uživatele oracle.
+Je potřeba zadat `quit` sqlplus relace a typ `exit` odhlášení uživatele oracle.
 
-## <a name="automate-database-startup-and-shutdown"></a>Automatizovat databáze spuštění a vypnutí
+## <a name="automate-database-startup-and-shutdown"></a>Automatizace databáze spuštění a vypnutí
 
-Oracle database ve výchozím nastavení není spustit automaticky při restartování virtuálního počítače. K nastavení databáze Oracle na automatické spuštění, nejprve Přihlaste se jako kořenový adresář. Pak vytvořte a aktualizovat některé soubory systému.
+Oracle database ve výchozím nastavení nespustí automaticky při restartování virtuálního počítače. K nastavení databáze Oracle na automatické spouštění, nejdřív přihlásit jako uživatel root. Vytvořte a aktualizovat některé soubory systému.
 
-1. Přihlaste se jako kořenového příkazu.
+1. Přihlásit jako uživatel root
     ```bash
     sudo su -
     ```
@@ -253,7 +253,7 @@ Oracle database ve výchozím nastavení není spustit automaticky při restarto
     chmod 750 /etc/init.d/dbora
     ```
 
-5.  Vytvořte symbolické odkazy pro spuštění a vypnutí takto:
+5.  Vytvořte symbolické odkazy pro spuštění a vypnutí následujícím způsobem:
 
     ```bash
     ln -s /etc/init.d/dbora /etc/rc.d/rc0.d/K01dbora
@@ -261,17 +261,17 @@ Oracle database ve výchozím nastavení není spustit automaticky při restarto
     ln -s /etc/init.d/dbora /etc/rc.d/rc5.d/S99dbora
     ```
 
-6.  K testování změny, restartujte virtuální počítač:
+6.  Pokud chcete otestovat změny, restartujte virtuální počítač:
 
     ```bash
     reboot
     ```
 
-## <a name="open-ports-for-connectivity"></a>Otevřené porty pro připojení k síti
+## <a name="open-ports-for-connectivity"></a>Otevřené porty pro připojení
 
-Poslední úloha je konfigurace některé externí koncové body. Nastavit skupinu zabezpečení sítě Azure, který chrání virtuální počítač, ukončete nejprve relace SSH ve virtuálním počítači (by měl mít byla spuštěna z SSH při restartování v předchozím kroku). 
+Poslední úkol je konfigurace některé externí koncové body. Nastavení skupiny zabezpečení sítě Azure, které chrání virtuální počítač, nejprve ukončete relaci SSH ve virtuálním počítači (by měl mít byla spuštěna z SSH při restartování v předchozím kroku). 
 
-1.  Otevření koncového bodu, který používáte pro přístup k databázi Oracle vzdáleně, vytvořte skupinu zabezpečení sítě pravidlo s [vytvořit pravidla nsg sítě az](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) následujícím způsobem: 
+1.  Otevřete koncový bod, který používáte pro přístup k databázi Oracle vzdáleně, vytvořte pravidlo skupiny zabezpečení sítě pomocí [az network nsg pravidlo vytvořte](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) následujícím způsobem: 
 
     ```azurecli-interactive
     az network nsg rule create \
@@ -283,7 +283,7 @@ Poslední úloha je konfigurace některé externí koncové body. Nastavit skupi
         --destination-port-range 1521
     ```
 
-2.  Otevření koncového bodu, který používáte pro přístup k Oracle EM Express vzdáleně, vytvořit skupinu zabezpečení sítě pravidlo s [vytvořit pravidla nsg sítě az](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) následujícím způsobem:
+2.  Otevřete koncový bod, který používáte pro přístup k Oracle EM Express vzdáleně, vytvořte pravidlo skupiny zabezpečení sítě pomocí [az network nsg pravidlo vytvořte](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) následujícím způsobem:
 
     ```azurecli-interactive
     az network nsg rule create \
@@ -295,7 +295,7 @@ Poslední úloha je konfigurace některé externí koncové body. Nastavit skupi
         --destination-port-range 5502
     ```
 
-3. V případě potřeby získat veřejnou IP adresu vašeho virtuálního počítače znovu s [az sítě veřejné ip zobrazit](/cli/azure/network/public-ip#az_network_public_ip_show) následujícím způsobem:
+3. V případě potřeby získat veřejnou IP adresu vašeho virtuálního počítače s [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show) následujícím způsobem:
 
     ```azurecli-interactive
     az network public-ip show \
@@ -305,19 +305,19 @@ Poslední úloha je konfigurace některé externí koncové body. Nastavit skupi
         --output tsv
     ```
 
-4.  Připojte EM Express z prohlížeče. Ověřte, zda váš prohlížeč je kompatibilní s EM Express (je vyžadována instalace Flash): 
+4.  Připojte EM Express z prohlížeče. Ujistěte se, že váš prohlížeč je kompatibilní s EM Express (je vyžadována instalace Flash): 
 
     ```
     https://<VM ip address or hostname>:5502/em
     ```
 
-Se můžete přihlásit pomocí **SYS** účtu a zkontrolujte, zda **jako sysdba** zaškrtávací políčko. Heslo použít **OraPasswd1** nastavený během instalace. 
+Můžete se přihlásit pomocí **SYS** účtu a podívejte se **jako sysdba** zaškrtávací políčko. Použijte heslo **OraPasswd1** , kterou jste nastavili během instalace. 
 
-![Snímek obrazovky přihlašovací stránky Oracle OEM Express](./media/oracle-quick-start/oracle_oem_express_login.png)
+![Snímek obrazovky s přihlašovací stránku Express Oracle výrobce OEM](./media/oracle-quick-start/oracle_oem_express_login.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Po dokončení zkoumat první databáze Oracle na Azure a virtuální počítač již nepotřebujete, můžete použít [odstranění skupiny az](/cli/azure/group#az_group_delete) příkaz, který má odeberte skupinu zdrojů, virtuální počítač, a všechny související prostředky.
+Po dokončení zkoumání svoji první databázi Oracle v Azure a virtuální počítač je už je nepotřebujete, můžete použít [odstranění skupiny az](/cli/azure/group#az_group_delete) příkazu k odebrání skupiny prostředků, virtuálního počítače, a všechny související prostředky.
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup
@@ -325,6 +325,6 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o dalších [Oracle řešení v Azure](oracle-considerations.md). 
+Další informace o dalších [řešení Oracle v Azure](oracle-considerations.md). 
 
-Zkuste [instalace a konfigurace Oracle automatizované úložiště správy](configure-oracle-asm.md) kurzu.
+Zkuste [instalace a konfigurace Oracle automatizované Storage Management](configure-oracle-asm.md) kurzu.

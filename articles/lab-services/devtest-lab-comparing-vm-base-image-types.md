@@ -1,6 +1,6 @@
 ---
-title: Porovnání vlastních bitových kopií a vzorce v DevTest Labs | Microsoft Docs
-description: Další informace o rozdílech mezi vlastních bitových kopií a vzorce jako virtuální počítač základny, abyste se mohli rozhodnout, které z nich nejlépe vyhovuje prostředí.
+title: Porovnání vlastních imagí a vzorců ve službě DevTest Labs | Dokumentace Microsoftu
+description: Získejte informace o rozdílech mezi vlastní imagí a vzorců jako bází virtuálních počítačů, abyste se mohli rozhodnout, která z nich nejlépe vyhovuje prostředí.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -15,44 +15,44 @@ ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
 ms.openlocfilehash: 37288fd4a9c7558d05728b8ce03df505117e0232
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33787441"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38611266"
 ---
-# <a name="comparing-custom-images-and-formulas-in-devtest-labs"></a>Porovnání vlastních bitových kopií a vzorce v DevTest Labs
-Obě [vlastních bitových kopií](devtest-lab-create-template.md) a [vzorce](devtest-lab-manage-formulas.md) lze použít jako základ pro [vytvořit nové virtuální počítače](devtest-lab-add-vm.md). Však mezi vlastních bitových kopií a vzorce klíče rozdíl je, že vlastní image je jednoduše image podle virtuální pevný disk, když vzorec je obrázek, který založené na virtuální pevný disk *kromě* předkonfigurované nastavení – například velikost virtuálního počítače, virtuální sítě, podsítě a artefakty. Tyto předem nakonfigurovaných nastavení se nastaví se výchozí hodnoty, které je možné přepsat v době vytvoření virtuálního počítače. Tento článek vysvětluje některé (specialisté) výhody a nevýhody (cons) pomocí vlastních bitových kopií a kdy vzorce.
+# <a name="comparing-custom-images-and-formulas-in-devtest-labs"></a>Porovnání vlastních imagí a vzorců ve službě DevTest Labs
+Obě [vlastních imagí](devtest-lab-create-template.md) a [vzorce](devtest-lab-manage-formulas.md) slouží jako základ pro [vytvořit nové virtuální počítače](devtest-lab-add-vm.md). Klíče rozdílu mezi vlastní imagí a vzorců je však, že vlastní image je jednoduše image založenou na virtuální pevný disk, když vzorec je image založenou na virtuální pevný disk *kromě* předkonfigurovaném nastavení – třeba velikost virtuálního počítače, virtuální sítě podsíť a artefakty. Tato předem nakonfigurovaná nastavení se nastavují s výchozími hodnotami, které se dá přepsat v době vytvoření virtuálního počítače. Tento článek vysvětluje některé (profesionály) výhody a nevýhody (nevýhody) pomocí vlastních imagí a vzorců.
 
 ## <a name="custom-image-pros-and-cons"></a>Vlastní image výhody a nevýhody
 Vlastní Image poskytují statické, neměnné způsob, jak vytvořit virtuální počítače z požadované prostředí. 
 
-**Odborníci na**
+**V oblasti IT**
 
-* Zřizování virtuálních počítačů z vlastní image je rychlé, protože nic změny po je spuštěné virtuální počítač z bitové kopie. Jinými slovy nejsou žádné nastavení, které se použijí jako vlastní image je právě obrázek bez nastavení. 
+* Zřizování virtuálních počítačů z vlastní image je rychlý, protože po virtuálního počítače je spuštěné z image se nic nemění. Jinými slovy nejsou žádná nastavení použít vlastní image jsou jen image bez nastavení. 
 * Virtuální počítače vytvořené z jedné vlastní image jsou identické.
 
-**Cons**
+**Nevýhody**
 
-* Pokud budete potřebovat aktualizace některých aspektů vlastní image, je nutné znovu vytvořit bitovou kopii.  
+* Pokud je potřeba aktualizovat některé aspekty vlastní image, musí se znovu vytvořit bitovou kopii.  
 
-## <a name="formula-pros-and-cons"></a>Vzorce výhody a nevýhody
-Vzorce zadejte dynamické způsob, jak vytvořit virtuální počítače z požadované nastavení nebo konfigurace.
+## <a name="formula-pros-and-cons"></a>Vzorec výhody a nevýhody
+Vzorce poskytují dynamické způsob, jak vytvořit virtuální počítače z požadované konfigurace a nastavení.
 
-**Odborníci na**
+**V oblasti IT**
 
-* Změny v prostředí se dají zachytit za chodu prostřednictvím artefakty. Například pokud chcete nainstalovat s nejnovější bity z vaší verze kanálu virtuálního počítače nebo zařazení nejnovější kód z úložiště, je jednoduše zadat artefakt nasadí nejnovější bits nebo využívá nejnovější kód ve vzorci společně s cíl základní bitovou kopii. Vždy, když tento vzorec se používá k vytvoření virtuálních počítačů, nejnovější bits nebo kód jsou zařazeny do virtuálního počítače jejich nasazení. 
-* Vzorce můžete definovat výchozí nastavení, které nemůžete zadat vlastní Image – například velikosti virtuálních počítačů a nastavení virtuální sítě. 
-* Nastavení uložená v vzorec se zobrazují jako výchozí hodnoty, ale můžete upravovat, když je virtuální počítač vytvořený. 
+* Změny v prostředí se dají zachytit v reálném čase pomocí artefaktů. Například pokud chcete virtuální počítač nainstalovat s nejnovější součásti z kanálu pro vydávání verzí, nebo zařazení nejnovější kód ze svého úložiště, můžete jednoduše zadat artefakt, který nasadí nejnovější součásti nebo využívá nejnovější kód ve vzorci spolu s základní cíl obrázek. Pokaždé, když se tento vzorec se používá k vytvoření virtuálních počítačů, nejnovější bitů/kódu jsou nasazené/zařazen do virtuálního počítače. 
+* Vzorce můžete definovat výchozí nastavení, která vlastní Image neposkytuje – například velikosti virtuálních počítačů a nastavení virtuální sítě. 
+* Nastavení uložené ve vzorci se zobrazují jako výchozí hodnoty, ale je možné upravit, když se vytvoří virtuální počítač. 
 
-**Cons**
+**Nevýhody**
 
-* Vytvoření virtuálního počítače ze vzorce může trvat delší dobu než vytvoření virtuálního počítače z vlastní image.
+* Vytvoření virtuálního počítače ze vzorce, může trvat déle než vytvoření virtuálního počítače z vlastní image.
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## <a name="related-blog-posts"></a>Příspěvky blogu související
+## <a name="related-blog-posts"></a>Související blogové příspěvky
 * [Vlastní Image nebo vzorce?](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
 
 ## <a name="next-steps"></a>Další postup
-- [DevTest Labs – nejčastější dotazy](devtest-lab-faq.md)
+- [Nejčastější dotazy k DevTest Labs](devtest-lab-faq.md)

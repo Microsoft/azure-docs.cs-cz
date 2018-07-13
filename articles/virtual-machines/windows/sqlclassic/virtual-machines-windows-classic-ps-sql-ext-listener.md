@@ -1,6 +1,6 @@
 ---
-title: Konfigurace o externí naslouchací proces pro skupiny dostupnosti Always On | Microsoft Docs
-description: Tento kurz vás provede kroky k vytvoření vždy na naslouchací proces skupiny dostupnosti v Azure, které je externě přístupné pomocí veřejná virtuální IP adresy přidružené cloudové služby.
+title: Konfigurace externího naslouchacího procesu pro skupiny dostupnosti Always On | Dokumentace Microsoftu
+description: Tento kurz vás provede kroky k vytvoření vždy na naslouchací proces skupiny dostupnosti v Azure, která je zvenku přístupný pomocí veřejné virtuální IP adresy přidružené cloudové služby.
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
@@ -15,59 +15,59 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mikeray
-ms.openlocfilehash: 38bb77c6b1d083bd6b52b785a991f24965d00e12
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 58ec400faee04f8624822bbcb5325fca7006c578
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29398858"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38698630"
 ---
-# <a name="configure-an-external-listener-for-always-on-availability-groups-in-azure"></a>Konfigurace o externí naslouchací proces pro skupiny dostupnosti Always On v Azure
+# <a name="configure-an-external-listener-for-always-on-availability-groups-in-azure"></a>Konfigurace externího naslouchacího procesu pro skupiny dostupnosti Always On v Azure
 > [!div class="op_single_selector"]
-> * [Interní naslouchací proces](../classic/ps-sql-int-listener.md)
+> * [Interního naslouchacího procesu](../classic/ps-sql-int-listener.md)
 > * [Externí naslouchací proces](../classic/ps-sql-ext-listener.md)
 > 
 > 
 
-Toto téma ukazuje, jak nakonfigurovat naslouchací proces pro vždy na skupiny dostupnosti, která je přístupná externě na Internetu. To je umožněno díky přidružení cloudové službě **veřejná virtuální IP (VIP)** adresu naslouchací proces.
+Toto téma ukazuje, jak konfigurace naslouchacího procesu pro skupiny dostupnosti Always On, které je dostupné externě na Internetu. To je možné tím, že přidružíte cloudové službě **veřejná virtuální IP (VIP)** adresu pro naslouchací proces.
 
 > [!IMPORTANT] 
-> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a klasický](../../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek se zabývá pomocí modelu nasazení Classic. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager.
+> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a Classic](../../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek se věnuje modelu nasazení Classic. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager.
 
-Vaší skupiny dostupnosti může obsahovat replik, které jsou pouze, místní, Azure nebo span místní a Azure pro hybridní konfigurace. Azure repliky mohou být uloženy ve stejné oblasti nebo nad několika oblastmi pomocí více virtuálních sítí (virtuální sítě). Následující postup předpokládá, že už máte [nakonfigurovat skupinu dostupnosti](../classic/portal-sql-alwayson-availability-groups.md) ale nenakonfigurovali naslouchací proces.
+Skupiny dostupnosti mohou obsahovat replik, které jsou v místním, Azure, nebo span lokálně i Azure pro hybridní konfigurace. Azure repliky mohou být uloženy ve stejné oblasti nebo v několika oblastech pomocí více virtuálních sítí (VNets). Následující postup předpokládá, že jste již [nakonfigurovat skupinu dostupnosti](../classic/portal-sql-alwayson-availability-groups.md) ale neprovedli konfiguraci naslouchacího procesu.
 
 ## <a name="guidelines-and-limitations-for-external-listeners"></a>Pokyny a omezení pro externí naslouchací procesy
-Všimněte si následující pokyny o naslouchacího procesu skupiny dostupnosti v Azure při nasazení pomocí adresy stydké VIP cloudové služby:
+Při nasazování pomocí cloudové služby stydké virtuální IP adresy, mějte na paměti následující pokyny o naslouchacího procesu skupiny dostupnosti v Azure:
 
 * Naslouchací proces skupiny dostupnosti je podporován v systému Windows Server 2008 R2, Windows Server 2012 a Windows Server 2012 R2.
-* Klientská aplikace se musí nacházet v jiné cloudové službě než ten, který obsahuje vaší skupiny dostupnosti virtuálních počítačů. Azure nepodporuje přímá odpověď ze serveru s klientem a serverem v rámci stejné cloudové služby.
-* Ve výchozím kroky v tomto článku ukazují, jak nakonfigurovat jeden naslouchací proces použít adresu cloudové služby virtuální IP (VIP). Nicméně je možné vyhradit a vytvořte více VIP adres pro cloudové služby. Můžete vytvořit více naslouchací procesy, které se každý souvisejí s jinou virtuální IP adresy pomocí kroků v tomto článku. Informace o tom, jak vytvořit více virtuálních IP adres najdete v tématu [několika virtuálními IP adresami za cloudové služby](../../../load-balancer/load-balancer-multivip.md).
-* Pokud chcete vytvořit naslouchací proces pro hybridní prostředí, do místní sítě musí mít připojení k veřejnému Internetu kromě site-to-site VPN s virtuální síť Azure. V podsíti Azure, je dostupná pouze pro veřejnou IP adresu odpovídající cloudové služby naslouchacího procesu skupiny dostupnosti.
-* Není možné vytvořit o externí naslouchací proces ve stejné cloudové služby, kde máte také naslouchací proces interní pomocí interní nástroj pro vyrovnávání zatížení (ILB).
+* Klientská aplikace se musí nacházet na jinou cloudovou službu než ten, který obsahuje skupiny dostupnosti virtuálních počítačů. Azure nepodporuje vrácení přímá odpověď ze serveru s klientem a serverem v rámci stejné cloudové služby.
+* Ve výchozím nastavení kroky v tomto článku ukazují, jak nakonfigurovat jeden naslouchací proces použití cloudové služby virtuální IP adresy (VIP) adresy. Je však možné rezervovat a vytvořit více virtuální IP adresy pro cloudové služby. To umožňuje vytvořit několik naslouchacích procesů, které jsou přidružená ke různých virtuálních IP adres pomocí postupu v tomto článku. Informace o tom, jak vytvořit více virtuální IP adresy najdete v tématu [více virtuálních IP adres na jednu cloudovou službu](../../../load-balancer/load-balancer-multivip.md).
+* Pokud vytváříte naslouchacího procesu pro hybridní prostředí, v místní síti musí mít připojení k veřejnému Internetu kromě site-to-site VPN s Azure virtual network. V podsíti Azure, je dostupná jenom pro veřejnou IP adresu odpovídající cloudové služby naslouchacího procesu skupiny dostupnosti.
+* Není možné vytvořit o externí naslouchací proces ve stejné cloudové službě, kde budete mít taky interního naslouchacího procesu pomocí interního nástroje pro vyrovnávání zatížení (ILB).
 
-## <a name="determine-the-accessibility-of-the-listener"></a>Určení usnadnění naslouchacího procesu
+## <a name="determine-the-accessibility-of-the-listener"></a>Zjistit dostupnost naslouchací proces
 [!INCLUDE [ag-listener-accessibility](../../../../includes/virtual-machines-ag-listener-determine-accessibility.md)]
 
-Tento článek se zaměřuje na tvorbu naslouchací proces, který používá **Vyrovnávání zatížení externí**. Pokud chcete naslouchací proces, který je privátní k virtuální síti, najdete v části verzi tohoto článku, který obsahuje postup pro nastavení [naslouchací proces s ILB](../classic/ps-sql-int-listener.md)
+Tento článek se zaměřuje na tvorbu naslouchací proces, který používá **externího Vyrovnávání zatížení**. Pokud chcete naslouchací proces, který patří k virtuální síti, najdete v článku verze tohoto článku, který obsahuje postup pro nastavení [naslouchací proces s ILB](../classic/ps-sql-int-listener.md)
 
-## <a name="create-load-balanced-vm-endpoints-with-direct-server-return"></a>Vytvoření koncové body s vyrovnáváním zatížení virtuálních počítačů s přímý server návratový
-Externí Vyrovnávání zatížení využívá virtuální veřejná virtuální IP adresa cloudové služby, který hostuje virtuální počítače. Proto není nutné k vytváření a konfiguraci nástroje pro vyrovnávání zatížení v tomto případě.
+## <a name="create-load-balanced-vm-endpoints-with-direct-server-return"></a>Vytvořit koncové body s vyrovnáváním zatížení virtuálního počítače se přímá odpověď ze serveru vrácené
+Externí služba Vyrovnávání zatížení používá virtuální veřejné virtuální IP adresa cloudové služby, který je hostitelem vašich virtuálních počítačů. Není to nutné k vytvoření nebo konfigurace nástroje pro vyrovnávání zatížení v tomto případě.
 
-Koncový bod Vyrovnávání zatížení sítě je nutné vytvořit pro každý virtuální počítač Azure repliky hostování. Pokud máte repliky v několika oblastech, každá replika pro danou oblast musí být v rámci stejné cloudové služby ve stejné virtuální síti. Vytvoření skupiny dostupnosti replik, které jsou rozmístěny v několika oblastmi Azure vyžaduje konfiguraci více virtuálních sítí. Další informace o konfiguraci křížové připojení virtuální sítě najdete v tématu [konfigurace virtuální sítě pro připojení k virtuální síti](../../../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md).
+Koncový bod s vyrovnáváním zatížení je třeba vytvořit pro každý virtuální počítač, který je hostitelem repliky služby Azure. Pokud máte repliky v několika oblastech, každá replika pro tuto oblast musí být ve stejné cloudové služby v rámci stejné virtuální síti. Vytváří se skupina dostupnosti repliky, které jsou rozmístěny v několika oblastech Azure vyžaduje konfigurace více virtuálních sítí. Další informace o konfiguraci křížové připojení k virtuální síti, najdete v části [konfigurace VNet-to-VNet připojení](../../../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md).
 
-1. Na portálu Azure přejděte na každý virtuální počítač, který je hostitelem repliky a zobrazení podrobností.
-2. Klikněte **koncové body** kartu pro každý z virtuálních počítačů.
-3. Ověřte, zda **název** a **veřejný Port** naslouchacího procesu koncový bod, který chcete použít není již používán. V následujícím příkladu je název "MyEndpoint" a port je "1433".
-4. Na místního klienta, stáhněte a nainstalujte [nejnovější modul PowerShell](https://azure.microsoft.com/downloads/).
-5. Spusťte **prostředí Azure PowerShell**. Novou relaci prostředí PowerShell, je otevřené s Azure pro správu moduly načíst.
-6. Spustit **Get-AzurePublishSettingsFile**. Tato rutina vás přesměruje do prohlížeče a stáhněte soubor nastavení publikování do místního adresáře. Budete vyzváni k zadání pověření přihlašování pro vaše předplatné Azure.
-7. Spustit **Import AzurePublishSettingsFile** příkazu s cestou soubor nastavení publikování, který jste stáhli:
+1. Na webu Azure Portal přejděte na každý virtuální počítač, který je hostitelem repliky a zobrazte podrobnosti.
+2. Klikněte na tlačítko **koncové body** kartu pro každý virtuální počítač.
+3. Ověřte, že **název** a **veřejný Port** naslouchacího procesu koncového bodu, který chcete použít se již nepoužívá. V následujícím příkladu je název "MyEndpoint" a port, který je "1433".
+4. Na váš místní klient, stáhněte a nainstalujte [nejnovější modul Powershellu](https://azure.microsoft.com/downloads/).
+5. Spuštění **prostředí Azure PowerShell**. Otevře novou relaci Powershellu s Azure pro správu modulů.
+6. Spustit **Get-AzurePublishSettingsFile**. Tato rutina vás přesměruje do prohlížeče a stáhněte si soubor nastavení publikování do místního adresáře. Můžete být vyzváni k protokolu pověření pro vaše předplatné Azure.
+7. Spustit **Import AzurePublishSettingsFile** příkazu s cestou, který jste stáhli soubor nastavení publikování:
    
         Import-AzurePublishSettingsFile -PublishSettingsFile <PublishSettingsFilePath>
    
-    Po importu se soubor nastavení publikování, můžete spravovat vaše předplatné Azure v relaci prostředí PowerShell.
+    Po importu souboru nastavení publikování můžete spravovat vaše předplatné Azure v relaci Powershellu.
     
-1. Do textového editoru, zkopírujte níže uvedený skript prostředí PowerShell a nastavte hodnoty proměnné tak, aby odpovídaly vašemu prostředí (výchozí hodnoty byly zadány pro některé parametry). Všimněte si, že pokud vaše skupina dostupnosti zahrnuje oblasti Azure, musíte spustit skript jednou v každé datové centrum pro cloudové služby a uzly, které jsou umístěny ve stejné datové centrum.
+1. Zkopírujte níže uvedený Powershellový skript do textového editoru a nastavte hodnoty proměnné tak, aby odpovídala prostředí (výchozí hodnoty byly zadány pro některé parametry). Všimněte si, že pokud vaše skupina dostupnosti zahrnuje oblasti Azure, musíte spustit skript jednou v každé datové centrum pro cloudovou službu a uzly, které se nacházejí ve stejné datové centrum.
    
         # Define variables
         $ServiceName = "<MyCloudService>" # the name of the cloud service that contains the availability group nodes
@@ -79,9 +79,9 @@ Koncový bod Vyrovnávání zatížení sítě je nutné vytvořit pro každý v
             Get-AzureVM -ServiceName $ServiceName -Name $node | Add-AzureEndpoint -Name "ListenerEndpoint" -Protocol "TCP" -PublicPort 1433 -LocalPort 1433 -LBSetName "ListenerEndpointLB" -ProbePort 59999 -ProbeProtocol "TCP" -DirectServerReturn $true | Update-AzureVM
         }
 
-2. Jakmile jednou nastavíte proměnné, zkopírujte z textového editoru do relace prostředí Azure PowerShell ji spustit skript. Pokud stále zobrazuje řádku >>, zadejte zadejte znovu a ujistěte se, je skript spuštěn.
+2. Jakmile jednou nastavíte proměnné, zkopírujte skript z textového editoru do relace prostředí Azure PowerShell k jeho spuštění. Pokud se stále zobrazí výzvu >>, zadejte ENTER znovu a ujistěte se, že je skript spuštěn.
 
-## <a name="verify-that-kb2854082-is-installed-if-necessary"></a>Ověřte, zda KB2854082 nainstalována v případě potřeby
+## <a name="verify-that-kb2854082-is-installed-if-necessary"></a>Ověřte, že KB2854082 je nainstalována v případě potřeby
 [!INCLUDE [kb2854082](../../../../includes/virtual-machines-ag-listener-kb2854082.md)]
 
 ## <a name="open-the-firewall-ports-in-availability-group-nodes"></a>Otevřít porty brány firewall v uzlech skupiny dostupnosti
@@ -89,15 +89,15 @@ Koncový bod Vyrovnávání zatížení sítě je nutné vytvořit pro každý v
 
 ## <a name="create-the-availability-group-listener"></a>Vytvoření naslouchacího procesu skupiny dostupnosti
 
-Vytvořte naslouchací proces skupiny dostupnosti ve dvou krocích. Nejprve vytvořte prostředek clusteru bodu přístupu klienta a nakonfigurovat závislosti. Druhý nakonfigurujte prostředky clusteru pomocí prostředí PowerShell.
+Vytvořte naslouchací proces skupiny dostupnosti ve dvou krocích. Nejprve vytvořte prostředek clusteru bodu přístupu klienta a nakonfigurovat závislosti. Za druhé nakonfigurujte prostředky clusteru pomocí Powershellu.
 
 ### <a name="create-the-client-access-point-and-configure-the-cluster-dependencies"></a>Vytvořit klientský přístupový bod a nakonfigurovat závislosti clusteru
 [!INCLUDE [firewall](../../../../includes/virtual-machines-ag-listener-create-listener.md)]
 
 ### <a name="configure-the-cluster-resources-in-powershell"></a>Konfigurace prostředků clusteru v prostředí PowerShell
-1. Pro externí zátěže, musíte získat veřejnou virtuální IP adresu cloudové služby, který obsahuje repliky. Přihlaste se k portálu Azure. Přejděte do cloudové služby, která obsahuje vaší skupiny dostupnosti virtuálních počítačů. Otevřete **řídicí panel** zobrazení.
-2. Poznamenejte si adresu v části **veřejná virtuální IP (VIP) Adresa**. Pokud vaše řešení zahrnuje virtuální sítě, můžete tento krok opakujte pro každou cloudovou službu, která obsahuje virtuální počítač, který je hostitelem repliky.
-3. Na jednom z virtuálních počítačů do textového editoru, zkopírujte níže uvedený skript prostředí PowerShell a nastavte proměnné na hodnoty, které jste si předtím poznamenali.
+1. Pro externího Vyrovnávání zatížení, musíte získat veřejnou virtuální IP adresu z cloudové služby, který obsahuje repliky. Přihlaste se na webu Azure portal. Přejděte ke cloudové službě, která obsahuje skupiny dostupnosti virtuálních počítačů. Otevřít **řídicí panel** zobrazení.
+2. Poznamenejte si adresu uvedené v části **veřejná virtuální IP (VIP) adres**. Pokud vaše řešení zahrnuje virtuální sítě, můžete tento krok opakujte pro každou cloudovou službu, která obsahuje virtuální počítač, který je hostitelem repliky.
+3. Na jednom z virtuálních počítačů zkopírujte níže uvedený Powershellový skript do textového editoru a nastavte proměnné na hodnoty, které jste si předtím poznamenali.
    
         # Define variables
         $ClusterNetworkName = "<ClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
@@ -110,26 +110,26 @@ Vytvořte naslouchací proces skupiny dostupnosti ve dvou krocích. Nejprve vytv
    
         # Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$CloudServiceIP";"ProbePort"="59999";"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"OverrideAddressMatch"=1;"EnableDhcp"=0}
         # cluster res $IPResourceName /priv enabledhcp=0 overrideaddressmatch=1 address=$CloudServiceIP probeport=59999  subnetmask=255.255.255.255
-4. Jednou jste nastavili proměnné, otevřete okno se zvýšenými oprávněními prostředí Windows PowerShell, pak zkopírujte skript z textového editoru a vložte do relace prostředí Azure PowerShell ji spustit. Pokud stále zobrazuje řádku >>, zadejte zadejte znovu a ujistěte se, je skript spuštěn.
-5. Tento postup opakujte pro každý virtuální počítač. Tento skript nakonfiguruje prostředků IP adresu s IP adresou cloudové služby a nastaví další parametry, jako je port testu. Pokud IP adresa prostředků do online režimu, může pak reagovat dotazování na port testu z vyrovnávání zatížení koncového bodu v tomto kurzu vytvořili.
+4. Jednou budete jste nastavili proměnné, otevřete okno Windows Powershellu se zvýšenými oprávněními, pak zkopírujte skript z textového editoru a vložit do relace prostředí Azure PowerShell k jeho spuštění. Pokud se stále zobrazí výzvu >>, zadejte ENTER znovu a ujistěte se, že je skript spuštěn.
+5. Tento postup opakujte na každém virtuálním počítači. Tento skript nakonfiguruje prostředek IP adresy se IP adresa cloudové služby a nastaví další parametry jako portu sondy. Pokud prostředek IP adresy se přepne do online režimu, může pak reagovat cyklického dotazování na portu sondy z s vyrovnáváním zatížení koncový bod vytvořený dříve v tomto kurzu.
 
-## <a name="bring-the-listener-online"></a>Přepněte naslouchací proces online
+## <a name="bring-the-listener-online"></a>Přeneste naslouchacího procesu online
 [!INCLUDE [Bring-Listener-Online](../../../../includes/virtual-machines-ag-listener-bring-online.md)]
 
-## <a name="follow-up-items"></a>Položky následnou akci
+## <a name="follow-up-items"></a>Následné akce položek
 [!INCLUDE [Follow-up](../../../../includes/virtual-machines-ag-listener-follow-up.md)]
 
-## <a name="test-the-availability-group-listener-within-the-same-vnet"></a>Testování naslouchacího procesu skupiny dostupnosti (v rámci stejné virtuální)
+## <a name="test-the-availability-group-listener-within-the-same-vnet"></a>Testování naslouchacího procesu skupiny dostupnosti (v rámci stejné virtuální síti)
 [!INCLUDE [Test-Listener-Within-VNET](../../../../includes/virtual-machines-ag-listener-test.md)]
 
 ## <a name="test-the-availability-group-listener-over-the-internet"></a>Testování naslouchacího procesu skupiny dostupnosti (přes internet)
-Chcete-li získat přístup k naslouchání z mimo virtuální síť, musíte používat vyrovnávání zatížení externí nebo veřejné (popsaný v tomto tématu) místo ILB, který je dostupný jenom z v rámci stejnou virtuální síť. V připojovacím řetězci zadejte název cloudové služby. Například pokud jste měli cloudové služby s názvem *mycloudservice*, sqlcmd příkaz vypadat takto:
+Aby bylo možné získat přístup k naslouchacího procesu od mimo virtuální síť, musíte používat externí/veřejný zátěže (popsané v tomto tématu) místo ILB, který je dostupný pouze z v rámci stejné virtuální síti. V připojovacím řetězci zadejte název cloudové služby. Například, pokud jste měli cloudovou službu s názvem *mycloudservice*, příkazu sqlcmd by měl vypadat takto:
 
     sqlcmd -S "mycloudservice.cloudapp.net,<EndpointPort>" -d "<DatabaseName>" -U "<LoginId>" -P "<Password>"  -Q "select @@servername, db_name()" -l 15
 
-Na rozdíl od předchozí příklad musí být použít ověřování SQL, protože volající nelze použít ověřování systému windows přes internet. Další informace najdete v tématu [vždy na skupiny dostupnosti ve virtuálním počítači Azure: případech připojení klienta](http://blogs.msdn.com/b/sqlcat/archive/2014/02/03/alwayson-availability-group-in-windows-azure-vm-client-connectivity-scenarios.aspx). Když pomocí ověřování SQL. Ujistěte se, že můžete vytvořit stejnou přihlášení na obou replikách. Další informace o odstraňování potíží s přihlášení se skupinami dostupnosti najdete v tématu [mapování přihlášení nebo použití obsažené uživatele databáze SQL pro připojení k jiné repliky a mapovat do databází dostupnosti,](http://blogs.msdn.com/b/alwaysonpro/archive/2014/02/19/how-to-map-logins-or-use-contained-sql-database-user-to-connect-to-other-replicas-and-map-to-availability-databases.aspx).
+Na rozdíl od předchozího příkladu ověřování SQL musí použít, protože volající nelze použít ověřování systému windows přes internet. Další informace najdete v tématu [skupiny dostupnosti Always On na virtuálním počítači Azure: scénáře připojení klienta](http://blogs.msdn.com/b/sqlcat/archive/2014/02/03/alwayson-availability-group-in-windows-azure-vm-client-connectivity-scenarios.aspx). Pokud používáte ověřování SQL, ujistěte se, že vytvoření stejné přihlašovací údaje na obou replikách. Další informace o řešení potíží s přihlášení se skupinami dostupnosti najdete v tématu [mapování přihlášení nebo použití obsažené uživatele databáze SQL pro připojení k ostatními replikami a mapovat do databází dostupnosti](http://blogs.msdn.com/b/alwaysonpro/archive/2014/02/19/how-to-map-logins-or-use-contained-sql-database-user-to-connect-to-other-replicas-and-map-to-availability-databases.aspx).
 
-Pokud jsou repliky Always On v různých podsítích, musí klienti zadat **MultisubnetFailover = True** v připojovacím řetězci. Výsledkem pokusy o připojení paralelní replikami v různých podsítích. Všimněte si, že tento scénář zahrnuje nasazení mezi oblastmi vždy na skupiny dostupnosti.
+Pokud jsou repliky Always On v různých podsítích, budou muset klienti zadat **MultisubnetFailover = True** v připojovacím řetězci. Výsledkem je pokusy o paralelní připojení repliky v různých podsítích. Všimněte si, že tento scénář obsahuje nasazení skupiny dostupnosti Always On mezi oblastmi.
 
 ## <a name="next-steps"></a>Další postup
 [!INCLUDE [Listener-Next-Steps](../../../../includes/virtual-machines-ag-listener-next-steps.md)]

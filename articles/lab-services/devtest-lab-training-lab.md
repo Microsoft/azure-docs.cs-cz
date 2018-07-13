@@ -1,6 +1,6 @@
 ---
-title: Použít k trénování Azure DevTest Labs | Microsoft Docs
-description: Naučte se používat Azure DevTest Labs pro scénáře školení.
+title: Pomocí Azure DevTest Labs pro vzdělávání | Dokumentace Microsoftu
+description: Zjistěte, jak pomocí Azure DevTest Labs pro trénovací scénáře.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -14,91 +14,91 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: 85eddaaf101c3e85eca7514b04660163d23c1c80
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33787994"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38666790"
 ---
-# <a name="use-azure-devtest-labs-for-training"></a>Použití Azure DevTest Labs pro školení
-Azure DevTest Labs lze použít k implementaci mnoho klíčových scénářů, kromě vývoje/testování. Jedním z těchto scénářů je nastavit testovací prostředí pro školení. Azure DevTest Labs umožňuje vytvoření testovacího prostředí, kde můžete zadat vlastní šablony, které každý praktikanta můžete použít k vytvoření identické a izolované prostředí pro školení. Můžete použít zásady, abyste zajistili, že školení prostředí jsou k dispozici pro každý praktikanta jenom v případě, že je potřebují a obsahovat dostatek prostředků – jako jsou virtuální počítače - požadované pro školení. Nakonec můžete snadno sdílet testovací prostředí s povolání, které mají přístup k jedním kliknutím.
+# <a name="use-azure-devtest-labs-for-training"></a>Pomocí Azure DevTest Labs pro školení
+Azure DevTest Labs je možné implementovat mnoha klíčové scénáře kromě pro vývoj/testování. Jedním z těchto scénářů je nastavení testovacího prostředí pro školení. Azure DevTest Labs umožňuje vytvoření testovacího prostředí, ve kterém můžete zadat vlastní šablony, které každý účastník výcviku můžete použít k vytvoření shodné a jsou izolované prostředí pro školení. Můžete využít zásady pro zajištění, že školení prostředí jsou k dispozici pro každý účastník výcviku pouze v případě potřeby a obsahovat dostatek prostředků – například virtual machines – požadováno pro vzdělávání. Nakonec můžete jednoduše sdílet testovací prostředí s prováděli úkoly, které mají přístup k jedním kliknutím.
 
-![Používá DevTest Labs pro školení](./media/devtest-lab-training-lab/devtest-lab-training.png)
+![Použití DevTest Labs pro školení](./media/devtest-lab-training-lab/devtest-lab-training.png)
 
 Azure DevTest Labs splňuje následující požadavky, které jsou nutné k provádějte školení v jakémkoli virtuální prostředí: 
 
-* Povolání neuvidí virtuální počítače vytvořené jiných povolání
+* Stážisté neuvidí virtuální počítače vytvořené pomocí jiných prováděli úkoly
 * Každý počítač školení by měly být shodné
-* Povolání můžete rychle zřídit jejich prostředí školení
-* Řízení nákladů tím zajistí, že povolání nelze získat více virtuálních počítačů, než potřebují pro školení a také vypnutí virtuálních počítačů, když nejsou na jejich používání
-* Snadno sdílet s každou praktikanta školení testovacího prostředí
-* Znovu a znovu použít testovací prostředí školení
+* Stážisté můžete rychle zřídit prostředími školení
+* Řízení nákladů díky zajištění, že stážisté nelze získat další virtuální počítače, než potřebují pro trénování a také vypnutí virtuálních počítačů, když nejsou na jejich používání
+* Snadné sdílení pomocí každý účastník výcviku testovacího prostředí pro školení
+* Znovu a znovu a znovu použít testovací prostředí pro školení
 
-V tomto článku informace o různých funkcí Azure DevTest Labs, které můžete použít ke splnění požadavků bylo popsáno dříve školení a podrobné kroky, které vám pomůžou nastavit testovací prostředí pro školení.  
+V tomto článku se dozvíte o různých funkcí Azure DevTest Labs, které lze použít ke splnění výš požadavkům a podrobné kroky, pomocí kterých můžete nastavit testovací prostředí pro školení.  
 
-## <a name="implementing-training-with-azure-devtest-labs"></a>Implementace školení s Azure DevTest Labs
-1. **Vytvořit testovací prostředí** 
+## <a name="implementing-training-with-azure-devtest-labs"></a>Provádění trénování s využitím Azure DevTest Labs
+1. **Vytvoření testovacího prostředí** 
    
-    Labs jsou výchozím bodem v Azure DevTest Labs. Po vytvoření testovacího prostředí, můžete provádět úlohy tak, jak přidat uživatele (povolání) do testovacího prostředí, nastavit zásady, které řídit náklady, definování Image virtuálních počítačů, které lze rychle vytvořit a další.   
-   
-    Další informace kliknutím na odkazy v následující tabulce:
-   
-   | Úkol | Co se naučíte |
-   | --- | --- |
-   | [Vytvoření testovacího prostředí v Azure DevTest Labs](devtest-lab-create-lab.md) |Postup vytvoření testovacího prostředí v Azure DevTest Labs na portálu Azure. |
-2. **Vytvořit virtuální počítače školení během pár minut pomocí připravených marketplace Image a vlastních bitových kopií** 
-   
-    Můžete vybrat připravených bitové kopie z široké škály bitové kopie v Azure Marketplace a zpřístupnit na povolání v testovacím prostředí. Jestliže připravených bitové kopie nevyhovují vašim požadavkům, můžete vytvořit vlastní image vytvořením testovacího prostředí virtuálních počítačů pomocí připravených bitové kopie z Azure Marketplace, instalace veškerý software, který budete potřebovat pro školení a uložení virtuálního počítače jako vlastní image v testovacím prostředí. 
+    Praktická cvičení jsou výchozí bod ve službě Azure DevTest Labs. Po vytvoření testovacího prostředí můžete provádět úlohy, jak přidat uživatele (stážisté) do testovacího prostředí, nastavit zásady, které mít náklady pod kontrolou, definovat imagí virtuálních počítačů, které můžete rychle vytvořit a další.   
    
     Další informace kliknutím na odkazy v následující tabulce:
    
    | Úkol | Co se naučíte |
    | --- | --- |
-   | [Konfigurace Azure Marketplace obrázků](devtest-lab-configure-marketplace-images.md) |Přečtěte si, jak Image Azure Marketplace povolených; zpřístupnění pro výběr pouze Image chcete použít pro školení. |
-   | [Vytvořit vlastní image](devtest-lab-create-template.md) |Vytvořte vlastní image před instalací softwaru, které potřebujete k školení tak, aby povolání dokáže rychle vytvořit virtuální počítač pomocí vlastní image. |
-3. **Vytvořit opakovaně použitelný šablony pro školení počítače** 
+   | [Vytvoření testovacího prostředí ve službě Azure DevTest Labs](devtest-lab-create-lab.md) |Zjistěte, jak vytvořit testovací prostředí ve službě Azure DevTest Labs na webu Azure Portal. |
+2. **Vytvoření virtuálních počítačů školení během pár minut pomocí Image z marketplace s předem připravená a vlastní Image** 
    
-    Vzorec v Azure DevTest Labs je seznam výchozí hodnoty vlastností použít k vytvoření virtuálního počítače. Vzorec v testovacím prostředí vytvoříte výběr obrázku, velikost virtuálního počítače (kombinaci procesor a paměť RAM) a virtuální sítě. Každý praktikanta můžete zobrazit vzorec v testovacím prostředí a ji použít k vytvoření virtuálního počítače. 
+    Můžete vybrat předem vytvořené Image z širokou škálu imagí v Tržišti Azure Marketplace a zpřístupnit je pro prováděli úkoly v testovacím prostředí. Pokud předem vytvořené Image nesplňují vaše požadavky, můžete vytvořit vlastní image tak, že vytvoříte virtuální počítač pomocí předem vytvořené image z Azure Marketplace, instalace veškerý software, který budete potřebovat vlastní image v testovacím prostředí pro školení a ukládání virtuálního počítače testovacího prostředí. 
    
     Další informace kliknutím na odkazy v následující tabulce:
    
    | Úkol | Co se naučíte |
    | --- | --- |
-   | [Spravovat DevTest Labs vzorce pro vytvoření virtuálních počítačů](devtest-lab-manage-formulas.md) |Zjistěte, jak můžete vytvořit vzorec podle vyzvednutí obrázku, velikost virtuálního počítače (kombinaci procesor a paměť RAM) a virtuální sítě. |
+   | [Konfigurace imagí Azure Marketplace](devtest-lab-configure-marketplace-images.md) |Přečtěte si, jak na seznamu povolených IP adres Image Azure Marketplace; zpřístupnění pro výběr pouze obrázky mají pro vzdělávání. |
+   | [Vytvoření vlastní image](devtest-lab-create-template.md) |Vlastní image můžete vytvořte před instalací softwaru, které potřebujete pro vzdělávání tak, aby prováděli úkoly můžete rychle vytvořit virtuální počítač pomocí vlastní image. |
+3. **Vytvoření opakovaně použitelné šablony pro počítače školení** 
+   
+    Vzorec ve službě Azure DevTest Labs je seznam hodnot výchozí vlastnost použít k vytvoření virtuálního počítače. Výběrem obrázku, velikost virtuálního počítače (kombinací procesoru a paměti RAM) a virtuální síť můžete vytvořit vzorce v testovacím prostředí. Každý účastník výcviku můžete zobrazit vzorce v testovacím prostředí a použijte ji k vytvoření virtuálního počítače. 
+   
+    Další informace kliknutím na odkazy v následující tabulce:
+   
+   | Úkol | Co se naučíte |
+   | --- | --- |
+   | [Správa vzorců DevTest Labs k vytvoření virtuálních počítačů](devtest-lab-manage-formulas.md) |Zjistíte, jak můžete vytvořit vzorce výběrem obrázku, velikost virtuálního počítače (kombinací procesoru a paměti RAM) a virtuální síť. |
 4. **Náklady na ovládací prvek**
    
-    Azure DevTest Labs umožňuje nastavit zásady v testovacím prostředí, chcete-li určit maximální počet virtuálních počítačů, které lze vytvořit pomocí praktikanta v testovacím prostředí. 
+    Azure DevTest Labs umožňuje nastavit zásady v testovacím prostředí můžete určit maximální počet virtuálních počítačů, které mohou vytvořit praktikanta v testovacím prostředí. 
    
-    Pokud jsou provádění Vícedenní školení a chcete zastavit všechny virtuální počítače v určitém čase dne a pak automaticky je znovu spustit následující den, můžete snadno provést nastavením automatické ukončení a automatického spouštění zásad v testovacím prostředí. 
+    Pokud jsou provádění Vícedenní školení a chcete zastavit všechny virtuální počítače v určitém čase dne a automaticky restartuje je následující den, můžete snadno provést tuto akci nastavením automatického vypínání a automatického spuštění zásad v testovacím prostředí. 
    
-    Nakonec po dokončení školení můžete odstranit všechny virtuální počítače najednou spuštěním jednoho skriptu prostředí PowerShell. 
-   
-    Další informace kliknutím na odkazy v následující tabulce:
-   
-   | Úkol | Co se naučíte |
-   | --- | --- |
-   | [Definice zásad testovacího prostředí](devtest-lab-set-lab-policy.md) |Řízení nákladů pomocí nastavení zásad v testovacím prostředí. |
-   | [Odstranit všechny testovací prostředí virtuálních počítačů pomocí skriptu prostředí PowerShell](devtest-lab-faq.md#how-do-i-automate-the-process-of-deleting-all-the-vms-in-my-lab) |Po dokončení školení, odstraňte všechny labs v rámci jedné operace. |
-5. **Sdílet testovací prostředí s každou praktikanta**
-   
-    Labs lze přímo přistupovat pomocí odkazu, který sdílíte s vaší povolání. Vaše povolání dokonce ani nemusí mít účet Azure, tak dlouho, dokud mají [účtu Microsoft](devtest-lab-faq.md#what-is-a-microsoft-account). Povolání neuvidí virtuální počítače vytvořené jiných povolání.  
+    Nakonec po dokončení školení odstraněním všech virtuálních počítačů najednou spuštěním jednoho skriptu prostředí PowerShell. 
    
     Další informace kliknutím na odkazy v následující tabulce:
    
    | Úkol | Co se naučíte |
    | --- | --- |
-   | [Přidání praktikanta do testovacího prostředí v Azure DevTest Labs](devtest-lab-add-devtest-user.md) |Použití portálu Azure přidat povolání do testovacího prostředí školení. |
-   | [Přidat povolání do testovacího prostředí pomocí skriptu prostředí PowerShell](devtest-lab-add-devtest-user.md#add-an-external-user-to-a-lab-using-powershell) |Použití Powershellu k automatizaci přidání povolání do testovacího prostředí školení. |
-   | [Získejte odkaz do testovacího prostředí](devtest-lab-faq.md#how-do-i-share-a-direct-link-to-my-lab) |Zjistěte, jak testovacího prostředí je přímo přístupný prostřednictvím hypertextový odkaz. |
-6. **Znovu a znovu použít testovací prostředí** 
+   | [Definice zásad testovacího prostředí](devtest-lab-set-lab-policy.md) |Řídit náklady nastavením zásad v testovacím prostředí. |
+   | [Odstranit všechna prostředí virtuálních počítačů pomocí skriptu prostředí PowerShell](devtest-lab-faq.md#how-do-i-automate-the-process-of-deleting-all-the-vms-in-my-lab) |Odstraňte testovací prostředí v rámci jedné operace po dokončení se školení. |
+5. **Každý účastník výcviku nasdílet testovacího prostředí**
    
-    Je možné automatizovat vytvoření testovacího prostředí, včetně vlastních nastavení, vytvořením šablony Resource Manageru a jej použijete k vytvoření identické labs znovu a znovu. 
+    Testovací prostředí lze přímo přistupovat pomocí odkazu, který můžete sdílet s vaší prováděli úkoly. Vaše stážisté ani nemusí mít účet Azure, za předpokladu, že mají [účtu Microsoft](devtest-lab-faq.md#what-is-a-microsoft-account). Stážisté neuvidí virtuální počítače vytvořené pomocí jiných prováděli úkoly.  
    
     Další informace kliknutím na odkazy v následující tabulce:
    
    | Úkol | Co se naučíte |
    | --- | --- |
-   | [Vytvoření testovacího prostředí pomocí šablony Resource Manageru](devtest-lab-faq.md#how-do-i-create-a-lab-from-a-resource-manager-template) |Vytvoření prostředí v Azure DevTest Labs pomocí šablony Resource Manageru. |
+   | [Přidat praktikanta do testovacího prostředí ve službě Azure DevTest Labs](devtest-lab-add-devtest-user.md) |Přidat do testovacího prostředí školení prováděli úkoly pomocí webu Azure portal. |
+   | [Přidání prováděli úkoly do testovacího prostředí pomocí Powershellového skriptu](devtest-lab-add-devtest-user.md#add-an-external-user-to-a-lab-using-powershell) |Použití Powershellu k automatizaci přidání prováděli úkoly na vašem testovacím prostředí pro školení. |
+   | [Získání odkazu na testovací prostředí](devtest-lab-faq.md#how-do-i-share-a-direct-link-to-my-lab) |Zjistěte, jak testovací prostředí je přímo přístupný prostřednictvím hypertextového odkazu. |
+6. **Znovu a znovu a znovu použít testovací prostředí** 
+   
+    Vytvoření testovacího prostředí, vlastní nastavení, třeba tak, že vytvoření šablony Resource Manageru a jeho použití znovu a znovu vytvářet identické testovací prostředí můžete automatizovat. 
+   
+    Další informace kliknutím na odkazy v následující tabulce:
+   
+   | Úkol | Co se naučíte |
+   | --- | --- |
+   | [Vytvoření testovacího prostředí pomocí šablony Resource Manageru](devtest-lab-faq.md#how-do-i-create-a-lab-from-a-resource-manager-template) |Vytvoření testovacích prostředí v Azure DevTest Labs pomocí šablon Resource Manageru. |
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 

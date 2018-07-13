@@ -1,6 +1,6 @@
 ---
-title: Vytvořit úlohu importu pro Azure Import/Export | Microsoft Docs
-description: Naučte se vytvářet importu pro službu Microsoft Azure Import/Export.
+title: Vytvořit úlohu importu pro Azure Import/Export | Dokumentace Microsoftu
+description: Zjistěte, jak vytvořit importu pro službu Microsoft Azure Import/Export.
 author: muralikk
 manager: syadav
 editor: syadav
@@ -15,98 +15,98 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.openlocfilehash: a80d2169f346238f997c727f0e9d82666897b608
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34365878"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38697634"
 ---
-# <a name="creating-an-import-job-for-the-azure-importexport-service"></a>Vytvoření úlohy importu do služby Azure Import/Export
+# <a name="creating-an-import-job-for-the-azure-importexport-service"></a>Vytvoření úlohy importu pro službu Azure Import/Export
 
-Vytvoření úlohy importu do služby Microsoft Azure Import/Export pomocí rozhraní REST API zahrnuje následující kroky:
+Vytvoření úlohy importu pomocí rozhraní REST API služby Microsoft Azure Import/Export zahrnuje následující kroky:
 
--   Příprava jednotky pomocí nástroje Azure Import/Export.
+-   Příprava jednotky s nástrojem Import/Export Azure.
 
--   Získání umístění, do kterého pro odeslání disk.
+-   Získání umístění, do kterého k odeslání na jednotce.
 
--   Vytvoření úlohy importu.
+-   Vytváří se úloha importu.
 
--   Přesouvání jednotky společnosti Microsoft prostřednictvím podporovaných poskytovatel služby.
+-   Přesouvání jednotky společnosti Microsoft prostřednictvím služby podporované operátora.
 
--   Aktualizace úlohy importu s podrobnostmi o přesouvání.
+-   Aktualizuje se úloha importu podrobnosti o dopravě.
 
- V tématu [pomocí služby Microsoft Azure Import/Export přenos dat do úložiště objektů Blob](storage-import-export-service.md) přehled službu Import/Export a kurz, který ukazuje, jak používat [portál Azure](https://portal.azure.com/) pro vytváření a správu import a export úloh.
+ V tématu [pomocí služby Microsoft Azure Import/Export pro přenos dat do úložiště objektů Blob](storage-import-export-service.md) Přehled služby Import/Export a kurz, který ukazuje, jak používat [webu Azure portal](https://portal.azure.com/) k vytvoření Správa import a export úloh.
 
 ## <a name="preparing-drives-with-the-azure-importexport-tool"></a>Příprava jednotky pomocí nástroje Azure Import/Export
 
-Kroky při přípravě jednotky pro úlohy importu jsou stejné, vytvořte jobvia portálu nebo pomocí rozhraní REST API.
+Kroky pro přípravu disků pro úlohu importu jsou stejné, ať už jobvia vytvoříte na portálu nebo prostřednictvím rozhraní REST API.
 
-Níže je stručný přehled přípravy jednotky. Odkazovat [Azure Import ExportTool odkaz](storage-import-export-tool-how-to-v1.md) úplné pokyny. Si můžete stáhnout nástroj Azure Import/Export [zde](http://go.microsoft.com/fwlink/?LinkID=301900).
+Níže uvádíme stručný přehled o přípravu jednotky. Odkazovat [referenčních informacích k Azure Import ExportTool](storage-import-export-tool-how-to-v1.md) úplné pokyny. Nástroj Azure Import/Export můžete stáhnout [tady](http://go.microsoft.com/fwlink/?LinkID=301900).
 
-Příprava vašeho disku zahrnuje:
+Příprava jednotky zahrnuje:
 
--   Určení dat, která bude importována.
+-   Identifikuje data, která mají být importována.
 
--   Identifikace cílové objekty BLOB v systému Windows Azure Storage.
+-   Určení cílové objektů BLOB ve službě Windows Azure Storage.
 
--   Pomocí nástroje Azure Import/Export ke kopírování dat na jeden nebo více pevných disků.
+-   Použití nástroje Import/Export Azure ke zkopírování dat na jeden nebo více pevných disků.
 
- Nástroj Azure Import/Export bude také generovat soubor manifestu pro každou z jednotky jako je připraveno. Soubor manifestu obsahuje:
+ Nástroje Import/Export Azure také vygeneruje soubor manifestu pro každou z jednotky jako je připraven. Obsahuje soubor manifestu:
 
--   Výčet všech souborů určených pro odeslání a mapování z těchto souborů na objekty BLOB.
+-   Výčet všech souborů, které jsou určené pro nahrávání a mapování z těchto souborů do objektů BLOB.
 
 -   Kontrolní součty segmentů každého souboru.
 
--   Informace o metadatech a vlastnosti, které chcete přidružit každý objekt blob.
+-   Informace o vlastnosti, které chcete přidružit každý objekt blob a metadat.
 
--   Seznam pro případ, pokud objekt blob, který se nahrává má stejný název jako existující objekt blob v kontejneru. Dostupné možnosti patří: a) se souborem přepsat objektu blob, b) zachovat existující objekt blob a přeskočit nahrání souboru, c) přidejte příponu k názvu tak, aby nedošlo ke konfliktu s ostatními soubory.
+-   Výpis akce má být provedena, pokud má stejný název jako existující objekt blob v kontejneru objektů blob, který se nahrává. Možnými volbami jsou: a) přepsat objekt blob se souborem, (b) zachovat existující objekt blob a přeskočení nahrávání souboru, c) připojit příponu k názvu tak, aby nejsou v konfliktu s jinými soubory.
 
-## <a name="obtaining-your-shipping-location"></a>Získání vaši polohu přesouvání
+## <a name="obtaining-your-shipping-location"></a>Získání vaše dodací umístění
 
-Před vytvořením úlohy importu, je nutné získat přenosů umístění názvu a adresy voláním [umístění seznamu](/rest/api/storageimportexport/listlocations) operaci. `List Locations` Vrátí seznam umístění a jejich poštovní adresy. Můžete vybrat umístění ze seznamu vrácených a dodávat vaše pevné disky na tuto adresu. Můžete také `Get Location` operace přesouvání adresu pro konkrétní umístění získat přímo.
+Před vytvoření úlohy importu, je potřeba získat přenosů název umístění a adresa voláním [seznamu umístění](/rest/api/storageimportexport/listlocations) operace. `List Locations` Vrátí seznam umístění a jejich poštovních adres. Můžete vybrat umístění ze seznamu vrácených a dodávat pevných disků na tuto adresu. Můžete také použít `Get Location` operaci získat přímo dodací adresu pro konkrétní lokalitu.
 
- Použijte následující postup k získání přesouvání umístění:
+ Podle následujících pokynů k získání umístění dopravě:
 
--   Určete název umístění účtu úložiště. Tuto hodnotu najdete v části **umístění** na účet úložiště **řídicí panel** ve službě Azure portálu nebo předmětem dotazu pro pomocí operace rozhraní API pro správu služby [získat vlastnosti účtu úložiště](/rest/api/storagerp/storageaccounts#StorageAccounts_GetProperties).
+-   Určete název umístění účtu úložiště. Tuto hodnotu najdete v části **umístění** na účet úložiště **řídicí panel** v Azure portal nebo pro dotaz s použitím operace rozhraní API pro správu služby [získat účet úložiště Vlastnosti](/rest/api/storagerp/storageaccounts#StorageAccounts_GetProperties).
 
--   Načíst umístění, které je k dispozici pro zpracování tento účet úložiště pomocí volání `Get Location` operaci.
+-   Načíst umístění, které je k dispozici pro zpracování tohoto účtu úložiště pomocí volání `Get Location` operace.
 
--   Pokud `AlternateLocations` vlastnost umístění obsahuje umístění, sám sebe a potom je to v pořádku pro toto umístění používat. Jinak volání `Get Location` operaci zopakovat s alternativní umístění. Do původního umístění může být pro údržbu dočasně ukončeny.
+-   Pokud `AlternateLocations` vlastnost umístění obsahuje umístění, sama, pak je možné použít toto umístění. V opačném případě volat `Get Location` operaci znovu s některou z alternativních umístění. Původní umístění může být dočasně uzavřeno kvůli údržbě.
 
 ## <a name="creating-the-import-job"></a>Vytvoření úlohy importu
-Chcete-li vytvořit úlohu importu, zavolejte [Put úlohy](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) operaci. Budete muset zadat následující informace:
+Chcete-li vytvořit úlohu importu, zavolejte [úlohy umístit](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) operace. Budete muset zadat následující informace:
 
 -   Název úlohy.
 
 -   Název účtu úložiště.
 
--   Přenosů název umístění, získané z předchozího kroku.
+-   Přesouvání název umístění, získaný v předchozím kroku.
 
--   Typ úlohy (Importovat).
+-   Typ úlohy (Import).
 
--   Zpětná adresa, kde by měly být odeslány jednotky po dokončení úlohy importu.
+-   Zpáteční adresu, které jednotky by měla být odeslána po dokončení úlohy importu.
 
--   Seznam jednotek v úloze. Pro každou jednotku musí zahrnovat následující informace, které se zjišťovala během přípravy krok jednotky:
+-   Seznam jednotky v rámci úlohy. Pro každou jednotku musí obsahovat následující informace, se zjišťovala během kroku přípravy jednotky:
 
     -   Id jednotky
 
-    -   Klíč nástroje BitLocker
+    -   Klíče Bitlockeru
 
-    -   Relativní cesta souboru manifestu na pevný disk.
+    -   Relativní cesta k souboru manifestu na pevném disku
 
-    -   Hodnota hash souboru manifestu MD5 kódovaný Base16
+    -   Base16 kódovaný hash MD5 souboru manifestu
 
 ## <a name="shipping-your-drives"></a>Přesouvání jednotky
-Je nutné dodat jednotky na adresu, kterou jste získali v předchozím kroku, a musíte poskytnout službu Import/Export číslem sledování balíčku.
+Je nutné dodat jednotky na adresu, kterou jste získali v předchozím kroku a službu Import/Export je nutné zadat pomocí sledovacího čísla balíčku.
 
 > [!NOTE]
->  Je nutné dodat jednotky prostřednictvím podporovaných poskytovatel služby, která bude poskytovat sledování Číslo pro svůj balíček.
+>  Je nutné dodat jednotky přes službu podporované operátora, který bude zajišťovat sledovací číslo pro svůj balíček.
 
-## <a name="updating-the-import-job-with-your-shipping-information"></a>Aktualizace úlohy importu se vaše přenosů informace
-Až budete mít vaše číslo sledování, volání [aktualizovat vlastnosti úlohy](/api/storageimportexport/jobs#Jobs_Update) operace aktualizace přenosů poskytovatel název, číslo sledování pro úlohu a poskytovatel číslo účtu pro návratový přesouvání. Volitelně můžete zadat počet jednotek a i přesouvání datum.
+## <a name="updating-the-import-job-with-your-shipping-information"></a>Aktualizuje se úloha importu se vaše dodací informace
+Jakmile budete mít sledovací číslo, zavolejte [aktualizovat vlastnosti úlohy](/api/storageimportexport/jobs#Jobs_Update) operace, která aktualizuje přenosů název operátora, sledovací číslo pro úlohu a číslo účtu dopravce pro vrácení. Volitelně můžete zadat počet jednotek a datem přesouvání.
 
 [!INCLUDE [storage-import-export-delete-personal-info.md](../../../includes/storage-import-export-delete-personal-info.md)]
 
 ## <a name="next-steps"></a>Další postup
 
-* [Pomocí REST API služby importu a exportu](storage-import-export-using-the-rest-api.md)
+* [Pomocí rozhraní REST API služby Import/Export](storage-import-export-using-the-rest-api.md)

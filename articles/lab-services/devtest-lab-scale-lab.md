@@ -1,6 +1,6 @@
 ---
-title: Škálování kvóty a limity ve svém testovacím prostředí v Azure DevTest Labs | Microsoft Docs
-description: Zjistěte, jak změnit velikost testovacího prostředí v Azure DevTest Labs
+title: Kvóty a omezení horizontálně testovacího prostředí ve službě Azure DevTest Labs | Dokumentace Microsoftu
+description: Zjistěte, jak škálovat testovacího prostředí ve službě Azure DevTest Labs
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -14,57 +14,57 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: 5a179c0c6b777ee6b2afdd0f2e9267d247665d8d
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33787476"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38675961"
 ---
-# <a name="scale-quotas-and-limits-in-devtest-labs"></a>Škálování kvóty a omezení v DevTest Labs
-Při práci v DevTest Labs, můžete si všimnout, že existují určitá omezení výchozí některé prostředky Azure, což může ovlivnit DevTest Labs služby. Tato omezení jsou označovány jako **kvóty**.
+# <a name="scale-quotas-and-limits-in-devtest-labs"></a>Kvóty a omezení škálování ve službě DevTest Labs
+Při práci ve službě DevTest Labs, můžete si všimnout, že jsou některé výchozí limity pro několik prostředků Azure, které mohou ovlivnit služby DevTest Labs. Tato omezení jsou označovány jako **kvóty**.
 
 > [!NOTE]
-> Službu DevTest Labs nebude ukládat žádné kvóty. Žádné kvóty, kterými se můžete setkat se výchozí omezení celkového předplatné.
+> Služba DevTest Labs neurčuje žádné kvóty. Žádné kvóty, které se můžete setkat se výchozí omezení celkové předplatné.
 
-Každý prostředek Azure můžete použít, dokud se nedostanete dosáhlo kvóty. Každé předplatné má samostatné kvóty a sledování využití podle předplatného.
+Každého prostředku Azure můžete použít, dokud se nedostanete kvóta. Každé předplatné má samostatné kvóty a využití se sleduje podle předplatného.
 
-Například každé předplatné má výchozí kvótu 20 jader. Ano při vytváření virtuálních počítačů ve svém testovacím prostředí s čtyři jader, pak můžete pouze vytvořit pět virtuálních počítačů. 
+Například každé předplatné má výchozí kvóta 20 jader. Proto pokud vytváříte virtuální počítače ve vaší laboratoři s čtyři jádra, pak můžete pouze vytvořit pět virtuálních počítačů. 
 
-[Azure předplatné a omezení služby](https://docs.microsoft.com/azure/azure-subscription-service-limits) uvádí některé z nejběžnějších kvóty pro prostředky Azure. Prostředky se nejčastěji používá v testovacím prostředí a pro které můžete narazit kvóty, zahrnete jader virtuálního počítače, veřejné IP adresy, síťové rozhraní, spravované disky, přiřazení role RBAC, okruhy ExpressRoute.
+[Předplatné a omezení služby Azure](https://docs.microsoft.com/azure/azure-subscription-service-limits) jsou uvedeny některé nejběžnější kvóty pro prostředky Azure. Prostředky se nejčastěji používá v testovacím prostředí, pro které můžete narazit kvóty, zahrnují počet jader virtuálního počítače, veřejné IP adresy, síťové rozhraní, spravované disky, přiřazení role RBAC a okruhy ExpressRoute.
 
 ## <a name="view-your-usage-and-quotas"></a>Zobrazit využití a kvóty
-Tyto kroky ukazují, jak chcete zobrazit aktuální kvóty ve vašem předplatném pro konkrétní prostředky Azure a chcete zobrazit, jaké procento každé kvóty jste už použili.
+Tyto kroky ukazují, jak chcete-li zobrazit aktuální kvóty ve vašem předplatném pro konkrétní prostředky Azure a chcete zobrazit, jaké je procento každá kvóta, jste už použili.
 
 1. Přihlaste se k webu [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. Vyberte **více služeb**a potom vyberte **fakturace** ze seznamu.
+1. Vyberte **další služby**a pak vyberte **fakturace** ze seznamu.
 1. V okně fakturace vyberte předplatné.
-4. Vyberte **využití + kvóty**.
+4. Vyberte **využití a kvóty**.
 
    ![Tlačítko využití a kvóty](./media/devtest-lab-scale-lab/devtestlab-usage-and-quotas.png)
 
-   Využití + kvóty okno se zobrazí, výpis různé prostředky k dispozici v tomto předplatném a procento kvóty, který se používá na prostředek.
+   Využití a kvóty okno se zobrazí výpis různé prostředky k dispozici v tomto předplatném a procento kvóty, který se používá pro každý prostředek.
 
    ![Kvóty a využití](./media/devtest-lab-scale-lab/devtestlab-view-quotas.png)
 
-## <a name="requesting-more-resources-in-your-subscription"></a>Vyžaduje další prostředky ve vašem předplatném
-Dosažení limitu kvóty výchozí limit prostředků v předplatném může být zvýšeno až maximální limit, jak je popsáno v [předplatné Azure a omezení služby](https://docs.microsoft.com/azure/azure-subscription-service-limits).
+## <a name="requesting-more-resources-in-your-subscription"></a>Požadování další prostředky ve vašem předplatném
+Pokud dosáhnete limitu kvóty, výchozí limit prostředků v předplatném je možné zvýšit až do maximálního limitu, jak je popsáno v [předplatné Azure a omezení služeb](https://docs.microsoft.com/azure/azure-subscription-service-limits).
 
-Tyto kroky ukazují, jak požádat o zvýšení kvóty prostřednictvím [portál Azure](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+Tyto kroky ukazují, jak požádat o zvýšení kvóty prostřednictvím [webu Azure portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
 
-1. Vyberte **více služeb**, vyberte **fakturace**a potom vyberte **využití + kvóty**.
-1. V využití + kvóty vyberte **požádat o zvýšení** tlačítko.
+1. Vyberte **další služby**vyberte **fakturace**a pak vyberte **využití a kvóty**.
+1. V využití a kvóty okno, vyberte **požádat o zvýšení** tlačítko.
 
-   ![Žádost o zvýšení tlačítko](./media/devtest-lab-scale-lab/devtestlab-request-increase.png)
+   ![Požádat o zvýšení tlačítko](./media/devtest-lab-scale-lab/devtestlab-request-increase.png)
 
-1. K dokončení a odeslat žádost o, zadejte požadované informace o všech tří karet **nová žádost o podporu** formuláře.
+1. Chcete-li vyplňte a odešlete požadavek, vyplňte požadované informace o všech tří karet **nová žádost o podporu** formuláře.
 
-   ![Formulář žádosti o zvýšení](./media/devtest-lab-scale-lab/devtestlab-support-form.png)
+   ![Požádat o zvýšení formuláře](./media/devtest-lab-scale-lab/devtestlab-support-form.png)
 
-[Pochopení omezení Azure a zvyšuje](https://azure.microsoft.com/blog/azure-limits-quotas-increase-requests/) poskytuje další informace o kontaktovat podporu Azure o navýšení kvóty.
+[Principy Azure omezení a zvýšení](https://azure.microsoft.com/blog/azure-limits-quotas-increase-requests/) poskytuje další informace o kontaktovat podporu Azure o navýšení kvóty.
 
 
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ### <a name="next-steps"></a>Další postup
-* Prozkoumejte [Galerie šablon DevTest Labs Azure Resource Manager QuickStart](https://github.com/Azure/azure-devtestlab/tree/master/Samples).
+* Prozkoumejte [Galerie šablon QuickStart pro Azure Resource Manageru DevTest Labs](https://github.com/Azure/azure-devtestlab/tree/master/Samples).

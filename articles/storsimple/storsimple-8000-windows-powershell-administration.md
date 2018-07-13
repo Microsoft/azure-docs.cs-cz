@@ -1,5 +1,5 @@
 ---
-title: Prostředí PowerShell pro správu zařízení StorSimple | Microsoft Docs
+title: Prostředí PowerShell pro správu zařízení StorSimple | Dokumentace Microsoftu
 description: Další informace o použití prostředí Windows PowerShell pro StorSimple ke správě zařízení StorSimple.
 services: storsimple
 documentationcenter: NA
@@ -15,175 +15,175 @@ ms.workload: TBD
 ms.date: 01/09/2018
 ms.author: alkohli@microsoft.com
 ms.openlocfilehash: 291de21d3d98bf9eb65adc7d506f3549171ee0a0
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2018
-ms.locfileid: "27743711"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38696816"
 ---
-# <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>Ke správě zařízení pomocí Windows Powershellu pro StorSimple
+# <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>Správa zařízení pomocí Windows Powershellu pro StorSimple
 
 ## <a name="overview"></a>Přehled
 
-Prostředí Windows PowerShell pro StorSimple poskytuje rozhraní příkazového řádku, které můžete použít ke správě zařízení s Microsoft Azure StorSimple. Doporučuje se název, je založené na prostředí Windows PowerShell, rozhraní příkazového řádku, která je součástí omezené prostředí runspace. Z pohledu uživatele na příkazovém řádku omezené prostředí runspace s omezeným přístupem verzi prostředí Windows PowerShell se zobrazí. Toto rozhraní při zachování některé základní funkce prostředí Windows PowerShell, má další vyhrazený rutin, které jsou s ohledem na správu zařízení s Microsoft Azure StorSimple.
+Windows PowerShell pro StorSimple nabízí rozhraní příkazového řádku, který můžete použít ke správě zařízení Microsoft Azure StorSimple. Jak název napovídá, je založené na prostředí Windows PowerShell, rozhraní příkazového řádku, který je součástí prostředí runspace omezeným. Z pohledu uživatele na příkazovém řádku prostředí runspace omezeným se zobrazí jako omezená verze prostředí Windows PowerShell. Při zachování některé základní funkce Windows Powershellu, toto rozhraní má další jednoúčelové rutiny, které jsou zaměřené na správě zařízení Microsoft Azure StorSimple.
 
-Tento článek popisuje Windows PowerShell pro StorSimple funkce, včetně toho, jak je možné připojit k tomuto rozhraní a obsahuje odkazy na podrobné postupy nebo pracovní postupy, které můžete provádět pomocí tohoto rozhraní. Pracovní postupy zahrnují jak zaregistrovat zařízení, konfigurace síťového rozhraní na vašem zařízení a nainstalovat aktualizace, které vyžadují zařízení se v režimu údržby, změňte stav zařízení a vyřešte všechny problémy, které mohou nastat.
+Tento článek popisuje prostředí Windows PowerShell pro StorSimple funkcí, včetně toho, jak můžete připojit k tomuto rozhraní a obsahuje odkazy na podrobné postupy nebo pracovní postupy, které můžete provést pomocí tohoto rozhraní. Pracovní postupy popsané v registraci vašeho zařízení, konfigurace síťového rozhraní na zařízení, instalace aktualizací, které vyžadují zařízení v režimu údržby, změnit stav zařízení, a vyřešte všechny problémy, které mohou nastat.
 
-Po přečtení tohoto článku, budete moci:
+Po přečtení tohoto článku, budete moct:
 
-* Připojte k zařízení StorSimple pomocí Windows Powershellu pro StorSimple.
+* Připojte se k zařízení StorSimple pomocí Windows Powershellu pro StorSimple.
 * Spravovat zařízení StorSimple pomocí Windows Powershellu pro StorSimple.
-* Získejte nápovědu ve Windows Powershellu pro StorSimple.
+* Získejte pomoc ve Windows Powershellu pro StorSimple.
 
 > [!NOTE]
-> * Prostředí Windows PowerShell pro StorSimple rutiny umožňují spravovat zařízení StorSimple, z konzoly sériového portu nebo vzdáleně přes vzdálenou komunikaci prostředí Windows PowerShell. Další informace o jednotlivých jednotlivých rutin, které lze použít v tomto rozhraní, přejděte na [reference k rutině pro prostředí Windows PowerShell pro StorSimple](https://technet.microsoft.com/library/dn688168.aspx).
-> * Jsou rutiny Azure PowerShell StorSimple jinou kolekci rutin, které umožňují automatizovat StorSimple úrovně služby a úlohy migrace z příkazového řádku. Další informace o rutiny Azure Powershellu pro StorSimple, přejděte na [reference k rutině Azure StorSimple](https://docs.microsoft.com/powershell/servicemanagement/azure.storsimple/v3.1.0/azure.storsimple).
+> * Prostředí Windows PowerShell pro StorSimple rutiny umožňují spravovat zařízení StorSimple z konzoly sériového portu nebo vzdáleně přes vzdálenou komunikaci prostředí Windows PowerShell. Další informace o všech jednotlivých rutin, které lze použít v tomto rozhraní naleznete v části [referenční informace o rutinách prostředí Windows PowerShell pro StorSimple](https://technet.microsoft.com/library/dn688168.aspx).
+> * Rutiny Azure Powershellu StorSimple jsou jinou kolekci rutin, které umožňují automatizovat StorSimple úrovně služby a úlohy migrace z příkazového řádku. Další informace o rutinách prostředí Azure PowerShell pro StorSimple, přejděte [Reference k rutinám Azure StorSimple](https://docs.microsoft.com/powershell/servicemanagement/azure.storsimple/v3.1.0/azure.storsimple).
 
 
-Prostředí Windows PowerShell se můžete dostat pro StorSimple pomocí jedné z následujících metod:
+Lze použít rutinu prostředí Windows PowerShell pro StorSimple pomocí jedné z následujících metod:
 
 * [Připojení ke konzole sériového portu zařízení StorSimple](#connect-to-windows-powershell-for-storsimple-via-the-device-serial-console)
-* [Vzdálené připojení k zařízení StorSimple pomocí prostředí Windows PowerShell](#connect-remotely-to-storsimple-using-windows-powershell-for-storsimple)
+* [Vzdálené připojení k řešení StorSimple pomocí Windows Powershellu](#connect-remotely-to-storsimple-using-windows-powershell-for-storsimple)
 
-## <a name="connect-to-windows-powershell-for-storsimple-via-the-device-serial-console"></a>Připojení k Windows Powershellu pro StorSimple prostřednictvím konzole sériového portu zařízení
+## <a name="connect-to-windows-powershell-for-storsimple-via-the-device-serial-console"></a>Připojení k prostředí Windows PowerShell pro StorSimple prostřednictvím konzoly sériového portu zařízení
 
-Můžete [stáhněte si PuTTY](http://www.putty.org/) nebo podobné softwaru pro emulaci terminálu pro připojení k Windows Powershellu pro StorSimple. Musíte nakonfigurovat PuTTY konkrétně k přístupu k zařízení Microsoft Azure StorSimple. Následující témata obsahují podrobné pokyny o tom, jak nakonfigurovat PuTTy a připojte se k zařízení. Rovněž jsou vysvětleny různé možnosti nabídky v konzole sériového portu.
+Je možné [stáhněte si PuTTY](http://www.putty.org/) nebo podobné software pro emulaci terminálu pro připojení k prostředí Windows PowerShell pro StorSimple. Musíte nakonfigurovat PuTTY speciálně pro přístup k zařízení Microsoft Azure StorSimple. Následující témata obsahují podrobné pokyny o tom, jak konfigurace PuTTy a připojení k zařízení. Také jsou vysvětlené různé možnosti nabídky v konzole sériového portu.
 
 ### <a name="putty-settings"></a>Nastavení PuTTY
 
-Ujistěte se, že používáte následující nastavení PuTTY se připojit k rozhraní Windows PowerShell z konzole sériového portu.
+Ujistěte se, použijte následující nastavení PuTTY k připojení k rozhraní Windows PowerShell z konzoly sériového portu.
 
 #### <a name="to-configure-putty"></a>Konfigurace PuTTY
 
-1. V PuTTY **Rekonfigurace** dialogovém **kategorie** podokně, vyberte **klávesnice**.
-2. Ujistěte se, že jsou vybrány následující možnosti (jedná se o výchozí nastavení, při spuštění relace).
+1. V PuTTY **Rekonfigurace** v dialogu **kategorie** vyberte **klávesnice**.
+2. Ujistěte se, zda jsou vybrány následující možnosti (jedná se o výchozí nastavení, když spustíte novou relaci).
    
    | Položka klávesnice | Vyberte |
    | --- | --- |
-   | BACKSPACE klíč |Ovládací prvek-? (127) |
-   | Home a End klíče |Standard |
+   | Klávesa BACKSPACE |Ovládací prvek-? (127) |
+   | Domovská stránka a End klíče |Standard |
    | Funkční klávesy a klávesnici |ESC [n ~ |
    | Počáteční stav kurzoru klíče |Normální |
-   | Počáteční stav numerické klávesnici |Normální |
+   | Počáteční stav numerické klávesnice |Normální |
    | Povolení funkcí navíc klávesnice |CTRL + ALT + se liší od AltGr |
    
     ![Podporovaná nastavení Putty](./media/storsimple-windows-powershell-administration/IC740877.png)
 3. Klikněte na tlačítko **Použít**.
-4. V **kategorie** podokně, vyberte **překlad**.
-5. V **vzdáleného znakovou sadu** pole se seznamem, vyberte **UTF-8**.
-6. V části **zpracování řádku kreslení znaků**, vyberte **body kódu Unicode pomocí řádku kreslení**. Následující snímek obrazovky ukazuje správný výběr PuTTY.
+4. V **kategorie** vyberte **překlad**.
+5. V **Vzdálená znaková sada** pole se seznamem, vyberte **UTF-8**.
+6. V části **zpracování znaků Perokresba**vyberte **body kódu Unicode pomocí Perokresba**. Následující snímek obrazovky ukazuje správný výběr PuTTY.
    
     ![Nastavení Putty UTF](./media/storsimple-windows-powershell-administration/IC740878.png)
 7. Klikněte na tlačítko **Použít**.
 
-Nyní můžete PuTTY k připojení ke konzole sériového portu zařízení provedením následujících kroků.
+Nyní můžete použití klienta PuTTY k připojení ke konzole sériového portu zařízení podle následujícího postupu.
 
 [!INCLUDE [storsimple-use-putty](../../includes/storsimple-use-putty.md)]
 
 ### <a name="about-the-serial-console"></a>Informace o konzole sériového portu
 
-Při přístupu k prostředí Windows PowerShell se zobrazí rozhraní zařízení StorSimple pomocí konzoly sériového portu, zpráva hlavičky, následovaný možností v nabídce.
+Při přístupu k Windows Powershellu se zobrazí rozhraní zařízení StorSimple prostřednictvím konzoly sériového portu, zpráva hlavičky, za nímž následuje možnosti nabídky.
 
-Zpráva hlavičky obsahuje základní informace zařízení StorSimple jako model, název, verze nainstalovaného softwaru a stavu na zařízení, které se připojujete. Následující obrázek ukazuje příklad zpráva hlavičky.
+Zpráva hlavičky obsahuje základní informace zařízení StorSimple jako je model, název, verze nainstalovaného softwaru a stav řadiče, ke kterému přistupujete. Následující obrázek ukazuje příklad hlavičky zprávy.
 
-![Zpráva sériové hlavičky](./media/storsimple-windows-powershell-administration/IC741098.png)
+![Zpráva hlavičky sériového portu](./media/storsimple-windows-powershell-administration/IC741098.png)
 
 > [!IMPORTANT]
-> Hlavička zprávu můžete použít k určení, zda je řadič jste připojeni k _Active_ nebo _pasivní_.
+> Můžete zjistit, jestli jste připojení k řadiči zprávě _aktivní_ nebo _pasivní_.
 
 Následující obrázek ukazuje různé možnosti prostředí runspace, které jsou k dispozici v nabídce konzoly sériového portu.
 
-![Zaregistrovat zařízení 2](./media/storsimple-windows-powershell-administration/IC740906.png)
+![Registrace zařízení 2](./media/storsimple-windows-powershell-administration/IC740906.png)
 
-Můžete zvolit z následujících nastavení:
+Můžete vybrat z následujících nastavení:
 
-1. **Přihlaste se pomocí úplný přístup** tato možnost vám umožňuje připojit (se správnými přihlašovacími údaji) k **SSAdminConsole** prostředí runspace na místní řadiči. (Je místní řadič kontroler, který se právě používají prostřednictvím konzole sériového portu zařízení StorSimple.) Tuto možnost lze také povolit Microsoft Support pro přístup k neomezený prostředí runspace (relaci podpory) k řešení potíží všech možných zařízení. Když použijete možnost 1 pro přihlášení, můžete povolit Microsoft Support engineer pro přístup k prostředí runspace neomezený spuštěním ke konkrétní rutině. Podrobnosti najdete v části [spustit relaci podporu](storsimple-8000-contact-microsoft-support.md#start-a-support-session-in-windows-powershell-for-storsimple).
+1. **Přihlaste se pomocí úplný přístup** této možnosti lze připojit k (se správnými přihlašovacími údaji) **SSAdminConsole** prostředí runspace na místním řadiči. (Je místní řadič kontroler, který jste právě používají prostřednictvím konzoly sériového portu zařízení StorSimple.) Tuto možnost lze také povolit Microsoft Support pro přístup k neomezené prostředí runspace (relaci) k řešení potíží, je to možné zařízení. Když použijete možnost 1 pro přihlášení, můžete povolit Microsoft Support technik pro přístup k neomezené prostředí runspace spuštěním ke konkrétní rutině. Podrobnosti najdete v [spustit relaci](storsimple-8000-contact-microsoft-support.md#start-a-support-session-in-windows-powershell-for-storsimple).
    
-2. **Přihlaste se k řadiči sdílené s úplným přístupem** tato možnost je stejná jako možnost 1, s tím rozdílem, že se můžete připojit (se správnými přihlašovacími údaji) k **SSAdminConsole** prostředí runspace na řadiči partnera. Vzhledem k tomu, že zařízení StorSimple je vysoká dostupnost zařízení s dva řadiče v konfiguraci aktivní pasivní, sdílené odkazuje na jiný řadič v zařízení, ke kterému se připojujete pomocí konzoly sériového portu).
-   Podobně jako možnost 1, tuto možnost lze také povolit Microsoft Support pro přístup k neomezený prostředí runspace na řadiči partnera.
+2. **Přihlaste se k řadiči sdílené s úplným přístupem** tato možnost je stejná jako možnost 1, s tím rozdílem, že se můžete připojit (se správnými přihlašovacími údaji) k **SSAdminConsole** prostředí runspace řadiči partnera. Protože zařízení StorSimple je zařízení s dva řadiče v konfiguraci aktivní pasivní vysokou dostupnost, peer odkazuje na druhý kontroler v zařízení, ke které přistupujete prostřednictvím konzoly sériového portu).
+   Podobně jako možnost 1, tato možnost také umožňuje povolit Microsoft Support pro přístup k neomezené prostředí runspace řadiči peer.
 
-3. **Připojení s omezeným přístupem** tato možnost se používá pro přístup k rozhraní Windows PowerShell v režimu omezené. Zobrazí se výzva k zadání pověření pro přístup k. Tato možnost se připojí k více omezeném prostředí runspace ve srovnání s možností 1 a 2.  Některé úlohy, které jsou k dispozici prostřednictvím možnost 1, **nelze* provést v této prostředí runspace jsou:
+3. **Spojte se s omezeným přístupem** tato možnost se používá pro přístup k rozhraní Windows PowerShell v režimu omezené. Zobrazí se výzva k zadání přihlašovacích údajů pro přístup. Tato možnost se připojí k více omezeném prostředí runspace ve srovnání s možností 1 a 2.  Některé úlohy, které jsou k dispozici prostřednictvím možnost 1, který **nelze* provést v tomto prostředí runspace jsou:
    
-   * Obnovit do továrního nastavení
-   * Změnit heslo
-   * Povolit nebo zakázat podporu přístupu
+   * Obnovení továrního nastavení
+   * Změna hesla
+   * Povolit nebo zakázat přístup k podpoře
    * Instalace aktualizací
-   * Instalaci oprav hotfix
+   * Instalace opravy hotfix
 
     > [!NOTE]
-    > Toto je upřednostňovanou možnost, pokud jste zapomněli jste heslo správce zařízení a nelze se připojit prostřednictvím možnost 1 nebo 2.
+    > Toto je upřednostňovanou možnost, pokud jste zapomněli heslo správce zařízení a nemůžete připojit přes možnost 1 nebo 2.
 
-4. **Změnit jazyk** této možnosti lze změnit jazyk zobrazení v rozhraní Windows PowerShell. Podporované jazyky jsou angličtina, japonština, ruština, francouzština, korejština – Jih, španělština, italština, němčina, čínština a Brazilská portugalština.
+4. **Změnit jazyk** tato možnost vám umožní změnit jazyk zobrazení v rozhraní Windows PowerShell. Podporované jazyky jsou angličtina, japonština, ruština, francouzština, Jižní Koreu, španělština, italština, němčina, čínština a brazilské portugalštině.
 
-## <a name="connect-remotely-to-storsimple-using-windows-powershell-for-storsimple"></a>Vzdálené připojení k zařízení StorSimple pomocí Windows Powershellu pro StorSimple
+## <a name="connect-remotely-to-storsimple-using-windows-powershell-for-storsimple"></a>Vzdálené připojení k řešení StorSimple pomocí Windows Powershellu pro StorSimple
 
-Vzdálená komunikace prostředí Windows PowerShell můžete použít pro připojení k zařízení StorSimple. Když připojíte tímto způsobem, neuvidíte nabídky. (Zobrazí nabídky pouze v případě, že použijete konzole sériového portu v zařízení pro připojení. Vzdálené připojení přejdete přímo na ekvivalent "možnost 1 – úplný přístup" v konzole sériového portu.) Díky vzdálenou komunikaci prostředí Windows PowerShell můžete připojit k konkrétní prostředí runspace. Můžete také zadat jazyk zobrazení.
+Vzdálenou komunikaci prostředí Windows PowerShell můžete použít pro připojení k zařízení StorSimple. Když se připojíte tímto způsobem, nabídka se nezobrazí. (Uvidíte nabídku pouze v případě, že použijete konzole sériového portu zařízení pro připojení. Vzdálené připojení přejdete přímo na ekvivalentní "možnost 1 – úplný přístup" v konzole sériového portu.) Pomocí vzdálené komunikace Windows Powershellu připojit k určité prostředí runspace. Můžete také určit jazyk zobrazení.
 
-Jazyk zobrazení je nezávislé na jazyk, který nastavíte pomocí **změnit jazyk** možnost v nabídce konzoly sériového portu. Vzdáleného prostředí PowerShell automaticky převezmou ze se připojujete, pokud není zadaný žádný národního prostředí zařízení.
+Jazyk zobrazení je nezávislé na jazyku, který jste nastavili pomocí **změnit jazyk** v nabídce konzoly sériového portu. Vzdálený PowerShell automaticky převezmou národní prostředí zařízení, ze kterého se připojujete Pokud není zadaný žádný.
 
 > [!NOTE]
-> Pokud pracujete s Microsoft Azure virtuální hostitele a cloudu zařízení StorSimple, můžete použít vzdálenou komunikaci prostředí Windows PowerShell a virtuální hostitel pro připojení k zařízení cloudu. Pokud jste nastavili umístění sdílené složky na hostiteli, na které chcete uložit informace z relace prostředí Windows PowerShell, byste měli vědět, _Everyone_ hlavní zahrnuje jen ověření uživatelé. Proto pokud jste nastavili tak sdílenou složku pro povolení přístupu podle _Everyone_ a připojit bez zadání pověření, se použije neověřené anonymní objekt zabezpečení a zobrazí se chyba. Chcete-li tento problém vyřešit, ve sdílené složce hostitele je musíte povolit účet Guest a pak umožnit Host účet úplný přístup ke sdílené složce nebo je nutné zadat platné přihlašovací údaje společně s rutinu prostředí Windows PowerShell.
+> Pokud pracujete s virtuální hostitele Microsoft Azure a StorSimple Cloud Appliance, můžete použít vzdálenou komunikaci prostředí Windows PowerShell a virtuální hostitel pro připojení ke cloudovému zařízení. Pokud jste nastavili umístění sdílené složky na hostiteli, na kterého chcete uložit informace z relace prostředí Windows PowerShell, byste měli vědět, který _Everyone_ instanční objekt obsahuje pouze ověřeným uživatelům. Proto pokud jste nastavili sdílenou složku, pokud chcete povolit přístup podle _Everyone_ a připojit bez zadávání přihlašovacích údajů, neověřené anonymní objekt zabezpečení se použije a zobrazí se chyba. Chcete-li tento problém vyřešit, ve sdílené složce můžete hostovat musí povolte účet Guest a poté poskytnout Host úplný přístup k účtu ke sdílené složce nebo je nutné zadat platné přihlašovací údaje spolu s rutinu prostředí Windows PowerShell.
 
 
-Připojení přes vzdálenou komunikaci prostředí Windows PowerShell můžete použít protokol HTTP nebo HTTPS. Postupujte podle pokynů v následujících kurzech:
+Připojit přes vzdálenou komunikaci prostředí Windows PowerShell můžete použít protokol HTTP nebo HTTPS. Postupujte podle pokynů v následujících kurzech:
 
-* [Připojit vzdáleně pomocí protokolu HTTP](storsimple-8000-remote-connect.md#connect-through-http)
+* [Vzdálené připojení pomocí protokolu HTTP](storsimple-8000-remote-connect.md#connect-through-http)
 * [Vzdálené připojení pomocí protokolu HTTPS](storsimple-8000-remote-connect.md#connect-through-https)
 
 ## <a name="connection-security-considerations"></a>Aspekty zabezpečení připojení
 
-Při výběru jak se připojit k Windows Powershellu pro StorSimple, zvažte následující:
+Když se rozhodujete, jak se připojit k prostředí Windows PowerShell pro StorSimple, zvažte následující:
 
-* Připojení přímo ke konzole sériového portu zařízení je bezpečné, ale připojující se ke konzole sériového portu přes síťové přepínače není. Buďte opatrní rizika zabezpečení, při připojení k zařízení sériový přes síťové přepínače.
-* Připojení přes relaci protokolu HTTP může nabízí lepší zabezpečení než připojení prostřednictvím sériové konzoly přes síť. I když to není nejbezpečnější metodou, je přijatelné v důvěryhodných sítích.
-* Připojení prostřednictvím relace HTTPS je nejbezpečnější a doporučená možnost.
+* Připojení přímo ke konzole sériového portu zařízení je zabezpečené, ale připojení ke konzole sériového portu přes síťové přepínače není. Buďte opatrní rizika zabezpečení při připojování k zařízení sériový přes síťové přepínače.
+* Připojení přes relaci protokolu HTTP může nabízet vyšší bezpečnost než připojení prostřednictvím sériové konzoly přes síť. I když to není nejbezpečnější metodou, je přijatelné v důvěryhodných sítích.
+* Připojení přes relaci protokolu HTTPS je nejbezpečnější a doporučená možnost.
 
 ## <a name="administer-your-storsimple-device-using-windows-powershell-for-storsimple"></a>Spravovat zařízení StorSimple pomocí Windows Powershellu pro StorSimple
 
-Následující tabulka obsahuje souhrn všechny běžné úlohy správy a komplexní pracovní postupy, které lze provést v rámci rozhraní Windows PowerShell zařízení StorSimple. Další informace o každém pracovním postupu klikněte na příslušnou položku v tabulce.
+Následující tabulka uvádí přehled všechny běžné úlohy správy a komplexní pracovní postupy, které lze provést v rámci rozhraní prostředí Windows PowerShell vašeho zařízení StorSimple. Další informace o každém pracovním postupu klikněte na příslušnou položku v tabulce.
 
-#### <a name="windows-powershell-for-storsimple-workflows"></a>Prostředí Windows PowerShell pro pracovní postupy StorSimple
+#### <a name="windows-powershell-for-storsimple-workflows"></a>Prostředí Windows PowerShell pro StorSimple pracovních postupů
 
-| Pokud chcete to udělat... | Pomocí tohoto postupu. |
+| Pokud chcete udělat... | Pomocí tohoto postupu. |
 | --- | --- |
 | Registrace zařízení |[Konfigurace a registrace zařízení pomocí Windows Powershellu pro StorSimple](storsimple-8000-deployment-walkthrough-u2.md#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple) |
-| Konfigurace webového proxy serveru</br>Nastavení proxy serveru webové zobrazení |[Konfigurace webového proxy serveru pro zařízení StorSimple](storsimple-8000-configure-web-proxy.md) |
-| Upravit nastavení 0 síťového rozhraní DATA na zařízení |[Upravit síťového rozhraní DATA 0 pro zařízení StorSimple](storsimple-8000-modify-data-0.md) |
-| Zastavit řadič </br> Restartování nebo vypnutí řadič </br> Vypněte zařízení</br>V zařízení resetovat výchozí tovární nastavení |[Správa řadiče zařízení](storsimple-8000-manage-device-controller.md) |
-| Nainstalujte aktualizace režimu údržby a opravy hotfix |[Aktualizace zařízení](storsimple-update-device.md) |
-| Přechod do režimu údržby </br>Ukončení režimu údržby |[Režimy zařízení StorSimple](storsimple-8000-device-modes.md) |
-| Vytvoření balíčku pro podporu</br>Dešifrování a upravit balíčku pro podporu |[Vytvoření a Správa balíčku pro podporu](storsimple-8000-create-manage-support-package.md) |
-| Spusťte relaci podpory</br> |[Spusťte relaci podpory v prostředí Windows PowerShell pro StorSimple](storsimple-8000-create-manage-support-package.md#create-a-support-package) |
+| Konfigurace webového proxy serveru</br>Zobrazení nastavení webového proxy serveru |[Konfigurace webového proxy serveru pro zařízení StorSimple](storsimple-8000-configure-web-proxy.md) |
+| Úprava nastavení DATA 0 síťového rozhraní na zařízení |[Upravit síťového rozhraní DATA 0 pro zařízení StorSimple](storsimple-8000-modify-data-0.md) |
+| Zastavit kontroleru </br> Restartování nebo vypnutí kontroleru </br> Vypněte zařízení</br>Resetování zařízení do výchozího továrního nastavení |[Spravovat kontrolery zařízení](storsimple-8000-manage-device-controller.md) |
+| Nainstalovat aktualizace režimu údržby a opravy hotfix |[Aktualizace zařízení](storsimple-update-device.md) |
+| Spustit režim údržby </br>Ukončete režim údržby |[Režimy zařízení StorSimple](storsimple-8000-device-modes.md) |
+| Vytvořit balíček pro podporu</br>Dešifrování a upravit balíček pro podporu |[Vytvoření a Správa balíčku pro podporu](storsimple-8000-create-manage-support-package.md) |
+| Spustit relaci</br> |[Spustit relaci prostředí Windows PowerShell pro StorSimple](storsimple-8000-create-manage-support-package.md#create-a-support-package) |
 
-## <a name="get-help-in-windows-powershell-for-storsimple"></a>Získání nápovědy ve Windows Powershellu pro StorSimple
+## <a name="get-help-in-windows-powershell-for-storsimple"></a>Získejte pomoc ve Windows Powershellu pro StorSimple
 
-Rutina nápovědy ve Windows Powershellu pro StorSimple je k dispozici. Online, aktuální verzi této nápovědy je také k dispozici, který můžete použít k aktualizaci v nápovědě systému.
+V prostředí Windows PowerShell pro StorSimple je k dispozici rutiny nápovědy. Online a aktuální verzi této nápovědy je také k dispozici, což vám umožní aktualizovat nápovědu ve vašem systému.
 
-Získání nápovědy v toto rozhraní je podobné jako v prostředí Windows PowerShell a většina rutin souvisejících s bude fungovat. Nápověda pro prostředí Windows PowerShell online můžete najít v knihovně TechNet: [skriptování v prostředí Windows PowerShell](http://go.microsoft.com/fwlink/?LinkID=108518).
+Získání nápovědy v toto rozhraní je podobné jako v prostředí Windows PowerShell a většina rutin souvisejících s nápovědou bude fungovat. Nápověda pro Windows PowerShell online můžete najít na stránkách TechNet Library: [skriptování v prostředí Windows PowerShell](http://go.microsoft.com/fwlink/?LinkID=108518).
 
-Následuje stručný popis typů nápovědy pro toto rozhraní prostředí Windows PowerShell, včetně toho, jak aktualizovat v nápovědě.
+Následuje stručný popis typů nápovědy pro toto rozhraní prostředí Windows PowerShell, včetně aktualizace v nápovědě.
 
-### <a name="to-get-help-for-a-cmdlet"></a>Jak získat nápovědu pro rutinu
+### <a name="to-get-help-for-a-cmdlet"></a>Chcete-li získat nápovědu pro rutiny
 
-* Chcete-li získat nápovědu pro všechny rutiny nebo funkce, použijte následující příkaz:`Get-Help <cmdlet-name>`
-* Získat online nápovědu k jakékoli rutině, použijte rutinu předchozí s `-Online` parametr:`Get-Help <cmdlet-name> -Online`
-* Pro úplnou nápovědu, můžete použít `–Full` parametr a příklady, použijte `–Examples` parametr.
+* Chcete-li získat nápovědu pro rutiny nebo funkce, použijte následující příkaz: `Get-Help <cmdlet-name>`
+* Získat online nápovědu pro všechny rutiny, použijte rutinu předchozí s `-Online` parametr: `Get-Help <cmdlet-name> -Online`
+* Pro úplnou nápovědu, můžete použít `–Full` parametr a příklady, použijte `–Examples` parametru.
 
 ### <a name="to-update-help"></a>Abyste mohli aktualizovat nápovědu
 
-Můžete snadno aktualizovat v nápovědě v rozhraní Windows PowerShell. Proveďte následující kroky, abyste mohli aktualizovat nápovědu ve vašem systému.
+Můžete snadno aktualizovat nápovědu v rozhraní Windows PowerShell. Proveďte následující kroky, abyste mohli aktualizovat nápovědu ve vašem systému.
 
-#### <a name="to-update-cmdlet-help"></a>Chcete-li aktualizovat rutiny nápovědy
-1. Spusťte Windows PowerShell **spustit jako správce** možnost.
-2. Na příkazovém řádku zadejte:`Update-Help`
-3. Budou nainstalovány soubory nápovědy.
+#### <a name="to-update-cmdlet-help"></a>Aktualizace rutiny nápovědy
+1. Spusťte prostředí Windows PowerShell pomocí **spustit jako správce** možnost.
+2. Na příkazovém řádku zadejte:  `Update-Help`
+3. Aktualizované soubory nápovědy se nainstaluje.
 4. Když jsou instalovány soubory nápovědy, zadejte: `Get-Help Get-Command`. Tím zobrazíte seznam rutin, pro který je k dispozici nápověda.
 
 > [!NOTE]
-> Chcete-li získat seznam všech dostupných rutin v prostředí runspace, přihlaste se na odpovídající položku nabídky a spusťte `Get-Command` rutiny.
+> Pokud chcete získat seznam dostupných rutin v prostředí runspace, přihlaste se k odpovídající možnost nabídky a spusťte `Get-Command` rutiny.
 
 
 ## <a name="next-steps"></a>Další postup
 
-Pokud máte problémy s vaším zařízením StorSimple při provádění výše pracovních postupů, podívejte se na [nástroje pro řešení potíží s nasazením StorSimple](storsimple-8000-troubleshoot-deployment.md#tools-for-troubleshooting-storsimple-deployments).
+Pokud zaznamenáte problémy se zařízením StorSimple při jedné z výše uvedených pracovních postupů, podívejte se na [nástroje pro řešení potíží s nasazeními StorSimple](storsimple-8000-troubleshoot-deployment.md#tools-for-troubleshooting-storsimple-deployments).
 

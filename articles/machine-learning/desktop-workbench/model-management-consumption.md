@@ -1,82 +1,83 @@
 ---
-title: Používání služby webové služby Azure Machine Learning modelu Management | Microsoft Docs
-description: Tento dokument popisuje kroky a koncepty součástí využívání webových služeb, které jsou nasazeny pomocí modelu správy v Azure Machine Learning.
+title: Azure používání webové služby Správa modelů Machine Learning | Dokumentace Microsoftu
+description: Tento dokument popisuje kroky a koncepty součástí využívání webové služby nasazené pomocí správy modelů ve službě Azure Machine Learning.
 services: machine-learning
 author: raymondlaghaeian
 ms.author: raymondl
 manager: hjerez
 ms.reviewer: jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/06/2017
-ms.openlocfilehash: f87f865ef6d2c3403903a1bdcc402c01c3e9f939
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 4a49ccff68003cf7b81a7d945176992a2893d1ac
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34831985"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38972632"
 ---
-# <a name="consuming-web-services"></a>Využívání webových služeb
-Jakmile nasadíte model jako webovou službu v reálném čase, můžete odeslat data a získat předpovědi z mnoha různých platforem a aplikace. Webovou službu v reálném čase zpřístupňuje rozhraní REST API pro získání předpovědi. K webové službě ve formátu jednoho nebo více řádků získat jeden nebo více předpovědi současně může odesílat data.
+# <a name="consuming-web-services"></a>Používání webových služeb
+Po nasazení modelu jako webové služby v reálném čase, můžete ho odeslat data a získat předpovědí z nejrůznějších platforem a aplikací. Webové služby v reálném čase zpřístupňuje rozhraní REST API pro získání předpovědi. Může odesílat data do služby web ve formátu jeden nebo více řádky zobrazíte predikcí nejmíň jeden po druhém.
 
-Pomocí [Azure Machine Learning webové služby](model-management-service-deploy.md), externí aplikací synchronně komunikuje s prediktivního modelu tím, že volání HTTP POST na adresu URL služby. Chcete-li volání webové služby, klientská aplikace musí určovat klíč rozhraní API, která se vytvoří při nasazení předpovědi a ukládat data požadavku do textu požadavku POST.
+S [služby Azure Machine Learning Web](model-management-service-deploy.md), externí aplikaci synchronně komunikuje s prediktivním modelem tím, že volání HTTP POST na adresu URL služby. Chcete-li volání webové služby, klientská aplikace potřebuje k určení klíče rozhraní API, který je vytvořen při nasazování predikcí a ukládat data požadavku do textu požadavku POST.
 
-Všimněte si, že klíče rozhraní API jsou k dispozici pouze v režimu nasazení clusteru. Místní webové služby není nutné klíče.
+> [!NOTE]
+> Všimněte si, že klíče rozhraní API jsou k dispozici pouze v režimu nasazení clusteru. Místní webové služby nemají žádné klíče.
 
-## <a name="service-deployment-options"></a>Možnosti nasazení služby
-Azure Machine Learning webové služby se dá nasadit clustery založené na cloudu pro produkční a testovací scénáře a místní pracovní stanice pomocí modulu docker. Funkce prediktivního modelu v obou případech zůstává stejná. Nasazení na základě clusteru poskytuje škálovatelné a původce řešení podle kontejneru služby Azure, zatímco místní nasazení lze použít pro ladění. 
+## <a name="service-deployment-options"></a>Možnosti nasazení služeb
+Azure Machine Learning Web services můžete nasadit clustery založené na cloudu pro produkční a testovací scénáře a místní pracovní stanice pomocí modulu docker. Funkce prediktivního modelu v obou případech zůstává stejná. Nasazení na základě clusteru poskytuje škálovatelné a výkonné řešení založené na služby Azure Container Service, i když je místní nasazení můžete použít pro ladění. 
 
-Rozhraní příkazového řádku pro Azure Machine Learning a rozhraní API poskytuje pohodlné příkazy pro vytváření a správu výpočetní prostředí pro nasazení služby pomocí ```az ml env``` možnost. 
+Rozhraní příkazového řádku Azure Machine Learning a rozhraní API poskytuje pohodlné příkazy pro vytváření a správu výpočetních prostředí pro nasazení služeb pomocí ```az ml env``` možnost. 
 
-## <a name="list-deployed-services-and-images"></a>Zobrazit seznam nasazení služeb a obrázků
-Můžete vytvořit seznam aktuálně nasazené služby a imagí Dockeru pomocí rozhraní příkazového řádku příkaz ```az ml service list realtime -o table```. Všimněte si, že tento příkaz lze použít vždy v kontextu aktuálního výpočetního prostředí. Služby, které jsou nasazeny nezobrazí v prostředí, které není nastavena jako aktuální. Nastavení použití prostředí ```az ml env set```. 
+## <a name="list-deployed-services-and-images"></a>Výpis nasazení služeb a obrázky
+Můžete vytvořit seznam aktuálně nasazená služba a Image Dockeru pomocí rozhraní příkazového řádku ```az ml service list realtime -o table```. Všimněte si, že tento příkaz vždy funguje v rámci aktuálního prostředí compute. Měl by zobrazit služby, které jsou nasazené v prostředí, které není nastavena jako aktuální. Chcete-li nastavit prostředí pomocí ```az ml env set```. 
 
-## <a name="get-service-information"></a>Získat informace o služby
-Po úspěšném nasazení webové služby použijte následující příkaz získat adresu URL služby a další podrobnosti pro volání koncový bod služby. 
+## <a name="get-service-information"></a>Získat informace o službě
+Po úspěšném nasazení webové služby použijte následující příkaz se získat adresu URL služby a další podrobnosti pro volání koncového bodu služby. 
 
 ```
 az ml service usage realtime -i <web service id>
 ```
 
-Tento příkaz vypíše adresu URL služby, hlavičky požadované žádosti, adresy URL swaggeru a vzorová data pro volání služby, pokud byl v době nasazení schématu rozhraní API služby.
+Tento příkaz vypíše adresu URL služby, hlavičky požadované žádosti, adresy URL swaggeru a ukázková data pro volání služby, pokud schéma rozhraní API služby jste zadali při čas nasazení.
 
-Bez skládání požadavku HTTP, zadáním příkazu ukázkové rozhraní příkazového řádku s vstupních dat můžete testovat službu přímo z rozhraní příkazového řádku:
+Můžete testovat službu přímo z rozhraní příkazového řádku bez vytváření požadavku protokolu HTTP, tak, že zadáte Ukázkový příkaz rozhraní příkazového řádku se vstupními daty:
 
 ```
 az ml service run realtime -i <web service id> -d "Your input data"
 ```
 
-## <a name="get-the-service-api-key"></a>Získat klíč rozhraní API služby
-Získat klíč webové služby, použijte následující příkaz:
+## <a name="get-the-service-api-key"></a>Získání klíče rozhraní API služby
+Chcete-li získat klíč k webové službě, použijte následující příkaz:
 
 ```
 az ml service keys realtime -i <web service id>
 ```
-Při vytváření požadavku HTTP, používá se v hlavičce autorizace: "Autorizace": "nosiče <key>"
+Při vytváření požadavku protokolu HTTP, používat klíč v hlavičce autorizace: "Autorizace": "nosiče <key>"
 
-## <a name="get-the-service-swagger-description"></a>Získání popisu služby Swagger
-Pokud byl schématu rozhraní API služby, koncový bod služby by vystavit dokumentem Swagger v ```http://<ip>/api/v1/service/<service name>/swagger.json```. Dokumentu Swagger slouží k automatickému generování klienta služby a prozkoumat očekávané vstupních dat a další podrobnosti o službě.
+## <a name="get-the-service-swagger-description"></a>Načtení popisu služby Swagger
+Pokud byl zadán schématu rozhraní API služby, koncový bod služby by vystavovat dokumentu Swagger za ```http://<ip>/api/v1/service/<service name>/swagger.json```. Dokument Swagger slouží k automatickému generování klienta služby a prozkoumejte očekávaný vstupní data a další podrobnosti o této službě.
 
 ## <a name="get-service-logs"></a>Získání protokolů služby
-K pochopení chování služby a diagnostice problémů, existuje několik způsobů získat protokoly služby:
-- Rozhraní příkazového řádku příkaz ```az ml service logs realtime -i <service id>```. Tento příkaz lze použít v clusteru i místní režimy.
-- Pokud v nasazení bylo povoleno protokolování služby, protokoly služby zašle také AppInsight. Rozhraní příkazového řádku příkaz ```az ml service usage realtime -i <service id>``` zobrazuje AppInsight adresu URL. Všimněte si, že protokol AppInsight může zpožděn 2 až 5 minut.
-- Protokoly clusteru je možné zobrazit pomocí konzoly Kubernetes, která je připojena při nastavení aktuální prostředí clusteru s ```az ml env set```
-- Místní docker protokoly jsou k dispozici prostřednictvím protokoly modulu docker, když je služba spuštěná místně.
+Pochopení chování služby a diagnostikovat problémy, existuje několik způsobů, jak načíst protokoly služby:
+- Rozhraní příkazového řádku ```az ml service logs realtime -i <service id>```. Tento příkaz funguje v clusteru a místní režimy.
+- Pokud v nasazení bylo povoleno protokolování služby, se do služby AppInsight odesílat protokoly služby. Pomocí příkazu CLI ```az ml service usage realtime -i <service id>``` zobrazí adresu URL služby AppInsight. Všimněte si, že protokoly služby AppInsight se může zpozdit o 2 – 5 minut.
+- Protokoly clusteru je možné zobrazit pomocí konzoly Kubernetes, který je připojený při nastavování aktuální prostředí clusteru s ```az ml env set```
+- Místní docker protokoly jsou k dispozici prostřednictvím protokoly modulu docker, pokud služba je spuštěna místně.
 
 ## <a name="call-the-service-using-c"></a>Volání služby pomocí jazyka C#
-Adresa URL služby použijte k odeslání požadavku z konzolovou aplikaci C#. 
+Adresa URL služby použijte k odesílání požadavku z konzolové aplikace jazyka C#. 
 
 1. V sadě Visual Studio vytvořte novou konzolovou aplikaci: 
-    * V nabídce klikněte na možnost, Soubor -> Nový -> projektu
-    * V části Visual Studio C#, klikněte na ploše systému Windows – třída a potom vyberte konzolovou aplikaci.
-2. Zadejte _MyFirstService_ jako název projektu, klikněte na tlačítko OK.
-3. V odkazy na projekt, nastavte odkazy na _System.Net_, a _System.Net.Http_.
-4. Klikněte na Nástroje -> Správce balíčků NuGet -> Konzola správce balíčků a potom nainstalovat balíček Microsoft.AspNet.WebApi.Client.
-5. Otevřete soubor Program.cs a nahraďte kód následujícím kódem:
-6. Aktualizace _SERVICE_URL_ a _API_KEY_ parametry s informacemi z webové služby.
+    * V nabídce klikněte na možnost, Soubor -> Nový -> Projekt
+    * V rámci Visual Studio C#, klikněte na tlačítko Windows Desktop třídy a pak vyberte konzolovou aplikaci.
+2. Zadejte `MyFirstService` jako název projektu, klikněte na tlačítko OK.
+3. V odkazech projektu, nastavte odkazy `System.Net`, a `System.Net.Http`.
+4. Klikněte na Nástroje -> Správce balíčků NuGet -> Konzola správce balíčků, potom nainstalovat **Microsoft.AspNet.WebApi.Client** balíčku.
+5. Otevřít **Program.cs** souboru a nahraďte kód následujícím kódem:
+6. Aktualizace `SERVICE_URL` a `API_KEY` parametry s informacemi z webové služby.
 7. Spusťte projekt.
 
 ```csharp
@@ -146,11 +147,11 @@ namespace MyFirstService
 }
 ```
 
-## <a name="call-the-web-service-using-python"></a>Volání webové služby používá Python
-Poslat žádost o služby webu v reálném čase pomocí Python. 
+## <a name="call-the-web-service-using-python"></a>Volání webové služby pomocí Pythonu
+Použití Pythonu k odeslat žádost službě webu v reálném čase. 
 
 1. Zkopírujte následující vzorový kód do nového souboru Python.
-2. Aktualizujte data, adresy url a api_key parametry. Pro místní webové služby odeberte záhlaví "Povolení".
+2. Aktualizujte parametry dat, adresu url a klíč rozhraní API. Místní webové služby odeberte hlavičku "Povolení".
 3. Spusťte kód. 
 
 ```python

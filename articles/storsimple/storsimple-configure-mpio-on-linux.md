@@ -1,6 +1,6 @@
 ---
-title: Konfigurace funkce MPIO na hostiteli systému StorSimple Linux | Microsoft Docs
-description: Konfigurace funkce MPIO na StorSimple připojené k Linux hostitele se systémem CentOS 6.6
+title: Konfigurace funkce MPIO na hostiteli s Linuxem StorSimple | Dokumentace Microsoftu
+description: Konfigurace funkce MPIO na StorSimple připojené k hostiteli se systémem Linux CentOS 6.6 systémem
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,68 +14,68 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: df9f53694cd72a700d593550bfde13a4f25180db
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: ccd24e1498282cd2b627226df79af22e9647b64d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37021749"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38681568"
 ---
-# <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>Konfigurace funkce MPIO na StorSimple hostitele se systémem CentOS
-Tento článek vysvětluje kroky nutné ke konfiguraci více cest vstupně-výstupní operace (MPIO) na serveru hostitele Centos 6.6. Hostitelský server je připojená k zařízení s Microsoft Azure StorSimple pro vysokou dostupnost prostřednictvím iniciátory iSCSI. Je podrobně popisuje automatické zjišťování vícenásobný zařízení a konkrétní nastavení pouze pro svazky zařízení StorSimple.
+# <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>Konfigurace funkce MPIO na hostiteli StorSimple se systémem CentOS
+Tento článek vysvětluje kroky nutné ke konfiguraci cest vstupně-výstupních operací (MPIO) na serveru hostitele Centos 6.6. Hostitelský server je připojený ke svému zařízení Microsoft Azure StorSimple pro zajištění vysoké dostupnosti prostřednictvím iniciátory iSCSI. Popisuje podrobně automatické zjišťování zařízení více cest a specifické nastavení pouze pro svazky zařízení StorSimple.
 
-Tento postup se vztahuje na všechny modely řadu zařízení StorSimple 8000.
+Tento postup se vztahuje na všechny modely zařízení řady StorSimple 8000.
 
 > [!NOTE]
-> Tento postup nelze použít pro zařízení StorSimple cloudu. Další informace naleznete v části Konfigurace hostitele serverů pro vaše zařízení cloudu.
+> Tento postup nelze použít pro řešení StorSimple Cloud Appliance. Další informace najdete v tématu Postup konfigurace hostitelské servery pro cloudové zařízení.
 
 
-## <a name="about-multipathing"></a>O vytváření více cest
-Tato funkce více cest můžete konfigurovat více vstupně-výstupních cest mezi hostitelským serverem a zařízením úložiště. Tyto cesty vstupně-výstupní operace jsou fyzické připojení SAN, která může zahrnovat samostatné kabely, přepínače, síťových rozhraní a řadiče. Více cest agreguje vstupně-výstupních cest ke konfiguraci nové zařízení, která souvisí s všechny agregované cesty.
+## <a name="about-multipathing"></a>O více cest
+Funkce více cest umožňuje konfigurovat více vstupně-výstupních cest mezi serverem pro hostitele a úložné zařízení. Tyto cesty k vstupně-výstupní operace jsou fyzické připojení SAN, které mohou obsahovat samostatné kabely, přepínače, síťová rozhraní a řadiče. Více cest agreguje vstupně-výstupních cest ke konfiguraci nového zařízení, která souvisí s všechny agregované cesty.
 
-Účelem více cest je dvojí:
+Účelem paměťovým má dvě fáze:
 
-* **Vysoká dostupnost**: poskytuje alternativní cestu, pokud se nezdaří libovolný element vstupně-výstupní cestu (například kabel, přepínače, síťové nebo řadič).
-* **Vyrovnávání zatížení**: v závislosti na konfiguraci zařízení úložiště, můžete zvýšit výkon zjišťování zatížením na vstupně-výstupních cest a dynamicky vyrovnává těchto zatížení.
+* **Vysoká dostupnost**: poskytuje alternativní cestu, pokud selže některý z cesty vstupně-výstupních operací (například kabel, přepínač, síťové rozhraní nebo řadič) prvků.
+* **Vyrovnávání zatížení**: v závislosti na konfiguraci vašeho zařízení úložiště, můžete zvýšit výkon zjišťování zatížení vstupně-výstupních cest a dynamicky opětovné vyvážení těchto zatížení.
 
 ### <a name="about-multipathing-components"></a>O komponentách více cest
-Více cest v systému Linux se skládá z jádra a komponenty uživatelského prostoru jako v následující tabulce.
+Více cest v Linuxu se skládá z komponenty jádra a uživatelskou komponenty, jako v následující tabulce.
 
-* **Jádra**: hlavní součást je *zařízení mapper* , bude přesměrována vstupně-výstupních operací a podporuje převzetí služeb při selhání pro cesty a cesty skupiny.
+* **Jádra**: hlavní součást se *zařízení Mapovač* , který přesměrovává vstupně-výstupní operace a podporuje pro cesty a cesty skupiny převzetí služeb při selhání.
 
-* **Uživatel místo**: Jedná se o *multipath nástroje* , správě zařízení multipathed instruující vícenásobný modul Mapovač zařízení, co dělat. Nástroje obsahovat:
+* **Uživatelskou**: Jedná se o *multipath nástroje* , které spravují multipathed zařízení tím, že funkce multipath modul Mapovač zařízení, jak postupovat. Nástroje obsahovat:
    
-   * **Funkce Multipath**: uvádí a konfiguruje multipathed zařízení.
-   * **Multipathd**: démon, která se spustí multipath a monitoruje cesty.
-   * **Název Devmap**: poskytuje smysluplný název zařízení pro proces udev pro devmaps.
-   * **Kpartx**: mapuje lineární devmaps zařízení oddíly, aby rozdělený vícenásobný mapy.
-   * **Multipath.conf**: konfigurační soubor pro více cest démon procesu, který se používá k přepsání předdefinovaných konfigurace tabulky.
+   * **Funkce Multipath**: seznamy a nakonfiguruje multipathed zařízení.
+   * **Multipathd**: proces démon, který provede multipath a monitoruje cesty.
+   * **Název Devmap**: smysluplný název zařízení pro proces udev zajišťující devmaps.
+   * **Kpartx**: lineární devmaps se mapuje na zařízení oddílů, aby rozdělený více cest map.
+   * **Multipath.conf**: konfigurační soubor pro více cest démon, který se používá k přepsání integrovaná konfigurace tabulky.
 
-### <a name="about-the-multipathconf-configuration-file"></a>O konfiguračního souboru multipath.conf
-Konfigurační soubor `/etc/multipath.conf` umožňuje mnoho funkcí více cest uživatelsky konfigurovatelného. `multipath` Příkaz a démon jádra `multipathd` použijte informace v tomto souboru. Soubor je konzultaci pouze při konfiguraci funkce multipath zařízení. Ujistěte se, že jsou všechny změny provedené před spuštěním `multipath` příkaz. Pokud upravíte soubor později, musíte zastavit a spustit multipathd znovu pro změny se projeví.
+### <a name="about-the-multipathconf-configuration-file"></a>O multipath.conf konfigurační soubor
+Konfigurační soubor `/etc/multipath.conf` díky řadě funkcí více cest uživatelem konfigurovatelné. `multipath` Příkazu a proces daemon jádra `multipathd` použijte informace v tomto souboru. Soubor je konzultaci s pouze během konfigurace funkce multipath zařízení. Ujistěte se, že jsou všechny změny provedené před spuštěním `multipath` příkazu. Pokud později změníte soubor, je potřeba zastavit a spustit multipathd znovu pro změny projevily.
 
 Multipath.conf má pět částí:
 
-- **Výchozí nastavení na úrovni systému** *(výchozí)*: můžete přepsat výchozí nastavení na úrovni systému.
-- **Zakázáno zařízení** *(černý list)*: můžete zadat seznam zařízení, které by neměly být řízené zařízení mapper.
-- **Blokovaných výjimky** *(blacklist_exceptions)*: můžete identifikovat konkrétní zařízení jsou považovány za vícenásobný zařízení i v případě, že uvedené v blacklist.
-- **Konkrétní nastavení řadiče úložiště** *(zařízení)*: můžete zadat nastavení konfigurace, které budou použity na zařízení, které mají dodavatele a informace o produktu.
-- **Nastavení pro konkrétní zařízení** *(multipaths)*: v této části můžete doladit nastavení konfigurace pro jednotlivé logické jednotky.
+- **Výchozí nastavení na úrovni systému** *(výchozí nastavení)*: je možné přepsat výchozí nastavení na úrovni systému.
+- **Zařízení na seznamu zakázaných adres** *(černý list)*: můžete zadat seznam zařízení, která by neměla být řízena Mapovač zařízení.
+- **Seznam zakázaných výjimky** *(blacklist_exceptions)*: Chcete zjistit, konkrétní zařízení jsou považovány za funkce multipath zařízení i v případě, že uvedené v blacklist.
+- **Nastavení konkrétní řadič úložiště** *(zařízení)*: můžete zadat nastavení konfigurace, které se použijí na zařízení, která mají dodavatele a informace o produktu.
+- **Nastavení konkrétního zařízení** *(multipaths)*: v této části můžete použít k vyladění nastavení konfigurace pro jednotlivé logické jednotky.
 
-## <a name="configure-multipathing-on-storsimple-connected-to-linux-host"></a>Konfigurace více cest na StorSimple připojený k hostiteli systému Linux
-Zařízení StorSimple připojený k hostiteli systému Linux lze nakonfigurovat pro vysokou dostupnost a vyrovnávání zatížení. Například pokud má hostitel Linux dvě rozhraní, které jsou připojené k síti SAN a zařízení má dvě rozhraní, které jsou připojené k síti SAN, tak, aby tato rozhraní jsou ve stejné podsíti, pak bude 4 cesty k dispozici. Ale pokud každé rozhraní DATA na zařízení a hostitele rozhraní jsou v jiné podsíti protokolu IP (a ne směrovatelné), pak pouze 2 cesty nebudou k dispozici. Můžete nakonfigurovat více cest automaticky zjistit všechny cesty k dispozici, zvolte algoritmu Vyrovnávání zatížení u těchto cest, použít specifické nastavení pro svazky jen StorSimple a potom povolit a ověřit více cest.
+## <a name="configure-multipathing-on-storsimple-connected-to-linux-host"></a>Konfigurace více cest na StorSimple připojené k hostiteli s Linuxem
+Zařízení StorSimple připojené k hostiteli se systémem Linux můžete nakonfigurovat pro vysokou dostupnost a vyrovnávání zatížení. Například pokud má dvě rozhraní připojené k síti SAN hostiteli s Linuxem a má dvě rozhraní připojené k síti SAN, tak, aby tato rozhraní jsou ve stejné podsíti, pak bude 4 cesty k dispozici. Nicméně pokud každé rozhraní DATA na zařízení a hostitele rozhraní jsou v jiné podsíti protokolu IP (a ne směrovatelné), pak pouze 2 cesty nebudou k dispozici. Můžete nakonfigurovat více cest automaticky zjistit všechny dostupné cesty, vyberte algoritmus Vyrovnávání zatížení pro tyto cesty, použít konkrétní konfiguraci nastavení pro svazky jen pro StorSimple a potom povolit a ověřit více cest.
 
 Následující postup popisuje, jak nakonfigurovat více cest při připojení zařízení StorSimple se dvěma síťovými rozhraními na hostitele se dvěma síťovými rozhraními.
 
 ## <a name="prerequisites"></a>Požadavky
-Tato část podrobně popisuje požadavky konfigurace pro CentOS server a zařízení StorSimple.
+Tato část podrobně popisuje požadavky na konfiguraci pro CentOS server a zařízení StorSimple.
 
 ### <a name="on-centos-host"></a>Na hostiteli CentOS
-1. Ujistěte se, že má váš hostitel CentOS 2 síťových rozhraní, které jsou povolené. Zadejte:
+1. Ujistěte se, že CentOS hostitele má 2 síťové rozhraní povolené. Zadejte:
    
     `ifconfig`
    
-    Následující příklad ukazuje výstup, pokud dva síťové rozhraní (`eth0` a `eth1`) jsou k dispozici na hostiteli.
+    Následující příklad ukazuje výstup, když dvě síťová rozhraní (`eth0` a `eth1`) jsou k dispozici na hostiteli.
    
         [root@centosSS ~]# ifconfig
         eth0  Link encap:Ethernet  HWaddr 00:15:5D:A2:33:41  
@@ -108,7 +108,7 @@ Tato část podrobně popisuje požadavky konfigurace pro CentOS server a zaří
           RX bytes:720 (720.0 b)  TX bytes:720 (720.0 b)
 2. Nainstalujte *iSCSI. iniciátoru utils* na vašem serveru CentOS. Proveďte následující kroky k instalaci *iSCSI. iniciátoru utils*.
    
-   1. Přihlaste se jako `root` do svého CentOS hostitele.
+   1. Přihlaste se jako `root` do hostitele CentOS.
    2. Nainstalujte *iSCSI. iniciátoru utils*. Zadejte:
       
        `yum install iscsi-initiator-utils`
@@ -117,10 +117,10 @@ Tato část podrobně popisuje požadavky konfigurace pro CentOS server a zaří
        `service iscsid start`
       
        V případech `iscsid` ve skutečnosti se nemusí spustit a `--force` možnost může být potřeba.
-   4. K zajištění, že vaše iniciátor iSCSI je povolena při spuštění, použijte `chkconfig` příkaz, který povolí službu.
+   4. K zajištění, že vaše iniciátor iSCSI je povoleno během spouštění, použijte `chkconfig` příkaz, který umožní službě.
       
        `chkconfig iscsi on`
-   5. Chcete-li ověřit, že byla správně instalační program, spusťte příkaz:
+   5. Pokud chcete ověřit, že se správně nastavila, spusťte příkaz:
       
        `chkconfig --list | grep iscsi`
       
@@ -129,69 +129,69 @@ Tato část podrobně popisuje požadavky konfigurace pro CentOS server a zaří
            iscsi   0:off   1:off   2:on3:on4:on5:on6:off
            iscsid  0:off   1:off   2:on3:on4:on5:on6:off
       
-       Z výše uvedeném příkladu vidíte, že prostředí iSCSI bude spouštět na spuštění spuštění úrovně 2, 3, 4 a 5.
-3. Nainstalujte *zařízení. mapper multipath*. Zadejte:
+       V předchozím příkladu můžete zobrazit, že vaše prostředí iSCSI poběží na spuštění úrovně spuštění 2, 3, 4 a 5.
+3. Nainstalujte *zařízení. Mapovač multipath*. Zadejte:
    
     `yum install device-mapper-multipath`
    
-    Spustí se instalace. Typ **Y** pokračovat po zobrazení výzvy k potvrzení.
+    Instalace bude zahájena. Typ **Y** pokračovat po zobrazení výzvy k potvrzení.
 
 ### <a name="on-storsimple-device"></a>Na zařízení StorSimple
-Zařízení StorSimple musí mít:
+Zařízení StorSimple by měl mít:
 
-* Minimálně dvě rozhraní povolená pro iSCSI. Pokud chcete ověřit, zda jsou dvě rozhraní iSCSI povolený v zařízení StorSimple, proveďte následující kroky na portálu Azure classic pro zařízení StorSimple:
+* Minimálně dvě rozhraní povolená pro iSCSI. Ověření, že dvě rozhraní iSCSI povolený v zařízení StorSimple, proveďte následující kroky na portálu Azure classic pro zařízení StorSimple:
   
-  1. Přihlaste se ke klasickému portálu pro zařízení StorSimple.
-  2. Vybrat služby StorSimple Manager, klikněte na tlačítko **zařízení** a zvolte konkrétní zařízení StorSimple. Klikněte na tlačítko **konfigurace** a ověřte nastavení síťového rozhraní. Snímek obrazovky s dvě rozhraní iSCSI povolený sítě jsou uvedeny níže. Sem DATA 2 a DATA 3, oba 10 GbE je povoleno rozhraní iSCSI.
+  1. Přihlaste se na portálu classic pro zařízení StorSimple.
+  2. Vyberte svoji službu StorSimple Manager, klikněte na tlačítko **zařízení** a zvolte konkrétní zařízení StorSimple. Klikněte na tlačítko **konfigurovat** a ověřte nastavení síťového rozhraní. Snímek obrazovky s dvě rozhraní sítě povolené iSCSI je uveden níže. Zde DATA 2 a DATA 3, obě 10 GbE pro iSCSI je povoleno rozhraní.
      
       ![Konfigurace funkce MPIO StorsSimple DATA 2](./media/storsimple-configure-mpio-on-linux/IC761347.png)
      
-      ![Funkce MPIO StorSimple dat 3 konfigurace](./media/storsimple-configure-mpio-on-linux/IC761348.png)
+      ![Funkce MPIO StorSimple DATA 3 Config](./media/storsimple-configure-mpio-on-linux/IC761348.png)
      
-      V **konfigurace** stránky
+      V **konfigurovat** stránky
      
-     1. Zajistěte, aby obě síťová rozhraní iSCSI povolený. **ISCSI povoleno** pole musí být nastavena na **Ano**.
-     2. Zkontrolujte, zda síťových rozhraní má stejnou rychlostí, jak by měla být 1 GbE nebo 10 GbE.
-     3. Poznámka: adresy IPv4 rozhraní iSCSI povolený a uložit pro pozdější použití na hostiteli.
-* Na rozhraní iSCSI v zařízení StorSimple by měl být dostupný ze serveru, CentOS.
-      Chcete-li to ověřit, zadejte IP adresy vašich rozhraní iSCSI povolený sítě StorSimple na hostitelském serveru. Příkazy používají a odpovídající výstup s DATA2 (10.126.162.25) a DATA3 (10.126.162.26) jsou uvedeny níže:
+     1. Ujistěte se, že obě síťová rozhraní jsou povolené iSCSI. **Povolené iSCSI** pole by mělo být nastavené **Ano**.
+     2. Ujistěte se, že síťová rozhraní mají stejnou rychlostí, by měla být 1 GbE nebo 10 GbE.
+     3. Poznamenejte si IPv4 adresy rozhraní iSCSI povolený a uložit pro pozdější použití v hostitelském počítači.
+* Rozhraní iSCSI pro zařízení StorSimple by měl být dostupný ze serveru, CentOS.
+      Chcete-li to ověřit, zadejte IP adresy povolené iSCSI síťových rozhraních StorSimple na hostitelském serveru. Příkazy a odpovídající výstup s DATA2 (10.126.162.25) a DATA3 (10.126.162.26) je uveden níže:
   
         [root@centosSS ~]# iscsiadm -m discovery -t sendtargets -p 10.126.162.25:3260
         10.126.162.25:3260,1 iqn.1991-05.com.microsoft:storsimple8100-shx0991003g44mt-target
         10.126.162.26:3260,1 iqn.1991-05.com.microsoft:storsimple8100-shx0991003g44mt-target
 
 ### <a name="hardware-configuration"></a>Konfigurace hardwaru
-Doporučujeme, abyste připojení dvě síťová rozhraní iSCSI, na samostatné cesty pro redundanci. Následující obrázek znázorňuje doporučené hardwarové konfigurace pro vysokou dostupnost a vyrovnávaní zatížení více cest pro váš CentOS server a zařízení StorSimple.
+Doporučujeme vám, že se můžete připojit dvě síťová rozhraní iSCSI na samostatném cesty za účelem zajištění redundance. Následující obrázek znázorňuje doporučené hardwarové konfigurace pro vysokou dostupnost a vyrovnávání zatížení více cest pro váš CentOS server a zařízení StorSimple.
 
-![Hardwarová konfigurace funkce MPIO pro zařízení StorSimple na hostitele platformy Linux](./media/storsimple-configure-mpio-on-linux/MPIOHardwareConfigurationStorSimpleToLinuxHost2M.png)
+![Hardwarová konfigurace funkce MPIO pro StorSimple na hostiteli s Linuxem](./media/storsimple-configure-mpio-on-linux/MPIOHardwareConfigurationStorSimpleToLinuxHost2M.png)
 
-Jak je vidět na předchozím obrázku:
+Jak je znázorněno na předchozím obrázku:
 
-* Zařízení StorSimple je v konfiguraci aktivní pasivní s dva řadiče.
-* Dva přepínače sítě SAN jsou připojené k vašim řadičům zařízení.
-* Dva iniciátory iSCSI jsou povolené v zařízení StorSimple.
-* Na hostiteli CentOS jsou povolené dvě síťová rozhraní.
+* Zařízení StorSimple je v konfiguraci aktivní pasivní pomocí dva řadiče.
+* Dva přepínače sítě SAN jsou připojené k řadiči zařízení.
+* Zařízení StorSimple jsou povolené dva iniciátory iSCSI.
+* Dvě síťová rozhraní jsou povolené na hostiteli CentOS.
 
-Výše uvedené konfigurace předá 4 samostatné cesty mezi vaším zařízením a hostitele, pokud jsou data hostitelů a rozhraní směrovatelné.
+Konfiguraci uvedené výš předá 4 samostatné cesty mezi zařízením a hostitele, pokud jsou směrovatelné rozhraní hostitele a data.
 
 > [!IMPORTANT]
-> * Doporučujeme vám, že nemíchat 1 GbE a 10 GbE síťová rozhraní pro vytváření více cest. Při použití dvou síťových rozhraní, jak rozhraní musí být identické typu.
-> * V zařízení StorSimple, DATA0, DATA1, DATA4 a DATA5 jsou 1 GbE rozhraní zatímco DATA2 a DATA3 10 GbE síťových rozhraní. |
+> * Doporučujeme vám, že jste Nekombinujte 1 GbE a rozhraní sítí 10 GbE pro více cest. Pokud používáte dvě síťová rozhraní, jak rozhraní musí být identické typu.
+> * Na zařízení StorSimple DATA0, DATA1, DATA4 a DATA5 jsou 1 GbE rozhraní zatímco DATA2 a DATA3 rozhraní sítí 10 GbE. |
 > 
 > 
 
-## <a name="configuration-steps"></a>Kroky konfigurace
-Postup konfigurace pro více cest zahrnuje konfigurace k dispozici cesty pro automatické zjišťování, zadání algoritmus Vyrovnávání zatížení, pokud chcete použít, povolení více cest a nakonec ověření konfigurace. Každý z těchto kroků je podrobněji v následujících částech.
+## <a name="configuration-steps"></a>Postup konfigurace
+Kroky konfigurace pro více cest zahrnují konfiguraci k dispozici cesty pro automatické zjišťování, určení algoritmu Vyrovnávání zatížení chcete použít, povolení více cest a nakonec ověření konfigurace. Každý z těchto kroků je podrobně popsány v následujících částech.
 
-### <a name="step-1-configure-multipathing-for-automatic-discovery"></a>Krok 1: Konfigurace používání více cest pro automatické zjišťování
-Zařízení podporující funkci multipath může automaticky zjistit a nakonfigurovat.
+### <a name="step-1-configure-multipathing-for-automatic-discovery"></a>Krok 1: Konfigurace cest pro automatické zjišťování
+Zařízení nepodporuje multipath lze automaticky zjistit a nakonfigurovaná.
 
-1. Inicializace `/etc/multipath.conf` souboru. Zadejte:
+1. Inicializovat `/etc/multipath.conf` souboru. Zadejte:
    
      `mpathconf --enable`
    
-    Výše uvedený příkaz vytvoří `sample/etc/multipath.conf` souboru.
-2. Vícenásobný službu spusťte. Zadejte:
+    Vytvoří výše uvedeného příkazu `sample/etc/multipath.conf` souboru.
+2. Spusťte službu více cest. Zadejte:
    
     `service multipathd start`
    
@@ -202,7 +202,7 @@ Zařízení podporující funkci multipath může automaticky zjistit a nakonfig
    
     `mpathconf --find_multipaths y`
    
-    To slouží k úpravě části výchozí nastavení vaší `multipath.conf` jak je uvedeno níže:
+    To slouží k úpravě výchozí část vaší `multipath.conf` jak je znázorněno níže:
    
         defaults {
         find_multipaths yes
@@ -210,13 +210,13 @@ Zařízení podporující funkci multipath může automaticky zjistit a nakonfig
         path_grouping_policy multibus
         }
 
-### <a name="step-2-configure-multipathing-for-storsimple-volumes"></a>Krok 2: Konfigurace používání více cest pro svazky zařízení StorSimple
-Ve výchozím nastavení všechna zařízení jsou černé uvedené v souboru multipath.conf a bude možné obejít. Musíte vytvořit zakázaných výjimky, které umožňují více cest pro svazky zařízení StorSimple.
+### <a name="step-2-configure-multipathing-for-storsimple-volumes"></a>Krok 2: Konfigurace cest pro svazky zařízení StorSimple
+Ve výchozím nastavení všechna zařízení jsou černá uvedené v souboru multipath.conf a bude možné obejít. Je potřeba vytvořit blacklist výjimky, které umožňují více cest svazků ze zařízení StorSimple.
 
 1. Upravit `/etc/mulitpath.conf` souboru. Zadejte:
    
     `vi /etc/multipath.conf`
-2. Vyhledejte v souboru multipath.conf blacklist_exceptions oddíl. Zařízení StorSimple musí být uveden jako zakázaných výjimka v této části. Zrušením komentáře u příslušné řádky v tomto souboru upravit podle následujícího obrázku (použijte pouze konkrétní model zařízení, které používáte):
+2. Vyhledejte v souboru multipath.conf blacklist_exceptions oddíl. Zařízení StorSimple, musí být uvedený jako blacklist výjimek v této části. Zrušením komentáře u příslušné řádky v tomto souboru a upravte ho podle následujícího obrázku (použijte pouze konkrétní model zařízení, které používáte):
    
         blacklist_exceptions {
             device {
@@ -229,13 +229,13 @@ Ve výchozím nastavení všechna zařízení jsou černé uvedené v souboru mu
             }
            }
 
-### <a name="step-3-configure-round-robin-multipathing"></a>Krok 3: Konfigurace pomocí kruhového dotazování více cest
-Tento algoritmus Vyrovnávání zatížení používá všechny dostupné multipaths k aktivnímu řadiči vyrovnáváním, kruhové dotazování způsobem.
+### <a name="step-3-configure-round-robin-multipathing"></a>Krok 3: Konfigurace kruhové dotazování více cest
+Tento algoritmus Vyrovnávání zatížení používá všechny dostupné multipaths k aktivnímu řadiči způsobem vyvážené, kruhové dotazování.
 
 1. Upravit `/etc/multipath.conf` souboru. Zadejte:
    
     `vi /etc/multipath.conf`
-2. V části `defaults` nastavte `path_grouping_policy` k `multibus`. `path_grouping_policy` Určuje výchozí cestu seskupování zásadu použít neurčené multipaths. V části výchozí hodnoty bude vypadat, jak je uvedeno níže.
+2. V části `defaults` nastavte `path_grouping_policy` k `multibus`. `path_grouping_policy` Určuje výchozí cestu k seskupování použít neurčené multipaths zásady. Výchozí nastavení části bude vypadat, jak je znázorněno níže.
    
         defaults {
                 user_friendly_names yes
@@ -243,47 +243,47 @@ Tento algoritmus Vyrovnávání zatížení používá všechny dostupné multip
         }
 
 > [!NOTE]
-> Nejběžnější hodnoty `path_grouping_policy` zahrnují:
+> Nejběžnější hodnoty `path_grouping_policy` patří:
 > 
-> * převzetí služeb při selhání = 1 cesty na skupinu s prioritou
-> * multibus = všechny platné cesty ve skupině s prioritou 1
+> * převzetí služeb při selhání = 1 cesty na skupinu priority
+> * multibus = všechny platné cesty ve skupině 1 priority
 > 
 > 
 
-### <a name="step-4-enable-multipathing"></a>Krok 4: Povolení používání více cest
+### <a name="step-4-enable-multipathing"></a>Krok 4: Povolit více cest
 1. Restartujte `multipathd` démona. Zadejte:
    
     `service multipathd restart`
-2. Výstup bude, jak je uvedeno níže:
+2. Výstup bude, jak je znázorněno níže:
    
         [root@centosSS ~]# service multipathd start
         Starting multipathd daemon:  [OK]
 
 ### <a name="step-5-verify-multipathing"></a>Krok 5: Ověření více cest
-1. Nejdříve se ujistěte, že iSCSI se naváže připojení zařízení StorSimple následujícím způsobem:
+1. Nejprve se ujistěte, že iSCSI se naváže spojení s zařízení StorSimple následujícím způsobem:
    
-   a. Zjistit zařízení StorSimple. Zadejte:
+   a. Zjišťování zařízení StorSimple. Zadejte:
       
     ```
     iscsiadm -m discovery -t sendtargets -p  <IP address of network interface on the device>:<iSCSI port on StorSimple device>
     ```
     
-    Výstup, pokud je IP adresa pro DATA0 10.126.162.25 a otevřít port 3260 v zařízení StorSimple pro přenosy iSCSI odchozí je, jak je uvedeno níže:
+    Výstup je IP adresa pro DATA0 10.126.162.25 a otevře port 3260 na zařízení StorSimple pro přenosy iSCSI odchozí je znázorněno níže:
     
     ```
     10.126.162.25:3260,1 iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target
     10.126.162.26:3260,1 iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target
     ```
 
-    Zkopírujte IQN zařízení StorSimple `iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target`, z předchozí výstupu.
+    Zkopírovat názvu IQN zařízení StorSimple `iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target`, z předchozí výstupu.
 
-   b. Připojte k zařízení pomocí cíl IQN. Zařízení StorSimple je zde cíle iSCSI. Zadejte:
+   b. Připojte se k zařízení s využitím cílové IQN. Zařízení StorSimple je tady cíle iSCSI. Zadejte:
 
     ```
     iscsiadm -m node --login -T <IQN of iSCSI target>
     ```
 
-    Následující příklad ukazuje výstup s cílem IQN systému `iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target`. Výstup označuje, že jste úspěšně připojení dvě iSCSI povolený síťovým rozhraním na vašem zařízení.
+    Následující příklad ukazuje výstup s cílové IQN z `iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target`. Výstup označuje, že právě jste úspěšně propojili na dvě rozhraní sítě povolené iSCSI na vašem zařízení.
 
     ```
     Logging in to [iface: eth0, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.25,3260] (multiple)
@@ -296,9 +296,9 @@ Tento algoritmus Vyrovnávání zatížení používá všechny dostupné multip
     Login to [iface: eth1, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.26,3260] successful.
     ```
 
-    Pokud se zobrazí pouze jednoho hostitele rozhraní a dvě cesty sem, budete muset povolit rozhraní na hostiteli pro iSCSI. Můžete provést [podrobné pokyny v dokumentaci k systému Linux](https://access.redhat.com/documentation/Red_Hat_Enterprise_Linux/5/html/Online_Storage_Reconfiguration_Guide/iscsioffloadmain.html).
+    Pokud se zobrazí pouze jednoho hostitele rozhraní a tady dvě cesty, je potřeba povolit rozhraní na hostiteli pro iSCSI. Můžete postupovat podle [podrobné pokyny v dokumentaci k systému Linux](https://access.redhat.com/documentation/Red_Hat_Enterprise_Linux/5/html/Online_Storage_Reconfiguration_Guide/iscsioffloadmain.html).
 
-2. Svazek má přístup k serveru CentOS ze zařízení StorSimple. Další informace najdete v tématu [krok 6: vytvoření svazku](storsimple-8000-deployment-walkthrough-u2.md#step-6-create-a-volume) prostřednictvím portálu Azure v zařízení StorSimple.
+2. Svazek je přístupný na CentOS server ze zařízení StorSimple. Další informace najdete v tématu [krok 6: vytvoření svazku](storsimple-8000-deployment-walkthrough-u2.md#step-6-create-a-volume) prostřednictvím webu Azure portal v zařízení StorSimple.
 
 3. Ověření cesty k dispozici. Zadejte:
 
@@ -306,7 +306,7 @@ Tento algoritmus Vyrovnávání zatížení používá všechny dostupné multip
       multipath –l
       ```
 
-      Následující příklad ukazuje výstup pro dvě síťová rozhraní na zařízení StorSimple připojené k jeden hostitel síťové rozhraní se dvě cesty k dispozici.
+      Následující příklad zobrazí výstup pro dvě síťová rozhraní na zařízení StorSimple připojené k síťovému rozhraní jednoho hostitele se dvěma cestami k dispozici.
 
         ```
         mpathb (36486fd20cc081f8dcd3fccb992d45a68) dm-3 MSFT,STORSIMPLE 8100
@@ -331,27 +331,27 @@ Tento algoritmus Vyrovnávání zatížení používá všechny dostupné multip
         After the paths are configured, refer to the specific instructions on your host operating system (Centos 6.6) to mount and format this volume.
 
 ## <a name="troubleshoot-multipathing"></a>Řešení potíží s více cest
-Tato část obsahuje některé užitečné tipy, pokud narazíte na potíže během konfigurace více cest.
+Tato část obsahuje několik užitečných tipů, pokud narazíte na nějaké problémy při konfiguraci cest.
 
-OTÁZKY. Nevidím změny v `multipath.conf` souboru neprojeví.
+Q. Nevidím změny v `multipath.conf` soubor neprojeví.
 
 A. Pokud jste provedli všechny změny `multipath.conf` soubor, budete muset restartovat službu více cest. Zadejte následující příkaz:
 
     service multipathd restart
 
-OTÁZKY. Je povoleno dvě síťová rozhraní v zařízení StorSimple a dvě síťová rozhraní na hostiteli. Při zobrazení seznamu cest k dispozici, vidím pouze dvě cesty. Očekávání zobrazíte čtyři dostupné cesty.
+Q. Můžu povolili dvě síťová rozhraní na zařízení StorSimple a dvě síťová rozhraní na hostiteli. Při zobrazení seznamu cest k dispozici, zobrazí pouze dvě cesty. Můžu očekávali čtyři cesty k dispozici.
 
-A. Ujistěte se, že tyto dvě cesty jsou ve stejné podsíti a směrovat. Pokud rozhraní sítě jsou v jiné sítě VLAN a není směrovatelné, zobrazí se pouze dvě cesty. Chcete-li to ověřit je a ujistěte se, že může kontaktovat rozhraní hostitele ze síťového rozhraní v zařízení StorSimple. Budete muset [kontaktovat Microsoft Support](storsimple-8000-contact-microsoft-support.md) jako toto ověření provést pouze prostřednictvím podpory relace.
+A. Ujistěte se, že tyto dvě cesty jsou ve stejné podsíti a směrovat. Pokud síťová rozhraní jsou v jiné sítě VLAN a není směrovatelný, zobrazí se pouze dvě cesty. Abyste měli jistotu, že můžete oslovit rozhraní hostitele ze síťového rozhraní na zařízení StorSimple je jeden způsob, jak to chcete ověřit. Budete muset [obraťte se na Microsoft Support](storsimple-8000-contact-microsoft-support.md) jako toto ověření můžete provést jen prostřednictvím relaci.
 
-OTÁZKY. Při zobrazení seznamu cest k dispozici, nezobrazí žádný výstup.
+Q. Při zobrazení seznamu cest k dispozici, se mi nezobrazují žádný výstup.
 
-A. Obvykle není zobrazuje všechny cesty multipathed naznačuje problém s démon více cest a bude s největší pravděpodobností, jakýkoli problém s zde spočívá v `multipath.conf` souboru.
+A. Obvykle, že nevidíte všechny cesty multipathed by naznačoval problém s démonem více cest a je pravděpodobně, že jakýkoli problém s zde spočívá v `multipath.conf` souboru.
 
-Toto nastavení by také být vhodné kontrola, zda se ve skutečnosti zobrazí některé disky po připojení k cíli, neboť žádná odpověď z vícecestného výpisů může taky znamenat, že nemáte žádné disky.
+Také by bylo vhodné kontroluje se, že ve skutečnosti vidíte některé disky po připojení k cíli, protože žádná odpověď od seznamu více cest může také znamenat, že nemáte žádné disky.
 
-* Jestliže chcete prohledat sběrnice SCSI, použijte následující příkaz:
+* Znovu prohledejte sběrnice SCSI, použijte následující příkaz:
   
-    `$ rescan-scsi-bus.sh `(součást balíčku sg3_utils)
+    `$ rescan-scsi-bus.sh `(součástí balíčku sg3_utils)
 * Zadejte následující příkazy:
   
     `$ dmesg | grep sd*`
@@ -360,25 +360,25 @@ Toto nastavení by také být vhodné kontrola, zda se ve skutečnosti zobrazí 
   
     `$ fdisk –l`
   
-    Tyto vrátí podrobnosti o nedávno přidané disky.
-* K určení, zda se jedná o disk StorSimple, použijte následující příkazy:
+    Vrátí tyto podrobnosti naposledy přidané disky.
+* Pokud chcete zjistit, zda se jedná o StorSimple disk, použijte následující příkazy:
   
     `cat /sys/block/<DISK>/device/model`
   
-    Tato možnost vrátí řetězec, který bude zjistit, jestli je StorSimple disk.
+    Vrátí řetězec, který se zjistit, jestli je StorSimple disk.
 
-Méně pravděpodobné, ale možná příčina A mohou být také zastaralé iscsid pid. Použijte následující příkaz k odhlášení z relace iSCSI:
+A méně pravděpodobné, ale možná příčina může také být zastaralé iscsid pid. Použijte následující příkaz k odhlášení z relace iSCSI:
 
     iscsiadm -m node --logout -p <Target_IP>
 
-Opakujte tento příkaz pro všechna rozhraní propojená síť na cíli iSCSI, která je zařízení StorSimple. Jakmile jste se odhlásili z všechny relace iSCSI, použijte pokud chcete znovu vytvořit relace iSCSI cíle iSCSI IQN. Zadejte následující příkaz:
+Tento příkaz opakujte pro všechna připojená síťová rozhraní v cíli iSCSI, která je zařízení StorSimple. Po přihlášení od všechny relace iSCSI, znovu vytvořit relace iSCSI pomocí cíle iSCSI IQN. Zadejte následující příkaz:
 
     iscsiadm -m node --login -T <TARGET_IQN>
 
 
-OTÁZKY. Nejste si jisti, pokud zařízení je seznam povolených adres.
+Q. Nejste jistí, jestli zařízení je na seznamu povolených.
 
-A. Pokud chcete ověřit, jestli vaše zařízení je seznam povolených adres, použijte následující řešení potíží interaktivní příkaz:
+A. Pokud chcete ověřit, jestli vaše zařízení je na seznamu povolených, použijte následující příkaz řešení problémů s interaktivní:
 
     multipathd –k
     multipathd> show devices
@@ -417,7 +417,7 @@ A. Pokud chcete ověřit, jestli vaše zařízení je seznam povolených adres, 
     dm-3 devnode blacklisted, unmonitored
 
 
-Další informace, přejděte na [použít řešení potíží s interaktivního příkazu pro více cest](http://www.centos.org/docs/5/html/5.1/DM_Multipath/multipath_config_confirm.html).
+Další informace najdete v části [použít řešení potíží s interaktivního příkazu pro více cest](http://www.centos.org/docs/5/html/5.1/DM_Multipath/multipath_config_confirm.html).
 
 ## <a name="list-of-useful-commands"></a>Seznam užitečné příkazy
 | Typ | Příkaz | Popis |
@@ -425,25 +425,25 @@ Další informace, přejděte na [použít řešení potíží s interaktivního
 | **iSCSI** |`service iscsid start` |Spuštění služby iSCSI |
 | &nbsp; |`service iscsid stop` |Zastavit službu iSCSI |
 | &nbsp; |`service iscsid restart` |Restartujte službu iSCSI |
-| &nbsp; |`iscsiadm -m discovery -t sendtargets -p <TARGET_IP>` |Zjišťování dostupných cílů na zadanou adresu |
+| &nbsp; |`iscsiadm -m discovery -t sendtargets -p <TARGET_IP>` |Zjištění dostupných cílů na zadané adrese |
 | &nbsp; |`iscsiadm -m node --login -T <TARGET_IQN>` |Přihlaste se k cíli iSCSI |
 | &nbsp; |`iscsiadm -m node --logout -p <Target_IP>` |Odhlaste se z cíle iSCSI |
-| &nbsp; |`cat /etc/iscsi/initiatorname.iscsi` |Tisk – název iniciátoru iSCSI |
-| &nbsp; |`iscsiadm –m session –s <sessionid> -P 3` |Zkontrolujte stav relace iSCSI a svazek zjištěných na hostiteli |
-| &nbsp; |`iscsi –m session` |Zobrazí všechny relace iSCSI navázat mezi hostitelem a zařízení StorSimple |
+| &nbsp; |`cat /etc/iscsi/initiatorname.iscsi` |Název iniciátoru iSCSI pro tisk |
+| &nbsp; |`iscsiadm –m session –s <sessionid> -P 3` |Zkontrolujte stav relace iSCSI a objemu zjištěné na hostiteli |
+| &nbsp; |`iscsi –m session` |Zobrazí všechny relace iSCSI, vytváří se mezi hostiteli a zařízení StorSimple |
 |  | | |
-| **Více cest** |`service multipathd start` |Démon spuštění více cest |
-| &nbsp; |`service multipathd stop` |Zastavit vícenásobný démon |
-| &nbsp; |`service multipathd restart` |Restartujte vícenásobný démon |
-| &nbsp; |`chkconfig multipathd on` </br> NEBO </br> `mpathconf –with_chkconfig y` |Povolení funkce multipath démon spustit při spuštění |
-| &nbsp; |`multipathd –k` |Spusťte interaktivní konzolu pro řešení potíží |
-| &nbsp; |`multipath –l` |Připojení více cest seznamu a zařízení |
-| &nbsp; |`mpathconf --enable` |Vytvořte soubor ukázka mulitpath.conf v `/etc/mulitpath.conf` |
+| **Více cest** |`service multipathd start` |Spuštění démona více cest |
+| &nbsp; |`service multipathd stop` |Zastavit proces démon více cest |
+| &nbsp; |`service multipathd restart` |Restartujte démona více cest |
+| &nbsp; |`chkconfig multipathd on` </br> NEBO </br> `mpathconf –with_chkconfig y` |Povolit více cest démon spustíte v době spuštění |
+| &nbsp; |`multipathd –k` |Spustit interaktivní konzoly pro řešení potíží |
+| &nbsp; |`multipath –l` |Seznam připojení více cest a zařízení |
+| &nbsp; |`mpathconf --enable` |Vytvoření ukázkového souboru mulitpath.conf v `/etc/mulitpath.conf` |
 |  | | |
 
 ## <a name="next-steps"></a>Další postup
-Jak na hostiteli systému Linux jsou konfigurace funkce MPIO, může také muset naleznete v následujících dokumentech CentoS 6.6:
+Když konfigurujete funkci MPIO na hostiteli s Linuxem, budete možná potřebovat, k odkazování na tyto dokumenty CentoS 6.6:
 
 * [Nastavení funkce MPIO na CentOS](http://www.centos.org/docs/5/html/5.1/DM_Multipath/setup_procedure.html)
-* [Průvodce školení Linux](http://linux-training.be/files/books/LinuxAdm.pdf)
+* [Průvodce školení Linux](http://linux-training.be/linuxsys.pdf)
 

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/10/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: c9249de56979d47a29fc9d7c12b99e41b3ada0fd
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: de2e1defeff9ab2dd78bdf019009b62955f73b88
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38465833"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970547"
 ---
 # <a name="add-hosting-servers-for-the-sql-resource-provider"></a>Přidání hostitelské servery pro poskytovatele prostředků SQL
 
@@ -66,7 +66,7 @@ Následující informace poskytují další bezpečnostní pokyny:
 
 * Veškeré součásti úložiště služby Azure Stack se šifrují pomocí nástroje BitLocker, takže jakoukoli instanci SQL ve službě Azure Stack používat zašifrovaný objekt blob úložiště.
 * Poskytovatele prostředků SQL plně podporuje TLS 1.2. Ujistěte se, že SQL Server, který se spravuje prostřednictvím poskytovatele prostředků SQL je nakonfigurované pro protokol TLS 1.2 _pouze_ a RP se ve výchozím nastavení, která. Všechny podporované verze systému SQL Server podporu protokolu TLS 1.2, najdete v článku [podpora protokolu TLS 1.2 pro Microsoft SQL Server](https://support.microsoft.com/en-us/help/3135244/tls-1-2-support-for-microsoft-sql-server).
-* Správce konfigurace SQL serveru použijte k nastavení **ForceEncryption** možnosti zajistíte veškerá komunikace se serverem SQL se vždy šifrují. Zobrazit [konfigurace serveru pro vynutit šifrovaná připojení](https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine?view=sql-server-2017#ConfigureServerConnections).
+* Správce konfigurace SQL serveru použijte k nastavení **ForceEncryption** možnosti zajistíte veškerá komunikace se serverem SQL se vždy šifrují. Zobrazit [konfigurace serveru pro vynutit šifrovaná připojení](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine?view=sql-server-2017#ConfigureServerConnections).
 * Ujistěte se, že všechny klientské aplikace je také komunikaci přes šifrované připojení.
 * RP je nakonfigurována tak certifikátů používaných instancí SQL serveru.
 
@@ -106,8 +106,8 @@ Chcete-li přidat samostatný server hostingu, který je už nastavený, postupu
 
 Konfigurace instance SQL Always On vyžaduje další kroky a vyžaduje tři virtuální počítače (nebo fyzických počítačích.) Tento článek předpokládá, že už máte důkladného porozumění skupin dostupnosti Always On. Další informace najdete v následujících článcích:
 
-* [Představení skupin dostupnosti AlwaysOn SQL serveru na virtuálních počítačích Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-overview)
-* [Skupiny nepřetržité dostupnosti (SQL Server)](https://docs.microsoft.com/en-us/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server?view=sql-server-2017)
+* [Představení skupin dostupnosti AlwaysOn SQL serveru na virtuálních počítačích Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-overview)
+* [Skupiny nepřetržité dostupnosti (SQL Server)](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server?view=sql-server-2017)
 
 > [!NOTE]
 > Poskytovatele prostředků SQL adaptér _pouze_ podporuje SQL 2016 SP1 Enterprise nebo později instance pro skupiny dostupnosti Always On. Tato konfigurace adaptéru vyžaduje nové funkce SQL, jako je například automatická synchronizace replik indexů.

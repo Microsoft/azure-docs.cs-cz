@@ -1,7 +1,7 @@
-Pokud chcete povolit pouze přihlášení ve vaší aplikaci, můžete použít **přihlášení** zásad. Tato zásada popisuje možnosti, které zákazníci budou projít během přihlašování a obsah tokeny, které aplikace se zobrazí na úspěšné přihlášení.
+Pokud chcete povolit pouze přihlásit se na svou aplikaci, můžete použít **přihlášení** zásad. Tato zásada popisuje prostředí, které zákazníci budou procházet při přihlašování a obsah tokenů, které bude aplikace přijímat po na úspěšně přihlášení.
 
 [!INCLUDE [active-directory-b2c-portal-navigate-b2c-service](active-directory-b2c-portal-navigate-b2c-service.md)]
-Klikněte na tlačítko **přihlášení zásady**.
+Klikněte na tlačítko **zásady přihlašování**.
 
 Klikněte na **Přidat** v horní části okna.
 

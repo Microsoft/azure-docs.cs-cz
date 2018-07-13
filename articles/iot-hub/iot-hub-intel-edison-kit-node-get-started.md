@@ -1,9 +1,9 @@
 ---
-title: Intel Edison do cloudu (Node.js) – Edison Intel připojit ke službě Azure IoT Hub | Microsoft Docs
-description: Zjistěte, jak nastavit a Intel Edison připojit ke službě Azure IoT Hub pro Intel Edison k odesílání dat do Azure Cloudová platforma v tomto kurzu.
+title: Intel Edison do cloudu (Node.js) - Intel Edison připojit ke službě Azure IoT Hub | Dokumentace Microsoftu
+description: Zjistěte, jak nastavit a Intel Edison připojit ke službě Azure IoT Hub pro Intel Edison k odesílání dat do cloudové platformy Azure v tomto kurzu.
 author: rangv
 manager: ''
-keywords: Azure iot intel edison, intel edison iot hub, intel edison odesílat data do cloudu, intel edison do cloudu
+keywords: Azure iot intel edison, intel edison iot hub, intel edison odesílat data do cloudu, intel edison s cloudem
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
@@ -11,179 +11,179 @@ ms.topic: conceptual
 ms.date: 04/11/2018
 ms.author: rangv
 ms.openlocfilehash: dbbe30377564f40eb654842b8814a4d13864ecfa
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34634256"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38666979"
 ---
 # <a name="connect-intel-edison-to-azure-iot-hub-nodejs"></a>Intel Edison připojit ke službě Azure IoT Hub (Node.js)
 
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
-V tomto kurzu zahájíte učení základní informace o práci s Intel Edison. Pak zjistíte, jak bezproblémově připojení zařízení do cloudu pomocí [Azure IoT Hub](iot-hub-what-is-iot-hub.md).
+V tomto kurzu začnete pomocí seznámení se základy práce s Intel Edison. Pak se naučíte bez problémů propojit si zařízení do cloudu s využitím [Azure IoT Hub](iot-hub-what-is-iot-hub.md).
 
-Nemáte sady ještě? Spustit [sem](https://azure.microsoft.com/develop/iot/starter-kits)
+Sadu ještě nemáte? Spustit [zde](https://azure.microsoft.com/develop/iot/starter-kits)
 
-## <a name="what-you-do"></a>Co dělat
+## <a name="what-you-do"></a>Co můžete dělat
 
-* Instalační program Intel Edison a a Groove moduly.
+* Nastavení Intel Edison a a Groove moduly.
 * Vytvoření služby IoT hub.
-* Registrovat zařízení pro Edison ve službě IoT hub.
-* Spuštění ukázkové aplikace na Edison k odesílání dat snímačů do služby IoT hub.
+* Registrace zařízení pro Edison ve službě IoT hub.
+* Spusťte ukázkovou aplikaci na Edison k odesílání dat ze senzorů do služby IoT hub.
 
-Intel Edison připojte ke službě IoT hub, který vytvoříte. Pak spusťte ukázkovou aplikaci na Edison ke shromažďování dat teploty a vlhkosti z teplotní snímač Groove. Nakonec odeslat data snímačů do služby IoT hub.
+Intel Edison připojení do služby IoT hub, kterou vytvoříte. Potom spustíte ukázkovou aplikaci na Edison ke shromažďování dat teploty a vlhkosti ze senzoru teploty Groove. A konečně odeslat data ze senzorů do služby IoT hub.
 
 ## <a name="what-you-learn"></a>Co se naučíte
 
 * Postup vytvoření služby Azure IoT hub a získat nový připojovací řetězec zařízení.
-* Postup připojení Edison s teplotní snímač Groove.
-* Postup shromažďování dat snímačů spuštěním ukázkovou aplikaci na Edison.
-* Jak odesílat data snímačů do služby IoT hub.
+* Jak se připojit Edison s teplotní snímač Groove.
+* Jak shromažďovat data ze senzorů pomocí Průvodce ukázkovou aplikaci na Edison.
+* Jak odeslat data ze senzorů do služby IoT hub.
 
 ## <a name="what-you-need"></a>Co potřebujete
 
 ![Co potřebujete](media/iot-hub-intel-edison-kit-node-get-started/0_kit.png)
 
-* Panel Intel Edison
-* Panel Arduino rozšíření
+* Na panelu Intel Edison
+* Panel rozšíření Arduino
 * Aktivní předplatné Azure. Pokud nemáte účet Azure [vytvořit Bezplatný zkušební účet Azure](https://azure.microsoft.com/free/) za několik minut.
-* Mac nebo počítači se systémem Windows nebo Linux.
+* Na Macu nebo počítači se systémem Windows nebo Linux.
 * Připojení k Internetu.
-* Micro B kabelem USB typ A
-* Zdroj napájení přímo aktuální (DC). Zdroj napájení by měl být hodnocení následujícím způsobem:
+* B Micro kabelem USB typ A
+* Zdroj napájení aktuální direct (DC). Váš zdroj napájení byste ohodnotili následujícím způsobem:
   - ŘADIČ DOMÉNY 7 15V
   - Alespoň 1500mA
-  - PIN kód center nebo vnitřní by měla být kladná pólu napájení
+  - System center/vnitřní kód pin musí být pozitivní pole napájení
 
 Následující položky jsou volitelné:
 
-* Groove základní štítu V2
+* Grove základní Shield V2
 * Groove - teplotní snímač
 * Kabel Groove
-* Jako mezeru mezi řádky nebo šrouby, zahrnout v balení, včetně dvou šrouby připevnit modulu Tabule rozšíření a čtyři sady šrouby a plastové vymezovače.
+* Oddělovačem pruhy nebo šrouby zahrnout v balení, včetně dvou šrouby připevnit modulu na panelu rozšíření a čtyři postupné hlavou a plastů nosníků.
 
 > [!NOTE] 
-Tyto položky jsou volitelné, protože data snímačů simulated podporu ukázkový kód.
+Tyto položky jsou volitelné, protože podpora vzorek kódu Simulovaná data ze senzorů.
 
 [!INCLUDE [iot-hub-get-started-create-hub-and-device](../../includes/iot-hub-get-started-create-hub-and-device.md)]
 
-## <a name="setup-intel-edison"></a>Instalační program Intel Edison
+## <a name="setup-intel-edison"></a>Instalace Intel Edison
 
-### <a name="assemble-your-board"></a>Sestavte panel
+### <a name="assemble-your-board"></a>Poskládejte si panelu
 
-Tato část obsahuje kroky pro připojení k vaší karty rozšíření modulu Intel® Edison.
+Tato část obsahuje kroky k připojení modul Intel® Edison k panelu rozšíření.
 
-1. Místní modul Intel® Edison v rámci bílé osnovy na vaší kartě rozšíření zarovnání díry na modul s šrouby na kartě rozšíření.
+1. Modul Intel® Edison v rámci bílé osnovy umístíte na panelu rozšíření, zarovnání otvory v modulu s šrouby na panelu rozšíření.
 
-2. Klepnout na modul pod slova `What will you make?` dokud si myslíte, že během.
+2. Klepnout na modulu pod slova `What will you make?` dokud máte pocit, že stává hračkou.
 
-   ![Sestavte Tabule 2](media/iot-hub-intel-edison-kit-node-get-started/1_assemble_board2.jpg)
+   ![Poskládejte si panel 2](media/iot-hub-intel-edison-kit-node-get-started/1_assemble_board2.jpg)
 
-3. Dva šestnáctkových matice (součástí balíčku) použijte k zabezpečení modulu Tabule rozšíření.
+3. Dva hex nuts (součástí balíčku) použijte k zabezpečení modulu do panelu rozšíření.
 
-   ![Sestavte Tabule 3](media/iot-hub-intel-edison-kit-node-get-started/2_assemble_board3.jpg)
+   ![Poskládejte si panel 3](media/iot-hub-intel-edison-kit-node-get-started/2_assemble_board3.jpg)
 
-4. Vložte šroubu v jednom z díry čtyři rohu na kartě rozšíření. Otočením a posílit mezi bílé plastové nosníků do šroubek.
+4. Vložte šroubu jedním ze čtyř rohu děr na panelu rozšíření. Otočením a zkracují jeden bílé plastů nosníků na šroubek.
 
-   ![Sestavte Tabule 4](media/iot-hub-intel-edison-kit-node-get-started/3_assemble_board4.jpg)
+   ![Poskládejte si panel 4](media/iot-hub-intel-edison-kit-node-get-started/3_assemble_board4.jpg)
 
-5. Pro další tři rohu nosníků opakujte.
+5. Opakujte pro další tři rohu nosníků.
 
-   ![Sestavte Tabule 5](media/iot-hub-intel-edison-kit-node-get-started/4_assemble_board5.jpg)
+   ![Poskládejte si panel 5](media/iot-hub-intel-edison-kit-node-get-started/4_assemble_board5.jpg)
 
-Nyní je několik panel.
+Nyní je sestavena panelu.
 
-   ![sestavený panelu](media/iot-hub-intel-edison-kit-node-get-started/5_assembled_board.jpg)
+   ![sestavený nástěnky](media/iot-hub-intel-edison-kit-node-get-started/5_assembled_board.jpg)
 
-### <a name="connect-the-grove-base-shield-and-the-temperature-sensor"></a>Připojit štítu základní Groove a teplotní snímač.
+### <a name="connect-the-grove-base-shield-and-the-temperature-sensor"></a>Připojit Shield Grove základní a teplotní snímač
 
-1. Místní štítu základní Groove k vaší karty. Ujistěte se, že všechny kódy PIN jsou úzce připojovány panel.
+1. Umístěte Shield Grove základní na panelu. Zajistěte, aby že všechny PIN kódy jsou úzce zapojí se do panelu.
    
-   ![Základní štítu Groove](media/iot-hub-intel-edison-kit-node-get-started/6_grove_base_sheild.jpg)
+   ![Grove základní Shield](media/iot-hub-intel-edison-kit-node-get-started/6_grove_base_sheild.jpg)
 
-2. Použít pro připojení Groove teplotní snímač do štítu základní Groove Groove kabel **A0** portu.
+2. Kabel Groove připojit senzor teploty Groove na Shield Grove základní **A0** portu.
 
-   ![Připojení k teplotní snímač](media/iot-hub-intel-edison-kit-node-get-started/7_temperature_sensor.jpg)
+   ![Připojte se k teplotní snímač](media/iot-hub-intel-edison-kit-node-get-started/7_temperature_sensor.jpg)
 
-   ![Edison a senzor připojení](media/iot-hub-intel-edison-kit-node-get-started/16_edion_sensor.png)
+   ![Připojení Edison a snímače](media/iot-hub-intel-edison-kit-node-get-started/16_edion_sensor.png)
 
-Vaše senzor je nyní připraven.
+Vaše senzor je teď připravený.
 
-### <a name="power-up-edison"></a>Napájení až Edison
+### <a name="power-up-edison"></a>Poskytněte Edison
 
 1. Zařaďte napájení.
 
-   ![Zařadit napájení](media/iot-hub-intel-edison-kit-node-get-started/8_plug_power.jpg)
+   ![Připojte zdroj napájení](media/iot-hub-intel-edison-kit-node-get-started/8_plug_power.jpg)
 
-2. Zelená DIODU (s názvem bez přípony DS1 na panelu rozšíření Arduino *), by měla zůstat po a light.
+2. Zelená LED (označené jako zdroj dat DS1 na panelu rozšíření Arduino *) by bylo možné a zůstat po.
 
-3. Počkejte, než jedna minuta pro panel na dokončení spuštění.
+3. Počkejte minutu pro panel na spuštění.
 
    > [!NOTE]
-   > Pokud nemáte ke zdroji napájení řadiče domény, může stále spotřeby Tabule přes USB port. V tématu `Connect Edison to your computer` podrobnosti. Pohánějící panel tímto způsobem může způsobit nepředvídatelné chování z vaší karty, zejména v případě, že pomocí sítě Wi-Fi nebo řídí motory.
+   > Pokud nemáte ke zdroji napájení řadiče domény, můžete stále power panelu přes USB port. Zobrazit `Connect Edison to your computer` podrobné informace. Provozování panelu tímto způsobem může způsobit nepředvídatelné chování z panelu, zejména v případě, že pomocí sítě Wi-Fi nebo řízení motory.
 
-### <a name="connect-edison-to-your-computer"></a>Připojte k počítači Edison
+### <a name="connect-edison-to-your-computer"></a>Připojte se k počítači Edison
 
-1. Přepněte dolů mikrospínače směrem dva malých USB porty, takže Edison je v režimu zařízení. Rozdíly mezi zařízení režim a režim hostitele, prosím odkazovat [zde](https://software.intel.com/en-us/node/628233#usb-device-mode-vs-usb-host-mode).
+1. Přepnout dolů mikrospínače na dvou micro portů USB, tak, aby Edison v režimu zařízení. Rozdíly mezi režimem zařízení a hostitele, použijte odkaz [tady](https://software.intel.com/en-us/node/628233#usb-device-mode-vs-usb-host-mode).
 
-   ![Přepněte dolů mikrospínače](media/iot-hub-intel-edison-kit-node-get-started/9_toggle_down_microswitch.jpg)
+   ![Přepnout dolů mikrospínače](media/iot-hub-intel-edison-kit-node-get-started/9_toggle_down_microswitch.jpg)
 
-2. Připojte kabel USB malých nejvyšší malých portu USB.
+2. Začátek micro portu USB připojte micro kabelu USB.
 
-   ![Horní malých portu USB](media/iot-hub-intel-edison-kit-node-get-started/10_top_usbport.jpg)
+   ![Začátek micro portu USB](media/iot-hub-intel-edison-kit-node-get-started/10_top_usbport.jpg)
 
-3. Druhém konci kabelu USB připojte k počítači.
+3. Druhém konci USB kabelu připojte k počítači.
 
    ![Počítač USB](media/iot-hub-intel-edison-kit-node-get-started/11_computer_usb.jpg)
 
-4. Budete vědět, že panel úplné inicializace když se počítač připojí na nový disk (podobně jako vkládání SD karty do počítače).
+4. Budete vědět, že panelu plně inicializován, když se počítač připojí novou jednotku (podobně jako vkládání SD karty do počítače).
 
-## <a name="download-and-run-the-configuration-tool"></a>Stáhněte a spusťte nástroj Konfigurace
-Získat nejnovější nástroje Konfigurace z [tento odkaz](https://software.intel.com/en-us/iot/hardware/edison/downloads) uvedené v části `Installers` záhlaví. Spusťte nástroj a postupujte podle jeho na obrazovce pokyny, kde je potřeba klepnutím na tlačítko Další
+## <a name="download-and-run-the-configuration-tool"></a>Stáhněte si a spusťte konfigurační nástroj
+Získejte nejnovější nástroje Konfigurace z [tento odkaz](https://software.intel.com/en-us/iot/hardware/edison/downloads) uvedené v části `Installers` záhlaví. Spusťte nástroj a postupujte podle jeho na obrazovce pokyny, kde je potřeba kliknutím na tlačítko Další
 
 ### <a name="flash-firmware"></a>Flash firmwaru
-1. Na `Set up options` klikněte na tlačítko `Flash Firmware`.
-2. Vyberte bitovou kopii na flash na panel jedním z následujících akcí:
-   - Chcete-li stáhnout a flash panel s nejnovější bitové kopie firmwaru, které jsou k dispozici z Intel, vyberte `Download the latest image version xxxx`.
-   - Chcete-li flash panel s bitovou kopií již uložení v počítači, vyberte `Select the local image`. Vyhledejte a vyberte bitovou kopii, kterou chcete flash pro panel.
-3. Nástroj instalační program se pokusí o flash panel. Celý proces blikající může trvat až 10 minut.
+1. Na `Set up options` klikněte na `Flash Firmware`.
+2. Vyberte obrázek, který se na panelu flash pomocí jedné z následujících akcí:
+   - Chcete-li stáhnout a flash panelu pomocí nejnovější image firmwaru, která je k dispozici od Intelu, vyberte `Download the latest image version xxxx`.
+   - Chcete-li flash panelu s obrázkem, který jste už uložili ve vašem počítači, vyberte `Select the local image`. Vyhledejte a vyberte bitovou kopii, kterou chcete flash na váš panel.
+3. Nástroj instalační program se pokusí o flash panelu. Blikající celý proces může trvat až 10 minut.
 
 ### <a name="set-password"></a>Nastavit heslo
-1. Na `Set up options` klikněte na tlačítko `Enable Security`.
-2. Můžete nastavit vlastní název pro panel Intel® Edison. Tato položka je nepovinná.
-3. Zadejte heslo pro panel a pak klikněte na `Set password`.
-4. Známku výpadku heslo, které se později používá.
+1. Na `Set up options` klikněte na `Enable Security`.
+2. Můžete nastavit vlastní název pro Intel® Edison panelu. Tato položka je nepovinná.
+3. Zadejte heslo pro panelu a potom klikněte na `Set password`.
+4. Označte heslo, které se použije v pozdější.
 
 ### <a name="connect-wi-fi"></a>Připojení Wi-Fi
-1. Na `Set up options` klikněte na tlačítko `Connect Wi-Fi`. Počkejte, až na jednu minutu jako počítač hledá dostupných sítí Wi-Fi.
+1. Na `Set up options` klikněte na `Connect Wi-Fi`. Počkejte, až jednu minutu jako počítač hledá dostupné sítě Wi-Fi.
 2. Z `Detected Networks` rozevíracího seznamu vyberte vaší sítě.
-3. Z `Security` rozevíracího seznamu vyberte typ zabezpečení sítě.
-4. Poskytnout vaše údaje přihlašovací jméno a heslo a pak klikněte na `Configure Wi-Fi`.
-5. Známku výpadku IP adresy, která se později používá.
+3. Z `Security` rozevíracího seznamu vyberte typ zabezpečení vaší sítě.
+4. Zadejte přihlašovací jméno a heslo informace a pak klikněte na tlačítko `Configure Wi-Fi`.
+5. Označte opište IP adresu, která se použije v pozdější.
 
 > [!NOTE]
-> Ujistěte se, že Edison je připojený ke stejné síti jako počítače. Váš počítač připojí k vaší Edison pomocí IP adresy.
+> Ujistěte se, že Edison je připojený ke stejné síti jako počítače. Váš počítač připojí k vaší Edison s použitím IP adresy.
 
-   ![Připojení k teplotní snímač](media/iot-hub-intel-edison-kit-node-get-started/12_configuration_tool.png)
+   ![Připojte se k teplotní snímač](media/iot-hub-intel-edison-kit-node-get-started/12_configuration_tool.png)
 
 Blahopřejeme! Úspěšně jste nakonfigurovali Edison.
 
-## <a name="run-a-sample-application-on-intel-edison"></a>Spuštění ukázkové aplikace na Intel Edison
+## <a name="run-a-sample-application-on-intel-edison"></a>Spustit ukázkovou aplikaci na Intel Edison
 
-### <a name="prepare-the-azure-iot-device-sdk"></a>Připravte zařízení Azure IoT SDK
+### <a name="prepare-the-azure-iot-device-sdk"></a>Příprava zařízení Azure IoT SDK
 
-1. Použijte jednu z následujících klientů SSH z hostitelského počítače pro připojení k vaší Edison Intel. IP adresa je z nástroje pro konfiguraci a heslo je ten, který jste nastavili v tohoto nástroje.
-    - [PuTTY](http://www.putty.org/) pro systém Windows.
-    - Integrovaného klienta SSH na Ubuntu nebo systému macOS.
+1. Použijte jednu z následujících klientů SSH z hostitelského počítače pro připojení k Intel Edison. IP adresa je z konfigurační nástroj a heslo je ta, kterou jste nastavili v tomto nástroji.
+    - [PuTTY](http://www.putty.org/) pro Windows.
+    - Integrovaného klienta SSH v systému Ubuntu nebo macOS.
 
-2. Klonování vzorku klientskou aplikaci do vašeho zařízení. 
+2. Naklonujte ukázkovou aplikaci klienta do vašeho zařízení. 
    
    ```bash
    git clone https://github.com/Azure-Samples/iot-hub-node-intel-edison-client-app
    ```
 
-3. Pak přejděte do složky úložiště, spusťte následující příkaz k instalaci všech balíčků, může trvat několika minut.
+3. Přejděte do složky úložiště spusťte následující příkaz k instalaci všech balíčků, může trvat několika minut.
    
    ```bash
    cd iot-hub-node-intel-edison-client-app
@@ -191,7 +191,7 @@ Blahopřejeme! Úspěšně jste nakonfigurovali Edison.
    ```
 
 
-### <a name="configure-and-run-the-sample-application"></a>Nakonfigurujte a spusťte ukázkové aplikace
+### <a name="configure-and-run-the-sample-application"></a>Konfigurace a spuštění ukázkové aplikace
 
 1. Otevřete konfigurační soubor spuštěním následujících příkazů:
 
@@ -201,28 +201,28 @@ Blahopřejeme! Úspěšně jste nakonfigurovali Edison.
 
    ![Konfigurační soubor](media/iot-hub-intel-edison-kit-node-get-started/13_configure_file.png)
 
-   Existují dvě makra v tomto souboru můžete configurate. První z nich je `INTERVAL`, která definuje časový interval mezi dvě zprávy, které odesílají do cloudu. Druhý `simulatedData`, což je logickou hodnotu pro jestli se má používat data simulované snímačů, nebo ne.
+   Existují dvě makra v tomto souboru můžete configurate. První z nich je `INTERVAL`, která definuje časový interval mezi dvě zprávy, které odesílají do cloudu. Pro druhou kolekci `simulatedData`, což je logická hodnota, pro, jestli se má použít data ze simulovaných senzorů nebo ne.
 
-   Pokud jste **nemají senzoru**, nastavte `simulatedData` hodnotu `true` aby ukázkovou aplikaci, vytváření a používání dat snímačů simulované.
+   Pokud jste **nemají senzor**, nastavte `simulatedData` hodnota, která se `true` ukázkové aplikaci vytvořit a používat data ze simulovaných senzorů.
 
-1. Uložte a zavřete stisknutím řízení-O > zadejte > CTRL-X.
+1. Uložte a zavřete stisknutím kombinace kláves ovládacího prvku-O > Enter > X ovládacího prvku.
 
 
-1. Spuštění ukázkové aplikace tak, že spustíte následující příkaz:
+1. Spuštění ukázkové aplikace spuštěním následujícího příkazu:
 
    ```bash
    sudo node index.js '<your Azure IoT hub device connection string>'
    ```
 
    > [!NOTE] 
-   Zkontrolujte, zda jste způsobené kopírováním a vkládáním zařízení připojovací řetězec do jednoduchých uvozovek.
+   Ujistěte se, že je kopírování a vkládání připojovací řetězec zařízení v jednoduchých uvozovkách.
 
-Měli byste vidět následující výstup, který popisuje data snímačů a zprávy, které se odesílají do služby IoT hub.
+Měli byste vidět následující výstup, který zobrazuje data ze senzorů a zprávy, které se odesílají do služby IoT hub.
 
-![Výstup – data snímačů odeslaný Intel Edison do služby IoT hub](media/iot-hub-intel-edison-kit-node-get-started/15_message_sent.png)
+![Výstup – data ze senzorů odeslaný Intel Edison k centru IoT](media/iot-hub-intel-edison-kit-node-get-started/15_message_sent.png)
 
 ## <a name="next-steps"></a>Další postup
 
-Spustíte ukázkovou aplikaci pro shromažďování dat snímačů a odeslat do služby IoT hub.
+Jste spustili ukázkovou aplikaci shromažďovat data ze senzorů a odesílat je do služby IoT hub.
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

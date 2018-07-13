@@ -1,6 +1,6 @@
 ---
-title: Webové aplikace Azure AD Node.js Začínáme | Microsoft Docs
-description: Naučte se vytvářet webové aplikace Node.js Express MVC, která se integruje se službou Azure AD pro přihlášení.
+title: Azure AD webová aplikace v Node.js Začínáme | Dokumentace Microsoftu
+description: Zjistěte, jak sestavit webovou aplikaci Node.js Express MVC, která se integruje s Azure AD pro přihlášení.
 services: active-directory
 documentationcenter: nodejs
 author: CelesteDG
@@ -17,30 +17,30 @@ ms.date: 04/20/2018
 ms.author: celested
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 90c70837b3afb589e5a503681aa9cd7cf1dae930
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7d9b8a740c331a73ac66398be801ba3878312969
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34594106"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969074"
 ---
-# <a name="azure-ad-nodejs-web-app-getting-started"></a>Začínáme se službou Azure AD Node.js webové aplikace
-Tady používáme Passport:
+# <a name="azure-ad-nodejs-web-app-getting-started"></a>Azure AD webová aplikace v Node.js Začínáme
+Tady můžeme použít Passport:
 
-* Uživatele přihlaste k aplikaci pomocí Azure Active Directory (Azure AD).
-* Zobrazí informace o uživateli.
-* Přihlášení uživatele mimo aplikaci.
+* Přihlášení uživatele k aplikaci pomocí Azure Active Directory (Azure AD).
+* Zobrazení informací o uživateli.
+* Přihlášení uživatele z aplikace.
 
-Passport je ověřovací middleware pro Node.js. Flexibilní a modulární, Passport lze snadno vyřadit k žádnému využívající Express nebo restify webové aplikace. Komplexní sada strategií podporují ověřování pomocí uživatelského jména a hesla, Facebook, Twitter a další. Vyvinuli jsme strategii pro Microsoft Azure Active Directory. Jsme nainstalujete tento modul a poté přidejte Microsoft Azure Active Directory `passport-azure-ad` modulu plug-in.
+Passport je ověřovací middleware pro Node.js. Flexibilní a modulární a Passport dá snadno přetáhnout na každém využívající Express nebo restify webové aplikace. Komplexní sada strategií podporují ověřování pomocí uživatelského jména a hesla, Facebook, Twitter a další. Vyvinuli jsme strategii pro Microsoft Azure Active Directory. Jsme nainstalujete tento modul a poté přidáte Microsoft Azure Active Directory `passport-azure-ad` modulu plug-in.
 
-Chcete-li to provést, proveďte následující kroky:
+Chcete-li to provést, postupujte následovně:
 
-1. Zaregistrujte aplikaci.
+1. Registrace aplikace.
 2. Nastavení aplikace pro použití `passport-azure-ad` strategie.
 3. Použít Passport pro zasílání požadavků na přihlášení a odhlášení do Azure AD.
 4. Tisknout data o uživateli.
 
-Kód k tomuto kurzu je udržovaný [na GitHubu](https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS). Chcete-li sledovat, můžete [stáhnout kostru aplikace jako soubor ZIP](https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS/archive/skeleton.zip) nebo tuto kostru klonovat:
+Kód k tomuto kurzu je udržovaný [na GitHubu](https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS). Chcete-li postupovat s námi, můžete [stáhnout kostru aplikace jako soubor ZIP](https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS/archive/skeleton.zip) nebo tuto kostru klonovat:
 
 ```git clone --branch skeleton https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS.git```
 
@@ -49,26 +49,26 @@ Dokončená aplikace je k dispozici na konci tohoto kurzu také.
 ## <a name="step-1-register-an-app"></a>Krok 1: Registrace aplikace
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-2. V nabídce v horní části stránky vyberte svůj účet. V části **Directory** vyberte klienta služby Active Directory, kde chcete registrace vaší aplikace.
+2. V nabídce v horní části stránky vyberte svůj účet. V části **Directory** , zvolte tenanta Active Directory, ve které chcete zaregistrovat aplikaci.
 
 3. Vyberte **všechny služby** v nabídce na levé straně obrazovky a pak vyberte **Azure Active Directory**.
 
-4. Vyberte **registrace aplikace**a potom vyberte **přidat**.
+4. Vyberte **registrace aplikací**a pak vyberte **přidat**.
 
-5. Postupujte podle výzev a vytvořte **webové aplikace** nebo **WebAPI**.
-  * **Název** aplikace popisuje vaší aplikace pro uživatele.
+5. Postupujte podle výzev a vytvořte **webovou aplikaci** a/nebo **WebAPI**.
+  * **Název** aplikace popíše aplikaci uživatelům.
 
-  * **Přihlašovací adresa URL** je základní adresu URL aplikace. Výchozí hodnota kostru je `http://localhost:3000/auth/openid/return`.
+  * **Přihlašovací adresa URL** základní adresu URL vaší aplikace. Výchozí hodnota typu skeleton je `http://localhost:3000/auth/openid/return`.
 
-6. Po registraci, Azure AD přiřadí vaší aplikace ID jedinečný aplikace. Je třeba tuto hodnotu v následujících částech, zkopírujte jej ze stránky aplikace.
-7. Z **nastavení** -> **vlastnosti** stránky pro aplikace, aktualizujte identifikátor ID URI aplikace. **Identifikátor ID URI aplikace** je jedinečný identifikátor pro vaši aplikaci. Konvence, je použít formát `https://<tenant-domain>/<app-name>`, například: `https://contoso.onmicrosoft.com/my-first-aad-app`.
-8. Pokud chcete vytvořit tajný klíč, postupujte podle kroku 4 v [přidat přihlašovací údaje aplikací nebo oprávnění pro přístup k webové rozhraní API](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-integrating-applications#to-add-application-credentials-or-permissions-to-access-web-apis).
+6. Až dokončíte registraci, Azure AD přiřadí vaší aplikaci jedinečné ID. Tuto hodnotu budete potřebovat v dalších částech, tedy zkopírujte ho ze stránky aplikace.
+7. Z **nastavení** -> **vlastnosti** stránce pro vaši aplikaci, aktualizujte identifikátor URI ID aplikace. **Identifikátor ID URI aplikace** je jedinečný identifikátor pro vaši aplikaci. Tato konvence je určený formát `https://<tenant-domain>/<app-name>`, například: `https://contoso.onmicrosoft.com/my-first-aad-app`.
+8. Vytvoření tajného klíče, postupujte podle kroku 4 v [přidat přihlašovací údaje aplikací nebo oprávnění pro přístup k webovým rozhraním API](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications#to-add-application-credentials-or-permissions-to-access-web-apis).
 
    > [!IMPORTANT]
-   > Zkopírujte hodnotu klíče aplikace. Toto je hodnota `clientSecret`, které budete potřebovat pro **krok 3** níže. 
+   > Zkopírujte hodnotu klíče aplikace. Jedná se o hodnotu pro `clientSecret`, které budete potřebovat pro **kroku 3** níže. 
 
 ## <a name="step-2-add-prerequisites-to-your-directory"></a>Krok 2: Přidání požadovaných součástí do adresáře
-1. Z příkazového řádku, změňte adresáře na kořenové složky a pokud si nejste již existuje, a poté spusťte následující příkazy:
+1. Z příkazového řádku změňte adresáře na vaše kořenové složky a pokud si nejste již existuje, a pak spusťte následující příkazy:
 
     * `npm install express`
     * `npm install ejs`
@@ -79,23 +79,23 @@ Dokončená aplikace je k dispozici na konci tohoto kurzu také.
     * `npm install assert-plus`
     * `npm install passport`
 
-2. Kromě toho musíte `passport-azure-ad`:
+2. Kromě toho potřebujete `passport-azure-ad`:
     * `npm install passport-azure-ad`
 
-Tím se nainstaluje do knihoven, `passport-azure-ad` závisí na.
+Tím se nainstaluje knihovny, který `passport-azure-ad` závisí.
 
-## <a name="step-3-set-up-your-app-to-use-the-passport-node-js-strategy"></a>Krok 3: Nastavení aplikace k použití strategie passport uzlu js
-Zde jsme nakonfigurovat Express pro použití ověřovacího protokolu OpenID Connect. Passport umožňuje provádět různé akce, včetně požadavků na přihlášení a odhlášení problém, spravovat relace uživatele a získat informace o uživateli.
+## <a name="step-3-set-up-your-app-to-use-the-passport-node-js-strategy"></a>Krok 3: Nastavení aplikace pro použití strategie passport-node js
+Jsme zde, nakonfigurujte Express pro použití ověřovacího protokolu OpenID Connect. Passport slouží k provádění nejrůznějších operací, včetně žádostí o přihlášení a odhlášení problém, spravovat relace uživatele a získat informace o uživateli.
 
-1. Chcete-li začít, otevřete `config.js` souboru v kořenovém adresáři projektu a potom zadejte hodnoty konfigurace vaší aplikace v `exports.creds` oddílu.
+1. Pokud chcete začít, otevřete `config.js` soubor v kořenové složce projektu a zadejte hodnoty konfigurace vaší aplikace `exports.creds` části.
 
-  * `clientID` Je **Id aplikace** přiřazené vaší aplikaci v portálu pro registraci.
+  * `clientID` Je **Id aplikace** přiřazené vaší aplikaci v portálu registrace.
 
-  * `returnURL` Je **identifikátor Uri pro přesměrování** kterou jste zadali v portálu.
+  * `returnURL` Je **identifikátor Uri pro přesměrování** , kterou jste zadali v portálu.
 
-  * `clientSecret` Je tajný klíč, který jste vygenerovali na portálu.
+  * `clientSecret` Je tajný kód, který jste vygenerovali na portálu.
 
-2. Dále otevřete `app.js` soubor v kořenovém adresáři projektu. Pak přidejte následující volání pro vyvolání `OIDCStrategy` strategie, která se dodává s `passport-azure-ad`.
+2. Dále otevřete `app.js` souboru v kořenovém adresáři projektu. Pak přidejte následující volání, který má být vyvolán `OIDCStrategy` strategii, která se dodává s `passport-azure-ad`.
 
     ```JavaScript
     var OIDCStrategy = require('passport-azure-ad').OIDCStrategy;
@@ -107,7 +107,7 @@ Zde jsme nakonfigurovat Express pro použití ověřovacího protokolu OpenID Co
     });
     ```
 
-3. Potom použijte strategii jsme právě přidanou pro zpracování naše žádostí o přihlášení.
+3. Potom použijte strategii jsme právě přidanou pro zpracování našich požadavků přihlášení.
 
     ```JavaScript
     // Use the OIDCStrategy within Passport. (Section 2)
@@ -147,13 +147,13 @@ Zde jsme nakonfigurovat Express pro použití ověřovacího protokolu OpenID Co
     }
     ));
     ```
-Passport používá podobný Princip pro všechny svoje strategie (Twitteru, Facebooku a tak dále), které řídí všichni autoři strategií k. Prohlížení strategie, uvidíte, že jsme předáváme funkci, která má token a done jako parametry. Strategie vrátí do us po jeho činnosti provede. Potom chceme uložení uživatele a skrytí tokenu, takže jsme nemusíte požadovat znovu.
+Passport používá podobný Princip pro všechny svoje strategie (Twitter, Facebook atd.), které se řídí všichni autoři strategií. Hledání na strategii uvidíte, že jsme předat funkci, která má token a Hotovo jako parametry. Strategie vrátí nám po provede svou práci. Potom chceme uložit uživatele a skrytí tokenu, proto nepotřebujeme požadovat znovu.
 
 > [!IMPORTANT]
-Předchozí kód přijímá jakéhokoli uživatele, které dochází k ověřování na našem server. To se označuje jako Automatická registrace. Doporučujeme vám, že nedošlo každý, kdo ověření na provozním serveru, aniž by bylo nejdříve je registrovat prostřednictvím procesu, který se rozhodnete. To je obvykle vzor, který můžete vidět u uživatelských aplikací, které umožňují registraci pomocí Facebooku, ale poté vás požádají o poskytují další informace. Pokud to nebyly ukázkovou aplikaci, mohli bychom extrahovat e-mailovou adresu uživatele z tokenu objektu, který se vrátí a poté požádat uživatele k vyplnění dodatečných informací. Protože se jedná o testovací server, jsme je přidat k databázi v paměti.
+Předchozí kód přijímá jakéhokoli uživatele, ke které dochází k ověření na našem serveru. To se označuje jako automatické registrace serveru. Doporučujeme vám, že jste Nenechte všem uživatelům bez toho registraci prostřednictvím procesu, který se rozhodnete ověřovat na produkční server. Toto je obvykle vzor, který se zobrazí u uživatelských aplikací, které umožňují zaregistrovat se pomocí Facebooku, ale poté vás požádají o poskytují další informace. Pokud to nebyly ukázkovou aplikaci, mohli bychom může extrahovat e-mailovou adresu uživatele z token objektu, který je vrácen a poté požádat uživatele k vyplnění dodatečných informací. Protože se jedná o testovací server, přidáme je do databáze v paměti.
 
 
-4. V dalším kroku přidejme metody, které umožní, abychom mohli sledovat přihlášených uživatelů podle požadavků Passport. Tyto metody zahrnují serializaci a deserializaci informací o uživateli.
+4. V dalším kroku přidejme metody, které pomáhají sledovat přihlášených uživatelů podle požadavků služby Passport. Tyto metody zahrnují serializaci a deserializaci informací o uživateli.
 
     ```JavaScript
 
@@ -188,7 +188,7 @@ Předchozí kód přijímá jakéhokoli uživatele, které dochází k ověřov�
             };
     ```
 
-5. Dále umožňuje přidat kód pro načtení modulu Express. Tady používáme výchozí /views a poskytuje /routes vzor, který Express.
+5. V dalším kroku přidáte kód pro načtení modulu Express. Tady používáme výchozí /views a poskytuje /routes vzor, který Express.
 
     ```JavaScript
 
@@ -213,7 +213,7 @@ Předchozí kód přijímá jakéhokoli uživatele, které dochází k ověřov�
 
     ```
 
-6. Nakonec přidejme tras, které přebírají skutečné přihlášení žádosti, které chcete `passport-azure-ad` modul:
+6. Nakonec přidejte trasy, které přebírají skutečné přihlašovací žádosti, které chcete `passport-azure-ad` modul:
 
     ```JavaScript
 
@@ -258,10 +258,10 @@ Předchozí kód přijímá jakéhokoli uživatele, které dochází k ověřov�
      ```
 
 
-## <a name="step-4-use-passport-to-issue-sign-in-and-sign-out-requests-to-azure-ad"></a>Krok 4: Použití služby Passport pro zasílání požadavků na přihlášení a odhlášení do Azure AD
-Aplikace je nyní správně nakonfigurován pro komunikaci s koncovým bodem pomocí ověřovacího protokolu OpenID Connect. `passport-azure-ad` má postaráno všechny podrobnosti o věnujte zpráv ověřování, ověřování tokenů z Azure AD a údržbě uživatelských relací. Všechny, které zůstává je udělení uživatelům způsob, jak přihlášení a odhlášení a shromažďování Další informace o přihlášených uživatelů.
+## <a name="step-4-use-passport-to-issue-sign-in-and-sign-out-requests-to-azure-ad"></a>Krok 4: Použití Passportu pro zasílání požadavků na přihlášení a odhlášení do Azure AD
+Vaše aplikace je teď správně nakonfigurované pro komunikaci s koncovým bodem pomocí ověřovacího protokolu OpenID Connect. `passport-azure-ad` už se postaral o všechny podrobnosti ohledně vytváření ověřovacích zpráv, ověřování tokenů z Azure AD a udržování uživatelských relací. Vše, co zůstává poskytuje uživatelům způsob, jak přihlášení a odhlášení a shromažďování dalších informací o přihlášených uživatelů.
 
-1. Nejprve přidejme výchozí, přihlášení, účet a odhlášení metody pro naše `app.js` souboru:
+1. Nejprve přidáme výchozí, přihlášení, účet a odhlášení metody pro naše `app.js` souboru:
 
     ```JavaScript
 
@@ -289,14 +289,14 @@ Aplikace je nyní správně nakonfigurován pro komunikaci s koncovým bodem pom
 
     ```
 
-2. Pojďme si podrobněji:
+2. Pojďme se podívat na podrobněji:
 
-  * `/`Trasa přesměruje na zobrazení index.ejs předávání uživatele v požadavku (pokud existuje).
-  * `/account` Směrovat nejprve *zajistí jsme se ověří* (jsme implementovat, v následujícím příkladu) a poté předá uživatele v požadavku tak, aby se nám můžete získat další informace o uživateli.
-  * `/login` Trasy volá naše azuread openidconnect authenticator z `passport-azuread`. Pokud není úspěšné, přesměruje uživatele zpět na Publikace1.
-  * `/logout` Směrování jednoduše volání logout.ejs (a trasy), které vymaže soubory cookie a poté vrátí uživatele zpět na index.ejs.
+  * `/`Trasy přesměruje na zobrazení index.ejs předávání uživatele v požadavku (pokud existuje).
+  * `/account` Trasy nejprve *zajišťuje jsme se ověřují* (Implementujeme, který v následujícím příkladu) a poté předá uživatele v požadavku tak, aby nám můžete získat další informace o uživateli.
+  * `/login` Trasy volá naše openidconnect Azure AD authenticator z `passport-azuread`. Pokud neproběhne úspěšně, která, přesměruje uživatele zpět na Publikace1.
+  * `/logout` Jednoduše volání logout.ejs (a trasu), které vymaže soubory cookie a poté vrátí uživatele zpět na index.ejs trasy.
 
-3. Pro poslední část `app.js`, přidejme **EnsureAuthenticated** metoda, která se používá v `/account`, jako je uvedené výše.
+3. Pro poslední část `app.js`, přidáme **EnsureAuthenticated** metodu, která se používá v `/account`, jak je uvedeno výše.
 
     ```JavaScript
 
@@ -312,7 +312,7 @@ Aplikace je nyní správně nakonfigurován pro komunikaci s koncovým bodem pom
         }
     ```
 
-4. Nakonec vytvořte samotný server v `app.js`:
+4. Nakonec vytvoříme samotný server v `app.js`:
 
 ```JavaScript
 
@@ -321,8 +321,8 @@ Aplikace je nyní správně nakonfigurován pro komunikaci s koncovým bodem pom
 ```
 
 
-## <a name="step-5-to-display-our-user-in-the-website-create-the-views-and-routes-in-express"></a>Krok 5: Pokud chcete zobrazit naše uživatele na webu, zobrazení a vytvořte tras ve Express
-Nyní `app.js` dokončení. Musíme jednoduše přidat trasy a zobrazení, které zobrazují informace jsme získat uživateli, stejně jako zpracování `/logout` a `/login` tras, které jsme vytvořili.
+## <a name="step-5-to-display-our-user-in-the-website-create-the-views-and-routes-in-express"></a>Krok 5: Naší uživatelské web zobrazíte vytváření zobrazení a tras v Expressu
+Nyní `app.js` je dokončena. Jednoduše je potřeba přidat trasy a zobrazení, které obsahují informace můžeme získat uživateli, stejně jako zpracování `/logout` a `/login` trasy, které jsme vytvořili.
 
 1. V kořenovém adresáři vytvořte trasu `/routes/index.js`.
 
@@ -348,9 +348,9 @@ Nyní `app.js` dokončení. Musíme jednoduše přidat trasy a zobrazení, kter�
                 };
     ```
 
- Tyto předají požadavek na našem zobrazení, včetně uživatele, pokud je k dispozici.
+ Tyto máte předat požadavek na naše zobrazení, včetně uživatele, pokud jsou k dispozici.
 
-3. V kořenovém adresáři vytvořte zobrazení `/views/index.ejs`. Toto je jednoduchá stránka, která volá metody, naše přihlášení a odhlášení a umožňuje nám se získat informace o účtu. Všimněte si, že budeme moci použít podmínku `if (!user)` jako uživatel předávány prostřednictvím v požadavku je důkaz máme přihlášeného uživatele.
+3. V kořenovém adresáři vytvořte zobrazení `/views/index.ejs`. Toto je jednoduchá stránka, která volá metody naše přihlášení a odhlášení a umožňuje nám to sběru informací o účtu. Všimněte si, že můžeme využít podmínku `if (!user)` jako uživatele se předává v požadavku je důkazy máme přihlášeného uživatele.
 
     ```JavaScript
     <% if (!user) { %>
@@ -363,7 +363,7 @@ Nyní `app.js` dokončení. Musíme jednoduše přidat trasy a zobrazení, kter�
     <% } %>
     ```
 
-4. Vytvořte `/views/account.ejs` zobrazení pod kořenovým adresářem, takže jsme můžete zobrazit další informace, `passport-azure-ad` pozastavil v požadavku uživatele.
+4. Vytvořte `/views/account.ejs` zobrazení pod kořenovým adresářem, takže můžeme zobrazit další informace, které `passport-azure-ad` má vložit do uživatelského požadavku.
 
     ```Javascript
     <% if (!user) { %>
@@ -382,7 +382,7 @@ Nyní `app.js` dokončení. Musíme jednoduše přidat trasy a zobrazení, kter�
     <% } %>
     ```
 
-5. Umožňuje, aby tento vzhled dobrý přidání rozložení. Vytvořte ' / zobrazení se views/layout.ejs v kořenovém adresáři.
+5. Přidáním rozložení vytvoříme dobré tento vzhled. Vytvořte "/ views/layout.ejs' zobrazení pod kořenovým adresářem.
 
     ```HTML
 
@@ -412,14 +412,14 @@ Nyní `app.js` dokončení. Musíme jednoduše přidat trasy a zobrazení, kter�
 ## <a name="next-steps"></a>Další postup
 Nakonec sestavte a spusťte aplikaci. Spustit `node app.js`a pak přejděte na `http://localhost:3000`.
 
-Přihlaste se pomocí osobního účtu Microsoft nebo pracovní nebo školní účet a Všimněte si, jak se v seznamu /account projeví identitu uživatele. Nyní máte webovou aplikaci, která je zabezpečen pomocí standardních oborových protokolech, které může ověřit uživatele s svoje osobní, tak i pracovní nebo školní účty.
+Přihlaste se pomocí osobního účtu Microsoft nebo pracovní nebo školní účet a Všimněte si, jak identitu uživatele se projeví v seznamu/Account. Teď máte webovou aplikaci, která je zabezpečena pomocí standardních oborových protokolů, které můžete ověřovat uživatele pomocí jejich osobní, tak i pracovní nebo školní účty.
 
 Pro srovnání je hotová ukázka (bez vašich hodnot nastavení) [k dispozici jako soubor .zip](https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS/archive/complete.zip). Alternativně můžete klonovat z Githubu:
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS.git```
 
-Nyní se můžete přesunout na pokročilejší témata. Můžete se pokusit:
+Nyní se můžete přesunout na pokročilejší témata. Můžete vyzkoušet:
 
-[Zabezpečení webového rozhraní API pomocí Azure AD](active-directory-devquickstarts-webapi-nodejs.md)
+[Zabezpečení webového rozhraní API s využitím Azure AD](active-directory-devquickstarts-webapi-nodejs.md)
 
 [!INCLUDE [active-directory-devquickstarts-additional-resources](../../../includes/active-directory-devquickstarts-additional-resources.md)]

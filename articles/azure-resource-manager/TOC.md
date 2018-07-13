@@ -13,6 +13,7 @@
 ## [Poskytovatelé a typy prostředků](resource-manager-supported-services.md)
 ## [Skupiny pro správu](management-groups-overview.md)
 ## [Zásady správného řízení pro předplatná](/azure/architecture/cloud-adoption-guide/subscription-governance?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+## [Šablony pro konzistenci cloudu](templates-cloud-consistency.md)
 
 # Postup
 ## Vytváření šablon

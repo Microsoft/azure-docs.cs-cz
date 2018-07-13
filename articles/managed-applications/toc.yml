@@ -31,6 +31,8 @@
       href: update-managed-resources.md
     - name: Použití portálu k publikování
       href: publish-portal.md
+    - name: Použití tajného kódu ze služby Key Vault
+      href: key-vault-access.md
 - name: Referenční informace
   items:
     - name: Azure CLI

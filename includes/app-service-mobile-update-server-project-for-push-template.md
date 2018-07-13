@@ -1,15 +1,15 @@
-V této části aktualizujte kód v existující projekt back-end mobilní aplikace k odesílání nabízených oznámení pokaždé, když se při přidání nové položky. Tento proces používá technologii [šablony](../articles/notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) nabízených oznámení funkce Azure Notification Hubs, což umožňuje napříč platformami. Různých klientů jsou registrované pro nabízená oznámení pomocí šablony a jeden universal push můžete získat na všechny klientské platformy.
+V této části můžete aktualizovat kód v existujícím projektu back-end Mobile Apps k odesílání nabízených oznámení pokaždé, když se přidá nová položka. Tento proces využívá k tomu [šablony](../articles/notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) vložení funkce služby Azure Notification Hubs, která umožňuje různé platformy. Různé klienty jsou registrovány pro nabízená oznámení pomocí šablony a můžete získat jednu univerzální nabízených oznámení pro všechny klientské platformy.
 
-Vyberte jednu z následujících postupů, které odpovídá typu vašeho projektu back-end&mdash;buď [.NET back-end](#dotnet) nebo [back-end Node.js](#nodejs).
+Vyberte jednu z následujících postupů, které odpovídá typu vašeho projektu back-end&mdash;buď [.NET back-endu](#dotnet) nebo [back-end Node.js](#nodejs).
 
-### <a name="dotnet"></a>Rozhraní .NET back-end projektu
-1. V sadě Visual Studio klikněte pravým tlačítkem na projekt serveru. Potom vyberte **spravovat balíčky NuGet**. Vyhledejte `Microsoft.Azure.NotificationHubs`a potom vyberte **nainstalovat**. Tento proces nainstaluje knihovny centra oznámení pro odesílání oznámení z back-end.
-2. V projektu serveru otevřete **řadiče** > **TodoItemController.cs**. Pak přidejte následující příkazy:
+### <a name="dotnet"></a>Projekt back-end .NET
+1. V sadě Visual Studio klikněte pravým tlačítkem na projekt serveru. Potom vyberte **spravovat balíčky NuGet**. Vyhledejte `Microsoft.Azure.NotificationHubs`a pak vyberte **nainstalovat**. Tímto postupem se nainstalují v knihovně Notification Hubs k odesílání oznámení z back-endu.
+2. V projektu serveru, otevřete **řadiče** > **TodoItemController.cs**. Pak přidejte následující příkazy using:
 
         using System.Collections.Generic;
         using Microsoft.Azure.NotificationHubs;
         using Microsoft.Azure.Mobile.Server.Config;
-3. V **PostTodoItem** metoda, přidejte následující kód po volání **InsertAsync**:  
+3. V **PostTodoItem** metodu, přidejte následující kód po volání **InsertAsync**:  
 
         // Get the settings for the server project.
         HttpConfiguration config = this.Configuration;
@@ -45,12 +45,12 @@ Vyberte jednu z následujících postupů, které odpovídá typu vašeho projek
                 .Error(ex.Message, null, "Push.SendAsync Error");
         }
 
-    Tento proces odešle šablony oznámení, který obsahuje položky. Text, když je vložit novou položku.
-4. Znovu publikujte serverový projekt.
+    Tento proces odešle šablony oznámení, který obsahuje položky. Text při vložení nové položky.
+4. Znovu publikujte projekt serveru.
 
-### <a name="nodejs"></a>Projektu back-end Node.js
-1. Pokud jste zatím žádný nevytvořili, [stáhnout back-end projektu pro rychlý Start](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart), nebo použijte jiný [online editor na webu Azure portal](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor).
-2. Existující kód v todoitem.js nahraďte následujícím kódem:
+### <a name="nodejs"></a>Projekt back-end Node.js
+1. Pokud jste tak již neučinili, [stáhnout projekt rychlý start back-end](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart), nebo použijte jiný [online editoru na webu Azure Portal](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor).
+2. Nahraďte existující kód ve třídě todoitem.js následujícím kódem:
 
         var azureMobileApps = require('azure-mobile-apps'),
         promises = require('azure-mobile-apps/src/utilities/promises'),
@@ -91,5 +91,5 @@ Vyberte jednu z následujících postupů, které odpovídá typu vašeho projek
 
         module.exports = table;  
 
-    Tento proces odešle oznámení šablona obsahující item.text při vložení nové položky.
-3. Při úpravách souboru v místním počítači, znovu publikujte serverový projekt.
+    Tento proces odešle oznámení šablonu, která obsahuje item.text při vložení nové položky.
+3. Při úpravách souboru na místním počítači, znovu publikujte projekt serveru.

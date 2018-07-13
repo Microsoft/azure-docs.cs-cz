@@ -3,7 +3,7 @@
 > * [Cordova](../articles/app-service-mobile/app-service-mobile-cordova-how-to-use-client-library.md)
 > * [JavaScript](../articles/app-service-mobile/app-service-mobile-html-how-to-use-client-library.md)
 > * [iOS](../articles/app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md)
-> * [Spravované (Windows nebo Xamarin)](../articles/app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md)
+> * [Spravované (Windows/Xamarin)](../articles/app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md)
 > 
 > 
 

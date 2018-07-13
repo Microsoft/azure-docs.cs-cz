@@ -1,6 +1,6 @@
 ---
-title: Správa zásad testovacího prostředí v Azure DevTest Labs | Microsoft Docs
-description: Naučte se definovat zásady testovacího prostředí, například velikosti virtuálních počítačů, maximální virtuálních počítačů na uživatele a vypnutí automatizace.
+title: Správa zásad testovacího prostředí ve službě Azure DevTest Labs | Dokumentace Microsoftu
+description: Zjistěte, jak definovat zásady testovacího prostředí, jako je například velikosti virtuálních počítačů, maximální virtuálních počítačů na uživatele a vypnutí služby automation.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -14,105 +14,105 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: 212afbd605e3a16da7be2c04492ec41875ff5b75
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33787581"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38666835"
 ---
-# <a name="manage-all-policies-for-a-lab-in-azure-devtest-labs"></a>Správa všech zásad pro testovací prostředí v Azure DevTest Labs
+# <a name="manage-all-policies-for-a-lab-in-azure-devtest-labs"></a>Správa všech zásad pro testovací prostředí ve službě Azure DevTest Labs
 
-Azure DevTest Labs umožňuje řídit náklady a minimalizovat odpady ve vaší laboratoře podle Správa zásad (nastavení) pro každý testovací prostředí. Tento článek krok za krokem podrobně vysvětluje postup nastavení jednotlivých zásad.  
+Azure DevTest Labs umožňuje řízení nákladů a minimalizace plýtvání v vaše testovací prostředí tím, že spravuje zásady (nastavení) pro každý testovací prostředí. Tento článek popisuje podrobný podrobná nastavení jednotlivých zásad.  
 
-## <a name="set-allowed-virtual-machine-sizes"></a>Sada povolené velikosti virtuálních počítačů
-Zásady pro nastavení povolené velikosti virtuálních počítačů pomáhá minimalizovat odpady testovacího prostředí tím, že vám nastavit, které velikosti virtuálních počítačů jsou povoleny v testovacím prostředí. Tato zásada je aktivována, lze nastavit pouze velikosti virtuálních počítačů z tohoto seznamu k vytvoření virtuálních počítačů.
+## <a name="set-allowed-virtual-machine-sizes"></a>Sada povolené velikosti virtuálního počítače
+Zásady pro nastavení povolených velikostí virtuálních počítačů pomáhá minimalizovat plýtvání testovacího prostředí tím, že vám určit, jaké velikosti virtuálních počítačů jsou povoleny v testovacím prostředí. Pokud tato zásada se aktivuje, jenom velikosti virtuálních počítačů z tohoto seznamu lze použít k vytvoření virtuálních počítačů.
 
-1. V [portál Azure](http://go.microsoft.com/fwlink/p/?LinkID=525040), vyberte testovacího prostředí a potom vyberte **konfiguraci a zásady**.
+1. V [webu Azure portal](http://go.microsoft.com/fwlink/p/?LinkID=525040), vyberte testovacího prostředí a pak vyberte **konfigurace a zásad**.
 
-    ![Přístup v prostředí konfiguraci a zásady](./media/devtest-lab-set-lab-policy/policies-menu.png)
+    ![Přístup ke konfiguraci a zásady testovacího prostředí](./media/devtest-lab-set-lab-policy/policies-menu.png)
 
-1. V tomto prostředí **konfiguraci a zásady** podokně, vyberte **povolené velikosti virtuálních počítačů**.
+1. Cvičení **konfigurace a zásad** vyberte **povolené velikosti virtuálních počítačů**.
    
-    ![Velikosti povolené virtuální počítače](./media/devtest-lab-set-lab-policy/allowed-vm-sizes.png)
+    ![Velikosti virtuálních počítačů povolených](./media/devtest-lab-set-lab-policy/allowed-vm-sizes.png)
 
-1. Vyberte **na** Chcete-li povolit tuto zásadu a **vypnout** ji zakázat.
+1. Vyberte **na** pro tuto zásadu povolit a **vypnout** ho zakážete.
 
-1. Pokud povolíte tuto zásadu, vyberte jeden nebo více velikosti virtuálních počítačů, které lze vytvořit ve svém testovacím prostředí.
+1. Pokud tuto zásadu povolit, vyberte jeden nebo více velikostí virtuálních počítačů, které mohou být vytvořeny ve vaší laboratoři.
 
 1. Vyberte **Uložit**.
 
 ## <a name="set-virtual-machines-per-user"></a>Sada virtuálních počítačů na uživatele
-Zásady pro **virtuálních počítačů na uživatele** umožňuje určit maximální počet virtuálních počítačů, které je možné vytvářet podle jednotlivých uživatelů. Pokud se uživatel pokusí o vytvoření nebo deklarací identity virtuálního počítače, když byla splněna limit počtu uživatelů, chybová zpráva označuje, že virtuální počítač nelze vytvořit vyžádaná. 
+Zásady pro **virtuálních počítačů na uživatele** umožňuje určit maximální počet virtuálních počítačů, které lze vytvořit podle jednotlivých uživatelů. Pokud uživatel se pokusí vytvořit nebo deklarací identity virtuálního počítače, pokud byly splněny limit počtu uživatelů, chybová zpráva označuje, že virtuální počítač nemůže být vytvořen nárokován. 
 
-1. V tomto prostředí **konfiguraci a zásady** podokně, vyberte **virtuálních počítačů na uživatele**.
+1. Cvičení **konfigurace a zásad** vyberte **virtuálních počítačů na uživatele**.
    
-    ![Virtuální počítače na uživatele](./media/devtest-lab-set-lab-policy/max-vms-per-user.png)
+    ![Virtuálních počítačů na uživatele](./media/devtest-lab-set-lab-policy/max-vms-per-user.png)
 
-1. Vyberte **Ano** omezit počet virtuálních počítačů na uživatele. Pokud nechcete omezit počet virtuálních počítačů na uživatele, vyberte **ne**. Pokud vyberete **Ano**, zadejte číselnou hodnotu, která určuje maximální počet virtuálních počítačů, které můžou vytvořit nebo jeden uživatel. 
+1. Vyberte **Ano** omezit počet virtuálních počítačů na uživatele. Pokud nechcete omezit počet virtuálních počítačů na uživatele, vyberte **ne**. Pokud vyberete **Ano**, zadejte číselnou hodnotu určující maximální počet virtuálních počítačů, které můžou vytvořit nebo jeden uživatel. 
 
-1. Vyberte **Ano** omezit počet virtuálních počítačů, které můžete použít SSD (solid-state disk). Pokud nechcete omezit počet virtuálních počítačů, které můžete použít SSD, vyberte **ne**. Pokud vyberete **Ano**, zadejte hodnotu, která určuje maximální počet virtuálních počítačů, které lze vytvořit pomocí SSD. 
+1. Vyberte **Ano** omezit počet virtuálních počítačů, které můžete použít SSD (SSD disk). Pokud nechcete omezit počet virtuálních počítačů, které můžete používat SSD, vyberte **ne**. Pokud vyberete **Ano**, zadejte hodnotu, která udává maximální počet virtuálních počítačů, které lze vytvořit pomocí SSD. 
 
 1. Vyberte **Uložit**.
 
-## <a name="set-virtual-machines-per-lab"></a>Sada virtuálních počítačů na testovacího prostředí
-Zásady pro **virtuálních počítačů na testovacím** umožňuje určit maximální počet virtuálních počítačů, které lze vytvořit pro aktuální testovací prostředí. Pokud se uživatel pokusí o vytvoření virtuálního počítače, když byla splněna limit testovacího prostředí, chybová zpráva označuje, že virtuální počítač nelze vytvořit. 
+## <a name="set-virtual-machines-per-lab"></a>Sada virtuálních počítačů podle testovacího prostředí
+Zásady pro **virtuálních počítačů podle testovacího prostředí** umožňuje určit maximální počet virtuálních počítačů, které lze vytvořit pro aktuálním testovacím prostředí. Pokud se uživatel pokusí o vytvoření virtuálního počítače, když jste dosáhli limitu testovacího prostředí, chybová zpráva znamená, že virtuální počítač nelze vytvořit. 
 
-1. V tomto prostředí **konfiguraci a zásady** podokně, vyberte **virtuálních počítačů na testovacím**.
+1. Cvičení **konfigurace a zásad** vyberte **virtuálních počítačů podle testovacího prostředí**.
    
-    ![Virtuální počítače na testovacího prostředí](./media/devtest-lab-set-lab-policy/max-vms-per-lab.png)
+    ![Počet virtuálních počítačů na testovací prostředí](./media/devtest-lab-set-lab-policy/max-vms-per-lab.png)
 
-1. Vyberte **Ano** omezit počet virtuálních počítačů za testovacího prostředí. Pokud nechcete omezit počet virtuálních počítačů za testovacího prostředí, vyberte **ne**. Pokud vyberete **Ano**, zadejte číselnou hodnotu, která určuje maximální počet virtuálních počítačů, které můžou vytvořit nebo jeden uživatel. 
+1. Vyberte **Ano** omezit počet virtuálních počítačů podle testovacího prostředí. Pokud nechcete omezit počet virtuálních počítačů podle testovacího prostředí, vyberte **ne**. Pokud vyberete **Ano**, zadejte číselnou hodnotu určující maximální počet virtuálních počítačů, které můžou vytvořit nebo jeden uživatel. 
 
-1. Vyberte **Ano** omezit počet virtuálních počítačů, které můžete použít SSD (solid-state disk). Pokud nechcete omezit počet virtuálních počítačů, které můžete použít SSD, vyberte **ne**. Pokud vyberete **Ano**, zadejte hodnotu, která určuje maximální počet virtuálních počítačů, které lze vytvořit pomocí SSD. 
+1. Vyberte **Ano** omezit počet virtuálních počítačů, které můžete použít SSD (SSD disk). Pokud nechcete omezit počet virtuálních počítačů, které můžete používat SSD, vyberte **ne**. Pokud vyberete **Ano**, zadejte hodnotu, která udává maximální počet virtuálních počítačů, které lze vytvořit pomocí SSD. 
 
 1. Vyberte **Uložit**.
 
-## <a name="set-auto-shutdown"></a>Sada auto vypnutí
-Vypnutí automatického zásad se může minimalizovat odpady testovacího prostředí tím, že umožňuje zadejte dobu, kterou vypnout virtuální počítače v tomto testovacím prostředí.
+## <a name="set-auto-shutdown"></a>Nastavení automatického vypínání
+Automatické vypnutí zásad se může minimalizovat plýtvání testovacího prostředí tím, že umožní určit čas, který se vypnout virtuální počítače v tomto testovacím prostředí.
 
-1. V tomto prostředí **konfiguraci a zásady** podokně, vyberte **Auto-shutdown**.
+1. Cvičení **konfigurace a zásad** vyberte **automatického vypínání**.
    
-    ![Vypnutí automatického](./media/devtest-lab-set-lab-policy/auto-shutdown.png)
+    ![Automatické vypnutí](./media/devtest-lab-set-lab-policy/auto-shutdown.png)
 
-1. Vyberte **na** Chcete-li povolit tuto zásadu a **vypnout** ji zakázat.
+1. Vyberte **na** pro tuto zásadu povolit a **vypnout** ho zakážete.
 
-1. Pokud povolíte tuto zásadu, zadejte dobu (a časového pásma) a ukončí se všechny virtuální počítače v aktuálním prostředí.
+1. Pokud tuto zásadu povolit, zadejte čas (a časové pásmo), vypnutí všech virtuálních počítačích v aktuálním testovacím prostředí.
 
-1. Zadejte **Ano** nebo **ne** pro možnost Odeslat oznámení 15 minut před časem zadaný auto vypnutí. Pokud se rozhodnete **Ano**, zadejte koncový bod adresy URL webhooku nebo e-mailovou adresu určující, kde se má oznámení odesílat nebo odeslat. Uživatel obdrží oznámení a je zadána možnost zpoždění ukončení.
+1. Zadejte **Ano** nebo **ne** pro možnost poslat oznámení 15 minut před časem zadané automatického vypínání. Pokud se rozhodnete **Ano**, zadejte koncový bod adresy URL webhooku nebo e-mailovou adresu, určení, kam chcete oznámení k odeslání nebo odeslání. Uživatel obdrží oznámení a je zadána možnost zpoždění vypnutí počítače.
 
-   Další informace o webhooky najdete v tématu [vytvoření webhooku nebo funkce rozhraní API Azure](../azure-functions/functions-create-a-web-hook-or-api-function.md). 
+   Další informace o webhooků najdete v tématu [vytvoření webhooku nebo funkce rozhraní API Azure](../azure-functions/functions-create-a-web-hook-or-api-function.md). 
 
 1. Vyberte **Uložit**.
 
-Ve výchozím nastavení, jakmile bude povoleno, tato zásada platí pro všechny virtuální počítače v aktuálním prostředí. Chcete-li toto nastavení odebrat z konkrétní virtuální počítač, otevřete podokno Správa Virtuálního počítače a změňte jeho **Auto-shutdown** nastavení.
+Ve výchozím nastavení, jakmile bude povoleno, tyto zásady platí pro všechny virtuální počítače v aktuálním testovacím prostředí. Tato nastavení odebrat z konkrétní virtuální počítač, otevřete panel pro správu Virtuálního počítače a změňte jeho **automatického vypínání** nastavení.
 
-## <a name="set-auto-start"></a>Sada automatického – spuštění
-Automaticky spouštěná zásady umožňuje určit, zahájení virtuálních počítačů v aktuálním prostředí.  
+## <a name="set-auto-start"></a>Nastavení automatické spuštění
+Zásady automatického spuštění umožňuje určit, kdy by měl být spuštěn virtuální počítače v aktuálním testovacím prostředí.  
 
-1. V tomto prostředí **konfiguraci a zásady** podokně, vyberte **automatického spuštění**.
+1. Cvičení **konfigurace a zásad** vyberte **automatického spuštění**.
    
     ![Automatické spuštění](./media/devtest-lab-set-lab-policy/auto-start.png)
 
-2. Vyberte **na** Chcete-li povolit tuto zásadu a **vypnout** ji zakázat.
+2. Vyberte **na** pro tuto zásadu povolit a **vypnout** ho zakážete.
 
-3. Pokud povolíte tuto zásadu, zadejte naplánovaný čas zahájení, časové pásmo a dny v týdnu, pro kterou platí čas. 
+3. Pokud tuto zásadu povolit, zadejte naplánovaný čas zahájení, časové pásmo a dny v týdnu, pro kterou platí čas. 
 
 4. Vyberte **Uložit**.
 
-Jakmile bude povoleno, není tato zásada použitá automaticky všechny virtuální počítače v aktuálním prostředí. Chcete-li použít tato nastavení pro konkrétní virtuální počítač, otevřete podokno Správa Virtuálního počítače a změňte jeho **automatického spuštění** nastavení.
+Jakmile bude povoleno, není tato zásada použitá automaticky pro všechny virtuální počítače v aktuálním testovacím prostředí. Chcete-li toto nastavení platí pro konkrétní virtuální počítač, otevřete panel pro správu Virtuálního počítače a změňte jeho **automatického spuštění** nastavení.
 
 ## <a name="set-expiration-date"></a>Nastavit datum vypršení platnosti
-Můžete nastavit vypršení platnosti datum, kdy jste [vytvořit virtuální počítač](devtest-lab-add-vm.md). V **upřesňující nastavení**, zvolte ikonu Kalendář zadat datum, na kterém je virtuální počítač automaticky odstraní. Ve výchozím nastavení virtuální počítač nikdy nevyprší.
+Můžete nastavit vypršení datum, kdy jste [vytvořit virtuální počítač](devtest-lab-add-vm.md). V **upřesňující nastavení**, zvolte ikonu kalendáře pro výběr data, na kterém je virtuální počítač automaticky odstraní. Ve výchozím nastavení virtuální počítač nikdy nevyprší.
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="next-steps"></a>Další postup
-Jakmile jste definovaný a použít různá nastavení zásad virtuálních počítačů pro testovací prostředí, zde jsou další vyzkoušejte:
+Po definované a použít různé zásady nastavení virtuálních počítačů pro testovací prostředí, tady jsou dále vyzkoušejte:
 
-* [Pochopení sdílené IP adresy](devtest-lab-shared-ip.md) -vysvětluje, jak sdílené IP adresy se používají v DevTest Labs, chcete-li minimalizovat počet veřejných IP adres, které jsou požadované pro připojení k testovacího prostředí virtuálních počítačů.
-* [Konfigurovat náklady na správu](devtest-lab-configure-cost-management.md) -ukazuje, jak používat **měsíční Trend odhadované náklady na** grafu  
-  Chcete-li zobrazit aktuální měsíc je odhadované náklady na začátku a předpokládané náklady na koncový měsíc.
-* [Vytvořit vlastní image](devtest-lab-create-template.md) – při vytváření virtuálního počítače, zadejte základ, který může být buď vlastní image nebo image pořízenou prostřednictvím Marketplace. Tento článek ukazuje, jak vytvořit vlastní obrázek ze souboru virtuálního pevného disku.
-* [Konfigurace Marketplace image](devtest-lab-configure-marketplace-images.md) – Azure DevTest Labs podporuje vytváření virtuálních počítačů založené na imagích Azure Marketplace. Tento článek ukazuje, jak určit, které, pokud existuje, může být Azure Marketplace Image používá při vytváření virtuálních počítačů v testovacím prostředí.
-* [Vytvoření virtuálního počítače v testovacím prostředí](devtest-lab-add-vm.md) -znázorňuje, jak vytvořit virtuální počítač z bitové kopie základní (buď vlastní nebo Marketplace) a postup práce s artefakty ve vašem virtuálním počítači.
+* [Principy sdílených IP adres](devtest-lab-shared-ip.md) – vysvětluje, jak sdílených IP adresy se používají ve službě DevTest Labs, chcete-li minimalizovat počet veřejných IP adres, které jsou potřebné pro připojení k testovacího prostředí virtuálních počítačů.
+* [Konfigurace správy nákladů](devtest-lab-configure-cost-management.md) -ukazuje, jak používat **měsíční Trend nákladů odhadované** grafu  
+  Chcete-li zobrazit aktuální měsíc je odhadované náklady k datu a očekávané náklady na konci měsíce.
+* [Vytvoření vlastní image](devtest-lab-create-template.md) – když vytvoříte virtuální počítač, určit základ, který může být buď vlastní image nebo Marketplace image. Tento článek ukazuje, jak vytvořit vlastní image ze souboru VHD.
+* [Konfigurace imagí Marketplace](devtest-lab-configure-marketplace-images.md) – vytváření virtuálních počítačů založených na imagích Azure Marketplace podporuje Azure DevTest Labs. Tento článek ukazuje, jak určit, které případně Image Azure Marketplace lze použít při vytváření virtuálních počítačů v testovacím prostředí.
+* [Vytvoření virtuálního počítače v testovacím prostředí](devtest-lab-add-vm.md) -ukazuje, jak vytvořit virtuální počítač ze základní image (buď vlastní nebo Marketplace) a způsobu práce s artefakty ve virtuálním počítači.
 

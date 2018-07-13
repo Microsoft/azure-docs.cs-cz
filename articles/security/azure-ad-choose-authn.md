@@ -1,6 +1,6 @@
 ---
-title: Vyberte způsob správné ověřování pro vaše řešení hybridní identity Azure AD | Microsoft Docs
-description: Tento průvodce pomáhá CEOs, ředitelé informačních technologií, CISOs, hlavní Identity architektům, Enterprise architekty a zabezpečení a IT rozhodují zodpovědná za výběru metody ověřování pro jejich hybridní řešení identit Azure AD ve středně velkých organizacích.
+title: Vyberte metodu ověřování pravý pro vaši hybridní řešení identit Azure AD | Dokumentace Microsoftu
+description: Tento průvodce pomůže CEOs, vedoucí, CISOs, Chief Identity architekty, podnikové architekty a zabezpečení a IT pracovníky s rozhodovací pravomocí odpovědnost za výběr metody ověřování pro jejich hybridní řešení identit Azure AD ve středně velkých až velkých organizacích.
 services: active-directory
 keywords: ''
 author: martincoetzer
@@ -9,199 +9,199 @@ ms.date: 04/12/2018
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
-ms.openlocfilehash: 01b76ea902ec92f8ab32bc00cff27b1b890ce9ff
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: d0d72694fe2d88e257a8684dc37a250bc0ad7f3f
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37113098"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970985"
 ---
-# <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Vyberte způsob správné ověřování pro vaše řešení hybridní identity Azure Active Directory 
+# <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Vyberte metodu správné ověřování pro vaše řešení hybridní identity Azure Active Directory 
 
-Tento článek začne řadu články, které pomůžou organizacím implementaci kompletního řešení hybridní identity Azure Active Directory (Azure AD). Toto řešení se uvedené jako [hybridní Identity digitální transformace Framework](https://aka.ms/aadframework). Pokrývá výstupy obchodní a cíle organizace můžou zaměřit na implementovat robustní a zabezpečené hybridní řešení identit. 
+Tento článek začne série článků, která pomáhají organizacím implementovat kompletní řešení hybridní identity Azure Active Directory (Azure AD). Toto řešení bylo uvedeno jako [rozhraní digitální transformace pro hybridní Identity](https://aka.ms/aadframework). Zabývá se obchodních výsledků a cíle organizace můžou zaměřit na implementovat robustní a zabezpečené hybridní řešení identit. 
 
-První výsledek obchodní rozhraní hláskuje požadavky pro organizace k zabezpečení procesu ověřování, když uživatelé přistupují k cloudových aplikací. Prvním cílem obchodní v zabezpečené obchodní výsledek ověřování je možnost uživatelů přihlásit do cloudových aplikací pomocí jejich místní uživatelských jmen a hesel. Tento proces přihlášení k a jak se uživatelé ověřují, umožní všechno, co v cloudu.
+První obchodního výsledku rozhraní Framework obsahuje požadavky organizace na zabezpečení procesu ověřování, když uživatelé přistupují k cloudových aplikací. První obchodní cíle v zabezpečené obchodního výsledku ověřování je možnost uživatelů přihlásit ke cloudovým aplikacím pomocí jejich místních uživatelských jmen a hesel. Tento proces přihlášení k a jak se uživatelé ověřovat umožňují vše v cloudu.
 
-Výběr správné metody ověřování je nejdůležitější pro organizace, které chtějí přesouvat své aplikace do cloudu. Nemáte rozmyslet toto rozhodnutí, z následujících důvodů:
+Volba správné metody ověřování je nejdůležitější pro organizace, kteří chtějí přesuňte svoje aplikace do cloudu. Nevyřídí toto rozhodnutí lehce, z následujících důvodů:
 
-1. Je první rozhodnutí pro organizaci, která chce přesunout do cloudu. 
+1. Je to první rozhodnutí v organizaci, která chce přesunout do cloudu. 
 
-2. Metoda ověřování je zásadní součástí sady přítomnosti organizace v cloudu. Jimi řídí přístup ke všem data v cloudu a prostředků.
+2. Metoda ověřování je zásadní součástí sady řešení v organizaci přítomnost v cloudu. Určuje přístup ke všem data v cloudu a prostředků.
 
-3. Základ pro všechny ostatní pokročilým zabezpečením a funkce uživatelského rozhraní je ve službě Azure AD.
+3. Je základem pro všechny ostatní pokročilé zabezpečení a funkce uživatelského prostředí ve službě Azure AD.
 
 4. Metoda ověřování je obtížné změnit po implementaci.
 
-Identita je nové rovině řízení zabezpečení IT. Proto ověřování je v organizaci přístup ochrana nové World cloudu. Organizace potřebují rovině řízení identity, která zvyšuje účinnost jejich zabezpečení a zajišťuje jejich cloudové aplikace před uživateli.
+Identita je nový roviny řízení zabezpečení IT. Ověřování je v organizaci přístup guard na novém světě cloudu. Organizace potřebují rovina řízení identit, která posiluje zabezpečení a sleduje jejich cloudových aplikací před případné útočníky.
 
 ### <a name="out-of-scope"></a>Mimo rozsah
-Organizace, které nemají existující místní adresář nároků nejsou fokus tohoto článku. Tyto firmy obvykle vytvářet identity jenom v cloudu, který nevyžaduje hybridní řešení identit. Cloudové identity výhradně v cloudu a nejsou přidruženy k odpovídající místních identit.
+Organizace, které nemají existující místní adresář nároky na místo nejsou hlavním cílem tohoto článku. Tyto firmy obvykle vytvoření identity jenom v cloudu, který nevyžaduje, aby řešení s hybridní identitou. Čistě cloudové identity výhradně v cloudu a nejsou přidruženy k odpovídající místních identit.
 
 ## <a name="authentication-methods"></a>Metody ověřování
-Vaše nové rovině řízení po hybridní řešení identit Azure AD ověřování je základ pro přístup do cloudu. Výběr správné metody ověřování je velmi důležitý první rozhodnutí v nastavení hybridní řešení identit Azure AD. Implementujte metodu ověřování, která je nakonfigurována pomocí Azure AD Connect, který také zřizuje uživatele v cloudu.
+Po hybridní řešení identit Azure AD vaší nové rovina řízení se ověřování jsou základem cloud přístup. Volba správné metody ověřování je velmi důležitý první rozhodnutí při nastavování hybridní řešení identit Azure AD. Implementujte metodu ověřování, který je nakonfigurovaný pomocí Azure AD Connect, která také zřizuje uživatele v cloudu.
 
-Chcete-li zvolit metodu ověřování, je potřeba zvážit čas, stávající infrastruktury, složitost a náklady na implementaci vašeho výběru. Tyto faktory se liší pro každou organizaci a může časem změnit. 
+Chcete-li zvolit metodu ověřování, je potřeba zvážit čas, stávající infrastruktury, složitost a náklady na implementaci podle vašeho výběru. Tyto faktory se liší pro každý organizace a může v průběhu času měnit. 
 
 >[!VIDEO https://www.youtube.com/embed/YtW2cmVqSEw]
 
-Azure AD podporuje následující metody ověřování pro hybridních řešení identit.
+Azure AD podporuje následující metody ověřování pro hybridní řešení identit.
 
 ### <a name="cloud-authentication"></a>Ověření cloudu
-Pokud zvolíte tuto metodu ověřování, Azure AD zpracuje proces přihlášení uživatelů. Kombinaci s bezproblémové jednotné přihlašování (SSO), můžete přihlášení do cloudových aplikací bez nutnosti znovu zadejte své přihlašovací údaje. S ověřováním cloudu můžete zvolit ze dvou možností: 
+Pokud zvolíte tuto metodu ověřování, Azure AD zpracuje proces přihlášení uživatelů. Pomocí bezproblémového jednotného přihlašování (SSO) s velkou provázaností, uživatelé můžou přihlásit ke cloudovým aplikacím, aniž byste museli znovu zadat své přihlašovací údaje. Pomocí cloudového ověřování můžete vybrat ze dvou možností: 
 
-**Synchronizaci hodnoty hash hesla služby Azure AD**. Nejjednodušší způsob, jak povolit ověřování pro místní adresář objekty ve službě Azure AD. Uživatelé mohou používat stejné uživatelské jméno a heslo, používají místní bez nutnosti jakékoli další infrastrukturu nasadit. Některé prémiové funkce Azure AD Identity Protection, jako je vyžaduje synchronizaci hodnoty hash hesla pro bez ohledu na to, jakou metodu ověřování zvolit.
+**Synchronizace hodnot hash hesel Azure AD**. Nejjednodušší způsob, jak povolit ověřování místních adresářových objektů ve službě Azure AD. Uživatelé můžou používat stejné uživatelské jméno a heslo, které používají místní bez nutnosti nasazovat žádnou další infrastrukturu. Některé funkce premium služby Azure AD, jako je Identity Protection, vyžadují synchronizaci hodnot hash hesel, bez ohledu na to, jakou metodu ověřování zvolit.
 
 > [!NOTE] 
-> Hesla se nikdy uložený jako nešifrovaný text nebo šifrován reverzibilního algoritmus ve službě Azure AD. Další informace o procesu skutečné synchronizaci hodnoty hash hesla najdete v tématu [implementovat synchronizaci hodnoty hash hesla s Azure AD Connect sync](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-implement-password-synchronization). 
+> Hesla se nikdy ve formátu prostého textu nebo zašifrovaný pomocí algoritmu reverzibilního ve službě Azure AD. Další informace o skutečný proces synchronizace hodnot hash hesel najdete v tématu [implementace synchronizace hodnot hash hesel pomocí synchronizace Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-implement-password-synchronization). 
 
-**Azure AD předávací ověřování**. Poskytuje ověření jednoduché heslo pro ověřování služby Azure AD pomocí agenta softwaru, který běží na jeden nebo více místních serverů. Servery ověření uživatelů přímo s vaší místní služby Active Directory, které zajišťuje, že ověření hesla nedojde v cloudu. 
+**Azure AD předávací ověřování**. Poskytuje jednoduché heslo ověření pro ověřování služby Azure AD s použitím agenta software, který běží na jeden nebo více místních serverů. Servery ověření uživatelů přímo s vaší místní služby Active Directory, což zajistí, že ověření hesla se nestane v cloudu. 
 
-Společnosti, požadavek na zabezpečení okamžitě vynutit místního uživatele účtu stavy, zásad hesel a přihlašovací hodiny může použít tuto metodu ověřování. Další informace o procesu skutečné předávací ověřování najdete v tématu [přihlášení uživatele s Azure AD předávací ověřování](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication).
+Firmy využívají k zabezpečení potřeba vynucovat okamžitě, místní uživatel účtu státy, zásady pro hesla, a přihlašovací hodiny mohou použít tuto metodu ověřování. Další informace o procesu skutečné předávací ověřování najdete v tématu [přihlášení uživatele pomocí předávacího ověřování Azure AD](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication).
 
 ### <a name="federated-authentication"></a>Federovaného ověřování
-Pokud zvolíte tuto metodu ověřování, rukou Azure AD při procesu ověřování do samostatného důvěryhodné ověření systému, například místní Active Directory Federation Services (AD FS), ověřit heslo uživatele.
+Pokud zvolíte tuto metodu ověřování, Azure AD rukou vypnuto proces ověření pro důvěryhodného oddělený ověřovací systém, jako je například v místním Active Directory Federation Services (AD FS), ověřit heslo uživatele.
 
-Ověřování systému můžete zadat další pokročilého ověřování požadavky. Příklady jsou ověřování pomocí čipových karet nebo jiných výrobců vícefaktorového ověřování. Další informace najdete v tématu [nasazení Active Directory Federation Services](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/windows-server-2012-r2-ad-fs-deployment-guide).
+Ověřování systému může poskytovat další pokročilé ověřování požadavků. Příklady ověřování pomocí čipové karty nebo jiného vícefaktorové ověřování. Další informace najdete v tématu [nasazení služby AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/windows-server-2012-r2-ad-fs-deployment-guide).
 
-Následující část vám pomůže zjistit, která metoda ověřování je pro vás nejvhodnější pomocí rozhodovací strom. Pomáhá určit, zda chcete provést nasazení cloudu nebo federovaného ověřování pro vaše řešení hybridní identity Azure AD.
+Následující část vám pomůže rozhodnout která metoda ověřování je pro vás nejvhodnější, s použitím rozhodovací strom. To vám pomůže určit, jestli se má nasazení cloudu nebo federovaného ověřování pro vaše řešení hybridní identity Azure AD.
 
 ## <a name="decision-tree"></a>Rozhodovací strom
 
 ![Azure AD authentication rozhodovací strom](media/azure-ad/azure-ad-authn-image1.png)
 
-## <a name="detailed-considerations"></a>Podrobné požadavky
+## <a name="detailed-considerations"></a>Podrobné pokyny
 
-### <a name="cloud-authentication-password-hash-synchronization"></a>Cloudové ověřování: synchronizaci hodnoty hash hesla
+### <a name="cloud-authentication-password-hash-synchronization"></a>Cloudové ověřování: synchronizace hodnot hash hesel
 
-* **Úsilí**. Synchronizaci hodnoty hash hesla je nejméně náročný týkající se nasazení, údržbu a infrastruktury.  Tato úroveň úsilí obvykle platí pro organizace, které stačí svým uživatelům přihlášení k Office 365, aplikace SaaS a jiné na základě AD prostředků Azure. Pokud je zapnutá, synchronizaci hodnoty hash hesla je součástí procesu synchronizace Azure AD Connect a spustí každé dvě minuty.
+* **Úsilí**. Synchronizace hodnot hash hesel je nejméně náročný týkající se nasazení, údržby a infrastruktury.  Tato úroveň úsilí obvykle platí pro organizace, které potřebují pouze jejich uživatelům umožní přihlásit k Office 365, aplikacím SaaS a dalších založené na AD prostředků Azure. Pokud je zapnutá, synchronizaci hodnot hash hesel je součástí procesu synchronizace Azure AD Connect a spouští každé dvě minuty.
 
-* **Činnost koncového uživatele**. K vylepšení možností přihlašování uživatelů, nasaďte bezproblémové přihlášení SSO se synchronizaci hodnoty hash hesla. Bezproblémové SSO eliminuje nepotřebné výzvy, když jsou uživatelé přihlášení.
+* **Činnost koncového uživatele**. Ke zlepšení prostředí přihlášení uživatelů, nasaďte bezproblémového jednotného přihlašování se synchronizace hodnot hash hesel. Bezproblémové jednotné přihlašování eliminují zbytečné výzvy při přihlášení uživatele.
 
-* **Pokročilé scénáře**. Pokud organizace, je možné použít přehledy z identit s Azure AD Identity Protection sestavy. Příkladem je jako sestavu uniklé přihlašovací údaje. Windows Hello pro firmy je jinou možnost, která má [specifické požadavky při použití synchronizaci hodnoty hash hesla](https://docs.microsoft.com/windows/access-protection/hello-for-business/hello-identity-verification). 
+* **Pokročilé scénáře**. Pokud se rozhodnete organizace, je možné přehledy na základě identit pomocí Azure AD Identity Protection sestavy. Příkladem je jako sestavu uniklými přihlašovacími údaji. Windows Hello pro firmy je další možnost, která má [specifické požadavky při použití synchronizace hodnot hash hesel](https://docs.microsoft.com/windows/access-protection/hello-for-business/hello-identity-verification). 
 
-    Organizace, které vyžadují vícefaktorové ověřování s synchronizaci hodnoty hash hesla musí použití vícefaktorového ověřování Azure AD. Tyto organizace nemůže používat třetích stran nebo místní metody vícefaktorového ověřování.
+    Organizace, které vyžadují vícefaktorové ověřování se synchronizace hodnot hash hesel, musíte použít vícefaktorové ověřování Azure AD. Tyto organizace nelze použít metody vícefaktorového ověřování třetí strany nebo místně.
 
-* **Kontinuita podnikových procesů**. Pomocí cloudového ověřování synchronizaci hodnoty hash hesla je vysoce dostupný jako cloudová služba, která je škálovatelná pro všechny datových centrech společnosti Microsoft. Pokud chcete mít jistotu, že synchronizaci hodnoty hash hesla nepřekračuje mimo provoz delší dobu, nasaďte druhý server Azure AD Connect v pracovním režimu v konfiguraci úsporného režimu.
+* **Kontinuita podnikových procesů**. Synchronizace hodnot hash hesel pomocí cloudového ověřování je Cloudová služba, která se škáluje do všech datových center Microsoftu s vysokou dostupností. Ujistěte se, že synchronizace hodnot hash hesel nedostane mimo provoz delší dobu, nasaďte na druhý server Azure AD Connect v pracovním režimu v pohotovostním režimu konfigurace.
 
-* **Aspekty**. Synchronizaci hodnoty hash hesla v současné době nepodporuje okamžitě vynutit změny ve stavu místní účet. V takovém případě má uživatel přístup k cloudových aplikací, dokud nedojde k synchronizaci stav účtu uživatele Azure AD. Organizace chtít, aby k překonání tohoto omezení spuštěním nové synchronizační cyklus po správci hromadné aktualizace stavů účet místního uživatele. Příklad zakazuje účty.
+* **Důležité informace o**. Synchronizace hodnot hash hesel v současné době není okamžitě vynucovat změny v místní účet stavy. V takovém případě má uživatel přístup ke cloudovým aplikacím, dokud se stav účtu uživatele se synchronizují do služby Azure AD. Organizace chtít, aby k překonání tohoto omezení spuštěním nový synchronizační cyklus po správci hromadné aktualizace stavů účtu místní uživatel. Příkladem je zakázání účtů.
 
 > [!NOTE]
-> Platnost hesla a účtu zamčený stavy nejsou momentálně synchronizují do Azure AD s Azure AD Connect. 
+> Heslo vyprší a stavy uzamčený účet nejsou aktuálně synchronizované do Azure AD se službou Azure AD Connect. 
 
-Odkazovat na [implementace synchronizaci hodnoty hash hesla](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-implement-password-synchronization) postup nasazení.
+Odkazovat na [implementace synchronizace hodnot hash hesel](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-implement-password-synchronization) pro jednotlivé kroky nasazení.
 
 ### <a name="cloud-authentication-pass-through-authentication"></a>Cloudové ověřování: předávací ověřování  
 
-* **Úsilí**. Pro předávací ověřování, budete potřebovat jeden nebo více (doporučujeme tři) lightweight agentů nainstalovaných na existující servery. Tyto agenty musí mít přístup k vaší místní Active Directory Domain Services, včetně místní AD řadiče domény. Potřebují odchozí přístup k Internetu a přístup k vašim řadičům domény. Z tohoto důvodu není možné nasadit agenty v hraniční síti. 
+* **Úsilí**. Předávací ověřování, budete potřebovat jeden nebo více (doporučujeme tři) lehký agenti nainstalovaní na existujících serverech. Tito agenti musí mít přístup k vaší místní Active Directory Domain Services, včetně místních řadiče domény AD. Technici potřebují odchozí přístup k Internetu a přístup k vašim řadičům domény. Z tohoto důvodu není možné nasadit agenty v hraniční síti. 
 
-    Předávací ověřování vyžaduje neomezeným síťový přístup k řadičům domény. Veškerý přenos v síti je šifrovaný a omezené na požadavky na ověření. Další informace o tomto procesu naleznete v tématu [deep Dive informace o zabezpečení](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-security-deep-dive) na předávací ověřování.
+    Předávací ověřování vyžaduje přístup k síti bez omezení k řadičům domény. Veškerý přenos v síti je zašifrovaný a omezené na požadavky na ověření. Další informace o tomto procesu najdete v tématu [podrobné informace o zabezpečení](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-security-deep-dive) na předávací ověřování.
 
-* **Činnost koncového uživatele**. K vylepšení možností přihlašování uživatelů, nasaďte bezproblémové jednotného přihlašování pomocí předávacího ověřování. Bezproblémové SSO eliminuje nepotřebné výzvy, po přihlášení uživatelé.
+* **Činnost koncového uživatele**. Ke zlepšení prostředí přihlášení uživatelů, nasaďte bezproblémového jednotného přihlašování s předávací ověřování. Bezproblémové jednotné přihlašování eliminují zbytečné výzvy po přihlášení uživatele.
 
-* **Pokročilé scénáře**. Předávací ověřování vynucuje zásady místního účtu při přihlášení. Například byl odepřen přístup, pokud je stav zakázán, účet místního uživatele uzamčen, nebo [platnost hesla](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-faq#what-happens-if-my-users-password-has-expired-and-they-try-to-sign-in-by-using-pass-through-authentication) nebo spadá mimo dobu, kdy je povoleno přihlášení uživatele. 
+* **Pokročilé scénáře**. Předávací ověřování vynucuje zásady místního účtu při přihlášení. Například je odepřen přístup při uzamčení účtu místní uživatel stav je zakázán, nebo [vypršení platnosti hesla](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-faq#what-happens-if-my-users-password-has-expired-and-they-try-to-sign-in-by-using-pass-through-authentication) nebo spadá mimo dobu, kdy uživatel může přihlásit. 
 
-    Organizace, které vyžadují vícefaktorové ověřování s předávací ověřování, musíte použít Azure Multi-Factor Authentication (MFA). Tyto organizace nelze použít metodu vícefaktorového ověřování třetích stran nebo místní. Pokročilé funkce vyžadují, aby synchronizaci hodnoty hash hesla nasazen, zda zvolíte předávací ověřování. Příkladem je sestava uniklé přihlašovací údaje Identity ochrany.
+    Organizace, které vyžadují vícefaktorové ověřování pomocí předávacího ověřování, musíte použít Azure Multi-Factor Authentication (MFA). Tyto organizace nemůže použít metodu vícefaktorové ověřování třetí strany nebo místně. Pokročilé funkce vyžadují, synchronizaci hodnot hash hesel je nasazený, jestli zvolíte předávací ověřování. Příkladem je sestava uniklými přihlašovacími údaji služby Identity Protection.
 
-* **Kontinuita podnikových procesů**. Doporučujeme, abyste nasadili dva agenti velmi předávací ověřování. Tyto funkce jsou kromě prvního agenta na server Azure AD Connect. Tato další nasazení zajistí vysokou dostupnost požadavků na ověření. Až budete mít tři agentů nasazených, jednoho agenta můžete přesto úspěšná, když jiné agenta probíhá údržba. 
+* **Kontinuita podnikových procesů**. Doporučujeme vám, že nasadíte dva agenti velmi předávací ověřování. Tyto funkce jsou kromě první agenta na server Azure AD Connect. Tato další nasazení zajišťuje vysokou dostupnost požadavků na ověření. Až budete mít tři agenty nasazení, jeden agent může stále selhat při jiného agenta je mimo provoz kvůli údržbě. 
 
-    Není k dispozici další výhody nasazení synchronizaci hodnoty hash hesla kromě předávací ověřování. Jedná jako metodu ověřování zálohování při metodu primární ověřování již není k dispozici.
+    Existuje Další výhodou až po nasazení synchronizace hodnot hash hesel kromě předávací ověřování. Funguje jako záložní ověřování, když primární ověřování už není k dispozici.
 
-* **Aspekty**. Můžete použít jako metodu ověřování zálohování pro předávací ověřování synchronizaci hodnoty hash hesla a agenty nelze ověřit pověření uživatele. Potom převzetí služeb při selhání pro synchronizaci hodnoty hash hesla nedojde automaticky. Přepínač metoda přihlašování ručně pomocí Azure AD Connect. 
+* **Důležité informace o**. Synchronizace hodnot hash hesel může použít jako záložní ověřování pro předávací ověřování a agenty nelze ověřit přihlašovací údaje uživatele. Pak převzetí služeb při selhání pro synchronizaci hodnot hash hesel nedojde automaticky. Přepněte metodu přihlašování ručně pomocí služby Azure AD Connect. 
 
-    Předávací ověřování podporuje pouze cloudové aplikace, které používají moderní ověřování a konkrétními protokoly Exchange Online. Některé protokoly jsou ActiveSync POP3 a IMAP4. Například si Microsoft Office 2013 a novější podporu moderní ověřování, ale starší verze. Další informace o podpoře aplikace Office, najdete v části [moderní ověřování Office 365 aktualizovat](https://blogs.office.com/en-us/2015/11/19/updated-office-365-modern-authentication-public-preview/). Další důležité informace o předávací ověřování, včetně alternativní ID podporovat, najdete v části [nejčastější dotazy](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-faq).
+    Předávací ověřování podporuje pouze cloudové aplikace, které používají moderní ověřování a protokolů Exchange Online. Některé protokoly jsou ActiveSync a IMAP4 POP3. Například si Microsoft Office 2013 a novější podporu moderní ověřování, ale starší verze. Další informace o podporovaných aplikací Office najdete v tématu [moderní ověřování Office 365 aktualizovat](https://blogs.office.com/en-us/2015/11/19/updated-office-365-modern-authentication-public-preview/). Další důležité informace na předávací ověřování, včetně alternativní ID podporovat, najdete v části [– nejčastější dotazy](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-faq).
 
-Odkazovat na [implementace předávací ověřování](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication) postup nasazení.
+Odkazovat na [implementace předávací ověřování](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication) pro jednotlivé kroky nasazení.
 
 ### <a name="federated-authentication"></a>Federovaného ověřování
 
-* **Úsilí**. Federovaného ověřování systému spoléhá na externím systému důvěryhodný k ověřování uživatelů. Některé společnosti se chcete znovu použít jejich investovali federované systému s jejich hybridní řešení identit Azure AD. Údržby a správy federovaných systému spadá mimo ovládací prvek služby Azure AD. Je to na organizaci pomocí federovaného systému a ujistěte se, že ho je bezpečně nasadit a dokáže zpracovat zátěž ověřování. 
+* **Úsilí**. Federované ověřování systému spoléhá na externím systémem důvěryhodný k ověřování uživatelů. Některé společnosti se chcete znovu použít své stávající investice do federovaných systému s jejich hybridní řešení identit Azure AD. Údržby a správy federovaných systému spadá mimo ovládací prvek služby Azure AD. Je to na organizaci pomocí federovaných systému zajistit bezpečné nasazení a dokáže zpracovat zatížení ověřování. 
 
-* **Činnost koncového uživatele**. Činnost koncového uživatele federovaného ověřování závisí na implementaci funkcí, topologie a konfiguraci farmy federačních. Některé organizace potřebují tuto flexibilitu potřebují přizpůsobit a konfigurovat přístup do farmy federačních podle jejich potřeb zabezpečení. Například je možné nakonfigurovat interně připojené uživatele a zařízení k přihlášení uživatele automaticky, aniž by byli vyzváni k zadání pověření. Toto nastavení lze použít, protože se už přihlásili k jejich zařízení. V případě potřeby některé rozšířené funkce zabezpečení ztížit proces přihlášení uživatelů.
+* **Činnost koncového uživatele**. Uživatelské prostředí federovaného ověřování závisí na implementaci funkcí, topologie a konfiguraci farmy federačních. Některé organizace musí tuto flexibilitu při přizpůsobení a konfigurovat přístup do farmy federačních tak, aby odpovídaly své požadavky na zabezpečení. Například je možné nakonfigurovat interně připojených uživatelů a zařízení k přihlášení uživatelů automaticky, bez zobrazení výzvy k zadání přihlašovacích údajů. Tato konfigurace funguje, protože se už přihlásili k jejich zařízení. V případě potřeby některé rozšířené funkce zabezpečení ztížit proces přihlašování uživatelů.
 
-* **Pokročilé scénáře**. Při požadavku na ověřování, která nenabízí nativní podporu služby Azure AD mají zákazníci je obvykle potřeba řešení federovaného ověřování. Zobrazit podrobné informace vám pomohou [zvolit právo přihlášení](https://blogs.msdn.microsoft.com/samueld/2017/06/13/choosing-the-right-sign-in-option-to-connect-to-azure-ad-office-365/). Vezměte v úvahu následující běžné požadavky:
+* **Pokročilé scénáře**. Když zákazníci mají požadavku na ověřování, která nenabízí nativní podporu služby Azure AD, je obvykle potřeba řešení federovaného ověřování. Viz podrobné informace, které vám pomůžou [možnost přímo přihlášení](https://blogs.msdn.microsoft.com/samueld/2017/06/13/choosing-the-right-sign-in-option-to-connect-to-azure-ad-office-365/). Vezměte v úvahu následující běžné požadavky:
 
-    * Ověřování, která vyžaduje čipové karty ani certifikáty.
-    * Na místní servery MFA nebo vícefaktorové poskytovatelů třetích stran.
-    * Ověřování pomocí řešení třetí strany ověřování. Najdete v článku [seznam kompatibility federace Azure AD](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-federation-compatibility).
-    * Přihlášení, která vyžaduje sAMAccountName, například DOMÉNA\jméno_uživatele, místo hlavní název uživatele (UPN), například user@domain.com.
+    * Ověřování, které vyžaduje čipové karty ani certifikáty.
+    * Na místních serverech MFA nebo vícefaktorové zprostředkovatelé třetí strany.
+    * Ověřování pomocí řešení ověřování třetích stran. Zobrazit [seznam kompatibilit pro federaci Azure AD](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-federation-compatibility).
+    * Přihlášení, která vyžaduje sAMAccountName, například DOMÉNA\uživatelské_jméno, místo hlavní název uživatele (UPN), například user@domain.com.
 
-* **Kontinuita podnikových procesů**. Federované systémy obvykle vyžadují Vyrovnávání zatížení sítě řadu serverů, označuje jako farmy. Tato farma je nakonfigurován interní síti a topologie hraniční sítě k zajištění vysoké dostupnosti pro žádosti o ověření.
+* **Kontinuita podnikových procesů**. Federované systémy obvykle vyžadují pole s vyrovnáváním zatížení serverů, známé jako farmy. Tato farma je nakonfigurovaný v interní síti a topologie hraniční sítě k zajištění vysoké dostupnosti pro žádosti o ověření.
 
-    Když metoda primární ověřování již není k dispozici, nasaďte synchronizaci hodnoty hash hesla společně s federovaného ověřování jako metodu ověřování zálohování. Příkladem je při místní servery nejsou k dispozici. Některé organizace velký podnik vyžadují federačních řešení pro podporu více vstupních bodů Internet nakonfigurované geografickou DNS pro požadavky na ověření nízkou latencí.
+    Synchronizace hodnot hash hesel spolu s federovaného ověřování jako záložní ověřování nasazení, když primární ověřování už není k dispozici. Příkladem je, když nejsou k dispozici na místních serverech. Některé velké organizace vyžadují federačních řešení, které podporuje více bodů příchozího přenosu dat sítě Internet nakonfigurovanou geo-DNS pro žádosti o ověření s nízkou latencí.
 
-* **Aspekty**. Federované systémy obvykle vyžadují větších investice do místní infrastruktury. Většina organizací tuto možnost zvolte, pokud už mají místní federační investice. A pokud je silné obchodním požadavkem pro použití poskytovatele single-identity. Federace se nachází ve srovnání s řešení ověřování cloudu složitější pro provoz a řešení potíží.
+* **Důležité informace o**. Federované systémy obvykle vyžadují více významnou investici do místní infrastruktury. Většina organizací tuto možnost zvolte, pokud již má místní federační investice. A pokud se vyžaduje silnou obchodní používat poskytovatele jedinou identitou. Federace se nachází složitější k provozu a řešení potíží s ve srovnání s cloudovým řešením ověřování.
 
-Pro nepoužívající domény, který nelze ověřit ve službě Azure AD budete potřebovat další konfigurace implementovat ID přihlášení uživatele. Tento požadavek se označuje jako alternativního přihlašovacího ID podpory. V tématu [konfigurace alternativního přihlašovacího ID](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) pro omezení a požadavky. Pokud chcete použít poskytovatele služby Multi-Factor authentication třetích stran s federací, ověřte, že poskytovatel podporuje WS-Trust zařízením povolit, aby připojení k Azure AD.
+Pro nepoužívající domény, který nemůže být ověřen ve službě Azure AD budete potřebovat další konfiguraci k implementaci ID přihlášení uživatele. Tento požadavek se označuje jako alternativní přihlašovací ID podpory. Zobrazit [konfigurace alternativního přihlašovacího ID](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) omezení a požadavky. Pokud se rozhodnete používat poskytovatele služby Multi-Factor authentication třetích stran s federací, ujistěte se, že zprostředkovatel podporuje WS-Trust umožňující připojení zařízení k Azure AD.
 
-Odkazovat na [nasazení federační servery](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/deploying-federation-servers) postup nasazení.
+Odkazovat na [nasazení federační servery](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/deploying-federation-servers) pro jednotlivé kroky nasazení.
 
 > [!NOTE] 
-> Při nasazení služby Azure AD hybridní řešení identit, je nutné implementovat jednu z podporovaných topologií služby Azure AD Connect. Další informace o podporované a nepodporované konfigurace v [topologie pro Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-topologies).
+> Když nasadíte řešení hybridní identity Azure AD, musí implementovat jedno z podporované topologie služby Azure AD Connect. Další informace o podporované a nepodporované konfigurace na [topologie pro Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-topologies).
 
-## <a name="architecture-diagrams"></a>Architektura diagramy
+## <a name="architecture-diagrams"></a>Diagramy architektury
 
-Následující diagramy popisují základní architektura součásti požadované pro každou metodu ověřování, které můžete použít s Azure AD hybridní řešení identit. Poskytují přehled porovnání rozdíly mezi řešení.
+Následující diagramy popisují základní architektura služby komponent potřebných pro každou metodu ověřování, která vám pomůže s vaší hybridní řešení identit Azure AD. Poskytuje přehled pro porovnání rozdílů mezi řešení.
 
-* Jednoduchost řešení synchronizace hodnoty hash hesla:
+* Jednoduchost řešení synchronizace hodnot hash hesel:
 
-    ![Hybridní identit Azure AD s synchronizaci hodnoty hash hesla](media/azure-ad/azure-ad-authn-image2.png)
+    ![Hybridní identita Azure AD se synchronizace hodnot hash hesel](media/azure-ad/azure-ad-authn-image2.png)
 
 * Požadavky agenta předávací ověřování:
 
-    ![Hybridní identit Azure AD pomocí předávacího ověřování](media/azure-ad/azure-ad-authn-image3.png)
+    ![Hybridní identita Azure AD pomocí předávacího ověřování](media/azure-ad/azure-ad-authn-image3.png)
 
-* Komponent potřebných pro federaci ve vaší hraniční a interní síti vaší organizace:
+* Komponenty potřebné pro federaci ve vaší hraniční a interní síti vaší organizace:
 
-    ![Hybridní identit Azure AD s federovaného ověřování](media/azure-ad/azure-ad-authn-image4.png)
+    ![Hybridní identita Azure AD s použitím federovaného ověřování](media/azure-ad/azure-ad-authn-image4.png)
 
 ## <a name="comparing-methods"></a>Porovnání metod
 
-|Aspekt|Synchronizaci hodnoty hash hesla + bezproblémové jednotného přihlašování|Předávací ověřování + bezproblémové jednotného přihlašování|Federace se službou AD FS|
+|Posouzení|Synchronizace hodnot hash hesel a bezproblémového jednotného přihlašování|Předávací ověřování a bezproblémové jednotné přihlašování|Federace se službou AD FS|
 |:-----|:-----|:-----|:-----|
-|Kde ověřování dojít?|V cloudu|V cloudu po ověření systému exchange zabezpečeného hesla s agentem místní ověřování|Lokálně|
-|Jaké jsou požadavky na místní server rámec zřizování systému: Azure AD Connect?|Žádný|Jeden server pro každou další ověření agenta|Dva nebo více serverů služby AD FS<br><br>Dva nebo více serverů v síti hraniční/DMZ WAP|
-|Jaké jsou požadavky na místní Internet a sítě rámec zřizování systému?|Žádný|[Odchozí přístup k Internetu](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-quick-start) ze serverů systémem ověřování agentů|[Příchozí přístup k Internetu](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/overview/ad-fs-requirements) WAP serverům v hraniční síti<br><br>Příchozí síťový přístup ke serverů služby AD FS z WAP serverů v hraniční síti<br><br>Vyrovnávání zatížení sítě|
-|Je k dispozici požadavku na certifikát SSL?|Ne|Ne|Ano|
-|Je k dispozici řešení pro sledování stavu?|Nepožaduje se|Stav agenta poskytované [centra pro správu Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-pass-through-authentication)|[Azure AD Connect Health](https://docs.microsoft.com/en-us/azure/active-directory/connect-health/active-directory-aadconnect-health-adfs)|
-|Uživatelé získají jednotného přihlašování k prostředkům cloudu ze zařízení připojeného k doméně v síti společnosti?|Ano s [bezproblémové jednotného přihlašování](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnect-sso)|Ano s [bezproblémové jednotného přihlašování](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnect-sso)|Ano|
-|Jaké typy přihlášení jsou podporovány?|UserPrincipalName + heslo<br><br>Integrované ověřování systému Windows pomocí [bezproblémové jednotného přihlašování](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnect-sso)<br><br>[Alternativním přihlašovacím ID](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnect-get-started-custom)|UserPrincipalName + heslo<br><br>Integrované ověřování systému Windows pomocí [bezproblémové jednotného přihlašování](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnect-sso)<br><br>[Alternativním přihlašovacím ID](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-faq)|UserPrincipalName + heslo<br><br>sAMAccountName + heslo<br><br>Integrované ověřování systému Windows<br><br>[Ověřování certifikátu a čipové karty](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/operations/configure-user-certificate-authentication)<br><br>[Alternativním přihlašovacím ID](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)|
-|Je Windows Hello pro firmy, které jsou podporovány?|[Model klíče důvěryhodnosti](https://docs.microsoft.com/en-us/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br><br>[Model důvěryhodnosti certifikátu s Intune](https://blogs.technet.microsoft.com/microscott/setting-up-windows-hello-for-business-with-intune/)|[Model klíče důvěryhodnosti](https://docs.microsoft.com/en-us/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br><br>[Model důvěryhodnosti certifikátu s Intune](https://blogs.technet.microsoft.com/microscott/setting-up-windows-hello-for-business-with-intune/)|[Model klíče důvěryhodnosti](https://docs.microsoft.com/en-us/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br><br>[Model důvěryhodnosti certifikátu](https://docs.microsoft.com/en-us/windows/security/identity-protection/hello-for-business/hello-key-trust-adfs)|
-|Jaké jsou možnosti vícefaktorového ověřování?|[Azure MFA](https://docs.microsoft.com/en-us/azure/multi-factor-authentication/)|[Azure MFA](https://docs.microsoft.com/en-us/azure/multi-factor-authentication/)|[Azure MFA](https://docs.microsoft.com/en-us/azure/multi-factor-authentication/)<br><br>[Azure MFA serveru](https://docs.microsoft.com/en-us/azure/active-directory/authentication/howto-mfaserver-deploy)<br><br>[MFA třetích stran](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/operations/configure-additional-authentication-methods-for-ad-fs)|
-|Jaké stavy účet uživatele jsou podporovány?|Zakázané účty<br>(až 30 minut zpoždění)|Zakázané účty<br><br>Účet uzamčen<br><br>Platnost hesla vypršela.<br><br>Přihlašovací hodiny|Zakázané účty<br><br>Účet uzamčen<br><br>Platnost hesla vypršela.<br><br>Přihlašovací hodiny|
-|Jaké jsou možnosti podmíněného přístupu?|[Podmíněný přístup pro Azure AD](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-azure-portal)|[Podmíněný přístup pro Azure AD](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-azure-portal)|[Podmíněný přístup pro Azure AD](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-azure-portal)<br><br>[Pravidla deklarace identity služby AD FS](https://adfshelp.microsoft.com/AadTrustClaims/ClaimsGenerator)|
-|Blokuje starších protokolů, které jsou podporovány?|[Ano](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-conditions#legacy-authentication)|[Ano](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-conditions#legacy-authentication)|[Ano](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/operations/access-control-policies-w2k12)|
-|Můžete upravit loga, obrázku a popis na stránkách přihlášení?|[Ano, s Azure AD Premium](https://docs.microsoft.com/en-us/azure/active-directory/customize-branding)|[Ano, s Azure AD Premium](https://docs.microsoft.com/en-us/azure/active-directory/customize-branding)|[Ano](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnect-federation-management#customlogo)|
-|Jaké pokročilé scénáře jsou podporovány?|[Inteligentní heslo uzamčení](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-secure-passwords)<br><br>[Úniku přihlašovacích údajů sestavy](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-reporting-risk-events)|[Inteligentní heslo uzamčení](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-smart-lockout)|Nasazení ve více lokalitách s nízkou latencí ověřování systému<br><br>[Uzamčení extranetu služby AD FS](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-lockout-protection)<br><br>[Integrace se systémy jiných výrobců identit](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnect-federation-compatibility)|
+|Pokud ověření proběhne?|V cloudu|V cloudu po serveru exchange zabezpečené heslo ověření pomocí místního ověřování agenta|Lokálně|
+|Jaké jsou požadavky na místní server nad rámec systému zřizování: Azure AD Connect?|Žádný|Jeden server pro každý další ověřovací agent|Dva nebo víc serverů služby AD FS<br><br>Dva nebo víc serverů WAP v hraniční/DMZ sítě|
+|Jaké jsou požadavky na místní Internet a sítí nad rámec zřizování systému?|Žádný|[Odchozí internetový přístup](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-quick-start) ze serverů spuštěných agentů ověřování|[Příchozí přístup k Internetu](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-requirements) pro servery WAP v hraniční síti<br><br>Příchozí síťový přístup k serverům AD FS z servery WAP v hraniční síti<br><br>Vyrovnávání zatížení sítě|
+|Existuje požadavek na certifikát SSL?|Ne|Ne|Ano|
+|Je k dispozici řešení pro monitorování stavu?|Nepožaduje se|Stav agenta poskytované [centra pro správu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-pass-through-authentication)|[Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/connect-health/active-directory-aadconnect-health-adfs)|
+|Uživatelé se jednotné přihlašování ke cloudovým prostředkům ze zařízení připojeného k doméně v podnikové síti?|Ano s [bezproblémového jednotného přihlašování](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso)|Ano s [bezproblémového jednotného přihlašování](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso)|Ano|
+|Jaké typy přihlášení jsou podporovány?|UserPrincipalName + heslo<br><br>Integrované ověřování Windows s použitím [bezproblémového jednotného přihlašování](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso)<br><br>[Alternativním přihlašovacím ID](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-get-started-custom)|UserPrincipalName + heslo<br><br>Integrované ověřování Windows s použitím [bezproblémového jednotného přihlašování](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso)<br><br>[Alternativním přihlašovacím ID](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-faq)|UserPrincipalName + heslo<br><br>sAMAccountName + heslo<br><br>Integrované ověřování Windows<br><br>[Ověřování certifikátu a čipové karty](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-user-certificate-authentication)<br><br>[Alternativním přihlašovacím ID](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)|
+|Je Windows Hello pro firmy, které jsou podporovány?|[Model klíče důvěryhodnosti](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br><br>[Model důvěryhodnosti certifikátu s Intune](https://blogs.technet.microsoft.com/microscott/setting-up-windows-hello-for-business-with-intune/)|[Model klíče důvěryhodnosti](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br><br>[Model důvěryhodnosti certifikátu s Intune](https://blogs.technet.microsoft.com/microscott/setting-up-windows-hello-for-business-with-intune/)|[Model klíče důvěryhodnosti](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br><br>[Model důvěryhodnosti certifikátu](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-key-trust-adfs)|
+|Jaké jsou možnosti vícefaktorové ověřování?|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Azure MFA serveru](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-deploy)<br><br>[MFA třetích stran](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-additional-authentication-methods-for-ad-fs)|
+|Jaké stavy účtu uživatele jsou podporovány?|Zakázané účty<br>(až do 30 minut, než)|Zakázané účty<br><br>Účet uzamčen<br><br>Platnost hesla vypršela.<br><br>Přihlašovací hodiny|Zakázané účty<br><br>Účet uzamčen<br><br>Platnost hesla vypršela.<br><br>Přihlašovací hodiny|
+|Jaké jsou možnosti podmíněného přístupu?|[Podmíněný přístup Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)|[Podmíněný přístup Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)|[Podmíněný přístup Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)<br><br>[Pravidla deklarací identity služby AD FS](https://adfshelp.microsoft.com/AadTrustClaims/ClaimsGenerator)|
+|Je blokování starších verzí protokolů, které jsou podporovány?|[Ano](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-conditions#legacy-authentication)|[Ano](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-conditions#legacy-authentication)|[Ano](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/access-control-policies-w2k12)|
+|Můžete přizpůsobit logo, obrázku a popisu na přihlašovací stránky?|[Ano, s Azure AD Premium](https://docs.microsoft.com/azure/active-directory/customize-branding)|[Ano, s Azure AD Premium](https://docs.microsoft.com/azure/active-directory/customize-branding)|[Ano](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-federation-management#customlogo)|
+|Jaké pokročilé scénáře jsou podporovány?|[Inteligentní uzamčení hesla](https://docs.microsoft.com/azure/active-directory/active-directory-secure-passwords)<br><br>[Úniku přihlašovacích údajů sestavy](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-risk-events)|[Inteligentní uzamčení hesla](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-smart-lockout)|Nasazení ve více lokalitách s nízkou latencí ověřovacím systémem<br><br>[Uzamčení extranetu služby AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-lockout-protection)<br><br>[Integrace se systémy identit třetích stran](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-federation-compatibility)|
 
 ## <a name="recommendations"></a>Doporučení
-Systém identit zajišťuje přístup uživatelů k cloudových aplikací a -obchodní aplikace můžete migrovat a zpřístupnit v cloudu. Aby oprávněným uživatelům produktivitu a nesprávnými účastníky z vaší organizace citlivá data ověřování řídí přístup k aplikacím.
+Vašeho systému identit zajišťuje vaši uživatelé přístup ke cloudovým aplikacím a -obchodní aplikace, migraci a zpřístupnit v cloudu. Pokud chcete zachovat produktivitu autorizovaných uživatelů a nesprávnými účastníky z vaší organizace citlivých dat, ověřování řídí přístup k aplikacím.
 
-Použít nebo povolit synchronizaci hodnoty hash hesla pro kteroukoli metodu ověřování, můžete zvolit z následujících důvodů:
+Použití nebo povolit synchronizaci hodnot hash hesel podle toho, která metoda ověřování vyberte z následujících důvodů:
 
-1. **Vysoká dostupnost a zotavení po havárii**. Předávací ověřování a federation závisí na místní infrastrukturu. Pro předávací ověřování nároky na místní zahrnuje hardware serveru a sítě předávací ověřování vyžadovat agenty. Pro federaci je i větší nároky na místní. To vyžaduje servery v hraniční síti k žádosti o ověření proxy serveru a interní federačních serverech. 
+1. **Vysoká dostupnost a zotavení po havárii**. Předávací ověřování a federace závisí na místní infrastrukturu. Předávací ověřování nároky na místní zahrnuje hardware serveru a sítě předávací ověřování vyžadovat agenty. Pro federaci je ještě větší nároky na místní. Vyžaduje servery v hraniční síti do žádosti o ověření proxy serveru a interní federačními servery. 
 
-    Chcete-li Vyhýbejte se jediným bodů selhání, nasaďte redundantní servery. Potom žádosti o ověření budou vždy obsloužení Pokud všechny součásti, které se nezdaří. Předávací ověřování a federaci také závisí na řadičích domény reagovat na požadavky na ověřování, které může selhat také. Mnoho z těchto součástí potřebovat údržby zůstane v pořádku. Když údržby není naplánovat a implementovat správně výpadků budou s větší pravděpodobností. Brání výpadkům pomocí synchronizaci hodnoty hash hesla, protože služba Microsoft Azure AD cloud ověřování škáluje globálně a je vždy k dispozici.
+    Vyhýbejte se jediným bodů selhání, nasaďte redundantní servery. Potom žádosti o ověření budou vždy zpracovány pokud jakákoliv komponenta nepodaří. Předávací ověřování a federace také závisí na řadičích domény reagovat na žádosti o ověření, které může také selhat. Mnohé z těchto komponent musí údržby zůstat v pořádku. Výpadky jsou pravděpodobně při údržby se plánují a implementují správně. Vyhněte se výpadkům pomocí synchronizace hodnot hash hesel, protože globálně škáluje podle ověřování cloudové služby Microsoft Azure AD a jsou vždycky dostupné.
 
-2. **Místní výpadku základními**.  Důsledky místní výpadku způsobeného internetový útok nebo po havárii může být výrazně, od reputational brand škody až na ochrnuté pacienty organizaci nelze k řešení útoku. Mnoho organizací byly nedávno obětí malwarových útoků, včetně cílové ransomware, která způsobila, že jejich místní servery přejdete. Když Microsoft pomáhá zákazníkům řešit tyto typy útoků, vidí dvě kategorie organizací:
+2. **Místní výpadek přežití**.  Důsledky výpadku v místním kvůli internetového útoku nebo po havárii může být značné, od reputational značky poškození ochrnuté pacienty organizaci schopen čelit útoku. Mnoho organizací byly nedávno obětí malwarových útoků, včetně cílové ransomwaru, způsobující jejich místní servery, přejděte. Microsoft pomůže zákazníkům řešit tyto typy útoků, zobrazí dva druhy organizací:
 
-   * Organizace, které dřív zapnutý synchronizaci hodnoty hash hesla změnit jejich metodu ověřování pro použití synchronizaci hodnoty hash hesla. Byly během několika hodin do režimu online. Pomocí přístupu k e-mailu prostřednictvím Office 365, šlo vyřešte problémy a přístup k jiné cloudové úlohy.
+   * Organizace, které dříve zapnutá synchronizaci hodnot hash hesel změnit metodu ověřování používat synchronizaci hodnot hash hesel. Kdyby byly zpět do online režimu v řádu hodin. Pomocí přístupu k e-mailu prostřednictvím Office 365 to šlo vyřešit problémy a přístup k jiné úlohy založené na cloudu.
 
-   * Organizace, které nebylo dříve povolit synchronizaci hodnoty hash hesla měly uchýlit k nedůvěryhodné externí příjemce e-mailových systémů komunikace a řešení problémů. V takových případech trvalo je týdnů, která chcete být znovu spuštěn a.
+   * Organizace, které dříve nebyly povolit synchronizaci hodnot hash hesel se museli uchýlíte k nedůvěryhodné externího příjemce e-mailových systémů komunikace a řešení problémů. V takových případech, jakou trvalo je týdny nebo další funkce začít znovu.
 
-3. **Ochrana identity**. Jedním z nejlepší způsobů, jak chránit uživatele v cloudu je Azure AD Identity Protection. Microsoft neustále kontroluje Internetu pro uživatele a heslo uvádí, že nesprávnými účastníky prodeje a zpřístupnit v tmavý webu. Azure AD můžete tyto informace slouží k ověření, pokud žádné z uživatelských jmen a hesel ve vaší organizaci, znamená to ohrožení. Proto je důležité pro povolení synchronizace hesel hash bez ohledu na to, jakou metodu ověřování budete používat, zda je federovaný, nebo předávací ověřování. Uniklé přihlašovací údaje jsou uvedené jako sestavu. Tyto informace slouží k blokování nebo přimějte uživatele ke změně hesla při pokusu přihlásit pomocí uniklé hesla.
+3. **Ochrana identity**. Jednou z nejlepších způsobů, jak chránit uživatele v cloudu je Azure AD Identity Protection. Microsoft neustále kontroluje Internet pro uživatele a heslo uvádí, že prodej a zpřístupnit v dark web. Tyto informace můžete použít Azure AD k ověření, pokud některý z uživatelských jmen a hesel ve vaší organizaci dojde k ohrožení. Proto je důležité pro povolení synchronizace hodnot hash hesel bez ohledu na to, jakou metodu ověřování, které používáte, zda, která je Federovaná nebo předávací ověřování. Uniklé přihlašovací údaje se zobrazují jako sestavy. Tyto informace slouží k blokování nebo přimějte uživatele ke změně hesla při pokusu o přihlášení pomocí uniklé hesla.
 
-Nakonec souladu se [Gartner](https://info.microsoft.com/landingIAMGartnerreportregistration.html), společnost Microsoft nemá sadu vybavená úplné funkce správy identit a přístupu. Obslužné rutiny Microsoft [žádosti o ověření 450 miliardy](https://www.microsoft.com/en-us/security/intelligence-report) každý měsíc pro poskytnutí přístupu k tisícům aplikací SaaS, jako je Office 365 z libovolného zařízení. 
+A konečně, souladu s [Gartner](https://info.microsoft.com/landingIAMGartnerreportregistration.html), Microsoft má nejvíce plně funkční sadu funkcí správy identit a přístupu. Společnost Microsoft zpracovává [450 miliard žádostí o ověření](https://www.microsoft.com/en-us/security/intelligence-report) každý měsíc pro zajištění přístupu k nepřeberným množstvím aplikací SaaS, jako je Office 365 z libovolného zařízení. 
 
 ## <a name="conclusion"></a>Závěr
 
-Tento článek popisuje různé možnosti ověřování, které organizace můžete nakonfigurovat a nasadit pro podporu přístupu do cloudových aplikací. Ke splnění různé firmy, zabezpečení a technické požadavky, organizace zvolit synchronizaci hodnoty hash hesla, předávací ověřování a federace. 
+Tento článek popisuje různé možnosti ověřování, které organizace můžete nakonfigurovat a nasadit pro podporu přístupu ke cloudovým aplikacím. Plnit různé obchodní, zabezpečení a technické požadavky organizace si vybrat synchronizaci hodnot hash hesel, předávacího ověřování a federace. 
 
-Zvažte každou metodu ověřování. Podporuje úsilí nezbytné k nasazení řešení a možnosti pro uživatele procesu přihlašování, cílit na vaše obchodní požadavky? Vyhodnoťte, jestli vaše organizace potřebuje pokročilé scénáře a obchodní kontinuitu podnikových procesů jednotlivých metod ověřování. Nakonec vyhodnoťte důležité informace o jednotlivých metod ověřování. Některý z nich zabránit vám v implementaci zvoleného?
+Vezměte v úvahu každá metoda ověřování. Je úsilí nezbytné k nasazení řešení a spuštění procesu přihlašování, adres pro váš podnik jiné požadavky? Vyhodnoťte, jestli vaše organizace potřebuje pokročilé scénáře a funkce obchodní kontinuity podnikových procesů jednotlivých metod ověřování. Nakonec vyhodnoťte, jaké jsou požadavky každé metody ověřování. Některý z nich by vám bránily v implementaci podle vašeho výběru?
 
 ## <a name="next-steps"></a>Další postup
 
-V dnešním světě hrozby jsou dispozici 24 hodin denně a pocházejí z everywhere. Implementovat správné metody ověřování, a bude zmírnění rizik zabezpečení a ochraně vaší identity.
+V dnešním světě hrozeb k dispozici 24 hodin denně a pocházejí z jakéhokoliv místa. Implementovat metodu správné ověření, a bude zmírnění rizik zabezpečení a ochraně svých identit.
 
 [Začínáme](https://docs.microsoft.com/azure/active-directory/get-started-azure-ad) s Azure AD a nasaďte řešení správné ověřování pro vaši organizaci.
 
-Pokud uvažujete o migraci z federovaných cloudové ověřování, další informace o [změna metoda přihlašování](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-user-signin#changing-the-user-sign-in-method). Při plánování a implementaci migrace, použijte [tyto plány nasazení projektu](http://aka.ms/deploymentplans).
+Pokud uvažujete o migraci z federovanou se cloudovým ověřování, další informace o [Změna metody přihlašování](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-user-signin#changing-the-user-sign-in-method). Chcete-li pomoci při plánování a implementaci migrace, použijte [těchto nasazení plánů projektů](http://aka.ms/deploymentplans).

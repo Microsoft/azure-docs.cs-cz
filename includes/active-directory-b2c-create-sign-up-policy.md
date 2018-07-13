@@ -1,4 +1,4 @@
-Pokud chcete povolit jenom registraci ve vaší aplikaci, můžete použít **registrace** zásad. Tato zásada popisuje možnosti, které zákazníci projít během registrace a obsah tokeny, které aplikace obdrží na úspěšné zápisy.
+Pokud chcete povolit pouze registraci ve vaší aplikaci, můžete použít **registrace** zásad. Tato zásada popisuje prostředí, které zákazníkům procházet při registraci a obsah tokenů, které aplikace obdrží po úspěšné registraci.
 
 [!INCLUDE [active-directory-b2c-portal-navigate-b2c-service](active-directory-b2c-portal-navigate-b2c-service.md)]
 

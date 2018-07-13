@@ -1,1 +1,1 @@
-Pokud vyvíjíte místně, nastavení aplikace, přejděte do [local.settings.json soubor](../articles/azure-functions/functions-run-local.md#local-settings-file).
+Pokud vyvíjíte místně, nastavení aplikace přejděte do [souboru local.settings.json](../articles/azure-functions/functions-run-local.md#local-settings-file).

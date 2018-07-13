@@ -1,6 +1,6 @@
 ---
-title: Vytvoření virtuálního počítače s Windows pomocí šablony v Azure | Microsoft Docs
-description: Snadno vytvářet nový virtuální počítač s Windows pomocí šablony Resource Manageru a prostředí PowerShell.
+title: Vytvoření virtuálního počítače s Windows pomocí šablony v Azure | Dokumentace Microsoftu
+description: Můžete snadno vytvořit nový virtuální počítač s Windows pomocí šablony Resource Manageru a Powershellu.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -17,19 +17,19 @@ ms.date: 07/18/2017
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 1c911d7500b61218323dd736aa51f50980d702cc
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "31601834"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38720074"
 ---
 # <a name="create-a-windows-virtual-machine-from-a-resource-manager-template"></a>Vytvoření virtuálního počítače s Windows pomocí šablony Resource Manageru
 
-Tento článek ukazuje, jak nasadit šablonu Azure Resource Manager pomocí prostředí PowerShell. Šablona, kterou vytvoříte nasadí jednoho virtuálního počítače se systémem Windows Server v nové virtuální sítě s jedinou podsítí.
+V tomto článku se dozvíte, jak nasadit šablonu Azure Resource Manageru pomocí Powershellu. Šablona, kterou vytvoříte nasadí jeden virtuální počítač s Windows serverem v nové virtuální sítě s jedinou podsítí.
 
-Podrobný popis prostředek virtuálního počítače naleznete v tématu [virtuálních počítačů v šablonu Azure Resource Manager](template-description.md). Další informace o všechny prostředky v šabloně najdete v tématu [názorný Průvodce šablonou Azure Resource Manager](../../azure-resource-manager/resource-manager-template-walkthrough.md).
+Podrobný popis prostředku virtuálního počítače najdete v tématu [virtuální počítače v šabloně Azure Resource Manageru](template-description.md). Další informace o všech prostředcích v šabloně najdete v tématu [názorném průvodci k šablonám Azure Resource Manageru](../../azure-resource-manager/resource-manager-template-walkthrough.md).
 
-Proveďte kroky v tomto článku má trvat asi pět minut.
+Proveďte kroky v tomto článku má trvat přibližně během pěti minut.
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
@@ -45,7 +45,7 @@ Všechny prostředky musí být nasazený v [skupiny prostředků](../../azure-r
     Get-AzureRmLocation | sort DisplayName | Select DisplayName
     ```
 
-2. Vytvořte skupinu prostředků v místě, které vyberete. Tento příklad ukazuje vytvoření skupiny prostředků s názvem **myResourceGroup** v **západní USA** umístění:
+2. Vytvořte skupinu prostředků v umístění, které jste vybrali. Tento příklad ukazuje vytvoření skupiny prostředků s názvem **myResourceGroup** v **USA – západ** umístění:
 
     ```powershell   
     New-AzureRmResourceGroup -Name "myResourceGroup" -Location "West US"
@@ -53,9 +53,9 @@ Všechny prostředky musí být nasazený v [skupiny prostředků](../../azure-r
 
 ## <a name="create-the-files"></a>Vytvoření souborů
 
-V tomto kroku vytvoříte soubor šablony, která nasazuje prostředky a soubor parametrů, který poskytuje hodnoty parametrů šablony. Můžete také vytvořit soubor autorizace, který se používá k provádění operací Azure Resource Manager.
+V tomto kroku vytvoříte soubor šablony, který se nasazuje prostředky a parametry souboru, který poskytuje hodnoty parametrů v šabloně. Můžete také vytvořit soubor autorizace, který se používá k provádění operací Azure Resource Manageru.
 
-1. Vytvořte soubor s názvem *CreateVMTemplate.json* a přidejte do ní tento kód JSON:
+1. Vytvořte soubor s názvem *CreateVMTemplate.json* a přidejte tento kód JSON do ní:
 
     ```json
     {
@@ -160,7 +160,7 @@ V tomto kroku vytvoříte soubor šablony, která nasazuje prostředky a soubor 
     }
     ```
 
-2. Vytvořte soubor s názvem *Parameters.JSON tímto kódem* a přidejte do ní tento kód JSON:
+2. Vytvořte soubor s názvem *Parameters.json* a přidejte tento kód JSON do ní:
 
     ```json
     {
@@ -173,7 +173,7 @@ V tomto kroku vytvoříte soubor šablony, která nasazuje prostředky a soubor 
     }
     ```
 
-3. Vytvořte nový účet úložiště a kontejneru:
+3. Vytvoření nového účtu úložiště a kontejneru:
 
     ```powershell
     $storageName = "st" + (Get-Random)
@@ -190,9 +190,9 @@ V tomto kroku vytvoříte soubor šablony, která nasazuje prostředky a soubor 
     Set-AzureStorageBlobContent -File "C:\templates\Parameters.json" -Context $context -Container templates
     ```
 
-    Změna cesty k umístění, kam jste uložili soubory-souborům.
+    Změna umístění, kam jste uložili soubory / cesty k souborům.
 
-## <a name="create-the-resources"></a>Vytvořit prostředky
+## <a name="create-the-resources"></a>Vytvoření prostředků
 
 Nasazení šablony pomocí parametrů:
 
@@ -203,10 +203,10 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName "myResourceGroup" -Name "m
 ```
 
 > [!NOTE]
-> Můžete také nasadit parametry z místní soubory a šablony. Další informace najdete v tématu [použití Azure Powershellu s Azure Storage](../../storage/common/storage-powershell-guide-full.md).
+> Můžete také nasadit šablony a parametrů z místních souborů. Další informace najdete v tématu [pomocí Azure Powershellu s Azure Storage](../../storage/common/storage-powershell-guide-full.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-- Pokud byly nějaké problémy s nasazením, může si prohlédněte [odstraňování běžných chyb nasazení Azure pomocí Azure Resource Manageru](../../resource-manager-common-deployment-errors.md).
-- Naučte se vytvářet a spravovat virtuální počítač v [vytvořit a spravovat virtuální počítače Windows pomocí modulu Azure PowerShell](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+- Pokud byly nějaké problémy s nasazením, může trvat podívat [řešit běžné chyby nasazení v Azure pomocí Azure Resource Manageru](../../resource-manager-common-deployment-errors.md).
+- Zjistěte, jak vytvářet a spravovat virtuální počítač v [vytvoření a správa virtuálních počítačů s Windows pomocí modulu Azure PowerShell](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 

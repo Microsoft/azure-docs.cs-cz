@@ -1,6 +1,6 @@
 ---
-title: Použití spravovaných disků v šablonách Azure Resource Manageru pro virtuální počítače s Linuxem | Microsoft Docs
-description: Podrobnosti o použití spravovaných misks v šablonách Azure Resource Manageru pro virtuální počítače s Linuxem
+title: Použití spravovaných disků v šablonách Azure Resource Manageru pro virtuální počítače s Linuxem | Dokumentace Microsoftu
+description: Podrobnosti o tom, jak používat spravovaného misks v šablonách Azure Resource Manageru pro virtuální počítače s Linuxem
 services: virtual-machines-linux
 documentationcenter: ''
 author: jboeshart
@@ -13,10 +13,10 @@ ms.workload: storage
 ms.date: 06/01/2017
 ms.author: jaboes
 ms.openlocfilehash: 87f544c59945c20e2b0c86e880bb8c362512b655
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23879138"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38618285"
 ---
 [!INCLUDE [virtual-machines-using-managed-disks-template-deployments](../../../includes/virtual-machines-using-managed-disks-template-deployments.md)]

@@ -1,6 +1,6 @@
 ---
-title: Směrovat koncový bod vlastní webové služby Azure Media Services události | Microsoft Docs
-description: Pomocí Azure událostí mřížky k odběru události změny stavu úlohy Media Services.
+title: Směrování událostí služby Azure Media Services do vlastního webového koncového bodu | Dokumentace Microsoftu
+description: Přihlásit k odběru události změny stavu úlohy Media Services pomocí služby Azure Event Grid.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,18 +11,18 @@ ms.workload: ''
 ms.topic: article
 ms.date: 03/19/2018
 ms.author: juliako
-ms.openlocfilehash: 6a098f43819bb6581b2c5978fbcc4a378a8514c1
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e9df0cd24ef890765b78c25a073d671889be10a7
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34638496"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38724061"
 ---
-# <a name="route-azure-media-services-events-to-a-custom-web-endpoint-using-cli"></a>Události služby Azure Media Services trasy pro koncový bod vlastní webové pomocí rozhraní příkazového řádku
+# <a name="route-azure-media-services-events-to-a-custom-web-endpoint-using-cli"></a>Směrování událostí služby Azure Media Services do vlastního webového koncového bodu pomocí rozhraní příkazového řádku
 
-Azure Event Grid je služba zpracování událostí pro cloud. V tomto článku použijte rozhraní příkazového řádku Azure k odběru události změny stavu úlohy Azure Media Services a aktivuje událost zobrazíte výsledek. 
+Azure Event Grid je služba zpracování událostí pro cloud. V tomto článku přihlášení k odběru událostí změny stavu úlohy Azure Media Services pomocí rozhraní příkazového řádku Azure a aktivujete událost, abyste viděli výsledek. 
 
-Obvykle odesíláte události do koncového bodu, který na událost reaguje například webhookem nebo funkcí Azure Functions. Tento kurz ukazuje, jak vytvořit a nastavit webhook, jehož.
+Obvykle odesíláte události do koncového bodu, který na událost reaguje například webhookem nebo funkcí Azure Functions. Tento kurz ukazuje, jak vytvořit a nastavit webhooku.
 
 Po dokončení kroků popsaných v tomto článku uvidíte, že se data událostí odeslala do koncového bodu.
 
@@ -32,43 +32,43 @@ Přihlaste se k webu [Azure Portal](http://portal.azure.com) a spusťte **CloudS
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, naleznete v tématu [instalace rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli). 
 
 [!INCLUDE [media-services-cli-create-v3-account-include](../../../includes/media-services-cli-create-v3-account-include.md)]
 
-Ujistěte se, že mějte na paměti, hodnoty, které jste použili pro název účtu Media Services, úložiště a název prostředku.
+Je nutné pamatovat si hodnoty, které jste použili pro název účtu Media Services, úložiště, název a název prostředku.
 
-## <a name="enable-event-grid-resource-provider"></a>Povolit zprostředkovatele prostředků událostí mřížky
+## <a name="enable-event-grid-resource-provider"></a>Povolit poskytovatele prostředků služby Event Grid
 
-První věc, kterou je potřeba udělat je, ujistěte se, že máte poskytovatele prostředků událostí mřížky na vaše předplatné povolená. 
+První věc, kterou je třeba provést je, ujistěte se, že máte povoleno na vaše předplatné poskytovatele prostředků služby Event Grid. 
 
-V **Azure** portál postupujte takto:
+V **Azure** portálu postupujte takto:
 
-1. Přejděte na předplatné.
+1. Přejdete na předplatná.
 2. Vyberte své předplatné.
-3. V části Nastavení vyberte zprostředkovatelé prostředků.
+3. V části Nastavení vyberte poskytovatele prostředků.
 4. Vyhledejte "EventGrid".
-5. Zkontrolujte, zda že je zaregistrován událostí mřížky. Pokud ne, stiskněte **zaregistrovat** tlačítko.  
+5. Ujistěte se, že služby Event Grid je zaregistrovaný. Pokud ne, stiskněte **zaregistrovat** tlačítko.  
 
-## <a name="create-a-generic-azure-function-webhook"></a>Vytvořte obecný webhook funkce Azure 
+## <a name="create-a-generic-azure-function-webhook"></a>Vytvořit obecný webhook funkce Azure functions 
 
 ### <a name="create-a-message-endpoint"></a>Vytvoření koncového bodu zpráv
 
-Než se přihlásíte k odběru událostí mřížky článku, vytvořte koncový bod, který shromažďuje zprávy, aby se dala zobrazit.
+Než se přihlásíte k odběru článku služby Event Grid, vytvořte koncový bod, který shromažďovat zprávy, abyste je mohli zobrazit.
 
-Vytvoření funkce aktivovány obecný webhook, jak je popsáno v [obecný webhook](https://docs.microsoft.com/azure/azure-functions/functions-create-generic-webhook-triggered-function) článku. V tomto kurzu **C#** kód používá.
+Vytvoření funkce aktivované obecným webhookem, jak je popsáno v [obecný webhook](https://docs.microsoft.com/azure/azure-functions/functions-create-generic-webhook-triggered-function) článku. V tomto kurzu **jazyka C#** kód se používá.
 
-Po vytvoření webhooku zkopírujte adresu URL kliknutím na *získat adresu URL funkce* odkaz v horní části **Azure** okna portálu. Není nutné poslední část adresy URL (*& clientID = výchozí*).
+Po vytvoření webhooku, zkopírujte adresu URL po kliknutí na *získat adresu URL funkce* odkazu v horní části **Azure** okna portálu. Není nutné poslední část adresy URL (*& clientID = default*).
 
-![Vytvoření webhooku](./media/job-state-events-cli-how-to/generic_webhook_files.png)
+![Vytvořit webhook](./media/job-state-events-cli-how-to/generic_webhook_files.png)
 
-### <a name="validate-the-webhook"></a>Ověření webhooku
+### <a name="validate-the-webhook"></a>Ověření se webhook.
 
-Při registraci svůj vlastní koncový bod webhooku s událostí mřížky, odešle požadavek POST s kódem jednoduché ověření prokázat vlastnictví koncový bod. Vaše aplikace musí odpovídat tak, že odezva zpět ověřovacího kódu. Mřížky událostí není doručovat události Webhooku koncových bodů, které nebyly ověření proběhlo úspěšně. Další informace najdete v tématu [mřížky událostí zabezpečení a ověřování](https://docs.microsoft.com/azure/event-grid/security-authentication). Tento oddíl definuje dvě části, které musí být definovaná pro ověření předat.
+Když si zaregistrujete vlastní koncový bod webhooku s využitím služby Event Grid, odešle požadavek POST s kódem jednoduché ověření pro koncový bod vlastnictví prokázat způsobem. Vaše aplikace potřebuje tak přečtou zpět ověřovacího kódu. Event Grid nebude doručení událostí Webhooku koncových bodů, které nebyly úspěšně. Další informace najdete v tématu [ověřování a zabezpečení služby Event Grid](https://docs.microsoft.com/azure/event-grid/security-authentication). Tento oddíl definuje dvě části, které pro ověření předat musí být definovaný.
 
-#### <a name="update-the-source-code"></a>Aktualizujte zdrojový kód
+#### <a name="update-the-source-code"></a>Aktualizace zdrojového kódu
 
-Po vytvoření webhooku, **run.csx** souboru se zobrazí v prohlížeči. Ve výchozím kódu nahraďte následujícím kódem. 
+Po vytvoření webhooku, **run.csx** souboru se zobrazí v prohlížeči. Nahraďte kód následujícím kódem. 
 
 ```csharp
 #r "Newtonsoft.Json"
@@ -106,9 +106,9 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
 }
 ```
 
-#### <a name="update-test-request-body"></a>Aktualizace textu žádosti testu
+#### <a name="update-test-request-body"></a>Aktualizace textu požadavku testu
 
-Na pravé straně **Azure** okna portálu se zobrazí dvě karty: **zobrazit soubory** a **Test**. Vyberte kartu **Test**. V **text žádosti**, vložte následující kód json. Jej můžete vložit, protože je potřeba změnit všechny hodnoty.
+Na pravé straně **Azure** okna portálu se zobrazí dvě karty: **zobrazit soubory** a **Test**. Vyberte kartu **Test**. V **text žádosti**, vložte následující kód json. Můžete ho vložit je, není potřeba měnit všechny hodnoty.
 
 ```json
 [{
@@ -124,15 +124,15 @@ Na pravé straně **Azure** okna portálu se zobrazí dvě karty: **zobrazit sou
 ]
 ```
 
-Stiskněte klávesu **uložte a spusťte** v horní části okna.
+Stisknutím klávesy **uložte a spusťte** v horní části okna.
 
 ![Tělo požadavku](./media/job-state-events-cli-how-to/generic_webhook_test.png)
 
-## <a name="register-for-the-event-grid-subscription"></a>Registrace pro předplatné událostí mřížky 
+## <a name="register-for-the-event-grid-subscription"></a>Zaregistrujte se na odběr služby Event Grid 
 
-Přihlášení k odběru článku říct události, které chcete sledovat událost mřížky. V následujícím příkladu se přihlásí k účtu Media Services, které jste vytvořili a předává adresu URL z webhooku funkce Azure, které jste vytvořili jako koncový bod pro oznámení o události. 
+Se přihlásíte k odběru článku zjistit služby Event Grid, které události chcete sledovat. Následující příklad se přihlásí k účtu Media Services, které jste vytvořili a předá adresu URL z funkce Azure Functions webhook, který jste vytvořili jako koncový bod pro oznámení události. 
 
-Nahraďte `<event_subscription_name>` s jedinečným názvem pro vaše předplatné událostí. Místo `<resource_group_name>` a `<ams_account_name>` použijte hodnoty názvu skupiny prostředků a názvu účtu úložiště, které jste vytvořili dříve.  Pro `<endpoint_URL>` vložte adresu URL vašeho koncového bodu. Odebrat *& clientID = výchozí* z adresy URL. Díky zadání koncového bodu při přihlašování k odběru bude služba Event Grid zpracovávat směrování událostí do tohoto koncového bodu. 
+Nahraďte `<event_subscription_name>` s jedinečným názvem vašeho odběru událostí. Místo `<resource_group_name>` a `<ams_account_name>` použijte hodnoty názvu skupiny prostředků a názvu účtu úložiště, které jste vytvořili dříve.  Pro `<endpoint_URL>` vložte adresu URL koncového bodu. Odebrat *& clientID = default* z adresy URL. Díky zadání koncového bodu při přihlašování k odběru bude služba Event Grid zpracovávat směrování událostí do tohoto koncového bodu. 
 
 ```cli
 amsResourceId=$(az ams account show --name <ams_account_name> --resource-group <resource_group_name> --query id --output tsv)
@@ -143,15 +143,15 @@ az eventgrid event-subscription create \
   --endpoint <endpoint_URL>
 ```
 
-Hodnota id prostředku účtu Media Services vypadá podobně jako tento:
+Hodnota id prostředku účtu Media Services bude vypadat nějak takto:
 
 /subscriptions/81212121-2f4f-4b5d-a3dc-ba0015515f7b/resourceGroups/amsResourceGroup/providers/Microsoft.Media/mediaservices/amstestaccount
 
 ## <a name="test-the-events"></a>Test události
 
-Spustíte úlohu kódování. Příklad, jak je popsáno v [Stream video soubory](stream-files-dotnet-quickstart.md) rychlý start.
+Spustíte úlohu kódování. Příklad, jak je popsáno v [Stream videosoubory](stream-files-dotnet-quickstart.md) rychlý start.
 
-Právě jste aktivovali událost a služba Event Grid odeslala zprávu do koncového bodu, který jste nakonfigurovali při přihlášení k odběru. Přejděte do webhook, kterou jste vytvořili dříve. Klikněte na tlačítko **monitorování** a **aktualizovat**. Zobrazí události změny stavu úlohy: "Zařazených do fronty", "Plánovanou", "Zpracování", "Dokončeno", "Chyba", "Zrušit", "Zrušení".  Další informace najdete v tématu [Media Services událostí schémata](media-services-event-schemas.md).
+Právě jste aktivovali událost a služba Event Grid odeslala zprávu do koncového bodu, který jste nakonfigurovali při přihlášení k odběru. Přejděte k webhooku, který jste vytvořili dříve. Klikněte na tlačítko **monitorování** a **aktualizovat**. Zobrazí stav úlohy změní události: "Ve frontě", "Plánovanou", "Zpracování", "Dokončení", "Chyba", "zrušeno", "Zrušení".  Další informace najdete v tématu [schémata událostí služby Media Services](media-services-event-schemas.md).
 
 Příklad:
 
@@ -185,8 +185,8 @@ az group delete --name <resource_group_name>
 
 ## <a name="next-steps"></a>Další postup
 
-[Reaktivní události](reacting-to-media-services-events.md)## viz také
+[Reakce na události](reacting-to-media-services-events.md)
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
-[CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/ams?view=azure-cli-latest)
+[Azure CLI](https://docs.microsoft.com/en-us/cli/azure/ams?view=azure-cli-latest)

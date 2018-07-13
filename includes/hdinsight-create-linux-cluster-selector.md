@@ -1,6 +1,6 @@
 > [!div class="op_single_selector"]
 > * [Přehled](../articles/hdinsight/hdinsight-hadoop-provision-linux-clusters.md)
-> * [portál Azure Portal](../articles/hdinsight/hdinsight-hadoop-create-linux-clusters-portal.md)
+> * [Azure Portal](../articles/hdinsight/hdinsight-hadoop-create-linux-clusters-portal.md)
 > * [Azure Data Factory](../articles/hdinsight/hdinsight-hadoop-create-linux-clusters-adf.md)
 > * [Azure CLI](../articles/hdinsight/hdinsight-hadoop-create-linux-clusters-azure-cli.md)
 > * [Azure PowerShell](../articles/hdinsight/hdinsight-hadoop-create-linux-clusters-azure-powershell.md)

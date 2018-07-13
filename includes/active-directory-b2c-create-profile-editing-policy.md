@@ -1,4 +1,4 @@
-Pokud chcete povolit úpravy profilu ve vaší aplikaci, můžete použít **úpravy profilu** zásad. Tato zásada popisuje možnosti, které zákazníci budou procházejí během úpravy profilu a obsah tokeny, které aplikace se zobrazí při úspěšném dokončení.
+Pokud chcete povolit upravování profilu ve své aplikaci, můžete použít **upravování profilu** zásad. Tato zásada popisuje prostředí, které zákazníci budou procházet při upravování profilu a obsah tokenů, které bude aplikace přijímat po úspěšném dokončení.
 
 [!INCLUDE [active-directory-b2c-portal-navigate-b2c-service](active-directory-b2c-portal-navigate-b2c-service.md)]
 

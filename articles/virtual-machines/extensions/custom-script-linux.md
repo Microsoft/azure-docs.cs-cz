@@ -1,6 +1,6 @@
 ---
-title: Spustit vlastní skripty na virtuální počítače s Linuxem v Azure | Microsoft Docs
-description: Automatizovat úkoly konfigurace virtuálního počítače s Linuxem pomocí rozšíření vlastních skriptů v2
+title: Spuštění vlastních skriptů na virtuální počítače s Linuxem v Azure | Dokumentace Microsoftu
+description: Automatizaci úloh konfigurace virtuálního počítače s Linuxem pomocí rozšíření vlastních skriptů v2
 services: virtual-machines-linux
 documentationcenter: ''
 author: danielsollondon
@@ -15,63 +15,63 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: danis
-ms.openlocfilehash: e614c78ca4e8ed7afbce0d3f2423ce137c5225b5
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 850acae818638bb7c823edde03dbbecccf930073
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294971"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969319"
 ---
-# <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Pomocí virtuální počítače s Linuxem v Azure vlastní skript rozšíření verze 2
-Vlastní skript rozšíření verze 2 se stáhne a spustí skripty na virtuálních počítačích Azure. Toto rozšíření je užitečné pro konfiguraci po nasazení, instalace softwaru nebo jiná úloha správy nebo konfigurace. Skripty si můžete stáhnout z Azure Storage nebo jiné dostupné umístění v Internetu, nebo je můžete zadat rozšíření modulu runtime. 
+# <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Virtuální počítače s Linuxem pomocí Azure Custom Script rozšíření verze 2
+Verze 2 pro rozšíření vlastního skriptu stahuje a spouští skripty na virtuálních počítačích Azure. Toto rozšíření je užitečné pro konfiguraci po nasazení, instalace softwaru nebo jakoukoliv jinou úlohu konfigurace a správy. Skripty si můžete stáhnout z Azure Storage nebo jiné dostupné umístění v Internetu, nebo je lze zadat rozšíření modulu runtime. 
 
-Rozšíření vlastních skriptů se integruje s šablon Azure Resource Manageru. Můžete také spustit jej pomocí rozhraní příkazového řádku Azure, PowerShell, portálu Azure nebo REST API pro virtuální počítače Azure.
+Rozšíření vlastních skriptů integruje šablony Azure Resource Manageru. Můžete ho spustit také pomocí rozhraní příkazového řádku Azure, PowerShell, na webu Azure portal nebo REST API služby Azure Virtual Machines.
 
-Tento článek podrobně popisuje, jak používat rozšíření vlastních skriptů z příkazového řádku Azure a jak spustit rozšíření pomocí šablony Azure Resource Manager. Tento článek také obsahuje pokyny k odstraňování potíží pro systémy Linux.
+Tento článek podrobně popisuje, jak použít rozšíření vlastních skriptů z příkazového řádku Azure a jak spustit rozšíření pomocí šablony Azure Resource Manageru. Tento článek také obsahuje postup řešení problémů v systémech Linux.
 
 
-Existují dvě rozšíření vlastních skriptů Linux:
-* Verze 1 - Microsoft.OSTCExtensions.CustomScriptForLinux
+Existují dvě rozšíření vlastního skriptu Linux:
+* Verze 1 – Microsoft.OSTCExtensions.CustomScriptForLinux
 * Verze 2 - Microsoft.Azure.Extensions.CustomScript
 
-Přejděte prosím nové a stávající nasazení místo toho použít nová verze 2. Nové verze je určena jako náhrada drop-in. Proto migrace je stejně snadná jako změnit název a verze, není potřeba změnit konfiguraci rozšíření.
+Přepněte nové a stávající nasazení místo toho použít nová verze 2. Nová verze je určena být což je náhrada databáze. Proto se migrace je stejně snadné jako změna názvu a verze, není potřeba změnit konfiguraci rozšíření.
 
 
 ### <a name="operating-system"></a>Operační systém
 
-Rozšíření vlastních skriptů Linux se spustí na rozšíření rozšíření podporován operační systém na, další informace najdete v tématu to [článku](https://support.microsoft.com/en-us/help/4078134/azure-extension-supported-operating-systems).
+Rozšíření vlastních skriptů pro Linux se spustí na rozšíření nepodporuje rozšíření OS, další informace najdete v tomto [článku](https://support.microsoft.com/en-us/help/4078134/azure-extension-supported-operating-systems).
 
 ### <a name="script-location"></a>Umístění skriptu
 
-Rozšíření můžete použijte svoje přihlašovací údaje úložiště objektů Blob v Azure pro přístup k úložišti objektů Blob v Azure. Případně umístění skriptu může být žádné where, tak dlouho, dokud virtuální počítač může směrovat do tohoto koncového bodu, jako je například Githubu, interní souborového serveru atd.
+Můžete použít rozšíření použijte svoje přihlašovací údaje úložiště objektů Blob v Azure pro přístup k úložišti objektů Blob v Azure. Můžete také umístění skriptu může být libovolné where, tak dlouho, dokud virtuální počítač může směrovat do tohoto koncového bodu, jako je například GitHub, interní souborový server atd.
 
 ### <a name="internet-connectivity"></a>Připojení k Internetu
-Pokud budete muset stáhnout skript externě například GitHub nebo úložiště Azure, pak další brány firewall nebo síťových zabezpečení skupiny musí být otevřené porty. Například pokud váš skript nachází ve službě Azure Storage, můžete povolit přístup pomocí značek služby Azure skupina NSG pro [úložiště](https://docs.microsoft.com/en-us/azure/virtual-network/security-overview#service-tags).
+Pokud potřebujete stáhnout skript externě jako GitHub nebo služby Azure Storage, potom další brány firewall nebo sítě skupiny zabezpečení musí být otevřené porty. Například pokud váš skript nachází ve službě Azure Storage, můžete povolit přístup pomocí značky služeb Azure NSG pro [úložiště](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
 
-Pokud váš skript se na místním serveru, pak může potřebujete ještě další brány firewall nebo síťových zabezpečení muset otevřít porty skupiny.
+Pokud váš skript je na místním serveru, pak může i nadále potřebovat další brány firewall nebo sítě zabezpečení musejí být otevřeny porty skupiny.
 
 ### <a name="tips-and-tricks"></a>Tipy a triky
-* Nejvyšší míra selhání pro toto rozšíření je z důvodu chyby syntaxe ve skriptu, testů, které skript se spustí bez chyby, a také vložit do další protokolování do skript tak, aby bylo snazší najít, kde se nezdařilo.
-* Napsat skripty, které jsou idempotent, takže pokud získat spustit znovu, více než jednou omylem, nezpůsobí změny systému.
-* Zajistěte, aby že skripty nevyžadují vstup uživatele při spuštění.
-* Je 90 minut povolené pro spuštění skriptu, nic delší způsobí selhání zřídit rozšíření.
-* Nevkládejte restartování uvnitř skriptu, to může způsobit problémy s další rozšíření, které se nainstalují, a po restartování, rozšíření nebude pokračovat po restartování. 
-* Pokud máte skript, který způsobí restart, instalace aplikací a spouštět skripty atd. Měli byste naplánovat pomocí procesu Cron úlohy, nebo pomocí nástrojů, jako je DSC, Chef, Puppet rozšíření nebo restartování.
-* Rozšíření pouze spustí skript jednou, pokud chcete spustit skript na každém spuštění počítače, můžete použít [cloudu init image](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/using-cloud-init) a použít [skriptů na spouštěcí](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) modulu. Alternativně můžete použít skript vytvoření jednotky Systemd služby.
-* Pokud chcete naplánovat, kdy bude skript spuštěn, používejte k vytvoření úlohy Cron rozšíření. 
-* Když je skript spuštěn, zobrazí se pouze 'přechodu, stav rozšíření z portálu Azure nebo rozhraní příkazového řádku. Pokud chcete častější aktualizace stavu spouštění skriptu, musíte vytvořit vlastní řešení.
-* Rozšíření vlastních skriptů nenabízí nativní podporu proxy servery, ale můžete použít nástroj přenos souboru, který podporuje proxy servery v rámci vašeho skriptu, například *Curl*. 
-* Mějte na jiné výchozí umístění adresáře, které skripty nebo příkazy, můžou záviset, mají logiku pro toto zpracování.
+* Nejvyšší chybovost pro toto rozšíření je z důvodu chyby syntaxe v skriptu testu, které skript se spustí bez chyb, a také vložit další protokolování do skriptu, aby bylo snazší najít, kde se nezdařilo.
+* Psát skripty, které jsou idempotentní, takže pokud získat spusťte znovu více než jednou omylem, nesmí způsobit změny systému.
+* Zajistěte, aby že skripty nevyžadují, aby uživatelský vstup při spuštění.
+* Není povolené pro spuštění skriptu 90 minut, cokoli delšího způsobí selhání zřizování rozšíření.
+* Neumisťujte restartování uvnitř skriptu, to způsobí problémy s další rozšíření, které se nainstalují, a po restartování počítače, rozšíření nebude pokračovat po restartování. 
+* Pokud máte skript, který způsobí restartování, instalace aplikací a spouštět skripty atd. Měli byste naplánovat pomocí úlohy Cron, nebo pomocí nástrojů, jako je DSC, Chef, Puppet rozšíření nebo restartování.
+* Rozšíření se pouze spuštění skriptu jednou, pokud chcete spustit skript na každém spuštění počítače, můžete použít [cloud-init image](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init) a použít [skripty na spouštěcí](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) modulu. Alternativně můžete použít skript k vytvoření jednotky služby Systemd.
+* Pokud chcete naplánovat, kdy bude skript spuštěn, používejte rozšíření k vytvoření úlohy Cron. 
+* Když je spuštěný skript, zobrazí se pouze "přenos" stav rozšíření z webu Azure portal nebo rozhraní příkazového řádku. Pokud chcete častější aktualizace stavu spuštění skriptu, je potřeba vytvořit svoje vlastní řešení.
+* Rozšíření vlastních skriptů nativně nepodporuje proxy servery, ale můžete použít nástroj pro přenos souborů, která podporuje proxy servery v rámci skriptu, jako například *Curl*. 
+* Mějte na paměti z jiné výchozí adresář umístění, které mohou spoléhat skripty nebo příkazy, mají logiky, která by to.
 
 
 
 ## <a name="extension-schema"></a>Schéma rozšíření
 
-Konfigurace rozšíření vlastních skriptů určuje takové věci, jako umístění skriptu a příkaz ke spuštění. Můžete tuto konfiguraci uložit konfigurační soubory, zadejte na příkazovém řádku nebo zadejte jej v šablonu Azure Resource Manager. 
+Konfiguraci rozšíření vlastních skriptů určuje věci, jako je umístění skriptu a příkazu ke spuštění. Uložit tuto konfiguraci v konfiguračních souborech, zadejte na příkazovém řádku nebo ho zadat v šabloně Azure Resource Manageru. 
 
-V konfiguraci chráněného, které se budou šifrovat a dešifrovat jenom ve virtuálním počítači můžete ukládat citlivá data. Chráněné konfigurace je užitečné při provádění příkazu zahrnuje tajné klíče, jako například heslo.
+Ukládat citlivá data v chráněném konfigurace, který je šifrovaný a dešifrovat jenom uvnitř virtuálního počítače. Chráněné konfigurace je užitečná při provádění příkazu zahrnuje tajné kódy jako jsou hesla.
 
-Tyto položky by měl být považován za citlivá data a zadaný v konfiguraci chráněných nastavení rozšíření. Data Azure nastavení rozšíření chráněný virtuální počítač je zašifrovaná a dešifrovat jenom na cílový virtuální počítač.
+Tyto položky by měly považovat za citlivá data a zadaný v konfiguraci chráněných nastavení rozšíření. Data Azure nastavení rozšíření chráněný virtuální počítač je zašifrovaný a dešifrovat jenom na cílovém virtuálním počítači.
 
 ```json
 {
@@ -107,49 +107,49 @@ Tyto položky by měl být považován za citlivá data a zadaný v konfiguraci 
 
 ### <a name="property-values"></a>Hodnoty vlastností
 
-| Název | Hodnota nebo příklad | Typ dat | 
+| Název | Hodnota / příklad | Typ dat | 
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | datum |
-| Vydavatele | Microsoft.Compute.Extensions | řetězec |
+| vydavatele | Microsoft.Compute.Extensions | řetězec |
 | type | CustomScript | řetězec |
-| typeHandlerVersion | 2.0 | celá čísla |
+| typeHandlerVersion | 2.0 | int |
 | fileUris (např.) | https://github.com/MyProject/Archive/MyPythonScript.py | pole |
-| commandToExecute (např.) | Python MyPythonScript.py < Moje param1 > | řetězec |
-| Skript | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo = | řetězec |
+| commandToExecute (např.) | Python MyPythonScript.py < my parametr1 > | řetězec |
+| skript | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo = | řetězec |
 | skipDos2Unix (např.) | false (nepravda) | Boolean |
 | časové razítko (např.) | 123456789 | 32bitové celé číslo |
 | storageAccountName (např.) | examplestorageacct | řetězec |
 | storageAccountKey (např.) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | řetězec |
 
 ### <a name="property-value-details"></a>Podrobnosti o hodnotě vlastnosti
-* `skipDos2Unix`: (nepovinný, logická hodnota) přeskočit dos2unix převod adres URL založených na skriptech soubor nebo skript.
-* `timestamp` Toto pole pouze pro aktivaci znovu spusťte skript tím, že změníte hodnotu tohoto pole použití (volitelné 32bitové celé číslo).  Všechny celočíselná hodnota je přijatelné; musí být pouze liší od předchozí hodnotu.
- * `commandToExecute`: (**požadované** Pokud skript není nastavena, řetězec) k provedení skriptu bodu položku. Toto pole použijte místo toho, pokud váš příkaz obsahuje tajné klíče, jako jsou hesla.
-* `script`: (**požadované** Pokud commandToExecute není nastavena, řetězec) kódováním base64 (a volitelně gzip'ed) provést/Bin/dílet skriptu.
+* `skipDos2Unix`: (volitelné, logická hodnota) přeskočit dos2unix převodu adres URL založených na skriptech souboru nebo skriptu.
+* `timestamp` (volitelné, 32bitové celé číslo), použijte toto pole pouze pro aktivaci znovu spusťte tento skript změnou hodnoty tohoto pole.  Libovolné celé číslo je přijatelné; musí být pouze jiný než předchozí hodnota.
+ * `commandToExecute`: (**požadované** Pokud skript není nastavený, string) skript vstupního bodu ke spuštění. Místo toho použijte toto pole, pokud váš příkaz obsahuje tajné kódy jako jsou hesla.
+* `script`: (**požadované** Pokud commandToExecute není nastavený, string) kódováním base64 (a volitelně gzip'ed) skript spuštěn pomocí/Bin/sh.
 * `fileUris`: (volitelné, pole řetězců) adresy URL pro soubory ke stažení.
-* `storageAccountName`: (volitelné, string) název účtu úložiště. Pokud chcete zadat pověření pro úložiště, všechny `fileUris` musí být adresy URL pro objekty BLOB Azure.
+* `storageAccountName`: (volitelné, string) název účtu úložiště. Pokud zadáte přihlašovací údaje úložiště všechny `fileUris` musí být adresy URL pro objekty BLOB Azure.
 * `storageAccountKey`: (volitelné, string) přístupový klíč účtu úložiště
 
 
-Následující hodnoty lze nastavit v nastavení veřejného nebo chráněné, rozšíření odmítnou jakákoli konfigurace, kde se níže uvedené hodnoty nastavují v nastavení veřejných a chráněné.
+Následující hodnoty lze nastavit v nastavení veřejná nebo chráněná, rozšíření odmítnou jakékoli konfigurace, ve kterém níže uvedené hodnoty se nastavují v nastavení veřejné a chráněné.
 * `commandToExecute`
 * `script`
 * `fileUris`
 
-Pomocí nastavení veřejných může být užitečné pro ladění, ale důrazně doporučujeme použít chráněné nastavení.
+Pomocí nastavení veřejné může být užitečné pro ladění, ale důrazně doporučujeme používat chráněné nastavení.
 
-Nastavení veřejných jsou odesílány ve formátu prostého textu k virtuálnímu počítači, kde bude skript proveden.  Chráněné nastavení jsou šifrované pomocí klíče zná pouze Azure a virtuální počítač. Nastavení se ukládají do virtuálního počítače, protože byly odeslány, tj. Pokud byly šifrované nastavení jsou uloženy šifrované ve virtuálním počítači. Certifikát používaný k dešifrování šifrovaných hodnot je uložená ve virtuálním počítači a použité k dešifrování nastavení (v případě potřeby) za běhu.
+Nastavení veřejné odesílají ve formátu prostého textu do virtuálních počítačů, ve kterém se skript spustí.  Chráněné nastavení jsou šifrované pomocí klíče zná pouze Azure a virtuální počítač. Nastavení se ukládají do virtuálního počítače, protože byly odeslány, tedy pokud byly šifrované nastavení jsou uloženy zašifrované na virtuálním počítači. Certifikát používaný k dešifrování šifrovaných hodnot je uložená ve virtuálním počítači a použité k dešifrování nastavení (v případě potřeby) za běhu.
 
 #### <a name="property-skipdos2unix"></a>Vlastnost: skipDos2Unix
 
-Výchozí hodnota je nastavena hodnota false, což znamená, že dos2unix conversion **je** provést.
+Výchozí hodnota je false, což znamená, že převod dos2unix **je** proveden.
 
-V předchozí verzi CustomScript, Microsoft.OSTCExtensions.CustomScriptForLinux, by automaticky DOS soubory převést do souborů UNIX při převodu `\r\n` k `\n`. Tento překlad stále existuje a ve výchozím nastavení zapnutý. Tento převod se použijí na všechny soubory stahované z fileUris nebo pomocí nastavení skriptu, který je založen na některém z následujících kritérií.
+Předchozí verze CustomScript Microsoft.OSTCExtensions.CustomScriptForLinux, by automaticky převést souborů DOS souborů UNIX překladu `\r\n` k `\n`. Tento překlad stále existuje a je ve výchozím. Tento převod platí pro všechny soubory stahované z fileUris nebo tento skript se změněnými založené na některé z následujících kritérií.
 
-* Pokud rozšíření je jedním z `.sh`, `.txt`, `.py`, nebo `.pl` bude převeden. Nastavení skriptu bude vždy odpovídat tato kritéria, protože bude skript proveden s /bin/sh hodnota který je uložený jako script.sh ve virtuálním počítači.
+* Pokud rozšíření je jedním z `.sh`, `.txt`, `.py`, nebo `.pl` budou převedeny. Tento skript se změněnými vždy odpovídat tato kritéria, protože se předpokládá, že bude skript spuštěn /bin/sh a je uložen jako script.sh na virtuálním počítači.
 * Pokud soubor začíná `#!`.
 
-Převod dos2unix mohou být přeskočeny nastavením skipDos2Unix na hodnotu true.
+Převod dos2unix mohly být přeskočeny, tak, že nastavíte skipDos2Unix na hodnotu true.
 
 ```json
 {
@@ -161,11 +161,11 @@ Převod dos2unix mohou být přeskočeny nastavením skipDos2Unix na hodnotu tru
 
 ####  <a name="property-script"></a>Vlastnost: skript
 
-CustomScript podporuje provádění skriptu definovaný uživatelem. Nastavení skriptu ke kombinování commandToExecute a fileUris do jednoho nastavení. Místo nutnosti nastavit soubor ke stažení z úložiště Azure nebo gist Githubu, můžete jednoduše zakódovat skript jako nastavení. Skript lze nahrazené commandToExecute a fileUris.
+CustomScript podporuje provádění skriptu definovaný uživatelem. Nastavení skriptu commandToExecute a fileUris zkombinovat do jednoho nastavení. Namísto toho na instalační soubor ke stažení ze služby Azure storage nebo GitHub gist, můžete jednoduše kódovat skript jako nastavení. Skript je možné do nahrazeného commandToExecute a fileUris.
 
-Skript **musí** se kódování base64.  Skript může **volitelně** být gzip'ed. Skript nastavení může být použito v nastavení veřejného nebo chráněný. Maximální velikost dat parametr skriptu je 256 KB. Pokud skript překročí tuto velikost, nebudou provedeny.
+Skript **musí** kódovaný ve formátu base64.  Skript může **volitelně** být gzip'ed. Tento skript se změněnými lze v nastavení veřejná nebo chráněná. Maximální velikost dat parametr skriptu je 256 KB. Pokud skript je větší než tato velikost, nebude provedeno.
 
-Například následující skript uloží do souboru /script.sh/ zadána.
+Například následující skript uložit do souboru /script.sh/ zadaný.
 
 ```sh
 #!/bin/sh
@@ -174,7 +174,7 @@ apt update
 apt upgrade -y
 ```
 
-Správné nastavení skriptu CustomScript by zkonstruovat provedením výstup následující příkaz.
+Správné nastavení ve skriptu CustomScript by vytvořený pomocí výstupu následujícího příkazu.
 
 ```sh
 cat script.sh | base64 -w0
@@ -186,23 +186,23 @@ cat script.sh | base64 -w0
 }
 ```
 
-Skript může být volitelně gzip'ed k dalšímu snížení velikosti (ve většině případů). (CustomScript automaticky zjistí použití kompresi gzip.)
+Skript může být volitelně gzip'ed dál snížit velikost (ve většině případů). (CustomScript automaticky zjistí použití kompresi gzip.)
 
 ```sh
 cat script | gzip -9 | base64 -w 0
 ```
 
-CustomScript používá následující algoritmus pro spuštění skriptu.
+Následující požadovaný algoritmus CustomScript používá ke spuštění skriptu.
 
- 1. Assert –, že délka hodnoty ke skriptu není delší než 256 KB.
- 1. Tento skript hodnota dekódovat formátu Base64.
- 1. _Pokus_ k gunzip dekódovat Base64, pomocí hodnoty
- 1. zápis hodnoty dekódované (a volitelně dekomprimovaných) na disk (nebo var/lib/waagent/custom-script/#/script.sh)
- 1. Spusťte skript pomocí _ / bin/dílet - c /var/lib/waagent/custom-script/#/script.sh.
+ 1. Assert – délka hodnoty skriptu nepřekračuje 256 KB.
+ 1. Tento skript hodnotu dekódovat z formátu Base64
+ 1. _Pokus_ k gunzip base64 dekódovaná hodnota
+ 1. zapsat hodnotu dekódovaný (a volitelně dekomprimovaný) na disk (/ var/lib/waagent/custom-script/#/script.sh)
+ 1. Spusťte skript pomocí _ / bin/sh – c /var/lib/waagent/custom-script/#/script.sh.
 
 
 ## <a name="template-deployment"></a>Nasazení šablon
-Rozšíření virtuálního počítače Azure se dá nasadit pomocí šablon Azure Resource Manager. Schéma JSON, které jsou popsané v předchozí části lze použít v šablonu Azure Resource Manager ke spuštění rozšíření vlastních skriptů při nasazení šablony Azure Resource Manager. Ukázka šablony, která obsahuje rozšíření vlastních skriptů je zde uveden, [Githubu](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux).
+Rozšíření virtuálního počítače Azure je možné nasadit s využitím šablon Azure Resource Manageru. Schéma JSON, které jsou podrobně popsané v předchozí části lze použít v šabloně Azure Resource Manageru pro spuštění pomocí rozšíření vlastních skriptů při nasazení šablony Azure Resource Manageru. Ukázková šablona, která zahrnuje rozšíření vlastních skriptů můžete najít zde, [Githubu](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux).
 
 
 ```json
@@ -234,10 +234,10 @@ Rozšíření virtuálního počítače Azure se dá nasadit pomocí šablon Azu
 ```
 
 >[!NOTE]
->Názvy těchto vlastností jsou malá a velká písmena. Abyste zabránili problémům nasazení, použijte názvy, jak je vidět tady.
+>Tyto názvy vlastností rozlišují malá a velká písmena. Aby se zabránilo problémů s nasazením, použijte názvy, jak je znázorněno zde.
 
 ## <a name="azure-cli"></a>Azure CLI
-Pokud používáte Azure CLI ke spuštění rozšíření vlastních skriptů, vytvořte konfigurační soubor nebo soubory. Minimálně musí mít 'commandToExecute'.
+Pokud používáte rozhraní příkazového řádku Azure pro spuštění pomocí rozšíření vlastních skriptů, vytvořte konfigurační soubor nebo soubory. Minimálně musí mít "commandToExecute".
 
 ```azurecli
 az vm extension set \
@@ -247,7 +247,7 @@ az vm extension set \
   --protected-settings ./script-config.json
 ```
 
-Volitelně můžete zadat nastavení v příkazu jako řetězec formátu JSON. To umožňuje konfiguraci zadat během provádění a bez jiný konfigurační soubor.
+Volitelně můžete zadat nastavení v příkazu jako řetězec ve formátu JSON. To umožňuje konfiguraci zadat při spuštění a bez samostatného konfiguračního souboru.
 
 ```azurecli
 az vm extension set \
@@ -269,7 +269,7 @@ az vm extension set \
 }
 ```
 
-Azure CLI příkaz:
+Příkaz Azure CLI:
 
 ```azurecli
 az vm extension set \
@@ -279,7 +279,7 @@ az vm extension set \
   --settings ./script-config.json
 ```
 
-#### <a name="public-configuration-with-no-script-file"></a>Veřejná konfigurace s žádný soubor skriptu
+#### <a name="public-configuration-with-no-script-file"></a>Veřejná konfigurace se žádný soubor skriptu
 
 ```json
 {
@@ -287,7 +287,7 @@ az vm extension set \
 }
 ```
 
-Azure CLI příkaz:
+Příkaz Azure CLI:
 
 ```azurecli
 az vm extension set \
@@ -297,11 +297,11 @@ az vm extension set \
   --settings ./script-config.json
 ```
 
-#### <a name="public-and-protected-configuration-files"></a>Veřejné a chráněné konfigurační soubory
+#### <a name="public-and-protected-configuration-files"></a>Veřejné a chráněné konfiguračních souborů
 
-Použít soubor veřejné konfigurace zadat soubor skriptu identifikátor URI. Použijete chráněné konfiguračního souboru k zadání příkazu ke spuštění.
+Soubor veřejné konfigurace můžete zadat soubor skriptu identifikátoru URI. Používat chráněný konfiguračního souboru k určení příkazu ke spuštění.
 
-Veřejné konfigurační soubor:
+Soubor veřejné konfigurace:
 
 ```json
 {
@@ -309,7 +309,7 @@ Veřejné konfigurační soubor:
 }
 ```
 
-Chráněné konfigurační soubor:  
+Chráněné konfiguračního souboru:  
 
 ```json
 {
@@ -317,7 +317,7 @@ Chráněné konfigurační soubor:
 }
 ```
 
-Azure CLI příkaz:
+Příkaz Azure CLI:
 
 ```azurecli
 az vm extension set \
@@ -330,19 +330,19 @@ az vm extension set \
 ```
 
 ## <a name="troubleshooting"></a>Řešení potíží
-Při spuštění rozšíření vlastních skriptů, skript se vytvoří nebo stáhli do adresáře, který je podobný v následujícím příkladu. Výstup příkazu je také uložen do tohoto adresáře `stdout` a `stderr` soubory.
+Při spuštění rozšíření vlastních skriptů, vytvoření skriptu nebo stáhne do adresáře, který se podobá následujícímu příkladu. Výstup tohoto příkazu se také uloží do tohoto adresáře `stdout` a `stderr` soubory.
 
 ```bash
 /var/lib/waagent/custom-script/download/0/
 ```
 
-Řešení potíží s, nejprve zkontrolujte protokol agenta systému Linux, zajišťovat provádění rozšíření spustili, zkontrolujte:
+Řešení potíží s, nejprve najdete v protokolu agenta pro Linux, ověřte rozšíření běžel, zkontrolujte:
 
 ```bash
 /var/log/waagent.log 
 ```
 
-Je vhodné vyhledat rozšíření spuštění, bude vypadat nějak takto:
+Je vhodné vyhledat spuštění rozšíření, to bude vypadat podobně jako:
 ```text
 2018/04/26 17:47:22.110231 INFO [Microsoft.Azure.Extensions.customScript-2.0.6] [Enable] current handler state is: notinstalled
 2018/04/26 17:47:22.306407 INFO Event: name=Microsoft.Azure.Extensions.customScript, op=Download, message=Download succeeded, duration=167
@@ -353,18 +353,18 @@ Je vhodné vyhledat rozšíření spuštění, bude vypadat nějak takto:
 2018/04/26 17:47:23.476151 INFO [Microsoft.Azure.Extensions.customScript-2.0.6] Enable extension [bin/custom-script-shim enable]
 2018/04/26 17:47:24.516444 INFO Event: name=Microsoft.Azure.Extensions.customScript, op=Enable, message=Launch command succeeded: bin/custom-sc
 ```
-Některé body Všimněte si:
+Některé body, které mějte na paměti:
 1. Povolit je při spuštění příkazu.
-2. Stažení má vztah ke stahování balíčku rozšíření CustomScript z Azure, ne soubory skriptu zadaný v fileUris.
+2. Stahování se týká stahování balíčku rozšíření CustomScript z Azure, není skript soubory určené v fileUris.
 
 
-Přípona skriptu Azure vytvoří protokol, který najdete tady:
+Rozšíření skriptů Azure vytvoří protokol, který najdete tady:
 
 ```bash
 /var/log/azure/custom-script/handler.log
 ```
 
-Je vhodné vyhledat induvidual provádění, bude vypadat nějak takto:
+Je vhodné vyhledat induvidual provedení příkazu, to bude vypadat podobně jako:
 ```text
 time=2018-04-26T17:47:23Z version=v2.0.6/git@1008306-clean operation=enable seq=0 event=start
 time=2018-04-26T17:47:23Z version=v2.0.6/git@1008306-clean operation=enable seq=0 event=pre-check
@@ -389,19 +389,19 @@ time=2018-04-26T17:47:23Z version=v2.0.6/git@1008306-clean operation=enable seq=
 time=2018-04-26T17:47:23Z version=v2.0.6/git@1008306-clean operation=enable seq=0 event=enabled
 time=2018-04-26T17:47:23Z version=v2.0.6/git@1008306-clean operation=enable seq=0 event=end
 ```
-Zde se zobrazí:
-* Spuštěním příkazu Enable je tento protokol
+Zde můžete zobrazit:
+* Povolit příkaz spuštění je tento protokol
 * Nastavení předaná rozšíření
-* Rozšíření stahování souborů a výsledek této.
+* Rozšíření stahování souborů a výsledek tohoto objektu.
 * Příkaz, který se spustí a výsledek.
 
-Provádění stav rozšíření vlastních skriptů můžete také načíst pomocí rozhraní příkazového řádku Azure:
+Stav provádění rozšíření vlastních skriptů můžete také načíst pomocí rozhraní příkazového řádku Azure:
 
 ```azurecli
 az vm extension list -g myResourceGroup --vm-name myVM
 ```
 
-Výstup vypadá následující text:
+Výstup bude vypadat jako následující text:
 
 ```azurecli
 info:    Executing command vm extension get
@@ -414,5 +414,5 @@ info:    vm extension get command OK
 ```
 
 ## <a name="next-steps"></a>Další postup
-Kód, aktuální problémy a verze, najdete v sekci [vlastní skript rozšíření linux úložišti](https://github.com/Azure/custom-script-extension-linux).
+Kód, aktuální problémy a verze, najdete v sekci [vlastní skript rozšíření linux úložiště](https://github.com/Azure/custom-script-extension-linux).
 

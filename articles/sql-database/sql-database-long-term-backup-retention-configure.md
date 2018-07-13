@@ -1,6 +1,6 @@
 ---
-title: Spravovat dlouhodobé uchovávání záloh Azure SQL Database | Microsoft Docs
-description: Zjistěte, jak uložit automatizované zálohování SQL Azure storage a potom je obnovit
+title: Správa dlouhodobého uchovávání záloh Azure SQL Database | Dokumentace Microsoftu
+description: Zjistěte, jak ukládáním automatizovaných záloh v SQL Azure storage a potom je obnovit
 services: sql-database
 author: anosov1960
 manager: craigg
@@ -11,84 +11,84 @@ ms.date: 04/04/2018
 ms.author: sashan
 ms.reviewer: carlrab
 ms.openlocfilehash: f7125a18aa2496ebe8367443a67502a7a7dbac02
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128509"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969183"
 ---
-# <a name="manage-azure-sql-database-long-term-backup-retention"></a>Spravovat dlouhodobé uchovávání záloh Azure SQL Database
+# <a name="manage-azure-sql-database-long-term-backup-retention"></a>Správa dlouhodobého uchovávání záloh Azure SQL Database
 
-Můžete nakonfigurovat databázi Azure SQL s [dlouhodobé uchovávání záloh](sql-database-long-term-retention.md) zásad (zleva doprava) automaticky uchování záloh v Azure blob storage až 10 let. Pak můžete obnovit databázi pomocí tyto zálohy pomocí portálu Azure nebo Powershellu.
+Azure SQL database s můžete nakonfigurovat [dlouhodobého uchovávání záloh](sql-database-long-term-retention.md) zásad (LTR) automaticky uchovávání záloh ve službě Azure blob storage po dobu až 10 let. Pak můžete obnovit databázi pomocí tyto zálohy pomocí webu Azure portal nebo Powershellu.
 
 > [!NOTE]
-> Jako součást počáteční verze Preview tuto funkci v říjnu 2016 byly zálohy uložené ve službě Azure Recovery Services trezoru. Tato aktualizace odebere tuto závislost, ale kvůli zpětné kompatibilitě se původní rozhraní API podporuje do 31 může 2018. Pokud potřebujete pro interakci s záloh v trezoru Azure Services Recovery, přečtěte si [dlouhodobé uchovávání záloh pomocí trezoru službu Azure Recovery Services](sql-database-long-term-backup-retention-configure-vault.md). 
+> Jako součást počáteční verzi preview tato funkce v říjnu 2016 byly zálohy uložené v trezoru služby Azure Recovery Services. Tato aktualizace odebere tuto závislost, ale kvůli zpětné kompatibilitě se původní rozhraní API podporuje až do 31. května 2018. Pokud budete potřebovat pro interakci s zálohy v trezoru Azure Services Recovery, přečtěte si téma [dlouhodobého uchovávání záloh pomocí služby Azure Recovery Services vault](sql-database-long-term-backup-retention-configure-vault.md). 
 
-## <a name="use-the-azure-portal-to-configure-long-term-retention-policies-and-restore-backups"></a>Pomocí portálu Azure ke konfiguraci zásady dlouhodobé uchovávání informací a obnovit zálohy
+## <a name="use-the-azure-portal-to-configure-long-term-retention-policies-and-restore-backups"></a>Pomocí webu Azure portal nakonfigurovat zásady dlouhodobou uchovávání a obnovení záloh
 
-Následující části ukazují, jak pomocí portálu Azure ke konfiguraci dlouhodobé uchovávání, zobrazit v dlouhodobé uchovávání zálohování a obnovení zálohy z dlouhodobé uchovávání.
+Následující části ukazují, jak pomocí webu Azure portal nakonfigurovat dlouhodobé uchovávání, zobrazení v rámci dlouhodobého uchovávání záloh a obnovení z dlouhodobého uchování zálohy.
 
-### <a name="configure-long-term-retention-policies"></a>Nakonfigurujte zásady dlouhodobé uchovávání
+### <a name="configure-long-term-retention-policies"></a>Konfigurace dlouhodobého uchovávání informací zásady
 
-Můžete nakonfigurovat databázi SQL pro [zachovat automatizované zálohování](sql-database-long-term-retention.md) po dobu delší než doba uchování pro vaše vrstvu služeb. 
+SQL Database, které můžete nakonfigurovat [uchovávání automatizovaných záloh](sql-database-long-term-retention.md) dobu delší, než je doba uchovávání vaší úrovně služby. 
 
-1. Na portálu Azure vyberte svůj server SQL a pak klikněte na tlačítko **dlouhodobé uchovávání záloh**.
+1. Na webu Azure Portal, vyberte váš server SQL a pak klikněte na tlačítko **dlouhodobého uchovávání záloh**.
 
    ![odkaz na dlouhodobé uchovávání záloh](./media/sql-database-long-term-retention/ltr-configure-ltr.png)
 
-2. Na **nakonfigurovat zásady** kartě, vyberte databázi, na kterém chcete nastavit nebo změnit zásady dlouhodobé uchovávání záloh.
+2. Na **nakonfigurovat zásady** kartu, vyberte databázi, na kterém chcete nastavit nebo změnit zásady dlouhodobého uchovávání záloh.
 
    ![Vyberte databázi](./media/sql-database-long-term-retention/ltr-configure-select-database.png)
 
-3. V **nakonfigurovat zásady** podokně, vyberte, zda chcete zachovat týdně, měsíčně nebo ročně zálohy a zadejte dobu uchování pro každou. 
+3. V **nakonfigurovat zásady** podokně, vyberte, zda chcete uchovávat týdenní, měsíční nebo roční zálohy a určit dobu uchovávání pro každý. 
 
    ![Konfigurace zásad](./media/sql-database-long-term-retention/ltr-configure-policies.png)
 
-4. Po dokončení klikněte na tlačítko **použít**.
+4. Jakmile budete hotovi, klikněte na tlačítko **použít**.
 
-### <a name="view-backups-and-restore-from-a-backup-using-azure-portal"></a>Zobrazit zálohování a obnovení ze zálohy pomocí portálu Azure
+### <a name="view-backups-and-restore-from-a-backup-using-azure-portal"></a>Zobrazení záloh a obnovit ze zálohy pomocí webu Azure portal
 
-Zobrazte zálohování, které se zachovají pro konkrétní databázi zásad zleva doprava a obnovení ze tyto zálohy. 
+Zobrazení záloh, které jsou zachovány určité databáze s zásady LTR a obnovit tyto zálohy. 
 
-1. Na portálu Azure vyberte svůj server SQL a pak klikněte na tlačítko **dlouhodobé uchovávání záloh**.
+1. Na webu Azure Portal, vyberte váš server SQL a pak klikněte na tlačítko **dlouhodobého uchovávání záloh**.
 
    ![odkaz na dlouhodobé uchovávání záloh](./media/sql-database-long-term-retention/ltr-configure-ltr.png)
 
-2. Na **dostupné zálohy** kartě, vyberte databázi, pro který chcete zobrazit dostupné zálohy.
+2. Na **dostupnými zálohami** kartu, vyberte databázi, pro kterou chcete zobrazit dostupné zálohy.
 
    ![Vyberte databázi](./media/sql-database-long-term-retention/ltr-available-backups-select-database.png)
 
-3. V **dostupné zálohy** podokně zkontrolujte dostupné zálohy. 
+3. V **dostupnými zálohami** podokno, projděte si dostupné zálohy. 
 
-   ![Zobrazit zálohy](./media/sql-database-long-term-retention/ltr-available-backups.png)
+   ![zobrazení záloh](./media/sql-database-long-term-retention/ltr-available-backups.png)
 
-4. Vyberte zálohu, ze kterého chcete obnovit a pak zadejte název nové databáze.
+4. Vybrat zálohu, ze kterého chcete obnovit a pak zadejte název nové databáze.
 
    ![Obnovení](./media/sql-database-long-term-retention/ltr-restore.png)
 
-5. Klikněte na tlačítko **OK** obnovit databázi ze zálohy v úložišti Azure SQL k nové databázi.
+5. Klikněte na tlačítko **OK** k obnovení databáze ze zálohy v úložišti Azure SQL do nové databáze.
 
 6. Pokud chcete zobrazit stav úlohy obnovení, na panelu nástrojů klikněte na ikonu oznámení.
 
    ![průběh úlohy obnovení z trezoru](./media/sql-database-get-started-backup-recovery/restore-job-progress-long-term.png)
 
-5. Po dokončení úlohy obnovení, otevřete **databází SQL** zobrazit nově obnovenou databázi.
+5. Po dokončení úlohy obnovení otevřete **databází SQL** stránku a zobrazte nově obnovenou databázi.
 
 > [!NOTE]
 > Odtud se můžete pomocí aplikace SQL Server Management Studio připojit k obnovené databázi a provádět požadované úlohy, jako je například [extrakce části dat z obnovené databáze a zkopírování do existující databáze nebo odstranění existující databáze a přejmenování obnovené databáze na název existující databáze](sql-database-recovery-using-backups.md#point-in-time-restore).
 >
 
-## <a name="use-powershell-to-configure-long-term-retention-policies-and-restore-backups"></a>Nakonfigurovat zásady dlouhodobé uchovávání informací a obnovení zálohy pomocí prostředí PowerShell
+## <a name="use-powershell-to-configure-long-term-retention-policies-and-restore-backups"></a>Konfigurace zásady dlouhodobou uchovávání a obnovení záloh pomocí Powershellu
 
-Následující části ukazují, jak pomocí prostředí PowerShell nakonfigurovat dlouhodobé uchovávání záloh, prohlížet zálohy v úložiště Azure SQL a obnovení ze zálohy v úložišti Azure SQL.
+Následující části ukazují, jak pomocí prostředí PowerShell můžete nakonfigurovat dlouhodobé uchovávání záloh, zobrazení záloh v Azure SQL storage a obnovení ze zálohy v úložišti Azure SQL.
 
 > [!IMPORTANT]
-> Rozhraní API V2 zleva doprava se podporuje v následujících verzích prostředí PowerShell:
+> Rozhraní API V2 zleva doprava je podporováno v následujících verzích Powershellu:
 - [AzureRM.Sql 4.5.0](https://www.powershellgallery.com/packages/AzureRM.Sql/4.5.0) nebo novější
 - [AzureRM 6.1.0](https://www.powershellgallery.com/packages/AzureRM/6.1.0) nebo novější
 > 
 
-### <a name="create-an-ltr-policy"></a>Vytvoření zásady zleva doprava.
+### <a name="create-an-ltr-policy"></a>Vytvoření zásad LTR
 
 ```powershell
 # Get the SQL server 
@@ -110,8 +110,8 @@ Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -ServerName $serverName -Dat
 Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -ServerName $serverName -DatabaseName $dbName -ResourceGroupName $resourceGroup -WeeklyRetention P12W -YearlyRetention P5Y -WeekOfYear 16
 ```
 
-### <a name="view-ltr-policies"></a>Zobrazit zásady zleva doprava.
-Tento příklad ukazuje, jak k zobrazení seznamu zásad zleva doprava v rámci serveru
+### <a name="view-ltr-policies"></a>Zobrazit zásady LTR
+Tento příklad ukazuje, jak zobrazit seznam zásad LRT v rámci serveru
 
 ```powershell
 # Get all LTR policies within a server
@@ -120,16 +120,16 @@ $ltrPolicies = Get-AzureRmSqlDatabase -ResourceGroupName Default-SQL-WestCentral
 # Get the LTR policy of a specific database 
 $ltrPolicies = Get-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -ServerName $serverName -DatabaseName $dbName  -ResourceGroupName $resourceGroup -Current
 ```
-### <a name="clear-an-ltr-policy"></a>Vymazat zásady zleva doprava.
-Tento příklad ukazuje, jak vymazat zásadu LTR z databáze
+### <a name="clear-an-ltr-policy"></a>Vymazat zásadu zleva doprava.
+Tento příklad ukazuje, jak vymazat zásady LTR z databáze
 
 ```powershell
 Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -ServerName $serverName -DatabaseName $dbName -ResourceGroupName $resourceGroup -RemovePolicy
 ```
 
-### <a name="view-ltr-backups"></a>Zobrazit zálohy zleva doprava.
+### <a name="view-ltr-backups"></a>Zobrazení záloh zleva doprava.
 
-Tento příklad ukazuje postup seznam LTR záloh v rámci serveru. 
+Tento příklad ukazuje, jak zobrazit seznam zálohování LTR v rámci serveru. 
 
 ```powershell
 # Get the list of all LTR backups in a specific Azure region 
@@ -154,7 +154,7 @@ $ltrBackups = Get-AzureRmSqlDatabaseLongTermRetentionBackup -LocationName $serve
 
 ### <a name="delete-ltr-backups"></a>Odstranit zálohy zleva doprava.
 
-Tento příklad ukazuje postup odstranění LTR zálohování ze seznamu záloh.
+Tento příklad ukazuje odstranění LTR zálohování z seznam záloh.
 
 ```powershell
 # remove the earliest backup 
@@ -163,7 +163,7 @@ Remove-AzureRmSqlDatabaseLongTermRetentionBackup -ResourceId $ltrBackup.Resource
 ```
 
 ### <a name="restore-from-ltr-backups"></a>Obnovení ze zálohy zleva doprava.
-Tento příklad ukazuje postup obnovení ze zálohy zleva doprava. Všimněte si, toto rozhraní se nezměnila, ale parametr id prostředků teď vyžaduje id prostředku zálohování zleva doprava. 
+Tento příklad ukazuje, jak obnovit ze zálohy zleva doprava. Poznámka: Toto rozhraní nezměnil, ale parametr id prostředku vyžaduje id prostředku zálohování LTR. 
 
 ```powershell
 # Restore LTR backup as an S3 database
@@ -171,7 +171,7 @@ Restore-AzureRmSqlDatabase -FromLongTermRetentionBackup -ResourceId $ltrBackup.R
 ```
 
 > [!NOTE]
-> Tady můžete připojit k obnovené databázi pomocí SQL Server Management Studio potřebné úkoly, například za účelem extrahování bit dat z obnovené databáze chcete zkopírovat do existující databáze nebo odstranit existující databázi a přejmenujte obnovenou databáze na název existující databáze. V tématu [bodu v době obnovení](sql-database-recovery-using-backups.md#point-in-time-restore).
+> Odtud se můžete připojit k obnovené databázi pomocí SQL Server Management Studio a provádět požadované úlohy, například za účelem extrakce části dat z obnovené databáze a zkopírování do existující databáze nebo odstranění existující databáze a přejmenování obnovenou databáze na název existující databáze. Zobrazit [bodu v čase](sql-database-recovery-using-backups.md#point-in-time-restore).
 
 ## <a name="next-steps"></a>Další postup
 

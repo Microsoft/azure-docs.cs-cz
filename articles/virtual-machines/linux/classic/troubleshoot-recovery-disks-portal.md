@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží Azure classic virtuálního počítače s Linuxem připojením disk operačního systému pro virtuální počítač pro obnovení | Microsoft Docs
-description: Postup řešení potíží Azure classic virtuálního počítače s Linuxem připojením disk operačního systému pro virtuální počítač pro obnovení
+title: Řešení potíží s Azure s Linuxem klasický virtuální počítač připojením disku s operačním systémem pro virtuální počítač pro obnovení | Dokumentace Microsoftu
+description: Zjistěte, jak řešení Azure s Linuxem klasický virtuální počítač připojením disku s operačním systémem pro virtuální počítač pro obnovení
 services: virtual-machines-linux
 documentationCenter: ''
 authors: genlin
@@ -14,13 +14,13 @@ ms.workload: infrastructure
 ms.date: 05/11/2018
 ms.author: genli
 ms.openlocfilehash: f3f575b8b689ce97b202385e42b3f7854e883e36
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34072211"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38681006"
 ---
-# <a name="troubleshoot-a-linux-classic-vm-by-attaching-the-os-disk-to-a-recovery-vm"></a>Řešení potíží s klasické virtuální počítač s Linuxem připojením disk operačního systému pro virtuální počítač pro obnovení
+# <a name="troubleshoot-a-linux-classic-vm-by-attaching-the-os-disk-to-a-recovery-vm"></a>Řešení potíží s klasického virtuálního počítače s Linuxem připojením disku s operačním systémem pro virtuální počítač pro obnovení
 
 > [!IMPORTANT] 
 > [!INCLUDE [virtual-machines-common-classic-createportal](../../../../includes/virtual-machines-classic-portal.md)]
@@ -28,6 +28,6 @@ ms.locfileid: "34072211"
 [!INCLUDE [virtual-machines-classic-recovery-disks-portal](../../../../includes/virtual-machines-classic-recovery-disks-portal.md)]
 
 ## <a name="next-steps"></a>Další postup
-Pokud máte potíže s připojením k virtuálnímu počítači, přečtěte si téma [řešení SSH připojení virtuální počítač Azure Linux, který selže, chyby, nebo bylo odmítnuto](../troubleshoot-ssh-connection.md). 
+Pokud máte potíže s připojením k virtuálnímu počítači, přečtěte si téma [řešení potíží s připojení SSH k virtuálnímu počítači Azure Linux, který selže, chyby, nebo bylo odmítnuto](../troubleshoot-ssh-connection.md). 
 
-Problémy s přístupem k aplikacím spuštěným na vašem virtuálním počítači, najdete v části [problémů s připojením aplikace na virtuální počítač s Linuxem v Azure](../troubleshoot-app-connection.md).
+Problémy s přístupem k aplikacím spuštěným na vašem virtuálním počítači, naleznete v tématu [řešit problémy s připojením aplikace na virtuální počítač s Linuxem v Azure](../troubleshoot-app-connection.md).

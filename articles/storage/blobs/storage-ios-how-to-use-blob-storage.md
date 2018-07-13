@@ -1,5 +1,5 @@
 ---
-title: Jak používat úložiště objektů (objekt Blob) z iOS – Azure | Microsoft Docs
+title: Jak používat úložiště objektů (Blob) z iOS – Azure | Dokumentace Microsoftu
 description: Ukládejte nestrukturovaná data v cloudu pomocí Azure Blob Storage (úložiště objektů).
 services: storage
 documentationcenter: ios
@@ -11,15 +11,15 @@ ms.topic: article
 ms.date: 03/21/2018
 ms.author: michaelhauss
 ms.openlocfilehash: a15ba7409b4c5f75729b1b40cd2f333c44ae0368
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31420766"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38718909"
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>Používání úložiště Blob z iOS
 
-Tento článek ukazuje, jak provádět běžné scénáře s využitím Microsoft Azure Blob storage. Ukázky jsou napsané v Objective-C a použít [Klientská knihovna pro úložiště Azure pro iOS](https://github.com/Azure/azure-storage-ios). Pokryté scénáře zahrnují odesílání, výpis, stahování a odstraňování objektů BLOB. Další informace o objekty BLOB, najdete v článku [další kroky](#next-steps) části. Můžete také stáhnout [ukázkovou aplikaci](https://github.com/Azure/azure-storage-ios/tree/master/BlobSample) rychle zobrazíte pomocí Azure Storage ve aplikace pro iOS.
+Tento článek ukazuje, jak provádět běžné scénáře pomocí Microsoft Azure Blob storage. Ukázky jsou napsané v jazyce Objective-C a použití [Klientská knihovna pro úložiště Azure pro iOS](https://github.com/Azure/azure-storage-ios). Popsané scénáře patří odesílání, výpis, stahování a odstraňování objektů BLOB. Další informace o objektech BLOB najdete v článku [další kroky](#next-steps) oddílu. Můžete také stáhnout [ukázkovou aplikaci](https://github.com/Azure/azure-storage-ios/tree/master/BlobSample) rychle zobrazíte pomocí služby Azure Storage v aplikace pro iOS.
 
 ## <a name="what-is-blob-storage"></a>Co je služba Blob storage?
 
@@ -27,21 +27,21 @@ Tento článek ukazuje, jak provádět běžné scénáře s využitím Microsof
 
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
-## <a name="import-the-azure-storage-ios-library-into-your-application"></a>Importovat knihovny iOS Azure Storage do vaší aplikace
-Můžete importovat knihovně iOS Azure Storage do své aplikace buď pomocí [CocoaPod úložiště Azure](https://cocoapods.org/pods/AZSClient) nebo importem **Framework** souboru. CocoaPod je doporučeným způsobem, protože umožňuje integraci jednodušší, ale import ze souboru framework je šetrnější pro existující projekt knihovny.
+## <a name="import-the-azure-storage-ios-library-into-your-application"></a>Importovat knihovny Azure Storage s Iosem do vaší aplikace
+Můžete importovat iOS knihovnu pro úložiště Azure do své aplikace s použitím [Azure Storage CocoaPod](https://cocoapods.org/pods/AZSClient) nebo importováním **Framework** souboru. CocoaPod je doporučeným způsobem, jako je integrace jednodušší, ale import ze souboru framework je teď míň obtěžující pro existující projekt knihovny.
 
 Použití této knihovny, budete potřebovat následující:
 - iOS 8 +
 - Xcode 7 +
 
 ## <a name="cocoapod"></a>CocoaPod
-1. Pokud jste to ještě neudělali, [nainstalovat CocoaPods](https://guides.cocoapods.org/using/getting-started.html#toc_3) ve vašem počítači otevřete okno terminálu a spuštěním následujícího příkazu
+1. Pokud jste tak dosud neučinili, [nainstalujte CocoaPods](https://guides.cocoapods.org/using/getting-started.html#toc_3) ve vašem počítači otevřete okno terminálu a spuštěním následujícího příkazu
     
     ```shell   
     sudo gem install cocoapods
     ```
 
-2. V dalším kroku v adresáři projektu (adresář obsahující souboru .xcodeproj) vytvořte nový soubor s názvem _Podfile_(bez přípony souboru). Přidejte následující _Podfile_ a uložte.
+2. V dalším kroku v adresáři projektu (adresář obsahující soubor .xcodeproj) vytvořte nový soubor s názvem _Podfile_(bez přípony souboru). Přidejte následující text do _Podfile_ a uložit.
 
     ```ruby
     platform :ios, '8.0'
@@ -57,24 +57,24 @@ Použití této knihovny, budete potřebovat následující:
     pod install
     ```
 
-4. Pokud vaše .xcodeproj otevřít v Xcode, zavřete ji. V adresáři projektu otevřete soubor nově vytvořený projekt, který bude mít příponu .xcworkspace. Toto je soubor, kterou budete pracujete z nyní na.
+4. Pokud vaše .xcodeproj je otevřít v Xcodu, zavřete ho. V adresáři projektu otevřete soubor nově vytvořený projekt, který bude mít příponu .xcworkspace. Toto je soubor, který budete pracovat z pro nyní na.
 
-## <a name="framework"></a>Framework
-Druhý způsob na používání knihovny, je vytvořit rozhraní ručně:
+## <a name="framework"></a>Rozhraní Framework
+Druhý způsob použití knihovny je sestavení rozhraní ručně:
 
-1. Nejprve stáhnout nebo klonovat [úložišti azure-storage-ios](https://github.com/azure/azure-storage-ios).
-2. Přejděte do *azure-storage-ios* -> *Lib* -> *Klientská knihovna pro úložiště Azure*a otevřete `AZSClient.xcodeproj` v Xcode.
-3. V levém horním pro Xcode změňte schéma active z "Klientská knihovna pro úložiště Azure" na "Framework".
-4. Sestavení projektu (⌘ + B). Tím se vytvoří `AZSClient.framework` soubor na pracovní ploše.
+1. Nejprve stáhněte nebo naklonujte [úložiště azure-storage-ios](https://github.com/azure/azure-storage-ios).
+2. Přejděte do *azure-storage-ios* -> *Lib* -> *Klientská knihovna Azure Storage*a otevřete `AZSClient.xcodeproj` v Xcode.
+3. V levém horním xcode změňte aktivní schéma z "Klientská knihovna Azure Storage" na "Rozhraní".
+4. Sestavte projekt (⌘ + B). Tím se vytvoří `AZSClient.framework` souboru na ploše.
 
-Pak můžete importovat soubor framework do své aplikace následujícím způsobem:
+Pak můžete importovat soubor framework do vaší aplikace následujícím způsobem:
 
-1. Vytvoření nového projektu nebo otevře existující projekt v Xcode.
-2. Přetáhnout myší `AZSClient.framework` do Xcode navigátoru projektů.
+1. Vytvoření nového projektu nebo otevřete existující projekt v Xcode.
+2. Přetáhnout myší `AZSClient.framework` do navigátoru projektů Xcode.
 3. Vyberte *kopírovat položky v případě potřeby*a klikněte na *Dokončit*.
-4. Klikněte na projekt v levém navigačním panelu a klikněte na *Obecné* v horní části editoru projektu.
-5. V části *propojené architektury a knihovny* části, klikněte na tlačítko Přidat (+).
-6. Vyhledejte v seznamu knihoven už poskytuje `libxml2.2.tbd` a přidejte ji do projektu.
+4. Klikněte na projekt v levém navigačním panelu a klikněte na tlačítko *Obecné* kartě v horní části editoru projektu.
+5. V části *propojené architektury a knihovny* klikněte na tlačítko Přidat (+).
+6. V seznamu knihoven, které jsou už k dispozici, vyhledejte `libxml2.2.tbd` a přidejte ho do projektu.
 
 ## <a name="import-the-library"></a>Importovat knihovny 
 ```objc
@@ -82,24 +82,24 @@ Pak můžete importovat soubor framework do své aplikace následujícím způso
 #import <AZSClient/AZSClient.h>
 ```
 
-Pokud používáte Swift, je potřeba vytvořit hlavičku přemostění a importovat < AZSClient/AZSClient.h > existuje:
+Pokud používáte Swift, je potřeba vytvořit hlavičku přemostění Datacenter a importovat < AZSClient/AZSClient.h > existuje:
 
-1. Vytvořte soubor hlavičky `Bridging-Header.h`a přidejte výše uvedený příkaz importu.
-2. Přejděte na *nastavení sestavení* kartě a vyhledejte *hlavičky přemostění jazyka Objective-C*.
-3. Dvakrát klikněte na pole *hlavičky přemostění jazyka Objective-C* a přidejte cestu k souboru hlavičky: `ProjectName/Bridging-Header.h`
-4. Sestavení projektu (⌘ + B) Chcete-li ověřit, že byl hlavičku přemostění zachyceny pomocí Xcode.
-5. Začít používat knihovny přímo v žádném Swift souboru, není nutné pro příkazy pro import.
+1. Vytvořte soubor hlaviček `Bridging-Header.h`a přidejte výše uvedený příkaz import.
+2. Přejděte *nastavení sestavení* kartu a vyhledejte *hlavičky přemostění jazyka Objective-C*.
+3. Dvakrát klikněte na pole *hlavičky přemostění jazyka Objective-C* a přidejte cestu k souboru hlaviček: `ProjectName/Bridging-Header.h`
+4. Sestavte projekt (⌘ + B) Chcete-li ověřit, že hlavičku přemostění Datacenter se prodlouží Xcode.
+5. Začněte používat knihovny přímo v žádném souboru Swift, není nutné pro příkazy pro import.
 
 [!INCLUDE [storage-mobile-authentication-guidance](../../../includes/storage-mobile-authentication-guidance.md)]
 
 ## <a name="asynchronous-operations"></a>Asynchronní operace
 > [!NOTE]
-> Všechny metody, které provádějí požadavek služby jsou asynchronních operací. Ukázky kódu obsahují splnit tyto metody dokončení obslužná rutina. Kód dokončení obslužná rutina se spustí **po** požadavek je dokončen. Kód po dokončení obslužná rutina se spustí **při** se provádí požadavek.
+> Všechny metody, které provádějí požadavek službu jsou asynchronní operace. V ukázkách kódu zjistíte, že tyto metody mají obslužné rutiny dokončení. Spustí kód uvnitř obslužné rutiny dokončení **po** požadavek dokončit. Kód po dokončení obslužná rutina se spustí **při** provádí požadavek.
 > 
 > 
 
 ## <a name="create-a-container"></a>Vytvoření kontejneru
-Každý objekt blob v Azure Storage se musí nacházet v kontejneru. Následující příklad ukazuje, jak vytvořit kontejner, nazývá *newcontainer*, ve vašem účtu úložiště, pokud ještě neexistuje. Když vyberete název vašeho kontejneru, mějte na paměti pojmenování pravidel uvedených výše.
+Každý objekt blob ve službě Azure Storage se musí nacházet v kontejneru. Následující příklad ukazuje, jak vytvořit kontejner volá *newcontainer*, ve vašem účtu úložiště, pokud ještě neexistuje. Když vyberete název kontejneru, dávejte pojmenování pravidel uvedených výše.
 
 ```objc
 -(void)createContainer{
@@ -127,16 +127,16 @@ Každý objekt blob v Azure Storage se musí nacházet v kontejneru. Následují
 }
 ```
 
-Můžete potvrdit, že to funguje na základě [Microsoft Azure Storage Explorer](http://storageexplorer.com) a ověřování, který *newcontainer* je v seznamu kontejnery pro váš účet úložiště.
+Můžete potvrdit, že to funguje, zobrazením [Microsoft Azure Storage Explorer](http://storageexplorer.com) a ověříte, že *newcontainer* je v seznamu kontejnerů pro váš účet úložiště.
 
-## <a name="set-container-permissions"></a>Nastavte oprávnění kontejneru
-Kontejneru oprávnění jsou nakonfigurovaná pro **privátní** přístup ve výchozím nastavení. Kontejnery však obsahují několik různých volbách pro kontejner přístupu:
+## <a name="set-container-permissions"></a>Nastavit oprávnění pro kontejner
+Kontejneru oprávnění jsou nakonfigurované pro **privátní** přístup ve výchozím nastavení. Ale kontejnerů poskytuje několik různých možností přístupu ke kontejneru:
 
-* **Privátní**: kontejnerů a objektů blob dat může číst pouze vlastníka účtu.
-* **Objekt BLOB**: data objektu Blob v tomto kontejneru mohou číst přes anonymní žádost, ale kontejneru data nejsou k dispozici. Klienty nelze vytvořit výčet objektů BLOB v kontejneru přes anonymní žádost.
-* **Kontejner**: přes anonymní dotazy můžete číst data kontejnerů a objektů blob. Klienti, můžete vytvořit výčet objektů BLOB v kontejneru přes anonymní žádost, ale nemůže vytvořit výčet kontejnery v rámci účtu úložiště.
+* **Privátní**: data kontejneru a objektu blob je možné načíst pouze vlastník účtu.
+* **Objekt BLOB**: data objektů Blob v tomto kontejneru lze číst prostřednictvím anonymní žádosti, ale kontejnerů dat není k dispozici. Klienty nelze vytvořit výčet objektů BLOB v kontejneru prostřednictvím anonymní žádosti.
+* **Kontejner**: kontejneru a objektu blob data lze číst prostřednictvím anonymní žádosti. Klienty můžete zobrazit výčet objektů BLOB v kontejneru prostřednictvím anonymní žádosti, ale nelze vytvořit výčet kontejnery v rámci účtu úložiště.
 
-Následující příklad ukazuje, jak vytvořit kontejner s **kontejneru** přístupová oprávnění, které vám umožní přístup k veřejné, jen pro čtení pro všechny uživatele v síti Internet:
+Následující příklad ukazuje, jak vytvořit kontejner s **kontejneru** přístupová oprávnění, které vám umožní přístup public, jen pro čtení pro všechny uživatele na Internetu:
 
 ```objc
 -(void)createContainerWithPublicAccess{
@@ -165,9 +165,9 @@ Následující příklad ukazuje, jak vytvořit kontejner s **kontejneru** pří
 ```
 
 ## <a name="upload-a-blob-into-a-container"></a>Nahrání objektu blob do kontejneru
-Jak je uvedeno v [koncepty služby objektů Blob](#blob-service-concepts) část, úložiště objektů Blob nabízí tři různé typy objektů blob: objekty BLOB bloků, doplňovací objekty BLOB a objekty BLOB stránky. Knihovna iOS Azure Storage podporuje všechny tři typy objektů BLOB. Ve většině případů se jako vhodný typ k použití doporučuje objekt blob bloku.
+Jak je uvedeno v [koncepty služby Blob](#blob-service-concepts) oddílu, úložiště objektů Blob nabízí tři různé typy objektů blob: objekty BLOB bloku, doplňovací objekty BLOB a objekty BLOB stránky. Knihovna pro iOS služby Azure Storage podporuje všechny tři typy objektů BLOB. Ve většině případů se jako vhodný typ k použití doporučuje objekt blob bloku.
 
-Následující příklad ukazuje, jak nahrát objekt blob bloku z NSString. Pokud objekt blob se stejným názvem již existuje v tomto kontejneru, budou přepsány obsah tohoto objektu blob.
+Následující příklad ukazuje, jak nahrát objekt blob bloku ze NSString. Pokud se objekt blob se stejným názvem už v tomto kontejneru existuje, obsah tohoto objektu blob bude přepsán.
 
 ```objc
 -(void)uploadBlobToContainer{
@@ -206,29 +206,29 @@ Následující příklad ukazuje, jak nahrát objekt blob bloku z NSString. Poku
 }
 ```
 
-Můžete potvrdit, že to funguje na základě [Microsoft Azure Storage Explorer](http://storageexplorer.com) a ověřování, který kontejneru, *containerpublic*, obsahuje objekt blob, *sampleblob*. V této ukázce jsme použili kontejner veřejné, tak můžete také ověřit, zda tato aplikace funguje tak, že přejdete na objekty BLOB URI:
+Můžete potvrdit, že to funguje, zobrazením [Microsoft Azure Storage Explorer](http://storageexplorer.com) a ověříte, že kontejner, *containerpublic*, obsahuje objekt blob, *sampleblob*. V této ukázce jsme použili veřejném kontejneru, tak můžete také ověřit, zda tato aplikace funguje tak, že přejdete na identifikátor URI pro objekty BLOB:
 
     https://nameofyourstorageaccount.blob.core.windows.net/containerpublic/sampleblob
 
-Kromě nahrát objekt blob bloku z NSString, existují podobné metody pro NSData, NSInputStream nebo místního souboru.
+Kromě nahrát objekt blob bloku ze NSString, podobné metody existovat NSData, NSInputStream nebo místní soubor.
 
 ## <a name="list-the-blobs-in-a-container"></a>Zobrazí seznam objektů blob v kontejneru
-Následující příklad ukazuje, jak získat seznam všech objektů BLOB v kontejneru. Při provádění této operace, mějte na paměti následující parametry:     
+Následující příklad ukazuje, jak zobrazit seznam všech objektů BLOB v kontejneru. Při provádění této operace, mějte na paměti následující parametry:     
 
-* **continuationToken** -tokenu představuje pokračování kde by se měl spustit operace výpisu. Pokud je k dispozici žádné token, zobrazí seznam objektů BLOB od začátku. Libovolný počet objektů BLOB může být uvedený od nuly až do maximální sady. I když tato metoda vrátí hodnotu nula výsledky, pokud `results.continuationToken` není nulovou hodnotu, může být další objekty BLOB ve službě nejsou uvedené.
-* **Předpona** -můžete určit předpona, kterou chcete použít pro seznam objektů blob. Pouze objekty BLOB, které začínají s touto předponou budou zobrazeny.
-* **useFlatBlobListing** – jak je uvedeno v [pojmenování a odkazování na kontejnery a objekty BLOB](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata) části, i když služba objektů Blob je schéma ploché úložiště, můžete vytvořit virtuální hierarchie názvy objektů BLOB s cestou informace. Výpis bez dvojrozměrném však není aktuálně podporováno. Tato funkce bude brzy k dispozici. Prozatím se tato hodnota by měla být **Ano**.
-* **blobListingDetails** -zadáte vhodných při výpisu objektů BLOB
-  * _AZSBlobListingDetailsNone_: seznam pouze potvrdit objektů BLOB a nevrátí metadata objektu blob.
-  * _AZSBlobListingDetailsSnapshots_: seznam potvrdit objektů BLOB a objektů blob snímky.
-  * _AZSBlobListingDetailsMetadata_: načíst metadata objektu blob pro každý objekt blob vrátila ve výpisu.
-  * _AZSBlobListingDetailsUncommittedBlobs_: seznam objektů BLOB nepotvrzené a potvrzené.
-  * _AZSBlobListingDetailsCopy_: zahrnují kopírování vlastnosti ve výpisu.
-  * _AZSBlobListingDetailsAll_: seznam dostupných potvrdit objekty BLOB, nepotvrzené objekty BLOB a snímky a vrátí všechny metadata a zkopírujte stav pro tyto objekty BLOB.
-* **shluku** – maximální počet výsledků, které se chcete vrátit tuto operaci. Není nastavit omezení pomocí -1.
-* **completionHandler** – blok kódu provést s výsledky operace výpisu.
+* **continuationToken** -token představuje pokračování kde operace výpisu by měla začít. Pokud není k dispozici žádný token, zobrazí se seznam objektů BLOB od začátku. Libovolný počet objektů blob je možný, od nuly až do maximální sady. I v případě, že tato metoda vrátí nula výsledků, pokud `results.continuationToken` nemá hodnotu nil, můžou existovat další BLOB ve službě nejsou uvedené.
+* **Předpona** -můžete určit předpona, kterou chcete použít pro výpis objektů blob. Zobrazí se pouze na objekty BLOB, které začínají s touto předponou.
+* **useFlatBlobListing** – jak je uvedeno v [pojmenování a odkazování na ně kontejnerům a objektům blob](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata) oddíl, i když službu Blob service je schéma plochého úložiště, můžete vytvořit hierarchii virtuální pojmenování objektů BLOB pomocí cesty informace. Bez plochý výpis však není aktuálně podporováno. Tato funkce je již brzy. Prozatím se tato hodnota by měla být **Ano**.
+* **blobListingDetails** -můžete určit položky, které chcete zahrnout při výpisu objektů BLOB
+  * _AZSBlobListingDetailsNone_: výpis pouze potvrzené objektů BLOB a nevrací metadata objektu blob.
+  * _AZSBlobListingDetailsSnapshots_: výpis potvrzené objektů BLOB a snímků objektů blob.
+  * _AZSBlobListingDetailsMetadata_: vrátil načíst metadata objektu blob pro každý objekt blob ve výpisu.
+  * _AZSBlobListingDetailsUncommittedBlobs_: výpis objektů BLOB nepotvrzené a potvrzené.
+  * _AZSBlobListingDetailsCopy_: kopie vlastnosti v seznamu.
+  * _AZSBlobListingDetailsAll_: seznam dostupných potvrzené objekty BLOB, nepotvrzené objekty BLOB a snímků a vrátí všechna metadata a kopírování stav pro tyto objekty BLOB.
+* **maxResults** – maximální počet výsledků k vrácení této operace. Nenastavovat limit použijte hodnotu -1.
+* **completionHandler** – blok kódu, které jsou spouštěny s výsledky operace výpisu.
 
-V tomto příkladu se používá ke Pomocná metoda rekurzivní volání seznamu objektů BLOB metoda pokaždé, když se vrátí token pokračování.
+V tomto příkladu se používá k Pomocná metoda rekurzivní volání seznamu objektů BLOB metoda pokaždé, když se vrátí token pro pokračování.
 
 ```objc
 -(void)listBlobsInContainer{
@@ -282,7 +282,7 @@ V tomto příkladu se používá ke Pomocná metoda rekurzivní volání seznamu
 ```
 
 ## <a name="download-a-blob"></a>Stažení objektu blob
-Následující příklad ukazuje, jak stáhnout objektu blob na objekt NSString.
+Následující příklad ukazuje, jak stáhnout objekt blob na objekt NSString.
 
 ```objc
 -(void)downloadBlobToString{
@@ -317,7 +317,7 @@ Následující příklad ukazuje, jak stáhnout objektu blob na objekt NSString.
 ```
 
 ## <a name="delete-a-blob"></a>Odstranění objektu blob
-Následující příklad ukazuje, jak chcete odstranit objekt blob.
+Následující příklad ukazuje, jak odstranit objekt blob.
 
 ```objc
 -(void)deleteBlob{
@@ -378,13 +378,13 @@ Následující příklad ukazuje, jak odstranit kontejner.
 ```
 
 ## <a name="next-steps"></a>Další postup
-Teď, když jste se naučili používání úložiště Blob z iOS, postupujte podle následujících odkazech na další informace o knihovně iOS a služby úložiště.
+Teď, když jste zjistili, jak používat úložiště objektů Blob z iOS, použijte tyto odkazy na další informace o službě úložiště a knihovny iOS.
 
-* [Azure Klientská knihovna pro úložiště pro iOS](https://github.com/azure/azure-storage-ios)
-* [Azure Storage iOS referenční dokumentaci k nástroji](http://azure.github.io/azure-storage-ios/)
+* [Klientská knihovna Azure Storage pro iOS](https://github.com/azure/azure-storage-ios)
+* [Azure Storage iOS referenční dokumentaci](http://azure.github.io/azure-storage-ios/)
 * [REST API služby Azure Storage](https://msdn.microsoft.com/library/azure/dd179355.aspx)
 * [Blog týmu Azure Storage](http://blogs.msdn.com/b/windowsazurestorage)
 
-Pokud máte dotazy týkající se této knihovny, klidně k vystavování příspěvků na našem [fóru MSDN Azure](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=windowsazuredata) nebo [Stack Overflow](http://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files).
-Pokud máte návrhy na funkce pro Azure Storage, prosím odeslání na [zpětnou vazbu úložiště Azure](https://feedback.azure.com/forums/217298-storage/).
+Pokud máte dotazy týkající se této knihovny, neváhejte přidat do našich [fóra MSDN Azure](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=windowsazuredata) nebo [Stack Overflow](http://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files).
+Pokud máte návrhy funkcí pro službu Azure Storage, přidejte příspěvek do [zpětné vazby úložiště Azure](https://feedback.azure.com/forums/217298-storage/).
 

@@ -1,5 +1,5 @@
-Prostředí Azure Cloud je prostředí založené na prohlížeči prostředí pro správu a vývoj prostředků Azure.
+Azure Cloud Shell je založené na prohlížeči příkazové prostředí ke správě a vývoji prostředků Azure.
 
-Cloudové prostředí nabízí prostředí přístupných prohlížeče, předem nakonfigurovaná prostředí pro správu prostředků Azure bez nutnosti instalace, Správa verzí a údržba počítače s sami.
+Cloud Shell nabízí prostředí přístupných prohlížeče, předem nakonfigurované prostředí pro správu prostředků Azure bez režie instalace, Správa verzí, a udržování počítač sami.
 
-Prostředí cloudu se zřizuje počítače na základě požadavků a proto nebude stav počítače zachová napříč relacemi. Vzhledem k tomu, že pro interaktivní relace je integrované cloudové prostředí, prostředí shell automaticky ukončit po 20 minutách nečinnosti prostředí.
+Cloud Shell zřizuje počítače na základě žádosti a díky tomu nebude stav počítače zachování napříč relacemi. Vzhledem k tomu, že službě Cloud Shell je určená pro interaktivní relace, prostředí se automaticky ukončí po 20 minutách nečinnosti prostředí.

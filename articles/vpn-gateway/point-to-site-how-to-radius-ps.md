@@ -1,6 +1,6 @@
 ---
-title: 'Připojení počítače k virtuální síti pomocí ověřování Point-to-Site a protokolu RADIUS: prostředí PowerShell | Azure'
-description: Zabezpečené připojení klientů systému Windows a Mac OS X k virtuální netowrk pomocí ověřování P2S a protokolu RADIUS.
+title: 'Připojení počítače k virtuální síti pomocí ověřování Point-to-Site a protokolu RADIUS: PowerShell | Azure'
+description: Připojování klientů Windows a Mac OS X k virtuální netowrk pomocí ověřování P2S a protokolu RADIUS.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
@@ -16,24 +16,24 @@ ms.workload: infrastructure-services
 ms.date: 02/12/2018
 ms.author: anzaman
 ms.openlocfilehash: df7afe9324831ffb8e79d7320f2c716ed18a7b4f
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35267345"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38719681"
 ---
-# <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell"></a>Konfigurace připojení typu Point-to-Site k virtuální síti pomocí ověřování protokolu RADIUS: prostředí PowerShell
+# <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell"></a>Konfigurace připojení typu Point-to-Site k virtuální síti s použitím ověřování pomocí protokolu RADIUS: PowerShell
 
-Tento článek ukazuje, jak vytvořit virtuální síť s připojením Point-to-Site, která používá ověřování pomocí protokolu RADIUS. Tato konfigurace je dostupná jenom pro model nasazení Resource Manager.
+Tento článek ukazuje, jak vytvořit virtuální síť s připojením Point-to-Site, která používá ověřování pomocí protokolu RADIUS. Tato konfigurace dostupná jenom pro model nasazení Resource Manager.
 
-Brána VPN typu Point-to-Site (P2S) umožňuje vytvořit zabezpečené připojení k virtuální síti z jednotlivých klientských počítačů. Připojení point-to-Site VPN jsou užitečné, pokud se chcete připojit k virtuální síti ze vzdáleného umístění, například když se jsou telefonicky z domova nebo z konference. Síť VPN P2S je také užitečným řešením nahrazujícím síť VPN Site-to-Site, pokud máte pouze několik klientů, kteří se potřebují připojit k virtuální síti.
+Brána VPN typu Point-to-Site (P2S) umožňuje vytvořit zabezpečené připojení k virtuální síti z jednotlivých klientských počítačů. Připojení k síti VPN Point-to-Site jsou užitečné, pokud chcete pro připojení k virtuální síti ze vzdáleného umístění, například při práci z domova nebo z místa konání konference. Síť VPN P2S je také užitečným řešením nahrazujícím síť VPN Site-to-Site, pokud máte pouze několik klientů, kteří se potřebují připojit k virtuální síti.
 
 Připojení VPN typu P2S se zahájí ze zařízení se systémem Windows nebo Mac. Klienti při připojování mohou využít následující metody ověřování:
 
 * Server RADIUS
-* Ověřování pomocí certifikátu nativní brána sítě VPN
+* Brána VPN nativního ověřování certifikátů
 
-Tento článek vám pomůže nakonfigurovat P2S konfigurace ověřování pomocí protokolu RADIUS serveru. Pokud chcete provést ověření pomocí generovaného certifikátů a ověřování nativní certifikát brány VPN místo toho najdete v tématu [konfigurace připojení typu Point-to-Site k virtuální síti VPN gateway nativní ověřování pomocí certifikátů](vpn-gateway-howto-point-to-site-rm-ps.md).
+Tento článek pomůže vám nakonfigurovat konfiguraci P2S s ověřováním pomocí protokolu RADIUS server. Pokud chcete ověřit, místo toho použít certifikáty generované a VPN gateway nativního ověřování certifikátů, přečtěte si téma [konfigurace připojení typu Point-to-Site k virtuální síti pomocí sítě VPN gateway nativního ověřování certifikátů](vpn-gateway-howto-point-to-site-rm-ps.md).
 
 ![Diagram připojení - RADIUS](./media/point-to-site-how-to-radius-ps/p2sradius.png)
 
@@ -46,25 +46,25 @@ Připojení typu Point-to-Site nevyžadují zařízení VPN ani veřejnou IP adr
 Připojení typu Point-to-Site vyžadují:
 
 * Bránu VPN typu RouteBased. 
-* Server RADIUS pro zpracování ověření uživatele. RADIUS server lze nasadit místně, nebo ve virtuální síti Azure.
-* Balíček konfigurace klienta VPN pro zařízení Windows, která se budou připojovat k virtuální síti. Balíček konfigurace klienta VPN obsahuje nastavením požadovaným pro připojení přes P2S klienta VPN.
+* Server RADIUS pro zpracování ověření uživatele. RADIUS server může být nasazená místně, nebo ve virtuální síti Azure.
+* Konfiguračního balíčku klienta VPN pro zařízení Windows, které se připojují k virtuální síti. Konfigurační balíček klienta VPN obsahuje požadované nastavení pro klienta VPN pro připojení přes P2S.
 
-## <a name="aboutad"></a>O ověřování v doméně služby Active Directory (AD) pro sítě VPN P2S
+## <a name="aboutad"></a>Informace o ověřování v doméně služby Active Directory (AD) pro P2S VPN
 
-Ověřování v doméně AD umožňuje uživatelům přihlášení do Azure pomocí svých přihlašovacích údajů domény organizace. To vyžaduje server RADIUS, který se integruje s serveru služby AD. Organizace můžete využít i jejich stávající nasazení protokolu RADIUS.
+Doménové ověřování AD umožňuje uživatelům přihlášení do Azure pomocí svých firemních přihlašovacích údajů domény. Vyžaduje server RADIUS, která se integruje se serverem AD. Organizace také můžete využít své stávající nasazení pomocí protokolu RADIUS.
  
-RADIUS server může být spuštěn místně nebo ve vaší virtuální síti Azure. Při ověřování služby VPN gateway funguje jako předávací a předávání zpráv ověřování mezi serverem RADIUS a zařízení pro připojení. Je důležité pro bránu VPN, moct připojit k serveru RADIUS. Pokud RADIUS server se nacházejí na místních, připojení VPN typu Site-to-Site z Azure do místní lokality není potřeba.
+RADIUS server může být místní, nebo ve vaší virtuální síti Azure. Během ověřování VPN gateway funguje jako předávací a předávání zpráv ověřování vpřed a zpět mezi serverem RADIUS a připojení zařízení. Je důležité pro VPN gateway bude moct připojit k serveru RADIUS. Pokud je server protokolu RADIUS v místním, vyžaduje se připojení VPN Site-to-Site z Azure do místní lokality.
 
-Kromě služby Active Directory můžete RADIUS server také integrovat s jinými systémy externí identity. Otevře se hodně možnosti ověřování pro sítě Point-to-Site VPN, včetně možnosti vícefaktorového ověřování. Podívejte se do dokumentace dodavatele serveru RADIUS získat seznam systémů identit, které se integruje.
+Kromě služby Active Directory server protokolu RADIUS můžete integrovat také s jinými systémy pro externí identity. Otevře spoustu možnosti ověřování pro připojení Point-to-Site VPN, včetně možnosti MFA. Kontrola protokolu RADIUS serveru dokumentace od příslušného dodavatele zobrazíte seznam systémů identit, které se integruje se službou.
 
 ![Diagram připojení - RADIUS](./media/point-to-site-how-to-radius-ps/radiusimage.png)
 
 > [!IMPORTANT]
->Pouze připojení VPN typu Site-to-Site lze použít pro připojení k serveru protokolu RADIUS na místě. Připojení typu ExpressRoute nelze použít.
+>Pouze připojení VPN typu Site-to-Site lze použít pro připojení k serveru pomocí protokolu RADIUS v místním prostředí. Připojení ExpressRoute nejde použít.
 >
 >
 
-## <a name="before"></a>Před zahájením
+## <a name="before"></a>Než začnete
 
 * Ověřte, že máte předplatné Azure. Pokud ještě nemáte předplatné Azure, můžete si aktivovat [výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/pricing/free-trial).
 
@@ -90,14 +90,14 @@ Příklady hodnot můžete použít k vytvoření testovacího prostředí nebo 
 * **Předplatné:** Ujistěte se, že máte správné předplatné, pokud máte více než jedno.
 * **Skupina prostředků: TestRG**
 * **Umístění: Východní USA**
-* **Serveru DNS: IP adresa** serveru DNS, který chcete použít pro překlad názvů pro virtuální síť. (volitelné)
+* **Serveru DNS: IP adresa** serveru DNS, který chcete použít pro překlad názvů pro vaši virtuální síť. (volitelné)
 * **Název brány: Vnet1GW**
 * **Název veřejné IP adresy: VNet1GWPIP**
 * **Typ sítě VPN: RouteBased** 
 
-## 1. <a name="vnet"></a>Vytvoření skupiny prostředků, virtuální síť a veřejnou IP adresu
+## 1. <a name="vnet"></a>Vytvořte skupinu prostředků, virtuální sítě a veřejné IP adresy
 
-Následující postup vytvořte skupinu prostředků a virtuální síť ve skupině prostředků s tři podsítě. Při nahrazování hodnot je důležité vždy pojmenovat podsítě brány konkrétně GatewaySubnet. Pokud jste jiný název, vytvoření brány se nezdaří;
+Následující postup vytvořte skupinu prostředků a virtuální sítě ve skupině prostředků se třemi podsítěmi. Při nahrazování hodnot je důležité vždy pojmenovat podsítě brány speciálně "GatewaySubnet". Pokud jste jiný název, vytvoření brány selže.
 
 1. Vytvořte skupinu prostředků.
 
@@ -113,14 +113,14 @@ Následující postup vytvořte skupinu prostředků a virtuální síť ve skup
   ```
 3. Vytvořte virtuální síť.
 
-  V tomto příkladu je parametr serveru -DnsServer volitelný. Zadání hodnoty nevytvoří nový server DNS. Server DNS, jehož IP adresu zadáte, by měl být server DNS, který dokáže přeložit názvy pro prostředky, ke kterým se ze své virtuální sítě připojujete. V tomto příkladu jsme použili privátní IP adresu, ale je pravděpodobné, že to není IP adresa vašeho serveru DNS. Je potřeba, abyste použili svoje vlastní hodnoty. Prostředky, které nasadíte do virtuální sítě, ne podle připojení P2S používá hodnotu, kterou jste určili.
+  V tomto příkladu je parametr serveru -DnsServer volitelný. Zadání hodnoty nevytvoří nový server DNS. Server DNS, jehož IP adresu zadáte, by měl být server DNS, který dokáže přeložit názvy pro prostředky, ke kterým se ze své virtuální sítě připojujete. V tomto příkladu jsme použili privátní IP adresu, ale je pravděpodobné, že to není IP adresa vašeho serveru DNS. Je potřeba, abyste použili svoje vlastní hodnoty. Hodnota, kterou zadáte, používá prostředky, které nasadíte do virtuální sítě, ne pomocí připojení P2S.
 
   ```powershell
   New-AzureRmVirtualNetwork -Name "VNet1" -ResourceGroupName "TestRG" -Location "East US" -AddressPrefix "192.168.0.0/16","10.254.0.0/16" -Subnet $fesub, $besub, $gwsub -DnsServer 10.2.1.3
   ```
 4. Brána VPN musí mít veřejnou IP adresu. Nejprve si vyžádáte prostředek IP adresy a pak na něj budete odkazovat při vytváření brány virtuální sítě. IP adresa se dynamicky přiřadí k prostředku po vytvoření brány VPN. Služba VPN Gateway aktuálně podporuje pouze *dynamické* přidělení veřejné IP adresy. Nemůžete si vyžádat statické přiřazení IP adresy. To ale neznamená, že se IP adresa po přiřazení k vaší bráně VPN bude měnit. Veřejná IP adresa se změní pouze v případě odstranění a nového vytvoření brány. V případě změny velikosti, resetování nebo jiné operace údržby/upgradu vaší brány VPN se nezmění.
 
-  Určete proměnné, k vyžádání dynamicky přiřazenou veřejnou IP adresu.
+  Zadejte proměnné pro žádost o dynamicky přidělovanou veřejnou IP adresu.
 
   ```powershell
   $vnet = Get-AzureRmVirtualNetwork -Name "VNet1" -ResourceGroupName "TestRG"  
@@ -129,22 +129,22 @@ Následující postup vytvořte skupinu prostředků a virtuální síť ve skup
   $ipconf = New-AzureRmVirtualNetworkGatewayIpConfig -Name "gwipconf" -Subnet $subnet -PublicIpAddress $pip
   ```
 
-## 2. <a name="radius"></a>Nastavit server protokolu RADIUS
+## 2. <a name="radius"></a>Nastavení serveru protokolu RADIUS
 
-Před vytvoření a konfiguraci brány virtuální sítě, by měl být serveru RADIUS, správně nakonfigurovaná pro ověřování.
+Před vytvořením a konfigurace brány virtuální sítě, musí být serveru RADIUS, správně nakonfigurovaný pro ověřování.
 
-1. Pokud nemáte server RADIUS nasazené, nasaďte jednu. Kroky nasazení naleznete v Průvodci instalací poskytované dodavatelem protokolu RADIUS.  
-2. Nakonfigurujte bránu VPN jako klienta protokolu RADIUS na POLOMĚR. Při přidávání tohoto klienta RADIUS, zadejte virtuální síť GatewaySubnet, kterou jste vytvořili. 
-3. RADIUS server je nastaveno, získáte IP adresu serveru RADIUS a sdílený tajný klíč, který by měl klientů RADIUS použít ke komunikaci se serverem RADIUS. Pokud RADIUS server ve virtuální síti Azure, použijte certifikační Autority IP ze serveru RADIUS virtuálních počítačů.
+1. Pokud nemáte server RADIUS nasazené, nasaďte jednu. Kroky nasazení najdete v Průvodci instalací poskytované dodavatelem RADIUS.  
+2. Konfigurace brány VPN jako klienta protokolu RADIUS na POLOMĚR. Při přidávání tohoto klienta RADIUS, zadejte virtuální síť podsíť brány, kterou jste vytvořili. 
+3. Po nastavení serveru protokolu RADIUS se získáte IP adresu serveru RADIUS a sdílený tajný klíč RADIUS klienti měli používat ke komunikaci se serverem RADIUS. Pokud RADIUS server je ve virtuální síti Azure, použijte certifikační Autority IP adresa serveru RADIUS, virtuálního počítače.
 
-[Server NPS (Network Policy Server)](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top) článek obsahuje pokyny týkající se konfigurace Windows RADIUS serveru (NPS Server) pro ověřování v doméně AD.
+[Server NPS (Network Policy Server)](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top) článek obsahuje pokyny týkající se konfigurace Windows RADIUS server (NPS) pro ověřování v doméně AD.
 
 ## 3. <a name="creategw"></a>Vytvoření brány VPN
 
-Nakonfigurujte a vytvořte bránu VPN pro virtuální síť.
+Nakonfigurujte a vytvořte bránu VPN pro vaši virtuální síť.
 
-* Parametr-GatewayType musí být 'Vpn, a parametr - VpnType musí být 'RouteBased'.
-* Brána sítě VPN může trvat až 45 minut na dokončení, v závislosti na [skladová položka brány](vpn-gateway-about-vpn-gateway-settings.md#gwsku) vyberete.
+* Parametr-GatewayType musí být "Vpn" a parametr-VpnType musí být "RouteBased".
+* Brány VPN může trvat až 45 minut, v závislosti na tom [skladové položky brány](vpn-gateway-about-vpn-gateway-settings.md#gwsku) vyberete.
 
 ```powershell
 New-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
@@ -152,19 +152,19 @@ New-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
 -VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw1
 ```
 
-## 4. <a name="addradius"></a>Přidejte fond adres serveru a klienta protokolu RADIUS
+## 4. <a name="addradius"></a>Přidání fondu adres serveru a klienta protokolu RADIUS
  
-* -RadiusServer lze zadat pomocí názvu nebo podle IP adresy. Pokud zadáte název a server se nachází v místě, nemusí být schopni vyřešit název brány sítě VPN. Pokud je to tento případ, je lepší zadejte IP adresu serveru. 
-* -RadiusSecret by měl odpovídat, co je nakonfigurované na serveru RADIUS.
-* -VpnCientAddressPool je oblast, odkud přijímat připojení klienti VPN IP adresu. Použijte rozsah privátních IP adres, který se nepřekrývá s místním umístěním, ze kterého se budete připojovat, nebo s virtuální sítí, ke které se chcete připojit. Ujistěte se, že máte nakonfigurovaný fond dostatečně velké na adresu.  
+* RadiusServer – je možné zadat pomocí názvu nebo podle IP adresy. Pokud zadáte název a server se nachází v místním, nemusí být schopni vyřešit název brány sítě VPN. Pokud je to tento případ, je lepší zadejte IP adresu serveru. 
+* -RadiusSecret by měl odpovídat, co je nakonfigurováno na serveru RADIUS.
+* -VpnCientAddressPool je oblast, ze kterého dostanou připojovaní klienti VPN IP adresu. Použijte rozsah privátních IP adres, který se nepřekrývá s místním umístěním, ze kterého se budete připojovat, nebo s virtuální sítí, ke které se chcete připojit. Ujistěte se, že máte fond dostatečně velký adres, nakonfigurována.  
 
-1. Vytvořte zabezpečený řetězec pro POLOMĚR tajný.
+1. Vytvořte zabezpečený řetězec poloměru tajného kódu.
 
   ```powershell
   $Secure_Secret=Read-Host -AsSecureString -Prompt "RadiusSecret"
   ```
 
-2. Zobrazí se výzva k zadání tajného klíče protokolu RADIUS. Znaky, které zadáte, se nezobrazí a místo toho budou nahrazeny "*" znak.
+2. Zobrazí se výzva k zadání tajný klíč RADIUS. Znaky, které zadáte, se nezobrazí a místo toho bude nahrazen "*" znak.
 
   ```powershell
   RadiusSecret:***
@@ -198,22 +198,22 @@ New-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
     -RadiusServerAddress "10.51.0.15" -RadiusServerSecret $Secure_Secret
     ```
 
-## 5. <a name="vpnclient"></a>Stáhněte balíček konfigurace klienta VPN a nastavení klienta VPN
+## 5. <a name="vpnclient"></a>Stažení konfiguračního balíčku klienta VPN a nastavení klienta VPN
 
-Konfigurace klienta VPN umožňuje připojení k virtuální síti přes připojení P2S zařízením. Generovat balíček konfigurace klienta VPN a nastavení klienta VPN najdete v tématu [vytvořit konfiguraci klienta VPN pro ověřování pomocí protokolu RADIUS](point-to-site-vpn-client-configuration-radius.md).
+Konfigurace klienta VPN umožňuje připojení k virtuální síti přes připojení P2S zařízením. Generování konfiguračního balíčku klienta VPN a nastavení klienta VPN najdete v tématu [vytvořit konfiguraci klienta VPN pro ověřování pomocí protokolu RADIUS](point-to-site-vpn-client-configuration-radius.md).
 
 ## <a name="connect"></a>6. Připojení k Azure
 
 ### <a name="to-connect-from-a-windows-vpn-client"></a>Připojení z klienta VPN systému Windows
 
-1. Chcete-li se připojit ke své síti VNet, přejděte na klientském počítači na připojení VPN a vyhledejte připojení VPN, které jste vytvořili. Bude mít stejný název jako vaše virtuální síť. Zadejte své přihlašovací údaje domény a klikněte na tlačítko "Připojit". Se zobrazí automaticky otevírané okno zprávy, která žádá zvýšenými oprávněními. Jejich přijetí a zadejte přihlašovací údaje.
+1. Chcete-li se připojit ke své síti VNet, přejděte na klientském počítači na připojení VPN a vyhledejte připojení VPN, které jste vytvořili. Bude mít stejný název jako vaše virtuální síť. Zadejte svoje přihlašovací údaje domény a klikněte na tlačítko "Připojit". Zobrazí se místní zpráva požadující zvýšenými oprávněními. Přijmout a zadejte přihlašovací údaje.
 
   ![Připojení klienta VPN k Azure](./media/point-to-site-how-to-radius-ps/client.png)
 2. Vaše připojení bylo vytvořeno.
 
   ![Vytvořené připojení](./media/point-to-site-how-to-radius-ps/connected.png)
 
-### <a name="connect-from-a-mac-vpn-client"></a>Připojení z klienta Mac VPN
+### <a name="connect-from-a-mac-vpn-client"></a>Připojení z klienta VPN pro Mac
 
 V dialogovém okně Síť vyhledejte klientský profil, který chcete použít, a potom klikněte na **Připojit**.
 
@@ -237,7 +237,7 @@ V dialogovém okně Síť vyhledejte klientský profil, který chcete použít, 
       NetBIOS over Tcpip..............: Enabled
   ```
 
-K vyřešení připojení P2S najdete v tématu [připojení point-to-site řešení potíží s Azure](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md).
+Řešení potíží s připojení P2S, naleznete v tématu [připojení point-to-site řešení potíží s Azure](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md).
 
 ## <a name="connectVM"></a>Připojení k virtuálnímu počítači
 
@@ -245,7 +245,7 @@ K vyřešení připojení P2S najdete v tématu [připojení point-to-site řeš
 
 ## <a name="faq"></a>Nejčastější dotazy
 
-Tyto nejčastější dotazy se vztahuje na P2S pomocí ověřování protokolu RADIUS
+Tyto nejčastější dotazy se vztahuje na P2S pomocí ověřování pomocí protokolu RADIUS
 
 [!INCLUDE [Point-to-Site RADIUS FAQ](../../includes/vpn-gateway-faq-p2s-radius-include.md)]
 

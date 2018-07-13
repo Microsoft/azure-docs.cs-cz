@@ -1,35 +1,35 @@
 ---
-title: Omezení paměti a souběžnost – Azure SQL Data Warehouse | Microsoft Docs
-description: Zobrazení omezení paměti a souběžnost přidělit různé úrovně výkonu a třídy prostředků v Azure SQL Data Warehouse.
+title: Omezení paměti a souběžnosti – Azure SQL Data Warehouse | Dokumentace Microsoftu
+description: Zobrazení omezení paměti a souběžnosti přidělené pro různé úrovně výkonu a třídy prostředků ve službě Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
-ms.date: 05/07/2018
+ms.date: 07/10/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 46d41e3ee85deb20f189bc9c82a255178f3d7eee
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 802dbcdf797147d4f4dcf7835aea9c952127113e
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33942249"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38652264"
 ---
-# <a name="memory-and-concurrency-limits-for-azure-sql-data-warehouse"></a>Paměť a souběžnost limity pro Azure SQL Data Warehouse
-Zobrazení omezení paměti a souběžnost přidělit různé úrovně výkonu a třídy prostředků v Azure SQL Data Warehouse. Další informace a chcete použít tyto možnosti pro váš plán úloh správy, najdete v části [třídy prostředků pro úlohy správy](resource-classes-for-workload-management.md). 
+# <a name="memory-and-concurrency-limits-for-azure-sql-data-warehouse"></a>Omezení paměti a souběžnosti pro službu Azure SQL Data Warehouse
+Zobrazení omezení paměti a souběžnosti přidělené pro různé úrovně výkonu a třídy prostředků ve službě Azure SQL Data Warehouse. Další informace a použít tyto možnosti pro váš plán úloh správy najdete v tématu [třídy prostředků pro správu úloh](resource-classes-for-workload-management.md). 
 
-Aktuálně nejsou k dispozici s SQL Data Warehouse – Gen1 a Gen2 dvou generací. Doporučujeme že využít Gen2 z SQL Data Warehouse získat nejlepšího výkonu pro vaše úlohy datového skladu. Gen2 zavádí nové mezipaměti NVMe plnou stav disku, který udržuje nejčastěji používaná data blízko procesorů. Touto akcí odeberete vzdálené vstupy/výstupy pro zatížení nejvíce náročné a náročná. Kromě výkonu Gen2 nabízí nejvyšší úroveň škálování umožňuje škálovat až 30 000 jednotky datového skladu a poskytnutím neomezená sloupcovém úložiště. Jsme bude stále podporují předchozí generace (Gen1) SQL Data Warehouse a zachovat stejné funkce; ale doporučujeme vám [upgradovat na Gen2](upgrade-to-latest-generation.md) na nejbližší usnadnění práce. 
+Aktuálně nejsou k dispozici s využitím SQL Data Warehouse – Gen1 a Gen2 dvou generací. Doporučujeme že využít Gen2 služby SQL Data Warehouse na co nejlepšího výkonu pro vaše úlohy datového skladu. Gen2 zavádí novou mezipaměť disku NVMe SSD, která udržuje nejčastěji používaná data blízko procesorům. Tato operace odebere vzdálené vstupy/výstupy pro největší náročné a náročných úloh. Kromě výkonu Gen2 nabízí nejvyšší úroveň škálování umožňuje škálovat až 30 000 jednotek datového skladu a poskytnutím neomezené sloupcové úložiště. Budeme dál podporovat předchozí generace (Gen1) služby SQL Data Warehouse a zachovat stejné funkce; ale doporučujeme vám [upgradovat na Gen2](upgrade-to-latest-generation.md) nejdříve. 
 
 ## <a name="data-warehouse-capacity-settings"></a>Nastavení kapacity datového skladu
-Následující tabulky uvádí maximální kapacity pro datový sklad na výkon různých úrovních. Chcete-li změnit úroveň výkonu, [škálování výpočetní - portálu](quickstart-scale-compute-portal.md).
+Maximální kapacita pro datový sklad na různé úrovně výkonu v následujících tabulkách. Chcete-li změnit úroveň výkonu, [škálování výpočetních - portálu](quickstart-scale-compute-portal.md).
 
 ### <a name="gen2"></a>Gen2
 
-Gen2 poskytuje 2,5 x více paměti na jeden dotaz, než Gen1. Tuto paměť navíc pomáhá Gen2, poskytovat jeho vysoký výkon.  Úrovně výkonu rozsah Gen2 z DW1000c DW30000c. 
+Gen2 poskytuje 2,5 × více paměti na dotazu než Gen1. Tuto paměť navíc pomáhá Gen2 jeho rychlý výkon.  Úrovně výkonu na Gen2 oblast z DW1000c DW30000c. 
 
-| Úroveň výkonu | Výpočetní uzly | Distribuce na výpočetním uzlu | Paměť za datového skladu (GB) |
+| Úroveň výkonu | Výpočetní uzly | Distribuce podle počtu výpočetních uzlů | Paměť na datový sklad (GB) |
 |:-----------------:|:-------------:|:------------------------------:|:------------------------------:|
 | DW1000c           | 2             | 30                             |   600                          |
 | DW1500c           | 3             | 20                             |   900                          |
@@ -43,20 +43,20 @@ Gen2 poskytuje 2,5 x více paměti na jeden dotaz, než Gen1. Tuto paměť naví
 | DW15000c          | 30            | 2                              |  9000                          |
 | DW30000c          | 60            | 1                              | 18000                          |
 
-Maximální Gen2 DWU je DW30000c, který má 60 výpočetních uzlů a jeden distribuční na výpočetním uzlu. Například datový sklad 600 TB na DW30000c zpracovává přibližně 10 TB na výpočetním uzlu.
+Maximální DWU Gen2 je DW30000c, který má 60 výpočetních uzlů a k jednomu distribučnímu na výpočetním uzlu. Například datový sklad 600 TB na DW30000c zpracovává přibližně 10 TB na výpočetním uzlu.
 
 ### <a name="gen1"></a>Gen1
 
-Úrovně služeb pro Gen1 rozsahu od od DW100 do DW6000. 
+Úrovně služeb pro Gen1 v rozmezí od DW100 až DW6000. 
 
-| Úroveň výkonu | Výpočetní uzly | Distribuce na výpočetním uzlu | Paměť za datového skladu (GB) |
+| Úroveň výkonu | Výpočetní uzly | Distribuce podle počtu výpočetních uzlů | Paměť na datový sklad (GB) |
 |:-----------------:|:-------------:|:------------------------------:|:------------------------------:|
-| OD DW100             | 1             | 60                             |  24                            |
-| DW200             | 2             | 30                             |  48                            |
+| DW100             | 1             | 60                             |  24                            |
+| ÚROVEŇ DW200             | 2             | 30                             |  48                            |
 | DW300             | 3             | 20                             |  72                            |
 | DW400             | 4             | 15                             |  96                            |
 | DW500             | 5             | 12                             | 120                            |
-| DW600             | 6             | 10                             | 144                            |
+| ÚROVEŇ DW600             | 6             | 10                             | 144                            |
 | DW1000            | 10            | 6                              | 240                            |
 | DW1200            | 12            | 5                              | 288                            |
 | DW1500            | 15            | 4                              | 360                            |
@@ -65,21 +65,21 @@ Maximální Gen2 DWU je DW30000c, který má 60 výpočetních uzlů a jeden dis
 | DW6000            | 60            | 1                              | 1440                           |
 
 ## <a name="concurrency-maximums"></a>Maximální hodnoty souběžnosti
-Zajistit, že každý dotaz nemá dostatek prostředků k úspěšnému provedení SQL Data Warehouse sleduje využití prostředků přiřazením souběžnosti sloty každý dotaz. Systém převádí dotazy do fronty kde budou čekat dostatek [souběžnosti sloty](resource-classes-for-workload-management.md#concurrency-slots) jsou k dispozici. Sloty souběžnosti taky určit stanovení priorit procesoru. Další informace najdete v tématu [analyzovat vaše úlohy](analyze-your-workload.md)
+Zajistit, že každý dotaz nemá dostatek prostředků k úspěšnému provedení SQL datový sklad sleduje využití prostředků přiřazením slotů souběžnosti každý dotaz. Systém vloží dotazy do fronty, kde počkat do dostatek [slotů souběžnosti](resource-classes-for-workload-management.md#concurrency-slots) jsou k dispozici. Sloty souběžnosti taky určit stanovení procesoru. Další informace najdete v tématu [analýza úloh](analyze-your-workload.md)
 
 ### <a name="gen2"></a>Gen2
  
-**Statické prostředků třídy**
+**Statických tříd prostředků**
 
-Následující tabulka uvádí maximální počet souběžných dotazů a souběžnosti sloty pro každou [Třída prostředků se statickou](resource-classes-for-workload-management.md).  
+Následující tabulka uvádí maximální počet souběžných dotazů a slotů souběžnosti pro každou [statický prostředek třídy](resource-classes-for-workload-management.md).  
 
-| Úroveň služby | Maximální počet souběžných dotazů | Concurrency sloty, které jsou k dispozici |staticrc10 | staticrc20 | staticrc30 | staticrc40 | staticrc50 | staticrc60 | staticrc70 | staticrc80 |
+| Úroveň služby | Maximální počet souběžných dotazů | Dostupné sloty souběžnosti |staticrc10 | staticrc20 | staticrc30 | staticrc40 | staticrc50 | staticrc60 | staticrc70 | staticrc80 |
 |:-------------:|:--------------------------:|:---------------------------:|:---------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|
 | DW1000c       | 32                         |   40                        | 1         | 2          | 4          | 8          | 16         | 32         | 32         |  32        |
 | DW1500c       | 32                         |   60                        | 1         | 2          | 4          | 8          | 16         | 32         | 32         |  32        |
 | DW2000c       | 48                         |   80                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         |  64        |
 | DW2500c       | 48                         |  100                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         |  64        |
-| DW3000c       | 64                         |  120                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
+| DW3000c       | 64                         |  120                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         |  64        |
 | DW5000c       | 64                         |  200                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
 | DW6000c       | 128                        |  240                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
 | DW7500c       | 128                        |  300                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
@@ -87,16 +87,16 @@ Následující tabulka uvádí maximální počet souběžných dotazů a soubě
 | DW15000c      | 128                        |  600                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
 | DW30000c      | 128                        | 1200                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
 
-**Dynamické prostředků třídy**
+**Dynamický prostředek třídy**
 
 > [!NOTE]
-> Třída prostředků smallrc na Gen2 dynamicky přidá paměti jako zvyšuje úrovně služby a podporuje pouze maximální počet souběžných dotazů 32.  Sloty souběžnosti a paměti, které zvýší smallrc jako zvýšení úrovně služby. 
+> Třída prostředků smallrc na Gen2 paměti dynamicky přidá zvyšuje úroveň služby a pouze podporuje maximální 32 souběžných dotazů.  Sloty souběžnosti a paměť používanou smallrc zvýšení jako zvýšení úrovně služby. 
 >
 >
 
-Následující tabulka uvádí maximální počet souběžných dotazů a souběžnosti sloty pro každou [třída dynamické prostředků](resource-classes-for-workload-management.md). Na rozdíl od Gen1 je skutečně dynamická tříd dynamické prostředků na Gen2.  Gen2 využívá 3-10-22-70 procento přidělení paměti pro malé – střední velké xlarge prostředků třídy v všech úrovní služeb.
+Následující tabulka uvádí maximální počet souběžných dotazů a slotů souběžnosti pro každou [dynamickou třídu prostředků](resource-classes-for-workload-management.md). Na rozdíl od Gen1 jsou skutečně dynamické dynamický prostředek třídy na Gen2.  Gen2 používá 3-10-22-70 procento přidělení paměti pro třídy prostředků (krátkodobé používání) – střední velké xlarge ve všech úrovní služeb.
 
-| Úroveň služby | Maximální počet souběžných dotazů | Concurrency sloty, které jsou k dispozici | Sloty používané smallrc | Sloty používané mediumrc | Sloty používané largerc | Sloty používané xlargerc |
+| Úroveň služby | Maximální počet souběžných dotazů | Dostupné sloty souběžnosti | Sloty používané smallrc | Sloty používané mediumrc | Sloty používané largerc | Sloty používané xlargerc |
 |:-------------:|:--------------------------:|:---------------------------:|:---------------------:|:----------------------:|:---------------------:|:----------------------:|
 | DW1000c       | 32                         |   40                        | 1                     |  4                     |  8                    |  28                    |
 | DW1500c       | 32                         |   60                        | 1                     |  6                     |  13                   |  42                    |
@@ -114,18 +114,18 @@ Následující tabulka uvádí maximální počet souběžných dotazů a soubě
 
 #### <a name="gen1"></a>Gen1
 
-Statické prostředků třídy
+Statických tříd prostředků
 
-Následující tabulka uvádí maximální počet souběžných dotazů a souběžnosti sloty pro každou [Třída prostředků se statickou](resource-classes-for-workload-management.md) na **Gen1**.
+Následující tabulka uvádí maximální počet souběžných dotazů a slotů souběžnosti pro každou [statický prostředek třídy](resource-classes-for-workload-management.md) na **Gen1**.
 
-| Úroveň služby | Maximální počet souběžných dotazů | Sloty maximální souběžnosti |staticrc10 | staticrc20 | staticrc30 | staticrc40 | staticrc50 | staticrc60 | staticrc70 | staticrc80 |
+| Úroveň služby | Maximální počet souběžných dotazů | Sloty souběžnosti maximální |staticrc10 | staticrc20 | staticrc30 | staticrc40 | staticrc50 | staticrc60 | staticrc70 | staticrc80 |
 |:-------------:|:--------------------------:|:-------------------------:|:---------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|
-| OD DW100         | 4                          |   4                       | 1         | 2          | 4          | 4          |  4         |  4         |  4         |   4        |
-| DW200         | 8                          |   8                       | 1         | 2          | 4          | 8          |  8         |  8         |  8         |   8        |
+| DW100         | 4                          |   4                       | 1         | 2          | 4          | 4          |  4         |  4         |  4         |   4        |
+| ÚROVEŇ DW200         | 8                          |   8                       | 1         | 2          | 4          | 8          |  8         |  8         |  8         |   8        |
 | DW300         | 12                         |  12                       | 1         | 2          | 4          | 8          |  8         |  8         |  8         |   8        |
 | DW400         | 16                         |  16                       | 1         | 2          | 4          | 8          | 16         | 16         | 16         |  16        |
 | DW500         | 20                         |  20                       | 1         | 2          | 4          | 8          | 16         | 16         | 16         |  16        |
-| DW600         | 24                         |  24                       | 1         | 2          | 4          | 8          | 16         | 16         | 16         |  16        |
+| ÚROVEŇ DW600         | 24                         |  24                       | 1         | 2          | 4          | 8          | 16         | 16         | 16         |  16        |
 | DW1000        | 32                         |  40                       | 1         | 2          | 4          | 8          | 16         | 32         | 32         |  32        |
 | DW1200        | 32                         |  48                       | 1         | 2          | 4          | 8          | 16         | 32         | 32         |  32        |
 | DW1500        | 32                         |  60                       | 1         | 2          | 4          | 8          | 16         | 32         | 32         |  32        |
@@ -133,22 +133,22 @@ Následující tabulka uvádí maximální počet souběžných dotazů a soubě
 | DW3000        | 64                         | 120                       | 1         | 2          | 4          | 8          | 16         | 32         | 64         |  64        |
 | DW6000        | 128                        | 240                       | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
 
-Dynamické prostředků třídy
+Dynamický prostředek třídy
 > [!NOTE]
-> Třída prostředků smallrc na Gen1 přiděluje pevné velikosti paměti na jeden dotaz, podobně jako způsobem staticrc10 třída statické prostředků.  Protože smallrc je statická, má schopnost škálovat 128 souběžných dotazů. 
+> Třída prostředků smallrc na Gen1 přidělí pevnou velikost paměti na dotazu, podobně jako v podobě staticrc10 třídy statických prostředků.  Protože smallrc je statická, má schopnost škálovat na 128 souběžných dotazů. 
 >
 >
 
-Následující tabulka uvádí maximální počet souběžných dotazů a souběžnosti sloty pro každou [třída dynamické prostředků](resource-classes-for-workload-management.md) na **Gen1**.
+Následující tabulka uvádí maximální počet souběžných dotazů a slotů souběžnosti pro každou [dynamickou třídu prostředků](resource-classes-for-workload-management.md) na **Gen1**.
 
-| Úroveň služby | Maximální počet souběžných dotazů | Concurrency sloty, které jsou k dispozici | smallrc | mediumrc | largerc | xlargerc |
+| Úroveň služby | Maximální počet souběžných dotazů | Dostupné sloty souběžnosti | smallrc | mediumrc | largerc | xlargerc |
 |:-------------:|:--------------------------:|:---------------------------:|:-------:|:--------:|:-------:|:--------:|
-| OD DW100         |  4                         |   4                         | 1       |  1       |  2      |   4      |
-| DW200         |  8                         |   8                         | 1       |  2       |  4      |   8      |
+| DW100         |  4                         |   4                         | 1       |  1       |  2      |   4      |
+| ÚROVEŇ DW200         |  8                         |   8                         | 1       |  2       |  4      |   8      |
 | DW300         | 12                         |  12                         | 1       |  2       |  4      |   8      |
 | DW400         | 16                         |  16                         | 1       |  4       |  8      |  16      |
 | DW500         | 20                         |  20                         | 1       |  4       |  8      |  16      |
-| DW600         | 24                         |  24                         | 1       |  4       |  8      |  16      |
+| ÚROVEŇ DW600         | 24                         |  24                         | 1       |  4       |  8      |  16      |
 | DW1000        | 32                         |  40                         | 1       |  8       | 16      |  32      |
 | DW1200        | 32                         |  48                         | 1       |  8       | 16      |  32      |
 | DW1500        | 32                         |  60                         | 1       |  8       | 16      |  32      |
@@ -157,11 +157,11 @@ Následující tabulka uvádí maximální počet souběžných dotazů a soubě
 | DW6000        | 128                        | 240                         | 1       | 32       | 64      | 128      |
 
 
-Když je splněna jedna z těchto prahových hodnot, nové dotazy jsou zařazeny do fronty a jsou prováděny na základě ven first-in.  Dokončení dotazy a počet dotazů a sloty klesnou pod omezení, uvolní datový sklad SQL ve frontě dotazů. 
+Když je splněna jedna z těchto prahových hodnot, nové dotazy jsou ve frontě a spuštěn na základě FIFO first-in.  Dotazy dokončení a počtu dotazů a slotů klesnou pod mezní hodnoty, SQL Data Warehouse verze ve frontě dotazů. 
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o tom, jak využít prostředků třídy za účelem optimalizace zkontrolujte další úlohy v následujících článcích:
-* [Třídy prostředků pro úlohy správy](resource-classes-for-workload-management.md)
-* [Analýza velikosti pracovní zátěže](analyze-your-workload.md)
+Další informace o tom, jak využít třídy prostředků pro optimalizaci vašich úloh další prosím najdete v následujících článcích:
+* [Třídy prostředků pro správu úloh](resource-classes-for-workload-management.md)
+* [Analýza úloh](analyze-your-workload.md)
 

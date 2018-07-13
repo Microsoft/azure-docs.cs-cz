@@ -1,6 +1,6 @@
 ---
-title: Ladění Windows kontejnery s Service Fabric a VS | Microsoft Docs
-description: Zjistěte, jak k ladění Windows kontejnerů v Azure Service Fabric pomocí Visual Studio 2017.
+title: Ladění kontejnerů Windows s platformou Service Fabric a VS | Dokumentace Microsoftu
+description: Zjistěte, jak ladit kontejnery Windows v Azure Service Fabric pomocí sady Visual Studio 2017.
 services: service-fabric
 documentationcenter: .net
 author: mikkelhegn
@@ -13,30 +13,30 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/14/2018
 ms.author: mikhegn
-ms.openlocfilehash: bca33fe187668d38d4451b2de5b9e54d86e40ba9
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 437c38a8e674fcdf06e26a7191ceecef9d901470
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34655001"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38968316"
 ---
-# <a name="how-to-debug-windows-containers-in-azure-service-fabric-using-visual-studio-2017"></a>Postupy: ladění Windows kontejnerů v Azure Service Fabric pomocí Visual Studio 2017
+# <a name="how-to-debug-windows-containers-in-azure-service-fabric-using-visual-studio-2017"></a>Postupy: ladění kontejnerů Windows v Azure Service Fabric pomocí sady Visual Studio 2017
 
-Visual Studio 2017 aktualizace 7 (15.7) můžete ladit aplikace .NET v kontejnerech jako služby Service Fabric. Tento článek ukazuje, jak nakonfigurovat vaše prostředí a potom ladit aplikace .NET v kontejneru spuštěné v místní cluster Service Fabric.
+S Visual Studio 2017 Update 7 (15.7) můžete ladit aplikace .NET v kontejnerech jako služeb Service Fabric. Tento článek ukazuje, jak nakonfigurovat prostředí a ladění aplikace .NET v kontejneru spuštěná v místním clusteru Service Fabric.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Ve Windows 10, postupujte podle tento rychlý start pro [konfigurace Windows 10 ke spuštění Windows kontejnery](https://docs.microsoft.com/en-us/virtualization/windowscontainers/quick-start/quick-start-windows-10)
-* Na Windows Server 2016, použijte tento rychlý start pro [konfigurace 2016 Windows ke spuštění Windows kontejnery](https://docs.microsoft.com/en-us/virtualization/windowscontainers/quick-start/quick-start-windows-server)
-* Nastavení místního prostředí Service Fabric pomocí následujících [Příprava vývojového prostředí v systému Windows](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-get-started)
+* Ve Windows 10, postupujte podle tohoto rychlého startu pro [konfigurace Windows 10 pro spouštění kontejnerů Windows](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10)
+* V systému Windows Server 2016, postupujte podle tohoto rychlého startu pro [konfigurace Windows 2016 pro spouštění kontejnerů Windows](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server)
+* Nastavit místní prostředí Service Fabric pomocí následujících [Příprava vývojového prostředí ve Windows](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started)
 
-## <a name="configure-your-developer-environment-to-debug-containers"></a>Konfigurace prostředí vývojáře k ladění kontejnerů
+## <a name="configure-your-developer-environment-to-debug-containers"></a>Konfigurace prostředí pro vývojáře k ladění kontejnerů
 
-1. Ujistěte se, že než budete pokračovat dalším krokem je spuštěn Docker pro služby systému Windows.
+1. Ujistěte se, že než budete pokračovat dalším krokem je spuštění Dockeru pro služby systému Windows.
 
-1. Aby bylo možné podporovat překlad DNS mezi kontejnery, budete muset nastavit místní vývojový cluster, pomocí názvu počítače.
+1. Aby bylo možné podporovat překlad názvů DNS mezi kontejnery, budete muset nastavit místního vývojového clusteru použijete název počítače.
     1. Otevřete PowerShell jako správce
-    1. Přejděte do složky instalace sady SDK clusteru, obvykle `C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup`
+    1. Přejděte do instalační složky sady SDK Cluster, obvykle `C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup`
     1. Spusťte skript `DevClusterSetup.ps1` s parametrem `-UseMachineName`
 
     ``` PowerShell
@@ -44,41 +44,41 @@ Visual Studio 2017 aktualizace 7 (15.7) můžete ladit aplikace .NET v kontejner
     ```
 
     > [!NOTE]
-    > Můžete použít `-CreateOneNodeCluster` nastavení clusteru s jedním uzlem. Výchozí hodnota se vytvoří místní cluster pěti uzly.
+    > Můžete použít `-CreateOneNodeCluster` nastavení clusteru s jedním uzlem. Výchozí hodnota vytvoří místní cluster pěti uzly.
     >
 
-    Další informace týkající se služby DNS v Service Fabric najdete v tématu [služba DNS v Azure Service Fabric](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-dnsservice).
+    Další informace týkající se služby DNS v Service Fabric najdete v tématu [služba DNS v Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice).
 
 ### <a name="known-limitations-when-debugging-containers-in-service-fabric"></a>Známá omezení při ladění kontejnerů v Service Fabric
 
-Níže je seznam známá omezení s ladění kontejnerů v Service Fabric a možná řešení:
+Tady je seznam známých omezení ladění kontejnerů v Service Fabric a jejich možná řešení:
 
-* Použití localhost pro ClusterFQDNorIP nebudou podporovat překlad názvů DNS v kontejnerech.
-    * Řešení: Nastavte místní cluster pomocí názvu počítače (viz výše)
-* Spuštění Windows10 ve virtuálním počítači nebude získat odpovědi DNS zpět do kontejneru.
-    * Řešení: Zakázat odstranění kontrolního součtu protokolu UDP pro protokol IPv4 na síťový adaptér virtuálních počítačů
+* Použití místního hostitele pro ClusterFQDNorIP nebude podporovat překlad názvů DNS v kontejnerech.
+    * Řešení: Nastavení místního clusteru pomocí názvu počítače (viz výše)
+* Spuštění Windows 10 na virtuálním počítači neobdržela odpověď DNS zpět do kontejneru.
+    * Řešení: Zakázat UDP kontrolního součtu pro protokol IPv4 na síťové KARTĚ Virtual Machines
     * Upozorňujeme, že se to snížit výkon sítě na počítači.
     * https://github.com/Azure/service-fabric-issues/issues/1061
-* Řešení služeb ve stejné aplikaci pomocí DNS název služby nefunguje na Windows10, pokud byla aplikace nasazena pomocí Docker Compose
+* Řešení služeb ve stejné aplikaci pomocí DNS názvu služby nefunguje na Windows 10, pokud byla aplikace nasazena pomocí Docker Compose
     * Řešení: Použití servicename.applicationname přeložit koncové body služby
     * https://github.com/Azure/service-fabric-issues/issues/1062
-* Pokud se používá IP adresu pro ClusterFQDNorIP, změně primární IP na hostiteli budou přerušeny funkce DNS.
-    * Řešení: Znovu vytvořte cluster pomocí nové primární IP na hostiteli, nebo použijte název počítače. Toto chování je úmyslné.
-* Pokud není plně kvalifikovaný název domény clusteru byla vytvořena s přeložit v síti, se nezdaří DNS.
-    * Řešení: Znovu vytvořte místní cluster pomocí primární IP hostitele. Toto chování je úmyslné.
-* Při ladění kontejner, protokoly docker bude k dispozici pouze v okně výstupu sady Visual Studio, ne přes rozhraní API služby infrastruktury, včetně Service Fabric Exploreru
+* Pokud používáte IP adresu pro ClusterFQDNorIP, Změna primární IP na hostiteli přeruší funkčnosti DNS.
+    * Řešení: Znovu vytvořte cluster pomocí nové primární IP adresy na hostiteli nebo použijte název počítače. Toto chování je úmyslné.
+* Pokud plně kvalifikovaný název domény clusteru byl vytvořen pomocí není možné přeložit v síti, se nezdaří DNS.
+    * Řešení: Znovu vytvořte místní cluster pomocí primární IP adresy hostitele. Toto chování je úmyslné.
+* Při ladění kontejneru dockeru protokoly budou k dispozici pouze v okně výstupu sady Visual Studio, ne přes rozhraní API Service Fabric, včetně Service Fabric Exploreru
 
-## <a name="debug-a-net-application-running-in-docker-containers-on-service-fabric"></a>Ladění aplikace .NET v kontejnerech docker systémem Service Fabric
+## <a name="debug-a-net-application-running-in-docker-containers-on-service-fabric"></a>Ladění aplikace .NET spuštěné v kontejnerech dockeru v Service Fabric
 
-1. Visual Studio spusťte jako správce.
+1. Spuštění sady Visual Studio jako správce.
 
-1. Otevření existující aplikace .NET nebo vytvořte novou.
+1. Stávající aplikace .NET otevřete nebo vytvořte novou.
 
-1. Klikněte pravým tlačítkem na projekt a vyberte **Přidat -> Orchestrator podpora kontejnerů -> Service Fabric**
+1. Klikněte pravým tlačítkem na projekt a vyberte **Přidat -> Podpora Orchestrátoru kontejnerů -> Service Fabric**
 
-1. Stiskněte klávesu **F5** spustit ladění aplikace.
+1. Stisknutím klávesy **F5** zahájíte ladění aplikace.
 
-    Visual Studio podporuje konzoly a typů projektu ASP.NET pro rozhraní .NET a .NET Core.
+    Visual Studio podporuje konzoly a typy projektů ASP.NET pro .NET a .NET Core.
 
 ## <a name="next-steps"></a>Další postup
-Další informace o možnostech Service Fabric a kontejnerů, postupujte podle tohoto odkazu: [Service Fabric kontejnery přehled](service-fabric-containers-overview.md).
+Další informace o možnostech služby Service Fabric a kontejnery, postupujte podle tohoto odkazu: [přehled kontejnerů Service Fabric](service-fabric-containers-overview.md).
