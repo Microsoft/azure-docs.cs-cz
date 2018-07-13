@@ -218,8 +218,6 @@
           items:
             - name: Přehled
               href: create-features.md
-            - name: Použití Pandasu
-              href: create-features-blob.md
             - name: Použití SQL a Pythonu
               href: create-features-sql-server.md
             - name: Použití dotazů Hive

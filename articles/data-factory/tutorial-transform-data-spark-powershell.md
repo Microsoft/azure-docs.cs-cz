@@ -1,5 +1,5 @@
 ---
-title: Transformace dat pomocí Sparku v Azure Data Factory | Dokumentace Microsoftu
+title: Transformace dat pomocí Sparku v Azure Data Factory | Microsoft Docs
 description: Tento kurz obsahuje podrobné pokyny pro transformaci dat pomocí aktivity Sparku ve službě Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/22/2018
 ms.author: douglasl
-ms.openlocfilehash: 15024c4c8a5ae508a24d7452a21262c70ec9aba0
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 5c6192fdf235b5ecb1148b024da7b11f844e9321
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37044761"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37081079"
 ---
 # <a name="transform-data-in-the-cloud-by-using-spark-activity-in-azure-data-factory"></a>Transformace dat v cloudu pomocí aktivity Sparku ve službě Azure Data Factory
 V tomto kurzu použijete Azure PowerShell k vytvoření kanálu Data Factory, který transformuje data pomocí aktivity Sparku a propojené služby HDInsight na vyžádání. V tomto kurzu provedete následující kroky:
@@ -29,7 +29,7 @@ V tomto kurzu použijete Azure PowerShell k vytvoření kanálu Data Factory, kt
 > * Zahájení spuštění kanálu
 > * Monitorování spuštění kanálu
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 * **Účet služby Azure Storage**. Vytvoříte skript Pythonu a vstupní soubor a nahrajete je do úložiště Azure. V tomto účtu úložiště se ukládá výstup z programu Sparku. Cluster Spark na vyžádání používá stejný účet úložiště jako primární úložiště.  
@@ -37,7 +37,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 
 ### <a name="upload-python-script-to-your-blob-storage-account"></a>Uložení skriptu Pythonu do účtu služby Blob Storage
-1. Vytvořte soubor Pythonu s názvem **WordCount_Spark.py** s následujícím obsahem: 
+1. Vytvořte soubor Pythonu **WordCount_Spark.py** s následujícím obsahem: 
 
     ```python
     import sys
@@ -64,14 +64,14 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
     ```
 2. Nahraďte **&lt;storageAccountName&gt;** názvem vašeho účtu služby Azure Storage. Pak soubor uložte. 
 3. Ve službě Azure Blob Storage, vytvořte kontejner **adftutorial**, pokud ještě neexistuje. 
-4. Vytvořte složku s názvem **spark**.
-5. Ve složce **spark** vytvořte podsložku s názvem **script**. 
+4. Vytvořte složku **spark**.
+5. Ve složce **spark** vytvořte podsložku **script**. 
 6. Do podsložky **script** uložte soubor **WordCount_Spark.py**. 
 
 
 ### <a name="upload-the-input-file"></a>Nahrání vstupního souboru
-1. Vytvořte soubor s názvem **minecraftstory.txt** a nějakým textem. Program Sparku spočítá slova v tomto textu. 
-2. Ve složce `spark` vytvořte podsložku s názvem `inputfiles`. 
+1. Vytvořte soubor **minecraftstory.txt** a nějakým textem. Program Sparku spočítá slova v tomto textu. 
+2. Ve složce `spark` vytvořte podsložku `inputfiles`. 
 3. Do podsložky `inputfiles` uložte soubor `minecraftstory.txt`. 
 
 ## <a name="author-linked-services"></a>Vytvoření propojených služeb
@@ -81,7 +81,7 @@ V této části vytvoříte dvě propojené služby:
 - Propojená služba HDInsight na vyžádání. Azure Data Factory automaticky vytvoří cluster HDInsight, spustí program Sparku a pak odstraní cluster HDInsight, jakmile bude nečinný po předkonfigurovanou dobu. 
 
 ### <a name="azure-storage-linked-service"></a>Propojená služba Azure Storage
-Pomocí preferovaného editoru vytvořte soubor JSON, zkopírujte následující definici JSON propojené služby Azure Storage a potom tento soubor uložte jako **MyStorageLinkedService.json**.  
+Pomocí preferovaného editoru vytvořte soubor JSON, zkopírujte do něj následující definici JSON propojené služby Azure Storage a potom tento soubor uložte jako **MyStorageLinkedService.json**.  
 
 ```json
 {
@@ -97,11 +97,11 @@ Pomocí preferovaného editoru vytvořte soubor JSON, zkopírujte následující
     }
 }
 ```
-Aktualizujte &lt;storageAccountName&gt; a &lt;storageAccountKey&gt; s použitím názvu vašeho účtu služby Azure Storage a jeho klíče. 
+Aktualizujte &lt;storageAccountName&gt; a &lt;storageAccountKey&gt; s použitím názvu a klíče vašeho účtu služby Azure Storage. 
 
 
 ### <a name="on-demand-hdinsight-linked-service"></a>Propojená služba HDInsight na vyžádání
-Pomocí preferovaného editoru vytvořte soubor JSON, zkopírujte následující definici JSON propojené služby Azure HDInsight a potom tento soubor uložte jako **MyOnDemandSparkLinkedService.json**.  
+Pomocí preferovaného editoru vytvořte soubor JSON, zkopírujte do něj následující definici JSON propojené služby Azure HDInsight a potom tento soubor uložte jako **MyOnDemandSparkLinkedService.json**.  
 
 ```json
 {
@@ -139,13 +139,13 @@ V definici propojené služby aktualizujte hodnoty následujících vlastností:
 - **clusterResourceGroup**. Nahraďte &lt;resourceGroupOfHDICluster&gt; názvem skupiny prostředků, ve které se má cluster HDInsight vytvořit. 
 
 > [!NOTE]
-> Pro Azure HDInsight platí omezení celkového počtu jader, které můžete v jednotlivých podporovaných oblastech použít. V případě propojené služby HDInsight na vyžádání se cluster HDInsight vytvoří ve stejném umístění jako služba Azure Storage, kterou používá jako primární úložiště. Ujistěte se, že máte dostatečné kvóty pro jádra, aby bylo možné cluster úspěšně vytvořit. Další informace najdete v tématu [Nastavení clusterů v HDInsight se systémem Hadoop, Spark, Kafka a dalšími](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md). 
+> Pro Azure HDInsight platí omezení celkového počtu jader, která můžete v jednotlivých podporovaných oblastech Azure použít. V případě propojené služby HDInsight na vyžádání se cluster HDInsight vytvoří ve stejném umístění jako služba Azure Storage, kterou používá jako primární úložiště. Ujistěte se, že máte dostatečné kvóty pro jádra, aby bylo možné cluster úspěšně vytvořit. Další informace najdete v tématu [Nastavení clusterů v HDInsight se systémem Hadoop, Spark, Kafka a dalšími](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md). 
 
 
 ## <a name="author-a-pipeline"></a>Vytvoření kanálu 
-V tomto kroku pomocí aktivity Sparku vytvoříte nový kanál. Aktivita používá ukázku **word count** (počet slov). Pokud jste tak již neučinili, stáhněte obsah z tohoto umístění.
+V tomto kroku vytvoříte nový kanál s aktivitou Sparku. Aktivita používá ukázku **word count** (počet slov). Pokud jste to ještě neudělali, stáhněte obsah z tohoto umístění.
 
-Pomocí preferovaného editoru vytvořte soubor JSON, zkopírujte následující definici JSON kanálu a potom tento soubor uložte jako **MySparkOnDemandPipeline.json**. 
+Pomocí preferovaného editoru vytvořte soubor JSON, zkopírujte do něj následující definici JSON kanálu a potom tento soubor uložte jako **MySparkOnDemandPipeline.json**. 
 
 ```json
 {
@@ -199,9 +199,9 @@ Vytvořili jste definice propojené služby a kanálu v souborech JSON. Teď vyt
     ```powershell
     $pipelineName = "MySparkOnDemandPipeline" # Name of the pipeline
     ```
-2. Spusťte **PowerShell**. Nechte prostředí Azure PowerShell otevřené až do konce tohoto kurzu Rychlý start. Pokud ho zavřete a znovu otevřete, bude potřeba tyto příkazy spustit znovu. Data Factory V2 v současné době umožňuje vytváření datových továren jenom v oblastech Východní USA, Východní USA 2 a Západní Evropa. Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
+2. Spusťte **PowerShell**. Nechte Azure PowerShell otevřený až do konce tohoto rychlého startu. Pokud ho zavřete a znovu otevřete, bude potřeba tyto příkazy spustit znovu. Pokud chcete zobrazit seznam oblastí Azure, ve kterých je služba Data Factory aktuálně dostupná, na následující stránce vyberte oblasti, které vás zajímají, pak rozbalte **Analýza** a vyhledejte **Data Factory:** [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou můžou být v jiných oblastech.
 
-    Spusťte následující příkaz a zadejte uživatelské jméno a heslo, které používáte k přihlášení na web Azure Portal:
+    Spusťte následující příkaz a zadejte uživatelské jméno a heslo, pomocí kterých se přihlašujete k webu Azure Portal:
         
     ```powershell
     Connect-AzureRmAccount
@@ -232,7 +232,7 @@ Vytvořili jste definice propojené služby a kanálu v souborech JSON. Teď vyt
     ```powershell
     $df
     ```
-5. Přejděte do složky, ve které jste vytvořili soubory JSON, a spusťte následující příkaz, který nasadí propojenou službu Azure Storage: 
+5. Přejděte do složky, ve které jste vytvořili soubory JSON, a spuštěním následujícího příkazu nasaďte propojenou službu Azure Storage: 
        
     ```powershell
     Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "MyStorageLinkedService" -File "MyStorageLinkedService.json"
@@ -250,7 +250,7 @@ Vytvořili jste definice propojené služby a kanálu v souborech JSON. Teď vyt
     
 ## <a name="start-and-monitor-a-pipeline-run"></a>Spuštění kanálu a jeho monitorování  
 
-1. Zahájení spuštění kanálu Zaznamená se také ID spuštění kanálu pro budoucí monitorování.
+1. Zahajte spuštění kanálu. Zaznamená se také ID spuštění kanálu pro budoucí monitorování.
 
     ```powershell
     $runId = Invoke-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineName $pipelineName  
@@ -282,7 +282,7 @@ Vytvořili jste definice propojené služby a kanálu v souborech JSON. Teď vyt
     Write-Host "Activity `Error` section:" -foregroundcolor "Yellow"
     $result.Error -join "`r`n" 
     ```  
-3. Zde je výstup tohoto ukázkového spuštění: 
+3. Tady je výstup tohoto ukázkového spuštění: 
 
     ```
     Pipeline run status: In Progress
@@ -340,7 +340,7 @@ Kanál v této ukázce kopíruje data z jednoho umístění do jiného umístěn
 > * Zahájení spuštění kanálu
 > * Monitorování spuštění kanálu
 
-Pokud chcete zjistit, jak transformovat data spuštěním skriptu Hivu v clusteru Azure HDInsight ve virtuální síti, přejděte k následujícímu kurzu: 
+Pokud chcete zjistit, jak transformovat data spuštěním skriptu Hivu v clusteru Azure HDInsight ve virtuální síti, přejděte k následujícímu kurzu. 
 
 > [!div class="nextstepaction"]
 > [Kurz: Transformace dat pomocí Hivu ve službě Azure Virtual Network](tutorial-transform-data-hive-virtual-network.md)

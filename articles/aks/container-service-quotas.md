@@ -2,17 +2,18 @@
 title: Kvóty a dostupnost oblastí služby Azure Kubernetes Service (AKS)
 description: Výchozí kvóty a dostupnost oblastí služby Azure Kubernetes Service (AKS)
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: overview
-ms.date: 04/26/2018
-ms.author: nepeters
-ms.openlocfilehash: adf2d57961df9a4e8d03f2b3fe43ca0603685eb2
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.date: 06/13/2018
+ms.author: iainfou
+ms.openlocfilehash: 6d4fa9a06f3baeb51505c3e6060e9689428f8386
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37100653"
 ---
 # <a name="quotas-and-region-availability-for-azure-kubernetes-service-aks"></a>Kvóty a dostupnost oblastí pro Azure Kubernetes Service (AKS)
 
@@ -28,16 +29,22 @@ Na zřízenou infrastrukturu se vztahují všechny další omezení sítě, výp
 
 ## <a name="region-availability"></a>Dostupnost v oblastech
 
-Služba Azure Kubernetes Service (AKS) je dostupná ve verzi Preview v následujících oblastech:
-- Východ USA
+Služba Azure Kubernetes Service (AKS) je dostupná v následujících oblastech:
+
+- Austrálie – východ
+- Kanada – střed
+- Kanada – východ
+- USA – střed
+- USA – východ
+- Severní Evropa
+- Velká Británie – jih
 - Západní Evropa
-- Střed USA
-- Střední Kanada
-- Východní Kanada
+- USA – západ
+- USA – západ 2
 
 ## <a name="next-steps"></a>Další kroky
 
-Některé výchozí limity a kvóty je možné zvýšit. Pokud si chcete vyžádat zvýšení jednoho nebo několika prostředků, které takové zvýšení podporují, odešlete prosím [žádost o podporu Azure][azure-support] (jako **typ problému** vyberte kvótu).
+Některé výchozí limity a kvóty je možné zvýšit. Pokud si chcete vyžádat zvýšení jednoho nebo několika prostředků, které takové zvýšení podporují, odešlete [žádost o podporu Azure][azure-support] (jako **typ problému** vyberte kvótu).
 
 <!-- LINKS - External -->
 [azure-support]: https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/01/2018
 ms.author: sethm
-ms.openlocfilehash: f59f88d47bfcb3e761f509a3d87c6d068f44e0db
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 3dba92467dfaf377236a25f48899a8a53c587a82
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2018
-ms.locfileid: "28985200"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37130961"
 ---
 # <a name="get-started-sending-messages-to-azure-event-hubs-in-net-standard"></a>Začínáme s odesíláním zpráv do služby Azure Event Hubs v .NET Standard
 
@@ -33,13 +33,13 @@ Tento kurz ukazuje, jak napsat konzolovou aplikaci .NET Core, která odesílá s
 * [Sada Microsoft Visual Studio 2015 nebo 2017](http://www.visualstudio.com). V příkladech v tomto kurzu se používá sada Visual Studio 2017, ale podporuje se i sada Visual Studio 2015.
 * [Nástroje .NET Core pro sadu Visual Studio 2015 nebo 2017](http://www.microsoft.com/net/core).
 * Předplatné Azure.
-* Obor názvů centra událostí.
+* [Obor názvů centra událostí a centrum událostí](event-hubs-quickstart-portal.md).
 
 K odesílání zpráv do centra událostí se v tomto kurzu s použitím sady Visual Studio napíše konzolová aplikace jazyka C#.
 
 ## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Vytvoření oboru názvů Event Hubs a centra událostí
 
-Prvním krokem je použití webu [Azure Portal](https://portal.azure.com) k vytvoření oboru názvů pro příslušný typ centra událostí a získání přihlašovacích údajů pro správu, které vaše aplikace potřebuje ke komunikaci s centrem událostí. Pokud chcete vytvořit obor názvů a centrum událostí, postupujte podle pokynů v [tomto článku](event-hubs-create.md) a pak pokračujte podle následujících pokynů.
+Pokud chcete vytvořit obor názvů a centrum událostí, postupujte podle pokynů v [tomto článku](event-hubs-quickstart-portal.md) a pak pokračujte v tomto kurzu.
 
 ## <a name="create-a-console-application"></a>Vytvoření konzolové aplikace
 
@@ -141,8 +141,8 @@ Pomocí následujícího postupu do svého projektu přidejte balíček NuGet kn
         public class Program
         {
             private static EventHubClient eventHubClient;
-            private const string EhConnectionString = "{Event Hubs connection string}";
-            private const string EhEntityPath = "{Event Hub path/name}";
+            private const string EventHubConnectionString = "{Event Hubs connection string}";
+            private const string EventHubName = "{Event Hub path/name}";
 
             public static void Main(string[] args)
             {
@@ -152,11 +152,11 @@ Pomocí následujícího postupu do svého projektu přidejte balíček NuGet kn
             private static async Task MainAsync(string[] args)
             {
                 // Creates an EventHubsConnectionStringBuilder object from the connection string, and sets the EntityPath.
-                // Typically, the connection string should have the entity path in it, but this simple scenario
-                // uses the connection string from the namespace.
-                var connectionStringBuilder = new EventHubsConnectionStringBuilder(EhConnectionString)
+                // Typically, the connection string should have the entity path in it, but for the sake of this simple scenario
+                // we are using the connection string from the namespace.
+                var connectionStringBuilder = new EventHubsConnectionStringBuilder(EventHubConnectionString)
                 {
-                    EntityPath = EhEntityPath
+                    EntityPath = EventHubName
                 };
 
                 eventHubClient = EventHubClient.CreateFromConnectionString(connectionStringBuilder.ToString());
@@ -206,4 +206,4 @@ Další informace o službě Event Hubs najdete na následujících odkazech:
 * [Vytvoření centra událostí](event-hubs-create.md)
 * [Nejčastější dotazy k Event Hubs](event-hubs-faq.md)
 
-[1]: ./media/event-hubs-dotnet-standard-getstarted-send/netcore.png
+[1]: ./media/event-hubs-dotnet-standard-getstarted-send/netcoresnd.png

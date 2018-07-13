@@ -9,14 +9,14 @@ ms.component: luis
 ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: v-geberr
-ms.openlocfilehash: ac959989dbe64460025bfba84df7b6f22c3c1c04
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: 1a48810287c1639910db8e39af2da61d836b2988
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36958425"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37340929"
 ---
-# <a name="tutorial-create-app-that-returns-sentiment-along-with-intent-prediction"></a>Kurz: Vytvoření aplikace vracející mínění a předpověď záměru
+# <a name="tutorial-8--add-sentiment-analysis"></a>Kurz: 8.  Přidání analýzy mínění
 V tomto kurzu vytvoříte aplikaci, která ukazuje, jak z promluv extrahovat pozitivní, negativní a neutrální mínění.
 
 <!-- green checkmark -->
@@ -27,10 +27,10 @@ V tomto kurzu vytvoříte aplikaci, která ukazuje, jak z promluv extrahovat poz
 > * Trénování a publikování aplikace
 > * Odeslání dotazu na koncový bod aplikace a zobrazení odpovědi JSON ze služby LUIS 
 
-Pro účely tohoto článku potřebujete bezplatný účet [LUIS][LUIS], abyste mohli vytvořit svou aplikaci LUIS.
+Pro účely tohoto článku potřebujete bezplatný účet [LUIS](luis-reference-regions.md#luis-website), abyste mohli vytvořit svou aplikaci LUIS.
 
 ## <a name="before-you-begin"></a>Než začnete
-Pokud nemáte aplikaci pro lidské zdroje z kurzu k [entitám klíčové fráze](luis-quickstart-intent-and-key-phrase.md), [naimportujte](create-new-app.md#import-new-app) JSON do nové aplikace na webu služby [LUIS](luis-reference-regions.md#luis-website). Aplikaci k importování najdete v úložišti [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-keyphrase-HumanResources.json) na Githubu.
+Pokud nemáte aplikaci pro lidské zdroje z kurzu k [předdefinované entitě klíčové fráze](luis-quickstart-intent-and-key-phrase.md), [naimportujte](create-new-app.md#import-new-app) JSON do nové aplikace na webu služby [LUIS](luis-reference-regions.md#luis-website). Aplikaci k importování najdete v úložišti [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-keyphrase-HumanResources.json) na Githubu.
 
 Pokud chcete zachovat původní aplikaci pro lidské zdroje, naklonujte verzi na stránce [Settings](luis-how-to-manage-versions.md#clone-a-version) (Nastavení) a pojmenujte ji `sentiment`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. 
 
@@ -65,7 +65,7 @@ Přidejte nový záměr, který bude zachycovat zpětnou vazbu o zaměstnancích
 
     Mějte na paměti, že v této aplikaci pro lidské zdroje jsou zaměstnanci definováni v entitě seznamu `Employee` pomocí jména, e-mailu, čísla telefonní linky, čísla mobilního telefonu a čísla amerického federálního sociálního pojištění. 
 
-    |Promluvy|
+    |Projevy|
     |--|
     |425-555-1212 did a nice job of welcoming back a co-worker from maternity leave (425-555-1212 udělala dobrou práci, když přivítala spolupracovnici, která se vrátila z mateřské dovolené).|
     |234-56-7891 did a great job of comforting a co-worker in their time of grief (234. 56 7891 se hezky zachoval, když utěšoval spolupracovníka v době smutku).|
@@ -212,13 +212,10 @@ Váš chatbot má teď dostatek informací k určení dalšího kroku v konverza
 Služba LUIS s tímto požadavkem skončila. Volající aplikace, například chatbot, může převzít výsledek topScoringIntent a data o mínění z promluvy a provést další krok. Služba LUIS neprovádí tuto programovou práci za chatbota ani nevolá aplikaci. Služba LUIS pouze určuje, co je záměrem uživatele. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Pokud už aplikaci LUIS nepotřebujete, odstraňte ji. Provedete to tak, že vyberete nabídku se třemi tečkami (...) vpravo od názvu aplikace v seznamu aplikací a vyberete **Delete** (Odstranit). V automaticky otevíraném dialogovém okně **Delete app?** (Odstranit aplikaci?) vyberte **Ok**.
+Pokud už aplikaci LUIS nepotřebujete, odstraňte ji. V nabídce vlevo nahoře vyberte **My apps** (Moje aplikace). Vyberte nabídku se třemi tečkami (...) vpravo od názvu aplikace v seznamu aplikací a vyberte **Delete** (Odstranit). V automaticky otevíraném dialogovém okně **Delete app?** (Odstranit aplikaci?) vyberte **Ok**.
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"] 
 > [Volání rozhraní API koncového bodu služby LUIS pomocí jazyka C#](luis-get-started-cs-get-intent.md) 
 
-<!--References-->
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website
-[LUIS-regions]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#publishing-regions

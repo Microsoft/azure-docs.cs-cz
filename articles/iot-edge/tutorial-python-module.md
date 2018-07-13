@@ -9,12 +9,12 @@ ms.date: 06/26/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 884237a851461fe3d7a48708d221909804760ceb
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 42af2b5ec6b591929f37afebe6546d61b8a3a02a
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063118"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37082844"
 ---
 # <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-to-your-simulated-device"></a>Kurz: Vývoj modulu IoT Edge Python a jeho nasazení na simulované zařízení
 
@@ -34,7 +34,11 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Zařízení Azure IoT Edge, které jste vytvořili v rychlém startu pro zařízení s [Linuxem](quickstart-linux.md) nebo [Windows](quickstart.md)
+* Zařízení Azure IoT Edge, které jste vytvořili v rychlém startu pro [Linux](quickstart-linux.md).
+
+   >[!Note]
+   >Moduly Pythonu pro Azure IoT Edge nepodporují zařízení s Windows ani zařízení ARM. 
+
 * [Visual Studio Code](https://code.visualstudio.com/). 
 * [Rozšíření Azure IoT Edge pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) 
 * [Rozšíření Python pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python). 
@@ -162,7 +166,7 @@ Každá šablona zahrnuje ukázkový kód, který simuluje data snímačů z mod
 
 7. Soubor uložte.
 
-## <a name="build-your-iot-edge-solution"></a>Vytvoření řešení IoT Edge
+## <a name="build-your-iot-edge-solution"></a>Sestavení řešení IoT Edge
 
 V předchozí části jste vytvořili řešení IoT a do modulu PythonModule jste přidali kód, který odfiltruje zprávy, ve kterých je hlášená teplota počítače nižší než přípustná mezní hodnota. Teď je potřeba vytvořit toto řešení jako image kontejneru a odeslat ho do registru kontejneru. 
 
@@ -171,7 +175,7 @@ V předchozí části jste vytvořili řešení IoT a do modulu PythonModule jst
    ```csh/sh
    docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
-   Použijte uživatelské jméno, heslo a přihlašovací server, který jste zkopírovali z registru kontejneru Azure v první části. Můžete ho také načíst znovu z oddílu **Přístupové klíče** ve vašem registru na portálu Azure Portal.
+   Použijte uživatelské jméno, heslo a přihlašovací server, který jste zkopírovali z registru kontejneru Azure v první části. Můžete ho také načíst znovu z oddílu **Přístupové klíče** ve vašem registru na webu Azure Portal.
 
 2. V průzkumníku VS Code otevřete soubor **deployment.template.json** v pracovním prostoru řešení IoT Edge. 
 
@@ -192,23 +196,23 @@ V předchozí části jste vytvořili řešení IoT a do modulu PythonModule jst
 
 5. V průzkumníku VS Code klikněte pravým tlačítkem na soubor **deployment.template.json** a vyberte **Build IoT Edge solution** (Vytvořit řešení IoT Edge). 
 
-Když editoru Visual Studio Code sdělíte, že má vytvořit vaše řešení, nejdříve se načtou informace ze šablony nasazení a v nové složce **config** se vygeneruje soubor `deployment.json`. Pak se v integrovaném terminálu spustí dva příkazy: `docker build` a `docker push`. Tyto dva příkazy sestaví kód, provedou kontejnerizaci vašeho kódu Python a odešlou ho do kontejneru registru, který jste zadali při inicializaci řešení. 
+Když editoru Visual Studio Code sdělíte, že má sestavit vaše řešení, nejdříve se načtou informace ze šablony nasazení a v nové složce **config** se vygeneruje soubor `deployment.json`. Pak se v integrovaném terminálu spustí dva příkazy: `docker build` a `docker push`. Tyto dva příkazy sestaví kód, provedou kontejnerizaci vašeho kódu Python a odešlou ho do kontejneru registru, který jste zadali při inicializaci řešení. 
 
 Úplnou adresu image kontejneru se značkou můžete vidět v příkazu `docker build`, který spouští integrovaný terminál VS Code. Adresa image je sestavená z informací v souboru `module.json` a má formát **\<úložiště\>:\<verze\>-\<platforma\>**. V tomto kurzu by měla vypadat takto: **název_registru.azurecr.io/pythonmodule:0.0.1-amd64**.
 
 ## <a name="deploy-and-run-the-solution"></a>Nasazení a spuštění řešení
 
-K nasazení modulu Python na zařízení IoT Edge můžete použít portál Azure Portal, jako jste to udělali v rychlých startech, ale moduly můžete také nasadit a monitorovat z editoru Visual Studio Code. Následující sekce používají rozšíření Azure IoT Edge pro VS Code, které bylo uvedené v požadavcích. Pokud jste ho ještě nenainstalovali, udělejte to teď. 
+K nasazení modulu Python na zařízení IoT Edge můžete použít web Azure Portal, jako jste to udělali v rychlých startech, ale moduly můžete také nasadit a monitorovat z editoru Visual Studio Code. Následující sekce používají rozšíření Azure IoT Edge pro VS Code, které bylo uvedené v požadavcích. Pokud jste ho ještě nenainstalovali, udělejte to teď. 
 
 1. Výběrem **View** (Zobrazit)  > **Command Palette** (Paleta příkazů) otevřete paletu příkazů VS Code.
 
-2. Vyhledejte a spusťte příkaz **Azure: Sign in**. Podle pokynů se přihlaste ke svému účtu Azure. 
+2. Vyhledejte a spusťte příkaz **Azure: Sign in** (Azure: Přihlásit se). Podle pokynů se přihlaste ke svému účtu Azure. 
 
-3. V paletě příkazů vyhledejte a spusťte příkaz **Azure IoT Hub: Select IoT Hub**. 
+3. Na paletě příkazů vyhledejte a spusťte příkaz **Azure IoT Hub: Select IoT Hub** (Azure IoT Hub: Vybrat IoT Hub). 
 
-4. Vyberte předplatné, které obsahuje váš IoT Hub, a pak vyberte IoT Hub, ke kterému chcete získat přístup.
+4. Vyberte předplatné, které obsahuje vaše centrum IoT, a pak vyberte centrum IoT, ke kterému chcete získat přístup.
 
-5. V průzkumníku VS Code rozbalte sekci **Azure IoT Hub Devices** (Zařízení Azure IoT Hub). 
+5. V průzkumníku VS Code rozbalte oddíl **Azure IoT Hub Devices** (Zařízení Azure IoT Hub). 
 
 6. Klikněte pravým tlačítkem na název vašeho zařízení IoT Edge a pak vyberte **Create Deployment for IoT Edge device** (Vytvořit nasazení pro zařízení IoT Edge). 
 
@@ -230,10 +234,10 @@ K nasazení modulu Python na zařízení IoT Edge můžete použít portál Azur
 
 Pokud budete pokračovat k dalšímu doporučenému článku, můžete už vytvořené prostředky a konfigurace zachovat a znovu je použít.
 
-Jinak můžete místní konfigurace a prostředky Azure, které jste vytvořili v tomto článku, odstranit, abyste se vyhnuli poplatkům. 
+Pokud nebudete pokračovat, můžete místní konfigurace a prostředky Azure vytvořené v tomto článku odstranit, abyste se vyhnuli poplatkům. 
 
 > [!IMPORTANT]
-> Odstranění prostředků Azure a skupiny prostředků je nevratná akce. Skupina prostředků i všechny prostředky v ní obsažené se trvale odstraní. Ujistěte se, že nechtěně neodstraníte nesprávnou skupinu prostředků nebo prostředky. Pokud jste službu IoT Hub vytvořili uvnitř existující skupiny prostředků obsahující prostředky, které chcete zachovat, odstraňte místo skupiny prostředků pouze samotný prostředek služby IoT.
+> Odstranění prostředků Azure a skupiny prostředků je nevratná akce. V případě odstranění se skupina prostředků i všechny prostředky, které obsahuje, trvale odstraní. Ujistěte se, že nechtěně neodstraníte nesprávnou skupinu prostředků nebo prostředky. Pokud jste službu IoT Hub vytvořili uvnitř existující skupiny prostředků obsahující prostředky, které chcete zachovat, odstraňte místo skupiny prostředků pouze samotný prostředek služby IoT Hub.
 >
 
 Pokud chcete odstranit jenom IoT Hub, spusťte následující příkaz, ve kterém se použije název vaší služby Hub a název skupiny prostředků:
@@ -245,7 +249,7 @@ az iot hub delete --name MyIoTHub --resource-group TestResources
 
 Odstranění celé skupiny prostředků podle názvu:
 
-1. Přihlaste se na web [Azure Portal ](https://portal.azure.com) a klikněte na **Skupiny prostředků**.
+1. Přihlaste se k webu [Azure Portal ](https://portal.azure.com) a klikněte na **Skupiny prostředků**.
 
 2. Do textového pole **Filtrovat podle názvu...** zadejte název skupiny prostředků obsahující vaši službu IoT Hub. 
 

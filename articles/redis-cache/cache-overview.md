@@ -14,12 +14,12 @@ ms.topic: overview
 ms.date: 03/26/2018
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: 5efb0087c8e1ea55051d8eb7b209059b3abd5c5c
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 585dcd120c42562b1520d4454f9d04e445553101
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062755"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096188"
 ---
 # <a name="what-is-azure-redis-cache"></a>Co je Azure Redis Cache
 
@@ -27,7 +27,7 @@ Služba Azure Redis Cache je založená na oblíbené opensourcové [mezipaměti
 
 Azure Redis Cache je možné použít také jako úložiště datových struktur v paměti, distribuovanou nerelační databázi a zprostředkovatele zpráv. Lepšího výkonu aplikací se dosahuje díky nízké latenci a vysoké propustnosti modulu Redis.
 
-Azure Redis Cache poskytuje přístup k zabezpečené vyhrazené mezipaměti Redis, která je spravovaná Microsoftem, hostovaná v Azure a dostupná z libovolné aplikace v Azure.
+Azure Redis Cache poskytuje přístup k zabezpečené vyhrazené mezipaměti Redis, která je spravovaná Microsoftem, hostovaná v Azure a dostupná z libovolné aplikace v i mimo Azure.
 
 ## <a name="why-use-azure-redis-cache"></a>Proč používat Azure Redis Cache
 
@@ -45,7 +45,7 @@ Existuje mnoho běžných vzorů, ve kterých se Redis Cache používá pro podp
 
 Služba Azure Redis Cache je dostupná v následujících úrovních:
 
-| Vrstva | Popis |
+| Úroveň | Popis |
 |---|---|
 Basic | Mezipaměť s jedním uzlem. Tato vrstva podporuje více velikostí paměti (250 MB – 53 GB). Jedná se o ideální vrstvu pro vývoj a testování nebo pro méně náročné úlohy. Vrstva Basic nemá žádnou smlouvu o úrovni služeb (SLA). |
 | Standard | Replikovaná mezipaměť v konfiguraci primárního a sekundárního uzlu spravovaná Microsoftem, se smlouvou SLA zajišťující vysokou dostupnost (99,9 %). |
@@ -75,9 +75,9 @@ Na stránce věnované [cenovým úrovním služby Redis Cache](https://azure.mi
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Rychlý start pro webové aplikace v ASP.NET](cache-web-app-howto.md): Vytvořte si jednoduchou webovou aplikaci v ASP.NET, která používá Azure Redis Cache.
-* [Rychlý start pro .NET](cache-dotnet-how-to-use-azure-redis-cache.md): Vytvořte si aplikaci v .NET, která používá Azure Redis Cache.
-* [Rychlý start pro .NET Core](cache-dotnet-core-quickstart.md): Vytvořte si aplikaci v .NET Core, která používá Azure Redis Cache.
-* [Rychlý start pro Node.js](cache-nodejs-get-started.md): Vytvořte si jednoduchou aplikaci v Node.js, která používá Azure Redis Cache.
-* [Rychlý start pro jazyk Java](cache-java-get-started.md): Vytvořte si jednoduchou aplikaci v jazyce Java, která používá Azure Redis Cache.
-* [Rychlý start pro Python](cache-python-get-started.md): Vytvořte si aplikaci v Pythonu, která používá Azure Redis Cache.
+* [Rychlý start pro webové aplikace v ASP.NET:](cache-web-app-howto.md) Vytvořte si jednoduchou webovou aplikaci v ASP.NET, která používá Azure Redis Cache.
+* [Rychlý start pro .NET:](cache-dotnet-how-to-use-azure-redis-cache.md) Vytvořte si aplikaci v .NET, která používá Azure Redis Cache.
+* [Rychlý start pro .NET Core:](cache-dotnet-core-quickstart.md) Vytvořte si aplikaci v .NET Core, která používá Azure Redis Cache.
+* [Rychlý start pro Node.js:](cache-nodejs-get-started.md) Vytvořte si jednoduchou aplikaci v Node.js, která používá Azure Redis Cache.
+* [Rychlý start pro jazyk Java:](cache-java-get-started.md) Vytvořte si jednoduchou aplikaci v jazyce Java, která používá Azure Redis Cache.
+* [Rychlý start pro Python:](cache-python-get-started.md) Vytvořte si aplikaci v Pythonu, která používá Azure Redis Cache.

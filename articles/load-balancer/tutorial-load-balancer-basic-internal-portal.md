@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/30/2018
+ms.date: 06/28/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 7902b5ad2d680a22a2d132187cdad5f96a334447
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: c0d19c53a0bd217935a494dfb4affbaa85062247
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061841"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37097474"
 ---
 # <a name="tutorial-load-balance-internal-traffic-with-basic-load-balancer-to-vms-using-the-azure-portal"></a>Kurz: Vyrovnávání zatížení interního provozu na virtuálních počítačích pomocí Load Balanceru úrovně Basic na webu Azure Portal
 
@@ -75,10 +75,10 @@ V této části vytvoříte dva virtuální počítače pro back-endový fond va
     - *myAvailabilitySet* – název nové skupiny dostupnosti, kterou vytvoříte.
     -  *myVNet* – ujistěte se, že je vybraná tato virtuální síť.
     - *myBackendSubnet* – ujistěte se, že je vybraná tato podsíť.
-    - *myNetworkSecurityGroup* – název nové skupiny zabezpečení sítě (brána firewall), kterou je potřeba vytvořit.
+5. V části **Skupina zabezpečení sítě** vyberte **Upřesnit**. Pak v části **Skupina zabezpečení sítě (brána firewall)** vyberte **Žádná**.
 5. Kliknutím na **Zakázáno** zakažte diagnostiku spouštění.
 6. Klikněte na **OK**, na stránce souhrnu zkontrolujte nastavení a pak klikněte na **Vytvořit**.
-7. Podle kroků 1 až 6 vytvořte druhý virtuální počítač s názvem *VM2*, skupinou dostupnosti *myAvailabilityset*, virtuální sítí *myVnet*, podsítí *myBackendSubnet* a skupinou zabezpečení sítě *myNetworkSecurityGroup*. 
+7. Podle kroků 1 až 6 vytvořte druhý virtuální počítač s názvem *VM2*, skupinou dostupnosti *myAvailabilityset*, virtuální sítí *myVnet* a podsítí *myBackendSubnet* a jako **Skupina zabezpečení sítě (brána firewall)** vyberte **Žádná**. 
 
 ### <a name="install-iis-and-customize-the-default-web-page"></a>Instalace služby IIS a přizpůsobení výchozí webové stránky
 
@@ -100,33 +100,6 @@ V této části vytvoříte dva virtuální počítače pro back-endový fond va
 5. Ukončete připojení RDP k virtuálnímu počítači *myVM1*.
 6. Opakováním kroků 1–5 pro *myVM2* nainstalujte službu IIS a přizpůsobte výchozí webovou stránku.
 
-## <a name="create-nsg-rules"></a>Vytvoření pravidel skupiny zabezpečení sítě
-
-V této části vytvoříte pravidla skupiny zabezpečení sítě, která povolí příchozí připojení pomocí protokolů HTTP a RDP.
-
-1. V levé nabídce klikněte na **Všechny prostředky** a pak v seznamu prostředků klikněte na **myNetworkSecurityGroup** ve skupině prostředků **myResourceGroupLB**.
-2. V části **Nastavení** klikněte na **Příchozí pravidla zabezpečení** a pak klikněte na **Přidat**.
-3. Zadáním následujících hodnot pro příchozí pravidlo zabezpečení *myHTTPRule* povolte příchozí připojení HTTP na portu 80:
-    - Jako **Zdroj** zadejte *Značka služby*.
-    - Jako **Značka zdrojové služby** zadejte *Internet*.
-    - Jako **Rozsahy cílových portů** zadejte *80*.
-    - Jako **Protokol** zadejte *TCP*.
-    - Jako **Akce** zadejte *Povolit*.
-    - Jako **Priorita** zadejte *100*.
-    - Jako název zadejte *myHTTPRule*.
-    - Jako popis zadejte *Povolení protokolu HTTP*.
-4. Klikněte na **OK**.
- 
-5. Zopakováním kroků 2 až 4 vytvořte další pravidlo *myRDPRule*, které povolí příchozí připojení RDP na portu 3389, s použitím následujících hodnot:
-    - Jako **Zdroj** zadejte *Značka služby*.
-    - Jako **Značka zdrojové služby** zadejte *Internet*.
-    - Jako **Rozsahy cílových portů** zadejte *3389*.
-    - Jako **Protokol** zadejte *TCP*.
-    - Jako **Akce** zadejte *Povolit*.
-    - Jako **Priorita** zadejte *200*.
-    - Jako název zadejte *myRDPRule*.
-    - Jako popis zadejte *Povolení protokolu RDP*.
-
 ## <a name="create-basic-load-balancer-resources"></a>Vytvoření prostředků Load Balanceru úrovně Basic
 
 V této části nakonfigurujete nastavení nástroje pro vyrovnávání zatížení pro fond back-endových adres a sondu stavu a zadáte pravidla nástroje pro vyrovnávání zatížení a překladu adres.
@@ -139,7 +112,7 @@ Za účelem distribuce provozu do virtuálních počítačů obsahuje fond back-
 1. V levé nabídce klikněte na **Všechny prostředky** a pak v seznamu prostředků klikněte na **myLoadBalancer**.
 2. V části **Nastavení** klikněte na **Back-endové fondy** a pak klikněte na **Přidat**.
 3. Na stránce **Přidat back-endový fond** postupujte následovně:
-    - Jako název back-endového fondu zadejte myBackEndPool.
+    - Jako název back-endového fondu zadejte *myBackEndPool*.
     - V části **Přidruženo k** klikněte v rozevírací nabídce na **Skupina dostupnosti**.
     - V části **Skupina dostupnosti** klikněte na **myAvailabilitySet**.
     - Kliknutím na **Přidat konfiguraci IP adresy cílové sítě** přidejte do back-endového fondu jednotlivé virtuální počítače (*myVM1* & *myVM2*), které jste vytvořili.

@@ -109,7 +109,7 @@
         - name: Průběžné nasazování Jenkins
           href: jenkins-continuous-deployment.md
         - name: Projekt Azure DevOps pro AKS
-          href: 'https://docs.microsoft.com/en-us/vsts/pipelines/actions/azure-devops-project-aks'
+          href: ../devops-project/azure-devops-project-aks.md
           maintainContext: true
     - name: Základy Kubernetes
       items:

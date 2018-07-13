@@ -1,44 +1,41 @@
 ---
-title: Vytvoření serveru služby Azure Analysis Services pomocí PowerShellu | Dokumentace Microsoftu
+title: Rychlý start – Vytvoření serveru služby Azure Analysis Services pomocí PowerShellu | Microsoft Docs
 description: Zjistěte, jak vytvořit server služby Azure Analysis Services pomocí PowerShellu.
 author: minewiskan
 manager: kfile
-ms.service: analysis-services
-ms.topic: conceptual
-ms.date: 04/12/2018
+ms.service: azure-analysis-services
+ms.topic: quickstart
+ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 3f0d3ae6786e9f63f0e4eb025118d0d217eced64
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: MT
+ms.openlocfilehash: 9149f15d0503b9a39ac67d9c3f6fc1ddde7e03bd
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952762"
 ---
-# <a name="create-an-azure-analysis-services-server-by-using-powershell"></a>Vytvoření serveru služby Azure Analysis Services pomocí PowerShellu
+# <a name="quickstart-create-a-server---powershell"></a>Rychlý start: Vytvoření serveru – PowerShell
 
-Tento rychlý start popisuje použití PowerShellu z příkazového řádku k vytvoření serveru Azure Analysis Services ve [skupině prostředků Azure](../azure-resource-manager/resource-group-overview.md) ve vašem předplatném Azure.
+Tento rychlý start popisuje použití PowerShellu z příkazového řádku k vytvoření serveru služby Azure Analysis Services ve vašem předplatném Azure.
 
-Tato úloha vyžaduje modul Azure PowerShell verze 4.0 nebo novější. Verzi zjistíte spuštěním příkazu ` Get-Module -ListAvailable AzureRM`. Pokud chcete provést instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps).
+## <a name="prerequisites"></a>Požadavky
 
-> [!NOTE]
-> Vytvoření serveru může znamenat, že se vám začne fakturovat nová služba. Další informace najdete v tématu [Ceny služby Azure Analysis Services](https://azure.microsoft.com/pricing/details/analysis-services/).
-
-## <a name="before-you-begin"></a>Než začnete
-K dokončení tohoto rychlého startu je potřeba:
-
-* **Předplatné Azure:** Pokud si chcete vytvořit účet, přejděte na stránku [Bezplatný zkušební verze Azure](https://azure.microsoft.com/offers/ms-azr-0044p/).
-* **Azure Active Directory:** Vaše předplatné musí být přidružené k tenantovi Azure Active Directory a musíte mít účet v tomto adresáři. Další informace najdete v tématu [Ověřování a uživatelská oprávnění](analysis-services-manage-users.md).
+- **Předplatné Azure:** Pokud si chcete vytvořit účet, přejděte na stránku [Bezplatný zkušební verze Azure](https://azure.microsoft.com/offers/ms-azr-0044p/).
+- **Azure Active Directory:** Vaše předplatné musí být přidružené k tenantovi Azure Active Directory a musíte mít účet v tomto adresáři. Další informace najdete v tématu [Ověřování a uživatelská oprávnění](analysis-services-manage-users.md).
+- **Modul Azure PowerShell verze 4.0 nebo novější**. Verzi zjistíte spuštěním příkazu ` Get-Module -ListAvailable AzureRM`. Pokud chcete provést instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps).
 
 ## <a name="import-azurermanalysisservices-module"></a>Import modulu AzureRm.AnalysisServices
+
 K vytvoření serveru ve vašem předplatném můžete použít modul komponenty [AzureRM.AnalysisServices](https://www.powershellgallery.com/packages/AzureRM.AnalysisServices). Načtěte modul AzureRm.AnalysisServices do relace PowerShellu.
 
 ```powershell
 Import-Module AzureRM.AnalysisServices
 ```
 
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+## <a name="log-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k předplatnému Azure pomocí [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) příkaz. Postupujte podle pokynů na obrazovce.
+Přihlaste se ke svému předplatnému Azure pomocí příkazu [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount). Postupujte podle pokynů na obrazovce.
 
 ```powershell
 Connect-AzureRmAccount
@@ -49,15 +46,15 @@ Connect-AzureRmAccount
 [Skupina prostředků Azure](../azure-resource-manager/resource-group-overview.md) je logický kontejner, ve kterém se nasazují a spravují prostředky Azure jako skupina. Při vytváření serveru je potřeba zadat skupinu prostředků ve vašem předplatném. Pokud skupinu prostředků ještě nemáte, můžete vytvořit novou pomocí příkazu [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). Následující příklad vytvoří skupinu prostředků `myResourceGroup` v oblasti USA – západ.
 
 ```powershell
-New-AzureRmResourceGroup -Name "myResourceGroup" -Location "West US"
+New-AzureRmResourceGroup -Name "myResourceGroup" -Location "WestUS"
 ```
 
 ## <a name="create-a-server"></a>Vytvoření serveru
 
-Vytvořte nový server pomocí příkazu [New-AzureRmAnalysisServicesServer](/powershell/module/azurerm.analysisservices/new-azurermanalysisservicesserver). Následující příklad vytvoří server myServer ve skupině prostředků myResourceGroup v oblasti USA – západ na úrovni D1 a určí philipc@adventureworks.com jako správce serveru.
+Vytvořte nový server pomocí příkazu [New-AzureRmAnalysisServicesServer](/powershell/module/azurerm.analysisservices/new-azurermanalysisservicesserver). Následující příklad vytvoří server myServer ve skupině prostředků myResourceGroup v oblasti USA – západ na úrovni D1 (bezplatná úroveň) a určí philipc@adventureworks.com jako správce serveru.
 
 ```powershell
-New-AzureRmAnalysisServicesServer -ResourceGroupName "myResourceGroup" -Name "myServer" -Location West US -Sku D1 -Administrator "philipc@adventure-works.com"
+New-AzureRmAnalysisServicesServer -ResourceGroupName "myResourceGroup" -Name "myserver" -Location WestUS -Sku D1 -Administrator "philipc@adventure-works.com"
 ```
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
@@ -66,10 +63,14 @@ Server můžete z předplatného odebrat pomocí příkazu [Remove-AzureRmAnalys
 
 
 ```powershell
-Remove-AzureRmAnalysisServicesServer -Name "myServer" -ResourceGroupName "myResourceGroup"
+Remove-AzureRmAnalysisServicesServer -Name "myserver" -ResourceGroupName "myResourceGroup"
 ```
 
-## <a name="next-steps"></a>Další postup
-[Správa Azure Analysis Services pomocí prostředí PowerShell](analysis-services-powershell.md)
-[nasadit model z rozšíření SSDT](analysis-services-deploy.md)
-[vytvoření modelu na portálu Azure](analysis-services-create-model-portal.md)
+## <a name="next-steps"></a>Další kroky
+
+V tomto rychlém startu jste zjistili, jak pomocí PowerShellu vytvořit server v předplatném Azure. Když teď máte server, můžete ho zabezpečit nakonfigurováním (volitelné) brány firewall serveru. Na server také můžete přímo z portálu přidat základní ukázkový datový model. Na ukázkovém modelu se naučíte konfigurovat role modelové databáze a testovat připojení klientů. Ve výuce pokračujte kurzem, ve kterém přidáte ukázkový model.
+
+> [!div class="nextstepaction"]
+> [Rychlý start: Konfigurace brány firewall serveru – portál](analysis-services-qs-firewall.md)      
+> [!div class="nextstepaction"]
+> [Kurz: Přidání ukázkového modelu na server](analysis-services-create-sample-model.md)

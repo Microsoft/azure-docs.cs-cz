@@ -201,8 +201,6 @@
           href: luis-prebuilt-entities.md
         - name: Použití domén
           href: luis-how-to-use-prebuilt-domains.md
-        - name: Použití Cortany
-          href: luis-how-to-cortana-prebuilt-app.md
     - name: Správa aplikace
       items:
         - name: S využitím řídicího panelu
@@ -271,8 +269,6 @@
           href: luis-reference-prebuilt-url.md
     - name: Referenční informace k předem připraveným doménám
       href: luis-reference-prebuilt-domains.md
-    - name: Referenční informace k předem připraveným aplikacím Cortana
-      href: luis-reference-cortana-prebuilt.md
     - name: Vytváření rozhraní API V2
       href: 'https://aka.ms/luis-authoring-apis'
     - name: Rozhraní API V2 koncového bodu

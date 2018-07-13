@@ -1,5 +1,5 @@
 ---
-title: Vytváření imagí kontejneru pro Azure Service Fabric | Dokumentace Microsoftu
+title: Vytváření imagí kontejneru na platformě Service Fabric v Azure | Microsoft Docs
 description: V tomto kurzu se naučíte vytvářet image kontejneru pro vícekontejnerovou aplikaci Service Fabric.
 services: service-fabric
 documentationcenter: ''
@@ -16,25 +16,25 @@ ms.workload: na
 ms.date: 09/15/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 13cf13ce4a1456731d08f356ca405119ce1a6480
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: a2814ff299d1bfb003b6133e2b75b47a312f8728
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2018
-ms.locfileid: "29558181"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37114036"
 ---
-# <a name="tutorial-create-container-images-for-service-fabric"></a>Kurz: Vytváření imagí kontejneru pro Service Fabric
+# <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>Kurz: Vytváření imagí kontejneru v clusteru Service Fabric s Linuxem
 
-Tento kurz je součástí série kurzů, která demonstruje používání kontejnerů v clusteru Service Fabric s Linuxem. V tomto kurzu je pro použití s prostředkem Service Fabric připravena vícekontejnerová aplikace. V následujících kurzech jsou tyto image použity jako součást aplikace Service Fabric. V tomto kurzu se naučíte: 
+Tento kurz je součástí série kurzů, která demonstruje používání kontejnerů v clusteru Service Fabric s Linuxem. V tomto kurzu je pro použití s prostředkem Service Fabric připravena vícekontejnerová aplikace. V následujících kurzech jsou tyto image použity jako součást aplikace Service Fabric. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Klonovat zdroj aplikace z GitHubu  
+> * Klonovat zdroj aplikace z GitHubu
 > * Vytvořit image kontejneru ze zdroje aplikace
 > * Nasadit instanci služby Azure Container Registry (ACR)
 > * Označit image kontejneru pro službu ACR
 > * Odeslat image do služby ACR
 
-V této sérii kurzů se naučíte: 
+V této sérii kurzů se naučíte:
 
 > [!div class="checklist"]
 > * Vytvářet image kontejneru pro Service Fabric
@@ -43,13 +43,13 @@ V této sérii kurzů se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Vývojové prostředí Linux nastavené pro Service Fabric. Při nastavování prostředí Linux postupujte podle pokynů [zde](service-fabric-get-started-linux.md). 
-- Tento kurz vyžaduje použití Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli). 
-- Navíc se vyžaduje, abyste měli k dispozici předplatné Azure. Další informace o bezplatné zkušební verzi najdete [zde](https://azure.microsoft.com/free/).
+* Vývojové prostředí Linux nastavené pro Service Fabric. Při nastavování prostředí Linux postupujte podle pokynů [zde](service-fabric-get-started-linux.md).
+* Tento kurz vyžaduje použití Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli).
+* Navíc se vyžaduje, abyste měli k dispozici předplatné Azure. Další informace o bezplatné zkušební verzi najdete [zde](https://azure.microsoft.com/free/).
 
 ## <a name="get-application-code"></a>Získání kódu aplikace
 
-Ukázkovou aplikací používanou v tomto kurzu je hlasovací aplikace. Aplikace se skládá z front-end webové součásti a back-end instance Redis. Součásti jsou sbaleny do imagí kontejneru. 
+Ukázkovou aplikací používanou v tomto kurzu je hlasovací aplikace. Aplikace se skládá z front-end webové součásti a back-end instance Redis. Součásti jsou sbaleny do imagí kontejneru.
 
 Pomocí gitu si stáhněte kopii aplikace do vývojového prostředí.
 
@@ -59,11 +59,11 @@ git clone https://github.com/Azure-Samples/service-fabric-containers.git
 cd service-fabric-containers/Linux/container-tutorial/
 ```
 
-Řešení obsahuje dvě složky a soubor docker-compose.yml. Složka azure-vote obsahuje front-end službu Python spolu se souborem Dockerfile sloužícím k sestavení image. Adresář Voting obsahuje balíček aplikace Service Fabric, který je nasazený do clusteru. Tyto adresáře obsahují prostředky potřebné pro tento kurz.  
+Řešení obsahuje dvě složky a soubor docker-compose.yml. Složka azure-vote obsahuje front-end službu Python spolu se souborem Dockerfile sloužícím k sestavení image. Adresář Voting obsahuje balíček aplikace Service Fabric, který je nasazený do clusteru. Tyto adresáře obsahují prostředky potřebné pro tento kurz.
 
 ## <a name="create-container-images"></a>Vytváření imagí kontejneru
 
-V adresáři **azure-vote** vytvořte image pro front-end webovou komponentu spuštěním následujícího příkazu. Tento příkaz používá k sestavení image soubor Dockerfile v tomto adresáři. 
+V adresáři **azure-vote** vytvořte image pro front-end webovou komponentu spuštěním následujícího příkazu. Tento příkaz používá k sestavení image soubor Dockerfile v tomto adresáři.
 
 ```bash
 docker build -t azure-vote-front .
@@ -86,13 +86,13 @@ tiangolo/uwsgi-nginx-flask   python3.6           590e17342131        5 days ago 
 
 ## <a name="deploy-azure-container-registry"></a>Nasazení služby Azure Container Registry
 
-Nejprve spusťte příkaz **az login** a přihlaste se k účtu Azure. 
+Nejprve spusťte příkaz **az login** a přihlaste se k účtu Azure.
 
 ```bash
 az login
 ```
 
-Pak pomocí příkazu **az account** zvolte předplatné pro vytvoření registru kontejneru Azure. Místo parametru <subscription_id> je třeba zadat ID předplatného Azure. 
+Pak pomocí příkazu **az account** zvolte předplatné pro vytvoření registru kontejneru Azure. Místo parametru <subscription_id> je třeba zadat ID předplatného Azure.
 
 ```bash
 az account set --subscription <subscription_id>
@@ -106,13 +106,13 @@ Vytvořte skupinu prostředků pomocí příkazu **az group create**. V tomto p�
 az group create --name <myResourceGroup> --location westus
 ```
 
-Pomocí příkazu **az acr create** vytvořte registr kontejneru Azure. Nahraďte parametr \<acrName> názvem registru kontejneru, který chcete v rámci svého předplatného vytvořit. Tento název smí obsahovat jen alfanumerické znaky a musí být jedinečný. 
+Pomocí příkazu **az acr create** vytvořte registr kontejneru Azure. Nahraďte parametr \<acrName> názvem registru kontejneru, který chcete v rámci svého předplatného vytvořit. Tento název smí obsahovat jen alfanumerické znaky a musí být jedinečný.
 
 ```bash
 az acr create --resource-group <myResourceGroup> --name <acrName> --sku Basic --admin-enabled true
 ```
 
-V celé zbývající části tohoto kurzu používáme položku „acrName“ jako zástupný symbol pro název registru kontejneru, který jste zvolili. Poznamenejte si tuto hodnotu. 
+V celé zbývající části tohoto kurzu používáme položku „acrName“ jako zástupný symbol pro název registru kontejneru, který jste zvolili. Poznamenejte si tuto hodnotu.
 
 ## <a name="log-in-to-your-container-registry"></a>Přihlášení k registru kontejneru
 
@@ -164,7 +164,6 @@ docker tag azure-vote-front <acrName>.azurecr.io/azure-vote-front:v1
 
 Po označení operaci ověřte spuštěním příkazu docker images.
 
-
 Výstup:
 
 ```bash
@@ -210,13 +209,13 @@ Na konci kurzu byla image kontejneru uložena v privátní instanci služby Azur
 V tomto kurzu byla z Githubu přijata aplikace a image kontejneru byly vytvořeny a nahrány do registru. Dokončili jste následující kroky:
 
 > [!div class="checklist"]
-> * Klonovat zdroj aplikace z GitHubu  
+> * Klonovat zdroj aplikace z GitHubu
 > * Vytvořit image kontejneru ze zdroje aplikace
 > * Nasadit instanci služby Azure Container Registry (ACR)
 > * Označit image kontejneru pro službu ACR
 > * Odeslat image do služby ACR
 
-Po přechodu k dalšímu kurzu se dozvíte o balení kontejnerů do aplikace Service Fabric pomocí Yeomanu. 
+Po přechodu k dalšímu kurzu se dozvíte o balení kontejnerů do aplikace Service Fabric pomocí Yeomanu.
 
 > [!div class="nextstepaction"]
 > [Zabalení a nasazení kontejnerů jako aplikace Service Fabric](service-fabric-tutorial-package-containers.md)

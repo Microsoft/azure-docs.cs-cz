@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 39683c89db57dbeefd190a51415c783d012785e0
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: 163763bf1203a045326c7163b5f6da9aa417d8cf
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36303771"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37081852"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Kurz: Nastavení testovacího prostředí v učebně 
 V tomto kurzu nastavíte testovací prostředí v učebně pomocí virtuálních počítačů, které používají studenti v učebně.  
@@ -42,9 +42,9 @@ Pokud chcete nastavit testovací prostředí v učebně v účtu testovacího pr
 3. V okně **New Lab** (Nové testovací prostředí) proveďte následující akce: 
     1. Zadejte **název** testovacího prostředí v učebně. 
     2. Vyberte **velikost** virtuálního počítače, který chcete v učebně použít.
-    3. Vyberte **image**, která se má použít pro vytvoření virtuálního počítače.
-    4. Zadejte **výchozí přihlašovací údaje** pro přihlašování do virtuálních počítačů v testovacím prostředí. 
-    7. Vyberte **Uložit**.
+    3. Vyberte **image**, která se má použít k vytvoření virtuálního počítače.
+    4. Zadejte **výchozí přihlašovací údaje** pro přihlašování k virtuálním počítačům v testovacím prostředí. 
+    7. Vyberte **Save** (Uložit).
 
         ![Vytvoření testovacího prostředí v učebně](../media/tutorial-setup-classroom-lab/new-lab-window.png)
 1. Zobrazí se **řídicí panel** testovacího prostředí. 
@@ -55,19 +55,19 @@ Pokud chcete nastavit testovací prostředí v učebně v účtu testovacího pr
 
 1. Vyberte **Usage policy** (Zásady používání). 
 2. V nastavení **Usage policy** (Zásady používání) zadejte **počet uživatelů**, kteří mohou testovací prostředí používat.
-3. Vyberte **Uložit**. 
+3. Vyberte **Save** (Uložit). 
 
     ![Zásady používání](../media/tutorial-setup-classroom-lab/usage-policy-settings.png)
 
 
 ## <a name="set-up-the-template"></a>Nastavení šablony 
-Šablona v testovacím prostředí je základní image virtuálního počítače, ze které se vytváří všechny virtuální počítače uživatelů. Nastavte virtuální počítač šablony tak, aby byl nakonfigurován přesně podle toho, co chcete uživatelům testovacího prostředí poskytovat. Můžete zadat název a popis šablony, které uvidí uživatelé testovacího prostředí. Publikujte šablonu pro veřejnost, aby instance šablony virtuálního počítače byly dostupné všem uživatelům testovacího prostředí. 
+Šablona v testovacím prostředí je základní image virtuálního počítače, ze které se vytváří všechny virtuální počítače uživatelů. Nastavte virtuální počítač šablony tak, aby byl nakonfigurovaný přesně podle toho, co chcete uživatelům testovacího prostředí poskytnout. Můžete zadat název a popis šablony, které uvidí uživatelé testovacího prostředí. Publikujte šablonu, aby instance šablony virtuálního počítače byly dostupné všem uživatelům testovacího prostředí. 
 
 ### <a name="set-title-and-description"></a>Nastavení názvu a popisu
-1. V části **Template** (Šablona) vyberte **Edit** (Upravit) (ikona tužky) pro šablonu. 
-2. V okně **User view** (Zobrazení uživatele) zadejte **název** pro šablonu.
-3. Zadejte **popis** pro šablonu.
-4. Vyberte **Uložit**.
+1. V části **Template** (Šablona) vyberte **Edit** (Upravit) (ikona tužky) u šablony. 
+2. V okně **User view** (Zobrazení uživatele) zadejte **název** šablony.
+3. Zadejte **popis** šablony.
+4. Vyberte **Save** (Uložit).
 
     ![Popis testovacího prostředí v učebně](../media/tutorial-setup-classroom-lab/lab-description.png)
 
@@ -96,8 +96,8 @@ Jakmile publikujete šablonu, vytvoří služba Azure Lab Services pomocí této
 2. Teď vyberte tlačítko **Publish** (Publikovat). Tento proces může chvíli trvat v závislosti na počtu vytvářených virtuálních počítačů, který je stejný jako počet uživatelů s povoleným přístupem k testovacímu prostředí.
     
     > [!IMPORTANT]
-    > Jakmile je šablona veřejně dostupná, nemůže být přístup k ní změněn na privátní. 
-4. Přepněte na stránku **Virtual machines** (Virtuální počítače) a zkontrolujte, že se zobrazí pět virtuálních počítačů ve stavu **Unassigned** (Nepřiřazeno). Tyto virtuální počítače ještě nejsou přiřazené ke studentům. 
+    > Jakmile je šablona publikovaná, nejde to vrátit. 
+4. Přepněte na stránku **Virtual machines** (Virtuální počítače) a zkontrolujte, že se zobrazí virtuální počítače ve stavu **Unassigned** (Nepřiřazeno). Tyto virtuální počítače ještě nejsou přiřazené ke studentům. 
 
     ![Virtuální počítače](../media/tutorial-setup-classroom-lab/virtual-machines.png)
 5. Počkejte na vytvoření virtuálních počítačů. Měly by být ve stavu **Stopped** (Zastaveno). Na této stránce můžete spustit studentský virtuální počítač, připojit se k němu, zastavit ho a odstranit ho. Virtuální počítače můžete spustit na této stránce nebo jejich spuštění můžete nechat na studentech. 

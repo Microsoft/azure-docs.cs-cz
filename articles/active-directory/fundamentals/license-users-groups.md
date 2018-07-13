@@ -17,12 +17,12 @@ ms.date: 08/22/2017
 ms.author: lizross
 ms.reviewer: jeffgilb
 custom: it-pro
-ms.openlocfilehash: 738e96bf631833b8d35847114ee08fc3f5bec2a4
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 6fc1d808fb712f7acb60e490663cb7301e22153c
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37767353"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37856085"
 ---
 # <a name="quickstart-license-users-in-azure-active-directory"></a>Rychlý start: Licencování uživatelů ve službě Azure Active Directory
 Licencované služby Azure AD fungují na základě aktivace předplatného služby Azure AD (Azure Active Directory) v tenantovi Azure. Po aktivaci předplatného jsou možnosti služeb spravovány správci služby Azure AD a používány licencovanými uživateli. Když si zakoupíte Enterprise Mobility + Security, Azure AD Premium nebo Azure AD Basic, váš tenant se aktualizuje pomocí předplatného, včetně období platnosti a předplacených licencí. Informace o předplatném, včetně počtu přiřazených licencí, jsou dostupné na portálu Azure Portal v části **Azure Active Directory** po otevření dlaždice **Licence**. Okno **Licence** je také nejlepším místem, kde můžete spravovat přiřazení licencí.
@@ -35,7 +35,7 @@ Pomocí [přiřazení skupinové licence](active-directory-licensing-whatis-azur
 * Rozhodnutí můžete delegovat na jiné manažery v organizaci (pomocí [skupin samoobslužných služeb](../users-groups-roles/groups-self-service-management.md)).
 
 > [!TIP]
-> Podrobné informace o přiřazení licencí skupinám, včetně pokročilých scénářů a scénářů licencování Office 365, najdete v článku o [přiřazení licencí uživatelům podle členství ve skupině ve službě Azure Active Directory](../active-directory-licensing-group-assignment-azure-portal.md).
+> Podrobné informace o přiřazení licencí skupinám, včetně pokročilých scénářů a scénářů licencování Office 365, najdete v článku o [přiřazení licencí uživatelům podle členství ve skupině ve službě Azure Active Directory](../users-groups-roles/licensing-groups-assign.md).
 
 ## <a name="assign-licenses-to-users-and-groups"></a>Přiřazení licencí uživatelům a skupinám
 V aktivním předplatném byste měli nejprve přiřadit licenci sami sobě a aktualizovat prohlížeč, abyste zajistili, že budete mít přístup ke všem očekávaným funkcím, které jsou součástí vašeho předplatného. Dalším krokem je přiřazení licencí uživatelům, kteří potřebují přístup k placeným funkcím Azure AD. Licence můžete snadno přiřadit tak, že je přiřadíte skupinám uživatelům a ne jednotlivým uživatelům. Při přiřazení licence skupině se licence přiřadí všem členům dané skupiny. Pokud uživatele do skupiny přidáte nebo je z ní odeberete, příslušná licence se automaticky přidá nebo odebere. 

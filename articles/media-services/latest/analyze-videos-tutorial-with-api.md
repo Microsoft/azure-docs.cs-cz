@@ -10,14 +10,14 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 04/09/2018
+ms.date: 06/28/2018
 ms.author: juliako
-ms.openlocfilehash: e81544d263bea3f367eaf2100ddb36a2835034c4
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e5b8cc9285d9637a04c4bec47b0185652aa7c84e
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34637908"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37114220"
 ---
 # <a name="tutorial-analyze-videos-with-azure-media-services"></a>Kurz: Analýza videa pomocí služby Azure Media Services 
 
@@ -33,6 +33,9 @@ V tomto kurzu získáte informace o následujících postupech:
 > * Spuštění aplikace
 > * Prozkoumání výstupu
 > * Vyčištění prostředků
+
+> [!Note]
+> Pomocí webu Azure Portal nastavte účet Media Services na 10 rezervovaných jednotek médií úrovně S3, jak je popsáno v tématu [Škálování zpracování médií](../previous/media-services-scale-media-processing-overview.md).
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

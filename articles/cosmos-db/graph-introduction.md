@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 01/05/2017
 ms.author: lbosq
-ms.openlocfilehash: 6fcd6389e3ff23c1cb2b2f0e5183ea43bae9f313
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: ee6e3adc3300178164b83ee1f8dc2ab307eec45b
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34796134"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37081208"
 ---
 # <a name="introduction-to-azure-cosmos-db-graph-api"></a>Úvod do služby Azure Cosmos DB: rozhraní Graph API
 
@@ -45,7 +45,7 @@ Rozhraní Graph API služby Azure Cosmos DB poskytuje:
 - Nastavitelné úrovně konzistence
 - Obsáhlé smlouvy SLA včetně 99,99% dostupnosti pro všechny účty v jedné oblasti a všechny účty ve více oblastech s mírnější konzistencí a 99,999% dostupnosti čtení pro všechny účty databáze ve více oblastech
 
-K dotazování Azure Cosmos DB můžete použít jazyk procházení grafů [Apache TinkerPop](http://tinkerpop.apache.org), [Gremlin](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps) nebo jiné systémy grafů kompatibilní s TinkerPop, jako je [Apache Spark GraphX](spark-connector-graph.md).
+K dotazování služby Azure Cosmos DB můžete použít jazyk pro procházení grafů [Apache TinkerPop](http://tinkerpop.apache.org) nebo [Gremlin](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps).
 
 Tento článek obsahuje přehled rozhraní Graph API služby Azure Cosmos DB a vysvětluje, jak ho můžete použít k ukládání ohromných grafů s miliardami vrcholů a hran. Grafy můžete dotazovat s latencí v řádu milisekund a snadno rozvíjet strukturu a schéma grafu.
 
@@ -93,7 +93,7 @@ Služba Azure Cosmos DB nabízí následující možnosti, kterými se odlišuje
 
 * Kompatibilita s Apache TinkerPop
 
- Služba Azure Cosmos DB nativně podporuje Open Source standard TinkerPop a může být integrovaná s jinými systémy grafů, které tento standard podporují. Snadno tak můžete migrovat z jiných databází grafu, jako jsou Titan nebo Neo4j, nebo Azure Cosmos DB použít s rozhraními pro analýzu grafů, jako je [Apache Spark GraphX](spark-connector-graph.md).
+ Služba Azure Cosmos DB nativně podporuje Open Source standard TinkerPop a může být integrovaná s jinými systémy grafů, které tento standard podporují. Snadno tak můžete migrovat z jiných databází grafu, jako jsou Titan nebo Neo4j, nebo Azure Cosmos DB použít s rozhraními pro analýzu grafů, jako je Apache Spark GraphX.
 
 * Nastavitelné úrovně konzistence
 
@@ -116,7 +116,7 @@ Následující tabulka ukazuje oblíbené ovladače Gremlin, které můžete pou
 | [Konzola Gremlin](https://tinkerpop.apache.org/downloads.html) | [Dokumentace k TinkerPop](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console) |  [Vytvoření grafu pomocí konzoly Gremlin](create-graph-gremlin-console.md) |
 
 ## <a name="scenarios-for-graph-support-of-azure-cosmos-db"></a>Scénáře pro podporu grafů služby Azure Cosmos DB
-Zde je několik scénářů, ve kterých lze použít podporu grafů služby Azure Cosmos DB:
+Tady je několik scénářů, ve kterých je možné využít podporu grafů služby Azure Cosmos DB:
 
 * Sociální sítě
 
@@ -126,7 +126,7 @@ Zde je několik scénářů, ve kterých lze použít podporu grafů služby Azu
 
  Tento scénář se často používá v maloobchodě. Zkombinováním informací o produktech, uživatelích a interakcích uživatelů (jako je nákup, procházení nebo hodnocení položky) můžete vytvořit přizpůsobená doporučení. Nízká latence, elastické škálování a nativní podpora grafů služby Azure Cosmos DB se k modelování těchto interakcí ideálně hodí.
 
-* Geoprostorové úlohy
+* Geoprostorové
 
  V mnoha aplikacích v oboru telekomunikací, logistiky a plánování cest je potřeba najít místo zájmu v určité oblasti nebo vyhledat nejkratší/optimální trasu mezi dvěma místy. Azure Cosmos DB se k řešení těchto problémů skvěle hodí.
 
@@ -135,7 +135,7 @@ Zde je několik scénářů, ve kterých lze použít podporu grafů služby Azu
  Pomocí sítě a propojení mezi zařízeními IoT modelovanými ve formě grafu můžete zajistit lepší porozumění stavu vašich zařízení a majetku. Zároveň zjistíte, jak změny v jedné části sítě mohou potenciálně ovlivnit jinou část.
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o podpoře grafů ve službě Azure Cosmos DB najdete zde:
+Další informace o podpoře grafů ve službě Azure Cosmos DB najdete tady:
 
 * Začněte [kurzem věnovaným grafu služby Azure Cosmos DB](create-graph-dotnet.md).
 * Naučte se, jak [dotazovat grafy ve službě Azure Cosmos DB pomocí jazyka Gremlin](gremlin-support.md).

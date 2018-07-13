@@ -1,5 +1,5 @@
 ---
-title: Vytvoření aplikace v Javě pro Service Fabric | Microsoft Docs
+title: Vytvoření aplikace Java na platformě Service Fabric v Azure | Microsoft Docs
 description: V tomto kurzu se dozvíte, jak vytvořit aplikaci spolehlivé služby v Javě s front-endem a stavovým back-endem spolehlivé služby a jak tuto aplikaci nasadit do clusteru.
 services: service-fabric
 documentationcenter: java
@@ -15,14 +15,15 @@ ms.workload: NA
 ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: b512ba91d1df7ec0432bdf9048268714e570fe6b
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: a8522dbe20f302a1819b89eaea92562a2dcf43a5
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36958672"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37114121"
 ---
-# <a name="tutorial-create-and-deploy-an-application-with-a-java-web-api-front-end-service-and-a-stateful-back-end-service"></a>Kurz: Vytvoření a nasazení aplikace s front-end službou webového rozhraní API pro Javu a stavovou back-end službou
+# <a name="tutorial-create-an-application-with-a-java-web-api-front-end-service-and-a-stateful-back-end-service-on-service-fabric"></a>Kurz: Vytvoření aplikace s front-end službou webového rozhraní API pro Javu a stavovou back-end službou na platformě Service Fabric
+
 Tento kurz je první částí série. Až budete hotovi, budete mít hlasovací aplikaci s webovým front-endem v Javě, která ukládá výsledky hlasování do stavové back-end služby v clusteru. Tato série kurzů vyžaduje funkční vývojový počítač se systémem Mac OSX nebo Linuxem. Pokud nechcete hlasovací aplikaci vytvářet ručně, můžete si [stáhnout zdrojový kód dokončené aplikace](https://github.com/Azure-Samples/service-fabric-java-quickstart) a přeskočit k části [Prohlídka ukázkové hlasovací aplikace](service-fabric-tutorial-create-java-app.md#walk-through-the-voting-sample-application).
 
 ![Místně spuštěná hlasovací aplikace](./media/service-fabric-tutorial-create-java-app/votingjavalocal.png)
@@ -37,18 +38,21 @@ V první části této série se naučíte:
 
 V této sérii kurzů se naučíte:
 > [!div class="checklist"]
-> *  Sestavení aplikace Service Fabric Reliable Services v Javě
+> * Sestavení aplikace Service Fabric Reliable Services v Javě
 > * [Nasazení a ladění aplikace v místním clusteru](service-fabric-tutorial-debug-log-local-cluster.md)
 > * [Nasazení aplikace do clusteru Azure](service-fabric-tutorial-java-deploy-azure.md)
 > * [Nastavit monitorování a diagnostiku aplikace](service-fabric-tutorial-java-elk.md)
 > * [Nastavení CI/CD](service-fabric-tutorial-java-jenkins.md)
 
 ## <a name="prerequisites"></a>Požadavky
+
 Než začnete s tímto kurzem:
-- Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Nastavení vývojového prostředí pro [Mac](service-fabric-get-started-mac.md) nebo [Linux](service-fabric-get-started-linux.md). Postupujte podle pokynů k instalaci modulu plug-in Eclipse, Gradle, sady Service Fabric SDK a Service Fabric CLI (sfctl).
+
+* Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Nastavení vývojového prostředí pro [Mac](service-fabric-get-started-mac.md) nebo [Linux](service-fabric-get-started-linux.md). Postupujte podle pokynů k instalaci modulu plug-in Eclipse, Gradle, sady Service Fabric SDK a Service Fabric CLI (sfctl).
 
 ## <a name="create-the-front-end-java-stateless-service"></a>Vytvoření bezstavové front-end služby v Javě
+
 Nejprve vytvořte webový front-end hlasovací aplikace. Bezstavová služba v Javě představuje jednoduchý server HTTP, který je hostitelem webového uživatelského rozhraní využívajícího AngularJS. Požadavky od uživatele se zpracovávají v této bezstavové službě a odesílají jako vzdálené volání procedury do stavové služby, která ukládá hlasy. 
 
 1. Spuštění Eclipse
@@ -62,7 +66,7 @@ Nejprve vytvořte webový front-end hlasovací aplikace. Bezstavová služba v J
     ![Výběr bezstavové služby v Javě dialogovém okně New Service (Nová služba)](./media/service-fabric-tutorial-create-java-app/name-sf-proj-wizard.png) 
 
 4. Na stránce **Add Service** (Přidat službu) zvolte **Stateless Service** (Bezstavová služba) a pojmenujte službu **VotingWeb**. Kliknutím na **Finish** (Dokončit) vytvořte projekt.
-   
+
     ![Vytvoření bezstavové služby]( ./media/service-fabric-tutorial-create-java-app/createvotingweb.png)
 
     Eclipse vytvoří aplikaci a projekt služby a zobrazí je v průzkumníku balíčků.
@@ -80,9 +84,10 @@ Následující tabulka obsahuje stručný popis jednotlivých položek v průzku
 | settings.gradle | Obsahuje názvy projektů Gradle v této složce. |
 
 ### <a name="add-html-and-javascript-to-the-votingweb-service"></a>Přidání kódu HTML a Javascriptu do služby VotingWeb
-Pokud chcete přidat uživatelské rozhraní, které může bezstavová služba vykreslovat, přidejte do adresáře *VotingApplication/VotingWebPkg/Code* soubor HTML. Tento soubor HTML se pak vykreslí pomocí jednoduchého serveru HTTP vloženého do bezstavové služby v Javě. 
 
-1. Rozbalte adresář *VotingApplication* a přejděte do adresáře *VotingApplication/VotingWebPkg/Code*. 
+Pokud chcete přidat uživatelské rozhraní, které může bezstavová služba vykreslovat, přidejte do adresáře *VotingApplication/VotingWebPkg/Code* soubor HTML. Tento soubor HTML se pak vykreslí pomocí jednoduchého serveru HTTP vloženého do bezstavové služby v Javě.
+
+1. Rozbalte adresář *VotingApplication* a přejděte do adresáře *VotingApplication/VotingWebPkg/Code*.
 
 2. Klikněte pravým tlačítkem na adresář *Code* a pak klikněte na **New** (Nový) -> **Other** (Jiné).
 
@@ -201,7 +206,8 @@ app.controller("VotingAppController", ['$rootScope', '$scope', '$http', '$timeou
 ```
 
 ### <a name="update-the-votingwebservicejava-file"></a>Aktualizace souboru VotingWebService.java
-V podprojektu **VotingWeb** otevřete soubor *VotingWeb/src/statelessservice/VotingWebService.java*. Soubor **VotingWebService** představuje bránu k bezstavové službě a je zodpovědný za nastavení naslouchacího procesu komunikace pro front-end rozhraní API. 
+
+V podprojektu **VotingWeb** otevřete soubor *VotingWeb/src/statelessservice/VotingWebService.java*. Soubor **VotingWebService** představuje bránu k bezstavové službě a je zodpovědný za nastavení naslouchacího procesu komunikace pro front-end rozhraní API.
 
 V souboru nahraďte obsah metody **createServiceInstanceListeners** následujícím kódem a uložte provedené změny.
 
@@ -219,7 +225,8 @@ protected List<ServiceInstanceListener> createServiceInstanceListeners() {
 ```
 
 ### <a name="add-the-httpcommunicationlistenerjava-file"></a>Přidání souboru HTTPCommunicationListener.java
-Naslouchací proces komunikace protokolu HTTP funguje jako kontroler, který nastaví server HTTP a zveřejní rozhraní API definující akce hlasování. Klikněte pravým tlačítkem na balíček *statelessservice* ve složce *VotingWeb/src/statelessservice*, vyberte **New –> Other... –> General –> File** (Nový –> Jiné... –> Obecné –> Soubor) a klikněte na **Next** (Další).  Pojmenujte soubor *HttpCommunicationListener.java* a klikněte na **Finish** (Dokončit).  
+
+Naslouchací proces komunikace protokolu HTTP funguje jako kontroler, který nastaví server HTTP a zveřejní rozhraní API definující akce hlasování. Klikněte pravým tlačítkem na balíček *statelessservice* ve složce *VotingWeb/src/statelessservice*, vyberte **New –> Other... –> General –> File** (Nový –> Jiné... –> Obecné –> Soubor) a klikněte na **Next** (Další).  Pojmenujte soubor *HttpCommunicationListener.java* a klikněte na **Finish** (Dokončit).
 
 Nahraďte obsah souboru následujícím kódem a pak uložte provedené změny.  V pozdější části [Aktualizace souboru HttpCommunicationListener.java](#updatelistener_anchor) se tento soubor upraví tak, aby vykresloval, načítal a zapisoval data hlasování z back-end služby.  Prozatím naslouchací událost jednoduše vrací statický kód HTML hlasovací aplikace.
 
@@ -259,7 +266,7 @@ import system.fabric.CancellationToken;
 public class HttpCommunicationListener implements CommunicationListener {
 
     private static final Logger logger = Logger.getLogger(HttpCommunicationListener.class.getName());
-    
+
     private static final String HEADER_CONTENT_TYPE = "Content-Type";
     private static final int STATUS_OK = 200;
     private static final int STATUS_NOT_FOUND = 404; 
@@ -267,7 +274,7 @@ public class HttpCommunicationListener implements CommunicationListener {
     private static final String RESPONSE_NOT_FOUND = "404 (Not Found) \n";
     private static final String MIME = "text/html";  
     private static final String ENCODING = "UTF-8";
-    
+
     private static final String ROOT = "wwwroot/";
     private static final String FILE_NAME = "index.html";
     private StatelessServiceContext context;
@@ -290,7 +297,7 @@ public class HttpCommunicationListener implements CommunicationListener {
             logger.log(Level.SEVERE, null, ex);
             throw new RuntimeException(ex);
         }
-        
+
         // Responsible for rendering the HTML layout described in the previous step
         server.createContext("/", new HttpHandler() {
             @Override
@@ -307,7 +314,7 @@ public class HttpCommunicationListener implements CommunicationListener {
                     } else {    
                       Headers h = t.getResponseHeaders();
                       h.set(HEADER_CONTENT_TYPE, MIME);
-                      t.sendResponseHeaders(STATUS_OK, 0);              
+                      t.sendResponseHeaders(STATUS_OK, 0);
     
                       OutputStream os = t.getResponseBody();
                       FileInputStream fs = new FileInputStream(file);
@@ -316,7 +323,7 @@ public class HttpCommunicationListener implements CommunicationListener {
                       while ((count = fs.read(buffer)) >= 0) {
                         os.write(buffer,0,count);
                       }
-                      
+
                       fs.close();
                       os.close();
                     }  
@@ -329,11 +336,11 @@ public class HttpCommunicationListener implements CommunicationListener {
         /*
         [Replace this entire comment block in the 'Connect the services' section]
         */
-        
+
         server.setExecutor(null);
         server.start();
     }
-    
+
     //Helper method to parse raw HTTP requests
     private Map<String, String> queryToMap(String query){
         Map<String, String> result = new HashMap<String, String>();
@@ -379,6 +386,7 @@ public class HttpCommunicationListener implements CommunicationListener {
 ```
 
 ### <a name="configure-the-listening-port"></a>Konfigurace portu pro naslouchání
+
 Po vytvoření front-end služby VotingWebService vybere Service Fabric port, na kterém bude služba naslouchat.  Služba VotingWebService funguje jako front-end této aplikace a přijímá externí provoz, takže tuto službu svážeme s pevným a dobře známým portem. V průzkumníku balíčků otevřete soubor *VotingWebService/VotingWebServicePkg/ServiceManifest.xml*.  V části **Resources** (Prostředky) vyhledejte prostředek **Endpoint** (Koncový bod) a změňte hodnotu **Port** na 8080 nebo jiný port. Pokud chcete aplikaci nasadit a spustit místně, port pro naslouchání aplikace musí být otevřený a dostupný na vašem počítači. Pod značku **ServiceManifest** vložte následující fragment kódu.
 
 ```xml
@@ -390,16 +398,17 @@ Po vytvoření front-end služby VotingWebService vybere Service Fabric port, na
         <Endpoint Name="WebEndpoint" Protocol="http" Port="8080" />
     </Endpoints>
   </Resources>
-```  
+```
 
 ## <a name="add-a-stateful-back-end-service-to-your-application"></a>Přidání stavové back-end služby do aplikace
+
 Když je teď hotová kostra služby webového rozhraní API v Javě, můžeme pokračovat a dokončit bezstavovou back-end službu.
 
 Service Fabric umožňuje konzistentně a spolehlivě ukládat data přímo v rámci služby s použitím spolehlivých kolekcí. Spolehlivé kolekce jsou sady vysoce dostupných a spolehlivých tříd kolekcí. Použití těchto tříd budou znát všichni, kteří už někdy používali kolekce v Javě.
 
 1. V průzkumníku balíčků klikněte pravým tlačítkem na **Voting** v rámci projektu aplikace a zvolte **Service Fabric > Add Service Fabric Service** (Service Fabric > Přidat službu Service Fabric).
-   
-2. V dialogovém okně **Add Service** (Přidat službu) zvolte **Stateful Service** (Bezstavová služba), pojmenujte službu **VotingData** a klikněte na **Add Service** (Přidat službu). 
+
+2. V dialogovém okně **Add Service** (Přidat službu) zvolte **Stateful Service** (Bezstavová služba), pojmenujte službu **VotingData** a klikněte na **Add Service** (Přidat službu).
 
     ![Přidání nové služby do stávající aplikace](./media/service-fabric-tutorial-create-java-app/addstatefuljava.png)
 
@@ -540,8 +549,9 @@ class VotingDataService extends StatefulService implements VotingRPC {
 }
 ```
 
-## <a name="create-the-communication-interface-to-your-application"></a>Vytvoření komunikačního rozhraní pro aplikaci 
-Teď už jsou vytvořené kostry bezstavové front-end služby a back-end služby. Dalším krokem je propojení těchto dvou služeb. Front-end i back-end služba využívají rozhraní VotingRPC, které definuje operace hlasovací aplikace. Toto rozhraní se implementuje ve front-end i back-end službě za účelem umožnění vzdálených volání procedur (RPC) mezi těmito dvěma službami. Vzhledem k tomu, že Eclipse nepodporuje přidávání podprojektů Gradle, je potřeba přidat balíček obsahující toto rozhraní ručně. 
+## <a name="create-the-communication-interface-to-your-application"></a>Vytvoření komunikačního rozhraní pro aplikaci
+
+Teď už jsou vytvořené kostry bezstavové front-end služby a back-end služby. Dalším krokem je propojení těchto dvou služeb. Front-end i back-end služba využívají rozhraní VotingRPC, které definuje operace hlasovací aplikace. Toto rozhraní se implementuje ve front-end i back-end službě za účelem umožnění vzdálených volání procedur (RPC) mezi těmito dvěma službami. Vzhledem k tomu, že Eclipse nepodporuje přidávání podprojektů Gradle, je potřeba přidat balíček obsahující toto rozhraní ručně.
 
 1. Klikněte pravým tlačítkem na projekt **Voting** v průzkumníku balíčků a klikněte na **New –> Other...** (Nový –> Jiné...).
 
@@ -552,7 +562,7 @@ Teď už jsou vytvořené kostry bezstavové front-end služby a back-end služb
 3. Ve složce *Voting/VotingRPC/src/rpcmethods* vytvořte soubor *VotingRPC.java* a do tohoto souboru **VotingRPC.java** vložte následující kód. 
 
     ```java
-    package rpcmethods; 
+    package rpcmethods;
     
     import java.util.ArrayList;
     import java.util.concurrent.CompletableFuture;
@@ -878,6 +888,7 @@ V této části se pro projekt nakonfigurují skripty Gradle.
     ```
 
 ## <a name="deploy-application-to-local-cluster"></a>Nasazení aplikace do místního clusteru
+
 V tuto chvíli je aplikace připravená k nasazení do místního clusteru Service Fabric.
 
 1. Klikněte pravým tlačítkem na projekt **Voting** v průzkumníku balíčků a kliknutím na **Service Fabric –> Build Application** (Service Fabric –> Sestavit aplikaci) svou aplikaci sestavte.
@@ -901,6 +912,7 @@ V tuto chvíli je aplikace připravená k nasazení do místního clusteru Servi
 6. Ve webovém prohlížeči přejděte na adresu **http://localhost:8080** a zobrazte svou spuštěnou aplikaci na místním clusteru Service Fabric. 
 
 ## <a name="next-steps"></a>Další kroky
+
 V této části kurzu jste se naučili:
 
 > [!div class="checklist"]
