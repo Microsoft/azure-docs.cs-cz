@@ -1,19 +1,19 @@
-Následující tabulka popisuje všechny hlavní kvót, omezení, výchozí hodnoty a omezení ve službě Azure Scheduler.
+Následující tabulka popisuje každý z hlavní kvót, omezení, výchozí hodnoty a omezení ve službě Azure Scheduler.
 
-| Prostředek | Popis limit |
+| Prostředek | Popis omezení |
 | --- | --- |
-| **Velikost úlohy** |Maximální velikost je 16 kB. Pokud PUT nebo opravy výsledkem úlohu větší než těchto mezních hodnot, vrátí se 400 stavový kód chybný požadavek. |
-| **Velikost adresy URL žádosti** |Maximální velikost adrese URL žádosti je 2048 znaků. |
-| **Velikost agregační záhlaví** |Velikost maximální agregační záhlaví je 4096 znaků. |
-| **Počet záhlaví** |Hlavička maximální počet je 50 hlavičky. |
-| **Velikost obsahu** |Text maximální velikost je 8192 znaků. |
-| **Interval opakování** |Maximální počet opakování rozpětí je 18 měsíců. |
+| **Velikost úlohy** |Maximální velikost je 16 kB. Pokud PUT nebo opravu výsledků v rámci úlohy, které jsou větší než tato omezení, se vrátí stavový kód 400 Chybný požadavek. |
+| **Velikost adresy URL požadavku** |Maximální velikost požadavku na adresu URL je 2 048 znaků. |
+| **Velikost agregační záhlaví** |Velikost hlavičky maximální agregace je 4096 znaků. |
+| **Počet hlaviček** |Záhlaví maximální počet je 50 záhlaví. |
+| **Velikost textu** |Tělo maximální velikost je 8192 znaků. |
+| **Rozsah opakování** |Maximální počet opakování období je 18 měsíců. |
 | **Čas spuštění** |Maximální počet "čas spuštění" je 18 měsíců. |
-| **Historie úlohy** |Maximální odpovědi, které jsou uloženy v historii úlohy je 2048 bajtů. |
-| **Frekvence** |Kvóta maximální frekvence výchozí je 1 hodina bezplatnou kolekci úloh a 1 minuta v kolekci standardní úlohy. Maximální frekvence se dá nakonfigurovat na kolekci úloh nižší než maximální. Všechny úlohy v kolekci úloh jsou omezené hodnotu nastavenou v kolekci úloh. Pokud se pokusíte vytvořit úlohu s frekvencí vyšší než maximální frekvence na kolekci úloh se nezdaří žádost s 409 konflikt stavový kód. |
-| **Úlohy** |Výchozí kvótu maximální počet úloh je 5 úloh v bezplatnou kolekci úloh a 50 úloh v kolekci standardní úlohy. Maximální počet úloh je možné konfigurovat na kolekci úloh. Všechny úlohy v kolekci úloh jsou omezené hodnotu nastavenou v kolekci úloh. Pokud budete chtít vytvořit více úloh než kvóta maximální úlohy, požadavek selže s 409 konflikt stavový kód. |
-| **Kolekce úloh** |Maximální počet kolekce úloh podle předplatného je 200 000. |
-| **Uchování historie úlohy** |Historie úlohy se uchovávají po dobu až 2 měsíců nebo maximálně posledních 1000 spuštěních. |
-| **Uchování dokončené a chybný úlohy** |Dokončené a chybný úlohy jsou uchovávat 60 dnů. |
-| **Časový limit** |Je statický časový limit (ne konfigurovat) požadavku 60 sekund pro akce HTTP. Delší spuštění operací postupujte podle asynchronní protokoly HTTP; například vrátit 202 okamžitě však pokračovat v práci na pozadí. |
+| **Historie úlohy** |Text maximální odpovědi, které jsou uloženy v historii úloh je 2 048 bajtů. |
+| **Frekvence** |Výchozí kvóta maximální frekvence je 1 hodinu v kolekci úloh free a 1 minuta v kolekci standardní úloh. Maximální četnost je možné konfigurovat na kolekci úloh nižší než maximální délka. Všechny úlohy v kolekci úloh jsou omezena hodnotou nastavenou na kolekci úloh. Při pokusu o vytvoření úlohy s vyšší frekvencí, než je maximální četnost u kolekce úloh se požadavek nezdaří s stavový kód 409 konflikt. |
+| **Úlohy** |Výchozí kvóta maximální počet úloh je 50 úlohy v kolekci standardní úloh a 5 úloh v kolekci úloh free. Maximální počet úloh, které je možné konfigurovat na kolekci úloh. Všechny úlohy v kolekci úloh jsou omezena hodnotou nastavenou na kolekci úloh. Pokud se pokusíte vytvořit víc úloh než kvóta maximální úlohy, požadavek selže s kódem stavu 409 konflikt. |
+| **Kolekce úloh** |Maximální počet kolekci úloh na jedno předplatné je 200 000. |
+| **Uchování historie úlohy** |Historie úlohy se uchovávají po dobu až 2 měsíců nebo až po poslední 1 000 spuštění. |
+| **Dokončené a chybnou úloha uchovávání** |Dokončené a chybnou úlohy se uchovávají po dobu 60 dnů. |
+| **časový limit** |Je statická časový limit (není konfigurovatelné) žádosti 60 sekund pro akce HTTP. Delší probíhajících operací postupujte podle asynchronní protokolů HTTP; například vrátit 202 okamžitě, ale pokračovat v práci na pozadí. |
 

@@ -8,12 +8,12 @@ ms.date: 6/20/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 45179f8f1f46be764144bdc22d5bab3548e9401d
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 789958874784f19169e79a177beb0d811d9f60d4
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346055"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39005702"
 ---
 # <a name="create-a-linux-iot-edge-device-that-acts-as-a-transparent-gateway"></a>Vytvoření zařízení Linux IoT Edge, který funguje jako transparentní brána
 
@@ -116,7 +116,7 @@ Jednou z klíčových možností služby Azure IoT Edge je schopnost nasazovat m
 1. Na webu Azure Portal přejděte do svého centra IoT.
 2. Přejděte na **IoT Edge** a vyberte zařízení IoT Edge, který chcete použít jako bránu.
 3. Vyberte **Nastavit moduly**.
-4. Vyberte **Next** (Další).
+4. Vyberte **Další**.
 5. V kroku **Specify routes** (Zadejte trasy) musíte mít výchozí trasu, která odesílá všechny zprávy ze všech modulů do IoT Hubu. Pokud tomu tak není, přidejte následující kód a vyberte **Next** (Další).
    ```JSON
    {
@@ -181,7 +181,7 @@ Modul runtime IoT Edge může směrovat zprávy odeslané ze zařízení příje
    { "routes":{ "sensorToAIInsightsInput1":"FROM /messages/* WHERE NOT IS_DEFINED($connectionModuleId) INTO BrokeredEndpoint(\"/modules/ai_insights/inputs/input1\")", "AIInsightsToIoTHub":"FROM /messages/modules/ai_insights/outputs/output1 INTO $upstream" } }
    ```
 
-Znalostní báze [modulu složení] [lnk-module složení] podrobné informace o směrování zpráv.
+Odkazovat [modulu složení článku] [ lnk-module-composition] podrobné informace o směrování zpráv.
 
 ## <a name="next-steps"></a>Další postup
 [Pochopení požadavků a nástroje pro vývoj modulů IoT Edge][lnk-module-dev].
@@ -192,6 +192,7 @@ Znalostní báze [modulu složení] [lnk-module složení] podrobné informace o
 <!-- Links -->
 [lnk-install-linux-x64]: ./how-to-install-iot-edge-linux.md
 [lnk-install-linux-arm]: ./how-to-install-iot-edge-linux-arm.md
+[lnk-module-composition]: ./module-composition.md
 [lnk-devicesdk]: ../iot-hub/iot-hub-devguide-sdks.md
 [lnk-tutorial1-win]: tutorial-simulate-device-windows.md
 [lnk-tutorial1-lin]: tutorial-simulate-device-linux.md

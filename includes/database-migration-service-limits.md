@@ -1,5 +1,5 @@
-Služba Azure databáze migrace je plně spravovaná služba navržených k povolení bezproblémové migrace z více zdrojů databáze do platformy Azure dat s minimálními výpadky.  
+Azure Database Migration Service je plně spravovaná služba, která umožňují bezproblémovou migraci z několika databázových zdrojů na platformu Azure Data s minimálními výpadky.  
 
 | **Prostředek** | **Výchozí omezení** | **Komentáře** |
 | --- | --- | --- |
-| Maximální počet služeb jedno předplatné, podle oblastí |2 | Pokud chcete toto omezení zvýšit, kontaktujte podporu. |
+| Maximální počet služeb na předplatné a oblast |2 | Pokud chcete toto omezení zvýšit, kontaktujte podporu. |

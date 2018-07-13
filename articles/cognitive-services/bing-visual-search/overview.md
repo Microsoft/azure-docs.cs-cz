@@ -1,7 +1,7 @@
 ---
-title: Přehled rozhraní API vyhledávání Visual Bing | Microsoft Docs
+title: Přehled API pro vizuální vyhledávání Bingu | Dokumentace Microsoftu
 titleSuffix: Bing Web Search APIs - Cognitive Services
-description: Ukazuje, jak získat podrobnosti nebo přehledy o bitovou kopii například podobné obrázky nebo nákupní zdroje.
+description: Ukazuje, jak získat informace nebo informace o obrázku například podobné obrázky nebo nákupní zdroje.
 services: cognitive-services
 author: swhite-msft
 manager: rosh
@@ -10,46 +10,46 @@ ms.technology: bing-visual-search
 ms.topic: article
 ms.date: 04/10/2018
 ms.author: scottwhi
-ms.openlocfilehash: 95f10d8ea7ebe1d40d45231a8ea40df81543fe8b
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: aa563d89b1834f5be952f13c31a2451d809709b1
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343490"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39006525"
 ---
-# <a name="what-is-bing-visual-search-api"></a>Co je rozhraní API vyhledávání Visual Bing?
+# <a name="what-is-bing-visual-search-api"></a>Co je rozhraní API pro vizuální vyhledávání Bingu?
 
-Rozhraní API vyhledávání Visual Bing poskytuje podobné zobrazený na Bing.com/images podrobnosti bitové kopie. S Visual vyhledávání můžete nahrát obrázku a získat zpět přehledy o bitovou kopii jako vizuálně podobné bitové kopie, nákupní zdroje, webové stránky, které zahrnují bitovou kopii a další. Místo odesílání bitovou kopii, můžete zadat také token statistiky, kterou můžete získat z image ve výsledcích hledání bitové kopie (viz [API bitové kopie Bingu](../bing-image-search/overview.md)).
+API pro vizuální vyhledávání Bingu poskytuje funkce podobné zobrazený na Bing.com/images podrobnosti o imagi. Pomocí vizuálního vyhledávání můžete nahrát obrázek a získat přehledy o imagi, jako je například vizuálně podobné obrázky, nákupní zdrojů, webové stránky, které zahrnují image a další. Namísto odesílání bitovou kopii, můžete také zadat token insights, který můžete získat z image ve výsledcích hledání obrázků (viz [rozhraní API Bingu pro image](../bing-image-search/overview.md)).
 
-Visual vyhledávání můžete identifikovat celebrit, památek a zajímavá, kresby, domácí vybavení, způsobem, produktů, znak rozpoznávání a další.
+Pro vizuální vyhledávání můžete identifikovat celebrit, památek a památek, uměleckých, domácí vybavení, způsobem, produkty, rozpoznávání znaků (OCR) a další.
 
-Níže jsou uvedeny statistiky, že Visual vyhledávání umožňuje zjistit.
+Níže jsou takové informace, že pro vizuální vyhledávání umožňuje zjišťovat.
 
-- Vizuální podobné obrázky&mdash;seznam bitové kopie, které jsou vizuálně podobná vstupní image
-- Vizuální podobné produkty&mdash;seznam bitové kopie, které obsahují produkty, které jsou podobné vizuálně znázorněno na obrázku vstupní produktu
-- Shopping zdroje&mdash;seznam míst, kde je možné koupit položky zobrazené v vstupní image
-- Související hledání&mdash;seznam související hledání provedené ostatní nebo které jsou na základě obsahu bitové kopie
-- Webové stránky, které obsahují image&mdash;seznam webových stránek, které zahrnují vstupní image
-- Recepty&mdash;seznam webových stránek, které zahrnují recepty pro provedení misky znázorněno na obrázku vstupní
+- Vizuálně podobné obrázky&mdash;seznam imagí, které jsou vizuálně podobné vstupního obrázku
+- Vizuálně podobné produkty&mdash;seznam imagí, které obsahují produkty, které jsou vizuálně podobné produktu vstupního obrázku
+- Nákupní zdroje&mdash;seznam míst, kde si můžete koupit položky zobrazené v vstupního obrázku
+- Související hledání&mdash;seznam související hledání od ostatních nebo které jsou na základě obsahu obrázku
+- Webové stránky, které obsahují image&mdash;seznam webové stránky, které zahrnují vstupního obrázku
+- Recepty&mdash;seznam webových stránek, které obsahují recepty vznesení pokrmu vstupního obrázku
 
-Kromě těchto Statistika Visual vyhledávání také vrátí hodnotu různého typu podmínky (značky) odvozené ze vstupní image. Tyto značky umožňují uživatelům prozkoumat koncepty najít v bitové kopii. Například pokud je vstupní image famous sportovce, jednu z uvedených značek může být název Atlet, jiné značky může být sportu. Nebo, pokud je vstupní bitovou kopii apple kruhový, značek může být zákusků Apple kruhový, paštiky, proto uživatelé můžete prozkoumat související koncepty.
+Kromě těchto přehledů pro vizuální vyhledávání také vrátí různé podmínky (značky) odvozené ze vstupního obrázku. Tato klíčová slova umožňují uživatelům Seznamte se s koncepty, které jsou součástí image. Pokud vstupního obrázku je známý athlete, jedna značka může být název sportovce, jiné značky může být sportu. Nebo vstupního obrázku je apple výsečové, značky by My jsme zvolili zákusky Apple výsečového, Pies, takže uživatelé můžou prozkoumat související koncepty.
 
-Výsledky hledání Visual také zahrnovat ohraničujícího polí pro oblasti zájmu v bitové kopii. Například pokud bitová kopie obsahuje několik celebrit, výsledky mohou obsahovat ohraničujícího políčka pro každou rozpoznaný celebrit v bitové kopii. Nebo Bing rozpozná produkt nebo oblečení v bitové kopii, výsledkem mohou být ohraničující pole pro rozpoznaný produkt nebo oblečení položky.
+Výsledky pro vizuální vyhledávání také zahrnovat ohraničující polí pro oblasti zájmu v bitové kopii. Například pokud image obsahuje několik celebrit, výsledky mohou zahrnovat ohraničující políčka pro každou rozpoznaný celebrit na obrázku. Nebo pokud Bingu rozpozná produktu nebo oblečení v bitové kopii, výsledek může zahrnovat ohraničující rámeček pro rozpoznaný produkt nebo oblečení položku.
 
 > [!IMPORTANT]
-> Pokud použijete/Image/podrobnosti koncový bod, který [přehledné image](../bing-image-search/image-insights.md), by měl aktualizovat kód a místo toho použijte funkci vyhledávání Visual vzhledem k tomu, že poskytuje komplexní přehled.
+> Pokud používáte/imagí/podrobnosti koncový bod, který [získat přehledy obrázků](../bing-image-search/image-insights.md), měli byste aktualizovat kódu pro vizuální vyhledávání místo toho použít, protože nabízí komplexnější Přehled.
 
 
-## <a name="the-request"></a>Požadavek
+## <a name="the-request"></a>Žádost
 
-Následující části jsou uvedené možnosti pro získání přehledy o bitovou kopii. 
+Následující jsou možnosti získání přehledů o bitovou kopii. 
 
-- Odeslat token statistiky, kterou můžete získat z bitové kopie v předchozích volání mezi [API bitové kopie Bingu](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference) koncové body
+- Odeslat insights token, který získáte z image v předchozí volání k jednomu z [rozhraní API Bingu pro obrázky](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference) koncových bodů
 - Odeslat adresu URL obrázku
-- Odeslat bitovou kopii (binární)
+- Nahrání image (binární)
 
 
-Při odesílání Visual vyhledávání tokenu bitovou kopii nebo adresa URL, na obrázku je objekt JSON, který je nutné zahrnout text příspěvku. 
+Při odesílání pro vizuální vyhledávání image token nebo adresu URL, následuje objekt JSON, který musí obsahovat v textu příspěvku. 
 
 ```json
 {
@@ -71,67 +71,67 @@ Při odesílání Visual vyhledávání tokenu bitovou kopii nebo adresa URL, na
 }
 ```
 
-`imageInfo` Objekt musí obsahovat buď `url` a `imageInsightsToken` pole, ale ne obojí. Nastavte `url` pole na adresu URL bitové kopie přístupné Internetu. Bitové kopie maximální podporovaná velikost je 1 MB.
+`imageInfo` Objektu musí obsahovat buď `url` nebo `imageInsightsToken` pole, ale ne obojí. Nastavte `url` pole Adresa URL obrázku, přístupný na Internetu. Obrázek maximální podporovaná velikost je 1 MB.
 
-`imageInsightsToken` Musí být nastavena na token statistiky. Získat token statistiky, volání rozhraní API bitové kopie Bingu. Odpověď obsahuje seznam `Image` objekty. Každý `Image` objekt obsahuje `imageInsightsToken` pole, které obsahuje tento token.
+`imageInsightsToken` Musí být nastaveno na insights token. Získat token přehledy, volání rozhraní API Bingu pro bitové kopie. Odpověď obsahuje seznam `Image` objekty. Každý `Image` obsahuje objekt `imageInsightsToken` pole, který obsahuje token.
 
-`cropArea` Pole je nepovinné. Oblast oříznutí určuje horního, levém horním a dolním, oblasti, v pravém rohu. Zadejte hodnoty v rozsahu 0,0 až 1,0. Hodnoty jsou podíl celkové šířky nebo výšky. Například výše uvedeném příkladu označí právo polovinu bitovou kopii jako oblasti, které vás zajímají. Zahrňte jej, pokud chcete omezit požadavek statistiky pro oblast zájmu.
+`cropArea` Pole je volitelné. Oblast oříznutí Určuje horní, levého horního a dolního, pravém horním rohu oblasti zájmu. Zadejte hodnoty v rozmezí 0,0 až 1,0. Hodnoty jsou procentní podíl celkové šířky nebo výšky. Například výše uvedený příklad značky vpravo polovinu obrázku jako oblasti zájmu. Pokud chcete omezit insights požadavek na oblasti zájmu, zahrnují ho.
 
-`filters` Objekt obsahuje filtr lokality (najdete v článku `site` pole), můžete omezit na konkrétní domény podobné bitové kopie a podobné produkty výsledky. Například pokud je image Surface Book, můžete nastavit `site` k www.microsoft.com. 
+`filters` Objekt obsahuje filtr lokality (najdete v článku `site` pole), můžete použít k omezení podobné obrázky a podobné výsledky produktů ke konkrétní doméně. Například pokud image je Surface Book, můžete nastavit `site` to www.microsoft.com. 
 
-Pokud chcete získat informace o místní kopie image, nahrajte image jako binární data.
+Pokud chcete získat přehled o místní kopie image, tuto image odešlete jako binární data.
 
-Podrobnosti o v těle v příspěvku, včetně těchto možností najdete v tématu [formuláře typů obsahu](#content-form-types).
+Podrobnosti o v text příspěvku, včetně těchto možností najdete v tématu [formuláře typů obsahu](#content-form-types).
 
 
 ### <a name="endpoint"></a>Koncový bod
 
-Koncový bod Visual vyhledávání: https:\/\/api.cognitive.microsoft.com/bing/v7.0/images/visualsearch.
+Je koncový bod vizuálního vyhledávání: https:\/\/api.cognitive.microsoft.com/bing/v7.0/images/visualsearch.
 
-Požadavky, musí se poslat jako pouze požadavky HTTP POST. 
+Požadavky musí být odeslána jako pouze požadavky HTTP POST. 
 
 
 ### <a name="query-parameters"></a>Parametry dotazu
 
-Níže jsou uvedeny parametry dotazu, který by měl určovat vaši žádost. Minimálně by měla obsahovat `mkt` parametr dotazu.
+Následují parametry dotazu, které by měl určit vaši žádost. Minimálně byste měli zahrnout `mkt` parametr dotazu.
 
 |Název|Hodnota|Typ|Požaduje se|  
 |----------|-----------|----------|--------------|  
-|<a name="cc" />kopie|Kód země 2 znak země, odkud pocházejí výsledky.<br /><br /> Pokud nastavíte tento parametr, musíte zadat také [Accept-Language](#acceptlanguage) záhlaví. Bing používá první podporované jazykové vyhledá ze seznamu jazyků a kombinuje jazyk kód země, který určíte k určení trhu vrácení výsledků z. Pokud seznam jazyků nezahrnuje podporovaném jazyce, Bing vyhledá nejbližší jazyk a trhu, který podporuje žádosti. Nebo může použít agregované nebo výchozí trhu pro výsledky místo zadané jeden.<br /><br /> Měli byste použít tento parametr dotazu a `Accept-Language` parametr dotazu, pouze pokud zadáte více jazyků; jinak hodnota, měli byste použít `mkt` a `setLang` parametrů dotazu.<br /><br /> Tento parametr a [mkt](#mkt) parametr dotazu se vzájemně vylučují&mdash;nezadávejte i.|Řetězec|Ne|  
-|<a name="mkt" />mkt|Na trhu, odkud pocházejí výsledky. <br /><br /> **Poznámka:** se důrazně doporučujeme, aby vždycky zadat na trhu, pokud je znám. Určení trhu pomáhá Bing směrování požadavku a vrátí odpověď příslušné a optimální.<br /><br /> Tento parametr a [kopie](#cc) parametr dotazu se vzájemně vylučují&mdash;nezadávejte i.|Řetězec|Ano|  
-|<a name="safesearch" />bezpečné hledání|Filtr, který se používá k filtrování obsahu pro dospělé. Jsou následující hodnoty filtru možné velká a malá písmena.<br /><ul><li>Vypnout&mdash;vrátit webové stránky s pro dospělé textu nebo obrázků.<br /><br/></li><li>Střední&mdash;vrátit webové stránky s pro dospělé text, ale není pro dospělé bitové kopie.<br /><br/></li><li>Striktní&mdash;nevrátí webové stránky s pro dospělé textu nebo obrázků.</li></ul><br /> Výchozí hodnota je střední.<br /><br /> **Poznámka:** Pokud požadavek pochází z na trhu pro dospělé zásady této Bing vyžaduje, aby `safeSearch` být nastaveno Strict, ignoruje Bing `safeSearch` hodnotu a používá Strict.<br/><br/>**Poznámka:** Pokud použijete `site:` – operátor dotazu, je pravděpodobné, že odpověď může obsahovat obsah pro dospělé bez ohledu na to, co `safeSearch` parametr dotazu je nastavena na. Použití `site:` pouze v případě, že jste si vědomi obsahu v lokalitě a váš scénář podporuje možnost obsah pro dospělé. |Řetězec|Ne|  
-|<a name="setlang" />setLang|Jazyk pro použití řetězců uživatelského rozhraní. Zadejte jazyk pomocí kód ISO jazyka písmeno 2 639-1. Kód jazyka pro angličtina je například EN. Výchozí hodnota je EN (angličtina).<br /><br /> I když je volitelné, musíte vždycky zadat jazyk. Obvykle nastavíte `setLang` ve stejném jazyce určeného `mkt` Pokud uživatel chce řetězců uživatelského rozhraní, zobrazí v jiném jazyce.<br /><br /> Tento parametr a [Accept-Language](#acceptlanguage) záhlaví se vzájemně vylučují&mdash;nezadávejte i.<br /><br /> Řetězec uživatelského rozhraní je řetězec, který se používá jako popisek v uživatelském rozhraní. V odpovědi objekty JSON nejsou několik řetězců uživatelského rozhraní. Všechny odkazy na vlastnosti vyhledávače Bing.com v objektech odpovědi vztahovat určený jazyk.|Řetězec|Ne| 
+|<a name="cc" />Kopie|Kód země 2 znacích země, odkud pochází výsledky.<br /><br /> Pokud nastavíte tento parametr, musíte zadat také [Accept-Language](#acceptlanguage) záhlaví. Bing používá první podporované jazykové najde ze seznamu jazyků a spojuje se směrové číslo země, které určíte k určení na trhu a vracení výsledků z jazyka. Pokud seznam jazyků neobsahuje podporovaném jazyce, Bingu vyhledá nejbližší jazyka a, který podporuje žádosti. Nebo může použít agregované nebo výchozí trhu pro výsledky místo zadaného etagu.<br /><br /> Používejte tento parametr dotazu a `Accept-Language` parametr dotazu, pouze pokud zadáte více jazyků; v opačném případě byste měli použít `mkt` a `setLang` parametrů dotazu.<br /><br /> Tento parametr a [mkt](#mkt) parametr dotazu se vzájemně vylučují&mdash;nezadávejte obě.|Řetězec|Ne|  
+|<a name="mkt" />mkt|Na trhu, odkud pochází výsledky. <br /><br /> **Poznámka:** vám doporučujeme, aby se vždy zadávat na trhu, pokud je známý. Určení trhu pomáhá Bingu směrování požadavku a vrací odpovídající a optimální odpověď.<br /><br /> Tento parametr a [kopie](#cc) parametr dotazu se vzájemně vylučují&mdash;nezadávejte obě.|Řetězec|Ano|  
+|<a name="safesearch" />bezpečné hledání|Filtr, který se používá k filtrování obsahu pro dospělé. Jsou následující hodnoty možné filtrovat velká a malá písmena.<br /><ul><li>Vypnout&mdash;vrátit webových stránek s dospělé text nebo obrázky.<br /><br/></li><li>Střední&mdash;vrátit webových stránek s dospělé text, ale nezletilý imagí.<br /><br/></li><li>Striktní&mdash;nevrátí webových stránek s dospělé text nebo obrázky.</li></ul><br /> Výchozí hodnota je střední.<br /><br /> **Poznámka:** Pokud žádost pochází z na trhu této Bing pro dospělé zásad vyžaduje, aby `safeSearch` nastavit tak, aby Strict, Bing, ignoruje `safeSearch` hodnotu a používá Strict.<br/><br/>**Poznámka:** používáte `site:` – operátor dotazu, je pravděpodobné, že odpovědi může obsahovat obsah pro dospělé bez ohledu na to, co `safeSearch` parametr dotazu je nastaven na. Použití `site:` pouze v případě, že si uvědomujete obsah na webu a váš scénář podporuje možnost obsahu pro dospělé. |Řetězec|Ne|  
+|<a name="setlang" />setLang|Jazyk, který se má použít pro uživatelské rozhraní řetězce. Zadejte jazyk pomocí kód ISO 639-1 písmeno 2 jazyka. Kód jazyka angličtina je například cs. Výchozí hodnota je EN (v angličtině).<br /><br /> I když je volitelné, musíte vždycky zadat jazyk. Obvykle nastavena `setLang` ve stejném jazyce určeném `mkt` Pokud chce uživatel řetězců uživatelského rozhraní, které jsou zobrazeny v jiném jazyce.<br /><br /> Tento parametr a [Accept-Language](#acceptlanguage) záhlaví se vzájemně vylučují&mdash;nezadávejte obě.<br /><br /> Řetězec uživatelského rozhraní je řetězec, který se používá jako popisek v uživatelském rozhraní. V odpovědi objekty JSON je několik řetězců uživatelského rozhraní. Odkazy na vlastnosti Bing.com v objektech odpovědi platí také, zadaný jazyk.|Řetězec|Ne| 
 
 ### <a name="headers"></a>Záhlaví
 
-Následuje seznam hlaviček, které by měl určovat vaši žádost. Hlavičky Content-Type a Ocp-Apim-Subscription-Key jsou pouze požadované hlavičky, ale musí obsahovat také uživatelského agenta, X-MSEdge-ClientID, X-MSEdge-když a umístění X vyhledávání.
+Níže jsou hlavičky, která by měla určit vaši žádost. Záhlaví Content-Type a Ocp-Apim-Subscription-Key jsou pouze požadované záhlaví, ale by měl také obsahovat uživatelského agenta, X-MSEdge ClientID, X-MSEdge ClientIP a X-Search-umístění.
 
 
 |Záhlaví|Popis|  
 |------------|-----------------|  
-|<a name="acceptlanguage" />Přijměte jazyk|Hlavička požadavku volitelné.<br /><br /> Čárkami oddělený seznam jazyků, které chcete použít pro uživatelské rozhraní řetězce. V seznamu je v sestupném pořadí podle priority. Další informace, včetně očekává se formát, najdete v části [RFC2616](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).<br /><br /> Tuto hlavičku a [setLang](#setlang) parametr dotazu se vzájemně vylučují&mdash;nezadávejte i.<br /><br /> Pokud nastavíte tuto hlavičku, musíte zadat také [kopie](#cc) parametr dotazu. K určení trhu k vracení výsledků pro, používá Bing první podporované jazykové ho najde ze seznamu a její kombinuje `cc` hodnotu parametru. Pokud seznam neobsahuje podporovaném jazyce, Bing vyhledá nejbližší jazyk a trhu, který podporuje požadavku nebo používá agregované nebo výchozí trhu pro dané výsledky. Na trhu, který používá Bing, zjistíte v hlavičce BingAPIs trhu.<br /><br /> Tuto hlavičku používají a `cc` parametr dotazu, pouze pokud zadáte více jazyků. Jinak použijte [mkt](#mkt) a [setLang](#setlang) parametrů dotazu.<br /><br /> Řetězec uživatelského rozhraní je řetězec, který se používá jako popisek v uživatelském rozhraní. V odpovědi objekty JSON nejsou několik řetězců uživatelského rozhraní. Všechny odkazy na vlastnosti vyhledávače Bing.com v objektech odpovědi použít určený jazyk.|  
-|<a name="contenttype" />Content-Type|Hlavička požadované požadavku.<br /><br />Musí být nastavena na multipart/formulář data a obsahují parametr hranic (například multipart/formulář data; hranic =\<hranic řetězec\>). Další podrobnosti najdete v tématu [formuláře typů obsahu](#content-form-types).
-|<a name="market" />BingAPIs trhu|Hlavička odpovědi.<br /><br /> Na trhu používané žádosti. Formulář je \<languageCode\>-\<countryCode\>. Například en US.|  
-|<a name="traceid" />BingAPIs TraceId|Hlavička odpovědi.<br /><br /> ID položky protokolu, který obsahuje podrobnosti o žádosti. Když dojde k chybě, zachytit číslem ID této. Pokud si nejste schopni zjistit a vyřešte problém, zahrnují toto ID spolu s další informace, že zadáte tým podpory.|  
-|<a name="subscriptionkey" />OCP-Apim-Subscription-Key|Hlavička požadované požadavku.<br /><br /> Klíč předplatného, který jste obdrželi při registraci pro tuto službu v [kognitivní služby](https://www.microsoft.com/cognitive-services/).|  
-|<a name="pragma" />Direktiva pragma|Hlavička volitelné požadavku<br /><br /> Ve výchozím nastavení Bing vrátí obsah uložený v mezipaměti, pokud je k dispozici. Chcete-li Bing nedošlo k vrácení obsahu v mezipaměti, nastavte na hodnotu no cache hlavičku – direktiva Pragma (například – direktiva Pragma: Ne mezipaměti).
-|<a name="useragent" />Uživatelský Agent|Hlavička požadavku volitelné.<br /><br /> Uživatelský agent pocházející žádosti. K poskytování mobilní uživatele optimalizované prostředí používá Bing uživatelský agent. I když je volitelné, vám doporučujeme, aby se vždycky zadat tuto hlavičku.<br /><br /> Uživatelský agent by měl být stejný řetězec, který odešle jakýkoli prohlížeč pro běžně používané. Informace o Uživatelští agenti najdete v tématu [dokumentu RFC 2616](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).<br /><br /> Následují příklady řetězců uživatelského agenta.<br /><ul><li>Windows Phone&mdash;Mozilla/5.0 (kompatibilní; MSIE 10.0; Windows Phone 8.0; Trident nebo 6.0; IEMobile/10.0; ARM; Dotykové ovládání; NOKIA; Lumia 822)<br /><br /></li><li>Android&mdash;Mozilla/5.0 (Linux; U; Android 2.3.5; en-us; SCH-I500 sestavení nebo PERNÍK) AppleWebKit/533.1 (KHTML; prostředí Gecko, jako) verze nebo 4.0 Mobile Safari nebo 533.1<br /><br /></li><li>iPhone&mdash;Mozilla/5.0 (iPhone; Procesor 6_1 iPhone operačního systému jako Mac OS X) AppleWebKit/536.26 (KHTML; prostředí Gecko, jako) mobilní nebo 10B142 iPhone4; 1 BingWeb/3.03.1428.20120423<br /><br /></li><li>Počítač&mdash;Mozilla/5.0 (systém Windows NT 6.3; SUBSYSTÉM WOW64; Trident/7.0; Dotykové ovládání; Rv:11.0) prostředí Gecko, jako<br /><br /></li><li>iPad&mdash;Mozilla/5.0 (iPad; 7_0 procesoru operačního systému jako Mac OS X) AppleWebKit/537.51.1 (jako jsou prostředí Gecko KHTML) verze 7.0 nebo mobilní nebo 11A465 Safari nebo 9537.53</li></ul>|
-|<a name="clientid" />X-MSEdge-ClientID|Volitelné hlavička požadavku a odpovědi.<br /><br /> Bing používá tuto hlavičku zajišťuje uživatelům konzistentní chování napříč volání rozhraní API služby Bing. Bing často letů nové funkce a vylepšení a jako klíč pro přiřazení provoz na jiné letech používá ID klienta. Pokud nepoužijete stejný ID klienta pro uživatele pro víc požadavků, pak Bing může přiřadit uživatele k několika lety konfliktní. Přiřazení k několika lety konfliktní může vést k nekonzistentním uživatelské prostředí. Například pokud má druhý požadavek přiřazení jiné cestě než první, prostředí může neočekávaná. Navíc můžete použít ID klienta pro přizpůsobení webové výsledky pro tohoto klienta Bing ID, která historii hledání, poskytování a pestřejší prostředí pro uživatele.<br /><br /> Tuto hlavičku Bing také používá k vylepšení výsledek hodnocení analýzou aktivitu generovanou podle ID klienta. Vylepšení relevance pomůže s lepší kvality výsledků doručeny podle rozhraní API pro Bing a zase umožňuje vyšší kliknutí sazby pro příjemce rozhraní API.<br /><br /> **Důležité:** i když je volitelné, měli byste zvážit tuto hlavičku vyžaduje. Uložením ID klienta pro víc požadavků pro stejnou koncových uživatelů a zařízení kombinace umožňuje 1) příjemce rozhraní API pro příjem konzistentní podmínky koncového uživatele a sazby 2) vyšší kliknutí prostřednictvím lepší kvalitu výsledky z rozhraní API služby Bing.<br /><br /> Níže jsou uvedeny základní informace o využití pravidla, která se vztahují k této hlavičce.<br /><ul><li>Každý uživatel, který používá vaše aplikace na tomto zařízení musí mít jedinečný, Bing vygeneruje ID klienta.<br /><br/>Pokud neuvedete této hlavičky v požadavku, Bing vygeneruje ID a vrátí ji v záhlaví X-MSEdge-ClientID odpovědi. Jenom jednou, můžete tuto hlavičku obsahovat není v požadavku je prvním uživatel používá aplikaci na daném zařízení.<br /><br/></li><li>**Upozornění:** Ujistěte se, že tohoto ID klienta není možné korelovat k žádné informace o účtu ověřeného uživatele.</li><li>Použijte ID klienta pro každého požadavku rozhraní API služby Bing, které vytváří vaše aplikace pro tohoto uživatele na zařízení.<br /><br/></li><li>Zachovat ID klienta. Udržení ID v aplikaci Prohlížeč, použijte trvalého souboru cookie HTTP k zajištění, že Identifikátor se používá napříč všechny relace. Nepoužívejte souboru cookie relace. Pro jiné aplikace, jako je například mobilní aplikace použijte trvalého úložiště v zařízení k uchování ID.<br /><br/>Při příštím uživatel používá aplikaci na zařízení, získání ID klienta, který jste jako trvalé.</li></ul><br /> **Poznámka:** Bing odpovědí může nebo nemusí obsahovat hlavičku. Pokud odpověď obsahuje hlavičku, zaznamenat ID klienta a použít jej pro všechny následné žádosti Bingu pro uživatele na tomto zařízení.<br /><br /> **Poznámka:** Pokud zahrnete X-MSEdge-ClientID, nesmí obsahovat soubory cookie v požadavku.|  
-|<a name="clientip" />X-MSEdge když|Hlavička požadavku volitelné.<br /><br /> IPv4 nebo IPv6 adresa klientského zařízení. IP adresa se používá ke zjišťování umístění uživatele. Bing používá k určení chování bezpečné vyhledávání informace o umístění.<br /><br /> **Poznámka:** i když je volitelné, vám doporučujeme, aby se vždycky zadat umístění X vyhledávání a tento záhlaví.<br /><br /> Není obfuskováním adresu (například změnou poslední oktet 0). Zmatení data adresu výsledky v umístění nebude kdekoli téměř skutečné umístění zařízení, což může vést k Bing obsluhující chybné výsledky.|  
-|<a name="location" />Umístění X vyhledávání|Hlavička požadavku volitelné.<br /><br /> Seznam páry klíč/hodnota, které popisují zeměpisné umístění klienta oddělené středníkem. Bing používá informace o umístění, k určení chování bezpečné vyhledávání a relevantní lokálního obsahu. Zadat dvojice klíč/hodnota jako \<klíč\>:\<hodnotu\>. Níže jsou uvedeny klíčů, které se používá k určení umístění uživatele.<br /><br /><ul><li>LAT&mdash;vyžaduje. Zeměpisná šířka umístění klienta ve stupních. Zeměpisnou musí být větší než nebo rovna hodnotě-90.0 a menší než nebo rovna +90.0. Záporné hodnoty stanovují Jižní zeměpisné šířky a kladné hodnoty stanovují severní zeměpisné šířky.<br /><br /></li><li>dlouhé&mdash;vyžaduje. Zeměpisná délka umístění klienta ve stupních. Zeměpisné délky musí být větší než nebo rovna hodnotě-180.0 a menší než nebo rovna +180.0. Záporné hodnoty stanovují western stupně zeměpisné délky a kladné hodnoty stanovují východní délka.<br /><br /></li><li>RE&mdash;vyžaduje. Hodnota úhlu, v měřidla, který určuje vodorovné přesnost souřadnice. Předáte hodnoty vrácené služby umístění zařízení. Typické hodnoty může být 22m pro GPS/Wi-Fi, 380m pro buňky věž měny a 18 000 m pro reverzního vyhledávání IP.<br /><br /></li><li>TS&mdash;volitelné. Časové razítko UTC UNIX když klient se v daném umístění. (UNIX časové razítko je počet sekund od 1. ledna 1970.)<br /><br /></li><li>HEAD&mdash;volitelné. Relativní záhlaví nebo směr cesta klienta. Zadejte směr cesta jako od 0 do 360, počítání po směru hodinových ručiček relativně k – true sever stupňů. Zadejte tento klíč jenom Pokud `sp` klíč je nenulové hodnoty.<br /><br /></li><li>SP&mdash;volitelné. Vodorovné rychlosti (rychlost), v měřidla za sekundu, které při cestě klientské zařízení.<br /><br /></li><li>ALT&mdash;volitelné. Výška klientské zařízení, v měřidla.<br /><br /></li><li>jsou&mdash;volitelné. Hodnota úhlu, v měřidla, která určuje svislé přesnost souřadnice. Zadejte tento klíč jenom v případě, že zadáte `alt` klíč.<br /><br /></li></ul> **Poznámka:** i když řadu klíče jsou volitelné, další informace, které zadáte, jsou více přesné výsledky umístění.<br /><br /> **Poznámka:** i když je volitelné, vám doporučujeme, aby se vždycky zadat zeměpisné umístění uživatele. Poskytnutí umístění je obzvláště důležité, pokud IP adresa klienta přesně neodpovídají fyzické umístění uživatele (například pokud klient používá sítě VPN). Pro dosažení optimálních výsledků by měla obsahovat této hlavičky a hlavičky X-MSEdge – když, ale minimálně by měla obsahovat hlavičku.|
+|<a name="acceptlanguage" />Přijměte jazyka|Hlavička požadavku volitelné.<br /><br /> Čárkami oddělený seznam jazyků pro řetězce uživatelského rozhraní. V seznamu je v sestupném pořadí podle priority. Další informace, včetně očekávaném formátu najdete v části [RFC2616](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).<br /><br /> Tato hlavička a [setLang](#setlang) parametr dotazu se vzájemně vylučují&mdash;nezadávejte obě.<br /><br /> Pokud nastavíte tuto hlavičku, musíte zadat také [kopie](#cc) parametr dotazu. K určení na trhu a vracení výsledků pro Bing používá první podporované jazykové vyhledá v seznamu a sloučí ji `cc` hodnotu parametru. Pokud seznam neobsahuje podporovaném jazyce, Bingu vyhledá nejbližší jazyka a, který podporuje žádosti nebo použije agregované nebo výchozí trhu pro výsledky. Pokud chcete zjistit, který používá Bing, naleznete v tématu BingAPIs trh záhlaví.<br /><br /> Tuto hlavičku používají a `cc` parametr dotazu, pouze pokud zadáte více jazyků. Jinak použijte [mkt](#mkt) a [setLang](#setlang) parametrů dotazu.<br /><br /> Řetězec uživatelského rozhraní je řetězec, který se používá jako popisek v uživatelském rozhraní. V odpovědi objekty JSON je několik řetězců uživatelského rozhraní. Odkazy na vlastnosti Bing.com v odpovědi objektů použít zadaný jazyk.|  
+|<a name="contenttype" />Content-Type|Hlavička požadavku vyžaduje.<br /><br />Musí být nastavena na multipart/formuláře data a zahrnují parametr hranice (například multipart/formulář data; boundary =\<hranice řetězec\>). Další informace najdete v tématu [formuláře typů obsahu](#content-form-types).
+|<a name="market" />BingAPIs trh|Hlavička odpovědi.<br /><br /> Na trhu použít v požadavku. Formulář je \<languageCode\>-\<countryCode\>. Například en US.|  
+|<a name="traceid" />BingAPIs TraceId|Hlavička odpovědi.<br /><br /> ID položky protokolu, který obsahuje podrobné informace o požadavku. Pokud dojde k chybě, zachycení číslem ID této. Pokud nejste schopni zjistit a vyřešte problém, patří toto ID spolu s dalšími informacemi, že zadáte na tým podpory.|  
+|<a name="subscriptionkey" />OCP-Apim-Subscription-Key|Hlavička požadavku vyžaduje.<br /><br /> Klíč předplatného, který jste dostali při registraci pro tuto službu v [služeb Cognitive Services](https://www.microsoft.com/cognitive-services/).|  
+|<a name="pragma" />Direktiva pragma|Volitelné hlavičky<br /><br /> Ve výchozím nastavení Bing vrátí obsah uložený v mezipaměti, pokud je k dispozici. Abyste zabránili Bing vrátí obsah uložený v mezipaměti, hlavičku – direktiva Pragma nastavit na hodnotu no-cache (například – direktiva Pragma: no-cache).
+|<a name="useragent" />Uživatelský Agent|Hlavička požadavku volitelné.<br /><br /> Uživatelský agent původní požadavek. Bing používá uživatelský agent mobilním uživatelům poskytnout prostředí optimalizované. I když je volitelné, jsou ukončena. doporučujeme vždy zadejte toto záhlaví.<br /><br /> Uživatelský agent by měl být stejný řetězec, který odešle všechny běžně používané prohlížeč. Informace o agentech uživatele najdete v tématu [dokumentu RFC 2616](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).<br /><br /> Následují příklady řetězců uživatelského agenta.<br /><ul><li>Windows Phone&mdash;Mozilla/5.0 (kompatibilní; MSIE 10.0; Windows Phone 8.0; Trident/6.0; IEMobile/10.0; ARM; Dotykové ovládání; NOKIA; Lumia 822)<br /><br /></li><li>Android&mdash;Mozilla/5.0 (Linux; U; Android 2.3.5; en-us; SCH-I500 sestavení/PERNÍK) AppleWebKit/533.1 (KHTML; prostředí Gecko, jako je) mobilní verze/4.0 Safari/533.1<br /><br /></li><li>iPhone&mdash;Mozilla/5.0 (iPhone; Operační systém Iphonu 6_1 procesoru jako Mac OS X) AppleWebKit/536.26 (KHTML; prostředí Gecko, jako je) iPhone4 mobilní/10B142; 1 BingWeb/3.03.1428.20120423<br /><br /></li><li>Počítač&mdash;Mozilla/5.0 (Windows NT 6.3; SUBSYSTÉM WOW64; Trident/7.0; Dotykové ovládání; Rv:11.0) prostředí Gecko, jako jsou<br /><br /></li><li>iPad&mdash;Mozilla/5.0 (iPad; 7_0 procesoru operačního systému jako Mac OS X) AppleWebKit/537.51.1 (jako je prostředí gecko, jež KHTML) verze 7.0 nebo mobilní/11A465 Safari/9537.53</li></ul>|
+|<a name="clientid" />X-MSEdge ClientID|Volitelné záhlaví žádostí a odpovědí.<br /><br /> Bing používá tuto hlavičku uživatelům poskytnout konzistentní chování napříč volání rozhraní API Bingu. Bing často letů nových funkcí a vylepšení a používá ID klienta jako klíč pro přiřazení provoz na jiné lety. Pokud je velmi riskantní používat stejné ID klienta pro uživatele mezi více požadavků, pak Bingu může přiřadit uživatele k více konfliktních lety. Přiřazení na více konfliktních lety může vést k nekonzistentním uživatelské prostředí. Například pokud druhá žádost o přiřazení jiné cestě než první, prostředí může neočekávané. Navíc můžete použít ID klienta pro přizpůsobení webové výsledky pro tohoto klienta Bingu ID historie hledání, poskytuje pohodlnější a pestřejší prostředí pro uživatele.<br /><br /> Bing používá této hlavičky také jí pomohou zlepšit výsledek hodnocení díky analýze aktivitu generovanou podle ID klienta. Zlepšení relevance pomoct s lepší kvalitou výsledků přednesl rozhraní API Bingu a zase umožňuje vyšší proklikávání sazby pro rozhraní API příjemců.<br /><br /> **Důležité:** nepovinný, měli byste zvážit této hlavičky vyžaduje. Zachování ID klienta mezi více požadavků pro stejný koncový uživatel a kombinaci zařízení povolí (1) na rozhraní API příjemce pro příjem konzistentní uživatelské prostředí a (2) vyšší míru proklikávání prostřednictvím kvalitnější výsledky z rozhraní API Bingu.<br /><br /> Tady jsou základní informace o využití pravidel, které se vztahují k této hlavičce.<br /><ul><li>Každý uživatel, který používá vaše aplikace v zařízení musí mít jedinečný, Bing, vygeneruje ID klienta.<br /><br/>Pokud neuvedete této hlavičky v požadavku, Bingu vygeneruje ID a vrátí jej v hlavičce X-MSEdge ClientID odpovědi. Že by měl nezahrnuje této hlavičky v požadavku se pouze první uživatel použije aplikaci na daném zařízení.<br /><br/></li><li>**Pozor:** musíte zajistit, že toto ID klienta není propojovací informací účet ověřeného uživatele.</li><li>Použijte ID klienta pro každé rozhraní API Bingu pro žádosti, která vaše aplikace provádí pro tohoto uživatele na zařízení.<br /><br/></li><li>Zachovat ID klienta. Pokud chcete zachovat ID v aplikaci prohlížeče, ujistěte se, že ID se používá ve všech relacích pomocí trvalého souboru cookie HTTP. Nepoužívejte souboru cookie relace. Pro jiné aplikace, jako jsou například mobilní aplikace použijte k uchování ID. trvalého úložiště zařízení<br /><br/>Při příštím uživatel použije aplikaci na zařízení, získejte ID klienta, který je trvalé.</li></ul><br /> **Poznámka:** odpovědi Bingu může nebo nemusí obsahovat tato záhlaví. Pokud odpověď obsahuje tato záhlaví, ID klienta zachytit a používat ho pro všechny následné požadavky Bing pro uživatele na tomto zařízení.<br /><br /> **Poznámka:** Pokud zahrnete X MSEdge ClientID, nesmí obsahovat soubory cookie v požadavku.|  
+|<a name="clientip" />X-MSEdge ClientIP|Hlavička požadavku volitelné.<br /><br /> Adresa IPv4 nebo IPv6 klienta zařízení. IP adresa se používá ke zjišťování podle umístění uživatele. Bing používá k určení chování bezpečného hledání informace o poloze.<br /><br /> **Poznámka:** nepovinný vám doporučujeme, aby se vždy zadejte toto záhlaví a záhlaví X-Search-umístění.<br /><br /> Není obfuskaci adresu (například tak, že změníte poslední oktet na hodnotu 0). Že maskuje výsledky adres v umístění nebude kdekoli v zařízení aktuální umístění, což může vést k Bingu obsluhující chybné výsledky.|  
+|<a name="location" />X-Search umístění|Hlavička požadavku volitelné.<br /><br /> Seznam oddělený středníkem páry klíč/hodnota, které popisují zeměpisné umístění klienta. Bing používá informace o poloze a určit chování bezpečného hledání vrátí odpovídající místní obsah. Zadejte pár klíč/hodnota jako \<klíč\>:\<hodnota\>. Níže jsou klíče, které se používá k určení umístění uživatele.<br /><br /><ul><li>LAT&mdash;vyžaduje. Zeměpisná šířka umístění klienta ve stupních. Zeměpisná šířka musí být větší než nebo rovna hodnotě-90.0 a menší než nebo rovna +90.0. Záporné hodnoty značí Jižní zeměpisná šířka a kladné hodnoty značí severní meze.<br /><br /></li><li>dlouhé&mdash;vyžaduje. Zeměpisná délka umístění klienta ve stupních. Zeměpisná délka musí být větší než nebo rovna hodnotě-180.0 a menší než nebo rovna +180.0. Záporné hodnoty značí západní délka a kladné hodnoty značí východní délka.<br /><br /></li><li>RE&mdash;vyžaduje. Poloměr, v metrech, který určuje vodorovný přesnost souřadnic. Předejte hodnotu vrácené službou umístění zařízení. Typické hodnoty mohou být 22m pro GPS/Wi-Fi, 380m triangulace tower buňky a 18 000 m pro reverzního vyhledávání IP adresy.<br /><br /></li><li>TS&mdash;volitelné. Časové razítko UTC UNIX když klient se v umístění. (UNIXOVÉ časové razítko je počet sekund od 1. ledna 1970.)<br /><br /></li><li>hlavní&mdash;volitelné. Relativní záhlaví nebo směr cesty klienta. Určení směru cestovní jako stupních od 0 do 360, počítací po směru hodinových ručiček vzhledem k true – sever. Zadejte tento klíč pouze tehdy, pokud `sp` klíč není nenulová.<br /><br /></li><li>SP&mdash;volitelné. Vodorovné rychlost (rychlost), v metrech za sekundu, cestování klientského zařízení.<br /><br /></li><li>ALT&mdash;volitelné. Výška klientské zařízení, v metrech.<br /><br /></li><li>jsou&mdash;volitelné. Poloměr, v metrech, určující přesnost svislé souřadnice. Zadejte tento klíč jenom v případě, že zadáte `alt` klíč.<br /><br /></li></ul> **Poznámka:** i když mnohé z klíče jsou volitelné, další informace, které zadáte, jsou přesnější výsledky umístění.<br /><br /> **Poznámka:** nepovinný vám doporučujeme, aby se vždy zadat zeměpisné umístění uživatele. Poskytuje umístění je obzvláště důležité, pokud IP adresa klienta neodráží přesně podle fyzického umístění uživatele (například pokud klient používá síť VPN). Pro dosažení optimálních výsledků by měl obsahovat tato záhlaví a záhlaví X-MSEdge ClientIP, ale minimálně, měli byste zahrnout tuto hlavičku.|
 
 > [!NOTE] 
-> Mějte na paměti, že podmínky použití vyžadují kompatibilitu s všechny platné zákony, včetně týkající se použití těchto hlaviček. Například v určité oblasti jurisdikce, jako je například Evropa, existují požadavky na získat souhlas uživatele před uvedením určitých sledování zařízení na zařízení uživatelů.
+> Mějte na paměti, podmínky použití vyžadovat dodržování předpisů s příslušnými zákony, včetně týkající se použití těchto hlaviček. Například v určitých jurisdikce, jako jsou Evropa, existují požadavky na získat souhlas uživatele před uvedením určitá sledování zařízení na zařízení uživatelů.
 
 
 <a name="content-form-types" />
 
 ### <a name="content-form-types"></a>Typy obsahu formuláře
 
-Každý požadavek musí obsahovat hlavičku Content-Type. Záhlaví musí být nastavena na: multipart/formulář data; hranice =\<hranic řetězec\>, kde \<hranic řetězec\> je jedinečný, neprůhledný řetězec, který identifikuje hranice dat formuláře. Například hranic = boundary_1234 abcd.
+Každý požadavek musí obsahovat hlavičku Content-Type. Záhlaví musí být nastavena na: multipart /-data formuláře; hranice =\<hranice řetězec\>, kde \<hranice řetězec\> je jedinečný, neprůhledný řetězec, který určuje hranice data formuláře. Například hranice = boundary_1234 abcd.
 
 
-Při odesílání Visual vyhledávání tokenu bitovou kopii nebo adresa URL, následující zobrazí formulář data, že je nutné zahrnout text příspěvku. Data formuláře musí obsahovat hlavičku Content-Disposition a jeho `name` parametr musí být nastaven na "knowledgeRequest". Podrobnosti o `imageInfo` objektu, najdete v části [požadavku](#the-request).
+Při odesílání pro vizuální vyhledávání image token nebo adresu URL, následuje data formuláře, že je třeba zahrnout text příspěvku. Data formuláře musí zahrnovat hlavičku Content-Disposition a jeho `name` parametr musí být nastaven na "knowledgeRequest." Podrobnosti o `imageInfo` objektu, najdete v článku [žádost](#the-request).
 
 
 ```
@@ -147,7 +147,7 @@ Content-Disposition: form-data; name="knowledgeRequest"
 --boundary_1234-abcd--
 ```
 
-Odešlete obrázek místní následující zobrazí formulář data, že je nutné zahrnout text příspěvku. Data formuláře musí obsahovat hlavičku Content-Disposition. Jeho `name` parametr musí být nastaven na "image" a `filename` parametr lze nastavit na libovolný řetězec. Hlavička Content-Type může být nastaven na libovolný typ mime běžně používané bitové kopie. Obsah formuláře je binární soubor bitové kopie. Maximální obrázek, který může odeslat je 1 MB. 
+Pokud odešlete místní image, následuje data formuláře musí obsahovat v textu příspěvku. Data formuláře musí zahrnovat hlavičku Content-Disposition. Jeho `name` parametr musí být nastaven na "image" a `filename` parametr může být nastaven na libovolný řetězec. Hlavička Content-Type může být nastaven na libovolný typ mime běžně používaných image. Obsah formuláře je binární soubor obrázku. Maximální velikost, kterou můžete k nahrání je 1 MB. Největší šířka nebo výška musí být 1 500 pixelů nebo méně.
 
 
 ```
@@ -160,7 +160,7 @@ Content-Type: image/jpeg
 --boundary_1234-abcd--
 ```
 
-Následující ukazuje, jak určit oblasti, v nahraném bitové kopie.
+Následující ukazuje, jak zadat tuto oblast zájmu nahraného obrázku.
 
 ```
 --boundary_1234-abcd
@@ -189,9 +189,9 @@ Content-Type: image/jpeg
 
 
 
-### <a name="example-request"></a>Příklad požadavku
+### <a name="example-request"></a>Příklad žádosti
 
-Na obrázku je požadavek Statistika dokončení bitové kopie, který předá tokenu bitové kopie a oblast zájmu. Můžete získat token statistiky z předchozího volání /images/search.
+Následuje kompletní obrázek insights požadavek, který se předává tokenu image a oblasti zájmu. Získat token přehledy z předchozího volání /images/search.
 
 
 ```  
@@ -224,7 +224,7 @@ Content-Disposition: form-data; name="knowledgeRequest"
 
 ## <a name="the-response"></a>Odpověď
 
-Pokud nejsou k dispozici pro bitovou kopii statistiky, odpověď obsahuje jeden nebo více `tags` obsahující k přehledům. `image` Pole obsahuje token statistiky pro vstupní bitovou kopii.
+Pokud nejsou k dispozici pro bitovou kopii přehledy, odpověď obsahuje jeden nebo více `tags` , které obsahují přehledy. `image` Pole obsahuje přehledy token vstupního obrázku.
 
 ```json
 {
@@ -242,7 +242,7 @@ Pokud nejsou k dispozici pro bitovou kopii statistiky, odpověď obsahuje jeden 
 }
 ```
 
-`tags` Pole obsahuje zobrazovaný název a seznam akcí (přehled). Obsahuje jednu z uvedených značek `displayName` pole, který je nastavený na prázdný řetězec. Tato značka obsahuje přehled výchozí například webové stránky, které zahrnují bitové kopie, vizuálně podobné bitové kopie a nákupní zdroje pro položek nalezených v bitovou kopii. Protože celého obrázku je zájmu, neobsahuje výchozí značka Statistika ohraničujícího polí oblastí zájmu.
+`tags` Pole obsahuje zobrazovaný název a seznam akcí (přehled). Jedna značka obsahuje `displayName` pole, který je nastaven na prázdný řetězec. Tato značka obsahuje výchozí přehledy, jako jsou webové stránky, které obsahují image, vizuálně podobné obrázky a nákupního zdroje pro položky v obrázku. Protože celého obrázku je relevantní, neobsahuje výchozí značka insights ohraničující polí pro oblasti zájmu.
 
 
 ```json
@@ -269,19 +269,19 @@ Pokud nejsou k dispozici pro bitovou kopii statistiky, odpověď obsahuje jeden 
 }
 ```
 
-Seznam výchozí statistiky najdete v tématu [výchozí insights](./default-insights-tag.md).
+Seznam výchozích insights najdete v tématu [výchozí insights](./default-insights-tag.md).
 
 
 
-Zbývající značky obsahovat další statistiky, které mohou být zajímavé pro uživatele. Například pokud bitová kopie obsahuje text, jednu z uvedených značek mohou obsahovat TextResults vhled, který obsahuje rozpoznaný text. Nebo, pokud Bing rozpozná entity (osoby, místní nebo věcí) v bitové kopii, jednu z uvedených značek identifikují entitu. Visual vyhledávání také vrátí hodnotu různého typu podmínky (značky) odvozené ze vstupní image. Tyto značky umožňují uživatelům prozkoumat koncepty najít v bitové kopii. Například pokud je vstupní image famous sportovce, jednu z uvedených značek může být sportu, který obsahuje odkazy na obrázky sportu.
+Zbývající značky obsahují další přehledy, které mohou být zajímavé pro uživatele. Například pokud image obsahuje text, jedna značka může obsahovat TextResults přehled, který obsahuje rozpoznaný text. Nebo, pokud Bingu rozpozná entity (osobě, místě nebo věc, kterou) na obrázku, jedna značka identifikují entitu. Pro vizuální vyhledávání také vrátí různé podmínky (značky) odvozené ze vstupního obrázku. Tato klíčová slova umožňují uživatelům Seznamte se s koncepty, které jsou součástí image. Například pokud vstupního obrázku je známý athlete, jedna značka může být sportu, který obsahuje odkazy na Image sportu.
 
-Jednotlivé značky zahrnuje zobrazovaný název, který lze použít ke kategorizaci vhled, ohraničujícího pole, které identifikují oblasti zájmu, který se vztahuje informace o, Statistika sami a miniaturu obrázku. Například pokud je bitová kopie osoby používání jersey sportu, jednu z uvedených značek mohou zahrnovat ohraničující pole bounds jersey, která obsahuje VisualSearch a ProductVisualSearch statistiky. A jiné značky mohou zahrnovat ImageResults přehledu, který obsahuje adresu URL pro požadavek /images/search rozhraní API získat bitové kopie, které se týkají aplikován nebo adresu URL vyhledávače Bing.com vyhledávání, která přebírá uživateli výsledky hledání vyhledávače Bing.com bitové kopie.
+Každá značka obsahuje zobrazovaný název, který lze použít ke kategorizaci těchto přehledů ohraničující rámeček, který identifikuje oblasti zájmu, která se vztahuje na podrobnější informace o, insights, sami a miniaturu obrázku. Například pokud se image nachází osoby nosit jersey sportu, jedna značka může obsahovat ohraničujícího rámečku, která jersey za rozsahem a zahrnuje VisualSearch a ProductVisualSearch přehledy. A další značky mohou zahrnovat ImageResults přehledů, který obsahuje adresu URL pro požadavek /images/search rozhraní API k získání bitové kopie, které se týkají aplikován nebo Bing.com adresa URL pro hledání, která přebírá uživateli výsledky hledání obrázků Bing.com.
 
-Všechny značky než výchozí značka Statistika zahrnují ohraničujícího polí, které identifikují oblasti zájmu v bitové kopii. Například pokud image obsahuje více rozpoznaný uživatelů, můžou zahrnovat značky ohraničujícího polí pro jednotlivé uživatele nebo pokud bitová kopie obsahuje položky rozpoznaný oblečení, můžou zahrnovat značky ohraničujícího políčka pro každou položku rozpoznaný oblečení. Ohraničující pole můžete použít k vytvoření aktivní body přes bitovou kopii, při kliknutí na, zadejte podrobnosti o obsahu v této oblasti obrázku. Aktivní body by neměla zahrnovat v obraze u ohraničující polí, které identifikují celého obrázku.
+Všechny značky jiné než výchozí značka insights zahrnují ohraničující polí, které identifikují oblasti zájmu v bitové kopii. Například pokud image obsahuje více rozpoznaný uživatelů, může obsahovat značky ohraničující políčka pro každou osob, nebo pokud image obsahuje oblečení rozpoznaných položek, může obsahovat značky ohraničující políčka pro každou položku rozpoznaný oblečení. Ohraničující polí můžete použít k vytváření hotspotů přes obrázek, který po kliknutí na, obsahují podrobné informace o obsahu v dané oblasti obrázku. V obrázku pro ohraničující pole, které identifikují celého obrázku by neměla zahrnovat aktivní body.
 
 ### <a name="text-recognition"></a>Rozpoznávání textu
 
-Pokud bitová kopie obsahuje text, který služba rozpozná, jednu z uvedených značek bude obsahovat TextResults přehledy (akce). Přehledu `displayName` obsahuje rozpoznaný text. 
+Pokud image obsahuje text, který služba rozpozná, jedna značka bude obsahovat přehled TextResults (akce). Požadovaný přehled `displayName` obsahuje rozpoznaný text. 
 
 ```json
     {
@@ -311,10 +311,10 @@ Pokud bitová kopie obsahuje text, který služba rozpozná, jednu z uvedených 
     }
 ```
 
-Protože značka `displayName` pole obsahuje ##TextRecognition nepoužívejte ho jako kategorii title v UX Že přejde k žádné zobrazení názvů, které začíná ##. Místo toho použijte akce zobrazovaný název.
+Protože značka `displayName` pole obsahuje ##TextRecognition, nepoužívejte ho jako název kategorie v uživatelské prostředí Přejde pro jakékoli zobrazovaný název, který začíná ##. Místo toho použijte zobrazovaný název akce.
 
 
-Rozpoznávání textu můžete také rozpoznat kontaktní informace na kartách firmy, jako je například telefonní čísla a e-mailové adresy. Pole ohraničující identifikuje umístění kontaktní informace na kartě. 
+Rozpoznávání textu můžete také rozpoznává kontaktní informace na kartách business, jako jsou telefonní čísla a e-mailové adresy. Ohraničujícího rámečku polohu kontaktní údaje najdete na kartě. 
 
 ```json
     {
@@ -400,7 +400,7 @@ Rozpoznávání textu můžete také rozpoznat kontaktní informace na kartách 
     }
 ```
 
-Pokud bitová kopie obsahuje rozpoznaný entity, jako je osoba, místní nebo věcí, jednu z uvedených značek může zahrnovat přehledu Entity. Entity může také obsahovat trivia, jak je znázorněno v následujícím příkladu:
+Pokud image obsahuje rozpoznaný entitu, jako je osobě, místě nebo věc, jedna značka může obsahovat přehled Entity. 
 
 ```json
     {
@@ -428,29 +428,6 @@ Pokud bitová kopie obsahuje rozpoznaný entity, jako je osoba, místní nebo v�
           "webSearchUrl" : "https:\/\/www.bing.com\/search?q=Statue+of+Liberty",
           "displayName" : "Statue of Liberty",
           "actionType" : "Entity",
-        },
-        {
-          "_type" : "ImageModuleAction",
-          "actionType" : "Trivia",
-          "data" : {
-            "value" : [
-              {
-                "name" : "Where was the cornerstone of the statue of liberty laid",
-                "text" : "<the answer>",
-                "hostPageUrl" : "http:\/\/contoso.com\/history\/...",
-              },
-              {
-                "name" : "Why Is the Statue of Liberty Green",
-                "text" : "<the answer>",
-                "hostPageUrl" : "https:\/\/www.contoso.com\/why-statue-of-liberty-is-green",
-              },
-              {
-                "name" : "What is the Statue of Liberty made of",
-                "text" : "<the answer>",
-                "hostPageUrl" : "https:\/\/www.contoso.com\/art-literature\/statue-liberty-made",
-              }
-            ]
-          }
         }
       ]
     }
@@ -460,13 +437,13 @@ Pokud bitová kopie obsahuje rozpoznaný entity, jako je osoba, místní nebo v�
 
 ## <a name="next-steps"></a>Další postup
 
-Abyste mohli rychle začít s první žádost, najdete v článku elementy QuickStart: [C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md)  |  [Python](quickstarts/python.md).
+Abyste mohli rychle začít s vaší první žádost, najdete v článku postupů rychlý start: [jazyka C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md)  |  [Python](quickstarts/python.md).
 
-Vyzkoušejte rozhraní API. Přejděte na [Visual vyhledávání API testovací konzolu](https://dev.cognitive.microsoft.com/docs/services/878c38e705b84442845e22c7bff8c9ac). 
+Vyzkoušejte si rozhraní API. Přejděte na [konzole testování rozhraní API pro vizuální vyhledávání](https://dev.cognitive.microsoft.com/docs/services/878c38e705b84442845e22c7bff8c9ac). 
 
 
-Seznamte se s [Visual referenční dokumentace rozhraní API vyhledávání](https://aka.ms/bingvisualsearchreferencedoc). Odkaz obsahuje seznam koncových bodů, hlavičky a parametry dotazu, které byste použili k žádosti o výsledky hledání. Zahrnuje také definice objektů odpovědi. 
+Seznamte se s [vizuální Reference k rozhraní API hledání](https://aka.ms/bingvisualsearchreferencedoc). Tyto referenční informace obsahují seznam koncových bodů, hlaviček a parametrů dotazů, které můžete použít při odesílání požadavků na výsledky hledání. Obsahují také definice objektů odpovědi. 
 
-Nezapomeňte si přečíst [požadavky zobrazení a použití Bing](./use-and-display-requirements.md) tak, že nemáte žádné z pravidel o používání výsledky hledání rozdělit.
+Nezapomeňte si přečíst [požadavky Bingu na zobrazení a použití](./use-and-display-requirements.md), abyste neporušili žádná pravidla používání výsledků hledání.
 
 

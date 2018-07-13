@@ -1,7 +1,7 @@
 | Prostředek | Výchozí omezení |
 | --- | --- |
-| Virtuální počítače na sady dostupnosti. | 200 |
-| Certifikáty na předplatné |Neomezená<sup>1</sup> |
+| Virtuální počítače jednu skupinu dostupnosti | 200 |
+| Certifikáty na předplatné |Neomezený počet<sup>1</sup> |
 
-<sup>1</sup>s Azure Resource Manager, certifikáty jsou uloženy v Azure Key Vault. I když počet certifikátů neomezená pro předplatné, je stále omezení 1 MB certifikátů za nasazení (což se skládá z jedné virtuální počítač nebo skupina dostupnosti).
+<sup>1</sup>s Azure Resource Manageru, jsou certifikáty uložené ve službě Azure Key Vault. I když je počet certifikátů neomezený počet pro předplatné, je stále 1 MB limit certifikáty pro jednotlivé nasazení (která se skládá z jednoho virtuálního počítače nebo skupina dostupnosti).
 

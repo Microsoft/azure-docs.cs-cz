@@ -3,7 +3,7 @@ title: Velikosti virtuálních počítačů pro Azure Cloud services | Dokumenta
 description: Obsahuje seznam různých velikostí virtuálních počítačů (a ID) pro Azure cloud service webových a pracovních rolí.
 services: cloud-services
 documentationcenter: ''
-author: Thraka
+author: jpconnock
 manager: timlt
 editor: ''
 ms.assetid: 1127c23e-106a-47c1-a2e9-40e6dda640f6
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 07/18/2017
-ms.author: adegeo
-ms.openlocfilehash: 490fd248cdd14858e2ca71f94dcb9dbaa5726f9c
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.author: jeconnoc
+ms.openlocfilehash: 60ee7c2be29791db91db78472cc002e15390d36b
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "34608810"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39004784"
 ---
 # <a name="sizes-for-cloud-services"></a>Velikosti pro Cloud Services
 Toto téma popisuje dostupné velikosti a možnosti pro instance rolí cloudové služby (webové role a role pracovního procesu). Také poskytuje důležité informace o nasazení je potřeba vědět při plánování použití těchto prostředků. Jednotlivé velikosti má ID, kam si ukládáte váš [definiční soubor služby](cloud-services-model-and-package.md#csdef). Ceny platné pro jednotlivé velikosti jsou k dispozici na [ceny Cloud Services](https://azure.microsoft.com/pricing/details/cloud-services/) stránky.

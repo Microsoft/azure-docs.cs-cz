@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 12/15/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: a7960ab4aee80c7d15ea0f031790dd089424565d
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 089835d9c60780fb90f5c19c75c185ee0a908a25
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38610253"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39007271"
 ---
 # <a name="use-a-windows-vm-managed-service-identity-msi-to-access-resource-manager"></a>Použít pro přístup k Resource Manageru Windows virtuální počítač Identity spravované služby (MSI)
 
@@ -52,7 +52,7 @@ V tomto kurzu vytvoříme nový virtuální počítač s Windows.  Můžete tak�
 5.  Chcete-li vybrat nový **skupiny prostředků** ve kterém chcete vytvořit virtuální počítač, zvolte **vytvořit nový**. Jakmile budete hotovi, klikněte na **OK**.
 6.  Vyberte velikost virtuálního počítače. Pokud chcete zobrazit další velikosti, vyberte **Zobrazit všechny** nebo změňte filtr **Podporovaný typ disku**. Na stránce nastavení ponechte výchozí nastavení a klikněte na tlačítko **OK**.
 
-    ![Text ALT obrázku](~/articles/active-directory/media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
+    ![Text ALT obrázku](../managed-service-identity/media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
 
 ## <a name="enable-msi-on-your-vm"></a>Povolení MSI ve virtuálním počítači 
 
@@ -62,11 +62,11 @@ MSI virtuálního počítače můžete k získání přístupových tokenů z Az
 2.  Na navigačním panelu vlevo klikněte na tlačítko **konfigurace**. 
 3.  Zobrazí **identita spravované služby**. Chcete-li zaregistrovat a povolit MSI, vyberte **Ano**, pokud chcete zakázat, vyberte Ne. 
 4.  Zajištění kliknutí na **Uložit** uložte konfiguraci.  
-    ![Text ALT obrázku](~/articles/active-directory/media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
+    ![Text ALT obrázku](../managed-service-identity/media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 
 5. Pokud chcete zkontrolovat a ověřit, jaká rozšíření jsou na tomto virtuálním počítači, klikněte na tlačítko **rozšíření**. Pokud je povolené MSI, pak **ManagedIdentityExtensionforWindows** se zobrazí v seznamu.
 
-    ![Text ALT obrázku](~/articles/active-directory/media/msi-tutorial-windows-vm-access-arm/msi-windows-extension.png)
+    ![Text ALT obrázku](../managed-service-identity/media/msi-tutorial-windows-vm-access-arm/msi-windows-extension.png)
 
 ## <a name="grant-your-vm-access-to-a-resource-group-in-resource-manager"></a>Udělení přístupu vašich virtuálních počítačů do skupiny prostředků v Resource Manageru
 Použití MSI kódu můžete získat přístupové tokeny k ověření prostředků, které podporují ověřování Azure AD.  Azure Resource Manager podporuje ověřování Azure AD.  Nejdřív potřebujeme k udělení přístupu identity tento virtuální počítač k prostředků v Resource Manageru v tomto případě skupina prostředků, ve kterém se nachází virtuální počítač.  
@@ -79,7 +79,7 @@ Použití MSI kódu můžete získat přístupové tokeny k ověření prostřed
 6.  Dále, zajistit správné předplatné je uvedené v **předplatné** rozevíracího seznamu. A pro **skupiny prostředků**vyberte **všechny skupiny prostředků**. 
 7.  Nakonec v **vyberte** zvolte v rozevíracím seznamu a klikněte na virtuální počítač Windows **Uložit**.
 
-    ![Text ALT obrázku](~/articles/active-directory/media/msi-tutorial-windows-vm-access-arm/msi-windows-permissions.png)
+    ![Text ALT obrázku](../managed-service-identity/media/msi-tutorial-windows-vm-access-arm/msi-windows-permissions.png)
 
 ## <a name="get-an-access-token-using-the-vm-identity-and-use-it-to-call-azure-resource-manager"></a>Získání přístupového tokenu pomocí identity virtuálního počítače a použít jej k vyvolání Azure Resource Manageru 
 

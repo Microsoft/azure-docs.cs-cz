@@ -8,12 +8,12 @@ services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 11/13/2017
-ms.openlocfilehash: 50e27cbc485259ea5ce744ba71feee5e90293bcb
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: a7b32bad8a9f1d039b17fe0f1be167cffbc86547
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31792905"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39006201"
 ---
 # <a name="queries-in-azure-search"></a>Dotazy ve službě Azure Search
 > [!div class="op_single_selector"]
@@ -60,6 +60,6 @@ Ve službě Azure Search je zvýrazňování přesné části výsledků vyhled�
 
 Nejlepším způsobem, jak porozumět rozdílům v syntaxi, je odesílat dotazy a kontrolovat výsledky.
 
-+ Použijte [Průzkumníka služby Search](search-explorer.md) na webu Azure Portal. Po nasazení [ukázkového indexu](search-get-started-portal.md) můžete pomocí nástrojů v portálu dávat dotazy na index během pár minut.
++ Použití [Průzkumníka služby Search](search-explorer.md) na webu Azure Portal. Po nasazení [ukázkového indexu](search-get-started-portal.md) můžete pomocí nástrojů v portálu dávat dotazy na index během pár minut.
 
 + K zadávání dotazů na index, který jste odeslali do služby vyhledávání, použijte Telerik Fiddler nebo Chrome Postman. Oba nástroje podporují volání REST pro koncový bod HTTP. 

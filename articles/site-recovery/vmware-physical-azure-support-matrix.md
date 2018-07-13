@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: cb01e71ae45ae8a7e37e8ab5cdf60e3b3fcb9983
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: eecf608a712e6a29180b797bbef491501653dfd6
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37919756"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39006474"
 ---
 # <a name="support-matrix-for-vmware-and-physical-server-replication-to-azure"></a>Matice podpory pro VMware a replikací fyzických serverů do Azure
 
@@ -24,13 +24,13 @@ Tento článek shrnuje podporované komponenty a nastavení pro zotavení po hav
 **Scénář** | **Podrobnosti**
 --- | ---
 Virtuální počítače VMware | Replikace místních virtuálních počítačů VMware do Azure. Můžete nasadit tento scénář na webu Azure Portal nebo pomocí [Powershellu](vmware-azure-disaster-recovery-powershell.md).
-Fyzické servery | Replikace fyzických serversto místní Windows/Linux Azure. Můžete nasadit tento scénář na webu Azure Portal.
+Fyzické servery | Replikace místních fyzických serverů Windows/Linux do Azure. Můžete nasadit tento scénář na webu Azure Portal.
 
 ## <a name="on-premises-virtualization-servers"></a>Na místních serverech virtualizace
 
 **Server** | **Požadavky** | **Podrobnosti**
 --- | --- | ---
-VMware | vCenter Server verze 6.5, 6.0 nebo 5.5 nebo vSphere verze 6.5, 6.0 nebo 5.5 | Doporučujeme vám použít vCenter server.<br/><br/> Doporučujeme vám, že hostitelé vSphere a serverů vCenter jsou umístěny ve stejné síti jako procesový server. Ve výchozím nastavení součásti procesu serveru běží na konfiguračním serveru, bude v síti, ve kterém nastavíte konfigurační server, pokud nastavíte vyhrazené procesní server.
+VMware | vCenter Server 6.7 6.5, 6.0 nebo 5.5 nebo vSphere 6.7, 6.5, 6.0 nebo 5.5 | Doporučujeme vám použít vCenter server.<br/><br/> Doporučujeme vám, že hostitelé vSphere a serverů vCenter jsou umístěny ve stejné síti jako procesový server. Ve výchozím nastavení součásti procesu serveru běží na konfiguračním serveru, bude v síti, ve kterém nastavíte konfigurační server, pokud nastavíte vyhrazené procesní server.
 Fyzické | neuvedeno
 
 ## <a name="site-recovery-configuration-server"></a>Site Recovery konfiguračního serveru
@@ -61,7 +61,7 @@ Site Recovery podporuje jakoukoli úlohu spuštěnou na podporovaném počítač
 **Komponenta** | **Podrobnosti**
 --- | ---
 Nastavení počítače | Počítače, které se replikují do Azure, musí splňovat [požadavky služby Azure](#azure-vm-requirements).
-Operační systém Windows | 64bitová verze Windows serveru 2016 (jádro serveru, Server s desktopovým prostředím), Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 s na minimálně SP1. Windows 2016 Nano Server není podporován.
+Operační systém Windows | 64bitová verze Windows serveru 2016 (jádro serveru, Server s desktopovým prostředím), Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 s na minimálně SP1.</br></br>  [Windows Server 2008 s na minimálně SP2 – 32bitové a 64bitové](migrate-tutorial-windows-server-2008.md) (pouze migrace). </br></br> * *Windows 2016 Nano Server není podporován.*
 Operační systém platformy Linux | Red Hat Enterprise Linux: 5.2 na 5,11, 6.1 k 6.9 7.0 až 7,4 <br/><br/>CentOS: 5.2 na 5,11, 6.1 k 6.9 7.0 až 7,4 <br/><br/>Server se systémem Ubuntu 14.04 LTS[ (podporované verze jádra)](#ubuntu-kernel-versions)<br/><br/>Server se systémem Ubuntu 16.04 LTS[ (podporované verze jádra)](#ubuntu-kernel-versions)<br/><br/>Debian 7/Debian 8[ (podporované verze jádra)](#debian-kernel-versions)<br/><br/>Oracle Enterprise Linux 6.4, 6.5 kompatibilní jádra Red Hat nebo nedělitelné Enterprise jádra verze 3 (UEK3) <br/><br/>SUSE Linux Enterprise Server 11 SP3, SUSE Linux Enterprise Server 11 SP4 <br/><br/>Upgrade replikované počítače z SP3 SP4 není podporován. Pokud chcete upgradovat, zakažte replikaci a povolte znovu po dokončení upgradu.
 
 >[!NOTE]
@@ -70,6 +70,7 @@ Operační systém platformy Linux | Red Hat Enterprise Linux: 5.2 na 5,11, 6.1 
 >
 > - Mezi hlavní Linux není podporována verze distribuční upgrade chráněných počítačů. K upgradu, zakažte replikaci, upgradovat operační systém a pak replikaci zase povolte.
 >
+> - Serverů se systémem Red Hat Enterprise Linux 5.2 5,11 nebo CentOS 5.2 5,11 by měl mít Linux Integration Services(LIS) součásti nainstalované v pořadí počítačů pro spuštění v Azure.
 
 ### <a name="ubuntu-kernel-versions"></a>Ubuntu verze jádra
 

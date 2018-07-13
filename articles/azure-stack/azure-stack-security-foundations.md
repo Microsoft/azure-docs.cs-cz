@@ -1,85 +1,89 @@
 ---
-title: "Pochopení ovládacích prvků zabezpečení zásobník Azure | Microsoft Docs"
-description: "Jako správce služby Další informace o ovládací prvky zabezpečení u Azure zásobníku"
+title: Principy ovládacích prvků zabezpečení služby Azure Stack | Dokumentace Microsoftu
+description: Jako správce služeb Další informace o zabezpečení ovládacích prvků použitá ke službě Azure Stack
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: cccac19a-e1bf-4e36-8ac8-2228e8487646
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/06/2018
+ms.date: 07/12/2018
 ms.author: mabrigg
-ms.openlocfilehash: c1d92f8f2ed9e8ab504afc65bab861e1f7bb3689
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: a3bd314a1df3c45c76b2e3a5acb31c1474d0fdf5
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39008829"
 ---
-# <a name="azure-stack-infrastructure-security-posture"></a>Azure postavení zabezpečení infrastruktury zásobníku
+# <a name="azure-stack-infrastructure-security-posture"></a>Stav zabezpečení infrastruktury služby Azure Stack
 
-*Platí pro: Azure zásobníku integrované systémy*
+*Platí pro: integrované systémy Azure Stack*
 
-Důležité informace o zabezpečení a předpisy patří mezi hlavní ovladačů pomocí hybridních cloudů. Azure zásobníku byl navržený pro tyto scénáře a je důležité si uvědomit ovládací prvky již zavedené při přijímání protokolů Azure.
+Důležité informace o zabezpečení a dodržování předpisů patří mezi hlavní ovladačů pro použití hybridních cloudů. Azure Stack je navržená pro tyto scénáře, a to je důležité pochopit ovládací prvky už je v přijetí služby Azure Stack.
 
-V zásobníku Azure existují dvě vrstvy postavení zabezpečení, které společně existovat. První vrstva obsahuje zásobník Azure infrastrukturu, která přechází z hardwarové součásti úplně až Azure Resource Manager a zahrnuje správce a portály klientů. Druhá vrstva se skládá z úlohy, které klientům vytvářet, nasazovat a spravovat a jsou věci jako virtuální počítače nebo aplikační služby weby.  
+Dvě vrstvy stavu zabezpečení ve službě Azure Stack existovat vedle sebe. První vrstva je infrastruktura Azure stacku, která zahrnuje hardwarové součásti až Azure Resource Manageru. První vrstva zahrnuje správce a Tenanta portálů. Druhá vrstva se skládá z úlohy vytvořené, nasazují a spravují tenanty. Druhá vrstva zahrnuje různé věci, třeba virtuálních počítačů a webů App Services.
 
 ## <a name="security-approach"></a>Zabezpečení přístupu
-Azure zásobníku byl vytvořen s postavení zabezpečení bránit zranitelná moderními hrozbami a byl vytvořen, aby splňoval požadavky z standardů hlavní dodržování předpisů. V důsledku toho postavení zabezpečení infrastruktury Azure zásobníku je založený na dva pilíře:
 
- - **Předpokládejme, porušení zabezpečení.**  
-Od se předpokládá, že v systému již došlo k nedodržení, soustředit na *detekovat a omezení dopad narušení* versus pouze pokusu zabránit útokům. 
- - **Posílené zabezpečení, ve výchozím nastavení.**  
-Vzhledem k tomu, že infrastruktura běží na dobře definovaný hardwaru a softwaru, jsme *povolení, konfiguraci a ověření všech funkcí zabezpečení* ve výchozím nastavení.
+Stav zabezpečení pro službu Azure Stack je navržen pro ochranu před moderními hrozbami a byla vytvořena pro splnění požadavků z hlavní dodržování předpisů standardů. Stav zabezpečení infrastruktury služby Azure Stack v důsledku toho je postavená na dvou pilíře:
 
+ - **Předpokládej chybu zabezpečení**  
+Spuštění z předpokladu, že systém již došlo k nedodržení, zaměřte se na *zjišťování a omezit dopad těchto porušení* oproti pouze při prevenci proti útokům. 
+ - **Posílené už ve výchozím nastavení**  
+Že díky infrastruktuře provozované na jasně definovaném hardwaru a softwaru, služby Azure Stack *povolí, konfiguruje a ověří všechny funkce zabezpečení* ve výchozím nastavení.
 
-
-Protože zásobník Azure je dodávána jako integrovaný systém, je definována postavení zabezpečení infrastruktury Azure zásobníku společností Microsoft. Stejně jako v Azure, klienti jsou zodpovědní za definování postavení zabezpečení zatížení klienta. Tento dokument obsahuje základní znalosti postavení zabezpečení infrastruktury Azure zásobníku.
+Protože Azure Stack se dodává jako integrovaný systém, je definován stav zabezpečení infrastruktury Azure stacku společností Microsoft. Stejně jako v Azure, klienti jsou zodpovědné za definování stav zabezpečení svých úloh tenanta. Tento dokument obsahuje základní znalosti o stavu zabezpečení infrastruktury Azure stacku.
 
 ## <a name="data-at-rest-encryption"></a>Data šifrování neaktivních dat
-Všechna data zásobník Azure infrastruktury a klientů je zašifrovaná přinejmenším pomocí nástroje Bitlocker. Toto šifrování chrání před fyzické ztráty či odcizení komponent Azure zásobníku úložiště. 
+Všechny služby Azure Stack infrastruktury a klientského data se šifrují v klidu pomocí Bitlockeru. Toto šifrování se chrání před fyzické ztráty či odcizení komponent úložiště služby Azure Stack. 
 
-## <a name="data-in-transit-encryption"></a>Data v přenosu šifrování
-Součásti infrastruktury Azure zásobníku komunikovat prostřednictvím kanálů šifrována pomocí protokolu TLS 1.2. Šifrovací certifikáty jsou spravovány samostatně infrastruktury. 
+## <a name="data-in-transit-encryption"></a>Data v šifrování přenosu
+Součásti infrastruktury Azure stacku komunikaci pomocí kanálů, které jsou šifrované pomocí protokolu TLS 1.2. Certifikáty šifrování samoobslužných spravuje infrastrukturu. 
 
-Všechny koncové body externí infrastruktury, jako jsou koncové body REST nebo portálu Azure zásobníku podporovala TLS 1.2 pro zabezpečenou komunikaci. Certifikáty šifrování, buď z jiného výrobce nebo vaše podnikové certifikační autority, je třeba zadat pro tyto koncové body. 
+Všechny koncové body externí infrastruktury, jako jsou koncové body REST nebo na portálu Azure Stack podporovala TLS 1.2 pro zabezpečenou komunikaci. Pro tyto koncové body je třeba zadat šifrovací certifikáty, buď z jiného výrobce nebo certifikační autorita rozlehlé sítě. 
 
-Zatímco certifikáty podepsané svým držitelem lze použít pro tyto externí koncové body, Microsoft důrazně nedoporučuje jejich používání. 
+Certifikáty podepsané svým držitelem můžete využít pro tyto externí koncové body, Microsoft důrazně nedoporučuje jejich používání. 
 
-## <a name="secret-management"></a>Tajný správy
-Azure zásobníku infrastruktura používá velkého množství tajné údaje, jako jsou hesla, aby fungoval. Většina z nich automaticky otáčejí často, protože jsou účty spravované služby skupiny, které otočit každých 24 hodin.
+## <a name="secret-management"></a>Správa tajných kódů
+Infrastruktura Azure stacku používá velké množství tajné kódy, jako jsou hesla, aby fungoval. Většina z nich jsou automaticky otočit často, protože jsou účty spravované služby skupiny, které otočit každých 24 hodin.
 
-Zbývající tajemství, které nejsou, že účty spravované služby skupiny lze otáčet ručně pomocí skriptu v privilegované koncový bod.
+Zbývající tajné klíče, které nejsou účty spravované služby skupiny lze otočit ručně pomocí skriptu v privilegovaných koncový bod.
 
-## <a name="code-integrity"></a>Integrity kódu
-Azure zásobníku využívá nejnovější Windows Server 2016 funkce zabezpečení. Jeden z nich je Windows Defender ochranou zařízení, která zajišťuje vytvoření seznamu povolených aplikací a zajišťuje, že pouze ověřené spustí kód v rámci infrastruktury Azure zásobníku. 
+## <a name="code-integrity"></a>Integrita kódu
+Azure Stack využívá nejnovější Windows serveru 2016 funkce zabezpečení. Jeden z nich je Windows Defender Device Guard, která zajišťuje seznamu povolených aplikací a zajišťuje, který pouze oprávnění kód běží v rámci infrastruktury Azure stacku. 
 
-Autorizovaný kód je podepsán společností Microsoft nebo výrobce OEM partnera a je zahrnutý do seznamu povolených software, který je uveden v zásadách, definovaná společností Microsoft. Jinými slovy lze provést pouze software, který byl schválen ke spuštění v infrastruktuře Azure zásobníku. Jakýkoli pokus o spuštění neoprávněný kód je blokovaný a je vygenerována auditu.
+Autorizovaného kódu je podepsán společností Microsoft nebo partnera výrobce OEM a je zahrnutý v seznamu povolených software, který je uveden v zásadách definované microsoftem. Jinými slovy mohou být provedeny pouze software, který je schválená pro spuštění v infrastruktuře Azure Stack. Pokus o provedení neoprávněný kód blokovaný a je generována auditu.
 
-Ochrana zařízení zásady také zabrání třetích stran agentů nebo softwaru spouštět v infrastruktuře Azure zásobníku.
+Zásady Device Guard zabrání ve spuštění v infrastruktuře Azure Stack také třetích stran agentů nebo softwaru.
 
-## <a name="credential-guard"></a>Ochrana přihlašovacích údajů
-Další funkce zabezpečení systému Windows Server 2016 v zásobníku Azure je Windows Defender pověření ochrana, který se používá k ochraně před Pass-the-Hash a útoků Pass-the-Ticket pověření infrastruktury Azure zásobníku.
+## <a name="credential-guard"></a>Credential Guard
+Další funkce zabezpečení Windows serveru 2016 ve službě Azure Stack je Windows Defender Credential Guard, který se používá k ochraně přihlašovacích údajů k Azure Stack infrastruktury před Pass-the-Hash a Pass-the-Ticket útoky.
 
 ## <a name="antimalware"></a>Antimalware
-Windows Defender antivirové je chráněný všechny komponenty v Azure zásobníku (hostitelů Hyper-V a virtuálních počítačů).
+Všechny komponenty ve službě Azure Stack (hostitele Hyper-V a virtuálních počítačů) je chráněný pomocí antivirové ochrany v programu Windows Defender.
 
-## <a name="constrained-administration-model"></a>Model omezené správy
-Správa v zásobníku Azure je řízena pomocí tří vstupním bodům, každý s konkrétním účelem: 
-1. [Portálu správce](azure-stack-manage-portals.md) poskytuje bod a kliknutím prostředí pro každodenní operace správy.
-2. Azure Resource Manager zpřístupní všechny operace správy portálu správce prostřednictvím rozhraní REST API, používá prostředí PowerShell a rozhraní příkazového řádku Azure. 
-3. Pro konkrétní operace nízké úrovně, například data center integrace nebo podporu scénářů, zásobník Azure zpřístupní koncový bod prostředí PowerShell názvem [privilegované koncový bod](azure-stack-privileged-endpoint.md). Tento koncový bod zpřístupní pouze seznam povolených adres sadu rutin a výraznou se neaudituje.
+V propojených scénářích se použijí antivirové aktualizace definic a stroje a více než jednou za den. V odpojených scénářů aktualizací antimalwarového softwaru se použijí jako součást měsíční aktualizace služby Azure Stack. Zobrazit [aktualizovat antivirové ochrany Windows Defender ve službě Azure Stack](azure-stack-security-av.md) Další informace.
 
-## <a name="network-controls"></a>Ovládací prvky sítě
-Infrastrukturu Azure zásobníku se dodává s více vrstev sítě List(ACL) řízení přístupu. Seznamy ACL znemožníte neoprávněný přístup k součásti infrastruktury a infrastruktury komunikace se jenom cesty, které jsou požadovány pro fungování omezit. 
+## <a name="constrained-administration-model"></a>Model omezeného správy
+Správy ve službě Azure Stack je řízen pomocí tří vstupních bodů, každý s konkrétním účelem: 
+1. [Portálu správce](azure-stack-manage-portals.md) poskytuje možnosti ukázat a kliknout pro každodenní operace správy.
+2. Azure Resource Manageru zpřístupňuje všechny operace správy portálu správce prostřednictvím rozhraní REST API, Powershellu a rozhraní příkazového řádku Azure. 
+3. Pro konkrétní operace nízké úrovně, například data center integrace nebo podporují scénáře, Azure Stack zpřístupňuje koncový bod Powershellu volá [privilegovaných koncový bod](azure-stack-privileged-endpoint.md). Tento koncový bod vystavuje pouze přidat na seznam povolených sadu rutin a výrazně se Audituje.
 
-Seznamy ACL sítě se vynucují v tři vrstvy:
-1.  Začátek přepínače Rack
+## <a name="network-controls"></a>Ovládací prvky pro síť
+Infrastruktura Azure stacku se dodává s víc vrstvami sítě List(ACL) řízení přístupu. Seznamy ACL zabránit neoprávněnému přístupu k součástem infrastruktury a omezit infrastruktury komunikaci jenom cesty, které jsou vyžadovány pro její fungování. 
+
+Seznamy ACL sítě se vynucují ve třech vrstvách:
+1.  Top-of-Rack přepínače
 2.  Softwarově definované sítě
-3.  Brány firewall operačního systému hostitele a virtuálního počítače 
+3.  Brány firewall operačního systému hostitele a virtuálního počítače
 
+## <a name="next-steps"></a>Další postup
 
+- [Zjistěte, jak otočit vaše tajné kódy ve službě Azure Stack](azure-stack-rotate-secrets.md)

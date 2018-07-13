@@ -1,5 +1,5 @@
 ---
-title: Služby Azure Cloud Services definici schématu (soubor .csdef) | Microsoft Docs
+title: Definice schématu (soubor .csdef) služby Azure Cloud Services | Dokumentace Microsoftu
 ms.custom: ''
 ms.date: 04/14/2015
 services: cloud-services
@@ -10,27 +10,27 @@ ms.tgt_pltfrm: ''
 ms.topic: reference
 ms.assetid: b7735dbf-8e91-4d1b-89f7-2f17e9302469
 caps.latest.revision: 42
-author: thraka
-ms.author: adegeo
+author: jpconnock
+ms.author: jeconnoc
 manager: timlt
-ms.openlocfilehash: d5e086a952e18e477177634e5c197c27d4a5cc5f
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: df2f7c1bf99c13779e5720e15d8d669aa4f945c0
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34359012"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39002745"
 ---
-# <a name="azure-cloud-services-definition-schema-csdef-file"></a>Azure Cloud Services definici schématu (soubor .csdef)
-Soubor definice služby definuje model služby pro aplikaci. Soubor obsahuje definice pro role, které jsou k dispozici v cloudové službě, určuje koncové body služby a vytváří nastavení konfigurace pro službu. Konfigurace nastavení hodnoty se nastavují v konfiguračním souboru služby podle [schéma konfigurace cloudové služby (klasické)](http://msdn.microsoft.com/library/b1ae68cd-cc95-48cb-a4a4-da91dc708a35).
+# <a name="azure-cloud-services-definition-schema-csdef-file"></a>Schéma definice (soubor .csdef) služby Azure Cloud Services
+Definiční soubor služby definuje model služby pro aplikaci. Soubor obsahuje definice pro role, které jsou k dispozici v cloudové službě, určuje koncové body služby a vytváří nastavení konfigurace pro službu. Konfigurace nastavení hodnoty se nastavují v konfiguračním souboru služby, jak je popsáno [schéma konfigurace cloudové služby (klasické)](http://msdn.microsoft.com/library/b1ae68cd-cc95-48cb-a4a4-da91dc708a35).
 
-Ve výchozím nastavení je konfiguračního souboru schématu Azure Diagnostics nainstaluje pro `C:\Program Files\Microsoft SDKs\Windows Azure\.NET SDK\<version>\schemas` adresáře. Nahraďte `<version>` s nainstalovanou verzí [Azure SDK](http://www.windowsazure.com/develop/downloads/).
+Ve výchozím nastavení, je nainstalován soubor schématu konfigurace diagnostiky Azure do `C:\Program Files\Microsoft SDKs\Windows Azure\.NET SDK\<version>\schemas` adresáře. Nahraďte `<version>` s nainstalovanou verzí [sady Azure SDK](http://www.windowsazure.com/develop/downloads/).
 
-Výchozí přípona souboru definice služby je .csdef.
+Výchozí přípona pro definiční soubor služby je .csdef.
 
-## <a name="basic-service-definition-schema"></a>Definice schématu služby na úrovni Basic
-Soubor definice služby musí obsahovat jeden `ServiceDefinition` elementu. Definice služby musí obsahovat alespoň jednu roli (`WebRole` nebo `WorkerRole`) elementu. Může obsahovat až pro 25 role v jednom definici a je možné kombinovat role typy. Definice služby obsahuje taky volitelné `NetworkTrafficRules` element, který omezuje jednotlivé role může komunikovat se zadanou vnitřních koncových bodů. Definice služby obsahuje taky volitelné `LoadBalancerProbes` element, který obsahuje zákazník definovaný sondy stavu koncových bodů.
+## <a name="basic-service-definition-schema"></a>Schématu definice služby na úrovni Basic
+Definiční soubor služby musí obsahovat jeden `ServiceDefinition` elementu. Definice služby musí obsahovat alespoň jednu roli (`WebRole` nebo `WorkerRole`) element. Může obsahovat až 25 definované v definici jedné role a je možné kombinovat typy rolí. Definice služby obsahuje také volitelné `NetworkTrafficRules` element, který omezuje které role může komunikovat k zadaným interním koncovým bodům. Definice služby obsahuje také volitelné `LoadBalancerProbes` element, který obsahuje zákazníka definované sondy stavu koncových bodů.
 
-Základní formát souboru definice služby je následující.
+Základní formát souboru definice služby je následujícím způsobem.
 
 ```xml
 <ServiceDefinition name="<service-name>" topologyChangeDiscovery="<change-type>" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition" upgradeDomainCount="<number-of-upgrade-domains>" schemaVersion="<version>">
@@ -54,8 +54,8 @@ Základní formát souboru definice služby je následující.
 </ServiceDefinition>
 ```
 
-## <a name="schema-definitions"></a>Definice schématu
-Následující témata popisují schématu:
+## <a name="schema-definitions"></a>Definice schémat
+Následující témata popisují schéma:
 
 - [Schéma LoadBalancerProbe](schema-csdef-loadbalancerprobe.md)
 - [Schéma WebRole](schema-csdef-webrole.md)
@@ -63,13 +63,13 @@ Následující témata popisují schématu:
 - [Schéma NetworkTrafficRules](schema-csdef-networktrafficrules.md)
 
 ##  <a name="ServiceDefinition"></a> ServiceDefinition Element
-`ServiceDefinition` Element je element nejvyšší úrovně v definičním souboru služby.
+`ServiceDefinition` Prvek je prvek nejvyšší úrovně v definičním souboru služby.
 
 Následující tabulka popisuje atributy `ServiceDefinition` elementu.
 
 | Atribut               | Popis |
 | ----------------------- | ----------- |
 | jméno                    |Povinná hodnota. Název služby. Název musí být jedinečný v rámci účtu služby.|
-| topologyChangeDiscovery | Volitelné. Určuje typ oznámení o změně topologie. Možné hodnoty:<br /><br /> -   `Blast` -Odešle aktualizace co nejdříve do všech instancí rolí. Pokud zvolíte možnost, roli byste měli mít pro zpracování aktualizace topologie bez restartování.<br />-   `UpgradeDomainWalk` – Odešle aktualizace každá instance role sekvenční způsobem po předchozí instanci úspěšně přijal aktualizace.|
-| schemaVersion           | Volitelné. Určuje verzi schématu definice služby. Verze schématu umožňuje sadě Visual Studio k výběru správné sady SDK nástroje má použít pro ověření schématu, pokud je nainstalovaná více než jedna verze sady SDK vedle sebe.|
-| upgradeDomainCount      | Volitelné. Určuje počet upgradovacích domén, přes které jsou přiděleny rolí v rámci této služby. Instance role jsou přiděleny do upgradu domény při nasazení služby. Další informace najdete v tématu [aktualizovat roli služby cloudu nebo nasazení](cloud-services-how-to-manage-portal.md#update-a-cloud-service-role-or-deployment).<br /><br /> Můžete zadat až 20 upgradovacích domén. Pokud není zadáno, výchozí počet domén upgradu je 5.|
+| topologyChangeDiscovery | Volitelné. Určuje typ oznámení o změně topologie. Možné hodnoty:<br /><br /> -   `Blast` -Odešle aktualizace co nejdřív na všech instancích rolí. Pokud zvolíte možnost, by měla být schopná zpracovat topologie aktualizace bez restartování role.<br />-   `UpgradeDomainWalk` – Odešle aktualizaci ke každé instanci role sekvenčním způsobem po předchozí instanci úspěšně přijal aktualizace.|
+| schemaVersion           | Volitelné. Určuje verzi schématu definice služby. Verze schématu umožňuje vybrat správné nástroje sady SDK a použít pro ověřování schématu v případě více než jedna verze sady SDK je nainstalovaná sada Visual Studio vedle sebe.|
+| upgradeDomainCount      | Volitelné. Určuje počet upgradovacích domén, přes které se přidělují role v této službě. Instance rolí jsou přiděleny k upgradovací doméně, při nasazení služby. Další informace najdete v tématu [aktualizace role cloudové služby nebo nasazení](cloud-services-how-to-manage-portal.md#update-a-cloud-service-role-or-deployment).<br /><br /> Můžete zadat až 20 upgradovacích domén. Pokud není zadán, výchozí počet upgradovacích domén je 5.|

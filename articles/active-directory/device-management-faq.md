@@ -15,16 +15,18 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 864f790db48d3d4542ed56a4c7272a198df5bd56
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 928bd4dcc51391e3832b5fea26ff8c665f768cdb
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37901132"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39005668"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory nejčastější dotazy ke správě zařízení
 
+**Dotaz: lze zaregistrovat vlastní zařízení s Androidem nebo iOS?**
 
+**Odpověď:** Ano, ale pouze službě Azure device registration service a pro zákazníky využívající hybridní řešení. Nepodporuje se místní službu device registration service ve službě AD FS.
 
 **Otázka: jak můžete zaregistrovat zařízení s macOS?**
 

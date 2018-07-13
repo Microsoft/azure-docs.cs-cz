@@ -8,7 +8,7 @@
 
 **Spravované disky virtuálních počítačů typu Premium: omezení na jeden disk**
 
-| Disky typu Premium  | P4    | P6    | P10   | P20   | P30   | P40   | P50   | 
+| Typ disky Premium  | P4    | P6    | P10   | P20   | P30   | P40   | P50   | 
 |---------------------|-------|-------|-------|-------|-------|-------|-------|
 | Velikost disku           | 32 GB | 64 GB | 128 GB| 512 GB            | 1024 GB (1 TB)    | 2048 GB (2 TB)    | 4095 GB (4 TB)    | 
 | Vstupně-výstupní operace za sekundu / disk       | 120   | 240   | 500   | 2300              | 5000              | 7500              | 7500              | 
@@ -18,5 +18,5 @@
 
 | Prostředek | Výchozí omezení |
 | --- | --- |
-| Maximum vstupně-výstupních operací za sekundu (IOPS) na virtuální počítač |80 000 IOPS s GS5 virtuálním Počítačem. |
-| Maximální propustnost na virtuální počítač |2 000 MB/s s GS5 virtuálních počítačů |
+| Maximum vstupně-výstupních operací za sekundu (IOPS) na virtuální počítač |80 000 IOPS s virtuálním Počítačem GS5 |
+| Maximální propustnost na virtuální počítač |2 000 MB/s s virtuálním Počítačem GS5 |

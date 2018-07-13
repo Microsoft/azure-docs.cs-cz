@@ -1,5 +1,5 @@
 ---
-title: Site Recovery omezení tabulky
+title: Tabulka omezení Site Recovery
 description: Popisuje omezení systému pro Site Recovery.
 services: site recovery
 documentationcenter: NA
@@ -14,20 +14,20 @@ ms.workload: TBD
 ms.date: 07/06/2015
 ms.author: lauraa
 ms.openlocfilehash: e0694aa8c5226b794be59358e73751cc493a7e95
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "23906961"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38755603"
 ---
-Na Azure Site Recovery se vztahují následující omezení:
+Azure Site Recovery platí tato omezení:
 
-| IDENTIFIKÁTOR LIMIT | VÝCHOZÍ LIMIT |
+| IDENTIFIKÁTOR OMEZENÍ | VÝCHOZÍ OMEZENÍ |
 | --- | --- | --- | --- |
 | Počet trezorů na předplatné |25 |
-| Počet serverů za trezor služby Azure |250 |
-| Počet skupin ochrany za trezor služby Azure |Bez omezení |
-| Počet plány obnovení podle Azure trezoru |Bez omezení |
+| Počet serverů za trezor Azure |250 |
+| Počet skupin ochrany za trezor Azure |Bez omezení |
+| Počet plánů obnovení za Azure trezoru |Bez omezení |
 | Počet serverů na skupinu ochrany |Bez omezení |
-| Počet serverů za plánu obnovení |50 |
+| Počet serverů podle plánu obnovení |50 |
 

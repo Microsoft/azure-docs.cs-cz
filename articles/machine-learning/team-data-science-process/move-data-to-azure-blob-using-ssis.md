@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: deguhath
-ms.openlocfilehash: 5db1e7b9c97a0c19ef5ec0a41ea675c33c4d46fc
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 2f73a08d14d02b4e4b441b6ac85c6ceb97b9f173
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37950912"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39004978"
 ---
 # <a name="move-data-to-or-from-azure-blob-storage-using-ssis-connectors"></a>Přesun dat do nebo z Azure Blob Storage pomocí konektorů SSIS
 [SQL Server Integration Services Feature Pack for Azure](https://msdn.microsoft.com/library/mt146770.aspx) obsahuje součásti pro připojení k Azure, přenos dat mezi Azure a místních zdrojů dat a zpracování dat uložených v Azure.
@@ -83,7 +83,7 @@ Parametry, které používá úlohy jsou popsány zde:
 > 
 
 ## <a name="download-data-from-azure-blob-storage"></a>Stáhnout data z úložiště objektů blob v Azure
-Stáhnout data z úložiště objektů blob Azure do místního úložiště pomocí služby SSIS, použít instanci [úkol nahrát objekt Blob Azure](https://msdn.microsoft.com/library/mt146779.aspx).
+Stáhnout data z úložiště objektů blob Azure do místního úložiště pomocí služby SSIS, použít instanci [úloha stažení objektů Blob v Azure](https://msdn.microsoft.com/library/mt146779.aspx).
 
 ## <a name="more-advanced-ssis-azure-scenarios"></a>Pokročilejší scénáře SSIS Azure
 Funkce balíčku služby SSIS umožňuje složitější toky zpracovávat úlohy balení společně. Například může přímo do clusteru služby HDInsight, jejíž výstup může stáhnout zpět do objektu blob a pak do úložiště v místním kanálu dat objektů blob. SSIS můžete spouštět úlohy Hive a Pig na clusteru služby HDInsight pomocí dalších konektorů SSIS:

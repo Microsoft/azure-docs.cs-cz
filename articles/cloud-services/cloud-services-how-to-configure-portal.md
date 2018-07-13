@@ -1,9 +1,9 @@
 ---
-title: Postup konfigurace cloudové služby (portál) | Microsoft Docs
-description: Zjistěte, jak nakonfigurovat cloudové služby v Azure. Naučte se aktualizovat konfiguraci této cloudové služby a konfigurace vzdáleného přístupu k instancí rolí. Tyto příklady použití portálu Azure.
+title: Jak nakonfigurovat cloudovou službu (portál) | Dokumentace Microsoftu
+description: Zjistěte, jak konfigurovat cloud services v Azure. Zjistěte, jak aktualizovat konfiguraci cloudové služby a konfigurace vzdáleného přístupu do instancí rolí. Tyto příklady pomocí webu Azure portal.
 services: cloud-services
 documentationcenter: ''
-author: Thraka
+author: jpconnock
 manager: timlt
 editor: ''
 ms.assetid: 7308f3c0-825e-499d-bfa5-c60f86371921
@@ -13,100 +13,100 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2016
-ms.author: adegeo
-ms.openlocfilehash: 255e496881f6269d37d3b2d982ba31861458631c
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.author: jeconnoc
+ms.openlocfilehash: 904056363c685ef0a16b229ce72383eb80701a39
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2018
-ms.locfileid: "29874317"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39006409"
 ---
-# <a name="how-to-configure-cloud-services"></a>Postup konfigurace cloudové služby
+# <a name="how-to-configure-cloud-services"></a>Postup konfigurace služby Cloud Services
 
-Můžete nakonfigurovat nastavení nejčastěji používaných pro cloudové služby na portálu Azure. Pokud chcete místo toho aktualizovat konfigurační soubory přímo, stáhněte si příslušný konfigurační soubor služby a pak ho aktualizujte a nahrajte. Tím aktualizujete konfiguraci cloudové služby. V obou případech se aktualizovaná konfigurace projeví ve všech instancích rolí.
+Nejčastěji používaná nastavení pro cloudovou službu můžete nakonfigurovat na webu Azure Portal. Pokud chcete místo toho aktualizovat konfigurační soubory přímo, stáhněte si příslušný konfigurační soubor služby a pak ho aktualizujte a nahrajte. Tím aktualizujete konfiguraci cloudové služby. V obou případech se aktualizovaná konfigurace projeví ve všech instancích rolí.
 
-Můžete také spravovat instance role cloudové služby nebo vzdálené plochy do nich.
+Můžete také spravovat instance rolí cloudové služby nebo Vzdálená plocha do nich.
 
-Azure můžete pouze zajistit dostupnost služby 99,95 % během aktualizace konfigurace Pokud máte aspoň dvě instance role pro každou roli. Umožňující jeden virtuální počítač ke zpracování požadavků klientů dalších během aktualizace. Další informace najdete v tématu [smlouvy o úrovni služeb](https://azure.microsoft.com/support/legal/sla/).
+Azure můžete pouze zajistit 99,95 % dostupnost služeb během aktualizace konfigurace Pokud budete mít aspoň dvě instance role pro každou roli. Která umožňuje jeden virtuální počítač ke zpracování požadavků klientů druhé během aktualizace. Další informace najdete v tématu [smlouvy o úrovni služeb](https://azure.microsoft.com/support/legal/sla/).
 
 ## <a name="change-a-cloud-service"></a>Změnit cloudové služby
 
-Po otevření [portál Azure](https://portal.azure.com/), přejděte do cloudové služby. Tady můžete spravovat mnoho aspektů.
+Po otevření [webu Azure portal](https://portal.azure.com/), přejděte ke cloudové službě. Odsud můžete spravovat mnoho aspektů.
 
-![Nastavení stránky](./media/cloud-services-how-to-configure-portal/cloud-service.png)
+![Stránka nastavení](./media/cloud-services-how-to-configure-portal/cloud-service.png)
 
-**Nastavení** nebo **všechna nastavení** odkazy se otevře **nastavení** kterém lze změnit **vlastnosti**, změnit  **Konfigurace**, spravovat **certifikáty**, nastavte **výstrah pravidla**a spravovat **uživatelé** kteří mají přístup k této cloudové služby.
+**Nastavení** nebo **všechna nastavení** odkazy se otevřou **nastavení** kde můžete změnit **vlastnosti**, změnit  **Konfigurace**, spravovat **certifikáty**, nastavit **pravidla upozornění**a spravovat **uživatelé** kteří mají přístup k této cloudové služby.
 
 ![Nastavení služby Azure cloud](./media/cloud-services-how-to-configure-portal/cs-settings-blade.png)
 
 ### <a name="manage-guest-os-version"></a>Správa verzí hostovaného operačního systému
 
-Ve výchozím nastavení Azure pravidelně aktualizuje hostovaný operační systém na nejnovější podporovanou bitovou kopii v rámci řada operačního systému, který jste zadali v konfiguraci služby (.cscfg), například Windows Server 2016.
+Ve výchozím nastavení Azure pravidelně aktualizuje hostovaného operačního systému na nejnovější podporované image v rámci řada operačního systému, které jste zadali v konfiguraci služby (.cscfg), jako je například Windows Server 2016.
 
-Pokud budete se muset zaměřit na konkrétní verzi operačního systému, můžete ho nastavit **konfigurace**.
+Pokud je potřeba cílit na konkrétní verze operačního systému, můžete ho nastavit v **konfigurace**.
 
 ![Nastavit verzi operačního systému](./media/cloud-services-how-to-configure-portal/cs-settings-config-guestosversion.png)
 
 >[!IMPORTANT]
-> Výběr konkrétní verze operačního systému zakáže automatické OS aktualizace a zajišťuje opravy vaší povinností. Ujistěte se, že instance role jsou přijímá aktualizace nebo může odhalí aplikace k ohrožení zabezpečení.
+> Výběr konkrétní verze operačního systému se zakáže automatické operačního systému se aktualizuje a díky použití dílčích oprav vaší povinností. Ujistěte se, že vaše instance rolí jsou příjem aktualizací nebo může zveřejněte svou aplikaci k ohrožení bezpečnosti.
 
 ## <a name="monitoring"></a>Monitorování
 
-Výstrahy můžete přidat do cloudové služby. Klikněte na tlačítko **nastavení** > **pravidla výstrahy** > **přidat upozornění**.
+Výstrahy můžete přidat ke cloudové službě. Klikněte na tlačítko **nastavení** > **pravidla upozornění** > **přidat upozornění**.
 
 ![](./media/cloud-services-how-to-configure-portal/cs-alerts.png)
 
-Zde můžete nastavit výstrahy. Pomocí **metrika** rozevíracího seznamu, můžete nastavit upozornění pro následující typy dat.
+Z tohoto místa můžete nastavit výstrahy. S **metrika** rozevíracího seznamu, můžete nastavit výstrahy pro následující typy dat.
 
 * Čtení z disku
-* Zápis disku
+* Zápis na disk
 * Sítě v
-* Sítě out
+* Síťové výstupy
 * Procento CPU
 
 ![](./media/cloud-services-how-to-configure-portal/cs-alert-item.png)
 
-### <a name="configure-monitoring-from-a-metric-tile"></a>Konfigurace monitorování z metriky dlaždice
+### <a name="configure-monitoring-from-a-metric-tile"></a>Konfigurace monitorování metrik dlaždici
 
-Místo použití **nastavení** > **pravidla výstrah**, můžete kliknutím na jednu z metriky dlaždice v **monitorování** části cloudové služby.
+Namísto použití **nastavení** > **pravidla upozornění**, můžete kliknout na jednu z metrik dlaždice v **monitorování** části cloudové služby.
 
-![Cloudová služba monitorování](./media/cloud-services-how-to-configure-portal/cs-monitoring.png)
+![Monitorování cloudové služby](./media/cloud-services-how-to-configure-portal/cs-monitoring.png)
 
-Tady můžete přizpůsobit graf použít s dlaždice nebo přidání pravidla výstrahy.
+Odsud můžete přizpůsobit graf používá s dlaždicí nebo přidání pravidla výstrahy.
 
 ## <a name="reboot-reimage-or-remote-desktop"></a>Restartování, obnovení z Image nebo vzdálené plochy
 
-Můžete nastavit vzdálené plochy prostřednictvím [portálu Azure (nastavení vzdálené plochy)](cloud-services-role-enable-remote-desktop-new-portal.md), [prostředí PowerShell](cloud-services-role-enable-remote-desktop-powershell.md), nebo pomocí [Visual Studio](cloud-services-role-enable-remote-desktop-visual-studio.md).
+Můžete nastavit prostřednictvím vzdálené plochy [webu Azure portal (nastavení vzdálené plochy)](cloud-services-role-enable-remote-desktop-new-portal.md), [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md), nebo prostřednictvím [sady Visual Studio](cloud-services-role-enable-remote-desktop-visual-studio.md).
 
-Restartování, obnovení z Image nebo vzdálené do cloudové služby, vyberte instanci služby cloudu.
+K restartování, obnovení z Image nebo vzdáleně se připojte Cloudovou službu, vyberte instanci cloudové služby.
 
 ![Instance cloudové služby](./media/cloud-services-how-to-configure-portal/cs-instance.png)
 
-Potom iniciovat připojení ke vzdálené ploše, vzdáleně restartovat instanci nebo vzdáleně obnovit z Image (začít s novou bitovou kopii) instance.
+Potom iniciovat připojení ke vzdálené ploše, vzdáleně restartovat instanci nebo vzdáleně obnovit z Image (začít s novou imagí) instance.
 
-![Cloudové služby Instance tlačítka](./media/cloud-services-how-to-configure-portal/cs-instance-buttons.png)
+![Tlačítka Instance cloudové služby](./media/cloud-services-how-to-configure-portal/cs-instance-buttons.png)
 
-## <a name="reconfigure-your-cscfg"></a>Překonfigurujte vaší .cscfg
+## <a name="reconfigure-your-cscfg"></a>Změna konfigurace vaší .cscfg
 
-Budete muset překonfigurovat cloudové služby prostřednictvím [konfigurace služby (cscfg)](cloud-services-model-and-package.md#cscfg) souboru. Je třeba nejprve stáhněte soubor .cscfg, upravte ho a pak nahrajte ho.
+Možná budete muset změnit konfiguraci cloudové služby až [konfigurace služby (cscfg)](cloud-services-model-and-package.md#cscfg) souboru. Je třeba nejprve stáhněte si soubor .cscfg, upravte ho a pak ho nahrát.
 
-1. Klikněte na **nastavení** ikonu nebo **všechna nastavení** odkaz otevře **nastavení**.
+1. Klikněte na **nastavení** ikonu nebo **všechna nastavení** odkaz otevřete **nastavení**.
 
-    ![Nastavení stránky](./media/cloud-services-how-to-configure-portal/cloud-service.png)
+    ![Stránka nastavení](./media/cloud-services-how-to-configure-portal/cloud-service.png)
 2. Klikněte na **konfigurace** položky.
 
     ![Okno Konfigurace](./media/cloud-services-how-to-configure-portal/cs-settings-config.png)
 3. Klikněte na tlačítko **Stáhnout**.
 
     ![Ke stažení](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-download.png)
-4. Po aktualizaci konfigurační soubor služby, odesílání a aktualizace konfigurace:
+4. Po aktualizaci konfigurační soubor služby nahrát a zavést aktualizace konfigurace:
 
     ![Odeslat](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-upload.png)
 5. Vyberte soubor .cscfg a klikněte na tlačítko **OK**.
 
 ## <a name="next-steps"></a>Další postup
 
-* Zjistěte, jak [nasazení cloudové služby](cloud-services-how-to-create-deploy-portal.md).
-* Konfigurace [vlastní název domény](cloud-services-custom-domain-name-portal.md).
-* [Správa služby cloud](cloud-services-how-to-manage-portal.md).
+* Zjistěte, jak [nasadit cloudovou službu](cloud-services-how-to-create-deploy-portal.md).
+* Konfigurace [vlastního názvu domény](cloud-services-custom-domain-name-portal.md).
+* [Správa cloudové služby](cloud-services-how-to-manage-portal.md).
 * Konfigurace [certifikáty ssl](cloud-services-configure-ssl-certificate-portal.md).

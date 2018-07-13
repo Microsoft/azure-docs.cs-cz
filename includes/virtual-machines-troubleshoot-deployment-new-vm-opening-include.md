@@ -1,5 +1,5 @@
-Při pokusu o vytvoření virtuálního počítače pro nové Azure (VM), jsou zřizování běžné chyby, na které narazíte na selhání nebo chyby v přidělení.
+Při pokusu o vytvoření virtuálního počítače pro nový Azure (VM), zřizujete běžných chyb, které zaznamenáte chyby nebo chyby v přidělení.
 
-* Selhání zřizování se stane, když bitovou kopii operačního systému nepodaří načíst z důvodu nesprávné přípravné kroky nebo z důvodu chybné nastavení výběr během vytváření bitové kopie z portálu.
-* Došlo k chybě přidělení výsledky při clusteru nebo oblast buď nemá k dispozici prostředky nebo nemůže podporovat požadovaná velikost virtuálního počítače.
+* Selhání zřizování se stane, když image operačního systému se nepodaří načíst z důvodu nesprávné přípravné kroky nebo z důvodu výběru chybné nastavení během vytváření imagí z portálu.
+* K selhání přidělení výsledkem v případě, že cluster nebo oblasti buď nemá žádné prostředky k dispozici, nebo nepodporuje požadovanou velikost virtuálního počítače.
 

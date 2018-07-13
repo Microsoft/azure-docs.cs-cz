@@ -9,23 +9,23 @@ ms.date: 2/7/2018
 ms.author: trinadhk;sogup
 ms.custom: include file
 ms.openlocfilehash: 1f41567f7d5dcc9b6536b47ef639ba53abff8ec4
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31613632"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38755579"
 ---
-Následující omezení platí pro zálohování Azure.
+Následující omezení platí do služby Azure Backup.
 
-| Identifikátor limit | Výchozí omezení |
+| Identifikátor omezení | Výchozí omezení |
 | --- | --- |
-| Počet serverů/počítačů, které lze registrovat k trezoru |50 pro Windows Server nebo klienta nebo SCDPM <br/> 1 000 pro virtuální počítače IaaS |
-| Velikost zdroje dat pro data uložená v úložišti Azure trezoru |Maximální počet 54400 GB<sup>1</sup> |
-| Počet trezorů záloh, které lze vytvořit v rámci předplatného Azure |500 trezory služeb zotavení podle oblastí |
-| Počet pokusů, které lze naplánovat zálohování za den |3 za den pro Windows Server nebo klienta <br/> 2 na každý den pro SCDPM <br/> Jednou denně pro virtuální počítače IaaS |
-| Datových disků připojených k virtuální počítač pro zálohování Azure |16 |
-| Velikost jednotlivých datový disk připojen k virtuální počítač pro zálohování Azure| 4095 GB <sup>2</sup>|
+| Počet serverů/počítačů, které můžete se zaregistrovat k trezoru |50 na Windows serveru/klienta/SCDPM <br/> 1 000 virtuálních počítačů IaaS |
+| Velikost zdroje dat pro data uložená v trezoru Azure storage |Maximální počet 54400 GB<sup>1</sup> |
+| Počet trezorů záloh vytvořené v rámci předplatného Azure |500 trezorů služby recovery Services na oblast |
+| Počet pokusů, které je možné naplánovat zálohování za den |3 za den pro Windows Server nebo klienta <br/> 2 za den pro SCDPM <br/> Jednou za den pro virtuální počítače IaaS |
+| Datové disky připojené k virtuálnímu počítači Azure Backup |16 |
+| Velikost jednotlivých datový disk připojený k virtuálnímu počítači Azure Backup| 4095 GB <sup>2</sup>|
 
-* <sup>1</sup>54400 GB omezení se nevztahuje na zálohování virtuálních počítačů IaaS.
+* <sup>1</sup>54400 GB limitu se nevztahují na zálohování virtuálních počítačů IaaS.
  
 

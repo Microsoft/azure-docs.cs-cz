@@ -1,77 +1,84 @@
 ---
-title: Přehled migrace Contoso do Azure | Microsoft Docs
-description: Poskytuje přehled strategie migrace a scénáře používané Contoso migrace jejich místní datacentra do Azure.
+title: Přehled Contoso migrace do Azure | Dokumentace Microsoftu
+description: Poskytuje přehled scénářů společností Contoso používá k migraci jejich místní datacentra do Azure a strategie migrace.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 06/19/2018
+ms.date: 07/12/2018
 ms.author: raynew
-ms.openlocfilehash: ec0308bb2e39c3801305748f19783e70d58b0b7e
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 4cad84d1cabd140f4846cb823e8c4b7ce11bc1f6
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36232328"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39008242"
 ---
 # <a name="contoso-migration-overview"></a>Migrace Contoso: Přehled
 
 
-Toto je první článek v série, která ukazuje, jak smyšlenou organizaci Contoso migrujete svoji místní infrastrukturu do [Microsoft Azure](https://azure.microsoft.com/overview/what-is-azure/) cloudu. 
+Tento článek ukazuje, jak migruje na místní infrastrukturu na smyšlenou organizaci Contoso [Microsoft Azure](https://azure.microsoft.com/overview/what-is-azure/) cloudu. 
 
-Řada článek poskytuje příklad nasazení, které vám pomohou pochopit a vyzkoušet různé možnosti pro migraci na Azure a pro práci v hybridním prostředí. Články ukazují, jak společnost Contoso dokončení migrace poslání, ale ukazatele pro konkrétní pokyny a obecné čtení jsou uvedeny v průběhu.
+Tento dokument je první z řady článků, které ukazují, jak fiktivní společnosti Contoso migraci do Azure. Obsahuje informace a scénáře, které ukazují, jak nastavit infrastrukturu migrace a spustit různé druhy migrace. Scénáře jejich složitost v a přidáme další články v čase. Články popisují, jak společnosti Contoso dokončení poslání migrace ale ukazatele Obecné čtení a konkrétní pokyny jsou k dispozici v průběhu.
 
 ## <a name="introduction"></a>Úvod
 
-Azure poskytuje přístup k komplexní sadu cloudové služby. Jako vývojáře a IT odborníky můžete tyto služby k vytvoření, nasazení a správu aplikací v rozsahu nástroje a rozhraní, prostřednictvím globální sítě datových center. Když vaše firma čelí výzvám souvisejícím s digitalizací, cloud Azure vám pomůže zjistit, jak optimalizovat prostředky a operace, zapojit zákazníky i zaměstnance a transformovat vaše produkty.
+Azure poskytuje přístup ke komplexní sadě cloudových služeb. Jako vývojáři a odborníci na IT můžete tyto služby používat k vytváření, nasazení a správě aplikací na mnoha nástrojů a architektur díky globální síti datových center. Když vaše firma čelí výzvám souvisejícím s digitalizací, cloud Azure vám pomůže zjistit, jak optimalizovat prostředky a operace, zapojit zákazníky i zaměstnance a transformovat vaše produkty.
 
 I přes všechny výhody, které cloud poskytuje z hlediska rychlosti a flexibility, minimalizace nákladů, vysokého výkonu a spolehlivost, si však v Azure uvědomujeme, že řada organizací bude potřebovat ještě nějakou dobu provozovat místní datacentra. V reakci na překážky přechodu do cloudu Azure poskytuje strategii hybridního cloudu, která propojí vaše místní datacentra s veřejným cloudem Azure. Pomocí cloudových prostředků Azure, jako je například služba Backup, můžete zajistit ochranu místních prostředků nebo pomocí Azure Analytics získat přehled o místních úlohách. 
 
-Jako součást strategie hybridního cloudu Azure poskytuje rostoucí řešení pro migraci místní aplikace a úlohy do cloudu. Pomocí jednoduchých postupů můžete komplexně vyhodnotit své místní prostředky, abyste zjistili, jak si povedou v cloudu Azure. Když budete mít k dispozici podrobné posouzení, můžete bez obav migrovat prostředky do Azure. Po zprovoznění prostředků v Azure je můžete optimalizovat, abyste zachovali a vylepšili úroveň přístupu, flexibility, zabezpečení a spolehlivosti.
+Jako součást hybridní cloudové strategie poskytuje Azure rozšiřující se řešení pro migraci místních aplikací a úloh do cloudu. Pomocí jednoduchých postupů můžete komplexně vyhodnotit své místní prostředky, abyste zjistili, jak si povedou v cloudu Azure. Když budete mít k dispozici podrobné posouzení, můžete bez obav migrovat prostředky do Azure. Po zprovoznění prostředků v Azure je můžete optimalizovat, abyste zachovali a vylepšili úroveň přístupu, flexibility, zabezpečení a spolehlivosti.
 
 ## <a name="migration-strategies"></a>Strategie migrace
 
-Strategie pro migraci do cloudu lze rozdělit do čtyř kategorií: opětovným hostováním, Refaktorovat, rearchitect nebo znovu vytvořit. Strategie, kterou můžete přijmout, závisí na vaší obchodní faktory a migrace cíle. Může přijmout několik strategií. Může například rozhodnout opětovným hostováním jednoduché aplikace (navýšení a shift) nebo aplikace, které nejsou důležité pro vaši firmu, ale ty, které jsou složitější a důležitých rearchitect. Podívejme se na strategie.
+Strategie pro migraci do cloudu dělí do čtyř kategorií: opětovným hostováním, refaktoring, úprava architektury nebo znovu sestavit. Strategie, kterou použijete, závisí na vaší obchodní faktory a migrace cíle. Několik strategií, které můžou přijmout. Například může chtít opětovným hostováním aplikací jednoduché (lift and shift) nebo aplikace, které nejsou zásadně důležité pro vaši firmu, ale úprava architektury ty, které jsou složitější a důležité obchodní informace. Podívejme se na strategie.
 
 
 **Strategie** | **Definice** | **Kdy použít** 
 --- | --- | --- 
-**Opětovným hostováním** | Často označuje jako "navýšení a shift" migraci. Tato možnost nevyžaduje změny kódu a umožňuje migraci vaše stávající aplikace do Azure rychle. Každá aplikace je migrovat, jak je využívat výhody cloudu, bez rizika a náklady spojené s změnami kódu. | Když potřebujete rychle přesouvat aplikace do cloudu.<br/><br/> Když chcete přesunout aplikace bez provádění úprav.<br/><br/> Pokud se vaše aplikace navržen tak, aby se můžete využít [Azure IaaS](https://azure.microsoft.com/overview/what-is-iaas/) škálovatelnost po migraci.<br/><br/> Když aplikace jsou důležité pro vaši firmu, ale nepotřebujete okamžitou změny možnosti aplikace.
-**Refaktorovat** | Často označuje jako "opětovné vytvoření balíčku", refaktoring vyžaduje minimální změny aplikace, tak, aby se mohli přihlásit k [Azure PaaS](https://azure.microsoft.com/overview/what-is-paas/)a použít pro cloud.<br/><br/> Migrovat existující aplikace může například Azure App Service nebo Azure Kubernetes služby (AKS).<br/><br/> Nebo může Refaktorovat relačních a nerelačních databáze do možnosti, jako je například Azure spravované Instance databáze SQL Azure Database pro databázi MySQL, databáze Azure PostgreSQL a Azure Cosmos DB. | Pokud vaše aplikace můžete snadno vytvořen nový balíček pro práci v Azure.<br/><br/> Pokud chcete použít postupy inovativní DevOps poskytovaný platformou Azure nebo uvažujete o DevOps pomocí strategie kontejner pro úlohy.<br/><br/> Pro refaktoring, budete muset vezměte v úvahu přenositelnost existující základu kódu, a k dispozici vývojářských znalostí.
-**Rearchitect** | Vynaložit pro migraci se zaměřuje na změny a rozšířit funkce aplikace a kód za účelem optimalizace aplikace architekturu škálovatelnosti cloudu.<br/><br/> Například by mohlo způsobit narušení monolitický aplikace do skupiny mikroslužeb, které vzájemně spolupracují a snadno škálovat.<br/><br/> Nebo, může rearchitect relačních a nerelačních databáze plně spravovaná DBaaS řešení, například Azure spravované Instance databáze SQL Azure Database pro databázi MySQL, databáze Azure pro PostgreSQL a Azure Cosmos DB. | Pokud vaše aplikace potřebují hlavní revize začlenit nové funkce nebo efektivně fungoval na cloudové platformy.<br/><br/> Pokud chcete použít existující investice do aplikace, požadavkům škálovatelnost, použije inovativní postupy Azure DevOps a minimalizovat tak využití virtuálních počítačů.
-**Opětovné sestavení** | Znovu sestavte má věcí a krok další podle znovu sestavit aplikaci od nuly s použitím technologie cloudu Azure.<br/><br/> Například může vytvářet zelená pole aplikace s nativní cloudové technologie, jako je bez serveru, Azure AI, Azure spravované Instance databáze SQL a Azure Cosmos DB. | Když chcete rychlý vývoj a stávající aplikace mají omezenou funkčnost a životnost.<br/><br/> Až budete připraveni k urychlit obchodní inovace (včetně DevOps postupy poskytovaný platformou Azure), vytvářet nové aplikace pomocí nativní cloudové technologie a využít výhod rozvoj AI, blockchain a IoT.
+**Opětovným hostováním** | Často označuje jako migrace "lift and shift". Tato možnost nevyžaduje změny kódu a umožňuje migraci stávajících aplikací do Azure rychle. Každé aplikaci, která se migrovaly jako je těžit z výhod cloudu bez rizik a náklady spojené s změny kódu. | Když potřebujete rychle přesunout aplikace do cloudu.<br/><br/> Pokud chcete přesunout aplikace bez její změny.<br/><br/> Pokud vaše aplikace dokáže tak, aby můžete využít [Azure IaaS](https://azure.microsoft.com/overview/what-is-iaas/) škálovatelnost po migraci.<br/><br/> Pokud aplikace jsou důležité pro vaši firmu, ale není nutné okamžité změny možnosti aplikace.
+**Refaktoring** | Často označuje jako "opakovanému balení", refaktoring vyžaduje minimální změny aplikace, tak, aby se mohli připojit k [Azure PaaS](https://azure.microsoft.com/overview/what-is-paas/)a používání cloudových nabídek.<br/><br/> Například můžete migrovat existující aplikace do služby Azure App Service nebo Azure Kubernetes Service (AKS).<br/><br/> Nebo do možnosti, například Azure SQL Database Managed Instance, Azure Database for MySQL – Azure Database for PostgreSQL a Azure Cosmos DB může Refaktorovat relačních a nerelačních databází. | Pokud vaše aplikace můžete snadno vytvořen nový balíček pro práci v Azure.<br/><br/> Pokud chcete použít inovativních postupů DevOps poskytovaný platformou Azure, nebo uvažujete o DevOps s využitím kontejnerové strategie pro úlohy.<br/><br/> Pro operaci refaktoringu, je potřeba uvažovat o přenositelnost vaší existující základ kódu a dovednosti v oblasti k dispozici vývoje.
+**Změna architektury** | Změna architektury pro migraci se zaměřuje na úpravách a rozšíření funkcí aplikace a kódové základny pro optimalizaci aplikací architektura škálovatelnosti cloudu.<br/><br/> Můžete třeba rozdělit jednolitou aplikací na skupinu mikroslužeb, které spolupracují a snadno škálovat.<br/><br/> Případně může úprava architektury relačních a nerelačních databází do plně spravované řešení, DBaaS, jako je Azure SQL Database Managed Instance, Azure Database for MySQL – Azure Database for PostgreSQL a Azure Cosmos DB. | Když aplikace potřebují hlavní revize začlenit nové funkce, nebo efektivně pracovat na cloudové platformě.<br/><br/> Pokud chcete použít stávající investice do aplikací, splnění požadavků na škálovatelnost, zavádět inovativní postupy Azure DevOps a minimalizovat použití virtuálních počítačů.
+**Opětovné sestavení** | Opětovné sestavení má věci a krok ještě znovu sestavit aplikaci od začátku pomocí technologií, cloudu Azure.<br/><br/> Například může vytvořit zelené louce aplikací pomocí cloudových technologií, jako je Azure AI prostředí bez serveru, Azure SQL Database Managed Instance a Azure Cosmos DB. | Pokud chcete rychlý vývoj a stávající aplikace mají omezené funkce a životnost.<br/><br/> Až budete připravení urychlit obchodní inovace (včetně postupů DevOps, které poskytuje Azure), sestavovat nové aplikace pomocí technologií nativní pro cloud a využijte výhod rozvoj AI, blockchain a IoT.
 
 ## <a name="migration-articles"></a>Články týkající se migrace
 
-Články, které tvoří řady Contoso migrace jsou shrnuté v následující tabulce.  
+Články v této sérii jsou shrnuty v následující tabulce.  
 
-- Scénáře jsou zvyšuje složitost a právě přidávána do nich v čase.
-- Každý scénář migrace doprovází mírně lišit obchodních cílů, které určují strategie migrace.
-- Pro každý scénář nasazení jsme poskytují informace o obchodní faktory a cíle, navrhované architektura, kroky k provedení migrace a doporučení pro čištění a další kroky po dokončení migrace.
+- Každý scénář migrace doprovází mírně odlišné obchodních cílů, které určují strategii migrace.
+- Pro každý scénář nasazení zajišťuje informace o obchodní faktory a cíle, navrhované architektura, postup k provedení migrace a doporučení pro čištění a další kroky po dokončení migrace.
 
 **Článek** | **Podrobnosti** | **Stav**
 --- | --- | ---
-Článek 1: Přehled (v tomto článku) | Poskytuje přehled strategie migrace společnosti Contoso, řady článku a ukázkových aplikací používá. | K dispozici.
-[Článek 2: Nasazení infrastruktury Azure](contoso-migration-overview.md) | Popisuje, jak Contoso připraví jeho místní a infrastrukturu Azure pro migraci. Stejnou infrastrukturu se používá pro všechny scénáře migrace Contoso. | K dispozici.
-[Článek 3: Vyhodnocení místních prostředků](contoso-migration-assessment.md) | Ukazuje, jak Contoso spouští posouzení své místní aplikace SmartHotel dvouvrstvá běžící ve VMware. Jejich vyhodnocení aplikace virtuálních počítačů s [Azure migrovat](migrate-overview.md) služby a aplikace databáze systému SQL Server s [Azure databáze migrace pomocníka](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017). | K dispozici.
-[Článek 4: Metody opětovného hostování virtuální počítače Azure a spravované Instance SQL](contoso-migration-rehost-vm-sql-managed-instance.md) | Ukazuje, jak Contoso migruje SmartHotel aplikace do Azure. Jejich migraci virtuálních počítačů webové aplikace pomocí [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview)a aplikace databázi k instanci SQL spravované pomocí [migrace databáze Azure](https://docs.microsoft.com/azure/dms/dms-overview) služby. | K dispozici.
-[Článek 5: Pro virtuální počítače Azure opětovným hostováním](contoso-migration-rehost-vm.md) | Ukazuje, jak Contoso migrovat své aplikace SmartHotel virtuálních počítačů pomocí služby Site Recovery.
-[Článek 6: Opětovným hostováním do Azure virtuálních počítačů a skupin dostupnosti SQL Server](contoso-migration-rehost-vm-sql-ag.md) | Ukazuje, jak Contoso migruje SmartHotel aplikace. Site Recovery používají k migraci virtuálních počítačů a aplikace službu migrace databáze, kterou chcete migrovat databázi aplikace do skupiny dostupnosti AlwaysOn serveru SQL. | K dispozici.
-[Článek 7: Opětovným hostováním Linux aplikace pro virtuální počítače Azure](contoso-migration-rehost-linux-vm.md) | Ukazuje, jak Contoso migruje aplikace virtuální počítače Azure pomocí Site Recovery. | Plánováno
-[Článek 8: Opětovným hostováním Linux aplikace pro virtuální počítače Azure a Azure MySQL Server](contoso-migration-rehost-linux-vm-mysql.md) | Ukazuje, jak Contoso migruje aplikace virtuálního počítače pomocí Site Recovery a používá MySQL Workbench migrovat do instance serveru MySQL Azure. | Plánováno
+Článek 1: Přehled | Poskytuje přehled strategie migrace společnosti Contoso, článek řady a ukázkové aplikace, které používáme. | Tento článek.
+[Článek 2: Nasazení infrastruktury Azure](contoso-migration-infrastructure.md) | Popisuje, jak společnosti Contoso připraví jeho místní a infrastrukturu Azure na migraci. Stejnou infrastrukturu se používá pro všechny články týkající se migrace. | K dispozici.
+[Článek 3: Posouzení místních prostředků pro migraci do Azure](contoso-migration-assessment.md)  | Ukazuje, jak společnosti Contoso spuštění posouzení místních dvouvrstvé SmartHotel aplikaci spuštěnou v prostředí VMware. Contoso vyhodnocuje aplikací virtuálních počítačů pomocí [Azure Migrate](migrate-overview.md) služby a databáze aplikace SQL serveru s [Pomocníka s migrací databáze](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017). | K dispozici.
+[Článek 4: Změna hostitele aplikací na virtuálních počítačích Azure a spravované Instance SQL](contoso-migration-rehost-vm-sql-managed-instance.md) | Ukazuje, jak společnosti Contoso běží lift and shift migrace do Azure pro místní SmartHotel aplikaci. Contoso migruje virtuální počítač front-endu aplikace pomocí [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview)a databáze aplikace do spravované Instance SQL, pomocí [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview). | K dispozici
+[Článek 5: Změna hostitele aplikace na virtuálních počítačích Azure](contoso-migration-rehost-vm.md) | Ukazuje, jak společnosti Contoso aplikaci SmartHotel virtuální počítače migrovat do virtuálních počítačů Azure pomocí služby Site Recovery. | K dispozici.
+[Článek 6: Změna hostitele aplikací na virtuálních počítačích Azure a skupina dostupnosti AlwaysOn SQL serveru](contoso-migration-rehost-vm-sql-ag.md) | Ukazuje, jak společnosti Contoso migruje SmartHotel aplikace. Contoso využívá Site Recovery k migraci aplikace, virtuální počítače a Database Migration service, jak migrovat databázi aplikace do clusteru SQL serveru, který je chráněn skupiny dostupnosti AlwaysOn. | K dispozici.
+[Článek 7: Změna hostitele aplikace na virtuálních počítačích Azure s Linuxem](contoso-migration-rehost-linux-vm.md) | Ukazuje, jak Contoso funguje lift and shift migrace aplikace osTicket Linux na virtuální počítače Azure pomocí služby Site Recovery | K dispozici.
+[Článek 8: Změna hostitele Linuxovou aplikaci na virtuálních počítačích Azure a Azure MySQL](contoso-migration-rehost-linux-vm-mysql.md) | Ukazuje, jak společnosti Contoso migruje Linuxovou aplikaci osTicket k virtuálním počítačům Azure pomocí Site Recovery a migraci databáze aplikace na instanci serveru Azure MySQL pomocí aplikace MySQL Workbench. | K dispozici.
+[Článek 9: Refaktorujte aplikace na Azure Web Apps a Azure SQL database](contoso-migration-refactor-web-app-sql.md) | Ukazuje, jak společnosti Contoso migruje SmartHotel aplikace do webové aplikace Azure a migraci databáze aplikace na instanci serveru SQL Azure | K dispozici.
+[Článek 10: Refaktorujte Linuxovou aplikaci na Azure Web Apps a Azure MySQL](contoso-migration-refactor-linux-app-service-mysql.md) | Ukazuje, jak společnosti Contoso migruje aplikace osTicket Linux do Azure Web Apps ve více lokalitách, integrovaná se službou GitHub pro průběžné doručování. Jejich migrovat databázi aplikace na instanci Azure MySQL. | K dispozici.
+[Článek 11: Refaktorovat TFS na VSTS](contoso-migration-tfs-vsts.md) | Ukazuje, jak společnosti Contoso migruje svoje místní nasazení Team Foundation Server (TFS) a migrujte jej na Visual Studio Team Services (VSTS) v Azure. | K dispozici.
+[Článek 12: Úprava architektury aplikace na kontejnery služby Azure a Azure SQL Database](contoso-migration-rearchitect-container-sql.md) | Ukazuje, jak společnosti Contoso migruje a rearchitects jeho SmartHotel aplikace do Azure. Jejich úprava architektury webové vrstvy aplikace jako kontejner Windows a databáze aplikace ve službě Azure SQL Database. | K dispozici.
+[Článek 13: Znovu sestavte aplikaci v Azure](contoso-migration-rebuild.md) | Ukazuje, jak společnosti Contoso znovu sestavte své aplikace SmartHotel pomocí celé řady funkcí Azure a služeb, včetně služeb App Services, Kubernetes v Azure, Azure Functions, Cognitive services a Cosmos DB. | K dispozici.
+
+
+
 
 
 
 ### <a name="demo-apps"></a>Ukázkové aplikace
 
-Články používat dva ukázkové aplikace - SmartHotel a osTicket.
+V článcích používá dvě ukázkové aplikace - SmartHotel a osTicket.
 
-- **SmartHotel360**: Tato aplikace Microsoft vyvinula jako testování aplikace, které můžete použít při práci se službou Azure. Je dodáván jako s otevřeným zdrojem a si můžete stáhnout z [Githubu](https://github.com/Microsoft/SmartHotel360). Je aplikace ASP.NET pro připojení k databázi systému SQL Server. Aplikace se v současné době na dva virtuální počítače VMware se systémem Windows Server 2008 R2 a SQL Server 2008 R2. Aplikace virtuální počítače jsou hostované na místě a spravovat přes vCenter Server.
-- **osTicket**: open-source technickou podporu lístků pro aplikaci, která běží na systému Linux. Si můžete stáhnout z [Githubu](https://github.com/osTicket/osTicket). Aktuální aplikace je na dva virtuální počítače VMware s Ubuntu 16.04LTS, pomocí Apache 2, PHP 7.0 a databáze MySQL 5.7
+- **SmartHotel360**: Tato aplikace byla vyvinutá společností Microsoft jako aplikace pro test, který vám pomůže při práci s Azure. Je k dispozici jako open source a můžete ji stáhnout [Githubu](https://github.com/Microsoft/SmartHotel360). Je aplikace ASP.NET se připojení k databázi serveru SQL Server. Aplikace je aktuálně pro dva virtuální počítače VMware systémem Windows Server 2008 R2 a SQL Server 2008 R2. Aplikace virtuální počítače jsou hostované místně a spravované přes vCenter Server.
+- **osTicket**: oddělení služeb open source lístků pro aplikaci, která běží na systému Linux. Můžete ji stáhnout [Githubu](https://github.com/osTicket/osTicket). Aktuální aplikace je na dva virtuální počítače VMware s Ubuntu 16.04LTS, pomocí Apache 2, PHP 7.0 a MySQL 5.7
     
 
 ## <a name="next-steps"></a>Další postup
 
-[Zjistěte, jak](contoso-migration-infrastructure.md) Contoso nastaví jejich místní a infrastrukturu Azure při přípravě na migraci.
+[Zjistěte, jak](contoso-migration-infrastructure.md) Contoso nastaví místní a infrastrukturu Azure a příprava na migraci.
 
 
 

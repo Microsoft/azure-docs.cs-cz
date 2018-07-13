@@ -45,7 +45,7 @@ Zákazníci Azure můžou každý měsíc odemknout 25 000 bezplatných e-mail�
 
     ![api-keys][api-keys]
 
-3. Klikněte **vytvořit klíč rozhraní API**.
+3. Klikněte na tlačítko **vytvořit klíč rozhraní API**.
 
     ![general-api-key][general-api-key]
 4. Zadejte minimálně hodnotu **Name of this key** (Název tohoto klíče) a umožněte úplný přístup k funkci **Mail Send** (Odesílání e-mailů) a vyberte **Save** (Uložit).
@@ -59,11 +59,11 @@ Zákazníci Azure můžou každý měsíc odemknout 25 000 bezplatných e-mail�
     ![key][key]
 2. Heslo jste si zvolili během nastavení. Pokud chcete provést změny, můžete vybrat **Change password** (Změnit heslo) nebo **Reset password** (Resetovat heslo).
 
-Pokud chcete spravovat nastavení doručitelnosti e-mailů, klikněte na **tlačítko Manage** (Spravovat). To vás pak přesměruje na řídicím panelu sendgrid vám umožňuje.
+Pokud chcete spravovat nastavení doručitelnosti e-mailů, klikněte na **tlačítko Manage** (Spravovat). To vás přesměruje na řídicím panelu SendGrid.
 
 ![manage][manage]
 
-Další informace o odesílání e-mailu prostřednictvím Sendgridu, najdete v článku [přehled API e-mailu][Email API Overview].
+Další informace o odeslání e-mailu přes SendGrid, najdete [přehled rozhraní API pro e-mailu][Email API Overview].
 
 <!--images-->
 

@@ -1,22 +1,22 @@
 ---
 title: Import dat do služby Azure Search na portálu | Dokumentace Microsoftu
-description: Použijte Průvodce importem dat do služby Azure Search na webu Azure Portal k procházení dat Azure z databáze NoSQL Azure Cosmos DB, ze služby Blob Storage, Table Storage, SQL Database a SQL Serveru na virtuálních počítačích Azure.
+description: Další informace o použití Průvodce importem dat na webu Azure Portal k procházení dat Azure z Cosmos DB, úložiště objektů Blob, table storage, SQL Database a SQL Server na virtuálních počítačích Azure.
 author: HeidiSteen
 manager: cgronlun
-tags: Azure Portal
 services: search
 ms.service: search
-ms.topic: quickstart
-ms.date: 05/01/2017
+ms.topic: conceptual
+ms.date: 07/10/2018
 ms.author: heidist
-ms.openlocfilehash: ee27b63a5df658ff5d575f0599dadd1cbafd3c18
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: dcdc0501d94191cf2c281a4f880ddab3db023fc0
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31795880"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39004935"
 ---
-# <a name="import-data-to-azure-search-using-the-portal"></a>Import dat do služby Azure Search pomocí portálu
+# <a name="how-to-import-data-into-azure-search-index-using-the-azure-portal"></a>Import dat do indexu Azure Search pomocí webu Azure portal
+
 Azure Portal poskytuje v řídicím panelu služby Azure Search průvodce **Importem dat** pro načítání dat do indexu. 
 
   ![Import dat na panelu příkazů][1]
@@ -26,8 +26,6 @@ Průvodce interně konfiguruje a vyvolává *indexer*, čímž automatizuje něk
 * Připojení k externímu zdroji dat ve stejném předplatném Azure
 * Generování upravitelného schématu indexu na základě struktury zdrojových dat
 * Načtení dokumentů JSON do indexu s použitím sady řádků získané ze zdroje dat
-
-Tento pracovní postup můžete vyzkoušet s použitím ukázkových dat ve službě Azure Cosmos DB. Pokyny najdete v tématu [Začínáme se službou Azure Search na webu Azure Portal](search-get-started-portal.md).
 
 > [!NOTE]
 > Z řídicího panelu služby Azure Cosmos DB můžete spustit průvodce **Importem dat** a zjednodušit tak indexování zdroje dat. Začněte tak, že v levém navigačním panelu přejdete do **Collections** (Kolekce) > **Add Azure Search** (Přidat službu Azure Search).
@@ -45,8 +43,10 @@ Plochá datová sada je požadovaný vstup. Importovat můžete pouze z jedné t
 
 ## <a name="connect-to-your-data"></a>Připojení k datům
 1. Přihlaste se na webu [Azure Portal](https://portal.azure.com) a otevřete řídicí panel služby. Kliknutím na **Všechny služby** na panelu odkazů můžete vyhledávat stávající „vyhledávací služby“ v rámci aktuálního předplatného. 
-2. Kliknutím na **Import dat** na panelu příkazů otevřete vysouvací okno Import dat.  
-3. Klikněte na **Připojit k datům** a zadejte definici zdroje dat používanou indexerem. V případě zdrojů dat v rámci předplatného průvodce obvykle může rozpoznat a přečíst informace o připojení, čímž minimalizuje celkové požadavky na konfiguraci.
+
+1. Kliknutím na **Import dat** na panelu příkazů otevřete vysouvací okno Import dat.
+
+1. Klikněte na **Připojit k datům** a zadejte definici zdroje dat používanou indexerem. V případě zdrojů dat v rámci předplatného průvodce obvykle může rozpoznat a přečíst informace o připojení, čímž minimalizuje celkové požadavky na konfiguraci.
 
 |  |  |
 | --- | --- |
@@ -61,25 +61,32 @@ Plochá datová sada je požadovaný vstup. Importovat můžete pouze z jedné t
 Předběžný index je obvykle odvozen z datové sady. Přidejte, upravte nebo odstraňte pole a dokončete schéma. Případně nastavte atributy na úrovni pole k určení jeho chování při následném vyhledávání.
 
 1. V části **Přizpůsobit cílový index** zadejte název a **Klíč** sloužící k jedinečné identifikaci každého dokumentu. Hodnota Klíč musí být řetězec. Pokud hodnoty polí obsahují mezery nebo pomlčky, ujistěte se, že v části **Import dat** nastavíte rozšířené možnosti, které pro tyto znaky potlačí kontrolu platnosti.
-2. Zkontrolujte a zrevidujte zbývající pole. Název a typ pole jsou obvykle předvyplněné. Datový typ můžete měnit, dokud se nevytvoří index. Pozdější změna bude vyžadovat opětovné sestavení.
-3. Pro každé pole nastavte atribut indexu:
+
+1. Zkontrolujte a zrevidujte zbývající pole. Název a typ pole jsou obvykle předvyplněné. Datový typ můžete měnit, dokud se nevytvoří index. Pozdější změna bude vyžadovat opětovné sestavení.
+
+1. Pro každé pole nastavte atribut indexu:
    
    * Retrievable (Zobrazitelné) – vrátí pole ve výsledcích vyhledávání.
    * Filterable (Filtrovatelné) – umožňuje na pole odkazovat ve výrazech filtru.
    * Sortable (Seřaditelné) – umožňuje použití pole při řazení.
    * Facetable (Kategorizovatelné) – povoluje použití pole pro fasetovou navigaci.
    * Searchable (Prohledávatelné) – umožňuje fulltextové vyhledávání.
-4. Chcete-li určit analyzátor jazyka na úrovni pole, klikněte na kartu **Analyzátor**. V této chvíli lze určit pouze analyzátory jazyka. Použití vlastního analyzátoru nebo nejazykového analyzátoru, jako například analyzátoru klíčových slov, vzoru a dalších, bude vyžadovat psaní kódu.
+
+1. Chcete-li určit analyzátor jazyka na úrovni pole, klikněte na kartu **Analyzátor**. V této chvíli lze určit pouze analyzátory jazyka. Použití vlastního analyzátoru nebo nejazykového analyzátoru, jako například analyzátoru klíčových slov, vzoru a dalších, bude vyžadovat psaní kódu.
    
    * Kliknutím na **Prohledávatelné** určíte fulltextové vyhledávání pole a povolíte rozevírací seznam Analyzátor.
    * Vyberte analyzátor, který chcete. Podrobnosti naleznete v oddílu [Vytvoření indexu pro vícejazyčné dokumenty](search-language-support.md).
-5. Kliknutím na **Našeptávač** povolíte pro vybraná pole našeptávání dotazů.
+
+1. Kliknutím na **Našeptávač** povolíte pro vybraná pole našeptávání dotazů.
 
 ## <a name="import-your-data"></a>Import dat
 1. V části **Import dat** zadejte název indexeru. Připomínáme, že indexer je výsledkem Průvodce importem dat. Pokud jej později budete chtít zobrazit nebo upravit, místo opětovného spuštění průvodce jej vyberete z portálu. 
-2. Zadejte plán založený na časovém pásmu oblasti, ve které je služba zřízená.
-3. Nastavením rozšířených možností můžete zadat prahové hodnoty, podle kterých se určí, zda může indexování pokračovat v případě zrušení dokumentu. Případně můžete určit, zda pole **Klíč** mohou obsahovat mezery a lomítka.  
-4. Kliknutím na **OK** vytvořte index a zahajte import dat.
+
+1. Zadejte plán založený na časovém pásmu oblasti, ve které je služba zřízená.
+
+1. Nastavením rozšířených možností můžete zadat prahové hodnoty, podle kterých se určí, zda může indexování pokračovat v případě zrušení dokumentu. Případně můžete určit, zda pole **Klíč** mohou obsahovat mezery a lomítka.  
+
+1. Kliknutím na **OK** vytvořte index a zahajte import dat.
 
 Indexování můžete monitorovat na portálu. S načítáním dokumentů se bude zvyšovat počet dokumentů u indexu, který jste nadefinovali. Stránce portálu někdy trvá několik minut, než získá nejnovější aktualizace.
 
@@ -87,9 +94,9 @@ Index je připraven k dotazování, jakmile jsou načteny všechny dokumenty.
 
 ## <a name="query-an-index-using-search-explorer"></a>Dotazování indexu pomocí Průzkumník služby Search
 
-Portál zahrnuje **Průzkumníka služby Search**, kterého můžete použít k zadávání dotazů na index, aniž byste museli programovat. [Průzkumníka služby Search](search-explorer.md) můžete použít na jakýkoli index.
+Portál zahrnuje **Průzkumníka služby Search** tak, aby se můžete dotazovat index bez nutnosti psát jakýkoli kód. Můžete použít [Průzkumníka služby Search](search-explorer.md) na jakýkoli index.
 
-Funkce vyhledávání je založena na výchozím nastavení, jako je [jednoduchá syntaxe](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) a výchozí [parametr dotazu searchMode(https://docs.microsoft.com/rest/api/searchservice/search-documents). 
+Funkce vyhledávání je založena na výchozím nastavení, jako je [jednoduchá syntaxe](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) a výchozí [parametr dotazu searchMode](https://docs.microsoft.com/rest/api/searchservice/search-documents). 
 
 Podrobné výsledky jsou vráceny ve formátu JSON, abyste si mohli prohlédnout celý dokument.
 
@@ -104,7 +111,7 @@ Průvodce vytvořil také **index**. Strukturální aktualizace indexu ve služb
 Úpravy, které nevyžadují opětovné sestavení zahrnují přidání nového pole, změnu vyhodnocování profilů, změna navrhovatelů nebo změnu analyzátorů jazyka. Další informace naleznete v [aktualizaci indexu](https://msdn.microsoft.com/library/azure/dn800964.aspx).
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace o indexerech najdete na těchto odkazech:
 
 * [Indexování služby Azure SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)

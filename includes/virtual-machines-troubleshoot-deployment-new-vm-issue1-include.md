@@ -1,5 +1,5 @@
 ## <a name="issue-custom-image-provisioning-errors"></a>Problém: Vlastní image; chyby zřizování
-Zřizování chyby nastat, pokud nahrát nebo přípravné zobecněný image virtuálního počítače jako specializované image virtuálního počítače nebo naopak. První způsobí vypršení časového limitu zřizování a k tomu může způsobit selhání zřizování. Pokud chcete nasadit vlastní bitovou kopii bez chyb, je nutné zajistit, že typ obrázku nezmění během procesu zachycení.
+Chyby zřizování nastat, pokud nahrát nebo zachycení image generalizovaného virtuálního počítače jako specializované image virtuálního počítače nebo naopak. Předchozí způsobí vypršení časového limitu zřizování a druhá možnost způsobí selhání zřizování. Pokud chcete nasadit vlastní image bez chyb, musíte zajistit, že typ bitové kopie nezmění během procesu zachycení.
 
-Následující tabulka uvádí možné kombinace zobecněný a specializované bitové kopie, typ chyby, které mohou být zobrazeny a co je potřeba udělat, aby opravte chyby.
+V následující tabulce jsou uvedeny možné kombinace zobecněný a specializované Image, typ chyby, které se zobrazí a co je potřeba provést k vyřešení chyby.
 

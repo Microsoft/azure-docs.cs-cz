@@ -6,18 +6,20 @@ manager: jeconnoc
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 05/17/2018
+ms.date: 07/11/2018
 ms.author: alkohli
-ms.openlocfilehash: 83ba437e699eb150e86e6c89e478377394966419
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: ab73420d1bfe0dbddcf2a0e3c3dd34203e4bb2d7
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38232673"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39008412"
 ---
 # <a name="what-is-azure-importexport-service"></a>Co je služba Azure Import/Export?
 
 Služba Azure Import/Export umožňuje bezpečně importovat velké objemy dat do úložiště objektů Blob v Azure a službou soubory Azure přenosem disků do datacentra Azure. Tato služba také umožňuje přenášet data z úložiště objektů Blob Azure do diskové jednotky a odešlete ji do vašich místních lokalit. Data z jednoho nebo více disků se dají importovat buď do Azure Blob storage nebo Azure Files. 
+
+Služba Import/Export Azure je potřeba zadat vlastní disky. Pokud chcete přenos dat pomocí disků poskytnutých Microsoft, můžete použít disku Azure Data Box pro import dat do Azure. Microsoft se dodává až 5 šifrovanými disky SSD (Solid-State Drive) s kapacitou 40 TB za pořadí do svého datového centra prostřednictvím místní operátora. Můžete rychle konfiguraci disků, zkopírujte data na disky přes připojení USB 3.0 a pošlete disky zpátky do Azure. Další informace najdete v části [disku Azure Data Box přehled](https://docs.microsoft.com/azure/databox/data-box-disk-overview).
 
 ## <a name="azure-importexport-usecases"></a>Usecases Azure Import/Export
 
@@ -113,12 +115,12 @@ Služba Azure Import/Export podporuje kopírování dat do a ze všech účtů �
 
 |Země  |Země  |Země  |Země  |
 |---------|---------|---------|---------|
-|Východ USA    | Severní Evropa        | Střed Indie        |US Gov – Iowa         |
-|Západní USA     |Západní Evropa         | Indie – jih        | US DoD – východ        |
+|USA – východ    | Severní Evropa        | Střed Indie        |US Gov – Iowa         |
+|USA – západ     |Západní Evropa         | Indie – jih        | US DoD – východ        |
 |Východní USA 2    | Východní Asie        |  Indie – západ        | US DoD – střed        |
-|Západní USA 2     | Jihovýchodní Asie        | Střední Kanada        | Čína – východ         |
-|Střed USA     | Austrálie – východ        | Východní Kanada        | Čína – sever        |
-|Střed USA – sever     |  Austrálie – jihovýchod       | Brazílie – jih        | Spojené království – jih        |
+|USA – západ 2     | Jihovýchodní Asie        | Kanada – střed        | Čína – východ         |
+|USA – střed     | Austrálie – východ        | Kanada – východ        | Čína – sever        |
+|Střed USA – sever     |  Austrálie – jihovýchod       | Brazílie – jih        | Velká Británie – jih        |
 |Střed USA – jih     | Japonsko – západ        |Jižní Korea – střed         | Německo – střed        |
 |Západní střed USA     |  Japonsko – východ       | USA (Gov) – Virginia        | Německo – severovýchod        |
 

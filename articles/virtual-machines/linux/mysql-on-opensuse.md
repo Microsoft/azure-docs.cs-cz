@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 01/22/2018
+ms.date: 07/11/2018
 ms.author: cynthn
-ms.openlocfilehash: 88bd895cb3a384f1ada0394fe2da206aca86b981
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: a5a6a43c41760e22a7aeb0e97aacc145c69957ff
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38670926"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39006392"
 ---
 # <a name="install-mysql-on-a-virtual-machine-running-opensuse-linux-in-azure"></a>Instalace MySQL do virtuálního počítače se spuštěným OpenSUSE Linuxem v Azure
 
@@ -33,13 +33,13 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku m
 
 ## <a name="create-a-virtual-machine-running-opensuse-linux"></a>Vytvoření virtuálního počítače se systémem OpenSUSE Linux
 
-Nejprve vytvořte skupinu prostředků. V tomto příkladu jsme jsou názvy skupiny prostředků *mySQSUSEResourceGroup* a vytvoříte ho v *USA – východ* oblasti.
+Nejprve vytvořte skupinu prostředků. V tomto příkladu je skupina prostředků s názvem *mySQSUSEResourceGroup* a vytvoří se v *USA – východ* oblasti.
 
 ```azurecli-interactive
 az group create --name mySQLSUSEResourceGroup --location eastus
 ```
 
-Vytvoření virtuálního počítače. V tomto příkladu jsme vytváření názvů virtuální počítač *myVM*. Také jsme budete používat velikost virtuálního počítače *Standard_D2s_v3*, ale měli byste zvolit [velikost virtuálního počítače](sizes.md) si myslíte, že je nejvhodnější pro vaši úlohu.
+Vytvoření virtuálního počítače. V tomto příkladu je virtuální počítač s názvem *myVM* a velikost virtuálního počítače je *Standard_D2s_v3*, ale měli byste zvolit [velikost virtuálního počítače](sizes.md) si myslíte, že je nejvhodnější pro vaši úlohu.
 
 ```azurecli-interactive
 az vm create --resource-group mySQLSUSEResourceGroup \
@@ -96,17 +96,30 @@ systemctl is-enabled mysql
 
 Měla by se vrátit: povoleno.
 
+Restartujte server.
+
+```bash
+sudo reboot
+```
+
 
 ## <a name="mysql-password"></a>Heslo uživatele MySQL
 
 Po dokončení instalace kořenového hesla MySQL je ve výchozím nastavení prázdné. Spustit **mysql\_zabezpečené\_instalace** skript k zabezpečení MySQL. Skript vyzve k změnit kořenového hesla MySQL, odeberte anonymní uživatelské účty, zakažte vzdálený kořen přihlášení, odebrat test databáze a znovu načíst tabulky oprávnění. 
+
+Jakmile se server nerestartuje, ssh k virtuálnímu počítači znovu.
+
+```azurecli-interactive  
+ssh 10.111.112.113
+```
+
 
 
 ```bash
 mysql_secure_installation
 ```
 
-## <a name="log-in-to-mysql"></a>Přihlaste se k MySQL
+## <a name="sign-in-to-mysql"></a>Přihlaste se k MySQL
 
 Nyní můžete přihlásit a zadejte na příkazovém řádku MySQL.
 
@@ -136,7 +149,7 @@ GRANT ALL ON testdatabase.* TO 'mysqluser'@'localhost' IDENTIFIED BY 'password';
    
 Databáze uživatelská jména a hesla používají pouze skripty s připojením k databázi.  Názvy uživatelských účtů databáze nutně nepředstavuje skutečný uživatelských účtů v systému.
 
-Povolení přihlášení z jiného počítače. V tomto příkladu je IP adresa počítače, na kterém chceme, aby k přihlášení z *10.112.113.114*.
+Povolte přihlášení z jiného počítače. V tomto příkladu je IP adresa počítače povolit přihlášení z *10.112.113.114*.
 
 ```   
 GRANT ALL ON testdatabase.* TO 'mysqluser'@'10.112.113.114' IDENTIFIED BY 'password';

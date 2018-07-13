@@ -9,48 +9,48 @@ ms.date: 5/14/2018
 ms.author: markgal
 ms.custom: include file
 ms.openlocfilehash: 5590da80a1c217e7902e8e010688e40f5624898c
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34664910"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38730494"
 ---
 ## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru Služeb zotavení
-Trezor služeb zotavení je entita, která ukládá zálohy a body obnovení, které byly vytvořeny v čase. Trezor služeb zotavení obsahuje také zásady zálohování, které jsou přidružené chráněných virtuálních počítačů.
+Trezor služby Recovery Services je entita, která ukládá zálohy a body obnovení, které byly vytvořeny v čase. Trezor služby Recovery Services obsahuje také zásady zálohování, které jsou spojeny s chráněných virtuálních počítačů.
 
 Chcete-li vytvořit trezor Služeb zotavení:
 
-1. Přihlaste se k vašemu předplatnému v [portál Azure](https://portal.azure.com/).
-2. V levé nabídce vyberte **všechny služby**.
+1. Přihlaste se k vašemu předplatnému [webu Azure portal](https://portal.azure.com/).
+2. V nabídce vlevo vyberte **všechny služby**.
 
-    ![Vyberte možnost všechny služby v hlavní nabídce](./media/backup-create-rs-vault/click-all-services.png) <br/>
+    ![V hlavní nabídce zvolte možnost všechny služby](./media/backup-create-rs-vault/click-all-services.png) <br/>
 
-3. V dialogovém okně všechny služby, zadejte *služeb zotavení*. Během zadávání váš vstup filtrování seznamu prostředků. Jakmile se zobrazí, vyberte **trezory služeb zotavení**.
+3. V dialogovém okně všechny služby, zadejte *služby Recovery Services*. Když začnete psát, váš vstup filtruje seznam prostředků. Jakmile se zobrazí, vyberte **trezory služby Recovery Services**.
 
-    ![Typ služeb zotavení v dialogovém okně všechny služby](./media/backup-create-rs-vault/all-services.png) <br/>
+    ![Zadejte do dialogového okna všechny služby Recovery Services](./media/backup-create-rs-vault/all-services.png) <br/>
 
-    Zobrazí se seznam trezorů služeb zotavení v rámci předplatného.
-4. Na **trezory služeb zotavení** nabídce vyberte možnost **přidat**.
+    Zobrazí se seznam trezorů služby Recovery Services v rámci předplatného.
+4. Na **trezory služby Recovery Services** nabídce vyberte možnost **přidat**.
 
     ![Vytvoření trezoru Recovery Services – krok 2](./media/backup-create-rs-vault/add-button-create-vault.png)
 
-    **Trezory služeb zotavení** otevře se nabídka. Budete vyzváni k zadání informací o pro **název**, **předplatné**, **skupiny prostředků**, a **umístění**.
+    **Trezory služby Recovery Services** otevře se nabídka. To vás vyzve k zadání informací pro **název**, **předplatné**, **skupiny prostředků**, a **umístění**.
 
-    ![Podokno "Trezory služeb zotavení"](./media/backup-create-rs-vault/create-new-vault-dialog.png)
-5. Jako **Název** zadejte popisný název pro identifikaci trezoru. Název musí být jedinečné pro předplatné Azure. Zadejte název, který obsahuje alespoň dva, ale ne víc než 50 znaků. Název musí začínat písmenem a může obsahovat pouze písmena, číslice a pomlčky.
-6. Pro **předplatné**, vyberte předplatné, které chcete použít. Pokud jste členem jenom jedno předplatné, zobrazí se stejným názvem. Pokud si nejste jisti, jaké předplatné použít, přejděte výchozí (nebo navrhované) předplatné. Existuje několik možností, pouze pokud vaše pracovní nebo školní účet je přidružen více předplatných Azure.
-7. Pro **skupiny prostředků** můžete použít existující skupinu prostředků nebo vytvořte novou. Pokud chcete zobrazit seznam dostupných skupin prostředků v rámci vašeho předplatného, vyberte **použít existující**a klikněte na rozevírací nabídku. Chcete-li vytvořit novou skupinu prostředků, vyberte **vytvořit nový** a zadejte název. Úplné informace o skupinách prostředků najdete v tématu [přehled Azure Resource Manageru](../articles/azure-resource-manager/resource-group-overview.md).
-8. Pro **umístění** vyberte zeměpisnou oblast trezoru. Při vytváření trezoru k ochraně virtuálních počítačů, trezoru *musí* být ve stejné oblasti jako virtuální počítače.
+    ![Podokno "Trezory služby recovery Services"](./media/backup-create-rs-vault/create-new-vault-dialog.png)
+5. Jako **Název** zadejte popisný název pro identifikaci trezoru. Název musí být jedinečný pro příslušné předplatné Azure. Zadejte název, který obsahuje alespoň dva, ale ne více než 50 znaků. Název musí začínat písmenem a může obsahovat jenom písmena, číslice a pomlčky.
+6. Pro **předplatné**, vyberte předplatné, které chcete použít. Pokud jste členem jenom jedno předplatné, zobrazí se tento název. Pokud si nejste jistí, jaké předplatné použít, přejděte pomocí výchozí (nebo navrhované) předplatné. Existují možnosti více pouze tehdy, pokud váš pracovní nebo školní účet je přidružený k více předplatným Azure.
+7. Pro **skupiny prostředků** můžete použít existující skupinu prostředků nebo vytvořte novou. Pokud chcete zobrazit seznam dostupných skupin prostředků ve vašem předplatném, vyberte **použít existující**a klikněte na rozevírací nabídku. Chcete-li vytvořit novou skupinu prostředků, vyberte **vytvořit nový** a zadejte název. Kompletní informace o skupinách prostředků najdete v tématu [přehled Azure Resource Manageru](../articles/azure-resource-manager/resource-group-overview.md).
+8. Pro **umístění** vyberte zeměpisnou oblast trezoru. Při vytváření trezoru pro ochranu virtuálních počítačů, trezor *musí* být ve stejné oblasti jako virtuální počítače.
 
    > [!IMPORTANT]
-   > Pokud si nejste jisti oblastí, ve kterém je váš virtuální počítač, zavřete dialogové okno Vytvoření trezoru a přejít na seznam virtuálních počítačů na portálu. Pokud máte virtuální počítače v několika oblastech, vytvořte trezor služby Recovery Services v každé z nich. Vytvořte trezor nejprve v první oblasti, poté přejděte k další oblasti. Není potřeba specifikovat účty úložiště pro ukládání dat záloh. Trezor služeb zotavení a služba Azure Backup zpracování, automaticky.
+   > Pokud si nejste jisti umístění, ve kterém jsou vaše virtuální počítače, zavřete dialogové okno Vytvoření trezoru a přejít na seznam virtuálních počítačů na portálu. Pokud máte virtuální počítače v několika oblastech, vytvořte trezor služby Recovery Services v každé z nich. Vytvořte trezor nejprve v první oblasti, poté přejděte k další oblasti. Není potřeba specifikovat účty úložiště pro ukládání dat záloh. Trezor služby Recovery Services a služby Azure Backup, která umožňují automaticky zpracovat.
    >
    >
 
-9. Když budete chtít vytvořit trezor služeb zotavení, klikněte na tlačítko **vytvořit**.
+9. Až budete připravení vytvořit trezor služby Recovery Services, klikněte na tlačítko **vytvořit**.
 
     ![Seznam trezorů záloh](./media/backup-create-rs-vault/click-create-button.png)
 
-    Vytvoření trezoru Služeb zotavení může chvíli trvat. Sledujte oznámení o stavu v části oznámení (pravém oblast portálu). Po vytvoření svůj trezor se zobrazí v seznamu trezorů služeb zotavení. Pokud stále nevidíte trezoru, klikněte na tlačítko **aktualizovat**.
+    Vytvoření trezoru Služeb zotavení může chvíli trvat. Sledujte oznámení o stavu v části oznámení (horní pravé oblasti na portálu). Poté, co je trezor vytvořený, zobrazí se v seznamu trezorů služby Recovery Services. Pokud váš trezor stále nevidíte, klikněte na tlačítko **aktualizovat**.
 
      ![Seznam trezorů záloh](./media/backup-create-rs-vault/refresh-button.png)

@@ -56,7 +56,7 @@ Pokud chcete místo `quoteChar` použít `escapeChar`, nahraďte řádek s `quot
 * Kopírujete text z textového souboru a chcete vynechat několik prvních řádků, které neobsahují data ani informace záhlaví. Zadáním `skipLineCount` určete, kolik řádků se má přeskočit. Pokud zbytek souboru obsahuje řádek záhlaví, můžete také zadat `firstRowAsHeader`. Pokud je zadaný parametr `skipLineCount` i `firstRowAsHeader`, nejdřív se přeskočí příslušný počet řádků a potom se ze vstupního souboru načtou informace záhlaví.
 
 ### <a name="specifying-jsonformat"></a>Zadávání formátu JsonFormat
-K **importu a exportu soubory JSON jako-je do/z Azure Cosmos DB**, najdete v části [dokumentů JSON importu a exportu](../articles/data-factory/v1/data-factory-azure-documentdb-connector.md#importexport-json-documents) část v Azure Cosmos DB konektoru s podrobnostmi.
+K **Importovat/exportovat soubory JSON jako – je do nebo ze služby Azure Cosmos DB**, naleznete v tématu [Import/export dokumentů JSON](../articles/data-factory/v1/data-factory-azure-documentdb-connector.md#importexport-json-documents) části v konektoru služby Azure Cosmos DB s podrobnostmi.
 
 Pokud chcete analyzovat soubory JSON nebo zapisovat data ve formátu JSON, nastavte vlastnost `format` `type` na hodnotu **JsonFormat**. Můžete také zadat následující **nepovinné** vlastnosti v oddílu `format`. Postup konfigurace najdete v části [Příklad typu JsonFormat](#jsonformat-example).
 
@@ -201,7 +201,7 @@ a chcete ho zkopírovat do tabulky Azure SQL v následujícím formátu a přito
 Vstupní datová sada typu **JsonFormat** je definovaná následujícím způsobem (částečná definice obsahující jenom relevantní části). A konkrétně:
 
 - Oddíl `structure` definuje vlastní názvy sloupců a odpovídající datový typ při převodu do tabulkového formátu. Pokud mapování sloupců není potřeba, je tento oddíl **nepovinný**. Další informace najdete v tématu věnovaném [určení definice struktury pro obdélníkové datové sady](#specifying-structure-definition-for-rectangular-datasets).
-- `jsonPathDefinition` určuje cestu JSON pro jednotlivé sloupce a udává, odkud se mají extrahovat data. Chcete-li kopírovat data z pole, můžete použít tvar **pole[x].vlastnost** a extrahovat hodnotu dané vlastnosti z x-tého objektu, nebo můžete použít tvar  **pole[*].vlastnost** a najít hodnotu v libovolném objektu, který obsahuje tuto vlastnost.
+- `jsonPathDefinition` určuje cestu JSON pro jednotlivé sloupce a udává, odkud se mají extrahovat data. Chcete-li kopírovat data z pole, můžete použít **pole [x] .vlastnost** extrahovat hodnotu dané vlastnosti z x-tého objektu, nebo můžete použít **pole [*] .vlastnost** k nalezení hodnoty z libovolného objektu, který obsahuje Vlastnost.
 
 ```json
 "properties": {

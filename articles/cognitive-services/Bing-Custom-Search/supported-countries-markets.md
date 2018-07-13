@@ -1,6 +1,6 @@
 ---
-title: Podporované zemích a jazyky pro rozhraní API služby Bing vlastní Search v Azure | Microsoft Docs
-description: Zjistěte, jaké zemích a jazyky jsou podporovány pomocí rozhraní API služby Bing vlastní Search.
+title: Podporované země/oblasti a jazyky pro vlastní API Bingu pro vyhledávání v Azure | Dokumentace Microsoftu
+description: Zjistěte, které země/oblasti a jazyky podporují rozhraní API pro vlastní vyhledávání Bingu.
 services: cognitive-services
 author: mikedodaro
 manager: ronakshah
@@ -9,30 +9,30 @@ ms.component: bing-custom-search
 ms.topic: article
 ms.date: 10/19/2017
 ms.author: v-gedod
-ms.openlocfilehash: 7ff309f9b789662c4ebd791dffaa2bc2e440763e
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 7009991ddd0bc8fd9fc68eaab57585b752db1fc1
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342867"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39006491"
 ---
-# <a name="bing-custom-search-countries-and-languages"></a>Hledání vlastní Bing zemích a jazyky
+# <a name="bing-custom-search-countriesregions-and-languages"></a>Vlastní vyhledávání Bingu země/oblasti a jazyky
 
-Rozhraní API služby Bing vlastní Search podporuje více než tří tucet zemích, mnoho s více než jeden jazyk. 
+Rozhraní API pro vlastní vyhledávání Bingu podporuje více než deseti tři zemích nebo oblastech, mnoho s více než jeden jazyk. 
 
-Přestože je volitelné, by měl určovat požadavek [mkt](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#mkt) parametr dotazu, který identifikuje na trhu, kam chcete výsledky pocházet z. Seznam parametrů dotazu volitelné, najdete v tématu [parametry dotazu](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#query-parameters)
+I když je volitelné, žádost by měl uvádět [mkt](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#mkt) parametr dotazu, který identifikuje na trhu, kde chcete výsledky pocházet z. Seznam volitelné parametry dotazů najdete v tématu [parametry dotazu.](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#query-parameters)
 
-Můžete zadat země pomocí `cc` parametr dotazu. Pokud zadáte jiné zemi, musíte zadat také jeden nebo více kódů pomocí `Accept-Language` záhlaví. Podporované jazyky se liší podle země; jsou uvedené pro každou zemi v **trhů** tabulky.
+Můžete zadat, země/oblast pomocí `cc` parametr dotazu. Pokud chcete zadat určitá země nebo oblast, musíte zadat také jeden nebo více kódů jazyka pomocí `Accept-Language` záhlaví. Podporované jazyky se liší podle země nebo oblasti; jsou uvedeny pro každou zemi/oblast v **trhy** tabulky.
 
-`Accept-Language` Záhlaví a `setLang` parametr dotazu se vzájemně vylučují – nezadávejte i. Podrobnosti najdete v tématu [Accept-Language](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#acceptlanguage).
+`Accept-Language` Záhlaví a `setLang` parametr dotazu se navzájem vylučují – nezadávejte obě. Podrobnosti najdete v tématu [Accept-Language](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#acceptlanguage).
 
-## <a name="countries"></a>Jednotlivé země
+## <a name="countries"></a>Země
 
-|Země|Kód|
+|Země/oblast|Kód|
 |-------|----|
 |Argentina|AR|
 |Austrálie|AU|
-|Rakousko|NA|
+|Rakousko|AT|
 |Belgie|BÝT|
 |Brazílie|BRAZÍLIE|
 |Kanada|CA|
@@ -40,13 +40,13 @@ Můžete zadat země pomocí `cc` parametr dotazu. Pokud zadáte jiné zemi, mus
 |Dánsko|DK|
 |Finsko|FI|
 |Francie|FR|
-|Německo|NĚMECKO|
-|Hongkong|(HONG KONG)|
-|Indie|V|
+|Německo|DE|
+|Hongkong|HK|
+|Indie|INDIE|
 |Indonésie|ID|
 |Itálie|IT|
 |Japonsko|JP|
-|Korea|KR|
+|Jižní Korea|KOREA|
 |Malajsie|MOJE|
 |Mexiko|MX|
 |Nizozemsko|NL|
@@ -55,9 +55,9 @@ Můžete zadat země pomocí `cc` parametr dotazu. Pokud zadáte jiné zemi, mus
 |Čína|CN|
 |Polsko|PL|
 |Portugalsko|PT|
-|Filipíny|PARAMETR|
+|Filipíny|PH|
 |Rusko|RU|
-|Saúdská Arábie|PŘIDRUŽENÍ ZABEZPEČENÍ|
+|Saúdská Arábie|SA|
 |Jihoafrická republika|ZA|
 |Španělsko|ES|
 |Švédsko|SE|
@@ -68,17 +68,17 @@ Můžete zadat země pomocí `cc` parametr dotazu. Pokud zadáte jiné zemi, mus
 |Spojené státy|USA|
 
 
-## <a name="markets"></a>Trzích
+## <a name="markets"></a>Trhy
 
-|Země|Jazyk|Trhu kódu|
+|Země/oblast|Jazyk|Kód na trhu|
 |-------|--------|-----------|
-|Argentina|Španělština|ES-AR|
-|Austrálie|Angličtina|en-AU|
+|Argentina|Španělština|ES AR|
+|Austrálie|Angličtina|cs AU|
 |Rakousko|Němčina|de-AT|
 |Belgie|Holandština|nl-BE|
 |Belgie|Francouzština|FR-být|
 |Brazílie|Portugalština|pt-BR|
-|Kanada|Angličtina|en-CA|
+|Kanada|Angličtina|cs CA|
 |Kanada|Francouzština|fr-CA|
 |Chile|Španělština|ES-CL|
 |Dánsko|dánština|da-DK|
@@ -87,23 +87,23 @@ Můžete zadat země pomocí `cc` parametr dotazu. Pokud zadáte jiné zemi, mus
 |Německo|Němčina|de-DE|
 |Hongkong|Tradiční čínština|zh-HK|
 |Indie|Angličtina|en-IN|
-|Indonésie|Angličtina|en-ID|
+|Indonésie|Angličtina|cs ID|
 |Itálie|italština|IT-IT|
 |Japonsko|Japonština|ja-JP|
-|Korea|Korejština|ko-KR|
-|Malajsie|Angličtina|en Moje|
+|Jižní Korea|Korejština|ko-KR|
+|Malajsie|Angličtina|cs MY|
 |Mexiko|Španělština|es-MX|
 |Nizozemsko|Holandština|NL-NL|
-|Nový Zéland|Angličtina|en-NZ|
+|Nový Zéland|Angličtina|cs NZ|
 |Norsko|norština|no-NO|
 |Čína|Čínština|zh-CN|
 |Polsko|polština|pl-PL|
 |Portugalsko|Portugalština|pt-PT|
-|Filipíny|Angličtina|en parametr|
+|Filipíny|Angličtina|cs PH|
 |Rusko|ruština|ru-RU|
-|Saúdská Arábie|arabština|ar (SA)|
-|Jihoafrická republika|Angličtina|en-ZA|
-|Španělsko|Španělština|ES-ES|
+|Saúdská Arábie|arabština|ar-SA|
+|Jihoafrická republika|Angličtina|cs ZA|
+|Španělsko|Španělština|es-ES|
 |Švédsko|švédština|sv-SE|
 |Švýcarsko|Francouzština|FR-CH|
 |Švýcarsko|Němčina|de-CH|
@@ -111,4 +111,4 @@ Můžete zadat země pomocí `cc` parametr dotazu. Pokud zadáte jiné zemi, mus
 |Turecko|turečtina|tr-TR|
 |Spojené království|Angličtina|en-GB|
 |Spojené státy|Angličtina|cs-CZ|
-|Spojené státy|Španělština|ES USA|
+|Spojené státy|Španělština|ES US|

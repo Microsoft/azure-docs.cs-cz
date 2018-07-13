@@ -1,6 +1,6 @@
 ---
 title: Aktivita vyhledávání ve službě Azure Data Factory | Dokumentace Microsoftu
-description: Zjistěte, jak aktivitu vyhledávání použijte k vyhledání hodnoty z externího zdroje. Na tento výstup mohou dále odkazovat následující aktivity.
+description: Zjistěte, jak aktivitu vyhledávání použijte k vyhledání hodnoty z externího zdroje. Tento výstup mohou dále odkazovat následující aktivity.
 services: data-factory
 documentationcenter: ''
 author: sharonlo101
@@ -13,23 +13,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: shlo
-ms.openlocfilehash: 25ed439674fcf7136e29034eb97e0652ae9ba111
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: e437e7b7d5298af325ae2a5e2ba689b417bad022
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38237828"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39002916"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Aktivita vyhledávání ve službě Azure Data Factory
 
-Aktivita vyhledávání slouží k načtení datové sady z libovolného zdroje dat podporované ADF.  Je možné v následujícím scénáři:
-- Dynamicky určete, které objekty (soubory, tabulky atd.) se má operace provést následující aktivity, místo pevného kódování název objektu
+Aktivita vyhledávání můžete načíst datovou sadu z libovolného zdroje dat podporované služby Azure Data Factory. Použije v následujícím scénáři:
+- Dynamické určování objektů, které se má operace provést následující aktivity, místo pevného kódování název objektu. Příklady některých objektů jsou soubory a tabulky.
 
-Aktivita vyhledávání může číst a vrátí obsah konfiguračního souboru, konfigurace tabulky nebo výsledek provedení dotazu nebo uložené procedury.  Výstupem z aktivity vyhledávání můžete použít v následných kopírování nebo aktivity transformace, pokud je hodnota typu singleton nebo použít v aktivitě ForEach, pokud je pole atributů.
+Aktivita vyhledávání přečte a vrátí obsah konfiguračního souboru nebo tabulky. Také vrátí výsledek provedení dotazu nebo uložené procedury. Výstupem z aktivity vyhledávání lze použít v následných kopírování nebo aktivity transformace, pokud je hodnota typu singleton. Výstup je možné v aktivitě ForEach, pokud je pole atributů.
 
 ## <a name="supported-capabilities"></a>Podporované funkce
 
-Následující zdroje dat nejsou podporovány pro vyhledávání. Maximální počet řádků může být vrácen vyhledávací aktivita **5000**a až **2MB** velikosti. A právě maximální dobu trvání pro aktivitu vyhledávání před vypršením časového limitu je jedna hodina.
+Následující zdroje dat nejsou podporovány pro aktivitu vyhledávání. Největší počet řádků, které může být vrácen aktivita vyhledávání je 5 000 až 2 MB. V současné době nejdelší dobu platnosti vyhledávací aktivita před vypršením časového limitu je jedna hodina.
 
 [!INCLUDE [data-factory-v2-supported-data-stores](../../includes/data-factory-v2-supported-data-stores-for-lookup-activity.md)]
 
@@ -56,15 +56,15 @@ Následující zdroje dat nejsou podporovány pro vyhledávání. Maximální po
 ## <a name="type-properties"></a>Typ vlastnosti
 Název | Popis | Typ | Povinné?
 ---- | ----------- | ---- | --------
-datové sady | Poskytuje odkaz na datovou sadu pro vyhledávání. Získáte podrobnosti v části "Vlastnosti datové sady" každého článku odpovídající konektor. | Dvojice klíč/hodnota | Ano
-source | Obsahuje vlastnosti zdroje specifických pro datovou sadu, stejné jako u zdroje aktivity kopírování. Získáte podrobnosti v části "Vlastnosti aktivity kopírování" každého článku odpovídající konektor. | Dvojice klíč/hodnota | Ano
+Datové sady | Poskytuje odkaz na datovou sadu pro vyhledávání. Získat tak podrobné údaje z **vlastnosti datové sady** části každého článku odpovídající konektor. | Dvojice klíč/hodnota | Ano
+source | Obsahuje vlastnosti zdroje specifických pro datovou sadu, stejně jako zdroj kopírování. Získat tak podrobné údaje z **vlastnosti aktivity kopírování** části každého článku odpovídající konektor. | Dvojice klíč/hodnota | Ano
 firstRowOnly | Určuje, jestli se mají vrátit pouze první řádek nebo všechny řádky. | Logická hodnota | Ne. Výchozí hodnota je `true`.
 
-**Je třeba počítat s následujícím:**
+> [!NOTE]
 
-1. Zdrojový sloupec s typem třídy ByteArray se nepodporuje.
-2. Struktura se nepodporuje v definici datové sady. Pro soubory ve formátu textu konkrétně, vám pomůže řádek záhlaví zadejte název sloupce.
-3. Pokud je zdrojem vyhledávání soubory JSON, `jsonPathDefinition` nastavení znovu tvarování objekt JSON se nepodporuje, celé objekty budou načítat.
+> * Zdrojové sloupce s **ByteArray** typu nejsou podporované.
+> * **Struktura** není podporována v definicích datových sad. Pro soubory ve formátu textu použijte k poskytnutí názvu sloupce řádek záhlaví.
+> * Pokud soubor JSON, je zdrojem vyhledávání `jsonPathDefinition` nastavení pro měnící tvar objektu JSON se nepodporuje. Celé objekty budou načítat.
 
 ## <a name="use-the-lookup-activity-result-in-a-subsequent-activity"></a>Použijte aktivitu výsledek vyhledávání v následné aktivity
 
@@ -82,7 +82,7 @@ Výsledek vyhledávání se vrátí v `output` část výsledky spuštění akti
     }
     ```
 
-* **Když `firstRowOnly` je nastavena na `false`** , formát výstupu se, jak je znázorněno v následujícím kódu. A `count` pole označuje, kolik záznamů se vrátí a podrobné hodnoty jsou zobrazeny v části s pevným `value` pole. V takovém případě se aktivita vyhledávání obvykle následuje [aktivita Foreach](control-flow-for-each-activity.md). Můžete předat `value` pole pro aktivitu ForEach `items` pole, a to pomocí vzor `@activity('MyLookupActivity').output.value`. Přístup k prvkům v `value` pole, použijte následující syntaxi: `@{activity('lookupActivity').output.value[zero based index].propertyname}`. Tady je příklad: `@{activity('lookupActivity').output.value[0].tablename}`.
+* **Když `firstRowOnly` je nastavena na `false`** , formát výstupu se, jak je znázorněno v následujícím kódu. A `count` pole označuje, kolik záznamů se vrátí. Podrobné hodnoty jsou zobrazeny v části s pevným `value` pole. V takovém případě je následována aktivita vyhledávání [aktivita Foreach](control-flow-for-each-activity.md). Předání `value` pole pro aktivitu ForEach `items` pole, a to pomocí vzor `@activity('MyLookupActivity').output.value`. Přístup k prvkům v `value` pole, použijte následující syntaxi: `@{activity('lookupActivity').output.value[zero based index].propertyname}`. Příklad: `@{activity('lookupActivity').output.value[0].tablename}`.
 
     ```json
     {
@@ -100,17 +100,16 @@ Výsledek vyhledávání se vrátí v `output` část výsledky spuštění akti
     } 
     ```
 
-## <a name="example"></a>Příklad:
-V tomto příkladu aktivita kopírování kopíruje data z tabulky SQL ve vaší instanci Azure SQL Database do úložiště objektů Blob v Azure. Název tabulky SQL je uložené v souboru JSON ve službě Blob storage. Aktivita vyhledávání vyhledá název tabulky za běhu. Tento přístup umožňuje JSON dynamicky měnit bez nutnosti nasazení kanály ani datové sady. 
+### <a name="copy-activity-example"></a>Příklad aktivity kopírování
+V tomto příkladu aktivita kopírování kopíruje data z tabulky SQL ve vaší instanci Azure SQL Database do úložiště objektů Blob v Azure. Název tabulky SQL je uložené v souboru JSON ve službě Blob storage. Aktivita vyhledávání vyhledá název tabulky za běhu. JSON je upravit dynamicky pomocí tohoto přístupu. Není nutné znovu nasadit kanály ani datové sady. 
 
 Tento příklad ukazuje vyhledání pouze na prvním řádku. Vyhledávání pro všechny řádky a zřetězení výsledky s aktivitu ForEach, najdete v ukázkách ve [hromadné kopírování několika tabulek pomocí Azure Data Factory](tutorial-bulk-copy.md).
 
 ### <a name="pipeline"></a>Kanál
-Tento kanál obsahuje dvě aktivity: *vyhledávání* a *kopírování*. 
+Tento kanál obsahuje dvě aktivity: vyhledávání a kopírování. 
 
-- Aktivita vyhledávání je nakonfigurován pro použití LookupDataset, který odkazuje na umístění v úložišti objektů Blob v Azure. Aktivita vyhledávání načte název tabulky SQL ze souboru JSON v tomto umístění. 
-- Aktivita kopírování používá výstup aktivity vyhledávání (název tabulky SQL). Vlastnost tableName v jako zdrojovou datovou sadu (SourceDataset) je nakonfigurován pro použití výstupu z aktivity vyhledávání. Aktivita kopírování kopíruje data z tabulky SQL do umístění ve službě Azure Blob storage, která je zadána vlastnost SinkDataset. 
-
+- Aktivita vyhledávání je nakonfigurován na použití **LookupDataset**, který odkazuje na umístění v úložišti objektů Blob v Azure. Aktivita vyhledávání načte název tabulky SQL ze souboru JSON v tomto umístění. 
+- Aktivita kopírování používá výstup aktivity vyhledávání, což je název tabulky SQL. **TableName** vlastnost **SourceDataset** je nakonfigurován na použití výstupu z aktivity vyhledávání. Zkopírujte aktivita kopíruje data z tabulky SQL do umístění v úložišti objektů Blob v Azure. Umístění je určená **SinkDataset** vlastnost. 
 
 ```json
 {
@@ -167,7 +166,7 @@ Tento kanál obsahuje dvě aktivity: *vyhledávání* a *kopírování*.
 ```
 
 ### <a name="lookup-dataset"></a>Vyhledávání datové sady
-Vyhledávání datová sada odkazuje *sourcetable.json* souboru ve složce vyhledávací služby Azure Storage, který je určený typem AzureStorageLinkedService. 
+**Vyhledávání** datová sada je **sourcetable.json** souboru ve složce vyhledávací služby Azure Storage určené **AzureStorageLinkedService** typu. 
 
 ```json
 {
@@ -190,8 +189,8 @@ Vyhledávání datová sada odkazuje *sourcetable.json* souboru ve složce vyhle
 }
 ```
 
-### <a name="source-dataset-for-the-copy-activity"></a>Zdrojová datová sada pro aktivitu kopírování
-Zdrojová datová sada používá výstup aktivity vyhledávání, což je název tabulky SQL. Aktivita kopírování kopíruje data z této tabulky SQL do umístění ve službě Azure Blob storage, která je zadána datová sada jímky. 
+### <a name="source-dataset-for-copy-activity"></a>**Zdroj** datovou sadu pro aktivitu kopírování
+**Zdroj** datová sada používá výstup aktivity vyhledávání, což je název tabulky SQL. Zkopírujte aktivita kopíruje data z této tabulky SQL do umístění v úložišti objektů Blob v Azure. Umístění je určená **jímky** datové sady. 
 
 ```json
 {
@@ -209,8 +208,8 @@ Zdrojová datová sada používá výstup aktivity vyhledávání, což je náze
 }
 ```
 
-### <a name="sink-dataset-for-the-copy-activity"></a>Datová sada pro aktivitu kopírování jímky
-Aktivita kopírování kopíruje data z tabulky SQL *filebylookup.csv* soubor *sdíleného svazku clusteru* složky ve službě Azure storage, která je zadána vlastnost AzureStorageLinkedService. 
+### <a name="sink-dataset-for-copy-activity"></a>**Jímka** datovou sadu pro aktivitu kopírování
+Aktivita kopírování kopíruje data z tabulky SQL **filebylookup.csv** soubor **sdíleného svazku clusteru** složky ve službě Azure Storage. Soubor je určená **AzureStorageLinkedService** vlastnost. 
 
 ```json
 {
@@ -303,6 +302,6 @@ Tuto instanci Azure SQL Database s daty, které se mají zkopírovat do úloži�
 Zobrazit další aktivity toku řízení podporovaných službou Data Factory: 
 
 - [Aktivita spuštění kanálu](control-flow-execute-pipeline-activity.md)
-- [Pro každou aktivitu](control-flow-for-each-activity.md)
-- [Získání metadat aktivity](control-flow-get-metadata-activity.md)
+- [Aktivita ForEach](control-flow-for-each-activity.md)
+- [Aktivita GetMetadata](control-flow-get-metadata-activity.md)
 - [Webová aktivita](control-flow-web-activity.md)

@@ -9,27 +9,28 @@ ms.date: 03/27/2018
 ms.author: iainfou
 ms.custom: include file
 ms.openlocfilehash: e54813896eee8a58ae456f14f76151318ac1b9fc
-ms.sourcegitcommit: ff1896b01bfcc26df3b202011bb8ec8cfdb014fa
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2018
-ms.locfileid: "35620522"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38766962"
 ---
 # <a name="regions-and-availability-for-virtual-machines-in-azure"></a>Oblasti a dostupnost pro virtuální počítače v Azure
 Azure funguje v několika datových centrech po celém světě. Tato datová centra jsou seskupená do v geografických oblastí. To vám poskytuje flexibilitu při výběru místa pro sestavení vaší aplikace. Je důležité pochopit, jak a kde se virtuální počítače (VM) v Azure provozují, a také vědět, jaké máte možnosti pro zajištění maximálního výkonu, dostupnosti a redundance. Tento článek poskytuje přehled funkcí redundance a dostupnosti Azure.
 
 ## <a name="what-are-azure-regions"></a>Co jsou oblasti Azure?
-V definovaných zeměpisné oblasti jako "Západní USA", "Severní Evropa" nebo "jihovýchodní Asie, vytvoříte prostředků Azure. [Seznam oblastí a jejich umístění](https://azure.microsoft.com/regions/) si můžete prohlédnout. V každé oblasti existuje několik datových center, která zajišťují redundanci a dostupnost. Tento přístup poskytuje flexibilitu při navrhování aplikace vytvořit virtuální počítače nejbližší uživatelům a splňují všechny právní, dodržování předpisů nebo daň.
+Vytvoření prostředků Azure v definované geografických oblastech, jako je "Západní USA", "Severní Evropa" nebo "Jihovýchodní Asie". [Seznam oblastí a jejich umístění](https://azure.microsoft.com/regions/) si můžete prohlédnout. V každé oblasti existuje několik datových center, která zajišťují redundanci a dostupnost. Tento přístup poskytuje flexibilitu při návrhu aplikací k vytvoření virtuálních počítačů co nejblíže vašim uživatelům a do nesplní žádné právní, dodržování předpisů nebo daňové účely.
 
 ## <a name="special-azure-regions"></a>Speciální oblasti Azure
-Azure má některé speciální oblasti, které chcete používat při sestavení se vaše aplikace pro dodržování předpisů nebo právních důvodů. Mezi tyto speciální oblasti patří:
+Azure má některé speciální oblasti, které možná budete chtít použít při vytváření aplikací pro právní účely nebo dodržování předpisů. Mezi tyto speciální oblasti patří:
 
-* **USA (Gov) – Iowa** a **USA (Gov) – Virginia**.
+* 
+  **US Gov – Iowa** a **US Gov – Virginie**.
   * Fyzická a logická síťově izolovaná instance Azure pro partnery a úřady státní správy USA, která je obsluhovaná prověřenými občany USA. Zahrnuje další certifikace dodržování předpisů, jako je [FedRAMP](https://www.microsoft.com/en-us/TrustCenter/Compliance/FedRAMP) a [DISA](https://www.microsoft.com/en-us/TrustCenter/Compliance/DISA). Další informace o službě [Azure Government](https://azure.microsoft.com/features/gov/)
 * **Severní Čína** a **Východní Čína**
   * Tyto oblasti jsou dostupné prostřednictvím jedinečného partnerství mezi společnostmi Microsoft a 21Vianet, kdy společnost Microsoft nespravuje tato datová centra přímo. Další informace najdete v tématu [Microsoft Azure v Číně](http://www.windowsazure.cn/).
 * **Střední Německo** a **Severovýchodní Německo**
-  * Tyto oblasti jsou k dispozici prostřednictvím datový model zplnomocněnec které zákaznická data zůstane v Německu pod kontrolou systémů T německých Telekom společnosti, který funguje jako zplnomocněnec němčině data.
+  * Tyto oblasti jsou k dispozici prostřednictvím datového modelu důvěryhodných zákaznická data zůstanou v Německu pod kontrolou T-Systems, společnosti Deutsche Telekom, který funguje jako dat pro Německo.
 
 ## <a name="region-pairs"></a>Párování oblastí
 Každá oblast Azure je spárovaná s jinou oblastí na stejném území (jako je USA, Evropa nebo Asie). Tento přístup umožňuje replikaci prostředků (jako je třeba úložiště virtuálních počítačů) napříč daným územím, která by měla snížit pravděpodobnost, že přírodní katastrofy, občanské nepokoje, výpadky napájení nebo fyzické výpadky sítě ovlivní obě oblasti současně. Mezi další výhody párování oblastí patří:
@@ -42,14 +43,14 @@ Mezi příklady párů oblasti patří:
 
 | Primární | Sekundární |
 |:--- |:--- |
-| Západní USA |Východ USA |
+| Západní USA |USA – východ |
 | Severní Evropa |Západní Evropa |
 | Jihovýchodní Asie |Východní Asie |
 
 Úplný [seznam spárovaných oblastí najdete tady](../articles/best-practices-availability-paired-regions.md#what-are-paired-regions).
 
 ## <a name="feature-availability"></a>Dostupnost funkcí
-Některé služby nebo funkce virtuálních počítačů jsou dostupné jenom v některých oblastech, třeba konkrétní velikosti virtuálních počítačů nebo typy úložišť. Existují také globální služby Azure, které nevyžadují výběr konkrétní oblasti, jako je [Azure Active Directory](../articles/active-directory/fundamentals/active-directory-whatis.md), [Traffic Manager](../articles/traffic-manager/traffic-manager-overview.md) nebo [Azure DNS](../articles/dns/dns-overview.md). Možnost zkontrolovat [dostupnost služeb Azure v jednotlivých oblastech](https://azure.microsoft.com/regions/#services) vám pomůže při navrhování prostředí pro vaše aplikace. Můžete také [prostřednictvím kódu programu dotazu podporované velikosti virtuálních počítačů a omezení v každé oblasti](../articles/azure-resource-manager/resource-manager-sku-not-available-errors.md).
+Některé služby nebo funkce virtuálních počítačů jsou dostupné jenom v některých oblastech, třeba konkrétní velikosti virtuálních počítačů nebo typy úložišť. Existují také globální služby Azure, které nevyžadují výběr konkrétní oblasti, jako je [Azure Active Directory](../articles/active-directory/fundamentals/active-directory-whatis.md), [Traffic Manager](../articles/traffic-manager/traffic-manager-overview.md) nebo [Azure DNS](../articles/dns/dns-overview.md). Možnost zkontrolovat [dostupnost služeb Azure v jednotlivých oblastech](https://azure.microsoft.com/regions/#services) vám pomůže při navrhování prostředí pro vaše aplikace. Můžete také [programově odeslat dotaz podporované velikosti virtuálních počítačů a omezení v jednotlivých oblastech](../articles/azure-resource-manager/resource-manager-sku-not-available-errors.md).
 
 ## <a name="storage-availability"></a>Dostupnost úložiště
 Znalost území a oblastí Azure je důležitá, pokud zvažujete dostupné možnosti replikace úložiště. Možnosti replikace závisejí na typu úložiště.
@@ -82,19 +83,19 @@ Další informace o [možnostech replikace služby Azure Storage najdete tady](.
 Ceny se liší v závislosti na zvolené dostupnosti a typu úložiště.
 
 **Azure Managed Disks**
-* Disky spravované Premium jsou zajišťované Solid-State disků (SSD) a standardní disky spravované jsou zajišťované disky regulární roztočený. Služba Managed Disks úrovně Premium i Standard se účtuje na základě zřízené kapacity disku.
+* Managed Disks úrovně Premium se zálohuje pomocí Solid-State (Drive) a Standard Managed Disks se zálohuje pomocí běžných rotujících disků. Služba Managed Disks úrovně Premium i Standard se účtuje na základě zřízené kapacity disku.
 
 **Nespravované disky**
-* Storage úrovně Premium je zálohovaný Solid-State disků (SSD) a je účtován podle kapacity disku.
+* Premium storage je založená na Solid-State disky (SSD) a se účtuje podle kapacity disku.
 * Storage úrovně Standard se zálohuje pomocí běžných rotujících disků a účtuje se na základě využité kapacity a požadované dostupnosti úložiště.
   * Za přenos dat geografické replikace se u RA-GRS účtují navíc náklady na šířku pásma pro replikaci těchto dat do jiné oblasti Azure.
 
 Informace o cenách pro různé typy úložišť a možnosti dostupnosti najdete v tématu [Ceny za Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
 
 ## <a name="availability-sets"></a>Skupiny dostupnosti
-Skupina dostupnosti je logické seskupení virtuálních počítačů v datovém centru, které umožňují na platformě Azure, abyste pochopili, jak vaše aplikace sestavena k poskytování redundance a dostupnosti. Doporučujeme, že dvě nebo více virtuálních počítačů jsou vytvořeny v rámci sadu k poskytování vysoce dostupné aplikace a podle dostupnosti [99,95 % smlouva Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/). Neexistuje žádné náklady pro sadu dostupnosti sám sebe, platíte jenom pro každou instanci virtuálního počítače, který vytvoříte. Pokud [Azure Premium Storage](../articles/virtual-machines/windows/premium-storage.md) využívá jeden virtuální počítač, Azure SLA se vztahuje na neplánovanou údržbu. 
+Skupina dostupnosti je logické seskupení virtuálních počítačů v rámci datového centra, které umožňují Azure pochopit, jak je sestavená vaše aplikace zajistit redundanci a dostupnost. Doporučujeme, že jsou vytvořeny dva nebo více virtuálních počítačů ve skupině dostupnosti pro vysoce dostupné aplikace a, aby splňoval [99,95 % Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/). Se neúčtují žádné poplatky pro skupinu dostupnosti samotné, platíte jenom za všechny instance virtuálních počítačů, které vytvoříte. Pokud [Azure Premium Storage](../articles/virtual-machines/windows/premium-storage.md) využívá jeden virtuální počítač, Azure SLA se vztahuje na neplánovanou údržbu. 
 
-Skupina dostupnosti se skládá ze dvou další seskupení, které ochranu proti selhání hardwaru a povolit aktualizace bezpečně použít-poruch domén (FDs) a aktualizace domény (UDs). O správě dostupnosti [virtuálních počítačů s Linuxem](../articles/virtual-machines/linux/manage-availability.md) nebo [Windows](../articles/virtual-machines/windows/manage-availability.md) si můžete přečíst víc.
+Skupina dostupnosti se skládá ze dvou dalších seskupení, které chrání před selháním hardwaru a povolit aktualizace bezpečně použít – doména selhání (FD) a aktualizační doména (ud). O správě dostupnosti [virtuálních počítačů s Linuxem](../articles/virtual-machines/linux/manage-availability.md) nebo [Windows](../articles/virtual-machines/windows/manage-availability.md) si můžete přečíst víc.
 
 ### <a name="fault-domains"></a>Domény selhání
 Doména selhání je logická skupina hardwarových komponent, které sdílejí společný zdroj napájení a síťový přepínač (je obdobou stojanu v místním datovém centru). Když vytváříte virtuální počítače v rámci skupiny dostupnosti, platforma Azure je automaticky distribuuje do těchto domén selhání. Tento přístup omezuje dopady potenciálního selhání fyzického hardwaru, výpadků sítě nebo přerušení napájení.
@@ -102,12 +103,12 @@ Doména selhání je logická skupina hardwarových komponent, které sdílejí 
 ### <a name="update-domains"></a>Aktualizační domény
 Aktualizační doména je logická skupina hardwarových komponent, u kterých je možné provést údržbu nebo restart současně. Když vytváříte virtuální počítače v rámci skupiny dostupnosti, platforma Azure je automaticky distribuuje do těchto aktualizačních domén. Tento přístup zajišťuje, že při pravidelné údržbě Azure zůstává vždycky nejméně jedna instance vaší aplikace spuštěná. Restartování aktualizačních domén během plánované údržby nemusí probíhat sekvenčně, ale vždycky se restartuje jenom jedna aktualizační doména.
 
-### <a name="managed-disk-fault-domains"></a>Spravované domény selhání disku
-Virtuální počítače, které používají [Azure Managed Disks](../articles/virtual-machines/windows/faq-for-disks.md), odpovídají doménám selhání spravovaných disků (pokud se použije spravovaná skupina dostupnosti). Toto uspořádání zajišťuje, aby všechny spravované disky připojené k virtuálnímu počítači byly umístěné ve stejné doméně selhání spravovaných disků. Ve spravované skupině dostupnosti je možné vytvořit jenom virtuální počítače se spravovanými disky. Počet domén selhání spravovaných disků se liší podle oblasti – buď dvě, nebo tři domény selhání na oblast. Další informace o těchto spravovaných domén selhání disku pro [virtuální počítače s Linuxem](../articles/virtual-machines/linux/manage-availability.md?#use-managed-disks-for-vms-in-an-availability-set) nebo [virtuálních počítačů Windows](../articles/virtual-machines/windows/manage-availability.md?#use-managed-disks-for-vms-in-an-availability-set).
+### <a name="managed-disk-fault-domains"></a>Spravované domény selhání
+Virtuální počítače, které používají [Azure Managed Disks](../articles/virtual-machines/windows/faq-for-disks.md), odpovídají doménám selhání spravovaných disků (pokud se použije spravovaná skupina dostupnosti). Toto uspořádání zajišťuje, aby všechny spravované disky připojené k virtuálnímu počítači byly umístěné ve stejné doméně selhání spravovaných disků. Ve spravované skupině dostupnosti je možné vytvořit jenom virtuální počítače se spravovanými disky. Počet domén selhání spravovaných disků se liší podle oblasti – buď dvě, nebo tři domény selhání na oblast. Další informace o těchto spravovaných domén selhání disku pro [virtuální počítače s Linuxem](../articles/virtual-machines/linux/manage-availability.md?#use-managed-disks-for-vms-in-an-availability-set) nebo [virtuální počítače s Windows](../articles/virtual-machines/windows/manage-availability.md?#use-managed-disks-for-vms-in-an-availability-set).
 
 ## <a name="availability-zones"></a>Zóny dostupnosti
 
-[Dostupnost zóny](../articles/availability-zones/az-overview.md), nastaví alternativu k dostupnosti, rozbalte položku úroveň řízení, budete muset zachovat dostupnost aplikace a data na virtuální počítače. Zóna dostupnosti je fyzicky oddělená zóna v oblasti Azure. Existují tři zóny dostupnosti za podporovanou oblast Azure. Každá zóna dostupnosti má samostatný zdroj napájení, síť a chlazení. Pomocí architektury řešení pro použití replikované virtuální počítače v zóny, můžete chránit vaše aplikace a data před ztrátou datacentru. Pokud dojde k narušení jednu zónu, pak replikované aplikace a data jsou okamžitě dostupné v jiné zóně. 
+[Zóny dostupnosti](../articles/availability-zones/az-overview.md), nastaví alternativu k dostupnosti, rozbalte položku úrovně ovládacího prvku, je nutné zachovat dostupnost aplikací a dat na virtuálních počítačích. Zóna dostupnosti je fyzicky oddělená zóna v oblasti Azure. Existují tři zóny dostupnosti pro každou podporovanou oblast Azure. Každá zóna dostupnosti má samostatný zdroj napájení, síť a chlazení. Díky navrhování řešení pro použití replikované virtuální počítače v oblasti, můžete chránit své aplikace a data před ztrátou datacentra. Pokud dojde k ohrožení jednu zónu, pak replikované aplikace a data jsou okamžitě dostupné v jiné zóně. 
 
 ![Zóny dostupnosti](./media/virtual-machines-common-regions-and-availability/three-zones-per-region.png)
 

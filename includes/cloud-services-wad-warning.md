@@ -1,15 +1,15 @@
 > [!WARNING]
-> Když povolíte diagnostiku pro existující roli, jsou libovolná rozšíření, která jste už nastavili zakázáno, pokud je balíček nasazen. Mezi ně patří:
+> Když povolíte diagnostiku pro existující role, jsou při nasazení balíčku zakázat všechna rozšíření, které jste už nastavili. Mezi ně patří:
 >
 > * Microsoft Monitoring Agent diagnostiky
-> * Sledování zabezpečení Microsoft Azure
+> * Monitorování zabezpečení Microsoft Azure
 > * Antimalware od Microsoftu                 
 > * Microsoft Monitoring Agent
-> * Agent služby Microsoft profileru      
-> * Rozšíření Azure domény systému Windows        
-> * Windows Azure Diagnostics rozšíření   
-> * Windows Azure vzdálené plochy rozšíření
-> * Kolektor protokolů Azure Windows
+> * Agent služby Microsoft Profiler      
+> * Rozšíření Azure domény Windows        
+> * Rozšíření diagnostiky Azure Windows   
+> * Windows Azure rozšíření vzdálené plochy
+> * Windows Azure Log Collector
 >
-> Poté, co nasadíte roli aktualizované, můžete resetovat rozšíření prostřednictvím portálu Azure nebo prostředí PowerShell.
+> Poté, co nasadíte aktualizovanou roli, můžete resetovat vaše rozšíření prostřednictvím webu Azure portal nebo Powershellu.
 >

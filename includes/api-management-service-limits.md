@@ -10,25 +10,25 @@ ms.date: 03/22/2018
 ms.author: vlvinogr
 ms.custom: include file
 ms.openlocfilehash: b40e2ba448236bcef72ffe501b4b14fa0dd64e1c
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31434935"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38755606"
 ---
 | Prostředek | Omezení |
 | --- | --- |
-| Jednotky škálování | 10 každou oblast<sup>1</sup> |
-| Mezipaměť | 5 GB na jednotku<sup>1</sup> |
-| Back-end souběžných připojení<sup>2</sup> za autority HTTP | 2048 na jednotku<sup>3</sup> |
-| Velikost maximální odpovědi v mezipaměti | 10MB. |
-| Zásady maximální velikost dokumentu | 256KB |
-| Maximální brány vlastní domény | 20 na instanci služby<sup>4</sup> |
+| Jednotky škálování | 10 za oblasti<sup>1</sup> |
+| Mezipaměť | 5 GB za každou jednotku<sup>1</sup> |
+| Souběžné back-end připojení<sup>2</sup> za autorita protokolu HTTP | 2 048 na jednotku<sup>3</sup> |
+| Velikost maximální odpověď uložená v mezipaměti | 10MB |
+| Zásady maximální velikosti dokumentu | 256KB |
+| Maximální brány vlastní domény | 20 za instanci služby<sup>4</sup> |
 
 
-<sup>1</sup>omezení API Management se liší u jednotlivých cenových úrovní. Pokud chcete zobrazit cenové úrovně a jejich omezení škálování přejděte do [ceny služby API Management](https://azure.microsoft.com/pricing/details/api-management/).
-<sup>2</sup> připojení jsou ve fondu a znovu použít, pokud explicitně uzavřené back-end.
-<sup>3</sup> na jednotku úrovně Basic, Standard a Premium. Úroveň Developer je omezena na 1024.
-<sup>4</sup> dostupných v jenom na úrovni Premium.
+<sup>1</sup>omezení API Management se liší u jednotlivých cenových úrovní. Chcete-li zobrazit ceny vrstvy a jejich limity škálování přejděte na [ceny služby API Management](https://azure.microsoft.com/pricing/details/api-management/).
+<sup>2</sup> připojení jsou ve fondu a znovu použít, pokud explicitně ukončeno back-endu.
+<sup>3</sup> na jednotku úrovně Basic, Standard a Premium. Úroveň Developer je omezená na 1024.
+<sup>4</sup> k dispozici pouze na úrovni Premium.
 
 

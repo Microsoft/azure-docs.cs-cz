@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/24/2018
 ms.author: tdykstra
-ms.openlocfilehash: 1b22357b201306ec09e586bfa52fbe9a821250da
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 912176df2681f890cf3bbe6f69395ad39c9263fc
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37887466"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39004893"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Aktivace Azure Functions a vazby koncepty
 
@@ -32,7 +32,7 @@ A *aktivační událost* definuje, jak je vyvolána funkce. Funkce musí mít p�
 
 Vstup a výstup *vazby* poskytují deklarativní způsob, jak se připojit k datům z vašeho kódu. Vazby jsou volitelné a funkce mohou mít více vstupní a výstupní vazby. 
 
-Triggery a vazby umožňují vyhnout hardcoding podrobnosti služby, které pracujete. Funkce přijímá data (například obsah zprávy fronty) v parametry funkce. Odeslat data (například k vytvoření zprávy fronty) pomocí návratová hodnota funkce, `out` parametr, nebo [objekt kolekce](functions-reference-csharp.md#writing-multiple-output-values).
+Triggery a vazby umožňují vyhnout hardcoding podrobnosti služby, které pracujete. Funkce přijímá data (například obsah zprávy fronty) v parametry funkce. Odeslat data (například k vytvoření zprávy fronty) pomocí návratová hodnota funkce. V jazyce C# a skript jazyka C#, jsou alternativní způsoby, jak odesílat data `out` parametry a [kolekcí objektů](functions-reference-csharp.md#writing-multiple-output-values).
 
 Při vývoji funkcí s použitím webu Azure portal, triggerů a vazeb jsou nakonfigurované v *function.json* souboru. Portál poskytuje uživatelské rozhraní pro tuto konfiguraci, ale můžete upravit soubor přímo tak, že změníte na **Rozšířený editor**.
 
@@ -224,9 +224,11 @@ V jazycích, které mají návratovou hodnotu můžete svázat výstupní vazbu 
 * V knihovně tříd jazyka C# použijte atribut vazby výstupu pro návratovou hodnotu metody.
 * V jiných jazycích, nastavte `name` vlastnost *function.json* k `$return`.
 
-Pokud potřebujete napsat více než jednu položku, použijte [objekt kolekce](functions-reference-csharp.md#writing-multiple-output-values) místo vrácení hodnoty. Pokud existuje více výstupní vazby, použijte vrácenou hodnotu pouze pro jeden z nich.
+Pokud existuje více výstupní vazby, použijte vrácenou hodnotu pouze pro jeden z nich.
 
-Podívejte se na příklad specifické pro jazyk:
+V jazyce C# a skript jazyka C#, jsou alternativní způsoby, jak odesílat data do výstupní vazbu `out` parametry a [kolekcí objektů](functions-reference-csharp.md#writing-multiple-output-values).
+
+Podívejte se na konkrétní jazyk příklad znázorňující použití návratovou hodnotu:
 
 * [C#](#c-example)
 * [C# skript (.csx)](#c-script-example)

@@ -9,11 +9,11 @@ ms.date: 05/16/2018
 ms.author: magoedte
 ms.custom: include file
 ms.openlocfilehash: 66cd09df128d454973d008adf4ffc5dd1017a18f
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34307484"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38755587"
 ---
 Pro prostředky Log Analytics na jedno předplatné platí tato omezení:
 
@@ -23,7 +23,7 @@ Pro prostředky Log Analytics na jedno předplatné platí tato omezení:
 | Počet placených pracovních prostorů na předplatné | neuvedeno | Jste omezení počtem prostředků v rámci skupiny prostředků a počtem skupin prostředků na předplatné. | 
 
 >[!NOTE]
->Od verze 2. dubna 2018, budou automaticky používat nové pracovní prostory v nové předplatné *za GB* ceny plánu.  Pro existující odběry vytvořil před duben 2, nebo předplatné, které bylo vázané na existující EA zápisu můžete pokračovat v výběru mezi tři cenové úrovně pro nové pracovní prostory. 
+>Od 2. dubnem 2018, budou automaticky využívat nové pracovní prostory v rámci nového předplatného *Per GB* cenový plán.  Pro existující předplatné vytvořené před 2. dubnem nebo předplatné, které se vázalo na existující registraci smlouvy Enterprise budete pokračovat, výběr mezi třemi cenovými úrovněmi pro nové pracovní prostory. 
 >
 
 Na pracovní prostory Log Analytics se vztahují na následující omezení:
@@ -35,7 +35,7 @@ Na pracovní prostory Log Analytics se vztahují na následující omezení:
 
 <sup>1</sup> Když zákazník dosáhne svého denního limitu přenosu dat (500 MB), analýza dat se zastaví a bude pokračovat na začátku dalšího dne. Den vychází ze standardu UTC.
 
-<sup>2</sup> období uchovávání dat pro samostatnou, OMS a GB za cenových plánů je možné zvýšit na 730 dnů.
+<sup>2</sup> období uchovávání dat pro samostatnou, OMS a za GB cenové plány je možné zvýšit prodloužit na 730 dnů.
 
 | Kategorie | Omezení | Komentáře
 | --- | --- | --- |

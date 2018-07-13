@@ -1,56 +1,54 @@
 ---
-title: Obrázek Analysis kognitivní vyhledávání odborností (Azure Search) | Microsoft Docs
-description: Rozbalte text sémantického prostřednictvím analýzy bitovou kopii pomocí dovedností kognitivní ImageAnalysis v obohacení kanál služby Azure Search.
+title: Obrázek analýzy kognitivního vyhledávání dovedností (Azure Search) | Dokumentace Microsoftu
+description: Extrahujte text sémantické prostřednictvím image analýza s využitím kognitivních dovedností ImageAnalysis v rozšíření kanálu služby Azure Search.
 services: search
 manager: pablocas
 author: luiscabrer
-documentationcenter: ''
-ms.assetid: ''
 ms.service: search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: dd26dbe34cd04d1ad3184e2cd62afae5166ac914
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ad1946436b2b5bab55ff53dcce09446ef1220829
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34640502"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39008871"
 ---
-#   <a name="image-analysis-cognitive-skill"></a>Obrázek kognitivní odborností analýzy
+#   <a name="image-analysis-cognitive-skill"></a>Obrázek analýzy kognitivní dovednosti
 
-**Image Analysis** odborností extrahuje bohatou sadu funkcí visual podle obsahu bitové kopie. Můžete například vygenerovat popisek z bitové kopie, vygenerovat značky nebo identifikovat celebrit a zajímavá.
+**Analýza obrázků** dovednosti extrahuje bohatou sadu funkcí visual na základě obsahu obrázku. Můžete například vygenerovat titulek z bitové kopie, generovat značky nebo identifikovat celebrit a památek.
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Vision.ImageAnalysisSkill 
 
 ## <a name="skill-parameters"></a>Parametry dovedností
 
-Parametry jsou malá a velká písmena.
+Parametry rozlišují malá a velká písmena.
 
 | Název parametru     | Popis |
 |--------------------|-------------|
-| defaultLanguageCode   |  Řetězec označující jazyka, který má vrátit. Služba vrátí výsledky rozpoznávání určený jazyk. Pokud není tento parametr zadán, výchozí hodnota je "en". <br/><br/>Podporované jazyky jsou: <br/>*en* -Angličtina (výchozí) <br/> *zh* – zjednodušená čínština|
-|visualFeatures |   Pole řetězce, které označují visual funkce typy, které mají vrátit. Mezi typy platný visual funkce patří:  <ul><li> *kategorie* -rozděluje obsah image podle taxonomii definované v kognitivní služby [dokumentaci](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy).</li><li> *značky* -značky bitové kopie s podrobný seznam slova související obsahu bitové kopie.</li><li>*Popis* -popisuje bitovou kopii obsahu s kompletní věta angličtinu.</li><li>*Řezy* -zjistí, pokud tyto řezy jsou k dispozici. Pokud je k dispozici, generuje souřadnice, pohlaví nebo věku.</li><li> *ImageType* -zjistí, pokud je image clipart nebo kreslení čáry.</li><li>   *Barva* -Určuje barva zvýraznění, dominantní barva, a jestli je obrázek černé & bílé.</li><li>*Pro dospělé* -zjistí, pokud je image pornografické ve své podstatě (znázorňuje nahota nebo pohlaví act). Zjistil se také zřejmý sugestivní obsah.</li></ul> Názvy visual funkcí rozlišují malá a velká písmena.|
-| Podrobnosti   | Pole řetězců, která určuje, které specifické pro doménu podrobnosti vrátit. Mezi typy platný visual funkce patří: <ul><li>*Celebrit* -identifikuje celebrit, pokud se detekuje v bitové kopii.</li><li>*Zajímavá* -identifikuje zajímavá, pokud se detekuje v bitové kopii.</li></ul>
+| defaultLanguageCode   |  Řetězec označující jazyk, který chcete vrátit. Tato služba vrátí výsledky rozpoznávání do zadaného jazyku. Pokud není tento parametr zadán, výchozí hodnota je "en". <br/><br/>Podporované jazyky jsou: <br/>*cs* -Angličtina (výchozí) <br/> *zh* – zjednodušená čínština|
+|visualFeatures |   Pole řetězce, které označují typy vizuální funkce vrátit. Platný vizuální funkce patří:  <ul><li> *kategorie* – rozděluje obsah image podle taxonomie definované ve službě Cognitive Services [dokumentaci](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy).</li><li> *značky* – značky bitová kopie se podrobný seznam slov, související s obsahem obrazu.</li><li>*Popis* -popisuje obsah s kompletní věta anglické image.</li><li>*Tváří* -rozpozná, pokud jsou k dispozici tváří. Pokud jsou k dispozici, generuje souřadnice, pohlaví nebo věku.</li><li> *ImageType* – zjistí, jestli obrázek je klipart nebo perokresba.</li><li>   *Barva* -Určuje barvu motivu, dominantní barva, a určuje, zda je bitová kopie černé černobílý.</li><li>*Pro dospělé* – zjistí, zda se má obrázek pornografický ze své podstaty (znázorňuje nahota nebo act pohlaví). Zjistil se také sexuálně sugestivní obsah.</li></ul> Názvy funkcí visual jsou malá a velká písmena.|
+| Podrobnosti   | Pole řetězce, které označují, které specifického pro doménu podrobnosti k vrácení. Platný vizuální funkce patří: <ul><li>*Celebrit* -identifikuje celebrit, pokud se zjistí na obrázku.</li><li>*Zajímavá* -identifikuje památek, pokud se zjistí na obrázku.</li></ul>
  |
 
 ## <a name="skill-inputs"></a>Vstupy dovedností
 
 | Název vstupu      | Popis                                          |
 |---------------|------------------------------------------------------|
-| Bitové kopie         | Komplexního typu. Aktuálně jedinou funguje s pole "/ dokumentu/normalized_images" vyprodukované indexeru objektů Blob v Azure při ```imageAction``` je nastaven na ```generateNormalizedImages```. Najdete v článku [ukázka](#sample-output) Další informace.|
+| image         | Komplexního typu. Momentálně se podporuje jenom spolupracuje s poli "/ dokument/normalized_images" vytvářených objektů Blob v Azure indexer při ```imageAction``` je nastavena na ```generateNormalizedImages```. Zobrazit [ukázka](#sample-output) Další informace.|
 
 
 
-##  <a name="sample-definition"></a>Ukázka definice
+##  <a name="sample-definition"></a>Ukázková definice
 
 ```json
 {
     "@odata.type": "#Microsoft.Skills.Vision.ImageAnalysisSkill",
+    "context": "/document/normalized_images/*",
     "visualFeatures": [
         "Tags",
         "Faces",
@@ -100,7 +98,7 @@ Parametry jsou malá a velká písmena.
 }
 ```
 
-##  <a name="sample-input"></a>Ukázka vstup
+##  <a name="sample-input"></a>Ukázkový vstup
 
 ```json
 {
@@ -232,21 +230,21 @@ Parametry jsou malá a velká písmena.
 ```
 
 
-## <a name="error-cases"></a>Případech chyb
+## <a name="error-cases"></a>Případy chyb
 V následujících případech chyba jsou extrahovány žádné elementy.
 
 | Kód chyby | Popis |
 |------------|-------------|
 | NotSupportedLanguage | Zadaný jazyk není podporován. |
-| InvalidImageUrl | Adresa URL obrázku je nesprávně naformátovaný nebo není dostupný.|
-| InvalidImageFormat | Vstupní data není platný obrázek. |
-| InvalidImageSize | Vstupní image je moc velká. |
-| NotSupportedVisualFeature  | Funkce zadaný typ není platný. |
-| NotSupportedImage | Nepodporované bitovou kopii, například dětská pornografie. |
-| InvalidDetails | Nepodporovaný model specifické pro doménu. |
+| InvalidImageUrl | Adresa URL obrázku je chybně formátovaná nebo není přístupný.|
+| InvalidImageFormat | Vstupní data netvoří platnou bitovou kopií. |
+| InvalidImageSize | Vstupního obrázku je příliš velký. |
+| NotSupportedVisualFeature  | Typ zadaná funkce není platný. |
+| NotSupportedImage | Nepodporovaný obrázek, například dětskou pornografii. |
+| InvalidDetails | Nepodporovaný model specifického pro doménu. |
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
 + [Předdefinované dovednosti](cognitive-search-predefined-skills.md)
-+ [Jak definovat skillset](cognitive-search-defining-skillset.md)
-+ [Vytvoření Indexer (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
++ [Definování dovedností](cognitive-search-defining-skillset.md)
++ [Vytvoření indexeru (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)

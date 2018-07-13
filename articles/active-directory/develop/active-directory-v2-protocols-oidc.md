@@ -13,41 +13,41 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/18/2018
+ms.date: 07/12/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 747ba9c51181c62b45bb060810391ca54f4c044e
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 2db40be8cab03339b9c0d3ce043d926593ee89a6
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37869087"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39007072"
 ---
 # <a name="azure-active-directory-v20-and-the-openid-connect-protocol"></a>Azure Active Directory v2.0 a protokolu OpenID Connect
-Ověřovací protokol OAuth 2.0, který vám umožní bezpečně přihlásit uživatele k webové aplikaci využívající OpenID Connect se. Při použití koncového bodu v2.0 implementaci OpenID Connect, můžete přidat přihlášení a přístup k rozhraní API pro vaše webové aplikace. V tomto článku ukážeme, jak provést tuto bez ohledu na jazyk. Zjistíte, jak posílat a přijímat zprávy HTTP bez použití jakékoli Microsoft open source knihoven.
+
+Ověřovací protokol OAuth 2.0, který vám umožní bezpečně přihlásit uživatele k webové aplikaci využívající OpenID Connect se. Při použití koncového bodu v2.0 implementaci OpenID Connect, můžete přidat přihlášení a přístup k rozhraní API pro vaše webové aplikace. Tento článek ukazuje, jak provést tuto bez ohledu na jazyk a popisuje, jak posílat a přijímat zprávy HTTP bez použití jakékoli Microsoft open source knihoven.
 
 > [!NOTE]
-> Koncový bod v2.0 nepodporuje všechny scénáře Azure Active Directory a funkce. Pokud chcete zjistit, zda by měl použít koncový bod verze 2.0, přečtěte si informace o [v2.0 omezení](active-directory-v2-limitations.md).
-> 
-> 
+> Koncový bod v2.0 nepodporuje všechny scénáře Azure Active Directory (Azure AD) a funkce. Pokud chcete zjistit, zda by měl použít koncový bod verze 2.0, přečtěte si informace o [v2.0 omezení](active-directory-v2-limitations.md).
 
-[OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) rozšiřuje OAuth 2.0 *autorizace* protokol se má použít jako *ověřování* protokolu, takže můžete provést jeden přihlašování pomocí OAuth. OpenID Connect zavádí koncepci *ID token*, což je token zabezpečení, která umožňuje klientům ověřovat identitu uživatele. ID token také získá profil základní informace o uživateli. Protože OpenID Connect rozšiřuje OAuth 2.0, aplikace můžete bezpečně získat *přístupové tokeny*, které lze použít pro přístup k prostředkům, které jsou zabezpečené pomocí [autorizační server](active-directory-v2-protocols.md#the-basics). Koncový bod v2.0 také umožňuje aplikacím jiných výrobců, které jsou registrované v Azure AD a vystavovat tokeny přístupu k zabezpečeným prostředkům, jako je například webová rozhraní API. Další informace o tom, jak nastavit aplikace vystavovat tokeny přístupu, najdete v tématu [postup registrace aplikace s koncovým bodem v2.0](active-directory-v2-app-registration.md). Doporučujeme vám, že používáte OpenID Connect, pokud vytváříte [webovou aplikaci](active-directory-v2-flows.md#web-apps) , který je hostovaný na serveru a získat přístup z prohlížeče.
+[OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) rozšiřuje OAuth 2.0 *autorizace* protokol se má použít jako *ověřování* protokol, tak, aby vám pomůžou jednotné přihlašování pomocí OAuth. OpenID Connect zavádí koncepci *ID token*, což je token zabezpečení, která umožňuje klientům ověřovat identitu uživatele. ID token také získá profil základní informace o uživateli. Protože OpenID Connect rozšiřuje OAuth 2.0, aplikace můžete bezpečně získat *přístupové tokeny*, které lze použít pro přístup k prostředkům, které jsou zabezpečené pomocí [autorizační server](active-directory-v2-protocols.md#the-basics). Koncový bod v2.0 také umožňuje aplikacím třetích stran, které jsou registrované v Azure AD a vystavovat tokeny přístupu k zabezpečeným prostředkům, jako je například webová rozhraní API. Další informace o tom, jak nastavit aplikaci pro vydávání tokenů přístupu najdete v části [postup registrace aplikace s koncovým bodem v2.0](active-directory-v2-app-registration.md). Doporučujeme vám, že používáte OpenID Connect, pokud vytváříte [webovou aplikaci](active-directory-v2-flows.md#web-apps) , který je hostovaný na serveru a získat přístup z prohlížeče.
 
 ## <a name="protocol-diagram-sign-in"></a>Diagram protokolu: přihlášení
-Základní tok přihlášení má kroků je vidět na dalším obrázku. Popisujeme každý krok podrobně v tomto článku.
+
+Základní tok přihlášení má kroků je vidět na dalším obrázku. Každý krok je podrobně popsány v tomto článku.
 
 ![Protokol OpenID Connect: přihlášení](../../media/active-directory-v2-flows/convergence_scenarios_webapp.png)
 
 ## <a name="fetch-the-openid-connect-metadata-document"></a>Načíst metadata dokumentů OpenID Connect
+
 Dokument metadat, který obsahuje požadované informace o aplikaci provést přihlášení OpenID Connect popisuje. To zahrnuje informace, jako jsou adresy URL k použití a umístění služby veřejné podpisového klíče. Pro koncový bod v2.0 Toto je dokument metadat OpenID Connect, které byste měli použít:
 
 ```
 https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 ```
-> [!TIP] 
-> Vyzkoušejte si to! Klikněte na tlačítko [ https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration ](https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration) zobrazíte `common` konfigurace klientů. 
->
+> [!TIP]
+> Vyzkoušejte si to! Klikněte na tlačítko [ https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration ](https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration) zobrazíte `common` konfigurace klientů.
 
 `{tenant}` Může trvat jednu ze čtyř hodnot:
 
@@ -78,6 +78,7 @@ Metadata jsou jednoduché dokumentu JavaScript Object Notation (JSON). Prohlédn
 Obvykle použijete tento dokument metadat konfigurace OpenID Connect knihovny nebo sady SDK; knihovny by metadata pomocí provádí svou práci. Pokud nechcete použít knihovnu před sestavením OpenID Connect, můžete však postupujte podle kroků ve zbývající části tohoto článku provést přihlášení ve webové aplikaci pomocí koncového bodu v2.0.
 
 ## <a name="send-the-sign-in-request"></a>Odeslat žádost o přihlášení
+
 Pokud vaše webová aplikace potřebuje k ověření uživatele, můžete nasměrovat uživatele `/authorize` koncového bodu. Tento požadavek je podobná první větev spojeného [tok autorizačního kódu OAuth 2.0](active-directory-v2-protocols-oauth-code.md), se tyto důležité rozdíly:
 
 * Musí zahrnovat požadavek `openid` v oboru `scope` parametr.
@@ -105,8 +106,6 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > [!TIP]
 > Kliknutím na následující odkaz k provedení tohoto požadavku. Po přihlášení prohlížeči, budete přesměrováni na https://localhost/myapp/, k tokenu ID do adresního řádku. Všimněte si, že tento požadavek používá `response_mode=fragment` (pouze pro demonstrační účely). Doporučujeme, abyste použili `response_mode=form_post`.
 > <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=id_token&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&scope=openid&response_mode=fragment&state=12345&nonce=678910" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
-> 
-> 
 
 | Parametr | Podmínka | Popis |
 | --- | --- | --- |
@@ -127,6 +126,7 @@ V tomto okamžiku bude uživatel vyzván k zadání přihlašovacích údajů a 
 Poté, co uživatel ověří a udělí svůj souhlas, koncový bod verze 2.0 vrátí odpověď na vaši aplikaci na na zadaný identifikátor URI přesměrování pomocí metody popsané v `response_mode` parametru.
 
 ### <a name="successful-response"></a>Úspěšné odpovědi
+
 Úspěšná odpověď, když použijete `response_mode=form_post` vypadá přibližně takto:
 
 ```
@@ -139,10 +139,11 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&state=12345
 
 | Parametr | Popis |
 | --- | --- |
-| id_token |ID tokenu požadovanou aplikaci. Můžete použít `id_token` parametr pro ověření identity uživatele a zahájit relaci s uživatelem. Další podrobnosti o tokeny typu ID a jejich obsah, najdete v článku [koncového bodu v2.0 tokeny odkaz](active-directory-v2-tokens.md). |
+| id_token |ID tokenu požadovanou aplikaci. Můžete použít `id_token` parametr pro ověření identity uživatele a zahájit relaci s uživatelem. Další informace o tokeny typu ID a jejich obsah, najdete v článku [koncového bodu v2.0 tokeny odkaz](active-directory-v2-tokens.md). |
 | state |Pokud `state` parametr je zahrnutý v požadavku, stejnou hodnotu by se měla zobrazit v odpovědi. Aplikace by měl ověřit, že jsou identické hodnoty stavu v požadavku a odpovědi. |
 
 ### <a name="error-response"></a>Odpověď na chybu
+
 Chyba posílají žádosti o může také být identifikátor URI přesměrování tak, že aplikace zvládne. Chybová odpověď vypadá takto:
 
 ```
@@ -159,6 +160,7 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 | error_description |Určité chybové zprávě, které vám pomohou identifikovat hlavní příčinu chyby ověřování. |
 
 ### <a name="error-codes-for-authorization-endpoint-errors"></a>Kódy chyb pro chyby koncový bod autorizace
+
 Následující tabulka popisuje chybové kódy, které mohou být vráceny v `error` parametr odpovědi na chybu:
 
 | Kód chyby | Popis | Akce klienta |
@@ -172,6 +174,7 @@ Následující tabulka popisuje chybové kódy, které mohou být vráceny v `er
 | invalid_resource |Cílový prostředek je neplatný, protože buď neexistuje, Azure AD nelze najít nebo není správně nakonfigurovaný. |To znamená, že prostředek, pokud existuje, nebyl nakonfigurován v tenantovi. Aplikace může vyzvat uživatele s pokyny pro instalaci aplikace a jeho přidání do služby Azure AD. |
 
 ## <a name="validate-the-id-token"></a>Ověřit ID token
+
 Přijetí tokenu ID není dostatečná k ověření uživatele. Musí také ověřit ID token podpisu a ověřte, deklarace identity v tokenu podle požadavků vaší aplikace. Koncový bod verze 2.0 používá [webové tokeny JSON (Jwt)](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) a kryptografii využívající veřejného klíče pro podepisování tokenů a ověřte, že jsou platné.
 
 Můžete také ověřit token ID v kódu klienta, ale běžnou praxí je odeslat ID token back-end serverů a provést ověření existuje. Poté, co jste ověřili podpis tokenu ID, budete muset ověřit několik deklarací identity. Další informace, včetně informace o [ověřování tokenů](active-directory-v2-tokens.md#validating-tokens) a [důležité informace o podepisování výměny klíčů](active-directory-v2-tokens.md#validating-tokens), najdete v článku [v2.0 tokeny odkaz](active-directory-v2-tokens.md). Doporučujeme, abyste k analýze a ověřovat tokeny pomocí knihovny. Je alespoň jedna z těchto knihoven k dispozici pro většinu jazyky a platformy.
@@ -185,10 +188,11 @@ Můžete také ověřit další deklarace identity, v závislosti na vašem scé
 
 Další informace o deklarace identity v tokenu ID najdete v článku [koncového bodu v2.0 tokeny odkaz](active-directory-v2-tokens.md).
 
-Poté, co jste ověřili zcela ID token, můžete začít relaci s uživatelem. Chcete-li získat informace o uživateli ve vaší aplikaci použijte deklarace identity v tokenu ID. Tyto informace můžete použít pro zobrazení, záznamy, autorizace a tak dále.
+Po ověření tokenu ID můžete začít relaci s uživatelem. Chcete-li získat informace o uživateli ve vaší aplikaci použijte deklarace identity v tokenu ID. Tyto informace můžete použít pro zobrazení, záznamy, autorizace a tak dále.
 
 ## <a name="send-a-sign-out-request"></a>Odeslat žádost o odhlášení
-Pokud chcete odhlásit uživatele z vaší aplikace, není dostatečná k vyčištění souborů cookie vaší aplikace nebo jinak ukončení uživatelské relace. Musíte také přesměrovat uživatele na koncový bod v2.0 odhlášení. Pokud to neuděláte, uživatel znovu ověří do vaší aplikace bez nutnosti zadávat své přihlašovací údaje znovu, protože budou mít platnou jednotné přihlašování relaci s koncovým bodem v2.0.
+
+Pokud chcete odhlásit uživatele z vaší aplikace, není dostatečná k vyčištění souborů cookie vaší aplikace nebo jinak ukončení uživatelské relace. Musíte také přesměrovat uživatele na koncový bod v2.0 odhlášení. Pokud to neuděláte, uživatel rozdílnými do vaší aplikace bez nutnosti zadávat své přihlašovací údaje znovu, protože budou mít platnou jednotné přihlašování relaci s koncovým bodem v2.0.
 
 Můžete přesměrovat uživatele `end_session_endpoint` uvedené v tomto dokumentu metadat OpenID Connect:
 
@@ -202,9 +206,11 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 | post_logout_redirect_uri | Doporučené | Adresa URL, která bude uživatel přesměrován po úspěšném odhlášení. Pokud tento parametr neuvedete, uživateli se zobrazí obecná zpráva, který je generován koncový bod verze 2.0. Tato adresa URL musí odpovídat jedné z přesměrování, na které registrovaný kód URIs pro vaši aplikaci v portálu pro registraci aplikace. |
 
 ## <a name="single-sign-out"></a>Jednotné odhlašování
-Pokud má uživatel přesměrovat `end_session_endpoint`, koncový bod v2.0 vymaže relace uživatele z prohlížeče. Však uživatel stále být přihlášeni k ostatním aplikacím, které používají účty Microsoft pro ověřování. Povolení aplikací pro přihlášení uživatele out současně, verze 2.0 koncový bod odešle požadavek HTTP GET na zaregistrovanou `LogoutUrl` všech aplikací, které uživatel je aktuálně přihlášený k. Aplikace musí odpovědět na tuto žádost zrušíte všechny relace, který identifikuje uživatele a vrácení `200` odpovědi. Pokud chcete podporu jednotného přihlašování, odhlašování ve vaší aplikaci, je nutné implementovat takové `LogoutUrl` v kódu vaší aplikace. Můžete nastavit `LogoutUrl` z portálu pro registraci aplikace.
+
+Pokud má uživatel přesměrovat `end_session_endpoint`, koncový bod v2.0 vymaže relace uživatele z prohlížeče. Však uživatel stále být přihlášeni k ostatním aplikacím, které používají účty Microsoft pro ověřování. Povolení aplikací pro přihlášení uživatele out současně, verze 2.0 koncový bod odešle požadavek HTTP GET na zaregistrovanou `LogoutUrl` všech aplikací, které uživatel je aktuálně přihlášený k. Aplikace musí odpovědět na tuto žádost zrušíte všechny relace, který identifikuje uživatele a vrácení `200` odpovědi. Pokud chcete podporovat odhlašování ve vaší aplikaci jedním, je nutné implementovat takové `LogoutUrl` v kódu vaší aplikace. Můžete nastavit `LogoutUrl` z portálu pro registraci aplikace.
 
 ## <a name="protocol-diagram-access-token-acquisition"></a>Diagram protokolu: přístup k získání tokenu
+
 Mnoho webových aplikací muset nejen přihlásit uživatele v, ale také pro přístup k webové službě jménem uživatele pomocí OAuth. Tento scénář spojuje OpenID Connect pro ověřování uživatelů při získávání současně autorizační kód, který můžete použít k získání přístupových tokenů, pokud používáte toku kódu autorizace OAuth.
 
 Úplné přihlášení a získání tokenu tok OpenID Connect vypadá podobně jako následující diagram. Popisujeme každý krok podrobně v další části tohoto článku.
@@ -238,6 +244,7 @@ https%3A%2F%2Fgraph.microsoft.com%2Fmail.read
 Včetně obory oprávnění v požadavku a použitím `response_type=id_token code`, koncový bod v2.0 zajišťuje, aby uživatel vyjádřil souhlas se oprávnění uvedená v `scope` parametr dotazu. Vrátí autorizační kód do vaší aplikace k výměně za přístupový token.
 
 ### <a name="successful-response"></a>Úspěšné odpovědi
+
 Úspěšné odpovědi pomocí `response_mode=form_post` vypadá přibližně takto:
 
 ```
@@ -255,6 +262,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&code=AwABAA
 | state |Pokud parametr stavu je zahrnutý v požadavku, by se zobrazit stejnou hodnotu v odpovědi. Aplikace by měl ověřit, že jsou identické hodnoty stavu v požadavku a odpovědi. |
 
 ### <a name="error-response"></a>Odpověď na chybu
+
 Chybové odpovědi může být také odesílána identifikátor URI přesměrování, aby aplikace můžete odpovídajícím způsobem zpracovat. Chybová odpověď vypadá takto:
 
 ```
@@ -272,4 +280,4 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 Popis možné kódy chyb a odpovědí doporučených klienta najdete v tématu [kódy chyb pro chyby koncový bod autorizace](#error-codes-for-authorization-endpoint-errors).
 
-Až budete mít autorizační kód a tokenu ID, můžete uživatele přihlásit a získat přístupové tokeny jejich jménem. Pro přihlášení uživatele, musíte ověřit ID token [přesně tak, jak je popsáno](#validate-the-id-token). Pokud chcete získat přístupové tokeny, postupujte podle kroků popsaných v našich [dokumentace k protokolu OAuth](active-directory-v2-protocols-oauth-code.md#request-an-access-token).
+Až budete mít autorizační kód a tokenu ID, můžete uživatele přihlásit a získat přístupové tokeny jejich jménem. Pro přihlášení uživatele, musíte ověřit ID token [přesně tak, jak je popsáno](#validate-the-id-token). Pokud chcete získat přístupové tokeny, postupujte podle kroků popsaných v [dokumentace k protokolu OAuth](active-directory-v2-protocols-oauth-code.md#request-an-access-token).

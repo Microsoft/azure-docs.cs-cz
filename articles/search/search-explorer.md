@@ -1,30 +1,23 @@
 ---
-title: Dotazování indexu (portál – Azure Search) | Dokumentace Microsoftu
-description: Vydejte vyhledávací dotaz v Průzkumníku služby Search na webu Azure Portal.
+title: Průzkumník služby Search pro dotazování indexů ve službě Azure Search | Dokumentace Microsoftu
+description: Další informace o použití Průzkumníka služby Search pro dotazování indexů ve službě Azure Search.
 manager: cgronlun
 author: HeidiSteen
 services: search
 ms.service: search
-ms.topic: quickstart
-ms.date: 07/10/2017
+ms.topic: conceptual
+ms.date: 07/10/2018
 ms.author: heidist
-ms.openlocfilehash: a3592bd0c304dfb78374eeba432c0d28203980c9
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: 520d9e7b1899c54d922ff6fb77e0901f9609b029
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31790504"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39004129"
 ---
-# <a name="query-an-azure-search-index-using-search-explorer-in-the-azure-portal"></a>Dotazování indexu služby Azure Search pomocí průzkumníka služby Search na webu Azure Portal
-> [!div class="op_single_selector"]
-> * [Přehled](search-query-overview.md)
-> * [Azure Portal](search-explorer.md)
-> * [.NET](search-query-dotnet.md)
-> * [REST](search-query-rest-api.md)
-> 
-> 
+# <a name="how-to-use-search-explorer-to-query-indexes-in-azure-search"></a>Použití Průzkumníka služby Search na dotaz indexy ve službě Azure Search 
 
-Tento článek vám ukáže postup dotazování indexu služby Azure Search pomocí **průzkumníka služby Search** na webu Azure Portal. Pomocí průzkumníka služby Search můžete odesílat jednoduché nebo úplné řetězce dotazů Lucene do jakéhokoli existujícího indexu v rámci služby.
+V tomto článku se dozvíte, jak zadávat dotazy na existující index Azure Search pomocí **Průzkumníka služby Search** na webu Azure Portal. Průzkumník služby Search můžete odesílat jednoduché nebo úplné řetězce dotazů Lucene do jakéhokoli existujícího indexu ve službě.
 
 ## <a name="open-the-service-dashboard"></a>Otevření řídicího panelu služby
 1. Klikněte na **Všechny prostředky** na panelu odkazů na levé straně webu [Azure Portal](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices).
@@ -36,15 +29,15 @@ Na dlaždici **Indexy** vyberte index, který chcete prohledat.
 
    ![](./media/search-explorer/pick-index.png)
 
-## <a name="open-search-explorer"></a>Otevření průzkumníka služby Search
+## <a name="open-search-explorer"></a>Otevřete Průzkumníka služby Search
 
-Kliknutím na dlaždici Průzkumník služby Search otevřete vysouvací panel hledání a podokno výsledků.
+Klikněte na dlaždici Průzkumník služby Search otevřete vysouvací panel hledání a podokno výsledků.
 
    ![](./media/search-explorer/search-explorer-tile.png)
 
 ## <a name="start-searching"></a>Spusťte hledání
 
-Pokud používáte průzkumníka služby Search, můžete dotaz formulovat zadáním [parametrů dotazu](https://docs.microsoft.com/rest/api/searchservice/Search-Documents).
+Pokud používáte Průzkumník služby Search, můžete určit [parametrů dotazu](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) dotaz formulovat.
 
 1. V části **Řetězec dotazu** zadejte dotaz a potom stiskněte **Hledat**. 
 
@@ -56,7 +49,7 @@ Pokud používáte průzkumníka služby Search, můžete dotaz formulovat zadá
 
    ![](./media/search-explorer/search-bar.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V následujících zdrojích najdete další informace o syntaxi dotazů a příklady.
 

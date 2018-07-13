@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: heidist
-ms.openlocfilehash: e54b89d31042d43a14379dea6daffd3e7763a64a
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 6c3756e721847a8cb746f5dc755ccd90bfebe9f0
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31796944"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39008270"
 ---
 # <a name="indexing-in-azure-search"></a>Indexování ve službě Azure Search
 > [!div class="op_single_selector"]
@@ -61,10 +61,10 @@ Výhodou použití portálu je, že Azure Search většinou za vás dokáže vyg
 
 ## <a name="verify-data-import-with-search-explorer"></a>Ověření importu dat pomocí Průzkumníka služby Search
 
-Rychlý způsob, jak provést předběžnou kontrolu při odeslání dokumentu, představuje **Průzkumník služby Search** na portálu. Průzkumníka můžete použít k zadávání dotazů na index, aniž byste museli programovat. Funkce vyhledávání je založena na výchozím nastavení, jako je [jednoduchá syntaxe](/rest/api/searchservice/simple-query-syntax-in-azure-search) a výchozí [parametr dotazu searchMode](/rest/api/searchservice/search-documents). Výsledky jsou vráceny ve formátu JSON, abyste si mohli prohlédnout celý dokument.
+Rychlý způsob, jak provést předběžnou kontrolu při odeslání dokumentu je použití **Průzkumníka služby Search** na portálu. Průzkumníka můžete použít k zadávání dotazů na index, aniž byste museli programovat. Funkce vyhledávání je založena na výchozím nastavení, jako je [jednoduchá syntaxe](/rest/api/searchservice/simple-query-syntax-in-azure-search) a výchozí [parametr dotazu searchMode](/rest/api/searchservice/search-documents). Výsledky jsou vráceny ve formátu JSON, abyste si mohli prohlédnout celý dokument.
 
 > [!TIP]
-> Jako výchozí bod můžete využít celou řadu [ukázek kódu pro Azure Search](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search) zahrnujících vložené nebo snadno dostupné datové sady. Na portálu také najdete ukázkový indexer a zdroj dat, obsahující datovou sadu malé realitní kanceláře (s názvem realestate-us-sample). Když spustíte předkonfigurovaný indexer na ukázkový zdroj dat, vytvoří se index a načtou se do něj dokumenty, na které se můžete dotazovat pomocí Průzkumníka služby Search nebo pomocí vlastního kódu.
+> Jako výchozí bod můžete využít celou řadu [ukázek kódu pro Azure Search](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search) zahrnujících vložené nebo snadno dostupné datové sady. Na portálu také najdete ukázkový indexer a zdroj dat, obsahující datovou sadu malé realitní kanceláře (s názvem realestate-us-sample). Když spustíte předkonfigurovaný indexer na vzorový zdroj dat, je index a načítají s dokumenty, které je pak možné zadávat dotazy v Průzkumníku služby Search nebo pomocí kódu, který píšete.
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 

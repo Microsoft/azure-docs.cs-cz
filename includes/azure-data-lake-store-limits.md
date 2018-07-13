@@ -3,5 +3,5 @@ Azure Data Lake Store je celopodnikové, flexibilně škálovatelné úložišt�
 | **Prostředek** | **Výchozí omezení** | **Komentáře** |
 | --- | --- | --- |
 | Maximální počet účtů Data Lake Store na předplatné a oblast |10 | Pokud chcete toto omezení zvýšit, kontaktujte podporu. |
-| Maximální počet přístup seznamů řízení přístupu na soubor nebo složka |32 | Toto je pevný limit. Použití skupin pro správu přístupu s méně položek |
-| Maximální počet výchozí seznamů řízení přístupu na soubor nebo složka |32 | Toto je pevný limit. Použití skupin pro správu přístupu s méně položek |
+| Maximální počet seznamy ACL, přístup na souboru nebo složky |32 | Jedná se o pevný limit. Použití skupin pro správu přístupu s menším počtem položek |
+| Maximální počet výchozí seznamy ACL na souboru nebo složky |32 | Jedná se o pevný limit. Použití skupin pro správu přístupu s menším počtem položek |

@@ -1,10 +1,10 @@
 | Prostředek | Výchozí omezení | Maximální omezení |
 | --- | --- | --- |
 | Prostředky na [skupiny prostředků](../articles/azure-resource-manager/resource-group-overview.md#resource-groups) (podle typu prostředku) |800 |Se liší podle typu prostředku |
-| Nasazení na skupiny prostředků v historii nasazení |800 |800 |
-| Prostředky na nasazení. |800 |800 |
-| Zámky správy (podle jedinečný obor) |20 |20 |
-| Počet značek (podle prostředku nebo skupinu prostředků) |15 |15 |
+| Nasazení na skupinu prostředků v historii nasazení |800 |800 |
+| Prostředky na nasazení |800 |800 |
+| Zámky pro správu (za jedinečný rozsah) |20 |20 |
+| Počet značek (každý prostředek nebo skupinu prostředků) |15 |15 |
 | Délka klíče značky |512 |512 |
 | Délka hodnoty značky |256 |256 |
 
@@ -18,10 +18,10 @@
 | Prostředky (včetně počet kopií) |800 |800 |
 | Výstupy |64 |64 |
 | Výraz šablony |24,576 znaků |24,576 znaků |
-| Prostředky v exportovanými šablonami |200 |200 | 
+| Prostředky v exportované šablony |200 |200 | 
 | Velikost šablony |1 MB |1 MB |
-| Velikost souboru parametrů |64 kB |64 kB |
+| Velikost souboru parametru |64 kB |64 kB |
 
-Některá omezení šablony můžete překročit pomocí vnořené šablony. Další informace najdete v tématu [použití propojených šablon při nasazování prostředků Azure](../articles/azure-resource-manager/resource-group-linked-templates.md). Abyste snížili počet parametrů, proměnné nebo výstupů, můžete sloučit několik hodnot do objektu. Další informace najdete v tématu [objektů jako parametry](../articles/azure-resource-manager/resource-manager-objects-as-parameters.md).
+Některá omezení šablony mohou překročit pomocí vnořené šablony. Další informace najdete v tématu [použití propojených šablon při nasazování prostředků Azure](../articles/azure-resource-manager/resource-group-linked-templates.md). Pokud chcete snížit počet parametrů, proměnných nebo výstupů, můžete kombinovat několik hodnot do objektu. Další informace najdete v tématu [objektů jako parametry](../articles/azure-resource-manager/resource-manager-objects-as-parameters.md).
 
-Pokud dosáhnete limitu 800 nasazení skupinu prostředků, odstraňte nasazení z historie, které už nejsou potřeba. Položky můžete odstranit z historie s [odstranit nasazení skupiny az](/cli/azure/group/deployment#az_group_deployment_delete) používáte Azure CLI, nebo [Remove-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/remove-azurermresourcegroupdeployment) v prostředí PowerShell. Odstranění záznamu z historie nasazení nemá vliv na prostředky nasadit. 
+Pokud překročíte limit 800 nasazení na skupinu prostředků, odstraňte nasazení z historie, ke které jsou už je nepotřebujete. Můžete odstranit položky z historie s [odstranit nasazení skupiny pro az](/cli/azure/group/deployment#az_group_deployment_delete) pro rozhraní příkazového řádku Azure, nebo [Remove-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/remove-azurermresourcegroupdeployment) v prostředí PowerShell. Odstranění záznamu z historie nasazení nemá vliv na nasazení prostředků. 

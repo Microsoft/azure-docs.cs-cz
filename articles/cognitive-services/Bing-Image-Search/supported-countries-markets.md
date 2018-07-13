@@ -1,6 +1,6 @@
 ---
-title: Podporované jazyky a zemích rozhraní API vyhledávání bitové kopie Bingu v Azure | Microsoft Docs
-description: Zjistěte, jaké zemích a jazyky jsou podporovány pomocí rozhraní API služby Bing Image Search.
+title: Podporované země/oblasti a jazyky pro API Bingu pro vyhledávání obrázků v Azure | Dokumentace Microsoftu
+description: Zjistěte, které země/oblasti a jazyky podporují rozhraní API Bingu pro vyhledávání obrázků.
 services: cognitive-services
 author: v-jerkin
 manager: jhubbard
@@ -9,35 +9,35 @@ ms.component: bing-image-search
 ms.topic: article
 ms.date: 10/06/2017
 ms.author: v-jerkin
-ms.openlocfilehash: d0d33ee714ba5cd1ce4e846b96c04f755933bee1
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 97e2bed509146172c10aa9ac2658b99ed7610fcc
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343404"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39004434"
 ---
-# <a name="bing-image-search-countries-and-languages"></a>Hledání bitové kopie Bingu zemích a jazyky
+# <a name="bing-image-search-countriesregions-and-languages"></a>Vyhledávání obrázků Bingu země/oblasti a jazyky
 
-Rozhraní API služby Bing Image Search podporuje více než tří tucet zemích, mnoho s více než jeden jazyk. Určení zemi s dotazem slouží především k zpřesnění výsledků vyhledávání podle zájmů v dané země. Kromě toho výsledky mohou obsahovat odkazy na Bing a tyto odkazy mohou lokalizaci činnost koncového uživatele Bing podle zadaného zemi nebo jazyk.
+Rozhraní API Bingu pro vyhledávání obrázků podporuje více než deseti tři zemích nebo oblastech, mnoho s více než jeden jazyk. Zadání země/oblasti s dotazem slouží především pro upřesnění výsledků hledání podle zájmů v zemi/oblast. Kromě toho výsledky mohou obsahovat odkazy na Bingu a těchto odkazů může lokalizace uživatelského rozhraní Bing podle země nebo oblasti zadaného nebo jazyk.
 
-Chcete-li zadat země a jazyk, nastavte `mkt` parametr dotazu (trhu) kód z **trhů** následující tabulka. Na trhu Určuje zemi i jazyk. Pokud uživatel upřednostní zobrazíte zobrazení textu v jiném jazyce, nastavte `setLang` parametr příslušný jazyk kódu dotazu.
+Chcete-li zadat zemi/oblast a jazyk, nastavte `mkt` parametr dotazu (trhu) pro kódování ze **trhy** následující tabulka. Určuje, na trhu země/oblast a jazyk. Pokud uživatel preferuje zobrazíte zobrazení textu v jiném jazyce, nastavte `setLang` parametr kódu příslušný jazyk dotazu.
 
-Alternativně můžete zadat pomocí země `cc` parametr dotazu. Pokud zadáte jiné zemi, musíte zadat také jeden nebo více kódů pomocí `Accept-Language` hlavičky protokolu HTTP. Podporované jazyky se liší podle země; jsou uvedené pro každou zemi v tabulce trhů.
+Alternativně můžete zadat pomocí země/oblast `cc` parametr dotazu. Pokud chcete zadat určitá země nebo oblast, musíte zadat také jeden nebo více kódů jazyka pomocí `Accept-Language` hlavičky protokolu HTTP. Podporované jazyky se liší podle země nebo oblasti; jsou uvedeny pro každou zemi/oblast v tabulce trhy.
 
 > [!NOTE]
-> Rozhraní API bitové kopie trendů aktuálně podporuje pouze následující trhy:
+> Rozhraní API pro obrázky vzroste zájem o aktuálně podporuje pouze následujících zemích:
 > - en US (angličtina, USA) 
-> - en-CA (angličtina, Kanada) 
-> - en-AU (angličtina, Austrálie) 
+> - cs CA (angličtina, Kanada) 
+> - cs Austrálie (angličtina, Austrálie) 
 > - zh-CN (čínština, Čína)
 
-## <a name="countries"></a>Jednotlivé země
+## <a name="countries"></a>Země
 
-|Země|Kód|
+|Země/oblast|Kód|
 |-------|----|
 |Argentina|AR|
 |Austrálie|AU|
-|Rakousko|NA|
+|Rakousko|AT|
 |Belgie|BÝT|
 |Brazílie|BRAZÍLIE|
 |Kanada|CA|
@@ -45,13 +45,13 @@ Alternativně můžete zadat pomocí země `cc` parametr dotazu. Pokud zadáte j
 |Dánsko|DK|
 |Finsko|FI|
 |Francie|FR|
-|Německo|NĚMECKO|
-|Hongkong|(HONG KONG)|
-|Indie|V|
+|Německo|DE|
+|Hongkong|HK|
+|Indie|INDIE|
 |Indonésie|ID|
 |Itálie|IT|
 |Japonsko|JP|
-|Korea|KR|
+|Jižní Korea|KOREA|
 |Malajsie|MOJE|
 |Mexiko|MX|
 |Nizozemsko|NL|
@@ -60,9 +60,9 @@ Alternativně můžete zadat pomocí země `cc` parametr dotazu. Pokud zadáte j
 |Čína|CN|
 |Polsko|PL|
 |Portugalsko|PT|
-|Filipíny|PARAMETR|
+|Filipíny|PH|
 |Rusko|RU|
-|Saúdská Arábie|PŘIDRUŽENÍ ZABEZPEČENÍ|
+|Saúdská Arábie|SA|
 |Jihoafrická republika|ZA|
 |Španělsko|ES|
 |Švédsko|SE|
@@ -73,17 +73,17 @@ Alternativně můžete zadat pomocí země `cc` parametr dotazu. Pokud zadáte j
 |Spojené státy|USA|
 
 
-## <a name="markets"></a>Trzích
+## <a name="markets"></a>Trhy
 
-|Země|Jazyk|Trhu kódu|
+|Země/oblast|Jazyk|Kód na trhu|
 |-------|--------|-----------|
-|Argentina|Španělština|ES-AR|
-|Austrálie|Angličtina|en-AU|
+|Argentina|Španělština|ES AR|
+|Austrálie|Angličtina|cs AU|
 |Rakousko|Němčina|de-AT|
 |Belgie|Holandština|nl-BE|
 |Belgie|Francouzština|FR-být|
 |Brazílie|Portugalština|pt-BR|
-|Kanada|Angličtina|en-CA|
+|Kanada|Angličtina|cs CA|
 |Kanada|Francouzština|fr-CA|
 |Chile|Španělština|ES-CL|
 |Dánsko|dánština|da-DK|
@@ -92,22 +92,22 @@ Alternativně můžete zadat pomocí země `cc` parametr dotazu. Pokud zadáte j
 |Německo|Němčina|de-DE|
 |Hongkong|Tradiční čínština|zh-HK|
 |Indie|Angličtina|en-IN|
-|Indonésie|Angličtina|en-ID|
+|Indonésie|Angličtina|cs ID|
 |Itálie|italština|IT-IT|
 |Japonsko|Japonština|ja-JP|
-|Korea|Korejština|ko-KR|
-|Malajsie|Angličtina|en Moje|
+|Jižní Korea|Korejština|ko-KR|
+|Malajsie|Angličtina|cs MY|
 |Mexiko|Španělština|es-MX|
 |Nizozemsko|Holandština|NL-NL|
-|Nový Zéland|Angličtina|en-NZ|
+|Nový Zéland|Angličtina|cs NZ|
 |Čína|Čínština|zh-CN|
 |Polsko|polština|pl-PL|
 |Portugalsko|Portugalština|pt-PT|
-|Filipíny|Angličtina|en parametr|
+|Filipíny|Angličtina|cs PH|
 |Rusko|ruština|ru-RU|
-|Saúdská Arábie|arabština|ar (SA)|
-|Jihoafrická republika|Angličtina|en-ZA|
-|Španělsko|Španělština|ES-ES|
+|Saúdská Arábie|arabština|ar-SA|
+|Jihoafrická republika|Angličtina|cs ZA|
+|Španělsko|Španělština|es-ES|
 |Švédsko|švédština|sv-SE|
 |Švýcarsko|Francouzština|FR-CH|
 |Švýcarsko|Němčina|de-CH|
@@ -115,7 +115,7 @@ Alternativně můžete zadat pomocí země `cc` parametr dotazu. Pokud zadáte j
 |Turecko|turečtina|tr-TR|
 |Spojené království|Angličtina|en-GB|
 |Spojené státy|Angličtina|cs-CZ|
-|Spojené státy|Španělština|ES USA|
+|Spojené státy|Španělština|ES US|
 
 ## <a name="next-steps"></a>Další postup
-Další informace o hledání zprávy Bing koncových bodů najdete v tématu [odkazu v7 API Search bitové kopie zprávy](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference).
+Další informace o koncových bodech Bingu pro vyhledávání zpráv najdete v tématu [zpráv API pro vyhledávání obrázků v7 odkaz](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference).

@@ -8,111 +8,113 @@ ms.topic: include
 ms.date: 6/8/2018
 ms.author: raiye
 ms.custom: include file
-ms.openlocfilehash: 21681a1af64754ef569f2ad4ff92f85a598007ac
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: cd9b8eaf84ac4c1227c521628fd4156eec4506bf
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35323778"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38746263"
 ---
-# <a name="write-accelerator"></a>Zápis akcelerátoru
-Zapsat že akcelerátoru výhradně je funkce disku pro M-Series virtuální počítače (VM) na Storage úrovně Premium s Azure spravované disky. Jako název stavy, je účelem funkce vstupně-výstupních operací latenci zápisů Azure Premium Storage. Zapsat že akcelerátoru je ideální kterých jsou k zachování disk způsobem vysoce původce pro moderní databáze vyžaduje aktualizace souborů protokolu.
+# <a name="enable-write-accelerator"></a>Povolení akcelerátoru zápisu
 
-Zapsat že akcelerátoru je obecně dostupné pro virtuální počítače M-series ve veřejném cloudu.
+Zapsat že akcelerátor je funkce disku pro řadu M-Series virtuálních počítačů (VM) na Premium Storage, službou Azure Managed Disks výhradně. Jak uvádí název účelem funkce je zlepšit latenci vstupu/výstupu zápisů ve službě Azure Storage úrovně Premium. Zapsat že akcelerátoru je ideálním řešením, kdy jsou aktualizace souborů protokolu vyžaduje k uchování pro disk způsobem vysoce výkonných moderních databází.
 
-## <a name="planning-for-using-write-accelerator"></a>Plánování pro použití zápisu akcelerátoru
-Zapsat že akcelerátoru se mají použít pro svazky, které obsahují transakčního protokolu nebo vrátit protokoly databázového systému. Není doporučeno použít zápisu akcelerátoru pro svazcích dat databázového systému funkci optimalizovaná má být použit proti protokolu disky.
+Zapsat že akcelerátoru je obecně dostupná pro virtuální počítače řady M-series ve veřejném cloudu.
 
-Zápis akcelerátoru pouze funguje ve spojení s [discích spravovaných pomocí Azure](https://azure.microsoft.com/services/managed-disks/). 
+## <a name="planning-for-using-write-accelerator"></a>Plánování pro použití akcelerátorem zápisu
 
+Zapsat že akcelerátoru byste měli použít pro svazky, které obsahují transakční protokol nebo znovu protokoly DBMS. Není doporučeno použít akcelerátorem zápisu pro datové svazky systému DBMS, jak funkce optimalizovaná pro použití s disky s protokoly.
 
-> [!IMPORTANT]
-> Pokud chcete povolit nebo zakázat zápis akcelerátoru pro existující svazek, který vychází z více disků Storage úrovně Premium a rozdělená pomocí Správce Windows disk nebo svazek, prostory úložiště ve Windows, Windows škálovatelný souborový server (SOFS), Linux LVM nebo MDADM, všechny disky vytváření svazek musí být zapnutá nebo vypnutá pro zápis akcelerátoru v samostatné kroky. **Před povolením nebo zakázáním zápisu akcelerátoru v takové konfiguraci, vypněte virtuální počítač Azure**. 
-
+Zápis akcelerátoru pouze funguje ve spojení s [Azure managed disks](https://azure.microsoft.com/services/managed-disks/).
 
 > [!IMPORTANT]
-> Chcete-li povolit zápis akcelerátorů do existujícího Azure disku, který není součástí sestavení svazku mimo více disků se Windows správci disk nebo svazek, prostory úložiště systému Windows, souborový server Windows Škálováním na více systémů (SOFS), Linux LVM nebo MDADM, úlohy, přístup k Azure disk je potřeba vypnout. Databázové aplikace pomocí Azure disku musí být vypnuté.
+> Povolení Write Accelerator pro disk s operačním systémem virtuálního počítače se restartuje virtuální počítač.
+>
+> Povolit akcelerátorem zápisu k existujícímu disku Azure, který není součástí sestavení svazku z více disků se vedoucí disk nebo svazek, prostory úložiště Windows, souborový server Windows horizontální navýšení kapacity (SOFS), Linux LVM nebo MDADM, úloh, přístup k Azure disk Windows musí být vypnut. Databázové aplikace pomocí Azure disk musí být vypnut.
+>
+> Pokud chcete povolit nebo zakázat Write Accelerator pro existující svazek, která je založená mimo několik disků Azure Premium Storage a prokládané použijete Správce Windows disk nebo svazek, prostory úložiště Windows, horizontální navýšení kapacity Windows souborový server (SOFS) Linux LVM nebo MDADM, všechny disky vytváření svazku musí být zapnutá nebo vypnutá akcelerátorem zápisu v samostatné kroky. **Před povolením nebo zakázáním akcelerátorem zápisu v takové konfiguraci, vypněte virtuální počítač Azure**.
 
-> [!IMPORTANT]
-> Povolení zápisu akcelerátoru pro disk s operačním systémem virtuálního počítače se restartuje virtuální počítač. 
+Povolení Write Accelerator pro disky s operačním systémem nemělo být nutné pro virtuální počítač SAP související konfigurace.
 
-Povolení zápisu akcelerátoru pro disky operačního systému by neměl být potřebné pro konfigurací související s SAP virtuálních počítačů
+### <a name="restrictions-when-using-write-accelerator"></a>Omezení při použití akcelerátorem zápisu
 
-### <a name="restrictions-when-using-write-accelerator"></a>Omezení při použití zápisu akcelerátoru
-Pokud používáte zápis akcelerátoru pro Azure disk nebo VHD, platí tato omezení:
+Při použití akcelerátorem zápisu pro Azure disk nebo virtuální pevný disk, platí tato omezení:
 
-- Premium disku ukládání do mezipaměti musí být nastavena na hodnotu 'None' nebo "Jen pro čtení". Všechny ostatní režimy ukládání do mezipaměti nejsou podporovány.
-- Ještě není podporované snímku na disku akcelerátoru zápis povolen. Toto omezení blokuje služby zálohování Azure schopnost provádět snímky konzistentní aplikací všechny disky virtuálního počítače.
-- Menší velikost vstupně-výstupní operace (< = 32 KiB) trvá Zrychlený cestu. V zatížení načten situacích, kde je dat získávání hromadné nebo kde vyrovnávacích pamětí protokolu transakcí z různých databázového systému jsou vyplněny ve větší míře než získávání trvalé do úložiště, pravděpodobné, vstupně-výstupních operací zapsána do disk nejde Zrychlený cestu.
+- Premium diskové mezipaměti musí být nastavena na hodnotu 'None' nebo "Jen pro čtení". Všechny jiné režimy ukládání do mezipaměti nejsou podporovány.
+- Snímky na akcelerátor zápisu disku se ještě nepodporuje. Toto omezení blokuje služby Azure Backup schopnost provádět snímek konzistentní vzhledem k v aplikaci všech disků virtuálního počítače.
+- Menší velikost vstupně-výstupních operací (< = 32 KiB) trvá akcelerované cestu. V úloze situacích, kde data prochází hromadné načtení nebo pokud vyrovnávacích pamětí protokolu transakce různých DBMS jsou vyplněny ve větší míře před získávání trvale uložena do úložiště, je pravděpodobné, vstupně-výstupních operací zapsána do disku nejde akcelerované cestu.
 
-Existují omezení Azure Premium Storage VHD na virtuální počítač, který může podporovat zápis akcelerátoru. Aktuální omezení jsou:
+Existují omezení Azure Premium Storage VHD na virtuální počítač, který může podporovat akcelerátorem zápisu. Aktuální omezení platí pro:
 
-| VIRTUÁLNÍ POČÍTAČ SKU | Počet disků zápisu akcelerátoru | Zápis disku akcelerátoru IOPS na virtuálních počítačů |
+| SKLADOVOU POLOŽKU VIRTUÁLNÍHO POČÍTAČE | Počet disků akcelerátorem zápisu | Zápis disku akcelerátoru IOPS na virtuální počítač |
 | --- | --- | --- |
 | M128ms 128s | 16 | 8000 |
-| M64s M64ms, M64ls, | 8 | 4000 |
-| M32ms M32s M32ls, M32ts, | 4 | 2000 | 
-| M16ms M16s | 2 | 1000 | 
-| M8ms M8s | 1 | 500 | 
+| M64s M64ms M64ls, | 8 | 4000 |
+| M32ms M32s M32ls M32ts, | 4 | 2000 |
+| M16ms M16s | 2 | 1000 |
+| M8ms M8s | 1 | 500 |
 
-Omezení IOPS jsou na virtuální počítač a *není* na disk. Všechny disky zápisu akcelerátoru sdílet stejný limit IOPS na virtuální počítač.
-## <a name="enabling-write-accelerator-on-a-specific-disk"></a>Povolení zápisu akcelerátoru na určitém disku
-Další několik části se popisují, jak lze povolit zápis akcelerátoru na Azure Premium Storage virtuálních pevných discích.
+Jsou na limity IOPS na virtuální počítač a *není* na disk. Všechny disky akcelerátorem zápisu sdílet stejný limit vstupně-výstupních operací na virtuální počítač.
 
+## <a name="enabling-write-accelerator-on-a-specific-disk"></a>Povolení akcelerátoru zápisu na určitém disku
+
+Několik částí popisuje, jak může být s povoleným akcelerátorem zápisu na Azure Premium Storage virtuálních pevných discích.
 
 ### <a name="prerequisites"></a>Požadavky
-Následující požadavky platí pro používání akcelerátoru zápisu v tuto chvíli:
 
-- Musí být disky, které chcete použít Azure zápisu akcelerátoru proti [discích spravovaných pomocí Azure](https://azure.microsoft.com/services/managed-disks/) na Storage úrovně Premium.
-- Je třeba použít M-series virtuálních počítačů
+Následující požadavky platí v daném okamžiku použití akcelerátorem zápisu:
 
-## <a name="enabling-azure-write-accelerator-using-azure-powershell"></a>Povolení zápisu akcelerátoru Azure pomocí Azure PowerShell
-Modul prostředí PowerShell Azure z verze 5.5.0 zahrnují změny do příslušných rutin chcete povolit nebo zakázat zápis akcelerátoru pro konkrétní disky Azure Premium Storage.
-Aby bylo možné povolit nebo nasazení podporuje zápis akcelerátoru disky, tu následující příkazy prostředí PowerShell změnit a rozšířit tak, aby přijímal parametr pro zápis akcelerátoru.
+- Disky, které chcete použít akcelerátor zápisu Azure proti musí být [Azure managed disks](https://azure.microsoft.com/services/managed-disks/) na Premium Storage.
+- Musí používat virtuálních počítačů řady M-series
 
-Nový parametr přepínač "WriteAccelerator" byly přidány do následující rutiny: 
+### <a name="enabling-azure-write-accelerator-using-azure-powershell"></a>Povolení Azure akcelerátorem zápisu pomocí Azure Powershellu
+
+Modul prostředí Azure PowerShell verze 5.5.0 zahrnují změny na příslušné rutiny k povolení nebo zakázání Write Accelerator pro konkrétní disky Azure Premium Storage.
+Pokud chcete povolit nebo nasadit disky, které jsou podporovány akcelerátorem zápisu, máte následující příkazy prostředí PowerShell změnit a rozšířená tak, aby přijímat parametr pro akcelerátorem zápisu.
+
+Nového přepínacího parametru **- WriteAccelerator** byla přidána do následujících rutin:
 
 - [Set-AzureRmVMOsDisk](https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/set-azurermvmosdisk?view=azurermps-6.0.0)
 - [Add-AzureRmVMDataDisk](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Compute/Add-AzureRmVMDataDisk?view=azurermps-6.0.0)
 - [Set-AzureRmVMDataDisk](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Compute/Set-AzureRmVMDataDisk?view=azurermps-6.0.0)
 - [Add-AzureRmVmssDataDisk](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Compute/Add-AzureRmVmssDataDisk?view=azurermps-6.0.0)
 
-Nesmí mít parametr nastaví vlastnost na hodnotu false a provede nasazení disky, které nemají žádnou podporu pomocí zápisu akcelerátoru.
+Nesmí mít parametr nastaví vlastnost na hodnotu false a nasadí disky, které nepodporují podle akcelerátorem zápisu.
 
-Nový parametr přepínač "OsDiskWriteAccelerator" byla přidána do následující rutiny: 
+Nového přepínacího parametru **- OsDiskWriteAccelerator** byl přidán do následujících rutin:
 
 - [Set-AzureRmVmssStorageProfile](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Compute/Set-AzureRmVmssStorageProfile?view=azurermps-6.0.0)
 
-Nesmí mít parametr nastaví vlastnost na hodnotu false a získávat disky, které využívají není zápisu akcelerátoru.
+Ve výchozím nastavení vrací disky, které nechcete využívat akcelerátorem zápisu bez zadání parametru nastaví vlastnost na hodnotu false.
 
-Nový volitelný parametr typu Boolean (použití hodnot Null), "OsDiskWriteAccelerator" byly přidány do následující rutiny: 
+Nový volitelný parametr logické hodnoty (NULL), **- OsDiskWriteAccelerator** byl přidán do následujících rutin:
 
 - [Update-AzureRmVM](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Compute/Update-AzureRmVM?view=azurermps-6.0.0)
 - [Update-AzureRmVmss](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Compute/Update-AzureRmVmss?view=azurermps-6.0.0)
 
-Zadejte buď $true nebo $false k řízení podpory Azure zápisu akcelerátoru s disky.
+Zadejte $true nebo $false řídit podpora akcelerátor zápisu Azure s disky.
 
-Příklady příkazů může vypadat podobně jako:
+Příklady příkazů může vypadat:
 
-```
-
+```PowerShell
 New-AzureRmVMConfig | Set-AzureRmVMOsDisk | Add-AzureRmVMDataDisk -Name "datadisk1" | Add-AzureRmVMDataDisk -Name "logdisk1" -WriteAccelerator | New-AzureRmVM
 
 Get-AzureRmVM | Update-AzureRmVM -OsDiskWriteAccelerator $true
 
 New-AzureRmVmssConfig | Set-AzureRmVmssStorageProfile -OsDiskWriteAccelerator | Add-AzureRmVmssDataDisk -Name "datadisk1" -WriteAccelerator:$false | Add-AzureRmVmssDataDisk -Name "logdisk1" -WriteAccelerator | New-AzureRmVmss
 
-Get-AzureRmVmss | Update-AzureRmVmss -OsDiskWriteAccelerator:$false 
-
+Get-AzureRmVmss | Update-AzureRmVmss -OsDiskWriteAccelerator:$false
 ```
 
-Dva základní scénáře možnost skripty, jak je znázorněno v následující části.
+Dva základní scénáře možnost využívat skripty, jak je znázorněno v následujících částech.
 
-#### <a name="adding-a-new-disk-supported-by-write-accelerator"></a>Přidání nového disku nepodporuje zápis akcelerátoru
-Tento skript můžete přidat nový disk k virtuálnímu počítači. Disk, který vytvořili pomocí tohoto skriptu bude používat zápis akcelerátoru.
+#### <a name="adding-a-new-disk-supported-by-write-accelerator-using-powershell"></a>Přidání nového disku podporované akcelerátorem zápisu pomocí Powershellu
 
-```
+Tento skript slouží k přidání nového disku k virtuálnímu počítači. Disk vytvořený pomocí tohoto skriptu používá akcelerátorem zápisu.
 
+Nahraďte `myVM`, `myWAVMs`, `log001`, velikost disku a LunID disku s hodnotami, které jsou vhodné pro vaše konkrétní nasazení.
+
+```PowerShell
 # Specify your VM Name
 $vmName="myVM"
 #Specify your Resource Group
@@ -129,16 +131,13 @@ $vm=Get-AzurermVM -ResourceGroupName $rgname -Name $vmname
 Add-AzureRmVMDataDisk -CreateOption empty -DiskSizeInGB $size -Name $vmname-$datadiskname -VM $vm -Caching None -WriteAccelerator:$true -lun $lunid
 #Updates the VM with the disk config - does not require a reboot
 Update-AzureRmVM -ResourceGroupName $rgname -VM $vm
-
-```
-Je nutné přizpůsobit názvy virtuálních počítačů, disku, skupinu prostředků, velikost disku a LunID disku pro konkrétní nasazení.
-
-
-#### <a name="enabling-azure-write-accelerator-on-an-existing-azure-disk"></a>Povolení Azure zápisu akcelerátoru na existující Azure disk
-Pokud potřebujete povolit zápis akcelerátoru na stávající disk, můžete tento skript k provedení úlohy:
-
 ```
 
+#### <a name="enabling-write-accelerator-on-an-existing-azure-disk-using-powershell"></a>Povolení akcelerátoru zápisu na disk s existující Azure pomocí Powershellu
+
+Tento skript můžete použít k povolení akcelerátorem zápisu na disk s existující. Nahraďte `myVM`, `myWAVMs`, a `test-log001` s hodnotami, které jsou vhodné pro vaše konkrétní nasazení. Skript přidá do existujícího disku, kde je hodnota $newstatus nastaven na "$true" akcelerátorem zápisu. Pomocí hodnoty "$false" zakážete akcelerátorem zápisu na daný disk.
+
+```PowerShell
 #Specify your VM Name
 $vmName="myVM"
 #Specify your Resource Group
@@ -153,73 +152,50 @@ $vm=Get-AzurermVM -ResourceGroupName $rgname -Name $vmname
 Set-AzureRmVMDataDisk -VM $vm -Name $datadiskname -Caching None -WriteAccelerator:$newstatus
 #Updates the VM with the disk config - does not require a reboot
 Update-AzureRmVM -ResourceGroupName $rgname -VM $vm
-
 ```
-
-Je nutné přizpůsobit názvy virtuálních počítačů, disk a skupinu prostředků. Skript výše přidá zápisu akcelerátoru do existujícího disku, kde je hodnota $newstatus nastaven na '$true'. Pomocí hodnoty '$false' vypne akcelerátoru zapisovat na daný disk.
 
 > [!Note]
-> Provádění skriptu výše odpojit disk zadaný, povolí zápis akcelerátoru proti disku a pak připojte disk
+> Provádění skriptu výše odpojit disk určený, povolí akcelerátorem zápisu na disk a pak připojte disk
 
-### <a name="enabling-azure-write-accelerator-using-the-azure-portal"></a>Povolení Azure zápisu akcelerátoru pomocí portálu Azure
+### <a name="enabling-write-accelerator-using-the-azure-portal"></a>Povolení akcelerátoru zápisu pomocí webu Azure portal
 
-Můžete povolit zápis akcelerátoru přes portál, kde můžete určit disk nastavení ukládání do mezipaměti: 
+Prostřednictvím portálu, kde můžete určit nastavení mezipaměti disku můžete povolit akcelerátorem zápisu: 
 
-![Zápis akcelerátoru na portálu Azure](./media/virtual-machines-common-how-to-enable-write-accelerator/wa_scrnsht.png)
+![Akcelerátor zápisu na portálu Azure portal](./media/virtual-machines-common-how-to-enable-write-accelerator/wa_scrnsht.png)
 
-## <a name="enabling-through-azure-cli"></a>Povolení prostřednictvím rozhraní příkazového řádku Azure
-Můžete použít [rozhraní příkazového řádku Azure](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest) povolit zápis akcelerátoru. 
+### <a name="enabling-write-accelerator-using-the-azure-cli"></a>Povolení akcelerátoru zápisu pomocí Azure CLI
 
-Pokud chcete povolit zápis akcelerátoru na stávající disk, použijte [aktualizace virtuálního počítače az](https://docs.microsoft.com/en-us/cli/azure/vm?view=azure-cli-latest#az-vm-update), můžete použít následující příklady nahradíte diskName, VMName a ResourceGroup pro vlastní:
- 
-```
-az vm update -g group1 -n vm1 -write-accelerator 1=true
-```
-Připojit disk s zápisu akcelerátoru povoleno prosím použijte [připojit disk virtuálního počítače az](https://docs.microsoft.com/en-us/cli/azure/vm/disk?view=azure-cli-latest#az-vm-disk-attach), můžete použít následující příklad nahradíte v vlastními hodnotami:
-```
-az vm disk attach -g group1 -vm-name vm1 -disk d1 --enable-write-accelerator
-```
-Zakázat zápis akcelerátoru, použijte [aktualizace virtuálního počítače az](https://docs.microsoft.com/en-us/cli/azure/vm?view=azure-cli-latest#az-vm-update), nastavení vlastnosti na hodnotu false: 
-```
-az vm update -g group1 -n vm1 -write-accelerator 0=false 1=false
-```
+Můžete použít [rozhraní příkazového řádku Azure](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest) umožňující akcelerátorem zápisu. 
 
-### <a name="enabling-through-rest-apis"></a>Povolení prostřednictvím rozhraní API Rest
-Abyste mohli nasadit prostřednictvím Rest API služby Azure, je potřeba nainstalovat Azure armclient
+Chcete-li povolit akcelerátorem zápisu na stávající disk, použijte [az vm update](https://docs.microsoft.com/en-us/cli/azure/vm?view=azure-cli-latest#az-vm-update), můžete použít následující příklady Pokud nahradíte diskName, VMName a skupina prostředků s vlastními hodnotami: `az vm update -g group1 -n vm1 -write-accelerator 1=true`
+
+Připojení disku s akcelerátorem zápisu povolené použití [az vm disk attach](https://docs.microsoft.com/en-us/cli/azure/vm/disk?view=azure-cli-latest#az-vm-disk-attach), můžete použít následující příklad je-li změnit v vlastními hodnotami: `az vm disk attach -g group1 -vm-name vm1 -disk d1 --enable-write-accelerator`
+
+Chcete-li zakázat akcelerátorem zápisu, použijte [az vm update](https://docs.microsoft.com/en-us/cli/azure/vm?view=azure-cli-latest#az-vm-update), nastavení vlastnosti na hodnotu false: `az vm update -g group1 -n vm1 -write-accelerator 0=false 1=false`
+
+### <a name="enabling-through-rest-apis"></a>Povolení prostřednictvím rozhraní Rest API
+
+K nasazení pomocí Rest API služby Azure, budete muset nainstalovat Azure armclient.
 
 #### <a name="install-armclient"></a>Nainstalujte armclient
 
-Pokud chcete spustit armclient, musíte ji nainstalovat prostřednictvím Chocolatey. Můžete ho nainstalovat prostřednictvím cmd.exe nebo prostředí powershell. Zvýšenými oprávněními použijte tyto příkazy ("Spustit jako správce").
+Ke spuštění armclient, musíte ji nainstalovat prostřednictvím Chocolatey. Můžete ji nainstalovat prostřednictvím cmd.exe nebo prostředí powershell. Použití se zvýšenými oprávněními pro tyto příkazy ("Spustit jako správce").
 
-Pomocí cmd.exe spusťte následující příkaz:
+Pomocí cmd.exe, spusťte následující příkaz: `@"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"`
 
-```
-@"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
-```
+Pomocí prostředí PowerShell, spusťte následující příkaz: `Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))`
 
-Pomocí prostředí PowerShell, budete muset použít:
+Nyní můžete nainstalovat armclient pomocí následujícího příkazu v cmd.exe nebo prostředí PowerShell `choco install armclient`
 
-```
-Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
-```
+#### <a name="getting-your-current-vm-configuration"></a>Získávání aktuální konfigurace virtuálního počítače
 
-Nyní můžete nainstalovat armclient s příkaz níže v cmd.exe nebo Power Shell
+Chcete-li změnit atributy vaše konfigurace disků, musíte nejprve získat aktuální konfiguraci v souboru JSON. Aktuální konfigurace můžete získat spuštěním následujícího příkazu: `armclient GET /subscriptions/<<subscription-ID<</resourceGroups/<<ResourceGroup>>/providers/Microsoft.Compute/virtualMachines/<<virtualmachinename>>?api-version=2017-12-01 > <<filename.json>>`
 
-```
-choco install armclient
-```
+Podmínky v rámci <> <>nahraďte vaše data, včetně názvu souboru, který by měl mít soubor JSON.
 
-#### <a name="getting-your-current-vm-configuration"></a>Získávání aktuální konfiguraci virtuálního počítače
-Chcete-li změnit atributy vaše konfigurace disků, musíte nejprve získat aktuální konfiguraci v souboru JSON. Aktuální konfigurace můžete získat spuštěním následujícího příkazu:
+Výstup může vypadat:
 
-```
-armclient GET /subscriptions/<<subscription-ID<</resourceGroups/<<ResourceGroup>>/providers/Microsoft.Compute/virtualMachines/<<virtualmachinename>>?api-version=2017-12-01 > <<filename.json>>
-```
-Podmínky v rámci <> <>nahraďte vaše data, včetně názvu souboru, který by měl mít souboru JSON.
-
-Výstup by měl vypadat jako:
-
-```
+```JSON
 {
   "properties": {
     "vmId": "2444c93e-f8bb-4a20-af2d-1658d9dbbbcb",
@@ -299,9 +275,9 @@ Výstup by měl vypadat jako:
 
 ```
 
-Dalším krokem je aktualizace souboru JSON a povolit zápis akcelerátoru na disku s názvem 'log1'. Tento krok lze provést tak, že přidáte tento atribut do souboru JSON po položky mezipaměti disku. 
+Dál aktualizujte soubor JSON a povolení akcelerátorem zápisu na disk říká "log1". To lze provést přidáním tohoto atributu do souboru JSON za položka mezipaměti disku.
 
-```
+```JSON
         {
           "lun": 1,
           "name": "log1",
@@ -316,16 +292,11 @@ Dalším krokem je aktualizace souboru JSON a povolit zápis akcelerátoru na di
         }
 ```
 
-Aktualizujte stávající nasazení pomocí tohoto příkazu:
+Pak aktualizujte stávající nasazení pomocí tohoto příkazu: `armclient PUT /subscriptions/<<subscription-ID<</resourceGroups/<<ResourceGroup>>/providers/Microsoft.Compute/virtualMachines/<<virtualmachinename>>?api-version=2017-12-01 @<<filename.json>>`
 
-```
-armclient PUT /subscriptions/<<subscription-ID<</resourceGroups/<<ResourceGroup>>/providers/Microsoft.Compute/virtualMachines/<<virtualmachinename>>?api-version=2017-12-01 @<<filename.json>>
+Výstup by měl vypadat jako následující. Uvidíte, že s povoleným akcelerátorem zápisu pro jeden disk.
 
-```
-
-Výstup by měl vypadat jako jeden níže. Uvidíte, že je zápis akcelerátoru povolené pro jeden disk.
-
-```
+```JSON
 {
   "properties": {
     "vmId": "2444c93e-f8bb-4a20-af2d-1658d9dbbbcb",
@@ -403,9 +374,6 @@ Výstup by měl vypadat jako jeden níže. Uvidíte, že je zápis akcelerátoru
   "location": "westeurope",
   "id": "/subscriptions/XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/resourceGroups/mylittlesap/providers/Microsoft.Compute/virtualMachines/mylittlesapVM",
   "name": "mylittlesapVM"
-
 ```
 
-Z bodu změny na jednotky by mělo podporovat zápis akcelerátoru.
-
- 
+Po provedení této změny disku by měla podporovat akcelerátorem zápisu.

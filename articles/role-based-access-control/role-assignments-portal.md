@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/13/2018
+ms.date: 07/11/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 6544503353f085a9dd9b0fe7207bbf8d4e0bc9d0
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: aaa36d850516ff4d8e40b62c588347468da5c6d2
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37435613"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39008157"
 ---
 # <a name="manage-access-using-rbac-and-the-azure-portal"></a>Správa přístupu pomocí RBAC a webu Azure Portal
 
@@ -88,7 +88,9 @@ Při správě přístupu chcete vědět, kdo má přístup, jaká jsou jejich op
 
    ![Uživatel Azure Active Directory – Prostředky Azure](./media/role-assignments-portal/aad-user-azure-resources.png)
 
-   V okně Prostředky Azure se zobrazí přiřazení rolí pro vybraného uživatele. Tento seznam obsahuje pouze přiřazení rolí pro prostředky, ke kterým máte oprávnění ke čtení. Pokud má uživatel například přiřazení rolí také v jiném předplatném, ke kterému nemáte oprávnění ke čtení, v seznamu se takové přiřazení rolí nezobrazí.
+   V okně prostředků Azure můžete zobrazit přiřazení role pro vybraného uživatele a vybrané předplatné. Tento seznam obsahuje pouze přiřazení rolí pro prostředky, které mají oprávnění ke čtení. Například pokud uživatel má také přiřazení role, které nelze číst, tato přiřazení rolí se nezobrazí v seznamu.
+
+1. Pokud máte více předplatných, můžete **předplatné** rozevíracího seznamu zobrazíte přiřazení rolí v jiném předplatném.
 
 ## <a name="grant-access"></a>Udělení přístupu
 
@@ -161,14 +163,6 @@ V RBAC se přístup odebírá odebrání přiřazení role.
 1. Ve zprávě Odebrání přiřazení role, která se zobrazí, zvolte **Ano**.
 
 Zděděná přiřazení rolí nejde odebrat. Pokud potřebujete odebrat zděděné přiřazení role, musíte to provést v oboru, ve kterém bylo přiřazení role vytvořené. Ve sloupci **Obor** vedle sloupce **Zděděný** je odkaz, pomocí kterého můžete přejít k prostředkům, kde byla role přiřazená. Přejděte k oboru, který je zde uvedený, a odeberte přiřazení role.
-
-## <a name="other-tools-to-manage-access"></a>Další nástroje pro správu přístupu
-
-Přiřazování rolí a správu přístupu pomocí řízení přístupu na základě role v Azure lze provádět i v jiných nástrojích než portálu Azure. Další informace najdete na následujících odkazech:
-
-* [Azure PowerShell](role-assignments-powershell.md)
-* [Azure CLI](role-assignments-cli.md)
-* [REST API](role-assignments-rest.md)
 
 ## <a name="next-steps"></a>Další postup
 
