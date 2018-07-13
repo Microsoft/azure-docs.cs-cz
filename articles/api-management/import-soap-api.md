@@ -14,11 +14,11 @@ ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
 ms.openlocfilehash: 108758751b7c8ef5906cb55495a2604f918b2714
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33934883"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38488910"
 ---
 # <a name="import-soap-api"></a>Importování rozhraní API SOAP
 

@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
 ms.openlocfilehash: 824235cfdae6df9d852875281346e35a18277f74
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34651360"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38531656"
 ---
 # <a name="tutorial-update-inventory-using-powershell-and-topicssubscriptions"></a>Kurz: Aktualizace zásob pomocí prostředí PowerShell a témat/odběrů
 
@@ -43,7 +43,7 @@ Před tímto kurzem se ujistěte, že máte nainstalované tyto položky:
 1. [Visual Studio 2017 s aktualizací Update 3 (verze 15.3, 26730.01)](http://www.visualstudio.com/vs) nebo novější.
 2. [NET Core SDK](https://www.microsoft.com/net/download/windows) verze 2.0 nebo novější.
 
-Tento kurz vyžaduje použití nejnovější verze Azure PowerShellu. Pokud PowerShell potřebujete nainstalovat nebo upgradovat, přečtěte si téma [Instalace a konfigurace prostředí Azure PowerShell][].
+Tento kurz vyžaduje použití nejnovější verze Azure PowerShellu. Pokud PowerShell potřebujete nainstalovat nebo upgradovat, přečtěte si téma [Nainstalujte a nakonfigurujte Azure PowerShell][].
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -92,9 +92,9 @@ Po spuštění rutiny `Get-AzureRmServiceBusKey` zkopírujte připojovací řet�
 
 ## <a name="send-and-receive-messages"></a>Odesílání a příjem zpráv
 
-Pokud jste vytvořili obor názvů a frontu a máte potřebná pověření, jste připraveni odesílat a přijímat zprávy. Kód si můžete zkontrolovat v [této složce s ukázkami na GitHubu](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/BasicSendReceiveQuickStart).
+Pokud jste vytvořili obor názvů a frontu a máte potřebná pověření, můžete začít odesílat a přijímat zprávy. Kód si můžete zkontrolovat v [této složce s ukázkami na GitHubu](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/BasicSendReceiveQuickStart).
 
-Při spuštění kódu postupujte takto:
+Kód spustíte následovně:
 
 1. Pomocí následujícího příkazu naklonujte [úložiště Service Bus na GitHubu](https://github.com/Azure/azure-service-bus/):
 
@@ -117,12 +117,12 @@ Při spuštění kódu postupujte takto:
    dotnet build
    ```
 6.  Přejděte do složky `\bin\Debug\netcoreapp2.0`.
-7.  Zadáním následujícího příkazu spusťte program. `myConnectionString` nezapomeňte nahradit hodnotou, kterou jste předtím získali, a `myQueueName` názvem fronty, kterou jste vytvořili:
+7.  Zadáním následujícího příkazu spusťte program. Nezapomeňte `myConnectionString` nahradit hodnotou, kterou jste předtím získali, a `myQueueName` nahraďte názvem vytvořené fronty:
 
    ```shell
    dotnet BasicSendReceiveQuickStart.dll -ConnectionString "myConnectionString" -QueueName "myQueueName"
    ``` 
-8. Sledujte, jak se do fronty odešle 10 zpráv, a následně se z fronty přijmou:
+8. Sledujte, jak se do fronty odešle deset zpráv a jak se následně z fronty přijmou:
 
    ![výstup programu](./media/service-bus-quickstart-powershell/dotnet.png)
 
@@ -286,4 +286,4 @@ Přejděte k dalšímu kurzu, kde se dozvíte více o možnostech publikování 
 > [Aktualizace zásob pomocí prostředí PowerShell a témat/odběrů](service-bus-tutorial-topics-subscriptions-cli.md)
 
 [bezplatný účet]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
-[Instalace a konfigurace prostředí Azure PowerShell]: /powershell/azure/install-azurerm-ps
+[Nainstalujte a nakonfigurujte Azure PowerShell]: /powershell/azure/install-azurerm-ps

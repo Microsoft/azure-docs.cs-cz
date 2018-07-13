@@ -1,5 +1,5 @@
 ---
-title: Hromadné kopírování dat pomocí Azure Data Factory | Microsoft Docs
+title: Hromadné kopírování dat pomocí Azure Data Factory | Dokumentace Microsoftu
 description: Naučte se používat Azure Data Factory a aktivitu kopírování k hromadnému kopírování dat ze zdrojového úložiště dat do cílového úložiště dat.
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/22/2018
 ms.author: jingwang
-ms.openlocfilehash: c42f7257b4b4077cc719c57e3136505f766e654c
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 6079784a21b5dea8929fcfa3d8f296477b3b9520
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37046829"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37083324"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Hromadné kopírování několika tabulek pomocí Azure Data Factory
 Tento kurz představuje **kopírování několika tabulek z Azure SQL Database do služby Azure SQL Data Warehouse**. Stejný vzor můžete využít i u dalších scénářů kopírování. Například při kopírování tabulek z SQL Serveru/Oraclu do služby Azure SQL Database/Data Warehouse/Azure Blob nebo při kopírování různých cest ze služby Blob do tabulek Azure SQL Database.
@@ -77,12 +77,12 @@ Pro SQL Database i SQL Data Warehouse povolte službám Azure přístup k SQL se
 1. Spusťte webový prohlížeč **Microsoft Edge** nebo **Google Chrome**. Uživatelské rozhraní služby Data Factory podporují v současnosti jenom webové prohlížeče Microsoft Edge a Google Chrome.
 1. V nabídce vlevo klikněte na **Nový**, klikněte na **Data + analýzy** a pak na **Data Factory**. 
    
-   ![Nový -> Objekt pro vytváření dat](./media/tutorial-bulk-copy-portal/new-azure-data-factory-menu.png)
+   ![Nový -> Datová továrna](./media/tutorial-bulk-copy-portal/new-azure-data-factory-menu.png)
 2. Na stránce **Nová datová továrna** jako **název** zadejte **ADFTutorialBulkCopyDF**. 
       
      ![Stránka Nová datová továrna](./media/tutorial-bulk-copy-portal/new-azure-data-factory.png)
  
-   Název objektu pro vytváření dat Azure musí být **globálně jedinečný**. Pokud se zobrazí následující chyba pole názvu, změňte název datové továrny (například na vaše_jméno_ADFTutorialBulkCopyDF). Pravidla pojmenování artefaktů služby Data Factory najdete v článku [Data Factory – pravidla pojmenování](naming-rules.md).
+   Název datové továrny Azure musí být **globálně jedinečný**. Pokud se zobrazí následující chyba pole názvu, změňte název datové továrny (například na vaše_jméno_ADFTutorialBulkCopyDF). Pravidla pojmenování artefaktů služby Data Factory najdete v článku [Data Factory – pravidla pojmenování](naming-rules.md).
   
        `Data factory name “ADFTutorialBulkCopyDF” is not available`
 3. Vyberte své **předplatné** Azure, ve kterém chcete vytvořit datovou továrnu. 
@@ -93,7 +93,7 @@ Pro SQL Database i SQL Data Warehouse povolte službám Azure přístup k SQL se
          
       Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/resource-group-overview.md).  
 4. Jako **verzi** vyberte **V2**.
-5. Vyberte **umístění** pro objekt pro vytváření dat. Data Factory V2 v současné době umožňuje vytváření datových továren jenom v oblastech Východní USA, Východní USA 2 a Západní Evropa. Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
+5. Vyberte **umístění** pro datovou továrnu. Pokud chcete zobrazit seznam oblastí Azure, ve kterých je služba Data Factory aktuálně dostupná, na následující stránce vyberte oblasti, které vás zajímají, pak rozbalte **Analýza** a vyhledejte **Data Factory:** [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
 6. Zaškrtněte **Připnout na řídicí panel**.     
 7. Klikněte na možnost **Vytvořit**.
 8. Na řídicím panelu vidíte následující dlaždice se statusem: **Nasazování datové továrny**. 
@@ -101,7 +101,7 @@ Pro SQL Database i SQL Data Warehouse povolte službám Azure přístup k SQL se
     ![nasazování dlaždice datové továrny](media//tutorial-bulk-copy-portal/deploying-data-factory.png)
 9. Po vytvoření se zobrazí stránka **Datová továrna**, jak je znázorněno na obrázku.
    
-    ![Domovská stránka objektu pro vytváření dat](./media/tutorial-bulk-copy-portal/data-factory-home-page.png)
+    ![Domovská stránka datové továrny](./media/tutorial-bulk-copy-portal/data-factory-home-page.png)
 10. Kliknutím na dlaždici **Vytvořit a monitorovat** otevřete na samostatné kartě aplikaci uživatelského rozhraní služby Data Factory.
 11. Na stránce **Začínáme** přepněte na levém panelu na kartu **Upravit**, jak je znázorněno na následujícím obrázku:  
 

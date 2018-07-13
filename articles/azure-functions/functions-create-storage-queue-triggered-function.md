@@ -1,5 +1,5 @@
 ---
-title: Vytvoření funkce aktivované zprávami ve frontě v Azure | Microsoft Docs
+title: Vytvoření funkce aktivované zprávami ve frontě v Azure | Dokumentace Microsoftu
 description: Pomocí služby Azure Functions vytvoříte funkci bez serveru, kterou vyvolávají zprávy odeslané do fronty služby Azure Storage.
 services: azure-functions
 documentationcenter: na
@@ -17,11 +17,11 @@ ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: mvc, cc996988-fb4f-47
 ms.openlocfilehash: 1c11c50dedda84bcb968f84ffbb43b49fbc93ff4
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34714778"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38586831"
 ---
 # <a name="create-a-function-triggered-by-azure-queue-storage"></a>Vytvoření funkce aktivované službou Azure Queue Storage
 

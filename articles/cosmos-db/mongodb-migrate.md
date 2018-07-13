@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: cacda277082f62c9d98a7459cb5dbf74375bfd87
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: bdaead6fe739d62340ca225aa1a6d8adf9e86cb9
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34795342"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37100292"
 ---
 # <a name="azure-cosmos-db-import-mongodb-data"></a>Azure Cosmos DB: Import dat MongoDB 
 
@@ -38,7 +38,7 @@ Tento kurz se zabývá následujícími úkony:
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Zvýšená propustnost: Doba trvání migrace dat závisí na propustnosti, kterou pro jednotlivé kolekce nebo sady kolekcí nastavíte. V případě rozsáhlejších migrací dat nezapomeňte zvýšit propustnost. Po dokončení migrace propustnost snižte, abyste dosáhli nižších nákladů. Další informace o zvýšení propustnosti na webu [Azure Portal](https://portal.azure.com) najdete v tématu [Úrovně výkonu a cenové úrovně ve službě Azure Cosmos DB](performance-levels.md).
+* Zvýšená propustnost: Doba trvání migrace dat závisí na propustnosti, kterou pro jednotlivé kolekce nebo sady kolekcí nastavíte. V případě rozsáhlejších migrací dat nezapomeňte propustnost zvýšit. Po dokončení migrace propustnost snižte, abyste dosáhli nižších nákladů. Další informace o zvýšení propustnosti na webu [Azure Portal](https://portal.azure.com) najdete v tématu [Úrovně výkonu a cenové úrovně ve službě Azure Cosmos DB](performance-levels.md).
 
 * Povolený protokol SSL: Azure Cosmos DB má striktní bezpečnostní požadavky a standardy. Při práci se svým účtem nezapomeňte povolit SSL. Postup pro povolení SSL pro mongoimport a mongorestore najdete ve zbývající části článku.
 
@@ -82,7 +82,7 @@ Příklad:
         
     * Ve výchozím nastavení Azure Cosmos DB zřídí novou kolekci MongoDB s 1 000 jednotek žádostí za sekundu (RU/s). Před zahájením migrace pomocí nástroje mongoimport, mongorestore nebo mongomirror předem vytvořte všechny kolekce pomocí webu [Azure Portal](https://portal.azure.com) nebo ovladačů a nástrojů MongoDB. Pokud je vaše kolekce větší než 10 GB, nezapomeňte vytvořit [sdílenou/dělenou kolekci](partition-data.md) s odpovídajícím klíčem horizontálního dělení.
 
-    * Jen pro účely migrace na webu [Azure Portal](https://portal.azure.com) zvyšte propustnost vašich kolekcí z 1 000 RU/s pro kolekce s jedním oddílem a 2 500 RU/s pro horizontálně dělené kolekce. Vyšší propustnost vám umožní zabránit omezování a zkrátit dobu migrace. Díky fakturaci služby Azure Cosmos DB po hodinách můžete propustnost okamžitě po migraci snížit, abyste dosáhli nižších nákladů.
+    * Jen pro účely migrace na webu [Azure Portal](https://portal.azure.com) zvyšte propustnost vašich kolekcí z 1 000 RU/s pro kolekce s jedním oddílem a 2 500 RU/s pro horizontálně dělené kolekce. Vyšší propustnost vám umožní zabránit omezování rychlosti a zkrátit dobu migrace. Díky fakturaci služby Azure Cosmos DB po hodinách můžete propustnost okamžitě po migraci snížit, abyste dosáhli nižších nákladů.
 
     * Kromě zřízení RU/s na úrovni kolekce můžete zřídit také RU/s pro sadu kolekcí na úrovni nadřazené databáze. Vyžaduje to vytvoření databáze a kolekcí předem a definování klíče horizontálního dělení pro každou kolekci.
 

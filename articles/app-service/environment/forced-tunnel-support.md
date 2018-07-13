@@ -11,14 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 03/20/2018
+ms.date: 05/29/2018
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: 904641a433d55cc5f1d04b17ed067cd560c6b33c
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 082275e2acd81e34c057f863651528eb46e8501e
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37114951"
 ---
 # <a name="configure-your-app-service-environment-with-forced-tunneling"></a>Konfigurace vynuceného tunelového propojení ve službě App Service Environment
 
@@ -37,6 +38,7 @@ Další informace o směrování ve virtuální síti najdete v tématu [Trasy d
 Pokud chcete směrovat odchozí provoz služby ASE někam jinam než přímo do internetu, máte následující možnosti:
 
 * Povolení přímého přístupu služby ASE k internetu
+* Konfigurace ignorování tras protokolu BGP v podsíti služby ASE
 * Konfigurace podsítě služby ASE pro používání koncových bodů služby pro SQL Azure a Azure Storage
 * Přidání vlastních IP adres do brány firewall SQL Azure pro službu ASE
 
@@ -58,8 +60,22 @@ Pokud už síť směruje provoz do místní sítě, musíte před pokusem o nasa
 
 ![Přímí přístup k internetu][1]
 
+## <a name="configure-your-ase-subnet-to-ignore-bgp-routes"></a>Konfigurace ignorování tras protokolu BGP v podsíti služby ASE ## 
+
+V podsíti služby ASE můžete nakonfigurovat ignorování všech tras protokolu BGP.  Při této konfiguraci bude mít služba ASE bezproblémový přístup ke všem svým závislostem.  Budete však muset vytvořit trasy definované uživatelem, abyste svým aplikacím umožnili přístup k místním prostředkům.
+
+Konfigurace ignorování tras protokolu BGP v podsíti služby ASE:
+
+* Pokud jste to ještě neudělali, vytvořte trasu definovanou uživatelem a přiřaďte ji k vaší podsíti služby ASE.
+* Na webu Azure Portal otevřete uživatelské rozhraní pro směrovací tabulku přiřazenou k vaší podsíti služby ASE.  Vyberte Konfigurace.  Nastavte Šíření tras protokolu BGP na Zakázáno.  Klikněte na Uložit. Dokumentaci k vypnutí této možnosti najdete v dokumentu [Vytvoření směrovací tabulky][routetable].
+
+Až to uděláte, vaše aplikace už nebudou mít přístup k místnímu prostředí. Vyřešíte to tak, že upravíte trasu definovanou uživatelem přiřazenou k vaší podsíti služby ASE a přidáte trasy pro vaše místní rozsahy adres. Typ dalšího segmentu směrování by měl být nastavený na bránu virtuální sítě. 
+
 
 ## <a name="configure-your-ase-with-service-endpoints"></a>Konfigurace služby ASE s použitím koncových bodů služby ##
+
+ > [!NOTE]
+   > Koncové body služby s SQL nefungují se službou ASE v oblastech US Government.  Následující informace platí pouze pro veřejné oblasti Azure.  
 
 Pokud chcete směrovat veškerý odchozí provoz ze služby ASE kromě provozu směřujícího do SQL Azure a služby Azure Storage, proveďte následující kroky:
 
@@ -141,3 +157,4 @@ Kromě prostého přerušení komunikace můžete službu ASE nepříznivě ovli
 [routes]: ../../virtual-network/virtual-networks-udr-overview.md
 [template]: ./create-from-template.md
 [serviceendpoints]: ../../virtual-network/virtual-network-service-endpoints-overview.md
+[routetable]: ../../virtual-network/manage-route-table.md#create-a-route-table

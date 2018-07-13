@@ -6,18 +6,19 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-registry
 ms.topic: tutorial
-ms.date: 10/24/2017
+ms.date: 04/30/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: c6ac8f22f128b350844af10f309fd3b93512d54d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 6347c460ab88929152424d301445a219720b98e8
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38582297"
 ---
 # <a name="tutorial-deploy-web-app-from-azure-container-registry"></a>Kurz: Nasazení webové aplikace ze služby Azure Container Registry
 
-Toto je druhá část z třídílné série kurzů. V [první části](container-registry-tutorial-prepare-registry.md) jste vytvořili privátní, geograficky replikovaný registr kontejneru a ze zdroje jste sestavili image kontejneru, kterou jste vložili do registru. V tomto článku nasadíte kontejner do dvou instancí webových aplikací ve dvou různých oblastech Azure a využijete tak aspekt blízkosti sítě u geograficky replikovaného registru.
+Toto je druhá část z třídílné série kurzů. V [první části](container-registry-tutorial-prepare-registry.md) jste vytvořili privátní, geograficky replikovaný registr kontejneru a ze zdroje jste sestavili image kontejneru, kterou jste vložili do registru. V tomto článku nasadíte kontejner do instancí webových aplikací ve dvou různých oblastech Azure a využijete tak aspekt blízkosti sítě u geograficky replikovaného registru. Každá instance pak načte image kontejneru z nejbližšího registru.
 
 V této druhé části série kurzů se naučíte:
 
@@ -27,11 +28,11 @@ V této druhé části série kurzů se naučíte:
 
 Pokud jste ještě nevytvořili geograficky replikovaný registr a nevložili jste image kontejnerizované ukázkové aplikace do registru, vraťte se do předchozího kurzu v této sérii: [Příprava geograficky replikovaného registru kontejnerů Azure](container-registry-tutorial-prepare-registry.md).
 
-V další části této série aplikaci zaktualizujete a pak vložíte novou image kontejneru do registru. Nakonec přejdete na každou ze spuštěných instancí webové aplikace a přesvědčíte se, že se změny automaticky projevily v obou instancích. Uvidíte tak, jak v praxi funguje geografická replikace registru kontejneru Azure a webhooky.
+V dalším článku této série aplikaci aktualizujete a pak vložíte aktualizovanou image kontejneru do registru. Nakonec přejdete na každou ze spuštěných instancí webové aplikace a přesvědčíte se, že se změny automaticky projevily v obou instancích. Uvidíte tak, jak v praxi funguje geografická replikace registru kontejneru Azure a webhooky.
 
 ## <a name="automatic-deployment-to-web-apps-for-containers"></a>Automatické nasazení do služby Web Apps for Containers
 
-Služba Azure Container Registry poskytuje podporu pro nasazování kontejnerizovaných aplikací do služby [Web Apps for Containers](../app-service/containers/index.yml). V tomto kurzu nasadíte pomocí portálu Azure Portal image kontejneru, kterou jste vytvořili v předchozím kurzu, do dvou plánů webových aplikací umístěných v různých oblastech Azure.
+Služba Azure Container Registry poskytuje podporu pro nasazování kontejnerizovaných aplikací do služby [Web Apps for Containers](../app-service/containers/index.yml). V tomto kurzu nasadíte pomocí webu Azure Portal image kontejneru, kterou jste vytvořili v předchozím kurzu, do dvou plánů webových aplikací umístěných v různých oblastech Azure.
 
 Když nasadíte webovou aplikaci z image kontejneru v registru a máte geograficky replikovaný registr ve stejné oblasti, vytvoří vám služba Azure Container Registry [webhook](container-registry-webhook.md) pro nasazení image. Když do úložiště kontejnerů vložíte novou image, převezme webhook tuto změnu a automaticky nasadí novou image kontejneru do vaší webové aplikace.
 
@@ -103,11 +104,7 @@ Po nasazení image Dockeru z geograficky replikovaného registru kontejneru se v
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste nasadili dvě instance služby Web App for Containers z geograficky replikovaného registru kontejneru Azure. Podle kroků v tomto kurzu jste:
-
-> [!div class="checklist"]
-> * Nasadili image kontejneru do dvou instancí služby *Web Apps for Containers*.
-> * Ověřili nasazenou aplikaci.
+V tomto kurzu jste nasadili dvě instance služby Web App for Containers z geograficky replikovaného registru kontejneru Azure.
 
 Přejděte na další kurz, ve kterém provedete aktualizaci a pak nasadíte novou image kontejneru do registru kontejneru. Pak ověříte, že webové aplikace běžící v obou oblastech se automaticky aktualizovaly.
 

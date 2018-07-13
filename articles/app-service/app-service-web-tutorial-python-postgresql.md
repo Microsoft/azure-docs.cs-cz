@@ -13,11 +13,11 @@ ms.date: 01/25/2018
 ms.author: beverst
 ms.custom: mvc
 ms.openlocfilehash: 49ec67d06446d6c48e45aef90e2bd528a1b541a9
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33203506"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38473010"
 ---
 # <a name="tutorial-build-a-python-and-postgresql-web-app-in-azure"></a>Kurz: Vytvoření webové aplikace Python s připojením k databázi PostgreSQL v Azure
 

@@ -13,11 +13,11 @@ ms.date: 12/18/2017
 ms.author: sngun
 ms.custom: mvc
 ms.openlocfilehash: e6511b9511d2598b58fd3afee34803ceb09ac5ce
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34763442"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38582848"
 ---
 # <a name="azure-cosmos-db-develop-with-the-table-api-in-net"></a>Azure Cosmos DB: Vývoj v .NET s využitím rozhraní Table API
 

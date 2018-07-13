@@ -16,11 +16,11 @@ ms.date: 04/11/2018
 ms.author: cephalin
 ms.custom: mvc
 ms.openlocfilehash: 654c187bcd552e9682115bc5e53ba69a3dca7c1d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32154258"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38472709"
 ---
 # <a name="build-a-net-core-and-sql-database-web-app-in-azure-app-service-on-linux"></a>Vytvoření webové aplikace .NET Core využívající databázi SQL ve službě Azure App Service v Linuxu
 

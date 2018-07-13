@@ -1,5 +1,5 @@
 ---
-title: 'Databáze Azure Cosmos: Sestavení webové aplikace v prostředí .NET s rozhraním API MongoDB | Microsoft Docs'
+title: 'Databáze Azure Cosmos: Sestavení webové aplikace v prostředí .NET s rozhraním API MongoDB | Dokumentace Microsoftu'
 description: Představuje ukázku kódu .NET, kterou můžete použít k připojení a dotazování do rozhraní API MongoDB databáze Azure Cosmos.
 services: cosmos-db
 author: SnehaGunda
@@ -12,11 +12,11 @@ ms.topic: quickstart
 ms.date: 05/22/2018
 ms.author: sngun
 ms.openlocfilehash: 2e0de0f15612b21345bd8df6f9808222ec328c3d
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34798725"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38542617"
 ---
 # <a name="azure-cosmos-db-build-a-mongodb-api-web-app-with-net-and-the-azure-portal"></a>Databáze Azure Cosmos: Sestavení webové aplikace s rozhraním API MongoDB v prostředí .NET a na webu Azure Portal
 

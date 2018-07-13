@@ -1,6 +1,6 @@
 ---
-title: Monitorování a diagnostika kontejnerů Windows v Azure Service Fabric | Microsoft Docs
-description: V tomto kurzu nastavíte monitorování a diagnostiku pro kontejner Windows orchestrovaný na platformě Azure Service Fabric.
+title: Monitorování a diagnostika kontejnerů Windows na platformě Service Fabric v Azure | Microsoft Docs
+description: V tomto kurzu nakonfigurujete Log Analytics na monitorování a diagnostiku kontejnerů Windows na platformě Azure Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 06/08/2018
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: f839b05a1d97ce78601697469c982839358d6b06
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: b013627c5a0dc596c9897d7fa2c5bf2b2a79ee40
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36300852"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37114002"
 ---
 # <a name="tutorial-monitor-windows-containers-on-service-fabric-using-log-analytics"></a>Kurz: Monitorování kontejnerů Windows na platformě Service Fabric pomocí Log Analytics
 
@@ -34,13 +34,16 @@ V tomto kurzu se naučíte:
 > * Konfigurace agenta Log Analytics ke sbírání metrik kontejnerů a uzlů
 
 ## <a name="prerequisites"></a>Požadavky
+
 Než začnete s tímto kurzem, musíte mít splněné následující požadavky:
-- Máte cluster v Azure. Případně ho můžete [vytvořit pomocí tohoto kurzu](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
-- [Nasadili jste do něj kontejnerizovanou aplikaci](service-fabric-host-app-in-a-container.md).
+
+* Máte cluster v Azure. Případně ho můžete [vytvořit pomocí tohoto kurzu](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
+* [Nasadili jste do něj kontejnerizovanou aplikaci](service-fabric-host-app-in-a-container.md).
 
 ## <a name="setting-up-log-analytics-with-your-cluster-in-the-resource-manager-template"></a>Nastavení Log Analytics pro cluster v šabloně Resource Manageru
 
 V případě, že jste použili [šablonu poskytnutou](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Tutorial) v první části tohoto kurzu, měla by v obecné šabloně Azure Resource Manageru pro Service Fabric už zahrnovat následující položky. V případě, že máte vlastní cluster, který chcete nastavit pro monitorování kontejnerů pomocí Log Analytics:
+
 * Proveďte následující změny šablony Resource Manageru.
 * Nasaďte ji pomocí PowerShellu a upgradujte tak svůj cluster prostřednictvím [nasazení šablony](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm). Azure Resource Manager rozpozná, že prostředky existují, takže ji zavede jako upgrade.
 
@@ -49,7 +52,7 @@ V případě, že jste použili [šablonu poskytnutou](https://github.com/ChackD
 Proveďte následující změny v souboru *template.json*.
 
 1. Do části *parameters* (parametry) přidejte umístění a název pracovního prostoru Log Analytics:
-    
+
     ```json
     "omsWorkspacename": {
       "type": "string",
@@ -74,8 +77,8 @@ Proveďte následující změny v souboru *template.json*.
 
     Pokud chcete některou z těchto hodnot změnit, přidejte stejné parametry do souboru *template.parameters.json* a změňte použité hodnoty tam.
 
-2. Do části *variables* (proměnné) přidejte název řešení a řešení: 
-    
+2. Do části *variables* (proměnné) přidejte název řešení a řešení:
+
     ```json
     "omsSolutionName": "[Concat('ServiceFabric', '(', parameters('omsWorkspacename'), ')')]",
     "omsSolution": "ServiceFabric"
@@ -102,7 +105,7 @@ Proveďte následující změny v souboru *template.json*.
     ```
 
 4. Přidejte pracovní prostor Log Analytics jako samostatný prostředek. V části *resources* (prostředky) za prostředek škálovacích sad virtuálních počítačů přidejte následující:
-    
+
     ```json
     {
         "apiVersion": "2015-11-01-preview",
@@ -193,21 +196,21 @@ Pokud chcete ve svém pracovním prostoru nastavit řešení kontejnerů, vyhled
 
 Po zobrazení výzvy k zadání *pracovního prostoru Log Analytics* vyberte pracovní prostor, který se vytvořil ve vaší skupině prostředků, a klikněte na **Vytvořit**. Tím se do vašeho pracovního prostoru přidá *řešení pro monitorování kontejnerů* a agent Log Analytics nasazený šablonou začne automaticky shromažďovat protokoly a statistiky Dockeru. 
 
-Vraťte se do své *skupiny prostředků*, kde by se teď mělo zobrazit nově přidané řešení pro monitorování. Když na něj kliknete, na cílové stránce by se měl zobrazit počet spuštěných imagí kontejnerů. 
+Vraťte se do své *skupiny prostředků*, kde by se teď mělo zobrazit nově přidané řešení pro monitorování. Když na něj kliknete, na cílové stránce by se měl zobrazit počet spuštěných imagí kontejnerů.
 
 *Všimněte si, že mám spuštěných 5 instancí kontejneru fabrikam z [druhé části](service-fabric-host-app-in-a-container.md) kurzu.*
 
 ![Cílová stránka řešení kontejnerů](./media/service-fabric-tutorial-monitoring-wincontainers/solution-landing.png)
 
-Kliknutím na **Řešení pro monitorování kontejnerů** přejdete na podrobnější řídicí panel, kde můžete procházet několika panely a také spouštět dotazy v Log Analytics. 
+Kliknutím na **Řešení pro monitorování kontejnerů** přejdete na podrobnější řídicí panel, kde můžete procházet několika panely a také spouštět dotazy v Log Analytics.
 
 *Poznámka: Od září 2017 prochází řešení určitými aktualizacemi – protože pracujeme na integraci více orchestrátorů do stejného řešení, ignorujte případné chyby týkající se událostí Kubernetes.*
 
-Vzhledem k tomu, že agent sbírá protokoly Dockeru, ve výchozím nastavení zobrazí výstupy *stdout* a *stderr*. Když se posunete doprava, zobrazí se inventář imagí kontejnerů, jejich stav, metriky a ukázkové dotazy, jejichž spuštěním můžete získat užitečnější data. 
+Vzhledem k tomu, že agent sbírá protokoly Dockeru, ve výchozím nastavení zobrazí výstupy *stdout* a *stderr*. Když se posunete doprava, zobrazí se inventář imagí kontejnerů, jejich stav, metriky a ukázkové dotazy, jejichž spuštěním můžete získat užitečnější data.
 
 ![Řídicí panel řešení kontejnerů](./media/service-fabric-tutorial-monitoring-wincontainers/container-metrics.png)
 
-Kliknutím na jakýkoli z těchto panelů přejdete k dotazu Log Analytics, který generuje zobrazenou hodnotu. Změňte dotaz na *\**, aby se zobrazily všechny různé druhy shromažďovaných protokolů. Tady můžete dotazovat nebo filtrovat výkon kontejnerů, protokoly nebo zobrazit události platformy Service Fabric. Vaši agenti také neustále vysílají z každého uzlu prezenční signál, jehož kontrolou se můžete ujistit, že se stále shromažďují data ze všech počítačů, pokud se konfigurace clusteru změní.   
+Kliknutím na jakýkoli z těchto panelů přejdete k dotazu Log Analytics, který generuje zobrazenou hodnotu. Změňte dotaz na *\**, aby se zobrazily všechny různé druhy shromažďovaných protokolů. Tady můžete dotazovat nebo filtrovat výkon kontejnerů, protokoly nebo zobrazit události platformy Service Fabric. Vaši agenti také neustále vysílají z každého uzlu prezenční signál, jehož kontrolou se můžete ujistit, že se stále shromažďují data ze všech počítačů, pokud se konfigurace clusteru změní.
 
 ![Dotaz na kontejner](./media/service-fabric-tutorial-monitoring-wincontainers/query-sample.png)
 
@@ -222,10 +225,9 @@ Tím přejdete do svého pracovního prostoru Log Analytics, kde můžete zobraz
 
 Za několik minut **aktualizujte** řešení pro monitorování kontejnerů. Měla by se vám začít zobrazovat příchozí data o *výkonu počítačů*. Ta vám pomůžou porozumět využití vašich prostředků. Tyto metriky můžete využít také k přijímání patřičných rozhodnutí o škálování clusteru nebo k potvrzení, jestli cluster vyrovnává zatížení podle očekávání.
 
-*Poznámka: Abyste mohli využívat tyto metriky, ujistěte se, že máte správně nastavené filtry času.* 
+*Poznámka: Abyste mohli využívat tyto metriky, ujistěte se, že máte správně nastavené filtry času.*
 
 ![Čítače výkonu 2](./media/service-fabric-tutorial-monitoring-wincontainers/perf-counters2.png)
-
 
 ## <a name="next-steps"></a>Další kroky
 

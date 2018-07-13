@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive,mvc
-ms.openlocfilehash: 46c80f326c8210ac3282cf128058cee91ff3836c
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 1abc0a8ed9aec1082a4710647f6c03c87e1fd1d2
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33770833"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098225"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-apache-hive-on-azure-hdinsight"></a>Kurz: Extrakce, transformace a načítání dat pomocí Apache Hivu ve službě Azure HDInsight
 
@@ -320,6 +320,7 @@ V tomto kurzu jste zjistili, jak pomocí clusteru Apache Hadoop ve službě HDIn
 
 Informace o dalších způsobech práce s daty ve službě HDInsight najdete v následujících článcích:
 
+* [Kurz: Extrakce, transformace a načítání dat pomocí Apache Hivu ve službě Azure HDInsight](../storage/data-lake-storage/tutorial-extract-transform-load-hive.md)
 * [Použití Hivu se službou HDInsight][hdinsight-use-hive]
 * [Použití Pigu se službou HDInsight][hdinsight-use-pig]
 * [Vývoj programů Java MapReduce pro Hadoop ve službě HDInsight][hdinsight-develop-mapreduce]

@@ -9,11 +9,11 @@ ms.topic: overview
 ms.date: 03/27/2018
 ms.author: tamram
 ms.openlocfilehash: f67ee855456b40b553f09d6cf32d00e99c5530b2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31409411"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38479209"
 ---
 # <a name="introduction-to-object-storage-in-azure"></a>Úvod k úložišti objektů v Azure
 
@@ -21,7 +21,7 @@ ms.locfileid: "31409411"
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Vytvoření účtu úložiště](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+* [vytvořit účet úložiště](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 * [Začínáme se službou Blob Storage s použitím .NET](storage-dotnet-how-to-use-blobs.md)
 * [Ukázky pro Azure Storage s použitím .NET](../common/storage-samples-dotnet.md)
 * [Ukázky pro Azure Storage s použitím Javy](../common/storage-samples-java.md)

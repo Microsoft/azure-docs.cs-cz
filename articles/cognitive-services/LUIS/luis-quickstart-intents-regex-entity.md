@@ -7,16 +7,16 @@ manager: kaiqb
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 06/18/2018
+ms.date: 06/29/2018
 ms.author: v-geberr
-ms.openlocfilehash: 317d5b37b90f6c436e3cecf0486d587f54960598
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 522d24c1c03a338633c340502087300c890d1771
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36316538"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128441"
 ---
-# <a name="tutorial-use-regular-expression-entity"></a>Kurz: Použití entity regulárního výrazu
+# <a name="tutorial-3-add-regular-expression-entity"></a>Kurz: 3. Přidání entity regulárního výrazu
 V tomto kurzu vytvoříte aplikaci, která ukazuje extrakci konzistentně formátovaných dat z promluvy pomocí entity **regulárního výrazu**.
 
 
@@ -31,7 +31,7 @@ V tomto kurzu vytvoříte aplikaci, která ukazuje extrakci konzistentně formá
 Pro účely tohoto článku potřebujete bezplatný účet [LUIS](luis-reference-regions.md#luis-website), abyste mohli vytvořit svou aplikaci LUIS.
 
 ## <a name="before-you-begin"></a>Než začnete
-Pokud nemáte aplikaci pro lidské zdroje z kurzu k předem připraveným entitám pro [vlastní doménu](luis-tutorial-prebuilt-intents-entities.md), [naimportujte](create-new-app.md#import-new-app) na webu [LUIS](luis-reference-regions.md#luis-website) JSON do nové aplikace z úložiště [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-prebuilts-HumanResources.json) na GitHubu.
+Pokud nemáte aplikaci pro lidské zdroje z kurzu k [předem připraveným entitám](luis-tutorial-prebuilt-intents-entities.md), [naimportujte](create-new-app.md#import-new-app) na webu [LUIS](luis-reference-regions.md#luis-website) do nové aplikace JSON z úložiště [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-prebuilts-HumanResources.json) na GitHubu.
 
 Pokud chcete zachovat původní aplikaci pro lidské zdroje, naklonujte verzi na stránce [Settings](luis-how-to-manage-versions.md#clone-a-version) (Nastavení) a pojmenujte ji `regex`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. 
 
@@ -144,54 +144,70 @@ Abyste mohli využít předpověď služby LUIS v chatbotu nebo jiné aplikaci, 
 
     ![Snímek obrazovky se stránkou Publish (Publikovat) a zvýrazněnou adresou URL koncového bodu](./media/luis-quickstart-intents-regex-entity/publish-select-endpoint.png)
 
-2. Na konec adresy URL zadejte `When were HRF-123456 and hrf-234567 published?`. Poslední parametr řetězce dotazu je `q`, což je **dotaz** promluvy. Tato promluva není stejná jako žádná z označených promluv, proto je to dobrý test a měl by se vrátit záměr `FindForm` se dvěma čísly formuláře `HRF-123456` a `hrf-234567`.
+2. Na konec adresy URL zadejte `When were HRF-123456 and hrf-234567 published in the last year?`. Poslední parametr řetězce dotazu je `q`, což je **dotaz** promluvy. Tato promluva není stejná jako žádná z označených promluv, proto je to dobrý test a měl by se vrátit záměr `FindForm` se dvěma čísly formuláře `HRF-123456` a `hrf-234567`.
 
     ```
     {
-      "query": "When were HRF-123456 and hrf-234567 published?",
+      "query": "When were HRF-123456 and hrf-234567 published in the last year?",
       "topScoringIntent": {
         "intent": "FindForm",
-        "score": 0.970179737
+        "score": 0.9993477
       },
       "intents": [
         {
           "intent": "FindForm",
-          "score": 0.970179737
+          "score": 0.9993477
         },
         {
           "intent": "ApplyForJob",
-          "score": 0.0131893409
-        },
-        {
-          "intent": "Utilities.StartOver",
-          "score": 0.00364777143
+          "score": 0.0206110049
         },
         {
           "intent": "GetJobInformation",
-          "score": 0.0024568392
+          "score": 0.00533067342
+        },
+        {
+          "intent": "Utilities.StartOver",
+          "score": 0.004215215
         },
         {
           "intent": "Utilities.Help",
-          "score": 0.00173760345
+          "score": 0.00209096959
         },
         {
           "intent": "None",
-          "score": 0.00173070864
-        },
-        {
-          "intent": "Utilities.Confirm",
-          "score": 0.00130692765
+          "score": 0.0017655947
         },
         {
           "intent": "Utilities.Stop",
-          "score": 0.00130328839
+          "score": 0.00109490135
+        },
+        {
+          "intent": "Utilities.Confirm",
+          "score": 0.0005704638
         },
         {
           "intent": "Utilities.Cancel",
-          "score": 0.0006671795
+          "score": 0.000525338168
         }
       ],
       "entities": [
+        {
+          "entity": "last year",
+          "type": "builtin.datetimeV2.daterange",
+          "startIndex": 53,
+          "endIndex": 61,
+          "resolution": {
+            "values": [
+              {
+                "timex": "2017",
+                "type": "daterange",
+                "start": "2017-01-01",
+                "end": "2018-01-01"
+              }
+            ]
+          }
+        },
         {
           "entity": "hrf-123456",
           "type": "HRF-number",
@@ -237,10 +253,10 @@ Váš chatbot má teď dostatek informací k určení primární akce `FindForm`
 Služba LUIS s tímto požadavkem skončila. Volající aplikace, například chatbot, může převzít výsledek topScoringIntent a čísla formulářů a prohledat rozhraní API třetí strany. Služba LUIS tuto práci neprovádí. Služba LUIS pouze určuje, co je záměrem uživatele, a extrahuje data o tomto záměru. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Pokud už aplikaci LUIS nepotřebujete, odstraňte ji. Provedete to tak, že vyberete nabídku se třemi tečkami (...) vpravo od názvu aplikace v seznamu aplikací a vyberete **Delete** (Odstranit). V automaticky otevíraném dialogovém okně **Delete app?** (Odstranit aplikaci?) vyberte **Ok**.
+Pokud už aplikaci LUIS nepotřebujete, odstraňte ji. V nabídce vlevo nahoře vyberte **My apps** (Moje aplikace). Vyberte nabídku se třemi tečkami (...) vpravo od názvu aplikace v seznamu aplikací a vyberte **Delete** (Odstranit). V automaticky otevíraném dialogovém okně **Delete app?** (Odstranit aplikaci?) vyberte **Ok**.
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Další informace o entitě klíčové fráze](luis-quickstart-intent-and-key-phrase.md)
+> [Informace o entitě seznamu](luis-quickstart-intent-and-list-entity.md)
 

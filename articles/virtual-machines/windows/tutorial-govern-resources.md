@@ -15,11 +15,11 @@ ms.date: 05/21/2018
 ms.author: tomfitz
 ms.custom: mvc
 ms.openlocfilehash: 42f7d767162f2f403b2cf921e31a38b711a3c773
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37438226"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38477690"
 ---
 # <a name="tutorial-learn-about-windows-virtual-machine-governance-with-azure-powershell"></a>Kurz: Informace o řízení virtuálních počítačů s Windows pomocí Azure PowerShellu
 

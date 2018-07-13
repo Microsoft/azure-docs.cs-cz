@@ -14,11 +14,11 @@ ms.date: 01/25/2018
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: 95b806eaabaf0ba93b1e8b6823340e82842b0f1c
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33202044"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38591381"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-powershell"></a>Rychlý start: Směrování webového provozu pomocí služby Azure Application Gateway – Azure PowerShell
 
@@ -65,7 +65,7 @@ New-AzureRmPublicIpAddress `
   -Name myAGPublicIPAddress `
   -AllocationMethod Dynamic
 ```
-## <a name="create-backend-servers"></a>Vytvoření back-endových serverů
+## <a name="create-backend-servers"></a>Vytvoření serverů back-end
 
 V tomto příkladu vytvoříte dva virtuální počítače, které se použijí jako servery back-end pro aplikační bránu. 
 
@@ -118,7 +118,7 @@ for ($i=1; $i -le 2; $i++)
 }
 ```
 
-## <a name="create-an-application-gateway"></a>Vytvoření aplikační brány
+## <a name="create-an-application-gateway"></a>Vytvoření služby Application Gateway
 
 ### <a name="create-the-ip-configurations-and-frontend-port"></a>Vytvoření konfigurací IP adres a front-endového portu
 
@@ -175,7 +175,7 @@ $frontendRule = New-AzureRmApplicationGatewayRequestRoutingRule `
   -BackendHttpSettings $poolSettings
 ```
 
-### <a name="create-the-application-gateway"></a>Vytvoření aplikační brány
+### <a name="create-the-application-gateway"></a>Vytvoření služby Application Gateway
 
 Jakmile vytvoříte potřebné podpůrné prostředky, zadejte parametry aplikační brány příkazem [New-AzureRmApplicationGatewaySku](/powershell/module/azurerm.network/new-azurermapplicationgatewaysku) a pak aplikační bránu vytvořte příkazem [New-AzureRmApplicationGateway](/powershell/module/azurerm.network/new-azurermapplicationgateway).
 

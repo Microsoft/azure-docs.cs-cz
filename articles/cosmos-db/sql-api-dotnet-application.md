@@ -13,11 +13,11 @@ ms.date: 08/03/2017
 ms.author: sngun
 ms.custom: devcenter
 ms.openlocfilehash: 193f0f74d7a8ebaee72105698c646b55a8159a3b
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34796991"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38453446"
 ---
 # <a name="_Toc395809351"></a>Kurz k ASP.NET MVC: Vývoj webové aplikace s použitím služby Azure Cosmos DB
 > [!div class="op_single_selector"]

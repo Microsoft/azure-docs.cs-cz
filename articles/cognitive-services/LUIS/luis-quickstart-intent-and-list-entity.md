@@ -7,16 +7,16 @@ manager: kaiqb
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 06/21/2018
+ms.date: 06/29/2018
 ms.author: v-geberr
-ms.openlocfilehash: 68c241833aab756bfc5e71c03da5d4175401910d
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: c5408d20a736f262e95ce7014c385b50521967ad
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36335818"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37127851"
 ---
-# <a name="tutorial-create-app-using-a-list-entity"></a>Kurz: Vytvoření aplikace využívající entitu seznamu
+# <a name="tutorial-4-add-list-entity"></a>Kurz: 4. Přidání entity seznamu
 V tomto kurzu vytvoříte aplikaci, která ukazuje, jak získat data odpovídající předdefinovanému seznamu. 
 
 <!-- green checkmark -->
@@ -30,7 +30,7 @@ V tomto kurzu vytvoříte aplikaci, která ukazuje, jak získat data odpovídaj�
 Pro účely tohoto článku potřebujete bezplatný účet [LUIS](luis-reference-regions.md#luis-website), abyste mohli vytvořit svou aplikaci LUIS.
 
 ## <a name="before-you-begin"></a>Než začnete
-Pokud nemáte aplikaci pro lidské zdroje z kurzu k entitám regex pro [vlastní doménu](luis-quickstart-intents-regex-entity.md), [naimportujte](create-new-app.md#import-new-app) JSON do nové aplikace na webu [LUIS](luis-reference-regions.md#luis-website). Aplikaci k importování najdete v úložišti [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-regex-HumanResources.json) na Githubu.
+Pokud nemáte aplikaci pro lidské zdroje z kurzu k [entitám regulárních výrazů](luis-quickstart-intents-regex-entity.md), [naimportujte](create-new-app.md#import-new-app) JSON do nové aplikace na webu služby [LUIS](luis-reference-regions.md#luis-website). Aplikaci k importování najdete v úložišti [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-regex-HumanResources.json) na Githubu.
 
 Pokud chcete zachovat původní aplikaci pro lidské zdroje, naklonujte verzi na stránce [Settings](luis-how-to-manage-versions.md#clone-a-version) (Nastavení) a pojmenujte ji `list`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. 
 
@@ -43,7 +43,7 @@ Název každé položky v kanonickém tvaru je číslo zaměstnance. Příklady 
 
 |Účel synonyma|Hodnota synonyma|
 |--|--|
-|Jméno|John W. Smith|
+|Název|John W. Smith|
 |E-mailová adresa|john.w.smith@mycompany.com|
 |Telefonní linka|x12345|
 |Číslo osobního mobilního telefonu|425-555-1212|
@@ -83,7 +83,7 @@ mv john.w.smith@mycompany from office b-1234 to office h-4452
 
 4. Přidejte do záměru ukázkové promluvy.
 
-    |Příklady promluv|
+    |Ukázkové promluvy|
     |--|
     |move John W. Smith from B-1234 to H-4452 (přesunout Johna W. Smithe z B-1234 do H-4452).|
     |mv john.w.smith@mycompany.com from office b-1234 to office h-4452 (john.w.smith@mycompany.com se přesune z kanceláře b-1234 do kanceláře h-4452).|
@@ -97,8 +97,6 @@ mv john.w.smith@mycompany from office b-1234 to office h-4452
     |234-56-7891 to hh-2345 (234 7891 56 do hh 2345)|
 
     [ ![Snímek obrazovky se stránkou záměru a zvýrazněnými novými promluvami](./media/luis-quickstart-intent-and-list-entity/hr-enter-utterances.png) ](./media/luis-quickstart-intent-and-list-entity/hr-enter-utterances.png#lightbox)
-
-    Aplikace má z předchozího kurzu přidanou předem připravenou entitu čísla, takže je každé číslo označené. Pro klientskou aplikaci může být tato informace dostačující, ale číslo není označené typem. Vytvoření nové entity s odpovídajícím názvem umožní klientské aplikaci zpracovat entitu po vrácení ze služby LUIS.
 
 ## <a name="create-an-employee-list-entity"></a>Vytvoření entity seznamu zaměstnanců
 Když teď má záměr **MoveEmployee** (Přesunutí zaměstnance) promluvy, musí služba LUIS porozumět tomu, co je zaměstnanec. 
@@ -123,7 +121,7 @@ Když teď má záměr **MoveEmployee** (Přesunutí zaměstnance) promluvy, mus
 
     |Účel synonyma|Hodnota synonyma|
     |--|--|
-    |Jméno|John W. Smith|
+    |Název|John W. Smith|
     |E-mailová adresa|john.w.smith@mycompany.com|
     |Telefonní linka|x12345|
     |Číslo osobního mobilního telefonu|425-555-1212|
@@ -137,7 +135,7 @@ Když teď má záměr **MoveEmployee** (Přesunutí zaměstnance) promluvy, mus
 
     |Účel synonyma|Hodnota synonyma|
     |--|--|
-    |Jméno|Jill Jones|
+    |Název|Jill Jones|
     |E-mailová adresa|jill-jones@mycompany.com|
     |Telefonní linka|x23456|
     |Číslo osobního mobilního telefonu|425-555-0000|
@@ -298,10 +296,10 @@ Váš chatbot má teď dostatek informací k určení primární akce `MoveEmplo
 Služba LUIS s tímto požadavkem skončila. Volající aplikace, například chatbot, může převzít výsledek topScoringIntent a data z entity a provést další krok. Služba LUIS neprovádí tuto programovou práci za chatbota ani nevolá aplikaci. Služba LUIS pouze určuje, co je záměrem uživatele. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Pokud už aplikaci LUIS nepotřebujete, odstraňte ji. Provedete to tak, že vyberete nabídku se třemi tečkami (...) vpravo od názvu aplikace v seznamu aplikací a vyberete **Delete** (Odstranit). V automaticky otevíraném dialogovém okně **Delete app?** (Odstranit aplikaci?) vyberte **Ok**.
+Pokud už aplikaci LUIS nepotřebujete, odstraňte ji. V nabídce vlevo nahoře vyberte **My apps** (Moje aplikace). Vyberte nabídku se třemi tečkami (...) vpravo od názvu aplikace v seznamu aplikací a vyberte **Delete** (Odstranit). V automaticky otevíraném dialogovém okně **Delete app?** (Odstranit aplikaci?) vyberte **Ok**.
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Informace o postupu při přidání hierarchické entity](luis-quickstart-intent-and-hier-entity.md)
+> [Přidání hierarchické entity do aplikace](luis-quickstart-intent-and-hier-entity.md)
 

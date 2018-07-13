@@ -16,15 +16,15 @@ ms.date: 04/22/2018
 ms.author: wesmc
 ms.custom: mvc
 ms.openlocfilehash: ec095572dc8fe20c913d543ffcf926355b5715df
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33766440"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38600124"
 ---
 # <a name="create-a-web-app-that-uses-signalr-service-and-github-authentication"></a>Vytvoření webové aplikace využívající službu SignalR a ověřování GitHubu
 
-Tento ukázkový skript vytvoří nový prostředek služby Azure SignalR, který slouží k nabízení aktualizací obsahu v reálném čase do klientů. Tento skript také přidá novou webovou aplikaci a plán služby App Service k hostování webové aplikace ASP.NET Core využívající službu SignalR. V nastavení webové aplikace se nakonfiguruje připojení k novému prostředku služby SignalR a ověřování pomocí [ověřování GitHubu](https://developer.github.com/v3/guides/basics-of-authentication/). Webová aplikace se také nakonfiguruje tak, aby jako zdroj nasazení používala místní úložiště Git.
+Tento ukázkový skript vytvoří nový prostředek služby Azure SignalR, který slouží k nabízení aktualizací obsahu v reálném čase do klientů. Tento skript také přidá novou webovou aplikaci a plán služby App Service k hostování webové aplikace ASP.NET Core využívající službu SignalR. V nastavení webové aplikace se nakonfiguruje připojení k novému prostředku služby SignalR a ověřování pomocí [ověřování GitHubu](https://developer.github.com/v3/guides/basics-of-authentication/). Webová aplikace je dále nakonfigurovaná tak, aby jako zdroj nasazení používala místní úložiště Git.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

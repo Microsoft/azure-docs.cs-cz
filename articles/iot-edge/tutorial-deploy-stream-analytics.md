@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: ad2895a457a20632823260f2429ac95fad82089c
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 0790f504c978b4302812cffc9b655e817c156da3
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37060191"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37081383"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module---preview"></a>Kurz: Nasazení služby Azure Stream Analytics jako modulu IoT Edge – verze Preview
 
@@ -58,7 +58,7 @@ Pro úlohy Azure Stream Analytics je potřeba mít účet Azure Storage, který 
 
 ### <a name="create-a-stream-analytics-job"></a>Vytvoření úlohy Stream Analytics
 
-1. Na portálu Azure Portal přejděte na **Vytvořit prostředek** > **Internet věcí** a potom vyberte **Úloha Stream Analytics**.
+1. Na webu Azure Portal přejděte na **Vytvořit prostředek** > **Internet věcí** a potom vyberte **Úloha Stream Analytics**.
 
 2. V podokně **Nová úloha Stream Analytics** proveďte tyto kroky:
 
@@ -121,14 +121,14 @@ Pro úlohy Azure Stream Analytics je potřeba mít účet Azure Storage, který 
 
 Nyní jste připraveni nasadit úlohu Azure Stream Analytics na zařízení IoT Edge.
 
-1. Na portálu Azure Portal přejděte ve službě IoT Hub na **IoT Edge** a otevřete stránku podrobností zařízení IoT Edge.
+1. Na webu Azure Portal přejděte ve službě IoT Hub na **IoT Edge** a otevřete stránku podrobností zařízení IoT Edge.
 
-2. Vyberte **Set modules** (Nastavit moduly).  
+2. Vyberte **Nastavit moduly**.  
 
    Pokud jste na zařízení už dříve nasadili modul tempSensor, může se automaticky doplnit. Pokud ne, přidejte ho následujícím postupem:
 
    1. Klikněte na **Přidat** a vyberte **Modul IoT Edge**.
-   2. Jako název zadejte **tempsensor**.
+   2. Jako název zadejte **tempSensor**.
    3. Jako identifikátor URI obrázku zadejte **mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0**. 
    4. Další nastavení ponechte beze změny.
    5. Vyberte **Uložit**.
@@ -139,7 +139,7 @@ Nyní jste připraveni nasadit úlohu Azure Stream Analytics na zařízení IoT 
    2. Vyberte předplatné a úlohu Azure Stream Analytics Edge, kterou jste vytvořili. 
    3. Vyberte **Uložit**.
 
-4. Vyberte **Next** (Další).
+4. Vyberte **Další**.
 
 5. Nahraďte výchozí hodnotu v části **Trasy** následujícím kódem. Místo _{moduleName}_ zadejte název modulu Azure Stream Analytics. Modul by měl mít stejný název jako úloha, ze které jste ho vytvořili. 
 
@@ -154,7 +154,7 @@ Nyní jste připraveni nasadit úlohu Azure Stream Analytics na zařízení IoT 
     }
     ```
 
-6. Vyberte **Next** (Další).
+6. Vyberte **Další**.
 
 7. V kroku **Kontrola nasazení** vyberte **Odeslat**.
 
@@ -190,12 +190,12 @@ Měli byste mít možnost sledovat, jak teplota přístroje pomalu stoupá, doku
 
 <!--[!INCLUDE [iot-edge-quickstarts-clean-up-resources](../../includes/iot-edge-quickstarts-clean-up-resources.md)] -->
 
-Pokud budete pokračovat k dalšímu doporučenému článku, můžete již vytvořené prostředky a konfigurace zachovat a znovu je použít.
+Pokud budete pokračovat k dalšímu doporučenému článku, můžete už vytvořené prostředky a konfigurace zachovat a znovu je použít.
 
-Jinak můžete místní konfigurace a prostředky Azure, které jste vytvořili v tomto článku, odstranit, abyste se vyhnuli poplatkům. 
+Pokud nebudete pokračovat, můžete místní konfigurace a prostředky Azure vytvořené v tomto článku odstranit, abyste se vyhnuli poplatkům. 
 
 > [!IMPORTANT]
-> Odstranění prostředků Azure a skupiny prostředků je nevratná akce. Skupina prostředků i všechny prostředky v ní obsažené se trvale odstraní. Ujistěte se, že nechtěně neodstraníte nesprávnou skupinu prostředků nebo prostředky. Pokud jste službu IoT Hub vytvořili uvnitř existující skupiny prostředků obsahující prostředky, které chcete zachovat, odstraňte místo skupiny prostředků pouze samotný prostředek služby IoT.
+> Odstranění prostředků Azure a skupiny prostředků je nevratná akce. V případě odstranění se skupina prostředků i všechny prostředky, které obsahuje, trvale odstraní. Ujistěte se, že nechtěně neodstraníte nesprávnou skupinu prostředků nebo prostředky. Pokud jste službu IoT Hub vytvořili uvnitř existující skupiny prostředků obsahující prostředky, které chcete zachovat, odstraňte místo skupiny prostředků pouze samotný prostředek služby IoT Hub.
 >
 
 Pokud chcete odstranit jenom IoT Hub, spusťte následující příkaz, ve kterém se použije název vaší služby Hub a název skupiny prostředků:
@@ -207,7 +207,7 @@ az iot hub delete --name MyIoTHub --resource-group TestResources
 
 Odstranění celé skupiny prostředků podle názvu:
 
-1. Přihlaste se na web [Azure Portal ](https://portal.azure.com) a klikněte na **Skupiny prostředků**.
+1. Přihlaste se k webu [Azure Portal ](https://portal.azure.com) a klikněte na **Skupiny prostředků**.
 
 2. Do textového pole **Filtrovat podle názvu...** zadejte název skupiny prostředků obsahující vaši službu IoT Hub. 
 

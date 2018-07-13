@@ -2,18 +2,19 @@
 title: Rychlý start – Azure Kubernetes cluster pro Linux
 description: Rychle se naučíte, jak pomocí Azure CLI vytvořit cluster Kubernetes pro kontejnery Linuxu ve službě AKS.
 services: container-service
-author: neilpeterson
-manager: timlt
+author: iainfoulds
+manager: jeconnoc
 ms.service: container-service
 ms.topic: quickstart
-ms.date: 03/14/2018
-ms.author: nepeters
+ms.date: 06/13/2018
+ms.author: iainfou
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: d07cf87f736b6df58ed46ef0ae98767d4d8a7a48
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 0105b9e59a2ae872c53f9522f93f2ffca7c1bd7a
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37127834"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster"></a>Rychlý start: Nasazení clusteru Azure Kubernetes Service (AKS)
 
@@ -27,23 +28,11 @@ V tomto rychlém startu se předpokládá základní znalost konceptů Kubernete
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0.27 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
 
-## <a name="enabling-aks-preview"></a>Povolení služby AKS ve verzi Preview
-
-Pomocí příkazu `az provider register` se ujistěte, že jsou povolení poskytovatelé potřebných služeb Azure.
-
-```azurecli-interactive
-az provider register -n Microsoft.Network
-az provider register -n Microsoft.Storage
-az provider register -n Microsoft.Compute
-az provider register -n Microsoft.ContainerService
-```
-
-Po registraci budete připraveni vytvořit cluster Kubernetes se službou AKS.
-
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
 Vytvořte skupinu prostředků pomocí příkazu [az group create][az-group-create]. Skupina prostředků Azure je logická skupina, ve které se nasazují a spravují prostředky Azure.
-Při vytváření skupiny prostředků se zobrazí výzva k zadání umístění, ve kterém budou prostředky umístěné v rámci Azure. Vzhledem k tomu, že je služba AKS ve verzi Preview, je k dispozici pouze několik možností umístění. Jsou to `eastus, westeurope, centralus, canadacentral, canadaeast`.
+
+Při vytváření skupiny prostředků se zobrazí výzva k zadání umístění, ve kterém budou prostředky umístěné v rámci Azure.
 
 Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*.
 
@@ -68,7 +57,7 @@ Výstup:
 
 ## <a name="create-aks-cluster"></a>Vytvoření clusteru AKS
 
-Pomocí příkazu [az aks create][az-aks-create] vytvořte cluster AKS. Následující příklad vytvoří cluster *myAKSCluster* s jedním uzlem.
+Pomocí příkazu [az aks create][az-aks-create] vytvořte cluster AKS. Následující příklad vytvoří cluster *myAKSCluster* s jedním uzlem. Při nasazování clusteru AKS můžete také povolit řešení monitorování stavu kontejneru. Další informace o povolení řešení monitorování stavu kontejneru najdete v tématu [Monitorování stavu služby Azure Kubernetes Service][aks-monitor].
 
 ```azurecli-interactive
 az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 1 --generate-ssh-keys
@@ -173,10 +162,10 @@ spec:
     app: azure-vote-front
 ```
 
-Pomocí příkazu [kubectl create][kubectl-create] spusťte aplikaci.
+Pomocí příkazu [kubectl apply][kubectl-apply] spusťte aplikaci.
 
 ```azurecli-interactive
-kubectl create -f azure-vote.yaml
+kubectl apply -f azure-vote.yaml
 ```
 
 Výstup:
@@ -241,13 +230,15 @@ Další informace o službě AKS a podrobné vysvětlení kompletního příklad
 <!-- LINKS - external -->
 [azure-vote-app]: https://github.com/Azure-Samples/azure-voting-app-redis.git
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
-[kubectl-create]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create
+[kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubernetes-deployment]: https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
 [kubernetes-documentation]: https://kubernetes.io/docs/home/
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubernetes-service]: https://kubernetes.io/docs/concepts/services-networking/service/
 
 <!-- LINKS - internal -->
+[aks-monitor]: ../monitoring/monitoring-container-health.md
+[aks-tutorial]: ./tutorial-kubernetes-prepare-app.md
 [az-aks-browse]: /cli/azure/aks?view=azure-cli-latest#az_aks_browse
 [az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az_aks_create
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az_aks_get_credentials
@@ -255,5 +246,4 @@ Další informace o službě AKS a podrobné vysvětlení kompletního příklad
 [az-group-create]: /cli/azure/group#az_group_create
 [az-group-delete]: /cli/azure/group#az_group_delete
 [azure-cli-install]: /cli/azure/install-azure-cli
-[aks-tutorial]: ./tutorial-kubernetes-prepare-app.md
 

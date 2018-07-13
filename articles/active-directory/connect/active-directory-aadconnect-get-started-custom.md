@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: Vlastní instalace | Microsoft Docs'
+title: 'Azure AD Connect: Vlastní instalace | Dokumentace Microsoftu'
 description: Tento dokument podrobně popisuje možnosti vlastní instalace Azure AD Connect. Použijte tyto pokyny, pokud chcete nainstalovat službu Active Directory přes Azure AD Connect.
 services: active-directory
 keywords: co je Azure AD Connect, instalace služby Active Directory, požadované součásti služby Azure AD
@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 06/07/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: f40f2102729cc317f74bd5a91b17a349a7824476
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: d58418b45192a6c1e31b4c3c918a27fe253d8c34
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34849987"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38473982"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Vlastní instalace služby Azure AD Connect
 **Vlastní nastavení** Azure AD Connect se používá, pokud chcete využít další možnosti instalace. Používá se, pokud máte víc doménových struktur, nebo pokud chcete nakonfigurovat volitelné funkce, které nejsou zahrnuty v rychlé instalaci. Používá se ve všech případech, kde možnost [**rychlá instalace**](active-directory-aadconnect-get-started-express.md) nevyhovuje nasazení nebo topologii.
@@ -67,7 +67,7 @@ Tento účet slouží jenom k vytvoření účtu služby v Azure AD, a po dokon�
 Pokud má účet globálního správce povolené ověřování MFA, bude nutné znovu zadat heslo v automaticky otevřeném okně pro přihlášení a provést ověřovací test MFA. Ověřovacím testem může být zadání ověřovacího kódu nebo telefonní hovor.  
 ![Přihlášení uživatele s MFA](./media/active-directory-aadconnect-get-started-custom/connectaadmfa.png)
 
-Účet globálního správce může taky mít povolenou technologii [Privileged Identity Management](../active-directory-privileged-identity-management-getting-started.md).
+Účet globálního správce může taky mít povolenou technologii [Privileged Identity Management](../privileged-identity-management/pim-getting-started.md).
 
 Pokud se zobrazí chyba a máte problémy s připojením, přečtěte si téma [Řešení problémů s připojením](active-directory-aadconnect-troubleshoot-connectivity.md).
 

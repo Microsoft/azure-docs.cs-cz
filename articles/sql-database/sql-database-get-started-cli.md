@@ -1,5 +1,5 @@
 ---
-title: 'Azure CLI: Vytvoření databáze SQL | Microsoft Docs'
+title: 'Azure CLI: Vytvoření databáze SQL | Dokumentace Microsoftu'
 description: Naučíte se vytvářet logický server SQL Database, pravidlo brány firewall na úrovni serveru a databáze pomocí Azure CLI.
 keywords: kurz k sql database, vytvoření databáze sql
 services: sql-database
@@ -12,11 +12,11 @@ ms.topic: quickstart
 ms.date: 03/23/2018
 ms.author: carlrab
 ms.openlocfilehash: d4bb27ddc4ff9385fd46fc7554af2af16ef40558
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32187279"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38597536"
 ---
 # <a name="create-a-single-azure-sql-database-using-the-azure-cli"></a>Vytvoření izolované databáze SQL Azure pomocí Azure CLI
 

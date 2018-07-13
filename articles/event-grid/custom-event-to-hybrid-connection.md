@@ -5,15 +5,15 @@ services: event-grid
 keywords: ''
 author: tfitzmac
 ms.author: tomfitz
-ms.date: 05/04/2018
+ms.date: 06/29/2018
 ms.topic: tutorial
 ms.service: event-grid
-ms.openlocfilehash: 31c8dd520079046808b32dad0d338415bed71c58
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: ee504f805c536ba9a6186514206546c3df1f0f1a
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34302973"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37127709"
 ---
 # <a name="route-custom-events-to-azure-relay-hybrid-connections-with-azure-cli-and-event-grid"></a>Směrování vlastních událostí do Azure Relay Hybrid Connections pomocí Azure CLI a Event Gridu
 
@@ -55,7 +55,7 @@ K odběru tématu se přihlašujete, aby služba Event Grid věděla, které ud�
 
 `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Relay/namespaces/<relay-namespace>/hybridConnections/<hybrid-connection-name>`
 
-Následující skript načte ID prostředku oboru názvů přenosu. Vytvoří ID pro hybridní připojení a přihlásí se k odběru tématu Event Gridu. Nastaví typ koncového bodu na `hybridconnection` a použije ID hybridního připojení pro daný koncový bod.
+Následující skript načte ID prostředku oboru názvů přenosu. Vytvoří ID pro hybridní připojení a přihlásí se k odběru tématu Event Gridu. Skript nastaví typ koncového bodu na `hybridconnection` a použije ID hybridního připojení pro daný koncový bod.
 
 ```azurecli-interactive
 relayname=<namespace-name>
@@ -73,9 +73,25 @@ az eventgrid event-subscription create \
   --endpoint $hybridid
 ```
 
+## <a name="create-application-to-process-events"></a>Vytvoření aplikace pro zpracování událostí
+
+Potřebujete aplikaci, která dokáže načítat události z hybridního připojení. Tuto operaci provádí [ukázka příjemce hybridního připojení Microsoft Azure Event Grid pro jazyk C#](https://github.com/Azure-Samples/event-grid-dotnet-hybridconnection-destination). Už jste dokončili požadované kroky.
+
+1. Ujistěte se, že máte sadu Visual Studio 2017 verze 15.5 nebo novější.
+
+1. Naklonujte si úložiště na místní počítač.
+
+1. Načtěte projekt HybridConnectionConsumer v sadě Visual Studio.
+
+1. V souboru Program.cs nahraďte `<relayConnectionString>` a `<hybridConnectionName>` připojovacím řetězcem předávání a názvem hybridního připojení, které jste vytvořili.
+
+1. V sadě Visual Studio zkompilujte a spusťte aplikaci.
+
 ## <a name="send-an-event-to-your-topic"></a>Odeslání události do tématu
 
-Teď aktivujeme událost, abychom viděli, jak služba Event Grid distribuuje zprávu do vašeho koncového bodu. Nejprve získáme adresu URL a klíč vlastního tématu. Znovu místo `<topic_name>` použijte název vašeho tématu.
+Teď aktivujeme událost, abychom viděli, jak služba Event Grid distribuuje zprávu do vašeho koncového bodu. Tento článek ukazuje, jak aktivovat událost pomocí Azure CLI. Alternativně můžete použít [aplikaci vydavatele Event Grid](https://github.com/Azure-Samples/event-grid-dotnet-publish-consume-events/tree/master/EventGridPublisher).
+
+Nejprve získáme adresu URL a klíč vlastního tématu. Znovu místo `<topic_name>` použijte název vašeho tématu.
 
 ```azurecli-interactive
 endpoint=$(az eventgrid topic show --name <topic_name> -g gridResourceGroup --query "endpoint" --output tsv)

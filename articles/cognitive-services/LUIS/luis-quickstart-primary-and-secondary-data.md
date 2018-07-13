@@ -7,16 +7,16 @@ manager: kaiqb
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 06/26/2018
+ms.date: 06/29/2018
 ms.author: v-geberr
-ms.openlocfilehash: b718ed505babd2df6487aecd3a87f17590aef2b9
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: e6ab9d1db0144ffa68fe9dc3381ba31d57aa0cae
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061243"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37130887"
 ---
-# <a name="tutorial-create-app-that-uses-simple-entity"></a>Kurz: Vytvoření aplikace využívající jednoduchou entitu
+# <a name="tutorial-6-add-simple-entity-and-phrase-list"></a>Kurz: 6. Přidání jednoduché entity a seznamu frází
 V tomto kurzu vytvoříte aplikaci, která ukazuje extrakci strojově naučených dat z promluvy pomocí **jednoduché** entity.
 
 <!-- green checkmark -->
@@ -45,14 +45,14 @@ Tato aplikace ukazuje, jak získat data z promluvy. Představte si následujíc�
 |Please submit my resume for the engineering position (Odešlete můj životopis pro pozici technický pracovník).|engineering (technický pracovník)|
 |Fill out application for job 123456 (Vyplňte přihlášku pro pozici 123456).|123456|
 
-V tomto kurzu přidáte novou entitu k extrahování názvu pracovní pozice. Možnost extrahovat číslo specifické pracovní pozice je popsána v [kurzu](luis-quickstart-intents-regex-entity.md) k regulárním výrazům. 
+V tomto kurzu přidáte novou entitu k extrahování názvu pracovní pozice. 
 
 ## <a name="purpose-of-the-simple-entity"></a>Účel jednoduché entity
 Účelem jednoduché entity v této aplikaci LUIS je naučit službu LUIS, co je název pracovní pozice a kde ho v promluvě najít. Část promluvy, která představuje pracovní pozici, se může u jednotlivých promluv lišit na základě volby slov a délky promluvy. Služba LUIS potřebuje příklady pracovních pozic v různých promluvách napříč všemi záměry.  
 
-Název pracovní pozice je obtížné určit, protože název může být podstatné jméno, sloveso nebo fráze složená z několika slov. Příklady:
+Název pracovní pozice je obtížné určit, protože název může být podstatné jméno, sloveso nebo fráze složená z několika slov. Příklad:
 
-|Pracovní pozice|
+|Úlohy|
 |--|
 |engineer (technik)|
 |software engineer (softwarový inženýr)|
@@ -85,7 +85,7 @@ Tato aplikace LUIS obsahuje názvy pracovních pozic v několika záměrech. Dí
 
     ![Modální automaticky otevírané okno pro vytvoření jednoduché entity s názvem pracovní pozice a typem Simple (Jednoduchá)](media/luis-quickstart-primary-and-secondary-data/hr-create-simple-entity-popup.png)
 
-5. V promluvě `Submit resume for engineering position` označte slovo engineering jako entitu Job (Pracovní pozice). Vyberte slovo engineering a pak v místní nabídce vyberte Job (Pracovní pozice). 
+5. V promluvě `Submit resume for engineering position` označte slovo `engineering` jako entitu Job (Pracovní pozice). Vyberte slovo `engineering` a pak v místní nabídce vyberte **Job** (Pracovní pozice). 
 
     [![](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png "Snímek obrazovky aplikace LUIS se zvýrazněnou označenou entitou pracovní pozice")](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png#lightbox)
 
@@ -121,7 +121,7 @@ Tato aplikace LUIS obsahuje názvy pracovních pozic v několika záměrech. Dí
 
     |Promluva|Entita pracovní pozice|
     |:--|:--|
-    |Is there any work in databases? (Nabízíte nějakou práci se zaměřením na databáze?)|databases (databáze)|
+    |Is there any work in databases? (Nabízíte nějakou práci se zaměřením na databáze?)|databáze|
     |Looking for a new situation with responsibilities in accounting (Hledám něco nového v oboru účetnictví).|accounting (účetnictví)|
     |What positions are available for senior engineers? (Jaké pozice jsou otevřené na úrovni inženýr senior?)|senior engineers (inženýr senior)|
 
@@ -292,7 +292,7 @@ Otevřete soubor [jobs-phrase-list.csv](https://github.com/Microsoft/LUIS-Sample
 
     [![](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png "Snímek obrazovky s automaticky otevíraným oknem pro vytvoření nového seznamu frází")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png#lightbox)
 
-    Pokud chcete do seznamu frází přidat další slova, prohlédněte si doporučená slova a přidejte všechna, která jsou relevantní. 
+    Pokud chcete do seznamu frází přidat další slova, prohlédněte si část **Related Values** (Související hodnoty) a přidejte všechna slova, která jsou relevantní. 
 
 4. Výběrem tlačítka **Save** (Uložit) seznam frází aktivujte.
 
@@ -369,7 +369,7 @@ Otevřete soubor [jobs-phrase-list.csv](https://github.com/Microsoft/LUIS-Sample
 Přidání seznamu frází zlepšilo signalizování slov v seznamu, ale **nepoužívá** se jako přesná shoda. Seznam frází obsahuje několik pracovních pozic, kde je prvním slovem `lead` a také obsahuje pracovní pozici `welder`, ale neobsahuje pozici `lead welder`. Tento seznam frází s pracovními pozicemi nemusí být úplný. Když budete pravidelně [kontrolovat promluvy v koncovém bodě](label-suggested-utterances.md) a najdete další slova označující pracovní pozice, přidejte je do svého seznamu frází. Pak opakujte trénování a publikování.
 
 ## <a name="what-has-this-luis-app-accomplished"></a>Co tato aplikace LUIS udělala?
-Tato aplikace s jednoduchou entitou a seznamem frází se slovy identifikovala záměr dotazu v přirozeném jazyce a vrátila data zprávy. 
+Tato aplikace s jednoduchou entitou a seznamem frází se slovy identifikovala záměr dotazu v přirozeném jazyce a vrátila data úlohy. 
 
 Váš chatbot má teď dostatek informací k určení primární akce přihlášení se na pracovní pozici a parametru této akce – o jakou pozici se jedná. 
 
@@ -377,9 +377,9 @@ Váš chatbot má teď dostatek informací k určení primární akce přihláš
 Služba LUIS s tímto požadavkem skončila. Volající aplikace, například chatbot, může převzít výsledek topScoringIntent a data z entity a pomocí rozhraní API od jiného výrobce odeslat informace o pracovní pozici zástupci oddělení lidských zdrojů. Pokud chatbot nebo volající aplikace nabízí další programové možnosti, služba LUIS tuto práci nedělá. Služba LUIS pouze určuje, co je záměrem uživatele. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Pokud už aplikaci LUIS nepotřebujete, odstraňte ji. Provedete to tak, že vyberete nabídku se třemi tečkami (...) vpravo od názvu aplikace v seznamu aplikací a vyberete **Delete** (Odstranit). V automaticky otevíraném dialogovém okně **Delete app?** (Odstranit aplikaci?) vyberte **Ok**.
+Pokud už aplikaci LUIS nepotřebujete, odstraňte ji. V nabídce vlevo nahoře vyberte **My apps** (Moje aplikace). Vyberte nabídku se třemi tečkami (...) vpravo od názvu aplikace v seznamu aplikací a vyberte **Delete** (Odstranit). V automaticky otevíraném dialogovém okně **Delete app?** (Odstranit aplikaci?) vyberte **Ok**.
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Jak přidat předem připravenou entitu klíčové fráze](luis-quickstart-intent-and-key-phrase.md)
+> [Přidání předem připravené entity klíčové fráze](luis-quickstart-intent-and-key-phrase.md)

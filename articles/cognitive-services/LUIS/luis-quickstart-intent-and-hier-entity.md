@@ -9,21 +9,21 @@ ms.component: luis
 ms.topic: tutorial
 ms.date: 06/22/2018
 ms.author: v-geberr
-ms.openlocfilehash: 5fb93ebbd2da02df0c2cdf0d19ed282aeafe9473
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 6ba45de8ef41c8a57ca9c042a304e323a4fac263
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36335556"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37081689"
 ---
-# <a name="tutorial-create-app-that-uses-hierarchical-entity"></a>Kurz: Vytvoření aplikace využívající hierarchickou entitu
+# <a name="tutorial-5-add-hierarchical-entity"></a>Kurz: 5. Přidání hierarchické entity
 V tomto kurzu vytvoříte aplikaci, která ukazuje vyhledání souvisejících částí dat na základě kontextu. 
 
 <!-- green checkmark -->
 > [!div class="checklist"]
 > * Vysvětlení hierarchických entit a kontextově naučených podřízených entit 
 > * Použití aplikace LUIS v doméně lidských zdrojů 
-> * Přidání hierarchické entity místa s podřízenými entitami počátku a cíle
+> * Přidání hierarchické entity polohy s podřízenými entitami počátku a cíle
 > * Trénování a publikování aplikace
 > * Odeslání dotazu na koncový bod aplikace a zobrazení odpovědi JSON ze služby LUIS obsahující hierarchické podřízené entity 
 
@@ -41,7 +41,7 @@ Hierarchická entita je vhodná pro tento typ dat, protože obě části dat:
 
 * Se k sobě v kontextu promluvy navzájem vztahují.
 * K označení obou míst používají specifická slova. Mezi příklady těchto slov patří from/to (z/do), leaving/headed to (odstěhovat/nastěhovat), away from/toward (z kanceláře/do kanceláře).
-* Obě místa se často vyskytují ve stejné promluvě. 
+* Obě polohy se často vyskytují ve stejné promluvě. 
 
 Účelem **hierarchické** entity je na základě kontextu vyhledat data související s promluvou. Představte si následující promluvu:
 
