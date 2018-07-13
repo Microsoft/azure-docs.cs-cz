@@ -1,6 +1,6 @@
 ---
-title: Správa aktualizací v zásobníku Azure přehled | Microsoft Docs
-description: Další informace o správě aktualizací pro Azure zásobníku integrované systémy.
+title: Správa aktualizací v přehledu služby Azure Stack | Dokumentace Microsoftu
+description: Další informace o správě aktualizací pro integrované systémy Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -12,60 +12,60 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 07/11/2017
 ms.author: mabrigg
-ms.openlocfilehash: 23b05909bda7785b45aeaeed0bd75a90de9ffe50
-ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
+ms.openlocfilehash: e80c114b06390a72dcdcc614dffaa97b9761381e
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2018
-ms.locfileid: "27620919"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38988904"
 ---
-# <a name="manage-updates-in-azure-stack-overview"></a>Správa aktualizací v přehledu Azure zásobníku
+# <a name="manage-updates-in-azure-stack-overview"></a>Správa aktualizací v přehledu služby Azure Stack
 
-*Platí pro: Azure zásobníku integrované systémy*
+*Platí pro: integrované systémy Azure Stack*
 
-Společnost Microsoft vydá balíčky aktualizací pro Azure zásobníku integrované systémy v pravidelných cadence, který patří obvykle čtvrté úterý v každém měsíci začínající na obecné dostupnosti. Požádejte výrobce OEM o jejich konkrétní oznámení procesu zajistit aktualizace oznámení reach vaší organizace, nebo toto políčko zaškrtněte v části systémy Notes\Integrated Overview\Release poznámky k verzi pro další informace o konkrétních verzích.
+Nové balíčky aktualizací pro Azure Stack integrované systémy obvykle release kolem čtvrtý úterý v měsíci. Požádejte vašeho OEM dodavatele o proces jejich konkrétní upozornění k zajištění oznámení o aktualizacích kontaktovat vaše organizace. Můžete zkontrolovat v této knihovně dokumentace v části v rámci **přehled** > **poznámky k verzi** informace o vydaných verzích, které jsou v aktivní technické podpory. 
 
-Jednotlivými verzemi aktualizací softwaru společnosti Microsoft je instalován jako balíček jednu aktualizaci. Jako operátor zásobník Azure můžete snadno importovat, instalace a sledujte průběh instalace těchto aktualizací balíčky z portálu správce. 
+Každá verze aktualizace softwaru Microsoftu se dodává v sadě jako jednu aktualizaci balíčku. Jako operátory Azure stacku můžete importovat, instalace a sledování průběhu instalace těchto balíčků z portálu správce aktualizací. 
 
-Dodavatele hardwaru, výrobce (OEM), bude také uvolnit aktualizace, jako jsou ovladače a firmware aktualizace. Tyto aktualizace se dodávají jako samostatné balíčky podle dodavatele hardwaru, od výrobců OEM a jsou spravovány samostatně z aktualizací společnosti Microsoft.
+Dodavatele hardwaru, výrobce OEM (OEM) bude také vydávat aktualizace, jako je například aktualizace ovladače a firmware. Tyto aktualizace jsou dodávány jako samostatné balíčky váš dodavatel hardwaru výrobce OEM a jsou spravovány samostatně z aktualizací od Microsoftu.
 
-Aby byl váš systém v rámci podpory, je nutné zachovat zásobník Azure aktualizovat na úroveň konkrétní verzi. Ujistěte se, abyste si prošli [zásobník Azure obsluhy zásad](azure-stack-servicing-policy.md).
+Aby váš systém v rámci podpory, je nutné zachovat aktualizovat na úroveň konkrétní verzi služby Azure Stack. Ujistěte se, abyste se seznámili [Azure Stack zásady obsluhy](azure-stack-servicing-policy.md).
 
 > [!NOTE]
-> Balíčky aktualizací zásobník Azure nemůže použít na Azure zásobníku Development Kit. Balíčky aktualizací jsou navrženy pro integrované systémy.
+> Balíčky aktualizací pro Azure Stack nelze použít pro Azure Stack Development Kit. Balíčky aktualizací jsou navržené pro integrované systémy. Informace najdete v tématu [opětovné nasazení ASDK](https://docs.microsoft.com/en-us/azure/azure-stack/asdk).
 
-## <a name="the-update-resource-provider"></a>Poskytovatel prostředku aktualizace
+## <a name="the-update-resource-provider"></a>Aktualizace poskytovatele prostředků
 
-Azure zásobníku obsahuje poskytovatele prostředku aktualizace, které orchestrují použití aktualizací softwaru společnosti Microsoft. Tohoto poskytovatele prostředků zajistí, že se aktualizace napříč všechny fyzické hostitele, aplikace Service Fabric a moduly runtime a všechny infrastruktury virtuální počítače a jejich přidružených službách.
+Azure Stack zahrnuje poskytovatele prostředků aktualizace, která orchestruje použití aktualizací softwaru společnosti Microsoft. Tohoto poskytovatele prostředků zajistí, že se aktualizace napříč všechny fyzické hostitele, aplikace Service Fabric a moduly runtime a všechny virtuální počítače infrastruktury a jejich přidružené služby.
 
-Jak nainstalovat aktualizace, můžete snadno zobrazit podrobný stav jako cíle proces aktualizace různé subsystémy v zásobníku Azure (například fyzických hostitelů a infrastrukturu virtuálních počítačů).
+Jak nainstalovat aktualizace, můžete zobrazit informace na nejvyšší úrovni jako cíle procesu aktualizace různé subsystémy ve službě Azure Stack (například fyzické hostitele a infrastrukturu virtuálních počítačů).
 
 ## <a name="plan-for-updates"></a>Plán pro aktualizace
 
-Důrazně doporučujeme upozornit uživatele žádné operace údržby a naplánovat normální údržbu jiný pracovní dobu co nejvíc. Operace údržby může mít vliv na portálu operace a úlohy klientů.
+Důrazně doporučujeme, upozornění uživatelů na jakékoli operace údržby a, abyste naplánovali normální správu a údržbu během mimo pracovní dobu Pokud je to možné. Operace údržby může ovlivnit úlohy klientů a operací na portálu.
 
-## <a name="using-the-update-tile-to-manage-updates"></a>Pomocí dlaždice aktualizace ke správě aktualizací
-Správa aktualizací z portálu správce je jednoduchý proces. Operátor zásobník Azure můžete přejít na aktualizace dlaždice na řídicím panelu na:
+## <a name="using-the-update-tile-to-manage-updates"></a>Správa aktualizací pomocí aktualizovat dlaždici
+Správa aktualizací z portálu správce. Jako operátory Azure stacku můžete aktualizovat dlaždici v řídicím panelu:
 
 - zobrazit důležité informace, jako je aktuální verze.
 - instalace aktualizací a sledovat průběh.
-- Zkontrolujte historii aktualizací pro dříve nainstalované aktualizace.
+- Kontrola historie aktualizace pro dříve nainstalované aktualizace.
  
 ## <a name="determine-the-current-version"></a>Zjistit aktuální verzi
 
-Aktualizace dlaždice se zobrazuje aktuální verze Azure zásobníku. Na dlaždici aktualizace můžete získat pomocí některé z následujících metod v portálu správce:
+Aktualizace dlaždice zobrazí aktuální verzi služby Azure Stack. Chcete aktualizovat dlaždici můžete získat pomocí některé z následujících metod na portálu pro správce:
 
 - Na řídicím panelu zobrazovat v aktuální verzi **aktualizace** dlaždici.
  
-   ![Aktualizace dlaždice na řídicím panelu výchozí](./media/azure-stack-updates/image1.png)
+   ![Aktualizace dlaždice na výchozí řídicí panel](./media/azure-stack-updates/image1.png)
  
-- Na **oblast správy** dlaždici, klikněte na název oblasti. Zobrazit aktuální verzi v **aktualizace** dlaždici.
+- Na **Správa oblastí** dlaždici, klikněte na název oblasti. Zobrazit aktuální verze **aktualizace** dlaždici.
 
 ## <a name="next-steps"></a>Další postup
 
-- [Údržba zásad Azure zásobníku](azure-stack-servicing-policy.md) 
-- [Oblast správy v Azure zásobníku](azure-stack-region-management.md)     
+- [Údržba zásad služby Azure Stack](azure-stack-servicing-policy.md) 
+- [Správa oblastí ve službě Azure Stack](azure-stack-region-management.md)     
 
 

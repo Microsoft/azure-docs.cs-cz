@@ -1,6 +1,6 @@
 ---
-title: Používání úložiště Queue z Javy | Microsoft Docs
-description: Naučte se používat službu front Azure k vytváření a odstraňování front a vložit, získání a odstranění zprávy. Ukázky napsanou v jazyce Java.
+title: Postup používání úložiště Queue z Javy | Dokumentace Microsoftu
+description: Zjistěte, jak pomocí služby front Azure můžete vytvářet a odstraňovat fronty a vložit, získání a odstranění zprávy. Ukázky napsané v jazyce Java.
 services: storage
 documentationcenter: java
 author: roygara
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: rogarana
 ms.openlocfilehash: cd79a21fedca1c21c2e4a65394d424f1590f32c3
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30319477"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38670944"
 ---
 # <a name="how-to-use-queue-storage-from-java"></a>Používání úložiště Queue z Javy
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -27,21 +27,21 @@ ms.locfileid: "30319477"
 [!INCLUDE [storage-check-out-samples-java](../../../includes/storage-check-out-samples-java.md)]
 
 ## <a name="overview"></a>Přehled
-Tento průvodce vám ukáže, jak provádět běžné scénáře s využitím služby Azure Queue storage. Ukázky jsou napsané v jazyce Java a použít [sada SDK úložiště Azure pro jazyk Java][Azure Storage SDK for Java]. Pokryté scénáře zahrnují **vkládání**, **prohlížení**, **získávání**, a **odstraňování** fronty zpráv, a také **vytváření** a **odstraňování** fronty. Další informace o frontách najdete v článku [další kroky](#Next-Steps) části.
+Tato příručka se ukazují, jak provádět běžné scénáře pomocí služby Azure Queue storage. Ukázky jsou napsané v Javě a využívají [sadu SDK služby Azure Storage pro Javu][Azure Storage SDK for Java]. Mezi popsané scénáře patří **vkládání**, **prohlížení**, **získávání**, a **odstranění** fronty zpráv, stejně jako  **vytváření** a **odstranění** fronty. Další informace o frontách najdete v článku [další kroky](#Next-Steps) oddílu.
 
-Poznámka: Sada SDK je k dispozici pro vývojáře, kteří na zařízení se systémem Android používají Azure Storage. Další informace najdete v tématu [sada SDK úložiště Azure pro Android][Azure Storage SDK for Android].
+Poznámka: Sada SDK je k dispozici pro vývojáře, kteří jsou na zařízeních s Androidem pomocí služby Azure Storage. Další informace najdete v tématu [Sada SDK služby Azure Storage pro Android][Azure Storage SDK for Android].
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
 ## <a name="create-a-java-application"></a>Vytvoření aplikace Java
-V této příručce bude používat funkce úložiště, které lze spustit v rámci aplikace Java místně nebo v kódu běžící v rámci webovou roli nebo role pracovního procesu v Azure.
+V této příručce se bude používat funkce úložiště, které můžou běžet v rámci aplikace v Javě, místně nebo v kódu v rámci webové role nebo role pracovního procesu v Azure.
 
-V takovém případě budete muset nainstalovat Java Development Kit (JDK) a vytvořit účet úložiště Azure ve vašem předplatném Azure. Jakmile provedete, budete muset ověřit, jestli váš vývojový systém splňuje minimální požadavky a závislosti, které jsou uvedeny v [sada SDK úložiště Azure pro jazyk Java] [ Azure Storage SDK for Java] úložišti na Githubu. Pokud váš systém splňuje tyto požadavky, můžete podle pokynů ke stažení a instalaci knihovny úložiště Azure pro jazyk Java systému z tohoto úložiště. Po dokončení těchto úloh, bude moci vytvořit aplikaci Java, která používá v příkladech v tomto článku.
+K tomu je potřeba nainstalovat Java Development Kit (JDK) a vytvoření účtu služby Azure storage ve vašem předplatném Azure. Jakmile to uděláte, budete muset ověřit, jestli váš vývojový systém splňuje minimální požadavky a závislosti, které jsou uvedeny v [Azure Storage SDK pro Javu] [ Azure Storage SDK for Java] úložišti na Githubu. Pokud váš systém splňuje tyto požadavky, můžete podle pokynů pro stažení a instalace Storage knihovny Azure Libraries for Java ve vašem systému z tohoto úložiště. Po dokončení těchto úloh, budou moct vytvořit aplikaci v Javě, která používá v příkladech v tomto článku.
 
-## <a name="configure-your-application-to-access-queue-storage"></a>Konfigurace aplikace pro přístup k úložišti fronty
-Přidejte následující příkazy pro import do horní části souboru Java, ve které chcete používat úložiště Azure rozhraní API pro přístup k fronty:
+## <a name="configure-your-application-to-access-queue-storage"></a>Konfigurace aplikace pro přístup k úložišti front
+Přidejte následující příkazy pro import do horní části souboru Java, ve které chcete použít rozhraní API služby Azure storage pro přístup k frontám:
 
 ```java
 // Include the following imports to use queue APIs.
@@ -49,8 +49,8 @@ import com.microsoft.azure.storage.*;
 import com.microsoft.azure.storage.queue.*;
 ```
 
-## <a name="setup-an-azure-storage-connection-string"></a>Instalační program připojovací řetězec úložiště Azure
-Klienta Azure storage používá připojovací řetězec úložiště k ukládání koncových bodů a pověření pro přístup ke službám dat správy. Když spustíte v aplikaci klienta, je nutné zadat připojovací řetězec úložiště v následujícím formátu, pomocí názvu účtu úložiště a primární přístupový klíč pro účet úložiště uvedené v [portálu Azure](https://portal.azure.com) pro *AccountName* a *AccountKey* hodnoty. Tento příklad ukazuje, jak můžou deklarovat statické pole pro uložení připojovací řetězec:
+## <a name="setup-an-azure-storage-connection-string"></a>Nastavení připojovacího řetězce služby Azure storage
+Klient úložiště Azure používá připojovací řetězec úložiště k uložení koncových bodů a přihlašovacích údajů pro přístup ke službám správy dat. Při spuštění v klientské aplikaci, musíte zadat připojovací řetězec úložiště v následujícím formátu, pomocí názvu účtu úložiště a podle primární přístupový klíč pro účet úložiště [webu Azure Portal](https://portal.azure.com) pro *AccountName* a *AccountKey* hodnoty. Tento příklad ukazuje deklaraci statického pole pro uložení připojovacího řetězce:
 
 ```java
 // Define the connection-string with your values.
@@ -60,7 +60,7 @@ public static final String storageConnectionString =
     "AccountKey=your_storage_account_key";
 ```
 
-Ve spuštěné aplikace v rámci role ve službě Microsoft Azure, můžete tento řetězec uložené v konfiguračním souboru služby *souboru ServiceConfiguration.cscfg*a je přístupný pomocí volání **RoleEnvironment.getConfigurationSettings** metoda. Tady je příklad získávání připojovacího řetězce z **nastavení** element s názvem *StorageConnectionString* v konfiguračním souboru služby:
+Ve spuštěné aplikace v rámci role ve službě Microsoft Azure, můžete tento řetězec uložený v konfiguračním souboru služby *souboru ServiceConfiguration.cscfg*a je přístupná pomocí volání  **RoleEnvironment.getConfigurationSettings** metody. Tady je příklad získání připojovacího řetězce *StorageConnectionString* z elementu **Settings** (Nastavení) v konfiguračním souboru služby:
 
 ```java
 // Retrieve storage account from connection-string.
@@ -68,12 +68,12 @@ String storageConnectionString =
     RoleEnvironment.getConfigurationSettings().get("StorageConnectionString");
 ```
 
-Následující ukázky předpokládejme, že používáte jednu z těchto dvou metod k získání připojovacího řetězce úložiště.
+V následujících ukázkách se předpokládá, že jste pomocí některé z těchto dvou metod získali připojovací řetězec úložiště.
 
 ## <a name="how-to-create-a-queue"></a>Postupy: vytvoření fronty
-A **CloudQueueClient** objektu umožňuje získat odkaz na objekty pro fronty. Následující kód vytvoří **CloudQueueClient** objektu. (Poznámka: Chcete-li vytvořit další způsoby **CloudStorageAccount** objekty; Další informace najdete v tématu **CloudStorageAccount** v [odkaz SDK klienta úložiště Azure].)
+A **CloudQueueClient** objektu umožňuje získat odkaz na objekty pro fronty. Následující kód vytvoří **CloudQueueClient** objektu. (Poznámka: existují další způsoby, jak vytvořit **CloudStorageAccount** objekty; Další informace najdete v tématu **CloudStorageAccount** v [Referenční informace ke klientské sadě SDK služby Azure Storage].)
 
-Použít **CloudQueueClient** objekt, který chcete získat odkaz na frontu, kterou chcete použít. Můžete vytvořit frontu, pokud neexistuje.
+Použít **CloudQueueClient** můžete získat odkaz na frontu, kterou chcete použít. Můžete vytvořit frontu, pokud neexistuje.
 
 ```java
 try
@@ -99,7 +99,7 @@ catch (Exception e)
 ```
 
 ## <a name="how-to-add-a-message-to-a-queue"></a>Postupy: Přidání zprávy do fronty
-Pokud chcete vložit zprávu do existující fronty, vytvořte nejdříve novou třídu **CloudQueueMessage**. Pak zavolejte **addMessage** metoda. A **CloudQueueMessage** lze vytvořit z řetězce (ve formátu UTF-8) nebo pole bajtů. Tady je kód, který vytvoří frontu (pokud neexistuje) a vloží zprávu "Hello, World".
+Pokud chcete vložit zprávu do existující fronty, vytvořte nejdříve novou třídu **CloudQueueMessage**. Pak zavolejte **addMessage** metody. A **CloudQueueMessage** lze vytvořit z řetězce (ve formátu UTF-8) nebo s polem bajtů. Tady je kód, který vytvoří frontu (pokud neexistuje) a vloží zprávu "Hello, World".
 
 ```java
 try
@@ -129,7 +129,7 @@ catch (Exception e)
 ```
 
 ## <a name="how-to-peek-at-the-next-message"></a>Postupy: zobrazení náhledu další zprávy
-Můžete prohlížet zprávy ve frontě bez odebere ji z fronty voláním **peekMessage**.
+Můžete prohlížet zprávy ve frontě bez odebrání z fronty pomocí volání **peekMessage**.
 
 ```java
 try
@@ -163,7 +163,7 @@ catch (Exception e)
 ## <a name="how-to-change-the-contents-of-a-queued-message"></a>Postupy: Změna obsahu zpráv zařazených ve frontě
 Podle potřeby můžete změnit obsah zprávy přímo ve frontě. Pokud zpráva představuje pracovní úlohu, mohli byste tuto funkci použít k aktualizaci stavu pracovních úloh. Následující kód aktualizuje zprávy ve frontě o nový obsah a prodlouží časový limit viditelnosti na 60 sekund. Uloží se tím stav práce spojený se zprávou a klient získá další minutu, aby mohl pokračovat ve zpracování zprávy. Tímto způsobem může sledovat vícekrokového pracovní postupy pro zprávy ve frontě, aniž by bylo nutné v případě, že krok zpracování z důvodu selhání hardwaru nebo softwaru selže, začít znovu od začátku. Obvykle byste udržovali také hodnotu počtu opakování, a pokud by se pokus o zpracování zprávy opakoval více než *n*krát, odstranili byste ji. Je to ochrana proti tomu, aby zpráva při každém pokusu o zpracování nevyvolala chyby aplikace.
 
-Následující ukázka hledání kódu prostřednictvím fronty zpráv, vyhledá první zprávu, která odpovídá "Hello, World" pro obsah, pak upraví obsahu zprávy a ukončí.
+Následující ukázky hledání kódu prostřednictvím fronty zpráv, vyhledá první zprávu, která odpovídá "Hello, World" pro obsah, pak upraví obsah zprávu a ukončí.
 
 ```java
 try
@@ -206,7 +206,7 @@ catch (Exception e)
 }
 ```
 
-Následující ukázka kódu Alternativně aktualizuje pouze první viditelné zprávu ve frontě.
+Můžete také následující vzorový kód aktualizuje pouze první viditelné zprávu ve frontě.
 
 ```java
 try
@@ -244,7 +244,7 @@ catch (Exception e)
 ```
 
 ## <a name="how-to-get-the-queue-length"></a>Postupy: získání délky fronty
-Podle potřeby můžete získat odhadovaný počet zpráv ve frontě. **DownloadAttributes** metoda požádá službu front několik aktuální hodnoty, včetně počet jsou počet zpráv ve frontě. Počet je pouze přibližné, protože zprávy můžete přidat nebo odebrat po služby front odpoví na žádost. **GetApproximateMessageCount** metoda vrátí poslední hodnotu načtenou volání **downloadAttributes**, bez volání služby front.
+Podle potřeby můžete získat odhadovaný počet zpráv ve frontě. **DownloadAttributes** metoda požádá službu front pro několik aktuální hodnoty, včetně počet počet zpráv ve frontě. Počet totiž pouze přibližná zprávy můžete přidat nebo odebrat po služba fronty jsou reaguje na váš požadavek. **GetApproximateMessageCount** metoda vrátí poslední hodnotu načtenou volání **downloadAttributes**, bez volání služby front.
 
 ```java
 try
@@ -275,8 +275,8 @@ catch (Exception e)
 }
 ```
 
-## <a name="how-to-dequeue-the-next-message"></a>Postupy: vyřazení další zprávy z fronty
-Váš kód dequeues zprávu z fronty ve dvou krocích. Při volání **retrieveMessage**, získáte další zprávu ve frontě. Zpráva vrácená metodou **retrieveMessage** stane neviditelnou pro jakýkoli jiný kód čtení zpráv z této fronty. Ve výchozím nastavení tato zpráva zůstává neviditelná po dobu 30 sekund. K dokončení odebrání zprávy z fronty, musíte také zavolat **deleteMessage**. Tento dvoukrokový proces odebrání zprávy zaručuje, aby v případě, že se vašemu kódu nepodaří zprávu zpracovat z důvodu selhání hardwaru nebo softwaru, mohla stejnou zprávu získat jiná instance vašeho kódu a bylo možné to zkusit znovu. Váš kód zavolá metodu **deleteMessage** pravým po zpracování zprávy.
+## <a name="how-to-dequeue-the-next-message"></a>Postupy: odstranění z fronty další zprávy
+Váš kód dequeues zprávy z fronty ve dvou krocích. Při volání **retrieveMessage**, získáte další zprávu ve frontě. Zpráva vrácená metodou **retrieveMessage** stane neviditelnou pro jakýkoli jiný kód přečte zprávy z této fronty. Ve výchozím nastavení tato zpráva zůstává neviditelná po dobu 30 sekund. K dokončení odebrání zprávy z fronty, musíte také zavolat **deleteMessage**. Tento dvoukrokový proces odebrání zprávy zaručuje, aby v případě, že se vašemu kódu nepodaří zprávu zpracovat z důvodu selhání hardwaru nebo softwaru, mohla stejnou zprávu získat jiná instance vašeho kódu a bylo možné to zkusit znovu. Kód volá **deleteMessage** hned po zpracování zprávy.
 
 ```java
 try
@@ -307,10 +307,10 @@ catch (Exception e)
 }
 ```
 
-## <a name="additional-options-for-dequeuing-messages"></a>Další možnosti pro vyřazení zprávy
+## <a name="additional-options-for-dequeuing-messages"></a>Další možnosti pro zrušení fronty zpráv
 Načítání zpráv z fronty si můžete přizpůsobit dvěma způsoby. Za prvé si můžete načíst dávku zpráv (až 32). Za druhé si můžete nastavit delší nebo kratší časový limit neviditelnosti, aby měl váš kód více nebo méně času na úplné zpracování jednotlivých zpráv.
 
-Následující příklad kódu používá **retrieveMessages** metoda získá 20 zpráv v jednom volání. Pak se každá zpráva zpracuje pomocí **pro** smyčky. Také nastaví časový limit neviditelnosti 5 minut (300 sekund) pro každou zprávu. Všimněte si, že za pět minut spustí pro všechny zprávy ve stejnou dobu, takže když pět minut předané od volání **retrieveMessages**, všechny zprávy, které nebyly odstraněny, opět viditelné.
+Následující příklad kódu používá **retrieveMessages** metodu k získání 20 zpráv v jednom volání. Pak se každá zpráva zpracuje pomocí **pro** smyčky. Také nastaví časový limit neviditelnosti 5 minut (300 sekund) pro každou zprávu. Všimněte si, že pět minut spustí pro všechny zprávy ve stejnou dobu, tak po pěti minutách uplynuly od volání **retrieveMessages**, všechny zprávy, které nebyly odstraněny, opět viditelné.
 
 ```java
 try
@@ -339,8 +339,8 @@ catch (Exception e)
 }
 ```
 
-## <a name="how-to-list-the-queues"></a>Postupy: seznam fronty
-Chcete-li získat seznam aktuální front, zavolejte **CloudQueueClient.listQueues()** metodu, která vrátí kolekci **CloudQueue** objekty.
+## <a name="how-to-list-the-queues"></a>Postupy: výpis front
+Chcete-li získat seznam aktuálního front, zavolejte **CloudQueueClient.listQueues()** metodu, která vrátí kolekci **CloudQueue** objekty.
 
 ```java
 try
@@ -394,16 +394,16 @@ catch (Exception e)
 ```
 
 ## <a name="next-steps"></a>Další postup
-Teď, když jste se naučili základy používání služby queue storage, postupujte podle následujících odkazech na další informace o složitějších úlohách úložiště.
+Teď, když jste se naučili základy používání služby queue storage, použijte tyto odkazy na další informace o složitějších úlohách úložiště.
 
-* [Úložiště Azure SDK pro jazyk Java][Azure Storage SDK for Java]
-* [Referenční informace sady SDK úložiště Azure klienta][odkaz SDK klienta úložiště Azure]
+* [Sada SDK služby Azure Storage pro Javu][Azure Storage SDK for Java]
+* [Referenční informace ke klientské sadě SDK služby Azure Storage][Referenční informace ke klientské sadě SDK služby Azure Storage]
 * [REST API služby Azure Storage][Azure Storage Services REST API]
 * [Blog týmu Azure Storage][Azure Storage Team Blog]
 
 [Azure SDK for Java]: http://go.microsoft.com/fwlink/?LinkID=525671
 [Azure Storage SDK for Java]: https://github.com/azure/azure-storage-java
 [Azure Storage SDK for Android]: https://github.com/azure/azure-storage-android
-[odkaz SDK klienta úložiště Azure]: http://dl.windowsazure.com/storage/javadoc/
+[Referenční informace ke klientské sadě SDK služby Azure Storage]: http://dl.windowsazure.com/storage/javadoc/
 [Azure Storage Services REST API]: https://msdn.microsoft.com/library/azure/dd179355.aspx
 [Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/

@@ -1,6 +1,6 @@
 ---
-title: 'Vytvoření brány Azure VPN založené na trasách: prostředí PowerShell | Microsoft Docs'
-description: Rychle vytvořte pomocí prostředí PowerShell brána sítě VPN založené na směrování
+title: 'Vytvoření brány Azure VPN založené na trasách: PowerShell | Dokumentace Microsoftu'
+description: Rychle vytvořte založené na směrování VPN Gateway pomocí Powershellu
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
@@ -16,16 +16,17 @@ ms.workload: infrastructure-services
 ms.date: 04/04/2018
 ms.author: cherylmc
 ms.openlocfilehash: efa07a68cda60ea2d8256a8d068639305f7f4c86
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38295451"
 ---
-# <a name="create-a-route-based-vpn-gateway-using-powershell"></a>Vytváření pomocí prostředí PowerShell brány VPN založené na směrování
+# <a name="create-a-route-based-vpn-gateway-using-powershell"></a>Vytvoření trasové brány VPN pomocí Powershellu
 
-Tento článek vám pomůže rychle vytvořit založené na směrování Azure VPN gateway pomocí prostředí PowerShell. Brána sítě VPN se používá při vytváření připojení VPN k síti na pracovišti. Můžete také použít bránu VPN propojení virtuálních sítí.
+Tento článek vám pomůže rychle vytvořit založené na směrování Azure VPN gateway pomocí Powershellu. Brány VPN se používá při vytváření připojení VPN k místní síti. Bránu sítě VPN můžete použít také k propojení virtuálních sítí.
 
-Kroky v tomto článku vytvořte virtuální síť, podsíť, podsíť brány a bránu VPN založené na směrování (brány virtuální sítě). Po dokončení vytvoření brány můžete vytvořit připojení. Tyto kroky vyžadují předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Kroky v tomto článku se vytvoří virtuální síť, podsíť, podsítě brány a bránu VPN založenou na směrování (brány virtuální sítě). Po dokončení vytvoření brány můžete pak vytvořit připojení. Tyto kroky vyžadují předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
@@ -41,7 +42,7 @@ New-AzureRmResourceGroup -Name TestRG1 -Location EastUS
 
 ## <a name="vnet"></a>Vytvoření virtuální sítě
 
-Vytvořte virtuální síť pomocí rutiny [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork). Následující příklad vytvoří virtuální síť s názvem **VNet1** v **EastUS** umístění:
+Vytvořte virtuální síť pomocí rutiny [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork). Následující příklad vytvoří virtuální síť s názvem **ze sítě VNet1** v **EastUS** umístění:
 
 ```azurepowershell-interactive
 $virtualNetwork = New-AzureRmVirtualNetwork `
@@ -51,7 +52,7 @@ $virtualNetwork = New-AzureRmVirtualNetwork `
   -AddressPrefix 10.1.0.0/16
 ```
 
-Vytvoření podsítě konfigurace pomocí [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig) rutiny.
+Vytvořte konfiguraci podsítě pomocí [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig) rutiny.
 
 ```azurepowershell-interactive
 $subnetConfig = Add-AzureRmVirtualNetworkSubnetConfig `
@@ -60,44 +61,44 @@ $subnetConfig = Add-AzureRmVirtualNetworkSubnetConfig `
   -VirtualNetwork $virtualNetwork
 ```
 
-Nastavte konfiguraci podsítě virtuální sítě s využitím [Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/Set-AzureRmVirtualNetwork) rutiny.
+Nastavit konfiguraci podsítě virtuální sítě s využitím [Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/Set-AzureRmVirtualNetwork) rutiny.
 
 
 ```azurepowershell-interactive
 $virtualNetwork | Set-AzureRmVirtualNetwork
 ```
 
-## <a name="gwsubnet"></a>Přidat podsíť brány
+## <a name="gwsubnet"></a>Přidání podsítě brány
 
-Podsíť brány obsahuje rezervovaných adres IP, které používají služby brány virtuální sítě. Chcete-li přidat podsíť brány použijte v následujících příkladech:
+Podsíť brány obsahuje vyhrazené IP adresy, které používají služby brány virtuální sítě. Chcete-li přidat podsíť brány použijte následující příklady:
 
-Nastavte proměnnou pro vaši virtuální síť.
+Nastavte proměnnou pro svoji virtuální síť.
 
 ```azurepowershell-interactive
 $vnet = Get-AzureRmVirtualNetwork -ResourceGroupName TestRG1 -Name VNet1
 ```
 
-Vytvořte pomocí podsíť brány [přidat AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/Add-AzureRmVirtualNetworkSubnetConfig) rutiny.
+Vytvořte podsíť brány pomocí [Add-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/Add-AzureRmVirtualNetworkSubnetConfig) rutiny.
 
 ```azurepowershell-interactive
 Add-AzureRmVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.1.255.0/27 -VirtualNetwork $vnet
 ```
 
-Nastavte konfiguraci podsítě virtuální sítě s využitím [Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/Set-AzureRmVirtualNetwork) rutiny.
+Nastavit konfiguraci podsítě virtuální sítě s využitím [Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/Set-AzureRmVirtualNetwork) rutiny.
 
 ```azurepowershell-interactive
 $virtualNetwork | Set-AzureRmVirtualNetwork
 ```
 
-## <a name="PublicIP"></a>Vyžádání veřejné IP adresy
+## <a name="PublicIP"></a>Vyžádejte si veřejnou IP adresu
 
-Brána sítě VPN, musí mít dynamicky přidělené veřejnou IP adresu. Při vytváření připojení k bráně VPN toto je IP adresa, která zadáte. Následující příklad použijte k vyžádání veřejné IP adresy:
+Brána VPN musí mít dynamicky přidělené veřejné IP adresy. Při vytváření připojení k bráně VPN, toto je IP adresa, který zadáte. Vyžádejte si veřejnou IP adresu pomocí příkazu v následujícím příkladu:
 
 ```azurepowershell-interactive
 $gwpip= New-AzureRmPublicIpAddress -Name VNet1GWIP -ResourceGroupName TestRG1 -Location 'East US' -AllocationMethod Dynamic
 ```
 
-## <a name="GatewayIPConfig"></a>Vytvoření konfigurace brány IP adres
+## <a name="GatewayIPConfig"></a>Vytvořit konfiguraci IP adresy brány
 
 Konfigurace brány definuje podsíť a veřejnou IP adresu, která se bude používat. Podle následujícího příkladu vytvořte vlastní konfiguraci brány:
 
@@ -108,7 +109,7 @@ $gwipconfig = New-AzureRmVirtualNetworkGatewayIpConfig -Name gwipconfig1 -Subnet
 ```
 ## <a name="CreateGateway"></a>Vytvoření brány VPN
 
-Brána sítě VPN může trvat 45 minut nebo déle vytvořit. Po dokončení brány můžete vytvořit připojení mezi virtuální sítí a jiné virtuální síti. Nebo vytvořte připojení mezi virtuální sítí a místní umístění. Vytvoření brány VPN pomocí [New-AzureRmVirtualNetworkGateway](/powershell/module/azurerm.network/New-AzureRmVirtualNetworkGateway) rutiny.
+Vytvoření brány VPN může trvat 45 minut nebo déle. Po dokončení brány můžete vytvořit připojení mezi virtuální sítí a jiné virtuální síti. Nebo vytvořte připojení mezi virtuální sítí a místního umístění. Vytvořte bránu VPN pomocí rutiny [New-AzureRmVirtualNetworkGateway](/powershell/module/azurerm.network/New-AzureRmVirtualNetworkGateway).
 
 ```azurepowershell-interactive
 New-AzureRmVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
@@ -116,15 +117,15 @@ New-AzureRmVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
 -VpnType RouteBased -GatewaySku VpnGw1
 ```
 
-## <a name="viewgw"></a>Zobrazení služby VPN gateway
+## <a name="viewgw"></a>Zobrazení brány sítě VPN
 
-Můžete zobrazit pomocí brány sítě VPN [Get-AzureRmVirtualNetworkGateway](/powershell/module/azurerm.network/Get-AzureRmVirtualNetworkGateway) rutiny.
+Můžete zobrazit pomocí brány VPN [Get-AzureRmVirtualNetworkGateway](/powershell/module/azurerm.network/Get-AzureRmVirtualNetworkGateway) rutiny.
 
 ```azurepowershell-interactive
 Get-AzureRmVirtualNetworkGateway -Name Vnet1GW -ResourceGroup TestRG1
 ```
 
-Výstup bude vypadat podobně jako tento příklad:
+Výstup bude vypadat nějak takto:
 
 ```
 Name                   : VNet1GW
@@ -169,9 +170,9 @@ BgpSettings            : {
      
 ```
 
-## <a name="viewgwpip"></a>Zobrazení veřejnou IP adresu
+## <a name="viewgwpip"></a>Zobrazení veřejné IP adresy
 
-Chcete-li zobrazit veřejné IP adresy pro bránu VPN, použijte [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/Get-AzureRmPublicIpAddress) rutiny.
+Chcete-li zobrazit veřejnou IP adresu pro bránu VPN, použijte [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/Get-AzureRmPublicIpAddress) rutiny.
 
 ```azurepowershell-interactive
 Get-AzureRmPublicIpAddress -Name VNet1GWIP -ResourceGroupName TestRG1
@@ -216,9 +217,9 @@ Remove-AzureRmResourceGroup -Name TestRG1
 
 ## <a name="next-steps"></a>Další postup
 
-Po dokončení vytvoření brány můžete vytvořit připojení mezi virtuální sítí a jiné virtuální síti. Nebo vytvořte připojení mezi virtuální sítí a místní umístění.
+Po dokončení vytváření brány můžete vytvořit připojení mezi virtuální sítí a jiné virtuální síti. Nebo vytvořte připojení mezi virtuální sítí a místního umístění.
 
 > [!div class="nextstepaction"]
-> [Umožňuje vytvořit připojení site-to-site](vpn-gateway-create-site-to-site-rm-powershell.md)<br><br>
-> [Umožňuje vytvořit připojení point-to-site](vpn-gateway-howto-point-to-site-rm-ps.md)<br><br>
-> [Umožňuje vytvořit připojení k jiné virtuální síti](vpn-gateway-vnet-vnet-rm-ps.md)
+> [Vytvoření připojení site-to-site](vpn-gateway-create-site-to-site-rm-powershell.md)<br><br>
+> [Vytvoření připojení point-to-site](vpn-gateway-howto-point-to-site-rm-ps.md)<br><br>
+> [Vytvoření připojení k jiné virtuální síti](vpn-gateway-vnet-vnet-rm-ps.md)
