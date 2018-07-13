@@ -1,6 +1,6 @@
 ---
-title: Použití Azure Key Vault z webové aplikace | Microsoft Docs
-description: Pomocí tohoto kurzu můžete Naučte se používat Azure Key Vault z webové aplikace.
+title: Kurz použití služby Azure Key Vault z webové aplikace | Microsoft Docs
+description: Tento kurz vám pomůže naučit se používat službu Azure Key Vault z webové aplikace.
 services: key-vault
 author: adhurwit
 manager: mbaldwin
@@ -8,80 +8,75 @@ tags: azure-resource-manager
 ms.assetid: 9b7d065e-1979-4397-8298-eeba3aec4792
 ms.service: key-vault
 ms.workload: identity
-ms.topic: article
-ms.date: 05/10/2018
+ms.topic: tutorial
+ms.date: 06/29/2018
 ms.author: adhurwit
-ms.openlocfilehash: 3a191c3ee7eea641aab81008a6da801b609fb4c5
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
-ms.translationtype: MT
+ms.openlocfilehash: 5cd764395e91a82973318da7284b28d7a43d35ea
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34802098"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37115060"
 ---
-# <a name="use-azure-key-vault-from-a-web-application"></a>Použití Azure Key Vault z webové aplikace
+# <a name="tutorial-use-azure-key-vault-from-a-web-application"></a>Kurz: Použití služby Azure Key Vault z webové aplikace
+Tento kurz vám pomůže naučit se používat službu Azure Key Vault z webové aplikace v Azure. Ukazuje postup při přístupu k tajnému klíči ze služby Azure Key Vault pro použití ve webové aplikaci. Kurz pak tento prostup rozšiřuje a místo tajného klíče klienta používá certifikát. Tento kurz je určený pro webové vývojáře se základními znalostmi vytváření webových aplikací v Azure. 
 
-## <a name="introduction"></a>Úvod
+V tomto kurzu se naučíte: 
 
-Pomocí tohoto kurzu můžete Naučte se používat Azure Key Vault z webové aplikace v Azure. Provede vás procesem přístup k tajného klíče z Azure Key Vault, takže je možné ve webové aplikaci.
+> [!div class="checklist"]
+> * Přidání nastavení aplikace do souboru web.config
+> * Přidání metody pro získání přístupového tokenu
+> * Načtení tokenu při spuštění aplikace
+> * Ověřování pomocí certifikátu 
 
-**Odhadovaný čas dokončení:** 15 minut
-
-Souhrnné informace o Azure Key Vault naleznete v tématu [Co je Azure Key Vault?](key-vault-whatis.md).
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení tohoto kurzu potřebujete:
+K dokončení tohoto kurzu potřebujete následující položky:
 
-* Identifikátor URI pro tajný klíč v Azure Key Vault
-* ID klienta a tajný klíč klienta pro webovou aplikaci, které jsou zaregistrované v Azure Active Directory, který má přístup k trezoru klíč
-* Webová aplikace. Jsme se, že se zobrazuje kroky pro aplikaci ASP.NET MVC nasazené v Azure jako webovou aplikaci.
+* Identifikátor URI pro tajný klíč ve službě Azure Key Vault
+* ID klienta a tajný klíč klienta pro webovou aplikaci zaregistrovanou v Azure Active Directory, která má přístup k vaší službě Key Vault
+* Webová aplikace. Tento kurz obsahuje kroky pro aplikaci ASP.NET MVC nasazenou v Azure jako webová aplikace.
 
->[!IMPORTANT]
->* Tato ukázka závisí na starší způsob, jak ručně zřizování identit AAD. V současné době je nová funkce ve verzi preview názvem [identita spravované služby (MSI)](https://docs.microsoft.com/azure/active-directory/msi-overview), které mohou automaticky poskytovat identit AAD. Naleznete v následujícím příkladu v [Githubu](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet/) další podrobnosti.
+Proveďte kroky v tématu [Začínáme s Azure Key Vault](key-vault-get-started.md) a získejte identifikátor URI pro tajný klíč, ID klienta a tajný klíč klienta a zaregistrujte aplikaci. Webová aplikace bude mít přístup k trezoru a musí být zaregistrovaná v Azure Active Directory. Kromě toho musí mít přístupová práva ke službě Key Vault. Pokud tomu tak není, vraťte se k části Registrace aplikace v kurzu Začínáme a zopakujte uvedené kroky. Další informace o vytvoření služby Azure Web Apps najdete v [přehledu Web Apps](../app-service/app-service-web-overview.md).
 
-> [!NOTE]
->* Je nezbytné, že jste dokončili kroky uvedené v [Začínáme s Azure Key Vault](key-vault-get-started.md) pro účely tohoto kurzu tak, aby měli identifikátor URI tajného klíče a ID klienta a tajný klíč klienta pro webovou aplikaci.
+Tato ukázka se spoléhá na ruční zřizování identit Azure Active Directory. V současné době existuje nová funkce [Identita spravované služby (MSI)](https://docs.microsoft.com/azure/active-directory/msi-overview) ve verzi Preview, která dokáže automaticky zřizovat identity Azure AD. Další informace najdete v ukázce na [GitHubu](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet/) a v souvisejícím [kurzu k MSI se službami App Service a Functions](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity). 
 
-
-Webovou aplikaci, která bude mít přístup k Key Vault je ten, který je zaregistrován ve službě Azure Active Directory a byl poskytnut přístup k trezoru klíč. Pokud tomu tak není, přejděte zpět na zaregistrovat aplikaci v kurzu Začínáme a opakujte kroky uvedené.
-
-Tento kurz je určen pro vývojářům webů, které pochopit základy toho vytváření webových aplikací v Azure. Další informace o Azure Web Apps najdete v [přehledu Web Apps](../app-service/app-service-web-overview.md).
 
 ## <a id="packages"></a>Přidání balíčků NuGet
 
-Jsou dva balíčky, které webové aplikace musí mít nainstalovaný.
+Vaše webová aplikace musí mít nainstalované dva balíčky.
 
-* Knihovna ověřování Active Directory - obsahuje metody pro interakci s Azure Active Directory a správa identity uživatele
-* Azure Key Vault Library - obsahuje metody pro interakci s Azure Key Vault
+* Active Directory Authentication Library obsahuje metody pro práci s Azure Active Directory a správu identity uživatele.
+* Knihovna služby Azure Key Vault obsahuje metody pro práci se službou Azure Key Vault.
 
-Obě tyto balíčky můžete nainstalovat pomocí konzoly Správce balíčků pomocí příkazu Install-Package.
+Oba tyto balíčky můžete nainstalovat pomocí konzoly Správce balíčků a příkazu Install-Package.
 
-```
-// this is currently the latest stable version of ADAL
-Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.16.204221202
+```powershell
+Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory 
 Install-Package Microsoft.Azure.KeyVault
 ```
 
-## <a id="webconfig"></a>Upravit soubor Web.Config
+## <a id="webconfig"></a>Úprava souboru web.config
 
-Existují tři nastavení aplikace, které je třeba přidat do souboru web.config následujícím způsobem.
+Do souboru web.config je potřeba následujícím způsobem přidat tři nastavení aplikace. Abychom zajistili další úroveň zabezpečení, přidáme skutečné hodnoty na webu Azure Portal.
 
-```
+```xml
     <!-- ClientId and ClientSecret refer to the web application registration with Azure Active Directory -->
     <add key="ClientId" value="clientid" />
     <add key="ClientSecret" value="clientsecret" />
 
     <!-- SecretUri is the URI for the secret in Azure Key Vault -->
     <add key="SecretUri" value="secreturi" />
+    <!-- If you aren't hosting your app as an Azure Web App, then you should use the actual ClientId, Client Secret, and Secret URI values -->
 ```
 
-Pokud nechcete kvůli hostování vaší aplikace jako webové aplikace Azure, měli byste k souboru web.config přidat skutečnými hodnotami ClientId, sdílený tajný klíč klienta a identifikátor URI tajného klíče. V opačném případě ponechte tyto fiktivní hodnoty, protože jsme přidáním skutečnými hodnotami na portálu Azure vytváří další úroveň zabezpečení.
 
-## <a id="gettoken"></a>Přidejte metodu k získání tokenu přístupu
 
-Chcete-li použít rozhraní API trezoru klíč musíte přístupový token. Klient klíče trezoru zpracovává volání do rozhraní API Key Vault, ale budete muset zadat pomocí funkce, který získá přístupový token.  
+## <a id="gettoken"></a>Přidání metody pro získání přístupového tokenu
 
-Následuje kód slouží k získání tokenu přístupu z Azure Active Directory. Tento kód můžete přejít kdekoli v aplikaci. Líbí se přidání Utils nebo EncryptionHelper třídy.  
+Pokud chcete používat rozhraní API služby Key Vault, potřebujete přístupový token. Volání do rozhraní API služby Key Vault zajišťuje klient služby Key Vault. Musíte mu však vytvořit funkci, která získá přístupový token. V následujícím příkladu je kód pro získání přístupového tokenu z Azure Active Directory. Tento kód můžete v rámci aplikace umístit kamkoli. Doporučujeme přidat třídu Utils nebo EncryptionHelper a kód vložit tam.  
 
 ```cs
 //add these using statements
@@ -105,15 +100,15 @@ public static async Task<string> GetToken(string authority, string resource, str
 
     return result.AccessToken;
 }
+// Using Client ID and Client Secret is a way to authenticate an Azure AD application.
+// Using it in your web application allows for a separation of duties and more control over your key management. 
+// However, it does rely on putting the Client Secret in your configuration settings.
+// For some people, this can be as risky as putting the secret in your configuration settings.
 ```
 
-> [!NOTE]
->* Nejjednodušší způsob ověřování v současnosti představuje nová funkce identity spravované služby (MSI). Další podrobnosti vám poskytne následující odkaz na ukázku s použití služby [Key Vault s využitím MSI v aplikaci v .NET](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet/) a související [kurz k MSI se službami App Service a Functions](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity). 
->* Pomocí ID klienta a tajný klíč klienta je další způsob ověření aplikaci Azure AD. A použití ve vaší webové aplikace je možné oddělení povinností a větší kontrolu nad vaší správy klíčů. Je však závislý na uvedení tajný klíč klienta v nastavení konfigurace, které pro některé můžou být jako rizikové jako uvedení tajný klíč, který chcete chránit v nastavení konfigurace. Najdete zde informace o tom, jak použít ID klienta a certifikát místo ID klienta a tajný klíč klienta k ověření aplikace Azure AD.
+## <a id="appstart"></a>Načtení tajného klíče při spuštění aplikace
 
-## <a id="appstart"></a>Načtení tajný klíč na spuštění aplikace
-
-Nyní potřebujeme kódu pro volání rozhraní API Key Vault a načítání tajného klíče. Následující kód můžete umístit kdekoli, tak dlouho, dokud se označuje jako předtím, než je nutné ji použít. Tento kód v události spustit aplikace v soubor Global.asax mít umístíte tak, aby při spuštění se spustí jednou a zpřístupní tajný klíč pro aplikaci.
+Teď potřebujeme kód, který zavolá rozhraní API služby Key Vault a načte tajný klíč. Následující kód můžete umístit kamkoli za předpokladu, že se zavolá před tím, než ho budete potřebovat použít. V tomto příkladu jsme tento kód umístili do události spuštění aplikace v souboru Global.asax, takže se spustí jednou při spuštění a zpřístupní tajný klíč aplikaci.
 
 ```cs
 //add these using statements
@@ -124,43 +119,47 @@ using System.Web.Configuration;
 var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(Utils.GetToken));
 var sec = await kv.GetSecretAsync(WebConfigurationManager.AppSettings["SecretUri"]);
 
-//I put a variable in a Utils class to hold the secret for general  application use.
+//I put a variable in a Utils class to hold the secret for general application use.
 Utils.EncryptSecret = sec.Value;
 ```
 
-## <a id="portalsettings"></a>Přidání nastavení aplikace v portálu Azure (volitelné)
+## <a id="portalsettings"></a>Přidání nastavení aplikace na webu Azure Portal
 
-Pokud máte webové aplikace Azure, můžete nyní přidat skutečnými hodnotami pro AppSettings na portálu Azure. Díky tomu skutečnými hodnotami nebude v souboru web.config, ale chráněná přes portál, kde můžete dělat samostatnou přístupovou ovládacího prvku. Tyto hodnoty se nahradí hodnoty, které jste zadali v souboru web.config. Ujistěte se, že názvy jsou stejné.
+Do webové aplikace Azure teď můžete na webu Azure Portal přidat skutečné hodnoty pro nastavení aplikace. Provedením tohoto kroku zajistíte, že skutečné hodnoty nebudou v souboru web.config, ale chráněné přes portál, který nabízí možnosti odděleného řízení přístupu. Těmito hodnotami se nahradí hodnoty, které jste zadali do souboru web.config. Ujistěte se, že používáte stejné názvy.
 
-![Nastavení aplikace se zobrazí na portálu Azure][1]
+![Zobrazená nastavení aplikace na webu Azure Portal][1]
 
-## <a name="authenticate-with-a-certificate-instead-of-a-client-secret"></a>Ověřování pomocí certifikátu místo tajný klíč klienta
+## <a name="authenticate-with-a-certificate-instead-of-a-client-secret"></a>Ověřování pomocí certifikátu místo tajného klíče klienta
 
-Jiný způsob, jak ověřit aplikaci Azure AD je pomocí ID klienta a certifikát místo ID klienta a tajný klíč klienta. Toto jsou kroky pro použití certifikátu ve webové aplikaci Azure:
+Teď, když rozumíte ověřování aplikace Azure AD pomocí ID klienta a tajného klíče klienta, použijeme ID klienta a certifikát. Pokud chcete ve webové aplikaci Azure použít certifikát, proveďte následující kroky:
 
-1. Získat nebo vytvořit certifikát
-2. Certifikát přidružit aplikaci Azure AD
-3. Přidání kódu do vaší webové aplikace na použití certifikátu
-4. Přidat certifikát do vaší webové aplikace
+1. Získání nebo vytvoření certifikátu
+2. Přidružení certifikátu k aplikaci Azure AD
+3. Přidání kódu do webové aplikace, který umožní používání certifikátu
+4. Přidání certifikátu do webové aplikace
 
-### <a name="get-or-create-a-certificate"></a>Získat nebo vytvořit certifikát
+### <a name="get-or-create-a-certificate"></a>Získání nebo vytvoření certifikátu
 
-Pro naše účely budeme testovacího certifikátu. Tady je několik příkazů, které můžete použít v příkazovém řádku vývojáře vytvořit certifikát. Změňte adresář na místo, kam chcete vytvořené soubory certifikátu.  Navíc pro počáteční a koncové datum platnosti certifikátu použijte aktuální datum plus 1 rok.
+ Pro účely tohoto kurzu vytvoříme testovací certifikát. Tady je skript pro vytvoření certifikátu podepsaného svým držitelem. Přejděte do adresáře, ve kterém chcete soubory certifikátu vytvořit.  Jako počáteční a koncové datum platnosti certifikátu můžete použít aktuální datum plus jeden rok.
 
+```powershell
+#Create self-signed certificate and export pfx and cer files 
+$PfxFilePath = "c:\data\KVWebApp.pfx" 
+$CerFilePath = "c:\data\KVWebApp.cer" 
+$DNSName = "MyComputer.Contoso.com" 
+$Password ="MyPassword" 
+$SecStringPw = ConvertTo-SecureString -String $Password -Force -AsPlainText 
+$Cert = New-SelfSignedCertificate -DnsName $DNSName -CertStoreLocation "cert:\LocalMachine\My" -NotBefore 05/15/2018 -NotAfter 05/15/2019 
+Export-PfxCertificate -cert $cert -FilePath $PFXFilePath -Password $SecStringPw 
+Export-Certificate -cert $cert -FilePath $CerFilePath 
 ```
-makecert -sv mykey.pvk -n "cn=KVWebApp" KVWebApp.cer -b 07/31/2017 -e 07/31/2018 -r
-pvk2pfx -pvk mykey.pvk -spc KVWebApp.cer -pfx KVWebApp.pfx -po test123
-```
 
-Poznamenejte si koncové datum a heslo .pfx (v tomto příkladu: 07/31/2018 a test123). Je nutné je níže.
+Poznamenejte si koncové datum a heslo pro soubor .pfx (v tomto příkladu je to 15. května 2019 a MyPassword). Budete je potřebovat pro následující skript. 
+### <a name="associate-the-certificate-with-an-azure-ad-application"></a>Přidružení certifikátu k aplikaci Azure AD
 
-Další informace o vytvoření testovacího certifikátu najdete v tématu [postup: vytvořit vaše vlastní testovací certifikát](https://msdn.microsoft.com/library/ff699202.aspx)
+Teď, když máte certifikát, ho musíte přidružit k aplikaci Azure AD. Přidružení můžete provést prostřednictvím PowerShellu. Spuštěním následujících příkazů přidružte certifikát k aplikaci Azure AD:
 
-### <a name="associate-the-certificate-with-an-azure-ad-application"></a>Certifikát přidružit aplikaci Azure AD
-
-Teď, když máte certifikát, musíte přidružit aplikaci Azure AD. Na portálu Azure v současné době nepodporuje tento pracovní postup; To lze provést pomocí prostředí PowerShell. Spusťte následující příkazy, které certifikát přidružit aplikaci Azure AD:
-
-```ps
+```powershell
 $x509 = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2
 $x509.Import("C:\data\KVWebApp.cer")
 $credValue = [System.Convert]::ToBase64String($x509.GetRawCertData())
@@ -178,17 +177,18 @@ Set-AzureRmKeyVaultAccessPolicy -VaultName 'contosokv' -ServicePrincipalName "ht
 $x509.Thumbprint
 ```
 
-Po spuštění těchto příkazů se zobrazí aplikace ve službě Azure AD. Při hledání, zkontrolujte, že jste vybrali "Moje společnost vlastní aplikace" místo "Aplikace společnost používá" v dialogovém okně hledání.
+Po spuštění těchto příkazů se aplikace zobrazí v Azure AD. Při vyhledávání registrací aplikací nezapomeňte v dialogovém okně hledání vybrat **Moje aplikace**, a ne Všechny aplikace. 
 
-Další informace o objektech aplikace Azure AD a ServicePrincipal objektů najdete v tématu [objekty aplikací a hlavní objekty služeb](../active-directory/active-directory-application-objects.md).
+### <a name="add-code-to-your-web-app-to-use-the-certificate"></a>Přidání kódu do webové aplikace, který umožní používání certifikátu
 
-### <a name="add-code-to-your-web-app-to-use-the-certificate"></a>Přidání kódu do vaší webové aplikace na použití certifikátu
+Teď do webové aplikace přidáme kód pro přístup k certifikátu a jeho použití k ověřování. 
 
-Teď přidáme kódu vaší webové aplikace na přístup certifikát a použít jej pro ověřování.
-
-Nejprve je kód pro přístup k certifikát.
+Nejprve přidáme kód pro přístup k certifikátu. Všimněte si, že StoreLocation má hodnotu CurrentUser, a ne LocalMachine. Také si všimněte, že pro metodu Find zadáváme hodnotu false, protože používáme testovací certifikát.
 
 ```cs
+//Add this using statement
+using System.Security.Cryptography.X509Certificates;  
+
 public static class CertificateHelper
 {
     public static X509Certificate2 FindCertificateByThumbprint(string findValue)
@@ -211,9 +211,9 @@ public static class CertificateHelper
 }
 ```
 
-Všimněte si, že je StoreLocation CurrentUser místo LocalMachine. A že jsme se dodává false metodu najít vzhledem k tomu, že používáme testovací certifikát.
 
-Dále je kód, který používá CertificateHelper a vytvoří ClientAssertionCertificate, která je potřebná pro ověřování.
+
+Následuje kód, který využívá třídu CertificateHelper a vytváří certifikát ClientAssertionCertificate potřebný k ověřování.
 
 ```cs
 public static ClientAssertionCertificate AssertionCert { get; set; }
@@ -225,7 +225,7 @@ public static void GetCert()
 }
 ```
 
-Tady je nový kód slouží k získání tokenu přístupu. Tím se nahradí gettoken – metoda v předchozím příkladu. Uvedené ho jiný název pro usnadnění práce.
+Tady je nový kód pro získání přístupového tokenu. Tento kód nahradí metodu GetToken v předchozím příkladu. Pro usnadnění práce jsme použili jiný název. Z důvodu snadnějšího použití jsme veškerý tento kód umístili do třídy Utils v projektu webové aplikace.
 
 ```cs
 public static async Task<string> GetAccessToken(string authority, string resource, string scope)
@@ -236,33 +236,34 @@ public static async Task<string> GetAccessToken(string authority, string resourc
 }
 ```
 
-I všechny tohoto kódu umístili do projektu webové aplikace Utils třídy pro snadné použití.
 
-Do metody Application_Start je poslední změny kódu. Je potřeba nejdřív voláním metody GetCert() zatížení ClientAssertionCertificate. A pak se nám změnit metoda zpětného volání, které jsme zadat při vytváření nové KeyVaultClient. Všimněte si, že tím se nahradí kód, který jsme měli v předchozím příkladu.
+
+Poslední změna kódu se týká metody Application_Start. Nejprve musíme zavolat metodu GetCert(), která načte certifikát ClientAssertionCertificate. Pak změníme metodu zpětného volání, kterou zadáme při vytváření nového klienta KeyVaultClient. Tento kód nahradí kód, který jsme měli v předchozím příkladu.
 
 ```cs
 Utils.GetCert();
 var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(Utils.GetAccessToken));
 ```
 
-### <a name="add-a-certificate-to-your-web-app-through-the-azure-portal"></a>Přidat certifikát do vaší webové aplikace prostřednictvím portálu Azure
+### <a name="add-a-certificate-to-your-web-app-through-the-azure-portal"></a>Přidání certifikátu do webové aplikace prostřednictvím webu Azure Portal
 
-Přidání certifikátu do vaší webové aplikace je jednoduchý dvoustupňový proces. První přejděte na portál Azure a přejděte do vaší webové aplikace. V okně nastavení pro webové aplikace klikněte na položku "vlastní domény a SSL". V okně, otevře se okno, které bude možné nahrát certifikát, který jste vytvořili v předchozím příkladu KVWebApp.pfx, ujistěte se, že si pamatujete heslo pro soubor pfx.
+Přidání certifikátu do webové aplikace je jednoduchý dvoustupňový proces. Nejprve přejděte na web Azure Portal a přejděte do vaší webové aplikace. V nastavení vaší webové aplikace klikněte na položku **Nastavení SSL**. Až se Nastavení SSL otevře, nahrajte certifikát KVWebApp.pfx, který jste vytvořili v předchozím příkladu. Ujistěte se, že si pamatujete heslo pro daný soubor .pfx.
 
-![Přidání certifikátu do webové aplikace na portálu Azure][2]
+![Přidání certifikátu do webové aplikace na webu Azure Portal][2]
 
-Poslední věcí, kterou je potřeba udělat je přidat nastavení aplikace do webové aplikace, který má název webu\_zatížení\_certifikáty a hodnotu *. Tím bude zajištěno, že se načtou všechny certifikáty. Pokud chcete načíst jenom certifikáty, které jste odeslali, můžete zadat seznam jejich kryptografické otisky oddělených čárkami.
+Poslední věcí, kterou je potřeba udělat, je přidat do webové aplikace nastavení aplikace s názvem WEBSITE\_LOAD\_CERTIFICATES a hodnotou *. Tímto krokem zajistíte načtení všech certifikátů. Pokud chcete načíst pouze certifikáty, které jste nahráli, zadejte čárkami oddělený seznam jejich kryptografických otisků.
 
-Další informace o přidání certifikátu do webové aplikace najdete v tématu [pomocí certifikátů v aplikacích weby Azure](https://azure.microsoft.com/blog/2014/10/27/using-certificates-in-azure-websites-applications/)
 
-### <a name="add-a-certificate-to-key-vault-as-a-secret"></a>Přidat certifikát do Key Vault jako tajný klíč
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+Pokud už službu App Service, trezor klíčů a aplikaci Azure AD použité v tomto kurzu nepotřebujete, odstraňte je.  
 
-Místo přímo nahrát certifikát služby webové aplikace, můžete ukládat v Key Vault jako tajný klíč a nasadit ho z ní. Toto je popsané v tomto příspěvku blogu ve dvou krocích [nasazení Azure certifikát webové aplikace prostřednictvím Key Vault](https://blogs.msdn.microsoft.com/appserviceteam/2016/05/24/deploying-azure-web-app-certificate-through-key-vault/)
 
 ## <a id="next"></a>Další kroky
+> [!div class="nextstepaction"]
+>[Referenční informace k rozhraní API pro správu služby Azure Key Vault](/dotnet/api/overview/azure/keyvault/management)
 
-Programátorské reference najdete v části [Azure Key Vault C# klienta referenční dokumentace rozhraní API](https://msdn.microsoft.com/en-us/library/azure/mt430941.aspx).
 
 <!--Image references-->
 [1]: ./media/key-vault-use-from-web-application/PortalAppSettings.png
 [2]: ./media/key-vault-use-from-web-application/PortalAddCertificate.png
+ 
