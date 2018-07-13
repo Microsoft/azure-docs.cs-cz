@@ -1,13 +1,13 @@
 ---
-title: Azure Event Hubs vazby pro Azure Functions
-description: Pochopit, jak používat Azure Event Hubs vazby v Azure Functions.
+title: Azure Event Hubs vazby pro službu Azure Functions
+description: Vysvětlení použití služby Azure Event Hubs vazby ve službě Azure Functions.
 services: functions
 documentationcenter: na
 author: tdykstra
 manager: cfowler
 editor: ''
 tags: ''
-keywords: Funkce Azure, funkce zpracování událostí, dynamické výpočetní architektura bez serveru
+keywords: Azure functions, funkce, zpracování událostí, dynamické výpočty, architektura bez serveru
 ms.assetid: daf81798-7acc-419a-bc32-b5a41c6db56b
 ms.service: functions
 ms.devlang: multiple
@@ -16,23 +16,23 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: tdykstra
-ms.openlocfilehash: 64914a1b3efe81a152f5463f74c70c22f01ec0c1
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
-ms.translationtype: MT
+ms.openlocfilehash: 7ea233f3d5b0e0b6ad1470af146f963fce6c4e94
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34724040"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970668"
 ---
-# <a name="azure-event-hubs-bindings-for-azure-functions"></a>Azure Event Hubs vazby pro Azure Functions
+# <a name="azure-event-hubs-bindings-for-azure-functions"></a>Azure Event Hubs vazby pro službu Azure Functions
 
-Tento článek vysvětluje, jak pracovat s [Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) vazby pro Azure Functions. Azure Functions podporuje aktivaci a výstupní vazeb pro služby Event Hubs.
+Tento článek vysvětluje, jak pracovat s [Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) vazby pro službu Azure Functions. Azure Functions podporuje aktivaci a výstupní vazby služby Event hubs.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 ## <a name="packages---functions-1x"></a>Balíčky – funkce 1.x
 
-Pro verzi Azure Functions 1.x, vazby centra událostí jsou součástí [Microsoft.Azure.WebJobs.ServiceBus](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus) balíček NuGet verze 2.x.
-Zdrojový kód pro balíček je v [azure webjobs sdk](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs) úložiště GitHub.
+Pro Azure Functions verzi 1.x, vazby služby Event Hubs jsou součástí [Microsoft.Azure.WebJobs.ServiceBus](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus) balíčku NuGet, verze 2.x.
+Zdrojový kód pro tento balíček je v [sadu sdk azure webjobs](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs) úložiště GitHub.
 
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
@@ -40,49 +40,49 @@ Zdrojový kód pro balíček je v [azure webjobs sdk](https://github.com/Azure/a
 ## <a name="packages---functions-2x"></a>Balíčky – funkce 2.x
 
 Pro funkce 2.x, použijte [Microsoft.Azure.WebJobs.Extensions.EventHubs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventHubs) balíčku, verzi 3.x.
-Zdrojový kód pro balíček je v [azure webjobs sdk](https://github.com/Azure/azure-webjobs-sdk/tree/master/src/Microsoft.Azure.WebJobs.Extensions.EventHubs) úložiště GitHub.
+Zdrojový kód pro tento balíček je v [sadu sdk azure webjobs](https://github.com/Azure/azure-webjobs-sdk/tree/master/src/Microsoft.Azure.WebJobs.Extensions.EventHubs) úložiště GitHub.
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
 ## <a name="trigger"></a>Trigger
 
-Použijte aktivační událost Event Hubs reagovat na událost odeslaná datového proudu událostí centra událostí. Musíte mít přístup pro čtení do centra událostí vytvořit aktivační událost.
+Pomocí aktivační události Event Hubs reagovat na událost odeslaná do datového proudu událostí centra událostí. Musíte mít přístup pro čtení do centra událostí, a nastavit aktivační událost.
 
-Když se aktivuje funkce aktivační událost Event Hubs, zprávu, která ji spouští je předán do funkce jako řetězec.
+Když se aktivuje funkci triggeru Event Hubs, zprávu, která se aktivuje je předán do funkce jako řetězec.
 
-## <a name="trigger---scaling"></a>Aktivovat - škálování
+## <a name="trigger---scaling"></a>Aktivovat – škálování
 
-Každá instance funkce Event Hub-Triggered je zajištěna pouze 1 instancí třídy EventProcessorHost (EPH). Služba Event Hubs zajišťuje, že pouze 1 EPH můžete získat zapůjčení v daném oddílu.
+Každá instance funkce Event Hub-Triggered zálohovaný jenom 1 instance třídy EventProcessorHost (EPH). Služba Event Hubs zajišťuje, že pouze 1 EPH můžete získat zapůjčení v daném oddílu.
 
-Předpokládejme například, že jsme začínat následující nastavení a předpoklady pro centra událostí:
+Předpokládejme například, že Začneme s následující předpoklady pro Centrum událostí a nastavení:
 
 1. 10 oddíly.
 1. události 1000 rovnoměrně mezi všechny oddíly = > 100 zprávy v každém oddílu.
 
-Když je funkce nejdřív povolené, je pouze 1 instancí funkce. Umožňuje volání této funkce instance Function_0. Function_0 bude mít 1 EPH, která spravuje získat zapůjčení na všechny oddíly 10. Zahájí čtení událostí z oddílů 0 – 9. Z tohoto bodu se stane jednu z těchto možností:
+Pokud funkce je nejprve povolena, je jenom 1 instance funkce. Pojmenujme tuto instanci funkce Function_0. Function_0 bude mít 1 EPH, který spravuje získat zapůjčení na všechny oddíly 10. Spustí načítání událostí z oddíly 0 – 9. Od této chvíle se stane něco z tohoto:
 
-* **Je potřeba pouze 1 funkce instance** -Function_0 je schopna zpracovat všechny 1000 předtím, než dojde k logiku škálování Azure Functions. Proto Function_0 zpracovává všechny zprávy 1000.
+* **Je potřeba jenom 1 funkce instance** -Function_0 je schopná zpracovat všechny 1000 dříve, než se aktivuje, logiku škálování Azure Functions. Proto Function_0 zpracovává všechny zprávy 1000.
 
-* **Přidat 1 další instanci funkce** -logika škálování Azure Functions Určuje, že Function_0 má více zpráv, než může zpracovat, takže je vytvořena nová instance, Function_1,. Event Hubs zjistí, že novou instanci EPH se pokouší číst zprávy typu. Event Hubs se spustí vyrovnávání oddíly napříč instancemi EPH zatížení, například oddíly 0-4 jsou přiřazeny k Function_0 a oddíly 5-9 jsou přiřazeny k Function_1. 
+* **Přidat 1 další instanci funkce** – logika škálování Azure Functions Určuje, že Function_0 má víc zpráv, než dokáže zpracovat, takže je vytvořena nová instance Function_1,. Event Hubs zjistí, že nové instance EPH se pokouší číst zprávy. Event Hubs se spustí vyrovnávání oddílů napříč instancemi EPH zatížení, například oddíly 0-4 jsou přiřazeny k Function_0 a oddíly 5 až 9 jsou přiřazeny k Function_1. 
 
-* **Přidat N funkce více instancí** -logiku škálování Azure Functions zjistí, že Function_0 a Function_1 více zpráv, než se může zpracovat. Změní měřítko znovu n Function_2..., kde N je větší než oddíly centra událostí. Služba Event Hubs načte vyrovnávat oddíly ve Function_0... 9 instancí.
+* **Přidat N funkce více instancí** – škálování Azure Functions logiky zjistí, že Function_0 a Function_1 víc zpráv, než dokáže zpracovat. Provede se škálování znovu pro Function_2... N, kde N je větší než má téma oddílů centra událostí. Event Hubs se načte oddíly vyrovnávat Function_0... 9 instancí.
 
-Pro aktuální Azure Functions jedinečné škálování logiku je skutečnost, že N je větší než počet oddílů. To slouží k zajistěte, aby vždy instancí EPH snadno dostupné, jakmile budou k dispozici od dalších instancí rychle získat zámek na oddíly. Uživatelům se účtují poplatky za prostředky používá, když instance funkce provede a pro tento předimenzování poplatky neúčtujeme.
+Azure Functions aktuální škálování logiky je skutečnost, že N je větší než počet oddílů. To slouží k zajištění, že vždy existuje instancí EPH snadno k dispozici rychle získat zámek na oddíly, jakmile budou dostupné z jiných instancí. Uživatelům se účtuje pouze pro prostředky používané při instanci funkce provede a za toto bylo potřeba zřizovat žádné poplatky neúčtujeme.
 
-Pokud všechny funkce spuštěních úspěšné bez chyb, kontrolní body se přidají do přidruženého účtu úložiště. Pokud odkazující kontrola proběhne úspěšně, všechny zprávy 1000 by nikdy načíst znovu.
+Pokud všechny prováděné funkce uspět bez chyb, kontrolní body se přidají do přidruženého účtu úložiště. Pokud bodového proběhne úspěšně, všechny zprávy 1000 by nikdy být znovu načteny.
 
-## <a name="trigger---example"></a>Aktivační událost – příklad
+## <a name="trigger---example"></a>Aktivační události – příklad
 
-Podívejte se na konkrétní jazyk příklad:
+Podívejte se na příklad specifické pro jazyk:
 
 * [C#](#trigger---c-example)
 * [C# skript (.csx)](#trigger---c-script-example)
 * [F#](#trigger---f-example)
 * [JavaScript](#trigger---javascript-example)
 
-### <a name="trigger---c-example"></a>Aktivační událost – příklad jazyka C#
+### <a name="trigger---c-example"></a>Aktivační události – příklad v jazyce C#
 
-Následující příklad ukazuje [C# funkce](functions-dotnet-class-library.md) , protokoly tělo zprávy aktivační události rozbočovače.
+Následující příklad ukazuje [funkce jazyka C#](functions-dotnet-class-library.md) , která protokoluje těla aktivační událost centra událostí.
 
 ```csharp
 [FunctionName("EventHubTriggerCSharp")]
@@ -92,7 +92,7 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 }
 ```
 
-Získat přístup k [metadata události](#trigger---event-metadata) v kódu funkce vytvořit vazbu k [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata) objektu (vyžaduje, pomocí příkazu pro `Microsoft.ServiceBus.Messaging`). Stejné vlastnosti také přistupujete pomocí vazby výrazů v podpis metody.  Následující příklad ukazuje, jak způsoby, jak získat stejná data:
+Získat přístup k [metadat události](#trigger---event-metadata) v kódu funkce svázat [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata) objektu (vyžaduje sadu pomocí příkazu pro `Microsoft.ServiceBus.Messaging`). Můžete také přistupovat k stejné vlastnosti pomocí vazbové výrazy v podpisu metody.  Následující příklad ukazuje oba způsoby, jak získat stejná data:
 
 ```csharp
 [FunctionName("EventHubTriggerCSharp")]
@@ -115,7 +115,7 @@ public static void Run(
 }
 ```
 
-Chcete-li přijímat události v dávce, ujistěte se, `string` nebo `EventData` pole:
+Ujistěte se, pokud chcete přijímat události v dávce, `string` nebo `EventData` pole:
 
 ```cs
 [FunctionName("EventHubTriggerCSharp")]
@@ -128,11 +128,11 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 }
 ```
 
-### <a name="trigger---c-script-example"></a>Aktivační událost – příklad skriptu jazyka C#
+### <a name="trigger---c-script-example"></a>Aktivační události – příklad skriptu jazyka C#
 
-Následující příklad ukazuje vazby v aktivační signál události rozbočovače *function.json* souboru a [funkce skriptu jazyka C#](functions-reference-csharp.md) používající vazby. Funkce zaznamená tělo zprávy aktivační události rozbočovače.
+Následující příklad ukazuje vazby v aktivační procedura událostí centra *function.json* souboru a [funkce skriptu jazyka C#](functions-reference-csharp.md) , který používá vazba. Funkce protokoly těla aktivační událost centra událostí.
 
-Následující příklady ukazují, vytvoření vazby dat služby Event Hubs v *function.json* souboru. V prvním příkladu se pro funkce 1.x a druhá je pro funkce 2.x. 
+Následující příklady znázorňují data vazby služby Event Hubs v *function.json* souboru. První příklad je určený pro funkce 1.x a druhý je pro službu Functions 2.x. 
 
 ```json
 {
@@ -164,7 +164,7 @@ public static void Run(string myEventHubMessage, TraceWriter log)
 }
 ```
 
-Získat přístup k [metadata události](#trigger---event-metadata) v kódu funkce vytvořit vazbu k [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata) objektu (vyžaduje, pomocí příkazu pro `Microsoft.ServiceBus.Messaging`). Stejné vlastnosti také přistupujete pomocí vazby výrazů v podpis metody.  Následující příklad ukazuje, jak způsoby, jak získat stejná data:
+Získat přístup k [metadat události](#trigger---event-metadata) v kódu funkce svázat [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata) objektu (vyžaduje sadu pomocí příkazu pro `Microsoft.ServiceBus.Messaging`). Můžete také přistupovat k stejné vlastnosti pomocí vazbové výrazy v podpisu metody.  Následující příklad ukazuje oba způsoby, jak získat stejná data:
 
 ```cs
 #r "Microsoft.ServiceBus"
@@ -190,7 +190,7 @@ public static void Run(EventData myEventHubMessage,
 }
 ```
 
-Chcete-li přijímat události v dávce, ujistěte se, `string` nebo `EventData` pole:
+Ujistěte se, pokud chcete přijímat události v dávce, `string` nebo `EventData` pole:
 
 ```cs
 public static void Run(string[] eventHubMessages, TraceWriter log)
@@ -202,11 +202,11 @@ public static void Run(string[] eventHubMessages, TraceWriter log)
 }
 ```
 
-### <a name="trigger---f-example"></a>Aktivační událost – příklad F #
+### <a name="trigger---f-example"></a>Aktivační události – příklad F #
 
-Následující příklad ukazuje vazby v aktivační signál události rozbočovače *function.json* souboru a [funkce F #](functions-reference-fsharp.md) používající vazby. Funkce zaznamená tělo zprávy aktivační události rozbočovače.
+Následující příklad ukazuje vazby v aktivační procedura událostí centra *function.json* souboru a [funkce jazyka F #](functions-reference-fsharp.md) , který používá vazba. Funkce protokoly těla aktivační událost centra událostí.
 
-Následující příklady ukazují, vytvoření vazby dat služby Event Hubs v *function.json* souboru. V prvním příkladu se pro funkce 1.x a druhá je pro funkce 2.x. 
+Následující příklady znázorňují data vazby služby Event Hubs v *function.json* souboru. První příklad je určený pro funkce 1.x a druhý je pro službu Functions 2.x. 
 
 ```json
 {
@@ -234,11 +234,11 @@ let Run(myEventHubMessage: string, log: TraceWriter) =
     log.Info(sprintf "F# eventhub trigger function processed work item: %s" myEventHubMessage)
 ```
 
-### <a name="trigger---javascript-example"></a>Aktivační událost – příklad v jazyce JavaScript
+### <a name="trigger---javascript-example"></a>Aktivační události – příklad v jazyce JavaScript
 
-Následující příklad ukazuje vazby v aktivační signál události rozbočovače *function.json* souboru a [funkce JavaScript, která](functions-reference-node.md) používající vazby. Funkce přečte [metadata události](#trigger---event-metadata) a zaprotokoluje zprávu.
+Tento připojovací řetězec musí mít oprávnění k odesílání k odeslání zprávy do datového proudu událostí. V jazyce C# a skript jazyka C#, odesílání zpráv s použitím parametru metody, jako [.
 
-Následující příklady ukazují, vytvoření vazby dat služby Event Hubs v *function.json* souboru. V prvním příkladu se pro funkce 1.x a druhá je pro funkce 2.x. 
+Následující příklady znázorňují data vazby služby Event Hubs v *function.json* souboru. První příklad je určený pro funkce 1.x a druhý je pro službu Functions 2.x. 
 
 ```json
 {
@@ -272,7 +272,7 @@ module.exports = function (context, eventHubMessage) {
 };
 ```
 
-Chcete-li přijímat události v dávce, nastavte `cardinality` k `many` v *function.json* souboru, jak je znázorněno v následujících příkladech. V prvním příkladu se pro funkce 1.x a druhá je pro funkce 2.x. 
+Ve skriptu jazyka C# `cardinality` je zadaná hodnota v `many` vlastnost *function.json*. První příklad je určený pro funkce 1.x a druhý je pro službu Functions 2.x. 
 
 ```json
 {
@@ -309,11 +309,11 @@ module.exports = function (context, eventHubMessages) {
 };
 ```
 
-## <a name="trigger---attributes"></a>Aktivační událost – atributy
+## <a name="trigger---attributes"></a>Pro zápis zpráv více, můžete použít  nebo  místo .
 
-V [knihovny tříd jazyka C#](functions-dotnet-class-library.md), použijte [EventHubTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubTriggerAttribute.cs) atribut.
+V jazyce JavaScript, k výstupní událost s využitím [.
 
-Konstruktoru atributu přebírá název centra událostí, název skupiny uživatelů a název nastavení aplikace, který obsahuje připojovací řetězec. Další informace o těchto nastaveních najdete v tématu [aktivovat konfigurační oddíl](#trigger---configuration). Tady je `EventHubTriggerAttribute` atribut příklad:
+je zadaná hodnota v  vlastnost function.json. Další informace o těchto nastaveních najdete v tématu [aktivovat konfigurační oddíl](#trigger---configuration). Tady je `EventHubTriggerAttribute` příkladu atribut:
 
 ```csharp
 [FunctionName("EventHubTriggerCSharp")]
@@ -323,63 +323,63 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 }
 ```
 
-Úplný příklad najdete v tématu [aktivační událost - C# příklad](#trigger---c-example).
+Kompletní příklad naleznete v tématu [Trigger – C# příklad](#trigger---c-example).
 
-## <a name="trigger---configuration"></a>Aktivační událost - konfigurace
+## <a name="trigger---configuration"></a>Aktivační události – konfigurace
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.json* souboru a `EventHubTrigger` atribut.
 
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**type** | neuvedeno | musí být nastavena na `eventHubTrigger`. Tato vlastnost nastavena automaticky při vytváření aktivační události na portálu Azure.|
-|**direction** | neuvedeno | musí být nastavena na `in`. Tato vlastnost nastavena automaticky při vytváření aktivační události na portálu Azure. |
-|**Jméno** | neuvedeno | Název proměnné, která představuje položku událostí v kódu funkce. | 
+|**type** | neuvedeno | Musí být nastaveno na `eventHubTrigger`. Tato vlastnost je nastavena automaticky, když vytvoříte aktivační událost na webu Azure Portal.|
+|**direction** | neuvedeno | Musí být nastaveno na `in`. Tato vlastnost je nastavena automaticky, když vytvoříte aktivační událost na webu Azure Portal. |
+|**Jméno** | neuvedeno | Název proměnné, která představuje položku událost v kódu funkce. | 
 |**Cesta** |**EventHubName** | Funguje pouze 1.x. Název centra událostí.  | 
-|**EventHubName** |**EventHubName** | Funguje pouze 2.x. Název centra událostí.  |
-|**consumerGroup** |**ConsumerGroup** | Volitelná vlastnost, která nastavuje [skupiny příjemců](../event-hubs/event-hubs-features.md#event-consumers) používá přihlásit k odběru událostí v centru. Pokud tento parametr vynechán, `$Default` skupina uživatelů slouží. | 
-|**Mohutnost** | neuvedeno | Pro jazyk Javascript. Nastavte na `many` Chcete-li povolit dávkování.  Pokud tento parametr vynechán, nebo nastavte `one`, funkci byl předán jedné zprávy. | 
-|**Připojení** |**Připojení** | Název nastavení aplikace, který obsahuje připojovací řetězec k Centru událostí oboru názvů. Zkopírujte tento připojovací řetězec kliknutím **informace o připojení** tlačítko pro [obor názvů](../event-hubs/event-hubs-create.md#create-an-event-hubs-namespace), ne samotný centra událostí. Tento připojovací řetězec musí mít alespoň oprávnění ke čtení pro aktivační událost.|
+|**eventHubName** |**EventHubName** | Funguje pouze 2.x. Název centra událostí.  |
+|**consumerGroup** |**ConsumerGroup** | Volitelná vlastnost, která nastavuje [skupinu příjemců](../event-hubs/event-hubs-features.md#event-consumers) používá k přihlášení k odběru událostí v centru. Pokud tento parametr vynechán, `$Default` skupina uživatelů se používá. | 
+|**Kardinalita** | neuvedeno | Pro jazyk Javascript. Nastavte na `many` Chcete-li povolit dávkové zpracování.  Pokud tento parametr vynechán, nebo nastavte `one`, funkci byl předán jedné zprávy. | 
+|**Připojení** |**Připojení** | Název nastavení aplikace, které obsahuje připojovací řetězec pro obor názvů centra událostí. Zkopírovat tento připojovací řetězec kliknutím **informace o připojení** tlačítko pro [obor názvů](../event-hubs/event-hubs-create.md#create-an-event-hubs-namespace), nikoli samotného centra událostí. Tento připojovací řetězec musí mít alespoň oprávnění ke čtení pro aktivaci triggeru.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="trigger---event-metadata"></a>Aktivační událost - metadata události
+## <a name="trigger---event-metadata"></a>Aktivační události – metadat události
 
-Aktivační událost Event Hubs poskytuje několik [metadata vlastnosti](functions-triggers-bindings.md#binding-expressions---trigger-metadata). Tyto vlastnosti lze použít jako součást vazby výrazy v jiných vazby nebo jako parametry v kódu. Tyto vlastnosti jsou [EventData](https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicebus.messaging.eventdata) třídy.
+Trigger služby Event Hubs nabízí několik [vlastnosti metadat](functions-triggers-bindings.md#binding-expressions---trigger-metadata). Tyto vlastnosti lze použít jako součást výrazy vazby v jiných vazbách nebo jako parametry v kódu. Toto jsou vlastnosti [EventData](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata) třídy.
 
 |Vlastnost|Typ|Popis|
 |--------|----|-----------|
 |`PartitionContext`|[PartitionContext](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.partitioncontext)|`PartitionContext` Instance.|
-|`EnqueuedTimeUtc`|`DateTime`|Zařazených do fronty čas v UTC.|
-|`Offset`|`string`|Posun dat relativně k datový proud oddílu centra událostí. Posun je značka nebo identifikátor události v rámci služby Event Hubs datového proudu. Identifikátor je jedinečný v rámci oddílu centra událostí datového proudu.|
-|`PartitionKey`|`string`|Oddíl, která událost data se mají posílat.|
-|`Properties`|`IDictionary<String,Object>`|Vlastnosti uživatele data události.|
+|`EnqueuedTimeUtc`|`DateTime`|Čas zařazení do fronty ve standardu UTC.|
+|`Offset`|`string`|Posun dat vzhledem ke streamu oddílu centra událostí. Posun je značky nebo identifikátor pro události v rámci datového proudu Event Hubs. Identifikátor je jedinečný v rámci oddílu datového proudu Event Hubs.|
+|`PartitionKey`|`string`|Oddíl, na které události mají být odesílána data.|
+|`Properties`|`IDictionary<String,Object>`|Vlastnosti uživatele dat událostí.|
 |`SequenceNumber`|`Int64`|Logické pořadové číslo události.|
-|`SystemProperties`|`IDictionary<String,Object>`|Vlastnosti systému, včetně data události.|
+|`SystemProperties`|`IDictionary<String,Object>`|Vlastnosti systému, včetně dat událostí.|
 
-V tématu [příklady kódu pro](#trigger---example) , použijte tyto vlastnosti dříve v tomto článku.
+Zobrazit [příklady kódu](#trigger---example) , které používají tyto vlastnosti dříve v tomto článku.
 
-## <a name="trigger---hostjson-properties"></a>Aktivační událost - host.json vlastnosti
+## <a name="trigger---hostjson-properties"></a>Aktivační události – vlastnosti host.json
 
-[Host.json](functions-host-json.md#eventhub) soubor obsahuje nastavení, které řídí chování aktivační událost Event Hubs.
+[Host.json](functions-host-json.md#eventhub) soubor obsahuje nastavení, která řídí chování trigger služby Event Hubs.
 
 [!INCLUDE [functions-host-json-event-hubs](../../includes/functions-host-json-event-hubs.md)]
 
 ## <a name="output"></a>Výstup
 
-Použijte službu Event Hubs výstup vytvoření vazby na zapsat události do datového proudu událostí. Musíte mít oprávnění odesílat do centra událostí zapsat události do ní.
+Pomocí služby Event Hubs výstupní vazbu zapsat události do datového proudu událostí. Musíte mít oprávnění Odeslat do centra událostí zapsat události do něj.
 
 ## <a name="output---example"></a>Výstup – příklad
 
-Podívejte se na konkrétní jazyk příklad:
+Podívejte se na příklad specifické pro jazyk:
 
 * [C#](#output---c-example)
 * [C# skript (.csx)](#output---c-script-example)
 * [F#](#output---f-example)
 * [JavaScript](#output---javascript-example)
 
-### <a name="output---c-example"></a>Výstup – příklad jazyka C#
+### <a name="output---c-example"></a>Výstup – příklad v jazyce C#
 
-Následující příklad ukazuje [C# funkce](functions-dotnet-class-library.md) , zapíše zprávu do centra událostí, pomocí návratovou hodnotu metody jako výstup:
+Následující příklad ukazuje [funkce jazyka C#](functions-dotnet-class-library.md) , který zapíše zprávu do centra událostí pomocí návratová hodnota metody jako výstup:
 
 ```csharp
 [FunctionName("EventHubOutput")]
@@ -393,9 +393,9 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, Trac
 
 ### <a name="output---c-script-example"></a>Výstup – příklad skriptu jazyka C#
 
-Následující příklad ukazuje vazby v aktivační signál události rozbočovače *function.json* souboru a [funkce skriptu jazyka C#](functions-reference-csharp.md) používající vazby. Funkce zapíše zprávu do centra událostí.
+Následující příklad ukazuje vazby v aktivační procedura událostí centra *function.json* souboru a [funkce skriptu jazyka C#](functions-reference-csharp.md) , který používá vazba. Funkce zapíše zprávu do centra událostí.
 
-Následující příklady ukazují, vytvoření vazby dat služby Event Hubs v *function.json* souboru. V prvním příkladu se pro funkce 1.x a druhá je pro funkce 2.x. 
+Následující příklady znázorňují data vazby služby Event Hubs v *function.json* souboru. První příklad je určený pro funkce 1.x a druhý je pro službu Functions 2.x. 
 
 ```json
 {
@@ -416,7 +416,7 @@ Následující příklady ukazují, vytvoření vazby dat služby Event Hubs v *
 }
 ```
 
-Tady je C# kód skriptu, který vytvoří jednu zprávu:
+Tady je kód jazyka C# skript, který vytváří jednu zprávu:
 
 ```cs
 using System;
@@ -429,7 +429,7 @@ public static void Run(TimerInfo myTimer, out string outputEventHubMessage, Trac
 }
 ```
 
-Zde uvádíme C# kód skriptu, který vytvoří více zpráv:
+Tady je kód jazyka C# skript, který vytváří více zpráv:
 
 ```cs
 public static void Run(TimerInfo myTimer, ICollector<string> outputEventHubMessage, TraceWriter log)
@@ -443,9 +443,9 @@ public static void Run(TimerInfo myTimer, ICollector<string> outputEventHubMessa
 
 ### <a name="output---f-example"></a>Výstup – příklad F #
 
-Následující příklad ukazuje vazby v aktivační signál události rozbočovače *function.json* souboru a [funkce F #](functions-reference-fsharp.md) používající vazby. Funkce zapíše zprávu do centra událostí.
+Následující příklad ukazuje vazby v aktivační procedura událostí centra *function.json* souboru a [funkce jazyka F #](functions-reference-fsharp.md) , který používá vazba. Funkce zapíše zprávu do centra událostí.
 
-Následující příklady ukazují, vytvoření vazby dat služby Event Hubs v *function.json* souboru. V prvním příkladu se pro funkce 1.x a druhá je pro funkce 2.x. 
+Následující příklady znázorňují data vazby služby Event Hubs v *function.json* souboru. První příklad je určený pro funkce 1.x a druhý je pro službu Functions 2.x. 
 
 ```json
 {
@@ -477,9 +477,9 @@ let Run(myTimer: TimerInfo, outputEventHubMessage: byref<string>, log: TraceWrit
 
 ### <a name="output---javascript-example"></a>Výstup – příklad v jazyce JavaScript
 
-Následující příklad ukazuje vazby v aktivační signál události rozbočovače *function.json* souboru a [funkce JavaScript, která](functions-reference-node.md) používající vazby. Funkce zapíše zprávu do centra událostí.
+Tento připojovací řetězec musí mít oprávnění k odesílání k odeslání zprávy do datového proudu událostí. Funkce zapíše zprávu do centra událostí.
 
-Následující příklady ukazují, vytvoření vazby dat služby Event Hubs v *function.json* souboru. V prvním příkladu se pro funkce 1.x a druhá je pro funkce 2.x. 
+Následující příklady znázorňují data vazby služby Event Hubs v *function.json* souboru. První příklad je určený pro funkce 1.x a druhý je pro službu Functions 2.x. 
 
 ```json
 {
@@ -500,7 +500,7 @@ Následující příklady ukazují, vytvoření vazby dat služby Event Hubs v *
 }
 ```
 
-Zde uvádíme kódu jazyka JavaScript, který odesílá do jedné zprávy:
+Tady je kód jazyka JavaScript, která odesílá do jedné zprávy:
 
 ```javascript
 module.exports = function (context, myTimer) {
@@ -511,7 +511,7 @@ module.exports = function (context, myTimer) {
 };
 ```
 
-Zde uvádíme kódu jazyka JavaScript, který odesílá více zpráv:
+Tady je kód jazyka JavaScript, která odesílá zprávy více:
 
 ```javascript
 module.exports = function(context) {
@@ -528,9 +528,9 @@ module.exports = function(context) {
 
 ## <a name="output---attributes"></a>Výstup – atributy
 
-Pro [knihovny tříd jazyka C#](functions-dotnet-class-library.md), použijte [EventHubAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubAttribute.cs) atribut.
+Pro [knihoven tříd C#](functions-dotnet-class-library.md), použijte [EventHubAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubAttribute.cs) atribut.
 
-Konstruktoru atributu přebírá název centra událostí a název nastavení aplikace, který obsahuje připojovací řetězec. Další informace o těchto nastaveních najdete v tématu [výstup - konfigurace](#output---configuration). Tady je `EventHub` atribut příklad:
+Konstruktor atributu má název centra událostí a název nastavení aplikace, které obsahuje připojovací řetězec. Další informace o těchto nastaveních najdete v tématu [výstup - konfigurace](#output---configuration). Tady je `EventHub` příkladu atribut:
 
 ```csharp
 [FunctionName("EventHubOutput")]
@@ -541,7 +541,7 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, Trac
 }
 ```
 
-Úplný příklad najdete v tématu [výstup - C# příklad](#output---c-example).
+Kompletní příklad naleznete v tématu [výstup – příklad v jazyce C#](#output---c-example).
 
 ## <a name="output---configuration"></a>Výstup – konfigurace
 
@@ -550,19 +550,19 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
 |**type** | neuvedeno | Musí být nastavena na "eventHub". |
-|**direction** | neuvedeno | Musí být nastavena na "out". Tento parametr je nastaven automaticky při vytvoření vazby na portálu Azure. |
-|**Jméno** | neuvedeno | Název proměnné používá v kódu funkce, která představuje událost. | 
+|**direction** | neuvedeno | Musí být nastavena na "out". Tento parametr je nastavena automaticky při vytváření vazby na webu Azure Portal. |
+|**Jméno** | neuvedeno | Název této proměnné v kódu funkce, která představuje událost. | 
 |**Cesta** |**EventHubName** | Funguje pouze 1.x. Název centra událostí.  | 
-|**EventHubName** |**EventHubName** | Funguje pouze 2.x. Název centra událostí.  |
-|**Připojení** |**Připojení** | Název nastavení aplikace, který obsahuje připojovací řetězec k Centru událostí oboru názvů. Zkopírujte tento připojovací řetězec kliknutím **informace o připojení** tlačítko pro *obor názvů*, ne samotný centra událostí. Tento připojovací řetězec musí mít oprávnění pro odesílání k odeslání zprávy do datového proudu událostí.|
+|**eventHubName** |**EventHubName** | Funguje pouze 2.x. Název centra událostí.  |
+|**Připojení** |**Připojení** | Název nastavení aplikace, které obsahuje připojovací řetězec pro obor názvů centra událostí. Zkopírovat tento připojovací řetězec kliknutím **informace o připojení** tlačítko pro *obor názvů*, nikoli samotného centra událostí. Tento připojovací řetězec musí mít oprávnění k odesílání k odeslání zprávy do datového proudu událostí.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="output---usage"></a>Výstup – použití
+## <a name="output---usage"></a>Výstup – využití
 
-V jazyce C# a C# skript, odesílání zpráv pomocí parametru metody `out string paramName`. V jazyce C# skript `paramName` je hodnota zadaná v `name` vlastnost *function.json*. Zápis více zpráv, můžete použít `ICollector<string>` nebo `IAsyncCollector<string>` místě `out string`.
+V jazyce C# a skript jazyka C#, odesílání zpráv s použitím parametru metody, jako `out string paramName`. Ve skriptu jazyka C# `paramName` je zadaná hodnota v `name` vlastnost *function.json*. Pro zápis zpráv více, můžete použít `ICollector<string>` nebo `IAsyncCollector<string>` místo `out string`.
 
-V jazyce JavaScript, přístup k výstupu událostí pomocí `context.bindings.<name>`. `<name>` Hodnota zadaná v `name` vlastnost *function.json*.
+V jazyce JavaScript, k výstupní událost s využitím `context.bindings.<name>`. `<name>` je zadaná hodnota v `name` vlastnost *function.json*.
 
 ## <a name="exceptions-and-return-codes"></a>Výjimky a návratové kódy
 
@@ -573,4 +573,4 @@ V jazyce JavaScript, přístup k výstupu událostí pomocí `context.bindings.<
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Další informace o Azure functions triggerů a vazeb](functions-triggers-bindings.md)
+> [Další informace o aktivačních událostech Azure functions a vazby](functions-triggers-bindings.md)

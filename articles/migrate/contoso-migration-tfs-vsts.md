@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/05/2018
 ms.author: raynew
-ms.openlocfilehash: 530cc9a9dcfdd37253883aae9aa921600aa45c04
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 02a790907908daf2db282a320f50d3a27efbd177
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37908788"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37917182"
 ---
 # <a name="contoso-migration--refactor-a-team-foundation-server-deployment-to-visual-studio-team-services-vsts"></a>Migrace Contoso: Refaktorovat nasazení Team Foundation Server pro Visual Studio Team Services (VSTS)
 
@@ -278,7 +278,7 @@ Před zahájením, Contoso má místní zálohování serveru SQL Server a VMwar
     ![Migrace](./media/contoso-migration-tfs-vsts/migrate7.png)
 
 
-## <a name="generate-a-dacpac"></a>Generovat DACPAC
+### <a name="generate-a-dacpac"></a>Generovat DACPAC
 
 Contoso vytvoří zálohu (DACPAC) pro import do VSTS.
 

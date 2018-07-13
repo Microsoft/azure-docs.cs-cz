@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: dlap
-ms.openlocfilehash: 7b813500eecba3aa1902c28b9b7c56da6c4516b7
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: cf24810c0aa414e751e55df163563f013c1a0081
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37967523"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969941"
 ---
 # <a name="trusted-internet-connection-guidance"></a>Pokyny k důvěryhodné internetové připojení
 
@@ -199,7 +199,7 @@ Následující ukázkové zásady, mohou být užitečné pro scénáře PIŠKVO
 |Povolená umístění | Ujistěte se, že jsou všechny prostředky nasazené do oblastí s kompatibilní s konfigurací virtuální sítě a Network Watcher  | https://docs.microsoft.com/azure/azure-policy/scripts/allowed-locs |
 |Nepovolené typy prostředků, jako je například veřejných IP adresách protokolu  | Zakázat nasazení typy prostředků, které nemají plán dodržování předpisů. Jako příklad tato zásada může zakázat nasazení prostředky veřejné IP adresy. Pravidla skupiny zabezpečení sítě můžete využít efektivně blokovat příchozí internetovou komunikaci, brání použití veřejných IP adres dále snižuje možný útok.    | https://docs.microsoft.com/azure/azure-policy/scripts/not-allowed-res-type  |
 
-### <a name="azure-traffic-analytics"></a>Analýza provozu Azure
+### <a name="azure-traffic-analyticshttpsazuremicrosoftcomen-inblogtraffic-analytics-in-preview"></a>Azure [analýzy provozu](https://azure.microsoft.com/en-in/blog/traffic-analytics-in-preview/)
 
 Analýza provozu Azure Network Watcher spotřebovává data protokolů toku a další protokoly poskytnout podrobný přehled síťový provoz. Tato data můžou být užitečná pro auditování dodržování předpisů PIŠKVORKY a identifikaci míst. Podrobný řídicí panel je možné rychle obrazovku, která virtuálních počítačů komunikují pomocí Internetu, které by pak zadejte seznam cílené pro směrování PIŠKVORKY.
 
