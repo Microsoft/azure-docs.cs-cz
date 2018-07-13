@@ -1,92 +1,95 @@
 ---
-title: Přidat předem záměry a entity extrahovat běžné data v znalosti jazyka - Azure | Microsoft Docs
-description: Další informace o použití předem záměry a entity k extrakci různé typy dat entity.
+title: Přidání předem připravených záměrů a entit pro extrakci běžných dat ve službě Language Understanding – Azure | Microsoft Docs
+description: Zjistěte, jak pomocí předem připravených záměrů a entit extrahovat různé typy dat entit.
 services: cognitive-services
 author: v-geberr
 manager: kaiqb
 ms.service: cognitive-services
 ms.component: luis
-ms.topic: article
-ms.date: 06/11/2018
+ms.topic: tutorial
+ms.date: 06/29/2018
 ms.author: v-geberr
-ms.openlocfilehash: 37d67bef7712012a95543041744706b240b16e2d
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 075cb270641ca995eec95aa6aa8986c90077148a
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37085493"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37112183"
 ---
 # <a name="tutorial-2-add-prebuilt-intents-and-entities"></a>Kurz: 2. Přidání předem připravených záměrů a entit
-Přidejte předem záměry a entity rychle získat záměrné extrakce předpovědi a data v aplikaci rychlý start lidských zdrojů. 
+Přidejte do ukázkové aplikace pro lidské zdroje předem připravené záměry a entity a získejte tak rychle předpověď záměru a extrakci dat. 
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-* Přidat předem záměry 
-* Přidat datetimeV2 předem entity a číslo
+* Přidání předem připravených záměrů 
+* Přidání předem připravených entit datetimeV2 a čísla
 * Trénování a publikování
-* Dotazování LEOŠ a obdrží odpověď předpovědi
+* Dotazování služby LUIS a přijetí odpovědi s předpovědí
 
 ## <a name="before-you-begin"></a>Než začnete
-Pokud nemáte [lidských zdrojů](luis-quickstart-intents-only.md) aplikace z předchozí kurzu [importovat](create-new-app.md#import-new-app) JSON do nové aplikace v [LEOŠ](luis-reference-regions.md#luis-website) webu, z [LEOŠ – ukázky ](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-intent-only-HumanResources.json) Úložiště Github.
+Pokud nemáte aplikaci pro [lidské zdroje](luis-quickstart-intents-only.md) z předchozího kurzu, [naimportujte](create-new-app.md#import-new-app) na webu [LUIS](luis-reference-regions.md#luis-website) do nové aplikace JSON z úložiště [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-intent-only-HumanResources.json) na GitHubu.
 
 Pokud chcete zachovat původní aplikaci pro lidské zdroje, naklonujte verzi na stránce [Settings](luis-how-to-manage-versions.md#clone-a-version) (Nastavení) a pojmenujte ji `prebuilts`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. 
 
-## <a name="add-prebuilt-intents"></a>Přidat předem záměry
-LEOŠ poskytuje několik předem záměry usnadní běžné záměry uživatele.  
+## <a name="add-prebuilt-intents"></a>Přidání předem připravených záměrů
+Služba LUIS poskytuje několik předem připravených záměrů, které vám pomůžou s běžnými záměry uživatelů.  
 
-1. Ujistěte se, že vám aplikace zůstala viset **sestavení** části LEOŠ. Do této části můžete přejít výběrem možnosti **Build** (Sestavit) v pravém horním řádku nabídek. 
+1. Ujistěte se, že je vaše aplikace uvedená v části **Build** (Sestavení) služby LUIS. Do této části můžete přejít výběrem možnosti **Build** (Sestavit) v pravém horním řádku nabídek. 
 
     [ ![Snímek obrazovky aplikace LUIS se zvýrazněnou možností Build (Sestavit) na pravém horním navigačním panelu](./media/luis-tutorial-prebuilt-intents-and-entities/first-image.png)](./media/luis-tutorial-prebuilt-intents-and-entities/first-image.png#lightbox)
 
-2. Vyberte **přidat předem domény záměr**. 
+2. Vyberte **Add prebuilt domain intent** (Přidat předem připravený záměr domény). 
 
-    [ ![Snímek obrazovky záměry stránka s přidat předem domény záměrné tlačítkem](./media/luis-tutorial-prebuilt-intents-and-entities/add-prebuilt-domain-button.png) ](./media/luis-tutorial-prebuilt-intents-and-entities/add-prebuilt-domain-button.png#lightbox)
+    [ ![Snímek obrazovky se stránkou Intents (Záměry) a zvýrazněným tlačítkem Add prebuilt domain intent (Přidat předem připravený záměr domény)](./media/luis-tutorial-prebuilt-intents-and-entities/add-prebuilt-domain-button.png) ](./media/luis-tutorial-prebuilt-intents-and-entities/add-prebuilt-domain-button.png#lightbox)
 
 3. Vyhledejte `Utilities`. 
 
-    [ ![Snímek obrazovky dialogového okna předem záměry s nástroje do vyhledávacího pole](./media/luis-tutorial-prebuilt-intents-and-entities/prebuilt-intent-utilities.png)](./media/luis-tutorial-prebuilt-intents-and-entities/prebuilt-intent-utilities.png#lightbox)
+    [ ![Snímek obrazovky s dialogovým oknem předem připravených záměrů s textem Utilities (Nástroje) ve vyhledávacím poli](./media/luis-tutorial-prebuilt-intents-and-entities/prebuilt-intent-utilities.png)](./media/luis-tutorial-prebuilt-intents-and-entities/prebuilt-intent-utilities.png#lightbox)
 
-4. Vyberte následující tříd Intent a vyberte **provádí**: 
+4. Vyberte následující záměry a pak vyberte **Done** (Hotovo): 
 
     * Utilities.Cancel
     * Utilities.Confirm
     * Utilities.Help
-    * Utilities.Stop
     * Utilities.StartOver
+    * Utilities.Stop
 
-## <a name="add-prebuilt-entities"></a>Přidat předem entity
-LEOŠ poskytuje několik předem entity pro běžné extrakce data. 
 
-1. Vyberte **entity** v levé navigační nabídce.
+## <a name="add-prebuilt-entities"></a>Přidání předem připravených entit
+Služba LUIS poskytuje několik předem připravených entit pro extrakci běžných dat. 
 
-    [ ![Snímek obrazovky záměry seznam s zvýrazněných v levém navigačním entity](./media/luis-tutorial-prebuilt-intents-and-entities/entities-navigation.png)](./media/luis-tutorial-prebuilt-intents-and-entities/entities-navigation.png#lightbox)
+1. V levé navigační nabídce vyberte **Entities** (Entity).
 
-2. Vyberte **spravovat předem entity** tlačítko.
+    [ ![Snímek obrazovky se seznamem záměrů se zvýrazněnou možností Entities (Entity) na levém navigačním panelu](./media/luis-tutorial-prebuilt-intents-and-entities/entities-navigation.png)](./media/luis-tutorial-prebuilt-intents-and-entities/entities-navigation.png#lightbox)
 
-    [ ![Snímek obrazovky entit seznam s předem entity zvýrazněná Správa](./media/luis-tutorial-prebuilt-intents-and-entities/manage-prebuilt-entities-button.png)](./media/luis-tutorial-prebuilt-intents-and-entities/manage-prebuilt-entities-button.png#lightbox)
+2. Vyberte tlačítko **Manage prebuilt entities** (Spravovat předem připravené entity).
 
-3. Vyberte **číslo** a **datetimeV2** ze seznamu předem entit zvolte **provádí**.
+    [ ![Snímek obrazovky se seznamem entit se zvýrazněným tlačítkem Manage prebuilt entities (Spravovat předem připravené entity)](./media/luis-tutorial-prebuilt-intents-and-entities/manage-prebuilt-entities-button.png)](./media/luis-tutorial-prebuilt-intents-and-entities/manage-prebuilt-entities-button.png#lightbox)
 
-    ![Snímek obrazovky číslo, vyberte v dialogovém okně předem entity](./media/luis-tutorial-prebuilt-intents-and-entities/select-prebuilt-entities.png)
+3. V seznamu předem připravených entit vyberte **number** (číslo) a **datetimeV2** a pak vyberte **Done** (Hotovo).
+
+    ![Snímek obrazovky s vybranou možností number (číslo) v dialogovém okně s předem připravenými entitami](./media/luis-tutorial-prebuilt-intents-and-entities/select-prebuilt-entities.png)
 
 ## <a name="train-and-publish-the-app"></a>Trénování a publikování aplikace
 1. V pravé horní části webu LUIS vyberte tlačítko **Train** (Trénovat). 
 
-    ![Tlačítko Train](./media/luis-quickstart-intents-only/train-button.png)
+    ![Tlačítko Train (Trénovat)](./media/luis-quickstart-intents-only/train-button.png)
 
     Trénování je dokončené, když se v horní části webu zobrazí zelený stavový řádek potvrzující úspěch.
 
-    ![Vyškolení stavového řádku](./media/luis-quickstart-intents-only/trained.png)
+    ![Stavový řádek trénování](./media/luis-quickstart-intents-only/trained.png)
 
-2. V horní, pravé straně LEOŠ webu, vyberte **publikovat** tlačítko Otevřít stránku publikovat. Ve výchozím nastavení je vybraná produkční slot. Vyberte **publikovat** tlačítko volbou produkční slot. Publikování je dokončené, když se v horní části webu zobrazí zelený stavový řádek potvrzující úspěch.
+2. V pravé horní části webu LUIS vyberte tlačítko **Publish** (Publikovat). Otevře se stránka Publish (Publikovat). 
 
-    Nemáte k vytvoření LEOŠ klíče na portálu Azure, než můžete publikovat nebo před testovacího adresu URL koncového bodu. Každé LEOŠ aplikace má klíč volné starter pro vytváření obsahu. Nabízí neomezená vytváření obsahu a [několik přístupů koncový bod](luis-boundaries.md#key-limits). 
+3. Produkční slot je vybraný ve výchozím nastavení. Vedle volby produkčního slotu vyberte tlačítko **Publish** (Publikovat). Publikování je dokončené, když se v horní části webu zobrazí zelený stavový řádek potvrzující úspěch.
 
-## <a name="query-endpoint-with-an-utterance"></a>Koncový bod dotazu s utterance
-V dolní části stránky **Publish** (Publikovat) vyberte odkaz na **koncový bod**. Tato akce otevře další okno prohlížeče s adresou URL koncového bodu v adresním řádku. Na konec adresy URL zadejte `I want to cancel on March 3`. Poslední parametr řetězce dotazu je `q`, utterance **dotazu**. 
+    Před publikováním ani před testováním adresy URL koncového bodu není nutné na webu Azure Portal vytvářet klíč koncového bodu služby LUIS. Každá aplikace LUIS má bezplatný počáteční klíč pro vytváření obsahu. Nabízí neomezené vytváření obsahu a [několik požadavků přicházejících do koncového bodu](luis-boundaries.md#key-limits). 
 
-Výsledek předpovědět záměr Utilities.Cancel a extrahovat data z března 3 a čísla 3. 
+## <a name="query-endpoint-with-an-utterance"></a>Odeslání dotazu na koncový bod s promluvou
+V dolní části stránky **Publish** (Publikovat) vyberte odkaz na **koncový bod**. Tato akce otevře další okno prohlížeče s adresou URL koncového bodu v adresním řádku. Na konec adresy URL zadejte `I want to cancel on March 3`. Poslední parametr řetězce dotazu je `q`, což je **dotaz** promluvy. 
+
+Výsledek předpověděl záměr Utilities.Cancel a extrahoval datum March 3 (3. března) a číslo 3. 
 
     ```
     {
@@ -163,10 +166,15 @@ Výsledek předpovědět záměr Utilities.Cancel a extrahovat data z března 3 
     }
     ```
 
-Klientská aplikace snadno a rychle přidáte předem záměry a entity, můžete přidat konverzace správy a extrahovat běžné datové typy. 
+Pro entitu March 3 (3. března) existují dvě hodnoty, protože promluva neuvádí, jestli se jedná o minulé nebo budoucí datum. Je na aplikaci volající službu LUIS, aby vytvořila předpoklad nebo v případě potřeby požádala o další informace. 
+
+Díky rychlému a snadnému přidávání předem připravených záměrů a entit můžete do klientské aplikace přidat správu konverzací a extrahovat v ní běžné datové typy. 
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+Pokud už aplikaci LUIS nepotřebujete, odstraňte ji. Provedete to tak, že v nabídce vlevo nahoře vyberte **My apps** (Moje aplikace). Vyberte nabídku se třemi tečkami (...) vpravo od názvu aplikace v seznamu aplikací a vyberte **Delete** (Odstranit). V automaticky otevíraném dialogovém okně **Delete app?** (Odstranit aplikaci?) vyberte **Ok**.
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Přidání entity regulární výraz k aplikaci](luis-quickstart-intents-regex-entity.md)
+> [Přidání entity regulárního výrazu do aplikace](luis-quickstart-intents-regex-entity.md)
 

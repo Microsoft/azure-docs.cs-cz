@@ -14,12 +14,12 @@ ms.date: 08/04/2017
 ms.author: lizross
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 82d475e5adadb4e7670f24a6193348c9e1b37a16
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 3c71c9c49413045e3a730c10e90ea3c12648b4cb
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37767369"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37857717"
 ---
 # <a name="create-a-group-and-add-members-in-azure-active-directory"></a>Vytvoření skupiny a přidání členů ve službě Azure Active Directory
 > [!div class="op_single_selector"]
@@ -40,7 +40,7 @@ Tento článek vysvětluje, jak vytvořit a naplnit novou skupinu ve službě Az
 
    ![Výběr příkazu Přidat](./media/active-directory-groups-create-azure-portal/add-group-command.png)
 5. V okně **Skupina** přidejte název a popis skupiny.
-6. Pokud chcete vybrat členy, kteří se mají přidat do skupiny, vyberte v poli **Typ členství** možnost **Přiřazené** a potom vyberte **Členové**. Další informace o dynamické správě členství ve skupině najdete v článku o [vytvoření rozšířených pravidel pro členství ve skupině pomocí atributů](../active-directory-groups-dynamic-membership-azure-portal.md).
+6. Pokud chcete vybrat členy, kteří se mají přidat do skupiny, vyberte v poli **Typ členství** možnost **Přiřazené** a potom vyberte **Členové**. Další informace o dynamické správě členství ve skupině najdete v článku o [vytvoření rozšířených pravidel pro členství ve skupině pomocí atributů](../users-groups-roles/groups-dynamic-membership.md).
 
    ![Výběr členů, kteří se mají přidat](./media/active-directory-groups-create-azure-portal/select-members.png)
 7. V okně **Členové** vyberte minimálně jednoho uživatele nebo zařízení, které chcete přidat do skupiny, a v dolní části okna kliknutím na tlačítko **Vybrat** je přidejte do skupiny. Položky v poli **Uživatel** se filtrují podle toho, jak se vaše zadání shoduje s jakoukoli částí jména uživatele nebo názvu zařízení. V tomto poli není možné používat žádné zástupné znaky.
@@ -56,4 +56,4 @@ Následující články poskytují další informace o službě Azure Active Dir
 * [Správa nastavení skupiny](active-directory-groups-settings-azure-portal.md)
 * [Správa členů skupiny](active-directory-groups-members-azure-portal.md)
 * [Správa členství ve skupině](active-directory-groups-membership-azure-portal.md)
-* [Správa dynamických pravidel pro uživatele ve skupině](../active-directory-groups-dynamic-membership-azure-portal.md)
+* [Správa dynamických pravidel pro uživatele ve skupině](../users-groups-roles/groups-dynamic-membership.md)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2017
 ms.author: sethm
-ms.openlocfilehash: 5eb5c2d1f0b85c907f788fb6ac752488601f613a
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: fd74405c8ca95ca1a5880ab26bf87705bde217de
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29389831"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37127529"
 ---
 # <a name="get-started-receiving-messages-with-the-event-processor-host-in-net-standard"></a>Začínáme s příjmem zpráv pomocí třídy Event Processor Host v .NET Standard
 
@@ -33,8 +33,8 @@ Tento kurz ukazuje, jak napsat konzolovou aplikaci .NET Core, která přijímá 
 * [Sada Microsoft Visual Studio 2015 nebo 2017](http://www.visualstudio.com). V příkladech v tomto kurzu se používá sada Visual Studio 2017, ale podporuje se i sada Visual Studio 2015.
 * [Nástroje .NET Core pro sadu Visual Studio 2015 nebo 2017](http://www.microsoft.com/net/core).
 * Předplatné Azure.
-* Obor názvů služby Azure Event Hubs.
-* Účet služby Azure Storage.
+* Obor názvů služby Azure Event Hubs a centrum událostí.
+* Účet úložiště Azure.
 
 ## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Vytvoření oboru názvů Event Hubs a centra událostí  
 
@@ -48,7 +48,7 @@ Prvním krokem je použití webu [Azure Portal](https://portal.azure.com) k vytv
 
     ![Vytvoření účtu úložiště][1]
 
-4. Po zobrazení zprávy **Nasazení proběhla úspěšně** klikněte na název nového účtu úložiště. V okně **Základy** klikněte na **Objekty blob**. Po otevření dialogového okna **Služba Blob** klikněte v horní části na **+ Kontejner**. Zadejte název kontejneru a pak okno **Služba Blob** zavřete.  
+4. Po zobrazení zprávy **Nasazení proběhla úspěšně** klikněte na název nového účtu úložiště. V okně **Základy** klikněte na **Objekty blob**. Po otevření dialogového okna **Blob service** klikněte v horní části na **+ Kontejner**. Zadejte název kontejneru a pak okno **Blob service** zavřete.  
 5. V levém okně klikněte na **Přístupové klíče** a zkopírujte název kontejneru úložiště, název účtu úložiště a hodnotu položky **klíč1**. Uložte tyto hodnoty do Poznámkového bloku nebo jiného dočasného umístění.  
 
 ## <a name="create-a-console-application"></a>Vytvoření konzolové aplikace
@@ -123,11 +123,11 @@ Pomocí následujícího postupu do svého projektu přidejte balíčky NuGet kn
     using System.Threading.Tasks;
     ```
 
-2. Do třídy `Program` přidejte konstanty pro připojovací řetězec centra událostí, název centra událostí, název kontejneru účtu úložiště, název účtu úložiště a klíč účtu úložiště. Přidejte následující kód a zástupné texty nahraďte odpovídajícími hodnotami.
+2. Do třídy `Program` přidejte konstanty pro připojovací řetězec centra událostí, název centra událostí, název kontejneru účtu úložiště, název účtu úložiště a klíč účtu úložiště. Přidejte následující kód a zástupné texty nahraďte odpovídajícími hodnotami:
 
     ```csharp
-    private const string EhConnectionString = "{Event Hubs connection string}";
-    private const string EhEntityPath = "{Event Hub path/name}";
+    private const string EventHubConnectionString = "{Event Hubs connection string}";
+    private const string EventHubName = "{Event Hub path/name}";
     private const string StorageContainerName = "{Storage account container name}";
     private const string StorageAccountName = "{Storage account name}";
     private const string StorageAccountKey = "{Storage account key}";
@@ -143,9 +143,9 @@ Pomocí následujícího postupu do svého projektu přidejte balíčky NuGet kn
         Console.WriteLine("Registering EventProcessor...");
 
         var eventProcessorHost = new EventProcessorHost(
-            EhEntityPath,
+            EventHubName,
             PartitionReceiver.DefaultConsumerGroupName,
-            EhConnectionString,
+            EventHubConnectionString,
             StorageConnectionString,
             StorageContainerName);
 
@@ -174,8 +174,8 @@ Pomocí následujícího postupu do svého projektu přidejte balíčky NuGet kn
 
         public class Program
         {
-            private const string EhConnectionString = "{Event Hubs connection string}";
-            private const string EhEntityPath = "{Event Hub path/name}";
+            private const string EventHubConnectionString = "{Event Hubs connection string}";
+            private const string EventHubName = "{Event Hub path/name}";
             private const string StorageContainerName = "{Storage account container name}";
             private const string StorageAccountName = "{Storage account name}";
             private const string StorageAccountKey = "{Storage account key}";
@@ -223,4 +223,4 @@ Další informace o službě Event Hubs najdete na následujících odkazech:
 * [Nejčastější dotazy k Event Hubs](event-hubs-faq.md)
 
 [1]: ./media/event-hubs-dotnet-standard-getstarted-receive-eph/event-hubs-python1.png
-[2]: ./media/event-hubs-dotnet-standard-getstarted-receive-eph/netcore.png
+[2]: ./media/event-hubs-dotnet-standard-getstarted-receive-eph/netcorercv.png

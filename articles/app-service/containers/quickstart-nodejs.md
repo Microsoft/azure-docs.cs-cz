@@ -1,5 +1,5 @@
 ---
-title: Vytvoření aplikace Node.js ve službě Azure App Service v Linuxu | Microsoft Docs
+title: Vytvoření aplikace Node.js ve službě Azure App Service v Linuxu | Dokumentace Microsoftu
 description: Během několika minut můžete nasadit svou první aplikaci Node.js Hello World ve službě Azure App Service v Linuxu.
 services: app-service\web
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 06/07/2017
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: eb1c769e034f37d05de63896f65290db79103637
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 44c3f8ce05854e993ad551a025eec447d882c326
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35293900"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969540"
 ---
 # <a name="create-a-nodejs-web-app-in-azure-app-service-on-linux"></a>Vytvoření webové aplikace Node.js ve službě Azure App Service v Linuxu
 
@@ -28,7 +28,7 @@ ms.locfileid: "35293900"
 > Tento článek nasadí aplikaci do služby App Service v Linuxu. Nasazení do služby App Service ve _Windows_ je popsané v tématu [Vytvoření webové aplikace v Node.js v Azure](../app-service-web-get-started-nodejs.md).
 >
 
-[App Service v Linuxu](app-service-linux-intro.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů s využitím operačního systému Linux. Tento rychlý start ukazuje, jak nasadit aplikaci Node.js do služby App Service v Linuxu s použitím služby [Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview).
+[App Service v Linuxu](app-service-linux-intro.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů s využitím operačního systému Linux. Tento rychlý start ukazuje, jak nasadit aplikaci Node.js do služby App Service v Linuxu s použitím služby [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview).
 
 Absolvujete ho ve službě Cloud Shell, ale příkazy můžete také spouštět místně pomocí [Azure CLI](/cli/azure/install-azure-cli).
 
@@ -40,7 +40,7 @@ Absolvujete ho ve službě Cloud Shell, ale příkazy můžete také spouštět 
 
 ## <a name="install-web-app-extension-for-cloud-shell"></a>Instalace rozšíření webové aplikace pro Cloud Shell
 
-Pro absolvování tohoto rychlého startu je potřeba přidat [rozšíření webové aplikace az](https://docs.microsoft.com/en-us/cli/azure/extension?view=azure-cli-latest#az-extension-add). Pokud už máte rozšíření nainstalované, aktualizujte je na nejnovější verzi. To provedete zadáním `az extension update -n webapp`.
+Pro absolvování tohoto rychlého startu je potřeba přidat [rozšíření webové aplikace az](https://docs.microsoft.com/cli/azure/extension?view=azure-cli-latest#az-extension-add). Pokud už máte rozšíření nainstalované, aktualizujte je na nejnovější verzi. To provedete zadáním `az extension update -n webapp`.
 
 Rozšíření webové aplikace nainstalujete spuštěním tohoto příkazu:
 
@@ -136,7 +136,7 @@ Příkaz `az webapp up` provádí tyto akce:
 
 - Vytvoření aplikace se zadaným názvem
 
-- [Nasazení souborů ZIP](https://docs.microsoft.com/en-us/azure/app-service/app-service-deploy-zip) z aktuálního pracovního adresáře do webové aplikace
+- [Nasazení souborů ZIP](https://docs.microsoft.com/azure/app-service/app-service-deploy-zip) z aktuálního pracovního adresáře do webové aplikace
 
 ## <a name="browse-to-the-app"></a>Přechod do aplikace
 

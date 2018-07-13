@@ -11,11 +11,11 @@ ms.date: 3/23/2018
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: 8c9dbc3a7c6435d2c7051d4a727896b9161b755a
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34354994"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38317718"
 ---
 # <a name="create-an-application-gateway-with-url-path-based-redirection-using-azure-powershell"></a>Vytvoření brány Application Gateway s přesměrováním na základě cesty adresy URL pomocí Azure PowerShellu
 

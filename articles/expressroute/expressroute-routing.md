@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/28/2018
+ms.date: 07/09/2018
 ms.author: ganesr
-ms.openlocfilehash: 9542eedecaf8dc6d689bf6192f74eee15287ae99
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 998d4f8017af51a21e13695a8491e9b6bd62af9a
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36295422"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37930524"
 ---
 # <a name="expressroute-routing-requirements"></a>Požadavky na směrování služby ExpressRoute
 Pokud se chcete připojit ke cloudovým službám Microsoftu pomocí služby ExpressRoute, budete muset nastavit a spravovat směrování. Někteří poskytovatelé připojení nabízejí nastavení a správu směrování jako spravovanou službu. Zeptejte se svého poskytovatele připojení, jestli tuto službu nabízí. Pokud ne, je nutné splnit následující požadavky:
@@ -117,7 +117,7 @@ U partnerského vztahu Microsoftu je povoleno soukromé číslo AS, které ale t
 > 
 
 ## <a name="dynamic-route-exchange"></a>Dynamická výměna tras
-Výměna směrování bude přes protokol EBGP. Relace EBGP se vytvoří mezi směrovači MSEE a vašimi směrovači. Ověřování relací BGP není povinné. V případě potřeby lze nakonfigurovat hodnotu hash MD5. Informace o konfiguraci relací BGP najdete v tématu [Konfigurace směrování](expressroute-howto-routing-classic.md) a [Pracovní postupy zřizování okruhů a stavy okruhu](expressroute-workflows.md).
+Výměna směrování bude přes protokol EBGP. Relace EBGP se vytvoří mezi směrovači MSEE a vašimi směrovači. Ověřování relací BGP není povinné. V případě potřeby lze nakonfigurovat hodnotu hash MD5. Informace o konfiguraci relací BGP najdete v tématu [Konfigurace směrování](how-to-routefilter-portal.md) a [Pracovní postupy zřizování okruhů a stavy okruhu](expressroute-workflows.md).
 
 ## <a name="autonomous-system-numbers"></a>Čísla autonomního systému
 Microsoft pro veřejný partnerský vztah Azure, soukromý partnerský vztah Azure a partnerský vztah Microsoftu používá číslo AS 12076. Pro interní použití jsme vyhradili čísla ASN od 65515 do 65520. Jsou podporována 16bitová a 32bitová čísla AS.
@@ -194,9 +194,10 @@ Můžete zakoupit víc než jeden okruh ExpressRoute na geopolitickou oblast. Po
 | Indie – jih | 12076:51019 |
 | Indie – západ | 12076:51018 |
 | Indie – střed | 12076:51017 |
-| **Korea** | |
-| Korea – jih | 12076:51028 |
-| Korea – střed | 12076:51029 |
+| 
+  **Jižní Korea** | |
+| Jižní Korea – jih | 12076:51028 |
+| Jižní Korea – střed | 12076:51029 |
 
 
 Všechny trasy inzerované Microsoftem budou označené odpovídající hodnotou komunity. 
@@ -227,7 +228,7 @@ Kromě výše uvedeného bude Microsoft také označovat předpony podle služby
 | --- | --- |
 | **US Government** |  |
 | USA (Gov) – Arizona | 12076:51106 |
-| USA (Gov) – Iowa | 12076:51109 |
+| US Gov – Iowa | 12076:51109 |
 | USA (Gov) – Virginia | 12076:51105 |
 | USA (Gov) – Texas | 12076:51108 |
 | US DoD – střed | 12076:51209 |

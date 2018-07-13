@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 10/19/2017
 ms.author: ahomer
 ms.custom: mvc
-ms.openlocfilehash: fc301edf13f8e6874f0b77440e2b0dc01b2a55fc
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 6b74ab4d97df7e1e6b9bec8e3bcb150c99bd5b5c
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32189927"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37903447"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-visual-studio-team-services"></a>Kurz: Nasazení aplikace na linuxové virtuální počítače v Azure pomocí Jenkins a Visual Studio Team Services
 
@@ -49,7 +49,7 @@ V tomto kurzu použijete Jenkins k sestavení webové aplikace Node.js. Pak ji p
 
 *  Potřebujete linuxový virtuální počítač jako cíl nasazení.  Další informace najdete v článku o [vytvoření a správě linuxových virtuálních počítačů pomocí rozhraní příkazového řádku Azure](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm).
 
-*  Otevřete příchozí port 80 pro virtuální počítač. Další informace najdete v článku o [vytvoření skupin zabezpečení sítě pomocí Azure Portalu](https://docs.microsoft.com/azure/virtual-network/virtual-networks-create-nsg-arm-pportal).
+*  Otevřete příchozí port 80 pro virtuální počítač. Další informace najdete v článku o [vytvoření skupin zabezpečení sítě pomocí Azure Portalu](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic).
 
 ## <a name="get-the-sample-app"></a>Získání ukázkové aplikace
 
@@ -77,7 +77,7 @@ Nejprve musíte nakonfigurovat dva moduly plug-in Jenkins: **NodeJS** a **VS Tea
 5. Přejděte zpět na řídicí panel Jenkins a vyberte **Manage Jenkins** (Spravovat Jenkins).
 6. Vyberte **Global Tool Configuration** (Globální konfigurace nástroje). Najděte **NodeJS** a vyberte **NodeJS installations** (Instalace NodeJS).
 7. Vyberte možnost **Install automatically** (Nainstalovat automaticky) a pak zadejte hodnotu **Name** (Název).
-8. Vyberte **Save** (Uložit).
+8. Vyberte **Uložit**.
 
 ## <a name="configure-a-jenkins-freestyle-project-for-nodejs"></a>Konfigurace projektu Jenkins Freestyle pro Node.js
 

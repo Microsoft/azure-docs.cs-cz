@@ -1,5 +1,5 @@
 ---
-title: Nasazení aplikace Service Fabric v Javě do clusteru v Azure | Microsoft Docs
+title: Nasazení aplikace Java do clusteru Service Fabric v Azure | Microsoft Docs
 description: V tomto kurzu se dozvíte, jak nasadit aplikaci Service Fabric v Javě do clusteru Azure Service Fabric.
 services: service-fabric
 documentationcenter: java
@@ -15,40 +15,44 @@ ms.workload: NA
 ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 370cb367a90c8c1a4f8051e79d3858d78c8c3b75
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: afa9aa4ef4d3d8d8a6816d194b69271fdf0d928a
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34644038"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37109670"
 ---
 # <a name="tutorial-deploy-a-java-application-to-a-service-fabric-cluster-in-azure"></a>Kurz: Nasazení aplikace v Javě do clusteru Service Fabric v Azure
+
 V tomto kurzu, který je třetí částí série, se dozvíte, jak nasadit aplikaci Service Fabric do clusteru v Azure.
 
 Ve třetí části této série se naučíte:
 
 > [!div class="checklist"]
-> * Vytvoření zabezpečeného clusteru s Linuxem v Azure 
+> * Vytvoření zabezpečeného clusteru s Linuxem v Azure
 > * Nasazení aplikace do clusteru
 
 V této sérii kurzů se naučíte:
+
 > [!div class="checklist"]
-> *  [Sestavení aplikace Service Fabric Reliable Services v Javě](service-fabric-tutorial-create-java-app.md)
+> * [Sestavení aplikace Service Fabric Reliable Services v Javě](service-fabric-tutorial-create-java-app.md)
 > * [Nasazení a ladění aplikace v místním clusteru](service-fabric-tutorial-debug-log-local-cluster.md)
 > * Nasazení aplikace do clusteru Azure
 > * [Nastavit monitorování a diagnostiku aplikace](service-fabric-tutorial-java-elk.md)
 > * [Nastavení CI/CD](service-fabric-tutorial-java-jenkins.md)
 
 ## <a name="prerequisites"></a>Požadavky
+
 Než začnete s tímto kurzem:
-- Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- [Nainstalujte Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
-- Nainstalujte sadu Service Fabric SDK pro [Mac](service-fabric-get-started-mac.md) nebo [Linux](service-fabric-get-started-linux.md).
-- [Nainstalujte Python 3](https://wiki.python.org/moin/BeginnersGuide/Download).
+
+* Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* [Nainstalujte Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+* Nainstalujte sadu Service Fabric SDK pro [Mac](service-fabric-get-started-mac.md) nebo [Linux](service-fabric-get-started-linux.md).
+* [Nainstalujte Python 3](https://wiki.python.org/moin/BeginnersGuide/Download).
 
 ## <a name="create-a-service-fabric-cluster-in-azure"></a>Vytvoření clusteru Service Fabric v Azure
 
-Následujícím postupem se vytvoří nezbytné prostředky potřebné k nasazení aplikace do clusteru Service Fabric. Kromě toho se nastaví prostředky potřebné k monitorování stavu vašeho řešení pomocí stacku ELK (Elasticsearch, Logstash, Kibana). Konkrétně se použije služba [Event Hubs](https://azure.microsoft.com/services/event-hubs/) jako jímka pro protokoly ze Service Fabric. Nakonfiguruje se tak, aby odesílala protokoly z clusteru Service Fabric do vaší instance Logstash. 
+Následujícím postupem se vytvoří nezbytné prostředky potřebné k nasazení aplikace do clusteru Service Fabric. Kromě toho se nastaví prostředky potřebné k monitorování stavu vašeho řešení pomocí stacku ELK (Elasticsearch, Logstash, Kibana). Konkrétně se použije služba [Event Hubs](https://azure.microsoft.com/services/event-hubs/) jako jímka pro protokoly ze Service Fabric. Nakonfiguruje se tak, aby odesílala protokoly z clusteru Service Fabric do vaší instance Logstash.
 
 1. Otevřete terminál a stáhněte následující balíček, který obsahuje potřebné pomocné skripty a šablony pro vytváření prostředků v Azure.
 
@@ -56,23 +60,23 @@ Následujícím postupem se vytvoří nezbytné prostředky potřebné k nasazen
     git clone https://github.com/Azure-Samples/service-fabric-java-quickstart.git
     ```
 
-2. Přihlaste se ke svému účtu Azure. 
+2. Přihlaste se ke svému účtu Azure.
 
     ```bash
     az login
     ```
 
-3. Nastavte své předplatné Azure, které chcete použít k vytvoření prostředků. 
+3. Nastavte své předplatné Azure, které chcete použít k vytvoření prostředků.
 
     ```bash
     az account set --subscription [SUBSCRIPTION-ID]
-    ``` 
+    ```
 
-4. Spuštěním následujícího příkazu ve složce *service-fabric-java-quickstart/AzureCluster* vytvořte certifikát clusteru ve službě Key Vault. Tento certifikát slouží k zabezpečení vašeho clusteru Service Fabric. Zadejte oblast (musí být stejná jako u vašeho clusteru Service Fabric), název skupiny prostředků trezoru klíčů, název trezoru klíčů, heslo certifikátu a název DNS clusteru. 
+4. Spuštěním následujícího příkazu ve složce *service-fabric-java-quickstart/AzureCluster* vytvořte certifikát clusteru ve službě Key Vault. Tento certifikát slouží k zabezpečení vašeho clusteru Service Fabric. Zadejte oblast (musí být stejná jako u vašeho clusteru Service Fabric), název skupiny prostředků trezoru klíčů, název trezoru klíčů, heslo certifikátu a název DNS clusteru.
 
     ```bash
     ./new-service-fabric-cluster-certificate.sh [REGION] [KEY-VAULT-RESOURCE-GROUP] [KEY-VAULT-NAME] [CERTIFICATE-PASSWORD] [CLUSTER-DNS-NAME-FOR-CERTIFICATE]
-    
+
     Example: ./new-service-fabric-cluster-certificate.sh 'westus' 'testkeyvaultrg' 'testkeyvault' '<password>' 'testservicefabric.westus.cloudapp.azure.com'
     ```
 
@@ -84,11 +88,11 @@ Následujícím postupem se vytvoří nezbytné prostředky potřebné k nasazen
     Certificate Thumbprint: <THUMBPRINT>
     ```
 
-5. Vytvořte skupinu prostředků pro účet úložiště, ve kterém se ukládají vaše protokoly. 
+5. Vytvořte skupinu prostředků pro účet úložiště, ve kterém se ukládají vaše protokoly.
 
     ```bash
     az group create --location [REGION] --name [RESOURCE-GROUP-NAME]
-    
+
     Example: az group create --location westus --name teststorageaccountrg
     ```
 
@@ -96,11 +100,11 @@ Následujícím postupem se vytvoří nezbytné prostředky potřebné k nasazen
 
     ```bash
     az storage account create -g [RESOURCE-GROUP-NAME] -l [REGION] --name [STORAGE-ACCOUNT-NAME] --kind Storage
-    
+
     Example: az storage account create -g teststorageaccountrg -l westus --name teststorageaccount --kind Storage
     ```
 
-7. Přejděte na web [Azure Portal](https://portal.azure.com) a na kartu **Sdílený přístupový podpis** pro váš účet služby Storage. Následujícím způsobem vygenerujte token SAS. 
+7. Přejděte na web [Azure Portal](https://portal.azure.com) a na kartu **Sdílený přístupový podpis** pro váš účet služby Storage. Následujícím způsobem vygenerujte token SAS.
 
     ![Vygenerování SAS pro službu Storage](./media/service-fabric-tutorial-java-deploy-azure/storagesas.png)
 
@@ -114,16 +118,16 @@ Následujícím postupem se vytvoří nezbytné prostředky potřebné k nasazen
 
     ```bash
     az group create --location [REGION] --name [RESOURCE-GROUP-NAME]
-    
+
     Example: az group create --location westus --name testeventhubsrg
     ```
 
-10. Pomocí následujícího příkazu vytvořte prostředek služby Event Hubs. Postupujte podle zobrazených výzev a zadejte podrobnosti pro hodnoty namespaceName (název oboru názvů), eventHubName (název centra událostí), consumerGroupName (název skupiny příjemců), sendAuthorizationRuleName (název autorizačního pravidla pro odesílání) a receiveAuthorizationRuleName (název autorizačního pravidla pro příjem). 
+10. Pomocí následujícího příkazu vytvořte prostředek služby Event Hubs. Postupujte podle zobrazených výzev a zadejte podrobnosti pro hodnoty namespaceName (název oboru názvů), eventHubName (název centra událostí), consumerGroupName (název skupiny příjemců), sendAuthorizationRuleName (název autorizačního pravidla pro odesílání) a receiveAuthorizationRuleName (název autorizačního pravidla pro příjem).
 
     ```bash
     az group deployment create -g [RESOURCE-GROUP-NAME] --template-file eventhubsdeploy.json
-    
-    Example: 
+
+    Example:
     az group deployment create -g testeventhubsrg --template-file eventhubsdeploy.json
     Please provide string value for 'namespaceName' (? for help): testeventhubnamespace
     Please provide string value for 'eventHubName' (? for help): testeventhub
@@ -132,8 +136,8 @@ Následujícím postupem se vytvoří nezbytné prostředky potřebné k nasazen
     Please provide string value for 'receiveAuthorizationRuleName' (? for help): receiver
     ```
 
-    Zkopírujte obsah pole **output** ve výstupu JSON předchozího příkazu. Informace o odesilateli se použijí při vytváření clusteru Service Fabric. Název a klíč příjemce byste si měli uložit pro použití v dalším kurzu, kdy nakonfigurujete službu Logstash pro příjem zpráv z centra událostí. Následující objekt blob představuje příklad výstupu JSON:     
-    
+    Zkopírujte obsah pole **output** ve výstupu JSON předchozího příkazu. Informace o odesilateli se použijí při vytváření clusteru Service Fabric. Název a klíč příjemce byste si měli uložit pro použití v dalším kurzu, kdy nakonfigurujete službu Logstash pro příjem zpráv z centra událostí. Následující objekt blob představuje příklad výstupu JSON:
+
     ```json
     "outputs": {
         "receiver Key": {
@@ -169,9 +173,9 @@ Následujícím postupem se vytvoří nezbytné prostředky potřebné k nasazen
 
     Vaše adresa URL SAS pro službu Event Hubs má tuto strukturu: https://<namespacename>.servicebus.windows.net/<eventhubsname>?sr=<sastoken>. Například https://testeventhubnamespace.servicebus.windows.net/testeventhub?sr=https%3A%2F%testeventhub.servicebus.windows.net%testeventhub&sig=7AlFYnbvEm%2Bat8ALi54JqHU4i6imoFxkjKHS0zI8z8I%3D&se=1517354876&skn=sender.
 
-12. Otevřete soubor *sfdeploy.parameters.json* a nahraďte následující obsah hodnotami z předchozích kroků. 
+12. Otevřete soubor *sfdeploy.parameters.json* a nahraďte následující obsah hodnotami z předchozích kroků.
 
-    ```
+    ```json
     "applicationDiagnosticsStorageAccountName": {
         "value": "teststorageaccount"
     },
@@ -191,7 +195,7 @@ Následujícím postupem se vytvoří nezbytné prostředky potřebné k nasazen
 
 ## <a name="deploy-your-application-to-the-cluster"></a>Nasazení aplikace do clusteru
 
-1. Před nasazením aplikace je potřeba do souboru *Voting/VotingApplication/ApplicationManifest.xml* přidat následující fragment kódu. Pole **X509FindValue** obsahuje kryptografický otisk vrácený z kroku 4 v části **Vytvoření clusteru Service Fabric v Azure**. Tento fragment kódu je vnořený do pole **ApplicationManifest** (kořenové pole). 
+1. Před nasazením aplikace je potřeba do souboru *Voting/VotingApplication/ApplicationManifest.xml* přidat následující fragment kódu. Pole **X509FindValue** obsahuje kryptografický otisk vrácený z kroku 4 v části **Vytvoření clusteru Service Fabric v Azure**. Tento fragment kódu je vnořený do pole **ApplicationManifest** (kořenové pole).
 
     ```xml
     <Certificates>
@@ -211,32 +215,33 @@ Následujícím postupem se vytvoří nezbytné prostředky potřebné k nasazen
     sfctl cluster select --endpoint https://testlinuxcluster.westus.cloudapp.azure.com:19080 --pem sfctlconnection.pem --no-verify
     ```
 
-4. Pokud chcete nasadit svou aplikaci, přejděte do složky *Voting/Scripts* a spusťte skript **install.sh**. 
+4. Pokud chcete nasadit svou aplikaci, přejděte do složky *Voting/Scripts* a spusťte skript **install.sh**.
 
     ```bash
     ./install.sh
     ```
 
-5. Pokud chcete přejít do nástroje Service Fabric Explorer, otevřete oblíbený prohlížeč a zadejte do něj https://testlinuxcluster.westus.cloudapp.azure.com:19080. Z úložiště certifikátů zvolte certifikát, který chcete použít pro připojení k tomuto koncovému bodu. Pokud používáte počítač s Linuxem, k zobrazení nástroje Service Fabric Explorer je potřeba do Chrome importovat certifikáty vygenerované skriptem *new-service-fabric-cluster-certificate.sh*. Pokud používáte počítač Mac, musíte soubor PFX nainstalovat do své klíčenky. Všimněte si, že se vaše aplikace nainstalovala do clusteru. 
+5. Pokud chcete přejít do nástroje Service Fabric Explorer, otevřete oblíbený prohlížeč a zadejte do něj https://testlinuxcluster.westus.cloudapp.azure.com:19080. Z úložiště certifikátů zvolte certifikát, který chcete použít pro připojení k tomuto koncovému bodu. Pokud používáte počítač s Linuxem, k zobrazení nástroje Service Fabric Explorer je potřeba do Chrome importovat certifikáty vygenerované skriptem *new-service-fabric-cluster-certificate.sh*. Pokud používáte počítač Mac, musíte soubor PFX nainstalovat do své klíčenky. Všimněte si, že se vaše aplikace nainstalovala do clusteru.
 
     ![SFX pro Javu v Azure](./media/service-fabric-tutorial-java-deploy-azure/sfxjavaonazure.png)
 
-6. Pokud chcete přejít do své aplikace, zadejte https://testlinuxcluster.westus.cloudapp.azure.com:8080. 
+6. Pokud chcete přejít do své aplikace, zadejte https://testlinuxcluster.westus.cloudapp.azure.com:8080.
 
     ![Hlasovací aplikace v Javě v Azure](./media/service-fabric-tutorial-java-deploy-azure/votingappjavaazure.png)
 
-7. Pokud chcete aplikaci z clusteru odinstalovat, spusťte skript *uninstall.sh* ve složce **Scripts**. 
+7. Pokud chcete aplikaci z clusteru odinstalovat, spusťte skript *uninstall.sh* ve složce **Scripts**.
 
     ```bash
     ./uninstall.sh
     ```
 
 ## <a name="next-steps"></a>Další kroky
+
 V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
-> * Vytvoření zabezpečeného clusteru s Linuxem v Azure 
-> * Vytvoření prostředků potřebných pro monitorování pomocí ELK 
+> * Vytvoření zabezpečeného clusteru s Linuxem v Azure
+> * Vytvoření prostředků potřebných pro monitorování pomocí ELK
 > * Volitelné: Použití Party Clusterů k vyzkoušení Service Fabric
 
 Přejděte k dalšímu kurzu:

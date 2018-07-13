@@ -12,14 +12,14 @@ ms.devlang: tbd
 ms.topic: get-started-article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 02/22/2018
+ms.date: 06/29/2018
 ms.author: sethm
-ms.openlocfilehash: a24fa21848005d9768d26ae865680a4851e1dd81
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 2763e401454cdb6145067a3ac415c3a252d7c494
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2018
-ms.locfileid: "29556395"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131663"
 ---
 # <a name="create-a-service-bus-namespace-using-the-azure-portal"></a>Vytvoření oboru názvů služby Service Bus pomocí webu Azure Portal
 
@@ -36,7 +36,7 @@ Blahopřejeme! Právě jste vytvořili obor názvů zasílání zpráv služby S
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na naše [ukázky na GitHubu][github-samples], které představují některé pokročilejší funkce zasílání zpráv Service Bus.
+Podívejte se na [ukázky pro Service Bus na GitHubu][github-samples], které představují některé pokročilejší funkce zasílání zpráv Service Bus.
 
 [create-namespace-using-arm]: service-bus-resource-manager-overview.md
 [github-samples]: https://github.com/Azure/azure-service-bus/tree/master/samples

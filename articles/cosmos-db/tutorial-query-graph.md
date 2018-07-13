@@ -1,5 +1,5 @@
 ---
-title: Jak provádět dotazy na data grafu ve službě Azure Cosmos DB? | Dokumenty Microsoft
+title: Jak provádět dotazy na data grafu ve službě Azure Cosmos DB? | Microsoft Docs
 description: Zjistěte, jak provádět dotazy na data grafu ve službě Azure Cosmos DB.
 services: cosmos-db
 author: luisbosquez
@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 01/02/2018
 ms.author: lbosq
 ms.custom: mvc
-ms.openlocfilehash: dfaf3fe1427c9069939f5421c6a87efb584ebe48
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: ad38976f439c399d839d6c5ee9dcd6ade7726c71
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34763200"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37081903"
 ---
 # <a name="tutorial-query-azure-cosmos-db-graph-api-by-using-gremlin"></a>Kurz: Dotazování rozhraní Graph API služby Azure Cosmos DB pomocí Gremlin
 
@@ -31,7 +31,7 @@ Tento článek se zabývá následujícími úkony:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Aby tyto dotazy fungovaly, musíte mít účet služby Azure Cosmos DB a data grafu v kontejneru. Něco z toho nemáte? Vytvořte účet a naplňte databázi dokončením [5minutového rychlého startu](create-graph-dotnet.md) nebo [kurzu pro vývojáře](tutorial-query-graph.md). Následující dotazy můžete spustit pomocí [knihovny .NET služby Azure Cosmos DB pro grafy](graph-sdk-dotnet.md), [konzoly Gremlin](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) nebo oblíbeného ovladače Gremlin.
+Aby tyto dotazy fungovaly, musíte mít účet služby Azure Cosmos DB a data grafu v kontejneru. Něco z toho nemáte? Vytvořte účet a naplňte databázi dokončením [5minutového rychlého startu](create-graph-dotnet.md) nebo [kurzu pro vývojáře](tutorial-query-graph.md). Následující dotazy můžete spustit pomocí [konzoly Gremlin](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) nebo oblíbeného ovladače Gremlin.
 
 ## <a name="count-vertices-in-the-graph"></a>Výpočet vrcholů v grafu
 
@@ -80,7 +80,8 @@ V tomto kurzu jste provedli následující:
 > [!div class="checklist"]
 > * Zjistili jste, jak provádět dotazy pomocí Graphu. 
 
-Teď můžete pokračovat k dalšímu kurzu, kde se dozvíte, jak globálně distribuovat data.
+Teď můžete přejít k části Koncepty, která obsahuje další informace o službě Cosmos DB.
 
 > [!div class="nextstepaction"]
-> [Globální distribuce dat](tutorial-global-distribution-graph.md)
+> [Globální distribuce](distribute-data-globally.md) 
+

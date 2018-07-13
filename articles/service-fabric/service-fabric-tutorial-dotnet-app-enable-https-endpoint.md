@@ -1,5 +1,5 @@
 ---
-title: Přidání koncového bodu HTTPS do aplikace Azure Service Fabric | Microsoft Docs
+title: Přidání koncového bodu HTTPS do aplikace Service Fabric v Azure | Microsoft Docs
 description: V tomto kurzu zjistíte, jak do webové front-end služby ASP.NET Core přidat koncový bod HTTPS a nasadit tuto aplikaci do clusteru.
 services: service-fabric
 documentationcenter: .net
@@ -15,14 +15,15 @@ ms.workload: NA
 ms.date: 04/12/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: a07e3ed3363ad968156aab2233073406d05b7dba
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 309a43d3383658029f4fe7f90f869888bac67bb1
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34364603"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37130046"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service"></a>Kurz: Přidání koncového bodu HTTPS do front-end služby webového rozhraní API ASP.NET Core
+
 Tento kurz je třetí částí série.  Zjistíte, jak povolit HTTPS ve službě ASP.NET Core spuštěné v Service Fabric. Až budete hotovi, budete mít hlasovací aplikaci s webovým front-endem ASP.NET Core s povoleným HTTPS, který bude naslouchat na portu 443. Pokud nechcete hlasovací aplikaci vytvářet ručně, v tématu popisujícím [vytvoření aplikace Service Fabric v .NET](service-fabric-tutorial-deploy-app-to-party-cluster.md) si můžete [stáhnout zdrojový kód](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) dokončené aplikace.
 
 Ve třetí části této série se naučíte:
@@ -44,20 +45,25 @@ V této sérii kurzů se naučíte:
 > * [Nastavit monitorování a diagnostiku aplikace](service-fabric-tutorial-monitoring-aspnet.md)
 
 ## <a name="prerequisites"></a>Požadavky
+
 Než začnete s tímto kurzem:
-- Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- [Nainstalujte sadu Visual Studio 2017](https://www.visualstudio.com/) verze 15.5 nebo novější se sadami funkcí **Vývoj pro Azure** a **Vývoj pro ASP.NET a web**.
-- [Nainstalujte sadu Service Fabric SDK](service-fabric-get-started.md).
+
+* Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* [Nainstalujte sadu Visual Studio 2017](https://www.visualstudio.com/) verze 15.5 nebo novější se sadami funkcí **Vývoj pro Azure** a **Vývoj pro ASP.NET a web**.
+* [Nainstalujte sadu Service Fabric SDK](service-fabric-get-started.md).
 
 ## <a name="obtain-a-certificate-or-create-a-self-signed-development-certificate"></a>Získání certifikátu nebo vytvoření certifikátu podepsaného svým držitelem pro vývoj
+
 Pro produkční aplikace používejte certifikát od [certifikační autority (CA)](https://wikipedia.org/wiki/Certificate_authority). Pro účely vývoje a testování můžete vytvořit a používat certifikát podepsaný svým držitelem. Sada Service Fabric SDK poskytuje skript *CertSetup.ps1*, který vytvoří certifikát podepsaný svým držitelem a importuje ho do úložiště certifikátů `Cert:\LocalMachine\My`. Otevřete příkazový řádek jako správce a spuštěním následujícího příkazu vytvořte certifikát s předmětem CN=localhost:
 
 ```powershell
 PS C:\program files\microsoft sdks\service fabric\clustersetup\secure> .\CertSetup.ps1 -Install -CertSubjectName CN=localhost
 ```
 
-Pokud už máte soubor certifikátu PFX, spuštěním následujícího příkazu importujte certifikát do úložiště certifikátů `Cert:\LocalMachine\My`: 
+Pokud už máte soubor certifikátu PFX, spuštěním následujícího příkazu importujte certifikát do úložiště certifikátů `Cert:\LocalMachine\My`:
+
 ```powershell
+
 PS C:\mycertificates> Import-PfxCertificate -FilePath .\mysslcertificate.pfx -CertStoreLocation Cert:\LocalMachine\My -Password (ConvertTo-SecureString "!Passw0rd321" -AsPlainText -Force)
 
 
@@ -69,6 +75,7 @@ Thumbprint                                Subject
 ```
 
 ## <a name="define-an-https-endpoint-in-the-service-manifest"></a>Definice koncového bodu HTTPS v manifestu služby
+
 Spusťte sadu Visual Studio jako **správce** a otevřete řešení Voting. V Průzkumníku řešení otevřete soubor *VotingWeb/PackageRoot/ServiceManifest.xml*. Manifest služby definuje koncové body služby.  Vyhledejte část **Endpoints** (Koncové body) a upravte stávající koncový bod ServiceEndpoint.  Změňte název na EndpointHttps a nastavte protokol na *https*, typ na *Vstup* a port na *443*.  Uložte provedené změny.
 
 ```xml
@@ -101,16 +108,17 @@ Spusťte sadu Visual Studio jako **správce** a otevřete řešení Voting. V Pr
 </ServiceManifest>
 ```
 
-
 ## <a name="configure-kestrel-to-use-https"></a>Nakonfigurovat Kestrel k používání HTTPS
-V Průzkumníku řešení otevřete soubor *VotingWeb/VotingWeb.cs*.  Nakonfigurujte Kestrel k používání HTTPS a vyhledejte certifikát v úložišti `Cert:\LocalMachine\My`. Přidejte následující příkazy using: 
+
+V Průzkumníku řešení otevřete soubor *VotingWeb/VotingWeb.cs*.  Nakonfigurujte Kestrel k používání HTTPS a vyhledejte certifikát v úložišti `Cert:\LocalMachine\My`. Přidejte následující příkazy using:
+
 ```csharp
 using System.Net;
 using Microsoft.Extensions.Configuration;
 using System.Security.Cryptography.X509Certificates;
 ```
 
-Aktualizujte `ServiceInstanceListener` k používání nového koncového bodu *EndpointHttps* a naslouchání na portu 443. 
+Aktualizujte `ServiceInstanceListener` k používání nového koncového bodu *EndpointHttps* a naslouchání na portu 443.
 
 ```csharp
 new ServiceInstanceListener(
@@ -171,10 +179,13 @@ private X509Certificate2 GetCertificateFromStore()
 ```
 
 ## <a name="give-network-service-access-to-the-certificates-private-key"></a>Poskytnutí přístupu k privátnímu klíči certifikátu účtu NETWORK SERVICE
-V předchozím kroku jste importovali certifikát do úložiště `Cert:\LocalMachine\My` na vývojovém počítači.  Účtu, pod kterým se služba spouští (ve výchozím nastavení je to NETWORK SERVICE), musíte také explicitně udělit přístup k privátnímu klíči certifikátu. Můžete to provést ručně (pomocí nástroje certlm.msc), ale lepší je automaticky spustit skript PowerShellu prostřednictvím [konfigurace spouštěcího skriptu](service-fabric-run-script-at-service-startup.md) v části **SetupEntryPoint** v manifestu služby.   
+
+V předchozím kroku jste importovali certifikát do úložiště `Cert:\LocalMachine\My` na vývojovém počítači.  Účtu, pod kterým se služba spouští (ve výchozím nastavení je to NETWORK SERVICE), musíte také explicitně udělit přístup k privátnímu klíči certifikátu. Můžete to provést ručně (pomocí nástroje certlm.msc), ale lepší je automaticky spustit skript PowerShellu prostřednictvím [konfigurace spouštěcího skriptu](service-fabric-run-script-at-service-startup.md) v části **SetupEntryPoint** v manifestu služby.
 
 ### <a name="configure-the-service-setup-entry-point"></a>Konfigurace vstupního bodu nastavení služby
+
 V Průzkumníku řešení otevřete soubor *VotingWeb/PackageRoot/ServiceManifest.xml*.  V části **CodePackage** přidejte uzel **SetupEntryPoint** a pak uzel **ExeHost**.  V uzlu **ExeHost** nastavte **Program** na Setup.bat a **WorkingFolder** na CodePackage.  Při spuštění služby VotingWeb se před spuštěním VotingWeb.exe provede skript Setup.bat ve složce CodePackage.
+
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <ServiceManifest Name="VotingWebPkg"
@@ -190,7 +201,7 @@ V Průzkumníku řešení otevřete soubor *VotingWeb/PackageRoot/ServiceManifes
     <SetupEntryPoint>
       <ExeHost>
         <Program>Setup.bat</Program>
-        <WorkingFolder>CodePackage</WorkingFolder>        
+        <WorkingFolder>CodePackage</WorkingFolder>
       </ExeHost>
     </SetupEntryPoint>
 
@@ -213,6 +224,7 @@ V Průzkumníku řešení otevřete soubor *VotingWeb/PackageRoot/ServiceManifes
 ```
 
 ### <a name="add-the-batch-and-powershell-setup-scripts"></a>Přidání dávkových skriptů a instalačních skriptů PowerShellu
+
 Pokud chcete spustit PowerShell z bodu **SetupEntryPoint**, můžete spustit PowerShell.exe v dávkovém souboru odkazujícím na soubor PowerShellu. Nejprve do projektu služby přidejte dávkový soubor.  V Průzkumníku řešení klikněte pravým tlačítkem na **VotingWeb**, vyberte **Přidat**->**Nová položka** a přidejte nový soubor Setup.bat.  Upravte soubor *Setup.bat* a přidejte následující příkaz:
 
 ```bat
@@ -229,7 +241,7 @@ $subject="localhost"
 $userGroup="NETWORK SERVICE"
 
 Write-Host "Checking permissions to certificate $subject.." -ForegroundColor DarkCyan
- 
+
 $cert = (gci Cert:\LocalMachine\My\ | where { $_.Subject.Contains($subject) })[-1]
 
 if ($cert -eq $null)
@@ -244,27 +256,27 @@ if ($cert -eq $null)
 }else
 {
     $keyName=$cert.PrivateKey.CspKeyContainerInfo.UniqueKeyContainerName
-    
+
     $keyPath = "C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys\"
     $fullPath=$keyPath+$keyName
     $acl=(Get-Item $fullPath).GetAccessControl('Access')
 
- 
+
     $hasPermissionsAlready = ($acl.Access | where {$_.IdentityReference.Value.Contains($userGroup.ToUpperInvariant()) -and $_.FileSystemRights -eq [System.Security.AccessControl.FileSystemRights]::FullControl}).Count -eq 1
- 
+
     if ($hasPermissionsAlready){
         Write-Host "Account $userGroupCertificate already has permissions to certificate '$subject'." -ForegroundColor Green
         return $false;
     } else {
         Write-Host "Need add permissions to '$subject' certificate..." -ForegroundColor DarkYellow
-        
+
         $permission=$userGroup,"Full","Allow"
         $accessRule=new-object System.Security.AccessControl.FileSystemAccessRule $permission
         $acl.AddAccessRule($accessRule)
         Set-Acl $fullPath $acl
- 
+
         Write-Output "Permissions were added"
- 
+
         return $true;
     }
 }
@@ -273,10 +285,11 @@ Modify the *SetCertAccess.ps1* file properties to set **Copy to Output Directory
 ```
 
 ### <a name="run-the-setup-script-as-a-local-administrator"></a>Spuštění instalačního skriptu jako místní správce
-Ve výchozím nastavení se spustitelný soubor vstupního bodu nastavení služby spouští pod stejnými přihlašovacími údaji jako Service Fabric (obvykle pod účtem NetworkService). Soubor *SetCertAccess.ps1* vyžaduje oprávnění správce. V manifestu aplikace můžete změnit oprávnění zabezpečení tak, aby se spouštěcí skript spouštěl pod účtem místního správce.  
+
+Ve výchozím nastavení se spustitelný soubor vstupního bodu nastavení služby spouští pod stejnými přihlašovacími údaji jako Service Fabric (obvykle pod účtem NetworkService). Soubor *SetCertAccess.ps1* vyžaduje oprávnění správce. V manifestu aplikace můžete změnit oprávnění zabezpečení tak, aby se spouštěcí skript spouštěl pod účtem místního správce.
 
 V Průzkumníku řešení otevřete soubor *Voting/ApplicationPackageRoot/ApplicationManifest.xml*. Nejprve vytvořte část **Principals** (Instanční objekty) a přidejte nového uživatele (například SetupAdminUser). Přidejte uživatelský účet SetupAdminUser do systémové skupiny Správci.
-Dále v části **ServiceManifestImport** souboru VotingWebPkg nakonfigurujte **RunAsPolicy** pro použití instančního objektu SetupAdminUser na vstupní bod nastavení. Tato zásada říká Service Fabric, že se soubor Setup.bat spouští jako SetupAdminUser (s oprávněními správce). 
+Dále v části **ServiceManifestImport** souboru VotingWebPkg nakonfigurujte **RunAsPolicy** pro použití instančního objektu SetupAdminUser na vstupní bod nastavení. Tato zásada říká Service Fabric, že se soubor Setup.bat spouští jako SetupAdminUser (s oprávněními správce).
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -323,16 +336,18 @@ Dále v části **ServiceManifestImport** souboru VotingWebPkg nakonfigurujte **
 ```
 
 ## <a name="run-the-application-locally"></a>Místní spuštění aplikace
+
 V Průzkumníku řešení vyberte aplikaci **Voting** a nastavte vlastnost **Adresa URL aplikace** na https://localhost:443.
 
 Uložte všechny soubory a stisknutím klávesy F5 aplikaci místně spusťte.  Po nasazení aplikace se otevře webový prohlížeč na adrese [https://localhost:443](https://localhost:443). Pokud používáte certifikát podepsaný svým držitelem, zobrazí se upozornění, že váš počítač nedůvěřuje zabezpečení tohoto webu.  Pokračujte na webovou stránku.
 
-![Hlasovací aplikace][image2] 
+![Hlasovací aplikace][image2]
 
 ## <a name="install-certificate-on-cluster-nodes"></a>Instalace certifikátu na uzlech clusteru
+
 Než aplikaci nasadíte do Azure, nainstalujte certifikát do úložiště `Cert:\LocalMachine\My` na uzly vzdáleného clusteru.  Při spuštění webové front-end služby na uzlu clusteru vyhledá spouštěcí skript certifikát a nakonfiguruje přístupová oprávnění.
 
-Nejprve exportujte certifikát do souboru PFX. Otevřete aplikaci certlm.msc a přejděte do části **Osobní**>**Certifikáty**.  Klikněte pravým tlačítkem na certifikát *localhost* a vyberte **Všechny úlohy**>**Exportovat**.  
+Nejprve exportujte certifikát do souboru PFX. Otevřete aplikaci certlm.msc a přejděte do části **Osobní**>**Certifikáty**.  Klikněte pravým tlačítkem na certifikát *localhost* a vyberte **Všechny úlohy**>**Exportovat**.
 
 ![Export certifikátu][image4]
 
@@ -353,7 +368,7 @@ $groupname="voting_RG"
 $clustername = "votinghttps"
 $ExistingPfxFilePath="C:\Users\sfuser\votingappcert.pfx"
 
-$appcertpwd = ConvertTo-SecureString –String $certpw –AsPlainText –Force  
+$appcertpwd = ConvertTo-SecureString -String $certpw -AsPlainText -Force
 
 Write-Host "Reading pfx file from $ExistingPfxFilePath"
 $cert = new-object System.Security.Cryptography.X509Certificates.X509Certificate2 $ExistingPfxFilePath, $certpw
@@ -381,7 +396,8 @@ Add-AzureRmServiceFabricApplicationCertificate -ResourceGroupName $groupname -Na
 ```
 
 ## <a name="open-port-443-in-the-azure-load-balancer"></a>Otevřít port 443 v nástroji pro vyrovnávání zatížení Azure
-Pokud ještě není otevřený, otevřete port 443 v nástroji pro vyrovnávání zatížení.  
+
+Pokud ještě není otevřený, otevřete port 443 v nástroji pro vyrovnávání zatížení.
 
 ```powershell
 $probename = "AppPortProbe6"
@@ -390,7 +406,7 @@ $RGname="voting_RG"
 $port=443
 
 # Get the load balancer resource
-$resource = Get-AzureRmResource | Where {$_.ResourceGroupName –eq $RGname -and $_.ResourceType -eq "Microsoft.Network/loadBalancers"} 
+$resource = Get-AzureRmResource | Where {$_.ResourceGroupName –eq $RGname -and $_.ResourceType -eq "Microsoft.Network/loadBalancers"}
 $slb = Get-AzureRmLoadBalancer -Name $resource.Name -ResourceGroupName $RGname
 
 # Add a new probe configuration to the load balancer
@@ -405,6 +421,7 @@ $slb | Set-AzureRmLoadBalancer
 ```
 
 ## <a name="deploy-the-application-to-azure"></a>Nasazení aplikace v Azure
+
 Uložte všechny soubory, přepněte z režimu Ladění do Vydání a stisknutím klávesy F6 znovu spusťte sestavení.  V Průzkumníku řešení klikněte pravým tlačítkem na aplikaci **Voting** a vyberte **Publikovat**. Vyberte koncový bod připojení clusteru vytvořeného v tématu [Nasazení aplikace do clusteru](service-fabric-tutorial-deploy-app-to-party-cluster.md) nebo vyberte jiný cluster.  Kliknutím na **Publikovat** publikujte aplikaci do vzdáleného clusteru.
 
 Po nasazení aplikace otevřete webový prohlížeč a přejděte na adresu [https://mycluster.region.cloudapp.azure.com:443](https://mycluster.region.cloudapp.azure.com:443) (v adrese URL aktualizujte koncový bod připojení pro váš cluster). Pokud používáte certifikát podepsaný svým držitelem, zobrazí se upozornění, že váš počítač nedůvěřuje zabezpečení tohoto webu.  Pokračujte na webovou stránku.
@@ -412,6 +429,7 @@ Po nasazení aplikace otevřete webový prohlížeč a přejděte na adresu [htt
 ![Hlasovací aplikace][image3]
 
 ## <a name="next-steps"></a>Další kroky
+
 V této části kurzu jste se naučili:
 
 > [!div class="checklist"]
@@ -420,7 +438,7 @@ V této části kurzu jste se naučili:
 > * Nainstalovat certifikát SSL na uzly vzdáleného clusteru
 > * Poskytnout účtu NETWORK SERVICE přístup k privátnímu klíči certifikátu
 > * Otevřít port 443 v nástroji pro vyrovnávání zatížení Azure
-> * Nasadit aplikaci do vzdáleného clusteru 
+> * Nasadit aplikaci do vzdáleného clusteru
 
 Přejděte k dalšímu kurzu:
 > [!div class="nextstepaction"]

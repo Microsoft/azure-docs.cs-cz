@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: tutorial
 ms.date: 6/27/2018
 ms.author: dineshm
-ms.openlocfilehash: 013369c84ca7f2ec232f542549c22260eca46980
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 27ed860c7dd3b979a25860d453231de74d3f46be
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062530"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096912"
 ---
 # <a name="tutorial-access-azure-data-lake-storage-gen2-preview-data-with-databricks-using-spark"></a>Kurz: Přístup k datům v Azure Data Lake Storage Gen2 Preview v DataBricks pomocí Sparku
 
@@ -47,7 +47,7 @@ Napřed si vytvořte nový [účet Azure Data Lake Storage Gen2](quickstart-crea
 
 Název účtu a klíč budete potřebovat v dalších krocích tohoto kurzu. Otevřete textový editor a poznamenejte si do něj název účtu a klíč k pozdějšímu použití.
 
-## <a name="create-a-databricks-cluster"></a>Vytvoření clusteru DataBricks
+## <a name="create-a-databricks-cluster"></a>Vytvoření clusteru Databricks
 
 V dalším kroku vytvoříte [cluster DataBricks](https://docs.azuredatabricks.net/) jako pracovní prostor pro data.
 
@@ -61,7 +61,7 @@ V dalším kroku vytvoříte [cluster DataBricks](https://docs.azuredatabricks.n
 8. Nahoře na stránce klikněte, že chcete **vytvořit cluster** (dokončení procesu může trvat pět minut).
 9. Jakmile proces doběhne, vyberte na navigačním panelu vlevo nahoře **Azure Databricks**.
 10. V dolní polovině stránky vyberte v oddílu **Nový** položku **Poznámkový blok**.
-11. Do pole s **názvem** zadejte vybraný název.
+11. Do pole **Název** zadejte libovolný název a jako jazyk vyberte **Python**.
 12. Ve všech ostatních polích můžete nechat výchozí hodnoty.
 13. Vyberte **Vytvořit**.
 14. Do buňky **Cmd 1** vložte následující kód. Hodnoty nahraďte hodnotami svého účtu úložiště, které jste si poznamenali.
@@ -96,7 +96,7 @@ Znovu otevřete v prohlížeči DataBricks a proveďte následující kroky:
 5. Vyberte **Vytvořit**.
 6. Do buňky **Cmd 1** vložte následující kód (tento kód provede automatické uložení v editoru).
 
-    ```
+    ```python
     #mount Azure Blob Storage as an HDFS file system to your databricks cluster
     #you need to specify a storage account and container to connect to. 
     #use a SAS token or an account key to connect to Blob Storage.  

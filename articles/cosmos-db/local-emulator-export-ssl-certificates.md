@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 06/06/2017
 ms.author: tvoellm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5fce6553ce7407f892ed1de1f71bc812798f91c0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 237ab0ed99793f54574c4b81e883acb8c2bc57a9
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34611802"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37082097"
 ---
 # <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs"></a>Export certifikátů emulátoru služby Azure Cosmos DB pro použití s Javou, Pythonem a Node.js
 
@@ -99,7 +99,7 @@ V tomto kurzu jste provedli následující:
 > * Export certifikátu SSL
 > * Seznámili jste se s používáním certifikátů v Javě, Pythonu a Node.js.
 
-Teď můžete pokračovat ke kurzu Vytvoření triggeru HTTP ve službě Azure Functions s využitím vstupní vazby Azure Cosmos DB.
+Teď můžete přejít k části Koncepty, která obsahuje další informace o službě Azure Cosmos DB. 
 
 > [!div class="nextstepaction"]
-> [Vytvoření funkce Azure se vstupem ze služby Azure Cosmos DB](tutorial-functions-http-trigger.md) 
+>[Nastavitelné úrovně konzistence dat v Azure Cosmos DB](../cosmos-db/consistency-levels.md)

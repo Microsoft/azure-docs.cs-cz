@@ -15,37 +15,37 @@ ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
 ms.openlocfilehash: 6fb8be96c9793e96f1f7d2ad8e212d056d7e9ba5
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32152582"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38467882"
 ---
-# <a name="how-to-use-apache-cordova-client-library-for-azure-mobile-apps"></a>Používání klientské knihovny pro Apache Cordova pro Azure Mobile Apps
+# <a name="how-to-use-apache-cordova-client-library-for-azure-mobile-apps"></a>Jak používat klientskou knihovnu pro Apache Cordova pro Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
-Tato příručka je určena můžete provádět běžné scénáře s využitím nejnovější [modul plug-in pro Apache Cordova pro Azure Mobile Apps]. Pokud jste ještě Azure Mobile Apps, nejprve dokončit [Azure Mobile Apps rychlý Start] vytvořte back-end, vytvořit tabulku a stáhněte si předem připravené projekt Apache Cordova. V této příručce se zaměříme na modulu plug-in na straně klienta Apache Cordova.
+Tento průvodce vás naučí, provádět běžné scénáře pomocí nejnovější [modul plug-in Apache Cordova pro Azure Mobile Apps]. Pokud jste ještě na službu Azure Mobile Apps, nejprve dokončit [Azure Mobile Apps rychlým startem] Pokud chcete vytvořit back-endu, vytvořte tabulku a stáhněte si předem sestavených projektů Apache Cordova. V této příručce se zaměříme na modul plug-in na straně klienta pro Apache Cordova.
 
 ## <a name="supported-platforms"></a>Podporované platformy
-Tato sada SDK podporuje v6.0.0 Apache Cordova a později na iOS, Android a Windows zařízení.  Podpora platformy je následující:
+Tato sada SDK podporuje v6.0.0 Apache Cordova a později na iOS, Android a Windows zařízení.  Podpora platformy je následujícím způsobem:
 
-* Rozhraní API systému Android 19 – 24 (KitKat prostřednictvím cukrovinkách typu nugát).
+* Rozhraní Android API 19-24 (KitKat prostřednictvím verzi Nougat).
 * iOS verze 8.0 a novější.
 * Windows Phone 8.1.
-* Univerzální platformy Windows.
+* Universal Windows Platform.
 
-## <a name="Setup"></a>Instalační program a požadavky
-Tato příručka předpokládá, že jste vytvořili back-end s tabulkou. Tato příručka předpokládá, že tabulka má stejné schéma jako tabulky v těchto kurzech. Tato příručka také předpokládá, že jste přidali Cordovu Apache do vašeho kódu.  Pokud jste tak dosud neučinili, můžete přidat modul plug-in Apache Cordova na projekt na příkazovém řádku:
+## <a name="Setup"></a>Instalace a požadavky
+Tato příručka předpokládá, že vytvoříte back-end s tabulkou. Tento průvodce to předpokládá, že tabulka má stejné schéma jako tabulky v těchto kurzech. Tento průvodce to předpokládá také, že jste přidali modul plug-in Apache Cordova do vašeho kódu.  Pokud jste neudělali, můžete přidat modul plug-in Apache Cordova do vašeho projektu na příkazovém řádku:
 
 ```
 cordova plugin add cordova-plugin-ms-azure-mobile-apps
 ```
 
-Další informace o vytváření [vaší první aplikace Apache Cordova], najdete v jejich dokumentaci.
+Další informace o vytváření [vaše první aplikace Apache Cordova], najdete v jejich dokumentaci.
 
-## <a name="ionic"></a>Nastavení aplikace iontových v2
+## <a name="ionic"></a>Nastavení aplikace Ionic v2
 
-O správné konfiguraci projektu iontových v2, nejprve vytvořit základní aplikaci a přidejte Cordova plugin:
+O správné konfiguraci projektu aplikace Ionic v2, nejprve vytvořit základní aplikaci a přidejte modul plug-in Cordova:
 
 ```
 ionic start projectName --v2
@@ -67,37 +67,37 @@ ionic platform add browser
 ionic run browser
 ```
 
-Modul plug-in Azure Mobile Apps Cordova podporuje obě iontových v1 a v2 aplikace.  Jenom aplikace iontových v2 vyžadovat další deklarace pro `WindowsAzure` objektu.
+Modul plug-in Azure Mobile Apps Cordova podporuje obě Ionic aplikace v1 a v2.  Jen aplikace Ionic v2 vyžadují další deklarace `WindowsAzure` objektu.
 
 [!INCLUDE [app-service-mobile-html-js-library.md](../../includes/app-service-mobile-html-js-library.md)]
 
 ## <a name="auth"></a>Postupy: ověřování uživatelů
-Azure App Service podporuje ověřování a autorizaci uživatelů aplikace pomocí různých zprostředkovatelů externí identity: Facebook, Google, Microsoft Account a Twitter. Můžete nastavit oprávnění pro tabulky, pokud chcete omezit přístup pro určité operace pouze ověřené uživatele. Můžete také použít identitu ověřeného uživatele k implementaci autorizační pravidla v skripty serveru. Další informace najdete v tématu [Začínáme s ověřováním] kurzu.
+Azure App Service podporuje ověřování a autorizace uživatelů aplikací pomocí různých externích zprostředkovatelů identity: Facebook, Google, Account Microsoft a Twitter. Můžete nastavit oprávnění pro tabulky, pokud chcete omezit přístup pro určité operace pouze ověřeným uživatelům. Identity ověřeného uživatele můžete také použít k implementaci autorizační pravidla v serverových skriptů. Další informace najdete v tématu [Začínáme s ověřováním] kurzu.
 
-Při použití ověřování v aplikaci Apache Cordova, musí být k dispozici následující moduly plug-in Cordova:
+Pokud používáte ověřování v aplikaci Apache Cordova, musí být k dispozici následující moduly plug-in Cordova:
 
 * [cordova-plugin-device]
 * [cordova-plugin-inappbrowser]
 
-Jsou podporovány dva ověřování toky: serveru a klienta tok.  Vývojový server poskytuje nejjednodušší zkušeností ověřování, jako je závislé na poskytovatele webové ověřování rozhraní. Tok klienta umožňuje hlubší integrace s funkcemi konkrétní zařízení, jako-jednotné přihlášení jako přitom spoléhá na konkrétní zařízení specifické pro poskytovatele sady SDK.
+Jsou podporovány dvě toky ověřování: serveru a klienta tok.  Tok server poskytuje nejjednodušší prostředí pro ověřování, spoléhá na zprostředkovatele webového ověření rozhraní. Tok klienta umožňuje hlubší integraci s funkcemi konkrétní zařízení, jako single-sign-on jako spoléhá na sady SDK pro konkrétní zařízení specifickým pro zprostředkovatele.
 
 [!INCLUDE [app-service-mobile-html-js-auth-library.md](../../includes/app-service-mobile-html-js-auth-library.md)]
 
 ### <a name="configure-external-redirect-urls"></a>Postupy: Konfigurace služby Mobile App pro adresy URL pro externí přesměrování.
-Několik typů aplikací Apache Cordova pomocí funkce zpětné smyčky pro zpracování uživatelského rozhraní OAuth toky.  Toky OAuth uživatelského rozhraní na místním hostiteli způsobit problémy, protože ověřovací služby pouze věděl, kam může využívat vaše služba ve výchozím nastavení.  Příklady problematické toky OAuth uživatelského rozhraní:
+Několik typů aplikací Apache Cordova pomocí funkce zpětné smyčky pro zpracování toky OAuth uživatelského rozhraní.  Toky OAuth uživatelského rozhraní na místním hostiteli způsobit problémy vzhledem k tomu, že ověřovací službu pouze ví, jak využít vaše služba ve výchozím nastavení.  Příklady problematické toky OAuth uživatelského rozhraní:
 
-* Ripple emulatoru.
-* Živé opětovného načtení s Ionic.
-* Místní spuštění mobilního back-endu
-* Spuštění mobilní back-end v různých App Service Azure než jeden poskytnete ověřování.
+* Emulátor Ripple.
+* Živé opětovné načtení s využitím nástroje Ionic.
+* Místně spuštěná mobilním back-endu
+* Mobilní back-end používané jiné službě Azure App Service než jeden poskytuje ověřování.
 
-Postupujte podle těchto pokynů můžete přidat místní nastavení konfigurace:
+Postupujte podle těchto pokynů a přidejte svá místní nastavení konfigurace:
 
 1. Přihlaste se k portálu [Azure Portal].
 2. Vyberte **všechny prostředky** nebo **App Services** pak klikněte na název vaší mobilní aplikace.
 3. Klikněte na tlačítko **nástroje**
-4. Klikněte na tlačítko **Průzkumníka prostředků** v nabídce dodržovat klikněte **přejděte**.  Otevře se nové okno nebo kartu.
-5. Rozbalte **konfigurace**, **authsettings** uzly pro svůj web v levém navigačním panelu.
+4. Klikněte na tlačítko **Průzkumníka prostředků** v nabídce dodržovat klikněte **Přejít**.  Otevře se nové okno nebo kartu.
+5. Rozbalte **config**, **authsettings** uzly, aby se váš web v levém navigačním panelu.
 6. Klikněte na tlačítko **upravit**
 7. Vyhledejte element "allowedExternalRedirectUrls".  Může být nastaven na hodnotu null nebo pole hodnot.  Změňte hodnotu na následující hodnotu:
 
@@ -106,25 +106,25 @@ Postupujte podle těchto pokynů můžete přidat místní nastavení konfigurac
              "https://localhost:3000"
          ],
 
-    Nahraďte adresy URL adresy URL služby.  Mezi příklady patří "http://localhost:3000" (pro službu ukázka Node.js), nebo "http://localhost:4400" (pro službu Ripple).  Ale tyto adresy URL jsou příklady - vaší situaci, včetně služeb uvedených v příkladech se můžou lišit.
-8. Klikněte **pro čtení a zápis** tlačítko v pravém horním rohu obrazovky.
-9. Klikněte na tlačítko se zeleným **PUT** tlačítko.
+    Nahraďte adresy URL adresy URL vaší služby.  Mezi příklady patří "http://localhost:3000" (pro službu ukázky Node.js), nebo "http://localhost:4400" (pro službu Ripple).  Ale tyto adresy URL jsou příklady - vaší situaci, včetně služby uvedené v příkladech se může lišit.
+8. Klikněte na tlačítko **r/w** tlačítko v pravém horním rohu obrazovky.
+9. Klikněte na zelené **UMÍSTIT** tlačítko.
 
-Nastavení se ukládají v tomto okamžiku.  Nezavírejte okno prohlížeče, dokud nebudou dokončeny nastavení ukládání.
-Tyto adresy URL zpětné smyčky je také možné přidáte do nastavení CORS pro App Service:
+Nastavení se ukládají v tomto okamžiku.  Nezavírejte okno prohlížeče, dokud dokončení nastavení uložení.
+Tyto adresy URL zpětné smyčky je také možné přidáte do nastavení CORS pro službu App Service:
 
 1. Přihlaste se k portálu [Azure Portal].
 2. Vyberte **všechny prostředky** nebo **App Services** pak klikněte na název vaší mobilní aplikace.
-3. Automaticky se otevře v okně nastavení.  Pokud není, klikněte na tlačítko **všechna nastavení**.
-4. Klikněte na tlačítko **CORS** v nabídce rozhraní API.
-5. Zadejte adresu URL, kterou chcete přidat do pole zadat a stiskněte klávesu Enter.
-6. Zadejte další adresy URL, podle potřeby.
+3. Automaticky se otevře okno nastavení.  Pokud tomu tak není, klikněte na tlačítko **všechna nastavení**.
+4. Klikněte na tlačítko **CORS** nabídce rozhraní API.
+5. Zadejte adresu URL, kterou chcete přidat do pole k dispozici a stiskněte klávesu Enter.
+6. Další adresy URL zadejte podle potřeby.
 7. Kliknutím na **Uložit** nastavení uložte.
 
-Jak dlouho trvá přibližně 10 až 15 sekund pro nová nastavení vstoupila v platnost.
+Trvá přibližně 10 – 15 sekund nové nastavení projevilo.
 
-## <a name="register-for-push"></a>Postupy: zaregistrovat pro nabízená oznámení
-Nainstalujte [phonegap-plugin nabízené] ke zpracování nabízených oznámení.  Tento modul plug-in lze snadno přidat pomocí `cordova plugin add` příkazu na příkazovém řádku nebo prostřednictvím Git instalační program modulu plug-in v sadě Visual Studio.  Následující kód do vaší aplikace Apache Cordova registruje zařízení pro nabízená oznámení:
+## <a name="register-for-push"></a>Postupy: registrace pro nabízená oznámení
+Nainstalujte [nabízené oznámení phonegap plugin] pro zpracování nabízených oznámení.  Tento modul plug-in můžete snadno přidat pomocí `cordova plugin add` příkazu na příkazovém řádku, nebo prostřednictvím instalačního programu modulu plug-in Git v sadě Visual Studio.  Následující kód do aplikace Apache Cordova zaregistruje zařízení pro nabízená oznámení:
 
 ```
 var pushOptions = {
@@ -163,22 +163,22 @@ pushHandler.on('error', function (error) {
 });
 ```
 
-Pomocí sady SDK centra oznámení k odesílání nabízených oznámení ze serveru.  Nikdy odeslat nabízená oznámení přímo z klientů. Díky tomu mohou využít ke spuštění útoku DoS proti centra oznámení nebo systém PNS.  Systém PNS může zakázat provozu v důsledku takové útoky.
+Použijte sadu SDK služby Notification Hubs k odesílání nabízených oznámení ze serveru.  Nikdy odesílání nabízených oznámení přímo z klientů. To může použít k aktivaci služby útoku proti Notification Hubs nebo systém oznámení platformy.  Systém oznámení platformy může zakázat provoz v důsledku takové útoky.
 
 ## <a name="more-information"></a>Další informace
 
-Můžete najít podrobnosti podrobné rozhraní API v našem [dokumentaci k rozhraní API](http://azure.github.io/azure-mobile-apps-js-client/).
+Můžete najít podrobné podrobnosti o rozhraní API v naší [dokumentace k rozhraní API](http://azure.github.io/azure-mobile-apps-js-client/).
 
 <!-- URLs. -->
 [Azure Portal]: https://portal.azure.com
-[Azure Mobile Apps rychlý Start]: app-service-mobile-cordova-get-started.md
+[Azure Mobile Apps rychlým startem]: app-service-mobile-cordova-get-started.md
 [Začínáme s ověřováním]: app-service-mobile-cordova-get-started-users.md
 [Add authentication to your app]: app-service-mobile-cordova-get-started-users.md
 
-[modul plug-in pro Apache Cordova pro Azure Mobile Apps]: https://www.npmjs.com/package/cordova-plugin-ms-azure-mobile-apps
-[vaší první aplikace Apache Cordova]: http://cordova.apache.org/#getstarted
+[Modul plug-in Apache Cordova pro Azure Mobile Apps]: https://www.npmjs.com/package/cordova-plugin-ms-azure-mobile-apps
+[vaše první aplikace Apache Cordova]: http://cordova.apache.org/#getstarted
 [phonegap-facebook-plugin]: https://github.com/wizcorp/phonegap-facebook-plugin
-[phonegap-plugin nabízené]: https://www.npmjs.com/package/phonegap-plugin-push
+[nabízené oznámení phonegap plugin]: https://www.npmjs.com/package/phonegap-plugin-push
 [cordova-plugin-device]: https://www.npmjs.com/package/cordova-plugin-device
 [cordova-plugin-inappbrowser]: https://www.npmjs.com/package/cordova-plugin-inappbrowser
 [Query object documentation]: https://msdn.microsoft.com/library/azure/jj613353.aspx
