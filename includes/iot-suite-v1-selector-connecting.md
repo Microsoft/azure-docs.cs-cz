@@ -1,3 +1,20 @@
+---
+title: zahrnout soubor
+description: zahrnout soubor
+services: iot-accelerators
+author: dominicbetts
+ms.service: iot-accelerators
+ms.topic: include
+ms.date: 05/30/2018
+ms.author: dobett
+ms.custom: include file
+ms.openlocfilehash: 55920b6c147626f68f51b9e0479949330c71a748
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "38756398"
+---
 > [!div class="op_single_selector"]
 > * [C ve Windows](../articles/iot-suite/iot-suite-v1-connecting-devices.md)
 > * [C v Linuxu](../articles/iot-suite/iot-suite-v1-connecting-devices-linux.md)
@@ -24,13 +41,13 @@ Než začnete psát kód pro zařízení, je nutné zřídit předkonfigurované
 ### <a name="provision-your-remote-monitoring-preconfigured-solution"></a>Zřízení předkonfigurovaného řešení vzdáleného monitorování
 Zařízení, které v tomto kurzu vytvoříte, odesílá data do instance předkonfigurovaného řešení [vzdáleného monitorování][lnk-remote-monitoring]. Pokud jste ve svém účtu Azure ještě nezřídili předkonfigurované řešení vzdáleného monitorování, použijte následující postup:
 
-1. Na stránce <https://www.azureiotsuite.com/> můžete vytvořit řešení kliknutím na **+**.
+1. Na <https://www.azureiotsolutions.com/> klikněte na **+** vytvořte řešení.
 2. Kliknutím na **Vybrat** na panelu **Vzdálené monitorování** vytvořte řešení.
 3. Na stránce **Vytvořit řešení vzdáleného monitorování** zadejte **Název řešení** podle vašeho výběru, vyberte **Oblast**, do které chcete řešení nasadit, a vyberte předplatné Azure, které chcete použít. Potom klikněte na **Vytvořit řešení**.
 4. Počkejte, dokud proces zřizování neskončí.
 
 > [!WARNING]
-> Předkonfigurovaná řešení využívají fakturovatelné služby Azure. Abyste se vyhnuli zbytečným poplatkům, nezapomeňte předkonfigurované řešení odebrat ze svého předplatného, jakmile s ním budete hotovi. Předkonfigurované řešení můžete ze svého předplatného úplně odebrat na stránce <https://www.azureiotsuite.com/>.
+> Předkonfigurovaná řešení využívají fakturovatelné služby Azure. Abyste se vyhnuli zbytečným poplatkům, nezapomeňte předkonfigurované řešení odebrat ze svého předplatného, jakmile s ním budete hotovi. Předkonfigurované řešení můžete úplně odebrat ze svého předplatného najdete <https://www.azureiotsolutions.com/> stránky.
 > 
 > 
 

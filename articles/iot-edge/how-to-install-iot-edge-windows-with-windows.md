@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: kgremban
-ms.openlocfilehash: 3d34628a5a47788bca8cdafcb6e199a0c2cb3bcc
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 18a1481b72904b0ac9c27e100271dc0fd0666baf
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437837"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39001758"
 ---
 # <a name="install-azure-iot-edge-runtime-on-windows-to-use-with-windows-containers"></a>Nainstalovat modul runtime Azure IoT Edge ve Windows pro použití s kontejnery Windows
 
@@ -52,8 +52,9 @@ Invoke-WebRequest https://aka.ms/iotedged-windows-latest -o .\iotedged-windows.z
 Expand-Archive .\iotedged-windows.zip C:\ProgramData\iotedge -f
 Move-Item c:\ProgramData\iotedge\iotedged-windows\* C:\ProgramData\iotedge\ -Force
 rmdir C:\ProgramData\iotedge\iotedged-windows
-$env:Path += ";C:\ProgramData\iotedge"
-SETX /M PATH "$env:Path"
+$sysenv = "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment"
+$path = (Get-ItemProperty -Path $sysenv -Name Path).Path + ";C:\ProgramData\iotedge"
+Set-ItemProperty -Path $sysenv -Name Path -Value $path
 ```
 
 Nainstalujte s použitím vcruntime (Tento krok můžete přeskočit na hraniční zařízení IoT core):
@@ -142,7 +143,7 @@ Chcete-li získat ip adresu, zadejte `ipconfig` v prostředí PowerShell a zkop�
 
 ![nat][img-nat]
 
-Aktualizace **workload_uri** a **management_uri** v **připojit:** oddílu konfiguračního souboru. Nahraďte **\<GATEWAY_ADDRESS\>** s IP adresou, kterou jste zkopírovali. 
+Aktualizace **workload_uri** a **management_uri** v **připojit:** oddílu konfiguračního souboru. Nahraďte **\<GATEWAY_ADDRESS\>** vEthernet IP adresou, kterou jste zkopírovali.
 
 ```yaml
 connect:
@@ -150,7 +151,7 @@ connect:
   workload_uri: "http://<GATEWAY_ADDRESS>:15581"
 ```
 
-Zadejte stejné adresy **naslouchání:** oddílu konfigurace pomocí IP adresy jako adresu brány.
+Zadejte stejné adresy **naslouchání:** oddílu.
 
 ```yaml
 listen:
@@ -164,7 +165,7 @@ V okně Powershellu Vytvořte proměnnou prostředí **IOTEDGE_HOST** s **manage
 [Environment]::SetEnvironmentVariable("IOTEDGE_HOST", "http://<GATEWAY_ADDRESS>:15580")
 ```
 
-Zachovat proměnné prostředí mezi restartováními.
+Zachovejte proměnnou prostředí mezi restartováními.
 
 ```powershell
 SETX /M IOTEDGE_HOST "http://<GATEWAY_ADDRESS>:15580"

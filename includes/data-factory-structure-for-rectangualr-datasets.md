@@ -1,16 +1,16 @@
-## <a name="specifying-structure-definition-for-rectangular-datasets"></a>Zadání definice struktury obdélníková datové sady
-V části struktura v datových sadách JSON je **volitelné** část obdélníková tabulky (s řádky a sloupce) a obsahuje kolekci sloupců pro tabulku. V části struktura budete používat pro buď typ informacemi pro převody typů nebo provádění mapování sloupce. Následující části popisují tyto funkce podrobně. 
+## <a name="specifying-structure-definition-for-rectangular-datasets"></a>Určení definice struktury pro obdélníkové datové sady
+Části struktury v datových sadách JSON je **volitelné** obdélníkové tabulky (s řádky a sloupce) v části a obsahuje kolekci sloupců pro tabulku. Části struktury použije pro buď poskytující informace o typu pro převod na typ nebo provádění mapování sloupců. Následující části popisují tyto funkce podrobně. 
 
 Všechny sloupce obsahují následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| jméno |Název sloupce. |Ano |
-| type |Datový typ sloupce. Najdete v části převody typu níže pro další podrobnosti týkající se kdy by měl můžete určit informace o typu |Ne |
-| Jazyková verze |.NET na základě jazykové verze má být použita, pokud je zadaný typ a typ formátu .NET Datetime nebo Datetimeoffset. Výchozí hodnota je "en-us". |Ne |
-| Formát |Řetězec formátu, který se má použít, když je zadaný typ a .NET typ Datetime nebo Datetimeoffset. |Ne |
+| jméno |Definuje chování kopírování, pokud je zdroj BlobSource nebo systému souborů. |Ano |
+| type |PreserveHierarchy: zachová hierarchií souborů v cílové složce. Zobrazit typ části převody pro více podrobností, kdy by měla zadáte informace o typu |Ne |
+| Jazyková verze |.NET na základě jazykové verze se použije, když je zadán typ a je typ formátu .NET Datetime nebo Datetimeoffset. Výchozí hodnota je "en-us". |Ne |
+| Formát |Formátovací řetězec se použije, když je zadán typ a je typ formátu .NET Datetime nebo Datetimeoffset. |Ne |
 
-Následující příklad ukazuje oddílu struktura JSON pro tabulku, která má tři sloupce ID uživatele, název a lastlogindate.
+Následující příklad ukazuje strukturu část JSON pro tabulku, která má tři sloupce userid, název a lastlogindate.
 
 ```json
 "structure": 
@@ -21,31 +21,31 @@ Následující příklad ukazuje oddílu struktura JSON pro tabulku, která má 
 ],
 ```
 
-Použijte následující pokyny pro kdy "struktury" informace a co mají být zahrnuty **struktura** části.
+Použijte následující pokyny, kdy se mají zahrnout informace "struktury" a co mají být zahrnuty **struktura** oddílu.
 
-* **Pro strukturovaná data zdroje** , data schématu a zadejte informace o úložišti spolu s daty, samotné (zdrojů jako tabulky Azure SQL Server, Oracle, atd.), musíte zadat v části "struktura" pouze v případě, že chcete provádět mapování sloupců z konkrétního zdroje na konkrétní sloupce v jímka a jejich názvy sloupců nejsou stejné (viz podrobnosti v následující části mapování sloupců). 
+* **Pro strukturovaná data zdroje** , že informace schématu a typu dat úložiště spolu s daty o samotné (zdrojů, jako jsou Azure SQL Server, Oracle, tabulku atd.), je třeba zadat oddílu "struktura" pouze, pokud chcete provést mapování sloupců z konkrétního zdroje sloupce, které mají určité sloupce jímky a jejich názvy se neshodují (podrobnosti najdete v následující části mapování sloupců). 
   
-    Jak je uvedeno nahoře, je v části "struktura" volitelné informace o typu. Strukturované zdroje informací o typu je již k dispozici jako součást definice datové sady v úložišti dat, proto by nemělo zahrnete informací o typu zahrnete v části "struktura".
-* **Pro schéma pro zdroje dat pro čtení (konkrétně objektů blob v Azure)** můžete k ukládání dat bez ukládání žádné schéma nebo typ informace s daty. Pro tyto typy zdrojů dat by měla obsahovat "struktura" 2 následujících případech:
-  * Chcete mapování sloupců.
-  * Pokud je datová sada zdroji v aktivitě kopírování, můžete zadat informace o typu "struktury" a objektu pro vytváření dat bude používat tento typ informace pro převod na nativní typy pro jímky. V tématu [přesun dat do a z Azure Blob](../articles/data-factory/v1/data-factory-azure-blob-connector.md) Další informace najdete v článku.
+    Jak je uvedeno výše, je v oddílu "struktura" volitelné informace o typu. U strukturovaných zdrojů, informací o typu je již k dispozici jako součást definice datové sady v úložišti dat, proto by neměl zahrnete informací o typu zahrnují oddílu "struktura".
+* **Pro schéma na zdroji čtená data (konkrétně objektů blob v Azure)** můžete k ukládání dat bez ukládání žádné schéma nebo typ informací s daty. Pro tyto typy zdrojů dat byste měli zahrnout "struktura" v těchto případech 2:
+  * Chcete provést mapování sloupců.
+  * Při tato datová sada je zdroj v aktivitě kopírování, můžete zadat informace o typu "struktury" a objektu pro vytváření dat použije tyto informace typu pro převod na nativních typů pro jímku. Zobrazit [přesun dat do a z Azure Blob](../articles/data-factory/v1/data-factory-azure-blob-connector.md) najdete další informace.
 
-### <a name="supported-net-based-types"></a>Podporováno. Na základě NET typy
-Objekt pro vytváření dat podporuje následující specifikací CLS kompatibilní .NET na základě typu hodnoty pro poskytnutí informací o typu "struktury" pro schéma na zdrojů dat čtení objektů blob v Azure.
+### <a name="supported-net-based-types"></a>Podporované. Typy založené na NET
+Data factory podporuje následující kompatibilní se Specifikací kompatibilní s .NET na základě typu hodnoty pro poskytnutí informací o typu "struktury" pro schéma na zdroje čtení dat jako objektů blob v Azure.
 
 * Int16
-* Int32 
+* Datový typ Int32 
 * Int64
-* Jeden
+* Jednoduchá
 * Double
 * Decimal
 * Byte]
 * BOOL
 * Řetězec 
-* Identifikátor GUID
-* Data a času
-* Datový typ DateTimeOffset
+* Guid
+* Datum a čas
+* DateTimeOffset
 * Časový interval 
 
-Pro hodnotu Datetime a Datetimeoffset můžete volitelně specifikovat řetězec "culture" & "format" usnadňuje analýzy vaše vlastní řetězce data a času. Viz ukázka pro převod typů níže.
+Pro typ Datetime a Datetimeoffset také volitelně můžete zadat řetězce "culture" & "format" usnadnit analýzu svůj vlastní řetězec data a času. Najdete v ukázce pro převod typu níže.
 

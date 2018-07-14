@@ -1,5 +1,5 @@
 ---
-title: Co je Speech service (preview)? | Dokumenty Microsoft
+title: Co je Speech service (preview)? | Microsoft Docs
 description: 'Speech service součástí společnosti Microsoft Cognitive Services, sjednotí několik služeb Azure řeči, které byly dříve k dispozici samostatně: (zahrnující rozpoznávání řeči a převod textu na řeč) pro zpracování řeči Bingu, vlastní řeč a překladu řeči.'
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 2c1fce35749dee12caec0bcd15a9eccdf81b8d1d
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: adfc854fc24b9e285c405f3038a21ec84cd2f4c2
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37856769"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38989331"
 ---
 # <a name="what-is-the-speech-service-preview"></a>Co je Speech service (preview)?
 

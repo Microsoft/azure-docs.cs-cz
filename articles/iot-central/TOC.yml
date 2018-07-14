@@ -49,8 +49,8 @@
           href: howto-version-devicetemplate.md
         - name: Vytvoření pravidla telemetrie
           href: howto-create-telemetry-rules.md
-        - name: Vytvoření pravidla událostí
-          href: howto-create-event-rules.md
+        - name: Konfigurace domovské stránky
+          href: howto-configure-homepage.md
         - name: Příprava a nahrávání obrázků
           href: howto-prepare-images.md
     - name: Operátor

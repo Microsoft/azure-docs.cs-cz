@@ -2,7 +2,7 @@
 
 Klientská knihovna serializéru služby IoT Hub používá model k určení formátu zpráv, které si zařízení vyměňuje se službou IoT Hub.
 
-1. Přidejte následující deklarace proměnných za příkazy `#include`. Nahraďte zástupný symbol hodnoty [ID zařízení] a [klíč zařízení] s hodnotami, které jste si poznamenali pro vaše zařízení v řídicím panelu řešení vzdáleného monitorování. K nahrazení hodnoty [IoTHub Name] použijte název hostitele služby IoT Hub z řídicího panelu řešení. Pokud je například název hostitele vaší služby IoT Hub **contoso.azure-devices.net**, nahraďte hodnotu [IoTHub Name] za **contoso**:
+1. Přidejte následující deklarace proměnných za příkazy `#include`. Nahraďte zástupné hodnoty [ID zařízení] a [klíč zařízení] s hodnotami, které jste si poznamenali pro vaše zařízení na řídicím panelu vzdáleného monitorování řešení. K nahrazení hodnoty [IoTHub Name] použijte název hostitele služby IoT Hub z řídicího panelu řešení. Pokud je například název hostitele vaší služby IoT Hub **contoso.azure-devices.net**, nahraďte hodnotu [IoTHub Name] za **contoso**:
    
     ```c
     static const char* deviceId = "[Device Id]";
@@ -11,7 +11,7 @@ Klientská knihovna serializéru služby IoT Hub používá model k určení for
 
 1. Přidejte následující kód definující model, který umožní komunikaci zařízení se službou IoT Hub. Tento model určuje, že zařízení:
 
-   - Můžete odeslat teploty, externí teplotu, vlhkosti a ID zařízení jako telemetrie.
+   - Můžete odeslat teplotě, venkovní teplotu, vlhkosti a ID zařízení jako telemetrická data.
    - Může odesílat metadata o zařízení do služby IoT Hub. Zařízení při spuštění odesílá základní metadata v objektu **DeviceInfo**.
    - Může odesílat ohlášené vlastnosti do dvojčete zařízení ve službě IoT Hub. Tyto ohlášené vlastnosti se seskupují do vlastností konfigurace, zařízení a systému.
    - Může přijímat požadované vlastnosti nastavené ve dvojčeti zařízení ve službě IoT Hub a jednat podle nich.

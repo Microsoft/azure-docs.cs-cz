@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: tdykstra
-ms.openlocfilehash: bde7a7788fd01bcbcc63296c0513af8eb4196021
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 2308419ba79f6b482df6f68e865aafd0152ae090
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970175"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39001884"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Funkce jazyka C# pro vývojáře referenční informace k Azure
 
@@ -195,11 +195,13 @@ Každá vazba má svůj vlastní podporované typy; Například lze atribut akti
 
 ## <a name="binding-to-method-return-value"></a>Vytvoření vazby na návratovou hodnotu metody
 
-Návratová hodnota metody můžete použít pro výstupní vazby, použitím atributu na návratovou hodnotu metody. Příklady najdete v tématu [aktivačními událostmi a vazbami](functions-triggers-bindings.md#using-the-function-return-value).
+Návratová hodnota metody můžete použít pro výstupní vazby, použitím atributu na návratovou hodnotu metody. Příklady najdete v tématu [aktivačními událostmi a vazbami](functions-triggers-bindings.md#using-the-function-return-value). 
+
+Použijte návratovou hodnotu, pouze v případě, že výsledky spuštění úspěšné funkce, který je vždy v návratovou hodnotu pro předání do výstupní vazbu. Jinak použijte `ICollector` nebo `IAsyncCollector`, jak je znázorněno v následující části.
 
 ## <a name="writing-multiple-output-values"></a>Zápis více výstupní hodnoty
 
-Chcete-li zapsat do výstupní vazbu více hodnot, použijte [ `ICollector` ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) nebo [ `IAsyncCollector` ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) typy. Tyto typy jsou pouze pro zápis kolekce, které jsou zapsány do výstupní vazbu po dokončení metody.
+Zapsat do výstupní vazbu více hodnot nebo pokud volání úspěšné funkce nemusí nic k předání do výstupní vazbu, použijte [ `ICollector` ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) nebo [ `IAsyncCollector` ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) typy. Tyto typy jsou pouze pro zápis kolekce, které jsou zapsány do výstupní vazbu po dokončení metody.
 
 Tento příklad zapíše více front zpráv do stejné frontě pomocí `ICollector`:
 
@@ -209,12 +211,12 @@ public static class ICollectorExample
     [FunctionName("CopyQueueMessageICollector")]
     public static void Run(
         [QueueTrigger("myqueue-items-source-3")] string myQueueItem,
-        [Queue("myqueue-items-destination")] ICollector<string> myQueueItemCopy,
+        [Queue("myqueue-items-destination")] ICollector<string> myDestinationQueue,
         TraceWriter log)
     {
         log.Info($"C# function processed: {myQueueItem}");
-        myQueueItemCopy.Add($"Copy 1: {myQueueItem}");
-        myQueueItemCopy.Add($"Copy 2: {myQueueItem}");
+        myDestinationQueue.Add($"Copy 1: {myQueueItem}");
+        myDestinationQueue.Add($"Copy 2: {myQueueItem}");
     }
 }
 ```

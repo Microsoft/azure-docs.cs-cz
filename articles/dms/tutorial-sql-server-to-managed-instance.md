@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 05/07/2018
-ms.openlocfilehash: be007fe06f7b3354dc88e319a76715d2e94eb3fb
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
-ms.translationtype: HT
+ms.date: 07/12/2018
+ms.openlocfilehash: c911b096af6662e11afb4c4262b92c239d252c36
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971484"
+ms.locfileid: "38990223"
 ---
 # <a name="migrate-sql-server-to-azure-sql-database-managed-instance-using-dms"></a>Migrace SQL serveru do Azure SQL Database Managed Instance pomocí DMS
 Azure Database Migration Service můžete použít k migraci databází z místní instance systému SQL Server do [Azure SQL Database Managed Instance](../sql-database/sql-database-managed-instance.md). Další metody, které mohou vyžadovat některé ruční práce, najdete v článku [migrace instance SQL serveru do Azure SQL Database Managed Instance](../sql-database/sql-database-managed-instance-migrate.md).

@@ -8,12 +8,12 @@ ms.date: 06/26/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4862e3aa976287512fd69fdfe9295e3f3328d5a7
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: ecd19acdeba57a29a28187d42783bbf146095190
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37887772"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39001901"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Běžné potíže se službou Azure IoT Edge a jejich řešení
 
@@ -107,19 +107,43 @@ Po spuštění démona zabezpečení IoT Edge, prohlédněte si protokoly kontej
 
 ### <a name="view-the-messages-going-through-the-edge-hub"></a>Zobrazte zprávy procházející přes Centrum Edge
 
-Zobrazte zprávy procházející přes Centrum Edge a získejte přehled o aktualizacích vlastností zařízení s využitím podrobných protokolů z kontejnerů modulu runtime edgeAgent a edgeHub. Chcete-li zapnout podrobné protokolování na těchto kontejnerů, nastavte `RuntimeLogLevel` proměnné prostředí: 
+Zobrazte zprávy procházející přes Centrum Edge a získejte přehled o aktualizacích vlastností zařízení s využitím podrobných protokolů z kontejnerů modulu runtime edgeAgent a edgeHub. Chcete-li zapnout podrobné protokolování na těchto kontejnerů, nastavte `RuntimeLogLevel` v konfiguračním souboru yaml. Otevřít soubor:
 
 V Linuxu:
-    
-   ```cmd
-   export RuntimeLogLevel="debug"
+
+   ```bash
+   sudo nano /etc/iotedge/config.yaml
    ```
-    
+
 Ve Windows:
-    
-   ```powershell
-   [Environment]::SetEnvironmentVariable("RuntimeLogLevel", "debug")
+
+   ```cmd
+   notepad C:\ProgramData\iotedge\config.yaml
    ```
+
+Ve výchozím nastavení `agent` element bude vypadat přibližně takto:
+
+   ```yaml
+   agent:
+     name: edgeAgent
+     type: docker
+     env: {}
+     config:
+       image: mcr.microsoft.com/azureiotedge-agent:1.0
+       auth: {}
+   ```
+
+Nahraďte `env: {}` pomocí:
+
+> [!WARNING]
+> Soubory YAML nesmí obsahovat tabulátory jako identation. Místo toho použijte 2 mezery.
+
+   ```yaml
+   env:
+     RuntimeLogLevel: debug
+   ```
+
+Uložte soubor a restartujte správce zabezpečení IoT Edge.
 
 Můžete zkontrolovat také zprávy odesílané mezi službou IoT Hub a hraničními zařízeními IoT. Tyto zprávy zobrazíte pomocí rozšíření [Azure IoT Toolkit](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) pro Visual Studio Code. Další pokyny najdete v článku [Užitečný nástroj pro vývoj se službou Azure IoT](https://blogs.msdn.microsoft.com/iotdev/2017/09/01/handy-tool-when-you-develop-with-azure-iot/).
 

@@ -9,11 +9,11 @@ ms.date: 04/25/2018
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: f27dbf20eab5866ac3061d888c17e970a1d197f7
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34666751"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38942423"
 ---
 # <a name="azure-and-the-internet-of-things"></a>Azure a internet věcí
 

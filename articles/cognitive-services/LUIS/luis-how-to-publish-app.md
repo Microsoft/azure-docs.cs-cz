@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr;
-ms.openlocfilehash: 0f6ba76ede48502e4f3308b11d41bf141f0188fb
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 43a26f9e81b788c2a110c24bf2e02c56c0714f1e
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37927770"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38988832"
 ---
 # <a name="publish-your-trained-app"></a>Publikování trénovaného aplikace
 Po dokončení vytváření a testování vaší aplikace LUIS, publikujte ho. Po publikování aplikace na stránce publikování se zobrazí všechny přidružené HTTP [koncové body](luis-glossary.md#endpoint). Tyto koncové body za [oblasti](luis-reference-regions.md) a za [klíč](luis-how-to-manage-keys.md), pak jsou integrované do libovolné aplikace klienta, chatovací robot nebo back-endu. 
@@ -91,9 +91,9 @@ Příkazů a jejich výsledky jsou také zahrnuté protokoly koncového bodu. Je
 ```
 
 ### <a name="enable-bing-spell-checker"></a>Povolit kontrolu pravopisu Bingu 
-V **nastavení adresy url koncového bodu**, **kontrolu pravopisu Bingu povolit** LUIS opravovat slova s překlepem před předpovědi umožňuje zaškrtávací políčko. To je potřeba vytvořit  **[kontrolu pravopisu Bingu klíč](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api)**. Po vytvoření klíče jsou přidány dva parametry řetězce dotazu na URL koncového bodu na stránce publikovat. 
+V **nastavení adresy url koncového bodu**, **kontrolu pravopisu Bingu povolit** LUIS opravovat slova s překlepem před předpovědi umožňuje zaškrtávací políčko. Vytvoření  **[kontrolu pravopisu Bingu klíč](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api)**. Po vytvoření klíče jsou přidány dva parametry řetězce dotazu na URL koncového bodu na stránce publikovat. 
 
-Pokud se vytváření vlastní adresy URL pro vaši aplikaci LUIS volání, ujistěte se, že **kontrola pravopisu = true** parametr querystring a **Bingu – pravopisu – kontrola subscription-key = {YOUR_BING_KEY_HERE}**. Nahradit `{YOUR_BING_KEY_HERE}` vaším klíčem kontrolu pravopisu Bingu.
+Přidat **kontrola pravopisu = true** parametr querystring a **Bingu – pravopisu – kontrola subscription-key = {YOUR_BING_KEY_HERE}** . Nahradit `{YOUR_BING_KEY_HERE}` vaším klíčem kontrolu pravopisu Bingu.
 
 ```JSON
 {

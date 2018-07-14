@@ -1,6 +1,6 @@
 ---
-title: Zákazník fakturace a vrácení peněz v Azure zásobníku | Microsoft Docs
-description: Zjistěte, jak načíst informace o využití prostředků z Azure zásobníku.
+title: Zákazník vyúčtování a vratka ve službě Azure Stack | Dokumentace Microsoftu
+description: Zjistěte, jak načíst informace o využití prostředků ze služby Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,62 +11,61 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/25/2018
+ms.date: 07/12/2018
 ms.author: mabrigg
 ms.reviewer: alfredop
-ms.openlocfilehash: eca335797f48b7c44351655f17c8b6499f3d5999
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: f2449176f96b18a374ff6d54fbf7e09c8f5e21cc
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2018
-ms.locfileid: "29877479"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39003573"
 ---
-# <a name="usage-and-billing-in-azure-stack"></a>Využití a cenách služby Azure zásobníku
+# <a name="usage-and-billing-in-azure-stack"></a>Využití a fakturace ve službě Azure Stack
 
-Tento článek popisuje, jak jsou uživatelé zásobník Azure účtuje využití prostředků. Dozvíte, jak fakturační informace přistupuje k analýze a zpětným poplatků.
+Tento článek popisuje, jak uživatelům Azure stacku se vám účtovat využití prostředků. Dozvíte se, jak je fakturační údaje přistupovat k analýzám a poplatek za zpět.
 
-Azure zásobníku shromažďuje data o využití pro všechny prostředky používané skupiny a předává tato data do obchodu Azure. Azure obchodování bills je pro použití Azure zásobníku stejným způsobem, jako by se vám účtovat za použití Azure.
+Azure Stack shromažďuje a seskupuje data o využití za využité prostředky. Azure Stack pak předá tato data do Azure Commerce. Azure Commerce vám účtuje za využití služby Azure Stack stejným způsobem, jak by se vám účtovat za využití Azure.
 
-Můžete také získat data o využití a export jeho vlastní fakturace nebo poplatků zálohování systému pomocí adaptérem fakturace nebo exportovat je do nástroje business intelligence, jako je Microsoft Power BI a použít jej pro analýzu.
+Můžete také získat data o využití a export na vlastní fakturace nebo proplacení zálohování systému pomocí fakturační adaptér, nebo je exportovat do nástroje business intelligence, jako je Microsoft Power BI.
 
 
 ## <a name="usage-pipeline"></a>Použití kanálu
 
-Každý poskytovatel prostředků v Azure zásobníku vysílá data o využití za využití prostředků. Služba Usage pravidelně (každou hodinu a každý den) agreguje data o využití a ukládá je do databáze využití. Azure operátory zásobníku a uživatelé měli přístup k datům uložené využití prostřednictvím rozhraní API s využití prostředků Azure zásobníku. 
+Každý poskytovatel prostředků ve službě Azure Stack odesílá data o využití za využití prostředků. Služba Usage pravidelně (po hodinách a každý den) agreguje data o využití a uloží je do databáze využití. Azure Stack operátory a uživatelé můžou k datům uložené využití prostřednictvím rozhraní API využití prostředků Azure Stack. 
 
-Pokud máte [vaší instanci Azure zásobníku a registrované v Azure](azure-stack-register.md), zásobník Azure je nakonfigurován pro odesílání dat o využití do obchodu Azure. Po odeslání dat do Azure můžete přistupovat prostřednictvím portálu fakturace nebo pomocí rozhraní API využití prostředků Azure. Odkazovat [generování sestav dat využití](azure-stack-usage-reporting.md) tématu, dozvíte se více o jaké využití dat údajně do Azure.  
+Pokud máte [vaší instance služby Azure Stack a registrované v Azure](azure-stack-register.md), Azure Stack je nakonfigurovaná k odesílání dat o využití do Azure Commerce. Po nahrání dat do Azure můžete přistupovat prostřednictvím fakturačním portálu nebo pomocí rozhraní API využití prostředků Azure. Odkazovat [generování sestav dat využití](azure-stack-usage-reporting.md) článku se dozvíte o jaké využití více dat se oznamuje službě Azure.  
 
-Následující obrázek znázorňuje klíčové komponenty v kanálu využití: 
+Následující obrázek ukazuje klíčové součásti v kanálu využití: 
 
 ![Použití kanálu](media\azure-stack-billing-and-chargeback\usagepipeline.png)
 
-## <a name="what-usage-information-can-i-find-and-how"></a>Jaké informace o využití můžete najít a jak?
+## <a name="what-usage-information-can-i-find-and-how"></a>Využití informací můžete najít a jak?
 
-Azure zprostředkovatelé zásobníku prostředků, jako jsou výpočty, úložiště a sítě, generování dat o využití v hodinových intervalech pro každé předplatné. Data o využití obsahuje informace o prostředku použít jako název prostředku, předplatné použité a množství použít. Další informace o ID prostředky měřidla, naleznete [nejčastější dotazy týkající se používání rozhraní API](azure-stack-usage-related-faq.md) článku.
+Azure Stack Resource poskytovatelů (jako jsou výpočty, úložiště a síť) generování dat o využití v hodinových intervalech pro každé předplatné. Data o využití obsahuje informace o prostředek, který používá jako je například název prostředku, předplatné použité a množství. Další informace o prostředcích ID měřiče, naleznete [nejčastější dotazy k používání rozhraní API](azure-stack-usage-related-faq.md) článku.
 
-Po shromážděných dat o využití, je [oznamovány Azure](azure-stack-usage-reporting.md) ke generování faktury, které lze zobrazit pomocí portálu Azure fakturace. 
+Po shromáždil data o využití je [hlášených Azure](azure-stack-usage-reporting.md) k vygenerování faktury, které lze zobrazit pomocí fakturačním portálu Azure. 
 
+> [!NOTE]  
+> Generování sestav dat využití není potřeba pro Azure Stack Development Kit a pro Azure Stack integrované systému, kteří licencí v rámci modelu kapacity. Další informace o licencování ve službě Azure Stack, najdete v článku [balení a ceny](https://azure.microsoft.com/mediahandler/files/resourcefiles/5bc3f30c-cd57-4513-989e-056325eb95e1/Azure-Stack-packaging-and-pricing-datasheet.pdf) informační list.
 
-> [!NOTE]
-> Generování sestav dat využití není nutné pro Azure zásobníku Development Kit a zásobník Azure integrované systému uživatele, kteří licencují v rámci modelu kapacity. Další informace o licencování v Azure zásobníku, najdete v článku [balení a ceny](https://azure.microsoft.com/mediahandler/files/resourcefiles/5bc3f30c-cd57-4513-989e-056325eb95e1/Azure-Stack-packaging-and-pricing-datasheet.pdf) dat listu.
+Fakturačním portálu Azure zobrazuje data o využití za fakturovatelnou prostředky. Kromě fakturovatelné prostředky služby Azure Stack zaznamená data o využití pro pestřejší škálu prostředků, které se zobrazí ve vašem prostředí Azure Stack prostřednictvím rozhraní REST API nebo Powershellu. Operátoři Azure stacku můžete získat data využití pro všechna předplatná uživatele. Jednotlivým uživatelům můžete získat pouze o jejich použití. 
 
-Portál Azure fakturace zobrazuje data o využití pro fakturovatelné prostředky. Kromě fakturovatelné prostředků Azure zásobníku zaznamená data o využití pro širší sadě síťových prostředků, které dostanete ve vašem prostředí zásobníku Azure prostřednictvím rozhraní API REST nebo PowerShell. Operátory Azure zásobníku můžete získat data o využití pro všechna předplatná uživatele. Jednotlivým uživatelům můžete pouze získat podrobnosti o jejich využití. 
+## <a name="usage-reporting-for-multitenant-cloud-service-providers"></a>Používání vytváření sestav pro víceklientskou poskytovatelů cloudových služeb
 
-## <a name="usage-reporting-for-multitenant-cloud-service-providers"></a>Používání vytváření sestav pro víceklientské poskytovatele cloudových služeb
+Víceklientská Cloud Service Provider (CSP), který má mnoho zákazníků pomocí služby Azure Stack může být vhodné pro zasílání zpráv o využití jednotlivých zákazníků samostatně, tak, aby zprostředkovatel může účtovat využití do různých předplatných Azure. 
 
-Víceklientská poskytovatele cloudové služby (CSP), který má mnoho zákazníků pomocí Azure zásobníku chtít sestav využití každého zákazníka samostatně, tak, aby zprostředkovatel můžete účtují využití do různých předplatných Azure. 
-
-Každý zákazník budete svou identitu reprezentována různých klienta Azure Active Directory (Azure AD). Azure zásobníku podporuje přiřazení jedno předplatné CSP každému klientovi Azure AD. Základní registrace zásobník Azure můžete přidat klientů a jejich odběry. Základní registrace se provádí pro všechny balíčky Azure. Pokud předplatné není registrované pro klienta, uživatel může přesto použít Azure zásobníku a jejich využití odešlou do předplatné použité pro základní registrace. 
+Každý zákazník budete svou identitu reprezentována na jiného tenanta Azure Active Directory (Azure AD). Azure Stack podporuje přiřazení k jednomu předplatnému CSP ke každému tenantovi Azure AD. Základní registrace Azure Stack můžete přidat tenantů a jejich předplatného. Základní registrace se provádí pro všechny balíčky Azure. Pokud předplatné není zaregistrované pro tenanta, uživatel může dál používat Azure Stack a jejich používání se odešlou do předplatného, které použijete pro základní registrace. 
 
 
 ## <a name="next-steps"></a>Další postup
 
-[Zaregistrovat Azure zásobníku](azure-stack-registration.md)
+[Registrovat pomocí služby Azure Stack](azure-stack-registration.md)
 
-[Generování sestav Azure zásobníku využití dat do Azure](azure-stack-usage-reporting.md)
+[Azure Stack využití dat sestavy do Azure](azure-stack-usage-reporting.md)
 
-[Využití prostředků poskytovatele rozhraní API](azure-stack-provider-resource-api.md)
+[Rozhraní API využití prostředků poskytovatele](azure-stack-provider-resource-api.md)
 
-[Využití prostředků rozhraní API klienta](azure-stack-tenant-resource-usage-api.md)
+[Rozhraní API využití prostředků tenanta](azure-stack-tenant-resource-usage-api.md)
 
 [Nejčastější dotazy souvisí s využitím](azure-stack-usage-related-faq.md)

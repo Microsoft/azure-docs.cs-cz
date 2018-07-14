@@ -1,6 +1,6 @@
 ---
-title: Převést Azure spravované disky úložiště ze standardní, Premium a naopak | Microsoft Docs
-description: Postup převedení Azure spravovat disky z standardní, Premium a naopak a pomocí prostředí Azure PowerShell.
+title: Převést Azure spravované disky úložiště úroveň ze standard na premium a naopak | Dokumentace Microsoftu
+description: Jak převést Azure spravované disky ze standard na premium a naopak, pomocí Azure Powershellu.
 services: virtual-machines-windows
 documentationcenter: ''
 author: ramankum
@@ -15,29 +15,29 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: ramankum
-ms.openlocfilehash: 19979240e13ac822921b7f43a158d171aeea0123
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 8ab7745c6b600ac20b6e6064108e15e7f8ab8b09
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34365232"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38991176"
 ---
-# <a name="convert-azure-managed-disks-storage-from-standard-to-premium-and-vice-versa"></a>Převést Azure spravované disky úložiště ze standardní, Premium a naopak
+# <a name="convert-azure-managed-disks-storage-from-standard-to-premium-and-vice-versa"></a>Převést Azure spravované disky úložiště úroveň ze standard na premium a naopak
 
-Spravované disky nabízí dvě možnosti úložiště: [Premium](premium-storage.md) (založené na jednotku SSD) a [standardní](standard-storage.md) (založené na HDD). Umožňuje snadno přepínat mezi dvě možnosti s minimálními výpadky podle vašim požadavkům na výkon. Tato funkce není k dispozici pro nespravovaná disky. Ale můžete snadno [převést na spravované disky](convert-unmanaged-to-managed-disks.md) snadno přepínat mezi dvě možnosti.
+Managed Disks nabízí tři možnosti úložiště: [Premium SSD](../windows/premium-storage.md), standardní SSD(Preview) a [standardní HDD](../windows/standard-storage.md). Umožňuje snadno přepínat mezi možnostmi s minimálními výpadky na základě vašich potřeb výkonu. To není podporováno pro nespravované disky. Ale můžete snadno [převod na managed disks](convert-unmanaged-to-managed-disks.md) snadno přepínat mezi typy disků.
 
-Tento článek ukazuje, jak převést spravované disky z standardní, Premium a naopak pomocí prostředí Azure PowerShell. Pokud je potřeba nainstalovat nebo upgradovat najdete v tématu [instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/install-azurerm-ps.md).
+V tomto článku se dozvíte, jak převést spravované disky standard na premium a naopak pomocí Azure Powershellu. Pokud potřebujete instalaci nebo upgrade, naleznete v tématu [instalace a konfigurace Azure Powershellu](/powershell/azure/install-azurerm-ps.md).
 
 ## <a name="before-you-begin"></a>Než začnete
 
-* Převod vyžaduje restartování virtuálního počítače, takže naplánovat migraci úložiště disků existující období údržby. 
-* Pokud používáte nespravované disky, nejprve [převést na spravované disky](convert-unmanaged-to-managed-disks.md) používat v tomto článku přepínat mezi dvě možnosti úložiště. 
-* Tento článek vyžaduje prostředí Azure PowerShell verze modulu 6.0.0 nebo novější. Verzi zjistíte spuštěním příkazu ` Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Budete také muset spustit `Connect-AzureRmAccount` vytvořit připojení s Azure.
+* Převod vyžaduje restartování virtuálního počítače, proto naplánujte migraci disků úložiště během už existujícího časového období údržby. 
+* Pokud používáte nespravované disky, nejprve [převod na managed disks](convert-unmanaged-to-managed-disks.md) přepínat mezi možnosti úložiště pomocí tohoto článku. 
+* Tento článek vyžaduje modul Azure PowerShell verze 6.0.0 nebo novější. Verzi zjistíte spuštěním příkazu ` Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Musíte také spustit příkaz `Connect-AzureRmAccount`, abyste vytvořili připojení k Azure.
 
 
-## <a name="convert-all-the-managed-disks-of-a-vm-from-standard-to-premium-and-vice-versa"></a>Převeďte všechny spravované disky virtuálního počítače ze standardní premium a naopak
+## <a name="convert-all-the-managed-disks-of-a-vm-from-standard-to-premium-and-vice-versa"></a>Převést všechny spravované disky virtuálního počítače ze standard na premium a naopak
 
-V následujícím příkladu ukážeme, jak přepínat všechny disky virtuálního počítače z standard do úložiště úrovně premium. Spravované prémiové disky, virtuální počítač vyžaduje použití [velikost virtuálního počítače](sizes.md) který podporuje službu premium storage. Tento příklad také přepne na velikost, která podporuje službu premium storage.
+Následující příklad ukazuje, jak přepnout všechny disky virtuálního počítače z úrovně standard na premium storage. Pokud chcete použít spravované disky úrovně premium, musíte použít váš virtuální počítač [velikost virtuálního počítače](sizes.md) , který podporuje storage úrovně premium. Tento příklad také přepíná na hodnotu, která podporuje službu premium storage.
 
 ```azurepowershell-interactive
 # Name of the resource group that contains the VM
@@ -47,7 +47,7 @@ $rgName = 'yourResourceGroup'
 $vmName = 'yourVM'
 
 # Choose between StandardLRS and PremiumLRS based on your scenario
-$storageType = 'PremiumLRS'
+$storageType = 'Premium_LRS'
 
 # Premium capable size
 # Required only if converting storage from standard to premium
@@ -79,9 +79,9 @@ foreach ($disk in $vmDisks)
 
 Start-AzureRmVM -ResourceGroupName $rgName -Name $vmName
 ```
-## <a name="convert-a-managed-disk-from-standard-to-premium-and-vice-versa"></a>Převést standardní spravovaných disků na premium a naopak
+## <a name="convert-a-managed-disk-from-standard-to-premium-and-vice-versa"></a>Převést spravovaného disku ze standard na premium a naopak
 
-Pro vývoj/testování úlohy můžete mít směs standard a premium disky na snížení nákladů na vaše. Můžete ji provést upgradem do úložiště úrovně premium, pouze disky, které vyžadují vyšší výkon. V následujícím příkladu ukážeme, jak přepínat jediný disk virtuálního počítače z standard do úložiště úrovně premium a naopak. Spravované prémiové disky, virtuální počítač vyžaduje použití [velikost virtuálního počítače](sizes.md) který podporuje službu premium storage. Tento příklad také přepne na velikost, která podporuje službu premium storage.
+Pro úlohy pro vývoj/testování můžete mít kombinaci disků úrovně standard a premium ke snížení nákladů. Můžete ji provést díky upgradu na premium storage, jenom disky, které vyžadují vyšší výkon. Následující příklad ukazuje, jak přepnout jeden disk virtuálního počítače ze standard na premium storage a naopak. Pokud chcete použít spravované disky úrovně premium, musíte použít váš virtuální počítač [velikost virtuálního počítače](sizes.md) , který podporuje storage úrovně premium. Tento příklad také přepíná na hodnotu, která podporuje službu premium storage.
 
 ```azurepowershell-interactive
 
@@ -89,13 +89,13 @@ $diskName = 'yourDiskName'
 # resource group that contains the managed disk
 $rgName = 'yourResourceGroupName'
 # Choose between StandardLRS and PremiumLRS based on your scenario
-$storageType = 'PremiumLRS'
+$storageType = 'Premium_LRS'
 # Premium capable size 
 $size = 'Standard_DS2_v2'
 
 $disk = Get-AzureRmDisk -DiskName $diskName -ResourceGroupName $rgName
 
-# Get the ARM resource to get name and resource group of the VM
+# Get parent VM resource
 $vmResource = Get-AzureRmResource -ResourceId $disk.diskId
 
 # Stop and deallocate the VM before changing the storage type
@@ -116,7 +116,37 @@ Update-AzureRmDisk -DiskUpdate $diskUpdateConfig -ResourceGroupName $rgName `
 Start-AzureRmVM -ResourceGroupName $vm.ResourceGroupName -Name $vm.Name
 ```
 
+## <a name="convert-a-managed-disk-from-standard-hdd-to-standard-ssd-and-vice-versa"></a>Převést spravovaného disku ze standardní pevného disku na SSD na úrovni standard a naopak
+
+Následující příklad ukazuje, jak přepnout jeden disk virtuálního počítače ze standardního pevný disk na SSD na úrovni standard a naopak.
+
+```azurepowershell-interactive
+
+$diskName = 'yourDiskName'
+# resource group that contains the managed disk
+$rgName = 'yourResourceGroupName'
+# Choose between Standard_LRS and StandardSSD_LRS based on your scenario
+$storageType = 'StandardSSD_LRS'
+
+$disk = Get-AzureRmDisk -DiskName $diskName -ResourceGroupName $rgName
+
+# Get parent VM resource
+$vmResource = Get-AzureRmResource -ResourceId $disk.diskId
+
+# Stop and deallocate the VM before changing the storage type
+Stop-AzureRmVM -ResourceGroupName $vm.ResourceGroupName -Name $vm.Name -Force
+
+$vm = Get-AzureRmVM $vmResource.ResourceGroupName -Name $vmResource.ResourceName 
+
+# Update the storage type
+$diskUpdateConfig = New-AzureRmDiskUpdateConfig -AccountType $storageType -DiskSizeGB $disk.DiskSizeGB
+Update-AzureRmDisk -DiskUpdate $diskUpdateConfig -ResourceGroupName $rgName `
+-DiskName $disk.Name
+
+Start-AzureRmVM -ResourceGroupName $vm.ResourceGroupName -Name $vm.Name
+```
+
 ## <a name="next-steps"></a>Další postup
 
-Využít jen pro čtení kopie virtuálního počítače pomocí [snímky](snapshot-copy-managed-disk.md).
+Pořiďte si jen pro čtení virtuálního počítače pomocí [snímky](snapshot-copy-managed-disk.md).
 

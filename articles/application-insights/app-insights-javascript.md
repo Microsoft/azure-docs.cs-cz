@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: c3c5a3029916b91b65a5bd0f6efa5c83f5dfcb66
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
-ms.translationtype: HT
+ms.openlocfilehash: 70269fc71fcb2ef9158b50d3bb281097abee0740
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38991163"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights pro webové stránky
 Zjistěte informace o výkonu a využití webové stránky nebo aplikace. Když přidáte [Application Insights](app-insights-overview.md) do skriptu stránky, získáte časování načtení stránky a volání AJAX, počty a podrobnosti výjimek prohlížeče a selhání AJAX, a také počty uživatelů a relací. Všechny tyto hodnoty mohou být segmentovány podle stránky, klientského operačního systému a verze prohlížeče, zeměpisné polohy a ostatních dimenzí. Můžete nastavit výstrahy na počet selhání nebo pomalé načítání stránky. A vložíte-li do kódu JavaScript trasování volání, můžete sledovat využití různých funkcí aplikace webové stránky.
@@ -56,7 +57,7 @@ V části Rychlý start získáte skript pro webové stránky:
 
 ```HTML
 <!-- 
-To collect end-user usage analytics about your application, 
+To collect user behavior analytics about your application, 
 insert the following script into each page you want to track.
 Place this code immediately before the closing </head> tag,
 and before any other scripts. Your first data will appear 
@@ -126,7 +127,7 @@ Otevřete okno prohlížeče zobrazující agregovaná data výkonu z prohlíže
 
 ![Na stránce portal.azure.com otevřete prostředek vaší aplikace a klikněte na tlačítko Nastavení, Prohlížeč](./media/app-insights-javascript/03.png)
 
-*Žádná data? V horní části stránky klikněte na **Obnovit**. Stále nic? Viz [Poradce při potížích](app-insights-troubleshoot-faq.md).*
+Žádná data? V horní části stránky klikněte na **Obnovit**. Stále nic? Viz [Poradce při potížích](app-insights-troubleshoot-faq.md).
 
 Okno prohlížeče je [okno Průzkumníka metrik](app-insights-metrics-explorer.md) s přednastavenými filtry a výběry grafu. Pokud chcete, můžete upravit časové rozmezí, filtry a konfiguraci grafu a uložit výsledek jako oblíbenou položku. Klikněte na tlačítko **Obnovit výchozí nastavení** a vraťte se zpět do původní konfigurace okna.
 
@@ -235,7 +236,7 @@ Název stránky může obsahovat stejné znaky jako adresa URL, ale cokoli za �
 ## <a name="usage-tracking"></a>Sledování využití
 Chcete zjistit, co uživatelé provádějí s vaší aplikací?
 
-* [Další informace o sledování využití](app-insights-web-track-usage.md)
+* [Další informace o nástrojích pro analýzu chování uživatele](app-insights-web-track-usage.md)
 * [Další informace o vlastních událostech a metrikách rozhraní API](app-insights-api-custom-events-metrics.md).
 
 ## <a name="video"></a> Video

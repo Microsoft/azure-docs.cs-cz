@@ -1,37 +1,37 @@
 ---
-title: Jak používat Azure mapy mapový ovládací prvek | Microsoft Docs
-description: Další informace o použití knihovny Javascript klienta Azure mapy mapový ovládací prvek.
-author: kgremban
-ms.author: kgremban
+title: Jak používat mapový ovládací prvek Azure Maps | Dokumentace Microsoftu
+description: Zjistěte, jak použít knihovnu Javascript na straně klienta Azure Maps mapového ovládacího prvku.
+author: dsk-2015
+ms.author: dkshir
 ms.date: 05/07/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 0b0549e7a7ea6389597e483f239a75743a96fef1
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 228d2d3331b510a0f07dbd3ca278715466d747af
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36317960"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38988887"
 ---
-# <a name="how-to-use-the-azure-maps-map-control"></a>Jak používat Azure mapy mapový ovládací prvek
-Knihovna Javascript na straně klienta mapový ovládací prvek umožňuje vykreslení mapy a vložené funkce Azure mapy do webové nebo mobilních aplikací. 
+# <a name="how-to-use-the-azure-maps-map-control"></a>Jak používat mapový ovládací prvek Azure Maps
+Knihovna Javascript na straně klienta mapový ovládací prvek umožňuje vykreslit mapy a vložené funkce Azure Maps do vašich webových nebo mobilních aplikací. 
 
-## <a name="create-a-new-map-in-a-web-page"></a>Vytvořit nové mapování na webové stránce
+## <a name="create-a-new-map-in-a-web-page"></a>Vytvoření nové mapy na webové stránce
 
-Mapu můžete vložit na webové stránce pomocí knihovny Javascript klienta mapový ovládací prvek.
+Mapě můžete vložit na webové stránce pomocí knihovny Javascript na straně klienta mapový ovládací prvek.
 
-1. Vytvořte nový soubor s názvem MapSearch.html.
+1. Vytvořte nový soubor a pojmenujte ho MapSearch.html.
 
-2. Přidejte odkazy Azure mapy šablony stylů a skript zdroje do `<head>` element souboru:
+2. Azure Maps šablony stylů a skripty zdroje do přidejte odkazy `<head>` prvek souboru:
 
     ```html
     <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/css/atlas.min.css?api-version=1.0" type="text/css" />
     <script src="https://atlas.microsoft.com/sdk/js/atlas.min.js?api-version=1.0"></script>
     ```
     
-3. K vykreslení nové mapování v prohlížeči, přidejte **#map** odkaz v `<style>` elementu.
+3. K vykreslení v prohlížeči nové mapování, přidejte **#map** odkazovat v `<style>` elementu.
 
     ```html
     #map {
@@ -40,7 +40,7 @@ Mapu můžete vložit na webové stránce pomocí knihovny Javascript klienta ma
             }
     ``` 
     
-4. Chcete-li inicializovat mapový ovládací prvek, zadejte novou část v těle html a vytvořit skript. Použijte vlastní klíč účtu Azure mapy ve skriptu. Pokud potřebujete k vytvoření účtu nebo vyhledání vašeho klíče najdete v tématu [jak spravovat váš účet Azure mapy a klíče](how-to-manage-account-keys.md)
+4. Abyste inicializovali mapový ovládací prvek, definujte nový oddíl v textu html a vytvořit skript. Ve skriptu použijte vlastní klíč účtu Azure Maps. Pokud potřebujete k vytvoření účtu služby nebo najít vaše klíče najdete v tématu [jak spravovat účet Azure Maps a klíčů](how-to-manage-account-keys.md)
 
     ```html
     <div id="map">
@@ -55,11 +55,11 @@ Mapu můžete vložit na webové stránce pomocí knihovny Javascript klienta ma
     </div>
     ```
     
-5. Otevřete soubor ve webovém prohlížeči a zobrazit vykreslené mapy.
+5. Otevřete soubor ve webovém prohlížeči a zobrazení vykreslené mapy.
 
 ## <a name="next-steps"></a>Další postup
 
-Tento článek ukázal, jak vytvořit základní mapu s klíč Azure mapy. Další příklady kódu pro přidání do vaší mapy najdete v následujících článcích: 
+Tento článek vám ukázali, jak vytvořit základní mapu klíčem Azure Maps. Další příklady kódu pro přidání do vaše mapy najdete v následujících článcích: 
 
 * [Vytvoření mapy](map-create.md)
-* [Přidání kódu pin](map-add-pin.md)
+* [Přidání špendlíku](map-add-pin.md)

@@ -2,20 +2,20 @@
 
 | Oblast              | Maximální počet domén selhání  |
 |---------------------|-------------------------|
-| Východ USA             | 3                       |
+| USA – východ             | 3                       |
 | Východní USA 2           | 3                       |
-| Západní USA             | 3                       |
-| Západní USA 2           | 2                       |
-| Střed USA          | 3                       |
+| USA – západ             | 3                       |
+| USA – západ 2           | 2                       |
+| USA – střed          | 3                       |
 | Střed USA – sever    | 3                       |
 | Střed USA – jih    | 3                       |
 | Západní střed USA     | 2                       |
-| Střední Kanada      | 3                      |
-| Východní Kanada         | 2                       |
+| Kanada – střed      | 3                      |
+| Kanada – východ         | 2                       |
 |                     |                         |
 | Severní Evropa        | 3                       |
 | Západní Evropa         | 3                       |
-| Spojené království – jih            | 2                       |
+| Velká Británie – jih            | 2                       |
 | Spojené království – západ             | 2                       |
 |                     |                         |
 | Východní Asie           | 2                       |
@@ -25,8 +25,8 @@
 | Indie – jih         | 2                       |
 | Střed Indie       | 2                       |
 | Indie – západ          | 2                       |
-| Korea – střed       | 2                       |
-| Korea – jih         | 2                       |
+| Jižní Korea – střed       | 2                       |
+| Jižní Korea – jih         | 2                       |
 |                     |                         |
 | Austrálie – východ      | 2                       |
 | Austrálie – jihovýchod | 2                       |

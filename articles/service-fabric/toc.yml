@@ -215,6 +215,10 @@
               href: service-fabric-image-store-connection-string.md
         - name: Prostředky služby
           href: service-fabric-service-manifest-resources.md
+        - name: Pravidelné zálohování a obnovení
+          items:
+            - name: Principy konfigurace pravidelného zálohování
+              href: service-fabric-backuprestoreservice-configure-periodic-backup.md
     - name: Clustery
       href: service-fabric-deploy-anywhere.md
       items:

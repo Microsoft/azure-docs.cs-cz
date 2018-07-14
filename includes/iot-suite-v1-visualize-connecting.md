@@ -26,7 +26,7 @@
 
     ![Zobrazení historie metod][img-method-history]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Článek [Přizpůsobení předkonfigurovaných řešení][lnk-customize] popisuje některé způsoby, kterými jde tuto ukázku rozšířit. Mezi možná rozšíření patří skutečné senzory a implementace dalších příkazů.
 
 Další informace o [oprávněních najdete na webu azureiotsuite.com][lnk-permissions].

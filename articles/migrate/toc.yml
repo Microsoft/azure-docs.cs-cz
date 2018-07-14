@@ -22,7 +22,7 @@
       items:
         - name: 1. Contoso – Přehled migrace
           href: contoso-migration-overview.md
-        - name: 2. Contoso –Nastavení infrastruktury Azure
+        - name: 2. Contoso – Nasazení infrastruktury Azure
           href: contoso-migration-infrastructure.md
         - name: 3. Contoso – Posouzení vhodnosti místních prostředků k migraci do Azure
           href: contoso-migration-assessment.md
@@ -30,7 +30,7 @@
           href: contoso-migration-rehost-vm-sql-managed-instance.md
         - name: 5. Contoso – Změna hostitele aplikace pro virtuální počítače Azure
           href: contoso-migration-rehost-vm.md
-        - name: 6. Contoso – Změna hostitele aplikace pro virtuální počítače Azure a Azure SQL AlwaysOn
+        - name: 6. Contoso – Změna hostitele aplikace pro virtuální počítače Azure a skupiny dostupnosti AlwaysOn Azure SQL Serveru
           href: contoso-migration-rehost-vm-sql-ag.md
         - name: 7. Contoso – Změna hostitele linuxové aplikace na virtuálních počítačích Azure
           href: contoso-migration-rehost-linux-vm.md
@@ -42,7 +42,7 @@
           href: contoso-migration-refactor-linux-app-service-mysql.md
         - name: 11. Contoso – Migrace TFS do VSTS
           href: contoso-migration-tfs-vsts.md
-        - name: 12. Contoso – Změna architektury aplikace ve službě Azure Service Fabric a Azure SQL Database
+        - name: 12. Contoso – Změna architektury aplikace ve službě Azure Containers a Azure SQL Database
           href: contoso-migration-rearchitect-container-sql.md
         - name: 13. Contoso – Opětovné sestavení aplikace v Azure
           href: contoso-migration-rebuild.md

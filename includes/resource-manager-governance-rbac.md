@@ -9,22 +9,22 @@ ms.date: 02/16/2018
 ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: b4b06119b9d46781b967fc8d98808c60d2b41ccb
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31433245"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38753645"
 ---
-Chcete Ujistěte se, že uživatelé ve vaší organizaci mají správnou úroveň přístupu na tyto prostředky. Nechcete, aby uživatelům udělit neomezený přístup, ale musíte také zkontrolujte, zda že mohou provádět práci. Řízení přístupu na základě role (RBAC) umožňuje spravovat uživatele, kteří mají oprávnění k dokončení určitých akcí u oboru. Role definuje sadu povolených akcí. Obor přiřazení role a zadat uživatele, kteří patří do této role pro obor.
+Potřebujete zajistit, aby uživatelé ve vaší organizaci měli správnou úroveň přístupu k těmto prostředkům. Nechcete uživatelům dát neomezený přístup, ale zároveň jim potřebujete umožnit dělat svou práci. Řízení přístupu na základě role (RBAC) umožňuje spravovat, kteří mají oprávnění k provedení určité akce v oboru. Roli definuje sadu povolených akcí. Přiřazení role do oboru a určit, kteří uživatelé patří do této role pro obor.
 
-Při plánování strategie řízení přístupu, udělte uživatelům nejnižší oprávnění k práci. Následující obrázek znázorňuje navrhované vzor přiřazení RBAC.
+Při plánování vaší strategie řízení přístupu, udělte nejnižší úrovně oprávnění plnit svoje uživatele. Následující obrázek ukazuje navrhovaný model pro přiřazení RBAC.
 
 ![Rozsah](./media/resource-manager-governance-rbac/role-examples.png)
 
-Existují tři role, které platí pro všechny prostředky - vlastník, Přispěvatel a čtečky. Všechny účty přiřazené k roli vlastníka by měl být důkladné kontrole a je používána zřídka. Uživatelům, kteří potřebují jenom sledovat stav řešení, je třeba poskytnout role Čtenář.
+Existují tři role, které se vztahují na všechny prostředky – vlastník, Přispěvatel a čtenář. Všechny účty přiřazené role vlastníka by měla podléhat důkladné kontrole a zřídka se používá. Uživatelé, kteří potřebují pouze sledovat stav řešení udělení role čtenáře.
 
-Většina uživatelů jsou udělena [rolím pro konkrétní prostředky](../articles/role-based-access-control/built-in-roles.md) nebo [vlastní role](../articles/role-based-access-control/custom-roles.md) na úrovni skupiny předplatné nebo prostředek. Tyto role úzce definovat povolené akce. Přiřadit uživatele k tyto role, udělíte požadovaný přístup pro uživatele bez umožňující příliš mnoho ovládacího prvku. Účet můžete přiřadit více než jedné role, a tento uživatel získá kombinované oprávnění rolí. Udělení přístupu na úrovni prostředků je často příliš omezující pro uživatele, ale může fungovat pro automatizovaný proces určené pro konkrétní úlohu.
+Většina uživatelů jsou udělena [rolím pro konkrétní prostředky](../articles/role-based-access-control/built-in-roles.md) nebo [vlastní role](../articles/role-based-access-control/custom-roles.md) na úrovni skupiny prostředků nebo předplatného. Pracovníci v těchto rolích úzce definovat povolených akcí. Prostřednictvím přiřazování uživatelů do těchto rolí, udělit požadovaný přístup pro uživatele bez povolení příliš velkou kontrolu. Účet můžete přiřadit k více než jednu roli a tento uživatel získá kombinované oprávnění z rolí. Udělení přístupu na úrovni prostředků je často příliš omezující pro uživatele, ale může fungovat pro automatizovaný proces určený pro konkrétní úlohu.
 
 ### <a name="who-can-assign-roles"></a>Přiřazování rolí
 
-Vytvoření a odeberte přiřazení rolí, uživatelé musí mít `Microsoft.Authorization/roleAssignments/*` přístup. Tento přístup je poskytována prostřednictvím role vlastníka nebo správce uživatelského přístupu.
+K vytváření a odebírání přiřazení rolí musí mít uživatelé přístup `Microsoft.Authorization/roleAssignments/*`. Tento přístup se poskytuje prostřednictvím role vlastníka nebo správce uživatelských přístupů.

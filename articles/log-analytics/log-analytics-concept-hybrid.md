@@ -1,6 +1,6 @@
 ---
-title: Shromažďování dat z prostředí s nástrojem Azure Log Analytics | Microsoft Docs
-description: Toto téma vám pomůže pochopit postup shromažďování dat a monitorování počítačů, které jsou hostovány v místní nebo jiné prostředí cloudu s analýzy protokolů.
+title: Shromažďování dat z vašeho prostředí pomocí Azure Log Analytics | Dokumentace Microsoftu
+description: Toto téma vám pomůže pochopit postupy shromažďování dat a monitorování počítačů hostované v místním nebo jiné cloudové prostředí pomocí služby Log Analytics.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -12,60 +12,60 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/07/2018
+ms.date: 07/11/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: a13c83fc0d35be1aec87cb5f2d2b19b0bf27f1bf
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 2a21c7867bf0dd2d6ca6ee0bd9025739315c8d0a
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37132873"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39003314"
 ---
-# <a name="collect-data-from-computers-in-your-environment-with-log-analytics"></a>Shromažďovat data z počítačů ve vašem prostředí s analýzy protokolů
+# <a name="collect-data-from-computers-in-your-environment-with-log-analytics"></a>Shromažďování dat z počítačů ve vašem prostředí s využitím Log Analytics
 
-Azure Log Analytics můžete shromažďovat a provádění akcí na data z Windows nebo Linux počítačů umístěných v:
+Azure Log Analytics můžete shromažďovat a reagovat na data z Windows nebo Linuxem počítačů, které se nacházejí v:
 
-* [Virtuální počítače Azure](log-analytics-quick-collect-azurevm.md) pomocí rozšíření virtuálního počítače analýzy protokolů 
-* Vašem datovém centru jako fyzických serverech nebo virtuálních počítačů
-* Virtuální počítače ve službě hostovaných v cloudu jako Amazon Web Services (AWS)
+* [Virtuální počítače Azure](log-analytics-quick-collect-azurevm.md) pomocí rozšíření Log Analytics pro virtuální počítač 
+* Vaše datové centrum jako fyzických serverech nebo virtuálních počítačů
+* Virtuální počítače v cloudové službě, například Amazon Web Services (AWS)
 
-Počítače, které jsou hostované ve vašem prostředí může být přímo připojen k analýze protokolů, nebo pokud jste již monitorujete tyto počítače se System Center Operations Manager 2012 R2, 2016 nebo verze 1801, můžete provést integraci Operations spravovat skupiny pro správu s Přihlaste se Analytics a dále udržovat procesy operations vaše IT služeb.  
+Počítačích hostovaných ve vašem prostředí můžete přímo připojené ke službě Log Analytics, nebo pokud už monitorujete tyto počítače pomocí System Center Operations Manager 2012 R2, 2016, nebo můžete integrovat verzi 1801 vaší skupině správy Operations Manageru s Log Analytics a dále udržovat vaše procesy operací služeb IT.  
 
 ## <a name="overview"></a>Přehled
 
 ![log-analytics-agent-direct-connect-diagram](media/log-analytics-concept-hybrid/log-analytics-on-prem-comms.png)
 
-Před analýza a funguje na shromážděná data, musíte nejprve nainstalovat a připojit agentů pro všechny počítače, které chcete odesílat data do služby analýzy protokolů. Můžete nainstalovat agenty na místní počítače pomocí instalačního programu, příkazového řádku nebo pomocí požadovaného stavu konfigurace (DSC) ve službě Azure Automation. 
+Před analýzy a funguje shromážděných dat, musíte nejprve nainstalovat a připojení agentů pro všechny počítače, které chcete odesílat data do služby Log Analytics. Můžete nainstalovat agenty na počítače v místním prostředí pomocí instalačního programu, příkazového řádku, nebo s Desired State Configuration (DSC) ve službě Azure Automation. 
 
-Agenta pro Linux a Windows komunikuje přes port 443 protokolu TCP odchozí službou analýzy protokolů a pokud se počítač připojí k serveru brány firewall nebo proxy server komunikovat přes Internet, přečtěte si [v části předpoklady](#prerequisites) na Porozumějte konfiguraci sítě požadované.  Pokud vaše zásady zabezpečení IT neumožňují počítače v síti pro připojení k Internetu, můžete nastavit [OMS brány](log-analytics-oms-gateway.md) a pak nakonfigurujte agenta připojit přes bránu k analýze protokolů. Agent pak může přijímat informace o konfiguraci a odesílat data shromážděná v závislosti na tom, jaká pravidla shromažďování dat a řešení, které jste povolili. 
+Agenta pro Linux a Windows komunikuje přes TCP port 443 odchozí ke službě Log Analytics a pokud se počítač připojí k serveru brány firewall nebo proxy server komunikovat přes Internet, přečtěte si [v oddílu Požadavky](#prerequisites) do Vysvětlení požadované konfigurace sítě.  Pokud se zásady zabezpečení IT neumožňují počítače v síti pro připojení k Internetu, můžete nastavit [bránu OMS](log-analytics-oms-gateway.md) a potom nakonfigurujte agenta připojit přes bránu do Log Analytics. Agenta můžete zobrazit informace o konfiguraci a odeslat data shromážděná v závislosti na tom, jaká pravidla shromažďování dat a řešeními, která jste povolili. 
 
-Pokud sledujete počítači pomocí System Center 2016 - Operations Manager nebo Operations Manager 2012 R2, může být vícedomé službou analýzy protokolů pro shromažďování dat a předání do služby a bude i nadále monitorovat pomocí [nástroje Operations Manager ](log-analytics-om-agents.md). Počítače se systémem Linux monitorovány podle skupiny pro správu nástroje Operations Manager integrovaný s analýzy protokolů neobdrží konfigurace pro zdroje dat a dál shromážděná data prostřednictvím skupiny pro správu. Agent služby Windows může hlásit až čtyři pracovní prostory, zatímco agenta systému Linux podporuje pouze do jednoho pracovního prostoru generování sestav.  
+Pokud monitorování počítače pomocí System Center 2016 – Operations Manager nebo Operations Manager 2012 R2, může být s více adresami pomocí služby Log Analytics pro shromažďování dat a předat službě a stále má sledovat [nástroje Operations Manager ](log-analytics-om-agents.md). Počítače se systémem Linux monitorovány podle skupiny pro správu nástroje Operations Manager integrovaný s Log Analytics neobdrží konfigurace pro zdroje dat a předat dál shromážděná data prostřednictvím skupiny pro správu. Windows agent může hlásit až čtyři pracovní prostory, zatímco agenta pro Linux podporuje jenom sestavy do jednoho pracovního prostoru.  
 
-Agenta pro Linux a Windows není jenom pro připojení k analýze protokolů, ale také podporuje Azure Automation hostitelů role pracovního procesu Hybrid Runbook a řešení pro správu jako je sledování změn a Správa aktualizací.  Další informace o roli hybridní pracovní proces Runbooku najdete v tématu [Azure Automation Hybrid Runbook Worker](../automation/automation-hybrid-runbook-worker.md).  
+Agenta pro Linux a Windows není jenom pro připojení ke službě Log Analytics, ale také podporuje Azure Automation k hostiteli role pracovního procesu Hybrid Runbook a správu řešení, jako je řešení Change Tracking a Update Management.  Další informace o roli pracovního procesu Hybrid Runbook Worker, naleznete v tématu [Azure Automation Hybrid Runbook Worker](../automation/automation-hybrid-runbook-worker.md).  
 
 ## <a name="supported-windows-operating-systems"></a>Podporované operační systémy Windows
-Pro agenta Windows oficiálně jsou podporovány následující verze operačního systému Windows:
+Pro agenta Windows se oficiálně podporuje následující verze operačního systému Windows:
 
 * Windows Server 2008 Service Pack 1 (SP1) nebo novější
 * Windows 7 SP1 a novější.
 
-> [!NOTE]
-> Agenta pro Windows podporuje jenom zabezpečení TLS (Transport Layer) 1.0 a 1.1.  
-
-## <a name="supported-linux-operating-systems"></a>Podporované operační systémy Linux
-Následující Linuxových distribucích jsou oficiálně podporované.  Agenta systému Linux mohou však spustit také na dalších distribuce, které nejsou uvedené.  Pokud není uvedeno jinak, jsou podporovány všechny verze menší pro každou hlavní verzi uvedené.  
+## <a name="supported-linux-operating-systems"></a>Podporované operační systémy a Linux
+Následující Linuxových distribucích se oficiálně podporuje.  Agenta pro Linux může také spustit na jiné distribuce není uvedená.  Pokud není uvedeno jinak, jsou podporovány všechny dílčí verze pro všechny hlavní verze uvedené.  
 
 * Linux Amazon 2012.09 k 2015.09 (x86/x64)
-* CentOS Linux 5, 6 a 7 (x86/x64)  
+* Linux centOS 5, 6 a 7 (x86/x64)  
 * Oracle Linux 5, 6 a 7 (x86/x64) 
 * Red Hat Enterprise Linux Server 5, 6 a 7 (x86/x64)
 * Debian GNU/Linux 6, 7 a 8 (x86/x64)
 * Ubuntu 12.04 LTS, 14.04 LTS, 16.04 LTS (x86/x64)
 * SUSE Linux Enterprise Server 11 a 12 (x86/x64)
 
-## <a name="network-firewall-requirements"></a>Požadavky na brány firewall sítě
-Informace o následující seznam konfigurace proxy a firewall informace požadované pro Linux a Windows agenta pro komunikaci s analýzy protokolů.  
+## <a name="tls-12-protocol"></a>Protokol TLS 1.2
+– Pomáhat zajistit zabezpečení dat při přenosu do služby Log Analytics, důrazně doporučujeme, abyste ke konfiguraci agenta pro použití s alespoň zabezpečení TLS (Transport Layer) 1.2. Starší verze z protokolu TLS/Secure Sockets Layer (SSL) bylo zjištěno ohrožen a stále aktuálně fungují povolit zpětnou kompatibilitu, ale jsou **ale nedoporučený krok**.  Další informace najdete v tématu [odesílání dat pomocí protokolu TLS 1.2](log-analytics-data-security.md#sending-data-securely-using-tls-12). 
+
+## <a name="network-firewall-requirements"></a>Požadavky na bránu firewall sítě
+Informace o pod seznamem proxy a firewallu informace o konfiguraci vyžadované pro systémy Linux a Windows agenta ke komunikaci se službou Log Analytics.  
 
 |Prostředek agenta|Porty |Směr |Obejít kontrolu protokolu HTTPS|
 |------|---------|--------|--------|   
@@ -75,43 +75,43 @@ Informace o následující seznam konfigurace proxy a firewall informace požado
 |*.azure-automation.net |Port 443 |Příchozí a odchozí|Ano |  
 
 
-Pokud máte v plánu používat Azure Automation Hybrid Runbook Worker pro připojení k a zaregistrovat službu automatizace použití sad runbook ve vašem prostředí, musí mít přístup k číslo portu a adresy URL popisované v [konfigurace sítě pro Hybridní pracovní proces Runbooku](../automation/automation-hybrid-runbook-worker.md#network-planning). 
+Pokud budete chtít použít Azure Automation Hybrid Runbook Worker a připojte se k registraci ve službě Automation použití sad runbook ve vašem prostředí, musí mít přístup k portu a adresy URL popisované v [konfigurace sítě pro zajištění Funkce hybrid Runbook Worker](../automation/automation-hybrid-runbook-worker.md#network-planning). 
 
-Agent Windows a Linux podporuje komunikaci prostřednictvím serveru proxy nebo brány OMS ke službě Analýza protokolů pomocí protokolu HTTPS.  Anonymní i základní ověřování (uživatelské jméno a heslo) jsou podporovány.  Pro připojení přímo ke službě Windows agent je konfiguraci proxy serveru zadané během instalace nebo [po nasazení](log-analytics-agent-manage.md#update-proxy-settings) v Ovládacích panelech nebo v prostředí PowerShell.  
+Agent Windows a Linuxu podporuje komunikaci prostřednictvím serveru proxy nebo bránou OMS ke službě Log Analytics pomocí protokolu HTTPS.  Jsou podporovány anonymní i základní ověřování (uživatelské jméno/heslo).  Pro připojení přímo ke službě Windows agenta konfiguraci proxy serveru zadané během instalace nebo [po nasazení](log-analytics-agent-manage.md#update-proxy-settings) v Ovládacích panelech nebo pomocí Powershellu.  
 
-Pro agenta systému Linux, je proxy serveru zadané během instalace nebo [po instalaci](/log-analytics-agent-manage.md#update-proxy-settings) úpravou konfiguračního souboru proxy.conf.  Hodnota konfigurace proxy agenta systému Linux má následující syntaxi:
+Pro linuxového agenta proxy serveru zadané během instalace nebo [po instalaci](/log-analytics-agent-manage.md#update-proxy-settings) úpravou konfiguračního souboru proxy.conf.  Hodnota konfigurace proxy agenta systému Linux má následující syntaxi:
 
 `[protocol://][user:password@]proxyhost[:port]`
 
 > [!NOTE]
-> Pokud proxy server nevyžaduje ověření, agenta systému Linux stále vyžaduje zadání pseudo uživatele nebo hesla. To může být jakékoli uživatelské jméno nebo heslo.
+> Pokud váš proxy server nevyžaduje ověření, agenta pro Linux ještě vyžaduje poskytnutí pseudo uživatele a hesla. To může být libovolné uživatelské jméno nebo heslo.
 
 |Vlastnost| Popis |
 |--------|-------------|
 |Protocol (Protokol) | https |
-|uživatel | Volitelné uživatelské jméno pro ověření proxy serverem |
+|uživatel | Volitelné uživatelské jméno pro ověřování proxy serveru |
 |heslo | Volitelné heslo pro ověření proxy serverem |
-|proxyhost | Adresa nebo plně kvalifikovaný název domény serveru nebo OMS proxy serveru brány |
-|port | Číslo portu volitelné pro server/OMS proxy serveru brány |
+|proxyhost | Adresa nebo plně kvalifikovaný název domény serveru/OMS proxy serveru brány |
+|port | Volitelné nastavení portu pro server/OMS proxy serveru brány |
 
 Příklad: `https://user01:password@proxy01.contoso.com:30443`
 
 > [!NOTE]
-> Pokud používáte speciální znaky, jako "\@" heslo, obdržíte chybu připojení proxy vzhledem k tomu, že je správně analyzovat hodnotu.  Chcete-li tento problém obejít, kódovat heslo v adrese URL pomocí některého nástroje, jako třeba [URLDecode](https://www.urldecoder.org/).  
+> Pokud používáte speciální znaky, jako "\@" své heslo, obdržíte chybu připojení proxy server vzhledem k tomu, že hodnota je analyzovat.  Chcete-li tento problém obejít, kódování heslo v adrese URL, pomocí nástroje, jako například [URLDecode](https://www.urldecoder.org/).  
 
 ## <a name="install-and-configure-agent"></a>Instalace a konfigurace agenta 
-Připojení místní počítače přímo k Log Analytics lze provést různými způsoby v závislosti na vaše požadavky. V následující tabulce jsou vysvětlené každé metody, který nejlépe fungovat ve vaší organizaci.
+Připojení místních počítačů přímo k Log Analytics můžete provést pomocí různých metod v závislosti na vašich požadavcích. V této tabulce najdete jednotlivé metody k určení, který nejlépe fungovat ve vaší organizaci.
 
 |Zdroj | Metoda | Popis|
 |-------|-------------|-------------|
-| Počítač s Windows|- [Ruční instalace](log-analytics-agent-windows.md)<br>- [Azure Automation DSC.](log-analytics-agent-windows.md#install-the-agent-using-dsc-in-azure-automation)<br>- [Šablony správce prostředků Azure zásobníkem](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/MicrosoftMonitoringAgent-ext-win) |Nainstalujte agenta Microsoft Monitoring z příkazového řádku nebo pomocí metody automatizované například Azure Automation DSC, [System Center Configuration Manager](https://docs.microsoft.com/sccm/apps/deploy-use/deploy-applications), nebo pomocí šablony Azure Resource Manager, pokud jste nasadili Microsoft Azure zásobníku ve vašem datovém centru.| 
-|Počítač s Linuxem| [Ruční instalace](log-analytics-quick-collect-linux-computer.md)|Nainstalujte agenta pro Linux volání skript obálku hostované na Githubu. | 
-| System Center Operations Manager|[Integrace nástroje Operations Manager s analýzy protokolů](log-analytics-om-agents.md) | Konfigurace integrace mezi nástrojem Operations Manager a analýzy protokolů pro předávání shromažďovat data z počítačů se systémy Linux a Windows zprávy skupinu pro správu.|  
+| Počítač s Windows|- [Ruční instalace](log-analytics-agent-windows.md)<br>- [Azure Automation DSC](log-analytics-agent-windows.md#install-the-agent-using-dsc-in-azure-automation)<br>- [Šablony Resource Manageru pomocí služby Azure Stack](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/MicrosoftMonitoringAgent-ext-win) |Nainstalujte Microsoft Monitoring agent z příkazového řádku nebo pomocí automatizovaného metody jako je Azure Automation DSC, [System Center Configuration Manager](https://docs.microsoft.com/sccm/apps/deploy-use/deploy-applications), nebo pomocí šablony Azure Resource Manageru, pokud jste nasadili Microsoft Azure Stack ve vašem datovém centru.| 
+|Počítač s Linuxem| [Ruční instalace](log-analytics-quick-collect-linux-computer.md)|Instalace agenta pro Linux volání skript obálky hostovaná na Githubu. | 
+| System Center Operations Manager|[Integrace Operations Manageru s Log Analytics](log-analytics-om-agents.md) | Konfigurace integrace mezi Operations Managerem a Log Analytics, aby předával data shromážděná z počítačů se systémy Linux a Windows odesílajících sestavy do skupiny pro správu.|  
 
 ## <a name="next-steps"></a>Další postup
 
-* Zkontrolujte [zdroje dat](log-analytics-data-sources.md) pochopit zdroje dat, která je k dispozici ke shromažďování dat ze systému Windows nebo Linux. 
+* Kontrola [zdroje dat](log-analytics-data-sources.md) pochopit zdroje dat dostupné pro shromažďování dat ze systému Windows nebo Linux. 
 
-* Další informace o [protokolu hledání](log-analytics-log-searches.md) analyzovat data shromážděná ze zdrojů dat a řešení. 
+* Další informace o [prohledávání protokolů](log-analytics-log-searches.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení. 
 
-* Další informace o [řešení](log-analytics-add-solutions.md) , přidání funkce do analýzy protokolů a také shromažďovat data do úložiště OMS.
+* Další informace o [řešení](log-analytics-add-solutions.md) , které doplňují do Log Analytics a také shromažďovat data v úložišti OMS.

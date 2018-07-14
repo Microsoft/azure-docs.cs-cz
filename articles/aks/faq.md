@@ -1,61 +1,51 @@
 ---
-title: Nejčastější dotazy pro Azure Kubernetes Service
-description: Poskytuje odpovědi na některé běžné otázky o Azure Kubernetes Service.
+title: Nejčastější dotazy ke službě Azure Kubernetes
+description: Poskytuje odpovědi na některé běžné dotazy týkající se služby Azure Kubernetes Service.
 services: container-service
 author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 6/25/2018
+ms.date: 07/11/2018
 ms.author: iainfou
-ms.openlocfilehash: ffd81835de82cc5a00b3f6705a7607a51bb3bfa0
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 915f74df69596b1677a0e03770e076ae50efc609
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37096447"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39001241"
 ---
-# <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Nejčastější dotazy o Azure Kubernetes služby (AKS)
+# <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Nejčastější dotazy o Azure Kubernetes Service (AKS)
 
-Tento článek adresy časté otázky o Azure Kubernetes služby (AKS).
+Tento článek adresy časté otázky o Azure Kubernetes Service (AKS).
 
-## <a name="which-azure-regions-provide-the-azure-kubernetes-service-aks-today"></a>Které oblasti Azure ještě dnes poskytovat služby Kubernetes Azure (AKS)?
+## <a name="which-azure-regions-provide-the-azure-kubernetes-service-aks-today"></a>Které oblasti Azure, které poskytuje Azure Kubernetes Service (AKS) ještě dnes?
 
-- Austrálie – východ
-- Střední Kanada
-- Východní Kanada
-- Střed USA
-- Východ USA
-- Východní US2
-- Severní Evropa
-- Spojené království – jih
-- Západní Evropa
-- Západní USA
-- Západní USA 2
+Viz služby Azure Kubernetes Service [oblasti a dostupnost] [ aks-regions] dokumentaci úplný seznam.
 
-## <a name="are-security-updates-applied-to-aks-agent-nodes"></a>Platí pro uzly agenta AKS aktualizace zabezpečení?
+## <a name="are-security-updates-applied-to-aks-agent-nodes"></a>Jsou aktualizace zabezpečení použít pro uzly AKS agenta?
 
-Azure automaticky použije opravy zabezpečení pro uzly v clusteru na noční plánu. Ale jste zodpovědní za zajištění, že uzly se restartují podle potřeby. Máte několik možností pro provádění restartování uzlu:
+Azure automaticky aplikuje na uzly v clusteru na noční plán oprav zabezpečení. Ale, budete muset zajistit, že uzly se restartují podle potřeby. Máte několik možností, jak k provádění restartování uzlu:
 
-- Ručně prostřednictvím portálu Azure nebo Azure CLI.
-- Upgradem AKS clusteru. Upgrade clusteru automaticky [cordon a vyprazdňování uzlů](https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/), aby byly zálohování nejnovější Ubuntu Image. Aktualizovat bitovou kopii operačního systému na uzly beze změny Kubernetes verze zadáním aktuální verze clusteru v `az aks upgrade`.
-- Pomocí [Kured](https://github.com/weaveworks/kured), Kubernetes démon procesu restartování open source. Kured běží jako [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) a sleduje každý uzel pro přítomnost souboru, která udává, že je vyžadován restart. Potom ji orchestruje restartování napříč clusterem, stejné cordon a vyprazdňování proces popsaný výše.
+- Ručně pomocí webu Azure portal nebo rozhraní příkazového řádku Azure.
+- Díky upgradu clusteru AKS. Inovace clusteru automaticky [kordon a výpusť uzly](https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/), přenést jejich zálohování s použitím nejnovější image Ubuntu. Aktualizace image operačního systému na svých uzlech beze změny tak, že zadáte v aktuální verzi clusteru Kubernetes verze `az aks upgrade`.
+- Pomocí [Kured](https://github.com/weaveworks/kured), open source restartování démona pro Kubernetes. Kured pracuje jako [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) a sleduje každý uzel pro přítomnost souboru, která udává, že je vyžadován restart. Potom orchestruje restartování v clusteru stejné cordon a proces vyprazdňování popsané výše.
 
-## <a name="does-aks-support-node-autoscaling"></a>Podporuje AKS automatické škálování uzlu?
+## <a name="does-aks-support-node-autoscaling"></a>AKS podporuje automatické škálování uzlů?
 
-Ano, je k dispozici prostřednictvím automatického škálování [Kubernetes autoscaler] [ auto-scaler] od Kubernetes 1.10.
+Ano, je k dispozici prostřednictvím automatické škálování [Kubernetes automatického] [ auto-scaler] od Kubernetes 1.10.
 
 ## <a name="does-aks-support-kubernetes-role-based-access-control-rbac"></a>Podporuje AKS Kubernetes řízení přístupu na základě role (RBAC)?
 
-Ano, RBAC lze povolit v případě, že nasazení clusteru služby AKS z rozhraní příkazového řádku Azure nebo Azure Resource Manager šablony. Tato funkce bude brzy se k portálu Azure.
+Ano, je možné povolit RBAC při nasazování clusteru AKS pomocí šablony Azure Resource Manageru nebo rozhraní příkazového řádku Azure. Tato funkce brzy přijde na webu Azure portal.
 
-## <a name="what-kubernetes-admission-controllers-does-aks-support-can-this-be-configured"></a>Jaké řadiče jejich příchodu Kubernetes AKS podporuje? Může to být nakonfigurované?
+## <a name="what-kubernetes-admission-controllers-does-aks-support-can-this-be-configured"></a>Jaké řadiče jejich příchodu Kubernetes AKS podporuje? Lze to nakonfigurovat?
 
 AKS podporuje následující [jejich příchodu řadiče][admission-controllers]:
 
 * NamespaceLifecycle
 * LimitRanger
-* Účet_služby
+* ServiceAccount
 * DefaultStorageClass
 * DefaultTolerationSeconds
 * MutatingAdmissionWebhook
@@ -64,29 +54,34 @@ AKS podporuje následující [jejich příchodu řadiče][admission-controllers]
 * DenyEscalatingExec
 * AlwaysPullImages
 
-Není aktuálně možné upravit seznam řadičů jejich příchodu v AKS.
+Není aktuálně možné upravit seznam jejich příchodu řadiče ve službě AKS.
 
-## <a name="can-i-deploy-aks-into-my-existing-virtual-network"></a>Můžete nasadit AKS do mé existující virtuální síť?
+## <a name="can-i-deploy-aks-into-my-existing-virtual-network"></a>Můžete nasadit AKS do existující virtuální síť?
 
-Ano, můžete nasadit do existující virtuální sítě pomocí clusteru služby AKS [Pokročilá síťové funkce](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/aks/networking-overview.md).
+Ano, můžete nasadit cluster AKS do existující virtuální sítě pomocí [rozšířeného sítě funkce](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/aks/networking-overview.md).
 
-## <a name="is-azure-key-vault-integrated-with-aks"></a>Azure Key Vault integrovat AKS?
+## <a name="is-azure-key-vault-integrated-with-aks"></a>Azure Key Vault integrovaná AKS?
 
-AKS není nativně integrované s Azure Key Vault v tuto chvíli. Existují však komunity řešení, jako jsou [acs-keyvault agenta z Hexadite][hexadite].
+AKS není nativně integrovaná s Azure Key Vault v tuto chvíli. Existují však komunitních řešení jako [acs-keyvault agenta z Hexadite][hexadite].
 
-## <a name="can-i-run-windows-server-containers-on-aks"></a>Můžete spustit systém Windows Server kontejnery na AKS?
+## <a name="can-i-run-windows-server-containers-on-aks"></a>Můžete spustit kontejnery Windows serveru v AKS
 
-Pokud chcete spustit Windows Server kontejnery, musíte spustit uzly se systémem Windows Server. Nyní nejsou k dispozici v AKS Windows serverových uzlů. Pokud potřebujete spustit systém Windows Server kontejnery na Kubernetes v Azure, přejděte na téma [dokumentace pro modul služby acs](https://github.com/Azure/acs-engine/blob/master/docs/kubernetes/windows.md).
+Pro spouštění kontejnerů Windows serveru, budete muset spustit uzly se systémem Windows Server. V tuto chvíli nejsou k dispozici ve službě AKS Windows serverových uzlů. Můžete však použít Virtual Kubelet můžete plánovat kontejnery Windows v Azure Container Instances a spravovat je jako součást clusteru AKS. Další informace najdete v tématu [Virtual Kubelet použití službou AKS][virtual-kubelet].
 
-## <a name="why-are-two-resource-groups-created-with-aks"></a>Proč jsou dvě skupiny prostředků vytvořené pomocí AKS?
+## <a name="why-are-two-resource-groups-created-with-aks"></a>Proč jsou dvě skupiny prostředků vytvořené službou AKS?
 
-Každé nasazení AKS zahrnuje dvě skupiny prostředků. První je vytvořené vámi a obsahuje pouze Kubernetes prostředek služby. Zprostředkovatel prostředků AKS automaticky vytvoří druhý během nasazení s názvem, jako je *MC_myResourceGroup_myAKSCluster_eastus*. Druhý skupina prostředků obsahuje všechny prostředky infrastruktury spojené s clusterem, jako jsou virtuální počítače, sítě a úložiště. Vytváří se ke zjednodušení vyčištění prostředků.
+Každé nasazení služby AKS zahrnuje dvě skupiny prostředků. První je vytvořené a obsahuje pouze příslušný prostředek služby Kubernetes. Poskytovateli prostředků pro AKS automaticky vytvoří druhou během nasazení s názvem jako *MC_myResourceGroup_myAKSCluster_eastus*. Druhý skupina prostředků obsahuje všechny prostředky infrastruktury přidružené ke clusteru, jako jsou virtuální počítače, sítě a úložiště. Vytvoří se pro zjednodušení vyčištění prostředků.
 
-Pokud vytváříte prostředky, které budou použity s AKS cluster, například účty úložiště nebo vyhrazené veřejné IP adresy, měli byste je umístit ve skupině automaticky generované prostředků.
+Při vytváření prostředků, které se použije pro cluster AKS, jako je například účty úložiště nebo vyhrazené veřejné IP adrese, měli byste je umístit do skupiny prostředků pro automaticky generované.
 
 ## <a name="does-aks-offer-a-service-level-agreement"></a>Nabízí AKS smlouvu o úrovni služeb?
 
-Smlouvy o úrovni služeb (SLA) zprostředkovatele souhlasí uhradit zákazník nákladů na služby by neměl být splněny úrovně publikované služby. Totiž volné AKS sám sebe není k dispozici uhradit bez nákladů a proto žádné formální SLA. Ale jsme snaží zachovat dostupnost alespoň podmínku 99.5 % serveru Kubernetes rozhraní API.
+Smlouvy o úrovni služeb (SLA) zprostředkovatele souhlasí uhradit odběratele pro ceny služby by neměl být splněny úroveň publikované služby. AKS, samotného je zdarma, je zdarma k dispozici a afilacím odpovídajícím a proto žádné formální smlouvu SLA. Ale jsme se snaží zachovat dostupnost minimálně 99,5 % serveru Kubernetes API.
+
+<!-- LINKS - internal -->
+
+[aks-regions]: ./container-service-quotas.md
+[virtual-kubelet]: virtual-kubelet.md
 
 <!-- LINKS - external -->
 [auto-scaler]: https://github.com/kubernetes/autoscaler

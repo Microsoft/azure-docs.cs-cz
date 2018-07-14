@@ -279,6 +279,9 @@
           items: null
         - name: Load Data Lake Storage Gen2
           href: load-azure-data-lake-storage-gen2.md
+          items:
+            - name: Kopírování ze služby Data Lake Storage Gen1
+              href: load-azure-data-lake-storage-gen2-from-gen1.md
         - name: Načtení služby Azure SQL Data Warehouse
           href: load-azure-sql-data-warehouse.md
         - name: Načtení služby Data Lake Storage Gen1

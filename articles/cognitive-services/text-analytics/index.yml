@@ -1,0 +1,70 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Dokumentace k rozhraní Text Analytics API
+metadata:
+  title: Dokumentace k rozhraní Text Analytics API – kurzy, reference k rozhraní API – Azure Cognitive Services | Microsoft Docs
+  description: Zjistěte, jak provádět pokročilé zpracování textu přirozeného jazyka pomocí rozhraní API pro analýzu textu. Kurzy vám ukážou, jak psát kód, který využívá službu Analýza textu.
+  services: cognitive-services
+  author: HeidiSteen
+  manager: cgronlun
+  layout: LandingPage
+  ms.service: cognitive-services
+  ms.component: text-analytics
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 03/07/2018
+  ms.author: heidist
+  ms.openlocfilehash: aee5b1c47d3db4f630c528707f03d175e52c2c4f
+  ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 07/11/2018
+  ms.locfileid: "38398628"
+abstract:
+  description: 'Rozhraní API pro analýzu textu je cloudová služba, která poskytuje rozšířené zpracování přirozeného jazyka pro nezpracovaný text a zahrnuje tři hlavní funkce: analýzu mínění, extrakci klíčových frází a rozpoznávání jazyka. Pomocí našich šablon Rychlý start, kurzů a ukázek se naučíte různými způsoby analyzovat obsah.'
+sections:
+- title: Zprovoznění během 5 minut
+  items:
+  - type: paragraph
+    text: 'Začněte používat rozhraní API pro analýzu textu při detekci jazyka, analýze mínění a extrakci klíčových frází:'
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: media/index/logo_csharp.svg
+      text: C&#35;
+      href: quickstarts/csharp
+    - image:
+        src: media/index/logo_java.svg
+      text: Java
+      href: quickstarts/java
+    - image:
+        src: media/index/logo_nodejs.svg
+      text: Node.js
+      href: quickstarts/nodejs
+    - image:
+        src: media/index/logo_python.svg
+      text: Python
+      href: quickstarts/python
+    - image:
+        src: media/index/logo_go.svg
+      text: Přejít
+      href: quickstarts/go
+- title: Podrobné kurzy
+  items:
+  - type: paragraph
+    text: 'Naučte se vyvíjet aplikace s využitím rozhraní API pro analýzu textu:'
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="tutorials/tutorial-power-bi-key-phrases.md">Analýza textu s využitím Power BI</a>
+    - html: <a href="https://powerapps.microsoft.com/tutorials/cognitive-services-api/">Analýza textu v PowerApps</a>
+- title: Referenční informace
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: REST
+      html: <p><a href="https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7">Referenční materiály k rozhraní API</a></p>

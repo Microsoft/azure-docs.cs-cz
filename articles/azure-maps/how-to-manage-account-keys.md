@@ -1,23 +1,23 @@
 ---
-title: Jak spravovat váš účet Azure mapy a klíče | Microsoft Docs
-description: Můžete spravovat váš účet Azure mapy a spravovat klíče pro přístup k portálu Azure.
-author: kgremban
-ms.author: kgremban
+title: Jak spravovat účet Azure Maps a klíče | Dokumentace Microsoftu
+description: Na webu Azure portal můžete použít ke správě vašeho účtu Azure Maps a správě přístupových klíčů.
+author: dsk-2015
+ms.author: dkshir
 ms.date: 05/07/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 153fb87b0e2b576fd67a24bb833165f2a1c93c56
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 38926cc42b44e61bd83f6b1e33946a9026cda06d
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34599656"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38989397"
 ---
-# <a name="how-to-manage-your-azure-maps-account-and-keys"></a>Jak spravovat váš účet Azure mapy a klíče
+# <a name="how-to-manage-your-azure-maps-account-and-keys"></a>Jak spravovat účet Azure Maps a klíčů
 
-Můžete spravovat váš účet Azure mapy a klíči prostřednictvím portálu Azure. Až budete mít účtu a klíč, můžete implementovat rozhraní API na webu nebo v mobilní aplikaci.
+Můžete spravovat váš účet Azure Maps a klíče na webu Azure portal. Jakmile budete mít účtu a klíč, můžete implementovat rozhraní API webu nebo mobilní aplikace.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -33,22 +33,22 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ![Zadejte informace o účtu na portálu](./media/how-to-manage-account-keys/new-account-portal.png)
 
-## <a name="manage-keys-on-the-account-page"></a>Správa klíčů na stránku účtu
+## <a name="manage-keys-on-the-account-page"></a>Spravovat klíče na stránce účtu
 
-Po vytvoření účtu, zobrazí se dva náhodně generované klíče. Pomocí kláves k ověřování na základě rozhraní API map Pokud chcete načíst data mapy nebo vytvořit novou instanci mapy JavaScript. 
+Po vytvoření účtu získáte náhodně vygenerované dva klíče. Pomocí kláves k ověřování na základě mapy rozhraní API, pokud chcete načíst data mapy nebo vytvořte novou instanci mapy jazyka JavaScript. 
 
-Svých klíčů můžete najít na portálu Azure. Přejděte na svůj účet a vyberte položku **klíče** z nabídky.
+Svoje klíče najdete na webu Azure Portal. Přejděte ke svému účtu a vyberte **klíče** z nabídky.
 
-![Správa klíčů k účtu na portálu](./media/how-to-manage-account-keys/account-keys-portal.png)
+![Správa klíčů účtu na portálu](./media/how-to-manage-account-keys/account-keys-portal.png)
 
-Z této stránky můžete zkopírovat klíče nebo generovat nové. 
+Na této stránce můžete zkopírovat vaše klíče nebo generovat nové značky. 
 
 ## <a name="delete-an-account"></a>Odstranit účet
 
-Odstranění účtu z portálu Azure. Přejděte na stránku přehled účtu a vyberte **odstranit**.
+Odstranit účet na webu Azure Portal. Přejděte na stránku přehled účtu a vyberte **odstranit**.
 
 ![Odstranění účtu na portálu](./media/how-to-manage-account-keys/account-delete-portal.png)
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o použití [mapuje rozhraní API pro správu](https://docs.microsoft.com/rest/api/maps-management/accounts) Pokud chcete vytvořit, aktualizovat a odstranit účty mapy. 
+Další informace o použití [mapy rozhraní API pro správu](https://docs.microsoft.com/rest/api/maps-management/accounts) k vytvoření, aktualizace a odstranění účtů Maps. 

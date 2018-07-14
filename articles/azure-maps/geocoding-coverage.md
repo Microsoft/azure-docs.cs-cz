@@ -1,27 +1,27 @@
 ---
-title: Geografické kódování pokrytí ve službě Azure Maps | Microsoft Docs
-description: Další informace o určování zeměpisných souřadnic pokrytí v Azure mapy
-author: kgremban
-ms.author: kgremban
+title: Zajištění geokódování ve službě Azure Maps | Dokumentace Microsoftu
+description: Další informace o zajištění Geokódování ve službě Azure Maps
+author: dsk-2015
+ms.author: dkshir
 ms.date: 05/07/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 6602453abd02bf91b135980b4d2c7f99ba60c236
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d7c1eaa26edef830ca156eef943fcb256d737d77
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34600285"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38989873"
 ---
-# <a name="azure-maps-geocoding-coverage"></a>Azure pokrytí geografické kódování mapy
+# <a name="azure-maps-geocoding-coverage"></a>Zajištění geokódování Azure Maps
 
-Při hledání umístění s Azure mapy, službu vyhledávání trvá termíny a vrátí souřadnice zeměpisné šířky a délky procesu označovaného jako geografické kódování. Mapy však nemá stejnou úroveň informací a přesnost pro všechny oblasti a zemích. Pomocí tohoto článku můžete určit, jaký druh umístění můžete spolehlivě vyhledat v každé oblasti. 
+Při hledání umístění s Azure Maps, vyhledávací služba přebírá hledané termíny a vrací procesu nazývaného geokódování souřadnice zeměpisné šířky a délky. Mapy, ale nemá stejnou úroveň informací a přesnost pro všechny oblasti a země. V tomto článku použijte k určení, jaký druh umístění můžete spolehlivě vyhledat v jednotlivých oblastech. 
 
 ## <a name="americas"></a>Amerika
 
-| Oblast             | Adresa body | Úklidové čísla | Ulice úroveň | Úroveň Město | Vás zajímá |
+| Oblast             | Adresa body | Čísla House | Ulice úroveň | Na úrovni města | Body zájmu |
 |-----------------------------------------------------|:---------------:|:--------------:|:------------:|:----------:|:------------------:|
 | Anguilla                                            |                 |                |              |      ✓     |          ✓         |
 | Antarktida                                          |                 |                |              |      ✓     |          ✓         |
@@ -66,10 +66,10 @@ Při hledání umístění s Azure mapy, službu vyhledávání trvá termíny a
 | Svatý Bartoloměj                                    |                 |                |       ✓      |      ✓     |          ✓         |
 | Svatý Kryštof a Nevis                               |                 |                |       ✓      |      ✓     |          ✓         |
 | Svatá Lucie                                         |                 |                |              |      ✓     |          ✓         |
-| Svatý Martin                                        |                 |                |       ✓      |      ✓     |          ✓         |
+| Svatý Martin (Francie)                                        |                 |                |       ✓      |      ✓     |          ✓         |
 | Svatý Pierre a Miquelon|                 |                |       ✓      |      ✓     |          ✓         |
 | Svatý Vincenc a Grenadiny                    |                 |                |              |      ✓     |          ✓         |
-| Svatý Martin                                        |                 |                |       ✓      |      ✓     |          ✓         |
+| Svatý Martin (Nizozemsko)                                        |                 |                |       ✓      |      ✓     |          ✓         |
 | Jižní Georgie a Jižní Sandwichovy ostrovy        |                 |                |              |      ✓     |          ✓         |
 | Surinam                                            |                 |                |              |      ✓     |          ✓         |
 | Trinidad a Tobago                                 |                 |                |       ✓      |      ✓     |          ✓         |
@@ -77,12 +77,12 @@ Při hledání umístění s Azure mapy, službu vyhledávání trvá termíny a
 | Spojené státy americké                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Uruguay                                             |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Venezuela                                           |                 |                |       ✓      |      ✓     |          ✓         |
-| Panenské ostrovy - britské                            |                 |                |              |      ✓     |          ✓         |
-| Panenské ostrovy - Czech Republic                      |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| Panenské ostrovy – britské                            |                 |                |              |      ✓     |          ✓         |
+| Panenské ostrovy – Spojené státy                      |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 
 ## <a name="asia-pacific"></a>Asie a Tichomoří
 
-| Oblast             | Adresa body |Úklidové čísla | Ulice úroveň | Úroveň Město | Vás zajímá |
+| Oblast             | Adresa body |Čísla House | Ulice úroveň | Na úrovni města | Body zájmu |
 |-----------------------------------------------------|:---------------:|:--------------:|:------------:|:----------:|:------------------:|
 | Americká Samoa                                      |                 |                |       ✓      |      ✓     |          ✓         |
 | Austrálie                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
@@ -118,7 +118,7 @@ Při hledání umístění s Azure mapy, službu vyhledávání trvá termíny a
 | Severní Mariany                            |                 |                |       ✓      |      ✓     |          ✓         |
 | Pákistán                                            |                 |                |              |      ✓     |          ✓         |
 | Palau |                 |                |              |      ✓     |          ✓         |
-| Papua-Nová Guinea                                    |                 |                |              |      ✓     |          ✓         |
+| Papua - Nová Guinea                                    |                 |                |              |      ✓     |          ✓         |
 | Paracel ostrovy                                     |                 |                |              |      ✓     |                    |
 | Filipíny                                         |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Pitcairn                                            |                 |                |              |      ✓     |          ✓         |
@@ -142,7 +142,7 @@ Při hledání umístění s Azure mapy, službu vyhledávání trvá termíny a
 
 ## <a name="europe"></a>Evropa
 
-| Oblast             | Adresa body |Úklidové čísla | Ulice úroveň | Úroveň Město | Vás zajímá |
+| Oblast             | Adresa body |Čísla House | Ulice úroveň | Na úrovni města | Body zájmu |
 |-----------------------------------------------------|:---------------:|:--------------:|:------------:|:----------:|:------------------:|
 | Albánie                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Andorra                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
@@ -169,7 +169,7 @@ Při hledání umístění s Azure mapy, službu vyhledávání trvá termíny a
 | Guernsey                                            |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Maďarsko                                             |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Island                                             |                 |        ✓       |       ✓      |      ✓     |          ✓         |
-| Irsku (republika)                               |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| Irsko (republika)                               |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Ostrov Man                                         |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Itálie                                               |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Jan Mayen                                           |        ✓        |                |              |      ✓     |          ✓         |
@@ -211,7 +211,7 @@ Při hledání umístění s Azure mapy, službu vyhledávání trvá termíny a
 
 ## <a name="middle-east-and-africa"></a>Střední východ a Afrika
 
-| Oblast             | Adresa body |Úklidové čísla | Ulice úroveň | Úroveň Město | Vás zajímá |
+| Oblast             | Adresa body |Čísla House | Ulice úroveň | Na úrovni města | Body zájmu |
 |-----------------------------------------------------|:---------------:|:--------------:|:------------:|:----------:|:------------------:|
 | Afghánistán                                         |                 |                |              |      ✓     |          ✓         |
 | Alžírsko                                             |                 |                |       ✓      |      ✓     |          ✓         |
@@ -231,7 +231,7 @@ Při hledání umístění s Azure mapy, službu vyhledávání trvá termíny a
 | Demokratická republika Kongo                        |                 |                |       ✓      |      ✓     |          ✓         |
 | Džibuti                                            |                 |                |       ✓      |      ✓     |          ✓         |
 | Egypt                                               |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Rovníkové Guinejská, republika                      |                 |                |       ✓      |      ✓     |          ✓         |
+| Rovníková Guinea, republika                      |                 |                |       ✓      |      ✓     |          ✓         |
 | Eritrea                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Etiopie                                            |                 |                |       ✓      |      ✓     |          ✓         |
 | Francouzská jižní území|                 |                |              |      ✓     |          ✓         |
@@ -279,13 +279,13 @@ Při hledání umístění s Azure mapy, službu vyhledávání trvá termíny a
 | Súdán                                               |                 |                |       ✓      |      ✓     |          ✓         |
 | Svazijsko                                           |                 |                |       ✓      |      ✓     |          ✓         |
 | Sýrie                                               |                 |                |              |      ✓     |          ✓         |
-| Svatý Tomáš a Princův ostrov, demokratická republika       |                 |                |       ✓      |      ✓     |          ✓         |
+| Svatý Tomáš a Princův ostrov, Konžská demokratická republika       |                 |                |       ✓      |      ✓     |          ✓         |
 | Tanzanie                                            |                 |                |       ✓      |      ✓     |          ✓         |
 | Togo                                                |                 |                |       ✓      |      ✓     |          ✓         |
 | Tunisko                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Uganda                                              |                 |                |       ✓      |      ✓     |          ✓         |
 | Spojené arabské emiráty                                |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Banka – západ                                           |                 |                |              |      ✓     |          ✓         |
+| Západní břeh                                           |                 |                |              |      ✓     |          ✓         |
 | Jemen                                               |                 |                |              |      ✓     |          ✓         |
 | Zambie                                              |                 |                |       ✓      |      ✓     |          ✓         |
 | Zimbabwe                                            |                 |                |       ✓      |      ✓     |          ✓         |
@@ -294,7 +294,7 @@ Při hledání umístění s Azure mapy, službu vyhledávání trvá termíny a
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o určování zeměpisných souřadnic mapy Azure najdete v tématu [vyhledávání](https://docs.microsoft.com/rest/api/maps/search) referenční stránky.
+Další informace o Azure Maps geokódování, najdete v článku [hledání](https://docs.microsoft.com/rest/api/maps/search) odkazují na stránky.
 
-Další informace o [pokrytí oblasti pro mapy provozu služby](traffic-coverage.md). 
+Další informace o [pokrytí oblastí pro mapy provozu služby](traffic-coverage.md). 
 

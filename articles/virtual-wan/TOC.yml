@@ -1,0 +1,34 @@
+- name: Dokumentace k virtuální síti WAN
+  href: index.yml
+- name: Přehled
+  items:
+    - name: Informace o virtuální síti WAN
+      href: virtual-wan-about.md
+- name: Kurzy
+  items:
+    - name: Vytvoření připojení typu Site-to-Site
+      href: virtual-wan-site-to-site-portal.md
+- name: Návody
+  items:
+    - name: Konfigurace automatizace – partneři sítě WAN
+      href: virtual-wan-configure-automation-providers.md
+- name: Referenční informace
+  items:
+    - name: REST
+      href: /rest/api/azure
+- name: Zdroje a prostředky
+  items:
+    - name: Nejčastější dotazy
+      href: virtual-wan-faq.md
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/?category=networking'
+    - name: Blog
+      href: 'https://azure.microsoft.com/blog/topics/networking'
+    - name: Omezení služeb a předplatných
+      href: ../azure-subscription-service-limits.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/vpn-gateway'
+    - name: Cenová kalkulačka
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: SLA
+      href: 'https://azure.microsoft.com/support/legal/sla'

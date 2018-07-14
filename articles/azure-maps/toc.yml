@@ -4,7 +4,7 @@
   href: index.yml
 - name: Přehled
   items:
-    - name: Informace o službě Azure Maps
+    - name: Co je služba Azure Maps?
       href: about-azure-maps.md
 - name: Šablony Rychlý start
   items:
@@ -22,22 +22,10 @@
   items:
     - name: Úrovně přiblížení a mřížka dlaždic
       href: zoom-levels-and-tile-grid.md
-    - name: Zajištění geokódování
-      href: geocoding-coverage.md
-    - name: Zajištění provozu
-      href: traffic-coverage.md
-    - name: Zajištění vykreslování
-      href: render-coverage.md
-    - name: Zajištění směrování
-      href: routing-coverage.md
     - name: Podporované kategorie hledání
       href: supported-search-categories.md
     - name: Podporované jazyky
       href: supported-languages.md
-    - name: Model spotřeby
-      href: consumption-model.md
-    - name: Rozšíření geoJSON
-      href: extend-geojson.md
 - name: Návody
   items:
     - name: Správa účtů Maps
@@ -76,6 +64,22 @@
           href: map-accessibility.md
 - name: Referenční informace
   items:
+    - name: Pokrytí služeb
+      items:
+        - name: Geokódování
+          href: geocoding-coverage.md
+        - name: Provoz
+          href: traffic-coverage.md
+        - name: Vykreslování
+          href: render-coverage.md
+        - name: Směrování
+          href: routing-coverage.md
+    - name: Rozšíření rozhraní API a parametrů
+      items:
+        - name: Model spotřeby vozidel
+          href: consumption-model.md
+        - name: Rozšířený formát geoJSON
+          href: extend-geojson.md
     - name: REST
       items:
         - name: Služba Render
@@ -139,4 +143,4 @@
     - name: Technické případové studie
       href: 'https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured'
     - name: Videa
-      href: 'https://azure.microsoft.com/documentation/videos'
+      href: 'https://iotschool.microsoft.com/learning-paths/4ZktHn3KEUIiUw64C0Aieo'

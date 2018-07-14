@@ -1,20 +1,20 @@
 <!--created by Robin Shahan to go in the articles for table storage w/powershell.
     There is one for Azure Table Storage and one for Azure Cosmos DB Table API -->
 
-## <a name="managing-table-entities"></a>Správa entity tabulky
+## <a name="managing-table-entities"></a>Správa entit tabulky
 
-Teď, když máte tabulku, podíváme se na tom, jak spravovat entity nebo řádky v tabulce. 
+Teď, když máte tabulku, Podívejme se na tom, jak spravovat entity nebo řádky v tabulce. 
 
-Entita může mít maximálně 255 vlastnosti, včetně 3 Vlastnosti systému: **PartitionKey**, **RowKey**, a **časové razítko**. Jste zodpovědní za vložení a aktualizace hodnoty **PartitionKey** a **RowKey**. Server spravuje hodnotu **časové razítko**, který nemůže být upraven. Společně **PartitionKey** a **RowKey** jednoznačně identifikovat každou entitu v tabulce.
+Entita může mít maximálně 255 vlastnosti, včetně 3 Vlastnosti systému: **PartitionKey**, **RowKey**, a **časové razítko**. Zodpovídáte za vkládání a aktualizacích hodnoty **PartitionKey** a **RowKey**. Server spravuje hodnotu **časové razítko**, která nelze upravit. Společně **PartitionKey** a **RowKey** jednoznačně identifikovat každou entitu v tabulce.
 
-* **PartitionKey**: Určuje uložených entity v oddílu.
-* **RowKey**: jednoznačně identifikuje entity v oddílu.
+* **PartitionKey**: Určuje oddíl, který entitu je uložen v.
+* **RowKey**: jednoznačně identifikují entitu v rámci oddílu.
 
-Můžete definovat vlastní až 252 vlastností entity. 
+Můžete definovat až 252 vlastností vlastní entity. 
 
-### <a name="add-table-entities"></a>Přidání entity tabulky
+### <a name="add-table-entities"></a>Přidání tabulky entit
 
-Přidání entity do tabulky pomocí **přidat StorageTableRow**. Tyto příklady použití klíče oddílů s hodnotami "Oddíl1" a "Oddíl2" a řádek klíče rovna zkratky stavu. Vlastnosti v každé entity jsou uživatelské jméno a ID uživatele. 
+Přidání entity do tabulky pomocí **přidat StorageTableRow**. Tyto příklady používají klíče oddílů s hodnotami "Oddíl1" a "Oddíl2" a klíče řádku rovna zkratky států. Vlastnosti v každé entity jsou uživatelské jméno a ID uživatele. 
 
 ```powershell
 $partitionKey1 = "partition1"
@@ -42,30 +42,30 @@ Add-StorageTableRow `
     -rowKey ("TX") -property @{"username"="Steven";"userid"=4}
 ```
 
-### <a name="query-the-table-entities"></a>Dotaz na entity tabulky
+### <a name="query-the-table-entities"></a>Dotaz na tabulku entity
 
 Existuje několik různých způsobů dotazování entity v tabulce.
 
 #### <a name="retrieve-all-entities"></a>Načtení všech entit
 
-Pro načtení všech entit, použijte **Get-AzureStorageTableRowAll**.
+Pokud chcete načíst všechny entity, použijte **Get-AzureStorageTableRowAll**.
 
 ```powershell
 Get-AzureStorageTableRowAll -table $storageTable | ft
 ```
 
-Tento příkaz dává výsledky podobně jako v následující tabulce:
+Tento příkaz vrátí výsledky, podobně jako v následující tabulce:
 
 | ID uživatele | uživatelské jméno | oddíl | rowkey |
 |----|---------|---------------|----|
-| 1 | Jan | Oddíl1 | CA |
+| 1 | Chris | Oddíl1 | CA |
 | 3 | Jana | Oddíl1 | WA |
-| 2 | Klára | Oddíl2 | NM |
+| 2 | Jessie | Oddíl2 | NM |
 | 4 | Steven | Oddíl2 | TX |
 
 #### <a name="retrieve-entities-for-a-specific-partition"></a>Načtení entit u konkrétního oddílu
 
-Pro načtení všech entit v konkrétní oddílu, použijte **Get-AzureStorageTableRowByPartitionKey**.
+Pokud chcete načíst všechny entity v konkrétního oddílu, použijte **Get-AzureStorageTableRowByPartitionKey**.
 
 ```powershell
 Get-AzureStorageTableRowByPartitionKey -table $storageTable -partitionKey $partitionKey1 | ft
@@ -74,12 +74,12 @@ Výsledky vypadat podobně jako v následující tabulce:
 
 | ID uživatele | uživatelské jméno | oddíl | rowkey |
 |----|---------|---------------|----|
-| 1 | Jan | Oddíl1 | CA |
+| 1 | Chris | Oddíl1 | CA |
 | 3 | Jana | Oddíl1 | WA |
 
-#### <a name="retrieve-entities-for-a-specific-value-in-a-specific-column"></a>Načtení entit pro konkrétní hodnoty v určitém sloupci
+#### <a name="retrieve-entities-for-a-specific-value-in-a-specific-column"></a>Načtení entit pro určitou hodnotu v konkrétním sloupci
 
-Pro načtení entit, kde hodnota ve sloupci konkrétní rovná určitou hodnotu, použijte **Get-AzureStorageTableRowByColumnName**.
+Pro načtení entit, kde se hodnota v konkrétním sloupci rovná určitou hodnotu, použijte **Get-AzureStorageTableRowByColumnName**.
 
 ```powershell
 Get-AzureStorageTableRowByColumnName -table $storageTable `
@@ -90,16 +90,16 @@ Get-AzureStorageTableRowByColumnName -table $storageTable `
 
 Tento dotaz načte jeden záznam.
 
-|Pole|hodnota|
+|pole|hodnota|
 |----|----|
 | ID uživatele | 1 |
-| uživatelské jméno | Jan |
+| uživatelské jméno | Chris |
 | PartitionKey | Oddíl1 |
 | RowKey      | CA |
 
-#### <a name="retrieve-entities-using-a-custom-filter"></a>Načtení entit pomocí vlastního filtru 
+#### <a name="retrieve-entities-using-a-custom-filter"></a>Načtení entity pomocí vlastního filtru 
 
-Pro načtení entit pomocí vlastního filtru, použijte **Get-AzureStorageTableRowByCustomFilter**.
+Chcete-li načíst entity pomocí vlastního filtru, použijte **Get-AzureStorageTableRowByCustomFilter**.
 
 ```powershell
 Get-AzureStorageTableRowByCustomFilter `
@@ -109,18 +109,18 @@ Get-AzureStorageTableRowByCustomFilter `
 
 Tento dotaz načte jeden záznam.
 
-|Pole|hodnota|
+|pole|hodnota|
 |----|----|
 | ID uživatele | 1 |
-| uživatelské jméno | Jan |
+| uživatelské jméno | Chris |
 | PartitionKey | Oddíl1 |
 | RowKey      | CA |
 
 ### <a name="updating-entities"></a>Aktualizace entit 
 
-Existují tři kroky pro aktualizaci entity. Nejdřív načtěte entity, která má změnit. Za druhé proveďte požadovanou změnu. Třetí, potvrzení změn pomocí **aktualizace AzureStorageTableRow**.
+Existují tři kroky pro aktualizaci entity. Nejdřív načtěte entitu, chcete-li změnit. Za druhé proveďte požadovanou změnu. Třetí, potvrzení změn pomocí **aktualizace AzureStorageTableRow**.
 
-Aktualizace entity s uživatelským jménem = 'Klára' mít uživatelské jméno = 'Jessie2'. Tento příklad také ukazuje další způsob, jak vytvořit vlastní filtr pomocí typy .NET. 
+Aktualizovat entitu s uživatelským jménem = "Jessie" mít uživatelské jméno = "Jessie2". Tento příklad také uvádí dalším způsobem, jak vytvořit vlastní filtr pomocí typy .NET. 
 
 ```powershell
 # Create a filter and get the entity to be updated.
@@ -142,22 +142,22 @@ Get-AzureStorageTableRowByCustomFilter -table $storageTable `
     -customFilter "(username eq 'Jessie2')"
 ```
 
-Výsledky zobrazit Jessie2 záznamu.
+Ve výsledcích zobrazí Jessie2 záznamu.
 
-|Pole|hodnota|
+|pole|hodnota|
 |----|----|
 | ID uživatele | 2 |
 | uživatelské jméno | Jessie2 |
 | PartitionKey | Oddíl2 |
 | RowKey      | NM |
 
-### <a name="deleting-table-entities"></a>Odstranění entity tabulky
+### <a name="deleting-table-entities"></a>Odstraňuje se tabulka entity
 
-Můžete odstranit jednu entitu nebo všechny entity v tabulce.
+Můžete odstranit jednu entitu nebo pro všechny entity v tabulce.
 
-#### <a name="deleting-one-entity"></a>Odstraňování jedné entity
+#### <a name="deleting-one-entity"></a>Odstranění entit
 
-Pokud chcete odstranit jedné entity, získat odkaz na dané entity a zřetězit ho do **odebrat AzureStorageTableRow**.
+Pokud chcete odstranit jednu entitu, získáte odkaz na dané entitě a zřetězit ho do **odebrat AzureStorageTableRow**.
 
 ```powershell
 # Set filter.
@@ -177,7 +177,7 @@ Get-AzureStorageTableRowAll -table $storageTable | ft
 
 #### <a name="delete-all-entities-in-the-table"></a>Odstranit všechny entity v tabulce 
 
-Pokud chcete odstranit všechny entity v tabulce, je znovu načíst a přesměrováním výsledky do rutiny odebrat. 
+Pokud chcete odstranit všechny entity v tabulce, načítat a kanálem výsledky do rutiny remove. 
 
 ```powershell
 # Get all rows and pipe the result into the remove cmdlet.

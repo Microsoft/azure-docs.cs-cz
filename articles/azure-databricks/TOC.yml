@@ -31,6 +31,9 @@
       href: 'https://docs.azuredatabricks.net/user-guide/jobs.html'
     - name: Připojení ke zdrojům dat
       href: databricks-connect-to-data-sources.md
+    - name: Použití se službou Azure Data Factory
+      href: ../data-factory/transform-data-using-databricks-notebook.md
+      maintainContext: true
     - name: 'Propojení s využitím Excelu, R a Pythonu'
       href: connect-databricks-excel-python-r.md
     - name: Použití rozhraní příkazového řádku Databricks z Azure Cloud Shellu

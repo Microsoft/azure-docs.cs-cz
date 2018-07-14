@@ -28,6 +28,8 @@
       href: visual-search-sdk-python.md
 - name: Kurzy
   items:
+    - name: Nahrání image s vizuálním vyhledáváním
+      href: tutorial-visual-search-image-upload.md
     - name: Jednostránková webová aplikace
       href: tutorial-bing-visual-search-single-page-app.md
     - name: Jednostránková webová aplikace (zdrojový kód)

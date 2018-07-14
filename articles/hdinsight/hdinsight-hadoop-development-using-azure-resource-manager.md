@@ -1,6 +1,6 @@
 ---
-title: Migrace do nástroje Správce prostředků Azure pro HDInsight | Microsoft Docs
-description: Postup migrace na vývojové nástroje Azure Resource Manageru pro clustery služby HDInsight na
+title: Migrace do nástroje Azure Resource Manageru pro HDInsight | Dokumentace Microsoftu
+description: Migrace do vývojových nástrojů Azure Resource Manageru pro clustery HDInsight
 services: hdinsight
 editor: cgronlun
 manager: jhubbard
@@ -13,98 +13,98 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: 095205752b8432a741aab16983b175c21b02c0f4
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 7234341fd63f4e841ac8d15a51293148d2c60975
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37017866"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39001867"
 ---
-# <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>Migrace na Azure Resource Manager vývojové nástroje založené pro clustery služby HDInsight
+# <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>Migrace do nástroje pro vývoj založených na Azure Resource Manageru pro clustery HDInsight
 
-HDInsight je místo na základě Azure Service Manager ASM nástroje začne pro HDInsight. Pokud používáte prostředí Azure PowerShell, rozhraní příkazového řádku Azure nebo sady SDK rozhraní .NET HDInsight pro práci s clustery HDInsight, můžete se doporučuje používat Azure Resource Manager verze prostředí PowerShell, rozhraní příkazového řádku a .NET SDK do budoucna. Tento článek obsahuje ukazatele na tom, jak migrovat do nového přístupu na základě Resource Manager. Pokud je to potřeba, označuje tento dokument rozdíly mezi možnostmi ASM a správce prostředků pro HDInsight.
+HDInsight je ukončení podpory nástrojů založených na Azure Service Manager ASM pro HDInsight. Pokud používáte prostředí Azure PowerShell, rozhraní příkazového řádku Azure nebo sady HDInsight .NET SDK pro práci s clustery HDInsight, se doporučuje používat Azure Resource Manageru verze prostředí PowerShell, rozhraní příkazového řádku a sady .NET SDK do budoucna. Tento článek obsahuje odkazy na tom, jak migrovat na nový přístup využívající Resource Manager. Bez ohledu na to příslušné, tento dokument zdůrazňuje rozdíly mezi ASM a Resource Manageru přístupy k HDInsight.
 
 > [!IMPORTANT]
-> Podpora pro ASM na základě prostředí PowerShell, rozhraní příkazového řádku, a .NET SDK se ukončí na **1. ledna 2017**.
+> Podpora pro ASM na základě prostředí PowerShell, rozhraní příkazového řádku, a sady .NET SDK se ukončit na **1. ledna 2017**.
 > 
 > 
 
 ## <a name="migrating-azure-cli-to-azure-resource-manager"></a>Migrace rozhraní příkazového řádku Azure do Azure Resource Manageru
 
 > [!IMPORTANT]
-> Azure CLI 2.0 neposkytuje podporu pro práci s clustery HDInsight. Azure CLI 1.0 můžete dál používat s HDInsight, ale Azure CLI 1.0 je zastaralý.
+> Azure CLI 2.0 neposkytuje podporu pro práci s clustery HDInsight. Stále můžete Azure CLI 1.0 s HDInsight, ale příkazového řádku Azure CLI 1.0 je zastaralý.
 
-Zde jsou základní příkazy pro práci s HDInsight pomocí Azure CLI 1.0:
+Tady jsou základní příkazy pro práci s HDInsight prostřednictvím příkazového řádku Azure CLI 1.0:
 
-* `azure hdinsight cluster create` -Vytvoří nový cluster HDInsight
-* `azure hdinsight cluster delete` -Odstraní stávající cluster HDInsight
-* `azure hdinsight cluster show` – Zobrazí informace o stávajícího clusteru
-* `azure hdinsight cluster list` -obsahuje seznam clustery HDInsight pro vaše předplatné Azure
+* `azure hdinsight cluster create` -Vytvoří se nový cluster HDInsight
+* `azure hdinsight cluster delete` -Odstraní existující cluster HDInsight
+* `azure hdinsight cluster show` – zobrazení informací o stávajícího clusteru
+* `azure hdinsight cluster list` -obsahuje seznam clusterů HDInsight pro vaše předplatné Azure
 
-Použití `-h` přepínač tak, aby kontrolovat parametry a přepínače, které jsou k dispozici u každého příkazu.
+Použití `-h` přepínač Zkontrolujte parametry a přepínače, které jsou k dispozici pro každý příkaz.
 
 ### <a name="new-commands"></a>Nové příkazy
-Nové příkazy, které jsou k dispozici s Azure Resource Manager jsou:
+Nové příkazy, které jsou k dispozici pomocí Azure Resource Manageru jsou:
 
-* `azure hdinsight cluster resize` -dynamicky změní počet uzlů pracovního procesu v clusteru
-* `azure hdinsight cluster enable-http-access` – Umožňuje HTTPs přístup ke clusteru (na ve výchozím nastavení)
+* `azure hdinsight cluster resize` -dynamicky změní počet pracovních uzlů v clusteru
+* `azure hdinsight cluster enable-http-access` – Povolí protokol HTTPs přístup ke clusteru (na ve výchozím nastavení)
 * `azure hdinsight cluster disable-http-access` – Zakáže HTTPs přístup ke clusteru
-* `azure hdinsight script-action` -obsahuje příkazy pro vytváření nebo správu akcí skriptů v clusteru
-* `azure hdinsight config` -poskytuje příkazů pro vytvoření konfiguračního souboru, který lze použít s `hdinsight cluster create` příkaz poskytnout informace o konfiguraci.
+* `azure hdinsight script-action` -poskytuje příkazy pro vytváření a správě akcí skriptů v clusteru
+* `azure hdinsight config` – poskytuje pro vytvoření konfigurační soubor, který lze použít s příkazy `hdinsight cluster create` příkaz, který poskytuje informace o konfiguraci.
 
-### <a name="deprecated-commands"></a>Nepoužívané příkazy
-Pokud použijete `azure hdinsight job` příkazy k odesílání úloh do clusteru HDInsight, tyto příkazy nejsou k dispozici prostřednictvím příkazy Resource Manager. Pokud potřebujete prostřednictvím kódu programu odesílání úloh do HDInsight z skriptů, měli byste místo toho použít rozhraní REST API poskytovaných v HDInsight. Další informace o odesílání úloh pomocí rozhraní REST API najdete v následujících dokumentech.
+### <a name="deprecated-commands"></a>Zastaralé příkazy
+Pokud používáte `azure hdinsight job` příkazy odesílat úlohy do clusteru HDInsight, tyto příkazy nejsou k dispozici prostřednictvím příkazy Resource Manageru. Pokud budete potřebovat programově odesílat úlohy do HDInsight pomocí skriptů, abyste používali místo toho rozhraní REST API, které poskytuje HDInsight. Další informace o odesílání úloh pomocí rozhraní REST API najdete v následujících dokumentech.
 
 * [Spuštění úloh MapReduce s Hadoop v HDInsight pomocí cURL](hadoop/apache-hadoop-use-mapreduce-curl.md)
 * [Spouštění dotazů Hive se systémem Hadoop v HDInsight pomocí cURL](hadoop/apache-hadoop-use-hive-curl.md)
 * [Spuštění úlohy Pig s Hadoop v HDInsight pomocí cURL](hadoop/apache-hadoop-use-pig-curl.md)
 
-Informace o jiných způsobech spustit MapReduce, Hive a vepřových interaktivně, najdete v části [používání MapReduce s Hadoop v HDInsight](hadoop/hdinsight-use-mapreduce.md), [používání Hive s Hadoop v HDInsight](hadoop/hdinsight-use-hive.md), a [použijte Pig s Hadoop v HDInsight](hadoop/hdinsight-use-pig.md).
+Informace o dalších způsobech spouštění MapReduce, Hive, Pig interaktivně, naleznete v tématu [použití MapReduce se systémem Hadoop v HDInsight](hadoop/hdinsight-use-mapreduce.md), [použití Hivu s Hadoopem v HDInsight](hadoop/hdinsight-use-hive.md), a [použití Pigu se systémem Hadoop v HDInsight](hadoop/hdinsight-use-pig.md).
 
 ### <a name="examples"></a>Příklady
 **Vytvoření clusteru**
 
-* Příkaz staré (ASM)- `azure hdinsight cluster create myhdicluster --location northeurope --osType linux --storageAccountName mystorage --storageAccountKey <storagekey> --storageContainer mycontainer --userName admin --password mypassword --sshUserName sshuser --sshPassword mypassword`
+* Původního příkazu (ASM)- `azure hdinsight cluster create myhdicluster --location northeurope --osType linux --storageAccountName mystorage --storageAccountKey <storagekey> --storageContainer mycontainer --userName admin --password mypassword --sshUserName sshuser --sshPassword mypassword`
 * Nový příkaz: `azure hdinsight cluster create myhdicluster -g myresourcegroup --location northeurope --osType linux --clusterType hadoop --defaultStorageAccountName mystorage --defaultStorageAccountKey <storagekey> --defaultStorageContainer mycontainer --userName admin -password mypassword --sshUserName sshuser --sshPassword mypassword`
 
 **Odstranění clusteru**
 
-* Příkaz staré (ASM)- `azure hdinsight cluster delete myhdicluster`
+* Původního příkazu (ASM)- `azure hdinsight cluster delete myhdicluster`
 * Nový příkaz: `azure hdinsight cluster delete mycluster -g myresourcegroup`
 
-**Seznam clustery**
+**Výpis clusterů**
 
-* Příkaz staré (ASM)- `azure hdinsight cluster list`
+* Původního příkazu (ASM)- `azure hdinsight cluster list`
 * Nový příkaz: `azure hdinsight cluster list`
 
 > [!NOTE]
-> Pro příkaz seznamu zadání skupiny prostředků pomocí `-g` vrátí pouze clustery v zadaná skupina prostředků.
+> Pro příkaz seznam určující skupinu prostředků pomocí `-g` vrátí pouze clustery v zadané skupině prostředků.
 > 
 > 
 
 **Zobrazit informace o clusteru**
 
-* Příkaz staré (ASM)- `azure hdinsight cluster show myhdicluster`
+* Původního příkazu (ASM)- `azure hdinsight cluster show myhdicluster`
 * Nový příkaz: `azure hdinsight cluster show myhdicluster -g myresourcegroup`
 
-## <a name="migrating-azure-powershell-to-azure-resource-manager"></a>Migrace prostředí Azure PowerShell pro Azure Resource Manager
-Obecné informace o prostředí Azure PowerShell v režimu Azure Resource Manager naleznete na [použití Azure Powershellu s Azure Resource Manager](../powershell-azure-resource-manager.md).
+## <a name="migrating-azure-powershell-to-azure-resource-manager"></a>Migrace do Azure Resource Manageru prostředí Azure PowerShell
+Obecné informace o Azure Powershellu v režimu Azure Resource Manageru najdete v [pomocí Azure Powershellu s Azure Resource Managerem](../powershell-azure-resource-manager.md).
 
-Rutiny Azure PowerShell Resource Manager lze nainstalovat node souběžně s rutiny ASM. Rutiny ze dvou režimů dají rozlišovat podle jejich názvy.  Režim Resource Manager má *AzureRmHDInsight* v porovnání se názvy rutin *AzureHDInsight* v režimu ASM.  Například *New-AzureRmHDInsightCluster* vs. *New-AzureHDInsightCluster*. Názvy zprávy mohou mít parametry a přepínače, a existuje mnoho nových parametrů při použití Správce prostředků.  Například několik rutin vyžadovat nového přepínače názvem *- ResourceGroupName*. 
+Rutiny Azure PowerShell – Resource Manager je možné nainstalovat souběžně s rutinami ASM. Rutiny ze dvou režimů dají rozlišovat podle jejich názvy.  Do režimu Resource Manager má *AzureRmHDInsight* v porovnání s názvy rutin *AzureHDInsight* v režimu ASM.  Například *New-AzureRmHDInsightCluster* vs. *New-AzureHDInsightCluster*. Novinky názvy mohou mít parametry a přepínače, a k dispozici mnoho nových parametrů při použití Resource Manageru.  Například vyžadovat několik rutin nový přepínač s názvem *- ResourceGroupName*. 
 
-Před použitím rutin HDInsight, musíte připojit k účtu Azure a vytvořit novou skupinu prostředků:
+Před použitím rutin HDInsight, musíte připojit ke svému účtu Azure a vytvořte novou skupinu prostředků:
 
-* Připojit AzureRmAccount nebo [vyberte AzureRmProfile](https://msdn.microsoft.com/library/mt619310.aspx). V tématu [ověřování hlavní název služby pomocí Azure Resource Manageru](../azure-resource-manager/resource-group-authenticate-service-principal.md)
+* Connect-AzureRmAccount nebo [rutina Select-AzureRmProfile](https://msdn.microsoft.com/library/mt619310.aspx). Zobrazit [ověřování instančního objektu pomocí Azure Resource Manageru](../azure-resource-manager/resource-group-authenticate-service-principal.md)
 * [New-AzureRmResourceGroup](https://msdn.microsoft.com/library/mt603739.aspx)
 
-### <a name="renamed-cmdlets"></a>Přejmenovat rutiny
-Seznam rutin HDInsight ASM v konzole Windows PowerShell:
+### <a name="renamed-cmdlets"></a>Přejmenované rutiny
+Chcete-li zobrazit seznam rutin HDInsight ASM v konzole Windows Powershellu:
 
     help *azurermhdinsight*
 
-Následující tabulka uvádí rutiny ASM a jejich názvy v režimu Resource Manager:
+Následující tabulka uvádí rutiny ASM a jejich názvy v režimu Resource Manageru:
 
-| Rutiny ASM | Rutiny správce prostředků |
+| Rutiny ASM | Rutiny Resource Manageru |
 | --- | --- |
 | Add-AzureHDInsightConfigValues |[Add-AzureRmHDInsightConfigValues](https://msdn.microsoft.com/library/mt603530.aspx) |
 | Add-AzureHDInsightMetastore |[Add-AzureRmHDInsightMetastore](https://msdn.microsoft.com/library/mt603670.aspx) |
@@ -117,7 +117,7 @@ Následující tabulka uvádí rutiny ASM a jejich názvy v režimu Resource Man
 | Grant-AzureHDInsightHttpServicesAccess |[Grant-AzureRmHDInsightHttpServicesAccess](https://msdn.microsoft.com/library/mt619407.aspx) |
 | Grant-AzureHdinsightRdpAccess |[Grant-AzureRmHDInsightRdpServicesAccess](https://msdn.microsoft.com/library/mt603717.aspx) |
 | Invoke-AzureHDInsightHiveJob |[Invoke-AzureRmHDInsightHiveJob](https://msdn.microsoft.com/library/mt603593.aspx) |
-| New-AzureHDInsightCluster |[New-AzureRmHDInsightCluster](https://msdn.microsoft.com/library/mt619331.aspx) |
+| New-AzureHDInsightCluster |[New-AzureRmHDInsightCluster](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/new-azurermhdinsightcluster) |
 | New-AzureHDInsightClusterConfig |[New-AzureRmHDInsightClusterConfig](https://msdn.microsoft.com/library/mt603700.aspx) |
 | New-AzureHDInsightHiveJobDefinition |[New-AzureRmHDInsightHiveJobDefinition](https://msdn.microsoft.com/library/mt619448.aspx) |
 | New-AzureHDInsightMapReduceJobDefinition |[New-AzureRmHDInsightMapReduceJobDefinition](https://msdn.microsoft.com/library/mt603626.aspx) |
@@ -135,26 +135,26 @@ Následující tabulka uvádí rutiny ASM a jejich názvy v režimu Resource Man
 | Wait-AzureHDInsightJob |[Wait-AzureRmHDInsightJob](https://msdn.microsoft.com/library/mt603834.aspx) |
 
 ### <a name="new-cmdlets"></a>Nové rutiny
-Níže jsou nové rutiny, které jsou dostupné jenom v režimu Resource Manager. 
+Toto jsou nové rutiny, které jsou dostupné jenom v režimu Resource Manageru. 
 
-**Rutiny související s akce skriptu:**
+**Skript rutin týkajících se akce:**
 
-* **Get-AzureRmHDInsightPersistedScriptAction**: získá akcí trvalého skriptu pro cluster a zobrazí je v chronologickém pořadí nebo získá podrobnosti pro akci zadaný trvalého skriptu. 
-* **Get-AzureRmHDInsightScriptActionHistory**: získá historii akcí skriptu pro cluster a seznamů v obráceném chronologickém pořadí nebo získá podrobnosti akce dříve spuštění skriptu. 
-* **Odebrat AzureRmHDInsightPersistedScriptAction**: Odebere akcí trvalého skriptu z clusteru služby HDInsight.
-* **Set-AzureRmHDInsightPersistedScriptAction**: Nastaví akce dříve spuštění skriptu jako akcí trvalého skriptu.
-* **Odeslání AzureRmHDInsightScriptAction**: Odešle nové akce skriptu do clusteru Azure HDInsight. 
+* **Get-AzureRmHDInsightPersistedScriptAction**: získá akcí trvalého skriptu pro cluster a seznamů v chronologickém pořadí nebo získá podrobnosti zadané trvalá akce skriptu. 
+* **Get-AzureRmHDInsightScriptActionHistory**: získá historii akcí skriptu clusteru a zobrazí ho v chronologickém pořadí reverzní nebo získá podrobnosti o dříve provedený skriptových akcí. 
+* **Odebrat AzureRmHDInsightPersistedScriptAction**: Odebere z clusteru služby HDInsight trvalá akce skriptu.
+* **Set-AzureRmHDInsightPersistedScriptAction**: Nastaví dříve provedený skript akce bude akcí trvalého skriptu.
+* **Odeslat AzureRmHDInsightScriptAction**: odešle novou akci skriptu do clusteru Azure HDInsight. 
 
-Využití Další informace najdete v tématu [HDInsight se systémem Linux přizpůsobit clustery pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md).
+Další informace o použití, naleznete v tématu [HDInsight založených na Linuxu přizpůsobit clustery pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md).
 
-**Cluster rutin týkajících se identity:**
+**Cluster souvisejícím s identitou rutiny:**
 
-* **Přidat AzureRmHDInsightClusterIdentity**: Přidá identitu clusteru do objekt konfigurace clusteru tak, aby clusteru HDInsight můžete přístup k Azure Data Lake úložiště. V tématu [vytvoření clusteru HDInsight s Data Lake Store pomocí Azure PowerShell](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md).
+* **Přidat AzureRmHDInsightClusterIdentity**: identitu clusteru přidá objekt konfigurace clusteru tak, aby clusteru HDInsight můžete přístup k Azure Data Lake Store. Zobrazit [vytvoření clusteru HDInsight s Data Lake Store pomocí Azure Powershellu](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md).
 
 ### <a name="examples"></a>Příklady
 **Vytvoření clusteru**
 
-Příkaz staré (ASM): 
+Původního příkazu (ASM): 
 
     New-AzureHDInsightCluster `
         -Name $clusterName `
@@ -188,7 +188,7 @@ Nový příkaz:
 
 **Odstranění clusteru**
 
-Příkaz staré (ASM):
+Původního příkazu (ASM):
 
     Remove-AzureHDInsightCluster -name $clusterName 
 
@@ -196,9 +196,9 @@ Nový příkaz:
 
     Remove-AzureRmHDInsightCluster -ResourceGroupName $resourceGroupName -ClusterName $clusterName 
 
-**Seznam clusteru**
+**Přehled clusteru**
 
-Příkaz staré (ASM):
+Původního příkazu (ASM):
 
     Get-AzureHDInsightCluster
 
@@ -206,9 +206,9 @@ Nový příkaz:
 
     Get-AzureRmHDInsightCluster 
 
-**Zobrazit clusteru**
+**Zobrazení clusteru**
 
-Příkaz staré (ASM):
+Původního příkazu (ASM):
 
     Get-AzureHDInsightCluster -Name $clusterName
 
@@ -219,40 +219,40 @@ Nový příkaz:
 
 #### <a name="other-samples"></a>Další ukázky
 * [Vytvoření clusterů HDInsight](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)
-* [Odeslání úloh Hive](hadoop/apache-hadoop-use-hive-powershell.md)
-* [Odeslání úlohy Pig](hadoop/apache-hadoop-use-pig-powershell.md)
+* [Odesílání úloh Hive](hadoop/apache-hadoop-use-hive-powershell.md)
+* [Odesílání úlohy Pig](hadoop/apache-hadoop-use-pig-powershell.md)
 * [Odesílání úloh Sqoop](hadoop/apache-hadoop-use-sqoop-powershell.md)
 
-## <a name="migrating-to-the-new-hdinsight-net-sdk"></a>Migrace na novou sadu .NET SDK pro HDInsight
-Azure Service Management základě [(ASM) HDInsight .NET SDK](https://msdn.microsoft.com/library/azure/mt416619.aspx) je nyní zastaralý. Doporučujeme používat správu prostředků Azure prostřednictvím [využívající Resource Manager SDK rozhraní .NET HDInsight](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight). Následující balíčky HDInsight se systémem ASM jsou zastaralá.
+## <a name="migrating-to-the-new-hdinsight-net-sdk"></a>Migrace na nové sady HDInsight .NET SDK
+Správa služeb Azure podle [(ASM) HDInsight .NET SDK](https://msdn.microsoft.com/library/azure/mt416619.aspx) je nyní zastaralá. Doporučujeme použít Azure Resource Manageru podle [využívající Resource Manager sady HDInsight .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight). Následující balíčky založené na ASM HDInsight jsou zastaralé.
 
 * `Microsoft.WindowsAzure.Management.HDInsight`
 * `Microsoft.Hadoop.Client`
 
-Tato část obsahuje odkazy na další informace o tom, jak provádět určité úlohy pomocí sady SDK využívající Resource Manager.
+Tato část obsahuje odkazy na další informace o tom, jak provádět určité úlohy pomocí sady SDK služby využívající Resource Manager.
 
-| Postup... pomocí sady SDK HDInsight založené na správci prostředků | Odkazy |
+| Jak... pomocí sady HDInsight SDK využívající Resource Manager | Odkazy |
 | --- | --- |
-| Vytvoření clusterů HDInsight pomocí sady .NET SDK |V tématu [Tvorba clusterů HDInsight pomocí sady .NET SDK](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md) |
-| Přizpůsobení clusteru pomocí akce skriptu pomocí .NET SDK |V tématu [HDInsight Linux přizpůsobit clustery pomocí akce skriptu](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md#use-script-action) |
-| Ověření aplikací interaktivně pomocí .NET SDK služby Azure Active Directory |V tématu [spouštění dotazů Hive pomocí sady .NET SDK](hadoop/apache-hadoop-use-hive-dotnet-sdk.md). Fragment kódu v tomto článku používá interaktivní ověřování přístup. |
-| Ověření aplikací interaktivně pomocí .NET SDK služby Azure Active Directory |V tématu [vytvořit neinteraktivní aplikace pro HDInsight](hdinsight-create-non-interactive-authentication-dotnet-applications.md) |
-| Odeslání úlohy Hive pomocí sady .NET SDK |V tématu [úlohy odeslání Hive](hadoop/apache-hadoop-use-hive-dotnet-sdk.md) |
-| Odeslat úlohu Pig pomocí sady .NET SDK |V tématu [úlohy odeslání Pig](hadoop/apache-hadoop-use-pig-dotnet-sdk.md) |
-| Odeslání úlohy Sqoop pomocí sady .NET SDK |V tématu [Sqoop odeslání úlohy](hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md) |
-| Seznam clusterů HDInsight pomocí sady .NET SDK |V tématu [clusterů HDInsight seznamu](hdinsight-administer-use-dotnet-sdk.md#list-clusters) |
-| Škálování clusterů HDInsight pomocí sady .NET SDK |V tématu [clusterů HDInsight škálování](hdinsight-administer-use-dotnet-sdk.md#scale-clusters) |
-| Udělení nebo odvolání přístupu ke clusterům HDInsight pomocí sady .NET SDK |V tématu [udělení nebo odvolání přístupu ke clusterům HDInsight](hdinsight-administer-use-dotnet-sdk.md#grantrevoke-access) |
-| Aktualizovat pověření uživatele HTTP pro clustery služby HDInsight pomocí sady .NET SDK |V tématu [přihlašovací údaje uživatele HTTP aktualizace pro clustery služby HDInsight](hdinsight-administer-use-dotnet-sdk.md#update-http-user-credentials) |
-| Najít výchozí účet úložiště pro clustery služby HDInsight pomocí sady .NET SDK |V tématu [najít výchozí účet úložiště pro clustery HDInsight](hdinsight-administer-use-dotnet-sdk.md#find-the-default-storage-account) |
-| Odstranění clusterů HDInsight pomocí sady .NET SDK |V tématu [clusterů HDInsight odstranit](hdinsight-administer-use-dotnet-sdk.md#delete-clusters) |
+| Vytvoření clusterů HDInsight pomocí sady .NET SDK |Zobrazit [HDInsight vytvářet clustery pomocí sady .NET SDK](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md) |
+| Přizpůsobení clusteru pomocí akce skriptu pomocí sady .NET SDK |Zobrazit [HDInsight Linux přizpůsobit clustery pomocí akce skriptu](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md#use-script-action) |
+| Ověření aplikace interaktivně pomocí Azure Active Directory pomocí .NET SDK |Zobrazit [spouštění dotazů Hive pomocí sady .NET SDK](hadoop/apache-hadoop-use-hive-dotnet-sdk.md). Fragment kódu v tomto článku používá přístup interaktivní ověřování. |
+| Ověření aplikace neinteraktivně pomocí Azure Active Directory pomocí .NET SDK |Zobrazit [vytvořit neinteraktivní aplikace pro HDInsight](hdinsight-create-non-interactive-authentication-dotnet-applications.md) |
+| Odeslání úlohy Hive pomocí sady .NET SDK |Zobrazit [úloh odeslat Hive](hadoop/apache-hadoop-use-hive-dotnet-sdk.md) |
+| Odeslání úlohy Pig pomocí sady .NET SDK |Zobrazit [úlohy odeslání Pig](hadoop/apache-hadoop-use-pig-dotnet-sdk.md) |
+| Odeslání úlohy Sqoop pomocí sady .NET SDK |Zobrazit [Sqoop odeslání úlohy](hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md) |
+| Seznam clusterů HDInsight pomocí sady .NET SDK |Zobrazit [clusterů HDInsight seznamu](hdinsight-administer-use-dotnet-sdk.md#list-clusters) |
+| Škálování clusterů HDInsight pomocí sady .NET SDK |Zobrazit [HDInsight škálování clusterů](hdinsight-administer-use-dotnet-sdk.md#scale-clusters) |
+| Udělení nebo odvolání přístupu do clusterů HDInsight pomocí sady .NET SDK |Zobrazit [udělení nebo odvolání přístupu ke clusterům HDInsight](hdinsight-administer-use-dotnet-sdk.md#grantrevoke-access) |
+| Aktualizace přihlašovacích údajů uživatele HTTP pro clustery HDInsight pomocí sady .NET SDK |Zobrazit [přihlašovacích údajů uživatele HTTP aktualizace pro clustery HDInsight](hdinsight-administer-use-dotnet-sdk.md#update-http-user-credentials) |
+| Najít výchozí účet úložiště pro clustery HDInsight pomocí sady .NET SDK |Zobrazit [najít výchozí účet úložiště pro clustery HDInsight](hdinsight-administer-use-dotnet-sdk.md#find-the-default-storage-account) |
+| Odstranění clusterů HDInsight pomocí sady .NET SDK |Zobrazit [clusterů HDInsight odstranit](hdinsight-administer-use-dotnet-sdk.md#delete-clusters) |
 
 ### <a name="examples"></a>Příklady
-Tady jsou některé příklady na to, jak je operace provést pomocí sady SDK na základě ASM a fragmentu kódu ekvivalentní pro sadu SDK na základě Resource Manager.
+Toto jsou některé příklady jak operace se provádí pomocí sady SDK na základě ASM a ekvivalentní kódu pro sadu SDK využívající Resource Manager.
 
 **Vytvoření klienta CRUD clusteru**
 
-* Příkaz staré (ASM)
+* Původního příkazu (ASM)
   
         //Certificate auth
         //This logs the application in using a subscription administration certificate, which is not offered in Azure Resource Manager
@@ -260,7 +260,7 @@ Tady jsou některé příklady na to, jak je operace provést pomocí sady SDK n
         const string subid = "454467d4-60ca-4dfd-a556-216eeeeeeee1";
         var cred = new HDInsightCertificateCredential(new Guid(subid), new X509Certificate2(@"path\to\certificate.cer"));
         var client = HDInsightClient.Connect(cred);
-* Nový příkaz (hlavní autorizace Service)
+* Nový příkaz (autorizaci instančního objektu služby)
   
         //Service principal auth
         //This will log the application in as itself, rather than on behalf of a specific user.
@@ -298,7 +298,7 @@ Tady jsou některé příklady na to, jak je operace provést pomocí sady SDK n
 
 **Vytvoření clusteru**
 
-* Příkaz staré (ASM)
+* Původního příkazu (ASM)
   
         var clusterInfo = new ClusterCreateParameters
                     {
@@ -316,7 +316,7 @@ Tady jsou některé příklady na to, jak je operace provést pomocí sady SDK n
                     };
         clusterInfo.CoreConfiguration.Add(new KeyValuePair<string, string>("config1", "value1"));
         client.CreateCluster(clusterInfo);
-* Nový – příkaz
+* Nový příkaz
   
         var clusterCreateParameters = new ClusterCreateParameters
             {
@@ -338,12 +338,12 @@ Tady jsou některé příklady na to, jak je operace provést pomocí sady SDK n
         var coreConfigs = new Dictionary<string, string> {{"config1", "value1"}};
         clusterCreateParameters.Configurations.Add(ConfigurationKey.CoreSite, coreConfigs);
 
-**Povolíte přístup protokolu HTTP**
+**Povoluje přístup protokolu HTTP**
 
-* Příkaz staré (ASM)
+* Původního příkazu (ASM)
   
         client.EnableHttp(dnsName, "West US", "admin", "*******");
-* Nový – příkaz
+* Nový příkaz
   
         var httpParams = new HttpSettingsParameters
         {
@@ -355,10 +355,10 @@ Tady jsou některé příklady na to, jak je operace provést pomocí sady SDK n
 
 **Odstranění clusteru**
 
-* Příkaz staré (ASM)
+* Původního příkazu (ASM)
   
         client.DeleteCluster(dnsName);
-* Nový – příkaz
+* Nový příkaz
   
         client.Clusters.Delete(resourceGroup, dnsname);
 

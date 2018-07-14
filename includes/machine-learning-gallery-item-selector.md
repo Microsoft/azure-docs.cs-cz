@@ -1,5 +1,5 @@
-**[Galerie Azure AI](http://gallery.cortanaintelligence.com)**  komunitou vytvářený web pro zjišťování a sdílení řešení vytvořené s Cortana Intelligence Suite.
-Galerie dochází z různých zdrojů, které můžete použít pro vývoj vlastních řešení pro analýzu.
+**[Galerie Azure AI](http://gallery.cortanaintelligence.com)**  je komunitní web pro zjišťování a sdílení řešení vytvořené pomocí Cortana Intelligence Suite.
+Galerie má širokou škálu prostředků, které můžete použít k vývoji vlastních řešení pro analýzu.
 
 <!-- On the new DOCS platform, this is a drop-down list, not tabs, which doesn't work well in this context. So I'm just removing it for now.
 

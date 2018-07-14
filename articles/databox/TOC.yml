@@ -1,0 +1,50 @@
+- name: Dokumentace ke službě Azure Data Box
+  href: /azure/databox/
+- name: Přehled
+  items:
+    - name: Co je disk Data Box?
+      href: data-box-disk-overview.md
+- name: Šablony Rychlý start
+  items:
+    - name: Nastavení – Azure Portal
+      href: data-box-disk-quickstart-portal.md
+- name: Kurzy
+  items:
+    - name: 1 – Objednání
+      href: data-box-disk-deploy-ordered.md
+    - name: 2 – Nastavení
+      href: data-box-disk-deploy-set-up.md
+    - name: 3 – Kopírování dat
+      href: data-box-disk-deploy-copy-data.md
+    - name: '4 – Vrácení, odeslání, ověření'
+      href: data-box-disk-deploy-picked-up.md
+- name: Koncepty
+  items:
+    - name: Kontrola požadavků
+      href: data-box-disk-system-requirements.md
+    - name: Pochopení limitů
+      href: data-box-disk-limits.md
+    - name: Revize zabezpečení
+      href: data-box-disk-security.md
+    - name: Nejčastější dotazy
+      href: data-box-disk-faq.md
+- name: Postup
+  items:
+    - name: Správa prostřednictvím portálu Azure Portal
+      href: data-box-portal-ui-admin.md
+    - name: Řešení potíží s diskem
+      href: data-box-disk-troubleshoot.md
+- name: Zdroje a prostředky
+  items:
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/?category=storage'
+    - name: Marketing pro Azure Data Box
+      href: 'https://azure.microsoft.com/services/storage/databox/'
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/'
+    - name: Cenová kalkulačka
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Aktualizace služeb
+      href: 'https://azure.microsoft.com/updates/?product=databox'
+    - name: Videa
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=databox'

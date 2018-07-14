@@ -87,8 +87,6 @@
           href: batch-job-prep-release.md
         - name: Souběžné úlohy uzlu
           href: batch-parallel-node-tasks.md
-        - name: Počet úloh podle stavu
-          href: batch-get-task-counts.md
         - name: Závislosti úkolů
           href: batch-task-dependencies.md
         - name: Uživatelské účty pro spouštění úloh
@@ -119,7 +117,9 @@
           href: batch-diagnostics.md
         - name: Monitorování pomocí Application Insights
           href: monitor-application-insights.md
-        - name: Efektivní seznamové dotazy
+        - name: Počet prostředků podle stavu
+          href: batch-get-resource-counts.md
+        - name: Efektivní dotazy na prostředky
           href: batch-efficient-list-queries.md
     - name: Použití nástrojů pro vývojáře
       items:

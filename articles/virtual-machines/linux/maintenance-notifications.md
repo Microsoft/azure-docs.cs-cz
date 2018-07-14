@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/02/2018
 ms.author: shants
-ms.openlocfilehash: 12a3c4556de21bb0c0dd6b09458943fb03092532
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 840e961e753a15219ae41b8df55dfd95cc7ec774
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37866123"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38990248"
 ---
 # <a name="handling-planned-maintenance-notifications-for-linux-virtual-machines"></a>Zpracování oznámení plánované údržby pro virtuální počítače s Linuxem
 
-Azure provádí pravidelné aktualizace zvýšit spolehlivost, výkon a zabezpečení hostitelské infrastruktury pro virtuální počítače. Aktualizace jsou změny, jako jsou opravy hostitelské prostředí nebo upgradu a vyřazení z provozu hardwaru. Většina těchto aktualizací nemá jejich provedení žádný vliv na hostované virtuální počítače. Existují však případy, kdy aktualizace mít vliv:
+Azure pravidelně provádí aktualizace za účelem zlepšení spolehlivosti, výkonu a zabezpečení hostitelské infrastruktury pro virtuální počítače. Aktualizace jsou změny, jako jsou opravy hostitelské prostředí nebo upgradu a vyřazení z provozu hardwaru. Většina těchto aktualizací nemá jejich provedení žádný vliv na hostované virtuální počítače. Existují však případy, kdy aktualizace mít vliv:
 
 - Pokud údržbu nevyžaduje restartování, Azure využívá místní migrace se pozastavit virtuální počítač během aktualizace hostitele. Tyto operace údržby bez rebootful jsou použité doména podle domény selhání a průběh je zastaven, pokud jsou přijímány všechny signály stavu upozornění.
 
@@ -101,7 +101,7 @@ V části MaintenanceRedeployStatus se vrátí následující hodnoty:
 Následující volání zahájí údržbu na virtuálním počítači, pokud `IsCustomerInitiatedMaintenanceAllowed` je nastavena na hodnotu true.
 
 ```azure-cli
-az vm perform-maintenance rgName vmName 
+az vm perform-maintenance -g rgName -n vmName 
 ```
 
 [!INCLUDE [virtual-machines-common-maintenance-notifications](../../../includes/virtual-machines-common-maintenance-notifications.md)]

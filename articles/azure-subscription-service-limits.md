@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/29/2018
 ms.author: byvinyal
-ms.openlocfilehash: 1d67266bf599a4dc57fc2e9e0d1c5f9f2562346c
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: HT
+ms.openlocfilehash: aecb687ea2352b482a97226219e9a075070c50a6
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38610768"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38990671"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity, kvóty a omezení předplatného a služeb Azure
 Tento dokument uvádí některé nejčastějšími omezeními Microsoft Azure, které se taky říká se jim kvóty. Tento dokument nepopisuje aktuálně všech služeb Azure. V průběhu času v seznamu rozbalit a doplněn o popis další platformy.
@@ -69,6 +69,7 @@ V následující omezení se přidala nová tabulka tak, aby odrážel případn
 * [Služba Database Migration Service](#database-migration-service-limits)
 * [DNS](#dns-limits)
 * [Event Hubs](#event-hubs-limits)
+* [Brány Firewall na Azure](#azure-firewall-limits)
 * [IoT Hub](#iot-hub-limits)
 * [Služba IoT Hub Device Provisioning](#iot-hub-device-provisioning-service-limits)
 * [Key Vault](#key-vault-limits)
@@ -152,6 +153,9 @@ Následující tabulka obsahuje podrobnosti o funkcích a omezení Basic, Standa
 
 #### <a name="dns-limits"></a>Omezení DNS
 [!INCLUDE [dns-limits](../includes/dns-limits.md)]
+
+#### <a name="azure-firewall-limits"></a>Omezení brány Firewall pro Azure
+[!INCLUDE [azure-firewall-limits](../includes/firewall-limits.md)]
 
 ### <a name="storage-limits"></a>Omezení úložiště
 Další podrobnosti o omezení účtu úložiště, najdete v části [Azure Storage škálovatelnost a cíle výkonnosti](storage/common/storage-scalability-targets.md).

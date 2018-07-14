@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 07/11/2018
 ms.author: spelluru
-ms.openlocfilehash: 5f953cd6f33e5d46098566740efbf83a5fd80799
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 9ddf44ef933270c08b42f67387866cd7a3b34719
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38635312"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39004075"
 ---
 # <a name="add-a-vm-to-a-lab-in-azure-devtest-labs"></a>Přidání virtuálního počítače do testovacího prostředí ve službě Azure DevTest Labs
 Pokud už máte [vytvoření vašeho prvního virtuálního počítače](devtest-lab-create-first-vm.md), pravděpodobně jste to v předem načtené [image z marketplace](devtest-lab-configure-marketplace-images.md). Nyní, pokud chcete přidat další virtuální počítače do testovacího prostředí, můžete také *základní* , který je buď [vlastní image](devtest-lab-create-template.md) nebo [vzorec](devtest-lab-manage-formulas.md). Tento kurz vás provede Přidání virtuálního počítače do testovacího prostředí v DevTest Labs pomocí webu Azure portal.
@@ -40,12 +40,12 @@ Tento článek také ukazuje, jak spravovat artefakty pro virtuální počítač
     ![Podokno virtuálního počítače testovacího prostředí](./media/devtest-lab-add-vm/devtestlab-lab-vm-blade.png)
 
 1. Zadejte **uživatelské jméno** , která jsou udělena oprávnění správce na virtuálním počítači.  
-1. Pokud chcete použít heslo uložené v vaše [úložiště tajných kódů](https://azure.microsoft.com/updates/azure-devtest-labs-keep-your-secrets-safe-and-easy-to-use-with-the-new-personal-secret-store)vyberte **použít uložený tajný kód**a zadat hodnotu klíče, který odpovídá váš tajný klíč (heslo). V opačném případě zadejte heslo do textového pole s popiskem **zadejte hodnotu**.
+1. Pokud chcete použít heslo uložené v [službou Azure key vault](devtest-lab-store-secrets-in-key-vault.md)vyberte **použít uložený tajný kód**a zadat hodnotu klíče, který odpovídá váš tajný klíč (heslo). V opačném případě zadejte heslo do textového pole s popiskem **zadejte hodnotu**. Další informace o ukládání tajných klíčů v trezoru klíčů a jejich používání při vytváření prostředků testovacího prostředí, najdete v článku [Store tajné kódy ve službě Azure Key Vault](devtest-lab-store-secrets-in-key-vault.md).
 1. **Typ disku virtuálního počítače** Určuje, jaký typ disku úložiště je povolený pro virtuální počítače v testovacím prostředí.
-1. Vyberte **velikost virtuálního počítače** a vyberte jednu z předdefinovaných položek, které určují jader procesoru, velikosti paměti RAM a velikost pevného disku virtuálního počítače k vytvoření.
-1. Vyberte **artefakty** a – z seznam artefakty - vybrat a nakonfigurovat artefakty, které chcete přidat do základní image.
+2. Vyberte **velikost virtuálního počítače** a vyberte jednu z předdefinovaných položek, které určují jader procesoru, velikosti paměti RAM a velikost pevného disku virtuálního počítače k vytvoření.
+3. Vyberte **artefakty** a – z seznam artefakty - vybrat a nakonfigurovat artefakty, které chcete přidat do základní image.
     **Poznámka:** Pokud začínáte s DevTest Labs začínáte nebo konfigurace artefakty, vyhledejte [k virtuálnímu počítači přidat existující artefakt](#add-an-existing-artifact-to-a-vm) části a pak se sem vraťte po dokončení.
-1. Vyberte **upřesňující nastavení** konfigurovat možnosti sítě Virtuálního počítače a možností vypršení platnosti. 
+4. Vyberte **upřesňující nastavení** konfigurovat možnosti sítě Virtuálního počítače a možností vypršení platnosti. 
 
    Chcete-li nastavit možnost vypršení platnosti, zvolte ikonu kalendáře pro výběr data, na kterém virtuální počítač se automaticky odstraní.  Ve výchozím nastavení virtuální počítač nikdy nevyprší. 
 1. Pokud chcete zobrazit nebo zkopírujte šablony Azure Resource Manageru, přečtěte si [šablonu uložte Azure Resource Manageru](#save-azure-resource-manager-template) části a vraťte se sem po dokončení.

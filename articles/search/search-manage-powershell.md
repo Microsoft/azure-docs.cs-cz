@@ -1,6 +1,6 @@
 ---
-title: Správa Azure Search pomocí skriptů prostředí Powershell | Microsoft Docs
-description: Správa služby Azure Search pomocí skriptů prostředí PowerShell. Vytvořit nebo aktualizovat službu Azure Search a spravovat klíče správce Azure Search
+title: Správa služby Azure Search pomocí skriptů prostředí Powershell | Dokumentace Microsoftu
+description: Správa služby Azure Search pomocí skriptů prostředí PowerShell. Vytvořit nebo aktualizovat službu Azure Search a správě klíče správce Azure Search
 author: HeidiSteen
 manager: cgronlun
 tags: azure-resource-manager
@@ -10,44 +10,44 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 08/15/2016
 ms.author: heidist
-ms.openlocfilehash: 8f83f2652f7bd34f53dde1674c022f8792ae7658
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 1d0024af3bbf9edfe8c43032878a8b61e35cea9c
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32181983"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39000986"
 ---
-# <a name="manage-your-azure-search-service-with-powershell"></a>Správa služby Azure Search pomocí prostředí PowerShell
+# <a name="manage-your-azure-search-service-with-powershell"></a>Správa služby Azure Search pomocí Powershellu
 > [!div class="op_single_selector"]
 > * [Azure Portal](search-manage.md)
 > * [PowerShell](search-manage-powershell.md)
 > 
 > 
 
-Toto téma popisuje příkazy prostředí PowerShell provádět mnoho úloh správy pro služby vyhledávání systému Azure. Jsme provede procesem vytváření vyhledávací službu, je škálování a správu jeho klíče rozhraní API.
-Tyto příkazy paralelní možnostmi správy dostupnými v [REST API správy služby Azure Search](https://docs.microsoft.com/rest/api/searchmanagement).
+Toto téma popisuje příkazy prostředí PowerShell provádět mnoho úloh správy pro služby Azure Search. Projdeme vytvoření vyhledávací službu, je škálování a správu jeho klíče rozhraní API.
+Tyto příkazy paralelní možnostmi správy dostupnými v [Management REST API služby Azure Search](https://docs.microsoft.com/rest/api/searchmanagement).
 
 ## <a name="prerequisites"></a>Požadavky
-* Pokud nemáte Azure PowerShell 1.0 nebo novější. Pokyny najdete v tématu [nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/overview).
-* Musíte být přihlášení k předplatnému Azure v prostředí PowerShell, jak je popsáno níže.
+* Musíte mít Azure PowerShell 1.0 nebo vyšší. Pokyny najdete v tématu [nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/overview).
+* Musíte být přihlášeni ke svému předplatnému Azure v prostředí PowerShell, jak je popsáno níže.
 
-Nejdřív musíte přihlášení k Azure pomocí tohoto příkazu:
+Nejprve je nutné přihlášení k Azure pomocí tohoto příkazu:
 
     Connect-AzureRmAccount
 
-Zadejte e-mailovou adresu účtu Azure a jeho heslo v dialogovém okně pro přihlášení Microsoft Azure.
+Zadejte e-mailovou adresu svého účtu Azure a jeho heslo v dialogovém okně pro přihlášení Microsoft Azure.
 
-Případně můžete [přihlášení interaktivně pomocí objektu služby](../azure-resource-manager/resource-group-authenticate-service-principal.md).
+Případně můžete [přihlásit se interaktivně pomocí hlavního názvu služby](../azure-resource-manager/resource-group-authenticate-service-principal.md).
 
-Pokud máte víc předplatných Azure, budete muset nastavit vašeho předplatného Azure. Chcete-li zobrazit seznam aktuální předplatných, spusťte tento příkaz.
+Pokud máte více předplatných Azure, musíte nastavit vašeho předplatného Azure. Chcete-li zobrazit seznam aktuálních předplatných. Spusťte tento příkaz.
 
     Get-AzureRmSubscription | sort SubscriptionName | Select SubscriptionName
 
-Pro určení předplatného, spusťte následující příkaz. V následujícím příkladu je název odběru `ContosoSubscription`.
+Pokud chcete zadat předplatné, spusťte následující příkaz. V následujícím příkladu je název předplatného `ContosoSubscription`.
 
     Select-AzureRmSubscription -SubscriptionName ContosoSubscription
 
-## <a name="commands-to-help-you-get-started"></a>Příkazy, které vám pomůžou začít.
+## <a name="commands-to-help-you-get-started"></a>Příkazy, které vám pomůžou začít pracovat.
     $serviceName = "your-service-name-lowercase-with-dashes"
     $sku = "free" # or "basic" or "standard" for paid services
     $location = "West US"
@@ -126,11 +126,11 @@ Pro určení předplatného, spusťte následující příkaz. V následujícím
     $resource | Remove-AzureRmResource
 
 ## <a name="next-steps"></a>Další kroky
-Je teď vytvořená služby, můžete provést další kroky: sestavení [index](search-what-is-an-index.md), [dotazovat index](search-query-overview.md)a nakonec vytvořit a spravovat vlastní vyhledávací aplikaci, která používá službu Azure Search.
+Teď, když je vaše služba vytvořena, je provést další kroky: sestavení [index](search-what-is-an-index.md), [dotazování indexu](search-query-overview.md)a nakonec vytvářet a spravovat vlastní vyhledávací aplikaci, která používá službu Azure Search.
 
-* [Vytvoření indexu Azure Search na portálu Azure](search-create-index-portal.md)
-* [Dotazování indexu Azure Search pomocí Průzkumník služby Search na portálu Azure](search-explorer.md)
-* [Nastavte indexer načíst data z jiných služeb](search-indexer-overview.md)
+* [Vytvoření indexu Azure Search na webu Azure Portal](search-create-index-portal.md)
+* [Dotazování indexu Azure Search pomocí Průzkumníka služby Search na webu Azure Portal](search-explorer.md)
+* [Nastavte indexer k načtení dat z jiné služby](search-indexer-overview.md)
 * [Použití služby Azure Search v rozhraní .NET](search-howto-dotnet-sdk.md)
 * [Analýza provozu Azure Search](search-traffic-analytics.md)
 

@@ -63,6 +63,8 @@
           href: devtest-lab-create-first-vm.md
         - name: Nastavení zásad pro testovací prostředí
           href: devtest-lab-get-started-with-lab-policies.md
+        - name: Uložení tajných kódů ve službě Azure Key Vault
+          href: devtest-lab-store-secrets-in-key-vault.md
         - name: Použití virtuálních počítačů v testovacím prostředí
           items:
             - name: Vytvoření virtuálních počítačů

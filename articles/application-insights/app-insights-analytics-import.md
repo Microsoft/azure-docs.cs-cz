@@ -1,8 +1,8 @@
 ---
-title: Import dat k analýze ve službě Azure Application Insights | Microsoft Docs
-description: Importovat statických dat pro připojení s telemetrií aplikace, nebo importovat samostatné datový proud do dotazu s Analytics.
+title: Import dat pro analýzy ve službě Azure Application Insights | Dokumentace Microsoftu
+description: Importovat statická data spojovat s telemetrie aplikace nebo importovat samostatné datového proudu provádět dotazy pomocí Analytics.
 services: application-insights
-keywords: Otevřete schéma, import dat
+keywords: Otevřít schéma, import dat
 documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
@@ -13,36 +13,36 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/04/2017
 ms.author: mbullwin
-ms.openlocfilehash: 688d620e19a8a6f536d134d9c4d7c837ec06bbdc
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: d891cd92e70d3491ee0c7a58f1409823301b299c
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35293617"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38989749"
 ---
-# <a name="import-data-into-analytics"></a>Importovat data do Analytics
+# <a name="import-data-into-analytics"></a>Import dat do analýzy
 
-Importovat žádná tabulková data do [Analytics](app-insights-analytics.md), buď propojit je s [Application Insights](app-insights-overview.md) telemetrie z vaší aplikace, nebo tak, aby je bylo možné analyzovat jako samostatné datový proud. Analytics je účinný dotazovací jazyk, který je vhodné řešení pro analýzu proudů označen časovým razítkem vysoký počet telemetrie.
+Importovat žádná tabulková data do [Analytics](app-insights-analytics.md), buď ji s připojí [Application Insights](app-insights-overview.md) telemetrie z vaší aplikace, nebo tak, že je možné analyzovat jako samostatné datový proud. Analýza je vhodné řešení pro analýzu proudů časovým razítkem velkého objemu telemetrických dat výkonný dotazovací jazyk.
 
-Data můžete importovat do analýzy pomocí vlastního schématu. Nemá používat standardní schémata Application Insights, jako je například požadavek nebo trasování.
+Data můžete importovat do analýz pomocí vlastní schéma. Není třeba použít standardní schémata Application Insights jako požadavek nebo trasování.
 
-Můžete importovat JSON nebo DSV (oddělovač oddělovači - čárku, středník nebo kartě) soubory.
+JSON nebo zobrazení zdroje dat (oddělovač hodnot oddělených čárkami - čárka, středník nebo kartu) můžete importovat soubory.
 
-Existují tři situacích výhodné import do Analytics:
+Existují tři situacích užitečné import Analytics:
 
-* **Připojte se telemetrie aplikace.** Mohli byste například importovat tabulku, která mapuje adresy URL vašeho webu na titulů srozumitelnější. V analýzy můžete vytvořit sestavu grafu řídicího panelu, která obsahuje deset nejoblíbenější stránky ve vašem webu. Nyní ji můžete zobrazují názvy stránky místo adresy URL.
-* **Korelovat telemetrii aplikace** s jinými zdroji například síťových přenosů dat serveru nebo CDN soubory protokolu.
-* **Analýza platí pro samostatné datového proudu.** Application Insights Analytics je výkonný nástroj, který pracuje s zhuštěné, označen časovým razítkem datové proudy - lépe než SQL v mnoha případech. Pokud máte datový proud z z jiného zdroje, můžete ho s Analytics analyzovat.
+* **Připojte se k díky telemetrii aplikací.** Například může importovat tabulku, která mapuje adresy URL z webu titulů lépe čitelný. V Analytics můžete vytvořit sestavu grafu řídicího panelu, který zobrazuje deset nejoblíbenějších stránek na vašem webu. Nyní ji můžete zobrazit titulů místo adresy URL.
+* **Korelace telemetrie vaší aplikace** s dalšími zdroji, jako jsou síťové přenosy dat serveru nebo CDN soubory protokolu.
+* **Platí pro samostatné datový proud Analytics.** Application Insights Analytics je výkonný nástroj, který pracuje s zhuštěný, časovým razítkem datové proudy - mnohem lepší než SQL v mnoha případech. Pokud máte takový stream z nějakého jiného zdroje, můžete analyzovat pomocí Analytics.
 
-Odesílání dat do zdroje dat je snadné. 
+Odesílání dat ke zdroji dat je snadné. 
 
-1. (Jednou) Definování schématu dat v datovém zdroji.
-2. (Pravidelně) Nahrání dat do úložiště Azure a volání rozhraní REST API nám, které nová data se čeká na přijímání oznámení. Během několika minut je k dispozici pro dotaz v Analytics data.
+1. (Jednou) Definujte schéma vašich dat v datovém zdroji.
+2. (Pravidelně) Nahrání dat do služby Azure storage a volat rozhraní REST API upozornit, že nová data čeká na příjem. Během několika minut data jsou k dispozici pro dotaz v Analytics.
 
-Frekvence odesílání je definována vy a jak rychlý chcete, aby vaše data k dispozici pro dotazy. Je efektivnější odesílat data v větší bloky dat, ale není větší než 1GB.
+Frekvence odesílání je definována je a jak rychle přejete si vaše data k dispozici pro dotazy. To je mnohem efektivnější nahrát data do větších bloků dat, ale ne větší než 1GB.
 
 > [!NOTE]
-> *Máte velký počet zdrojů dat k analýze?* [*Zvažte použití* logstash *pro odeslání dat do služby Application Insights.*](https://github.com/Microsoft/logstash-output-application-insights)
+> *Máte spoustu zdroje dat k analýze?* [*Zvažte použití* logstash *k odeslání dat do Application Insights.*](https://github.com/Microsoft/logstash-output-application-insights)
 > 
 
 ## <a name="before-you-start"></a>Než začnete
@@ -51,52 +51,52 @@ Budete potřebovat:
 
 1. Prostředek Application Insights v Microsoft Azure.
 
- * Pokud chcete analyzovat data odděleně od jiných telemetrie [vytvořte nový prostředek Application Insights](app-insights-create-new-resource.md).
- * Pokud chcete propojení nebo porovnávání svá data pomocí telemetrie z aplikace, která je již nastavena pomocí služby Application Insights, můžete použít na prostředek pro tuto aplikaci.
- * Přispěvatel nebo vlastníka přístup k prostředku.
+ * Pokud chcete analyzovat data odděleně od jiných telemetrických dat, [vytvořit nový prostředek Application Insights](app-insights-create-new-resource.md).
+ * Pokud jste připojení nebo porovnání dat s využitím telemetrie z aplikace, která je již nastavena pomocí Application Insights, můžete použít na prostředek pro tuto aplikaci.
+ * Přispěvatel nebo vlastník přístup do tohoto prostředku.
  
-2. Úložiště Azure. Nahrát do úložiště Azure a analýzy získá vaše data z ní. 
+2. Úložiště Azure. Odeslání do úložiště Azure a Analytics získá data z něj. 
 
- * Doporučujeme že vytvořit účet vyhrazeného úložiště pro objektů BLOB. Pokud objektů BLOB jsou sdíleny s jinými procesy, trvá déle pro naše procesy ke čtení objektů BLOB.
+ * Doporučujeme že vytvořit účet vyhrazeného úložiště pro objektů BLOB. Pokud objektů BLOB jsou sdíleny s jinými procesy, trvá delší dobu našich procesů ke čtení objektů BLOB.
 
 
 ## <a name="define-your-schema"></a>Definování schématu
 
-Před importem dat, je nutné definovat *zdroje dat,* který určuje schéma vaše data.
-Může mít až 50 zdroje dat v jediném prostředku Application Insights
+Předtím, než importujete data, je nutné definovat *zdroj dat,* která určuje schéma dat.
+Můžete mít až 50 datových zdrojů v jediném prostředku Application Insights
 
-1. Spuštění Průvodce zdrojem dat. Použijte tlačítko "Přidat nový zdroj dat". Případně – klikněte na tlačítko nastavení v pravém horním rohu a v rozevírací nabídce vyberte "Zdroje dat".
+1. Spuštění Průvodce zdrojem dat. Použijte tlačítko "Přidat nový zdroj dat". Můžete také – klikněte na tlačítko nastavení v pravém horním rohu a vyberte "Zdroje dat" v rozevírací nabídce.
 
     ![Přidat nový zdroj dat](./media/app-insights-analytics-import/add-new-data-source.png)
 
-    Zadejte název nového zdroje dat.
+    Zadejte název pro nový zdroj dat.
 
 2. Definování formátu souborů, které odešlete.
 
-    Můžete definovat formát ručně, nebo odeslání ukázkového souboru.
+    Můžete definovat ručně ve formátu, nebo odeslání ukázkového souboru.
 
-    Pokud jsou data ve formátu CSV, může být první řádek v ukázkovém záhlaví sloupců. Můžete změnit názvy polí v dalším kroku.
+    Pokud jsou data ve formátu CSV, první řádek vzorek může být záhlaví sloupců. Můžete změnit názvy polí v dalším kroku.
 
-    Ukázka by měla obsahovat alespoň 10 řádků nebo záznamů dat s.
+    Ukázka by měl obsahovat alespoň 10 řádků nebo záznamů dat s.
 
-    Sloupec nebo pole názvy by měly mít alfanumerické názvy (bez mezer a interpunkce).
+    Názvy sloupců nebo pole by měly mít alfanumerické názvy (bez mezer nebo interpunkční znaménka).
 
     ![Odeslání ukázkového souboru](./media/app-insights-analytics-import/sample-data-file.png)
 
 
-3. Zkontrolujte schéma, které má potom průvodce. Pokud ho odvodit typů z ukázku, můžete upravit odvozené typy sloupců.
+3. Zkontrolujte schéma, které má obor průvodce. Pokud ji odvodit typy z ukázky, můžete potřebovat upravit odvozené typy sloupců.
 
     ![Zkontrolujte odvozené schématu](./media/app-insights-analytics-import/data-source-review-schema.png)
 
- * (Volitelné.) Nahrajte definici schématu. Viz níže uvedeným formátem.
+ * (Volitelné.) Nahrajte definici schématu. Podívejte se níže uvedeným formátem.
 
- * Vyberte časové razítko. Všechna data v Analytics musí mít pole časového razítka. Musí mít typ `datetime`, ale nemá s názvem 'časové razítko'. Pokud data obsahují sloupec obsahující datum a čas ve formátu ISO, zvolte to jako sloupec časového razítka. Jinak, vyberte "jako data doručen" a proces importu přidá pole časového razítka.
+ * Vyberte časové razítko. Všechna data v Analytics musí mít pole časového razítka. Musí mít typ `datetime`, ale nemusí to být s názvem "časové razítko". Pokud data obsahují sloupec obsahující datum a čas ve formátu ISO, tuto možnost zvolte, jako sloupec časového razítka. Jinak klikněte na tlačítko "jako data dostali" a proces importu přidá pole časového razítka.
 
-5. Vytvoření zdroje dat.
+5. Vytvořte zdroj dat.
 
 ### <a name="schema-definition-file-format"></a>Formát souboru definice schématu
 
-Neupravujte schématu v uživatelském rozhraní, můžete načíst definici schématu ze souboru. Formát definice schématu je následující: 
+Místo pro úpravy schématu v uživatelském rozhraní, můžete načíst definici schématu ze souboru. Formát definice schématu je následujícím způsobem: 
 
 Formát s oddělovačem 
 ```
@@ -116,38 +116,39 @@ Formát JSON
 ]
 ```
  
-Každý sloupec je určený podle umístění, název a typ. 
+Každý sloupec je identifikován umístění a název typu.
 
-* Umístění – souboru s oddělovači naformátujte ho je umístění namapované hodnoty. Pro formát JSON je jpath namapované klíče.
-* Název – zobrazovaný název sloupce.
+* Umístění – pro formátování souboru s oddělovači je pozice ze namapovanou hodnotu. Pro formát JSON je jpath z namapované klíč.
+* Název – název zobrazený ve sloupci.
 * Typ – datový typ sloupce.
  
-V případě, že byl použit ukázková data a jsou odděleny formát souboru, musí definice schématu mapovat všechny sloupce a přidejte nové sloupce na konci. 
-
-JSON umožňuje částečné mapování dat, proto definice schématu formátu JSON nemá pro každý klíč, který se nachází v ukázková data mapování. Také ho můžete namapovat sloupce, které nejsou součástí ukázková data. 
+> [!NOTE]
+> V případě se používá ukázková data a jsou odděleny formát souboru, definici schématu musí namapovat všechny sloupce a přidávat nové sloupce na konci.
+> 
+> JSON umožňuje částečné mapování dat, proto nemusí být mapování každý klíč, který se nachází v ukázkových dat definici schématu s formátem JSON. Můžete také namapovat sloupce, které nejsou součástí ukázková data. 
 
 ## <a name="import-data"></a>Import dat
 
-K importu dat, nahrajte ho do úložiště Azure, vytvořte přístupový klíč pro tuto a pak proveďte volání rozhraní REST API.
+K importu dat, nahrajte ho do úložiště Azure, vytvořit přístupový klíč pro ni a pak proveďte volání rozhraní REST API.
 
 ![Přidat nový zdroj dat](./media/app-insights-analytics-import/analytics-upload-process.png)
 
-Můžete provést následující proces ručně, nebo nastavit automatizovaný systém to udělat v pravidelných intervalech. Musíte provést následující kroky pro každý blok dat, které chcete importovat.
+Můžete provádět následující proces ručně nebo nastavit automatizovaného systému provádět v pravidelných intervalech. Budete muset postupovat podle těchto kroků pro každý blok dat, které chcete importovat.
 
-1. Nahrání dat do [úložiště objektů blob Azure](../storage/blobs/storage-dotnet-how-to-use-blobs.md). 
+1. Nahrání dat do [úložiště objektů blob v Azure](../storage/blobs/storage-dotnet-how-to-use-blobs.md). 
 
- * Objekty BLOB může být libovolné velikosti až 1GB nekomprimovaným. Velké objekty BLOB stovek MB jsou ideální z hlediska výkonu.
- * Můžete je komprimovat s Gzip ke zlepšení doba nahrávání a latence pro data, která mají být k dispozici pro dotaz. Použití `.gz` příponu názvu souboru.
- * Je nejvhodnější použít účet samostatného úložiště pro tento účel, aby se zabránilo volání z jiné služby zpomalení výkonu.
- * Při odesílání dat v vysoká frekvence, každých několik sekund, se doporučuje použít více než jeden účet úložiště, z důvodů výkonu.
+ * Objekty BLOB může být libovolné velikosti až 1GB nekomprimované. Velké objekty BLOB ze stovek MB jsou ideální z hlediska výkonu.
+ * Můžete je komprimovat pomocí Gzip ke zlepšení doba ukládání a latencí pro data, která mají být k dispozici pro dotaz. Použití `.gz` příponu názvu souboru.
+ * Je nejvhodnější použít samostatný účet úložiště pro tento účel, aby se zabránilo volání z různých služeb zpomalení výkonu.
+ * Při odesílání dat v vysokou frekvencí každých několik sekund, se doporučuje použít více než jeden účet úložiště z důvodů výkonu.
 
  
-2. [Vytvoření klíče sdíleného přístupového podpisu pro tento objekt blob](../storage/blobs/storage-dotnet-shared-access-signature-part-2.md). Klíč by měl mít jeden den po dobu vypršení platnosti a poskytovat přístup pro čtení.
-3. Volání REST oznámit Application Insights, čekající data.
+2. [Vytvoření klíče sdíleného přístupového podpisu pro objekt blob](../storage/blobs/storage-dotnet-shared-access-signature-part-2.md). Klíč musí mít období vypršení platnosti o jeden den a poskytují přístup pro čtení.
+3. Volání REST oznámit Application Insights, která čeká na data.
 
  * Koncový bod: `https://dc.services.visualstudio.com/v2/track`
- * Metoda HTTP: POST
- * Datové části:
+ * Metoda HTTP: příspěvek
+ * Datová část:
 
 ```JSON
 
@@ -170,25 +171,25 @@ Můžete provést následující proces ručně, nebo nastavit automatizovaný s
 
 Zástupné symboly jsou:
 
-* `Blob URI with Shared Access Key`: Zobrazí to v postupu pro vytváření klíčů. Je specifická pro objekt blob.
-* `Schema ID`: ID schématu vygenerované definované schéma. Data v tohoto objektu blob musí být v souladu schématu.
-* `DateTime`: Čas, kdy je odeslána žádost, UTC. Můžeme přijmout tyto formáty: ISO8601 (jako je "2016-01-01 13:45:01"); Rfc822 ("ST, 14 16 DEC – 14:57:01 + 0000"); RFC850 ("středa, 14. prosince 16 UTC 14:57:00"); RFC1123 ("st 14 Dec 2016 14:57:00 + 0000").
-* `Instrumentation key` z prostředku Application Insights.
+* `Blob URI with Shared Access Key`: Zobrazí se to v postupu pro vytvoření klíče. Je specifický pro objekt blob.
+* `Schema ID`: ID schéma vygenerovaný pro definované schéma. Data v tento objekt blob by měl odpovídat schématu.
+* `DateTime`: Doba, jakou se odešle požadavek, UTC. Můžeme přijmout tyto formáty: ISO8601 (například "2016-01-01 13:45:01"); Rfc822 ("středa, Dec 16 14 14:57:01 + 0000"); RFC850 ("středa, 14. prosince 16 14:57:00 UTC"); RFC1123 ("středa, 14. prosince 2016 14:57:00 + 0000").
+* `Instrumentation key` váš prostředek služby Application Insights.
 
-Data jsou k dispozici v Analytics po několika minutách.
+Data jsou k dispozici v Analytics za pár minut.
 
 ## <a name="error-responses"></a>Chybové odpovědi
 
-* **požadavek je 400 nesprávný**: označuje, že datová část požadavku je neplatné. Kontrola:
- * Klíč instrumentace správné.
- * Hodnota doby platnosti. Mělo by být čas nyní ve standardu UTC.
+* **400 o neplatném požadavku**: Určuje, že datová část požadavku je neplatný. Kontrola:
+ * Správné Instrumentační klíč.
+ * Hodnota doby platnosti. Měla by být čas ve standardu UTC, nyní.
  * JSON události odpovídá schématu.
-* **403 Zakázáno**: Objekt blob, které jste odeslali není dostupný. Ujistěte se, že je sdílený přístupový klíč platný a zda nevypršela platnost.
-* **404 nebyl nalezen**:
+* **403 Zakázáno**: jste odeslali objekt blob není přístupný. Ujistěte se, že sdílený přístupový klíč je platný a že nevypršela platnost.
+* **404 Nenalezeno**:
  * Objekt blob neexistuje.
  * ID zdroje je nesprávné.
 
-Podrobnější informace najdete v chybové zprávě odpovědi.
+Podrobnější informace jsou k dispozici v chybové zprávě odpovědi.
 
 
 ## <a name="sample-code"></a>Ukázka kódu
@@ -352,7 +353,7 @@ namespace IngestionClient
 } 
 ```
 
-### <a name="ingest-data"></a>Příjem dat
+### <a name="ingest-data"></a>Ingestace dat
 
 Pomocí tohoto kódu pro každý objekt blob. 
 
@@ -366,5 +367,5 @@ Pomocí tohoto kódu pro každý objekt blob.
 
 ## <a name="next-steps"></a>Další postup
 
-* [Prohlídka dotazovací jazyk analýzy protokolů](app-insights-analytics-tour.md)
-* Pokud používáte Logstash, použijte [Logstash modulu plug-in pro odesílání dat do služby Application Insights](https://github.com/Microsoft/logstash-output-application-insights)
+* [Prohlídka dotazovací jazyk Log Analytics](app-insights-analytics-tour.md)
+* Pokud používáte Logstash, použijte [modul plug-in pro Logstash pro odesílání dat do Application Insights](https://github.com/Microsoft/logstash-output-application-insights)

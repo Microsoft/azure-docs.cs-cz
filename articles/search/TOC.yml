@@ -7,18 +7,10 @@
 - name: Šablony Rychlý start
   expanded: true
   items:
-    - name: Vyzkoušení kognitivního vyhledávání
-      href: cognitive-search-quickstart-blob.md
     - name: Vytvoření služby
       href: search-create-service-portal.md
-    - name: Portál
-      items:
-        - name: Vytvoření indexu
-          href: search-create-index-portal.md
-        - name: Import dat
-          href: search-import-data-portal.md
-        - name: Průzkumník služby Search
-          href: search-explorer.md
+    - name: Vyzkoušení kognitivního vyhledávání
+      href: cognitive-search-quickstart-blob.md
     - name: .NET
       items:
         - name: Vytvoření indexu
@@ -39,18 +31,18 @@
           href: search-fiddler.md
 - name: Kurzy
   items:
+    - name: Použití integrovaných nástrojů
+      href: search-get-started-portal.md
     - name: Vývoj kognitivního vyhledávání
       href: cognitive-search-tutorial-blob.md
-    - name: Indexování Azure SQL Database
-      href: search-indexer-tutorial.md
     - name: Indexování objektů blob Azure
       href: search-semi-structured-data.md
+    - name: Indexování Azure SQL Database
+      href: search-indexer-tutorial.md
     - name: Přidání synonym v .NET
       href: search-synonyms-tutorial-sdk.md
     - name: Přidání automatického dokončování v .NET
       href: search-autocomplete-tutorial.md
-    - name: Průvodce portálem
-      href: search-get-started-portal.md
 - name: Ukázky
   items:
     - name: Ukázky kódu Azure
@@ -129,6 +121,8 @@
       items:
         - name: Definice indexu
           href: search-what-is-an-index.md
+        - name: Vytvoření indexu (portál)
+          href: search-create-index-portal.md
         - name: Analyzátory
           items:
             - name: Textové analyzátory
@@ -151,6 +145,8 @@
       items:
         - name: Indexování typu Push  a Pull
           href: search-what-is-data-import.md
+        - name: Průvodce importem (portál)
+          href: search-import-data-portal.md
         - name: Opětovné sestavení indexu
           href: search-howto-reindex.md
         - name: Indexování rozsáhlých datových sad
@@ -181,6 +177,8 @@
       items:
         - name: Konstrukce základních dotazů
           href: search-query-overview.md
+        - name: Průzkumník služby Search (portál)
+          href: search-explorer.md
         - name: Jednoduchá syntaxe dotazů
           href: 'https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search'
         - name: Syntaxe dotazů Lucene

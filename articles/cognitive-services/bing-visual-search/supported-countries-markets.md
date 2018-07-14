@@ -1,7 +1,7 @@
 ---
-title: Podporované zemích a jazyky pro rozhraní API vyhledávání Visual Bing | Microsoft Docs
+title: Podporované země/oblasti a jazyky pro API pro vizuální vyhledávání Bingu | Dokumentace Microsoftu
 titleSuffix: Bing Web Search APIs - Cognitive Services
-description: Zjistěte, jaké zemích a jazyky jsou podporovány pomocí rozhraní API vyhledávání Visual Bing.
+description: Zjistěte, které země/oblasti a jazyky jsou podporovány API pro vizuální vyhledávání Bingu.
 services: cognitive-services
 author: swhite-msft
 manager: rosh
@@ -10,37 +10,37 @@ ms.technology: bing-visual-search
 ms.topic: article
 ms.date: 04/10/2018
 ms.author: scottwhi
-ms.openlocfilehash: 4723d028cc22caf8be3eb294b52506ec112cbab5
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 068459f4959bf3f8daea8fe949ec324879ee260c
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343284"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39001224"
 ---
-# <a name="bing-visual-search-countries-and-languages"></a>Hledání Visual Bing zemích a jazyky
+# <a name="bing-visual-search-countriesregions-and-languages"></a>Pro vizuální vyhledávání Bingu země/oblasti a jazyky
 
-Bing Visual vyhledávání API podporuje více než tří tucet zemích, mnoho s více než jeden jazyk. Každý požadavek by měla obsahovat země a zvolený jazyk uživatele. Znalost trhu uživatele pomáhá Bing vrátit správné výsledky. Pokud nezadáte a jazyk, díky Bing usilovně k určení země a jazyk uživatele. Protože výsledky mohou obsahovat odkazy na služby Bing, zároveň budete vědět, země a jazyk mohou poskytnout upřednostňované lokalizované Bing činnost koncového uživatele Pokud uživatel kliknutím na odkazy Bing.
+API pro vizuální vyhledávání Bingu podporuje více než deseti tři zemích nebo oblastech, mnoho s více než jeden jazyk. Každý požadavek by měl obsahovat zemi/oblast a jazyk podle vlastní volby uživatele. Znalost trhu uživatele pomáhá Bing vrátí odpovídající výsledky. Pokud nezadáte země/oblast a jazyk, díky Bingu pokusí určit jazyk a zemi/oblast uživatele. Vzhledem k tomu, že výsledky mohou obsahovat odkazy na Bingu, znalost země/oblast a jazyk může poskytnout upřednostňované lokalizované Bingu činnost koncového uživatele Pokud uživatel klikne na Bingu odkazy.
 
-Chcete-li zadat země a jazyk, nastavte `mkt` parametr dotazu (trhu) kód z **trhů** následující tabulka. Na trhu Určuje zemi i jazyk. Pokud uživatel upřednostní zobrazíte zobrazení textu v jiném jazyce, nastavte `setLang` parametr příslušný jazyk kódu dotazu.
+Chcete-li zadat zemi/oblast a jazyk, nastavte `mkt` parametr dotazu (trhu) pro kódování ze **trhy** následující tabulka. Určuje, na trhu země/oblast a jazyk. Pokud uživatel preferuje zobrazíte zobrazení textu v jiném jazyce, nastavte `setLang` parametr kódu příslušný jazyk dotazu.
 
-Alternativně můžete zadat pomocí země `cc` parametr dotazu. Pokud zadáte jiné zemi, musíte zadat také jeden nebo více kódů pomocí `Accept-Language` hlavičky protokolu HTTP. Podporované jazyky se liší podle země; jsou uvedené pro každou zemi v tabulce trhů.
+Alternativně můžete zadat pomocí země/oblast `cc` parametr dotazu. Pokud chcete zadat určitá země nebo oblast, musíte zadat také jeden nebo více kódů jazyka pomocí `Accept-Language` hlavičky protokolu HTTP. Podporované jazyky se liší podle země nebo oblasti; jsou uvedeny pro jednotlivé země v tabulce trhy.
 
 
 
 > [!NOTE]
-> Platí následující omezení trhu:
+> Platí následující omezení na trhu:
 > 
-> - Obrázek rozpoznávání poznámky jsou pouze k dispozici v angličtině. 
-> - Recepturách, nákupních a stránky včetně statistiky jsou dostupné jenom na trhu en US. 
+> - Poznámky rozpoznávání obrázků jsou pouze k dispozici v angličtině. 
+> - Recepty, nákupy a přehledů stránek, včetně jsou k dispozici pouze na trhu en US. 
 
 
-## <a name="countries"></a>Jednotlivé země
+## <a name="countries"></a>Země
 
-|Země|Kód|
+|Země/oblast|Kód|
 |-------|----|
 |Argentina|AR|
 |Austrálie|AU|
-|Rakousko|NA|
+|Rakousko|AT|
 |Belgie|BÝT|
 |Brazílie|BRAZÍLIE|
 |Kanada|CA|
@@ -48,13 +48,13 @@ Alternativně můžete zadat pomocí země `cc` parametr dotazu. Pokud zadáte j
 |Dánsko|DK|
 |Finsko|FI|
 |Francie|FR|
-|Německo|NĚMECKO|
-|Hongkong|(HONG KONG)|
-|Indie|V|
+|Německo|DE|
+|Hongkong|HK|
+|Indie|INDIE|
 |Indonésie|ID|
 |Itálie|IT|
 |Japonsko|JP|
-|Korea|KR|
+|Jižní Korea|KOREA|
 |Malajsie|MOJE|
 |Mexiko|MX|
 |Nizozemsko|NL|
@@ -63,9 +63,9 @@ Alternativně můžete zadat pomocí země `cc` parametr dotazu. Pokud zadáte j
 |Čína|CN|
 |Polsko|PL|
 |Portugalsko|PT|
-|Filipíny|PARAMETR|
+|Filipíny|PH|
 |Rusko|RU|
-|Saúdská Arábie|PŘIDRUŽENÍ ZABEZPEČENÍ|
+|Saúdská Arábie|SA|
 |Jihoafrická republika|ZA|
 |Španělsko|ES|
 |Švédsko|SE|
@@ -76,17 +76,17 @@ Alternativně můžete zadat pomocí země `cc` parametr dotazu. Pokud zadáte j
 |Spojené státy|USA|
 
 
-## <a name="markets"></a>Trzích
+## <a name="markets"></a>Trhy
 
-|Země|Jazyk|Trhu kódu|
+|Země/oblast|Jazyk|Kód na trhu|
 |-------|--------|-----------|
-|Argentina|Španělština|ES-AR|
-|Austrálie|Angličtina|en-AU|
+|Argentina|Španělština|ES AR|
+|Austrálie|Angličtina|cs AU|
 |Rakousko|Němčina|de-AT|
 |Belgie|Holandština|nl-BE|
 |Belgie|Francouzština|FR-být|
 |Brazílie|Portugalština|pt-BR|
-|Kanada|Angličtina|en-CA|
+|Kanada|Angličtina|cs CA|
 |Kanada|Francouzština|fr-CA|
 |Chile|Španělština|ES-CL|
 |Dánsko|dánština|da-DK|
@@ -95,22 +95,22 @@ Alternativně můžete zadat pomocí země `cc` parametr dotazu. Pokud zadáte j
 |Německo|Němčina|de-DE|
 |Hongkong|Tradiční čínština|zh-HK|
 |Indie|Angličtina|en-IN|
-|Indonésie|Angličtina|en-ID|
+|Indonésie|Angličtina|cs ID|
 |Itálie|italština|IT-IT|
 |Japonsko|Japonština|ja-JP|
-|Korea|Korejština|ko-KR|
-|Malajsie|Angličtina|en Moje|
+|Jižní Korea|Korejština|ko-KR|
+|Malajsie|Angličtina|cs MY|
 |Mexiko|Španělština|es-MX|
 |Nizozemsko|Holandština|NL-NL|
-|Nový Zéland|Angličtina|en-NZ|
+|Nový Zéland|Angličtina|cs NZ|
 |Čína|Čínština|zh-CN|
 |Polsko|polština|pl-PL|
 |Portugalsko|Portugalština|pt-PT|
-|Filipíny|Angličtina|en parametr|
+|Filipíny|Angličtina|cs PH|
 |Rusko|ruština|ru-RU|
-|Saúdská Arábie|arabština|ar (SA)|
-|Jihoafrická republika|Angličtina|en-ZA|
-|Španělsko|Španělština|ES-ES|
+|Saúdská Arábie|arabština|ar-SA|
+|Jihoafrická republika|Angličtina|cs ZA|
+|Španělsko|Španělština|es-ES|
 |Švédsko|švédština|sv-SE|
 |Švýcarsko|Francouzština|FR-CH|
 |Švýcarsko|Němčina|de-CH|
@@ -118,4 +118,4 @@ Alternativně můžete zadat pomocí země `cc` parametr dotazu. Pokud zadáte j
 |Turecko|turečtina|tr-TR|
 |Spojené království|Angličtina|en-GB|
 |Spojené státy|Angličtina|cs-CZ|
-|Spojené státy|Španělština|ES USA|
+|Spojené státy|Španělština|ES US|

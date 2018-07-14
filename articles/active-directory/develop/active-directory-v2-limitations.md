@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory v2.0 koncový bod omezení a limity | Microsoft Docs
-description: Seznam omezení a limity pro koncový bod v2.0 Azure AD.
+title: Azure Active Directory v2.0 koncový bod omezení a limity | Dokumentace Microsoftu
+description: Seznam omezení a limity pro koncový bod Azure AD v2.0.
 services: active-directory
 documentationcenter: ''
 author: CelesteDG
@@ -13,58 +13,63 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/01/2017
+ms.date: 07/12/2017
 ms.author: celested
 ms.reviewer: hirsin, dastrock
 ms.custom: aaddev
-ms.openlocfilehash: d7328ba8403f2415705d049d1fc7947b52aeb5c1
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 4fbde5306efb2de5cfe3ffd0a49b9e24a7b67e8c
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36319555"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39003954"
 ---
-# <a name="should-i-use-the-v20-endpoint"></a>Použít koncového bodu v2.0?
-Při vytváření aplikací, které se integrují s Azure Active Directory, musíte rozhodnout, zda protokoly v2.0 koncový bod a ověřování podle svých potřeb. Původní koncový bod Azure služby Active Directory je stále plně podporovaná a v některých ohledech je další bohaté funkce než v2.0. Ale koncového bodu v2.0 [představuje významné výhody](active-directory-v2-compare.md) pro vývojáře.
+# <a name="should-i-use-the-v20-endpoint"></a>Použít koncový bod verze 2.0?
 
-Tady je naše zjednodušené doporučení pro vývojáře v tuto chvíli:
+Při sestavování aplikací, které se integrují s Azure Active Directory (Azure AD), musíte se rozhodnout, jestli protokoly pro ověřování a koncový bod v2.0 vašim potřebám. Původní koncového bodu Azure AD jsou stále plně podporovány a v některých ohledech se další bohaté funkce než verze 2.0. Ale koncovým bodem v2.0 [představuje významné výhody](active-directory-v2-compare.md) pro vývojáře.
 
-* Jestliže musíte podporovat osobní účty Microsoft v aplikaci, použijte koncového bodu v2.0. Ale předtím, než provedete, ujistěte se, že rozumíte omezení, které v tomto článku probereme.
-* Pokud aplikace potřebuje pouze na podporu společnosti Microsoft pracovní a školní účty, nepoužívejte koncového bodu v2.0. Místo toho najdete na našem [Příručka pro vývojáře Azure AD](active-directory-developers-guide.md).
+Tady je zjednodušené doporučení pro vývojáře v daném okamžiku:
 
-V čase bude dosáhnout koncového bodu v2.0 eliminovat omezení zde uvedeny, takže je potřeba vždy jen pomocí koncového bodu v2.0. Do té doby Tento článek je určený k vám pomohou určit, jestli je koncový bod v2.0 pro vás nejvhodnější. Budeme nadále aktualizace v tomto článku tak, aby odrážela aktuální stav koncového bodu v2.0. Vraťte se zpět na přehodnocovat požadavků na možnosti v2.0.
+* Pokud vaše aplikace musí podporovat osobní účty Microsoft, použijte koncový bod verze 2.0. Ale předtím, než provedete, ujistěte se, že rozumíte omezení popsané v tomto článku.
+* Pokud vaše aplikace potřebuje pouze pro podporu pracovní a školní účty, nepoužívejte koncový bod verze 2.0. Místo toho odkazovat [Příručka pro vývojáře Azure AD](active-directory-developers-guide.md).
 
-Pokud máte existující aplikaci Azure AD, která nepoužívá koncový bod v2.0, je potřeba začít úplně od začátku. V budoucnu poskytujeme způsob, jak používat svoje stávající aplikace Azure AD s koncovým bodem v2.0.
+Chcete-li odstranit omezení zde uvedeny, tak, aby vždy jen musíte použít koncový bod verze 2.0 bude vyvíjet koncový bod verze 2.0. Do té doby použijte tento článek k určení, zda je koncový bod verze 2.0 pro vás nejvhodnější. Budeme nadále aktualizovat tak, aby odrážela aktuální stav koncového bodu v2.0 tohoto článku. Vraťte se zpět na opětovné vyhodnocení požadavků pro funkce verze 2.0.
+
+Pokud máte existující aplikace Azure AD, která nepoužívá koncovým bodem v2.0, není nutné spustit od začátku. V budoucnu poskytneme vám používat svoje stávající aplikace Azure AD s koncovým bodem v2.0.
 
 ## <a name="restrictions-on-app-types"></a>Omezení typů aplikací
-V současné době nepodporuje následující typy aplikací koncového bodu v2.0. Popis typů podporovaných aplikací najdete v tématu [typy aplikací pro koncový bod v2.0 Azure Active Directory](active-directory-v2-flows.md).
+
+V současné době nepodporuje následující typy aplikací koncovým bodem v2.0. Popis typů podporovaných aplikací najdete v tématu [typů aplikací pro koncový bod služby Azure Active Directory v2.0](active-directory-v2-flows.md).
 
 ### <a name="standalone-web-apis"></a>Samostatné webové rozhraní API
-Můžete použít pro koncový bod v2.0 [sestavit Web API, která je zabezpečená pomocí OAuth 2.0](active-directory-v2-flows.md#web-apis). Ale že webového rozhraní API může přijímat tokeny pouze z aplikace, která má stejné ID aplikace Nelze získat přístup webového rozhraní API z klienta, který má jiné ID aplikace Klienta nebude možné požadovat nebo získat oprávnění k vaší webové rozhraní API.
 
-Jak sestavit webové rozhraní API, které přijímá tokeny z klienta, který má stejné ID aplikace, najdete v sekci ukázky webového rozhraní API koncový bod v2.0 v našem [Začínáme](active-directory-appmodel-v2-overview.md#getting-started) části.
+Můžete použít k koncovým bodem v2.0 [sestavení webového rozhraní API, která je zabezpečena pomocí OAuth 2.0](active-directory-v2-flows.md#web-apis). Ale tohoto webového rozhraní API může přijímat tokeny pouze z aplikace, která má stejné ID aplikace. Nelze přistupovat k webové rozhraní API z klienta, který má jiné ID aplikace. Klient nebude moci vyžádat si či získat oprávnění pro vaše webové rozhraní API.
 
-## <a name="restrictions-on-app-registrations"></a>Omezení při registraci aplikace
-V současné době pro každou aplikaci, kterou chcete integrovat s koncovým bodem v2.0, je nutné vytvořit registraci aplikací v novém [portálu pro registraci aplikace Microsoft](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList). Existující služby Azure AD, nebo nejsou kompatibilní s koncovým bodem v2.0 aplikace účtu Microsoft. Aplikace, které jsou zaregistrovány v libovolnému portálu než portálu pro registraci aplikace nejsou kompatibilní s koncovým bodem v2.0. V budoucnu plánujeme poskytnout způsob, jak používat existující aplikaci jako v2.0 aplikaci. V současné době ale neexistuje žádná cesta migrace pro stávající aplikace pro práci s koncovým bodem v2.0.
+Informace o tom sestavení webového rozhraní API, které přijímá tokeny z klienta, který má stejné ID aplikace, najdete v ukázkách webového rozhraní API koncový bod v2.0 v [Začínáme](active-directory-appmodel-v2-overview.md#getting-started) části.
 
-Kromě toho registrace aplikace, které vytvoříte v [portálu pro registraci aplikace](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) mít zohledněním těchto aspektů:
+## <a name="restrictions-on-app-registrations"></a>Omezení registrace aplikací
 
-* Jsou povoleny pouze dva tajné klíče aplikace na ID aplikace.
-* Registraci aplikace registrovaný uživatel s osobní účet Microsoft můžete zobrazit a spravovat pouze podle jednoho vývojářského účtu. Nesmí se sdílet mezi více vývojářů. Pokud chcete sdílet mezi více vývojářů registrace aplikace, můžete vytvořit aplikaci po přihlášení k portálu pro registraci pomocí účtu Azure AD.
-* Existuje několik omezení na formát identifikátor URI, který je povoleno přesměrování. Další informace o přesměrování identifikátory URI najdete v další části.
+V současné době pro každou aplikaci, kterou chcete integrovat s koncovým bodem v2.0, je nutné vytvořit registrace aplikace v novém [portál pro registraci aplikací Microsoft](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList). Existující služby Azure AD, nebo nejsou kompatibilní s koncovým bodem v2.0 aplikace účtu Microsoft. Aplikace, které jsou registrovány žádné portálu než portál pro registraci aplikací nejsou kompatibilní s koncovým bodem v2.0. V budoucnu plánujeme zajistit způsob použití stávající aplikace jako aplikaci verze 2.0. V současné době neexistuje žádný způsob migrace pro existující aplikace pro práci s koncovým bodem v2.0.
 
-## <a name="restrictions-on-redirect-uris"></a>Omezení přesměrování identifikátory URI
-Aplikace, které jsou zaregistrovány v portálu pro registraci aplikace v současné době jsou omezeny na omezenou sadu hodnot identifikátoru URI přesměrování. Přesměrování identifikátor URI pro webové aplikace a služby musí začínat schéma `https`, a všechny hodnoty identifikátoru URI přesměrování musí sdílí jedinou doménu DNS. Například nelze zaregistrovat webové aplikace, který obsahuje jedno z těchto přesměrování identifikátory URI:
+Kromě toho registrace aplikací, které vytvoříte v [portál pro registraci aplikací](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) mají následující upozornění:
+
+* Jsou povolené jenom dva tajné kódy aplikace za ID aplikace.
+* Registrace aplikace s registrovaných uživatelů pomocí osobního účtu Microsoft můžete zobrazit a spravovat jenom jeden vývojářský účet. Není možné sdílet mezi více vývojářů. Pokud chcete sdílet vaše registrace aplikace mezi více vývojářů, můžete vytvořit aplikaci po přihlášení k portálu pro registraci pomocí účtu služby Azure AD.
+* Existuje několik omezení na formátu identifikátoru URI, který je povoleno přesměrování. Další informace o identifikátory URI pro přesměrování najdete v další části.
+
+## <a name="restrictions-on-redirect-uris"></a>Omezení pro identifikátory URI pro přesměrování
+
+Aplikace, které jsou registrovány v portálu pro registraci aplikace jsou omezeny na omezenou sadu hodnot identifikátoru URI přesměrování. Přesměrování identifikátor URI pro webové aplikace a služby musí začínat schématem `https`, a všechny hodnoty identifikátoru URI pro přesměrování musejí sdílet jednu doménu DNS. Například nemůžete zaregistrovat webovou aplikaci s některou z těchto identifikátory URI pro přesměrování:
 
 `https://login-east.contoso.com`  
 `https://login-west.contoso.com`
 
-Systém registrace porovná celý název DNS existující identifikátor URI pro přesměrování název DNS identifikátor URI, který chcete přidat přesměrování. Požadavek na přidání názvu DNS selže, pokud platí některá z následujících podmínek:  
+Registrační systém porovnává celý název DNS stávající URI přesměrování na název DNS přesměrování identifikátor URI, který chcete přidat. Požadavek na přidání názvu DNS selže, pokud platí některá z následujících podmínek:  
 
-* Celý název DNS nový identifikátor URI pro přesměrování neodpovídá názvu DNS existující identifikátor URI pro přesměrování.
-* Celý název DNS nový identifikátor URI pro přesměrování není subdoména existující identifikátor URI pro přesměrování.
+* Celý název DNS nové identifikátor URI pro přesměrování neodpovídá názvu DNS stávající identifikátor URI pro přesměrování.
+* Celý název DNS nové identifikátor URI pro přesměrování není subdoménou stávající identifikátor URI pro přesměrování.
 
-Například, pokud má tento identifikátor URI pro přesměrování:
+Například, pokud má tento identifikátor URI pro přesměrování aplikace:
 
 `https://login.contoso.com`
 
@@ -76,37 +81,42 @@ V tomto případě se název DNS přesně shoduje. Nebo můžete provést toto:
 
 `https://new.login.contoso.com`
 
-V tomto případě odkazujete na subdoménu DNS login.contoso.com. Pokud budete chtít mít aplikaci, která má přihlášení east.contoso.com a west.contoso.com přihlášení jako identifikátory URI přesměrování, je nutné přidat že ty přesměrování identifikátory URI v tomto pořadí:
+V tomto případě odkazujete na subdoménu DNS login.contoso.com. Pokud chcete mít aplikaci, která má login-east.contoso.com a login-west.contoso.com jako identifikátory URI pro přesměrování, je nutné přidat že tyto identifikátory URI přesměrování v tomto pořadí:
 
 `https://contoso.com`  
 `https://login-east.contoso.com`  
 `https://login-west.contoso.com`  
 
-Druhé dva můžete přidat, protože jsou subdomény první URI přesměrování contoso.com. Toto omezení se odeberou v nadcházející verzi.
+Druhé dvě můžete přidat, protože jsou subdoménami první URI přesměrování contoso.com. Toto omezení se odeberou v nadcházející verzi.
 
-Všimněte si také, může mít jenom 20 adresy URL odpovědi pro konkrétní aplikace.
+Všimněte si také, může mít pouze 20 adresy URL odpovědí pro určitou aplikaci.
 
-Zjistěte, jak zaregistrovat aplikaci v portálu pro registraci aplikace, najdete v tématu [postup registrace aplikace s koncovým bodem v2.0](active-directory-v2-app-registration.md).
+Zjistěte, jak zaregistrovat aplikaci v portálu pro registraci aplikací, najdete v článku [postup registrace aplikace s koncovým bodem v2.0](active-directory-v2-app-registration.md).
 
-## <a name="restrictions-on-libraries-and-sdks"></a>Omezení knihovny a sady SDK
-Podpora knihovny pro koncový bod v2.0 je v současné době omezené. Pokud chcete použít koncového bodu v2.0 v produkční aplikace, máte tyto možnosti:
+## <a name="restrictions-on-libraries-and-sdks"></a>Omezení týkající se knihoven a sad SDK
 
-* Pokud vytváříte webovou aplikaci, bezpečně můžete všeobecně dostupná serverové middlewaru Microsoft k přihlášení a token ověření. Mezi ně patří middleware OWIN Open ID Connect pro technologii ASP.NET a Node.js Passport modulu plug-in. Ukázky kódu, které používají Microsoft middleware, najdete v tématu naše [Začínáme](active-directory-appmodel-v2-overview.md#getting-started) části.
-* Pokud vytváříte aplikace desktop či mobile, můžete použít jeden z našich preview Microsoft ověřování knihovny (MSAL). Tyto knihovny jsou ve verzi preview s provozním podporována, takže je bezpečné používat v produkční aplikace. Další informace o podmínky verze preview a dostupných knihoven v našich [referenční dokumentace knihoven ověřování](active-directory-v2-libraries.md).
-* Pro platformy, které nejsou pokryty knihovny Microsoft můžete integrovat s koncovým bodem v2.0 pomocí přímo odesílání a přijímání zprávy protokolu v kódu aplikace. Protokoly OpenID Connect a OAuth v2.0 [explicitně popsané](active-directory-v2-protocols.md) můžete provádět takové integrace.
-* Nakonec můžete otevřít ID Connect a OAuth knihovny open-source pro integraci s koncovým bodem v2.0. Protokol v2.0 musí být kompatibilní s mnoha knihovny open-source protokolu bez hlavní změny. Dostupnost tohoto typu knihovny se liší podle jazyka a platformu. [Open ID Connect](http://openid.net/connect/) a [OAuth 2.0](http://oauth.net/2/) weby udržovat seznam oblíbených implementace. Další informace najdete v tématu [v2.0 a ověřování knihovny Azure Active Directory](active-directory-v2-libraries.md)a seznam open-source klientské knihovny a ukázky, které byly testovány s koncovým bodem v2.0.
+Podpora knihovny pro koncový bod verze 2.0 je aktuálně omezená. Pokud chcete použít koncový bod v2.0 v produkční aplikace, máte tyto možnosti:
+
+* Pokud vytváříte webovou aplikaci, můžete bez obav použít middlewaru Microsoft obecně dostupné na straně serveru k provedení ověřování přihlášení a token. Patří mezi ně middleware OWIN Open ID Connect pro ASP.NET a Node.js Passport modulu plug-in. Ukázky kódu, které používají Microsoft middleware, najdete v článku [Začínáme](active-directory-appmodel-v2-overview.md#getting-started) oddílu.
+* Pokud vytváříte desktopové nebo mobilní aplikaci, můžete použít jednu z verze preview knihovny Microsoft Authentication (MSAL). Tyto knihovny jsou ve verzi preview s podporou produkčního prostředí, takže je bezpečný pro použití v aplikacích v produkčním prostředí. Další informace o podmínkách verze preview a dostupné knihovny v [referenční dokumentace knihoven ověřování](active-directory-v2-libraries.md).
+* Pro platformy není pokrytá knihoven Microsoftu můžete integrovat s koncovým bodem v2.0 pomocí přímo, odesílání a přijímání zprávy protokolu v kódu aplikace. Protokoly OpenID Connect a OAuth 2.0 [výslovně popsanými](active-directory-v2-protocols.md) můžete provádět tato integrační.
+* Nakonec můžete použít open source knihovny otevřete ID Connect a OAuth pro integraci s koncovým bodem v2.0. Verze 2.0 protokol by měl být kompatibilní s mnoha protokol open source knihovny bez důležité změny. Dostupnost tyto druhy knihoven se liší podle jazyka a libovolné platformy. [Open ID Connect](http://openid.net/connect/) a [OAuth 2.0](http://oauth.net/2/) websites udržovat seznam oblíbených implementace. Další informace najdete v tématu [knihovny Azure Active Directory v2.0 a ověřování](active-directory-v2-libraries.md)a seznam open source klientské knihovny a ukázky, které byly testovány s koncovým bodem v2.0.
 
 ## <a name="restrictions-on-protocols"></a>Omezení pro protokoly
-Koncový bod v2.0 nepodporuje SAML nebo WS-Federation; podporuje pouze Open ID Connect a OAuth 2.0. Ne všechny funkce a možnosti OAuth protokolů byly zahrnuty do koncového bodu v2.0. Aktuálně jsou tyto funkce protokolu a možnosti *není k dispozici* v koncového bodu v2.0:
 
-* ID tokeny, které jsou vydány koncového bodu v2.0 neobsahují `email` deklarace pro uživatele, i když získat oprávnění od uživatele k zobrazení e-mailu.
-* Koncový bod OpenID Connect uživateli není implementována pro koncový bod v2.0. Všechna data profilu, které se by potenciálně zobrazit na tento koncový bod je však k dispozici z Microsoft Graph `/me` koncový bod.
-* Koncový bod v2.0 nepodporuje vydávající role nebo skupiny deklarací identity v tokenech ID.
-* [Udělení pověření heslo vlastníka prostředku OAuth 2.0](https://tools.ietf.org/html/rfc6749#section-4.3) nepodporuje koncového bodu v2.0.
+Koncový bod v2.0 nepodporuje SAML nebo WS-Federation; podporuje pouze Open ID Connect a OAuth 2.0. Ne všechny funkce a možnosti protokoly OAuth byly zahrnuty do koncového bodu v2.0.
 
-Kromě toho koncového bodu v2.0 nepodporuje jakoukoli formu protokoly SAML nebo WS-Federation.
+Následující protokol funkce a možnosti v současné době jsou *není k dispozici* koncový bod verze 2.0:
 
-Abyste lépe pochopili rozsah protokol funkcí podporovaných v koncový bod v2.0, přečíst naše [referenční informace o protokolu OpenID Connect a OAuth 2.0](active-directory-v2-protocols.md).
+* V současné době `email` deklarace identity se vrátí pouze pokud je nakonfigurovaná volitelnou deklaraci a obor je rozsah = e-mailu byla zadaná v žádosti. Toto chování však změní jako koncový bod v2.0 se aktualizuje a další v souladu se standardy Open ID Connect a OAuth 2.0.
+* Koncový bod OpenID Connect UserInfo není implementované u koncového bodu v2.0. Všechna data profilu, které potenciálně by se zobrazila v tomto koncovém bodu je však k dispozici z Microsoft Graphu `/me` koncového bodu.
+* Koncový bod verze 2.0 nepodporuje vydávající roli nebo skupinu deklarací identity v tokenech ID.
+* [Udělení přihlašovacích údajů heslo vlastníka prostředku OAuth 2.0](https://tools.ietf.org/html/rfc6749#section-4.3) není podporované koncovým bodem v2.0.
+
+Koncový bod v2.0 nepodporuje žádnou formu protokoly SAML nebo WS-Federation.
+
+Chcete-li lépe pochopit tak rozsah protokolu funkcí podporovaných koncový bod verze 2.0, přečtěte si naše [referenční informace o protokolu OpenID Connect a OAuth 2.0](active-directory-v2-protocols.md).
 
 ## <a name="restrictions-for-work-and-school-accounts"></a>Omezení pro pracovní a školní účty
-Pokud jste použili Active Directory Authentication Library (ADAL) v aplikacích Windows, může mít prováděné výhod integrované ověřování systému Windows, který používá grant assertion Security (Assertion Markup Language SAML). S Tento grant federované uživatele Azure AD klienty můžete bezobslužně ověřit pomocí jejich místní instanci Active Directory bez nutnosti zadávat přihlašovací údaje. Udělení kontrolního výrazu SAML v současné době nepodporuje na koncový bod v2.0.
+
+Pokud jste použili Active Directory Authentication Library (ADAL) v aplikacích Windows, může být trvaly výhod integrovaného ověřování Windows, který používá kontrolní výraz udělení zabezpečení kontrolního výrazu SAML (Markup Language). S tomuto grantu federovaných uživatelů Azure AD můžete bezobslužně tenanti ověřují pomocí jejich místní instancí Active Directory bez zadávání přihlašovacích údajů. Udělení kontrolního výrazu SAML se v současné době nepodporuje na koncový bod verze 2.0.

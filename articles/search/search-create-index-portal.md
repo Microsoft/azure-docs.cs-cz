@@ -1,48 +1,46 @@
 ---
-title: Vytvoření indexu (portál – Azure Search) | Microsoft Docs
-description: Vytvoření indexu pomocí portálu Azure
+title: Vytvoření indexu Azure Search na portálu | Dokumentace Microsoftu
+description: Informace o vytvoření indexu pro službu Azure Search pomocí návrhářů integrované portálu indexu.
 manager: cgronlun
 author: heidisteen
 services: search
 ms.service: search
 ms.devlang: NA
-ms.topic: quickstart
-ms.date: 06/20/2017
+ms.topic: conceptual
+ms.date: 07/10/2018
 ms.author: heidist
-ms.openlocfilehash: 722f1eb989fb8c160def4024b1aa967a47b87697
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
-ms.translationtype: HT
+ms.openlocfilehash: bb1ba5e860dab237b3f6e16205b5e4cbad45e6e3
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34203865"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38990842"
 ---
-# <a name="create-an-azure-search-index-using-the-azure-portal"></a>Vytvoření indexu Azure Search pomocí portálu Azure
+# <a name="how-to-create-an-azure-search-index-using-the-azure-portal"></a>Vytvoření indexu Azure Search pomocí webu Azure portal
 
-Pomocí integrovaného návrháře indexů na portálu Azure sestavíte prototyp nebo vytvoříte [index vyhledávání](search-what-is-an-index.md), který poběží ve vaší službě Azure Search. 
+Služba Azure Search obsahuje index na integrované návrháře na portálu, které jsou užitečné pro prototypů nebo vytváření [indexu vyhledávání](search-what-is-an-index.md) hostované ve službě Azure Search. Nástroj se používá pro konstrukci schématu. Při ukládání definice indexu prázdný stane plně vyjádřené ve službě Azure Search. Jak ho načíst data pomocí prohledávatelných dat je na vás.
 
-Nebo můžete pomocí rozhraní API [.NET](search-create-index-dotnet.md) nebo [REST](search-create-index-rest-api.md) vytvořit index.
+Návrháře indexů je pouze jedním z přístupů pro vytvoření indexu. Prostřednictvím kódu programu, můžete vytvořit index pomocí [.NET](search-create-index-dotnet.md) nebo [REST](search-create-index-rest-api.md) rozhraní API.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Tento článek předpokládá [předplatné Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F) a [službu Azure Search](search-create-service-portal.md).  
+Tento článek předpokládá [předplatné Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F) a [službu Azure Search](search-create-service-portal.md).
 
-## <a name="find-your-search-service"></a>Najděte si vyhledávací službu
-1. Přihlaste se na stránku Azure Portal a projděte si [vyhledávací služby pro svoje předplatné](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices).
-2. Vyberte službu Azure Search.
+## <a name="open-index-designer-and-name-an-index"></a>Otevřete návrháře indexů a pojmenujte index
 
-## <a name="name-the-index"></a>Pojmenujte index
+1. Přihlaste se na webu [Azure Portal](https://portal.azure.com) a otevřete řídicí panel služby. Kliknutím na **Všechny služby** na panelu odkazů můžete vyhledávat stávající „vyhledávací služby“ v rámci aktuálního předplatného. 
 
-1. Klikněte na tlačítko **Přidat index** na panelu příkazů v horní části stránky.
-2. Pojmenujte si index Azure Search. 
+2.  Klikněte na tlačítko **Přidat index** na panelu příkazů v horní části stránky.
+
+3. Pojmenujte si index Azure Search. Index názvy jsou odkazovány v operace indexování a dotazu. Název indexu se stane součástí adresy URL koncového bodu u připojení k indexu a pro posílání žádostí HTTP v rozhraní REST API služby Azure Search.
+
    * Začněte písmenem.
    * Název může obsahovat jenom malá písmena, číslice nebo pomlčky (-).
    * Délka je omezená na 60 znaků.
 
-  Název indexu se stane součástí adresy URL koncového bodu u připojení k indexu a pro posílání žádostí HTTP v rozhraní REST API služby Azure Search.
-
 ## <a name="define-the-fields-of-your-index"></a>Definujte pole indexu
 
-Kompozice indexu obsahuje *kolekci Pole*, která definuje prohledávatelná data v indexu. Přesněji řečeno určuje strukturu dokumentů, které nahráváte na server samostatně. Kolekce Pole zahrnuje povinná a nepovinná pole s názvem a typem a s atributy indexu, které určují, jak se dá pole použít.
+Kompozice indexu obsahuje *kolekci Pole*, která definuje prohledávatelná data v indexu. Kolekce polí zcela, určuje strukturu dokumentů, které můžete odeslat samostatně. Kolekce pole zahrnuje povinná i nepovinná pole s názvem a typem a s atributy indexu, které určují, jak je možné pole.
 
 1. V okně **Přidat Index** klikněte na **Pole >**, aby se vysunulo okno definice pole. 
 
@@ -63,6 +61,7 @@ Vytvoření indexu na portálu je na klávesnici náročné. Pomocí následují
 2. Potom použijte zaškrtávací políčka v horní části každého atributu a hromadně povolte nastavení pro všechna pole a potom selektivně zrušte zaškrtnutí políček u několika polí, která to nastavení nevyžadují. Například pole s řetězcem jsou obvykle prohledávatelná. Díky tomu můžete kliknout na **Retrievable** (Zobrazitelné) a **Searchable** (Prohledávatelné), aby se vracely hodnoty pole ve výsledcích hledání a bylo i možné fulltextové vyhledávání v poli. 
 
 <a name="design"></a>
+
 ## <a name="design-guidance-for-setting-attributes"></a>Pokyny k nastavení atributů návrhu
 
 I když můžete nová pole přidat kdykoliv, jsou existující definice polí zamknuté v indexu po dobu jeho existence. Z tohoto důvodu vývojáři obvykle používají portál k vytváření jednoduchých indexů, testování nápadů nebo k vyhledání nastavení pomocí stránek portálu. Časté změny návrhu indexu jsou efektivnější, pokud budete postupovat pomocí kódu, aby bylo možné index snadno znovu sestavit.
@@ -92,13 +91,13 @@ Dokumentace k rozhraní API služby Azure Search obsahuje příklady kódu s jed
 
 ![](./media/search-create-index-portal/set-analyzer.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Po vytvoření indexu Azure Search můžete přejít na další krok: [nahrání prohledávatelných dat do indexu](search-what-is-data-import.md).
 
 Další možnost je také podívat se blíže na indexy. Kromě kolekce Pole index také určuje analyzátory, moduly pro návrhy, profily vyhodnocování (bodovací profily) a nastavení CORS. Portál poskytuje stránky se záložkami pro definování nejběžnějších elementů: polí, analyzátorů a modulů pro návrhy. K vytvoření nebo úpravě jiných elementů můžete použít rozhraní REST API nebo .NET SDK.
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
  [Jak funguje fulltextové vyhledávání](search-lucene-query-architecture.md)  
  [Rozhraní REST API služby Search](https://docs.microsoft.com/rest/api/searchservice/) [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search?view=azure-dotnet)

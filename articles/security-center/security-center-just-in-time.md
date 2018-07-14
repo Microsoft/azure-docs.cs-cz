@@ -1,6 +1,6 @@
 ---
-title: Pouze ve virtuálním počítači čas přístup v Azure Security Center | Microsoft Docs
-description: Tento dokument ukazuje jak jenom na dobu přístup virtuálních počítačů v Azure Security Center vám pomůže řízení přístupu k virtuální počítače Azure.
+title: Čas virtuálního počítače přístup k podle potřeby ve službě Azure Security Center | Dokumentace Microsoftu
+description: Tento dokument ukazuje jak včasný přístup k virtuálním počítačům v Azure Security Center pomáhá řídit přístup k vašim virtuálním počítačům Azure.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -12,188 +12,188 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/04/2018
+ms.date: 07/10/2018
 ms.author: terrylan
-ms.openlocfilehash: 60a5de16f4146e112a85d74634c662e228a0854f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 288524e58efd64670df098f249f3ad0b1cca464c
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34640553"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38990574"
 ---
-# <a name="manage-virtual-machine-access-using-just-in-time"></a>Spravovat přístup k virtuálním počítačům pomocí právě v čase
+# <a name="manage-virtual-machine-access-using-just-in-time"></a>Správa přístupu k virtuálním počítačům pomocí metody právě včas
 
-Právě v čas virtuální počítač (VM) přístupu slouží zamknout příchozí přenosy na virtuální počítače Azure, snižuje riziko napadení a snadného přístupu pro připojení k virtuálním počítačům v případě potřeby.
-
-> [!NOTE]
-> Právě v čase funkce je dostupná na úrovni Standard služby Security Center.  Další informace o cenových úrovních služby Security Center najdete na stránce s [cenami](security-center-pricing.md).
->
->
-
-## <a name="attack-scenario"></a>Scénář útoku
-
-Útok hrubou silou útokům běžně cílové porty správy jako prostředek k získání přístupu k virtuálnímu počítači. V případě úspěšného útočník může převzít kontrolu nad virtuálního počítače a vytvořit dostane do vašeho prostředí.
-
-Chcete-li omezit množství času, který je otevřený port je jedním ze způsobů, aby se snížila zranitelnost vůči útoku hrubou silou. Porty pro správu nemusí být otevřené nepřetržitě. Musí být otevřené pouze během připojení k virtuálnímu počítači, například kvůli provádění úloh správy nebo údržby. Pokud právě v čase je povoleno, Security Center používá [skupinu zabezpečení sítě](../virtual-network/security-overview.md#security-rules) (NSG) pravidla, která omezit přístup k portům správy, takže nemůžou být cílem útočníků.
-
-![Jenom v případě čas][1]
-
-## <a name="how-does-just-in-time-access-work"></a>Jak jenom při přístup k časovému funguje?
-
-Pokud je povolený přístup JIT (právě včas), Security Center uzamkne příchozí provoz do vašich virtuálních počítačů Azure vytvořením pravidla NSG. Můžete vybrat porty na virtuálním počítači, do které se uzamkne příchozí provoz směrem dolů. Tyto porty jsou řízeny jenom v době řešení.
-
-Když uživatel požaduje přístup k virtuálnímu počítači, Security Center zkontroluje, zda má uživatel [řízení přístupu na základě Role (RBAC)](../role-based-access-control/role-assignments-portal.md) oprávnění, které poskytují přístup pro zápis pro virtuální počítač. Pokud mají oprávnění k zápisu, jeho žádost se schválí a Security Center automaticky nakonfiguruje skupin zabezpečení sítě (Nsg) chcete povolit příchozí přenosy na vybrané porty pro množství času, který jste zadali. Po dobu vypršení platnosti, Security Center obnoví skupin Nsg do předchozího stavu. Tato připojení, které jsou už vytvořené se nepřerušují, ale.
+Právě v čase virtuálních počítačů (VM) přístupu slouží k zamezit příchozímu provozu na virtuální počítače Azure, tím omezit vystavení útokům při poskytování snadného přístupu pro připojení k virtuálním počítačům v případě potřeby.
 
 > [!NOTE]
-> Security Center, které jsou právě čas virtuálních počítačů přístup aktuálně podporuje pouze virtuální počítače nasazené prostřednictvím Správce Azure Resource Manager. Další informace o modelu nasazení Resource Manager i classic najdete [Azure Resource Manager oproti nasazení classic](../azure-resource-manager/resource-manager-deployment-model.md).
+> Podle potřeby v čase funkce je dostupná na úrovni Standard služby Security Center.  Další informace o cenových úrovních služby Security Center najdete na stránce s [cenami](security-center-pricing.md).
 >
 >
 
-## <a name="using-just-in-time-access"></a>Použití pouze v přístup k časovému
+## <a name="attack-scenario"></a>Útoku
+
+Útok hrubou silou útokům běžně cílové porty pro správu jako prostředek k získání přístupu k virtuálnímu počítači. V případě úspěchu, útočník může převzít kontrolu na virtuálním počítači a navázání proniknutí do vašeho prostředí.
+
+Chcete-li omezit množství času, který je otevřený port je jedním ze způsobů, aby se snížila zranitelnost vůči útoku hrubou silou. Porty pro správu nemusí být otevřené nepřetržitě. Musí být otevřené pouze během připojení k virtuálnímu počítači, například kvůli provádění úloh správy nebo údržby. Když za běhu je povolený, Security Center používá [skupinu zabezpečení sítě](../virtual-network/security-overview.md#security-rules) pravidel (NSG) omezující přístup k portům pro správu, takže nemůže být cílem útočníků.
+
+![Pouze v případě čas][1]
+
+## <a name="how-does-just-in-time-access-work"></a>Jak dočasný přístup v funguje?
+
+Pokud je povolený přístup JIT (právě včas), Security Center uzamkne příchozí provoz do vašich virtuálních počítačů Azure vytvořením pravidla NSG. Vyberete porty na virtuálním počítači, do které se uzamkne příchozí provoz dolů. Tyto porty se řídí podle potřeby v čase řešení.
+
+Když uživatel požádá o přístup k virtuálnímu počítači, Security Center kontroluje, zda má uživatel [řízení přístupu na základě Role (RBAC)](../role-based-access-control/role-assignments-portal.md) oprávnění, které poskytují přístup pro zápis pro virtuální počítač. Pokud mají oprávnění k zápisu, jeho žádost se schválí a Security Center automaticky nakonfiguruje skupiny zabezpečení sítě (Nsg) a povolení příchozí komunikace na vybrané porty množství času, který jste zadali. Po vypršení doby obnoví Security Center do předchozích stavů skupiny zabezpečení sítě. Tato připojení, které jsou už navázalo se nepřerušily, ale.
+
+> [!NOTE]
+> Security Center dočasný přístup virtuálních počítačů v současné době podporuje pouze virtuální počítače nasazené prostřednictvím Azure Resource Manageru. Další informace o modelu nasazení classic a Resource Manageru najdete v článku [Azure Resource Manageru a klasického nasazení](../azure-resource-manager/resource-manager-deployment-model.md).
+>
+>
+
+## <a name="using-just-in-time-access"></a>Pomocí dočasný přístup v
 
 1. Otevřete řídicí panel **Security Center**.
 
-2. V levém podokně vyberte **těsně v čas virtuálních počítačů přístup**.
+2. V levém podokně vyberte **čas přístupu k virtuálním počítačům podle potřeby**.
 
-![Právě v čase virtuální počítač přístup k dlaždici][2]
+![Včasný přístup k virtuálním počítačům dlaždici][2]
 
-**Těsně v čas virtuálních počítačů přístup** otevře se okno.
+**Čas přístupu k virtuálním počítačům podle potřeby** otevře se okno.
 
-![Právě v čase virtuální počítač přístup k dlaždici][10]
+![Včasný přístup k virtuálním počítačům dlaždici][10]
 
 V části **Přístup k virtuálním počítačům podle potřeby** se zobrazí informace o stavu vašich virtuálních počítačů:
 
-- **Nakonfigurované** – Virtuální počítače s nakonfigurovanou podporou přístupu podle potřeby. Data uvedená za poslední týden a zahrnuje počet schválené žádosti, datum posledního přístupu a čas a naposledy uživatele pro každý virtuální počítač.
-- **Doporučené** – Virtuální počítače, které můžou podporovat přístup podle potřeby, ale ještě tak nebyly nakonfigurované. Doporučujeme povolit jenom při řízení přístupu čas virtuálních počítačů pro tyto virtuální počítače. V tématu [konfigurace jenom v zásadách přístupu čas](#configuring-a-just-in-time-access-policy).
+- **Nakonfigurované** – Virtuální počítače s nakonfigurovanou podporou přístupu podle potřeby. Dat je za poslední týden a pro každý virtuální počítač obsahuje číslo schválené žádosti, datum posledního přístupu a čas posledního uživatele.
+- **Doporučené** – Virtuální počítače, které můžou podporovat přístup podle potřeby, ale ještě tak nebyly nakonfigurované. Doporučujeme povolit jenom v řízení přístupu k virtuálnímu počítači čas k těmto virtuálním počítačům. Zobrazit [konfigurace v zásadách přístupu čas](#configuring-a-just-in-time-access-policy).
 - **Žádné doporučení** – Mezi důvody, proč virtuální počítač nemusí být doporučený, patří:
   - Chybějící NSG – Řešení přístupu podle potřeby vyžaduje existenci NSG.
-  - Klasický virtuální počítač – Přístup k virtuálním počítačům podle potřeby v Security Center aktuálně podporuje pouze virtuální počítače nasazené prostřednictvím Azure Resource Manageru. Nasazení classic není podporována pouze v době řešení.
+  - Klasický virtuální počítač – Přístup k virtuálním počítačům podle potřeby v Security Center aktuálně podporuje pouze virtuální počítače nasazené prostřednictvím Azure Resource Manageru. Nasazení classic není podporována podle potřeby v čase řešení.
   - Jiné – Virtuální počítač je v této kategorii, pokud je řešení přístupu podle potřeby vypnuté v zásadách zabezpečení předplatného nebo skupiny prostředků nebo pokud virtuální počítač nemá veřejnou IP adresu a NSG.
 
-## <a name="configuring-a-just-in-time-access-policy"></a>Konfigurace jenom v zásadách přístupu čas
+## <a name="configuring-a-just-in-time-access-policy"></a>Konfigurace zásady přístupu čas
 
-Vyberte virtuální počítače, které chcete povolit:
+Výběr virtuálních počítačů, které chcete povolit:
 
-1. V části **těsně v čas virtuálních počítačů přístup**, vyberte **doporučeno** kartě.
+1. V části **čas přístupu k virtuálním počítačům podle potřeby**, vyberte **doporučená** kartu.
 
-  ![Povolit přístup k časovému][3]
+  ![Povolit přístup pouze v][3]
 
-2. V části **VIRTUÁLNÍHO počítače**, vyberte virtuální počítače, které chcete povolit. To převádí zatržení vedle virtuálního počítače.
-3. Vyberte **povolení JIT na virtuálních počítačích**.
+2. V části **virtuální počítač**, vyberte virtuální počítače, které chcete povolit. To umístí značku zaškrtnutí vedle virtuálního počítače.
+3. Vyberte **povolit JIT na virtuálních počítačích**.
 4. Vyberte **Uložit**.
 
 ### <a name="default-ports"></a>Výchozí porty
 
-Můžete zobrazit výchozí porty, které Security Center doporučuje povolení jenom v čase.
+Zobrazí se výchozí porty, které Security Center doporučuje povolení za běhu.
 
-1. V části **těsně v čas virtuálních počítačů přístup**, vyberte **doporučeno** kartě.
+1. V části **čas přístupu k virtuálním počítačům podle potřeby**, vyberte **doporučená** kartu.
 
   ![Zobrazit výchozí porty][6]
 
-2. V části **virtuální počítače**, vyberte virtuální počítač. To vloží zatržení vedle virtuálního počítače a otevře **JIT konfiguraci přístupu**. Toto okno se zobrazí výchozí porty.
+2. V části **virtuálních počítačů**, vyberte virtuální počítač. To umístí značku zaškrtnutí vedle virtuálního počítače a otevře **konfigurace přístupu k virtuálnímu počítači podle potřeby**. V tomto okně se zobrazí výchozí porty.
 
-### <a name="add-ports"></a>Přidat porty
+### <a name="add-ports"></a>Přidání portů
 
-V části **JIT konfiguraci přístupu**, můžete také přidávat a konfigurovat nový port, na kterém chcete povolit právě v době řešení.
+V části **konfigurace přístupu k virtuálnímu počítači podle potřeby**, můžete také přidat a nakonfigurovat nový port, na kterém chcete povolit v čase řešení.
 
-1. V části **JIT konfiguraci přístupu**, vyberte **přidat**. Tím se otevře **konfiguraci portů přidat**.
+1. V části **konfigurace přístupu k virtuálnímu počítači podle potřeby**vyberte **přidat**. Tím se otevře **přidání konfigurace portu**.
 
   ![Konfigurace portu][7]
 
-2. V části **konfiguraci portů přidat**, identifikovat port, typ protokolu, povolené zdrojové adresy IP a doba maximální požadavku.
+2. V části **přidání konfigurace portu**, identifikujte port, typ protokolu, povolené zdrojové IP adresy a maximální čas požadavku.
 
-  Povolené zdrojové adresy IP jsou rozsahy IP moct získat přístup na schválené žádost.
+  Povolené zdrojové IP adresy jsou rozsahy IP adres s povolením získat přístup po schválení žádosti.
 
-  Doba požadavku maximální je maximální časový interval, může být otevřena specifického portu.
+  Maximální čas požadavku je maximální časový interval, můžete konkrétní port otevřený.
 
 3. Vyberte **OK**.
 
-## <a name="requesting-access-to-a-vm"></a>Žádají o přístup do virtuálního počítače
+## <a name="requesting-access-to-a-vm"></a>Žádost o přístup k virtuálnímu počítači
 
 Chcete-li požádat o přístup k virtuálnímu počítači:
 
-1. V části **těsně v čas virtuálních počítačů přístup**, vyberte **konfigurovaná** kartě.
-2. V části **virtuální počítače**, vyberte virtuální počítače, které chcete povolit přístup. To převádí zatržení vedle virtuálního počítače.
-3. Vyberte **požádat o přístup**. Tím se otevře **požádat o přístup**.
+1. V části **čas přístupu k virtuálním počítačům podle potřeby**, vyberte **nakonfigurováno** kartu.
+2. V části **virtuálních počítačů**, vyberte virtuální počítače, které chcete povolit přístup. To umístí značku zaškrtnutí vedle virtuálního počítače.
+3. Vyberte **žádat o přístup**. Tím se otevře **žádat o přístup**.
 
-  ![Požádat o přístup k virtuálnímu počítači][4]
+  ![Žádost o přístup k virtuálnímu počítači][4]
 
-4. V části **požádat o přístup**, můžete nakonfigurovat pro každý virtuální počítač portech, které spolu s zdrojové IP adresy, který se otevře port pro a časový interval, pro kterou je otevřen port. Může vyžádat přístup pouze k porty, které jsou nakonfigurované v jenom v zásadách čas. Každý z portů je maximální povolená doba odvozené od jenom v zásadách čas.
+4. V části **žádat o přístup**, nakonfigurujte pro každý virtuální počítač porty otevřete společně se zdrojovou IP adresu, která se otevře port pro a časový interval, pro které se otevře port. Můžete požádat o přístup jenom na porty, které jsou nakonfigurované v podle potřeby v zásadách čas. Každý z portů je maximální povolená doba odvozený od podle potřeby v zásadách čas.
 5. Vyberte **otevřít porty**.
 
 > [!NOTE]
-> Když uživatel požaduje přístup k virtuálnímu počítači, Security Center zkontroluje, zda má uživatel [řízení přístupu na základě Role (RBAC)](../role-based-access-control/role-assignments-portal.md) oprávnění, které poskytují přístup pro zápis pro virtuální počítač. Pokud budou mít oprávnění k zápisu, jeho žádost se schválí.
+> Když uživatel požádá o přístup k virtuálnímu počítači, Security Center kontroluje, zda má uživatel [řízení přístupu na základě Role (RBAC)](../role-based-access-control/role-assignments-portal.md) oprávnění, které poskytují přístup pro zápis pro virtuální počítač. Pokud mají oprávnění k zápisu, jeho žádost se schválí.
 >
 >
 
 > [!NOTE]
-> Pokud uživatel, který žádá o přístup je za proxy server, nemusí fungovat možnost "Moje IP adresy". Může být potřeba definovat plný rozsah organizace.
+> Pokud uživatel, který žádá o přístup, je za proxy serverem, nemusí fungovat možnost "My IP adresy". Může být nutné definovat celou škálu organizace.
 >
 >
 
-## <a name="editing-a-just-in-time-access-policy"></a>Úpravy jenom v zásadách přístupu čas
+## <a name="editing-a-just-in-time-access-policy"></a>Úpravy počítačům v zásadách přístupu čas
 
-Můžete změnit Virtuálního počítače existující jenom v zásadách čas přidáním a konfigurace nový port otevřete tohoto virtuálního počítače nebo změnou druhý parametr, související s již chráněné portu.
+Můžete změnit Virtuálního počítače existující jenom v zásadách čas přidáním a nakonfigurování nový port otevřete pro tento virtuální počítač nebo změnou všechny ostatní parametry související s port už chráněný.
 
-Chcete-li upravit stávající jenom v zásadách čas virtuálního počítače, **konfigurovaná** karta se používá:
+Pokud chcete upravit stávající jenom v zásadách čas virtuálního počítače, **nakonfigurováno** karta se používá:
 
-1. V části **virtuální počítače**, vyberte virtuální počítač port na přidáte kliknutím na tři tečky v řádku tohoto virtuálního počítače. Tím otevřete nabídku.
-2. Vyberte **upravit** v nabídce. Tím se otevře **JIT konfiguraci přístupu**.
+1. V části **virtuálních počítačů**, vyberte virtuální počítač přidat port do tím, že kliknete na tři tečky v rámci řádku pro tento virtuální počítač. Otevře se nabídka.
+2. Vyberte **upravit** v nabídce. Tím se otevře **konfigurace přístupu k virtuálnímu počítači podle potřeby**.
 
   ![Upravení zásady][8]
 
-3. V části **JIT konfiguraci přístupu**, můžete buď upravit existující nastavení, již chráněné portu kliknutím na její port, nebo můžete vybrat **přidat**. Tím se otevře **konfiguraci portů přidat**.
+3. V části **konfigurace přístupu k virtuálnímu počítači podle potřeby**, stávající nastavení už chráněných portu můžete upravit buď kliknutím na jeho port, nebo můžete vybrat **přidat**. Tím se otevře **přidání konfigurace portu**.
 
-  ![Přidat na port][7]
+  ![Přidání portu][7]
 
-4. V části **konfiguraci portů přidat**, určit port, protokol typu, povolená zdrojové adresy IP a maximální doba požadavku.
+4. V části **přidání konfigurace portu**, identifikujte port, protokol typu povolené zdrojové IP adresy a maximální doba požadavku.
 5. Vyberte **OK**.
 6. Vyberte **Uložit**.
 
-## <a name="auditing-just-in-time-access-activity"></a>Auditování, právě aktivity přístup času.
+## <a name="auditing-just-in-time-access-activity"></a>Auditování jenom v aktivitě čas přístupu
 
-Můžete získat přehledy aktivity virtuálního počítače pomocí protokolů hledání. Pokud chcete zobrazit protokoly:
+Můžete získat přehled o aktivitách virtuálního počítače pomocí prohledávání protokolů. Chcete-li zobrazit protokoly:
 
-1. V části **těsně v čas virtuálních počítačů přístup**, vyberte **konfigurovaná** kartě.
-2. V části **virtuální počítače**, vyberte virtuální počítač k zobrazení informací o kliknutím na tři tečky v řádku tohoto virtuálního počítače. Tím otevřete nabídku.
-3. Vyberte **protokol aktivit** v nabídce. Tím se otevře **protokol aktivit**.
+1. V části **čas přístupu k virtuálním počítačům podle potřeby**, vyberte **nakonfigurováno** kartu.
+2. V části **virtuálních počítačů**, vyberte virtuální počítač k zobrazení informací o po kliknutí na tři tečky v rámci řádku pro tento virtuální počítač. Otevře se nabídka.
+3. Vyberte **protokolu aktivit** v nabídce. Tím se otevře **protokolu aktivit**.
 
   ![Vyberte protokol aktivit][9]
 
-  **Protokol aktivit** poskytuje filtrované zobrazení předchozí operace pro tento virtuální počítač společně s čas, datum a předplatného.
+  **Protokol aktivit** poskytuje filtrované zobrazení předchozích operací pro tento virtuální počítač spolu s čas, datum a předplatné.
 
-  ![Protokol aktivit zobrazení][5]
+  ![Zobrazení protokolu aktivit][5]
 
-Informace protokolu si můžete stáhnout tak, že vyberete **kliknutím sem stáhnete všechny položky jako sdílený svazek clusteru**.
+Informace protokolu můžete stáhnout tak, že vyberete **kliknutím sem stáhnete všechny položky jako CSV**.
 
-Upravit filtry a vyberte **použít** vytvořit vyhledávání a protokolu.
+Upravit filtry a vybrat **použít** vytvoříte vyhledávání a protokolu.
 
-## <a name="using-just-in-time-vm-access-via-powershell"></a>Pomocí jenom na dobu přístup virtuálních počítačů pomocí prostředí PowerShell
+## <a name="using-just-in-time-vm-access-via-powershell"></a>Pomocí metody právě včas přístup k virtuálnímu počítači přes PowerShell
 
-Chcete-li použít jenom v době řešení pomocí prostředí PowerShell, zajistěte, aby byla [nejnovější](/powershell/azure/install-azurerm-ps) prostředí Azure PowerShell verze.
-Až to uděláte, musíte nainstalovat [nejnovější](https://aka.ms/asc-psgallery) Azure Security Center z Galerie prostředí PowerShell.
+Chcete-li použít podle potřeby v čase řešení pomocí Powershellu, ujistěte se, že máte [nejnovější](/powershell/azure/install-azurerm-ps) verze prostředí Azure PowerShell.
+Až to uděláte, budete muset nainstalovat [nejnovější](https://aka.ms/asc-psgallery) Azure Security Center z Galerie prostředí PowerShell.
 
-### <a name="configuring-a-just-in-time-policy-for-a-vm"></a>Konfigurace jenom v zásadách čas pro virtuální počítač
+### <a name="configuring-a-just-in-time-policy-for-a-vm"></a>Konfigurace zásad čas pro virtuální počítač
 
-Ke konfiguraci jenom v zásadách čas na konkrétní virtuální počítač, budete muset spustit tento příkaz v relaci prostředí PowerShell: Set-ASCJITAccessPolicy.
-Postupujte podle dokumentace rutiny Další informace.
+Nakonfigurujte čas zásad na konkrétní virtuální počítač, budete potřebovat ke spuštění tohoto příkazu v relaci prostředí PowerShell: Set-ASCJITAccessPolicy.
+Postupujte podle dokumentace k rutinám Další informace.
 
-### <a name="requesting-access-to-a-vm"></a>Žádají o přístup do virtuálního počítače
+### <a name="requesting-access-to-a-vm"></a>Žádost o přístup k virtuálnímu počítači
 
-Pro přístup k konkrétní virtuální počítač, který je chráněný právě v doba řešení, budete muset spustit tento příkaz v relaci prostředí PowerShell: vyvolání ASCJITAccess.
-Postupujte podle dokumentace rutiny Další informace.
+Pro přístup k konkrétní virtuální počítač, který je pak chráněn rozhraním podle potřeby v době řešení, budete potřebovat ke spuštění tohoto příkazu v relaci prostředí PowerShell: vyvolat ASCJITAccess.
+Postupujte podle dokumentace k rutinám Další informace.
 
 ## <a name="next-steps"></a>Další postup
-V tomto článku jste se dozvěděli, jak jenom na dobu přístup virtuálních počítačů v Security Center pomáhá, že můžete řídit přístup k virtuální počítače Azure.
+V tomto článku jste zjistili, jak za běhu přístup k virtuálním počítačům v Security Center pomáhá, že se že můžete řídit přístup k vašim virtuálním počítačům Azure.
 
 Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato témata:
 
-- [Nastavení zásad zabezpečení](security-center-policies.md) – zjistěte, jak nakonfigurovat zásady zabezpečení pro skupiny prostředků a předplatná Azure.
-- [Správa doporučení zabezpečení](security-center-recommendations.md) – zjistěte, jak vám doporučení pomáhají chránit prostředky v Azure.
-- [Sledování stavu zabezpečení](security-center-monitoring.md) – Naučte se monitorovat stav svých prostředků Azure.
-- [Správa a zpracování výstrah zabezpečení](security-center-managing-and-responding-alerts.md) – zjistěte, jak spravovat a reakce na výstrahy zabezpečení.
+- [Nastavení zásad zabezpečení](security-center-policies.md) – zjistěte, jak nakonfigurovat zásady zabezpečení pro vaše předplatná Azure a skupiny prostředků.
+- [Správa doporučení zabezpečení](security-center-recommendations.md) – zjistěte, jak vám doporučení pomáhají chránit prostředky Azure.
+- [Sledování stavu zabezpečení](security-center-monitoring.md) – zjistěte, jak můžete monitorovat stav svých prostředků Azure.
+- [Správa a zpracování výstrah zabezpečení](security-center-managing-and-responding-alerts.md) – zjistěte, jak spravovat a reagovat na výstrahy zabezpečení.
 - [Sledování partnerských řešení](security-center-partner-solutions.md) – zjistěte, jak sledovat stav vašich partnerských řešení.
-- [Security Center – nejčastější dotazy](security-center-faq.md) – přečtěte si nejčastější dotazy o použití této služby.
+- [Security Center – nejčastější dotazy](security-center-faq.md) – přečtěte si nejčastější dotazy k používání této služby.
 - [Blog o zabezpečení Azure](https://blogs.msdn.microsoft.com/azuresecurity/) – Přečtěte si příspěvky o zabezpečení Azure a dodržování předpisů.
 
 

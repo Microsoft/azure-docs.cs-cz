@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/05/2018
+ms.date: 07/11/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: df4c60be8a29ab397424e9e5f9de7050f64d87c2
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: b7fd880683eed9e742007d6e595e1f275467b664
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37859768"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38990111"
 ---
 # <a name="log-analytics-data-security"></a>Zabezpečení dat analýzy protokolů
 Účelem tohoto dokumentu je poskytnout konkrétní informace o Azure Log Analytics k doplnění informací na [Centrum zabezpečení Azure](../security/security-microsoft-trust-center.md).  
@@ -29,16 +29,34 @@ Tento článek vysvětluje, jak shromažďovat, zpracování a zabezpečené slu
 
 Služba Log Analytics spravuje vaše data založené na cloudu bezpečně pomocí následujících metod:
 
-* Oddělení dat
+* oddělení dat
 * Uchovávání dat
 * Fyzické zabezpečení
 * Správa incidentů
 * Dodržování předpisů
-* Certifikace standardů zabezpečení
+* certifikace standardů zabezpečení
 
 Kontaktujte nás s dotazy, návrhy nebo potíže některý z následujících informací, včetně naše zásady zabezpečení na straně [možnosti podpory Azure](http://azure.microsoft.com/support/options/).
 
-## <a name="data-segregation"></a>Oddělení dat
+## <a name="sending-data-securely-using-tls-12"></a>Odesílání dat pomocí protokolu TLS 1.2 
+
+– Pomáhat zajistit zabezpečení dat při přenosu do služby Log Analytics, důrazně doporučujeme, abyste ke konfiguraci agenta pro použití s alespoň zabezpečení TLS (Transport Layer) 1.2. Starší verze z protokolu TLS/Secure Sockets Layer (SSL) bylo zjištěno ohrožen a stále aktuálně fungují povolit zpětnou kompatibilitu, ale jsou **ale nedoporučený krok**, a oboru je rychle se měnící spustit metodu Abandon podpory pro tyto starší protokoly. 
+
+[PCI Security Standards Council](https://www.pcisecuritystandards.org/) nastavil [termínu 30. června 2018](https://www.pcisecuritystandards.org/pdfs/PCI_SSC_Migrating_from_SSL_and_Early_TLS_Resource_Guide.pdf) zakázat starší verze protokolu TLS/SSL a upgrade bezpečnější protokoly. Jakmile Azure sníží stále podporuje starší verze, pokud vaši agenti nemohou komunikovat přes alespoň TLS 1.2, nemohli odesílat data do Log Analytics. 
+
+Nedoporučujeme explicitním nastavením agenta na používat jenom TLS 1.2, pokud není zcela nezbytné jako Toto může rozbít funkce zabezpečení na úrovni platformy, které vám umožní automaticky zjistit a využít výhod novější bezpečnější protokoly, jakmile budou dostupné jako TLS 1.3. 
+
+### <a name="platform-specific-guidance"></a>Konkrétní pokyny k platformě
+
+|Platformu nebo jazyk | Podpora | Další informace |
+| --- | --- | --- |
+|Linux | Linuxové distribuce mají tendenci přináší setrvávání u [OpenSSL](https://www.openssl.org) pro podporu protokolu TLS 1.2.  | Zkontrolujte [protokolu změn OpenSSL](https://www.openssl.org/news/changelog.html) pro potvrzení, vaše verze OpenSSL není podporovaná.|
+| Windows 8.0 10 | Podporované a ve výchozím nastavení povolená. | Potvrďte, že stále používáte [výchozí nastavení](https://docs.microsoft.com/en-us/windows-server/security/tls/tls-registry-settings).  |
+| Windows Server 2012 – 2016 | Podporované a ve výchozím nastavení povolená. | Potvrďte, že stále používáte [výchozí nastavení](https://docs.microsoft.com/en-us/windows-server/security/tls/tls-registry-settings) |
+| Windows 7 SP1 a Windows Server 2008 R2 SP1 | Podporované, ale není ve výchozím nastavení povolená. | Najdete v článku [zabezpečení TLS (Transport Layer), nastavení registru](https://docs.microsoft.com/en-us/windows-server/security/tls/tls-registry-settings) stránku Podrobnosti o tom, jak povolit.  |
+| Windows Server 2008 SP2 | Podpora protokolu TLS 1.2 vyžaduje aktualizaci. | Zobrazit [aktualizace přidává funkce pro protokol TLS 1.2](https://support.microsoft.com/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows-server-2008-s) v systému Windows Server 2008 SP2. |
+
+## <a name="data-segregation"></a>oddělení dat
 Po ingestuje data služby Log Analytics, se ukládají data logicky oddělená pro jednotlivé komponenty v rámci služby. Všechna data jsou označená za jednotlivé pracovní prostory. Toto značení přetrvává v průběhu celého životního cyklu dat a je vyžadováno na každé úrovni služby. Vaše data se ukládají v databázi vyhrazené v clusteru úložiště v oblasti, které jste vybrali.
 
 ## <a name="data-retention"></a>Uchovávání dat

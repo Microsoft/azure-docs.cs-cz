@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2018
+ms.date: 07/12/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
-ms.openlocfilehash: 2d16d1dc7a53ca388b00ba02b6447e178a9f6edb
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: b39a1f7b0de01c50b04072cc0de011928c6af786
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38989233"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39003609"
 ---
 # <a name="network-connectivity"></a>Připojení k síti
 Tento článek obsahuje informace o síťové infrastruktury Azure Stack vám pomohou rozhodnout, jak nejlépe integrovat do vaší stávající síťové prostředí Azure Stack. 
@@ -29,7 +29,7 @@ Tento článek obsahuje informace o síťové infrastruktury Azure Stack vám po
 > Překládat externí názvy DNS z Azure Stack (například www.bing.com), budete muset zadat servery DNS pro předávání DNS požadavků. Další informace týkající se požadavků na Azure Stack DNS najdete v tématu [integrace datových center Azure Stack – DNS](azure-stack-integrate-dns.md).
 
 ## <a name="physical-network-design"></a>Návrh fyzické sítě
-Řešení Azure Stack vyžaduje odolné a vysoce dostupné fyzické infrastruktury pro podporu její provoz a služeb. Odchozí připojení ze systému ToR ohraničení přepínače jsou omezené na SFP + média a různou rychlostí 1 GB nebo 10 GB. Obraťte se na dodavatele hardwaru výrobce OEM (OEM), dostupnost. Následující diagram představuje náš doporučený návrh:
+Řešení Azure Stack vyžaduje odolné a vysoce dostupné fyzické infrastruktury pro podporu její provoz a služeb. Odchozí připojení ze systému ToR ohraničení přepínače jsou omezené na SFP + nebo SFP28 média a 1 GB, 10 GB nebo rychlosti 25 GB. Obraťte se na dodavatele hardwaru výrobce OEM (OEM), dostupnost. V níže uvedeném diagramu náš doporučený návrh:
 
 ![Doporučený návrh sítě Azure Stack](media/azure-stack-network/recommended-design.png)
 

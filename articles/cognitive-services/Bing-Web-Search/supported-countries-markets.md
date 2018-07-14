@@ -1,6 +1,6 @@
 ---
-title: Podporované zemích a jazyky pro rozhraní API služby Bing webové Search v Azure | Microsoft Docs
-description: Zjistěte, jaké zemích a jazyky jsou podporovány pomocí rozhraní API služby Bing webové Search.
+title: Podporované země/oblasti a jazyky pro webové API Bingu pro vyhledávání v Azure | Dokumentace Microsoftu
+description: Zjistěte, které země/oblasti a jazyky podporují rozhraní API webové vyhledávání Bingu.
 services: cognitive-services
 author: v-jerkin
 manager: jhubbard
@@ -9,28 +9,28 @@ ms.component: bing-web-search
 ms.topic: article
 ms.date: 10/06/2017
 ms.author: v-jerkin
-ms.openlocfilehash: 7b62c4a4feb7144662a8fe4d692f11f1efe5db1b
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: e1994ddf3bf71d01adeac4ff8688bdd1e6eac660
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342506"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39001714"
 ---
-# <a name="bing-web-search-countries-and-languages"></a>Hledání webové služby Bing zemích a jazyky
+# <a name="bing-web-search-countriesregions-and-languages"></a>Vyhledávání na webu Bingu země/oblasti a jazyky
 
-Rozhraní API služby Bing webové Search podporuje více než tří tucet zemích, mnoho s více než jeden jazyk. Určení zemi s dotazem slouží především k zpřesnění výsledků vyhledávání podle zájmů v dané země. Kromě toho výsledky mohou obsahovat odkazy na Bing a tyto odkazy mohou lokalizaci činnost koncového uživatele Bing podle zadaného zemi nebo jazyk.
+Rozhraní API webové vyhledávání Bingu podporuje více než deseti tři zemích nebo oblastech, mnoho s více než jeden jazyk. Zadání země/oblasti s dotazem slouží především pro upřesnění výsledků hledání podle zájmů v zemi/oblast. Kromě toho výsledky mohou obsahovat odkazy na Bingu a těchto odkazů může lokalizace uživatelského rozhraní Bing podle zadanou zemí nebo oblastí nebo jazyk.
 
-Můžete zadat země pomocí `cc` parametr dotazu. Pokud zadáte jiné zemi, musíte zadat také jeden nebo více kódů pomocí `Accept-Language` hlavičky protokolu HTTP. Podporované jazyky se liší podle země; jsou uvedené pro každou zemi v tabulce trhů.
+Můžete zadat, země/oblast pomocí `cc` parametr dotazu. Pokud chcete zadat určitá země nebo oblast, musíte zadat také jeden nebo více kódů jazyka pomocí `Accept-Language` hlavičky protokolu HTTP. Podporované jazyky se liší podle země nebo oblasti; jsou uvedeny pro každou zemi/oblast v tabulce trhy.
 
-Alternativně můžete určit na trhu pomocí `mkt` parametr a kód z dotazů **trhů** tabulky. Určení na trhu současně Určuje zemi a upřednostňovaný jazyk. `setLang` Parametr dotazu může být nastaven na kód jazyka v tomto případě; to je obvykle stejný jazyk, který `mkt` Pokud uživatel upřednostní zobrazíte Bing v jiném jazyce.
+Alternativně můžete zadat na trhu pomocí `mkt` parametrů a kódu z dotazů **trhy** tabulky. Zadání na trhu současně Určuje zemi/oblast a jazyk. `setLang` Parametr dotazu může být nastavená na kód jazyka v tomto případě; obvykle je to stejný jazyk určený `mkt` Pokud uživatel preferuje zobrazíte Bingu v jiném jazyce.
 
-## <a name="countries"></a>Jednotlivé země
+## <a name="countries"></a>Země
 
-|Země|Kód|
+|Země/oblast|Kód|
 |-------|----|
 |Argentina|AR|
 |Austrálie|AU|
-|Rakousko|NA|
+|Rakousko|AT|
 |Belgie|BÝT|
 |Brazílie|BRAZÍLIE|
 |Kanada|CA|
@@ -38,13 +38,13 @@ Alternativně můžete určit na trhu pomocí `mkt` parametr a kód z dotazů **
 |Dánsko|DK|
 |Finsko|FI|
 |Francie|FR|
-|Německo|NĚMECKO|
-|Hongkong|(HONG KONG)|
-|Indie|V|
+|Německo|DE|
+|Hongkong|HK|
+|Indie|INDIE|
 |Indonésie|ID|
 |Itálie|IT|
 |Japonsko|JP|
-|Korea|KR|
+|Jižní Korea|KOREA|
 |Malajsie|MOJE|
 |Mexiko|MX|
 |Nizozemsko|NL|
@@ -53,9 +53,9 @@ Alternativně můžete určit na trhu pomocí `mkt` parametr a kód z dotazů **
 |Čína|CN|
 |Polsko|PL|
 |Portugalsko|PT|
-|Filipíny|PARAMETR|
+|Filipíny|PH|
 |Rusko|RU|
-|Saúdská Arábie|PŘIDRUŽENÍ ZABEZPEČENÍ|
+|Saúdská Arábie|SA|
 |Jihoafrická republika|ZA|
 |Španělsko|ES|
 |Švédsko|SE|
@@ -66,17 +66,17 @@ Alternativně můžete určit na trhu pomocí `mkt` parametr a kód z dotazů **
 |Spojené státy|USA|
 
 
-## <a name="markets"></a>Trzích
+## <a name="markets"></a>Trhy
 
-|Země|Jazyk|Trhu kódu|
+|Země/oblast|Jazyk|Kód na trhu|
 |-------|--------|-----------|
-|Argentina|Španělština|ES-AR|
-|Austrálie|Angličtina|en-AU|
+|Argentina|Španělština|ES AR|
+|Austrálie|Angličtina|cs AU|
 |Rakousko|Němčina|de-AT|
 |Belgie|Holandština|nl-BE|
 |Belgie|Francouzština|FR-být|
 |Brazílie|Portugalština|pt-BR|
-|Kanada|Angličtina|en-CA|
+|Kanada|Angličtina|cs CA|
 |Kanada|Francouzština|fr-CA|
 |Chile|Španělština|ES-CL|
 |Dánsko|dánština|da-DK|
@@ -85,23 +85,23 @@ Alternativně můžete určit na trhu pomocí `mkt` parametr a kód z dotazů **
 |Německo|Němčina|de-DE|
 |Hongkong|Tradiční čínština|zh-HK|
 |Indie|Angličtina|en-IN|
-|Indonésie|Angličtina|en-ID|
+|Indonésie|Angličtina|cs ID|
 |Itálie|italština|IT-IT|
 |Japonsko|Japonština|ja-JP|
-|Korea|Korejština|ko-KR|
-|Malajsie|Angličtina|en Moje|
+|Jižní Korea|Korejština|ko-KR|
+|Malajsie|Angličtina|cs MY|
 |Mexiko|Španělština|es-MX|
 |Nizozemsko|Holandština|NL-NL|
-|Nový Zéland|Angličtina|en-NZ|
+|Nový Zéland|Angličtina|cs NZ|
 |Norsko|norština|no-NO|
 |Čína|Čínština|zh-CN|
 |Polsko|polština|pl-PL|
 |Portugalsko|Portugalština|pt-PT|
-|Filipíny|Angličtina|en parametr|
+|Filipíny|Angličtina|cs PH|
 |Rusko|ruština|ru-RU|
-|Saúdská Arábie|arabština|ar (SA)|
-|Jihoafrická republika|Angličtina|en-ZA|
-|Španělsko|Španělština|ES-ES|
+|Saúdská Arábie|arabština|ar-SA|
+|Jihoafrická republika|Angličtina|cs ZA|
+|Španělsko|Španělština|es-ES|
 |Švédsko|švédština|sv-SE|
 |Švýcarsko|Francouzština|FR-CH|
 |Švýcarsko|Němčina|de-CH|
@@ -109,4 +109,4 @@ Alternativně můžete určit na trhu pomocí `mkt` parametr a kód z dotazů **
 |Turecko|turečtina|tr-TR|
 |Spojené království|Angličtina|en-GB|
 |Spojené státy|Angličtina|cs-CZ|
-|Spojené státy|Španělština|ES USA|
+|Spojené státy|Španělština|ES US|

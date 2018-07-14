@@ -1,6 +1,6 @@
 ---
-title: "Nastavení analýzy webových aplikací pro ASP.NET pomocí Azure Application Insights | Dokumentace Microsoftu"
-description: "Nakonfigurujte výkon, dostupnost a analýzy využití pro váš web ASP.NET hostovaný místně nebo v Azure."
+title: Nastavení analýzy webových aplikací pro ASP.NET pomocí Azure Application Insights | Dokumentace Microsoftu
+description: Nakonfigurujte výkon, dostupnost a nástroje analýzy chování uživatelů pro váš web ASP.NET hostovaný místně nebo v Azure.
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: mbullwin
-ms.openlocfilehash: 4fea71509b2dec897a3dafef627e243ae25447ad
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
-ms.translationtype: HT
+ms.openlocfilehash: 73bb1e3d06066c422614bc9d6d3431b49be9c6de
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38991152"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>Nastavení Application Insights pro web ASP.NET
 
@@ -131,7 +132,7 @@ Pokud jste provedli jakékoli úpravy souboru ApplicationInsights.config, před 
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 K dispozici jsou i alternativní témata, na která se v případě zájmu můžete podívat:
 

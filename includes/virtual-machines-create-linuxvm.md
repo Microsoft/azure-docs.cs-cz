@@ -51,6 +51,6 @@
     azure vm start myVM
     ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Podrobné informace o všech těchto příkazech rozhraní příkazového řádku Azure CLI 1.0 pro virtuální počítače najdete v tématu věnovaném [použití rozhraní příkazového řádku Azure CLI 1.0 s rozhraním API nasazení Classic](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).
 
