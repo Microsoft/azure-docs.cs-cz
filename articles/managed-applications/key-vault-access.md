@@ -8,14 +8,14 @@ ms.service: managed-applications
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
-ms.date: 07/09/2018
+ms.date: 07/11/2018
 ms.author: tomfitz
-ms.openlocfilehash: 232bea437b38335bdaa189e504d4e5fd9b080a05
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: f091ba44a3170dcc4141829f2f4105d6e7993cdf
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38724054"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39035285"
 ---
 # <a name="access-key-vault-secret-when-deploying-azure-managed-applications"></a>Tajný kód trezoru klíčů přístup při nasazení spravované aplikace Azure
 
@@ -52,6 +52,37 @@ Pokud potřebujete předat jako parametr zabezpečenou hodnotu (jako jsou hesla)
    ![Vyhledejte poskytovatele](./media/key-vault-access/search-provider.png)
 
 1. Vyberte **Uložit**.
+
+## <a name="reference-key-vault-secret"></a>Odkaz na tajný kód trezoru klíčů
+
+K předání tajného klíče ze služby Key Vault do šablony v aplikaci spravované, je nutné použít [propojené šablony](../azure-resource-manager/resource-group-linked-templates.md) a odkazovat na parametry šablony propojené službě Key Vault. Zadejte ID prostředku služby Key Vault a název tajného klíče.
+
+```json
+"resources": [{
+  "apiVersion": "2015-01-01",
+  "name": "linkedTemplate",
+  "type": "Microsoft.Resources/deployments",
+  "properties": {
+    "mode": "incremental",
+    "templateLink": {
+      "uri": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/keyvaultparameter/sqlserver.json",
+      "contentVersion": "1.0.0.0"
+    },
+    "parameters": {
+      "adminPassword": {
+        "reference": {
+          "keyVault": {
+            "id": "/subscriptions/<subscription-id>/resourceGroups/<rg-name>/providers/Microsoft.KeyVault/vaults/<key-vault-name>"
+          },
+          "secretName": "<secret-name>"
+        }
+      },
+      "adminLogin": { "value": "[parameters('adminLogin')]" },
+      "sqlServerName": {"value": "[parameters('sqlServerName')]"}
+    }
+  }
+}],
+```
 
 ## <a name="next-steps"></a>Další postup
 

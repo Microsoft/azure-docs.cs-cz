@@ -1,6 +1,6 @@
 ---
-title: Verze poznámky pro službu Application Insights | Microsoft Docs
-description: Přidání nasazení nebo vytvořit značek do grafů Průzkumníku metrik ve službě Application Insights.
+title: Poznámky pro službu Application Insights k verzi | Dokumentace Microsoftu
+description: Přidat nasazení nebo vytvořit značky do grafy Průzkumníka metrik ve službě Application Insights.
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -13,82 +13,82 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/16/2016
 ms.author: mbullwin
-ms.openlocfilehash: fb4bcd57062017c0d7ee802ba1f46660476f6af2
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 056716e243980f0a8aadc1ff7e9b8776809ad88e
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35293431"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39036393"
 ---
-# <a name="annotations-on-metric-charts-in-application-insights"></a>Poznámky u metriky grafů ve službě Application Insights
-Poznámky na [Průzkumníku metrik](app-insights-metrics-explorer.md) grafy zobrazují, kde jste nasadili nového sestavení nebo jinou významnou událost. Ujistěte se snadno zjistit, zda změny měla vliv na výkon vaší aplikace. Můžete být automaticky vytvoří pomocí [Visual Studio Team Services sestavení systému](https://www.visualstudio.com/en-us/get-started/build/build-your-app-vs). Můžete také vytvořit poznámky pro všechny události, které si přejete, a příznak [jejich vytváření z prostředí PowerShell](#create-annotations-from-powershell).
+# <a name="annotations-on-metric-charts-in-application-insights"></a>Poznámky na grafy metrik ve službě Application Insights
+Poznámky na [Průzkumníka metrik](app-insights-metrics-explorer.md) grafy zobrazují, kam jste nasadili nového sestavení nebo jiné významné události. Využívají ji snadno zjistit, zda změny měla vliv na výkon vaší aplikace. Můžete být automaticky vytvoří podle [sestavovací systém Visual Studio Team Services](https://docs.microsoft.com/vsts/pipelines/tasks/). Můžete také vytvořit poznámky k nastavení příznaku jakékoli události, například podle [jejich vytváření z Powershellu](#create-annotations-from-powershell).
 
 ![Příklad poznámky s viditelné korelace s doba odezvy serveru](./media/app-insights-annotations/00.png)
 
 
 
-## <a name="release-annotations-with-vsts-build"></a>Poznámky k verzi s služby VSTS sestavení
+## <a name="release-annotations-with-vsts-build"></a>Poznámky k sestavení VSTS verzi
 
-Poznámky k verzi jsou funkce cloudového sestavování a verzí služby Visual Studio Team Services. 
+Poznámek jsou funkce založené na cloudu sestavení a vydání verze služby Visual Studio Team Services. 
 
-### <a name="install-the-annotations-extension-one-time"></a>Nainstalujte rozšíření poznámky (jednou)
-Abyste mohli vytvořit poznámky k verzi, musíte nainstalovat některou z mnoha rozšíření Team služeb, která je k dispozici ve Visual Studio Marketplace.
+### <a name="install-the-annotations-extension-one-time"></a>Instalace rozšíření poznámky (jednou)
+Aby bylo možné vytvořit anotace k vydání verze, bude nutné nainstalovat některou z mnoha rozšíření Team Service jsou dostupná v aplikaci Visual Studio Marketplace.
 
 1. Přihlaste se k vaší [Visual Studio Team Services](https://www.visualstudio.com/en-us/get-started/setup/sign-up-for-visual-studio-online) projektu.
-2. V sadě Visual Studio Marketplace [získat rozšíření verze poznámek](https://marketplace.visualstudio.com/items/ms-appinsights.appinsightsreleaseannotations)a přidejte ji do vašeho účtu Team Services.
+2. Visual Studio Marketplace [získat rozšíření poznámek](https://marketplace.visualstudio.com/items/ms-appinsights.appinsightsreleaseannotations)a přidejte ji do vašeho účtu Team Services.
 
-![Top na pravé straně Team Services webové stránky, otevřete Marketplace. Vyberte Visual Team Services a potom v části sestavení a verze, zvolte najdete v části více.](./media/app-insights-annotations/10.png)
+![AT horní pravé části stránky webové služby Team Services, otevřete Marketplace. Vyberte Visual Team Services a pak v rámci sestavení a vydaných verzí, zvolte Další.](./media/app-insights-annotations/10.png)
 
-Stačí k tomu jednou pro váš účet Visual Studio Team Services. Poznámky k verzi se teď dá nakonfigurovat pro každý projekt ve vašem účtu. 
+Stačí provést jednou pro váš účet Visual Studio Team Services. Poznámky k vydání verze můžete teď nakonfigurované pro libovolný projekt ve vašem účtu. 
 
-### <a name="configure-release-annotations"></a>Konfigurace verze poznámek
+### <a name="configure-release-annotations"></a>Konfigurace poznámek
 
-Je nutné získat samostatné klíč rozhraní API pro každou verzi šablony služby VSTS.
+Je nutné získat samostatný klíč rozhraní API pro každou šablonu vydané verze VSTS.
 
-1. Přihlaste se k [portálu Microsoft Azure](https://portal.azure.com) a otevřete prostředek Application Insights, který monitoruje vaše aplikace. (Nebo [vytvořit nový](app-insights-overview.md), pokud jste tak ještě neučinili.)
-2. Otevřete **přístup pomocí rozhraní API**, **Application Insights Id**.
+1. Přihlaste se k [Microsoft Azure Portal](https://portal.azure.com) a otevřete prostředek Application Insights, který monitoruje vaše aplikace. (Nebo [založte si ho teď](app-insights-overview.md), pokud jste tak ještě neučinili.)
+2. Otevřít **přístup přes rozhraní API**, **Id aplikace Insights**.
    
-    ![Na stránce portal.azure.com otevřete prostředek Application Insights a zvolte nastavení. Otevřete přístup pomocí rozhraní API. Zkopírujte ID aplikace](./media/app-insights-annotations/20.png)
+    ![Na stránce portal.azure.com otevřete prostředek Application Insights a vyberte nastavení. Otevřete přístup přes rozhraní API. Zkopírujte ID aplikace](./media/app-insights-annotations/20.png)
 
-4. V samostatném okně prohlížeče otevřete (nebo vytvořte) verzi šablony, která spravuje vaše nasazení z Visual Studio Team Services. 
+4. V samostatném okně prohlížeče otevřete (nebo vytvořte) šablony vydané verze, která spravuje vaše nasazení z Visual Studio Team Services. 
    
-    Přidat úlohu a vyberte úlohu Application Insights verze poznámky z nabídky.
+    Přidat úlohy a vyberte úlohu poznámky Application Insights verze v nabídce.
    
-    Vložení **Id aplikace** který jste zkopírovali v okně přístup pomocí rozhraní API.
+    Vložit **Id aplikace** , který jste zkopírovali z okna přístup přes rozhraní API.
    
-    ![Ve Visual Studio Team Services otevřete verzi, vyberte verzi definice a zvolte Upravit. Klikněte na tlačítko Přidat úloha a vyberte Application Insights verze poznámky. Vložte ID Application Insights.](./media/app-insights-annotations/30.png)
-4. Nastavte **APIKey** pole k proměnné `$(ApiKey)`.
+    ![Ve službě Visual Studio Team Services otevřete verzi, vyberte definici verze a klikněte na položku upravit. Klikněte na tlačítko Přidat úkol a vyberte Application Insights verze poznámky. Vložte ID aplikace Insights.](./media/app-insights-annotations/30.png)
+4. Nastavte **APIKey** pole proměnné `$(ApiKey)`.
 
-5. Zpět v okně Azure vytvořte nový klíč rozhraní API a provést jeho kopii.
+5. Zpět v okně Azure vytvořte nový klíč rozhraní API a pořiďte si ho.
    
-    ![V okně přístup pomocí rozhraní API v okně Azure klikněte na tlačítko vytvořit klíč rozhraní API. Zadejte komentář, zkontrolujte poznámky zápisu a klikněte na tlačítko vygenerovat klíč. Zkopírujte nový klíč.](./media/app-insights-annotations/40.png)
+    ![V okně přístup přes rozhraní API v okně Azure klikněte na vytvořit klíč rozhraní API. Zadejte komentář, zkontrolujte poznámky zápisu a klikněte na tlačítko vygenerovat klíč. Zkopírujte nový klíč.](./media/app-insights-annotations/40.png)
 
-6. Otevřete kartu Konfigurace šablony verze.
+6. Otevřete kartu Konfigurace šablony vydané verze.
    
-    Vytvoření proměnné definice pro `ApiKey`.
+    Vytvořit definici proměnné pro `ApiKey`.
    
-    Vložte klíč rozhraní API k definici ApiKey proměnné.
+    Vložte svůj klíč rozhraní API pro definici proměnné ApiKey.
    
-    ![V okně Team Services vyberte na kartě Konfigurace a klikněte na tlačítko Přidat proměnnou. Nastavte název pro ApiKey a do hodnoty, vložte klíč, který jste právě vygenerovali a klikněte na ikonu zámku.](./media/app-insights-annotations/50.png)
-7. Nakonec **Uložit** definici verze.
+    ![V okně služby Team Services vyberte na kartě Konfigurace a klikněte na tlačítko Přidat proměnnou. Nastavte název ApiKey a do hodnoty, vložte klíč, který jste právě vygenerovali a klikněte na ikonu zámku.](./media/app-insights-annotations/50.png)
+7. Nakonec **Uložit** definice vydané verze.
 
 
-## <a name="view-annotations"></a>Zobrazení poznámky
-Nyní vždy, když použijete šablonu verze nasadit novou verzi, poznámky odešle do služby Application Insights. Poznámky se zobrazí v grafech v Průzkumníku metrik.
+## <a name="view-annotations"></a>Zobrazit poznámky
+Nyní pokaždé, když použijete šablonu vydané verze pro nasazení nové verze, Poznámka se odešlou do služby Application Insights. Poznámky se zobrazí v grafech v Průzkumníku metrik.
 
-Klikněte na všechny značky poznámky otevřít podrobnosti o verze, včetně žadatele, zdroj ovládacího prvku větve, verze definice, prostředí a další.
+Klikněte na všechny značky poznámek otevřete podrobnosti o verzi, včetně žadatel, zdrojová větev ovládacího prvku, verze, definice, prostředí a další.
 
-![Klikněte na možnost všechny značky poznámky verze.](./media/app-insights-annotations/60.png)
+![Klikněte na možnost všechny verze poznámky značky.](./media/app-insights-annotations/60.png)
 
-## <a name="create-custom-annotations-from-powershell"></a>Vytvořit vlastní poznámky z prostředí PowerShell
-Můžete také vytvořit poznámky z jakýkoli proces, který chcete (bez použití VS Team System). 
+## <a name="create-custom-annotations-from-powershell"></a>Vytvoření vlastní poznámky z prostředí PowerShell
+Můžete také vytvořit poznámky z nějaký proces, který rádi používáte (bez použití VS Team System). 
 
 
-1. Vytvořit místní kopii [skript prostředí Powershell z Githubu](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1).
+1. Vytvořit místní kopii [Powershellový skript z Githubu](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1).
 
-2. Získání ID aplikace a vytvořte klíč rozhraní API v okně přístup pomocí rozhraní API.
+2. Získání ID aplikace a vytvořte klíč rozhraní API v okně přístup přes rozhraní API.
 
-3. Volání skriptu takto:
+3. Volání skriptu tímto způsobem:
 
 ```PS
 
@@ -101,9 +101,9 @@ Můžete také vytvořit poznámky z jakýkoli proces, který chcete (bez použi
           "TriggerBy"="My Name" }
 ```
 
-Je snadné a upravte skript, například vytvořit poznámky za poslední.
+Je snadné a upravte skript, například k vytváření poznámek za poslední.
 
 ## <a name="next-steps"></a>Další postup
 
 * [Vytváření pracovních položek](app-insights-diagnostic-search.md#create-work-item)
-* [Automatizace v prostředí PowerShell](app-insights-powershell.md)
+* [Automatizace pomocí Powershellu](app-insights-powershell.md)

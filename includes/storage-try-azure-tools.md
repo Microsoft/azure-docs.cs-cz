@@ -1,8 +1,8 @@
 > [!TIP]
 > 
-> **Zkuste Microsoft Azure Storage Explorer**
+> **Vyzkoušení Microsoft Azure Storage Exploreru**
 > 
-> [Microsoft Azure Storage Explorer](../articles/vs-azure-tools-storage-manage-with-storage-explorer.md) je samostatná aplikace, volná, od společnosti Microsoft. Můžete ho vizuálně pracovat s daty Azure Storage ve Windows, systému macOS a Linux.
+> [Microsoft Azure Storage Explorer](../articles/vs-azure-tools-storage-manage-with-storage-explorer.md) je bezplatná samostatná aplikace od Microsoftu. Můžete ho vizuálně pracovat s daty Azure Storage ve Windows, macOS a Linux.
 > 
 > 
 

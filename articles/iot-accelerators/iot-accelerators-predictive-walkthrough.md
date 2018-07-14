@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 07/12/2018
 ms.author: dobett
-ms.openlocfilehash: ed87b3c935fe4032460f8e524f963355fb3157d9
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: e7c6c8d017e4371919088ec414d3108939ca4a19
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970297"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39036250"
 ---
 # <a name="predictive-maintenance-solution-accelerator-overview"></a>Přehled akcelerátoru řešení prediktivní údržby
 
@@ -35,11 +35,11 @@ Zelená položka je simulované zařízení, které představuje letecký motor.
 
 Na webu Azure Portal přejděte do skupiny prostředků s názvem řešení, které jste si vybrali k zobrazení zřízených prostředků.
 
-![][img-resource-group]
+![Prostředky akcelerátoru][img-resource-group]
 
-Při zřizování akcelerátoru řešení obdržíte e-mail s odkazem na pracovní prostor Machine Learning. Můžete také přejít do pracovního prostoru Machine Learning z [azureiotsolutions.com] [ lnk-azureiotsuite] stránky zřízeného řešení. Na této stránce je k dispozici dlaždice v případě, že je řešení ve stavu **Připraveno**.
+Při zřizování akcelerátoru řešení obdržíte e-mail s odkazem na pracovní prostor Machine Learning. Můžete také přejít do pracovního prostoru Machine Learning z [akcelerátory řešení IoT Microsoft Azure] [ lnk-azureiotsuite] stránky zřízeného řešení. Na této stránce je k dispozici dlaždice v případě, že je řešení ve stavu **Připraveno**.
 
-![][img-machine-learning]
+![Model strojového učení][img-machine-learning]
 
 ## <a name="simulated-devices"></a>Simulovaná zařízení
 

@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 07/5/2018
 ms.author: v-jerkin
-ms.openlocfilehash: ca25aaefee6c9746ff79bdca7668b510df9ac6c3
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
-ms.translationtype: HT
+ms.openlocfilehash: 11d96ce0c92916e1975e0cb403aabf057ab8b825
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/13/2018
-ms.locfileid: "39002037"
+ms.locfileid: "39036825"
 ---
 # <a name="how-to-record-voice-samples-for-a-custom-voice"></a>Jak zaznamenat hlas ukázky pro vlastní hlasové funkce
 
@@ -93,7 +93,7 @@ Formát základní skript obsahuje tři sloupce:
 ![Ukázkový skript](media/custom-voice/script.png)
 
 > [!NOTE]
-> Většina studios záznam v krátkém segmenty, označuje jako "trvá," každý ttake ypically obsahující projevy deset až 24. Právě poznamenat, že převzít číslo bude stačit k vyhledání dané utterance později. Některé aplikace možná dáte přednost delší dobu nahrávání. V tomto případě bude nutné si uvědomit časový posun do souboru (čas kód). Zobrazení viditelného času budou mít sady studio.
+> Většina studios záznam v krátkém segmenty, které jsou označovány jako "trvá," každá převezme obvykle obsahuje projevy deset až 24. Právě poznamenat, že převzít číslo bude stačit k vyhledání dané utterance později. Některé aplikace mohou radši udělali delší dobu nahrávání. V tomto případě bude nutné si uvědomit časový posun do souboru (čas kód). Zobrazení viditelného času budou mít sady studio.
 
 Po každém řádku psát poznámky ponechte dostatek místa. Ujistěte se, že žádné utterance je rozdělit mezi stránkami. Číslo stránky a vytisknout skriptu na jedné straně papíru.
 
@@ -105,7 +105,7 @@ Zákony o autorských právech může být prvek "actor" čtení autorským text
 
 Naštěstí je možné zcela se těmto problémům. Existuje mnoho zdrojů text, který můžete použít bez souhlasu nebo licence.
 
-|||
+|Zdrojový text|Popis|
 |-|-|
 |[CMU Arctic souhrnu](http://festvox.org/cmu_arctic/)|Vybrat z předem copyright funguje speciálně pro použití v projektech syntézu řeči asi 1100 věty. Vynikající výchozí bod.|
 |Už funguje<br>v části autorských práv|Funguje se obvykle vydávané před 1923. Pro angličtinu nabízí projektu Gutenberg desítky tisíc tyto práce. Můžete chtít zaměřit na novější funguje jako jazyk bude blíže na moderní angličtinu.|
@@ -129,7 +129,7 @@ Použijte studio vysoce kvalitní mikrofon kondenzátoru ("Code") určený pro z
 
 Můžete také použít analogové mikrofon. Obsahuje mnoho pronájem nabízejí "ročníku" mikrofonů uznávané jejich hlasové znaku. Všimněte si, že profesionální analogové zařízení používá vyvážené XLR konektory, spíše než 1/4" připojit do zařízení uživatelů. Budete-li analogové, budete také potřebovat preamp a zvukové rozhraní počítače pomocí těchto konektorů.
 
-Instalace mikrofon v samostatné nebo bum a použít filtr pop v frot mikrofonu pro odstranění zbytečných dat "plosive" výslovnost "p" a "b". Některé mikrofony součástí pozastavení připojení, který izoluje je od vibrace ve stojan, což je užitečné.
+Instalace mikrofon v samostatné nebo Vida a použít filtr pop před mikrofon pro odstranění zbytečných dat "plosive" výslovnost "p" a "b". Některé mikrofony součástí pozastavení připojení, který izoluje je od vibrace ve stojan, což je užitečné.
 
 Talentu hlasu musí zůstat na konzistentní vzdálenost od mikrofon. K označení, kde by měl být používejte pásku na dolní mez. Pokud se vám sedět dává přednost talentu, věnujte zvláštní pozornost monitorování vzdálenost povinná kontrola úrovně důvěryhodnosti a vyhnutí se zbytečnému vytváření řetězce.
 
@@ -144,7 +144,7 @@ Záznam by měl obsahovat jako malé šum, jako je to možné, s cílem 80 sign�
 > [!TIP]
 > V některých případech může být možné použít ekvalizér nebo softwaru snížení šumu modulu plug-in k odstranění šumu z vašich nahrávek, i když je vždy vhodné ho zastavit v jejich zdroji, pokud je to možné.
 
-Úrovně musí být nastavená tak, že většina dostupné dynamických rozsahů digitální záznam se používá bez overdriving do narušení. To znamená loud, ale ne tak loud, deformuje zvuku. Níže je příklad zvukového průběhu dobré záznamu.
+Úrovně musí být nastavená tak, že většina dostupné dynamických rozsahů digitální záznam se používá bez overdriving. To znamená loud, ale ne tak loud, deformuje zvuku. Níže je příklad zvukového průběhu dobré záznamu.
 
 ![dobré záznam zvukového průběhu](media/custom-voice/good-recording.png)
 
@@ -172,13 +172,13 @@ Přímé talentu k vyslovte slova odděleně. Každé slovo skript by měl výra
 |nikdy pak vám|nikdy pak vám|
 |Existují čtyři světla|Existují čtyři světla|
 |jak se počasí dnes|jak se th "počasí ještě dnes|
-|Moje trochu malwaru pony|Moje lil "malwaru pony|
+|přivítejte přítele malý|Dejme tomu, že hello na můj lil "typu friend|
 
 By měl talentu *není* přidat různé pozastaví mezi slovy. Věty by stále tok samozřejmě i v průběhu zvukově trochu formální. Toto rozlišení jemné může trvat několik postupů Chcete-li získat správný.
 
 ### <a name="the-recording-session"></a>Záznam relace
 
-Vytvořit odkaz na záznam, nebo *shoda souboru* z typických utterance na začátku relace. Požádejte talentu zopakovat tento řádek každou stránku nebo stránky a půl a porovnat má nový záznam odkaz. To vám pomůže talentu zůstaly konzistentní objemu, tempo, centrální rozteč a výšku ve špičce a valley. Mezitím můžete inženýr použít soubor shoda jako odkaz pro úrovně a celkovou konzistenci zvuku. 
+Vytvořit odkaz na záznam, nebo *shoda souboru* z typických utterance na začátku relace. Požádejte talentu zopakovat tento řádek každou stránku nebo stránky a půl. Pokaždé, když, porovnejte má nový záznam odkaz. Tento postup pomáhá talentu zůstávají konzistentní vzhledem k aplikacím ve svazku, tempo, rozteč a intonací. Mezitím můžete inženýr použít soubor shoda jako odkaz pro úrovně a celkovou konzistenci zvuku.
 
 Soubor porovnání je zvlášť důležité při obnovení nahrávání po přerušení, nebo na jiný den. Budete chtít přehrát jej několikrát pro talentů a potom kliknul zopakovat to pokaždé, když dokud je odpovídajících dobře.
 

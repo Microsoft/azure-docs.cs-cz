@@ -1,44 +1,61 @@
 ---
-title: Virtuální procesory Azure Resource Manager kvótu zvýšit požadavky | Microsoft Docs
-description: Žádosti o zvýšení kvóty Azure Resource Manager virtuální procesory
+title: Žádosti o zvýšení kvóty virtuálních procesorů Azure Resource Manageru | Dokumentace Microsoftu
+description: Žádostech o navýšení kvóty virtuálních procesorů Azure Resource Manageru
 author: ganganarayanan
 ms.author: gangan
-ms.date: 1/18/2017
+ms.date: 6/13/2018
 ms.topic: article
 ms.service: microsoft-docs
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: c22a6dde0067385a1bf8d889cc76178bb44dd0ac
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 7456785815dbefb2436713814965d90ba0e789ee
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39037267"
 ---
-# <a name="resource-manager-vcpu-quota-increase-requests"></a>Žádosti o zvýšení kvóty virtuální procesor Resource Manager
+# <a name="resource-manager-vcpu-quota-increase-requests"></a>Žádostech o navýšení kvóty virtuálních procesorů Resource Manageru
 
-Kvóty správce prostředků virtuální procesor prosazují na úrovni rodiny SKU a úrovně oblast.
-Další informace o tom, jak se vynucují kvóty na [předplatného Azure a omezení služby](http://aka.ms/quotalimits) stránky.
-Další informace o SKU rodiny, může porovnat nákladů a výkonu na [ceny služeb Virtual Machines](http://aka.ms/pricingcompute) stránky.
+Kvóty virtuálních procesorů Resource Manageru se vynucují na úrovni oblasti a řady úroveň SKU.
+Další informace o tom, jak kvóty se vynucují na [předplatného Azure a omezení služeb](http://aka.ms/quotalimits) stránky.
+Další informace o SKU rodiny, může porovnat náklady a výkon na [ceny Virtual Machines](http://aka.ms/pricingcompute) stránky.
 
-Chcete-li požádat o zvýšení, vytvoření kvóty případu podpory pro Vcpu na portálu Azure [ https://portal.azure.com ](https://portal.azure.com).
+Požádat o zvýšení, postupujte podle pokynů níže použití k vytvoření žádosti o podporu prostřednictvím Azure 'využití a kvóty"okno, které jsou k dispozici na webu Azure Portal. 
 
-> [!NOTE]
-> Zjistěte, jak [vytvořit žádost o podporu](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) na portálu Azure
+## <a name="request-quota-increase-at-subscription-level"></a>Požádat o zvýšení kvóty na úrovni předplatného
 
-1. Na stránce nové žádosti o podporu vyberte typ problému jako "Kvóty" a typ kvóty jako "Jader".
+1. Z https://portal.azure.comvyberte **předplatná**.
 
-    ![Okno základy kvóty](./media/resource-manager-core-quotas-request/Basics-blade.png)
+   ![Předplatná](./media/resource-manager-core-quotas-request/subscriptions.png)
 
-2. Vyberte model nasazení jako "Resource Manager" a vyberte umístění.
+2. Vyberte předplatné, které potřebuje zvýšené kvóty.
 
-    ![Okno problém kvóty](./media/resource-manager-core-quotas-request/Problem-step.png)
+   ![Výběr předplatného](./media/resource-manager-core-quotas-request/select-subscription.png)
 
-3. Vyberte rodiny SKU, které vyžadují zvětšit.
+3. Vyberte **využití a kvóty**
 
-    ![Řada SKU vybrané](./media/resource-manager-core-quotas-request/SKU-selected.png)
+   ![Vyberte využití a kvóty](./media/resource-manager-core-quotas-request/select-usage-quotas.png)
 
-4. Zadejte nové omezení, která má být u předplatného.
+4. V pravém horním rohu vyberte **požádat o zvýšení**.
+
+   ![Zvýšení počtu žádostí](./media/resource-manager-core-quotas-request/request-increase.png)
+
+5. Krok: 1 – vyberte **jader** jako typ nabídky. 
+
+   ![Vyplňte formulář](./media/resource-manager-core-quotas-request/forms.png)
+   
+6. Krok: 2 – Výběr možnosti nasazení modelu jako "Resource Manageru" a vyberte umístění.
+
+    ![Okno kvóta problému](./media/resource-manager-core-quotas-request/Problem-step.png)
+
+3. Vyberte řad SKU, které vyžadují zvýšení.
+
+    ![Vybraná řady SKU](./media/resource-manager-core-quotas-request/SKU-selected.png)
+
+4. Zadejte nové limity, které chcete v rámci předplatného.
 
     ![Skladová položka novou žádost o kvótu](./media/resource-manager-core-quotas-request/SKU-new-quota.png)
 
-- Chcete-li odebrat, zrušte zaškrtnutí políčka SKU z rozevíracího seznamu rodiny SKU nebo klikněte na ikonu zahození "x".
-Po zadání požadovaných kvóty pro každou řadu SKU, klikněte na tlačítko "Další" na stránce problém krok a pokračujte vytvoření žádosti o podporu.
+- Chcete-li odebrat, zrušte zaškrtnutí políčka skladovou Položku z rozevíracího seznamu řady SKU nebo klikněte na ikonu zrušení "x".
+Po zadání požadované kvóty pro každou řadu SKU, klikněte na "Následující" na stránce problém krok a pokračujte vytvoření žádosti o podporu.
+

@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: ''
-ms.date: 07/10/2018
+ms.date: 07/13/2018
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to read more details about Virtual WAN in a FAQ format.
-ms.openlocfilehash: d5038b4a8d8d75bf7c0e1bacd971dba0916ee8ab
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 221c24a839d204c9895d0b0d2bf901a247c7ff0c
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/13/2018
-ms.locfileid: "39009410"
+ms.locfileid: "39035091"
 ---
 # <a name="virtual-wan-faq-preview"></a>Virtuální sítě WAN – nejčastější dotazy (Preview)
 

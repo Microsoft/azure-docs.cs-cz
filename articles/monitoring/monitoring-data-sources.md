@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: bwren
-ms.openlocfilehash: 19a38473f1ce23b5a21ef5a29b3f3dc817b92dfd
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
-ms.translationtype: HT
+ms.openlocfilehash: 262099bbe45e483efd269445aa8042b30668ebe3
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38991177"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39036519"
 ---
 # <a name="sources-of-monitoring-data-in-azure"></a>Zdroje dat v Azure monitorování
 Tento článek popisuje, k dispozici pro sledování stavu a výkonu vašich prostředků Azure a aplikace běžící na nich data.  Shromažďovat a analyzovat tato data pomocí nástrojů popsaných v [shromažďování údajů o monitorování dat v Azure](monitoring-data-collection.md)
@@ -28,21 +28,21 @@ Sledování dat v Azure pochází z různých zdrojů, které mohou být uspoř�
 
 
 ## <a name="azure-platform"></a>Platforma Azure
-Telemetrická data týkající se stavu a operace Azure samotné zahrnuje data o provozu a správy předplatného Azure nebo tenanta. V protokolu aktivit Azure a protokoly auditu ze služby Azure Active Directory obsahuje služby stavu datového úložiště.
+Telemetrická data týkající se stavu a operace Azure samotné zahrnuje data o provozu a správy předplatného Azure nebo tenanta. Zahrnuje službu health data uložená v protokolu aktivit Azure a protokoly auditu ze služby Azure Active Directory.
 
 ![Azure kolekce](media/monitoring-data-sources/azure-collection.png)
 
 ### <a name="azure-service-health"></a>Azure Service Health
 [Azure Service Health](../monitoring-and-diagnostics/monitoring-service-notifications.md) poskytuje informace o stavu služby Azure ve vašem předplatném, které využívají vaše aplikace a prostředky. Můžete vytvářet výstrahy, které oznamuje aktuální a očekávaná zásadní potíže, které můžou ovlivnit vaši aplikaci. Stav služby záznamy ukládají v [protokol aktivit Azure](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md), takže můžete zobrazit v Průzkumníku protokolu aktivity a zkopírujte je do Log Analytics.
 
-### <a name="azure-activity-log"></a>Protokol aktivit v Azure
+### <a name="azure-activity-log"></a>Protokol aktivit Azure
 [Protokolu aktivit Azure](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) obsahuje záznamy stavu služby spolu s záznamů na změny konfigurace provedené u vašich prostředků Azure. Protokol aktivit je k dispozici pro všechny prostředky Azure a představuje jejich _externí_ zobrazení. Konkrétní typy záznamů v protokolu aktivit, které jsou popsány v [schéma událostí protokolu aktivit Azure](../monitoring-and-diagnostics/monitoring-activity-log-schema.md).
 
 Můžete zobrazit na její stránce portálu Azure portal nebo zobrazení protokolů z více zdrojů v protokolu aktivit pro určitý prostředek [Průzkumníku protokol aktivity](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md). Je obzvláště užitečné ke kopírování položky protokolu do Log Analytics zkombinovat s dalšími daty monitorování. Můžete také odeslat do jiných umístění pomocí [Event Hubs](../monitoring-and-diagnostics/monitoring-stream-activity-logs-event-hubs.md).
 
 
 ### <a name="azure-active-directory-audit-logs"></a>Protokoly auditování Azure Active Directory
-[Generování sestav v Azure Active Directory](../active-directory/active-directory-reporting-azure-portal.md) obsahuje historii přihlašovací aktivitu a revizní záznam změn provedených v rámci konkrétního tenanta. Nelze kombinovat aktuálně data auditu služby Azure Active Directory se s dalšími daty monitorování je dostupný prostřednictvím služby Azure Active Directory a [Azure Active Directory API pro vytváření sestav](../active-directory/active-directory-reporting-api-getting-started-azure-portal.md).
+[Generování sestav v Azure Active Directory](../active-directory/active-directory-reporting-azure-portal.md) obsahuje historii přihlašovací aktivitu a revizní záznam změn provedených v rámci konkrétního tenanta. Nelze kombinovat aktuálně data auditu služby Azure Active Directory s dalšími daty monitorování pouze je dostupný prostřednictvím služby Azure Active Directory a [Azure Active Directory API pro vytváření sestav](../active-directory/active-directory-reporting-api-getting-started-azure-portal.md).
 
 
 ## <a name="azure-services"></a>Služby Azure
@@ -69,11 +69,11 @@ Kromě telemetrii generovanou všech služeb Azure mají výpočetní prostředk
 ![Kolekce prostředků Azure compute](media/monitoring-data-sources/compute-resource-collection.png)
 
 ### <a name="diagnostic-extension"></a>Diagnostické rozšíření
-S [rozšíření Azure Diagnostics](../monitoring-and-diagnostics/azure-diagnostics.md), je možné shromažďovat protokoly a výpočetní prostředky, data o výkonu z klientského operačního systému Azure. Metriky a protokoly shromážděná z klientů se ukládají v účtu služby Azure storage, který můžete [konfigurace Log Analytics pro import](../log-analytics/log-analytics-azure-storage-iis-table.md#use-the-azure-portal-to-collect-logs-from-azure-storage).  Průzkumník metrik rozumí čtení z účtu úložiště a bude obsahovat metriky klienta pomocí jiné shromažďovat metriky.
+S [rozšíření Azure Diagnostics](../monitoring-and-diagnostics/azure-diagnostics.md), je možné shromažďovat protokoly a výpočetní prostředky, data o výkonu z klientského operačního systému Azure. Metriky a protokoly shromážděná z klientů se ukládají v účtu služby Azure storage, který můžete [konfigurace Log Analytics pro import z](../log-analytics/log-analytics-azure-storage-iis-table.md#use-the-azure-portal-to-collect-logs-from-azure-storage).  Průzkumník metrik rozumí čtení z účtu úložiště a bude obsahovat metriky klienta pomocí jiné shromažďovat metriky.
 
 
 ### <a name="log-analytics-agent"></a>Agenta log Analytics
-Agenta Log Analytics můžete nainstalovat na Windows nebo Linux virtuálního počítače nebo fyzického počítače. Virtuální počítač může běžet v Azure, jiného cloudu nebo místně.  Agent se připojí ke službě Log Analytics buď přímo nebo prostřednictvím [připojené skupiny pro správu System Center Operations Manager](../log-analytics/log-analytics-om-agents.md) a umožňuje shromažďovat data z [zdroje dat](../log-analytics/log-analytics-data-sources.md) , které nakonfigurujete nebo z [řešení pro správu](../monitoring/monitoring-solutions.md) , poskytování dalších přehledů o aplikace běžící na agentovi.
+Agenta Log Analytics můžete nainstalovat na Windows nebo Linux virtuálního počítače nebo fyzického počítače. Virtuální počítač může běžet v Azure, jiného cloudu nebo místně.  Agent se připojí ke službě Log Analytics buď přímo nebo prostřednictvím [připojené skupiny pro správu System Center Operations Manager](../log-analytics/log-analytics-om-agents.md) a umožňuje shromažďovat data z [zdroje dat](../log-analytics/log-analytics-data-sources.md) , které nakonfigurujete nebo z [řešení pro správu](../monitoring/monitoring-solutions.md) , poskytování dalších přehledů o aplikace běžící na virtuálním počítači.
 
 ### <a name="service-map"></a>Mapa služeb
 [Řešení Service Map](../operations-management-suite/operations-management-suite-service-map.md) vyžaduje, aby Agent závislost na virtuální počítače s Windows a Linux. Tento postup funguje s Log Analytics, agent shromažďuje data o procesy spuštěné na virtuálním počítači a závislosti v externím procesu. Ukládá tato data do Log Analytics a zahrnuje konzolu, která vizuálně zobrazí data, která shromažďuje kromě jiných dat uložených ve službě Log Analytics.
@@ -93,7 +93,7 @@ Můžete také použít službu Application Insights do [vytvořit vlastní metr
 Pokud si chcete monitorovat různé logické operace aplikace, musíte [shromažďování telemetrických dat napříč více komponent](../application-insights/app-insights-transaction-diagnostics.md). Application Insights podporuje [distribuované korelace telemetrie](../application-insights/application-insights-correlation.md) který identifikuje závislosti mezi komponentami, abyste mohli analyzovat společně.
 
 #### <a name="availability-tests"></a>Testy dostupnosti
-[Test dostupnosti](../application-insights/app-insights-monitor-web-app-availability.md) ve službě Application Insights umožňují otestovat dostupnost a odezvu vaší aplikace z různých míst na veřejném Internetu. Můžete provést jednoduché ping testu k ověření, že je aplikace aktivní nebo vytvoření webového testu, který simuluje uživatelský scénář pomocí sady Visual Studio.  Testy dostupnosti nevyžadují žádné instrumentace v aplikaci.
+[Testy dostupnosti](../application-insights/app-insights-monitor-web-app-availability.md) ve službě Application Insights umožňují otestovat dostupnost a odezvu vaší aplikace z různých míst na veřejném Internetu. Můžete provést jednoduché ping testu k ověření, že je aplikace aktivní nebo vytvoření webového testu, který simuluje uživatelský scénář pomocí sady Visual Studio.  Testy dostupnosti nevyžadují žádné instrumentace v aplikaci.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 12/15/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 83a56793d08632918a75f6580360a9dd148d7316
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 2af83762fdcd3302f2af9b08585febab42387d79
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38611064"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39035978"
 ---
 # <a name="assign-a-managed-service-identity-access-to-a-resource-by-using-the-azure-portal"></a>Identita spravované služby se přístup k prostředku přiřadit i pomocí webu Azure portal
 
@@ -41,11 +41,11 @@ Po povolení MSI v prostředku Azure, [jako je například virtuální počíta�
 
 3. Vyberte **řízení přístupu (IAM)** stránce prostředků a vyberte **+ přidat**. Zadejte **Role**, **přiřazení přístupu k virtuálnímu počítači**a zadejte odpovídající **předplatné** a **skupiny prostředků** Pokud je prostředek umístěn. V rámci oblasti kritéria hledání měli byste vidět prostředku. Vyberte prostředek a vyberte **Uložit**. 
 
-   ![Snímek obrazovky přístupu (IAM) ovládacího prvku](~/articles/active-directory/media/msi-howto-assign-access-portal/assign-access-control-iam-blade-before.png)  
+   ![Snímek obrazovky přístupu (IAM) ovládacího prvku](../managed-service-identity/media/msi-howto-assign-access-portal/assign-access-control-iam-blade-before.png)  
 
 4. Budete přesměrováni zpět na hlavní **řízení přístupu (IAM)** stránku, kde uvidíte nový záznam pro zdroje MSI. V tomto příkladu má "SimpleWinVM" virtuálního počítače ze skupiny prostředků ukázka **Přispěvatel** přístup k účtu úložiště.
 
-   ![Snímek obrazovky přístupu (IAM) ovládacího prvku](~/articles/active-directory/media/msi-howto-assign-access-portal/assign-access-control-iam-blade-after.png)
+   ![Snímek obrazovky přístupu (IAM) ovládacího prvku](../managed-service-identity/media/msi-howto-assign-access-portal/assign-access-control-iam-blade-after.png)
 
 ## <a name="troubleshooting"></a>Řešení potíží
 

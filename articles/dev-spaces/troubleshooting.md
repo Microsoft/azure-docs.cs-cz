@@ -1,5 +1,5 @@
 ---
-title: Řešení potíží s | Microsoft Docs
+title: Řešení potíží | Dokumentace Microsoftu
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
@@ -8,97 +8,125 @@ author: ghogen
 ms.author: ghogen
 ms.date: 05/11/2018
 ms.topic: article
-description: Rychlý vývoj Kubernetes s kontejnery a mikroslužeb v Azure
-keywords: Docker, Kubernetes, Azure, AKS, Kubernetes služby Azure, kontejnery
+description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
+keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
 manager: douge
-ms.openlocfilehash: 371bb9195266f3511d115de2532e6b64f49ef26f
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: fdf195d96bb455334cb4e898e560813ee8709a50
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34199292"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39035648"
 ---
 # <a name="troubleshooting-guide"></a>Průvodce odstraňováním potíží
 
-Tato příručka obsahuje informace o běžných problémech může mít při používání Azure Dev prostory.
+Tato příručka obsahuje informace o běžných problémů, možná bude při používání Azure Dev mezery.
 
-## <a name="error-upstream-connect-error-or-disconnectreset-before-headers"></a>Chyba "proti proudu Chyba připojení nebo odpojení nebo zrušit před hlavičky"
-Tato chyba se může zobrazit při pokusu o přístup ke službě. Například když přejdete na adresu URL služby v prohlížeči. 
+## <a name="error-service-cannot-be-started"></a>Chyba "službu nelze spustit."
 
-### <a name="reason"></a>Důvod 
-Port kontejneru není k dispozici. Možné příčiny: 
-* Kontejner se stále ještě probíhá vytvořené a nasazené. To může být případě, pokud spustíte `azds up` nebo spuštění ladicího programu a opakujte přístup kontejneru před úspěšně nasadil.
-* Konfigurace portu není konzistentní napříč váš soubor Docker, Helm graf a serverový kód, které se otevře port.
+Tato chyba může zobrazit, když kódu služby se nepodaří spustit. Příčinou je často v uživatelském kódu. Pokud chcete získat další diagnostické informace, proveďte následující změny k příkazům a nastavení:
 
-### <a name="try"></a>Vyzkoušejte:
-1. Pokud kontejner právě vytvořené nebo nasazení, můžete počkejte 2 – 3 sekund a zkuste znovu přistoupit ke službě. 
-1. Zkontrolujte konfiguraci portů. Zadaný port čísla by měla mít **identické** v všechny prostředky níže:
-    * **Soubor Docker:** určeného `EXPOSE` instrukcí.
-    * **[Graf Helm](https://docs.helm.sh):** určeného `externalPort` a `internalPort` hodnoty pro službu (často umístěný v `values.yml` soubor),
-    * Všechny porty se otevřely v kódu aplikace, například v Node.js: `var server = app.listen(80, function () {...}`
+Na příkazovém řádku:
 
+1. Při použití _azds.exe_, použijte--verbose možnost příkazového řádku a použijte možnost příkazového řádku--output k určení formátu výstupního.
+ 
+    ```cmd
+    azds up --verbose --output json
+    ```
 
-## <a name="config-file-not-found"></a>Konfigurační soubor nebyl nalezen.
-Při spuštění `azds up` a zobrazí následující chyba: `Config file not found: .../azds.yaml`
+V sadě Visual Studio:
 
-### <a name="reason"></a>Důvod
-Je nutné spustit `azds up` z kořenového adresáře kódu, kterou chcete spustit, a je třeba inicializovat složce kód ke spuštění s Azure Dev prostory.
+1. Otevřít **nástroje > Možnosti** a v části **projekty a řešení**, zvolte a **sestavíte a spustíte**.
+2. Změnit nastavení pro **podrobnosti výstupu sestavení projektu nástroje MSBuild** k **podrobné** nebo **diagnostických**.
 
-### <a name="try"></a>Vyzkoušejte:
-1. Změňte aktuální adresář ke kořenové složce obsahující kódu služby. 
-1. Pokud nemáte azds.yaml soubor ve složce kódu, spusťte `azds prep` ke generování Docker, Kubernetes a prostory Dev Azure prostředky.
+    ![Možnosti nástrojů – snímek obrazovky dialogového okna](media/common/VerbositySetting.PNG)
 
-## <a name="error-the-pipe-program-azds-exited-unexpectedly-with-code-126"></a>Chyba: 'kanálu program byl neočekávaně ukončen s kódem 126 azds."
-Spuštění ladicího programu VS Code může v některých případech vést k této chybě. Jedná se o známý problém.
+## <a name="error-required-tools-and-configurations-are-missing"></a>Chyba "Vyžaduje nástroje a konfigurace nebyly nalezeny"
 
-### <a name="try"></a>Vyzkoušejte:
-1. Zavřete a znovu otevřete VS Code.
-2. Znovu stiskněte F5.
+K této chybě může dojít při spuštění VS Code: "[Azure Dev prostory] nástroje a konfigurací pro sestavení a ladění. [název projektu]' chybí požadované."
+Chyba znamená, že tento azds.exe není v proměnné prostředí PATH, jak je vidět ve VS Code.
 
+### <a name="try"></a>Zkuste:
 
-## <a name="debugging-error-configured-debug-type-coreclr-is-not-supported"></a>Ladění – chyba "konfigurovaná ladění typ 'coreclr' není podporován.
-Chyba spuštění ladicího programu VS Code sestavy: `Configured debug type 'coreclr' is not supported.`
+Spusťte VS Code z příkazového řádku, kde je správně nastavit proměnné prostředí PATH.
 
-### <a name="reason"></a>Důvod
-Nemáte rozšíření VS Code prostory Dev Azure nainstalovaná na počítači pro vývoj.
-
-### <a name="try"></a>Vyzkoušejte:
-Nainstalujte [VS Code rozšíření Azure Dev prostory](get-started-netcore.md).
-
-## <a name="the-type-or-namespace-name-mylibrary-could-not-be-found"></a>Typ nebo obor názvů 'Moje knihovna' nebyl nalezen.
+## <a name="error-upstream-connect-error-or-disconnectreset-before-headers"></a>Chyba "upstream Chyba připojení nebo odpojení/reset před záhlaví"
+Při pokusu o přístup ke službě, může se zobrazit tato chyba. Například když přejdete na adresu URL služby v prohlížeči. 
 
 ### <a name="reason"></a>Důvod 
-Kontext sestavení je na úrovni projektu a službám ve výchozím nastavení, proto projekt knihovny, kterou používáte nebude nalezen.
+Port kontejneru není k dispozici. Tomuto problému může dojít, protože: 
+* Kontejner se stále ještě probíhá sestavíte a nasadíte. Tento problém může nastat, pokud spustíte `azds up` nebo spuštění ladicího programu a pak zkuste přístup ke kontejneru předtím, než byl úspěšně nasazen.
+* Konfigurace portu není konzistentní napříč vaší _soubor Dockerfile_, diagram helmu a libovolný kód serveru, které se otevře port.
 
-### <a name="try"></a>Vyzkoušejte:
+### <a name="try"></a>Zkuste:
+1. Jestli je kontejner právě vytvořená/nasazuje, můžete počkejte 2-3 sekund a zkuste to znovu přístupu ke službě. 
+1. Zkontrolujte konfiguraci portů. Zadaný port čísla by měla být **identické** ve níže prostředky:
+    * **Soubor Dockerfile:** určené `EXPOSE` instrukce.
+    * **[Diagram helmu](https://docs.helm.sh):** určené `externalPort` a `internalPort` hodnoty pro službu (nacházejí se často ve `values.yml` souboru),
+    * Žádné porty se otevřely v kódu aplikace, například v Node.js: `var server = app.listen(80, function () {...}`
+
+
+## <a name="config-file-not-found"></a>Nebyl nalezen konfigurační soubor
+Spuštění `azds up` a zobrazí následující chyba: `Config file not found: .../azds.yaml`
+
+### <a name="reason"></a>Důvod
+Je nutné spustit `azds up` z kořenového adresáře kódu, které chcete spustit, a je třeba inicializovat složce kód ke spuštění Azure Dev mezer.
+
+### <a name="try"></a>Zkuste:
+1. Do kořenové složky, která obsahuje kód služby změňte aktuální adresář. 
+1. Pokud nemáte _azds.yaml_ souboru ve složce kód spustit `azds prep` ke generování Docker, Kubernetes a Azure Dev prostory prostředky.
+
+## <a name="error-the-pipe-program-azds-exited-unexpectedly-with-code-126"></a>Chyba: "cílového programu se neočekávaně ukončil s kódem 126 azds."
+Spouští se ladicí program VS Code může někdy vést k této chybě. Jedná se o známý problém.
+
+### <a name="try"></a>Zkuste:
+1. Zavřete a znovu spusťte VS Code.
+2. Znovu, stiskněte F5.
+
+
+## <a name="debugging-error-configured-debug-type-coreclr-is-not-supported"></a>Chyba ladění není podporován typ ladění nakonfigurováno "coreclr.
+Spuštění ladicího programu VS Code zaznamená chybu: `Configured debug type 'coreclr' is not supported.`
+
+### <a name="reason"></a>Důvod
+Rozšíření VS Codu pro Azure Dev prostory nainstalována na vývojovém počítači nemáte.
+
+### <a name="try"></a>Zkuste:
+Nainstalujte [rozšíření VS Codu pro Azure Dev prostory](get-started-netcore.md).
+
+## <a name="the-type-or-namespace-name-mylibrary-could-not-be-found"></a>Název typu nebo oboru názvů 'Moje knihovna' nebyl nalezen
+
+### <a name="reason"></a>Důvod 
+Kontext sestavení na úrovni projektu nebo služby ve výchozím nastavení se proto projekt knihovny, které používáte nebude nalezena.
+
+### <a name="try"></a>Zkuste:
 Co je potřeba udělat:
-1. Upravte soubor azds.yaml nastavit kontext sestavení na úrovni řešení.
-2. Upravte soubor Docker a Dockerfile.develop soubory k odkazování na soubory csproj správně, relativně k nový kontext sestavení.
-3. Umístěte soubor .dockerignore vedle soubor .sln a podle potřeby upravte.
+1. Upravit _azds.yaml_ souboru nastavit kontext sestavení na úrovni řešení.
+2. Upravit _soubor Dockerfile_ a _Dockerfile.develop_ soubory k odkazování na projekt (_.csproj_) soubory správně, vzhledem k nové sestavení kontextu.
+3. Místo _.dockerignore_ souboru vedle souboru .sln a podle potřeby upravte.
 
-Můžete najít příklad v https://github.com/sgreenmsft/buildcontextsample
+Můžete najít na příklad https://github.com/sgreenmsft/buildcontextsample
 
-## <a name="microsoftconnectedenvironmentregisteraction-authorization-error"></a>Chyba autorizace 'Microsoft.ConnectedEnvironment/register/action.
-Když spravujete Dev místa Azure a práci v předplatné Azure, pro který jste vlastníkem nebo přispěvatelem přístup, může se zobrazit následující chyby.
-`The client '<User email/Id>' with object id '<Guid>' does not have authorization to perform action 'Microsoft.ConnectedEnvironment/register/action' over scope '/subscriptions/<Subscription Id>'.`
+## <a name="microsoftdevspacesregisteraction-authorization-error"></a>Chyba autorizace "Microsoft.DevSpaces/register/action.
+Když spravujete prostorem Azure Dev a práci v rámci předplatného Azure, pro který nemáte přístup přispěvatele nebo vlastníka, může se zobrazit následující chyba.
+`The client '<User email/Id>' with object id '<Guid>' does not have authorization to perform action 'Microsoft.DevSpaces/register/action' over scope '/subscriptions/<Subscription Id>'.`
 
 ### <a name="reason"></a>Důvod
-Vybrané předplatné není registrován Microsoft.ConnectedEnvironment obor názvů.
+Vybrané předplatné Azure nebyla zaregistrována `Microsoft.DevSpaces` oboru názvů.
 
-### <a name="try"></a>Vyzkoušejte:
-Někdo s vlastníkem nebo přispěvatelem přístup k předplatnému Azure můžete spusťte následující příkaz rozhraní příkazového řádku Azure k ruční registraci Microsoft.ConnectedEnvironment obor názvů:
+### <a name="try"></a>Zkuste:
+Někdo s přístupem k roli vlastníka nebo přispěvatele k předplatnému Azure spuštěním následujícího příkazu rozhraní příkazového řádku Azure k ruční registraci `Microsoft.DevSpaces` obor názvů:
 
 ```cmd
-az provider register --namespace Microsoft.ConnectedEnvironment
+az provider register --namespace Microsoft.DevSpaces
 ```
 
-## <a name="azure-dev-spaces-doesnt-seem-to-use-my-existing-dockerfile-to-build-a-container"></a>Asi není používat Můj stávající soubor Docker vytvořit kontejner Azure prostory vývojářů 
+## <a name="azure-dev-spaces-doesnt-seem-to-use-my-existing-dockerfile-to-build-a-container"></a>Azure Dev prostory vypadá, že nepodporuje použití Můj existující soubor Dockerfile k vytvoření kontejneru 
 
 ### <a name="reason"></a>Důvod
-Azure Dev prostory lze nakonfigurovat tak, aby odkazoval na konkrétní soubor Docker ve vašem projektu. Pokud se zdá, že Azure Dev prostory nepoužívá soubor Docker plánujete vytvoření kontejnerů, možná budete muset explicitně říct prostory Dev Azure tam, kde je. 
+Azure Dev prostory můžete nakonfigurovat tak, aby odkazoval na konkrétní _soubor Dockerfile_ ve vašem projektu. Pokud se zdá, že nepoužívá prostory vývoj Azure _soubor Dockerfile_ očekáváte, že k vytvoření kontejnerů, možná budete muset říct Azure Dev prostory tam, kde je explicitně. 
 
-### <a name="try"></a>Vyzkoušejte:
-Otevřete `azds.yaml` soubor, který byl vygenerován mezerami Dev Azure ve vašem projektu. Použít `configurations->develop->build->dockerfile` direktiva tak, aby odkazoval na soubor Docker, kterou chcete použít:
+### <a name="try"></a>Zkuste:
+Otevřít _azds.yaml_ soubor, který byl vygenerován mezerami vývoj Azure ve vašem projektu. Použít `configurations->develop->build->dockerfile` směrnice tak, aby odkazoval na soubor Dockerfile, který chcete použít:
 
 ```
 ...

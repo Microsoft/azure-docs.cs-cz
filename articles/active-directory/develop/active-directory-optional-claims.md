@@ -16,12 +16,12 @@ ms.date: 07/12/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: dd436fb431351b41c61af5ef99f11fce470386a8
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
-ms.translationtype: HT
+ms.openlocfilehash: e2b8b1f63e4c23c0beeaff6fd246fa2ba8afe106
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003592"
+ms.locfileid: "39036747"
 ---
 # <a name="optional-claims-in-azure-ad-preview"></a>Nepovinných deklarací identity ve službě Azure AD (preview)
 
@@ -66,7 +66,7 @@ Sada nepovinných deklarací identity ve výchozím nastavení dostupné pro pou
 | `enfpolids`                | ID zásady. Seznam zásad ID, která byla vyhodnocena pro aktuálního uživatele.  | JWT |  |  |
 | `vnet`                     | Specifikátor informace o virtuální síti.    | JWT        |           |      |
 | `fwd`                      | IP adresa.| JWT    |   | Přidá původní adresa IPv4 z klienta (uvnitř virtuální sítě) |
-| `ctry`                     | Zemi uživatele | JWT |           | |
+| `ctry`                     | Zemi uživatele | JWT |           | Azure AD vrací `ctry` nepovinné deklarace identity, pokud je přítomen a hodnota deklarace identity je kód země standardní dvou písmen, jako je například FR, JP, SZ a tak dále. |
 | `tenant_ctry`              | Země prostředku tenanta | JWT | | |
 | `xms_pdl`          | Upřednostňované umístění dat   | JWT | | U klientů geografickým oblastem jde 3písmenný kód, který ukazuje které geografické oblasti je uživatel v.  Další podrobnosti najdete v tématu [dokumentace ke službě Azure AD Connect o upřednostňované umístění dat](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-feature-preferreddatalocation). <br> Příklad: `APC` pro Asie a Tichomoří. |
 | `xms_pl`                   | Uživatel upřednostňovaný jazyk  | JWT ||Uživatel upřednostňovaného jazyka, pokud se nastavení.  Zdrojem je jejich domovském tenantovi ve scénářích přístup hosta.  Všechny kopie ve formátu ("en-us"). |

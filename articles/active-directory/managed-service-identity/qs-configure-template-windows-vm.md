@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: daveba
-ms.openlocfilehash: d8490dcba35cfeabb3da589f3d079571d5e98d3b
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 000a8e2a9a4907387db8cb7b0f4416eee66642f8
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969200"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39036706"
 ---
 # <a name="configure-a-vm-managed-service-identity-by-using-a-template"></a>Konfigurace virtuálních počítačů spravovaná identita služby s použitím šablony
 
@@ -59,7 +59,7 @@ V této části se povolí a zakáže systému přiřazené identity pomocí ša
    > Tento příklad předpokládá proměnných, například `vmName`, `storageAccountName`, a `nicName` byly definovány v šabloně.
    >
 
-   ![Snímek obrazovky se šablona – vyhledejte virtuální počítač](../media/msi-qs-configure-template-windows-vm/template-file-before.png) 
+   ![Snímek obrazovky se šablona – vyhledejte virtuální počítač](../managed-service-identity/media/msi-qs-configure-template-windows-vm/template-file-before.png) 
 
 3. Pokud chcete povolit identitu přiřazenou systémem, přidejte `"identity"` vlastnost na stejné úrovni jako `"type": "Microsoft.Compute/virtualMachines"` vlastnost. Použijte následující syntaxi:
 
@@ -99,7 +99,7 @@ V této části se povolí a zakáže systému přiřazené identity pomocí ša
 
 5. Až budete hotovi, vaše šablona by měl vypadat nějak takto:
 
-   ![Snímek obrazovky po aktualizaci šablony](../media/msi-qs-configure-template-windows-vm/template-file-after.png)
+   ![Snímek obrazovky po aktualizaci šablony](../managed-service-identity/media/msi-qs-configure-template-windows-vm/template-file-after.png)
 
 ### <a name="assign-a-role-the-vms-system-assigned-identity"></a>Přiřazení role Virtuálního počítače identitu přiřazenou systémem
 

@@ -10,20 +10,20 @@ ms.date: 05/01/2018
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: 88c01e8e57d4a92478b8b1ca0689ff0f8e499b39
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "33814624"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38739369"
 ---
-Když hostitel funkce běží místně, zapisuje protokoly do následujícího umístění:
+Když funkce hostiteli běží místně, zapisuje protokoly do následujícího umístění:
 
 ```
 <DefaultTempDirectory>\LogFiles\Application\Functions
 ```
 
-V systému Windows `<DefaultTempDirectory>` je první nalezené hodnoty USERPROFILE TMP TEMP, proměnné prostředí nebo adresáři Windows.
+Na Windows `<DefaultTempDirectory>` je první nalezené hodnoty USERPROFILE TMP, TEMP, proměnné prostředí, nebo adresář Windows.
 V systému MacOS nebo Linux `<DefaultTempDirectory>` je proměnná prostředí TMPDIR.
 
 > [!NOTE]
-> Při spuštění funkce hostitele, přepíše stávající strukturu souborů v adresáři.
+> Při spuštění hostitele funkce přepíše existující strukturu souborů v adresáři.

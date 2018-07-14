@@ -8,12 +8,12 @@ ms.date: 6/20/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 96ca5a7ec8b0c87984ea2c76af446d7a8b5504a1
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 96a0443a66bb826496c6af42fe6479c0a53ac964
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37344296"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39036080"
 ---
 # <a name="create-a-windows-iot-edge-device-that-acts-as-a-transparent-gateway"></a>Vytvoření zařízení Windows IoT Edge, který funguje jako transparentní brána
 
@@ -22,7 +22,7 @@ Tento článek obsahuje podrobné pokyny k používání zařízení IoT Edge ja
 >[!NOTE]
 >Aktuálně:
 > * Pokud brána není připojený k ze služby IoT Hub, se nemůže ověřit podřízené zařízení s bránou.
-> * Zařízení IoT Edge se nemůže připojit k brány IoT Edge.
+> * Hraniční zařízení nemůže připojit k brány IoT Edge. 
 > * Příjem dat zařízení nemohou použít nahrávání souboru.
 
 Obtížnou část o vytvoření transparentní brány je bezpečné připojení brány pro příjem dat zařízení. Azure IoT Edge umožňuje používat infrastrukturu veřejných KLÍČŮ nastavení zabezpečení připojení protokol TLS mezi tato zařízení. V tomto případě jsme se umožní příjem dat zařízení pro připojení k zařízení IoT Edge sloužit jako transparentní brána.  Zachování přiměřené zabezpečení, by měl podřízené zařízení potvrdit identitu hraniční zařízení, protože pouze chcete, aby vaše zařízení připojující se k vaší brány a potenciálně škodlivých bránu.
@@ -140,7 +140,7 @@ Jednou z klíčových možností služby Azure IoT Edge je schopnost nasazovat m
 1. Na webu Azure Portal přejděte do svého centra IoT.
 2. Přejděte na **IoT Edge** a vyberte zařízení IoT Edge, který chcete použít jako bránu.
 3. Vyberte **Nastavit moduly**.
-4. Vyberte **Next** (Další).
+4. Vyberte **Další**.
 5. V kroku **Specify routes** (Zadejte trasy) musíte mít výchozí trasu, která odesílá všechny zprávy ze všech modulů do IoT Hubu. Pokud tomu tak není, přidejte následující kód a vyberte **Next** (Další).
    ```JSON
    {

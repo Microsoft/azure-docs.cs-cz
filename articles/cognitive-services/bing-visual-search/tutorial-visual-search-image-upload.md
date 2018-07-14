@@ -10,12 +10,12 @@ ms.technology: bing-visual-search
 ms.topic: article
 ms.date: 07/10/2018
 ms.author: scottwhi
-ms.openlocfilehash: a5ec7142fccb900a7095a0c67623d560d3bc00d7
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 90ea591137b306069c1a5c184aea07375c72ce5c
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/13/2018
-ms.locfileid: "39009531"
+ms.locfileid: "39036536"
 ---
 # <a name="tutorial-breaking-down-bing-visual-search-upload"></a>Kurz: Popis vnitřních principů nahrávání pro vizuální vyhledávání Bingu
 
@@ -24,7 +24,7 @@ V tomto kurzu rozděluje proces nahrávání obrázku do Bingu a získávání p
 V tomto kurzu je k dispozici pro vývojáře, který chce Seznamte se s obsahem odpovědi Bingu. Nelze použít veškeré použití a zobrazit požadavky (například, neposkytuje odkaz na zásady ochrany osobních údajů společnosti Microsoft). Všechny požadavky na použití, naleznete v tématu [požadavky na zobrazení a použití Bingu](./use-and-display-requirements.md).
 
 
-### <a name="where-to-start"></a>Kde začít?
+## <a name="where-to-start"></a>Kde začít?
 
 Začněme stránky HTML, která odešle obrázek Bingu a získá zpět insights a zobrazí je. Ve svém oblíbeném editoru vytvořte soubor s názvem, uploaddemo.html. Přidejte následující základní struktura HTML do souboru.
 
@@ -50,7 +50,7 @@ Spustit, Pojďme rozdělit na stránce oddíl žádost, ve kterém uživatel zad
         <div id="responseSection"></div>
 ```
 
-### <a name="get-the-file-to-upload"></a>Získat soubor k nahrání
+## <a name="get-the-file-to-upload"></a>Získat soubor k nahrání
 
 Aby mohl uživatel vybrat bitovou kopii k nahrání, používá tuto ukázku \<vstupní\> značku s atributem typu nastavení do souboru. Uživatelské rozhraní je potřeba usnadňují vymazat, ukázky používá k získání požadovaných výsledků vyhledávání Bingu. 
 
@@ -126,7 +126,7 @@ Následuje ukázka obslužná rutina, která zachycuje vybrané bitové kopie. O
 ```
 
 
-### <a name="what-else-is-needed-before-making-the-call-to-bing"></a>Co je potřeba před provedením volání do Bingu?
+## <a name="what-else-is-needed-before-making-the-call-to-bing"></a>Co je potřeba před provedením volání do Bingu?
 
 Ukázky stále potřebuje klíč předplatného. V praxi by pravděpodobně získat klíč předplatného ze zabezpečeného úložiště, ale pro zjednodušení této ukázku je potřeba ho zadat v uživatelském rozhraní. Přidejte následující \<vstupní\> značku (s atributem typu nastaven na text) na \<tělo\> pod souboru \<výstup\> značky.
 
@@ -226,7 +226,7 @@ Ukázky skryje seznamů do sbalitelné div, kterým je řízeno odkaz Možnosti 
 ```
 
 
-### <a name="making-the-call"></a>Volání
+## <a name="making-the-call"></a>Volání
 
 Přidáte na následující tlačítko Get insights pod možností div v textu. Tlačítko umožňuje uživatelům iniciujte hovor. Když uživatel klikne na tlačítko, kurzor se změní na kurzor pro čekání pokryjte a se nazývá popisovač události.
 
@@ -291,7 +291,7 @@ Funkce Odesilani formáty adresu URL koncového bodu, nastaví záhlaví Ocp-Api
         }
 ```
 
-### <a name="handling-the-response"></a>Zpracování odpovědi
+## <a name="handling-the-response"></a>Zpracování odpovědi
 
 Funkce handleResponse zpracuje odpověď z volání pro vizuální vyhledávání Bingu. Pokud je volání úspěšné, analyzuje odpověď JSON do jednotlivé značky, které obsahují přehledy. V dalším kroku přidá řetězec, výsledky hledání v Internetu Bing, na stránku, kde se dá uživateli vědět, že data pocházejí ze služby Bing.
 
@@ -676,7 +676,7 @@ Mějte na paměti, je minimální množství dat, které je třeba zobrazit, je 
 
 
 
-### <a name="adding-styles-to-make-the-page-display-correctly"></a>Přidání styly, chcete-li správně zobrazit stránku
+## <a name="adding-styles-to-make-the-page-display-correctly"></a>Přidání styly, chcete-li správně zobrazit stránku
 
 Přidejte následující \<styl\> části \<head\> značky.
 
@@ -1328,3 +1328,7 @@ Tady je úplný příklad HTML a JavaScript.
     </body>
 </html>      
 ```
+
+## <a name="next-steps"></a>Další postup
+
+Pokud chcete zobrazit podrobný přehled fungování pomocí a přehledů token, viz [Bingu Visual Search SDK ImageInsightsToken kurzu](.\tutorial-visual-search-insights-token.md).

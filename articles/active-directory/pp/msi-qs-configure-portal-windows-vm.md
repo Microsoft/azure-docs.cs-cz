@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 12/15/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 37710015904c8112e5d2de504ed5b42895ffb809
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 54bb2466a99569c124128ad3e08f276a0bc0262d
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38610310"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39035261"
 ---
 # <a name="configure-a-vm-managed-service-identity-msi-using-the-azure-portal"></a>Konfigurace virtuálním počítači Identity spravované služby (MSI) pomocí webu Azure portal
 
@@ -52,7 +52,7 @@ Pokud máte virtuální počítač, který byl původně zřízený bez MSI:
 
 2. Klikněte na stránce "Konfigurace", povolte výběrem možnosti "Ano" v "Identita spravované služby" MSI ve virtuálním počítači a pak klikněte na **Uložit**. Tato operace může trvat 60 sekund nebo informace k dokončení:
 
-   ![Snímek obrazovky stránky konfigurace](~/articles/active-directory/media/msi-qs-configure-portal-windows-vm/create-windows-vm-portal-configuration-blade.png)  
+   ![Snímek obrazovky stránky konfigurace](../managed-service-identity/media/msi-qs-configure-portal-windows-vm/create-windows-vm-portal-configuration-blade.png)  
 
 ## <a name="remove-msi-from-an-azure-vm"></a>Odebrání MSI virtuálního počítače Azure
 
@@ -64,7 +64,7 @@ Pokud máte virtuální počítač, který už je Instalační služba MSI:
 
 3. Klikněte na stránce "Konfigurace", odeberte MSI z virtuálního počítače tak, že vyberete "Ne" v části "Identita spravované služby" a pak klikněte na tlačítko **Uložit**. Tato operace může trvat 60 sekund nebo informace k dokončení:
 
-   ![Snímek obrazovky stránky konfigurace](~/articles/active-directory/media/msi-qs-configure-portal-windows-vm/create-windows-vm-portal-configuration-blade-disable.png)  
+   ![Snímek obrazovky stránky konfigurace](../managed-service-identity/media/msi-qs-configure-portal-windows-vm/create-windows-vm-portal-configuration-blade-disable.png)  
 
 ## <a name="related-content"></a>Související obsah
 

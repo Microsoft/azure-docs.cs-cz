@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 12/12/2017
 ms.author: daveba
-ms.openlocfilehash: 05096050dfc29aebd2859b298eef884dcd9a1111
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: c48d03b6e8a3d850d02d2c36c35915f8214b00e8
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37908074"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39035808"
 ---
 # <a name="faqs-and-known-issues-with-managed-service-identity-msi-for-azure-active-directory"></a>Nejčastější dotazy a známé problémy s Identity spravované služby (MSI) pro Azure Active Directory
 
@@ -85,7 +85,7 @@ Kde:
 
 Pokud identita spravované služby je povoleno na virtuálním počítači, se zobrazí následující chyba při pokusu o použití funkce "Skript automatizace" pro virtuální počítač nebo jeho skupina prostředků:
 
-![Automatizační skript exportu došlo k chybě MSI](../media/msi-known-issues/automation-script-export-error.png)
+![Automatizační skript exportu došlo k chybě MSI](../managed-service-identity/media/msi-known-issues/automation-script-export-error.png)
 
 Rozšíření virtuálního počítače identitu spravované služby aktuálně nepodporuje možnost exportu schématem pro šablonu skupiny prostředků. V důsledku toho vygenerovanou šablonu nezobrazuje parametry konfigurace se povolit identitu spravované služby u daného prostředku. Tyto části můžete přidat ručně podle příkladů v [konfigurace virtuálních počítačů spravovaná identita služby s použitím šablony](qs-configure-template-windows-vm.md).
 

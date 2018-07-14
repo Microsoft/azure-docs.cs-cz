@@ -11,20 +11,20 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/26/2018
+ms.date: 07/12/2018
 ms.author: juliako
-ms.openlocfilehash: da2df60e3111055729bbae2c6684ccbb9671272e
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: b62c528716d9386b9da6ddee260fd1ec382fb4a5
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/13/2018
-ms.locfileid: "39007859"
+ms.locfileid: "39036781"
 ---
 # <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>Použití dynamického šifrování AES-128 a doručení klíče služby
 
 Media Services můžete použít k zajištění HTTP Live Streaming (HLS), MPEG-DASH a Smooth Streaming, šifrují pomocí AES pomocí 128bitového šifrování klíčů. Služba Media Services také poskytuje službu doručení klíče, který poskytuje šifrovací klíče na oprávněné uživatele. Pokud chcete pro Media Services k šifrování prostředek, šifrovací klíč přidružit StreamingLocator a taky nakonfigurovat obsahu klíče zásad. Datový proud je žádost přehrávač, Media Services používá k dynamické šifrování obsahu pomocí šifrování AES se zadaným klíčem. K dešifrování datového proudu, přehrávače požádá službu doručování klíčů klíč. Pokud chcete zjistit, zda je uživatel oprávnění k získání klíče, služba vyhodnocuje obsahu klíče zásadami, které jste zadali pro klíč.
 
-Tento článek je založen na [EncryptWithAES](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES) vzorku. Vzorek ukazuje, jak vytvořit kódování transformaci, která používá integrované přednastavení kódování s adaptivní přenosovou rychlostí a ingestuje souboru přímo z [adresa URL zdroje HTTPs](job-input-from-http-how-to.md). Prostředku výstupu se potom zveřejní pomocí šifrování AES (ClearKey). Výstup z ukázky je adresa URL pro Azure Media Player, včetně DASH manifestu a AES token potřebné k přehrávání obsahu. Ukázka nastaví vypršení platnosti tokenu JWT na 1 hodinu. Můžete otevřít prohlížeč a vložit bude Výsledná adresa URL ke spuštění stránky ukázku Azure Media Player pomocí adresy URL a tokenu doplnit pro vás již (v následujícím formátu: ``` https://ampdemo.azureedge.net/?url= {dash Manifest URL} &aes=true&aestoken=Bearer%3D{ JWT Token here}```.)
+Tento článek je založen na [EncryptWithAES](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES) vzorku. Vzorek ukazuje, jak vytvořit kódování transformaci, která používá integrované přednastavení kódování s adaptivní přenosovou rychlostí a ingestuje souboru přímo z [adresa URL zdroje HTTPs](job-input-from-http-how-to.md). Prostředku výstupu se potom zveřejní pomocí šifrování AES (ClearKey). Výstup z ukázky je adresa URL pro Azure Media Player, včetně DASH manifestu a AES token potřebné k přehrávání obsahu. Ukázka nastaví vypršení platnosti tokenu JWT na 1 hodinu. Můžete otevřít prohlížeč a vložit bude Výsledná adresa URL ke spuštění stránky ukázku Azure Media Player pomocí adresy URL a tokenu doplnit pro vás již v následujícím formátu: ```https://ampdemo.azureedge.net/?url= {dash Manifest URL} &aes=true&aestoken=Bearer%3D{ JWT Token here}```.
 
 > [!NOTE]
 > Každý prostředek s více typy šifrování (AES-128, PlayReady, Widevine, FairPlay) můžete šifrovat. Zobrazit [streamování protokolů a typy šifrování](content-protection-overview.md#streaming-protocols-and-encryption-types), pokud chcete zobrazit, co dává smysl kombinovat.

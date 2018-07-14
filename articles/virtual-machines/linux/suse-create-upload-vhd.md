@@ -1,6 +1,6 @@
 ---
-title: Vytvořit a nahrát VHD SUSE Linux v Azure
-description: Naučte se vytvořit a odeslat Azure virtuálního pevného disku (VHD) obsahující operační systém SUSE Linux.
+title: Vytvoření a nahrání VHD s operačním systémem SUSE Linuxem v Azure
+description: Zjistěte, jak vytvořit a nahrát Azure virtuálního pevného disku (VHD), který obsahuje operační systém SUSE Linux.
 services: virtual-machines-linux
 documentationcenter: ''
 author: szarkos
@@ -15,59 +15,59 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: szark
-ms.openlocfilehash: 99838a7038672998d4940bfb437bd31311d3600f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 3bdd3f4d67fcaae37736022c3c59af19eb04bec7
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34653429"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39036645"
 ---
 # <a name="prepare-a-sles-or-opensuse-virtual-machine-for-azure"></a>Příprava virtuálního počítače se SLES nebo openSUSE pro Azure
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 ## <a name="prerequisites"></a>Požadavky
-Tento článek předpokládá, že jste již nainstalovali SUSE nebo openSUSE operační systém Linux virtuálního pevného disku. Postup vytvoření souborů VHD, například řešení virtualizace jako je například technologie Hyper-V existuje několik nástrojů. Pokyny najdete v tématu [nainstalovat roli Hyper-V a konfigurace virtuálního počítače](http://technet.microsoft.com/library/hh846766.aspx).
+Tento článek předpokládá, že jste již nainstalovali SUSE nebo openSUSE Linux operačního systému na virtuální pevný disk. Existují více nástroje k vytvoření souborů .vhd, třeba řešení virtualizace jako je Hyper-V. Pokyny najdete v tématu [instalace Role Hyper-V a konfigurace virtuálního počítače](http://technet.microsoft.com/library/hh846766.aspx).
 
-### <a name="sles--opensuse-installation-notes"></a>SLES / openSUSE poznámky k instalaci
-* Najdete také [obecné poznámky k instalaci Linux](create-upload-generic.md#general-linux-installation-notes) Příprava na Azure Linux další tipy pro.
-* Formát VHDX není podporován v Azure, pouze **pevný virtuální pevný disk**.  Disk můžete převést do formátu virtuálního pevného disku pomocí Správce technologie Hyper-V nebo rutiny convert-VHD prostředí.
-* Při instalaci systému Linux se doporučuje použít standardní oddíly spíše než LVM (často výchozí pro mnoho instalace). Tím se vyhnete LVM název je v konfliktu s klonovaný virtuální počítače, zvlášť pokud někdy musí být připojené k jiným virtuálním Počítačem pro řešení potíží s disk s operačním systémem. [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) nebo [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) lze použít v datových disků, pokud upřednostňovaný.
-* Nekonfigurujte přepnutí oddílu na disku operačního systému. Chcete-li vytvořit odkládací soubor na disku dočasných prostředků lze nakonfigurovat agenta systému Linux.  Další informace o této naleznete v následujících krocích.
-* Všechny virtuální pevné disky na platformě Azure, musí mít virtuální velikost zarovnán 1MB. Při převodu z nezpracovaná disku na virtuální pevný disk je nutné zajistit, aby velikost disku nezpracovaná není násobkem 1MB před převodem. V tématu [poznámky k instalaci Linux](create-upload-generic.md#general-linux-installation-notes) Další informace.
+### <a name="sles--opensuse-installation-notes"></a>SLES nebo openSUSE poznámky k instalaci
+* Podrobnosti najdete také [obecné poznámky k instalaci Linux](create-upload-generic.md#general-linux-installation-notes) další tipy pro na Příprava Linuxu na Azure.
+* Formát VHDX nepodporuje v Azure, pouze **oprava virtuálního pevného disku**.  Převést disk na formát virtuálního pevného disku pomocí Správce technologie Hyper-V nebo rutiny convert-vhd.
+* Při instalaci systému Linux se doporučuje použít standardní oddíly spíše než LVM (často výchozí nastavení pro mnoho zařízení). Tím se vyhnete LVM název je v konfliktu s klonovaný virtuální počítače, zejména v případě, že disk s operačním systémem je někdy potřeba připojit k jinému virtuálnímu počítači pro řešení potíží. [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) nebo [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) může být použita na datové disky, pokud tomu dávají přednost.
+* Neprovádějte konfiguraci odkládací oddíl na disk s operačním systémem. Chcete-li vytvořit odkládací soubor na disku dočasný prostředek, který lze nastavit agenta pro Linux.  Další informace najdete v níže uvedeném postupu.
+* Všechny virtuální pevné disky v Azure musí mít virtuální velikost, zarovnání na 1MB. Při převodu z nezpracované disku do virtuálního pevného disku je nutné zajistit, že velikost nezpracovaných disku je násobkem 1MB před převodem. Zobrazit [poznámky k instalaci Linux](create-upload-generic.md#general-linux-installation-notes) Další informace.
 
-## <a name="use-suse-studio"></a>Pomocí SUSE Studio
-[SUSE Studio](http://www.susestudio.com) můžete snadno vytvořit a spravovat vaše SLES a openSUSE Image Azure a technologie Hyper-V. Toto je doporučený postup pro přizpůsobení vlastní SLES a openSUSE bitové kopie.
+## <a name="use-suse-studio"></a>Použít SUSE Studio
+[SUSE Studio](http://www.susestudio.com) můžete snadno vytvořit a spravovat Image SLES a openSUSE pro Azure a Hyper-V. Toto je doporučený postup při přizpůsobení svých vlastních imagí SLES a openSUSE.
 
-Jako alternativu k vytvoření vlastního virtuálního pevného disku, SUSE, publikuje také Image BYOS (přineste si vlastní předplatné) pro SLES v [VMDepot](https://vmdepot.msopentech.com/User/Show?user=1007).
+Jako alternativu k vytváření vlastní virtuální pevné disky, SUSE, publikuje také BYOS (přineste si vlastní předplatné) imagí pro SLES na [VMDepot](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/04/using-and-contributing-vms-to-vm-depot.pdf).
 
-## <a name="prepare-suse-linux-enterprise-server-11-sp4"></a>Příprava SUSE Linux Enterprise Server 11 SP4
+## <a name="prepare-suse-linux-enterprise-server-11-sp4"></a>Příprava operačního systému SUSE Linux Enterprise Server 11 SP4
 1. V prostředním podokně Správce technologie Hyper-V vyberte virtuální počítač.
-2. Klikněte na tlačítko **Connect** a otevřete okno pro virtuální počítač.
-3. Zaregistrujte systému SUSE Linux Enterprise tak, aby ji ke stahování aktualizací a instalaci balíčků.
-4. Aktualizace pomocí nejnovějších oprav systému:
+2. Klikněte na tlačítko **připojit** otevřete okno pro virtuální počítač.
+3. Zaregistrujte systému SUSE Linux Enterprise a umožnit její aktualizace stáhnout a nainstalovat balíčky.
+4. Aktualizace systému s nejnovějšími opravami:
    
         # sudo zypper update
-5. Instalovat agenta systému Linux Azure z úložiště SLES:
+5. Nainstalujte agenta Azure Linux z SLES úložiště:
    
         # sudo zypper install WALinuxAgent
-6. Zkontrolujte Pokud příkaz waagent nastavená na "on" v chkconfig a pokud ne, povolit pro automatické spuštění:
+6. Vrácení se změnami chkconfig Pokud waagent nastavená na "on" a pokud ne, ji povolit pro automatické spuštění:
    
         # sudo chkconfig waagent on
-7. Zkontrolujte, zda příkaz waagent služby používá a pokud ne, spusťte ji: 
+7. Zkontrolujte, zda je waagent služba spuštěná a pokud ne, spusťte ho: 
    
         # sudo service waagent start
-8. Upravte řádku spouštěcí jádra ve vaší konfiguraci grub pro zahrnutí dalších jádra parametry Azure. Chcete tuto otevřete "/ boot/grub/menu.lst" v textovém editoru a ujistěte se, že výchozí jádra zahrnuje následující parametry:
+8. Upravte řádek pro spuštění jádra v konfiguraci grub tak, aby zahrnout další jádra parametry pro Azure. Provedete tuto otevřete "/ boot/grub/menu.lst" v textovém editoru a ujistěte se, že výchozí jádra zahrnuje následující parametry:
    
         console=ttyS0 earlyprintk=ttyS0 rootdelay=300
    
-    Tím bude zajištěno, všechny zprávy konzoly odešlou do první sériového portu, který může být užitečné Azure podporu pro ladění problémů.
-9. Potvrďte, že /boot/grub/menu.lst a /etc/fstab obě odkazují disku pomocí jeho UUID (podle uuid) namísto ID disku (podle id). 
+    Tím se zajistí všechny zprávy konzoly se odesílají do první sériového portu, který vám může pomoct Azure odborné pomoci s laděním problémů.
+9. Potvrďte, že /boot/grub/menu.lst a /etc/fstab obě odkazují na disku pomocí jeho identifikátoru UUID (podle uuid) místo ID disku (podle id). 
    
-    Získat UUID disku
+    Získání disku UUID
    
         # ls /dev/disk/by-uuid/
    
-    Pokud /dev/disk/by-id nebo použít, aktualizovat /boot/grub/menu.lst a/etc/fstab s hodnotou správné podle uuid
+    Pokud /dev/disk/by-id / je použít, aktualizujte /boot/grub/menu.lst a/etc/fstab hodnotou správné podle uuid
    
     Před změnou
    
@@ -76,34 +76,34 @@ Jako alternativu k vytvoření vlastního virtuálního pevného disku, SUSE, pu
     Po změně
    
         root=/dev/disk/by-uuid/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-10. Změňte pravidla udev, aby nedošlo ke generování statická pravidla pro alespoň jedno rozhraní sítě Ethernet. Tato pravidla může způsobit problémy při klonování virtuálního počítače v Microsoft Azure nebo Hyper-V:
+10. Upravte proces udev pravidla pro zabránění generování statická pravidla pro rozhraní sítě Ethernet. Tato pravidla mohou způsobit problémy při klonování virtuálního počítače v Microsoft Azure nebo technologie Hyper-V:
     
         # sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
         # sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
-11. Je doporučené upravit soubor "/ etc a sysconfig nebo sítě nebo dhcp" a změnit `DHCLIENT_SET_HOSTNAME` parametr pro následující:
+11. Je doporučeno na úpravy souboru "/ etc/sysconfig/network/dhcp" a změňte `DHCLIENT_SET_HOSTNAME` parametr takto:
     
-     DHCLIENT_SET_HOSTNAME = "žádný"
-12. Komentář "/ etc/sudoers", nebo pokud existují, odeberte následující řádky:
+     DHCLIENT_SET_HOSTNAME = "no"
+12. V "/ etc/sudoers" okomentovat nebo odstranit následující řádky, pokud existují:
     
-     Výchozí nastavení targetpw # požádat o heslo cílový uživatel tj kořenové všechny ALL=(ALL) všechny # upozornění! Pouze to používají společně s 'Výchozí hodnoty targetpw'!
-13. Ujistěte se, že SSH server je nainstalován a nakonfigurován na spuštění při spuštění.  Obvykle je to výchozí hodnota.
-14. Nevytvářejte odkládacího prostoru na disku operačního systému.
+     Výchozí hodnota targetpw # požádat o heslo cílový uživatel tedy kořenové všechny ALL=(ALL) všechny # upozornění! Jen to používají společně s 'Targetpw výchozí hodnoty'!
+13. Zajistěte, aby SSH server je nainstalován a nakonfigurován na spuštění při spuštění.  Obvykle se jedná o výchozí nastavení.
+14. Nevytvářejte odkládacího prostoru na disku s operačním systémem.
     
-    Azure Linux Agent mohou automaticky konfigurovat odkládacího souboru pomocí disku místní prostředek, který je připojen k virtuálnímu počítači po zřízení v Azure. Všimněte si, že je disk místní prostředek *dočasné* na disku a může vyprázdněny, když je virtuální počítač zrušit. Po instalaci Azure Linux Agent (viz předchozí krok), upravte následující parametry v /etc/waagent.conf odpovídajícím způsobem:
+    Azure Linux Agent mohou automaticky konfigurovat odkládacího prostoru pomocí disku místního prostředku, který je připojen k virtuálnímu počítači po zřízení v Azure. Všimněte si, že je místní prostředek disku *dočasné* disk a může být vyprázdněna při zřízení virtuálního počítače. Po instalaci agenta Azure Linux (viz předchozí krok), upravte následující parametry v /etc/waagent.conf odpovídajícím způsobem:
     
-     ResourceDisk.Format=y ResourceDisk.Filesystem=ext4 ResourceDisk.MountPoint=/mnt/resource ResourceDisk.EnableSwap=y ResourceDisk.SwapSizeMB=2048 ## Poznámka: tuto možnost nastavíte na ať už budete potřebovat mohla být.
-15. Spusťte následující příkaz pro zrušení zřízení virtuálního počítače a jeho přípravu pro zřizování na Azure:
+     ResourceDisk.Format=y ResourceDisk.Filesystem=ext4 ResourceDisk.MountPoint=/mnt/resource ResourceDisk.EnableSwap=y ResourceDisk.SwapSizeMB=2048 ## Poznámka: nastavte na cokoli, co potřebujete k jejímu.
+15. Spusťte následující příkaz pro zrušení zřízení virtuálního počítače a připravte je ke zřizování v Azure:
     
         # sudo waagent -force -deprovision
         # export HISTSIZE=0
         # logout
-16. Klikněte na tlačítko **akce -> vypnutí dolů** ve Správci technologie Hyper-V. Svůj disk VHD Linux je nyní připravena k odeslání do Azure.
+16. Klikněte na tlačítko **akce -> vypnout dolů** ve Správci technologie Hyper-V. Vašeho linuxového virtuálního pevného disku je teď připravený k nahrání do Azure.
 
 - - -
 ## <a name="prepare-opensuse-131"></a>Příprava openSUSE 13.1 +
 1. V prostředním podokně Správce technologie Hyper-V vyberte virtuální počítač.
-2. Klikněte na tlačítko **Connect** a otevřete okno pro virtuální počítač.
-3. V prostředí, spusťte příkaz '`zypper lr`'. Pokud tento příkaz vrátí výstup podobný následujícímu, pak úložiště jsou nakonfigurované podle očekávání – bez úprav jsou nezbytné (Všimněte si, že verze čísla se mohou lišit):
+2. Klikněte na tlačítko **připojit** otevřete okno pro virtuální počítač.
+3. V prostředí, spusťte příkaz "`zypper lr`". Pokud tento příkaz vrátí výstup podobný následujícímu a potom úložiště jsou nakonfigurované podle očekávání – bez úprav jsou nezbytné (Všimněte si, že čísel verzí může lišit):
    
         # | Alias                 | Name                  | Enabled | Refresh
         --+-----------------------+-----------------------+---------+--------
@@ -111,53 +111,53 @@ Jako alternativu k vytvoření vlastního virtuálního pevného disku, SUSE, pu
         2 | openSUSE_13.1_OSS     | openSUSE_13.1_OSS     | Yes     | Yes
         3 | openSUSE_13.1_Updates | openSUSE_13.1_Updates | Yes     | Yes
    
-    Pokud příkaz vrátí "Žádné úložiště definované..." použijte následující příkazy pro přidání těchto úložiště:
+    Pokud příkaz vrátí "Žádná úložiště definované..." pomocí následujících příkazů můžete přidat tato úložiště:
    
         # sudo zypper ar -f http://download.opensuse.org/repositories/Cloud:Tools/openSUSE_13.1 Cloud:Tools_13.1
         # sudo zypper ar -f http://download.opensuse.org/distribution/13.1/repo/oss openSUSE_13.1_OSS
         # sudo zypper ar -f http://download.opensuse.org/update/13.1 openSUSE_13.1_Updates
    
-    Následně můžete ověřit úložiště přidané spuštěním příkazu '`zypper lr`se znovu. V případě, že jeden z úložiště příslušné aktualizace není povolen, můžete ji povolte pomocí následujícího příkazu:
+    Můžete si ověřit, databází nepřidaly spuštěním příkazu "`zypper lr`" znovu. V případě jednoho z úložišť pro relevantní aktualizace není povolený, povolte ho pomocí následujícího příkazu:
    
         # sudo zypper mr -e [NUMBER OF REPOSITORY]
-4. Aktualizujte na nejnovější dostupnou verzi jádra:
+4. Aktualizace jádra na nejnovější dostupnou verzi:
    
         # sudo zypper up kernel-default
    
-    Nebo aktualizujte systém s nejnovější opravy:
+    Nebo aktualizaci systému s nejnovějšími opravami:
    
         # sudo zypper update
-5. Nainstalujte Azure Linux Agent.
+5. Instalace agenta Azure Linux.
    
         # sudo zypper install WALinuxAgent
-6. Upravte řádku spouštěcí jádra ve vaší konfiguraci grub pro zahrnutí dalších jádra parametry Azure. Chcete-li to provést, otevřete "/ boot/grub/menu.lst" v textovém editoru a ujistěte se, že výchozí jádra zahrnuje následující parametry:
+6. Upravte řádek pro spuštění jádra v konfiguraci grub tak, aby zahrnout další jádra parametry pro Azure. Chcete-li to provést, otevřete "/ boot/grub/menu.lst" v textovém editoru a ujistěte se, že výchozí jádra zahrnuje následující parametry:
    
-     konzole = ttyS0 earlyprintk = ttyS0 rootdelay = 300
+     Konzola = ttyS0 earlyprintk = ttyS0 rootdelay = 300
    
-   Tím bude zajištěno, všechny zprávy konzoly odešlou do první sériového portu, který může být užitečné Azure podporu pro ladění problémů. Kromě toho odeberte tyto parametry z řádku spouštěcí jádra, pokud existují:
+   Tím se zajistí všechny zprávy konzoly se odesílají do první sériového portu, který vám může pomoct Azure odborné pomoci s laděním problémů. Kromě toho odeberte tyto parametry z řádek pro spuštění jádra, pokud existují:
    
      libata.atapi_enabled=0 reserve=0x1f0,0x8
-7. Je doporučené upravit soubor "/ etc a sysconfig nebo sítě nebo dhcp" a změnit `DHCLIENT_SET_HOSTNAME` parametr pro následující:
+7. Je doporučeno na úpravy souboru "/ etc/sysconfig/network/dhcp" a změňte `DHCLIENT_SET_HOSTNAME` parametr takto:
    
-     DHCLIENT_SET_HOSTNAME = "žádný"
-8. **Důležité:** komentář "/ etc/sudoers", nebo odeberte následující řádky, pokud existují:
+     DHCLIENT_SET_HOSTNAME = "no"
+8. **Důležité:** v "/ etc/sudoers", okomentovat nebo odstranit následující řádky, pokud existují:
    
-     Výchozí nastavení targetpw # požádat o heslo cílový uživatel tj kořenové všechny ALL=(ALL) všechny # upozornění! Pouze to používají společně s 'Výchozí hodnoty targetpw'!
-9. Ujistěte se, že SSH server je nainstalován a nakonfigurován na spuštění při spuštění.  Obvykle je to výchozí hodnota.
-10. Nevytvářejte odkládacího prostoru na disku operačního systému.
+     Výchozí hodnota targetpw # požádat o heslo cílový uživatel tedy kořenové všechny ALL=(ALL) všechny # upozornění! Jen to používají společně s 'Targetpw výchozí hodnoty'!
+9. Zajistěte, aby SSH server je nainstalován a nakonfigurován na spuštění při spuštění.  Obvykle se jedná o výchozí nastavení.
+10. Nevytvářejte odkládacího prostoru na disku s operačním systémem.
     
-    Azure Linux Agent mohou automaticky konfigurovat odkládacího souboru pomocí disku místní prostředek, který je připojen k virtuálnímu počítači po zřízení v Azure. Všimněte si, že je disk místní prostředek *dočasné* na disku a může vyprázdněny, když je virtuální počítač zrušit. Po instalaci Azure Linux Agent (viz předchozí krok), upravte následující parametry v /etc/waagent.conf odpovídajícím způsobem:
+    Azure Linux Agent mohou automaticky konfigurovat odkládacího prostoru pomocí disku místního prostředku, který je připojen k virtuálnímu počítači po zřízení v Azure. Všimněte si, že je místní prostředek disku *dočasné* disk a může být vyprázdněna při zřízení virtuálního počítače. Po instalaci agenta Azure Linux (viz předchozí krok), upravte následující parametry v /etc/waagent.conf odpovídajícím způsobem:
     
-     ResourceDisk.Format=y ResourceDisk.Filesystem=ext4 ResourceDisk.MountPoint=/mnt/resource ResourceDisk.EnableSwap=y ResourceDisk.SwapSizeMB=2048 ## Poznámka: tuto možnost nastavíte na ať už budete potřebovat mohla být.
-11. Spusťte následující příkaz pro zrušení zřízení virtuálního počítače a jeho přípravu pro zřizování na Azure:
+     ResourceDisk.Format=y ResourceDisk.Filesystem=ext4 ResourceDisk.MountPoint=/mnt/resource ResourceDisk.EnableSwap=y ResourceDisk.SwapSizeMB=2048 ## Poznámka: nastavte na cokoli, co potřebujete k jejímu.
+11. Spusťte následující příkaz pro zrušení zřízení virtuálního počítače a připravte je ke zřizování v Azure:
     
         # sudo waagent -force -deprovision
         # export HISTSIZE=0
         # logout
-12. Zajistěte, aby že Azure Linux Agent spuštěna při spuštění systému:
+12. Ujistěte se, že Azure Linux Agent se spustí při spuštění:
     
         # sudo systemctl enable waagent.service
-13. Klikněte na tlačítko **akce -> vypnutí dolů** ve Správci technologie Hyper-V. Svůj disk VHD Linux je nyní připravena k odeslání do Azure.
+13. Klikněte na tlačítko **akce -> vypnout dolů** ve Správci technologie Hyper-V. Vašeho linuxového virtuálního pevného disku je teď připravený k nahrání do Azure.
 
 ## <a name="next-steps"></a>Další postup
-Nyní jste připraveni použít virtuální pevný disk SUSE Linux k vytvoření nové virtuální počítače v Azure. Pokud je poprvé, že jste nahrávání souboru VHD do Azure, najdete v části [vytvořit virtuální počítač s Linuxem z vlastní disku](upload-vhd.md#option-1-upload-a-vhd).
+Teď jste připraveni používat virtuální pevný disk operačního systému SUSE Linux k vytvoření nových virtuálních počítačů v Azure. Pokud je to poprvé, že jste nahrání souboru VHD do Azure, najdete v článku [vytvoření virtuálního počítače s Linuxem z vlastního disku](upload-vhd.md#option-1-upload-a-vhd).

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/19/2017
 ms.author: daveba
-ms.openlocfilehash: 9d9c18d576f3975d4c8272efff7161366f3f53fe
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 27ecb00bddb41ae45e790a54702c058ff3f1d24b
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37901353"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39035937"
 ---
 # <a name="configure-a-vm-managed-service-identity-msi-using-the-azure-portal"></a>Konfigurace virtuálním počítači Identity spravované služby (MSI) pomocí webu Azure portal
 
@@ -59,7 +59,7 @@ Pokud chcete povolit identitu na virtuálním počítači, který byl původně 
     > [!NOTE]
     > Přidání identity přiřazené uživateli k virtuálnímu počítači se momentálně nepodporuje prostřednictvím webu Azure Portal.
 
-   ![Snímek obrazovky stránky konfigurace](../media/msi-qs-configure-portal-windows-vm/create-windows-vm-portal-configuration-blade.png)  
+   ![Snímek obrazovky stránky konfigurace](../managed-service-identity/media/msi-qs-configure-portal-windows-vm/create-windows-vm-portal-configuration-blade.png)  
 
 ## <a name="remove-managed-service-identity-from-an-azure-vm"></a>Odebrání virtuálního počítače Azure Identity spravované služby
 
@@ -74,7 +74,7 @@ Pokud máte virtuální počítač se už nepotřebuje identitou přiřazenou sy
     > [!NOTE]
     > Přidání identity přiřazené uživateli k virtuálnímu počítači se momentálně nepodporuje prostřednictvím webu Azure Portal.
 
-   ![Snímek obrazovky stránky konfigurace](../media/msi-qs-configure-portal-windows-vm/create-windows-vm-portal-configuration-blade-disable.png)  
+   ![Snímek obrazovky stránky konfigurace](../managed-service-identity/media/msi-qs-configure-portal-windows-vm/create-windows-vm-portal-configuration-blade-disable.png)  
 
 ## <a name="related-content"></a>Související obsah
 

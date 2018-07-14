@@ -1,5 +1,5 @@
 ---
-title: 'Odstranit bránu virtuální sítě: prostředí PowerShell: portál Azure classic | Microsoft Docs'
+title: 'Odstranit bránu virtuální sítě: prostředí PowerShell: Azure classic | Dokumentace Microsoftu'
 description: Odstraňte bránu virtuální sítě pomocí prostředí PowerShell v modelu nasazení classic.
 services: vpn-gateway
 documentationcenter: na
@@ -15,30 +15,30 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/11/2017
 ms.author: cherylmc
-ms.openlocfilehash: b1bc18307227a728e2bc8fd95e30fdc1cbdb8c59
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 0c5d045cb949f5393bb2d9da54715b2b84229c36
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
-ms.locfileid: "24994657"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39036284"
 ---
-# <a name="delete-a-virtual-network-gateway-using-powershell-classic"></a>Odstranit bránu virtuální sítě pomocí prostředí PowerShell (klasické)
+# <a name="delete-a-virtual-network-gateway-using-powershell-classic"></a>Odstranit bránu virtuální sítě pomocí prostředí PowerShell (classic)
 > [!div class="op_single_selector"]
 > * [Resource Manager – Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
 > * [Resource Manager – PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
-> * [Classic – prostředí PowerShell](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
+> * [Classic – PowerShell](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
 >
 >
 
-Tento článek vám umožňuje odstranit bránu sítě VPN v klasickém modelu nasazení pomocí prostředí PowerShell. Po odstranění brány virtuální sítě, upravte konfigurační soubor sítě. Chcete-li odebrat prvky, které už používáte.
+Tento článek pomáhá odstranění brány VPN v modelu nasazení classic pomocí prostředí PowerShell. Po odstranění brány virtuální sítě, upravte konfigurační soubor sítě k odebrání prvků, které už nepoužíváte.
 
 ##<a name="connect"></a>Krok 1: Připojení k Azure
 
 ### <a name="1-install-the-latest-powershell-cmdlets"></a>1. Nainstalujte nejnovější rutiny prostředí PowerShell.
 
-Stáhněte a nainstalujte nejnovější verzi rutin prostředí PowerShell Azure Service Management (SM). Další informace najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/overview).
+Stáhněte si a nainstalujte nejnovější verzi rutin Powershellu pro Azure Service Management (SM). Další informace najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/overview).
 
-### <a name="2-connect-to-your-azure-account"></a>2. Připojte k účtu Azure. 
+### <a name="2-connect-to-your-azure-account"></a>2. Připojte se ke svému účtu Azure. 
 
 Otevřete konzolu PowerShellu se zvýšenými oprávněními a připojte se ke svému účtu. Připojení vám usnadní následující ukázka:
 
@@ -46,9 +46,9 @@ Otevřete konzolu PowerShellu se zvýšenými oprávněními a připojte se ke s
 Add-AzureAccount
 ```
 
-## <a name="export"></a>Krok 2: Export a v souboru konfigurace sítě
+## <a name="export"></a>Krok 2: Export a zobrazit soubor konfigurace sítě
 
-Vytvořte ve svém počítači adresář a potom do něj exportujte soubor konfigurace sítě. Můžete použít tento soubor do obou zobrazení aktuální informace o konfiguraci a také ke změně konfigurace sítě.
+Vytvořte ve svém počítači adresář a potom do něj exportujte soubor konfigurace sítě. Tento soubor do obou zobrazení aktuální informace o konfiguraci a také upravit konfiguraci sítě používáte.
 
 V tomto příkladu se soubor konfigurace sítě exportuje do adresáře C:\AzureNet.
 
@@ -56,31 +56,31 @@ V tomto příkladu se soubor konfigurace sítě exportuje do adresáře C:\Azure
 Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
 ```
 
-Otevřete soubor v textovém editoru a zobrazit název pro klasické virtuální síti. Když vytvoříte virtuální síť na portálu Azure, úplný název, který používá Azure není zobrazená v portálu. Například virtuální sítě, který se zobrazí s názvem 'ClassicVNet1' na portálu Azure může mít mnoho delší název v souboru konfigurace sítě. Název může vypadat podobně jako: 'Skupiny ClassicRG1 ClassicVNet1'. Názvy virtuální sítě jsou uvedeny jako **' VirtualNetworkSite name ='**. Použije názvy v konfiguračním souboru sítě při spuštění vaše rutiny prostředí PowerShell.
+V textovém editoru otevřete soubor a podívejte se na název pro klasické virtuální sítě. Při vytváření virtuální sítě na webu Azure Portal, není úplný název, který používá Azure nezobrazuje na portálu. Virtuální síť, která se zobrazí s názvem "ClassicVNet1" na webu Azure Portal, například může mít mnohem déle, název v konfiguračním souboru sítě. Název může vypadat nějak takto: "Skupina ClassicRG1 ClassicVNet1". Názvy virtuální sítě jsou uvedené jako **"VirtualNetworkSite name ="**. Při spuštění rutiny Powershellu, použijte názvy v konfiguračním souboru sítě.
 
-## <a name="delete"></a>Krok 3: Odstranit bránu virtuální sítě
+## <a name="delete"></a>Krok 3: Odstranění brány virtuální sítě
 
-Při odstranění brány virtuální sítě jsou odpojené všech připojení k virtuální síti prostřednictvím brány. Pokud máte P2S klientů připojených k virtuální síti, budou odpojeny bez upozornění.
+Při odstranění brány virtuální sítě, všechna připojení k virtuální síti prostřednictvím brány jsou odpojené. Pokud máte klienty P2S, kteří jsou připojení k virtuální síti, se odpojí bez předchozího upozornění.
 
-Tento příklad odstraní bránu virtuální sítě. Nezapomeňte použít úplný název virtuální sítě z konfiguračního souboru sítě.
+Tento příklad odstraní bránu virtuální sítě. Nezapomeňte použít celý název virtuální sítě z konfiguračního souboru sítě.
 
 ```powershell
 Remove-AzureVNetGateway -VNetName "Group ClassicRG1 ClassicVNet1"
 ```
 
-V případě úspěšného návratový uvádí:
+V případě úspěchu se zobrazí vrácení:
 
 ```
 Status : Successful
 ```
 
-## <a name="modify"></a>Krok 4: Upravte konfigurační soubor sítě.
+## <a name="modify"></a>Krok 4: Upravte konfigurační soubor sítě
 
-Pokud odstraníte bránu virtuální sítě, rutina neupravuje konfiguračního souboru sítě. Budete muset upravit soubor odebrat prvky, které se již nepoužívají. V následujících částech můžete upravit konfiguračního souboru sítě, který jste si stáhli.
+Při odstranění brány virtuální sítě, rutina neupravuje soubor konfigurace sítě. Budete muset upravit soubor odebrat prvky, které jsou již nejsou déle používány. V následujících částech můžete upravit soubor konfigurace sítě, který jste stáhli.
 
-### <a name="lnsref"></a>Odkazů na web místní sítě
+### <a name="lnsref"></a>Odkazů místních síťových lokalit
 
-Odebrat informace o referenční lokality, provést změny konfigurace **ConnectionsToLocalNetwork/LocalNetworkSiteRef**. Odebrání místní lokality odkaz aktivačních událostí Azure a odstranit přes tunelové propojení. V závislosti na konfiguraci, kterou jste vytvořili, nemusí mít **LocalNetworkSiteRef** uvedené.
+Chcete-li odebrat odkaz na informace o lokalitě, provést změny konfigurace **ConnectionsToLocalNetwork/LocalNetworkSiteRef**. Odebrat místní lokality odkaz aktivační události Azure odstranit tunelové propojení. V závislosti na konfiguraci, kterou jste vytvořili, nemusíte mít **LocalNetworkSiteRef** uvedené.
 
 ```
 <Gateway>
@@ -101,9 +101,9 @@ Příklad:
  </Gateway>
 ```
 
-###<a name="lns"></a>Místní sítě
+###<a name="lns"></a>Místní síťové lokality
 
-Odeberte všechny místní servery, které jsou již nepoužívá. V závislosti na konfiguraci, které jste vytvořili, je možné, že nemáte **LocalNetworkSite** uvedené.
+Odeberte všechny místní servery, které už nepoužíváte. V závislosti na konfiguraci, které jste vytvořili, je možné, že není nutné **LocalNetworkSite** uvedené.
 
 ```
 <LocalNetworkSites>
@@ -135,9 +135,9 @@ V tomto příkladu jsme odebrali pouze Site3.
  </LocalNetworkSites>
 ```
 
-### <a name="clientaddresss"></a>Fond adres klienta
+### <a name="clientaddresss"></a>Fondu adres klienta
 
-Pokud jste měli P2S připojení k virtuální síti, budete mít **VPNClientAddressPool**. Odeberte fondy adres klienta, které odpovídají bránu virtuální sítě, kterou jste odstranili.
+Pokud máte připojení typu P2S k virtuální síti, budete mít **VPNClientAddressPool**. Odeberte fondy adres klienta, které odpovídají bránu virtuální sítě, který jste odstranili.
 
 ```
 <Gateway>
@@ -156,9 +156,9 @@ Příklad:
  </Gateway>
 ```
 
-### <a name="gwsub"></a>GatewaySubnet
+### <a name="gwsub"></a>Podsíť brány
 
-Odstranit **GatewaySubnet** odpovídající virtuální sítě.
+Odstranit **GatewaySubnet** , který odpovídá k virtuální síti.
 
 ```
 <Subnets>
@@ -183,15 +183,16 @@ Příklad:
 
 ## <a name="upload"></a>Krok 5: Nahrát soubor konfigurace sítě
 
-Změny uložte a nahrajte konfiguračního souboru sítě do Azure. Ujistěte se, že změníte cestu k souboru v případě potřeby pro vaše prostředí.
+Uložte změny a nahrajte soubor konfigurace sítě do Azure. Ujistěte se, že změníte cestu k souboru jako nezbytné pro vaše prostředí.
 
 ```powershell
 Set-AzureVNetConfig -ConfigurationPath C:\AzureNet\NetworkConfig.xml
 ```
 
-V případě úspěšného návratový ukazuje něco podobně jako tento příklad:
+V případě úspěchu se zobrazí návratový podobně jako v tomto příkladu:
 
 ```
 OperationDescription        OperationId                      OperationStatus                                                
 --------------------        -----------                      ---------------                                           
 Set-AzureVNetConfig         e0ee6e66-9167-cfa7-a746-7casb9   Succeeded
+```

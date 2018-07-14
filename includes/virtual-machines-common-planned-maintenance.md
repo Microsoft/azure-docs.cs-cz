@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/05/2018
 ms.author: shants
 ms.custom: include file
-ms.openlocfilehash: abf10177f8ce86309043da92d1f2b690775b6d89
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
-ms.translationtype: HT
+ms.openlocfilehash: f203e056df00fb1a9b1e7e43930955040dfce4aa
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37909978"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39030033"
 ---
 Azure pravidelně provádí aktualizace za účelem zlepšení spolehlivosti, výkonu a zabezpečení hostitelské infrastruktury pro virtuální počítače. Rozsah těchto aktualizací je od oprav softwarových komponent v hostitelském prostředí (např. operační systém, hypervisor a různí agenti nasazení v hostiteli) přes upgrade síťových komponent až po vyřazení hardwaru z provozu. Většina těchto aktualizací nemá jejich provedení žádný vliv na hostované virtuální počítače. Existují však případy, kdy aktualizace mít vliv:
 
@@ -21,9 +21,9 @@ Azure pravidelně provádí aktualizace za účelem zlepšení spolehlivosti, v�
 
 - Údržba vyžaduje restartování, dostanete oznámení o při plánované údržby. V těchto případech budete také mít k dispozici časový interval, kde můžete začít údržbu sami v čase, která vám vyhovuje.
 
-Tato stránka popisuje, jak Microsoft Azure provede oba typy údržby. Další informace o neplánované události (výpadky) najdete v tématu Správa dostupnosti virtuálních počítačů [Windows] (../articles/virtual-machines/windows/manage-availability.md) nebo [Linux](../articles/virtual-machines/linux/manage-availability.md).
+Tato stránka popisuje, jak Microsoft Azure provede oba typy údržby. Další informace o neplánované události (výpadky), naleznete v části Správa dostupnosti virtuálních počítačů pro [Windows](../articles/virtual-machines/windows/manage-availability.md) nebo [Linux](../articles/virtual-machines/linux/manage-availability.md).
 
-Aplikace běžící na virtuálním počítači může shromažďovat informace o budoucích aktualizacích pomocí služby Azure Metadata pro [Windows](../articles/virtual-machines/windows/instance-metadata-service.md) nebo [Linux] (../articles/virtual-machines/linux/instance-metadata-service.md).
+Aplikace běžící na virtuálním počítači může shromažďovat informace o budoucích aktualizacích pomocí služby Azure Metadata pro [Windows](../articles/virtual-machines/windows/instance-metadata-service.md) nebo [Linux](../articles/virtual-machines/linux/instance-metadata-service.md).
 
 "Postupy:" informace o správě plánované údržby, najdete v části "Zpracování oznámení plánované údržby" pro [Linux](../articles/virtual-machines/linux/maintenance-notifications.md) nebo [Windows](../articles/virtual-machines/windows/maintenance-notifications.md).
 
