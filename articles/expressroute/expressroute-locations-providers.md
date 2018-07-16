@@ -1,5 +1,5 @@
 ---
-title: 'Umístění a poskytovatelé připojení: Azure ExpressRoute | Dokumentace Microsoftu'
+title: 'Umístění a poskytovatelé připojení: Azure ExpressRoute | Microsoft Docs'
 description: Tento článek obsahuje podrobný přehled o umístěních, kde jsou nabízené služby, a jak se připojit k oblastem Azure. Řazení je podle umístění.
 services: expressroute
 documentationcenter: na
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/22/2018
 ms.author: jaredro
-ms.openlocfilehash: 859421a2726272b07e4d09e468ba6c804db26076
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 401ffcdfa1aa84d7db4e991dd412723b2bafe6fd
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36752451"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969873"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partneři ExpressRoute a umístění partnerského vztahu
 
@@ -50,14 +50,18 @@ Následující tabulka obsahuje mapování oblastí Azure na umístění Express
 | **Austrálie** |Austrálie – jihovýchod, Austrálie – východ |Melbourne, Sydney |
 | **Australská vláda** | Austrálie – střed, Austrálie – střed 2 |Canberra, Canberra2 | 
 | **Indie** |Indie – západ, Indie – střed, Indie – jih |Čennaj, Bombaj |
-| **Jižní Korea** |Korea – střed, Korea – jih |Busan, Soul |
+| **Jižní Korea** |Jižní Korea – střed, Jižní Korea – jih |Busan, Soul |
+| **Jižní Afrika** |[Jižní Afrika – západ+, Jižní Afrika – sever+](https://blogs.microsoft.com/blog/2017/05/18/microsoft-deliver-microsoft-cloud-datacenters-africa/) |Kapské město, Johannesburg |
+
+ **+** označuje brzké uvedení.
+
 
 ### <a name="regions-and-geopolitical-boundaries-for-national-clouds"></a>Oblasti a geopolitické hranice pro národní cloudy
 Následující tabulka obsahuje informace o oblastech a geopolitických hranicích pro národní cloudy.
 
 | **Geopolitická oblast** | **Oblasti Azure** | **Umístění ExpressRoute** |
 | --- | --- | --- |
-| **Cloud vlády USA** |USA (Gov) – Iowa, USA (Gov) – Virginia, US DoD – střed, US DoD – východ  |Chicago, Dallas, New York, Seattle, Silicon Valley, Washington DC |
+| **Cloud vlády USA** |US Gov – Iowa, US Gov – Virginie, US DoD – střed, US DoD – východ  |Chicago, Dallas, New York, Seattle, Silicon Valley, Washington DC |
 | **Čína** |Severní Čína, Východní Čína |Peking, Šanghaj |
 | **Německo** |Střední Německo, Východní Německo |Berlín, Frankfurt |
 
@@ -71,19 +75,19 @@ Následující tabulka uvádí umístění připojení a poskytovatele služby p
 ### <a name="production-azure"></a>Produkční prostředí Azure
 | **Umístění** | **Poskytovatelé služeb** |
 | --- | --- |
-| **Amsterdam** |Aryaka Networks, AT&T NetBond, British Telecom, Colt, Equinix, euNetworks, GÉANT, InterCloud, Internet Solutions – Cloud Connect, Interxion, KPN, Level 3 Communications, Megaport, NTT Communications, Orange, Tata Communications, TeleCity Group, Telefonica, Telenor, Verizon, Zayo |
+| **Amsterdam** |Aryaka Networks, AT&T NetBond, British Telecom, Colt, Equinix, euNetworks, GÉANT, InterCloud, Interxion, KPN, Level 3 Communications, Megaport, NTT Communications, Orange, Tata Communications, TeleCity Group, Telefonica, Telenor, Verizon, Zayo |
 | **Atlanta** |Equinix |
 | **Busan** |LG CNS |
 | **Canberra** | CDC |
 | **Canberra2** | CDC |
-| **Kapské město** |Liquid Telecom, Teraco |
+| **Kapské město** |Internet Solutions – Cloud Connect, Liquid Telecom, Teraco |
 | **Čennaj** | Airtel+, Global CloudXchange (GCX), SIFY, Tata Communications |
 | **Chicago** |AT&T NetBond, Comcast, Coresite, Equinix, PacketFabric, Level 3 Communications, Megaport, Sprint, Verizon, Zayo |
-| **Dallas** |Aryaka Networks, AT&T NetBond, Cologix, Equinix, Level 3 Communications, Megaport, Telmex Uninet+, Verizon, Zayo|
+| **Dallas** |Aryaka Networks, AT&T NetBond, Cologix, Equinix, Level 3 Communications, Megaport, Neutrona Networks, Telmex Uninet+, Verizon, Zayo|
 | **Denver** |CoreSite, Megaport |
 | **Dublin** |Colt, eir, Equinix, Interxion, Megaport |
 | **Hongkong** |Aryaka Networks, British Telecom, China Telecom Global, Equinix, Megaport, NTT Communications, Orange, PCCW Global Limited, Tata Communications, Verizon |
-| **Johannesburg** |Liquid Telecom, Teraco |
+| **Johannesburg** |Internet Solutions – Cloud Connect, Liquid Telecom, Teraco |
 | **Las Vegas** |CenturyLink Cloud Connect, Megaport |
 | **Londýn** |AT&T NetBond, British Telecom, Colt, Equinix, InterCloud, Internet Solutions – Cloud Connect, Interxion, Jisc, Level 3 Communications, Megaport, MTN, NTT Communications, Orange, Tata Communications, Telehouse – KDDI, Telenor, Telia Carrier, Verizon, Vodafone, Zayo |
 | **Los Angeles** |CoreSite, Equinix, Megaport, NTT, Zayo |

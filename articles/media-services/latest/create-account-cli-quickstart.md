@@ -1,5 +1,5 @@
 ---
-title: Rychlý start – Vytvoření účtu Azure Media Services pomocí CLI 2.0 | Microsoft Docs
+title: Rychlý start – Vytvoření účtu Azure Media Services pomocí Azure CLI | Microsoft Docs
 description: Postup tohoto rychlého startu použijte k vytvoření účtu služby Azure Media Services.
 services: media-services
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/27/2018
 ms.author: juliako
-ms.openlocfilehash: f7e5cb28f90466e9366c0a32e2a333e6823b9396
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 9168a66c3afcd8dd0b05de15f5833c516ddb2250
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33779714"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38767098"
 ---
 # <a name="quickstart-create-an-azure-media-services-account"></a>Rychlý start: Vytvoření účtu Azure Media Services
 
@@ -26,7 +26,7 @@ ms.locfileid: "33779714"
 
 Ať už jste vývojář nebo tvůrce mediálního obsahu, musíte si k ukládání, šifrování, kódování, spravování a streamování mediálního obsahu v Azure vytvořit účet Media Services. Při vytváření účtu Media Services je nutné zadat ID prostředku účtu Azure Storage. Zadaný účet úložiště se připojí k vašemu účtu Media Services. Prostředek účtu úložiště musí být umístěný ve stejné zeměpisné oblasti jako účet Media Services.  
 
-Tento rychlý start popisuje kroky pro vytvoření nového účtu Azure Media Services pomocí CLI 2.0.  
+Tento rychlý start popisuje kroky pro vytvoření nového účtu Azure Media Services pomocí Azure CLI.  
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -36,7 +36,7 @@ Přihlaste se k webu [Azure Portal](http://portal.azure.com) a spusťte **CloudS
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli). 
 
 ## <a name="set-the-azure-subscription"></a>Nastavení předplatného Azure
 

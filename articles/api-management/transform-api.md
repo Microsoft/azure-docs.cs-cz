@@ -12,13 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 11/19/2017
+ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: bebfabfa2c9012fa55bfc6964dc0b638cb7ab3f1
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: b94f6ad4c7c6f3b5e93cdb890e053a3d1678e161
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38722945"
 ---
 # <a name="transform-and-protect-your-api"></a>Transformace a ochrana vašeho rozhraní API 
 
@@ -54,7 +55,7 @@ Tato část ukazuje, jak skrýt hlavičky protokolu HTTP, které by neměli vaš
 
 Původní odpověď zobrazíte následovně:
 
-1. Vyberte kartu **Rozhraní API**.
+1. V instanci služby APIM vyberte **Rozhraní API** (v části **API MANAGEMENT**).
 2. V seznamu rozhraní API klikněte na **Demo Conference API**.
 3. Vyberte operaci **GetSpeakers**.
 4. Nahoře na obrazovce klikněte na kartu **Test**.
@@ -66,25 +67,25 @@ Původní odpověď zobrazíte následovně:
 
 ### <a name="set-the-transformation-policy"></a>Nastavení zásady transformací
 
-1. Přejděte k vaší instanci APIM.
-2. Vyberte kartu **Rozhraní API**.
-3. V seznamu rozhraní API klikněte na **Demo Conference API**.
-4. Vyberte **Všechny operace**.
-5. V horní části obrazovky vyberte kartu **Návrh**.
-6. V okně **Zpracování odchozích požadavků** klikněte na trojúhelník (vedle tužky).
-7. Vyberte **Editor kódu**.
-    
-     ![Upravení zásady](./media/set-edit-policies/set-edit-policies01.png)
-9. Umístěte kurzor myši do elementu **&lt;outbound&gt;**.
-10. V pravém okně v části **Zásady transformace** vložte dva fragmenty kódu zásady dvojitým kliknutím na **+ Set HTTP header** (Nastavit hlavičku protokolu HTTP).
+1. Vyberte **Demo Conference API**.
+2. V horní části obrazovky vyberte kartu **Návrh**.
+3. Vyberte **Všechny operace**.
+4. V okně **Zpracování odchozích požadavků** klikněte na trojúhelník (vedle tužky) a vyberte **Editor kódu**.
+     ![Upravit zásadu](./media/set-edit-policies/set-edit-policies01.png)
+5. Umístěte kurzor myši do elementu **&lt;outbound&gt;**.
+6. V pravém okně v části **Zásady transformace** vložte dva fragmenty kódu zásady dvojitým kliknutím na **+ Set HTTP header** (Nastavit hlavičku protokolu HTTP).
 
     ![Zásady](./media/transform-api/transform-api.png)
-11. Svůj kód **<outbound>** upravte následovně:
+7. Svůj kód **<outbound>** upravte následovně:
 
         <set-header name="X-Powered-By" exists-action="delete" />
         <set-header name="X-AspNet-Version" exists-action="delete" />
-                
-## <a name="replace-original-urls-in-the-body-of-the-api-response-with-apim-gateway-urls"></a>Nahrazení původní adresy URL v těle odpovědi rozhraní API adresami URL brány služby APIM
+
+    ![Zásady](./media/transform-api/set-policy.png)
+8. Klikněte na tlačítko **Uložit**.
+
+
+## <a name="replace-original-urls-in-the-body-of-the-api-response-with-apim-gateway-urls"></a>Nahradit původní adresy URL v těle odpovědi rozhraní API adresami URL brány služby APIM
 
 Tato část ukazuje, jak skrýt původní adresy URL, které se objevují v těle odpovědi protokolu HTTP rozhraní API, a přesměrovat je na bránu služby APIM.
 
@@ -92,11 +93,10 @@ Tato část ukazuje, jak skrýt původní adresy URL, které se objevují v těl
 
 Původní odpověď zobrazíte následovně:
 
-1. Vyberte kartu **Rozhraní API**.
-2. V seznamu rozhraní API klikněte na **Demo Conference API**.
-3. Vyberte operaci **GetSpeakers**.
-4. Nahoře na obrazovce klikněte na kartu **Test**.
-5. V dolní části obrazovky klikněte na tlačítko **Odeslat**. 
+1. Vyberte **Demo Conference API**.
+2. Vyberte operaci **GetSpeakers**.
+3. Nahoře na obrazovce klikněte na kartu **Test**.
+4. V dolní části obrazovky klikněte na tlačítko **Odeslat**. 
 
     Jak můžete vidět, původní odpověď vypadá takto:
 
@@ -104,16 +104,13 @@ Původní odpověď zobrazíte následovně:
 
 ### <a name="set-the-transformation-policy"></a>Nastavení zásady transformací
 
-1. Přejděte k vaší instanci APIM.
-2. Vyberte kartu **Rozhraní API**.
-3. V seznamu rozhraní API klikněte na **Demo Conference API**.
-4. Vyberte **Všechny operace**.
-5. V horní části obrazovky vyberte kartu **Návrh**.
-6. V okně **Zpracování odchozích požadavků** klikněte na trojúhelník (vedle tužky).
-7. Vyberte **Editor kódu**.
-8. Umístěte kurzor myši do elementu **&lt;outbound&gt;**.
-9. V pravém okně v části **Zásady transformace** klikněte na **+ Find and replace string in body** (Najít a nahradit řetězec v těle textu).
-10. Nahraďte adresu URL upravením kódu **<find-and-replace** (v elementu **<outbound>**) tak, aby odpovídala bráně služby APIM. Příklad:
+1. Vyberte **Demo Conference API**.
+2. Vyberte **Všechny operace**.
+3. V horní části obrazovky vyberte kartu **Návrh**.
+4. V okně **Zpracování odchozích požadavků** klikněte na trojúhelník (vedle tužky) a vyberte **Editor kódu**.
+5. Umístěte kurzor myši do elementu **&lt;outbound&gt;**.
+6. V pravém okně v části **Zásady transformace** klikněte na **+ Find and replace string in body** (Najít a nahradit řetězec v těle textu).
+7. Nahraďte adresu URL upravením kódu **find-and-replace** (v elementu **\<outbound\>**) tak, aby odpovídala bráně služby APIM. Příklad:
 
         <find-and-replace from="://conferenceapi.azurewebsites.net" to="://apiphany.azure-api.net/conference"/>
 
@@ -121,22 +118,19 @@ Původní odpověď zobrazíte následovně:
 
 Tato část ukazuje, jak přidat ochranu back-endovému rozhraní API nakonfigurováním omezování četnosti. Například byste mohli chtít omezit, kolikrát je možné rozhraní API volat, aby ho vývojáři nadměrně nevyužívali. V tomto příkladu je omezení nastaveno na 3 volání každých 15 sekund pro každé ID předplatného. Po 15 sekundách může vývojář zkusit volat rozhraní API znovu.
 
-1. Přejděte k vaší instanci APIM.
-2. Vyberte kartu **Rozhraní API**.
-3. V seznamu rozhraní API klikněte na **Demo Conference API**.
-4. Vyberte **Všechny operace**.
-5. V horní části obrazovky vyberte kartu **Návrh**.
-6. V okně **Vstupní zpracování** klikněte na trojúhelník (vedle tužky).
-7. Vyberte **Editor kódu**.
-8. Umístěte kurzor myši do elementu **&lt;inbound&gt;**.
-9. V pravém okně v části **Zásady omezení přístupu** klikněte na **+ Limit call rate per key** (Omezit četnost volání pro každý klíč).
-10. Upravte kód **<rate-limit-by-key** (v elementu **<inbound>**) následovně:
+1. Vyberte **Demo Conference API**.
+2. Vyberte **Všechny operace**.
+3. V horní části obrazovky vyberte kartu **Návrh**.
+4. V okně **Zpracování na vstupu** klikněte na trojúhelník (vedle tužky) a vyberte **Editor kódu**.
+5. Umístěte kurzor myši do elementu **&lt;inbound&gt;**.
+6. V pravém okně v části **Zásady omezení přístupu** klikněte na **+ Limit call rate per key** (Omezit četnost volání pro každý klíč).
+7. Upravte kód **rate-limit-by-key** (v elementu **\<inbound\>**) následovně:
 
         <rate-limit-by-key calls="3" renewal-period="15" counter-key="@(context.Subscription.Id)" />
 
-## <a name="test-the-transformations"></a>Testování transformací
+## <a name="test-the-transformations"></a>Testovat transformace
         
-V tuto chvíli váš kód zásad vypadá následovně:
+Když se v tomto okamžiku podíváte na kód v editoru, budou vaše zásady vypadat takto:
 
     <policies>
         <inbound>
@@ -161,12 +155,10 @@ Zbývající část článku testuje transformace zásad, které jste nastavili.
 
 ### <a name="test-the-stripped-response-headers"></a>Test odebraných hlaviček odpovědi
 
-1. Přejděte k vaší instanci APIM.
-2. Vyberte kartu **Rozhraní API**.
-3. V seznamu rozhraní API klikněte na **Demo Conference API**.
-4. Klikněte na operaci **GetSpeakers**.
-5. Vyberte kartu **Test**.
-6. Stiskněte **Odeslat**.
+1. Vyberte **Demo Conference API**.
+2. Klikněte na operaci **GetSpeakers**.
+3. Vyberte kartu **Test**.
+4. Stiskněte **Odeslat**.
 
     Jak vidíte, hlavičky byly odebrány:
 
@@ -174,12 +166,10 @@ Zbývající část článku testuje transformace zásad, které jste nastavili.
 
 ### <a name="test-the-replaced-url"></a>Test nahrazené adresy URL
 
-1. Přejděte k vaší instanci APIM.
-2. Vyberte kartu **Rozhraní API**.
-3. V seznamu rozhraní API klikněte na **Demo Conference API**.
-4. Klikněte na operaci **GetSpeakers**.
-5. Vyberte kartu **Test**.
-6. Stiskněte **Odeslat**.
+1. Vyberte **Demo Conference API**.
+2. Klikněte na operaci **GetSpeakers**.
+3. Vyberte kartu **Test**.
+4. Stiskněte **Odeslat**.
 
     Jak vidíte, adresa URL byla nahrazena.
 
@@ -187,15 +177,13 @@ Zbývající část článku testuje transformace zásad, které jste nastavili.
 
 ### <a name="test-the-rate-limit-throttling"></a>Test omezování četnosti (omezení využití sítě)
 
-1. Přejděte k vaší instanci APIM.
-2. Vyberte kartu **Rozhraní API**.
-3. V seznamu rozhraní API klikněte na **Demo Conference API**.
-4. Klikněte na operaci **GetSpeakers**.
-5. Vyberte kartu **Test**.
-6. Třikrát po sobě stiskněte **Odeslat**.
+1. Vyberte **Demo Conference API**.
+2. Klikněte na operaci **GetSpeakers**.
+3. Vyberte kartu **Test**.
+4. Třikrát po sobě stiskněte **Odeslat**.
 
     Po odeslání třech požadavků se objeví odpověď **429 Příliš mnoho požadavků**.
-7. Počkejte asi 15 sekund a znovu stiskněte **Odeslat**. Tentokrát by se už měla objevit odpověď **200 OK**.
+5. Počkejte asi 15 sekund a znovu stiskněte **Odeslat**. Tentokrát by se už měla objevit odpověď **200 OK**.
 
     ![Throttling](./media/transform-api/test-throttling.png)
 

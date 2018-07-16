@@ -12,15 +12,18 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.tgt_pltfrm: ASP.NET
 ms.workload: tbd
-ms.date: 04/17/2018
+ms.date: 06/13/2018
 ms.author: wesmc
-ms.openlocfilehash: 78e164b566194fcfe952e3ad59dd3d228f90d193
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 4c34bd10768ab7acf4700b29386d3a71532490db
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38674848"
 ---
 # <a name="quickstart-create-a-chat-room-with-signalr-service"></a>Rychlý start: Vytvoření chatovací místnosti s využitím služby SignalR
+
+Služba Microsoft Azure SignalR je momentálně ve verzi [Public Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Azure SignalR je služba Azure, která vývojářům pomáhá snadno vytvářet webové aplikace s funkcemi v reálném čase. Tato služba je založená na knihovně [SignalR pro ASP.NET Core 2.0](https://docs.microsoft.com/aspnet/core/signalr/introduction).
 
@@ -84,18 +87,18 @@ V této části do svého projektu přidáte [nástroj Secret Manager](https://d
 
 1. Přidejte odkaz na balíček `Microsoft.Azure.SignalR` spuštěním následujícího příkazu:
 
-        dotnet add package Microsoft.Azure.SignalR -v 1.0.0-preview-10007
+        dotnet add package Microsoft.Azure.SignalR -v 1.0.0-*
 
 2. Spuštěním následujícího příkazu obnovte balíčky pro váš projekt.
 
         dotnet restore
 
-3. Do nástroje Secret Manager přidejte tajný kód *Azure:SignalR:ConnectionString*. Tento tajný kód bude obsahovat připojovací řetězec pro přístup k vašemu prostředku služby SignalR. *Azure:SignalR:ConnectionString* je výchozí konfigurační klíč, který služba SignalR hledá za účelem navázání připojení. Nahraďte hodnotu v následujícím příkazu připojovacím řetězcem pro váš prostředek služby SignalR.
+3. Do nástroje Secret Manager přidejte tajný kód *Azure__SignalR__ConnectionString*. Tento tajný kód představuje hierarchickou konfigurační hodnotou a dvojtečka (:) nemusí fungovat na všech platformách. Dvojité podtržítko (__), které tento tajný kód používá, podporují všechny platformy.  Tento tajný kód bude obsahovat připojovací řetězec pro přístup k vašemu prostředku služby SignalR. *Azure__SignalR__ConnectionString* je výchozí konfigurační klíč, který služba SignalR hledá za účelem navázání připojení. Nahraďte hodnotu v následujícím příkazu připojovacím řetězcem pro váš prostředek služby SignalR.
 
     Tento příkaz se musí spustit ve stejném adresáři jako soubor *.csproj*.
 
     ```
-    dotnet user-secrets set Azure:SignalR:ConnectionString Endpoint=<Your endpoint>;AccessKey=<Your access key>;    
+    dotnet user-secrets set Azure__SignalR__ConnectionString "Endpoint=<Your endpoint>;AccessKey=<Your access key>;"    
     ```
 
     Nástroj Secret Manager se použije pouze k testování webové aplikace, zatímco je hostovaná v místním prostředí. V některém dalším kurzu nasadíte webovou chatovací aplikaci do Azure. Po nasazení webové aplikace do Azure použijete místo nástroje Secret Manager k uložení připojovacího řetězce nastavení aplikace.
@@ -110,7 +113,7 @@ V této části do svého projektu přidáte [nástroj Secret Manager](https://d
     }
     ```
 
-    Vzhledem k tomu, že do metody `AddAzureSignalR()` nepředáváte žádný parametr, použije tento kód jako připojovací řetězec prostředku služby SignalR výchozí konfigurační klíč *Azure:SignalR:ConnectionString*.
+    Vzhledem k tomu, že do metody `AddAzureSignalR()` nepředáváte žádný parametr, použije tento kód jako připojovací řetězec prostředku služby SignalR výchozí konfigurační klíč *Azure__SignalR__ConnectionString*.
 
 5. V souboru *Startup.cs* aktualizujte také metodu `Configure` nahrazením volání metody `app.UseStaticFiles()` následujícím kódem a uložte soubor.
 
@@ -250,7 +253,7 @@ V opačném případě, pokud jste už s ukázkovou aplikací v tomto rychlém s
 
 Přihlaste se na web [Azure Portal ](https://portal.azure.com) a klikněte na **Skupiny prostředků**.
 
-Do textového pole **Filtrovat podle názvu...** zadejte název vaší skupiny prostředků. V pokynech v tomto rychlém startu se používala skupina prostředků *SignalRTestResources*. Ve výsledcích hledání klikněte na **...** u vaší skupiny prostředků a pak na **Odstranit skupinu prostředků**.
+Do textového pole **Filtrovat podle názvu** zadejte název vaší skupiny prostředků. V pokynech v tomto rychlém startu se používala skupina prostředků *SignalRTestResources*. Ve výsledcích hledání klikněte na **...** u vaší skupiny prostředků a pak na **Odstranit skupinu prostředků**.
 
    
 ![Odstranění](./media/signalr-quickstart-dotnet-core/signalr-delete-resource-group.png)

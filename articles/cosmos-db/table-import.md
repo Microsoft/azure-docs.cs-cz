@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/28/2017
 ms.author: sngun
-ms.openlocfilehash: 25e922e211304774462c747ea6a003e47fb38736
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: e4e783d131c4ceee9315b3442ee504e662157d8c
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34797766"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37856803"
 ---
 # <a name="import-data-for-use-with-the-azure-cosmos-db-table-api"></a>Import dat pro použití s rozhraním Table API služby Azure Cosmos DB
 
@@ -30,7 +30,7 @@ Tento kurz se zabývá následujícími úkony:
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Zvýšená propustnost: Doba trvání migrace dat závisí na propustnosti, kterou pro jednotlivé kolekce nebo sady kolekcí nastavíte. V případě rozsáhlejších migrací dat nezapomeňte zvýšit propustnost. Po dokončení migrace propustnost snižte, abyste dosáhli nižších nákladů. Další informace o zvýšení propustnosti na webu Azure Portal najdete v tématu Úrovně výkonu a cenové úrovně ve službě Azure Cosmos DB.
+* Zvýšená propustnost: Doba trvání migrace dat závisí na propustnosti, kterou pro jednotlivé kontejnery nebo sady kontejnerů nastavíte. V případě rozsáhlejších migrací dat nezapomeňte propustnost zvýšit. Po dokončení migrace propustnost snižte, abyste dosáhli nižších nákladů. Další informace o zvýšení propustnosti na webu Azure Portal najdete v tématu Úrovně výkonu a cenové úrovně ve službě Azure Cosmos DB.
 
 ## <a name="data-migration-tool"></a>Nástroj pro migraci dat
 

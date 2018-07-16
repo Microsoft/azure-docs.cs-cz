@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: babd6bff3cec38318cacc0d55394a7563f8e69a4
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: cebb73fedffe3b5f0a11c919ff39d1d2acd462d3
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33776868"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969523"
 ---
 # <a name="tutorial-push-notifications-to-xamarinios-apps-using-azure-notification-hubs"></a>Kurz: Zasílání nabízených oznámení do aplikací Xamarin.iOS pomocí služby Azure Notification Hubs
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -84,34 +84,46 @@ Vaše centrum oznámení je nyní nakonfigurováno pro práci se službou APNS. 
 
     ![Visual Studio – Konfigurace aplikace pro iOS][32]
 
-4. Přidejte balíček zasílání zpráv Azure. V zobrazení Řešení klikněte pravým tlačítkem a na projekt a vyberte **Přidat** > **Přidat balíčky NuGet**. Vyhledejte balíček **Xamarin.Azure.NotificationHubs.iOS** a přidejte ho do svého projektu.
+4. V zobrazení Řešení poklikejte na soubor *Entitlements.plist* a ověřte, že je zaškrtnutá možnost Povolit nabízená oznámení.
 
-5. Přidejte do vaší třídy nový soubor, pojmenujte ho **Constants.cs**, přidejte následující proměnné a nahraďte zástupné symboly literálu řetězce ve vašem *názvu centra* a *DefaultListenSharedAccessSignature*, který jste si předtím poznamenali.
+    ![Visual Studio – konfigurace oprávnění iOS][33]
+
+5. Přidejte balíček zasílání zpráv Azure. V zobrazení Řešení klikněte pravým tlačítkem a na projekt a vyberte **Přidat** > **Přidat balíčky NuGet**. Vyhledejte balíček **Xamarin.Azure.NotificationHubs.iOS** a přidejte ho do svého projektu.
+
+6. Přidejte do vaší třídy nový soubor, pojmenujte ho **Constants.cs**, přidejte následující proměnné a nahraďte zástupné symboly literálu řetězce ve vašem *názvu centra* a *DefaultListenSharedAccessSignature*, který jste si předtím poznamenali.
    
     ```csharp
         // Azure app-specific connection string and hub path
-        public const string ConnectionString = "<Azure connection string>";
-        public const string NotificationHubPath = "<Azure hub path>";
+        public const string ListenConnectionString = "<Azure connection string>";
+        public const string NotificationHubName = "<Azure hub path>";
     ```
 
-6. Do souboru **AppDelegate.cs** přidejte následující pomocí příkazu:
+7. Do souboru **AppDelegate.cs** přidejte následující pomocí příkazu:
    
     ```csharp
         using WindowsAzure.Messaging;
     ```
 
-7. Deklarujte instanci **SBNotificationHub**:
+8. Deklarujte instanci **SBNotificationHub**:
    
     ```csharp
         private SBNotificationHub Hub { get; set; }
     ```
 
-8. V souboru **AppDelegate.cs** aktualizujte metodu **FinishedLaunching()** tak, aby odpovídala následujícímu kódu:
-   
+9.  V souboru **AppDelegate.cs** aktualizujte metodu **FinishedLaunching()** tak, aby odpovídala následujícímu kódu:
+  
     ```csharp
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
-            if (UIDevice.CurrentDevice.CheckSystemVersion (8, 0)) {
+            if (UIDevice.CurrentDevice.CheckSystemVersion(10, 0))
+            {
+                UNUserNotificationCenter.Current.RequestAuthorization(UNAuthorizationOptions.Alert | UNAuthorizationOptions.Sound | UNAuthorizationOptions.Sound,
+                                                                      (granted, error) =>
+                {
+                    if (granted)
+                        InvokeOnMainThread(UIApplication.SharedApplication.RegisterForRemoteNotifications);
+                });
+            } else if (UIDevice.CurrentDevice.CheckSystemVersion (8, 0)) {
                 var pushSettings = UIUserNotificationSettings.GetSettingsForTypes (
                        UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound,
                        new NSSet ());
@@ -127,12 +139,12 @@ Vaše centrum oznámení je nyní nakonfigurováno pro práci se službou APNS. 
         }
     ```
 
-9. Potlačte metodu **RegisteredForRemoteNotifications()** v **AppDelegate.cs**:
+10. Potlačte metodu **RegisteredForRemoteNotifications()** v **AppDelegate.cs**:
    
     ```csharp
         public override void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
         {
-            Hub = new SBNotificationHub(Constants.ConnectionString, Constants.NotificationHubPath);
+            Hub = new SBNotificationHub(Constants.ListenConnectionString, Constants.NotificationHubName);
    
             Hub.UnregisterAllAsync (deviceToken, (error) => {
                 if (error != null)
@@ -150,7 +162,7 @@ Vaše centrum oznámení je nyní nakonfigurováno pro práci se službou APNS. 
         }
     ```
 
-10. Potlačte metodu **ReceivedRemoteNotifications()** v **AppDelegate.cs**:
+11. Potlačte metodu **ReceivedRemoteNotifications()** v **AppDelegate.cs**:
    
     ```csharp
         public override void ReceivedRemoteNotification(UIApplication application, NSDictionary userInfo)
@@ -159,7 +171,7 @@ Vaše centrum oznámení je nyní nakonfigurováno pro práci se službou APNS. 
         }
     ```
 
-11. Vytvořte následující metodu **ProcessNotification()** v **AppDelegate.cs**:
+12. Vytvořte následující metodu **ProcessNotification()** v **AppDelegate.cs**:
    
     ```csharp
         void ProcessNotification(NSDictionary options, bool fromFinishedLaunching)
@@ -200,10 +212,10 @@ Vaše centrum oznámení je nyní nakonfigurováno pro práci se službou APNS. 
    > Můžete se rozhodnout přepsat **FailedToRegisterForRemoteNotifications()** pro řešení situací jako chybějící síťové připojení. To je obzvláště důležité, když by uživatel mohl spustit aplikaci v režimu offline (například letadlo) a vy chcete zpracovávat scénáře zpráv oznámení specifické pro vaši aplikaci.
   
 
-12. Spusťte aplikaci v zařízení.
+13. Spusťte aplikaci v zařízení.
 
 ## <a name="send-test-push-notifications"></a>Odešlete nabízená oznámení
-Příjem oznámení ve vaší aplikaci můžete otestovat pomocí možnosti *Testovací odeslání* na webu [Azure Portal]. Do zařízení se odešle testovací nabízené oznámení.
+Příjem oznámení ve vaší aplikaci můžete otestovat pomocí možnosti *Testovací odeslání* na webu [Azure Portal]. Zařízení se odešle testovací nabízené oznámení.
 
 ![Azure Portal – Testovací odeslání][30]
 
@@ -226,6 +238,7 @@ V tomto kurzu jste rozeslali oznámení do všech zařízení s iOS zaregistrova
 [30]: ./media/notification-hubs-ios-get-started/notification-hubs-test-send.png
 [31]: ./media/partner-xamarin-notification-hubs-ios-get-started/notification-hub-create-ios-app.png
 [32]: ./media/partner-xamarin-notification-hubs-ios-get-started/notification-hub-app-settings.png
+[33]: ./media/partner-xamarin-notification-hubs-ios-get-started/notification-hub-entitlements-settings.png
 
 
 

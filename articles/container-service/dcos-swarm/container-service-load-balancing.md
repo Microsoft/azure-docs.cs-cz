@@ -9,21 +9,21 @@ ms.topic: tutorial
 ms.date: 06/02/2017
 ms.author: rogardle
 ms.custom: mvc
-ms.openlocfilehash: 62967636a4d80f72f731a666947d5d4d5e47f7e5
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 7e71b279d6681696b8666846cfbd27007f464679
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32163040"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37864855"
 ---
 # <a name="load-balance-containers-in-an-azure-container-service-dcos-cluster"></a>Vyrovnávání zatížení kontejnerů v clusteru Azure Container Service DC/OS
 
-V tomto článku se podíváme, jak se pomocí nástroje Marathon-LB vytváří vnitřní nástroj pro vyrovnávání zatížení v prostředí Azure Container Service spravovaném systémem DC/OS. Tato konfigurace vám umožní horizontálně škálovat aplikace. Také vám umožní využít veřejný i soukromý cluster v tom smyslu, že na veřejný umístíte nástroje pro vyrovnávání zatížení, zatímco na soukromý kontejnery aplikací. V tomto kurzu:
+V tomto článku se podíváme, jak se pomocí nástroje Marathon-LB vytváří vnitřní nástroj pro vyrovnávání zatížení v prostředí Azure Container Service spravovaném systémem DC/OS. Tato konfigurace vám umožní horizontálně škálovat aplikace. Také vám umožní využít veřejný i soukromý cluster v tom smyslu, že na veřejný umístíte nástroje pro vyrovnávání zatížení, zatímco na soukromý kontejnery aplikací. V tomto kurzu jste:
 
 > [!div class="checklist"]
-> * Nakonfigurujete Marathon Load Balancer
-> * Pomocí nástroje pro vyrovnávání zatížení nasadíte aplikaci
-> * Nakonfigurujete nástroj pro vyrovnávání zatížení Azure
+> * Konfigurace nástroje Marathon Load Balancer
+> * Nasazení aplikace pomocí nástroje pro vyrovnávání zatížení
+> * Konfigurace nástroje pro vyrovnávání zatížení Azure
 
 K provedení kroků v tomto kurzu potřebujete cluster DC/OS ACS. V případě potřeby si ho můžete nechat vytvořit pomocí [tohoto ukázkového skriptu](./../kubernetes/scripts/container-service-cli-deploy-dcos.md).
 

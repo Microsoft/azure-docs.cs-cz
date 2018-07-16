@@ -11,12 +11,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 11/29/2017
 ms.author: sngun
-ms.openlocfilehash: c83d8ad5b424be1a9a695f3b9a466d45ddf8f0b4
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 42cfe71210b95732b4b69f7ca21a8b647e187a38
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34700277"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37858856"
 ---
 # <a name="azure-cli-samples-for-azure-cosmos-db"></a>Ukázky v Azure CLI pro službu Azure Cosmos DB
 
@@ -27,7 +27,7 @@ Následující tabulka obsahuje odkazy na ukázkové skripty Azure CLI pro služ
 |**Vytvoření účtu služby Azure Cosmos DB, databáze a kontejnerů**||
 |[Vytvoření účtu rozhraní SQL API](scripts/create-database-account-collections-cli.md?toc=%2fcli%2fazure%2ftoc.json)| Vytvoří jeden účet rozhraní API služby Azure Cosmos DB, databázi a kontejner pro použití s rozhraním SQL API. |
 | [Vytvoření účtu rozhraní MongoDB API](scripts/create-mongodb-database-account-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Vytvoří jeden účet rozhraní MongoDB API služby Azure Cosmos DB, databázi a kolekci. |
-| [Vytvoření účtu rozhraní Gremlin API](scripts/create-graph-database-account-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Vytvoří jeden účet rozhraní Gremlin API služby Azure Cosmos DB, databázi a kolekci. |
+| [Vytvoření účtu rozhraní Gremlin API](scripts/create-graph-database-account-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Vytvoří jeden účet rozhraní Gremlin API služby Azure Cosmos DB, databázi a kontejner. |
 |**Škálování služby Azure Cosmos DB**||
 | [Škálování propustnosti kontejneru](scripts/scale-collection-throughput-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Změní zřízenou propustnosti kontejneru.|
 |[Replikace účtu databáze Azure Cosmos DB ve více oblastech a konfigurace priorit převzetí služeb při selhání](scripts/scale-multiregion-cli.md?toc=%2fcli%2fazure%2ftoc.json)|Globálně replikuje data účtu do několika oblastí s určenou prioritou převzetí služeb při selhání.|

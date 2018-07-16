@@ -12,20 +12,18 @@ ms.workload: na
 ms.date: 06/21/2018
 ms.author: dobett
 ms.custom: mvc
-ms.openlocfilehash: 515c9917add27663e8d145fee3e1effc89291bc0
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 0c8734bec1ce14a3a9692efa3a1fcf975067953a
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37033683"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38968898"
 ---
-<!-- **TODO** Update publish config with repo paths before publishing! -->
-
 # <a name="tutorial-implement-a-device-firmware-update-process"></a>Kurz: Implementace procesu aktualizace firmwaru zařízení
 
 U zařízení připojených k centru IoT možná budete potřebovat aktualizovat firmware. Například můžete do firmwaru chtít přidat nové funkce nebo implementovat opravy zabezpečení. V řadě scénářů IoT je nepraktické být fyzicky u zařízení a pak na ně ručně instalovat aktualizace firmwaru. Tento kurz ukazuje, jak můžete začít a vzdáleně monitorovat proces aktualizace firmwaru prostřednictvím back-endové aplikace připojené k centru.
 
-Za účelem vytvoření a monitorování procesu aktualizace firmwaru back-endová aplikace v tomto kurzu vytvoří _konfiguraci_ ve vašem centru IoT. Automatická správa zařízení ve službě IoT Hub pomocí této konfigurace aktualizuje sadu _požadovaných vlastností dvojčete zařízení_ na všech vašich chladících zařízeních. Požadované vlastnosti určují podrobnosti o nutné aktualizaci firmwaru. Chladící zařízení během procesu aktualizace firmwaru hlásí svůj stav do back-endové aplikace pomocí _ohlášených vlastností dvojčete zařízení_. Back-endová aplikace může pomocí konfigurace monitorovat ohlášené vlastnosti odesílané ze zařízení a sledovat proces aktualizace firmwaru až do konce:
+Za účelem vytvoření a monitorování procesu aktualizace firmwaru back-endová aplikace v tomto kurzu vytvoří _konfiguraci_ ve vašem centru IoT. [Automatická správa zařízení](iot-hub-auto-device-config.md) ve službě IoT Hub pomocí této konfigurace aktualizuje sadu _požadovaných vlastností dvojčete zařízení_ na všech vašich chladících zařízeních. Požadované vlastnosti určují podrobnosti o nutné aktualizaci firmwaru. Chladící zařízení během procesu aktualizace firmwaru hlásí svůj stav do back-endové aplikace pomocí _ohlášených vlastností dvojčete zařízení_. Back-endová aplikace může pomocí konfigurace monitorovat ohlášené vlastnosti odesílané ze zařízení a sledovat proces aktualizace firmwaru až do konce:
 
 ![Proces aktualizace firmwaru](media/tutorial-firmware-update/Process.png)
 
@@ -101,7 +99,7 @@ Pokud tyto příkazy spouštíte na příkazovém řádku Windows nebo Powershel
 
 ## <a name="start-the-firmware-update"></a>Spuštění aktualizace firmwaru
 
-V back-endové aplikaci vytvoříte konfiguraci automatické správy zařízení, která zahájí proces aktualizace firmwaru na všech zařízeních se značkou **devicetype** s hodnotou chiller (chladič). V této části najdete postup následujících úloh:
+V back-endové aplikaci vytvoříte [konfiguraci automatické správy zařízení](iot-hub-auto-device-config.md#create-a-configuration), která zahájí proces aktualizace firmwaru na všech zařízeních se značkou **devicetype** s hodnotou chiller (chladič). V této části najdete postup následujících úloh:
 
 * Vytvoření konfigurace z back-endové aplikace
 * Monitorování úlohy až do konce

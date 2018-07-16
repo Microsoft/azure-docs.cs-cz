@@ -1,20 +1,20 @@
 ---
-title: Rychlý start Azure – Vytvoření účtu úložiště | Dokumentace Microsoftu
+title: Rychlý start Azure – Vytvoření účtu úložiště | Microsoft Docs
 description: Rychle se naučíte, jak vytvořit nový účet úložiště pomocí Azure CLI, Azure PowerShellu nebo webu Azure Portal.
 services: storage
 author: tamram
-manager: jeconnoc
+manager: twooley
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 01/19/2018
+ms.date: 07/03/2018
 ms.author: tamram
-ms.openlocfilehash: 7f6357c5b0be12c18797e82b73bd05af42888aa0
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 92215c759cd51ce429708ec54b17722c486b7ca6
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36752329"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37856524"
 ---
 # <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
@@ -165,7 +165,7 @@ Pokud chcete vytvořit účet úložiště pro obecné účely verze 2 na webu A
 1. Na webu Azure Portal rozbalením nabídky na levé straně otevřete nabídku služeb a zvolte **Všechny služby**. Potom přejděte dolů do části **Úložiště** a zvolte **Účty úložiště**. V okně **Účty úložiště**, které se zobrazí, zvolte **Přidat**.
 2. Zadejte název účtu úložiště.
 3. V poli **Druh účtu** nastavte hodnotu **StorageV2 (v2 pro obecné účely)**.
-4. V poli **Replikace** nechte nastavenou hodnotu **Místně redundantní úložiště (LRS)**. Alternativně můžete zvolit **Zónově redundantní úložiště (ZRS) (Preview)**, **Geograficky redundantní úložiště (GRS)** nebo **Geograficky redundantní úložiště jen pro čtení (RA-GRS)**.
+4. V poli **Replikace** nechte nastavenou hodnotu **Místně redundantní úložiště (LRS)**. Alternativně můžete zvolit **Zónově redundantní úložiště (ZRS)**, **Geograficky redundantní úložiště (GRS)** nebo **Geograficky redundantní úložiště s přístupem pro čtení (RA-GRS)**.
 5. V následujících polích ponechte výchozí nastavení: **Model nasazení**, **Výkon** a **Vyžadovat zabezpečený přenos**.
 6. Vyberte předplatné, ve kterém chcete vytvořit účet úložiště.
 7. V části **Skupina prostředků** vyberte **Použít stávající** a potom zvolte skupinu prostředků, kterou jste vytvořili v předchozí části.

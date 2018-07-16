@@ -15,12 +15,12 @@ ms.date: 04/03/2018
 ms.author: magoedte
 ms.custom: mvc
 ms.component: na
-ms.openlocfilehash: 9350d2556ff4b178ec15f4213c89ee46d4f604d5
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 6b25712d660c26f2e7206b361c443b8f97aad361
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128417"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37867609"
 ---
 # <a name="view-or-analyze-data-collected-with-log-analytics-log-search"></a>Zobrazení nebo analýza shromážděných dat pomocí prohledávání protokolů v Log Analytics
 
@@ -85,7 +85,7 @@ Stejný filtr můžete nastavit výběrem možnosti **Filtrovat** v nabídce vla
 
 Možnost **Filtrovat** se zobrazí pouze po najetí myši na vlastnosti, jejichž název je modře.  To jsou *prohledávatelná* pole, která se indexují pro vyhledávací podmínky.  Pole zobrazená šedě jsou pole *vhodná pro volnotextové prohledávání*, u kterých je dostupná pouze možnost **Zobrazit odkazy**.  Tato možnost vrátí záznamy obsahující danou hodnotu v jakékoli vlastnosti.
 
-Výsledky můžete seskupit podle jedné vlastnosti výběrem možnosti **Seskupit podle** v nabídce záznamu.  Tím se do vašeho dotazu přidá operátor [summarize](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/summarize-operator), který zobrazí výsledky v grafu.  Seskupení můžete provést podle více než jedné vlastnosti, museli byste však upravit dotaz přímo.  Vyberte nabídku záznamu vedle vlastnosti **Computer** (Počítač) a vyberte **Seskupit podle „Computer“**.  
+Výsledky můžete seskupit podle jedné vlastnosti výběrem možnosti **Seskupit podle** v nabídce záznamu.  Tím se do vašeho dotazu přidá operátor [summarize](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/summarize-operator), který zobrazí výsledky v grafu.  Seskupení můžete provést podle více než jedné vlastnosti, museli byste však upravit dotaz přímo.  Vyberte nabídku záznamu vedle vlastnosti **Computer** (Počítač) a vyberte **Seskupit podle Computer**.  
 
 ![Seskupení podle počítače](media/log-analytics-tutorial-viewdata/log-analytics-portal-eventlist-04.png)
 

@@ -12,13 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 11/15/2017
+ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: a7a4391b436af4ffa303741397f0be7abf0186fb
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 538977b9057a5699d61d6c2cc44209367e3550e2
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38722843"
 ---
 # <a name="import-and-publish-your-first-api"></a>Import a publikování vašeho prvního rozhraní API 
 
@@ -52,6 +53,8 @@ Tato část ukazuje, jak importovat a publikovat back-endové rozhraní API spec
 
     Hodnoty rozhraní API můžete nastavit při vytváření nebo později na kartě **Nastavení**. Červená hvězdička vedle pole značí, že dané pole musíte vyplnit.
 
+    K vytvoření prvního rozhraní API použijte hodnoty z tabulky níže.
+
     |Nastavení|Hodnota|Popis|
     |---|---|---|
     |**Specifikace OpenAPI**|http://conferenceapi.azurewebsites.net?format=json|Odkazuje na službu implementující rozhraní API. Služba API Management na tuto adresu směruje požadavky.|
@@ -74,19 +77,21 @@ Operaci můžete volat přímo z portálu Azure Portal, který nabízí pohodln�
 1. Vyberte rozhraní API, které jste vytvořili v předchozím kroku (z karty **Rozhraní API**).
 2. Klikněte na kartu **Test**.  ![Test rozhraní API](./media/api-management-get-started/test-api.png)
 3. Klikněte na možnost **GetSpeakers**.
-    Stránka zobrazí pole pro parametry dotazu. V tomto případě ale žádné neexistují. Stránka také zobrazí pole pro hlavičky. Jednou z hlaviček je klíč „Ocp-Apim-Subscription-Key“. Je to klíč pro přihlášení k odběru produktu, který je k tomuto rozhraní API přidružený. Klíč se vyplní automaticky.
+    Stránka zobrazí pole pro parametry dotazu (v tomto případě žádné neexistují) a hlavičky. Jednou z hlaviček je klíč „Ocp-Apim-Subscription-Key“. Je to klíč pro přihlášení k odběru produktu, který je k tomuto rozhraní API přidružený. Klíč se vyplní automaticky.
 4. Stiskněte **Odeslat**.
 
     Back-end předá odpověď **200 OK** a nějaká data.
 
 ## <a name="call-operation"></a>Volání operace z portálu pro vývojáře
 
-Pokud chcete otestovat rozhraní API, je možné operace také vyvolat z **Portálu pro vývojáře**. 
+Pokud chcete otestovat rozhraní API, je možné operace také vyvolat z **Portálu pro vývojáře**.
 
-1. Vyberte **Demo Conference API**.
-2. Klikněte na **GetSpeakers**.
+1. Přejděte na **portál pro vývojáře**.
+![portálu pro vývojáře](./media/api-management-get-started/developer-portal.png)
+
+2. Vyberte **Rozhraní API**, klikněte na **Demo Conference API** a pak na **GetSpeakers**.
     
-    Stránka zobrazí pole pro parametry dotazu. V tomto případě ale žádné neexistují. Stránka také zobrazí pole pro hlavičky. Jednou z hlaviček je klíč „Ocp-Apim-Subscription-Key“. Je to klíč pro přihlášení k odběru produktu, který je k tomuto rozhraní API přidružený. Pokud jste vytvořili instanci služby APIM, jste už správcem a klíč se tedy vyplní automaticky.
+    Stránka zobrazí pole pro parametry dotazu (v tomto případě žádné neexistují) a hlavičky. Jednou z hlaviček je klíč „Ocp-Apim-Subscription-Key“. Je to klíč pro přihlášení k odběru produktu, který je k tomuto rozhraní API přidružený. Pokud jste vytvořili instanci služby APIM, jste už správcem a klíč se tedy vyplní automaticky.
 3. Stiskněte **Vyzkoušet**.
 4. Stiskněte **Odeslat**.
     

@@ -7,15 +7,15 @@ manager: jeconnoc
 ms.service: batch
 ms.devlang: azurecli
 ms.topic: quickstart
-ms.date: 01/16/2018
+ms.date: 07/03/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: b885a08cb9d5c4f601c9d180d1d3997018b66fb2
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f5790f57b66f1d73ff98d5f84276ec9a44568432
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34607884"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37857922"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-azure-cli"></a>Rychlý start: Spuštění první úlohy služby Batch pomocí rozhraní příkazového řádku Azure
 
@@ -170,35 +170,35 @@ az batch task file download \
     --destination ./stdout.txt
 ```
 
-Obsah souboru `stdout.txt` můžete zobrazit v textovém editoru. Obsah zahrnuje proměnné prostředí služby Azure Batch nastavené v uzlu. Při vytváření vlastních úloh služby Batch můžete na tyto proměnné prostředí odkazovat na příkazových řádcích úkolů a v aplikacích a skriptech spouštěných těmito příkazovými řádky.
+Obsah souboru `stdout.txt` můžete zobrazit v textovém editoru. Obsah zahrnuje proměnné prostředí služby Azure Batch nastavené v uzlu. Při vytváření vlastních úloh služby Batch můžete na tyto proměnné prostředí odkazovat na příkazových řádcích úkolů a v aplikacích a skriptech spouštěných těmito příkazovými řádky. Příklad:
 
 ```
-AZ_BATCH_TASK_DIR=/mnt/batch/tasks/workitems/myjob/job-1/mytask3
+AZ_BATCH_TASK_DIR=/mnt/batch/tasks/workitems/myjob/job-1/mytask1
 AZ_BATCH_NODE_STARTUP_DIR=/mnt/batch/tasks/startup
-AZ_BATCH_CERTIFICATES_DIR=/mnt/batch/tasks/workitems/myjob/job-1/mytask3/certs
-AZ_BATCH_ACCOUNT_URL=https://mybatchaccount.eastus2batch.azure.com/
-AZ_BATCH_TASK_WORKING_DIR=/mnt/batch/tasks/workitems/myjob/job-1/mytask3/wd
+AZ_BATCH_CERTIFICATES_DIR=/mnt/batch/tasks/workitems/myjob/job-1/mytask1/certs
+AZ_BATCH_ACCOUNT_URL=https://mybatchaccount.eastus2.batch.azure.com/
+AZ_BATCH_TASK_WORKING_DIR=/mnt/batch/tasks/workitems/myjob/job-1/mytask1/wd
 AZ_BATCH_NODE_SHARED_DIR=/mnt/batch/tasks/shared
 AZ_BATCH_TASK_USER=_azbatch
 AZ_BATCH_NODE_ROOT_DIR=/mnt/batch/tasks
-AZ_BATCH_JOB_ID=myjob
+AZ_BATCH_JOB_ID=myjobl
 AZ_BATCH_NODE_IS_DEDICATED=true
-AZ_BATCH_NODE_ID=tvm-1392786932_2-20171026t223740z
-AZ_BATCH_POOL_ID=mypool-linux
-AZ_BATCH_TASK_ID=mytask3
+AZ_BATCH_NODE_ID=tvm-257509324_2-20180703t215033z
+AZ_BATCH_POOL_ID=mypool
+AZ_BATCH_TASK_ID=mytask1
 AZ_BATCH_ACCOUNT_NAME=mybatchaccount
 AZ_BATCH_TASK_USER_IDENTITY=PoolNonAdmin
 ```
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 Pokud chcete pokračovat v prohlížení kurzů a ukázek služby Batch, použijte účet Batch a propojený účet úložiště, které jste vytvořili v tomto rychlém startu. Za samotný účet Batch se neúčtují žádné poplatky.
 
-Poplatky se účtují za fondy, ve kterých jsou spuštěné uzly, i když nejsou naplánované žádné úlohy. Pokud nějaký fond už nepotřebujete, odstraňte ho pomocí příkazu [az batch pool delete](/cli/azure/batch/pool#az_batch_pool_delete):
+Poplatky se účtují za fondy, ve kterých jsou spuštěné uzly, i když nejsou naplánované žádné úlohy. Pokud nějaký fond už nepotřebujete, odstraňte ho pomocí příkazu [az batch pool delete](/cli/azure/batch/pool#az_batch_pool_delete). Při odstranění fondu se odstraní veškeré výstupy úkolů v uzlech. 
 
 ```azurecli-interactive
 az batch pool delete --pool-id mypool
 ```
 
-Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, účtu služby Batch a všech souvisejících prostředků použít příkaz [az group delete](/cli/azure/group#az_group_delete). Prostředky odstraňte následujícím způsobem:
+Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, účtu Batch, fondů a všech souvisejících prostředků použít příkaz [az group delete](/cli/azure/group#az_group_delete). Prostředky odstraňte následujícím způsobem:
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup

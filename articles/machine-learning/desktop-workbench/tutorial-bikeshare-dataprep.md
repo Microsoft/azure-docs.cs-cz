@@ -7,15 +7,17 @@ ms.author: ranku
 manager: mwinkle
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: core
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 09/21/2017
-ms.openlocfilehash: 51ed7dbead7f9085de563d2fb20c4e4a08f90bb2
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 951ce8947d113eaad2ea0e3b5df5e9714aa33dd8
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38723183"
 ---
 # <a name="tutorial-use-azure-machine-learning-workbench-for-advanced-data-preparation-bike-share-data"></a>Kurz: Použití aplikace Azure Machine Learning Workbench k pokročilé přípravě dat (data projektu BikeShare)
 Služba Azure Machine Learning (Preview) představuje integrované, komplexní řešení datové vědy a pokročilé analýzy pro profesionální datové vědce, které slouží k přípravě dat, vývoji experimentů a nasazování modelů na úrovni cloudu.
@@ -253,7 +255,7 @@ Sloupec __REPORTTYPE__ (Typ zprávy) už nepotřebujete. Klikněte pravým tlač
    ![Možnost Remove Column (Odebrat sloupec)](media/tutorial-bikeshare-dataprep/weatherremovereporttype.png)
 
 ## <a name="change-datatypes-and-remove-errors"></a>Změna datových typů a odebrání chyb
-1. Stisknutím klávesy Ctrl (nebo Command ⌘ na počítačích Mac) při vybírání záhlaví sloupců můžete vybrat víc sloupců najednou. Pomocí této techniky vyberte následující záhlaví sloupců:
+1. Při výběru záhlaví sloupců stiskněte klávesu Ctrl (na Macu klávesu Command ⌘), abyste mohli zvolit více sloupců současně. Pomocí této techniky vyberte následující záhlaví sloupců:
 
    * **HOURLYDRYBULBTEMPF** (Teplota suchého teploměru ve stupních Fahrenheita)
 
@@ -452,7 +454,7 @@ Pro přípravu řetězcových, číselných a geografických dat jsou k dispozic
 1. Vyberte současně sloupce **start station latitude** (Zeměpisná šířka stanice začátku jízdy) a **start station longitude** (Zeměpisná délka stanice začátku jízdy). Klikněte pravým tlačítkem na některý ze sloupců a pak vyberte **Map** (Mapa).
 
     > [!TIP]
-    > Když chcete vybrat více sloupců současně, podržte klávesu Ctrl (nebo Command ⌘ na počítačích Mac) a vyberte záhlaví jednotlivých sloupců.
+    > Pokud chcete povolit vícenásobný výběr, podržte stisknutou klávesu Ctrl (na Macu klávesu Command ⌘) a vyberte záhlaví jednotlivých sloupců.
 
     ![Vizualizace mapy](media/tutorial-bikeshare-dataprep/launchMapInspector.png)
 
@@ -635,7 +637,7 @@ Podle následujícího postupu spojte data o počasí s daty o jízdách:
 
     ![Sloupec Period (Časový interval)](media/tutorial-bikeshare-dataprep/featurehourrange.png)
 
-3. Pokud chcete odebrat sloupce **Date Hour Range** (Hodinové rozmezí k datu) a **r_Date Hour Range** (pravý sloupec Hodinové rozmezí k datu), stiskněte klávesu Ctrl (nebo Command ⌘ na počítačích Mac) a pak vyberte záhlaví obou sloupců. Klikněte pravým tlačítkem a vyberte **Remove column** (Odebrat sloupec).
+3. Pokud chcete odebrat sloupce **Date Hour Range** (Hodinové rozmezí k datu) a **r_Date Hour Range** (r_Hodinové rozmezí k datu), stiskněte klávesu Ctrl (na Macu klávesu Command ⌘) a pak vyberte jednotlivá záhlaví sloupců. Klikněte pravým tlačítkem a vyberte **Remove column** (Odebrat sloupec).
 
 ## <a name="read-data-from-python"></a>Čtení dat z prostředí Python
 

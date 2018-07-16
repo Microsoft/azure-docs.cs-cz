@@ -1,5 +1,5 @@
 ---
-title: Samoobslužné resetování hesla Azure AD z přihlašovací obrazovky Windows 10 | Dokumentace Microsoftu
+title: Samoobslužné resetování hesla Azure AD z přihlašovací obrazovky Windows 10 | Microsoft Docs
 description: Konfigurace resetování hesla Azure AD na přihlašovací obrazovce Windows 10 a nápověda k zapomenutému kódu PIN
 services: active-directory
 ms.service: active-directory
@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 701ab041eb603a1a06025d5bb43964880353ada9
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 3b767da394f6337a1110ad171f19ad789fa044d2
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33867489"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38972977"
 ---
 # <a name="azure-ad-password-reset-from-the-login-screen"></a>Resetování hesla Azure AD z přihlašovací obrazovky
 
@@ -28,7 +28,7 @@ Pokud chcete uživatelům povolit resetování hesla Azure AD z přihlašovací 
 * Aktualizace Windows 10 z dubna 2018 nebo novější klient, který je [připojený k Azure AD](../device-management-azure-portal.md) nebo [k hybridní službě Azure AD](../device-management-hybrid-azuread-joined-devices-setup.md).
 * Samoobslužné resetování hesla Azure AD musí být povolené.
 * Některou z následujících metod nakonfigurujte a nasaďte nastavení, které povolí odkaz na resetování hesla:
-   * [Profil konfigurace zařízení Intune](tutorial-sspr-windows.md#configure-reset-password-link-using-intune)
+   * [Profil konfigurace zařízení Intune](tutorial-sspr-windows.md#configure-reset-password-link-using-intune) Tato metoda vyžaduje registraci zařízení v Intune.
    * [Klíč registru](tutorial-sspr-windows.md#configure-reset-password-link-using-the-registry)
 
 ## <a name="configure-reset-password-link-using-intune"></a>Konfigurace odkazu na resetování hesla pomocí Intune
@@ -66,7 +66,7 @@ Pokud chcete uživatelům povolit resetování hesla Azure AD z přihlašovací 
    * Klikněte na **Vybrat**.
 4. Klikněte na **Vytvořit**
 
-Další informace o vytváření skupin najdete v článku [Správa přístupu k prostředkům pomocí skupin služby Azure Active Directory](../active-directory-manage-groups.md).
+Další informace o vytváření skupin najdete v článku [Správa přístupu k prostředkům pomocí skupin služby Azure Active Directory](../fundamentals/active-directory-manage-groups.md).
 
 #### <a name="assign-device-configuration-policy-to-device-group"></a>Přiřazení zásad konfigurace zařízení ke skupině zařízení
 

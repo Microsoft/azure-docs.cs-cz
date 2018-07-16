@@ -7,14 +7,14 @@ manager: jeconnoc
 ms.service: storage
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 04/16/2018
+ms.date: 06/13/2018
 ms.author: tamram
-ms.openlocfilehash: 749bc318af331100c8c2079d58c8e3ca395f4a49
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 685f333fd0659db54c9d6bf4b061cf4c9aec7cda
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31527310"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38722741"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>Začínáme s úložištěm Azure Queue pomocí rozhraní .NET
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -36,8 +36,6 @@ V tomto kurzu si ukážeme, jak napsat kód .NET pro některé běžné scéná�
 * [Azure Configuration Manager for .NET](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/)
 * [Účet úložiště Azure](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#create-a-storage-account)
 
-[!INCLUDE [storage-dotnet-client-library-version-include](../../../includes/storage-dotnet-client-library-version-include.md)]
-
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
@@ -55,7 +53,7 @@ using Microsoft.WindowsAzure.Storage.Queue; // Namespace for Queue storage types
 
 ### <a name="copy-your-credentials-from-the-azure-portal"></a>Zkopírování přihlašovacích údajů z webu Azure Portal
 
-Ukázkový kód potřebuje ověřit přístup k vašemu účtu úložiště. Ověření provedete tak, že aplikaci poskytnete přihlašovací údaje svého účtu úložiště v podobě připojovacího řetězce. Zobrazení přihlašovacích údajů účtu úložiště:
+Ukázkový kód potřebuje autorizovat přístup k vašemu účtu úložiště. Autorizaci provedete tak, že aplikaci poskytnete přihlašovací údaje svého účtu úložiště v podobě připojovacího řetězce. Zobrazení přihlašovacích údajů účtu úložiště:
 
 1. Přejděte na [Azure Portal](https://portal.azure.com).
 2. Vyhledejte svůj účet úložiště.

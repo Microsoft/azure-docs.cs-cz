@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: f75671e2e5511054f3db550a8c24e62d031492c3
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 4c537b06c4ff50d90d9fd5a847b378038f252790
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33776708"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38972270"
 ---
 # <a name="tutorial-push-notifications-to-xamarinandroid-apps-using-azure-notification-hubs"></a>Kurz: Zasílání nabízených oznámení aplikacím pro Xamarin.Android službou Azure Notification Hubs
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -32,7 +32,7 @@ V tomto kurzu provedete následující kroky:
 
 > [!div class="checklist"]
 > * Vytvoříte projekt Firebase a povolíte službu Firebase Cloud Messaging
-> * Vytvoříte centrum oznámení
+> * Vytvoříte centrum oznámení.
 > * Vytvoříte aplikaci pro Xamarin.Android a připojíte ji k centru oznámení
 > * Odešlete z webu Azure Portal zkušební oznámení
 
@@ -58,7 +58,7 @@ V tomto kurzu provedete následující kroky:
 
 Vaše centrum oznámení je nakonfigurováno pro práci se službou FCM. Zároveň máte připojovací řetězce, pomocí kterých můžete svou aplikaci zaregistrovat pro příjem oznámení a odesílání nabízených oznámení.
 
-## <a name="create-xamainandroid-app-and-connect-it-to-notification-hub"></a>Vytvoření aplikace pro Xamarin.Android a její připojení k centru oznámení
+## <a name="create-xamarinandroid-app-and-connect-it-to-notification-hub"></a>Vytvoření aplikace pro Xamarin.Android a její připojení k centru oznámení
 
 ### <a name="create-visual-studio-project-and-add-nuget-packages"></a>Vytvoření projektu sady Visual Studio a přidání balíčků NuGet
 1. V sadě Visual Studio přejděte na **Soubor**, vyberte **Nový** a vyberte **Projekt**. 
@@ -142,6 +142,7 @@ Otevřete soubor **AndroidManifest.xml** a vložte následující elementy `<rec
 8. Přidejte následující příkazy using do souboru **MyFirebaseIIDService.cs**:
    
     ```csharp
+    using Android.App;
     using Android.Util;
     using WindowsAzure.Messaging;
     using Firebase.Iid;
@@ -183,6 +184,7 @@ Otevřete soubor **AndroidManifest.xml** a vložte následující elementy `<rec
 12. Přidejte následující příkazy using do souboru **MyFirebaseMessagingService.cs**.
     
     ```csharp
+        using Android.App;
         using Android.Util;
         using Firebase.Messaging;
     ```
@@ -241,13 +243,13 @@ Příjem oznámení ve vaší aplikaci můžete otestovat pomocí možnosti *Tes
 
 ![Azure Portal – Testovací odeslání](media/partner-xamarin-notification-hubs-android-get-started/send-test-notification.png)
 
-Nabízená oznámení se většinou posílají ve službě back-end, jako je služba Mobile Services, nebo v technologii ASP.NET pomocí kompatibilní knihovny. Pokud k vašemu back-endu není k dispozici knihovna, můžete zasílat oznámení přímo z rozhraní REST API.
+Nabízená oznámení se většinou posílají ve službě back-end, jako je služba Mobile Services, nebo v technologii ASP.NET pomocí kompatibilní knihovny. Pokud pro váš back-end není dostupná žádná knihovna, můžete k zasílání zpráv oznámení použít také přímo rozhraní REST API.
 
 ## <a name="next-steps"></a>Další kroky
 V tomto kurzu jste poslali oznámení všem zařízením s Androidem registrovaným back-endem. Pokud se chcete naučit zasílat nabízená oznámení určitým zařízením s Androidem, pokračujte následujícím kurzem: 
 
 > [!div class="nextstepaction"]
->[Zasílání nabízených oznámení určitým zařízením](notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md)
+>[Zasílání nabízených oznámení do konkrétních zařízení](notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md)
 
 
 <!-- Anchors. -->

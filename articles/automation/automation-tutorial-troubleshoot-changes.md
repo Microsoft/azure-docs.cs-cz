@@ -1,5 +1,5 @@
 ---
-title: Řešení potíží se změnami na virtuálním počítači Azure | Dokumentace Microsoftu
+title: Řešení potíží se změnami na virtuálním počítači Azure | Microsoft Docs
 description: Potíže se změnami na virtuálním počítači Azure můžete řešit pomocí řešení Change Tracking.
 services: automation
 ms.service: automation
@@ -11,12 +11,12 @@ ms.date: 02/28/2018
 ms.topic: tutorial
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 62d34f82749900e161bebdb7a1a8d470b2e85bbf
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 4d62e8e4cb778e60b39e502f09ce0aafca9b5212
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34054685"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37866813"
 ---
 # <a name="troubleshoot-changes-in-your-environment"></a>Řešení potíží se změnami ve vašem prostředí
 
@@ -113,6 +113,7 @@ V okně **Konfigurace pracovního prostoru** přidejte klíče registru systému
 |Název položky     | Popisný název souboru, který se má sledovat        |
 |Skupina     | Název skupiny pro logické seskupení souborů        |
 |Zadat cestu     | Cesta, ve které se má soubor hledat. Například: c:\temp\myfile.txt       |
+|Nahrát obsah souboru pro všechna nastavení| Zapne nebo vypne u sledovaných změn nahrávání obsahu souboru. Dostupné možnosti: **True** nebo **False**.|
 
 ### <a name="add-a-linux-file"></a>Přidání souboru Linuxu
 
@@ -130,6 +131,7 @@ V okně **Konfigurace pracovního prostoru** přidejte klíče registru systému
 |Rekurze     | Určuje, jestli se při hledání položky, která se má sledovat, používá rekurze.        |
 |Použít sudo     | Toto nastavení určuje, jestli se při kontrole položky používá sudo.         |
 |Odkazy     | Toto nastavení určuje, jak se při procházení adresářů zpracovávají symbolické odkazy.<br> **Ignorovat** – Ignoruje symbolické odkazy a nezahrnuje odkazované soubory ani adresáře.<br>**Sledovat** – Během rekurze sleduje symbolické odkazy a zahrnuje i odkazované soubory a adresáře.<br>**Spravovat** – Sleduje symbolické odkazy a umožňuje zpracování vráceného obsahu.      |
+|Nahrát obsah souboru pro všechna nastavení| Zapne nebo vypne u sledovaných změn nahrávání obsahu souboru. Dostupné možnosti: **True** nebo **False**.|
 
    > [!NOTE]   
    > Možnost Spravovat se nedoporučuje. Načítání obsahu souborů se nepodporuje.

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/12/2018
 ms.author: shlo
-ms.openlocfilehash: 001fefef900a0dd468f8deb8d705c308d8149f71
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 1a713d23a385723517ba1fe924f9ec54d81eade5
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37055149"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37857886"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Kanály a aktivity v Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -58,6 +58,8 @@ Aktivita transformace dat | Výpočetní prostředí
 [Aktivity Machine Learning: Dávkové spouštění a Aktualizace prostředku](transform-data-using-machine-learning.md) | Virtuální počítač Azure
 [Uložená procedura](transform-data-using-stored-procedure.md) | Azure SQL, Azure SQL Data Warehouse nebo SQL Server
 [U-SQL](transform-data-using-data-lake-analytics.md) | Azure Data Lake Analytics
+[Vlastní kód](transform-data-using-dotnet-custom-activity.md) | Azure Batch
+[Poznámkový blok Databricks](transform-data-databricks-notebook.md) | Azure Databricks
 
 Další informace najdete v článku [Aktivity transformace dat](transform-data.md).
 

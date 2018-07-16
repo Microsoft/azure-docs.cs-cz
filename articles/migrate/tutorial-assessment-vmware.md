@@ -4,15 +4,15 @@ description: Toto téma popisuje, jak zjistit místní virtuální počítače V
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 06/19/2018
+ms.date: 07/09/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 71d4bc0aa1ea2658c4cd40834a769eaaac649bc3
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 0b1070e29c8dc9f088297622d16fb816a10a55c0
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36228369"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970781"
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>Zjištění místních virtuálních počítačů VMware a posouzení vhodnosti jejich migrace do Azure
 
@@ -33,10 +33,6 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 ## <a name="prerequisites"></a>Požadavky
 
 - **VMware:** Virtuální počítače, které chcete migrovat, musí být spravované přes vCenter Server verze 5.5, 6.0, nebo 6.5. Pro vytvoření virtuálního počítače kolektoru budete také potřebovat jednoho hostitele ESXi ve verzi 5.0 nebo vyšší.
-
-> [!NOTE]
-> Podpora Hyper-V se plánuje a bude brzy povolená.
-
 - **Účet vCenter Serveru**: Abyste měli přístup k vCenter Serveru, potřebujete účet jen pro čtení. Azure Migrate ho použije ke zjištění místních virtuálních počítačů.
 - **Oprávnění**: Na vCenter Serveru potřebujete oprávnění k vytvoření virtuálního počítače pomocí importu souboru ve formátu .OVA.
 - **Nastavení statistiky**: Než začnete s nasazením, statistika pro vCenter Server by byla být nastavená na úrovni 3. Pokud bude nižší než na úrovni 3, posouzení bude fungovat, ale neshromáždí se údaje o výkonu úložišť a sítí. Kapacitní doporučení budou v tomto případě vycházet z údajů o výkonu procesoru a paměti a z údajů o konfiguraci disku a síťových adaptérů.
@@ -49,6 +45,7 @@ Azure Migrate k automatickému zjišťování virtuálních počítačů pro ú�
 - Oprávnění: Objekt datového centra –> Rozšířit na podřízený objekt, role=Read-only
 - Podrobnosti: Uživatel přiřazený na úrovni datacentra s přístupem ke všem objektům v tomto datacentru.
 - Pokud chcete omezit přístup, přiřaďte podřízeným objektům (hostitelé vSphere, úložiště dat, virtuální počítače a sítě) roli Žádný přístup s objektem Rozšířit na podřízený objekt.
+
 
 ## <a name="log-in-to-the-azure-portal"></a>Přihlášení k portálu Azure Portal
 
@@ -85,6 +82,14 @@ Než nasadíte soubor .OVA, zkontrolujte, jestli je bezpečný.
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Příklady použití: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
 3. Vygenerovaná hodnota hash by měla odpovídat následujícímu nastavení.
+
+  Pro soubory OVA verze 1.0.9.12
+
+    **Algoritmus** | **Hodnota hash**
+    --- | ---
+    MD5 | d0363e5d1b377a8eb08843cf034ac28a
+    SHA1 | df4a0ada64bfa59c37acf521d15dcabe7f3f716b
+    SHA256 | f677b6c255e3d4d529315a31b5947edfe46f45e4eb4dbc8019d68d1d1b337c2e
 
   Pro soubory OVA verze 1.0.9.8:
 
@@ -143,7 +148,7 @@ Importujte stažený soubor do vCenter Serveru.
 5. Ve službě Azure Migrate Collector otevřete nabídku **Nastavit požadavky**.
     - Přijměte licenční podmínky a přečtěte si informace třetích stran.
     - Kolektor zkontrolujte, jestli má virtuální počítač přístup k internetu.
-    - Pokud má virtuální počítač přístup k internetu přes proxy server, klikněte na **Nastavení proxy**, zadejte adresu proxy serveru a nastavte naslouchající port. Pokud proxy server potřebuje přihlašovací údaje, zadejte je. Přečtěte si [další informace](https://docs.microsoft.com/en-us/azure/migrate/concepts-collector#internet-connectivity) o požadavcích na internetové připojení a o seznamu adres URL, ke kterým má kolektor přístup.
+    - Pokud má virtuální počítač přístup k internetu přes proxy server, klikněte na **Nastavení proxy**, zadejte adresu proxy serveru a nastavte naslouchající port. Pokud proxy server potřebuje přihlašovací údaje, zadejte je. Přečtěte si [další informace](https://docs.microsoft.com/azure/migrate/concepts-collector#internet-connectivity) o požadavcích na internetové připojení a o seznamu adres URL, ke kterým má kolektor přístup.
 
     > [!NOTE]
     > Adresu proxy serveru je potřeba zadat ve formátu http://ProxyIPAddress nebo http://ProxyFQDN. Podporuje se jen proxy protokolu HTTP.
@@ -157,10 +162,12 @@ Importujte stažený soubor do vCenter Serveru.
     - V části **Rozsah kolekce** vyberte kolekci pro zjišťování virtuálních počítačů. Kolektor může vyhledat jen virtuální počítače v rámci zadaného rozsahu. Jako rozsah můžete vybrat konkrétní složku, datové centrum nebo cluster. Neměl by obsahovat víc než 1500 virtuálních počítačů. Přečtěte si [další informace](how-to-scale-assessment.md) o zjišťování větších prostředí.
 
 7. V části **Zadejte projekt migrace** zadejte ID projektu služby Azure Migrate a klíč, který jste zkopírovali z portálu. Pokud jste ho nezkopírovali, na virtuálním počítači kolektoru otevřete Azure Portal. Na stránce **Přehled** projektu klikněte na **Zjistit počítače** a zkopírujte příslušné hodnoty.  
-8. V části **Zobrazit průběh shromažďování** můžete sledovat zjišťování a kontrolovat, jestli metadata shromážděná z virtuálních počítačů patří do zadaného rozsahu. Kolektor vás informuje o tom, jak dlouho bude zjišťování přibližně trvat. Přečtěte si [další informace](https://docs.microsoft.com/en-us/azure/migrate/concepts-collector#what-data-is-collected) o datech, která shromažďuje kolektor Azure Migrate.
+8. V části **Zobrazit průběh shromažďování** můžete sledovat zjišťování a kontrolovat, jestli metadata shromážděná z virtuálních počítačů patří do zadaného rozsahu. Kolektor vás informuje o tom, jak dlouho bude zjišťování přibližně trvat. Přečtěte si [další informace](https://docs.microsoft.com/azure/migrate/concepts-collector#what-data-is-collected) o datech, která shromažďuje kolektor Azure Migrate.
 
 > [!NOTE]
-> Kolektor podporuje jako jazyk operačního systému a jazyk rozhraní kolektoru jen angličtinu (Spojené státy). Brzy bude k dispozici podpora pro další jazyky.
+> Kolektor podporuje jako jazyk operačního systému a jazyk rozhraní kolektoru jen angličtinu (Spojené státy).
+> Pokud změníte nastavení na počítači, který chcete posoudit, aktivujte znovu zjišťování ještě před spuštěním posouzení. V kolektoru k tomu použijte možnost **Spustit shromažďování znovu**. Jakmile se shromažďování dokončí, vyberte možnost **Přepočítat** pro posouzení na portálu. Zobrazíte tak aktualizované výsledky posouzení.
+
 
 
 ### <a name="verify-vms-in-the-portal"></a>Kontrola virtuálních počítačů na portálu

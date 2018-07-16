@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.date: 05/29/2018
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: 47d52fa412adf3f8e7f0c3c4d4afaf9009b4783e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: dc857760cf0d3fa2e146f22196b7bc36d119df5f
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34651335"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37869560"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>Kurz: Použití simulovaného zařízení k otestování připojení k IoT Hubu
 
@@ -49,7 +49,7 @@ Aktuální verzi Node.js na počítači používaném pro vývoj můžete ověř
 node --version
 ```
 
-Stáhněte si ukázkový projekt simulátoru zařízení v Node.js z https://github.com/Azure-Samples/iot-hub-tutorials-node/archive/master.zip a extrahujte archiv ZIP.
+Stáhněte si ukázkový projekt simulátoru zařízení v Node.js z https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip a extrahujte archiv ZIP.
 
 ## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
@@ -123,6 +123,9 @@ Tentokrát se poté, co se aplikace pokusí o připojení, zobrazí chyba ověř
 Pokud zařízení používá některou ze sad SDK pro zařízení centra IoT Hub, vygeneruje kód knihovny SDK token SAS potřebný k ověření u centra. Token SAS se generuje z názvu centra, názvu zařízení a klíče zařízení.
 
 V některých scénářích, například v cloudové bráně protokolu nebo v rámci schématu vlastního ověřování, může být nutné, abyste token SAS vygenerovali sami. Při řešení problémů s generováním kódu SAS je užitečné, když jste schopni vytvořit známý funkční token SAS k použití při testování.
+
+> [!NOTE]
+> Ukázka SimulatedDevice-2.js zahrnuje příklady generování tokenu SAS se sadou SDK i bez ní.
 
 Známý funkční token SAS vygenerujete v rozhraní příkazového řádku následujícím příkazem:
 

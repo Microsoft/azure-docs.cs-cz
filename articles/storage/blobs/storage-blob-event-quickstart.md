@@ -1,35 +1,36 @@
 ---
-title: Koncový bod vlastní webové směrovat událostí Azure Blob storage | Microsoft Docs
+title: Směrování událostí služby Azure Blob Storage do vlastního webového koncového bodu | Microsoft Docs
 description: Pomocí služby Azure Event Grid se můžete přihlásit k odběru událostí služby Blob Storage.
 services: storage,event-grid
 keywords: ''
 author: cbrooksmsft
 ms.author: cbrooks
-ms.date: 01/30/2018
-ms.topic: article
+ms.date: 07/05/2018
+ms.topic: quickstart
 ms.service: storage
-ms.openlocfilehash: f0764ebc423cfb5323f2b634ce5a5ecbe075135c
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
-ms.translationtype: MT
+ms.openlocfilehash: e2f6f2cbf843c6c3b0202a2ef59f6b8e16291f54
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37869212"
 ---
-# <a name="route-blob-storage-events-to-a-custom-web-endpoint-with-azure-cli"></a>Události úložiště objektů Blob trasy pro koncový bod vlastní webové pomocí rozhraní příkazového řádku Azure
+# <a name="route-blob-storage-events-to-a-custom-web-endpoint-with-azure-cli"></a>Směrování událostí služby Blob Storage do vlastního webového koncového bodu pomocí Azure CLI
 
-Azure Event Grid je služba zpracování událostí pro cloud. V tomto článku se pomocí Azure CLI přihlásíte k odběru událostí služby Blob Storage a aktivujete událost, abyste viděli výsledek. 
+Azure Event Grid je služba zpracování událostí pro cloud. V tomto článku se pomocí Azure CLI přihlásíte k odběru událostí služby Blob Storage a aktivujete událost, abyste viděli výsledek.
 
-Obvykle odesíláte události do koncového bodu, který na událost reaguje například webhookem nebo funkcí Azure Functions. Pro zjednodušení příkladu v tomto článku budeme události odesílat na adresu URL, která jenom shromažďuje zprávy. Vytvořte tuto adresu URL pomocí nástroje třetích stran z [Hookbin](https://hookbin.com/).
+Obvykle odesíláte události do koncového bodu, který data události zpracuje a provede akce. Pro zjednodušení tohoto článku však budete události odesílat do webové aplikace, která shromažďuje a zobrazuje zprávy.
 
-> [!NOTE]
-> **Hookbin** není určen pro použití vysoké propustnosti. Použití tohoto nástroje je čistě demonstrative. Pokud najednou nabídnete více než jednu událost, možná se v nástroji nezobrazí všechny.
+Po dokončení kroků popsaných v tomto článku uvidíte, že se data události odeslala do webové aplikace.
 
-Po dokončení kroků popsaných v tomto článku uvidíte, že se data událostí odeslala do koncového bodu.
+![Zobrazení události odběru](./media/storage-blob-event-quickstart/view-results.png)
+
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (CLI) místně, pro účely tohoto článku musíte používat nejnovější verzi Azure CLI (2.0.24 nebo novější). Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0](/cli/azure/install-azure-cli).
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (CLI) místně, pro účely tohoto článku musíte používat nejnovější verzi Azure CLI (2.0.24 nebo novější). Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
 Pokud nepoužíváte cloudové prostředí, musíte se nejdřív přihlásit pomocí `az login`.
 
@@ -47,10 +48,10 @@ az group create --name <resource_group_name> --location westcentralus
 
 ## <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
-Pokud chcete použít události úložiště objektů Blob, je nutné buď [účtem služby Blob storage](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-storage-accounts) nebo [účtem úložiště pro obecné účely v2](../common/storage-account-options.md#general-purpose-v2). **Obecné účely v2 (GPv2)** jsou účty úložiště, které podporují všechny funkce pro všechny služby úložiště, včetně objektů BLOB, soubory, fronty a tabulky. A **účtem služby Blob storage** je specializovaný účet úložiště pro ukládání nestrukturovaných dat jako blobů (objektů) ve službě Azure Storage. Účty úložiště BLOB jsou podobné účtům úložiště pro obecné účely a sdílejí všechny skvělé odolnost, dostupnost, škálovatelnost a výkon funkce používají. jednotlivá včetně 100 % konzistentnost rozhraní API pro objekty BLOB bloku a doplňovací objekty BLOB. V případě aplikací, které vyžadují jenom úložiště objektů blob bloku nebo objektů blob doporučujeme používat účty úložiště objektů blob. 
+Pokud chcete používat události úložiště objektů blob, potřebujete buď [účet úložiště objektů blob](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-storage-accounts), nebo [účet úložiště pro obecné účely v2](../common/storage-account-options.md#general-purpose-v2). Účty pro **obecné účely v2 (GPv2)** jsou účty úložiště, které podporují všechny funkce všech služeb úložiště, včetně objektů blob, souborů, front a tabulek. **Účet úložiště objektů blob** je specializovaný účet úložiště pro ukládání nestrukturovaných dat v podobě objektů blob do služby Azure Storage. Účty úložiště objektů blob jsou podobné účtům úložiště pro obecné účely a mají stejně vysokou odolnost, dostupnost, škálovatelnost a výkonnost, a navíc mají 100% konzistentnost rozhraní API pro objekty blob bloku a doplňovací objekty blob. V případě aplikací, které vyžadují jenom úložiště objektů blob bloku nebo objektů blob doporučujeme používat účty úložiště objektů blob. 
 
 > [!NOTE]
-> Dostupnost pro události úložiště je vázaný na události mřížky [dostupnosti](../../event-grid/overview.md) a bude dostupná v jiných oblastech, stejně jako událost mřížky.
+> Dostupnost událostí služby Storage závisí na [dostupnosti](../../event-grid/overview.md) služby Event Grid a v dalších oblastech bude zpřístupněna společně se službou Event Grid.
 
 Nahraďte `<storage_account_name>` jedinečným názvem vašeho účtu úložiště a `<resource_group_name>` skupinou prostředků, kterou jste vytvořili dříve.
 
@@ -66,24 +67,48 @@ az storage account create \
 
 ## <a name="create-a-message-endpoint"></a>Vytvoření koncového bodu zpráv
 
-Před přihlášením k odběru tématu vytvoříme koncový bod pro zprávy události. Místo psaní kódu, který by na událost reagoval, vytvoříme koncový bod, který bude shromažďovat zprávy, abyste je mohli zobrazit. Hookbin je nástroj třetí strany, který umožňuje vytvořit koncový bod a zobrazit požadavků, které jsou do ní poslané. Přejděte na [Hookbin](https://hookbin.com/) a klikněte na tlačítko **vytvořit nový koncový bod**.  Zkopírujte adresu URL přihrádky, protože ji budete potřebovat při přihlašování k odběru tématu.
+Před přihlášením k odběru tématu vytvoříme koncový bod pro zprávy události. Koncový bod obvykle provede akce na základě dat události. Pro zjednodušení tohoto rychlého startu nasadíte [předem připravenou webovou aplikaci](https://github.com/dbarkol/azure-event-grid-viewer), která zobrazuje zprávy události. Nasazené řešení zahrnuje plán služby App Service, webovou aplikaci App Service a zdrojový kód z GitHubu.
 
-## <a name="subscribe-to-your-storage-account"></a>Přihlásit k účtu úložiště
+Nahraďte `<your-site-name>` jedinečným názvem vaší webové aplikace. Název webové aplikace musí být jedinečný, protože je součástí položky DNS.
 
-K odběru tématu se přihlašujete, aby služba Event Grid věděla, které události chcete sledovat. V následujícím příkladu se přihlásí k účtu úložiště, které jste vytvořili a předává adresu URL z Hookbin jako koncový bod pro oznámení o události. Nahraďte `<event_subscription_name>` jedinečným názvem vašeho odběru událostí a `<endpoint_URL>` hodnotou adresy URL z nástroje RequestBin z předchozí části. Díky zadání koncového bodu při přihlašování k odběru bude služba Event Grid zpracovávat směrování událostí do tohoto koncového bodu. Místo `<resource_group_name>` a `<storage_account_name>` použijte hodnoty názvu skupiny prostředků a názvu účtu úložiště, které jste vytvořili dříve.  
+```azurecli-interactive
+sitename=<your-site-name>
+
+az group deployment create \
+  --resource-group <resource_group_name> \
+  --template-uri "https://raw.githubusercontent.com/dbarkol/azure-event-grid-viewer/master/azuredeploy.json" \
+  --parameters siteName=$sitename hostingPlanName=viewerhost
+```
+
+Dokončení nasazení může trvat několik minut. Po úspěšném nasazení si webovou aplikaci prohlédněte, abyste se ujistili, že funguje. Ve webovém prohlížeči přejděte na: `https://<your-site-name>.azurewebsites.net`
+
+Měli byste vidět web aktuálně bez zobrazených zpráv.
+
+[!INCLUDE [event-grid-register-provider-cli.md](../../../includes/event-grid-register-provider-cli.md)]
+
+## <a name="subscribe-to-your-storage-account"></a>Přihlášení k odběru účtu úložiště
+
+K odběru tématu se přihlašujete, aby služba Event Grid věděla, které události chcete sledovat a kam má tyto události odesílat. Následující příklad se přihlásí k odběru účtu úložiště, který jste vytvořili, a předá adresu URL z webové aplikace jako koncový bod pro oznámení události. Nahraďte řetězec `<event_subscription_name>` názvem odběru události. Místo `<resource_group_name>` a `<storage_account_name>` použijte hodnoty názvu skupiny prostředků a názvu účtu úložiště, které jste vytvořili dříve.
+
+Koncový bod pro webovou aplikaci musí obsahovat příponu `/api/updates/`.
 
 ```azurecli-interactive
 storageid=$(az storage account show --name <storage_account_name> --resource-group <resource_group_name> --query id --output tsv)
+endpoint=https://$sitename.azurewebsites.net/api/updates
 
 az eventgrid event-subscription create \
   --resource-id $storageid \
   --name <event_subscription_name> \
-  --endpoint <endpoint_URL>
+  --endpoint $endpoint
 ```
+
+Podívejte se na webovou aplikaci znovu a všimněte si, že do ní byla odeslána událost ověření odběru. Vyberte ikonu oka a rozbalte data události. Služba Event Grid odešle událost ověření, aby koncový bod mohl ověřit, že data události chce přijímat. Webová aplikace obsahuje kód pro ověření odběru.
+
+![Zobrazení události odběru](./media/storage-blob-event-quickstart/view-subscription-event.png)
 
 ## <a name="trigger-an-event-from-blob-storage"></a>Aktivace události ze služby Blob Storage
 
-Nyní aktivujeme událost, abychom viděli, jak služba Event Grid distribuuje zprávu do vašeho koncového bodu. Nejprve umožňuje nakonfigurujte název a klíč pro účet úložiště, pak jsme vytvořit kontejner, pak vytvořit a odeslat soubor. Znovu místo `<storage_account_name>` a `<resource_group_name>` použijte hodnoty názvu účtu úložiště a názvu skupiny prostředků, které jste vytvořili dříve.
+Nyní aktivujeme událost, abychom viděli, jak služba Event Grid distribuuje zprávu do vašeho koncového bodu. Nejprve nakonfigurujeme název a klíč pro účet úložiště, vytvoříme kontejner a pak vytvoříme a nahrajeme soubor. Znovu místo `<storage_account_name>` a `<resource_group_name>` použijte hodnoty názvu účtu úložiště a názvu skupiny prostředků, které jste vytvořili dříve.
 
 ```azurecli-interactive
 export AZURE_STORAGE_ACCOUNT=<storage_account_name>
@@ -95,7 +120,8 @@ touch testfile.txt
 az storage blob upload --file testfile.txt --container-name testcontainer --name testfile.txt
 ```
 
-Právě jste aktivovali událost a služba Event Grid odeslala zprávu do koncového bodu, který jste nakonfigurovali při přihlášení k odběru. Přejděte na adresu URL koncového bodu, kterou jste vytvořili dříve. Nebo v otevřeném prohlížeči klikněte na tlačítko pro obnovení. Zobrazí se událost, kterou jste právě odeslali. 
+Právě jste aktivovali událost a služba Event Grid odeslala zprávu do koncového bodu, který jste nakonfigurovali při přihlášení k odběru. Podívejte se na webovou aplikaci, abyste si zobrazili událost, kterou jste právě odeslali.
+
 
 ```json
 [{
@@ -133,7 +159,7 @@ Nahraďte `<resource_group_name>` názvem skupiny prostředků, kterou jste vytv
 az group delete --name <resource_group_name>
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Když teď víte, jak vytvářet témata a odběry událostí, zjistěte více o událostech služby Blob Storage a s čím vám služba Event Grid ještě může pomoct:
 

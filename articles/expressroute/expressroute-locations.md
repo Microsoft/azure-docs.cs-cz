@@ -1,5 +1,5 @@
 ---
-title: 'Poskytovatelé připojení a umístění: Azure ExpressRoute | Dokumentace Microsoftu'
+title: 'Poskytovatelé připojení a umístění: Azure ExpressRoute | Microsoft Docs'
 description: Tento článek obsahuje podrobný přehled o umístěních, kde jsou nabízené služby, a jak se připojit k oblastem Azure. Řazení je podle poskytovatele připojení.
 services: expressroute
 documentationcenter: na
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/22/2018
 ms.author: jaredro
-ms.openlocfilehash: eef664877fab68fc78e9bb5717d92594900d0f5f
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 8fa32350412b3a27c06d218342cdd7ad99ca5245
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36751107"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38972413"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partneři ExpressRoute a umístění partnerského vztahu
 
@@ -50,14 +50,17 @@ Následující tabulka obsahuje mapování oblastí Azure na umístění Express
 | **Austrálie** |Austrálie – jihovýchod, Austrálie – východ |Melbourne, Sydney |
 | **Australská vláda** | Austrálie – střed, Austrálie – střed 2 |Canberra, Canberra2 | 
 | **Indie** |Indie – západ, Indie – střed, Indie – jih |Čennaj, Bombaj |
-| **Jižní Korea** |Korea – střed, Korea – jih |Busan, Soul |
+| **Jižní Korea** |Jižní Korea – střed, Jižní Korea – jih |Busan, Soul |
+| **Jižní Afrika** |[Jižní Afrika – západ+, Jižní Afrika – sever+](https://blogs.microsoft.com/blog/2017/05/18/microsoft-deliver-microsoft-cloud-datacenters-africa/) |Kapské město, Johannesburg |
+
+ **+** označuje brzké uvedení.
 
 ### <a name="regions-and-geopolitical-boundaries-for-national-clouds"></a>Oblasti a geopolitické hranice pro národní cloudy
 Následující tabulka obsahuje informace o oblastech a geopolitických hranicích pro národní cloudy.
 
 | **Geopolitická oblast** | **Oblasti Azure** | **Umístění ExpressRoute** |
 | --- | --- | --- |
-| **Cloud vlády USA** |USA (Gov) – Arizona, USA (Gov) – Iowa, USA (Gov) – Texas, USA (Gov) – Virginia, US DoD – střed, US DoD – východ  |Chicago, Dallas, New York, Seattle, Silicon Valley, Washington DC |
+| **Cloud vlády USA** |US Gov – Arizona, US Gov – Iowa, US Gov – Texas, US Gov – Virginie, US DoD – střed, US DoD – východ  |Chicago, Dallas, New York, Seattle, Silicon Valley, Washington DC |
 | **Čína** |Severní Čína, Východní Čína |Peking, Šanghaj |
 | **Německo** |Střední Německo, Východní Německo |Berlín, Frankfurt |
 
@@ -95,7 +98,7 @@ Následující tabulka uvádí umístění podle poskytovatele služby. Pokud ch
 | **[InterCloud](https://www.intercloud.com/)** |Podporuje se |Podporuje se |Amsterdam, Londýn, Paříž, Singapur, Washington DC |
 | **Internet2** |Podporuje se |Podporuje se |Washington DC |
 | **[Internet Initiative Japan Inc. – IIJ](http://www.iij.ad.jp/en/news/pressrelease/2015/1216-2.html)** |Podporuje se |Podporuje se |Ósaka, Tokio |
-| **Internet Solutions – Cloud Connect** |Podporuje se |Podporuje se |Amsterdam, Londýn |
+| **[Internet Solutions – Cloud Connect](https://www.is.co.za/solution/cloud-connect/)** |Podporuje se |Podporuje se |Kapské město, Johannesburg, Londýn |
 | **[Interxion](http://www.interxion.com/why-interxion/colocate-with-the-clouds/Microsoft-Azure/)** |Podporuje se |Podporuje se |Amsterdam, Dublin, Londýn, Paříž |
 | **[IX Reach](https://www.ixreach.com/services/cloud-connectivity/microsoft-azure/)**|Podporuje se |Podporuje se | Silicon Valley, Toronto |
 | **Jisc** |Podporuje se |Podporuje se |Londýn |
@@ -106,7 +109,7 @@ Následující tabulka uvádí umístění podle poskytovatele služby. Pokud ch
 | **[Liquid Telecom](https://www.liquidtelecom.com/products-and-services/cloud.html)** |Podporuje se |Podporuje se |Kapské město, Johannesburg |
 | **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |Podporuje se |Podporuje se |Amsterdam, Chicago, Dallas, Denver, Dublin, Hongkong, Las Vegas, Londýn, Los Angeles, Melbourne, Miami, New York, Quebec City, San Antonio, Seattle, Silicon Valley, Singapur, Singapur2, Sydney, Toronto, Washington DC |
 | **MTN** |Podporuje se |Podporuje se |Londýn |
-| **[Neutrona Networks](http://www.neutrona.com/index.php/azure-expressroute/)** |Podporuje se |Podporuje se |Miami, Sao Paulo |
+| **[Neutrona Networks](http://www.neutrona.com/index.php/azure-expressroute/)** |Podporuje se |Podporuje se |Dallas, Miami, Sao Paulo |
 | **[Next Generation Data](http://www.nextgenerationdata.co.uk/ngd-cloud-gateway/)** |Podporuje se |Podporuje se |Newport(Wales) |
 | **NEXTDC** |Podporuje se |Podporuje se |Melbourne, Sydney |
 | **[NTT Communications](http://www.ntt.com/en/services/network/virtual-private-network.html)** |Podporuje se |Podporuje se |Amsterdam, Hongkong, Londýn, Los Angeles, Ósaka, Singapur, Sydney, Tokio, Washington DC |

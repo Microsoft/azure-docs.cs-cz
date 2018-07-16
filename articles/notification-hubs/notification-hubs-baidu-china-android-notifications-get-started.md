@@ -1,5 +1,5 @@
 ---
-title: Začínáme s používáním Azure Notification Hubs s Baidu | Dokumentace Microsoftu
+title: Začínáme s používáním Azure Notification Hubs s Baidu | Microsoft Docs
 description: V tomto kurzu zjistíte, jak používat Azure Notification Hubs k odesílání nabízených oznámení do zařízení se systémem Android pomocí Baidu.
 services: notification-hubs
 documentationcenter: android
@@ -15,11 +15,11 @@ ms.workload: mobile
 ms.date: 04/14/2018
 ms.author: dimazaid
 ms.openlocfilehash: c680de254c55adaad8cedde6cf4748efd0c2c858
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33777572"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38700896"
 ---
 # <a name="get-started-with-notification-hubs-using-baidu"></a>Začínáme s použitím Notification Hubs pomocí Baidu
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -42,7 +42,7 @@ V tomto kurzu budete potřebovat:
 ## <a name="create-a-baidu-account"></a>Vytvořte účet Baidu
 Chcete-li použít Baidu, musíte mít účet Baidu. Pokud již účet máte, přihlaste se na [portál Baidu] a přejděte k dalšímu kroku. Jinak pro vytvoření účtu Baidu postupujte podle následujících pokynů.  
 
-1. Přejděte na stránku [portál Baidu] a klikněte na odkaz **登录** (**Přihlášení**). Klikněte na **立即注册** (**Zaregistrovat se**) a spusťte proces registrace účtu.
+1. Přejděte na [portál Baidu] a klikněte na odkaz **登录** (**Přihlášení**). Kliknutím na **立即注册** (**Zaregistrovat se**) spusťte proces registrace účtu.
    
     ![Registrace Baidu](./media/notification-hubs-baidu-get-started/BaiduRegistration.png)
 
@@ -63,19 +63,19 @@ Po aktivaci účtu Baidu se přihlaste na [portál Baidu].
 ## <a name="create-a-baidu-cloud-push-project"></a>Vytvořte projekt nabízených oznámení cloudu Baidu
 Při vytváření projektu nabízených oznámení cloudu Baidu obdržíte své ID aplikace, klíč rozhraní API a tajný klíč.
 
-1. Po přihlášení na [portál Baidu] klikněte na tlačítko **更多 >>** (**Další**).
+1. Po přihlášení k [portál Baidu] klikněte na **更多>>** (**Další**).
    
     ![Registrace – Další](./media/notification-hubs-baidu-get-started/BaiduRegistrationMore.png)
 
-2. Posuňte se dolů v části **站长与开发者服务** (**Správce webového serveru a služeb pro vývojáře**) a klikněte na **百度云推送** (**Nabízená oznámení cloudu Baidu**).
+2. Posuňte se dolů v části **站长与开发者服务** (**Služby pro správce webového serveru a vývojáře**) a klikněte na **百度云推送** (**Nabízená oznámení cloudu Baidu**).
    
     ![Otevřená cloudová platforma Baidu](./media/notification-hubs-baidu-get-started/BaiduOpenCloudPlatform.png)
 
-3. Na další stránce klikněte na **登录** (**Přihlášení**) v pravém horním rohu.
+3. Na další stránce klikněte v pravém horním rohu na **登录** (**Přihlášení**).
    
     ![Přihlášení Baidu](./media/notification-hubs-baidu-get-started/BaiduLogin.png)
 
-4. Na této stránce pak klikněte na **创建应用** (**Vytvořit aplikaci**).
+4. Pak na této stránce klikněte na **创建应用** (**Vytvořit aplikaci**).
 
     ![Vytvoření aplikace Baidu](./media/notification-hubs-baidu-get-started/BaiduCreateApplication.png)
 
@@ -91,7 +91,7 @@ Při vytváření projektu nabízených oznámení cloudu Baidu obdržíte své 
    
     ![Tajné kódy nabízených oznámení Baidu](./media/notification-hubs-baidu-get-started/BaiduGetSecrets.png)
 
-8. Nakonfigurujte projekt pro nabízená oznámení kliknutím na 创建通知 (**Vytvořit oznámení**) v levém podokně.
+8. Nakonfigurujte v projektu nabízená oznámení tak, že v levém podokně kliknete na 创建通知 (**Vytvořit oznámení**).
    
     ![](./media/notification-hubs-baidu-get-started/BaiduCreateNotification.png)
 
@@ -117,7 +117,7 @@ Poznamenejte si `DefaultListenSharedAccessSignature` a `DefaultFullSharedAccessS
 
     ![Azure Notification Hubs – Nový projekt Baidu](./media/notification-hubs-baidu-get-started/AndroidNewProject.png)
 
-2.  Zadejte Název aplikace a ověřte, že Minimální požadovaná verze sady SDK je nastavená na API 16: Android 4.1. **Také se ujistěte, že název vašeho balíčku (应用包名) je stejný jako na portálu nabízených oznámení cloudu Baidu.**
+2.  Zadejte Název aplikace a ověřte, že Minimální požadovaná verze sady SDK je nastavená na API 16: Android 4.1. **Ověřte prosím také, že název vašeho balíčku (应用包名) je stejný jako na portálu nabízených oznámení cloudu Baidu.**
 
     ![Azure Notification Hubs – Minimální verze sady SDK 1 pro Baidu](./media/notification-hubs-baidu-get-started/AndroidMinSDK.png)
     ![Azure Notification Hubs – Minimální verze sady SDK 2 pro Baidu](./media/notification-hubs-baidu-get-started/AndroidMinSDK2.png)

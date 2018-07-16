@@ -9,12 +9,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 05/22/2018
 ms.author: tamram
-ms.openlocfilehash: 0074e0a66ae842d798d6fd8cd2f4392644d873fa
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 157fd47861857fedbe4886407ba464f886ef1be3
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34650753"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38767132"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-net"></a>Rychlý start: Nahrávání, stahování a výpis objektů blob pomocí .NET
 
@@ -63,7 +63,7 @@ Tento příkaz naklonuje úložiště do vaší místní složky gitu. Pokud chc
 
 ## <a name="configure-your-storage-connection-string"></a>Konfigurace připojovacího řetězce úložiště
 
-Pro spuštění aplikace je potřeba zadat připojovací řetězec pro váš účet úložiště. Ukázková aplikace načte připojovací řetězec z proměnné prostředí a použije ho k ověření požadavků ve službě Azure Storage.
+Pro spuštění aplikace je potřeba zadat připojovací řetězec pro váš účet úložiště. Ukázková aplikace načte připojovací řetězec z proměnné prostředí a použije ho k autorizaci požadavků ve službě Azure Storage.
 
 Po zkopírování připojovacího řetězce ho zapište do nové proměnné prostředí na místním počítači, na kterém aplikaci spouštíte. Proměnnou prostředí nastavíte tak, že otevřete okno konzoly a budete postupovat podle pokynů pro váš operační systém. Nahraďte `<yourconnectionstring>` svým skutečným připojovacím řetězcem:
 
