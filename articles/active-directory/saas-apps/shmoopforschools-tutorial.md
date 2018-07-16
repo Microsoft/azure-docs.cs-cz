@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s Shmoop pro škol | Microsoft Docs'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Shmoop pro škol.
+title: 'Kurz: Integrace Azure Active Directory se službou Shmoop pro školy | Dokumentace Microsoftu'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Shmoop pro školy.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,22 +15,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: jeedes
-ms.openlocfilehash: e9dc784d84c43600f3ba4fda92e023c01afe8995
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: b5826fd3067ac337808b9e27040dee808cd6a01c
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36301129"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39045953"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-shmoop-for-schools"></a>Kurz: Azure Active Directory integrace s Shmoop pro školy
+# <a name="tutorial-azure-active-directory-integration-with-shmoop-for-schools"></a>Kurz: Integrace Azure Active Directory se službou Shmoop pro školy
 
-V tomto kurzu zjistěte, jak integrovat Shmoop pro škol s Azure Active Directory (Azure AD).
+V tomto kurzu se dozvíte, jak integrovat Azure Active Directory (Azure AD) Shmoop pro školy.
 
-Integrace Shmoop pro škol s Azure AD poskytuje následující výhody:
+Integrace Shmoop pro školy s Azure AD poskytuje následující výhody:
 
-- Můžete ovládat ve službě Azure AD, kdo má přístup k Shmoop pro škol.
-- Můžete povolit uživatelům automaticky získat přihlášení k Shmoop pro škol s účty služby Azure AD.
-- Můžete spravovat vaše účty v jednom centrálním místě – portál Azure.
+- Můžete řídit ve službě Azure AD, který má přístup k Shmoop pro školy.
+- Můžete povolit uživatelům, aby automaticky získat přihlášení pro Shmoop pro školy pomocí jejich účtů služby Azure AD.
+- Můžete spravovat své účty na jediném místě – na webu Azure portal.
 
 Další informace o integraci aplikací SaaS v Azure AD najdete v tématu [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 
@@ -38,137 +38,137 @@ Další informace o integraci aplikací SaaS v Azure AD najdete v tématu [co je
 
 Konfigurace integrace Azure AD s Shmoop pro školy, potřebujete následující položky:
 
-- Předplatné služby Azure AD
-- Shmoop pro škol jednotné přihlašování povolené předplatné
+- S předplatným služby Azure AD
+- Shmoop pro školy jednotného přihlašování povolená předplatného
 
 > [!NOTE]
 > Nedoporučujeme používat produkčním prostředí pro testování kroky v tomto kurzu.
 
-Chcete-li otestovat kroky v tomto kurzu, doporučujeme:
+Pokud chcete vyzkoušet kroky v tomto kurzu, doporučujeme:
 
-- Pomocí vaše produkční evironment pouze v případě, že je nutné.
-- Získávání [bezplatnou zkušební verzi jeden měsíc](https://azure.microsoft.com/pricing/free-trial/) Pokud ještě nemáte prostředí zkušební verze Azure AD.
+- Pomocí vašeho produkčního prostředí evironment pouze v případě, že je nutné.
+- Začínáme [zkušební verze na měsíc zdarma](https://azure.microsoft.com/pricing/free-trial/) Pokud ještě nemáte prostředí zkušební verzi Azure AD.
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář, který je popsané v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář, který je popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání Shmoop pro škol z Galerie
+1. Přidání Shmoop pro školy z Galerie
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
-## <a name="add-shmoop-for-schools-from-the-gallery"></a>Přidat Shmoop pro škol z Galerie
-Při konfiguraci integrace Shmoop pro škol do služby Azure AD, potřebujete přidat Shmoop pro škol z Galerie si na seznam spravovaných aplikací SaaS.
+## <a name="add-shmoop-for-schools-from-the-gallery"></a>Přidání Shmoop pro školy z Galerie
+Konfigurace integrace Shmoop pro školy do služby Azure AD, budete muset přidat Shmoop pro školy v galerii na váš seznam spravovaných aplikací SaaS.
 
-**Pokud chcete přidat Shmoop pro škol z galerie, proveďte následující kroky:**
+**Chcete-li přidat Shmoop pro školy v galerii, proveďte následující kroky:**
 
-1. V [portál Azure](https://portal.azure.com), v levém podokně, vyberte **Azure Active Directory** ikonu. 
+1. V [webu Azure portal](https://portal.azure.com), v levém podokně, vyberte **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+2. Přejděte na **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![V okně podnikové aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, vyberte **novou aplikaci** tlačítko horní dialogové okno.
+3. Chcete-li přidat novou aplikaci, vyberte **novou aplikaci** tlačítko nahoře dialogové okno.
 
     ![Tlačítko nové aplikace][3]
 
-4. Do vyhledávacího pole zadejte **Shmoop pro škol**. Vyberte **Shmoop pro škol** z výsledků, pak vyberte **přidat** tlačítko Přidat aplikaci.
+4. Do vyhledávacího pole zadejte **Shmoop pro školy**. Vyberte **Shmoop pro školy** ve výsledcích vyberte **přidat** tlačítko pro přidání aplikace.
 
-    ![Shmoop pro škol v seznamu výsledků](./media/shmoopforschools-tutorial/tutorial_shmoopforschools_addfromgallery.png)
+    ![Shmoop pro školy v seznamu výsledků](./media/shmoopforschools-tutorial/tutorial_shmoopforschools_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování Azure AD jednotné přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-V této části můžete nakonfigurovat a otestovat Azure AD jednotné přihlašování s Shmoop pro škol podle testovacího uživatele názvem "Britta Simon."
+V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s Shmoop pro školy podle testovacího uživatele nazývá "Britta Simon."
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, kdo příslušného uživatele v Shmoop pro škol je pro uživatele ve službě Azure AD. Jinými slovy budete muset vytvořit propojení mezi uživatele Azure AD a související uživatelské v Shmoop pro škol.
+Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, kdo tento uživatel protějšky v Shmoop pro školy je pro uživatele ve službě Azure AD. Jinými slovy budete muset vytvořit propojení mezi uživatele služby Azure AD a související uživatelské v Shmoop pro školy.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Shmoop pro školy, proveďte následující stavební bloky:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Shmoop pro školy, proveďte následující stavebních bloků:
 
-1. [Konfigurovat Azure AD jednotné přihlašování](#configure-azure-ad-single-sign-on) umožňující uživatelům používat tuto funkci.
-2. [Vytvořit testovací uživatele Azure AD](#create-an-azure-ad-test-user) k testování Azure AD jednotné přihlašování s Britta Simon.
-3. [Vytvoření zkušebního uživatele Shmoop pro škol](#create-a-shmoop-for-schools-test-user) tak, aby měl protějšek Britta Simon v Shmoop pro školy, propojené služby Azure AD reprezentace uživatele.
-4. [Přiřadit testovacího uživatele Azure AD](#assign-the-azure-ad-test-user) povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. [Test jednotného přihlašování](#test-single-sign-on) k ověření, že konfigurace funguje.
+1. [Konfigurace služby Azure AD jednotného přihlašování](#configure-azure-ad-single-sign-on) aby uživatelé mohli tuto funkci používat.
+2. [Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user) k otestování služby Azure AD jednotné přihlašování s Britta Simon.
+3. [Vytvoření zkušebního uživatele Shmoop pro školy](#create-a-shmoop-for-schools-test-user) mít protějšek Britta Simon Shmoop pro školy, který je propojený s Azure AD zastoupení uživatele.
+4. [Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user) umožňující Britta Simon používat Azure AD jednotného přihlašování.
+5. [Otestovat jednotné přihlašování](#test-single-sign-on) k ověření, že konfigurace funguje.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurovat Azure AD jednotné přihlašování
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci Shmoop pro škol.
+V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování v aplikaci Shmoop pro školy.
 
 **Ke konfiguraci Azure AD jednotné přihlašování s Shmoop pro školy, proveďte následující kroky:**
 
-1. Na portálu Azure na **Shmoop pro škol** stránky integrace aplikací, vyberte **jednotného přihlašování**.
+1. Na webu Azure Portal na **Shmoop pro školy** integrace stránce aplikace vyberte **jednotného přihlašování**.
 
-    ![Konfigurace propojení přihlášení][4]
+    ![Nakonfigurovat jednotné přihlašování – odkaz][4]
 
-2. V **jednotného přihlašování** dialogové okno, v rozevírací nabídce v části **režimu přihlašování**, vyberte **na základě SAML přihlašování**.
+2. V **jednotného přihlašování** dialogové okno, v rozevírací nabídce v části **režim jednotného přihlašování**vyberte **přihlašování na základě SAML**.
  
-    ![Jediné přihlášení dialogové okno](./media/shmoopforschools-tutorial/tutorial_shmoopforschools_samlbase.png)
+    ![Jednotné přihlašování – dialogové okno](./media/shmoopforschools-tutorial/tutorial_shmoopforschools_samlbase.png)
 
-3. V **Shmoop pro škol domény a adresy URL** část, proveďte následující kroky:
+3. V **Shmoop pro školy domény a adresy URL** části, proveďte následující kroky:
 
-    ![Konfigurovat jednotné přihlašování](./media/shmoopforschools-tutorial/tutorial_shmoopforschools_url.png)
+    ![Konfigurace jednotného přihlašování](./media/shmoopforschools-tutorial/tutorial_shmoopforschools_url.png)
 
-    a. V **přihlašovací adresa URL** pole, zadejte adresu URL pomocí vzoru následující: `https://schools.shmoop.com/public-api/saml2/start/<uniqueid>`
+    a. V **přihlašovací adresa URL** pole, zadejte adresu URL s následujícím vzorem: `https://schools.shmoop.com/public-api/saml2/start/<uniqueid>`
 
-    b. V **identifikátor** pole, zadejte adresu URL pomocí vzoru následující: `https://schools.shmoop.com/<uniqueid>`
+    b. V **identifikátor** pole, zadejte adresu URL s následujícím vzorem: `https://schools.shmoop.com/<uniqueid>`
 
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Obraťte se [tým podpory Shmoop pro škol klienta](mailto:support@shmoop.com) k získání těchto hodnot. 
+    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty se skutečné přihlašovací adresu URL a identifikátor. Obraťte se [tým podpory Shmoop pro školy klienta](mailto:support@shmoop.com) k získání těchto hodnot. 
  
-4. Aplikace Shmoop pro škol očekává SAML kontrolní výrazy ve specifickém formátu. Nakonfigurujte následující deklarace identity pro tuto aplikaci. Můžete spravovat hodnoty těchto atributů z **uživatelské atributy** části na stránce integrace aplikace. Následující snímek obrazovky ukazuje, jak nakonfigurovat kontrolních výrazů:
+4. Aplikace Shmoop pro školy očekává, že kontrolní výrazy SAML v určitém formátu. Nakonfigurujte následující deklarace identity pro tuto aplikaci. Můžete spravovat hodnotami těchto atributů z **atributy uživatele** části na stránce aplikací pro integraci. Následující snímek obrazovky ukazuje postup při konfiguraci kontrolní výrazy:
 
-    ![Konfigurovat jednotné přihlašování](./media/shmoopforschools-tutorial/tutorial_attribute.png)
+    ![Konfigurace jednotného přihlašování](./media/shmoopforschools-tutorial/tutorial_attribute.png)
 
     > [!NOTE]
-    > Shmoop pro školní podporuje dvě role pro uživatele: **učitele** a **Student**. Nastavte tyto role ve službě Azure AD, aby uživatelé se dají přiřadit na příslušné role. Chcete-li pochopit, jak nakonfigurovat role ve službě Azure AD, přečtěte si téma [Správa přístupu pomocí RBAC a webu Azure portal](../../role-based-access-control/role-assignments-portal.md).
+    > Shmoop školy podporuje dvě role pro uživatele: **učitelů** a **Student**. Nastavení těchto rolí ve službě Azure AD tak, aby uživatelům je možné přiřadit příslušné role. Chcete-li pochopit, jak nakonfigurovat role ve službě Azure AD, přečtěte si téma [správě přístupu pomocí RBAC a webu Azure portal](../../role-based-access-control/role-assignments-portal.md).
     
-5. V **uživatelské atributy** tématu **jednotného přihlašování** dialogové okno nakonfigurujte atribut tokenu SAML, jak je vidět na předchozím obrázku.  Proveďte následující kroky:
+5. V **atributy uživatele** tématu **jednotného přihlašování** dialogového okna nastavte atribut tokenu SAML, jak je znázorněno na předchozím obrázku.  Pak proveďte následující kroky:
 
     | Název atributu | Hodnota atributu |
     | -------------- | --------------- |
     | role           | user.assignedroles |
 
-    a. Chcete-li otevřít **přidat atribut** dialogové okno, vyberte **přidat atribut**.
+    a. Chcete-li otevřít **přidat atribut** dialogu **přidat atribut**.
     
-    ![Konfigurovat jednotné přihlašování ](./media/shmoopforschools-tutorial/tutorial_attribute_04.png)
+    ![Konfigurace jednotného přihlašování ](./media/shmoopforschools-tutorial/tutorial_attribute_04.png)
     
-    ![Konfigurovat jednotné přihlašování](./media/shmoopforschools-tutorial/tutorial_attribute_05.png)
+    ![Konfigurace jednotného přihlašování](./media/shmoopforschools-tutorial/tutorial_attribute_05.png)
     
-    b. V **název** zadejte název atributu, který je uvedený na příslušném řádku.
+    b. V **název** zadejte název atributu, který je zobrazený pro tento řádek.
     
-    c. Z **hodnotu** vyberte hodnotu atributu, který je uvedený na příslušném řádku.
+    c. Z **hodnotu** vyberte hodnotu atributu, který je zobrazený pro tento řádek.
 
-    d. Ponechte **Namespace** pole prázdné.
+    d. Nechte **Namespace** prázdné.
     
     e. Vyberte **Ok**.
 
 6. Vyberte tlačítko **Uložit**.
 
-    ![Konfigurovat jednotné přihlašování](./media/shmoopforschools-tutorial/tutorial_general_400.png)
+    ![Konfigurace jednotného přihlašování](./media/shmoopforschools-tutorial/tutorial_general_400.png)
 
-7. Na **SAML podpisový certifikát** části, klikněte na tlačítko Kopírovat kopírování **adresu Url aplikace federační Metadata** a vložte do poznámkového bloku.
+7. Na **podpisový certifikát SAML** klikněte na tlačítko Kopírovat zkopírujte **adresa Url federačních metadat aplikace** a vložte ho do poznámkového bloku.
 
     ![Odkaz ke stažení certifikátu](./media/shmoopforschools-tutorial/tutorial_shmoopforschools_certificate.png)
 
-8. Konfigurace jednotného přihlašování na **Shmoop pro škol** straně, budete muset odeslat **adresu Url aplikace federační Metadata** k [tým podpory Shmoop pro škol](mailto:support@shmoop.com).
+8. Ke konfiguraci jednotného přihlašování na **Shmoop pro školy** straně, je nutné odeslat **adresa Url federačních metadat aplikace** k [tým podpory Shmoop pro školy](mailto:support@shmoop.com).
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovací uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
-Cílem této části je vytvoření zkušebního uživatele volat Britta Simon na portálu Azure.
+Cílem této části je vytvořte testovacího uživatele Britta Simon na webu Azure Portal.
 
-   ![Vytvořit testovací uživatele Azure AD][100]
+   ![Vytvořit testovacího uživatele Azure AD][100]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, proveďte následující kroky:**
 
-1. Na portálu Azure, v levém podokně, vyberte **Azure Active Directory** tlačítko.
+1. Na webu Azure Portal, v levém podokně, vyberte **Azure Active Directory** tlačítko.
 
     ![Tlačítko Azure Active Directory](./media/shmoopforschools-tutorial/create_aaduser_01.png)
 
 2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**. Potom vyberte **všichni uživatelé**.
 
-    !["Uživatelé a skupiny" a "Všichni uživatelé" odkazy](./media/shmoopforschools-tutorial/create_aaduser_02.png)
+    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](./media/shmoopforschools-tutorial/create_aaduser_02.png)
 
-3. Chcete-li otevřít **uživatele** dialogové okno, vyberte **přidat** v horní části **všichni uživatelé** dialogové okno.
+3. Chcete-li otevřít **uživatele** dialogovém okně vyberte **přidat** v horní části **všichni uživatelé** dialogové okno.
 
     ![Tlačítko Přidat](./media/shmoopforschools-tutorial/create_aaduser_03.png)
 
@@ -180,58 +180,58 @@ Cílem této části je vytvoření zkušebního uživatele volat Britta Simon n
 
     b. V **uživatelské jméno** zadejte e-mailovou adresu uživatele Britta Simon.
 
-    c. Vyberte **zobrazit hesla** zaškrtněte políčko a zapište si ji hodnotu, která se zobrazí v **heslo** pole.
+    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
 
     d. Vyberte **Vytvořit**.
  
 ### <a name="create-a-shmoop-for-schools-test-user"></a>Vytvoření zkušebního uživatele Shmoop pro školy
 
-Cílem této části je vytvoření uživatele volal Britta Simon v Shmoop pro škol. Shmoop pro škol podporuje za běhu zřizování, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Pokud nový uživatel ještě neexistuje, vytvoří se při pokusu o přístup k Shmoop pro škol.
+Cílem této části je vytvořte uživatele Britta Simon v Shmoop pro školy. Shmoop pro školy podporuje just-in-time zřizování, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Pokud nový uživatel ještě neexistuje, vytvoří se při pokusu o přístup k Shmoop pro školy.
 
 >[!NOTE]
->Pokud je potřeba ručně vytvořit uživateli, obraťte se [tým podpory Shmoop pro škol](mailto:support@shmoop.com).
+>Pokud je potřeba ručně vytvořit uživatele, obraťte se [tým podpory Shmoop pro školy](mailto:support@shmoop.com).
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit testovacího uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu Shmoop pro škol.
+V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k Shmoop pro školy.
 
-![Přiřadit role uživatele][200] 
+![Přiřazení role uživatele][200] 
 
 **Pokud chcete přiřadit Britta Simon Shmoop pro školy, proveďte následující kroky:**
 
-1. Na portálu Azure otevřete zobrazení aplikace. Pak přejděte na **podnikové aplikace, které** v zobrazení adresáře.  Potom vyberte **všechny aplikace**.
+1. Na webu Azure Portal otevřete zobrazení aplikace. Pak přejděte na **podnikové aplikace** v zobrazení adresáře.  V dalším kroku vyberte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **Shmoop pro škol**.
+2. V seznamu aplikací vyberte **Shmoop pro školy**.
 
-    ![V seznamu aplikací na odkaz Shmoop pro školy](./media/shmoopforschools-tutorial/tutorial_shmoopforschools_app.png)  
+    ![Odkaz Shmoop pro školy v seznamu aplikací](./media/shmoopforschools-tutorial/tutorial_shmoopforschools_app.png)  
 
 3. V nabídce na levé straně vyberte **uživatelů a skupin**.
 
-    ![Odkaz "Uživatelé a skupiny"][202]
+    ![Odkaz "Uživatele a skupiny"][202]
 
-4. Vyberte **přidat** tlačítko. Potom v **přidat přiřazení** dialogové okno, vyberte **uživatelů a skupin**.
+4. Vyberte **přidat** tlačítko. Potom v **přidat přiřazení** dialogu **uživatelů a skupin**.
 
-    ![V podokně Přidat přiřazení][203]
+    ![Podokno Přidat přiřazení][203]
 
-5. V **uživatelů a skupin** dialogové okno, vyberte **Britta Simon** v seznamu uživatelů.
+5. V **uživatelů a skupin** dialogu **Britta Simon** v seznamu uživatelů.
 
-6. V **uživatelů a skupin** dialogové okno, klikněte **vyberte** tlačítko. 
+6. V **uživatelů a skupin** dialogové okno, klikněte na tlačítko **vyberte** tlačítko. 
 
 7. V **přidat přiřazení** dialogové okno, vyberte **přiřadit** tlačítko.
     
 ### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
-V této části otestovat vaše konfigurace Azure AD jeden přihlašování pomocí přístupového panelu.
+V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Když vyberete **Shmoop pro škol** dlaždici na přístupovém panelu budete by měl získat automaticky přihlášení k aplikaci Shmoop pro škol.
+Když vyberete **Shmoop pro školy** na přístupovém panelu, dlaždice, by měl získat automaticky přihlásíte do aplikace Shmoop pro školy.
 
-Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](../active-directory-saas-access-panel-introduction.md). 
+Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Seznam kurzů pro postup pro integraci aplikací SaaS Azure Active Directory](tutorial-list.md)
+* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->

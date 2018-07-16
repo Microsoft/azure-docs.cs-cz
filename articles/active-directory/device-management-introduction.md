@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/21/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 5d5ddd83a2335e7a08bac587aa627f1dcae9738c
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 1a2b32e7e0e86608f879941485395ebe379a5c1e
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970896"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048857"
 ---
 # <a name="introduction-to-device-management-in-azure-active-directory"></a>Úvod do správy zařízení ve službě Azure Active Directory
 
@@ -181,8 +181,8 @@ Jako pravidlo jezdce měli byste použít:
 - Další informace o podmíněném přístupu na základě zařízení, najdete v článku [nakonfigurovat zásady podmíněného přístupu podle zařízení Azure Active Directory](active-directory-conditional-access-policy-connected-applications.md).
 
 - K instalaci:
-    - Azure Active Directory zaregistrované zařízení s Windows 10, najdete v článku [konfigurace Azure Active Directory zaregistrované zařízení s Windows 10](device-management-azuread-registered-devices-windows10-setup.md)
-    - Zařízení připojená k Azure Active Directory najdete v tématu [zařízení připojená k tom, jak nakonfigurovat služby Azure Active Directory](device-management-azuread-joined-devices-setup.md)
+    - Azure Active Directory zaregistrované zařízení s Windows 10, najdete v článku [konfigurace Azure Active Directory zaregistrované zařízení s Windows 10](user-help/device-management-azuread-registered-devices-windows10-setup.md)
+    - Zařízení připojená k Azure Active Directory najdete v tématu [zařízení připojená k tom, jak nakonfigurovat služby Azure Active Directory](user-help/device-management-azuread-joined-devices-setup.md)
     - Hybridních zařízení připojených k Azure AD, najdete v článku [jak nakonfigurovat hybridní služby Azure Active Directory zařízení připojená k](device-management-hybrid-azuread-joined-devices-setup.md).
 
 

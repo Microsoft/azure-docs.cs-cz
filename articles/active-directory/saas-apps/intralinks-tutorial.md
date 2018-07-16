@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: fbe3ceb3d26de90bd46ee02263d09c822ee90c29
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 2dbf52d0e157379687b144feba5c7933a7c5a3e3
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37868843"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39046834"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-intralinks"></a>Kurz: Integrace Azure Active Directory se službou Intralinks
 
@@ -256,7 +256,7 @@ Poté můžete sledovat následující postup pro přidání jiná Intralinks ap
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
 Po kliknutí na dlaždici Intralinks na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci Intralinks.
-Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../active-directory-saas-access-panel-introduction.md).
+Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 

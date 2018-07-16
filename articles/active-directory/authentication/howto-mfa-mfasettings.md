@@ -1,6 +1,6 @@
 ---
-title: Konfigurace Azure Multi-Factor Authentication | Microsoft Docs
-description: Tento článek popisuje, jak konfigurovat nastavení ověřování Azure Multi-Factor Authentication na portálu Azure
+title: Konfigurovat ověřování Azure Multi-Factor Authentication | Dokumentace Microsoftu
+description: Tento článek popisuje, jak konfigurovat nastavení ověřování Azure Multi-Factor Authentication na webu Azure Portal
 services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
@@ -10,80 +10,80 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: bf25ae5703a632005dd73820fc05347f7b5e16a6
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 1d5e7683050c5e1e4216b81e23554724f12d45f9
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37097491"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054705"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurovat nastavení ověřování Azure Multi-Factor Authentication
 
-Tento článek pomáhá spravovat Azure Multi-Factor Authentication teď, když jste spuštěný a funkční. Vysvětluje různé témata, které umožňují využívat naplno Azure Multi-Factor Authentication. Ne všechny funkce jsou dostupné v každé [verzi Azure Multi-Factor Authentication](concept-mfa-whichversion.md#what-features-do-i-need).
+Tento článek vám umožní spravovat ověřování Azure Multi-Factor Authentication teď, když jste do provozu. Zahrnuje různá témata, které vám umožní využít ověřování Azure Multi-Factor Authentication na maximum. Ne všechny funkce jsou k dispozici v každé [verzi Azure Multi-Factor Authentication](concept-mfa-whichversion.md#what-features-do-i-need).
 
 | Funkce | Popis | 
 |:--- |:--- |
-| [Blokovat nebo odblokovat uživatele](#block-and-unblock-users) |Použijte funkci blokování nebo odblokování uživatelů uživatelům zabránit v přijetí žádosti o ověření. |
-| [Upozornění na podvod](#fraud-alert) |Nakonfigurujte funkci upozornění na podvod tak, aby vaši uživatelé mohou zasílat zprávy podvodné pokouší získat přístup k jejich prostředky. |
-| [Jednorázové přihlášení](#one-time-bypass) |Použít funkci jednorázové přihlášení umožňuje uživatelům jednorázově podle ověřit _obcházení_ služby Multi-Factor Authentication. |
-| [Vlastní hlasové zprávy](#custom-voice-messages) |Použijte funkci vlastní hlasové zprávy pro používání služby Multi-Factor Authentication vlastní záznamy nebo pozdrav. |
-| [Ukládání do mezipaměti](#caching-in-azure-multi-factor-authentication) |Nastavte na určité časové období, aby automaticky úspěšné následné pokusy o ověření použijte funkci ukládání do mezipaměti. |
-| [Důvěryhodné IP adresy](#trusted-ips) |Správci spravované nebo federované klienta můžete použít funkci důvěryhodné IP adresy obejít dvoustupňové ověření pro uživatele, kteří se přihlašují z firemní intranet. |
-| [Hesla aplikací](#app-passwords) |Použijte funkci heslo aplikace povolení aplikace obejít ověřování Multi-Factor Authentication a pokračovat v práci. |
-| [Zapamatovat Vícefaktorové ověřování pro důvěryhodná zařízení a prohlížeče](#remember-multi-factor-authentication-for-trusted-devices) |Pomocí této funkce pamatovat důvěryhodné zařízení a prohlížeče pro sadu počet dnů po má uživatel úspěšně přihlášené pomocí služby Multi-Factor Authentication. |
-| [Volitelný ověření metody](#selectable-verification-methods) |Tato funkce slouží k výběru seznamu metod ověřování, které mohou uživatelé používat. |
+| [Blokování a odblokování uživatelů](#block-and-unblock-users) |Použijte funkci blokování a odblokování uživatelů uživatelům zabránit v přijetí žádosti o ověření. |
+| [Upozornění na podvod](#fraud-alert) |Nakonfigurujte funkce upozornění na podvod, tak, aby vaši uživatelé můžete nahlásit podvodné pokusy o přístup ke svým prostředkům. |
+| [Jednorázové přihlášení](#one-time-bypass) |Použít funkci bylo povoleno jednorázové přihlášení pro umožnění uživatelům jednorázově tak ověřit _obcházení_ ověřování službou Multi-Factor Authentication. |
+| [Vlastní hlasové zprávy](#custom-voice-messages) |Pomocí funkce vlastní hlasové zprávy pomocí služby Multi-Factor Authentication si vlastní záznamy nebo greetings. |
+| [Ukládání do mezipaměti](#caching-in-azure-multi-factor-authentication) |Pomocí ukládání do mezipaměti funkce lze nastavit za určité časové období, tak, aby automaticky úspěšné následné pokusy o ověření. |
+| [Důvěryhodné IP adresy](#trusted-ips) |Správci tenanta spravované nebo federované můžete použít funkci důvěryhodné IP adresy obejít dvoustupňové ověřování pro uživatele, kteří přihlásit z firemní intranet. |
+| [Hesla aplikací](#app-passwords) |Pomocí funkce heslo aplikace povolují obejít ověřování Multi-Factor Authentication a pokračovat v práci. |
+| [Zapamatovat Multi-Factor Authentication pro důvěryhodného zařízení a prohlížeče](#remember-multi-factor-authentication-for-trusted-devices) |Pomocí této funkce lze nezapomeňte důvěryhodná zařízení a prohlížečů pro stanovený počet dnů po má uživatel úspěšně přihlášení pomocí služby Multi-Factor Authentication. |
+| [Volitelné ověření metody](#selectable-verification-methods) |Tato funkce umožňuje výběrem seznamu metod ověřování, která uživatelé mají možnost používat. |
 
-## <a name="block-and-unblock-users"></a>Blokovat nebo odblokovat uživatele
+## <a name="block-and-unblock-users"></a>Blokování a odblokování uživatelů
 
-Použití _blokovat a odblokovat uživatele_ funkci tak, aby uživatelé nedostávali žádosti o ověření. Jakékoli pokusy o ověření pro blokované uživatele jsou automaticky odepírány. Uživatelé zůstat blokované 90 dnů od doby, která jsou blokovány.
+Použití _blokovat nebo odblokovat uživatele_ funkci, která uživatelům zabránit v přijetí žádosti o ověření. Jakékoli pokusy o ověření pro blokovaného uživatele budou automaticky odepírány. Uživatelé zůstat blokované 90 dnů od doby, které jsou blokovány.
 
 ### <a name="block-a-user"></a>Zablokovat uživatele
 
 1. Přihlaste se na webu [Azure Portal](https://portal.azure.com) jako správce.
-2. Přejděte do **Azure Active Directory** > **MFA Server** > **zablokovat nebo odblokovat uživatele**.
+2. Přejděte do **Azure Active Directory** > **MFA Server** > **blokování a odblokování uživatelů**.
 3. Vyberte **přidat** zablokujete určitému uživateli.
-4. Vyberte **replikační skupiny**. Zadejte uživatelské jméno pro blokované uživatele, který **uživatelské jméno<span></span>@domain.com**. Zadejte komentář do **důvod** pole.
-5. Vyberte **přidat** ukončíte blokování uživatele.
+4. Vyberte **replikační skupiny**. Zadejte uživatelské jméno pro blokované uživatele jako datový typ **uživatelské jméno<span></span>@domain.com**. Zadejte komentář **důvod** pole.
+5. Vyberte **přidat** dokončete blokování uživatele.
 
 ### <a name="unblock-a-user"></a>Odblokovat uživatele
 
 1. Přihlaste se na webu [Azure Portal](https://portal.azure.com) jako správce.
-2. Přejděte do **Azure Active Directory** > **MFA Server** > **zablokovat nebo odblokovat uživatele**.
+2. Přejděte do **Azure Active Directory** > **MFA Server** > **blokování a odblokování uživatelů**.
 3. Vyberte **Odblokovat** v **akce** sloupce vedle uživatele odblokujete.
-4. Zadejte komentář do **důvod pro odblokování** pole.
-5. Vyberte **Odblokovat** ukončíte odblokování uživatele.
+4. Zadejte komentář **důvod pro odblokování** pole.
+5. Vyberte **Odblokovat** dokončete odblokování uživatele.
 
 ## <a name="fraud-alert"></a>Výstraha podvodů
 
-Konfigurace _upozornění na podvod_ funkci tak, aby vaši uživatelé mohou zasílat zprávy podvodné pokouší získat přístup k jejich prostředky. Uživatelé mohou zasílat zprávy podvod pokusy pomocí mobilní aplikace nebo prostřednictvím svůj telefon.
+Konfigurace _upozornění na podvod_ funkci tak, aby vaši uživatelé můžete nahlásit podvodné pokusy o přístup ke svým prostředkům. Uživatelé mohou zasílat podvod pokusy pomocí mobilní aplikace nebo prostřednictvím svého telefonu.
 
-### <a name="turn-on-fraud-alerts"></a>Zapnout upozornění na podvod
+### <a name="turn-on-fraud-alerts"></a>Zapněte upozornění na podvod
 
 1. Přihlaste se na webu [Azure Portal](https://portal.azure.com) jako správce.
 2. Přejděte do **Azure Active Directory** > **MFA Server** > **upozornění na podvod**.
 
-   ![Zapnout upozornění na podvod](./media/howto-mfa-mfasettings/fraudalert.png)
+   ![Zapněte upozornění na podvod](./media/howto-mfa-mfasettings/fraudalert.png)
 
 3. Nastavte **povolit uživatelům odesílat upozornění na podvod** nastavení **na**.
 4. Vyberte **Uložit**.
 
 ### <a name="configuration-options"></a>Možnosti konfigurace
 
-- **Blokování uživatele při nahlášení podvodu**: Pokud uživatel sestavy podvod, jejich účet je blokován 90 dní nebo dokud správce odblokuje svého účtu. Správce může zkontrolovat přihlášení pomocí sestavy přihlášení a proveďte příslušné akce, aby se zabránilo budoucí podvodů. Správce pak může [Odblokovat](#unblock-a-user) uživatelského účtu.
-- **Kód pro nahlášení podvodu při úvodním pozdravu**: když uživatelé obdrží telefonní hovor provést dvoustupňové ověřování, se za normálních okolností stiskněte **#** potvrďte jejich přihlášení. Pro nahlášení podvodu uživatel zadá kód před stiskněte **#**. Tento kód je **0** ve výchozím nastavení, ale můžete jej upravit.
+- **Blokování uživatele při nahlášení podvodu**: Pokud uživatel nahlásí podvod, jejich účet zablokován po dobu 90 dnů nebo dokud se odblokuje správce svého účtu. Správce můžete zkontrolovat přihlášení pomocí sestavy přihlášení a provést příslušnou akci, k prevenci podvodného budoucí. Správce pak může [Odblokovat](#unblock-a-user) uživatelského účtu.
+- **Kód pro nahlášení podvodu při úvodním pozdravu**: když uživatelé dostanou telefonního hovoru dvoustupňové ověřování, jsou obvykle stiskněte **#** k potvrzení jejich přihlášení. Pro nahlášení podvodu uživatel zadá kód před stisknutím klávesy **#**. Tento kód je **0** ve výchozím nastavení, ale můžete ji přizpůsobit.
 
   >[!NOTE]
-  >Výchozí hlasový pozdrav od Microsoftu vyzvat uživatele, aby stiskněte **0#** odeslat upozornění na možný podvod. Pokud chcete použít jiné než kód **0**, zaznamenejte a odeslat vlastní vlastní hlasový pozdrav příslušné pokyny pro uživatele.
+  >Výchozí hlasový pozdrav od Microsoftu vyzvat uživatele, aby stiskněte **0#** odesílat upozornění na možný podvod. Pokud chcete použít jiné než kód **0**, uložte a nahrajte vlastní pozdravy vlastním hlasem s odpovídající pokyny pro uživatele.
   >
 
-### <a name="view-fraud-reports"></a>Zobrazit sestavy podvod
+### <a name="view-fraud-reports"></a>Zobrazení sestav podvod
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Vyberte **Azure Active Directory** > **přihlášení**. Sestava podvod je nyní součástí standardních sestav Azure AD přihlášení.
+2. Vyberte **Azure Active Directory** > **přihlášení**. Podvod sestava je teď součástí standardních sestav Azure AD přihlášení.
 
 ## <a name="one-time-bypass"></a>Jednorázové přihlášení
 
-_Jednorázové přihlášení_ funkce umožňuje uživatelům jednorázově ověřit bez provedení dvoustupňové ověřování. Toto jednorázové přihlášení je dočasné a vyprší po zadaném počtu sekund. V situacích, kde mobilní aplikaci nebo phone nepřijímá oznámení nebo telefonní hovor můžete povolit jednorázové přihlášení, má uživatel přístup požadovaný prostředek.
+_Jednorázové přihlášení_ funkce umožňuje uživatele jednorázově ověřit bez provádějících dvoustupňové ověřování. Jednorázové přihlášení je dočasné a vyprší po zadaném počtu sekund. V situacích, kde na mobilní aplikace nebo telefon nepřijímá oznámení nebo telefonní hovor můžete povolit jednorázové přihlášení, má uživatel přístup požadovaný prostředek.
 
 ### <a name="create-a-one-time-bypass"></a>Vytvoření jednorázové přihlášení
 
@@ -93,9 +93,9 @@ _Jednorázové přihlášení_ funkce umožňuje uživatelům jednorázově ově
    ![Vytvoření jednorázové přihlášení](./media/howto-mfa-mfasettings/onetimebypass.png)
 
 3. Vyberte **Přidat**.
-4. V případě potřeby vyberte replikační skupiny pro toto jednorázové přihlášení.
-5. Zadejte uživatelské jméno jako **uživatelské jméno<span></span>@domain.com**. Zadejte počet sekund, které by měl poslední toto jednorázové přihlášení. Zadejte důvod pro toto jednorázové přihlášení. 
-6. Vyberte **Přidat**. Časový limit přestane platit okamžitě. Uživatel potřebuje k přihlášení, než vyprší platnost jednorázového přihlášení. 
+4. V případě potřeby vyberte replikační skupiny pro jednorázové přihlášení.
+5. Zadejte uživatelské jméno jako **uživatelské jméno<span></span>@domain.com**. Zadejte počet sekund, po které by měl trvat jednorázového přihlášení. Zadejte důvod pro jednorázové přihlášení. 
+6. Vyberte **Přidat**. Časový limit začne platit okamžitě. Uživatel musí pro přihlášení, než vyprší platnost jednorázového přihlášení. 
 
 ### <a name="view-the-one-time-bypass-report"></a>Zobrazit sestavu jednorázové přihlášení
 
@@ -103,260 +103,260 @@ _Jednorázové přihlášení_ funkce umožňuje uživatelům jednorázově ově
 2. Přejděte do **služby Active Directory** > **MFA Server** > **jednorázové přihlášení**.
 
 ## <a name="custom-voice-messages"></a>Vlastní hlasové zprávy
-Můžete použít vlastní záznamy nebo přivítání pro dvoustupňové ověření pomocí _vlastní hlasové zprávy_ funkce. Tyto zprávy lze kromě toho na nebo nahradit záznamy Microsoft.
+Můžete si vlastní záznamy nebo greetings pro dvoustupňové ověřování s _vlastní hlasové zprávy_ funkce. Tyto zprávy je možné kromě nebo nahradit záznamy Microsoft.
 
 Než začnete, mějte na paměti následující omezení:
 
 * Podporované formáty souborů jsou ve formátu WAV nebo MP3.
 * Maximální velikost souboru je 5 MB.
-* Ověřování zprávy musí být kratší než 20 sekund. Zprávy, které jsou delší než 20 sekund může způsobit selhání ověření. Uživatel nemusí odpovídat předtím, než dokončí zprávy a ověření vyprší časový limit.
+* Zprávy o ověřování by měl být kratší než 20 sekund. Zprávy, které jsou delší než 20 sekund může způsobit selhání ověřování. Uživatel nemusí odpovídat předtím, než se zpráva dokončí a ověření vyprší časový limit.
 
 ### <a name="set-up-a-custom-message"></a>Nastavit vlastní zprávu
 
 1. Přihlaste se na webu [Azure Portal](https://portal.azure.com) jako správce.
-2. Přejděte do **Azure Active Directory** > **MFA Server** > **telefonní hovor nastavení**.
+2. Přejděte do **Azure Active Directory** > **MFA Server** > **nastavení telefonních hovorů**.
 
-   ![Záznam vlastní telefonní zprávy](./media/howto-mfa-mfasettings/phonecallsettings.png)
+   ![Záznam vlastní telefon zprávy](./media/howto-mfa-mfasettings/phonecallsettings.png)
 
-3. Vyberte **přidat pozdravu**.
-4. Vyberte typ pozdrav. Vyberte jazyk.
-5. Vyberte MP3 nebo WAV zvukový soubor k odeslání.
+3. Vyberte **přidat pozdrav**.
+4. Zvolte typ pozdrav. Vyberte jazyk.
+5. Vyberte MP3 nebo ve formátu WAV zvukový soubor k nahrání.
 6. Vyberte **Přidat**.
 
 ## <a name="caching-in-azure-multi-factor-authentication"></a>Ukládání do mezipaměti v Azure Multi-Factor Authentication
 
-Můžete nastavit časové období, aby pokusy o ověření po ověření uživatele pomocí _ukládání do mezipaměti_ funkce. Následné pokusy o ověření pro uživatele v rámci zadaného časového období úspěšné automaticky. Ukládání do mezipaměti se používá hlavně při místních systémů, jako je například VPN, odesílat více požadavků na ověření při prvním požadavku stále probíhá. Tato funkce umožňuje následných žádostí úspěšné automaticky po úspěšné uživatele v průběhu prvního ověřování. 
+Můžete nastavit časové období, aby pokusy o ověření po ověření uživatele pomocí _ukládání do mezipaměti_ funkce. Následné pokusy o ověření pro uživatele v rámci zadaného časového období úspěšné automaticky. Ukládání do mezipaměti se používá především místních systémů, jako je například VPN, odesílání více požadavků ověřování, zatímco první požadavek stále probíhá. Tato funkce umožňuje následné žádosti úspěšné automaticky, po úspěšném uživatele v průběhu prvního ověřování. 
 
 >[!NOTE]
->Funkci ukládání do mezipaměti není určena pro použití pro přihlášení ke službě Azure Active Directory (Azure AD).
+>Ukládání do mezipaměti funkce není určena pro použití pro přihlášení k Azure Active Directory (Azure AD).
 
 ### <a name="set-up-caching"></a>Nastavení ukládání do mezipaměti 
 
 1. Přihlaste se na webu [Azure Portal](https://portal.azure.com) jako správce.
-2. Přejděte do **Azure Active Directory** > **MFA Server** > **ukládání do mezipaměti pravidla**.
+2. Přejděte do **Azure Active Directory** > **MFA Server** > **pravidla ukládání do mezipaměti**.
 
-   ![Nastavení ukládání do mezipaměti pravidla](./media/howto-mfa-mfasettings/cachingrules.png)
+   ![Nastavení pravidel ukládání do mezipaměti](./media/howto-mfa-mfasettings/cachingrules.png)
 
 3. Vyberte **Přidat**.
 4. Vyberte **typ mezipaměti** z rozevíracího seznamu. Zadejte maximální počet **mezipaměti sekund**. 
-5. V případě potřeby vyberte typ ověřování a určete aplikace. 
+5. V případě potřeby vyberte typ ověřování a zadat aplikaci. 
 6. Vyberte **Přidat**.
 
 ## <a name="trusted-ips"></a>Důvěryhodné IP adresy
 
-_Důvěryhodné IP adresy_ správci spravované nebo federované klienta se používá funkce služby Azure Multi-Factor Authentication. Funkci obchází dvoustupňové ověřování pro uživatele, kteří se přihlašují z firemní intranet. Tato funkce je k dispozici plnou verzi Azure Multi-Factor Authentication a ne bezplatnou verzi pro správce. Podrobnosti o tom, jak získat plnou verzi Azure Multi-Factor Authentication najdete v tématu [Azure Multi-Factor Authentication](multi-factor-authentication.md).
+_Důvěryhodné IP adresy_ správci tenanta spravované nebo federovaných se používá funkce ověřování Azure Multi-Factor Authentication. Funkce obchází dvoustupňové ověřování pro uživatele, kteří přihlásit z firemní intranet. Tato funkce je k dispozici s plnou verzi Azure Multi-Factor Authentication a ne bezplatnou verzi pro správce. Podrobnosti o tom, jak získat plnou verzi Azure Multi-Factor Authentication najdete v tématu [ověřování Azure Multi-Factor Authentication](multi-factor-authentication.md).
 
-Pokud vaše organizace nasazuje NPS rozšíření pro zajištění vícefaktorového ověřování pro místní aplikace Poznámka zdrojovou IP adresu se vždy zobrazí jako ověřování pokus prochází serveru NPS.
+Pokud vaše organizace nasadí rozšíření NPS pro zajištění vícefaktorové ověřování pro místní aplikace Poznámka zdrojové IP adresy se vždycky zobrazí se serverem NPS ověřování pokusit prochází.
 
-| Typ klienta Azure AD | Možnosti funkcí, které důvěryhodné IP adresy |
+| Typ tenanta Azure AD | Možnosti funkcí, které důvěryhodné IP adresy |
 |:--- |:--- |
-| Spravované |**Konkrétní rozsah IP adres**: správci určit rozsah IP adres, které mohou obejít dvoustupňové ověřování pro uživatele, kteří se přihlašují z firemní intranet.|
-| Federovaná |**Všichni uživatelé federovaný**: všechny federované uživatele, kteří se přihlašují z uvnitř organizace mohou obejít dvoustupňové ověřování. Uživatelé obejít ověření pomocí deklarace identity, který je vydán ve službě Active Directory Federation Services (AD FS).<br/>**Konkrétní rozsah IP adres**: správci určit rozsah IP adres, které mohou obejít dvoustupňové ověřování pro uživatele, kteří se přihlašují z firemní intranet. |
+| Spravované |**Konkrétní rozsah IP adres**: správci určit rozsah IP adres, které lze obejít dvoustupňové ověřování pro uživatele, kteří přihlásit z firemní intranet.|
+| Federovaná |**Všichni uživatelé federované**: všechny federovaných uživatelů, kteří přihlásit z v rámci organizace může obejít dvoustupňové ověřování. Uživatelé obejít ověření pomocí deklarací identity, který vystaví služba Active Directory Federation Services (AD FS).<br/>**Konkrétní rozsah IP adres**: správci určit rozsah IP adres, které lze obejít dvoustupňové ověřování pro uživatele, kteří přihlásit z firemní intranet. |
 
-Důvěryhodné IP adresy nepoužívat funguje pouze z uvnitř firemní intranet. Pokud jste vybrali **všechny federované uživatele** možnost a uživatel přihlásí z mimo firemní intranet, má uživatel k ověření pomocí dvoustupňové ověřování. Proces je stejné i v případě, že uživatel uvede deklaraci identity služby AD FS. 
+Důvěryhodné IP adresy se nebude používat funguje pouze uvnitř firemní intranet. Pokud vyberete **všechny federované uživatele** možnost a uživatel přihlásí z mimo firemní intranet, má uživatel k ověření pomocí dvoustupňového ověření. Proces je stejný, i v případě, uživatel předloží deklaraci identity služby AD FS. 
 
 **Činnost koncového uživatele v síti corpnet**
 
-Při vypnuté funkci důvěryhodné IP adresy je dvoustupňové ověření je vyžadována pro toky prohlížeče. Hesla aplikací jsou požadovány pro starší aplikace plně funkčního klienta. 
+Když důvěryhodné IP adresy funkce je zakázaná, je potřeba pro prohlížeč toky dvoustupňové ověřování. Hesla aplikací jsou požadovány pro starší aplikace plně funkčního klienta. 
 
-Pokud je povolena funkce důvěryhodné IP adresy, dvoustupňové ověření je *není* požadované pro toky prohlížeče. Hesla aplikací jsou *není* vyžadované pro starší aplikace plně funkčního klienta, za předpokladu, že uživatel nebyl vytvořen heslo aplikace. Po heslo aplikace se používá, zůstane vyžaduje heslo. 
+Pokud je povolena funkce důvěryhodné IP adresy, dvoustupňové ověření je *není* vyžadované pro toky prohlížeče. Hesla aplikací jsou *není* vyžadované pro starší aplikace plně funkčního klienta, za předpokladu, že uživatel ještě nevytvořil heslo aplikace. Po heslo aplikace se používá, aby heslo zůstalo vyžaduje. 
 
-**Činnost koncového uživatele mimo corpnet**
+**Činnost koncového uživatele mimo síti corpnet**
 
-Bez ohledu na to, jestli je povolená funkce důvěryhodné IP adresy je vyžadován pro prohlížeč toky dvoustupňové ověřování. Hesla aplikací jsou požadovány pro starší aplikace plně funkčního klienta. 
+Bez ohledu na to, zda je povolena funkce důvěryhodné IP adresy je vyžadován pro prohlížeč toky dvoustupňové ověřování. Hesla aplikací jsou požadovány pro starší aplikace plně funkčního klienta. 
 
-### <a name="enable-named-locations-by-using-conditional-access"></a>Povolení s názvem umístění pomocí podmíněného přístupu
+### <a name="enable-named-locations-by-using-conditional-access"></a>Pomocí podmíněného přístupu povolit pojmenovaná umístění
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Na levé straně vyberte **Azure Active Directory** > **podmíněného přístupu** > **s názvem umístění**.
+2. Na levé straně vyberte **Azure Active Directory** > **podmíněného přístupu** > **pojmenovaná umístění**.
 3. Vyberte **nové umístění**.
 4. Zadejte název pro umístění.
 5. Vyberte **označit jako důvěryhodné umístění**.
-6. Zadejte rozsah IP adres v notaci CIDR, třeba **192.168.1.1/24**.
+6. Zadejte rozsah IP adres v zápisu CIDR, třeba **192.168.1.1/24**.
 7. Vyberte **Vytvořit**.
 
 ### <a name="enable-the-trusted-ips-feature-by-using-conditional-access"></a>Povolit funkci důvěryhodné IP adresy pomocí podmíněného přístupu
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Na levé straně vyberte **Azure Active Directory** > **podmíněného přístupu** > **s názvem umístění**.
-3. Vyberte **MFA konfigurovat důvěryhodné IP adresy**.
-4. Na **nastavení služby** v části **důvěryhodné IP adresy**, zvolit z následujících dvou možností:
+2. Na levé straně vyberte **Azure Active Directory** > **podmíněného přístupu** > **pojmenovaná umístění**.
+3. Vyberte **MFA nakonfigurovat důvěryhodné IP adresy**.
+4. Na **nastavení služby** stránce v části **důvěryhodné IP adresy**, zvolte jednu z následujících dvou možností:
    
-   * **Pro žádosti od federovaných uživatelů pocházející z mém intranetu**: Chcete-li tuto možnost zvolte, zaškrtněte políčko. Všechny federovaní uživatelé, kteří přihlášení z podnikové sítě obejít dvoustupňové ověření pomocí deklarace identity, který je vydán službou AD FS. Zajistěte, aby služba AD FS na pravidlo můžete přidat intranetu deklarace identity odpovídající provoz. Pokud pravidlo neexistuje, vytvořte ve službě AD FS následující pravidlo:<br/>
+   * **Pro žádosti od federovaných uživatelů pocházející z mém intranetu**: Chcete-li tuto možnost zvolte, vyberte zaškrtávací políčko. Všechny federovaní uživatelé, kteří přihlašování z podnikové sítě obejít dvoustupňové ověřování s použitím deklarace identity, která je vydala službou AD FS. Zajistěte, aby služba AD FS pravidlo, které přidá deklaraci intranetu na odpovídající provoz. Pokud pravidla buď neexistuje, vytvořte ve službě AD FS následující pravidlo:<br/>
 
      ```
      c:[Type== "http://schemas.microsoft.com/ws/2012/01/insidecorporatenetwork"] => issue(claim = c);
      ```
      
-   * **Pro žádosti od určitého rozsahu veřejné IP adresy**: Chcete-li tuto možnost zvolte, zadejte IP adresy do textového pole pomocí notace CIDR.
+   * **Pro žádosti od konkrétního rozsahu objektů veřejné IP adresy**: tuto možnost, zadejte IP adresy v textovém poli pomocí zápisu CIDR.
    
-     * Pro IP adresy, které jsou v rozsahu xxx.xxx.xxx.1 prostřednictvím xxx.xxx.xxx.254, použijte zápis jako **xxx.xxx.xxx.0/24**.
-     * Pro jednu IP adresu, použijte zápis jako **xxx<span></span>.xxx.xxx.xxx/32**.
+     * IP adresy, které jsou v rozsahu xxx.xxx.xxx.1 prostřednictvím xxx.xxx.xxx.254, použít zápis jako **xxx.xxx.xxx.0/24**.
+     * Pro jednu IP adresu, použít zápis jako **xxx<span></span>.xxx.xxx.xxx/32**.
      
-     Zadejte až 50 rozsahy IP adres. Uživatelé, kteří se přihlašují z těchto IP adres nepoužívat dvoustupňové ověřování.
+     Zadejte až 50 rozsahy IP adres. Uživatelé, kteří se z těchto IP adres obejít dvoustupňové ověřování.
 
 5. Vyberte **Uložit**.
 
-### <a name="enable-the-trusted-ips-feature-by-using-service-settings"></a>Povolit funkci důvěryhodné IP adresy pomocí nastavení služby
+### <a name="enable-the-trusted-ips-feature-by-using-service-settings"></a>Povolit funkci důvěryhodné IP adresy s použitím nastavení služby
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Na levé straně vyberte **Azure Active Directory** > **uživatelů a skupin** > **všichni uživatelé**.
-3. Vyberte **služby Multi-Factor Authentication**.
+3. Vyberte **ověřování službou Multi-Factor Authentication**.
 4. V části ověřování Multi-Factor Authentication, vyberte **nastavení služby**.
-5. Na **nastavení služby** v části **důvěryhodné IP adresy**, zvolit z následujících dvou možností:
+5. Na **nastavení služby** stránce v části **důvěryhodné IP adresy**, zvolte jednu z následujících dvou možností:
    
-   * **Pro žádosti od federovaných uživatelů v mém intranetu**: Chcete-li tuto možnost zvolte, zaškrtněte políčko. Všechny federovaní uživatelé, kteří přihlášení z podnikové sítě obejít dvoustupňové ověření pomocí deklarace identity, který je vydán službou AD FS. Zajistěte, aby služba AD FS na pravidlo můžete přidat intranetu deklarace identity odpovídající provoz. Pokud pravidlo neexistuje, vytvořte ve službě AD FS následující pravidlo:<br/>
+   * **Pro žádosti od federovaných uživatelů v mém intranetu**: Chcete-li tuto možnost zvolte, vyberte zaškrtávací políčko. Všechny federovaní uživatelé, kteří přihlašování z podnikové sítě obejít dvoustupňové ověřování s použitím deklarace identity, která je vydala službou AD FS. Zajistěte, aby služba AD FS pravidlo, které přidá deklaraci intranetu na odpovídající provoz. Pokud pravidla buď neexistuje, vytvořte ve službě AD FS následující pravidlo:<br/>
 
      ```
      c:[Type== "http://schemas.microsoft.com/ws/2012/01/insidecorporatenetwork"] => issue(claim = c);
      ```
 
-   * **Pro žádosti od podsítí zadaný rozsah IP adres**: Chcete-li tuto možnost zvolte, zadejte IP adresy do textového pole pomocí notace CIDR. 
+   * **Pro požadavky z podsítí zadaného rozsahu IP adres**: tuto možnost, zadejte IP adresy v textovém poli pomocí zápisu CIDR. 
      
-     * Pro IP adresy, které jsou v rozsahu xxx.xxx.xxx.1 prostřednictvím xxx.xxx.xxx.254, použijte zápis jako **xxx.xxx.xxx.0/24**.
-     * Pro jednu IP adresu, použijte zápis jako **xxx<span></span>.xxx.xxx.xxx/32**.
+     * IP adresy, které jsou v rozsahu xxx.xxx.xxx.1 prostřednictvím xxx.xxx.xxx.254, použít zápis jako **xxx.xxx.xxx.0/24**.
+     * Pro jednu IP adresu, použít zápis jako **xxx<span></span>.xxx.xxx.xxx/32**.
      
-     Zadejte až 50 rozsahy IP adres. Uživatelé, kteří se přihlašují z těchto IP adres nepoužívat dvoustupňové ověřování.
+     Zadejte až 50 rozsahy IP adres. Uživatelé, kteří se z těchto IP adres obejít dvoustupňové ověřování.
 
 6. Vyberte **Uložit**.
 
-![Povolit důvěryhodné IP adresy pomocí nastavení služby](./media/howto-mfa-mfasettings/trustedips3.png)
+![Povolení důvěryhodné IP adresy s nastavení služby](./media/howto-mfa-mfasettings/trustedips3.png)
 
 ## <a name="app-passwords"></a>Hesla aplikací
 
-Některé aplikace, jako je Office 2010 nebo starší a Apple Mail, nepodporují dvoustupňové ověřování. Aplikace není nakonfigurované tak, aby přijímal druhé ověření. K používání těchto aplikací, využívat výhod _hesla aplikací_ funkce. Umožňuje aplikaci, aby obešla dvoustupňové ověřování a pokračovat v práci můžete použít heslo aplikace místo tradiční heslo.
+Některé aplikace, jako je Office 2010 nebo starší a Apple Mail, nepodporují dvoustupňové ověřování. Aplikace nejsou nakonfigurované tak, aby přijímal druhé ověření. Pokud chcete použít tyto aplikace, využijte výhod _hesla aplikací_ funkce. Heslo aplikace místo hesla tradiční slouží k povolení aplikace obejít dvoustupňové ověřování a pokračovat v práci.
 
-Moderní ověřování je podporováno pro klienty, Microsoft Office 2013 a novější. Klienti Office 2013, Outlook, včetně podpory moderních ověřovacích protokolů a lze je povolit pro práci s dvoustupňové ověřování. Po povolení klienta hesla aplikací nejsou požadované pro klienta.
+Moderní ověřování je podporováno pro klienty Microsoft Office 2013 a novější. Klientech Office 2013, včetně Outlooku, podpora moderních ověřovacích protokolů a dá se povolit pro práci s dvoustupňovým ověřováním. Po povolení klienta hesla aplikací nejsou požadovány pro klienta.
 
 ### <a name="considerations-about-app-passwords"></a>Důležité informace o heslech aplikací
 
 Při používání hesel aplikací, zvažte následující důležité skutečnosti:
 
-* Hesla aplikací jsou pouze jednou přešla na aplikaci. Uživatelé nemají k udržování přehledu o hesla nebo je zadat pokaždé, když.
-* Vlastní heslo se vygeneruje automaticky a není zadané uživatelem. Automaticky vygenerované heslo je pro útočníka tak snadno uhodnout obtížnější a je bezpečnější.
-* Existuje omezení 40 hesel na uživatele. 
-* Aplikace, které hesla do mezipaměti a použít je v místní scénářích můžete začít se nezdařila, protože heslo aplikace není známa mimo pracovní nebo školní účet. Příklad tohoto scénáře je e-mailů Exchange, které jsou na místě, ale Archivovaná pošta se nachází v cloudu. V tomto scénáři stejné heslo nebude fungovat.
-* Po povolení služby Multi-Factor Authentication na uživatelský účet hesla aplikací můžete použít s klienty nejvíce prohlížeče, jako je Outlook a Microsoft Skype pro firmy. Akce správy není možné pomocí hesla aplikací prostřednictvím neprohlížečové aplikace, jako je Windows PowerShell. Akce, které nelze provést, i když má uživatel účet správce. Ke spouštění skriptů prostředí PowerShell, vytvoření účtu služby silným heslem a nepovolíte účet pro dvoustupňové ověření.
+* Hesla aplikací jsou pouze jednou přešla na aplikaci. Uživatelé nemusíte udržovat přehled o hesla nebo je zadat pokaždé, když.
+* Skutečné heslo je automaticky vygenerováno a uživatel jej nezadává. Automaticky vygenerované heslo nejde útočníkovi možnost uhádnout a je bezpečnější.
+* Platí omezení 40 hesel na uživatele. 
+* Aplikace, které hesla do mezipaměti a jejich použití v místních scénářích můžete začít se nezdařila, protože heslo aplikace není známo mimo pracovní nebo školní účet. Příkladem tohoto scénáře je e-mailů Exchange, které jsou v místním, ale Archivovaná pošta se nachází v cloudu. V tomto scénáři stejné heslo nebude fungovat.
+* Po povolení služby Multi-Factor Authentication u účtu uživatele hesel aplikací je možné s nejvíce neprohlížečové klienty, jako je Outlook a Microsoft Skype pro firmy. Akce správy nelze provést s použitím hesel aplikací do neprohlížečových aplikací, jako je Windows PowerShell. Akce, které nelze provést, i v případě, že uživatel má účet správce. Spouštění skriptů prostředí PowerShell, vytvořte účet služby silným heslem a nepovolí účtu pro dvoustupňové ověřování.
 
 >[!WARNING]
->Hesla aplikací nepodporují v hybridních prostředích, kde klienti komunikaci s místní a cloudové Automatická konfigurace koncových bodů. Hesla domény jsou vyžadovaný k ověření na místě. Hesla aplikací jsou vyžadovaný k ověření s cloudem.
+>Hesla aplikací nefungují v hybridních prostředích, kde klienti komunikovat s místním a Automatická konfigurace koncových bodů v cloudu. Domény hesla jsou nutné k ověřování místní. Hesla aplikací jsou nutné k ověření pomocí cloudu.
 >
 
 ### <a name="guidance-for-app-password-names"></a>Pokyny pro názvů hesel aplikací
 
-Názvů hesel aplikací vytvořena podle zařízení, na kterém se používá. Pokud máte přenosný počítač, který má neprohlížečové aplikace, jako je Outlook, Word a Excel, vytvořit jedno heslo aplikace s názvem **přenosný počítač** pro tyto aplikace. Vytvořit další heslo aplikace s názvem **plochy** pro stejné aplikace, které běží na počítač. 
+Názvů hesel aplikací by měly odrážet zařízení, na kterém už používá. Pokud máte přenosný počítač, který má aplikace nezaložené na prohlížeči, jako je Outlook, Word a Excel, vytvořte jedno heslo aplikace s názvem **přenosný počítač** u těchto aplikací. Vytvořit jiné heslo aplikace s názvem **Desktop** pro stejné aplikace, které běží na stolním počítači. 
 
 >[!NOTE]
 >Doporučujeme vytvořit jednu aplikaci heslo na zařízení, nikoli heslo jednu aplikaci na aplikaci.
 
-### <a name="federated-or-single-sign-on-app-passwords"></a>Federované nebo jeden přihlašování hesel aplikací
+### <a name="federated-or-single-sign-on-app-passwords"></a>Federované jednotné přihlašování aplikaci nebo hesla
 
-Azure AD podporuje federaci nebo jednotné přihlašování (SSO) s místními systému Windows Server Active Directory Domain Services (AD DS). Pokud je vaše organizace Federovaná pomocí Azure AD a používáte Azure Multi-Factor Authentication, zvažte následující body o heslech aplikací.
+Azure AD podporuje jednotné přihlašování (SSO), nebo federace s místní Windows Server Active Directory Domain Services (AD DS). Pokud vaše organizace Federovaná pomocí služby Azure AD a že používáte ověřování Azure Multi-Factor Authentication, zvažte následující body o heslech aplikací.
 
 >[!NOTE]
->Následující body se vztahuje pouze na federované zákazníků (SSO).
+>Jenom pro zákazníky federované (přihlášení SSO), platí následující body.
 
-* Hesla aplikací jsou ověřit pomocí Azure AD a proto obcházet federace. Federace se aktivně používá pouze v případě, že je nastavení hesla aplikací.
-* Pro federované uživatele (SSO), na rozdíl od pasivního toku není kontaktovat zprostředkovatele Identity (IdP). Hesla aplikací jsou uloženy v pracovní nebo školní účet. Pokud uživatel odejde ze společnosti, informace o uživateli toků pro pracovní nebo školní účet pomocí **DirSync** v reálném čase. Zakázání/odstranění účtu může trvat až tři hodiny k synchronizaci, což může zpoždění zakázání/odstranění hesla aplikace v Azure AD.
-* Místní nastavení řízení přístupu klienta není dodrženo funkce hesla aplikace.
-* Bez ověřování místní protokolování nebo auditování funkce je k dispozici pro použití s funkcí hesla aplikací.
-* Některé pokročilé architektury vyžaduje kombinaci přihlašovacích údajů pro dvoustupňové ověření s klienty. Tyto přihlašovací údaje může obsahovat pracovní nebo školní účet uživatelského jména a hesla a hesla aplikací. Požadavky závisí na tom, jak se provádí ověřování. Pro klienty, kteří se ověřují se na místní infrastrukturu, pracovní nebo školní účet uživatelské jméno a heslo, které jsou povinná. U klientů, kteří se ověřují se Azure AD se vyžaduje heslo aplikace.
+* Hesla aplikací, které byly ověřeny pomocí Azure AD a tedy obejít federace. Federace se aktivně používá pouze při nastavování hesla aplikace.
+* U federovaných uživatelů (SSO), na rozdíl od pasivního toku není kontaktovat zprostředkovatele Identity (IdP). Hesla aplikací jsou uloženy v pracovní nebo školní účet. Pokud uživatel odejde ze společnosti, informace o uživateli vede do pracovního nebo školního účtu pomocí **DirSync** v reálném čase. Zakázání/odstranění účtu může trvat až tři hodiny pro synchronizaci, což může zpoždění zakázání/odstranění hesla aplikace ve službě Azure AD.
+* Místní nastavení služby Access Control klienta nejsou dodržená funkcí hesla aplikace.
+* Bez ověřování místní funkce protokolování a auditování je dostupné pro použití s funkcí hesla aplikace.
+* Některé pokročilé architektury vyžaduje kombinaci přihlašovacích údajů pro dvoustupňové ověřování s klienty. Tyto přihlašovací údaje můžete zahrnout pracovní nebo školní účet uživatelské jméno a hesla a hesla aplikací. Požadavky závisí na tom, jak se provádí ověřování. Pro klienty, kteří ověřování na základě místní infrastrukturu pracovní nebo školní účet uživatelské jméno a heslo požadované. U klientů, které se ověřují ve službě Azure AD se vyžaduje heslo aplikace.
 
-  Předpokládejme například, že máte následující architektura:
+  Předpokládejme například, že máte následující architektury:
 
-  * Vaše místní instance služby Active Directory je sdružených se službou Azure AD.
+  * Vaše místní instancí Active Directory federovaný pomocí služby Azure AD.
   * Používáte Exchange online.
-  * Používáte Skype pro firmy na místě.
-  * Používáte Azure Multi-Factor Authentication.
+  * Používáte Skype pro firmy místní.
+  * Používáte ověřování Azure Multi-Factor Authentication.
 
-  ![Používání hesel aplikací v organizaci, federované](./media/howto-mfa-mfasettings/federated.png)
+  ![Používání hesel aplikací ve federované organizaci](./media/howto-mfa-mfasettings/federated.png)
 
   V tomto scénáři použijte následující pověření:
 
-  * Chcete-li přihlásit na Skype pro firmy, použijte pracovní nebo školní účet uživatelské jméno a heslo.
-  * Pro přístup k adresáři z klienta aplikace Outlook, která se připojuje k Exchange online, použijte heslo aplikace.
+  * Přihlásit se ke Skypu pro firmy, použijte pracovní nebo školní účet uživatelské jméno a heslo.
+  * Pro přístup k adresáři v klientovi Outlooku, která se připojuje k systému Exchange online, použijte heslo aplikace.
 
 ### <a name="allow-users-to-create-app-passwords"></a>Povolit uživatelům vytvoření hesel aplikací
 
-Ve výchozím nastavení uživatelé nemůžou vytvářet hesla aplikací. Musí být povolena funkce hesla aplikace. Pokud chcete uživatelům umožnit vytvoření hesel aplikací, použijte následující postup:
+Ve výchozím nastavení uživatelé nemůžou vytvářet hesla aplikací. Musí být povolena funkce hesla aplikace. Chcete-li umožnit uživatelům vytváření hesel aplikací, použijte následující postup:
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Na levé straně vyberte **Azure Active Directory** > **uživatelů a skupin** > **všichni uživatelé**.
-3. Vyberte **služby Multi-Factor Authentication**.
+3. Vyberte **ověřování službou Multi-Factor Authentication**.
 4. V části ověřování Multi-Factor Authentication, vyberte **nastavení služby**.
-5. Na **nastavení služby** vyberte **povolit uživatelům vytvářet hesla aplikací pro přihlášení k neprohlížečovým aplikacím** možnost.
+5. Na **nastavení služby** stránky, vyberte **povolit uživatelům vytvářet hesla aplikací pro přihlášení k neprohlížečovým aplikacím** možnost.
 
    ![Povolit uživatelům vytvoření hesel aplikací](./media/howto-mfa-mfasettings/trustedips3.png)
 
 ### <a name="create-app-passwords"></a>Vytvoření hesel aplikací
 
-Uživatelé mohou vytvářet hesla aplikací během jejich počáteční registrace. Uživatel má možnost vytvořit hesla aplikací na konci procesu registrace.
+Uživatelé můžou vytvářet hesla aplikací při jejich počáteční registraci. Uživatel nemá možnost vytvoření hesel aplikací na konci procesu registrace.
 
-Uživatelé mohou také vytvářet hesla aplikací po registraci. Hesla aplikací lze změnit pomocí nastavení v portálu Azure nebo na portálu Office 365. Další informace a podrobné pokyny pro uživatele najdete v tématu [co jsou hesla aplikací v Azure Multi-Factor Authentication?](end-user/current/multi-factor-authentication-end-user-app-passwords.md)
+Uživatelé mohou také vytvářet hesla aplikací po registraci. Hesla aplikací lze změnit prostřednictvím nastavení na webu Azure portal nebo na portálu Office 365. Další informace a podrobné pokyny pro uživatele najdete v tématu [co jsou hesla aplikací v Azure Multi-Factor Authentication?](../user-help/multi-factor-authentication-end-user-app-passwords.md)
 
 <a name="remember-multi-factor-authentication-for-devices-that-users-trust"></a>
-## <a name="remember-multi-factor-authentication-for-trusted-devices"></a>Zapamatovat Vícefaktorové ověřování pro důvěryhodná zařízení
-_Zapamatovat Vícefaktorové ověřování_ funkce pro zařízení a prohlížeče, které jsou důvěryhodné uživatelem je bezplatná funkce pro všechny uživatele služby Multi-Factor Authentication. Uživatelé mohou obejít dodatečných ověřování pro zadaný počet dnů, po jejich jste úspěšně přihlášeného k zařízení pomocí služby Multi-Factor Authentication. Tato funkce vylepšuje použitelnost a minimalizovat počet, kolikrát má uživatel k provedení dvoustupňové ověřování na stejné zařízení.
+## <a name="remember-multi-factor-authentication-for-trusted-devices"></a>Zapamatovat Multi-Factor Authentication pro důvěryhodného zařízení
+_Zapamatovat Multi-Factor Authentication_ funkce pro zařízení a prohlížeče, které jsou důvěryhodné uživatelem je bezplatná funkce pro všechny uživatele služby Multi-Factor Authentication. Uživatelé mohou obejít následné ověření pro zadaný počet dnů, po jejich jste úspěšně nepřihlásil k zařízení pomocí služby Multi-Factor Authentication. Tato funkce vylepšuje použitelnost minimalizací počet, kolikrát má uživatel k provedení dvoustupňového ověřování na stejném zařízení.
 
 >[!IMPORTANT]
->Když v ohrožení účtu nebo zařízení, nezapomeňte vícefaktorového ověřování pro důvěryhodná zařízení může ovlivnit zabezpečení. Pokud podnikové účty nebo ztráty nebo odcizení důvěryhodné zařízení, měli byste [obnovit Multi-Factor Authentication na všech zařízeních](howto-mfa-userdevicesettings.md#restore-mfa-on-all-remembered-devices-for-a-user).
+>Pokud dojde k ohrožení účtu nebo zařízení, zapamatování ověřování službou Multi-Factor Authentication pro důvěryhodného zařízení můžou ovlivnit zabezpečení. Pokud účet organizace ohroženo nebo důvěryhodné zařízení dojde ke ztrátě nebo odcizení, měli byste [na všech zařízeních obnovit ověřování službou Multi-Factor Authentication](howto-mfa-userdevicesettings.md#restore-mfa-on-all-remembered-devices-for-a-user).
 >
->Akce obnovení odvolá důvěryhodný stav ze všech zařízení a uživatele je potřeba provést dvoustupňové ověření znovu. Můžete také Vyzvěte uživatele, aby-li obnovit služby Multi-Factor Authentication na jejich vlastní zařízení s pokyny uvedenými v [spravovat nastavení pro dvoustupňové ověření](end-user/current/multi-factor-authentication-end-user-manage-settings.md#require-two-step-verification-again-on-a-device-youve-marked-as-trusted).
+>Akce obnovení odvolá důvěryhodný stav ze všech zařízení a uživatel musí znovu dvoustupňové ověřování. Můžete také Vyzvěte uživatele, aby obnovit ověřování službou Multi-Factor Authentication na zařízení s pokyny uvedenými v [spravovat nastavení pro dvoustupňové ověřování](../user-help/multi-factor-authentication-end-user-manage-settings.md#require-two-step-verification-again-on-a-device-youve-marked-as-trusted).
 >
 
 ### <a name="how-the-feature-works"></a>Princip funkce
 
-Funkce služby Multi-Factor Authentication zapamatovat nastaví trvalého souboru cookie v prohlížeči, když uživatel vybere **nezobrazovat dotaz dalších X dní** možnost při přihlášení. Uživatel nebude vyzván k znovu pro službu Multi-Factor Authentication z této stejný prohlížeč do vypršení platnosti souboru cookie. Pokud uživatel otevře jiný prohlížeč na stejné zařízení nebo vymaže jejich souborů cookie, budou se znovu zobrazí výzva k ověření. 
+Funkci zapamatovat Multi-Factor Authentication nastaví trvalého souboru cookie v prohlížeči, když uživatel vybere **nezobrazovat dotaz dalších X dní** možnost při přihlášení. Uživatel není vyzván znovu pro ověřování službou Multi-Factor Authentication ze stejného prohlížeče do vypršení platnosti souboru cookie. Když uživatel otevře jiný prohlížeč na stejné zařízení nebo vymaže jejich souborů cookie, jsou vyzváni znovu ověřit. 
 
-**Nezobrazovat dotaz dalších X dní** možnost není zobrazena u neprohlížečových aplikací, bez ohledu na to, jestli aplikace podporuje moderní ověřování. Tyto aplikace použít _obnovovacích tokenů_ , zadejte nové přístupové tokeny každou hodinu. Po ověření se token obnovení, Azure AD ověří, že poslední dvoustupňové ověřování došlo k chybě během zadaného počtu dnů. 
+**Nezobrazovat dotaz dalších X dní** možnost není zobrazena na neprohlížečové aplikace, bez ohledu na to, jestli aplikace podporuje moderní ověřování. Tyto aplikace použít _obnovovacích tokenů_ , které poskytují nové přístupové tokeny každou hodinu. Po ověření obnovovací token Azure AD ověří, že došlo k poslední dvoustupňové ověření během zadaného počtu dnů. 
 
-Funkci snižuje počet ověření na webové aplikace, které obvykle výzvu pokaždé, když. Funkci zvyšuje počet ověření pro moderní ověřování klientů, které obvykle výzvu každých 90 dní.
+Funkci snižuje počet ověření ve službě web apps, které obvykle výzvu pokaždé, když. Tato funkce zvyšuje počet ověření pro moderní ověřování klientů, které obvykle výzvu každých 90 dní.
 
 >[!IMPORTANT]
->**Zapamatovat Vícefaktorové ověřování** funkce není kompatibilní s **zůstat přihlášeni** funkce služby AD FS, když uživatelé provést dvoustupňové ověřování pro službu AD FS pomocí Azure Multi-Factor Ověřování serveru nebo řešení třetí strany služby Multi-Factor authentication.
+>**Zapamatovat Multi-Factor Authentication** není kompatibilní s funkcí **neodhlašovat** funkce služby AD FS, když uživatelé provedou dvoustupňové ověřování pro službu AD FS pomocí Azure Multi-Factor Authentication Ověřování serveru nebo řešení třetí strany služby Multi-Factor authentication.
 >
->Pokud uživatelé vyberou **zůstat přihlášeni** služby AD FS a také označit jejich zařízení jako důvěryhodné pro ověřování Multi-Factor Authentication, není automaticky ověření uživatele po **zapamatovat vícefaktorové ověřování**počtu dnů. Azure AD požadavky čerstvé dvoustupňové ověření, ale služby AD FS vrátí token s původní deklarace identity služby Multi-Factor Authentication a datum, místo provedení dvoustupňové ověření znovu. Nastaví tento reakce mimo smyčku ověření mezi Azure AD a služby AD FS.
+>Pokud vaši uživatelé možnost **neodhlašovat** na službu AD FS a také označit zařízení jako důvěryhodné pro ověřování službou Multi-Factor Authentication, se automaticky ověřit uživatele po **zapamatovat Multi-Factor authentication**dnech vyprší. Azure AD vyžaduje novou dvoustupňové ověřování, ale služby AD FS vrátí token se původní deklaraci identity ověřování službou Multi-Factor Authentication a datum, spíše než provádí dvoustupňové ověření znovu. Nastaví tuto reakci mimo smyčku ověření mezi Azure AD a AD FS.
 >
 
 ### <a name="enable-remember-multi-factor-authentication"></a>Povolit zapamatovat Vícefaktorové ověřování
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Na levé straně vyberte **Azure Active Directory** > **uživatelů a skupin** > **všichni uživatelé**.
-3. Vyberte **služby Multi-Factor Authentication**.
+3. Vyberte **ověřování službou Multi-Factor Authentication**.
 4. V části ověřování Multi-Factor Authentication, vyberte **nastavení služby**.
-5. Na **nastavení služby** v části **spravovat zapamatovat vícefaktorové ověřování**, vyberte **povolit uživatelům zapamatovat vícefaktorové ověřování na zařízeních důvěřují**možnost.
+5. Na **nastavení služby** stránce v části **spravovat zapamatovat Multi-Factor authentication**, vyberte **povolit uživatelům zapamatovat vícefaktorové ověřování na zařízeních, kterým důvěřují**možnost.
 
-   ![Zapamatovat Vícefaktorové ověřování pro důvěryhodná zařízení](./media/howto-mfa-mfasettings/remember.png)
+   ![Zapamatovat Multi-Factor Authentication pro důvěryhodného zařízení](./media/howto-mfa-mfasettings/remember.png)
 
-6. Nastavte počet dní, aby důvěryhodných zařízení obejít dvoustupňové ověření. Výchozí hodnota je 14 dnů.
+6. Nastavte počet dní, aby důvěryhodná zařízení obejít dvoustupňové ověřování. Výchozí hodnota je 14 dní.
 7. Vyberte **Uložit**.
 
-### <a name="mark-a-device-as-trusted"></a>Označit jako důvěryhodné zařízení
+### <a name="mark-a-device-as-trusted"></a>Označit zařízení jako důvěryhodný
 
-Když povolíte funkci vícefaktorového ověřování zapamatovat, uživatelé mohou označit zařízení jako důvěryhodné při přihlášení výběrem **dotaz již nezobrazovat**.
+Když povolíte funkci zapamatovat Multi-Factor Authentication, uživatelé mohou označit zařízení jako důvěryhodná při přihlášení tak, že vyberete **příště se už neptat**.
 
-![Vyberte "Dotaz již nezobrazovat" pro důvěryhodná zařízení](./media/howto-mfa-mfasettings/trusted.png)
+![Vyberte "Dotaz už nezobrazovat" pro důvěryhodného zařízení](./media/howto-mfa-mfasettings/trusted.png)
 
-## <a name="selectable-verification-methods"></a>Volitelný ověření metody
+## <a name="selectable-verification-methods"></a>Volitelné ověření metody
 
-Můžete zvolit metody ověřování, které jsou k dispozici pro vaše uživatele pomocí _metody volitelný ověření_ funkce. Následující tabulka obsahuje stručný přehled metod.
+Můžete použít metody ověřování, které jsou k dispozici pro uživatele s použitím _volitelných ověřovací metody_ funkce. Následující tabulka obsahuje stručný přehled této metody.
 
-Když uživatelé zaregistrují svoje účty pro Azure Multi-Factor Authentication, vybírá jejich metoda upřednostňované ověření z možností, které jste povolili. Pokyny pro registraci uživatelů je k dispozici v [nastavit účtu pro dvoustupňové ověření](end-user/current/multi-factor-authentication-end-user-first-time.md).
+Když uživatelé zaregistrují svoje účty pro ověřování Azure Multi-Factor Authentication, uživatel vybrat z možností, které jste povolili jejich upřednostňovaná metoda ověření. Pokyny k procesu registrace uživatele je k dispozici v [nastavit účtu pro dvoustupňové ověřování](../user-help/multi-factor-authentication-end-user-first-time.md).
 
 | Metoda | Popis |
 |:--- |:--- |
-| Telefonní hovor |Umístí automatický hlasový hovor. Uživatel přijme hovor a stiskem tlačítka # na klávesnici telefonu provede ověření. Telefonní číslo není synchronizován do místní služby Active Directory. |
-| Textová zpráva na telefon |Odešle textovou zprávu obsahující ověřovací kód. Bude uživatel vyzván k zadání ověřovacího kódu do rozhraní přihlášení. Tento proces se nazývá jednosměrné služby SMS. Obousměrné služby SMS znamená, že uživatel musí text zpět konkrétní kód. Obousměrné služby SMS je zastaralá a po 14 listopadu 2018 není podporováno. Uživatelé, kteří jsou konfigurováni pro obousměrné služby SMS se automaticky přepnout do _volání na telefon_ ověření v daném čase.|
-| Oznámení přes mobilní aplikaci |Odešle nabízených oznámení do telefonu nebo zaregistrovaného zařízení. Zobrazení oznámení a vybere uživatele **ověřte** k dokončení ověření. Je k dispozici pro aplikaci Microsoft Authenticator [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071), [Android](http://go.microsoft.com/fwlink/?Linkid=825072), a [iOS](http://go.microsoft.com/fwlink/?Linkid=825073). |
-| Ověřovací kód z mobilní aplikace |Aplikace Microsoft Authenticator generuje každých 30 sekund nový ověřovací kód OATH. Uživatel zadá ověřovací kód do rozhraní přihlášení. Je k dispozici pro aplikaci Microsoft Authenticator [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071), [Android](http://go.microsoft.com/fwlink/?Linkid=825072), a [iOS](http://go.microsoft.com/fwlink/?Linkid=825073). |
+| Telefonní hovor |Umístí automatizovaný hlasový hovor. Uživatel přijme hovor a stiskem tlačítka # na klávesnici telefonu provede ověření. Telefonní číslo není synchronizována do místní služby Active Directory. |
+| Textová zpráva na telefon |Odešle textovou zprávu obsahující ověřovací kód. Bude uživatel vyzván k zadání ověřovacího kódu do rozhraní pro přihlášení. Tento proces se nazývá jednosměrné služby SMS. Obousměrné služby SMS znamená, že uživatel musí text zpět konkrétního kódu. Obousměrné služby SMS je zastaralá a není podporována po 14. listopadu 2018. Uživatelé, kteří jsou konfigurováni pro obousměrné služby SMS se automaticky přepnout do _volání na telefon_ ověření v daném čase.|
+| Oznámení přes mobilní aplikaci |Odešle nabízené oznámení do telefonu nebo zaregistrovaného zařízení. Uživatel zobrazí oznámení a vybere **ověřte** dokončete ověření. Aplikace Microsoft Authenticator je dostupná pro [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071), [Android](http://go.microsoft.com/fwlink/?Linkid=825072), a [iOS](http://go.microsoft.com/fwlink/?Linkid=825073). |
+| Ověřovací kód z mobilní aplikace |Aplikace Microsoft Authenticator generuje každých 30 sekund nový ověřovací kód OATH. Ověřovací kód, který uživatel zadá do rozhraní pro přihlášení. Aplikace Microsoft Authenticator je dostupná pro [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071), [Android](http://go.microsoft.com/fwlink/?Linkid=825072), a [iOS](http://go.microsoft.com/fwlink/?Linkid=825073). |
 
-### <a name="enable-and-disable-verification-methods"></a>Povolení a zákaz metody ověření
+### <a name="enable-and-disable-verification-methods"></a>Povolení a zákaz metody ověřování
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Na levé straně vyberte **Azure Active Directory** > **uživatelů a skupin** > **všichni uživatelé**.
-3. Vyberte **služby Multi-Factor Authentication**.
+3. Vyberte **ověřování službou Multi-Factor Authentication**.
 4. V části ověřování Multi-Factor Authentication, vyberte **nastavení služby**.
-5. Na **nastavení služby** v části **možnosti ověření**, výběrem nebo zrušením výběru metody, které se uživatelům poskytnout.
+5. Na **nastavení služby** stránce v části **možnosti ověření**, vyberte nebo zrušte výběr metody, které poskytují uživatelům.
 
    ![Vyberte metodu ověřování](./media/howto-mfa-mfasettings/authmethods.png)
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: jeedes
-ms.openlocfilehash: c1bf5ba68d8242a0ef0831987ac6fd041c62ace9
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: eafd7998e5bc21a539b6709794fe3cd70d9e3179
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969363"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054314"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arc-publishing---sso"></a>Kurz: Integrace Azure Active Directory s oblouk publikování – jednotné přihlašování
 
@@ -239,7 +239,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
 Po kliknutí oblouk publikování – dlaždice jednotného přihlašování na přístupovém panelu, vám by měl získat automaticky přihlášení k vaší oblouk publikování - jednotného přihlašování aplikace.
-Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../active-directory-saas-access-panel-introduction.md). 
+Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 

@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: v-geberr
-ms.openlocfilehash: 962f33a178048c459e8c6c2948eb17f0e78904ae
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: b695783c6d68876d39482ed5abec24f45087603d
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37930986"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054858"
 ---
 # <a name="improve-app-with-batch-test"></a>Vylepšit aplikaci s testováním služby batch
 
@@ -52,7 +52,7 @@ Požadavky pro testování služby batch:
 * Povolené typy entit: jednoduché a složené.
 
 ## <a name="create-a-batch-file-with-utterances"></a>Vytvořte dávkový soubor se projevy
-1. Vytvoření `HumanResources-jobs-batch.json` v textovém editoru, jako [VSCode](https://code.visualstudio.com/). Nebo si stáhněte [soubor](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorial-batch-testing/HumanResources-jobs-batch.json) z úložiště Githubu ukázky LUIS.
+1. Vytvoření `HumanResources-jobs-batch.json` v textovém editoru, jako [VSCode](https://code.visualstudio.com/). 
 
 2. V souboru ve formátu JSON batch přidání projevů s **záměr** chcete předpokládané v testu. 
 
@@ -189,7 +189,7 @@ Pokud chcete ověřit, že jsou správně předpovědět projevy v testu služby
 Tato aplikace přesnost předpovědi zvýšila o nalezení chyby v dávce a opravu modelu tak, že přidáte další příklad projevy správné záměr a školení. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Pokud už aplikaci LUIS nepotřebujete, odstraňte ji. Vyberte **Moje aplikace** v nabídce vlevo nahoře. Vyberte tři tečky **...**  napravo od názvu aplikace v seznamu aplikací vyberte **odstranit**. V automaticky otevíraném dialogovém okně **Delete app?** (Odstranit aplikaci?) vyberte **Ok**.
+Pokud už aplikaci LUIS nepotřebujete, odstraňte ji. V nabídce vlevo nahoře vyberte **Moje aplikace**. Vyberte tři tečky **...**  napravo od názvu aplikace v seznamu aplikací vyberte **odstranit**. V automaticky otevíraném dialogovém okně **Delete app?** (Odstranit aplikaci?) vyberte **Ok**.
 
 
 ## <a name="next-steps"></a>Další postup

@@ -1,6 +1,6 @@
 ---
-title: Tok protokolů NSG pro čtení | Microsoft Docs
-description: Tento článek ukazuje, jak k analýze protokolů NSG toku
+title: Čtení protokolů toku NSG | Dokumentace Microsoftu
+description: Tento článek popisuje, jak analyzovat protokoly toků NSG
 services: network-watcher
 documentationcenter: na
 author: jimdial
@@ -13,73 +13,74 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/25/2017
 ms.author: jdial
-ms.openlocfilehash: 58474286352ff3f00b31e65a565c2b64a656a177
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 492a0a63198fe2013cfeac0459fc6da8521a5e6e
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2018
-ms.locfileid: "29149630"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39056796"
 ---
-# <a name="read-nsg-flow-logs"></a>Tok protokolů NSG pro čtení
+# <a name="read-nsg-flow-logs"></a>Čtení protokolů toku NSG
 
-Zjistěte, jak číst záznamů protokolů NSG toku pomocí prostředí PowerShell.
+Zjistěte, jak ke čtení záznamů protokolů toku NSG pomocí Powershellu.
 
-Skupina NSG toku protokoly jsou uloženy v účtu úložiště v [objekty BLOB bloků](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs.md#about-block-blobs). Objekty BLOB bloku jsou tvořeny menší bloky. Objekt blob bloku samostatné, aby se vygenerovala každou hodinu je každý protokol. Nové protokoly jsou generovány každou hodinu, protokoly jsou aktualizované o nové položky každých několik minut s nejnovější data. V tomto článku a zjistěte, jak číst části toku protokolů.
+Protokoly toků NSG se ukládají v účtu úložiště v [objekty BLOB bloku](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs.md#about-block-blobs). Objekty BLOB bloku jsou tvořené menší bloky. Každý protokol je oddělená objektu blob, který je generován každou hodinu. Nové protokoly se generují každou hodinu, protokoly jsou aktualizovány pomocí nové položky pomocí nejnovějších dat každých několik minut. V tomto článku se dozvíte, jak číst části protokolů toku.
 
 ## <a name="scenario"></a>Scénář
 
-V následujícím scénáři máte protokol toku příklad, který je uložený v účtu úložiště. jsme projděte jak můžete selektivně přečíst nejnovější události v toku protokolů NSG. V tomto článku budeme používat prostředí PowerShell, ale koncepty popsanou v článku nejsou omezeny na programovací jazyk a platí pro všechny jazyky, které podporuje rozhraní API úložiště Azure
+V následujícím scénáři je nutné protokolu toku příklad, který je uložený v účtu úložiště. Doporučujeme projít jak můžete selektivně přečíst nejnovější události do protokolů toku NSG. V tomto článku jsme pomocí prostředí PowerShell, ale koncepty popsané v článku nejsou omezeny na programovací jazyk a platí pro všechny jazyky podporované rozhraní API služby Azure Storage
 
 ## <a name="setup"></a>Nastavení
 
-Než začnete, musíte mít síťové zabezpečení skupiny toku povoleným protokolováním na jeden nebo více skupin zabezpečení sítě ve vašem účtu. Pokyny k povolení zabezpečení sítě toku protokolů, najdete v následujícím článku: [Úvod do toku protokolování pro skupiny zabezpečení sítě](network-watcher-nsg-flow-logging-overview.md).
+Než začnete, musíte mít síťové zabezpečení skupiny tok protokolování povoleno na jeden nebo více skupin zabezpečení sítě ve vašem účtu. Pokyny pro povolení zabezpečení sítě protokoly toků, přečtěte si následující článek: [Úvod k protokolování toků pro skupiny zabezpečení sítě](network-watcher-nsg-flow-logging-overview.md).
 
-## <a name="retrieve-the-block-list"></a>Načtení do seznamu zakázaných položek
+## <a name="retrieve-the-block-list"></a>Načíst do seznamu zakázaných položek
 
-Následující PowerShell nastavuje proměnné potřebné pro dotaz na objekt blob NSG toku protokolu a seznam bloků v rámci [CloudBlockBlob](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.cloudblockblob?view=azurestorage-8.1.3) objekt blob bloku. Aktualizujte skript tak, aby obsahovala platné hodnoty pro vaše prostředí.
+Následující příkaz Powershellu nastaví proměnné potřebné k dotazování blob protokolů toku NSG a bloky v seznamu [CloudBlockBlob](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.cloudblockblob?view=azurestorage-8.1.3) objektů blob bloku. Aktualizujte skript v tak, aby obsahovala platné hodnoty pro vaše prostředí.
 
 ```powershell
-# The SubscriptionID to use
-$subscriptionId = "00000000-0000-0000-0000-000000000000"
+function Get-NSGFlowLogBlockList {
+    [CmdletBinding()]
+    param (
+        [string] [Parameter(Mandatory=$true)] $subscriptionId,
+        [string] [Parameter(Mandatory=$true)] $NSGResourceGroupName,
+        [string] [Parameter(Mandatory=$true)] $NSGName,
+        [string] [Parameter(Mandatory=$true)] $storageAccountName,
+        [string] [Parameter(Mandatory=$true)] $storageAccountResourceGroup,
+        [string] [Parameter(Mandatory=$true)] $macAddress,
+        [datetime] [Parameter(Mandatory=$true)] $logTime
+    )
 
-# Resource group that contains the Network Security Group
-$resourceGroupName = "<resourceGroupName>"
+    process {
+        # Retrieve the primary storage account key to access the NSG logs
+        $StorageAccountKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $storageAccountResourceGroup -Name $storageAccountName).Value[0]
 
-# The name of the Network Security Group
-$nsgName = "NSGName"
+        # Setup a new storage context to be used to query the logs
+        $ctx = New-AzureStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey
 
-# The storage account name that contains the NSG logs
-$storageAccountName = "<storageAccountName>" 
+        # Container name used by NSG flow logs
+        $ContainerName = "insights-logs-networksecuritygroupflowevent"
 
-# The date and time for the log to be queried, logs are stored in hour intervals.
-[datetime]$logtime = "06/16/2017 20:00"
+        # Name of the blob that contains the NSG flow log
+        $BlobName = "resourceId=/SUBSCRIPTIONS/${subscriptionId}/RESOURCEGROUPS/${NSGResourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/${NSGName}/y=$($logTime.Year)/m=$(($logTime).ToString("MM"))/d=$(($logTime).ToString("dd"))/h=$(($logTime).ToString("HH"))/m=00/macAddress=$($macAddress)/PT1H.json"
 
-# Retrieve the primary storage account key to access the NSG logs
-$StorageAccountKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageAccountName).Value[0]
+        # Gets the storage blog
+        $Blob = Get-AzureStorageBlob -Context $ctx -Container $ContainerName -Blob $BlobName
 
-# Setup a new storage context to be used to query the logs
-$ctx = New-AzureStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey
+        # Gets the block blog of type 'Microsoft.WindowsAzure.Storage.Blob.CloudBlob' from the storage blob
+        $CloudBlockBlob = [Microsoft.WindowsAzure.Storage.Blob.CloudBlockBlob] $Blob.ICloudBlob
 
-# Container name used by NSG flow logs
-$ContainerName = "insights-logs-networksecuritygroupflowevent"
+        # Stores the block list in a variable from the block blob.
+        $blockList = $CloudBlockBlob.DownloadBlockList()
 
-# The MAC Address of the Network Interface
-$macAddress = "000D3AFA8650"
-
-# Name of the blob that contains the NSG flow log
-$BlobName = "resourceId=/SUBSCRIPTIONS/${subscriptionId}/RESOURCEGROUPS/${resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/${nsgName}/y=$($logtime.Year)/m=$(($logtime).ToString("MM"))/d=$(($logtime).ToString("dd"))/h=$(($logtime).ToString("HH"))/m=00/macAddress=$($macAddress)/PT1H.json"
-
-# Gets the storage blog
-$Blob = Get-AzureStorageBlob -Context $ctx -Container $ContainerName -Blob $BlobName
-
-# Gets the block blog of type 'Microsoft.WindowsAzure.Storage.Blob.CloudBlob' from the storage blob
-$CloudBlockBlob = [Microsoft.WindowsAzure.Storage.Blob.CloudBlockBlob] $Blob.ICloudBlob
-
-# Stores the block list in a variable from the block blob.
-$blockList = $CloudBlockBlob.DownloadBlockList()
+        # Return the Block List
+        $blockList
+    }
+}
+$blockList = Get-NSGFlowLogBlockList -subscriptionId "00000000-0000-0000-0000-000000000000" -NSGResourceGroupName "resourcegroupname" -storageAccountName "storageaccountname" -storageAccountResourceGroup "sa-rg" -macAddress "000D3AF8196E" -logTime "03/07/2018 22:00"
 ```
 
-`$blockList` Proměnné vrátí seznam bloků v objektu blob. Každý objekt blob bloku obsahuje alespoň dva bloky.  První blok má délku `21` bajtů, tento blok obsahuje otvírací závorky protokolu json. Další blok není pravé hranaté závorky a má délku `9` bajtů.  Jak je vidět v následujícím příkladu protokolu má sedm položky v něm, každý se jednotlivé položky. Všechny nové položky v protokolu jsou přidány na konec bezprostředně před posledního bloku.
+`$blockList` Proměnné vrátí seznam bloků v objektu blob. Každý objekt blob bloku obsahuje aspoň dva bloky.  První blok má délku `21` bajtů, tento blok obsahuje otvírací závorky protokolu json. Další blok je uzavírací hranaté závorce a má délku `9` bajtů.  Jak je vidět v následujícím příkladu protokolu obsahuje sedm položek, každý se jednotlivé položky. Všechny nové položky v protokolu jsou přidány na konec přímo před poslední blok.
 
 ```
 Name                                         Length Committed
@@ -95,9 +96,9 @@ Mzk1YzQwM2U0ZWY1ZDRhOWFlMTNhYjQ3OGVhYmUzNjk=   2675      True
 ZjAyZTliYWE3OTI1YWZmYjFmMWI0MjJhNzMxZTI4MDM=      2      True
 ```
 
-## <a name="read-the-block-blob"></a>Čtení objektů blob bloku
+## <a name="read-the-block-blob"></a>Čtení objektu blob bloku
 
-Další potřebujeme ke čtení `$blocklist` proměnná načíst data. V tomto příkladu, které jsme iteraci v rámci blocklist čtení bajtů z každého bloku a scénáře je v matici. Používáme [DownloadRangeToByteArray](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob.downloadrangetobytearray?view=azurestorage-8.1.3#Microsoft_WindowsAzure_Storage_Blob_CloudBlob_DownloadRangeToByteArray_System_Byte___System_Int32_System_Nullable_System_Int64__System_Nullable_System_Int64__Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_) metoda načíst data.
+Dále budeme potřebovat číst `$blocklist` proměnné, aby se načetla data. V tomto příkladu, který jsme seznamu blokovaných iterovat Bajty čtení z každého bloku a scénáře je v poli. Používáme [DownloadRangeToByteArray](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob.downloadrangetobytearray?view=azurestorage-8.1.3#Microsoft_WindowsAzure_Storage_Blob_CloudBlob_DownloadRangeToByteArray_System_Byte___System_Int32_System_Nullable_System_Int64__System_Nullable_System_Int64__Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_) metody, aby se načetla data.
 
 ```powershell
 # Set the size of the byte array to the largest block
@@ -131,9 +132,9 @@ $valuearray += $value
 }
 ```
 
-Nyní `$valuearray` pole obsahuje hodnotu řetězce každého bloku. Ověření vstupu, získat druhý poslední hodnota z pole spuštěním `$valuearray[$valuearray.Length-2]`. Jsme nechcete, aby poslední hodnotu je právě pravá závorka.
+Nyní `$valuearray` pole obsahuje řetězec hodnoty každého bloku. Ověření vstupu, a získat druhý poslední hodnotu z pole `$valuearray[$valuearray.Length-2]`. Tudy, že poslední hodnota je právě pravou hranatou závorku.
 
-Následující příklad ukazuje výsledky této hodnoty:
+Výsledky z této hodnoty jsou uvedeny v následujícím příkladu:
 
 ```json
         {
@@ -155,11 +156,11 @@ A","1497646742,10.0.0.4,168.62.32.14,44942,443,T,O,A","1497646742,10.0.0.4,52.24
         }
 ```
 
-Tento scénář je příklad čtení položek v toku protokolů NSG bez nutnosti analyzovat celý protokol. Nové položky v protokolu může číst, jako jsou zapsané pomocí ID bloku nebo sledování délka bloky, které jsou uložené v objekt blob bloku. To umožňuje číst pouze nové položky.
+Tento scénář je příklad toho, jak přečíst záznamy v protokolů toku NSG bez nutnosti analyzovat celý protokol. Jak jsou psány pomocí ID bloku nebo sledování délky bloků, které jsou uloženy v objektu blob bloku si můžete přečíst nové položky v protokolu. Umožňuje číst pouze nové položky.
 
 
 ## <a name="next-steps"></a>Další postup
 
-Navštivte [vizualizovat protokolů toku NSG sledovací proces sítě Azure pomocí nástroje s otevřeným zdrojem](network-watcher-visualize-nsg-flow-logs-open-source-tools.md) Další informace o k zobrazení protokolů NSG toku.
+Navštivte [vizualizace protokolů toku NSG sledovací proces sítě Azure s využitím opensourcových nástrojů](network-watcher-visualize-nsg-flow-logs-open-source-tools.md) Další informace o dalších způsobech k zobrazení protokolů toku NSG.
 
-Další informace o úložiště objektů BLOB najdete: [vazby úložiště objektů Blob v Azure funkce](../azure-functions/functions-bindings-storage-blob.md)
+Další informace o objektech BLOB storage najdete tady: [vazby služby Azure Functions Blob storage](../azure-functions/functions-bindings-storage-blob.md)

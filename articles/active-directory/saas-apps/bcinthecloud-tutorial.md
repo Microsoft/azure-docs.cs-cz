@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s BC v cloudu | Microsoft Docs'
+title: 'Kurz: Integrace Azure Active Directory s BC v cloudu | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a BC v cloudu.
 services: active-directory
 documentationCenter: na
@@ -14,199 +14,199 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/1/2017
 ms.author: jeedes
-ms.openlocfilehash: 936587b5f1cd90104073438232141a113cabb375
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: f451ce2296626c4b79e986ffba7049a6b496c74d
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36226778"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054011"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-bc-in-the-cloud"></a>Kurz: Azure Active Directory integrace s BC v cloudu
+# <a name="tutorial-azure-active-directory-integration-with-bc-in-the-cloud"></a>Kurz: Integrace Azure Active Directory s BC v cloudu
 
-V tomto kurzu zjistěte, jak integrovat BC v cloudu pomocí Azure Active Directory (Azure AD).
+V tomto kurzu se dozvíte, jak integrovat BC v cloudu pomocí Azure Active Directory (Azure AD).
 
-Integrace BC v cloudu s Azure AD poskytuje následující výhody:
+Integrace BC v cloudu pomocí služby Azure AD poskytuje následující výhody:
 
 - Můžete řídit ve službě Azure AD, který má přístup k BC v cloudu
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k BC v cloudu (jednotné přihlášení) s jejich účty Azure AD
-- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
+- Můžete povolit uživatelům, aby automaticky získat přihlášení k BC v cloudu (Single Sign-On) pomocí svých účtů služby Azure AD
+- Můžete spravovat své účty na jediném místě – na webu Azure portal
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
 Konfigurace integrace Azure AD s BC v cloudu, potřebujete následující položky:
 
-- Předplatné služby Azure AD
-- BC v v cloudu jednotného přihlašování povolené předplatné
+- S předplatným služby Azure AD
+- BC v v cloudu jednotného přihlašování povolená předplatného
 
 > [!NOTE]
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
 
-- Nepoužívejte provozním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební verze jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).
+- Nepoužívejte produkčním prostředí, pokud to není nutné.
+- Pokud nemáte prostředí zkušební verzi Azure AD, můžete získat měsíční zkušební [tady](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání BC v cloudu z Galerie
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
 ## <a name="adding-bc-in-the-cloud-from-the-gallery"></a>Přidání BC v cloudu z Galerie
-Konfigurace integrace BC v cloudu do služby Azure AD, potřebujete přidat BC v cloudu z Galerie si na seznam spravovaných aplikací SaaS.
+Konfigurace integrace BC v cloudové službě Azure AD, budete muset přidat BC v cloudu z Galerie na váš seznam spravovaných aplikací SaaS.
 
-**Pokud chcete přidat BC v cloudu z galerie, proveďte následující kroky:**
+**Chcete-li přidat BC v cloudu z galerie, postupujte následovně:**
 
-1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
+1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![Aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **přidat** tlačítko horní dialogové okno.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **přidat** tlačítko v horní části dialogového okna.
 
     ![Aplikace][3]
 
 4. Do vyhledávacího pole zadejte **BC v cloudu**.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/bcinthecloud-tutorial/tutorial_bcinthecloud_search.png)
+    ![Vytváří se testovací uživatele služby Azure AD](./media/bcinthecloud-tutorial/tutorial_bcinthecloud_search.png)
 
-5. Na panelu výsledků vyberte **BC v cloudu**a potom klikněte na **přidat** tlačítko Přidat aplikaci.
+5. Na panelu výsledků vyberte **BC v cloudu**a potom klikněte na tlačítko **přidat** tlačítko pro přidání aplikace.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/bcinthecloud-tutorial/tutorial_bcinthecloud_addfromgallery.png)
+    ![Vytváří se testovací uživatele služby Azure AD](./media/bcinthecloud-tutorial/tutorial_bcinthecloud_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
-V této části můžete nakonfigurovat a otestovat Azure AD jednotné přihlašování s BC v cloudu podle testovacího uživatele názvem "Britta Simon."
+V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s BC v cloudu založená na uživateli test "Britta Simon."
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v BC v cloudu je pro uživatele ve službě Azure AD. Jinými slovy musí navázat vztah propojení mezi uživatele Azure AD a související uživatelské v BC v cloudu.
+Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšky v BC v cloudu je pro uživatele ve službě Azure AD. Jinými slovy musí navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské v BC v cloudu.
 
-V BC v cloudu, přiřaďte hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** k navázání vztahu odkazu.
+V BC v cloudu, přiřaďte hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** a tím vytvoří vztah odkazu.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s BC v cloudu, je třeba dokončit následující stavební bloky:
+Ke konfiguraci a testování v cloudu služby Azure AD jednotné přihlašování s BC, které potřebujete k dokončení následujících stavebních bloků:
 
-1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
-2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytváření BC v cloudu testovacího uživatele](#creating-a-bc-in-the-cloud-test-user)**  – Pokud chcete mít protějšek Britta Simon v BC v cloudu, který je propojený s Azure AD reprezentace daného uživatele.
-4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
+1. **[Konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+2. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytváření v cloudu testovacího uživatele BC](#creating-a-bc-in-the-cloud-test-user)**  – Pokud chcete mít protějšek Britta Simon v BC v cloudu, který je propojený s Azure AD reprezentace uživatele.
+4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace Azure AD jednotné přihlašování
+### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v vaší BC v cloudových aplikací.
+V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování ve vašich BC v cloudové aplikaci.
 
 **Ke konfiguraci Azure AD jednotné přihlašování s BC v cloudu, proveďte následující kroky:**
 
-1. Na portálu Azure na **BC v cloudu** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. Na webu Azure Portal na **BC v cloudu** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
 
-    ![Konfigurovat jednotné přihlašování][4]
+    ![Konfigurace jednotného přihlašování][4]
 
-2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
+2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
-    ![Konfigurovat jednotné přihlašování](./media/bcinthecloud-tutorial/tutorial_bcinthecloud_samlbase.png)
+    ![Konfigurace jednotného přihlašování](./media/bcinthecloud-tutorial/tutorial_bcinthecloud_samlbase.png)
 
-3. Na **BC v cloudu domény a adresy URL** část, proveďte následující kroky:
+3. Na **BC v cloudu domény a adresy URL** části, proveďte následující kroky:
 
-    ![Konfigurovat jednotné přihlašování](./media/bcinthecloud-tutorial/tutorial_bcinthecloud_url.png)
+    ![Konfigurace jednotného přihlašování](./media/bcinthecloud-tutorial/tutorial_bcinthecloud_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://app.bcinthecloud.com/router/loginSaml/<customerid>`
+    a. V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://app.bcinthecloud.com/router/loginSaml/<customerid>`
 
-    b. V **identifikátor** textovému poli, zadejte adresu URL jako: `https://app.bcinthecloud.com`
+    b. V **identifikátor** textového pole zadejte adresu URL jako: `https://app.bcinthecloud.com`
 
     > [!NOTE] 
-    > Tato hodnota není skutečné. Aktualizujte tuto hodnotu s skutečná adresa URL přihlašování. Obraťte se na [tým podpory BC v klientovi cloudu](https://www.bcinthecloud.com/supportcenter/) získat tuto hodnotu. 
+    > Tato hodnota není skutečný. Aktualizujte tuto hodnotu skutečné přihlašovací adresa URL. Kontakt [tým podpory BC v cloudu klienta](https://www.bcinthecloud.com/supportcenter/) tuto výhodu získáte. 
  
-4. Na **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat ve vašem počítači.
+4. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor metadat ve vašem počítači.
 
-    ![Konfigurovat jednotné přihlašování](./media/bcinthecloud-tutorial/tutorial_bcinthecloud_certificate.png) 
+    ![Konfigurace jednotného přihlašování](./media/bcinthecloud-tutorial/tutorial_bcinthecloud_certificate.png) 
 
 5. Klikněte na tlačítko **Uložit** tlačítko.
 
-    ![Konfigurovat jednotné přihlašování](./media/bcinthecloud-tutorial/tutorial_general_400.png)
+    ![Konfigurace jednotného přihlašování](./media/bcinthecloud-tutorial/tutorial_general_400.png)
 
-6. Konfigurace jednotného přihlašování na **BC v cloudu** straně, budete muset odeslat stažené **soubor XML s metadaty** k [tým podpory BC v cloudu](https://www.bcinthecloud.com/supportcenter/).
+6. Ke konfiguraci jednotného přihlašování na **BC v cloudu** straně, je nutné odeslat na stažený **soubor XML s metadaty** k [tým podpory BC v cloudu](https://www.bcinthecloud.com/supportcenter/).
 
 > [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
-### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
-Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
+### <a name="creating-an-azure-ad-test-user"></a>Vytváří se testovací uživatele služby Azure AD
+Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-![Vytvořit uživatele Azure AD][100]
+![Vytvoření uživatele Azure AD][100]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
 
-1. V **portál Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
+1. V **webu Azure portal**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/bcinthecloud-tutorial/create_aaduser_01.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/bcinthecloud-tutorial/create_aaduser_01.png) 
 
 2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
-    ![Vytváření testovacího uživatele Azure AD](./media/bcinthecloud-tutorial/create_aaduser_02.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/bcinthecloud-tutorial/create_aaduser_02.png) 
 
-3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** horní dialogové okno.
+3. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
  
-    ![Vytváření testovacího uživatele Azure AD](./media/bcinthecloud-tutorial/create_aaduser_03.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/bcinthecloud-tutorial/create_aaduser_03.png) 
 
-4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
+4. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
  
-    ![Vytváření testovacího uživatele Azure AD](./media/bcinthecloud-tutorial/create_aaduser_04.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/bcinthecloud-tutorial/create_aaduser_04.png) 
 
-    a. V **název** textovému poli, typ **BrittaSimon**.
+    a. V **název** textové pole, typ **BrittaSimon**.
 
-    b. V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.
+    b. V **uživatelské jméno** textové pole, typ **e-mailová adresa** z BrittaSimon.
 
-    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
+    c. Vyberte **zobrazit heslo** a zapište si hodnotu **heslo**.
 
     d. Klikněte na možnost **Vytvořit**.
  
 ### <a name="creating-a-bc-in-the-cloud-test-user"></a>Vytváření BC v cloudu testovacího uživatele
 
-V této části vytvoříte uživatele volal Britta Simon v BC v cloudu. Práce s [tým podpory BC v klientovi cloudu](https://www.bcinthecloud.com/supportcenter/) přidat uživatele do BC v cloudových aplikací. Uživatelé musí být vytvořen a aktivovat dříve, než použijete jednotné přihlašování. 
+V této části vytvoříte uživateli Britta Simon v BC v cloudu. Práce s [tým podpory BC v cloudu klienta](https://www.bcinthecloud.com/supportcenter/) k přidání uživatelů do BC v cloudové aplikaci. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování. 
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu BC v cloudu.
+V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k BC v cloudu.
 
 ![Přiřadit uživatele][200] 
 
 **Pokud chcete přiřadit Britta Simon BC v cloudu, proveďte následující kroky:**
 
-1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
+1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
 2. V seznamu aplikací vyberte **BC v cloudu**.
 
-    ![Konfigurovat jednotné přihlašování](./media/bcinthecloud-tutorial/tutorial_bcinthecloud_app.png) 
+    ![Konfigurace jednotného přihlašování](./media/bcinthecloud-tutorial/tutorial_bcinthecloud_app.png) 
 
 3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.
+4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
+5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
+6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
+7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="testing-single-sign-on"></a>Testování jednotné přihlašování
+### <a name="testing-single-sign-on"></a>Testování jednotného přihlašování
 
-V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
+V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
- Po kliknutí na tlačítko BC na dlaždici cloudu na přístupovém panelu, jste měli získat automaticky přihlášení k vaší BC v cloudových aplikací. Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](../active-directory-saas-access-panel-introduction.md).
+ Po kliknutí na BC v cloudu dlaždici na přístupovém panelu, vám by měl získat automaticky přihlášení k vaší BC v cloudové aplikaci. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](tutorial-list.md)
+* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

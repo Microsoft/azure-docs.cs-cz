@@ -11,12 +11,12 @@ ms.topic: article
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
 manager: douge
-ms.openlocfilehash: fdf195d96bb455334cb4e898e560813ee8709a50
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 4dee39b56cf0f6494f6e79c70b85bbf711d33d65
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39035648"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044590"
 ---
 # <a name="troubleshooting-guide"></a>Průvodce odstraňováním potíží
 
@@ -49,6 +49,19 @@ Chyba znamená, že tento azds.exe není v proměnné prostředí PATH, jak je v
 ### <a name="try"></a>Zkuste:
 
 Spusťte VS Code z příkazového řádku, kde je správně nastavit proměnné prostředí PATH.
+
+## <a name="error-azds-is-not-recognized-as-an-internal-or-external-command-operable-program-or-batch-file"></a>Chyba 'azds' nebyl rozpoznán jako vnitřního ani vnějšího příkazu, spustitelného programu nebo dávkového souboru
+ 
+Pokud azds.exe není nainstalovaná nebo správně nakonfigurovaný, může se zobrazit tato chyba.
+
+### <a name="try"></a>Zkuste:
+
+1. Zkontrolujte umístění %ProgramFiles%/Microsoft SDKs\Azure\Azure Dev prostory CLI (Preview) pro azds.exe. Pokud existuje, přidejte do proměnné prostředí PATH v tomto umístění.
+2. Pokud není nainstalovaná azds.exe, spusťte následující příkaz:
+
+    ```cmd
+    az aks use-dev-spaces -n <cluster-name> -g <resource-group>
+    ```
 
 ## <a name="error-upstream-connect-error-or-disconnectreset-before-headers"></a>Chyba "upstream Chyba připojení nebo odpojení/reset před záhlaví"
 Při pokusu o přístup ke službě, může se zobrazit tato chyba. Například když přejdete na adresu URL služby v prohlížeči. 

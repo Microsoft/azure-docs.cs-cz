@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: df46a4de32482f9da46b81e6b0fbc55c2cc1af35
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: e2c4c59e52f277358027f5d228fdf43822822992
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37444238"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044524"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Možnosti zasílání zpráv o správě hesel Azure AD
 
@@ -49,7 +49,7 @@ V Azure portal ještě neznáte vylepšili jsme způsobu, jakým se zobrazí res
 1. Přejděte [webu Azure portal](https://portal.azure.com).
 2. Vyberte **všechny služby** v levém podokně.
 3. Vyhledejte **Azure Active Directory** v seznamu služeb a vyberte ji.
-4. Vyberte **uživatelů a skupin**.
+4. Vyberte **Uživatelé a skupiny**.
 5. Vyberte **protokoly auditu** z **uživatelů a skupin** nabídky. Zobrazí všechny události auditu, ke kterým došlo před všichni uživatelé ve vašem adresáři. Můžete filtrovat toto zobrazení můžete zobrazit všechny události související s hesly.
 6. Chcete-li filtrovat toto zobrazení můžete zobrazit jenom události související s hesly obnovení, vyberte **filtr** tlačítko v horní části podokna.
 7. Z **filtr** nabídce vyberte možnost **kategorie** rozevíracího seznamu a změňte ho na **samoobslužné správy hesel** typ kategorie.
@@ -173,8 +173,8 @@ Následující seznam popisuje tato aktivita podrobně:
 ## <a name="next-steps"></a>Další postup
 
 * [Jak dokončit úspěšné zavedení SSPR?](howto-sspr-deployment.md)
-* [Resetování nebo změna hesla](../active-directory-passwords-update-your-own-password.md)
-* [Registrace samoobslužného resetování hesla](../active-directory-passwords-reset-register.md)
+* [Resetování nebo změna hesla](../user-help/active-directory-passwords-update-your-own-password.md)
+* [Registrace samoobslužného resetování hesla](../user-help/active-directory-passwords-reset-register.md)
 * [Máte dotaz k licencování?](concept-sspr-licensing.md)
 * [Jaká data používá SSPR a která data byste měli naplnit pro vaše uživatele?](howto-sspr-authenticationdata.md)
 * [Které metody ověřování jsou dostupné pro uživatele?](concept-sspr-howitworks.md#authentication-methods)

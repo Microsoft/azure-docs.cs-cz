@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s virtuálními počítači IQNavigator | Microsoft Docs'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a IQNavigator virtuálních počítačů.
+title: 'Kurz: Integrace Azure Active Directory s virtuálními počítači IQNavigator | Dokumentace Microsoftu'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a virtuálními počítači IQNavigator.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,210 +14,210 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: jeedes
-ms.openlocfilehash: e1219134b398219d653a87b18aa9ed582f84a33d
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 9b264a7ba1479e485ff528ee242c78c4b39010dc
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36226267"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39052512"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-iqnavigator-vms"></a>Kurz: Azure Active Directory integrace s virtuálními počítači IQNavigator
+# <a name="tutorial-azure-active-directory-integration-with-iqnavigator-vms"></a>Kurz: Integrace Azure Active Directory s virtuálními počítači IQNavigator
 
-V tomto kurzu zjistěte, jak integrovat IQNavigator virtuální počítače v Azure Active Directory (Azure AD).
+V tomto kurzu se dozvíte, jak integrovat IQNavigator virtuálních počítačů s Azure Active Directory (Azure AD).
 
 Integrace IQNavigator virtuálních počítačů s Azure AD poskytuje následující výhody:
 
 - Můžete řídit ve službě Azure AD, který má přístup k virtuálním počítačům IQNavigator
-- Můžete povolit uživatelům, aby automaticky získat přihlášeného k virtuálním počítačům IQNavigator (jednotné přihlášení) s jejich účty Azure AD
-- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
+- Uživatele, aby automaticky získat přihlášeného k virtuálním počítačům IQNavigator (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD
+- Můžete spravovat své účty na jediném místě – na webu Azure portal
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Ke konfiguraci integrace služby Azure AD s virtuálními počítači IQNavigator, potřebujete následující položky:
+Konfigurace integrace Azure AD s virtuálními počítači IQNavigator, potřebujete následující položky:
 
-- Předplatné služby Azure AD
-- Virtuální počítače IQNavigator jednotné přihlašování povolené předplatné
+- S předplatným služby Azure AD
+- Virtuálních počítačích IQNavigator jednotného přihlašování povolená předplatného
 
 > [!NOTE]
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
 
-- Nepoužívejte provozním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verze Azure AD, můžete získat a jeden měsíc zkušební [nabídka zkušební verze](https://azure.microsoft.com/pricing/free-trial/).
+- Nepoužívejte produkčním prostředí, pokud to není nutné.
+- Pokud nemáte prostředí zkušební verzi Azure AD, můžete získat měsíční zkušební zde [nabídka zkušební verze](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání IQNavigator virtuálních počítačů z Galerie
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
 ## <a name="adding-iqnavigator-vms-from-the-gallery"></a>Přidání IQNavigator virtuálních počítačů z Galerie
-Při konfiguraci integrace IQNavigator virtuálních počítačů do Azure AD, potřebujete přidat IQNavigator virtuálních počítačů z Galerie si na seznam spravovaných aplikací SaaS.
+Ke konfiguraci integrace IQNavigator virtuálních počítačů do služby Azure AD, budete muset přidat IQNavigator virtuální počítače z Galerie na váš seznam spravovaných aplikací SaaS.
 
-**Pokud chcete přidat virtuální počítače IQNavigator z galerie, proveďte následující kroky:**
+**Chcete-li přidat IQNavigator virtuálních počítačů z galerie, postupujte následovně:**
 
-1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
+1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![Aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Aplikace][3]
 
-4. Do vyhledávacího pole zadejte **virtuální počítače IQNavigator**.
+4. Do vyhledávacího pole zadejte **virtuálních počítačů IQNavigator**.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_search.png)
+    ![Vytváří se testovací uživatele služby Azure AD](./media/iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_search.png)
 
-5. Na panelu výsledků vyberte **virtuální počítače IQNavigator**a potom klikněte na **přidat** tlačítko Přidat aplikaci.
+5. Na panelu výsledků vyberte **virtuálních počítačů IQNavigator**a potom klikněte na tlačítko **přidat** tlačítko pro přidání aplikace.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_addfromgallery.png)
+    ![Vytváří se testovací uživatele služby Azure AD](./media/iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
-V této části můžete nakonfigurovat, testovací Azure AD jednotné přihlašování s virtuálními počítači IQNavigator podle testovacího uživatele názvem "Britta Simon".
+V této části nakonfigurujete a test Azure AD jednotné přihlašování s IQNavigator virtuálních počítačů podle testovacího uživatele nazývá "Britta Simon".
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějšku ve virtuálních počítačích IQNavigator je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské ve virtuálních počítačích IQNavigator musí navázat.
+Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšek ve virtuálních počítačích IQNavigator je pro uživatele ve službě Azure AD. Jinými slovy vztah odkazu mezi uživatele služby Azure AD a související uživatelské ve virtuálních počítačích IQNavigator potřeba navázat.
 
-Ve virtuálních počítačích IQNavigator, přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** k navázání vztahu odkazu.
+Ve virtuálních počítačích IQNavigator, přiřaďte hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** a tím vytvoří vztah odkazu.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s virtuálními počítači IQNavigator, je třeba dokončit následující stavební bloky:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování pomocí IQNavigator virtuálních počítačů, které potřebujete k dokončení následujících stavebních bloků:
 
-1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
-2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele virtuální počítače IQNavigator](#creating-a-iqnavigator-vms-test-user)**  – Pokud chcete mít protějšek Britta Simon ve virtuálních počítačích IQNavigator propojeném s Azure AD reprezentace daného uživatele.
-4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
+1. **[Konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+2. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytváření virtuálních počítačů IQNavigator testovacího uživatele](#creating-a-iqnavigator-vms-test-user)**  – Pokud chcete mít protějšek Britta Simon ve virtuálních počítačích IQNavigator, který je propojený s Azure AD reprezentace uživatele.
+4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace Azure AD jednotné přihlašování
+### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci IQNavigator virtuálních počítačů.
+V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování v aplikaci IQNavigator virtuálních počítačů.
 
 **Ke konfiguraci Azure AD jednotné přihlašování s virtuálními počítači IQNavigator, proveďte následující kroky:**
 
-1. Na portálu Azure na **virtuální počítače IQNavigator** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. Na webu Azure Portal na **virtuálních počítačů IQNavigator** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
 
-    ![Konfigurovat jednotné přihlašování][4]
+    ![Konfigurace jednotného přihlašování][4]
 
-2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
+2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
 
-    ![Konfigurovat jednotné přihlašování](./media/iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_samlbase.png)
+    ![Konfigurace jednotného přihlašování](./media/iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_samlbase.png)
 
-3. Na **IQNavigator virtuálních počítačů domény a adresy URL** část, proveďte následující kroky:
+3. Na **IQNavigator virtuální počítače domény a adresy URL** části, proveďte následující kroky:
 
-    ![Konfigurovat jednotné přihlašování](./media/iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_url.png)
+    ![Konfigurace jednotného přihlašování](./media/iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_url.png)
 
-    a. V **identifikátor** textovému poli, zadejte adresu URL:`iqn.com`
+    a. V **identifikátor** textového pole zadejte adresu URL:`iqn.com`
 
-    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<subdomain>.iqnavigator.com/security/login?client_name=https://sts.window.net/<instance name>`
+    b. V **adresy URL odpovědi** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<subdomain>.iqnavigator.com/security/login?client_name=https://sts.window.net/<instance name>`
 
-4. Zkontrolujte **zobrazit upřesňující nastavení adresy URL**, proveďte následující krok:
+4. Zkontrolujte **zobrazit pokročilé nastavení URL**, postupujte následovně:
 
-    ![Konfigurovat jednotné přihlašování](./media/iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_url1.png)
+    ![Konfigurace jednotného přihlašování](./media/iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_url1.png)
 
-    V **předávání stavu** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<subdomain>.iqnavigator.com`
+    V **propojení stavu** textového pole zadejte adresu URL pomocí následujícímu vzoru:`https://<subdomain>.iqnavigator.com`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte se skutečným stavem adresa URL odpovědi a předávání. Obraťte se na [tým podpory IQNavigator virtuální počítače klientů](https://www.beeline.com/iqn-product-support/) k získání těchto hodnot.
+    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty se skutečným stavem adresy URL odpovědi a propojení. Kontakt [tým podpory IQNavigator virtuálních počítačů klienta](https://www.beeline.com/iqn-product-support/) k získání těchto hodnot.
 
-5. Na **SAML podpisový certifikát** části, klikněte na tlačítko Kopírovat kopírování **adresu Url aplikace federační Metadata** a vložte do poznámkového bloku.
+5. Na **podpisový certifikát SAML** klikněte na tlačítko Kopírovat zkopírujte **adresa Url federačních metadat aplikace** a vložte ho do poznámkového bloku.
     
-    ![Konfigurovat jednotné přihlašování](./media/iqnavigatorvms-tutorial/tutorial_metadataurl.png)
+    ![Konfigurace jednotného přihlašování](./media/iqnavigatorvms-tutorial/tutorial_metadataurl.png)
 
-6. Aplikace IQNavigator očekávají, že hodnota identifikátoru jedinečná uživatelská v názvu identifikátor deklarace identity. Zákazníka můžete namapovat správné hodnoty pro název identifikátor deklarace identity. V takovém případě jsme mají mapovat uživatele. UserPrincipalName pro ukázku účel. Ale podle nastavení organizace by měla být mapována správnou hodnotu pro ni.
+6. Aplikace IQNavigator očekávat, že hodnota identifikátoru jedinečných uživatelů v deklaraci identity identifikátor názvu. Odběratele můžete namapovat správnou hodnotu pro deklaraci identity identifikátor názvu. V tomto případě jsme změnili uživatele. UserPrincipalName pro účely ukázky. Ale podle nastavení organizaci byste měli namapovat správnou hodnotu pro něj.
 
-    ![Konfigurovat jednotné přihlašování](./media/iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_attribute.png)
+    ![Konfigurace jednotného přihlašování](./media/iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_attribute.png)
 
 7. Klikněte na tlačítko **Uložit** tlačítko.
 
-    ![Konfigurovat jednotné přihlašování](./media/iqnavigatorvms-tutorial/tutorial_general_400.png)
+    ![Konfigurace jednotného přihlašování](./media/iqnavigatorvms-tutorial/tutorial_general_400.png)
 
-8. Na **konfigurace virtuálních počítačů IQNavigator** klikněte na tlačítko **konfigurace virtuálních počítačů IQNavigator** otevřete **konfigurovat přihlášení** okno. Kopírování **Sign-Out adresu URL, SAML Entity ID a SAML jeden přihlašování adresa URL služby** z **Stručná referenční příručka části.**
+8. Na **konfigurace virtuálních počítačů IQNavigator** klikněte na tlačítko **konfigurace virtuálních počítačů IQNavigator** otevřete **nakonfigurovat přihlašování** okno. Kopírovat **URL odhlašování SAML Entity ID a SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
 
-    ![Konfigurovat jednotné přihlašování](./media/iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_configure.png)
+    ![Konfigurace jednotného přihlašování](./media/iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_configure.png)
 
-9. Konfigurace jednotného přihlašování na **virtuální počítače IQNavigator** straně, budete muset odeslat **adresu Url aplikace federační Metadata**, **Sign-Out URL, SAML Entity ID a SAML jeden přihlašování adresa URL služby**k [tým podpory pro virtuální počítače IQNavigator](https://www.beeline.com/iqn-product-support/). Nastavují toto nastavení tak, aby měl jednotné přihlašování SAML připojení správně nastavena na obou stranách.
+9. Ke konfiguraci jednotného přihlašování na **IQNavigator virtuálních počítačů** straně, je nutné odeslat **adresa Url federačních metadat aplikace**, **URL odhlašování SAML Entity ID a SAML jednotné přihlašování – adresa URL služby**k [tým podpory virtuálních počítačů IQNavigator](https://www.beeline.com/iqn-product-support/). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
-### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
-Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
+### <a name="creating-an-azure-ad-test-user"></a>Vytváří se testovací uživatele služby Azure AD
+Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-![Vytvořit uživatele Azure AD][100]
+![Vytvoření uživatele Azure AD][100]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
 
-1. V **portál Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
+1. V **webu Azure portal**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/iqnavigatorvms-tutorial/create_aaduser_01.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/iqnavigatorvms-tutorial/create_aaduser_01.png) 
 
 2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
-    ![Vytváření testovacího uživatele Azure AD](./media/iqnavigatorvms-tutorial/create_aaduser_02.png)
+    ![Vytváří se testovací uživatele služby Azure AD](./media/iqnavigatorvms-tutorial/create_aaduser_02.png)
 
-3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** horní dialogové okno.
+3. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/iqnavigatorvms-tutorial/create_aaduser_03.png)
+    ![Vytváří se testovací uživatele služby Azure AD](./media/iqnavigatorvms-tutorial/create_aaduser_03.png)
 
-4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
+4. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
  
-    ![Vytváření testovacího uživatele Azure AD](./media/iqnavigatorvms-tutorial/create_aaduser_04.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/iqnavigatorvms-tutorial/create_aaduser_04.png) 
 
-    a. V **název** textovému poli, typ **BrittaSimon**.
+    a. V **název** textové pole, typ **BrittaSimon**.
 
-    b. V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.
+    b. V **uživatelské jméno** textové pole, typ **e-mailová adresa** z BrittaSimon.
 
-    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
+    c. Vyberte **zobrazit heslo** a zapište si hodnotu **heslo**.
 
     d. Klikněte na možnost **Vytvořit**.
 
-### <a name="creating-a-iqnavigator-vms-test-user"></a>Vytvoření zkušebního uživatele IQNavigator virtuální počítače
+### <a name="creating-a-iqnavigator-vms-test-user"></a>Vytváření virtuálních počítačů IQNavigator testovacího uživatele
 
-Cílem této části je vytvoření uživatele volat Britta Simon ve virtuálních počítačích IQNavigator. Práce s [tým podpory pro virtuální počítače IQNavigator](https://www.beeline.com/iqn-product-support/) přidat uživatele do účtu IQNavigator virtuálních počítačů.
+Cílem této části je vytvořte uživatele Britta Simon ve virtuálních počítačích IQNavigator. Práce s [tým podpory virtuálních počítačů IQNavigator](https://www.beeline.com/iqn-product-support/) k přidání uživatelů v účtu IQNavigator virtuálních počítačů.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon používat tak, že udělíte přístup k virtuálním počítačům IQNavigator Azure jednotné přihlašování.
+V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k virtuálním počítačům IQNavigator.
 
 ![Přiřadit uživatele][200]
 
-**Pokud chcete přiřadit Britta Simon IQNavigator virtuální počítače, proveďte následující kroky:**
+**Pokud chcete přiřadit k virtuálním počítačům IQNavigator Britta Simon, proveďte následující kroky:**
 
-1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
+1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201]
 
-2. V seznamu aplikací vyberte **virtuální počítače IQNavigator**.
+2. V seznamu aplikací vyberte **virtuálních počítačů IQNavigator**.
 
-    ![Konfigurovat jednotné přihlašování](./media/iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_app.png)
+    ![Konfigurace jednotného přihlašování](./media/iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_app.png)
 
 3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202]
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.
+4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
+5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
+6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
+7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="testing-single-sign-on"></a>Testování jednotné přihlašování
+### <a name="testing-single-sign-on"></a>Testování jednotného přihlašování
 
-V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
+V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Když kliknete na dlaždici IQNavigator virtuální počítače na přístupovém panelu, můžete by měl získat automaticky přihlášení k aplikaci IQNavigator virtuálních počítačů.
-Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](../active-directory-saas-access-panel-introduction.md).
+Po kliknutí na dlaždici IQNavigator virtuálních počítačů na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci IQNavigator virtuálních počítačů.
+Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](tutorial-list.md)
+* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->

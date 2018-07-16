@@ -1,6 +1,6 @@
-Při aktivitě kopírování, pokud je zdroj typu **FileSystemSource**, následující vlastnosti jsou k dispozici v rámci typeProperties části:
+V aktivitě kopírování, pokud je zdroj typu **FileSystemSource**, v části typeProperties jsou k dispozici následující vlastnosti:
 
 | Vlastnost | Popis | Povolené hodnoty | Požaduje se |
 | --- | --- | --- | --- |
-| Rekurzivní |Označuje, zda je data načíst rekurzivně z dílčí složky nebo pouze do zadané složky. |Hodnota TRUE, False (výchozí) |Ne |
+| rekurzivní |Určuje, jestli se data ze složek sub nebo pouze z určené složky Číst rekurzivně. |Hodnota TRUE, False (výchozí) |Ne |
 

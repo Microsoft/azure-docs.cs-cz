@@ -1,5 +1,5 @@
 ---
-title: Bash ve funkcích Azure Cloud Shell | Dokumentace Microsoftu
+title: Funkce Azure Cloud Shell | Dokumentace Microsoftu
 description: Přehled funkcí z prostředí Bash ve službě Azure Cloud Shell
 services: Azure
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 06/13/2018
+ms.date: 07/13/2018
 ms.author: juluk
-ms.openlocfilehash: f0be50a3e8328c26651e0db5c8fae708518a0ea1
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 09c3ca23aafc8519b9e3ad57d030f066bb153e26
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37861637"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39056187"
 ---
-# <a name="features--tools-for-bash-in-azure-cloud-shell"></a>Funkce a nástroje pro prostředí Bash ve službě Azure Cloud Shell
+# <a name="features--tools-for-azure-cloud-shell"></a>Funkce a nástroje pro Azure Cloud Shell
 
 [!INCLUDE [features-introblock](../../includes/cloud-shell-features-introblock.md)]
 
@@ -59,11 +59,11 @@ Cloud Shell zahrnuje předem nakonfigurované ověřování pro open source nás
 
 |Kategorie   |Název   |
 |---|---|
-|Nástroje pro Linux            |bash<br> zsh<br> TV<br> tmux<br> Ponořte se<br>               |
+|Nástroje pro Linux            |Bash<br> zsh<br> TV<br> tmux<br> Ponořte se<br>               |
 |Nástroje Azure            |[Azure CLI 2.0](https://github.com/Azure/azure-cli) a [1.0](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/azure/storage/storage-use-azcopy)<br> [Service Fabric CLI](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli) |
 |Textových editorů           |VIM<br> nano<br> (emacs)       |
 |Správy zdrojového kódu         |git                    |
-|Nástroje sestavení            |Ujistěte se<br> maven<br> npm<br> PIP         |
+|Nástroje sestavení            |Ujistěte se<br> Maven<br> npm<br> PIP         |
 |Containers             |[Rozhraní příkazového řádku dockeru](https://github.com/docker/cli)/[Docker Machine](https://github.com/docker/machine)<br> [Kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)<br> [Příkaz Helm](https://github.com/kubernetes/helm)<br> [ROZHRANÍ PŘÍKAZOVÉHO ŘÁDKU DC/OS](https://github.com/dcos/dcos-cli)         |
 |Databáze              |Klient MySQL<br> Klient PostgreSql<br> [Nástroj SQLCMD](https://docs.microsoft.com/sql/tools/sqlcmd-utility)<br> [mssql-scripter](https://github.com/Microsoft/sql-xplat-cli) |
 |Ostatní                  |iPython klienta<br> [Cloud Foundry rozhraní příkazového řádku](https://github.com/cloudfoundry/cli)<br> [Terraformu](https://www.terraform.io/docs/providers/azurerm/)<br> [Ansible](https://www.ansible.com/microsoft-azure)<br> [Chef InSpec](https://www.chef.io/inspec/)| 

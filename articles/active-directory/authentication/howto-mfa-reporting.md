@@ -1,6 +1,6 @@
 ---
-title: Přístup a použití sestav pro Azure MFA | Microsoft Docs
-description: Popisuje jak používat funkci Azure Multi-Factor Authentication - sestavy.
+title: Sestavy o přístupech a použití pro Azure MFA | Dokumentace Microsoftu
+description: Popisuje způsob použití funkce ověřování Azure Multi-Factor Authentication – sestavy.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
@@ -10,24 +10,24 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: 4eb91e37331a5af064d2af0e937eb071d805688f
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 146a86058adc73626e532f33e9fdbc83d9cf27e8
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37097875"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048983"
 ---
 # <a name="reports-in-azure-multi-factor-authentication"></a>Sestavy v Azure Multi-Factor Authentication
 
-Azure Multi-Factor Authentication nabízí několik sestav, které mohou být využívána vám a vaší organizaci, která je přístupná prostřednictvím portálu Azure. V následující tabulce jsou uvedeny dostupné sestavy:
+Azure Multi-Factor Authentication nabízí několik sestav, které mohou využívat vás a vaši organizaci, která je přístupná prostřednictvím webu Azure portal. V následující tabulce jsou uvedeny dostupné sestavy:
 
 | Sestava | Umístění | Popis |
 |:--- |:--- |:--- |
-| Historie blokovaného uživatele | Azure AD > MFA serveru > zablokovat nebo odblokovat uživatele | Zobrazuje historie žádostí o blokování nebo odblokování uživatelů. |
-| Využití a podvod výstrahy | Azure AD > přihlášení | Poskytuje informace o celkové využití: uživatelský souhrn a podrobnosti o uživateli; stejně jako historie upozornění na podvod odeslaných během období zadán. |
-| Využití pro místní komponenty | Azure AD > MFA serveru > Sestava aktivit | Poskytuje informace o celkové využití pro vícefaktorové ověřování prostřednictvím rozšíření serveru NPS, AD FS, tak i MFA server. |
-| Historie uživatele s jednorázovým přihlášením | Azure AD > MFA serveru > jednorázové přihlášení | Poskytuje historie žádostí o obejití služby Multi-Factor Authentication pro uživatele. |
-| Stav serveru | Azure AD > MFA serveru > Stav serveru | Zobrazí stav aplikace Multi-Factor Authentication Server spojené s vaším účtem. |
+| Historie blokovaného uživatele | Azure AD > MFA Server > blokování a odblokování uživatelů | Zobrazuje historie žádostí o blokování nebo odblokování uživatelů. |
+| Využití a odhalování výstrahy | Azure AD > přihlášení | Poskytuje informace o celkové využití: uživatelský souhrn a podrobnosti o uživateli; také historie upozornění na podvod odeslaných během období zadán. |
+| Využití pro místní komponenty | Azure AD > MFA Server > Sestava aktivit | Pomocí rozšíření serveru NPS, AD FS, poskytuje informace o celkové využití pro MFA a MFA serveru. |
+| Historie uživatele s jednorázovým přihlášením | Azure AD > MFA Server > jednorázové přihlášení | Poskytuje historii žádostí o obejít ověřování Multi-Factor Authentication pro uživatele. |
+| Stav serveru | Azure AD > MFA Server > Stav serveru | Zobrazí stav služby Multi-Factor Authentication Server spojenou s vaším účtem. |
 
 ## <a name="view-reports"></a>Zobrazení sestav 
 
@@ -37,17 +37,17 @@ Azure Multi-Factor Authentication nabízí několik sestav, které mohou být vy
 
    <center>![Cloud](./media/howto-mfa-reporting/report.png)</center>
 
-## <a name="powershell-reporting"></a>Vytváření sestav prostředí PowerShell
+## <a name="powershell-reporting"></a>Vytváření sestav pomocí Powershellu
 
-Identifikujte uživatele, kteří mají zaregistrovaný pro MFA pomocí prostředí PowerShell, který následuje.
+Identifikujte uživatele, kterým jste se zaregistrovali pro vícefaktorové ověřování pomocí Powershellu, který následuje.
 
 ```Get-MsolUser -All | where {$_.StrongAuthenticationMethods -ne $null} | Select-Object -Property UserPrincipalName```
 
-Identifikujte uživatele, kteří se ještě nezaregistrovali pro MFA pomocí prostředí PowerShell, který následuje dále.
+Identifikujte uživatele, kteří se ještě nezaregistrovali pro vícefaktorové ověřování pomocí Powershellu, který následuje.
 
 ```Get-MsolUser -All | where {$_.StrongAuthenticationMethods.Count -eq 0} | Select-Object -Property UserPrincipalName```
 
 ## <a name="next-steps"></a>Další postup
 
-* [Pro uživatele](end-user/current/multi-factor-authentication-end-user.md)
-* [Kde nasadit](concept-mfa-whichversion.md)
+* [Pro uživatele](../user-help/multi-factor-authentication-end-user.md)
+* [Pokud chcete nasadit](concept-mfa-whichversion.md)

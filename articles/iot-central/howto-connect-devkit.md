@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: c2a7278f4ee6861a1e47610c06fdc6ffcec52247
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 99d69c7e49179a7849e274c830d539833da33786
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37931078"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049448"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Připojení MXChip IoT DevKit zařízení do aplikace Azure IoT Central
 
@@ -36,7 +36,7 @@ Aplikace vytvořené z **ukázka Devkits** zahrnuje šablony aplikace **MXChip**
 | -------------- | ------ | ------- | ------- | -------------- |
 | vlhkost       | %      | 0       | 100     | 0              |
 | temp           | ° C     | -40     | 120     | 0              |
-| pressure       | hPa    | 260     | 1260    | 0              |
+| tlak       | hPa    | 260     | 1260    | 0              |
 | magnetometerX  | mgauss | -1000   | 1000    | 0              |
 | magnetometerY  | mgauss | -1000   | 1000    | 0              |
 | magnetometerZ  | mgauss | -1000   | 1000    | 0              |
@@ -128,7 +128,7 @@ K přípravě DevKit zařízení:
     - vaše heslo sítě Wi-Fi 
     - KÓD PIN, zobrazí na zařízení LCD 
     - připojovací řetězec zařízení. 
-      Můžete najít připojovací řetězec @ `https://apps.iotcentral.com`  ->  `Device Explorer`  ->  `Device`  ->  `Select or Create a new Real Device`  ->  `Connect this device` (v pravém horním rohu) 
+      Připojovací řetězec můžete najít \@ `https://apps.iotcentral.com`  ->  `Device Explorer`  ->  `Device`  ->  `Select or Create a new Real Device`  ->  `Connect this device` (v pravém horním rohu) 
     - Vyberte všechny dostupné telemetrie měření! 
 
 1. Po zvolení **konfigurovat zařízení**, zobrazí tato stránka:

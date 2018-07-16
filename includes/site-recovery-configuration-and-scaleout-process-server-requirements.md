@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 06/10/2018
 ms.author: raynew
 ms.custom: include file
-ms.openlocfilehash: f6053c4ef1fe9ce7cc3f06804822afa98055a645
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 669966ce21c5c6c2d0653eb51c81fe78aa0b3a12
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37967572"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39057306"
 ---
 **Požadavky na Configuration/Process server**
 
@@ -48,7 +48,7 @@ MYSQL | Je třeba nainstalovat MySQL. Můžete nainstalovat ručně nebo ji mů�
 
 **CPU** | **Paměť** | **Disk mezipaměti** | **Frekvence změny dat** | **Replikované počítače**
 --- | --- | --- | --- | ---
-8 virtuálních CPU<br/><br/> sokety 2 * 4 jádra @ 2,5 GHz | 16GB | 300 GB | 500 GB nebo méně | < 100 počítačů
-12 virtuálních procesorů<br/><br/> 2 socks * 6 jader @ 2,5 GHz | 18 GB | 600 GB | 500 GB AŽ 1 TB | 100 až 150 počítačů
-16 virtuálních procesorů<br/><br/> 2 socks * 8 jader @ 2,5 GHz | 32 GB | 1 TB | 1 – 2 TB | 150 -200 počítačů
+8 virtuálních CPU<br/><br/> sokety 2 * 4 jádra \@ 2,5 GHz | 16GB | 300 GB | 500 GB nebo méně | < 100 počítačů
+12 virtuálních procesorů<br/><br/> 2 socks * 6 jader \@ 2,5 GHz | 18 GB | 600 GB | 500 GB AŽ 1 TB | 100 až 150 počítačů
+16 virtuálních procesorů<br/><br/> 2 socks * 8 jader \@ 2,5 GHz | 32 GB | 1 TB | 1 – 2 TB | 150 -200 počítačů
 

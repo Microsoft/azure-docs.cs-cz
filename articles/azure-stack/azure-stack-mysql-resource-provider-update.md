@@ -1,6 +1,6 @@
 ---
-title: Pomocí databáze poskytované RP adaptér MySQL na AzureStack | Microsoft Docs
-description: Postup vytvoření a správě databází MySQL zřízení pomocí poskytovatele prostředků adaptér MySQL
+title: Aktualizace poskytovatele prostředků Azure Stack MySQL | Dokumentace Microsoftu
+description: Zjistěte, jak můžete aktualizovat poskytovatele prostředků Azure Stack MySQL.
 services: azure-stack
 documentationCenter: ''
 author: jeffgilb
@@ -11,59 +11,100 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/26/2018
+ms.date: 07/13/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: 0a900d75315fd0015633c036877faef84c48d65b
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 4e894eaee6bb151b480204905d0a98324f5c353b
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37031823"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049591"
 ---
-# <a name="create-mysql-databases"></a>Vytvoření databáze MySQL
+# <a name="update-the-mysql-resource-provider"></a>Aktualizace poskytovatele prostředků MySQL 
 
-Můžete vytvořit a spravovat databáze samoobslužné služby v portálu user portal. Uživatel s Azure zásobníku musí předplatné se nabídka, která zahrnuje službu databáze MySQL.
+*Platí pro: integrované systémy Azure Stack.*
 
-## <a name="test-your-deployment-by-creating-a-mysql-database"></a>Otestujte nasazení tak, že vytvoříte databázi MySQL
+Nový adaptér poskytovatele prostředků SQL může uvolní, když jsou aktualizované sestavení služby Azure Stack. I když existující adaptéru i nadále fungovat, doporučujeme, aktualizuje na nejnovější verzi co nejdřív. 
 
-1. Přihlaste se k portálu user portal zásobník Azure.
-2. Vyberte **+ nový** > **Data + úložiště** > **databáze MySQL** > **přidat**.
-3. V části **vytvoření databáze MySQL**, zadejte název databáze a nakonfigurujte další nastavení podle potřeby pro vaše prostředí.
+>[!IMPORTANT]
+>Je třeba nainstalovat aktualizace v pořadí, ve kterém jejich uvedení na trh. Verze nelze přeskočit. Přečtěte si seznam verzí v [nasazení požadavky na poskytovatele prostředků](.\azure-stack-mysql-resource-provider-deploy.md#prerequisites).
 
-    ![Vytvoření databáze MySQL testu](./media/azure-stack-mysql-rp-deploy/mysql-create-db.png)
+## <a name="update-the-mysql-resource-provider-adapter-integrated-systems-only"></a>Aktualizace adaptéru poskytovatele prostředků MySQL (pouze pro integrované systémy)
+Nový adaptér poskytovatele prostředků SQL může uvolní, když jsou aktualizované sestavení služby Azure Stack. I když existující adaptéru i nadále fungovat, doporučujeme, aktualizuje na nejnovější verzi co nejdřív.  
+ 
+Aktualizovat poskytovatele prostředků, použijete **UpdateMySQLProvider.ps1** skriptu. Proces je podobný procesu pro instalaci poskytovatele prostředků, jak je popsáno v [nasazení poskytovatele prostředků](#deploy-the-resource-provider) části tohoto článku. Skript je součástí stažení zprostředkovatele prostředků. 
 
-4. V části **Create Database**, vyberte **SKU**. V části **vyberte MySQL SKU**, vyberte SKU pro vaši databázi.
+**UpdateMySQLProvider.ps1** skript vytvoří nový virtuální počítač s nejnovějším kódem poskytovatele prostředků a migraci nastavení ze starého virtuálního počítače do nového virtuálního počítače. Nastavení, která migraci zahrnují databáze a hostování informace o serveru a záznamu DNS nezbytné. 
 
-    ![Vyberte MySQL SKU](./media/azure-stack-mysql-rp-deploy/mysql-select-a-sku.png)
+>[!NOTE]
+>Doporučujeme stáhnout nejnovější jádru Windows serveru 2016 image z Marketplace správu. Pokud je potřeba nainstalovat aktualizace, můžete umístit **jeden** MSU balíček v cestě místní závislosti. Skript selže, pokud existuje více než jeden soubor MSU v tomto umístění.
 
-    >[!Note]
-    >Jako hostitelskými servery jsou přidány do zásobníku Azure, je přiřazený SKU. Databáze se vytvářejí ve fondu hostitelské servery v SKU.
+Tento skript vyžaduje použití stejné argumenty, které jsou popsány DeployMySqlProvider.ps1 skriptu. Zadejte certifikát zde také.  
 
-5. V části **přihlášení**, vyberte ***konfigurovat požadované nastavení***.
-6. V části **vyberte přihlášení**, můžete zvolit stávající přihlašovací údaje, nebo vyberte **+ vytvořit nové přihlašovací údaje** nastavit nové přihlašovací údaje.  Zadejte **přihlášení databázi** název a **heslo**a potom vyberte **OK**.
+Tady je příklad *UpdateMySQLProvider.ps1* skript, který můžete spustit z příkazového řádku Powershellu. Nezapomeňte změnit informace o účtu a hesla podle potřeby:  
 
-    ![Vytvořte nové přihlašovací údaje databáze](./media/azure-stack-mysql-rp-deploy/create-new-login.png)
+> [!NOTE] 
+> Proces aktualizace platí pouze pro integrované systémy. 
 
-    >[!NOTE]
-    >Délka názvu databáze přihlášení nesmí překročit 32 znaků v MySQL 5.7. Ve starších edic ho nesmí překročit 16 znaků.
+```powershell 
+# Install the AzureRM.Bootstrapper module and set the profile. 
+Install-Module -Name AzureRm.BootStrapper -Force 
+Use-AzureRmProfile -Profile 2017-03-09-profile 
 
-7. Vyberte **vytvořit** a dokončete nastavení databáze.
+# Use the NetBIOS name for the Azure Stack domain. On the Azure Stack SDK, the default is AzureStack but could have been changed at install time. 
+$domain = "AzureStack" 
 
-Po nasazení databáze, poznamenejte si **připojovací řetězec** pod **Essentials**. Tento řetězec můžete použít v jakékoli aplikaci, která potřebuje přístup k databázi MySQL.
+# For integrated systems, use the IP address of one of the ERCS virtual machines 
+$privilegedEndpoint = "AzS-ERCS01" 
 
-![Získání připojovacího řetězce pro databázi MySQL](./media/azure-stack-mysql-rp-deploy/mysql-db-created.png)
+# Point to the directory where the resource provider installation files were extracted. 
+$tempDir = 'C:\TEMP\MYSQLRP' 
 
-## <a name="update-the-administrative-password"></a>Aktualizace hesla pro správu
+# The service admin account (can be Azure Active Directory or Active Directory Federation Services). 
+$serviceAdmin = "admin@mydomain.onmicrosoft.com" 
+$AdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force 
+$AdminCreds = New-Object System.Management.Automation.PSCredential ($serviceAdmin, $AdminPass) 
+ 
+# Set credentials for the new resource provider VM. 
+$vmLocalAdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force 
+$vmLocalAdminCreds = New-Object System.Management.Automation.PSCredential ("sqlrpadmin", $vmLocalAdminPass) 
+ 
+# And the cloudadmin credential required for privileged endpoint access. 
+$CloudAdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force 
+$CloudAdminCreds = New-Object System.Management.Automation.PSCredential ("$domain\cloudadmin", $CloudAdminPass) 
 
-Heslo můžete upravit změnou na instanci serveru MySQL.
+# Change the following as appropriate. 
+$PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force 
+ 
+# Change directory to the folder where you extracted the installation files. 
+# Then adjust the endpoints. 
+$tempDir\UpdateMySQLProvider.ps1 -AzCredential $AdminCreds ` 
+-VMLocalCredential $vmLocalAdminCreds ` 
+-CloudAdminCredential $cloudAdminCreds ` 
+-PrivilegedEndpoint $privilegedEndpoint ` 
+-DefaultSSLCertificatePassword $PfxPass ` 
+-DependencyFilesLocalPath $tempDir\cert ` 
+-AcceptLicense 
+``` 
+ 
+### <a name="updatemysqlproviderps1-parameters"></a>Parametry UpdateMySQLProvider.ps1 
+Tyto parametry můžete zadat na příkazovém řádku. Pokud ne, nebo pokud libovolný parametr ověření nezdaří, zobrazí se výzva k poskytnutí požadovaných parametrů. 
 
-1. Vyberte **prostředky pro správu** > **MySQL hostitelské servery**. Vyberte hostitelský server.
-2. V části **nastavení**, vyberte **heslo**.
-3. V části **heslo**, zadejte nové heslo a potom vyberte **Uložit**.
-
-![Aktualizovat heslo správce](./media/azure-stack-mysql-rp-deploy/mysql-update-password.png)
+| Název parametru | Popis | Komentář nebo výchozí hodnotu | 
+| --- | --- | --- | 
+| **CloudAdminCredential** | Přihlašovací údaje pro správce cloudu potřebné pro přístup k privilegovaným koncový bod. | _Vyžaduje_ | 
+| **AzCredential** | Přihlašovací údaje pro účet správce služby Azure Stack. Použijte stejné přihlašovací údaje, jako jste použili k nasazení Azure Stack. | _Vyžaduje_ | 
+| **VMLocalCredential** |Přihlašovací údaje pro účet místního správce poskytovatele prostředků SQL virtuálního počítače. | _Vyžaduje_ | 
+| **PrivilegedEndpoint** | IP adresa nebo název DNS privileged koncového bodu. |  _Vyžaduje_ | 
+| **DependencyFilesLocalPath** | Váš soubor certifikátu .pfx musíte umístit do tohoto adresáře také. | _Volitelné_ (_povinné_ pro více uzly) | 
+| **DefaultSSLCertificatePassword** | Heslo pro certifikát PFX. | _Vyžaduje_ | 
+| **MaxRetryCount** | Počet pokusů, které chcete opakovat každé operace, pokud dojde k selhání.| 2 | 
+| **RetryDuration** | Časový interval mezi opakovanými pokusy, během několika sekund. | 120 | 
+| **Odinstalace** | Odeberte poskytovatele prostředků a všechny související prostředky (viz následující poznámky). | Ne | 
+| **Režim DebugMode** | Zabraňuje automatickému čištění při selhání. | Ne | 
+| **AcceptLicense** | Přeskočí výzva k přijetí licence GPL.  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) | | 
+ 
 
 ## <a name="next-steps"></a>Další postup
-
 [Spravovat poskytovatele prostředků MySQL](azure-stack-mysql-resource-provider-maintain.md)

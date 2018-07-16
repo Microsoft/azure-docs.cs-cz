@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s spolupráce inovací | Microsoft Docs'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a spolupráce inovace.
+title: 'Kurz: Integrace Azure Active Directory se službou spolupráci inovace | Dokumentace Microsoftu'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a spolupráci inovací.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,116 +14,116 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: jeedes
-ms.openlocfilehash: 897db5a4d794c22f436fa074ec2c359edc5b590c
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 0e2936d0b428249226e428ddc0912d62e29a84f3
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36225054"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39042388"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-collaborative-innovation"></a>Kurz: Azure Active Directory integrace s inovací spolupráce
+# <a name="tutorial-azure-active-directory-integration-with-collaborative-innovation"></a>Kurz: Integrace Azure Active Directory se službou spolupráci inovace
 
-V tomto kurzu zjistěte, jak integrovat spolupráce inovace v Azure Active Directory (Azure AD).
+V tomto kurzu se dozvíte, jak integrovat spolupráci inovace s Azure Active Directory (Azure AD).
 
-Integrace spolupráce inovací s Azure AD poskytuje následující výhody:
+Integrace inovace spolupráci s Azure AD poskytuje následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup ke spolupráci inovací
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k spolupráce inovací (jednotné přihlášení) s jejich účty Azure AD
-- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
+- Můžete řídit ve službě Azure AD, který má přístup ke spolupráci inovace
+- Uživatele, aby automaticky získat přihlášeného spolupráci inovace (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD
+- Můžete spravovat své účty na jediném místě – na webu Azure portal
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s spolupráce inovací, potřebujete následující položky:
+Konfigurace integrace Azure AD s spolupráci inovace, potřebujete následující položky:
 
-- Předplatné služby Azure AD
-- Spolupráce inovací jednotného přihlašování povolené předplatné
+- S předplatným služby Azure AD
+- Spolupráci inovace jednotného přihlašování povolená předplatného
 
 > [!NOTE]
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
 
-- Nepoužívejte provozním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební verze jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).
+- Nepoužívejte produkčním prostředí, pokud to není nutné.
+- Pokud nemáte prostředí zkušební verzi Azure AD, můžete získat měsíční zkušební [tady](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání spolupráce inovací z Galerie
+1. Přidání spolupráci inovace z Galerie
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
-## <a name="adding-collaborative-innovation-from-the-gallery"></a>Přidání spolupráce inovací z Galerie
-Při konfiguraci integrace spolupráce inovací do služby Azure AD potřebujete přidat spolupráce inovací z Galerie si na seznam spravovaných aplikací SaaS.
+## <a name="adding-collaborative-innovation-from-the-gallery"></a>Přidání spolupráci inovace z Galerie
+Ke konfiguraci integrace spolupráci inovace do služby Azure AD, budete muset přidat spolupráci inovací v galerii na váš seznam spravovaných aplikací SaaS.
 
-**Pokud chcete přidat spolupráce inovací z galerie, proveďte následující kroky:**
+**Přidání spolupráci inovace z galerie, postupujte následovně:**
 
-1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
+1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![Aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Aplikace][3]
 
-4. Do vyhledávacího pole zadejte **spolupráce inovací**.
+4. Do vyhledávacího pole zadejte **spolupráci inovace**.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/collaborativeinnovation-tutorial/tutorial_collaborativeinnovation_search.png)
+    ![Vytváří se testovací uživatele služby Azure AD](./media/collaborativeinnovation-tutorial/tutorial_collaborativeinnovation_search.png)
 
-5. Na panelu výsledků vyberte **spolupráce inovací**a potom klikněte na **přidat** tlačítko Přidat aplikaci.
+5. Na panelu výsledků vyberte **spolupráci inovace**a potom klikněte na tlačítko **přidat** tlačítko pro přidání aplikace.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/collaborativeinnovation-tutorial/tutorial_collaborativeinnovation_addfromgallery.png)
+    ![Vytváří se testovací uživatele služby Azure AD](./media/collaborativeinnovation-tutorial/tutorial_collaborativeinnovation_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
-V této části můžete nakonfigurovat a otestovat Azure AD jednotné přihlašování s spolupráce inovací podle testovacího uživatele názvem "Britta Simon."
+V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s spolupráci inovace na základě testovací uživatele nazývá "Britta Simon."
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, co příslušného uživatele v spolupráce inovací je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v spolupráce inovací musí navázat.
+Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšky v spolupráci inovace je pro uživatele ve službě Azure AD. Jinými slovy musí navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské ve spolupráci inovace.
 
-V spolupráce inovací přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** k navázání vztahu odkazu.
+Ve spolupráci inovací a přiřaďte hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** a tím vytvoří vztah odkazu.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s spolupráce inovací, je třeba dokončit následující stavební bloky:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s spolupráci inovací, které potřebujete k dokončení následujících stavebních bloků:
 
-1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
-2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele spolupráce inovací](#creating-a-collaborative-innovation-test-user)**  – Pokud chcete mít protějšek Britta Simon v spolupráce novinka, kterou je propojena k reprezentaci Azure AD uživatele.
-4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
+1. **[Konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+2. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytvoření zkušebního uživatele spolupráce inovace](#creating-a-collaborative-innovation-test-user)**  – Pokud chcete mít protějšek Britta Simon ve spolupráci inovace, který je propojený s Azure AD reprezentace uživatele.
+4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace Azure AD jednotné přihlašování
+### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci spolupráce inovace.
+V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování v aplikaci spolupráci inovace.
 
-**Ke konfiguraci Azure AD jednotné přihlašování s spolupráce inovací, proveďte následující kroky:**
+**Ke konfiguraci Azure AD jednotné přihlašování s spolupráci inovace, proveďte následující kroky:**
 
-1. Na portálu Azure na **spolupráce inovací** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. Na webu Azure Portal na **spolupráci inovace** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
 
-    ![Konfigurovat jednotné přihlašování][4]
+    ![Konfigurace jednotného přihlašování][4]
 
-2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
+2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
-    ![Konfigurovat jednotné přihlašování](./media/collaborativeinnovation-tutorial/tutorial_collaborativeinnovation_samlbase.png)
+    ![Konfigurace jednotného přihlašování](./media/collaborativeinnovation-tutorial/tutorial_collaborativeinnovation_samlbase.png)
 
-3. Na **spolupráce inovací domény a adresy URL** část, proveďte následující kroky:
+3. Na **doméně pro spolupráci inovace a adresy URL** části, proveďte následující kroky:
 
-    ![Konfigurovat jednotné přihlašování](./media/collaborativeinnovation-tutorial/tutorial_collaborativeinnovation_url.png)
+    ![Konfigurace jednotného přihlašování](./media/collaborativeinnovation-tutorial/tutorial_collaborativeinnovation_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<instancename>.foundry.<companyname>.com/`
+    a. V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<instancename>.foundry.<companyname>.com/`
 
-    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<instancename>.foundry.<companyname>.com`
+    b. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<instancename>.foundry.<companyname>.com`
     
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory spolupráce klienta inovací](https://www.unilever.com/contact/) k získání těchto hodnot.  
+    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte s skutečné přihlašovací adresu URL a identifikátorem. Kontakt [tým podpory spolupráci klienta inovace](https://www.unilever.com/contact/) k získání těchto hodnot.  
 
-4. Spolupráce aplikace inovací očekává SAML kontrolní výrazy ve specifickém formátu. Nakonfigurujte následující deklarace identity pro tuto aplikaci. Můžete spravovat hodnoty těchto atributů z "**uživatelské atributy**" části na stránce integrace aplikace. Následující snímek obrazovky ukazuje příklad pro tento.
+4. Spolupráce inovace aplikací očekává, že kontrolní výrazy SAML v určitém formátu. Nakonfigurujte prosím následující deklarace identity pro tuto aplikaci. Můžete spravovat hodnotami těchto atributů z "**atributy uživatele**" části na stránce aplikací pro integraci. Následující snímek obrazovky ukazuje příklad pro tuto.
     
-    ![Konfigurovat jednotné přihlašování](./media/collaborativeinnovation-tutorial/attribute.png)
+    ![Konfigurace jednotného přihlašování](./media/collaborativeinnovation-tutorial/attribute.png)
     
-5. Klikněte na tlačítko **zobrazit a upravit všechny ostatní atributy uživatele** zaškrtnout políčko **uživatelské atributy** rozbalte atributy. Proveďte následující kroky na každém z zobrazených atributů-
+5. Klikněte na tlačítko **zobrazit a upravit všechny ostatní atributy uživatele** zaškrtávací políčko ve **atributy uživatele** rozbalte atributy. Proveďte následující kroky na všechny zobrazené atributy-
 
     | Název atributu | Hodnota atributu |
     | ---------------| --------------- |    
@@ -132,105 +132,105 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     | EmailAddress | user.userprincipalname |
     | jméno | user.userprincipalname |
 
-    a. Klikněte na atribut, který se otevře **Upravit atribut** okno.
+    a. Klikněte na atribut, který chcete otevřít **Upravit atribut** okna.
 
-    ![Konfigurovat jednotné přihlašování](./media/collaborativeinnovation-tutorial/url_update.png)
+    ![Konfigurace jednotného přihlašování](./media/collaborativeinnovation-tutorial/url_update.png)
 
-    b. Odstranit hodnotu adresy URL **Namespace**.
+    b. Odstranit hodnotu adresy URL z **Namespace**.
     
-    c. Klikněte na tlačítko **Ok** uložte nastavení.
+    c. Klikněte na tlačítko **Ok** nastavení uložte.
 
-6. Na **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat ve vašem počítači.
+6. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor metadat ve vašem počítači.
 
-    ![Konfigurovat jednotné přihlašování](./media/collaborativeinnovation-tutorial/tutorial_collaborativeinnovation_certificate.png) 
+    ![Konfigurace jednotného přihlašování](./media/collaborativeinnovation-tutorial/tutorial_collaborativeinnovation_certificate.png) 
 
 7. Klikněte na tlačítko **Uložit** tlačítko.
 
-    ![Konfigurovat jednotné přihlašování](./media/collaborativeinnovation-tutorial/tutorial_general_400.png)
+    ![Konfigurace jednotného přihlašování](./media/collaborativeinnovation-tutorial/tutorial_general_400.png)
 
-8. Konfigurace jednotného přihlašování na **spolupráce inovací** straně, budete muset odeslat stažené **soubor XML s metadaty** k [tým podpory spolupráce inovací](https://www.unilever.com/contact/). Nastavují toto nastavení tak, aby měl jednotné přihlašování SAML připojení správně nastavena na obou stranách.
+8. Ke konfiguraci jednotného přihlašování na **spolupráci inovace** straně, je nutné odeslat na stažený **soubor XML s metadaty** k [tým podpory spolupráci inovace](https://www.unilever.com/contact/). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
 > [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
-### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
-Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
+### <a name="creating-an-azure-ad-test-user"></a>Vytváří se testovací uživatele služby Azure AD
+Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-![Vytvořit uživatele Azure AD][100]
+![Vytvoření uživatele Azure AD][100]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
 
-1. V **portál Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
+1. V **webu Azure portal**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/collaborativeinnovation-tutorial/create_aaduser_01.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/collaborativeinnovation-tutorial/create_aaduser_01.png) 
 
 2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
-    ![Vytváření testovacího uživatele Azure AD](./media/collaborativeinnovation-tutorial/create_aaduser_02.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/collaborativeinnovation-tutorial/create_aaduser_02.png) 
 
-3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** horní dialogové okno.
+3. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
  
-    ![Vytváření testovacího uživatele Azure AD](./media/collaborativeinnovation-tutorial/create_aaduser_03.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/collaborativeinnovation-tutorial/create_aaduser_03.png) 
 
-4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
+4. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
  
-    ![Vytváření testovacího uživatele Azure AD](./media/collaborativeinnovation-tutorial/create_aaduser_04.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/collaborativeinnovation-tutorial/create_aaduser_04.png) 
 
-    a. V **název** textovému poli, typ **BrittaSimon**.
+    a. V **název** textové pole, typ **BrittaSimon**.
 
-    b. V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.
+    b. V **uživatelské jméno** textové pole, typ **e-mailová adresa** z BrittaSimon.
 
-    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
+    c. Vyberte **zobrazit heslo** a zapište si hodnotu **heslo**.
 
     d. Klikněte na možnost **Vytvořit**.
  
-### <a name="creating-a-collaborative-innovation-test-user"></a>Vytvoření zkušebního uživatele spolupráce inovací
+### <a name="creating-a-collaborative-innovation-test-user"></a>Vytvoření zkušebního uživatele spolupráce inovace
 
-Povolit uživatelům Azure AD přihlášení do spolupráce inovací, musí být zřízená do spolupráce inovace.  
+Přihlaste se ke spolupráci inovace Azure AD uživatelům umožnit, musí být poskytnuty do spolupráci inovace.  
 
-Zřizování je automaticky v případě této aplikace jako aplikace podporuje jenom při zřizování uživatelů čas. Proto není nutné provádět žádné kroky v tomto poli.
+V případě této aplikace je zřízení automatické jako aplikace podporuje pouze v době zřizování uživatelů. Proto není nutné provádět žádné kroky.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu spolupráce inovace.
+V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k inovacím spolupráci.
 
 ![Přiřadit uživatele][200] 
 
-**Pokud chcete přiřadit Britta Simon spolupráce inovací, proveďte následující kroky:**
+**Přiřadit Britta Simon spolupráci inovace, proveďte následující kroky:**
 
-1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
+1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **spolupráce inovací**.
+2. V seznamu aplikací vyberte **spolupráci inovace**.
 
-    ![Konfigurovat jednotné přihlašování](./media/collaborativeinnovation-tutorial/tutorial_collaborativeinnovation_app.png) 
+    ![Konfigurace jednotného přihlašování](./media/collaborativeinnovation-tutorial/tutorial_collaborativeinnovation_app.png) 
 
 3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.
+4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
+5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
+6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
+7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="testing-single-sign-on"></a>Testování jednotné přihlašování
+### <a name="testing-single-sign-on"></a>Testování jednotného přihlašování
 
-V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
+V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Když kliknete na dlaždici spolupráce inovací na přístupovém panelu, měli byste obdržet přihlašovací stránku aplikace spolupráce inovace.
-Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](../active-directory-saas-access-panel-introduction.md). 
+Když kliknete na dlaždici spolupráci inovace na přístupovém panelu, měli byste obdržet přihlašovací stránku spolupráci inovace aplikací.
+Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](tutorial-list.md)
+* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

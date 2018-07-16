@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s Amazon Web Services (AWS) připojit více účtů | Microsoft Docs'
-description: Naučte se konfigurovat jednotné přihlašování mezi službou Azure AD a více účtů Amazon Web Services (AWS).
+title: 'Kurz: Integrace Azure Active Directory pomocí Amazon Web Services (AWS) připojit více účtů | Dokumentace Microsoftu'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure AD a několika účty Amazon Web Services (AWS).
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,64 +15,64 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2018
 ms.author: jeedes
-ms.openlocfilehash: 2678cf043bb4b2569555309e873ae9ce0ab64eab
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: dfbabdc7d5a02b21103ac709b8dbc89d69cde0e0
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36217793"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054254"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-multiple-amazon-web-services-aws-accounts"></a>Kurz: Azure Active Directory integrace s více účty Amazon Web Services (AWS)
+# <a name="tutorial-azure-active-directory-integration-with-multiple-amazon-web-services-aws-accounts"></a>Kurz: Integrace Azure Active Directory s více účty Amazon Web Services (AWS)
 
-V tomto kurzu zjistěte, jak integrovat Azure Active Directory (Azure AD) s více účty Amazon Web Services (AWS).
+V tomto kurzu se dozvíte, jak integrovat Azure Active Directory (Azure AD) s více účty Amazon Web Services (AWS).
 
-Integrace Amazon Web Services (AWS) s Azure AD poskytuje následující výhody:
+Integrace služby Amazon Web Services (AWS) s Azure AD poskytuje následující výhody:
 
-- Můžete ovládat ve službě Azure AD, který má přístup k Amazon Web Services (AWS).
-- Můžete povolit uživatelům, aby automaticky získat přihlášeného k Amazon Web Services (AWS) (jednotné přihlášení) s jejich účty Azure AD.
-- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure.
+- Můžete řídit ve službě Azure AD, který má přístup k Amazon Web Services (AWS).
+- Uživatele, aby automaticky získat přihlášeného k Amazon Web Services (AWS) (jednotné přihlašování) můžete povolit pomocí jejich účtů služby Azure AD.
+- Můžete spravovat své účty na jediném místě – na webu Azure portal.
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Ke konfiguraci integrace služby Azure AD pomocí Amazon Web Services (AWS), potřebujete následující položky:
+Konfigurace integrace Azure AD, Amazon Web Services (AWS), potřebujete následující položky:
 
-- Základní nebo prémiové předplatné služby Azure AD
-- Amazon Web Services (AWS) více jednotné přihlašování povolené účty
+- Základní nebo prémiové předplatné Azure AD
+- Amazon Web Services (AWS) více jednotného přihlašování povolené účty
 
 > [!NOTE]
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
 
-- Nepoužívejte provozním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verze Azure AD, můžete [získat zkušební verzi jeden měsíc](https://azure.microsoft.com/pricing/free-trial/).
+- Nepoužívejte produkčním prostředí, pokud to není nutné.
+- Pokud nemáte prostředí zkušební verzi Azure AD, můžete si [získat měsíční zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání Amazon Web Services (AWS) z Galerie
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
 ## <a name="adding-amazon-web-services-aws-from-the-gallery"></a>Přidání Amazon Web Services (AWS) z Galerie
-Při konfiguraci integrace služby Amazon Web Services (AWS) do služby Azure AD, musíte přidat do seznamu spravovaných aplikací SaaS Amazon Web Services (AWS) z galerie.
+Ke konfiguraci integrace služby Amazon Web Services (AWS) do služby Azure AD, budete muset přidat Amazon Web Services (AWS) do seznamu spravovaných aplikací SaaS z galerie.
 
-**Pokud chcete přidat Amazon Web Services (AWS) z galerie, proveďte následující kroky:**
+**Chcete-li přidat Amazon Web Services (AWS) z galerie, postupujte následovně:**
 
-1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
+1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![V okně podnikové aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Tlačítko nové aplikace][3]
 
-4. Do vyhledávacího pole zadejte **Amazon Web Services (AWS)**, vyberte **Amazon Web Services (AWS)** z panelu výsledků klikněte **přidat** tlačítko Přidat aplikaci.
+4. Do vyhledávacího pole zadejte **Amazon Web Services (AWS)** vyberte **Amazon Web Services (AWS)** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
     ![Amazon Web Services (AWS) v seznamu výsledků](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_addfromgallery.png)
 
@@ -80,42 +80,42 @@ Při konfiguraci integrace služby Amazon Web Services (AWS) do služby Azure AD
 
     ![Amazon Web Services (AWS) v seznamu výsledků](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_properties.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování Azure AD jednotné přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování pomocí Amazon Web Services (AWS) podle testovacího uživatele názvem "Britta Simon".
+V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování pomocí Amazon Web Services (AWS) na základě testovací uživatele nazývá "Britta Simon".
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v Amazon Web Services (AWS) je pro uživatele ve službě Azure AD. Jinými slovy musí navázat vztah propojení mezi uživatele Azure AD a související uživatelské Amazon Web Services (AWS).
+Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšek Amazon Web Services (AWS) je pro uživatele ve službě Azure AD. Jinými slovy musí navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské Amazon Web Services (AWS).
 
-V Amazon Web Services (AWS), přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** k navázání vztahu odkazu.
+V Amazon Web Services (AWS), přiřaďte hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** a tím vytvoří vztah odkazu.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování pomocí Amazon Web Services (AWS), je třeba dokončit následující stavební bloky:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování pomocí Amazon Web Services (AWS), které potřebujete k dokončení následujících stavebních bloků:
 
-1. **[Konfigurovat Azure AD jednotné přihlašování](#configure-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
-2. **[Test jednotného přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
+1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+2. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurovat Azure AD jednotné přihlašování
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci Amazon Web Services (AWS).
+V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování v aplikaci Amazon Web Services (AWS).
 
-**Pokud chcete konfigurovat Azure AD jednotné přihlašování pomocí Amazon Web Services (AWS), proveďte následující kroky:**
+**Ke konfiguraci Azure AD jednotné přihlašování pomocí Amazon Web Services (AWS), proveďte následující kroky:**
 
-1. Na portálu Azure na **Amazon Web Services (AWS)** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. Na webu Azure Portal na **Amazon Web Services (AWS)** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
 
-    ![Konfigurace propojení přihlášení][4]
+    ![Nakonfigurovat jednotné přihlašování – odkaz][4]
 
-2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
+2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
-    ![Jediné přihlášení dialogové okno](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_samlbase.png)
+    ![Jednotné přihlašování – dialogové okno](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_samlbase.png)
 
-3. Na **Amazon Web Services (AWS) domény a adresy URL** části uživatel nemusí provádět žádné kroky, protože aplikace je už předem integrováno s Azure.
+3. Na **Amazon Web Services (AWS) domény a adresy URL** části uživatel nemá k provedení všech kroků jako aplikace je už předem integrováno s Azure.
 
-    ![Amazon Web Services (AWS) domény a adresy URL jednotné přihlašování informace](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_url.png)
+    ![Amazon Web Services (AWS) domény a adresy URL jednotného přihlašování – informace](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_url.png)
 
-4. Aplikace Software Amazon Web Services (AWS) očekává SAML kontrolní výrazy ve specifickém formátu. Nakonfigurujte následující deklarace identity pro tuto aplikaci. Můžete spravovat hodnoty těchto atributů z "**uživatelské atributy**" části na stránce integrace aplikace. Následující snímek obrazovky ukazuje příklad pro tento.
+4. Amazon Web Services (AWS) softwarová aplikace očekává, že kontrolní výrazy SAML v určitém formátu. Nakonfigurujte následující deklarace identity pro tuto aplikaci. Můžete spravovat hodnotami těchto atributů z "**atributy uživatele**" části na stránce aplikací pro integraci. Následující snímek obrazovky ukazuje příklad pro tuto.
 
-    ![Konfigurovat jednotné přihlašování v atributu](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_attribute.png)    
+    ![Konfigurovat Single Sign-On atribut](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_attribute.png)    
 
-5. V **uživatelské atributy** části na **jednotného přihlašování** dialogové okno, nakonfigurujte atribut tokenu SAML, jak je znázorněno na obrázku výše a proveďte následující kroky:
+5. V **atributy uživatele** části na **jednotného přihlašování** dialogového okna, nakonfigurovat atribut tokenu SAML, jak je znázorněno na obrázku výše a proveďte následující kroky:
     
     | Název atributu  | Hodnota atributu | Obor názvů |
     | --------------- | --------------- | --------------- |
@@ -123,143 +123,143 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     | Role            | user.assignedroles |  https://aws.amazon.com/SAML/Attributes |
     
     >[!TIP]
-    >Musíte nakonfigurovat zřizování uživatelů ve službě Azure AD se načíst všechny role z konzoly AWS. Najdete v následujících zřizování kroků.
+    >Musíte nakonfigurovat zřizování uživatelů ve službě Azure AD k načtení všech rolí z konzoly AWS. Přečtěte si následující postup zřizování.
 
-    a. Klikněte na tlačítko **přidat atribut** otevřete **přidat atribut** dialogové okno.
+    a. Klikněte na tlačítko **přidat atribut** otevřít **přidat atribut** dialogového okna.
 
-    ![Konfigurovat jednotné přihlašování přidat](./media/aws-multi-accounts-tutorial/tutorial_attribute_04.png)
+    ![Konfigurovat Single Sign-On přidat](./media/aws-multi-accounts-tutorial/tutorial_attribute_04.png)
 
-    ![Konfigurovat jednotné přihlašování v atributu](./media/aws-multi-accounts-tutorial/tutorial_attribute_05.png)
+    ![Konfigurovat Single Sign-On atribut](./media/aws-multi-accounts-tutorial/tutorial_attribute_05.png)
 
-    b. V **název** textovému poli, zadejte název atributu, který je uvedený na příslušném řádku.
+    b. V **název** textového pole zadejte název atributu, který je zobrazený pro tento řádek.
 
-    c. Z **hodnotu** seznamu, zadejte hodnotu atributu, který je uvedený na příslušném řádku.
+    c. Z **hodnotu** seznamu, zadejte hodnotu atributu zobrazený pro tento řádek.
 
-    d. V **Namespace** textovému poli, zadejte hodnotu oboru názvů, který je uvedený na příslušném řádku.
+    d. V **Namespace** textového pole zadejte hodnotu oboru názvů, který je zobrazený pro tento řádek.
     
     d. Klikněte na tlačítko **OK**.
 
-6. Na **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat ve vašem počítači.
+6. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor metadat ve vašem počítači.
 
     ![Odkaz ke stažení certifikátu](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_certificate.png) 
 
 7. Klikněte na tlačítko **Uložit** tlačítko.
 
-    ![Nakonfigurujte jeden přihlašování uložit tlačítko](./media/aws-multi-accounts-tutorial/tutorial_general_400.png)
+    ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/aws-multi-accounts-tutorial/tutorial_general_400.png)
 
-8. V okně jiný prohlížeč přihlašování k webu společnosti Amazon Web Services (AWS) jako správce.
+8. V jiném okně prohlížeče přihlašování k webu společnosti Amazon Web Services (AWS) jako správce.
 
 9. Klikněte na tlačítko **AWS domovské**.
    
-    ![Konfigurace domovské jednotné přihlašování][11]
+    ![Konfigurovat Single Sign-On Domovská stránka][11]
 
-10. Klikněte na tlačítko **IAM** (identita a správa přístupu). 
+10. Klikněte na tlačítko **IAM** (Správa identit a přístupu). 
    
-    ![Konfiguraci Identity přihlášení][12]
+    ![Konfigurace Identity jednotné přihlašování][12]
 
-11. Klikněte na tlačítko **zprostředkovatelů Identity**a potom klikněte na **vytvoření zprostředkovatele**. 
+11. Klikněte na tlačítko **zprostředkovatelé Identity**a potom klikněte na tlačítko **vytvořit poskytovatele**. 
    
     ![Konfigurace zprostředkovatele přihlášení][13]
 
-12. Na **konfigurace zprostředkovatele** dialogové okno stránky, proveďte následující kroky: 
+12. Na **konfigurovat zprostředkovatele** dialogového okna stránky, proveďte následující kroky: 
    
-    ![Konfigurovat jednotné přihlašování v dialogovém okně][14]
+    ![Konfigurovat Single Sign-On dialogového okna][14]
  
-    a. Jako **typ zprostředkovatele**, vyberte **SAML**.
+    a. Jako **typ zprostředkovatele**vyberte **SAML**.
 
-    b. V **název zprostředkovatele** textovému poli, zadejte název zprostředkovatele (například: *službou WAAD*).
+    b. V **název zprostředkovatele** textového pole zadejte název zprostředkovatele (například: *WAAD*).
 
-    c. Nahrát váš stažené **soubor metadat** z portálu Azure, klikněte na tlačítko **zvolit soubor**.
+    c. K odeslání vaší stažené **soubor metadat** z webu Azure portal, klikněte na tlačítko **zvolit soubor**.
 
-    d. Klikněte na tlačítko **dalším krokem**.
+    d. Klikněte na tlačítko **další krok**.
 
-13. Na **ověřte informace o poskytovateli** dialogové okno stránky, klikněte na tlačítko **vytvořit**. 
+13. Na **ověřte informace o poskytovateli** dialogového okna stránky, klikněte na tlačítko **vytvořit**. 
     
-    ![Konfigurovat jednotné přihlašování ověření][15]
+    ![Konfigurovat Single Sign-On ověření][15]
 
-14. Klikněte na tlačítko **role**a potom klikněte na **vytvořit role**. 
+14. Klikněte na tlačítko **role**a potom klikněte na tlačítko **vytvořit roli**. 
     
-    ![Konfiguraci rolí přihlášení][16]
+    ![Konfiguraci rolí jednotné přihlašování][16]
 
-15. Na **vytvořit role** proveďte následující kroky:  
+15. Na **vytvořit roli** stránce, proveďte následující kroky:  
     
-    ![Konfigurace důvěryhodnosti přihlášení][19] 
+    ![Nakonfigurovat jednotné přihlašování vztah důvěryhodnosti][19] 
 
-    a. Vyberte **SAML 2.0 federation** pod **vyberte typ důvěryhodné entity**.
+    a. Vyberte **SAML 2.0 federace** pod **vyberte typ entity pro důvěryhodného**.
 
-    b. V části **vyberte oddíl SAML 2.0 zprostředkovatele**, vyberte **SAML zprostředkovatele** jste dříve vytvořili (například: *službou WAAD*)
+    b. V části **zvolte oddíl SAML 2.0 poskytovatele**, vyberte **SAML zprostředkovatele** jste vytvořili dříve (Příklad: *WAAD*)
 
-    c. Vyberte **Povolit programová a přístup ke konzole pro správu AWS**.
+    c. Vyberte **povolit programové a přístup ke konzole správy AWS**.
   
     d. Klikněte na tlačítko **Další: oprávnění**.
 
-16. Na **připojit zásady oprávnění** dialogové okno, klikněte na tlačítko **Další: Zkontrolujte**.  
+16. Na **připojit zásady oprávnění** dialogového okna, klikněte na tlačítko **Další: Revize**.  
     
-    ![Nakonfigurujte zásady přihlášení][33]
+    ![Nakonfigurujte zásady přihlašování][33]
 
-17. Na **zkontrolujte** dialogové okno, proveďte následující kroky:   
+17. Na **revize** dialogového okna, proveďte následující kroky:   
     
-    ![Konfigurace zkontrolujte přihlášení][34] 
+    ![Nakonfigurovat jednotné přihlašování revize][34] 
 
-    a. V **název Role** textovému poli, zadejte název Role.
+    a. V **název Role** textového pole zadejte název Role.
 
-    b. V **popis Role** textovému poli, zadejte popis.
+    b. V **popis Role** textového pole zadejte popis.
 
     a. Klikněte na tlačítko **vytvořit roli**.
 
-    b. Vytvořit tolik role podle potřeby a jejich namapování na zprostředkovatele Identity.
+    b. Vytvořte tolik role podle potřeby a jejich namapování na zprostředkovatele Identity.
 
-18. Odhlaste se z aktuálního účtu AWS a přihlaste se s jiný účet, ve které chcete nakonfigurovat jednotné přihlašování na s Azure AD.
+18. Odhlaste se z aktuálního účtu AWS a přihlaste se pomocí jiného účtu, ve které chcete nakonfigurovat jednotné přihlašování v Azure AD.
 
-19. Proveďte krok 9 do kroku 17 vytvořit víc rolí, které chcete instalační program pro tento účet. Pokud máte více než dva účty, proveďte stejný postup pro všechny účty pro vytváření rolí pro ně.
+19. Proveďte krok 9 do kroku 17. Chcete-li vytvořit víc rolí, které chcete nastavení pro tento účet. Pokud máte více než dva účty, proveďte stejné kroky pro všechny účty pro ně vytvořit role.
 
-20. Po vytvoření všechny role v účtech se objeví v **role** seznamu pro tyto účty.
+20. Po vytvoření všechny role v účtech, zobrazí se v **role** seznamu pro tyto účty.
 
-    ![Instalace role](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_listofroles.png)
+    ![Nastavení role](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_listofroles.png)
 
-21. Je potřeba zaznamenat všechny Role informace a důvěryhodné entity pro všechny role mezi všechny účty, které je potřeba mapovat ručně s aplikací Azure AD. 
+21. Je potřeba zaznamenat všechny Role ARN a důvěryhodné entity pro všechny role pro všechny účty, které potřebujeme pro ruční mapování s aplikací Azure AD. 
 
-22. Klikněte na role zkopírovat **Role informace** a **důvěryhodné entity** hodnoty. Je nutné tyto hodnoty pro všechny role, které je potřeba vytvořit ve službě Azure AD.
+22. Klikněte na role, které chcete kopírovat **Role ARN** a **důvěryhodné entity** hodnoty. Tyto hodnoty budete potřebovat pro všechny role, které je potřeba vytvořit ve službě Azure AD.
 
-    ![Instalace role](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_role_summary.png)
+    ![Nastavení role](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_role_summary.png)
  
-23. Proveďte předchozí krok pro všechny role v všechny účty a všechny z nich ukládání ve formátu **Role informace, důvěryhodné entity** v programu Poznámkový blok. 
+23. Provedení předchozí krok u všech rolí ve všech účtech a všechny z nich ukládat ve formátu **ARN Role, důvěryhodné entity** do poznámkového bloku. 
 
-24. Otevřete [Azure AD Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) v jiném okně.
+24. Otevřít [Azure AD Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) v jiném okně.
 
-    a. Přihlaste se k webu Explorer grafu pomocí přihlašovacích údajů globálního správce nebo spolusprávce pro vašeho klienta.
+    a. Přihlaste se k webu Graph Exploreru pomocí přihlašovacích údajů globálního správce nebo spolusprávce pro vašeho tenanta.
 
-    b. Musíte mít dostatečná oprávnění pro vytváření rolí. Klikněte na **oprávnění k úpravě** získat požadovaná oprávnění. 
+    b. Musíte mít dostatečná oprávnění k vytvoření rolí. Klikněte na **změnit oprávnění** a získejte požadovaná oprávnění. 
 
     ![Dialogové okno Průzkumníka grafu](./media/aws-multi-accounts-tutorial/graph-explorer-new9.png)
 
-    c. Vyberte následující oprávnění ze seznamu (Pokud nemáte tyto již) a klikněte na "Upravit oprávnění" 
+    c. Vyberte následující oprávnění ze seznamu (pokud tyto ještě nemáte) a klikněte na tlačítko "Upravit oprávnění" 
 
     ![Dialogové okno Průzkumníka grafu](./media/aws-multi-accounts-tutorial/graph-explorer-new10.png)
 
-    d. To vás vyzve k znovu přihlásit a přijměte souhlasu. Po přijetí souhlasu, se protokolují do Průzkumníka graf znovu.
+    d. Zeptá se znovu přihlaste a přijmout souhlasu. Po přijetí svůj souhlas, jste přihlášeni ke Graph Exploreru znovu.
 
-    e. Změna verze rozevíracího seznamu pro **beta**. Pokud chcete načíst všechny objekty služby z vašeho klienta, použijte následující dotaz:
+    e. Změnit verzi rozevírací nabídku a **beta**. Pokud chcete načíst všechny instanční objekty z vašeho tenanta, použijte následující dotaz:
     
      `https://graph.microsoft.com/beta/servicePrincipals`
         
-    Pokud používáte více adresářů, můžete použít následující vzor, který má primární doménu v ní `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
+    Pokud používáte více adresářů, pak můžete použít následující vzor, který má primární doménou, v ní `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
     
     ![Dialogové okno Průzkumníka grafu](./media/aws-multi-accounts-tutorial/graph-explorer-new1.png)
     
-    f. Ze seznamu načtených objekty služby získáte, které budete muset upravit. Ctrl + F můžete použít také k vyhledání aplikace z uvedených ServicePrincipals. Můžete použít následující dotaz pomocí **id objektu** který jste zkopírovali ze stránky Azure AD vlastnosti získat k příslušné instanční objekt.
+    f. Ze seznamu načíst instanční objekty získejte ta, kterou budete muset upravit. Ctrl + F můžete také použít k vyhledání aplikace z uvedených ServicePrincipals. Můžete použít následující dotaz pomocí **id objektu** zkopírovanou z Azure AD vlastností zobrazíte k příslušné Instančnímu objektu.
     
     `https://graph.microsoft.com/beta/servicePrincipals/<objectID>`.
 
     ![Dialogové okno Průzkumníka grafu](./media/aws-multi-accounts-tutorial/graph-explorer-new2.png)
 
-    g. Vlastnost appRoles extrahujte z hlavní objektu služby. 
+    g. Extrahuje vlastnost appRoles z instanční objekt. 
 
     ![Dialogové okno Průzkumníka grafu](./media/aws-multi-accounts-tutorial/graph-explorer-new3.png)
 
-    h. Teď je potřeba generovat nové role pro vaši aplikaci. 
+    h. Teď je potřeba vygenerovat nové role pro vaši aplikaci. 
 
-    i. Níže JSON je příkladem appRoles objektu. Vytvořte objekt podobné k přidání rolí, které chcete pro vaši aplikaci. 
+    i. Pod JSON je příkladem objektu appRoles. Vytvořte objekt podobné pro přidání rolí, které chcete pro vaši aplikaci. 
 
     ```
     {
@@ -301,44 +301,44 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     ```
 
     > [!Note]
-    > Můžete přidat pouze nové role po **msiam_access** pro operace opravy. Také můžete přidat libovolný počet rolí tak, jak chcete podle potřeby vaší organizace. Azure AD bude odesílat **hodnotu** z těchto rolí jako hodnota deklarace identity v odpověď SAML.
+    > Můžete přidat jenom nové role po **msiam_access** pro operaci patch. Také můžete přidat libovolný počet rolí chcete podle potřeby vaší organizace. Azure AD pošle **hodnota** z těchto rolí jako hodnota deklarace identity v odpověď SAML.
     
-    j. Přejděte zpět do vaší aplikace Explorer graf a změňte metodu z **získat** k **oprava**. Oprava Service Principal objekt, který chcete mít požadovaných rolí aktualizací appRoles vlastnost podobné výše uvedeném v příkladu. Klikněte na tlačítko **spustit dotaz** k provedení operace opravy. Zpráva o úspěšném provedení potvrdí vytváření role pro vaši aplikaci Amazon Web Services.
+    j. Přejděte zpět na Graph Exploreru a změňte metodu z **získat** k **oprava**. Oprava instančního objektu, který chcete mít požadované role aktualizací appRoles vlastnost podobně jako v příkladu nahoře. Klikněte na tlačítko **spustit dotaz** k provedení operace opravy. Zpráva o úspěšném provedení potvrdí vytvoření role pro aplikaci služby Amazon Web Services.
 
     ![Dialogové okno Průzkumníka grafu](./media/aws-multi-accounts-tutorial/graph-explorer-new11.png)
 
-25. Po objektu služby je nainstalována oprava s více rolí, můžete přiřadit uživatele nebo skupiny do příslušných rolí. To lze provést tak, že přejdete na portál a přejdou do aplikace Amazon Web Services. Klikněte na **uživatelů a skupin** karty v horní části. 
+25. Po instanční objekt služby je opravit s více rolemi, můžete přiřadit příslušné role uživatele nebo skupiny. To můžete udělat tak, že přejdete na portál a přejděte do aplikace Amazon Web Services. Klikněte na **uživatelů a skupin** kartě v horní části. 
 
-26. Doporučujeme vytvořit nové skupiny pro každou roli AWS, takže můžete přiřadit tento konkrétní roli v této skupině. Všimněte si, že se jedná o mapování 1: 1 pro jednu skupinu k jedné roli. Poté můžete přidat členy, kteří patří do dané skupiny.
+26. Doporučujeme vytvářet nové skupiny pro každou roli AWS tak, aby přiřadíte tuto konkrétní roli v této skupině. Všimněte si, že se jedná o mapování 1: 1 pro jednu skupinu do jedné role. Poté můžete přidat členy, kteří patří do této skupiny.
 
 27. Po vytvoření skupiny, vyberte skupinu a přiřaďte k aplikaci. 
 
-    ![Konfigurovat jednotné přihlašování přidat](./media/aws-multi-accounts-tutorial/graph-explorer-new5.png)
+    ![Konfigurovat Single Sign-On přidat](./media/aws-multi-accounts-tutorial/graph-explorer-new5.png)
 
-28. Chcete-li přiřadit roli do skupiny, vyberte roli a klikněte na **přiřadit** tlačítko v dolní části stránky.
+28. Přiřazení role do skupiny, vyberte roli a klikněte na **přiřadit** tlačítko v dolní části stránky.
 
-    ![Konfigurovat jednotné přihlašování přidat](./media/aws-multi-accounts-tutorial/graph-explorer-new6.png)
+    ![Konfigurovat Single Sign-On přidat](./media/aws-multi-accounts-tutorial/graph-explorer-new6.png)
 
 > [!Note]
-> Upozorňujeme, že je potřeba aktualizovat relaci na portálu Azure zobrazíte nové role.
+> Mějte prosím na paměti, že budete muset aktualizovat relaci na webu Azure portal, pokud chcete zobrazit nové role.
 
 ### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
-V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
+V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Když kliknete na dlaždici Amazon Web Services (AWS) na přístupovém panelu, měli byste obdržet stránky aplikace Amazon Web Services (AWS) s možností vyberte roli.
+Když kliknete na dlaždici Amazon Web Services (AWS), na přístupovém panelu, měli byste obdržet Amazon Web Services (AWS) stránka aplikace se možnost vybrat roli.
 
-![Konfigurovat jednotné přihlašování přidat](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_test_screen.png)
+![Konfigurovat Single Sign-On přidat](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_test_screen.png)
 
-Můžete si taky ověřit odpověď SAML zobrazíte role předávány jako deklarace identity.
+Můžete si taky ověřit odpověď SAML zobrazíte role, jenž je předán jako deklarace identity.
 
-![Konfigurovat jednotné přihlašování přidat](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_test_saml.png)
+![Konfigurovat Single Sign-On přidat](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_test_saml.png)
 
-Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](../active-directory-saas-access-panel-introduction.md). 
+Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](tutorial-list.md)
+* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

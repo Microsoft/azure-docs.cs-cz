@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: afcd39e6512ac7bcb46f56df157822efa463113e
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 23a2897142f5cba90513e8b79e4cd461f1dd25b7
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37449794"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054586"
 ---
 # <a name="customize-the-azure-ad-functionality-for-self-service-password-reset"></a>Přizpůsobení funkce služby Azure AD pro samoobslužné resetování hesla
 
@@ -81,8 +81,8 @@ Můžete změnit atribut názvu adresáře v rámci **Azure Active Directory** >
 ## <a name="next-steps"></a>Další postup
 
 * [Jak dokončit úspěšné zavedení SSPR?](howto-sspr-deployment.md)
-* [Resetování nebo změna hesla](../active-directory-passwords-update-your-own-password.md)
-* [Registrace samoobslužného resetování hesla](../active-directory-passwords-reset-register.md)
+* [Resetování nebo změna hesla](../user-help/active-directory-passwords-update-your-own-password.md)
+* [Registrace samoobslužného resetování hesla](../user-help/active-directory-passwords-reset-register.md)
 * [Máte dotaz k licencování?](concept-sspr-licensing.md)
 * [Jaká data používá SSPR a která data byste měli naplnit pro vaše uživatele?](howto-sspr-authenticationdata.md)
 * [Které metody ověřování jsou dostupné pro uživatele?](concept-sspr-howitworks.md#authentication-methods)

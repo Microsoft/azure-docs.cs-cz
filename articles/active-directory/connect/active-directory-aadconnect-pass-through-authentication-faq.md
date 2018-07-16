@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/04/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: e62117ee98b1d47600141249dcd3b17ec58a9654
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 6d5cd79a6336b2e5c4b3c5c6f5765d92cd602552
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37918151"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048964"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory předávací ověřování: Nejčastější dotazy
 
@@ -60,7 +60,7 @@ Tato funkce fungovala, musíte verze 1.1.486.0 nebo později pro Azure AD Connec
 
 ## <a name="what-happens-if-my-users-password-has-expired-and-they-try-to-sign-in-by-using-pass-through-authentication"></a>Co se stane, pokud vypršela platnost hesla pro daného uživatele a zkuste se přihlásit pomocí předávacího ověřování?
 
-Pokud jste nakonfigurovali [zpětný zápis hesla](../active-directory-passwords-update-your-own-password.md) pro konkrétního uživatele, a pokud se uživatel přihlásí pomocí předávacího ověřování, můžete změnit nebo resetování hesel. Hesel, zapíšou se zpět do místní služby Active Directory podle očekávání.
+Pokud jste nakonfigurovali [zpětný zápis hesla](../user-help/active-directory-passwords-update-your-own-password.md) pro konkrétního uživatele, a pokud se uživatel přihlásí pomocí předávacího ověřování, můžete změnit nebo resetování hesel. Hesel, zapíšou se zpět do místní služby Active Directory podle očekávání.
 
 Pokud jste nenakonfigurovali zpětný zápis hesla pro konkrétního uživatele, nebo pokud uživatel nemá platnou Azure AD licenci přiřazenou, uživatel nemůže aktualizovat své heslo služby v cloudu. Nemohou aktualizovat heslo, i v případě, že vypršela platnost jejich hesla. Uživateli se místo toho zobrazí tato zpráva: "vaše organizace nepovoluje aktualizaci hesla na tomto webu. Aktualizovat způsobem doporučeným ve vaší organizaci, nebo požádejte správce, pokud potřebujete pomoc." Uživatel nebo správce musí resetovat své heslo v místní službě Active Directory.
 

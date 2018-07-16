@@ -1,6 +1,6 @@
 ---
-title: Vyhledávání všech prostředků s Azure Log Analytics | Microsoft Docs
-description: Tento článek popisuje, jak můžete dotazovat na prostředky z víc pracovních prostorů a app Insights aplikace v rámci vašeho předplatného.
+title: Hledání napříč prostředky pomocí Azure Log Analytics | Dokumentace Microsoftu
+description: Tento článek popisuje, jak můžete zadávat dotazy na prostředky z několika pracovních prostorů a aplikace pro App Insights ve vašem předplatném.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -15,81 +15,92 @@ ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: a8d5465a2a9aaf9cf686a8e135a1f537cc60c6b5
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: e7ca3bcb3c3322c0eba12d7f9eb2ee2bc7b7600c
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37129247"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049843"
 ---
-# <a name="perform-cross-resource-log-searches-in-log-analytics"></a>Vyhledávání prostředků mezi protokolu v analýzy protokolů  
+# <a name="perform-cross-resource-log-searches-in-log-analytics"></a>Provedení prohledávání protokolů napříč prostředky ve službě Log Analytics  
 
-Dříve s Azure Log Analytics může pouze analyzujete data přímo z aktuální pracovní prostor a je omezený možnost dotazu napříč více pracovní prostory definované v rámci vašeho předplatného.  Kromě toho může vyhledávat pouze položky telemetrie získané z vaší webové aplikace pomocí Application Insights přímo ve službě Application Insights, nebo ze sady Visual Studio.  To rovněž se data aplikací a výzvu k analýze nativně provozní společně.   
+Dříve pomocí Azure Log Analytics, jste mohli analyzovat data pouze z v rámci aktuálního pracovního prostoru a omezený možnost dotazování napříč několika pracovními prostory definovanými v rámci vašeho předplatného.  Kromě toho může hledat pouze položky telemetrická data shromážděná z vaší webové aplikace pomocí Application Insights přímo ve službě Application Insights nebo ze sady Visual Studio.  Kvůli tomu také bylo obtížné analyzovat nativně provozní a data aplikací společně.   
 
-Teď se můžete dotazovat nejen napříč více analýzy protokolů pracovních prostorů, ale také data z konkrétní aplikaci Application Insights ve stejné skupině prostředků, jiné skupině prostředků nebo jiné předplatné. To poskytuje systémová zobrazení vaše data.  Můžete provést pouze tyto typy dotazů v [pokročilé portál](log-analytics-log-search-portals.md#advanced-analytics-portal), není v portálu Azure. Počet prostředků (pracovní prostory analýzy protokolů a aplikace Application Insights), které lze zahrnout v jednom dotazu je omezeno na 100. 
+Nyní se můžete dotazovat nejen napříč několika pracovních prostorů Log Analytics, ale také data z konkrétní aplikace Application Insights ve stejné skupině prostředků, jiné skupiny prostředků nebo jiného předplatného. To vám poskytne systémová přehled o datech.  Tyto typy dotazů v lze provést pouze [rozšířený portál](log-analytics-log-search-portals.md#advanced-analytics-portal), ne na webu Azure portal. Počet prostředků (pracovních prostorů Log Analytics a Application Insights aplikaci), které mohou obsahovat v jediném dotazu je omezený na 100. 
 
-## <a name="querying-across-log-analytics-workspaces-and-from-application-insights"></a>Dotazování napříč pracovních prostorů analýzy protokolů a z Application Insights
-Chcete-li jiný pracovní prostor v dotazu, použijte [ *prostoru* ](https://docs.loganalytics.io/docs/Language-Reference/Scope-functions/workspace()) identifikátor a pro aplikace z Application Insights, použijte [ *aplikace* ](https://docs.loganalytics.io/docs/Language-Reference/Scope-functions/app())identifikátor.  
+## <a name="querying-across-log-analytics-workspaces-and-from-application-insights"></a>Dotazování napříč pracovních prostorů Log Analytics a ze služby Application Insights
+Chcete-li odkazovat na jiný pracovní prostor v dotazu, použijte [ *pracovní prostor* ](https://docs.loganalytics.io/docs/Language-Reference/Scope-functions/workspace()) identifikátor a pro aplikace ze služby Application Insights, použijte [ *aplikace* ](https://docs.loganalytics.io/docs/Language-Reference/Scope-functions/app())identifikátor.  
 
-### <a name="identifying-workspace-resources"></a>Identifikační prostředky prostoru
-Následující příklady ukazují dotazy napříč analýzy protokolů pracovní prostory k vrácení souhrnnou počty aktualizace z tabulky aktualizace v pracovním prostoru s názvem *contosoretail it*. 
+### <a name="identifying-workspace-resources"></a>Identifikační prostředky pracovního prostoru
+Následující příklady ukazují dotazy napříč pracovními prostory Log Analytics k vrácení souhrnný počet protokolů z tabulky aktualizace v pracovním prostoru s názvem *contosoretail it*. 
 
-Identifikace pracovní prostor může být provedené z několika způsoby:
+Identifikace pracovní prostor může být jedním z několika způsobů:
 
-* Název prostředku - je popisný název pracovního prostoru, označovaných také jako *název komponenty*. 
+* Název prostředku – je popisný název pracovního prostoru, někdy označovány jako *název komponenty*. 
 
     `workspace("contosoretail").Update | count`
  
     >[!NOTE]
-    >Identifikace pracovního prostoru podle názvu předpokládá jedinečnosti ve všech předplatných přístupné. Pokud máte více aplikací se zadaným názvem, se dotaz nezdaří z důvodu nejednoznačnosti. V takovém případě musíte použít jeden z dalších identifikátorů.
+    >Identifikace podle názvu pracovního prostoru předpokládá jedinečnost napříč všemi předplatnými přístupné. Pokud máte více aplikací se zadaným názvem, že se dotaz nezdaří z důvodu nejednoznačnosti. V takovém případě musíte použít jeden z další identifikátory.
 
-* Kvalifikovaný název – je "úplný název" pracovního prostoru tvořený název odběru, skupinu prostředků a název součásti v tomto formátu: *Název_předplatného, resourceGroup nebo componentName*. 
+* Úplný název - je "úplný název" pracovního prostoru, skládá z názvu předplatného, skupiny prostředků a název komponenty v tomto formátu: *subscriptionName/skupina prostředků/název komponenty*. 
 
-    `workspace('contoso/contosoretail/development').requests | count `
+    `workspace('contoso/contosoretail/contosoretail-it').Update | count `
 
     >[!NOTE]
-    >Vzhledem k tomu, že nejsou jedinečné názvy předplatné Azure, tento identifikátor může být nejednoznačný. 
+    >Vzhledem k tomu, že názvy předplatného Azure nejsou jedinečné, tento identifikátor může být nejednoznačný. 
     >
 
-* ID pracovního prostoru - ID pracovního prostoru je jedinečný, neměnné, identifikátor přiřazený k každém pracovním prostoru vyjádřené globálně jedinečný identifikátor (GUID).
+* ID pracovního prostoru - ID pracovního prostoru je jedinečný, nezměnitelný, identifikátor přiřazený do každého pracovního prostoru reprezentovaná jako globálně jedinečný identifikátor (GUID).
 
     `workspace("b459b4u5-912x-46d5-9cb1-p43069212nb4").Update | count`
 
-* Azure ID prostředku – definované Azure jedinečnou identitu pracovního prostoru. ID prostředku se používají, když název prostředku je nejednoznačný.  Pro pracovní prostory, není ve formátu: */subscriptions/subscriptionId/resourcegroups/resourceGroup/providers/microsoft. Pracovní prostory/OperationalInsights/componentName*.  
+* Azure Resource ID – definované Azure jedinečnou identitu pracovního prostoru. ID prostředku, které se používají, když je nejednoznačný název prostředku.  U pracovních prostorů, formát je: */subscriptions/subscriptionId/resourcegroups/resourceGroup/providers/microsoft. OperationalInsights/pracovních prostorů/componentName*.  
 
     Příklad:
     ``` 
-    workspace("/subscriptions/e427519-5645-8x4e-1v67-3b84b59a1985/resourcegroups/ContosoAzureHQ/providers/Microsoft.OperationalInsights/workspaces/contosoretail").Event | count
+    workspace("/subscriptions/e427519-5645-8x4e-1v67-3b84b59a1985/resourcegroups/ContosoAzureHQ/providers/Microsoft.OperationalInsights/workspaces/contosoretail").Update | count
     ```
 
-### <a name="identifying-an-application"></a>Identifikace aplikace
-Následující příklady vrátí souhrnnou počet požadavků na aplikaci s názvem přístup *fabrikamapp* ve službě Application Insights. 
+### <a name="identifying-an-application"></a>Určení aplikace
+Následující příklady vrátí souhrnný počet požadavků na přístup aplikaci s názvem *fabrikamapp* ve službě Application Insights. 
 
-Identifikace aplikace ve službě Application Insights můžete provést pomocí *app(Identifier)* výraz.  *Identifikátor* argument určuje aplikace pomocí jedné z následujících akcí:
+Identifikuje aplikaci ve službě Application Insights můžete docílit, když se *app(Identifier)* výrazu.  *Identifikátor* argument určuje aplikace pomocí jedné z následujících akcí:
 
-* Název prostředku - je lidské čitelný název aplikace, označovaných také jako *název komponenty*.  
+* Název prostředku – je lidské čitelný název aplikace, která se někdy označuje jako *název komponenty*.  
 
     `app("fabrikamapp")`
 
-* Kvalifikovaný název – je "úplný název" aplikace skládá z název odběru, skupinu prostředků, název komponenty v tomto formátu: *Název_předplatného, resourceGroup nebo componentName*. 
+* Úplný název - je "úplný název" aplikace skládá z názvu předplatného, skupiny prostředků a název komponenty v tomto formátu: *subscriptionName/skupina prostředků/název komponenty*. 
 
     `app("AI-Prototype/Fabrikam/fabrikamapp").requests | count`
 
      >[!NOTE]
-    >Vzhledem k tomu, že nejsou jedinečné názvy předplatné Azure, tento identifikátor může být nejednoznačný. 
+    >Vzhledem k tomu, že názvy předplatného Azure nejsou jedinečné, tento identifikátor může být nejednoznačný. 
     >
 
 * ID – identifikátor GUID aplikace aplikace.
 
     `app("b459b4f6-912x-46d5-9cb1-b43069212ab4").requests | count`
 
-* Azure ID prostředku - definované Azure jedinečnou identitu aplikace. ID prostředku se používají, když název prostředku je nejednoznačný. Formát je: */subscriptions/subscriptionId/resourcegroups/resourceGroup/providers/microsoft. OperationalInsights nebo součástí nebo componentName*.  
+* Azure ID prostředku - definované Azure jedinečnou identitu aplikace. ID prostředku, které se používají, když je nejednoznačný název prostředku. Formát je: */subscriptions/subscriptionId/resourcegroups/resourceGroup/providers/microsoft. OperationalInsights/součásti/componentName*.  
 
     Příklad:
     ```
     app("/subscriptions/b459b4f6-912x-46d5-9cb1-b43069212ab4/resourcegroups/Fabrikam/providers/microsoft.insights/components/fabrikamapp").requests | count
     ```
 
+### <a name="performing-a-query-across-multiple-resources"></a>Provádění dotazu napříč více zdrojů
+Z některého z vašich instancí prostředku můžete dotazovat více zdrojů, může jít o pracovních prostorech a aplikacích kombinovat.
+    
+Příklad pro dotazování napříč dvěma pracovními prostory.    
+    ```
+    union Update, workspace("contosoretail-it").Update, workspace("b459b4u5-912x-46d5-9cb1-p43069212nb4").Update
+    | where TimeGenerated >= ago(1h)
+    | where UpdateState == "Needed"
+    | summarize dcount(Computer) by Classification
+    ```
+
 ## <a name="next-steps"></a>Další postup
 
-Zkontrolujte [analýzy protokolů protokolu vyhledávání odkaz](https://docs.loganalytics.io/docs/Language-Reference) zobrazíte všechny možnosti syntaxe dotazu, která je k dispozici v analýzy protokolů.    
+Zkontrolujte [protokolu v log Analytics search odkaz](https://docs.loganalytics.io/docs/Language-Reference) zobrazíte všechny možnosti syntaxi dotazů k dispozici ve službě Log Analytics.    

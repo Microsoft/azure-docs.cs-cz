@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/03/2017
 ms.author: mbullwin
-ms.openlocfilehash: 5ffb758fe5fa42be6323de06afbfb38068ae1926
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: b1cd2e8d7649de48f34efb0c7d839e17906a29bf
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969166"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044981"
 ---
 # <a name="explore-net-trace-logs-in-application-insights"></a>Prozkoumejte protokoly trasování .NET ve službě Application Insights
 Pokud chcete použít NLog, log4Net nebo System.Diagnostics.Trace pro diagnostické trasování v aplikaci ASP.NET, může mít vaše protokoly odeslané do [Azure Application Insights][start], kde můžete prozkoumat a hledat je. Protokoly se sloučí s další telemetrická data přicházející z vaší aplikace tak, aby identifikovat trasování přidružené k obsluze jednotlivých požadavků uživatele a korelovat je s dalšími události a sestavy výjimek.
@@ -65,7 +65,7 @@ Tuto metodu použijte, pokud typ projektu nepodporuje Instalační služby Appli
 
    * Microsoft.ApplicationInsights.TraceListener (pro zachycení volání System.Diagnostics.Trace)
    * Microsoft.ApplicationInsights.EventSourceListener (k zachycení událostí EventSource)
-   * Microsoft.ApplicationInsights.EtwListener (k zachycení událostí trasování událostí pro Windows)
+   * Microsoft.ApplicationInsights.EtwCollector (k zachycení událostí trasování událostí pro Windows)
    * Microsoft.ApplicationInsights.NLogTarget
    * Microsoft.ApplicationInsights.Log4NetAppender
 

@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s nástrojem Sledování výkonu AppNeta | Microsoft Docs'
+title: 'Kurz: Integrace Azure Active Directory pomocí nástroje Sledování výkonu AppNeta | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a AppNeta sledování výkonu.
 services: active-directory
 documentationCenter: na
@@ -15,115 +15,115 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/10/2018
 ms.author: jeedes
-ms.openlocfilehash: 4899c6d27c034ce3f92efc3b0ddfb8b3446a6115
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: ccedc0288e313df2639862a14078d8cad9951286
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36229645"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054545"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-appneta-performance-monitor"></a>Kurz: Azure Active Directory integrace s AppNeta sledování výkonu
+# <a name="tutorial-azure-active-directory-integration-with-appneta-performance-monitor"></a>Kurz: Integrace Azure Active Directory pomocí nástroje Sledování výkonu AppNeta
 
-V tomto kurzu zjistěte, jak integrovat sledování výkonu AppNeta s Azure Active Directory (Azure AD).
+V tomto kurzu se dozvíte, jak integrovat AppNeta sledování výkonu služby Azure Active Directory (Azure AD).
 
-Integrace nástroje Sledování výkonu AppNeta s Azure AD poskytuje následující výhody:
+Sledování výkonu AppNeta integrace s Azure AD poskytuje následující výhody:
 
-- Můžete ovládat ve službě Azure AD, který má přístup ke sledování výkonu AppNeta.
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k monitorování výkonu AppNeta (jednotné přihlášení) s jejich účty Azure AD.
-- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure.
+- Můžete řídit ve službě Azure AD, který má přístup k AppNeta Performance monitoru.
+- Uživatele, aby automaticky získat přihlášení k AppNeta Performance Monitor (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD.
+- Můžete spravovat své účty na jediném místě – na webu Azure portal.
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Ke konfiguraci integrace služby Azure AD s nástrojem Sledování výkonu AppNeta, potřebujete následující položky:
+Konfigurace integrace Azure AD s AppNeta Performance Monitor, potřebujete následující položky:
 
-- Předplatné služby Azure AD
-- Monitorování výkonu AppNeta jednotné přihlašování povolené předplatné
+- S předplatným služby Azure AD
+- Monitorování výkonu AppNeta jednotného přihlašování povolená předplatného
 
 > [!NOTE]
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
 
-- Nepoužívejte provozním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verze Azure AD, můžete [získat zkušební verzi jeden měsíc](https://azure.microsoft.com/pricing/free-trial/).
+- Nepoužívejte produkčním prostředí, pokud to není nutné.
+- Pokud nemáte prostředí zkušební verzi Azure AD, můžete si [získat měsíční zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání nástroje Sledování výkonu AppNeta z Galerie
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
 ## <a name="adding-appneta-performance-monitor-from-the-gallery"></a>Přidání nástroje Sledování výkonu AppNeta z Galerie
-Konfigurace integrace nástroje Sledování výkonu AppNeta do Azure AD, potřebujete přidat AppNeta sledování výkonu z Galerie si na seznam spravovaných aplikací SaaS.
+Konfigurace integrace nástroje Sledování výkonu AppNeta do služby Azure AD, budete muset přidat sledování výkonu AppNeta z Galerie na váš seznam spravovaných aplikací SaaS.
 
-**Přidat monitorování výkonu AppNeta z galerie, proveďte následující kroky:**
+**Přidání nástroje Sledování výkonu AppNeta z galerie, postupujte následovně:**
 
-1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
+1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![V okně podnikové aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Tlačítko nové aplikace][3]
 
-4. Do vyhledávacího pole zadejte **sledování výkonu AppNeta**, vyberte **sledování výkonu AppNeta** z panelu výsledků klikněte **přidat** tlačítko Přidat aplikaci.
+4. Do vyhledávacího pole zadejte **sledování výkonu AppNeta**vyberte **sledování výkonu AppNeta** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
     ![Sledování výkonu AppNeta v seznamu výsledků](./media/appneta-tutorial/tutorial_appneta_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování Azure AD jednotné přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-V této části konfiguraci a testování Azure AD jednotné přihlašování pomocí sledování výkonu AppNeta podle testovacího uživatele názvem "Britta Simon".
+V této části Konfigurace a testování Azure AD jednotné přihlašování pomocí sledování výkonu AppNeta podle testovacího uživatele nazývá "Britta Simon".
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v nástroji Sledování výkonu AppNeta je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v nástroji Sledování výkonu AppNeta musí navázat.
+Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšky v nástroji Sledování výkonu AppNeta je pro uživatele ve službě Azure AD. Jinými slovy vztah odkazu mezi uživatele služby Azure AD a souvisejících uživatele v nástroji Sledování výkonu AppNeta musí být vytvořeno.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s nástrojem Sledování výkonu AppNeta, je třeba dokončit následující stavební bloky:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s AppNeta sledování výkonu, které potřebujete k dokončení následujících stavebních bloků:
 
-1. **[Konfigurovat Azure AD jednotné přihlašování](#configure-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
-2. **[Vytvořit testovací uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření testovacího uživatele monitorování výkonu AppNeta](#create-an-appneta-performance-monitor-test-user)**  – Pokud chcete mít protějšek Britta Simon v nástroji Sledování výkonu AppNeta, propojené služby Azure AD reprezentace daného uživatele.
-4. **[Přiřadit testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. **[Test jednotného přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
+1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+2. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytvořit testovacího uživatele monitorování výkonu AppNeta](#create-an-appneta-performance-monitor-test-user)**  – Pokud chcete mít protějšek Britta Simon v AppNeta výkon, který je propojený s Azure AD reprezentace uživatele.
+4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurovat Azure AD jednotné přihlašování
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci sledování výkonu AppNeta.
+V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování v aplikaci sledování výkonu AppNeta.
 
-**Ke konfiguraci Azure AD jednotné přihlašování s nástrojem Sledování výkonu AppNeta, proveďte následující kroky:**
+**Ke konfiguraci Azure AD jednotné přihlašování s monitorováním výkonu AppNeta, proveďte následující kroky:**
 
-1. Na portálu Azure na **sledování výkonu AppNeta** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. Na webu Azure Portal na **sledování výkonu AppNeta** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
 
-    ![Konfigurace propojení přihlášení][4]
+    ![Nakonfigurovat jednotné přihlašování – odkaz][4]
 
-2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
+2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
-    ![Jediné přihlášení dialogové okno](./media/appneta-tutorial/tutorial_appneta_samlbase.png)
+    ![Jednotné přihlašování – dialogové okno](./media/appneta-tutorial/tutorial_appneta_samlbase.png)
 
-3. Na **AppNeta výkonu monitorování domény a adresy URL** část, proveďte následující kroky:
+3. Na **AppNeta výkonu monitorování domény a adresy URL** části, proveďte následující kroky:
 
-    ![AppNeta výkonu monitorování domény a adresy URL jednotné přihlašování informace](./media/appneta-tutorial/tutorial_appneta_url.png)
+    ![AppNeta výkonu monitorování domény a adresy URL jednotného přihlašování – informace](./media/appneta-tutorial/tutorial_appneta_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<subdomain>.pm.appneta.com`
+    a. V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<subdomain>.pm.appneta.com`
 
-    b. V **identifikátor** textovému poli, zadejte hodnotu: `PingConnect`
+    b. V **identifikátor** textového pole zadejte hodnotu: `PingConnect`
 
     > [!NOTE] 
-    > Hodnota přihlašovací adresa URL není skutečné. Aktualizujte tuto hodnotu s skutečná adresa URL přihlašování. Obraťte se na [tým podpory AppNeta výkonu monitorování klientské](mailto:support@appneta.com) získat tuto hodnotu. 
+    > Hodnota přihlašovací adresa URL není skutečný. Aktualizujte tuto hodnotu skutečné přihlašovací adresa URL. Kontakt [tým podpory AppNeta výkonu monitorování klientské](mailto:support@appneta.com) tuto výhodu získáte. 
 
-5. Monitorování výkonu AppNeta aplikace očekává SAML kontrolní výrazy ve specifickém formátu, který vyžaduje, můžete přidat mapování vlastních atributů do vaší konfigurace atributy tokenu SAML. Nakonfigurujte následující deklarace identity pro tuto aplikaci. Můžete spravovat hodnoty těchto atributů z "**uživatelské atributy**" části na stránce integrace aplikace.
+5. Monitorování výkonu AppNeta aplikace očekává, že kontrolní výrazy SAML v určitém formátu, který je potřeba přidat vlastní atribut mapování konfigurace atributy tokenu SAML. Nakonfigurujte následující deklarace identity pro tuto aplikaci. Můžete spravovat hodnotami těchto atributů z "**atributy uživatele**" části na stránce aplikací pro integraci.
 
-    ![Konfigurovat jednotné přihlašování](./media/appneta-tutorial/attribute.png)
+    ![Konfigurace jednotného přihlašování](./media/appneta-tutorial/attribute.png)
 
-6. V **uživatelské atributy** části na **jednotného přihlašování** dialogové okno, nakonfigurujte atribut tokenu SAML, jak je vidět na předchozím obrázku a proveďte následující kroky:
+6. V **atributy uživatele** části na **jednotného přihlašování** dialogovém okně Konfigurovat atribut tokenu SAML, jak je znázorněno na předchozím obrázku a proveďte následující kroky:
            
     | Název atributu | Hodnota atributu |
     | ---------------| ----------------|
-    | FirstName| user.givenname|
+    | Jméno| user.givenname|
     | Příjmení| user.surname|
     | e-mail| user.userprincipalname|
     | jméno| user.userprincipalname|
@@ -132,47 +132,47 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     | název| user.jobtitle|
 
     > [!NOTE]
-    > "skupinami" odkazuje na skupinu zabezpečení v Appneta, která se mapuje na Role ve službě Azure AD. Naleznete [to](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management) doc, která vysvětluje, jak vytvořit vlastní role ve službě Azure AD.
+    > 'skupiny' odkazuje na skupiny zabezpečení v Appneta, která se mapuje na "Role ve službě Azure AD. Najdete [to](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management) dokumentu, který vysvětluje, jak vytvořit vlastní role ve službě Azure AD.
         
-    a. Klikněte na tlačítko **přidat atribut** otevřete **přidat atribut** dialogové okno.
+    a. Klikněte na tlačítko **přidat atribut** otevřít **přidat atribut** dialogového okna.
 
-    ![Konfigurovat jednotné přihlašování](./media/appneta-tutorial/tutorial_attribute_04.png)
+    ![Konfigurace jednotného přihlašování](./media/appneta-tutorial/tutorial_attribute_04.png)
     
-    ![Konfigurovat jednotné přihlašování](./media/appneta-tutorial/tutorial_attribute_05.png)
+    ![Konfigurace jednotného přihlašování](./media/appneta-tutorial/tutorial_attribute_05.png)
 
-    b. V **název** textovému poli, zadejte název atributu, který je uvedený na příslušném řádku.
+    b. V **název** textového pole zadejte název atributu, který je zobrazený pro tento řádek.
 
-    c. Z **hodnotu** seznamu, zadejte hodnotu atributu, který je uvedený na příslušném řádku.
+    c. Z **hodnotu** seznamu, zadejte hodnotu atributu zobrazený pro tento řádek.
 
-    d. Obor názvů nechte prázdné.
+    d. Obor názvů, ponechte prázdné.
     
     e. Klikněte na tlačítko **OK**.  
 
-4. Na **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat ve vašem počítači.
+4. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor metadat ve vašem počítači.
 
     ![Odkaz ke stažení certifikátu](./media/appneta-tutorial/tutorial_appneta_certificate.png) 
 
 5. Klikněte na tlačítko **Uložit** tlačítko.
 
-    ![Nakonfigurujte jeden přihlašování uložit tlačítko](./media/appneta-tutorial/tutorial_general_400.png)
+    ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/appneta-tutorial/tutorial_general_400.png)
 
-6. Konfigurace jednotného přihlašování na **sledování výkonu AppNeta** straně, budete muset odeslat stažené **soubor XML s metadaty** k [tým podpory pro sledování výkonu AppNeta](mailto:support@appneta.com). Nastavují toto nastavení tak, aby měl jednotné přihlašování SAML připojení správně nastavena na obou stranách.
+6. Ke konfiguraci jednotného přihlašování na **sledování výkonu AppNeta** straně, je nutné odeslat na stažený **soubor XML s metadaty** k [tým podpory sledování výkonu AppNeta](mailto:support@appneta.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovací uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
-Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
+Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-   ![Vytvořit testovací uživatele Azure AD][100]
+   ![Vytvořit testovacího uživatele Azure AD][100]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
 
-1. Na portálu Azure, v levém podokně klikněte **Azure Active Directory** tlačítko.
+1. Na webu Azure Portal, v levém podokně klikněte na tlačítko **Azure Active Directory** tlačítko.
 
     ![Tlačítko Azure Active Directory](./media/appneta-tutorial/create_aaduser_01.png)
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na **všichni uživatelé**.
+2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
 
-    !["Uživatelé a skupiny" a "Všichni uživatelé" odkazy](./media/appneta-tutorial/create_aaduser_02.png)
+    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](./media/appneta-tutorial/create_aaduser_02.png)
 
 3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
 
@@ -186,56 +186,56 @@ Cílem této části je vytvoření zkušebního uživatele na portálu Azure, n
 
     b. V **uživatelské jméno** zadejte e-mailovou adresu uživatele Britta Simon.
 
-    c. Vyberte **zobrazit hesla** zaškrtněte políčko a zapište si ji hodnotu, která se zobrazí v **heslo** pole.
+    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
 
     d. Klikněte na možnost **Vytvořit**.
  
-### <a name="create-an-appneta-performance-monitor-test-user"></a>Vytvořit testovací uživatele s AppNeta sledování výkonu
+### <a name="create-an-appneta-performance-monitor-test-user"></a>Vytvořit testovacího uživatele AppNeta sledování výkonu
 
-Cílem této části je vytvoření uživatele v nástroji Sledování výkonu AppNeta názvem Britta Simon. Sledování výkonu AppNeta podporuje za běhu zřizování, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Nový uživatel se vytvoří během pokusu o přístup k AppNeta sledování výkonu, pokud ještě neexistuje.
+Cílem této části je vytvořte uživatele Britta Simon v nástroji Sledování výkonu AppNeta. Sledování výkonu AppNeta podporuje just-in-time zřizování, což je ve výchozím nastavení povolená. Neexistuje žádná položka akce pro vás v této části. Nový uživatel se vytvoří během pokusu o přístup k monitorování výkonu AppNeta, pokud ještě neexistuje.
 >[!Note]
->Pokud je potřeba ručně vytvořit uživateli, obraťte se na [tým podpory pro sledování výkonu AppNeta](mailto:support@appneta.com).
+>Pokud je potřeba ručně vytvořit uživatele, obraťte se na [tým podpory sledování výkonu AppNeta](mailto:support@appneta.com).
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit testovacího uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí sledování výkonu AppNeta udělení přístupu.
+V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k AppNeta Performance monitoru.
 
-![Přiřadit role uživatele][200] 
+![Přiřazení role uživatele][200] 
 
-**Pokud chcete přiřadit Britta Simon AppNeta sledování výkonu, proveďte následující kroky:**
+**Přiřadit Britta Simon se sledováním výkonu AppNeta, proveďte následující kroky:**
 
-1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
+1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
 2. V seznamu aplikací vyberte **sledování výkonu AppNeta**.
 
-    ![V seznamu aplikací na odkaz AppNeta sledování výkonu](./media/appneta-tutorial/tutorial_appneta_app.png)  
+    ![Odkaz sledování výkonu AppNeta v seznamu aplikací](./media/appneta-tutorial/tutorial_appneta_app.png)  
 
 3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
-    ![Odkaz "Uživatelé a skupiny"][202]
+    ![Odkaz "Uživatele a skupiny"][202]
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.
+4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
-    ![V podokně Přidat přiřazení][203]
+    ![Podokno Přidat přiřazení][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
+5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
+6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
+7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
 ### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
-V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
+V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Když kliknete na dlaždici monitorování výkonu AppNeta na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci sledování výkonu AppNeta.
-Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](../active-directory-saas-access-panel-introduction.md). 
+Když kliknete na dlaždici monitorování výkonu AppNeta na přístupovém panelu, vám by měl získat automaticky přihlášení k AppNeta monitorování výkonu aplikace.
+Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](tutorial-list.md)
+* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: f2d0b009c4451a4108222ac7aa7954ba6dd86699
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 04a446f43bd39ef7bfca590af67289813eab4032
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37869003"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048875"
 ---
 # <a name="self-service-password-reset-in-azure-ad-deep-dive"></a>Samoobslužné resetování hesla ve podrobné informace o službě Azure AD
 
@@ -248,8 +248,8 @@ K otestování tohoto scénáře, přejděte na http://passwordreset.microsofton
 V následujících článcích najdete další informace o resetování hesla prostřednictvím Azure AD:
 
 * [Jak dokončit úspěšné zavedení SSPR?](howto-sspr-deployment.md)
-* [Resetování nebo změna hesla](../active-directory-passwords-update-your-own-password.md)
-* [Registrace samoobslužného resetování hesla](../active-directory-passwords-reset-register.md)
+* [Resetování nebo změna hesla](../user-help/active-directory-passwords-update-your-own-password.md)
+* [Registrace samoobslužného resetování hesla](../user-help/active-directory-passwords-reset-register.md)
 * [Máte dotaz k licencování?](concept-sspr-licensing.md)
 * [Jaká data používá SSPR a která data byste měli naplnit pro vaše uživatele?](howto-sspr-authenticationdata.md)
 * [Které metody ověřování jsou dostupné pro uživatele?](concept-sspr-howitworks.md#authentication-methods)

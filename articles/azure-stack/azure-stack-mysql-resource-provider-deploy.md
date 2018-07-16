@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/02/2018
+ms.date: 07/13/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: e4af3dc8aa7a656fd0020285c3f73ce414ba039c
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 645fa89bede1311215f1d67c64a2388e4de5c1b1
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38305892"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044879"
 ---
 # <a name="deploy-the-mysql-resource-provider-on-azure-stack"></a>Nasazení poskytovatele prostředků MySQL ve službě Azure Stack
 
@@ -30,23 +30,30 @@ Používání poskytovatele prostředků MySQL Server vystavit databází MySQL 
 Existuje několik předpokladů, které musí být splněné před nasazením poskytovatele prostředků Azure Stack MySQL. Budou odpovídat vašim požadavkům, proveďte kroky v tomto článku na počítači s přístupem k privilegovaným koncového bodu virtuálního počítače.
 
 * Pokud jste tak již neučinili, [registrace Azure Stack](.\azure-stack-registration.md) s Azure, takže si můžete stáhnout položky Azure marketplace.
-* Je nutné nainstalovat moduly Azure a Azure Stack Powershellu v systému Jestliže spustíte instalaci. Tento systém musí být bitovou kopii systému Windows 10 nebo Windows Server 2016 s nejnovější verzí modulu .NET runtime. Zobrazit [instalace Powershellu pro Azure Stack](.\azure-stack-powershell-install.md).
+* Je nutné nainstalovat moduly Azure a Azure Stack Powershellu v systému, kde budete spouštět tuto instalaci. Tento systém musí být bitovou kopii systému Windows 10 nebo Windows Server 2016 s nejnovější verzí modulu .NET runtime. Zobrazit [instalace Powershellu pro Azure Stack](.\azure-stack-powershell-install.md).
 * Přidejte požadované jádra serveru systému Windows virtuální počítač na webu Marketplace služby Azure Stack stažením **systému Windows Server 2016 Datacenter - jádra serveru** bitové kopie.
-
-  >[!NOTE]
-  >Pokud je potřeba nainstalovat Windows update, můžete umístit jeden. MSU balíček v cestě místní závislosti. Pokud více než jeden. MSU soubor se nachází, se nezdaří instalace poskytovatele prostředků MySQL.
 
 * Stáhnout poskytovatele prostředků MySQL binární a pak spusťte Self-Extractor extrahujte obsah do dočasného adresáře.
 
   >[!NOTE]
   >Chcete-li nasadit poskytovatele MySQL na systém, který nemá přístup k Internetu, zkopírujte [mysql-connector-net-6.10.5.msi](https://dev.mysql.com/get/Downloads/Connector-Net/mysql-connector-net-6.10.5.msi) soubor na místní cestu. Zadejte název cesty pomocí **DependencyFilesLocalPath** parametru.
 
-* Poskytovatel prostředků má minimální odpovídající Azure Stack sestavení. Ujistěte se, stáhněte si správnou binární soubor pro verzi služby Azure Stack, který používáte.
+* Poskytovatel prostředků má minimální odpovídající Azure Stack sestavení. Ujistěte se, stáhněte si správnou binární soubor pro verzi služby Azure Stack, kterou používáte:
 
     | Verze služby Azure Stack | Verze poskytovatele prostředků MySQL|
     | --- | --- |
     | Verzi 1804 (1.0.180513.1)|[Poskytovatele prostředků MySQL verze 1.1.24.0](https://aka.ms/azurestackmysqlrp1804) |
-    | Verzi 1802 (1.0.180302.1) | [Poskytovatele prostředků MySQL verze 1.1.18.0](https://aka.ms/azurestackmysqlrp1802) |
+    | Verzi 1802 (1.0.180302.1) | [Poskytovatele prostředků MySQL verze 1.1.18.0](https://aka.ms/azurestackmysqlrp1802)|
+    |     |     |
+
+- Ujistěte se, že jsou splněné požadavky na integraci datacenter:
+
+    |Požadavek|Referenční informace|
+    |-----|-----|
+    |Podmíněné předávání DNS je nastavena správně.|[Integrace datových center Azure Stack – DNS](azure-stack-integrate-dns.md)|
+    |Jsou otevřené příchozí porty pro poskytovatele prostředků.|[Azure Stack – integrace datových center – publikování koncových bodů](azure-stack-integrate-endpoints.md#ports-and-protocols-inbound)|
+    |Subjekt certifikátu PKI a po síti SAN jsou správně nastavené.|[Požadavky nasazení Azure Stack povinné infrastruktury veřejných KLÍČŮ](azure-stack-pki-certs.md#mandatory-certificates)<br>[Požadavky nasazení certifikátu PaaS Azure Stack](azure-stack-pki-certs.md#optional-paas-certificates)|
+    |     |     |
 
 ### <a name="certificates"></a>Certifikáty
 
@@ -56,7 +63,7 @@ _Pro integrované systémy instalace pouze_. Je nutné zadat certifikát SQL Paa
 
 Jakmile máte nainstalovány požadované součásti, spusťte **DeployMySqlProvider.ps1** skriptu pro nasazení poskytovatele prostředků MYSQL. Jako součást binární poskytovatele prostředků MySQL, který jste stáhli pro vaši verzi sady Azure Stack je extrahován DeployMySqlProvider.ps1 skriptu.
 
-Nasazení poskytovatele prostředků MySQL, otevřete okno konzole Powershellu s nová se zvýšenými oprávněními a přejděte do adresáře, které jste extrahovali binární soubory poskytovatele prostředků MySQL. Doporučujeme použít nové okno prostředí PowerShell, aby potenciální potíže způsobené aktivitami moduly Powershellu, které jsou už načteny.
+Nasazení poskytovatele prostředků MySQL, otevřete okno Powershellu new se zvýšenými oprávněními (ne prostředí PowerShell ISE) a přejděte do adresáře, které jste extrahovali binární soubory poskytovatele prostředků MySQL. Doporučujeme použít nové okno prostředí PowerShell, aby potenciální potíže způsobené aktivitami moduly Powershellu, které jsou už načteny.
 
 Spustit **DeployMySqlProvider.ps1** skript, který dokončí následující úkoly:
 
@@ -65,8 +72,7 @@ Spustit **DeployMySqlProvider.ps1** skript, který dokončí následující úko
 * Publikuje balíček Galerie pro nasazení hostitelských serverů.
 * Nasadí virtuální počítač pomocí základní image Windows serveru 2016 jste stáhli a poté nainstaluje poskytovatele prostředků MySQL.
 * Zaregistruje místní záznam DNS, který se mapuje na zprostředkovateli prostředků virtuálního počítače.
-* Zaregistruje poskytovatele prostředků s místní Azure Resource Manageru pro operátor a k uživatelským účtům.
-* V případě potřeby nainstaluje jednu aktualizaci Windows Server během instalace zprostředkovatele prostředků.
+* Zaregistruje poskytovatele prostředků s místní Azure Resource Manageru pro účet operátor.
 
 > [!NOTE]
 > Při spuštění nasazení poskytovatele prostředků MySQL, **system.local.mysqladapter** se vytvoří skupina prostředků. Může trvat až 75 minut na dokončení nasazení vyžaduje k této skupině prostředků.

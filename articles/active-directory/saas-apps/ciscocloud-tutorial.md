@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: jeedes
-ms.openlocfilehash: 79b0aa9ae435defa980b4da0c8d376fdb69542f3
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 28576452ab982896614af5527a0237ca4ab275f0
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37866555"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39043869"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-cloud"></a>Kurz: Integrace Azure Active Directory s cloudem Cisco
 
@@ -130,8 +130,8 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     | Název atributu | Hodnota atributu |
     | ---------------| ----------------|
-    | země      |User.Country |
-    | společnosti      |User.CompanyName |
+    | Země      |User.Country |
+    | Společnosti      |User.CompanyName |
 
     a. Klikněte na tlačítko **přidat atribut** otevřít **přidat atribut** dialogového okna.
 
@@ -228,7 +228,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
 Po kliknutí na dlaždici Cisco Cloud na přístupovém panelu, které by měl získat automaticky přihlášení k Cisco cloudové aplikace.
-Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../active-directory-saas-access-panel-introduction.md). 
+Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 

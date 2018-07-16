@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s životního cyklu SCC | Microsoft Docs'
+title: 'Kurz: Integrace Azure Active Directory s životního cyklu SCC | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a SCC životního cyklu.
 services: active-directory
 documentationCenter: na
@@ -14,213 +14,213 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: jeedes
-ms.openlocfilehash: 3fbd68864635a50671a8b789c8b9d491f930c2a3
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 1d7ce538ed6ae76f9392433eb88929e375f9d0cb
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36218112"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39045919"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-scc-lifecycle"></a>Kurz: Azure Active Directory integrace s SCC životního cyklu
+# <a name="tutorial-azure-active-directory-integration-with-scc-lifecycle"></a>Kurz: Integrace Azure Active Directory s životního cyklu SCC
 
-V tomto kurzu zjistěte, jak integrovat životního cyklu SCC s Azure Active Directory (Azure AD).
+V tomto kurzu se dozvíte, jak integrovat SCC životního cyklu se službou Azure Active Directory (Azure AD).
 
-Životní cyklus SCC integraci s Azure AD poskytuje následující výhody:
+Životní cyklus SCC integrace s Azure AD poskytuje následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup k SCC životního cyklu
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k životního cyklu SCC (jednotné přihlášení) s jejich účty Azure AD
-- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
+- Můžete řídit ve službě Azure AD, který má přístup k životního cyklu SCC
+- Uživatele, aby automaticky získat přihlášení k životního cyklu SCC (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD
+- Můžete spravovat své účty na jediném místě – na webu Azure portal
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
 Konfigurace integrace Azure AD s SCC životního cyklu, potřebujete následující položky:
 
-- Předplatné služby Azure AD
-- Životního cyklu SCC jednotné přihlašování povolené předplatné
+- S předplatným služby Azure AD
+- Životní cyklus SCC jednotné přihlašování povoleno předplatné
 
 > [!NOTE]
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
 
-- Nepoužívejte provozním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verze Azure AD, můžete získat a jeden měsíc zkušební: [nabídka zkušební verze](https://azure.microsoft.com/pricing/free-trial/).
+- Nepoužívejte produkčním prostředí, pokud to není nutné.
+- Pokud nemáte prostředí zkušební verzi Azure AD, můžete získat měsíční zkušební tady: [nabídka zkušební verze](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání životního cyklu SCC z Galerie
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
 ## <a name="adding-scc-lifecycle-from-the-gallery"></a>Přidání životního cyklu SCC z Galerie
-Při konfiguraci integrace životního cyklu SCC do služby Azure AD, potřebujete přidat životního cyklu SCC z Galerie si na seznam spravovaných aplikací SaaS.
+Ke konfiguraci integrace SCC životního cyklu do služby Azure AD, budete muset přidat životního cyklu SCC z Galerie na váš seznam spravovaných aplikací SaaS.
 
-**Chcete-li přidat životního cyklu SCC z galerie, proveďte následující kroky:**
+**Životní cyklus SCC přidat z galerie, postupujte následovně:**
 
-1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
+1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![Aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Aplikace][3]
 
 4. Do vyhledávacího pole zadejte **životního cyklu SCC**.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/scclifecycle-tutorial/tutorial_scclifecycle_search.png)
+    ![Vytváří se testovací uživatele služby Azure AD](./media/scclifecycle-tutorial/tutorial_scclifecycle_search.png)
 
-5. Na panelu výsledků vyberte **životního cyklu SCC**a potom klikněte na **přidat** tlačítko Přidat aplikaci.
+5. Na panelu výsledků vyberte **životního cyklu SCC**a potom klikněte na tlačítko **přidat** tlačítko pro přidání aplikace.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/scclifecycle-tutorial/tutorial_scclifecycle_addfromgallery.png)
+    ![Vytváří se testovací uživatele služby Azure AD](./media/scclifecycle-tutorial/tutorial_scclifecycle_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
 
-V této části nakonfigurujete a testu Azure AD jednotné přihlašování s životního cyklu SCC podle testovacího uživatele názvem "Britta Simon."
+V této části nakonfigurujete a testovací služby Azure AD jednotného přihlašování se SCC životním cyklem podle testovacího uživatele nazývá "Britta Simon."
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v průběhu životního cyklu SCC je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatele v průběhu životního cyklu SCC musí navázat.
+Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšky v SCC životní cyklus je pro uživatele ve službě Azure AD. Jinými slovy musí navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské v SCC životního cyklu.
 
-V průběhu životního cyklu SCC, přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** k navázání vztahu odkazu.
+V SCC životního cyklu, přiřaďte hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** a tím vytvoří vztah odkazu.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s SCC životního cyklu, je třeba dokončit následující stavební bloky:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s SCC životního cyklu, které potřebujete k dokončení následujících stavebních bloků:
 
-1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
-2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytváření testovacího uživatele životního cyklu SCC](#creating-an-scc-lifecycle-test-user)**  – Pokud chcete mít protějšek Britta Simon v průběhu životního cyklu SCC propojeném s Azure AD reprezentace daného uživatele.
-4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
+1. **[Konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+2. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytvoření testovacího uživatele životního cyklu SCC](#creating-an-scc-lifecycle-test-user)**  – Pokud chcete mít protějšek Britta Simon SCC životní cyklus, který je propojený s Azure AD reprezentace uživatele.
+4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace Azure AD jednotné přihlašování
+### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci SCC životního cyklu.
+V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování v aplikaci SCC životního cyklu.
 
 **Ke konfiguraci Azure AD jednotné přihlašování s SCC životního cyklu, proveďte následující kroky:**
 
-1. Na portálu Azure na **životního cyklu SCC** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. Na webu Azure Portal na **životního cyklu SCC** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
 
-    ![Konfigurovat jednotné přihlašování][4]
+    ![Konfigurace jednotného přihlašování][4]
 
-2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
+2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
-    ![Konfigurovat jednotné přihlašování](./media/scclifecycle-tutorial/tutorial_scclifecycle_samlbase.png)
+    ![Konfigurace jednotného přihlašování](./media/scclifecycle-tutorial/tutorial_scclifecycle_samlbase.png)
 
-3. Na **SCC životního cyklu domény a adresy URL** část, proveďte následující kroky:
+3. Na **SCC životního cyklu domény a adresy URL** části, proveďte následující kroky:
 
-    ![Konfigurovat jednotné přihlašování](./media/scclifecycle-tutorial/tutorial_scclifecycle_url.png)
+    ![Konfigurace jednotného přihlašování](./media/scclifecycle-tutorial/tutorial_scclifecycle_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<sub-domain>.scc.com/ic7/welcome/customer/PICTtest.aspx`
+    a. V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<sub-domain>.scc.com/ic7/welcome/customer/PICTtest.aspx`
 
-    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:
+    b. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru:
     | |
     |--|--|
     | `https://bs1.scc.com/<entity>`|
     | `https://lifecycle.scc.com/<entity>`|
     
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory SCC životního cyklu klienta](mailto:lifecycle.support@scc.com) k získání těchto hodnot. 
+    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte s skutečné přihlašovací adresu URL a identifikátorem. Kontakt [tým podpory životního cyklu klienta SCC](mailto:lifecycle.support@scc.com) k získání těchto hodnot. 
  
-4. Na **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat ve vašem počítači.
+4. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor metadat ve vašem počítači.
 
-    ![Konfigurovat jednotné přihlašování](./media/scclifecycle-tutorial/tutorial_scclifecycle_certificate.png) 
+    ![Konfigurace jednotného přihlašování](./media/scclifecycle-tutorial/tutorial_scclifecycle_certificate.png) 
 
 5. Klikněte na tlačítko **Uložit** tlačítko.
 
-    ![Konfigurovat jednotné přihlašování](./media/scclifecycle-tutorial/tutorial_general_400.png)
+    ![Konfigurace jednotného přihlašování](./media/scclifecycle-tutorial/tutorial_general_400.png)
 
-6. Konfigurace jednotného přihlašování na **životního cyklu SCC** straně, budete muset odeslat stažené **soubor XML s metadaty** k [tým podpory životního cyklu SCC](mailto:lifecycle.support@scc.com). Nastavují toto nastavení tak, aby měl jednotné přihlašování SAML připojení správně nastavena na obou stranách.
+6. Ke konfiguraci jednotného přihlašování na **životního cyklu SCC** straně, je nutné odeslat na stažený **soubor XML s metadaty** k [tým podpory životního cyklu SCC](mailto:lifecycle.support@scc.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
   >[!NOTE]
-  >Jednotné přihlašování musí být povoleno tým podpory SCC životního cyklu.
+  >Jednotné přihlašování se na tým podpory životního cyklu SCC povolit.
 
 > [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
-### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
-Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
+### <a name="creating-an-azure-ad-test-user"></a>Vytváří se testovací uživatele služby Azure AD
+Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-![Vytvořit uživatele Azure AD][100]
+![Vytvoření uživatele Azure AD][100]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
 
-1. V **portál Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
+1. V **webu Azure portal**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/scclifecycle-tutorial/create_aaduser_01.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/scclifecycle-tutorial/create_aaduser_01.png) 
 
 2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
-    ![Vytváření testovacího uživatele Azure AD](./media/scclifecycle-tutorial/create_aaduser_02.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/scclifecycle-tutorial/create_aaduser_02.png) 
 
-3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** horní dialogové okno.
+3. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
  
-    ![Vytváření testovacího uživatele Azure AD](./media/scclifecycle-tutorial/create_aaduser_03.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/scclifecycle-tutorial/create_aaduser_03.png) 
 
-4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
+4. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
  
-    ![Vytváření testovacího uživatele Azure AD](./media/scclifecycle-tutorial/create_aaduser_04.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/scclifecycle-tutorial/create_aaduser_04.png) 
 
-    a. V **název** textovému poli, typ **BrittaSimon**.
+    a. V **název** textové pole, typ **BrittaSimon**.
 
-    b. V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.
+    b. V **uživatelské jméno** textové pole, typ **e-mailová adresa** z BrittaSimon.
 
-    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
+    c. Vyberte **zobrazit heslo** a zapište si hodnotu **heslo**.
 
     d. Klikněte na možnost **Vytvořit**.
  
 ### <a name="creating-an-scc-lifecycle-test-user"></a>Vytvoření životního cyklu SCC testovacího uživatele
 
-Pokud chcete povolit uživatelům Azure AD přihlášení do SCC životního cyklu, musí být zřízená do SCC životního cyklu. Neexistuje žádná položka akce pro konfiguraci zřizování uživatelů k SCC životního cyklu.
+Chcete-li povolit přihlášení do životního cyklu SCC uživatelů Azure AD, musí být poskytnuty do SCC životního cyklu. Neexistuje žádná položka akce konfigurace zřizování uživatelů pro SCC životního cyklu.
 
-Když přiřazený uživatel se pokusí přihlásit SCC životního cyklu, se automaticky vytvoří účet SCC životního cyklu, v případě potřeby.
+Přiřazený uživatel se pokusí přihlásit do životního cyklu SCC, účet SCC životního cyklu se automaticky vytvoří v případě potřeby.
 
 > [!NOTE]
-> Držitel účtu Azure Active Directory obdrží e-mailu a dodržuje odkaz potvrďte svůj účet, pak se změní na aktivní.
+> Držitel účtu Azure Active Directory obdrží e-mailu a řídí se odkaz potvrďte svůj účet, pak se změní na aktivní.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu SCC životního cyklu.
+V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k SCC životního cyklu.
 
 ![Přiřadit uživatele][200] 
 
-**Pokud chcete přiřadit Britta Simon SCC životního cyklu, proveďte následující kroky:**
+**Britta Simon přiřadit SCC životního cyklu, proveďte následující kroky:**
 
-1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace.**
+1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace.**
 
     ![Přiřadit uživatele][201] 
 
 2. V seznamu aplikací vyberte **životního cyklu SCC**.
 
-    ![Konfigurovat jednotné přihlašování](./media/scclifecycle-tutorial/tutorial_scclifecycle_app.png) 
+    ![Konfigurace jednotného přihlašování](./media/scclifecycle-tutorial/tutorial_scclifecycle_app.png) 
 
 3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.
+4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
+5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
+6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
+7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="testing-single-sign-on"></a>Testování jednotné přihlašování
+### <a name="testing-single-sign-on"></a>Testování jednotného přihlašování
 
-V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
+V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Když kliknete na dlaždici životního cyklu SCC na přístupovém panelu, jste měli získat automaticky přihlášení k SCC životního cyklu aplikace.
-Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](../active-directory-saas-access-panel-introduction.md).
+Když kliknete na dlaždici životního cyklu SCC na přístupovém panelu, vám by měl získat automaticky přihlášení k SCC životního cyklu aplikace.
+Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](tutorial-list.md)
+* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->

@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s TINFOIL SECURITY | Microsoft Docs'
+title: 'Kurz: Integrace Azure Active Directory s TINFOIL SECURITY | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a TINFOIL SECURITY.
 services: active-directory
 documentationCenter: na
@@ -15,106 +15,106 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: d05a86d98bbdedc2200020aeeb1e561c3786a150
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 1ad18bd1aea36c5f185f7a8e3062b1c2103017c5
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36218747"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049785"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-tinfoil-security"></a>Kurz: Azure Active Directory integrace s TINFOIL SECURITY
+# <a name="tutorial-azure-active-directory-integration-with-tinfoil-security"></a>Kurz: Integrace Azure Active Directory s TINFOIL SECURITY
 
-V tomto kurzu zjistěte, jak integrovat TINFOIL SECURITY s Azure Active Directory (Azure AD).
+V tomto kurzu se dozvíte, jak integrovat TINFOIL SECURITY s Azure Active Directory (Azure AD).
 
 Integrace TINFOIL SECURITY s Azure AD poskytuje následující výhody:
 
 - Můžete řídit ve službě Azure AD, který má přístup k TINFOIL SECURITY
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k TINFOIL SECURITY (jednotné přihlášení) s jejich účty Azure AD
-- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
+- Uživatele, aby automaticky získat přihlášení k TINFOIL SECURITY (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD
+- Můžete spravovat své účty na jediném místě – na webu Azure portal
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
 Konfigurace integrace Azure AD s TINFOIL SECURITY, potřebujete následující položky:
 
-- Předplatné služby Azure AD
-- TINFOIL SECURITY jednotné přihlašování povolené předplatné
+- S předplatným služby Azure AD
+- TINFOIL SECURITY jednotného přihlašování povolená předplatného
 
 > [!NOTE]
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
 
-- Nepoužívejte provozním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verze Azure AD, můžete [získat zkušební verzi jeden měsíc](https://azure.microsoft.com/pricing/free-trial/).
+- Nepoužívejte produkčním prostředí, pokud to není nutné.
+- Pokud nemáte prostředí zkušební verzi Azure AD, můžete si [získat měsíční zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidat TINFOIL SECURITY z Galerie
-2. Konfigurace a otestování Azure AD jednotné přihlašování
+1. Přidání TINFOIL SECURITY z Galerie
+2. Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-## <a name="add-tinfoil-security-from-the-gallery"></a>Přidat TINFOIL SECURITY z Galerie
-Při konfiguraci integrace TINFOIL SECURITY do služby Azure AD potřebujete přidat TINFOIL SECURITY z Galerie si na seznam spravovaných aplikací SaaS.
+## <a name="add-tinfoil-security-from-the-gallery"></a>Přidání TINFOIL SECURITY z Galerie
+Konfigurace integrace TINFOIL SECURITY do služby Azure AD, budete muset přidat TINFOIL SECURITY z Galerie na váš seznam spravovaných aplikací SaaS.
 
-**Pokud chcete přidat TINFOIL SECURITY z galerie, proveďte následující kroky:**
+**Chcete-li přidat TINFOIL SECURITY z galerie, postupujte následovně:**
 
-1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
+1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![Aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Aplikace][3]
 
-4. Do vyhledávacího pole zadejte **TINFOIL SECURITY**, vyberte **TINFOIL SECURITY** z panelu výsledků klikněte **přidat** tlačítko Přidat aplikaci.
+4. Do vyhledávacího pole zadejte **TINFOIL SECURITY**vyberte **TINFOIL SECURITY** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
     ![TINFOIL SECURITY z Galerie](./media/tinfoil-security-tutorial/tutorial_tinfoil-security_addfromgallery.png)
 
-##  <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování Azure AD jednotné přihlašování
-V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s TINFOIL SECURITY podle testovacího uživatele názvem "Britta Simon".
+##  <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+V této části Konfigurace a testování Azure AD jednotné přihlašování pomocí TINFOIL SECURITY na základě testovací uživatele nazývá "Britta Simon".
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v TINFOIL SECURITY je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v TINFOIL SECURITY musí navázat.
+Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšky v TINFOIL SECURITY je pro uživatele ve službě Azure AD. Jinými slovy vztah odkazu mezi uživatele služby Azure AD a související uživatelské v TINFOIL SECURITY potřeba navázat.
 
-V TINFOIL SECURITY přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** k navázání vztahu odkazu.
+V TINFOIL SECURITY přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** a tím vytvoří vztah odkazu.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s TINFOIL SECURITY, budete muset provést následující stavební bloky:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s TINFOIL SECURITY, které potřebujete k dokončení následujících stavebních bloků:
 
-1. **[Konfigurovat Azure AD jednotné přihlašování](#configure-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
-2. **[Vytvořit testovací uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele TINFOIL SECURITY](#create-a-tinfoil-security-test-user)**  – Pokud chcete mít protějšek Britta Simon v TINFOIL SECURITY propojeném s Azure AD reprezentace daného uživatele.
-4. **[Přiřadit testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. **[Test jednotného přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
+1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+2. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytvoření zkušebního uživatele TINFOIL SECURITY](#create-a-tinfoil-security-test-user)**  – Pokud chcete mít protějšek Britta Simon TINFOIL SECURITY, který je propojený s Azure AD reprezentace uživatele.
+4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurovat Azure AD jednotné přihlašování
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci TINFOIL SECURITY.
+V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování aplikace TINFOIL SECURITY.
 
 **Ke konfiguraci Azure AD jednotné přihlašování s TINFOIL SECURITY, proveďte následující kroky:**
 
-1. Na portálu Azure na **TINFOIL SECURITY** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. Na webu Azure Portal na **TINFOIL SECURITY** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
 
-    ![Konfigurovat jednotné přihlašování][4]
+    ![Konfigurace jednotného přihlašování][4]
 
-2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
+2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
-    ![Přihlášení na základě SAML](./media/tinfoil-security-tutorial/tutorial_tinfoil-security_samlbase.png)
+    ![Přihlašování založené na SAML](./media/tinfoil-security-tutorial/tutorial_tinfoil-security_samlbase.png)
 
-3. Na **TINFOIL zabezpečení domény a adresy URL** části uživatel nemusí provádět žádné kroky, protože aplikace je už předem integrováno s Azure.
+3. Na **TINFOIL SECURITY domény a adresy URL** části uživatel nemá k provedení všech kroků jako aplikace je už předem integrováno s Azure.
 
-    ![Konfigurovat jednotné přihlašování](./media/tinfoil-security-tutorial/tutorial_tinfoil-security_url.png)
+    ![Konfigurace jednotného přihlašování](./media/tinfoil-security-tutorial/tutorial_tinfoil-security_url.png)
 
 
-4. Na **SAML podpisový certifikát** část, zkopírujte **kryptografický OTISK** hodnotu.
+4. Na **podpisový certifikát SAML** tématu, zkopírujte **kryptografický OTISK** hodnotu.
 
-    ![Certifikát pro podpis SAML části](./media/tinfoil-security-tutorial/tutorial_tinfoil-security_certificate.png) 
+    ![Části podpisový certifikát SAML](./media/tinfoil-security-tutorial/tutorial_tinfoil-security_certificate.png) 
 
-5. Pokud chcete přidat mapování požadovaný atribut, proveďte následující kroky:
+5. Chcete-li přidat mapování požadovaný atribut, postupujte následovně:
     
     ![Atributy](./media/tinfoil-security-tutorial/tutorial_tinfoil-security_attribute1.png "atributy")
     
@@ -128,9 +128,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     
     ![Přidat atribut](./media/tinfoil-security-tutorial/tutorial_tinfoil-security_addatt.png "atributy")
     
-    b. V **název atributu** textovému poli, typ **accountid**.
+    b. V **název atributu** textové pole, typ **accountid**.
     
-    c. V **hodnota atributu** textovému poli, vložte ID účtu hodnotu, která budete mít později v kurzu.
+    c. V **hodnota atributu** textové pole, vložte ID účtu hodnotu, která se zobrazí později v kurzu.
     
     d. Klikněte na tlačítko **OK**.    
 
@@ -138,21 +138,21 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Tlačítko Uložit](./media/tinfoil-security-tutorial/tutorial_general_400.png)
 
-7. Na **TINFOIL SECURITY Configuration** klikněte na tlačítko **konfigurace TINFOIL SECURITY** otevřete **konfigurovat přihlášení** okno. Kopírování **SAML jeden přihlašování adresa URL služby** z **Stručná referenční příručka části.**
+7. Na **TINFOIL SECURITY Configuration** klikněte na tlačítko **konfigurace TINFOIL SECURITY** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
 
-    ![Konfigurace zabezpečení aplikace TINFOIL](./media/tinfoil-security-tutorial/tutorial_tinfoil-security_configure.png) 
+    ![Konfigurace aplikace TINFOIL SECURITY](./media/tinfoil-security-tutorial/tutorial_tinfoil-security_configure.png) 
 
-8. V okně prohlížeče jiný web Přihlaste se jako správce k serveru vaší společnosti TINFOIL SECURITY.
+8. V okně jiné webové prohlížeče přihlaste jako správce serveru vaší společnosti TINFOIL SECURITY.
 
 9. Na panelu nástrojů v horní části klikněte na tlačítko **Můj účet**.
    
-    ![Řídicí panel](./media/tinfoil-security-tutorial/ic798971.png "řídicí panel")
+    ![Řídicí panel](./media/tinfoil-security-tutorial/ic798971.png "řídicího panelu")
 
 10. Klikněte na tlačítko **zabezpečení**.
    
     ![Zabezpečení](./media/tinfoil-security-tutorial/ic798972.png "zabezpečení")
 
-11. Na **jednotné přihlašování** konfigurace proveďte následující kroky:
+11. Na **Single Sign-On** konfigurační stránce, proveďte následující kroky:
    
     ![Jednotné přihlašování](./media/tinfoil-security-tutorial/ic798973.png "jednotného přihlašování")
    
@@ -160,73 +160,73 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
    
     b. Klikněte na tlačítko **ruční konfigurace**.
    
-    c. V **SAML Post URL** textovému poli, vložte hodnotu **SAML jeden přihlašování adresa URL služby** který jste zkopírovali z portálu Azure
+    c. V **SAML Post URL** textového pole vložte hodnotu **SAML jednotné přihlašování – adresa URL služby** zkopírovanou z webu Azure portal
    
-    d. V **otisků certifikátu SAML** textovému poli, vložte hodnotu **kryptografický otisk** který jste zkopírovali z **SAML podpisový certifikát** části.
+    d. V **otisku certifikátu SAML** textového pole vložte hodnotu **kryptografický otisk** zkopírovanou z **podpisový certifikát SAML** oddílu.
   
-    e. Kopírování **vaše ID účtu** a vložte hodnotu v **hodnota atributu** textového pole pod **přidat atribut** části na portálu Azure.
+    e. Kopírování **ID vašeho účtu** hodnotu a vložte tuto hodnotu v **hodnota atributu** textového pole pod **přidat atribut** části webu Azure Portal.
    
     f. Klikněte na **Uložit**.
 
 > [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovací uživatele Azure AD
-Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-![Vytvořit uživatele Azure AD][100]
+![Vytvoření uživatele Azure AD][100]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
 
-1. V **portál Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
+1. V **webu Azure portal**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/tinfoil-security-tutorial/create_aaduser_01.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/tinfoil-security-tutorial/create_aaduser_01.png) 
 
 2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
-    ![Uživatelé a skupiny -> všichni uživatelé ](./media/tinfoil-security-tutorial/create_aaduser_02.png) 
+    ![Všichni uživatelé -> uživatele a skupiny ](./media/tinfoil-security-tutorial/create_aaduser_02.png) 
 
-3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** horní dialogové okno.
+3. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
  
     ![Uživatel](./media/tinfoil-security-tutorial/create_aaduser_03.png) 
 
-4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
+4. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
  
-    ![Vytváření testovacího uživatele Azure AD](./media/tinfoil-security-tutorial/create_aaduser_04.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/tinfoil-security-tutorial/create_aaduser_04.png) 
 
-    a. V **název** textovému poli, typ **BrittaSimon**.
+    a. V **název** textové pole, typ **BrittaSimon**.
 
-    b. V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.
+    b. V **uživatelské jméno** textové pole, typ **e-mailová adresa** z BrittaSimon.
 
-    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
+    c. Vyberte **zobrazit heslo** a zapište si hodnotu **heslo**.
 
     d. Klikněte na možnost **Vytvořit**.
  
 ### <a name="create-a-tinfoil-security-test-user"></a>Vytvoření zkušebního uživatele TINFOIL SECURITY
 
-Pokud chcete povolit uživatelům Azure AD přihlášení do TINFOIL SECURITY, musí být zřízená do TINFOIL SECURITY. V případě TINFOIL SECURITY zřizování je ruční úloha.
+Chcete-li povolit uživatele Azure AD k přihlášení do aplikace TINFOIL SECURITY, musí být poskytnuty do TINFOIL SECURITY. V případě TINFOIL SECURITY zřizování je ruční úloha.
 
-**Pokud chcete získat uživatele zřízený, proveďte následující kroky:**
+**K získání uživatele zřízené, proveďte následující kroky:**
 
-1. Pokud uživatel je součástí účet podnikové sítě, budete muset [kontaktujte tým podpory TINFOIL SECURITY](https://www.tinfoilsecurity.com/contact) se získat uživatelský účet vytvořený.
+1. Pokud uživatel je součástí účet organizace, budete muset [obraťte se na tým podpory TINFOIL SECURITY](https://www.tinfoilsecurity.com/contact) získat uživatelský účet vytvořený.
 
-2. Pokud je uživatel běžný uživatel TINFOIL SECURITY SaaS, pak uživatel může přidávat spolupracovníka pro žádného uživatele lokalit. Tím se spustí proces k odeslání pozvánky k zadané e-mailu k vytvoření nového uživatelského účtu TINFOIL SECURITY.
+2. Pokud uživatel je běžný uživatel TINFOIL SECURITY SaaS, pak může uživatel přidat spolupracovníka k některému z webů uživatele. Tím se spustí proces odeslání pozvánky k zadané e-mailu k vytvoření nového uživatelského účtu TINFOIL SECURITY.
 
 > [!NOTE]
-> Další nástroje pro tvorbu TINFOIL SECURITY uživatelského účtu nebo rozhraní API poskytovaných TINFOIL SECURITY můžete použít ke zřízení uživatelských účtů Azure AD.
+> Další nástroje pro tvorbu účtu TINFOIL SECURITY uživatele nebo rozhraní API poskytovaných TINFOIL SECURITY můžete použít ke zřízení uživatelských účtů služby Azure AD.
 > 
 > 
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit testovacího uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu TINFOIL SECURITY.
+V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k TINFOIL SECURITY.
 
 ![Přiřadit uživatele][200] 
 
-**Pokud chcete přiřadit Britta Simon TINFOIL SECURITY, proveďte následující kroky:**
+**Britta Simon přiřadit TINFOIL SECURITY, proveďte následující kroky:**
 
-1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
+1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
@@ -238,25 +238,25 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 
     ![Přiřadit uživatele][202] 
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.
+4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
+5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
+6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
+7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
 ### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
-V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
+V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Když kliknete na dlaždici TINFOIL SECURITY na přístupovém panelu, jste měli získat automaticky přihlášení k aplikace TINFOIL SECURITY. Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](../active-directory-saas-access-panel-introduction.md).
+Po kliknutí na dlaždici TINFOIL SECURITY na přístupovém panelu, které by měl získat automaticky přihlášení k aplikace TINFOIL SECURITY. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](tutorial-list.md)
+* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

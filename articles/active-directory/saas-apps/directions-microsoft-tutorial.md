@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s pokyny, společnost Microsoft | Microsoft Docs'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a pokynů společnost Microsoft.
+title: 'Kurz: Integrace Azure Active Directory pokyny týkající se Microsoft | Dokumentace Microsoftu'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a pokyny na Microsoft.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,214 +14,214 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 282869295f26f85683a2d28706280c4bf62fa54b
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: b83f452300295078e4edf797ec2ef2f0c5223031
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36221372"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39047469"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-directions-on-microsoft"></a>Kurz: Azure Active Directory integrace s pokyny, společnost Microsoft
+# <a name="tutorial-azure-active-directory-integration-with-directions-on-microsoft"></a>Kurz: Integrace Azure Active Directory pokyny týkající se Microsoft
 
-V tomto kurzu zjistěte, jak mají být integrovány pokynů na Microsoft Azure Active Directory (Azure AD).
+V tomto kurzu se dozvíte, jak integrovat pokynů na Microsoft Azure Active Directory (Azure AD).
 
-Integrace s Azure AD pokynů společnost Microsoft poskytuje následující výhody:
+Pokyny na Microsoft integrace s Azure AD poskytuje následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup k pokynů na Microsoft
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k pokynů společnost Microsoft (jednotné přihlášení) s jejich účty Azure AD
-- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
+- Můžete řídit ve službě Azure AD, který má přístup k pokynů v Microsoftu
+- Můžete povolit uživatelům, aby automaticky získat přihlášení k směrech Microsoft (Single Sign-On) s jejich účty Azure AD
+- Můžete spravovat své účty na jediném místě – na webu Azure portal
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s pokyny, společnost Microsoft, potřebujete následující položky:
+Pokyny týkající se Microsoft konfigurace integrace Azure AD, potřebujete následující položky:
 
-- Předplatné služby Azure AD
-- Předplatné povolené pokynů na Microsoft Jednotné přihlašování
+- S předplatným služby Azure AD
+- Pokyny na Microsoft jednotného přihlašování povolená předplatného
 
 > [!NOTE]
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
 
-- Nepoužívejte provozním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební verze jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).
+- Nepoužívejte produkčním prostředí, pokud to není nutné.
+- Pokud nemáte prostředí zkušební verzi Azure AD, můžete získat měsíční zkušební [tady](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání pokynů na Microsoft z Galerie
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
 ## <a name="adding-directions-on-microsoft-from-the-gallery"></a>Přidání pokynů na Microsoft z Galerie
-Konfigurace integrace pokynů na Microsoft do služby Azure AD, potřebujete přidat pokynů na Microsoft z Galerie si na seznam spravovaných aplikací SaaS.
+Ke konfiguraci integrace pokynů na Microsoft do služby Azure AD, budete muset přidat pokynů na Microsoft z Galerie na váš seznam spravovaných aplikací SaaS.
 
-**Přidat pokynů na Microsoft z galerie, proveďte následující kroky:**
+**Chcete-li přidat pokynů na Microsoft z galerie, postupujte následovně:**
 
-1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
+1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![Aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Aplikace][3]
 
-4. Do vyhledávacího pole zadejte **pokynů na Microsoft**.
+4. Do vyhledávacího pole zadejte **směrech Microsoft**.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/directions-microsoft-tutorial/tutorial_directionsonmicrosoft_search.png)
+    ![Vytváří se testovací uživatele služby Azure AD](./media/directions-microsoft-tutorial/tutorial_directionsonmicrosoft_search.png)
 
-5. Na panelu výsledků vyberte **pokynů na Microsoft**a potom klikněte na **přidat** tlačítko Přidat aplikaci.
+5. Na panelu výsledků vyberte **směrech Microsoft**a potom klikněte na tlačítko **přidat** tlačítko pro přidání aplikace.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/directions-microsoft-tutorial/tutorial_directionsonmicrosoft_addfromgallery.png)
+    ![Vytváří se testovací uživatele služby Azure AD](./media/directions-microsoft-tutorial/tutorial_directionsonmicrosoft_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
-V této části můžete nakonfigurovat a otestovat Azure AD jednotné přihlašování pokyny týkající se společnosti Microsoft podle testovacího uživatele názvem "Britta Simon."
+V této části nakonfigurovat a otestovat Azure AD jednotného přihlašování pokyny týkající se Microsoft podle testovacího uživatele nazývá "Britta Simon."
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějšek v směrech na Microsoft je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v směrech na Microsoft musí navázat.
+Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšek směry na Microsoft je pro uživatele ve službě Azure AD. Jinými slovy musí navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské směry na Microsoft.
 
-V pokynů na Microsoft přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** k navázání vztahu odkazu.
+Směry na Microsoft, přiřaďte hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** a tím vytvoří vztah odkazu.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s pokyny, společnost Microsoft, budete muset provést následující stavební bloky:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování pomocí pokynů v Microsoftu, které potřebujete k dokončení následujících stavebních bloků:
 
-1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
-2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytváření pokynů na Microsoft testovacího uživatele](#creating-a-directions-on-microsoft-test-user)**  – Pokud chcete mít protějšek Britta Simon v směrech na společnosti Microsoft, který je propojený s Azure AD reprezentace daného uživatele.
-4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
+1. **[Konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+2. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytváření pokyny pro uživatele Microsoft test](#creating-a-directions-on-microsoft-test-user)**  – Pokud chcete mít protějšek Britta Simon směry na Microsoft, který je propojený s Azure AD reprezentace uživatele.
+4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace Azure AD jednotné přihlašování
+### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v vaší směrech na aplikaci Microsoft.
+V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování ve vašich pokynů v aplikaci Microsoft.
 
-**Chcete-li nakonfigurovat pokynů na Microsoft Azure AD jednotné přihlašování, proveďte následující kroky:**
+**Ke konfiguraci Azure AD jednotné přihlašování pomocí pokynů v Microsoftu, proveďte následující kroky:**
 
-1. Na portálu Azure na **pokynů na Microsoft** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. Na webu Azure Portal na **směrech Microsoft** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
 
-    ![Konfigurovat jednotné přihlašování][4]
+    ![Konfigurace jednotného přihlašování][4]
 
-2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
+2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
-    ![Konfigurovat jednotné přihlašování](./media/directions-microsoft-tutorial/tutorial_directionsonmicrosoft_samlbase.png)
+    ![Konfigurace jednotného přihlašování](./media/directions-microsoft-tutorial/tutorial_directionsonmicrosoft_samlbase.png)
 
-3. Na **pokynů na Microsoft Domain a adresy URL** část, proveďte následující kroky:
+3. Na **směrech Microsoft Domain a adresy URL** části, proveďte následující kroky:
 
-    ![Konfigurovat jednotné přihlašování](./media/directions-microsoft-tutorial/tutorial_directionsonmicrosoft_url.png)
+    ![Konfigurace jednotného přihlašování](./media/directions-microsoft-tutorial/tutorial_directionsonmicrosoft_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:
+    a. V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru:
     |  |
     | --- |
     | `https://www.directionsonmicrosoft.com/user/login` |
     | `https://<subdomain>.devcloud.acquia-sites.com/<companyname>` |
 
-    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:
+    b. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru:
     |  |
     | --- |
     | `https://rhelmdirectionsonmicrosoftcomtest.devcloud.acquia-sites.com/simplesaml/<companyname>` |
     | `https://www.directionsonmicrosoft.com/simplesaml/<companyname>` |
 
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory pokynů na Microsoft Client](mailto:service@DirectionsOnMicrosoft.com) k získání těchto hodnot. 
+    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte s skutečné přihlašovací adresu URL a identifikátorem. Kontakt [tým podpory pokynů na Microsoft Client](mailto:service@DirectionsOnMicrosoft.com) k získání těchto hodnot. 
  
-4. Na **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat ve vašem počítači.
+4. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor metadat ve vašem počítači.
 
-    ![Konfigurovat jednotné přihlašování](./media/directions-microsoft-tutorial/tutorial_directionsonmicrosoft_certificate.png) 
+    ![Konfigurace jednotného přihlašování](./media/directions-microsoft-tutorial/tutorial_directionsonmicrosoft_certificate.png) 
 
 5. Klikněte na tlačítko **Uložit** tlačítko.
 
-    ![Konfigurovat jednotné přihlašování](./media/directions-microsoft-tutorial/tutorial_general_400.png)
+    ![Konfigurace jednotného přihlašování](./media/directions-microsoft-tutorial/tutorial_general_400.png)
 
-6. Konfigurace jednotného přihlašování na **pokynů na Microsoft** straně, budete muset odeslat stažené **soubor XML s metadaty** k [tým podpory pokynů na Microsoft](mailto:service@DirectionsOnMicrosoft.com). Pokud chcete povolit pokynů na tým podpory společnosti Microsoft vyhledejte členstvím na vašem federovaného webu, zahrnují informace o vaší společnosti v e-mailu.
+6. Ke konfiguraci jednotného přihlašování na **směrech Microsoft** straně, je nutné odeslat na stažený **soubor XML s metadaty** k [tým podpory pokynů na Microsoft](mailto:service@DirectionsOnMicrosoft.com). Povolit pokyny na tým podpory společnosti Microsoft vyhledejte členstvím na vašem federovaného webu, patří údaje o společnosti k e-mailu.
     
     >[!NOTE]
-    >Jednotné přihlašování pro pokynů na Microsoft musí být povolena ve [tým podpory pokynů na Microsoft Client](mailto:service@DirectionsOnMicrosoft.com). Zobrazí se oznámení a pokud jednotné přihlašování je povolena.
+    >Jednotné přihlašování pro směry na Microsoft musí povolit [tým podpory pokynů na Microsoft Client](mailto:service@DirectionsOnMicrosoft.com). Obdržíte oznámení při jednotného přihlašování se povolila.
 
 > [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
-### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
-Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
+### <a name="creating-an-azure-ad-test-user"></a>Vytváří se testovací uživatele služby Azure AD
+Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-![Vytvořit uživatele Azure AD][100]
+![Vytvoření uživatele Azure AD][100]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
 
-1. V **portál Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
+1. V **webu Azure portal**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/directions-microsoft-tutorial/create_aaduser_01.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/directions-microsoft-tutorial/create_aaduser_01.png) 
 
 2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
-    ![Vytváření testovacího uživatele Azure AD](./media/directions-microsoft-tutorial/create_aaduser_02.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/directions-microsoft-tutorial/create_aaduser_02.png) 
 
-3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** horní dialogové okno.
+3. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
  
-    ![Vytváření testovacího uživatele Azure AD](./media/directions-microsoft-tutorial/create_aaduser_03.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/directions-microsoft-tutorial/create_aaduser_03.png) 
 
-4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
+4. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
  
-    ![Vytváření testovacího uživatele Azure AD](./media/directions-microsoft-tutorial/create_aaduser_04.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/directions-microsoft-tutorial/create_aaduser_04.png) 
 
-    a. V **název** textovému poli, typ **BrittaSimon**.
+    a. V **název** textové pole, typ **BrittaSimon**.
 
-    b. V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.
+    b. V **uživatelské jméno** textové pole, typ **e-mailová adresa** z BrittaSimon.
 
-    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
+    c. Vyberte **zobrazit heslo** a zapište si hodnotu **heslo**.
 
     d. Klikněte na možnost **Vytvořit**.
  
-### <a name="creating-a-directions-on-microsoft-test-user"></a>Vytváření pokynů na Microsoft testovacího uživatele
+### <a name="creating-a-directions-on-microsoft-test-user"></a>Vytváření pokyny na Microsoft testovacího uživatele
 
-Neexistuje žádná položka akce můžete nakonfigurovat uživatele zajišťování, které pokynů společnost Microsoft.  
+Neexistuje žádná položka akce konfigurace zřizování uživatelů pro pokyny na Microsoft.  
 
-Když přiřazený uživatel se pokusí přihlásit k pokynů na Microsoft použije na přístupovém panelu, pokynů na Microsoft ověří, zda uživatel existuje. Pokud neexistuje žádný účet k dispozici dosud, se automaticky vytvoří podle pokynů na Microsoft.
+Přiřazený uživatel se pokusí přihlásit k směrech Microsoft pomocí přístupového panelu, směry na Microsoft ověří, zda uživatel existuje. Pokud není žádný uživatelský účet k dispozici dosud, vytvoří se automaticky podle pokynů na Microsoft.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon používat Azure jednotné přihlašování podle pokynů na Microsoft udělení přístupu.
+V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k pokynů na Microsoft.
 
 ![Přiřadit uživatele][200] 
 
-**Pokud chcete přiřadit Britta Simon pokynů společnost Microsoft, proveďte následující kroky:**
+**Britta Simon přiřadit pokynů na Microsoft, proveďte následující kroky:**
 
-1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
+1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **pokynů na Microsoft**.
+2. V seznamu aplikací vyberte **směrech Microsoft**.
 
-    ![Konfigurovat jednotné přihlašování](./media/directions-microsoft-tutorial/tutorial_directionsonmicrosoft_app.png) 
+    ![Konfigurace jednotného přihlašování](./media/directions-microsoft-tutorial/tutorial_directionsonmicrosoft_app.png) 
 
 3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.
+4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
+5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
+6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
+7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="testing-single-sign-on"></a>Testování jednotné přihlašování
+### <a name="testing-single-sign-on"></a>Testování jednotného přihlašování
 
-V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
+V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
  
-Když kliknete na dlaždici Microsoft na přístupovém panelu pokynů, jste měli získat automaticky přihlášení k vaší pokynů na aplikaci Microsoft.
+Po kliknutí na pokyny na Microsoft dlaždici na přístupovém panelu, vám by měl získat automaticky přihlášení k vaší pokynů v aplikaci Microsoft.
 
-Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](../active-directory-saas-access-panel-introduction.md). 
+Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](tutorial-list.md)
+* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->

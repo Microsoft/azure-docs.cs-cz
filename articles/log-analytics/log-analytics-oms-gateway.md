@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: a13057769bad7fcad5f95e49102adac234ebcdb4
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: bbb17d1b47c5409d15a15a7461da981fa5e09f7e
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37868935"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39056830"
 ---
 # <a name="connect-computers-without-internet-access-using-the-oms-gateway"></a>Připojit počítače bez připojení k Internetu pomocí brány OMS
 Tento dokument popisuje, jak nakonfigurovat komunikaci s Azure Automation a Log Analytics pomocí brány OMS při přímé připojení nebo Operations Manager monitoruje počítače nemají přístup k Internetu.  Brána OMS, což je dopředné proxy server HTTP, který podporuje tunelování pomocí příkazu HTTP připojení HTTP, můžete shromažďovat data a odeslat do služby Azure Automation a Log Analytics jejich jménem.  
@@ -67,7 +67,7 @@ Brána OMS je k dispozici v následujících jazycích:
 - Čínština (zjednodušená)
 - Čínština (tradiční)
 - Čeština
-- Nizozemština
+- Holandština
 - Angličtina
 - Francouzština
 - Němčina
@@ -89,8 +89,8 @@ V následující tabulce najdete podporovaný počet agentů komunikaci se serve
 
 |brána |Asi počet agentů podporována|  
 |--------|----------------------------------|  
-|-Procesor: Procesor Intel XEON 2660 CPU E5 v3 @ 2,6 GHz, 2 jádra<br> -Paměti: 4 GB<br> – Šířky pásma sítě: 1 GB /| 600|  
-|-Procesor: Procesor Intel XEON 2660 CPU E5 v3 @ 2,6 GHz, 4 jádra<br> – Paměť: 8 GB<br> – Šířky pásma sítě: 1 GB /| 1000|  
+|-Procesor: Procesor Intel XEON 2660 CPU E5 v3 \@ 2,6 GHz, 2 jádra<br> -Paměti: 4 GB<br> – Šířky pásma sítě: 1 GB /| 600|  
+|-Procesor: Procesor Intel XEON 2660 CPU E5 v3 \@ 2,6 GHz, 4 jádra<br> – Paměť: 8 GB<br> – Šířky pásma sítě: 1 GB /| 1000|  
 
 ## <a name="download-the-oms-gateway"></a>Stáhněte si bránu OMS
 

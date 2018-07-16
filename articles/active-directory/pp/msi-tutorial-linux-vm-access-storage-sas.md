@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 12/15/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 59e74ee586a28935b5fde4b5c1089264e98e5087
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: ccf6b41edbd085abeb358cf4fe624956b54946b9
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003091"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39056110"
 ---
 # <a name="use-a-linux-vm-managed-service-identity-to-access-azure-storage-via-a-sas-credential"></a>Použít Linux VM identita spravované služby pro přístup k Azure Storage pomocí pověření SAS
 
@@ -85,7 +85,7 @@ Pokud již nemáte, můžete nyní vytvoří účet úložiště.  Také můžet
 5. Zkontrolujte **předplatné** a **skupiny prostředků** shodovat s těmi, které jste zadali při vytváření virtuálního počítače v předchozím kroku.
 6. Klikněte na možnost **Vytvořit**.
 
-    ![Vytvořit nový účet úložiště](~/articles/active-directory/media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
+    ![Vytvořit nový účet úložiště](../managed-service-identity/media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
 ## <a name="create-a-blob-container-in-the-storage-account"></a>Vytvořte kontejner objektů blob v účtu úložiště
 
@@ -96,7 +96,7 @@ Dále budeme nahrávat a stáhnout soubor do nového účtu úložiště. Proto�
 3. Klikněte na tlačítko **+ kontejner** horní části stránky a "Nový kontejner" vysune.
 4. Zadejte název kontejneru, vyberte úroveň přístupu a pak klikněte na tlačítko **OK**. Zadaný název se použije v pozdější části kurzu. 
 
-    ![Vytvoření kontejneru úložiště](~/articles/active-directory/media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
+    ![Vytvoření kontejneru úložiště](../managed-service-identity/media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
 
 ## <a name="grant-your-vms-msi-access-to-use-a-storage-sas"></a>Udělení přístupu MSI virtuálního počítače a použít úložiště SAS 
 
@@ -110,7 +110,7 @@ Dále budeme nahrávat a stáhnout soubor do nového účtu úložiště. Proto�
 6. Dále, zajistit správné předplatné je uvedené v **předplatné** rozevírací seznam, nastavte **skupiny prostředků** na "Všechny skupiny prostředků".  
 7. Nakonec v části **vyberte** zvolte virtuální počítač s Linuxem v rozevíracím seznamu a potom klikněte na tlačítko **Uložit**.  
 
-    ![Text ALT obrázku](~/articles/active-directory/media/msi-tutorial-linux-vm-access-storage/msi-storage-role-sas.png)
+    ![Text ALT obrázku](../managed-service-identity/media/msi-tutorial-linux-vm-access-storage/msi-storage-role-sas.png)
 
 ## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-call-azure-resource-manager"></a>Získání přístupového tokenu pomocí identity Virtuálního počítače a použít jej k vyvolání Azure Resource Manageru
 

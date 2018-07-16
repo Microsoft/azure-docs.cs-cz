@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s Vodeclic | Microsoft Docs'
+title: 'Kurz: Integrace Azure Active Directory se službou Vodeclic | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Vodeclic.
 services: active-directory
 documentationCenter: na
@@ -15,144 +15,144 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2017
 ms.author: jeedes
-ms.openlocfilehash: 5627d0fa99cee4f289787e3fccf83a4c6fa228e0
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: dad37a0d66ff1af9ad7e7f3b6a807ef1104da39f
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36221263"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39041088"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-vodeclic"></a>Kurz: Azure Active Directory integrace s Vodeclic
+# <a name="tutorial-azure-active-directory-integration-with-vodeclic"></a>Kurz: Integrace Azure Active Directory se službou Vodeclic
 
-V tomto kurzu zjistěte, jak integrovat Vodeclic s Azure Active Directory (Azure AD).
+V tomto kurzu se dozvíte, jak integrovat Vodeclic s Azure Active Directory (Azure AD).
 
-Integrace Vodeclic s Azure AD poskytuje následující výhody:
+Vodeclic integraci se službou Azure AD poskytuje následující výhody:
 
-- Můžete ovládat ve službě Azure AD, který má přístup k Vodeclic.
-- Můžete povolit uživatelům automaticky získat přihlášený k Vodeclic (jednotné přihlašování a jednotné přihlašování) s jejich účty Azure AD.
-- Můžete spravovat vaše účty v jednom centrálním místě – portál Azure.
+- Můžete řídit ve službě Azure AD, který má přístup k Vodeclic.
+- Můžete povolit uživatelům, aby automaticky získat přihlášený k Vodeclic (jednotné přihlašování a jednotné přihlašování) s jejich účty Azure AD.
+- Můžete spravovat své účty na jediném místě – na webu Azure portal.
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
 Konfigurace integrace Azure AD s Vodeclic, potřebujete následující položky:
 
-- Předplatné služby Azure AD
-- Předplatné povolené Vodeclic jednotného přihlašování
+- S předplatným služby Azure AD
+- Předplatné podporující Vodeclic jednotného přihlašování
 
 > [!NOTE]
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle následujících doporučení:
+Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle následujících doporučení:
 
-- Nepoužívejte provozním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí, zkušební verze Azure AD, [získat bezplatnou zkušební verzi jeden měsíc](https://azure.microsoft.com/pricing/free-trial/).
+- Nepoužívejte vaše produkční prostředí, pokud to není nutné.
+- Pokud nemáte Azure AD zkušební prostředí [získat bezplatnou zkušební verzi měsíčního](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání Vodeclic z Galerie
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
-## <a name="add-vodeclic-from-the-gallery"></a>Přidat Vodeclic z Galerie
-Při konfiguraci integrace Vodeclic do služby Azure AD musíte přidat do seznamu spravovaných aplikací SaaS Vodeclic z galerie.
+## <a name="add-vodeclic-from-the-gallery"></a>Přidání Vodeclic z Galerie
+Konfigurace integrace Vodeclic do služby Azure AD, budete muset přidat Vodeclic z Galerie na váš seznam spravovaných aplikací SaaS.
 
-**Pokud chcete přidat Vodeclic z galerie, proveďte následující kroky:**
+**Chcete-li přidat Vodeclic z galerie, proveďte následující kroky:**
 
-1. V [portál Azure](https://portal.azure.com), v levém podokně, vyberte **Azure Active Directory** ikonu. 
+1. V [webu Azure portal](https://portal.azure.com), v levém podokně, vyberte **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+2. Přejděte na **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![V okně podnikové aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, vyberte **novou aplikaci** tlačítka v horní části dialogových oken.
+3. Chcete-li přidat novou aplikaci, **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Tlačítko nové aplikace][3]
 
-4. Do vyhledávacího pole zadejte **Vodeclic**. Vyberte **Vodeclic** z panelu výsledky a potom vyberte **přidat** tlačítko Přidat aplikaci.
+4. Do vyhledávacího pole zadejte **Vodeclic**. Vyberte **Vodeclic** z panel výsledků a pak vyberte **přidat** tlačítko pro přidání aplikace.
 
     ![Vodeclic v seznamu výsledků](./media/vodeclic-tutorial/tutorial_vodeclic_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování Azure AD jednotné přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-V této části můžete nakonfigurovat a otestovat Azure AD jednotné přihlašování s Vodeclic podle testovacího uživatele názvem "Britta Simon."
+V této části Konfigurace a testování Azure AD jednotné přihlašování s Vodeclic podle testovacího uživatele nazývá "Britta Simon."
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, kdo příslušného uživatele v Vodeclic je pro uživatele ve službě Azure AD. Jinými slovy budete muset vytvořit propojení mezi uživatele Azure AD a související uživatelské v Vodeclic.
+Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, kdo tento uživatel protějšky v Vodeclic je pro uživatele ve službě Azure AD. Jinými slovy budete muset vytvořit propojení mezi uživatele služby Azure AD a související uživatel v Vodeclic.
 
-V Vodeclic, zadejte hodnotu **uživatelské jméno** stejnou hodnotu jako **uživatelské jméno** ve službě Azure AD. Nyní jste vytvořili propojení mezi dvěma uživateli.
+V Vodeclic, zadejte hodnotu **uživatelské jméno** stejnou hodnotu jako **uživatelské jméno** ve službě Azure AD. Nyní jste vytvořili propojení mezi dva uživatele.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Vodeclic, proveďte následující stavební bloky:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Vodeclic, proveďte následující stavebních bloků:
 
-1. [Konfigurovat Azure AD jednotné přihlašování](#configure-azure-ad-single-sign-on) umožňující uživatelům používat tuto funkci.
-2. [Vytvořit testovací uživatele Azure AD](#create-an-azure-ad-test-user) k testování Azure AD jednotné přihlašování s Britta Simon.
-3. [Vytvoření zkušebního uživatele Vodeclic](#create-a-vodeclic-test-user) tak, aby měl protějšek Britta Simon v Vodeclic propojeném s Azure AD reprezentace uživatele.
-4. [Přiřadit testovacího uživatele Azure AD](#assign-the-azure-ad-test-user) povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. [Test jednotného přihlašování](#test-single-sign-on) ověřit, zda funguje konfigurace.
+1. [Konfigurace služby Azure AD jednotného přihlašování](#configure-azure-ad-single-sign-on) aby uživatelé mohli tuto funkci používat.
+2. [Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user) k otestování služby Azure AD jednotné přihlašování s Britta Simon.
+3. [Vytvoření zkušebního uživatele Vodeclic](#create-a-vodeclic-test-user) mít protějšek Britta Simon Vodeclic, který je propojený s Azure AD zastoupení uživatele.
+4. [Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user) umožňující Britta Simon používat Azure AD jednotného přihlašování.
+5. [Otestovat jednotné přihlašování](#test-single-sign-on) ověřit, jestli funguje v konfiguraci.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurovat Azure AD jednotné přihlašování
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci Vodeclic.
+V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování v aplikaci Vodeclic.
 
 **Ke konfiguraci Azure AD jednotné přihlašování s Vodeclic, proveďte následující kroky:**
 
-1. Na portálu Azure na **Vodeclic** stránky integrace aplikací, vyberte **jednotného přihlašování**.
+1. Na webu Azure Portal na **Vodeclic** integrace stránce aplikace vyberte **jednotného přihlašování**.
 
-    ![Konfigurace propojení přihlášení][4]
+    ![Nakonfigurovat jednotné přihlašování – odkaz][4]
 
-2. V **jednotného přihlašování** dialogovém **režimu Single-Sign-on**, vyberte **na základě SAML přihlašování** umožňující jednotného přihlašování.
+2. V **jednotného přihlašování** dialogovém okně **režimu Single-Sign-on**vyberte **přihlašování na základě SAML** povolit jednotné přihlašování.
  
-    ![Jediné přihlášení dialogové okno](./media/vodeclic-tutorial/tutorial_vodeclic_samlbase.png)
+    ![Jednotné přihlašování – dialogové okno](./media/vodeclic-tutorial/tutorial_vodeclic_samlbase.png)
 
-3. Pokud chcete nakonfigurovat aplikace **IDP** spustil v režimu **Vodeclic domény a adresy URL** část, proveďte následující kroky:
+3. Pokud chcete nakonfigurovat aplikace v **zprostředkovatele identity** zahájeno v režimu **Vodeclic domény a adresy URL** části, proveďte následující kroky:
 
-    ![Vodeclic domény a adresy URL jednotné přihlašování informace](./media/vodeclic-tutorial/tutorial_vodeclic_url.png)
+    ![Vodeclic domény a adresy URL jednotného přihlašování – informace](./media/vodeclic-tutorial/tutorial_vodeclic_url.png)
 
-    a. V **identifikátor** pole, zadejte adresu URL pomocí vzoru následující: `https://<companyname>.lms.vodeclic.net/auth/saml`
+    a. V **identifikátor** pole, zadejte adresu URL s následujícím vzorem: `https://<companyname>.lms.vodeclic.net/auth/saml`
 
-    b. V **adresa URL odpovědi** pole, zadejte adresu URL pomocí vzoru následující: `https://<companyname>.lms.vodeclic.net/auth/saml/callback`
+    b. V **adresy URL odpovědi** pole, zadejte adresu URL s následujícím vzorem: `https://<companyname>.lms.vodeclic.net/auth/saml/callback`
 
-4. Pokud chcete nakonfigurovat aplikace **SP** initiated režimu, vyberte **zobrazit upřesňující nastavení adresy URL** zaškrtněte políčko a proveďte následující krok:
+4. Pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu, vyberte **zobrazit pokročilé nastavení URL** zaškrtněte políčko a proveďte následující krok:
 
-    ![Vodeclic domény a adresy URL jednotné přihlašování informace](./media/vodeclic-tutorial/tutorial_vodeclic_url1.png)
+    ![Vodeclic domény a adresy URL jednotného přihlašování – informace](./media/vodeclic-tutorial/tutorial_vodeclic_url1.png)
 
-    V **přihlašovací adresa URL** pole, zadejte adresu URL pomocí vzoru následující: `https://<companyname>.lms.vodeclic.net/auth/saml`
+    V **přihlašovací adresa URL** pole, zadejte adresu URL s následujícím vzorem: `https://<companyname>.lms.vodeclic.net/auth/saml`
      
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizovat skutečným identifikátorem odpovědět adresu URL a přihlašovací adresa URL. Obraťte se [tým podpory Vodeclic klienta](mailto:hotline@vodeclic.com) k získání těchto hodnot.
+    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizovat s identifikátorem skutečné odpovědi adresy URL a přihlašovací adresa URL. Obraťte se [tým podpory Vodeclic klienta](mailto:hotline@vodeclic.com) k získání těchto hodnot.
 
-5. V **SAML podpisový certifikát** vyberte **soubor XML s metadaty**. Uložte soubor metadat ve vašem počítači.
+5. V **podpisový certifikát SAML** vyberte **soubor XML s metadaty**. Uložte soubor metadat ve vašem počítači.
 
     ![Odkaz ke stažení certifikátu](./media/vodeclic-tutorial/tutorial_vodeclic_certificate.png) 
 
 6. Vyberte **Uložit**.
 
-    ![Nakonfigurujte jeden přihlašování uložit tlačítko](./media/vodeclic-tutorial/tutorial_general_400.png)
+    ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/vodeclic-tutorial/tutorial_general_400.png)
     
-7. Konfigurace jednotného přihlašování na **Vodeclic** straně, odesílat stažené **soubor XML s metadaty** k [tým podpory Vodeclic](mailto:hotline@vodeclic.com). Nastavují toto nastavení tak, aby měl jednotné přihlašování SAML připojení správně nastavena na obou stranách.
+7. Ke konfiguraci jednotného přihlašování na **Vodeclic** straně, odeslat na stažený **soubor XML s metadaty** k [tým podpory Vodeclic](mailto:hotline@vodeclic.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
 > [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com) při k nastavení aplikace. Po přidání této aplikace z **služby Active Directory** > **podnikové aplikace, které** vyberte **jednotné přihlašování** kartě a přístup k vložený dokumentace prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace v [Azure AD vložených dokumentaci]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com) při nastavení aplikace. Po přidání této aplikace z **služby Active Directory** > **podnikové aplikace** vyberte **Single Sign-On** kartu a přístup k vložený dokumentace ke službě prostřednictvím **konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace na [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985).
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovací uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
-Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
+Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-   ![Vytvořit testovací uživatele Azure AD][100]
+   ![Vytvořit testovacího uživatele Azure AD][100]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, proveďte následující kroky:**
 
-1. Na portálu Azure, v levém podokně, vyberte **Azure Active Directory** tlačítko.
+1. Na webu Azure Portal, v levém podokně, vyberte **Azure Active Directory** tlačítko.
 
     ![Tlačítko Azure Active Directory](./media/vodeclic-tutorial/create_aaduser_01.png)
 
 2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**. Potom vyberte **všichni uživatelé**.
 
-    !["Uživatelé a skupiny" a "Všichni uživatelé" odkazy](./media/vodeclic-tutorial/create_aaduser_02.png)
+    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](./media/vodeclic-tutorial/create_aaduser_02.png)
 
-3. Chcete-li otevřít **uživatele** dialogové okno, vyberte **přidat** v horní části **všichni uživatelé** dialogové okno.
+3. Chcete-li otevřít **uživatele** dialogovém okně vyberte **přidat** v horní části **všichni uživatelé** dialogové okno.
 
     ![Tlačítko Přidat](./media/vodeclic-tutorial/create_aaduser_03.png)
 
@@ -164,42 +164,42 @@ Cílem této části je vytvoření zkušebního uživatele na portálu Azure, n
 
     b. V **uživatelské jméno** zadejte e-mailovou adresu uživatele Britta Simon.
 
-    c. Vyberte **zobrazit hesla** zaškrtněte políčko a zapište si ji hodnotu, která se zobrazí v **heslo** pole.
+    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
 
     d. Vyberte **Vytvořit**.
  
 ### <a name="create-a-vodeclic-test-user"></a>Vytvoření zkušebního uživatele Vodeclic
 
-V této části vytvoříte volal Britta Simon v Vodeclic uživatele. Pracovat [tým podpory Vodeclic](mailto:hotline@vodeclic.com) přidat uživatele do Vodeclic platformy. Uživatelé musí být vytvořen a aktivovat dříve, než použijete jednotné přihlašování.
+V této části vytvoříte uživatele v Vodeclic jako Britta Simon. Práce s [tým podpory Vodeclic](mailto:hotline@vodeclic.com) přidat uživatele na platformě Vodeclic. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
 > [!NOTE]
-> V souladu s požadavky na aplikace může být potřeba získat seznam povolených adres váš počítač. K tomu dochází, je nutné sdílet veřejnou IP adresu s [tým podpory Vodeclic](mailto:hotline@vodeclic.com).
+> Podle požadavků aplikací můžete potřebovat získat seznam povolených adres vašeho počítače. Pro, které se provedou, budete chtít sdílet svou veřejnou IP adresu s [tým podpory Vodeclic](mailto:hotline@vodeclic.com).
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit testovacího uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu Vodeclic.
+V této části je povolit Britta Simon k udělení přístupu k Vodeclic použití Azure jednotného přihlašování.
 
-![Přiřadit role uživatele][200] 
+![Přiřazení role uživatele][200] 
 
-**Pokud chcete přiřadit Britta Simon Vodeclic, proveďte následující kroky:**
+**Chcete-li přiřadit Vodeclic Britta Simon, proveďte následující kroky:**
 
-1. Na portálu Azure otevřete zobrazení aplikace a pak přejděte do zobrazení adresáře. Potom přejděte na **podnikové aplikace, které**a potom vyberte **všechny aplikace**.
+1. Na webu Azure Portal otevřete zobrazení aplikace a pak přejděte do zobrazení adresáře. Dále přejděte na **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
 2. V seznamu aplikací vyberte **Vodeclic**.
 
-    ![V seznamu aplikací na Vodeclic odkaz](./media/vodeclic-tutorial/tutorial_vodeclic_app.png)  
+    ![Odkaz Vodeclic v seznamu aplikací](./media/vodeclic-tutorial/tutorial_vodeclic_app.png)  
 
 3. V nabídce na levé straně vyberte **uživatelů a skupin**.
 
-    ![Odkaz "Uživatelé a skupiny"][202]
+    ![Odkaz "Uživatele a skupiny"][202]
 
 4. Vyberte **přidat** tlačítko. Potom vyberte **uživatelů a skupin** v **přidat přiřazení** dialogové okno.
 
-    ![V podokně Přidat přiřazení][203]
+    ![Podokno Přidat přiřazení][203]
 
-5. V **uživatelů a skupin** dialogové okno, vyberte **Britta Simon** v **uživatelé** seznamu.
+5. V **uživatelů a skupin** dialogu **Britta Simon** v **uživatelé** seznamu.
 
 6. V **uživatelů a skupin** dialogové okno, vyberte **vyberte** tlačítko.
 
@@ -207,15 +207,15 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
     
 ### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
-V této části otestovat vaše konfigurace Azure AD jeden přihlašování pomocí přístupového panelu.
+V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Když vyberete dlaždici Vodeclic na přístupovém panelu, můžete získat automaticky přihlášeni k vaší aplikaci Vodeclic.
+Když vyberete dlaždici Vodeclic na přístupovém panelu, můžete získat automaticky přihlášeni k Vodeclic aplikace.
 
-Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](../active-directory-saas-access-panel-introduction.md). 
+Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Seznam kurzů k integraci aplikací SaaS v Azure Active Directory](tutorial-list.md)
+* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

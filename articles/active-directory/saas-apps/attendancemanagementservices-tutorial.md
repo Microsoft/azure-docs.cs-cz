@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Azure Active Directory integraci se službou správy návštěvnosti | Microsoft Docs'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi návštěvnosti služby správy a Azure Active Directory.
+title: 'Kurz: Integrace Azure Active Directory s účastí Management Services | Dokumentace Microsoftu'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a služby správy měřítka.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,159 +15,159 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: jeedes
-ms.openlocfilehash: c718284ca65bc17990fb16b07a27787f28f362c2
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: e664d9d337b4709b320fdbe1d8e7bd71df3441f9
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36227111"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048204"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-attendance-management-services"></a>Kurz: Azure Active Directory integraci se službou správy návštěvnosti
+# <a name="tutorial-azure-active-directory-integration-with-attendance-management-services"></a>Kurz: Integrace Azure Active Directory službami pro správu měřítka
 
-V tomto kurzu zjistěte, jak integrovat návštěvnosti Management Services s Azure Active Directory (Azure AD).
+V tomto kurzu se dozvíte, jak integrovat účast správy služby Azure Active Directory (Azure AD).
 
-Integrace služby pro návštěvnosti s Azure AD poskytuje následující výhody:
+Integrace služby správy účast s Azure AD poskytuje následující výhody:
 
-- Můžete ovládat ve službě Azure AD, který má přístup ke službám návštěvnosti správy.
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k účasti Management Services (jednotné přihlášení) s jejich účty Azure AD.
-- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure.
+- Můžete řídit ve službě Azure AD, který má přístup k účasti Management Services.
+- Uživatele, aby automaticky získat přihlášení k účasti Management Services (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD.
+- Můžete spravovat své účty na jediném místě – na webu Azure portal.
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Při konfiguraci Azure AD integrace se službami pro správu návštěvnosti, potřebujete následující položky:
+Konfigurace integrace Azure AD s účastí Management Services, potřebujete následující položky:
 
-- Předplatné služby Azure AD
-- Návštěvnosti služby pro jednotné přihlašování povolené předplatné
+- S předplatným služby Azure AD
+- Účasti Management Services jednotného přihlašování povolená předplatného
 
 > [!NOTE]
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
 
-- Nepoužívejte provozním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verze Azure AD, můžete [získat zkušební verzi jeden měsíc](https://azure.microsoft.com/pricing/free-trial/).
+- Nepoužívejte produkčním prostředí, pokud to není nutné.
+- Pokud nemáte prostředí zkušební verzi Azure AD, můžete si [získat měsíční zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání služby pro návštěvnosti z Galerie
+1. Přidání služby pro účast v galerii
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
-## <a name="adding-attendance-management-services-from-the-gallery"></a>Přidání služby pro návštěvnosti z Galerie
-Při konfiguraci integrace služby pro návštěvnosti do služby Azure AD, potřebujete přidat služby správy návštěvnosti z Galerie si na seznam spravovaných aplikací SaaS.
+## <a name="adding-attendance-management-services-from-the-gallery"></a>Přidání služby pro účast v galerii
+Pokud chcete nakonfigurovat integraci služeb účast správy do služby Azure AD, musíte na přidání služeb správy účast v galerii na váš seznam spravovaných aplikací SaaS.
 
-**Přidání služby pro návštěvnosti z galerie, proveďte následující kroky:**
+**Přidání služby pro účast z galerie, postupujte následovně:**
 
-1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
+1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![V okně podnikové aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Tlačítko nové aplikace][3]
 
-4. Do vyhledávacího pole zadejte **návštěvnosti Management Services**, vyberte **návštěvnosti Management Services** z panelu výsledků klikněte **přidat** tlačítko Přidat aplikaci.
+4. Do vyhledávacího pole zadejte **účast Management Services**vyberte **účast Management Services** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
     ![Služby pro účast v seznamu výsledků](./media/attendancemanagementservices-tutorial/tutorial_attendancemanagementservices_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování Azure AD jednotné přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-V této části konfiguraci a testování Azure AD jednotné přihlašování pomocí služby správy návštěvnosti podle testovacího uživatele názvem "Britta Simon".
+V této části Konfigurace a testování Azure AD jednotné přihlašování pomocí služby správy účast na základě testovací uživatele nazývá "Britta Simon".
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějšek v návštěvnosti Management Services je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v návštěvnosti Management Services je nutné stanovit.
+Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšek v účasti Management Services je pro uživatele ve službě Azure AD. Jinými slovy vztah odkazu mezi uživatele služby Azure AD a související uživatelské v účasti Management Services je potřeba navázat.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování se službami pro správu návštěvnosti, je třeba dokončit následující stavební bloky:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s účastí Management Services, které potřebujete k dokončení následujících stavebních bloků:
 
-1. **[Konfigurovat Azure AD jednotné přihlašování](#configure-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
-2. **[Vytvořit testovací uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvořit testovací uživatele s návštěvnosti Management Services](#create-an-attendance-management-service-test-user)**  – Pokud chcete mít protějšek Britta Simon ve návštěvnosti Management Services, který je propojený s Azure AD reprezentace daného uživatele.
-4. **[Přiřadit testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. **[Test jednotného přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
+1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+2. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytvořit testovacího uživatele účasti Management Services](#create-an-attendance-management-service-test-user)**  – Pokud chcete mít protějšek Britta Simon v účasti Management Services, který je propojený s Azure AD reprezentace uživatele.
+4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurovat Azure AD jednotné přihlašování
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci návštěvnosti Management Services.
+V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování v aplikaci služby pro účast.
 
-**Ke konfiguraci Azure AD jednotné přihlašování se službami pro správu návštěvnosti, proveďte následující kroky:**
+**Ke konfiguraci Azure AD jednotné přihlašování s účastí Management Services, postupujte následovně:**
 
-1. Na portálu Azure na **návštěvnosti Management Services** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. Na webu Azure Portal na **účast Management Services** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
 
-    ![Konfigurace propojení přihlášení][4]
+    ![Nakonfigurovat jednotné přihlašování – odkaz][4]
 
-2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
+2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
-    ![Jediné přihlášení dialogové okno](./media/attendancemanagementservices-tutorial/tutorial_attendancemanagementservices_samlbase.png)
+    ![Jednotné přihlašování – dialogové okno](./media/attendancemanagementservices-tutorial/tutorial_attendancemanagementservices_samlbase.png)
 
-3. Na **návštěvnosti doména služby správy a adresy URL** část, proveďte následující kroky:
+3. Na **účast správy služeb domény a adresy URL** části, proveďte následující kroky:
 
-    ![Doména služby správy návštěvnosti a adresy URL jednotné přihlašování informace](./media/attendancemanagementservices-tutorial/tutorial_attendancemanagementservices_url.png)
+    ![Účast na správu služeb domény a adresy URL jednotného přihlašování – informace](./media/attendancemanagementservices-tutorial/tutorial_attendancemanagementservices_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://id.obc.jp/<tenant information >/`
+    a. V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://id.obc.jp/<tenant information >/`
 
-    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://id.obc.jp/<tenant information >/`
+    b. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://id.obc.jp/<tenant information >/`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory návštěvnosti Management Services Client](http://www.obcnet.jp/) k získání těchto hodnot.
+    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte s skutečné přihlašovací adresu URL a identifikátorem. Kontakt [tým podpory účast Management Services Client](http://www.obcnet.jp/) k získání těchto hodnot.
 
-4. Na **SAML podpisový certifikát** klikněte na tlačítko **Certificate(Base64)** a potom uložte soubor certifikátu v počítači.
+4. Na **podpisový certifikát SAML** klikněte na tlačítko **Certificate(Base64)** a uložte soubor certifikátu v počítači.
 
     ![Odkaz ke stažení certifikátu](./media/attendancemanagementservices-tutorial/tutorial_attendancemanagementservices_certificate.png) 
 
 5. Klikněte na tlačítko **Uložit** tlačítko.
 
-    ![Nakonfigurujte jeden přihlašování uložit tlačítko](./media/attendancemanagementservices-tutorial/tutorial_general_400.png)
+    ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/attendancemanagementservices-tutorial/tutorial_general_400.png)
 
-6. Na **konfigurace služby správy návštěvnosti** klikněte na tlačítko **konfigurace služby pro návštěvnosti** otevřete **konfigurovat přihlášení** okno. Kopírování **SAML Entity ID a SAML jeden přihlašování adresa URL služby** z **Stručná referenční příručka části.**
+6. Na **konfigurace služby správy účast** klikněte na tlačítko **konfigurace služby pro účast** otevřete **nakonfigurovat přihlašování** okno. Kopírovat **SAML Entity ID a SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
 
-    ![Konfigurace služby správy návštěvnosti](./media/attendancemanagementservices-tutorial/tutorial_attendancemanagementservices_configure.png) 
+    ![Konfigurace služby správy měřítka](./media/attendancemanagementservices-tutorial/tutorial_attendancemanagementservices_configure.png) 
 
-7. V okně jiný prohlížeč přihlašování k webu společnosti návštěvnosti Management Services jako správce.
+7. V jiném okně prohlížeče přihlašování k webu služby správy účast společnosti jako správce.
 
-8. Klikněte na **ověřování SAML** pod **oddílu management zabezpečení**.
+8. Klikněte na **ověřování SAML** pod **části Správa zabezpečení**.
 
-    ![Konfigurace služby správy návštěvnosti](./media/attendancemanagementservices-tutorial/user1.png)
+    ![Konfigurace služby správy měřítka](./media/attendancemanagementservices-tutorial/user1.png)
 
 9. Proveďte následující kroky:
 
-    ![Konfigurace služby správy návštěvnosti](./media/attendancemanagementservices-tutorial/user2.png)
+    ![Konfigurace služby správy měřítka](./media/attendancemanagementservices-tutorial/user2.png)
 
     a. Vyberte **ověřování pomocí SAML**.
 
-    b. V **identifikátor** textovému poli, vložte hodnotu **SAML Entity ID**, který jste zkopírovali z portálu Azure. 
+    b. V **identifikátor** textového pole vložte hodnotu **SAML Entity ID**, který jste zkopírovali z portálu Azure portal. 
 
-    c. V **adresu URL koncového bodu ověřování** textovému poli, vložte hodnotu **SAML jeden přihlašování adresa URL služby**, který jste zkopírovali z portálu Azure.
+    c. V **adresu URL koncového bodu ověřování** textového pole vložte hodnotu **SAML jednotné přihlašování – adresa URL služby**, který jste zkopírovali z portálu Azure portal.
 
-    d. Klikněte na tlačítko **vyberte soubor** na kterou odešlete certifikát, který jste si stáhli z Azure AD.
+    d. Klikněte na tlačítko **vyberte soubor** se nahrát certifikát, který jste si stáhli z Azure AD.
 
     e. Vyberte **zakažte ověřování hesla**.
 
     f. Klikněte na tlačítko **registrace**
 
 > [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace! Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace! Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovací uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
-Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
+Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-   ![Vytvořit testovací uživatele Azure AD][100]
+   ![Vytvořit testovacího uživatele Azure AD][100]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
 
-1. Na portálu Azure, v levém podokně klikněte **Azure Active Directory** tlačítko.
+1. Na webu Azure Portal, v levém podokně klikněte na tlačítko **Azure Active Directory** tlačítko.
 
     ![Tlačítko Azure Active Directory](./media/attendancemanagementservices-tutorial/create_aaduser_01.png)
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na **všichni uživatelé**.
+2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
 
-    !["Uživatelé a skupiny" a "Všichni uživatelé" odkazy](./media/attendancemanagementservices-tutorial/create_aaduser_02.png)
+    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](./media/attendancemanagementservices-tutorial/create_aaduser_02.png)
 
 3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
 
@@ -181,77 +181,77 @@ Cílem této části je vytvoření zkušebního uživatele na portálu Azure, n
 
     b. V **uživatelské jméno** zadejte e-mailovou adresu uživatele Britta Simon.
 
-    c. Vyberte **zobrazit hesla** zaškrtněte políčko a zapište si ji hodnotu, která se zobrazí v **heslo** pole.
+    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
 
     d. Klikněte na možnost **Vytvořit**.
  
-### <a name="create-an-attendance-management-services-test-user"></a>Vytvořit testovací uživatele s návštěvnosti Management Services
+### <a name="create-an-attendance-management-services-test-user"></a>Vytvořit testovacího uživatele účasti Management Services
 
-Pokud chcete povolit uživatelům Azure AD přihlášení do služby pro návštěvnosti, musí být zřízená do návštěvnosti Management Services. V případě návštěvnosti Management Services zřizování je ruční úloha.
+Povolit uživatele Azure AD pro přihlášení k účasti Management Services, musí být poskytnuty do služby správy účast. V případě služby pro účast zřizování je ruční úloha.
 
-**K poskytnutí uživatelského účtu, proveďte následující kroky:**
+**K poskytnutí uživatelského účtu, postupujte následovně:**
 
-1. Přihlaste se k serveru vaší společnosti návštěvnosti Management Services jako správce.
+1. Připojte se k webu služby správy účast společnosti jako správce.
 
-2. Klikněte na **Správa uživatelů** pod **oddílu management zabezpečení**.
+2. Klikněte na **Správa uživatelů** pod **části Správa zabezpečení**.
 
-    ![Můžete přidat zaměstnance](./media/attendancemanagementservices-tutorial/user5.png)
+    ![Přidat zaměstnance](./media/attendancemanagementservices-tutorial/user5.png)
 
-3. Klikněte na tlačítko **nové pravidel přihlášení**.
+3. Klikněte na tlačítko **nového přihlašovacího jména pravidla**.
 
-    ![Můžete přidat zaměstnance](./media/attendancemanagementservices-tutorial/user3.png)
+    ![Přidat zaměstnance](./media/attendancemanagementservices-tutorial/user3.png)
 
-4. V **OBCiD informace** část, proveďte následující kroky:
+4. V **OBCiD informace** části, proveďte následující kroky:
 
-    ![Můžete přidat zaměstnance](./media/attendancemanagementservices-tutorial/user4.png)
+    ![Přidat zaměstnance](./media/attendancemanagementservices-tutorial/user4.png)
 
-    a. V **OBCiD** jako typ e-mailu uživatele k textovému poli, **BrittaSimon@contoso.com**.
+    a. V **OBCiD** , jako je textové pole, typ e-mailu uživatele **BrittaSimon@contoso.com**.
 
-    b. V **heslo** textovému poli, zadejte heslo uživatele.
+    b. V **heslo** textového pole zadejte heslo uživatele.
 
     c. Klikněte na tlačítko **registrace**
 
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit testovacího uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí služby správy návštěvnosti udělení přístupu.
+V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k účasti Management Services.
 
-![Přiřadit role uživatele][200] 
+![Přiřazení role uživatele][200] 
 
-**Pokud chcete přiřadit Britta Simon návštěvnosti Management Services, proveďte následující kroky:**
+**Pokud chcete přiřadit Britta Simon účast Management Services, postupujte následovně:**
 
-1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
+1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **návštěvnosti Management Services**.
+2. V seznamu aplikací vyberte **účast Management Services**.
 
     ![Propojení služby pro účast v seznamu aplikací](./media/attendancemanagementservices-tutorial/tutorial_attendancemanagementservices_app.png)  
 
 3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
-    ![Odkaz "Uživatelé a skupiny"][202]
+    ![Odkaz "Uživatele a skupiny"][202]
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.
+4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
-    ![V podokně Přidat přiřazení][203]
+    ![Podokno Přidat přiřazení][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
+5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
+6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
+7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
 ### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
-V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
+V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Když kliknete na dlaždici služby pro účast na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci návštěvnosti Management Services.
-Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](../active-directory-saas-access-panel-introduction.md). 
+Když kliknete na dlaždici služby pro účast na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci služby pro účast.
+Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](tutorial-list.md)
+* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->

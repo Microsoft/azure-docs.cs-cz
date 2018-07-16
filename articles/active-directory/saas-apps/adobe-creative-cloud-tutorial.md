@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2018
 ms.author: jeedes
-ms.openlocfilehash: e1788de7c2372797b2034eb1753ab435c1299889
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 506f52faf916aa0d5ca2e8587bdbcc16ab88e130
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38548269"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054280"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-creative-cloud"></a>Kurz: Integrace Azure Active Directory se službou Adobe Creative Cloud
 
@@ -271,7 +271,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
 Když kliknete na dlaždici Adobe Creative Cloud na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci Adobe Creative Cloud.
-Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../active-directory-saas-access-panel-introduction.md). 
+Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 

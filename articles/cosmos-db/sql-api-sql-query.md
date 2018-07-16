@@ -1,7 +1,7 @@
 ---
-title: Dotazy SQL pro Azure Cosmos DB | Microsoft Docs
-description: Další informace o syntaxi jazyka SQL, databáze koncepty a dotazy SQL pro Azure Cosmos DB. SQL lze použít jako dotazovací jazyk JSON v Azure Cosmos DB.
-keywords: syntaxe SQL, dotaz sql, sql dotazy, json dotazovací jazyk, databázových koncepcí a sql, agregační funkce
+title: Dotazy SQL pro službu Azure Cosmos DB | Dokumentace Microsoftu
+description: Další informace o syntaxi jazyka SQL, databázových koncepcí a dotazů SQL pro službu Azure Cosmos DB. SQL můžete použít jako dotazovací jazyk typu JSON ve službě Azure Cosmos DB.
+keywords: syntaxe SQL, příkaz jazyka sql, dotazů sql, json dotazovací jazyk, databázových koncepcí a dotazy sql, agregační funkce
 services: cosmos-db
 author: LalithaMV
 manager: kfile
@@ -12,40 +12,40 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: laviswa
-ms.openlocfilehash: f0fd1b57be07eda13655b5a6c0dcb5b412e8a248
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: ee804ddc9e8fe9901173bb3d9357a273ea28057d
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34798317"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39056813"
 ---
-# <a name="sql-queries-for-azure-cosmos-db"></a>Dotazy SQL pro Azure Cosmos DB
+# <a name="sql-queries-for-azure-cosmos-db"></a>Dotazy SQL pro službu Azure Cosmos DB
 
-Microsoft Azure Cosmos DB podporuje dotazování dokumentů pomocí jazyka SQL (Structured Query Language) jako dotazovací jazyk JSON na rozhraní API pro SQL účty. Azure Cosmos DB je skutečně bez schémat. Na základě jeho závazků do datového modelu JSON přímo v rámci databázový stroj poskytuje automatické indexování dokumentů JSON bez nutnosti explicitního schématu nebo vytváření sekundárních indexů.
+Microsoft Azure Cosmos DB podporuje dotazování dokumentů pomocí jazyka SQL (Structured Query Language) jako dotazovací jazyk typu JSON na účty rozhraní SQL API. Databáze Azure Cosmos je skutečně bez schémat. Tím, že svůj závazek na datovém modelu JSON přímo uvnitř databázového stroje poskytuje automatické indexování dokumentů JSON bez nutnosti explicitního schématu nebo vytváření sekundárních indexů.
 
-Při navrhování dotazovacího jazyka pro Cosmos DB, jsme měli dva cíle v paměti:
+Při navrhování dotazovací jazyk pro službu Cosmos DB, jsme měli v úvahu dva cíle:
 
-* Místo inventing o nový jazyk dotazů JSON, jsme chtěli podporu SQL. SQL je jedním z nejvíce známé a oblíbených jazyků dotazu. SQL databáze cosmos umožňuje formální programovací model o bohaté dotazy prostřednictvím dokumentů JSON.
-* Jako dokument databáze JSON může provést JavaScript přímo v databázovém stroji jsme chtěli použít model programování v jazyce JavaScript jako základ pro naše dotazovací jazyk. Rozhraní SQL API je integrován do systému typů JavaScript na vyhodnocení výrazu a volání funkce. Tato naopak poskytuje přirozené programovací model pro projekce relačních, hierarchických navigace mezi dokumenty JSON, vlastní spojení, prostorových dotazů a vyvolání uživatelem definovaných funkcí (UDF) vytvořené zcela v JavaScriptu mezi dalších funkcí. 
+* Místo inventing nový dotazovací jazyk JSON, jsme chtěli podporu SQL. SQL je jednou z nejvíce známé a Oblíbené dotazovací jazyky. Cosmos DB SQL poskytuje formální programovací model pro bohaté dotazy na dokumenty JSON.
+* Jako dokument databáze JSON podporující provedení JavaScriptu přímo v databázovém stroji jsme chtěli použít model programování v jazyce JavaScript jako základ pro naše dotazovací jazyk. Rozhraní SQL API je integrován do systému typů v jazyce JavaScript, vyhodnocení výrazu a volání funkce. Tento naopak poskytuje přirozený programovací model pro projekce relačních, hierarchických navigaci mezi dokumenty JSON, vlastní spojení, prostorových dotazů a volání uživatelem definované funkce (UDF) vytvořené zcela v JavaScriptu, kromě jiných funkcí. 
 
-Věříme, že tyto funkce jsou klíčem k omezení tření mezi aplikací a databáze a jsou zásadní pro produktivita vývojářů.
+Jsme přesvědčeni, že tyto možnosti jsou klíčem k snížení řešit zádrhele spojené s mezi aplikace a databáze a jsou zásadní pro produktivitu vývojářů.
 
-Doporučujeme začít následujícím videem, kde Azure manažer programu DB Cosmos Andrew Liu ukazuje možnosti dotazování Azure Cosmos DB a předvádí online [Query Playground](http://www.documentdb.com/sql/demo), kde můžete vyzkoušet Azure Cosmos DB a spouštět dotazy SQL pro naší datové sadě, jak je předvedeno v videa.
+Doporučujeme začít následujícím videem, kde Azure Cosmos DB programový manažer Andrew Liu ukazuje možnosti dotazování služby Azure Cosmos DB a ukazuje, online [Query Playground](http://www.documentdb.com/sql/demo), kde budete moct vyzkoušet Azure Cosmos DB a spouštění dotazů SQL proti naší datové sadě, jak je uvedeno ve videu.
 
 > [!VIDEO https://www.youtube.com/embed/1LqUQRpHfFI]
 >
 >
 
-Pokročilejší dotazování techniky je ukázán v této následné video:
+Další pokročilé techniky dotazování je ukázán v této navazující videa:
 
 > [!VIDEO https://www.youtube.com/embed/kASU9NOIR90]
 >
 >
 
-Pak se vraťte k tomuto článku, kde Začneme s kurz dotaz SQL, který vás provede některé jednoduché dokumentů JSON a příkazy SQL.
+Poté se vraťte k tomuto článku, kde jsme zahájení kurzu dotaz SQL, který vás provede některé jednoduché dokumenty JSON a příkazy jazyka SQL.
 
-## <a id="GettingStarted"></a>Začínáme s příkazy SQL v databázi systému Cosmos
-SQL databáze Cosmos v práci najdete umožňuje začínat několik jednoduchých dokumentů JSON a provede několik jednoduchých dotazů u ní. Vezměte v úvahu tyto dva dokumenty JSON o dvou řad. S Cosmos DB jsme není potřeba explicitně vytvořit žádné schémata nebo sekundárních indexů. Jednoduše musíme vložit dokumenty JSON do kolekce Cosmos DB a následně dotazu. Tady bychom měli jednoduché JSON dokumentů pro rodinu, rodiče, děti (a jejich mazlíčků), adresu a informace o registraci. Má dokument řetězců, čísel, logické hodnoty, pole a vnořené vlastnosti. 
+## <a id="GettingStarted"></a>Začínáme s příkazy jazyka SQL ve službě Cosmos DB
+Zobrazíte Cosmos DB SQL v práci, Pojďme začínat několik jednoduchých dokumentů JSON a provede několik jednoduchých dotazů vůči ní. Vezměte v úvahu tyto dva dokumenty JSON o dvě skupiny. Pomocí služby Cosmos DB jsme není potřeba explicitně vytvořit jakékoli schématy nebo sekundárními indexy. Jednoduše musíme vložit dokumenty JSON do kolekce Cosmos DB a následně dotazovat. Tady máme jednoduchý JSON dokumentů pro rodinu, rodiče, podřízené položky (a jejich mazlíčků), adresu a informace o registraci. Dokument obsahuje řetězce, čísla, logické hodnoty, pole a vnořené vlastnosti. 
 
 **Dokument**  
 
@@ -71,7 +71,7 @@ SQL databáze Cosmos v práci najdete umožňuje začínat několik jednoduchýc
 }
 ```
 
-Tady je druhý dokument s jedním jemně rozdílem – `givenName` a `familyName` se používají místo `firstName` a `lastName`.
+Tady je druhý dokument s jeden malý rozdíl – `givenName` a `familyName` se používají místo `firstName` a `lastName`.
 
 **Dokument**  
 
@@ -104,7 +104,7 @@ Tady je druhý dokument s jedním jemně rozdílem – `givenName` a `familyName
 }
 ```
 
-Nyní nyní si vyzkoušíte několik dotazů pro tato data pochopit některé z klíčových aspektů dotazovací jazyk SQL Azure Cosmos DB. Například následující dotaz vrátí dokumenty, kde v poli id odpovídá `AndersenFamily`. Vzhledem k tomu, že je `SELECT *`, výstup tohoto dotazu je kompletní dokumentu JSON:
+Teď si vyzkoušíme několik dotazů na tato data pochopit některé z klíčových aspektů dotazovací jazyk SQL služby Azure Cosmos DB. Například následující dotaz vrátí dokumenty, jejichž pole id odpovídá `AndersenFamily`. Protože se jedná `SELECT *`, je výstupem dotazu bude celý dokument JSON:
 
 **Dotaz**
 
@@ -133,7 +133,7 @@ Nyní nyní si vyzkoušíte několik dotazů pro tato data pochopit některé z 
     }]
 
 
-Teď se podíváme případu, které je třeba přeformátujte výstup JSON v různých obrazce. Tento dotaz projekty nový objekt JSON s dvě vybrané pole název a města, když na adresu města má stejný název jako stavu. V tomto případě "NY, NY" odpovídá.
+Nyní vezměte si situaci, kdy budeme potřebovat opakovaně formátovat výstup JSON v odlišném tvaru. Tento dotaz projekty nový objekt JSON s dvěma vybraná pole jméno a Město, když na adresu město má stejný název jako stav. V takovém případě odpovídá "NY, USA".
 
 **Dotaz**    
 
@@ -151,7 +151,7 @@ Teď se podíváme případu, které je třeba přeformátujte výstup JSON v r�
     }]
 
 
-Další dotaz vrátí všechny názvy daným podřízených prvků v dané rodině, jehož id odpovídá `WakefieldFamily` seřazené podle města pobytu.
+Další dotaz vrátí křestní jména všech dětí v rodině, jejíž id odpovídá `WakefieldFamily` seřazené podle města, kde bydlíte.
 
 **Dotaz**
 
@@ -169,30 +169,30 @@ Další dotaz vrátí všechny názvy daným podřízených prvků v dané rodin
     ]
 
 
-Rádi bychom se upozornit na několik pozoruhodné aspektů dotazovací jazyk Cosmos DB provede příklady, které jste viděli, pokud:  
+Chtěli bychom upozornit na několik aspektů zajímavosti dotazovací jazyk služby Cosmos DB provede příklady, které jsme zatím viděli:  
 
-* Vzhledem k tomu, že rozhraní SQL API funguje na hodnoty JSON, zabývá stromu ve tvaru entity místo řádků a sloupců. Proto jazyk umožňuje vztahují na všechny uzly stromu v jakékoli libovolný hloubku jako `Node1.Node2.Node3…..Nodem`, podobně jako relační SQL odkazující na odkaz na dvě části `<table>.<column>`.   
-* Jazyk SQL pracuje s daty bez schématu. Systém typů proto musí být vázána dynamicky. Stejný výraz může přinést různých typů na různé dokumenty. Výsledek dotazu není platná hodnota JSON, ale není zaručena bezpečnost pro přístup z pevného schématu.  
-* Cosmos databáze podporuje pouze striktní dokumentů JSON. To znamená, že systém typů a výrazy jsou omezeny na pracují jenom s typy JSON. Odkazovat [JSON specifikace](http://www.json.org/) další podrobnosti.  
-* Cosmos DB kolekce je kontejner dokumentů JSON bez schémat. Vztahy v datových entit v rámci a na dokumentech v kolekci jsou implicitně zaznamenat členství ve skupině a ne primárního a cizího klíče relace. Toto je důležitým aspektem vhodné odkazující na základě spojení intra-document probírat později v tomto článku.
+* Protože rozhraní SQL API pracuje na hodnoty JSON, zabývá strom entit místo řádků a sloupců ve tvaru. Proto jazyk umožňuje odkazovat na uzly stromu v jakékoli libovolné hloubky, jako je třeba `Node1.Node2.Node3…..Nodem`, podobně jako relační databáze SQL odkazující na odkaz na dvě části `<table>.<column>`.   
+* Jazyk SQL pracuje s daty bez schématu. Systém typů, třeba navázat dynamicky. Stejný výraz může přinést různé typy na různé dokumenty. Výsledek dotazu je platnou hodnotu JSON, ale není zaručeno, že bude pevné schéma.  
+* Cosmos DB podporuje pouze striktní dokumentů JSON. To znamená, že do systému typů a výrazy jsou omezené na řešil pouze typy JSON. Odkazovat [JSON specifikace](http://www.json.org/) další podrobnosti.  
+* Kolekce Cosmos DB je kontejner dokumentů JSON bez schématu. Vztahy v datových entit v a mezi dokumenty v kolekci jsou implicitně zachycena členství ve skupině a ne primární klíč a cizí klíče relace. To je důležitý aspekt zmínku nedávným uvnitř dokumentu spojení popsané dále v tomto článku.
 
-## <a id="Indexing"></a> Indexování cosmos DB
-Než se nám získat do syntaxe SQL, je vhodné využít indexování návrhu v Azure Cosmos DB. 
+## <a id="Indexing"></a> Indexování služby cosmos DB
+Předtím, než se dostaneme k syntaxi SQL, je určitě stojí za prozkoumání návrh indexování ve službě Azure Cosmos DB. 
 
-Účelem indexy databáze je poskytovat dotazy v různých formách a tvarů s spotřeby minimální prostředků (např. využití procesoru a vstup/výstup) současně poskytují dobrý prostupnosti a nízké latence. Volba správného indexu pro dotazování databáze často vyžaduje mnohem plánování a experimentování. Tento přístup představuje výzvu pro bez schématu databáze, kde data neodpovídají striktní schéma a zpracovaní rychle. 
+Účelem indexy databáze je pro obsluhu dotazů v různých formách a tvary spotřeba minimální prostředků (např. využití procesoru a vstup/výstup) současně poskytují dobrou propustnost a nízkou latencí. Volba správného indexu pro dotazování databáze často vyžaduje mnohem plánování a služby experimentování ve službě. Tento přístup představuje výzvu pro bez schématu databáze, pokud data neodpovídají striktní schéma a rychle vyvíjí. 
 
-Proto když jsme navržený subsystém indexování Cosmos DB, nastaví sledovat tyto cíle:
+Proto když jsme navrhovali indexování subsystému Cosmos DB, nastavíme následujících cílů:
 
-* Indexování dokumentů bez nutnosti schématu: subsystém indexování nevyžaduje žádné informace o schématu ani vytvořit žádný odhad o schéma dokumentů. 
-* Podpora pro efektivní, bohaté hierarchické a relační dotazy: index podporuje dotazovací jazyk Cosmos DB efektivně, včetně podpory pro hierarchické a relační projekce.
-* Podpora pro konzistentní dotazy in face of svazek dlouhodobě zápisů: pro zápisu vysokou propustnost úlohy s konzistentní dotazy, aktualizace indexu postupně, efektivně a online při krátkodobém dlouhodobě svazku zápisů. Aktualizace konzistentní index je zásadní význam pro poskytovat dotazy na úrovni konzistence, ve kterém uživatel nakonfigurovali službu dokumentu.
-* Podpora pro více klientů: zadána modelu založené na vyhrazené pro řízení prostředků mezi klienty v rámci rozpočtu systémových prostředků (procesoru, paměti a vstupně-výstupních operací za sekundu) přidělený na repliky jsou provedeny aktualizace indexu. 
-* Efektivitu úložiště: pro finanční efektivita režijní náklady na úložiště na disku indexu je ohraničené a předvídatelné. To je velmi důležitý, protože Cosmos DB umožňuje vývojáři aby náklady na základě kompromisy mezi režijní náklady na indexů ve vztahu k dotazu výkon.  
+* Indexování dokumentů bez nutnosti schématu: indexování subsystému nevyžaduje žádné informace o schématu nebo nevyvozujte předpoklady o schématu dokumentů. 
+* Podpora pro efektivní a bohaté hierarchické a relační dotazů: index podporuje dotazovací jazyk služby Cosmos DB efektivně, včetně podpory pro hierarchické a relační projekce.
+* Podpora pro konzistentních dotazů in face of trvalý objem zápisy: pro úlohy zápisu vysoké propustnosti s konzistentních dotazů, index se aktualizuje přírůstkově, efektivně a online i v případě trvalý objem zápisy. Aktualizace konzistentní indexu je zásadní pro obsluhu dotazů na úrovně konzistence, ve kterém uživatel nakonfigurovaný dokumentu služby.
+* Podpora pro více tenantů: Zadaný model založený na rezervaci pro zásady správného řízení prostředků mezi tenanty, index se aktualizace prováděly v mezích rozpočtu systémových prostředků (procesoru, paměti a vstupně výstupní operace za sekundu) přidělené na repliku. 
+* Efektivitu úložiště: pro nákladové efektivity režijní náklady na diskové úložiště indexu je omezená a předvídatelné. To je zásadní, protože Cosmos DB umožňuje vývojářům dělat kompromisy, co náklady na základě mezi režijní náklady na indexů ve vztahu k výkonu dotazů.  
 
-Odkazovat [Azure Cosmos DB – ukázky](https://github.com/Azure/azure-documentdb-net) na webu MSDN ukázek znázorňující postup konfigurace zásady indexování pro kolekci. Nyní Pojďme na podrobné informace o syntaxi Azure Cosmos DB SQL.
+Odkazovat [ukázky služby Azure Cosmos DB](https://github.com/Azure/azure-documentdb-net) na webu MSDN pro ukázky, ukazuje, jak nakonfigurovat zásady indexování pro kolekci. Pojďme se teď ponoříte do detailů syntaxi SQL služby Azure Cosmos DB.
 
-## <a id="Basics"></a>Základní informace o příkazu jazyka Azure Cosmos DB SQL
-Každý dotaz sestává z klauzule SELECT a volitelné FROM a klauzule WHERE za standardy ANSI SQL. Pro každý dotaz, obvykle je výčet zdroji v klauzuli FROM. Filtru v klauzuli WHERE se pak použije ve zdroji k načtení podmnožinu dokumentů JSON. Klauzule SELECT se nakonec slouží k plánování požadovaný JSON hodnot v seznamu select.
+## <a id="Basics"></a>Základy Azure Cosmos DB SQL dotazu
+Každý dotaz se skládá z klauzule SELECT a volitelné a klauzulí WHERE za standardy ANSI SQL. Pro každý dotaz, obvykle je vypočten zdroji v klauzuli FROM. Filtr v klauzuli WHERE je pak použije ve zdroji se načíst podmnožinu dokumentů JSON. Nakonec se používá klauzuli SELECT do projektu požadované hodnoty JSON v seznamu select.
 
     SELECT <select_list> 
     [FROM <from_specification>] 
@@ -201,16 +201,16 @@ Každý dotaz sestává z klauzule SELECT a volitelné FROM a klauzule WHERE za 
 
 
 ## <a id="FromClause"></a>FROM – klauzule
-`FROM <from_specification>` Klauzule je nepovinný, pokud je zdroj filtrovat nebo projekci později v dotazu. Účelem této klauzule je zadat zdroj dat, na kterém musí fungovat dotazu. Běžně celé kolekce je zdrojem, ale jeden místo toho zadat podmnožinu kolekce. 
+`FROM <from_specification>` Klauzule je nepovinný, pokud je zdroj filtrovaná nebo předpokládané později v dotazu. Účelem tuto klauzuli je určení zdroje dat, na kterém musí pracovat dotazu. Běžně celé kolekce se zdroji, ale jeden místo toho zadat podmnožinu kolekce. 
 
-Dotaz jako `SELECT * FROM Families` označuje, že je celou kolekci rodiny zdroji, za které se vytvořit výčet. Identifikátor speciální KOŘENOVÉ slouží k představují kolekci nepoužívejte název kolekce. Následující seznam obsahuje pravidla, které vynucuje na jeden dotaz:
+Dotaz, jako jsou `SELECT * FROM Families` znamená, že je celou kolekci rodiny zdroji nad tím, které chcete získat výčet. Speciální identifikátor KOŘENOVÉ slouží k reprezentaci kolekce místo názvu kolekce. Následující seznam obsahuje pravidla, která vynucují každý dotaz:
 
-* Kolekce je to možné, jako například `SELECT f.id FROM Families AS f` nebo jednoduše `SELECT f.id FROM Families f`. Zde `f` je ekvivalentem `Families`. `AS` optional – klíčové slovo alias je identifikátor.
-* Jednou alias, nemůže být vázán původního zdroje. Například `SELECT Families.id FROM Families f` je syntakticky neplatný, protože už nelze přeložit identifikátor "Rodiny".
-* Všechny vlastnosti, které je potřeba na něj odkazovat musí být plně kvalifikovaný. Chybí dodržování striktní schématu tato velikost je vyžadována předejdete žádné nejednoznačný vazby. Proto `SELECT id FROM Families f` je syntakticky neplatný, protože vlastnost `id` není vázán.
+* Kolekce lze použít alias, jako například `SELECT f.id FROM Families AS f` nebo jednoduše `SELECT f.id FROM Families f`. Tady `f` je ekvivalentem `Families`. `AS` optional – klíčové slovo na alias je identifikátor.
+* Jednou alias nemůže být vázán na původní zdroj. Například `SELECT Families.id FROM Families f` je syntakticky neplatný, protože již nelze přeložit identifikátor "Rodiny".
+* Všechny vlastnosti, které je potřeba na něj odkazovat musí být plně kvalifikovaný. Chybí splňuje striktní schéma tato velikost je vyžadována, aby všechny vazby, které nejednoznačný. Proto `SELECT id FROM Families f` je syntakticky neplatný, protože vlastnost `id` není vázán.
 
 ### <a name="subdocuments"></a>Vnořené dokumenty
-Zdroj může být také omezené menší podmnožinu. Například k vytváření výčtu pouze podstrom v každém dokumentu, subroot může pak mohou stát zdroje, jak je znázorněno v následujícím příkladu:
+Zdroj může být také omezené na menší podmnožinu. Například k vytvoření výčtu pouze podstrom v jednotlivých dokumentech, subroot může pak můžou stát zdroji, jak je znázorněno v následujícím příkladu:
 
 **Dotaz**
 
@@ -248,7 +248,7 @@ Zdroj může být také omezené menší podmnožinu. Například k vytváření
       ]
     ]
 
-Při výše uvedeném příkladu pole jako zdroj, objekt může také použít jako zdroj, který je co je znázorněno v následujícím příkladu: žádné platná hodnota JSON (nedefinovaná), můžete najít ve zdroji je považován za pro zahrnutí do výsledků dotazu. Pokud nemáte některé rodiny `address.state` hodnotu, jsou vyloučeny ve výsledku dotazu.
+Při výše uvedeném příkladu používá pole jako zdroj, objekt může také sloužit jako zdroj, což je, jak je znázorněno v následujícím příkladu: k zařazení do výsledků dotazu se nepovažuje za jakékoli platnou hodnotu JSON (nedefinované), který najdete ve zdroji. Pokud nemáte některé rodiny `address.state` hodnotu, jsou vyloučeny ve výsledku dotazu.
 
 **Dotaz**
 
@@ -264,9 +264,9 @@ Při výše uvedeném příkladu pole jako zdroj, objekt může také použít j
 
 
 ## <a id="WhereClause"></a>Klauzule WHERE
-Klauzule WHERE (**`WHERE <filter_condition>`**) je volitelný. Určuje, že podmínku (podmínky), které dokumenty JSON poskytuje zdroj musí splňovat, aby byla součástí výsledek. Dokumentu JSON se musí vyhodnotit na hodnotu true, aby byla považována za pro výsledek k zadaným podmínkám. Klauzule WHERE se používá vrstvou index aby bylo možné zjistit absolutní nejmenší podmnožinu dokumentů zdroje, které můžou být součástí výsledek. 
+Klauzule WHERE (**`WHERE <filter_condition>`**) je volitelný. Určuje, že-li být zahrnuty jako součást výsledku musí splňovat tyto podmínky, která ve zdroji k dispozici dokumenty JSON. Jakýkoliv dokument JSON musí být zadané podmínky na "true", která se má zohlednit výsledek. Klauzule WHERE index vrstvy používají k určení absolutní nejmenší podmnožinu dokumentů zdroje, které můžou být součástí výsledku. 
 
-Následující dotaz požadavků dokumentů, které obsahují název vlastnosti, jehož hodnota je `AndersenFamily`. Jiného dokumentu, který nemá název vlastnosti, nebo kde hodnota neodpovídá `AndersenFamily` je vyloučen. 
+Následující dotaz požaduje dokumenty, které obsahují vlastnost name, jehož hodnota je `AndersenFamily`. Další dokument, který nemá vlastnost name, nebo pokud hodnota se neshoduje s `AndersenFamily` je vyloučený. 
 
 **Dotaz**
 
@@ -285,9 +285,9 @@ Následující dotaz požadavků dokumentů, které obsahují název vlastnosti,
     }]
 
 
-Předchozí příklad ukázal dotazu jednoduché rovnosti. Rozhraní SQL API také podporuje celou řadu skalární výrazy. Nejčastěji používané jsou výrazy binární a unární. Vlastnost odkazy z objektu JSON zdroje jsou také platné výrazy. 
+Předchozí příklad ukázal dotaz rovnosti jednoduché. Rozhraní SQL API také podporuje širokou škálu skalární výrazy. Nejčastěji používané jsou binární soubor a unární výrazy. Odkazy na vlastnosti z objektu JSON zdroje jsou také výrazy platný. 
 
-Následující binární operátory jsou aktuálně podporovány a lze použít v dotazech, jak je znázorněno v následujících příkladech:  
+Následující binární operátory jsou aktuálně podporovány a je možné v dotazech, jak je znázorněno v následujícím příkladu:  
 
 <table>
 <tr>
@@ -295,8 +295,8 @@ Následující binární operátory jsou aktuálně podporovány a lze použít 
 <td>+,-,*,/,%</td>
 </tr>
 <tr>
-<td>Bitový</td>    
-<td>|, &, ^, <<>>,, >>> (nula výplně posunutí doprava)</td>
+<td>bitové operace</td>    
+<td>|, &, ^, <<>>,, >>> (výplně nulové posunutí doprava)</td>
 </tr>
 <tr>
 <td>Logické</td>
@@ -313,7 +313,7 @@ Následující binární operátory jsou aktuálně podporovány a lze použít 
 </table>  
 
 
-Podívejme se na některé dotazy pomocí binární operátory.
+Pojďme se podívat na některé dotazy pomocí binární operátory.
 
     SELECT * 
     FROM Families.children[0] c
@@ -328,7 +328,7 @@ Podívejme se na některé dotazy pomocí binární operátory.
     WHERE c.grade >= 5     -- matching grades == 5
 
 
-Unární operátory +,-, ~ není jsou podporovány také a dá se použít uvnitř dotazy, jak je znázorněno v následujícím příkladu:
+Unární operátory +,-, ~ není jsou také podporovány a je možné uvnitř dotazů, jak je znázorněno v následujícím příkladu:
 
     SELECT *
     FROM Families.children[0] c
@@ -340,10 +340,10 @@ Unární operátory +,-, ~ není jsou podporovány také a dá se použít uvnit
 
 
 
-Kromě binární a unární operátory mohou také vlastnost odkazy. Například `SELECT * FROM Families f WHERE f.isRegistered` vrátí dokumentu JSON obsahující vlastnost `isRegistered` kde hodnotu vlastnosti rovná JSON `true` hodnotu. Všechny ostatní hodnoty (false, hodnotu null a nedefinovaná, `<number>`, `<string>`, `<object>`, `<array>`atd) vede k zdrojový dokument k vyloučení z výsledku. 
+Kromě binární soubor a unární operátory jsou také povoleny odkazy na vlastnosti. Například `SELECT * FROM Families f WHERE f.isRegistered` vrátí dokument JSON obsahující vlastnost `isRegistered` kde hodnota této vlastnosti je rovna hodnotě JSON `true` hodnotu. Všechny ostatní hodnoty (false, null, nedefinovaný, `<number>`, `<string>`, `<object>`, `<array>`atd) vede k vyloučení z výsledku zdrojovém dokumentu. 
 
 ### <a name="equality-and-comparison-operators"></a>Operátory rovnosti a porovnání
-V následující tabulce jsou výsledkem porovnání rovnosti v rozhraní SQL API mezi všechny dva typy JSON.
+V následující tabulce jsou uvedeny výsledek porovnání rovnosti v rozhraní SQL API mezi jakékoli dva typy JSON.
 
 <table style = "width:300px">
    <tbody>
@@ -352,22 +352,22 @@ V následující tabulce jsou výsledkem porovnání rovnosti v rozhraní SQL AP
             <strong>Op</strong>
          </td>
          <td valign="top">
-            <strong>Nedefinovaná</strong>
+            <strong>Nedefinovaný</strong>
          </td>
          <td valign="top">
             <strong>Hodnotu Null</strong>
          </td>
          <td valign="top">
-            <strong>Logická hodnota</strong>
+            <strong>Datový typ Boolean</strong>
          </td>
          <td valign="top">
             <strong>Číslo</strong>
          </td>
          <td valign="top">
-            <strong>Řetězec</strong>
+            <strong>řetězec</strong>
          </td>
          <td valign="top">
-            <strong>Objekt</strong>
+            <strong>objekt</strong>
          </td>
          <td valign="top">
             <strong>Pole</strong>
@@ -375,7 +375,7 @@ V následující tabulce jsou výsledkem porovnání rovnosti v rozhraní SQL AP
       </tr>
       <tr>
          <td valign="top">
-            <strong>Nedefinovaná<strong>
+            <strong>Nedefinovaný<strong>
          </td>
          <td valign="top">
 Nedefinováno </td>
@@ -414,7 +414,7 @@ Nedefinováno </td>
       </tr>
       <tr>
          <td valign="top">
-            <strong>Logická hodnota<strong>
+            <strong>Datový typ Boolean<strong>
          </td>
          <td valign="top">
 Nedefinováno </td>
@@ -454,7 +454,7 @@ Nedefinováno </td>
       </tr>
       <tr>
          <td valign="top">
-            <strong>Řetězec<strong>
+            <strong>řetězec<strong>
          </td>
          <td valign="top">
 Nedefinováno </td>
@@ -474,7 +474,7 @@ Nedefinováno </td>
       </tr>
       <tr>
          <td valign="top">
-            <strong>Objekt<strong>
+            <strong>objekt<strong>
          </td>
          <td valign="top">
 Nedefinováno </td>
@@ -515,33 +515,33 @@ Nedefinováno </td>
    </tbody>
 </table>
 
-Pro jiné operátory porovnání jako >, > =,! =, < a < =, následující pravidla platí:   
+Pro ostatní operátory porovnání, jako například >, > =,! =, < a < =, následující pravidla platí:   
 
-* Výsledkem porovnání mezi typy Undefined.
-* Porovnání mezi dvěma objekty nebo dvě maticových má za následek Undefined.   
+* Výsledkem porovnání typů Nedefinováno.
+* Porovnání mezi dvěma objekty nebo dvě pole za následek Nedefinováno.   
 
-Pokud je výsledek skalární výraz, který ve filtru není definována, odpovídající dokument není zahrnuta do výsledek, protože Undefined není logicky rovnat "true".
+Pokud je výsledkem výrazu skalární ve filtru Undefined, odpovídající dokument není zahrnuta do výsledku, protože není typu Undefined logicky odpovídá "true".
 
 ### <a name="between-keyword"></a>MEZI klíčové slovo
-Můžete taky – klíčové slovo BETWEEN pro dotazy na rozsah hodnot jako v ANSI SQL express. MEZI můžete použít u řetězců nebo čísla.
+Můžete také pomocí klíčového slova BETWEEN můžete dotazy na rozsah hodnot jako ANSI SQL express. MEZI dá se použít pro řetězce nebo čísla.
 
-Například tento dotaz vrací všechny rodiny dokumenty, ve kterých je prvním podřízeným objektem úrovni mezi 1-5 (obě včetně). 
+Například tento dotaz vrátí všechny rodiny dokumenty, ve kterých je prvním podřízeným objektem na podnikové úrovni mezi 1-5 (obojí včetně). 
 
     SELECT *
     FROM Families.children[0] c
     WHERE c.grade BETWEEN 1 AND 5
 
-Na rozdíl od v ANSI SQL, můžete taky klauzuli BETWEEN v klauzuli FROM jako v následujícím příkladu.
+Na rozdíl od v ANSI SQL, můžete také v klauzuli BETWEEN v klauzuli FROM stejně jako v následujícím příkladu.
 
     SELECT (c.grade BETWEEN 0 AND 10)
     FROM Families.children[0] c
 
-Pro kratší časy spuštění dotazu mějte na paměti k vytvoření zásady indexování, která používá typ indexu rozsah proti jakékoli číselné vlastnosti nebo cesty, které jsou filtrovány v klauzuli BETWEEN. 
+Pro rychlejší dobou provedení dotazu nezapomeňte vytvořit zásady indexování, který používá typ index rozsahu pro všechny číselné vlastnosti/cesty, které jsou filtrovány v klauzuli BETWEEN. 
 
-Hlavní rozdíl mezi použitím BETWEEN v rozhraní API pro SQL a ANSI SQL je, že můžete express rozsah dotazy na vlastnosti smíšený typů – například můžete mít "základní" být číslo (5) v některých dokumentů a řetězce v jiné ("grade4"). V těchto případech jako je v jazyce JavaScript, porovnání mezi dva různé typy výsledků v "undefined" a dokument bude přeskočen.
+Hlavní rozdíl mezi použitím BETWEEN rozhraní SQL API i ANSI SQL je, že můžete vyjádřit rozsahu dotazy na vlastnosti smíšené typy – může mít například "třída" se jednat o číslo (5) v některé dokumenty a řetězce v jiných ("grade4"). V těchto případech jako v jazyce JavaScript, porovnání mezi dvěma různými typy výsledků v "undefined" a dokument se přeskočí.
 
 ### <a name="logical-and-or-and-not-operators"></a>Logický (AND, OR a NOT) operátory
-Logické operátory pracovat logické hodnoty. Logické tabulky pravdivosti pro tyto operátory jsou uvedené v následujících tabulkách.
+Logické operátory pracují s logickými hodnotami. Logické tabulky pravdivých informací pro tyto operátory jsou uvedeny v následujících tabulkách.
 
 | NEBO | True | False | Nedefinováno |
 | --- | --- | --- | --- |
@@ -555,47 +555,47 @@ Logické operátory pracovat logické hodnoty. Logické tabulky pravdivosti pro 
 | False |False |False |False |
 | Nedefinováno |Nedefinováno |False |Nedefinováno |
 
-| NENÍ |  |
+| NOT |  |
 | --- | --- |
 | True |False |
 | False |True |
 | Nedefinováno |Nedefinováno |
 
 ### <a name="in-keyword"></a>IN – klíčové slovo
-Klíčové slovo IN slouží ke kontrole, zda zadaná hodnota odpovídá žádnou hodnotu v seznamu. Například tento dotaz vrací všechny rodiny dokumenty, kde id je jedním z "WakefieldFamily" nebo "AndersenFamily". 
+Po klíčovém slovu IN slouží ke kontrole, zda zadaná hodnota odpovídá libovolné hodnotě v seznamu. Například tento dotaz vrátí všechny rodiny dokumenty, kde id je jedním z "WakefieldFamily" nebo "AndersenFamily". 
 
     SELECT *
     FROM Families 
     WHERE Families.id IN ('AndersenFamily', 'WakefieldFamily')
 
-Tento příklad vrátí všechny dokumenty, kde je stav žádný ze zadaných hodnot.
+V tomto příkladu vrátí všechny dokumenty, kde je stav libovolné ze zadaných hodnot.
 
     SELECT *
     FROM Families 
     WHERE Families.address.state IN ("NY", "WA", "CA", "PA", "OH", "OR", "MI", "WI", "MN", "FL")
 
-### <a name="ternary--and-coalesce--operators"></a>Unární (?) a operátory Coalesce (?)
-Operátory Unární a Coalesce lze použít k vytvoření podmíněné výrazy, podobně jako oblíbené programovacích jazyků, jako je C# a JavaScript. 
+### <a name="ternary--and-coalesce--operators"></a>Ternary (?) a operátory Coalesce (?)
+Ternary a Coalesce operátory lze používat k vytváření podmíněné výrazy, podobně jako oblíbené programovací jazyky, jako je C# a JavaScript. 
 
-Operátor unární (?) může být velmi užitečné při vytváření nové vlastnosti JSON za chodu. Například teď můžete napsat dotazy ke klasifikaci třída úrovně do lidského čitelné podoby jako Začátečník nebo zprostředkující nebo Upřesnit, jak je uvedeno níže.
+Ternary (?) – operátor může být velmi užitečná při vytváření nových vlastností JSON v reálném čase. Například teď můžete psát dotazy ke klasifikaci úrovně třídy v podobě čitelné člověkem jako Začátečník nebo zprostředkující/Upřesnit, jak je znázorněno níže.
 
      SELECT (c.grade < 5)? "elementary": "other" AS gradeLevel 
      FROM Families.children[0] c
 
-Můžete také vnořit volání operátor jako v dotazu níže.
+Lze také vnořit volání operátoru jako v dotazu níže.
 
     SELECT (c.grade < 5)? "elementary": ((c.grade < 9)? "junior": "high")  AS gradeLevel 
     FROM Families.children[0] c
 
-Jako s dalšími operátory dotazu, pokud v dokumentu chybí odkazovaný vlastností v podmíněným výrazem, nebo pokud typy porovnávané se liší, pak tyto dokumenty nevylučují se ve výsledcích dotazu.
+Jako s dalšími operátory dotazu, pokud chybí odkazovaný vlastnosti na podmíněný výraz v libovolném dokumentu nebo typy, který se porovnává se liší, pak tyto dokumenty jsou vyloučeny ve výsledcích dotazu.
 
-Operátor Coalesce (?) slouží k efektivní (také známa jako kontrolovat přítomnost vlastnost je definován) v dokumentu. To je užitečné při dotazování na částečně strukturovaných nebo data smíšený typů. Tento dotaz vrací například "lastName", pokud existuje, nebo "Přezdívka" Pokud není přítomen.
+Coalesce (?) – operátor umožňuje efektivně vyhledávat přítomnost vlastnosti (označovaný také jako Definuje) v dokumentu. To je užitečné při dotazování na částečně strukturovaná nebo data smíšené typy. Tento dotaz například vrátí "lastName", pokud jsou k dispozici, nebo "Příjmení", pokud není k dispozici.
 
     SELECT f.lastName ?? f.surname AS familyName
     FROM Families f
 
-### <a id="EscapingReservedKeywords"></a>Vlastnost uvozovkách přístupového objektu
-Můžete také přístup k vlastnostem pomocí operátoru vlastnost uvozovkách `[]`. Například `SELECT c.grade` a `SELECT c["grade"]` odpovídají. Tato syntaxe je užitečné, když potřebujete, abyste se vyhnuli vlastnost, která obsahuje mezery, speciální znaky, nebo se stane sdílet stejný název jako SQL – klíčové slovo nebo vyhrazené slovo.
+### <a id="EscapingReservedKeywords"></a>Přistupující objekt vlastnosti v uvozovkách
+Můžete také přistupovat k vlastnosti pomocí operátoru v uvozovkách vlastnost `[]`. Například `SELECT c.grade` a `SELECT c["grade"]` jsou ekvivalentní. Tato syntaxe je užitečné, když budete chtít řídicí vlastnost, která obsahuje mezery, speciální znaky, nebo se stane, chcete-li sdílet stejný název jako klíčové slovo SQL nebo vyhrazené slovo.
 
     SELECT f["lastName"]
     FROM Families f
@@ -603,9 +603,9 @@ Můžete také přístup k vlastnostem pomocí operátoru vlastnost uvozovkách 
 
 
 ## <a id="SelectClause"></a>Klauzule SELECT
-Klauzule SELECT (**`SELECT <select_list>`**) je povinná a určuje, jaké hodnoty jsou načteny z dotazu, podobně jako v ANSI SQL. Podmnožina je filtrované nad dokumenty zdroje jsou předávány do fáze projekce, kde jsou načteny zadaných hodnot JSON a je vytvořený nový objekt JSON, pro každý vstupní předán na něj. 
+SELECT – klauzule (**`SELECT <select_list>`**) je povinná a určuje, jaké hodnoty jsou načteny z dotazu, podobně jako v ANSI SQL. Část, která je filtrovaná nad dokumenty zdroje jsou předány do fáze projekce, kde se načítají zadané hodnoty JSON a je vytvořen nový objekt JSON, pro každý vstupní předaly ho. 
 
-Následující příklad ukazuje typické dotaz SELECT. 
+Následující příklad ukazuje typické zpracování dotazu SELECT. 
 
 **Dotaz**
 
@@ -625,7 +625,7 @@ Následující příklad ukazuje typické dotaz SELECT.
 
 
 ### <a name="nested-properties"></a>Vnořené vlastnosti
-V následujícím příkladu jsme jsou projekce dvě vnořené vlastnosti `f.address.state` a `f.address.city`.
+V následujícím příkladu jsme se projekci dvě vnořené vlastnosti `f.address.state` a `f.address.city`.
 
 **Dotaz**
 
@@ -641,7 +641,7 @@ V následujícím příkladu jsme jsou projekce dvě vnořené vlastnosti `f.add
     }]
 
 
-Projekce také podporuje JSON výrazy, jak je znázorněno v následujícím příkladu:
+Projekce také podporuje výrazy JSON, jak je znázorněno v následujícím příkladu:
 
 **Dotaz**
 
@@ -660,7 +660,7 @@ Projekce také podporuje JSON výrazy, jak je znázorněno v následujícím př
     }]
 
 
-Podívejme se na roli `$1` sem. `SELECT` Klauzule musí vytvořit objekt JSON a vzhledem k tomu, že žádný klíč je k dispozici, používáme názvy proměnných implicitní argument počínaje `$1`. Například tento dotaz vrací dvě implicitní argument proměnné s názvem bez přípony `$1` a `$2`.
+Podívejme se na roli `$1` tady. `SELECT` Klauzule potřebuje k vytvoření objektu JSON a protože je k dispozici žádný klíč, můžeme použít implicitní argument proměnné s názvem začínajícím `$1`. Například tento dotaz vrátí dvě implicitní argument proměnné s názvem `$1` a `$2`.
 
 **Dotaz**
 
@@ -682,10 +682,10 @@ Podívejme se na roli `$1` sem. `SELECT` Klauzule musí vytvořit objekt JSON a 
     }]
 
 
-### <a name="aliasing"></a>Aliasy
-Teď umožňuje rozšířit výše uvedeného příkladu s explicitní aliasy hodnot. Tak, jak jsou klíčové slovo používané pro aliasy. Zadání je volitelné, jak je znázorněno při promítnutí druhá hodnota jako `NameInfo`. 
+### <a name="aliasing"></a>Vyhlazení
+Teď můžeme rozšířit v příkladu výše s aliasy explicitní hodnoty. Je klíčové slovo používané pro aliasy. Zadání je volitelné, jak je znázorněno při projekci druhá hodnota jako `NameInfo`. 
 
-V případě, že dotaz má dvě vlastnosti se stejným názvem, musí být aliasy používá k přejmenování jedno nebo obě vlastnosti tak, aby se jsou od sebe jednoznačně rozlišeny ve předpokládané výsledku.
+V případě, že dotaz má dvě vlastnosti se stejným názvem, aliasy musíte použít k přejmenujte jednu nebo obě vlastnosti tak, aby jejich jsou jednoznačně rozlišit předpokládané výsledku.
 
 **Dotaz**
 
@@ -709,7 +709,7 @@ V případě, že dotaz má dvě vlastnosti se stejným názvem, musí být alia
 
 
 ### <a name="scalar-expressions"></a>Skalární výrazy
-Kromě odkazů na vlastnost klauzule SELECT také podporuje skalární výrazy konstanty, aritmetických výrazech, logických výrazů, atd. Tady je příklad jednoduchého dotazu "Hello World".
+Kromě odkazy na vlastnosti klauzuli SELECT podporuje také skalární výrazy, jako jsou konstanty, výrazy aritmetické, logické výrazy atd. Například tady je jednoduchý dotaz "Hello World".
 
 **Dotaz**
 
@@ -722,7 +722,7 @@ Kromě odkazů na vlastnost klauzule SELECT také podporuje skalární výrazy k
     }]
 
 
-Zde je ukázka používající skalární výraz.
+Zde je složitější příklad, který používá skalární výraz.
 
 **Dotaz**
 
@@ -735,7 +735,7 @@ Zde je ukázka používající skalární výraz.
     }]
 
 
-V následujícím příkladu je výsledek skalární výraz logická hodnota.
+V následujícím příkladu výsledkem skalární výraz, který je logická hodnota.
 
 **Dotaz**
 
@@ -755,7 +755,7 @@ V následujícím příkladu je výsledek skalární výraz logická hodnota.
 
 
 ### <a name="object-and-array-creation"></a>Vytvoření objektu a pole
-Další klíčových funkcí rozhraní API SQL je vytvoření pole nebo objektu. V předchozím příkladu Všimněte si, že jsme vytvořili nový objekt JSON. Podobně jeden můžete také vytvořit pole podle následujících příkladů:
+Další klíčovou funkcí rozhraní SQL API je vytvoření pole nebo objektu. V předchozím příkladu mějte na paměti, že jsme vytvořili nový objekt JSON. Podobně jedna můžete také sestavit pole jak je znázorněno v následujícím příkladu:
 
 **Dotaz**
 
@@ -780,7 +780,7 @@ Další klíčových funkcí rozhraní API SQL je vytvoření pole nebo objektu.
     ]
 
 ### <a id="ValueKeyword"></a>VALUE – klíčové slovo
-**Hodnotu** – klíčové slovo poskytuje způsob, jak vrátit hodnotu JSON. Například následující dotaz vrátí skalárních `"Hello World"` místo `{$1: "Hello World"}`.
+**Hodnotu** – klíčové slovo poskytuje způsob, jak vrátit hodnotu JSON. Například níže dotaz vrátí skalárních `"Hello World"` místo `{$1: "Hello World"}`.
 
 **Dotaz**
 
@@ -815,7 +815,7 @@ Následující dotaz vrátí hodnotu JSON bez `"address"` popisek ve výsledcíc
       }
     ]
 
-Následující příklad rozšiřuje na ukazují, jak vrátit JSON primitivní hodnoty (úroveň listu stromu JSON). 
+Následující příklad rozšiřuje toto ukazují, jak vrátit primitivní hodnoty JSON (listový úroveň stromu JSON). 
 
 **Dotaz**
 
@@ -831,7 +831,7 @@ Následující příklad rozšiřuje na ukazují, jak vrátit JSON primitivní h
 
 
 ### <a name="-operator"></a>* – Operátor
-Podporován je speciální operátor (*) do projektu dokumentu jako-je. Pokud se používá, musí být pouze předpokládané pole. Při dotazu jako `SELECT * FROM Families f` je platný, `SELECT VALUE * FROM Families f ` a `SELECT *, f.id FROM Families f ` nejsou platné.
+Speciální operátor (*) se podporuje do projektu dokumentu jako-je. Při použití, musí být pouze očekávané pole. Zatímco dotaz podobný tomuto: `SELECT * FROM Families f` je platný, `SELECT VALUE * FROM Families f ` a `SELECT *, f.id FROM Families f ` nejsou platné.
 
 **Dotaz**
 
@@ -860,7 +860,7 @@ Podporován je speciální operátor (*) do projektu dokumentu jako-je. Pokud se
     }]
 
 ### <a id="TopKeyword"></a>Operátor TOP
-TOP – klíčové slovo lze omezit počet hodnot z dotazu. Když horní se používá ve spojení s klauzulí ORDER BY, sadu výsledků dotazu je omezený na první číslo N seřazené hodnot. jinak vrátí první N počet výsledků v nedefinované pořadí. Jako osvědčený postup v příkazu SELECT, s vždy používejte klauzuli ORDER BY v klauzuli nejvyšší. Toto je jediný způsob, jak předvídatelné označují řádky, které jsou ovlivněné TOP. 
+HORNÍ – klíčové slovo je možné omezit počet hodnot z dotazu. Při horní se používá ve spojení s klauzulí ORDER BY, není omezen na první číslo N hodnot seřazených; sada výsledků dotazu v opačném případě vrátí prvních N počet výsledků v nedefinované pořadí. Jako osvědčený postup v příkazu SELECT, vždy pomocí klauzule ORDER BY klauzuli TOP. Toto je jediný způsob, jak předvídatelným způsobem označit řádky, které jsou ovlivněny nahoru. 
 
 **Dotaz**
 
@@ -887,10 +887,10 @@ TOP – klíčové slovo lze omezit počet hodnot z dotazu. Když horní se pou�
         "isRegistered": true
     }]
 
-HORNÍ lze použít s konstantní hodnotou (jak jsme ukázali výše) nebo s hodnotou proměnné použití parametrických dotazů. Další podrobnosti najdete v tématu parametrizované dotazy níže.
+NAHORU je možné s konstantní hodnotou (jak jsme ukázali výše) nebo s hodnotou proměnné použití parametrizovaných dotazů. Další podrobnosti najdete v tématu parametrizované dotazy níže.
 
 ### <a id="Aggregates"></a>Agregační funkce
-Můžete také provést agregace v `SELECT` klauzule. Agregační funkce provádět výpočet sadu hodnot a vrátí jednu hodnotu. Například následující dotaz vrátí počet rodiny dokumentů v rámci kolekce.
+Můžete také provádět agregace v `SELECT` klauzuli. Agregační funkce provádí výpočet na sadu hodnot a vrátí jednu hodnotu. Například následující dotaz vrátí počet řady dokumentů v kolekci.
 
 **Dotaz**
 
@@ -903,7 +903,7 @@ Můžete také provést agregace v `SELECT` klauzule. Agregační funkce provád
         "$1": 2
     }]
 
-Můžete se taky vrátit skalární hodnota agregace pomocí `VALUE` – klíčové slovo. Například následující dotaz vrátí počet hodnot jako jediné číslo:
+Můžete také vrátit skalární hodnotu agregace pomocí `VALUE` – klíčové slovo. Například následující dotaz vrátí počet hodnot jako jedno číslo:
 
 **Dotaz**
 
@@ -914,7 +914,7 @@ Můžete se taky vrátit skalární hodnota agregace pomocí `VALUE` – klíčo
 
     [ 2 ]
 
-Můžete také provést agregace v kombinaci s filtry. Například následující dotaz vrátí počet dokumentů s adresou v státu Washington.
+Můžete také provést agregace v kombinaci s filtry. Například následující dotaz vrátí počet dokumentů s adresou ve státě Washington.
 
 **Dotaz**
 
@@ -926,28 +926,28 @@ Můžete také provést agregace v kombinaci s filtry. Například následujíc�
 
     [ 1 ]
 
-Následující tabulka uvádí seznam podporovaných agregační funkce v rozhraní SQL API. `SUM` a `AVG` se provádí přes číselných hodnot, zatímco `COUNT`, `MIN`, a `MAX` lze provést přes čísla, řetězce, logické hodnoty a hodnoty Null. 
+Následující tabulka uvádí seznam podporovaných agregačních funkcí v rozhraní SQL API. `SUM` a `AVG` se provádí přes číselných hodnot, zatímco `COUNT`, `MIN`, a `MAX` lze provést přes čísla, řetězce, logické hodnoty a hodnoty Null. 
 
 | Využití | Popis |
 |-------|-------------|
 | POČET | Vrátí počet položek ve výrazu. |
 | SOUČET   | Vrátí součet všech hodnot ve výrazu. |
 | MIN.   | Vrátí minimální hodnotu ve výrazu. |
-| MAX.   | Vrací maximální hodnotu ve výrazu. |
+| MAX.   | Vrátí maximální hodnotu ve výrazu. |
 | PRŮMĚR   | Vrátí průměr hodnot ve výrazu. |
 
-Agreguje lze také provést přes výsledky iterace pole. Další informace najdete v tématu [pole iterace v dotazech](#Iteration).
+Agregace lze také provést přes výsledky iterace pole. Další informace najdete v tématu [pole iterace v dotazech](#Iteration).
 
 > [!NOTE]
-> Při použití Průzkumníku dat portálu Azure, Všimněte si, že agregace dotazy může vracet částečně agregované výsledky dotazu stránky. Sady SDK vytvoří jednu kumulativní hodnotu na všech stránkách. 
+> Při použití Průzkumníku dat na webu Azure portal, mějte na paměti, že agregace dotazů může vracet částečně agregované výsledky na stránce dotazů. Sady SDK vytváří jednu kumulativní hodnotu na všech stránkách. 
 > 
-> Aby bylo možné provádět dotazy agregace pomocí kódu, je nutné .NET SDK 1.12.0, .NET Core SDK 1.1.0 nebo Java SDK 1.9.5 nebo vyšší.    
+> Aby bylo možné provádět dotazy agregace pomocí kódu, je nutné, sady .NET SDK 1.12.0, sady SDK .NET Core 1.1.0 nebo sady Java SDK 1.9.5 nebo vyšší.    
 >
 
-## <a id="OrderByClause"></a>Klauzuli ORDER by
-Podobně jako v ANSI SQL, můžete zahrnout volitelné klauzule Order By při dotazování. V klauzuli může zahrnovat nepovinný argument ASC nebo DESC zadat pořadí, ve kterém musí načíst výsledky.
+## <a id="OrderByClause"></a>ORDER BY – klauzule
+Stejně jako v ANSI SQL, můžete zahrnout volitelné klauzuli Order By při dotazování. V klauzuli může obsahovat nepovinný argument ASC/DESC pro určení pořadí, ve kterém musí načíst výsledky.
 
-Tady je příklad dotaz, který načte rodiny v pořadí podle název trvalé města.
+Tady je příklad dotaz, který načte skupin v pořadí podle názvu rezidenční město.
 
 **Dotaz**
 
@@ -968,7 +968,7 @@ Tady je příklad dotaz, který načte rodiny v pořadí podle název trvalé m�
       }
     ]
 
-A zde uvádíme dotaz, který načte rodiny v pořadí podle data vytvoření, který je uložený jako číslo představující epoch čas, tj, uplynulý čas od 1 ledna, pod hodnotou 1970 v sekundách.
+A tady je dotaz, který načte skupin v pořadí datum vytvoření, který je uložený jako číslo představující epochy čas, tj, uplynulý čas od 1 ledna 1970 v řádu sekund.
 
 **Dotaz**
 
@@ -992,7 +992,7 @@ A zde uvádíme dotaz, který načte rodiny v pořadí podle data vytvoření, k
 ## <a id="Advanced"></a>Pokročilé databázových koncepcí a dotazy SQL
 
 ### <a id="Iteration"></a>Iterace
-Byl přidán nový konstrukce prostřednictvím **IN** – klíčové slovo v rozhraní SQL API kvůli zajištění podpory pro iterování přes pole JSON. Zdroj FROM poskytuje podporu pro iterací. Začneme v následujícím příkladu:
+Novou konstrukci bylo přidáno prostřednictvím operace **v** – klíčové slovo v rozhraní SQL API poskytuje podporu pro iterace přes pole JSON. Zdroj FROM poskytuje podporu pro iteraci. Začneme v následujícím příkladu:
 
 **Dotaz**
 
@@ -1026,7 +1026,7 @@ Byl přidán nový konstrukce prostřednictvím **IN** – klíčové slovo v ro
       ]
     ]
 
-Nyní Podíváme se na další dotaz, který provádí iteraci přes podřízené položky v kolekci. Poznámka: rozdíl v poli výstup. Tento příklad rozdělí `children` a vyrovná výsledky do jednoho pole.  
+Nyní Pojďme se podívat na jiný dotaz, který provádí iteraci podřízené položky v kolekci. Všimněte si rozdílů v poli výstup. V tomto příkladu rozdělí `children` a výsledky se sloučí do jediného pole.  
 
 **Dotaz**
 
@@ -1056,7 +1056,7 @@ Nyní Podíváme se na další dotaz, který provádí iteraci přes podřízen�
       }
     ]
 
-To dále lze filtrovat na každou položku pole, jak je znázorněno v následujícím příkladu:
+To dále slouží k filtrování na každou položku pole, jak je znázorněno v následujícím příkladu:
 
 **Dotaz**
 
@@ -1070,7 +1070,7 @@ To dále lze filtrovat na každou položku pole, jak je znázorněno v následuj
       "givenName": "Lisa"
     }]
 
-Můžete také provést agregace přes výsledek iterace pole. Například následující dotaz vrátí počet podřízených prvků mezi všechny řady.
+Můžete také provést agregaci přes výsledek pole iterace. Například následující dotaz vrátí počet podřízených mezi všechny rodiny.
 
 **Dotaz**
 
@@ -1085,12 +1085,12 @@ Můžete také provést agregace přes výsledek iterace pole. Například násl
       }
     ]
 
-### <a id="Joins"></a>Spojení
-V relační databázi je důležité potřeba připojení u tabulky. Je logické důsledkem k navrhování normalizovaný schémat. Na rozdíl od toho se zabývá rozhraní SQL API nenormalizované datový model bez schémat dokumentů. Toto je logický ekvivalent a "spojení sama na sebe".
+### <a id="Joins"></a>Jednoduché výrazy mohou být konstanty, odkazy na vlastnosti, odkazy na prvky pole, odkazy na alias nebo volání funkce.
+Nutnost připojení u tabulek v relační databázi, je důležité. Je logický důsledkem do navrhování schémat normalizovaná. Naopak se zabývá rozhraní SQL API Nenormalizovaná datový model bez schémat dokumentů. To je proto logickým ekvivalentem metod a "spojení sama na sebe".
 
-Syntaxe, které jazyk podporuje je < from_source1 > připojit < from_source2 > připojit... Připojte < from_sourceN >. Celkově platí, tento příkaz vrátí sadu **N**- n-tice (řazené kolekce členů s **N** hodnoty). Každá řazená kolekce členů má vyprodukované všechny aliasy kolekce iterování přes jejich příslušné sady hodnot. Jinými slovy Toto je úplná smíšený produkt sad účastní spojení.
+Syntaxe, která podporuje jazyk je spojení JOIN < from_source2 > < from_source1 >... Připojte se k < from_sourceN >. Celkově, vrátí sadu **N**- řazených kolekcí členů (řazené kolekce členů s **N** hodnoty). Představuje operátor, který se použije na dvě hodnoty. Jinými slovy Toto je úplná smíšený produkt sad účastní spojení.
 
-Následující příklady ukazují, jak funguje klauzuli JOIN. V následujícím příkladu výsledkem je prázdný, od smíšený produkt každého dokumentu ze zdroje a prázdnou sadou je prázdný.
+Následující příklady ukazují, jak funguje klauzule JOIN. V následujícím příkladu výsledkem je prázdný od smíšený produkt každého dokumentu ze zdroje a Prázdná množina je prázdný.
 
 **Dotaz**
 
@@ -1104,7 +1104,7 @@ Následující příklady ukazují, jak funguje klauzuli JOIN. V následujícím
     }]
 
 
-V následujícím příkladu je spojení mezi kořen dokumentu a `children` subroot. Je smíšený produkt mezi dvěma objekty JSON. Skutečnost, že je podřízených prvků pole není platná ve spojení vzhledem k tomu, že jsme se zabývají na jednom kořenovou, která je pole podřízené objekty. Proto výsledek obsahuje pouze dva výsledky, protože smíšený produkt každý dokument s poli vypočítá přesně pouze jeden dokument.
+V následujícím příkladu je spojení mezi kořen dokumentu a `children` subroot. Je smíšený produkt mezi dvěma objekty JSON. Skutečnost, že je podřízené prvky pole není platné ve spojení protože jsme pracovali s jeden kořenový, který je podřízené prvky pole. Proto výsledek obsahuje pouze dva výsledky, protože vrací smíšený produkt každý dokument s polem přesně pouze jeden dokument.
 
 **Dotaz**
 
@@ -1124,7 +1124,7 @@ V následujícím příkladu je spojení mezi kořen dokumentu a `children` subr
     ]
 
 
-Následující příklad ukazuje konvenční připojení:
+Následující příklad ukazuje konvenčnější spojení:
 
 **Dotaz**
 
@@ -1148,15 +1148,15 @@ Následující příklad ukazuje konvenční připojení:
 
 
 
-Nejprve si všimněte si je, že `from_source` z **připojení** klauzule je iterátor. Ano tok v takovém případě je následující:  
+První věc, kterou si je, že `from_source` z **připojení** klauzule je iterátor. Ano tok v tomto případě je následujícím způsobem:  
 
-* Rozbalte každý podřízený element **c** v poli.
-* Použít smíšený produkt s kořene dokumentu **f** s každou podřízený element **c** , byl průmětu v prvním kroku.
+* Rozbalte každý podřízený prvek **c** v poli.
+* Použít smíšený produkt s kořen dokumentu **f** s každou podřízeným elementem **c** , který byl zjednodušen v prvním kroku.
 * Nakonec projektu kořenový objekt **f** name – vlastnost samostatně. 
 
-První dokument (`AndersenFamily`) obsahuje pouze jeden podřízený element, takže sadu výsledků dotazu obsahuje pouze jeden objekt odpovídající do tohoto dokumentu. Druhý dokumentu (`WakefieldFamily`) obsahuje dva podřízené položky. Ano smíšený produkt vytváří samostatný objekt pro všechny podřízené, což by vedlo k dva objekty, jeden pro každou podřízenou odpovídající do tohoto dokumentu. Kořenové pole v obou tyto dokumenty jsou stejné, stejně, jako byste očekávali v smíšený produkt.
+První dokument (`AndersenFamily`) obsahuje pouze jeden podřízený element, tak sada výsledků obsahuje pouze jeden objekt odpovídající do tohoto dokumentu. Druhý dokument (`WakefieldFamily`) obsahuje dva podřízené položky. Smíšený produkt tedy vytváří samostatný objekt pro každý podřízený prvek, což by vedlo k dva objekty, jeden pro každý podřízený prvek odpovídající do tohoto dokumentu. Kořenové pole v obou těchto dokumentů jsou stejné, stejně jako byste očekávali v smíšený produkt.
 
-Skutečné nástroje připojení k je formulář řazených kolekcí členů z smíšený produkt tvar, který je jinak obtížné projektu. Kromě toho, jak vidíte v následujícím příkladu můžete vyfiltrovat na kombinaci řazené kolekce členů, aby se umožňuje se uživatel rozhodl podmínku splňují celkové řazené kolekce členů.
+Nástroj skutečné spojení je formulář řazených kolekcí členů z mezi produkty ve tvaru, který je v opačném případě obtížně projektu. Kromě toho, jak uvidíme v následujícím příkladu můžete vyfiltrovat na kombinaci řazené kolekce členů, že umožňuje uživatel vybral podmínku celkové splněno řazené kolekce členů.
 
 **Dotaz**
 
@@ -1191,7 +1191,7 @@ Skutečné nástroje připojení k je formulář řazených kolekcí členů z s
 
 
 
-Tento příklad představuje přirozené rozšíření v předchozím příkladu a spojí double. Ano smíšený produkt lze zobrazit jako pseudo následující kód:
+Tento příklad v předchozím příkladu představuje přirozené rozšíření a provádí double spojení. Smíšený produkt tak, lze zobrazit jako pseudoelement následovně:
 
     for-each(Family f in Families)
     {    
@@ -1207,9 +1207,9 @@ Tento příklad představuje přirozené rozšíření v předchozím příkladu
         }
     }
 
-`AndersenFamily` má jednu podřízenou, který má jednoho nebo více mazlíčků. Ano, smíšený produkt vypočítá jeden řádek (1\*1\*1) z této rodiny. WakefieldFamily ale má dva podřízené, ale pouze jednu podřízenou "Jesse" má mazlíčků. Jesse, když má dva mazlíčků. Proto smíšený produkt vypočítá 1\*1\*řádků z této rodině, 2 = 2.
+`AndersenFamily` má jeden podřízený prvek, který má jednoho nebo více mazlíčků. Ano, vrací smíšený produkt jeden řádek (1\*1\*1) z této řady. WakefieldFamily má ale dvěma dětmi, ale pouze jeden podřízený prvek "Jesse" má mazlíčků. Jesse i když má dvě mazlíčků. Proto vrací smíšený produkt 1\*1\*2 = 2 řádky z této řady.
 
-V následujícím příkladu je další filtr na `pet`. Nevztahuje se na všech záznamů, kde název pet není "Stínové". Všimněte si, že jsou jsme sestavení řazenými kolekcemi členů z pole filtru na všech elementů řazené kolekce členů a projektu libovolnou kombinaci prvků. 
+V následujícím příkladu je další filtr na `pet`. To nezahrnuje všechny záznamy, kde není "Stínu" jméno mazlíčka. Všimněte si, že jsme schopní řazenými kolekcemi členů z polí, filtr na některý z prvků řazené kolekce členů, ale taky popustit libovolnou kombinaci prvků projektu. 
 
 **Dotaz**
 
@@ -1235,17 +1235,17 @@ V následujícím příkladu je další filtr na `pet`. Nevztahuje se na všech 
 
 
 ## <a id="JavaScriptIntegration"></a>Integrace jazyka JavaScript
-Azure Cosmos DB poskytuje programovací model pro spouštění logiky aplikace založené na jazyce JavaScript přímo na kolekcích z hlediska uložených procedur a aktivačních událostí. To umožňuje, aby obě:
+Azure Cosmos DB poskytuje programovací model pro spouštění logiky aplikací JavaScript na základě přímo na kolekce z hlediska uložené procedury a triggery. To umožňuje u obou:
 
-* Možnost udělat transakční operace CRUD vysoce výkonné a dotazy na dokumenty v kolekci na základě těsná integrace běhu programu JavaScript přímo v rámci databázového stroje. 
-* Fyzická modelování tok řízení, proměnné rozsahu a přiřazení a integrace výjimky zpracování primitiv s databázové transakce. Další podrobnosti o podpoře Azure Cosmos DB integrace jazyka JavaScript naleznete v dokumentaci serverové programovatelnosti JavaScript.
+* Možnost pro vysoce výkonné transakční operace CRUD a dotazů na dokumenty v kolekci tím, že tato těsná integrace modulu runtime jazyka JavaScript přímo uvnitř databázového stroje. 
+* Přirozené modelování toku řízení, proměnné rozsahu a přiřazení a integrace primitivních elementů s transakcemi databáze zpracování výjimek. Další podrobnosti o podpoře služby Azure Cosmos DB pro integraci jazyka JavaScript naleznete v dokumentaci JavaScript programování na straně serveru.
 
 ### <a id="UserDefinedFunctions"></a>Uživatelem definované funkce (UDF)
-Společně s typy již definována v tomto článku rozhraní SQL API poskytuje podporu pro uživatele definované funkce (UDF). Skalární funkce UDF zejména, jsou podporovány, kde mohou vývojáři předejte v počtu nula či více argumentů a vrácení zpět výsledku jeden argument. Každý z těchto argumentů, se kontroluje na právě platné hodnoty na JSON.  
+Spolu s typy již definované v tomto článku rozhraní SQL API poskytuje podporu pro uživateli definované funkce (UDF). Skalární funkce UDF jsou podporovány zejména, kde mohou vývojáři předat argumenty nula nebo více a vrácení zpět výsledku jeden argument. Každá z těchto argumentů se kontroluje u právě platné hodnoty JSON.  
 
-Syntaxe příkazu SQL je rozšířeno na podporu vlastní logiky aplikace pomocí tyto funkce definované uživatelem. Funkce UDF lze registrovat pomocí rozhraní API pro SQL a pak odkazuje v rámci dotazu SQL. Ve skutečnosti UDF jsou exquisitely navrženy pro vyvolat dotazy. Jako nezbytným důsledkem této volby UDF nemají přístup k objektu kontextu, které mají jiné JavaScript typy (uložených procedur a aktivačních událostí). Vzhledem k tomu, že dotazy se spustí jen pro čtení, mohou spouštět na primární nebo na sekundární repliky. Proto UDF jsou určená ke spuštění na sekundárních replikách na rozdíl od jiných typů jazyka JavaScript.
+Syntaxe jazyka SQL je rozšířit o podporu vlastní logiky aplikace pomocí těchto uživatelsky definovaných funkcí. Uživatelem definovanými funkcemi lze registrovat pomocí rozhraní SQL API a klikněte na něho odkazovat jako součást příkazu jazyka SQL. Ve skutečnosti UDF jsou navrženy exquisitely mohly vyvolávat dotazy. Jako důsledkem této volby funkcí UDF nebudou mít přístup k objektu context, které mají jiné typy jazyka JavaScript (uložených procedur a aktivačních událostí). Protože provádějí se dotazy jen pro čtení, můžou běžet na primárním nebo na sekundárních replikách. Proto se funkce UDF jsou navrženy ke spouštění na sekundárních replikách na rozdíl od jiných typů jazyka JavaScript.
 
-Níže je příklad, jak se dají registrovat UDF v databázi Cosmos DB, konkrétně v rámci kolekce dokumentů.
+Níže je příklad, jak lze registrovat systému souborů UDF v databázi Cosmos DB, konkrétně v rámci kolekce dokumentů.
 
        UserDefinedFunction regexMatchUdf = new UserDefinedFunction
        {
@@ -1259,12 +1259,12 @@ Níže je příklad, jak se dají registrovat UDF v databázi Cosmos DB, konkré
            UriFactory.CreateDocumentCollectionUri("testdb", "families"), 
            regexMatchUdf).Result;  
 
-V předchozím příkladu se vytváří UDF, jehož název je `REGEX_MATCH`. Přijímá dvou řetězcových hodnot JSON `input` a `pattern` a ověří, zda je první odpovídá vzoru zadaný ve druhém pomocí funkce string.match() jazyce JavaScript.
+V předchozím příkladu se vytvoří UDF, jehož název je `REGEX_MATCH`. Přijímá dva řetězcové hodnoty JSON `input` a `pattern` a zkontroluje, jestli první odpovídá vzoru zadané v druhý použitím string.match() funkce v jazyce JavaScript.
 
-Tato UDF jsme teď můžete použít v dotazu v projekci. Funkce UDF musí být kvalifikovaný pomocí malá a velká písmena předponu "udf." Když je volána v rámci dotazů. 
+Tento systém souborů UDF jsme teď můžete použít v dotazu v projekci. UDF musí být kvalifikován s předponu malá a velká písmena "udf." Při volání z v rámci dotazů. 
 
 > [!NOTE]
-> Před 3/17/2015 Cosmos DB podporované UDF volání bez "udf." Předpona jako vyberte REGEX_MATCH(). Tento vzor volání je zastaralá.  
+> Před 3/17/2015 Cosmos DB nepodporuje volání UDF bez "udf." Předpona, jako jsou REGEX_MATCH() vyberte. Tento model volání je zastaralá.  
 > 
 > 
 
@@ -1284,7 +1284,7 @@ Tato UDF jsme teď můžete použít v dotazu v projekci. Funkce UDF musí být 
       }
     ]
 
-UDF můžete použít také uvnitř filtr, jak je znázorněno v následujícím příkladu také kvalifikovaný pomocí "udf." Předpona:
+UDF můžete použít také uvnitř filtr, jak je znázorněno v následujícím příkladu také kvalifikován s "udf." Předpona:
 
 **Dotaz**
 
@@ -1300,9 +1300,9 @@ UDF můžete použít také uvnitř filtr, jak je znázorněno v následujícím
     }]
 
 
-V podstatě UDF jsou platné skalární výrazy a mohou být používány projekce a filtry. 
+V podstatě UDF jsou platná skalární výrazy a je možné v projekce a filtry. 
 
-Chcete-li rozšířit na výkon UDF, podíváme se na další příklad s podmíněnou logiku:
+Rozšíření power uživatelem definovanými funkcemi, Podívejme se na další příklad s podmíněnou logiku:
 
        UserDefinedFunction seaLevelUdf = new UserDefinedFunction()
        {
@@ -1325,7 +1325,7 @@ Chcete-li rozšířit na výkon UDF, podíváme se na další příklad s podmí
                 seaLevelUdf);
 
 
-Níže je příklad, který vykonává UDF.
+Tady je příklad, která zpracovává UDF.
 
 **Dotaz**
 
@@ -1346,29 +1346,29 @@ Níže je příklad, který vykonává UDF.
     ]
 
 
-Jako v předchozích příkladech prezentují, funkce UDF sílu jazyka JavaScript integrovat rozhraní SQL API k poskytnutí bohaté programovatelný rozhraní udělat komplexní logiku procedurální, podmíněného pomocí integrované funkce JavaScript runtime.
+Jako v předchozích příkladech prezentovat, integrace UDF sílu jazyka JavaScript pomocí rozhraní SQL API poskytuje také bohaté rozhraní příkazů programovatelný provádět komplexní procesní, podmíněné logiky pomocí integrovaných možností modulu runtime jazyka JavaScript.
 
-Rozhraní SQL API poskytuje argumenty k UDF pro každý dokument ve zdroji na aktuální fázi (klauzuli WHERE nebo klauzuli SELECT) zpracování UDF. Výsledkem je obsažena v celkové spouštěcí kanál bezproblémově. Jestliže podle vlastnosti ve UDF parametry nejsou k dispozici v hodnotě JSON, parametr se považuje za není definována a proto je volání UDF zcela přeskočeno. Podobně pokud výsledek UDF, není součástí výsledek. 
+Rozhraní SQL API poskytuje argumenty UDF pro každý dokument ve zdroji v aktuální fázi (klauzuli WHERE nebo klauzuli SELECT) zpracování UDF. Výsledkem je součástí celkového kanálu provádění bez problémů. Pokud uvedené vlastnosti podle UDF nejsou dostupné v hodnotě JSON, se považuje za parametr undefined a proto je při vyvolání UDF zcela přeskočen. Podobně pokud výsledek UDF není definován, není součástí výsledku. 
 
-V souhrnu funkce UDF jsou vynikající aplikace udělat komplexní obchodní logiky v rámci dotazu.
+Stručně řečeno funkce UDF představují vynikající nástroj provádět komplexní obchodní logiku jako součást dotazu.
 
 ### <a name="operator-evaluation"></a>Vyhodnocení – operátor
-Cosmos databáze, důsledku způsobená databáze JSON nevykresluje parallels s operátory jazyka JavaScript a jeho sémantiku vyhodnocení. Při Cosmos DB pokusí zachovat sémantiku JavaScript z hlediska podporu JSON, v některých případech odchylují vyhodnocení operaci.
+Cosmos DB, důsledku toho, že databáze JSON, nakreslí parallels s operátory jazyka JavaScript a jeho vyhodnocení sémantiku. Zatímco Cosmos DB se snaží zachovat sémantiku jazyka JavaScript z hlediska podpory JSON, v některých případech liší operace hodnocení.
 
-V rozhraní SQL API, na rozdíl od v tradiční SQL, typy hodnot, jsou často není známý teprve po načtení hodnoty z databáze. Efektivní provádění dotazů, většina operátory má požadavky na typ strict. 
+V rozhraní SQL API na rozdíl od v tradiční SQL, typy hodnot jsou často není známé dokud hodnoty se načítají z databáze. Aby bylo možné efektivní provádění dotazů, většina operátory mají požadavky na striktní typy. 
 
-Rozhraní SQL API neprovede implicitní převody, na rozdíl od jazyka JavaScript. Například dotazu jako `SELECT * FROM Person p WHERE p.Age = 21` odpovídá dokumentů, které obsahují ve vlastnosti stáří, jehož hodnota je 21. Jiného dokumentu, jejichž stáří vlastnost odpovídá řetězec "21" nebo jiných může být nekonečné variace jako "021", "21.0", "0021", "00021", nebude odpovídat atd. Jde na rozdíl od jazyka JavaScript, kde jsou implicitně převedena na čísla řetězcové hodnoty (podle operátoru, například: ==). Tato volba je zásadní pro efektivní index porovnávání rozhraní SQL API. 
+Rozhraní SQL API neprovádí implicitních převodů, na rozdíl od jazyka JavaScript. Například dotaz jako `SELECT * FROM Person p WHERE p.Age = 21` odpovídá dokumenty, které obsahují některou vlastnost stáří, jehož hodnota je 21. Další dokument, jejichž stáří vlastnosti odpovídají může být nekonečné varianty řetězců "21" nebo jiné, například "021", "21.0", "0021", "00021", nebude odpovídat atd. Toto je oproti jazyka JavaScript, kde jsou implicitně převedena na čísla řetězcové hodnoty (podle operátoru: ==). Tato volba je zásadní pro efektivní indexu odpovídající v rozhraní SQL API. 
 
 ## <a name="parameterized-sql-queries"></a>Parametrizované dotazy SQL
-Cosmos DB podporuje dotazy s parametry vyjádřené se známými @ zápis. Parametrizované SQL poskytuje robustní zpracování a uvozovací znaky vstup uživatele brání náhodnou expozici dat prostřednictvím Injektáž SQL. 
+Cosmos DB podporuje dotazy s parametry vyjádřit pomocí známé \@ zápis. Parametrizovaný dotaz SQL poskytuje robustní zpracování a uvozovací znaky z uživatelský vstup, brání náhodnou expozici dat prostřednictvím útoku prostřednictvím injektáže SQL. 
 
-Můžete například napsat dotaz, který přebírá příjmení a stav adresy jako parametry a potom spusťte pro různé hodnoty příjmení a stav adresy založené na vstup uživatele.
+Můžete například napsat dotaz, který přijímá jako parametry příjmení a stav adresy a proveďte jej pro různé hodnoty poslední název a stav adresy na základě uživatelského zadání.
 
     SELECT * 
     FROM Families f
     WHERE f.lastName = @lastName AND f.address.state = @addressState
 
-Tento požadavek potom můžete odeslat do databáze Cosmos jako parametrizovaného dotazu JSON, jako vidíte níže.
+Tento požadavek můžete pak odešlou do služby Cosmos DB jako parametrický dotaz JSON, jako je vidíte níže.
 
     {      
         "query": "SELECT * FROM Families f WHERE f.lastName = @lastName AND f.address.state = @addressState",     
@@ -1378,7 +1378,7 @@ Tento požadavek potom můžete odeslat do databáze Cosmos jako parametrizovan�
         ] 
     }
 
-Argument TOP se dá nastavit pomocí parametrizované dotazy, jako vidíte níže.
+Argument TOP lze nastavit pomocí parametrizovaných dotazů, jako vidíte níže.
 
     {      
         "query": "SELECT TOP @n * FROM Families",     
@@ -1387,52 +1387,52 @@ Argument TOP se dá nastavit pomocí parametrizované dotazy, jako vidíte níž
         ] 
     }
 
-Hodnoty parametru může být libovolný platný kód JSON (řetězce, čísla, logické hodnoty null, dokonce i pole nebo vnořený JSON). Také bez schématu totiž Cosmos DB parametry nejsou ověřovat na libovolného typu.
+Hodnoty parametru může být libovolný platný kód JSON (řetězce, čísla, logické hodnoty null, dokonce i pole nebo vnořené JSON). Také Cosmos DB je bez schématu, parametry nejsou ověřovat na libovolného typu.
 
-## <a id="BuiltinFunctions"></a>Integrované funkce
-Cosmos DB podporuje také řadu integrovaných funkcí pro běžné operace, které lze použít uvnitř dotazy jako uživatelsky definované funkce (UDF).
+## <a id="BuiltinFunctions"></a>Předdefinované funkce
+Cosmos DB podporuje také řadu integrovaných funkcí pro běžné operace, které lze použít uvnitř dotazů jako uživatelem definované funkce (UDF).
 
-| Funkce skupiny          | Operace                                                                                                                                          |
+| Skupina – funkce          | Operace                                                                                                                                          |
 |-------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|
-| Matematické funkce  | ABS mezní hodnoty, EXP, FLOOR, protokolu, LOG10, POWER, KRUHOVÉ, přihlášení, SQRT, HRANATÉ, TRUNC, ACOS, ASIN, ATAN, ATN2, COS, COP, STUPŇŮ, PI, RADIÁNECH, SIN a TAN |
-| Typ kontroly funkce | IS_ARRAY, IS_BOOL, IS_NULL, IS_NUMBER, IS_OBJECT, IS_STRING, IS_DEFINED a IS_PRIMITIVE                                                           |
-| Řetězcové funkce        | CONCAT, obsahuje, ENDSWITH, INDEX_OF, vlevo, délka, nižší, LTRIM, NAHRAĎTE, REPLIKOVAT, zpětného, vpravo, RTRIM, STARTSWITH, SUBSTRING a horní       |
+| Matematické funkce  | ABS, horní MEZ, EXP, FLOOR, protokolu, LOG10, POWER, KRUHOVÉ, přihlášení, SQRT, ČTVEREC, TRUNC –, ACOS, ASIN, ATAN, ATN2, COS, COT, STUPŇŮ, PI, RADIANS, SIN a TAN |
+| Kontrola funkce typu | Is_array – IS_BOOL, IS_NULL, IS_NUMBER, is_object –, IS_STRING, IS_DEFINED a IS_PRIMITIVE                                                           |
+| Řetězcové funkce        | CONCAT, obsahuje, ENDSWITH, INDEX_OF, vlevo, délka, nižší, LTRIM, nahradit, REPLIKACE, zpětné, vpravo, RTRIM, STARTSWITH, PODŘETĚZEC a horní       |
 | Funkce pole         | ARRAY_CONCAT, ARRAY_CONTAINS, ARRAY_LENGTH a ARRAY_SLICE                                                                                         |
-| Prostorové funkce       | ST_DISTANCE, ST_WITHIN, ST_INTERSECTS, ST_ISVALID a ST_ISVALIDDETAILED                                                                           | 
+| Prostorové funkce       | ST_DISTANCE ST_WITHIN, ST_INTERSECTS, ST_ISVALID a ST_ISVALIDDETAILED                                                                           | 
 
-Pokud aktuálně používáte uživatelem definované funkce (UDF) pro kterou integrovaná funkce je nyní k dispozici, byste měli používat odpovídající integrované funkce, má být ke spuštění rychlejší a efektivnější. 
+Pokud aktuálně používáte uživatelem definované funkce (UDF) pro kterou předdefinované funkce je teď k dispozici, když se rychleji na spuštění by měl použít odpovídající předdefinované funkce a efektivněji. 
 
 ### <a name="mathematical-functions"></a>Matematické funkce
-Matematické funkce provedení výpočtu, podle vstupní hodnoty, které jsou k dispozici jako argumenty a vrátí číselnou hodnotu. Zde je tabulku podporovaných předdefinovaných matematické funkce.
+Matematické funkce provádí výpočet, založené na vstupní hodnoty, které jsou k dispozici jako argumenty a vrátit číselnou hodnotu. Tady je tabulka podporovaných předdefinovaných matematických funkcí.
 
 
 | Využití | Popis |
 |----------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [[ABS (num_expr)](#bk_abs) | Vrátí absolutní hodnotu (kladné) zadaný číselný výraz. |
-| [Horní MEZ (num_expr)](#bk_ceiling) | Vrátí nejmenší hodnotu, celé číslo větší než nebo rovna hodnotě zadané číselný výraz. |
-| [FLOOR (num_expr)](#bk_floor) | Vrátí největší celé číslo menší než nebo rovna zadané číselný výraz. |
+| [[ABS (num_expr)](#bk_abs) | Vrátí absolutní hodnotu (pozitivní) zadaný číselný výraz. |
+| [Horní MEZ (num_expr)](#bk_ceiling) | Vrátí nejmenší hodnotu celé číslo větší než nebo rovna zadané číselný výraz. |
+| [Dolní MEZ (num_expr)](#bk_floor) | Vrátí největší celé číslo menší nebo rovna zadané číselný výraz. |
 | [EXP (num_expr)](#bk_exp) | Vrátí exponent zadaný číselný výraz. |
-| [LOG (num_expr [,base])](#bk_log) | Vrátí přirozený logaritmus zadaný číselný výraz nebo pomocí o zadaném základu logaritmus |
-| [LOG10 (num_expr)](#bk_log10) | Vrátí hodnotu logaritmické základu 10 zadaný číselný výraz. |
-| [ZAOKROUHLÍ (num_expr)](#bk_round) | Vrátí číselnou hodnotu, zaokrouhlí na nejbližší celé číslo. |
-| [TRUNC (num_expr)](#bk_trunc) | Vrátí číselnou hodnotu, zkrácen na nejbližší celé číslo. |
-| [SQRT (num_expr)](#bk_sqrt) | Vrátí druhou odmocninu čísla zadaný číselný výraz. |
+| [LOG (num_expr [,base])](#bk_log) | Vrátí přirozený logaritmus zadaného číselný výraz nebo pomocí zadaném základu logaritmu |
+| [LOG10 (num_expr)](#bk_log10) | Vrátí hodnotu logaritmu základu 10 zadaný číselný výraz. |
+| [ROUND (num_expr)](#bk_round) | Vrátí číselnou hodnotu, zaokrouhlený na nejbližší celočíselnou hodnotu. |
+| [TRUNC (num_expr)](#bk_trunc) | Vrátí číselnou hodnotu, zkrácen na nejbližší celočíselnou hodnotu. |
+| [SQRT (num_expr)](#bk_sqrt) | Vrátí druhou odmocninu určeného číselného výrazu. |
 | [HRANATÉ (num_expr)](#bk_square) | Vrátí druhou mocninu zadaný číselný výraz. |
-| [NAPÁJENÍ (num_expr, num_expr)](#bk_power) | Hodnota zadaná vrátí sílu zadaný číselný výraz. |
-| [SIGN (num_expr)](#bk_sign) | Vrátí hodnotu přihlašovací (-1, 0, 1) zadaný číselný výraz. |
-| [ACOS (num_expr)](#bk_acos) | Vrací úhel, v radiánech, jehož kosinus je zadaný číselný výraz. Zkratka Arkus. |
-| [ASIN (num_expr)](#bk_asin) | Vrací úhel, v radiánech, jehož sinus je zadaný číselný výraz. To je také označován Arkus sinus. |
-| [ATAN (num_expr)](#bk_atan) | Vrací úhel, v radiánech, jehož tangens je zadaný číselný výraz. To je také označován Arkus. |
-| [ATN2 (num_expr)](#bk_atn2) | Vrací úhel, v radiánech, mezi kladné osy x a paprsek z tohoto počátku do bodu (y, x), kde x a y jsou hodnoty dvou výrazů zadaný float. |
-| [COS (num_expr)](#bk_cos) | Vrací trigonometrické kosinus určeného úhlu v radiánech v zadaným výrazem. |
-| [COT (num_expr)](#bk_cot) | Vrací trigonometrické kotangens zadaný úhel v radiánech v zadaný číselný výraz. |
-| [STUPŇŮ (num_expr)](#bk_degrees) | Vrací odpovídající úhel ve stupních pro úhlu uvedeného v radiánech. |
+| [NAPÁJENÍ (num_expr, num_expr)](#bk_power) | Vrátí sílu zadaný číselný výraz na zadanou hodnotu. |
+| [SIGN (num_expr)](#bk_sign) | Vrátí hodnotu znaménko (-1, 0, 1) zadaný číselný výraz. |
+| [ACOS (num_expr)](#bk_acos) | Vrací úhel v radiánech, jehož kosinus je zadaný číselný výraz. Zkratka Arkus kosinus. |
+| [ASIN (num_expr)](#bk_asin) | Vrací úhel v radiánech, jehož sinus je zadaný číselný výraz. Označuje se také Arkus sinus. |
+| [ATAN (num_expr)](#bk_atan) | Vrací úhel v radiánech, jehož tangens odpovídá zadané číselný výraz. Označuje se také Arkus tangens. |
+| [ATN2 (num_expr)](#bk_atn2) | Vrací úhel v radiánech mezi kladnou osy x a ray ze zdroje do bodu (y, x), kde x a y jsou hodnoty ze dvou výrazů zadaného typu float. |
+| [COS (num_expr)](#bk_cos) | Vrátí trigonometrických kosinus úhlu určeného v radiánech v zadaným výrazem. |
+| [COT (num_expr)](#bk_cot) | Vrátí trigonometrických kotangens úhlu určeného v radiánech v zadané číselný výraz. |
+| [DEGREES (num_expr)](#bk_degrees) | Vrátí odpovídající úhel ve stupních, kterým je úhel zadaný v radiánech. |
 | [PI ()](#bk_pi) | Vrátí konstantní hodnotu čísla PÍ. |
-| [RADIANS (num_expr)](#bk_radians) | Vrátí radiánech při zadání číselného výrazu, ve stupních, se. |
-| [SIN (num_expr)](#bk_sin) | Vrací trigonometrické sinus určeného úhlu v radiánech v zadaným výrazem. |
-| [TAN (num_expr)](#bk_tan) | Vrátí tangens vstupní výraz zadaný výraz. |
+| [RADIANS (num_expr)](#bk_radians) | Radians vrátí, pokud je zadán číselný výraz ve stupních. |
+| [SIN (num_expr)](#bk_sin) | Vrátí trigonometrických sinus úhlu určeného v radiánech v zadaným výrazem. |
+| [TAN (num_expr)](#bk_tan) | Vrátí tangens vstupní výraz zadaným výrazem. |
 
-Například můžete spustit nyní dotazy takto:
+Například nyní můžete spustit dotazy vypadat asi takto:
 
 **Dotaz**
 
@@ -1442,10 +1442,10 @@ Například můžete spustit nyní dotazy takto:
 
     [4]
 
-Hlavní rozdíl mezi Cosmos DB funkce ve srovnání s ANSI SQL je, že jsou navrženy fungují dobře u dat bez schématu a smíšený schématu. Například pokud máte dokument, kdy je velikost vlastnost chybí, nebo má jiné než číselné hodnoty jako "Neznámý" a potom dokument se přeskočil, místo vrátila chybu.
+Hlavní rozdíl mezi funkcemi služby Cosmos DB ve srovnání s ANSI SQL je, že jsou navrženy pro práci i s daty bez schématu a smíšené schéma. Například pokud máte dokument, kde chybí vlastnost velikosti, nebo má nečíselné hodnoty jako "Neznámý" a potom dokument se přeskočil, místo vrácení chyby.
 
-### <a name="type-checking-functions"></a>Typ kontroly funkce
-Kontrola, zda funkce typů umožňují zkontrolujte typ výrazu v rámci dotazů SQL. Kontrola, zda funkce typu slouží k určení typu vlastnosti v rámci dokumenty za chodu, když je neznámý nebo proměnné. Zde je tabulku kontroluje funkce podporované předdefinovaný typ.
+### <a name="type-checking-functions"></a>Kontrola funkce typu
+Funkce pro kontrolu typů umožňují zkontrolujte typ výrazu v rámci dotazů SQL. Funkce kontroly typu je možné určit typ vlastností v dokumentech v reálném čase, pokud bude proměnná nebo neznámý. Tady je tabulka znázorňující podporované předdefinovaný typ kontroly funkce.
 
 <table>
 <tr>
@@ -1453,41 +1453,41 @@ Kontrola, zda funkce typů umožňují zkontrolujte typ výrazu v rámci dotazů
   <td><strong>Popis</strong></td>
 </tr>
 <tr>
-  <td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_is_array">IS_ARRAY (výraz)</a></td>
-  <td>Vrátí logickou hodnotu, která určuje, jestli je typ hodnoty pole.</td>
+  <td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_is_array">Is_array – (výraz)</a></td>
+  <td>Vrátí logickou hodnotu označující, zda je typ hodnoty pole.</td>
 </tr>
 <tr>
   <td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_is_bool">IS_BOOL (výraz)</a></td>
-  <td>Vrátí logickou hodnotu udávající, pokud typ hodnoty je logická hodnota.</td>
+  <td>Vrátí logickou hodnotu označující, pokud je typ hodnoty logická hodnota.</td>
 </tr>
 <tr>
   <td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_is_null">IS_NULL (výraz)</a></td>
-  <td>Vrátí logickou hodnotu, která určuje, jestli je typ hodnoty null.</td>
+  <td>Vrátí logickou hodnotu označující, zda je typ hodnoty null.</td>
 </tr>
 <tr>
   <td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_is_number">IS_NUMBER (výraz)</a></td>
-  <td>Vrátí logickou hodnotu udávající, zda je typ hodnoty číslo.</td>
+  <td>Vrátí logickou hodnotu označující, pokud je typ hodnoty čísla.</td>
 </tr>
 <tr>
-  <td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_is_object">IS_OBJECT (výraz)</a></td>
-  <td>Vrátí logickou hodnotu udávající, pokud typ hodnoty je objekt JSON.</td>
+  <td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_is_object">Is_object – (výraz)</a></td>
+  <td>Vrátí logickou hodnotu označující, pokud je typ hodnoty objektu JSON.</td>
 </tr>
 <tr>
   <td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_is_string">IS_STRING (výraz)</a></td>
-  <td>Vrátí logickou hodnotu udávající, pokud je typ hodnoty string.</td>
+  <td>Vrátí logickou hodnotu označující, pokud je typ hodnoty řetězec.</td>
 </tr>
 <tr>
   <td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_is_defined">IS_DEFINED (výraz)</a></td>
-  <td>Vrátí logickou hodnotu udávající, pokud byla vlastnost přiřazenou hodnotu.</td>
+  <td>Vrátí logickou hodnotu označující, pokud vlastnost byla přiřazena hodnota.</td>
 </tr>
 <tr>
   <td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_is_primitive">IS_PRIMITIVE (výraz)</a></td>
-  <td>Vrátí logickou hodnotu, která udává, pokud je typ hodnoty řetězce, číslo, logickou hodnotu nebo hodnotu null.</td>
+  <td>Vrátí logickou hodnotu označující, pokud je typ hodnoty řetězec, číslo, logickou hodnotu nebo hodnotu null.</td>
 </tr>
 
 </table>
 
-Pomocí těchto funkcí, teď můžete spouštět dotazy takto:
+Použití těchto funkcí, můžete nyní spouštět dotazy vypadat asi takto:
 
 **Dotaz**
 
@@ -1498,28 +1498,28 @@ Pomocí těchto funkcí, teď můžete spouštět dotazy takto:
     [true]
 
 ### <a name="string-functions"></a>Řetězcové funkce
-Následující skalární funkce provést operaci s vstupní hodnotu řetězce a vrátí řetězec, číselnou nebo logická hodnota. Tady je tabulku funkce integrované řetězce:
+Následující skalární funkce provádění operací na vstupní hodnotu řetězce a vrátí řetězec, číslo nebo logickou hodnotu. Tady je tabulka funkcí integrovaných řetězec:
 
 | Využití | Popis |
 | --- | --- |
 | [Délka (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_length) |Vrátí počet znaků ze zadaného řetězcového výrazu |
-| [CONCAT (str_expr, str_expr [, str_expr])](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_concat) |Vrátí řetězec, který je výsledkem zřetězení dvou nebo více řetězcové hodnoty. |
-| [SUBSTRING (str_expr, num_expr num_expr.)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_substring) |Vrátí část řetězcového výrazu. |
-| [STARTSWITH (str_expr, str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_startswith) |Vrátí logická hodnota, která určuje zda první řetězec výraz začíná druhý |
-| [ENDSWITH (str_expr, str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_endswith) |Vrátí logická hodnota, která určuje zda první řetězec výraz končí druhý |
-| [OBSAHUJE (str_expr, str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_contains) |Vrátí logická hodnota, která určuje zda první řetězec výraz obsahuje druhý. |
-| [INDEX_OF (str_expr, str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_index_of) |Vrátí počáteční pozici prvního výskytu druhý řetězec výrazu v rámci první zadaného řetězcového výrazu nebo -1, pokud není nalezen řetězec. |
-| [LEFT (str_expr, num_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_left) |Vrátí levé části řetězec s zadaný počet znaků. |
-| [RIGHT (str_expr, num_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_right) |Vrátí pravou část řetězec s zadaný počet znaků. |
-| [LTRIM (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_ltrim) |Vrací výraz řetězce po ho odebere úvodní mezery. |
-| [RTRIM (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_rtrim) |Vrací výraz řetězce po zkracování všechny koncové mezery. |
-| [NIŽŠÍ (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_lower) |Vrací výraz řetězce po převodu dat velké písmeno na malá písmena. |
-| [HORNÍ (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_upper) |Vrací výraz řetězce po převodu dat malé písmeno na velká písmena. |
+| [CONCAT (str_expr str_expr [, str_expr])](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_concat) |Vrátí řetězec, který je výsledkem zřetězení dvou nebo více řetězcových hodnot. |
+| [Dílčí řetězec (str_expr, num_expr num_expr.)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_substring) |Vrátí část řetězcového výrazu. |
+| [STARTSWITH (str_expr, str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_startswith) |Vrátí hodnotu typu Boolean označující, zda se první výraz řetězce začíná druhé |
+| [ENDSWITH (str_expr, str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_endswith) |Vrátí hodnotu typu Boolean označující, zda se první výraz řetězce končí na druhý |
+| [OBSAHUJE (str_expr, str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_contains) |Vrátí hodnotu typu Boolean označující, zda řetězec prvního výrazu obsahuje druhý. |
+| [INDEX_OF (str_expr, str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_index_of) |Vrátí počáteční pozici prvního výskytu druhý řetězec výrazu v rámci prvního zadaného řetězcového výrazu nebo -1, pokud není nalezen řetězec. |
+| [LEFT (str_expr, num_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_left) |Vrátí levou část řetězec zadaný počet znaků. |
+| [RIGHT (str_expr, num_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_right) |Vrátí část reprezentující správný řetězec zadaný počet znaků. |
+| [LTRIM (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_ltrim) |Vrátí řetězcový výraz po odebere úvodní mezery. |
+| [RTRIM (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_rtrim) |Vrátí řetězcový výraz po zkracování všechny koncové mezery. |
+| [MALÁ (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_lower) |Vrátí řetězcový výraz po převedení dat velkým písmenem na malá písmena. |
+| [VELKÁ (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_upper) |Vrátí řetězcový výraz po převedení data znaků na malá písmena na velká písmena. |
 | [NAHRAĎTE (str_expr, str_expr str_expr.)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_replace) |Nahradí všechny výskyty zadaná řetězcová hodnota s jinou hodnotou řetězce. |
-| [REPLIKOVAT (str_expr, num_expr)](https://docs.microsoft.com/azure/cosmos-db/sql-api-sql-query-reference#bk_replicate) |Opakuje hodnotu řetězce zadaného počtu opakování. |
-| [ZPĚTNÉHO (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_reverse) |Vrátí obráceném pořadí řetězcovou hodnotu. |
+| [REPLIKACE (str_expr, num_expr)](https://docs.microsoft.com/azure/cosmos-db/sql-api-sql-query-reference#bk_replicate) |Opakuje hodnotu řetězce zadaného počtu opakování. |
+| [REVERZNÍ (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_reverse) |Vrátí hodnotu řetězce obráceném pořadí. |
 
-Pomocí těchto funkcí, můžete nyní spustit dotazy podobně jako tento. Například se můžete vrátit název rodiny na velká písmena následujícím způsobem:
+Použití těchto funkcí, můžete nyní spouštět dotazy takto. Například se můžete vrátit název rodiny na velká písmena následujícím způsobem:
 
 **Dotaz**
 
@@ -1552,7 +1552,7 @@ Nebo zřetězení řetězců jako v tomto příkladu:
     }]
 
 
-Funkce řetězce mohou sloužit také v klauzuli WHERE chcete filtrovat výsledky, jako v následujícím příkladu:
+Funkce řetězce lze použít také v klauzuli WHERE pro filtrování výsledků, stejně jako v následujícím příkladu:
 
 **Dotaz**
 
@@ -1568,16 +1568,16 @@ Funkce řetězce mohou sloužit také v klauzuli WHERE chcete filtrovat výsledk
     }]
 
 ### <a name="array-functions"></a>Funkce pole
-Následující skalární funkce provedení operace hodnota vstupní pole a vrátí číselnou, logická hodnota nebo pole hodnota. Zde je také tabulka předdefinovaných pole funkcí:
+Následující skalární funkce provádění operací na hodnotu vstupního pole a vrátit číselné, hodnota logická hodnota nebo pole. Tady je tabulka funkcí integrovaných pole:
 
 | Využití | Popis |
 | --- | --- |
-| [ARRAY_LENGTH (arr_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_length) |Vrátí počet prvků výrazu zadané pole. |
-| [ARRAY_CONCAT (arr_expr, arr_expr [, arr_expr])](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_concat) |Vrátí pole, které je výsledkem zřetězení dvě nebo více hodnot pole. |
-| [ARRAY_CONTAINS (arr_expr, výraz [, bool_expr])](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_contains) |Vrátí logickou hodnotu udávající, zda pole obsahuje zadanou hodnotu. Můžete zadat, pokud je shoda celé nebo jeho část. |
-| [ARRAY_SLICE (arr_expr, num_expr [, num_expr])](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_slice) |Vrátí část výraz pole. |
+| [ARRAY_LENGTH (arr_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_length) |Vrátí počet prvků výrazu určeném poli. |
+| [ARRAY_CONCAT (arr_expr arr_expr [, arr_expr])](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_concat) |Vrátí pole, která je výsledkem zřetězení dvou nebo více hodnot pole. |
+| [ARRAY_CONTAINS (arr_expr, výraz [, bool_expr])](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_contains) |Vrátí logickou hodnotu označující, zda pole obsahuje zadanou hodnotu. Můžete zadat, pokud shoda není celé nebo jeho část. |
+| [ARRAY_SLICE (arr_expr num_expr [, num_expr])](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_slice) |Vrátí část reprezentující výraz pole. |
 
-Funkce pole můžete použít k manipulaci s pole v rámci JSON. Tady je příklad dotaz, který vrátí všechny dokumenty, kde jeden z rodičů je "Každý s každým Wakefieldů". 
+Pole funkcí lze použít k manipulaci s poli ve formátu JSON. Tady je příklad dotaz, který vrátí všechny dokumenty, kde jeden z rodičů je "Robin Wakefieldů". 
 
 **Dotaz**
 
@@ -1591,7 +1591,7 @@ Funkce pole můžete použít k manipulaci s pole v rámci JSON. Tady je příkl
       "id": "WakefieldFamily"
     }]
 
-Můžete zadat částečné fragment pro párování elementů v rámci pole. Následující dotaz hledá všechny nadřazené objekty s `givenName` z `Robin`.
+Můžete zadat částečná fragment pro porovnání prvků v poli. Následující dotaz najde všechny nadřazené položky s `givenName` z `Robin`.
 
 **Dotaz**
 
@@ -1606,7 +1606,7 @@ Můžete zadat částečné fragment pro párování elementů v rámci pole. N�
     }]
 
 
-Zde je další příklad používající ARRAY_LENGTH získat počet podřízených za rodiny.
+Tady je další příklad, který používá ARRAY_LENGTH zobrazíte počet podřízených objektů, za řady.
 
 **Dotaz**
 
@@ -1625,7 +1625,7 @@ Zde je další příklad používající ARRAY_LENGTH získat počet podřízen�
     }]
 
 ### <a name="spatial-functions"></a>Prostorové funkce
-Cosmos DB podporuje následující předdefinované funkce otevřete geoprostorové Consortium (OGC) pro geoprostorové dotazování. 
+Cosmos DB podporuje následující předdefinované funkce Otevřít geoprostorové W3c (OGC) pro geoprostorové dotazování. 
 
 <table>
 <tr>
@@ -1634,27 +1634,27 @@ Cosmos DB podporuje následující předdefinované funkce otevřete geoprostoro
 </tr>
 <tr>
   <td>ST_DISTANCE (point_expr, point_expr)</td>
-  <td>Vrací vzdálenost mezi dvěma GeoJSON bodu, mnohoúhelníku nebo LineString výrazy.</td>
+  <td>Vrací vzdálenost mezi dvěma GeoJSON bodu mnohoúhelníku či LineString výrazy.</td>
 </tr>
 <tr>
   <td>ST_WITHIN (point_expr, polygon_expr)</td>
-  <td>Vrací výraz logická hodnota určující, zda je první objekt GeoJSON (bod, mnohoúhelníku nebo LineString) je v rámci druhý objekt GeoJSON (bod, mnohoúhelníku nebo LineString).</td>
+  <td>Vrací výraz Boolean určující, zda je první objekt GeoJSON (bodu, mnohoúhelník nebo LineString) v rámci druhého objektu GeoJSON (bodu, mnohoúhelník nebo LineString).</td>
 </tr>
 <tr>
   <td>ST_INTERSECTS (spatial_expr, spatial_expr)</td>
-  <td>Vrátí hodnotu označující, zda dva zadané GeoJSON objekty (bod, mnohoúhelníku nebo LineString) intersect logický výraz.</td>
+  <td>Vrátí hodnotu určující, zda dvě zadané GeoJSON objekty (bodu, mnohoúhelník nebo LineString) intersect logický výraz.</td>
 </tr>
 <tr>
   <td>ST_ISVALID</td>
-  <td>Vrátí logickou hodnotu udávající, zda je zadaný výraz GeoJSON bodu, mnohoúhelníku nebo LineString platný.</td>
+  <td>Vrátí logickou hodnotu označující, zda je zadaný výraz GeoJSON bodu mnohoúhelníku či LineString platný.</td>
 </tr>
 <tr>
   <td>ST_ISVALIDDETAILED</td>
-  <td>Vrátí hodnotu hodnotu JSON obsahující logickou hodnotu, pokud zadaný výraz GeoJSON bodu, mnohoúhelníku nebo LineString je platný a pokud neplatný, dále z důvodu jako hodnotu řetězce.</td>
+  <td>Vrátí hodnotu JSON obsahující logická hodnota, pokud zadaný výraz GeoJSON bodu mnohoúhelníku či LineString je platný a pokud není platný, kromě důvod jako hodnotu řetězce.</td>
 </tr>
 </table>
 
-Prostorové funkcí lze provádět dotazy blízkosti proti prostorová data. Tady je příklad dotaz, který vrátí všechny rodiny dokumenty, které jsou v rámci 30 km v zadaném umístění pomocí předdefinované funkci ST_DISTANCE. 
+Prostorové funkce lze použít k provádění dotazů blízkosti prostorová data. Například tady je dotaz, který vrátí všechny rodiny dokumenty, které jsou v rámci 30 km pomocí integrované funkce ST_DISTANCE zadaného umístění. 
 
 **Dotaz**
 
@@ -1668,19 +1668,19 @@ Prostorové funkcí lze provádět dotazy blízkosti proti prostorová data. Tad
       "id": "WakefieldFamily"
     }]
 
-Další informace o podporovaných geoprostorové v Cosmos DB, najdete v tématu [práci s daty geoprostorové v Azure Cosmos DB](geospatial.md). Který zabalí prostorových funkce a syntaxe SQL pro Cosmos DB. Nyní Podívejme se na tom, jak LINQ dotazování funguje a jak komunikuje se syntaxí jsme viděli dosavadní.
+Další podrobnosti o podpoře geoprostorových ve službě Cosmos DB najdete v tématu [práce s Geoprostorová data ve službě Azure Cosmos DB](geospatial.md). Tím končí naše shrnutí prostorové funkce a syntaxe SQL pro službu Cosmos DB. Nyní Pojďme se podívat, jak funguje a jak komunikuje se službou syntaxe dotazu LINQ zaznamenali jsme dosud.
 
 ## <a id="Linq"></a>Technologie LINQ to SQL API
-LINQ je programovací model rozhraní .NET, která vyjadřuje výpočetní jako dotazy na datové proudy objektů. Cosmos DB poskytuje knihovnu klienta pro rozhraní s dotazy LINQ usnadněním převod mezi objekty JSON a rozhraní .NET a mapování z určité podmnožiny dotazů LINQ dotazy Cosmos DB. 
+LINQ je programovací model rozhraní .NET, který vyjadřuje výpočet jako dotazy na datové proudy objektů. Cosmos DB poskytuje knihovnu na straně klienta pro rozhraní s dotazy LINQ usnadněním převod mezi objekty JSON a .NET a mapování z určité podmnožiny dotazů LINQ dotazy Cosmos DB. 
 
-Následující obrázek ukazuje architekturu podporu dotazů LINQ pomocí Cosmos DB.  Pomocí klienta aplikace Cosmos DB vývojáři můžou vytvářet **IQueryable** objekt, který dotazuje přímo poskytovatele dotazu Cosmos DB, který pak překládá dotaz LINQ do dotazu Cosmos DB. Dotaz je předána na server Cosmos databáze k načtení sady výsledků ve formátu JSON. Do vrácených výsledků se deserializovat do datového proudu objektů .NET na straně klienta.
+Následující obrázek ukazuje architekturu podporovat LINQ dotazů pomocí služby Cosmos DB.  Pomocí klienta služby Cosmos DB, vývojáři mohou vytvářet **IQueryable** objekt, který se dotazuje přímo poskytovatele dotazů Cosmos DB, který pak převádí dotazu LINQ na dotaz Cosmos DB. Dotaz je pak předán serveru služby Cosmos DB k načtení sady výsledků ve formátu JSON. Vrácené výsledky jsou deserializovat do datového proudu objekty .NET na straně klienta.
 
-![Architektura podporu dotazů LINQ pomocí rozhraní SQL API - syntaxe SQL, JSON dotazovací jazyk, databázových koncepcí a dotazy SQL][1]
+![Architektura podporuje dotazů LINQ pomocí rozhraní SQL API - syntaxi SQL, JSON dotazovací jazyk, databázových koncepcí a dotazy SQL][1]
 
-### <a name="net-and-json-mapping"></a>Rozhraní .NET a mapování JSON
-Mapování mezi objekty .NET a dokumenty JSON přirozené – každé datové pole, člen je namapovaný na objekt JSON, kde název pole je namapovaná na část "klíč" objektu a části "value" je rekurzivní namapované na část hodnoty objektu. Podívejte se na následující příklad: rodiny objekt vytvořený je namapována na dokumentu JSON, jak je uvedeno níže. A naopak a dokumentu JSON je mapována na objekt .NET.
+### <a name="net-and-json-mapping"></a>.NET a mapování JSON
+Mapování mezi dokumenty JSON a objekty .NET je přirozeně – každé datové pole člena je mapována k objektu JSON, kde název pole je namapovaná na "klíče" součástí objektu a části "value" je rekurzivně namapované na část hodnoty objektu. Podívejte se na následující příklad: The řady objekt vytvořený se mapuje na dokument JSON, jak je znázorněno níže. A naopak je namapovat dokumentu JSON zpět na objekt .NET.
 
-**C# – třída**
+**Třída jazyka C#**
 
     public class Family
     {
@@ -1759,50 +1759,50 @@ Mapování mezi objekty .NET a dokumenty JSON přirozené – každé datové po
 
 
 
-### <a name="linq-to-sql-translation"></a>Technologie LINQ to SQL překlad
-Zprostředkovatel dotazu Cosmos DB provede nejlepší úsilí mapování z dotazu LINQ do dotazu Cosmos DB SQL. V následující popis předpokládáme, že program pro čtení má základní znalosti o LINQ.
+### <a name="linq-to-sql-translation"></a>Technologie LINQ to SQL překladu
+Cosmos DB poskytovatele dotazů provede nejlepší úsilí mapování z dotazu LINQ do dotazu Cosmos DB SQL. V následující popis předpokládáme, že čtečky má základní znalosti o LINQ.
 
-Nejprve pro typ systému, budeme podporovat všechny JSON primitivní typy – číselnými typy, logická hodnota, string a hodnotu null. Jsou podporovány pouze tyto typy JSON. Jsou podporovány následující skalární výrazy.
+Nejprve pro systém typů, podporujeme všechny JSON primitivní typy – číselné typy, logická hodnota, řetězec a hodnotu null. Podporovány jsou pouze tyto typy JSON. Jsou podporovány následující skalární výrazy.
 
-* Konstantní hodnoty – patří konstantní hodnoty primitivní datové typy v době, kdy je vyhodnocován dotaz.
-* Vlastnost nebo pole indexu výrazy – tyto výrazy odkazovat na vlastnost objekt nebo pole elementu.
+* Konstantní hodnoty – patří mezi ně konstantní hodnoty primitivních datových typů v době, kdy je vyhodnocen dotaz.
+* Vlastnost nebo pole indexu výrazy – tyto výrazy odkazovat na vlastnost objektu nebo k elementu pole.
   
-     rodiny. ID;    Family.Children[0].familyName;    Family.Children[0].Grade;    Family.Children[n].Grade; n je proměnná typu int.
-* Aritmetických výrazech – jedná se o běžné aritmetických výrazech na číselné a logické hodnoty. Úplný seznam najdete v části specifikace SQL.
+     řady. ID;    Family.Children[0].familyName;    Family.Children[0].Grade;    Family.Children[n].Grade; n je proměnná typu int
+* Aritmetických výrazech – patří mezi ně běžné aritmetické výrazy u číselných a logických hodnot. Úplný seznam naleznete ve specifikaci SQL.
   
-     2 * family.children[0].grade;    x a y;
-* Výraz pro porovnání řetězce - patří porovnávání řetězcovou hodnotu na hodnotu konstantní řetězec.  
+     2 * family.children[0].grade;    x + y;
+* Řetězcového výrazu porovnání – patří mezi ně porovnání řetězcovou hodnotu na hodnotu konstanty typu řetězec.  
   
-     mother.familyName == "Smith";    child.givenName == s; s je proměnná řetězce
-* Objekt nebo pole vytvoření výrazu - tyto výrazy návratový typ složené hodnoty nebo anonymní typ objekt nebo pole tyto objekty. Tyto hodnoty mohou být použity.
+     mother.familyName == "Novák";    child.givenName == s. Řetězcová proměnná je s
+* Objekt nebo pole výraz vytvoření – tyto návratové výrazy objekt složené hodnotový typ nebo anonymního typu nebo polem takových objektů. Tyto hodnoty mohou být vnořené.
   
-     novou nadřazenou položku {familyName = "Smith", givenName = "Jan"}; nové {nejprve = 1, druhý = 2}; anonymní typ s dvě pole              
+     Nový nadřazený {familyName = "Macek", givenName = "Jan"}; nové {první = 1, druhý = 2}; anonymní typ s dvěma poli              
      New [] int {3, child.grade, 5};
 
 ### <a id="SupportedLinqOperators"></a>Seznam podporovaných operátory LINQ
-Tady je seznam podporovaných LINQ operátory ve zprostředkovateli LINQ součástí SQL .NET SDK.
+Tady je seznam podporovaných operátory LINQ v zprostředkovatele LINQ, který je součástí SQL SDK pro .NET.
 
-* **Vyberte**: projekce převede vyberte SQL, včetně vytváření objektů
-* **Kde**: filtry nepřeloží na SQL kde a podporovat překlad mezi & &, || a! SQL operátorů
-* **Označit více**: umožňuje unwinding polí pro klauzuli SQL JOIN. Je možné řetězec nebo vnoření výrazy k filtrování v rámci prvků pole
-* **OrderBy a OrderByDescending**: přeloží na order pořadí
-* **Počet**, **součet**, **Min**, **maximální**, a **průměrná** operátory pro agregaci a jejich ekvivalenty asynchronní **CountAsync**, **SumAsync**, **MinAsync**, **MaxAsync**, a **AverageAsync**.
-* **CompareTo**: překládá do rozsahu porovnání. Běžně používané pro řetězce vzhledem k tomu, že nejste porovnatelný v rozhraní .NET
-* **Trvat**: překládá do horní části SQL pro omezení výsledků dotazu
-* **Matematické funkce**: podporuje překlad z. Asin Abs Acos, je NET, Atan, Ceiling Cos, Exp, Floor, protokolu, Log10, Pow, kruhové, přihlášení, Sin, Sqrt, Tan, Truncate na ekvivalentní integrované funkce SQL.
-* **Funkce pro řetězce**: podporuje překlad z. NET na Concat, obsahuje, EndsWith, IndexOf, počet, ToLower, TrimStart –, nahraďte, zpětného, TrimEnd, StartsWith, SubString, ToUpper na ekvivalentní integrované funkce SQL.
-* **Pole funkce**: podporuje překlad z. NET na Concat, obsahuje a počet, který má ekvivalentní integrované funkce SQL.
-* **Funkce rozšíření geoprostorové**: podporuje překlad z metod se zakázaným inzerováním vzdálenost v rámci, IsValid a IsValidDetailed na ekvivalentní integrované funkce SQL.
-* **Uživatelem definované funkce rozšíření funkce**: podporuje překlad z metody se zakázaným inzerováním UserDefinedFunctionProvider.Invoke odpovídající uživatelem definované funkce.
-* **Různé**: podporuje překlad coalesce a podmíněné operátory. Může překládat obsahuje řetězec obsahuje, ARRAY_CONTAINS nebo v SQL v závislosti na kontextu.
+* **Vyberte**: projekce přeložit a vyberte SQL, včetně vytváření objektu.
+* **Kde**: filtry přeloží do SQL kde a podporovat překlad mezi & &, | a! pro operátory SQL
+* **Operátor SelectMany**: umožňuje uvolnění polí do klauzule SQL JOIN. Je možné řetězec/vnoření výrazy k filtrování prvky pole
+* **OrderBy a OrderByDescending**: se přeloží na klauzule ORDER BY ascending/descending
+* **Počet**, **součet**, **Min**, **maximální**, a **průměrné** operátory pro agregaci a jejich ekvivalenty asynchronní **CountAsync**, **SumAsync**, **MinAsync**, **MaxAsync**, a **AverageAsync**.
+* **Metoda CompareTo**: se přeloží na porovnání rozsahu. Běžně se používají pro řetězce, protože nejsou porovnatelné v rozhraní .NET
+* **Využijte**: překládá na začátek SQL pro omezení výsledků z dotazu
+* **Matematické funkce**: podporuje překlad z. NET pro funkce Abs, funkce Acos, Asin, Atan, Ceiling, Cos, Exp, Floor, protokolu, Log10, Pow, kruhové, přihlášení, Sin, Sqrt, Tan, Truncate na ekvivalentní funkce integrované v SQL.
+* **Řetězec funkce**: podporuje překlad z. EndsWith Concat, obsahuje, od sítě, IndexOf, počet, ToLower, TrimStart, nahradit, zpětné, TrimEnd, StartsWith, podřetězec, ToUpper na ekvivalentní integrované funkce SQL.
+* **Array – funkce**: podporuje překlad z. NET pro funkce Concat, obsahuje a počet, který má ekvivalentní funkce integrované v SQL.
+* **Geoprostorové funkce rozšíření**: podporuje překlad z metody zástupných procedur vzdálenost v IsValid a IsValidDetailed na ekvivalentní funkce integrované v SQL.
+* **Uživatelem definované funkce rozšíření funkce**: podporuje překlad z zástupná metoda UserDefinedFunctionProvider.Invoke odpovídající uživatelem definované funkce.
+* **Různé**: podporuje překlad coalesce a podmíněných operátorů. Jsou dobře převeditelné obsahuje řetězec obsahuje, ARRAY_CONTAINS nebo v SQL v závislosti na kontextu.
 
-### <a name="sql-query-operators"></a>Operátory dotazu SQL
-Zde jsou některé příklady, které ilustrují, jak některé standardní operátory dotazu LINQ přeložit dolů Cosmos DB dotazy.
+### <a name="sql-query-operators"></a>Operátory dotazů SQL
+Tady je několik příkladů, které demonstrují, jak některé standardní operátory dotazu LINQ jsou přeloženy do služby Cosmos DB dotazy.
 
-#### <a name="select-operator"></a>Select – operátor
+#### <a name="select-operator"></a>Vyberte operátor
 Syntaxe je `input.Select(x => f(x))`, kde `f` je skalární výraz.
 
-**Výraz lambda LINQ**
+**Lambda výraz LINQ**
 
     input.Select(family => family.parents[0].familyName);
 
@@ -1813,7 +1813,7 @@ Syntaxe je `input.Select(x => f(x))`, kde `f` je skalární výraz.
 
 
 
-**Výraz lambda LINQ**
+**Lambda výraz LINQ**
 
     input.Select(family => family.children[0].grade + c); // c is an int variable
 
@@ -1825,7 +1825,7 @@ Syntaxe je `input.Select(x => f(x))`, kde `f` je skalární výraz.
 
 
 
-**Výraz lambda LINQ**
+**Lambda výraz LINQ**
 
     input.Select(family => new
     {
@@ -1842,10 +1842,10 @@ Syntaxe je `input.Select(x => f(x))`, kde `f` je skalární výraz.
 
 
 
-#### <a name="selectmany-operator"></a>Označit více – operátor
-Syntaxe je `input.SelectMany(x => f(x))`, kde `f` se skalární výraz, který vrátí typ kolekce.
+#### <a name="selectmany-operator"></a>Operátor SelectMany – operátor
+Syntaxe je `input.SelectMany(x => f(x))`, kde `f` je skalární výraz, který vrátí typ kolekce.
 
-**Výraz lambda LINQ**
+**Lambda výraz LINQ**
 
     input.SelectMany(family => family.children);
 
@@ -1859,7 +1859,7 @@ Syntaxe je `input.SelectMany(x => f(x))`, kde `f` se skalární výraz, který v
 #### <a name="where-operator"></a>Kde – operátor
 Syntaxe je `input.Where(x => f(x))`, kde `f` je skalární výraz, který vrací logickou hodnotu.
 
-**Výraz lambda LINQ**
+**Lambda výraz LINQ**
 
     input.Where(family=> family.parents[0].familyName == "Smith");
 
@@ -1871,7 +1871,7 @@ Syntaxe je `input.Where(x => f(x))`, kde `f` je skalární výraz, který vrací
 
 
 
-**Výraz lambda LINQ**
+**Lambda výraz LINQ**
 
     input.Where(
         family => family.parents[0].familyName == "Smith" && 
@@ -1885,13 +1885,13 @@ Syntaxe je `input.Where(x => f(x))`, kde `f` je skalární výraz, který vrací
     AND f.children[0].grade < 3
 
 
-### <a name="composite-sql-queries"></a>Složené příkazy jazyka SQL
-Výše uvedené operátory musí být komponovaná k vytvoření více výkonných dotazů. Vzhledem k tomu, že Cosmos DB podporuje vnořené kolekcí, složení můžete být zřetězen nebo vnořený.
+### <a name="composite-sql-queries"></a>Složený dotazy SQL
+Výše uvedené operátory mohou být složené tvoří výkonnějších dotazů. Protože Cosmos DB podporuje vnořené kolekce, složení můžete být zřetězené nebo vnořené.
 
 #### <a name="concatenation"></a>Zřetězení
-Syntaxe je `input(.|.SelectMany())(.Select()|.Where())*`. Zřetězené dotaz můžete spustit v volitelný `SelectMany` dotazu následuje více `Select` nebo `Where` operátory.
+Syntaxe je `input(.|.SelectMany())(.Select()|.Where())*`. Zřetězených dotazů můžete začít s volitelným `SelectMany` dotaz a potom pomocí několika `Select` nebo `Where` operátory.
 
-**Výraz lambda LINQ**
+**Lambda výraz LINQ**
 
     input.Select(family=>family.parents[0])
         .Where(familyName == "Smith");
@@ -1904,7 +1904,7 @@ Syntaxe je `input(.|.SelectMany())(.Select()|.Where())*`. Zřetězené dotaz mů
 
 
 
-**Výraz lambda LINQ**
+**Lambda výraz LINQ**
 
     input.Where(family => family.children[0].grade > 3)
         .Select(family => family.parents[0].familyName);
@@ -1917,7 +1917,7 @@ Syntaxe je `input(.|.SelectMany())(.Select()|.Where())*`. Zřetězené dotaz mů
 
 
 
-**Výraz lambda LINQ**
+**Lambda výraz LINQ**
 
     input.Select(family => new { grade=family.children[0].grade}).
         Where(anon=> anon.grade < 3);
@@ -1930,7 +1930,7 @@ Syntaxe je `input(.|.SelectMany())(.Select()|.Where())*`. Zřetězené dotaz mů
 
 
 
-**Výraz lambda LINQ**
+**Lambda výraz LINQ**
 
     input.SelectMany(family => family.parents)
         .Where(parent => parents.familyName == "Smith");
@@ -1946,9 +1946,9 @@ Syntaxe je `input(.|.SelectMany())(.Select()|.Where())*`. Zřetězené dotaz mů
 #### <a name="nesting"></a>Vnoření
 Syntaxe je `input.SelectMany(x=>x.Q())` kde Q je `Select`, `SelectMany`, nebo `Where` operátor.
 
-Pro každý prvek vnější kolekce se v vnořený dotaz, použít vnitřní dotaz. Jednou z důležitou součást je, že vnitřní dotaz mohou odkazovat na pole elementů v kolekci vnější jako spojení sama na sebe.
+V vnořeného dotazu se použije vnitřní dotaz na každý prvek vnější kolekce. Jednou z důležitou funkcí je, že vnitřní dotaz může odkazovat na pole prvků v kolekci vnější jako spojení.
 
-**Výraz lambda LINQ**
+**Lambda výraz LINQ**
 
     input.SelectMany(family=> 
         family.parents.Select(p => p.familyName));
@@ -1960,7 +1960,7 @@ Pro každý prvek vnější kolekce se v vnořený dotaz, použít vnitřní dot
     JOIN p IN f.parents
 
 
-**Výraz lambda LINQ**
+**Lambda výraz LINQ**
 
     input.SelectMany(family => 
         family.children.Where(child => child.familyName == "Jeff"));
@@ -1974,7 +1974,7 @@ Pro každý prvek vnější kolekce se v vnořený dotaz, použít vnitřní dot
 
 
 
-**Výraz lambda LINQ**
+**Lambda výraz LINQ**
 
     input.SelectMany(family => family.children.Where(
         child => child.familyName == family.parents[0].familyName));
@@ -1987,17 +1987,17 @@ Pro každý prvek vnější kolekce se v vnořený dotaz, použít vnitřní dot
     WHERE c.familyName = f.parents[0].familyName
 
 
-## <a id="ExecutingSqlQueries"></a>Provádění dotazů SQL
-Cosmos DB zveřejňuje prostředky přes rozhraní REST API, kterou lze volat v jakémkoli jazyce schopném zasílat požadavky HTTP/HTTPS. Cosmos DB dále nabízí programovací knihovny pro několik oblíbených jazyků, jako je rozhraní .NET, Node.js, JavaScript a Python. Rozhraní REST API různých knihoven podporují a dotazování pomocí SQL. .NET SDK podporuje LINQ dotazování kromě SQL.
+## <a id="ExecutingSqlQueries"></a>Zpracování dotazů SQL
+Cosmos DB zveřejňuje prostředky přes rozhraní REST API, které je možné vyvolat v jakémkoli jazyce schopném zasílat požadavky HTTP/HTTPS. Cosmos DB dále nabízí programovací knihovny pro několik oblíbených jazyků, jako je .NET, Node.js, JavaScript a Python. Rozhraní REST API různé knihovny podporují a dotazování pomocí SQL. Sady .NET SDK podporuje kromě SQL dotazu LINQ.
 
-Následující příklady ukazují, jak vytvořit dotaz a odešlete ji proti Cosmos DB databázového účtu.
+Následující příklady ukazují, jak vytvořit dotaz a odeslat ji proti účtu databáze Cosmos DB.
 
 ### <a id="RestAPI"></a>ROZHRANÍ REST API
-Cosmos DB nabízí otevřete RESTful programovací model přes protokol HTTP. Databáze účtů se dá zřídit pomocí předplatného Azure. Model prostředků Cosmos DB obsahuje sadu prostředků v rámci účtu databáze, z nichž každý je adresovatelné logické a stabilní identifikátoru URI. Sadu prostředků se označuje jako informačního kanálu v tomto dokumentu. Databázový účet se skládá ze sady databází, každá obsahuje několik kolekcí, každý z které naopak obsahovat dokumenty, funkce UDF a další typy prostředků.
+Cosmos DB nabízí otevřete programovací model RESTful přes HTTP. Účty databází lze zřizovat pomocí předplatného Azure. Model prostředků služby Cosmos DB obsahuje sadu prostředků v rámci účtu databáze, z nichž každý je adresovatelné logické a stabilní identifikátor URI. Sada prostředků se označuje jako kanál v tomto dokumentu. Databázový účet se skládá ze sady databází, každá obsahuje několik kolekcí, každý z které naopak obsahovat dokumenty, funkcí UDF a další typy prostředků.
 
-Základní interakce model pomocí těchto prostředků je pomocí příkazů HTTP GET, PUT, POST a odstranit pomocí jejich standardní překladu. Příkaz POST se používá pro vytvoření nového prostředku, pro spuštění uložené procedury nebo pro zadání dotazu Cosmos DB. Dotazy jsou vždy jen pro čtení operací s žádné vedlejší účinky.
+Základní interakce s těmito prostředky je model pomocí příkazů HTTP GET, PUT, POST a DELETE s jejich standardní interpretaci. Operace POST se používá pro vytvoření nového prostředku, pro provedení uložené procedury nebo pro zadání dotazu Cosmos DB. Dotazy jsou vždy jen pro čtení operací s žádným vedlejším účinkům.
 
-Následující příklady ukazují POST pro dotaz rozhraní SQL API směřovaný na kolekce obsahující dva ukázkové dokumenty, že jsme si přečetli dosavadní. Dotaz je jednoduchý filtr na název vlastnosti JSON. Všimněte si použití `x-ms-documentdb-isquery` a Content-Type: `application/query+json` hlavičky k označení, že operace je dotazu.
+Následující příklady ukazují příspěvek pro dotaz rozhraní SQL API provedená oproti kolekce obsahující dva ukázkové dokumenty, že jsme si zatím. Dotaz obsahuje jednoduchý filtr na název vlastnosti JSON. Všimněte si, `x-ms-documentdb-isquery` a Content-Type: `application/query+json` hlavičky k označení, že operace je dotaz.
 
 **Požadavek**
 
@@ -2119,16 +2119,16 @@ Druhý příklad ukazuje komplexnější dotaz, který vrátí více výsledků 
     }
 
 
-Pokud výsledku dotazu se nemůže vejít do jedné stránky s výsledky, pak rozhraní REST API vrátí token pokračování prostřednictvím `x-ms-continuation-token` hlavičky odpovědi. Klienty můžete stránkování výsledků zahrnutím záhlaví v následných výsledky. Počet výsledků na stránce lze také řídit prostřednictvím `x-ms-max-item-count` číslo záhlaví. Pokud zadaný dotaz obsahuje agregační funkci jako `COUNT`, pak stránce dotaz může vrátit hodnotu částečně agregované přes stránky s výsledky. Klienti musí provést druhé úrovně agregace nad těmito výsledky. Chcete-li vytvořit konečných výsledků, například, součet přes počty vrátil na jednotlivých stránkách vrátit celkového počtu.
+Pokud výsledky dotazu se nemůže vejít na jedné stránce výsledky a potom vrátí token pro pokračování prostřednictvím rozhraní REST API `x-ms-continuation-token` hlavičky odpovědi. Klienti můžou stránkovat výsledky včetně záhlaví v dalších výsledků. Počet výsledků na stránku je možné řídit také prostřednictvím `x-ms-max-item-count` číslo hlavičky. Pokud zadaný dotaz obsahuje agregační funkci jako `COUNT`, pak na stránce dotazů může vracet částečně agregovaná hodnota na stránku s výsledky. Klienti musí provést druhé úrovně agregace přes tyto výsledky poslední výsledky, například, součet přes počty vrácené v jednotlivých stránek vrátit celkový počet.
 
-Ke správě zásad konzistence dat pro dotazy, použijte `x-ms-consistency-level` záhlaví jako všechny požadavky REST API. Konzistence typu relace, je potřeba také odezvu na nejnovější `x-ms-session-token` hlavička Cookie v dotazu požadavku. Zásady indexování dotazované kolekce můžete ovlivnit taky konzistence výsledků dotazu. S výchozí nastavení zásady indexování, pro kolekce index je vždy aktuální pomocí obsahu dokumentu a výsledky dotazu odpovídat konzistence zvolené pro data. Pokud k Lazy je zmírnit zásady indexování, dotazy mohou vracet zastaralé výsledky. Další informace najdete v tématu [úrovně konzistence databáze Azure Cosmos][consistency-levels].
+Chcete-li spravovat zásady konzistence dat pro dotazy, použijte `x-ms-consistency-level` záhlaví stejně jako všechny požadavky rozhraní REST API. Pro zajištění konzistence relace, je potřeba také echo nejnovější `x-ms-session-token` hlavička Cookie v dotazu žádosti. Zásady indexování kolekce poslal dotaz může také ovlivnit konzistence výsledky dotazu. S výchozí nastavení zásady indexování pro kolekce index je vždy aktuální pomocí obsahu dokumentu a výsledky dotazu odpovídá konzistence, které jste zvolili pro data. Pokud k opožděné je mírnější zásady indexování, dotazy mohou vracet zastaralé výsledky. Další informace najdete v tématu [Azure Cosmos DB úrovním][consistency-levels].
 
-Pokud nakonfigurované zásady indexování na kolekce nepodporuje zadaný dotaz, vrátí server Azure Cosmos DB 400 "Chybný požadavek". Se vrátí pro dotazy na rozsah pro cesty, které jsou nakonfigurované pro vyhledávání hodnoty hash (rovnosti) a cesty explicitně vyloučená z indexování. `x-ms-documentdb-query-enable-scan` Záhlaví lze povolit dotazu, který chcete provést kontrolu, když indexu není k dispozici.
+Pokud nakonfigurované zásady indexování v kolekci nepodporuje zadaný dotaz, server služby Azure Cosmos DB vrátí 400 "Chybný požadavek". Ten vrací pro dotazy na rozsah proti cesty, které jsou nakonfigurované pro vyhledávání hodnoty hash (rovnost) a explicitně vyloučené z indexování cesty. `x-ms-documentdb-query-enable-scan` Může být zadáno záhlaví umožňující dotazu má provést kontrola při indexu není k dispozici.
 
-Podrobné metriky můžete získat na spuštění dotazu nastavením `x-ms-documentdb-populatequerymetrics` hlavičky k `True`. Další informace najdete v tématu [metriky dotazů SQL pro Azure Cosmos DB](sql-api-sql-query-metrics.md).
+Můžete získat podrobné metriky spouštění dotazů nastavením `x-ms-documentdb-populatequerymetrics` záhlaví `True`. Další informace najdete v tématu [metriky dotaz SQL pro službu Azure Cosmos DB](sql-api-sql-query-metrics.md).
 
-### <a id="DotNetSdk"></a>SADA SDK JAZYKA C# (.NET)
-.NET SDK podporuje LINQ a SQL dotazování. Následující příklad ukazuje, jak k provedení dotazu jednoduchý filtr zavedená dříve v tomto dokumentu.
+### <a id="DotNetSdk"></a>SADY SDK JAZYKA C# (.NET)
+Sady .NET SDK podporuje LINQ a SQL dotazování. Následující příklad ukazuje, jak provádět jednoduché filtr dotazu zavedené dříve v tomto dokumentu.
 
     foreach (var family in client.CreateDocumentQuery(collectionLink, 
         "SELECT * FROM Families f WHERE f.id = \"AndersenFamily\""))
@@ -2161,7 +2161,7 @@ Podrobné metriky můžete získat na spuštění dotazu nastavením `x-ms-docum
     }
 
 
-Tato ukázka porovná dvě vlastnosti rovnosti v rámci každého dokumentu a používá anonymní projekce. 
+Tento příklad porovná dvě vlastnosti rovnost v rámci každého dokumentu a používá anonymní projekce. 
 
     foreach (var family in client.CreateDocumentQuery(collectionLink,
         @"SELECT {""Name"": f.id, ""City"":f.address.city} AS Family 
@@ -2188,7 +2188,7 @@ Tato ukázka porovná dvě vlastnosti rovnosti v rámci každého dokumentu a po
     }
 
 
-Další příklad ukazuje spojení, vyjádřit pomocí LINQ označit více.
+Další příklad ukazuje spojení vyjádřen prostřednictvím operátor SelectMany LINQ.
 
     foreach (var pet in client.CreateDocumentQuery(collectionLink,
           @"SELECT p
@@ -2212,16 +2212,16 @@ Další příklad ukazuje spojení, vyjádřit pomocí LINQ označit více.
 
 
 
-Klient .NET automaticky iteruje všechny stránky výsledků dotazu v blocích foreach, jak je uvedeno výše. Možnosti dotazu byla zavedená v části REST API jsou také k dispozici v pomocí .NET SDK `FeedOptions` a `FeedResponse` třídy v metodě CreateDocumentQuery. Počet stránek se dá řídit pomocí `MaxItemCount` nastavení. 
+.NET client automaticky Iteruje přes všechny stránky výsledků dotazu v blocích foreach, jak je znázorněno výše. Možnosti dotazu představíme v části rozhraní REST API jsou dostupné v pomocí sady .NET SDK `FeedOptions` a `FeedResponse` třídy v metodě CreateDocumentQuery. Počet stránek se dá řídit pomocí `MaxItemCount` nastavení. 
 
-Můžete také explicitně řídit stránkování tak, že vytvoříte `IDocumentQueryable` pomocí `IQueryable` objekt, pak načtením` ResponseContinuationToken` hodnot a jejich předání zpět jako `RequestContinuationToken` v `FeedOptions`. `EnableScanInQuery` lze nastavit pro povolení kontroly, pokud dotaz nemůže být podporována nakonfigurované zásady indexování. Pro dělené kolekce, můžete použít `PartitionKey` ke spouštění dotazu na jednoho oddílu (i když Cosmos DB může automaticky extrahovat to z text dotazu), a `EnableCrossPartitionQuery` ke spouštění dotazů, které může být nutné ke spuštění s více oddílů. 
+Můžete také explicitně kontrolovat stránkování tak, že vytvoříte `IDocumentQueryable` pomocí `IQueryable` objekt, potom načtením` ResponseContinuationToken` hodnoty a jejich předávání zpátky jako `RequestContinuationToken` v `FeedOptions`. `EnableScanInQuery` je možné nastavit pro povolení vyhledávání, když dotaz nemůže být podporována nakonfigurované zásady indexování. Používejte u dělených kolekcí, můžete použít `PartitionKey` ke spuštění dotazu jediného oddílu (v případě, že Cosmos DB můžete automaticky extrahovat to z textu dotazu), a `EnableCrossPartitionQuery` ke spouštění dotazů, které může být nutné spustit proti více oddílů. 
 
-Odkazovat na [Azure Cosmos DB .NET ukázky](https://github.com/Azure/azure-documentdb-net) pro další ukázky obsahující dotazy. 
+Odkazovat na [ukázek Azure Cosmos DB .NET](https://github.com/Azure/azure-documentdb-net) pro další ukázky obsahující dotazy. 
 
-### <a id="JavaScriptServerSideApi"></a>Rozhraní API jazyka JavaScript na straně serveru
-Cosmos DB poskytuje programovací model pro spouštění logiky aplikace založené na jazyce JavaScript přímo na kolekce pomocí uložených procedur a aktivačních událostí. JavaScript logiku registrované na úrovni kolekce potom můžou provádět databázové operace na operace s dokumenty dané kolekce. Tyto operace jsou zabalená vedlejším ACID transakcí.
+### <a id="JavaScriptServerSideApi"></a>Rozhraní API pro JavaScript na straně serveru
+Cosmos DB poskytuje programovací model pro spouštění logiky aplikací JavaScript na základě přímo na kolekce pomocí uložené procedury a triggery. Logiky JavaScript zaregistrované na úrovni kolekce pak můžou provádět databázové operace operací s dokumenty kolekci. Tyto operace jsou zabaleny v okolí transakce ACID.
 
-Následující příklad ukazuje, jak lze pomocí dokumenty dotazu v rozhraní API serveru JavaScript na dotazy z uvnitř uložené procedury a triggery.
+Následující příklad ukazuje způsob použití queryDocuments v rozhraní API jazyka JavaScript serveru dotazy z vnitřního uložených procedur a aktivačních událostí.
 
     function businessLogic(name, author) {
         var context = getContext();
@@ -2254,18 +2254,18 @@ Následující příklad ukazuje, jak lze pomocí dokumenty dotazu v rozhraní A
     }
 
 ## <a id="References"></a>Odkazy
-1. [Úvod do Azure Cosmos DB][introduction]
+1. [Úvod do služby Azure Cosmos DB][introduction]
 2. [Azure Cosmos DB SQL specifikace](http://go.microsoft.com/fwlink/p/?LinkID=510612)
-3. [Ukázek Azure DB Cosmos rozhraní .NET](https://github.com/Azure/azure-documentdb-net)
-4. [Úrovně konzistence databáze Azure Cosmos][consistency-levels]
+3. [Ukázky v Azure Cosmos DB .NET](https://github.com/Azure/azure-documentdb-net)
+4. [Úrovně konzistence služby Azure Cosmos DB][consistency-levels]
 5. ANSI SQL 2011 [http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681](http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681)
 6. JSON [http://json.org/](http://json.org/)
 7. Specifikace jazyka JavaScript [http://www.ecma-international.org/publications/standards/Ecma-262.htm](http://www.ecma-international.org/publications/standards/Ecma-262.htm) 
 8. LINQ [http://msdn.microsoft.com/library/bb308959.aspx](http://msdn.microsoft.com/library/bb308959.aspx) 
-9. Techniky dotazu vyhodnocení pro velké databáze [http://dl.acm.org/citation.cfm?id=152611](http://dl.acm.org/citation.cfm?id=152611)
-10. Zpracování v systémech paralelní relační databáze, stiskněte společnosti IEEE počítače, 1994 dotazů
-11. Logická jednotka, Ooi, Tan, zpracování v systémech paralelní relační databáze, stiskněte společnosti IEEE počítače, 1994 dotazů.
-12. Olston Kryštof, Robert Reed, Utkarsh Srivastava, Ravi Kumar, Andrew Tomkins: Pig Latin: není tak cizí jazyk pro zpracování dat, SIGMOD 2008.
+9. Techniky hodnocení dotazování u velkých databází [http://dl.acm.org/citation.cfm?id=152611](http://dl.acm.org/citation.cfm?id=152611)
+10. Zpracování v paralelní relačními databázovými systémy. počítač IEEE Press společnosti, 1994 dotazů
+11. Logická jednotka, Ooi, Tan, zpracování v paralelní relačními databázovými systémy. počítač IEEE Press společnosti, 1994 dotazů.
+12. Christopher Olston, Benjamin Reed, Utkarsh Srivastava, Ravi Kumar, Andrew Tomkins: Pig Latin: není tak cizího jazyka pro zpracování dat, SIGMOD 2008.
 13. G. Graefe. Cascades architektura pro optimalizaci dotazu. Eng. IEEE dat Bull., 18(3): 1995.
 
 [1]: ./media/sql-api-sql-query/sql-query1.png

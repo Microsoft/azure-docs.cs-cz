@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr
-ms.openlocfilehash: 88d5eb22186248024a356610addab0d43f68a961
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: dd5bea791fed0c16195eadca03ba2f9a8c11da1b
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37887126"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044947"
 ---
 # <a name="prediction-score"></a>Skóre předpovědi
 Predikce skóre označuje do jaké míry jistoty, LUIS má pro výsledky předpovědí. 
@@ -57,6 +57,9 @@ Predikce skóre, které můžete použít exponentu zápis *povolí, nebude* vy�
 Při tréninku stejného modelu v jiné aplikaci a skóre se tomto neshodují, je to proto, že je element náhodnost při vzdělávání. Za druhé žádné překrytí utterance na více než jeden záměr znamená, že hlavní záměr pro stejný utterance lze změnit v závislosti na školení.
 
 Pokud váš robot vyžaduje konkrétní skóre LUIS k označení důvěru v záměru, je vhodné použít skóre rozdíl mezi horní dva záměry. Získáte tak flexibilitu pro různé variace školení. 
+
+## <a name="punctuation"></a>Interpunkce
+Rozdělení je samostatný token v LUIS. Utterance, který obsahuje tečku na konci oproti utterance, který nemá jsou dvě samostatné projevy a může se zobrazit dvě různé předpovědi. Ujistěte se, že model buď zpracovává interpunkce v [příklad projevy](luis-concept-utterance.md) (mají a nemají interpunkční znaménka) nebo [patterns}(luis-concept-patterns.md), kde se snadněji ignorovat interpunkční znaménka zvláštní syntaxí: `I am applying for the {Job} position[.]`
 
 ## <a name="next-steps"></a>Další postup
 

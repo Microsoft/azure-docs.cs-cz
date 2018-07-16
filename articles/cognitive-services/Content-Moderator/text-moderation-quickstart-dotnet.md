@@ -1,6 +1,6 @@
 ---
-title: Azure obsahu moderátora – střední textu s použitím rozhraní .NET | Microsoft Docs
-description: Postup střední textu s použitím Azure obsahu moderátora SDK pro .NET
+title: Azure Content Moderator – moderování textu pomocí .NET | Dokumentace Microsoftu
+description: Tom, jak pomocí Azure Content Moderator SDK pro .NET moderování textu
 services: cognitive-services
 author: sanjeev3
 manager: mikemcca
@@ -9,37 +9,37 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 01/04/2018
 ms.author: sajagtap
-ms.openlocfilehash: 238d086e87b0e52f0887af5c4db58e8f72796b49
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 7320286e186d7e6ba4041d3ed52f19e573b4d7e3
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342801"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049877"
 ---
-# <a name="moderate-text-using-net"></a>Střední textu s použitím rozhraní .NET
+# <a name="moderate-text-using-net"></a>Moderování textu s použitím .NET
 
-Tento článek obsahuje informace a ukázky kódu, které vám pomůžou začít používat sadu SDK obsahu moderátora pro technologii .NET:
-- Zjistit potenciální vulgárnost v textu pomocí filtrování podle podmínek
-- Použití modelů na základě machine learning k [klasifikovat text](text-moderation-api.md#classification) do tří kategorií.
-- Rozpoznat identifikovatelné osobní údaje (PII), například USA a UK telefonní čísla, e-mailové adresy a USA poštovní adresy.
-- Normalizuje překlepům text a automatické opravy
+Tento článek obsahuje informace a ukázky kódu, které vám pomůžou začít používat Content Moderator SDK pro .NET po:
+- Detekovat vulgární výrazy v textu pomocí filtrování podle termínu
+- Použití modelů na základě machine learningu k [klasifikovat text](text-moderation-api.md#classification) do tří kategorií.
+- Například USA a UK telefonní čísla, e-mailové adresy a USA poštovní adresy rozpoznat identifikovatelné osobní údaje (PII).
+- Normalizovat překlepy text a automatické opravy
 
 Tento článek předpokládá, že jste již obeznámeni s Visual Studio a C#.
 
-## <a name="sign-up-for-content-moderator-services"></a>Zaregistrujte si obsahu moderátora služby
+## <a name="sign-up-for-content-moderator-services"></a>Zaregistrovat do služby Content Moderator
 
-Před použitím služby obsahu moderátora přes rozhraní REST API nebo sady SDK, je nutné klíč předplatného.
+Než budete moct použít služby Content Moderator přes rozhraní REST API nebo sady SDK, je nutné klíč předplatného.
 Odkazovat [rychlý Start](quick-start.md) se dozvíte, jak můžete získat klíč.
 
 ## <a name="create-your-visual-studio-project"></a>Vytvoření projektu sady Visual Studio
 
-1. Přidejte nový **konzolovou aplikaci (rozhraní .NET Framework)** projekt pro vaše řešení.
+1. Přidat nový **Konzolová aplikace (.NET Framework)** do svého řešení projekt.
 
-   V ukázkovém kódu, název projektu **TextModeration**.
+   Ve vzorovém kódu, pojmenujte projekt **TextModeration**.
 
-1. Vyberte tento projekt jako jeden počáteční projekt pro řešení.
+1. Vyberte tento projekt jako jeden spouštěný projekt pro řešení.
 
-1. Přidat odkaz na **ModeratorHelper** sestavení, které jste vytvořili v projektu [obsahu moderátora klienta pomocná rychlý Start](content-moderator-helper-quickstart-dotnet.md).
+1. Přidejte odkaz na **ModeratorHelper** sestavení, který jste vytvořili v projektu [rychlý start pomocné rutiny klienta Content Moderator](content-moderator-helper-quickstart-dotnet.md).
 
 ### <a name="install-required-packages"></a>Instalace požadovaných balíčků
 
@@ -49,9 +49,9 @@ Nainstalujte následující balíčky NuGet:
 - Microsoft.Rest.ClientRuntime
 - Newtonsoft.Json
 
-### <a name="update-the-programs-using-statements"></a>Aktualizace programu je pomocí příkazů
+### <a name="update-the-programs-using-statements"></a>Aktualizace programu v nástrojích příkazy
 
-Upravit program je pomocí příkazů.
+Upravit program v nástrojích příkazy.
 
     using Microsoft.CognitiveServices.ContentModerator;
     using Microsoft.CognitiveServices.ContentModerator.Models;
@@ -63,9 +63,9 @@ Upravit program je pomocí příkazů.
     using System.Threading;
 
 
-### <a name="initialize-application-specific-settings"></a>Inicializace nastavení pro konkrétní aplikace
+### <a name="initialize-application-specific-settings"></a>Inicializace nastavení specifické pro aplikaci
 
-Přidejte následující statické pole na **Program** – třída v souboru Program.cs.
+Přidejte následující statické pole na **Program** třída v souboru Program.cs.
 
     /// <summary>
     /// The name of the file that contains the text to evaluate.
@@ -80,18 +80,18 @@ Přidejte následující statické pole na **Program** – třída v souboru Pro
     /// <remarks>Relative paths are ralative the execution directory.</remarks>
     private static string OutputFile = "TextModerationOutput.txt";
 
-Generovat výstup pro tento rychlý start jsme použili následující text:
+Generovat ve výstupu v tomto rychlém startu jsme použili následující text:
 
 > [!NOTE]
-> Neplatné číslo sociálního pojištění v následující ukázkový text je úmyslné. Účelem je nesou ukázka vstupní a výstupní formát.
+> Neplatné číslo sociálního pojištění v následující ukázkový text je úmyslné. Slouží k předání ukázkové vstupní a výstupní formát.
 
     Is this a grabage or crap email abcdef@abcd.com, phone: 6657789887, IP: 255.255.255.255, 1 Microsoft Way, Redmond, WA 98052.
     These are all UK phone numbers, the last two being Microsoft UK support numbers: +44 870 608 4000 or 0344 800 2400 or 
     0800 820 3300. Also, 999-99-9999 looks like a social security number (SSN).
 
-## <a name="add-code-to-load-and-evaluate-the-input-text"></a>Přidejte kód pro načtení a vyhodnotit vstupního textu
+## <a name="add-code-to-load-and-evaluate-the-input-text"></a>Přidejte kód pro načítání a vyhodnocení vstupního textu
 
-Přidejte následující kód, který **hlavní** metoda.
+Přidejte následující kód, který **hlavní** metody.
 
     // Load the input text.
     string text = File.ReadAllText(TextFile);
@@ -117,13 +117,13 @@ Přidejte následující kód, který **hlavní** metoda.
     }
 
 > [!NOTE]
-> Klíč obsahu moderátora služby má požadavky na druhý omezení četnosti (RPS) a pokud limit překročíte, vyvolá výjimku s kódem 429 chyby, sady SDK.
+> Klíč služby Content Moderator má požadavků za druhé omezení četnosti (předávajících stran) a při překročení limitu, vyvolá výjimku s kódem chyby 429, sady SDK.
 >
-> Úroveň free klíč může mít jeden RPS rychlost.
+> Při použití klíče na úrovni free, rychlost požadavků je omezený na jeden požadavek za sekundu.
 
 ## <a name="run-the-program-and-review-the-output"></a>Spusťte program a prohlédněte si výstup
 
-Ukázka výstupu pro program, protože do něj zapisuje do souboru protokolu je:
+Ukázkový výstup programu, jak jsou zapsány do souboru protokolu je:
 
     Autocorrect typos, check for matching terms, PII, and classify.
     {
@@ -211,4 +211,4 @@ Ukázka výstupu pro program, protože do něj zapisuje do souboru protokolu je:
 
 ## <a name="next-steps"></a>Další postup
 
-[Stáhněte si řešení sady Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) v tomto a dalších – elementy QuickStart obsahu moderátora pro platformu .NET a začít na svoji integraci.
+[Stáhněte si řešení sady Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) pro tuto a další rychlé starty Content Moderator pro platformu .NET a začít používat svoji integraci.

@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 07/13/2018
 ms.author: babanisa
-ms.openlocfilehash: 41e7be80eb67deaf7a8189aa0d9f62c48b88799a
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 4f1f0e95ae74ef41ed91be55f4c964671e8f723b
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036233"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044545"
 ---
 # <a name="use-cloudevents-schema-with-event-grid"></a>Použití schématu CloudEvents pomocí služby Event Grid
 
@@ -73,6 +73,8 @@ CloudEvents v0.1 má k dispozici následující vlastnosti:
 
 Další informace najdete v tématu [CloudEvents specifikace](https://github.com/cloudevents/spec/blob/master/spec.md#context-attributes).
 
+Hodnoty hlavičky pro události, které zajišťujeme ve schématu CloudEvents spolu se schématem služby Event Grid jsou stejné, s výjimkou produktů `content-type`. Pro schématu CloudEvents, je tato hodnota hlavičky `"content-type":"application/cloudevents+json; charset=utf-8"`. Pro schéma služby Event Grid, je tato hodnota hlavičky `"content-type":"application/json; charset=utf-8"`.
+
 ## <a name="configure-event-grid-for-cloudevents"></a>Konfigurace služby Event Grid pro CloudEvents
 
 Event Grid můžete použít pro vstupní i výstupní události ve schématu CloudEvents. CloudEvents můžete použít pro systémové události, jako jsou události služby Blob Storage a události služby IoT Hub a vlastní události. Můžete také transformovat tyto události na lince vpřed a zpět.
@@ -89,7 +91,7 @@ Pro všechna schémata událostí služby Event Grid vyžaduje ověřování př
 
 ### <a name="input-schema"></a>Vstupní schéma
 
-Pokud chcete nastavit vstupní schéma na odpovídající vlastní téma CloudEvents, použijte následující parametr v rozhraní příkazového řádku Azure a když vytvoříte téma `--input-schema cloudeventv01schema`. Příchozí události vlastního tématu nyní očekává ve formátu CloudEvents v0.1.
+Pokud chcete nastavit vstupní schéma na odpovídající vlastní téma CloudEvents, použijte následující parametr v rozhraní příkazového řádku Azure a při vytváření vlastního tématu `--input-schema cloudeventv01schema`. Příchozí události vlastního tématu nyní očekává ve formátu CloudEvents v0.1.
 
 Pokud chcete vytvořit téma event gridu, použijte:
 

@@ -1,6 +1,6 @@
 ---
-title: Profil za provozu webové aplikace v Azure s Application Insights profileru | Microsoft Docs
-description: Identifikujte aktivní trase v kódu webového serveru s nízkými nároky profileru.
+title: Profilování živých webových aplikací v Azure pomocí Application Insights Profiler | Dokumentace Microsoftu
+description: Identifikujte kritická cesta v kódu webového serveru pomocí profileru s nízkými nároky.
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -9,315 +9,307 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
-ms.date: 02/08/2018
+ms.topic: conceptual
+ms.reviewer: cawa
+ms.date: 07/13/2018
 ms.author: mbullwin
-ms.openlocfilehash: 34824401ec8d21949c5c5036a11197a09e240bd7
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: e4712b94be94eb6d4cf363fc120b72c74f29f0a2
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39059659"
 ---
-# <a name="profile-live-azure-web-apps-with-application-insights"></a>Profil za provozu Azure web apps s Application Insights
+# <a name="profile-live-azure-web-apps-with-application-insights"></a>Profilování živých webových aplikací Azure pomocí Application Insights
 
-*Tato funkce Azure Application Insights je obecně dostupné pro funkce Web Apps služby Azure App Service a je ve verzi preview pro výpočetní prostředky Azure. Informace ohledně [místní použití profileru](https://docs.microsoft.com/azure/application-insights/enable-profiler-compute#enable-profiler-on-on-premises-servers).*
+Tato funkce služby Azure Application Insights je všeobecně dostupné pro funkci Web Apps služby Azure App Service a je ve verzi preview pro výpočetní prostředky Azure. Informace týkající se [v místním prostředí pomocí profileru](https://docs.microsoft.com/azure/application-insights/enable-profiler-compute#enable-profiler-on-on-premises-servers).
 
-Tento článek popisuje množství času stráveného v každá metoda za provozu webové aplikace při použití [Application Insights](app-insights-overview.md). Nástroj Application Insights profileru zobrazí podrobné profily živé požadavky, které se spouští vaše aplikace. Profileru klade důraz *aktivní trase* používající nejvíce času. Na základě vzorkování jsou profilovaným požadavků s různé doby odezvy. S využitím různých technik, můžete snížit režijní náklady, který je spojen s aplikací.
+Tento článek popisuje množství času, který byl stráven v každé metodě živé webové aplikace při použití [Application Insights](app-insights-overview.md). Nástroj Application Insights Profiler zobrazuje podrobné profily živé požadavky, které byly vaše aplikace obsluhuje. Profiler zvýrazní *kritickou cestu* , která používá nejvíce času. Požadavky s různými doby odezvy mají profil na základě vzorkování. S využitím různých technik, můžete minimalizovat režii spojenou s aplikací.
 
-Profileru aktuálně funguje pro webové aplikace ASP.NET a ASP.NET Core, které jsou spuštěny na webové aplikace. Základní úrovně služby nebo vyšší je potřeba použít profileru.
+Profiler v současné době používá pro webové aplikace ASP.NET a ASP.NET Core, které běží ve službě Web Apps. Základní úroveň služby nebo vyšší je potřeba použít Profiler.
 
-## <a id="installation"></a> Povolit profileru pro webové aplikace webových aplikací
-Pokud už je aplikace publikována do webové aplikace, ale ještě nepracovali ve zdrojovém kódu použít Application Insights, postupujte takto:
-1. Přejděte na **App Services** podokně na portálu Azure.
-2. V části **monitorování**, vyberte **Application Insights**a pak buď postupujte podle pokynů v podokně vytvořte nový prostředek nebo vyberte existující prostředek Application Insights k monitorování vaší webové aplikace.
+## <a id="installation"></a> Povolit Profiler pro svoje webové aplikace
 
-   ![Povolit aplikaci Insights na portálu aplikační služby][appinsights-in-appservices]
+Jakmile nasadíte webovou aplikaci, bez ohledu na to, pokud jste zahrnuli App Insights SDK do zdrojového kódu, postupujte takto:
 
-3. Pokud máte přístup k projektu zdrojový kód, [nainstalujte službu Application Insights](app-insights-asp-net.md).  
-   Pokud je již nainstalována, ujistěte se, že máte nejnovější verzi. Kontroluje nejnovější verzi, v Průzkumníku řešení klikněte pravým tlačítkem na projekt a potom vyberte **balíčky spravovat balíčky NuGet** > **aktualizace** > **aktualizovat všechny balíčky**. Potom nasaďte aplikaci.
+1. Přejděte **App Services** podokně webu Azure Portal.
+2. Přejděte do **Nastavení > monitorování** podokně.
 
-Aplikace ASP.NET Core vyžadují instalaci 2.1.0-beta6 balíček Microsoft.ApplicationInsights.AspNetCore NuGet nebo novější pro práci s profileru. Od verze 27. června 2017 starší verze nepodporují.
+   ![Povolit App Insights na portálu služby App Services](./media/app-insights-profiler/AppInsights-AppServices.png)
 
-1. V [portálu Azure](https://portal.azure.com), otevřete prostředek Application Insights pro webové aplikace. 
-2. Vyberte **výkonu** > **povolit Application Insights profileru**.
+3. Buď postupujte podle pokynů v podokně a vytvořte nový prostředek nebo vyberte existující prostředek App Insights monitorovat webové aplikace. Přijměte všechny výchozí možnosti. **Diagnostika na úrovni kódu** ve výchozím nastavení zapnutý a umožňuje Profiler.
 
-   ![Vyberte Banner informující o povolení profileru][enable-profiler-banner]
+   ![Přidat rozšíření webu App Insights][Enablement UI]
 
-3. Alternativně můžete vybrat **profileru** konfigurace k zobrazení stavu a povolení nebo zakázání profileru.
+4. Profiler je teď nainstalovaná s rozšířením Web App Insights a se aktivuje pomocí nastavení aplikace služby App.
 
-   ![Vyberte konfiguraci profileru][performance-blade]
+    ![Nastavení aplikace, které pro Profiler][profiler-app-setting]
 
-   Webové aplikace, které jsou nakonfigurovány s Application Insights, jsou uvedeny v **profileru** podokně Konfigurace. Pokud jste postupovali podle předchozích kroků, by měl být nainstalován agent nástroje profileru. 
+### <a name="enable-profiler-for-azure-compute-resources-preview"></a>Povolit Profiler pro výpočetní prostředky Azure (preview)
 
-4. V **profileru** konfigurace podokně, vyberte **povolit profileru**.
-
-5. V případě potřeby pokynů pro instalaci agenta profileru. Pokud byly nakonfigurovány žádné webové aplikace pomocí Application Insights, vyberte **přidat propojené aplikace**.
-
-   ![Konfigurovat možnosti podokna][linked app services]
-
-Na rozdíl od webových aplikací, které jsou hostované pomocí plánů webové aplikace aplikace, které jsou hostované v Azure výpočetní prostředky (například virtuální počítače Azure, sady škálování virtuálního počítače, Azure Service Fabric nebo Azure Cloud Services) nespravuje přímo Azure. V takovém případě není žádná webová aplikace propojení. Místo propojení na aplikaci, vyberte **povolit profileru** tlačítko.
-
-### <a name="enable-profiler-for-azure-compute-resources-preview"></a>Povolit profileru pro výpočetní prostředky Azure (preview)
-
-Informace najdete v tématu [verze preview profileru pro výpočetní prostředky Azure](https://go.microsoft.com/fwlink/?linkid=848155).
+Informace najdete v tématu [verze preview Profiler pro výpočetní prostředky Azure](https://go.microsoft.com/fwlink/?linkid=848155).
 
 ## <a name="view-profiler-data"></a>Zobrazení dat profileru
 
-Ujistěte se, že vaše aplikace přijímá provoz. Při provádění experiment, můžete vygenerovat požadavky na vaši webovou aplikaci pomocí [testování výkonu Application Insights](https://docs.microsoft.com/vsts/load-test/app-service-web-app-performance-test). Pokud jste povolili nově profileru, můžete spustit krátké zátěžového testu pro o 15 minut, který by měl generovat profileru trasování. Pokud jste předtím profileru povolené už nějakou dobu, udržování v paměti, že profileru spouští náhodně dvakrát každou hodinu a po dobu dvou minut pokaždé, když ji spustí. Doporučujeme nejprve spuštění zátěžového testu pro jednu hodinu a ujistěte se, že získají ukázková profiler trasování.
+Ujistěte se, že přijímá provoz vaší aplikace. Pokud provádíte experiment, můžete vygenerovat požadavky pro vaši webovou aplikaci pomocí [testování výkonu Application Insights](https://docs.microsoft.com/vsts/load-test/app-service-web-app-performance-test). Pokud jste povolili nově Profiler, můžete spustit krátký zátěžový test pro přibližně 15 minut, které by měl generovat trasování profileru. Pokud máte povolené už nějakou dobu Profiler udržovat v paměti, že Profiler běží náhodně dvakrát za hodinu a po dobu dvou minut pokaždé, když ji spustí. Doporučujeme nejprve spustit zátěžový test pro jednu hodinu, než Ujistěte se, že získáte ukázkový trasování profileru.
 
-Po aplikaci obdrží některé provozy, přejděte na **výkonu** podokně, vyberte **provést akce** zobrazení profileru trasování, a pak vyberte **profileru trasování** tlačítko.
+Poté, co vaše aplikace obdrží část provozu, přejděte na **výkonu** vyberte **provést akce** zobrazení trasování profileru, a pak vyberte **Profiler trasování** tlačítko.
 
-![Trasuje profileru preview podokně Statistika výkonu aplikace][performance-blade-v2-examples]
+![Trasuje Profiler Application Insights výkon podokno náhledu][performance-blade-v2-examples]
 
-Vyberte ukázku zobrazit rozpis úrovni kódu čas provádění požadavku.
+Vyberte ukázku zobrazit rozpis úroveň kódu čas provádění požadavku.
 
-![Application Insights trasování explorer][trace-explorer]
+![Průzkumník trasování Application Insights][trace-explorer]
 
-Trasování explorer zobrazí následující informace:
+V Průzkumníku trasování zobrazí následující informace:
 
-* **Zobrazit aktivní trase**: Otevře biggest list uzlu, nebo aspoň něco zavřete. Ve většině případů je tento uzel u kritických bodů výkonu.
-* **Popisek**: název funkce nebo událostí. Stromu zobrazí směs kód a události, které došlo k chybě (např. SQL a HTTP událostí). Horní událost představuje celkovou dobu trvání požadavku.
-* **Uplynulý čas**: časový interval mezi začátkem operace a konci operace.
-* **Když**: čas, když pro funkci nebo událostí byl spuštěn v vztah do dalších funkcí.
+* **Zobrazit kritickou cestu**: Otevře největší listové uzly, nebo aspoň něco zavřete. Ve většině případů se tento uzel je vedle výkonu kritickým bodem.
+* **Popisek**: název funkce nebo události. Strom zobrazuje kombinaci kódu a události, ke kterým došlo (jako jsou SQL a HTTP události). Hlavní událost představuje celková doba trvání žádosti.
+* **Uplynulý**: časový interval mezi začátkem operace a konec operace.
+* **Když**: čas, kdy funkce nebo událostí byl spuštěn v relaci dalších funkcí.
 
-## <a name="how-to-read-performance-data"></a>Informace o načtení dat výkonu
+## <a name="how-to-read-performance-data"></a>Čtení dat o výkonu
 
-Profileru služby Microsoft používá kombinaci metod vzorkování a instrumentace analyzovat výkon vaší aplikace. Když probíhá podrobné kolekce, služba profileru ukázky ukazatel instrukce každý počítač procesoru každých milisekundu. Každá ukázka zaznamená zásobníku dokončení volání vlákna, která je aktuálně spuštěné. Nabízí podrobné informace o daném vláknu byl činnosti, na vysoké úrovni i na nízké úrovni abstrakce. Služba profileru taky shromažďuje dalších událostí, sledovat aktivity korelace a příčiny, včetně kontext přepínání události, Task Parallel Library (TPL) události a události fondu vláken.
+Profileru služeb Microsoft používá kombinaci metody odběru vzorků a instrumentace k analýze výkonu aplikace. Pokud probíhá shromažďování podrobné, profileru služeb ukázky ukazatele na instrukci každý počítač procesoru každých milisekund. Každá ukázka zaznamená úplný zásobník volání vlákna, který aktuálně spouští. Poskytuje podrobné informace o co bylo vlákno dělal, na vysoké úrovni a na nízké úrovni abstrakce. Profileru služeb shromažďuje také další události pro sledování aktivity korelace a příčiny, včetně kontextu přepínání události, události Task Parallel Library (TPL) a události fondu vláken.
 
-Zásobník volání, který se zobrazí v zobrazení časové osy je výsledkem vzorkování a instrumentace. Protože každá ukázka zaznamená zásobníku dokončení volání vlákna, obsahuje kód z rozhraní Microsoft .NET Framework a z dalších rozhraní, které odkazovat.
+Zásobník volání, který se zobrazí v zobrazení časové osy je výsledkem vzorkování a instrumentaci. Vzhledem k tomu každý vzorek zachytí úplný zásobník volání vlákna, obsahuje kód z rozhraní Microsoft .NET Framework a další architektury, které odkazujete.
 
-### <a id="jitnewobj"></a>Objekt přidělení (clr! JIT\_nový nebo clr! JIT\_Newarr1)
-**CLR! JIT\_nový** a **clr! JIT\_Newarr1** jsou pomocných funkcí v rozhraní .NET Framework, které přidělit paměť z spravovaná halda. **CLR! JIT\_nový** je volána, když je přidělen objektu. **CLR! JIT\_Newarr1** je volána, když je přidělen pole objektu. Tyto dvě funkce jsou obvykle rychlé a proveďte relativně malé množství času. Pokud se zobrazí **clr! JIT\_nový** nebo **clr! JIT\_Newarr1** trvat významné množství času v časový harmonogram, znamená to, že kód mohou být přidělování mnoho objektů a využívají poměrně velké množství paměti.
+### <a id="jitnewobj"></a>Přidělování objektů (clr! JIT\_nový nebo clr! JIT\_Newarr1)
 
-### <a id="theprestub"></a>Načítání kódu (clr! ThePreStub)
-**CLR! ThePreStub** je pomocné funkce v rozhraní .NET Framework, který připraví kód při prvním spuštění. To obvykle zahrnuje, ale není omezeno na kompilace v běhu (JIT). Pro každou C# metodu **clr! ThePreStub** by měla být volána alespoň jednou po dobu životnosti procesu.
+**CLR! JIT\_nový** a **clr! JIT\_Newarr1** jsou pomocné funkce v rozhraní .NET Framework, které přidělují paměť ze spravované haldy. **CLR! JIT\_nový** je voláno, když je přidělen objektu. **CLR! JIT\_Newarr1** je vyvolána při přidělování pole objektu. Tyto dvě funkce jsou obvykle rychlé a trvat poměrně malé množství času. Pokud se zobrazí **clr! JIT\_nový** nebo **clr! JIT\_Newarr1** trvat značné množství času na vaší časové ose, znamená to, že kód může být přidělení mnoho objektů a spotřebovávat značné množství paměti.
 
-Pokud **clr! ThePreStub** trvá značně času pro žádost o to označuje, že požadavek je první, kterou provádí dané metody. Čas načtení první metodu modulu runtime rozhraní .NET Framework je důležité. Můžete zvážit použití zahřívání proces, který spouští před vaši uživatelé k němu přístup nebo zvažte spuštění generátor (ngen.exe) část kód ve vaší sestavení.
+### <a id="theprestub"></a>Kód pro načtení (clr! ThePreStub)
 
-### <a id="lockcontention"></a>Spory uzamčení (clr! JITutil\_MonContention nebo clr! JITutil\_MonEnterWorker)
-**CLR! JITutil\_MonContention** nebo **clr! JITutil\_MonEnterWorker** označuje, že je aktuální vlákno čekání na zámek k uvolnění. Tento text se obvykle zobrazí při spuštění C# **ZÁMKU** při vyvolání příkazu **Monitor.Enter** metoda, nebo při vyvolání metody s **MethodImplOptions.Synchronized** atribut. Obvykle dojde k uzamčení kolize při vláken _A_ získá zámek a vlákno _B_ pokusí získat stejné zámek před vlákno _A_ uvolněním.
+**CLR! ThePreStub** je pomocná funkce v rozhraní .NET Framework, který připraví kód pro spuštění poprvé. To obvykle zahrnuje, ale není omezena pouze na kompilace just-in-time (JIT). Pro každý metoda C# **clr! ThePreStub** má být volána po celou dobu životnosti procesu nejvýše jednou.
 
-### <a id="ngencold"></a>Načítání kódu ([STUDENÝ])
-Pokud název metody obsahuje **[COLD]**, jako například **mscorlib.ni! [COLD]System.Reflection.CustomAttribute.IsDefined**, modul runtime rozhraní .NET Framework je provádění kódu poprvé není optimalizována podle <a href="https://msdn.microsoft.com/library/e7k32f4k.aspx">optimalizace na základě profilu</a>. Pro každou metodu by se měla zobrazit maximálně jednou po dobu životnosti procesu.
+Pokud **clr! ThePreStub** trvá značné množství času požadavku, to znamená, že jsou první z nich, který se spustí dané metody. Čas potřebný pro modul runtime rozhraní .NET Framework se načíst první způsob je důležité. Zvažte použití zahřívání procesu, který se spustí předtím, než vaši uživatelé k němu přístup, nebo zvažte spuštění Native Image Generator (ngen.exe) část kódu na vaše sestavení.
 
-Pokud podstatnou část času pro žádost o načtení kód přijímá, to znamená, že požadavek je první z nich provést neoptimalizované část metody. Zvažte použití zahřívání proces, který provede část kódu, potom vaši uživatelé přístup.
+### <a id="lockcontention"></a>Kolize zámků (clr! JITutil\_MonContention nebo clr! JITutil\_MonEnterWorker)
+
+**CLR! JITutil\_MonContention** nebo **clr! JITutil\_MonEnterWorker** označuje, že aktuální vlákno čeká na zámek a tím uvolnit. Tento text se zobrazí často při spouštění jazyka C# **ZÁMEK** příkaz při vyvolání **Monitor.Enter** metodu, nebo při vyvolání metody s **MethodImplOptions.Synchronized** atribut. Kolize zámků obvykle dochází, když vlákno _A_ získá uzamčení a vlákna _B_ pokusí získat stejné zámek před vlákno _A_ ho uvolní.
+
+### <a id="ngencold"></a>Kód pro načtení ([STUDENÉHO])
+
+Pokud název metody obsahuje **[COLD]**, jako například **mscorlib.ni! [COLD]System.Reflection.CustomAttribute.IsDefined**, modul runtime rozhraní .NET Framework je provádění kódu poprvé není optimalizována podle <a href="https://msdn.microsoft.com/library/e7k32f4k.aspx">optimalizace na základě profilu</a>. Pro každou metodu by se měla zobrazit maximálně jednou po celou dobu životnosti procesu.
+
+Pokud načítání kódu trvá podstatnou část času pro žádost, to znamená, že jsou první z nich provádět neoptimalizované část metody. Zvažte použití zahřívání proces, který provede část kódu, než vaši uživatelé k němu přístup.
 
 ### <a id="httpclientsend"></a>Odeslání požadavku HTTP
-Metody jako **HttpClient.Send** znamenat, že kód čeká na dokončení požadavku HTTP.
+
+Metody, jako jsou **HttpClient.Send** znamenat, že kód čeká na dokončení požadavku HTTP.
 
 ### <a id="sqlcommand"></a>Operace databáze
-Metody jako **SqlCommand.Execute** znamenat, že kód čeká na dokončení operace databáze.
 
-### <a id="await"></a>Čeká se na (AWAIT\_čas)
-**AWAIT\_čas** označuje, že kód čeká na dokončení jiné úlohy. To se obvykle stává pomocí jazyka C# **AWAIT** příkaz. Pokud nemá kód C# **AWAIT**, vlákno unwinds a vrátí prvek fond vláken a neexistuje žádný vlákno, které se zablokuje čekáním na **AWAIT** ukončíte. Však logicky, vlákno, nebyla **AWAIT** je "Uzavřeno" a čeká na dokončení operace. **AWAIT\_čas** příkaz označuje blokované dobu čekání na dokončení úlohy.
+Metody, jako jsou **SqlCommand.Execute** znamenat, že kód čeká na dokončení operace databáze.
 
-### <a id="block"></a>Blokované čas
-**BLOCKED_TIME** označuje, že kód čeká na jiný prostředek k dispozici. Například může čekání na synchronizační objekt, vlákno být k dispozici nebo dokončení požadavku.
+### <a id="await"></a>Čekání (AWAIT\_čas)
+
+**AWAIT\_čas** označuje, že kód čeká na dokončení jiné úlohy. To obvykle dochází v jazyce C# **AWAIT** příkazu. Když kód provádí C# **AWAIT**, vlákno unwinds a vrátí řízení do fondu vláken a neexistuje žádná vlákna, který je blokovaný, čeká **AWAIT** na dokončení. Však logicky, vlákna, která nebyla **AWAIT** je "Uzavřeno" a čeká na dokončení operace. **AWAIT\_čas** příkaz označuje čas zablokování čekání na dokončení úlohy.
+
+### <a id="block"></a>Čas zablokování
+
+**BLOCKED_TIME** označuje, že kód je čekání na jiný prostředek k dispozici. Například může čekat pro synchronizační objekt, má být k dispozici vlákno nebo požadavek dokončit.
 
 ### <a id="cpu"></a>Čas procesoru
-Procesor je zaneprázdněný prováděna podle pokynů.
+
+Procesor je zaneprázdněný, provádění pokynů.
 
 ### <a id="disk"></a>Doba disku
+
 Aplikace provádí operace disku.
 
 ### <a id="network"></a>Čas sítě
-Aplikace je provádění síťových operací.
 
-### <a id="when"></a>Pokud sloupec
-**Při** sloupec je vizualizaci jak včetně ukázky shromážděné pro uzel lišit v průběhu času. Celkový rozsah požadavku je rozdělené do 32 kbelíků čas. V těchto 32 kbelíků počítají včetně ukázky pro tento uzel. Každý blok je reprezentována jako pruh. Výška panelu reprezentuje hodnotu škálovat. Pro uzly, které jsou označené **CPU_TIME** nebo **BLOCKED_TIME**, nebo tam, kde je zřejmé vztah k využívání prostředků (například CPU, disku nebo vlákno), na panelu představuje spotřeby mezi prostředky během období této sady. Pro tyto metriky je možné získat hodnotu větší než 100 procent spotřebovávat více prostředků. Například pokud chcete použít, v průměru dva procesory během intervalu, získat 200 procent.
+Aplikace je provádění síťové operace.
+
+### <a id="when"></a>Když sloupec
+
+**Při** sloupec je vizualizace jak celkových vzorků shromážděných pro uzel mění v čase. Celkový rozsah žádosti je rozdělen na 32 časovým intervalům. Inkluzivní vzorky pro tento uzel se započítávají tyto kbelíky 32. Každý blok je vyjádřena jako panel. Výška panelu představuje škálovaný hodnotu. Pro uzly, které jsou označeny **CPU_TIME** nebo **BLOCKED_TIME**, nebo tam, kde je zřejmé vztah k využívání prostředků (například procesoru, disku nebo vlákno), na panelu představuje využití jednoho z prostředky v období tohoto sektoru. Pro tyto metriky je možné získat hodnotu větší než 100 % jeho obsahu podle spotřebovávat více prostředků. Například pokud chcete použít, v průměru dva procesory během intervalu, získáte 200 procent.
 
 ## <a name="limitations"></a>Omezení
 
-Výchozí dobu uchování dat je pět dní. Maximální data, která je konzumována za den je 10 GB.
+Výchozí dobu uchování dat je pět dní. Maximální množství dat, který se ingestuje za den je 10 GB.
 
-Neexistují žádné poplatky za používání služby profileru. Abyste mohli používat službu profileru, musí být webové aplikace hostované v aspoň základní úroveň webové aplikace.
+Neúčtují žádné poplatky za používání služby Profiler. Chcete-li použít službu Profiler, musí být webové aplikace hostované v alespoň na úrovni Basic služby Web Apps.
 
 ## <a name="overhead-and-sampling-algorithm"></a>Režijní náklady a algoritmus vzorkování
 
-Profileru náhodně spustí dvě minuty každou hodinu na každém virtuálním počítači, který je hostitelem aplikace, která profileru pro zaznamenání trasování povoleno. Pokud profileru běží, přidá se z 5 procent do 15 procent zatížení procesoru na server.
+Profiler se spustí náhodně dvě minuty každou hodinu na každém virtuálním počítači, který je hostitelem aplikace, která má Profiler pro zachytávání trasování povoleno. Když Profiler běží, přidá se z 5 procent do 15 procent zatížení procesoru na serveru.
 
-Další servery, které jsou k dispozici pro hostování aplikace, menší dopad profileru má na výkon aplikací. Je to proto, že algoritmus vzorkování výsledkem profileru systémem jenom 5 procent servery kdykoli. Další servery jsou k dispozici pro webové žádosti k posunutí nároky na serveru kvůli spuštěním profileru.
+Další servery, které jsou k dispozici pro hostování aplikací, má Profiler k menší dopad na výkon aplikací. Je to proto, že algoritmus vzorkování výsledkem Profiler běží na jenom 5 procent serverů v každém okamžiku. Další servery jsou k dispozici vyřizovat webové žádosti odsazení nároky na server způsobené spuštěn Profiler.
 
 ## <a name="disable-profiler"></a>Zakázat Profiler
-Pro zastavení nebo restartování profileru pro jednotlivé webové aplikace instance, v části **webové úlohy**, přejděte k prostředku webové aplikace. Chcete-li odstranit profileru, přejděte na **rozšíření**.
 
-![Webovou úlohu zakázat profileru][disable-profiler-webjob]
+Pro zastavení nebo restartování Profiler pro instance jednotlivých webovou aplikaci, v části **webové úlohy**, přejděte do prostředku webové aplikace. Chcete-li odstranit Profiler, přejděte na **rozšíření**.
 
-Doporučujeme, abyste měli profileru, aby co nejdříve zjistit jakékoli problémy s výkonem na všechny webové aplikace povolena.
+![Zakázat Profiler pro webové úlohy][disable-profiler-webjob]
 
-Pokud používáte k nasazení změny k vaší webové aplikaci WebDeploy, ujistěte se, abyste vyloučili složce App_Data před odstraněním během nasazení. Jinak hodnota rozšíření profileru soubory se odstraní při příštím nasazení webové aplikace do Azure.
+Doporučujeme, abyste měli Profiler povolena na všech svých webových aplikací se co nejdříve zjistit problémy s výkonem.
+
+Pokud pomocí nasazení webu nasadit změny do vaší webové aplikace, ujistěte se, vyloučit složky App_Data odstranit během nasazení. V opačném případě rozšíření Profiler soubory jsou odstraněny při příštím nasazení webové aplikace do Azure.
 
 
 ## <a id="troubleshooting"></a>Řešení potíží
 
-### <a name="too-many-active-profiling-sessions"></a>Příliš mnoho aktivních relací profilace
+### <a name="too-many-active-profiling-sessions"></a>Příliš mnoho aktivní relace profilování
 
-V současné době můžete povolit profileru na maximálně čtyři webové aplikace Azure a nasazovací sloty, které jsou spuštěny v stejný plán, který služba. Pokud webovou úlohu profileru hlásí příliš mnoho aktivních relací profilování, přesunete některé webové aplikace do plánu jinou službu.
+V současné době můžete povolit Profiler na maximálně čtyři Azure webové aplikace a sloty nasazení, které jsou spuštěny v rámci stejného plánu služby. Pokud Profiler webové úlohy je příliš mnoho aktivních relací profilování, přesuňte některé webové aplikace k plánu jiné služby.
 
-### <a name="how-do-i-determine-whether-application-insights-profiler-is-running"></a>Jak zjistím, zda je spuštěn profileru Application Insights?
+### <a name="how-do-i-determine-whether-application-insights-profiler-is-running"></a>Jak zjistím, zda je spuštěna Application Insights Profiler?
 
-Profileru spouští jako nepřetržité webové úlohy ve webové aplikaci. Můžete otevřít prostředek webové aplikace [portál Azure](https://portal.azure.com). V **WebJobs** podokně, zkontrolujte stav **ApplicationInsightsProfiler**. Pokud není spuštěna, otevřete **protokoly** získat další informace.
+Profiler běží jako průběžné webové úlohy ve webové aplikaci. Můžete otevřít v prostředku webové aplikace [webu Azure portal](https://portal.azure.com). V **WebJobs** podokně zkontrolujte stav **ApplicationInsightsProfiler**. Pokud není spuštěná, Otevřít **protokoly** zobrazíte další informace.
 
-### <a name="why-cant-i-find-any-stack-examples-even-though-profiler-is-running"></a>Proč nelze najít žádné příklady zásobníku, i když je spuštěna profileru?
+### <a name="why-cant-i-find-any-stack-examples-even-though-profiler-is-running"></a>Proč nelze najít veškeré ukázky, zásobník, i když je spuštěn Profiler?
 
-Zde je několik věcí, které můžete zkontrolovat:
+Tady je pár věcí, které můžete zkontrolovat:
 
-* Ujistěte se, že je váš plán služby app service web úroveň Basic nebo vyšší.
-* Ujistěte se, že vaše webová aplikace je Application Insights SDK 2.2 Beta nebo později povoleno.
-* Ujistěte se, že má vaše webová aplikace **APPINSIGHTS_INSTRUMENTATIONKEY** nastavení nakonfigurované stejný klíč instrumentace, který je používán Application Insights SDK.
-* Ujistěte se, že vaše webová aplikace běží v rozhraní .NET Framework 4.6.
-* Pokud vaše webová aplikace je aplikace ASP.NET Core, zkontrolujte [požadované závislosti](#aspnetcore).
+* Ujistěte se, že je web plán služby app service na úrovni Basic nebo vyšší.
+* Ujistěte se, zda má vaše webové aplikace Application Insights SDK 2.2 Beta nebo později povolené.
+* Ujistěte se, že má vaše webová aplikace **APPINSIGHTS_INSTRUMENTATIONKEY** nastavení nakonfigurované se stejným klíčem instrumentace, který používá sadu SDK Application Insights.
+* Ujistěte se, že vaše webová aplikace běží na rozhraní .NET Framework 4.6.
+* Pokud je vaše aplikace webové aplikace ASP.NET Core, zkontrolujte [požadované závislosti](#aspnetcore).
 
-Po spuštění profileru není krátké zahřívání období, během které profileru aktivně shromažďuje několik trasování výkonu. Potom profileru shromažďuje trasování výkonu pro dvě minuty každou hodinu.
+Po spuštění Profiler je krátký zahřívání období, během které Profiler aktivně shromažďuje několik trasování výkonu. Poté Profiler shromáždí trasování výkonu pro dvě minuty každou hodinu.
 
-### <a name="i-was-using-azure-service-profiler-what-happened-to-it"></a>Použití služby Azure profileru. Co se stalo na ni?
+### <a name="i-was-using-azure-service-profiler-what-happened-to-it"></a>Můžu se pomocí profileru služeb Azure. Co se stalo se to?
 
-Když povolíte profileru Application Insights, profileru agenta služby Azure je zakázána.
+Když povolíte Application Insights Profiler, agent profileru služeb Azure je zakázaná.
 
-### <a id="double-counting"></a>Dvojitý počítání v paralelních vláken
+### <a id="double-counting"></a>Double, počítací v paralelních vláken
 
-V některých případech metrika celkový čas v prohlížeči. zásobník je větší než doba trvání požadavku.
+V některých případech se celková doba metriky v prohlížeči zásobníku je větší než doba trvání žádosti.
 
-Tato situace může nastat, pokud dva nebo více podprocesů spojená se žádostí o a jsou provozu paralelně. Celkový počet vláken čas v takovém případě je větší než uplynulý čas. Jedno vlákno může čeká na dalším dokončit. V prohlížeči se pokusí o to zjistit a vynechá nezajímavá čekání, ale jeho chybuje na straně zobrazení příliš velkého množství informací místo vynechat, které mohou být důležitých informací.
+Tato situace může nastat, když dva nebo více vláken jsou spojené se žádostí a jsou prováděny současně. V takovém případě čas celkový počet vláken je větší než uplynulý čas. Jedno vlákno může čekat na dokončení druhé. V prohlížeči, pokusí se to rozpozná a vynechá nezajímavé čekání, ale chybuje Toolbar zobrazení příliš mnoho informací o spíše vynechat, které mohou být důležitým informacím vždy.
 
-Až uvidíte paralelních vláken ve vašem trasování, určete, které vláken čekají, můžete zjistit kritická cestu pro žádost. Ve většině případů je jednoduše čekání vlákno, které rychle přejde do stavu čekání na jiná vlákna. Soustředit se jenom na jiné vláken a ignoruje čas v vláken čekání.
+Při paralelních vláken se zobrazí v trasování, určete, která vlákna čekající tak můžete zjistit kritickou cestu pro žádost. Ve většině případů vlákno, které rychle přejde do stavu čekání jednoduše čeká na ostatní vlákna. Soustředit se na ostatní vlákna a ignorovat časové čekajících vláken.
 
-### <a id="issue-loading-trace-in-viewer"></a>Žádná data profilování
+### <a id="issue-loading-trace-in-viewer"></a>Žádná data profilace
 
-Zde je několik věcí, které můžete zkontrolovat:
+Tady je pár věcí, které můžete zkontrolovat:
 
-* Pokud data, která se pokoušíte zobrazení je starší než několik týdnů, pokuste se omezit váš filtr času a akci opakujte.
-* Ujistěte se, není mít proxy nebo brána firewall zablokovala přístup k https://gateway.azureserviceprofiler.net.
-* Zajistěte, aby byl klíč instrumentace Application Insights, kterou používáte ve vaší aplikaci stejná jako prostředek Application Insights, který jste použili k profilace povoleno. Klíč je obvykle v soubor ApplicationInsights.config, ale může být také v souboru web.config nebo app.config.
+* Pokud data, která se pokoušíte zobrazit, je starší než několik týdnů, zkuste omezení časový filtr a zkuste to znovu.
+* Ujistěte se, že proxy nebo brány firewall nejsou zablokoval přístup k https://gateway.azureserviceprofiler.net.
+* Ujistěte se, že Instrumentační klíč Application Insights, který používáte ve vaší aplikaci je stejný jako prostředek Application Insights, který jste použili k povolit profilaci. Klíč je obvykle v souboru ApplicationInsights.config, ale může být také v souboru web.config nebo app.config.
 
-### <a name="error-report-in-the-profiling-viewer"></a>Zprávy o chybách v profilaci prohlížeči.
+### <a name="error-report-in-the-profiling-viewer"></a>Zprávu o chybách v prohlížeči profilování
 
-Odešlete lístek podpory na portálu. Nezapomeňte zahrnout ID korelace z chybovou zprávu.
+Vyplňte lístek podpory na portálu. Nezapomeňte zahrnout ID korelace z chybové zprávy.
 
-### <a name="deployment-error-directory-not-empty-dhomesitewwwrootappdatajobs"></a>Chyba nasazení: adresář není prázdný ' D:\\domácí\\lokality\\wwwroot\\App_Data\\úloh
+### <a name="deployment-error-directory-not-empty-dhomesitewwwrootappdatajobs"></a>Chyba nasazení: adresář není prázdný ' D:\\domácí\\lokality\\wwwroot\\App_Data\\úloh.
 
-Pokud vaší webové aplikace na prostředek webové aplikace jsou opětovného nasazení s profileru povolené, může se zobrazit zpráva podobná této:
+Pokud nasazujete webovou aplikaci do prostředku webové aplikace s Profiler povolené, může se zobrazit zpráva podobná následující:
 
-*Adresář není prázdný ' D:\\domácí\\lokality\\wwwroot\\App_Data\\úloh*
+*Adresář není prázdný ' D:\\domácí\\lokality\\wwwroot\\App_Data\\úloh.*
 
-K této chybě dojde, je-li spustit nasazení webu z skripty nebo kanálu nasazení služby Visual Studio Team Services. Řešení je přidat následující parametry další nasazení do úlohy nasazení webu:
+K této chybě dochází při spuštění nasazení webu pomocí skriptů nebo z kanálu nasazení služby Visual Studio Team Services. Řešením je přidat následující parametry další nasazení do úlohy nasazení webu:
 
 ```
 -skip:Directory='.*\\App_Data\\jobs\\continuous\\ApplicationInsightsProfiler.*' -skip:skipAction=Delete,objectname='dirPath',absolutepath='.*\\App_Data\\jobs\\continuous$' -skip:skipAction=Delete,objectname='dirPath',absolutepath='.*\\App_Data\\jobs$'  -skip:skipAction=Delete,objectname='dirPath',absolutepath='.*\\App_Data$'
 ```
 
-Tyto parametry odstranit složku, která je používána profileru Application Insights a odblokování znovu ho zaveďte proces. Neovlivňují profileru instanci, která je aktuálně spuštěna.
-
+Tyto parametry odstranit složku, která používají Application Insights Profiler a odblokování procesu opětovného nasazení. Neovlivňují Profiler instanci, na kterém aktuálně běží.
 
 ## <a name="manual-installation"></a>Ruční instalace
 
-Když konfigurujete profileru, jsou provedeny aktualizace nastavení webové aplikace. Aktualizace můžete použít ručně, pokud to vyžaduje prostředí. Příkladem může být, že vaše aplikace běží v prostředí webové aplikace pro PowerApps.
+Když konfigurujete Profiler, jsou provedeny aktualizace nastavení webové aplikace. Pokud vaše prostředí vyžaduje ji můžete ručně aplikovat aktualizace. Příkladem může být, že vaše aplikace běží v prostředí s Web Apps pro PowerApps.
 
-1. V **ovládací prvek webu aplikace** open podokně **nastavení**.
-2. Nastavit **rozhraní .net Framework verze** k **4.6**.
-3. Nastavit **Always On** k **na**.
-4. Přidat **APPINSIGHTS_INSTRUMENTATIONKEY** aplikace nastavení a nastavte hodnotu na stejný klíč instrumentace, který je používán sady SDK.
-5. Otevřete **pokročilé nástroje**.
-6. Vyberte **přejděte** otevřete web Kudu.
-7. Na webu Kudu vyberte **lokality rozšíření**.
-8. Nainstalujte **Application Insights** z Galerie Azure webové aplikace.
-9. Restartování webové aplikace.
+1. V **webový ovládací prvek aplikace** otevřeným podoknem **nastavení**.
+2. Nastavte **rozhraní .net Framework verze** k **v4.6**.
+3. Nastavte **Always On** k **na**.
+4. Přidat **APPINSIGHTS_INSTRUMENTATIONKEY** aplikace nastavení a nastavte hodnotu na stejný klíč instrumentace, který se používá sada SDK.
+5. Otevřít **Rozšířené nástroje**.
+6. Vyberte **Přejít** otevřete web Kudu.
+7. Na webu Kudu, vyberte **rozšířením webu**.
+8. Nainstalujte **Application Insights** z Galerie Azure Web Apps.
+9. Restartujte webovou aplikaci.
 
-## <a id="profileondemand"></a> Aktivovat ručně profileru
-Když jsme vyvinut profileru, jsme přidali rozhraní příkazového řádku, abychom může otestovat profileru na aplikační služby. Pomocí této stejné rozhraní, uživatelé můžete také upravit, jak profileru spustí. Na vysoké úrovni používá profileru systému webové aplikace Kudu ke správě profilace na pozadí. Při instalaci rozšíření Application Insights, vytvoříme nepřetržité webové úlohy který je hostitelem profileru. Tato technologie používáme k vytvoření nové webové úlohy, kterou si můžete přizpůsobit svým potřebám.
+## <a id="profileondemand"></a> Ručně aktivovat Profiler
 
-Tato část vysvětluje, jak:
+Profiler lze spustit ručně kliknutím na jedno tlačítko. Předpokládejme, že jste spustili v testu výkonnosti webu. Budete potřebovat trasování, které vám pomohou pochopit, jaký je výkon vaší webové aplikace v zatížení. Máte kontrolu nad při zaznamenat trasování je zásadní, protože nevíte, kdy bude spuštěn zátěžový test, ale náhodný vzorkovací přijít.
+Následující postup ukazuje, jak v tomto scénáři funguje:
 
-* Vytvoříte webovou úlohu, která můžete spustit profileru pro dvě minuty. stisknutím tlačítka.
-* Vytvoříte webovou úlohu, která můžete naplánovat profileru ke spuštění.
-* Nastavit argumenty profileru.
+### <a name="optional-step-1-generate-traffic-to-your-web-app-by-starting-a-web-performance-test"></a>(Volitelné) Krok 1: Vytvořte provozu do vaší webové aplikace tím, že spuštění testu výkonnosti webu
 
+Pokud vaše webová aplikace už obsahuje příchozí provoz nebo pokud chcete jen vygenerovat ručně provoz, přeskočte tuto část a přejděte ke kroku 2.
 
-### <a name="set-up"></a>Nastavení
-První Seznamte se s řídicího panelu webové úlohy. V části **nastavení**, vyberte **WebJobs** kartě.
+Přejděte na portál Application Insights **konfigurovat > testování výkonu**. Klikněte na tlačítko Spustit nový test výkonnosti.
+![Vytvořit nový test výkonnosti][create-performance-test]
 
-![okno webové úlohy](./media/app-insights-profiler/webjobs-blade.png)
+V **nový test výkonnosti** podokně nakonfigurovat cílová adresa URL testu. Přijměte všechna výchozí nastavení a spuštění zátěžového testu.
 
-Jak můžete vidět, tento řídicí panel zobrazuje všechny webové úlohy, které jsou aktuálně nainstalovány na váš web. Můžete zobrazit ApplicationInsightsProfiler2 webovou úlohu, která je spuštěná úloha profileru. Toto je, kde vytvoříme nové webové úlohy pro ruční a naplánované profilace.
+![Konfigurace zátěžového testu][configure-performance-test]
 
-Chcete-li získat binární soubory, které potřebujete, postupujte takto:
+Zobrazí se že nový test se do fronty zařadí nejprve, za nímž následuje ve stavu Probíhá.
 
-1.  Na webu Kudu na **nástroje pro vývoj** vyberte **Rozšířené nástroje** s Kudu logo a pak vyberte **přejděte**.  
-   Otevře novou lokalitu a jste přihlášeni automaticky.
-2.  Pokud chcete stáhnout profileru binární soubory, přejděte do Průzkumníka souborů prostřednictvím **ladění konzoly** > **CMD**, nacházející se v horní části stránky.
-3.  Vyberte **lokality** > **wwwroot** > **App_Data** > **úlohy**  >   **Průběžné**.  
-   Měli byste vidět složku s názvem *ApplicationInsightsProfiler2*. 
-4. V levém složky, vyberte **Stáhnout** ikonu.  
-   Tato akce stáhne *ApplicationInsightsProfiler2.zip* souboru. Doporučujeme vytvořit vyčistit adresář přesunout tento archiv zip.
+![zátěžový test je odeslána a zařazeny do fronty][load-test-queued]
 
-### <a name="setting-up-the-web-job-archive"></a>Nastavení webové úlohy archivu
-Když přidáte novou webovou úlohu do webové stránky Azure, můžete vytvořit v podstatě archivu zip s *run.cmd* souboru uvnitř. *Run.cmd* souboru řekne systému webové úlohy, jak postupovat při spuštění webové úlohy.
+![v průběhu je spuštěn zátěžový test][load-test-in-progress]
 
-1.  Vytvořte novou složku (například *RunProfiler2Minutes*).
-2.  Zkopírujte soubory z extrahované *ApplicationInsightProfiler2* složku do této nové složky.
-3.  Vytvořte novou *run.cmd* souboru.  
-    Pro usnadnění práce můžete otevřít pracovní složky ve Visual Studio Code před zahájením.
-4.  V souboru, přidejte příkaz `ApplicationInsightsProfiler.exe start --engine-mode immediate --single --immediate-profiling-duration 120`. Příkazy jsou popsány takto:
+### <a name="step-2-start-profiler-on-demand"></a>Krok 2: Spuštění profilování na vyžádání
 
-    * `start`: Informuje profileru ke spuštění.  
-    * `--engine-mode immediate`: Informuje profileru zahájíte profilace okamžitě.  
-    * `--single`: Informuje profileru ke spuštění a automaticky zastaví.  
-    * `--immediate-profiling-duration 120`: Informuje profileru ke spuštění 120 sekundách nebo 2 minut.
+Jakmile je spuštěn zátěžový test, můžeme začít profiler k zaznamenání trasování ve webové aplikaci, zatímco přijímá zatížení.
+Přejděte do podokna Profiler konfigurace:
 
-5.  Uložte provedené změny.
-6.  Archivovat složku pravým tlačítkem myši a potom výběrem **poslat** > **komprimované složky (ZIP)**.  
-   Tato akce vytvoří soubor .zip, který používá název složky.
+![Nakonfigurujte záznamy v podokně profileru][configure-profiler-entry]
 
-![Spuštění příkazu profileru](./media/app-insights-profiler/start-profiler-command.png)
+Na **nakonfigurujte Profiler podokně**, je **profilu nyní** tlačítko aktivovat profiler na všech instancích propojené webové aplikace. Kromě toho jsou k dispozici viditelnost na při profiler byl spuštěn v minulosti.
 
-Nyní jste vytvořili soubor webové úlohy .zip, který můžete použít k nastavení webové úlohy ve vaší lokalitě.
+![Profiler na vyžádání][profiler-on-demand]
 
-### <a name="add-a-new-web-job"></a>Přidejte novou webovou úlohu
-V této části přidejte novou webovou úlohu na váš web. Následující příklad ukazuje, jak přidat ručně spouštěná webovou úlohu. Po přidání ručně spouštěná webovou úlohu, proces je skoro stejný pro naplánovanou webovou úlohu.
+Zobrazí se oznámení a stav změnit stav spuštění profileru.
 
-1.  Přejděte na **webové úlohy** řídicího panelu.
-2.  Na panelu nástrojů vyberte **přidat**.
-3.  Zadejte název webové úlohy.  
-    Pro přehlednost, může pomoct, aby odpovídal názvu vašem archivu a otevřete ho pro různé verze *run.cmd* souboru.
-4.  V **nahrávání souborů** oblasti formuláře, vyberte **otevření souboru** ikonu a pak vyhledejte soubor .zip, který jste vytvořili v předchozí části.
+### <a name="step-3-view-traces"></a>Krok 3: Zobrazení trasování
 
-    a.  V **typ** vyberte **aktivované**.  
-    b.  V **aktivační události** vyberte **ruční**.
+Po doběhnutí profileru, postupujte podle pokynů v oznámení pro přechod na okno a zobrazení trasování výkonu.
 
-5.  Vyberte **OK**.
+### <a name="troubleshooting-on-demand-profiler"></a>Řešení potíží s profilování na vyžádání
 
-![Spuštění příkazu profileru](./media/app-insights-profiler/create-webjob.png)
+V některých případech může se zobrazit chybová zpráva vypršení časového limitu Profiler po relaci na vyžádání:
 
-### <a name="run-profiler"></a>Spustit profileru
+![Chyba časového limitu Profiler][profiler-timeout]
 
-Teď, když máte nové webovou úlohu, která můžete spouštět ručně, můžete zkusit spustit podle pokynů v této části.
+Může existovat dva důvody, proč se zobrazí tato chyba:
 
-Návrh, může mít jen jeden *ApplicationInsightsProfiler.exe* proces, který běží na počítači v daném okamžiku. Ano, než začnete, zakažte *souvislý* webovou úlohu z tohoto řídicího panelu. 
-1. Vyberte řádek s novou webovou úlohu a pak vyberte **Zastavit**. 
-2. Na panelu nástrojů vyberte **aktualizovat**a potvrďte, že stav označuje, že je úloha zastavena.
-3. Vyberte řádek s novou webovou úlohu a pak vyberte **spustit**.
-4. Vyberte řádek vybraný, na panelu nástrojů **protokoly** příkaz.  
-    Tím se otevře řídicí panel webové úlohy pro novou webovou úlohu a vypíše nejnovější spustí a jejich výsledky.
-5. Vyberte instanci spustit, kterou jste právě spuštěna.  
-    Pokud jste úspěšně aktivuje novou úlohu web, můžete zobrazit některé diagnostické protokoly pocházejících z profileru potvrzující, že profilace bylo zahájeno.
+1. Relace profilování na vyžádání bylo úspěšné, ale trvalo déle zpracovat shromážděná data, Application Insights. Pokud data nebyla dokončena, zpracování v 15minutovém, na portálu se zobrazí zpráva vypršení časového limitu. Když po chvíli se zobrazí trasování Profiler. V takovém případě prosím jen chybovou zprávu prozatím ignorujte. Aktivně pracujeme na opravě
 
-### <a name="things-to-consider"></a>Co je třeba zvážit
+2. Webové aplikace má starší verzi agenta Profiler, který nemá žádné funkce na vyžádání. Pokud jste dříve povolili profil Application Insights, je pravděpodobné, že je potřeba aktualizovat váš Profiler agenta chcete začít používat funkce na vyžádání.
+  
+Postupujte podle těchto kroků zkontrolujte a nainstalujte nejnovější Profiler:
 
-Když tato metoda je relativně jednoduché, zvažte následující:
+1. Přejděte do nastavení aplikace služby App a zaškrtněte, pokud následující nastavení mají hodnotu:
+    * **APPINSIGHTS_INSTRUMENTATIONKEY**: nahraďte správné Instrumentační klíč Application Insights.
+    * **APPINSIGHTS_PORTALINFO**: TECHNOLOGIE ASP.NET
+    * **APPINSIGHTS_PROFILERFEATURE_VERSION**: 1.0.0 Pokud některé z těchto nastavení nejsou nastavená, přejděte do podokna povolení Application Insights se nainstalovat nejnovější rozšíření lokality.
 
-* Protože webové úlohy nespravuje naši službu, máme žádný způsob, jak aktualizovat agenta binární soubory pro webové úlohy. Jsme nyní není k dispozici na stránce stabilní stahování pro naše binární soubory, tak, aby jediný způsob, jak získat nejnovější binární soubory aktualizace rozšíření a metodou z *souvislý* složky, které se v předchozích krocích.
+2. Přejděte do podokna Application Insights na portálu služby App Services.
 
-* Protože tento proces využívá argumenty příkazového řádku, které byly původně navrženy pro vývojáře, nikoli koncoví uživatelé, může v budoucnu změnit argumenty. Mějte na paměti možné změn při upgradu. Neměl by být mnohem problému, protože můžete přidat webovou úlohu, spusťte ji a testování, aby se ujistěte, že pracuje. Nakonec vytvoříme uživatelského rozhraní pro toto zpracování bez proces ručního nastavení.
+    ![Povolit Application Insights na portálu služby App Services][enable-app-insights]
 
-* Tato funkce webové úlohy webových aplikací je jedinečný. Když je spuštěna webovou úlohu, zajišťuje, že váš proces má stejné proměnné prostředí a nastavení aplikace, které budou mít vašeho webu. To znamená, že není potřeba předat klíč instrumentace pomocí příkazového řádku profileru. Profileru by měl vyzvedávat klíč instrumentace z prostředí. Ale pokud chcete spustit profileru vaší dev pole nebo na počítači mimo webové aplikace, budete muset zadat kód instrumentace. Můžete to provést pomocí předání argument, `--ikey <instrumentation-key>`. Tato hodnota musí odpovídat klíč instrumentace, který vaše aplikace používá. Výstup protokolu profileru poznáte, které ikey profileru začít s a jestli jsme zjistili aktivity z tento klíč instrumentace při jsme byly profilace.
+3. Pokud se zobrazí na tlačítko 'Aktualizovat' v následující stránku, klikněte na něj aktualizovat rozšíření webu Application Insights, který nainstaluje nejnovější verzi agenta Profiler.
+![Aktualizovat rozšíření webu][update-site-extension]
 
-* Prostřednictvím webové háku můžete spustit ručně aktivované webové úlohy. Tuto adresu URL můžete získat tak, že kliknete pravým tlačítkem na webovou úlohu na řídicím panelu a zobrazení vlastností. Nebo na panelu nástrojů můžete vybrat **vlastnosti** po výběru webovou úlohu v tabulce. Tento přístup otevírá nekonečné možnosti, jako je například spouštění profileru z vašeho kanálu CI/CD (např. služby VSTS) nebo něco podobného jako Microsoft Flow (https://flow.microsoft.com/en-us/). Nakonec, výběr závisí na tom, jak složitá, který chcete provést vaše *run.cmd* soubor (také může být *run.ps1* soubor), ale možnost je k dispozici.
+4. Pak klikněte na tlačítko **změnit** chcete zajistit, Profiler zapnutý a vyberte **OK** a uložte změny.
+
+    ![Změnit a uložit app insights][change-and-save-appinsights]
+
+5. Přejděte zpět na **nastavení aplikace** jsou nastaveny kartu pro App Service a zkontrolujte následující položky nastavení aplikace:
+    * **APPINSIGHTS_INSTRUMENTATIONKEY**: nahraďte správné Instrumentační klíč pro službu application insights.
+    * **APPINSIGHTS_PORTALINFO**: TECHNOLOGIE ASP.NET
+    * **APPINSIGHTS_PROFILERFEATURE_VERSION**: 1.0.0
+
+    ![nastavení aplikace pro profiler][app-settings-for-profiler]
+
+6. Volitelně můžete zaškrtnutím verze rozšíření a ujistěte se, že není k dispozici žádná aktualizace.
+
+    ![Vyhledat aktualizace rozšíření][check-for-extension-update]
 
 ## <a name="next-steps"></a>Další postup
 
 * [Práce s Application Insights v sadě Visual Studio](https://docs.microsoft.com/azure/application-insights/app-insights-visual-studio)
 
 [appinsights-in-appservices]:./media/app-insights-profiler/AppInsights-AppServices.png
+[Enablement UI]: ./media/app-insights-profiler/Enablement_UI.png
+[profiler-app-setting]:./media/app-insights-profiler/profiler-app-setting.png
 [performance-blade]: ./media/app-insights-profiler/performance-blade.png
 [performance-blade-examples]: ./media/app-insights-profiler/performance-blade-examples.png
 [performance-blade-v2-examples]:./media/app-insights-profiler/performance-blade-v2-examples.png
@@ -328,3 +320,15 @@ Když tato metoda je relativně jednoduché, zvažte následující:
 [enable-profiler-banner]: ./media/app-insights-profiler/enable-profiler-banner.png
 [disable-profiler-webjob]: ./media/app-insights-profiler/disable-profiler-webjob.png
 [linked app services]: ./media/app-insights-profiler/linked-app-services.png
+[create-performance-test]: ./media/app-insights-profiler/new-performance-test.png
+[configure-performance-test]: ./media/app-insights-profiler/configure-performance-test.png
+[load-test-queued]: ./media/app-insights-profiler/load-test-queued.png
+[load-test-in-progress]: ./media/app-insights-profiler/load-test-inprogress.png
+[profiler-on-demand]: ./media/app-insights-profiler/Profiler-on-demand.png
+[configure-profiler-entry]: ./media/app-insights-profiler/configure-profiler-entry.png
+[enable-app-insights]: ./media/app-insights-profiler/enable-app-insights-blade-01.png
+[update-site-extension]: ./media/app-insights-profiler/update-site-extension-01.png
+[change-and-save-appinsights]: ./media/app-insights-profiler/change-and-save-appinsights-01.png
+[app-settings-for-profiler]: ./media/app-insights-profiler/appsettings-for-profiler-01.png
+[check-for-extension-update]: ./media/app-insights-profiler/check-extension-update-01.png
+[profiler-timeout]: ./media/app-insights-profiler/profiler-timeout.png

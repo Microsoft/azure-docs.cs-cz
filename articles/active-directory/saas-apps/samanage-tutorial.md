@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s Samanage | Microsoft Docs'
+title: 'Kurz: Integrace Azure Active Directory se službou Samanage | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Samanage.
 services: active-directory
 documentationCenter: na
@@ -14,201 +14,201 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeedes
-ms.openlocfilehash: e338dda7ffaf25a80663c2939fd42342b4049883
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: c90c0c2f831a622b54a56db5c9a3d4efb2f57eaa
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36222885"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39041853"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-samanage"></a>Kurz: Azure Active Directory integrace s Samanage
+# <a name="tutorial-azure-active-directory-integration-with-samanage"></a>Kurz: Integrace Azure Active Directory se službou Samanage
 
-V tomto kurzu zjistěte, jak integrovat Samanage s Azure Active Directory (Azure AD).
+V tomto kurzu se dozvíte, jak integrovat Samanage s Azure Active Directory (Azure AD).
 
-Integrace Samanage s Azure AD poskytuje následující výhody:
+Samanage integraci se službou Azure AD poskytuje následující výhody:
 
 - Můžete řídit ve službě Azure AD, který má přístup k Samanage
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k Samanage (jednotné přihlášení) s jejich účty Azure AD
-- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
+- Můžete povolit uživatelům, aby automaticky získat přihlášení k Samanage (Single Sign-On) s jejich účty Azure AD
+- Můžete spravovat své účty na jediném místě – na webu Azure portal
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
 Konfigurace integrace Azure AD s Samanage, potřebujete následující položky:
 
-- Předplatné služby Azure AD
-- Samanage jednotné přihlašování povolené předplatné
+- S předplatným služby Azure AD
+- Samanage jednotného přihlašování povolená předplatného
 
 > [!NOTE]
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
 
-- Nepoužívejte provozním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební verze jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).
+- Nepoužívejte produkčním prostředí, pokud to není nutné.
+- Pokud nemáte prostředí zkušební verzi Azure AD, můžete získat měsíční zkušební [tady](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání Samanage z Galerie
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
 ## <a name="adding-samanage-from-the-gallery"></a>Přidání Samanage z Galerie
-Při konfiguraci integrace Samanage do služby Azure AD musíte přidat do seznamu spravovaných aplikací SaaS Samanage z galerie.
+Konfigurace integrace Samanage do služby Azure AD, budete muset přidat Samanage z Galerie na váš seznam spravovaných aplikací SaaS.
 
-**Pokud chcete přidat Samanage z galerie, proveďte následující kroky:**
+**Chcete-li přidat Samanage z galerie, postupujte následovně:**
 
-1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
+1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![Aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Aplikace][3]
 
 4. Do vyhledávacího pole zadejte **Samanage**.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/samanage-tutorial/tutorial_samanage_search.png)
+    ![Vytváří se testovací uživatele služby Azure AD](./media/samanage-tutorial/tutorial_samanage_search.png)
 
-5. Na panelu výsledků vyberte **Samanage**a potom klikněte na **přidat** tlačítko Přidat aplikaci.
+5. Na panelu výsledků vyberte **Samanage**a potom klikněte na tlačítko **přidat** tlačítko pro přidání aplikace.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/samanage-tutorial/tutorial_samanage_addfromgallery.png)
+    ![Vytváří se testovací uživatele služby Azure AD](./media/samanage-tutorial/tutorial_samanage_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
-V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s Samanage podle testovacího uživatele názvem "Britta Simon".
+V této části Konfigurace a testování Azure AD jednotné přihlašování pomocí Samanage podle testovacího uživatele nazývá "Britta Simon".
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v Samanage je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v Samanage musí navázat.
+Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšky v Samanage je pro uživatele ve službě Azure AD. Jinými slovy vztah odkazu mezi uživatele služby Azure AD a související uživatelské v Samanage potřeba navázat.
 
-V Samanage, přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** k navázání vztahu odkazu.
+V Samanage, přiřaďte hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** a tím vytvoří vztah odkazu.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Samanage, je třeba dokončit následující stavební bloky:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Samanage, které potřebujete k dokončení následujících stavebních bloků:
 
-1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
-2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele Samanage](#creating-a-samanage-test-user)**  – Pokud chcete mít protějšek Britta Simon v Samanage propojeném s Azure AD reprezentace daného uživatele.
-4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
+1. **[Konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+2. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytvoření zkušebního uživatele Samanage](#creating-a-samanage-test-user)**  – Pokud chcete mít protějšek Britta Simon Samanage, který je propojený s Azure AD reprezentace uživatele.
+4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace Azure AD jednotné přihlašování
+### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci Samanage.
+V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování v aplikaci Samanage.
 
 **Ke konfiguraci Azure AD jednotné přihlašování s Samanage, proveďte následující kroky:**
 
-1. Na portálu Azure na **Samanage** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. Na webu Azure Portal na **Samanage** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
 
-    ![Konfigurovat jednotné přihlašování][4]
+    ![Konfigurace jednotného přihlašování][4]
 
-2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
+2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
-    ![Konfigurovat jednotné přihlašování](./media/samanage-tutorial/tutorial_samanage_samlbase.png)
+    ![Konfigurace jednotného přihlašování](./media/samanage-tutorial/tutorial_samanage_samlbase.png)
 
-3. Na **Samanage domény a adresy URL** část, proveďte následující kroky:
+3. Na **Samanage domény a adresy URL** části, proveďte následující kroky:
 
-    ![Konfigurovat jednotné přihlašování](./media/samanage-tutorial/tutorial_samanage_url.png)
+    ![Konfigurace jednotného přihlašování](./media/samanage-tutorial/tutorial_samanage_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<Company Name>.samanage.com/saml_login/<Company Name>`
+    a. V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<Company Name>.samanage.com/saml_login/<Company Name>`
 
-    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<Company Name>.samanage.com`
+    b. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<Company Name>.samanage.com`
 
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor, který je vysvětlen později v tomto kurzu. Obraťte se na podrobnosti [tým podpory Samanage klienta](https://www.samanage.com/support).    
+    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty se skutečné přihlašovací adresu URL a identifikátor, který je vysvětlen později v tomto kurzu. Další podrobnosti získáte [tým podpory Samanage klienta](https://www.samanage.com/support).    
  
-4. Na **SAML podpisový certifikát** klikněte na tlačítko **Certificate(Base64)** a potom uložte soubor certifikátu v počítači.
+4. Na **podpisový certifikát SAML** klikněte na tlačítko **Certificate(Base64)** a uložte soubor certifikátu v počítači.
 
-    ![Konfigurovat jednotné přihlašování](./media/samanage-tutorial/tutorial_samanage_certificate.png) 
+    ![Konfigurace jednotného přihlašování](./media/samanage-tutorial/tutorial_samanage_certificate.png) 
 
 5. Klikněte na tlačítko **Uložit** tlačítko.
 
-    ![Konfigurovat jednotné přihlašování](./media/samanage-tutorial/tutorial_general_400.png)
+    ![Konfigurace jednotného přihlašování](./media/samanage-tutorial/tutorial_general_400.png)
 
-6. Na **Samanage konfigurace** klikněte na tlačítko **konfigurace Samanage** otevřete **konfigurovat přihlášení** okno. Kopírování **Sign-Out adresy URL a SAML Entity ID** z **Stručná referenční příručka části.**
+6. Na **Samanage konfigurace** klikněte na tlačítko **nakonfigurovat Samanage** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **odhlašování adresy URL a SAML Entity ID** z **Stručná referenční příručka oddílu.**
 
-    ![Konfigurovat jednotné přihlašování](./media/samanage-tutorial/tutorial_samanage_configure.png) 
+    ![Konfigurace jednotného přihlašování](./media/samanage-tutorial/tutorial_samanage_configure.png) 
 
-7. V okně prohlížeče jiný web Přihlaste se jako správce k serveru vaší společnosti Samanage.
+7. V okně jiné webové prohlížeče přihlaste jako správce serveru vaší společnosti Samanage.
 
-8. Klikněte na tlačítko **řídicí panel** a vyberte **instalační program** v levém navigačním podokně.
+8. Klikněte na tlačítko **řídicí panel** a vyberte **nastavení** v levém navigačním podokně.
    
-    ![Řídicí panel](./media/samanage-tutorial/tutorial_samanage_001.png "řídicí panel")
+    ![Řídicí panel](./media/samanage-tutorial/tutorial_samanage_001.png "řídicího panelu")
 
 9. Klikněte na tlačítko **jednotného přihlašování**.
    
     ![Jednotné přihlašování](./media/samanage-tutorial/tutorial_samanage_002.png "jednotného přihlašování")
 
-10. Přejděte na **přihlášení pomocí SAML** část, proveďte následující kroky:
+10. Přejděte do **přihlášení pomocí SAML** části, proveďte následující kroky:
    
     ![Přihlášení pomocí SAML](./media/samanage-tutorial/tutorial_samanage_003.png "přihlášení pomocí SAML")
  
-    a. Klikněte na tlačítko **povolit jednotné přihlašování s SAML**.  
+    a. Klikněte na tlačítko **povolit jednotné přihlašování pomocí SAML**.  
  
-    b. V **adresa URL poskytovatele Identity** textovému poli, vložte hodnotu **SAML Entity ID** který jste zkopírovali z portálu Azure.    
+    b. V **adresa URL zprostředkovatele Identity** textového pole vložte hodnotu **SAML Entity ID** zkopírovanou z webu Azure portal.    
  
-    c. Potvrďte **přihlašovací adresa URL** odpovídá **přihlašovací adresa URL** z **Samanage domény a adresy URL** části na portálu Azure.
+    c. Potvrďte **přihlašovací adresa URL** odpovídá **přihlašovací adresa URL** z **Samanage domény a adresy URL** části webu Azure Portal.
  
-    d. V **adresy URL odhlašovací** textovému poli, zadejte hodnotu **Sign-Out URL** který jste zkopírovali z portálu Azure.
+    d. V **odhlašovací adresa URL** textového pole zadejte hodnotu **odhlašování URL** zkopírovanou z webu Azure portal.
  
-    e. V **SAML vystavitele** textové pole, zadejte id URI aplikace nastavte u poskytovatele identit.
+    e. V **SAML vystavitele** textové pole, zadejte identifikátor URI id aplikace nastavení ve zprostředkovateli identity.
  
-    f. Otevření kódovaného certifikátu kódování base-64 stáhli z portálu Azure v programu Poznámkový blok, zkopírujte obsah ho do schránky a vložte jej do **vložit vašeho poskytovatele identit x.509 certifikátu níže** textové pole.
+    f. Otevření certifikátu kódováním base-64 stáhnout z webu Azure portal v programu Poznámkový blok, zkopírujte obsah ho do schránky a a vložte ho do **vložte vašeho zprostředkovatele Identity x.509 Certificate níže** textového pole.
  
-    g. Klikněte na tlačítko **vytváření uživatelů, pokud neexistují v Samanage**.
+    g. Klikněte na tlačítko **vytvořit uživatele, pokud ještě neexistují v Samanage**.
  
-    h. Klikněte na tlačítko **aktualizace**.
+    h. Při navazování připojení k serveru SQL Server došlo k chybě související se sítí nebo s instancí.
 
 > [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
  
-### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
-Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
+### <a name="creating-an-azure-ad-test-user"></a>Vytváří se testovací uživatele služby Azure AD
+Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-![Vytvořit uživatele Azure AD][100]
+![Vytvoření uživatele Azure AD][100]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
 
-1. V **portál Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
+1. V **webu Azure portal**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/samanage-tutorial/create_aaduser_01.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/samanage-tutorial/create_aaduser_01.png) 
 
 2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
-    ![Vytváření testovacího uživatele Azure AD](./media/samanage-tutorial/create_aaduser_02.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/samanage-tutorial/create_aaduser_02.png) 
 
-3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** horní dialogové okno.
+3. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
  
-    ![Vytváření testovacího uživatele Azure AD](./media/samanage-tutorial/create_aaduser_03.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/samanage-tutorial/create_aaduser_03.png) 
 
-4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
+4. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
  
-    ![Vytváření testovacího uživatele Azure AD](./media/samanage-tutorial/create_aaduser_04.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/samanage-tutorial/create_aaduser_04.png) 
 
-    a. V **název** textovému poli, typ **BrittaSimon**.
+    a. V **název** textové pole, typ **BrittaSimon**.
 
-    b. V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.
+    b. V **uživatelské jméno** textové pole, typ **e-mailová adresa** z BrittaSimon.
 
-    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
+    c. Vyberte **zobrazit heslo** a zapište si hodnotu **heslo**.
 
     d. Klikněte na možnost **Vytvořit**.
  
 ### <a name="creating-a-samanage-test-user"></a>Vytvoření zkušebního uživatele Samanage
 
-Pokud chcete povolit uživatelům Azure AD přihlášení k Samanage, musí být zřízená do Samanage.  
-V případě Samanage zřizování je ruční úloha.
+Přihlaste se k Samanage Azure AD uživatelům umožnit, musí být poskytnuty do Samanage.  
+V případě Samanage zřizování se ruční úlohy.
 
-**K poskytnutí uživatelského účtu, proveďte následující kroky:**
+**K poskytnutí uživatelského účtu, postupujte následovně:**
 
-1. Přihlaste se k serveru vaší společnosti Samanage jako správce.
+1. Přihlášení na webu společnosti Samanage jako správce.
 
-2. Klikněte na tlačítko **řídicí panel** a vyberte **instalační program** v levém navigačním podokně.
+2. Klikněte na tlačítko **řídicí panel** a vyberte **nastavení** v levém navigačním podokně.
    
     ![Instalační program](./media/samanage-tutorial/tutorial_samanage_001.png "instalační program")
 
-3. Klikněte **uživatelé** karta
+3. Klikněte na tlačítko **uživatelé** kartu
    
     ![Uživatelé](./media/samanage-tutorial/tutorial_samanage_006.png "uživatelů")
 
@@ -216,53 +216,53 @@ V případě Samanage zřizování je ruční úloha.
    
     ![Nový uživatel](./media/samanage-tutorial/tutorial_samanage_007.png "nového uživatele")
 
-5. Typ **název** a **e-mailovou adresu** účtu Azure Active Directory, které chcete zřídit a klikněte na tlačítko **vytvořit uživateli**.
+5. Typ **název** a **e-mailovou adresu** chcete zřídit a klikněte na účtu služby Azure Active Directory **vytvořit uživatele**.
    
     ![Vytvoření uživatele](./media/samanage-tutorial/tutorial_samanage_008.png "vytvoření uživatele")
    
    >[!NOTE]
-   >Držitel účtu Azure Active Directory bude dostávat e-mailu a postupujte podle odkaz potvrďte svůj účet, pak se změní na aktivní. Můžete použít všechny ostatní Samanage uživatele účtu nástroje pro tvorbu nebo rozhraní API poskytované Samanage zřídit služby Azure Active Directory uživatelské účty.
+   >Držitel účtu Azure Active Directory bude dostávat e-mailu a odkaz potvrďte svůj účet, pak se změní na aktivní. Můžete použít jakékoli jiné Samanage uživatelského účtu nástrojů pro vytváření nebo rozhraní API poskytovaných Samanage ke zřízení služby Azure Active Directory uživatelské účty.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu Samanage.
+V této části je povolit Britta Simon k udělení přístupu k Samanage použití Azure jednotného přihlašování.
 
 ![Přiřadit uživatele][200] 
 
-**Pokud chcete přiřadit Britta Simon Samanage, proveďte následující kroky:**
+**Přiřadit Samanage Britta Simon, proveďte následující kroky:**
 
-1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
+1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
 2. V seznamu aplikací vyberte **Samanage**.
 
-    ![Konfigurovat jednotné přihlašování](./media/samanage-tutorial/tutorial_samanage_app.png) 
+    ![Konfigurace jednotného přihlašování](./media/samanage-tutorial/tutorial_samanage_app.png) 
 
 3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.
+4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
+5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
+6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
+7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="testing-single-sign-on"></a>Testování jednotné přihlašování
+### <a name="testing-single-sign-on"></a>Testování jednotného přihlašování
 
-V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
+V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Když kliknete na dlaždici Samanage na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci Samanage.
-Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](../active-directory-saas-access-panel-introduction.md).
+Po kliknutí na dlaždici Samanage na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci Samanage.
+Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](tutorial-list.md)
+* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

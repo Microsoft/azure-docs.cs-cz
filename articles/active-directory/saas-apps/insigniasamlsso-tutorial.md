@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory pomocí jednotného přihlašování SAML odznaky | Microsoft Docs'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a jednotné přihlašování SAML odznaky.
+title: 'Kurz: Integrace Azure Active Directory s jednotným Přihlašováním SAML odznaky | Dokumentace Microsoftu'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a odznaky SAML SSO.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,147 +15,147 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/28/2017
 ms.author: jeedes
-ms.openlocfilehash: 04b9a34c355041b2c8e5ec0dcdb614fb2c713fee
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 652462d78608abcb551673d1d4fdcf3f56a20a6d
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36217704"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39046885"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-insignia-saml-sso"></a>Kurz: Integrace Azure Active Directory pomocí jednotného přihlašování SAML odznaky
+# <a name="tutorial-azure-active-directory-integration-with-insignia-saml-sso"></a>Kurz: Integrace Azure Active Directory s jednotným Přihlašováním SAML odznaky
 
-V tomto kurzu zjistěte, jak integrovat jednotné přihlašování SAML odznaky s Azure Active Directory (Azure AD).
+V tomto kurzu se dozvíte, jak integrovat odznaky SAML SSO s Azure Active Directory (Azure AD).
 
-Integrace jednotné přihlašování SAML odznaky s Azure AD poskytuje následující výhody:
+Integrace jednotného přihlašování SAML odznaky s Azure AD poskytuje následující výhody:
 
-- Můžete ovládat ve službě Azure AD, který má přístup k jednotné přihlašování SAML odznaky.
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k odznaky jednotné přihlašování SAML (jednotné přihlášení) s jejich účty Azure AD.
-- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure.
+- Můžete řídit ve službě Azure AD, který má přístup k odznaky SAML SSO.
+- Uživatele, aby automaticky získat přihlášení k odznaky SAML SSO (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD.
+- Můžete spravovat své účty na jediném místě – na webu Azure portal.
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Ke konfiguraci integrace služby Azure AD pomocí jednotného přihlašování SAML odznaky, potřebujete následující položky:
+Konfigurace integrace Azure AD s jednotným Přihlašováním SAML odznaky, potřebujete následující položky:
 
-- Předplatné služby Azure AD
-- Jednotné přihlašování SAML odznaky jednotné přihlašování povolené předplatné
+- S předplatným služby Azure AD
+- SAML SSO odznaky jednotného přihlašování povolená předplatného
 
 > [!NOTE]
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
 
-- Nepoužívejte provozním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verze Azure AD, můžete [získat zkušební verzi jeden měsíc](https://azure.microsoft.com/pricing/free-trial/).
+- Nepoužívejte produkčním prostředí, pokud to není nutné.
+- Pokud nemáte prostředí zkušební verzi Azure AD, můžete si [získat měsíční zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání jednotné přihlašování SAML odznaky z Galerie
+1. Přidání jednotného přihlašování SAML odznaky z Galerie
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
-## <a name="adding-insignia-saml-sso-from-the-gallery"></a>Přidání jednotné přihlašování SAML odznaky z Galerie
-Při konfiguraci integrace odznaky SAML přihlašování do služby Azure AD, potřebujete přidat jednotné přihlašování SAML odznaky z Galerie si na seznam spravovaných aplikací SaaS.
+## <a name="adding-insignia-saml-sso-from-the-gallery"></a>Přidání jednotného přihlašování SAML odznaky z Galerie
+Pokud chcete nakonfigurovat integraci jednotného přihlašování SAML odznaky do služby Azure AD, budete muset přidat odznaky SAML SSO z Galerie na váš seznam spravovaných aplikací SaaS.
 
-**Pokud chcete přidat jednotné přihlašování SAML odznaky z galerie, proveďte následující kroky:**
+**Chcete-li přidat odznaky SAML SSO z galerie, postupujte následovně:**
 
-1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
+1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![V okně podnikové aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Tlačítko nové aplikace][3]
 
-4. Do vyhledávacího pole zadejte **jednotné přihlašování SAML odznaky**, vyberte **jednotné přihlašování SAML odznaky** z panelu výsledků klikněte **přidat** tlačítko Přidat aplikaci.
+4. Do vyhledávacího pole zadejte **odznaky SAML SSO**vyberte **odznaky SAML SSO** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
-    ![Jednotné přihlašování SAML odznaky v seznamu výsledků](./media/insigniasamlsso-tutorial/tutorial_insigniasamlsso_addfromgallery.png)
+    ![Odznaky SAML SSO v seznamu výsledků](./media/insigniasamlsso-tutorial/tutorial_insigniasamlsso_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování Azure AD jednotné přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování pomocí jednotného přihlašování SAML odznaky podle testovacího uživatele názvem "Britta Simon".
+V této části Konfigurace a testování Azure AD jednotné přihlašování pomocí SAML SSO odznaky podle testovacího uživatele nazývá "Britta Simon".
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějšku odznaky SAML SSO je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské odznaky SAML SSO musí navázat.
+Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšky v odznaky SAML SSO je pro uživatele ve službě Azure AD. Jinými slovy musí navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské v odznaky SAML SSO.
 
-V jednotné přihlašování SAML odznaky, přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** k navázání vztahu odkazu.
+V odznaky SAML SSO, přiřaďte hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** a tím vytvoří vztah odkazu.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování pomocí jednotného přihlašování SAML odznaky, je třeba dokončit následující stavební bloky:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s jednotným Přihlašováním SAML odznaky, které potřebujete k dokončení následujících stavebních bloků:
 
-1. **[Konfigurovat Azure AD jednotné přihlašování](#configure-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
-2. **[Vytvořit testovací uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvořit testovací uživatele s jednotné přihlašování SAML odznaky](#create-an-insignia-saml-sso-test-user)**  – Pokud chcete mít protějšek Britta Simon v odznaky jednotné přihlašování SAML, propojené služby Azure AD reprezentace daného uživatele.
-4. **[Přiřadit testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. **[Test jednotného přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
+1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+2. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytvořit testovacího uživatele odznaky SAML SSO](#create-an-insignia-saml-sso-test-user)**  – Pokud chcete mít protějšek Britta Simon odznaky SAML SSO, který je propojený s Azure AD reprezentace uživatele.
+4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurovat Azure AD jednotné přihlašování
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci jednotné přihlašování SAML odznaky.
+V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování v aplikaci odznaky SAML SSO.
 
-**Ke konfiguraci Azure AD jednotné přihlašování pomocí jednotného přihlašování SAML odznaky, proveďte následující kroky:**
+**Ke konfiguraci Azure AD jednotné přihlašování s jednotným Přihlašováním SAML odznaky, proveďte následující kroky:**
 
-1. Na portálu Azure na **jednotné přihlašování SAML odznaky** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. Na webu Azure Portal na **odznaky SAML SSO** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
 
-    ![Konfigurace propojení přihlášení][4]
+    ![Nakonfigurovat jednotné přihlašování – odkaz][4]
 
-2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
+2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
-    ![Jediné přihlášení dialogové okno](./media/insigniasamlsso-tutorial/tutorial_insigniasamlsso_samlbase.png)
+    ![Jednotné přihlašování – dialogové okno](./media/insigniasamlsso-tutorial/tutorial_insigniasamlsso_samlbase.png)
 
-3. Na **odznaky SAML jednotného přihlašování k doméně a adresy URL** část, proveďte následující kroky:
+3. Na **odznaky SAML SSO domény a adresy URL** části, proveďte následující kroky:
 
-    ![Odznaky SAML jednotného přihlašování k doméně a adresy URL jednotné přihlašování informace](./media/insigniasamlsso-tutorial/tutorial_insigniasamlsso_url.png)
+    ![Odznaky SAML SSO domény a adresy URL jednotného přihlašování – informace](./media/insigniasamlsso-tutorial/tutorial_insigniasamlsso_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:
+    a. V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru:
     | |
     |--|
     | `https://<customername>.insigniails.com/ils` |
     | `https://<customername>.insigniails.com/` |
     | `https://<customername>.insigniailsusa.com/ ` |
 
-    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<customername>.insigniailsusa.com/<uniqueid>`
+    b. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<customername>.insigniailsusa.com/<uniqueid>`
 
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory klienta jednotné přihlašování SAML odznaky](http://www.insigniasoftware.com/insignia/Techsupport.aspx) k získání těchto hodnot. 
+    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte s skutečné přihlašovací adresu URL a identifikátorem. Kontakt [tým podpory odznaky SAML SSO klienta](http://www.insigniasoftware.com/insignia/Techsupport.aspx) k získání těchto hodnot. 
  
 
-4. Na **SAML podpisový certifikát** klikněte na tlačítko **certifikátu (Base64)** a potom uložte soubor certifikátu v počítači.
+4. Na **podpisový certifikát SAML** klikněte na tlačítko **certifikát (Base64)** a uložte soubor certifikátu v počítači.
 
     ![Odkaz ke stažení certifikátu](./media/insigniasamlsso-tutorial/tutorial_insigniasamlsso_certificate.png) 
 
 5. Klikněte na tlačítko **Uložit** tlačítko.
 
-    ![Nakonfigurujte jeden přihlašování uložit tlačítko](./media/insigniasamlsso-tutorial/tutorial_general_400.png)
+    ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/insigniasamlsso-tutorial/tutorial_general_400.png)
 
-6. Na **Konfigurace jednotného přihlašování SAML odznaky** klikněte na tlačítko **nakonfigurovat jednotné přihlašování SAML odznaky** otevřete **konfigurovat přihlášení** okno. Kopírování **Sign-Out adresu URL a SAML jeden přihlašování služby URL** z **Stručná referenční příručka části.**
+6. Na **Konfigurace jednotného přihlašování SAML odznaky** klikněte na tlačítko **nakonfigurovat jednotné přihlašování SAML odznaky** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **odhlašování adresy URL a SAML jednotné přihlašování služby** z **Stručná referenční příručka oddílu.**
 
     ![Konfigurace jednotného přihlašování SAML odznaky](./media/insigniasamlsso-tutorial/tutorial_insigniasamlsso_configure.png) 
 
-7. Konfigurace jednotného přihlašování na **jednotné přihlašování SAML odznaky** straně, budete muset odeslat stažené **certifikátu (Base64)**, **Sign-Out adresu URL a SAML jeden přihlašování služby URL** na [Tým podpory pro jednotné přihlašování SAML odznaky](http://www.insigniasoftware.com/insignia/Techsupport.aspx). Nastavují toto nastavení tak, aby měl jednotné přihlašování SAML připojení správně nastavena na obou stranách.
+7. Ke konfiguraci jednotného přihlašování na **odznaky SAML SSO** straně, je nutné odeslat na stažený **certifikát (Base64)**, **odhlašování adresy URL a SAML jednotné přihlašování služby** do [Tým podpory odznaky SAML SSO](http://www.insigniasoftware.com/insignia/Techsupport.aspx). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
 > [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovací uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
-Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
+Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-   ![Vytvořit testovací uživatele Azure AD][100]
+   ![Vytvořit testovacího uživatele Azure AD][100]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
 
-1. Na portálu Azure, v levém podokně klikněte **Azure Active Directory** tlačítko.
+1. Na webu Azure Portal, v levém podokně klikněte na tlačítko **Azure Active Directory** tlačítko.
 
     ![Tlačítko Azure Active Directory](./media/insigniasamlsso-tutorial/create_aaduser_01.png)
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na **všichni uživatelé**.
+2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
 
-    !["Uživatelé a skupiny" a "Všichni uživatelé" odkazy](./media/insigniasamlsso-tutorial/create_aaduser_02.png)
+    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](./media/insigniasamlsso-tutorial/create_aaduser_02.png)
 
 3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
 
@@ -169,54 +169,54 @@ Cílem této části je vytvoření zkušebního uživatele na portálu Azure, n
 
     b. V **uživatelské jméno** zadejte e-mailovou adresu uživatele Britta Simon.
 
-    c. Vyberte **zobrazit hesla** zaškrtněte políčko a zapište si ji hodnotu, která se zobrazí v **heslo** pole.
+    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
 
     d. Klikněte na možnost **Vytvořit**.
  
-### <a name="create-an-insignia-saml-sso-test-user"></a>Vytvořit jednotné přihlašování SAML odznaky testovací uživatele
+### <a name="create-an-insignia-saml-sso-test-user"></a>Vytvořit testovacího uživatele odznaky SAML SSO
 
-V této části vytvoříte uživatele volat Britta Simon v odznaky knihovna systému. Práce s [tým podpory odznaky knihovna systému](http://www.insigniasoftware.com/insignia/Techsupport.aspx) přidat uživatele do platforma odznaky knihovna systému.
+V této části vytvořte uživatele Britta Simon odznaky knihovna systému. Práce s [tým podpory odznaky knihovna systému](http://www.insigniasoftware.com/insignia/Techsupport.aspx) přidat uživatele na platformě odznaky knihovna systému.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit testovacího uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí jednotného přihlašování SAML odznaky udělení přístupu.
+V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k odznaky SAML SSO.
 
-![Přiřadit role uživatele][200] 
+![Přiřazení role uživatele][200] 
 
-**Pokud chcete přiřadit Britta Simon jednotné přihlašování SAML odznaky, proveďte následující kroky:**
+**Britta Simon přiřadit odznaky SAML SSO, proveďte následující kroky:**
 
-1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
+1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **jednotné přihlašování SAML odznaky**.
+2. V seznamu aplikací vyberte **odznaky SAML SSO**.
 
-    ![Jednotné přihlašování SAML odznaky odkaz v seznamu aplikací](./media/insigniasamlsso-tutorial/tutorial_insigniasamlsso_app.png)  
+    ![V seznamu aplikací na odkaz odznaky SAML SSO](./media/insigniasamlsso-tutorial/tutorial_insigniasamlsso_app.png)  
 
 3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
-    ![Odkaz "Uživatelé a skupiny"][202]
+    ![Odkaz "Uživatele a skupiny"][202]
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.
+4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
-    ![V podokně Přidat přiřazení][203]
+    ![Podokno Přidat přiřazení][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
+5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
+6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
+7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
 ### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
-V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
+V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Když kliknete na dlaždici jednotné přihlašování SAML odznaky na přístupovém panelu, můžete by měl získat automaticky přihlášení k aplikaci jednotné přihlašování SAML odznaky.
-Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](../active-directory-saas-access-panel-introduction.md). 
+Po kliknutí na dlaždici odznaky SAML SSO na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci odznaky SAML SSO.
+Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](tutorial-list.md)
+* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

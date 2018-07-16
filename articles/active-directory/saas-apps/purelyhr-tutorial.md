@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s PurelyHR | Microsoft Docs'
+title: 'Kurz: Integrace Azure Active Directory se službou PurelyHR | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a PurelyHR.
 services: active-directory
 documentationCenter: na
@@ -14,225 +14,225 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2017
 ms.author: jeedes
-ms.openlocfilehash: ba24422f7ff5759153a6e067cc61251b43a7a091
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 3e3546a5161c62c137af0a29daf5140133f91eb6
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36286928"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39046103"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-purelyhr"></a>Kurz: Azure Active Directory integrace s PurelyHR
+# <a name="tutorial-azure-active-directory-integration-with-purelyhr"></a>Kurz: Integrace Azure Active Directory se službou PurelyHR
 
-V tomto kurzu zjistěte, jak integrovat PurelyHR s Azure Active Directory (Azure AD).
+V tomto kurzu se dozvíte, jak integrovat PurelyHR s Azure Active Directory (Azure AD).
 
-Integrace PurelyHR s Azure AD poskytuje následující výhody:
+PurelyHR integraci se službou Azure AD poskytuje následující výhody:
 
 - Můžete řídit ve službě Azure AD, který má přístup k PurelyHR
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k PurelyHR (jednotné přihlášení) s jejich účty Azure AD
-- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
+- Můžete povolit uživatelům, aby automaticky získat přihlášení k PurelyHR (Single Sign-On) s jejich účty Azure AD
+- Můžete spravovat své účty na jediném místě – na webu Azure portal
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
 Konfigurace integrace Azure AD s PurelyHR, potřebujete následující položky:
 
-- Předplatné služby Azure AD
-- PurelyHR jednotného přihlašování povolené předplatné
+- S předplatným služby Azure AD
+- PurelyHR jednotného přihlašování povolená předplatného
 
 > [!NOTE]
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
 
-- Nepoužívejte provozním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební verze jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).
+- Nepoužívejte produkčním prostředí, pokud to není nutné.
+- Pokud nemáte prostředí zkušební verzi Azure AD, můžete získat měsíční zkušební [tady](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání PurelyHR z Galerie
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
 ## <a name="adding-purelyhr-from-the-gallery"></a>Přidání PurelyHR z Galerie
-Při konfiguraci integrace PurelyHR do služby Azure AD musíte přidat do seznamu spravovaných aplikací SaaS PurelyHR z galerie.
+Konfigurace integrace PurelyHR do služby Azure AD, budete muset přidat PurelyHR z Galerie na váš seznam spravovaných aplikací SaaS.
 
-**Pokud chcete přidat PurelyHR z galerie, proveďte následující kroky:**
+**Chcete-li přidat PurelyHR z galerie, postupujte následovně:**
 
-1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
+1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![Aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Aplikace][3]
 
 4. Do vyhledávacího pole zadejte **PurelyHR**.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/purelyhr-tutorial/tutorial_purelyhr_search.png)
+    ![Vytváří se testovací uživatele služby Azure AD](./media/purelyhr-tutorial/tutorial_purelyhr_search.png)
 
-5. Na panelu výsledků vyberte **PurelyHR**a potom klikněte na **přidat** tlačítko Přidat aplikaci.
+5. Na panelu výsledků vyberte **PurelyHR**a potom klikněte na tlačítko **přidat** tlačítko pro přidání aplikace.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/purelyhr-tutorial/tutorial_purelyhr_addfromgallery.png)
+    ![Vytváří se testovací uživatele služby Azure AD](./media/purelyhr-tutorial/tutorial_purelyhr_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
-V této části můžete nakonfigurovat a otestovat Azure AD jednotné přihlašování s PurelyHR podle testovacího uživatele názvem "Britta Simon."
+V této části Konfigurace a testování Azure AD jednotné přihlašování s PurelyHR podle testovacího uživatele nazývá "Britta Simon."
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v PurelyHR je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v PurelyHR musí navázat.
+Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšky v PurelyHR je pro uživatele ve službě Azure AD. Jinými slovy vztah odkazu mezi uživatele služby Azure AD a související uživatelské v PurelyHR potřeba navázat.
 
-V PurelyHR, přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** k navázání vztahu odkazu.
+V PurelyHR, přiřaďte hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** a tím vytvoří vztah odkazu.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s PurelyHR, je třeba dokončit následující stavební bloky:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s PurelyHR, které potřebujete k dokončení následujících stavebních bloků:
 
-1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
-2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele PurelyHR](#creating-a-purelyhr-test-user)**  – Pokud chcete mít protějšek Britta Simon v PurelyHR propojeném s Azure AD reprezentace daného uživatele.
-4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
+1. **[Konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+2. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytvoření zkušebního uživatele PurelyHR](#creating-a-purelyhr-test-user)**  – Pokud chcete mít protějšek Britta Simon PurelyHR, který je propojený s Azure AD reprezentace uživatele.
+4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace Azure AD jednotné přihlašování
+### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci PurelyHR.
+V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování v aplikaci PurelyHR.
 
 **Ke konfiguraci Azure AD jednotné přihlašování s PurelyHR, proveďte následující kroky:**
 
-1. Na portálu Azure na **PurelyHR** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. Na webu Azure Portal na **PurelyHR** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
 
-    ![Konfigurovat jednotné přihlašování][4]
+    ![Konfigurace jednotného přihlašování][4]
 
-2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
+2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
-    ![Konfigurovat jednotné přihlašování](./media/purelyhr-tutorial/tutorial_purelyhr_samlbase.png)
+    ![Konfigurace jednotného přihlašování](./media/purelyhr-tutorial/tutorial_purelyhr_samlbase.png)
 
-3. Na **PurelyHR domény a adresy URL** část, proveďte následující kroky, pokud chcete nakonfigurovat aplikace **IDP** iniciované režimu:
+3. Na **PurelyHR domény a adresy URL** části, proveďte následující kroky, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu:
 
-    ![Konfigurovat jednotné přihlašování](./media/purelyhr-tutorial/tutorial_purelyhr_url.png)
+    ![Konfigurace jednotného přihlašování](./media/purelyhr-tutorial/tutorial_purelyhr_url.png)
    
-    V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<companyID>.purelyhr.com/sso-consume`
+    V **adresy URL odpovědi** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<companyID>.purelyhr.com/sso-consume`
 
-4. Zkontrolujte **zobrazit upřesňující nastavení adresy URL**, pokud chcete nakonfigurovat aplikace **SP** iniciované režimu:
+4. Zkontrolujte **zobrazit pokročilé nastavení URL**, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
 
-    ![Konfigurovat jednotné přihlašování](./media/purelyhr-tutorial/tutorial_purelyhr_url1.png)
+    ![Konfigurace jednotného přihlašování](./media/purelyhr-tutorial/tutorial_purelyhr_url1.png)
     
-    V **přihlašovací adresa URL** textovému poli, zadejte hodnotu pomocí následujícího vzorce: `https://<companyID>.purelyhr.com/sso-initiate`
+    V **přihlašovací adresa URL** textového pole zadejte hodnotu pomocí následujícího vzorce: `https://<companyID>.purelyhr.com/sso-initiate`
      
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Tyto hodnoty aktualizujte skutečná adresa URL odpovědi a přihlašovací adresa URL. Obraťte se na [tým podpory PurelyHR klienta](http://support.purelyhr.com/) k získání těchto hodnot. 
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty se skutečná adresa URL odpovědi a přihlašovací adresa URL. Kontakt [tým podpory PurelyHR klienta](http://support.purelyhr.com/) k získání těchto hodnot. 
 
-5. Na **SAML podpisový certifikát** klikněte na tlačítko **certifikátu (Base64)** a potom uložte soubor certifikátu v počítači.
+5. Na **podpisový certifikát SAML** klikněte na tlačítko **certifikát (Base64)** a uložte soubor certifikátu v počítači.
 
-    ![Konfigurovat jednotné přihlašování](./media/purelyhr-tutorial/tutorial_purelyhr_certificate.png) 
+    ![Konfigurace jednotného přihlašování](./media/purelyhr-tutorial/tutorial_purelyhr_certificate.png) 
 
 6. Klikněte na tlačítko **Uložit** tlačítko.
 
-    ![Konfigurovat jednotné přihlašování](./media/purelyhr-tutorial/tutorial_general_400.png)
+    ![Konfigurace jednotného přihlašování](./media/purelyhr-tutorial/tutorial_general_400.png)
     
-7. Na **PurelyHR konfigurace** klikněte na tlačítko **konfigurace PurelyHR** otevřete **konfigurovat přihlášení** okno. Kopírování **SAML Entity ID a SAML jeden přihlašování adresu URL služby** z **Stručná referenční příručka části.**
+7. Na **PurelyHR konfigurace** klikněte na tlačítko **nakonfigurovat PurelyHR** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **SAML Entity ID a SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
 
-    ![Konfigurovat jednotné přihlašování](./media/purelyhr-tutorial/tutorial_purelyhr_configure.png) 
+    ![Konfigurace jednotného přihlašování](./media/purelyhr-tutorial/tutorial_purelyhr_configure.png) 
 
-8. Konfigurace jednotného přihlašování na **PurelyHR** straně, přihlašovací údaje pro jejich web jako správce.
+8. Ke konfiguraci jednotného přihlašování na **PurelyHR** straně, přihlaste se k jejich webu jako správce.
 
-9. Otevřete **řídicí panel** z možností na panelu nástrojů a klikněte na **nastavení jednotného přihlašování k**.
+9. Otevřít **řídicí panel** z možností na panelu nástrojů a klikněte na **nastavení jednotného přihlašování**.
 
-10. Vložení hodnoty do polí, jak je popsáno níže-
+10. Vložení hodnoty do polí, jak je popsáno níže –
 
-    ![Konfigurovat jednotné přihlašování](./media/purelyhr-tutorial/purelyhr-dashboard-sso-settings.png)  
+    ![Konfigurace jednotného přihlašování](./media/purelyhr-tutorial/purelyhr-dashboard-sso-settings.png)  
 
-    a. Otevřete **Certificate(Bas64)** stáhli z portálu Azure v programu Poznámkový blok a zkopírujte hodnotu certifikátu. Vložit zkopírovaný hodnotu do **certifikát X.509** pole.
+    a. Otevřít **Certificate(Bas64)** stáhli z portálu Azure v programu Poznámkový blok a zkopírujte hodnotu certifikát. Vložte zkopírovaný hodnotu do **certifikát X.509** pole.
 
-    b. V **URL vystavitele Idp** pole, vložte **SAML Entity ID** zkopírovaných z portálu Azure.
+    b. V **adresa URL zprostředkovatele identity vystavitele** pole, vložte **SAML Entity ID** zkopírovali z portálu Azure portal.
 
-    c. V **adresu URL koncového bodu Idp** pole, vložte **SAML jeden přihlašování adresa URL služby** zkopírovaných z portálu Azure. 
+    c. V **adresu URL koncového bodu Idp** pole, vložte **SAML jednotné přihlašování – adresa URL služby** zkopírovali z portálu Azure portal. 
 
-    d. Zkontrolujte **automaticky vytvářet uživatelé** zaškrtávací políčko pro povolení automatického uživatele zřizování v PurelyHR.
+    d. Zkontrolujte **uživatele automaticky vytvářet** zaškrtávací políčko Povolit automatické zřizování uživatelů v PurelyHR.
 
     e. Klikněte na tlačítko **uložit změny** uložte nastavení.
 
 > [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
-### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
-Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
+### <a name="creating-an-azure-ad-test-user"></a>Vytváří se testovací uživatele služby Azure AD
+Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-![Vytvořit uživatele Azure AD][100]
+![Vytvoření uživatele Azure AD][100]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
 
-1. V **portál Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
+1. V **webu Azure portal**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/purelyhr-tutorial/create_aaduser_01.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/purelyhr-tutorial/create_aaduser_01.png) 
 
 2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
-    ![Vytváření testovacího uživatele Azure AD](./media/purelyhr-tutorial/create_aaduser_02.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/purelyhr-tutorial/create_aaduser_02.png) 
 
-3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** horní dialogové okno.
+3. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
  
-    ![Vytváření testovacího uživatele Azure AD](./media/purelyhr-tutorial/create_aaduser_03.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/purelyhr-tutorial/create_aaduser_03.png) 
 
-4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
+4. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
  
-    ![Vytváření testovacího uživatele Azure AD](./media/purelyhr-tutorial/create_aaduser_04.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/purelyhr-tutorial/create_aaduser_04.png) 
 
-    a. V **název** textovému poli, typ **BrittaSimon**.
+    a. V **název** textové pole, typ **BrittaSimon**.
 
-    b. V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.
+    b. V **uživatelské jméno** textové pole, typ **e-mailová adresa** z BrittaSimon.
 
-    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
+    c. Vyberte **zobrazit heslo** a zapište si hodnotu **heslo**.
 
     d. Klikněte na možnost **Vytvořit**.
  
 ### <a name="creating-a-purelyhr-test-user"></a>Vytvoření zkušebního uživatele PurelyHR
 
-Pokud chcete povolit uživatelům Azure AD přihlášení k PurelyHR, musí být zřízená do PurelyHR. V PurelyHR zřizování je automatická úloha a nejsou potřeba žádné ruční kroky, pokud je povoleno automatické uživatele zřizování.
+Přihlaste se k PurelyHR Azure AD uživatelům umožnit, musí být poskytnuty do PurelyHR. V PurelyHR zřizování se automatická úloha a žádné ruční kroky jsou požadovány, pokud je povoleno automatické zřizování uživatelů.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu PurelyHR.
+V této části je povolit Britta Simon k udělení přístupu k PurelyHR použití Azure jednotného přihlašování.
 
 ![Přiřadit uživatele][200] 
 
-**Pokud chcete přiřadit Britta Simon PurelyHR, proveďte následující kroky:**
+**Přiřadit PurelyHR Britta Simon, proveďte následující kroky:**
 
-1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
+1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
 2. V seznamu aplikací vyberte **PurelyHR**.
 
-    ![Konfigurovat jednotné přihlašování](./media/purelyhr-tutorial/tutorial_purelyhr_app.png) 
+    ![Konfigurace jednotného přihlašování](./media/purelyhr-tutorial/tutorial_purelyhr_app.png) 
 
 3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.
+4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
+5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
+6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
+7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="testing-single-sign-on"></a>Testování jednotné přihlašování
+### <a name="testing-single-sign-on"></a>Testování jednotného přihlašování
 
-V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
+V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Klikněte na dlaždici vyrovná se se zatížením pro správu vzdělávacího procesu na přístupovém panelu, můžete získat automaticky přihlášení k aplikaci vyrovná se se zatížením pro správu vzdělávacího procesu.
+Kliknutím na dlaždici vyrovnat se s LMS na přístupovém panelu, můžete získat automaticky přihlášení k vaší aplikace se vyrovnávají s LMS.
 
-Další informace o na přístupovém panelu najdete v tématu. [Úvod do přístupového panelu](../active-directory-saas-access-panel-introduction.md).
+Další informace o přístupovém panelu naleznete v tématu. [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](tutorial-list.md)
+* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

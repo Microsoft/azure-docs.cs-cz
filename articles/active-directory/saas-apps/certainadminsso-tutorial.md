@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory pomocí jednotného přihlašování některých správce | Microsoft Docs'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a některých správce jednotné přihlašování.
+title: 'Kurz: Integrace Azure Active Directory s jednotným Přihlašováním některé správce | Dokumentace Microsoftu'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a jednotné přihlašování některé správce.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,135 +14,135 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/21/2018
 ms.author: jeedes
-ms.openlocfilehash: cf23620eb3a3b0a9cb8e5877f517281a9c21809c
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: e465518f5526dcf581afab77e30d0af33aaae88e
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36320615"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054035"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-certain-admin-sso"></a>Kurz: Integrace Azure Active Directory pomocí některých správce jednotného přihlašování
+# <a name="tutorial-azure-active-directory-integration-with-certain-admin-sso"></a>Kurz: Integrace Azure Active Directory s jednotným Přihlašováním některé správce
 
-V tomto kurzu zjistěte, jak integrovat některých správce jednotné přihlašování s Azure Active Directory (Azure AD).
+V tomto kurzu se dozvíte, jak integrovat některé správce jednotného přihlašování s Azure Active Directory (Azure AD).
 
-Integrace některých správce jednotné přihlašování s Azure AD poskytuje následující výhody:
+Integrace některé správce jednotného přihlašování s Azure AD poskytuje následující výhody:
 
-- Můžete ovládat ve službě Azure AD, který má přístup k některých správce jednotné přihlašování.
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k některých správce jednotné přihlašování (jednotné přihlášení) s jejich účty Azure AD.
-- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure.
+- Můžete řídit ve službě Azure AD, který má přístup k určité správce jednotného přihlašování.
+- Uživatele, aby automaticky získat přihlášení k určité správce jednotné přihlašování (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD.
+- Můžete spravovat své účty na jediném místě – na webu Azure portal.
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Ke konfiguraci integrace služby Azure AD pomocí některých správce jednotného přihlašování, potřebujete následující položky:
+Konfigurace integrace Azure AD s jednotným Přihlašováním některých Admin, budete potřebovat následující položky:
 
-- Předplatné služby Azure AD
-- Některých SSO správce jednotné přihlašování povolené předplatné
+- S předplatným služby Azure AD
+- Některých jednotného přihlašování správce jednotného přihlašování povolená předplatného
 
 > [!NOTE]
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
 
-- Nepoužívejte provozním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verze Azure AD, můžete [získat zkušební verzi jeden měsíc](https://azure.microsoft.com/pricing/free-trial/).
+- Nepoužívejte produkčním prostředí, pokud to není nutné.
+- Pokud nemáte prostředí zkušební verzi Azure AD, můžete si [získat měsíční zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání některých správce jednotného přihlašování z Galerie
+1. Přidání jednotného přihlašování k určité správce z Galerie
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
-## <a name="adding-certain-admin-sso-from-the-gallery"></a>Přidání některých správce jednotného přihlašování z Galerie
-Při konfiguraci integrace některých správce přihlašování do služby Azure AD, potřebujete přidat některých správce jednotného přihlašování z Galerie si na seznam spravovaných aplikací SaaS.
+## <a name="adding-certain-admin-sso-from-the-gallery"></a>Přidání jednotného přihlašování k určité správce z Galerie
+Pokud chcete nakonfigurovat integraci jednotného přihlašování k určité správce do služby Azure AD, budete muset přidat některé správce jednotné přihlašování z Galerie na váš seznam spravovaných aplikací SaaS.
 
-**Pokud chcete přidat některých správce jednotného přihlašování z galerie, postupujte takto:**
+**Chcete-li přidat některé správce jednotné přihlašování z galerie, postupujte následovně:**
 
-1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
+1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![V okně podnikové aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Tlačítko nové aplikace][3]
 
-4. Do vyhledávacího pole zadejte **některých SSO správce**, vyberte **některých SSO správce** z panelu výsledků klikněte **přidat** tlačítko Přidat aplikaci.
+4. Do vyhledávacího pole zadejte **některých jednotného přihlašování správce**vyberte **některých jednotného přihlašování správce** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
     ![Některé správce jednotné přihlašování v seznamu výsledků](./media/certainadminsso-tutorial/tutorial_certainadminsso_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování Azure AD jednotné přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování v některých jednotného přihlašování k správce, které jsou založené na testovacího uživatele názvem "Britta Simon".
+V této části Konfigurace a testování Azure AD jednotné přihlašování pomocí některých správce jednotného přihlašování na základě testovací uživatele nazývá "Britta Simon".
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějšku některých SSO správce je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské některých SSO správce musí navázat.
+Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšek v některých jednotného přihlašování správce je pro uživatele ve službě Azure AD. Jinými slovy vztah odkazu mezi uživatele služby Azure AD a související uživatel v některé správce jednotného přihlašování je potřeba navázat.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování pomocí jednotného přihlašování některých správce, musíte dokončit následující stavební bloky:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s jednotným Přihlašováním některé správce, které potřebujete k dokončení následujících stavebních bloků:
 
-1. **[Konfigurovat Azure AD jednotné přihlašování](#configure-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
-2. **[Vytvořit testovací uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele některých SSO správce](#create-a-certain-admin-sso-test-user)**  – Pokud chcete mít protějšek Britta Simon některých SSO správce propojeném s Azure AD reprezentace daného uživatele.
-4. **[Přiřadit testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. **[Test jednotného přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
+1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+2. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytvoření zkušebního uživatele některých jednotného přihlašování správce](#create-a-certain-admin-sso-test-user)**  – Pokud chcete mít protějšek Britta Simon v některých jednotného přihlašování správce, který je propojený s Azure AD reprezentace uživatele.
+4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurovat Azure AD jednotné přihlašování
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci některých správce jednotné přihlašování.
+V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování v aplikaci některé správce jednotného přihlašování.
 
-**Ke konfiguraci Azure AD jednotné přihlašování pomocí jednotného přihlašování některých správce, proveďte následující kroky:**
+**Ke konfiguraci Azure AD jednotné přihlašování s jednotným Přihlašováním některé správce, postupujte následovně:**
 
-1. Na portálu Azure na **některých SSO správce** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. Na webu Azure Portal na **některých jednotného přihlašování správce** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
 
-    ![Konfigurace propojení přihlášení][4]
+    ![Nakonfigurovat jednotné přihlašování – odkaz][4]
 
-2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
+2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
-    ![Jediné přihlášení dialogové okno](./media/certainadminsso-tutorial/tutorial_certainadminsso_samlbase.png)
+    ![Jednotné přihlašování – dialogové okno](./media/certainadminsso-tutorial/tutorial_certainadminsso_samlbase.png)
 
-3. Na **některých správce jednotného přihlašování k doméně a adresy URL** část, proveďte následující kroky:
+3. Na **některé domény správce jednotného přihlašování a adresy URL** části, proveďte následující kroky:
 
-    ![Některé správce jednotného přihlašování k doméně a adresy URL jednotné přihlašování informace](./media/certainadminsso-tutorial/tutorial_certainadminsso_url.png)
+    ![Některé domény správce jednotného přihlašování a adresy URL jednotného přihlašování – informace](./media/certainadminsso-tutorial/tutorial_certainadminsso_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<YOUR DOMAIN URL>/svcs/sso_admin_login/handleRequest/<ID>`
+    a. V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<YOUR DOMAIN URL>/svcs/sso_admin_login/handleRequest/<ID>`
 
-    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<SUBDOMAIN>.certain.com`
+    b. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<SUBDOMAIN>.certain.com`
 
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory některých klienta jednotné přihlašování správce](mailto:integrations@certain.com) k získání těchto hodnot. 
+    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte s skutečné přihlašovací adresu URL a identifikátorem. Kontakt [tým podpory určitých klient jednotného přihlašování pro správu](mailto:integrations@certain.com) k získání těchto hodnot. 
  
-4. Na **SAML podpisový certifikát** klikněte na tlačítko **certifikátu (Raw)** a potom uložte soubor certifikátu v počítači.
+4. Na **podpisový certifikát SAML** klikněte na tlačítko **certifikát (Raw)** a uložte soubor certifikátu v počítači.
 
     ![Odkaz ke stažení certifikátu](./media/certainadminsso-tutorial/tutorial_certainadminsso_certificate.png) 
 
 5. Klikněte na tlačítko **Uložit** tlačítko.
 
-    ![Nakonfigurujte jeden přihlašování uložit tlačítko](./media/certainadminsso-tutorial/tutorial_general_400.png)
+    ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/certainadminsso-tutorial/tutorial_general_400.png)
 
-6. Na **některé konfigurace jednotného přihlašování k správy** klikněte na tlačítko **nakonfigurovat jednotné přihlašování některých správce** otevřete **konfigurovat přihlášení** okno. Kopírování **Sign-Out adresu URL, SAML Entity ID a SAML jeden přihlašování adresa URL služby** z **Stručná referenční příručka části.**
+6. Na **některé konfigurace jednotného přihlašování správy** klikněte na tlačítko **nakonfigurovat jednotné přihlašování některé správce** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **URL odhlašování SAML Entity ID a SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
 
-    ![Některé konfigurace správce jednotného přihlašování](./media/certainadminsso-tutorial/tutorial_certainadminsso_configure.png) 
+    ![Některé konfigurace jednotného přihlašování pro správce](./media/certainadminsso-tutorial/tutorial_certainadminsso_configure.png) 
 
-7. Konfigurace jednotného přihlašování na **některých SSO správce** straně, budete muset odeslat stažené **certifikátu (Raw)**, **Sign-Out URL, SAML Entity ID a SAML jeden přihlašování adresa URL služby**k [tým podpory některých SSO správce](mailto:integrations@certain.com). Nastavují toto nastavení tak, aby měl jednotné přihlašování SAML připojení správně nastavena na obou stranách.
+7. Ke konfiguraci jednotného přihlašování na **některých jednotného přihlašování správce** straně, je nutné odeslat na stažený **certifikát (Raw)**, **URL odhlašování SAML Entity ID a SAML jednotné přihlašování – adresa URL služby**k [tým podpory jednotného přihlašování k určité správce](mailto:integrations@certain.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovací uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
-Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
+Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-   ![Vytvořit testovací uživatele Azure AD][100]
+   ![Vytvořit testovacího uživatele Azure AD][100]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
 
-1. Na portálu Azure, v levém podokně klikněte **Azure Active Directory** tlačítko.
+1. Na webu Azure Portal, v levém podokně klikněte na tlačítko **Azure Active Directory** tlačítko.
 
     ![Tlačítko Azure Active Directory](./media/certainadminsso-tutorial/create_aaduser_01.png)
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na **všichni uživatelé**.
+2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
 
-    !["Uživatelé a skupiny" a "Všichni uživatelé" odkazy](./media/certainadminsso-tutorial/create_aaduser_02.png)
+    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](./media/certainadminsso-tutorial/create_aaduser_02.png)
 
 3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
 
@@ -156,54 +156,54 @@ Cílem této části je vytvoření zkušebního uživatele na portálu Azure, n
 
     b. V **uživatelské jméno** zadejte e-mailovou adresu uživatele Britta Simon.
 
-    c. Vyberte **zobrazit hesla** zaškrtněte políčko a zapište si ji hodnotu, která se zobrazí v **heslo** pole.
+    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
 
     d. Klikněte na možnost **Vytvořit**.
  
-### <a name="create-a-certain-admin-sso-test-user"></a>Vytvoření zkušebního uživatele některých správce jednotného přihlašování
+### <a name="create-a-certain-admin-sso-test-user"></a>Vytvoření zkušebního uživatele některé správce jednotného přihlašování
 
-V této části vytvoříte uživatele volat Britta Simon některých SSO správce. Práce s [tým podpory některých SSO správce](mailto:integrations@certain.com) přidejte uživatele, v některých správce jednotného přihlašování k platformě. Uživatelé musí být vytvořen a aktivovat dříve, než použijete jednotné přihlašování.
+V této části vytvořte uživatele Britta Simon v některých správce jednotného přihlašování. Práce s [tým podpory jednotného přihlašování k určité správce](mailto:integrations@certain.com) přidat uživatele na platformě některé správce jednotného přihlašování. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit testovacího uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-V této části povolíte Britta Simon k používání Azure jednotné přihlašování v některých správce jednotného přihlašování k udělení přístupu.
+V této části je povolit Britta Simon udělení přístupu k určité jednotného přihlašování správce používá jednotné přihlašování Azure.
 
-![Přiřadit role uživatele][200] 
+![Přiřazení role uživatele][200] 
 
-**Pokud chcete přiřadit Britta Simon některých správce jednotné přihlašování, proveďte následující kroky:**
+**Britta Simon přiřadit některé správce jednotného přihlašování, proveďte následující kroky:**
 
-1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
+1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **některých SSO správce**.
+2. V seznamu aplikací vyberte **některých jednotného přihlašování správce**.
 
-    ![Odkaz některých SSO správce v seznamu aplikací](./media/certainadminsso-tutorial/tutorial_certainadminsso_app.png)  
+    ![Odkaz některé správce jednotné přihlašování v seznamu aplikací](./media/certainadminsso-tutorial/tutorial_certainadminsso_app.png)  
 
 3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
-    ![Odkaz "Uživatelé a skupiny"][202]
+    ![Odkaz "Uživatele a skupiny"][202]
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.
+4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
-    ![V podokně Přidat přiřazení][203]
+    ![Podokno Přidat přiřazení][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
+5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
+6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
+7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
 ### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
-V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
+V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Když kliknete na dlaždici některých správce jednotného přihlašování na přístupovém panelu, můžete by měl získat automaticky přihlášení k aplikaci některých správce jednotné přihlašování.
-Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](../active-directory-saas-access-panel-introduction.md). 
+Po kliknutí na dlaždici některé správce jednotného přihlašování na přístupovém panelu, vám by měl získat automaticky přihlášení k určité správce jednotného přihlašování aplikace.
+Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](tutorial-list.md)
+* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->

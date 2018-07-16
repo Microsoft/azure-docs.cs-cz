@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s Zscaler ZSCloud | Microsoft Docs'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Zscaler ZSCloud.
+title: 'Kurz: Integrace Azure Active Directory se Zscalerem ZSCloud | Dokumentace Microsoftu'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Zscalerem ZSCloud.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,232 +14,232 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 4fbb0e5512511842e020e5670f1290c6b6359305
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: ea6008092f8fbfde8963da50d5273d36a4a30fe3
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36308726"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39050006"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-zscaler-zscloud"></a>Kurz: Azure Active Directory integrace s Zscaler ZSCloud
+# <a name="tutorial-azure-active-directory-integration-with-zscaler-zscloud"></a>Kurz: Integrace Azure Active Directory se službou Zscaler ZSCloud
 
-V tomto kurzu zjistěte, jak integrovat Zscaler ZSCloud s Azure Active Directory (Azure AD).
+V tomto kurzu se dozvíte, jak integrovat ZSCloud Zscalerem se službou Azure Active Directory (Azure AD).
 
-Integrace Zscaler ZSCloud s Azure AD poskytuje následující výhody:
+Integrace Zscalerem ZSCloud s Azure AD poskytuje následující výhody:
 
 - Můžete řídit ve službě Azure AD, který má přístup k Zscaler ZSCloud
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k Zscaler ZSCloud (jednotné přihlášení) s jejich účty Azure AD
-- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
+- Uživatele, aby automaticky získat přihlášení k Zscalerem ZSCloud (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD
+- Můžete spravovat své účty na jediném místě – na webu Azure portal
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s Zscaler ZSCloud, potřebujete následující položky:
+Konfigurace integrace Azure AD se Zscalerem ZSCloud, potřebujete následující položky:
 
-- Předplatné služby Azure AD
-- Zscaler ZSCloud jednotné přihlašování povolené předplatné
+- S předplatným služby Azure AD
+- Zscalerem ZSCloud jednotného přihlašování povolená předplatného
 
 > [!NOTE]
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
 
-- Nepoužívejte provozním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební verze jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).
+- Nepoužívejte produkčním prostředí, pokud to není nutné.
+- Pokud nemáte prostředí zkušební verzi Azure AD, můžete získat měsíční zkušební [tady](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání Zscaler ZSCloud z Galerie
+1. Přidání Zscalerem ZSCloud z Galerie
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
-## <a name="adding-zscaler-zscloud-from-the-gallery"></a>Přidání Zscaler ZSCloud z Galerie
-Při konfiguraci integrace Zscaler ZSCloud do služby Azure AD musíte přidat do seznamu spravovaných aplikací SaaS Zscaler ZSCloud z galerie.
+## <a name="adding-zscaler-zscloud-from-the-gallery"></a>Přidání Zscalerem ZSCloud z Galerie
+Ke konfiguraci integrace Zscalerem ZSCloud do služby Azure AD, budete muset přidat Zscalerem ZSCloud z Galerie na váš seznam spravovaných aplikací SaaS.
 
-**Pokud chcete přidat Zscaler ZSCloud z galerie, proveďte následující kroky:**
+**Přidání Zscalerem ZSCloud z galerie, postupujte následovně:**
 
-1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
+1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![Aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Aplikace][3]
 
-4. Do vyhledávacího pole zadejte **Zscaler ZSCloud**.
+4. Do vyhledávacího pole zadejte **Zscalerem ZSCloud**.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_search.png)
+    ![Vytváří se testovací uživatele služby Azure AD](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_search.png)
 
-5. Na panelu výsledků vyberte **Zscaler ZSCloud**a potom klikněte na **přidat** tlačítko Přidat aplikaci.
+5. Na panelu výsledků vyberte **Zscalerem ZSCloud**a potom klikněte na tlačítko **přidat** tlačítko pro přidání aplikace.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_addfromgallery.png)
+    ![Vytváří se testovací uživatele služby Azure AD](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
-V této části nakonfigurujete a testu Azure AD jednotné přihlašování s Zscaler ZSCloud podle testovacího uživatele názvem "Britta Simon."
+V této části nakonfigurujete a testovací služby Azure AD jednotného přihlašování se Zscalerem ZSCloud podle testovacího uživatele nazývá "Britta Simon."
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v Zscaler ZSCloud je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v Zscaler ZSCloud musí navázat.
+Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšky v Zscalerem ZSCloud je pro uživatele ve službě Azure AD. Jinými slovy vztah odkazu mezi uživatele služby Azure AD a související uživatelské v Zscalerem ZSCloud potřeba navázat.
 
-Tento vztah propojení se navazuje se hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** v Zscaler ZSCloud.
+Tento odkaz vztah navázaný přiřazením hodnoty **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** v Zscalerem ZSCloud.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Zscaler ZSCloud, je třeba dokončit následující stavební bloky:
+Nakonfigurovat a otestovat Azure AD jednotného přihlašování se Zscalerem ZSCloud, které potřebujete k dokončení následujících stavebních bloků:
 
-1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
-2. **[Konfigurace nastavení proxy serveru](#configuring-proxy-settings)**  – Pokud chcete nakonfigurovat nastavení proxy serveru v Internet Exploreru
-2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele Zscaler ZSCloud](#creating-a-zscaler-zscloud-test-user)**  – Pokud chcete mít protějšek Britta Simon v Zscaler ZSCloud propojeném s Azure AD reprezentace daného uživatele.
-4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
+1. **[Konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+2. **[Konfigurace nastavení proxy serveru](#configuring-proxy-settings)**  – konfigurace nastavení proxy serveru v aplikaci Internet Explorer
+2. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytvoření zkušebního uživatele Zscaler ZSCloud](#creating-a-zscaler-zscloud-test-user)**  – Pokud chcete mít protějšek Britta Simon Zscalerem ZSCloud, který je propojený s Azure AD reprezentace uživatele.
+4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace Azure AD jednotné přihlašování
+### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci Zscaler ZSCloud.
+V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování v aplikaci Zscalerem ZSCloud.
 
-**Ke konfiguraci Azure AD jednotné přihlašování s Zscaler ZSCloud, proveďte následující kroky:**
+**Ke konfiguraci Azure AD jednotného přihlašování se Zscalerem ZSCloud, proveďte následující kroky:**
 
-1. Na portálu Azure na **Zscaler ZSCloud** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. Na webu Azure Portal na **Zscalerem ZSCloud** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
 
-    ![Konfigurovat jednotné přihlašování][4]
+    ![Konfigurace jednotného přihlašování][4]
 
-2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
+2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
-    ![Konfigurovat jednotné přihlašování](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_samlbase.png)
+    ![Konfigurace jednotného přihlašování](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_samlbase.png)
 
-3. Na **Zscaler ZSCloud domény a adresy URL** část, proveďte následující kroky:
+3. Na **Zscalerem ZSCloud domény a adresy URL** části, proveďte následující kroky:
 
-    ![Konfigurovat jednotné přihlašování](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_url.png)
+    ![Konfigurace jednotného přihlašování](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_url.png)
 
-     V **přihlašovací adresa URL** textové pole, zadejte adresu URL používá uživatelům přihlášení do aplikace ZScaler ZSCloud.
+     V **přihlašovací adresa URL** textové pole, zadejte adresu URL použít vaši uživatelé k přihlašování do aplikace Zscalerem ZSCloud.
     
     > [!NOTE] 
-    > Budete muset aktualizovat tuto hodnotu s skutečná adresa URL přihlašování. Obraťte se na [tým podpory Zscaler ZSCloud klienta](https://help.zscaler.com/zia) získat tuto hodnotu. 
+    > Budete muset aktualizovat tuto hodnotu skutečné přihlašovací adresa URL. Kontakt [tým podpory Zscalerem ZSCloud klienta](https://help.zscaler.com/zia) tuto výhodu získáte. 
  
-4. Na **SAML podpisový certifikát** klikněte na tlačítko **certifikátu (Base64)** a potom uložte soubor certifikátu v počítači.
+4. Na **podpisový certifikát SAML** klikněte na tlačítko **certifikát (Base64)** a uložte soubor certifikátu v počítači.
 
-    ![Konfigurovat jednotné přihlašování](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_certificate.png) 
+    ![Konfigurace jednotného přihlašování](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_certificate.png) 
 
 5. Klikněte na tlačítko **Uložit** tlačítko.
 
-    ![Konfigurovat jednotné přihlašování](./media/zscaler-zscloud-tutorial/tutorial_general_400.png)
+    ![Konfigurace jednotného přihlašování](./media/zscaler-zscloud-tutorial/tutorial_general_400.png)
 
-6. Na **Zscaler ZSCloud konfigurace** klikněte na tlačítko **konfigurace Zscaler ZSCloud** otevřete **konfigurovat přihlášení** okno. Kopírování **SAML jeden přihlašování adresa URL služby** z **Stručná referenční příručka části.**
+6. Na **Zscalerem ZSCloud konfigurace** klikněte na tlačítko **nakonfigurovat ZSCloud Zscalerem** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
 
-    ![Konfigurovat jednotné přihlašování](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_configure.png) 
+    ![Konfigurace jednotného přihlašování](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_configure.png) 
 
-7. V okně prohlížeče jiný web Přihlaste se na váš web společnosti ZScaler ZSCloud jako správce.
+7. V okně jiné webové prohlížeče Přihlaste se k serveru vaší společnosti Zscalerem ZSCloud jako správce.
 
-8. V nabídce v horní části, klikněte na tlačítko **správy**.
+8. V nabídce v horní části klikněte na tlačítko **správu**.
    
     ![Správa](./media/zscaler-zscloud-tutorial/ic800206.png "správy")
 
-9. V části **spravovat správci & role**, klikněte na tlačítko **Správa uživatelů a ověřování**.   
+9. V části **Správa správců & role**, klikněte na tlačítko **spravovat uživatele a ověření**.   
             
     ![Správa uživatelů a ověřování](./media/zscaler-zscloud-tutorial/ic800207.png "správu uživatelů a ověřování")
 
-10. V **zvolte možnosti ověřování pro vaši organizaci** část, proveďte následující kroky:   
+10. V **zvolte možnosti ověřování pro vaši organizaci** části, proveďte následující kroky:   
                 
     ![Ověřování](./media/zscaler-zscloud-tutorial/ic800208.png "ověřování")
    
-    a. Vyberte **ověření pomocí SAML Single Sign-On**.
+    a. Vyberte **ověření pomocí SAML jednotného přihlašování**.
 
-    b. Klikněte na tlačítko **konfigurace SAML jeden přihlašování parametrů**.
+    b. Klikněte na tlačítko **konfigurace SAML jednotné přihlašování – parametry**.
 
-11. Na **konfigurace SAML jeden přihlašování parametry** dialogové okno stránky, proveďte následující kroky a pak klikněte na **provést**
+11. Na **konfigurace SAML jednotné přihlašování parametrů** dialogového okna stránky, proveďte následující kroky a pak klikněte na **Hotovo**
 
     ![Jednotné přihlašování](./media/zscaler-zscloud-tutorial/ic800209.png "jednotného přihlašování")
     
-    a. Vložení **SAML jeden přihlašování adresa URL služby** hodnotu do **URL SAML portálu, ke které se odesílají uživatele pro ověřování** textové pole.
+    a. Vložit **SAML jednotné přihlašování – adresa URL služby** hodnoty do **URL portálu SAML, ke kterému jsou uživatelé nasměrovaní ověřování** textového pole.
     
-    b. V **atribut obsahující přihlašovací jméno** textovému poli, typ **NameID**.
+    b. V **atribut, který obsahuje přihlašovací jméno** textové pole, typ **NameID**.
     
-    c. Chcete-li nahrát stažený certifikát, klikněte na tlačítko **Zscaler pem**.
+    c. Pokud chcete uložit stažený certifikát, klikněte na tlačítko **Zscalerem pem**.
     
-    d. Vyberte **zapnout automatické zřizování SAML**.
+    d. Vyberte **povolení automatického zřizování SAML**.
 
-12. Na **konfigurace ověřování uživatele** dialogové okno proveďte následující kroky:
+12. Na **konfiguraci ověření uživatele** dialogového okna stránky, proveďte následující kroky:
 
     ![Správa](./media/zscaler-zscloud-tutorial/ic800210.png "správy")
     
     a. Klikněte na **Uložit**.
 
-    b. Klikněte na tlačítko **aktivovat nyní**.
+    b. Klikněte na tlačítko **aktivovat**.
 
 ## <a name="configuring-proxy-settings"></a>Konfigurace nastavení proxy serveru
-### <a name="to-configure-the-proxy-settings-in-internet-explorer"></a>Konfigurace nastavení proxy serveru v Internet Exploreru
+### <a name="to-configure-the-proxy-settings-in-internet-explorer"></a>Konfigurace nastavení proxy serveru v aplikaci Internet Explorer
 
 1. Spustit **aplikace Internet Explorer**.
 
-2. Vyberte **Možnosti Internetu** z **nástroje** nabídku pro otevření **Možnosti Internetu** dialogové okno.   
+2. Vyberte **Možnosti Internetu** z **nástroje** nabídku otevřít **Možnosti Internetu** dialogového okna.   
     
      ![Možnosti Internetu](./media/zscaler-zscloud-tutorial/ic769492.png "Možnosti Internetu")
 
-3. Klikněte **připojení** kartě.   
+3. Klikněte na tlačítko **připojení** kartu.   
   
      ![Připojení](./media/zscaler-zscloud-tutorial/ic769493.png "připojení")
 
-4. Klikněte na tlačítko **nastavení místní sítě** otevřete **nastavení místní sítě** dialogové okno.
+4. Klikněte na tlačítko **nastavení místní sítě** otevřít **nastavení místní sítě** dialogového okna.
 
 5. V části Proxy server proveďte následující kroky:   
    
     ![Proxy server](./media/zscaler-zscloud-tutorial/ic769494.png "Proxy serveru")
 
-    a. Vyberte **použít proxy server pro síť LAN**.
+    a. Vyberte **používat proxy server pro síť LAN**.
 
-    b. Do textového pole adresu zadejte **gateway.zscalerone.net**.
+    b. Do textového pole Adresa zadejte **gateway.zscalerone.net**.
 
-    c. Do textového pole Port zadejte **80**.
+    c. V textovém poli portu zadejte **80**.
 
-    d. Vyberte **Nepoužívat proxy server pro místní adresy**.
+    d. Vyberte **obejít proxy server pro místní adresy**.
 
-    e. Klikněte na tlačítko **OK** zavřete **nastavení místní sítě (LAN)** dialogové okno.
+    e. Klikněte na tlačítko **OK** zavřete **nastavení místní sítě (LAN)** dialogového okna.
 
-6. Klikněte na tlačítko **OK** zavřete **Možnosti Internetu** dialogové okno.
+6. Klikněte na tlačítko **OK** zavřete **Možnosti Internetu** dialogového okna.
 
-### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
-Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
+### <a name="creating-an-azure-ad-test-user"></a>Vytváří se testovací uživatele služby Azure AD
+Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-![Vytvořit uživatele Azure AD][100]
+![Vytvoření uživatele Azure AD][100]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
 
-1. V **portál Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
+1. V **webu Azure portal**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/zscaler-zscloud-tutorial/create_aaduser_01.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/zscaler-zscloud-tutorial/create_aaduser_01.png) 
 
 2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
-    ![Vytváření testovacího uživatele Azure AD](./media/zscaler-zscloud-tutorial/create_aaduser_02.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/zscaler-zscloud-tutorial/create_aaduser_02.png) 
 
-3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** horní dialogové okno.
+3. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
  
-    ![Vytváření testovacího uživatele Azure AD](./media/zscaler-zscloud-tutorial/create_aaduser_03.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/zscaler-zscloud-tutorial/create_aaduser_03.png) 
 
-4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
+4. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
  
-    ![Vytváření testovacího uživatele Azure AD](./media/zscaler-zscloud-tutorial/create_aaduser_04.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/zscaler-zscloud-tutorial/create_aaduser_04.png) 
 
-    a. V **název** textovému poli, typ **BrittaSimon**.
+    a. V **název** textové pole, typ **BrittaSimon**.
 
-    b. V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.
+    b. V **uživatelské jméno** textové pole, typ **e-mailová adresa** z BrittaSimon.
 
-    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
+    c. Vyberte **zobrazit heslo** a zapište si hodnotu **heslo**.
 
     d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="creating-a-zscaler-zscloud-test-user"></a>Vytvoření zkušebního uživatele Zscaler ZSCloud
 
-Pokud chcete povolit uživatelům Azure AD přihlášení k ZScaler ZSCloud, musí být zřízená na ZScaler ZSCloud.  
-V případě ZScaler ZSCloud zřizování je ruční úloha.
+Umožňuje uživatelům Azure AD se přihlaste k ZScaler ZSCloud musí být poskytnuty k ZScaler ZSCloud.  
+V případě Zscalerem ZSCloud zřizování je ruční úloha.
 
-### <a name="to-configure-user-provisioning-perform-the-following-steps"></a>Pokud chcete konfigurovat, zřizování uživatelů, proveďte následující kroky:
+### <a name="to-configure-user-provisioning-perform-the-following-steps"></a>Konfigurace zřizování uživatelů, proveďte následující kroky:
 
-1. Přihlaste se k vaší **Zscaler** klienta.
+1. Přihlaste se k vaší **Zscalerem** tenanta.
 
-2. Klikněte na tlačítko **správy**.   
+2. Klikněte na tlačítko **správu**.   
    
     ![Správa](./media/zscaler-zscloud-tutorial/ic781035.png "správy")
 
@@ -247,62 +247,62 @@ V případě ZScaler ZSCloud zřizování je ruční úloha.
         
      ![Přidat](./media/zscaler-zscloud-tutorial/ic781037.png "přidat")
 
-4. V **uživatelé** , klikněte na **přidat**.
+4. V **uživatelé** klikněte na tlačítko **přidat**.
       
     ![Přidat](./media/zscaler-zscloud-tutorial/ic781037.png "přidat")
 
 5. V části přidat uživatele proveďte následující kroky:
         
-    ![Přidat uživatele](./media/zscaler-zscloud-tutorial/ic781038.png "přidat uživatele")
+    ![Přidání uživatele](./media/zscaler-zscloud-tutorial/ic781038.png "přidat uživatele")
    
-    a. Typ **UserID**, **zobrazované uživatelské jméno**, **heslo**, **Potvrdit heslo**a potom vyberte **skupiny** a **oddělení** platného účtu AAD chcete zřídit.
+    a. Typ **UserID**, **zobrazované jméno uživatele**, **heslo**, **potvrzení hesla**a pak vyberte **skupiny**a **oddělení** platného účtu AAD, které chcete zřídit.
 
     b. Klikněte na **Uložit**.
 
 > [!NOTE]
-> Můžete použít všechny ostatní ZScaler ZSCloud uživatele účtu nástroje pro tvorbu nebo rozhraní API poskytované ZScaler ZSCloud zřídit AAD uživatelské účty.
+> Můžete použít jakékoli jiné Zscalerem ZSCloud uživatele účtu nástrojů pro vytváření nebo rozhraní API poskytovaných Zscalerem ZSCloud uživatelským účtům, zřídit AAD.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu Zscaler ZSCloud.
+V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k Zscalerem ZSCloud.
 
 ![Přiřadit uživatele][200] 
 
-**Pokud chcete přiřadit Britta Simon Zscaler ZSCloud, proveďte následující kroky:**
+**Přiřadit Zscalerem ZSCloud Britta Simon, proveďte následující kroky:**
 
-1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
+1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **Zscaler ZSCloud**.
+2. V seznamu aplikací vyberte **Zscalerem ZSCloud**.
 
-    ![Konfigurovat jednotné přihlašování](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_app.png) 
+    ![Konfigurace jednotného přihlašování](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_app.png) 
 
 3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.
+4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
+5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
+6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
+7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="testing-single-sign-on"></a>Testování jednotné přihlašování
+### <a name="testing-single-sign-on"></a>Testování jednotného přihlašování
 
-Pokud chcete testovat vaše nastavení jednotného přihlašování, otevřete Panel přístupu.
+Pokud chcete otestovat jednotné přihlašování – nastavení, otevřete na přístupovém panelu.
 
-Když kliknete na dlaždici Zscaler ZSCloud na přístupovém panelu, můžete by měl získat automaticky přihlášení k aplikaci Zscaler ZSCloud.
+Po kliknutí na dlaždici Zscalerem ZSCloud na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci Zscalerem ZSCloud.
 
-Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](../active-directory-saas-access-panel-introduction.md). 
+Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](tutorial-list.md)
+* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->

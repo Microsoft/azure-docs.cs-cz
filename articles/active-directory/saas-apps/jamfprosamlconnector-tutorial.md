@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s Jamf Pro | Microsoft Docs'
+title: 'Kurz: Integrace Azure Active Directory s Jamf Pro | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Jamf Pro.
 services: active-directory
 documentationCenter: na
@@ -15,123 +15,123 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: jeedes
-ms.openlocfilehash: a95b3d1d35642043728831068f0e01cd16f7b999
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 794039ee1a5b1cf3b382e0f0769383b1e033e982
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36212943"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39046933"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-jamf-pro"></a>Kurz: Azure Active Directory integrace s Jamf Pro
+# <a name="tutorial-azure-active-directory-integration-with-jamf-pro"></a>Kurz: Integrace Azure Active Directory s Jamf Pro
 
-V tomto kurzu zjistěte, jak Jamf Pro integraci s Azure Active Directory (Azure AD).
+V tomto kurzu se dozvíte, jak integrace Jamf Pro s Azure Active Directory (Azure AD).
 
-Jamf Pro integraci s Azure AD poskytuje následující výhody:
+Integrace Jamf Pro s Azure AD poskytuje následující výhody:
 
-- Můžete ovládat ve službě Azure AD, který má přístup k Jamf Pro.
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k Jamf Pro (jednotné přihlášení) s jejich účty Azure AD.
-- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure.
+- Můžete řídit ve službě Azure AD, který má přístup k Jamf Pro.
+- Uživatele, aby automaticky získat přihlášení k Jamf Pro (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD.
+- Můžete spravovat své účty na jediném místě – na webu Azure portal.
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
 Konfigurace integrace Azure AD s Jamf Pro, potřebujete následující položky:
 
-- Předplatné služby Azure AD
-- Jamf Pro jednotné přihlašování povolené předplatné
+- S předplatným služby Azure AD
+- Jamf Pro jedno přihlášení povolený předplatné
 
 > [!NOTE]
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
 
-- Nepoužívejte provozním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verze Azure AD, můžete [získat zkušební verzi jeden měsíc](https://azure.microsoft.com/pricing/free-trial/).
+- Nepoužívejte produkčním prostředí, pokud to není nutné.
+- Pokud nemáte prostředí zkušební verzi Azure AD, můžete si [získat měsíční zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání Jamf Pro z Galerie
+1. Jamf Pro přidání z Galerie
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
-## <a name="adding-jamf-pro-from-the-gallery"></a>Přidání Jamf Pro z Galerie
-Při konfiguraci integrace Jamf Pro do služby Azure AD musíte přidat do seznamu spravovaných aplikací SaaS Jamf Pro z galerie.
+## <a name="adding-jamf-pro-from-the-gallery"></a>Jamf Pro přidání z Galerie
+Konfigurace integrace Jamf Pro do služby Azure AD, budete muset přidat Jamf Pro do seznamu spravovaných aplikací SaaS z galerie.
 
-**Pokud chcete přidat Jamf Pro z galerie, proveďte následující kroky:**
+**Chcete-li přidat Jamf Pro z galerie, postupujte následovně:**
 
-1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
+1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![V okně podnikové aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Tlačítko nové aplikace][3]
 
-4. Do vyhledávacího pole zadejte **Jamf Pro**, vyberte **Jamf Pro** z panelu výsledků klikněte **přidat** tlačítko Přidat aplikaci.
+4. Do vyhledávacího pole zadejte **Jamf Pro**vyberte **Jamf Pro** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
-    ![Jamf Pro v seznamu výsledků](./media/jamfprosamlconnector-tutorial/tutorial_jamfprosamlconnector_addfromgallery.png)
+    ![V seznamu výsledků Jamf Pro](./media/jamfprosamlconnector-tutorial/tutorial_jamfprosamlconnector_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování Azure AD jednotné přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-V této části můžete nakonfigurovat, testovací Azure AD jednotné přihlašování s Jamf Pro podle testovacího uživatele názvem "Britta Simon".
+V této části nakonfigurujete a test Azure AD jednotné přihlašování s Jamf Pro podle testovacího uživatele nazývá "Britta Simon".
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v Jamf Pro je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské ve Jamf Pro musí navázat.
+Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšky v Jamf Pro je pro uživatele ve službě Azure AD. Jinými slovy vztah odkazu mezi uživatele služby Azure AD a související uživatelské v Jamf Pro je potřeba navázat.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Jamf Pro, je třeba dokončit následující stavební bloky:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Jamf Pro, které potřebujete k dokončení následujících stavebních bloků:
 
-1. **[Konfigurovat Azure AD jednotné přihlašování](#configure-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
-2. **[Vytvořit testovací uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele Jamf Pro](#create-a-jamf-pro-test-user)**  – Pokud chcete mít protějšek Britta Simon ve Jamf Pro propojenou s Azure AD reprezentace daného uživatele.
-4. **[Přiřadit testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. **[Test jednotného přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
+1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+2. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytvoření zkušebního uživatele Jamf Pro](#create-a-jamf-pro-test-user)**  – Pokud chcete mít protějšek Britta Simon v Jamf Pro, který je propojený s Azure AD reprezentace uživatele.
+4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurovat Azure AD jednotné přihlašování
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci Jamf Pro.
+V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování v aplikaci Jamf Pro.
 
-**Chcete-li nakonfigurovat Jamf Pro Azure AD jednotné přihlašování, proveďte následující kroky:**
+**Ke konfiguraci Azure AD jednotné přihlašování s Jamf Pro, proveďte následující kroky:**
 
-1. Na portálu Azure na **Jamf Pro** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. Na webu Azure Portal na **Jamf Pro** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
 
-    ![Konfigurace propojení přihlášení][4]
+    ![Nakonfigurovat jednotné přihlašování – odkaz][4]
 
-2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
+2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
-    ![Jediné přihlášení dialogové okno](./media/jamfprosamlconnector-tutorial/tutorial_jamfprosamlconnector_samlbase.png)
+    ![Jednotné přihlašování – dialogové okno](./media/jamfprosamlconnector-tutorial/tutorial_jamfprosamlconnector_samlbase.png)
 
-3. Na **Jamf Pro domény a adresy URL** část, proveďte následující kroky, pokud chcete nakonfigurovat aplikace **IDP** iniciované režimu:
+3. Na **Jamf Pro domény a adresy URL** části, proveďte následující kroky, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu:
 
-    ![Pro doménu Jamf a adresy URL jednotné přihlašování informace](./media/jamfprosamlconnector-tutorial/tutorial_jamfprosamlconnector_url.png)
+    ![Jamf Pro domény a adresy URL jednotného přihlašování – informace](./media/jamfprosamlconnector-tutorial/tutorial_jamfprosamlconnector_url.png)
 
-    a. V **identifikátoru (Entity ID)** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<subdomain>.jamfcloud.com/saml/metadata`
+    a. V **identifikátor (Entity ID)** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<subdomain>.jamfcloud.com/saml/metadata`
 
-    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<subdomain>.jamfcloud.com/saml/SSO`
+    b. V **adresy URL odpovědi** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<subdomain>.jamfcloud.com/saml/SSO`
 
-4. Zkontrolujte **zobrazit upřesňující nastavení adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace **SP** iniciované režimu:
+4. Zkontrolujte **zobrazit pokročilé nastavení URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
 
-    ![Pro doménu Jamf a adresy URL jednotné přihlašování informace](./media/jamfprosamlconnector-tutorial/tutorial_jamfprosamlconnector_url1.png)
+    ![Jamf Pro domény a adresy URL jednotného přihlašování – informace](./media/jamfprosamlconnector-tutorial/tutorial_jamfprosamlconnector_url1.png)
 
-    V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<subdomain>.jamfcloud.com`
+    V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<subdomain>.jamfcloud.com`
      
     > [!NOTE]
-    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte se skutečným identifikátorem, adresa URL odpovědi a přihlašovací adresa URL. Zobrazí se skutečná hodnota identifikátoru z **jednotné přihlašování** části portálu Jamf Pro, který je vysvětlen později v tomto kurzu. Můžete rozbalit skutečnou **subdomény** z hodnota identifikátoru hodnoty a použít jej **subdomény** informace v přihlašovací adresa URL a adresa URL odpovědi.
+    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte skutečné identifikátor, adresa URL odpovědi a přihlašovací adresa URL. Zobrazí se skutečná hodnota identifikátoru z **Single Sign-On** části portálu Jamf Pro, který je vysvětlen později v tomto kurzu. Můžete rozbalit skutečnou **subdoménu** hodnoty z hodnoty identifikátor, který budete používat **subdoménu** informace v přihlašovací adresu URL a adresy URL odpovědi.
 
-5. Na **SAML podpisový certifikát** části, klikněte na tlačítko Kopírovat kopírování **adresu Url aplikace federační Metadata** a vložte do poznámkového bloku.
+5. Na **podpisový certifikát SAML** klikněte na tlačítko Kopírovat zkopírujte **adresa Url federačních metadat aplikace** a vložte ho do poznámkového bloku.
 
     ![Odkaz ke stažení certifikátu](./media/jamfprosamlconnector-tutorial/tutorial_jamfprosamlconnector_certificate.png) 
 
 6. Klikněte na tlačítko **Uložit** tlačítko.
 
-    ![Nakonfigurujte jeden přihlašování uložit tlačítko](./media/jamfprosamlconnector-tutorial/tutorial_general_400.png)
+    ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/jamfprosamlconnector-tutorial/tutorial_general_400.png)
     
-7. V okně prohlížeče jiný web Přihlaste se jako správce k serveru vaší společnosti Jamf Pro.
+7. V okně jiné webové prohlížeče přihlaste jako správce serveru vaší společnosti Jamf Pro.
 
-8. Klikněte na **ikonu nastavení** z pravém horním rohu stránky.
+8. Klikněte na **ikona nastavení** v pravém horním rohu stránky.
 
     ![Konfigurace Jamf Pro](./media/jamfprosamlconnector-tutorial/configure1.png)
 
@@ -139,38 +139,38 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurace Jamf Pro](./media/jamfprosamlconnector-tutorial/configure2.png)
 
-10. Projděte dolů maximálně **zprostředkovatele IDENTITY** pod **jednotné přihlašování** části a proveďte následující kroky:
+10. Přejděte dolů až **zprostředkovatele IDENTITY** pod **Single Sign-On** části a proveďte následující kroky:
 
     ![Konfigurace Jamf Pro](./media/jamfprosamlconnector-tutorial/configure3.png)
 
     a. Vyberte **jiných** jako možnost z **zprostředkovatele IDENTITY** rozevíracího seznamu.
 
-    b. V **ostatní poskytovatele** textovému poli, zadejte **Azure AD**.
+    b. V **ostatní poskytovatele** textového pole zadejte **Azure AD**.
 
-    c. Vyberte **adresu URL metadat** jako možnost z **IDENTITY zprostředkovatele METADAT zdroje** rozevíracího seznamu a do textového pole následující vložte **adresu Url aplikace federační Metadata** hodnotu, která jste zkopírovali z portálu Azure.
+    c. Vyberte **adresa URL metadat** jako možnost z **zdroj METADAT zprostředkovatele IDENTITY** rozevíracího seznamu a v následujícím textovém poli, vložte **adresa Url federačních metadat aplikace** hodnotu, která jste zkopírovali z portálu Azure portal.
 
-    d. Kopírování **Entity ID** vlaue a vložte ji do **identifikátoru (Entity ID)** textového pole v **Jamf Pro domény a adresy URL** části na portálu Azure.
+    d. Kopírovat **Entity ID** vlaue a vložte ho do **identifikátor (Entity ID)** textového pole v **Jamf Pro domény a adresy URL** části na webu Azure portal.
 
     >[!NOTE]
-    > Zde `aadsso` je součástí subdomény, (což je pro referenční účely). Tato hodnota slouží k dokončení přihlašovací adresa URL a adresa URL odpovědi v **Jamf Pro domény a adresy URL** části na portálu Azure.
+    > Tady `aadsso` je součástí subdomény (což je pro referenční účely). K dokončení přihlašovací adresu URL a adresy URL odpovědi v použít tuto hodnotu **Jamf Pro domény a adresy URL** části na webu Azure portal.
 
     e. Klikněte na **Uložit**.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovací uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
-Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
+Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-   ![Vytvořit testovací uživatele Azure AD][100]
+   ![Vytvořit testovacího uživatele Azure AD][100]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
 
-1. Na portálu Azure, v levém podokně klikněte **Azure Active Directory** tlačítko.
+1. Na webu Azure Portal, v levém podokně klikněte na tlačítko **Azure Active Directory** tlačítko.
 
     ![Tlačítko Azure Active Directory](./media/jamfprosamlconnector-tutorial/create_aaduser_01.png)
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na **všichni uživatelé**.
+2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
 
-    !["Uživatelé a skupiny" a "Všichni uživatelé" odkazy](./media/jamfprosamlconnector-tutorial/create_aaduser_02.png)
+    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](./media/jamfprosamlconnector-tutorial/create_aaduser_02.png)
 
 3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
 
@@ -184,92 +184,92 @@ Cílem této části je vytvoření zkušebního uživatele na portálu Azure, n
 
     b. V **uživatelské jméno** zadejte e-mailovou adresu uživatele Britta Simon.
 
-    c. Vyberte **zobrazit hesla** zaškrtněte políčko a zapište si ji hodnotu, která se zobrazí v **heslo** pole.
+    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
 
     d. Klikněte na možnost **Vytvořit**.
  
 ### <a name="create-a-jamf-pro-test-user"></a>Vytvoření zkušebního uživatele Jamf Pro
 
-Povolit uživatelům přihlášení do Jamf Pro Azure AD, musí být zřízená do Jamf Pro. V případě Jamf Pro zřizování je ruční úloha.
+Přihlaste se k Jamf Pro Azure AD uživatelům umožnit, musí být poskytnuty do Jamf Pro. V případě Jamf Pro zřizování je ruční úloha.
 
-**K poskytnutí uživatelského účtu, proveďte následující kroky:**
+**K poskytnutí uživatelského účtu, postupujte následovně:**
 
-1. Přihlaste se k webu Jamf Pro společnosti jako správce.
+1. Přihlaste se na web společnosti Jamf Pro jako správce.
 
-2. Klikněte na **ikonu nastavení** z pravém horním rohu stránky.
+2. Klikněte na **ikona nastavení** v pravém horním rohu stránky.
 
-    ![Můžete přidat zaměstnance](./media/jamfprosamlconnector-tutorial/configure1.png)
+    ![Přidat zaměstnance](./media/jamfprosamlconnector-tutorial/configure1.png)
 
 3. Klikněte na **Jamf Pro uživatelské účty a skupiny**.
 
-    ![Můžete přidat zaměstnance](./media/jamfprosamlconnector-tutorial/user1.png)
+    ![Přidat zaměstnance](./media/jamfprosamlconnector-tutorial/user1.png)
 
 4. Klikněte na možnost **Nové**.
 
-    ![Můžete přidat zaměstnance](./media/jamfprosamlconnector-tutorial/user2.png)
+    ![Přidat zaměstnance](./media/jamfprosamlconnector-tutorial/user2.png)
 
 5. Vyberte **vytvořit standardní účet**.
 
-    ![Můžete přidat zaměstnance](./media/jamfprosamlconnector-tutorial/user3.png)
+    ![Přidat zaměstnance](./media/jamfprosamlconnector-tutorial/user3.png)
 
 6. Na **nový účet** dailog, proveďte následující kroky:
 
-    ![Můžete přidat zaměstnance](./media/jamfprosamlconnector-tutorial/user4.png)
+    ![Přidat zaměstnance](./media/jamfprosamlconnector-tutorial/user4.png)
 
-    a. V **uživatelské jméno** textovému poli, zadejte úplný název BrittaSimon.
+    a. V **uživatelské jméno** textového pole zadejte úplný název BrittaSimon.
 
-    b. Vyberte požadované možnosti podle vaší organizace pro **úroveň přístupu**, **nastavit oprávnění**a pro **stav přístupu**.
+    b. Vyberte příslušné možnosti podle vaší organizaci pro **úroveň přístupu**, **oprávnění NASTAVENA**a pro **stav přístupu**.
     
-    c. V **úplný název** textovému poli, zadejte úplný název Britta Simon.
+    c. V **jméno a příjmení** textového pole zadejte úplný název Britta Simon.
 
-    d. V **e-MAILOVOU adresu** textovému poli, zadejte e-mailovou adresu účtu Britta Simon.
+    d. V **e-MAILOVOU adresu** textového pole zadejte e-mailovou adresu účtu Britta Simon.
 
-    e. V **heslo** textovému poli, zadejte heslo uživatele.
+    e. V **heslo** textového pole zadejte heslo uživatele.
 
-    f. V **ověřit heslo** textovému poli, zadejte heslo uživatele.
+    f. V **OVĚŘTE heslo** textového pole zadejte heslo uživatele.
 
     g. Klikněte na **Uložit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit testovacího uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-V této části povolíte Britta Simon k používání Azure jednotné přihlašování v Jamf Pro udělení přístupu.
+V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k Jamf Pro.
 
-![Přiřadit role uživatele][200] 
+![Přiřazení role uživatele][200] 
 
-**Chcete Jamf Pro přiřadit Britta Simon, proveďte následující kroky:**
+**Pokud chcete přiřadit Britta Simon k Jamf Pro, proveďte následující kroky:**
 
-1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
+1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
 2. V seznamu aplikací vyberte **Jamf Pro**.
 
-    ![Odkaz Jamf Pro v seznamu aplikací](./media/jamfprosamlconnector-tutorial/tutorial_jamfprosamlconnector_app.png)  
+    ![Jamf Pro odkaz v seznamu aplikací](./media/jamfprosamlconnector-tutorial/tutorial_jamfprosamlconnector_app.png)  
 
 3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
-    ![Odkaz "Uživatelé a skupiny"][202]
+    ![Odkaz "Uživatele a skupiny"][202]
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.
+4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
-    ![V podokně Přidat přiřazení][203]
+    ![Podokno Přidat přiřazení][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
+5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
+6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
+7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
 ### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
-V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
+V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Když kliknete na dlaždici Jamf Pro na přístupovém panelu, můžete by měl získat automaticky přihlášení k aplikaci Jamf Pro.
-Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](../active-directory-saas-access-panel-introduction.md). 
+Když kliknete na dlaždici Jamf Pro na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci Jamf Pro.
+Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](tutorial-list.md)
+* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->

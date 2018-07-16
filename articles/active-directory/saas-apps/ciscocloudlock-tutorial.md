@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: jeedes
-ms.openlocfilehash: 5f469269d88320a41551fc86168debcd8fe43f7f
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 56f88af5d1ec8adb44d5f5c7f539925e26459e19
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37865450"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39047939"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-the-cloud-security-fabric"></a>Kurz: Integrace Azure Active Directory s využitím The Fabric zabezpečení cloudu
 
@@ -203,7 +203,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
 Po kliknutí na dlaždici The Fabric zabezpečení cloudu na přístupovém panelu, můžete by měl získat automaticky přihlášení k aplikaci zabezpečení infrastruktury cloudu.
-Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../active-directory-saas-access-panel-introduction.md).
+Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 

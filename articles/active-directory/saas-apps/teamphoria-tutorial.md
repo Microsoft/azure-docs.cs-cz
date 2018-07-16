@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s Teamphoria | Microsoft Docs'
+title: 'Kurz: Integrace Azure Active Directory se službou Teamphoria | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Teamphoria.
 services: active-directory
 documentationCenter: na
@@ -14,242 +14,242 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2018
 ms.author: jeedes
-ms.openlocfilehash: 0ff053b88a718c152d31b593a7759b034347f3ef
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 794945caeea113dc6f1cc2ab5e11a76c3e88c83e
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293662"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39041904"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-teamphoria"></a>Kurz: Azure Active Directory integrace s Teamphoria
+# <a name="tutorial-azure-active-directory-integration-with-teamphoria"></a>Kurz: Integrace Azure Active Directory se službou Teamphoria
 
-V tomto kurzu zjistěte, jak integrovat Teamphoria s Azure Active Directory (Azure AD).
+V tomto kurzu se dozvíte, jak integrovat Teamphoria s Azure Active Directory (Azure AD).
 
-Integrace Teamphoria s Azure AD poskytuje následující výhody:
+Teamphoria integraci se službou Azure AD poskytuje následující výhody:
 
 - Můžete řídit ve službě Azure AD, který má přístup k Teamphoria
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k Teamphoria (jednotné přihlášení) s jejich účty Azure AD
-- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
+- Můžete povolit uživatelům, aby automaticky získat přihlášení k Teamphoria (Single Sign-On) s jejich účty Azure AD
+- Můžete spravovat své účty na jediném místě – na webu Azure portal
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
 Konfigurace integrace Azure AD s Teamphoria, potřebujete následující položky:
 
-- Předplatné služby Azure AD
-- Teamphoria jednotného přihlašování povolené předplatné
+- S předplatným služby Azure AD
+- Teamphoria jednotného přihlašování povolená předplatného
 
 > [!NOTE]
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
 
-- Nepoužívejte provozním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verze Azure AD, můžete [získat zkušební verzi jeden měsíc](https://azure.microsoft.com/pricing/free-trial/).
+- Nepoužívejte produkčním prostředí, pokud to není nutné.
+- Pokud nemáte prostředí zkušební verzi Azure AD, můžete si [získat měsíční zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí.
-Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí.
+Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání Teamphoria z Galerie
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
 ## <a name="adding-teamphoria-from-the-gallery"></a>Přidání Teamphoria z Galerie
-Při konfiguraci integrace Teamphoria do služby Azure AD musíte přidat do seznamu spravovaných aplikací SaaS Teamphoria z galerie.
+Konfigurace integrace Teamphoria do služby Azure AD, budete muset přidat Teamphoria z Galerie na váš seznam spravovaných aplikací SaaS.
 
-**Pokud chcete přidat Teamphoria z galerie, proveďte následující kroky:**
+**Chcete-li přidat Teamphoria z galerie, postupujte následovně:**
 
-1. V  **[portálu Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu.
+1. V  **[webu Azure Portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Active Directory][1]
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![Aplikace][2]
     
-3. Klikněte na tlačítko **přidat** tlačítko horní dialogové okno.
+3. Klikněte na tlačítko **přidat** tlačítko v horní části dialogového okna.
 
     ![Aplikace][3]
 
 4. Do vyhledávacího pole zadejte **Teamphoria**.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/teamphoria-tutorial/tutorial_teamphoria_search.png)
+    ![Vytváří se testovací uživatele služby Azure AD](./media/teamphoria-tutorial/tutorial_teamphoria_search.png)
 
-5. Na panelu výsledků vyberte **Teamphoria**a potom klikněte na **přidat** tlačítko Přidat aplikaci.
+5. Na panelu výsledků vyberte **Teamphoria**a potom klikněte na tlačítko **přidat** tlačítko pro přidání aplikace.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/teamphoria-tutorial/tutorial_teamphoria_addfromgallery.png)
+    ![Vytváří se testovací uživatele služby Azure AD](./media/teamphoria-tutorial/tutorial_teamphoria_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
-V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s Teamphoria podle testovacího uživatele názvem "Britta Simon".
+V této části Konfigurace a testování Azure AD jednotné přihlašování pomocí Teamphoria podle testovacího uživatele nazývá "Britta Simon".
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v Teamphoria je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v Teamphoria musí navázat.
+Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšky v Teamphoria je pro uživatele ve službě Azure AD. Jinými slovy vztah odkazu mezi uživatele služby Azure AD a související uživatelské v Teamphoria potřeba navázat.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Teamphoria, je třeba dokončit následující stavební bloky:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Teamphoria, které potřebujete k dokončení následujících stavebních bloků:
 
-1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
-2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele Teamphoria](#creating-a-teamphoria-test-user)**  – Pokud chcete mít protějšek Britta Simon v Teamphoria propojeném s Azure AD reprezentace jí.
-4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
+1. **[Konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+2. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytvoření zkušebního uživatele Teamphoria](#creating-a-teamphoria-test-user)**  – Pokud chcete mít protějšek Britta Simon Teamphoria, který je propojený s Azure AD reprezentace jí.
+4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace Azure AD jednotné přihlašování
+### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci Teamphoria.
+V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování v aplikaci Teamphoria.
 
 **Ke konfiguraci Azure AD jednotné přihlašování s Teamphoria, proveďte následující kroky:**
 
-1. Na portálu Azure na **Teamphoria** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. Na webu Azure Portal na **Teamphoria** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
 
-    ![Konfigurovat jednotné přihlašování][4]
+    ![Konfigurace jednotného přihlašování][4]
 
-2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
+2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
 
-    ![Konfigurovat jednotné přihlašování](./media/teamphoria-tutorial/tutorial_teamphoria_samlbase.png)
+    ![Konfigurace jednotného přihlašování](./media/teamphoria-tutorial/tutorial_teamphoria_samlbase.png)
 
-3. Na **Teamphoria domény a adresy URL** část, proveďte následující kroky:
+3. Na **Teamphoria domény a adresy URL** části, proveďte následující kroky:
 
-    ![Konfigurovat jednotné přihlašování](./media/teamphoria-tutorial/tutorial_teamphoria_url.png)
+    ![Konfigurace jednotného přihlašování](./media/teamphoria-tutorial/tutorial_teamphoria_url.png)
 
-    V **přihlašovací adresa URL** textovému poli, zadejte adresu URL, pomocí následujícího vzorce: `https://<sub-domain>.teamphoria.com/login`   
+    V **přihlašovací adresa URL** textového pole zadejte adresu URL, pomocí následujícího vzorce: `https://<sub-domain>.teamphoria.com/login`   
 
     > [!NOTE] 
-    > Hodnota přihlašovací adresa URL není skutečné. Budete muset aktualizovat tuto hodnotu s skutečná adresa URL přihlašování. Obraťte se na [tým podpory Teamphoria klienta](https://www.teamphoria.com/) získat adresu URL přihlašování.
+    > Hodnota přihlašovací adresa URL není skutečný. Budete muset aktualizovat tuto hodnotu skutečné přihlašovací adresa URL. Kontakt [tým podpory Teamphoria klienta](https://www.teamphoria.com/) získat adresu URL přihlašování.
 
-4. Na **SAML podpisový certifikát** klikněte na tlačítko **certifikátu (Base64)** a potom uložte certifikát v počítači.
+4. Na **podpisový certifikát SAML** klikněte na tlačítko **certifikát (Base64)** a uložte certifikát ve vašem počítači.
 
-    ![Konfigurovat jednotné přihlašování](./media/teamphoria-tutorial/tutorial_teamphoria_certificate.png)
+    ![Konfigurace jednotného přihlašování](./media/teamphoria-tutorial/tutorial_teamphoria_certificate.png)
 
 5. Klikněte na tlačítko **Uložit** tlačítko.
 
-    ![Konfigurovat jednotné přihlašování](./media/teamphoria-tutorial/tutorial_general_400.png)
+    ![Konfigurace jednotného přihlašování](./media/teamphoria-tutorial/tutorial_general_400.png)
 
-6. Na **Teamphoria konfigurace** klikněte na tlačítko **konfigurace Teamphoria** otevřete **konfigurovat přihlášení** okno. Kopírování **SAML jeden přihlašování adresa URL služby** z **Stručná referenční příručka části.**
+6. Na **Teamphoria konfigurace** klikněte na tlačítko **nakonfigurovat Teamphoria** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
 
-    ![Konfigurovat jednotné přihlašování](./media/teamphoria-tutorial/tutorial_teamphoria_configure.png)
+    ![Konfigurace jednotného přihlašování](./media/teamphoria-tutorial/tutorial_teamphoria_configure.png)
 
-7. Konfigurace jednotného přihlašování na **Teamphoria** straně, přihlášení do aplikace Teamphoria jako správce.
+7. Ke konfiguraci jednotného přihlašování na **Teamphoria** straně, přihlaste se k aplikaci Teamphoria jako správce.
 
-8. Přejděte na **nastavení správce** možnost, pokud v levém panelu nástrojů a na kartě Konfigurace klikněte na **jeden přihlašování** a otevřete okno Konfigurace jednotného přihlašování.
+8. Přejděte na **nastavení správy** možnost v levém panelu nástrojů a na kartě Konfigurace klikněte na **jednotné přihlašování** otevřete okno Konfigurace jednotného přihlašování.
 
-    ![Konfigurovat jednotné přihlašování](./media/teamphoria-tutorial/admin_sso_configure.png)
+    ![Konfigurace jednotného přihlašování](./media/teamphoria-tutorial/admin_sso_configure.png)
 
-9. Klikněte na **přidat nového poskytovatele IDENTITY** možnost v pravém horním rohu otevřete formulář pro přidání nastavení pro jednotné přihlašování.
+9. Klikněte na **přidat nového zprostředkovatele IDENTITY** možnost v pravém horním rohu otevřete formulář pro přidání nastavení pro jednotné přihlašování.
 
-    ![Konfigurovat jednotné přihlašování](./media/teamphoria-tutorial/add_new_identity_provider.png)
+    ![Konfigurace jednotného přihlašování](./media/teamphoria-tutorial/add_new_identity_provider.png)
 
-10. Zadejte podrobnosti v polích, jak je popsáno níže-
+10. Do polí zadejte podrobnosti, jak je popsáno níže –
 
-    ![Konfigurovat jednotné přihlašování](./media/teamphoria-tutorial/Teamphoria_sso_save.png)
+    ![Konfigurace jednotného přihlašování](./media/teamphoria-tutorial/Teamphoria_sso_save.png)
 
-    a. **Zobrazit název**: Zadejte zobrazovaný název modulu plug-in na stránky pro správu.
+    a. **ZOBRAZOVANÝ název**: Zadejte zobrazovaný název modulu plug-in na stránky pro správu.
 
-    b. **Název TLAČÍTKA**: název karty, k níž se zobrazí na přihlašovací stránce pro přihlašování pomocí jednotného přihlašování.
+    b. **Název TLAČÍTKA**: název karty, které se zobrazí na přihlašovací stránku pro přihlášení pomocí jednotného přihlašování.
 
-    c. **CERTIFIKÁT**: certifikát předtím stáhli z portálu Azure v poznámkovém bloku otevřete zkopírujte obsah stejné a vložte jej zde v poli.
+    c. **CERTIFIKÁT**: otevřít certifikátu dříve stáhli z portálu Azure v programu Poznámkový blok, zkopírujte obsah stejné a vložte ho do pole.
 
-    d. **VSTUPNÍ bod**: vložení **SAML jeden přihlašování adresa URL služby** zkopírovali dříve z portálu Azure.
+    d. **VSTUPNÍ bod**: Vložit **SAML jednotné přihlašování – adresa URL služby** zkopírovali z portálu Azure portal.
 
     e. Přepněte možnost **ON** a klikněte na **Uložit**.
 
-### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
-Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
+### <a name="creating-an-azure-ad-test-user"></a>Vytváří se testovací uživatele služby Azure AD
+Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-![Vytvořit uživatele Azure AD][100]
+![Vytvoření uživatele Azure AD][100]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
 
-1. V **portál Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
+1. V **webu Azure portal**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/teamphoria-tutorial/create_aaduser_01.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/teamphoria-tutorial/create_aaduser_01.png) 
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na **všichni uživatelé**.
+2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/teamphoria-tutorial/create_aaduser_02.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/teamphoria-tutorial/create_aaduser_02.png) 
 
-3. V horní části okna klikněte na tlačítko **přidat** otevřete **uživatele** dialogové okno.
+3. V horní části okna klikněte na tlačítko **přidat** otevřít **uživatele** dialogového okna.
  
-    ![Vytváření testovacího uživatele Azure AD](./media/teamphoria-tutorial/create_aaduser_03.png)
+    ![Vytváří se testovací uživatele služby Azure AD](./media/teamphoria-tutorial/create_aaduser_03.png)
 
-4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
+4. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
  
-    ![Vytváření testovacího uživatele Azure AD](./media/teamphoria-tutorial/create_aaduser_04.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/teamphoria-tutorial/create_aaduser_04.png) 
 
-    a. V **název** textovému poli, typ **BrittaSimon**.
+    a. V **název** textové pole, typ **BrittaSimon**.
 
-    b. V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.
+    b. V **uživatelské jméno** textové pole, typ **e-mailová adresa** z BrittaSimon.
 
-    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
+    c. Vyberte **zobrazit heslo** a zapište si hodnotu **heslo**.
 
     d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="creating-a-teamphoria-test-user"></a>Vytvoření zkušebního uživatele Teamphoria
 
-Pokud chcete povolit uživatelům Azure AD přihlášení do Teamphoria, musí být zřízená do Teamphoria. V případě Teamphoria zřizování je ruční úloha.
+Chcete-li povolit uživatele Azure AD k přihlášení do Teamphoria, musí být poskytnuty do Teamphoria. V případě Teamphoria zřizování se ruční úlohy.
 
-**K poskytnutí uživatelského účtu, proveďte následující kroky:**
+**K poskytnutí uživatelského účtu, postupujte následovně:**
 
-1. Přihlaste se k serveru vaší společnosti Teamphoria jako správce.
+1. Přihlaste se na web společnosti Teamphoria jako správce.
 
-2. Klikněte na **správce** nastavení na levém panelu nástrojů a v části **SPRAVOVAT** kartě kliknutím na **uživatelé** chcete otevřít stránku Správce pro uživatele.
+2. Klikněte na **správce** nastavení na levém panelu nástrojů a v části **SPRAVOVAT** klikněte na kartě **uživatelé** otevřete stránku Správce pro uživatele.
 
-    ![Můžete přidat zaměstnance](./media/teamphoria-tutorial/admin_manage_users.png)
+    ![Přidat zaměstnance](./media/teamphoria-tutorial/admin_manage_users.png)
 
-3. Klikněte na **RUČNÍ POZVAT** možnost.
+3. Klikněte na **POZVAT RUČNÍ** možnost.
 
-    ![Pozvat uživatele](./media/teamphoria-tutorial/admin_manage_add_users.png)
+    ![Pozvat](./media/teamphoria-tutorial/admin_manage_add_users.png)
 
 4. Na této stránce proveďte následující akce.
     
-    ![Pozvat uživatele](./media/teamphoria-tutorial/manual_user_invite.png)
+    ![Pozvat](./media/teamphoria-tutorial/manual_user_invite.png)
 
-    a. V **e-MAILOVOU adresu** textovému poli, **e-mailová adresa** z BrittaSimon.
+    a. V **e-MAILOVOU adresu** textového pole **e-mailová adresa** z BrittaSimon.
 
-    b. V **KŘESTNÍ jméno** textovému poli, typ **Britta**.
+    b. V **KŘESTNÍ jméno** textové pole, typ **Britta**.
 
-    c. V **příjmení** textovému poli, typ **Simon**.
+    c. V **příjmení** textové pole, typ **Simon**.
 
-    d. Klikněte na tlačítko **pozvání 1 uživatele**. Uživatel musí přijmout pozvání k získání vytvořené v systému.
+    d. Klikněte na tlačítko **pozvání 1 uživatel**. Uživatel musí přijmout pozvánku pro vytvořené v systému.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu Teamphoria.
+V této části je povolit Britta Simon k udělení přístupu k Teamphoria použití Azure jednotného přihlašování.
 
 ![Přiřadit uživatele][200]
 
-**Pokud chcete přiřadit Britta Simon Teamphoria, proveďte následující kroky:**
+**Přiřadit Teamphoria Britta Simon, proveďte následující kroky:**
 
-1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
+1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201]
 
 2. V seznamu aplikací vyberte **Teamphoria**.
 
-    ![Konfigurovat jednotné přihlašování](./media/teamphoria-tutorial/tutorial_teamphoria_app.png) 
+    ![Konfigurace jednotného přihlašování](./media/teamphoria-tutorial/tutorial_teamphoria_app.png) 
 
 3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202]
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.
+4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
+5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
+6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
+7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
 
-### <a name="testing-single-sign-on"></a>Testování jednotné přihlašování
+### <a name="testing-single-sign-on"></a>Testování jednotného přihlašování
 
-V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
+V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Pokud chcete testovat vaše nastavení jednotného přihlašování, otevřete Panel přístupu. Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](../active-directory-saas-access-panel-introduction.md).
+Pokud chcete otestovat jednotné přihlašování – nastavení, otevřete na přístupovém panelu. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](tutorial-list.md)
+* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->

@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s Tangoe příkaz Premium Mobile | Microsoft Docs'
+title: 'Kurz: Integrace Azure Active Directory s Tangoe příkaz Premium Mobile | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Tangoe příkaz Premium Mobile.
 services: active-directory
 documentationCenter: na
@@ -15,206 +15,206 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 42d1b40e01653e8fb5fa5bf118c65de758832f4d
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: d76ee059720baa1f91dd157c093b476e4cfaf035
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36308604"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39040700"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-tangoe-command-premium-mobile"></a>Kurz: Azure Active Directory integrace s Tangoe příkaz Premium Mobile
+# <a name="tutorial-azure-active-directory-integration-with-tangoe-command-premium-mobile"></a>Kurz: Integrace Azure Active Directory s Tangoe příkaz Premium Mobile
 
-V tomto kurzu zjistíte integrace Tangoe příkaz Premium mobilní služby Azure Active Directory (Azure AD).
+V tomto kurzu se dozvíte, jak integrovat Tangoe příkaz Premium mobilní služby Azure Active Directory (Azure AD).
 
-Integrace Mobile Premium příkaz Tangoe s Azure AD poskytuje následující výhody:
+Integrace Mobile Tangoe příkaz Premium s Azure AD poskytuje následující výhody:
 
 - Můžete řídit ve službě Azure AD, který má přístup k Tangoe příkaz Premium Mobile
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k Tangoe příkaz Premium Mobile (jednotné přihlášení) s jejich účty Azure AD
-- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
+- Uživatele, aby automaticky získat přihlášení k Tangoe příkaz Premium Mobile (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD
+- Můžete spravovat své účty na jediném místě – na webu Azure portal
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
 Konfigurace integrace Azure AD s Tangoe příkaz Premium Mobile, potřebujete následující položky:
 
-- Předplatné služby Azure AD
-- Tangoe příkaz Premium Mobile jednotné přihlašování povolené předplatné
+- S předplatným služby Azure AD
+- Mobile Premium příkaz Tangoe jednotného přihlašování povolená předplatného
 
 > [!NOTE]
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
 
-- Nepoužívejte provozním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verze Azure AD, můžete [získat zkušební verzi jeden měsíc](https://azure.microsoft.com/pricing/free-trial/).
+- Nepoužívejte produkčním prostředí, pokud to není nutné.
+- Pokud nemáte prostředí zkušební verzi Azure AD, můžete si [získat měsíční zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání Mobile Premium Tangoe příkaz z Galerie
-2. Konfigurace a otestování Azure AD jednotné přihlašování
+2. Konfigurace a otestování služby Azure AD jednotného přihlašování
 
 ## <a name="add-tangoe-command-premium-mobile-from-the-gallery"></a>Přidání Mobile Premium Tangoe příkaz z Galerie
-Při konfiguraci integrace Mobile Premium příkaz Tangoe do služby Azure AD potřebujete přidat mobilní Premium Tangoe příkaz z Galerie si na seznam spravovaných aplikací SaaS.
+Pokud chcete nakonfigurovat integraci Tangoe příkaz Premium mobilní zařízení do služby Azure AD, potřebujete přidat Tangoe příkaz Premium Mobile z Galerie na váš seznam spravovaných aplikací SaaS.
 
-**Pokud chcete přidat mobilní Premium Tangoe příkaz z galerie, proveďte následující kroky:**
+**Přidání Mobile Premium Tangoe příkaz z galerie, postupujte následovně:**
 
-1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
+1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![Aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Aplikace][3]
 
-4. Do vyhledávacího pole zadejte **Tangoe příkaz Premium Mobile**, vyberte **Tangoe příkaz Premium Mobile** z panelu výsledků klikněte **přidat** tlačítko Přidat aplikaci.
+4. Do vyhledávacího pole zadejte **Tangoe příkaz Premium Mobile**vyberte **Tangoe příkaz Premium Mobile** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
     ![Přidání Mobile Premium Tangoe příkaz z Galerie ](./media/tangoe-tutorial/tutorial_tangoe_addfromgallery.png)
 
-##  <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování Azure AD jednotné přihlašování
-V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s Tangoe příkaz Premium Mobile podle testovacího uživatele názvem "Britta Simon".
+##  <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+V této části Konfigurace a testování Azure AD jednotné přihlašování pomocí Tangoe příkaz Premium mobilní zařízení podle testovacího uživatele nazývá "Britta Simon".
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v Tangoe příkaz Premium Mobile je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v Tangoe příkaz Premium Mobile musí navázat.
+Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšky v Tangoe příkaz Premium Mobile je pro uživatele ve službě Azure AD. Jinými slovy vztah odkazu mezi uživatele služby Azure AD a souvisejících uživatele v Mobile Premium Tangoe příkazu je potřeba navázat.
 
-V modulu snap-in Mobile Premium příkaz Tangoe přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** k navázání vztahu odkazu.
+V modulu snap-in Mobile Premium příkaz Tangoe přiřaďte hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** a tím vytvoří vztah odkazu.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Tangoe příkaz Premium Mobile, musíte dokončit následující stavební bloky:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování do mobilní Tangoe příkaz Premium, které potřebujete k dokončení následujících stavebních bloků:
 
-1. **[Konfigurovat Azure AD jednotné přihlašování](#configure-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
-2. **[Vytvořit testovací uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele Mobile Premium příkaz Tangoe](#create-a-tangoe-command-premium-mobile-test-user)**  – Pokud chcete mít protějšek Britta Simon v Tangoe příkaz Premium Mobile, která je propojený s Azure AD reprezentace daného uživatele.
-4. **[Přiřadit testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. **[Test jednotného přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
+1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+2. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytvoření zkušebního uživatele Tangoe příkaz Premium Mobile](#create-a-tangoe-command-premium-mobile-test-user)**  – Pokud chcete mít protějšek Britta Simon v Tangoe příkaz Premium Mobile, který je propojený s Azure AD reprezentace uživatele.
+4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurovat Azure AD jednotné přihlašování
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v Tangoe příkaz Premium mobilní aplikaci.
+V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování v aplikaci Mobile Tangoe příkaz Premium.
 
-**Ke konfiguraci Azure AD jednotné přihlašování s Tangoe příkaz Premium Mobile, proveďte následující kroky:**
+**Ke konfiguraci Azure AD jednotné přihlašování s Tangoe příkaz Premium mobilní, proveďte následující kroky:**
 
-1. Na portálu Azure na **Tangoe příkaz Premium Mobile** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. Na webu Azure Portal na **Tangoe příkaz Premium Mobile** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
 
-    ![Konfigurovat jednotné přihlašování][4]
+    ![Konfigurace jednotného přihlašování][4]
 
-2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
+2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
     ![Přihlašování založené na SAML](./media/tangoe-tutorial/tutorial_tangoe_samlbase.png)
 
-3. Na **Tangoe příkaz Premium Mobile domény a adresy URL** část, proveďte následující kroky:
+3. Na **Tangoe příkaz Premium Mobile domény a adresy URL** části, proveďte následující kroky:
 
     ![Příkaz Tangoe Premium mobilní domény a adresy URL](./media/tangoe-tutorial/tutorial_tangoe_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://sso.tangoe.com/sp/startSSO.ping?PartnerIdpId=<tenant issuer>&TARGET=<target page url>`
+    a. V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://sso.tangoe.com/sp/startSSO.ping?PartnerIdpId=<tenant issuer>&TARGET=<target page url>`
 
-    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://sso.tangoe.com/sp/ACS.saml2`
+    b. V **adresy URL odpovědi** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://sso.tangoe.com/sp/ACS.saml2`
 
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečná adresa URL odpovědi a přihlašovací adresa URL. Obraťte se na [tým podpory Tangoe příkaz Premium mobilního klienta](https://www.tangoe.com/contact-us/) k získání těchto hodnot. 
+    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty se skutečná adresa URL odpovědi a přihlašovací adresa URL. Kontakt [tým podpory Tangoe příkaz Premium mobilního klienta](https://www.tangoe.com/contact-us/) k získání těchto hodnot. 
 
-4. Na **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat ve vašem počítači.
+4. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor metadat ve vašem počítači.
 
-    ![Certifikát pro podpis SAML části](./media/tangoe-tutorial/tutorial_tangoe_certificate.png) 
+    ![Části podpisový certifikát SAML](./media/tangoe-tutorial/tutorial_tangoe_certificate.png) 
 
 5. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Tlačítko Uložit](./media/tangoe-tutorial/tutorial_general_400.png)
     
-6. Na **Konfigurace mobilních Premium příkaz Tangoe** klikněte na tlačítko **konfigurace Tangoe příkaz Premium Mobile** otevřete **konfigurovat přihlášení** okno. Kopírování **Sign-Out adresu URL, SAML Entity ID a SAML jeden přihlašování adresa URL služby** z **Stručná referenční příručka části.**
+6. Na **Tangoe příkaz Premium Mobile konfigurace** klikněte na tlačítko **nakonfigurovat mobilní Premium Tangoe příkaz** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **URL odhlašování SAML Entity ID a SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
 
     ![Tangoe příkaz Premium mobilní konfigurační oddíl](./media/tangoe-tutorial/tutorial_tangoe_configure.png) 
 
-7. Chcete-li získat jednotné přihlašování, které jsou nakonfigurované pro vaše aplikace, obraťte se na vaše [tým podpory Tangoe příkaz Premium mobilního klienta](https://www.tangoe.com/contact-us/) a zadejte následující:
+7. Pokud chcete získat jednotné přihlašování nakonfigurované pro vaši aplikaci, kontaktujte vašeho [tým podpory Tangoe příkaz Premium mobilního klienta](https://www.tangoe.com/contact-us/) a poskytněte mu tyto:
 
    - Soubor stažený metadat
    - **SAML Entity ID**
-   - **Adresa URL služby jednotného přihlašování SAML**
-   - **Odhlášení adresy URL**
+   - **Adresu URL služby jednotného přihlašování SAML**
+   - **Adresa URL pro odhlášení**
 
 > [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovací uživatele Azure AD
-Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-![Vytvořit uživatele Azure AD][100]
+![Vytvoření uživatele Azure AD][100]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
 
-1. V **portál Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
+1. V **webu Azure portal**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/tangoe-tutorial/create_aaduser_01.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/tangoe-tutorial/create_aaduser_01.png) 
 
 2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
-    ![Uživatelé a skupiny -> všichni uživatelé](./media/tangoe-tutorial/create_aaduser_02.png) 
+    ![Všichni uživatelé -> uživatele a skupiny](./media/tangoe-tutorial/create_aaduser_02.png) 
 
-3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** horní dialogové okno.
+3. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
  
     ![Přidání uživatele](./media/tangoe-tutorial/create_aaduser_03.png) 
 
-4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
+4. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
  
-    ![Dialogové okno stránka uživatel](./media/tangoe-tutorial/create_aaduser_04.png) 
+    ![Dialogové okno stránky uživatele](./media/tangoe-tutorial/create_aaduser_04.png) 
 
-    a. V **název** textovému poli, typ **BrittaSimon**.
+    a. V **název** textové pole, typ **BrittaSimon**.
 
-    b. V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.
+    b. V **uživatelské jméno** textové pole, typ **e-mailová adresa** z BrittaSimon.
 
-    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
+    c. Vyberte **zobrazit heslo** a zapište si hodnotu **heslo**.
 
     d. Klikněte na možnost **Vytvořit**.
  
 ### <a name="create-a-tangoe-command-premium-mobile-test-user"></a>Vytvoření zkušebního uživatele Tangoe příkaz Premium Mobile
 
-V této části vytvoříte uživatele názvem Britta Simon v Tangoe příkaz Premium Mobile. 
+V této části vytvořte uživatele Britta Simon v Tangoe příkaz Premium Mobile. 
 
-Tangoe příkaz Premium mobilní aplikace, musí všichni uživatelé zřídit v aplikaci před provedením jednotné přihlašování. Proto prosím práci s [tým podpory Tangoe příkaz Premium mobilního klienta](https://www.tangoe.com/contact-us/) ke zřízení tito uživatelé do aplikace. 
+Všichni uživatelé, které se mají zřídit v aplikaci před provedením Single Sign On, musí Tangoe příkaz Premium mobilní aplikace. Proto prosím práci s [tým podpory Tangoe příkaz Premium mobilního klienta](https://www.tangoe.com/contact-us/) zřídit všechny tyto uživatele do aplikace. 
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit testovacího uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu Tangoe příkaz Premium Mobile.
+V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k Tangoe příkaz Premium Mobile.
 
 ![Přiřadit uživatele][200] 
 
-**Pokud chcete přiřadit Britta Simon Tangoe příkaz Premium Mobile, proveďte následující kroky:**
+**Britta Simon přiřadit Tangoe příkaz Premium Mobile, proveďte následující kroky:**
 
-1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
+1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
 2. V seznamu aplikací vyberte **Tangoe příkaz Premium Mobile**.
 
-    ![Tangoe příkaz Premium Mobile v seznamu aplikací](./media/tangoe-tutorial/tutorial_tangoe_app.png) 
+    ![Tangoe příkaz Premium mobilní zařízení v seznamu aplikací](./media/tangoe-tutorial/tutorial_tangoe_app.png) 
 
 3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.
+4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
+5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
+6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
+7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
 ### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
-V této části můžete otestovat vaši konfiguraci Azure AD jednotného přihlašování k použití na přístupovém panelu.
+V této části testování konfigurace jednotného přihlašování k Azure AD pomocí přístupového panelu.
 
-Když kliknete na dlaždici Tangoe příkaz Premium Mobile na přístupovém panelu, jste měli získat automaticky přihlášení k Tangoe příkaz Premium mobilní aplikace. Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](../active-directory-saas-access-panel-introduction.md). 
+Když kliknete na dlaždici Tangoe příkaz Premium Mobile na přístupovém panelu, vám by měl získat automaticky přihlášení k Tangoe příkaz Premium mobilní aplikace. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](tutorial-list.md)
+* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

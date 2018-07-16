@@ -9,18 +9,18 @@ ms.author: gwallace
 ms.date: 05/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4b9bfc0df01dd8fc8a6a1b7aed5ade466164a82f
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 4c01a63867ca3df85b4e7203c93855b43e9cd04c
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37930048"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044845"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Spuštění Runbooku ve službě Azure Automation
 
 Při spuštění runbooku ve službě Azure Automation, se vytvoří úloha. Úloha je instance jednoho spuštění sady runbook. Pracovník s Azure Automation se přiřadí ke spuštění každé úlohy. Když pracovní procesy jsou sdíleny několika účtům Azure, úlohy z různých účtů Automation jsou od sebe. Můžete mít není řídit, přes které pracovního procesu služby žádost pro vaši úlohu. Jeden runbook může mít více úloh spuštěných současně. Spouštěcí prostředí pro úlohy ve stejném účtu Automation může znovu použít. Při zobrazení seznamu sad runbook na portálu Azure portal, zobrazí stav všech úloh, které byly spuštěny pro každou sadu runbook. Aby bylo možné sledovat stav každého můžete zobrazit seznam úloh pro každou sadu runbook. Popis stavy různé úlohy [stavy úlohy](#job-statuses).
 
-[!INCLUDE [gdpr-dsr-and-stp-note.md](../../includes/gdpr-dsr-and-stp-note.md)]
+[!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 
 Následující diagram znázorňuje životní cyklus úlohy runbooku pro [grafické runbooky](automation-runbook-types.md#graphical-runbooks) a [runbooky pracovních postupů Powershellu](automation-runbook-types.md#powershell-workflow-runbooks).
 

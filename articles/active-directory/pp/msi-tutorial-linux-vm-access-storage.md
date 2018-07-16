@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 12/15/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: ba4c4525899e82b4dd93fc46d9e9bbc1850500dc
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: afa65cec0d00f2063be05a48085183da72af9048
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003032"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049390"
 ---
 # <a name="use-a-user-assigned-managed-service-identity-msi-on-a-linux-vm-to-access-azure-storage"></a>Použít uživatelsky přiřazené Identity spravované služby (MSI) na virtuální počítač s Linuxem pro přístup k Azure Storage
 
@@ -114,7 +114,7 @@ Pokud již nemáte, nyní vytvořit účet úložiště. Také můžete tento kr
 5. Zkontrolujte **předplatné** a **skupiny prostředků** shodovat s těmi, které jste zadali při vytváření virtuálního počítače v předchozím kroku.
 6. Klikněte na možnost **Vytvořit**.
 
-    ![Vytvořit nový účet úložiště](~/articles/active-directory/media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
+    ![Vytvořit nový účet úložiště](../managed-service-identity/media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
 ## <a name="create-a-blob-container-in-the-storage-account"></a>Vytvořte kontejner objektů blob v účtu úložiště
 
@@ -125,11 +125,11 @@ Protože soubory vyžadují úložiště objektů blob, je potřeba vytvořit ko
 3. Klikněte na tlačítko **+ kontejner** horní části stránky a "Nový kontejner" vysune.
 4. Zadejte název kontejneru, vyberte úroveň přístupu a pak klikněte na tlačítko **OK**. Zadaný název se také používá v pozdější části kurzu. 
 
-    ![Vytvoření kontejneru úložiště](~/articles/active-directory/media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
+    ![Vytvoření kontejneru úložiště](../managed-service-identity/media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
 
 5. Nahrání souboru do nově vytvořený kontejner pak kliknutím na název kontejneru **nahrát**, vyberte soubor a pak klikněte na tlačítko **nahrát**.
 
-    ![Nahrát textový soubor](~/articles/active-directory/media/msi-tutorial-linux-vm-access-storage/upload-text-file.png)
+    ![Nahrát textový soubor](../managed-service-identity/media/msi-tutorial-linux-vm-access-storage/upload-text-file.png)
 
 ## <a name="grant-your-user-assigned-msi-access-to-an-azure-storage-container"></a>Udělit přístup uživatele přiřazeny MSI do kontejneru služby Azure Storage
 

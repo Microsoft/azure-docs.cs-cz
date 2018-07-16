@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 12/15/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 95a9530c02bbf7b1cd9d137129f96ff4ee016966
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 95f54cf9cda2bf6dede6e7bfb72471b22707c1c2
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39007661"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39056068"
 ---
 # <a name="use-a-linux-vm-managed-service-identity-msi-to-access-azure-key-vault"></a>Použití Linux VM Identity spravované služby (MSI) pro přístup k Azure Key Vault 
 
@@ -88,7 +88,7 @@ Nejprve musíme vytvořit trezor klíčů a udělit přístup identit našich vi
 7. Klikněte na tlačítko **OK** k dokončení přidání nové zásady přístupu a **OK** dokončete výběr zásad přístupu. 
 8. Klikněte na tlačítko **vytvořit** na dokončení vytvoření služby Key Vault. 
 
-    ![Text ALT obrázku](~/articles/active-directory/media/msi-tutorial-windows-vm-access-nonaad/msi-blade.png)
+    ![Text ALT obrázku](../managed-service-identity/media/msi-tutorial-windows-vm-access-nonaad/msi-blade.png)
 
 V dalším kroku přidání tajného klíče do služby Key Vault tak, aby později můžete získat tajný kód pomocí kódu je spuštěný ve virtuálním počítači: 
 

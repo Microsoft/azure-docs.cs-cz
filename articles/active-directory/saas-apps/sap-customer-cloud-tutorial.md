@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s cloudem SAP zákazníka. | Microsoft Docs'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a SAP cloudu pro zákazníka.
+title: 'Kurz: Integrace Azure Active Directory se SAP cloudem pro zákazníka | Dokumentace Microsoftu'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a SAP cloudem pro zákazníka.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,257 +14,257 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: jeedes
-ms.openlocfilehash: 661bb15f93c505ad069e826b1506f6e69c5339e0
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 8855a82c1490c916e040f61c07e1116d9125e7e6
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36223344"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39045858"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-sap-cloud-for-customer"></a>Kurz: Azure Active Directory integrace s cloudem SAP zákazníka.
+# <a name="tutorial-azure-active-directory-integration-with-sap-cloud-for-customer"></a>Kurz: Integrace Azure Active Directory se SAP cloudem pro odběratele
 
-V tomto kurzu zjistěte, jak integrovat SAP cloudu pro zákazníka s Azure Active Directory (Azure AD).
+V tomto kurzu se dozvíte, jak integrovat SAP cloudem pro zákazníky se službou Azure Active Directory (Azure AD).
 
-Integrace SAP cloudu pro zákazníka s Azure AD poskytuje následující výhody:
+Integrace SAP cloudem pro zákazníky s využitím Azure AD poskytuje následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup do cloudu SAP zákazníka.
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k SAP cloudu pro zákazníka (jednotné přihlášení) s jejich účty Azure AD
-- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
+- Můžete řídit ve službě Azure AD, který má přístup k SAP cloudem pro odběratele
+- Můžete povolit uživatelům, aby automaticky získat přihlášení k SAP cloudem pro zákazníka (Single Sign-On) s jejich účty Azure AD
+- Můžete spravovat své účty na jediném místě – na webu Azure portal
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Ke konfiguraci integrace služby Azure AD s cloudem SAP pro zákazníka, potřebujete následující položky:
+Konfigurace integrace Azure AD se SAP cloudem pro zákazníka, potřebujete následující položky:
 
-- Předplatné služby Azure AD
-- Cloud SAP pro zákazníka jednotné přihlašování povolené předplatné
+- S předplatným služby Azure AD
+- SAP cloudem pro zákazníka jednotného přihlašování povolená předplatného
 
 > [!NOTE]
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
 
-- Nepoužívejte provozním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verze Azure AD, můžete získat a jeden měsíc zkušební: [nabídka zkušební verze](https://azure.microsoft.com/pricing/free-trial/).
+- Nepoužívejte produkčním prostředí, pokud to není nutné.
+- Pokud nemáte prostředí zkušební verzi Azure AD, můžete získat měsíční zkušební tady: [nabídka zkušební verze](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání SAP cloudu pro zákazníka z Galerie
+1. Přidání SAP cloudem pro zákazníka z Galerie
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
-## <a name="adding-sap-cloud-for-customer-from-the-gallery"></a>Přidání SAP cloudu pro zákazníka z Galerie
-Při konfiguraci integrace SAP cloudu pro zákazníka do služby Azure AD, potřebujete přidat SAP cloudu pro zákazníka z Galerie si na seznam spravovaných aplikací SaaS.
+## <a name="adding-sap-cloud-for-customer-from-the-gallery"></a>Přidání SAP cloudem pro zákazníka z Galerie
+Ke konfiguraci integrace SAP cloudem pro zákazníka do služby Azure AD, budete muset přidat SAP cloudem pro zákazníka v galerii na váš seznam spravovaných aplikací SaaS.
 
-**Pokud chcete přidat SAP cloudu pro zákazníka z galerie, postupujte takto:**
+**Chcete-li přidat SAP cloudem pro zákazníka z galerie, postupujte následovně:**
 
-1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
+1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![Aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Aplikace][3]
 
-4. Do vyhledávacího pole zadejte **SAP cloudu pro zákazníka**.
+4. Do vyhledávacího pole zadejte **SAP cloudem pro zákazníka**.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_search.png)
+    ![Vytváří se testovací uživatele služby Azure AD](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_search.png)
 
-5. Na panelu výsledků vyberte **SAP cloudu pro zákazníka**a potom klikněte na **přidat** tlačítko Přidat aplikaci.
+5. Na panelu výsledků vyberte **SAP cloudem pro zákazníka**a potom klikněte na tlačítko **přidat** tlačítko pro přidání aplikace.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_addfromgallery.png)
+    ![Vytváří se testovací uživatele služby Azure AD](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
-V této části konfiguraci a testování Azure AD jednotné přihlašování s cloudem SAP pro zákazníka na základě testovací uživatele, nazývá "Britta Simon".
+V této části nakonfigurovat a otestovat Azure AD jednotného přihlašování se SAP cloudem pro zákazníky na základě testovací uživatele nazývá "Britta Simon".
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v cloudu SAP pro zákazníka je pro uživatele ve službě Azure AD. Jinými slovy musí navázat vztah propojení mezi uživatele Azure AD a související uživatelské v cloudu SAP pro zákazníka.
+Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšky v SAP cloudem pro zákazníka je pro uživatele ve službě Azure AD. Jinými slovy musí navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské v SAP cloudem pro zákazníka.
 
-V cloudu SAP pro zákazníka, přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** k navázání vztahu odkazu.
+V SAP cloudem pro zákazníka, přiřaďte hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** a tím vytvoří vztah odkazu.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s cloudem SAP pro zákazníka, musíte dokončit následující stavební bloky:
+Nakonfigurovat a otestovat Azure AD jednotného přihlašování se SAP cloudem pro zákazníka, které potřebujete k dokončení následujících stavebních bloků:
 
-1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
-2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření cloudu SAP pro zákazníka testovacího uživatele](#creating-a-sap-cloud-for-customer-test-user)**  – Pokud chcete mít protějšek Britta Simon v cloudu SAP zákazníkovi, který je propojený s Azure AD reprezentace daného uživatele.
-4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
+1. **[Konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+2. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytváří se SAP cloudem pro zákazníka testovacího uživatele](#creating-a-sap-cloud-for-customer-test-user)**  – Pokud chcete mít protějšek Britta Simon ve SAP Cloud for zákazníka, který je propojený s Azure AD reprezentace uživatele.
+4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace Azure AD jednotné přihlašování
+### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování ve vašem cloudu SAP pro aplikace pro zákazníky.
+V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování ve vašem Cloudovém SAP pro aplikace pro zákazníky.
 
-**Ke konfiguraci Azure AD jednotné přihlašování s cloudem SAP pro zákazníka, proveďte následující kroky:**
+**Ke konfiguraci Azure AD jednotného přihlašování se SAP cloudem pro zákazníky, proveďte následující kroky:**
 
-1. Na portálu Azure na **SAP cloudu pro zákazníka** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. Na webu Azure Portal na **SAP cloudem pro zákazníka** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
 
-    ![Konfigurovat jednotné přihlašování][4]
+    ![Konfigurace jednotného přihlašování][4]
 
-2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
+2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
-    ![Konfigurovat jednotné přihlašování](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_samlbase.png)
+    ![Konfigurace jednotného přihlašování](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_samlbase.png)
 
-3. Na **SAP cloudu zákazníka domény a adresy URL** část, proveďte následující kroky:
+3. Na **SAP cloudem pro zákazníka domény a adresy URL** části, proveďte následující kroky:
 
-    ![Konfigurovat jednotné přihlašování](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_url.png)
+    ![Konfigurace jednotného přihlašování](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<server name>.crm.ondemand.com`
+    a. V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<server name>.crm.ondemand.com`
 
-    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<server name>.crm.ondemand.com`
+    b. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<server name>.crm.ondemand.com`
 
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [SAP Cloud pro tým podpory zákazníků klienta](https://www.sap.com/about/agreements.sap-cloud-services-customers.html) k získání těchto hodnot. 
+    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte s skutečné přihlašovací adresu URL a identifikátorem. Kontakt [SAP cloudem pro tým podpory zákazníků klienta](https://www.sap.com/about/agreements.sap-cloud-services-customers.html) k získání těchto hodnot. 
 
-4. Na **uživatelské atributy** část, proveďte následující kroky:
+4. Na **atributy uživatele** části, proveďte následující kroky:
 
-    ![Konfigurovat jednotné přihlašování](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_attribute.png)
+    ![Konfigurace jednotného přihlašování](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_attribute.png)
 
-    a. V **uživatelský identifikátor** seznamu, vyberte **ExtractMailPrefix()** funkce.
+    a. V **identifikátor uživatele** seznamu, vyberte **ExtractMailPrefix()** funkce.
 
-    b. Z **e-mailu** vyberte atribut uživatele, kterou chcete použít týkající se vaší implementace.
-    Například pokud chcete použít EmployeeID jako jedinečný identifikátor uživatele a hodnota atributu jsou uloženy v ExtensionAttribute2, pak vyberte user.extensionattribute2.  
+    b. Z **e-mailu** vyberte atribut uživatele, které chcete použít pro implementaci.
+    Například pokud chcete použít jako jedinečný identifikátor uživatele EmployeeID a hodnota atributu jsou uložené v ExtensionAttribute2, vyberte user.extensionattribute2.  
 
-5. Na **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat ve vašem počítači.
+5. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor metadat ve vašem počítači.
 
-    ![Konfigurovat jednotné přihlašování](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_certificate.png) 
+    ![Konfigurace jednotného přihlašování](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_certificate.png) 
 
 6. Klikněte na tlačítko **Uložit** tlačítko.
 
-    ![Konfigurovat jednotné přihlašování](./media/sap-customer-cloud-tutorial/tutorial_general_400.png)
+    ![Konfigurace jednotného přihlašování](./media/sap-customer-cloud-tutorial/tutorial_general_400.png)
 
-7. Na **SAP cloudu pro konfiguraci zákazníka** klikněte na tlačítko **konfigurace cloudu SAP pro zákazníka** otevřete **konfigurovat přihlášení** okno. Kopírování **SAML jeden přihlašování adresa URL služby** z **Stručná referenční příručka části.**
+7. Na **SAP cloudem pro zákazníky Configuration** klikněte na tlačítko **konfigurace SAP cloudem pro zákazníka** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
 
-    ![Konfigurovat jednotné přihlašování](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_configure.png) 
+    ![Konfigurace jednotného přihlašování](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_configure.png) 
 
-8. Potřebujete nakonfigurovat jednotné přihlašování, proveďte následující kroky:
+8. Pokud chcete získat jednotné přihlašování nakonfigurovali, proveďte následující kroky:
    
-    a. Přihlášení do cloudu SAP pro zákaznický portál s právy správce.
+    a. Přihlaste se k SAP cloudem pro zákaznického portálu služeb s oprávněním správce.
    
-    b. Přejděte na **aplikace a běžné úlohy správy uživatele** a klikněte na tlačítko **zprostředkovatele Identity** kartě.
+    b. Přejděte **aplikace a běžné úlohy správy uživatele** a klikněte na tlačítko **zprostředkovatele Identity** kartu.
    
-    c. Klikněte na tlačítko **nového poskytovatele Identity** a vyberte soubor XML metadat, který jste si stáhli z portálu Azure. Importováním metadata systém automaticky nahrává dodejka certifikát a certifikát pro šifrování.
+    c. Klikněte na tlačítko **nového zprostředkovatele Identity** a vyberte soubor XML metadat, který jste si stáhli z portálu Azure portal. Importováním metadata systému automaticky nahrává dodejka certifikát a certifikát pro šifrování.
    
-    ![Konfigurovat jednotné přihlašování](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_54.png)
+    ![Konfigurace jednotného přihlašování](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_54.png)
    
-    d. Azure Active Directory vyžaduje element adresa URL služby Assertion příjemce v žádosti o SAML, vyberte **zahrnují Assertion příjemce adresa URL služby** zaškrtávací políčko.
+    d. Azure Active Directory vyžaduje element adresa URL služby příjemce kontrolního výrazu v požadavku SAML, proto vyberte **zahrnují URL služby příjemce kontrolního výrazu** zaškrtávací políčko.
    
     e. Klikněte na tlačítko **aktivovat jednotné přihlašování**.
    
     f. Uložte provedené změny.
    
-    g. Klikněte **Moje systému** kartě.
+    g. Klikněte na tlačítko **systém** kartu.
    
-    ![Konfigurovat jednotné přihlašování](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_52.png)
+    ![Konfigurace jednotného přihlašování](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_52.png)
    
-    h. V **Azure AD adresa URL přihlašování** textovému poli, vložte **SAML jeden přihlašování adresa URL služby** který jste zkopírovali z portálu Azure.
+    h. V **přihlášení Azure AD na adrese URL** vložit do textového pole **SAML jednotné přihlašování – adresa URL služby** zkopírovanou z webu Azure portal.
    
-    ![Konfigurovat jednotné přihlašování](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_53.png)
+    ![Konfigurace jednotného přihlašování](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_53.png)
    
-    i. Zadejte, zda zaměstnanec ručně vybrat mezi přihlásit pomocí ID uživatele a heslo nebo jednotného přihlašování k výběrem **výběr zprostředkovatele Identity ruční**.
+    i. Určete, zda zaměstnance můžete ručně vybrat mezi variantami přihlášení pomocí ID uživatele a heslo nebo jednotného přihlašování tak, že vyberete **výběru zprostředkovatele Identity ruční**.
    
-    j. V **jednotného přihlašování k adrese URL** části, zadejte adresu URL, která má být zaměstnancům používána k přihlášení k systému. 
-    V **URL posílá zaměstnanec** seznamu, můžete zvolit z následujících možností:
+    j. V **adresu URL jednotného přihlašování** části, zadejte adresu URL, který se má použít vaši zaměstnanci k přihlášení k systému. 
+    V **URL odesílat zaměstnance** seznamu, můžete si vybrat následující možnosti:
    
-    **Adresa URL jednotného přihlašování**
+    **Adresa URL – jednotné přihlašování**
    
-    Systém odešle jenom adresu URL normální systému zaměstnanci. Zaměstnanec nemůže přihlášení pomocí jednotného přihlašování a musí používat heslo nebo místo toho certifikátu.
+    Systém odešle jenom adresu URL normální systému zaměstnance. Zaměstnanec nelze přihlášení pomocí jednotného přihlašování a musí používat heslo nebo místo certifikátu.
    
-    **ADRESA URL JEDNOTNÉHO PŘIHLAŠOVÁNÍ** 
+    **ADRESA URL PRO JEDNOTNÉ PŘIHLAŠOVÁNÍ** 
    
-    Systém odešle zaměstnanec pouze adresy URL pro jednotné přihlašování. Zaměstnanec může přihlásit pomocí jednotného přihlašování. Prostřednictvím rozšíření IdP přesměruje požadavek na ověření.
+    Systém odešle pouze adresu URL jednotného přihlašování pro zaměstnance. Zaměstnanec se může přihlásit pomocí jednotného přihlašování. Požadavek na ověření je přesměrován prostřednictvím zprostředkovatele identity.
    
     **Automatický výběr**
    
-    Pokud jednotného přihlašování není aktivní, odešle systému zaměstnanec adresu URL normální systému. Pokud je aktivní jednotné přihlašování, systém kontroluje, zda zaměstnanec má heslo. Pokud heslo je k dispozici, jednotného přihlašování k URL a adresy URL bez jednotného přihlašování k odešlou do jednotlivých zaměstnanců. Ale pokud zaměstnanec, nemá žádné heslo, pouze adresy URL pro jednotné přihlašování odešle zaměstnanci.
+    Pokud jednotného přihlašování není aktivní, systém odešle URL normální systému zaměstnanci. Pokud se jednotné přihlašování je aktivní, systém zkontroluje, zda zaměstnance heslo. Pokud je k dispozici heslo, adresu URL jednotného přihlašování a adresy URL bez jednotného přihlašování se odesílají zaměstnanci. Ale pokud zaměstnanec nemá žádné heslo, pouze adresu URL jednotného přihlašování se odešle zaměstnanci.
    
     k. Uložte provedené změny.
 
 > [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
-### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
-Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
+### <a name="creating-an-azure-ad-test-user"></a>Vytváří se testovací uživatele služby Azure AD
+Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-![Vytvořit uživatele Azure AD][100]
+![Vytvoření uživatele Azure AD][100]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
 
-1. V **portál Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
+1. V **webu Azure portal**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/sap-customer-cloud-tutorial/create_aaduser_01.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/sap-customer-cloud-tutorial/create_aaduser_01.png) 
 
 2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
-    ![Vytváření testovacího uživatele Azure AD](./media/sap-customer-cloud-tutorial/create_aaduser_02.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/sap-customer-cloud-tutorial/create_aaduser_02.png) 
 
-3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** horní dialogové okno.
+3. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
  
-    ![Vytváření testovacího uživatele Azure AD](./media/sap-customer-cloud-tutorial/create_aaduser_03.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/sap-customer-cloud-tutorial/create_aaduser_03.png) 
 
-4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
+4. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
  
-    ![Vytváření testovacího uživatele Azure AD](./media/sap-customer-cloud-tutorial/create_aaduser_04.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/sap-customer-cloud-tutorial/create_aaduser_04.png) 
 
-    a. V **název** textovému poli, typ **BrittaSimon**.
+    a. V **název** textové pole, typ **BrittaSimon**.
 
-    b. V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.
+    b. V **uživatelské jméno** textové pole, typ **e-mailová adresa** z BrittaSimon.
 
-    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
+    c. Vyberte **zobrazit heslo** a zapište si hodnotu **heslo**.
 
     d. Klikněte na možnost **Vytvořit**.
  
-### <a name="creating-a-sap-cloud-for-customer-test-user"></a>Vytvoření cloudu SAP pro zákazníka testovacího uživatele
+### <a name="creating-a-sap-cloud-for-customer-test-user"></a>Vytváří se SAP cloudem pro zákazníka testovacího uživatele
 
-V této části vytvoříte uživatele volat Britta Simon v cloudu SAP pro zákazníka. Spojte se s [SAP Cloud pro tým podpory zákazníků](https://www.sap.com/about/agreements.sap-cloud-services-customers.html) přidejte uživatele v cloudu SAP pro platformu zákazníka. 
+V této části vytvoříte uživateli Britta Simon v SAP cloudem pro zákazníka. Spojte se prosím s [SAP cloudem pro tým podpory](https://www.sap.com/about/agreements.sap-cloud-services-customers.html) přidejte uživatele, v cloudu SAP pro platformu zákazníka. 
 
 > [!NOTE]
-> Zkontrolujte, zda hodnota NameID by měl odpovídat pole uživatelské jméno v cloudu SAP pro platformu zákazníka.
+> Ujistěte se prosím, že NameID hodnota by měla odpovídat s pole uživatelské jméno v SAP cloudem pro platformu zákazníka.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu do cloudu SAP pro zákazníka.
+V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k SAP cloudem pro zákazníka.
 
 ![Přiřadit uživatele][200] 
 
-**Přiřadit Britta Simon SAP cloudu pro zákazníka, proveďte následující kroky:**
+**Pokud chcete přiřadit Britta Simon SAP cloudem pro zákazníky, proveďte následující kroky:**
 
-1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
+1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **SAP cloudu pro zákazníka**.
+2. V seznamu aplikací vyberte **SAP cloudem pro zákazníka**.
 
-    ![Konfigurovat jednotné přihlašování](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_app.png) 
+    ![Konfigurace jednotného přihlašování](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_app.png) 
 
 3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.
+4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
+5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
+6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
+7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="testing-single-sign-on"></a>Testování jednotné přihlašování
+### <a name="testing-single-sign-on"></a>Testování jednotného přihlašování
 
-V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
+V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Po kliknutí na tlačítko SAP cloudu pro dlaždice zákazníka na přístupovém panelu, jste měli získat automaticky přihlášení k SAP cloudu pro aplikace pro zákazníky.
-Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](../active-directory-saas-access-panel-introduction.md).
+Po kliknutí na SAP cloudem pro zákazníka dlaždici na přístupovém panelu, vám by měl získat automaticky přihlášení k SAP cloudem pro aplikace pro zákazníky.
+Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](tutorial-list.md)
+* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

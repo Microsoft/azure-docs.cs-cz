@@ -9,25 +9,25 @@ ms.date: 02/20/2018
 ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: b9484336add0719749e9f0af56bdd70fa3906ef5
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2018
-ms.locfileid: "29532342"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38752655"
 ---
-Přidat dvě značky do skupiny prostředků, použijte [aktualizace skupiny az](/cli/azure/group#az_group_update) příkaz:
+Pokud chcete do skupiny prostředků přidat dvě značky, použijte příkaz [az group update](/cli/azure/group#az_group_update):
 
 ```azurecli-interactive
 az group update -n myResourceGroup --set tags.Environment=Test tags.Dept=IT
 ```
 
-Předpokládejme, že chcete přidat třetí značku. Spusťte příkaz znovu s novou značku. Připojí se k existující značky.
+Předpokládejme, že chcete přidat třetí značku. Spusťte tento příkaz znovu s novou značku. Připojí se k existujícím značkám.
 
 ```azurecli-interactive
 az group update -n myResourceGroup --set tags.Project=Documentation
 ```
 
-Prostředky nedědí značky ze skupiny prostředků. V současné době vaší skupiny prostředků má tři značky, ale prostředky nemají žádné značky. Chcete-li použít všechny značky ze skupiny prostředků pro jeho zdroje a zachovat stávající značky na prostředky, použijte následující skript:
+Prostředky nedědí značky ze skupiny prostředků. Vaše skupiny prostředků momentálně má tři značky, ale prostředky nemají žádné. Pokud chcete na příslušné prostředky použít všechny značky ze skupiny prostředků a zachovat u prostředků stávající značky, použijte tento skript:
 
 ```azurecli-interactive
 # Get the tags for the resource group
@@ -53,7 +53,7 @@ do
 done
 ```
 
-Alternativně můžete použít značky ze skupiny prostředků pro prostředky bez zachovat stávající značky:
+Další možností je použít pro prostředky značky ze skupiny prostředků a nezachovávat stávající značky:
 
 ```azurecli-interactive
 # Get the tags for the resource group
@@ -73,13 +73,13 @@ do
 done
 ```
 
-Chcete-li sloučit několik hodnot v jedné značky, použijte řetězec formátu JSON.
+Pokud chcete sloučit několik hodnot v jedné značce, použijte řetězec JSON.
 
 ```azurecli-interactive
 az group update -n myResourceGroup --set tags.CostCenter='{"Dept":"IT","Environment":"Test"}'
 ```
 
-Chcete-li odebrat všechny značky na skupinu prostředků, použijte:
+Pokud chcete odebrat všechny značky ve skupině prostředků, použijte příkaz:
 
 ```azurecli-interactive
 az group update -n myResourceGroup --remove tags

@@ -1,5 +1,5 @@
 ---
-title: Migrace místních aplikací AD FS do Azure | Dokumenty Microsoft
+title: Migrace místních aplikací AD FS do Azure | Microsoft Docs
 description: Účelem tohoto článku je pomoct organizacím porozumět postupu při migraci místních aplikací do služby Azure AD se zaměřením na federované aplikace SaaS.
 services: active-directory
 author: barbkess
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 03/02/2018
 ms.author: barbkess
-ms.openlocfilehash: 71fa305c0151ba2ff319694cdd3df55bf351e0c5
-ms.sourcegitcommit: e34afd967d66aea62e34d912a040c4622a737acb
+ms.openlocfilehash: d3548e7640fa8ab59f7b11c66cf1d9492f23cf99
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36946447"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044364"
 ---
 # <a name="migrate-ad-fs-on-premises-apps-to-azure"></a>Migrace místních aplikací AD FS do Azure 
 
@@ -202,7 +202,7 @@ Pokud chcete přiřadit uživatele na portálu Azure AD, přejděte na stránku 
 
 ![Podokno Přidat přiřazení](media/migrate-adfs-apps-to-azure/migrate7.png)
 
-Přístup ověříte tak, že by se uživatelům měla daná aplikace SaaS zobrazit po přihlášení na jejich [přístupovém panelu](../active-directory-saas-access-panel-introduction.md). Přístupový portál se nachází na adrese http://myapps.microsoft.com. V tomto příkladu byl uživateli úspěšně přidělený přístup k Salesforce i ServiceNow.
+Přístup ověříte tak, že by se uživatelům měla daná aplikace SaaS zobrazit po přihlášení na jejich [přístupovém panelu](../user-help/active-directory-saas-access-panel-introduction.md). Přístupový portál se nachází na adrese http://myapps.microsoft.com. V tomto příkladu byl uživateli úspěšně přidělený přístup k Salesforce i ServiceNow.
 
 ![Příklad přístupového panelu s aplikacemi Salesforce a ServiceNow](media/migrate-adfs-apps-to-azure/migrate8.png)
 

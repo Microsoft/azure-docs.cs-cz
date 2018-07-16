@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: 45dedd8c4d6ae2f9b54873d87f82c2e605a8c2aa
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: fa399e3644e1050a4f264890583a388f7abd84ed
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38451695"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049465"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory doklad o playbook koncept: stavební bloky
 
@@ -157,7 +157,7 @@ Přibližný čas dokončení: 60 minut
 | Postupujte podle pokynů ke konfiguraci ServiceNow |  |
 | V okně aplikace ServiceNow "Zřizování" zapnout "Automatické" zřizování | [Správa uživatelského účtu zřizování pro podnikové aplikace na novém portálu Azure Portal](manage-apps/configure-automatic-user-provisioning-portal.md) |
 | Počkejte pár minut bude zřizování dokončeno.  Do té doby můžete zkontrolovat na sestavy o zřizování |  |
-| Přihlaste se k https://myapps.microsoft.com/ jako testovací uživatel, který má přístup | [Co je na přístupovém panelu?](active-directory-saas-access-panel-introduction.md) |
+| Přihlaste se k https://myapps.microsoft.com/ jako testovací uživatel, který má přístup | [Co je na přístupovém panelu?](user-help/active-directory-saas-access-panel-introduction.md) |
 | Kliknutím na dlaždici aplikace, kterou jste právě vytvořili. Ověření přístupu |  |
 | Volitelně můžete zkontrolovat sestavy využití aplikací. Všimněte si, že není určitou latenci, takže budete muset počkat určitou dobu sledovat provoz v sestavách. | [Sestavy aktivit přihlašování na portálu Azure Active Directory: použití spravovaných aplikací](active-directory-reporting-activity-sign-ins.md#usage-of-managed-applications)<br/>[Zásady uchovávání sestav služby Azure Active Directory](active-directory-reporting-retention.md) |
 
@@ -188,8 +188,8 @@ Přibližný čas dokončení: 15 minut
 | Konfigurace heslem jednotného přihlašování | [Správa jednotného přihlašování pro podnikové aplikace na novém portálu Azure Portal: přihlašování založené na heslech](manage-apps/configure-single-sign-on-portal.md#password-based-sign-on) |
 | Přiřadit skupinu určené v požadavcích aplikace | [Přiřadit uživatele nebo skupiny k podnikové aplikace v Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md) |
 | Přihlaste se k https://myapps.microsoft.com/ jako testovací uživatel, který má přístup |  |
-| Kliknutím na dlaždici aplikace, kterou jste právě vytvořili. | [Co je na přístupovém panelu?: založené na heslech jednotné přihlašování bez zřizování identity](active-directory-saas-access-panel-introduction.md#password-based-sso-without-identity-provisioning) |
-| Zadat přihlašovací údaje, které aplikace | [Co je na přístupovém panelu?: založené na heslech jednotné přihlašování bez zřizování identity](active-directory-saas-access-panel-introduction.md#password-based-sso-without-identity-provisioning) |
+| Kliknutím na dlaždici aplikace, kterou jste právě vytvořili. | [Co je na přístupovém panelu?: založené na heslech jednotné přihlašování bez zřizování identity](user-help/active-directory-saas-access-panel-introduction.md#password-based-sso-without-identity-provisioning) |
+| Zadat přihlašovací údaje, které aplikace | [Co je na přístupovém panelu?: založené na heslech jednotné přihlašování bez zřizování identity](user-help/active-directory-saas-access-panel-introduction.md#password-based-sso-without-identity-provisioning) |
 | Zavřete prohlížeč a opakujte přihlášení. Uživatel by měl nyní zobrazit bezproblémový přístup k aplikaci. |  |
 | Volitelně můžete zkontrolovat sestavy využití aplikací. Všimněte si, že není určitou latenci, takže budete muset počkat určitou dobu sledovat provoz v sestavách. | [Sestavy aktivit přihlašování na portálu Azure Active Directory: použití spravovaných aplikací](active-directory-reporting-activity-sign-ins.md#usage-of-managed-applications)<br/>[Zásady uchovávání sestav služby Azure Active Directory](active-directory-reporting-retention.md) |
 
@@ -308,7 +308,7 @@ Přibližný čas dokončení: 10 minut
 | Aplikace SaaS (jednotného přihlašování k federovanému nebo jednotného přihlašování hesla) už nakonfigurovala | Stavebním blokem: [Konfigurace jednotného přihlašování federovaného SaaS](#saas-federated-sso-configuration) |
 | Je identifikován cloudu skupiny, který je přiřazen přístup k aplikaci v #1 | Stavebním blokem: [Konfigurace jednotného přihlašování federovaného SaaS](#saas-federated-sso-configuration) <br/>[Vytvoření skupiny a přidání členů v Azure Active Directory](fundamentals/active-directory-groups-create-azure-portal.md) |
 | Přihlašovací údaje pro vlastníka skupiny jsou k dispozici | [Správa přístupu k prostředkům pomocí skupin služby Azure Active Directory](fundamentals/active-directory-manage-groups.md) |
-| Byla zjištěna přihlašovací údaje pro přístup k aplikacím pracovníkovi s informacemi | [Co je na přístupovém panelu?](active-directory-saas-access-panel-introduction.md) |
+| Byla zjištěna přihlašovací údaje pro přístup k aplikacím pracovníkovi s informacemi | [Co je na přístupovém panelu?](user-help/active-directory-saas-access-panel-introduction.md) |
 
 
 ### <a name="steps"></a>Kroky
@@ -318,7 +318,7 @@ Přibližný čas dokončení: 10 minut
 | Identifikovat skupinu, která získala přístup k aplikaci a nakonfigurovat vlastník dané skupiny| [Správa nastavení pro skupinu v Azure Active Directory ](fundamentals/active-directory-groups-settings-azure-portal.md) |
 | Přihlaste se jako vlastník skupiny najdete v tématu členství ve skupinách v kartě skupiny z přístupového panelu | [Azure Active Directory skupiny Management stránky](https://account.activedirectory.windowsazure.com/r#/groups) |
 | Přidat pracovníkovi s informacemi, které chcete testovat |  |
-| Přihlaste se jako informační pracovník, abyste potvrdili, že tato dlaždice je k dispozici | [Co je na přístupovém panelu?](active-directory-saas-access-panel-introduction.md) |
+| Přihlaste se jako informační pracovník, abyste potvrdili, že tato dlaždice je k dispozici | [Co je na přístupovém panelu?](user-help/active-directory-saas-access-panel-introduction.md) |
 
 ### <a name="considerations"></a>Požadavky
 
@@ -332,7 +332,7 @@ Pokud má aplikace zřizování povolená, můžete potřebovat Počkejte někol
 | --- | --- |
 | Aplikace SaaS (jednotného přihlašování k federovanému nebo jednotného přihlašování hesla) už nakonfigurovala | Stavebním blokem: [Konfigurace jednotného přihlašování federovaného SaaS](#saas-federated-sso-configuration) |
 | Je identifikován cloudu skupiny, který je přiřazen přístup k aplikaci v #1 | Stavebním blokem: [Konfigurace jednotného přihlašování federovaného SaaS](#saas-federated-sso-configuration) <br/>[Vytvoření skupiny a přidání členů v Azure Active Directory](fundamentals/active-directory-groups-create-azure-portal.md) |
-| Byla zjištěna přihlašovací údaje pro přístup k aplikacím pracovníkovi s informacemi | [Co je na přístupovém panelu?](active-directory-saas-access-panel-introduction.md) |
+| Byla zjištěna přihlašovací údaje pro přístup k aplikacím pracovníkovi s informacemi | [Co je na přístupovém panelu?](user-help/active-directory-saas-access-panel-introduction.md) |
 
 
 ### <a name="steps"></a>Kroky
@@ -380,7 +380,7 @@ Přibližný čas dokončení: 15 minut
 
 | Předpoklad | Zdroje a prostředky |
 | --- | --- |
-| Povolte správu hesla pomocí samoobslužné služby ve vašem tenantovi. | [Azure Active Directory – heslo resetoval správce IT](active-directory-passwords-update-your-own-password.md) |
+| Povolte správu hesla pomocí samoobslužné služby ve vašem tenantovi. | [Azure Active Directory – heslo resetoval správce IT](user-help/active-directory-passwords-update-your-own-password.md) |
 | Povolte zpětný zápis hesla ke správě místních hesel. Poznámka: to vyžaduje, aby konkrétní služby Azure AD Connect verze | [Požadavky pro zpětný zápis hesla](authentication/howto-sspr-writeback.md) |
 | Identifikujte PoC uživatele, kteří budou tuto funkci použít a ujistěte se, že jsou členy skupiny zabezpečení. Uživatelé musí být bez oprávnění správce k prezentaci plně možnosti | [Přizpůsobení: Správa hesel Azure AD: omezení přístupu k resetování hesla](authentication/howto-sspr-writeback.md) |
 
@@ -395,7 +395,7 @@ Přibližný čas dokončení: 15 minut
 | Zadat data pro samoobslužné resetování hesla nakonfigurované na krok 2 | https://aka.ms/ssprsetup |
 | Zavřete prohlížeč |  |
 | Začněte proces přihlášení jako pracovníkovi s informacemi, které jste použili v kroku 4 |  |
-| Resetovat heslo | [Aktualizace vlastního hesla: resetování hesla](active-directory-passwords-update-your-own-password.md) |
+| Resetovat heslo | [Aktualizace vlastního hesla: resetování hesla](user-help/active-directory-passwords-update-your-own-password.md) |
 | Zkuste se přihlásit pomocí nového hesla ke službě Azure AD stejně jako místní prostředky |  |
 
 ### <a name="considerations"></a>Požadavky
@@ -428,7 +428,7 @@ Přibližný čas dokončení: 10 minut
 ### <a name="considerations"></a>Požadavky
 
 1. Testování konceptu kroky v tomto stavebním blokem explicitním nastavením MFA pro uživatele na všechna přihlášení. Existují jiné nástroje jako je například podmíněný přístup a ochrana Identity, které kontaktovat MFA na více cílových scénářů. Bude jím něco, co zvážit při přesouvání z POC do produkčního prostředí.
-2. PoC kroky v tomto stavebním blokem jsou jako metody vícefaktorového ověřování pro expedience explicitně pomocí telefonních hovorů. Jak přejít od Koncepce do produkčního prostředí doporučujeme používat aplikace, jako [Microsoft Authenticator](authentication/end-user/current/microsoft-authenticator-app-how-to.md) jako váš druhý faktor, kdykoli je to možné.
+2. PoC kroky v tomto stavebním blokem jsou jako metody vícefaktorového ověřování pro expedience explicitně pomocí telefonních hovorů. Jak přejít od Koncepce do produkčního prostředí doporučujeme používat aplikace, jako [Microsoft Authenticator](user-help/microsoft-authenticator-app-how-to.md) jako váš druhý faktor, kdykoli je to možné.
 Další informace: [koncept speciální publikace NIST 800-63B](https://pages.nist.gov/800-63-3/sp800-63b.html)
 
 ## <a name="mfa-conditional-access-for-saas-applications"></a>Vícefaktorové ověřování, podmíněného přístupu pro aplikace SaaS
@@ -553,7 +553,7 @@ Přibližný čas dokončení: 20 minut
 | --- | --- |
 | Zařízení s uživatelský certifikát zřízení (Windows, iOS nebo Android) z infrastruktury veřejných KLÍČŮ rozlehlé sítě | [Nasazení uživatelských certifikátů](https://msdn.microsoft.com/library/cc770857.aspx) |
 | Doména služby Azure AD Federovaná pomocí služby AD FS | [Azure AD Connect a federace](./connect/active-directory-aadconnectfed-whatis.md)<br/>[Přehled služby Active Directory Certificate Services](https://technet.microsoft.com/library/hh831740.aspx)|
-| Pro zařízení s Iosem mají nainstalovanou aplikaci Microsoft Authenticator | [Začínáme s aplikací Microsoft Authenticator](authentication/end-user/current/microsoft-authenticator-app-how-to.md) |
+| Pro zařízení s Iosem mají nainstalovanou aplikaci Microsoft Authenticator | [Začínáme s aplikací Microsoft Authenticator](user-help/microsoft-authenticator-app-how-to.md) |
 
 ### <a name="steps"></a>Kroky
 

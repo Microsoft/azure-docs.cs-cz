@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s zrušte zkontrolujte | Microsoft Docs'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a vymazat zkontrolujte.
+title: 'Kurz: Integrace Azure Active Directory s vymazat revizí | Dokumentace Microsoftu'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a vymazat revize.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,173 +15,173 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: jeedes
-ms.openlocfilehash: aa3514d348b812a96b55c4d47950cd064d391dc1
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 6ce6661bf6d3841f7ade78a74d50a1d6eeefbdaf
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36231538"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39047990"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-clear-review"></a>Kurz: Azure Active Directory integrace s zrušte revize
+# <a name="tutorial-azure-active-directory-integration-with-clear-review"></a>Kurz: Integrace Azure Active Directory s vymazat revize
 
-V tomto kurzu zjistěte, jak integrovat zrušte zkontrolujte s Azure Active Directory (Azure AD).
+V tomto kurzu se dozvíte, jak vymazat revize integrovat s Azure Active Directory (Azure AD).
 
-Integrace zrušte zkontrolujte s Azure AD poskytuje následující výhody:
+Vymazat revize integrace s Azure AD poskytuje následující výhody:
 
-- Můžete ovládat ve službě Azure AD, který má přístup ke kontrole zrušte.
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k zrušte zkontrolujte (jednotné přihlášení) s jejich účty Azure AD.
-- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure.
+- Můžete řídit ve službě Azure AD, kdo má přístup k revizi vymazat.
+- Uživatele, aby automaticky získat přihlášení k vymazat revize (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD.
+- Můžete spravovat své účty na jediném místě – na webu Azure portal.
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s zrušte kontrolní, potřebujete následující položky:
+Konfigurace integrace Azure AD s vymazat revize, potřebujete následující položky:
 
-- Předplatné služby Azure AD
-- Zrušte zkontrolujte jednotné přihlašování povolené předplatné
+- S předplatným služby Azure AD
+- Vymazat revize jednotné přihlašování povoleno předplatné
 
 > [!NOTE]
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
 
-- Nepoužívejte provozním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verze Azure AD, můžete [získat zkušební verzi jeden měsíc](https://azure.microsoft.com/pricing/free-trial/).
+- Nepoužívejte produkčním prostředí, pokud to není nutné.
+- Pokud nemáte prostředí zkušební verzi Azure AD, můžete si [získat měsíční zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání zrušte kontrolní z Galerie
+1. Přidání kontroly vymazat z Galerie
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
-## <a name="adding-clear-review-from-the-gallery"></a>Přidání zrušte kontrolní z Galerie
-Při konfiguraci integrace zrušte zkontrolujte do služby Azure AD potřebujete přidat kontrolní vymazat z Galerie si na seznam spravovaných aplikací SaaS.
+## <a name="adding-clear-review-from-the-gallery"></a>Přidání kontroly vymazat z Galerie
+Pokud chcete nakonfigurovat integraci vymazat revize do služby Azure AD, budete muset vymazat revize přidat z Galerie na váš seznam spravovaných aplikací SaaS.
 
-**Pokud chcete přidat kontrolní vymazat z galerie, proveďte následující kroky:**
+**Vymazat revize přidat z galerie, postupujte následovně:**
 
-1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
+1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![V okně podnikové aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Tlačítko nové aplikace][3]
 
-4. Do vyhledávacího pole zadejte **zrušte zkontrolujte**, vyberte **zrušte zkontrolujte** z panelu výsledků klikněte **přidat** tlačítko Přidat aplikaci.
+4. Do vyhledávacího pole zadejte **vymazat revize**vyberte **vymazat revize** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
     ![Vymazat zkontrolujte v seznamu výsledků](./media/clearreview-tutorial/tutorial_clearreview_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování Azure AD jednotné přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s zrušte zkontrolujte podle testovacího uživatele názvem "Britta Simon".
+V této části Konfigurace a testování Azure AD jednotné přihlašování pomocí vymazat revizi na základě testovací uživatele nazývá "Britta Simon".
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, co příslušného uživatele v zrušte zkontrolujte je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v zrušte zkontrolujte musí navázat.
+Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšek vymazat reviduje je pro uživatele ve službě Azure AD. Jinými slovy musí navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské reviduje vymazat.
 
-V zrušte zkontrolujte přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** k navázání vztahu odkazu.
+Vymazat reviduje přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** a tím vytvoří vztah odkazu.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s zrušte revizí, je třeba dokončit následující stavební bloky:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s vymazat kontroly, které potřebujete k dokončení následujících stavebních bloků:
 
-1. **[Konfigurovat Azure AD jednotné přihlašování](#configure-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
-2. **[Vytvořit testovací uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele zrušte zkontrolujte](#create-a-clear-review-test-user)**  – Pokud chcete mít protějšek Britta Simon v zrušte zkontrolujte propojeném s Azure AD reprezentace daného uživatele.
-4. **[Přiřadit testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. **[Test jednotného přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
+1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+2. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytvoření zkušebního uživatele vymazat revize](#create-a-clear-review-test-user)**  – Pokud chcete mít protějšek Britta Simon reviduje jasné, který je propojený s Azure AD reprezentace uživatele.
+4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurovat Azure AD jednotné přihlašování
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci zrušte revize.
+V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování v aplikaci vymazat revize.
 
-**Ke konfiguraci Azure AD jednotné přihlašování s zrušte revizí, proveďte následující kroky:**
+**Ke konfiguraci Azure AD jednotné přihlašování s vymazat revizi, proveďte následující kroky:**
 
-1. Na portálu Azure na **zrušte zkontrolujte** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. Na webu Azure Portal na **vymazat revize** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
 
-    ![Konfigurace propojení přihlášení][4]
+    ![Nakonfigurovat jednotné přihlašování – odkaz][4]
 
-2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
+2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
-    ![Jediné přihlášení dialogové okno](./media/clearreview-tutorial/tutorial_clearreview_samlbase.png)
+    ![Jednotné přihlašování – dialogové okno](./media/clearreview-tutorial/tutorial_clearreview_samlbase.png)
 
-3. Na **zrušte zkontrolujte domény a adresy URL** část, proveďte následující kroky, pokud chcete nakonfigurovat aplikace **IdP iniciované** režimu:
+3. Na **vymazat revize domény a adresy URL** části, proveďte následující kroky, pokud chcete nakonfigurovat aplikace v **zprostředkovatele identity iniciované** režimu:
 
-    ![Vymazat zkontrolujte domény a adresy URL jednotné přihlašování informace](./media/clearreview-tutorial/tutorial_clearreview_url.png)
+    ![Vymazat revize domény a adresy URL jednotného přihlašování – informace](./media/clearreview-tutorial/tutorial_clearreview_url.png)
 
-    a. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<customer name>.clearreview.com/sso/metadata/`
+    a. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<customer name>.clearreview.com/sso/metadata/`
 
-    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<customer name>.clearreview.com/sso/acs/`
+    b. V **adresy URL odpovědi** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<customer name>.clearreview.com/sso/acs/`
 
-4. Zkontrolujte **zobrazit upřesňující nastavení adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace **SP** iniciované režimu:
+4. Zkontrolujte **zobrazit pokročilé nastavení URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
 
-    ![Vymazat zkontrolujte domény a adresy URL jednotné přihlašování informace](./media/clearreview-tutorial/tutorial_clearreview_url_sp.png)
+    ![Vymazat revize domény a adresy URL jednotného přihlašování – informace](./media/clearreview-tutorial/tutorial_clearreview_url_sp.png)
 
-    V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<customer name>.clearreview.com`
+    V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru:`https://<customer name>.clearreview.com`
 
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte s skutečná adresa URL přihlašování, identifikátor a adresa URL odpovědi. Obraťte se na [tým podpory zrušte zkontrolujte](https://clearreview.com/contact/) k získání těchto hodnot.
+    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL, identifikátoru a adresa URL odpovědi. Kontakt [tým podpory vymazat kontroly](https://clearreview.com/contact/) k získání těchto hodnot.
 
-5. Vymazat revize aplikace očekávají, že hodnota identifikátoru jedinečná uživatelská v názvu identifikátor deklarace identity. Hodnota identifikátoru uživatele pro by měla být mapována **user.mail**.
+5. Vymazat revizi aplikace očekávat, že hodnota identifikátoru jedinečných uživatelů v deklaraci identity identifikátor názvu. Byste měli namapovat hodnotu identifikátoru uživatele **user.mail**.
 
     ![V části atribut](./media/clearreview-tutorial/attribute.png)
 
 
-6. Na **SAML podpisový certifikát** klikněte na tlačítko **certifikátu (Base64)** a potom uložte soubor certifikátu v počítači.
+6. Na **podpisový certifikát SAML** klikněte na tlačítko **certifikát (Base64)** a uložte soubor certifikátu v počítači.
 
     ![Odkaz ke stažení certifikátu](./media/clearreview-tutorial/tutorial_clearreview_certificate.png)
 
 7. Klikněte na tlačítko **Uložit** tlačítko.
 
-    ![Nakonfigurujte jeden přihlašování uložit tlačítko](./media/clearreview-tutorial/tutorial_general_400.png)
+    ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/clearreview-tutorial/tutorial_general_400.png)
 
-8. Na **vymaže konfiguraci zkontrolujte** klikněte na tlačítko **konfigurace zrušte zkontrolujte** otevřete **konfigurovat přihlášení** okno. Kopírování **Sign-Out adresu URL, SAML Entity ID a SAML jeden přihlašování služby URL** z **Stručná referenční příručka části.**
+8. Na **vymazat konfiguraci revize** klikněte na tlačítko **konfigurace vymazat revize** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **odhlašování adresy URL, SAML Entity ID a SAML jednotné přihlašování služby** z **Stručná referenční příručka oddílu.**
 
-    ![Vymažte Zkontrolujte konfiguraci](./media/clearreview-tutorial/tutorial_clearreview_configure.png) 
+    ![Vymazat konfiguraci revize](./media/clearreview-tutorial/tutorial_clearreview_configure.png) 
 
-9. Konfigurace jednotného přihlašování na **zrušte zkontrolujte** straně, otevřete **zrušte zkontrolujte** portálu pomocí přihlašovacích údajů správce.
+9. Ke konfiguraci jednotného přihlašování na **vymazat revize** straně, otevřete **vymazat revize** portálu pomocí přihlašovacích údajů správce.
 
-10. Vyberte **správce** z levé navigaci.
+10. Vyberte **správce** z levé navigace.
 
-    ![Nakonfigurujte jeden přihlašování uložit tlačítko](./media/clearreview-tutorial/tutorial_clearreview_app_admin1.png)
+    ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/clearreview-tutorial/tutorial_clearreview_app_admin1.png)
 
 11. Vyberte **změnu** v dolní části stránky.
 
-    ![Nakonfigurujte jeden přihlašování uložit tlačítko](./media/clearreview-tutorial/tutorial_clearreview_app_admin2.png)
+    ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/clearreview-tutorial/tutorial_clearreview_app_admin2.png)
 
 12. Proveďte následující kroky **nastavení jednotného přihlašování** stránky
 
-    ![Nakonfigurujte jeden přihlašování uložit tlačítko](./media/clearreview-tutorial/tutorial_clearreview_app_admin3.png)
+    ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/clearreview-tutorial/tutorial_clearreview_app_admin3.png)
 
-    a. V **URL vystavitele** textovému poli, vložte hodnotu **SAML Entity ID** který jste zkopírovali z portálu Azure.
+    a. V **URL vystavitele** textového pole vložte hodnotu **SAML Entity ID** zkopírovanou z webu Azure portal.
 
-    b. V **koncový bod SAML** textovému poli, vložte hodnotu **SAML jeden přihlašování adresa URL služby** který jste zkopírovali z portálu Azure.    
+    b. V **koncový bod SAML** textového pole vložte hodnotu **SAML jednotné přihlašování – adresa URL služby** zkopírovanou z webu Azure portal.    
 
-    c. V **koncový bod SLO** textovému poli, vložte hodnotu **přihlašování adresa URL služby** který jste zkopírovali z portálu Azure. 
+    c. V **koncový bod objektu SLO** textového pole vložte hodnotu **přihlašovací adresa URL služby** zkopírovanou z webu Azure portal. 
 
-    d. V poznámkovém bloku otevřete stažený certifikát a vložte obsah **certifikát X.509** textové pole.   
+    d. Otevřete stažený certifikát v programu Poznámkový blok a vložte obsah **certifikát X.509** textového pole.   
 
 13. Klikněte na **Uložit**.
 
 > [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovací uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
-Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
+Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-   ![Vytvořit testovací uživatele Azure AD][100]
+   ![Vytvořit testovacího uživatele Azure AD][100]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
 
-1. Na portálu Azure, v levém podokně klikněte **Azure Active Directory** tlačítko.
+1. Na webu Azure Portal, v levém podokně klikněte na tlačítko **Azure Active Directory** tlačítko.
 
     ![Tlačítko Azure Active Directory](./media/clearreview-tutorial/create_aaduser_01.png)
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na **všichni uživatelé**.
+2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
 
-    !["Uživatelé a skupiny" a "Všichni uživatelé" odkazy](./media/clearreview-tutorial/create_aaduser_02.png)
+    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](./media/clearreview-tutorial/create_aaduser_02.png)
 
 3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
 
@@ -195,54 +195,54 @@ Cílem této části je vytvoření zkušebního uživatele na portálu Azure, n
 
     b. V **uživatelské jméno** zadejte e-mailovou adresu uživatele Britta Simon.
 
-    c. Vyberte **zobrazit hesla** zaškrtněte políčko a zapište si ji hodnotu, která se zobrazí v **heslo** pole.
+    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
 
     d. Klikněte na možnost **Vytvořit**.
   
-### <a name="create-a-clear-review-test-user"></a>Vytvoření zkušebního uživatele zrušte revize
+### <a name="create-a-clear-review-test-user"></a>Vytvoření zkušebního uživatele vymazat revize
 
-V této části vytvoříte uživatele volal Britta Simon v zrušte zkontrolujte. Spojte se s [tým podpory zrušte zkontrolujte](https://clearreview.com/contact/) přidejte uživatele, zrušte zkontrolujte platformy.
+V této části vytvořte uživatele Britta Simon reviduje vymazat. Prosím práci s [tým podpory vymazat kontroly](https://clearreview.com/contact/) přidat uživatele na platformě vymazat revize.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit testovacího uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu ke kontrole zrušte.
+V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k revizi vymazat.
 
-![Přiřadit role uživatele][200] 
+![Přiřazení role uživatele][200] 
 
-**Chcete vymazat zkontrolujte přiřadit Britta Simon, proveďte následující kroky:**
+**Chcete vymazat revize přiřadit Britta Simon, proveďte následující kroky:**
 
-1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
+1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **zrušte zkontrolujte**.
+2. V seznamu aplikací vyberte **vymazat revize**.
 
-    ![Odkaz zrušte zkontrolujte v seznamu aplikací](./media/clearreview-tutorial/tutorial_clearreview_app.png)  
+    ![Vymazat revize odkazu v seznamu aplikací](./media/clearreview-tutorial/tutorial_clearreview_app.png)  
 
 3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
-    ![Odkaz "Uživatelé a skupiny"][202]
+    ![Odkaz "Uživatele a skupiny"][202]
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.
+4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
-    ![V podokně Přidat přiřazení][203]
+    ![Podokno Přidat přiřazení][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
+5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
+6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
+7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
 ### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
-V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
+V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Když kliknete na dlaždici zrušte zkontrolujte na přístupovém panelu, jste měli získat automaticky přihlášení k zrušte revize aplikace.
-Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](../active-directory-saas-access-panel-introduction.md). 
+Po kliknutí na dlaždici vymazat kontrolu na přístupovém panelu, vám by měl získat automaticky přihlášení k vymazat revizi aplikace.
+Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](tutorial-list.md)
+* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

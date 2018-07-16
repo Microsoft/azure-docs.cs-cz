@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 3282a90069ecd119154df492ac6dc366d26b5300
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: ecfaf24d1122b711a93e1335b79acbbc4235bdae
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38611201"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049945"
 ---
 # <a name="post-an-announcement-to-a-lab-in-azure-devtest-labs"></a>Odeslání oznámení do testovacího prostředí ve službě Azure DevTest Labs
 
@@ -81,6 +81,89 @@ Pokud už nechcete zobrazit toto oznámení uživatelům testovacího prostřed�
     ![Další informace o oznámení testovacího prostředí](./media/devtest-lab-announcements/devtestlab-user-announcement-text.png)
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
+
+## <a name="azure-resource-manager-template"></a>Šablona Azure Resource Manageru
+Oznámení můžete zadat jako součást šablony Azure Resource Manageru, jak je znázorněno v následujícím příkladu: 
+
+```json
+{
+    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "name": {
+            "type": "string",
+            "defaultValue": "devtestlabfromarm"
+        },
+        "regionId": {
+            "type": "string",
+            "defaultValue": "eastus"
+        }
+    },
+    "resources": [
+        {
+            "apiVersion": "2017-04-26-preview",
+            "name": "[parameters('name')]",
+            "type": "Microsoft.DevTestLab/labs",
+            "location": "[parameters('regionId')]",
+            "tags": {},
+            "properties": {
+                "labStorageType": "Premium",
+                "announcement":
+                {
+                    "title": "Important! Three images are currently inaccessible. Click for more information.",
+                    "markdown":"# Images are inaccessible\n\nThe following 3 images are currently not available for use: \n\n- image1\n- image2\n- image3\n\nI am working to fix the problem ASAP.",
+                    "enabled": "Enabled",
+                    "expirationDate":"2018-12-31T06:00:00+00:00",
+                    "expired": "false"
+                },
+                "support": {
+                    "markdown": "",
+                    "enabled": "Enabled"
+                }                
+            },
+            "resources": [
+                {
+                    "apiVersion": "2017-04-26-preview",
+                    "name": "LabVmsShutdown",
+                    "location": "[parameters('regionId')]",
+                    "type": "schedules",
+                    "dependsOn": [
+                        "[resourceId('Microsoft.DevTestLab/labs', parameters('name'))]"
+                    ],
+                    "properties": {
+                        "status": "Enabled",
+                        "timeZoneId": "Eastern Standard Time",
+                        "dailyRecurrence": {
+                            "time": "1900"
+                        },
+                        "taskType": "LabVmsShutdownTask",
+                        "notificationSettings": {
+                            "status": "Disabled",
+                            "timeInMinutes": 30
+                        }
+                    }
+                },
+                {
+                    "apiVersion": "2017-04-26-preview",
+                    "name": "[concat('Dtl', parameters('name'))]",
+                    "type": "virtualNetworks",
+                    "location": "[parameters('regionId')]",
+                    "dependsOn": [
+                        "[resourceId('Microsoft.DevTestLab/labs', parameters('name'))]"
+                    ]
+                }
+            ]
+        }
+    ]
+}
+```
+
+Šablony Azure Resource Manageru můžete nasadit pomocí jedné z následujících způsobů:
+
+- [Azure Portal](../azure-resource-manager/resource-group-template-deploy-portal.md)
+- [Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md)
+- [Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md)
+- [REST API](../azure-resource-manager/resource-group-template-deploy-rest.md)
 
 ## <a name="next-steps"></a>Další postup
 * Pokud změníte nebo nastavte zásady testovacího prostředí, můžete chtít odeslat oznámení informovat uživatele. [Nastavení zásad a plánů](devtest-lab-set-lab-policy.md) poskytuje informace o použití omezení a pravidla týkající se celém předplatném pomocí vlastních zásad.

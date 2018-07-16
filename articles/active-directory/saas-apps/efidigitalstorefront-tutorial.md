@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s rozhraním EFI digitální výkladní skříň | Microsoft Docs'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a digitální výkladní skříň EFI.
+title: 'Kurz: Integrace Azure Active Directory s digitální StoreFront EFI | Dokumentace Microsoftu'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a digitální StoreFront EFI.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,134 +15,134 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/08/2017
 ms.author: jeedes
-ms.openlocfilehash: c5b8b78940d1e7054fa36b630b6d59a4d0c5880f
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 8a92824a24cf3cb6e161101183468c66b553bc08
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36224041"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39053192"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-efi-digital-storefront"></a>Kurz: Azure Active Directory integrace s rozhraním EFI digitální výkladní skříň
+# <a name="tutorial-azure-active-directory-integration-with-efi-digital-storefront"></a>Kurz: Integrace Azure Active Directory s digitální StoreFront EFI
 
-V tomto kurzu zjistěte, jak integrovat EFI digitální výkladní skříň s Azure Active Directory (Azure AD).
+V tomto kurzu se dozvíte, jak integrovat digitální StoreFront EFI se službou Azure Active Directory (Azure AD).
 
-Integrace rozhraní EFI digitální výkladní skříň s Azure AD poskytuje následující výhody:
+Integrace prodejních míst digitální EFI s Azure AD poskytuje následující výhody:
 
-- Můžete ovládat ve službě Azure AD, který má přístup k digitální výkladní skříň EFI.
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k digitální výkladní skříň rozhraní EFI (jednotné přihlášení) s jejich účty Azure AD.
-- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure.
+- Můžete řídit ve službě Azure AD, který má přístup k digitální StoreFront EFI.
+- Uživatele, aby automaticky získat přihlášení k digitální výkladní skříň EFI (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD.
+- Můžete spravovat své účty na jediném místě – na webu Azure portal.
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s rozhraním EFI digitální výkladní skříň, potřebujete následující položky:
+Konfigurace integrace Azure AD s digitální StoreFront EFI, potřebujete následující položky:
 
-- Předplatné služby Azure AD
-- Rozhraní EFI digitální výkladní skříň jednotné přihlašování povolené předplatné
+- S předplatným služby Azure AD
+- Digitální StoreFront EFI jednotného přihlašování povolená předplatného
 
 > [!NOTE]
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
 
-- Nepoužívejte provozním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verze Azure AD, můžete [získat zkušební verzi jeden měsíc](https://azure.microsoft.com/pricing/free-trial/).
+- Nepoužívejte produkčním prostředí, pokud to není nutné.
+- Pokud nemáte prostředí zkušební verzi Azure AD, můžete si [získat měsíční zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání rozhraní EFI digitální výkladní skříň z Galerie
+1. Přidání EFI digitální prezentace z Galerie
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
-## <a name="adding-efi-digital-storefront-from-the-gallery"></a>Přidání rozhraní EFI digitální výkladní skříň z Galerie
-Při konfiguraci integrace digitální výkladní skříň EFI do služby Azure AD potřebujete přidat digitální výkladní skříň EFI z Galerie si na seznam spravovaných aplikací SaaS.
+## <a name="adding-efi-digital-storefront-from-the-gallery"></a>Přidání EFI digitální prezentace z Galerie
+Konfigurace integrace prodejních míst digitální EFI do služby Azure AD, potřebujete přidat EFI digitální prezentace z Galerie na váš seznam spravovaných aplikací SaaS.
 
-**Pokud chcete přidat digitální výkladní skříň EFI z galerie, proveďte následující kroky:**
+**Přidání EFI digitální prezentace z galerie, postupujte následovně:**
 
-1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
+1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![V okně podnikové aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Tlačítko nové aplikace][3]
 
-4. Do vyhledávacího pole zadejte **digitální výkladní skříň EFI**, vyberte **digitální výkladní skříň EFI** z panelu výsledků klikněte **přidat** tlačítko Přidat aplikaci.
+4. Do vyhledávacího pole zadejte **digitální StoreFront EFI**vyberte **digitální StoreFront EFI** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
     ![Digitální výkladní skříň EFI v seznamu výsledků](./media/efidigitalstorefront-tutorial/tutorial_efidigital_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování Azure AD jednotné přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s rozhraním EFI digitální výkladní skříň, podle testovacího uživatele názvem "Britta Simon".
+V této části Konfigurace a testování Azure AD jednotné přihlašování pomocí EFI digitální prodejních míst, na základě testovací uživatele nazývá "Britta Simon".
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v digitální výkladní skříň EFI je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v digitální výkladní skříň EFI musí navázat.
+Azure AD pro jednotné přihlašování pro práci, potřebuje vědět, co uživatel protějšek v digitální StoreFront EFI je pro uživatele ve službě Azure AD. Jinými slovy vztah odkazu mezi uživatele služby Azure AD a související uživatelské v digitální StoreFront EFI je potřeba navázat.
 
-V rozhraní EFI digitální výkladní skříň, přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** k navázání vztahu odkazu.
+V rozhraní EFI digitální výkladní skříň, přiřaďte hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** a tím vytvoří vztah odkazu.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s rozhraním EFI digitální výkladní skříň, je třeba dokončit následující stavební bloky:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s EFI digitální prezentace, které potřebujete k dokončení následujících stavebních bloků:
 
-1. **[Konfigurovat Azure AD jednotné přihlašování](#configure-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
-2. **[Vytvořit testovací uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele digitální výkladní skříň EFI](#create-a-efi-digital-storefront-test-user)**  – Pokud chcete mít protějšek Britta Simon v digitální výkladní skříň EFI, propojené služby Azure AD reprezentace daného uživatele.
-4. **[Přiřadit testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. **[Test jednotného přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
+1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+2. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytvoření zkušebního uživatele digitální StoreFront EFI](#create-a-efi-digital-storefront-test-user)**  – Pokud chcete mít protějšek Britta Simon EFI digitální z prodejních míst, který je propojený s Azure AD reprezentace uživatele.
+4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurovat Azure AD jednotné přihlašování
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci digitální výkladní skříň EFI.
+V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování v aplikaci digitální StoreFront EFI.
 
-**Ke konfiguraci Azure AD jednotné přihlašování s rozhraním EFI digitální výkladní skříň, proveďte následující kroky:**
+**Ke konfiguraci Azure AD jednotné přihlašování s digitální StoreFront EFI, proveďte následující kroky:**
 
-1. Na portálu Azure na **digitální výkladní skříň EFI** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. Na webu Azure Portal na **digitální StoreFront EFI** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
 
-    ![Konfigurace propojení přihlášení][4]
+    ![Nakonfigurovat jednotné přihlašování – odkaz][4]
 
-2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
+2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
-    ![Jediné přihlášení dialogové okno](./media/efidigitalstorefront-tutorial/tutorial_efidigital_samlbase.png)
+    ![Jednotné přihlašování – dialogové okno](./media/efidigitalstorefront-tutorial/tutorial_efidigital_samlbase.png)
 
-3. Na **EFI digitální výkladní skříň domény a adresy URL** část, proveďte následující kroky:
+3. Na **EFI digitální z prodejních míst domény a adresy URL** části, proveďte následující kroky:
 
-    ![Rozhraní EFI digitální výkladní skříň domény a adresy URL jednotné přihlašování informace](./media/efidigitalstorefront-tutorial/tutorial_efidigital_url.png)
+    ![EFI digitální z prodejních míst domény a adresy URL jednotného přihlašování – informace](./media/efidigitalstorefront-tutorial/tutorial_efidigital_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<companyname>.myprintdesk.net/DSF`
+    a. V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<companyname>.myprintdesk.net/DSF`
 
-    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<companyname>.myprintdesk.net/DSF/asp4/`
+    b. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<companyname>.myprintdesk.net/DSF/asp4/`
 
-4. Na **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat ve vašem počítači.
+4. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor metadat ve vašem počítači.
 
     ![Odkaz ke stažení certifikátu](./media/efidigitalstorefront-tutorial/tutorial_efidigital_certificate.png) 
 
 5. Klikněte na tlačítko **Uložit** tlačítko.
 
-    ![Nakonfigurujte jeden přihlašování uložit tlačítko](./media/efidigitalstorefront-tutorial/tutorial_general_400.png)
+    ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/efidigitalstorefront-tutorial/tutorial_general_400.png)
 
-6. Konfigurace jednotného přihlašování na **digitální výkladní skříň EFI** straně, budete muset odeslat stažené **soubor XML s metadaty** k [tým podpory digitální výkladní skříň EFI](http://www.efi.com/products/productivity-software/ecommerce-web-to-print/efi-digital-storefront/support/). Nastavují toto nastavení tak, aby měl jednotné přihlašování SAML připojení správně nastavena na obou stranách.
+6. Ke konfiguraci jednotného přihlašování na **digitální StoreFront EFI** straně, je nutné odeslat na stažený **soubor XML s metadaty** k [tým podpory digitální StoreFront EFI](http://www.efi.com/products/productivity-software/ecommerce-web-to-print/efi-digital-storefront/support/). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
 > [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovací uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
-Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
+Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-   ![Vytvořit testovací uživatele Azure AD][100]
+   ![Vytvořit testovacího uživatele Azure AD][100]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
 
-1. Na portálu Azure, v levém podokně klikněte **Azure Active Directory** tlačítko.
+1. Na webu Azure Portal, v levém podokně klikněte na tlačítko **Azure Active Directory** tlačítko.
 
     ![Tlačítko Azure Active Directory](./media/efidigitalstorefront-tutorial/create_aaduser_01.png)
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na **všichni uživatelé**.
+2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
 
-    !["Uživatelé a skupiny" a "Všichni uživatelé" odkazy](./media/efidigitalstorefront-tutorial/create_aaduser_02.png)
+    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](./media/efidigitalstorefront-tutorial/create_aaduser_02.png)
 
 3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
 
@@ -156,54 +156,54 @@ Cílem této části je vytvoření zkušebního uživatele na portálu Azure, n
 
     b. V **uživatelské jméno** zadejte e-mailovou adresu uživatele Britta Simon.
 
-    c. Vyberte **zobrazit hesla** zaškrtněte políčko a zapište si ji hodnotu, která se zobrazí v **heslo** pole.
+    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
 
     d. Klikněte na možnost **Vytvořit**.
  
 ### <a name="create-a-efi-digital-storefront-test-user"></a>Vytvoření zkušebního uživatele EFI digitální výkladní skříň
 
-V této části vytvoříte uživatele volal Britta Simon v digitální výkladní skříň EFI. Práce s [tým podpory digitální výkladní skříň EFI](http://www.efi.com/products/productivity-software/ecommerce-web-to-print/efi-digital-storefront/support/) přidat uživatele do platformy digitální výkladní skříň EFI. Uživatelé musí být vytvořen a aktivovat dříve, než použijete jednotné přihlašování. 
+V této části vytvořte uživatele Britta Simon v digitální StoreFront EFI. Práce s [tým podpory digitální StoreFront EFI](http://www.efi.com/products/productivity-software/ecommerce-web-to-print/efi-digital-storefront/support/) přidat uživatele na platformě digitální StoreFront EFI. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování. 
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit testovacího uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu digitální výkladní skříň EFI.
+V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k digitální StoreFront EFI.
 
-![Přiřadit role uživatele][200] 
+![Přiřazení role uživatele][200] 
 
-**Pokud chcete přiřadit Britta Simon digitální výkladní skříň EFI, proveďte následující kroky:**
+**Britta Simon přiřadit EFI digitální výkladní skříň, proveďte následující kroky:**
 
-1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
+1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **digitální výkladní skříň EFI**.
+2. V seznamu aplikací vyberte **digitální StoreFront EFI**.
 
-    ![Odkaz digitální výkladní skříň EFI v seznamu aplikací](./media/efidigitalstorefront-tutorial/tutorial_efidigital_app.png)  
+    ![Odkaz EFI digitální prodejní místo v seznamu aplikací](./media/efidigitalstorefront-tutorial/tutorial_efidigital_app.png)  
 
 3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
-    ![Odkaz "Uživatelé a skupiny"][202]
+    ![Odkaz "Uživatele a skupiny"][202]
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.
+4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
-    ![V podokně Přidat přiřazení][203]
+    ![Podokno Přidat přiřazení][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
+5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
+6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
+7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
 ### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
-V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
+V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Když kliknete na dlaždici digitální výkladní skříň EFI na přístupovém panelu, můžete by měl získat automaticky přihlášení k aplikaci digitální výkladní skříň EFI.
-Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](../active-directory-saas-access-panel-introduction.md). 
+Po kliknutí na dlaždici EFI digitální StoreFront na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci digitální StoreFront EFI.
+Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](tutorial-list.md)
+* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s Learning stanici pro správu vzdělávacího procesu | Microsoft Docs'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Learning stanici pro správu vzdělávacího procesu.
+title: 'Kurz: Integrace Azure Active Directory se službou Learning Seat LMS | Dokumentace Microsoftu'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Learning Seat LMS.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,204 +14,204 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2017
 ms.author: jeedes
-ms.openlocfilehash: 96608c491fe4d62b6b4bdb48ee5386c9a72212cf
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: d1a15617830f7b517210c7e86146a88d38ae8343
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36286241"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39046817"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-learning-seat-lms"></a>Kurz: Azure Active Directory integrace s Learning stanici pro správu vzdělávacího procesu
+# <a name="tutorial-azure-active-directory-integration-with-learning-seat-lms"></a>Kurz: Integrace Azure Active Directory se službou Learning Seat LMS
 
-V tomto kurzu zjistěte, jak integrovat vzdělávacího procesu stanici Learning s Azure Active Directory (Azure AD).
+V tomto kurzu se dozvíte, jak integrovat Learning Seat LMS s Azure Active Directory (Azure AD).
 
-Integrace vzdělávacího procesu stanici Learning s Azure AD poskytuje následující výhody:
+Learning Seat LMS integrace s Azure AD poskytuje následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup ke stanici Learning vzdělávacího procesu
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k Learning stanici správu vzdělávacího procesu (jednotné přihlášení) s jejich účty Azure AD
-- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
+- Můžete řídit ve službě Azure AD, který má přístup k Learning Seat LMS
+- Uživatele, aby automaticky získat přihlášení k učení LMS pracovní stanici (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD
+- Můžete spravovat své účty na jediném místě – na webu Azure portal
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, přečtěte si téma. [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma. [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s Learning stanici pro správu vzdělávacího procesu, potřebujete následující položky:
+Konfigurace integrace Azure AD s Learning Seat LMS, potřebujete následující položky:
 
-- Předplatné služby Azure AD
-- Stanici Learning vzdělávacího procesu jednotného přihlašování povolené předplatné
+- S předplatným služby Azure AD
+- Learning Seat LMS jednotného přihlašování povolená předplatného
 
 > [!NOTE]
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
 
-- Nepoužívejte provozním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební verze jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).
+- Nepoužívejte produkčním prostředí, pokud to není nutné.
+- Pokud nemáte prostředí zkušební verzi Azure AD, můžete získat měsíční zkušební [tady](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání Learning stanici pro správu vzdělávacího procesu z Galerie
+1. Přidání Learning Seat LMS z Galerie
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
-## <a name="adding-learning-seat-lms-from-the-gallery"></a>Přidání Learning stanici pro správu vzdělávacího procesu z Galerie
-Při konfiguraci integrace Learning stanici pro správu vzdělávacího procesu do služby Azure AD potřebujete přidat Learning stanici pro správu vzdělávacího procesu z Galerie si na seznam spravovaných aplikací SaaS.
+## <a name="adding-learning-seat-lms-from-the-gallery"></a>Přidání Learning Seat LMS z Galerie
+Konfigurace integrace Learning Seat LMS do služby Azure AD, budete muset přidat Learning Seat LMS z Galerie na váš seznam spravovaných aplikací SaaS.
 
-**Pokud chcete přidat stanici Learning vzdělávacího procesu z galerie, proveďte následující kroky:**
+**Chcete-li přidat Learning Seat LMS z galerie, postupujte následovně:**
 
-1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
+1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![Aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Aplikace][3]
 
-4. Do vyhledávacího pole zadejte **Learning stanici pro správu vzdělávacího procesu**.
+4. Do vyhledávacího pole zadejte **Learning Seat LMS**.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/learningseatlms-tutorial/tutorial_learnconnect_search.png)
+    ![Vytváří se testovací uživatele služby Azure AD](./media/learningseatlms-tutorial/tutorial_learnconnect_search.png)
 
-5. Na panelu výsledků vyberte **Learning stanici pro správu vzdělávacího procesu**a potom klikněte na **přidat** tlačítko Přidat aplikaci.
+5. Na panelu výsledků vyberte **Learning Seat LMS**a potom klikněte na tlačítko **přidat** tlačítko pro přidání aplikace.
 
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
-V této části můžete nakonfigurovat a otestovat Azure AD jednotné přihlašování s Learning stanici pro správu vzdělávacího procesu na základě testovací uživatele, nazývá "Britta Simon."
+V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s Learning Seat LMS podle testovacího uživatele nazývá "Britta Simon."
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v Learning stanici pro správu vzdělávacího procesu je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v Learning stanici pro správu vzdělávacího procesu musí navázat.
+Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšky v Learning Seat LMS je pro uživatele ve službě Azure AD. Jinými slovy vztah odkazu mezi uživatele služby Azure AD a související uživatelské v Learning Seat LMS je potřeba navázat.
 
-Tento vztah propojení se navazuje se hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** v Learning stanici pro správu vzdělávacího procesu.
+Tento odkaz vztah navázaný přiřazením hodnoty **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** v Learning Seat LMS.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Learning stanici pro správu vzdělávacího procesu, je třeba dokončit následující stavební bloky:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Learning Seat LMS, které potřebujete k dokončení následujících stavebních bloků:
 
-1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
-2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele Learning stanici pro správu vzdělávacího procesu](#creating-a-learnconnect-test-user)**  – Pokud chcete mít protějšek Britta Simon v Learning stanici pro správu vzdělávacího procesu propojeném s Azure AD reprezentace daného uživatele.
-4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
+1. **[Konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+2. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytvoření zkušebního uživatele Learning Seat LMS](#creating-a-learnconnect-test-user)**  – Pokud chcete mít protějšek Britta Simon Learning Seat LMS, který je propojený s Azure AD reprezentace uživatele.
+4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace Azure AD jednotné přihlašování
+### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci pro správu vzdělávacího procesu Learning stanici.
+V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování v aplikaci Learning Seat LMS.
 
-**Ke konfiguraci Azure AD jednotné přihlašování s Learning stanici pro správu vzdělávacího procesu, proveďte následující kroky:**
+**Ke konfiguraci Azure AD jednotné přihlašování s Learning Seat LMS, proveďte následující kroky:**
 
-1. Na portálu Azure na **Learning stanici pro správu vzdělávacího procesu** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. Na webu Azure Portal na **Learning Seat LMS** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
 
-    ![Konfigurovat jednotné přihlašování][4]
+    ![Konfigurace jednotného přihlašování][4]
 
-2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
+2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
-    ![Konfigurovat jednotné přihlašování](./media/learningseatlms-tutorial/tutorial_learnconnect_samlbase.png)
+    ![Konfigurace jednotného přihlašování](./media/learningseatlms-tutorial/tutorial_learnconnect_samlbase.png)
 
-3. Na **Learning stanici pro správu vzdělávacího procesu domény a adresy URL** část, proveďte následující kroky, pokud chcete nakonfigurovat aplikace **IDP** iniciované režimu:
+3. Na **Learning Seat LMS domény a adresy URL** části, proveďte následující kroky, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu:
 
-    ![Konfigurovat jednotné přihlašování](./media/learningseatlms-tutorial/tutorial_learnconnect_url.png)
+    ![Konfigurace jednotného přihlašování](./media/learningseatlms-tutorial/tutorial_learnconnect_url.png)
 
-    a. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<subdomain>.learningseatlms.com`
+    a. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<subdomain>.learningseatlms.com`
 
-    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<subdomain>.learningseatlms.com/Account/AssertionConsumerService`
+    b. V **adresy URL odpovědi** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<subdomain>.learningseatlms.com/Account/AssertionConsumerService`
 
-4. Zkontrolujte **zobrazit upřesňující nastavení adresy URL**, pokud chcete nakonfigurovat aplikace **SP** iniciované režimu:
+4. Zkontrolujte **zobrazit pokročilé nastavení URL**, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
 
-    ![Konfigurovat jednotné přihlašování](./media/learningseatlms-tutorial/tutorial_learnconnect_url2.png)
+    ![Konfigurace jednotného přihlašování](./media/learningseatlms-tutorial/tutorial_learnconnect_url2.png)
 
-    V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<subdomain>.learningseatlms.com`
+    V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<subdomain>.learningseatlms.com`
      
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečné hodnoty. Tyto hodnoty aktualizujte se skutečným identifikátorem, adresa URL odpovědi a přihlašovací adresa URL. Obraťte se na [tým podpory Learning stanici](http://help.learningseatlms.com/help) k získání těchto hodnot. 
+    > Tyto hodnoty nejsou skutečné hodnoty. Tyto hodnoty aktualizujte skutečné identifikátor, adresa URL odpovědi a přihlašovací adresa URL. Kontakt [tým podpory Learning Seat](http://help.learningseatlms.com/help) k získání těchto hodnot. 
 
-5. Na **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat ve vašem počítači.
+5. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor metadat ve vašem počítači.
 
-    ![Konfigurovat jednotné přihlašování](./media/learningseatlms-tutorial/tutorial_learnconnect_certificate.png) 
+    ![Konfigurace jednotného přihlašování](./media/learningseatlms-tutorial/tutorial_learnconnect_certificate.png) 
 
 6. Klikněte na tlačítko **Uložit** tlačítko.
 
-    ![Konfigurovat jednotné přihlašování](./media/learningseatlms-tutorial/tutorial_general_400.png)
+    ![Konfigurace jednotného přihlašování](./media/learningseatlms-tutorial/tutorial_general_400.png)
 
-7. Konfigurace jednotného přihlašování na **Learning stanici pro správu vzdělávacího procesu** straně, budete muset odeslat stažené **soubor XML s metadaty** k [tým podpory Learning stanici](http://help.learningseatlms.com/help).
+7. Ke konfiguraci jednotného přihlašování na **Learning Seat LMS** straně, je nutné odeslat na stažený **soubor XML s metadaty** k [tým podpory Learning Seat](http://help.learningseatlms.com/help).
 
 > [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD](https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded](https://go.microsoft.com/fwlink/?linkid=845985)
 
-### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
+### <a name="creating-an-azure-ad-test-user"></a>Vytváří se testovací uživatele služby Azure AD
 
-Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
+Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-![Vytvořit uživatele Azure AD][100]
+![Vytvoření uživatele Azure AD][100]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
 
-1. V **portál Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
+1. V **webu Azure portal**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/learningseatlms-tutorial/create_aaduser_01.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/learningseatlms-tutorial/create_aaduser_01.png) 
 
 2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
-    ![Vytváření testovacího uživatele Azure AD](./media/learningseatlms-tutorial/create_aaduser_02.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/learningseatlms-tutorial/create_aaduser_02.png) 
 
-3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** horní dialogové okno.
+3. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
  
-    ![Vytváření testovacího uživatele Azure AD](./media/learningseatlms-tutorial/create_aaduser_03.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/learningseatlms-tutorial/create_aaduser_03.png) 
 
-4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
+4. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
  
-    ![Vytváření testovacího uživatele Azure AD](./media/learningseatlms-tutorial/create_aaduser_04.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/learningseatlms-tutorial/create_aaduser_04.png) 
 
-    a. V **název** textovému poli, typ **BrittaSimon**.
+    a. V **název** textové pole, typ **BrittaSimon**.
 
-    b. V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.
+    b. V **uživatelské jméno** textové pole, typ **e-mailová adresa** z BrittaSimon.
 
-    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
+    c. Vyberte **zobrazit heslo** a zapište si hodnotu **heslo**.
 
     d. Klikněte na možnost **Vytvořit**.
  
-### <a name="creating-a-learning-seat-lms-test-user"></a>Vytvoření zkušebního uživatele Learning stanici pro správu vzdělávacího procesu
+### <a name="creating-a-learning-seat-lms-test-user"></a>Vytvoření zkušebního uživatele Learning Seat LMS
 
-V této části vytvoříte uživatele volal Britta Simon v Learning stanici pro správu vzdělávacího procesu. Obraťte se na [tým podpory Learning stanici](http://help.learningseatlms.com/help) všechny informace uživatele Chcete-li přidat uživatele v aplikaci pro správu vzdělávacího procesu Learning stanici.
+V této části vytvoříte uživatele v Learning Seat LMS jako Britta Simon. Kontakt [tým podpory Learning Seat](http://help.learningseatlms.com/help) se všechny informace o uživateli Chcete-li přidat uživatele v aplikaci Learning Seat LMS.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu Learning stanici pro správu vzdělávacího procesu.
+V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k Learning Seat LMS.
 
 ![Přiřadit uživatele][200] 
 
-**Pokud chcete přiřadit Britta Simon Learning stanici pro správu vzdělávacího procesu, proveďte následující kroky:**
+**Přiřadit Learning Seat LMS Britta Simon, proveďte následující kroky:**
 
-1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
+1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **Learning stanici pro správu vzdělávacího procesu**.
+2. V seznamu aplikací vyberte **Learning Seat LMS**.
 
-    ![Konfigurovat jednotné přihlašování](./media/learningseatlms-tutorial/tutorial_learnconnect_app.png) 
+    ![Konfigurace jednotného přihlašování](./media/learningseatlms-tutorial/tutorial_learnconnect_app.png) 
 
 3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.
+4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
+5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
+6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
+7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="testing-single-sign-on"></a>Testování jednotné přihlašování
+### <a name="testing-single-sign-on"></a>Testování jednotného přihlašování
 
-V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu. 
+V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu. 
 
-Klikněte na dlaždici Learning stanici pro správu vzdělávacího procesu na přístupovém panelu, můžete se být automaticky přihlášení k aplikaci pro správu vzdělávacího procesu Learning stanici. Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](../active-directory-saas-access-panel-introduction.md).
+Kliknutím na dlaždici Learning Seat LMS na přístupovém panelu, je bude možné automaticky přihlášení k aplikaci Learning Seat LMS. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](tutorial-list.md)
+* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

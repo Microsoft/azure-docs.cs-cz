@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s LinkedIn prodej Navigátor | Microsoft Docs'
+title: 'Kurz: Integrace Azure Active Directory se službou LinkedIn Sales Navigatoru | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a LinkedInSalesNavigator.
 services: active-directory
 documentationCenter: na
@@ -14,258 +14,258 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
-ms.openlocfilehash: 2bc4f42b0a22ce804db9290728944575888f9c72
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 1df301e197c90970aa1e73620f94f977ecd34ba0
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36287442"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39046902"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-linkedin-sales-navigator"></a>Kurz: Azure Active Directory integrace s LinkedIn prodej Navigátor
+# <a name="tutorial-azure-active-directory-integration-with-linkedin-sales-navigator"></a>Kurz: Integrace Azure Active Directory se službou LinkedIn Sales Navigatoru
 
-V tomto kurzu zjistěte, jak integrovat LinkedIn prodej Navigátor s Azure Active Directory (Azure AD).
+V tomto kurzu se dozvíte, jak integrovat Azure Active Directory (Azure AD) LinkedIn Sales Navigatoru.
 
-Integrace LinkedIn prodej Navigátor s Azure AD poskytuje následující výhody:
+Integrace LinkedIn Sales Navigatoru s Azure AD poskytuje následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup k LinkedIn prodej Navigátor
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k LinkedIn prodej Navigátor (jednotné přihlášení) s jejich účty Azure AD
-- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
+- Můžete řídit ve službě Azure AD, který má přístup k LinkedIn Sales Navigatoru
+- Uživatele, aby automaticky získat přihlášeného LinkedIn Sales Navigatoru (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD
+- Můžete spravovat své účty na jediném místě – na webu Azure portal
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, Procházet [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, Procházet [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s Navigátor prodej LinkedIn, potřebujete následující položky:
+Konfigurace integrace Azure AD s LinkedIn Sales Navigatoru, potřebujete následující položky:
 
-- Předplatné služby Azure AD
-- Organizační jednotky prodej Navigátor LinkedIn jednotného přihlašování povolené předplatné
+- S předplatným služby Azure AD
+- LinkedIn Sales Navigatoru jednotného přihlašování povolená předplatného
 
 > [!NOTE]
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
 
-- Pokud to není nezbytné, vyhněte se použití produkční prostředí.
-- Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební verze jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).
+- Vyhněte se použití produkčním prostředí, pokud to není nutné.
+- Pokud nemáte prostředí zkušební verzi Azure AD, můžete získat měsíční zkušební [tady](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání LinkedIn prodej Navigátor z Galerie
+1. Přidání LinkedIn Sales Navigatoru z Galerie
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
-## <a name="adding-linkedin-sales-navigator-from-the-gallery"></a>Přidání LinkedIn prodej Navigátor z Galerie
-Při konfiguraci integrace LinkedIn prodej Navigátor do služby Azure AD potřebujete přidat LinkedIn prodej Navigátor z Galerie si na seznam spravovaných aplikací SaaS.
+## <a name="adding-linkedin-sales-navigator-from-the-gallery"></a>Přidání LinkedIn Sales Navigatoru z Galerie
+Konfigurace integrace LinkedIn Sales Navigatoru do služby Azure AD, budete muset přidat LinkedIn Sales Navigatoru z Galerie na váš seznam spravovaných aplikací SaaS.
 
-**Chcete-li přidat LinkedIn prodej Navigátor z galerie, postupujte takto:**
+**Chcete-li přidat LinkedIn Sales Navigatoru z galerie, postupujte následovně:**
 
-1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
+1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![Aplikace][2]
     
-3. Klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
+3. Klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Aplikace][3]
 
-4. Do vyhledávacího pole zadejte **LinkedIn prodej Navigátor**.
+4. Do vyhledávacího pole zadejte **LinkedIn Sales Navigatoru**.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_search.png)
+    ![Vytváří se testovací uživatele služby Azure AD](./media/linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_search.png)
 
-5. Na panelu výsledků vyberte **LinkedIn prodej Navigátor**a potom klikněte na **přidat** tlačítko Přidat aplikaci.
+5. Na panelu výsledků vyberte **LinkedIn Sales Navigatoru**a potom klikněte na tlačítko **přidat** tlačítko pro přidání aplikace.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_addfromgallery.png)
+    ![Vytváří se testovací uživatele služby Azure AD](./media/linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
-V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s Navigátor LinkedIn prodeje podle testovacího uživatele názvem "Britta Simon".
+V této části Konfigurace a testování Azure AD jednotné přihlašování pomocí LinkedIn Sales Navigatoru podle testovacího uživatele nazývá "Britta Simon".
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, co příslušného uživatele v LinkedIn prodej navigátoru je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v LinkedIn prodej Navigátor musí navázat.
+Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšky v LinkedIn Sales Navigatoru je pro uživatele ve službě Azure AD. Jinými slovy musí navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské v LinkedIn Sales Navigatoru.
 
-Tento vztah propojení se navazuje se hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** v Navigátor prodej LinkedIn.
+Tento odkaz vztah navázaný přiřazením hodnoty **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** v LinkedIn Sales Navigatoru.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Navigátor LinkedIn prodeje, musíte dokončit následující stavební bloky:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s LinkedIn Sales Navigatoru, které potřebujete k dokončení následujících stavebních bloků:
 
-1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
-2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele LinkedIn prodej Navigátor](#creating-a-linkedin-sales-navigator-test-user)**  – Pokud chcete mít protějšek Britta Simon v Navigátor LinkedIn prodej, propojené služby Azure AD reprezentace uživatele.
-4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
+1. **[Konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+2. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytvoření zkušebního uživatele LinkedIn Sales Navigatoru](#creating-a-linkedin-sales-navigator-test-user)**  – Pokud chcete mít protějšek Britta Simon LinkedIn Sales Navigatoru, který je propojený s Azure AD zastoupení uživatele.
+4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace Azure AD jednotné přihlašování
+### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci Navigátor prodej LinkedIn.
+V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování v aplikaci LinkedIn Sales Navigatoru.
 
-**Ke konfiguraci Azure AD jednotné přihlašování s Navigátor prodej LinkedIn, proveďte následující kroky:**
+**Ke konfiguraci Azure AD jednotné přihlašování s LinkedIn Sales Navigatoru, proveďte následující kroky:**
 
-1. Na portálu Azure na **LinkedIn prodej Navigátor** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. Na webu Azure Portal na **LinkedIn Sales Navigatoru** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
 
-    ![Konfigurovat jednotné přihlašování][4]
+    ![Konfigurace jednotného přihlašování][4]
 
-2. Na **jednotného přihlašování** dialogové okno, v **režimu** vyberte **na základě SAML přihlašování** umožňující jednotného přihlašování.
+2. Na **jednotného přihlašování** dialogového okna v **režimu** vyberte **přihlašování na základě SAML** povolit jednotné přihlašování.
  
-    ![Konfigurovat jednotné přihlašování](./media/linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_samlbase.png)
+    ![Konfigurace jednotného přihlašování](./media/linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_samlbase.png)
 
-3. V okně prohlížeče jiný web, přihlašování k vaší **LinkedIn prodej Navigátor** webu jako správce.
+3. V okně prohlížeče jiných webových, přihlašování k vaší **LinkedIn Sales Navigatoru** webu jako správce.
 
-4. V **centra účtů**, klikněte na tlačítko **globální nastavení** pod **nastavení**. Kromě toho **prodej Navigátor** z rozevíracího seznamu.
+4. V **centra pro účty**, klikněte na tlačítko **globální nastavení** pod **nastavení**. Kromě toho **Sales Navigatoru** z rozevíracího seznamu.
 
-    ![Konfigurovat jednotné přihlašování](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_01.png)
+    ![Konfigurace jednotného přihlašování](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_01.png)
 
-5. Klikněte na tlačítko **nebo klikněte na tlačítko sem můžete načíst a zkopírujte jednotlivých polí z formuláře** a zkopírujte **Entity Id** a **adresu Url pro přístup k příjemce Assertion (ACS)**.
+5. Klikněte na tlačítko **nebo klikněte sem pro načítání a kopírování jednotlivých polí ve formuláři** a zkopírujte **Entity Id** a **Assertion Consumer přístupu (ACS) adresy Url**.
 
-    ![Konfigurovat jednotné přihlašování](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_031.png)
+    ![Konfigurace jednotného přihlašování](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_031.png)
 
-6. Na portálu Azure v části **LinkedIn prodej Navigátor domény a adresy URL** část, proveďte následující kroky, pokud chcete nakonfigurovat aplikace **IDP** iniciované režimu.
+6. Na portálu Azure portal v části **LinkedIn Sales Navigator domény a adresy URL** části, proveďte následující kroky, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu.
 
-    ![Konfigurovat jednotné přihlašování](./media/linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_url1.png)
+    ![Konfigurace jednotného přihlašování](./media/linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_url1.png)
 
-    a. V **identifikátor** textovému poli, zadejte **Entity ID** zkopírovat z portálu LinkedIn 
+    a. V **identifikátor** textového pole zadejte **Entity ID** zkopírovali z portálu LinkedIn 
 
-    b. V **adresa URL odpovědi** textovému poli, zadejte **adresu Url pro přístup k příjemce Assertion (ACS)** zkopírovat z portálu LinkedIn
+    b. V **adresy URL odpovědi** textového pole zadejte **Assertion Consumer přístupu (ACS) adresy Url** zkopírovali z portálu LinkedIn
 
-7. Zkontrolujte **zobrazit upřesňující nastavení adresy URL**, pokud chcete nakonfigurovat aplikace **SP** iniciované režimu.
+7. Zkontrolujte **zobrazit pokročilé nastavení URL**, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu.
 
-    ![Konfigurovat jednotné přihlašování](./media/linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_url2.png)
+    ![Konfigurace jednotného přihlašování](./media/linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_url2.png)
 
-    V **přihlašovací adresa URL** textovému poli, zadejte hodnotu pomocí následujícího vzorce: `https://www.linkedin.com/checkpoint/enterprise/login/<account id>?application=salesNavigator`
+    V **přihlašovací adresa URL** textového pole zadejte hodnotu pomocí následujícího vzorce: `https://www.linkedin.com/checkpoint/enterprise/login/<account id>?application=salesNavigator`
 
-8. Vaše **LinkedIn prodej Navigátor** aplikace očekává SAML kontrolní výrazy ve specifickém formátu, který vyžaduje, můžete přidat mapování vlastních atributů do vaší konfigurace atributy tokenu SAML. Následující snímek obrazovky ukazuje příklad. Výchozí hodnota **uživatelský identifikátor** je **user.userprincipalname** ale LinkedIn prodej Navigátor očekává, že nejde mapovat pomocí e-mailovou adresu uživatele. Můžete použít **user.mail** atribut ze seznamu, nebo použijte hodnotu odpovídajícího atributu na základě konfigurace vaší organizace. 
+8. Vaše **LinkedIn Sales Navigatoru** aplikace očekává, že kontrolní výrazy SAML v určitém formátu, který je potřeba přidat vlastní atribut mapování konfigurace atributy tokenu SAML. Následující snímek obrazovky ukazuje příklad. Výchozí hodnota **identifikátor uživatele** je **user.userprincipalname** ale LinkedIn Sales Navigatoru očekává, že ji namapovat pomocí e-mailovou adresu uživatele. Můžete použít **user.mail** atribut ze seznamu nebo použijte hodnotu odpovídajícího atributu na základě vaší konfigurace organizace. 
 
-    ![Konfigurovat jednotné přihlašování](./media/linkedinsalesnavigator-tutorial/updateusermail.png)
+    ![Konfigurace jednotného přihlašování](./media/linkedinsalesnavigator-tutorial/updateusermail.png)
     
-9. V **uživatelské atributy** klikněte na tlačítko **zobrazit a upravit všechny ostatní atributy uživatele** a nastavit atributy. Uživatel musí přidat čtyři deklarace identity s názvem **e-mailu**, **oddělení**, **firstname**, a **lastname** a hodnota má být namapována na **user.mail**, **user.department**, **user.givenname**, a **user.surname** v uvedeném pořadí
+9. V **atributy uživatele** klikněte na tlačítko **zobrazit a upravit všechny ostatní atributy uživatele** a nastavte atributy. Uživatel musí přidat čtyři deklarace identity s názvem **e-mailu**, **oddělení**, **firstname**, a **lastname** a hodnota má být namapována na žádnou **user.mail**, **user.department**, **user.givenname**, a **user.surname** v uvedeném pořadí
 
     | Název atributu | Hodnota atributu |
     | --- | --- |    
     | e-mail| User.Mail |
-    | oddělení| User.Department |
-    | FirstName| user.givenname |
+    | Oddělení| User.Department |
+    | jméno| user.givenname |
     | Příjmení| user.surname |
     
-    ![Vytváření testovacího uživatele Azure AD](./media/linkedinsalesnavigator-tutorial/userattribute.png)
+    ![Vytváří se testovací uživatele služby Azure AD](./media/linkedinsalesnavigator-tutorial/userattribute.png)
     
-    a. Klikněte na **přidat atribut** tím otevřete dialogové okno atribut.
+    a. Klikněte na **přidat atribut** otevřete dialogové okno atribut.
     
-    ![Vytváření testovacího uživatele Azure AD](./media/linkedinsalesnavigator-tutorial/tutorial_attribute_04.png)
+    ![Vytváří se testovací uživatele služby Azure AD](./media/linkedinsalesnavigator-tutorial/tutorial_attribute_04.png)
     
-    ![Vytváření testovacího uživatele Azure AD](./media/linkedinsalesnavigator-tutorial/tutorial_attribute_05.png)
+    ![Vytváří se testovací uživatele služby Azure AD](./media/linkedinsalesnavigator-tutorial/tutorial_attribute_05.png)
    
-    b. V **název** textovému poli, zadejte název atributu, který je uvedený na příslušném řádku.
+    b. V **název** textového pole zadejte název atributu, který je zobrazený pro tento řádek.
     
-    c. Z **hodnotu** seznamu, zadejte hodnotu atributu, který je uvedený na příslušném řádku.
+    c. Z **hodnotu** seznamu, zadejte hodnotu atributu zobrazený pro tento řádek.
     
     d. Klikněte na tlačítko **Ok**
 
-10. Proveďte následující kroky na **název** atribut -
+10. Následující postup proveďte **název** – atribut
 
-    a. Klikněte na atribut, který se otevře **Upravit atribut** okno.
+    a. Klikněte na atribut, který chcete otevřít **Upravit atribut** okna.
 
-    ![Konfigurovat jednotné přihlašování](./media/linkedinsalesnavigator-tutorial/url_update.png)
+    ![Konfigurace jednotného přihlašování](./media/linkedinsalesnavigator-tutorial/url_update.png)
 
-    b. Odstranit hodnotu adresy URL **obor názvů**.
+    b. Odstranit hodnotu adresy URL z **obor názvů**.
     
-    c. Klikněte na tlačítko **Ok** uložte nastavení.
+    c. Klikněte na tlačítko **Ok** nastavení uložte.
 
-11. Na **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor XML ve vašem počítači.
+11. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor XML ve vašem počítači.
 
-    ![Konfigurovat jednotné přihlašování](./media/linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_certificate.png) 
+    ![Konfigurace jednotného přihlašování](./media/linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_certificate.png) 
 
 12. Klikněte na tlačítko **Uložit** tlačítko.
 
-    ![Konfigurovat jednotné přihlašování](./media/linkedinsalesnavigator-tutorial/tutorial_general_400.png)
+    ![Konfigurace jednotného přihlašování](./media/linkedinsalesnavigator-tutorial/tutorial_general_400.png)
 
-13. Přejděte na **nastavení správce LinkedIn** části. Klikněte na tlačítko **soubor nahrát XML** nahrát soubor XML s metadaty soubor, který jste si stáhli z portálu Azure.
+13. Přejděte na **nastavení Linkedinu správce** oddílu. Klikněte na tlačítko **soubor XML nahrajte** nahrát soubor metadat XML, který jste si stáhli z portálu Azure portal.
 
-    ![Konfigurovat jednotné přihlašování](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_metadata_03.png)
+    ![Konfigurace jednotného přihlašování](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_metadata_03.png)
 
-14. Klikněte na tlačítko **na** umožňující jednotného přihlašování. Jednotné přihlašování stav se změní z **Nepřipojeno** k **připojeno**
+14. Klikněte na tlačítko **na** pro povolení jednotného přihlašování. Stav jednotného přihlašování se změní z **Nepřipojeno** k **připojeno**
 
-    ![Konfigurovat jednotné přihlašování](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_05.png)
+    ![Konfigurace jednotného přihlašování](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_05.png)
 
 
 > [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
-### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
-Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
+### <a name="creating-an-azure-ad-test-user"></a>Vytváří se testovací uživatele služby Azure AD
+Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-![Vytvořit uživatele Azure AD][100]
+![Vytvoření uživatele Azure AD][100]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
 
-1. V **portál Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
+1. V **webu Azure portal**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/linkedinsalesnavigator-tutorial/create_aaduser_01.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/linkedinsalesnavigator-tutorial/create_aaduser_01.png) 
 
 2. Přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
-    ![Vytváření testovacího uživatele Azure AD](./media/linkedinsalesnavigator-tutorial/create_aaduser_02.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/linkedinsalesnavigator-tutorial/create_aaduser_02.png) 
 
-3. V horní části okna klikněte na tlačítko **přidat** otevřete **uživatele** dialogové okno.
+3. V horní části okna klikněte na tlačítko **přidat** otevřít **uživatele** dialogového okna.
  
-    ![Vytváření testovacího uživatele Azure AD](./media/linkedinsalesnavigator-tutorial/create_aaduser_03.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/linkedinsalesnavigator-tutorial/create_aaduser_03.png) 
 
-4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
+4. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
  
-    ![Vytváření testovacího uživatele Azure AD](./media/linkedinsalesnavigator-tutorial/create_aaduser_04.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/linkedinsalesnavigator-tutorial/create_aaduser_04.png) 
 
-    a. V **název** textovému poli, typ **BrittaSimon**.
+    a. V **název** textové pole, typ **BrittaSimon**.
 
-    b. V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.
+    b. V **uživatelské jméno** textové pole, typ **e-mailová adresa** z BrittaSimon.
 
-    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
+    c. Vyberte **zobrazit heslo** a zapište si hodnotu **heslo**.
 
     d. Klikněte na možnost **Vytvořit**.
  
-### <a name="creating-a-linkedin-sales-navigator-test-user"></a>Vytvoření zkušebního uživatele LinkedIn prodej Navigátor
+### <a name="creating-a-linkedin-sales-navigator-test-user"></a>Vytvoření zkušebního uživatele LinkedIn Sales Navigatoru
 
-Propojené aplikace Navigátor prodej podporuje pouze v zřizování uživatelů čas (JIT) a po ověření uživatelé jsou automaticky vytvořené v aplikaci. Aktivovat **automaticky přiřadit licence** přiřadit licence pro uživatele.
+Propojené aplikace Sales Navigator podporuje pouze v zřizování uživatelů Time (JIT) a po ověření uživatele se vytvoří automaticky v aplikaci. Aktivovat **automaticky přiřadit licence** přiřadit licenci uživateli.
    
-   ![Vytváření testovacího uživatele Azure AD](./media/linkedinsalesnavigator-tutorial/LinkedinUserprovswitch.png)
+   ![Vytváří se testovací uživatele služby Azure AD](./media/linkedinsalesnavigator-tutorial/LinkedinUserprovswitch.png)
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu Navigátor prodej LinkedIn.
+V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu LinkedIn Sales Navigatoru.
 
 ![Přiřadit uživatele][200] 
 
-**Pokud chcete přiřadit Britta Simon Navigátor prodej LinkedIn, proveďte následující kroky:**
+**Pokud chcete přiřadit Britta Simon LinkedIn Sales Navigatoru, postupujte následovně:**
 
-1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
+1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **LinkedIn prodej Navigátor**.
+2. V seznamu aplikací vyberte **LinkedIn Sales Navigatoru**.
 
-    ![Konfigurovat jednotné přihlašování](./media/linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_app.png) 
+    ![Konfigurace jednotného přihlašování](./media/linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_app.png) 
 
 3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.
+4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
+5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
+6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
+7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="testing-single-sign-on"></a>Testování jednotné přihlašování
+### <a name="testing-single-sign-on"></a>Testování jednotného přihlašování
 
-V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
+V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Když kliknete na dlaždici LinkedIn prodej Navigátor na přístupovém panelu, přesměrovat na organizační stránku, kde je nutné zadat osobní podrobnosti o účtu LinkedIn. Ho propojí s vaším účtem obchodní LinkedIn svůj osobní účet. Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](../active-directory-saas-access-panel-introduction.md). 
+Když kliknete na dlaždici LinkedIn Sales Navigatoru na přístupovém panelu, by měl přesměrováni na organizační stránku, kde je nutné zadat podrobnosti o vašem osobním účtu LinkedIn. Odkazuje váš osobní účet s vaším účtem LinkedIn firmy. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](tutorial-list.md)
+* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

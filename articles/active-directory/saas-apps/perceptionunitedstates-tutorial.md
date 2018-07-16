@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s dojem Spojených států (Non-UltiPro) | Microsoft Docs'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a dojem USA (Non-UltiPro).
+title: 'Kurz: Integrace Azure Active Directory s vnímání Spojené státy (Non-UltiPro) | Dokumentace Microsoftu'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a dojem Spojené státy (Non-UltiPro).
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,181 +15,181 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: e4f0fe0399b1230a27460df1718223736176ff01
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: c027aa3d980d22e60c24db68aceb49fbef59d101
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36228216"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39046174"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-perception-united-states-non-ultipro"></a>Kurz: Azure Active Directory integrace s dojem Spojených států (Non-UltiPro)
+# <a name="tutorial-azure-active-directory-integration-with-perception-united-states-non-ultipro"></a>Kurz: Integrace Azure Active Directory s vnímání Spojené státy (Non-UltiPro)
 
-V tomto kurzu zjistěte, jak integrovat dojem USA (Non-UltiPro) s Azure Active Directory (Azure AD).
+V tomto kurzu se dozvíte, jak integrovat vnímání Spojené státy (Non-UltiPro) se službou Azure Active Directory (Azure AD).
 
-Integrace dojem USA (Non-UltiPro) s Azure AD poskytuje následující výhody:
+Integrace vnímání Spojené státy (Non-UltiPro) s Azure AD poskytuje následující výhody:
 
-- Můžete ovládat ve službě Azure AD, který má přístup k dojem Spojených států (Non-UltiPro).
-- Můžete povolit uživatelům, aby automaticky získat přihlášeného k dojem Spojených států (Non-UltiPro) (jednotné přihlášení) s jejich účty Azure AD.
-- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure.
+- Můžete řídit ve službě Azure AD, který má přístup k vnímání Spojené státy (Non-UltiPro).
+- Můžete povolit uživatelům, aby automaticky získat přihlášeného k vnímání Spojené státy (Non-UltiPro) (jednotné přihlašování) s jejich účty Azure AD.
+- Můžete spravovat své účty na jediném místě – na webu Azure portal.
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Ke konfiguraci integrace služby Azure AD s dojem Spojených států (Non-UltiPro), potřebujete následující položky:
+Konfigurace integrace Azure AD s vnímání Spojené státy (Non-UltiPro), potřebujete následující položky:
 
-- Předplatné služby Azure AD
-- Dojem USA (Non-UltiPro) jednotné přihlašování povolené předplatné
+- S předplatným služby Azure AD
+- Vnímání Spojené státy (Non-UltiPro) jednotného přihlašování povolená předplatného
 
 > [!NOTE]
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
 
-- Nepoužívejte provozním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verze Azure AD, můžete [získat zkušební verzi jeden měsíc](https://azure.microsoft.com/pricing/free-trial/).
+- Nepoužívejte produkčním prostředí, pokud to není nutné.
+- Pokud nemáte prostředí zkušební verzi Azure AD, můžete si [získat měsíční zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání dojem USA (Non-UltiPro) z Galerie
+1. Přidání vnímání Spojené státy (Non-UltiPro) z Galerie
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
-## <a name="adding-perception-united-states-non-ultipro-from-the-gallery"></a>Přidání dojem USA (Non-UltiPro) z Galerie
-Při konfiguraci integrace služby dojem Spojených států (Non-UltiPro) do služby Azure AD, musíte přidat dojem USA (Non-UltiPro) z Galerie váš seznam spravovaných aplikací SaaS.
+## <a name="adding-perception-united-states-non-ultipro-from-the-gallery"></a>Přidání vnímání Spojené státy (Non-UltiPro) z Galerie
+Konfigurace integrace nástroje vnímání Spojené státy (Non-UltiPro) do služby Azure AD, musíte přidat vnímání Spojené státy (Non-UltiPro) z Galerie na váš seznam spravovaných aplikací SaaS.
 
-**Pokud chcete přidat dojem USA (Non-UltiPro) z galerie, proveďte následující kroky:**
+**Chcete-li přidat vnímání Spojené státy (Non-UltiPro) z galerie, postupujte následovně:**
 
-1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
+1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![V okně podnikové aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Tlačítko nové aplikace][3]
 
-4. Do vyhledávacího pole zadejte **dojem USA (Non-UltiPro)**, vyberte **dojem USA (Non-UltiPro)** z panelu výsledků klikněte **přidat** tlačítko Přidat aplikaci.
+4. Do vyhledávacího pole zadejte **vnímání Spojené státy (Non-UltiPro)** vyberte **vnímání Spojené státy (Non-UltiPro)** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
-    ![Dojem Spojených států (Non-UltiPro) v seznamu výsledků](./media/perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_addfromgallery.png)
+    ![Vnímání Spojené státy (Non-UltiPro) v seznamu výsledků](./media/perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování Azure AD jednotné přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-V této části konfiguraci a testování Azure AD jednotné přihlašování s dojem USA (Non-UltiPro) podle testovacího uživatele názvem "Britta Simon".
+V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s vnímání Spojené státy (Non-UltiPro) na základě testovací uživatele nazývá "Britta Simon".
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v dojem Spojených států (Non-UltiPro) je pro uživatele ve službě Azure AD. Jinými slovy musí navázat vztah propojení mezi uživatele Azure AD a související uživatelské v dojem Spojených států (Non-UltiPro).
+Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšky v vnímání Spojené státy (Non-UltiPro) je pro uživatele ve službě Azure AD. Jinými slovy vztah odkazu mezi uživatele služby Azure AD a související uživatelské v vnímání Spojené státy (Non-UltiPro) musí být vytvořeno.
 
-V dojem USA (Non-UltiPro), přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** k navázání vztahu odkazu.
+V vnímání Spojené státy (Non-UltiPro), přiřaďte hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** a tím vytvoří vztah odkazu.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s dojem Spojených států (Non-UltiPro), je třeba dokončit následující stavební bloky:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s vnímání Spojené státy (Non-UltiPro), které potřebujete k dokončení následujících stavebních bloků:
 
-1. **[Konfigurovat Azure AD jednotné přihlašování](#configure-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
-2. **[Vytvořit testovací uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele dojem USA (Non-UltiPro)](#create-a-perception-united-states-non-ultipro-test-user)**  – Pokud chcete mít protějšek Britta Simon v dojem Spojené státy americké (Non-UltiPro), je propojený s Azure AD reprezentace daného uživatele.
-4. **[Přiřadit testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. **[Test jednotného přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
+1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+2. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytvoření zkušebního uživatele vnímání Spojené státy (Non-UltiPro)](#create-a-perception-united-states-non-ultipro-test-user)**  – Pokud chcete mít protějšek Britta Simon v vnímání Spojené státy (Non-UltiPro), který je propojený s Azure AD reprezentace uživatele.
+4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurovat Azure AD jednotné přihlašování
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci dojem USA (Non-UltiPro).
+V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování v aplikaci vnímání Spojené státy (Non-UltiPro).
 
-**Pokud chcete konfigurovat Azure AD jednotné přihlašování s dojem Spojených států (Non-UltiPro), proveďte následující kroky:**
+**Ke konfiguraci Azure AD jednotné přihlašování s vnímání Spojené státy (Non-UltiPro), proveďte následující kroky:**
 
-1. Na portálu Azure na **dojem USA (Non-UltiPro)** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. Na webu Azure Portal na **vnímání Spojené státy (Non-UltiPro)** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
 
-    ![Konfigurace propojení přihlášení][4]
+    ![Nakonfigurovat jednotné přihlašování – odkaz][4]
 
-2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
+2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
-    ![Jediné přihlášení dialogové okno](./media/perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_samlbase.png)
+    ![Jednotné přihlašování – dialogové okno](./media/perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_samlbase.png)
 
-3. Na **doméně dojem USA (Non-UltiPro) a adresy URL** část, proveďte následující kroky:
+3. Na **vnímání Spojené státy (Non-UltiPro) domény a adresy URL** části, proveďte následující kroky:
 
-    ![Dojem USA (Non-UltiPro) domény a adresy URL jednotné přihlašování informace](./media/perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_url.png)
+    ![Vnímání Spojené státy (Non-UltiPro) domény a adresy URL jednotného přihlašování – informace](./media/perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_url.png)
 
-    a. V **identifikátor** textovému poli, zadejte adresu URL: `https://perception.kanjoya.com/sp`
+    a. V **identifikátor** textového pole zadejte adresu URL: `https://perception.kanjoya.com/sp`
 
-    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://perception.kanjoya.com/sso?idp=<entity_id>`
+    b. V **adresy URL odpovědi** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://perception.kanjoya.com/sso?idp=<entity_id>`
 
     > [!NOTE] 
-    > Hodnota není skutečné. Hodnota bude aktualizován skutečná adresa URL odpovědi, který je vysvětlen později v tomto kurzu.
+    > Hodnota není skutečný. Skutečná adresa URL odpovědi, který je vysvětlen později v tomto kurzu jste se aktualizuje hodnotu.
  
-4. Na **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat ve vašem počítači.
+4. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor metadat ve vašem počítači.
 
     ![Odkaz ke stažení certifikátu](./media/perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_certificate.png) 
 
 5. Klikněte na tlačítko **Uložit** tlačítko.
 
-    ![Nakonfigurujte jeden přihlašování uložit tlačítko](./media/perceptionunitedstates-tutorial/tutorial_general_400.png)
+    ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/perceptionunitedstates-tutorial/tutorial_general_400.png)
 
-6. Na **konfigurace dojem USA (Non-UltiPro)** klikněte na tlačítko **konfigurace dojem Spojených států (Non-UltiPro)** otevřete **konfigurovat přihlášení** okno. Kopírování **SAML Entity ID** z **Stručná referenční příručka části.**
+6. Na **vnímání Spojené státy (Non-UltiPro) konfigurace** klikněte na tlačítko **konfigurace vnímání Spojené státy (Non-UltiPro)** otevřete **nakonfigurovat přihlašování** okna . Kopírovat **SAML Entity ID** z **Stručná referenční příručka oddílu.**
 
-    a. **Dojem USA (Non-UltiPro)** aplikace vyžaduje **SAML Entity ID** hodnotu, kterou jste zkopírovali, být kódovaný identifikátor uri. Hodnota identifikátoru uri kódování, použijte následující odkaz:**http://www.url-encode-decode.com/**.
+    a. **Vnímání Spojené státy (Non-UltiPro)** aplikace vyžaduje **SAML Entity ID** hodnotu, kterou jste zkopírovali, aby zakódovat do identifikátoru uri. K získání hodnoty zakódovat do identifikátoru uri, pomocí následujícího odkazu:**http://www.url-encode-decode.com/**.
 
-    b. Po získání identifikátor uri ho s spojovat šifrovanou hodnotu **adresa URL odpovědi** jak je uvedeno níže -
+    b. Po získání identifikátoru uri kódovanou hodnotu kombinaci se službou **adresy URL odpovědi** jak je uvedeno níže –
 
     `https://perception.kanjoya.com/sso?idp=<URI encooded entity_id>`
     
-    c. Vložte hodnotu uvedenou výše v **adresa URL odpovědi** textového pole v **doméně dojem USA (Non-UltiPro) a adresy URL** části.
+    c. Vložte hodnotu uvedenou výše v **adresy URL odpovědi** textového pole v **vnímání Spojené státy (Non-UltiPro) domény a adresy URL** oddílu.
 
-    ![Konfigurace dojem USA (bez UltiPro)](./media/perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_configure.png) 
+    ![Konfigurace vnímání Spojené státy (bez UltiPro)](./media/perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_configure.png) 
 
-7. V jiném okně prohlížeče Přihlaste se k serveru vaší společnosti dojem USA (Non-UltiPro) jako správce.
+7. V jiném okně prohlížeče Přihlaste se k webu společnosti vnímání Spojené státy (Non-UltiPro) jako správce.
 
 8. Na hlavním panelu nástrojů klikněte na tlačítko **nastavení účtu**.
 
-    ![Dojem uživatele USA (Non-UltiPro)](./media/perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_user.png)
+    ![Uživatel vnímání Spojené státy (Non-UltiPro)](./media/perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_user.png)
 
-9. Na **nastavení účtu** proveďte následující kroky:
+9. Na **nastavení účtu** stránce, proveďte následující kroky:
 
-    ![Dojem uživatele USA (Non-UltiPro)](./media/perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_account.png)
+    ![Uživatel vnímání Spojené státy (Non-UltiPro)](./media/perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_account.png)
 
-    a. V **název společnosti** textovému poli, zadejte název **společnosti**.
+    a. V **název společnosti** textového pole zadejte název **společnosti**.
     
-    b. V **název účtu** textovému poli, zadejte název **účet**.
+    b. V **název účtu** textového pole zadejte název **účet**.
 
-    c. V **výchozí odpověď pro e-mailu** text zadejte platném **e-mailu**.
+    c. V **výchozí odpověď na E-mail** text zadejte platnými **e-mailu**.
 
-    d. Vyberte **zprostředkovatele Identity jednotného přihlašování k** jako **SAML 2.0**.
+    d. Vyberte **zprostředkovatele Identity jednotného přihlašování** jako **SAML 2.0**.
 
-10. Na **Konfigurace jednotného přihlašování k** proveďte následující kroky:
+10. Na **Konfigurace jednotného přihlašování** stránce, proveďte následující kroky:
 
-    ![SSOConfig dojem USA (bez UltiPro)](./media/perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_ssoconfig.png)
+    ![Spojené státy (bez UltiPro) SSOConfig vnímání](./media/perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_ssoconfig.png)
 
     a. Vyberte **SAML NameID typ** jako **e-MAILU**.
 
-    b. V **název konfigurace jednotného přihlašování k** textovému poli, zadejte název vaší **konfigurace**.
+    b. V **název konfigurace jednotného přihlašování** textového pole zadejte název vaší **konfigurace**.
     
-    c. V **název zprostředkovatele Identity** textovému poli, vložte hodnotu **SAML Entity ID**, který jste zkopírovali z portálu Azure. 
+    c. V **název zprostředkovatele identit** textového pole vložte hodnotu **SAML Entity ID**, který jste zkopírovali z portálu Azure portal. 
 
-    d. V **SAML domény textbox**, zadejte doménu jako **@contoso.com**.
+    d. V **pole pro doménu SAML**, zadejte doménu, jako je **@contoso.com**.
 
-    e. Klikněte na **nahrát znovu** nahrát **soubor XML s metadaty** souboru.
+    e. Klikněte na **nahrát znovu** k nahrání **soubor XML s metadaty** souboru.
 
-    f. Klikněte na tlačítko **aktualizace**.
+    f. Při navazování připojení k serveru SQL Server došlo k chybě související se sítí nebo s instancí.
 
 
 > [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovací uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
-Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
+Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-   ![Vytvořit testovací uživatele Azure AD][100]
+   ![Vytvořit testovacího uživatele Azure AD][100]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
 
-1. Na portálu Azure, v levém podokně klikněte **Azure Active Directory** tlačítko.
+1. Na webu Azure Portal, v levém podokně klikněte na tlačítko **Azure Active Directory** tlačítko.
 
     ![Tlačítko Azure Active Directory](./media/perceptionunitedstates-tutorial/create_aaduser_01.png)
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na **všichni uživatelé**.
+2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
 
-    !["Uživatelé a skupiny" a "Všichni uživatelé" odkazy](./media/perceptionunitedstates-tutorial/create_aaduser_02.png)
+    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](./media/perceptionunitedstates-tutorial/create_aaduser_02.png)
 
 3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
 
@@ -203,54 +203,54 @@ Cílem této části je vytvoření zkušebního uživatele na portálu Azure, n
 
     b. V **uživatelské jméno** zadejte e-mailovou adresu uživatele Britta Simon.
 
-    c. Vyberte **zobrazit hesla** zaškrtněte políčko a zapište si ji hodnotu, která se zobrazí v **heslo** pole.
+    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
 
     d. Klikněte na možnost **Vytvořit**.
   
-### <a name="create-a-perception-united-states-non-ultipro-test-user"></a>Vytvoření zkušebního uživatele dojem USA (Non-UltiPro)
+### <a name="create-a-perception-united-states-non-ultipro-test-user"></a>Vytvoření zkušebního uživatele vnímání Spojené státy (Non-UltiPro)
 
-V této části vytvoříte uživatele volat Britta Simon v dojem Spojených států (Non-UltiPro). Práce s [tým podpory dojem USA (Non-UltiPro)](http://www.ultimatesoftware.com/Contact/ContactUs) přidat uživatele do platformy dojem USA (Non-UltiPro).
+V této části vytvoříte uživateli Britta Simon v vnímání Spojené státy (Non-UltiPro). Práce s [tým podpory vnímání Spojené státy (Non-UltiPro)](http://www.ultimatesoftware.com/Contact/ContactUs) přidat uživatele na platformě vnímání Spojené státy (Non-UltiPro).
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit testovacího uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-V této části povolíte Britta Simon chcete použít Azure jednotného přihlašování k udělení přístupu k dojem Spojených států (Non-UltiPro).
+V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k vnímání Spojené státy (Non-UltiPro).
 
-![Přiřadit role uživatele][200] 
+![Přiřazení role uživatele][200] 
 
-**Pokud chcete přiřadit Britta Simon k dojem Spojených států (Non-UltiPro), proveďte následující kroky:**
+**Pokud chcete přiřadit Britta Simon na vnímání Spojené státy (Non-UltiPro), postupujte následovně:**
 
-1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
+1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **dojem USA (Non-UltiPro)**.
+2. V seznamu aplikací vyberte **vnímání Spojené státy (Non-UltiPro)**.
 
-    ![V seznamu aplikací na odkaz dojem USA (Non-UltiPro)](./media/perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_app.png)  
+    ![Odkaz vnímání Spojené státy (Non-UltiPro) v seznamu aplikací](./media/perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_app.png)  
 
 3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
-    ![Odkaz "Uživatelé a skupiny"][202]
+    ![Odkaz "Uživatele a skupiny"][202]
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.
+4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
-    ![V podokně Přidat přiřazení][203]
+    ![Podokno Přidat přiřazení][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
+5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
+6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
+7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
 ### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
-V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
+V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Když kliknete na dlaždici dojem USA (Non-UltiPro) na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci dojem USA (Non-UltiPro).
-Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](../active-directory-saas-access-panel-introduction.md). 
+Po kliknutí na dlaždici vnímání Spojené státy (Non-UltiPro) na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci vnímání Spojené státy (Non-UltiPro).
+Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](tutorial-list.md)
+* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

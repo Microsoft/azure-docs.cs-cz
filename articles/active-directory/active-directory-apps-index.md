@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 76430fa5652e98cba86c41433f376e27dbb1639a
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 5c6a4ac68694c74f9a7ed99a2d7b4939b84dc33f
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446856"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054875"
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>Rejstřík článků o správě aplikací ve službě Azure Active Directory
 Tato stránka obsahuje úplný seznam všech dokumentech zapisovat o různé funkce související s aplikací v Azure Active Directory (Azure AD).
@@ -112,7 +112,7 @@ Jakmile nastavíte jednotné přihlašování k aplikacím a prostředkům, mů�
 | Jak povolit podmíněný přístup pro následující typy prostředků |[Podmíněný přístup pro aplikace SaaS](active-directory-conditional-access-azure-portal-get-started.md)<br /><br />[Podmíněný přístup pro služby Office 365](active-directory-conditional-access-device-policies.md)<br /><br />[Podmíněný přístup pro místní aplikace](active-directory-conditional-access-azure-portal.md)<br /><br />[Podmíněný přístup pro místní aplikace publikované prostřednictvím Proxy aplikací Azure AD](manage-apps/application-proxy-integrate-with-sharepoint-server.md) |
 | Postup při registraci zařízení s Azure Active Directory, chcete-li povolit zásady podmíněného přístupu podle zařízení |[Přehled služby Azure Active Directory Device Registration](active-directory-conditional-access-device-registration-overview.md)<br /><br />[Zařízení s Windows připojená k povolení automatické registrace zařízení pro doménu](active-directory-conditional-access-automatic-device-registration.md)<br />– [Zařízení kroky pro Windows 8.1](active-directory-conditional-access-automatic-device-registration-setup.md)<br />– [Zařízení kroky pro Windows 7](active-directory-conditional-access-automatic-device-registration-setup.md) |
 
-| Použití aplikace Microsoft Authenticator pro dvoustupňové ověřování. | [Microsoft Authenticator](authentication/end-user/current/microsoft-authenticator-app-how-to.md) |
+| Použití aplikace Microsoft Authenticator pro dvoustupňové ověřování. | [Microsoft Authenticator](user-help/microsoft-authenticator-app-how-to.md) |
 
 Je podmíněný přístup [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) funkce.
 
@@ -180,7 +180,7 @@ Panel přístupu Azure AD je, kde můžou koncoví uživatelé spouštění svý
 | Průvodce článku |  |
 |:---:| --- |
 | Porovnání různých možností dostupných pro nasazování aplikací jednotné přihlašování pro uživatele |[Nasazení služby Azure AD integrovaných aplikací pro uživatele](manage-apps/what-is-single-sign-on.md#deploying-azure-ad-integrated-applications-to-users) |
-| Přehled na přístupovém panelu a jeho mobilní ekvivalentní MyApps |[Úvod do přístupového panelu a MyApps](active-directory-saas-access-panel-introduction.md)<br />— [iOS](https://itunes.apple.com/us/app/my-apps-azure-active-directory/id824048653?mt=8)<br />– [s androidem](https://play.google.com/store/apps/details?id=com.microsoft.myapps) |
+| Přehled na přístupovém panelu a jeho mobilní ekvivalentní MyApps |[Úvod do přístupového panelu a MyApps](user-help/active-directory-saas-access-panel-introduction.md)<br />— [iOS](https://itunes.apple.com/us/app/my-apps-azure-active-directory/id824048653?mt=8)<br />– [s androidem](https://play.google.com/store/apps/details?id=com.microsoft.myapps) |
 | Jak získat přístup k aplikacím Azure AD na webu Office 365 |[Pomocí Spouštěč aplikací Office 365](https://support.office.com/en-us/article/Meet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a) |
 | Jak získat přístup k aplikacím Azure AD z mobilní aplikace Intune Managed Browser |[Intune Managed Browser](https://technet.microsoft.com/library/dn878029.aspx)<br />— [iOS](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8)<br />– [s androidem](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser) |
 | Jak získat přístup k Azure AD aplikace s využitím přímé odkazy pro zahájení jednotného přihlašování |[Získat přímé odkazy přihlašování k aplikacím](manage-apps/what-is-single-sign-on.md#direct-sign-on-links-for-federated-password-based-or-existing-apps) |

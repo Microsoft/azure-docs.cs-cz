@@ -11,37 +11,42 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/10/2018
+ms.date: 07/13/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: b06f53b0169e3afd140be81d9d633844a5876c09
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: f53b1e08da1cb2d0dc02381bf47c27e8f84cb1d0
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38487643"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044828"
 ---
 # <a name="deploy-the-sql-server-resource-provider-on-azure-stack"></a>Nasazení poskytovatele prostředků SQL serveru ve službě Azure Stack
-
 Používání poskytovatele prostředků Azure Stack SQL serveru k vystavení databáze SQL jako služba Azure Stack. Poskytovatele prostředků SQL běží jako služba na virtuálním počítači (VM) systému Windows Server 2016 Server Core.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Existuje několik předpokladů, které musí být splněné před nasazením poskytovatele prostředků Azure Stack SQL. Budou odpovídat vašim požadavkům, proveďte následující kroky na počítači s přístupem k privilegovaným koncového bodu virtuálního počítače:
 
-- Pokud jste tak již neučinili, [registrace Azure Stack](.\azure-stack-registration.md) s Azure, takže si můžete stáhnout položky Azure marketplace.
-- Je nutné nainstalovat moduly Azure a Azure Stack Powershellu v systému Jestliže spustíte instalaci. Tento systém musí být bitovou kopii systému Windows 10 nebo Windows Server 2016 s nejnovější verzí modulu .NET runtime. Zobrazit [instalace Powershellu pro Azure Stack](.\azure-stack-powershell-install.md).
+- Pokud jste tak již neučinili, [registrace Azure Stack](azure-stack-registration.md) s Azure, takže si můžete stáhnout položky Azure marketplace.
+- Je nutné nainstalovat moduly Azure a Azure Stack Powershellu v systému, kde budete spouštět tuto instalaci. Tento systém musí být bitovou kopii systému Windows 10 nebo Windows Server 2016 s nejnovější verzí modulu .NET runtime. Zobrazit [instalace Powershellu pro Azure Stack](.\azure-stack-powershell-install.md).
 - Přidejte požadované jádra serveru systému Windows virtuální počítač na webu Marketplace služby Azure Stack stažením **systému Windows Server 2016 Datacenter - jádra serveru** bitové kopie. 
-
-  >[!NOTE]
-  >Pokud je potřeba nainstalovat aktualizace, můžete umístit jeden balíček MSU v cestě místní závislosti. Pokud je nalezen více než jeden soubor MSU, se nezdaří instalace poskytovatele prostředků SQL.
-
-- Stáhnout poskytovatele prostředků SQL binární a pak spusťte Self-Extractor extrahujte obsah do dočasného adresáře. Poskytovatel prostředků má minimální odpovídající Azure Stack sestavení. Ujistěte se, stáhněte si správnou binární soubor pro verzi služby Azure Stack, který používáte.
+- Stáhnout poskytovatele prostředků SQL binární a pak spusťte Self-Extractor extrahujte obsah do dočasného adresáře. Poskytovatel prostředků má minimální odpovídající Azure Stack sestavení. Ujistěte se, stáhněte si správnou binární soubor pro verzi služby Azure Stack, kterou používáte:
 
     |Verze služby Azure Stack|Verze poskytovatele prostředků SQL|
     |-----|-----|
     |Verzi 1804 (1.0.180513.1)|[SQL RP verze 1.1.24.0](https://aka.ms/azurestacksqlrp1804)
     |Verzi 1802 (1.0.180302.1)|[SQL RP verze 1.1.18.0](https://aka.ms/azurestacksqlrp1802)|
+    |     |     |
+
+- Ujistěte se, že jsou splněné požadavky na integraci datacenter:
+
+    |Požadavek|Referenční informace|
+    |-----|-----|
+    |Podmíněné předávání DNS je nastavena správně.|[Integrace datových center Azure Stack – DNS](azure-stack-integrate-dns.md)|
+    |Jsou otevřené příchozí porty pro poskytovatele prostředků.|[Azure Stack – integrace datových center – publikování koncových bodů](azure-stack-integrate-endpoints.md#ports-and-protocols-inbound)|
+    |Subjekt certifikátu PKI a po síti SAN jsou správně nastavené.|[Požadavky nasazení Azure Stack povinné infrastruktury veřejných KLÍČŮ](azure-stack-pki-certs.md#mandatory-certificates)<br>[Požadavky nasazení certifikátu PaaS Azure Stack](azure-stack-pki-certs.md#optional-paas-certificates)|
+    |     |     |
 
 ### <a name="certificates"></a>Certifikáty
 
@@ -51,7 +56,7 @@ _Pro integrované systémy instalace pouze_. Je nutné zadat certifikát SQL Paa
 
 Jakmile máte nainstalovány požadované součásti, spusťte **DeploySqlProvider.ps1** skriptu pro nasazení poskytovatele prostředků SQL. Jako součást binární poskytovatele prostředků SQL, který jste stáhli pro vaši verzi sady Azure Stack je extrahován DeploySqlProvider.ps1 skriptu.
 
-Chcete-li nasazení poskytovatele prostředků SQL, otevřete **nové** okně konzoly Powershellu se zvýšenými oprávněními a přejděte do adresáře, které jste extrahovali binární soubory poskytovatele prostředků SQL. Doporučujeme použít nové okno prostředí PowerShell, aby potenciální potíže způsobené aktivitami moduly Powershellu, které jsou už načteny.
+Chcete-li nasazení poskytovatele prostředků SQL, otevřete **nové** se zvýšenými oprávněními okno prostředí PowerShell (není prostředí PowerShell ISE) a změn do adresáře, které jste extrahovali binární soubory poskytovatele prostředků SQL. Doporučujeme použít nové okno prostředí PowerShell, aby potenciální potíže způsobené aktivitami moduly Powershellu, které jsou už načteny.
 
 Spusťte skript DeploySqlProvider.ps1, který dokončí následující úkoly:
 
@@ -60,8 +65,7 @@ Spusťte skript DeploySqlProvider.ps1, který dokončí následující úkoly:
 - Publikuje balíček Galerie pro nasazení hostitelských serverů.
 - Nasadí virtuální počítač pomocí základní image Windows serveru 2016 jste stáhli a poté nainstaluje poskytovatele prostředků SQL.
 - Zaregistruje místní záznam DNS, který se mapuje na zprostředkovateli prostředků virtuálního počítače.
-- Zaregistruje poskytovatele prostředků s místní Azure Resource Manageru pro operátor a k uživatelským účtům.
-- V případě potřeby nainstaluje jednu aktualizaci Windows Server během instalace zprostředkovatele prostředků.
+- Zaregistruje poskytovatele prostředků s místní Azure Resource Manageru pro účet operátor.
 
 > [!NOTE]
 > Při spuštění nasazení poskytovatele prostředků SQL, **system.local.sqladapter** se vytvoří skupina prostředků. Může trvat až 75 minut na dokončení požadovaných nasazení do této skupiny prostředků.

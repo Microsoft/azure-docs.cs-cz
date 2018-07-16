@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s Kantega jednotné přihlašování pro bambus | Microsoft Docs'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Kantega jednotné přihlašování pro bambus.
+title: 'Kurz: Integrace Azure Active Directory s jednotným Přihlašováním Kantega pro bambus | Dokumentace Microsoftu'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a jednotné přihlašování Kantega pro bambus.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,311 +14,311 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 01b07529765a7fe68a30cfae754829fe8dbd6264
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: ab3b38a053cf9695b6c09c7b0d86f068bfb3895c
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37110268"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39052216"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-bamboo"></a>Kurz: Azure Active Directory integrace s Kantega jednotné přihlašování pro bambus
+# <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-bamboo"></a>Kurz: Integrace Azure Active Directory s jednotným Přihlašováním Kantega pro bambus
 
-V tomto kurzu zjistěte, jak integrovat Kantega jednotné přihlašování pro bambus s Azure Active Directory (Azure AD).
+V tomto kurzu se dozvíte, jak integrovat Kantega jednotné přihlašování pro bambus s Azure Active Directory (Azure AD).
 
 Integrace Kantega jednotné přihlašování pro bambus s Azure AD poskytuje následující výhody:
 
-- Můžete řídit ve službě Azure AD, kdo má přístup k Kantega jednotné přihlašování pro bambus
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k Kantega jednotné přihlašování pro bambus (jednotné přihlášení) s jejich účty Azure AD
-- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
+- Můžete řídit ve službě Azure AD, který má přístup k Kantega jednotného přihlašování pro bambus
+- Uživatele, aby automaticky získat přihlášení k Kantega jednotné přihlašování pro bambus (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD
+- Můžete spravovat své účty na jediném místě – na webu Azure portal
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Ke konfiguraci integrace služby Azure AD pomocí jednotného přihlašování Kantega pro bambus, potřebujete následující položky:
+Konfigurace integrace Azure AD s jednotným Přihlašováním Kantega pro bambus, potřebujete následující položky:
 
-- Předplatné služby Azure AD
-- Předplatné povolené Kantega SSO pro bambus jednotné přihlašování
+- S předplatným služby Azure AD
+- Kantega SSO pro bambus jednotného přihlašování povolená předplatného
 
 > [!NOTE]
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
 
-- Nepoužívejte provozním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební verze jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).
+- Nepoužívejte produkčním prostředí, pokud to není nutné.
+- Pokud nemáte prostředí zkušební verzi Azure AD, můžete získat měsíční zkušební [tady](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání Kantega jednotné přihlašování pro bambus z Galerie
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
 ## <a name="adding-kantega-sso-for-bamboo-from-the-gallery"></a>Přidání Kantega jednotné přihlašování pro bambus z Galerie
-Při konfiguraci integrace Kantega přihlašování pro bambus do služby Azure AD, potřebujete přidat Kantega jednotné přihlašování pro bambus z Galerie si na seznam spravovaných aplikací SaaS.
+Konfigurace integrace Kantega jednotné přihlašování pro bambus do služby Azure AD, budete muset přidat Kantega jednotné přihlašování pro bambus z Galerie na váš seznam spravovaných aplikací SaaS.
 
-**Pokud chcete přidat Kantega jednotné přihlašování pro bambus z galerie, proveďte následující kroky:**
+**Chcete-li přidat Kantega jednotné přihlašování pro bambus z galerie, postupujte následovně:**
 
-1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
+1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![Aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Aplikace][3]
 
 4. Do vyhledávacího pole zadejte **Kantega jednotné přihlašování pro bambus**.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/kantegassoforbamboo-tutorial/tutorial_kantegassoforbamboo_search.png)
+    ![Vytváří se testovací uživatele služby Azure AD](./media/kantegassoforbamboo-tutorial/tutorial_kantegassoforbamboo_search.png)
 
-5. Na panelu výsledků vyberte **Kantega jednotné přihlašování pro bambus**a potom klikněte na **přidat** tlačítko Přidat aplikaci.
+5. Na panelu výsledků vyberte **Kantega jednotné přihlašování pro bambus**a potom klikněte na tlačítko **přidat** tlačítko pro přidání aplikace.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/kantegassoforbamboo-tutorial/tutorial_kantegassoforbamboo_addfromgallery.png)
+    ![Vytváří se testovací uživatele služby Azure AD](./media/kantegassoforbamboo-tutorial/tutorial_kantegassoforbamboo_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
-V této části konfiguraci a testování Azure AD jednotné přihlašování pomocí jednotného přihlašování Kantega pro bambus podle testovacího uživatele názvem "Britta Simon".
+V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s jednotným Přihlašováním Kantega pro bambus podle testovacího uživatele nazývá "Britta Simon".
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějšku Kantega SSO pro bambus je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské Kantega SSO pro bambus musí navázat.
+Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšky v Kantega jednotné přihlašování pro bambus je pro uživatele ve službě Azure AD. Jinými slovy vztah odkazu mezi uživatele služby Azure AD a související uživatelské v Kantega jednotné přihlašování pro bambus musí být vytvořeno.
 
-V Kantega jednotné přihlašování pro bambus, přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** k navázání vztahu odkazu.
+V Kantega jednotného přihlašování pro bambus, přiřaďte hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** a tím vytvoří vztah odkazu.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování pomocí jednotného přihlašování Kantega pro bambus, je třeba dokončit následující stavební bloky:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s jednotným Přihlašováním Kantega pro bambus, které potřebujete k dokončení následujících stavebních bloků:
 
-1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
-2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytváření Kantega SSO pro testovací uživatele bambus](#creating-a-kantega-sso-for-bamboo-test-user)**  – Pokud chcete mít protějšek Britta Simon Kantega SSO pro bambus propojeném s Azure AD reprezentace daného uživatele.
-4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
+1. **[Konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+2. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytváření Kantega SSO pro testovacího uživatele bambus](#creating-a-kantega-sso-for-bamboo-test-user)**  – Pokud chcete mít protějšek Britta Simon Kantega jednotné přihlašování pro bambus, který je propojený s Azure AD reprezentace uživatele.
+4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace Azure AD jednotné přihlašování
+### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v vaší Kantega jednotné přihlašování pro aplikace bambus.
+V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování ve vašich Kantega jednotného přihlašování pro aplikaci bambus.
 
-**Ke konfiguraci Azure AD jednotné přihlašování pomocí jednotného přihlašování Kantega pro bambus, proveďte následující kroky:**
+**Ke konfiguraci Azure AD jednotné přihlašování s jednotným Přihlašováním Kantega pro bambus, proveďte následující kroky:**
 
-1. Na portálu Azure na **Kantega jednotné přihlašování pro bambus** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. Na webu Azure Portal na **Kantega jednotné přihlašování pro bambus** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
 
-    ![Konfigurovat jednotné přihlašování][4]
+    ![Konfigurace jednotného přihlašování][4]
 
-2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
+2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
-    ![Konfigurovat jednotné přihlašování](./media/kantegassoforbamboo-tutorial/tutorial_kantegassoforbamboo_samlbase.png)
+    ![Konfigurace jednotného přihlašování](./media/kantegassoforbamboo-tutorial/tutorial_kantegassoforbamboo_samlbase.png)
 
-3. V **IDP** spustil v režimu **Kantega SSO bambus domény a adresy URL** části provést následující krok:
+3. V **IDP** inicializovat v režimu **Kantega jednotné přihlašování pro bambus domény a adresy URL** části provést následující krok:
 
-    ![Konfigurovat jednotné přihlašování](./media/kantegassoforbamboo-tutorial/tutorial_kantegassoforbamboo_url1.png)
+    ![Konfigurace jednotného přihlašování](./media/kantegassoforbamboo-tutorial/tutorial_kantegassoforbamboo_url1.png)
     
-    a. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
+    a. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
-    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
+    b. V **adresy URL odpovědi** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
-4. V **SP** initiated režimu, zkontrolujte **zobrazit upřesňující nastavení adresy URL** a provést následující krok:
+4. V **SP** iniciované režimu, kontrola **zobrazit pokročilé nastavení URL** a postupujte následovně:
 
-    ![Konfigurovat jednotné přihlašování](./media/kantegassoforbamboo-tutorial/tutorial_kantegassoforbamboo_url2.png)
+    ![Konfigurace jednotného přihlašování](./media/kantegassoforbamboo-tutorial/tutorial_kantegassoforbamboo_url2.png)
     
-    V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
+    V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
      
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte se skutečným identifikátorem, adresa URL odpovědi a přihlašovací adresa URL. Tyto hodnoty jsou přijímány během konfigurace bambus modul plug-in, který je vysvětlen později v tomto kurzu.
+    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte skutečné identifikátor, adresa URL odpovědi a přihlašovací adresa URL. Tyto hodnoty jsou přijímány během konfigurace bambus modulu plug-in, který je vysvětlen později v tomto kurzu.
 
-5. Na **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat ve vašem počítači.
+5. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor metadat ve vašem počítači.
 
-    ![Konfigurovat jednotné přihlašování](./media/kantegassoforbamboo-tutorial/tutorial_kantegassoforbamboo_certificate.png) 
+    ![Konfigurace jednotného přihlašování](./media/kantegassoforbamboo-tutorial/tutorial_kantegassoforbamboo_certificate.png) 
 
 6. Klikněte na tlačítko **Uložit** tlačítko.
 
-    ![Konfigurovat jednotné přihlašování](./media/kantegassoforbamboo-tutorial/tutorial_general_400.png)
+    ![Konfigurace jednotného přihlašování](./media/kantegassoforbamboo-tutorial/tutorial_general_400.png)
     
-7. V okně prohlížeče jiný web Přihlaste se na místní server bambus jako správce.
+7. V okně jiné webové prohlížeče Přihlaste se k vaší bambus na místním serveru jako správce.
 
-8. Pozastavte ukazatel myši na ikonu a klikněte na **doplňky**.
+8. Najeďte myší na ikonu a klikněte na tlačítko **doplňky**.
 
-    ![Konfigurovat jednotné přihlašování](./media/kantegassoforbamboo-tutorial/addon1.png)
+    ![Konfigurace jednotného přihlašování](./media/kantegassoforbamboo-tutorial/addon1.png)
 
-9. Karta části doplňky, klikněte na tlačítko **najít nové rozšíření**. Hledání **Kantega jednotné přihlašování pro bambus (SAML & protokolu Kerberos)** a klikněte na tlačítko **nainstalovat** tlačítko k instalaci nové zásuvný modul SAML.
+9. Karta části doplňků, klikněte na tlačítko **najít nové doplňky**. Hledání **Kantega jednotné přihlašování pro bambus (SAML & Kerberos)** a klikněte na tlačítko **nainstalovat** tlačítko k instalaci nové zásuvný modul SAML.
 
-    ![Konfigurovat jednotné přihlašování](./media/kantegassoforbamboo-tutorial/addon2.png)
+    ![Konfigurace jednotného přihlašování](./media/kantegassoforbamboo-tutorial/addon2.png)
 
 10. Spustí se instalace modulu plug-in.
 
-    ![Konfigurovat jednotné přihlašování](./media/kantegassoforbamboo-tutorial/addon21.png)
+    ![Konfigurace jednotného přihlašování](./media/kantegassoforbamboo-tutorial/addon21.png)
 
 11. Po dokončení instalace. Klikněte na **Zavřít**.
 
-    ![Konfigurovat jednotné přihlašování](./media/kantegassoforbamboo-tutorial/addon33.png)
+    ![Konfigurace jednotného přihlašování](./media/kantegassoforbamboo-tutorial/addon33.png)
 
 12. Klikněte na **Manage** (Spravovat).
 
-    ![Konfigurovat jednotné přihlašování](./media/kantegassoforbamboo-tutorial/addon34.png)
+    ![Konfigurace jednotného přihlašování](./media/kantegassoforbamboo-tutorial/addon34.png)
     
-13. Klikněte na tlačítko **konfigurace** konfigurace nového modulu plug-in.    
+13. Klikněte na tlačítko **konfigurovat** konfigurace nového modulu plug-in.    
 
-    ![Konfigurovat jednotné přihlašování](./media/kantegassoforbamboo-tutorial/addon3.png)
+    ![Konfigurace jednotného přihlašování](./media/kantegassoforbamboo-tutorial/addon3.png)
 
-14. V **SAML** části. Vyberte **Azure Active Directory (Azure AD)** z **zprostředkovatele identity přidat** rozevíracího seznamu.
+14. V **SAML** oddílu. Vyberte **Azure Active Directory (Azure AD)** z **přidat zprostředkovatele identity** rozevíracího seznamu.
 
-    ![Konfigurovat jednotné přihlašování](./media/kantegassoforbamboo-tutorial/addon4.png)
+    ![Konfigurace jednotného přihlašování](./media/kantegassoforbamboo-tutorial/addon4.png)
 
-15. Vyberte úroveň předplatné jako **základní**.
+15. Vyberte úroveň předplatného jako **základní**.
 
-    ![Konfigurovat jednotné přihlašování](./media/kantegassoforbamboo-tutorial/addon5.png)
+    ![Konfigurace jednotného přihlašování](./media/kantegassoforbamboo-tutorial/addon5.png)
 
-16. Na **vlastností aplikace** část, proveďte následující kroky:
+16. Na **vlastnosti aplikace** části, proveďte následující kroky:
 
-    ![Konfigurovat jednotné přihlašování](./media/kantegassoforbamboo-tutorial/addon6.png)
+    ![Konfigurace jednotného přihlašování](./media/kantegassoforbamboo-tutorial/addon6.png)
 
-    a. Kopírování **identifikátor ID URI aplikace** hodnotu a použít ho jako **identifikátor, adresa URL odpovědi a přihlašovací adresa URL** na **Kantega SSO bambus domény a adresy URL** části na portálu Azure.
-
-    b. Klikněte na **Další**.
-
-17. Na **import metadat** část, proveďte následující kroky:
-
-    ![Konfigurovat jednotné přihlašování](./media/kantegassoforbamboo-tutorial/addon7.png)
-
-    a. Vyberte **soubor metadat v mém počítači**a metadata souboru k odeslání, který jste si stáhli z portálu Azure.
+    a. Kopírovat **identifikátor ID URI aplikace** hodnoty a použít ho jako **identifikátor, adresa URL odpovědi a přihlašovací adresa URL** na **Kantega jednotné přihlašování pro bambus domény a adresy URL** části webu Azure Portal.
 
     b. Klikněte na **Další**.
 
-18. Na **název a jednotného přihlašování k umístění** část, proveďte následující kroky:
+17. Na **import metadat** části, proveďte následující kroky:
 
-    ![Konfigurovat jednotné přihlašování](./media/kantegassoforbamboo-tutorial/addon8.png)
+    ![Konfigurace jednotného přihlašování](./media/kantegassoforbamboo-tutorial/addon7.png)
 
-    a. Přidejte název poskytovatele Identity **název zprostředkovatele Identity** textbox (např. Azure AD).
+    a. Vyberte **soubor metadat v mém počítači**a nahrát soubor metadat, který jste si stáhli z webu Azure portal.
 
     b. Klikněte na **Další**.
 
-19. Ověřte podpisového certifikátu a klikněte na **Další**.  
+18. Na **název a jednotného přihlašování k umístění** části, proveďte následující kroky:
 
-    ![Konfigurovat jednotné přihlašování](./media/kantegassoforbamboo-tutorial/addon9.png)
+    ![Konfigurace jednotného přihlašování](./media/kantegassoforbamboo-tutorial/addon8.png)
 
-20. Na **bambus uživatelské účty** část, proveďte následující kroky:
+    a. Přidání názvu zprostředkovatele Identity v **název zprostředkovatele identit** textového pole (např. Azure AD).
 
-    ![Konfigurovat jednotné přihlašování](./media/kantegassoforbamboo-tutorial/addon10.png)
+    b. Klikněte na **Další**.
 
-    a. Vyberte **v případě potřeby vytvořte uživatele v adresáři společnosti bambus interní** a zadejte odpovídající název skupiny pro uživatele (může být více ne. skupin oddělené čárkou).
+19. Ověřte podpisového certifikátu a klikněte na tlačítko **Další**.  
+
+    ![Konfigurace jednotného přihlašování](./media/kantegassoforbamboo-tutorial/addon9.png)
+
+20. Na **bambus uživatelské účty** části, proveďte následující kroky:
+
+    ![Konfigurace jednotného přihlašování](./media/kantegassoforbamboo-tutorial/addon10.png)
+
+    a. Vyberte **v případě potřeby vytvořte uživatele v adresáři společnosti bambus interní** a zadejte odpovídající název skupiny pro uživatele (může být více č. ze skupiny, oddělené čárkami).
 
     b. Klikněte na **Další**.
 
 21. Klikněte na **Dokončit**.
 
-    ![Konfigurovat jednotné přihlašování](./media/kantegassoforbamboo-tutorial/addon11.png)
+    ![Konfigurace jednotného přihlašování](./media/kantegassoforbamboo-tutorial/addon11.png)
 
-22. Na **známé domén pro Azure AD** část, proveďte následující kroky: 
+22. Na **známé domény pro službu Azure AD** části, proveďte následující kroky: 
 
-    ![Konfigurovat jednotné přihlašování](./media/kantegassoforbamboo-tutorial/addon12.png)
+    ![Konfigurace jednotného přihlašování](./media/kantegassoforbamboo-tutorial/addon12.png)
 
-    a. Vyberte **známé domén** v levém panelu stránky.
+    a. Vyberte **známé domén** na levém panelu na stránce.
 
-    b. Zadejte název domény v **známé domén** textové pole.
+    b. Zadejte název domény **známé domén** textového pole.
 
     c. Klikněte na **Uložit**.
 
 > [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím  **Konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
 
-### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
-Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
+### <a name="creating-an-azure-ad-test-user"></a>Vytváří se testovací uživatele služby Azure AD
+Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-![Vytvořit uživatele Azure AD][100]
+![Vytvoření uživatele Azure AD][100]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
 
-1. V **portál Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
+1. V **webu Azure portal**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/kantegassoforbamboo-tutorial/create_aaduser_01.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/kantegassoforbamboo-tutorial/create_aaduser_01.png) 
 
 2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
-    ![Vytváření testovacího uživatele Azure AD](./media/kantegassoforbamboo-tutorial/create_aaduser_02.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/kantegassoforbamboo-tutorial/create_aaduser_02.png) 
 
-3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** horní dialogové okno.
+3. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
  
-    ![Vytváření testovacího uživatele Azure AD](./media/kantegassoforbamboo-tutorial/create_aaduser_03.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/kantegassoforbamboo-tutorial/create_aaduser_03.png) 
 
-4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
+4. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
  
-    ![Vytváření testovacího uživatele Azure AD](./media/kantegassoforbamboo-tutorial/create_aaduser_04.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/kantegassoforbamboo-tutorial/create_aaduser_04.png) 
 
-    a. V **název** textovému poli, typ **BrittaSimon**.
+    a. V **název** textové pole, typ **BrittaSimon**.
 
-    b. V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.
+    b. V **uživatelské jméno** textové pole, typ **e-mailová adresa** z BrittaSimon.
 
-    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
+    c. Vyberte **zobrazit heslo** a zapište si hodnotu **heslo**.
 
     d. Klikněte na možnost **Vytvořit**.
  
-### <a name="creating-a-kantega-sso-for-bamboo-test-user"></a>Vytváření Kantega SSO pro bambus testovacího uživatele
+### <a name="creating-a-kantega-sso-for-bamboo-test-user"></a>Vytváření Kantega jednotné přihlašování pro bambus testovacího uživatele
 
-Pokud chcete povolit uživatelům Azure AD přihlášení do bambus, musí být zřízená do bambus. V Kantega jednotné přihlašování pro bambus zřizování je ruční úloha.
+Přihlaste se k bambus Azure AD uživatelům umožnit, musí být poskytnuty do bambus. Zřizování v Kantega jednotného přihlašování pro bambus, je ruční úlohy.
 
-**K poskytnutí uživatelského účtu, proveďte následující kroky:**
+**K poskytnutí uživatelského účtu, postupujte následovně:**
 
-1. Přihlaste se k serveru místní bambus jako správce.
+1. Přihlaste se k serveru v místním bambus jako správce.
 
-2. Pozastavte ukazatel myši na ikonu a klikněte na **Správa uživatelů**.
+2. Najeďte myší na ikonu a klikněte na tlačítko **Správa uživatelů**.
 
-    ![Můžete přidat zaměstnance](./media/kantegassoforbamboo-tutorial/user1.png) 
+    ![Přidat zaměstnance](./media/kantegassoforbamboo-tutorial/user1.png) 
 
-3. Klikněte na tlačítko **uživatelé**. V části **přidat uživatele** část, udělejte toto:
+3. Klikněte na tlačítko **uživatelé**. V části **přidat uživatele** části, naleznete postup:
 
-    ![Můžete přidat zaměstnance](./media/kantegassoforbamboo-tutorial/user2.png) 
+    ![Přidat zaměstnance](./media/kantegassoforbamboo-tutorial/user2.png) 
 
-    a. V **uživatelské jméno** jako typ e-mailu uživatele k textovému poli, Brittasimon@contoso.com.
+    a. V **uživatelské jméno** , jako je textové pole, typ e-mailu uživatele Brittasimon@contoso.com.
     
-    b. V **heslo** textovému poli, zadejte heslo uživatele.
+    b. V **heslo** textového pole zadejte heslo uživatele.
 
-    c. V **Potvrdit heslo** textovému poli, znovu zadejte heslo uživatele.
+    c. V **potvrzení hesla** textového pole zadejte znovu heslo uživatele.
     
-    d. V **úplný název** textovému poli, úplný název typu uživatele jako Britta Simon.
+    d. V **jméno a příjmení** textového pole zadejte celé jméno uživatele jako Britta Simon.
     
-    e. V **e-mailu** jako typ e-mailovou adresu uživatele k textovému poli, Brittasimon@contoso.com.
+    e. V **e-mailu** , jako je textové pole, typ e-mailovou adresu uživatele Brittasimon@contoso.com.
     
     f. Klikněte na **Uložit**.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí jednotného přihlašování k Kantega pro bambus udělení přístupu.
+V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k Kantega jednotné přihlašování pro bambus.
 
 ![Přiřadit uživatele][200] 
 
-**Pokud chcete přiřadit Britta Simon Kantega jednotné přihlašování pro bambus, proveďte následující kroky:**
+**Přiřadit Kantega jednotné přihlašování pro bambus Britta Simon, proveďte následující kroky:**
 
-1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
+1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
 2. V seznamu aplikací vyberte **Kantega jednotné přihlašování pro bambus**.
 
-    ![Konfigurovat jednotné přihlašování](./media/kantegassoforbamboo-tutorial/tutorial_kantegassoforbamboo_app.png) 
+    ![Konfigurace jednotného přihlašování](./media/kantegassoforbamboo-tutorial/tutorial_kantegassoforbamboo_app.png) 
 
 3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.
+4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
+5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
+6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
+7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="testing-single-sign-on"></a>Testování jednotné přihlašování
+### <a name="testing-single-sign-on"></a>Testování jednotného přihlašování
 
-V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
+V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Po kliknutí na tlačítko Kantega jednotné přihlašování pro dlaždici bambus na přístupovém panelu, můžete by měl získat automaticky přihlášení k vaší Kantega jednotné přihlašování pro aplikace bambus.
-Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](../active-directory-saas-access-panel-introduction.md). 
+Po kliknutí na Kantega jednotné přihlašování pro bambus dlaždici na přístupovém panelu, vám by měl získat automaticky přihlášení k vaší Kantega jednotného přihlašování pro aplikaci bambus.
+Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](tutorial-list.md)
+* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

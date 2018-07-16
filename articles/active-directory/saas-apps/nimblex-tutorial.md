@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: jeedes
-ms.openlocfilehash: 63b70e38f4c4f804c9be520480c7562834d42598
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 7b5dc6d892741f63596589a48ad5d45891b14c21
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37871650"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39040401"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-nimblex"></a>Kurz: Integrace Azure Active Directory se službou Nimblex
 
@@ -228,7 +228,7 @@ V této části je povolit Britta Simon k udělení přístupu k Nimblex použit
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
 Po kliknutí na dlaždici Nimblex na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci Nimblex.
-Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../active-directory-saas-access-panel-introduction.md). 
+Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 

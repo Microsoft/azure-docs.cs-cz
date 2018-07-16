@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s Aha! | Dokumenty Microsoft'
+title: 'Kurz: Integrace Azure Active Directory s Aha! | Microsoft Docs'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Aha!.
 services: active-directory
 documentationCenter: na
@@ -14,122 +14,122 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/10/2017
 ms.author: jeedes
-ms.openlocfilehash: 2a6c709944262e321997fe2d32e57726ee9f1242
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 30f0f316727cfcf20daa58c35d0ba11c25311898
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36219869"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044114"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-aha"></a>Kurz: Azure Active Directory integrace s Aha!
+# <a name="tutorial-azure-active-directory-integration-with-aha"></a>Kurz: Integrace Azure Active Directory s Aha!
 
-V tomto kurzu zjistíte, jak integrovat Aha! s Azure Active Directory (Azure AD).
+V tomto kurzu se dozvíte, jak integrovat Aha! s Azure Active Directory (Azure AD).
 
 Integrace Aha! s Azure AD poskytuje následující výhody:
 
 - Můžete řídit ve službě Azure AD, který má přístup k Aha!
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k Aha! (Jednotné přihlášení) s jejich účty Azure AD
-- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
+- Můžete povolit uživatelům, aby automaticky získat přihlášení k Aha! (Jednotné přihlašování) s jejich účty Azure AD
+- Můžete spravovat své účty na jediném místě – na webu Azure portal
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
 Konfigurace integrace Azure AD s Aha!, potřebujete následující položky:
 
-- Předplatné služby Azure AD
+- S předplatným služby Azure AD
 - Aha! jednotné přihlašování v předplatném povolené
 
 > [!NOTE]
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
 
-- Nepoužívejte provozním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební verze jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).
+- Nepoužívejte produkčním prostředí, pokud to není nutné.
+- Pokud nemáte prostředí zkušební verzi Azure AD, můžete získat měsíční zkušební [tady](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání Aha! z Galerie
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
 ## <a name="adding-aha-from-the-gallery"></a>Přidání Aha! z Galerie
-Konfigurace integrace Aha! do služby Azure AD je nutné přidat Aha! z Galerie si na seznam spravovaných aplikací SaaS.
+Konfigurace integrace Aha! do služby Azure AD budete muset přidat Aha! z Galerie tak, aby váš seznam spravovaných aplikací SaaS.
 
-**Chcete-li přidat Aha! z Galerie proveďte následující kroky:**
+**Chcete-li přidat Aha! v galerii proveďte následující kroky:**
 
-1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
+1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![Aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Aplikace][3]
 
 4. Do vyhledávacího pole zadejte **Aha!**.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/aha-tutorial/tutorial_aha_search.png)
+    ![Vytváří se testovací uživatele služby Azure AD](./media/aha-tutorial/tutorial_aha_search.png)
 
-5. Na panelu výsledků vyberte **Aha!** a potom klikněte na **přidat** tlačítko Přidat aplikaci.
+5. Na panelu výsledků vyberte **Aha!** a potom klikněte na tlačítko **přidat** tlačítko pro přidání aplikace.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/aha-tutorial/tutorial_aha_addfromgallery.png)
+    ![Vytváří se testovací uživatele služby Azure AD](./media/aha-tutorial/tutorial_aha_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
-V této části můžete nakonfigurovat a otestovat Azure AD jednotné přihlašování s Aha! na základě testovací uživatele, nazývá "Britta Simon."
+V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s Aha! na základě testovací uživatele nazývá "Britta Simon."
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, jaké příslušného uživatele v Aha! je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v Aha! musí být vytvořeno.
+Azure AD pro jednotné přihlašování pro práci, potřebuje vědět, co protějšek uživatel v Aha! je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele služby Azure AD a související uživatelské v Aha! je potřeba navázat.
 
-V Aha!, přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** k navázání vztahu odkazu.
+V Aha!, přiřaďte hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** a tím vytvoří vztah odkazu.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Aha!, je potřeba provést následující stavební bloky:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Aha!, které potřebujete k dokončení následujících stavebních bloků:
 
-1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
-2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření Aha! testovací uživatel](#creating-an-aha-test-user)**  – Pokud chcete mít protějšek Britta Simon v Aha! připojený k Azure AD reprezentace daného uživatele.
-4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
+1. **[Konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+2. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytvoření Aha! testovací uživatele](#creating-an-aha-test-user)**  – Pokud chcete mít protějšek Britta Simon Aha! připojený k Azure AD reprezentace uživatele.
+4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace Azure AD jednotné přihlašování
+### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v vaší Aha! Aplikace.
+V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování ve vašich Aha! aplikace.
 
 **Ke konfiguraci Azure AD jednotné přihlašování s Aha!, proveďte následující kroky:**
 
-1. Na portálu Azure na **Aha!** Stránka integrace aplikace, klikněte na tlačítko **jednotného přihlašování**.
+1. Na webu Azure Portal na **Aha!** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
 
-    ![Konfigurovat jednotné přihlašování][4]
+    ![Konfigurace jednotného přihlašování][4]
 
-2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
+2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
-    ![Konfigurovat jednotné přihlašování](./media/aha-tutorial/tutorial_aha_samlbase.png)
+    ![Konfigurace jednotného přihlašování](./media/aha-tutorial/tutorial_aha_samlbase.png)
 
-3. Na **Aha! Domény a adresy URL** část, proveďte následující kroky:
+3. Na **Aha! Domény a adresy URL** části, proveďte následující kroky:
 
-    ![Konfigurovat jednotné přihlašování](./media/aha-tutorial/tutorial_aha_url.png)
+    ![Konfigurace jednotného přihlašování](./media/aha-tutorial/tutorial_aha_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<companyname>.aha.io/session/new`
+    a. V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<companyname>.aha.io/session/new`
 
-    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<companyname>.aha.io`
+    b. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<companyname>.aha.io`
 
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [Aha! Tým podpory klienta](https://www.aha.io/company/contact) k získání těchto hodnot. 
+    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte s skutečné přihlašovací adresu URL a identifikátorem. Kontakt [Aha! Tým podpory klienta](https://www.aha.io/company/contact) k získání těchto hodnot. 
  
-4. Na **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat ve vašem počítači.
+4. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor metadat ve vašem počítači.
 
-    ![Konfigurovat jednotné přihlašování](./media/aha-tutorial/tutorial_aha_certificate.png) 
+    ![Konfigurace jednotného přihlašování](./media/aha-tutorial/tutorial_aha_certificate.png) 
 
 5. Klikněte na tlačítko **Uložit** tlačítko.
 
-    ![Konfigurovat jednotné přihlašování](./media/aha-tutorial/tutorial_general_400.png)
+    ![Konfigurace jednotného přihlašování](./media/aha-tutorial/tutorial_general_400.png)
 
-6. V okně prohlížeče jiný web Přihlaste se k vaší Aha! web společnosti jako správce.
+6. V okně jiné webové prohlížeče Přihlaste se k vaší Aha! web společnosti jako správce.
 
-7. V nabídce v horní části, klikněte na tlačítko **nastavení**.
+7. V nabídce v horní části klikněte na tlačítko **nastavení**.
 
     ![Nastavení](./media/aha-tutorial/IC798950.png "nastavení")
 
@@ -141,105 +141,105 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
    
     ![Zabezpečení a jednotné přihlašování](./media/aha-tutorial/IC798952.png "zabezpečení a jednotné přihlašování")
 
-10. V **jednotné přihlašování** části jako **zprostředkovatele Identity**, vyberte **SAML2.0**.
+10. V **Single Sign-On** části jako **zprostředkovatele Identity**vyberte **SAML2.0**.
    
     ![Zabezpečení a jednotné přihlašování](./media/aha-tutorial/IC798953.png "zabezpečení a jednotné přihlašování")
 
-11. Na **jednotné přihlašování** konfigurace proveďte následující kroky:
+11. Na **Single Sign-On** konfigurační stránce, proveďte následující kroky:
     
     ![Jednotné přihlašování](./media/aha-tutorial/IC798954.png "jednotného přihlašování")
     
-       a. V **název** textovému poli, zadejte název pro svou konfiguraci.
+       a. V **název** textového pole zadejte název pro vaši konfiguraci.
 
-       b. Pro **nakonfigurovat**, vyberte **soubor metadat**.
+       b. Pro **konfigurace pomocí**vyberte **soubor metadat**.
    
-       c. Chcete-li nahrát soubor stažený metadata, klikněte na tlačítko **Procházet**.
+       c. Nahrát soubor stažený metadat, klikněte na tlačítko **Procházet**.
    
-       d. Klikněte na tlačítko **aktualizace**.
+       d. Při navazování připojení k serveru SQL Server došlo k chybě související se sítí nebo s instancí.
 
 > [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
-### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
-Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
+### <a name="creating-an-azure-ad-test-user"></a>Vytváří se testovací uživatele služby Azure AD
+Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-![Vytvořit uživatele Azure AD][100]
+![Vytvoření uživatele Azure AD][100]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
 
-1. V **portál Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
+1. V **webu Azure portal**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/aha-tutorial/create_aaduser_01.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/aha-tutorial/create_aaduser_01.png) 
 
 2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
-    ![Vytváření testovacího uživatele Azure AD](./media/aha-tutorial/create_aaduser_02.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/aha-tutorial/create_aaduser_02.png) 
 
-3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** horní dialogové okno.
+3. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
  
-    ![Vytváření testovacího uživatele Azure AD](./media/aha-tutorial/create_aaduser_03.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/aha-tutorial/create_aaduser_03.png) 
 
-4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
+4. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
  
-    ![Vytváření testovacího uživatele Azure AD](./media/aha-tutorial/create_aaduser_04.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/aha-tutorial/create_aaduser_04.png) 
 
-    a. V **název** textovému poli, typ **BrittaSimon**.
+    a. V **název** textové pole, typ **BrittaSimon**.
 
-    b. V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.
+    b. V **uživatelské jméno** textové pole, typ **e-mailová adresa** z BrittaSimon.
 
-    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
+    c. Vyberte **zobrazit heslo** a zapište si hodnotu **heslo**.
 
     d. Klikněte na možnost **Vytvořit**.
  
 ### <a name="creating-an-aha-test-user"></a>Vytvoření Aha! testovací uživatel
 
-Povolit uživatelům Azure AD přihlášení do Aha!, musí být zřízená do Aha!.  
+Azure AD uživatelům se přihlásit k Aha!, musí být poskytnuty do Aha!.  
 
-V případě Aha!, zřizování je automatizaci úloh. Neexistuje žádná položka akce za vás.
+V případě Aha!, zřizování se automatická úloha. Neexistuje žádná položka akce za vás.
 
-Uživatelé jsou automaticky vytvářeny v případě potřeby při prvním jeden přihlašování pokusu.
+Uživatelé se automaticky vytvoří v případě potřeby během první jednotné přihlašování pokus.
 
 >[!NOTE]
->Můžete použít jiné Aha! Nástroje pro tvorbu účet uživatele nebo rozhraní API poskytovaných Aha! Chcete-li zřídit AAD uživatelské účty.
+>Můžete použít jiné Aha! Nástroje pro tvorbu uživatelského účtu nebo rozhraní API poskytovaných Aha! ke zřízení účtů služby AAD uživatele.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu Aha!.
+V této části povolíte Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k Aha!.
 
 ![Přiřadit uživatele][200] 
 
-**Britta Simon přiřadit Aha!, proveďte následující kroky:**
+**Přiřadit Britta Simon Aha!, proveďte následující kroky:**
 
-1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
+1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
 2. V seznamu aplikací vyberte **Aha!**.
 
-    ![Konfigurovat jednotné přihlašování](./media/aha-tutorial/tutorial_aha_app.png) 
+    ![Konfigurace jednotného přihlašování](./media/aha-tutorial/tutorial_aha_app.png) 
 
 3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.
+4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
+5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
+6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
+7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="testing-single-sign-on"></a>Testování jednotné přihlašování
+### <a name="testing-single-sign-on"></a>Testování jednotného přihlašování
 
-Pokud chcete testovat vaše nastavení jednotného přihlašování, otevřete Panel přístupu. Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](../active-directory-saas-access-panel-introduction.md).
+Pokud chcete otestovat jednotné přihlašování – nastavení, otevřete na přístupovém panelu. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](tutorial-list.md)
+* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->

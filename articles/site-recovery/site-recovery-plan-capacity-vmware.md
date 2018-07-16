@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 07/06/2018
 ms.topic: conceptual
 ms.author: rayne
-ms.openlocfilehash: 905798acd5836c31953714d7984cfb19f16cecab
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: b615ffa3571730ef9607893882f509b2fa490f35
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920793"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39056337"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-replication-with-azure-site-recovery"></a>Plánování kapacity a škálování pro replikaci VMware pomocí Azure Site Recovery
 
@@ -34,9 +34,9 @@ Shromážděte informace o prostředí replikace spuštěním [Azure Site Recove
 
 **CPU** | **Paměť** | **Velikost mezipaměti disku** | **Frekvence změny dat** | **Chráněné počítače**
 --- | --- | --- | --- | ---
-8 virtuálních procesorů (2 sockets * @ 2,5 GHz [GHz] 4 jádra) | 16 GB | 300 GB | 500 GB nebo méně | Replikace méně než 100 počítačů.
-12 virtuálních procesorů (2 sockets * @ 2,5 GHz 6 jader) | 18 GB | 600 GB | 500 GB až 1 TB | Replikace mezi 100 150 počítačů.
-16 virtuálních procesorů (2 sockets * @ 2,5 GHz 8 jader) | 32 GB | 1 TB | 1 TB na 2 TB | Replikace mezi 150 až 200 počítačů.
+8 virtuálních procesorů (2 sockets * 4 jádra \@ 2,5 GHz [GHz]) | 16 GB | 300 GB | 500 GB nebo méně | Replikace méně než 100 počítačů.
+12 virtuálních procesorů (2 sockets * 6 jader \@ 2,5 GHz) | 18 GB | 600 GB | 500 GB až 1 TB | Replikace mezi 100 150 počítačů.
+16 virtuálních procesorů (2 sockets * 8 jader \@ 2,5 GHz) | 32 GB | 1 TB | 1 TB na 2 TB | Replikace mezi 150 až 200 počítačů.
 Nasazení jiný procesový server | | | > 2 TB | Nasazení dalších procesových serverů, pokud replikujete více než 200 počítačů nebo pokud každodenní změny dat překračuje rychlost 2 TB.
 
 Kde:
@@ -60,9 +60,9 @@ Následující tabulka popisuje scénář, ve kterém:
 
 **Konfigurační server** | **Další procesový server** | **Velikost mezipaměti disku** | **Frekvence změny dat** | **Chráněné počítače**
 --- | --- | --- | --- | ---
-8 virtuálních procesorů (2 sockets * @ 2,5 GHz 4 jádra), 16 GB paměti | 4 virtuální procesory (2 sockets * @ 2,5 GHz 2 jádra), 8 GB paměti | 300 GB | Aby se 250 GB nebo méně | Replikace počítačů 85 nebo méně.
-8 virtuálních procesorů (2 sockets * @ 2,5 GHz 4 jádra), 16 GB paměti | 8 virtuálních procesorů (2 sockets * @ 2,5 GHz 4 jádra), 12 GB paměti | 600 GB | 250 GB až 1 TB | Replikace mezi 85 150 počítačů.
-12 virtuálních procesorů (2 sockets * @ 2,5 GHz 6 jader), 18 GB paměti | 12 virtuálních procesorů (2 sockets * @ 2,5 GHz 6 jader) 24 GB paměti | 1 TB | 1 TB na 2 TB | Replikace mezi 150 225 počítačů.
+8 virtuálních procesorů (2 sockets * 4 jádra \@ 2,5 GHz), 16 GB paměti | 4 virtuální procesory (2 sockets * 2 jádra \@ 2,5 GHz), 8 GB paměti | 300 GB | Aby se 250 GB nebo méně | Replikace počítačů 85 nebo méně.
+8 virtuálních procesorů (2 sockets * 4 jádra \@ 2,5 GHz), 16 GB paměti | 8 virtuálních procesorů (2 sockets * 4 jádra \@ 2,5 GHz), 12 GB paměti | 600 GB | 250 GB až 1 TB | Replikace mezi 85 150 počítačů.
+12 virtuálních procesorů (2 sockets * 6 jader \@ 2,5 GHz), 18 GB paměti | 12 virtuálních procesorů (2 sockets * 6 jader \@ 2,5 GHz) 24 GB paměti | 1 TB | 1 TB na 2 TB | Replikace mezi 150 225 počítačů.
 
 Způsob, ve kterém škálování serverů, závisí na vaši volbu pro vertikální nebo horizontální navýšení kapacity modelu.  Vertikálně navýšit kapacitu nasazením špičkové konfigurace a procesových serverů, několik nebo vertikální navýšení kapacity provádíte nasazení více serverů s méně prostředků. Například pokud potřebujete k ochraně počítačů 220, proveďte z následujících akcí:
 

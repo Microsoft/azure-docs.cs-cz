@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s Skillport | Microsoft Docs'
+title: 'Kurz: Integrace Azure Active Directory se službou Skillport | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Skillport.
 services: active-directory
 documentationCenter: na
@@ -14,207 +14,207 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2017
 ms.author: jeedes
-ms.openlocfilehash: d9199f96c4263a8027067b0784a63aaeafe0a06d
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: cbe2e6db514eb978cf99b249c434eb5cf3df6cd2
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294648"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39045994"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-skillport"></a>Kurz: Azure Active Directory integrace s Skillport
+# <a name="tutorial-azure-active-directory-integration-with-skillport"></a>Kurz: Integrace Azure Active Directory se službou Skillport
 
-V tomto kurzu zjistěte, jak integrovat Skillport s Azure Active Directory (Azure AD).
+V tomto kurzu se dozvíte, jak integrovat Skillport s Azure Active Directory (Azure AD).
 
-Integrace Skillport s Azure AD poskytuje následující výhody:
+Skillport integraci se službou Azure AD poskytuje následující výhody:
 
 - Můžete řídit ve službě Azure AD, který má přístup k Skillport
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k Skillport (jednotné přihlášení) s jejich účty Azure AD
-- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
+- Můžete povolit uživatelům, aby automaticky získat přihlášení k Skillport (Single Sign-On) s jejich účty Azure AD
+- Můžete spravovat své účty na jediném místě – na webu Azure portal
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
 Konfigurace integrace Azure AD s Skillport, potřebujete následující položky:
 
-- Předplatné služby Azure AD
-- Skillport jednotného přihlašování povolené předplatné
+- S předplatným služby Azure AD
+- Skillport jednotného přihlašování povolená předplatného
 
 > [!NOTE]
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
 
-- Nepoužívejte provozním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební verze jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).
+- Nepoužívejte produkčním prostředí, pokud to není nutné.
+- Pokud nemáte prostředí zkušební verzi Azure AD, můžete získat měsíční zkušební [tady](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání Skillport z Galerie
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
 ## <a name="adding-skillport-from-the-gallery"></a>Přidání Skillport z Galerie
-Při konfiguraci integrace Skillport do služby Azure AD musíte přidat do seznamu spravovaných aplikací SaaS Skillport z galerie.
+Konfigurace integrace Skillport do služby Azure AD, budete muset přidat Skillport z Galerie na váš seznam spravovaných aplikací SaaS.
 
-**Pokud chcete přidat Skillport z galerie, proveďte následující kroky:**
+**Chcete-li přidat Skillport z galerie, postupujte následovně:**
 
-1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
+1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![Aplikace][2]
     
-3. Klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
+3. Klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Aplikace][3]
 
 4. Do vyhledávacího pole zadejte **Skillport**.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/skillport-tutorial/tutorial_skillport_search.png)
+    ![Vytváří se testovací uživatele služby Azure AD](./media/skillport-tutorial/tutorial_skillport_search.png)
 
-5. Na panelu výsledků vyberte **Skillport**a potom klikněte na **přidat** tlačítko Přidat aplikaci.
+5. Na panelu výsledků vyberte **Skillport**a potom klikněte na tlačítko **přidat** tlačítko pro přidání aplikace.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/skillport-tutorial/tutorial_skillport_addfromgallery.png)
+    ![Vytváří se testovací uživatele služby Azure AD](./media/skillport-tutorial/tutorial_skillport_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
-V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s Skillport podle testovacího uživatele názvem "Britta Simon".
+V této části Konfigurace a testování Azure AD jednotné přihlašování pomocí Skillport podle testovacího uživatele nazývá "Britta Simon".
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v Skillport je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v Skillport musí navázat.
+Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšky v Skillport je pro uživatele ve službě Azure AD. Jinými slovy vztah odkazu mezi uživatele služby Azure AD a související uživatelské v Skillport potřeba navázat.
 
-Tento vztah propojení se navazuje se hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** v Skillport.
+Tento odkaz vztah navázaný přiřazením hodnoty **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** v Skillport.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Skillport, je třeba dokončit následující stavební bloky:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Skillport, které potřebujete k dokončení následujících stavebních bloků:
 
-1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
-2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele Skillport](#creating-a-skillport-test-user)**  – Pokud chcete mít protějšek Britta Simon v Skillport propojeném s Azure AD reprezentace daného uživatele.
-4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
+1. **[Konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+2. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytvoření zkušebního uživatele Skillport](#creating-a-skillport-test-user)**  – Pokud chcete mít protějšek Britta Simon Skillport, který je propojený s Azure AD reprezentace uživatele.
+4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace Azure AD jednotné přihlašování
+### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci Skillport.
+V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování v aplikaci Skillport.
 
 **Ke konfiguraci Azure AD jednotné přihlašování s Skillport, proveďte následující kroky:**
 
-1. Na portálu Azure na **Skillport** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. Na webu Azure Portal na **Skillport** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
 
-    ![Konfigurovat jednotné přihlašování][4]
+    ![Konfigurace jednotného přihlašování][4]
 
-2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
+2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
-    ![Konfigurovat jednotné přihlašování](./media/skillport-tutorial/tutorial_skillport_samlbase.png)
+    ![Konfigurace jednotného přihlašování](./media/skillport-tutorial/tutorial_skillport_samlbase.png)
 
-3. Na **Skillport domény a adresy URL** část, proveďte následující kroky:
+3. Na **Skillport domény a adresy URL** části, proveďte následující kroky:
 
-    ![Konfigurovat jednotné přihlašování](./media/skillport-tutorial/tutorial_skillport_url.png)
+    ![Konfigurace jednotného přihlašování](./media/skillport-tutorial/tutorial_skillport_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL:
+    a. V **přihlašovací adresa URL** textového pole zadejte adresu URL:
       
-      Evropa Datacenter: `https://adfs.skillport.eu`
+      Datové centrum Evropa: `https://adfs.skillport.eu`
    
-      USA – Datacenter: `https://sso.skillport.com`
+      Datacentra v USA: `https://sso.skillport.com`
 
-    b. V **identifikátor** textovému poli, zadejte adresu URL:
+    b. V **identifikátor** textového pole zadejte adresu URL:
       
-      Evropa Datacenter: `http://adfs.skillport.eu/adfs/services/trust`
+      Datové centrum Evropa: `http://adfs.skillport.eu/adfs/services/trust`
    
-      USA – Datacenter: `https://sso.skillport.com`
+      Datacentra v USA: `https://sso.skillport.com`
    
-    c. V **adresa URL odpovědi** textovému poli, zadejte adresu URL:
+    c. V **adresy URL odpovědi** textového pole zadejte adresu URL:
     
-      Evropa Datacenter: ` https://adfs.skillport.eu/adfs/ls/`
+      Datové centrum Evropa: ` https://adfs.skillport.eu/adfs/ls/`
     
-      USA – Datacenter: `https://sso.skillport.com/sp/ACS.saml2`
+      Datacentra v USA: `https://sso.skillport.com/sp/ACS.saml2`
  
-4. Na **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor XML ve vašem počítači.
+4. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor XML ve vašem počítači.
 
-    ![Konfigurovat jednotné přihlašování](./media/skillport-tutorial/tutorial_skillport_certificate.png) 
+    ![Konfigurace jednotného přihlašování](./media/skillport-tutorial/tutorial_skillport_certificate.png) 
 
 5. Klikněte na tlačítko **Uložit** tlačítko.
 
-    ![Konfigurovat jednotné přihlašování](./media/skillport-tutorial/tutorial_general_400.png)
+    ![Konfigurace jednotného přihlašování](./media/skillport-tutorial/tutorial_general_400.png)
 
-6. Konfigurace jednotného přihlašování na **Skillport** straně, budete muset odeslat stažené **soubor XML s metadaty** k [tým podpory Skillport](https://www.skillsoft.com/contact.asp). Budou se nastavit tak, aby připojení jednotné přihlašování SAML správně nastavené na obou stranách.
+6. Ke konfiguraci jednotného přihlašování na **Skillport** straně, je nutné odeslat na stažený **soubor XML s metadaty** k [tým podpory Skillport](https://www.skillsoft.com/contact.asp). To bude nastavené jednotné přihlašování SAML připojení správně nastavena na obou stranách.
 
-### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
-Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
+### <a name="creating-an-azure-ad-test-user"></a>Vytváří se testovací uživatele služby Azure AD
+Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-![Vytvořit uživatele Azure AD][100]
+![Vytvoření uživatele Azure AD][100]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
 
-1. V **portál Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
+1. V **webu Azure portal**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/skillport-tutorial/create_aaduser_01.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/skillport-tutorial/create_aaduser_01.png) 
 
 2. Přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé** zobrazíte seznam uživatelů.
     
-    ![Vytváření testovacího uživatele Azure AD](./media/skillport-tutorial/create_aaduser_02.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/skillport-tutorial/create_aaduser_02.png) 
 
-3. V horní části okna klikněte na položku **přidat** otevřete **uživatele** dialogové okno.
+3. V horní části dialogového okna, klikněte na tlačítko **přidat** otevřít **uživatele** dialogového okna.
  
-    ![Vytváření testovacího uživatele Azure AD](./media/skillport-tutorial/create_aaduser_03.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/skillport-tutorial/create_aaduser_03.png) 
 
-4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
+4. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
  
-    ![Vytváření testovacího uživatele Azure AD](./media/skillport-tutorial/create_aaduser_04.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/skillport-tutorial/create_aaduser_04.png) 
 
-    a. V **název** textovému poli, typ **BrittaSimon**.
+    a. V **název** textové pole, typ **BrittaSimon**.
 
-    b. V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.
+    b. V **uživatelské jméno** textové pole, typ **e-mailová adresa** z BrittaSimon.
 
-    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
+    c. Vyberte **zobrazit heslo** a zapište si hodnotu **heslo**.
 
     d. Klikněte na možnost **Vytvořit**.
  
 ### <a name="creating-a-skillport-test-user"></a>Vytvoření zkušebního uživatele Skillport
 
-Chcete-li vytvořit Skillport testovacího uživatele, budete muset kontaktovat [tým podpory Skillport](https://www.skillsoft.com/contact.asp) mají více obchodní scénáře podle požadovaného koncového uživatele. Nakonfiguruje ho po diskuse s uživateli.  
+Chcete-li vytvořit testovacího uživatele Skillport, budete muset požádat [tým podpory Skillport](https://www.skillsoft.com/contact.asp) mají více obchodních scénářů podle požadavku koncového uživatele. Nakonfiguruje ho po diskuze s uživateli.  
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu Skillport.
+V této části je povolit Britta Simon k udělení přístupu k Skillport použití Azure jednotného přihlašování.
 
 ![Přiřadit uživatele][200] 
 
-**Pokud chcete přiřadit Britta Simon Skillport, proveďte následující kroky:**
+**Přiřadit Skillport Britta Simon, proveďte následující kroky:**
 
-1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
+1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
 2. V seznamu aplikací vyberte **Skillport**.
 
-    ![Konfigurovat jednotné přihlašování](./media/skillport-tutorial/tutorial_skillport_app.png) 
+    ![Konfigurace jednotného přihlašování](./media/skillport-tutorial/tutorial_skillport_app.png) 
 
 3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.
+4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
+5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
+6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
+7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="testing-single-sign-on"></a>Testování jednotné přihlašování
+### <a name="testing-single-sign-on"></a>Testování jednotného přihlašování
 
-V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
+V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Když kliknete na dlaždici Skillport na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci Skillport.
-Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](../active-directory-saas-access-panel-introduction.md). 
+Po kliknutí na dlaždici Skillport na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci Skillport.
+Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](tutorial-list.md)
+* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

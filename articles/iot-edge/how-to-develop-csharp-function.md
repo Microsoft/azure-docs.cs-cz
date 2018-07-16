@@ -8,12 +8,12 @@ ms.date: 06/26/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d1a134d490595b1dee7c24ac36f78f2266cfe375
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 3176a3a4acc6e9ca486d409d861f2ed0e63473ec
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036570"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39056500"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-azure-functions-for-azure-iot-edge"></a>Použití Visual Studio Code pro vývoj a ladění Azure functions pro Azure IoT Edge
 
@@ -65,9 +65,19 @@ Existují čtyři položky v rámci řešení:
 * A **.vscode** složka obsahuje konfiguraci ladění.
 * A **moduly** složka obsahuje podsložky pro každý modul. V tomto okamžiku máte jenom jeden. Ale můžete přidat více prostřednictvím paletu příkazů pomocí příkazu **Azure IoT Edge: Přidat modul IoT Edge**.
 * **.Env** soubor obsahuje seznam proměnných prostředí. Pokud váš registr Azure Container Registry se v něm budete mít Azure Container Registry uživatelské jméno a heslo. 
+
+   >[!NOTE]
+   >Pokud zadáte úložišti imagí pro modul je jenom vytvořen soubor prostředí. Pokud jste přijali výchozí nastavení localhost testovat a ladit v místním prostředí, pak není nutné deklarovat proměnné prostředí. 
+
 * A **deployment.template.json** souborů obsahuje nový modul spolu s ukázku **tempSensor** modulu, která simuluje data, která můžete použít pro testování. Další informace o způsobu práce manifesty nasazení najdete v tématu [zjistěte, jak můžete nasadit moduly a vytvářet manifesty nasazení](module-composition.md).
 
-## <a name="build-your-iot-edge-function-module-for-debugging"></a>Sestavení pro ladění modulu IoT Edge – funkce
+## <a name="devlop-your-module"></a>Devlop modulu
+
+Výchozí funkce Azure Functions se kód, který je součástí řešení nachází v **moduly** > **\<název modulu\>**   >   **EdgeHubTrigger-Csharp** > **run.csx**. V modulu a soubor deployment.template.json nastaveny tak, aby mohli sestavit řešení, ji nasdílet do vašeho registru kontejneru a nasazení do zařízení pro začátek testování bez zásahu do jakéhokoli kódu. Modul je určený pro jednoduše trvat, než vstupní zdroj (v tomto případě tempSensor modulu, která simuluje data) a zřetězit ho do služby IoT Hub. 
+
+Jakmile budete připraveni k přizpůsobení šablony funkce Azure Functions s vlastním kódem, použijte [sady SDK služby Azure IoT Hub](../iot-hub/iot-hub-devguide-sdks.md) vytvářet moduly, které řeší klíč musí pro řešení IoT, jako je zabezpečení, Správa zařízení a spolehlivost. 
+
+## <a name="build-your-module-for-debugging"></a>Vytvoření modulu pro ladění
 1. Chcete-li spustit ladění, použijte **Dockerfile.amd64.debug** znovu sestavte image dockeru a znovu nasaďte řešení Edge. V Průzkumníku VS Code, přejděte `deployment.template.json` souboru. Aktualizovat adresu URL vaší funkce image tak, že přidáte `.debug` na konec.
 
     ![Sestavení image ladění](./media/how-to-debug-csharp-function/build-debug-image.png)
@@ -80,7 +90,7 @@ Kontrola stavu kontejneru v Průzkumníku VS Code Dockeru nebo spuštěním `doc
 ## <a name="start-debugging-c-functions-in-vs-code"></a>Spuštění ladění funkcí jazyka C# ve VS Code
 1. VS Code uchovává informace o konfiguraci v ladění `launch.json` soubor umístěný ve `.vscode` složky v pracovním prostoru. To `launch.json` soubor byl vygenerován při vytvoření nového řešení IoT Edge. Aktualizuje pokaždé, když přidáte nový modul, který podporuje ladění. Přejděte do zobrazení ladění. Vyberte odpovídající konfigurační soubor ladění. Název možnosti ladění by měl být podobný **ModuleName vzdálené ladění (.NET Core)**.
 
-    ![Ladění vyberte konfiguraci](./media/how-to-debug-csharp-function/select-debug-configuration.jpg)
+   ![Ladění vyberte konfiguraci](./media/how-to-debug-csharp-function/select-debug-configuration.jpg)
 
 2. Přejděte na adresu `run.csx`. Přidejte zarážku ve funkci.
 3. Vyberte **spustit ladění** nebo vyberte **F5**. Vyberte proces pro připojení.
@@ -93,3 +103,5 @@ Kontrola stavu kontejneru v Průzkumníku VS Code Dockeru nebo spuštěním `doc
 ## <a name="next-steps"></a>Další postup
 
 Po začlenění modulu, zjistěte, jak [moduly nasazení Azure IoT Edge z Visual Studio Code](how-to-deploy-modules-vscode.md).
+
+Vývoj modulů pro zařízení IoT Edge, [principy a použití sady SDK služby Azure IoT Hub](../iot-hub/iot-hub-devguide-sdks.md).

@@ -18,6 +18,6 @@ Zjistěte, jak rozšířit vaše IoT řešení a plán metoda volá do různých
 
 Chcete-li pokračovat v seznamování se službou IoT Hub, přečtěte si téma [Začínáme s IoT Edge][lnk-iot-edge].
 
-[lnk-fwupdate]: ../articles/iot-hub/iot-hub-node-node-firmware-update.md
+[lnk-fwupdate]: ../articles/iot-hub/tutorial-firmware-update.md
 [lnk-tutorial-jobs]: ../articles/iot-hub/iot-hub-node-node-schedule-jobs.md
 [lnk-iot-edge]: ../articles/iot-edge/tutorial-simulate-device-linux.md

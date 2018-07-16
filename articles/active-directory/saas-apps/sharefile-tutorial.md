@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s Citrix ShareFile | Microsoft Docs'
+title: 'Kurz: Integrace Azure Active Directory se službou Citrix ShareFile | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Citrix ShareFile.
 services: active-directory
 documentationCenter: na
@@ -15,104 +15,104 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: jeedes
-ms.openlocfilehash: b29d8e9a8e8d63cdeacb8093935de5fba3b25170
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: e27a1c834c48b640ab5ed7ab8d6e54f7d1784abd
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36226761"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39045936"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-citrix-sharefile"></a>Kurz: Azure Active Directory integrace s Citrix ShareFile
+# <a name="tutorial-azure-active-directory-integration-with-citrix-sharefile"></a>Kurz: Integrace Azure Active Directory se službou Citrix ShareFile
 
-V tomto kurzu zjistěte, jak integrovat Citrix ShareFile s Azure Active Directory (Azure AD).
+V tomto kurzu se dozvíte, jak Citrix ShareFile integrovat s Azure Active Directory (Azure AD).
 
-Integrace Citrix ShareFile s Azure AD poskytuje následující výhody:
+Citrix ShareFile integraci se službou Azure AD poskytuje následující výhody:
 
-- Můžete ovládat ve službě Azure AD, který má přístup k Citrix ShareFile.
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k systému Citrix ShareFile (jednotné přihlášení) s jejich účty Azure AD.
-- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure.
+- Můžete řídit ve službě Azure AD, který má přístup k Citrix ShareFile.
+- Uživatele, aby automaticky získat přihlášení k Citrix ShareFile (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD.
+- Můžete spravovat své účty na jediném místě – na webu Azure portal.
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
 Konfigurace integrace Azure AD s Citrix ShareFile, potřebujete následující položky:
 
-- Předplatné služby Azure AD
-- Citrix ShareFile jednotné přihlašování povolené předplatné
+- S předplatným služby Azure AD
+- Citrix ShareFile jediného přihlášení povolený předplatného
 
 > [!NOTE]
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
 
-- Nepoužívejte provozním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verze Azure AD, můžete [získat zkušební verzi jeden měsíc](https://azure.microsoft.com/pricing/free-trial/).
+- Nepoužívejte produkčním prostředí, pokud to není nutné.
+- Pokud nemáte prostředí zkušební verzi Azure AD, můžete si [získat měsíční zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidat Citrix ShareFile z Galerie
-2. Konfigurace a otestování Azure AD jednotné přihlašování
+1. Citrix ShareFile přidat z Galerie
+2. Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-## <a name="add-citrix-sharefile-from-the-gallery"></a>Přidat Citrix ShareFile z Galerie
-Při konfiguraci integrace Citrix ShareFile do služby Azure AD potřebujete přidat Citrix ShareFile z Galerie si na seznam spravovaných aplikací SaaS.
+## <a name="add-citrix-sharefile-from-the-gallery"></a>Citrix ShareFile přidat z Galerie
+Konfigurace integrace Citrix ShareFile do služby Azure AD, budete muset přidat Citrix ShareFile z Galerie na váš seznam spravovaných aplikací SaaS.
 
-**Pokud chcete přidat Citrix ShareFile z galerie, proveďte následující kroky:**
+**Citrix ShareFile přidat z galerie, postupujte následovně:**
 
-1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
+1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![V okně podnikové aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Tlačítko nové aplikace][3]
 
-4. Do vyhledávacího pole zadejte **Citrix ShareFile**, vyberte **Citrix ShareFile** z panelu výsledků klikněte **přidat** tlačítko Přidat aplikaci.
+4. Do vyhledávacího pole zadejte **Citrix ShareFile**vyberte **Citrix ShareFile** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
     ![Citrix ShareFile v seznamu výsledků](./media/sharefile-tutorial/tutorial_sharefile_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování Azure AD jednotné přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-V této části můžete nakonfigurovat, testovací Azure AD jednotné přihlašování s Citrix ShareFile podle testovacího uživatele názvem "Britta Simon".
+V této části nakonfigurujete a test Azure AD jednotné přihlašování s Citrix ShareFile podle testovacího uživatele nazývá "Britta Simon".
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v Citrix ShareFile je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v Citrix ShareFile musí navázat.
+Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšky v Citrix ShareFile je pro uživatele ve službě Azure AD. Jinými slovy vztah odkazu mezi uživatele služby Azure AD a související uživatelské v Citrix ShareFile musí být vytvořeno.
 
-V systému Citrix ShareFile přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** k navázání vztahu odkazu.
+V Citrix ShareFile přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** a tím vytvoří vztah odkazu.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Citrix ShareFile, budete muset provést následující stavební bloky:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Citrix ShareFile, které potřebujete k dokončení následujících stavebních bloků:
 
-1. **[Konfigurovat Azure AD jednotné přihlašování](#configure-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
-2. **[Vytvořit testovací uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele Citrix ShareFile](#create-a-citrix-sharefile-test-user)**  – Pokud chcete mít protějšek Britta Simon v Citrix ShareFile, propojené služby Azure AD reprezentace daného uživatele.
-4. **[Přiřadit testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. **[Test jednotného přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
+1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+2. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytvoření zkušebního uživatele Citrix ShareFile](#create-a-citrix-sharefile-test-user)**  – Pokud chcete mít protějšek Britta Simon Citrix ShareFile, který je propojený s Azure AD reprezentace uživatele.
+4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurovat Azure AD jednotné přihlašování
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci Citrix ShareFile.
+V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování v aplikaci Citrix ShareFile.
 
 **Ke konfiguraci Azure AD jednotné přihlašování s Citrix ShareFile, proveďte následující kroky:**
 
-1. Na portálu Azure na **Citrix ShareFile** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. Na webu Azure Portal na **Citrix ShareFile** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
 
-    ![Konfigurace propojení přihlášení][4]
+    ![Nakonfigurovat jednotné přihlašování – odkaz][4]
 
-2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
+2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
-    ![Jediné přihlášení dialogové okno](./media/sharefile-tutorial/tutorial_sharefile_samlbase.png)
+    ![Jednotné přihlašování – dialogové okno](./media/sharefile-tutorial/tutorial_sharefile_samlbase.png)
 
-3. Na **Citrix ShareFile domény a adresy URL** část, proveďte následující kroky:
+3. Na **Citrix ShareFile domény a adresy URL** části, proveďte následující kroky:
 
-    ![Citrix ShareFile domény a adresy URL jednotné přihlašování informace](./media/sharefile-tutorial/tutorial_sharefile_url.png)
+    ![Citrix ShareFile domény a adresy URL jednotného přihlašování – informace](./media/sharefile-tutorial/tutorial_sharefile_url.png)
     
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<tenant-name>.sharefile.com/saml/login`
+    a. V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<tenant-name>.sharefile.com/saml/login`
 
-    b. V **identifikátoru (Entity ID)** textovému poli, zadejte adresu URL pomocí následujícího vzorce:
+    b. V **identifikátor (Entity ID)** textového pole zadejte adresu URL pomocí následujícímu vzoru:
 
     | |
     |---|
@@ -123,7 +123,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     | `https://<tenant-name>.sharefile.eu/saml/info`|
     | |
     
-    c. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce:
+    c. V **adresy URL odpovědi** textového pole zadejte adresu URL pomocí následujícímu vzoru:
     | |
     |---|
     | `https://<tenant-name>.sharefile.com/saml/acs`|
@@ -132,59 +132,59 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     | |
 
     > [!NOTE]
-    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečná adresa URL přihlašování, identifikátor a adresa URL odpovědi. Obraťte se na [tým podpory Citrix ShareFile klienta](https://www.citrix.co.in/products/sharefile/support.html) k získání těchto hodnot.
+    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL, identifikátoru a adresa URL odpovědi. Kontakt [tým podpory Citrix ShareFile klienta](https://www.citrix.co.in/products/sharefile/support.html) k získání těchto hodnot.
 
-4. Na **SAML podpisový certifikát** klikněte na tlačítko **certifikátu (Base64)** a potom uložte soubor certifikátu v počítači.
+4. Na **podpisový certifikát SAML** klikněte na tlačítko **certifikát (Base64)** a uložte soubor certifikátu v počítači.
 
     ![Odkaz ke stažení certifikátu](./media/sharefile-tutorial/tutorial_sharefile_certificate.png)
 
 5. Klikněte na tlačítko **Uložit** tlačítko.
 
-    ![Nakonfigurujte jeden přihlašování uložit tlačítko](./media/sharefile-tutorial/tutorial_general_400.png)
+    ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/sharefile-tutorial/tutorial_general_400.png)
 
-6. Na **ShareFile konfigurace systému Citrix** klikněte na tlačítko **konfigurace Citrix ShareFile** otevřete **konfigurovat přihlášení** okno. Kopírování **Sign-Out adresu URL, SAML Entity ID a SAML jeden přihlašování adresa URL služby** z **Stručná referenční příručka části.**
+6. Na **konfigurace systému Citrix ShareFile** klikněte na tlačítko **konfigurace Citrix ShareFile** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **URL odhlašování SAML Entity ID a SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
 
-    ![Konfigurace systému Citrix ShareFile](./media/sharefile-tutorial/tutorial_sharefile_configure.png)
+    ![Citrix ShareFile konfigurace](./media/sharefile-tutorial/tutorial_sharefile_configure.png)
 
-7. V okně prohlížeče jiný web, přihlaste se k vaší **Citrix ShareFile** společnosti lokality jako správce.
+7. V okně jiné webové prohlížeče, přihlaste se do vaší **Citrix ShareFile** společnosti serveru jako správce.
 
 8. Na panelu nástrojů v horní části klikněte na tlačítko **správce**.
 
-9. V levém navigačním podokně, vyberte **nakonfigurovat jednotné přihlašování**.
+9. V levém navigačním podokně vyberte **konfigurovat Single Sign-On**.
    
     ![Účet správy](./media/sharefile-tutorial/ic773627.png "účet správy")
 
-10. Na **jednotného přihlašování nebo konfigurace SAML 2.0** dialogové okno stránky v rámci **základní nastavení**, proveďte následující kroky:
+10. Na **Single Sign-On / konfigurace SAML 2.0** dialogového okna stránky v části **základní nastavení**, proveďte následující kroky:
    
     ![Jednotné přihlašování](./media/sharefile-tutorial/ic773628.png "jednotného přihlašování")
    
     a. Klikněte na tlačítko **povolit SAML**.
     
-    b. V **vaše Vystavitel deklarací identity nebo Entity ID** textovému poli, vložte hodnotu **SAML Entity ID** který jste zkopírovali z portálu Azure.
+    b. V **vašeho zprostředkovatele identity vystavitele / Entity ID** textového pole vložte hodnotu **SAML Entity ID** zkopírovanou z webu Azure portal.
 
-    c. Klikněte na tlačítko **změnu** vedle **certifikát X.509** pole a pak nahrajte certifikát jste si stáhli z portálu Azure.
+    c. Klikněte na tlačítko **změnu** vedle **certifikát X.509** pole a pak nahrajte certifikát, který jste si stáhli z webu Azure portal.
     
-    d. V **přihlašovací adresa URL** textovému poli, vložte hodnotu **SAML jeden přihlašování adresa URL služby** který jste zkopírovali z portálu Azure.
+    d. V **přihlašovací adresa URL** textového pole vložte hodnotu **SAML jednotné přihlašování – adresa URL služby** zkopírovanou z webu Azure portal.
     
-    e. V **adresy URL odhlašovací** textovému poli, vložte hodnotu **Sign-Out URL** který jste zkopírovali z portálu Azure.
+    e. V **odhlašovací adresa URL** textového pole vložte hodnotu **odhlašování URL** zkopírovanou z webu Azure portal.
 
 11. Klikněte na tlačítko **Uložit** na portálu pro správu Citrix ShareFile.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovací uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
-Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
+Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-   ![Vytvořit testovací uživatele Azure AD][100]
+   ![Vytvořit testovacího uživatele Azure AD][100]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
 
-1. Na portálu Azure, v levém podokně klikněte **Azure Active Directory** tlačítko.
+1. Na webu Azure Portal, v levém podokně klikněte na tlačítko **Azure Active Directory** tlačítko.
 
     ![Tlačítko Azure Active Directory](./media/sharefile-tutorial/create_aaduser_01.png)
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na **všichni uživatelé**.
+2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
 
-    !["Uživatelé a skupiny" a "Všichni uživatelé" odkazy](./media/sharefile-tutorial/create_aaduser_02.png)
+    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](./media/sharefile-tutorial/create_aaduser_02.png)
 
 3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
 
@@ -198,77 +198,77 @@ Cílem této části je vytvoření zkušebního uživatele na portálu Azure, n
 
     b. V **uživatelské jméno** zadejte e-mailovou adresu uživatele Britta Simon.
 
-    c. Vyberte **zobrazit hesla** zaškrtněte políčko a zapište si ji hodnotu, která se zobrazí v **heslo** pole.
+    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
 
     d. Klikněte na možnost **Vytvořit**.
  
 ### <a name="create-a-citrix-sharefile-test-user"></a>Vytvoření zkušebního uživatele Citrix ShareFile
 
-Pokud chcete povolit uživatelům Azure AD přihlášení do systému Citrix ShareFile, musí být zřízená do Citrix ShareFile. V případě Citrix ShareFile zřizování je ruční úloha.
+Chcete-li povolit uživatele Azure AD k přihlášení do Citrix ShareFile, musí být poskytnuty do Citrix ShareFile. V případě Citrix ShareFile zřizování je ruční úloha.
 
-**K poskytnutí uživatelského účtu, proveďte následující kroky:**
+**K poskytnutí uživatelského účtu, postupujte následovně:**
 
-1. Přihlaste se k vaší **Citrix ShareFile** klienta.
+1. Přihlaste se k vaší **Citrix ShareFile** tenanta.
 
-2. Klikněte na tlačítko **Správa uživatelů \> spravovat uživatelé domovské \> + vytvořit zaměstnanec**.
+2. Klikněte na tlačítko **spravovat uživatele \> spravovat domácí uživatelé \> + vytvořit zaměstnance**.
    
    ![Vytvoření zaměstnance](./media/sharefile-tutorial/IC781050.png "vytvoření zaměstnance")
 
-3. Na **základní informace** část, proveďte následující kroky:
+3. Na **základní informace** části, proveďte následující kroky:
    
    ![Základní informace](./media/sharefile-tutorial/IC799951.png "základní informace")
    
-   a. V **e-mailovou adresu** textovému poli, zadejte e-mailovou adresu Britta Simon jako **brittasimon@contoso.com**.
+   a. V **e-mailovou adresu** textového pole zadejte e-mailovou adresu Britta Simon jako **brittasimon@contoso.com**.
    
-   b. V **křestní jméno** textovému poli, typ **křestní jméno** uživatele jako **Britta**.
+   b. V **křestní jméno** textové pole, typ **křestní jméno** uživatele jako **Britta**.
    
-   c. V **příjmení** textovému poli, typ **příjmení** uživatele jako **Simon**.
+   c. V **příjmení** textové pole, typ **příjmení** uživatele jako **Simon**.
 
 4. Klikněte na tlačítko **přidat uživatele**.
   
    >[!NOTE]
-   >Držitel účtu Azure AD budou dostávat e-mailu a postupujte podle odkaz potvrďte svůj účet, pak se změní na aktivní. Další nástroje pro tvorbu účet uživatele systému Citrix ShareFile nebo rozhraní API poskytovaných Citrix ShareFile můžete použít ke zřízení uživatelských účtů Azure AD.
+   >Držitel účtu Azure AD bude dostávat e-mailu a odkaz potvrďte svůj účet, pak se změní na aktivní. Další nástroje pro tvorbu Citrix ShareFile uživatelského účtu nebo rozhraní API poskytovaných Citrix ShareFile můžete použít ke zřízení uživatelských účtů služby Azure AD.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit testovacího uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu Citrix ShareFile.
+V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k Citrix ShareFile.
 
-![Přiřadit role uživatele][200] 
+![Přiřazení role uživatele][200] 
 
-**Pokud chcete přiřadit Britta Simon Citrix ShareFile, proveďte následující kroky:**
+**Citrix ShareFile přiřadit Britta Simon, proveďte následující kroky:**
 
-1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
+1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
 2. V seznamu aplikací vyberte **Citrix ShareFile**.
 
-    ![V seznamu aplikací na odkaz Citrix ShareFile](./media/sharefile-tutorial/tutorial_sharefile_app.png)  
+    ![Citrix ShareFile odkaz v seznamu aplikací](./media/sharefile-tutorial/tutorial_sharefile_app.png)  
 
 3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
-    ![Odkaz "Uživatelé a skupiny"][202]
+    ![Odkaz "Uživatele a skupiny"][202]
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.
+4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
-    ![V podokně Přidat přiřazení][203]
+    ![Podokno Přidat přiřazení][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
+5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
+6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
+7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
 ### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
-V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
+V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Když kliknete na dlaždici Citrix ShareFile na přístupovém panelu, můžete by měl získat automaticky přihlášení k aplikaci Citrix ShareFile.
-Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](../active-directory-saas-access-panel-introduction.md). 
+Po kliknutí na dlaždici Citrix ShareFile na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci Citrix ShareFile.
+Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](tutorial-list.md)
+* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->

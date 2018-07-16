@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s iWellnessNow | Microsoft Docs'
+title: 'Kurz: Integrace Azure Active Directory se službou iWellnessNow | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a iWellnessNow.
 services: active-directory
 documentationCenter: na
@@ -15,151 +15,151 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: d5fe4b6703f9b860932e36a296f3d103a4f94807
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 4f5ff9906ec5a4f57d64704a4b10cf7027878e72
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36219852"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39047072"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-iwellnessnow"></a>Kurz: Azure Active Directory integrace s iWellnessNow
+# <a name="tutorial-azure-active-directory-integration-with-iwellnessnow"></a>Kurz: Integrace Azure Active Directory se službou iWellnessNow
 
-V tomto kurzu zjistěte, jak integrovat iWellnessNow s Azure Active Directory (Azure AD).
+V tomto kurzu se dozvíte, jak integrovat iWellnessNow s Azure Active Directory (Azure AD).
 
-Integrace iWellnessNow s Azure AD poskytuje následující výhody:
+IWellnessNow integraci se službou Azure AD poskytuje následující výhody:
 
-- Můžete ovládat ve službě Azure AD, který má přístup k iWellnessNow.
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k iWellnessNow (jednotné přihlášení) s jejich účty Azure AD.
-- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure.
+- Můžete řídit ve službě Azure AD, který má přístup k iWellnessNow.
+- Můžete povolit uživatelům, aby automaticky získat přihlášení k iWellnessNow (Single Sign-On) s jejich účty Azure AD.
+- Můžete spravovat své účty na jediném místě – na webu Azure portal.
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
 Konfigurace integrace Azure AD s iWellnessNow, potřebujete následující položky:
 
-- Předplatné služby Azure AD
-- IWellnessNow jednotné přihlašování povolené předplatné
+- S předplatným služby Azure AD
+- IWellnessNow jednotného přihlašování povolená předplatného
 
 > [!NOTE]
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
 
-- Nepoužívejte provozním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verze Azure AD, můžete [získat zkušební verzi jeden měsíc](https://azure.microsoft.com/pricing/free-trial/).
+- Nepoužívejte produkčním prostředí, pokud to není nutné.
+- Pokud nemáte prostředí zkušební verzi Azure AD, můžete si [získat měsíční zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání iWellnessNow z Galerie
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
 ## <a name="adding-iwellnessnow-from-the-gallery"></a>Přidání iWellnessNow z Galerie
-Při konfiguraci integrace iWellnessNow do služby Azure AD musíte přidat do seznamu spravovaných aplikací SaaS iWellnessNow z galerie.
+Konfigurace integrace iWellnessNow do služby Azure AD, budete muset přidat iWellnessNow z Galerie na váš seznam spravovaných aplikací SaaS.
 
-**Pokud chcete přidat iWellnessNow z galerie, proveďte následující kroky:**
+**Chcete-li přidat iWellnessNow z galerie, postupujte následovně:**
 
-1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
+1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![V okně podnikové aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Tlačítko nové aplikace][3]
 
-4. Do vyhledávacího pole zadejte **iWellnessNow**, vyberte **iWellnessNow** z panelu výsledků klikněte **přidat** tlačítko Přidat aplikaci.
+4. Do vyhledávacího pole zadejte **iWellnessNow**vyberte **iWellnessNow** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
     ![iWellnessNow v seznamu výsledků](./media/iwellnessnow-tutorial/tutorial_iwellnessnow_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování Azure AD jednotné přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s iWellnessNow podle testovacího uživatele názvem "Britta Simon".
+V této části Konfigurace a testování Azure AD jednotné přihlašování pomocí iWellnessNow podle testovacího uživatele nazývá "Britta Simon".
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v iWellnessNow je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v iWellnessNow musí navázat.
+Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšky v iWellnessNow je pro uživatele ve službě Azure AD. Jinými slovy vztah odkazu mezi uživatele služby Azure AD a související uživatelské v iWellnessNow potřeba navázat.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s iWellnessNow, je třeba dokončit následující stavební bloky:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s iWellnessNow, které potřebujete k dokončení následujících stavebních bloků:
 
-1. **[Konfigurovat Azure AD jednotné přihlašování](#configure-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
-2. **[Vytvořit testovací uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvořit testovací uživatele s iWellnessNow](#create-an-iwellnessnow-test-user)**  – Pokud chcete mít protějšek Britta Simon v iWellnessNow propojeném s Azure AD reprezentace daného uživatele.
-4. **[Přiřadit testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. **[Test jednotného přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
+1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+2. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytvořit testovacího uživatele iWellnessNow](#create-an-iwellnessnow-test-user)**  – Pokud chcete mít protějšek Britta Simon v iWellnessNow, který je propojený s Azure AD reprezentace uživatele.
+4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurovat Azure AD jednotné přihlašování
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci iWellnessNow.
+V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování v aplikaci iWellnessNow.
 
 **Ke konfiguraci Azure AD jednotné přihlašování s iWellnessNow, proveďte následující kroky:**
 
-1. Na portálu Azure na **iWellnessNow** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. Na webu Azure Portal na **iWellnessNow** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
 
-    ![Konfigurace propojení přihlášení][4]
+    ![Nakonfigurovat jednotné přihlašování – odkaz][4]
 
-2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
+2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
-    ![Jediné přihlášení dialogové okno](./media/iwellnessnow-tutorial/tutorial_iwellnessnow_samlbase.png)
+    ![Jednotné přihlašování – dialogové okno](./media/iwellnessnow-tutorial/tutorial_iwellnessnow_samlbase.png)
 
-3. Na **iWellnessNow domény a adresy URL** část, pokud máte **soubor metadat poskytovatele služeb** a chcete nakonfigurovat aplikace **IDP** iniciované režimu, proveďte Následující kroky:
+3. Na **iWellnessNow domény a adresy URL** části, pokud máte **soubor metadat poskytovatele služeb** a chcete nakonfigurovat aplikace v **zprostředkovatele identity** iniciované režimu, proveďte Následující kroky:
 
-    ![nahrávání iWellnessNow domény a adresy URL jednotné přihlašování](./media/iwellnessnow-tutorial/tutorial_iwellnessnow_upload.png)
+    ![nahrávání iWellnessNow domény a adresy URL jednotného přihlašování](./media/iwellnessnow-tutorial/tutorial_iwellnessnow_upload.png)
 
-    a. Klikněte na tlačítko **metadata souboru k odeslání**.
+    a. Klikněte na tlačítko **nahrát soubor metadat**.
 
-    ![uploadconfig iWellnessNow domény a adresy URL jednotné přihlašování](./media/iwellnessnow-tutorial/tutorial_iwellnessnow_uploadconfig.png)
+    ![uploadconfig iWellnessNow domény a adresy URL jednotného přihlašování](./media/iwellnessnow-tutorial/tutorial_iwellnessnow_uploadconfig.png)
 
-    b. Klikněte na **složky logo** vyberte soubor metadat a klikněte na tlačítko **nahrát**.
+    b. Klikněte na **složky logo** vyberte soubor metadat a klikněte na **nahrát**.
     
-    c. Po úspěšném dokončení odesílání **soubor metadat poskytovatele služeb** **identifikátor** a **adresa URL odpovědi** hodnoty získat automaticky vyplní v  **iWellnessNow domény a adresy URL** části textového pole, jak je uvedeno níže:
+    c. Po úspěšném dokončení nahrávání **soubor metadat poskytovatele služeb** **identifikátor** a **adresy URL odpovědi** hodnoty získat automaticky vyplní v  **iWellnessNow domény a adresy URL** části textového pole, jak je znázorněno níže:
 
-    ![iWellnessNow domény a adresy URL jeden přihlašování informace](./media/iwellnessnow-tutorial/tutorial_iwellnessnow_url3.png)
+    ![iWellnessNow domény a adresy URL jednotné přihlašování – informace](./media/iwellnessnow-tutorial/tutorial_iwellnessnow_url3.png)
 
-4. Pokud nemáte **soubor metadat poskytovatele služeb** a chcete nakonfigurovat aplikace **IDP** iniciované režimu, proveďte následující kroky:
+4. Pokud nemáte **soubor metadat poskytovatele služeb** a chcete nakonfigurovat aplikace v **IDP** iniciované režimu, proveďte následující kroky:
 
-    ![iWellnessNow domény a adresy URL jeden přihlašování informace](./media/iwellnessnow-tutorial/tutorial_iwellnessnow_url.png)
+    ![iWellnessNow domény a adresy URL jednotné přihlašování – informace](./media/iwellnessnow-tutorial/tutorial_iwellnessnow_url.png)
 
-    a. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `http://<CustomerName>.iwellnessnow.com`
+    a. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru: `http://<CustomerName>.iwellnessnow.com`
 
-    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<CustomerName>.iwellnessnow.com/ssologin`
+    b. V **adresy URL odpovědi** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<CustomerName>.iwellnessnow.com/ssologin`
 
-5. Zkontrolujte **zobrazit upřesňující nastavení adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace **SP** iniciované režimu:
+5. Zkontrolujte **zobrazit pokročilé nastavení URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
 
-    ![iWellnessNow domény a adresy URL jeden přihlašování informace](./media/iwellnessnow-tutorial/tutorial_iwellnessnow_url1.png)
+    ![iWellnessNow domény a adresy URL jednotné přihlašování – informace](./media/iwellnessnow-tutorial/tutorial_iwellnessnow_url1.png)
 
-    V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<CustomerName>.iwellnessnow.com/`
+    V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<CustomerName>.iwellnessnow.com/`
      
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte se skutečným identifikátorem, adresa URL odpovědi a přihlašovací adresa URL. Obraťte se na [tým podpory klienta iWellnessNow](mailto:info@iwellnessnow.com) k získání těchto hodnot.
+    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte skutečné identifikátor, adresa URL odpovědi a přihlašovací adresa URL. Kontakt [tým podpory klienta iWellnessNow](mailto:info@iwellnessnow.com) k získání těchto hodnot.
 
-5. Na **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat ve vašem počítači.
+5. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor metadat ve vašem počítači.
 
     ![Odkaz ke stažení certifikátu](./media/iwellnessnow-tutorial/tutorial_iwellnessnow_certificate.png) 
 
 6. Klikněte na tlačítko **Uložit** tlačítko.
 
-    ![Nakonfigurujte jeden přihlašování uložit tlačítko](./media/iwellnessnow-tutorial/tutorial_general_400.png)
+    ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/iwellnessnow-tutorial/tutorial_general_400.png)
     
-7. Konfigurace jednotného přihlašování na **iWellnessNow** straně, budete muset odeslat stažené **soubor XML s metadaty** k [tým podpory iWellnessNow](mailto:info@iwellnessnow.com). Nastavují toto nastavení tak, aby měl jednotné přihlašování SAML připojení správně nastavena na obou stranách.
+7. Ke konfiguraci jednotného přihlašování na **iWellnessNow** straně, je nutné odeslat na stažený **soubor XML s metadaty** k [tým podpory iWellnessNow](mailto:info@iwellnessnow.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovací uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
-Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
+Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-   ![Vytvořit testovací uživatele Azure AD][100]
+   ![Vytvořit testovacího uživatele Azure AD][100]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
 
-1. Na portálu Azure, v levém podokně klikněte **Azure Active Directory** tlačítko.
+1. Na webu Azure Portal, v levém podokně klikněte na tlačítko **Azure Active Directory** tlačítko.
 
     ![Tlačítko Azure Active Directory](./media/iwellnessnow-tutorial/create_aaduser_01.png)
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na **všichni uživatelé**.
+2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
 
-    !["Uživatelé a skupiny" a "Všichni uživatelé" odkazy](./media/iwellnessnow-tutorial/create_aaduser_02.png)
+    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](./media/iwellnessnow-tutorial/create_aaduser_02.png)
 
 3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
 
@@ -173,54 +173,54 @@ Cílem této části je vytvoření zkušebního uživatele na portálu Azure, n
 
     b. V **uživatelské jméno** zadejte e-mailovou adresu uživatele Britta Simon.
 
-    c. Vyberte **zobrazit hesla** zaškrtněte políčko a zapište si ji hodnotu, která se zobrazí v **heslo** pole.
+    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
 
     d. Klikněte na možnost **Vytvořit**.
  
-### <a name="create-an-iwellnessnow-test-user"></a>Vytvořit uživatele s iWellnessNow testu
+### <a name="create-an-iwellnessnow-test-user"></a>Vytvořit testovacího uživatele iWellnessNow
 
-V této části vytvoříte volal Britta Simon v iWellnessNow uživatele. Práce s [tým podpory iWellnessNow](mailto:info@iwellnessnow.com) přidat uživatele do iWellnessNow platformy. Uživatelé musí být vytvořen a aktivovat před použitím jednotného přihlašování
+V této části vytvoříte uživatele v iWellnessNow jako Britta Simon. Práce s [tým podpory iWellnessNow](mailto:info@iwellnessnow.com) přidat uživatele na platformě iWellnessNow. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit testovacího uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-V této části povolíte Britta Simon chcete použít Azure jednotného přihlašování k udělení přístupu k iWellnessNow.
+V této části je povolit Britta Simon používat jednotné přihlašování Azure tím, že udělíte přístup k iWellnessNow.
 
-![Přiřadit role uživatele][200] 
+![Přiřazení role uživatele][200] 
 
-**Pokud chcete přiřadit Britta Simon iWellnessNow, proveďte následující kroky:**
+**Přiřadit iWellnessNow Britta Simon, proveďte následující kroky:**
 
-1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
+1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
 2. V seznamu aplikací vyberte **iWellnessNow**.
 
-    ![V seznamu aplikací na iWellnessNow odkaz](./media/iwellnessnow-tutorial/tutorial_iwellnessnow_app.png)  
+    ![Odkaz iWellnessNow v seznamu aplikací](./media/iwellnessnow-tutorial/tutorial_iwellnessnow_app.png)  
 
 3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
-    ![Odkaz "Uživatelé a skupiny"][202]
+    ![Odkaz "Uživatele a skupiny"][202]
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.
+4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
-    ![V podokně Přidat přiřazení][203]
+    ![Podokno Přidat přiřazení][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
+5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
+6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
+7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
 ### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
-V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
+V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Když kliknete na dlaždici iWellnessNow na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci iWellnessNow.
-Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](../active-directory-saas-access-panel-introduction.md). 
+Po kliknutí na dlaždici iWellnessNow na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci iWellnessNow.
+Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](tutorial-list.md)
+* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

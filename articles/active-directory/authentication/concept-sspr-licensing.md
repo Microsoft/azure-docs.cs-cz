@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 64c12177e5cf6c82018731b493c0da22e1895b7f
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: e185b67ae73b86b5f1c3b6cda884de05eb89c6fd
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37855520"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049080"
 ---
 # <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Resetovat licenčních požadavcích pro hesla pomocí samoobslužné služby Azure AD
 
@@ -53,13 +53,13 @@ Další licenční informace, včetně nákladů, najdete na následujících st
 
 Azure AD teď podporuje licencování na základě skupiny. Správci mohou přiřadit hromadných licencí ke skupině uživatelů, a ne přiřazení postupně po jednom. Další informace najdete v tématu [přiřadit zkontrolujte a vyřešte problémy s licencemi](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses).
 
-Některé služby nejsou k dispozici ve všech umístěních. Předtím, než je možné přiřadit licence pro uživatele, musí správce zadat **místo využívání** vlastnost na uživatele. Přiřazení licencí můžete udělat v rámci **uživatele** > **profilu** > **nastavení** části webu Azure Portal. *Při použití přiřazení licence skupině dědí všechny uživatele bez zadaného místa využití umístění adresáře.*
+Některé služby Microsoft nejsou dostupné ve všech umístěních. Předtím, než je možné přiřadit licence pro uživatele, musí správce zadat **místo využívání** vlastnost na uživatele. Přiřazení licencí můžete udělat v rámci **uživatele** > **profilu** > **nastavení** části webu Azure Portal. *Při použití přiřazení licence skupině dědí všechny uživatele bez zadaného místa využití umístění adresáře.*
 
 ## <a name="next-steps"></a>Další postup
 
 * [Jak dokončit úspěšné zavedení SSPR?](howto-sspr-deployment.md)
-* [Resetování nebo změna hesla](../active-directory-passwords-update-your-own-password.md)
-* [Registrace samoobslužného resetování hesla](../active-directory-passwords-reset-register.md)
+* [Resetování nebo změna hesla](../user-help/active-directory-passwords-update-your-own-password.md)
+* [Registrace samoobslužného resetování hesla](../user-help/active-directory-passwords-reset-register.md)
 * [Jaká data používá SSPR a která data byste měli naplnit pro vaše uživatele?](howto-sspr-authenticationdata.md)
 * [Které metody ověřování jsou dostupné pro uživatele?](concept-sspr-howitworks.md#authentication-methods)
 * [Jaké jsou možnosti zásad se SSPR?](concept-sspr-policy.md)
