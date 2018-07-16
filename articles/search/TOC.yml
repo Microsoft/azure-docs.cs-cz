@@ -143,7 +143,7 @@
           href: search-synonyms.md
     - name: Indexování dat
       items:
-        - name: Indexování typu Push  a Pull
+        - name: Indexování typu Push a Pull
           href: search-what-is-data-import.md
         - name: Průvodce importem (portál)
           href: search-import-data-portal.md

@@ -37,10 +37,12 @@
   items:
     - name: Správce
       items:
-        - name: Vytvoření aplikace
-          href: howto-create-application.md
+        - name: Vytvoření a správa aplikace jako odběratel CSP
+          href: howto-create-and-manage-applications-as-CSP.md
         - name: Správa vaší aplikace
           href: howto-administer.md
+        - name: Export dat
+          href: howto-export-data.md
     - name: Tvůrce
       items:
         - name: Nastavení šablony zařízení
@@ -49,6 +51,10 @@
           href: howto-version-devicetemplate.md
         - name: Vytvoření pravidla telemetrie
           href: howto-create-telemetry-rules.md
+        - name: Vytvoření pravidla událostí
+          href: howto-create-event-rules.md
+        - name: Sestavení pracovních postupů v Microsoft Flow
+          href: howto-add-microsoft-flow.md
         - name: Konfigurace domovské stránky
           href: howto-configure-homepage.md
         - name: Příprava a nahrávání obrázků
