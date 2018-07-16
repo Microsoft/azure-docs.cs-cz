@@ -10,17 +10,17 @@ ms.author: ghogen
 ms.date: 05/11/2018
 ms.topic: include
 manager: douge
-ms.openlocfilehash: 85f8632aae8a70b1282155881dbca6b25734a6c5
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 2f2177b289ba9d13ba635bddcd61748e1e8ab0d1
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37933200"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39063096"
 ---
 ### <a name="run-the-service"></a>Spuštění služby
 
 1. Pokud chcete spustit službu, stiskněte klávesu F5 (nebo v okně terminálu zadejte `azds up`). Služba se automaticky spustí v nově vybraném prostoru `default/scott`. 
-1. Opětovným spuštěním `azds list` můžete ověřit, že je vaše služba spuštěná ve vlastním prostoru. Nejprve si můžete všimnout, že instance `mywebapi` je nyní spuštěná v prostoru `default/scott` (verze spuštěná v `default` je stále spuštěná, ale není uvedená). Dále bude mít adresa URL přístupového bodu pro `webfrontend` předponu s textem „scott.s.“. Tato adresa URL je jedinečná pro prostor `default/scott`. Tato speciální adresa URL značí, že požadavky odeslané na adresu URL scott vyzkouší nejprve trasu ke službám v prostoru `default/scott`, ale pokud se to nezdaří, přejdou zpět ke službám v prostoru `default`.
+1. Opětovným spuštěním `azds list-up` můžete ověřit, že je vaše služba spuštěná ve vlastním prostoru. Nejprve si můžete všimnout, že instance `mywebapi` je nyní spuštěná v prostoru `default/scott` (verze spuštěná v `default` je stále spuštěná, ale není uvedená). Dále bude mít adresa URL přístupového bodu pro `webfrontend` předponu s textem „scott.s.“. Tato adresa URL je jedinečná pro prostor `default/scott`. Tato speciální adresa URL značí, že požadavky odeslané na adresu URL scott vyzkouší nejprve trasu ke službám v prostoru `default/scott`, ale pokud se to nezdaří, přejdou zpět ke službám v prostoru `default`.
 
 ```
 Name         Space          Chart              Ports   Updated     Access Points

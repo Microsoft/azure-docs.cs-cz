@@ -56,7 +56,7 @@
 ## [Vytváření sestav](../active-directory/authentication/howto-mfa-reporting.md)
 ### [Shromažďování dat](../active-directory/authentication/howto-mfa-reporting-datacollection.md)
 
-## [Uživatelská příručka k MFA](../active-directory/authentication/end-user/current/multi-factor-authentication-end-user.md)
+## [Uživatelská příručka k MFA](../active-directory/user-help/multi-factor-authentication-end-user.md)
 
 ## Řešení potíží
 ### [Nejčastější dotazy](../active-directory/authentication/multi-factor-authentication-faq.md)

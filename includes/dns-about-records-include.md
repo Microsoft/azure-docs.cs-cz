@@ -2,13 +2,13 @@
 
 V Azure DNS se záznamy zadávají pomocí relativních názvů. „Plně kvalifikovaný“ *název* domény (FQDN) obsahuje název zóny, zatímco „relativní“ název ho *neobsahuje.* Například relativní název záznamu „www“ v zóně „contoso.com“ dává plně kvalifikovaný název záznamu www.contoso.com.
 
-Záznam *„vrcholu“* je záznam DNS v kořeni (nebo *„vrcholu“*) zóny DNS. Například v zóně DNS nazvané „contoso.com“ má název vrcholu také plně kvalifikovaný název „contoso.com“ (někdy se označuje jako *základní* doména).  Podle konvence se k vyjádření záznamů vrcholu používá relativní název '@'.
+Záznam *„vrcholu“* je záznam DNS v kořeni (nebo *„vrcholu“*) zóny DNS. Například v zóně DNS nazvané „contoso.com“ má název vrcholu také plně kvalifikovaný název „contoso.com“ (někdy se označuje jako *základní* doména).  Podle konvence, relativní název '\@' slouží k vyjádření záznamů vrcholu.
 
 ### <a name="record-types"></a>Typy záznamů
 
 Každý záznam DNS má název a typ. Záznamy jsou uspořádány do různých typů podle dat, která obsahují. Nejběžnějším typem je záznam „A“, který mapuje název na adresu IPv4. Dalším běžným typem záznamu je „MX“, který mapuje název na poštovní server.
 
-Azure DNS podporuje všechny běžné typy záznamů DNS: A, AAAA, KÁ, CNAME, MX, NS, PTR, SOA, SRV a TXT. [Záznamy SPF se vyjadřují pomocí záznamů TXT](../articles/dns/dns-zones-records.md#spf-records).
+Azure DNS podporuje všechny běžné typy záznamů DNS: A, AAAA, CAA, CNAME, MX, NS, PTR, SOA, SRV a TXT. [Záznamy SPF se vyjadřují pomocí záznamů TXT](../articles/dns/dns-zones-records.md#spf-records).
 
 ### <a name="record-sets"></a>Sady záznamů
 
