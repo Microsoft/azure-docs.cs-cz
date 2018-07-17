@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/25/2018
 ms.author: juliako
-ms.openlocfilehash: 5ed98bb4c4f40b23988a4f73778e715bfbea2505
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: fb8730e9074624ba1b0f0162ebf9156b758b59c2
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39004929"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39068780"
 ---
 # <a name="content-protection-overview"></a>Přehled ochrany obsahu
 
@@ -54,9 +54,9 @@ Pro úspěšné dokončení návrhu "content protection" systému nebo aplikace,
   
     Přehrávač můžete vytvořit pomocí [rozhraní API služby Azure Media Player](http://amp.azure.net/libs/amp/latest/docs/). Použít [rozhraní API služby Azure Media Player ProtectionInfo](http://amp.azure.net/libs/amp/latest/docs/) zadat technologii DRM, která má používat na různých platformách DRM.
 
-    Pro testování AES nebo šifrování CENC (Widevine + PlayReady) zašifrovaný obsah, můžete použít [Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html). Ujistěte se, že klikněte na "Pokročilé možnosti" a zkontrolujte AES a zadejte token.
+    Pro testování AES nebo šifrování CENC (Widevine a/nebo technologií PlayReady) zašifrovaný obsah, můžete použít [Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html). Ujistěte se, že klikněte na "Pokročilé možnosti" a zkontrolujte možnosti šifrování.
 
-    Pokud chcete testovat FairPlay zašifrovaný obsah, použijte [tento test přehrávač](http://aka.ms/amtest). Přehrávač podporuje Widevine, PlayReady, a technologiemi FairPlay DRM a standardu AES-128 s nezašifrovaným klíčem. Musíte zvolit správný prohlížeče k testování různých technologiemi DRM: Chrome/Opera/Firefox Widevine, MS Edge/11 pro PlayReady, Safari v maOS pro FairPlay.
+    Pokud chcete testovat FairPlay zašifrovaný obsah, použijte [tento test přehrávač](http://aka.ms/amtest). Přehrávač podporuje Widevine, PlayReady, a technologiemi FairPlay DRM a standardu AES-128 s nezašifrovaným klíčem. Musíte zvolit správný prohlížeče k testování různých technologiemi DRM: Chrome/Opera/Firefox pro MS Edge/11 pro PlayReady, Widevine, Safari v systému macOS pro FairPlay.
 
 3. Zabezpečení služby tokenů (STS), která vydává JSON Web Token (JWT) jako přístupový token pro přístup k prostředkům back-endu. AMS služeb doručování licencí můžete použít jako back-endový prostředek. Služby STS musí definovat následující:
 
@@ -122,18 +122,6 @@ Pomocí omezení tokenem obsahu klíče zásad pouze na klienta, který předsta
 
 Když konfigurujete zásady omezení tokenem, musíte zadat primární ověřovací klíč, vydavatele a parametry cílovou skupinu. Primární ověřovací klíč obsahuje klíč, který byl token podepsán pomocí. Vystavitel je služba tokenů zabezpečení, který vydá token. Cílové skupiny, někdy označuje jako obor, by měl popisovat záměr tokenu nebo prostředek token, který autorizuje přístup k. Služba Media Services doručení klíče ověří, že tyto hodnoty v tokenu odpovídají hodnotám v šabloně.
 
-## <a name="streaming-urls"></a>Adresy URL pro streamování
-
-Pokud váš asset byla zašifrována s více DRM, použijte značku šifrování v adrese URL streamování: (format = "m3u8-aapl" šifrování = "xxx").
-
-Platí následující aspekty:
-
-* Typ šifrování nemusí být zadané v adrese URL, pokud pouze jeden šifrování byla použita k assetu.
-* Typ šifrování se nerozlišují malá a velká písmena.
-* Můžete zadat následující typy šifrování:
-  * **šifrování cenc**: pro PlayReady nebo Widevine (Standard common encryption)
-  * **cbcs-aapl**: pro FairPlay (AES CBC šifrování)
-  * **CBC**: šifrování AES pro obálky
 
 ## <a name="next-steps"></a>Další postup
 

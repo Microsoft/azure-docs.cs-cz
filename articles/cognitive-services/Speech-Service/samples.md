@@ -1,6 +1,6 @@
 ---
-title: Kognitivní Services řeči SDK ukázkový kód | Microsoft Docs
-description: Ukázky kódu pro používání služby Microsoft Speech
+title: Cognitive Services sadou SDK pro řeč ukázkového kódu | Dokumentace Microsoftu
+description: Ukázky kódu pro použití Microsoft Speech service
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: v-jerkin
@@ -10,25 +10,25 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: d4b14d27f692272d29c5f2e3552ad386f3154cf2
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 59516f9ee1de0acb8d0ab66adfaae249b44de9c9
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "35343968"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39070769"
 ---
-# <a name="samples-for-the-cognitive-services-speech-sdk"></a>Ukázky pro rozpoznávání řeči kognitivní služby SDK
+# <a name="samples-for-the-cognitive-services-speech-sdk"></a>Ukázky pro zpracování řeči služeb Cognitive Services SDK
 
-Nejnovější sadu vzorků, najdete v článku [úložiště GitHub SDK ukázka kognitivní služby řeči](https://aka.ms/csspeech/samples).
+Nejnovější sady vzorků, které se sadou SDK pro řeč, najdete v článku [úložiště GitHub SDK ukázka Cognitive Services řeči](https://aka.ms/csspeech/samples).
 
-- [Stažení ukázky pro Android (pouze pro sadu SDK řeči zařízení)](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK)
+Zařízení sadou SDK pro řeč, stáhněte si ukázky pro Android [tady](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
 
-Všechny ukázky jsou uvedeny v části licencí MIT.
+Všechny ukázky jsou k dispozici v rámci licence MIT.
 
-- [Zaregistrujte si sady SDK zařízení řeči](get-speech-devices-sdk.md)
+- [Zaregistrujte zařízení sadou SDK pro řeč](get-speech-devices-sdk.md)
 
 # <a name="next-steps"></a>Další postup
 
-* [Získat zkušební verze předplatného řeči](https://azure.microsoft.com/try/cognitive-services/)
-* [Informace o tom, rozpoznávat řeč v jazyce C#](quickstart-csharp-windows.md)
+* [Získání zkušebního předplatného služby Speech](https://azure.microsoft.com/try/cognitive-services/)
+* [Zjistěte, jak rozpoznávat řeč v jazyce C#](quickstart-csharp-dotnet-windows.md)
 

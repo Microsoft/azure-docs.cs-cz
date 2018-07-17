@@ -1,5 +1,5 @@
 ---
-title: Kvóty a omezení v Azure Media Services v3 | Microsoft Docs
+title: Kvóty a omezení v Azure Media Services v3 | Dokumentace Microsoftu
 description: Toto téma popisuje kvóty a omezení v Azure Media Services v3
 services: media-services
 documentationcenter: ''
@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 06/13/2018
+ms.date: 07/17/2018
 ms.author: juliako
-ms.openlocfilehash: 14779306815681c368a98d698a6688d528a6c747
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: b50ba825f675c84f551f9a1d191aa93eaed9a628
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294025"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39070845"
 ---
 # <a name="quotas-and-limitations-in-azure-media-services-v3"></a>Kvóty a omezení v Azure Media Services v3
 
@@ -25,38 +25,39 @@ Tento článek popisuje kvóty a omezení v Azure Media Services v3.
 | Prostředek | Výchozí omezení | 
 | --- | --- | 
 | Prostředky na účtu Azure Media Services | 1 000 000|
-| JobInputs na úlohu | 50 (pevná)|
-| JobOutputs za úlohy nebo TransformOutputs v transformace | 20 (pevná) |
-| Soubory na JobInput|10 (pevná)|
-| Velikost souboru| V některých případech je limit na maximální velikost souboru pro zpracování ve službě Media Services podporována. <sup>(1)</sup> |
-| Úloh na účtu Media Services | 500 000 <sup>(2)</sup> (pevná)|
-| Seznam transformací|Stránkování odpověď, a to s 1 000 transformace na stránce|
+| Filtry dynamických manifestů|100|
+| JobInputs na úlohu | 50 (fixní)|
+| JobOutputs za úlohu/TransformOutputs v transformace | 20 (fixní) |
+| Soubory za JobInput|10 (fixní)|
+| Velikost souboru| V některých scénářích platí omezení na maximální velikost souboru podporovaná při zpracování ve službě Media Services. <sup>(1)</sup> |
+| Úloh na účet Media Services | 500 000 <sup>(2)</sup> (fixní)|
+| Seznam transformací|Stránkování odpověď, a to s 1 000 transformace na jedné stránce|
 | Seznam úloh|Stránkování odpověď, a to s 500 úloh na stránce|
-| LiveEvents za účtu Media Services |5|
-| Účty služby Media Services v rámci jednoho předplatného | 25 (pevné) |
-| StreamingPolicies | 1 000 000<sup>(3)</sup> |
-| LiveOutputs v běžícím stavu za LiveEvent |3|
-| LiveOutputs v zastaveném stavu za LiveEvent |50|
-| Účty úložiště | 100<sup>(4)</sup> (pevná) |
-| Koncové body streamování v běžícím stavu na účtu Media Services|2|
-| Transformuje na účtu Media Services | 100 (pevná)|
-| Jedinečné StreamingLocators přidružený prostředek v jednom okamžiku | 20<sup>(5)</sup> |
+| LiveEvents na účtu Azure Media Services |5|
+| Účty Media Services v rámci jednoho předplatného | 25 (pevné) |
+| LiveOutputs ve spuštěném stavu na Livestream |3|
+| LiveOutputs v zastaveném stavu na jeden Livestream |50|
+| Účty úložiště | 100<sup>(4)</sup> (fixní) |
+| Koncové body streamování ve spuštěném stavu na účtu Azure Media Services|2|
+| StreamingPolicies | 100 <sup>(3)</sup> |
+| Transformuje na účtu Azure Media Services | 100 (fixní)|
+| Jedinečné StreamingLocators přidružené k prostředku najednou | 100<sup>(5)</sup> (fixní) |
 
-<sup>1</sup> maximální velikost podporovaná pro jeden objekt blob je momentálně až 5 TB ve službě Azure Blob Storage. Další omezení však použít v závislosti na velikosti virtuálních počítačů, které používají službu Azure Media Services. Pokud váš zdrojový soubor je větší než 260 GB, vaše úlohy se pravděpodobně nezdaří. Pokud máte 4K obsahu, který je větší než limit 260 GB, kontaktujte nás na adrese amshelp@microsoft.com pro potenciální jejich zmírnění pro podporu váš scénář.
+<sup>1</sup> maximální velikost podporovaná pro jeden objekt blob je aktuálně ve službě Azure Blob Storage až 5 TB. Další omezení platí ale, v závislosti na velikosti virtuálních počítačů, které používají službu Azure Media Services. Pokud zdrojový soubor je větší než 260 GB, vaše úloha se pravděpodobně nezdaří. Pokud máte 4 kB obsah, který je větší než limit 260 GB, kontaktujte nás na adrese amshelp@microsoft.com pro zmírnit na podporu vašeho scénáře.
 
-<sup>2</sup> toto číslo zahrnuje zařazených do fronty, dokončení, aktivní a zrušené úlohy. Neobsahuje odstraněné úlohy. 
+<sup>2</sup> toto číslo zahrnuje zařazených do fronty, dokončené, aktivní a zrušené úlohy. Nezahrnuje odstraněné úlohy. 
 
-Záznam všechny úlohy ve vašem účtu, který je starší než 90 dní se automaticky odstraní, i v případě, že celkový počet záznamů je nižší než maximální kvótu. 
+Libovolný záznam úlohy ve vašem účtu, který je starší než 90 dní automaticky odstraní, i v případě, že celkový počet záznamů je nižší než maximální kvóta. 
 
-<sup>3</sup> při použití vlastní [StreamingPolicy](https://docs.microsoft.com/rest/api/media/streamingpolicies), doporučujeme navrhnout omezená sada takových zásad pro váš účet Media Service a znovu je použít pro vaše StreamingLocators vždy, když šifrování stejné možnosti a protokoly je potřeba. Neměli byste vytvářet samostatnou zásadu streamování pro každý streamovací lokátor.
+<sup>3</sup> při použití vlastního [StreamingPolicy](https://docs.microsoft.com/rest/api/media/streamingpolicies), by měly omezenou sadu zásad návrhu pro svůj účet Media Service a znovu je použít pro vaše StreamingLocators pokaždé, když se na stejné šifrování možnosti a protokoly jsou potřeba. Neměli byste vytvářet samostatnou zásadu streamování pro každý streamovací lokátor.
 
-<sup>4</sup> účtů úložiště musí být ze stejného předplatného Azure.
+<sup>4</sup> účtů úložiště musí být ve stejném předplatném Azure.
 
-<sup>5</sup> StreamingLocators nejsou určených pro správu řízení přístupu na uživatele. Pokud chcete konkrétním uživatelům poskytnout různá přístupová práva, použijte řešení pro správu digitálních práv (DRM).
+<sup>5</sup> StreamingLocators nejsou určeny pro správu řízení přístupu na uživatele. Pokud chcete konkrétním uživatelům poskytnout různá přístupová práva, použijte řešení pro správu digitálních práv (DRM).
 
-## <a name="support-ticket"></a>Lístku podpory
+## <a name="support-ticket"></a>Lístek podpory
 
-Pro prostředky, které nejsou opravit, můžete požádat o kvóty, které se vyvolá, otevřením [lístek podpory](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest). Podrobné informace zahrnují v požadavku na změny požadované kvótu, případ použití scénáře a požadované oblasti. <br/>**Nevytvářejte** další účty služby Azure Media Services ve snaze zajistit vyšší limity.
+Pro prostředky, které nejsou pevné, můžete požádat o zvýšení kvóty být vyvolána, otevřením [lístek podpory](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest). V žádosti o změny požadované kvóty a scénáře použití a oblastech je potřeba zahrňte podrobné informace. <br/>**Nevytvářejte** další účty služby Azure Media Services ve snaze zajistit vyšší limity.
 
 ## <a name="next-steps"></a>Další postup
 

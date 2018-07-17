@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/02/2018
 ms.author: shants
-ms.openlocfilehash: 840e961e753a15219ae41b8df55dfd95cc7ec774
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 543c30b4d2c960f3c7453369162a62dc4606d06e
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38990248"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39068623"
 ---
 # <a name="handling-planned-maintenance-notifications-for-linux-virtual-machines"></a>Zpracování oznámení plánované údržby pro virtuální počítače s Linuxem
 
@@ -160,7 +160,7 @@ Další informace o vysoké dostupnosti najdete v tématu [oblasti a dostupnost 
 
 **Otázka: co se děje se Škálovacími sadami virtuálních počítačů?**
 
-**Odpověď:** plánovaná údržba je nyní k dispozici pro Škálovací sady virtuálních počítačů. Pokyny o tom, jak inicializovat samoobslužné údržby najdete v části "Jak do -> Spravovat -> Plánovaná Údržba" ve Škálovací sadě virtuálních počítačů dokumentace.
+**Odpověď:** plánovaná údržba je nyní k dispozici pro Škálovací sady virtuálních počítačů. Pokyny o tom, jak inicializovat samoobslužné údržby najdete v [plánované údržby pro VMSS](../../virtual-machine-scale-sets/virtual-machine-scale-sets-maintenance-notifications.md) dokumentu.
 
 **Otázka: co se děje Cloud Services (Role Web/Worker) a Service Fabric?**
 

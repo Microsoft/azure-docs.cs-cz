@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: mattcon
 author: matthewconners
-ms.date: 05/07/2018
-ms.openlocfilehash: 44093dfde926b92d1617b85d27e362a8e40e5c56
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.date: 07/13/2018
+ms.openlocfilehash: 60eecf134f067d68326fc23ade8ed2a5a7ae7ac4
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37888666"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39070330"
 ---
 # <a name="build-and-deploy-forecasting-models-with-azure-machine-learning"></a>Vytváření a nasazování modelů prognóz službou Azure Machine Learning
 
@@ -36,7 +36,7 @@ Najdete [balíček referenční dokumentaci](https://aka.ms/aml-packages/forecas
    - Účet správy modelů Azure Machine Learning
    - Nainstalovanou aplikaci Azure Machine Learning Workbench 
 
-    Pokud tyto tři jsou ještě vytvořen nebo nainstalován, postupujte [Quickstart pro Azure Machine Learning a Workbench instalace](../service/quickstart-installation.md) článku.
+ Pokud tyto tři jsou ještě vytvořen nebo nainstalován, postupujte [Quickstart pro Azure Machine Learning a Workbench instalace](../service/quickstart-installation.md) článku.
 
 1. Musíte nainstalovat balíček Azure Machine Learning pro Prognózování. Zjistěte, jak [instalaci tohoto balíčku zde](https://aka.ms/aml-packages/forecasting).
 
@@ -77,6 +77,7 @@ import pkg_resources
 from datetime import timedelta
 import matplotlib
 matplotlib.use('agg')
+%matplotlib inline
 from matplotlib import pyplot as plt
 
 from sklearn.linear_model import Lasso, ElasticNet
@@ -84,12 +85,12 @@ from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
 from sklearn.neighbors import KNeighborsRegressor
 
 from ftk import TimeSeriesDataFrame, ForecastDataFrame, AzureMLForecastPipeline
-from ftk.tsutils import last_n_periods_split
+from ftk.ts_utils import last_n_periods_split
 
 from ftk.transforms import TimeSeriesImputer, TimeIndexFeaturizer, DropColumns
 from ftk.transforms.grain_index_featurizer import GrainIndexFeaturizer
-from ftk.models import Arima, SeasonalNaive, Naive, RegressionForecaster, ETS
-from ftk.models.forecasterunion import ForecasterUnion
+from ftk.models import Arima, SeasonalNaive, Naive, RegressionForecaster, ETS, BestOfForecaster
+from ftk.models.forecaster_union import ForecasterUnion
 from ftk.model_selection import TSGridSearchCV, RollingOriginValidator
 
 from azuremltkbase.deployment import AMLSettings
@@ -502,12 +503,11 @@ whole_tsdf.loc[pd.IndexSlice['1990-06':'1990-09', 2, 'dominicks'], ['Quantity']]
 
 
 ```python
-%matplotlib inline
 whole_tsdf.ts_report()
 ```
 
     --------------------------------  Data Overview  ---------------------------------
-    <class 'ftk.dataframets.TimeSeriesDataFrame'>
+    <class 'ftk.time_series_data_frame.TimeSeriesDataFrame'>
     MultiIndex: 28947 entries, (1990-06-20 23:59:59, 2, dominicks) to (1992-10-07 23:59:59, 137, tropicana)
     Data columns (total 17 columns):
     week            28947 non-null int64
@@ -662,12 +662,6 @@ whole_tsdf.ts_report()
 
 
 ![PNG](./media/how-to-build-deploy-forecast-models/output_15_6.png)
-
-![PNG](./media/how-to-build-deploy-forecast-models/output_59_0.png)
-![png](./media/how-to-build-deploy-forecast-models/output_61_0.png)
-![png](./media/how-to-build-deploy-forecast-models/output_63_0.png)
-![png](./media/how-to-build-deploy-forecast-models/output_63_1.png)
- 
 
 
 ## <a name="integrate-with-external-data"></a>Integrace s externími daty
@@ -892,7 +886,7 @@ whole_tsdf.head()
 
 ## <a name="preprocess-data-and-impute-missing-values"></a>Předzpracování dat a dává chybějící hodnoty
 
-Začněte tím, že rozdělení dat do sady pro trénování a testování sadu s [ftk.tsutils.last_n_periods_split](https://docs.microsoft.com/en-us/python/api/ftk.ts_utils?view=azure-ml-py-latest) pomocnou funkci. Výsledná sada testování obsahuje poslední 40 pozorování každá Časová řada. 
+Začněte tím, že rozdělení dat do sady pro trénování a testování sadu s [last_n_periods_split](https://docs.microsoft.com/en-us/python/api/ftk.ts_utils?view=azure-ml-py-latest) pomocnou funkci. Výsledná sada testování obsahuje poslední 40 pozorování každá Časová řada. 
 
 
 ```python
@@ -974,7 +968,7 @@ print(ts_regularity[ts_regularity['regular'] == False])
     [213 rows x 2 columns]
     
 
-Uvidíte, že většina řady (213 z 249) je nestandardní. [Imputace transformace](https://docs.microsoft.com/en-us/python/api/ftk.transforms.ts_imputer?view=azure-ml-py-latest) je potřeba vyplnit chybějící hodnoty prodeje množství. Přestože existuje mnoho možností imputace, následující vzorový kód používá lineární interpolace.
+Uvidíte, že většina řady (213 z 249) je nestandardní. [Imputace transformace](https://docs.microsoft.com/en-us/python/api/ftk.transforms.ts_imputer.timeseriesimputer?view=azure-ml-py-latest) je potřeba vyplnit chybějící hodnoty prodeje množství. Přestože existuje mnoho možností imputace, následující vzorový kód používá lineární interpolace.
 
 
 ```python
@@ -1040,7 +1034,7 @@ arima_model = Arima(oj_series_freq, arima_order)
 
 ### <a name="combine-multiple-models"></a>Kombinovat více modelů
 
-[ForecasterUnion](https://docs.microsoft.com/en-us/python/api/ftk.models.forecaster_union.forecasterunion?view=azure-ml-py-latest) estimator umožňuje kombinovat více odhady a přizpůsobit/předpověď na nich pomocí jeden řádek kódu.
+[ForecasterUnion](https://docs.microsoft.com/en-us/python/api/ftk.models.forecaster_union?view=azure-ml-py-latest) estimator umožňuje kombinovat více odhady a přizpůsobit/předpověď na nich pomocí jeden řádek kódu.
 
 
 ```python
@@ -1205,10 +1199,10 @@ test_feature_tsdf = pipeline_ml.transform(test_tsdf)
 print(train_feature_tsdf.head())
 ```
 
-    F1 2018-05-04 11:00:54,308 INFO azureml.timeseries - pipeline fit_transform started. 
-    F1 2018-05-04 11:01:02,545 INFO azureml.timeseries - pipeline fit_transform finished. Time elapsed 0:00:08.237301
-    F1 2018-05-04 11:01:02,576 INFO azureml.timeseries - pipeline transforms started. 
-    F1 2018-05-04 11:01:19,048 INFO azureml.timeseries - pipeline transforms finished. Time elapsed 0:00:16.471961
+    F1 2018-06-14 23:10:03,472 INFO azureml.timeseries - pipeline fit_transform started. 
+    F1 2018-06-14 23:10:07,317 INFO azureml.timeseries - pipeline fit_transform finished. Time elapsed 0:00:03.845078
+    F1 2018-06-14 23:10:07,317 INFO azureml.timeseries - pipeline transforms started. 
+    F1 2018-06-14 23:10:16,499 INFO azureml.timeseries - pipeline transforms finished. Time elapsed 0:00:09.182314
                                            feat  price  AGE60  EDUC  ETHNIC  \
     WeekLastDay         store brand                                           
     1990-06-20 23:59:59 2     dominicks    1.00   1.59   0.23  0.25    0.11   
@@ -1370,13 +1364,16 @@ all_errors.sort_values('MedianAPE')
 
 Některé modely strojového učení se dokáže využívat funkce přidané a podobnosti mezi řadami získat vyšší přesnost předpovědi.
 
-**Cross-Validation a Sweeping parametr**    
+### <a name="cross-validation-parameter-and-model-sweeping"></a>Křížového ověření parametru a Sweeping modelu    
 
-Balíčku přizpůsobuje některé tradiční strojového učení funkce předpovědi aplikace.  [RollingOriginValidator](https://docs.microsoft.com/python/api/ftk.model_selection.cross_validation.rollingoriginvalidator) nemá křížového ověření časově, ale současně zachovává co by a nebude známo v rámci prognóz. 
+Balíčku přizpůsobuje některé tradiční strojového učení funkce předpovědi aplikace.  [RollingOriginValidator](https://docs.microsoft.com/python/api/ftk.model_selection.cross_validation.rollingoriginvalidator?view=azure-ml-py-latest) nemá křížového ověření časově, ale současně zachovává co by a nebude známo v rámci prognóz. 
 
 Na následujícím obrázku představuje každý čtvereček data z jednoho bodu v čase. Modré čtverec představují školení a oranžová čtverce představují testování v každé fáze. Testování dat musí pocházet ze body v čase po největší časový bod školení. V opačném případě je úniku dat do trénovací data, způsobující vyhodnocení modelu stanou neplatnými. 
-
 ![PNG](./media/how-to-build-deploy-forecast-models/cv_figure.PNG)
+
+**Parametr Sweeping**  
+[TSGridSearchCV](https://docs.microsoft.com/en-us/python/api/ftk.model_selection.search.tsgridsearchcv?view=azure-ml-py-latest) třídy vyčerpávajícím způsobem vyhledá prostřednictvím hodnoty zadaný parametr a použije `RollingOriginValidator` k vyhodnocení parametru výkon při hledání nejlepších parametrů.
+
 
 ```python
 # Set up the `RollingOriginValidator` to do 2 folds of rolling origin cross-validation
@@ -1395,6 +1392,102 @@ print('Best paramter: {}'.format(randomforest_cv_fitted.best_params_))
 
     Best paramter: {'estimator__n_estimators': 100}
     
+
+**Model Sweeping**  
+`BestOfForecaster` Třídy vybírá model s nejlepší výkon ze seznamu uvedeny modely. Podobně jako `TSGridSearchCV`, také používá RollingOriginValidator pro křížové ověření a výkonu hodnocení.  
+Tady jsme předat seznam dva modely, které ukazují využití `BestOfForecaster`
+
+
+```python
+best_of_forecaster = BestOfForecaster(forecaster_list=[('naive', naive_model), 
+                                                       ('random_forest', random_forest_model)])
+best_of_forecaster_fitted = best_of_forecaster.fit(train_feature_tsdf,
+                                                   validator=RollingOriginValidator(n_step=20, max_horizon=40))
+best_of_forecaster_prediction = best_of_forecaster_fitted.predict(test_feature_tsdf)
+best_of_forecaster_prediction.head()
+```
+
+
+
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>PointForecast</th>
+      <th>DistributionForecast</th>
+      <th>Množství</th>
+    </tr>
+    <tr>
+      <th>WeekLastDay</th>
+      <th>úložiště</th>
+      <th>značky</th>
+      <th>ForecastOriginTime</th>
+      <th>%{ModelName/</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1992-01-08 23:59:59</th>
+      <th>2</th>
+      <th>dominicks</th>
+      <th>1992-01-01 23:59:59</th>
+      <th>random_forest</th>
+      <td>9299.20</td>
+      <td>&lt;scipy.stats._distn_infrastructure.rv_frozen o...</td>
+      <td>11712.00</td>
+    </tr>
+    <tr>
+      <th>1992-01-15 23:59:59</th>
+      <th>2</th>
+      <th>dominicks</th>
+      <th>1992-01-01 23:59:59</th>
+      <th>random_forest</th>
+      <td>10259.20</td>
+      <td>&lt;scipy.stats._distn_infrastructure.rv_frozen o...</td>
+      <td>4032.00</td>
+    </tr>
+    <tr>
+      <th>1992-01-22 23:59:59</th>
+      <th>2</th>
+      <th>dominicks</th>
+      <th>1992-01-01 23:59:59</th>
+      <th>random_forest</th>
+      <td>6828.80</td>
+      <td>&lt;scipy.stats._distn_infrastructure.rv_frozen o...</td>
+      <td>6336.00</td>
+    </tr>
+    <tr>
+      <th>1992-01-29 23:59:59</th>
+      <th>2</th>
+      <th>dominicks</th>
+      <th>1992-01-01 23:59:59</th>
+      <th>random_forest</th>
+      <td>16633.60</td>
+      <td>&lt;scipy.stats._distn_infrastructure.rv_frozen o...</td>
+      <td>13632.00</td>
+    </tr>
+    <tr>
+      <th>1992-02-05 23:59:59</th>
+      <th>2</th>
+      <th>dominicks</th>
+      <th>1992-01-01 23:59:59</th>
+      <th>random_forest</th>
+      <td>12774.40</td>
+      <td>&lt;scipy.stats._distn_infrastructure.rv_frozen o...</td>
+      <td>45120.00</td>
+    </tr>
+  </tbody>
+</table>
+
+
 
 **Poslední kanálu pro sestavování**   
 Teď, když jste identifikovali nejvhodnějšího modelu, můžete vytvořit a přizpůsobit konečné kanálu s všechny transformátory a tento nejlepší model. 
@@ -1416,9 +1509,62 @@ print('Median of APE of final pipeline: {0}'.format(final_median_ape))
     Median of APE of final pipeline: 42.54336821266968
     
 
-## <a name="operationalization-deploy-and-consume"></a>Operacionalizace: nasazení a využití
+## <a name="visualization"></a>Vizualizace
+`ForecastDataFrame` Třída poskytuje zobrazování funkce pro vizualizaci a analyzování výsledky prognóz. Použijte běžně používaných grafy s daty. Zobrazování funkcí pro všechny funkce, které jsou k dispozici najdete ukázkový poznámkový blok níže. 
 
-V této části nasazení kanálu jako webové služby Azure Machine Learning a používat ji pro trénování a vyhodnocování. Vyhodnocování nasazenou webovou službu retrains modelu a vytváří předpovědi na nová data.
+`show_error` Funkce, který metriky výkonu agregovat podle libovolného sloupce. Ve výchozím nastavení `show_error` funkce agregace podle `grain_colnames` z `ForecastDataFrame`. Často je užitečné pro identifikaci zrna/skupin s nejlepší a nejhorší výkonu, zejména v případě, že máte velký počet časové řady. `performance_percent` Argument `show_error` lze zadat interval výkonu a vykreslení chyba podmnožinu zrna nebo skupiny.
+
+Vykreslení zrna s výkonem dolní 5 %, například top 5 % MedianAPE
+
+
+```python
+fig, ax = best_of_forecaster_prediction.show_error(err_name='MedianAPE', err_fun=calc_median_ape, performance_percent=(0.95, 1))
+```
+
+![PNG](./media/how-to-build-deploy-forecast-models/output_59_0.png)
+
+
+Vykreslení zrna s top 5 % výkonu, například dolní 5 % MedianAPE.
+
+
+```python
+fig, ax = best_of_forecaster_prediction.show_error(err_name='MedianAPE', err_fun=calc_median_ape, performance_percent=(0, 0.05))
+```
+
+
+![PNG](./media/how-to-build-deploy-forecast-models/output_61_0.png)
+
+
+Jakmile budete mít představu o celkový výkon, můžete chtít prozkoumat jednotlivé zrna, zejména těch, které provádí špatně. `plot_forecast_by_grain` Metoda vykreslí předpovědi vs. skutečné zrn zadané. Tady jsme vykreslení intervalem s co nejlepšího výkonu a interval s nejhorší výkonu objeví ve službě `show_error` vykreslení.
+
+
+```python
+fig_ax = best_of_forecaster_prediction.plot_forecast_by_grain(grains=[(33, 'tropicana'), (128, 'minute.maid')])
+```
+
+
+![PNG](./media/how-to-build-deploy-forecast-models/output_63_0.png)
+
+
+
+![PNG](./media/how-to-build-deploy-forecast-models/output_63_1.png)
+
+
+
+## <a name="additional-notebooks"></a>Další poznámkové bloky
+Podrobnější pohled na hlavní funkce AMLPF najdete následující poznámkové bloky s další podrobnosti a příklady jednotlivých funkcí:  
+[Poznámkový blok na TimeSeriesDataFrame](https://azuremlftkrelease.blob.core.windows.net/samples/feature_notebooks/Introduction_to_TimeSeriesDataFrames.ipynb)  
+[Poznámkový blok na tahání dat](https://azuremlftkrelease.blob.core.windows.net/samples/feature_notebooks/Data_Wrangling_Sample.ipynb)  
+[Poznámkový blok na transformátory](https://azuremlftkrelease.blob.core.windows.net/samples/feature_notebooks/Forecast_Package_Transforms.ipynb)  
+[Poznámkový blok na modely](https://azuremlftkrelease.blob.core.windows.net/samples/feature_notebooks/AMLPF_models_sample_notebook.ipynb)  
+[Poznámkový blok na křížové ověření](https://azuremlftkrelease.blob.core.windows.net/samples/feature_notebooks/Time_Series_Cross_Validation.ipynb)  
+[Poznámkový blok na prodleva Transformer a OriginTime](https://azuremlftkrelease.blob.core.windows.net/samples/feature_notebooks/Constructing_Lags_and_Explaining_Origin_Times.ipynb)  
+[Poznámkový blok na vykreslení funkce](https://azuremlftkrelease.blob.core.windows.net/samples/feature_notebooks/Plotting_Functions_in_AMLPF.ipynb)
+
+## <a name="operationalization"></a>Operacionalizace
+
+V této části nasazení kanálu jako webové služby Azure Machine Learning a používat ji pro trénování a vyhodnocování.
+V současné době nejsou namontováno existuje pouze kanály jsou podporovány pro nasazení. Vyhodnocování nasazenou webovou službu retrains modelu a vytváří předpovědi na nová data.
 
 ### <a name="set-model-deployment-parameters"></a>Nastavit parametry nasazení modelu
 
@@ -1485,7 +1631,7 @@ aml_deployment = ForecastWebserviceFactory(deployment_name=deployment_name,
                                            aml_settings=aml_settings, 
                                            pipeline=pipeline_deploy,
                                            deployment_working_directory=deployment_working_directory,
-                                           ftk_wheel_loc='https://azuremlpackages.blob.core.windows.net/forecasting/azuremlftk-0.1.18055.3a1-py3-none-any.whl')
+                                           ftk_wheel_loc='https://azuremlftkrelease.blob.core.windows.net/dailyrelease/azuremlftk-0.1.18165.29a1-py3-none-any.whl')
 ```
 
 ### <a name="create-the-web-service"></a>Vytvoření webové služby

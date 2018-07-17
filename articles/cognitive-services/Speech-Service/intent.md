@@ -1,74 +1,67 @@
 ---
-title: Ukázka pro záměrné rozpoznávání | Microsoft Docs
+title: Ukázka pro rozpoznání záměru | Dokumentace Microsoftu
 titleSuffix: Microsoft Cognitive Services
-description: Zde je ukázka pro rozpoznávání záměrné.
+description: Tady je ukázka pro rozpoznání záměru.
 services: cognitive-services
 author: wolfma61
 manager: onano
 ms.service: cognitive-services
 ms.technology: Speech
 ms.topic: article
-ms.date: 06/07/2018
+ms.date: 07/16/2018
 ms.author: wolfma
-ms.openlocfilehash: 1c9c1e2d54ccb200ef009be3566f6da9ced01175
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 4cf3bbfa24e102c544b0e3215a20b73d323f15df
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37111163"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39070956"
 ---
-# <a name="sample-for-intent-recognition"></a>Ukázka pro záměrné rozpoznávání
+# <a name="sample-for-intent-recognition"></a>Ukázka pro rozpoznání záměru
 
-> [!NOTE]
-> Pokyny ke stažení této ukázce a ostatní uživatele najdete v tématu [ukázky pro rozpoznávání řeči SDK](samples.md).
+Nejdřív získáte klíč předplatného. Na rozdíl od jiných služeb podporovaných službou Cognitive Service SDK řeči rozpoznávání záměru služby vyžaduje klíč konkrétní předplatné. [Tady](https://www.luis.ai) najdete další informace o technologii rozpoznávání záměru, jakož i informace o tom, jak získat klíč předplatného. Nahraďte vlastní klíč předplatného Language Understanding [oblasti vašeho předplatného](regions.md)a AppId záměru modelu na příslušných místech ve vzorcích.
 
-> [!NOTE]
-> Nejdřív získejte klíč předplatného. Na rozdíl od jiných služeb nepodporuje kognitivní řeči SDK služby služby rozpoznávání záměr vyžaduje klíč konkrétní předplatné. [Zde](https://www.luis.ai) můžete najít další informace o technologii záměrné rozpoznávání a také informace o tom, jak získat klíč předplatného. Nahraďte svůj vlastní klíč předplatného [oblasti vašeho předplatného](regions.md)a AppId na příslušná místa v ukázkách záměrné modelu.
+## <a name="top-level-declarations"></a>Deklaracemi nejvyšší úrovně
 
-> [!NOTE]
-> Pro všechny ukázky níže následující nejvyšší úrovně deklarace musí být k dispozici:
->
-> [!code-cpp[](~/samples-cognitive-services-speech-sdk/Windows/cxx_samples/intent_recognition_samples.cpp#toplevel)]
->
-> - - -
+Pro všechny ukázky níže následující nejvyšší úrovně deklarace by měla:
 
-## <a name="intent-recognition-using-microphone"></a>Záměrné rozpoznávání pomocí mikrofon
+[!code-csharp[Top-level declarations](~/samples-cognitive-services-speech-sdk/samples/csharp/sharedcontent/console/intent_recognition_samples.cs#toplevel)]
 
-Následující fragment kódu ukazuje, jak rozpoznat záměr z mikrofon vstup ve výchozí jazyk (`en-US`).
+[!code-cpp[Top-level declarations](~/samples-cognitive-services-speech-sdk/samples/cpp/windows/console/samples/intent_recognition_samples.cpp#toplevel)]
 
-[!code-cpp[Intent Recognition Using Microphone](~/samples-cognitive-services-speech-sdk/Windows/cxx_samples/intent_recognition_samples.cpp#IntentRecognitionWithMicrophone)]
+[!code-java[Top-level declarations](~/samples-cognitive-services-speech-sdk/samples/java/jre/console/src/com/microsoft/cognitiveservices/speech/samples/console/IntentRecognitionSamples.java#toplevel)]
 
-- - -
+## <a name="intent-recognition-using-microphone"></a>Rozpoznání záměru použití mikrofonu
 
-## <a name="intent-recognition-using-microphone-in-a-specified-language"></a>Záměrné rozpoznávání pomocí mikrofon v určený jazyk.
+Následující fragment kódu ukazuje, jak se rozpoznávání záměru ze vstupu mikrofon ve výchozím jazyce (`en-US`).
 
-Následující fragment kódu ukazuje, jak rozpoznat záměr ze vstupu mikrofon v určený jazyk, v takovém případě v němčina (`de-de`).
+[!code-csharp[Intent Recognition Using Microphone](~/samples-cognitive-services-speech-sdk/samples/csharp/sharedcontent/console/intent_recognition_samples.cs#intentRecognitionWithMicrophone)]
 
-[!code-cpp[Intent Recognition Using Microphone In A Specified Language](~/samples-cognitive-services-speech-sdk/Windows/cxx_samples/intent_recognition_samples.cpp#IntentRecognitionWithLanguage)]
+[!code-cpp[Intent Recognition Using Microphone](~/samples-cognitive-services-speech-sdk/samples/cpp/windows/console/samples/intent_recognition_samples.cpp#IntentRecognitionWithMicrophone)]
 
-- - -
+[!code-java[Intent Recognition Using Microphone](~/samples-cognitive-services-speech-sdk/samples/java/jre/console/src/com/microsoft/cognitiveservices/speech/samples/console/IntentRecognitionSamples.java#IntentRecognitionWithMicrophone)]
 
-## <a name="intent-recognition-from-a-file"></a>Záměrné rozpoznávání ze souboru
+## <a name="intent-recognition-using-microphone-in-a-specified-language"></a>Rozpoznání záměru do zadaného jazyku pomocí mikrofon
 
-Následující fragment kódu rozpozná záměr z zvukový soubor ve výchozím jazyce (`en-US`), podporované formát je jeden kanál (mono) WAV nebo PCM s vzorkovací frekvenci 16 kHz.
+Následující fragment kódu ukazuje, jak se rozpoznávání záměru ze vstupu mikrofon v zadaný jazyk, v tomto případě v němčině (`de-de`).
 
-[!include[Sample Audio](includes/sample-audio.md)]
+[!code-csharp[Intent Recognition Using Microphone In A Specified Language](~/samples-cognitive-services-speech-sdk/samples/csharp/sharedcontent/console/intent_recognition_samples.cs#intentRecognitionWithLanguage)]
 
-[!code-cpp[Intent Recognition From a File](~/samples-cognitive-services-speech-sdk/Windows/cxx_samples/intent_recognition_samples.cpp#IntentRecognitionWithFile)]
+[!code-cpp[Intent Recognition Using Microphone In A Specified Language](~/samples-cognitive-services-speech-sdk/samples/cpp/windows/console/samples/intent_recognition_samples.cpp#IntentRecognitionWithLanguage)]
 
-- - -
+[!code-java[Intent Recognition Using Microphone In A Specified Language](~/samples-cognitive-services-speech-sdk/samples/java/jre/console/src/com/microsoft/cognitiveservices/speech/samples/console/IntentRecognitionSamples.java#IntentRecognitionWithLanguage)]
 
-## <a name="intent-recognition-using-events"></a>Záměrné rozpoznávání pomocí událostí
+## <a name="intent-recognition-from-a-file-using-events"></a>Rozpoznání záměru ze souboru, s použitím událostí
 
-Fragment kódu ukazuje, jak rozpoznat záměr průběžné způsobem. Tento kód umožňuje přístup na další informace, jako je mezilehlých výsledků. 
+Fragment kódu ukazuje, jak se rozpoznávání záměru ve výchozím jazyce (`en-US`) průběžné způsobem. Tento kód umožňuje přístup na další informace, jako jsou průběžné výsledky. Vstup je převzata z z zvukový soubor, podporovaný formát je jeden kanál (mono) WAV / PCM s vzorkovací frekvenci kHz 16.
 
-[!code-cpp[Intent Recognition Using Events](~/samples-cognitive-services-speech-sdk/Windows/cxx_samples/intent_recognition_samples.cpp#IntentContinuousRecognitionUsingEvents)]
+[!code-csharp[Intent Recognition Using Events From a File](~/samples-cognitive-services-speech-sdk/samples/csharp/sharedcontent/console/intent_recognition_samples.cs#intentContinuousRecognitionWithFile)]
 
-- - -
+[!code-cpp[Intent Recognition Using Events From a File](~/samples-cognitive-services-speech-sdk/samples/cpp/windows/console/samples/intent_recognition_samples.cpp#IntentContinuousRecognitionWithFile)]
 
-## <a name="sample-source-code"></a>Ukázka zdrojového kódu
+[!code-java[Intent Recognition Using Events From a File](~/samples-cognitive-services-speech-sdk/samples/java/jre/console/src/com/microsoft/cognitiveservices/speech/samples/console/IntentRecognitionSamples.java#IntentContinuousRecognitionWithFile)]
 
-Nejnovější sadu vzorků, najdete v článku [úložiště GitHub SDK ukázka kognitivní služby řeči](https://aka.ms/csspeech/samples).
+[!include[Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
 
 ## <a name="next-steps"></a>Další postup
 

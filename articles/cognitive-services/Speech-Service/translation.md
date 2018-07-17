@@ -1,56 +1,56 @@
 ---
-title: Ukázka pro překlad | Microsoft Docs
+title: Ukázka pro překlad | Dokumentace Microsoftu
 titleSuffix: Microsoft Cognitive Services
-description: Zde je ukázka pro rozpoznávání řeči překlad.
+description: Tady je ukázka pro překlad řeči.
 services: cognitive-services
 author: wolfma61
 manager: onano
 ms.service: cognitive-services
 ms.technology: Speech
 ms.topic: article
-ms.date: 06/07/2018
+ms.date: 07/16/2018
 ms.author: wolfma
-ms.openlocfilehash: 1151628ed695e74e2196c20b08e33fa5eaf33282
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 66d26181334a71578f1a94000cb942a6a87398bc
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37028383"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39070787"
 ---
 # <a name="sample-for-translation"></a>Ukázka pro překlad
 
-> [!NOTE]
-> Pokyny ke stažení této ukázce a ostatní uživatele najdete v tématu [ukázky pro rozpoznávání řeči SDK](samples.md).
+[!include[Get a Subscription Key](../../../includes/cognitive-services-speech-service-get-subscription-key.md)]
 
-[!include[Get a Subscription Key](includes/get-subscription-key.md)]
+## <a name="top-level-declarations"></a>Deklaracemi nejvyšší úrovně
 
-> [!NOTE]
-> Pro všechny ukázky níže následující nejvyšší úrovně deklarace musí být k dispozici:
->
-> [!code-csharp [Using Statements](~/samples-cognitive-services-speech-sdk/Windows/csharp_samples/translation_samples.cs#toplevel)]
->
-> - - -
+Pro všechny ukázky níže následující nejvyšší úrovně deklarace by měla:
 
-## <a name="translation-using-the-microphone"></a>Překlad pomocí mikrofon
+[!code-csharp[Top-level declarations](~/samples-cognitive-services-speech-sdk/samples/csharp/sharedcontent/console/translation_samples.cs#toplevel)]
 
-Následující fragment kódu ukazuje, jak přeložte řeči vstup z angličtina, němčina a také získat výstup hlasové přeložený text. Používá mikrofonu.
+[!code-cpp[Top-level declarations](~/samples-cognitive-services-speech-sdk/samples/cpp/windows/console/samples/translation_samples.cpp#toplevel)]
 
-[!code-csharp[Translation Using Microphone](~/samples-cognitive-services-speech-sdk/Windows/csharp_samples/translation_samples.cs#TranslationWithMicrophoneAsync)]
+[!code-java[Top-level declarations](~/samples-cognitive-services-speech-sdk/samples/java/jre/console/src/com/microsoft/cognitiveservices/speech/samples/console/TranslationSamples.java#toplevel)]
 
-- - -
+## <a name="translation-using-the-microphone"></a>Překlad používat mikrofon.
 
-## <a name="translation-using-file-input"></a>Překlad pomocí vstupní soubor
+Následující fragment kódu ukazuje, jak překládat řeč v angličtině na němčinu a také získat výstup hlasové přeloženého textu. Používá mikrofon.
 
-Následující fragment kódu ukazuje, jak přeložit řeči vstup z angličtina němčině a francouzštinu.
-Soubor používá jako vstup.
+[!code-csharp[Translation Using Microphone](~/samples-cognitive-services-speech-sdk/samples/csharp/sharedcontent/console/translation_samples.cs#TranslationWithMicrophoneAsync)]
 
-[!code-csharp[Translation Using File Input](~/samples-cognitive-services-speech-sdk/Windows/csharp_samples/translation_samples.cs#TranslationWithFileAsync)]
+[!code-cpp[Translation Using Microphone](~/samples-cognitive-services-speech-sdk/samples/cpp/windows/console/samples/translation_samples.cpp#TranslationWithMicrophone)]
 
-- - -
+[!code-java [Translation Using Microphone](~/samples-cognitive-services-speech-sdk/samples/java/jre/console/src/com/microsoft/cognitiveservices/speech/samples/console/TranslationSamples.java#TranslationWithMicrophoneAsync)]
 
-## <a name="sample-source-code"></a>Ukázka zdrojového kódu
+## <a name="translation-using-file-input"></a>Překlad pomocí vstupního souboru
 
-Nejnovější verze ukázek a i pokročilejší ukázky jsou vyhrazená [úložiště GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk).
+Následující fragment kódu ukazuje, jak převést vstup řeči z angličtiny do německé a francouzštinu.
+Soubor se používá jako vstup.
+
+[!code-csharp[Translation Using File Input](~/samples-cognitive-services-speech-sdk/samples/csharp/sharedcontent/console/translation_samples.cs#TranslationWithFileAsync)]
+
+[!code-java [Translation Using File Input](~/samples-cognitive-services-speech-sdk/samples/java/jre/console/src/com/microsoft/cognitiveservices/speech/samples/console/TranslationSamples.java#TranslationWithFileAsync)]
+
+[!include[Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
 
 ## <a name="next-steps"></a>Další postup
 

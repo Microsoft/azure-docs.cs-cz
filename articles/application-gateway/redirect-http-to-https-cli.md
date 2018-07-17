@@ -1,6 +1,6 @@
 ---
-title: Vytvoření služby application gateway s certifikátem - rozhraní příkazového řádku Azure | Microsoft Docs
-description: Zjistěte, jak přidat certifikát pro ukončení protokolu SSL pomocí Azure CLI a vytvoření služby application gateway.
+title: Vytvoření služby application gateway s certifikátem – rozhraní příkazového řádku Azure | Dokumentace Microsoftu
+description: Přečtěte si, jak vytvořit aplikační bránu a přidat certifikát pro ukončení protokolu SSL pomocí Azure CLI.
 services: application-gateway
 author: vhorne
 manager: jpconnock
@@ -8,27 +8,27 @@ editor: tysonn
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 01/23/2018
+ms.date: 7/14/2018
 ms.author: victorh
-ms.openlocfilehash: dc3a15ea66d9ead35247bee1673d120faac631d9
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 2e8c67e979cc796337a750d960b95cfe5b6be119
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34355164"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39072461"
 ---
-# <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-cli"></a>Vytvoření služby application gateway s protokoly HTTP do HTTPS přesměrování pomocí rozhraní příkazového řádku Azure
+# <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-cli"></a>Vytvoření služby application gateway s protokolem HTTP na HTTPS přesměrování pomocí rozhraní příkazového řádku Azure
 
-Rozhraní příkazového řádku Azure můžete použít k vytvoření [Aplikační brána](overview.md) s certifikát pro ukončení protokolu SSL. Pravidlo směrování se používá k přesměrování provozu HTTP na port HTTPS v aplikační brány. V tomto příkladu můžete také vytvořit [škálovací sadu virtuálních počítačů](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) pro fond back-end aplikační brány, který obsahuje dvě instance virtuálního počítače.
+Rozhraní příkazového řádku Azure můžete použít k vytvoření [služba application gateway](overview.md) certifikátem pro ukončení protokolu SSL. Pravidlo směrování se používá k přesměrování provozu HTTP na port HTTPS ve službě application gateway. V tomto příkladu můžete také vytvořit [škálovací sadu virtuálních počítačů](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) pro back-endový fond služby application gateway, která obsahuje dvě instance virtuálních počítačů.
 
 V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Vytvořit certifikát podepsaný svým držitelem
-> * Nastavení sítě
-> * Vytvoření služby application gateway s certifikátem
+> * Vytvořit certifikát podepsaný svým držitelem (self-signed certificate)
+> * Nastavit síť
+> * Vytvořit aplikační bránu s certifikátem
 > * Přidat pravidlo naslouchací proces a přesměrování
-> * Vytvoření škálování virtuálních počítačů, nastavit výchozí fond back-end
+> * Vytvořit škálovací sadu virtuálních počítačů s výchozím back-endovým fondem
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -36,27 +36,27 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít rozhraní příkazového řádku Azure ve verzi 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0](/cli/azure/install-azure-cli).
 
-## <a name="create-a-self-signed-certificate"></a>Vytvořit certifikát podepsaný svým držitelem
+## <a name="create-a-self-signed-certificate"></a>Vytvořit certifikát podepsaný svým držitelem (self-signed certificate)
 
-Pro použití v provozním prostředí Importujte platný certifikát podepsaný službou důvěryhodného zprostředkovatele. V tomto kurzu vytvoříte certifikát podepsaný svým držitelem a pomocí příkazu openssl souboru pfx.
+Použití v produkčním prostředí byste měli importovat platný certifikát podepsaný důvěryhodným poskytovatelem. Pro účely tohoto kurzu vytvoříte certifikát podepsaný svým držitelem (self-signed certificate) a soubor pfx pomocí příkazu openssl.
 
 ```azurecli-interactive
 openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout privateKey.key -out appgwcert.crt
 ```
 
-Zadejte hodnoty, které dávají smysl pro svůj certifikát. Můžete přijmout výchozí hodnoty.
+Zadejte požadované hodnoty certifikátu. Můžete také použít výchozí hodnoty.
 
 ```azurecli-interactive
 openssl pkcs12 -export -out appgwcert.pfx -inkey privateKey.key -in appgwcert.crt
 ```
 
-Zadejte heslo pro certifikát. V tomto příkladu *Azure123456!* se používá.
+Zadejte heslo pro certifikát. V tomto příkladu se používá *Azure123456!* .
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Vytvoření skupiny prostředků pomocí [vytvořit skupinu az](/cli/azure/group#create).
+Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#create).
 
-Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroupAG* v *eastus* umístění.
+V následujícím příkladu vytvoříte skupinu prostředků s názvem *myResourceGroupAG* v umístění *eastus*.
 
 ```azurecli-interactive 
 az group create --name myResourceGroupAG --location eastus
@@ -64,7 +64,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>Vytvoření síťových prostředků
 
-Vytvořit virtuální síť s názvem *myVNet* a podsíť s názvem *myAGSubnet* pomocí [vytvoření sítě vnet az](/cli/azure/network/vnet#az_net). Poté můžete přidat podsíť s názvem *myBackendSubnet* to vyžaduje back-end serverů pomocí [az sítě vnet podsíť vytváření](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create). Vytvoření veřejné IP adresy s názvem *myAGPublicIPAddress* pomocí [vytvoření veřejné sítě az-ip](/cli/azure/public-ip#az_network_public_ip_create).
+Pomocí příkazu [az network vnet create](/cli/azure/network/vnet#az_net) vytvořte virtuální síť s názvem *myVNet* a podsíť s názvem *myAGSubnet*. Potom můžete přidat podsíť s názvem *myBackendSubnet*, kterou potřebují back-endové servery. Použijte k tomu příkaz [az network vnet subnet create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create). Pomocí příkazu [az network public-ip create](/cli/azure/public-ip#az_network_public_ip_create) vytvořte veřejnou IP adresu s názvem *myAGPublicIPAddress*.
 
 ```azurecli-interactive
 az network vnet create \
@@ -86,9 +86,9 @@ az network public-ip create \
 
 ## <a name="create-the-application-gateway"></a>Vytvoření služby Application Gateway
 
-Můžete použít [az brány aplikace-vytvořit](/cli/azure/network/application-gateway#az_network_application_gateway_create) k vytvoření aplikační brány s názvem *myAppGateway*. Při vytváření služby application gateway pomocí Azure CLI, je třeba zadat informace o konfiguraci, například kapacitu, sku a nastavení HTTP. 
+K vytvoření aplikační brány s názvem *myAppGateway* použijte příkaz [az network application-gateway create](/cli/azure/network/application-gateway#az_network_application_gateway_create). Při vytváření aplikační brány pomocí Azure CLI zadáte konfigurační údaje, jako je kapacita, skladová položka nebo nastavení HTTP. 
 
-Službu application gateway je přiřazena k *myAGSubnet* a *myAGPublicIPAddress* kterou jste vytvořili. V tomto příkladu přidružíte certifikát, který jste vytvořili a jeho heslo při vytváření služby application gateway. 
+Aplikační brána je přiřazena k již vytvořené podsíti *myAGSubnet* a adrese *myAGPublicIPAddress*. Při vytváření aplikační brány v tomto příkladu přidružíte certifikát, který jste vytvořili, a heslo. 
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -109,19 +109,19 @@ az network application-gateway create \
 
 ```
 
- Ho může trvat několik minut pro službu application gateway, který se má vytvořit. Po vytvoření služby application gateway se zobrazí tyto nové funkce:
+ Vytvoření aplikační brány může trvat několik minut. Po vytvoření aplikační brány se zobrazí tyto její nové funkce:
 
-- *appGatewayBackendPool* -aplikační brány musí mít alespoň jeden fond adres back-end.
-- *appGatewayBackendHttpSettings* -Určuje, že port 80 a protokol HTTP se používá pro komunikaci.
-- *appGatewayHttpListener* -přidružený naslouchací proces výchozí *appGatewayBackendPool*.
-- *appGatewayFrontendIP* -přiřadí *myAGPublicIPAddress* k *appGatewayHttpListener*.
-- *rule1 New* – výchozí směrování pravidlo, které souvisí s *appGatewayHttpListener*.
+- *appGatewayBackendPool* – aplikační brána musí mít aspoň jeden back-endový fond adres.
+- *appGatewayBackendHttpSettings* – určuje, že se ke komunikaci používá port 80 a protokol HTTP.
+- *appGatewayHttpListener* – výchozí naslouchací proces přidružený k *appGatewayBackendPool*.
+- *appGatewayFrontendIP* – přiřadí adresu *myAGPublicIPAddress* naslouchacímu procesu *appGatewayHttpListener*.
+- *rule1* – výchozí pravidlo směrování přidružené k naslouchacímu procesu *appGatewayHttpListener*.
 
 ## <a name="add-a-listener-and-redirection-rule"></a>Přidat pravidlo naslouchací proces a přesměrování
 
-### <a name="add-the-http-port"></a>Přidat HTTP port
+### <a name="add-the-http-port"></a>Přidejte HTTP port
 
-Můžete použít [vytvoření aplikační brány sítě az front-endu port](/cli/azure/network/application-gateway/frontend-port#az_network_application_gateway_frontend_port_create) HTTP port přidáte do služby application gateway.
+Můžete použít [az network application-gateway front-endu port vytvořit](/cli/azure/network/application-gateway/frontend-port#az_network_application_gateway_frontend_port_create) přidat HTTP port ke službě application gateway.
 
 ```azurecli-interactive
 az network application-gateway frontend-port create \
@@ -131,9 +131,9 @@ az network application-gateway frontend-port create \
   --name httpPort
 ```
 
-### <a name="add-the-http-listener"></a>Přidejte naslouchací proces protokolu HTTP
+### <a name="add-the-http-listener"></a>Přidat naslouchací proces protokolu HTTP
 
-Můžete použít [az sítě Aplikační brána-naslouchací proces protokolu http vytvořit](/cli/azure/network/application-gateway/http-listener#az_network_application_gateway_http_listener_create) přidat naslouchací proces s názvem *myListener* aplikační brány.
+Můžete použít [az network application-gateway-naslouchací proces protokolu http vytvořit](/cli/azure/network/application-gateway/http-listener#az_network_application_gateway_http_listener_create) přidat naslouchací proces s názvem *myListener* ke službě application gateway.
 
 ```azurecli-interactive
 az network application-gateway http-listener create \
@@ -146,7 +146,7 @@ az network application-gateway http-listener create \
 
 ### <a name="add-the-redirection-configuration"></a>Přidat konfiguraci přesměrování
 
-Konfigurace přesměrování HTTPS do aplikace pomocí brány přidat HTTP [vytvoření aplikační brány sítě az přesměrování config](/cli/azure/network/application-gateway/redirect-config#az_network_application_gateway_redirect_config_create).
+Přidejte do konfigurace přesměrování protokolu HTTPS pro aplikační bránu pomocí HTTP [az network application-gateway přesměrování config vytvořit](/cli/azure/network/application-gateway/redirect-config#az_network_application_gateway_redirect_config_create).
 
 ```azurecli-interactive
 az network application-gateway redirect-config create \
@@ -161,7 +161,7 @@ az network application-gateway redirect-config create \
 
 ### <a name="add-the-routing-rule"></a>Přidat pravidlo směrování
 
-Přidat pravidlo směrování s názvem *rule2* s konfigurací přesměrování na aplikace pomocí brány [vytvořit pravidlo Aplikační brána sítě az](/cli/azure/network/application-gateway/rule#az_network_application_gateway_rule_create).
+Přidat pravidlo směrování s názvem *rule2* s konfigurací přesměrování na aplikační bránu pomocí [az network application-gateway pravidlo vytvořte](/cli/azure/network/application-gateway/rule#az_network_application_gateway_rule_create).
 
 ```azurecli-interactive
 az network application-gateway rule create \
@@ -175,7 +175,7 @@ az network application-gateway rule create \
 
 ## <a name="create-a-virtual-machine-scale-set"></a>Vytvoření škálovací sady virtuálních počítačů
 
-V tomto příkladu vytvoříte škálování virtuálních počítačů, nastavit s názvem *myvmss* poskytuje servery fondu back-end v aplikační brány. Jsou virtuální počítače ve škálovací sadě přidružené *myBackendSubnet* a *appGatewayBackendPool*. Chcete-li vytvořit měřítko nastavte, můžete použít [vytvořit az vmss](/cli/azure/vmss#az_vmss_create).
+V tomto příkladu vytvoříte škálovací sadu virtuálních počítačů *myvmss* poskytující serverů pro back-endového fondu ve službě application gateway. Virtuální počítače jsou ve škálovací sadě přidruženy k podsíti *myBackendSubnet* a back-endovému fondu *appGatewayBackendPool*. K vytvoření škálovací sady použijte příkaz [az vmss create](/cli/azure/vmss#az_vmss_create).
 
 ```azurecli-interactive
 az vmss create \
@@ -202,13 +202,13 @@ az vmss extension set \
   --name CustomScript \
   --resource-group myResourceGroupAG \
   --vmss-name myvmss \
-  --settings '{ "fileUris": ["https://raw.githubusercontent.com/davidmu1/samplescripts/master/install_nginx.sh"],
+  --settings '{ "fileUris": ["https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/application-gateway/iis/install_nginx.sh"],
   "commandToExecute": "./install_nginx.sh" }'
 ```
 
-## <a name="test-the-application-gateway"></a>Testování služby application gateway
+## <a name="test-the-application-gateway"></a>Otestování aplikační brány
 
-Chcete-li získat veřejnou IP adresu brány, aplikace, můžete použít [az sítě veřejné ip zobrazit](/cli/azure/network/public-ip#az_network_public_ip_show). Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče.
+K získání veřejné IP adresy aplikační brány můžete použít příkaz [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show). Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče.
 
 ```azurepowershell-interactive
 az network public-ip show \
@@ -218,21 +218,21 @@ az network public-ip show \
   --output tsv
 ```
 
-![Upozornění zabezpečení](./media/redirect-http-to-https-cli/application-gateway-secure.png)
+![Zabezpečené upozornění](./media/redirect-http-to-https-cli/application-gateway-secure.png)
 
-Chcete-li přijímat upozornění, pokud použijete certifikát podepsaný svým držitelem zabezpečení, vyberte **podrobnosti** a potom **přejděte na webovou stránku**. Následně se zobrazí váš zabezpečený web NGINX, jak je znázorněno v následujícím příkladu:
+Pokud chcete přijímat upozornění zabezpečení v případě použití certifikátu podepsaného svým držitelem (self-signed certificate), vyberte **Podrobnosti** a potom **Pokračovat na web**. Následně se zobrazí váš zabezpečený web NGINX, jak je znázorněno v následujícím příkladu:
 
-![Otestovat základní adresu URL v aplikační brány](./media/redirect-http-to-https-cli/application-gateway-nginxtest.png)
+![Otestování základní adresy URL v aplikační bráně](./media/redirect-http-to-https-cli/application-gateway-nginxtest.png)
 
 ## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
-> * Vytvořit certifikát podepsaný svým držitelem
-> * Nastavení sítě
-> * Vytvoření služby application gateway s certifikátem
+> * Vytvořit certifikát podepsaný svým držitelem (self-signed certificate)
+> * Nastavit síť
+> * Vytvořit aplikační bránu s certifikátem
 > * Přidat pravidlo naslouchací proces a přesměrování
-> * Vytvoření škálování virtuálních počítačů, nastavit výchozí fond back-end
+> * Vytvořit škálovací sadu virtuálních počítačů s výchozím back-endovým fondem
 
 

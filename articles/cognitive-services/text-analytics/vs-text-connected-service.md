@@ -10,12 +10,12 @@ ms.component: text-analytics
 ms.topic: conceptual
 ms.date: 06/01/2018
 ms.author: ghogen
-ms.openlocfilehash: c97f75e0a41a4bf314963dc26c6424a0b773822b
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: eb9730f785b01a620e36a265216488c401eac63a
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38665231"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39068484"
 ---
 # <a name="connect-to-the-text-analytics-service-by-using-connected-services-in-visual-studio"></a>Připojení ke službě Text Analytics pomocí připojené služby v sadě Visual Studio
 
@@ -193,7 +193,7 @@ V tomto článku a jeho článcích doprovodná zadejte podrobnosti pro použit�
     }
     ```
 
-1. Přidáte zobrazení, který zobrazuje analyzovaný text, určit jazyk a skóre, které představuje úroveň spolehlivosti při analýze.
+1. Přidání zobrazení pro analyzovaný text, určit jazyk a skóre, které představuje úroveň spolehlivosti při analýze. Chcete-li to provést, klikněte pravým tlačítkem na **zobrazení** složky, zvolte **přidat**, pak **zobrazení**. V dialogovém okně, které se zobrazí, zadejte název _TextAnalyzeResult_, přijměte výchozí hodnoty pro přidání nového souboru s názvem _TextAnalyzeResult.cshtml_ v **zobrazení** složky a Zkopírujte do něj následující obsah:
     
     ```cshtml
     @using System

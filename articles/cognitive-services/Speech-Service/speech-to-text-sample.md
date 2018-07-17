@@ -1,7 +1,7 @@
 ---
-title: Ukázka pro rozpoznávání řeči na Text | Microsoft Docs
+title: Ukázka pro převod řeči na Text | Dokumentace Microsoftu
 titleSuffix: Microsoft Cognitive Services
-description: Zde je ukázka pro rozpoznávání řeči na text.
+description: Tady je ukázka pro převod řeči na text.
 services: cognitive-services
 author: wolfma61
 manager: onano
@@ -10,72 +10,60 @@ ms.technology: Speech
 ms.topic: article
 ms.date: 06/07/2018
 ms.author: wolfma
-ms.openlocfilehash: 2a1850e6a4f3c8eebd1b947aabe1374bdaab3fc8
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 5740586eca902fa63ca7b8590b07f4b276d21e4d
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37030246"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39071364"
 ---
-# <a name="sample-for-speech-to-text"></a>Ukázka pro rozpoznávání řeči na Text
+# <a name="sample-for-speech-to-text"></a>Ukázka pro převod řeči na Text
 
-> [!NOTE]
-> Pokyny ke stažení této ukázce a ostatní uživatele najdete v tématu [ukázky pro rozpoznávání řeči SDK](samples.md).
+[!include[Get a Subscription Key](../../../includes/cognitive-services-speech-service-get-subscription-key.md)]
 
-[!include[Get a Subscription Key](includes/get-subscription-key.md)]
+## <a name="top-level-declarations"></a>Deklaracemi nejvyšší úrovně
 
-> [!NOTE]
-> Pro všechny ukázky níže následující nejvyšší úrovně deklarace musí být k dispozici:
->
-> [!code-csharp[](~/samples-cognitive-services-speech-sdk/Windows/csharp_samples/speech_recognition_samples.cs#toplevel)]
->
-> [!code-cpp[](~/samples-cognitive-services-speech-sdk/Windows/cxx_samples/speech_recognition_samples.cpp#toplevel)]
->
-> - - -
+Všechny ukázky níže najdete následující nejvyšší úrovně deklarace by měla:
 
-## <a name="speech-recognition-using-the-microphone"></a>Rozpoznávání řeči pomocí mikrofon
+[!code-csharp[Top-level declarations](~/samples-cognitive-services-speech-sdk/samples/csharp/sharedcontent/console/speech_recognition_samples.cs#toplevel)]
 
-Následující fragment kódu ukazuje, jak rozpoznat hlasový vstup z mikrofon ve výchozím jazyce (`en-US`).
+[!code-cpp[Top-level declarations](~/samples-cognitive-services-speech-sdk/samples/cpp/windows/console/samples/speech_recognition_samples.cpp#toplevel)]
 
-[!code-csharp[Speech Recognition Using Microphone](~/samples-cognitive-services-speech-sdk/Windows/csharp_samples/speech_recognition_samples.cs#recognitionWithMicrophone)]
+[!code-java[Top-level declarations](~/samples-cognitive-services-speech-sdk/samples/java/jre/console/src/com/microsoft/cognitiveservices/speech/samples/console/SpeechRecognitionSamples.java#toplevel)]
 
-[!code-cpp[Speech Recognition Using Microphone](~/samples-cognitive-services-speech-sdk/Windows/cxx_samples/speech_recognition_samples.cpp#SpeechRecognitionWithMicrophone)]
+## <a name="speech-recognition-using-the-microphone"></a>Rozpoznávání řeči pomocí mikrofon.
 
-- - -
+Následující fragment kódu ukazuje, jak rozpoznávat řeč mikrofon ve výchozím jazyce (`en-US`).
 
-## <a name="speech-recognition-from-a-file"></a>Rozpoznávání řeči ze souboru
+[!code-csharp[Speech Recognition Using Microphone](~/samples-cognitive-services-speech-sdk/samples/csharp/sharedcontent/console/speech_recognition_samples.cs#recognitionWithMicrophone)]
 
-Následující fragment kódu rozpozná hlasový vstup z zvukový soubor ve výchozím jazyce (`en-US`), podporované formát je jeden kanál (mono) WAV nebo PCM s vzorkovací frekvenci 16 kHz.
+[!code-cpp[Speech Recognition Using Microphone](~/samples-cognitive-services-speech-sdk/samples/cpp/windows/console/samples/speech_recognition_samples.cpp#SpeechRecognitionWithMicrophone)]
+
+[!code-java[Speech Recognition Using Microphone](~/samples-cognitive-services-speech-sdk/samples/java/jre/console/src/com/microsoft/cognitiveservices/speech/samples/console/SpeechRecognitionSamples.java#recognitionWithMicrophone)]
+
+## <a name="speech-recognition-using-a-customized-model"></a>Rozpoznávání řeči pomocí přizpůsobených modelu
+
+[Custom Speech Service (CRIS) která](https://www.cris.ai/) poskytuje možnosti vlastního nastavení modul převodu řeči na text od Microsoftu pro vaši aplikaci. Následující fragment kódu ukazuje, jak rozpoznávání řeči z mikrofonu pomocí vašeho modelu CRIS; Zadejte klíč předplatného CRIS a vlastní identifikaci nasazení před jejím spuštěním.
+
+[!code-csharp[Speech Recognition Using a Customized Model](~/samples-cognitive-services-speech-sdk/samples/csharp/sharedcontent/console/speech_recognition_samples.cs#recognitionCustomized)]
+
+[!code-cpp[Speech Recognition Using a Customized Model](~/samples-cognitive-services-speech-sdk/samples/cpp/windows/console/samples/speech_recognition_samples.cpp#SpeechRecognitionUsingCustomizedModel)]
+
+[!code-java[Speech Recognition Using a Customized Model](~/samples-cognitive-services-speech-sdk/samples/java/jre/console/src/com/microsoft/cognitiveservices/speech/samples/console/SpeechRecognitionSamples.java#recognitionCustomized)]
+
+## <a name="continuous-speech-recognition-from-a-file"></a>Rozpoznávání řeči průběžné ze souboru
+
+Následující fragment kódu průběžně rozpozná hlasový vstup z zvukový soubor ve výchozím jazyce (`en-US`), podporovaný formát je jeden kanál (mono) WAV / PCM s vzorkovací frekvenci kHz 16.
 
 [!include[Sample Audio](includes/sample-audio.md)]
 
-[!code-csharp[Speech Recognition From a File](~/samples-cognitive-services-speech-sdk/Windows/csharp_samples/speech_recognition_samples.cs?name=recognitionFromFile)]
+[!code-csharp[Continuous Speech Recognition](~/samples-cognitive-services-speech-sdk/samples/csharp/sharedcontent/console/speech_recognition_samples.cs#recognitionContinuousWithFile)]
 
-[!code-cpp[Speech Recognition From a File](~/samples-cognitive-services-speech-sdk/Windows/cxx_samples/speech_recognition_samples.cpp?name=SpeechRecognitionWithFile)]
+[!code-cpp[Continuous Speech Recognition](~/samples-cognitive-services-speech-sdk/samples/cpp/windows/console/samples/speech_recognition_samples.cpp#SpeechContinuousRecognitionWithFile)]
 
-- - -
+[!code-java[Continuous Speech Recognition](~/samples-cognitive-services-speech-sdk/samples/java/jre/console/src/com/microsoft/cognitiveservices/speech/samples/console/SpeechRecognitionSamples.java#recognitionContinuousWithFile)]
 
-## <a name="speech-recognition-using-a-customized-model"></a>Rozpoznávání řeči pomocí vlastní modelu
-
-[Vlastní řeči služby (CRIS)](https://www.cris.ai/) umožňuje přizpůsobení modulu řeči na text společnosti Microsoft pro vaši aplikaci. Následující fragment kódu ukazuje, jak rozpoznávat řeč z mikrofonu pomocí modelu CRIS; Vyplňte svůj klíč předplatného CRIS a vlastní nasazení identifikace před spuštěním.
-
-[!code-csharp[Speech Recognition Using a Customized Model](~/samples-cognitive-services-speech-sdk/Windows/csharp_samples/speech_recognition_samples.cs#recognitionCustomized)]
-
-[!code-cpp[Speech Recognition Using a Customized Model](~/samples-cognitive-services-speech-sdk/Windows/cxx_samples/speech_recognition_samples.cpp#SpeechRecognitionUsingCustomizedModel)]
-
-- - -
-
-## <a name="continuous-speech-recognition"></a>Rozpoznávání řeči průběžné
-
-[!code-csharp[Continuous Speech Recognition](~/samples-cognitive-services-speech-sdk/Windows/csharp_samples/speech_recognition_samples.cs#recognitionContinuous)]
-
-[!code-cpp[Continuous Speech Recognition](~/samples-cognitive-services-speech-sdk/Windows/cxx_samples/speech_recognition_samples.cpp#SpeechContinuousRecognitionUsingEvents)]
-
-- - -
-
-## <a name="sample-source-code"></a>Ukázka zdrojového kódu
-
-Nejnovější verze ukázek a i pokročilejší ukázky jsou vyhrazená [úložiště GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk).
+[!include[Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
 
 ## <a name="next-steps"></a>Další postup
 

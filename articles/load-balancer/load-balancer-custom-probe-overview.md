@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/13/2018
 ms.author: kumud
-ms.openlocfilehash: 69991a0b805b5502fc96fab4ce902b3d8bc77baf
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 741b32f394ca2ce447826f7207f7fd9cbede9c51
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056354"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39070846"
 ---
 # <a name="understand-load-balancer-probes"></a>Porozumění testům nástroje pro vyrovnávání zatížení
 
@@ -28,7 +28,7 @@ Nástroj Azure Load Balancer používá k určení, která instance back-endový
 
 Sondy stavu služby se řídí, zda jsou vytvořeny nové toky v dobrém stavu back-endových instancí. Při selhání sondy stavu nástroje pro vyrovnávání zatížení zastaví odesílání nových toků do příslušné instance není v pořádku.  Navázané připojení TCP pokračovat po selhání sondy stavu.  Stávající toky UDP se přesune z instance není v pořádku, k jiné instanci v back-endový fond.
 
-Pokud selžou i všechny testy pro back-endový fond, základní nástroje pro vyrovnávání zatížení se ukončí všechny existující Velkoobjemové toky na back-endového fondu, zatímco Load balancer úrovně Standard vám umožní zavedené Velkoobjemové toky pokračovat; žádné nové toky se odešlou do back-endový fond.
+Pokud selžou i všechny testy pro back-endový fond, základní nástroje pro vyrovnávání zatížení se ukončí všechny existující Velkoobjemové toky na back-endového fondu, zatímco Load balancer úrovně Standard vám umožní zavedené Velkoobjemové toky pokračovat; žádné nové toky se odešlou do back-endový fond.  Všechny stávající toky UDP se ukončí u úrovní Basic a Standard nástroje pro vyrovnávání zatížení, pokud všechny testy pro back-end fondu selhání.
 
 Role cloudové služby (role pracovního procesu a webové role) hostovaného agenta použít pro test monitorování. Při použití cloudových služeb s virtuálními počítači IaaS za nástrojem pro vyrovnávání zatížení musí být nakonfigurovaný protokol TCP nebo HTTP vlastních testů stavu paměti.
 

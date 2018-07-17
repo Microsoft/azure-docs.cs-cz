@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/08/2018
+ms.date: 07/16/2018
 ms.author: magoedte
-ms.openlocfilehash: a94f7289c75a4f4d466542c608d81cf5b954f4b1
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 1fd5ac0f9994a4dbf4365c21ac4f31ba0eccbb15
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37917322"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39069147"
 ---
 # <a name="monitor-azure-kubernetes-service-aks-container-health-preview"></a>Monitorovat stav kontejneru Azure Kubernetes Service (AKS) (Preview)
 
@@ -50,7 +50,7 @@ Tato funkce využívá kontejnerizovaných agenta OMS pro Linux ke shromažďov�
 >Pokud už jste nasadili AKS cluster, povolte monitorování pomocí zadané šablony Azure Resource Manageru, jak je uvedeno dále v tomto článku. Nemůžete použít `kubectl` k upgradu, odstranit, znovu nasadit nebo nasadit agenta.  
 >
 
-## <a name="sign-in-to-azure-portal"></a>Přihlaste se k webu Azure Portal.
+## <a name="sign-in-to-azure-portal"></a>Přihlásit se na Azure Portal
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com). 
 
 ## <a name="enable-container-health-monitoring-for-a-new-cluster"></a>Povolit monitorování stavu kontejneru pro nový cluster
@@ -290,21 +290,41 @@ omsagent   2         2         2         2            2           beta.kubernete
 ```  
 
 ## <a name="view-performance-utilization"></a>Zobrazení výkonu využití
-Když otevřete stavu kontejneru, na stránce okamžitě uvede výkonu využití uzlů clusteru.  Zobrazení informací o clusteru AKS je organizována do tří perspektivy
+Při otevření stavu kontejneru, na stránce okamžitě zobrazí využití výkonu celý cluster.  Zobrazení informací o clusteru AKS je uspořádaný do čtyř perspektiv:
 
+- Cluster
 - Uzly 
 - Kontrolery  
 - Containers
 
-Hierarchie řádek postupuje od uzlu v clusteru Kubernetes objektový model.  Rozbalte uzel se zobrazí jedna nebo více podů se spuštěnou na uzlu a pokud existuje více než jednoho kontejneru seskupením pod, se zobrazují jako poslední řádek v hierarchii.<br><br> ![Příklad Kubernetes uzlu hierarchie v zobrazení výkonu](./media/monitoring-container-health/container-performance-and-health-view-03.png)
+Na kartě clusteru spojnicové grafy výkonu zobrazit klíčové metriky výkonu ve vašem clusteru.  
 
-Můžete vybrat řadiče nebo kontejnerů z horní části stránky a zkontrolujte stav a využití prostředků týkajících se těchto objektů.  Pomocí pole rozevíracího seznamu v horní části obrazovky můžete filtrovat podle oboru názvů, služby a uzel. Pokud místo toho chcete zkontrolovat využití paměti, z **metrika** rozevíracího seznamu vyberte **paměti RSS** nebo **pracovní sada paměti**.  **Paměť RSS** je podporována pouze pro Kubernetes verze 1.8 a novější. V opačném případě se zobrazí hodnoty pro **Průměrný %** zobrazuje jako *NaN %*, což je hodnota číselný datový typ představující hodnotu undefined nebo přičtení. 
+![Příklad grafy výkonu na kartě clusteru](./media/monitoring-container-health/container-health-cluster-perfview.png)
 
-![Zobrazení výkonu výkonu uzly kontejneru](./media/monitoring-container-health/container-performance-and-health-view-04.png)
+Tady je přehled metrik výkonu zobrazí:
 
-Ve výchozím nastavení, údaje o výkonu podle posledních 6 hodin, ale můžete změnit v okně s **časový rozsah** rozevírací seznam najdete v pravém horním rohu stránky. V tuto chvíli stránky není automatické aktualizace, takže budete muset ručně aktualizovat. 
+- Uzel procesoru % využití – tento graf představuje agregované perspektivy využití výkonu procesoru pro celý cluster.  Můžete filtrovat výsledky pro časový rozsah výběrem *Avg*, *Min*, *maximální*, *50*, *90. percentil*, a *95* z modulu pro výběr percentily nad grafem, buď samostatně nebo v kombinaci. 
+- % Využití paměti uzlu – tento graf představuje agregované perspektivy využití paměti pro celý cluster.  Můžete filtrovat výsledky pro časový rozsah výběrem *Avg*, *Min*, *maximální*, *50*, *90. percentil*, a *95* z modulu pro výběr percentily nad grafem, buď samostatně nebo v kombinaci. 
+- Počet uzlů – tento graf představuje počet uzlů a stav z Kubernetes.  Stav uzlů clusteru, který je reprezentován *všechny*, *připravené*, a *Nepřipraveno* a můžete filtrovat jednotlivě nebo kombinaci z modulu pro výběr nad grafem.    
+- Počet podů aktivity – tento graf představuje stav a počet podů Kubernetes.  Stav podů reprezentované *všechny*, *čekající*, *systémem*, a *neznámý* a můžete filtrovat jednotlivě nebo kombinaci z selektor nad grafem.  
 
-V následujícím příkladu, si všimnete pro uzel *aks Neznámá 3402399 0*, hodnota **kontejnery** je 10, která je kumulativní počet kontejnerů.<br><br> ![Souhrn kontejnerů na příklad uzlu](./media/monitoring-container-health/container-performance-and-health-view-07.png)<br><br> Pomůže vám rychle zjistit, zda nemáte správná zůstatek kontejnerů mezi uzly v clusteru.  
+Přepnutí na kartě uzly, hierarchie řádek postupuje od uzlu v clusteru Kubernetes objektový model.  Rozbalte uzel se zobrazí jedna nebo více podů se spuštěnou na uzlu a pokud existuje více než jednoho kontejneru seskupením pod, se zobrazují jako poslední řádek v hierarchii. Budete moci také vidět, kolik souvisejících úlohách bez pod běží na hostiteli v případě, že hostitel má procesor nebo tlaku na paměť.
+
+![Příklad Kubernetes uzlu hierarchie v zobrazení výkonu](./media/monitoring-container-health/container-health-nodes-view.png)
+
+Můžete vybrat řadiče nebo kontejnerů z horní části stránky a zkontrolujte stav a využití prostředků týkajících se těchto objektů.  Pomocí pole rozevíracího seznamu v horní části obrazovky můžete filtrovat podle oboru názvů, služby a uzel. Pokud místo toho chcete zkontrolovat využití paměti, z **metrika** rozevíracího seznamu vyberte **paměti RSS** nebo **pracovní sada paměti**.  **Paměť RSS** je podporována pouze pro Kubernetes verze 1.8 a novější. V opačném případě se zobrazí hodnoty pro **MIN %** zobrazuje jako *NaN %*, což je hodnota číselný datový typ představující hodnotu undefined nebo přičtení. 
+
+![Zobrazení výkonu uzly kontejneru](./media/monitoring-container-health/container-health-node-metric-dropdown.png)
+
+Ve výchozím nastavení, údaje o výkonu podle posledních 6 hodin, ale můžete změnit v okně s **časový rozsah** rozevírací seznam najdete v pravém horním rohu stránky. V tuto chvíli stránky není automatické aktualizace, takže budete muset ručně aktualizovat. Můžete také filtrovat výsledky v rámci časový rozsah výběrem *Avg*, *Min*, *maximální*, *50*, *90. percentil*, a *95* z modulu pro výběr percentil. 
+
+![Výběr percentilu pro filtrování dat](./media/monitoring-container-health/container-health-metric-percentile-filter.png)
+
+V následujícím příkladu, si všimnete pro uzel *aks. nodepool 3977305*, hodnota **kontejnery** je 5, což je kumulativní počet kontejnerů.
+
+![Souhrn kontejnerů na příklad uzlu](./media/monitoring-container-health/container-health-nodes-containerstotal.png)
+
+Pomůže vám rychle zjistit, zda nemáte správná zůstatek kontejnerů mezi uzly v clusteru.  
 
 Následující tabulka popisuje informace při zobrazení uzlů.
 
@@ -312,54 +332,80 @@ Následující tabulka popisuje informace při zobrazení uzlů.
 |--------|-------------|
 | Název | Název hostitele |
 | Status | Kubernetes zobrazení stavu uzlu |
-| PRŮMĚRNÝ % | Průměrné procento uzel na základě vybrané metriky pro vybranou dobu trvání. |
-| PRŮMĚR | Průměrný počet uzlů na základě vybrané metriky pro vybranou dobu trvání skutečnou hodnotu.  Průměrné hodnoty se měří z procesoru nebo paměti limitu nastaveného pro uzel; pro podů a kontejnery je průměrná hodnotu hlášenou síťovým hostitele. |
+| PRŮMĚRNÝ %, MIN %, MAX %, 50 %, 90 % | Průměrné procento uzlů podle percentilu během tuto dobu trvání vybrané. |
+| AVG, MIN, MAX, 50, 90 | Průměrná uzlů podle percentilu během tuto dobu trvání vybrané skutečnou hodnotu.  Průměrné hodnoty se měří z procesoru nebo paměti limitu nastaveného pro uzel; pro podů a kontejnery je průměrná hodnotu hlášenou síťovým hostitele. |
 | Containers | Počet kontejnerů. |
 | Doba provozu | Představuje čas, protože uzel spuštěn nebo byl restartován. |
-| Pod | Pouze pro kontejnery. Zobrazuje, který je umístěný pods. |
 | Kontrolery | Pouze pro kontejnery a tyto pody. Ukazuje kontroler, který je umístěný. Ne všechny podů bude v kontroleru, tak některé můžou zobrazovat není k dispozici. | 
-| Trend Průměrný % | Pruhový graf trendu podle kontejnerů a uzlů průměr metriky %. |
+| Trend Průměrný %, MIN %, MAX %, 50 %, 90 % | Pruhový graf trendu nabízí ten samý percentilu metrik % kontroleru. |
 
 
-V modulu pro výběr, zvolte **řadiče**.<br><br> ![Vyberte kontrolerů zobrazení](./media/monitoring-container-health/container-performance-and-health-view-08.png)
+V modulu pro výběr, zvolte **řadiče**.
 
-Zde můžete zobrazit stav výkonu řadiče.<br><br> ![zobrazení výkonu řadiče < název >](./media/monitoring-container-health/container-performance-and-health-view-05.png)
+![Vyberte kontrolerů zobrazení](./media/monitoring-container-health/container-health-controllers-tab.png)
 
-Hierarchie řádek začíná kontroleru a rozbalí kontroleru a zobrazí jeden nebo více podů nebo jeden nebo více kontejnerů.  Rozbalte pod a poslední řádek zobrazit seskupené pod celému kontejneru.  
+Zde můžete zobrazit stav výkonu řadiče.
+
+![zobrazení výkonu řadiče < název >](./media/monitoring-container-health/container-health-controllers-view.png)
+
+Hierarchie řádek začíná kontroleru a rozbalí kontroleru a zobrazí jeden nebo jeden nebo více kontejnerů.  Rozbalte pod a poslední řádek zobrazit seskupené pod celému kontejneru.  
 
 Následující tabulka popisuje informace při zobrazení řadičů.
 
 | Sloupec | Popis | 
 |--------|-------------|
 | Název | Název kontroleru|
-| Status | Stav kontejnerů po dokončení spuštění se stavem, jako například *ukončeno*, *neúspěšné* *Zastaveno*, nebo *pozastaveno*. Pokud je kontejner spuštěný, ale stav byl buď není správně zobrazí nebo nebyl vyzvednou agenta a neodpověděl více než 30 minut, stav bude *neznámý*. |
-| PRŮMĚRNÝ % | Souhrnné průměrem průměrné procento Každá entita pro vybranou metriku. |
-| PRŮMĚR | Shrnutí průměrné využití procesoru millicore nebo paměti výkon kontejneru.  Průměrné hodnoty se měří z procesoru nebo paměti limitu nastaveného pro pod. |
+| Status | Souhrn stavu kontejnerů po dokončení spuštění se stavem, jako například *OK*, *ukončeno*, *neúspěšné* *Zastaveno*, nebo  *Pozastaveno*. Pokud je kontejner spuštěný, ale stav byl buď není správně zobrazí nebo nebyl vyzvednou agenta a neodpověděl více než 30 minut, stav je *neznámý*. V následující tabulce jsou uvedeny další podrobnosti o ikona stavu.|
+| PRŮMĚRNÝ %, MIN %, MAX %, 50 %, 90 % | Souhrnné průměrem průměrné procento Každá entita pro vybranou metriku a percentil. |
+| AVG, MIN, MAX, 50, 90  | Shrnutí průměrné využití procesoru millicore nebo paměti výkon kontejneru pro vybrané percentil.  Průměrné hodnoty se měří z procesoru nebo paměti limitu nastaveného pro pod. |
 | Containers | Celkový počet kontejnerů pro kontroler nebo pod. |
 | Restartování | Shrnutí počtu restartování z kontejnerů. |
 | Doba provozu | Představuje čas od spuštění kontejneru. |
-| Pod | Pouze pro kontejnery. Zobrazuje, který je umístěný pods. |
 | Node | Pouze pro kontejnery a tyto pody. Ukazuje kontroler, který je umístěný. | 
-| Trend Průměrný % | Pruhový graf trendu nabízí ten samý průměr metriky % kontejneru. |
+| Trend Průměrný %, MIN %, MAX %, 50 %, 90 %| Pruhový graf trendu představující percentilu metrik kontroleru. |
 
-V modulu pro výběr, zvolte **kontejnery**.<br><br> ![Vyberte kontejnery zobrazení](./media/monitoring-container-health/container-performance-and-health-view-09.png)
+Ikony v poli Stav označují online stav kontejnerů:
+ 
+| Ikona | Status | 
+|--------|-------------|
+| ![Připraveno spuštěné ikona stavu](./media/monitoring-container-health/container-health-ready-icon.png) | Systémem (připravená)|
+| ![Ikona čekání nebo pozastaveném stavu](./media/monitoring-container-health/container-health-waiting-icon.png) | Čeká se na nebo pozastavena|
+| ![Naposledy hlásila systémem ikona stavu](./media/monitoring-container-health/container-health-grey-icon.png) | Poslední ohlásil spuštěná, ale neodpovídá více než 30 minut|
+| ![Ikona stavu ukončení](./media/monitoring-container-health/container-health-green-icon.png) | Úspěšně zastaven nebo se nepovedlo zastavit|
 
-Tady vidíme hlediska výkonu pro vaše kontejnery.<br><br> ![zobrazení výkonu řadiče < název >](./media/monitoring-container-health/container-performance-and-health-view-06.png)
+Ikona stavu zobrazují počet založené na co chcete pod poskytuje. Zobrazuje horší dva stavy a když najedete myší stav, zobrazí shrnutí stavu všech podů v kontejneru.  Pokud není k dispozici stavu Připraveno, bude zobrazovat hodnota stavu **(0)**.  
+
+V modulu pro výběr, zvolte **kontejnery**.
+
+![Vyberte kontejnery zobrazení](./media/monitoring-container-health/container-health-containers-tab.png)
+
+Tady vidíme hlediska výkonu pro vaše kontejnery.
+
+![zobrazení výkonu řadiče < název >](./media/monitoring-container-health/container-health-containers-view.png)
 
 Následující tabulka popisuje informace při zobrazení kontejnerů.
 
 | Sloupec | Popis | 
 |--------|-------------|
 | Název | Název kontroleru|
-| Status | Souhrnné stav kontejnerů, pokud existuje. |
-| PRŮMĚRNÝ % | Souhrnné průměrem průměrné procento Každá entita pro vybranou metriku. |
-| PRŮMĚR | Shrnutí průměrné využití procesoru millicore nebo paměti výkon kontejneru. Průměrné hodnoty se měří z procesoru nebo paměti limitu nastaveného pro pod. |
-| Containers | Celkový počet kontejnerů pro kontroler.|
+| Status | Stav kontejnerů, pokud existuje. V následující tabulce jsou uvedeny další podrobnosti o ikona stavu.|
+| PRŮMĚRNÝ %, MIN %, MAX %, 50 %, 90 % | Souhrnné průměrem průměrné procento Každá entita pro vybranou metriku a percentil. |
+| AVG, MIN, MAX, 50, 90  | Shrnutí průměrné využití procesoru millicore nebo paměti výkon kontejneru pro vybrané percentil.  Průměrné hodnoty se měří z procesoru nebo paměti limitu nastaveného pro pod. |
+| Pod | Kontejner, ve které se nachází pod.| 
+| Node |  Uzel, ve které se nachází kontejneru. | 
 | Restartování | Představuje čas od spuštění kontejneru. |
 | Doba provozu | Představuje čas, protože kontejneru se spustit nebo restartovat. |
-| Pod | Kde se nachází pod informace. |
-| Node |  Uzel, ve které se nachází kontejneru.  | 
-| Trend Průměrný % | Pruhový graf trendu nabízí ten samý průměr metriky % kontejneru. |
+| Trend Průměrný %, MIN %, MAX %, 50 %, 90 % | Pruhový graf trendu představující průměrnou metriky % kontejneru. |
+
+Ikony v poli Stav označují online stav pody:
+ 
+| Ikona | Status | 
+|--------|-------------|
+| ![Připraveno spuštěné ikona stavu](./media/monitoring-container-health/container-health-ready-icon.png) | Systémem (připravená)|
+| ![Ikona čekání nebo pozastaveném stavu](./media/monitoring-container-health/container-health-waiting-icon.png) | Čeká se na nebo pozastavena|
+| ![Naposledy hlásila systémem ikona stavu](./media/monitoring-container-health/container-health-grey-icon.png) | Poslední ohlásil spuštěná, ale neodpovídá více než 30 minut|
+| ![Ikona stavu ukončení](./media/monitoring-container-health/container-health-terminated-icon.png) | Úspěšně zastaven nebo se nepovedlo zastavit|
+| ![Ikona stavu se nezdařilo](./media/monitoring-container-health/container-health-failed-icon.png) | Chybovém stavu |
 
 ## <a name="container-data-collection-details"></a>Podrobnosti o kontejneru dat kolekce
 Stav kontejneru různých metrik a protokolů shromažďuje údaje o výkonu z hostitelů kontejnerů a kontejnery. Data jsou shromažďována každé 3 minuty.
@@ -387,7 +433,9 @@ Následující tabulka uvádí příklady záznamy shromážděné stav kontejne
 ## <a name="search-logs-to-analyze-data"></a>Hledání protokolů pro analýzu dat
 Log Analytics můžete hledat trendy, diagnostikovat problémových míst, předpovědi nebo korelovat data, která vám může pomoct určit, zda je aktuální konfiguraci clusteru optimální výkon.  Prohledávání protokolů předem definovaných jsou k dispozici okamžitě začít používat a přizpůsobit, aby mohla vrátit informace způsobem, jaký požadujete. 
 
-Můžete provádět interaktivní analýzu dat v pracovním prostoru tak, že vyberete **zobrazit protokol** možnost je k dispozici na úplně vpravo, když rozšiřujete kontejneru.  **Prohledávání protokolů** stránka se zobrazí vpravo nahoře na stránce jste byli na portálu.<br><br> ![Analýza dat v Log Analytics](./media/monitoring-container-health/container-performance-and-health-view-logs-01.png)   
+Můžete provádět interaktivní analýzu dat v pracovním prostoru tak, že vyberete **zobrazit protokol** možnost je k dispozici na úplně vpravo, když rozšiřujete kontroleru nebo kontejneru.  **Prohledávání protokolů** stránka se zobrazí vpravo nahoře na stránce jste byli na portálu.
+
+![Analýza dat v Log Analytics](./media/monitoring-container-health/container-health-view-logs.png)   
 
 Výstupní protokoly kontejneru předávají do Log Analytics jsou STDOUT a STDERR. Protože Azure spravované Kubernetes (AKS) je monitorování stavu kontejneru, Kube-system nejsou z důvodu velkého objemu dat vygenerovaných shromažďovány ještě dnes.     
 
@@ -470,7 +518,9 @@ Pokud jste se rozhodli používat rozhraní příkazového řádku Azure, musít
     }
     ```
 
-4. Upravit její hodnotu **aksResourceId** a **aksResourceLocation** s hodnotami cluster AKS, který můžete najít na **vlastnosti** stránek pro vybraný cluster.<br><br> ![Stránka vlastnosti kontejneru](./media/monitoring-container-health/container-properties-page.png)<br>
+4. Upravit její hodnotu **aksResourceId** a **aksResourceLocation** s hodnotami cluster AKS, který můžete najít na **vlastnosti** stránek pro vybraný cluster.
+
+    ![Stránka vlastnosti kontejneru](./media/monitoring-container-health/container-properties-page.png)
 
     Když jste na **vlastnosti** stránky, zkopírujte také **ID prostředku pracovního prostoru**.  Tato hodnota je povinná, pokud se rozhodnete, že chcete odstranit pracovnímu prostoru Log Analytics později, což není provedeno jako součást tohoto procesu.  
 
@@ -549,7 +599,8 @@ Pokud stav kontejneru byl úspěšně povolen a nakonfigurován, ale není zobra
     omsagent-fkq7g                      1/1       Running   0          1d 
     ```
 
-4. V protokolech agenta. Když se nasadí kontejnerizovanou agenta, spustí Rychlá kontrola spuštěním příkazů OMI a zobrazuje verzi agenta a Docker zprostředkovatele. Pokud chcete zobrazit, že agent byl úspěšně připojit, spusťte následující příkaz: `kubectl logs omsagent-484hw --namespace=kube-system`
+4. V protokolech agenta. Když se nasadí kontejnerizovanou agenta, je spuštěna Rychlá kontrola spuštěním OMI příkazy a zobrazuje verzi agenta a 
+5.  Zprostředkovatel. Pokud chcete zobrazit, že agent byl úspěšně připojit, spusťte následující příkaz: `kubectl logs omsagent-484hw --namespace=kube-system`
 
     Stav by měl vypadat takto:
 

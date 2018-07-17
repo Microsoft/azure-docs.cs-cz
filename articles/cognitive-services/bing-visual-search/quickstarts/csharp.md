@@ -1,7 +1,7 @@
 ---
-title: Rychlý start C# pro Bing Visual vyhledávání rozhraní API | Microsoft Docs
+title: Rychlý start C# pro vizuální vyhledávání Bingu rozhraní API | Dokumentace Microsoftu
 titleSuffix: Bing Web Search APIs - Cognitive Services
-description: Ukazuje, jak nahrát bitovou kopii do rozhraní API vyhledávání Visual Bing a získat zpět přehledy o bitové kopii.
+description: Ukazuje, jak k nahrání obrázku do API pro vizuální vyhledávání Bingu a získat přehledy o imagi.
 services: cognitive-services
 author: swhite-msft
 manager: rosh
@@ -10,18 +10,18 @@ ms.technology: bing-visual-search
 ms.topic: article
 ms.date: 5/16/2018
 ms.author: scottwhi
-ms.openlocfilehash: dd7531004759cdaeb59f4706dc2650d0db3c0cdb
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 930a89e3b1996c44f12bd3773565eda40e93ca9c
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343613"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39070922"
 ---
-# <a name="your-first-bing-visual-search-query-in-c"></a>První Bing Visual vyhledávací dotaz v jazyce C#
+# <a name="your-first-bing-visual-search-query-in-c"></a>Svůj první dotaz v jazyce C# pro vizuální vyhledávání Bingu
 
-Rozhraní API vyhledávání Visual Bing vrací informace o bitovou kopii, kterou zadáte. Můžete zadat bitovou kopii pomocí adresy URL bitové kopie, insights tokenu, nebo tím, že nahrajete image. Informace o těchto možnostech najdete v tématu [co je rozhraní API vyhledávání Visual Bing?](../overview.md) Tento článek ukazuje, odešlou obrázek. Nahrávání obrázku může být užitečné v mobilních situacích, kde pořídit snímek dobře známé významné a vrátit informace o něm. K přehledům může obsahovat třeba trivia o významné. 
+API pro vizuální vyhledávání Bingu vrátí informace o bitovou kopii, která zadáte. Image můžete zadat pomocí adresy URL obrázku, insights, token, nebo nahráním image. Informace o těchto možnostech najdete v tématu [co je API pro vizuální vyhledávání Bingu?](../overview.md) Tento článek ukazuje nahráváním obrázku. Nahrání image může být užitečné v mobilních situacích, kde pořídit snímek dobře známé památek a získat informace o něm. Triviální prvek o památek může obsahovat třeba přehledy. 
 
-Odešlete obrázek místní následující zobrazí formulář data, že je nutné zahrnout text příspěvku. Data formuláře musí obsahovat hlavičku Content-Disposition. Jeho `name` parametr musí být nastaven na "image" a `filename` parametr lze nastavit na libovolný řetězec. Obsah formuláře je binární soubor bitové kopie. Maximální obrázek, který může odeslat je 1 MB. 
+Pokud odešlete místní image, následuje data formuláře musí obsahovat v textu příspěvku. Data formuláře musí zahrnovat hlavičku Content-Disposition. Jeho `name` parametr musí být nastaven na "image" a `filename` parametr může být nastaven na libovolný řetězec. Obsah formuláře je binární soubor obrázku. Maximální velikost, kterou můžete k nahrání je 1 MB. 
 
 ```
 --boundary_1234-abcd
@@ -32,28 +32,28 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 --boundary_1234-abcd--
 ```
 
-Tento článek obsahuje jednoduché konzolové aplikace, která se odešle požadavek Visual Bing rozhraní API služby Search a zobrazí výsledky hledání JSON. Když je tato aplikace napsané v C#, rozhraní API je kompatibilní s žádný programovací jazyk, který můžete nastavit požadavků HTTP a analyzovat JSON RESTful webová služba. 
+Tento článek obsahuje jednoduchou konzolovou aplikaci, která odešle žádost o API pro vizuální vyhledávání Bingu a zobrazí výsledky hledání JSON. Zatímco tato aplikace je napsána v jazyce C#, je rozhraní API RESTful webová služba, která je kompatibilní s programovací jazyk, který může vytvářet požadavky HTTP a parsování formátu JSON. 
 
-Ukázkový program používá pouze třídy .NET Core a běží na systému Windows pomocí modulu .NET CLR nebo Linux nebo pomocí systému macOS [Mono](http://www.mono-project.com/).
+Ukázkový program používá pouze třídy .NET Core a běží na Windows pomocí modulu .NET CLR nebo v Linuxu nebo macOS pomocí [Mono](http://www.mono-project.com/).
 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Budete potřebovat [Visual Studio 2017](https://www.visualstudio.com/downloads/) získat tento kód spuštěný v systému Windows. (Bezplatná edice Community bude fungovat.)
+Budete potřebovat [Visual Studio 2017](https://www.visualstudio.com/downloads/) Chcete-li získat tento kód běžící na Windows. (Bezplatná edice Community bude fungovat.)
 
-Pro tento rychlý start, můžete použít [bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) předplatné nebo placené předplatné klíče.
+Pro účely tohoto rychlého startu, můžete zadat [bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) klíč předplatného, nebo klíč do placené předplatné.
 
 ## <a name="running-the-application"></a>Spouštění aplikace.
 
-Následující ukazuje, jak odeslat zprávu pomocí HttpWebRequest. Příklad, který používá HttpClient, HttpRequestMessage a MultipartFormDataContent, naleznete v části [pomocí HttpClient](#using-httpclient).
+Následující ukazuje, jak odesílat zprávy pomocí HttpWebRequest. Příklad použití HttpClient HttpRequestMessage a MultipartFormDataContent, naleznete v tématu [pomocí HttpClient](#using-httpclient).
 
-Ke spuštění této aplikace, postupujte takto:
+Ke spuštění této aplikace, postupujte podle těchto kroků:
 
-1. Vytvořte nové řešení konzoly v sadě Visual Studio.
-1. Nahraďte obsah `Program.cs` kódem zobrazeným v tento rychlý start.
-2. Nahraďte `accessKey` hodnotu s svůj klíč předplatného.
-2. Nahraďte `imagePath` hodnotu s cestou bitové kopie a nahrajte.
-3. Spusťte program.
+1. Vytvořte nové konzoly řešení v sadě Visual Studio.
+1. Nahraďte obsah `Program.cs` kódem zobrazeným v tomto rychlém startu.
+2. Nahraďte `accessKey` hodnotu s klíči předplatného.
+2. Nahraďte `imagePath` hodnotu s cestou k nahrání obrázku.
+3. Spuštění programu.
 
 
 ```csharp
@@ -305,9 +305,9 @@ namespace VisualSearchUpload
 
 ## <a name="using-httpclient"></a>Pomocí položky HttpClient
 
-Pokud používáte HttpClient, můžete MultipartFormDataContent sestavení data formuláře. Nahradit stejné metody s názvem v předchozím příkladu použijte následující části kódu.
+Pokud používáte HttpClient, vám pomůže MultipartFormDataContent sestavení data formuláře. Pomocí následujících částí kódu nahradit pojmenovanou stejně jako v předchozím příkladu.
 
-Hlavní metoda nahraďte tento kód:
+Nahraďte metodu Main s tímto kódem:
 
 ```csharp
         static void Main()
@@ -347,7 +347,7 @@ Hlavní metoda nahraďte tento kód:
         }
 ```
 
-Metoda BingImageSearch nahraďte tento kód:
+Nahraďte metodu BingImageSearch s tímto kódem:
 
 ```csharp
         /// <summary>
@@ -386,9 +386,10 @@ Metoda BingImageSearch nahraďte tento kód:
 
 ## <a name="next-steps"></a>Další postup
 
-[Získejte přehledy o bitovou kopii pomocí tokenu statistiky](../use-insights-token.md)  
-[Kurz jednostránkové aplikace Bing Visual Search](../tutorial-bing-visual-search-single-page-app.md)
-[přehled Visual vyhledávání v Bingu](../overview.md)  
-[Vyzkoušet](https://aka.ms/bingvisualsearchtryforfree)  
+[Získejte přehled o bitovou kopii pomocí tokenu insights](../use-insights-token.md)  
+[Kurz nahrávání obrázků pro vizuální vyhledávání Bingu](../tutorial-visual-search-image-upload.md)
+[kurzu jednostránkovou aplikaci pro vizuální vyhledávání Bingu](../tutorial-bing-visual-search-single-page-app.md)
+[přehled pro vizuální vyhledávání Bingu](../overview.md)  
+[Vyzkoušejte si to](https://aka.ms/bingvisualsearchtryforfree)  
 [Získat bezplatnou zkušební verzi přístupový klíč](https://azure.microsoft.com/try/cognitive-services/?api=bing-visual-search-api)  
-[Referenční dokumentace rozhraní API Visual pro hledání Bing](https://aka.ms/bingvisualsearchreferencedoc)
+[Referenční dokumentace API pro vizuální vyhledávání Bingu](https://aka.ms/bingvisualsearchreferencedoc)

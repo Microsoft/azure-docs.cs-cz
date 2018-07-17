@@ -1,6 +1,6 @@
 ---
-title: Rozpoznávání řeči souhrnnou Markup Language | Microsoft Docs
-description: K řízení výslovnost a prosody v převod textu na řeč pomocí řeči souhrnnou Markup language.
+title: Markup Language syntézu řeči | Dokumentace Microsoftu
+description: Pomocí značek syntézu řeči jazyka řídit výslovnost a prosody v převodu textu na řeč.
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: v-jerkin
@@ -10,22 +10,22 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 04/28/2018
 ms.author: v-jerkin
-ms.openlocfilehash: d955e7fd7805688ba103897c0d900c44f16514f8
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 4074ba91f5029d6c132982d1d81a4888a5e42721
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343390"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39071211"
 ---
-# <a name="speech-synthesis-markup-language"></a>Rozpoznávání řeči souhrnnou Markup Language
+# <a name="speech-synthesis-markup-language"></a>Značkovací jazyk syntézu řeči
 
-Rozpoznávání řeči souhrnnou Markup Language (SSML) je založený na jazyce XML značek jazyk, který poskytuje způsob, jak řídit výslovnost a *prosody* z převod textu na řeč. (Prosody odkazuje na tempo, jakým a výška řeči – Hudba, pokud budete). Můžete fonetický přepis zadejte slova, poskytovat pro interpretaci čísel, vložte pozastaví, výška ovládacího prvku, svazek a rychlost a další.
+Jazyk kódu syntézu řeči (SSML) je jazyk založený na formátu XML kód, který poskytuje způsob, jak řídit výslovnost a *prosody* z převodu textu na řeč. (Prosody odkazuje na rytmus a výšku řeči, Hudba, pokud jste se). Můžete fonetický přepis zadejte slova, poskytnout nápovědu pro interpretaci čísel, vložit pozastaví, výška ovládacího prvku, svazek a míry a další.
 
-Další informace najdete v tématu [řeči souhrnnou Markup Language (SSML) verze 1.0](http://www.w3.org/TR/2009/REC-speech-synthesis-20090303/) v W3C.
+Další informace najdete v tématu [řeči syntézu Markup Language (SSML) verze 1.0](http://www.w3.org/TR/2009/REC-speech-synthesis-20090303/) na W3C.
 
-Následující příklady ukazují, jak používat SSML pro běžné potřeby souhrnnou řeči.
+Následující příklady ukazují, jak používat SSML pro běžné potřeby syntézu řeči.
 
-## <a name="add-a-break"></a>Přidat konec
+## <a name="add-a-break"></a>Vložit zalomení
 ```xml
 <speak version='1.0' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang='en-US'>
 <voice  name='Microsoft Server Speech Text to Speech Voice (en-US, Jessa24kRUS)'>
@@ -33,7 +33,7 @@ Následující příklady ukazují, jak používat SSML pro běžné potřeby so
 </voice> </speak>
 ```
 
-## <a name="change-speaking-rate"></a>Hovořícího míru změn
+## <a name="change-speaking-rate"></a>Mluvy frekvence změny
 ```xml
 <speak version='1.0' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang='en-US'>
 <voice  name='Microsoft Server Speech Text to Speech Voice (en-US, Guy24kRUS)'>
@@ -42,7 +42,7 @@ Následující příklady ukazují, jak používat SSML pro běžné potřeby so
 </prosody></voice> </speak>
 ```
 
-## <a name="pronunciation"></a>Výslovnosti
+## <a name="pronunciation"></a>Výslovnost
 ```xml
 <speak version='1.0' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang='en-US'>
 <voice  name='Microsoft Server Speech Text to Speech Voice (en-US, Jessa24kRUS)'>
@@ -50,7 +50,7 @@ Následující příklady ukazují, jak používat SSML pro běžné potřeby so
 </voice> </speak>
 ```
 
-## <a name="change-volume"></a>Změnit svazku
+## <a name="change-volume"></a>Změnit svazek
 ```xml
 <speak version='1.0' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang='en-US'>
 <voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'>
@@ -59,7 +59,7 @@ Následující příklady ukazují, jak používat SSML pro běžné potřeby so
 </prosody></voice> </speak>
 ```
 
-## <a name="change-pitch"></a>Změna výšky
+## <a name="change-pitch"></a>Změnit výšku
 ```xml
 <speak version='1.0' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang='en-US'>
     <voice  name='Microsoft Server Speech Text to Speech Voice (en-US, Guy24kRUS)'>
@@ -67,7 +67,7 @@ Následující příklady ukazují, jak používat SSML pro běžné potřeby so
 </voice> </speak>
 ```
 
-## <a name="change-pitch-contour"></a>Změna výšky obrysem
+## <a name="change-pitch-contour"></a>Změnit výšku obrysu
 ```xml
 <speak version='1.0' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang='en-US'>
 <voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'>
@@ -78,5 +78,5 @@ Následující příklady ukazují, jak používat SSML pro běžné potřeby so
 
 ## <a name="next-steps"></a>Další postup
 
-* [Získat zkušební verze předplatného řeči](https://azure.microsoft.com/try/cognitive-services/)
-* [Informace o tom, rozpoznávat řeč v jazyce C#](quickstart-csharp-windows.md)
+* [Získání zkušebního předplatného služby Speech](https://azure.microsoft.com/try/cognitive-services/)
+* [Zjistěte, jak rozpoznávat řeč v jazyce C#](quickstart-csharp-dotnet-windows.md)

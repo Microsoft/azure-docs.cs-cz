@@ -1,48 +1,49 @@
 ---
-title: Rychlý start SDK řeči pro C++ a Linux | Microsoft Docs
+title: 'Rychlý start: Rozpoznávat řeč v jazyce C++ v Linuxu pomocí Cognitive Services SDK řeči | Dokumentace Microsoftu'
 titleSuffix: Microsoft Cognitive Services
-description: Get informace a ukázky kódu můžete rychle začít používat sadu SDK řeči se systémy Linux a C++ v kognitivní služby.
+description: Zjistěte, jak rozpoznávat řeč v jazyce C++ v Linuxu pomocí Cognitive Services SDK řeči
 services: cognitive-services
 author: wolfma61
 manager: onano
 ms.service: cognitive-services
 ms.technology: Speech
 ms.topic: article
-ms.date: 06/07/2018
+ms.date: 07/16/2018
 ms.author: wolfma
-ms.openlocfilehash: e5ea74f92eb91ff89f013a4ee9ef7cbe0f001db0
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 2c919040233226818505dbafc260d56d4d0e3c9e
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37111146"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39070728"
 ---
-# <a name="quickstart-for-c-and-linux"></a>Rychlý start pro C++ a Linux
+# <a name="quickstart-recognize-speech-in-c-on-linux-using-the-speech-sdk"></a>Rychlý start: Rozpoznávat řeč v jazyce C++ v Linuxu pomocí sadou SDK pro řeč
 
-Aktuální verze sady SDK kognitivní řeči služby je `0.4.0`.
-
-Kognitivní řeči Services SDK pro Linux je k dispozici pro vytvoření 64bitové a 32bitové aplikace. Požadované soubory si můžete stáhnout jako soubor vkládání z https://aka.ms/csspeech/linuxbinary.
-
-> [!NOTE]
-> Pokud hledáte rychlý start pro C++ a Windows, přejděte [zde](quickstart-cpp-windows.md).
-> Pokud hledáte rychlý start pro C# a systému Windows, přejděte [zde](quickstart-csharp-windows.md).
-
-[!include[Get a Subscription Key](includes/get-subscription-key.md)]
-
-> [!NOTE]
-> Tyto pokyny předpokládají, že používáte na 16.04 Ubuntu na počítači (x86 nebo x64).
-> Různé verze Ubuntu nebo jiný distribuční Linux je nutné přizpůsobit požadované kroky.
+V tomto článku se dozvíte, jak k vytvoření konzolové aplikace jazyka C++ v systému Linux (Ubuntu 16.04) přepisy převod řeči na text pomocí Cognitive Services SDK řeči.
 
 ## <a name="prerequisites"></a>Požadavky
 
-[!include[Ubuntu Prerequisites](includes/ubuntu1604-prerequisites.md)]
+* Klíč předplatného pro službu rozpoznávání řeči. Zobrazit [službu řeči si můžete vyzkoušet zdarma](get-started.md).
+* Počítač Ubuntu 16.04 s mikrofon pracovní.
+* Chcete-li instalovat balíčky potřebné k sestavení a spuštění tohoto vzorku, spusťte následující příkaz:
 
-## <a name="getting-the-binary-package"></a>Získávání binární balíčku
+  ```sh
+  sudo apt-get update
+  sudo apt-get install build-essential libssl1.0.0 libcurl3 libasound2 wget
+  ```
+
+## <a name="get-the-speech-sdk"></a>Získání sady SDK pro řeč
 
 [!include[License Notice](includes/license-notice.md)]
 
-1. Vyberte adresář (absolutní cesta), kam chcete umístit řeči SDK binární soubory a hlaviček.
-   Například vyberte cestu `speechsdk` pod domovského adresáře:
+Aktuální verze sady SDK pro řeč Cognitive Services je `0.5.0`.
+
+Cognitive Services sadou SDK pro řeč pro Linux je k dispozici pro vytváření 64bitové a 32bitové aplikace.
+Požadované soubory můžete stáhnout jako soubor tar z https://aka.ms/csspeech/linuxbinary.
+Stáhněte a nainstalujte sadu SDK následujícím způsobem:
+
+1. Výběr adresáře (absolutní cesta), kam chcete umístit binární soubory sadou SDK pro řeč a záhlaví.
+   Například vyberte cestu `speechsdk` v domovském adresáři:
 
    ```sh
    export SPEECHSDK_ROOT="$HOME/speechsdk"
@@ -54,84 +55,82 @@ Kognitivní řeči Services SDK pro Linux je k dispozici pro vytvoření 64bitov
    mkdir -p "$SPEECHSDK_ROOT"
    ```
 
-1. Stažení a extrakci `.tar.gz` archivu řeči SDK binární soubory služby:
+1. Stažení a extrakci `.tar.gz` archiv se sadou SDK pro řeč binárních souborů:
 
    ```sh
    wget -O SpeechSDK-Linux.tar.gz https://aka.ms/csspeech/linuxbinary
    tar --strip 1 -xzf SpeechSDK-Linux.tar.gz -C "$SPEECHSDK_ROOT"
    ```
 
-1. Ověřte obsah nejvyšší úrovně adresáře extrahované balíčku:
+1. Ověření obsahu adresář nejvyšší úrovně extrahované balíčku:
 
    ```sh
    ls -l "$SPEECHSDK_ROOT"
    ```
 
-   Měl by se zobrazit upozornění třetích stran a souborů s licencí, a také `include` adresář pro hlavičky a `lib` adresář pro knihovny.
+   Měl by se zobrazit oznámení třetích stran a soubory s licencí, ale i `include` adresáře pro záhlaví a `lib` adresáře pro knihovny.
 
    [!include[Linux Binary Archive Content](includes/linuxbinary-content.md)]
 
-## <a name="sample-code"></a>Ukázka kódu
+## <a name="add-the-sample-code"></a>Přidejte ukázkový kód
 
-Následující kód rozpozná anglické řeči z mikrofonu.
-Umístěte jej do souboru s názvem `quickstart-linux.cpp`:
+1. Přidejte následující kód do souboru s názvem `helloworld.cpp`:
 
-[!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/Linux/quickstart-linux/quickstart-linux.cpp#code)]
+  [!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/cpp-linux/helloworld.cpp#code)]
 
-> [!IMPORTANT]
-> Nahraďte klíč předplatného ten, který jste získali. <br>
-> Nahraďte [oblast](regions.md) s přidruženou k odběru kategorií, například nahraďte `westus` pro bezplatné předplatné zkušební verze.
+1. Nahraďte řetězec `YourSubscriptionKey` s klíči předplatného.
+
+1. Nahraďte řetězec `YourServiceRegion` s [oblasti](regions.md) přidružených k vašemu předplatnému (například `westus` pro bezplatnou zkušební verzi předplatného).
 
 ## <a name="building"></a>Sestavení
 
 > [!NOTE]
 > Nezapomeňte zkopírovat a vložit příkazy sestavení níže jako _jeden řádek_.
 
-* Spusťte následující příkaz k vytvoření aplikace na x64 počítače:
+* Na **x64** počítače, spusťte následující příkaz k sestavení aplikace:
 
   ```sh
-  g++ quickstart-linux.cpp -o quickstart-linux -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/x64" -l:libssl.so.1.0.0 -l:libcurl.so.4 -l:libasound.so.2
+  g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/x64" -l:libssl.so.1.0.0 -l:libcurl.so.4 -l:libasound.so.2
   ```
 
-* Spusťte následující příkaz k vytvoření aplikace na x86 počítače:
+* Na **x86** počítače, spusťte následující příkaz k sestavení aplikace:
 
   ```sh
-  g++ quickstart-linux.cpp -o quickstart-linux -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/x86" -l:libssl.so.1.0.0 -l:libcurl.so.4 -l:libasound.so.2
+  g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/x86" -l:libssl.so.1.0.0 -l:libcurl.so.4 -l:libasound.so.2
   ```
 
-## <a name="running"></a>Spuštěno
+## <a name="run-the-sample"></a>Spuštění ukázky
 
-Ke spuštění aplikace, musíte nakonfigurovat cestu knihovny pro zavaděč tak, aby odkazovaly do knihovny řeči SDK.
+1. Nakonfigurujte cestu ke knihovně zavaděče tak, aby odkazoval na knihovny sadou SDK pro řeč konfigurací.
 
-* Na x64 počítače, spusťte:
+   * Na **x64** počítače, spusťte:
 
-  ```sh
-  export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$SPEECHSDK_ROOT/lib/x64"
-  ```
+     ```sh
+     export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$SPEECHSDK_ROOT/lib/x64"
+     ```
 
-* Na x86 počítače, spusťte:
+   * Na **x86** počítače, spusťte:
 
-  ```sh
-  export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$SPEECHSDK_ROOT/lib/x86"
-  ```
+     ```sh
+     export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$SPEECHSDK_ROOT/lib/x86"
+     ```
 
-Spusťte aplikaci takto:
+1. Spusťte aplikaci následujícím způsobem:
 
-```sh
-./quickstart-linux
-```
+   ```sh
+   ./helloworld
+   ```
 
-Pokud všechno proběhne správně, měli byste vidět výstup podobný tomuto:
+1. Byste měli vidět výstup podobný tomuto:
 
-```text
-Say something...
-We recognized: What's the weather
-```
+   ```text
+   Say something...
+   We recognized: What's the weather
+   ```
 
-## <a name="downloading-the-sample"></a>Stažení ukázky
-
-Nejnovější sadu vzorků, najdete v článku [úložiště GitHub SDK ukázka kognitivní služby řeči](https://aka.ms/csspeech/samples).
+[!include[Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
+Hledat v této ukázce `quickstart/cpp-linux` složky.
 
 ## <a name="next-steps"></a>Další postup
 
-* Přejděte [ukázky stránky](samples.md) Další ukázky.
+* Přejděte [stránku s ukázkami](samples.md) Další ukázky.

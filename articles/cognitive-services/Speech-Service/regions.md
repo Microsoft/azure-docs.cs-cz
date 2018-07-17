@@ -1,6 +1,6 @@
 ---
-title: Oblasti služby řeči | Microsoft Docs
-description: Referenční informace pro oblasti řeči služby.
+title: Oblasti služby řeči | Dokumentace Microsoftu
+description: Referenční informace pro oblasti Speech service.
 services: cognitive-services
 author: mahilleb-msft
 manager: wolmfa61
@@ -9,39 +9,37 @@ ms.technology: speech
 ms.topic: article
 ms.date: 06/28/2018
 ms.author: mahilleb
-ms.openlocfilehash: 1eb3768f5a5c5a27a45dde3f62f862f36fa3e8ac
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 11360d163fdba057d373d091d46903cde7789a8b
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37098494"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39071415"
 ---
-# <a name="regions-of-the-speech-service"></a>Oblasti služby řeči
+# <a name="regions-of-the-speech-service"></a>Oblasti Speech service
 
-Služba rozpoznávání řeči je k dispozici v různých oblastech.
-Při vytvoření odběru můžete podle potřeby vyberte oblast dostupná.
+Speech service je k dispozici v různých oblastech.
+Když vytvoříte odběr můžete vybrat dostupnou oblast, v závislosti na potřebách.
 
-Při používání vašeho předplatného, budete muset účet pro oblast, kterou jste vybrali.
+Při použití předplatného máte účet pro oblast, kterou jste vybrali.
 
 ## <a name="rest-api"></a>REST API
 
-Pomocí rozhraní REST API, vyberte práva specifické pro oblast koncových bodů.
-V tématu [rozhraní REST API](rest-apis.md) podrobnosti.
-
-
+Pomocí rozhraní REST API, můžete si vyberte koncové body přímo specifický pro oblast.
+Zobrazit [rozhraní REST API](rest-apis.md) podrobnosti.
 
 ## <a name="speech-sdk"></a>Speech SDK
 
-V [řeči SDK](speech-sdk.md), oblasti jsou určené jako řetězec (například jako parametr pro [SpeechFactory.FromSubscription](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechfactory.fromsubscription) v řeči SDK pro jazyk C#).
+V [sadou SDK pro řeč](speech-sdk.md), oblastí jsou určené jako řetězec (například jako parametr [SpeechFactory.FromSubscription](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechfactory.fromsubscription) v sadou SDK pro řeč pro jazyk C#).
 
-Následující tabulka uvádí dostupné oblasti pro rozpoznávání řeči a překlad:
+Následující tabulka uvádí dostupné oblasti pro **rozpoznávání řeči** a **překlad**:
 
-Oblast| Hodnota parametru oblast v sadě SDK řeči
+Oblast| Hodnota parametru oblast v sadou SDK pro řeč
 -|-
-Západní USA| `westus`
+USA – západ| `westus`
 Východní Asie| `eastasia`
 Severní Evropa| `northeurope`
 
-Dostupné oblasti pro záměrné rozpoznávání pomocí sady SDK řeči jsou uvedeny v [stránku oblasti služby znalosti jazyka](/azure/cognitive-services/luis/luis-reference-regions).
-Pro každou oblast publikování uvedené je určen parametr odpovídající oblast řeči SDK jako první část názvu domény koncového bodu.
-Například použít `westus` k určení publikování oblast západní USA.
+Dostupné oblasti pro **rozpoznání záměru** prostřednictvím sadou SDK pro řeč jsou uvedeny v [stránku oblasti služby Language Understanding](/azure/cognitive-services/luis/luis-reference-regions).
+Pro každou oblast publikování uvedené příslušného parametru oblasti sadou SDK pro řeč určena jako první část názvu domény koncového bodu.
+Například použít `westus` určit publikování oblast západní USA.

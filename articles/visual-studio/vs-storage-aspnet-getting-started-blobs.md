@@ -11,12 +11,12 @@ ms.workload: azure
 ms.topic: conceptual
 ms.date: 12/07/2017
 ms.author: ghogen
-ms.openlocfilehash: 55b083ac5384e749098338d2f3b7b24bfe16fe8f
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: fd13dc94e0199aac04ae86aaf003ea9a70fa50d5
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38696561"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39070551"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet"></a>Začínáme s Azure Blob storage a Visual Studio připojené služby (ASP.NET)
 
@@ -135,11 +135,11 @@ Následující postup ukazuje, jak vytvořit kontejner objektů blob:
 
 1. V **Průzkumníka řešení**, klikněte pravým tlačítkem myši **zobrazení** složky.
 
-2. V místní nabídce vyberte **přidat** > **novou složku**. Název nové složky *objekty BLOB*. 
+1. Pokud není k dispozici **objekty BLOB** složku, vytvořte si ho. V místní nabídce vyberte **přidat** > **novou složku**. Název nové složky *objekty BLOB*. 
  
 1. V **Průzkumníka řešení**, rozbalte **zobrazení** složky a klikněte pravým tlačítkem na **objekty BLOB**.
 
-4. V místní nabídce vyberte **přidat** > **zobrazení**.
+1. V místní nabídce vyberte **přidat** > **zobrazení**.
 
 1. V **přidat zobrazení** dialogového okna zadejte **CreateBlobContainer** názvu zobrazení a vyberte **přidat**.
 

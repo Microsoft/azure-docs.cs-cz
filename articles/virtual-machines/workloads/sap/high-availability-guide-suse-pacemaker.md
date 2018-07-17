@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 03/20/2018
+ms.date: 07/13/2018
 ms.author: sedusch
-ms.openlocfilehash: cac2f91a25907be824e3fd3517736d921c3fde64
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 1fa69cc09772b9f90e6de05820c823f0409d926e
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37921504"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39070331"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Nastavení Pacemaker na SUSE Linux Enterprise Server v Azure
 
@@ -38,6 +38,11 @@ Zařízení SBD vyžaduje jeden další virtuální počítač, který funguje j
 Pokud nechcete investovat do dalšího virtuálního počítače, můžete použít také agenta Azure. Nevýhodou je, že převzetí služeb při selhání můžete provést mezi 10 až 15 minut v případě zdroje stop selže nebo uzlech clusteru nemůže komunikovat které mezi sebou už.
 
 ![Pacemaker na SLES – přehled](./media/high-availability-guide-suse-pacemaker/pacemaker.png)
+
+>[!IMPORTANT]
+> Použití zařízení SBD pro váš cluster Pacemaker, je nezbytné pro celkovou spolehlivost celého clusteru, který směrování mezi se virtuální počítače a virtuální počítač, který je hostitelem SBD zařízení neprochází přes jakékoli jiné zařízení, jako jsou [síťovýchvirtuálníchzařízení](https://azure.microsoft.com/solutions/network-appliances/). V opačném případě problémů s síťové virtuální zařízení může mít negativní dopad na stabilitu a spolehlivost na celkové konfiguraci clusteru. Pokud se chcete vyhnout tyto překážky, prozkoumat pravidla směrování síťových virtuálních zařízení a [pravidla směrování definované uživatele](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) při plánování a nasazování SBD zařízení.
+>
+
 
 ## <a name="sbd-fencing"></a>Monitorování geografických zón SBD
 

@@ -10,18 +10,37 @@ ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 717cf6b2abfb529313699836b790bd3f07844a67
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 891206e88173d72a0bacf6694a331c4ad8cc9acc
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37867949"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39069443"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Sledování změn ve vašem prostředí pomocí řešení Change Tracking
 
 Tento článek vám pomůže používat řešení Change Tracking snadno identifikovat změny ve vašem prostředí. Řešení sleduje změny softwaru Windows a Linux, Windows a Linuxem soubory, klíče registru Windows, služby Windows a Linuxové procesy démon. Určení změn konfigurace vám může pomoct přesně určit provozní problémy.
 
 Změny nainstalovaného softwaru, služby Windows, Windows registru a souborů a procesy démon Linuxu na monitorovaných serverech odesílají do služby Log Analytics v cloudu pro zpracování. Logika platí pro přijatá data a cloudové službě zaznamenává data. Podle informací uvedených na řídicím panelu řešení Change Tracking, můžete snadno zobrazit změny, které byly provedeny v serverové infrastruktuře.
+
+## <a name="supported-windows-operating-systems"></a>Podporované operační systémy Windows
+
+Pro agenta Windows se oficiálně podporuje následující verze operačního systému Windows:
+
+* Windows Server 2008 Service Pack 1 (SP1) nebo novější
+* Windows 7 SP1 a novější.
+
+## <a name="supported-linux-operating-systems"></a>Podporované operační systémy a Linux
+
+Následující Linuxových distribucích se oficiálně podporuje. Agenta pro Linux může také spustit na jiné distribuce není uvedená. Pokud není uvedeno jinak, jsou podporovány všechny dílčí verze pro všechny hlavní verze uvedené.  
+
+* Linux Amazon 2012.09 k 2015.09 (x86/x64)
+* Linux centOS 5, 6 a 7 (x86/x64)  
+* Oracle Linux 5, 6 a 7 (x86/x64)
+* Red Hat Enterprise Linux Server 5, 6 a 7 (x86/x64)
+* Debian GNU/Linux 6, 7 a 8 (x86/x64)
+* Ubuntu 12.04 LTS, 14.04 LTS, 16.04 LTS (x86/x64)
+* SUSE Linux Enterprise Server 11 a 12 (x86/x64)
 
 ## <a name="enable-change-tracking-and-inventory"></a>Povolení řešení Change Tracking a Inventory
 
@@ -57,7 +76,7 @@ Použijte následující postup ke konfiguraci sledování souborů na počíta�
 |Rekurze     | Určuje, jestli se při hledání položky, která se má sledovat, používá rekurze.        |
 |Použít sudo     | Toto nastavení určuje, jestli se při kontrole položky používá sudo.         |
 |Odkazy     | Toto nastavení určuje, jak se při procházení adresářů zpracovávají symbolické odkazy.<br> **Ignorovat** – ignoruje symbolické odkazy a nezahrnuje odkazované soubory a adresáře.<br>**Postupujte podle** – během rekurze sleduje symbolické odkazy a zahrnuje i odkazované soubory a adresáře.<br>**Spravovat** – sleduje symbolické odkazy a umožňuje změnu vráceného obsahu.     |
-|Nahrát obsah souboru pro všechna nastavení| Zapne nebo vypne odeslání obsahu souboru na sledované změny. Dostupné možnosti: **True** nebo **False**.|
+|Nahrát obsah souboru pro všechna nastavení| Zapne nebo vypne u sledovaných změn nahrávání obsahu souboru. Dostupné možnosti: **True** nebo **False**.|
 
 > [!NOTE]
 > Možnost Spravovat se nedoporučuje. Načítání obsahu souborů se nepodporuje.
@@ -76,7 +95,7 @@ Použijte následující postup ke konfiguraci soubory sledování na počítač
 |Název položky     | Popisný název souboru, který má být sledovány.        |
 |Skupina     | Název skupiny pro logické seskupení souborů.        |
 |Zadat cestu     | Cesta, ve které se má soubor hledat. Například: c:\temp\myfile.txt       |
-|Nahrát obsah souboru pro všechna nastavení| Zapne nebo vypne odeslání obsahu souboru na sledované změny. Dostupné možnosti: **True** nebo **False**.|
+|Nahrát obsah souboru pro všechna nastavení| Zapne nebo vypne u sledovaných změn nahrávání obsahu souboru. Dostupné možnosti: **True** nebo **False**.|
 
 ## <a name="configure-file-content-tracking"></a>Konfigurovat sledování obsah souboru
 

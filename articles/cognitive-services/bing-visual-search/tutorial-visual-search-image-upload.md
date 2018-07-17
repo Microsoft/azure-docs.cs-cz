@@ -10,18 +10,18 @@ ms.technology: bing-visual-search
 ms.topic: article
 ms.date: 07/10/2018
 ms.author: scottwhi
-ms.openlocfilehash: 90ea591137b306069c1a5c184aea07375c72ce5c
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 1352ccbcda35c693c5ac0b36156af199ae46bee9
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036536"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39068664"
 ---
 # <a name="tutorial-breaking-down-bing-visual-search-upload"></a>Kurz: Popis vnitřních principů nahrávání pro vizuální vyhledávání Bingu
 
 V tomto kurzu rozděluje proces nahrávání obrázku do Bingu a získávání přehledu zpět. Také ukazuje, jak získat přístup a zobrazit přehledy v odpovědi JSON. Kompletní příklad HTML a JavaScript, najdete v části [dokončení kódu](#complete-code).
 
-V tomto kurzu je k dispozici pro vývojáře, který chce Seznamte se s obsahem odpovědi Bingu. Nelze použít veškeré použití a zobrazit požadavky (například, neposkytuje odkaz na zásady ochrany osobních údajů společnosti Microsoft). Všechny požadavky na použití, naleznete v tématu [požadavky na zobrazení a použití Bingu](./use-and-display-requirements.md).
+V tomto kurzu je k dispozici pro vývojáře, který chce Seznamte se s obsahem odpovědi pro vizuální vyhledávání Bingu. Nelze použít veškeré použití a zobrazit požadavky (například, neposkytuje odkaz na zásady ochrany osobních údajů společnosti Microsoft). Všechny požadavky na použití, naleznete v tématu [požadavky na zobrazení a použití Bingu](./use-and-display-requirements.md).
 
 
 ## <a name="where-to-start"></a>Kde začít?

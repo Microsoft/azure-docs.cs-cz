@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 04/28/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 17d84718c6adab8b2bd4f130f380edc12498102b
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 06350decd9d9f15db7226b6f2c3580feb49a59d1
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346038"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39069570"
 ---
 # <a name="supported-languages-for-speech-service"></a>Podporované jazyky pro Speech service
 
@@ -33,7 +33,7 @@ Rozpoznávání řeči Microsoft rozhraní API podporuje následující jazyky.
  ja-JP | Japonština (Japonsko) | Ne | Ano | Ne
  cs-CZ | Angličtina (Spojené státy) | Ano | Ano | Ano
  pt-BR | Portugalština (Brazílie) | Ne | Ano | Ne
- ES-ES | Španělština (Španělsko) | Ne | Ano | Ne
+ es-ES | Španělština (Španělsko) | Ne | Ano | Ne
  ru-RU | Ruština (Rusko) | Ne | Ano | Ne
  fr-FR | Francouzština (Francie) | Ne | Ano | Ne
  zh-CN | Čínština (Mandarínština, zjednodušená čínština) | Ne | Ano | Ne
@@ -45,7 +45,7 @@ Rozpoznávání řeči Microsoft rozhraní API podporuje následující jazyky.
 Národní prostředí | Jazyk | Pohlaví | Název mapování služby
 -------|----------|---------|--------------------
 ar – třeba * | arabština (Egypt) | Žena | "Microsoft Server řeči Text na řeč hlas (ar např Hoda)"
-ar SA | Arabština (Saúdská Arábie) | Muž | "Microsoft serveru řeči Text na řeč hlas (ar-SA, Naayf)"
+ar-SA | Arabština (Saúdská Arábie) | Muž | "Microsoft serveru řeči Text na řeč hlas (ar-SA, Naayf)"
 bg-BG | Bulharština | Muž | "Microsoft Server řeči převod textu na řeč hlasové (bg – BG, Ivan)"
 ES certifikační autority | katalánština (Španělsko) | Žena | "Microsoft Server řeči převod textu na řeč hlasové (ca-ES, HerenaRUS)"
 cs-CZ | Čeština | Muž | "Microsoft Server řeči Text na řeč hlas (cs-CZ, Jakub)"
@@ -72,7 +72,7 @@ cs-CZ | English (US) |Žena | "Microsoft serveru řeči Text na řeč hlas (en U
 | | |Muž | "Microsoft serveru řeči Text na řeč hlas (en US, BenjaminRUS)"
 | | |Žena | "Microsoft serveru řeči Text na řeč hlas (en US, Jessa24kRUS)" 
 | | |Muž | "Microsoft serveru řeči Text na řeč hlas (en US, Guy24kRUS)"
-ES-ES | Španělština (Španělsko) |Žena | "Microsoft Server řeči převod textu na řeč hlasové (es-ES, Laura, Apollo)"
+es-ES | Španělština (Španělsko) |Žena | "Microsoft Server řeči převod textu na řeč hlasové (es-ES, Laura, Apollo)"
 | | |Žena | "Microsoft Server řeči převod textu na řeč hlasové (es-ES, HelenaRUS)"
 | | |Muž | "Microsoft Server řeči převod textu na řeč hlasové (es-ES, tablet Pablo, Apollo)"
 es-MX | Španělština (Mexiko) | Žena | "Microsoft Server řeči převod textu na řeč hlasové (es-MX, HildaRUS)"
@@ -84,7 +84,7 @@ FR-CH | francouzština (Švýcarsko)|Muž | "Microsoft Server řeči převod tex
 fr-FR | Francouzština (Francie)|Žena | "Microsoft Server řeči převod textu na řeč hlasové (fr-FR, Julie, Apollo)"
 | | |Žena | "Microsoft Server řeči převod textu na řeč hlasové (fr-FR, HortenseRUS)"
 | | |Muž | "Microsoft Server řeči převod textu na řeč hlasové (fr-FR, Paul, Apollo)"
-he IL| hebrejština (Izrael) | Muž| "Microsoft serveru řeči Text na řeč hlas (he-IL, Asaf)"
+he-IL| hebrejština (Izrael) | Muž| "Microsoft serveru řeči Text na řeč hlas (he-IL, Asaf)"
 Dobrý den – v | hindština (Indie) | Žena | "Microsoft serveru řeči Text na řeč hlas (hi v, Kalpana, Apollo)"
 | | |Žena | "Microsoft serveru řeči Text na řeč hlas (hi v, Kalpana)"
 | | | Muž | "Microsoft serveru řeči Text na řeč hlas (hi v, Hemant)"
@@ -222,5 +222,5 @@ Můžete získat seznam jazyků, buď prostřednictvím kódu programu nebo pomo
 
 ## <a name="next-steps"></a>Další postup
 
-* [Získejte zkušební verzi předplatného řeči](https://azure.microsoft.com/try/cognitive-services/)
-* [Zjistěte, jak rozpoznávat řeč v jazyce C#](quickstart-csharp-windows.md)
+* [Získání zkušebního předplatného služby Speech](https://azure.microsoft.com/try/cognitive-services/)
+* [Zjistěte, jak rozpoznávat řeč v jazyce C#](quickstart-csharp-dotnet-windows.md)

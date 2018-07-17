@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 0ace89e04baf81776f82edd002b93b944c752051
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 5eb0839cb973ba2f8bc56dc240fc60817b24b3b6
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37860128"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39068858"
 ---
 # <a name="use-text-to-speech-in-speech-service"></a>Použití "Převod textu na řeč" v Speech service
 
@@ -95,5 +95,7 @@ Další informace o textu k rozhraní REST API pro rozpoznávání řeči, nalez
 
 ## <a name="next-steps"></a>Další postup
 
-- [Získejte zkušební verzi předplatného řeči](https://azure.microsoft.com/try/cognitive-services/)
-- [Rozpoznávání řeči v jazyce C#](quickstart-csharp-windows.md)
+- [Získání zkušebního předplatného služby Speech](https://azure.microsoft.com/try/cognitive-services/)
+- [Rozpoznávání řeči v jazyce C++](quickstart-cpp-windows.md)
+- [Rozpoznávání řeči v jazyce C#](quickstart-csharp-dotnet-windows.md)
+- [Rozpoznávání řeči v jazyce Java](quickstart-java-android.md)

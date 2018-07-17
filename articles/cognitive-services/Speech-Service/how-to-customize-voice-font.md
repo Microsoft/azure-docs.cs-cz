@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: nolach
-ms.openlocfilehash: b9218600db8bd3e20528e61e411bb64c10dd9c84
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 011358e223db419f31e0181b05ce6f89479dba81
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917631"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39070939"
 ---
 # <a name="creating-custom-voice-fonts"></a>Vytvoření vlastního hlasového písma
 
@@ -65,10 +65,10 @@ Zvukové soubory potřeba se připravit následujícím způsobem. Další form�
 | ------------ | --------- |
 | Formát souboru  | RIFF (WAV)|
 | Vzorkovací frekvence| aspoň 16 000 Hz |
-| Vzor formátu| PCM, 16 bitů |
+| Vzorkovací formát| PCM, 16 bitů |
 | Název souboru    | Číselné hodnoty a s `.wav` rozšíření |
-| Formát archivu| Zip      |
-| Maximální velikost|200 MB|
+| Formát archivu| ZIP      |
+| Maximální velikost archivu|200 MB|
 
 Umístí do jedné složce bez jeho podadresářích sadu zvukové soubory a nastavit jako jeden soubor archivu ZIP celý balíček.
 
@@ -235,5 +235,5 @@ Vlastní koncový bod je funkčně stejný jako standardní koncový bod pro př
 
 ## <a name="next-steps"></a>Další postup
 
-- [Získejte zkušební verzi předplatného řeči](https://azure.microsoft.com/try/cognitive-services/)
-- [Rozpoznávání řeči v jazyce C#](quickstart-csharp-windows.md)
+- [Získání zkušebního předplatného služby Speech](https://azure.microsoft.com/try/cognitive-services/)
+- [Rozpoznávání řeči v jazyce C#](quickstart-csharp-dotnet-windows.md)

@@ -1,5 +1,5 @@
 ---
-title: Koncepty AudioInputStream | Microsoft Docs
+title: Koncepty AudioInputStream | Dokumentace Microsoftu
 description: Přehled možností AudioInputStream rozhraní API.
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
@@ -10,72 +10,72 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 06/07/2018
 ms.author: fmegen
-ms.openlocfilehash: 528356473c4221a815fa68cbec3426866c4cbd23
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 0eafa7e88df5d00a67646ca7f82ca027602a40b3
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "35343971"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39071442"
 ---
-# <a name="about-the-audio-input-stream-api"></a>O zvuk vstupní stream rozhraní API
+# <a name="about-the-audio-input-stream-api"></a>O zvukový vstup datového proudu rozhraní API
 
-**Zvuk vstupní datový proud** rozhraní API poskytuje způsob, jak stream zvukových datových proudů do nástroje pro rozpoznávání místo mikrofon nebo vstupní soubor rozhraní API.
+**Zvuk vstupní Stream** rozhraní API poskytuje možnost streamování audiostreamy do nástroje pro rozpoznávání namísto použití mikrofonu nebo vstupní soubor rozhraní API.
 
 ## <a name="api-overview"></a>Přehled rozhraní API
 
-Rozhraní API používá dvě komponenty, `AudioInputStream` (nezpracovaná data zvuk) a `AudioInputStreamFormat`.
+Rozhraní API používá dvě komponenty, `AudioInputStream` (nezpracovaná zvukových dat) a `AudioInputStreamFormat`.
 
-`AudioInputStreamFormat` Definuje formát zvuková data. Může ve srovnání s standardní `WAVEFORMAT` struktury wave souborů v systému Windows.
+`AudioInputStreamFormat` Definuje formát zvuková data. Je možné porovnat s standardní `WAVEFORMAT` struktury souborů wave na Windows.
 
   - `FormatTag`
 
-    Formát zvukovém souboru. Sada SDK řeči aktuálně podporuje jenom `format 1` (PCM - little endian).
+    Formát zvuku. Sadou SDK pro řeč aktuálně podporuje pouze `format 1` (PCM - little endian).
 
   - `Channels`
 
-    Počet kanálů. Aktuální řeči služba podporuje pouze jeden kanál (mono) zvuk materiálů.
+    Počet kanálů. Aktuální služba speech podporuje pouze jeden kanál (mono) zvuku materiálu.
 
   - `SamplesPerSec`
 
-    Vzorkovací frekvence. Typické mikrofon záznam má 16000 ukázky za sekundu.
+    Vzorkovací frekvence. Nahrávání mikrofonu typické má 16000 vzorků za sekundu.
 
   - `AvgBytesPerSec`
 
-    Průměrný počet bajtů za sekundu, vypočítá se jako `SamplesPerSec * Channels * ceil(BitsPerSample, 8)`. Průměrný počet bajtů za sekundu může být různé pro zvukové datové proudy, které používají proměnné přenosových rychlostí.
+    Průměrný počet bajtů za sekundu, vypočítá jako `SamplesPerSec * Channels * ceil(BitsPerSample, 8)`. Průměrný počet bajtů za sekundu se může lišit pro zvukové datové proudy, které používají proměnné přenosových rychlostí.
 
   - `BlockAlign`
 
-    Velikost jeden snímek, vypočítá se jako `Channels * ceil(wBitsPerSample, 8)`. Z důvodu odsazení, může být vyšší než tato hodnota se skutečnou hodnotou.
+    Vypočítá velikost jeden snímek jako `Channels * ceil(wBitsPerSample, 8)`. Z důvodu odsazení, může být vyšší než tato hodnota skutečnou hodnotu.
 
   - `BitsPerSample`
 
-    Bitů na vzorek. Typické zvukový datový proud používá 16 bitů na vzorek (CD kvality).
+    Bity na vzorku. Typické zvukový datový proud používá 16 bitů na vzorku (Kvalita CD).
 
-`AudioInputStream` Základní třída přepíše váš vlastní datový proud adaptér. Tento adaptér je třeba implementovat tyto funkce:
+`AudioInputStream` Základní třídu, budou přepsaná identifikátorem adaptér vašeho vlastního datového proudu. Tento adaptér má k implementaci těchto funkcí:
 
    - `GetFormat()`
 
-     Tato funkce je volána potřebujete formát zvuk datového proudu. Získá ukazatel do vyrovnávací paměti AudioInputStreamFormat.
+     Tato funkce je volána k získání formátu zvukový datový proud. Získá ukazatel do vyrovnávací paměti AudioInputStreamFormat.
 
    - `Read()`
 
-     Tato funkce je volána k získání dat z zvukový stream. Jeden parametr. je zde ukazatel do ke zkopírování zvuk dat do vyrovnávací paměti. Druhý parametr je velikost vyrovnávací paměti. Vrátí počet bajtů, které jsou zkopírovány do vyrovnávací paměti. Vrácená hodnota `0` označuje konec datového proudu.
+     Tato funkce je volána k získání dat z zvukový datový proud. Jeden parametr má ukazatel na kopírování zvuková data do vyrovnávací paměti. Druhý parametr je velikost vyrovnávací paměti. Funkce vrátí počet bajtů, které jsou zkopírovány do vyrovnávací paměti. Vrácená hodnota `0` označuje konec datového proudu.
 
    - `Close()`
 
-     Tato funkce je volána k zavřít zvukový stream.
+     Tato funkce je volána zavřete zvukový datový proud.
 
 ## <a name="usage-examples"></a>Příklady použití
 
-Obecně platí následující kroky se podílejí při použití zvuk vstupní datové proudy:
+Následující kroky se podílejí obecně platí, při použití zvukové streamy ve vstupu:
 
-  - Určete formát zvuk datového proudu. Formát musí podporovat sady SDK a službu řeči. Aktuálně se podporuje následující konfigurace:
+  - Určete formát zvukový datový proud. Formát musí být podporován sady SDK a službu rozpoznávání řeči. Aktuálně se podporuje následující konfigurace:
 
-    Značka jednoho Zvuk formátu (PCM), jeden kanál, 16000 ukázky za sekundu, délku 32 000 bajtů za sekundu, dvě bloku align (16 bitů včetně odsazení pro ukázku), 16 bitů na vzorek
+    Jeden zvukový formát značky (PCM), jeden kanál, 16000 vzorků za sekundu, délku 32 000 bajtů za sekundu, zarovnání dvou bloku (16 bitů včetně odsazení ukázku), 16 bitů na ukázky
 
-  - Zajistěte, aby že váš kód můžete zadat NEZPRACOVANÁ data zvuk, specifikace identifikovat výše. Pokud zvuk zdrojová data neodpovídá podporované formáty, musí být zvukovému záznamu převodu do požadovaný formát.
+  - Ujistěte se, že váš kód může poskytnout NEZPRACOVANÁ zvukových dat jde o specifikace určené výše. Pokud data zdroje zvuku neodpovídá podporované formáty, musí být zvuk převedou do požadovaného formátu.
 
-  - Odvození třídy vaše vlastní zvuk vstupního datového proudu z `AudioInputStream`. Implementace `GetFormat()`, `Read()`, a `Close()` operaci. Podpis funkce stejné je závislá, ale kód bude vypadat podobně jako tento ukázkový kód::
+  - Odvodit třídu vaše vlastní zvukový vstupní datový proud z `AudioInputStream`. Implementace `GetFormat()`, `Read()`, a `Close()` operace. Signatura funkce stejné je závislá na jazyku, ale kód bude vypadat podobně jako tento vzorový kód::
 
     ```
      public class ContosoAudioStream : AudioInputStream {
@@ -102,7 +102,7 @@ Obecně platí následující kroky se podílejí při použití zvuk vstupní d
      };
     ```
 
-  - Použijte zvuk vstupního datového proudu:
+  - Použijte zvukový vstupního datového proudu:
 
     ```
     var contosoStream = new ContosoAudioStream(contosoConfig);
@@ -119,7 +119,7 @@ Obecně platí následující kroky se podílejí při použití zvuk vstupní d
     // delete contosoStream;
     ```
 
-  - V některých jazycích `contosoStream` musí být explicitně odstranit po dokončení rozpoznávání. Nelze uvolnit AudioStream, před dokončení vstup je pro čtení. Scénář pomocí `StopContinuousRecognitionAsync` a `StopContinuousRecognitionAsync` vyžaduje koncept zobrazené v této ukázce:
+  - V některých jazycích `contosoStream` musí být explicitně odstraněny po dokončení uznání. AudioStream nelze uvolnit předtím, než je kompletní vstup přečtený. Ve scénáři pomocí `StopContinuousRecognitionAsync` a `StopContinuousRecognitionAsync` vyžaduje koncept znázorněné v tomto příkladu:
 
     ```
     var contosoStream = new ContosoAudioStream(contosoConfig);
@@ -141,5 +141,5 @@ Obecně platí následující kroky se podílejí při použití zvuk vstupní d
 
 ## <a name="next-steps"></a>Další postup
 
-* [Získat zkušební verze předplatného řeči](https://azure.microsoft.com/try/cognitive-services/)
-* [Informace o tom, rozpoznávat řeč v jazyce C#](quickstart-csharp-windows.md)
+* [Získání zkušebního předplatného služby Speech](https://azure.microsoft.com/try/cognitive-services/)
+* [Zjistěte, jak rozpoznávat řeč v jazyce C#](quickstart-csharp-dotnet-windows.md)

@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-database
 ms.custom: data-sync
 ms.topic: conceptual
-ms.date: 07/01/2018
+ms.date: 07/16/2018
 ms.author: xiwu
 ms.reviewer: douglasl
-ms.openlocfilehash: 56117953c6cd11b952a312e15cd4515895021e10
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 81616522f479175dc58188bd6acc4db4f9007756
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37342653"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39069366"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Synchronizace dat napříč několika cloudu a místními databázemi pomocí synchronizace dat SQL
 
@@ -24,6 +24,16 @@ Synchronizace dat SQL je služba založená na Azure SQL Database, která umož�
 ## <a name="architecture-of-sql-data-sync"></a>Architektura synchronizace dat SQL
 
 Synchronizace dat vychází kolem koncepce skupině synchronizace. Skupina synchronizace se skupinou databází, které se mají synchronizovat.
+
+Synchronizace dat používá k synchronizaci dat hvězdicové topologii. Definujte jedné z databází ve skupině synchronizace jako databáze centra. Zbytek databáze je databází člena. Synchronizace nastávají jenom mezi centra a jednotlivé členy.
+-   **Databáze centra** musí být Azure SQL Database.
+-   **Členské databáze** může být databáze SQL, databáze SQL serveru v místním nebo instance systému SQL Server na virtuálních počítačích Azure.
+-   **Databáze synchronizace** pro synchronizaci dat obsahuje metadata a protokolu. Synchronizace databáze musí být, že Azure SQL Database umístěný ve stejné oblasti jako databáze centra. Synchronizace databáze je zákazník vytvořil a vlastněné zákazníkem.
+
+> [!NOTE]
+> Pokud používáte databázi aplikace v místním prostředí jako databázi člena, budete muset [instalace a konfigurace agenta místní synchronizace](sql-database-get-started-sql-data-sync.md#add-on-prem).
+
+![Synchronizace dat mezi databázemi](media/sql-database-sync-data/sync-data-overview.png)
 
 Skupina synchronizace má následující vlastnosti:
 
@@ -35,16 +45,6 @@ Skupina synchronizace má následující vlastnosti:
 
 -   **Zásada řešení konfliktů** je úroveň zásad skupiny, které mohou být *centra wins* nebo *člen wins*.
 
-Synchronizace dat používá k synchronizaci dat hvězdicové topologii. Definujte jedné z databází ve skupině jako databáze centra. Zbytek databáze je databází člena. Synchronizace nastávají jenom mezi centra a jednotlivé členy.
--   **Databáze centra** musí být Azure SQL Database.
--   **Členské databáze** může být databáze SQL, databáze SQL serveru v místním nebo instance systému SQL Server na virtuálních počítačích Azure.
--   **Databáze synchronizace** pro synchronizaci dat obsahuje metadata a protokolu. Synchronizace databáze musí být, že Azure SQL Database umístěný ve stejné oblasti jako databáze centra. Synchronizace databáze je zákazník vytvořil a vlastněné zákazníkem.
-
-> [!NOTE]
-> Pokud používáte databázi aplikace v místním prostředí jako databázi člena, budete muset [instalace a konfigurace agenta místní synchronizace](sql-database-get-started-sql-data-sync.md#add-on-prem).
-
-![Synchronizace dat mezi databázemi](media/sql-database-sync-data/sync-data-overview.png)
-
 ## <a name="when-to-use-data-sync"></a>Kdy použít synchronizace dat
 
 Synchronizace dat je užitečné v případech, kdy data musí být pořád aktuální napříč několika databází Azure SQL Database nebo databáze systému SQL Server. Tady jsou hlavní svědectví pro synchronizaci dat:
@@ -55,7 +55,7 @@ Synchronizace dat je užitečné v případech, kdy data musí být pořád aktu
 
 -   **Globálně distribuované aplikace:** řada podniků zahrnují několik oblastí a dokonce i v několika zemích. Kvůli minimalizaci latence sítě, je nejvhodnější pro vaše data v oblasti blízko vás. Pomocí synchronizace dat se snadnou vejdou databází v oblastech po celém světě synchronizované.
 
-Synchronizace dat není nejlepším řešením pro následující scénáře:
+Synchronizace dat není preferovaným řešením v následujících scénářích:
 
 | Scénář | Některé doporučená řešení. |
 |----------|----------------------------|
@@ -205,7 +205,7 @@ Ano. Synchronizace dat SQL podporuje kolaci v následujících scénářích:
 
 Kořenová databáze federace je možné ve službě synchronizace dat SQL bez omezení. Koncový bod federované databázi nelze přidat do aktuální verze synchronizace dat SQL.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 ### <a name="update-the-schema-of-a-synced-database"></a>Aktualizovat schéma synchronizace databáze
 

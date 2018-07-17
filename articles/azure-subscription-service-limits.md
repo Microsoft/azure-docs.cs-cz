@@ -1,26 +1,21 @@
 ---
-title: Limity předplatného Azure a kvóty | Dokumentace Microsoftu
+title: Limity předplatného Azure a kvóty
 description: Obsahuje seznam běžných předplatného Azure a limity, kvóty a omezení. To zahrnuje informace o tom, jak zvýšit omezení spolu s maximální hodnoty.
-services: ''
-documentationcenter: ''
+services: multiple
 author: rothja
 manager: jeffreyg
-editor: ''
 tags: billing
 ms.assetid: 60d848f9-ff26-496e-a5ec-ccf92ad7d125
 ms.service: billing
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 03/29/2018
+ms.date: 07/13/2018
 ms.author: byvinyal
-ms.openlocfilehash: aecb687ea2352b482a97226219e9a075070c50a6
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 8b023540f57cb69fc1d2773ef533364f64820359
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38990671"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39069535"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity, kvóty a omezení předplatného a služeb Azure
 Tento dokument uvádí některé nejčastějšími omezeními Microsoft Azure, které se taky říká se jim kvóty. Tento dokument nepopisuje aktuálně všech služeb Azure. V průběhu času v seznamu rozbalit a doplněn o popis další platformy.
@@ -52,6 +47,8 @@ V následující omezení se přidala nová tabulka tak, aby odrážel případn
 * [Application Insights](#application-insights-limits)
 * [Automation](#automation-limits)
 * [Azure Cosmos DB](#azure-cosmos-db-limits)
+* [Azure Database for MySQL](#azure-database-for-mysql)
+* [Azure Database for PostgreSQL](#azure-database-for-postgresql)
 * [Azure Event Grid](#azure-event-grid-limits)
 * [Azure Maps](#azure-maps-limits)
 * [Azure Redis Cache](#azure-redis-cache-limits)
@@ -219,6 +216,12 @@ Následující tabulka uvádí omezení pro Azure Biztalk Services.
 
 ### <a name="azure-cosmos-db-limits"></a>Omezení služby Azure Cosmos DB
 Azure Cosmos DB je globální škálování databáze, ve které je možné škálovat propustnost a úložiště pro zpracování cokoli, co vaše aplikace vyžaduje. Pokud máte nějaké dotazy ohledně škálování služby Azure Cosmos DB nabízí, pošlete prosím e-mail na askcosmosdb@microsoft.com.
+
+### <a name="azure-database-for-mysql"></a>Azure Database for MySQL
+Azure Database for MySQL – omezení, najdete v části [omezení ve službě Azure Database for MySQL](mysql/concepts-limits.md).
+
+### <a name="azure-database-for-postgresql"></a>Azure Database for PostgreSQL
+Azure Database for postgresql – omezení, najdete v části [omezení ve službě Azure Database for PostgreSQL](postgresql/concepts-limits.md).
 
 ### <a name="mobile-engagement-limits"></a>Omezení Mobile Engagement
 [!INCLUDE [azure-mobile-engagement-limits](../includes/azure-mobile-engagement-limits.md)]

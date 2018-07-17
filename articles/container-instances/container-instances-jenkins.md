@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 04/20/2018
+ms.date: 07/13/2018
 ms.author: marsma
-ms.openlocfilehash: ff94a250ca40aa546ebb07faa96563f49dea974a
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: d8ac5850a61c1dec9daa508236ef56836876c3fe
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37887687"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39072071"
 ---
 # <a name="use-azure-container-instances-as-a-jenkins-build-agent"></a>Použití Azure Container Instances jako Jenkins agenta sestavení
 
@@ -92,31 +92,21 @@ Jenkins je teď nakonfigurovaná a připravená k vytvoření a nasazení kódu.
 
 ## <a name="create-a-build-job"></a>Vytvoření úlohy sestavení
 
-Pokud používáte cíl sestavení image kontejneru jako Jenkinsem, musíte zadat bitovou kopii, která zahrnuje všechny nástroje potřebné pro úspěšné sestavení. Zadání image:
+Úloha sestavení Jenkinse je vytvořena k předvedení sestavení Jenkins na instanci kontejneru Azure.
 
-1. Vyberte **spravovat Jenkins** > **konfigurovat systém** a přejděte dolů k položce **cloudu** oddílu. V tomto příkladu aktualizujte hodnotu image Dockeru do **microsoft/java na azure-jenkins-podřízený server**.
-
-   Jakmile budete hotovi, vyberte **Uložit** se vraťte k řídicímu panelu Jenkinse.
-
-   ![Konfigurace cloudu Jenkinse](./media/container-instances-jenkins/jenkins-aci-image.png)
-
-2. Teď vytvořte úlohu Jenkinse sestavení. Vyberte **nová položka**, pojmenujte projekt sestavení, jako **aci-java-demo**vyberte **Freestyle project**a vyberte **OK**.
+1. Vyberte **nová položka**, pojmenujte projekt sestavení, jako **aci-demo**vyberte **Freestyle project**a vyberte **OK**.
 
    ![Pole pro název úlohy sestavení a v seznamu typů projektů](./media/container-instances-jenkins/jenkins-new-job.png)
 
-3. V části **Obecné**, ujistěte se, že **omezit, kde lze tento projekt spustit** zaškrtnuto. Zadejte **linux** pro výraz popisku. Tato konfigurace zajistí, že tato úloha sestavení běží v cloudu ACI.
+2. V části **Obecné**, ujistěte se, že **omezit, kde lze tento projekt spustit** zaškrtnuto. Zadejte **linux** pro výraz popisku. Tato konfigurace zajistí, že tato úloha sestavení běží v cloudu ACI.
 
    !["Obecné" karta se podrobnosti o konfiguraci](./media/container-instances-jenkins/jenkins-job-01.png)
 
-4. V části **Správa zdrojového kódu**vyberte **Git** a zadejte **https://github.com/spring-projects/spring-petclinic.git** pro adresu URL úložiště. Úložiště GitHub obsahuje vzorový kód aplikace.
+3. V části **sestavení**vyberte **přidat krok sestavení** a vyberte **spustit prostředí**. Zadejte `echo "aci-demo"` jako příkaz.
 
-   !["Source Code Management" kartu s informací o zdrojovém kódu](./media/container-instances-jenkins/jenkins-job-02.png)
+   !["Sestavení" kartu s výběry kroku sestavení](./media/container-instances-jenkins/jenkins-job-02.png)
 
-5. V části **sestavení**vyberte **přidat krok sestavení** a vyberte **vyvolat nejvyšší úrovně cíle Maven**. Zadejte **balíčku** jako cíl krok sestavení.
-
-   !["Sestavení" kartu s výběry kroku sestavení](./media/container-instances-jenkins/jenkins-job-03.png)
-
-6. Vyberte **Uložit**.
+5. Vyberte **Uložit**.
 
 ## <a name="run-the-build-job"></a>Spuštění úlohy sestavení
 

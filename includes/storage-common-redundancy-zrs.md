@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/03/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 056007ba9d28280a6055ca3312e2aa53e635d1d3
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: a88588497919d6cce17ced6d94de3bcbbb6a3019
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37859795"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39069633"
 ---
 Zónově redundantní úložiště (ZRS) vaše data synchronně replikuje mezi tři úložnými clustery v jedné oblasti. Každý cluster úložiště je fyzicky oddělená od ostatních a je umístěn ve své vlastní zóně dostupnosti (AZ). Každá zóna dostupnosti a cluster ZRS obsahuje, je autonomní pomocí samostatných nástrojů a možností sítě.
 
@@ -24,7 +24,7 @@ Zvažte použití ZRS pro scénáře, které vyžadují silnou konzistenci, siln
 Další informace o zónách dostupnosti najdete v tématu [Přehled zón dostupnosti](https://docs.microsoft.com/azure/availability-zones/az-overview).
 
 ## <a name="support-coverage-and-regional-availability"></a>Podpora je poskytována a dostupnosti v jednotlivých oblastech
-ZRS v současné době podporuje standard [pro obecné účely v2 (GPv2)](../articles/storage/common/storage-account-options.md#general-purpose-v2) typy účtů. Zónově redundantní úložiště je k dispozici pro objekty BLOB bloku, objekty BLOB stránky bez disku, soubory, tabulky a fronty. Kromě toho všechny vaše [Storage Analytics](../articles/storage/common/storage-analytics.md) protokoly a [Storage Metrics](../articles/storage/common/storage-enable-and-view-metrics.md)
+ZRS v současné době podporuje standard [pro obecné účely v2 (GPv2)](../articles/storage/common/storage-account-options.md#general-purpose-v2-accounts) typy účtů. Zónově redundantní úložiště je k dispozici pro objekty BLOB bloku, objekty BLOB stránky bez disku, soubory, tabulky a fronty. Kromě toho všechny vaše [Storage Analytics](../articles/storage/common/storage-analytics.md) protokoly a [Storage Metrics](../articles/storage/common/storage-enable-and-view-metrics.md)
 
 Zónově redundantní úložiště je obecně dostupná v těchto oblastech:
 
@@ -85,7 +85,7 @@ Pracovník podpory pak bude vás budeme kontaktovat. Tato osoba bude k dispozici
 >[!NOTE]
 > Jakmile zónově redundantní úložiště je [obecně k dispozici](#support-coverage-and-regional-availability) v oblasti, se již budete moci vytvořit účet ZRS Classic na portálu v dané stejné oblasti. Však můžete stále vytvořit jeden prostřednictvím jiným způsobem, jako je Microsoft PowerShell a rozhraní příkazového řádku Azure, to znamená, dokud ZRS Classic je zastaralý.
 
-ZRS Classic asynchronně replikuje data napříč datovými centry v jedné až dvou oblastech. Replika nemusí být k dispozici, pokud společnost Microsoft nezahájí převzetí služeb při selhání a přechod na sekundární data. ZRS Classic je k dispozici pouze pro **objekty BLOB bloku** v [pro obecné účely V1 (GPv1)](../articles/storage/common/storage-account-options.md#general-purpose-v1) účty úložiště. Účet ZRS Classic nelze převést na LRS nebo GRS ani naopak a nepodporuje možnosti metrik ani protokolování.
+ZRS Classic asynchronně replikuje data napříč datovými centry v jedné až dvou oblastech. Replika nemusí být k dispozici, pokud společnost Microsoft nezahájí převzetí služeb při selhání a přechod na sekundární data. ZRS Classic je k dispozici pouze pro **objekty BLOB bloku** v [pro obecné účely V1 (GPv1)](../articles/storage/common/storage-account-options.md#general-purpose-v1-accounts) účty úložiště. Účet ZRS Classic nelze převést na LRS nebo GRS ani naopak a nepodporuje možnosti metrik ani protokolování.
 
 Účty ZRS Classic nelze převést na nebo z LRS, GRS nebo RA-GRS. Účty ZRS Classic také nepodporují protokolování nebo metrik.
 

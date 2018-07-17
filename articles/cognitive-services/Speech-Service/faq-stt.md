@@ -9,12 +9,12 @@ ms.component: custom-speech
 ms.topic: article
 ms.date: 06/11/2018
 ms.author: panosper
-ms.openlocfilehash: db57e0bd0f7afcfa836ef6446cdfd74e5d61c440
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: ad4b31fa7b4f4b062f01935c34f7cacf82f99106
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37345256"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39072122"
 ---
 # <a name="custom-speech-service-frequently-asked-questions"></a>Custom Speech Service – nejčastější dotazy
 
@@ -57,7 +57,7 @@ Po dokončení zpracování se stav bude mít "bylo dokončeno".
 
 Staré a nové datové sady musí zkombinovat v jedné ZIP (je-li akustických dat) nebo soubor .txt, pokud je jazyk data. Po přizpůsobení se provádí nové aktualizace modelu musí být zrušit nasazené získat nový koncový bod
 
-**Dotaz**: Co když budu potřebovat vyšší souběžnosti pro moje deloyed model, než co je k dispozici v portálu. 
+**Dotaz**: Co když budu potřebovat vyšší souběžnosti pro moje nasazený model než nabízejí na portálu. 
 
 **Odpověď**: můžete vertikálně navýšit kapacitu váš model v přírůstcích po 20 souběžných požadavků. 
 
@@ -90,7 +90,7 @@ Pokud většinu projevy a v jakémkoli jazyce akustických dat (například > 95
 
 **Dotaz**: kolik akustických dat musím udělat?
 
-**Odpověď**: doporučujeme začít se 30 minut na jednu hodinu akustických dat
+**Odpověď**: doporučujeme začít se 30 minut na jednu hodinu akustických dat.
 
 **Dotaz**: Jaká data shromažďuje?
 
@@ -116,18 +116,18 @@ Můžete také vytvořit verzi aplikace, která protokoluje zvukových dat a, kt
 
 **Odpověď**: Ano, stačí vybrat vlastního akustického modelu v rozevírací nabídce při nastavování testů offline.
 
-**Dotaz**: co je míra chyb aplikace Word a jak se počítá?
+**Dotaz**: co je míra chyb aplikace Word (zasílání) a jak se počítá?
 
-**Odpověď**: míra chyb aplikace Word je metrika hodnocení pro rozpoznávání řeči. Počítá se jako celkový počet chyb, která zahrnuje vložení, odstranění a nahrazení rozdělené podle celkového počtu slov ve přepis odkaz. Podrobnosti o režimu [zde](https://en.wikipedia.org/wiki/Word_error_rate)
+**Odpověď**: míra chyb aplikace Word (zasílání) je metrika hodnocení pro rozpoznávání řeči. Počítá se jako celkový počet chyb, která zahrnuje vložení, odstranění a nahrazení rozdělené podle celkového počtu slov ve přepis odkaz. Další podrobnosti najdete [tady](https://en.wikipedia.org/wiki/Word_error_rate).
 
 **Dotaz**: Jak zjistím, pokud je dobré výsledky testu přesnost?
 
 **Odpověď**: Výsledkem porovnání mezi modelem směrného plánu a jste si přizpůsobili.
-Bychom se měli snažit beat základního modelu provádět přizpůsobení smysl
+Bychom se měli snažit beat základního modelu provádět přizpůsobení smysl.
 
-**Dotaz**: jak I přijít na to, zasílání základní modely, tak se zobrazí, pokud bylo zlepšení? 
+**Dotaz**: Jak můžu přijít na to, míra chyb slovo základní modelů, proto se zobrazí, pokud bylo zlepšení? 
 
-**Odpověď**: výsledky testů offline zobrazit přesnost přesnost směrného plánu vlastního modelu a vylepšování prostřednictvím standardních hodnot
+**Odpověď**: výsledky testů offline zobrazit přesnost přesnost směrného plánu vlastního modelu a vylepšování prostřednictvím standardních hodnot.
 
 ## <a name="creating-lm"></a>Vytváření LM
 
@@ -140,7 +140,7 @@ Bychom se měli snažit beat základního modelu provádět přizpůsobení smys
 **Odpověď**: nahrávání seznam slov, získejte slova do slovníku ale neučí systému, jak se obvykle používají slova.
 Tím, že poskytuje úplné nebo částečné projevy (větách nebo frázích věcí, které uživatelé můžou Řekněme, že) jazykový model další nové slova a, jejich použití. Vlastní jazykový model je dobrým způsobem nejen pro získávání nových slov v systému, ale také pro úpravu pravděpodobnost známé slova pro vaši aplikaci. Poskytuje úplné projevy pomáhá systému získat lepší informace. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Řešení potíží](troubleshooting.md)
 * [Poznámky k verzi](releasenotes.md)

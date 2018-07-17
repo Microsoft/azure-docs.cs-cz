@@ -1,6 +1,6 @@
 ---
-title: O překlad řeči | Microsoft Docs
-description: Přehled možností řeči posunutí
+title: O překladu řeči | Dokumentace Microsoftu
+description: Přehled možností pro překlad řeči
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: v-jerkin
@@ -10,37 +10,37 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 04/28/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 43fcde887c21794989aa43540a214ef34893a630
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: a569c968d444c36ceb3bce4779d2eca39c21f9bc
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343776"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39069190"
 ---
-# <a name="about-the-speech-translation-api"></a>O překlad řeči rozhraní API
+# <a name="about-the-speech-translation-api"></a>O rozhraní API pro překlad řeči
 
-Rozhraní API pro rozpoznávání řeči Microsoft můžete přidat začátku do konce, v reálném čase, vícejazyčné překlad řeči do vaší aplikace, nástroje a zařízení. Lze použít stejné rozhraní API pro rozpoznávání řeči řeči a řeči na text překlad.
+Rozhraní Speech API Microsoft můžete přidat začátku do konce, v reálném čase, vícejazykového překlad řeči do aplikací, nástroje a zařízení. Stejného rozhraní API můžete použít pro překlad řeči řeči a rozpoznávání řeči na text.
 
-Klientské aplikace s rozhraním API Microsoft překladač řeči stream řeči zvuk ke službě a zobrazí zpět proud výsledky. Tyto výsledky obsahovat rozpoznaný text v source jazyk a jeho překlad do cílového jazyka. Dočasné překlady je možné zadaný až do dokončení utterance, které během poslední posunutí je k dispozici.
+Pomocí rozhraní Microsoft Translator Speech API klientské aplikace zvuk řeči do služby stream a získávejte zpět výsledků. Tyto výsledky zahrnout textové rozpoznaných Zdrojový jazyk a překladu v cílovém jazyce. Dočasné překlady je možné poskytnout než utterance se dokončí, po kterém konečný překlad je k dispozici.
 
-Volitelně můžete syntetizovaná zvuk verzi konečné překlad mohly být připraveny, povolení true řeči řeči překlad.
+Volitelně můžete syntetizovaný zvukovou verzi konečný překlad mohly být připraveny, povolení true překlad řeči speech.
 
-Rozhraní API pro překlad řeči používá k poskytnutí plně duplexní komunikační kanál mezi klientem a serverem protokolu Websocket. Ale nemusíte zabývat Websocket; který zpracovává řeči SDK.
+Rozhraní API pro překlad řeči používá protokol Websocket pro zajištění plně duplexní komunikační kanál mezi klientem a serverem. Ale nepotřebujete řešit objekty Websocket; sadou SDK pro řeč, která zpracuje za vás.
 
-Rozhraní API pro překlad řeči využívá stejné technologie, které stojí za různé produkty a služby Microsoftu. Tato služba je již používán tisíce firmy po celém světě v jejich aplikace a pracovních postupů.
+Rozhraní API pro překlad řeči využívá stejné technologie, které stojí za různých produktů a služeb Microsoftu. Tato služba je již kterou tisíce podniků po celém světě využívají ve svých aplikací a pracovních postupů.
 
 ## <a name="about-the-technology"></a>O technologii
 
-Základní modul překlad společnosti Microsoft se používají dva různé přístupy: statistické strojový překlad (SMT) a neuronové strojový překlad (NMT). K tomu, umělé intelligence přístup zaměstnávající neuronové sítě, je více moderní přístup k strojového překladu. NMT poskytuje lepší překlady – ne jenom přesnější, ale také více fluent a přirozené. Z důvodu klíče pro tuto přenositelnost je, že NMT používá kontext úplné věty překládat slova.
+Základní modul překlad společnosti Microsoft jsou dva různé přístupy: statistické strojový překlad (SMT) a strojovému překladu neuronových (sítí NMT). Druhá možnost, umělou inteligenci přístup využívající neuronové sítě, je více moderní přístup pro strojový překlad. Poskytuje lepší překlady NMT – ne jenom přesnější, ale také více fluent a přirozené. Klíče důvod pro tento plynulost je, že NMT používá úplný kontext větu překládat slova.
 
-Dnes Microsoft migroval na NMT pro Nejoblíbenější jazyky zaměstnávající SMT pouze pro jazyky, méně použít. Všechny [jazyky, které jsou k dispozici pro překlad řeči řeči](supported-languages.md#speech-translation) se používá technologii NMT. Překlad řeči na text může používat SMT nebo NMT v závislosti na pár jazyk. Pokud cílový jazyk je podporovaná NMT, úplná překlad je NMT zapnuté. Pokud cílový jazyk nepodporuje NMT, překlad je hybridní NMT a SMT, pomocí angličtina jako "pivot" mezi nimi.
+V současné době Microsoft migroval do NMT pro Nejoblíbenější jazyky, když SMT pouze pro jazyky méně používaná. Všechny [jazyky dostupné pro překlad řeči speech](supported-languages.md#speech-translation) NMT využívají. Překlad řeči na text pomocí SMT nebo NMT v závislosti na pár jazyka. Pokud cílový jazyk je podporovaná NMT, úplný překlad je s využitím NMT. Pokud cílový jazyk není podporován NMT, překlad je v hybridní kombinaci NMT a SMT, pomocí angličtina jako "kontingenční tabulku" mezi dva jazyků.
 
-Rozdíly mezi modely jsou interní modul překlad. Koncoví uživatelé Všimněte si pouze vylepšené překlad kvality, hlavně pro čínštiny, japonštiny a arabské.
+Rozdíly mezi modely jsou interní překlad modulu. Koncoví uživatelé oznámení pouze kvalitu překladu vylepšené, zejména pro arabština, čínština a japonština.
 
 > [!NOTE]
-> Zajímá vás to dozvědět další informace o technologii za modul překlad společnosti Microsoft? V tématu [strojový překlad](https://www.microsoft.com/en-us/translator/mt.aspx).
+> Uvažujete o získání informací o technologie od Microsoftu překladu modulu? Zobrazit [strojový překlad](https://www.microsoft.com/en-us/translator/mt.aspx).
 
 ## <a name="next-steps"></a>Další postup
 
-* [Získat zkušební verze předplatného řeči](https://azure.microsoft.com/try/cognitive-services/)
-* [Informace o tom, rozpoznávat řeč v jazyce C#](quickstart-csharp-windows.md)
+* [Získání zkušebního předplatného služby Speech](https://azure.microsoft.com/try/cognitive-services/)
+* [Zjistěte, jak rozpoznávat řeč v jazyce C#](quickstart-csharp-dotnet-windows.md)

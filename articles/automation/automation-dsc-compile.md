@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 76b2b1983cc5a6cedfcff204871e0b0f985fef95
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 897681cda31b2f187fca64e77621b7dc5ed4dfae
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37900778"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39072105"
 ---
 # <a name="compiling-configurations-in-azure-automation-dsc"></a>Kompilace konfigurací v Azure Automation DSC
 
@@ -235,7 +235,7 @@ Odkazy na prostředek jsou stejné v konfiguracích DSC Azure Automation a sady 
 
 ### <a name="credential-assets"></a>Assety přihlašovacích údajů
 
-Během konfigurace DSC ve službě Azure Automation může odkazovat na používání prostředků přihlašovacích údajů **Get-AutomationPSCredential**, assety přihlašovacích údajů můžete také předat ve prostřednictvím parametrů, v případě potřeby. Pokud má parametr z konfigurace **PSCredential** typ, pak je nutné předat název řetězce objektu Azure Automation asset přihlašovacích údajů jako hodnotu tohoto parametru, nikoli objekt PSCredential. Azure Automation asset přihlašovacích údajů s tímto názvem na pozadí, je načten a předané do konfigurace.
+Konfigurace DSC ve službě Azure Automation může odkazovat na používání prostředků přihlašovacích údajů Automation `Get-AutomationPSCredential`. Pokud má parametr, který obsahuje konfiguraci **PSCredential** typ, můžete použít `Get-AutomationPSCredential` rutiny předáním název řetězce objektu Azure Automation asset přihlašovacích údajů pro danou rutinu se načíst přihlašovací údaje. Pak můžou použít pak pomocí tohoto objektu pro parametr vyžadování **PSCredential** objektu. Azure Automation asset přihlašovacích údajů s tímto názvem na pozadí, je načten a předané do konfigurace. Následující příklad ukazuje to v akci.
 
 Uchování přihlašovacích údajů zabezpečené při konfiguraci uzlů (MOF konfigurace dokumenty) vyžaduje šifrování přihlašovacích údajů v uzlu konfiguračního souboru MOF. Ale aktuálně je zapotřebí sdělit PowerShell DSC, že je v pořádku, pro přihlašovací údaje, které má obsahovat výstup ve formátu prostého textu při generování MOF konfigurace uzlu, protože prostředí PowerShell DSC neví, že Azure Automation bude možné šifrování celý soubor MOF po jeho vygenerování prostřednictvím úlohy kompilace.
 
