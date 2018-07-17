@@ -6,27 +6,27 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 02/27/2018
+ms.date: 07/06/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: b0474ce532831e15738ec882dfdf451bc35d09cf
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: ee38fe542ca6e2e4e1f8e09b54717d4390b453d0
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34737608"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37922653"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Migrace virtuálních počítačů služby Amazon Web Services (AWS) do Azure
 
 V tomto kurzu se naučíte migrovat virtuální počítače služby Amazon Web Services (AWS) do virtuálních počítačů Azure pomocí služby Azure Site Recovery. Při migraci instancí EC2 služby AWS do Azure se virtuální počítače zpracovávají jako místní fyzické počítače. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Ověřit požadavky
-> * Připravit prostředky Azure
+> * Ověření požadavků
+> * Příprava prostředků Azure
 > * Připravit instance EC2 služby AWS na migraci
-> * Nasadit konfigurační server
-> * Povolit replikaci pro virtuální počítače
-> * Otestovat převzetí služeb při selhání, aby bylo jisté, že všechno funguje
+> * Nasazení konfiguračního serveru
+> * Povolení replikace pro virtuální počítače
+> * Otestování převzetí služeb při selhání, aby bylo jisté, že všechno funguje.
 > * Spustit jednorázové převzetí služeb při selhání do Azure
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) před tím, než začnete.
@@ -34,10 +34,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 ## <a name="prerequisites"></a>Požadavky
 - Ověřte, že na virtuálních počítačích, které chcete migrovat, běží podporovaná verze operačního systému. Podporované verze: 
     - Windows Server 2016
-    - Windows Server 2012 R2
-    - Windows Server 2012
-    - 64bitová verze systému Windows Server 2008 R2 SP1 nebo novější
-    - Red Hat Enterprise Linux 6.7 (pouze virtualizované instance HVM) s ovladačem Citrix Paravirtual nebo AWS Paravirtual. Instance s ovladači Red Hat Paravirtual podporované *nejsou*.
+    - Red Hat Enterprise Linux 6.7 (pouze virtualizované instance HVM) a musí mít jedině ovladače Citrix PV nebo AWS PV. Instance s ovladači Red Hat PV **nejsou** podporované.
 
 - Na každý virtuální počítač, který chcete replikovat, bude nutné nainstalovat službu Mobility. 
 
@@ -168,7 +165,7 @@ Po dokončení všech pěti kroků v části **Příprava infrastruktury** vyber
 
 Povolte replikaci pro všechny virtuální počítače, které chcete migrovat. Když je replikace povolená, služba Site Recovery automaticky nainstaluje službu Mobility.
 
-1. Přejděte na web [Azure Portal](htts://portal.azure.com).
+1. Přejděte na [portál Azure](htts://portal.azure.com).
 1. Na stránce svého trezoru v části **Začínáme** vyberte **Site Recovery**.
 2. V části **Pro místní počítače a virtuální počítače Azure** vyberte **Krok 1: Replikace aplikace**. Na stránkách průvodce zadejte následující informace. Po zadání údajů na každé stránce zvolte **OK**.
     - 1: Konfigurace zdroje

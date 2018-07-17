@@ -1,3 +1,3 @@
 > [!NOTE]
-> Free služby App Service a sdílené (preview) hostování plány jsou základní vrstvy, které běží na stejný virtuální počítač Azure jako ostatní aplikace služby App Service. Některé aplikace mohou patřit jiným zákazníkům. Tyto úrovně jsou určené jenom pro účely vývoje a testování.
+> Plány hostování služby App Service Free a Shared (Preview) představují základní úrovně, které běží na stejných virtuálních počítačích Azure jako ostatní aplikace App Service. Některé aplikace můžou patřit jiným zákazníkům. Tyto úrovně jsou určené jenom pro účely vývoje a testování.
 >

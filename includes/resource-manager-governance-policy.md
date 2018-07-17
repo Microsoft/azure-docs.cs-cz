@@ -9,18 +9,18 @@ ms.date: 02/21/2018
 ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: c04514218c7ed8dfd72b94345d2deb88e663fda1
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2018
-ms.locfileid: "29529975"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38740540"
 ---
-[Azure zásady](/azure/azure-policy/) nápovědy byste si ověřit, všechny prostředky v předplatném splňovat firemními standardy. Pomocí zásad můžete snížit náklady na omezení možnosti nasazení pouze tyto typy prostředků a skladových položek, které jsou schváleny. Můžete definovat pravidla a akce pro vaše prostředky a tato pravidla se vynucují automaticky během nasazení. Například můžete řídit typy prostředků, které jsou nasazeny. Nebo můžete omezit schválené umístění pro prostředky. Některé zásady Odepřít akce a některé zásady, nastavit auditování akce.
+[Zásady Azure](/azure/azure-policy/) pomáhají zajistit, aby všechny prostředky v předplatném splňovaly firemní standardy. Pomocí zásad můžete snížit náklady tím, že omezíte možnosti nasazení pouze na schválené typy prostředků a skladové položky. Pro prostředky můžete definovat pravidla a akce a tato pravidla se budou automaticky vynucovat během nasazení. Například můžete řídit, které typy prostředků se nasadí. Nebo můžete pro prostředky omezit schválená umístění. Některé zásady zamítnou akci a některé nastaví auditování určité akce.
 
-Zásady je doplňkem k řízení přístupu na základě role (RBAC). RBAC se zaměřuje na uživatelský přístup, a je výchozí Odepřít a explicitní povolit systému. Zásady se zaměřuje na vlastnosti prostředku, během a po nasazení. Jeho výchozí povolit a explicitní odepřít systému.
+Zásady představují doplněk k řízení přístupu na základě role (RBAC). RBAC se zaměřuje na uživatelský přístup a jedná se o systém, kdy je ve výchozím nastavení vše zamítnuto a explicitně se povoluje. Zásady se zaměřují na vlastnosti prostředků během a po nasazení. Jedná se o systém, kdy je ve výchozím nastavení vše povoleno a explicitně se zamítá.
 
-Existují dvě koncepty zásadám - *definice zásady* a *přiřazení zásad*. Definice zásad popisuje správu podmínek, které chcete vynutit. Přiřazení zásad převádí definici zásady do akce pro konkrétní obor.
+V případě zásad je potřeba porozumět dvěma konceptům – *definice zásad* a *přiřazení zásad*. Definice zásady popisuje podmínky správy, které chcete vynucovat. Přiřazení zásady aplikuje definici zásady pro určitý rozsah.
 
-![Přiřadit zásady](./media/resource-manager-governance-policy/policy-concepts.png)
+![Přiřazování zásad](./media/resource-manager-governance-policy/policy-concepts.png)
 
-Azure nabízí několik předdefinovaných zásad definice, které můžete použít bez nutnosti jakékoli úpravy. Můžete předat hodnoty parametrů můžete zadat hodnoty, které jsou povoleny ve vašem oboru. Pokud definice předdefinovaných zásad nemáte splnění požadavků, můžete [vytvořit vlastní zásady definice](../articles/azure-policy/create-manage-policy.md).
+Azure poskytuje několik předdefinovaných definic zásad, které můžete použít bez jakýchkoli úprav. Předáním hodnot parametrů můžete určit hodnoty, které jsou ve vašem rozsahu povolené. Pokud předdefinované definice zásad nesplňují vaše požadavky, můžete [vytvořit vlastní definice zásad](../articles/azure-policy/create-manage-policy.md).

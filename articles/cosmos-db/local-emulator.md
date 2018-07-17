@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/20/2018
 ms.author: danoble
-ms.openlocfilehash: 6869698f2e6dca321d371bb22ded316f32cdeb51
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 368caa063ea0487923af8a29f67aa73cae7ed75e
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34824090"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952888"
 ---
 # <a name="use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>Použití emulátoru služby Azure Cosmos DB pro místní vývoj a testování
 
@@ -59,9 +59,10 @@ Doporučujeme začít zhlédnutím následujícího videa, ve kterém Kirill Gav
 > 
 
 ## <a name="how-the-emulator-works"></a>Jak emulátor funguje
+
 Emulátor služby Azure Cosmos DB s vysokou věrností emuluje službu Azure Cosmos DB. Podporuje identické funkce jako Azure Cosmos DB, včetně podpory pro vytváření a dotazování dokumentů JSON, zřizování a škálování kolekcí a spouštění uložených procedur a aktivačních událostí. V emulátoru služby Azure Cosmos DB můžete vyvíjet a testovat aplikace a potom je nasadit v Azure v globálním měřítku tak, že provedete pouze jedinou změnu konfigurace koncového bodu připojení pro službu Azure Cosmos DB.
 
-I když jsme vytvořili vysoce věrnou místní emulaci skutečné služby Azure Cosmos DB, implementace emulátoru služby Azure Cosmos DB se od implementace samotné služby liší. Emulátor služby Azure Cosmos DB například používá standardní součásti operačního systému, například místní systém souborů pro trvalost a zásobník protokolu HTTPS pro připojení. To znamená, že některé funkce, které jsou závislé na infrastruktuře Azure, jako globální replikace, latence pro čtení a zápis v řádu milisekund a úrovně konzistence s možností vyladění, nejsou prostřednictvím emulátoru služby Azure Cosmos DB k dispozici.
+Přestože je emulace služby Azure Cosmos DB věrná, implementace emulátoru se od služby liší. Emulátor například používá standardní součásti operačního systému, například místní systém souborů pro trvalost a zásobník protokolu HTTPS pro připojení. Funkce, které jsou závislé na infrastruktuře Azure, jako je globální replikace, latence pro čtení a zápis v řádu milisekund a nastavitelné úrovně konzistence, nejsou k dispozici.
 
 ## <a name="differences-between-the-emulator-and-the-service"></a>Rozdíly mezi emulátorem a službou 
 Vzhledem k tomu, že emulátor služby Azure Cosmos DB poskytuje emulované prostředí běžící na místní pracovní stanici vývojáře, existují některé rozdíly ve funkčnosti mezi emulátorem a účtem služby Azure Cosmos DB v cloudu:
@@ -72,7 +73,7 @@ Vzhledem k tomu, že emulátor služby Azure Cosmos DB poskytuje emulované pros
 * Emulátor služby Azure Cosmos DB nepodporuje simulaci různých [úrovní konzistence služby Azure Cosmos DB](consistency-levels.md).
 * Emulátor služby Azure Cosmos DB nepodporuje simulaci [replikace ve více oblastech](distribute-data-globally.md).
 * Emulátor služby Azure Cosmos DB nepodporuje přepsání kvót služby, které jsou k dispozici ve službě Azure Cosmos DB (například omezení velikosti dokumentu nebo větší úložiště pro dělenou kolekci).
-* Vzhledem k tomu, že vaše kopie emulátoru služby Azure Cosmos DB nemusí odrážet nejnovější změny služby Azure Cosmos DB, použijte prosím [plánovač kapacity služby Azure Cosmos DB](https://www.documentdb.com/capacityplanner), abyste přesně odhadli provozní potřeby propustnosti vaší aplikace.
+* Vzhledem k tomu, že vaše kopie emulátoru služby Azure Cosmos DB nemusí odrážet nejnovější změny služby Azure Cosmos DB, měli byste použít [plánovač kapacity služby Azure Cosmos DB](https://www.documentdb.com/capacityplanner), abyste přesně odhadli provozní potřeby propustnosti (RU) vaší aplikace.
 
 ## <a name="system-requirements"></a>Systémové požadavky
 Emulátor služby Azure Cosmos DB má následující požadavky na hardware a software:
@@ -99,7 +100,7 @@ Po spuštění emulátoru se v oznamovací oblasti hlavního panelu Windows zobr
 
 Emulátor služby Azure Cosmos DB se ve výchozím nastavení spouští v místním počítači („localhost“) a naslouchá na portu 8081.
 
-Emulátor služby Azure Cosmos DB je ve výchozím nastavení nainstalovaný v adresáři `C:\Program Files\Azure Cosmos DB Emulator`. Emulátor můžete také spustit a zastavit z příkazového řádku. Další informace získáte v části týkající se [referencí nástroje příkazového řádku](#command-line).
+Emulátor služby Azure Cosmos DB je ve výchozím nastavení nainstalovaný v adresáři `C:\Program Files\Azure Cosmos DB Emulator`. Emulátor můžete také spustit a zastavit z příkazového řádku. Další informace najdete v [referenčních informacích k nástroji příkazového řádku](#command-line).
 
 ## <a name="start-data-explorer"></a>Spuštění Průzkumníka dat
 
@@ -288,7 +289,7 @@ Pokud chcete zobrazit seznam možností, na příkazovém řádku zadejte `Cosmo
   <td></td>
 </tr>
 <tr>
-  <td>Consistency</td>
+  <td>Konzistence</td>
   <td>Nastaví výchozí úroveň konzistence pro účet.</td>
   <td>CosmosDB.Emulator.exe /Consistency=&lt;konzistence&gt;</td>
   <td>&lt;konzistence&gt;: hodnota musí být jedna z následujících [úrovní konzistence](consistency-levels.md): Session, Strong, Eventual nebo BoundedStaleness.  Výchozí hodnota je Session.</td>
@@ -395,13 +396,13 @@ Pokud chcete image spustit, spusťte následující příkazy.
 Z příkazového řádku:
 ```cmd 
 md %LOCALAPPDATA%\CosmosDBEmulatorCert 2>null
-docker run -v %LOCALAPPDATA%\CosmosDBEmulatorCert:c:\CosmosDBEmulator\CosmosDBEmulatorCert -P -t -i -m 2GB microsoft/azure-cosmosdb-emulator 
+docker run -v %LOCALAPPDATA%\CosmosDBEmulatorCert:C:\CosmosDB.Emulator\CosmosDBEmulatorCert -P -t -i -m 2GB microsoft/azure-cosmosdb-emulator 
 ```
 
 Z PowerShellu:
 ```powershell
 md $env:LOCALAPPDATA\CosmosDBEmulatorCert 2>null
-docker run -v $env:LOCALAPPDATA\CosmosDBEmulatorCert:c:\CosmosDBEmulator\CosmosDBEmulatorCert -P -t -i -m 2GB microsoft/azure-cosmosdb-emulator 
+docker run -v $env:LOCALAPPDATA\CosmosDBEmulatorCert:C:\CosmosDB.Emulator\CosmosDBEmulatorCert -P -t -i -m 2GB microsoft/azure-cosmosdb-emulator 
 ```
 
 Odpověď vypadá podobně jako následující zpráva:

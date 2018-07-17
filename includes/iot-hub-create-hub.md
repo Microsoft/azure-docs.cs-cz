@@ -9,40 +9,40 @@ ms.date: 05/17/2018
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: 9a29406b92f7d2e2ce8171974efb5a264e112d1d
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34371146"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38724898"
 ---
 1. Přihlaste se na web [Azure Portal][lnk-portal].
 1. Vyberte **Vytvořit prostředek** > **Internet věcí** > **IoT Hub**.
    
-    ![Snímek obrazovky Azure portálu navigace do služby IoT Hub][1]
+    ![Snímek obrazovky webu Azure Portal s přechodem do služby IoT Hub][1]
 
 1. V podokně **Centrum IoT** zadejte následující informace o centru IoT:
 
-   * **Předplatné**: Zvolte předplatné, který chcete použít k vytvoření toto centrum IoT.
+   * **Předplatné:** Vyberte předplatné, které chcete použít při vytváření tohoto centra IoT Hub.
 
-   * **Skupina prostředků:** Vytvořte skupinu prostředků, která bude hostitelem centra IoT, nebo použijte existující. Další informace najdete v tématu [použití skupin prostředků ke správě prostředků Azure][lnk-resource-groups].
+   * **Skupina prostředků:** Vytvořte skupinu prostředků, která bude hostitelem centra IoT, nebo použijte existující. Další informace najdete v tématu [Použití skupin prostředků ke správě prostředků Azure][lnk-resource-groups].
 
-   * **Oblast**: Vyberte nejbližší umístění pro vás.
+   * **Oblast:** Vyberte umístění, které je vám nejbližší.
 
-   * **Název:** Vytvořte název centra IoT. Pokud je dostupný název, který zadáte, se zobrazí zelená značka zaškrtnutí.
+   * **Název:** Vytvořte název centra IoT. Pokud je zadaný název platný, zobrazí se zelený symbol zaškrtnutí.
 
    [!INCLUDE [iot-hub-pii-note-naming-hub](iot-hub-pii-note-naming-hub.md)]
 
-   ![Okno základy IoT Hub][2]
+   ![Okno Základy centra IoT Hub][2]
 
-2. Vyberte **Další: velikosti a měřítka** chcete pokračovat ve vytváření služby IoT hub. 
+2. Pokračujte ve vytváření centra IoT Hub výběrem možnosti **Další: Velikost a škálování**. 
 
-3. Zvolte vaše **cenovou a škálovací úroveň**. V tomto článku, vyberte **F1 - volné** vrstvy, pokud bude stále k dispozici na vaše předplatné. Další informace najdete v tématu popisujícím [úrovně cen a škálování][lnk-pricing].
+3. Zvolte si **Úroveň ceny a škálování**. Pro potřeby tohoto článku vyberte úroveň **F1 – Free**, pokud je ve vašem předplatném ještě dostupná. Další informace najdete v tématu popisujícím [úrovně cen a škálování][lnk-pricing].
 
-   ![Okno velikosti a měřítka IoT Hub][3]
+   ![Okno velikosti a škálování centra IoT Hub][3]
 
-4. Vyberte **zkontrolujte + vytvořit**.
+4. Vyberte **Zkontrolovat a vytvořit**.
 
-1. Zkontrolujte informace o IoT hub a pak klikněte na **vytvořit**. Vytvoření centra IoT může trvat několik minut. Průběh můžete sledovat v podokně **Oznámení**.
+1. Zkontrolujte informace o centru IoT Hub a potom klikněte na **Vytvořit**. Vytvoření centra IoT může trvat několik minut. Průběh můžete sledovat v podokně **Oznámení**.
 <!-- Images -->
 [1]: ./media/iot-hub-create-hub/create-iot-hub1.png
 [2]: ./media/iot-hub-create-hub/create-iot-hub2.png

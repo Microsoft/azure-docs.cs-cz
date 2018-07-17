@@ -4,14 +4,14 @@ description: Informace o spuštění postupu zotavení po havárii z místního 
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 07/03/2018
+ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: fa66e47715940584259e5cf555f3f6cd6f07e267
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: af8062fc0134975542c8a5ec420c790f33996154
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437208"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37920167"
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>Spuštění postupu zotavení po havárii do Azure
 
@@ -20,10 +20,10 @@ V tomto článku se dozvíte, jak pro místní počítač spustit postup zotaven
 Toto je čtvrtý kurz řady, která ukazuje, jak nastavit zotavení po havárii do Azure pro místní virtuální počítače VMware nebo virtuální počítače Hyper-V.
 
 V tomto kurzu se předpokládá, že jste dokončili první tři kurzy: 
-    - V [prvním kurzu](tutorial-prepare-azure.md) jsme [připravili komponenty Azure](tutorial-prepare-azure.md) pro zotavení po havárii VMware nebo Hyper-V.
-    - V druhém kurzu jsme připravili místní komponenty pro zotavení po havárii [VMware](vmware-azure-tutorial-prepare-on-premises.md) nebo [Hyper-V](hyper-v-prepare-on-premises-tutorial.md).
-    - V třetím kurzu jsme nastavili a povolili replikaci pro naše místní [virtuální počítače VMware](vmware-azure-tutorial.md), [virtuální počítače Hyper-V s nástrojem System Center VMM](hyper-v-vmm-azure-tutorial.md) nebo [virtuální počítače Hyper-V bez VMM](hyper-v-azure-tutorial.md).
-- Tyto kurzy demonstrují ten nejjednodušší způsob nasazení určitého scénáře. V rámci možností používají jen výchozí možnosti a neuvádějí všechny varianty nastavení ani všechny cesty. Ve všech kurzech se služba Site Recovery nastavuje s nejjednodušším nastavením a kde je to vhodné, používají se výchozí hodnoty. Podrobnější informace ke krokům testovacího převzetí služeb při selhání najdete v [tomto průvodci](site-recovery-test-failover-to-azure.md).
+    - V [prvním kurzu](tutorial-prepare-azure.md) jste nastavili komponenty Azure potřebné pro zotavení po havárii VMware.
+    - Ve [druhém kurzu](vmware-azure-tutorial-prepare-on-premises.md) jste připravili místní komponenty pro zotavení po havárii a zkontrolovali požadované součásti.
+    - Ve [třetím kurzu](vmware-azure-tutorial.md) jste nastavili a povolili replikaci vašich místních virtuálních počítačů VMware.
+    - Tyto kurzy demonstrují ten **nejjednodušší způsob nasazení určitého scénáře**. V rámci možností používají jen výchozí možnosti a neuvádějí všechny varianty nastavení ani všechny cesty. Podrobnější informace ke krokům testovacího převzetí služeb při selhání najdete v [tomto průvodci](site-recovery-test-failover-to-azure.md).
 
 V tomto kurzu získáte informace o těchto tématech:
 

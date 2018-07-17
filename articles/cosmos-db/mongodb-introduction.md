@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 02/12/2018
 ms.author: sngun
-ms.openlocfilehash: c10f1fdc7e373633298b083d1317f17cff3aa2b8
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 214dfe3e676d3b07cf688fa0f7dcaf11462edfe8
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34796627"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37930881"
 ---
 # <a name="introduction-to-azure-cosmos-db-mongodb-api"></a>Úvod do Azure Cosmos DB: rozhraní MongoDB API
 
@@ -26,17 +26,17 @@ ms.locfileid: "34796627"
 
 Databáze Azure Cosmos DB lze použít jako úložiště dat aplikací psaných pro [MongoDB](https://docs.mongodb.com/manual/introduction/). Tato funkce znamená, že s využitím existujících [ovladačů](https://docs.mongodb.org/ecosystem/drivers/) teď aplikace psané pro MongoDB mohou komunikovat se službou Azure Cosmos DB a používat databáze Azure Cosmos DB místo databází MongoDB. V mnoha případech můžete přejít od používání MongoDB na Azure Cosmos DB jednoduchou změnou připojovacího řetězce. Díky tomu můžete jednoduše vytvářet a provozovat globálně distribuované databázové aplikace MongoDB v cloudu Azure se službou Azure Cosmos DB a jejími [nejlepšími smlouvami SLA v oboru](https://azure.microsoft.com/support/legal/sla/cosmos-db) a zároveň dál používat známé dovednosti a nástroje pro MongoDB.
 
-**Kompatibilita s MongoDB:** Můžete využít stávající znalosti, kód aplikací a nástroje MongoDB, protože Azure Cosmos DB implementuje přenosový protokol MongoDB 3.4 (verze 5) a podporuje [agregační zřetězení MongoDB](mongodb-feature-support.md#aggregation-pipeline). Můžete vyvíjet aplikace využívající MongoDB a nasazovat je do produkce pomocí plně spravované a globálně distribuované služby Azure Cosmos DB.
+**Kompatibilita s MongoDB:** Můžete využít stávající znalosti, kód aplikací a nástroje MongoDB, protože Azure Cosmos DB implementuje přenosový protokol MongoDB. Můžete vyvíjet aplikace využívající MongoDB a nasazovat je do produkce pomocí plně spravované a globálně distribuované služby Azure Cosmos DB. Další informace o podporovaných verzích najdete v tématu popisujícím [podporu protokolu MongoDB](mongodb-feature-support.md#mongodb-protocol-support).
 
 ## <a name="what-is-the-benefit-of-using-azure-cosmos-db-for-mongodb-applications"></a>Jaké přínosy má používání služby Azure Cosmos DB pro aplikace MongoDB?
 
 **Elasticky škálovatelná propustnost a úložiště:** Potřeby svých aplikací snadno splníte škálováním databáze MongoDB směrem nahoru nebo dolů. Data se ukládají na discích SSD (solid-state drive), které nabízí nízkou a předvídatelnou latenci. Azure Cosmos DB podporuje kolekce MongoDB, které lze škálovat na prakticky neomezenou velikost úložiště a zřízenou propustnost. S růstem vaší aplikace je možné službu Azure Cosmos DB bezproblémově elasticky škálovat s předvídatelným výkonem. 
 
-**Replikace mezi více oblastmi:** Azure Cosmos DB transparentně replikuje data do všech oblastí, které jste si přidružili k účtu MongoDB, a umožňuje vyvíjet aplikace, které vyžadují globální přístup k datům. Zároveň poskytuje kompromisy mezi konzistencí, dostupností a výkonem, a to vše s odpovídajícími zárukami. Azure Cosmos DB poskytuje transparentní regionální převzetí služeb při selhání se souběžnou instalací rozhraní API a schopností elastického škálování propustnosti a úložiště po celém světě. Další informace najdete v článku o [globální distribuci dat](distribute-data-globally.md).
+**Replikace mezi více oblastmi:** Azure Cosmos DB transparentně replikuje data do všech oblastí, které jste si přidružili k účtu MongoDB, a umožňuje vyvíjet aplikace, které vyžadují globální přístup k datům. Zároveň poskytuje kompromisy mezi konzistencí, dostupností a výkonem, a to vše s odpovídajícími zárukami. Azure Cosmos DB poskytuje transparentní regionální převzetí služeb při selhání se souběžnou instalací rozhraní API a schopností elastického škálování propustnosti a úložiště po celém světě. Další informace najdete v části [Globální distribuce dat](distribute-data-globally.md).
 
 **Žádná správa serverů:** Databáze MongoDB nemusíte spravovat ani škálovat. Azure Cosmos DB je plně spravovaná služba, což znamená, že se sami nemusíte starat o žádnou infrastrukturu virtuálních počítačů. Služba Azure Cosmos DB je dostupná ve více než 30 [oblastech Azure](https://azure.microsoft.com/regions/services/).
 
-**Nastavitelné úrovně konzistence:** Služba Azure Cosmos DB momentálně implementuje verzi MongoDB 3.4, která má dvě nastavení konzistence – silnou a nahodilou. Protože Azure Cosmos DB používá více rozhraní API, používá se nastavení konzistence na úrovni účtu, přičemž prosazování konzistence je řízeno jednotlivými rozhraními API. Do verze MongoDB 3.6 se nepoužívala konzistence typu Relace, pokud tedy v účtu rozhraní MongoDB API nastavíte použití konzistence typu Relace, při používání rozhraní MongoDB API se úroveň konzistence sníží na nahodilou. Pokud pro účet rozhraní MongoDB API potřebujete zaručit čtení vlastních zápisů, měla by se výchozí úroveň konzistence tohoto účtu nastavit na silnou nebo na omezenou neaktuálnost. Další informace najdete v tématu popisujícím [využití úrovní konzistence pro maximalizaci dostupnosti a výkonu](consistency-levels.md).
+**Nastavitelné úrovně konzistence:** Protože Azure Cosmos DB podporuje rozhraní API s více modely, používá se nastavení konzistence na úrovni účtu, přičemž prosazování konzistence je řízeno jednotlivými rozhraními API. Do verze MongoDB 3.6 se nepoužívala konzistence typu Relace, pokud tedy v účtu rozhraní MongoDB API nastavíte použití konzistence typu Relace, při používání rozhraní MongoDB API se úroveň konzistence sníží na nahodilou. Pokud pro účet rozhraní MongoDB API potřebujete zaručit čtení vlastních zápisů, měla by se výchozí úroveň konzistence tohoto účtu nastavit na silnou nebo na omezenou neaktuálnost. Další informace najdete v tématu popisujícím [využití úrovní konzistence pro maximalizaci dostupnosti a výkonu](consistency-levels.md).
 
 | Výchozí úroveň konzistence pro Azure Cosmos DB |   Rozhraní Mongo API (3.4) |
 |---|---|

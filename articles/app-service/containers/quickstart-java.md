@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/07/2018
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: 2018f5b7051f2b6906372dad3319c763974b93b1
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 49702349b1c2476f5743122b33cb3375e54df191
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34355181"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37930092"
 ---
 # <a name="quickstart-create-a-java-web-app-in-app-service-on-linux"></a>Rychlý start: Vytvoření webové aplikace v Javě ve službě App Service v Linuxu
 
@@ -76,7 +76,7 @@ K nasazení z nástroje Maven přidejte do elementu `<build>` souboru *pom.xml* 
       <plugin>
         <groupId>com.microsoft.azure</groupId> 
         <artifactId>azure-webapp-maven-plugin</artifactId> 
-        <version>1.1.0</version>
+        <version>1.2.0</version>
         <configuration> 
           <resourceGroup>YOUR_RESOURCE_GROUP</resourceGroup> 
           <appName>YOUR_WEB_APP</appName> 
@@ -106,7 +106,39 @@ V konfiguraci modulu plug-in aktualizujte následující zástupné symboly:
 | `YOUR_RESOURCE_GROUP` | Název nové skupiny prostředků, ve které chcete vytvořit webovou aplikaci. Když umístíte všechny prostředky pro aplikaci do skupiny, můžete je spravovat společně. Odstraněním příslušné skupiny prostředků by se například odstranily všechny prostředky, které jsou přidružené k dané aplikaci. Aktualizujte tuto hodnotu zadáním jedinečného názvu nové skupiny prostředků, třeba *TestResources*. Tento název skupiny prostředků použijete v pozdější fázi k vyčištění všech prostředků Azure. |
 | `YOUR_WEB_APP` | Název aplikace bude součástí názvu hostitele webové aplikace při nasazení do Azure (YOUR_WEB_APP.azurewebsites.net). Aktualizujte tuto hodnotu zadáním jedinečného názvu nové webové aplikace Azure, která bude hostitelem vaší aplikace v Javě, třeba *contoso*. |
 
-Element `linuxRuntime` konfigurace určuje, která integrovaná image Linuxu se má ve vaší aplikaci použít.
+Element `linuxRuntime` konfigurace určuje, která integrovaná image Linuxu se má ve vaší aplikaci použít. Všechny podporované zásobníky modulu runtime najdete na [tomto odkazu](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin#runtime-stacks). 
+
+
+> [!NOTE] 
+> V tomto článku pracujeme pouze se soubory WAR. Modul plug-in však podporuje i webové aplikace JAR. Stačí uvnitř elementu `<build>` v souboru *pom.xml* použít následující definici modulu plug-in:
+>
+>```xml
+>    <plugins>
+>      <plugin>
+>        <groupId>com.microsoft.azure</groupId> 
+>        <artifactId>azure-webapp-maven-plugin</artifactId> 
+>        <version>1.2.0</version>
+>        <configuration> 
+>          <resourceGroup>YOUR_RESOURCE_GROUP</resourceGroup> 
+>          <appName>YOUR_WEB_APP</appName> 
+>          <linuxRuntime>jre8</linuxRuntime>   
+>          <!-- This is to make sure the jar file will not be occupied during the deployment -->
+>          <stopAppDuringDeployment>true</stopAppDuringDeployment>
+>          <deploymentType>ftp</deploymentType> 
+>          <resources> 
+>              <resource> 
+>                  <directory>${project.basedir}/target</directory> 
+>                  <targetPath>webapps</targetPath> 
+>                  <includes> 
+>                      <!-- Currently it is required to set as app.jar -->
+>                      <include>app.jar</include> 
+>                  </includes>  
+>              </resource> 
+>          </resources> 
+>        </configuration>
+>      </plugin>
+>    </plugins>
+>```    
 
 Spusťte v rozhraní příkazového řádku Azure následující příkaz a postupujte podle pokynů k ověření:
 

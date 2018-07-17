@@ -14,11 +14,12 @@ ms.topic: tutorial
 ms.date: 04/17/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 1b51638754287d3359eaea7bd5da3f71bf15cc89
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: f1388843f2c5d3ea607b876ece288db1370329a2
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38461533"
 ---
 # <a name="tutorial-secure-sql-database-connection-with-managed-service-identity"></a>Kurz: Zabezpečení připojení ke službě SQL Database s využitím identity spravované služby
 
@@ -31,6 +32,9 @@ Naučíte se:
 > * Udělení přístupu k identitě služby službě SQL Database
 > * Konfigurace kódu aplikace tak, aby k ověřování ve službě SQL Database používala ověřování Azure Active Directory
 > * Udělení minimálních oprávnění ve službě SQL Database identitě služby
+
+> [!NOTE]
+> Ověřování pomocí Azure Active Directory se _liší_ od [integrovaného ověřování systému Windows](/previous-versions/windows/it-pro/windows-server-2003/cc758557(v=ws.10)) v místní službě Active Directory (služba AD DS). Služba AD DS a Azure Active Directory využívají k ověřování zcela odlišné protokoly. Další informace najdete v tématu popisujícím [rozdíly mezi službou AD DS Windows Serveru a Azure AD](../active-directory/fundamentals/understand-azure-identity-solutions.md#the-difference-between-windows-server-ad-ds-and-azure-ad).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -64,7 +68,7 @@ Tady je příklad výstupu po vytvoření identity v Azure Active Directory:
 Hodnotu `principalId` použijete v dalším kroku. Pokud chcete zobrazit podrobnosti o nové identitě v Azure Active Directory, spusťte následující volitelný příkaz s hodnotou `principalId`:
 
 ```azurecli-interactive
-az ad sp show --id <principalid>`
+az ad sp show --id <principalid>
 ```
 
 ## <a name="grant-database-access-to-identity"></a>Udělení přístupu k databázi identitě
@@ -156,7 +160,7 @@ Ve službě Cloud Shell přidejte identitu spravované služby pro vaši aplikac
 ```azurecli-interactive
 groupid=$(az ad group create --display-name myAzureSQLDBAccessGroup --mail-nickname myAzureSQLDBAccessGroup --query objectId --output tsv)
 msiobjectid=$(az webapp identity show --resource-group <group_name> --name <app_name> --query principalId --output tsv)
-az ad group member add --group $groupid --member-id $msiid
+az ad group member add --group $groupid --member-id $msiobjectid
 az ad group member list -g $groupid
 ```
 

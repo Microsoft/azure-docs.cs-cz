@@ -1,5 +1,5 @@
 ---
-title: Co je Identita spravované služby (MSI) pro prostředky Azure
+title: Co je Identita spravované služby pro prostředky Azure
 description: Přehled Identity spravované služby pro prostředky Azure.
 services: active-directory
 documentationcenter: ''
@@ -14,18 +14,18 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 03/28/2018
 ms.author: daveba
-ms.openlocfilehash: 851f788adee46436bd4286c803427f49ce0ed89a
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 3d6df04df8ceac1f868e64f0e8fbc7eb0fa317e3
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34724094"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38547969"
 ---
-#  <a name="what-is-managed-service-identity-msi-for-azure-resources"></a>Co je Identita spravované služby (MSI) pro prostředky Azure?
+#  <a name="what-is-managed-service-identity-for-azure-resources"></a>Co je Identita spravované služby pro prostředky Azure?
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Běžnou výzvou při vytváření cloudových aplikací je, jak spravovat přihlašovací údaje, které je potřeba mít v kódu kvůli ověřování u cloudových služeb. Zajištění zabezpečení těchto přihlašovacích údajů je důležitý úkol. V ideálním případě by se nikdy neměly nacházet na vývojářských pracovních stanicích ani se vracet se změnami do správy zdrojového kódu. Azure Key Vault nabízí možnost bezpečného ukládání přihlašovacích údajů a dalších klíčů a tajných kódů, ale váš kód se musí ověřit ve službě Key Vault, aby je mohl načíst. Identita spravované služby (MSI) usnadňuje řešení tohoto problému tím, že poskytuje službám Azure automaticky spravovanou identitu v Azure Active Directory (Azure AD). Tuto identitu můžete použít k ověření pro jakoukoli službu, která podporuje ověřování Azure AD, včetně služby Key Vault, aniž byste ve vašem kódu museli mít přihlašovací údaje.
+Běžnou výzvou při vytváření cloudových aplikací je, jak spravovat přihlašovací údaje, které je potřeba mít v kódu kvůli ověřování u cloudových služeb. Zajištění zabezpečení těchto přihlašovacích údajů je důležitý úkol. V ideálním případě by se nikdy neměly nacházet na vývojářských pracovních stanicích ani se vracet se změnami do správy zdrojového kódu. Azure Key Vault nabízí možnost bezpečného ukládání přihlašovacích údajů a dalších klíčů a tajných kódů, ale váš kód se musí ověřit ve službě Key Vault, aby je mohl načíst. Identita spravované služby usnadňuje řešení tohoto problému tím, že poskytuje službám Azure automaticky spravovanou identitu v Azure Active Directory (Azure AD). Tuto identitu můžete použít k ověření pro jakoukoli službu, která podporuje ověřování Azure AD, včetně služby Key Vault, aniž byste ve vašem kódu museli mít přihlašovací údaje.
 
 Identita spravované služby je součástí Azure Active Directory Free, což je výchozí možnost pro předplatná Azure. Za Identitu spravované služby se neúčtují žádné další poplatky.
 
@@ -40,32 +40,32 @@ To znamená, že váš kód může k vyžádání přístupových tokenů pro sl
 
 Tady je příklad toho, jak identity přiřazené systémem fungují s virtuálními počítači Azure:
 
-![Příklad MSI virtuálního počítače](overview/msi-vm-vmextension-imds-example.png)
+![Příklad spravované identity virtuálního počítače](overview/msi-vm-vmextension-imds-example.png)
 
 1. Azure Resource Manager obdrží požadavek na povolení identity přiřazené systémem na virtuálním počítači.
 2. Azure Resource Manager vytvoří instanční objekt ve službě Azure AD, který reprezentuje identitu virtuálního počítače. Instanční objekt se vytvoří v tenantovi Azure AD důvěryhodném pro toto předplatné.
 3. Azure Resource Manager nakonfiguruje identitu na virtuálním počítači:
     - Aktualizuje koncový bod identity služby Azure Instance Metadata Service s použitím ID klienta a certifikátu instančního objektu.
-    - Zřídí rozšíření virtuálního počítače MSI a přidá ID klienta a certifikát instančního objektu. (brzy bude zastaralé)
+    - Zřídí rozšíření virtuálního počítače a přidá ID klienta a certifikát instančního objektu. (brzy bude zastaralé)
 4. Teď, když má virtuální počítač identitu, s použitím informací o instančním objektu udělíme virtuálnímu počítači přístup k prostředkům Azure. Pokud váš kód například potřebuje volat Azure Resource Manager, přiřadíte instančnímu objektu virtuálního počítače odpovídající roli pomocí řízení přístupu na základě role (RBAC) ve službě Azure AD. Pokud váš kód potřebuje volat službu Key Vault, udělíte kódu přístup ke konkrétnímu tajnému kódu nebo klíči ve službě Key Vault.
 5. Váš kód spuštěný na virtuálním počítači si může vyžádat token ze dvou koncových bodů přístupných pouze z daného virtuálního počítače:
 
     - Koncový bod identity služby Azure Instance Metadata Service (IMDS): http://169.254.169.254/metadata/identity/oauth2/token (doporučeno)
         - Parametr resource (prostředek) určuje službu, do které se token odešle. Pokud například chcete, aby váš kód provedl ověření v Azure Resource Manageru, použijte resource=https://management.azure.com/.
         - Parametr verze rozhraní API určuje verzi IMDS. Použijte api-version=2018-02-01 nebo novější.
-    - Koncový bod rozšíření virtuálního počítače MSI: http://localhost:50342/oauth2/token (brzy bude zastaralý)
+    - Koncový bod rozšíření virtuálního počítače: http://localhost:50342/oauth2/token (brzy bude zastaralý)
         - Parametr resource (prostředek) určuje službu, do které se token odešle. Pokud například chcete, aby váš kód provedl ověření v Azure Resource Manageru, použijte resource=https://management.azure.com/.
 
 6. Zavolá se služba Azure AD s požadavkem na přístupový token popsaný v kroku 5 s použitím ID klienta a certifikátu nakonfigurovaných v kroku 3. Azure AD vrátí přístupový token JSON Web Token (JWT).
 7. Váš kód odešle přístupový token prostřednictvím volání do služby, která podporuje ověřování Azure AD.
 
-Tady je s použitím stejného diagramu příklad toho, jak s virtuálními počítači Azure funguje Identita spravované služby (MSI) přiřazená uživatelem.
+Tady je s použitím stejného diagramu příklad toho, jak s virtuálními počítači Azure funguje Identita spravované služby přiřazená uživatelem.
 
 1. Azure Resource Manager obdrží požadavek na vytvoření identity přiřazené uživatelem.
 2. Azure Resource Manager vytvoří instanční objekt ve službě Azure AD, který reprezentuje identitu přiřazenou uživatelem. Instanční objekt se vytvoří v tenantovi Azure AD důvěryhodném pro toto předplatné.
 3. Azure Resource Manager obdrží požadavek na konfiguraci identity přiřazené uživatelem na virtuálním počítači:
     - Aktualizuje koncový bod identity služby Azure Instance Metadata Service s použitím ID klienta a certifikátu instančního objektu identity přiřazené uživatelem.
-    - Zřídí rozšíření virtuálního počítače MSI a přidá ID klienta a certifikát instančního objektu identity přiřazené uživatelem (brzy bude zastaralé).
+    - Zřídí rozšíření virtuálního počítače a přidá ID klienta a certifikát instančního objektu identity přiřazené uživatelem (brzy bude zastaralé).
 4. Teď, po vytvoření identity přiřazené uživatelem, s použitím informací o instančním objektu udělíme virtuálnímu počítači přístup k prostředkům Azure. Pokud váš kód například potřebuje volat Azure Resource Manager, přiřadíte instančnímu objektu identity přiřazené uživatelem odpovídající roli pomocí řízení přístupu na základě role (RBAC) ve službě Azure AD. Pokud váš kód potřebuje volat službu Key Vault, udělíte kódu přístup ke konkrétnímu tajnému kódu nebo klíči ve službě Key Vault. Poznámka: Tento krok můžete provést i před krokem 3.
 5. Váš kód spuštěný na virtuálním počítači si může vyžádat token ze dvou koncových bodů přístupných pouze z daného virtuálního počítače:
 
@@ -74,7 +74,7 @@ Tady je s použitím stejného diagramu příklad toho, jak s virtuálními poč
         - Parametr ID klienta určuje identitu, pro kterou se token požaduje. To je potřeba k odstranění nejednoznačností v případě, že je na jednom virtuálním počítači více než jedna identita přiřazená uživatelem.
         - Parametr verze rozhraní API určuje verzi IMDS. Použijte api-version=2018-02-01 nebo novější.
 
-    - Koncový bod rozšíření virtuálního počítače MSI: http://localhost:50342/oauth2/token (brzy bude zastaralý)
+    - Koncový bod rozšíření virtuálního počítače: http://localhost:50342/oauth2/token (brzy bude zastaralý)
         - Parametr resource (prostředek) určuje službu, do které se token odešle. Pokud například chcete, aby váš kód provedl ověření v Azure Resource Manageru, použijte resource=https://management.azure.com/.
         - Parametr ID klienta určuje identitu, pro kterou se token požaduje. To je potřeba k odstranění nejednoznačností v případě, že je na jednom virtuálním počítači více než jedna identita přiřazená uživatelem.
 6. Zavolá se služba Azure AD s požadavkem na přístupový token popsaný v kroku 5 s použitím ID klienta a certifikátu nakonfigurovaných v kroku 3. Azure AD vrátí přístupový token JSON Web Token (JWT).
@@ -84,7 +84,7 @@ Tady je s použitím stejného diagramu příklad toho, jak s virtuálními poč
 
 Vyzkoušejte kurz Identity spravované služby a seznamte se s kompletními scénáři pro přístup k různým prostředkům Azure:
 <br><br>
-| Prostředek s povolenou Identitou spravované služby | Postupy |
+| Z prostředku s povolenou spravovanou identitou | Postupy |
 | ------- | -------- |
 | Virtuální počítač Azure (Windows) | [Přístup ke službě Azure Data Lake Store pomocí Identity spravované služby virtuálního počítače s Windows](tutorial-windows-vm-access-datalake.md) |
 |                    | [Přístup k Azure Resource Manageru pomocí Identity spravované služby virtuálního počítače s Windows](tutorial-windows-vm-access-arm.md) |
@@ -111,5 +111,5 @@ Spravované identity je možné použít k ověřování ve službách, které p
 
 Následující rychlé starty vám pomůžou začít s Identitou spravované služby Azure:
 
-* [Použití Identity spravované služby (MSI) virtuálního počítače s Windows k přístupu k Resource Manageru – Virtuální počítač s Windows](tutorial-windows-vm-access-arm.md)
-* [Použití Identity spravované služby (MSI) virtuálního počítače s Linuxem k přístupu Azure k Resource Manageru – Virtuální počítač s Linuxem](tutorial-linux-vm-access-arm.md)
+* [Použití Identity spravované služby virtuálního počítače s Windows k přístupu k Resource Manageru – Virtuální počítač s Windows](tutorial-windows-vm-access-arm.md)
+* [Použití Identity spravované služby virtuálního počítače s Linuxem k přístupu k Azure Resource Manageru – Virtuální počítač s Linuxem](tutorial-linux-vm-access-arm.md)

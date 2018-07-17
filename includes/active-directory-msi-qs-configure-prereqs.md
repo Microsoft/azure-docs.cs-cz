@@ -1,1 +1,1 @@
-Pokud nejste obeznámeni s MSI, podívejte se [identita spravované služby přehled](../articles/active-directory/msi-overview.md). Pokud ještě nemáte účet Azure [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) než budete pokračovat.
+Pokud MSI neznáte, projděte si [Přehled Identity spravované služby](../articles/active-directory/msi-overview.md). Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.

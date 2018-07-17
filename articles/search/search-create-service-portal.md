@@ -6,14 +6,14 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 11/07/2017
+ms.date: 07/09/2018
 ms.author: heidist
-ms.openlocfilehash: 1837fc6511ac734766c55bd1c2a2a7a40219c31a
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 0c7f9807605236a8250d75623d0885730c9945a0
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31793017"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37950668"
 ---
 # <a name="create-an-azure-search-service-in-the-portal"></a>Vytvoření služby Azure Search na portálu
 
@@ -29,8 +29,8 @@ Případně si můžete [aktivovat výhody pro předplatitele MSDN](https://azur
 
 ## <a name="find-azure-search"></a>Vyhledání služby Azure Search
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-2. Klikněte na symbol plus (+) v levém horním rohu.
-3. Vyberte **Web a mobilní zařízení** > **Azure Search**.
+2. Klikněte na symbol plus (+ Vytvořit prostředek) v levém horním rohu.
+3. Vyberte **Web** > **Azure Search**.
 
 ![](./media/search-create-service-portal/find-search3.png)
 
@@ -77,12 +77,14 @@ Vytvoření služby může trvat několik minut (15 minut nebo déle v závislos
 
 ***Repliky***: Umožňují službě zpracovat větší množství vyhledávacích dotazů.
 
+Přidáním prostředků se zvýší vaše měsíční náklady. [Cenová kalkulačka](https://azure.microsoft.com/pricing/calculator/) vám pomůže porozumět důsledkům přidání prostředků na fakturaci. Mějte na paměti, že prostředky můžete upravit na základě zatížení. Například můžete navýšit prostředky kvůli vytvoření úplného počátečního indexu a později je pak snížit na úroveň vhodnější pro přírůstkové indexování.
+
 > [!Important]
 > Služba musí mít [2 repliky pro smlouvu SLA jen pro čtení a 3 repliky pro smlouvu SLA se čtením a zápisem](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
 
 1. Přejděte na stránku vyhledávací služby na webu Azure Portal.
 2. V levém navigačním podokně vyberte **Nastavení** > **Škálování**.
-3. Přetažením posuvníku přidejte repliky nebo oddíly.
+3. Přetažením posuvníku můžete přidat prostředky obou typů.
 
 ![](./media/search-create-service-portal/settings-scale.png)
 

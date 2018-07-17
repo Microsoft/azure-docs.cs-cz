@@ -1,6 +1,6 @@
 ---
-title: Přístup k úložišti Azure pomocí pověření SAS pomocí MSI virtuálních počítačů Linux
-description: Kurz ukazuje, jak používat pro přístup k Azure Storage, pomocí pověření SAS místo přístupový klíč účtu úložiště Linux virtuálního počítače spravované služby Identity (MSI).
+title: Použití MSI virtuálního počítače s Linuxem pro přístup k Azure Storage pomocí pověření SAS
+description: V tomto kurzu se dozvíte, jak použít Identitu spravované služby (MSI) virtuálního počítače s Linuxem pro přístup ke službě Azure Storage pomocí pověření SAS místo přístupového klíče účtu úložiště.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -9,31 +9,31 @@ editor: daveba
 ms.service: active-directory
 ms.component: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: e5e08985f88c7cf3018ecadce2cabac743e4bd37
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: MT
+ms.openlocfilehash: cbb56ce6befaaa6a5d38cc6afbad0ba6db259711
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34594848"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37901598"
 ---
-# <a name="tutorial-use-a-linux-vm-managed-service-identity-to-access-azure-storage-via-a-sas-credential"></a>Kurz: Používání Linux virtuálního počítače spravované služby Identity pro přístup k úložišti Azure pomocí pověření SAS
+# <a name="tutorial-use-a-linux-vm-managed-service-identity-to-access-azure-storage-via-a-sas-credential"></a>Kurz: Použití Identity spravované služby (MSI) virtuálního počítače s Linuxem pro přístup k Azure Storage prostřednictvím pověření SAS
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-V tomto kurzu se dozvíte, jak povolit identita spravované služby (MSI) pro virtuální počítač s Linuxem a pak použijte soubor MSI se získat pověření sdíleného přístupového podpisu (SAS) úložiště. Konkrétně [pověření SAS služby](/azure/storage/common/storage-dotnet-shared-access-signature-part-1?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#types-of-shared-access-signatures). 
+V tomto kurzu se dozvíte, jak povolit Identitu spravované služby (MSI) na virtuálním počítači s Linuxem a pak ji použít k získání pověření sdíleného přístupového podpisu (SAS) úložiště. Konkrétně se bude jednat o [pověření SAS služby](/azure/storage/common/storage-dotnet-shared-access-signature-part-1?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#types-of-shared-access-signatures). 
 
-SAS služby poskytuje možnost udělit omezený přístup k objektům v účtu úložiště po omezenou dobu a specifické služby (v našem případě služby objektů blob), bez vystavení přístupový klíč účtu. Můžete použít pověření SAS obvyklým při provádění operace úložiště, například při použití sady SDK úložiště. V tomto kurzu ukážeme odesílání a stahování objekt blob pomocí rozhraní příkazového řádku Azure Storage. Se dozvíte, jak:
+SAS služby poskytuje možnost získat po omezenou dobu omezený přístup k objektům v účtu úložiště pro konkrétní službu (v našem případě službu Blob service) bez zveřejnění přístupového klíče účtu. Pověření SAS můžete použít obvyklým způsobem při operacích s úložištěm, třeba při použití sady SDK služby Storage. V tomto kurzu si ukážeme nahrání a stažení objektu blob pomocí rozhraní příkazového řádku Azure Storage. V tomto kurzu se naučíte:
 
 
 > [!div class="checklist"]
-> * Povolit MSI na virtuální počítač s Linuxem 
-> * Udělit přístup virtuálních počítačů na účet úložiště SAS ve službě Správce prostředků 
-> * Získání přístupového tokenu pomocí identity Virtuálního počítače a použít ho k načtení SAS ze Správce prostředků 
+> * Povolení MSI na virtuálním počítači s Linuxem 
+> * Udělení přístupu k SAS účtu úložiště v Resource Manageru pro virtuální počítač 
+> * Získání přístupového tokenu pomocí identity virtuálního počítače a jeho použití k načtení SAS z Resource Manageru 
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -45,89 +45,89 @@ SAS služby poskytuje možnost udělit omezený přístup k objektům v účtu �
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
 
-## <a name="create-a-linux-virtual-machine-in-a-new-resource-group"></a>Vytvořit virtuální počítač s Linuxem do nové skupiny prostředků
+## <a name="create-a-linux-virtual-machine-in-a-new-resource-group"></a>Vytvoření virtuálního počítače s Linuxem v nové skupině prostředků
 
-V tomto kurzu vytvoříme nový virtuální počítač s Linuxem. Můžete také povolit MSI na existující virtuální počítač.
+V tomto kurzu vytvoříme nový virtuální počítač s Linuxem. MSI můžete povolit také na stávajícím virtuálním počítači.
 
-1. Klikněte **+/ vytvořit novou službu** nalezeno tlačítko v levém horním rohu portálu Azure.
+1. Klikněte na tlačítko **pro vytvoření nové služby** v levém horním rohu webu Azure Portal.
 2. Vyberte **Compute** a potom vyberte **Ubuntu Server 16.04 LTS**.
-3. Zadejte informace o virtuálním počítači. Pro **typ ověřování**, vyberte **veřejný klíč SSH** nebo **heslo**. Vytvořené pověření umožňují přihlášení k virtuálnímu počítači.
+3. Zadejte informace o virtuálním počítači. Jako **Typ ověřování** vyberte **Veřejný klíč SSH** nebo **Heslo**. Vytvořené přihlašovací údaje umožňují přihlásit se k virtuálnímu počítači.
 
-    ![Obrázek alternativní text](../media/msi-tutorial-linux-vm-access-arm/msi-linux-vm.png)
+    ![Alternativní text k obrázku](../media/msi-tutorial-linux-vm-access-arm/msi-linux-vm.png)
 
-4. Vyberte **předplatné** pro virtuální počítač v rozevírací nabídce.
-5. Chcete-li vybrat nový **skupiny prostředků** chcete virtuální počítač lze vytvořit v, zvolte **vytvořit nový**. Jakmile budete hotovi, klikněte na **OK**.
-6. Vyberte velikost virtuálního počítače. Pokud chcete zobrazit další velikosti, vyberte **zobrazit všechny** nebo změňte typ filtru disku podporované. V okně Nastavení ponechte výchozí nastavení a klikněte na **OK**.
+4. V rozevíracím seznamu zvolte pro virtuální počítač **Předplatné**.
+5. Pokud chcete vybrat novou **skupinu prostředků**, ve které chcete virtuální počítač vytvořit, zvolte **Vytvořit novou**. Jakmile budete hotovi, klikněte na **OK**.
+6. Vyberte velikost virtuálního počítače. Pokud chcete zobrazit další velikosti, vyberte **Zobrazit všechny** nebo změňte filtr Podporovaný typ disku. V okně Nastavení ponechte výchozí nastavení a klikněte na **OK**.
 
-## <a name="enable-msi-on-your-vm"></a>Povolit MSI na vašem virtuálním počítači
+## <a name="enable-msi-on-your-vm"></a>Povolení MSI na virtuálním počítači
 
-Virtuální počítač MSI umožňuje získat přístupové tokeny z Azure AD, aniž by bylo třeba uvést přihlašovací údaje do vašeho kódu. Povolení spravovat Identity služby na virtuálním počítači, nemá dvě věci: zaregistruje virtuální počítač s Azure Active Directory k vytvoření jeho spravovanou identitu a nakonfiguruje identitu ve virtuálním počítači. 
+MSI virtuálního počítače umožňuje získat z Azure AD přístupové tokeny bez nutnosti vložení přihlašovacích údajů do kódu. Když na virtuálním počítači povolíte MSI, stanou se dvě věci: virtuální počítač se zaregistruje v Azure Active Directory, aby se vytvořila jeho spravovaná identita, a tato identita se nakonfiguruje na virtuálním počítači. 
 
-1. Přejděte do skupiny prostředků vašeho nového virtuálního počítače a vyberte virtuální počítač, který jste vytvořili v předchozím kroku.
-2. V části virtuální počítač "Nastavení" na levé straně klikněte na **konfigurace**.
-3. Registrovat a povolit soubor MSI, vyberte **Ano**, pokud chcete zakázat, vyberte Ne.
-4. Ujistěte se, kliknete na tlačítko **Uložit** konfiguraci uložíte.
+1. Přejděte ke skupině prostředků nového virtuálního počítače a vyberte virtuální počítač, který jste vytvořili v předchozím kroku.
+2. V části Nastavení virtuálního počítače vlevo klikněte na **Konfigurace**.
+3. Pokud chcete MSI zaregistrovat a povolit, vyberte **Ano**. Pokud ji chcete zakázat, zvolte Ne.
+4. Nezapomeňte konfiguraci uložit kliknutím na **Uložit**.
 
-    ![Obrázek alternativní text](../media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
+    ![Alternativní text k obrázku](../media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 
 ## <a name="create-a-storage-account"></a>vytvořit účet úložiště 
 
-Pokud jste již nemáte, můžete nyní vytvoří účet úložiště.  Také můžete tento krok přeskočit a udělit přístup MSI virtuálních počítačů na klíče objektu stávající účet úložiště. 
+Pokud ho ještě nemáte, vytvoříte teď účet úložiště.  Tento krok můžete také přeskočit a udělit MSI virtuálního počítače přístup ke klíčům existujícího účtu úložiště. 
 
-1. Klikněte **+/ vytvořit novou službu** nalezeno tlačítko v levém horním rohu portálu Azure.
-2. Klikněte na tlačítko **úložiště**, pak **účet úložiště**, a zobrazí nový panel "Vytvořit účet úložiště".
-3. Zadejte **název** pro účet úložiště, který budete používat později.  
-4. **Model nasazení** a **účet typu** musí být nastavena na "Resource manager" a "Obecné účely", v uvedeném pořadí. 
-5. Ujistěte se, **předplatné** a **skupiny prostředků** odpovídat jsou zadány při vytvoření virtuálního počítače v předchozím kroku.
+1. Klikněte na tlačítko **pro vytvoření nové služby** v levém horním rohu webu Azure Portal.
+2. Klikněte na **Úložiště** a potom na **Účet úložiště**. Zobrazí se nový panel Vytvořit účet úložiště.
+3. Zadejte **Název** účtu úložiště, který použijete později.  
+4. Jako **Model nasazení** nastavte Resource Manager a jako **Druh účtu**nastavte Pro obecné účely. 
+5. Ověřte, že se pole **Předplatné** a **Skupina prostředků** shodují s údaji zadanými při vytváření virtuálního počítače v předchozím kroku.
 6. Klikněte na možnost **Vytvořit**.
 
-    ![Vytvořit nový účet úložiště](../media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
+    ![Vytvoření nového účtu úložiště](../media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
-## <a name="create-a-blob-container-in-the-storage-account"></a>Vytvořte kontejner objektů blob v účtu úložiště
+## <a name="create-a-blob-container-in-the-storage-account"></a>Vytvoření kontejneru objektů blob v účtu úložiště
 
-Později jsme se nahrávání a stahování souboru na nový účet úložiště. Protože soubory vyžadují úložiště objektů blob, je potřeba vytvořit kontejner objektů blob pro uložení souboru.
+Později do nového účtu úložiště nahrajeme soubor a stáhneme ho. Soubory vyžadují úložiště objektů blob. Proto potřebujeme vytvořit kontejner objektů blob, do kterého soubor uložíme.
 
-1. Přejděte zpět na vaše nově vytvořený účet úložiště.
-2. Klikněte **kontejnery** odkaz na levém panelu, v části "Služby objektů Blob."
-3. Klikněte na tlačítko **+ kontejner** nahoře na stránce a "Nový kontejner" panely snímky limitu.
-4. Zadejte název kontejneru, vybrat úroveň přístupu, a pak klikněte na tlačítko **OK**. Zadaný název se použije později v tomto kurzu. 
+1. Vraťte se k nově vytvořenému účtu úložiště.
+2. Na panelu vlevo pod položkou Blob service klikněte na odkaz **Kontejnery**.
+3. Když nahoře na stránce kliknete na **+ Kontejner**, vysune se panel Nový kontejner.
+4. Pojmenujte kontejner, vyberte úroveň přístupu a klikněte na **OK**. Zadaný název použijeme v další části tohoto kurzu. 
 
     ![Vytvoření kontejneru úložiště](../media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
 
-## <a name="grant-your-vms-msi-access-to-use-a-storage-sas"></a>Udělení přístupu MSI Virtuálního počítače použít úložiště SAS 
+## <a name="grant-your-vms-msi-access-to-use-a-storage-sas"></a>Udělení přístupu MSI virtuálního počítače pro použití SAS úložiště 
 
-Úložiště Azure nenabízí nativní podporu ověřování Azure AD.  Můžete však použít MSI k načtení úložiště SAS ze Správce prostředků a pak použít pro přístup k úložišti SAS.  V tomto kroku udělíte MSI virtuální počítač přístup k vašemu účtu úložiště SAS.   
+Azure Storage nativně nepodporuje ověřování Azure AD.  Pomocí MSI však můžete načíst SAS úložiště z Resource Manageru a pak ho použít pro přístup k úložišti.  V tomto kroku udělíte MSI virtuálního počítače přístup k SAS vašeho účtu úložiště.   
 
-1. Přejděte zpět na vaše nově vytvořený účet úložiště...   
-2. Klikněte **přístup k ovládacímu prvku (IAM)** odkaz na levém panelu.  
-3. Klikněte na tlačítko **+ přidat** nad stránku přidáte nové přiřazení role pro virtuální počítač
-4. Nastavit **Role** k "Úložiště účet Přispěvatel", na pravé straně stránky. 
-5. V dalším rozevíracím nastavte **přiřadit přístup** prostředků "Virtuální počítač".  
-6. Dále zkontrolujte správné předplatné, je uvedena ve **předplatné** rozevíracího seznamu, pak nastavte **skupiny prostředků** na "Všechny skupiny prostředků".  
-7. Nakonec v části **vyberte** v rozevírací nabídce vyberte virtuální počítač Linux a pak klikněte na **Uložit**.  
+1. Vraťte se k nově vytvořenému účtu úložiště.   
+2. Na panelu vlevo klikněte na odkaz **Řízení přístupu (IAM)**.  
+3. Nahoře na stránce klikněte na **+ Přidat** a přiřaďte virtuálnímu počítači novou roli.
+4. Na pravé straně stránky nastavte položku **Role** na Přispěvatel účtů úložiště. 
+5. V dalším rozevíracím seznamu **Přiřadit přístup k** nastavte prostředek na Virtuální počítač.  
+6. Potom se ujistěte, že v rozevíracím seznamu **Předplatné** je správné předplatné, a nastavte **Skupinu prostředků** na Všechny skupiny prostředků.  
+7. Nakonec **vyberte** v rozevíracím seznamu svůj virtuální počítač s Linuxem a klikněte na **Uložit**.  
 
-    ![Obrázek alternativní text](../media/msi-tutorial-linux-vm-access-storage/msi-storage-role-sas.png)
+    ![Alternativní text k obrázku](../media/msi-tutorial-linux-vm-access-storage/msi-storage-role-sas.png)
 
-## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-call-azure-resource-manager"></a>Získání přístupového tokenu pomocí identity Virtuálního počítače a použít jej k vyvolání Azure Resource Manager
+## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-call-azure-resource-manager"></a>Získání přístupového tokenu pomocí identity virtuálního počítače a jeho použití k volání Azure Resource Manageru
 
-Pro zbývající část tohoto kurzu budeme pracovat z virtuálního počítače, které jsme vytvořili předtím.
+Ve zbývající části kurzu použijeme k práci dříve vytvořený virtuální počítač.
 
-K dokončení těchto kroků budete potřebovat klientem SSH. Pokud používáte systém Windows, můžete použít klienta SSH v [subsystému Windows pro Linux](https://msdn.microsoft.com/commandline/wsl/install_guide). Pokud potřebujete pomoc konfigurace klíče klient SSH, přečtěte si téma [jak klíče použití SSH se systémem Windows v Azure](../../virtual-machines/linux/ssh-from-windows.md), nebo [jak vytvořit a používat SSH pár veřejného a privátního klíče pro virtuální počítače s Linuxem v Azure](../../virtual-machines/linux/mac-create-ssh-keys.md).
+K dokončení tohoto postupu budete potřebovat klienta SSH. Pokud používáte Windows, můžete použít klienta SSH v [subsystému Windows pro Linux](https://msdn.microsoft.com/commandline/wsl/install_guide). Pokud potřebujete pomoc při konfiguraci klíčů klienta SSH, přečtěte si, [jak na počítači s Windows v Azure používat klíče SSH](../../virtual-machines/linux/ssh-from-windows.md) nebo [jak na virtuálních počítačích s Linuxem v Azure vytvářet a používat pár veřejného a privátního klíče SSH](../../virtual-machines/linux/mac-create-ssh-keys.md).
 
-1. Na portálu Azure přejděte do **virtuální počítače**, přejděte na Linux virtuálního počítače, pak z **přehled** klikněte na stránce **Connect** v horní části. Zkopírujte řetězce pro připojení k virtuálnímu počítači. 
-2. Připojte k virtuálnímu počítači pomocí vašeho klienta SSH.  
-3. Další, zobrazí se výzva k zadání ve vaší **heslo** jste přidali při vytváření **virtuálního počítače s Linuxem**. Můžete by pak se úspěšně přihlášeni.  
-4. Použijte CURL k získání přístupu tokenu pro Azure Resource Manager.  
+1. Na webu Azure Portal přejděte na **Virtuální počítače**, přejděte ke svému virtuálnímu počítači s Linuxem a pak nahoře na stránce **Přehled** klikněte na **Připojit**. Zkopírujte řetězec pro připojení k vašemu virtuálnímu počítači. 
+2. Použijte klienta SSH a připojte se ke svému virtuálnímu počítači.  
+3. Dále se zobrazí výzva k zadání **hesla**, které jste přidali při vytváření **virtuálního počítače s Linuxem**. Pak byste se měli úspěšně přihlásit.  
+4. Pomocí CURL získejte přístupový token pro Azure Resource Manager.  
 
-    Zde je CURL žádosti a odpovědi pro přístupový token:
+    Požadavek CURL na přístupový token i odpověď jsou níže:
     
     ```bash
     curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -H Metadata:true    
     ```
     
     > [!NOTE]
-    > V předchozí požadavek musí být hodnota parametru "prostředek" přesnou shodu pro očekávané službou Azure AD. Pokud používáte ID prostředku Azure Resource Manager, je nutné zahrnout do adresy koncové lomítko, v identifikátoru URI.
-    > V následující odpovědi, jako byla zkrácena jako stručný výtah element access_token.
+    > V předchozím požadavku platí, že hodnota parametru „resource“ musí přesně odpovídat hodnotě, kterou očekává Azure AD. Pokud použijete ID prostředku Azure Resource Manageru, musíte v identifikátoru URI zahrnout koncové lomítko.
+    > V následující odpovědi byl kvůli stručnosti prvek access_token zkrácen.
     
     ```bash
     {"access_token":"eyJ0eXAiOiJ...",
@@ -139,11 +139,11 @@ K dokončení těchto kroků budete potřebovat klientem SSH. Pokud používáte
     "token_type":"Bearer"} 
      ```
 
-## <a name="get-a-sas-credential-from-azure-resource-manager-to-make-storage-calls"></a>Získání pověření SAS z Azure Resource Manager volání úložiště
+## <a name="get-a-sas-credential-from-azure-resource-manager-to-make-storage-calls"></a>Získání pověření SAS z Azure Resource Manageru kvůli volání úložiště
 
-Nyní pomocí CURL volání Resource Manager pomocí přístupového tokenu, který jsme načíst v předchozí části, vytvoření pověření SAS úložiště. Jakmile jsme pověření SAS, jsme můžete volat operace nahrávání nebo stahování úložiště.
+Teď použijte CURL k volání Resource Manageru. Použijte přístupový token, který jste načetli v předchozí části, a vytvořte pověření SAS úložiště. Jakmile budete mít pověření SAS, můžete volat operace nahrávání do úložiště nebo stahování z úložiště.
 
-Pro tento požadavek použijeme parametrů žádosti protokolu HTTP použijte k vytvoření pověření SAS:
+V tomto požadavku použijeme k vytvoření pověření SAS následující parametry požadavku HTTP:
 
 ```JSON
 {
@@ -155,30 +155,30 @@ Pro tento požadavek použijeme parametrů žádosti protokolu HTTP použijte k 
 }
 ```
 
-Tyto parametry jsou zahrnuty v textu POST požadavku pro přihlašovací údaje SAS. Další informace o parametry pro vytvoření pověření SAS naleznete v tématu [referenční seznam Service SAS REST](/rest/api/storagerp/storageaccounts/listservicesas).
+Tato parametry se zahrnou do textu požadavku POST na pověření SAS. Další informace o parametrech pro vytvoření pověření SAS najdete v [referenčních informacích k REST pro výpis SAS služby](/rest/api/storagerp/storageaccounts/listservicesas).
 
-Pomocí následujících požadavku CURL získat přihlašovací údaje SAS. Nezapomeňte nahradit `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>`, `<STORAGE ACCOUNT NAME>`, `<CONTAINER NAME>`, a `<EXPIRATION TIME>` hodnoty parametrů s vlastními hodnotami. Nahraďte `<ACCESS TOKEN>` hodnotu s tímto tokenem přístupu, který jste získali dříve:
+Pomocí následujícího požadavku CURL získejte pověření SAS. Nezapomeňte nahradit hodnoty parametrů `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>`, `<STORAGE ACCOUNT NAME>`, `<CONTAINER NAME>` a `<EXPIRATION TIME>` vlastními hodnotami. Hodnotu `<ACCESS TOKEN>` nahraďte dříve získaným přístupovým tokenem:
 
 ```bash 
 curl https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Storage/storageAccounts/<STORAGE ACCOUNT NAME>/listServiceSas/?api-version=2017-06-01 -X POST -d "{\"canonicalizedResource\":\"/blob/<STORAGE ACCOUNT NAME>/<CONTAINER NAME>\",\"signedResource\":\"c\",\"signedPermission\":\"rcw\",\"signedProtocol\":\"https\",\"signedExpiry\":\"<EXPIRATION TIME>\"}" -H "Authorization: Bearer <ACCESS TOKEN>"
 ```
 
 > [!NOTE]
-> Text v předchozí adresa URL je velká a malá písmena, zajistěte proto, pokud používáte horní malá pro vaší skupiny prostředků, aby odrážela ji odpovídajícím způsobem. Kromě toho je důležité vědět, že se jedná o požadavek POST požadavek GET.
+> V textu předchozí adresy URL se rozlišují velká a malá písmena. Proto zkontrolujte, že jste je u svých skupin prostředků zadali správně. Je také důležité vědět, že se jedná o požadavek POST, a nikoli o požadavek GET.
 
-Vrátí odpověď CURL pověření SAS:  
+V odpovědi CURL se vrátí pověření SAS:  
 
 ```bash 
 {"serviceSasToken":"sv=2015-04-05&sr=c&spr=https&st=2017-09-22T00%3A10%3A00Z&se=2017-09-22T02%3A00%3A00Z&sp=rcw&sig=QcVwljccgWcNMbe9roAJbD8J5oEkYoq%2F0cUPlgriBn0%3D"} 
 ```
 
-Vytvořte soubor ukázkových objektů blob k nahrání do vašeho kontejneru úložiště objektů blob. Na virtuální počítač s Linuxem můžete to provést pomocí následujícího příkazu. 
+Vytvořte ukázkový soubor objektu blob, který nahrajete do kontejneru úložiště objektů blob. Na virtuálním počítači s Linuxem k tomu použijte následující příkaz. 
 
 ```bash
 echo "This is a test file." > test.txt
 ```
 
-V dalším kroku ověření pomocí rozhraní příkazového řádku `az storage` příkaz pomocí přihlašovacích údajů SAS a soubor odešlete do kontejneru objektů blob. V tomto kroku budete muset [nainstalovat nejnovější rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) na vašem virtuálním počítači, pokud jste tak ještě neučinili.
+Potom proveďte ověření pomocí příkazu `az storage` rozhraní příkazového řádku a pověření SAS a nahrajte soubor do kontejneru objektů blob. K tomuto kroku potřebujete na svém virtuálním počítači [nainstalovanou nejnovější verzi Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli), pokud ji ještě nemáte.
 
 ```azurecli-interactive
  az storage blob upload --container-name 
@@ -198,9 +198,9 @@ Finished[#############################################################]  100.000
 }
 ```
 
-Kromě toho můžete stáhnout soubor pomocí rozhraní příkazového řádku Azure a ověřování pomocí přihlašovacích údajů SAS. 
+Ke stažení souboru také můžete použít Azure CLI a k ověření pověření SAS. 
 
-Žádost: 
+Požadavek: 
 
 ```azurecli-interactive
 az storage blob download --container-name
@@ -252,9 +252,9 @@ Odpověď:
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste zjistili, jak spravovat Identity služby na virtuální počítač s Linuxem používat pro přístup k úložišti Azure pomocí pověření SAS.  Další informace o Azure úložiště SAS najdete v tématu:
+V tomto kurzu jste zjistili, jak použít Identitu spravované služby (MSI) na virtuálním počítači s Linuxem pro přístup k Azure Storage pomocí pověření SAS.  Další informace o SAS služby Azure Storage najdete tady:
 
 > [!div class="nextstepaction"]
 >[Použití sdílených přístupových podpisů (SAS)](/azure/storage/common/storage-dotnet-shared-access-signature-part-1)

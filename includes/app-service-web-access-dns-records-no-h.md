@@ -1,5 +1,5 @@
 > [!NOTE]
-> Azure DNS můžete nakonfigurovat vlastní název DNS pro webových aplikacích Azure. Další informace najdete v tématu [Azure DNS používá k poskytování nastavení vlastní domény pro službu Azure](../articles/dns/dns-custom-domain.md#app-service-web-apps).
+> Pomocí Azure DNS můžete nakonfigurovat vlastní název DNS pro webovou aplikaci Azure. Další informace najdete v tématu popisujícím [použití Azure DNS k určení nastavení vlastní domény pro službu Azure](../articles/dns/dns-custom-domain.md#app-service-web-apps).
 >
 >
 

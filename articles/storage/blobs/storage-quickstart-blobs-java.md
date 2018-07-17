@@ -1,5 +1,5 @@
 ---
-title: Rychlý start Azure – Vytvoření objektu blob v úložišti objektů pomocí Javy | Microsoft Docs
+title: Rychlý start Azure – Vytvoření objektu blob v úložišti objektů pomocí sady Java Storage SDK V7 | Microsoft Docs
 description: V tomto rychlém startu vytvoříte v úložišti objektů (blob) účet úložiště a kontejner. Pak použijete klientskou knihovnu pro úložiště pro Javu k nahrání objektu blob do služby Azure Storage, stažení objektu blob a výpisu objektů blob v kontejneru.
 services: storage
 author: roygara
@@ -9,14 +9,14 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 04/09/2018
 ms.author: rogarana
-ms.openlocfilehash: 197777971b92ad9cd53e91602b88858a371ce1d8
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 30d31a7f4b77864549dcb9e27030ba19c4fd84fe
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32192005"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38606605"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-using-java"></a>Rychlý start: Nahrávání, stahování a výpis objektů blob pomocí Javy
+# <a name="quickstart-upload-download-and-list-blobs-using-java-sdk-v7"></a>Rychlý start: Nahrávání, stahování a výpis objektů blob pomocí sady Java SDK V7
 
 V tomto rychlém startu zjistíte, jak pomocí Javy nahrávat, stahovat a vypisovat objekty blob bloku v kontejneru v úložišti objektů blob v Azure.
 
@@ -36,7 +36,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="download-the-sample-application"></a>Stažení ukázkové aplikace
 
-[Ukázková aplikace](https://github.com/Azure-Samples/storage-blobs-java-quickstart) použitá v tomto rychlém startu je základní konzolová aplikace. 
+[Ukázková aplikace](https://github.com/Azure-Samples/storage-blobs-java-quickstart) použitá v tomto rychlém startu je základní konzolová aplikace.  
 
 Pomocí [gitu](https://git-scm.com/) stáhněte kopii aplikace do svého vývojového prostředí. 
 
@@ -48,7 +48,7 @@ Tento příkaz naklonuje úložiště do vaší místní složky gitu. Pokud chc
 
 Po dokončení importování projektu otevřete soubor **AzureApp.java** (umístěný ve složce **blobQuickstart.blobAzureApp** v adresáři **src/main/java**) a nahraďte `accountname` a `accountkey` uvnitř řetězce `storageConnectionString`. Pak aplikaci spusťte.
 
-[!INCLUDE [storage-copy-connection-string-portal](../../../includes/storage-copy-connection-string-portal.md)]   
+[!INCLUDE [storage-copy-connection-string-portal](../../../includes/storage-copy-connection-string-portal.md)]    
 
 ## <a name="configure-your-storage-connection-string"></a>Konfigurace připojovacího řetězce úložiště
     
@@ -65,9 +65,7 @@ public static final String storageConnectionString =
 
 Tato ukázka vytvoří testovací soubor ve vašem výchozím adresáři (pro uživatele Windows je to složka Dokumenty), nahraje ho do úložiště objektů blob, vypíše objekty blob v kontejneru a pak soubor stáhne s novým názvem, abyste mohli porovnat starý a nový soubor. 
 
-Spusťte v Eclipse ukázku stisknutím **Ctrl + F11**.
-
-Pokud chcete ukázku spustit pomocí Mavenu na příkazovém řádku, otevřete prostředí a přejděte do složky **blobAzureApp** ve vašem naklonovaném adresáři. Potom zadejte `mvn compile exec:java`.
+Na příkazovém řádku spusťte ukázku pomocí nástroje Maven. Otevřete prostředí a přejděte k **blobAzureApp** v naklonovaném adresáři. Potom zadejte `mvn compile exec:java`. 
 
 Následuje příklad výstupu při spuštění aplikace ve Windows.
 
@@ -84,9 +82,9 @@ Deleting the container
 Deleting the source, and downloaded files
 ```
 
- Než budete pokračovat, zkontrolujte, jestli váš výchozí adresář (pro uživatele Windows je to složka Dokumenty) obsahuje příslušné dva soubory. Můžete je otevřít a podívat se, že jsou identické. Obsah souboru v úložišti objektů blob můžete zobrazit zkopírováním adresy URL objektu blob z okna konzoly a jejím vložením do prohlížeče. Když stisknete klávesu Enter, odstraní se kontejner úložiště i soubory.
+Než budete pokračovat, zkontrolujte, jestli váš výchozí adresář (pro uživatele Windows je to složka Dokumenty) obsahuje příslušné dva soubory. Můžete je otevřít a podívat se, že jsou identické. Obsah souboru v úložišti objektů blob můžete zobrazit zkopírováním adresy URL objektu blob z okna konzoly a jejím vložením do prohlížeče. Když stisknete klávesu Enter, odstraní se kontejner úložiště i soubory. 
 
-K zobrazení souborů v úložišti objektů blob můžete použít také nástroj, jako je [Průzkumník služby Azure Storage](http://storageexplorer.com/?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). Průzkumník služby Azure Storage je bezplatný nástroj pro více platforem, který umožňuje přístup k informacím o účtu úložiště. 
+K zobrazení souborů v úložišti objektů blob můžete použít také nástroj, jako je [Průzkumník služby Azure Storage](http://storageexplorer.com/?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). Průzkumník služby Azure Storage je bezplatný nástroj pro více platforem, který umožňuje přístup k informacím o účtu úložiště.
 
 Po ověření souborů stiskněte klávesu Enter a dokončete ukázku a odstraňte testovací soubory. Když teď víte, co ukázka dělá, otevřete soubor **AzureApp.java** a prohlédněte si kód. 
 
@@ -113,7 +111,7 @@ První věc, kterou je potřeba udělat, je vytvořit odkazy na objekty slouží
 > [!IMPORTANT]
 > Názvy kontejnerů musí být malými písmeny. Další informace o pojmenování kontejnerů a objektů blob najdete v tématu [Názvy kontejnerů, objektů blob a metadat a odkazování na ně](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
 
-### <a name="create-a-container"></a>Vytvoření kontejneru 
+### <a name="create-a-container"></a>Vytvoření kontejneru
 
 V této části vytvoříte instance objektů, vytvoříte nový kontejner a pak nastavíte oprávnění ke kontejneru tak, aby objekty blob byly veřejné a přístupné přes pouhou adresu URL. Kontejner má název **quickstartblobs**. 
 
@@ -205,26 +203,13 @@ if(sourceFile != null)
 sourceFile.deleteOnExit();
 ```
 
-## <a name="resources-for-developing-java-applications-with-blobs"></a>Zdroje informací pro vývoj aplikací v Javě s využitím objektů blob
-
-Prohlédněte si tyto další zdroje informací o vývoji v Javě s využitím úložiště objektů blob:
-
-### <a name="binaries-and-source-code"></a>Binární soubory a zdrojový kód
-
-- Prohlédněte a stáhněte si [zdrojový kód klientské knihovny pro Javu](https://github.com/Azure/azure-storage-java) pro službu Azure Storage na GitHubu.
-
-### <a name="client-library-reference-and-samples"></a>Klientská knihovna – referenční informace a ukázky
-
-- Další informace o klientské knihovně pro Javu najdete v [referenčních informacích k rozhraní Java API](https://docs.microsoft.com/java/api/overview/azure/storage).
-- Prozkoumejte [ukázky pro úložiště objektů blob](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=java&term=blob) napsané s využitím klientské knihovny pro Javu.
-
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste zjistili, jak přenášet soubory mezi místním diskem a úložištěm objektů blob v Azure pomocí Javy. Další informace o práci s úložištěm objektů blob najdete v postupech pro úložiště objektů blob.
+V tomto rychlém startu jste zjistili, jak přenášet soubory mezi místním diskem a úložištěm objektů blob v Azure pomocí Javy. Další informace o práci s Javou najdete v našem úložišti zdrojového kódu na GitHubu.
 
 > [!div class="nextstepaction"]
-> [Operace s úložištěm objektů blob – postupy](storage-java-how-to-use-blob-storage.md)
+> [Sada SDK služby Azure Storage pro Javu](https://github.com/azure/azure-storage-java) 
+> [Referenční informace k rozhraní API](https://docs.microsoft.com/en-us/java/api/storage/client?view=azure-java-stable)
+> [Vzorové kódy pro Javu](../common/storage-samples-java.md)
 
-Další informace o Průzkumníku služby Storage a objektech blob najdete v tématu [Správa prostředků úložiště objektů blob v Azure pomocí Průzkumníka služby Storage](../../vs-azure-tools-storage-explorer-blobs.md).
-
-Další ukázky v Javě najdete v tématu [Ukázky služby Azure Storage s použitím Javy](../common/storage-samples-java.md).
+* Další informace o Průzkumníku služby Storage a objektech blob najdete v tématu [Správa prostředků úložiště objektů blob v Azure pomocí Průzkumníka služby Storage](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).

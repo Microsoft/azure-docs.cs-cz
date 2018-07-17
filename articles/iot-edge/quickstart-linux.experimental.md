@@ -4,17 +4,17 @@ description: V tomto rychlém startu se naučíte na zařízení IoT Edge vzdál
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 06/27/2018
+ms.date: 07/02/2018
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 0e0d22b3363b00c81be5091fd12773f9e486c09e
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 8ee43a1e3b448faae79a7e3086e2e1d639c341f2
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37099181"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38611923"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-x64-device"></a>Rychlý start: Nasazení prvního modulu IoT Edge na zařízení Linux x64
 
@@ -32,6 +32,13 @@ V tomto rychlém startu se naučíte:
 V tomto rychlém startu změníte svůj linuxový nebo virtuální počítač na zařízení IoT Edge. Potom můžete modul nasadit z webu Azure Portal do svého zařízení. Modul, který v tomto rychlém kurzu nasadíte, je simulovaný snímač, který generuje údaje o teplotě, vlhkosti a atmosferickém tlaku. Další kurzy o Azure IoT Edge vycházejí z tohoto kurzu. V něm nasadíte moduly, které analyzují simulovaná data kvůli získání obchodních informací. 
 
 Pokud nemáte aktivní předplatné Azure, vytvořte si napřed [bezplatný účet][lnk-account].
+
+## <a name="prerequisites"></a>Požadavky
+
+V tomto rychlém startu se jako zařízení IoT Edge používá počítač s Linuxem. Pokud pro účely testování žádný k dispozici nemáte, postupujte podle pokynů v tématu [Vytvoření virtuálního počítače s Linuxem na webu Azure Portal](../virtual-machines/linux/quick-create-portal.md). 
+* Není potřeba provádět postup instalace a spuštění webového serveru. Po připojení k virtuálnímu počítači můžete skončit.  
+* Vytvořte virtuální počítač v nové skupině prostředků, kterou můžete použít při vytváření zbývajících prostředků Azure pro účely tohoto rychlého startu. Použijte pro ni nějaký rozpoznatelný název, například *IoTEdgeResources*. 
+* K testování IoT Edge nepotřebujete příliš velký virtuální počítač. Například velikost **B1ms** je dostatečná. 
 
 ## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
@@ -54,6 +61,8 @@ Nainstalujte na zařízení modul runtime Azure IoT Edge a spusťte ho.
 ![Registrace zařízení][5]
 
 Modul runtime IoT Edge se nasadí na všechna zařízení IoT Edge. Skládá se ze tří částí. **Proces démon zabezpečení IoT Edge**, který se spustí při každém restartování a spuštění zařízení Edge tím, že se spustí agent IoT Edge. **Agent IoT Edge** umožňuje nasadit a monitorovat moduly na zařízení IoT Edge, včetně centra služby IoT Edge. Druhým je **IoT Edge Hub**, který na zařízení IoT Edge řídí komunikaci mezi moduly a také mezi zařízením a IoT Hubem. 
+
+Na počítači nebo virtuálním počítači s Linuxem, který jste si připravili pro tento rychlý start, proveďte následující kroky. 
 
 ### <a name="register-your-device-to-use-the-software-repository"></a>Registrace zařízení kvůli použití úložiště softwaru
 
@@ -85,11 +94,16 @@ Aktualizujte nástroj **apt-get**.
    sudo apt-get update
    ```
 
-Nainstalujte kontejnerový modul runtime Moby s jeho příkazy CLI. 
+Nainstalujte kontejnerový modul runtime **Moby**.
 
    ```bash
    sudo apt-get install moby-engine
-   sudo apt-get install moby-cli   
+   ```
+
+Nainstalujte příkazy rozhraní příkazového řádku pro Moby. 
+
+   ```bash
+   sudo apt-get install moby-cli
    ```
 
 ### <a name="install-and-configure-the-iot-edge-security-daemon"></a>Instalace a konfigurace procesu démon zabezpečení IoT Edge
@@ -109,15 +123,19 @@ Proces démon zabezpečení se nainstaluje jako systémová služba, aby se modu
    sudo nano /etc/iotedge/config.yaml
    ```
 
-3. Přidejte připojovací řetězec zařízení IoT Edge, který jste si zkopírovali při registraci zařízení. Nahraďte hodnotu proměnné **device_connection_string**, kterou jste si zkopírovali v předchozí části tohoto rychlého startu.
+3. Přidejte připojovací řetězec zařízení IoT Edge. Vyhledejte proměnnou **device_connection_string** a aktualizujte její hodnotu řetězcem, který jste zkopírovali po registraci zařízení.
 
-4. Restartujte proces démon zabezpečení Edge:
+4. Uložte soubor a zavřete ho. 
+
+   `CTRL + X`, `Y`, `Enter`
+
+4. Restartujte proces démon zabezpečení IoT Edge.
 
    ```bash
    sudo systemctl restart iotedge
    ```
 
-5. Ověřte, že Edge Security Daemon běží jako systémová služba:
+5. Ověřte, že Edge Security Daemon běží jako systémová služba.
 
    ```bash
    sudo systemctl status iotedge
@@ -131,12 +149,14 @@ Proces démon zabezpečení se nainstaluje jako systémová služba, aby se modu
    journalctl -u iotedge
    ```
 
-6. Zobrazení modulů spuštěných na vašem zařízení: 
+6. Zobrazte moduly spuštěné na vašem zařízení. 
+
+   >[!TIP]
+   >Abyste mohli spouštět příkazy `iotedge`, je potřeba nejprve použít *sudo*. Odhlaste se z počítače a znovu se přihlaste, aby se aktualizovala oprávnění. Pak budete moct příkazy `iotedge` spouštět bez zvýšených oprávnění. 
 
    ```bash
    sudo iotedge list
    ```
-Po odhlášení a přihlášení nemusíte v předchozím příkazu používat příkaz *sudo*.
 
    ![Zobrazení jednoho modulu na zařízení](./media/quickstart-linux/iotedge-list-1.png)
 
@@ -157,7 +177,6 @@ Na počítači, na kterém běží simulované zařízení, znovu otevřete př�
    ```bash
    sudo iotedge list
    ```
-Po odhlášení a přihlášení nemusíte v předchozím příkazu používat příkaz *sudo*.
 
    ![Zobrazení tří modulů na zařízení](./media/quickstart-linux/iotedge-list-2.png)
 
@@ -177,7 +196,22 @@ K zobrazení telemetrických údajů, které zařízení posílá, můžete pou�
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud chcete pokračovat dalšími kurzy o IoT Edge, použijte zařízení, které jste zaregistrovali a nastavili v tomto rychlém startu. Pokud chcete instalace ze zařízení odebrat, použijte následující příkazy.  
+Pokud chcete pokračovat dalšími kurzy o IoT Edge, použijte zařízení, které jste zaregistrovali a nastavili v tomto rychlém startu. Jinak můžete odstranit prostředky Azure, které jste vytvořili, a odebrat modul runtime IoT Edge ze zařízení. 
+
+### <a name="delete-azure-resources"></a>Odstranění prostředků Azure
+
+Pokud jste virtuální počítač a centrum IoT vytvořili v nové skupině prostředků, můžete odstranit tuto skupinu a všechny související prostředky. Pokud chcete z této skupiny prostředků něco zachovat, odstraňte pouze jednotlivé prostředky, které chcete vyčistit. 
+
+Pokud chcete odebrat skupinu prostředků, postupujte následovně: 
+
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com) a klikněte na **Skupiny prostředků**.
+2. Do textového pole **Filtrovat podle názvu...** zadejte název skupiny prostředků obsahující vaši službu IoT Hub. 
+3. V seznamu výsledků klikněte na **...** napravo od vaší skupiny prostředků a pak na **Odstranit skupinu prostředků**.
+4. Zobrazí se výzva k potvrzení odstranění skupiny prostředků. Potvrďte odstranění tím, že znovu zadáte název vaší skupiny prostředků, a pak klikněte na **Odstranit**. Po chvíli bude skupina prostředků včetně všech obsažených prostředků odstraněná.
+
+### <a name="remove-the-iot-edge-runtime"></a>Odebrání modulu runtime IoT Edge
+
+Pokud chcete instalace ze zařízení odebrat, použijte následující příkazy.  
 
 Odeberte modul runtime IoT Edge.
 
@@ -185,10 +219,18 @@ Odeberte modul runtime IoT Edge.
    sudo apt-get remove --purge iotedge
    ```
 
-Odstraňte kontejnery, které se vytvořily ve vašem zařízení. 
+Při odebrání modulu runtime IoT Edge se zastaví kontejnery, které vytvořil, ale na zařízení se zachovají. Zobrazte všechny kontejnery.
 
    ```bash
-   sudo docker rm -f $(sudo docker ps -aq)
+   sudo docker ps -a
+   ```
+
+Odstraňte kontejnery, které na vašem zařízení vytvořil modul runtime IoT Edge. Změňte název kontejneru tempSensor, pokud jste ho pojmenovali nějak jinak. 
+
+   ```bash
+   sudo docker rm -f tempSensor
+   sudo docker rm -f edgeHub
+   sudo docker rm -f edgeAgent
    ```
 
 Odeberte kontejnerový modul runtime.
@@ -196,8 +238,6 @@ Odeberte kontejnerový modul runtime.
    ```bash
    sudo apt-get remove --purge moby
    ```
-
-Až nebudete potřebovat Azure IoT Hub ani zařízení IoT Edge, které jste vytvořili v tomto rychlém startu, můžete je odstranit na webu Azure Portal. Přejděte na stránku přehledu vašeho centra IoT a vyberte **Odstranit**. 
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -221,5 +261,6 @@ Tento rychlý start je předpokladem všech dalších kurzů o IoT Edge. Pokrač
 [9]: ./media/tutorial-simulate-device-linux/sensor-data.png
 
 <!-- Links -->
+[lnk-account]: https://azure.microsoft.com/free
 [lnk-docker-ubuntu]: https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/ 
 [lnk-iothub-explorer]: https://github.com/azure/iothub-explorer

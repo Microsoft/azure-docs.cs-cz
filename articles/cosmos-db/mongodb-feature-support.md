@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 11/15/2017
 ms.author: alekseys
-ms.openlocfilehash: 9202e8eb328f098f7ab68a18f4629a95ecc10991
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 2c86cbe2ac9a0611873aca35480af92304abe5b5
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34796351"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37928682"
 ---
 # <a name="mongodb-api-support-for-mongodb-features-and-syntax"></a>Podpora rozhraní API MongoDB pro funkce a syntaxi MongoDB
 
@@ -23,14 +23,19 @@ Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro
 
 Při používání rozhraní MongoDB API služby Azure Cosmos DB můžete využít výhody rozhraní MongoDB API, na které jste zvyklí, se všemi podnikovými možnostmi, které nabízí Azure Cosmos DB: [globální distribuci](distribute-data-globally.md), [automatický sharding](partition-data.md), záruky dostupnosti a latence, automatické indexování všech polí, šifrování při nečinnosti, zálohy a spoustu dalších.
 
+## <a name="mongodb-protocol-support"></a>Podpora protokolu MongoDB
+
+Rozhraní MongoDB API služby Azure Cosmos DB je ve výchozím natavení kompatibilní se serverem MongoDB verze **3.2**. Podporované operátory a případná omezení nebo výjimky jsou uvedené níže. Funkce nebo operátory dotazu přidané v MongoDB verze **3.4** jsou v současné době dostupné jako funkce Preview. Pomocí rozhraní MongoDB API by se ke službě Cosmos DB měl být schopný připojit jakýkoli klient podporující tyto protokoly.
+
+[Kanál agregace MongoDB](#aggregation-pipeline) je v současné době také dostupný jako samostatná funkce Preview.
+
 ## <a name="mongodb-query-language-support"></a>Podpora dotazovacího jazyka MongoDB
 
 Rozhraní MongoDB API služby Azure Cosmos DB nabízí komplexní podporu konstruktorů dotazovacího jazyka MongoDB. Níže najdete podrobný seznam aktuálně podporovaných operací, operátorů, fází, příkazů a možností.
 
-
 ## <a name="database-commands"></a>Databázové příkazy
 
-Azure Cosmos DB podporuje u všech účtů rozhraní MongoDB API následující databázové příkazy. 
+Azure Cosmos DB podporuje u všech účtů rozhraní MongoDB API následující databázové příkazy.
 
 ### <a name="query-and-write-operation-commands"></a>Příkazy pro dotazovací a zápisové operace
 - delete
@@ -50,7 +55,7 @@ Azure Cosmos DB podporuje u všech účtů rozhraní MongoDB API následující 
 - dropDatabase
 - listCollections
 - drop
-- create
+- vytvoření
 - filemd5
 - createIndexes
 - listIndexes
@@ -287,7 +292,11 @@ $all | ```{ "Location.coordinates": { $all: [-121.758, 46.87] } }``` |
 $elemMatch | ```{ "Location.coordinates": { $elemMatch: {  $lt: 0 } } }``` |  
 $size | ```{ "Location.coordinates": { $size: 2 } }``` | 
 $comment |  ```{ "Location.coordinates": { $elemMatch: {  $lt: 0 } }, $comment: "Negative values"}``` | 
-$text |  | Nepodporuje se. Použijte místo toho $regex. 
+$text |  | Nepodporuje se. Použijte místo toho $regex.
+
+## <a name="unsupported-operators"></a>Nepodporované operátory
+
+Azure Cosmos DB nepodporuje operátory ```$where``` a ```$eval```.
 
 ### <a name="methods"></a>Metody
 
@@ -316,6 +325,10 @@ Azure Cosmos DB zatím nepodporuje uživatele a role. Azure Cosmos DB podporuje 
 ## <a name="replication"></a>Replikace
 
 Azure Cosmos DB podporuje automatickou nativní replikaci v nejnižších vrstvách. Tato logika umožňuje zároveň dosáhnout nízké latence a globální replikace. Azure Cosmos DB nepodporuje příkazy pro ruční replikaci.
+
+## <a name="write-concern"></a>Write Concern
+
+Některá rozhraní MongoDB API podporují možnost zadat [Write Concern](https://docs.mongodb.com/manual/reference/write-concern/), který určuje počet požadovaných odpovědí při operaci zápisu. Kvůli tomu, jak Cosmos DB zpracovává replikaci na pozadí, jsou všechny zápisy ve výchozím nastavení automaticky kvora. Každý Write Concern určený klientským kódem se ignoruje. Další informace najdete v tématu popisujícím [využití úrovní konzistence pro maximalizaci dostupnosti a výkonu](consistency-levels.md).
 
 ## <a name="sharding"></a>Sharding
 

@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 06/04/2018
+ms.date: 07/06/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: ffcce12800fae3a4d9e4930c918fcafb919b96ed
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 6a113169cb3f8fea1012643efcb56e5cf6c7e908
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34737200"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37915965"
 ---
 # <a name="prepare-azure-resources-for-replication-of-on-premises-machines"></a>Příprava prostředků Azure na replikaci místních počítačů
 
@@ -26,9 +26,9 @@ Tyto kurzy demonstrují ten nejjednodušší způsob nasazení určitého scén�
 V tomto článku se dozvíte, jak připravit komponenty Azure v případě, že chcete replikovat místní virtuální počítače (Hyper-V nebo VMware) nebo fyzické servery s Windows nebo Linuxem do Azure. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Ověřit oprávnění účtu Azure k replikaci
-> * Vytvořit účet úložiště Azure. Jsou v něm uložené image replikovaných počítačů.
-> * Vytvořit trezor služby Recovery Services. Trezor obsahuje metadata a informace o konfiguraci virtuálních počítačů a další komponenty replikace.
+> * Ověření oprávnění účtu Azure k replikaci
+> * Vytvoření účtu úložiště Azure Jsou v něm uložené image replikovaných počítačů.
+> * Vytvořte trezor služby Recovery Services. Trezor obsahuje metadata a informace o konfiguraci virtuálních počítačů a další komponenty replikace.
 > * Nastavit síť Azure. Když se po převzetí služeb při selhání vytvoří virtuální počítače Azure, připojí se do této sítě Azure.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) před tím, než začnete.
@@ -54,11 +54,12 @@ Bitové kopie replikovaných počítačů jsou uložené v úložišti Azure. Vi
 1. V nabídce webu [Azure Portal](https://portal.azure.com) vyberte **Vytvořit prostředek** > **Úložiště** > **Účet úložiště – objekt blob, soubor, tabulka, fronta**.
 2. V části **Vytvořit účet úložiště** zadejte název účtu. Pro účely těchto kurzů používáme název **contosovmsacct1910171607**. Vybraný název musí být v rámci Azure jedinečný, musí být dlouhý 3 až 24 znaků a obsahovat pouze číslice a malá písmena.
 3. V části **Model nasazení** vyberte **Resource Manager**.
-4. V části **Druh účtu** vyberte **Úložiště (obecné účely v1)**. Nevybírejte úložiště objektů blob. V části **Výkon** vyberte **Standard**. 
+4. V části **Druh účtu** vyberte **Úložiště (obecné účely v1)**. Nevybírejte úložiště objektů blob.
 5. V části **Replikace** vyberte výchozí redundanci úložiště **Geograficky redundantní úložiště jen pro čtení**. Možnost pro **vyžadování zabezpečeného přenosu** ponechte **zakázanou**.
-6. V části **Předplatné** vyberte předplatné, ve kterém chcete nový účet úložiště vytvořit. 
-2. V části **Skupina prostředků** zadejte název nové skupiny prostředků. Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Pro účely těchto kurzů používáme název **ContosoRG**.
-3. V části **Umístění** vyberte zeměpisné umístění účtu úložiště. 
+6. V části **Výkon** vyberte **Standard** a v části **Úroveň přístupu** zvolte výchozí možnost **Horká**.
+7. V části **Předplatné** vyberte předplatné, ve kterém chcete nový účet úložiště vytvořit.
+8. V části **Skupina prostředků** zadejte název nové skupiny prostředků. Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Pro účely těchto kurzů používáme název **ContosoRG**.
+9. V části **Umístění** vyberte zeměpisné umístění účtu úložiště. 
 
    ![vytvořit účet úložiště](media/tutorial-prepare-azure/create-storageacct.png)
 
@@ -98,7 +99,7 @@ Když se po převzetí služeb při selhání vytvoří z úložiště virtuáln
 
 - Informace o [sítích Azure](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)
 - Informace o [typech účtů úložiště Azure](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)
-- - Další informace o [redundanci úložiště](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs#read-access-geo-redundant-storage) a [zabezpečeném přenosu](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) pro úložiště
+- Další informace o [redundanci úložiště](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs#read-access-geo-redundant-storage) a [zabezpečeném přenosu](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) pro úložiště
 
 
 

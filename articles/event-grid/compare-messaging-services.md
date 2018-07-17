@@ -6,14 +6,14 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: overview
-ms.date: 03/16/2018
+ms.date: 07/05/2018
 ms.author: tomfitz
-ms.openlocfilehash: 1437916e62e7c2987c0a1d8c3a5ac4a5f332134d
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 69db32698951519c2630a0a8697e4ebe74f69b04
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34303551"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37930473"
 ---
 # <a name="choose-between-azure-services-that-deliver-messages"></a>Výběr mezi službami Azure, které doručují zprávy
 
@@ -60,6 +60,7 @@ Má následující vlastnosti:
 * Možnost dynamického škálování
 * Nízké náklady
 * Prostředí bez serveru
+* Alespoň jedno doručení
 
 ### <a name="event-hubs"></a>Event Hubs
 
@@ -69,6 +70,7 @@ Má následující vlastnosti:
 
 * Nízká latence
 * Schopnost přijímat a zpracovávat miliony událostí za sekundu
+* Alespoň jedno doručení
 
 ### <a name="service-bus"></a>Service Bus
 
@@ -80,6 +82,7 @@ Má následující vlastnosti:
 
 * Spolehlivé asynchronní doručování zpráv, které vyžaduje dotazování
 * Pokročilé funkce zasílání zpráv, jako je FIFO, dávky/relace, transakce, ukládání nedoručených zpráv, časová kontrola, směrování, filtrování a vyhledávání duplicit
+* Přesně jedno doručení
 
 ## <a name="use-the-services-together"></a>Použití služeb v kombinaci
 

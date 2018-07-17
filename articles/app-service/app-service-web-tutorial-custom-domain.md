@@ -13,15 +13,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 06/23/2017
+ms.date: 06/18/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: a9f1e66a4c55d866d9f174528eb4912c3b9391c0
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 5c0aa042f97e10f90787b1cdf8e03cd6d849441e
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34714511"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38461635"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-web-apps"></a>Kurz: Mapování existujícího vlastního názvu DNS na Azure Web Apps
 
@@ -35,12 +35,8 @@ V tomto kurzu se naučíte:
 > * Mapovat subdoménu (například `www.contoso.com`) pomocí záznamu CNAME
 > * Mapovat kořenovou doménu (například `contoso.com`) pomocí záznamu A
 > * Mapovat zástupnou doménu (například `*.contoso.com`) pomocí záznamu CNAME
+> * Přesměrovat výchozí adresu URL do vlastního adresáře
 > * Automatizovat mapování domén pomocí skriptů
-
-K mapování vlastního názvu DNS na službu App Service můžete použít **záznam CNAME** nebo **záznam A**. 
-
-> [!NOTE]
-> Pro všechny vlastní názvy DNS kromě kořenové domény (například `contoso.com`) doporučujeme použít záznam CNAME.
 
 Pokud chcete do služby App Service migrovat živý web a jeho název domény DNS, přečtěte si téma [Migrace aktivního názvu DNS do služby Azure App Service](app-service-custom-domain-name-migrate.md).
 
@@ -104,13 +100,26 @@ Až se zobrazí následující oznámení, operace škálování je dokončená.
 
 <a name="cname"></a>
 
-## <a name="map-a-cname-record"></a>Mapování záznamu CNAME
+## <a name="map-your-domain"></a>Mapování domény
+
+K mapování vlastního názvu DNS na službu App Service můžete použít **záznam CNAME** nebo **záznam A**. Postupujte podle příslušných kroků:
+
+- [Mapování záznamu CNAME](#map-a-cname-record)
+- [Mapování záznamu A](#map-an-a-record)
+- [Mapování zástupné domény (pomocí záznamu CNAME)](#map-a-wildcard-domain)
+
+> [!NOTE]
+> Záznamy CNAME byste měli použít pro všechny vlastní názvy DNS s výjimkou kořenových domén (například `contoso.com`). Pro kořenové domény použijte záznamy A.
+
+### <a name="map-a-cname-record"></a>Mapování záznamu CNAME
 
 V tomto příkladu přidáte záznam CNAME pro subdoménu `www` (například `www.contoso.com`).
 
-[!INCLUDE [Access DNS records with domain provider](../../includes/app-service-web-access-dns-records.md)]
+#### <a name="access-dns-records-with-domain-provider"></a>Přístup k záznamům DNS u poskytovatele domény
 
-### <a name="create-the-cname-record"></a>Vytvoření záznamu CNAME
+[!INCLUDE [Access DNS records with domain provider](../../includes/app-service-web-access-dns-records-no-h.md)]
+
+#### <a name="create-the-cname-record"></a>Vytvoření záznamu CNAME
 
 Přidejte záznam CNAME pro mapování subdomény na výchozí název hostitele aplikace (`<app_name>.azurewebsites.net`, kde `<app_name>` je název vaší aplikace).
 
@@ -120,7 +129,7 @@ Po přidání záznamu CNAME bude stránka záznamů DNS vypadat jako v následu
 
 ![Přechod do aplikace Azure na portálu](./media/app-service-web-tutorial-custom-domain/cname-record.png)
 
-### <a name="enable-the-cname-record-mapping-in-azure"></a>Povolení mapování záznamu CNAME v Azure
+#### <a name="enable-the-cname-record-mapping-in-azure"></a>Povolení mapování záznamu CNAME v Azure
 
 V levém navigačním panelu na stránce aplikace na webu Azure Portal vyberte **Vlastní domény**. 
 
@@ -136,7 +145,7 @@ Zadejte plně kvalifikovaný název domény, pro který jste přidali záznam CN
 
 Vyberte **Ověřit**.
 
-Aktivuje se tlačítko **Přidat název hostitele**. 
+Zobrazí se stránka **Přidat název hostitele**. 
 
 Ujistěte se, že **Typ záznamu názvu hostitele** je nastavený na **CNAME (www.example.com nebo jakákoli subdoména)**.
 
@@ -148,19 +157,22 @@ Zobrazení nového názvu hostitele na stránce **Vlastní domény** aplikace m�
 
 ![Přidaný záznam CNAME](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
 
+> [!NOTE]
+> Pokud chcete přidat vazbu SSL, přečtěte si téma [Vytvoření vazby existujícího vlastního certifikátu SSL k Azure Web Apps](app-service-web-tutorial-custom-ssl.md).
+
 Pokud jste nějaký krok vynechali nebo jste někde udělali překlep, ve spodní části stránky se zobrazí chyba ověření.
 
 ![Chyba ověření](./media/app-service-web-tutorial-custom-domain/verification-error-cname.png)
 
 <a name="a"></a>
 
-## <a name="map-an-a-record"></a>Mapování záznamu A
+### <a name="map-an-a-record"></a>Mapování záznamu A
 
 V tomto příkladu přidáte záznam A pro kořenovou doménu (například `contoso.com`). 
 
 <a name="info"></a>
 
-### <a name="copy-the-apps-ip-address"></a>Zkopírování IP adresy aplikace
+#### <a name="copy-the-apps-ip-address"></a>Zkopírování IP adresy aplikace
 
 K mapování záznamu A potřebujete externí IP adresu aplikace. Tuto IP adresu najdete na stránce **Vlastní domény** aplikace na webu Azure Portal.
 
@@ -172,9 +184,11 @@ Na stránce **Vlastní domény** zkopírujte IP adresu aplikace.
 
 ![Přechod do aplikace Azure na portálu](./media/app-service-web-tutorial-custom-domain/mapping-information.png)
 
-[!INCLUDE [Access DNS records with domain provider](../../includes/app-service-web-access-dns-records.md)]
+#### <a name="access-dns-records-with-domain-provider"></a>Přístup k záznamům DNS u poskytovatele domény
 
-### <a name="create-the-a-record"></a>Vytvoření záznamu A
+[!INCLUDE [Access DNS records with domain provider](../../includes/app-service-web-access-dns-records-no-h.md)]
+
+#### <a name="create-the-a-record"></a>Vytvoření záznamu A
 
 K mapování záznamu A na aplikaci vyžaduje služba App Service **dva** záznamy DNS:
 
@@ -194,7 +208,7 @@ Po přidání záznamů bude stránka záznamů DNS vypadat jako v následujíc�
 
 <a name="enable-a"></a>
 
-### <a name="enable-the-a-record-mapping-in-the-app"></a>Povolení mapování záznamu A v aplikaci
+#### <a name="enable-the-a-record-mapping-in-the-app"></a>Povolení mapování záznamu A v aplikaci
 
 Zpět na stránce **Vlastní domény** aplikace na webu Azure Portal přidejte do seznamu plně kvalifikovaný vlastní název DNS (například `contoso.com`).
 
@@ -206,7 +220,7 @@ Zadejte plně kvalifikovaný název domény, pro který jste nakonfigurovali zá
 
 Vyberte **Ověřit**.
 
-Aktivuje se tlačítko **Přidat název hostitele**. 
+Zobrazí se stránka **Přidat název hostitele**. 
 
 Ujistěte se, že **Typ záznamu názvu hostitele** je nastavený na **Záznam A (www.example.com)**.
 
@@ -218,19 +232,24 @@ Zobrazení nového názvu hostitele na stránce **Vlastní domény** aplikace m�
 
 ![Přidaný záznam A](./media/app-service-web-tutorial-custom-domain/a-record-added.png)
 
+> [!NOTE]
+> Pokud chcete přidat vazbu SSL, přečtěte si téma [Vytvoření vazby existujícího vlastního certifikátu SSL k Azure Web Apps](app-service-web-tutorial-custom-ssl.md).
+
 Pokud jste nějaký krok vynechali nebo jste někde udělali překlep, ve spodní části stránky se zobrazí chyba ověření.
 
 ![Chyba ověření](./media/app-service-web-tutorial-custom-domain/verification-error.png)
 
 <a name="wildcard"></a>
 
-## <a name="map-a-wildcard-domain"></a>Mapování zástupné domény
+### <a name="map-a-wildcard-domain"></a>Mapování zástupné domény
 
 V tomto příkladu namapujete na aplikaci App Service [zástupný název DNS](https://en.wikipedia.org/wiki/Wildcard_DNS_record) (například `*.contoso.com`) přidáním záznamu CNAME. 
 
-[!INCLUDE [Access DNS records with domain provider](../../includes/app-service-web-access-dns-records.md)]
+#### <a name="access-dns-records-with-domain-provider"></a>Přístup k záznamům DNS u poskytovatele domény
 
-### <a name="create-the-cname-record"></a>Vytvoření záznamu CNAME
+[!INCLUDE [Access DNS records with domain provider](../../includes/app-service-web-access-dns-records-no-h.md)]
+
+#### <a name="create-the-cname-record"></a>Vytvoření záznamu CNAME
 
 Přidejte záznam CNAME mapující zástupný název na výchozí název hostitele aplikace (`<app_name>.azurewebsites.net`).
 
@@ -240,7 +259,7 @@ Po přidání záznamu CNAME bude stránka záznamů DNS vypadat jako v následu
 
 ![Přechod do aplikace Azure na portálu](./media/app-service-web-tutorial-custom-domain/cname-record-wildcard.png)
 
-### <a name="enable-the-cname-record-mapping-in-the-app"></a>Povolení mapování záznamu CNAME v aplikaci
+#### <a name="enable-the-cname-record-mapping-in-the-app"></a>Povolení mapování záznamu CNAME v aplikaci
 
 Teď můžete do aplikace přidat jakoukoli subdoménu, která odpovídá zástupnému názvu (například `sub1.contoso.com` a `sub2.contoso.com` odpovídají `*.contoso.com`). 
 
@@ -268,13 +287,16 @@ Znovu vyberte ikonu **+** a přidejte další název hostitele, který odpovíd�
 
 ![Přidaný záznam CNAME](./media/app-service-web-tutorial-custom-domain/cname-record-added-wildcard2.png)
 
+> [!NOTE]
+> Pokud chcete přidat vazbu SSL, přečtěte si téma [Vytvoření vazby existujícího vlastního certifikátu SSL k Azure Web Apps](app-service-web-tutorial-custom-ssl.md).
+
 ## <a name="test-in-browser"></a>Test v prohlížeči
 
 Přejděte na názvy DNS, které jste předtím nakonfigurovali (například `contoso.com`, `www.contoso.com`, `sub1.contoso.com` a `sub2.contoso.com`).
 
 ![Přechod do aplikace Azure na portálu](./media/app-service-web-tutorial-custom-domain/app-with-custom-dns.png)
 
-## <a name="resolve-404-error-web-site-not-found"></a>Řešení chyby 404: Web se nenašel
+## <a name="resolve-404-not-found"></a>Řešení chyby 404 – Nenalezeno
 
 Pokud se při přechodu na adresu URL vaší vlastní domény zobrazí chyba HTTP 404 (Nenalezeno), pomocí webu <a href="https://www.whatsmydns.net/" target="_blank">WhatsmyDNS.net</a> ověřte, že se doména překládá na IP adresu vaší aplikace. Pokud ne, může to být způsobené jedním z následujících důvodů:
 
@@ -283,7 +305,7 @@ Pokud se při přechodu na adresu URL vaší vlastní domény zobrazí chyba HTT
 
 <a name="virtualdir"></a>
 
-## <a name="direct-default-url-to-a-custom-directory"></a>Směrování výchozí adresy URL do vlastního adresáře
+## <a name="redirect-to-a-custom-directory"></a>Přesměrování do vlastního adresáře
 
 Ve výchozím nastavení služba App Service směruje webové požadavky do kořenového adresáře kódu vaší aplikace. Některá webová rozhraní však nezačínají v kořenovém adresáři. Například [Laravel](https://laravel.com/) začíná v podadresáři `public`. Když budeme pokračovat v příkladu DNS `contoso.com`, taková aplikace by byla přístupná na adrese `http://contoso.com/public`. Místo toho byste však měli chtít směrovat `http://contoso.com` do adresáře `public`. Tento krok nezahrnuje překlad DNS, ale přizpůsobení virtuálního adresáře.
 
@@ -333,6 +355,7 @@ V tomto kurzu jste se naučili:
 > * Mapovat subdoménu pomocí záznamu CNAME
 > * Mapovat kořenovou doménu pomocí záznamu A
 > * Mapovat zástupnou doménu pomocí záznamu CNAME
+> * Přesměrovat výchozí adresu URL do vlastního adresáře
 > * Automatizovat mapování domén pomocí skriptů
 
 V dalším kurzu se dozvíte, jak vytvořit vazbu vlastního certifikátu SSL k webové aplikaci.

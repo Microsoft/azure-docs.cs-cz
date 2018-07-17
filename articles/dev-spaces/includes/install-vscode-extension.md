@@ -10,20 +10,17 @@ ms.author: ghogen
 ms.date: 05/11/2018
 ms.topic: include
 manager: douge
-ms.openlocfilehash: 029d4012e63c10d1b8741df5a86f7b5d06dfd942
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 894da1d8d74307d08fb036d5e10660339d6ce7e0
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34665702"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37933166"
 ---
 ## <a name="get-kubernetes-debugging-for-vs-code"></a>Získání ladění Kubernetes pro VS Code
 Výkonné funkce, jako je ladění Kubernetes, jsou prostřednictvím editoru VS Code k dispozici vývojářům .NET Core a Node.js.
 
 1. Pokud [VS Code](https://code.visualstudio.com/Download) nemáte, nainstalujte si ho.
-1. Stáhněte si [rozšíření VS Azure Dev Spaces](https://aka.ms/get-azds-code).
-1. Rozšíření nainstalujte: 
+1. Stáhněte a nainstalujte [rozšíření VS Azure Dev Spaces](hhttps://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds). Klikněte na Nainstalovat jednou na stránce rozšíření na webu Marketplace a pak znovu ve VS Code. 
 
-    ```cmd
-    code --install-extension path-to-downloaded-extension/azds-0.1.1.vsix
-    ```
+

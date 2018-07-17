@@ -1,11 +1,11 @@
-Propustnost, úložiště, dostupnosti, latence a konzistence prostředků ve vašem účtu jsou monitorovány na portálu Azure. Podívejme se rychlé na tyto metriky. 
+Propustnost, úložiště, dostupnost, latence a konzistence prostředků ve vašem účtu se monitorují na webu Azure Portal. Pojďme se na tyto metriky v rychlosti podívat. 
 
-1. Klikněte na tlačítko **metriky** v navigační nabídce.
+1. V navigační nabídce klikněte na **Metriky**.
 
-   ![Metriky na portálu Azure](./media/cosmos-db-tutorial-review-slas/metrics.png)
+   ![Metriky na webu Azure Portal](./media/cosmos-db-tutorial-review-slas/metrics.png)
 
-2. Klikněte na tlačítko prostřednictvím karty, takže jste vědět metriky, které poskytuje Azure Cosmos DB. 
+2. Klikněte postupně na všechny karty, abyste zjistili, jaké metriky služba Azure Cosmos DB nabízí. 
 
-    Každý graf, který je přidružen [Azure Cosmos DB smlouvy o úrovni služeb (SLA)](https://azure.microsoft.com/support/legal/sla/cosmos-db/) poskytuje řádek, který ukazuje, pokud byla porušena kterákoli z smluv SLA. Díky Azure Cosmos DB je monitorování vaší transparentní s této sady metriky SLA. 
+    Každý graf přidružený ke [smlouvám SLA pro Azure Cosmos DB](https://azure.microsoft.com/support/legal/sla/cosmos-db/) obsahuje řádek, který ukazuje, jestli nedošlo k porušení některé ze smluv SLA. Azure Cosmos DB prostřednictvím této sady metrik zajišťuje transparentní monitorování vašich smluv SLA. 
 
    ![Sada metrik Azure Cosmos DB](./media/cosmos-db-tutorial-review-slas/metrics-suite.png)

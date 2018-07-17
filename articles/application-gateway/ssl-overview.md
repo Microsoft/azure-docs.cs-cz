@@ -15,12 +15,12 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 07/19/2017
 ms.author: amsriva
-ms.openlocfilehash: b1b6cec8cfeee2253ccd62f764ce4da4cb1b459d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 1c94bc7fb97902c9d44392d2eb9bf4ee29f72af6
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32160524"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37949743"
 ---
 # <a name="overview-of-end-to-end-ssl-with-application-gateway"></a>Přehled koncového šifrování protokolu SSL pomocí služby Application Gateway
 
@@ -42,7 +42,7 @@ Služba Application Gateway komunikuje pouze se známými back-endovými instanc
 
 ## <a name="next-steps"></a>Další kroky
 
-Po získání informací o koncovém šifrování protokolu SSL přejděte k tématu [Povolení koncového šifrování protokolu SSL v aplikační bráně](tutorial-ssl-powershell.md) a vytvořte aplikační bránu s koncovým šifrováním protokolu SSL.
+Po získání informací o koncovém šifrování protokolu SSL přejděte k tématu [Konfigurace aplikační brány s ukončením protokolu SSL pomocí webu Azure Portal](create-ssl-portal.md) a vytvořte aplikační bránu s koncovým šifrováním protokolu SSL.
 
 <!--Image references-->
 

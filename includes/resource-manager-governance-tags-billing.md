@@ -9,20 +9,20 @@ ms.date: 02/19/2018
 ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: 7843410043b726526380b2a916d96f414a2decda
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2018
-ms.locfileid: "29532321"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38740543"
 ---
-Po použití značek k prostředkům, můžete zobrazit náklady na prostředky s těmito značkami. Pro analýzu náklady zobrazíte nejnovější využití, se nemusí zobrazovat náklady na ještě chvíli trvá. Když náklady jsou k dispozici, můžete zobrazit náklady pro prostředky ve skupinách prostředků ve vašem předplatném. Uživatelé musí mít [přístupu na úrovni předplatného na fakturační informace](../articles/billing/billing-manage-access.md) zobrazení nákladů.
+Po označení prostředků můžete zobrazit náklady na prostředky s příslušnými značkami. Zobrazení nejnovějšího využití v analýze nákladů nějakou dobu trvá, proto náklady možná ještě nevidíte. Jakmile budou náklady k dispozici, můžete zobrazit náklady na prostředky napříč skupinami prostředků ve vašem předplatném. K zobrazení nákladů musí mít uživatelé [přístup k fakturačním údajům na úrovni předplatného](../articles/billing/billing-manage-access.md).
 
-Chcete-li zobrazit náklady podle značky na portálu, vyberte své předplatné a vyberte **analýza nákladů**.
+Pokud chcete na portálu zobrazit náklady podle značky, vyberte své předplatné a pak **Analýza nákladů**.
 
 ![Analýza nákladů](./media/resource-manager-governance-tags-billing/select-cost-analysis.png)
 
-Potom filtrovat podle hodnoty značky a vyberte **použít**.
+Pak vyberte filtr hodnoty značky a vyberte **Použít**.
 
-![Náklady na zobrazení značky](./media/resource-manager-governance-tags-billing/view-costs-by-tag.png)
+![Zobrazení nákladů podle značky](./media/resource-manager-governance-tags-billing/view-costs-by-tag.png)
 
-Můžete také [rozhraní API Správce Azure fakturace](../articles/billing/billing-usage-rate-card-overview.md) prostřednictvím kódu programu zobrazíte náklady.
+Můžete použít také [rozhraní API pro fakturaci Azure](../articles/billing/billing-usage-rate-card-overview.md) a zobrazit náklady prostřednictvím kódu programu.

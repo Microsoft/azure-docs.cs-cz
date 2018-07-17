@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 11/15/2017
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 379f1a369bd94f22736abfb766ba239c3f93acee
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 13e757d3d6d35227667e23eb6000eace56a0674e
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34798089"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38582423"
 ---
 # <a name="azure-cosmosdb-develop-with-the-cassandra-api-in-java"></a>Azure Cosmos DB: Vývoj v Javě s využitím rozhraní Cassandra API
 
@@ -228,7 +228,7 @@ V tomto rychlém startu jste se seznámili s následujícími postupy:
 > * Dotazování dat
 > * Ověření podmínek SLA
 
-Teď můžete do kolekce Azure Cosmos DB importovat další data. 
+Teď můžete do kontejneru Azure Cosmos DB importovat další data. 
 
 > [!div class="nextstepaction"]
 > [Import dat Cassandra do služby Azure Cosmos DB](cassandra-import-data.md)

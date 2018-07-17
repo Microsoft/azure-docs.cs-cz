@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: c1277484d8f8b3073ac15534110b01903c265318
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: bbe60fb6a6371551f588d5472ac304148a4a1aa7
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34795879"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38453412"
 ---
 # <a name="azure-cosmos-db-build-a-net-framework-or-core-application-using-the-graph-api"></a>Azure Cosmos DB: Vytvoření aplikace v .NET Framework nebo .NET Core s využitím rozhraní Graph API
 
@@ -86,7 +86,7 @@ Všechny následující fragmenty kódu pocházejí ze souboru Program.cs.
     private static int port = 443;
     private static string authKey = "your-authentication-key";
     private static string database = "your-database";
-    private static string collection = "your-collection-or-graph";
+    private static string collection = "your-graph-container";
     ```
 
 * Příkazy Gremlin, které se mají spustit, jsou uvedené ve slovníku (řádek 26):
@@ -175,7 +175,7 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
 
     `private static string database = "your-database";`
 
-5. Podobně s použitím informací o kolekci vytvořené výše vložte název kolekce (což je zároveň název grafu) do proměnné `collection` na řádku 23. 
+5. Podobně s použitím informací o kontejneru vytvořeném výše vložte název kolekce (což je zároveň název grafu) do proměnné `collection` na řádku 23. 
 
     `private static string collection = "your-collection-or-graph";`
 
@@ -193,7 +193,7 @@ Spusťte aplikaci stisknutím CTRL+F5. Aplikace vypíše v konzole příkazy i v
 
 Teď se můžete vrátit do Průzkumníku dat na webu Azure Portal, procházet nová data grafu a zadávat na ně dotazy.
 
-1. V Průzkumníku dat se nová databáze zobrazí v podokně Graphs (Grafy). Rozbalte uzly databáze a kolekce a pak klikněte na **Graph**.
+1. V Průzkumníku dat se nová databáze zobrazí v podokně Graphs (Grafy). Rozbalte uzly databáze a kontejneru a pak klikněte na **Graph**.
 
 2. Kliknutím na tlačítko **Použít filtr** použijte výchozí dotaz k zobrazení všech vrcholů v grafu. V podokně Graphs (Grafy) se zobrazí data vygenerovaná ukázkovou aplikací.
 

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
 manager: kfile
-ms.openlocfilehash: 1059a401382820b4e5d3fd4b010d400bb6113926
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 830b3d4226440a68c7de62170d2ffc28082315c2
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37031426"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37902900"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-portal"></a>Rychlý start: Vytvoření úlohy Stream Analytics pomocí webu Azure Portal
 
@@ -48,7 +48,7 @@ Než začnete definovat úlohu Stream Analytics, připravte si data nakonfigurov
 
 4. Na stránce **Všechny prostředky** vyhledejte účet úložiště vytvořený v předchozím kroku. Otevřete stránku **Přehled** a potom dlaždici **Objekty blob**.  
 
-5. Na stránce **Blob Service** vyberte **Kontejner**, zadejte jeho **název** (například *container1*), u možnosti **Úroveň veřejného přístupu** nastavte Blob (anonymní přístup pro čtení jenom k objektům blob) a zvolte **OK**.  
+5. Na stránce **Blob service** vyberte **Kontejner**, zadejte jeho **Název** (například *container1*), u možnosti **Úroveň veřejného přístupu** nastavte Privátní (bez anonymního přístupu) a vyberte **OK**.  
 
    ![Vytvoření kontejneru](./media/stream-analytics-quick-create-portal/create-a-storage-container.png)
 

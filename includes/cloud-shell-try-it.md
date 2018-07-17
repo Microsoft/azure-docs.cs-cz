@@ -1,12 +1,12 @@
 
-## <a name="open-azure-cloud-shell"></a>Prostředí Shell otevřete cloudu Azure
+## <a name="open-azure-cloud-shell"></a>Otevření služby Azure Cloud Shell
 
-Prostředí Azure Cloud je zdarma, interaktivní prostředí, který můžete použít ke spuštění kroky v tomto článku. Běžné nástroje pro Azure jsou předinstalována a nakonfigurovat v prostředí cloudu pro použití s vaším účtem. Právě vyberte **kopie** tlačítko zkopírujte kód, vložte jej v prostředí cloudu a stiskněte klávesu Enter ji spustit. Otevřete prostředí cloudu několika způsoby:
+Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Ve službě Cloud Shell jsou předinstalované obvyklé nástroje Azure a jsou nakonfigurované pro použití s vaším účtem. Stačí vybrat tlačítko **Kopírovat** a zkopírovat kód, vložit ho do služby Cloud Shell a pak ho spustit stisknutím klávesy Enter. Cloud Shell můžete otevřít několika způsoby:
 
 |  |   |
 |-----------------------------------------------|---|
-| Vyberte **zkuste ho** v pravém horním rohu bloku kódu. | ![Cloud Shell v tomto článku](./media/cloud-shell-try-it/cli-try-it.png) |
+| Zvolte **Vyzkoušet** v pravém horním rohu bloku kódu. | ![Cloud Shell v tomto článku](./media/cloud-shell-try-it/cli-try-it.png) |
 | Otevřete Cloud Shell ve vašem prohlížeči. | [![https://shell.azure.com/bash](./media/cloud-shell-try-it/launchcloudshell.png)](https://shell.azure.com/bash) |
-| Vyberte **cloudové prostředí** tlačítko v nabídce v pravém horním rohu [portál Azure](https://portal.azure.com). |    ![Cloud Shell na portálu](./media/cloud-shell-try-it/cloud-shell-menu.png) |
+| Zvolte **Cloud Shell** v nabídce v pravém horním rohu webu [Azure Portal](https://portal.azure.com). |    ![Cloud Shell na portálu](./media/cloud-shell-try-it/cloud-shell-menu.png) |
 |  |  |
 
