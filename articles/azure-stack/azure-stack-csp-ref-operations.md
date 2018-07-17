@@ -1,6 +1,6 @@
 ---
-title: Registrovat klienty pro sledování v Azure zásobníku využití | Microsoft Docs
-description: Podrobnosti o operacích, které používají ke správě klienta registrace a jak je sledovat využití klienta v zásobníku Azure.
+title: Zaregistrovat klienty pro využití sledování ve službě Azure Stack | Dokumentace Microsoftu
+description: Podrobnosti o operacích, které používají ke správě tenanta registrace a jak se sleduje využití tenanta ve službě Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,44 +11,44 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2018
-ms.author: mabrigg
+ms.date: 06/08/2018
+ms.author: brenduns
 ms.reviewer: alfredo
-ms.openlocfilehash: ef7ca59647a1f8c15d85c809609060a5945bedde
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 18b34af8dc383cfa86017162ec48782f156156bc
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32159107"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39093093"
 ---
-# <a name="manage-tenant-registration-in-azure-stack"></a>Spravovat registraci klientů v Azure zásobníku
+# <a name="manage-tenant-registration-in-azure-stack"></a>Spravovat registraci klientů ve službě Azure Stack
 
-*Platí pro: Azure zásobníku integrované systémy*
+*Platí pro: integrované systémy Azure Stack*
 
-Tento článek obsahuje informace o operacích, které můžete použít ke správě vašeho klienta registrace, a jak je sledovat využití klienta. Můžete najít podrobnosti o tom, jak přidat, seznamu nebo odebrat mapování klienta. Prostředí PowerShell nebo koncové body fakturace rozhraní API můžete použít ke správě vašeho používání sledování.
+Tento článek obsahuje podrobnosti o operacích, které můžete použít ke správě své registrace tenanta a jak sledovat využití tenanta. Můžete najít podrobnosti o tom, jak přidat, seznamu nebo odebrat mapování tenanta. Ke správě využití sledování můžete použít PowerShell nebo koncové body rozhraní API pro fakturaci.
 
-## <a name="add-tenant-to-registration"></a>Přidat klienta k registraci
+## <a name="add-tenant-to-registration"></a>Přidání tenanta k registraci
 
-Tuto operaci použít, pokud chcete přidat nového klienta registrace, takže je jejich využití v části předplatné Azure spojené s jejich klienta Azure Active Directory (Azure AD).
+Pokud chcete přidat nového tenanta k registraci, aby jejich využití je nahlášeno za předplatné Azure spojené s jejich tenanta Azure Active Directory (Azure AD), pomocí této operace.
 
-Můžete také použít tuto operaci Pokud chcete změnit předplatné spojené s klienta, můžete volat PUT/New-AzureRMResource znovu. Původní mapování se přepíše.
+Můžete také pomocí této operace, pokud chcete změnit předplatné spojené s tenantem, můžete volat PUT/New-AzureRMResource znovu. Staré mapování se přepíšou.
 
-Všimněte si, že může být pouze jedno předplatné přidružený klienta. Pokud se pokusíte přidat do existujícího klienta druhého předplatného, první předplatné je přepsání. 
+Všimněte si, že pouze jedno předplatné Azure může být přidružené ke klientovi. Pokud se pokusíte o přidání druhého předplatného do existujícího tenanta, je přepsání první předplatné. 
 
 
 | Parametr                  | Popis |
 |---                         | --- |
-| registrationSubscriptionID | Předplatné Azure, která byla použita pro počáteční registrace. |
-| customerSubscriptionID     | Předplatné Azure (ne Azure Stack) patřící do zákazníka k registraci. Musí být vytvořený v nabídku poskytovatele cloudové služby (CSP). V praxi to znamená přes Partnerské centrum. Pokud zákazník má více než jednoho klienta, musí být vytvořeny toto předplatné v klientovi, který se použije k přihlášení do Azure zásobníku. |
-| Skupina prostředků              | Skupina prostředků v Azure, ve kterém je uložený registrace. |
-| registrationName           | Název registrace do Azure zásobníku. Je objekt uložená v Azure. Název je obvykle v protokol CloudID-formuláře azurestack, kde je CloudID ID cloudu Azure zásobníku nasazení. |
+| registrationSubscriptionID | Předplatné Azure použité pro počáteční registraci. |
+| customerSubscriptionID     | Předplatné Azure (ne Azure Stack) patřící do zákazníků k registraci. Musí být vytvořená v nabídce Cloud Service Provider (CSP). V praxi to znamená prostřednictvím partnerského centra. Pokud zákazník má více než jednoho tenanta, musí se vytvořit toto předplatné v tenantovi, který se použije k přihlášení do služby Azure Stack. |
+| Skupina prostředků              | Skupina prostředků v Azure, ve kterém je uložené registrace. |
+| registrationName           | Název registrace služby Azure Stack. Jde o objekt uložená v Azure. Název se obvykle formulář azurestack-CloudID, kde je CloudID ID cloudu nasazení Azure Stack. |
 
 > [!Note]  
-> Klienti musí být registrované s každou zásobník Azure používají. Pokud klient používá více než jeden zásobník Azure, budete muset aktualizovat počáteční registrace každého nasazení s předplatným klienta.
+> Klienti musejí zaregistrovat u každé služby Azure Stack využívají. Pokud klient používá více než jeden Azure Stack, musíte aktualizovat počáteční registrace každého nasazení předplatného tenanta.
 
 ### <a name="powershell"></a>PowerShell
 
-Pomocí rutiny New-AzureRmResource aktualizovat zdroj registrace. Přihlaste se k Azure (`Add-AzureRmAccount`) pomocí účtu, který jste použili pro počáteční registraci. Tady je příklad toho, jak přidat klienta:
+Pomocí rutiny New-AzureRmResource můžete provést upgrade prostředku registrace. Přihlaste se k Azure (`Add-AzureRmAccount`) pomocí účtu, který jste použili při počáteční registraci. Tady je příklad toho, jak přidat tenanta:
 
 ```powershell
   New-AzureRmResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}" -ApiVersion 2017-06-01 -Properties
@@ -56,30 +56,30 @@ Pomocí rutiny New-AzureRmResource aktualizovat zdroj registrace. Přihlaste se 
 
 ### <a name="api-call"></a>Volání rozhraní API
 
-**Operace**: PUT  
+**Operace**: Vložit  
 **RequestURI**: `subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}  /providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/  
 {customerSubscriptionId}?api-version=2017-06-01 HTTP/1.1`  
-**Odpověď**: 201 vytvořen  
-**Text odpovědi**: prázdný  
+**Odpověď**: 201 vytvořili  
+**Text odpovědi**: prázdné  
 
-## <a name="list-all-registered-tenants"></a>Zobrazí seznam všech registrovaných klientů
+## <a name="list-all-registered-tenants"></a>Vypsat všechny registrované tenanty
 
-Získání seznamu všech klientů, které byly přidány na registraci.
+Získání seznamu všech tenantů, které byly přidány na registraci.
 
  > [!Note]  
- > Pokud byly zaregistrovány žádné klienty, neobdržíte odpověď.
+ > Pokud se nezaregistrovaly žádné klienty, neobdržíte žádné odpovědi.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr                  | Popis          |
 |---                         | ---                  |
-| registrationSubscriptionId | Předplatné Azure, která byla použita pro počáteční registrace.   |
-| Skupina prostředků              | Skupina prostředků v Azure, ve kterém je uložený registrace.    |
-| registrationName           | Název registrace do Azure zásobníku. Je objekt uložená v Azure. Název je obvykle ve formě **azurestack**-***CloudID***, kde ***CloudID*** je ID cloudu Azure zásobníku nasazení.   |
+| registrationSubscriptionId | Předplatné Azure použité pro počáteční registraci.   |
+| Skupina prostředků              | Skupina prostředků v Azure, ve kterém je uložené registrace.    |
+| registrationName           | Název registrace služby Azure Stack. Jde o objekt uložená v Azure. Název je obvykle ve formě **azurestack**-***CloudID***, kde ***CloudID*** je ID cloudu nasazení Azure Stack.   |
 
 ### <a name="powershell"></a>PowerShell
 
-Použijte rutinu Get-AzureRmResovurce seznam všech registrovaných klientů. Přihlaste se k Azure (`Add-AzureRmAccount`) pomocí účtu, který jste použili pro počáteční registraci. Tady je příklad toho, jak přidat klienta:
+Použijte rutinu Get-AzureRmResovurce vypsat všechny registrované tenanty. Přihlaste se k Azure (`Add-AzureRmAccount`) pomocí účtu, který jste použili při počáteční registraci. Tady je příklad toho, jak přidat tenanta:
 
 ```powershell
   Get-AzureRmResovurce -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions" -ApiVersion 2017-06-01
@@ -87,7 +87,7 @@ Použijte rutinu Get-AzureRmResovurce seznam všech registrovaných klientů. P�
 
 ### <a name="api-call"></a>Volání rozhraní API
 
-Můžete získat seznam všech mapování klienta pomocí operace GET
+Můžete získat seznam všech mapování tenanta pomocí operace GET
 
 **Operace**: získání  
 **RequestURI**: `subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}  
@@ -115,16 +115,16 @@ api-version=2017-06-01 HTTP/1.1`
 }
 ```
 
-## <a name="remove-a-tenant-mapping"></a>Odeberte klienta mapování
+## <a name="remove-a-tenant-mapping"></a>Odebrat mapování tenanta
 
-Můžete odebrat klienta, který byl přidán na registraci. Pokud tento klient stále používá prostředky v Azure zásobníku, jejich využití je zodpovědné za předplatné použité v počáteční registraci Azure zásobníku.
+Odstraněním tenanta, který byl přidán do registrace. Pokud tohoto tenanta pořád používá prostředky ve službě Azure Stack, jejich použití se účtuje na předplatné použité v počáteční registrace Azure Stack.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr                  | Popis          |
 |---                         | ---                  |
-| registrationSubscriptionId | ID odběru pro registraci.   |
-| Skupina prostředků              | Skupinu prostředků pro registraci.   |
+| registrationSubscriptionId | ID předplatného pro registraci.   |
+| Skupina prostředků              | Skupina prostředků pro registraci.   |
 | registrationName           | Název registrace.  |
 | customerSubscriptionId     | ID předplatného zákazníka.  |
 
@@ -136,15 +136,15 @@ Můžete odebrat klienta, který byl přidán na registraci. Pokud tento klient 
 
 ### <a name="api-call"></a>Volání rozhraní API
 
-Můžete odebrat mapování klienta pomocí operace odstranění.
+Můžete odebrat mapování tenanta pomocí operace odstranění.
 
-**Operace**: odstranění  
+**Operace**: odstranit  
 **RequestURI**: `subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}  
 /providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/  
 {customerSubscriptionId}?api-version=2017-06-01 HTTP/1.1`  
-**Odpověď**: 204 žádný obsah  
-**Text odpovědi**: prázdný
+**Odpověď**: 204 žádný obsah.  
+**Text odpovědi**: prázdné
 
 ## <a name="next-steps"></a>Další postup
 
- - Další informace o tom, jak načíst informace o využití prostředků z zásobník Azure najdete v tématu [využití a cenách služby Azure zásobníku](/azure-stack-billing-and-chargeback.md).
+ - Další informace o tom, jak načíst informace o využití prostředků ze služby Azure Stack, najdete v článku [využití a fakturace ve službě Azure Stack](/azure-stack-billing-and-chargeback.md).

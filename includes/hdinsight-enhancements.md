@@ -1,2 +1,2 @@
 > [!NOTE]
-> [Další informace o nadcházející vylepšení a možnosti](https://aka.ms/hdinsightnew).
+> [Další informace o chystaných vylepšeních a možnostech](https://aka.ms/hdinsightnew)
