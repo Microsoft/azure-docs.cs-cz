@@ -143,9 +143,9 @@
 ## Správa hesel
 ### [Přehled hesel](authentication/active-directory-passwords-overview.md)
 ### Dokumenty uživatele
-#### [Resetování nebo změna hesla](active-directory-passwords-update-your-own-password.md)
+#### [Resetování nebo změna hesla](user-help/active-directory-passwords-update-your-own-password.md)
 #### [Osvědčené postupy pro hesla](active-directory-secure-passwords.md)
-#### [Registrace samoobslužného resetování hesla](active-directory-passwords-reset-register.md)
+#### [Registrace samoobslužného resetování hesla](user-help/active-directory-passwords-reset-register.md)
 ### [Jak funguje SSPR](authentication/concept-sspr-howitworks.md)
 ### [Průvodce nasazením SSPR](authentication/howto-sspr-deployment.md)
 ### [SSPR a Windows 10](authentication/tutorial-sspr-windows.md)
@@ -174,8 +174,8 @@
 ### [Plánování služby Azure AD Join](active-directory-azureadjoin-deployment-aadjoindirect.md)
 ### [Nejčastější dotazy](device-management-faq.md)
 ### Úlohy
-#### [Nastavení zařízení s Windows 10 registrovaných v Azure AD](device-management-azuread-registered-devices-windows10-setup.md)
-#### [Nastavení zařízení připojených k Azure AD](device-management-azuread-joined-devices-setup.md)
+#### [Nastavení zařízení s Windows 10 registrovaných v Azure AD](user-help/device-management-azuread-registered-devices-windows10-setup.md)
+#### [Nastavení zařízení připojených k Azure AD](user-help/device-management-azuread-joined-devices-setup.md)
 #### [Nastavení hybridních zařízení připojených k Azure AD](device-management-hybrid-azuread-joined-devices-setup.md)
 #### [Nasazení na místě](active-directory-device-registration-on-premises-setup.md)
 #### [Připojení k Azure AD během prvního spuštění Windows 10](device-management-azuread-joined-devices-frx.md)
