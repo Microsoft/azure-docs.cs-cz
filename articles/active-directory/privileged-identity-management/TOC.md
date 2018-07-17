@@ -42,9 +42,9 @@
 ### [Zahájení kontroly přístupu](pim-resource-roles-start-access-review.md)
 ### [Dokončení kontroly přístupu](pim-resource-roles-complete-access-review.md)
 
-# Nejčastější dotazy
-## PIM pro role prostředků
-### [Typy přiřazení](pim-resource-roles-eligible-visibility.md)
+# Koncepty
+## [Typy přiřazení](pim-resource-roles-eligible-visibility.md)
+## [E-mailová oznámení](pim-email-notifications.md)
 
 # Referenční informace
 ## [Ukázky kódu](https://azure.microsoft.com/resources/samples/?service=active-directory)
