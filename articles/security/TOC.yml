@@ -164,6 +164,16 @@
           href: azure-operational-security-checklist.md
 - name: Zásady správného řízení a dodržování předpisů
   items:
+    - name: FedRAMP
+      items:
+        - name: Analýzy dat
+          href: ./blueprints/fedramp-analytics-overview.md
+        - name: Datový sklad
+          href: ./blueprints/fedramp-datawarehouse-overview.md
+        - name: Webová aplikace IaaS
+          href: ./blueprints/fedramp-iaaswa-overview.md
+        - name: Webová aplikace PaaS
+          href: ./blueprints/fedramp-paaswa-overview.md
     - name: FFIEC
       items:
         - name: Analýzy dat
@@ -184,20 +194,10 @@
           href: ./blueprints/gdpr-iaaswa-overview.md
         - name: Webová aplikace PaaS
           href: ./blueprints/gdpr-paaswa-overview.md
-    - name: FedRAMP
+    - name: HIPAA/HITRUST
       items:
-        - name: Analýzy dat
-          href: ./blueprints/fedramp-analytics-overview.md
-        - name: Datový sklad
-          href: ./blueprints/fedramp-datawarehouse-overview.md
-        - name: Webová aplikace IaaS
-          href: ./blueprints/fedramp-iaaswa-overview.md
-        - name: Webová aplikace PaaS
-          href: ./blueprints/fedramp-paaswa-overview.md
-    - name: TIC
-      items:
-        - name: Trusted Internet Connection a Azure
-          href: ./compliance/compliance-tic.md
+        - name: Stavová data a umělá inteligence
+          href: ./blueprints/azure-health.md
     - name: PCI DSS
       items:
         - name: Analýzy dat
@@ -208,6 +208,10 @@
           href: ./blueprints/pcidss-iaaswa-overview.md
         - name: Webová aplikace PaaS
           href: ./blueprints/pcidss-paaswa-overview.md
+    - name: TIC
+      items:
+        - name: Trusted Internet Connection a Azure
+          href: ./compliance/compliance-tic.md
     - name: UK NHS
       items:
         - name: Analýzy dat
@@ -222,8 +226,6 @@
       items:
         - name: Webová aplikace IaaS
           href: ./blueprints/ukofficial-iaaswa-overview.md
-    - name: Data o stavu HIPAA/HITRUST a AI
-      href: ./blueprints/azure-health.md
 - name: Dokumenty white paper
   href: security-white-papers.md
 - name: Služby zabezpečení Azure

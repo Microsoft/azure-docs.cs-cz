@@ -8,12 +8,8 @@
 ### Jak publikovat v Marketplace  
 #### [Určení typu výpisu pro vaše řešení](./determine-your-listing-type.md)  
 #### [Jak se stát vydavatelem v Marketplace](./become-publisher.md)  
-#### [Požadavky podle typu výpisu](./listing-type-requirements.md) 
-#### Kontrolní seznamy obchodních ověření  
-##### [Pokyny](./guidelines.md)  
-##### [Registrace na webu Dev Center](./register-dev-center.md)  
-##### [Přidání bankovních a daňových údajů](./add-bank-tax-info.md)  
-##### [Povolení zkušební verze s využitím Azure AD](./enable-trial-using-azure-ad.md)  
+##### [Vytvoření účtu Microsoft](./guidelines.md)
+##### [Registrace na webu Dev Center](./register-dev-center.md) 
 ##### [Možnosti fakturace pro Azure Marketplace](./billing-options-azure-marketplace.md)  
 
 ### Průvodce publikováním podle typu nabídky 
@@ -24,12 +20,21 @@
 #### [Containers](./marketplace-containers.md)
 #### [Konzultační služba](./consulting-services.md)  
 #### [Aplikace AppSource](./appsource-offer-publishing-guide.md)
+#### [Povolení zkušebního prostředí na Marketplace s využitím Azure Active Directory](./enable-trial-using-azure-ad.md)
 
 ### [Rozvoj vašeho podnikání prostřednictvím marketplace](./grow-your-business-with-azure-marketplace.md)  
 #### [Upřednostňovaná řešení](./preferred-solutions.md) 
 
 ### Podpora  
 #### [Podpora pro Azure Marketplace a AppSource](./support-azure-marketplace.md)  
+
+### Průvodci publikováním  
+#### [Konzultační služby pro Azure Marketplace](consulting-services.md)  
+#### [Technický průvodce publikováním aplikací SaaS na Azure Marketplace](marketplace-saas-applications-technical-publishing-guide.md) 
+#### [Povolení zkušební verze na Marketplace s využitím Azure Active Directory](./enable-trial-using-azure-ad.md)  
+
+### [Rozvoj vašeho podnikání prostřednictvím marketplace](./grow-your-business-with-azure-marketplace.md)  
+#### [Upřednostňovaná řešení](./preferred-solutions.md) 
 
 ## [Portál Cloud Partner](./cloud-partner-portal/cloud-partner-portal-what-is-the-cloud-partner-portal.md)  
 

@@ -402,6 +402,8 @@
           href: sql-database-cloud-migrate.md
         - name: Migrace do MI
           href: sql-database-managed-instance-migrate.md
+        - name: Migrace certifikace TDE do Managed Instance
+          href: sql-database-managed-instance-migrate-tde-certificate.md
         - name: Správa SQL Database po migraci
           href: sql-database-manage-after-migration.md
     - name: Načtení a přesun dat

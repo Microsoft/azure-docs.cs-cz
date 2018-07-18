@@ -10,6 +10,8 @@
   items:
     - name: Nasazení řešení vzdáleného monitorování
       href: quickstart-remote-monitoring-deploy.md
+    - name: Nasazení řešení propojené továrny
+      href: quickstart-connected-factory-deploy.md
     - name: Nasazení řešení prediktivní údržby
       href: quickstart-predictive-maintenance-deploy.md
     - name: Nasazení řešení simulace zařízení
@@ -37,7 +39,7 @@
           href: iot-accelerators-remote-monitoring-device-behavior.md
     - name: Prediktivní údržba
       href: iot-accelerators-predictive-walkthrough.md
-    - name: Připojená továrna
+    - name: Propojená továrna
       href: iot-accelerators-connected-factory-features.md
       items:
         - name: Architektura
@@ -139,10 +141,10 @@
       items:
         - name: Nasazení akcelerátoru řešení
           href: iot-accelerators-predictive-overview.md
-    - name: Připojená továrna
+    - name: Propojená továrna
       items:
-        - name: Nasazení akcelerátoru řešení
-          href: iot-accelerators-connected-factory-overview.md
+        - name: Použití řídicího panelu
+          href: iot-accelerators-connected-factory-dashboard.md
         - name: Nasazení brány
           href: iot-accelerators-connected-factory-gateway-deployment.md
         - name: Použití vydavatele OPC

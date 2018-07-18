@@ -20,6 +20,8 @@
       href: stream-analytics-with-azure-functions.md
     - name: 3. Spuštění UDF JavaScriptu
       href: stream-analytics-javascript-user-defined-functions.md
+    - name: 4. Nasazení s využitím CI/CD ve VSTS
+      href: stream-analytics-tools-visual-studio-cicd-vsts.md
 - name: Ukázky
   items:
     - name: Ukázky kódů

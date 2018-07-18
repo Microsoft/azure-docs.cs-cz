@@ -1,0 +1,63 @@
+- name: Dokumentace ke službě Service Fabric Mesh
+  href: index.yml
+- name: Přehled
+  expanded: true
+  items:
+    - name: Informace o službě Service Fabric Mesh
+      href: service-fabric-mesh-overview.md
+- name: Šablony Rychlý start
+  items:
+    - name: Nasazení aplikace Hello World
+      href: service-fabric-mesh-quickstart-deploy-container.md
+    - name: Vytvoření a nasazení webové aplikace
+      href: service-fabric-mesh-quickstart-dotnet-core.md
+- name: Kurzy
+  items:
+    - name: Vytvoření a nasazení webové aplikace s více službami
+      items:
+        - name: 1. Sestavení aplikace ASP.NET Core
+          href: service-fabric-mesh-tutorial-create-dotnetcore.md
+        - name: 2. Ladění aplikace
+          href: service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md
+        - name: 3. Nasazení aplikace
+          href: service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md
+- name: Koncepty
+  items:
+    - name: Terminologie
+      href: service-fabric-mesh-terminology.md
+    - name: Prostředky služby Service Fabric
+      href: service-fabric-mesh-service-fabric-resources.md
+    - name: Monitorování a diagnostika
+      href: service-fabric-mesh-monitoring-diagnostics.md
+    - name: Ukládání stavu
+      href: service-fabric-mesh-storing-state.md
+- name: Návody
+  items:
+    - name: Nastavení vývojového prostředí
+      href: service-fabric-mesh-howto-setup-developer-environment-sdk.md
+    - name: Nastavení rozhraní příkazového řádku služby Service Fabric Mesh
+      href: service-fabric-mesh-howto-setup-cli.md
+    - name: Nasazení aplikace mikroslužeb v .NET Core
+      href: service-fabric-mesh-howto-deploy-app-template.md
+    - name: Nasazení aplikace z privátního registru
+      href: service-fabric-mesh-howto-deploy-app-private-registry.md
+    - name: Ukládání stavu s využitím svazku služby Soubory Azure
+      href: service-fabric-mesh-howto-deploy-app-azurefiles-volume.md
+    - name: Nezávislé škálování mikroslužeb v aplikaci
+      href: service-fabric-mesh-howto-app-scale-out.md
+- name: Zdroje a prostředky
+  items:
+    - name: Časté dotazy
+      href: service-fabric-mesh-faq.md
+    - name: Ukázkové aplikace
+      href: 'https://github.com/Azure-Samples/service-fabric-mesh'
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/?category=service-fabric-mesh'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/search?q=service-fabric-mesh'
+    - name: Videa
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=service-fabric-mesh'
+    - name: Aktualizace služeb
+      href: 'https://azure.microsoft.com/updates/?product=service-fabric-mesh'
+    - name: Regionální dostupnost
+      href: 'https://azure.microsoft.com/regions/services/'

@@ -11,12 +11,18 @@
   items:
     - name: Vyzkoušejte si službu Speech zdarma
       href: get-started.md
-    - name: 'Rozpoznávání řeči v C#'
-      href: quickstart-csharp-windows.md
+    - name: 'Rozpoznávání řeči v C# (.NET ve Windows)'
+      href: quickstart-csharp-dotnet-windows.md
+    - name: 'Rozpoznávání řeči v C# (.NET Core ve Windows)'
+      href: quickstart-csharp-dotnetcore-windows.md
+    - name: Rozpoznávání řeči v aplikaci pro UPW
+      href: quickstart-csharp-uwp.md
     - name: Rozpoznávání řeči v C++ pro Windows
       href: quickstart-cpp-windows.md
     - name: Rozpoznávání řeči v C++ pro Linux
       href: quickstart-cpp-linux.md
+    - name: Rozpoznávání řeči v Javě pro Android
+      href: quickstart-java-android.md
     - name: Začínáme se sadou Speech Devices SDK
       href: speech-devices-sdk-qsg.md
 - name: Návody

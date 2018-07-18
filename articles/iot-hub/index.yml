@@ -11,12 +11,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 04/26/2018
   ms.author: dobett
-  ms.openlocfilehash: 35f60b4fef75c3eebb9ac203aaded26d32773c53
-  ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+  ms.openlocfilehash: 9a173ee72f909c8f516f321592efde639e3a3a08
+  ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 07/05/2018
-  ms.locfileid: "37858343"
+  ms.lasthandoff: 07/17/2018
+  ms.locfileid: "39068242"
 abstract:
   description: Zjistěte, jak můžete IoT Hub použít k propojení, monitorování a řízení milionů assetů Internetu věcí. Kurzy, reference k rozhraní API, videa a další dokumentace pomáhají nasadit spolehlivou a obousměrnou komunikaci mezi zařízeními IoT a back-endem řešení.
 sections:
@@ -69,4 +69,4 @@ sections:
     - title: Jazyky
       html: <p><a href="/dotnet/api/microsoft.azure.devices">.NET (služba)</a></p><p><a href="/dotnet/api/microsoft.azure.devices.client">.NET (zařízení)</a></p><p><a href="https://azure.github.io/azure-iot-sdk-c/index.html">C (SDK pro zařízení)</a></p><p><a href="/java/api/com.microsoft.azure.sdk.iot.service">Java (služba)</a></p><p><a href="/java/api/com.microsoft.azure.sdk.iot.device">Java (zařízení)</a></p><p><a href="/javascript/api/azure-iothub/?view=azure-iot-typescript-latest">Node.js (služba)</a></p><p><a href="/javascript/api/azure-iot-device/?view=azure-iot-typescript-latest">Node.js (zařízení)</a></p>
     - title: REST
-      html: <p><a href="/rest/api/iothub/iothubresource">REST (poskytovatel prostředků)</a></p><p><a href="/rest/api/iothub/deviceapi">REST (identity zařízení)</a></p><p><a href="/rest/api/iothub/devicetwinapi">REST (dvojčata zařízení)</a></p><p><a href="/rest/api/iothub/httpruntime">REST (Device Messaging)</a></p><p><a href="/rest/api/iothub/jobapi">REST (úlohy)</a></p>
+      html: <p><a href="/rest/api/iothub/device">REST (zařízení)</a></p><p><a href="/rest/api/iothub/service">REST (služba)</a></p><p><a href="/rest/api/iothub/iothubresource">REST (prostředek IoT Hubu)</a></p><p><a href="/rest/api/iothub/certificates">REST (certifikáty)</a></p>

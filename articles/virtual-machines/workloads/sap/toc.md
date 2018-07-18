@@ -48,8 +48,19 @@
 ### SAP s několika SID
 #### [Windows se sdíleným diskem pro instanci (A)SCS](sap-ascs-ha-multi-sid-wsfc-shared-disk.md)
 #### [Windows se sdílenou složkou SOFS pro instanci (A)SCS](sap-ascs-ha-multi-sid-wsfc-file-share.md)
-## [Průvodce nasazením](deployment-guide.md)
-## [Průvodce nasazením DBMS](dbms-guide.md)
+## [Průvodce nasazením SAP NetWeaveru](deployment-guide.md)
+## Průvodci nasazením DBMS pro úlohy SAP
+### [Nasazení DBMS v obecných počítačích Azure Virtual Machines pro úlohy SAP](dbms_guide_general.md)
+### [Nasazení DBMS v počítačích Azure Virtual Machines s SQL Serverem pro úlohy SAP](dbms_guide_sqlserver.md)
+### [Nasazení DBMS v počítačích Azure Virtual Machines s Oraclem pro úlohy SAP](dbms_guide_oracle.md)
+### [Nasazení DBMS v počítačích Azure Virtual Machines s IBM DB2 pro úlohy SAP](dbms_guide_ibm.md)
+### [Nasazení DBMS v počítačích Azure Virtual Machines se SAP ASE pro úlohy SAP](dbms_guide_sapase.md)
+### [Nasazení SAP MaxDB, liveCache a Content Serveru v Azure](dbms_guide_maxdb.md)
+### [Průvodce provozem SAP HANA v Azure](hana-vm-operations.md)
+#### Dostupnost SAP HANA ve službě Azure Virtual Machines
+##### [Přehled dostupnosti SAP HANA v Azure](sap-hana-availability-overview.md)
+##### [Dostupnost SAP HANA v Azure v rámci jedné oblasti Azure](sap-hana-availability-one-region.md)
+##### [Dostupnost SAP HANA v Azure napříč oblastmi Azure](sap-hana-availability-across-regions.md)
 ## [Azure Site Recovery pro zotavení po havárii SAPu](../../../site-recovery/site-recovery-workload.md#protect-sap)
 # Jednotné přihlašování a integrace identit AAD SAP
 ## [Integrace se SAP Cloudem](../../../active-directory/saas-apps/sap-customer-cloud-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
