@@ -9,12 +9,12 @@ ms.component: QnAMaker
 ms.topic: article
 ms.date: 05/18/2018
 ms.author: pchoudh
-ms.openlocfilehash: 8ad51edde1fc90329e908f8150aadcbf4f401126
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 82e3ee460309f293c9bd7eadebe139f85e241f71
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37448216"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113347"
 ---
 # <a name="using-metadata-and-the-generateanswer-api"></a>Pomocí metadat a rozhraní API GenerateAnswer
 
@@ -82,6 +82,7 @@ Volání GenerateAnswer pomocí požadavku HTTP POST. Ukázkový kód, který uk
     - **odpovědi** – seznam odpovědi na dotaz uživatele, seřazené v sestupném pořadí podle pořadí skóre.
         - **skóre**: hodnocení 0 až 100.
         - **dotazy**: na otázky, které zadal uživatel.
+        - **odpověď**: odpověď na dotaz.
         - **Zdroj**: název zdroje, ze kterého byla odpověď extrahovat nebo uložit znalostní báze knowledge base.
         - **metadata**: metadata přidružená k odpovědi.
             - Název: název metadat. (maximální délka řetězce: 100, povinné)

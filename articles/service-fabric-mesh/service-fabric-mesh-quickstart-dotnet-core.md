@@ -1,7 +1,7 @@
 ---
 title: Rychlý start – nasazení aplikace do služby Azure Service Fabric sítě | Dokumentace Microsoftu
 description: V tomto rychlém startu se dozvíte, jak vytvořit web ASP.NET Core a její publikování do Azure Service Fabric mřížky.
-services: service--fabric-mesh
+services: service-fabric-mesh
 documentationcenter: .net
 author: tylermsft
 manager: jeconnoc
@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/12/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 93b540908391e8eedd9a1b318f3443f3e782c987
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 3ce40c87bbdd2f032b399b96a3021781e0dec341
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/17/2018
-ms.locfileid: "39075971"
+ms.locfileid: "39091963"
 ---
 # <a name="quickstart-create-and-deploy-a-web-app-to-azure-service-fabric-mesh"></a>Rychlý start: Vytvoření a nasazení webové aplikace do Azure Service Fabric mřížky
 

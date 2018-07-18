@@ -1,98 +1,64 @@
 ---
 title: Řešení potíží s dvoustupňovým ověřováním - Azure AD | Dokumentace Microsoftu
-description: Tento dokument se poskytují uživatelům informace o co dělat v případě, že narazíte na problém s ověřováním Azure Multi-Factor Authentication.
+description: Poskytuje pokyny pro uživatele o tom, co dělat v případě, že narazíte na problém s Azure Multi-Factor Authentication a dvoustupňové ověřování.
 services: multi-factor-authentication
-keywords: vícefaktorové ověřování klienta, problém s ověřováním, ID korelace
 documentationcenter: ''
 author: eross-msft
 manager: mtillman
 ms.assetid: 8f3aef42-7f66-4656-a7cd-d25a971cb9eb
 ms.service: multi-factor-authentication
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/06/2017
+ms.date: 07/16/2018
 ms.author: lizross
-ms.reviewer: richagi
-ms.custom: end-user
-ms.openlocfilehash: deb75c2601fa55f7cdb1681d8f73e94d6b01310a
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.reviewer: kexia
+ms.openlocfilehash: ec79adcaf7cbef778b8c9e572ae932d5ceb47aa6
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39060072"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39090373"
 ---
 # <a name="get-help-with-two-step-verification"></a>Získat pomoc s dvoustupňovým ověřováním
-Tento článek obsahuje odpovědi na nejčastější dotazy, které uživatelé požádat o dvoustupňové ověření.
 
-## <a name="why-do-i-have-to-perform-two-step-verification-can-i-turn-it-off"></a>Proč je nutné provést dvoustupňové ověřování? Můžete zapnout ho?
+Dvoustupňové ověření je funkce zabezpečení, které vaše organizace používá k ochraně vašich účtů. Dvoustupňové ověření je bezpečnější než jen s heslem, protože závisí na dva typy ověřování: něco víte a něco, co máte s vámi. Něco, které už znáte je vaše heslo, když něco, co máte s vámi telefonu nebo zařízení. Pomocí dvoustupňového ověření může pomoct hackerům škodlivý přihlašování jako vy, i když získávají své heslo.
 
-Dvoustupňové ověření je funkce zabezpečení, která vaší organizaci se rozhodli používat k ochraně vašich účtů. Je bezpečnější než jen s heslem, protože závisí na dva typy ověřování: něco víte a něco, co máte s vámi. Je něco, které už znáte heslo. Je něco, co máte s vámi telefonu nebo zařízení, která obvykle mít u sebe. Pokud váš účet je chráněný s dvoustupňovým ověřováním, to znamená, že kyberzločinci nelze se přihlásit jako pokud dostanou heslo nějakým způsobem vzhledem k tomu, že nemají přístup na váš telefon příliš.
+Společnost Microsoft nabízí dvoustupňové ověření, je vaší organizaci, který určuje, zda používáte funkci. Nelze odhlásit Pokud vaše organizace vyžaduje, stejně jako jste nemohou výslovně nesouhlasit pomocí hesla, abyste ochránili svůj účet.
 
-Společnost Microsoft nabízí dvoustupňové ověřování, ale vaše organizace rozhodne použít funkci. Nelze odhlásit pokud ho z vás, vaše firemní podpora požaduje, stejně jako jste nemohou výslovně nesouhlasit pomocí hesla, abyste ochránili svůj účet.
+>[!Note]
+>Pokud hledáte další informace o dvoustupňové ověření pomocí osobního účtu Microsoft, přečtěte si článek [o dvoustupňovém ověřování](https://support.microsoft.com/help/12408/microsoft-account-about-two-step-verification) článku.
 
-Pokud jste dvoustupňové ověřování zapnout na váš osobní účet Microsoft a chcete změnit nastavení, přečtěte si [o dvoustupňovém ověřování](https://support.microsoft.com/help/12408/microsoft-account-about-two-step-verification) místo.
+## <a name="why-do-i-need-to-use-another-verification-method"></a>Proč je nutné použít jinou metodu ověřování?
 
-## <a name="i-dont-have-my-phone-with-me-today"></a>Nemám mi na telefon se se mnou ještě dnes
+Tady je několik důvodů, proč budete muset použít metodu alternativní ověření pomocí svého účtu. Příklad:
 
-Několik dní, po které opustit váš telefon v domácnostech, ale stále je potřeba se přihlásit v práci. První věc, kterou byste se měli pokusit je přihlašování pomocí jinou metodu ověření. Při registraci k dvoustupňovému ověřování můžete nastavit více než jedno telefonní číslo? Zkuste se přihlásit jinou metodu, postupujte podle těchto kroků:
+- **Můžete si vzpomenout na telefonu nebo zařízení.** Několik dní, po které opustit váš telefon v domácnostech, ale stále je potřeba se přihlásit v práci. Nejprve pokusíte přihlásit pomocí jiné metody, která nepotřebuje telefonu.
 
-1. Přihlaste se jako obvykle.
-2. Až se otevře stránka dvoustupňové ověření, zvolte **použít jinou možnost ověření**.
+- **Ztratí telefon nebo máte nové telefonní číslo.** Pokud jste ztratíte telefon nebo získali nové číslo, můžete přihlásit pomocí jiné metody nebo požádejte správce, aby zrušte nastavení. Důrazně doporučujeme umožňuje vašemu správci vědět, pokud byl váš telefon ztráty nebo odcizení, proto příslušné aktualizace můžete nastavit ke svému účtu. Po nastavení jsou vymazány, budete vyzváni k [zaregistrovat k dvoustupňovému ověřování](multi-factor-authentication-end-user-first-time.md) při příštím přihlášení.
 
-   ![Různé ověření](./media/multi-factor-authentication-end-user-troubleshoot/diff_option.png)
+- **Nedokáže získat text ověřování nebo telefonní hovor.** Tady je několik důvodů, proč nemusí získat text nebo telefonní hovor. Pokud úspěšně jste začali textů nebo telefonních hovorů v minulosti, je to pravděpodobně problém s poskytovateli telefonní není váš účet. Pokud máte zpoždění z důvodu chybné signál, doporučujeme použít [aplikaci Microsoft Authenticator](microsoft-authenticator-app-how-to.md) na svém mobilním zařízení. Tuto aplikaci můžete vygenerovat náhodné zabezpečovací kódy pro přihlášení, bez vyžadování jakéhokoli buňky signál nebo připojení k Internetu.<br><br>Pokud se snažíte bude doručena zpráva SMS, požádejte přítelem text jako test, abyste měli jistotu, můžete získat a pokud jsme získali několik zpráv, ujistěte se, že jste používejte kód, než je aktuální.
 
-3. Vyberte možnost ověření, kterou chcete použít.
-4. Pokračujte s dvoustupňovým ověřováním.
+- **Hesla aplikací nefungují.** Hesla aplikací nahradit normální heslo pro starší desktopové aplikace, ve kterých se dvoustupňové ověřování. Nejprve zkontrolujte, zda že jste správně zadali heslo. Pokud, který se neodstraní, zkuste se přihlásit k [vytvořit nové heslo aplikace](multi-factor-authentication-end-user-app-passwords.md) nebo můžete požádat správce, aby [odstranit stávající hesla aplikací](../authentication/howto-mfa-userdevicesettings.md) tak můžete vytvořit nový.
 
-Pokud se nezobrazí **použít jinou možnost ověření** propojení, pak to znamená, že jste nenastavili alternativní metody při první registraci k dvoustupňovému ověřování. Obraťte se na podporu společnosti získat pomoc s přihlášením k účtu. Jakmile jste přihlášení, ujistěte se, že [spravovat nastavení](multi-factor-authentication-end-user-manage-settings.md) přidáte další ověřovací metody pro další použití.
+## <a name="sign-in-using-another-verification-method"></a>Přihlaste se pomocí jinou metodu ověřování
 
-Pokud se zobrazí **použít jinou možnost ověření** odkaz, ale nemají přístup k alternativní metody buď, obraťte se na podporu vaší společnosti chcete-li získat pomoc s přihlášením k účtu.
+1. Normálně přihlásit ke svému účtu a zvolte **podepsat jiným způsobem** odkaz na **dvoustupňové ověřování** stránky.
 
-## <a name="i-lost-my-phone-or-got-a-new-number"></a>Můžu ztratí telefon nebo máte nové číslo
-Existují dva způsoby, jak se znova dostali do svého účtu. První je k přihlášení pomocí vašich alternativních číslo telefonu pro ověření, pokud nastavíte jednu. Druhým je požádejte svou firemní podporu, vymazat svá nastavení.
+    ![Změnit přihlašovací metoda ověření](./media/multi-factor-authentication-end-user-troubleshoot/two-factor-auth-signin-another-way.png)
 
-Pokud váš telefon byl ztratíte nebo vám ho někdo ukradne, doporučujeme také informace vaší společnosti, podpora resetování vašeho hesla aplikací a vymažte všechny pamatovat zařízení.
+    >[!Note]
+    >Pokud se nezobrazí **podepsat jiným způsobem** propojit, znamená to, že jste nenastavili žádné jiné metody ověřování. Budete mít požádat správce o pomoc přihlášení k účtu. Po přihlášení, ujistěte se, že přidáte další ověřovací metody. Další informace o přidání metod ověřování, najdete v článku [spravovat nastavení pro dvoustupňové ověřování](multi-factor-authentication-end-user-manage-settings.md) článku.<br><br>Pokud jste na odkaz, ale stále nevidíte žádné jiné metody ověřování, budete muset požádejte o pomoc s přihlášením k účtu správce.
 
-### <a name="use-an-alternate-phone-number"></a>Použít alternativní telefonní číslo
-Pokud nastavíte více možností ověření, včetně záložní telefonní číslo nebo ověřovací aplikaci na jiném zařízení, můžete použít jeden z nich k přihlášení.
+2. Zvolte metodu alternativní ověření a pokračujte v procesu dvoustupňové ověření.
 
-Přihlaste se pomocí alternativní telefonní číslo, postupujte podle těchto kroků:
+3. Jakmile budete zpět ve vašem účtu, můžete aktualizovat své metody ověřování (v případě potřeby). Další informace o přidání nebo změna vašich metodách, naleznete v tématu [spravovat nastavení pro dvoustupňové ověřování](multi-factor-authentication-end-user-manage-settings.md) článku.
 
-1. Přihlaste se jako obvykle.
-2. Po zobrazení výzvy provést ještě další ověření vašeho účtu, zvolte **použít jinou možnost ověření**.
+## <a name="i-didnt-find-an-answer-to-my-problem"></a>Nepovedlo se najít odpověď na mé problému
 
-   ![Různé ověření](./media/multi-factor-authentication-end-user-troubleshoot/diff_option.png)
-
-3. Vyberte telefonní číslo nebo zařízení, které máte přístup.
-4. Jakmile budete zpět ve vašem účtu [spravovat nastavení](multi-factor-authentication-end-user-manage-settings.md) Chcete-li změnit číslo telefonu pro ověření.
-
-### <a name="clear-your-settings"></a>Vymazat nastavení
-Pokud jste nenakonfigurovali telefonní číslo sekundární ověřování, budete muset požádat o pomoc podporu vaší společnosti. Požádejte vymazat nastavení, aby při příštím přihlášení, zobrazí se výzva k [zaregistrovat k dvoustupňovému ověřování](multi-factor-authentication-end-user-first-time.md) znovu.
-
-## <a name="i-am-not-receiving-a-text-or-call-on-my-phone"></a>Můžu doručována text nebo volání na telefon
-Tady je několik důvodů, proč se může pokusit o přihlášení, ale nezobrazí text nebo telefonní hovor. Pokud jste úspěšně dostanete textů nebo telefonních hovorů na váš telefon v minulosti, pak jde pravděpodobně problém s poskytovateli telefonní není váš účet. Ujistěte se, že máte dobré buňky signál, a pokud se snažíte zobrazit textovou zprávu Ujistěte se, že budete moct přijímat textové zprávy. Požádejte přítelem, zavoláme vám nebo text jako test.
-
-Pokud jste počkat několik minut, než textovém editoru nebo volání, nejrychlejší způsob, jak dostat do vašeho účtu je zkuste jinou možnost.
-
-1. Vyberte **použít jinou možnost ověření** na stránce, který čeká na ověření.
-
-    ![Různé ověření](./media/multi-factor-authentication-end-user-troubleshoot/diff_option.png)
-2. Vyberte telefonní číslo nebo doručení metodu, kterou chcete použít.
-
-    Pokud jste dostali více ověřovacích kódů, použijte nejnovější.
-
-Pokud nemáte jinou metodu nakonfigurované, obraťte se na podporu společnosti a požádejte ho o zrušte nastavení. Při příštím přihlášení se zobrazí výzva k [nastavení služby Multi-Factor authentication](multi-factor-authentication-end-user-first-time.md) znovu.
-
-Pokud máte zpoždění z důvodu chybné buňky signál, doporučujeme použít [aplikaci Microsoft Authenticator](microsoft-authenticator-app-how-to.md) na vašem smartphonu. Aplikaci můžete vygenerovat náhodné zabezpečovací kódy, které používáte k přihlášení a tyto kódy nevyžadují žádné buňky signál nebo připojení k Internetu.
-
-## <a name="app-passwords-are-not-working"></a>Hesla aplikací nefungují.
-Nejprve se ujistěte, zda jste správně zadali heslo aplikace. Heslo generované aplikace nahrazuje normální heslo, ale pouze pro starší desktopové aplikace, ve kterých se dvoustupňové ověřování. Pokud to pořád nefunguje, zkuste přihlášení a [vytvořit nové heslo aplikace](multi-factor-authentication-end-user-app-passwords.md).  Pokud ani to nepomůže, obraťte se na podporu společnosti a potom kliknul [odstranit stávající hesla aplikací](../authentication/howto-mfa-userdevicesettings.md) a vytvořte nový.
-
-## <a name="i-didnt-find-an-answer-to-my-problem"></a>Můžu nenašli odpověď na problém.
-Pokud jste se pokusili postup řešení, ale jsou stále narazíte na problémy, obraťte se na svou firemní podporu. By měli mít přístup k vám.
+Pokud jste se pokusili tyto kroky, ale jsou stále narazíte na problémy, požádejte o pomoc svého správce.
 
 ## <a name="related-topics"></a>Související témata
-* [Správa nastavení pro dvoustupňové ověřování.](multi-factor-authentication-end-user-manage-settings.md)  
+
+* [Správa nastavení pro dvoustupňové ověřování.](multi-factor-authentication-end-user-manage-settings.md)
+
 * [Nejčastější dotazy k aplikaci Microsoft Authenticator](microsoft-authenticator-app-faq.md)

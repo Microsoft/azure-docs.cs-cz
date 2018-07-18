@@ -1,6 +1,6 @@
 ---
-title: Jaké jsou zóny dostupnosti Azure? | Dokumenty Microsoft
-description: K vytvoření vysoce dostupné a odolné aplikací v Azure, zadejte dostupnost zóny fyzicky oddělené umístění, které můžete použít ke spuštění vaše prostředky.
+title: Co jsou zóny dostupnosti Azure? | Dokumenty Microsoft
+description: Zóny dostupnosti v Azure vytvořit vysoce dostupné a odolné aplikace, poskytují fyzicky oddělená umístění, které lze použít ke spuštění vašich prostředků.
 services: ''
 documentationcenter: ''
 author: iainfoulds
@@ -16,38 +16,38 @@ ms.workload: na
 ms.date: 06/27/2018
 ms.author: iainfou
 ms.custom: mvc I am an ITPro and application developer, and I want to protect (use Availability Zones) my applications and data against data center failure (to build Highly Available applications).
-ms.openlocfilehash: 6a4dcc2cd3b196221b881783c79ddb0adaa6f38b
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: f2890338f69e8ad5e97077dbb227f557b34f1a4b
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063659"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39090281"
 ---
-# <a name="what-are-availability-zones-in-azure"></a>Jaké jsou dostupnost zóny v Azure?
-Dostupnost zóny je vysoká dostupnost nabízející, které chrání vaše aplikace a data před selháním datového centra. Dostupnost zóny jsou jedinečné fyzické umístění v rámci oblasti Azure. Každé zóny se skládá z jedné nebo více datových centrech vybaven nezávislé napájení, chlazení a práci v síti. K zajištění odolnosti, je minimálně tři samostatné zóny ve všech oblastech povoleno. Fyzické oddělení dostupnost zóny v rámci oblasti chrání aplikace a data před selháním datového centra. Zónově redundantní služby replikaci mezi zón dostupnosti pro ochranu před jedním bodů z selháním aplikacím a datům. Dostupnost zón Azure nabízí odvětví nejlepší 99,99 % virtuálních počítačů smlouva SLA. Úplná smlouva [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) vysvětluje garantovanou dostupnost Azure jako celku.
+# <a name="what-are-availability-zones-in-azure"></a>Co jsou zóny dostupnosti v Azure?
+Zóny dostupnosti je vysoká dostupnost služeb, které chrání vaše aplikace a data z datacenter selhání. Zóny dostupnosti jsou jedinečná fyzická umístění v rámci oblasti Azure. Každá zóna se skládá z jednoho nebo více datových Center vybavených nezávislým napájením, chlazením a sítí. K zajištění odolnosti proti chybám, je minimálně tří samostatných zón ve všech oblastech, povolené. Fyzické oddělení zón dostupnosti v rámci oblasti chrání aplikace a data před selháními datových center. Zónově redundantní služby replikaci vašich aplikací a dat napříč zónami dostupnosti pro zajištění ochrany z jednoho body z chyby. Zóny dostupnosti Azure nabízí odvětví nejlepší 99,99 % doby provozu SLA k virtuálním počítačům. Úplná smlouva [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) vysvětluje garantovanou dostupnost Azure jako celku.
 
-Dostupnosti zónu v oblasti Azure je kombinací domény selhání a aktualizaci domény. Například pokud vytvoříte tři nebo více virtuálních počítačů mezi tři zóny v oblasti Azure, virtuální počítače jsou efektivně rozloženy na tři domén selhání a tři domény aktualizace. Platformy Azure rozpozná této distribuce napříč doménami update a ujistěte se, že virtuální počítače v různých oblastech neaktualizují ve stejnou dobu.
+Zónu dostupnosti, do oblasti Azure je kombinace doména selhání a aktualizační doména. Například pokud vytvoříte tři nebo více virtuálních počítačů napříč zónami tři v oblasti Azure, vaše virtuální počítače jsou účinně rozloženy na tři domény selhání a aktualizačních doménách tři. Platforma Azure rozpoznává této distribuce napříč aktualizační domény, abyste měli jistotu, že virtuální počítače v různých oblastech nejsou aktualizovány ve stejnou dobu.
 
-Sestavte vysokou dostupností do vaší aplikace architektury společné umísťování prostředkům výpočty, úložiště, sítě a data v rámci zóny a replikuje v jiných oblastech. Služby Azure, které podporují dostupnost zóny rozdělit do dvou kategorií:
+Sestavte vysokou dostupnost do vaší aplikace architektury společně umístěných prostředky výpočetní prostředky, úložiště, sítě a dat v rámci zóny a replikace v jiné zóně. Služby Azure, které podporují zóny dostupnosti se dělí do dvou kategorií:
 
-- **Oblastmi služby** – prostředek pro konkrétní zónu (například virtuální počítače, spravované disky, IP adresy), připnete nebo
-- **Zónově redundantní služby** – platforma automaticky replikuje přes zóny (například zónově redundantní úložiště, databáze SQL).
+- **Oblastmi služby** – Připnutí prostředků pro konkrétní zónu (například virtuální počítače, spravované disky, IP adresy), nebo
+- **Zónově redundantní služby** – platforma se automaticky replikuje napříč zónami (například zónově redundantní úložiště, databáze SQL).
 
-Zajistit komplexní provozní kontinuitu v Azure vytvořte architektuře aplikace pomocí kombinace dostupnost zóny s páry oblast Azure. Můžete replikovat synchronně vaší aplikace a data pomocí dostupnost zóny v rámci oblasti Azure pro vysokou dostupnost a asynchronně replikovat mezi oblastmi Azure pro ochranu pro zotavení po havárii.
+Pokud chcete dosáhnout komplexní obchodní kontinuity podnikových procesů v Azure, sestavení architektury aplikace pomocí kombinace zón dostupnosti s párování oblastí Azure. Můžete synchronní replikace aplikací a dat s využitím zón dostupnosti v rámci oblasti Azure pro vysokou dostupnost a asynchronní replikace v různých oblastech Azure pro ochranu zotavení po havárii.
  
-![koncepční zobrazení jednu zónu směrem dolů v oblasti.](./media/az-overview/az-graphic-two.png)
+![koncepční zobrazení jednu zónu směrem dolů v oblasti](./media/az-overview/az-graphic-two.png)
 
-## <a name="regions-that-support-availability-zones"></a>Oblasti, které podporují dostupnost zóny
+## <a name="regions-that-support-availability-zones"></a>Oblasti, které podporují zóny dostupnosti
 
-- Střed USA
+- USA – střed
 - Francie – střed
-- Východní USA 2 (Preview)
+- USA – východ 2 (Preview)
 - Západní Evropa
-- Asie a Tichomoří – jihovýchod (Preview)
+- Jihovýchodní Asie (Preview)
 
 
-## <a name="services-that-support-availability-zones"></a>Služby, které podporují dostupnost zóny
-Služby Azure, které podporují dostupnost zóny jsou:
+## <a name="services-that-support-availability-zones"></a>Služby, které podporují zóny dostupnosti
+Služby Azure, které podporují zóny dostupnosti jsou:
 
 - Linux Virtual Machines
 - Windows Virtual Machines
@@ -64,20 +64,20 @@ Služby Azure, které podporují dostupnost zóny jsou:
 
 
 ## <a name="pricing"></a>Ceny
-Není k dispozici pro virtuální počítače nasazené v zóně dostupnosti bez dalších nákladů. 99,99 % dostupnost virtuálních počítačů se SLA nabízí při nasazení dvou nebo více virtuálních počítačů mezi dva nebo víc zón dostupnosti v rámci oblasti Azure. Budou existovat další poplatky přenos dat mezi dostupnost zóny virtuálních počítačů VM. Další informace najdete v článku [šířky pásma ceny](https://azure.microsoft.com/pricing/details/bandwidth/) stránky.
+Se neúčtují žádné další poplatky pro virtuální počítače nasazené v zóně dostupnosti. 99,99 % dostupnosti virtuálního počítače nabízíme smlouvy SLA při nasazení dvou nebo více virtuálních počítačů napříč zónami dostupnosti dva nebo více v rámci oblasti Azure. Bude existovat další mezi dostupnost zóny virtuálních počítačů VM poplatky za přenos dat. Další informace najdete v článku [cenách šířky pásma](https://azure.microsoft.com/pricing/details/bandwidth/) stránky.
 
 
-## <a name="get-started-with-availability-zones"></a>Začínáme s dostupnost zóny
+## <a name="get-started-with-availability-zones"></a>Začínáme se zónami dostupnosti
 - [Vytvoření virtuálního počítače](../virtual-machines/windows/create-portal-availability-zone.md)
-- [Přidejte Disk spravované pomocí prostředí PowerShell](../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine)
-- [Vytvoření sady škálování zóny redundantní virtuální počítač](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md)
-- [Nástroj pro vyrovnávání zatížení virtuálních počítačů mezi různými pásmy pomocí standardní Vyrovnávání zatížení s front-end zónově redundantní](../load-balancer/load-balancer-standard-public-zone-redundant-cli.md)
-- [Nástroj pro vyrovnávání zatížení virtuálních počítačů v rámci zóny pomocí standardní Vyrovnávání zatížení s front-end oblastmi](../load-balancer/load-balancer-standard-public-zonal-cli.md)
+- [Přidat spravovaný Disk pomocí Powershellu](../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine)
+- [Vytvoření zóny redundantní virtuálního počítače škálovací sady](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md)
+- [Nástroj pro vyrovnávání zatížení virtuálních počítačů napříč zónami zónově redundantních front-endu pomocí Load balanceru úrovně Standard](../load-balancer/load-balancer-standard-public-zone-redundant-cli.md)
+- [Nástroj pro vyrovnávání zatížení virtuálních počítačů v rámci zóny pomocí Load balanceru úrovně Standard s oblastmi front-endu](../load-balancer/load-balancer-standard-public-zonal-cli.md)
 - [Zónově redundantní úložiště](../storage/common/storage-redundancy-zrs.md)
-- [SQL Database](../sql-database/sql-database-high-availability.md#zone-redundant-configuration-preview)
-- [Obnovení geograficky havárii centra událostí](../event-hubs/event-hubs-geo-dr.md#availability-zones-preview)
-- [Geograficky havárii Service Bus](../service-bus-messaging/service-bus-geo-dr.md#availability-zones-preview)
-- [Vytvoření brány virtuální sítě zónově redundantní](../vpn-gateway/create-zone-redundant-vnet-gateway.md)
+- [SQL Database](../sql-database/sql-database-high-availability.md#zone-redundant-configuration)
+- [Geografické zotavení po havárii služby Event Hubs](../event-hubs/event-hubs-geo-dr.md#availability-zones-preview)
+- [Geografické zotavení po havárii služby Service Bus](../service-bus-messaging/service-bus-geo-dr.md#availability-zones-preview)
+- [Vytvoření zónově redundantní brány virtuální sítě](../vpn-gateway/create-zone-redundant-vnet-gateway.md)
 
 
 ## <a name="next-steps"></a>Další postup

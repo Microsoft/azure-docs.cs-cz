@@ -1,6 +1,6 @@
 ---
-title: Filtrování a předběžného zpracování v Azure Application Insights SDK | Microsoft Docs
-description: Zápis procesorů Telemetrie a inicializátory telemetrická data sady SDK, filtrovat nebo přidání vlastnosti do data před odesláním telemetrie na portál Application Insights.
+title: Filtrování a předběžné zpracování v Azure Application Insights SDK | Dokumentace Microsoftu
+description: Zápis Telemetrie procesory a inicializátory telemetrická data sady SDK filtrovat nebo přidání vlastnosti do data před odesláním telemetrie na portál Application Insights.
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -13,48 +13,48 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/23/2016
 ms.author: mbullwin
-ms.openlocfilehash: a8905f4f14b5f4f78e9f3113ec5a655b12599609
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: d46ff5563df1423e3c01ba945b328b748b5979b4
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294090"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39091567"
 ---
-# <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Filtrování a předběžného zpracování telemetrie Application Insights SDK
+# <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Filtrování a předběžné zpracování telemetrie v Application Insights SDK
 
 
-Můžete napsat a konfigurovat moduly plug-in pro Application Insights SDK pro přizpůsobení jak telemetrie bude zachycen a před odesláním do služby Application Insights.
+Můžete napsat a nakonfigurovat moduly plug-in pro Application Insights SDK pro přizpůsobení fungování telemetrická data zachycená a zpracovat před odesláním do služby Application Insights.
 
-* [Vzorkování](app-insights-sampling.md) snižuje telemetrie, aniž by to ovlivnilo vaše statistiky. Udržuje společně související datových bodů tak, aby můžete procházet mezi nimi při diagnostikování problému. Celkové počty jsou na portálu, násobí odpovídajícím způsobem pro odběr.
-* Filtrování s procesory Telemetrie [pro technologii ASP.NET](#filtering) nebo [Java](app-insights-java-filter-telemetry.md) umožňuje vybrat nebo upravit telemetrie sady SDK před odesláním na server. Například může snížit objem telemetrie tak, že vyloučíte z robotů požadavky. Ale filtrování se více základní postup pro omezení provozu než vzorkování. Umožňuje větší kontrolu nad co se přenášejí, ale máte potřeba mít na paměti, že ovlivňuje statistice – například pokud můžete filtrovat všechny úspěšné požadavky.
-* [Inicializátory telemetrie přidávat vlastnosti](#add-properties) pro všechny telemetrická data odesílaná z vaší aplikace, včetně telemetrie z standardní moduly. Například můžete přidat vypočítané hodnoty; nebo čísla verzí, podle kterého chcete filtrovat data v portálu.
-* [Rozhraní API sady SDK](app-insights-api-custom-events-metrics.md) se používá k odeslání vlastní události a metriky.
+* [Vzorkování](app-insights-sampling.md) snižuje objem telemetrických dat bez ovlivnění vašich statistik. Uchová společně souvisejících datových bodů tak, aby můžete procházet mezi nimi při diagnostikování problému. Na portálu jsou celkového počtu vynásobené jako kompenzaci za vzorkování.
+* Filtrování Telemetrie procesorů [pro technologii ASP.NET](#filtering) nebo [Java](app-insights-java-filter-telemetry.md) umožňuje vybrat nebo změnit telemetrie v sadě SDK, před odesláním do serveru. Například může snížit objem telemetrických dat vyloučením požadavky od robotů. Ale filtrování je jednodušší přístup k snižování zatížení než vzorkování. Umožňuje větší kontrolu nad co se přenášejí, ale budete muset mějte na paměti, že má vliv statistik – například pokud odfiltrovat všechny úspěšné požadavky.
+* [Inicializátory telemetrie přidat vlastnosti](#add-properties) na všechny telemetrická data odesílaná z vaší aplikace, včetně telemetrie z standardní moduly. Například můžete přidat počítané hodnoty. nebo čísla verzí, podle kterého chcete filtrovat data na portálu.
+* [Rozhraní API sady SDK](app-insights-api-custom-events-metrics.md) se používá k odesílání vlastních událostí a metrik.
 
 Než začnete, potřebujete:
 
-* Nainstalujte službu Application Insights [SDK pro technologii ASP.NET](app-insights-asp-net.md) nebo [SDK pro jazyk Java](app-insights-java-get-started.md) ve vaší aplikaci.
+* Nainstalujte službu Application Insights [sady SDK pro ASP.NET](app-insights-asp-net.md) nebo [sadu SDK pro Javu](app-insights-java-get-started.md) ve vaší aplikaci.
 
 <a name="filtering"></a>
 
 ## <a name="filtering-itelemetryprocessor"></a>Filtrování: ITelemetryProcessor
-Tento postup vám dává větší kontrolu nad co je zahrnout nebo vyloučit z datový proud telemetrie. Můžete jej použít ve spojení s vzorkování, nebo samostatně.
+Tato technika umožňuje více přímou kontrolu nad co je zahrnuty nebo vyloučeny ze datový proud telemetrie. Můžete ho použít ve spojení s povoleným vzorkováním, nebo samostatně.
 
-Pro filtrování telemetrie, zápis procesor telemetrie a zaregistrovat ji pomocí sady SDK. Všechny telemetrická prochází procesor a můžete ho vyřadit z datového proudu, nebo přidejte vlastnosti. To zahrnuje telemetrie z standardní moduly, například kolekce požadavku HTTP a collector závislost, a také telemetrických dat, který jste napsali sami. Můžete například odfiltrovat telemetrická data týkající se požadavků z robotů nebo volání úspěšné závislostí.
+Filtrovat telemetrii, zápisu telemetrických dat procesoru a zaregistrujte ho pomocí sady SDK. Veškerá telemetrie prochází procesor a můžete ho vyřadit z datového proudu, nebo přidejte vlastnosti. To zahrnuje telemetrie z standardní moduly, například kolekcí požadavku HTTP a závislosti kolekcí a také telemetrie, které jste sami napsali. Můžete například odfiltrovat telemetrická data týkající se požadavků z roboti nebo volání úspěšné závislostí.
 
 > [!WARNING]
-> Filtrování telemetrická data odesílaná ze sady SDK pomocí procesorů můžete zkreslit statistiky, které se zobrazí na portálu a je obtížné sledovat související položky.
+> Filtrování telemetrická data odesílaná ze sady SDK pomocí procesorů můžete zkosení statistické údaje, které se zobrazí na portálu a je obtížné sledovat související položky.
 >
 > Místo toho zvažte použití [vzorkování](app-insights-sampling.md).
 >
 >
 
 ### <a name="create-a-telemetry-processor-c"></a>Vytvoření telemetrie procesoru (C#)
-1. Ověřte, zda je ve vašem projektu Application Insights SDK verze 2.0.0 nebo novější. Klikněte pravým tlačítkem na projekt v Průzkumníku řešení Visual Studio a zvolte spravovat balíčky NuGet. V Správce balíčků NuGet zkontrolujte Microsoft.ApplicationInsights.Web.
-2. Chcete-li vytvořit filtr, implementujte ITelemetryProcessor. Toto je jiný bod rozšiřitelnost jako modul telemetrie, inicializátoru telemetrie a telemetrie kanál.
+1. Ověřte, zda Application Insights SDK do projektu je verze 2.0.0 nebo novější. Klikněte pravým tlačítkem na projekt v Průzkumníku řešení sady Visual Studio a zvolte spravovat balíčky NuGet. Ve správci balíčků NuGet zkontrolujte Microsoft.ApplicationInsights.Web.
+2. Chcete-li vytvořit filtr, implementujte ITelemetryProcessor. Toto je jiný bod rozšíření jako modul telemetrie inicializátor telemetrie a telemetrická data kanálu.
 
-    Všimněte si, že Telemetrie procesory vytvořit řetěz zpracování. Instanci můžete vytvořit procesor telemetrie, předáte odkaz na další procesoru v řetězu. Když je bod data telemetrie předaný metodě proces, nemá svou práci a pak zavolá další procesor Telemetrie v řetězu.
+    Všimněte si, že Telemetrie procesory sestavit řetězec zpracování. Při vytváření instance procesoru telemetrie, předáte odkaz do další procesor v řetězci. Když bod telemetrická data se předá metodě procesu, provede svou práci a pak zavolá další procesor Telemetrie v řetězci.
 
-    ``` C#
+    ```csharp
 
     using Microsoft.ApplicationInsights.Channel;
     using Microsoft.ApplicationInsights.Extensibility;
@@ -99,9 +99,9 @@ Pro filtrování telemetrie, zápis procesor telemetrie a zaregistrovat ji pomoc
     }
 
     ```
-1. Vložte tuto položku v souboru ApplicationInsights.config:
+1. V souboru ApplicationInsights.config, vložte toto:
 
-```XML
+```xml
 
     <TelemetryProcessors>
       <Add Type="WebApplication9.SuccessfulDependencyFilter, WebApplication9">
@@ -112,16 +112,16 @@ Pro filtrování telemetrie, zápis procesor telemetrie a zaregistrovat ji pomoc
 
 ```
 
-(To je do stejné části, kde inicializovat vzorkování filtr.)
+(To je stejné části, kde je inicializovat filtr vzorkování.)
 
-Můžete předat hodnoty řetězce ze souboru .config tím, že poskytuje veřejné s názvem vlastnosti v třídě.
+Řetězcové hodnoty ze souboru .config můžete předat tím, že poskytuje veřejné pojmenované vlastnosti ve své třídě.
 
 > [!WARNING]
-> Vezměte v potaz tak, aby odpovídaly název typu a všechny názvy vlastností v souboru config názvy třídy a vlastnosti v kódu. Pokud soubor .config odkazuje na neexistující typ nebo vlastnost, sada SDK může bez upozornění nepodaří odesílat všechny telemetrická data.
+> Aby se postaral tak, aby odpovídaly název typu a všechny názvy vlastností v souboru .config na názvy tříd a vlastností v kódu. Pokud soubor .config odkazuje na neexistující typu nebo vlastnost, sada SDK může bez upozornění nepodaří odeslat žádnou telemetrii.
 >
 >
 
-**Alternativně** můžete inicializovat filtru v kódu. Ve třídě vhodný inicializace – například AppStart v Global.asax.cs - vložte do řetězu procesor:
+**Alternativně** můžete inicializovat filtru v kódu. Ve třídě vhodný inicializace – například AppStart v Global.asax.cs – vložte do řetězce procesoru:
 
 ```csharp
 
@@ -135,13 +135,13 @@ Můžete předat hodnoty řetězce ze souboru .config tím, že poskytuje veřej
 
 ```
 
-TelemetryClients vytvořené po tomto bodu použije vaše procesory.
+TelemetryClients vytvořili od této chvíle budou používat procesorů.
 
 ### <a name="example-filters"></a>Příklad filtrů
-#### <a name="synthetic-requests"></a>Syntetické požadavků
-Filtrovat robotů a webové testy. I když Průzkumníku metrik poskytuje možnost filtrovat syntetické zdroje, tato možnost snižuje zatížení filtrování je v sadě SDK.
+#### <a name="synthetic-requests"></a>Umělé požadavky
+Vyfiltrování roboty a webové testy. Ačkoli Průzkumník metrik dává možnost filtrování syntetické zdrojů, tato možnost snižuje zatížení filtrování v SDK.
 
-``` C#
+```csharp
 
     public void Process(ITelemetry item)
     {
@@ -153,8 +153,8 @@ Filtrovat robotů a webové testy. I když Průzkumníku metrik poskytuje možno
 
 ```
 
-#### <a name="failed-authentication"></a>Ověřování se nezdařilo
-Filtrování požadavků s odpovědi "401".
+#### <a name="failed-authentication"></a>Neúspěšné ověření
+Filtrujte požadavky "401" odpovědí.
 
 ```csharp
 
@@ -174,15 +174,15 @@ public void Process(ITelemetry item)
 
 ```
 
-#### <a name="filter-out-fast-remote-dependency-calls"></a>Odfiltrovat rychlé vzdálené závislostí volání
-Pokud chcete diagnostikovat volání, které jsou pomalé, odfiltrovat ty fast.
+#### <a name="filter-out-fast-remote-dependency-calls"></a>Odfiltrovat rychlé vzdálené závislosti volání
+Pokud chcete diagnostikovat volání, která jsou pomalé, odfiltrovat rychlé ty.
 
 > [!NOTE]
-> To bude zkreslit statistiky, které vidíte na portálu. Graf závislostí bude vypadat jako, pokud jsou všechny chyby při volání závislostí.
+> To bude zkosení statistiky, které se zobrazí na portálu. Graf závislosti bude vypadat, jako by volání závislostí jsou všechny chyby.
 >
 >
 
-``` C#
+```csharp
 
 public void Process(ITelemetry item)
 {
@@ -198,19 +198,19 @@ public void Process(ITelemetry item)
 ```
 
 #### <a name="diagnose-dependency-issues"></a>Diagnóza problémů se závislostí
-[Tomto blogu](https://azure.microsoft.com/blog/implement-an-application-insights-telemetry-processor/) popisuje projekt k vyřešení problémů se závislostí automaticky odesláním regulární příkazy ping závislosti.
+[Tento blog](https://azure.microsoft.com/blog/implement-an-application-insights-telemetry-processor/) popisuje projekt, který diagnostikovat problémy s závislostí tak, že automatické odesílání pravidelných příkazy ping pro zjištění závislostí.
 
 
 <a name="add-properties"></a>
 
-## <a name="add-properties-itelemetryinitializer"></a>Přidat vlastnosti: ITelemetryInitializer
-Inicializátory telemetrická data použít k definování globální vlastnosti, které se odesílají s všechny telemetrická; a přepsání vybrané chování modulů standardní telemetrie.
+## <a name="add-properties-itelemetryinitializer"></a>Přidání vlastností: ITelemetryInitializer
+Slouží k definování globálních vlastností, které se odesílají s veškerou telemetrii; inicializátory telemetrie a přepsat vybrané chování modulů standardní telemetrická data.
 
-Například Application Insights pro webové balíček shromažďuje telemetrická data o požadavcích HTTP. Ve výchozím nastavení, označuje jako neúspěšný každá žádost s kódem odpovědi > = 400. Ale pokud budete chtít 400 považovat za úspěšné, můžete zadat inicializátoru telemetrická data, která nastaví vlastnost úspěch.
+Například Application Insights pro webový balíček shromažďuje telemetrická data týkající se požadavků HTTP. Ve výchozím nastavení, označí jako neúspěšný jakékoli žádosti s kódem odpovědi > = 400. Ale pokud budete chtít 400 považovat za úspěšné, můžete zadat inicializátor telemetrie, která nastaví vlastnost úspěch.
 
-Pokud zadáte inicializátoru telemetrie, nazývá se vždy, když se nazývají metod Track*(). To zahrnuje metody, které jsou volány moduly standardní telemetrie. Podle konvence nenastavujte tyto moduly jakákoli vlastnost, která již byla nastavena pomocí inicializátoru.
+Pokud zadáte inicializátoru telemetrie, nazývá se pokaždé, když se některou z metod Track*() jsou volány. To zahrnuje metody volané moduly standardní telemetrická data. Podle konvence nenastavujte tyto moduly jakákoli vlastnost, která již byla nastavena inicializátor.
 
-**Zadejte vaše inicializátoru**
+**Definujte vaši inicializátor**
 
 *C#*
 
@@ -251,10 +251,11 @@ Pokud zadáte inicializátoru telemetrie, nazývá se vždy, když se nazývají
     }
 ```
 
-**Načíst vaše inicializátoru**
+**Načíst vaše inicializátor**
 
 In ApplicationInsights.config:
 
+```xml
     <ApplicationInsights>
       <TelemetryInitializers>
         <!-- Fully qualified type name, assembly name: -->
@@ -262,8 +263,9 @@ In ApplicationInsights.config:
         ...
       </TelemetryInitializers>
     </ApplicationInsights>
+```
 
-*Alternativně* můžete vytvořit instanci inicializátoru v kódu, například v souboru Global.aspx.cs:
+*Alternativně* lze vytvořit instanci v kódu, například v souboru Global.aspx.cs inicializátoru:
 
 ```csharp
     protected void Application_Start()
@@ -279,10 +281,10 @@ In ApplicationInsights.config:
 
 <a name="js-initializer"></a>
 
-### <a name="javascript-telemetry-initializers"></a>Inicializátory telemetrie JavaScript
+### <a name="javascript-telemetry-initializers"></a>Inicializátory telemetrických dat jazyka JavaScript
 *JavaScript*
 
-Vložte inicializátoru telemetrie hned po inicializaci kód, který jste získali z portálu:
+Vložení inicializátoru telemetrie bezprostředně za inicializační kód, který jste získali z portálu:
 
 ```JS
 
@@ -324,25 +326,25 @@ Vložte inicializátoru telemetrie hned po inicializaci kód, který jste získa
     </script>
 ```
 
-Souhrn k dispozici na telemetryItem bez vlastní vlastnosti, najdete v části [Application Insights Exportovat datový Model](app-insights-export-data-model.md).
+Souhrn k dispozici na telemetryItem bez vlastní vlastnosti, naleznete v tématu [Application Insights exportovat datového modelu](app-insights-export-data-model.md).
 
-Můžete přidat libovolný počet inicializátory, jak se vám líbí.
+Můžete přidat tolik inicializátory, jak potřebujete.
 
 ## <a name="itelemetryprocessor-and-itelemetryinitializer"></a>ITelemetryProcessor a ITelemetryInitializer
-Jaký je rozdíl mezi procesory telemetrie a inicializátory telemetrie?
+Jaký je rozdíl mezi procesory telemetrická data a telemetrii inicializátory?
 
-* Existují některé překrytí v co můžete dělat s nimi: jak lze použít k přidání vlastností do telemetrie.
+* Existují některé překrytí v co s nimi můžete dělat: oba slouží k přidání vlastnosti do telemetrická data.
 * Vždy spustit před TelemetryProcessors TelemetryInitializers.
-* TelemetryProcessors umožňují zcela nahradit nebo zahodit položku telemetrie.
-* TelemetryProcessors nemáte zpracovat telemetrická data čítače výkonu.
+* TelemetryProcessors umožňují k úplnému nahrazení nebo zahodit položky telemetrie.
+* TelemetryProcessors Nezpracovávat telemetrická data čítače výkonu.
 
-## <a name="troubleshooting-applicationinsightsconfig"></a>Řešení potíží s souboru ApplicationInsights.config
+## <a name="troubleshooting-applicationinsightsconfig"></a>Řešení potíží s soubor ApplicationInsights.config
 * Potvrďte správnost plně kvalifikovaný název typu a název sestavení.
-* Potvrďte, že soubor applicationinsights.config je ve vašem adresáři výstup a obsahuje všechny poslední změny.
+* Zkontrolujte, jestli soubor applicationinsights.config v adresáři výstupu a obsahuje všechny změny.
 
 ## <a name="reference-docs"></a>Referenční dokumenty
 * [Přehled rozhraní API](app-insights-api-custom-events-metrics.md)
-* [Rozhraní ASP.NET – reference](https://msdn.microsoft.com/library/dn817570.aspx)
+* [Referenční dokumentace technologie ASP.NET](https://msdn.microsoft.com/library/dn817570.aspx)
 
 ## <a name="sdk-code"></a>Kód SDK
 * [ASP.NET Core SDK](https://github.com/Microsoft/ApplicationInsights-aspnetcore)
@@ -350,6 +352,6 @@ Jaký je rozdíl mezi procesory telemetrie a inicializátory telemetrie?
 * [JavaScript SDK](https://github.com/Microsoft/ApplicationInsights-JS)
 
 ## <a name="next"></a>Další kroky
-* [Hledání událostí a protokolů](app-insights-diagnostic-search.md)
+* [Hledat události a protokoly](app-insights-diagnostic-search.md)
 * [Vzorkování](app-insights-sampling.md)
 * [Řešení potíží](app-insights-troubleshoot-faq.md)

@@ -8,15 +8,15 @@ ms.service: sql-database
 ms.custom: business continuity
 ms.topic: conceptual
 ms.workload: Active
-ms.date: 05/25/2018
+ms.date: 07/16/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 558480d0e58a92277a0c56d0f197ee3b5c1c3f60
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: fcc860daddbaa0b3275116027136bcde9dbcf256
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "35643233"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39092023"
 ---
 # <a name="learn-about-automatic-sql-database-backups"></a>Další informace o automatických zálohách databáze SQL
 
@@ -42,7 +42,7 @@ Můžete použít tyto zálohy na:
 > 
 
 ## <a name="how-long-are-backups-kept"></a>Jak dlouho se zálohy uchovávat?
-Každá záloha databáze SQL má výchozí dobu uchování, která je založená na úrovni služeb databáze a liší [nákupní model založený na DTU](sql-database-service-tiers-dtu.md) a [nákupní model založený na virtuálních jádrech (preview)](sql-database-service-tiers-vcore.md). Můžete aktualizovat období uchování zálohy pro databázi. Zobrazit [období uchování zálohy změnu](#how-to-change-backup-retention-period) další podrobnosti.
+Každá záloha databáze SQL má výchozí dobu uchování, která je založená na úrovni služeb databáze a liší [nákupní model založený na DTU](sql-database-service-tiers-dtu.md) a [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md). Můžete aktualizovat období uchování zálohy pro databázi. Zobrazit [období uchování zálohy změnu](#how-to-change-backup-retention-period) další podrobnosti.
 
 Když odstraníte databáze, databáze SQL zachovají zálohy stejným způsobem, který by tomu bylo online databáze. Například pokud odstraníte databázi Basic, který má dobu uchování o délce sedm dní, zálohy, která je starší čtyř dní uložená pro další tři dny.
 
@@ -61,11 +61,6 @@ Výchozí době uchování databáze vytvořené využitím nákupní model zalo
 Pokud aktuální dobu uchovávání PITR snížíte, všechny existující zálohy, které jsou starší než novým obdobím uchovávání nadále již nebudou dostupné. 
 
 Pokud zvýšíte aktuální dobu uchovávání PITR, SQL Database budete mít existující zálohy, dokud nebude dosaženo delší doba uchovávání dat.
-
-### <a name="pitr-retention-for-the-vcore-based-service-tiers-preview"></a>Uchování PITR pro úrovně služeb založený na virtuálních jádrech (preview)
-
-Ve verzi preview je doba uchování PITR pro databáze vytvořené využitím nákupní model založený na virtuálních jádrech nastavena na 7 dní. Přidružené úložiště je bezplatná.    
-
 
 ## <a name="how-often-do-backups-happen"></a>Jak často k dochází zálohy?
 ### <a name="backups-for-point-in-time-restore"></a>Zálohy pro obnovení k určitému bodu v čase

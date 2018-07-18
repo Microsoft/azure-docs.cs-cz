@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/12/2018
+ms.date: 07/17/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 446cb34f2de8d0de3ee52e23df6cd26644d31bba
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: d7554ef46289600cd15e4675a91f42a2cd735f18
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37435966"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39112657"
 ---
 # <a name="custom-roles-in-azure"></a>Vlastní role v Azure
 
@@ -74,11 +74,11 @@ Jakmile vytvoříte vlastní roli, zobrazí se na webu Azure Portal s ikona oran
 1. Určit oprávnění, které potřebujete
 
     Když vytvoříte vlastní roli, musíte znát prostředek operace poskytovatele, které je možné definovat oprávnění. Chcete-li zobrazit seznam operací, můžete použít [Get-AzureRMProviderOperation](/powershell/module/azurerm.resources/get-azurermprovideroperation) nebo [seznam operací az provider](/cli/azure/provider/operation#az-provider-operation-list) příkazy.
-    Chcete-li zadat oprávnění pro vlastní roli, přidáte operace, které se `actions` nebo `notActions` vlastnosti [definice role](role-definitions.md). Pokud máte operace s daty, můžete přidat do `dataActions` nebo `notDataActions` vlastnosti.
+    Chcete-li zadat oprávnění pro vlastní roli, přidáte operace, které se `Actions` nebo `NotActions` vlastnosti [definice role](role-definitions.md). Pokud máte operace s daty, můžete přidat do `DataActions` nebo `NotDataActions` vlastnosti.
 
 2. Vytvořit vlastní roli
 
-    Prostředí Azure PowerShell nebo rozhraní příkazového řádku Azure můžete použít k vytvoření vlastní role. Obvykle začněte s existující předdefinovanou roli a upravit ji pro vaše potřeby. Použít [New-AzureRmRoleDefinition](/powershell/module/azurerm.resources/new-azurermroledefinition) nebo [az role definition vytvořit](/cli/azure/role/definition#az-role-definition-create) příkazy k vytvoření vlastní role. Chcete-li vytvořit vlastní roli, musíte mít `Microsoft.Authorization/roleDefinitions/write` oprávnění ve všech `assignableScopes`, jako například [vlastníka](built-in-roles.md#owner) nebo [správce uživatelských přístupů](built-in-roles.md#user-access-administrator).
+    Prostředí Azure PowerShell nebo rozhraní příkazového řádku Azure můžete použít k vytvoření vlastní role. Obvykle začněte s existující předdefinovanou roli a upravit ji pro vaše potřeby. Použít [New-AzureRmRoleDefinition](/powershell/module/azurerm.resources/new-azurermroledefinition) nebo [az role definition vytvořit](/cli/azure/role/definition#az-role-definition-create) příkazy k vytvoření vlastní role. Chcete-li vytvořit vlastní roli, musíte mít `Microsoft.Authorization/roleDefinitions/write` oprávnění ve všech `AssignableScopes`, jako například [vlastníka](built-in-roles.md#owner) nebo [správce uživatelských přístupů](built-in-roles.md#user-access-administrator).
 
 3. Testování vlastní roli
 
@@ -95,19 +95,19 @@ Vlastní role má následující vlastnosti.
 | `IsCustom` | Ano | Řetězec | Označuje, zda se jedná o vlastní roli. Nastavte na `true` pro vlastní role. |
 | `Description` | Ano | Řetězec | Popis vlastní role. Může obsahovat písmena, číslice, mezery a speciální znaky. Maximální počet znaků je 1024. |
 | `Actions` | Ano | Řetězec] | Pole řetězců, která určuje, které role umožňuje provádět operace správy. Další informace najdete v tématu [akce](role-definitions.md#actions). |
-| `NotActions` | Ne | Řetězec] | Pole řetězců, které určuje operace správy, které jsou vyloučené z povolených `actions`. Další informace najdete v tématu [notActions](role-definitions.md#notactions). |
-| `DataActions` | Ne | Řetězec] | Pole řetězců, který určuje datové operace, které povoluje roli mají být provedeny ke svým datům v rámci daného objektu. Další informace najdete v tématu [dataActions (Preview)](role-definitions.md#dataactions-preview). |
-| `NotDataActions` | Ne | Řetězec] | Pole řetězců, které určuje datové operace, které jsou vyloučené z povolených `dataActions`. Další informace najdete v tématu [notDataActions (Preview)](role-definitions.md#notdataactions-preview). |
-| `AssignableScopes` | Ano | Řetězec] | Pole řetězců, která určuje, že je k dispozici pro přiřazení vlastní role obory. Nelze nastavit na kořenového oboru (`"/"`). Další informace najdete v tématu [assignableScopes](role-definitions.md#assignablescopes). |
+| `NotActions` | Ne | Řetězec] | Pole řetězců, které určuje operace správy, které jsou vyloučené z povolených `Actions`. Další informace najdete v tématu [NotActions](role-definitions.md#notactions). |
+| `DataActions` | Ne | Řetězec] | Pole řetězců, který určuje datové operace, které povoluje roli mají být provedeny ke svým datům v rámci daného objektu. Další informace najdete v tématu [DataActions (Preview)](role-definitions.md#dataactions-preview). |
+| `NotDataActions` | Ne | Řetězec] | Pole řetězců, které určuje datové operace, které jsou vyloučené z povolených `DataActions`. Další informace najdete v tématu [NotDataActions (Preview)](role-definitions.md#notdataactions-preview). |
+| `AssignableScopes` | Ano | Řetězec] | Pole řetězců, která určuje, že je k dispozici pro přiřazení vlastní role obory. Nelze nastavit na kořenového oboru (`"/"`). Další informace najdete v tématu [AssignableScopes](role-definitions.md#assignablescopes). |
 
 ## <a name="assignablescopes-for-custom-roles"></a>assignableScopes pro vlastní role
 
-Předdefinované role, stejně jako `assignableScopes` vlastnost určuje, že je k dispozici pro přiřazení role obory. Však nelze použít kořenovém oboru (`"/"`) ve vlastní role. Pokud se pokusíte, obdržíte chybu ověření. `assignableScopes` Také určuje vlastnost, pro vlastní roli, můžete vytvořit, odstranit, upravit nebo zobrazit vlastní roli.
+Předdefinované role, stejně jako `AssignableScopes` vlastnost určuje, že je k dispozici pro přiřazení role obory. Však nelze použít kořenovém oboru (`"/"`) ve vlastní role. Pokud se pokusíte, obdržíte chybu ověření. `AssignableScopes` Také určuje vlastnost, pro vlastní roli, můžete vytvořit, odstranit, upravit nebo zobrazit vlastní roli.
 
 | Úkol | Operace | Popis |
 | --- | --- | --- |
-| Vytvořit/odstranit vlastní roli | `Microsoft.Authorization/ roleDefinition/write` | Uživatelé, kteří jsou udělena tato operace na všech `assignableScopes` vlastní role můžete vytvořit (nebo odstranění) vlastních rolí pro použití v těchto oborech. Například [vlastníky](built-in-roles.md#owner) a [správci přístupu uživatelů](built-in-roles.md#user-access-administrator) předplatná, skupiny prostředků a prostředků. |
-| Upravit vlastní roli | `Microsoft.Authorization/ roleDefinition/write` | Uživatelé, kteří jsou udělena tato operace na všech `assignableScopes` vlastní role můžete upravit vlastní role v těchto oborech. Například [vlastníky](built-in-roles.md#owner) a [správci přístupu uživatelů](built-in-roles.md#user-access-administrator) předplatná, skupiny prostředků a prostředků. |
+| Vytvořit/odstranit vlastní roli | `Microsoft.Authorization/ roleDefinition/write` | Uživatelé, kteří jsou udělena tato operace na všech `AssignableScopes` vlastní role můžete vytvořit (nebo odstranění) vlastních rolí pro použití v těchto oborech. Například [vlastníky](built-in-roles.md#owner) a [správci přístupu uživatelů](built-in-roles.md#user-access-administrator) předplatná, skupiny prostředků a prostředků. |
+| Upravit vlastní roli | `Microsoft.Authorization/ roleDefinition/write` | Uživatelé, kteří jsou udělena tato operace na všech `AssignableScopes` vlastní role můžete upravit vlastní role v těchto oborech. Například [vlastníky](built-in-roles.md#owner) a [správci přístupu uživatelů](built-in-roles.md#user-access-administrator) předplatná, skupiny prostředků a prostředků. |
 | Zobrazit vlastní roli | `Microsoft.Authorization/ roleDefinition/read` | Uživatelé, kteří jsou udělena tato operace v oboru můžete zobrazit vlastní role, které jsou k dispozici pro přiřazení v daném oboru. Všechny vestavěné role povolit být k dispozici pro přiřazení vlastní role. |
 
 ## <a name="next-steps"></a>Další postup

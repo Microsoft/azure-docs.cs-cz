@@ -13,12 +13,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 05/29/2018
   ms.author: cgronlun
-  ms.openlocfilehash: 314e756981076468056dd691bce7d24073d6ff4b
-  ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+  ms.openlocfilehash: 5ac8d7ca6f607acd54ab40402bb83376fd8b5d63
+  ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 07/06/2018
-  ms.locfileid: "37865017"
+  ms.lasthandoff: 07/17/2018
+  ms.locfileid: "39089577"
 abstract:
   description: Naučte se, jak do vašich aplikací, webů a robotů integrovat inteligentní algoritmy, které umožní vidět a slyšet vaše zákazníky, mluvit s nimi a porozumět jejich požadavkům prostřednictvím přirozených způsobů komunikace. Kurzy, rychlá zprovoznění, reference k rozhraní API a příklady vám ukážou, jak na to.
 sections:
@@ -47,7 +47,7 @@ sections:
     rows:
     - title: Computer Vision – analýza obrázku
       values:
-      - href: /azure/cognitive-services/Computer-vision/Quickstarts/CSharp-analyze
+      - href: /azure/cognitive-services/Computer-vision/quickstarts-sdk/csharp-analyze-sdk
       - href: /azure/cognitive-services/Computer-vision/Quickstarts/java-analyze
       - href: /azure/cognitive-services/Computer-vision/Quickstarts/node-analyze
       - href: /azure/cognitive-services/Computer-vision/Quickstarts/python-analyze
@@ -94,6 +94,7 @@ sections:
   - type: list
     style: unordered
     items:
+    - html: <a href="/azure/cognitive-services/Face/Tutorials/FaceAPIinCSharpTutorial">Detekce a orámování tváří na obrázku</a>
     - html: <a href="/azure/cognitive-services/bing-custom-search/tutorials/custom-search-web-page">Vytvoření webové stránky pro vlastní vyhledávání</a>
     - html: <a href="/azure/cognitive-services/luis/luis-nodejs-tutorial-build-bot-framework-sample">Použití služby Language Understanding (LUIS) v robotu</a>
     - html: <a href="/azure/cognitive-services/luis/luis-tutorial-batch-testing">Zvýšení přesnosti záměrů pro příkazy domácí automatizace</a>

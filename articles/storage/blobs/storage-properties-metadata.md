@@ -1,6 +1,6 @@
 ---
-title: Nastavit a načíst vlastnosti objektu a metadata ve službě Azure Storage | Microsoft Docs
-description: Ukládat vlastní metadata pro objekty v Azure Storage a nastavit a načíst vlastnosti systému.
+title: Nastavení a načtení vlastností objektu a metadata ve službě Azure Storage | Dokumentace Microsoftu
+description: Store vlastních metadat pro objekty ve službě Azure Storage a nastavení a načtení vlastností systému.
 services: storage
 documentationcenter: ''
 author: tamram
@@ -12,37 +12,37 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/15/2017
+ms.date: 07/16/2018
 ms.author: tamram
-ms.openlocfilehash: a3eb598b2dabd4986c72b8814926eb0944707050
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d2c95139d42f42e43e2fa6e587d5b1b13afdf1e9
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23873027"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39112439"
 ---
 # <a name="set-and-retrieve-properties-and-metadata"></a>Nastavení a načtení vlastností a metadat
 
-Objekty v vlastnosti podporu systému Azure Storage a metadata definovaná uživatelem, kromě dat, která obsahují. Tento článek popisuje správu vlastnosti systému a metadata definovaná uživatelem s [Klientská knihovna pro úložiště Azure pro .NET](https://www.nuget.org/packages/WindowsAzure.Storage/).
+Objekty ve vlastnostech systému podpory služby Azure Storage a metadata definovaná uživatelem, kromě dat, které obsahují. Tento článek popisuje správu systémové vlastnosti a metadata definovaná uživatelem s [Klientská knihovna Azure Storage pro .NET](https://www.nuget.org/packages/WindowsAzure.Storage/).
 
-* **Vlastnosti systému**: vlastnosti systému existovat na všechny prostředky úložiště. Některé z nich můžou číst nebo nastavit, zatímco jiné jsou jen pro čtení. Některé vlastnosti systému skrytě, odpovídají určité standardní hlavičky protokolu HTTP. Klientská knihovna pro úložiště Azure udržuje to pro vás.
+* **Vlastnosti systému**: vlastnosti systému existují u jednotlivých prostředků úložiště. Některé z nich může být čtena nebo nastavena, zatímco jiné jsou jen pro čtení. Pod pokličkou některé vlastnosti systému odpovídají určitým standardními záhlavími HTTP. Klientské knihovny pro Azure Storage spravovat za vás tyto vlastnosti.
 
-* **Metadata definovaná uživatelem**: uživatelem definované metadata jsou metadata, která jste zadali na daný prostředek ve formě dvojice název hodnota. Metadata můžete použít k uložení další hodnoty s prostředků úložiště. Tyto hodnoty další metadata jsou vlastní pouze pro účely a neovlivní chování prostředku.
+* **Metadata definovaná uživatelem**: metadata definovaná uživatelem se skládá z jednoho nebo více dvojice název hodnota, které zadáte pro prostředek služby Azure Storage. Metadata můžete použít k ukládání další hodnoty, s prostředkem. Hodnoty metadat jsou vlastní pouze pro účely a nemají vliv na chování prostředku.
 
-Načítání hodnot vlastností a metadat pro úložiště prostředek je ve dvou krocích. Než si můžete přečíst tyto hodnoty, můžete musí explicitně načíst je voláním **FetchAttributesAsync** metoda.
+Načítání hodnot vlastností a metadat pro prostředek úložiště je dvoustupňový proces. Předtím, než si můžete přečíst tyto hodnoty, musíte explicitně načíst jejich voláním **FetchAttributes** nebo **FetchAttributesAsync** metody. Výjimkou je, pokud jsou volání **Exists** nebo **ExistsAsync** metodu na prostředek. Při volání jedné z těchto metod, zavolá odpovídající služby Azure Storage **FetchAttributes** metoda na pozadí jako součást volání **Exists** metody.
 
 > [!IMPORTANT]
-> Hodnoty vlastnosti a metadat pro úložiště prostředků nejsou naplněny, pokud je volání jednoho z **FetchAttributesAsync** metody.
+> Pokud zjistíte, že hodnoty vlastnosti nebo metadata pro prostředek úložiště nebyly vyplněna, zkontrolujte, že váš kód volá **FetchAttributes** nebo **FetchAttributesAsync** metody.
 >
-> Zobrazí se `400 Bad Request` Pokud všechny dvojice název/hodnota obsahovat jiné znaky než ASCII. Dvojice název/hodnota metadat jsou platné hlavičky protokolu HTTP a proto musí splňovat všechny omezení, kterými se řídí hlavičky protokolu HTTP. Proto se doporučuje používat kódování URL nebo pro názvy a hodnoty, který obsahuje jiné znaky než ASCII kódování Base64.
+> Dvojice název/hodnota metadata mohou obsahovat pouze znaky ASCII. Dvojice název/hodnota metadata jsou platná hlavičky protokolu HTTP a proto musí splňovat všechna omezení, kterými se řídí hlavičky protokolu HTTP. Doporučuje se, že používáte kódování URL nebo kódování Base64 pro názvy a hodnoty, který obsahuje jiné znaky než ASCII.
 >
 
-## <a name="setting-and-retrieving-properties"></a>Nastavení nebo načtení vlastností
-Chcete-li k získávání hodnot vlastností, zavolejte **FetchAttributesAsync** metodu objektu blob nebo kontejneru k naplnění vlastností, přečtěte si hodnoty.
+## <a name="setting-and-retrieving-properties"></a>Nastavení a načtení vlastností
+Chcete-li načíst hodnoty vlastností, zavolejte **FetchAttributesAsync** metodu na objekt blob nebo kontejner k naplnění vlastnosti, pak si můžete přečíst hodnoty.
 
-Nastavení vlastností pro objekt, určete vlastnost hodnotu a pak volání **SetProperties –** metoda.
+Můžete nastavit vlastnosti objektu, určete vlastnost hodnotu a potom voláním **SetProperties –** metody.
 
-Následující příklad kódu vytvoří kontejner a některé jeho vlastnosti hodnoty zapisuje do okna konzoly.
+Následující příklad kódu vytvoří kontejner a pak vypíše některé z jeho hodnot vlastností do okna konzoly.
 
 ```csharp
 //Parse the connection string for the storage account.
@@ -67,14 +67,14 @@ Console.WriteLine();
 ```
 
 ## <a name="setting-and-retrieving-metadata"></a>Nastavení a načítání metadat
-Metadata můžete zadat jako jeden nebo více dvojice název hodnota u objektů blob nebo kontejner prostředku. K nastavení metadat, přidat dvojice název hodnota k **Metadata** kolekce k prostředku, pak volání **SetMetadata** metody uložte hodnoty ke službě.
+Metadata můžete zadat jako jeden nebo více dvojice název hodnota u objektu blob nebo kontejner prostředku. Chcete-li nastavit metadata, přidejte dvojice název hodnota, které budou **metadat** kolekce na prostředku, zavolejte **SetMetadata** nebo **SetMetadataAsync** metodu pro uložení hodnoty, které mají Služba.
 
 > [!NOTE]
-> Zásady vytváření názvů pro identifikátory jazyka C# musí odpovídat názvu metadata.
+> Název metadata musí splňovat zásady vytváření názvů pro identifikátory jazyka C#.
 >
 >
 
-Následující příklad kódu nastaví metadata do kontejneru. Jedna hodnota se nastavuje pomocí kolekce **přidat** metoda. Další hodnota je nastavena pomocí syntaxe implicitní klíč/hodnota. Obě jsou platné.
+Následující příklad kódu nastaví metadata pro kontejner. Jedna hodnota je nastavena pomocí kolekce **přidat** metody. Jiná hodnota se nastavuje pomocí syntaxe implicitní klíč/hodnota. Obě jsou platné.
 
 ```csharp
 public static async Task AddContainerMetadataAsync(CloudBlobContainer container)
@@ -88,7 +88,7 @@ public static async Task AddContainerMetadataAsync(CloudBlobContainer container)
 }
 ```
 
-K načtení metadat, volání **FetchAttributes** metodu objektu blob nebo kontejneru k naplnění **Metadata** kolekce, pak číst hodnoty, jak je znázorněno v následujícím příkladu.
+Chcete-li načíst metadata, zavolejte **FetchAttributes** nebo **FetchAttributesAsync** metodu na objekt blob nebo kontejner k naplnění **metadat** kolekce, pak si můžete přečíst hodnoty, jak je znázorněno v následujícím příkladu.
 
 ```csharp
 public static async Task ListContainerMetadataAsync(CloudBlobContainer container)
@@ -106,6 +106,6 @@ public static async Task ListContainerMetadataAsync(CloudBlobContainer container
 }
 ```
 
-## <a name="next-steps"></a>Další kroky
-* [Klientská knihovna pro Azure Storage pro .NET – referenční informace](/dotnet/api/?term=Microsoft.WindowsAzure.Storage)
-* [Azure Klientská knihovna pro úložiště pro balíček NuGet pro rozhraní .NET](https://www.nuget.org/packages/WindowsAzure.Storage/)
+## <a name="next-steps"></a>Další postup
+* [Klientská knihovna Azure Storage pro .NET – referenční informace](/dotnet/api/?term=Microsoft.WindowsAzure.Storage)
+* [Klientská knihovna Azure Storage pro balíček NuGet pro rozhraní .NET](https://www.nuget.org/packages/WindowsAzure.Storage/)

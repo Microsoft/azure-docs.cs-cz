@@ -1,6 +1,6 @@
 ---
-title: Azure HDInsight - připojený k doméně clustery HDInsight-
-description: Zjistěte...
+title: Úvod do zabezpečení Hadoop s clustery Azure HDInsight připojené k doméně
+description: Zjistěte, jak připojených k doméně Azure HDInsight clustery podporují čtyři pilíře podnikového zabezpečení.
 services: hdinsight
 author: omidm1
 manager: jhubbard
@@ -12,44 +12,59 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/26/2018
 ms.author: omidm
-ms.openlocfilehash: 3fd3a4b8982fe2170726df03bdc884e658d0b0c2
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 6f2c41aff8aaa389a8f2288cbb445e1ba2e7fd14
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37019484"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39112532"
 ---
-# <a name="an-introduction-to-hadoop-security-with-domain-joined-hdinsight-clusters"></a>Úvod do Hadoop zabezpečení s clustery HDInsight připojený k doméně
+# <a name="an-introduction-to-hadoop-security-with-domain-joined-hdinsight-clusters"></a>Úvod do zabezpečení Hadoop s clustery HDInsight připojené k doméně
 
-Služba Azure HDInsight až doteď podporovala jako místního správce pouze jednoho uživatele. To dobře fungovalo pro menší aplikace, týmy nebo oddělení. Jako Hadoop založené na úlohy, které získávají další oblíbenosti v odvětví enterprise potřebu s podnikovými úrovni jako je ověřování active directory na základě se stala stále důležité podporu více uživatelů a řízení přístupu na základě rolí. Pomocí clusterů HDInsight připojených k doméně můžete vytvořit cluster HDInsight připojený k doméně služby Active Directory a nakonfigurovat seznam zaměstnanců podniku, kteří se pro přihlášení ke clusteru mohou ověřovat prostřednictvím služby Azure Active Directory. Nikdo jiný mimo podnik se ke clusteru HDInsight nemůže přihlásit ani připojit. Správce podnikové sítě můžete konfigurovat řízení přístupu na základě role pomocí Hive zabezpečení [Apache škálu](http://hortonworks.com/apache/ranger/), proto omezuje přístup k datům jenom tolik, podle potřeby. Kromě toho může správce také provádět audit přistupování k datům zaměstnanci a jakýchkoli změn provedených v zásadách řízení přístupu. Tím dosáhne vysokého stupně dohledu nad firemními prostředky.
+V minulosti, Azure HDInsight podporován pouze u jednoho uživatele: místní správce. To dobře fungovalo pro menší aplikace, týmy nebo oddělení. Jak se úlohy založené na Hadoopu oblíbenějšími v odvětví enterprise, potřeba pro podporu funkce na podnikové úrovni, jako je ověřování na základě služby Active Directory, více uživateli, a řízení přístupu na základě rolí stal nabývá na důležitosti. 
+
+Můžete vytvořit cluster HDInsight, který je připojený k doméně služby Active Directory. Potom můžete nakonfigurovat seznam zaměstnanců podniku, kteří mohou ověřovat prostřednictvím služby Azure Active Directory pro přihlášení ke clusteru HDInsight. Nikdo jiný mimo podnik nemůže přihlásit nebo přístup ke clusteru HDInsight. 
+
+Podnikový správce můžete konfigurovat řízení přístupu na základě role (RBAC) pro zabezpečení Hivu pomocí [Apache Ranger](http://hortonworks.com/apache/ranger/). Konfigurace RBAC omezí přístup k datům jenom to, co je potřeba. Nakonec správce můžete auditovat přístup k datům zaměstnanci a jakýchkoli změn provedených v zásadách řízení přístupu. Správce pak může dosáhnout vysokého stupně dohledu nad firemními prostředky.
 
 > [!NOTE]
-> Nové funkce popsané v tomto článku jsou dostupné ve verzi preview pouze na následující typy clusteru: Hadoop, Spark a interaktivní dotazu. Oozie je teď povolené na clusterech připojený k doméně. Chcete-li přístup Oozie webového uživatelského rozhraní uživatelé měli povolit [tunelové propojení](../hdinsight-linux-ambari-ssh-tunnel.md)
+> Nové funkce popsané v tomto článku jsou dostupné ve verzi preview pouze následující typy clusteru: Hadoop, Spark a interaktivní dotaz. Oozie je nyní zapnuta clustery připojené k doméně. Pro přístup k webovým Uživatelským rozhraním Oozie, musí uživatelé povolit [tunelování](../hdinsight-linux-ambari-ssh-tunnel.md).
 
-## <a name="benefits"></a>Výhody
-Podnikové zabezpečení obsahuje čtyři hlavní pilíře – hraniční zabezpečení, ověřování, ověřování a šifrování.
+Podnikové zabezpečení obsahuje čtyři hlavní pilíře: zabezpečení perimetru, ověřování, autorizace a šifrování.
 
-![Pilíře výhod clusterů HDInsight připojených k doméně](./media/apache-domain-joined-introduction/hdinsight-domain-joined-four-pillars.png).
+![Výhod clusterů HDInsight připojených k doméně v čtyři pilíře podnikové zabezpečení](./media/apache-domain-joined-introduction/hdinsight-domain-joined-four-pillars.png).
 
-### <a name="perimeter-security"></a>Zabezpečení perimetru
-Služba HDInsight zajišťuje zabezpečení perimetru pomocí virtuálních sítí a služby Gateway. Enterprise Admins v současné době můžete vytvořit cluster služby HDInsight uvnitř virtuální sítě a použijte skupiny zabezpečení sítě (pravidla brány firewall) k omezení přístupu k virtuální síti. Pouze IP adresy definované v příchozích pravidlech brány firewall budou moci komunikovat s clusterem HDInsight a tak je zajištěno zabezpečení perimetru. Další vrstvu zabezpečení perimetru zajišťuje služba Gateway. Brána je službu, která funguje jako první linií obrany pro všechny příchozí požadavek na clusteru HDInsight. Tato služba požadavek přijme, ověří jej a teprve pak mu umožní průchod do dalších uzlů v clusteru. Tím zajišťuje zabezpečení ostatních jmenných a datových uzlů v clusteru.
+## <a name="perimeter-security"></a>Zabezpečení perimetru
+Zabezpečení perimetru v HDInsight se dosahuje prostřednictvím virtuálních sítí a službou Azure VPN Gateway. Může podnikový správce můžete vytvořit cluster HDInsight uvnitř virtuální sítě a pomocí skupin zabezpečení sítě (pravidla brány firewall) omezit přístup k virtuální síti. Pouze IP adresy definované v pravidlech brány firewall pro příchozí budou moci komunikovat s clusterem HDInsight. Tato konfigurace zajišťuje zabezpečení perimetru.
 
-### <a name="authentication"></a>Authentication
-Správce podniku můžete vytvořit cluster HDInsight se připojený k doméně v [virtuální sítě](https://azure.microsoft.com/services/virtual-network/). Uzly clusteru HDInsight budou připojeny k doméně spravované podnikem. Toho můžete dosáhnout s použitím služby [Azure Active Directory Domain Services](../../active-directory-domain-services/active-directory-ds-overview.md). Všechny uzly v clusteru jsou připojeny k doméně spravované podnikem. S tímto nastavením se mohou zaměstnanci podniku přihlašovat ke clusteru pomocí svých přihlašovacích údajů domény. Přihlašovací údaje domény může také používat k ověřování pro ostatní schválené koncové body, jako je zobrazení Ambari ODBC, JDBC, prostředí PowerShell a rozhraní REST API pro interakci s clusterem. Správce má úplnou kontrolu nad omezením počtu uživatelů pracujících s clusterem přes tyto koncové body.
+Další vrstvu zabezpečení perimetru zajišťuje přes službu VPN Gateway. Brána funguje jako první linie obrany pro veškeré příchozí požadavky do clusteru HDInsight. Tato služba požadavek přijme, ověří jej a teprve pak mu umožní průchod do dalších uzlů v clusteru. Tímto způsobem brána poskytuje zabezpečení perimetru do jiných jmenných a datových uzlů v clusteru.
 
-### <a name="authorization"></a>Autorizace
-Osvědčeným postupem, který dodržuje většina podniků, je, že ne každý zaměstnanec má přístup ke všem podnikovým prostředkům. V této verzi se podobně správce můžete definovat zásady řízení přístupu na základě rolí pro prostředky clusteru. Správce může například nakonfigurovat [Apache Ranger](http://hortonworks.com/apache/ranger/), aby nastavil zásady řízení přístupu pro Hive. Tato funkce zajišťuje, že uživatelů budou mít přístup pouze k nezbytnému množství dat, která potřebují k úspěšné práci. Přístup ke clusteru přes SSH je také omezen pouze pro správce.
+## <a name="authentication"></a>Authentication
+Může podnikový správce vytvořit cluster HDInsight připojený k doméně ve [virtuální sítě](https://azure.microsoft.com/services/virtual-network/). Všechny uzly clusteru HDInsight jsou připojené k doméně, která spravuje podnik. Toho můžete dosáhnout prostřednictvím [Azure Active Directory Domain Services](../../active-directory-domain-services/active-directory-ds-overview.md). 
 
-### <a name="auditing"></a>Auditování
-Kromě ochrany prostředků clusteru HDInsight před neautorizovanými uživateli a zabezpečení dat je nezbytné provádění auditu veškerých přístupů k prostředkům a datům clusteru za účelem sledování neautorizovaného nebo nechtěného přístupu k prostředkům. Správce může zobrazit a sestavy veškerý přístup k prostředkům clusteru HDInsight a datům. Správce může také zobrazit a vytvářet sestavy o všech změnách v zásadách řízení přístupu provedených v koncových bodech podporovaných v Apache Ranger. Cluster HDInsight připojený k doméně používá k prohledávání protokolů auditu známé uživatelské rozhraní Apache Ranger. Na back-endu používá Ranger k ukládání a prohledávání protokolů [Apache Solr](http://hortonworks.com/apache/solr/).
+S tímto nastavením zaměstnanci podniku může přihlásit k uzlům clusteru s použitím svých přihlašovacích údajů domény. Lze také použít svoje přihlašovací údaje domény k ověření dalších schválených koncových bodech jako zobrazení Ambari ODBC, JDBC, PowerShell a rozhraní REST API pro interakci s clusterem. Správce má plnou kontrolu nad omezením počtu uživatelů, kteří pracují s clusterem přes tyto koncové body.
 
-### <a name="encryption"></a>Šifrování
-Ochrana dat je důležitá pro splnění požadavků na zabezpečení organizace a dodržování předpisů. Kromě omezení přístupu k datům neautorizovanými uživateli by data měla být zabezpečena také šifrováním. Obě úložiště dat pro clustery HDInsight (Azure Storage Blob a úložiště Azure Data Lake) podporují transparentní [šifrování neaktivních uložených dat](../../storage/common/storage-service-encryption.md) na straně serveru. Zabezpečené clustery HDInsight bezproblémově pracovat se tento server na straně šifrování dat na rest schopnosti.
+## <a name="authorization"></a>Autorizace
+Osvědčeným postupem, které následují většina podniků, je zajistit, že ne každý zaměstnanec má přístup ke všem podnikovým prostředkům. Správce, můžete definovat zásady řízení přístupu na základě rolí pro prostředky clusteru. 
+
+Správce může například nakonfigurovat [Apache Ranger](http://hortonworks.com/apache/ranger/), aby nastavil zásady řízení přístupu pro Hive. Tato funkce zajišťuje, aby zaměstnanci měli přístup ke pouze tolik dat, jako je třeba je úspěšné práci. Přístup přes SSH ke clusteru je také omezen na pouze správce.
+
+## <a name="auditing"></a>Auditování
+Auditu veškerých přístupů k prostředkům clusteru a data, je nezbytné ke sledování neautorizovaného nebo nechtěného přístupu k prostředkům. Je důležité jako Ochrana prostředků clusteru HDInsight před neoprávněnými uživateli a zabezpečení dat. 
+
+Správce můžete zobrazit a sestavy o všech přístupech k prostředkům clusteru HDInsight a data. Správce můžete také zobrazit a sestavy o všech změnách v zásadách řízení přístupu, který je vytvořen v Apache Ranger podporované koncové body. 
+
+Cluster HDInsight připojený k doméně používá k prohledávání protokolů auditu známé uživatelské rozhraní Apache Ranger. V rámci back-endu používá Ranger [Apache Solr](http://hortonworks.com/apache/solr/) pro ukládání a prohledávání protokolů.
+
+## <a name="encryption"></a>Šifrování
+Ochrana dat je důležitá pro organizační požadavky zabezpečení a dodržování předpisů na schůzku. Kromě omezení přístupu k datům neautorizovanými, by ho zašifrovat. 
+
+Obě úložiště dat pro clustery HDInsight – Azure Blob storage a Azure Data Lake Storage Gen1 – podpora transparentní serverové [šifrování dat](../../storage/common/storage-service-encryption.md) v klidovém stavu. Zabezpečené clustery HDInsight budou bez problému fungovat díky této funkci šifrování na straně serveru dat v klidovém stavu.
 
 ## <a name="next-steps"></a>Další postup
-* [Plánování pro clustery služby HDInsight připojený k doméně](apache-domain-joined-architecture.md).
-* [Konfigurace clusterů HDInsight připojený k doméně](apache-domain-joined-configure.md).
-* [Správa clusterů HDInsight připojený k doméně](apache-domain-joined-manage.md).
-* [Nakonfigurovat zásady Hive pro clustery služby HDInsight připojený k doméně](apache-domain-joined-run-hive.md).
-* [Použití SSH s HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined).
+* [Plán pro clustery HDInsight připojené k doméně](apache-domain-joined-architecture.md)
+* [Konfigurace clusterů HDInsight připojených k doméně](apache-domain-joined-configure.md)
+* [Správa clusterů HDInsight připojených k doméně](apache-domain-joined-manage.md)
+* [Konfigurace zásad Hivu pro clustery HDInsight připojené k doméně](apache-domain-joined-run-hive.md)
+* [Použití SSH s HDInsightem](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined)
 

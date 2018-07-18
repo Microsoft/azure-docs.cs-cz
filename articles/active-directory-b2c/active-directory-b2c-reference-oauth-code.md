@@ -10,26 +10,26 @@ ms.topic: conceptual
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 6baeba9cc7e631c6dbdf2284db484dc5f95adcce
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 9fb2d2ccabf79a95a108d4ecf39a4957fc9ffff4
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37444197"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113670"
 ---
 # <a name="azure-active-directory-b2c-oauth-20-authorization-code-flow"></a>Azure Active Directory B2C: Tok autorizačního kódu OAuth 2.0
 Udělení autorizačního kódu OAuth 2.0 můžete použít v aplikacích, které jsou nainstalované v zařízení získat přístup k chráněným prostředkům, jako je například webové rozhraní API. Pomocí Azure Active Directory B2C (Azure AD B2C) provádění OAuth 2.0, můžete přidat registrace, přihlašování a identity management. Další úkoly do vašich mobilních a desktopových aplikací. Tento článek je nezávislým na jazyku. V následujícím článku zjistíte, jak posílat a přijímat zprávy HTTP bez použití jakékoli knihovny open-source.
 
 <!-- TODO: Need link to libraries -->
 
-Tok autorizačního kódu OAuth 2.0 je popsaný v [části 4.1 specifikace OAuth 2.0](http://tools.ietf.org/html/rfc6749). Můžete ho použít pro ověřování a autorizace ve většině typů aplikací, včetně [webové aplikace](active-directory-b2c-apps.md#web-apps) a [nativně nainstalované aplikace](active-directory-b2c-apps.md#mobile-and-native-apps). Tok autorizačního kódu OAuth 2.0 můžete bezpečně získat *přístupové tokeny* pro vaše aplikace, které lze použít pro přístup k prostředkům, které jsou zabezpečené pomocí [autorizační server](active-directory-b2c-reference-protocols.md#the-basics).
+Tok autorizačního kódu OAuth 2.0 je popsaný v [části 4.1 specifikace OAuth 2.0](http://tools.ietf.org/html/rfc6749). Můžete ho použít pro ověřování a autorizace ve většině [typy aplikací](active-directory-b2c-apps.md), včetně webových aplikací a nativně nainstalovaných aplikací. Tok autorizačního kódu OAuth 2.0 můžete bezpečně získat přístupové tokeny pro vaše applicationss, který slouží pro přístup k prostředkům, které jsou zabezpečené pomocí [autorizační server](active-directory-b2c-reference-protocols.md).
 
 Tento článek se týká **veřejní klienti** tok autorizačního kódu OAuth 2.0. Veřejné klienta je klientská aplikace, který nemůže být důvěryhodné a zabezpečené udržovat integritu tajný klíč. To zahrnuje mobilních aplikací, aplikací klasické pracovní plochy a v podstatě jakékoli aplikace, která běží na zařízení a je potřeba získat přístupové tokeny. 
 
 > [!NOTE]
 > Chcete-li přidat správy identit do webové aplikace pomocí Azure AD B2C, použijte [OpenID Connect](active-directory-b2c-reference-oidc.md) místo OAuth 2.0.
 
-Azure AD B2C rozšiřuje standard, kterou toky OAuth 2.0 lepší než jednoduché ověřování a autorizace. Zavádí [parametr zásad](active-directory-b2c-reference-policies.md). Integrované zásady, můžete pomocí OAuth 2.0 pro přidání uživatelů do vaší aplikace, jako registrace, přihlašování a správy profilů. V tomto článku ukážeme, jak každá z těchto možností implementace v nativních aplikací pomocí OAuth 2.0 a zásady. Můžeme také ukazují, jak získat přístupové tokeny pro přístup k webovým rozhraním API.
+Azure AD B2C rozšiřuje standard, kterou toky OAuth 2.0 lepší než jednoduché ověřování a autorizace. Zavádí [parametr zásad](active-directory-b2c-reference-policies.md). Pomocí předdefinovaných zásad vám pomůže OAuth 2.0 přidejte uživatelské prostředí pro vaši aplikaci, například registrace, přihlašování a správy profilů. V tomto článku ukážeme, jak každá z těchto možností implementace v nativních aplikací pomocí OAuth 2.0 a zásady. Můžeme také ukazují, jak získat přístupové tokeny pro přístup k webovým rozhraním API.
 
 V žádosti o příklad HTTP v tomto článku používáme naše ukázka adresář Azure AD B2C, **fabrikamb2c.onmicrosoft.com**. Použijeme také naše ukázková aplikace a zásady. Požadavky můžete také vyzkoušet sami s využitím těchto hodnot, nebo je můžete nahradit vlastními hodnotami.
 Zjistěte, jak [získat vlastní adresáře Azure AD B2C, aplikace a zásady](#use-your-own-azure-ad-b2c-directory).
@@ -189,7 +189,7 @@ POST fabrikamb2c.onmicrosoft.com/oauth2/v2.0/token?p=b2c_1_sign_in HTTP/1.1
 Host: https://login.microsoftonline.com
 Content-Type: application/x-www-form-urlencoded
 
-grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6 offline_access&refresh_token=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob
+grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&client_secret=JqQX2PNo9bpM0uEihUPzyrh&scope=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6 offline_access&refresh_token=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob
 ```
 
 | Parametr | Povinné? | Popis |

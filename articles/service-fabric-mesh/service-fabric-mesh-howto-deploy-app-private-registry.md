@@ -1,7 +1,7 @@
 ---
 title: Nasadit aplikaci z privátního registru do Azure Service Fabric mřížky | Dokumentace Microsoftu
 description: Zjistěte, jak nasadit aplikaci, která bude privátním registru kontejneru se Service Fabric pomocí Azure CLI.
-services: service-fabric
+services: service-fabric-mesh
 documentationcenter: .net
 author: rwike77
 manager: jeconnoc
@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/16/2018
 ms.author: ryanwi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 0a70cd1bd8cd7df099250ca59b3f00b1cab29e5c
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: af92d3c6ea881d00ec687a5560bf4db35aa431c5
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/17/2018
-ms.locfileid: "39076002"
+ms.locfileid: "39089482"
 ---
 # <a name="deploy-a-service-fabric-mesh-app-from-a-private-container-image-registry"></a>Nasazení aplikace Service Fabric sítě z registru image kontejneru soukromého
 
@@ -39,7 +39,7 @@ Nainstalujte Docker pro podporu kontejnerizovaných aplikací Service Fabric pou
 
 Stáhněte a nainstalujte nejnovější verzi [Docker Community Edition pro Windows][download-docker]. 
 
-Během instalace, vybrat **kontejnery Windows použijte namísto kontejnery Linuxu** když se zobrazí výzva. Budete muset pak odhlásit a zase přihlásit. Po přihlášení zpět, pokud jste nepovolili dříve Hyper-V vám může zobrazit výzva k povolení technologie Hyper-V. Musíte povolit Hyper-V a restartujte počítač.
+Během instalace, vybrat **kontejnery Windows použijte namísto kontejnery Linuxu** když se zobrazí výzva. Budete muset pak odhlásit a zase přihlásit. Po přihlášení zpět, pokud jste nepovolili dříve Hyper-V vám může zobrazit výzva k povolení technologie Hyper-V. Povolení technologie Hyper-V a restartujte počítač.
 
 Po restartování počítače, Docker vás vyzve k zapnutí **kontejnery** funkcí, povolte ji a restartujte počítač.
 
@@ -116,8 +116,7 @@ Result
 --------
 1.1-alpine
 ```
-
-To ukazuje, že `azure-mesh-helloworld:1.1-alpine` image je k dispozici v privátní registr.
+Tento výstup potvrzuje přítomnost `azure-mesh-helloworld:1.1-alpine` v privátní registr.
 
 ## <a name="retrieve-credentials-for-the-registry"></a>Načtení přihlašovacích údajů registru
 
@@ -135,7 +134,8 @@ az acr credential show --name <acrName> --query username
 az acr credential show --name <acrName> --query "passwords[0].value"
 ```
 
-Hodnoty poskytnuté předchozí příkazy se odkazuje jako `<acrLoginServer>`, `<acrUserName>`, a `<acrPassword>` v následujícím příkazu.
+Hodnoty poskytnuté před příkazy jsou odkazovány jako `<acrLoginServer>`, `<acrUserName>`, a `<acrPassword>` v následujícím příkazu.
+
 
 ## <a name="deploy-the-template"></a>Nasazení šablony
 
@@ -144,7 +144,7 @@ Vytvoření aplikace a související prostředky, pomocí následujícího pří
 `registry-password` Parametr v šabloně `securestring`. Se nebude zobrazovat ve stavu nasazení a `az mesh service show` příkazy. Ujistěte se, že je správně zadán v následujícím příkazu.
 
 ```azurecli-interactive
-az mesh deployment create --resource-group myResourceGroup --template-uri https://sfmeshsamples.blob.core.windows.net/templates/helloworld/mesh_rp.private_registry.linux.json --parameters "{\"location\": {\"value\": \"eastus\"}, \"registry-server\": {\"value\": \"<acrLoginServer>\"}, \"registry-username\": {\"value\": \"<acrUserName>\"}, \"registry-password\": {\"value\": \"<acrPassword>\"}}"
+az mesh deployment create --resource-group myResourceGroup --template-uri https://sfmeshsamples.blob.core.windows.net/templates/helloworld/mesh_rp.private_registry.linux.json --parameters "{\"location\": {\"value\": \"eastus\"}, \"registry-server\": {\"value\": \"<acrLoginServer>\"}, \"registry-username\": {\"value\": \"<acrUserName>\"}, \"registry-password\": {\"value\": \"<acrPassword>\"}}" 
 ```
 
 Za pár minut by měla vrátit příkazu pomocí:
@@ -152,9 +152,9 @@ Za pár minut by měla vrátit příkazu pomocí:
 `helloWorldPrivateRegistryApp has been deployed successfully on helloWorldPrivateRegistryNetwork with public ip address <IP Address>` 
 
 ## <a name="open-the-application"></a>Otevřete aplikaci
-Po úspěšném nasazení aplikace, získejte veřejnou IP adresu pro koncový bod služby a otevřít v prohlížeči. Ji by měl zobrazení webové stránky s logem sítě pro Service Fabric.
+Po úspěšném nasazení aplikace, získejte veřejnou IP adresu pro koncový bod služby a otevřít v prohlížeči. Zobrazí se webová stránka s logem sítě pro Service Fabric.
 
-Nasazení příkazu vrátí veřejnou IP adresu koncového bodu služby. Můžete také zadávat dotazy sítě prostředek, který chcete zjistit veřejnou IP adresu koncového bodu služby.
+Nasazení příkazu vrátí veřejnou IP adresu koncového bodu služby. Volitelně můžete také zadávat dotazy sítě prostředek, který chcete zjistit veřejnou IP adresu koncového bodu služby. 
  
 Název sítě prostředků pro tuto aplikaci je `helloWorldPrivateRegistryNetwork`, načíst informace o něm pomocí následujícího příkazu. 
 

@@ -13,15 +13,15 @@ ms.topic: article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/03/2018
+ms.date: 07/17/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 98e2f88c85d21cde2ecc7196f93d531a80b14d13
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: f1a6a11f827248d098c018390e9ae5557d9c22d1
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37449847"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113371"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-conditional-access"></a>Rychlý start: Blokování přístupu, když se zjistí ohrožení relace s podmíněným přístupem Azure Active Directory  
 
@@ -62,7 +62,7 @@ Cílem tohoto kroku je zajistit, že testovací účet můžete přístup k vaš
 
 ## <a name="create-your-conditional-access-policy"></a>Vytvořte zásadu podmíněného přístupu 
 
-Scénář v tomto rychlém startu se používá u přihlášení v prohlížeči Tor k vygenerování zjištěné **přihlášení z anonymních IP adres** riziková událost. Úroveň rizika tuto rizikovou událost je střední.   
+Scénář v tomto rychlém startu se používá u přihlášení v prohlížeči Tor k vygenerování zjištěné **přihlášení z anonymních IP adres** riziková událost. Úroveň rizika tuto rizikovou událost je střední. Reakce na tuto rizikovou událost, nastavte podmínku rizika přihlašování na médium. V produkčním prostředí byste měli nastavit podmínku rizika přihlašování na vysoce nebo na střední a vysokou.     
 
 Tato část ukazuje, jak vytvořit zásady podmíněného přístupu vyžaduje. V zásadách nastavte:
 
@@ -70,10 +70,11 @@ Tato část ukazuje, jak vytvořit zásady podmíněného přístupu vyžaduje. 
 |---     | --- |
 | Uživatelé a skupiny | Alain Charon  |
 | Cloudové aplikace | Všechny cloudové aplikace |
+| Riziko přihlášení | Střednědobé používání |
 | Udělení | Blokovat přístup |
  
 
-![Vytvoření zásad](./media/active-directory-conditional-access-app-sign-in-risk/115.png)
+![Vytvoření zásad](./media/active-directory-conditional-access-app-sign-in-risk/130.png)
 
  
 
@@ -125,6 +126,26 @@ Tato část ukazuje, jak vytvořit zásady podmíněného přístupu vyžaduje. 
     a. Klikněte na tlačítko **všechny cloudové aplikace**.
 
     b. Klikněte na **Done** (Hotovo).
+
+10. Klikněte na tlačítko **podmínky**. 
+
+    ![Ovládací prvky přístupu](./media/active-directory-conditional-access-app-sign-in-risk/19.png)
+
+11. Na **podmínky** stránky:
+
+    ![Úroveň rizika přihlášení](./media/active-directory-conditional-access-app-sign-in-risk/21.png)
+
+    a. Klikněte na tlačítko **rizika přihlašování**.
+ 
+    b. Jako **konfigurovat**, klikněte na tlačítko **Ano**.
+
+    c. Jako úroveň rizika přihlášení, vyberte **střední**.
+
+    d. Klikněte na **Vybrat**.
+
+    e. Na **podmínky** klikněte na **provádí**.
+
+
 
 10. V **ovládací prvky přístupu** klikněte na tlačítko **udělení**.
 

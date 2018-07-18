@@ -1,6 +1,6 @@
 ---
-title: Transformace dat pomocí Azure Data Factory | Microsoft Docs
-description: Zjistěte, jak k transformaci dat nebo zpracování dat v Azure Data Factory pomocí Hadoop, Machine Learning nebo Azure Data Lake Analytics.
+title: Transformace dat pomocí Azure Data Factory | Dokumentace Microsoftu
+description: Zjistěte, jak transformovat data nebo zpracovávat data v Azure Data Factory pomocí Hadoopu, Machine Learning nebo Azure Data Lake Analytics.
 services: data-factory
 documentationcenter: ''
 author: douglaslMS
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: douglasl
-ms.openlocfilehash: 23471a4ae912ee4947a91f0aef7fb2557e6ebba3
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: afd1944006a08811075e8af8b1a641d00ee3c352
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37050961"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39112810"
 ---
-# <a name="transform-data-in-azure-data-factory"></a>Transformace dat v Azure Data Factory
+# <a name="transform-data-in-azure-data-factory"></a>Transformace dat ve službě Azure Data Factory
 > [!div class="op_single_selector"]
 > * [Hive](transform-data-using-hadoop-hive.md)  
 > * [Pig](transform-data-using-hadoop-pig.md)  
@@ -32,50 +32,50 @@ ms.locfileid: "37050961"
 > * [Vlastní rozhraní .NET](transform-data-using-dotnet-custom-activity.md)
 
 ## <a name="overview"></a>Přehled
-Tento článek vysvětluje aktivit transformace dat v Azure Data Factory můžete použít k transformaci a zpracuje nezpracovaná data do předpovědi a statistiky. Transformace aktivity spustí výpočetní prostředí jako je cluster Azure HDInsight nebo Azure Batch. Poskytuje odkazy na články s podrobné informace o každé aktivity transformace.
+Tento článek vysvětluje, aktivity transformace dat ve službě Azure Data Factory můžete použít k transformaci a zpracování nezpracovaných dat do předpovědi a přehledy. Aktivita transformace se spouští ve výpočetním prostředí, jako je cluster Azure HDInsight nebo Azure Batch. Poskytuje odkazy na články s podrobnými informacemi o každé aktivity transformace.
 
-Objekt pro vytváření dat podporuje následující aktivit transformace dat, které mohou být přidány do [kanály](concepts-pipelines-activities.md) buď jednotlivě nebo zřetězené s jinou aktivitou.
+Data Factory podporuje následující aktivity transformace dat, které mohou být přidány do [kanály](concepts-pipelines-activities.md) buď jednotlivě nebo ve spojení s jinou aktivitou.
 
-## <a name="hdinsight-hive-activity"></a>Aktivitu HDInsight Hive
-Aktivity HDInsight Hive v kanálu pro vytváření dat provede dotazů Hive sami nebo clusteru HDInsight se systémem Windows nebo Linux na vyžádání. V tématu [aktivitu Hivu](transform-data-using-hadoop-hive.md) článku podrobnosti o této aktivitě. 
+## <a name="hdinsight-hive-activity"></a>Aktivita HDInsight Hive
+Aktivita HDInsight Hive v kanálu služby Data Factory provádí dotazy Hive sami nebo clusteru HDInsight se systémem Windows nebo Linux na vyžádání. Zobrazit [aktivitu Hivu](transform-data-using-hadoop-hive.md) , kde najdete podrobnosti o této aktivitě. 
 
-## <a name="hdinsight-pig-activity"></a>Aktivita HDInsight Pig
-HDInsight Pig aktivity v kanálu pro vytváření dat provede Pig dotazy na vlastní nebo clusteru HDInsight se systémem Windows nebo Linux na vyžádání. V tématu [vepřových aktivity](transform-data-using-hadoop-pig.md) článku podrobnosti o této aktivitě. 
+## <a name="hdinsight-pig-activity"></a>Aktivita Pig s HDInsight
+Aktivita Pig s HDInsight v kanálech Data Factory spustí dotazy Pig sami nebo clusteru HDInsight se systémem Windows nebo Linux na vyžádání. Zobrazit [aktivita Pig](transform-data-using-hadoop-pig.md) , kde najdete podrobnosti o této aktivitě. 
 
-## <a name="hdinsight-mapreduce-activity"></a>Činnost MapReduce s HDInsight
-Činnost HDInsight MapReduce v objektu pro vytváření dat kanál provede MapReduce programy sami nebo clusteru HDInsight se systémem Windows nebo Linux na vyžádání. V tématu [činnost MapReduce](transform-data-using-hadoop-map-reduce.md) článku podrobnosti o této aktivitě.
+## <a name="hdinsight-mapreduce-activity"></a>Aktivita MapReduce s HDInsight
+Aktivita HDInsight MapReduce v kanálech Data Factory provádí programů MapReduce sami nebo clusteru HDInsight se systémem Windows nebo Linux na vyžádání. Zobrazit [aktivita MapReduce](transform-data-using-hadoop-map-reduce.md) , kde najdete podrobnosti o této aktivitě.
 
-## <a name="hdinsight-streaming-activity"></a>HDInsight streamované aktivitě
-HDInsight streamování aktivity v kanálu pro vytváření dat provede streamování Hadoop programy sami nebo clusteru HDInsight se systémem Windows nebo Linux na vyžádání. V tématu [HDInsight streamované aktivitě](transform-data-using-hadoop-streaming.md) podrobnosti o této aktivitě.
+## <a name="hdinsight-streaming-activity"></a>Aktivita HDInsight streamování
+Aktivita HDInsight streamování v kanálech Data Factory provádí streamování Hadoop programy sami nebo clusteru HDInsight se systémem Windows nebo Linux na vyžádání. Zobrazit [aktivita HDInsight streamování](transform-data-using-hadoop-streaming.md) podrobnosti o této aktivitě.
 
 ## <a name="hdinsight-spark-activity"></a>Aktivita HDInsight Spark
-Aktivity HDInsight Spark v objektu pro vytváření dat kanál provede na clusteru HDInsight Spark programy. Podrobnosti najdete v tématu [vyvolání Spark programy z Azure Data Factory](transform-data-using-spark.md). 
+HDInsight Spark aktivitu v kanálu služby Data Factory provádí programů Spark v clusteru HDInsight. Podrobnosti najdete v tématu [vyvolání programů Spark ze služby Azure Data Factory](transform-data-using-spark.md). 
 
-## <a name="machine-learning-activities"></a>Machine Learning aktivity
-Azure Data Factory můžete snadno vytvořit kanály, které používají publikované webové služby Azure Machine Learning pro prediktivní analýzy. Pomocí [aktivita provedení dávky](transform-data-using-machine-learning.md) v kanál služby Azure Data Factory můžete vyvolat webové služby Machine Learning k provádět předpovědi na datech v dávce.
+## <a name="machine-learning-activities"></a>Aktivity Machine Learning
+Azure Data Factory umožňuje snadno vytvářet kanály, které používají publikované webové služby Azure Machine Learning pro prediktivní analýzy. Použití [aktivita provedení dávky služby](transform-data-using-machine-learning.md) v kanálu Azure Data Factory, vyvoláte webovou službu Machine Learning k vytváření predikcí na data ve službě batch.
 
-V průběhu času prediktivní modely v Machine Learning vyhodnocování experimentů muset být retrained pomocí nové vstupní datové sady. Jakmile jste hotovi s přeučení chcete aktualizovat webovou službu vyhodnocování s modelem retrained Machine Learning. Můžete použít [aktivita prostředku aktualizace](update-machine-learning-models.md) aktualizace webové služby s nově naučeného modelu.  
+V průběhu času prediktivních modelů ve službě Machine Learning, experimenty vyhodnocování musí být retrained pomocí nové vstupní datové sady. Jakmile budete hotovi s přetrénování, budete chtít aktualizovat hodnoticí webové služby s modelem Machine Learning retrained. Můžete použít [aktivita prostředku aktualizace](update-machine-learning-models.md) jak aktualizovat webovou službu s nově trénovaného modelu.  
 
-V tématu [použití Machine Learning aktivity](transform-data-using-machine-learning.md) podrobnosti o tyto aktivity Machine Learning. 
+Zobrazit [aktivit Machine learningu pomocí](transform-data-using-machine-learning.md) podrobné informace o těchto aktivit Machine learningu. 
 
 ## <a name="stored-procedure-activity"></a>Aktivita uložené procedury
-Můžete aktivity uložené procedury serveru SQL v objektu pro vytváření dat kanál vyvolat uloženou proceduru v jednom z následujících úložišť dat: databáze SQL Azure, Azure SQL Data Warehouse, databáze SQL serveru ve vašem podniku nebo virtuální počítač Azure. V tématu [aktivity uložené procedury](transform-data-using-stored-procedure.md) článku.  
+Aktivita uložená procedura SQL serveru v kanálech Data Factory můžete použít k vyvolání uložené procedury v jedné z následujících úložišť dat: Azure SQL Database, Azure SQL Data Warehouse, databáze SQL serveru ve vašem podniku nebo Virtuálním počítači Azure. Zobrazit [aktivity uložené procedury](transform-data-using-stored-procedure.md) , kde najdete podrobnosti.  
 
 ## <a name="data-lake-analytics-u-sql-activity"></a>Aktivita Data Lake Analytics U-SQL
-Data Lake Analytics U-SQL aktivity spouští skript U-SQL na clusteru služby Azure Data Lake Analytics. V tématu [Data Analytics U-SQL aktivity](transform-data-using-data-lake-analytics.md) článku. 
+Aktivita data Lake Analytics U-SQL spouští skript U-SQL v clusteru služby Azure Data Lake Analytics. Zobrazit [aktivita Data Analytics U-SQL](transform-data-using-data-lake-analytics.md) , kde najdete podrobnosti. 
 
-## <a name="net-custom-activity"></a>Vlastní aktivita .NET
-Pokud potřebujete transformovat data způsobem, který není podporován službou Data Factory, můžete vytvořit vlastní aktivity s logika zpracování dat a použijte aktivitu v kanálu. Můžete nakonfigurovat vlastní .NET aktivity ke spuštění pomocí služby Azure Batch nebo clusteru Azure HDInsight. V tématu [použít vlastní aktivity](transform-data-using-dotnet-custom-activity.md) článku. 
+## <a name="custom-activity"></a>Vlastní aktivita
+Pokud potřebujete transformovat data způsobem, který není podporován službou Data Factory, můžete vytvořit vlastní aktivitu s vlastní logiku zpracování dat a použijte aktivitu v kanálu. Můžete vytvořit vlastní aktivitu .NET pro spuštění pomocí služby Azure Batch nebo cluster Azure HDInsight. Zobrazit [použití vlastních aktivit](transform-data-using-dotnet-custom-activity.md) , kde najdete podrobnosti. 
 
 Můžete vytvořit vlastní aktivitu pro spouštění skriptů jazyka R na svém clusteru HDInsight s nainstalovaným jazykem R. Viz [Spuštění skriptu jazyka R pomocí služby Azure Data Factory](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample). 
 
 ## <a name="compute-environments"></a>Výpočetní prostředí
-Vytvoření propojené služby pro výpočetní prostředí a potom pomocí propojené služby, při definování aktivitou transformace. Existují dva typy výpočetní prostředí podporovaných službou Data Factory. 
+Vytvoření propojené služby pro výpočetní prostředí a pak použít propojené služby pro definování aktivit transformace. Existují dva typy výpočetních prostředí podporovaných službou Data Factory. 
 
-- **Na vyžádání**: V tomto případě je plně spravovaná výpočetní prostředí službou Data Factory. Je vytvořeno automaticky pomocí služby Data Factory předtím, než je úloha odeslána zpracování dat a odebrat při dokončení úlohy. Můžete konfigurovat a řídit granulární nastavení na vyžádání výpočetní prostředí pro spuštění úlohy, správu clusteru a zavádění akce. 
-- **Přineste si vlastní**: V tomto případě můžete zaregistrovat vlastní výpočetní prostředí (například cluster HDInsight) jako propojené služby ve službě Data Factory. Výpočetní prostředí spravujete vy a služba Data Factory používá, je spuštění aktivity. 
+- **Na vyžádání**: V tomto případě plně spravované výpočetní prostředí pomocí služby Data Factory. Je automaticky vytvořen ve službě Data Factory předtím, než je úlohy odeslané do dat procesu a odebrat, pokud je úloha dokončena. Můžete konfigurovat a řídit granulární nastavení výpočetní prostředky na vyžádání prostředí pro provádění úloh, správu clusteru a spuštění akce. 
+- **Přineste si vlastní**: V tomto případě mohou registrovat své vlastní výpočetní prostředí (například cluster HDInsight) jako propojenou službu ve službě Data Factory. Výpočetní prostředí spravujete sami a služba Data Factory používá je ke spuštění aktivity. 
 
-V tématu [propojené výpočetní služby](compute-linked-services.md) článku Další informace o výpočetní služby podporovaných službou Data Factory. 
+Zobrazit [propojené výpočetní služby](compute-linked-services.md) článku se dozvíte o výpočetních služeb podporovaných službou Data Factory. 
 
 ## <a name="next-steps"></a>Další postup
-Projděte si následující kurz pro příklad použití aktivitou transformace: [kurz: transformace dat pomocí Spark](tutorial-transform-data-spark-powershell.md)
+Projděte si následující kurz pro příklad použití aktivit transformace: [kurz: transformace dat pomocí Sparku](tutorial-transform-data-spark-powershell.md)

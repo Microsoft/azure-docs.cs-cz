@@ -1,6 +1,6 @@
 ---
-title: Přeučování strojového učení modelu | Microsoft Docs
-description: Zjistěte, jak aktualizovat webovou službu, která používá nově trénovaného modelu v Azure Machine Learning a přeučování modelu.
+title: Přeučování Model strojového učení | Dokumentace Microsoftu
+description: Zjistěte, jak model přetrénujete a aktualizovat webovou službu, která používá nově trénovaného modelu ve službě Azure Machine Learning.
 services: machine-learning
 documentationcenter: ''
 author: YasinMSFT
@@ -15,87 +15,87 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.openlocfilehash: ca7ad5a46c1401a283879f8aba80c781a88fc089
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 46aa2c209f782706357f9a928ddbaa6321abdd77
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34835425"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39115523"
 ---
-# <a name="retrain-a-machine-learning-model"></a>Přeučování strojového učení modelu
-Jako součást procesu operationalization modelů machine learning v Azure Machine Learning je váš model vycvičena a uložit. Potom ji používáte k vytvoření predicative webové služby. Webové služby, pak mohou být využívány v weby, řídicí panely a mobilní aplikace. 
+# <a name="retrain-a-machine-learning-model"></a>Přeučování Model strojového učení
+Jako součást procesu operacionalizace modelů strojového učení v Azure Machine Learning je váš model školení a uložen. Pak použijete ho k vytvoření prediktivní webové služby. Webová služba může být potom používán webové stránky, řídicí panely a mobilních aplikací. 
 
-Obvykle nejsou statické modely, které vytvoříte pomocí Machine Learning. Jakmile nová data k dispozici, nebo když příjemce rozhraní API má svá vlastní data musí být retrained modelu. 
+Obvykle nejsou statické modely, které vytvoříte pomocí služby Machine Learning. K dispozici nová data nebo když příjemce rozhraní API má svá vlastní data musí být retrained modelu. 
 
-Retraining může dojít, často. S funkcí programové Přeučení rozhraní API můžete prostřednictvím kódu programu přeučování modelu s použitím rozhraní Retraining API a aktualizovat webovou službu s nově naučeného modelu. 
+Přeškolení dochází často. S funkcí programový Přetrénování rozhraní API můžete prostřednictvím kódu programu přeučování modelu s použitím rozhraní Retraining API a aktualizovat webovou službu s nově trénovaného modelu. 
 
-Tento dokument popisuje proces retraining a ukazuje, jak použít i rozhraní Retraining API.
+Tento dokument popisuje proces retraining a ukazuje, jak použít rozhraní Retraining API.
 
 ## <a name="why-retrain-defining-the-problem"></a>Proč přeučování: definování problému
-Jako součást strojového učení proces školení cvičení modelu pomocí datové sadě. Obvykle nejsou statické modely, které vytvoříte pomocí Machine Learning. Jakmile nová data k dispozici, nebo když příjemce rozhraní API má svá vlastní data musí být retrained modelu.
+Jako součást machine learningu procesu trénování model se trénuje pomocí sady data. Obvykle nejsou statické modely, které vytvoříte pomocí služby Machine Learning. K dispozici nová data nebo když příjemce rozhraní API má svá vlastní data musí být retrained modelu.
 
-V těchto scénářích poskytuje programovací rozhraní API pohodlný způsob, jak povolit jste nebo příjemci vašich rozhraní API pro vytvoření klienta, který může na základě jednorázové nebo regulární přeučování modelu s použitím svá vlastní data. Potom se můžete vyhodnotit výsledky retraining a aktualizovat webového rozhraní API služby použít nově trained model.
+V těchto scénářích programových rozhraní API poskytuje pohodlný způsob, jak vám či příjemce vašich rozhraní API k vytvoření klienta, který můžete, na základě jednorázové nebo pravidelné přeučování modelu s použitím svá vlastní data. Potom mohou Vyhodnoťte výsledky přetrénování a aktualizovat rozhraní API webové služby pro použití nově trénovaného modelu.
 
 > [!NOTE]
-> Pokud máte existující výukový Experiment a nové webové služby, můžete projít obsloužených existující prediktivní webovou službu místo následující postupy uvedené v následující části.
+> Pokud máte existující výukového experimentu a nové webové služby, můžete chtít rezervovat obsloužených existující prediktivní webové služby nepostupujte návod uvedených v následující části.
 > 
 > 
 
 ## <a name="end-to-end-workflow"></a>Ucelený pracovní postup
-Proces zahrnuje následující součásti: A výukový Experiment a prediktivní Experiment publikované jako webovou službu. Povolit retraining z modulu trained model, je nutné výukový Experiment publikovat jako webovou službu s výstup modulu trained model. To umožňuje retraining API přístup k modelu. 
+Tento proces zahrnuje následující součásti: experimentu A trénování a prediktivní Experiment publikovat jako webovou službu. Povolit přeučováním trénovaného modelu, musí být publikován výukový Experiment jako webové služby s výstupem trénovaného modelu. To umožňuje přístup k rozhraní API modelu pro přetrénování. 
 
-Následující postup platí pro nové a Classic webové služby:
+Následující postup se vztahuje na nový a klasické webové služby:
 
 Vytvoření počáteční prediktivní webové služby:
 
-* Vytvoření experimentu školení
-* Vytvoření experimentu prediktivní web
-* Nasadit prediktivní webové služby
+* Vytvořit výukový experiment
+* Vytvoření experimentu prediktivními webovými
+* Nasazení prediktivní webové služby
 
 Přeučování webové služby:
 
-* Aktualizace výukový experiment umožňující retraining
+* Aktualizace výukového experimentu umožňující přetrénování
 * Nasazení retraining webové služby
-* Pomocí služby Batch provádění kódu přeučování modelu
+* Pomocí kódu služba Batch Execution přeučování modelu
 
-Návod, podle předchozích kroků, najdete v části [Machine Learning Přeučování modelů prostřednictvím kódu programu](retrain-models-programmatically.md).
+Názorný postup předchozí kroky, najdete v části [modelů Machine Learning Přeučování](retrain-models-programmatically.md).
 
 > [!NOTE] 
-> K nasazení nové webové služby musí mít dostatečná oprávnění v rámci předplatného, do které, můžete nasazení webové služby. Další informace najdete v tématu [spravovat webové služby pomocí portálu webové služby Azure Machine Learning](manage-new-webservice.md). 
+> K nasazení nové webové služby musí mít dostatečná oprávnění v rámci předplatného, ke kterému, můžete nasazení webové služby. Další informace najdete v tématu [Správa webové služby pomocí portálu Azure Machine Learning Web Services](manage-new-webservice.md). 
 
-Pokud jste nasadili Classic webové služby:
+Pokud jste nasadili klasických webových služeb:
 
-* Vytvořte nový koncový bod na prediktivní webové služby
-* Získat adresu PATCH URL a kódu
-* Použijte adresu URL OPRAVIT tak, aby odkazoval nový koncový bod v retrained modelu 
+* Vytvořit nový koncový bod na prediktivní webové služby
+* Získat adresu URL opravu a kódu
+* Použijte adresu URL OPRAVIT tak, aby odkazovala nový koncový bod v modelu retrained 
 
-Návod, podle předchozích kroků, najdete v části [Přeučování Classic webové služby](retrain-a-classic-web-service.md).
+Názorný postup předchozí kroky, najdete v části [Přeučování klasickou webovou službou](retrain-a-classic-web-service.md).
 
-Pokud narazíte na problémy retraining Classic webové služby, přečtěte si téma [řešení potíží s retraining Azure Machine Learning Classic webové služby](troubleshooting-retraining-models.md).
+Pokud narazíte na potíže přetrénování klasická webová služba, přečtěte si téma [řešení potíží s přeučováním služby Azure Machine Learning klasickou webovou](troubleshooting-retraining-models.md).
 
-Pokud jste nasadili do nové webové služby:
+Pokud je nasazení nové webové služby:
 
-* Přihlaste se k účtu Azure Resource Manager
+* Přihlaste se ke svému účtu Azure Resource Manageru
 * Získat definice webové služby
-* Exportovat jako JSON definice webové služby
-* Aktualizovat odkaz na `ilearner` objektu blob ve formátu JSON
+* Export definice webové služby jako JSON.
+* Aktualizovat odkaz na `ilearner` objektů blob JSON
 * Import kódu JSON do definice webové služby
-* Aktualizovat webovou službu pomocí nové definice webové služby
+* Aktualizovat webovou službu pomocí definice nové webové služby
 
-Návod, podle předchozích kroků, najdete v části [Přeučování nové webové službě pomocí rutin prostředí PowerShell správu Machine Learning](retrain-new-web-service-using-powershell.md).
+Názorný postup předchozí kroky, najdete v části [Přeučování nové webové služby pomocí rutin prostředí PowerShell pro Machine Learning Management](retrain-new-web-service-using-powershell.md).
 
-Proces pro nastavení retraining Classic webové služby zahrnuje následující kroky:
+Proces pro nastavení přeškolení pro klasickou webovou službou zahrnuje následující kroky:
 
-![Retraining přehled procesu][1]
+![Přeškolení přehled procesu][1]
 
-Proces pro nastavení retraining pro nové webové služby zahrnuje následující kroky:
+Proces pro nastavení přeškolení pro novou webovou službu zahrnuje následující kroky:
 
-![Retraining přehled procesu][7]
+![Přeškolení přehled procesu][7]
 
 ## <a name="other-resources"></a>Další prostředky
-* [Modely retraining a aktualizaci Azure Machine Learning s Azure Data Factory](https://azure.microsoft.com/blog/retraining-and-updating-azure-machine-learning-models-with-azure-data-factory/)
-* [Vytvořit mnoho modely Machine Learning a webové koncové body služby z jednoho experimentu pomocí prostředí PowerShell](create-models-and-endpoints-with-powershell.md)
-* [AML Přeučení modelů pomocí rozhraní API](https://www.youtube.com/watch?v=wwjglA8xllg) video ukazuje, jak přeučování modelů Machine Learning v Azure Machine Learning vytvořit pomocí rozhraní Retraining API a prostředí PowerShell.
+* [Aktualizace Azure Machine Learning a přetrénování modelů s Azure Data Factory](https://azure.microsoft.com/blog/retraining-and-updating-azure-machine-learning-models-with-azure-data-factory/)
+* [Vytvoření mnoha modelů Machine Learning a webové koncové body služby z jednoho experimentu pomocí prostředí PowerShell](create-models-and-endpoints-with-powershell.md)
+* [AML Přetrénování modelů pomocí rozhraní API](https://www.youtube.com/watch?v=wwjglA8xllg) video ukazuje, jak programovém přeučení modelů Machine Learning vytvořených ve službě Azure Machine Learning pomocí Retraining API a Powershellu.
 
 <!--image links-->
 [1]: ./media/retrain-machine-learning-model/machine-learning-retrain-models-programmatically-IMAGE01.png

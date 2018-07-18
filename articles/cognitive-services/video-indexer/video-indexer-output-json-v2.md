@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 05/30/2018
 ms.author: juliako
-ms.openlocfilehash: be94a508a10fdbbed194fb71e28fd7c3b72a080c
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 8b32b241c4122893bb07993402a22d2223053f3d
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38989474"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39115173"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-v2-api"></a>Prozkoumání výstupu funkce Video Indexer vytvořené metodou rozhraní API v2
 
@@ -84,22 +84,13 @@ Tato část uvádí přehled informací.
 |privacyMode|Vaše rozpis může mít jednu z těchto režimů: **privátní**, **veřejné**. **Veřejné** – video je viditelné všem uživatelům v účtu a každý uživatel, který obsahuje odkaz na video. **Privátní** – video je viditelné všem uživatelům ve vašem účtu.|
 |doba trvání|Obsahuje jeden dobu, po kterou popisuje čas, kdy došlo k chybě přehledů. Doba trvání je během několika sekund.|
 |thumbnailUrl|Miniatura videa úplné adresy URL. Například "https://www.videoindexer.ai/api/Thumbnail/3a9e38d72e/d1f5fac5-e8ae-40d9-a04a-6b2928fb5d10?accessToken=eyJ0eXAiOiJKV1QiLCJhbGciO...". Všimněte si, že pokud video privátní, adresa URL obsahuje přístupový token jednu hodinu. Po jedné hodině, adresa URL se již nebude platný a je nutné buď získat rozpis znovu s novou adresu url v ní nebo volejte GetAccessToken k získání nového tokenu přístupu a vytvořit úplnou adresu url. ručně ("https://www.videoindexer.ai/api/Thumbnail/[shortId] nebo [ThumbnailId]? accessToken = [accessToken]').|
-|tváří|Může obsahovat jeden nebo více ploch. Další informace najdete v tématu [tváří](#faces).|
-|témata|Může obsahovat jedno nebo více témat. Další informace najdete v tématu [témata](#topics).|
-|zabarvení|Může obsahovat jeden nebo více mínění. Další informace najdete v tématu [zabarvení](#sentiments).|
-|audioEffects| Může obsahovat jeden nebo více audioEffects. Další informace najdete v tématu [audioEffects](#audioeffects).|
+|tváří|Může obsahovat nula nebo více ploch. Další informace najdete v tématu [tváří](#faces).|
+|klíčová slova|Může obsahovat nula nebo více klíčových slov. Další informace najdete v tématu [klíčová slova](#keywords).|
+|zabarvení|Může obsahovat nula nebo více mínění. Další informace najdete v tématu [zabarvení](#sentiments).|
+|audioEffects| Může obsahovat nula nebo více audioEffects. Další informace najdete v tématu [audioEffects](#audioeffects).|
+|popisky| Může obsahovat nula nebo více štítků. Další informace najdete v tématu [popisky](#labels).|
 |značky| Může obsahovat nula nebo více značek. Další informace najdete v tématu [značky](#brands).|
 |statistiky | Další informace najdete v tématu [statistiky](#statistics).|
-
-### <a name="statistics"></a>statistiky
-
-|Název|Popis|
-|---|---|
-|CorrespondenceCount|Počet srovnávací ve videu.|
-|WordCount|Počet slov za mluvčího.|
-|SpeakerNumberOfFragments|Množství fragmenty mluvčího se ve videu.|
-|SpeakerLongestMonolog|Nejdelší monolog tohoto mluvčího. Pokud má mluvčího silences uvnitř protokolu monolog je zahrnuté. Na začátku a konci protokolu monolog nečinnosti se odstraní.| 
-|SpeakerTalkToListenRatio|Výpočet vychází čas strávený na mluvčího protokolu monolog (bez nečinnosti mezi) rozdělené podle celkové doby trvání videa. Čas se zaokrouhlí na třetí desetinné čárky.|
 
 ## <a name="videos"></a>videa
 
@@ -116,7 +107,7 @@ Tato část uvádí přehled informací.
 |adresy externalUrl|Videa externí adresa url (Pokud je zadaný uživatelem).|
 |zprostředkovatele identity|Externí metadat videa (Pokud je zadaný uživatelem).|
 |isAdult|Určuje, jestli se video ručně zkontrolovat a identifikována jako dospělého videa.|
-|přehledy|Objekt, který insights.|
+|přehledy|Objekt, který insights. Další informace najdete v tématu [insights](#insights).|
 |thumbnailUrl|Miniatura videa úplné adresy URL. Například "https://www.videoindexer.ai/api/Thumbnail/3a9e38d72e/d1f5fac5-e8ae-40d9-a04a-6b2928fb5d10?accessToken=eyJ0eXAiOiJKV1QiLCJhbGciO...". Všimněte si, že pokud video privátní, adresa URL obsahuje přístupový token jednu hodinu. Po jedné hodině, adresa URL se již nebude platný a je nutné buď získat rozpis znovu s novou adresu url v ní nebo volejte GetAccessToken k získání nového tokenu přístupu a vytvořit úplnou adresu url. ručně ("https://www.videoindexer.ai/api/Thumbnail/[shortId] nebo [ThumbnailId]? accessToken = [accessToken]').|
 |publishedUrl|Adresa url pro streamování videa.|
 |publishedUrlProxy|Adresa url pro streamování videa z (pro zařízení Apple).|
@@ -166,7 +157,7 @@ Přehledy jsou sadu dimenzí (například přepisu řádky, tváří, značky, a
 |přepis|[Přepisu](#transcript) dimenze.|
 |optické rozpoznávání znaků|[Ocr](#ocr) dimenze.|
 |klíčová slova|[Klíčová slova](#keywords) dimenze.|
-| bloky|Může obsahovat jednu nebo více [bloky](#blocks)|
+|bloky|Může obsahovat jednu nebo více [bloky](#blocks)|
 |tváří|[Tváří](#faces) dimenze.|
 |popisky|[Popisky](#labels) dimenze.|
 |snímky|[Snímky](#shots) dimenze.|
@@ -201,16 +192,8 @@ Příklad:
 
 Atribut | Popis
 ---|---
-id|ID bloku.
-řádky|Může obsahovat jednu nebo více [řádky](#lines)
-sentimentIds|**SentimentIds** atribut je vyhrazená pro budoucí použití.
-thumbnailIds|**ThumbnailIds** atribut je vyhrazená pro budoucí použití.
-mínění|Mínění v bloku (0-1, záporná hodnota, při pozitivní).
-tváří|Může obsahovat jednu nebo více [tváří](#faces).
-ocrs|Může obsahovat jednu nebo více [ocrs](#ocrs).
-audioEffectInstances|Může obsahovat jednu nebo více [audioEffectInstances](#audioEffectInstances).
-scén|Může obsahovat jednu nebo více [scén](#scenes).
-Poznámky|Může obsahovat nula nebo více [poznámky](#annotations).
+id|ID bloku.|
+instance|Seznam časových rozsahů tento blok.|
 
 #### <a name="transcript"></a>přepis
 
@@ -563,6 +546,16 @@ Firmy a produktů názvy v převodu řeči na text přepisu a/nebo Video optick�
 ]
 ```
 
+#### <a name="statistics"></a>statistiky
+
+|Název|Popis|
+|---|---|
+|CorrespondenceCount|Počet srovnávací ve videu.|
+|WordCount|Počet slov za mluvčího.|
+|SpeakerNumberOfFragments|Množství fragmenty mluvčího se ve videu.|
+|SpeakerLongestMonolog|Nejdelší monolog tohoto mluvčího. Pokud má mluvčího silences uvnitř protokolu monolog je zahrnuté. Na začátku a konci protokolu monolog nečinnosti se odstraní.| 
+|SpeakerTalkToListenRatio|Výpočet vychází čas strávený na mluvčího protokolu monolog (bez nečinnosti mezi) rozdělené podle celkové doby trvání videa. Čas se zaokrouhlí na třetí desetinné čárky.|
+
 #### <a name="audioeffects"></a>audioEffects
 
 |Název|Popis|
@@ -599,12 +592,14 @@ Zabarvení se agregují podle jejich sentimentType pole (neutrální/kladné neb
 |id|ID mínění.|
 |Průměr |Průměr všech skóre všech instancí tohoto typu mínění – pozitivní nebo neutrální nebo negativní|
 |instance|Seznam časových rozsahů, ve kterém se objevil tento mínění.|
+|sentimentType |Typ může být "Pozitivní", 'Neutrální' nebo "Záporné".|
 
 ```json
 "sentiments": [
 {
     "id": 0,
     "averageScore": 0.87,
+    "sentimentType": "Positive",
     "instances": [
     {
         "start": "00:00:23",
@@ -614,6 +609,7 @@ Zabarvení se agregují podle jejich sentimentType pole (neutrální/kladné neb
 }, {
     "id": 1,
     "averageScore": 0.11,
+    "sentimentType": "Positive",
     "instances": [
     {
         "start": "00:00:13",

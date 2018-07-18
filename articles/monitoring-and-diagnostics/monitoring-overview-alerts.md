@@ -1,6 +1,6 @@
 ---
-title: Přehled classic výstrah v Microsoft Azure a monitorování Azure
-description: Výstrahy umožňují sledovat metriky prostředků Azure, události nebo protokoly a být upozorněni, když je splněna podmínka, které zadáte.
+title: Přehled klasických upozornění v Microsoft Azure a Azure Monitor
+description: Výstrahy umožňují monitorovat metriky prostředků Azure, události nebo protokoly a upozornění, když je splněna podmínka, kterou zadáte.
 author: rboucher
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,71 +8,71 @@ ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: robb
 ms.component: alerts
-ms.openlocfilehash: 89c3975a1212aa991e42e0cce4fe5521b53bd373
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: a0abcbdaa7e998413efb717be6e0addc5607ec5c
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263666"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39114007"
 ---
-# <a name="what-are-classic-alerts-in-microsoft-azure"></a>Jaké jsou classic výstrah v Microsoft Azure?
+# <a name="what-are-classic-alerts-in-microsoft-azure"></a>Co jsou upozornění v Microsoft Azure classic?
 
 > [!NOTE]
-> Tento článek popisuje postup vytvoření starší classic metriky výstrahy. Azure nyní podporuje monitorování [novější metriky výstrahy skoro v reálném čase a nové výstrahy prostředí](monitoring-overview-unified-alerts.md). 
+> Tento článek popisuje, jak vytvářet starší, klasické metriky upozornění. Azure teď podporuje monitorování [upozornění na metriku novější, téměř v reálném čase a nové prostředí upozornění](monitoring-overview-unified-alerts.md). 
 >
 
-Výstrahy umožňují nakonfigurovat podmínky nad daty a být upozorněni, když podmínky odpovídají data nejnovější sledování.
+Pomocí výstrah můžete nakonfigurovat podmínky nad daty a nechte se informovat podmínky odpovídají data nejnovější monitorování.
 
 
-## <a name="alerts-on-azure-monitor-data"></a>Výstrahy na dat monitorování Azure
-Existují dva typy classic výstrahy k dispozici – výstrahy protokolu aktivity a metriky výstrahy.
+## <a name="alerts-on-azure-monitor-data"></a>Upozornění na data Azure Monitor
+Nejsou k dispozici dva druhy klasických upozornění: upozornění na metriky a upozornění protokolu aktivit.
 
-* **Classic metriky výstrahy** – Tato výstraha aktivuje, když hodnota zadané metriky překračuje prahovou hodnotu, která přiřadíte. Výstraha vygeneruje oznámení, pokud je výstraha "aktivován" (Pokud se překročí prahovou hodnotu a je splněna podmínka výstrahy) a také při se "nevyřeší" (Pokud je znovu překročí prahovou hodnotu a již není splněna podmínka). Pro novější metriky výstrahy najdete níže.
+* **Klasické metriky upozornění**: Tato výstraha se aktivuje, když hodnota zadaného metrika překročí mezní hodnotu, která přiřadíte. Výstrahy generuje upozornění, když it společnosti "aktivovaný" (když se překročí prahovou hodnotu a je splněná podmínka výstrahy). Také vygeneruje výstrahu, když ho se "Vyřešeno" (Pokud je znovu překročí prahovou hodnotu a už není splněná podmínka). 
 
-* **Výstrahy Classic aktivity protokolu** -streamování výstrahu protokolu, které spustí, když je generována událost protokol aktivit, že kritéria, které jste přiřadili filtru odpovídá. Tyto výstrahy mít pouze jeden stav "Aktivovali," vzhledem k tomu, že modul Výstrahy kritéria filtru, která jednoduše platí pro všechny nové události. Tyto výstrahy lze stát upozornění, když dojde k nový incident stav služby, nebo pokud uživatele nebo aplikace provede operaci v rámci vašeho předplatného, například "Odstranění virtuálního počítače."
+* **Upozornění protokolu aktivit Classic**: Tato výstraha streamování protokolů aktivuje, když událost protokolu aktivit se vygeneruje, že odpovídá filtru kritérií, které jste přiřadili. Tyto výstrahy mít pouze jeden stav "aktivovaná,", protože modul pro správu oznámení kritéria filtru, která jednoduše platí pro všechny nové události. Tyto výstrahy mohou vás upozorní, když dojde k nový incident Service Health nebo když uživatel nebo aplikace provádí operace ve vašem předplatném, jako "odstranit virtuální počítač."
 
-Pro data protokolů diagnostiky k dispozici prostřednictvím Azure monitorování doporučujeme směrování dat do analýzy protokolů (OMS dříve) a pomocí dotazu upozornění na analýzy protokolů. Přihlaste se Analytics teď používá [nové výstrahy – metoda](monitoring-overview-unified-alerts.md) 
+Pokud chcete přijímat data diagnostického protokolu k dispozici, která je dostupná prostřednictvím služby Azure Monitor, směrovat data do Log Analytics (dříve Operations Management Suite) a používat upozornění dotazu Log Analytics. Protokolovat Analytics teď používá [nové výstrahy metoda](monitoring-overview-unified-alerts.md). 
 
-Následující diagram shrnuje zdroje dat v Azure monitorování a, koncepčně, jak můžete výstrahy z tato data.
+Následující diagram obsahuje souhrn zdrojů dat ve službě Azure Monitor a navrhne, jak může upozornit vypnout tato data.
 
 ![Vysvětlení výstrah](./media/monitoring-overview-alerts/Alerts_Overview_Resource_v4.png)
 
-## <a name="taxonomy-of-azure-monitor-alerts-classic"></a>Taxonomii výstrah monitorování Azure (klasický)
-Azure používá k popisu classic výstrahy a jejich funkce následující podmínky:
-* **Výstrahy** -definici kritéria (jeden nebo více pravidel nebo podmínky), která se změní na aktivovat, pokud splněny.
-* **Aktivní** -stav, když je splněna kritéria definovaná classic výstraha.
-* **Vyřešit** -stav, když po dříve splněné již není splněna kritéria definovaná classic výstraha.
-* **Oznámení** – akce na základě z upozornění na classic, aby se aktivovala.
-* **Akce** -konkrétní volání odeslaných k příjemce oznámení (například e-mailem na adresu nebo příspěvků na adresu URL webhooku). Oznámení můžete aktivovat obvykle více akcí.
+## <a name="taxonomy-of-azure-monitor-alerts-classic"></a>Taxonomie služby Azure Monitor upozornění (klasická)
+Azure používá k popisu klasických upozornění a jejich funkce následující podmínky:
+* **Upozornění**: definice kritéria (jeden nebo více pravidel nebo podmínky), který se stane při splnění aktivována.
+* **Aktivní**: stav, ke které dojde při splnění kritéria, která je definována klasického upozornění.
+* **Vyřešené**: stav, ke které dojde při kritéria, která je definována klasického upozornění už není splněná po dříve splněné.
+* **Oznámení**: akce, která se provede na základě když classic výstraha se aktivuje.
+* **Akce**: konkrétní volání, které je odesláno příjemce oznámení (například e-mailu nebo post na adresu URL webhooku). Oznámení obvykle může aktivovat více akcí.
 
-## <a name="how-do-i-receive-a-notification-from-an-azure-monitor-classic-alert"></a>Jak dostávat oznámení z výstrahy monitorování Azure classic
-V minulosti Azure výstrahy z různých služeb používá vlastní metody předdefinovaných oznámení. 
+## <a name="how-do-i-receive-notifications-from-an-azure-monitor-classic-alert"></a>Jak mohu dostávat oznámení z výstrahy monitorování Azure classic?
+V minulosti upozornění z různých služeb Azure použít své vlastní metody předdefinovaných oznámení. 
 
-Teď monitorování Azure nabízí opakovaně použitelné oznámení seskupování volané *skupiny akcí*. Zadejte skupiny akcí sadu příjemci pro oznámení a kdykoli se aktivuje výstraha odkazuje skupinu, akce, všichni příjemci dostávat oznámení. To vám umožní znova využít seskupení příjemci (například na pracovníka seznamu volání) napříč mnoho výstrah objektů. Akce skupiny podporují oznámení odesláním adresa URL webhooku kromě e-mailové adresy, čísla SMS a řadu dalších akcí.  Další informace najdete v tématu [skupiny akcí](monitoring-action-groups.md). 
+Teď Azure Monitor nabízí, volá se opakovaně použitelné oznámení seskupení *skupiny akcí*. Skupiny akcí zadat sadu příjemců pro oznámení. Při výstraha se aktivuje, který odkazuje skupina akcí, všichni příjemci dostávat oznámení. Tato funkce umožňuje opakovaně používat seskupení příjemce (třeba seznamu na volání engineer) na velký počet výstrah objektů. Skupiny akcí oznámení podporovat prostřednictvím různých metod. Tyto metody mohou zahrnovat příspěvky na adresu URL webhooku, odesílání e-mailů, zpráv SMS a řadu dalších akcí. Další informace najdete v tématu [vytvořit a spravovat skupiny akcí na webu Azure Portal](monitoring-action-groups.md). 
 
-Akce skupiny můžete použít starší classic výstrahy protokol aktivit.
+Starší upozornění protokolu aktivit classic použití skupin akcí.
 
-Starší metriky výstrahy nepoužívejte skupiny akcí. Místo toho můžete nakonfigurovat následující akce: 
-* Odesílání e-mailová oznámení pro správce služeb, spolusprávci nebo další e-mailové adresy, které zadáte.
-* Volejte webhook, která umožňuje spustit další automatizace akce.
+Ale nepoužívejte starší upozornění metrik skupiny akcí. Místo toho můžete nakonfigurovat následující akce: 
+* Odeslat e-mailová oznámení pro správce služeb, spolusprávci, nebo další e-mailové adresy, které zadáte.
+* Voláním webhooku, která umožňuje spustit další automatizace akcí.
 
-Webhooky umožňuje automatizace a nápravu, například pomocí:
-    - Runbook Azure Automation
-    - Funkce Azure Functions
-    - Azure Logic Apps
-    - službu třetí strany
+Webhooky povolit automatizace a nápravy, například pomocí následující služby:
+- Runbook Azure Automation
+- Azure Functions
+- Azure Logic App
+- Služby třetích stran
 
 ## <a name="next-steps"></a>Další postup
-Získání informací o pravidla výstrah a jejich konfigurací pomocí:
+Získání informací o pravidla upozornění a jak je nakonfigurovat pomocí následující dokumentaci:
 
 * Další informace o [metriky](monitoring-overview-metrics.md)
-* Konfigurace [classic metrika výstrahy prostřednictvím portálu Azure](insights-alerts-portal.md)
-* Konfigurace [classic PowerShell metrika výstrahy](insights-alerts-powershell.md)
-* Konfigurace [klasické rozhraní metrika výstrahy příkazového řádku (CLI)](insights-alerts-command-line-interface.md)
-* Konfigurace [classic metrika výstrahy monitorování REST API služby Azure](https://msdn.microsoft.com/library/azure/dn931945.aspx)
-* Další informace o [protokol aktivit](monitoring-overview-activity-logs.md)
-* Konfigurace [aktivity protokolu výstrahy prostřednictvím portálu Azure](monitoring-activity-log-alerts.md)
-* Konfigurace [aktivity protokolu výstrahy prostřednictvím Resource Manageru](monitoring-create-activity-log-alerts-with-resource-manager-template.md)
-* Zkontrolujte [schématu výstrahy webhooku protokolu aktivit](monitoring-activity-log-alerts-webhook.md)
+* Konfigurace [klasického upozornění metrik s využitím webu Azure portal](insights-alerts-portal.md)
+* Konfigurace [klasického upozornění metrik pomocí prostředí PowerShell](insights-alerts-powershell.md)
+* Konfigurace [klasické metriky upozornění pomocí rozhraní příkazového řádku Azure](insights-alerts-command-line-interface.md)
+* Konfigurace [klasického upozornění metrik pomocí REST API služby Azure Monitor](https://msdn.microsoft.com/library/azure/dn931945.aspx)
+* Další informace o [protokolů aktivit](monitoring-overview-activity-logs.md)
+* Konfigurace [upozornění protokolu aktivit s využitím webu Azure portal](monitoring-activity-log-alerts.md)
+* Konfigurace [upozornění protokolu aktivit s využitím Resource Manageru](monitoring-create-activity-log-alerts-with-resource-manager-template.md)
+* Zkontrolujte [schéma webhooku v upozornění protokolu aktivit](monitoring-activity-log-alerts-webhook.md)
 * Další informace o [skupiny akcí](monitoring-action-groups.md)
-* Konfigurace [novější výstrahy](monitor-alerts-unified-usage.md)
+* Konfigurace [novější upozornění](monitor-alerts-unified-usage.md)

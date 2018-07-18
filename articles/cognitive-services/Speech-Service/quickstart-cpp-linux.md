@@ -10,12 +10,12 @@ ms.technology: Speech
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: wolfma
-ms.openlocfilehash: 2c919040233226818505dbafc260d56d4d0e3c9e
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: b5f5cdbe202b406c724a9f4f5787e566b432a66c
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39070728"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39116142"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-linux-using-the-speech-sdk"></a>Rychlý start: Rozpoznávat řeč v jazyce C++ v Linuxu pomocí sadou SDK pro řeč
 
@@ -34,7 +34,7 @@ V tomto článku se dozvíte, jak k vytvoření konzolové aplikace jazyka C++ v
 
 ## <a name="get-the-speech-sdk"></a>Získání sady SDK pro řeč
 
-[!include[License Notice](includes/license-notice.md)]
+[!include[License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
 Aktuální verze sady SDK pro řeč Cognitive Services je `0.5.0`.
 
@@ -70,7 +70,7 @@ Stáhněte a nainstalujte sadu SDK následujícím způsobem:
 
    Měl by se zobrazit oznámení třetích stran a soubory s licencí, ale i `include` adresáře pro záhlaví a `lib` adresáře pro knihovny.
 
-   [!include[Linux Binary Archive Content](includes/linuxbinary-content.md)]
+   [!include[Linux Binary Archive Content](../../../includes/cognitive-services-speech-service-linuxbinary-content.md)]
 
 ## <a name="add-the-sample-code"></a>Přidejte ukázkový kód
 

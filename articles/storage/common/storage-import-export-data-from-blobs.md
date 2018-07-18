@@ -2,18 +2,18 @@
 title: Export dat z Azure BLOB pomocí Azure Import/Export | Dokumentace Microsoftu
 description: Informace o vytvoření úlohy exportu na webu Azure portal k přenosu dat z objektů BLOB Azure.
 author: alkohli
-manager: jeconnoc
+manager: twooley
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 05/17/2018
+ms.date: 07/17/2018
 ms.author: alkohli
-ms.openlocfilehash: eb41708c7446b3139758678c9247ffbb11da8b40
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: eb714086a0142d9780bd018d77dc880a430f240e
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969261"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113754"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Export dat z úložiště objektů Blob v Azure pomocí služby Azure Import/Export
 Tento článek obsahuje podrobné pokyny o tom, jak bezpečně export velkých objemů dat z úložiště objektů Blob v Azure pomocí služby Azure Import/Export. Služba vyžaduje, abyste zasílejte prázdné disky do datacentra Azure. Službu exportuje data z vašeho účtu úložiště do jednotky a potom odešle zpět jednotky.
@@ -25,6 +25,13 @@ Než začnete vytvářet úlohy exportu pro přenos dat z Azure Blob Storage, pe
 - Máte aktivní předplatné Azure, který lze použít pro službu Import/Export.
 - Máte alespoň jeden účet služby Azure Storage. Zobrazit seznam [nepodporuje účty úložiště a typy úložiště pro službu Import/Export](storage-import-export-requirements.md). Informace o vytvoření nového účtu úložiště najdete v tématu [způsob vytvoření účtu úložiště](storage-create-storage-account.md#create-a-storage-account).
 - Používejte odpovídající počet disků [podporované typy](storage-import-export-requirements.md#supported-disks).
+- Máte účet FedEx/DHL.  
+    - Účet musí být platná, by měl mít vyrovnávání a musí mít vrácení funkce.
+    - Generovat sledovací číslo pro úlohu exportu.
+    - Každá úloha by měl mít samostatný sledovací číslo. Více úloh se stejným číslem sledování nejsou podporovány. 
+    - Pokud nemáte účet přepravce, přejděte na:
+        - [Vytvoření účtu FedEX](https://www.fedex.com/en-us/create-account.html), nebo 
+        - [Vytvoření účtu DHL](http://www.dhl-usa.com/en/express/shipping/open_account.html).
 
 ## <a name="step-1-create-an-export-job"></a>Krok 1: Vytvoření úlohy exportu
 
@@ -52,7 +59,7 @@ Proveďte následující kroky k vytvoření úlohy exportu na webu Azure Portal
     
 3. V **podrobnosti úlohy**:
 
-    - Vyberte účet úložiště, ve které se nachází data, která mají být exportovány. 
+    - Vyberte účet úložiště, ve které se nachází data, která mají být exportovány. Použijte účet úložiště blízko, kde se nachází.
     - Odkládací umístění se automaticky vyplní podle oblasti pro vybraný účet úložiště. 
     - Zadejte data objektů blob, který chcete exportovat z vašeho účtu úložiště do prázdné jednotku nebo jednotky. 
     - Zvolit **exportovat všechny** datům objektu blob na účtu úložiště.
@@ -78,11 +85,18 @@ Proveďte následující kroky k vytvoření úlohy exportu na webu Azure Portal
     - Z rozevíracího seznamu vyberte operátorovi.
     - Zadejte číslo účtu dopravce platný, kterou jste vytvořili pomocí tohoto operátora. Tento účet Microsoft používá k odeslání jednotky zpět po dokončení úlohy import. 
     - Zadejte úplné a platné jméno kontaktní osoby, telefonu, e-mailu, adresu, Město, zip, stát/kraj a země/oblast.
+
+        > [!TIP] 
+        > Místo zadání e-mailovou adresu pro jednoho uživatele, zadejte e-mailů skupiny. Tím se zajistí, že budete dostávat oznámení, i když opustí správcem.
    
 5. V **Souhrn**:
 
     - Projděte si podrobnosti o úloze.
-    - Poznámka: Úloha názvu a zadané datové centrum Azure dodací adresu pro přesouvání disků do Azure. 
+    - Poznamenejte si název úlohy a zadané datové centrum Azure dodací adresa pro přesouvání disků do Azure. 
+
+        > [!NOTE] 
+        > Vždy odesílat disků do datacentra, které jste si poznamenali na webu Azure Portal. Pokud disky jsou odeslány do nesprávného datacenter, úlohy nebude zpracováno.
+
     - Klikněte na tlačítko **OK** k dokončení vytvoření úlohy exportu.
 
 ## <a name="step-2-ship-the-drives"></a>Krok 2: Odeslání jednotky

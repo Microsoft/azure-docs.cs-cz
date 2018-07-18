@@ -1,6 +1,6 @@
 ---
-title: Instance SAP ASC nebo SCS clusteru v clusteru převzetí služeb při selhání se systémem Windows pomocí sdíleného disku clusteru v Azure | Microsoft Docs
-description: Naučte se instance SAP ASC nebo SCS clusteru v clusteru s podporou převzetí služeb při selhání systému Windows s použitím sdíleného disku clusteru.
+title: Instance SAP ASCS/SCS clusteru v clusteru převzetí služeb při selhání Windows s použitím sdíleného disku clusteru v Azure | Dokumentace Microsoftu
+description: Zjistěte, jak seskupit do clusteru SAP ASCS/SCS instance clusteru převzetí služeb při selhání Windows s použitím sdíleného disku clusteru.
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 69071ef211e6787aa7bbae121cc4d55ccf2a6ef6
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 91a72a4244e3cae081fe9a962bbb80d3ce19822d
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34657750"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113218"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -72,7 +72,7 @@ ms.locfileid: "34657750"
 [sap-ha-guide-9.1]:#31c6bd4f-51df-4057-9fdf-3fcbc619c170
 [sap-ha-guide-9.1.1]:#a97ad604-9094-44fe-a364-f89cb39bf097
 
-[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (Konfigurace s vysokou dostupností více SID SAP)
+[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (Konfigurace vysoké dostupnosti SAP s několika SID)
 
 [Logo_Linux]:media/virtual-machines-shared-sap-shared/Linux.png
 [Logo_Windows]:media/virtual-machines-shared-sap-shared/Windows.png
@@ -183,99 +183,99 @@ ms.locfileid: "34657750"
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
+# <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-cluster-shared-disk-in-azure"></a>Instance SAP ASCS/SCS clusteru v clusteru převzetí služeb při selhání Windows s použitím sdíleného disku clusteru v Azure
+
 > ![Windows][Logo_Windows] Windows
 >
 
-# <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-cluster-shared-disk-in-azure"></a>Instance SAP ASC nebo SCS clusteru v clusteru s podporou převzetí služeb při selhání systému Windows s použitím sdíleného disku clusteru v Azure
+Windows Server, převzetí služeb při selhání clustering je základem instalace SAP ASCS/SCS vysokou dostupnost a DBMS ve Windows.
 
-Windows Server failover clustering je základem SAP ASC nebo SCS instalace vysokou dostupnost a databázového systému v systému Windows.
-
-Cluster s podporou převzetí služeb při selhání je skupina 1 + n nezávislých serverů (uzlů) které vzájemně spolupracují a zvyšují tak dostupnost aplikací a služeb. Pokud dojde k selhání uzlu, Windows Server failover clustering vypočítá počet chyb, které může dojít a přitom zachovat pořádku cluster, který poskytuje aplikacím a službám. Můžete z různých kvora režimy k dosažení clustering převzetí služeb při selhání.
+Cluster převzetí služeb při selhání je skupina 1 + n nezávislé servery (uzly), které vzájemně spolupracují a zvyšují tak dostupnost aplikací a služeb. Pokud dojde k selhání uzlu, Windows serveru, převzetí služeb při selhání clustering vypočítá počet chyb, které může dojít a přitom zachovává cluster v pořádku pro poskytování aplikací a služeb. K dosažení clustering převzetí služeb při selhání můžete vybírat kvora různé režimy.
 
 ## <a name="prerequisites"></a>Požadavky
-Než začnete úkoly v tomto článku, přečtěte si následující článek:
+Než začnete s úkoly v tomto článku, přečtěte si následující článek:
 
-* [Scénáře pro SAP NetWeaver a Azure Architektura vysoké dostupnosti virtuálních počítačů][sap-high-availability-architecture-scenarios]
+* [Architektura vysoké dostupnosti služby Azure Virtual Machines a scénáře pro SAP NetWeaver][sap-high-availability-architecture-scenarios]
 
 
-## <a name="windows-server-failover-clustering-in-azure"></a>Windows Server, převzetí služeb při selhání clustering v Azure
+## <a name="windows-server-failover-clustering-in-azure"></a>Windows Server, převzetí služeb při selhání řízení clusterů v Azure
 
-Ve srovnání s nasazení holých počítačů nebo privátní cloud, virtuální počítače Azure vyžaduje další kroky pro konfiguraci služby Windows Server failover clustering. Když vytvoříte cluster, budete muset nastavit několik IP adresy a názvy virtuálních hostitelů pro SAP ASC nebo SCS instanci.
+Ve srovnání s nasazení holých počítačů nebo privátní cloud, Azure Virtual Machines vyžaduje další kroky konfigurace clusteringu převzetí služeb při selhání Windows serveru. Při vytváření clusteru, je nutné nastavit několik IP adresy a názvy virtuálních hostitelů pro instanci SAP ASCS/SCS.
 
-### <a name="name-resolution-in-azure-and-the-cluster-virtual-host-name"></a>Rozpoznání názvu v Azure a název virtuálního hostitele clusteru
+### <a name="name-resolution-in-azure-and-the-cluster-virtual-host-name"></a>Překlad názvů v Azure a název virtuálního hostitele clusteru
 
-Azure Cloudová platforma nenabízí možnost konfigurovat virtuální IP adresy, například plovoucí IP adresy. Je třeba nastavit virtuální IP adresy k dosažení prostředek clusteru v cloudu alternativní řešení. 
+Cloudové platformy Azure nenabízí možnost nakonfigurovat virtuální IP adresy, jako je například plovoucí IP adresy. Je nutné nastavit virtuální IP adresu prostředku clusteru v cloudu dosáhnout alternativní řešení. 
 
-Služba Vyrovnávání zatížení Azure poskytuje *nástroj pro vyrovnávání zatížení pro vnitřní* pro Azure. S nástrojem pro vyrovnávání zatížení pro vnitřní klienti moci clusteru připojit přes virtuální IP adresu clusteru. 
+Služba Azure Load Balancer poskytuje *interního nástroje load balancer* pro Azure. Pomocí interní služby load balancer klienti oslovit clusteru přes virtuální IP adresu clusteru. 
 
-Nasazení nástroje pro vyrovnávání zatížení interní ve skupině prostředků, který obsahuje uzly clusteru. Potom nakonfigurujte všechny nezbytné port předávání pravidla pomocí sondy porty nástroje pro vyrovnávání zatížení interní. Klienti mohou připojit prostřednictvím název virtuálního hostitele. DNS server přeloží IP adresu clusteru a port obslužných rutin vyrovnávání interní služby load předávání do aktivního uzlu clusteru.
+Nasazení interního nástroje load balancer ve skupině prostředků, který obsahuje uzly clusteru. Nakonfigurujte všechny nezbytné port pravidla předávání s použitím sondy porty interní služby load balancer. Klienti mohou připojit prostřednictvím název virtuálního hostitele. DNS server překládá IP adresu clusteru a port popisovače interního nástroje pro vyrovnávání předávání do aktivního uzlu clusteru.
 
-![Obrázek 1: Windows převzetí služeb při selhání clustering konfiguraci v Azure bez sdíleného disku][sap-ha-guide-figure-1001]
+![Obrázek 1: Windows failover clustering konfiguraci v Azure bez sdíleného disku][sap-ha-guide-figure-1001]
 
 _**Obrázek 1:** Windows serveru, převzetí služeb při selhání clustering konfiguraci v Azure bez sdíleného disku_
 
-### <a name="sap-ascsscs-ha-with-cluster-shared-disks"></a>SAP ASC nebo SCS HA s clusteru sdílené disky
-V systému Windows obsahuje instance SAP ASC nebo SCS centrální služby SAP, server zpráv SAP, zařadit server procesy a SAP globální hostitelských souborů. SAP globální hostitelských souborů ukládat centrální soubory pro celý systém SAP.
+### <a name="sap-ascsscs-ha-with-cluster-shared-disks"></a>SAP ASCS/SCS HA se sdílenými disky
+Ve Windows obsahuje instanci SAP ASCS/SCS centrální služby SAP, server zpráv SAP, zařazování serverové procesy a SAP globální hostitelské soubory. SAP globální hostitelské soubory ukládat centrální soubory pro celý systém SAP.
 
-Instance SAP ASC nebo SCS má následující komponenty:
+Instance SAP ASCS/SCS má následující komponenty:
 
-* SAP centrální services:
-    * Dva procesy, zprávu a zařadit server a < ASC nebo SCS název virtuálního hostitele >, který se používá pro přístup tyto dva procesy.
+* Centrální služby SAP:
+    * Dva procesy, zprávu a zařadit do fronty serveru a < ASC/SCS virtuální hostitel název >, který se používá pro přístup k těmto dvěma procesy.
     * Struktura souboru: S:\usr\sap\\&lt;SID&gt;\ASCS/SCS\<instance číslo\>
 
 
-* SAP globální hostitelských souborů:
+* SAP globální hostitelské soubory:
     * Struktura souboru: S:\usr\sap\\&lt;SID&gt;\SYS\....
-    * Sdílené složky, která umožňuje přístup k tyto globální S:\usr\sap sapmnt\\&lt;SID&gt;\SYS\... soubory pomocí následující cesty UNC:
+    * Sdílené složky, která umožňuje přístup k těmto globální S:\usr\sap sapmnt\\&lt;SID&gt;\SYS\... soubory pomocí následující cesty UNC:
 
-     \\\\< název virtuálního hostitele ASC nebo SCS > \sapmnt\\&lt;SID&gt;\SYS\....
+     \\\\< název virtuálního hostitele ASCS/SCS > \sapmnt\\&lt;SID&gt;\SYS\....
 
 
-![Obrázek 2: Procesy, strukturu souborů a sdílené složky sapmnt globální hostitele instance SAP ASC nebo SCS][sap-ha-guide-figure-8001]
+![Obrázek 2: Procesy strukturu souborů a sdílené globální hostitele sapmnt instance SAP ASCS/SCS][sap-ha-guide-figure-8001]
 
-_**Obrázek 2:** procesy, struktura souborů a sdílené složky sapmnt globální hostitele instance SAP ASC nebo SCS_
+_**Obrázek 2:** procesy, strukturu souborů a sdílené globální hostitele sapmnt instance SAP ASCS/SCS_
 
-Ve třídě setting vysokou dostupnost clusteru SAP ASC nebo SCS instancí. Používáme *sdílené disky v clusteru* (jednotka S, v našem příkladu), a umístěte SAP ASC nebo SCS SAP globální hostovat soubory.
+V nastavení vysoké dostupnosti, clusteru instancí SAP ASCS/SCS. Používáme *sdílené disky v clusteru* (jednotka S, v našem příkladu), umístěte SAP ASCS/SCS a SAP globální hostitelské soubory.
 
-![Obrázek 3: SAP ASC nebo SCS HA architektura s sdíleného disku][sap-ha-guide-figure-8002]
+![Obrázek 3: SAP ASCS/SCS HA architektury se sdíleným diskem][sap-ha-guide-figure-8002]
 
-_**Obrázek 3:** SAP ASC nebo SCS HA architektura s sdíleného disku_
+_**Obrázek 3:** SAP ASCS/SCS HA architektury se sdíleným diskem_
 
 > [!IMPORTANT]
-> V rámci stejné instance SAP ASC nebo SCS spusťte tyto dvě součásti:
->* Stejný < ASC nebo SCS virtuální název hostitele > se používá pro přístup k SAP procesy serveru zprávu a zařazování a SAP globální hostitelských souborů prostřednictvím sapmnt sdílené složky.
->* Stejný cluster sdílený disk, který je sdílen S mezi nimi.
+> Tyto dvě komponenty jsou spuštěny v rámci stejné instance SAP ASCS/SCS:
+>* Stejný < ASC/SCS virtuální název hostitele > se používá pro přístup k SAP procesů serveru zprávu a zařadit do fronty a soubory globální hostitele SAP prostřednictvím sapmnt sdílené složky.
+>* Stejný cluster sdílený disk, který je mezi nimi sdílet S.
 >
 
 
-![Obrázek 4: SAP ASC nebo SCS HA architektura s sdíleného disku][sap-ha-guide-figure-8003]
+![Obrázek 4: SAP ASCS/SCS HA architektury se sdíleným diskem][sap-ha-guide-figure-8003]
 
-_**Obrázek 4:** SAP ASC nebo SCS HA architektura s sdíleného disku_
+_**Obrázek 4:** SAP ASCS/SCS HA architektury se sdíleným diskem_
 
-### <a name="shared-disks-in-azure-with-sios-datakeeper"></a>Sdílené disky v Azure s DataKeeper s
+### <a name="shared-disks-in-azure-with-sios-datakeeper"></a>Sdílené disky v Azure se SIOS Datakeeperem
 
-Třeba clusteru sdíleného úložiště pro instanci SAP ASC nebo SCS vysokou dostupnost.
+Potřebujete cluster sdíleného úložiště pro instanci SAP ASCS/SCS vysokou dostupnost.
 
-Software třetích stran s DataKeeper Cluster Edition slouží k vytvoření zrcadlené úložiště, která simuluje sdílené úložiště clusteru. Řešení SIOS poskytuje data v reálném čase synchronní replikace.
+Třetí strany software SIOS DataKeeper Cluster Edition slouží k vytvoření zrcadlené úložiště, který simuluje sdíleného úložiště v clusteru. SIOS řešení poskytuje data v reálném čase synchronní replikace.
 
 Vytvoření prostředku sdílený disk pro cluster:
 
-1. Připojte další disk pro každý z virtuálních počítačů v konfiguraci clusteru systému Windows.
-2. V obou uzlech virtuální počítač spusťte s DataKeeper Cluster Edition.
-3. Nakonfigurujte s DataKeeper Cluster Edition, aby ho zrcadlí obsah další disk připojený svazek ze zdrojového virtuálního počítače na další disk připojený objem cílového virtuálního počítače. S DataKeeper abstrahuje zdrojové a cílové místních svazků a k jejich zobrazení na Windows serveru, převzetí služeb při selhání jako jeden sdílený disk clustering.
+1. Další disk připojte ke každému z virtuálních počítačů v konfiguraci clusteru Windows.
+2. Spusťte SIOS DataKeeper Cluster Edition na oba uzly virtuálních počítačů.
+3. SIOS DataKeeper Cluster Edition nakonfigurujte tak, aby zrcadlí obsah další disk připojený svazek ze zdrojového virtuálního počítače na další disk připojený objem cílového virtuálního počítače. SIOS DataKeeper abstrahuje zdroj a cíl místní svazky a prezentuje je na Windows serveru, převzetí služeb při selhání jako jeden sdílený disk clusteringu s.
 
-Přečtěte si další informace o [s DataKeeper](http://us.sios.com/products/datakeeper-cluster/).
+Získejte další informace o [SIOS DataKeeper](http://us.sios.com/products/datakeeper-cluster/).
 
-![Obrázek 5: Windows Server převzetí služeb při selhání clustering konfigurace v Azure pomocí DataKeeper s][sap-ha-guide-figure-1002]
+![Obrázek 5: Windows Server převzetí služeb při selhání clustering konfigurace v Azure se SIOS Datakeeperem][sap-ha-guide-figure-1002]
 
-_**Obrázek 5:** clustering konfigurace v Azure pomocí DataKeeper s Windows v převzetí služeb při selhání_
+_**Obrázek 5:** Windows failover clustering konfigurace v Azure se SIOS Datakeeperem_
 
 > [!NOTE]
-> Pro zajištění vysoké dostupnosti se některé produkty, databázového systému, jako je SQL Server není třeba sdílené disky. SQL Server AlwaysOn replikuje databázového systému souborů protokolu a data z místního disku jednoho uzlu na místní disk jiným uzlem clusteru. Konfigurace clusteru systému Windows v takovém případě nemusí sdíleného disku.
+> Není nutné sdílené disky pro zajištění vysoké dostupnosti s některými DBMS produkty, jako je SQL Server. Technologie AlwaysOn systému SQL Server na místním disku jiný uzel clusteru replikuje DBMS dat a souborů protokolu z místního disku jednom uzlu clusteru. V takovém případě konfigurace clusteru Windows nemusí sdíleného disku.
 >
 
 ## <a name="next-steps"></a>Další postup
 
-* [Příprava infrastruktury Azure pro SAP HA pomocí clusteru převzetí služeb při selhání se systémem Windows a sdíleného disku pro instance SAP ASC nebo SCS][sap-high-availability-infrastructure-wsfc-shared-disk]
+* [Příprava infrastruktury Azure pro SAP HA pomocí Windows cluster převzetí služeb při selhání a sdíleného disku pro instanci SAP ASCS/SCS][sap-high-availability-infrastructure-wsfc-shared-disk]
 
-* [Nainstalujte SAP NetWeaver HA v clusteru převzetí služeb při selhání se systémem Windows a sdíleného disku pro instance SAP ASC nebo SCS][sap-high-availability-installation-wsfc-shared-disk]
+* [Instalace SAP NetWeaver vysokou DOSTUPNOSTÍ na clusteru převzetí služeb při selhání Windows a sdíleným diskem pro instanci SAP ASCS/SCS][sap-high-availability-installation-wsfc-shared-disk]

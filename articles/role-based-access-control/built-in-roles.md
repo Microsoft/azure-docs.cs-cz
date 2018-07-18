@@ -1,6 +1,6 @@
 ---
 title: Předdefinované role v Azure | Dokumentace Microsoftu
-description: Popisuje předdefinované role pro řízení přístupu na základě role (RBAC) v Azure. Zobrazí seznam akcí, notActions, dataActions a notDataActions.
+description: Popisuje předdefinované role pro řízení přístupu na základě role (RBAC) v Azure. Zobrazí seznam akcí, NotActions, DataActions a NotDataActions.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,20 +15,20 @@ ms.date: 06/28/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: c5624de13d5d31320beb85aff67c61addaffcbea
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 8152a9934d6a280abfc75fdc74e0864053d82f45
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437922"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39116074"
 ---
 # <a name="built-in-roles-in-azure"></a>Předdefinované role v Azure
-[Řízení přístupu na základě role (RBAC)](overview.md) má několik definic předdefinovaná role, které jste přiřadili pro uživatele, skupiny nebo instanční objekty. Přiřazení rolí představují způsob, jak řídit přístup k prostředkům v Azure. Pokud předdefinované role není splnili specifické požadavky vaší organizace, můžete vytvořit vlastní [vlastní role](custom-roles.md).
+[Řízení přístupu na základě role (RBAC)](overview.md) má několik definic předdefinovaná role, které jste přiřadili pro uživatele, skupiny nebo instanční objekty. Přiřazení rolí představují způsob, jak řídit přístup k prostředkům v Azure. Pokud předdefinované role nesplňují konkrétní požadavky vaší organizace, můžete si vytvořit [vlastní role](custom-roles.md).
 
 Předdefinované role jsou vždy vyvíjejí. Chcete-li získat nejnovější definice rolí, použijte [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) nebo [az role definition list](/cli/azure/role/definition#az-role-definition-list).
 
 ## <a name="built-in-role-descriptions"></a>Popisy předdefinovaná role
-Následující tabulka obsahuje stručný popis předdefinované role. Klikněte na název role, které chcete zobrazit seznam `actions`, `notActions`, `dataActions`, a `notDataActions` pro každou roli.
+Následující tabulka obsahuje stručný popis předdefinované role. Klikněte na název role, které chcete zobrazit seznam `Actions`, `NotActions`, `DataActions`, a `NotDataActions` pro každou roli.
 
 
 | Předdefinovaná role | Popis |

@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/13/2018
 ms.author: kumud
-ms.openlocfilehash: 741b32f394ca2ce447826f7207f7fd9cbede9c51
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: dd92fca89e3bdb123be46a52708feec1c939f7cc
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39070846"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39112718"
 ---
 # <a name="understand-load-balancer-probes"></a>Porozumění testům nástroje pro vyrovnávání zatížení
 
 Nástroj Azure Load Balancer používá k určení, která instance back-endový fond obdrželi nové toky sondy stavu.   Sondy stavu můžete použít ke zjištění chyby aplikace na instanci back-endu.  Odpověď sondy stavu ze své aplikace můžete použít také na signál pro Load Balancer, jestli se má pokračovat v odesílání nových toků nebo zastavit odesílání nových toků do instance back-end pro správu zatížení nebo plánované výpadky.
 
-Sondy stavu služby se řídí, zda jsou vytvořeny nové toky v dobrém stavu back-endových instancí. Při selhání sondy stavu nástroje pro vyrovnávání zatížení zastaví odesílání nových toků do příslušné instance není v pořádku.  Navázané připojení TCP pokračovat po selhání sondy stavu.  Stávající toky UDP se přesune z instance není v pořádku, k jiné instanci v back-endový fond.
+Sondy stavu služby se řídí, zda jsou vytvořeny nové toky v dobrém stavu back-endových instancí. Při selhání sondy stavu nástroje pro vyrovnávání zatížení zastaví odesílání nových toků do příslušné instance není v pořádku.  Navázané připojení TCP pokračovat po selhání sondy stavu.  Stávající toky UDP se přesune z instance není v pořádku, k jiné instanci v pořádku v back-endový fond.
 
 Pokud selžou i všechny testy pro back-endový fond, základní nástroje pro vyrovnávání zatížení se ukončí všechny existující Velkoobjemové toky na back-endového fondu, zatímco Load balancer úrovně Standard vám umožní zavedené Velkoobjemové toky pokračovat; žádné nové toky se odešlou do back-endový fond.  Všechny stávající toky UDP se ukončí u úrovní Basic a Standard nástroje pro vyrovnávání zatížení, pokud všechny testy pro back-end fondu selhání.
 

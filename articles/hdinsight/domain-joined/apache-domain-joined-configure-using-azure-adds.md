@@ -1,75 +1,77 @@
 ---
-title: Konfigurace clusterů HDInsight připojený k doméně pomocí AAD DS
-description: Zjistěte, jak připravit a nakonfigurovat clusterů HDInsight připojený k doméně pomocí nástroje Azure Active Directory Domain Services
+title: Konfigurovat cluster HDInsight připojený k doméně pomocí služby Azure AD DS
+description: Zjistěte, jak nastavit a konfigurovat cluster HDInsight připojený k doméně pomocí Azure Active Directory Domain Services
 services: hdinsight
 author: omidm1
+ms.author: omidm
 manager: jhubbard
 editor: cgronlun
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 05/30/2018
-ms.author: omidm
-ms.openlocfilehash: 8064940e0d0f035010a2521752d6f32f3f9ccd9f
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.date: 07/17/2018
+ms.openlocfilehash: d38148181aa18404e45f6efc029117573570e6bc
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34849822"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39115421"
 ---
-# <a name="configure-domain-joined-hdinsight-clusters-using-azure-active-directory-domain-services"></a>Konfigurace clusterů HDInsight připojený k doméně pomocí nástroje Azure Active Directory Domain Services
+# <a name="configure-a-domain-joined-hdinsight-cluster-by-using-azure-active-directory-domain-services"></a>Konfigurace clusteru HDInsight připojené k doméně pomocí Azure Active Directory Domain Services
 
-Připojené k doméně clustery poskytovat přístup k více uživateli v clusterech prostředí HDInsight. Clustery HDInsight připojený k doméně jsou připojené do domény, tak, aby uživatelé domény můžete používat přihlašovací údaje domény k ověření s clustery a spouštění úloh big data. 
+Clustery připojené k doméně zadejte více uživateli přístup v clusterech Azure HDInsight. Clustery HDInsight připojené k doméně jsou připojené k doméně tak, aby uživatelé domény můžete použít své přihlašovací údaje domény k ověření s clustery a spouštění úloh big data. 
 
-V tomto článku zjistěte, jak nakonfigurovat cluster HDInsight připojený k doméně pomocí Azure Active Directory Domain Services.
+V tomto článku se dozvíte, jak nakonfigurovat cluster HDInsight připojený k doméně pomocí Azure Active Directory Domain Services (Azure AD DS).
 
-## <a name="create-azure-adds"></a>Vytvoření Azure přidá
+## <a name="enable-azure-ad-ds"></a>Povolení služby Azure AD DS
 
-Povolení služby Azure AD Domain Services (AAD-DS) je požadována, abyste mohli vytvořit cluster HDInsight připojený k doméně. Povolit instanci služby AAD DS, najdete v části [povolení AAD-DS pomocí portálu Azure](../../active-directory-domain-services/active-directory-ds-getting-started.md). 
-
-> [!NOTE]
-> Pouze správci klientů mají oprávnění k vytvoření instance služby AAD DS. Pokud používáte Azure Data Lake Storage (ADLS) jako výchozí úložiště pro HDInsight, pak zajistěte, aby že výchozí klient Azure AD pro ADLS je stejná jako doména clusteru HDInsight. Sincde Hadoop závisí na protokolu Kerberos a základní ověřování, služba Multi-Factor authentication musí být zakázána pro uživatele, kteří budou mít přístup ke clusteru.
-
-Po zřízená instance AAD DS, musíte vytvořit účet služby v AAD (která se budou synchronizovat s AAD DS) s potřebnými oprávněními. Pokud tento účet služby již existuje, budete muset obnovit své heslo a počkejte, dokud jej synchronizuje se do služby AAD DS (Tato resetování bude mít za následek vytvoření hodnoty hash hesla pomocí protokolu kerberos a může to trvat až 30 min pro synchronizaci služby AAD DS). Tento účet služby musí mít následující oprávnění:
-
-- Připojení počítače k doméně a umístěte objekty počítače v rámci organizační jednotky, které zadáte během vytváření clusteru.
-- Vytvořte objekty služby v rámci organizační jednotky, které zadáte během vytváření clusteru.
+Povolení služby Azure AD DS je požadována, než budete moct vytvořit cluster HDInsight připojený k doméně. Další informace najdete v tématu [povolit Azure Active Directory Domain Services pomocí webu Azure portal](../../active-directory-domain-services/active-directory-ds-getting-started.md). 
 
 > [!NOTE]
-> Protože Apache Zeppelin používá název domény k ověření účtu správce služby, musíte mít účet služby se stejným názvem domény jako jeho přípona UPN pro Apache Zeppelin fungovat správně.
+> Pouze správci tenanta máte oprávnění k vytvoření instance služby Azure AD DS. Pokud používáte Azure Data Lake Storage Gen1 jako výchozího úložiště pro HDInsight, ujistěte se, že výchozí tenanta Azure AD pro Data Lake Storage Gen1 je stejná jako doména clusteru HDInsight. Protože Hadoop závisí na protokolu Kerberos a základní ověřování, ověřování službou Multi-Factor Authentication je potřeba zakázat pro uživatele, kteří se přístup ke clusteru.
 
-Další informace o organizačních jednotkách a způsobu jejich správy najdete v tématu [vytvořit organizační jednotku v AAD služby DS](../../active-directory-domain-services/active-directory-ds-admin-guide-create-ou.md). 
+Jakmile zřídíte instanci služby Azure AD DS, vytvořte účet služby v Azure Active Directory (Azure AD) s příslušným oprávněním. Pokud tento účet už existuje, resetovat heslo a počkejte, dokud ji synchronizuje do služby Azure AD DS. Obnoví způsobí vytvoření hodnoty hash hesla protokolu Kerberos a může trvat až 30 minut pro synchronizaci Azure AD DS. 
 
-Zabezpečený LDAP pro AAD DS spravované domény je povinný. Chcete-li povolit zabezpečený LDAP, přečtěte si téma [konfiguraci zabezpečený LDAP (LDAPS) pro AAD služby DS spravované domény](../../active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.md).
+Účet služby by měl mít následující oprávnění:
 
-## <a name="create-a-domain-joined-hdinsight-cluster"></a>Vytvoření clusteru HDInsight se připojený k doméně
+- Připojení počítače k doméně a umístit objekty zabezpečení počítačů v rámci organizační jednotky, které zadáte během vytváření clusteru.
+- Vytvoření instančních objektů v rámci organizační jednotky, které zadáte během vytváření clusteru.
 
-Dalším krokem je vytvoření clusteru HDInsight pomocí služby DS AAD a účet služby vytvořené v předchozí části.
+> [!NOTE]
+> Vzhledem k tomu Apache Zeppelin používá název domény k ověření pomocí účtu správce služby, účet služby *musí* mají stejný název domény jako jeho přípona UPN pro Apache Zeppelin fungovat správně.
 
-Je jednodušší umístit ve stejném Azure virtuální network(VNet) AAD-DS i clusteru HDInsight. V případě, že jste se rozhodli jejich umístění v různých virtuálních sítí, musí se tak, aby virtuální počítače HDI směrem pohledu na řadič domény pro připojení virtuálních počítačů peer tyto virtuální sítě. Další informace najdete v tématu [partnerský vztah virtuální sítě](../../virtual-network/virtual-network-peering-overview.md).
+Další informace o organizačních jednotkách a jejich správě, naleznete v tématu [vytvoření OU ve spravované doméně Azure AD DS](../../active-directory-domain-services/active-directory-ds-admin-guide-create-ou.md). 
+
+Protokol Secure LDAP je pro spravované domény služby Azure AD DS. Další informace najdete v tématu [konfigurace zabezpečeného protokolu LDAP pro Azure AD DS spravované domény](../../active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.md).
+
+## <a name="create-a-domain-joined-hdinsight-cluster"></a>Vytvořit cluster HDInsight připojený k doméně
+
+Dalším krokem je vytvoření clusteru HDInsight pomocí Azure AD DS a účet služby, který jste vytvořili v předchozí části.
+
+Je jednodušší umístit instancí Azure AD DS a HDInsight cluster ve stejné virtuální síti Azure. Pokud budete chtít umístit do různých virtuálních sítí, musíte vytvořit partnerský vztah těchto virtuálních sítí, tak, aby virtuální počítače s HDInsight dohled k řadiči domény pro připojení k virtuálním počítačům. Další informace najdete v tématu [partnerský vztah virtuálních sítí](../../virtual-network/virtual-network-peering-overview.md).
 
 Když vytvoříte cluster HDInsight připojený k doméně, je nutné zadat následující parametry:
 
-- **Název domény**: název domény přidružený k AAD DS. Například contoso.onmicrosoft.com
-- **Uživatelské jméno domény**: účet služby v spravované domény, který je vytvořen v předchozí části. Například, hdiadmin@contoso.onmicrosoft.com. Tento uživatel domény, bude správce tento cluster HDInsight.
+- **Název domény**: název domény, který je spojen s Azure AD DS. Příkladem je contoso.onmicrosoft.com.
+- **Uživatelské jméno domény**: účet služby ve spravované doméně, kterou jste vytvořili v předchozí části. Příklad: hdiadmin@contoso.onmicrosoft.com. Tento uživatel domény, bude správce tohoto clusteru HDInsight.
 - **Heslo domény**: heslo účtu služby.
-- **Organizační jednotka**: rozlišující název organizační jednotky, kterou chcete použít s clusterem HDInsight. Například: OU = HDInsightOU, DC = contoso, DC = onmicrosohift, DC = com. Pokud tuto organizační jednotku neexistuje, pokusí se HDInsight cluster vytvářet organizační jednotku pomocí oprávnění, které má účet služby. (Například pokud je účet služby AAD DS skupiny Administrators, má správná oprávnění k vytvoření organizační jednotky, v opačném případě může být nutné nejprve vytvořit organizační jednotku a zadejte účet služby, které plnou kontrolu nad dané organizační jednotce nejprve – Viz [vytvořit organizační jednotku na AAD-DS](../../active-directory-domain-services/active-directory-ds-admin-guide-create-ou.md)).
+- **Organizační jednotka**: rozlišující název organizační jednotky, kterou chcete použít s clusterem HDInsight. Příkladem je organizační jednotky = HDInsightOU, DC = contoso, DC = onmicrosoft, DC = com. Pokud této organizační jednotky buď neexistuje, pokusí se HDInsight cluster vytvořit organizační jednotku s použitím oprávnění, která má účet služby. Například pokud účet služby je ve skupině Správci služby Azure AD DS, má správná oprávnění k vytvoření organizační jednotky. V opačném případě může musíte nejprve vytvořit organizační jednotku a udělit účtu služby, které plnou kontrolu nad dané organizační jednotky. Další informace najdete v tématu [vytvoření OU ve spravované doméně Azure AD DS](../../active-directory-domain-services/active-directory-ds-admin-guide-create-ou.md).
 
     > [!IMPORTANT]
-    > Je důležité zahrnout všechny řadiče domény sepearated čárkou po organizační jednotky (například OU = HDInsightOU, DC = contoso, DC = onmicrosohift, DC = com).
+    > Zahrnují všechny řadiče domén, oddělených čárkami, po organizační jednotky (například OU HDInsightOU, DC = contoso, DC = = onmicrosoft, DC = com).
 
-- **Adresa URL LDAPS**: například ldaps://contoso.onmicrosoft.com:636
+- **LDAPS URL**: příklad je ldaps://contoso.onmicrosoft.com:636.
 
     > [!IMPORTANT]
-    > Zadejte úplnou adresu url včetně ldaps: / / a číslo portu (: 636)
+    > Zadejte úplnou adresu URL, včetně "ldaps: / /" a číslo portu (: 636).
 
-- **Skupina uživatelů přístup**: skupiny zabezpečení, jejichž uživatelé, které chcete synchronizovat do clusteru. Například HiveUsers. Pokud chcete zadat víc skupin uživatelů, oddělte je čárkou ','.
+- **Přístupová skupina uživatelů**: skupiny zabezpečení uživatelů chcete synchronizovat do clusteru. Například HiveUsers. Pokud chcete zadat víc skupin uživatelů, oddělte je středníkem (;).
  
-Následující snímek obrazovky ukazuje konfigurace na portálu Azure:
+Následující snímek obrazovky ukazuje konfigurace na webu Azure Portal:
 
-![Konfigurace Azure HDInsight připojený k doméně Active Directory Domain Services](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-domain-joined-configuration-azure-aads-portal.png).
+![Konfigurace Azure HDInsight připojené k doméně Active Directory Domain Services](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-domain-joined-configuration-azure-aads-portal.png).
 
 
 ## <a name="next-steps"></a>Další postup
-* Pokud chcete konfigurovat zásady Hivu a spouštět dotazy Hivu, přečtěte si téma [Konfigurace zásad Hivu pro clustery HDInsight připojené k doméně](apache-domain-joined-run-hive.md).
-* Pro připojení ke clusterům HDInsight připojený k doméně pomocí protokolu SSH, najdete v části [použití SSH se systémem Linux Hadoop v HDInsight ze systému Linux, Unix nebo OS X](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined).
+* Konfigurace zásad Hivu a spouštět dotazy Hive, najdete v části [konfigurace zásad Hivu pro clustery HDInsight připojené k doméně](apache-domain-joined-run-hive.md).
+* Pro připojení ke clusterům HDInsight připojených k doméně pomocí protokolu SSH, naleznete v tématu [použití SSH se systémem Linux Hadoop v HDInsight ze systému Linux, Unix nebo OS X](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined).
 

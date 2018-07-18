@@ -1,5 +1,5 @@
 ---
-title: Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory? | Microsoft Docs
+title: Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory? | Dokumenty Microsoft
 description: Povolit jednotné přihlašování ke všem SaaS a webových aplikací, které potřebujete pro firmy pomocí Azure Active Directory.
 services: active-directory
 documentationcenter: ''
@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.component: users-groups-roles
 ms.workload: identity
 ms.topic: article
-ms.date: 06/27/2018
+ms.date: 07/16/2018
 ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: it-pro
-ms.openlocfilehash: 9f9ae52c5dbdf655190caaceeaa03c444526e4f2
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: b7ea8a755f1f23c76bb0f7d8120970bb7795e95b
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39044617"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39091829"
 ---
 # <a name="what-is-application-access-and-single-sign-on-with-azure-active-directory"></a>Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?
 Jednotné přihlašování znamená možnost přistupovat ke všem aplikacím a prostředkům, které je potřeba udělat firmy, tak, že stačí, když pomocí jediného uživatelského účtu. Jakmile se přihlásíte, dostanete všechny aplikace, které potřebujete, aniž byste museli znovu ověřovat (třeba zadávat heslo) podruhé.
@@ -45,8 +45,7 @@ Při přihlášení k aplikaci, které procházejí ověřovacího procesu. jsou
 Azure AD podporuje tři různé způsoby, přihlaste se k aplikacím:
 
 * **Federované jednotné přihlašování** umožňuje aplikacím pro přesměrování do služby Azure AD pro ověřování uživatelů místo vás vyzve k zadání vlastní heslo. Federované jednotné přihlašování se podporuje pro aplikace, které podporují protokoly, například SAML 2.0, WS-Federation nebo OpenID Connect a bohaté možnosti režim jednotného přihlašování.
-* **Založené na heslech jednotného přihlašování** umožňuje zabezpečené uložení hesel aplikace a opakované přehrání pomocí rozšíření webového prohlížeče nebo mobilní aplikace. Založené na heslech jednotného přihlašování využívá existující 
-*  proces poskytovaný aplikací, ale umožňuje správcům spravovat hesla a nevyžaduje, aby uživatel heslo znal.
+* **Založené na heslech jednotného přihlašování** umožňuje zabezpečené uložení hesel aplikace a opakované přehrání pomocí rozšíření webového prohlížeče nebo mobilní aplikace. Založené na heslech jednotného přihlašování využívá existující proces poskytovaný aplikací, ale umožňuje správcům spravovat hesla a nevyžaduje, aby uživatel heslo znal.
 * **Existující jednotné přihlašování** Azure AD a využít všechny existující jednotné přihlašování, který už dřív představovala nastavit pro aplikace, ale umožňuje tyto aplikace propojit s portály panel přístupu k Office 365 nebo Azure AD a také umožňuje další vytváření sestav v Azure AD, když existuje spuštění aplikace.
 
 Jakmile uživatel byl ověřen s aplikací, potřebují také mít záznam účtu zřízené na úrovni aplikace, které řekne aplikaci, ve kterém jsou oprávnění a úroveň přístupu uvnitř aplikace. Zřizování tento záznam účtu můžete buď automaticky provedou, nebo to může nastat, ručně správcem před uživateli se nabídnou přístup pomocí jednotného přihlašování.
@@ -194,7 +193,7 @@ Tyto odkazy použít stejné mechanismy řízení přístupu jako na přístupov
 ## <a name="related-articles"></a>Související články
 * [Rejstřík článků o správě aplikací ve službě Azure Active Directory](../active-directory-apps-index.md)
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](../saas-apps/tutorial-list.md)
-* [Nastavení Cloud Discovery](/cloud-app/security/set-up-cloud-discovery)
+* [Nastavení Cloud Discovery](/cloud-app-security/set-up-cloud-discovery)
 * [Úvod ke správě přístupu k aplikacím](what-is-access-management.md)
 * [Porovnání možností správy externí identity ve službě Azure AD](../active-directory-b2b-compare-b2c.md)
 

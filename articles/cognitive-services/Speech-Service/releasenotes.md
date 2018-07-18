@@ -8,14 +8,14 @@ manager: onano
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
-ms.date: 07/16/2018
+ms.date: 07/17/2018
 ms.author: wolfma
-ms.openlocfilehash: 71a5edfbe388f2d4bfb48255b901cb0037665252
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 50a8c183bd7f2711847ce6d0acade4cb498ef2fc
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39069426"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39116091"
 ---
 # <a name="release-notes"></a>Poznámky k verzi
 
@@ -42,12 +42,22 @@ ms.locfileid: "39069426"
 
 * Rozpoznávání události: typ události NoMatch je sloučen do událost chyby.
 * SpeechOutputFormat v jazyce C# je přejmenován na OutputFormat zachovat zarovnané s jazykem C++.
+* Návratový typ některé metody `AudioInputStream` rozhraní nepatrná změna:
+   * V jazyce Java `read` metody nyní vrací `long` místo `int`.
+   * V jazyce C# `Read` metody nyní vrací `uint` místo `int`.
+   * V jazyce C++ `Read` a `GetFormat` metody nyní návratový `size_t` místo `int`.
+* Jazyk C++: instance zvukové streamy ve vstupní lze nyní pouze předat jako `shared_ptr`.
 
 **Opravy chyb**
 
 * Oprava nesprávné návratové hodnoty ve výsledku Pokud `RecognizeAsync()` vyprší časový limit.
 * Závislost na knihovny media foundation na Windows Odebereme. Sady SDK je teď používá rozhraní API Core zvuk.
 * Oprava dokumentace: přidání oblasti stránky popisující, jaké jsou podporované oblasti.
+
+**Známé problémy**
+
+* Sadou SDK pro řeč pro Android nevytváří sestavu výsledků syntézu řeči pro překlad.
+  Tato chyba bude opravena v další vydané verzi.
 
 ## <a name="cognitive-services-speech-sdk-040-2018-june-release"></a>Services cognitive řeči vydání sady SDK 0.4.0: červen 2018
 

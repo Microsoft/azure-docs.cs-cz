@@ -1,6 +1,6 @@
 ---
-title: Podrobnosti o shromažďování dat pro řešení pro správu v Azure | Microsoft Docs
-description: Řešení pro správu v Azure jsou kolekce logiku, vizualizace a data pořízení pravidel, které poskytují metriky seskupit kolem oblasti konkrétní problém.  Tento článek obsahuje seznam řešení pro správu k dispozici od společnosti Microsoft a podrobnosti o jejich metoda a frekvenci shromažďování dat.
+title: Podrobnosti shromažďování dat pro řešení pro správu v Azure | Dokumentace Microsoftu
+description: Řešení pro správu v Azure jsou kolekce logiku, vizualizaci, pravidel a získávání dat, které poskytují metriky zaměřené na oblast konkrétního problému.  Tento článek obsahuje seznam řešení pro správu k dispozici od společnosti Microsoft a podrobnosti o jejich metoda a četnost shromažďování dat.
 services: log-analytics
 documentationcenter: ''
 author: MGoedtel
@@ -14,69 +14,69 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: bwren
-ms.openlocfilehash: 887611f1293e276070df51ac06df51a994161ec1
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 40b8f51c66ebe98cd1c312002b7bd5e96e5032bd
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37112184"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39112701"
 ---
-# <a name="data-collection-details-for-management-solutions-in-azure"></a>Podrobnosti o shromažďování dat pro řešení pro správu v Azure
-Tento článek obsahuje seznam [řešení pro správu](monitoring-solutions.md) od společnosti Microsoft k dispozici s odkazy na jejich podrobnou dokumentaci.  Také obsahuje informace o jejich metoda a frekvenci shromažďování dat do analýzy protokolů.  K identifikaci různých řešení, které jsou k dispozici a lépe porozumět požadavkům připojení a toku dat pro řešení pro správu jiný, můžete použít informace v tomto článku. 
+# <a name="data-collection-details-for-management-solutions-in-azure"></a>Podrobnosti shromažďování dat pro řešení pro správu v Azure
+Tento článek obsahuje seznam [řešení pro správu](monitoring-solutions.md) od Microsoftu k dispozici s odkazy na jejich podrobnou dokumentaci.  Poskytuje také informace o jejich metoda a četnost shromažďování dat do Log Analytics.  K identifikaci různých řešení, které jsou k dispozici a lépe porozumět požadavkům datového toku a připojení pro jiné řešení, můžete použít informace v tomto článku. 
 
 ## <a name="list-of-management-solutions"></a>Seznam řešení pro správu
 
-Následující tabulka uvádí [řešení pro správu](monitoring-solutions.md) v Azure od společnosti Microsoft. Položku ve sloupci znamená, že řešení shromažďuje data do analýzy protokolů pomocí dané metody.  Pokud řešení nemá žádné sloupce vybraná, pak zapíše přímo k Log Analytics z jiné služby Azure. Pomocí následujícího odkazu pro každé z nich k jeho podrobnou dokumentaci pro další informace.
+Následující tabulce jsou uvedeny [řešení pro správu](monitoring-solutions.md) v Azure poskytované společností Microsoft. Údaj ve sloupci znamená, že řešení shromažďuje data do Log Analytics pomocí této metody.  Pokud řešení neobsahuje žádné sloupce vybraná, pak zapíše přímo ke službě Log Analytics z jiné služby Azure. Pomocí následujícího odkazu pro každé z nich na jeho podrobnou dokumentaci pro další informace.
 
 Vysvětlení sloupců jsou následující:
 
-- **Agent monitorování Microsoft** -agenta použitý v systému Windows a Linux ke spuštění sady Management pack z SCOM a Správa řešení z Azure. V této konfiguraci agenta je připojený přímo k Log Analytics bez připojení ke skupině pro správu nástroje Operations Manager. 
-- **Nástroj Operations Manager** -identické agenta jako agenta Microsoft monitoring agent. V této konfiguraci je [připojené ke skupině pro správu nástroje Operations Manager](../log-analytics/log-analytics-om-agents.md) který je připojený k analýze protokolů. 
--  **Úložiště Azure** -řešení shromažďuje data z účtu úložiště Azure. 
-- **Nástroj Operations Manager vyžaduje?** Je nezbytná pro shromažďování dat do řešení pro správu – připojená skupina správy nástroje Operations Manager. 
-- **Dat agenta nástroje Operations Manager odeslána prostřednictvím skupiny pro správu** – Pokud je agent [připojené ke skupině pro správu SCOM](../log-analytics/log-analytics-om-agents.md), pak odeslání dat k analýze protokolů ze serveru pro správu. V takovém případě agenta nemusí připojit přímo k Log Analytics. Pokud není toto políčko zaškrtnuto, data se pak odešlou od agenta přímo k Log Analytics i v případě, že agent je připojený ke skupině pro správu SCOM. buď bude muset být schopni komunikovat k analýze protokolů prostřednictvím [OMS brány](../log-analytics/log-analytics-oms-gateway.md).
-- **Frekvence kolekce** -určuje četnost, že data jsou shromažďována řešení pro správu. 
+- **Agent sledování Microsoft** -Agent používá ke spuštění z SCOM a správu řešení z Azure pack vedení společnosti ve Windows a Linuxu. V této konfiguraci agenta připojené přímo k Log Analytics bez připojení k skupinu pro správu nástroje Operations Manager. 
+- **Nástroj Operations Manager** – identické agenta jako agenta Microsoft monitoring agent. V této konfiguraci obsahuje [připojené skupiny pro správu Operations Manageru](../log-analytics/log-analytics-om-agents.md) , který je připojený ke službě Log Analytics. 
+-  **Azure Storage** – řešení shromažďuje data z účtu služby Azure storage. 
+- **Nástroj Operations Manager vyžaduje?** – Připojené skupiny pro správu Operations Manageru je nezbytná pro shromažďování dat do řešení pro správu. 
+- **Dat agenta nástroje Operations Manager odeslaná pomocí skupiny pro správu** – Pokud je agent [připojené ke skupině pro správu nástroje SCOM](../log-analytics/log-analytics-om-agents.md), pak se odešlou do služby Log Analytics ze serveru pro správu. V takovém případě agenta není nutné se připojit přímo k Log Analytics. Pokud toto políčko není zaškrtnuto, pak data odesílána z agenta přímo ke službě Log Analytics i v případě, agent je připojený ke skupině pro správu nástroje SCOM. buď bude muset být schopni komunikovat s Log Analytics prostřednictvím [bránu OMS](../log-analytics/log-analytics-oms-gateway.md).
+- **Četnost shromažďování dat** – Určuje, jak často, že shromažďuje data řešení pro správu. 
 
 
 
-| **Řešení pro správu** | **Platforma** | **Agent monitorování Microsoft** | **Agent nástroje Operations Manager** | **Úložiště Azure** | **Nástroj Operations Manager vyžaduje?** | **Dat agenta nástroje Operations Manager odeslána prostřednictvím skupiny pro správu** | **Frekvence kolekce** |
+| **Řešení pro správu** | **Platforma** | **Agent sledování Microsoft** | **Agent nástroje Operations Manager** | **Úložiště Azure** | **Nástroj Operations Manager vyžaduje?** | **Dat agenta nástroje Operations Manager odeslaná pomocí skupiny pro správu** | **Četnost shromažďování dat** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | [Activity Log Analytics](../log-analytics/log-analytics-activity.md) | Azure | | | | | | v oznámení |
 | [Posouzení AD](../log-analytics/log-analytics-ad-assessment.md) |Windows |&#8226; |&#8226; | | |&#8226; |7 dní |
 | [Stav replikace AD](../log-analytics/log-analytics-ad-replication-status.md) |Windows |&#8226; |&#8226; | | |&#8226; |5 dní |
 | [Stav agenta](../operations-management-suite/oms-solution-agenthealth.md) | Windows a Linux | &#8226; | &#8226; | | | &#8226; | 1 minuta |
-| [Výstrahy správy](../log-analytics/log-analytics-solution-alert-management.md) (Nagios) |Linux |&#8226; | | | | |v případě přijetí |
-| [Výstrahy správy](../log-analytics/log-analytics-solution-alert-management.md) (Zabbix) |Linux |&#8226; | | | | |1 minuta |
-| [Výstrahy správy](../log-analytics/log-analytics-solution-alert-management.md) (Operations Manager) |Windows | |&#8226; | |&#8226; |&#8226; |3 minuty |
+| [Správa výstrah](../log-analytics/log-analytics-solution-alert-management.md) (Nagios) |Linux |&#8226; | | | | |Při doručení |
+| [Správa výstrah](../log-analytics/log-analytics-solution-alert-management.md) (Zabbix) |Linux |&#8226; | | | | |1 minuta |
+| [Správa výstrah](../log-analytics/log-analytics-solution-alert-management.md) (Operations Manager) |Windows | |&#8226; | |&#8226; |&#8226; |3 minuty |
 | [Azure Site Recovery](../site-recovery/site-recovery-overview.md) | Azure | | | | | | neuvedeno |
-| [Konektor služby Statistika aplikace (Preview)](../log-analytics/log-analytics-app-insights-connector.md) | Azure | | | |  |  | v oznámení |
-| [Automatizace hybridní pracovní proces](../automation/automation-hybrid-runbook-worker.md) | Windows | &#8226; | &#8226; |  |  |  | neuvedeno |
-| [Analýza brány Azure aplikace](../log-analytics/log-analytics-azure-networking-analytics.md) | Azure |  |  |  |  |  | v oznámení |
-| **Řešení pro správu** | **Platforma** | **Agent monitorování Microsoft** | **Agent nástroje Operations Manager** | **Úložiště Azure** | **Nástroj Operations Manager vyžaduje?** | **Dat agenta nástroje Operations Manager odeslána prostřednictvím skupiny pro správu** | **Frekvence kolekce** |
-| [Skupina zabezpečení sítě Azure Analytics](../log-analytics/log-analytics-azure-networking-analytics.md) | Azure |  |  |  |  |  | v oznámení |
-| [Analýza Azure SQL (Preview)](../log-analytics/log-analytics-azure-sql.md) | Windows | | | | | | 1 minuta |
+| [Application Insights Connector (Preview)](../log-analytics/log-analytics-app-insights-connector.md) | Azure | | | |  |  | v oznámení |
+| [Hybrid Worker služby Automation](../automation/automation-hybrid-runbook-worker.md) | Windows | &#8226; | &#8226; |  |  |  | neuvedeno |
+| [Analýzy Azure Application Gateway](../log-analytics/log-analytics-azure-networking-analytics.md) | Azure |  |  |  |  |  | v oznámení |
+| **Řešení pro správu** | **Platforma** | **Agent sledování Microsoft** | **Agent nástroje Operations Manager** | **Úložiště Azure** | **Nástroj Operations Manager vyžaduje?** | **Dat agenta nástroje Operations Manager odeslaná pomocí skupiny pro správu** | **Četnost shromažďování dat** |
+| [Skupiny zabezpečení sítě Azure Analytics (zastaralé)](../log-analytics/log-analytics-azure-networking-analytics.md) | Azure |  |  |  |  |  | v oznámení |
+| [Azure SQL Analytics (Náhled)](../log-analytics/log-analytics-azure-sql.md) | Windows | | | | | | 1 minuta |
 | [Backup](https://azure.microsoft.com/resources/templates/101-backup-oms-monitoring/) | Azure |  |  |  |  |  | v oznámení |
-| [Kapacitu a výkon (Preview)](../log-analytics/log-analytics-capacity.md) |Windows |&#8226; |&#8226; | | |&#8226; |v případě přijetí |
+| [Kapacita a výkon (Preview)](../log-analytics/log-analytics-capacity.md) |Windows |&#8226; |&#8226; | | |&#8226; |Při doručení |
 | [Sledování změn](../log-analytics/log-analytics-change-tracking.md) |Windows |&#8226; |&#8226; | | |&#8226; |každou hodinu |
 | [Sledování změn](../log-analytics/log-analytics-change-tracking.md) |Linux |&#8226; | | | | |každou hodinu |
 | [Containers](../log-analytics/log-analytics-containers.md) | Windows a Linux | &#8226; | &#8226; |  |  |  | 3 minuty |
 | [Analýza služby Key Vault](../log-analytics/log-analytics-azure-key-vault.md) |Windows | | | | | |v oznámení |
 | [Posouzení malwaru](../log-analytics/log-analytics-malware.md) |Windows |&#8226; |&#8226; | | |&#8226; |každou hodinu |
-| [Sledování výkonu sítě](../log-analytics/log-analytics-network-performance-monitor.md) | Windows | &#8226; | &#8226; |  |  |  | TCP metodou handshake každých 5 sekund, data odeslána každé 3 minuty |
-| [Analýza Office 365 (Preview)](../operations-management-suite/oms-solution-office-365.md) |Windows | | | | | |v oznámení |
-| **Řešení pro správu** | **Platforma** | **Agent monitorování Microsoft** | **Agent nástroje Operations Manager** | **Úložiště Azure** | **Nástroj Operations Manager vyžaduje?** | **Dat agenta nástroje Operations Manager odeslána prostřednictvím skupiny pro správu** | **Frekvence kolekce** |
-| [Služba Fabric Analytics (Preview)](../log-analytics/log-analytics-service-fabric.md) |Windows | | |&#8226; | | |5 minut |
+| [Sledování výkonu sítě](../log-analytics/log-analytics-network-performance-monitor.md) | Windows | &#8226; | &#8226; |  |  |  | Počet metod Handshake protokolu TCP každých 5 sekund dat odeslaných každé 3 minuty |
+| [Office 365 Analytics (Náhled)](../operations-management-suite/oms-solution-office-365.md) |Windows | | | | | |v oznámení |
+| **Řešení pro správu** | **Platforma** | **Agent sledování Microsoft** | **Agent nástroje Operations Manager** | **Úložiště Azure** | **Nástroj Operations Manager vyžaduje?** | **Dat agenta nástroje Operations Manager odeslaná pomocí skupiny pro správu** | **Četnost shromažďování dat** |
+| [Analýza služby Service Fabric (verze Preview)](../log-analytics/log-analytics-service-fabric.md) |Windows | | |&#8226; | | |5 minut |
 | [Mapa služeb](../operations-management-suite/operations-management-suite-service-map.md) | Windows a Linux | &#8226; | &#8226; |  |  |  | 15 sekund |
 | [Posouzení SQL](../log-analytics/log-analytics-sql-assessment.md) |Windows |&#8226; |&#8226; | | |&#8226; |7 dní |
-| [SurfaceHub](../log-analytics/log-analytics-surface-hubs.md) |Windows |&#8226; | | | | |v případě přijetí |
+| [SurfaceHub](../log-analytics/log-analytics-surface-hubs.md) |Windows |&#8226; | | | | |Při doručení |
 | [System Center Operations Manager Assessment (Preview)](../log-analytics/log-analytics-scom-assessment.md) | Windows | &#8226; | &#8226; |  |  | &#8226; | sedm dní |
-| [Správa aktualizací](../operations-management-suite/oms-solution-update-management.md) | Windows |&#8226; |&#8226; | | |&#8226; |aspoň 2 časy denně a 15 minut po instalaci aktualizace |
+| [Správa aktualizací](../operations-management-suite/oms-solution-update-management.md) | Windows |&#8226; |&#8226; | | |&#8226; |minimálně 2 časy za den a 15 minut po instalaci aktualizace |
 | [Upgrade Readiness](https://docs.microsoft.com/windows/deployment/upgrade/upgrade-readiness-get-started) | Windows | &#8226; |  |  |  |  | 2 dny |
-| [VMware monitorování (Preview)](../log-analytics/log-analytics-vmware.md) | Linux | &#8226; |  |  |  |  | 3 minuty |
-| [Data kabelové sítě 2.0 (Preview)](../log-analytics/log-analytics-wire-data.md) |Windows (2012 R2 / 8.1 nebo novější) |&#8226; |&#8226; | | | | 1 minuta |
+| [VMware Monitoring (zastaralé)](../log-analytics/log-analytics-vmware.md) | Linux | &#8226; |  |  |  |  | 3 minuty |
+| [Wire Data 2.0 (Preview)](../log-analytics/log-analytics-wire-data.md) |Windows (2012 R2 / 8.1 a novější) |&#8226; |&#8226; | | | | 1 minuta |
 
 
 
 
 ## <a name="next-steps"></a>Další postup
-* Zjistěte, jak [vytváření dotazů](../log-analytics/log-analytics-log-searches.md) analyzovat data shromažďovaná společností řešení pro správu.
+* Zjistěte, jak [vytvářet dotazy](../log-analytics/log-analytics-log-searches.md) k analýze dat shromažďovaných řešeními pro správu.

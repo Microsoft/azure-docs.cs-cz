@@ -8,20 +8,20 @@ manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: conceptual
-ms.date: 04/01/2018
+ms.date: 07/16/2018
 ms.author: carlrab
-ms.openlocfilehash: 44d68d69a7034e80846fb44f3ae26c0d73c61f28
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: dc04a9334b63656719a7633a8dd7154ed6cd6993
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34648305"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39092575"
 ---
 # <a name="monitoring-database-performance-in-azure-sql-database"></a>Monitorování výkonu databáze ve službě Azure SQL Database
-Monitorování výkonu databáze SQL v Azure začíná sledováním využití prostředků relativně ke zvolené úrovni výkonu databáze. Monitorování vám pomůže určit, zda vaše databáze má přebytečnou kapacitou, nebo má potíže s, protože prostředky jsou podle toho, se a pak rozhodnout, zda je čas změnit úroveň výkonu a vaše databáze v úrovních služeb [na základě DTU nákupní model](sql-database-service-tiers-dtu.md) nebo [nákupní model (preview) na základě vCore](sql-database-service-tiers-vcore.md). Databázi můžete monitorovat pomocí grafických nástrojů na [portálu Azure](https://portal.azure.com) nebo pomocí [zobrazení dynamické správy SQL](https://msdn.microsoft.com/library/ms188754.aspx).
+Monitorování výkonu databáze SQL v Azure začíná sledováním využití prostředků relativně ke zvolené úrovni výkonu databáze. Monitorování vám pomůže určit, zda má přebytečnou kapacitu databáze, nebo má potíže, protože prostředky jsou maxed navýšení kapacity a následně se rozhodnete, zda je třeba upravit úroveň výkonu a vaší databáze v úrovních služeb [založený na DTU nákupní model](sql-database-service-tiers-dtu.md) nebo [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md). Databázi můžete monitorovat pomocí grafických nástrojů na [portálu Azure](https://portal.azure.com) nebo pomocí [zobrazení dynamické správy SQL](https://msdn.microsoft.com/library/ms188754.aspx).
 
 > [!TIP]
-> Použití [inteligentního Statistika SQL Azure](sql-database-intelligent-insights.md) pro automatické monitorování výkon databáze. Jakmile se zjistí problém s výkonem, diagnostiky protokol je generovaný s podrobnostmi a kořenové příčina Analysis (RCA) problému. Doporučení pro zlepšení výkonu je zadat, pokud je to možné.
+> Použití [Azure SQL Intelligent Insights](sql-database-intelligent-insights.md) pro automatické monitorování výkonu vaší databáze. Po zjištění problému s výkonem se vygeneruje protokol diagnostiky s podrobnostmi a kořenové příčiny analýzy RCA () problému. Pokud je to možné, poskytuje doporučení pro zlepšení výkonu.
 >
 
 ## <a name="monitor-databases-using-the-azure-portal"></a>Monitorování databází na portálu Azure
@@ -32,7 +32,7 @@ Na [portálu Azure](https://portal.azure.com/) můžete monitorovat využití iz
 * Procento datových V/V
 * Procento velikosti databáze
 
-Jakmile přidáte tyto metriky, můžete pokračovat jejich zobrazením v **monitorování** grafu s dalšími informacemi na **metrika** okno. Tyto čtyři metriky uvádějí průměrné využití v procentech vzhledem k hodnotě **DTU** vaší databáze. Najdete v článku [na základě DTU nákupní model](sql-database-service-tiers-dtu.md) a [nákupní model (preview) na základě vCore](sql-database-service-tiers-vcore.md) články pro další informace o úrovních služeb.  
+Jakmile přidáte tyto metriky, můžete pokračovat jejich zobrazením v **monitorování** graf s dalšími informacemi o **metrika** okna. Tyto čtyři metriky uvádějí průměrné využití v procentech vzhledem k hodnotě **DTU** vaší databáze. Zobrazit [nákupní model založený na DTU](sql-database-service-tiers-dtu.md) a [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md) články pro další informace o úrovních služeb.  
 
 ![Monitorování výkonu databáze v rámci úrovně služeb](./media/sql-database-single-database-monitoring/sqldb_service_tier_monitoring.png)
 
@@ -50,9 +50,9 @@ Stejné metriky, které jsou přístupné na portálu, můžete zobrazit také p
 >
 >
 
-### <a name="monitor-resource-use"></a>Sledování využití prostředků
+### <a name="monitor-resource-use"></a>Monitorovat využití prostředků
 
-Můžete monitorovat využití prostředků pomocí [SQL databáze Query Performance Insight](sql-database-query-performance.md) a [úložiště dotazů](https://msdn.microsoft.com/library/dn817826.aspx).
+Můžete monitorovat využití prostředků pomocí [SQL Database Query Performance Insight](sql-database-query-performance.md) a [Query Store](https://msdn.microsoft.com/library/dn817826.aspx).
 
 Můžete také sledovat využití pomocí těchto dvou zobrazení:
 
@@ -60,9 +60,9 @@ Můžete také sledovat využití pomocí těchto dvou zobrazení:
 * [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx)
 
 #### <a name="sysdmdbresourcestats"></a>sys.dm_db_resource_stats
-Můžete použít [sys.dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) zobrazení v každé databázi SQL. **Sys.dm_db_resource_stats** zobrazení ukazuje poslední data použití prostředků relativně k vrstvě služby. Průměrná procenta využití procesoru, vstupně-výstupní data, zápisy protokolu a paměti se zaznamenávají každých 15 sekund a jsou uchovávány 1 hodina.
+Můžete použít [sys.dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) zobrazení v každé databázi SQL. **Sys.dm_db_resource_stats** zobrazení ukazuje poslední data použití prostředků relativně vzhledem k úrovni služeb. Průměrné procento CPU, datové v/v, zápisy protokolu a paměti se zaznamenávají každých 15 sekund a dobu 1 hodiny se zachovají.
 
-Protože toto zobrazení nabízí podrobnější pohled na využití prostředků, použijte **sys.dm_db_resource_stats** první pro nějakou analýzu aktuální stav nebo řešení potíží. Například tento dotaz zobrazí průměrnou a maximální prostředky používané pro aktuální databázi přes poslední hodinu:
+Protože toto zobrazení nabízí podrobnější pohled na využití prostředků, použijte **sys.dm_db_resource_stats** první pro analýzu aktuální stav nebo řešení potíží. Například tento dotaz ukazuje průměrnou a maximální prostředky používané pro aktuální databázi za poslední hodinu:
 
     SELECT  
         AVG(avg_cpu_percent) AS 'Average CPU use in percent',
@@ -75,27 +75,27 @@ Protože toto zobrazení nabízí podrobnější pohled na využití prostředk�
         MAX(avg_memory_usage_percent) AS 'Maximum memory use in percent'
     FROM sys.dm_db_resource_stats;  
 
-Pro jiné dotazy, podívejte se na příklady v [sys.dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx).
+Pro další dotazy, podívejte se na příklady v [sys.dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx).
 
 #### <a name="sysresourcestats"></a>sys.resource_stats
-[Sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) zobrazit v **hlavní** databáze obsahuje další informace, které můžete sledovat výkon vaší databázi SQL na úrovni konkrétní službu a výkonu. Data se shromažďují pro každých 5 minut a bude zachována pro účely přibližně 14 dnů. Toto zobrazení je užitečné pro dlouhodobější analýzu historie používání prostředků vaší databázi SQL.
+[Sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) zobrazit **hlavní** databáze obsahuje další informace, které vám pomohou sledovat výkon vaší databáze SQL na úrovni vrstvy a výkonu konkrétní služby. Data se shromažďují pro každých 5 minut a je zachován z důvodu přibližně 14 dnů. Toto zobrazení je užitečné pro dlouhodobější analýzu historie jak vaši službu SQL database využívá prostředky.
 
-Následující graf ukazuje procesoru využití prostředků pro databáze Premium P2 úrovní výkonu pro každou hodinu v týdnu. Tento graf začíná v pondělí, zobrazuje 5 pracovních dní a poté zobrazí víkendu, když se stane mnohem méně na aplikaci.
+Následující graf ukazuje využití procesoru využití prostředků databáze úrovně Premium s úrovní výkonu P2 pro každou hodinu za týden. Tento graf začíná v pondělí, zobrazuje 5 pracovních dní a poté zobrazí víkend, když se v aplikaci stane mnohem méně.
 
 ![Využití prostředků databáze SQL](./media/sql-database-performance-guidance/sql_db_resource_utilization.png)
 
-Z dat, má tato databáze aktuálně zatížení procesoru ve špičce právě víc než 50 % využití procesoru relativně k úroveň výkonu P2 (poledne úterý). Pokud procesor dominantní hrají roli v profilu aplikace prostředků, může rozhodnout, že P2 je na úroveň výkonu správné zaručit, že zatížení vždy vyhovuje. Pokud očekáváte aplikace v čase, je vhodné mít vyrovnávací paměť navíc prostředků tak, aby aplikace nebude nikdy dosáhne omezení úroveň výkonu. Pokud zvýšíte úroveň výkonu, můžete pomoct vyhnout zákazníka viditelné chybách, ke kterým může dojít, když databáze nemá dostatek power zpracovávat požadavky efektivně, zejména v prostředích citlivý na latenci. Příkladem je databáze, která podporuje aplikace, která vybarví webové stránky, na základě výsledků volání databáze.
+Z dat, tato databáze má aktuálně zatížení CPU ve špičce než 50 procent využití procesoru vzhledem k úrovni výkonu P2 (poledne úterý). Pokud využití procesoru je dominantní faktoru v profilu aplikace prostředků, můžete se rozhodnout, že P2 je úroveň výkonu správné zaručí, že zatížení vždy vyhovovat. Pokud očekáváte, že aplikace čase, je dobré mít vyrovnávací paměť dodatečný prostředek, takže aplikace nebude nikdy dosáhne limitu úroveň výkonu. Pokud zvýšíte úroveň výkonu, můžete vyhnout zákazníky viditelné chyby, které mohou nastat, když databáze nemá dostatek výkonné nástroje pro zpracování žádostí efektivně, zejména v prostředích nízkou latenci. Příkladem je databáze, která podporuje aplikace, která jsou vykreslovány webové stránky na základě výsledků volání databáze.
 
-Jinými typy aplikací odlišně může přeložit do stejného grafu. Například pokud aplikace pokusí zpracovat data mzdy každý den a má stejné grafu, tento druh modelu "dávkovou úlohu" může provádět bez problémů na úroveň výkonu P1. Úroveň výkonu P1 má 100 Dtu ve srovnání s 200 Dtu na úrovni výkonu P2. Úroveň výkonu P1 poskytuje poloviční výkon P2 úroveň výkonu. Ano 50 procent hodnoty využití procesoru v P2 rovná 100 procent využití procesoru v P1. Pokud aplikace nemá vypršení časových limitů, nemusí je důležité, pokud úloha trvá 2 hodiny nebo 2,5 hodin, pokud získá dnes Hotovo. Aplikace v této kategorii pravděpodobně můžete použít úroveň výkonu P1. Můžete využít výhod skutečnost, že jsou dobu během dne, kdy je využití prostředků nižší, tak, aby všechny "velký ve špičce" může distribuována do jedné žlaby později v den. Úroveň výkonu P1 může být vhodné pro tento typ aplikace (a uložte peníze), tak dlouho, dokud na čas každý den může dokončení úlohy.
+Ostatní typy aplikací může do stejného grafu interpretují odlišně. Například pokud se aplikace pokusí ke zpracování mezd dat každý den a má stejný graf, tento druh "úlohy služby batch" model může provádět bez problémů na úroveň výkonu P1. Úroveň výkonu P1 má 100 Dtu ve srovnání s 200 jednotek Dtu na úrovni výkonu P2. Úroveň výkonu P1 poskytuje poloviční výkon úroveň výkonu P2. Tedy 50 % využití procesoru v P2 se rovná 100 % využití procesoru v P1. Pokud aplikace nemá žádné vypršení časových limitů, nemusí je důležité, pokud úlohy trvá 2 hodiny nebo 2,5 hodin, pokud to proběhne ještě dnes. Aplikace v této kategorii pravděpodobně můžete použít úroveň výkonu P1. Můžete využít výhod vzhledem k tomu, že mají dobu během dne, kdy je využití prostředků nižší, tak, aby všechny "velký objem ve špičce" může být uložená do jedné ze žlaby později za den. Jako včasné každý den může dokončení úloh, může být vhodné pro tento typ aplikace (a ušetřit peníze), úroveň výkonu P1.
 
-Azure SQL Database zpřístupňuje využívat informace o prostředcích pro každou aktivní databáze v **sys.resource_stats** zobrazení **hlavní** databází v každém serveru. Data v tabulce se shromažďují pro 5 minutách. S úrovně služeb Basic, Standard a Premium dat může trvat déle než 5 minut, než se objeví v tabulce, tak, aby tato data užitečnější pro historické analýzy, nikoli analysis téměř v reálném čase. Dotaz **sys.resource_stats** zobrazení zobrazíte nejnovější historii databáze a k ověření, jestli rezervace zvolíte doručit výkonu, které chcete v případě potřeby.
+Azure SQL Database zpřístupňuje využívat informace o prostředku pro každou databázi aktivní **sys.resource_stats** zobrazení **hlavní** databází v každém serveru. Zobrazují se data v tabulce pro 5minutových intervalech. S úrovní služeb Basic, Standard a Premium dat může trvat více než 5 minut se zobrazí v tabulce, takže tato data je užitečnější pro historické analýzy spíše než analýzy téměř v reálném čase. Dotaz **sys.resource_stats** zobrazení nedávné historie databáze a ověřit, jestli se rezervace jste zvolili doručit výkonu chcete, aby v případě potřeby.
 
 > [!NOTE]
-> Musíte být připojeni k **hlavní** databáze logické databáze serveru SQL pro dotaz **sys.resource_stats** v následujících příkladech.
+> Musíte být připojeni k **hlavní** databáze logického serveru databáze SQL k dotazování **sys.resource_stats** v následujících příkladech.
 > 
 > 
 
-Tento příklad ukazuje, jak je vystaven data v tomto zobrazení:
+Tento příklad ukazuje, jak vystavit data v tomto zobrazení:
 
     SELECT TOP 10 *
     FROM sys.resource_stats
@@ -104,16 +104,16 @@ Tento příklad ukazuje, jak je vystaven data v tomto zobrazení:
 
 ![Zobrazení katalogu sys.resource_stats](./media/sql-database-performance-guidance/sys_resource_stats.png)
 
-Další příklad ukazuje, různé způsoby, které můžete použít **sys.resource_stats** katalogu zobrazení a získat informace o používání prostředků vaší databázi SQL:
+Další příklad ukazuje různé způsoby, které můžete použít **sys.resource_stats** katalogu zobrazení se získat informace o tom, jak vaši službu SQL database používá prostředky:
 
-1. Podívat se na minulého týdne prostředků použít pro userdb1 databáze, můžete spustit tento dotaz:
+1. Podívat se na poslední týden prostředků použijte pro userdb1 databáze, můžete spustit tento dotaz:
    
         SELECT *
         FROM sys.resource_stats
         WHERE database_name = 'userdb1' AND
               start_time > DATEADD(day, -7, GETDATE())
         ORDER BY start_time DESC;
-2. Pokud chcete vyhodnotit, jak dobře vaše úlohy vyhovuje úroveň výkonu, je potřeba k podrobnostem každý aspekt metrika prostředků: procesoru, čtení, zápisu, počet pracovních procesů a počet relací. Tady je revidované dotazování pomocí **sys.resource_stats** nahlásit průměrný a maximální hodnoty metrik těchto prostředků:
+2. Můžete vyhodnotit, jak dobře vaše úloha vyhovuje úroveň výkonu, budete muset přejít na každý aspekt metriky prostředků: procesor, čtení, zápisu, počet pracovních procesů a počet relací. Tady je upravená dotazování pomocí **sys.resource_stats** hlášení průměrné a maximální hodnoty tyto metriky prostředků:
    
         SELECT
             avg(avg_cpu_percent) AS 'Average CPU use in percent',
@@ -128,11 +128,11 @@ Další příklad ukazuje, různé způsoby, které můžete použít **sys.reso
             max(max_worker_percent) AS 'Maximum % of workers'
         FROM sys.resource_stats
         WHERE database_name = 'userdb1' AND start_time > DATEADD(day, -7, GETDATE());
-3. Tyto informace o průměrnou a maximální hodnoty každého prostředku metriky a můžete vyhodnotit, jak dobře vaše úlohy zapadá do úroveň výkonu, které jste zvolili. Obvykle, průměrná hodnoty z **sys.resource_stats** poskytují dobrý směrného plánu používat pro cílovou velikost. Mělo by být váš primární měření Flash disk. Příklad by mohla využívat vrstvě služby na úrovni Standard S2 úroveň výkonu. Průměr pomocí procenta pro procesor a vstupně-výstupní operace čtení a zápisů jsou pod 40 procent, průměrný počet pracovních procesů je menší než 50 a průměrný počet relací, které je nižší než 200. Vaše zatížení může začlenit do úrovní výkonu S1. Je snadno zjistit, jestli vaše databáze se vejde limity pracovního procesu a relace. Pokud chcete zobrazit, zda databáze zapadá do nižší úroveň výkonu s ohledem na využití procesoru, čte a zápisu a dělit počet jednotek DTU na nižší úroveň výkonu podle počtu jednotek DTU vaše aktuální úroveň výkonu a výsledek vynásobit 100:
+3. Pomocí těchto informací o průměrné a maximální hodnoty každého prostředku metriky můžete vyhodnotit, jak dobře vaše úloha zapadá do úrovní výkonu, kterou jste zvolili. Obvykle, průměrné hodnoty z **sys.resource_stats** umožňují dobré směrný plán použít proti cílovou velikost. Měla by být stonek vaše primární měření. Příklad může být použití úrovně služeb Standard s úrovní výkonu S2. Průměr použít procenta využití procesoru a vstupně-výstupních operací čtení a zápisy jsou pod 40 procent, průměrný počet pracovních procesů, které je nižší než 50 a průměrný počet relací je nižší než 200. Úlohy je možné umístit do úrovní výkonu S1. Je snadno zjistit, zda databáze vejde omezení pracovních procesů a relace. Abyste viděli, zda databáze zapadá do nižší úroveň výkonu s ohledem na využití procesoru, čtení a zápisu, počet DTU nižší úrovně výkonu podle počtu jednotek DTU vaše aktuální úroveň výkonu a výsledek vynásobit 100:
    
     **S1 DTU / S2 DTU * 100 = 20 / 50 * 100 = 40**
    
-    Výsledkem je relativní výkon rozdíl mezi úrovněmi dvě výkonu v procentech. Pokud vaše využití prostředků nepřekročí toto množství, může vaše úlohy začlenit do nižší úroveň výkonu. Však musíte vyhledat všechny rozsahy hodnot použití prostředků a zjistit, v procentech, jak často by se vešla vaše databáze úlohy s nižší úrovní výkonu. Následující dotaz vypíše shody procento na dimenzi prostředků, podle prahové hodnoty 40 procent vypočtené v tomto příkladu:
+    Výsledkem je relativní výkon rozdíl mezi dvěma výkonu úrovně v procentech. Pokud využívání prostředků není překročí tuto hodnotu, je možné umístit vašich úloh s nižší úrovní výkonu. Ale budete muset podívejte se na všechny rozsahy hodnot použití prostředků a zjistit, v procentech, jak často by přizpůsobit databázové úlohy s nižší úrovní výkonu. Následující dotaz vypíše ve výstupu přizpůsobit procento prostředků dimenze, podle prahové hodnoty 40 procent vypočtené v tomto příkladu:
    
         SELECT
             (COUNT(database_name) - SUM(CASE WHEN avg_cpu_percent >= 40 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name) AS 'CPU Fit Percent'
@@ -141,15 +141,15 @@ Další příklad ukazuje, různé způsoby, které můžete použít **sys.reso
         FROM sys.resource_stats
         WHERE database_name = 'userdb1' AND start_time > DATEADD(day, -7, GETDATE());
    
-    Podle vaší databáze cíle na úrovni služby (SLO), můžete rozhodnout, zda vyhovuje vaše úlohy s nižší úrovní výkonu. Pokud vaše databáze úlohy SLO je 99,9 % a předchozí dotaz vrátí hodnoty vyšší než 99,9 % pro všechny tři prostředků dimenze, vaše úlohy pravděpodobně zapadá do nižší úroveň výkonu.
+    Podle vaší databáze cíle na úrovni služby (SLO), můžete rozhodnout, zda vaše úloha zapadá do nižší úroveň výkonu. Pokud je vaší úlohy databáze SLO 99, 9procentní a předchozí dotaz vrátí hodnoty větší než 99, 9procentní pro všechny tři prostředků dimenze, úloha pravděpodobně zapadá do nižší úroveň výkonu.
    
-    Prohlížení shody procento také získáte přehled o tom, jestli měli byste přejít na další vyšší úroveň výkonu na splňují vaše SLO. Například userdb1 uvádí následující využití procesoru za uplynulý týden:
+    Prohlížení přizpůsobit procento poskytuje také přehled o tom, zda byste měli přejít na další vyšší úroveň výkonu pro splnění vašich cíle na úrovni služby. Například userdb1 znázorňuje následující využití procesoru za minulý týden:
    
-   | Průměrné využití procesoru v procentech | Maximální procento využití procesoru |
+   | Průměrné procento CPU | Maximální procento využití procesoru |
    | --- | --- |
    | 24.5 |100.00 |
    
-    Průměrné využití procesoru je o čtvrtletí omezení úrovně výkonu, které by se vešla do úroveň výkonu databáze. Ale maximální hodnota ukazuje, že databáze dosáhne limitu úrovně výkonu. Je třeba přesunout do další vyšší úroveň výkonu? Podívejte se na to, jak tolikrát, kolikrát vaše úlohy dosáhnou 100 procent a porovnejte je s vaše databáze úlohy SLO.
+    Průměrné využití procesoru je o čtvrtletí limit úroveň výkonu, které bude vyhovovat úrovně výkonu databáze. Ale maximální hodnota ukazuje, že databáze dosáhne limitu úroveň výkonu. Je třeba přesunout na další vyšší úroveň výkonu? Podívejte se na postup v mnoha případech vaše zatížení dosáhne 100 % jeho obsahu a pak porovnat s vaší úlohy databáze cíle na úrovni služby.
    
         SELECT
         (COUNT(database_name) - SUM(CASE WHEN avg_cpu_percent >= 100 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name) AS 'CPU fit percent'
@@ -158,44 +158,44 @@ Další příklad ukazuje, různé způsoby, které můžete použít **sys.reso
         FROM sys.resource_stats
         WHERE database_name = 'userdb1' AND start_time > DATEADD(day, -7, GETDATE());
    
-    Pokud tento dotaz vrací hodnotu menší než 99,9 % pro některá z dimenzí tři prostředků, zvažte přechod na další vyšší úroveň výkonu nebo snížení zatížení databáze SQL pomocí techniky optimalizace pro aplikace.
-4. Tento postup také zvažuje zvýšení vaší předpokládané úlohy v budoucnu.
+    Pokud tento dotaz vrací hodnotu menší než 99, 9procentní pro libovolný počet rozměrů tři zdroje, zvažte Přesun na další vyšší úroveň výkonu nebo používat techniky ladění aplikace ke snížení zatížení na databázi SQL.
+4. V tomto cvičení také bere v úvahu vaše zvýšení plánované úlohy v budoucnu.
 
 U elastických fondů můžete monitorovat jednotlivé databáze ve fondu pomocí technik popsaných v této části. Můžete ale také monitorovat fond jako celek. Další informace najdete v tématu [Monitorování a správa elastického fondu](sql-database-elastic-pool-manage-portal.md).
 
 
-### <a name="maximum-concurrent-requests"></a>Maximální souběžných požadavků
-Pokud chcete zjistit počet souběžných požadavků, spusťte tento dotaz jazyka Transact-SQL ve vaší databázi SQL:
+### <a name="maximum-concurrent-requests"></a>Maximální počet souběžných požadavků
+Pokud chcete zobrazit počet souběžných požadavků, spusťte tento dotaz jazyka Transact-SQL v SQL database:
 
     SELECT COUNT(*) AS [Concurrent_Requests]
     FROM sys.dm_exec_requests R
 
-Chcete-li analyzovat zatížení místní databáze systému SQL Server, upravte tento dotaz pro filtrování v konkrétní databázi, že které chcete analyzovat. Například pokud máte místní databázi s názvem databáze, tento dotaz jazyka Transact-SQL vrátí počet souběžných požadavků v databázi:
+Pokud chcete analyzovat úlohy k místní databázi SQL serveru, upravte tento dotaz pro filtrování v konkrétní databázi, že který chcete analyzovat. Pokud máte místní databázi s názvem databáze, tento dotaz jazyka Transact-SQL vrátí počet souběžných požadavků v této databázi:
 
     SELECT COUNT(*) AS [Concurrent_Requests]
     FROM sys.dm_exec_requests R
     INNER JOIN sys.databases D ON D.database_id = R.database_id
     AND D.name = 'MyDatabase'
 
-Toto je právě snímku na jednom místě v čase. Chcete-li získat lepší pochopení zatížení a požadavky na počtu souběžných požadavků, budete muset shromažďovat mnoha ukázek v čase.
+Toto je snímek v jednom okamžiku v čase. Pokud chcete získat lepší přehled o vašich úloh a požadavky souběžný požadavek, musíte postupně shromáždit mnoha ukázek.
 
 ### <a name="maximum-concurrent-logins"></a>Maximální souběžných přihlášení
-Můžete analyzovat vašim vzorům uživatelů a aplikací, kde získáte představu četnost přihlášení. Skutečné zatížení taky můžete spustit v testovacím prostředí, abyste měli jistotu, že nejsou stiskne to nebo další omezení, které v tomto článku probereme. Není k dispozici jeden dotaz nebo zobrazení dynamické správy (DMV), která umožňuje zobrazit souběžných, že počty přihlášení nebo historie.
+Můžete analyzovat vzory vašich uživatelů a aplikací, kde získáte představu o četnosti přihlášení. Reálné zátěže můžete spustit také v testovacím prostředí, abyste měli jistotu, že jste nedosahují to nebo další omezení, které si popíšeme v tomto článku. Není k dispozici jeden dotaz nebo zobrazení dynamické správy (DMV), které můžete zobrazit souběžných počítá přihlášení nebo z historie.
 
-V případě, že více klientů používat stejný připojovací řetězec, ověří služba každé přihlášení. Pokud 10 uživatelů najednou připojit k databázi pomocí stejné uživatelské jméno a heslo, by 10 souběžných přihlášení. Toto omezení se vztahuje pouze na dobu trvání přihlášení a ověřování. Pokud stejný 10 uživatelé připojit k databázi postupně, počet souběžných přihlášení by být nikdy větší než 1.
+Pokud více klientů používat stejný připojovací řetězec, služba se ověřuje každé přihlášení. Pokud 10 uživatelů současně připojit k databázi pomocí stejného uživatelského jména a hesla, by existovat 10 souběžných přihlášení. Toto omezení platí pouze pro dobu trvání přihlášení a ověření. Pokud se stejný 10 uživatelů připojit k databázi postupně, počet souběžných přihlášení by nikdy být větší než 1.
 
 > [!NOTE]
-> V současné době toto omezení se nevztahuje k databázím v elastické fondy.
+> V současné době toto omezení se nevztahuje na databází v elastických fondech.
 > 
 > 
 
 ### <a name="maximum-sessions"></a>Maximální počet relací
-Pokud chcete zjistit počet aktuální aktivních relací, spusťte tento dotaz jazyka Transact-SQL ve vaší databázi SQL:
+Pokud chcete zobrazit počet aktuálních aktivních relací, spusťte tento dotaz jazyka Transact-SQL v SQL database:
 
     SELECT COUNT(*) AS [Sessions]
     FROM sys.dm_exec_connections
 
-Pokud při analýze pracovního vytížení místní systém SQL Server, změňte dotaz a zaměřit se na konkrétní databáze. Tento dotaz vám pomůže určit, je možné relace pro databázi Pokud uvažujete o ani ji přesunout do Azure SQL Database.
+Pokud analyzujete pracovního vytížení místní SQL Server, tento dotaz změnit a zaměřte se na konkrétní databáze. Tento dotaz vám pomůže určit, potřeb možné relace pro databázi Pokud zvažujete Přesun do Azure SQL Database.
 
     SELECT COUNT(*)  AS [Sessions]
     FROM sys.dm_exec_connections C
@@ -203,11 +203,11 @@ Pokud při analýze pracovního vytížení místní systém SQL Server, změňt
     INNER JOIN sys.databases D ON (D.database_id = S.database_id)
     WHERE D.name = 'MyDatabase'
 
-Tyto dotazy znovu, vrátí počet bodu v čase. Pokud shromažďujete více ukázky v čase, budete mít nejlepší Principy relace použít.
+Tyto dotazy znovu, vrátí počet bodu v čase. Budete-li shromažďovat víc ukázky v čase, budete mít nejlepší znalost relaci použít.
 
-Pro analýzu databáze SQL, můžete získat historická statistiky u relací pomocí dotazu [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) zobrazení a kontrola **active_session_count** sloupce. 
+Pro účely analýzy SQL Database, můžete získat historické statistiky na relace pomocí dotazu [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) zobrazení a kontrola **active_session_count** sloupce. 
 
 ## <a name="next-steps"></a>Další postup
 
-- Automaticky optimalizovat indexy databáze a spuštění plány pomocí dotazu [Azure SQL Database automatické ladění](sql-database-automatic-tuning.md).
-- Monitorování výkonu databáze automaticky pomocí [inteligentního Statistika SQL Azure](sql-database-intelligent-insights.md). Tato funkce poskytuje diagnostické informace a příčina analýzu problémy s výkonem.
+- Automaticky vyladit indexy databáze a dotazování pomocí plánům spuštění [automatické ladění Azure SQL Database](sql-database-automatic-tuning.md).
+- Monitorování výkonu databáze automaticky pomocí [Azure SQL Intelligent Insights](sql-database-intelligent-insights.md). Tato funkce poskytuje diagnostické informace a hlavní příčina analýzy problémů s výkonem.

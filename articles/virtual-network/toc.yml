@@ -35,7 +35,7 @@
       href: policy-samples.md
 - name: Koncepty
   items:
-    - name: Zabezpečení
+    - name: Skupiny zabezpečení
       href: security-overview.md
     - name: Směrování
       href: virtual-networks-udr-overview.md

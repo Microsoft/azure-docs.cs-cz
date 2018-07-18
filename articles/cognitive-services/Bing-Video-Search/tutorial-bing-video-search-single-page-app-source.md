@@ -1,6 +1,6 @@
 ---
-title: Hledání Video Bing jednostránkovou webovou aplikaci (zdrojový kód) | Microsoft Docs
-description: Zdrojový kód pro kurz znázorňující použití rozhraní API služby Bing Video Search v jednostránkovou webovou aplikaci.
+title: Vyhledávání videí Bingu jednostránkovou webovou aplikaci (zdrojový kód) | Dokumentace Microsoftu
+description: Zdrojový kód pro kurz, ve kterém použití API Bingu pro vyhledávání videí v jednostránkovou webovou aplikaci.
 services: cognitive-services
 author: mikedodaro
 manager: rosh
@@ -9,18 +9,18 @@ ms.component: bing-video-search
 ms.topic: article
 ms.date: 11/01/2017
 ms.author: v-gedod
-ms.openlocfilehash: c0842e53cbc297c1980a9d08733d838def073835
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: bed17c1df2b7c8dff9f874e43be8d67900fd7836
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342462"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39112456"
 ---
-# <a name="tutorial-single-page-video-search-app"></a>Kurz: Video vyhledávání jednostránkové aplikace
+# <a name="tutorial-single-page-video-search-app"></a>Kurz: Pro vyhledávání videí jednostránkové aplikace
 
-Toto je úplný zdrojový kód popsané v [kurzu jednostránkové aplikace](tutorial-bing-video-search-single-page-app.md) pro vyhledávání Video Bing. Pokud chcete spustit aplikaci, zdrojový kód zkopírujte do programu Poznámkový blok nebo jiném textovém editoru a uložte ho jako `bing.html`. Otevřete soubor uložený v Microsoft Edge nebo jiný prohlížeč oblíbených.
+Toto je úplný zdrojový kód, který je podrobněji popsána [jednostránkovou aplikaci kurzu](tutorial-bing-video-search-single-page-app.md) pro vyhledávání videí Bingu. Spusťte aplikaci, zkopírujte zdrojový kód do poznámkového bloku nebo jiného textového editoru a uložte ho jako `bing.html`. Otevřete v Microsoft Edge nebo jiný prohlížeč oblíbených uloženého souboru.
 
-````html
+```html
 <!DOCTYPE html>
 <!-- saved from url=(0014)about:internet -->
 <!-- the above Mark of the Web lets IE run this page in the Internet security zone,
@@ -615,3 +615,4 @@ function doPrevSearchPage() {
 
 </body>
 </html>
+```

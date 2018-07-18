@@ -1,6 +1,6 @@
 ---
-title: Analyzovat zabezpečení sítě s Azure sítě sledovacích procesů zabezpečení skupiny zobrazení – REST API | Microsoft Docs
-description: Tento článek popisuje, jak pomocí prostředí PowerShell k analýze zabezpečení virtuálních počítačů s zobrazení skupiny zabezpečení.
+title: Analýza zabezpečení sítě v Azure Network Watcher zobrazení skupin zabezpečení – rozhraní REST API | Dokumentace Microsoftu
+description: Tento článek popisuje, jak pomocí prostředí PowerShell pro analýzu zabezpečení virtuálních počítačů pomocí zobrazení skupin zabezpečení.
 services: network-watcher
 documentationcenter: na
 author: jimdial
@@ -14,32 +14,31 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 0eec45630fe3467db26620787038f6dd5a05cc72
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 0fd96f9bd3027568e81e9c56ddb095297c699683
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
-ms.locfileid: "23864319"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39089770"
 ---
-# <a name="analyze-your-virtual-machine-security-with-security-group-view-using-rest-api"></a>Analýza zabezpečení vašeho virtuálního počítače s zobrazení skupiny zabezpečení pomocí rozhraní REST API
+# <a name="analyze-your-virtual-machine-security-with-security-group-view-using-rest-api"></a>Analyzovat zabezpečení vašich virtuálních počítačů se zobrazením skupin zabezpečení pomocí rozhraní REST API
 
 > [!div class="op_single_selector"]
 > - [PowerShell](network-watcher-security-group-view-powershell.md)
-> - [CLI 1.0](network-watcher-security-group-view-cli-nodejs.md)
-> - [CLI 2.0](network-watcher-security-group-view-cli.md)
+> - [Azure CLI](network-watcher-security-group-view-cli.md)
 > - [REST API](network-watcher-security-group-view-rest.md)
 
-Zobrazení skupiny zabezpečení vrátí pravidla zabezpečení sítě nakonfigurované a efektivní, která se použijí k virtuálnímu počítači. Tato možnost je užitečná k auditování a diagnostice skupin zabezpečení sítě a pravidel, které jsou nakonfigurované na virtuálním počítači zajistit provoz se správně povolený nebo zakázaný. V tomto článku jsme ukazují, jak načíst pravidla zabezpečení efektivní a použité k virtuálnímu počítači pomocí rozhraní REST API
+Zobrazení skupin zabezpečení vrátí pravidla zabezpečení sítě nakonfigurovaná a efektivní, které se použijí k virtuálnímu počítači. Tato možnost je užitečná k auditování a diagnostice skupiny zabezpečení sítě a pravidel, které jsou nakonfigurované na virtuálním počítači k zajištění provozu se správně povolený nebo zakázaný. V tomto článku ukážeme, jak načíst pravidla zabezpečení efektivní a použité k virtuálnímu počítači pomocí rozhraní REST API
 
 ## <a name="before-you-begin"></a>Než začnete
 
-V tomto scénáři můžete volat rozhraní API Rest sledovací proces sítě získat zobrazení skupiny zabezpečení pro virtuální počítač. ARMclient se používá k volání rozhraní REST API pomocí prostředí PowerShell. ARMClient se nachází na chocolatey v [ARMClient na Chocolatey](https://chocolatey.org/packages/ARMClient)
+V tomto scénáři volání Rest API sledovací proces sítě získat zobrazení skupin zabezpečení pro virtuální počítač. ARMclient slouží k volání rozhraní REST API pomocí Powershellu. ARMClient se nachází na chocolatey na [ARMClient v Chocolatey](https://chocolatey.org/packages/ARMClient)
 
-Tento scénář předpokládá, že už jste udělali kroky v [vytvořit sledovací proces sítě](network-watcher-create.md) vytvořit sledovací proces sítě. Tento scénář také předpokládá, že skupina prostředků se platný virtuální počítač existuje má být použit.
+Tento scénář předpokládá, že už jste udělali kroky v [vytvořit Network Watcher](network-watcher-create.md) vytvořit Network Watcher. Tento scénář také předpokládá, že skupina prostředků se platný virtuální počítač existuje má být použit.
 
 ## <a name="scenario"></a>Scénář
 
-Scénář popsaná v tomto článku načte pravidla zabezpečení efektivní a použité pro daný virtuální počítač.
+Scénáře popsané v tomto článku načte efektivní a použité zabezpečení pravidla pro daný virtuální počítač.
 
 ## <a name="log-in-with-armclient"></a>Přihlaste se pomocí ARMClient
 
@@ -49,10 +48,10 @@ armclient login
 
 ## <a name="retrieve-a-virtual-machine"></a>Načíst virtuální počítač
 
-Následující kód, spusťte následující skript k vrácení virtuální machineThe potřebuje proměnné:
+Následující kód, spusťte následující skript, který vrátí virtuální machineThe potřebuje proměnné:
 
-- **ID předplatného** -pomocí můžete také načíst id předplatného **Get-AzureRMSubscription** rutiny.
-- **Název skupiny prostředků** -název skupiny prostředků, která obsahuje virtuální počítače.
+- **subscriptionId** – id předplatného můžete získat také pomocí **Get-AzureRMSubscription** rutiny.
+- **Název skupiny prostředků** – název skupiny prostředků obsahující virtuální počítače.
 
 ```powershell
 $subscriptionId = '<subscription id>'
@@ -61,7 +60,7 @@ $resourceGroupName = '<resource group name>'
 armclient get https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Compute/virtualMachines?api-version=2015-05-01-preview
 ```
 
-Informace, které je potřeba **id** v části typ `Microsoft.Compute/virtualMachines` v odpovědi, jak je vidět v následujícím příkladu:
+Informace, které je potřeba je **id** jako typ `Microsoft.Compute/virtualMachines` v odpovědi, jak je znázorněno v následujícím příkladu:
 
 ```json
 ...,
@@ -91,9 +90,9 @@ pute/virtualMachines/{vmName}/extensions/CustomScriptExtension"
 }
 ```
 
-## <a name="get-security-group-view-for-virtual-machine"></a>Získat zobrazení skupiny zabezpečení pro virtuální počítač
+## <a name="get-security-group-view-for-virtual-machine"></a>Získat zobrazení skupin zabezpečení pro virtuální počítač
 
-Následující příklad požádá o zobrazení skupiny zabezpečení cílové virtuálního počítače. Výsledky z tohoto příkladu slouží k porovnání pravidel a zabezpečení, které jsou definované vzniku hledání odlišily konfigurace.
+Následující příklad požádá o zobrazení skupin zabezpečení cílových virtuálních počítačů. Výsledky z tohoto příkladu slouží k porovnání s pravidly a zabezpečení určené vzniku hledat odchylky od konfigurace.
 
 ```powershell
 $subscriptionId = "<subscription id>"
@@ -110,9 +109,9 @@ $requestBody = @"
 armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/securityGroupView?api-version=2016-12-01" $requestBody -verbose
 ```
 
-## <a name="view-the-response"></a>Zobrazení do odpovědi
+## <a name="view-the-response"></a>Zobrazení odpovědi
 
-Následující příklad je odpovědi vrácené z předchozího příkazu. Výsledky zobrazit všechna pravidla zabezpečení efektivní a použitých na virtuálním počítači rozdělení v skupiny **NetworkInterfaceSecurityRules**, **DefaultSecurityRules**, a **EffectiveSecurityRules**.
+Následující příklad je odpovědi vrácené ve výstupu předchozího příkazu. Ve výsledcích zobrazí všechna pravidla zabezpečení efektivní a použité na virtuálním počítači rozdělené ve skupinách **NetworkInterfaceSecurityRules**, **DefaultSecurityRules**, a  **EffectiveSecurityRules**.
 
 ```json
 
@@ -180,8 +179,8 @@ Následující příklad je odpovědi vrácené z předchozího příkazu. Výsl
 }
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-Navštivte [auditování zabezpečení sítě skupiny (NSG) s sledovací proces sítě](network-watcher-security-group-view-powershell.md) se dozvíte, jak automatizovat ověření skupin zabezpečení sítě.
+Navštivte [auditování skupiny zabezpečení sítě (NSG) pomocí služby Network Watcher](network-watcher-security-group-view-powershell.md) postup automatizace ověření skupiny zabezpečení sítě.
 
 

@@ -1,5 +1,5 @@
 ---
-title: Správa Azure CDN pomocí prostředí PowerShell | Microsoft Docs
+title: Správa Azure CDN pomocí Powershellu | Dokumentace Microsoftu
 description: Další informace o použití rutin prostředí Azure PowerShell ke správě Azure CDN.
 services: cdn
 documentationcenter: ''
@@ -12,23 +12,23 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 07/17/2018
 ms.author: mazha
-ms.openlocfilehash: 5634ecdec04f023d9eb901c4ad0fb21b13bcfdc1
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 15feb7b1d2873bc3f088eaad78079df2e063d73b
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31592419"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39114068"
 ---
-# <a name="manage-azure-cdn-with-powershell"></a>Správa Azure CDN pomocí prostředí PowerShell
-PowerShell poskytuje jednu z metod nejpružnější ke správě profilů Azure CDN a koncové body.  Interaktivní nebo psaní skriptů můžete použít PowerShell k automatizaci úloh správy.  Tento kurz představuje některé z nejčastějších úloh, můžete provést pomocí prostředí PowerShell ke správě profilů Azure CDN a koncové body.
+# <a name="manage-azure-cdn-with-powershell"></a>Správa Azure CDN pomocí Powershellu
+PowerShell poskytuje jednu z metod nejflexibilnější ke správě koncových bodů a profilů CDN.  Interaktivně nebo psaní skriptů můžete použít PowerShell k automatizaci úloh správy.  Tento kurz ukazuje některé z nejčastějších úloh můžete provést pomocí Powershellu ke správě koncových bodů a profilů CDN.
 
 ## <a name="prerequisites"></a>Požadavky
-Ke správě profilů Azure CDN a koncové body pomocí prostředí PowerShell, musí mít instalace modulu Azure PowerShell.  Další informace o instalaci prostředí Azure PowerShell a připojte se k Azure pomocí `Connect-AzureRmAccount` rutiny, najdete v části [postup instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview).
+Použití Powershellu ke správě koncových bodů a profilů CDN, musíte mít instalace modulu Azure Powershellu.  Další informace o instalaci prostředí Azure PowerShell a připojit se k Azure s využitím `Connect-AzureRmAccount` rutiny, najdete v článku [instalace a konfigurace Azure Powershellu](/powershell/azure/overview).
 
 > [!IMPORTANT]
-> Musíte se přihlásit s `Connect-AzureRmAccount` před spuštěním rutin prostředí Azure PowerShell.
+> Musíte se přihlásit pomocí `Connect-AzureRmAccount` před spuštěním rutin prostředí Azure PowerShell.
 > 
 > 
 
@@ -63,7 +63,7 @@ Cmdlet          Unpublish-AzureRmCdnEndpointContent                2.0.0      Az
 ```
 
 ## <a name="getting-help"></a>Získání nápovědy
-Můžete získat pomoc s žádným z těchto rutin pomocí `Get-Help` rutiny.  `Get-Help` poskytuje syntaxi a použití a volitelně zobrazuje příklady.
+Můžete získat pomoc s některou z těchto rutin pomocí `Get-Help` rutiny.  `Get-Help` poskytuje syntaxi a použití a volitelně zobrazuje příklady.
 
 ```text
 PS C:\> Get-Help Get-AzureRmCdnProfile
@@ -93,24 +93,24 @@ REMARKS
 
 ```
 
-## <a name="listing-existing-azure-cdn-profiles"></a>Výpis existující profilů Azure CDN
-`Get-AzureRmCdnProfile` Rutina bez parametrů načte všechny vaše stávající profily CDN.
+## <a name="listing-existing-azure-cdn-profiles"></a>Výpis existujících profilů Azure CDN
+`Get-AzureRmCdnProfile` Rutiny bez parametrů obnoví všechny vaše stávající profily CDN.
 
 ```powershell
 Get-AzureRmCdnProfile
 ```
 
-Tento výstup lze přesměrovat do rutin pro výčet.
+Tento výstup lze přesměrovat na rutiny pro výčet.
 
 ```powershell
 # Output the name of all profiles on this subscription.
 Get-AzureRmCdnProfile | ForEach-Object { Write-Host $_.Name }
 
 # Return only **Azure CDN from Verizon** profiles.
-Get-AzureRmCdnProfile | Where-Object { $_.Sku.Name -eq "StandardVerizon" }
+Get-AzureRmCdnProfile | Where-Object { $_.Sku.Name -eq "Standard_Verizon" }
 ```
 
-Můžete se taky vrátit jediného profilu tak, že zadáte název a prostředek skupiny profilu.
+Můžete se taky vrátit jeden profil tak, že zadáte profil a skupinou prostředků.
 
 ```powershell
 Get-AzureRmCdnProfile -ProfileName CdnDemo -ResourceGroupName CdnDemoRG
@@ -122,7 +122,7 @@ Get-AzureRmCdnProfile -ProfileName CdnDemo -ResourceGroupName CdnDemoRG
 > 
 
 ## <a name="listing-existing-cdn-endpoints"></a>Výpis stávající koncové body CDN
-`Get-AzureRmCdnEndpoint` může načíst koncový bod jednotlivé nebo všechny koncové body v profilu.  
+`Get-AzureRmCdnEndpoint` můžete načíst koncový bod jednotlivých nebo všechny koncové body v profilu.  
 
 ```powershell
 # Get a single endpoint.
@@ -138,23 +138,31 @@ Get-AzureRmCdnProfile | Get-AzureRmCdnEndpoint
 Get-AzureRmCdnProfile | Get-AzureRmCdnEndpoint | Where-Object { $_.ResourceState -eq "Running" }
 ```
 
-## <a name="creating-cdn-profiles-and-endpoints"></a>Vytváření profilů CDN a koncové body
-`New-AzureRmCdnProfile` a `New-AzureRmCdnEndpoint` slouží k vytváření profilů CDN a koncové body.
+## <a name="creating-cdn-profiles-and-endpoints"></a>Vytváření koncových bodů a profilů CDN
+`New-AzureRmCdnProfile` a `New-AzureRmCdnEndpoint` se používají k vytváření koncových bodů a profilů CDN. Podporují se následující SKU:
+- Standard_Verizon
+- Premium_Verizon
+- Custom_Verizon
+- Standard_Akamai
+- Standard_ChinaCdn
+
+> [!NOTE]
+> Standard_Microsoft SKU se nepodporuje, když je ve verzi preview.
 
 ```powershell
 # Create a new profile
-New-AzureRmCdnProfile -ProfileName CdnPoshDemo -ResourceGroupName CdnDemoRG -Sku StandardAkamai -Location "Central US"
+New-AzureRmCdnProfile -ProfileName CdnPoshDemo -ResourceGroupName CdnDemoRG -Sku Standard_Akamai -Location "Central US"
 
 # Create a new endpoint
 New-AzureRmCdnEndpoint -ProfileName CdnPoshDemo -ResourceGroupName CdnDemoRG -Location "Central US" -EndpointName cdnposhdoc -OriginName "Contoso" -OriginHostName "www.contoso.com"
 
 # Create a new profile and endpoint (same as above) in one line
-New-AzureRmCdnProfile -ProfileName CdnPoshDemo -ResourceGroupName CdnDemoRG -Sku StandardAkamai -Location "Central US" | New-AzureRmCdnEndpoint -EndpointName cdnposhdoc -OriginName "Contoso" -OriginHostName "www.contoso.com"
+New-AzureRmCdnProfile -ProfileName CdnPoshDemo -ResourceGroupName CdnDemoRG -Sku Standard_Akamai -Location "Central US" | New-AzureRmCdnEndpoint -EndpointName cdnposhdoc -OriginName "Contoso" -OriginHostName "www.contoso.com"
 
 ```
 
-## <a name="checking-endpoint-name-availability"></a>Kontrola dostupnosti název koncového bodu
-`Get-AzureRmCdnEndpointNameAvailability` Vrátí objekt, která udává, zda je název koncového bodu k dispozici.
+## <a name="checking-endpoint-name-availability"></a>Kontrola dostupnosti názvu koncového bodu
+`Get-AzureRmCdnEndpointNameAvailability` Vrátí objekt označující, zda je k dispozici název koncového bodu.
 
 ```powershell
 # Retrieve availability
@@ -166,10 +174,10 @@ Else { Write-Host "No, that endpoint name is not available." }
 ```
 
 ## <a name="adding-a-custom-domain"></a>Přidání vlastní domény
-`New-AzureRmCdnCustomDomain` Přidá vlastního názvu domény do existující koncový bod.
+`New-AzureRmCdnCustomDomain` Přidá název vlastní domény do existující koncový bod.
 
 > [!IMPORTANT]
-> Musíte vytvořit CNAME u svého poskytovatele DNS jak je popsáno v [jak namapovat vlastní doménu na koncový bod Content Delivery Network (CDN)](cdn-map-content-to-custom-domain.md).  Můžete otestovat mapování před změnou váš koncový bod pomocí `Test-AzureRmCdnCustomDomain`.
+> Musíte vytvořit záznam CNAME u svého poskytovatele DNS jak je popsáno v [jak namapovat vlastní doménu na koncový bod Content Delivery Network (CDN)](cdn-map-content-to-custom-domain.md).  Můžete testovat mapování před změnou vašeho koncového bodu pomocí `Test-AzureRmCdnCustomDomain`.
 > 
 > 
 
@@ -184,7 +192,7 @@ $result = Test-AzureRmCdnCustomDomain -CdnEndpoint $endpoint -CustomDomainHostNa
 If($result.CustomDomainValidated){ New-AzureRmCdnCustomDomain -CustomDomainName Contoso -HostName "cdn.contoso.com" -CdnEndpoint $endpoint }
 ```
 
-## <a name="modifying-an-endpoint"></a>Úprava koncový bod
+## <a name="modifying-an-endpoint"></a>Změna koncového bodu
 `Set-AzureRmCdnEndpoint` upravuje existující koncový bod.
 
 ```powershell
@@ -199,8 +207,8 @@ $endpoint.ContentTypesToCompress = "text/javascript","text/css","application/jso
 Set-AzureRmCdnEndpoint -CdnEndpoint $endpoint
 ```
 
-## <a name="purgingpre-loading-cdn-assets"></a>Vymazání/vedlejší-loading CDN prostředky
-`Unpublish-AzureRmCdnEndpointContent` vyprazdňovat mezipaměti prostředky, zatímco `Publish-AzureRmCdnEndpointContent` předem načte prostředky na podporovaných koncových bodů.
+## <a name="purgingpre-loading-cdn-assets"></a>Vymazání/Předprodukčním-loading CDN prostředky
+`Unpublish-AzureRmCdnEndpointContent` Vymazat do mezipaměti prostředky, zatímco `Publish-AzureRmCdnEndpointContent` předběžné načtení prostředků v podporovaných koncových bodů.
 
 ```powershell
 # Purge some assets.
@@ -213,8 +221,8 @@ Publish-AzureRmCdnEndpointContent -ProfileName CdnDemo -ResourceGroupName CdnDem
 Get-AzureRmCdnProfile | Get-AzureRmCdnEndpoint | Unpublish-AzureRmCdnEndpointContent -PurgeContent "/images/*"
 ```
 
-## <a name="startingstopping-cdn-endpoints"></a>Koncové body CDN spuštění nebo zastavení
-`Start-AzureRmCdnEndpoint` a `Stop-AzureRmCdnEndpoint` lze spustit a zastavit jednotlivé koncové body nebo skupiny koncových bodů.
+## <a name="startingstopping-cdn-endpoints"></a>Koncové body CDN spuštění/zastavení
+`Start-AzureRmCdnEndpoint` a `Stop-AzureRmCdnEndpoint` umožňuje spouštět a zastavovat jednotlivé koncové body nebo skupiny koncových bodů.
 
 ```powershell
 # Stop the cdndocdemo endpoint
@@ -228,7 +236,7 @@ Get-AzureRmCdnProfile | Get-AzureRmCdnEndpoint | Start-AzureRmCdnEndpoint
 ```
 
 ## <a name="deleting-cdn-resources"></a>Odstranění prostředků CDN
-`Remove-AzureRmCdnProfile` a `Remove-AzureRmCdnEndpoint` slouží k odebrání profily a koncové body.
+`Remove-AzureRmCdnProfile` a `Remove-AzureRmCdnEndpoint` slouží k odstranění koncových bodů a profilů.
 
 ```powershell
 # Remove a single endpoint
@@ -244,5 +252,5 @@ Remove-AzureRmCdnProfile -ProfileName CdnPoshDemo -ResourceGroupName CdnDemoRG
 ## <a name="next-steps"></a>Další kroky
 Přečtěte si informace o automatizaci Azure CDN s [.NET](cdn-app-dev-net.md) nebo [Node.js](cdn-app-dev-node.md).
 
-Další informace o funkcích CDN najdete v tématu [přehled CDN](cdn-overview.md).
+Další informace o funkcích CDN, najdete v článku [přehled sítě CDN](cdn-overview.md).
 

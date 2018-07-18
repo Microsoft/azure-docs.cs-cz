@@ -1,41 +1,41 @@
 ---
-title: Správa více databází SQL s elastické fondy Azure | Microsoft Docs
-description: Spravovat a škálování více databází SQL - stovky a s tisíci - pomocí elastické fondy. Jeden ceny pro prostředky, které můžete distribuovat, kde je potřeba.
-keywords: více databází, databáze prostředků, výkon databáze
+title: Správa několika databázemi SQL elastické fondy – Azure | Dokumentace Microsoftu
+description: Spravovat a škálovat několika databázemi SQL - stovkami a tisíci - využívajících elastické fondy. Jednu cenu za prostředky, které můžete distribuovat místech.
+keywords: více databází, prostředky databáze, výkon databáze
 services: sql-database
 author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
-ms.date: 06/20/2018
+ms.date: 07/16/2018
 ms.author: ninarn
 ms.topic: conceptual
-ms.openlocfilehash: 5ef32b231a77906a6840ad3550e81b631ddc0c13
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: a5d5c29b30f746c5507e45ecbee6c5ab9aff56f3
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36309650"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39091938"
 ---
-# <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Elastických fondů pomáhají spravovat a škálování více databází Azure SQL
+# <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Elastické fondy umožňují spravovat a škálovat několika databázemi Azure SQL
 
-Fondy elastické databáze SQL jsou jednoduché a nákladově efektivní řešení pro správu a škálování více databází, které mají různou a nepředvídatelným nároky na využití. Databáze ve fondu elastické databáze na jednom serveru Azure SQL Database a sdílet se stanoveným počtem prostředky za cenu sady. Elastické fondy v Azure SQL Database umožňují vývojářům SaaS optimalizovat poměr cena/výkon pro skupinu databází v rámci předem daného rozpočtu a pro všechny databáze přitom zajistit elasticitu výkonu.
+Elastické fondy SQL Database jsou jednoduché a cenově výhodné řešení pro správu a škálování více databází, jejichž proměnlivé a nepředvídatelné požadavky na využití. Databáze v elastickém fondu jsou na jednom serveru Azure SQL Database a sdílet stanovený počet prostředků za stanovenou cenu. Elastické fondy v Azure SQL Database umožňují vývojářům SaaS optimalizovat poměr cena/výkon pro skupinu databází v rámci předem daného rozpočtu a pro všechny databáze přitom zajistit elasticitu výkonu.
 
-## <a name="what-are-sql-elastic-pools"></a>Jaké jsou elastické fondy SQL?
+## <a name="what-are-sql-elastic-pools"></a>Co jsou elastické fondy SQL?
 
 Vývojáři SaaS sestavují aplikace nad datovými úrovněmi velkého rozsahu, které se skládají z několika databází. Běžným aplikačním postupem je zřídit pro každého zákazníka izolovanou databázi. Ale různí zákazníci mají často proměnlivé a nepředvídatelné vzorce využití a je těžké odhadnout požadavky jednotlivých databázových uživatelů na prostředky. Tradičně máte dvě možnosti:
 
-- Přepsání zřízení prostředků založenou na využití ve špičce a přes platím, nebo
-- Snížení zřídit uložit náklady za cenu výkonu a k zákaznickým spokojenost během vrcholů.
+- Zřizovat prostředky, které jsou založeny na využití ve špičce a platit, nebo
+- Přidělovat náklady na úkor výkonu a spokojenosti zákazníků během špiček.
 
-Elastické fondy tento problém vyřešit tím, že zajistí, že databáze získat výkonu prostředky, které potřebují, kdy je potřebují. Poskytují jednoduchý mechanismus přidělování prostředků v mezích předvídatelného rozpočtu. Další informace o návrhových schématech aplikací SaaS využívajících elastické fondy najdete v tématu [Návrhová schémata pro víceklientské aplikace SaaS využívající službu Azure SQL Database](sql-database-design-patterns-multi-tenancy-saas-applications.md).
+Elastické fondy tento problém řeší tím, že zajišťuje, aby databáze dostávaly prostředky výkonu, které potřebují, kdy ho potřebují. Poskytují jednoduchý mechanismus přidělování prostředků v mezích předvídatelného rozpočtu. Další informace o návrhových schématech aplikací SaaS využívajících elastické fondy najdete v tématu [Návrhová schémata pro víceklientské aplikace SaaS využívající službu Azure SQL Database](sql-database-design-patterns-multi-tenancy-saas-applications.md).
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Elastic-databases-helps-SaaS-developers-tame-explosive-growth/player]
 >
 
-Elastické fondy povolit vývojáře o zakoupení prostředků pro fond sdílí víc databází pro přizpůsobení nepředvídatelným období využití jednotlivých databází. Můžete nakonfigurovat prostředky pro fondu buď na základě [na základě DTU nákupní model](sql-database-service-tiers-dtu.md) nebo [nákupní model (preview) na základě vCore](sql-database-service-tiers-vcore.md). Požadavek na prostředek pro fond je určen podle agregační využití její databáze. Množství zdrojů do fondu k dispozici je řízena nároky developer. Vývojář jednoduše přidá databází do fondu, nastaví minimální a maximální prostředky pro databáze (buď minimální a maximální počet jednotek Dtu nebo minimální nebo maximální vCores v závislosti na zvoleném resourcing modelu) a poté nastaví prostředků fondu na základě jejich nároky. Vývojáři mohou fondy využít k tomu, aby zajistili elegantní růst svých služeb od úsporného startupu až po zralé podnikání, a to ve stále se zvětšujícím měřítku.
+Elastické fondy umožňují vývojářům zakoupit prostředky pro fond sdílený více databázemi na umožňují zajistit nepředvídatelná období využití strany jednotlivých databází. Prostředky můžete nakonfigurovat fond podle buď [nákupní model založený na DTU](sql-database-service-tiers-dtu.md) nebo [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md). Požadavek na prostředek pro fond je určeno agregačním využitím jeho databází. Řídí rozpočet vývojáře určuje objem prostředků fondu k dispozici. Vývojář jednoduše do fondu přidá databáze, nastaví minimální a maximální prostředky, pro databáze (buď minimální a maximální počet jednotek Dtu nebo minimální nebo maximální virtuální jádra podle svého výběru pravděpodobně model) a pak nastaví prostředků fondu na základě jejich rozpočtu. Vývojáři mohou fondy využít k tomu, aby zajistili elegantní růst svých služeb od úsporného startupu až po zralé podnikání, a to ve stále se zvětšujícím měřítku.
 
-V rámci fondu disponují jednotlivé databáze flexibilní možností automatického škálování v rámci stanovených parametrů. V případě velkého zatížení může databáze využívat další prostředky ke splnění požadavků. Databáze v rámci světla zatížení využívat menší a databází žádné zatížení využívat žádné prostředky. Zřizováním prostředků pro celý fond, a nikoli pro jednotlivé databáze, se úkoly správy zjednodušují. Plus máte předvídatelný nároky pro fond. Další zdroje informací lze přidat na existující fond bez výpadků databáze s tím rozdílem, že databáze možná potřebujete přesunout zajistit další výpočetní prostředky pro novou rezervaci eDTU. Podobně pokud už nejsou potřeba další prostředky budou lze odebrat z existujícího fondu v libovolném bodě v čase. Navíc můžete databáze do fondu přidávat nebo je z něj odebírat. Pokud databáze podle předpokladu nedostatečně využívá prostředky, odeberte ji.
+V rámci fondu disponují jednotlivé databáze flexibilní možností automatického škálování v rámci stanovených parametrů. V případě velkého zatížení může databáze spotřebovávat více prostředků podle potřeby. Nízkém zatížení databáze spotřebovávají méně edtu a databáze bez zatížení nespotřebovávají žádné prostředky. Zřizováním prostředků pro celý fond, a nikoli pro jednotlivé databáze, se úkoly správy zjednodušují. Kromě toho můžete předem odhadnout náklady pro fond. Další zdroje informací můžete přidat do existujícího fondu bez jakéhokoli výpadku databáze, s tím rozdílem, že možná bude nutné databáze přesunout zajištění dalších výpočetních prostředků pro vyhrazení nových eDTU. Podobně pokud už nepotřebujete další prostředky, může být odstraněn z existujícího fondu kdykoli v čase. Navíc můžete databáze do fondu přidávat nebo je z něj odebírat. Pokud databáze podle předpokladu nedostatečně využívá prostředky, odeberte ji.
 
 ## <a name="when-should-you-consider-a-sql-database-elastic-pool"></a>Pokud byste zvážit elastického fondu SQL Database?
 
@@ -55,7 +55,7 @@ Po uvedená pětiminutová období DB1 využívá až 90 jednotek DTU, ale celko
 
 Fond umožňuje sdílet tyto nevyužité jednotky DTU napříč několika databázemi a snižuje tak počet potřebných jednotek DTU a celkové náklady.
 
-Využijeme předchozí příklad a budeme předpokládat, že existují další databáze s podobnými vzory využití jako DB1. V následujících dvou níže uvedené údaje jsou vrstvený využití čtyři databáze a 20 databáze do stejného grafu pro ilustraci povaha nepřekrývají jejich využití v čase pomocí na základě DTU nákupní model:
+Využijeme předchozí příklad a budeme předpokládat, že existují další databáze s podobnými vzory využití jako DB1. V následujících dvou obrázcích níže využití čtyř databází a 20 databází zakresleno do stejného grafu pro ilustraci povaze překrývat jejich využití v čase pomocí nákupní model založený na DTU:
 
    ![Čtyři databáze se vzorem využití, který je vhodný pro fond](./media/sql-database-elastic-pool/four-databases.png)
 
@@ -75,16 +75,16 @@ Následující hrubé odhady související s počtem databází a jejich využit
 
 ### <a name="minimum-number-of-databases"></a>Maximální počet databází
 
-Pokud agregační objem prostředků pro izolované databáze více než 1,5 x prostředky potřebné k fondu, větší finanční efektivita je fondu elastické databáze.
+Pokud agregační objem prostředků pro izolované databáze je více než 1, 5násobek prostředků potřebných pro fond, je elastický fond cenově výhodnější.
 
-***Na základě DTU nákupu příklad modelu***<br>
+***Založený na DTU nákupní model příklad***<br>
 K tomu, aby fond se 100 jednotkami eDTU byl cenově výhodnější než použití úrovní výkonu pro izolované databáze, jsou potřeba nejméně dvě databáze S3 nebo nejméně 15 databází S0.
 
 ### <a name="maximum-number-of-concurrently-peaking-databases"></a>Maximální počet databází se souběžnými špičkami
 
-Sdílení prostředků, ne všechny databáze ve fondu současně pomocí prostředky až do limitu k dispozici pro izolované databáze. Méně databáze, který současně špičkovým, nižší fondu prostředků můžete nastavit a více nákladově efektivní stane fondu. Obecně platí více než 2 nebo 3 (nebo 67 %) databází ve fondu musí současně ve špičkách limitu jejich prostředky.
+Prostřednictvím sdílení prostředků, ne všechny databáze ve fondu současně používat prostředky až po limit dostupný pro izolované databáze. Čím méně databází má současně špičku, tím nižší prostředků fondu můžete nastavit a tím výhodnější fond bude. Obecně platí by měla více než 2/3 (nebo 67 %) databází ve fondu současně vrcholu do svého limitu prostředků.
 
-***Na základě DTU nákupu příklad modelu***<br>
+***Založený na DTU nákupní model příklad***<br>
 Aby bylo možné snížit náklady pro tři databáze S3 ve fondu s 200 jednotkami eDTU, mohou nejvýše dvě z těchto databází dosahovat špičky svého využití současně. Pokud současně dosahují špičky více než dvě z těchto čtyř databází S3, bylo by nutné velikost fondu nastavit na více než 200 jednotek eDTU. Pokud se velikost fondu nastaví na více než 200 jednotek eDTU, bude nutné do fondu přidat další databáze S3, jinak náklady nebudou nižší než při použití úrovní výkonu pro izolované databáze.
 
 Všimněte si, tento příklad nebere v úvahu využití ostatních databází ve fondu. Pokud se v libovolném konkrétním časovém okamžiku do určité míry využívají všechny databáze, může méně než 2/3 (nebo 67 %) z nich dosahovat špičky současně.
@@ -92,103 +92,103 @@ Všimněte si, tento příklad nebere v úvahu využití ostatních databází v
 ### <a name="resource-utilization-per-database"></a>Využití prostředků na databázi
 Velký rozdíl mezi maximálním a průměrným využitím databáze ukazuje na delší doby nízkého využití a krátká období vysokého využití. Tento vzor využití je ideální pro sdílení prostředků mezi databázemi. Použití fondu pro databázi byste měli zvážit, pokud je její využití ve špičce přibližně 1,5krát větší než průměrné využití.
 
-***Na základě DTU nákupu příklad modelu***<br>
+***Založený na DTU nákupní model příklad***<br>
 Databáze S3, která ve špičce využívá 100 DTU a průměrně využívá 67 DTU nebo méně, je vhodným kandidátem pro sdílení jednotek eDTU ve fondu. Databáze S1, která ve špičce využívá 20 DTU a průměrně využívá 13 DTU nebo méně, je vhodným kandidátem pro fond.
 
-## <a name="how-do-i-choose-the-correct-pool-size"></a>Jak vybrat velikost fondu správné?
+## <a name="how-do-i-choose-the-correct-pool-size"></a>Jak můžu vybrat velikost fondu správné?
 
-Velikost doporučené pro fond závisí na agregační prostředky potřebné pro všechny databáze ve fondu. To zahrnuje určení následující:
+Ideální velikost fondu závisí na agregační prostředky potřebné pro všechny databáze ve fondu. To zahrnuje určení následující:
 
-* Maximální prostředků využívaných všechny databáze ve fondu (maximální počet jednotek Dtu nebo maximální vCores v závislosti na zvoleném resourcing modelu).
+* Maximální prostředky využitých všemi databázemi ve fondu (maximální počet jednotek Dtu nebo virtuálních jader pro maximální podle svého výběru pravděpodobně modelu).
 * Maximální počet bajtů úložiště využitých všemi databázemi ve fondu
 
-Úrovně služeb dostupné pro každý model prostředků, najdete v článku [na základě DTU nákupní model](sql-database-service-tiers-dtu.md) nebo [nákupní model (preview) na základě vCore](sql-database-service-tiers-vcore.md).
+Úrovně služby k dispozici pro každý model prostředků, najdete v článku [nákupní model založený na DTU](sql-database-service-tiers-dtu.md) nebo [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md).
 
 SQL Database automaticky vyhodnotí historické údaje používání prostředků databází na existujícím serveru SQL Database a doporučí odpovídající konfigurace fondu na webu Azure Portal. Kromě těchto doporučení integrované prostředí odhaduje využití eDTU pro vlastní skupinu databází na serveru. Interaktivním přidáváním databází do fondu a jejich odebíráním díky tomu můžete prostřednictvím citlivostních analýz získat analýzy využití prostředků a rady týkající se požadované velikosti dřív, než potvrdíte požadované změny. Postupy najdete v tématu [Monitorování, správa a nastavení velikosti elastického fondu](#monitor-an-elastic-pool-and-its-databases).
 
 V případech, kdy nejde používat nástroje, vám při odhadování, jestli je fond cenově výhodnější než izolované databáze, pomůže následující postup:
 
-1. Odhad Edtu nebo vCores potřebné pro fond následujícím způsobem:
+1. Odhad Edtu nebo virtuálních jader potřebných pro fond následujícím způsobem:
 
-   Na základě DTU nákupu modelu: maximální počet (<*celkový počet databází* X *průměrné využití DTU na databázi*>,<br>
+   Pro nákupní model založený na DTU: MAX (<*celkový počet databází* X *průměrné využití DTU na databázi*>,<br>
    <*počet databází se souběžnou špičkou* X *využití DTU ve špičce na databázi*)
 
-   Na základě vCore nákupu modelu (preview): maximální počet (<*celkový počet databází* X *průměrné využití vCore na databázi*>,<br>
-   <*Počet souběžně peaking databází* X *ve špičce vCore využití za DB*)
+   Pro nákupní model založený na virtuálních jádrech: MAX (<*celkový počet databází* X *průměrné využití vCore na databázi*>,<br>
+   <*Počet špičkou databází* X *vCore využití ve špičce na databázi*)
 
 2. Odhadněte potřebnou velikost úložiště pro fond (sečtěte počet bajtů potřebných pro všechny databáze ve fondu). Potom určete velikost fondu v jednotkách eDTU, která toto úložiště poskytuje.
-3. Na základě DTU nákupu modelu trvat větší z odhadované eDTU z kroku 1 a 2 krok. Na základě vCore nákupu modelu (preview) trvat odhad vCore z kroku 1.
-4. Najdete v článku [SQL Database stránce s cenami](https://azure.microsoft.com/pricing/details/sql-database/) a najít fondu nejmenší velikost, která je větší než odhad z kroku 3.
+3. Pro nákupní model založený na DTU trvat větší z odhadovaného počtu eDTU z kroku 1 a 2. Pro nákupní model založený na virtuálních jádrech trvat vCore odhad z kroku 1.
+4. Zobrazit [stránce s cenami SQL Database](https://azure.microsoft.com/pricing/details/sql-database/) a najděte fondu nejmenší velikost, která je větší než odhad z kroku 3.
 5. Porovnejte cenu fondu z kroku 5 s cenou při použití odpovídajících úrovní výkonu pro izolované databáze.
 
-## <a name="using-other-sql-database-features-with-elastic-pools"></a>Další funkce SQL Database pomocí elastické fondy
+## <a name="using-other-sql-database-features-with-elastic-pools"></a>Další funkce služby SQL Database pomocí elastických fondů
 
-### <a name="elastic-jobs-and-elastic-pools"></a>Elastické úlohy a elastické fondy
+### <a name="elastic-jobs-and-elastic-pools"></a>Elastické úlohy a elastických fondů
 
 U fondu jsou úlohy správy zjednodušené díky spouštění skriptů v **[elastických úlohách](sql-database-elastic-jobs-overview.md)**. Elastická úloha eliminuje většinu únavných úkolů spojených s velkým počtem databází. Pro začátek si přečtěte téma [Začínáme s elastickými úlohami](sql-database-elastic-jobs-getting-started.md).
 
 Další informace o ostatních databázových nástrojích pro práci s více databázemi najdete v tématu [Horizontální navýšení kapacity se službou Azure SQL Database](sql-database-elastic-scale-introduction.md).
 
-### <a name="business-continuity-options-for-databases-in-an-elastic-pool"></a>Možnosti kontinuity podnikových procesů u databází v elastickém fondu
+### <a name="business-continuity-options-for-databases-in-an-elastic-pool"></a>Možnosti kontinuity podnikových procesů pro databáze v elastickém fondu
 Databáze ve fondu obecně podporují stejné [funkce provozní kontinuity](sql-database-business-continuity.md), jaké jsou dostupné pro izolované databáze.
 
-- **Obnovení bodu v čase**: obnovení bodu v čase používá automatické zálohování databází k obnovení databáze ve fondu k určitému bodu v čase. Viz [Obnovení k určitému bodu v čase](sql-database-recovery-using-backups.md#point-in-time-restore).
+- **Obnovení k určitému bodu v čase**: obnovení k určitému bodu v čase využívá automatické zálohování databází k obnovení databáze ve fondu k určitému bodu v čase. Viz [Obnovení k určitému bodu v čase](sql-database-recovery-using-backups.md#point-in-time-restore).
 
-- **Geografické obnovení**: geografické obnovení poskytuje výchozí možnost, když databáze není k dispozici z důvodu incidentu v oblasti, který je hostitelem databáze. Viz [Obnovení služby Azure SQL Database a převzetí služeb při selhání sekundární lokalitou](sql-database-disaster-recovery.md).
+- **Geografické obnovení**: geografické obnovení poskytuje výchozí možnost zotavení, pokud je databáze není k dispozici z důvodu incidentu v oblasti, kde se hostuje databázi. Viz [Obnovení služby Azure SQL Database a převzetí služeb při selhání sekundární lokalitou](sql-database-disaster-recovery.md).
 
-- **Aktivní geografickou replikací**: aplikace, které mají agresivnější požadavky na obnovení než nabízejí geografické obnovení, nakonfigurujte [aktivní geografickou replikací](sql-database-geo-replication-overview.md).
+- **Aktivní geografická replikace**: pro aplikace, které mají více vyššími požadavky na zotavení, než může nabídnout geografické obnovení, nakonfigurujte [aktivní geografickou replikaci](sql-database-geo-replication-overview.md).
 
-## <a name="creating-a-new-sql-database-elastic-pool-using-the-azure-portal"></a>Vytvoření nového elastického fondu SQL Database pomocí portálu Azure
+## <a name="creating-a-new-sql-database-elastic-pool-using-the-azure-portal"></a>Vytvoření nového elastického fondu SQL Database pomocí webu Azure portal
 
-Existují dva způsoby fondu elastické databáze můžete vytvořit na portálu Azure.
-1. Elastický fond můžete vytvořit tak, že **elastický fond SQL** v **Marketplace** nebo kliknutím na tlačítko **+ přidat** na elastické fondy SQL Procházet okna. Budete moci zadat nové nebo existující server prostřednictvím tohoto fondu zřizování pracovního postupu.
-2. Nebo můžete vytvořit fond elastické navigace na existující server SQL a kliknutím na **vytvořit fond** vytvoření fondu přímo do tohoto serveru. Jediným rozdílem je, že přeskočte krok umístění serveru během fondu zřizování pracovního postupu.
+Existují dva způsoby elastický fond můžete vytvořit na webu Azure Portal.
+1. Elastický fond můžete vytvořit tak, že **elastický fond SQL** v **Marketplace** nebo kliknutím na možnost **+ přidat** o elastických fondech SQL okně procházení. Budete moci zadat nový nebo existující server prostřednictvím tohoto pracovního postupu zřizování fondu.
+2. Nebo můžete vytvořit elastický fond tak, že přejdete na existujícím serveru SQL a kliknete **vytvořit fond** a vytvořit tak fond přímo do tohoto serveru. Jediný rozdíl zde je, že můžete přeskočit na krok umístění serveru během pracovního postupu zřizování fondu.
 
 > [!NOTE]
 > Můžete vytvořit více fondů na serveru, ale nemůžete přidat databáze z různých serverů do stejného fondu.
 
-Služba úroveň fondu určuje funkce, které jsou dostupné pro elastics ve fondu a maximální objem prostředků, které jsou k dispozici pro každou databázi. Podrobnosti najdete v tématu omezení prostředků pro elastické fondy v [DTU modelu](sql-database-dtu-resource-limits-elastic-pools.md#elastic-pool-storage-sizes-and-performance-levels). Na základě vCore prostředků limity pro elastické fondy, najdete v části [limitů prostředků na základě vCore - elastické fondy](sql-database-vcore-resource-limits-elastic-pools.md).
+Úrovně služeb fondu určuje funkce, které jsou k dispozici elastických ve fondu a maximální dobu, prostředky dostupné pro každou databázi. Podrobnosti najdete v tématu limity pro elastické fondy v prostředků [DTU modelu](sql-database-dtu-resource-limits-elastic-pools.md#elastic-pool-storage-sizes-and-performance-levels). Prostředek založený na virtuálních jádrech omezení pro elastické fondy najdete v tématu [omezení prostředků založený na virtuálních jádrech - elastických fondů](sql-database-vcore-resource-limits-elastic-pools.md).
 
-Konfigurace prostředků a ceny fondu, klikněte na tlačítko **konfigurace fondu**. Potom vyberte vrstvu služby, přidat databáze do fondu a nakonfigurovat omezení prostředků pro fond a její databáze.
+Ke konfiguraci prostředků a ceny ve fondu, klikněte na tlačítko **konfigurace fondu**. Vyberte úroveň služby, přidejte databáze do fondu a nakonfigurovat omezení prostředků pro fond a jeho databázím.
 
-Když dokončíte konfiguraci fondu, můžete kliknutím na tlačítko použít, název fondu a klikněte na tlačítko "OK", pokud chcete vytvořit fond.
+Po dokončení konfigurace fondu můžete klepnutím na tlačítko použít, název fondu a klikněte na tlačítko "OK" k vytvoření fondu.
 
-## <a name="monitor-an-elastic-pool-and-its-databases"></a>Monitorování fondu elastické databáze a její databáze
+## <a name="monitor-an-elastic-pool-and-its-databases"></a>Sledování elastického fondu a jeho databázím
 
-Na portálu Azure můžete sledovat využití fondu elastické databáze a databáze v tomto fondu. Můžete také nastavit sadu změn do pružného fondu a odeslat všechny změny ve stejnou dobu. Tyto změny zahrnují přidávání nebo odebírání databáze, změna nastavení služby elastického fondu nebo změna nastavení databáze.
+Na webu Azure Portal můžete monitorovat využití elastického fondu a databáze v tomto fondu. Také můžete provést sadu změn do elastického fondu a odešlete všechny změny ve stejnou dobu. Tyto změny zahrnout, přidání nebo odebrání databáze, změna nastavení služby elastického fondu nebo změna nastavení databáze.
 
-Jak začít monitorovat elastického fondu, najít a otevřít fondu elastické databáze na portálu. Zobrazí se první obrazovka, která poskytuje přehled o stavu elastického fondu. To zahrnuje:
+K monitorování elastického fondu, najít a otevřít elastického fondu na portálu. Zobrazí se první obrazovku, která poskytuje přehled o stavu vašeho elastického fondu. To zahrnuje:
 
-* Monitorování grafy znázorňující využití prostředků elastického fondu
+* Monitorování grafy zobrazující využití prostředků elastického fondu
 * Nedávné výstrahy a doporučení, pokud je k dispozici pro elastický fond
 
-Následující obrázek ukazuje příklad elastickém fondu:
+Následující obrázek znázorňuje příklad elastického fondu:
 
 ![Zobrazení fondu](./media/sql-database-elastic-pool-manage-portal/basic.png)
 
-Pokud chcete další informace o fondu kliknutím na všechny dostupné informace v tomto přehledu. Kliknutím na **využití prostředků** grafu přejdete na zobrazení Azure Monitoring kde můžete přizpůsobit okno metriky a času zobrazené v grafu. Kliknutím na jakékoliv dostupné oznámení se dostanete na okno, které zobrazuje podrobnosti o této doporučení nebo výstrah.
+Pokud chcete získat další informace o fondu můžete kliknout na kterýkoli z dostupné informace v tomto přehledu. Kliknutím na **využití prostředků** grafu přejdete na zobrazení monitorování Azure ve kterém můžete přizpůsobit okna metrik a času zobrazené v grafu. Kliknutím na všechny dostupné oznámení se dostanete na okno, které se zobrazí úplné podrobnosti o této výstrahy ani doporučení.
 
-Pokud chcete monitorování databází ve fondu, můžete kliknutím na **databáze využití prostředků** v **monitorování** prostředků nabídky na levé straně.
+Pokud chcete monitorování databází ve fondu, můžete kliknout na **využití prostředků databáze** v **monitorování** prostředku nabídky na levé straně.
 
 ![Stránka využití prostředků databáze](./media/sql-database-elastic-pool-manage-portal/db-utilization.png)
 
 ### <a name="to-customize-the-chart-display"></a>Chcete-li přizpůsobit zobrazení grafu
 
-Můžete upravit graf a metriky stránky zobrazíte další metriky jako procento, procento vstupů/výstupů dat a protokolu vstupně-výstupní operace % využití procesoru.
+Můžete upravit graf a stránce metriky zobrazíte další metriky, jako je procento, procento datových v/v úrovně a protokolu vstupně-výstupních operací procento využití procesoru.
 
-Na **upravit graf** formuláře, můžete vybrat buď fixní dobu rozsahu nebo klikněte na tlačítko **vlastní** vyberte všechny časové období 24 hodin v poslední dva týdny, a potom vyberte zdroje, které chcete monitorovat.
+Na **upravit graf** formuláře, můžete vybrat pevného časového rozsahu nebo klikněte na tlačítko **vlastní** v posledních dvou týdnech vyberte jakékoli okno 24 hodin, a potom vyberte zdroje, které chcete monitorovat.
 
-### <a name="to-select-databases-to-monitor"></a>Chcete-li vybrat databáze k monitorování
+### <a name="to-select-databases-to-monitor"></a>Vyberte databáze pro monitorování
 
-Ve výchozím nastavení grafu v **využití prostředků databáze** okno se zobrazí databáze top 5 DTU nebo využití procesoru (v závislosti na vaší vrstvy služby). Můžete přepnout do databáze v tomto grafu výběrem a unselecting databáze ze seznamu pod grafem prostřednictvím políček na levé straně.
+Ve výchozím nastavení graf **využití databázových prostředků** okno se zobrazí databáze top 5 DTU nebo využití procesoru (v závislosti na vaší úrovni služby). Do databáze v tomto grafu můžete přepínat výběrem a zrušení výběru databáze ze seznamu pod grafem pomocí zaškrtávacích políček na levé straně.
 
-Můžete také vybrat další metriky do zobrazení vedle sebe v této tabulce databáze získat ucelený přehled o výkon databáze.
+Můžete také vybrat další metriky pro zobrazení vedle sebe v této tabulce databáze, chcete-li získat podrobnější přehled výkonu vaší databáze.
 
-Další informace najdete v tématu [vytvářet výstrahy, SQL Database na portálu Azure](sql-database-insights-alerts-portal.md).
+Další informace najdete v tématu [vytvářet upozornění databáze SQL na webu Azure portal](sql-database-insights-alerts-portal.md).
 
 ## <a name="next-steps"></a>Další postup
 
-- Škálování elastické fondy, najdete v části [škálování elastické fondy](sql-database-elastic-pool.md) a [škálování fondu elastické databáze – ukázkový kód](scripts/sql-database-monitor-and-scale-pool-powershell.md)
-* Video najdete v tématu [Microsoft Virtual Academy video kurzu na možnostech elastické databáze SQL Azure](https://mva.microsoft.com/training-courses/elastic-database-capabilities-with-azure-sql-db-16554)
+- Škálování elastické fondy, najdete v článku [škálování elastických fondů](sql-database-elastic-pool.md) a [škálovat elastický fond – ukázky kódu](scripts/sql-database-monitor-and-scale-pool-powershell.md)
+* Video najdete v tématu [videokurz Microsoft Virtual Academy o možnostech elastické databáze SQL Azure](https://mva.microsoft.com/training-courses/elastic-database-capabilities-with-azure-sql-db-16554)
 * Další informace o návrhových schématech aplikací SaaS využívajících elastické fondy najdete v tématu [Návrhová schémata pro víceklientské aplikace SaaS využívající službu Azure SQL Database](sql-database-design-patterns-multi-tenancy-saas-applications.md).
-* SaaS pomocí elastické fondy, na adrese [Úvod k aplikaci Wingtip SaaS](sql-database-wtp-overview.md).
+* Kurz SaaS využívajících elastické fondy najdete v tématu [Úvod do aplikací SaaS aplikace Wingtip](sql-database-wtp-overview.md).

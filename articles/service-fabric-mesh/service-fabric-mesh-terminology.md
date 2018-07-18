@@ -9,12 +9,12 @@ ms.date: 07/12/2018
 ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: db7a89ffa4ff1a2eb271869c93b7beb088fd13b3
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 672e27bf53679c52dab8d42a52378aa90eba33cb
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39076009"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39114306"
 ---
 # <a name="service-fabric-mesh-terminology"></a>Terminologie Service Fabric mřížky
 
@@ -57,14 +57,14 @@ Service Fabric je technologie open source platforma, která na základě několi
 ## <a name="environment-framework-and-deployment-model-support-matrix"></a>Matice podpory prostředí, rozhraní a modelu nasazení
 Různá prostředí mají různé úrovně podpory platformy a modely nasazení. Následující tabulka popisuje podporované architektury a kombinace modelu nasazení.
 
-|Frameworks\Deployment modelu |Model prostředků |Manifest modelu | Vytvořit|
+|Frameworks\Deployment modelu |Model prostředků |Nativní model | Vytvořit|
 |---|---|---|---|
 |Reliable Actors a Reliable Services |Nepodporuje se |Podporováno |Nepodporuje se |
 |Jakékoli architektury nebo jazyka |Podporované v kontejnerech |Podporované jako procesy a v kontejnerech |Podporované v kontejnerech |
 
 Následující tabulka popisuje podporované prostředí a nasazení modelu kombinace.
 
-|Environment\Deployment modelu |Model prostředků |Manifest modelu |Vytvořit |
+|Environment\Deployment modelu |Model prostředků |Nativní model |Vytvořit |
 |---|---|---|---|
 |Síť Azure Service Fabric |Podporováno |Nepodporuje se|Nepodporuje se |
 |Všechna další prostředí |Podporované (některé prostředky mají požadavky pro práci v prostředí) |Podporováno |Omezená podpora |

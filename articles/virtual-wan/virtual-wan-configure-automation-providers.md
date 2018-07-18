@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 07/10/2018
 ms.author: cherylmc
 Customer intent: As a Virtual WAN software-defined connectivity provider, I want to set up a provisioning environment.
-ms.openlocfilehash: fc978c6ad9776271c790796f26912c63f9edcf74
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: a1ff4364e394b3807cf767722ee934ae024399b0
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39009382"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39114340"
 ---
 # <a name="configure-virtual-wan-automation---for-virtual-wan-partners-preview"></a>Konfigurace virtuální sítě WAN automatizace - pro virtuální sítě WAN partnery (Preview)
 
-Tento článek vám pomůže pochopit postup nastavení služby automation envorionment připojit a nakonfigurovat zařízení větev (v místním zařízení VPN zákazníka nebo SDWAN) pro Azure virtuální sítě WAN. Pokud se zprostředkovatel, který poskytuje zařízení větev, která zvládne připojení k síti VPN prostřednictvím protokolu IPsec nebo IKEv2, tento článek právě pro vás.
+Tento článek vám pomůže pochopit nastavení automatizovaného prostředí pro připojení a konfigurace zařízení větev (v místním zařízení VPN zákazníka nebo SDWAN) pro Azure virtuální sítě WAN. Pokud se zprostředkovatel, který poskytuje zařízení větev, která zvládne připojení k síti VPN prostřednictvím protokolu IPsec nebo IKEv2, tento článek právě pro vás.
 
 Připojení k softwarově definované řešení obvykle používají kontroleru nebo device provisioning System center ke správě svých zařízeních větve. Kontroler můžete použít rozhraní API služby Azure k automatizaci připojení k Azure virtuální sítě WAN. Tento typ připojení vyžaduje SDWAN nebo VPN zařízení místní, ke kterým mají externí určených pro veřejnou IP adresu přiřazenou.
 

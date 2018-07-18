@@ -1,193 +1,193 @@
 ---
-title: Zakoupení modely Azure SQL Database | Microsoft Docs
-description: Informace o zakoupení modelu pro databázi SQL Azure.
+title: Azure SQL Database modely nákupu | Dokumentace Microsoftu
+description: Další informace o zakoupení modelu pro službu Azure SQL Database.
 services: sql-database
 author: CarlRabeler
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 06/20/2018
+ms.date: 07/16/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: 1a5424b69fc70f69359b12beac86060f4e23ff27
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: f40fe3da6874d8656c9c0a0ddce9fed602cb25f9
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37083987"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39091911"
 ---
-# <a name="azure-sql-database-purchasing-models-and-resources"></a>Azure SQL Database zakoupení modely a prostředky 
+# <a name="azure-sql-database-purchasing-models-and-resources"></a>Azure SQL Database nákupu modely a prostředky 
 
-Logické servery v [Azure SQL Database](sql-database-technical-overview.md) nabízí dva modely nákupu pro výpočty, úložiště a vstupně-výstupní operace prostředky: nákupní model na základě DTU a nákupní model (preview) na základě vCore. 
+Logické servery v [Azure SQL Database](sql-database-technical-overview.md) nabízí dva modely nákupu pro výpočty, úložiště a vstupně-VÝSTUPNÍCH prostředků: nákupní model založený na DTU a nákupní model založený na virtuálních jádrech. 
 
 > [!NOTE]
-> [Spravované instance](sql-database-managed-instance.md) ve službě Azure SQL Database pouze nabízejí na základě vCore nákupní model.
+> [Spravované instance](sql-database-managed-instance.md) ve službě Azure SQL Database pouze nabízejí nákupní model založený na virtuálních jádrech.
 
-Následující tabulku a graf porovnání a porovnejte tyto dva modely nákupu.
+Následující tabulku a graf porovnání a kontrast tyto dva modely nákupu.
 
 > [!IMPORTANT]
-> Na základě vCore nákupní model (preview), najdete v části [na základě vCore nákupní model](sql-database-service-tiers-vcore.md)
+> Nákupní model založený na virtuálních jádrech najdete v části [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md)
 
-|**Nákupní model**|**Popis**|**Nejvhodnější pro**|
+|**Nákupní model**|**Popis**|**Nejlepší pro**|
 |---|---|---|
-|Model na základě DTU|Tento model je založen na připojené měření výpočty, úložiště a vstupně-výstupní operace prostředky. Úrovně výkonu se vyjadřují v jednotkách transakcí databáze (DTU) pro samostatné databáze a jednotkách transakcí elastické databáze (eDTU) pro elastické fondy. Další informace o Dtu a Edtu najdete v tématu [co jsou Dtu a Edtu](sql-database-service-tiers.md#what-are-database-transaction-units-dtus)?|Nejvhodnější pro zákazníky, kteří chtějí možnosti jednoduchý, předem nakonfigurovaných prostředků.| 
-|Model na základě virtuálních jader|Tento model můžete nezávisle škálovat výpočetní a úložnou kapacitu. Také umožňuje použít k získání úsporu nákladů Benefit hybridní Azure pro systém SQL Server.|Nejvhodnější pro zákazníky, kteří hodnota flexibilitu, řízení a průhlednost.|
+|Model na základě DTU|Tento model je založen na připojené míře výpočetní prostředky, úložiště a vstupně-VÝSTUPNÍCH prostředků. Úrovně výkonu se vyjadřují v jednotkách transakcí databáze (DTU) pro samostatné databáze a jednotkách transakcí elastické databáze (eDTU) pro elastické fondy. Další informace o jednotkách Dtu a Edtu najdete v tématu [co jsou jednotky Dtu a Edtu](sql-database-service-tiers.md#what-are-database-transaction-units-dtus)?|Nejvhodnější pro zákazníky, kteří chtějí jednoduché, předem nakonfigurované možnosti prostředku.| 
+|Model na základě virtuálních jader|Tento model umožňuje nezávisle škálovat výpočetní prostředky a prostředky úložiště. Také umožňuje používat zvýhodněné hybridní využití Azure pro SQL Server k získání úspory nákladů.|Nejvhodnější pro zákazníky, kteří hodnota flexibilitu, řízení a transparentnost.|
 ||||  
 
 ![cenový model](./media/sql-database-service-tiers/pricing-model.png)
 
-## <a name="vcore-based-purchasing-model--preview"></a>na základě vCore nákupní model (preview)
+## <a name="vcore-based-purchasing-model"></a>nákupní model založený na virtuálních jádrech 
 
-Virtuální základní představuje logický procesor nabízí s možností si vybrat mezi generací hardwaru. Nákupní model (preview) na základě vCore poskytuje flexibilitu, řízení, průhlednost spotřebu jednotlivých prostředků a snadný způsob, jak převede místní požadavků na zatížení do cloudu. Tento model umožňuje škálování výpočetní kapacity, paměť a úložiště podle jejich potřeb pracovního vytížení. V na základě vCore nákupu modelu (preview) Zákazníci můžete vybrat mezi obecné účely a obchodními úrovněmi kritické služby (preview) pro obě [jedna databáze](sql-database-single-database-scale.md) a [elastické fondy](sql-database-elastic-pool.md). 
+Virtuální jádro reprezentuje logický procesor nabízený s možností volby mezi generacemi hardwaru. Nákupní model založený na virtuálních jádrech poskytuje flexibilitu, kontrolu, transparentnost spotřeby jednotlivých prostředků a jednoduchý způsob převodu místních požadavků na zatížení do cloudu. Tento model umožňuje škálování výpočetních prostředků, paměť a úložiště na základě jejich potřebám provádění úloh. V nákupní model založený na virtuálních jádrech Zákazníci si mohou vybrat mezi úrovní služeb kritické obchodní a obecné účely pro obě [izolované databáze](sql-database-single-database-scale.md) a [elastické fondy](sql-database-elastic-pool.md). 
 
-Nákupní model (preview) na základě vCore můžete nezávisle škálovat výpočetní a úložnou kapacitu, odpovídající místní výkonu a optimalizovat ceny. Pokud vaše databáze nebo elastického fondu spotřebovává více než 300 DTU převod na vCore může snížit vaše náklady. Můžete převést pomocí rozhraní API podle volby nebo pomocí portálu Azure, nedojde k výpadku. Převod však není požadováno. Pokud nákupní model DTU splňuje vaše požadavky na výkon a business, by měly pokračovat, jeho použití. Pokud se rozhodnete převést z modelu DTU vCore-model, měli byste vybrat úroveň výkonu pomocí následující pravidlo: každý 100 DTU ve standardní vrstvě vyžaduje minimálně 1 vCore ve vrstvě obecné účely; Každý 125 DTU v úrovni Premium vyžaduje minimálně 1 vCore v kritické obchodní vrstvy.
+Nákupní model založený na virtuálních jádrech umožňuje nezávisle na sobě škálovat výpočetní prostředky a prostředky úložiště, odpovídají zajištění místního výkonu a optimalizovat cena. Pokud vaše databáze nebo elastického fondu využívá víc než 300 DTU převod na vCore může snížit vaše náklady. Můžete převést pomocí rozhraní API podle výběru nebo na webu Azure portal, bez výpadků. Převod však není povinné. Pokud model nákupu DTU splňuje výkonu a obchodních požadavcích, měli byste pokračovat, jeho použití. Pokud se rozhodnete převést z modelu jednotek DTU na modelu virt. jader, by měl vybrat úroveň výkonu pomocí následující pravidlo: vyžaduje minimálně 1 virtuální jádro v úrovni General Purpose; každý 100 DTU na úrovni Standard Každý 125 DTU na úrovni Premium vyžaduje alespoň 1 virtuální jádro v úrovni pro důležité obchodní informace.
 
-V na základě vCore nákupu modelu (preview) se zákazníci platit pro:
-- Výpočetní (úroveň služby + číslo vCores + generování hardwaru) *
-- Typ a velikost úložiště, protokolu a data 
+V nákupní model založený na virtuálních jádrech zákazníci platí za:
+- COMPUTE (úroveň služby a počet virtuálních jader + generace hardwarových) *
+- Typ a velikost úložiště dat a protokolů 
 - Počet IOs **
-- Zálohování úložiště (RA-GRS) ** 
+- Zálohování úložišť (pro čtení RA-GRS) ** 
 
-\* V původní verzi public preview, logických procesorů 4 generace jsou založené na v3 Intel E5-2673 2,4 GHz procesorů (Haswell).
+\* V počáteční verzi public preview, logické procesory generace 4 jsou založené na Intel E5-2673 v3 (Haswell) 2,4 GHz procesorech.
 
-\*\* Verzi Preview jsou zadarmo zálohy a IOs 7 dní.
+\*\* Ve verzi preview zálohování a IOs 7 dní je zdarma.
 
 > [!IMPORTANT]
-> Výpočetní, IOs, data a budou se účtovat úložiště protokolů pro databáze nebo elastického fondu. Úložiště zálohy je účtován na každou databázi. Podrobnosti o spravovaných Instance poplatky, najdete v části [Azure SQL Database spravované Instance](sql-database-managed-instance.md).
-> **Omezení oblast:** nákupu modelu (preview) na základě vCore dosud nejsou k dispozici v následujících oblastech: západní Evropa, střední Francie, Spojené království – Jih, Spojené království – západ a Austrálie – jihovýchod.
+> Výpočetní prostředky, IOs, data a úložiště protokolů se bude fakturovat za databázi nebo elastický fond. Úložiště záloh se účtuje za každou databázi. Podrobné informace o Managed Instance poplatky, najdete v tématu [Azure SQL Database Managed Instance](sql-database-managed-instance.md).
+> **Omezení oblasti:** nákupní model založený na virtuálních jádrech ještě není k dispozici v následujících oblastech: západní Evropa, Francie – střed, Velká Británie – Jih, Velká Británie – západ a Austrálie – jihovýchod.
 
-## <a name="dtu-based-purchasing-model"></a>Na základě DTU nákupní model
+## <a name="dtu-based-purchasing-model"></a>Nákupní model založený na DTU
 
-Jednotky propustnosti databáze (DTU) představuje kombinaci měření procesoru, paměti, čte a zapisuje. Na základě DTU nákupní model nabízí sadu předkonfigurované sady výpočetní prostředky a zahrnuty úložiště na jednotce různé úrovně výkonu aplikace. Zákazníci, kteří raději jednoduchost sady předkonfigurovaná a pevných plateb každý měsíc, možná modelu na základě DTU vhodnější pro své potřeby. V na základě DTU nákupu modelu, můžete zvolit zákazníci **základní**, **standardní**, a **Premium** úrovních služeb pro obě [jedna databáze](sql-database-single-database-scale.md) a [elastické fondy](sql-database-elastic-pool.md). 
+Jednotky propustnosti databáze (DTU) představuje kombinaci měření procesoru, paměti, čte a zapisuje. Nákupní model založený na DTU nabízí sadu předem nakonfigurované sady výpočetních prostředků a zahrnuté úložiště na jednotce různé úrovně výkonu aplikace. Zákazníci, kteří dávají přednost jednoduchosti, kterou nabízejí předem nakonfigurované sady prostředků a pevných plateb každý měsíc, může se stát model založený na DTU více odpovídají jejich potřebám. V nákupní model založený na DTU Zákazníci si mohou vybrat mezi **základní**, **standardní**, a **Premium** úrovně služeb pro obě [izolované databáze](sql-database-single-database-scale.md) a [elastické fondy](sql-database-elastic-pool.md). 
 
-### <a name="what-are-database-transaction-units-dtus"></a>Jaké jsou jednotky transakcí databáze (Dtu)?
-Pro jednu databázi Azure SQL na úrovni výkonu specifických v rámci [vrstvy služby](sql-database-single-database-scale.md), Microsoft zaručuje úroveň prostředky pro tuto databázi (nezávisle na jakékoli jiné databáze v cloudu Azure), poskytování předvídatelný úroveň výkonu. Objem prostředků počítá se jako počet jednotky transakcí databáze nebo Dtu a je určena připojené výpočty, úložiště a vstupně-výstupní operace prostředky. Poměr mezi tyto prostředky se původně určený [OLTP srovnávacího testu zatížení](sql-database-benchmark-overview.md), navrženou Typická reálného OLTP úloh. Pokud vaše úlohy překročí množství kterýkoli z těchto prostředků, vaše propustnost je omezenému – což pomalejší výkon a vypršení časových limitů. Prostředky používané velikosti pracovní zátěže nemají vliv na jiné databáze SQL v cloudu Azure dostupné prostředky a prostředky používané další úlohy, nemá dopad na prostředky, které jsou k dispozici k vaší databázi SQL.
+### <a name="what-are-database-transaction-units-dtus"></a>Co jsou jednotky databázové transakce (Dtu)?
+Pro izolované databáze Azure SQL na konkrétní úroveň výkonu v rámci [úroveň služby](sql-database-single-database-scale.md), Microsoft zaručuje určité úrovně prostředků pro tuto databázi (nezávisle na jakékoli jiné databáze v cloudu Azure), poskytování předvídatelný úroveň výkonu. Objem prostředků se počítá jako počet jednotek databázové transakce nebo počet jednotek Dtu a je jako součást balíčku míra výpočty, úložiště a vstupně-VÝSTUPNÍCH prostředků. Poměr mezi těmito prostředky byl původně určené [úlohou srovnávacího testu OLTP](sql-database-benchmark-overview.md), navržená tak, aby jako typická pro úlohy OLTP v reálném světě. Pokud vaše úloha překračuje množství některý z těchto prostředků, propustnost je omezené – následek pomalejší výkon a časové limity. Prostředky využívané třídou úlohy nemají vliv na prostředky dostupné pro jiné databáze SQL v cloudu Azure a prostředky využívané třídou jiné úlohy nemají vliv na prostředky dostupné pro vaši službu SQL database.
 
-![ohraničující pole](./media/sql-database-what-is-a-dtu/bounding-box.png)
+![ohraničujícího rámečku](./media/sql-database-what-is-a-dtu/bounding-box.png)
 
-Počet jednotek Dtu jsou zvláště užitečné pro pochopení relativní objem prostředků mezi databází SQL Azure na úrovních různých výkonu a úrovně služeb. Například zvýší počet jednotek Dtu zvýšením úrovně výkonu databáze rovná zvýší sadu prostředků, které jsou k dispozici pro tuto databázi. Například databáze Premium P11 se 1 750 DTU nabízí 350x více DTU výpočetního výkonu než databáze Basic s 5 DTU.  
+Počet jednotek Dtu jsou zvláště užitečná pro pochopení relativní množství prostředků mezi databázemi SQL Azure na různé úrovně výkonu a úrovně služeb. Například zdvojnásobení jednotek Dtu zvýšením úrovně výkonu databáze odpovídá zdvojnásobení sady prostředků, které jsou k dispozici pro tuto databázi. Například databáze Premium P11 se 1 750 DTU nabízí 350x více DTU výpočetního výkonu než databáze Basic s 5 DTU.  
 
-Chcete-li získat podrobnější přehled o spotřeby prostředků (DTU) vašich úloh, použijte [Azure SQL Database Query Performance Insight](sql-database-query-performance.md) na:
+Chcete-li získat podrobnější přehled o spotřebě prostředků (DTU) vašich úloh, použijte [Azure SQL Database Query Performance Insight](sql-database-query-performance.md) na:
 
-- Identifikujte nejčastějších dotazů podle využití procesoru a doba trvání nebo provádění počtu, který lze ladit potenciálně pro zlepšení výkonu. Například dotaz intenzivním vstupně-výstupní operace může mít užitek z použití [techniky optimalizace v paměti](sql-database-in-memory.md) lepší využití paměti k dispozici na určité služby a výkonu úrovni.
-- Přejděte na podrobné informace o dotazu, zobrazit historii využití prostředků a text.
-- Výkon přístupu k ladění doporučení, které se zobrazí akce prováděné [Poradce pro funkci SQL Database](sql-database-advisor.md).
+- Identifikujte hlavní dotazy podle počtu CPU/doba trvání/spuštění, který může být potenciálně vyladěný za účelem vylepšení výkonu. Například dotaz náročné na vstupně-výstupních operací by mohlo prospět použití [techniky optimalizace v paměti](sql-database-in-memory.md) lepší využití paměti k dispozici na na určité služby vrstvu a úroveň výkonu.
+- Přejít na podrobnosti o dotazu, zobrazit jeho historii využití prostředků a text.
+- Doporučení, které ukazují akce prováděné pro optimalizaci výkonu přístupu [služby SQL Database Advisor](sql-database-advisor.md).
 
-Můžete změnit [DTU úrovně služeb](sql-database-service-tiers-dtu.md) kdykoli s minimálními výpadky do vaší aplikace (obvykle průměrování než čtyři sekund). Mnoha firmám a aplikacím stačí vytváření databází a nastavování výkonu na vyžádání, zejména v případě, že jsou vzorce používání relativně předvídatelné. Ale pokud vaše vzorce používání předvídatelné nejsou, může být správa nákladů a údržba obchodního modelu velmi těžká. V tomto scénáři použijete fondu elastické databáze s počtem jednotek Edtu, jež jsou sdílena mezi více databází ve fondu.
+Můžete změnit [jednotek DTU úrovně služeb](sql-database-service-tiers-dtu.md) kdykoli s minimálními prostoji do vaší aplikace (obecně odstávkou čtyři sekundy). Mnoha firmám a aplikacím stačí vytváření databází a nastavování výkonu na vyžádání, zejména v případě, že jsou vzorce používání relativně předvídatelné. Ale pokud vaše vzorce používání předvídatelné nejsou, může být správa nákladů a údržba obchodního modelu velmi těžká. Pro tento scénář použijete elastický fond s určitým počtem jednotek Edtu, které jsou odkazy sdíleny mezi více databází ve fondu.
 
 ![Úvod do služby SQL Database: DTU izolované databáze podle úrovní](./media/sql-database-what-is-a-dtu/single_db_dtus.png)
 
-### <a name="what-are-elastic-database-transaction-units-edtus"></a>Jaké jsou jednotky transakcí elastické databáze (Edtu)?
-Spíše než poskytují vyhrazené sadu prostředků (Dtu), které nemusí být vždy potřebné pro databázi SQL, která je vždy k dispozici, můžete umístit do databáze [elastický fond](sql-database-elastic-pool.md) na databázi SQL serveru, který sdílí fond prostředků mezi Tyto databáze. Sdílené prostředky v elastickém fondu se měří elastické jednotky transakcí databáze nebo Edtu. Elastické fondy poskytují jednoduché nákladově efektivní řešení ke správě výkonnostní cíle pro více databází s široce různých a vzorce nepředvídatelné. Fondu elastické databáze zaručuje, že prostředky nemůže být využívány službou jedna databáze ve fondu, zatímco Každá databáze ve fondu zajistíte vždy obsahuje minimální množství potřebné prostředky, které jsou k dispozici. 
+### <a name="what-are-elastic-database-transaction-units-edtus"></a>Co jsou elastické jednotky databázové transakce (Edtu)?
+Spíše než poskytuje vyhrazenou sadu prostředků (Dtu), které nemusí být vždy nezbytné pro SQL Database, která je vždy k dispozici, můžete umístit do databáze [elastického fondu](sql-database-elastic-pool.md) na server služby SQL Database, která sdílí fond prostředků mezi Tyto databáze. Sdílené prostředky v elastickém fondu jsou měřeny pomocí elastic Database Transaction Units nebo Edtu. Elastické fondy poskytují jednoduché nákladově efektivní řešení správy výkonnostních cílů pro více databází s značně liší a nepředvídatelným způsobem. Elastický fond zaručuje, že prostředky nemůže být zpracován jedna databáze ve fondu, zatímco vždy zajištění všem databázím ve fondu má minimální množství potřebné prostředky, které jsou k dispozici. 
 
 ![Úvod do služby SQL Database: eDTU podle vrstvy a úrovně](./media/sql-database-what-is-a-dtu/sqldb_elastic_pools.png)
 
-Fond je uveden se stanoveným počtem jednotek Edtu pro sadu ceny. V rámci elastického fondu disponují jednotlivé databáze flexibilní možností automatického škálování v rámci nakonfigurovaných mezí. Databáze v rámci větší zatížení spotřebuje další Edtu potřeby. Databáze pod světlejší zatížení budou využívat menší Edtu. Databáze s žádné zatížení bude využívat žádné Edtu. Podle zřizování prostředků pro celý fond, místo na databázi, úlohy správy jsou zjednodušená, poskytuje předvídatelný nároky pro fond.
+Fond je uveden stanovený počet jednotek Edtu za stanovenou cenu. V rámci elastického fondu disponují jednotlivé databáze flexibilní možností automatického škálování v rámci nakonfigurovaných mezí. Databáze při větším zatížení bude spotřebovávat více Edtu, které mají pokrýt poptávku. Databáze pod označením zatížení se spotřebovávají méně Edtu. Databáze s žádné zatížení bude nespotřebovávají žádné Edtu. Zřizování prostředků pro celý fond, spíše než jednotlivé databáze, jsou úlohy správy zjednodušené, poskytuje předvídatelný rozpočet pro fond.
 
-Další eDTU lze do existujícího fondu přidat bez jakéhokoli výpadku databáze a bez jakéhokoli vlivu na databáze ve fondu. Podobně platí, že pokud již přidané eDTU nejsou potřebné, lze je z existujícího fondu kdykoli odebrat. Můžete přidat nebo odečíst databáze ve fondu nebo limit množství Edtu databázi můžete použít v případě velkého zatížení tak, aby vyhradil Edtu pro jiné databáze. Pokud databázi je předvídatelné pod využití prostředků, můžete přesunout mimo fondu a nakonfigurovat ho jako jednu databázi s velikostí předvídatelný požadované prostředky.
+Další eDTU lze do existujícího fondu přidat bez jakéhokoli výpadku databáze a bez jakéhokoli vlivu na databáze ve fondu. Podobně platí, že pokud již přidané eDTU nejsou potřebné, lze je z existujícího fondu kdykoli odebrat. Můžete přičíst nebo odečíst databáze ve fondu nebo omezit množství Edtu, které databáze můžete použít v případě velkého zatížení a vyhradit tak Edtu pro ostatní databáze. Pokud databáze je předvídatelně využívá prostředky, můžete ji odebrat z fondu a nakonfigurovat jako izolovanou databázi s předvídatelným množstvím požadovaných prostředků.
 
 ### <a name="how-can-i-determine-the-number-of-dtus-needed-by-my-workload"></a>Jak lze určit počet DTU potřebných pro určitou úlohu?
-Pokud máte v úmyslu migrovat existující úlohu místního počítače nebo virtuálního počítače SQL Server do Azure SQL Database, můžete k odhadnutí potřebného počtu DTU použít [Kalkulačku DTU](http://dtucalculator.azurewebsites.net/). Pro existující úlohy Azure SQL Database, můžete použít [SQL databáze Query Performance Insight](sql-database-query-performance.md) porozumět vaší spotřeby prostředků databáze (Dtu) Chcete-li získat podrobnější přehled pro optimalizaci velikosti pracovní zátěže. Můžete také [sys.dm_db_ resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) DMV zobrazíte spotřeby prostředků za poslední hodinu. Alternativně zobrazení katalogu [sys.resource_stats](http://msdn.microsoft.com/library/dn269979.aspx) zobrazí spotřeby prostředků za posledních 14 dní, ale v nižší přesnost průměry pět minut.
+Pokud máte v úmyslu migrovat existující úlohu místního počítače nebo virtuálního počítače SQL Server do Azure SQL Database, můžete k odhadnutí potřebného počtu DTU použít [Kalkulačku DTU](http://dtucalculator.azurewebsites.net/). Pro existující úlohy Azure SQL Database, můžete použít [SQL Database Query Performance Insight](sql-database-query-performance.md) abyste pochopili spotřebu databázových prostředků (Dtu), abyste získali hlubší vhled pro optimalizaci vašich úloh. Můžete také použít [sys.dm_db_ resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) zobrazení dynamické správy k zobrazení využití prostředků za poslední hodinu. Můžete také zobrazit katalog [sys.resource_stats](http://msdn.microsoft.com/library/dn269979.aspx) zobrazí využití prostředků za posledních 14 dní, ale v méně přesné průměry pět minut.
 
 ### <a name="how-do-i-know-if-i-could-benefit-from-an-elastic-pool-of-resources"></a>Jak poznám, že by pro mě používání elastického fondu prostředků bylo výhodné?
-Fondy jsou vhodné pro velký počet databází s konkrétními vzory využití. Tento vzor pro danou databázi je charakterizovaná průměr nízkou míru využívání s relativně málo časté využití. SQL Database automaticky vyhodnotí historické údaje používání prostředků databází na existujícím serveru SQL Database a doporučí odpovídající konfigurace fondu na webu Azure Portal. Další informace najdete v tématu [Kdy je vhodné používat elastický fond?](sql-database-elastic-pool.md)
+Fondy jsou vhodné pro velký počet databází s konkrétními vzory využití. Pro danou databázi tento vzor charakterizován průměr nízké využití s relativně málo častými nárůsty využití. SQL Database automaticky vyhodnotí historické údaje používání prostředků databází na existujícím serveru SQL Database a doporučí odpovídající konfigurace fondu na webu Azure Portal. Další informace najdete v tématu [Kdy je vhodné používat elastický fond?](sql-database-elastic-pool.md)
 
-### <a name="what-happens-when-i-hit-my-maximum-dtus"></a>Co se stane, když dosáhnu Moje maximální Dtu?
-Úrovně výkonu jsou kalibrován a řídí zajistit prostředky potřebné ke spuštění úlohy databáze až do maximální povolený pro vaše úroveň vrstvy a výkonu vybrané službě. Pokud vaše úlohy je stiskne jedním z omezení procesoru/Data vstupně-výstupní operace nebo protokolu vstupně-výstupní operace, nadále budete dostávat maximální úroveň prostředků, které jsou povolené, ale také pravděpodobně si všimnete latence vyšší dotazu. Tyto limity nevedou k žádným chybám, ale mohou zpomalit zpracování úlohy, pokud se zpomalení nezvýší natolik, že začne docházet k vypršení časového limitu dotazů. Pokud dostanete relací/žádosti maximální povolené souběžných uživatelů (pracovních vláken), zobrazí se explicitní chyby. V tématu [limitů prostředků Azure SQL Database]( sql-database-resource-limits.md#what-happens-when-database-resource-limits-are-reached) informace o limitů prostředků, které nesouvisí s Procesorem, pamětí, vstupně-výstupní operace dat nebo transakcí protokolu vstupně-výstupní operace.
+### <a name="what-happens-when-i-hit-my-maximum-dtus"></a>Co se stane, když dosáhnu maximálního počtu Dtu?
+Úrovně výkonu se kalibrují a řídí k poskytnutí prostředků potřebných ke spuštění vaší úlohy databáze až po maximální hodnotu povolenou pro úroveň výkonu vrstvy/vybrané službě. Pokud úloha dosahuje některého z limitů procesory/datový vstupně-výstupních operací/Log vstupně-výstupní operace, budou dál dostávat maximální úroveň prostředků povolený, ale také pravděpodobně nastane latence vyšší dotazu. Tyto limity nevedou k žádným chybám, ale mohou zpomalit zpracování úlohy, pokud se zpomalení nezvýší natolik, že začne docházet k vypršení časového limitu dotazů. Pokud dosáhnete maximální povolených souběžných relací/požadavků uživatelů (pracovních vláken), zobrazí se explicitní chyby. Zobrazit [limity prostředků Azure SQL Database]( sql-database-resource-limits.md#what-happens-when-database-resource-limits-are-reached) informace o omezení prostředků, které nesouvisí s Procesorem, pamětí, datové v/v nebo transakce protokolovacích v/v.
 
-### <a name="correlating-benchmark-results-to-real-world-database-performance"></a>Korelace srovnávacího testu výsledky skutečných výkon databáze
-Je důležité si uvědomit, že všechny srovnávacích testů jsou pouze reprezentativní a naznačuje výslednou. Sazby transakce dosáhnout s aplikací srovnávacího testu nesmí být stejné jako ty, které může dosáhnout s jinými aplikacemi. Testu výkonnosti se skládá z kolekce jinou transakci, které typy spouštění schéma obsahující rozsah tabulky a datové typy. Během testu výkonnosti využije stejné základní operace, které jsou společné pro všechny úlohy OLTP, nepředstavuje žádné konkrétní třídě databáze nebo aplikace. Cílem srovnávacího testu je zajistit přiměřené Průvodce relativní výkon databáze, která může být očekávána při škálování nahoru nebo dolů mezi úrovněmi výkonu. Ve skutečnosti databáze jsou různé velikosti a složitost, dojde k jiné mix úloh a bude odpovídat různými způsoby. Například aplikace náročné na vstupně-výstupní operace narazit dříve vstupně-výstupní operace prahové hodnoty nebo narazit aplikace náročná na prostředky procesoru CPU omezení dříve. Není zaručeno, že všechny konkrétní databáze bude škálovat stejným způsobem jako srovnávací test v rámci zvýšení zatížení.
+### <a name="correlating-benchmark-results-to-real-world-database-performance"></a>Korelace výsledky srovnávacích testů výkonu databáze reálného světa
+Je důležité pochopit, že všechny srovnávací testy jsou pouze reprezentativní a orientační. Rychlost transakcí s srovnávací test aplikace nesmí být stejné jako ty, které může dosáhnout s jinými aplikacemi. Test výkonnosti se skládá z kolekce různých transakce typech spustit proti schématu obsahující celou řadu tabulek a datové typy. Během testu využije stejné základní operace, které jsou společné pro všechny úlohy OLTP, nepředstavuje žádné konkrétní třídu databáze nebo aplikace. Cílem testu je poskytovat přiměřenou Průvodce relativní výkon databáze, která může očekávat, že při škálování směrem nahoru nebo dolů mezi úrovněmi výkonu. Ve skutečnosti jsou různé velikosti a složitosti databáze, nastat různé mix úloh a bude odpovídat různými způsoby. Například aplikace náročné na vstupně-výstupní operace narazit na limity vstupně-výstupní operace dříve, nebo aplikace náročné na CPU narazit na omezení procesoru dříve. Neexistuje žádná záruka, že se stejným způsobem jako srovnávací test v rámci zvýšení zatížení výkonu škálovaly jakékoli konkrétní databáze.
 
-Test výkonnosti a její metody jsou podrobněji popsané v níže.
+Test výkonnosti a jeho metodologie jsou popsány podrobněji níže.
 
-### <a name="benchmark-summary"></a>Souhrn srovnávacího testu
-ASDB měří výkon směs základní databázových operací, které se vyskytují nejčastěji v online transakcí (OLTP) úlohy zpracování. I když srovnávacího testu je navržen s cloud computing v paměti, schématu databáze, pro naplnění dat a transakce byly navrženy široce reprezentativní pro základní prvky nejčastěji používané v OLTP úlohy.
+### <a name="benchmark-summary"></a>Přehled srovnávacích testů
+ASDB měří výkonnost poměru operací databáze basic, ke kterým dochází nejčastěji v online (OLTP) úloh zpracování transakcí. I když testu je navržená s cloud computingu v paměti, schéma databáze, pro naplnění dat a transakcí byly navrženy široce reprezentativní základní elementy nejčastěji používané úlohy OLTP.
 
 ### <a name="schema"></a>Schéma
-Schéma je určena pro mít dostatek různých a složitost pro podporu širokou škálu operace. Testu výkonnosti spouští skládá z šesti tabulky databáze. V tabulkách spadají do tří kategorií: pevné velikosti, škálování a rozšiřujících se. Existují dvě tabulky pevné velikosti; tři škálování tabulky; a rostoucí jedna tabulka. Pevné velikosti tabulky obsahovat konstantní počet řádků. Škálování tabulky obsahovat mohutnost, která je úměrná výkon databáze, ale nemění během testu výkonnosti. Rostoucí tabulky je velikost jako škálování na počáteční zatížení, ale pak mohutnost změny v průběhu spuštění testu výkonnosti, jako jsou vloženy a odstranit řádky tabulky.
+Schéma zajišťuje mají dostatek různých a složitosti a podporují řadu operací. Test výkonnosti se spustí databázi, který se skládá z šesti tabulky. Tabulky spadají do tří kategorií: pevné velikosti, škálování a stále se rozšiřující. Existují dvě tabulky pevné velikosti; tři horizontální tabulkách. a rostoucí jednu tabulku. Tabulky pevné velikosti mají konstantní počet řádků. Škálování tabulky obsahují kardinalitu, který je úměrný výkon databáze, ale nedojde ke změně během testu. Rostoucí tabulky je velikost jako tabulka škálování na počátečním načtení, ale pak Kardinalita změny při spuštění testu výkonnosti, jako jsou při vkládání a odstraňování řádků.
 
-Schéma obsahuje směs datových typů, včetně typu integer, číselný znak a datum a čas. Schéma obsahuje primární a sekundární klíče, ale nejsou žádné cizí klíče – to znamená, že jsou žádné omezení referenční integrity mezi tabulkami.
+Schéma obsahuje kombinaci různých typů dat, včetně celé číslo, číselné, znakové a data a času. Schéma obsahuje primární a sekundární klíče, ale ne všechny cizí klíče – to znamená, že jsou bez omezení referenční integrity mezi tabulkami.
 
-Program generování dat generuje data pro počáteční databáze. Celé číslo a číselná data se generují s různými strategie. V některých případech se náhodně distribuují hodnoty v rozsahu. V ostatních případech sadu hodnot je náhodně permutovanou funkci zajistit, že se zachová konkrétní distribuční. Textová pole jsou generovány z vyvážené seznam slov k vytvoření realistické vypadající data.
+Program generování dat generuje data pro výchozí databáze. Data o celé číslo a číselné je vytvořen s různé strategie. V některých případech se náhodně distribuují hodnoty v rozsahu. V ostatních případech sadu hodnot je náhodně permutovanou funkci k zajištění, že konkrétní distribuční zachovaný. Textová pole se generují z vážený seznam slov k vytvoření realistické vypadající data.
 
-Databáze je velikost podle "měřítko." Měřítko (zkratka jako SF) určuje mohutnost změny velikosti a rozšiřujících se tabulky. Jak je popsáno níže v části Uživatelé a Pacing, velikost databáze, počet uživatelů a maximální výkon všech škálování v poměru k sobě navzájem.
+Databáze je velikost podle "koeficient." Měřítko (zkracuje SF) určuje Kardinalita škálování a stále se rozšiřující tabulky. Jak je popsáno níže v části Uživatelé a Pacing, velikost databáze, počtu uživatelů a maximální výkon všech škálování poměru mezi sebou.
 
 ### <a name="transactions"></a>Transakce
-Úlohy se skládá z devíti typy transakcí, jak je znázorněno v následující tabulce. Každou transakci je určena pro zvýraznit konkrétní sadu systému charakteristiky v databázi modul a systému hardwaru, s vysokým kontrastem z dalších transakcí. Tento přístup usnadňuje posoudit dopad na celkový výkon různé součásti. Například "Pro čtení velkou" transakce vytváří velký počet operací čtení z disku.
+Zatížení se skládá z devíti transakce typech, jak je znázorněno v následující tabulce. Každá transakce je navržen pro zvýraznit konkrétní sadu vlastností systému v databázi modulu a systém hardwaru, s vysokým kontrastem z jiné transakce. Tento přístup usnadňuje posoudit dopad na celkový výkon různé součásti. Například "Čtení Heavy" transakce vytváří velký počet operací čtení z disku.
 
 | Typ transakce | Popis |
 | --- | --- |
-| Přečtěte si Lite |VYBRAT; v paměti; jen pro čtení |
-| Střední pro čtení |VYBRAT; většinou v paměti; jen pro čtení |
-| Těžký pro čtení |VYBRAT; většinou není v paměti; jen pro čtení |
-| Aktualizace Lite |AKTUALIZACE; v paměti; čtení a zápis |
-| Těžký aktualizace |AKTUALIZACE; většinou není v paměti; čtení a zápis |
-| Vložení Lite |VLOŽIT; v paměti; čtení a zápis |
-| Vložit těžký |VLOŽIT; většinou není v paměti; čtení a zápis |
-| Odstranění |ODSTRANIT; směs v paměti a není v paměti; čtení a zápis |
-| Těžký procesoru |VYBRAT; v paměti; relativně velké zatížení procesoru; jen pro čtení |
+| Čtení Lite |VYBERTE; v paměti. jen pro čtení |
+| Média pro čtení |VYBERTE; většinou v paměti; jen pro čtení |
+| Čtení náročná na výkon |VYBERTE; většinou nejsou v paměti; jen pro čtení |
+| Aktualizace Lite |AKTUALIZACE; v paměti. čtení a zápis |
+| Aktualizovat náročná na výkon |AKTUALIZACE; většinou nejsou v paměti; čtení a zápis |
+| Vložit Lite |VLOŽIT. v paměti. čtení a zápis |
+| Vložit náročná na výkon |VLOŽIT. většinou nejsou v paměti; čtení a zápis |
+| Odstranění |ODSTRANIT; kombinace v paměti a ne v paměti; čtení a zápis |
+| Náročná na výkon procesoru |VYBERTE; v paměti. relativně velké zatížení procesoru; jen pro čtení |
 
 ### <a name="workload-mix"></a>Kombinace úloh
-Transakce jsou náhodně vybírány ze vyvážené distribuce s následující celkové kombinaci. Celkové kombinace má pro čtení a zápis poměr přibližně 2:1.
+Transakce jsou z vážená distribuce s následující celkový poměr vybraného náhodně. Celkový poměr je poměr čtení/zápis přibližně 2:1.
 
-| Typ transakce | % Kombinaci |
+| Typ transakce | % poměru |
 | --- | --- |
-| Přečtěte si Lite |35 |
-| Střední pro čtení |20 |
-| Těžký pro čtení |5 |
+| Čtení Lite |35 |
+| Média pro čtení |20 |
+| Čtení náročná na výkon |5 |
 | Aktualizace Lite |20 |
-| Těžký aktualizace |3 |
-| Vložení Lite |3 |
-| Vložit těžký |2 |
+| Aktualizovat náročná na výkon |3 |
+| Vložit Lite |3 |
+| Vložit náročná na výkon |2 |
 | Odstranění |2 |
-| Těžký procesoru |10 |
+| Náročná na výkon procesoru |10 |
 
 ### <a name="users-and-pacing"></a>Uživatelé a interval
-Zatížení srovnávacího testu vycházejí z nástroj, který odešle transakce mezi sadu připojení k simulaci chování počet souběžných uživatelů. I když všechna připojení a transakce jsou počítače, které jsou generovány, pro jednoduchost označujeme tato připojení jako "uživatelé." I když každý uživatel pracuje nezávisle na jiných uživatelů, všichni uživatelé provádět stejné cyklus následující kroky:
+Úlohou srovnávacího testu vychází z nástroj, který odešle transakce mezi sadu připojení pro simulaci chování počet souběžných uživatelů. I když nejsou všechny transakcí a připojení počítače, generovány, pro jednoduchost označujeme tato připojení "uživatelů." I když každý uživatel pracuje nezávisle všem ostatním uživatelům, všichni uživatelé provádět stejné cyklu kroků dole:
 
 1. Navázání připojení k databázi.
-2. Opakujte, dokud signál, chcete-li ukončit:
-   * Vyberte transakce (z náhodně vyvážené distribuce).
+2. Opakujte, dokud signál, ukončete:
+   * Vyberte transakce (z náhodně vážená distribuce).
    * Provedení vybrané transakce a měření doby odezvy.
-   * Počkejte intervalu zpoždění.
-3. Zavřete připojení k databázi.
+   * Vyčkat, než nemusely zpoždění.
+3. Ukončete připojení k databázi.
 4. Ukončení.
 
-Je náhodně vybrané intervalu zpoždění (v kroku 2c), ale s distribučním, který má v průměru 1.0 sekundu. Každý uživatel může, proto v průměru generovat maximálně jednu transakci za sekundu.
+Nemusely zpoždění (v kroku 2c) je vybrán náhodně, ale s distribuci, která má průměrem 1.0 sekundu. Každý uživatel proto můžete generovat v průměru nejvýše jedna transakce za sekundu.
 
 ### <a name="scaling-rules"></a>Škálování pravidla
-Počet uživatelů, je dáno velikost databáze (v jednotkách měřítko). Je jeden uživatel pro každých pět jednotky měřítko. Z důvodu intervalu zpoždění může jeden uživatel generovat maximálně jednu transakci za sekundu v průměru.
+Počet uživatelů se určuje podle velikosti databáze (v jednotkách škálování dvouúrovňové). Existuje jeden uživatel, za každých pět jednotky škálování dvouúrovňové. Z důvodu nemusely zpoždění může jeden uživatel generovat nejvýše jedna transakce za sekundu, v průměru.
 
-Například-měřítko 500 (SF = 500) databáze bude mít 100 uživatelů a můžete dosáhnout maximálně 100 TPS. K řízení vyšší TPS míra vyžaduje více uživatelů a větší databázi.
+Například-koeficient 500 (SF = 500) databáze bude mít 100 uživatelů a můžete dosáhnout maximální počet 100 TPS. Centrum umožňující prosazovat vyšší TPS míra vyžaduje více uživatelů a větší databáze.
 
-Následující tabulka zobrazuje počet uživatelů ve skutečnosti trvalejší pro každou úroveň a výkonu služby.
+Následující tabulka ukazuje počet uživatelů ve skutečnosti trvalejší pro každou službu vrstvu a úroveň výkonu.
 
-| Úroveň služby (úroveň výkonu) | Uživatelé | Velikost databáze |
+| Úrovně (úrovní výkonu) | Uživatelé | Velikost databáze |
 | --- | --- | --- |
 | Basic |5 |720 MB |
 | Standard (S0) |10 |1 GB |
 | Standard (S1) |20 |2.1 GB |
-| Standard (S2) |50 |7.1 GB |
+| Standard (pro S2) |50 |7.1 GB |
 | Premium (P1) |100 |14 GB |
 | Premium (P2) |200 |28 GB |
 | Premium (P6) |800 |114 GB |
 
-### <a name="measurement-duration"></a>Doba trvání měření
-Platný spuštění testu výkonnosti vyžaduje stabilního stavu měření doby trvání alespoň jednu hodinu.
+### <a name="measurement-duration"></a>Měření doby trvání
+Platný spuštění testu výkonnosti vyžaduje stálé měření doba trvání aspoň jednu hodinu.
 
 ### <a name="metrics"></a>Metriky
-Klíčové metriky v testu výkonnosti jsou propustnost a dobu odezvy.
+Klíčové metriky na test výkonnosti se propustnost a dobu odezvy.
 
-* Propustnost je míra nezbytné výkonu v průběhu testu. Propustnost je uvedená v transakce za jednotku předčasné, počítání všechny typy transakcí.
-* Doba odezvy se rozumí míra výkonu předvídatelnost. Omezení času odezvy se liší podle třídy služeb s vyšší třídy služeb s přísnější požadavky na dobu odezvy, jak je uvedeno níže.
+* Propustnost se měří základní výkon v průběhu testu. Propustnost je uveden v transakcí na jednotku of-time, počítací všechny transakce typech.
+* Doba odezvy je míra předvídatelnost výkonu. Omezení času odezvy se liší podle třídy služeb, s vyšší třídy služby, která má přísnější požadavky čas odezvy, jak je znázorněno níže.
 
-| Třída služby | Propustnost měr | Požadavky na dobu odezvy |
+| Třída služeb | Měření propustnosti | Požadavky na dobu odezvy |
 | --- | --- | --- |
-| Premium |Transakce za sekundu |95. percentil v 0,5 sekund |
-| Standard |Transakce za minutu |90. percentil v sekundách 1.0 |
-| Basic |Transakce za hodinu |80. percentil v sekundách 2.0 |
+| Premium |Transakce za sekundu |95. percentil na 0,5 sekund. |
+| Standard |Transakce za minutu |90. percentil na 1.0 sekund. |
+| Basic |Transakce za hodinu |80. percentil na 2.0 sekund. |
 
 ## <a name="next-steps"></a>Další postup
 
-- Na základě vCore nákupní model (preview), najdete v části [na základě vCore nákupní model](sql-database-service-tiers-vcore.md)
-- Na základě DTU nákupní model, najdete v části [na základě DTU nákupní model](sql-database-service-tiers-dtu.md).
+- Nákupní model založený na virtuálních jádrech najdete v části [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md)
+- Nákupní model založený na DTU najdete v části [nákupní model založený na DTU](sql-database-service-tiers-dtu.md).

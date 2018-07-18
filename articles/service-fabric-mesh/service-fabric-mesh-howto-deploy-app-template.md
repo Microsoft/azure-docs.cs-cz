@@ -1,7 +1,7 @@
 ---
 title: Nasazení aplikace do služby Azure Service Fabric sítě pomocí šablony | Dokumentace Microsoftu
 description: Zjistěte, jak nasadit aplikaci .NET Core pro Service Fabric sítě ze šablony pomocí rozhraní příkazového řádku Azure.
-services: service-fabric
+services: service-fabric-mesh
 documentationcenter: .net
 author: rwike77
 manager: timlt
@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/12/2018
 ms.author: ryanwi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 11b3ad6bf83eebfc94ead6f8a730b8e6a6b8de2f
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 8d813669f2f44fd64db669e9750e3bc064c7f916
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/17/2018
-ms.locfileid: "39076007"
+ms.locfileid: "39090324"
 ---
 # <a name="deploy-a-service-fabric-mesh-application-to-service-fabric-mesh-using-a-template"></a>Nasazení aplikace Service Fabric sítě se Service Fabric pomocí šablony
 Tento článek ukazuje, jak nasadit aplikaci .NET Core se Service Fabric pomocí šablony. Jakmile budete hotovi, budete mít hlasovací aplikaci s front-endu, která ukládá výsledky hlasování do back-end služby v clusteru webového rozhraní ASP.NET Core. Front-endu používá službu DNS pro překlad adres back-end služby.
@@ -54,28 +54,28 @@ Ve výstupu předchozího příkazu nasadí aplikace Windows pomocí [mesh_rp.wi
 
 Za pár minut by měla vrátit příkazu pomocí:
 
-`VotingApp has been deployed successfully on VotingAppNetwork with public ip address <IP address>.` 
-
-Například IP adresa je 13.68.129.22.
+`VotingApp has been deployed successfully on VotingAppNetwork with public ip address <IP address>` 
 
 ## <a name="open-the-application"></a>Otevřete aplikaci
-Po úspěšném nasazení aplikace, připojení ke koncovému bodu služby (z předchozího příkladu 13.68.129.22) v prohlížeči.  
+Po úspěšném nasazení aplikace, získejte veřejnou IP adresu pro koncový bod služby a otevřít v prohlížeči. Zobrazí se následující webové stránky. 
 
 ![Hlasovací aplikace](./media/service-fabric-mesh-howto-deploy-app-template/VotingApplication.png)
 
 Teď můžete přidat do aplikace Možnosti hlasování a Hlasujte o nich ho nebo odstranit Možnosti hlasování.
+
+Nasazení příkazu vrátí veřejnou IP adresu koncového bodu služby. Volitelně můžete také zadávat dotazy sítě prostředek, který chcete zjistit veřejnou IP adresu koncového bodu služby. 
+
+Název sítě prostředků pro tuto aplikaci je `VotingAppNetwork`, načíst informace o něm pomocí následujícího příkazu. 
+
+```azurecli-interactive
+az mesh network show --resource-group myResourceGroup --name VotingAppNetwork
+```
 
 ## <a name="check-the-application-details"></a>Zkontrolujte podrobnosti o aplikaci
 Můžete zkontrolovat stav vaší aplikace pomocí `app show` příkazu. Název aplikace pro nasazenou aplikaci je "VotingApp", tedy načíst jeho podrobnosti. 
 
 ```azurecli-interactive
 az mesh app show --resource-group myResourceGroup --name VotingApp
-```
-
-Můžete také zadávat dotazy síťovému prostředku, pokud chcete zjistit IP adresu kontejneru, ve kterém je služba nasazená spuštěním příkazu "az mřížky network show":
-
-```azurecli-interactive
-az mesh network show --resource-group myResourceGroup --name VotingAppNetwork
 ```
 
 ## <a name="list-the-deployed-applications"></a>Výpis nasazených aplikací

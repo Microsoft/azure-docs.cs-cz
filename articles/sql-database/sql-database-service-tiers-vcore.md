@@ -1,20 +1,20 @@
 ---
 title: Služba Azure SQL Database – vCore | Dokumentace Microsoftu
-description: Nákupní model (preview) založený na virtuálních jádrech umožňuje nezávisle na sobě škálovat výpočetní prostředky a prostředky úložiště, odpovídají zajištění místního výkonu a optimalizovat cena.
+description: Nákupní model založený na virtuálních jádrech umožňuje nezávisle na sobě škálovat výpočetní prostředky a prostředky úložiště, odpovídají zajištění místního výkonu a optimalizovat cena.
 services: sql-database
 author: CarlRabeler
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 07/15/2018
+ms.date: 07/16/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: cc69d2f195006fa196491fe9bed53db499eed11f
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: d18076486704d5f03acd2253650762c3bd24b0af
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/17/2018
-ms.locfileid: "39069974"
+ms.locfileid: "39091488"
 ---
 # <a name="choosing-a-vcore-service-tier-compute-memory-storage-and-io-resources"></a>Výběr úrovně služeb vCore, výpočty, paměť, úložiště a vstupně-VÝSTUPNÍCH prostředků
 
@@ -30,11 +30,9 @@ Následující tabulka vám pomůže pochopit rozdíly mezi těmito dvěma vrstv
 |Úložiště|Vzdálené úložiště úrovně Premium, 5 GB až 4 TB|Místní úložiště SSD, 5 GB až 4 TB|
 |Vstupně-výstupní propustnost (přibližné)|500 IOPS na vCore s 7000 maximální IOPS|5000 IOPS na jádro s 200000 maximální IOPS|
 |Dostupnost|1 repliky, žádné škálování pro čtení|3 repliky, 1 [škálování pro čtení](sql-database-read-scale-out.md), zóna redundantní HA|
-|Zálohování|RA-GRS, 7 – 35 dní (7 dní ve výchozím nastavení)|RA-GRS, 7 – 35 dní (7 dní ve výchozím nastavení) *|
+|Zálohování|RA-GRS, 7 – 35 dní (7 dní ve výchozím nastavení)|RA-GRS, 7 – 35 dní (7 dní ve výchozím nastavení)|
 |V paměti|neuvedeno|Podporováno|
 |||
-
-\* Období uchování zálohy ve verzi preview, není Konfigurovatelný a je nastaven na 7 dní.
 
 > [!IMPORTANT]
 > Pokud budete potřebovat méně než jedno virtuální jádro výpočetní kapacity, použijte nákupní model založený na DTU.
@@ -67,7 +65,7 @@ Přidělení úložiště pro zálohování databáze podporují místo v době 
 
 ## <a name="azure-hybrid-use-benefit"></a>Azure Hybrid Use Benefit
 
-V založený na virtuálních jádrech nákupní model (preview), mohou vyměňovat své současné licence pro zlevněné sazby pro SQL Database pomocí [zvýhodněné hybridní využití Azure pro SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md). Tato výhoda Azure umožňuje využít vaše licence v místním SQL serveru a Šetřete na Azure SQL Database až 30 % používáte místní licence SQL serveru se Software Assurance.
+V nákupní model založený na virtuálních jádrech mohou vyměňovat své současné licence pro zlevněné sazby pro SQL Database pomocí [zvýhodněné hybridní využití Azure pro SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md). Tato výhoda Azure umožňuje využít vaše licence v místním SQL serveru a Šetřete na Azure SQL Database až 30 % používáte místní licence SQL serveru se Software Assurance.
 
 ![Ceny](./media/sql-database-service-tiers/pricing.png)
 

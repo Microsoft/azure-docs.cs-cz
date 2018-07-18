@@ -1,45 +1,48 @@
 ---
-title: Spravovat skupiny databází Azure SQL | Microsoft Docs
-description: Provede procesem vytváření a správa elastické úlohy.
+title: Spravovat skupiny databází Azure SQL | Dokumentace Microsoftu
+description: Provede procesem vytvoření a správa elastických úloh.
 services: sql-database
 manager: craigg
 author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: conceptual
-ms.date: 04/01/2018
+ms.date: 07/16/2018
 ms.author: sstein
-ms.openlocfilehash: 4a25543fd9cbcd0928f06419c6ddb9b5ed2e2488
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.openlocfilehash: b367ddafc659db4dc4b8d658ac9dc007c4671b8c
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34645279"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39093101"
 ---
-# <a name="create-and-manage-scaled-out-azure-sql-databases-using-elastic-jobs-preview"></a>Vytvoření a správa škálovaný databází Azure SQL pomocí elastické úlohy (preview)
+# <a name="create-and-manage-scaled-out-azure-sql-databases-using-elastic-jobs-preview"></a>Vytvářet a spravovat škálovaná databází Azure SQL Database pomocí elastických úloh (preview)
 
 
-**Elastické databáze úlohy** zjednodušení správy skupin databáze spuštěním operace správy, například změny schématu, Správa přihlašovacích údajů, aktualizace dat odkaz, shromažďování dat výkonu nebo telemetrie klienta (zákazníka) kolekce. Úlohy elastické databáze je aktuálně k dispozici prostřednictvím portálu Azure a rutin prostředí PowerShell. Však Azure portálu povrchy snížit funkce omezené na provádění mezi všechny databáze [elastického fondu (preview)](sql-database-elastic-pool.md). Pro přístup k další funkce a spouštění skriptů napříč skupinou databází, včetně vlastní definovanou kolekci nebo horizontálního oddílu nastavit (vytvořený [klientské knihovny pro elastické databáze](sql-database-elastic-scale-introduction.md)), najdete v části [vytváření a Správa úlohy pomocí prostředí PowerShell](sql-database-elastic-jobs-powershell.md). Další informace o úlohách najdete v tématu [přehled úlohy elastické databáze](sql-database-elastic-jobs-overview.md). 
+[!INCLUDE [elastic-database-jobs-deprecation](../../includes/sql-database-elastic-jobs-deprecate.md)]
+
+
+**Úlohy elastic Database** zjednodušit správu skupiny databází pomocí provádí operace správy, například změny schématu, správu přihlašovacích údajů, aktualizace referenčních dat, shromažďování údajů o výkonu nebo telemetrie tenanta (zákazníka) kolekce. Úlohy elastic Database je aktuálně k dispozici prostřednictvím webu Azure portal a rutin prostředí PowerShell. Ale Azure portal povrchy funkčnost omezeno na spuštění napříč všemi databázemi ve omezená [elastického fondu](sql-database-elastic-pool.md). Pro přístup k dalším funkcím a spouštění skriptů napříč skupinou databází, včetně uživatelem definované kolekci nebo horizontální oddíl nastavit (vytvořené pomocí [Klientská knihovna Elastic Database](sql-database-elastic-scale-introduction.md)), najdete v článku [vytváření a Správa úlohy s použitím prostředí PowerShell](sql-database-elastic-jobs-powershell.md). Další informace o úlohách najdete v tématu [přehled úloh Elastických databází](sql-database-elastic-jobs-overview.md). 
 
 ## <a name="prerequisites"></a>Požadavky
 * Předplatné Azure. Bezplatná zkušební verze, najdete v části [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
-* Elastický fond. V tématu [o elastické fondy](sql-database-elastic-pool.md).
-* Instalace součásti služby úlohy elastické databáze. V tématu [nainstalovat službu úlohy elastické databáze](sql-database-elastic-jobs-service-installation.md).
+* Elastický fond. Zobrazit [o elastických fondech](sql-database-elastic-pool.md).
+* Instalace součásti služby úlohy elastické databáze. Zobrazit [instalace úlohy služby elastic database](sql-database-elastic-jobs-service-installation.md).
 
 ## <a name="creating-jobs"></a>Vytváření úloh
-1. Pomocí [portál Azure](https://portal.azure.com), z existující fond elastické databáze úlohy, klikněte na tlačítko **vytvořit úlohu**.
-2. Zadejte uživatelské jméno a heslo správce databáze (vytvořeny při instalaci úloh) pro databázi řízení úloh (metadata úložiště pro úlohy).
+1. Použití [webu Azure portal](https://portal.azure.com), z existujícího fondu elastické databáze projektu, klikněte na tlačítko **vytvořit úlohu**.
+2. Zadejte uživatelské jméno a heslo správce databáze (vytvořené při instalaci úlohy) pro databázi řízení úloh (metadata úložiště pro úlohy).
    
-    ![Název úlohy, zadejte nebo vložte kód a klikněte na tlačítko Spustit][1]
-3. V **vytvoření úlohy** okno, zadejte název pro úlohu.
-4. Zadejte uživatelské jméno a heslo pro připojení k cílovým databázím s dostatečnými oprávněními pro spuštění skriptu proběhla úspěšně.
-5. Vložení nebo typu ve skriptu T-SQL.
-6. Klikněte na tlačítko **Uložit** a pak klikněte na **spustit**.
+    ![Název úlohy zadejte nebo vložte v kódu a klikněte na tlačítko Spustit][1]
+3. V **vytvoření úlohy** okno, zadejte název úlohy.
+4. Zadejte uživatelské jméno a heslo pro připojení k cílovým databázím s dostatečnými oprávněními pro spuštění skriptu na úspěšné.
+5. Vložte nebo zadejte skript T-SQL.
+6. Klikněte na tlačítko **Uložit** a potom klikněte na tlačítko **spustit**.
    
     ![Vytvoření úlohy a spuštění][5]
 
-## <a name="run-idempotent-jobs"></a>Spuštění úloh idempotent
-Při spuštění skriptu pro sadu databází, musí být jisti, že skript idempotent. Skript tedy musí být možné spustit vícekrát, i v případě, že se nezdařil před nekompletnímu stavu. Například pokud skript selže, úloha bude automaticky opakovat, dokud neproběhne úspěšně (omezení, jako opakovat logiku nakonec přestanou opakování). Způsob k tomu je použít klauzuli "Pokud existuje" a odstranit všechny nalezen instanci před vytvořením nového objektu. Zde je uveden příklad:
+## <a name="run-idempotent-jobs"></a>Spouštění úloh idempotentní
+Při spuštění skriptu pro sadu databází, musí být jisti, že skript je idempotentní. Skript to znamená, musí být možné spouštět více než jednou, i v případě, že selhala před nekompletnímu stavu. Například pokud skript selže, úloha se automaticky zopakuje, dokud nebude úspěšný (v rámci omezení, jako opakování logiky nakonec přestane opakování). Způsob, jak to provést, je použít klauzuli "Pokud existuje" a odstranit všechny nalezené instanci před vytvořením nového objektu. Zde je uveden příklad:
 
     IF EXISTS (SELECT name FROM sys.indexes
             WHERE name = N'IX_ProductVendor_VendorID')
@@ -48,7 +51,7 @@ Při spuštění skriptu pro sadu databází, musí být jisti, že skript idemp
     CREATE INDEX IX_ProductVendor_VendorID
     ON Purchasing.ProductVendor (VendorID);
 
-Můžete taky použijte klauzuli "Pokud není existuje" před vytvořením nové instance:
+Můžete také použijte klauzuli "IF NOT EXISTS" před vytvořením nové instance:
 
     IF NOT EXISTS (SELECT name FROM sys.tables WHERE name = 'TestTable')
     BEGIN
@@ -62,7 +65,7 @@ Můžete taky použijte klauzuli "Pokud není existuje" před vytvořením nové
     INSERT INTO TestTable(InsertionTime) VALUES (sysutcdatetime());
     GO
 
-Tento skript potom aktualizuje v tabulce, které jste vytvořili dříve.
+Tento skript pak aktualizuje tabulku jste vytvořili dříve.
 
     IF NOT EXISTS (SELECT columns.name FROM sys.columns INNER JOIN sys.tables on columns.object_id = tables.object_id WHERE tables.name = 'TestTable' AND columns.name = 'AdditionalInformation')
     BEGIN
@@ -82,15 +85,15 @@ Po zahájení úlohy, můžete zkontrolovat v jeho průběhu.
 
 1. Na stránce elastického fondu, klikněte na tlačítko **spravovat úlohy**.
    
-    ![Klikněte na tlačítko "Spravovat úlohy"][2]
-2. Klikněte na název (a) úlohy. **Stav** může být "Dokončeno" nebo "Se nezdařilo." S jeho datum a čas vytvoření a spuštění zobrazují podrobnosti úlohy (b). V seznamu (c) níže se, že zobrazí průběh skriptu na každou databázi ve fondu, poskytne jeho podrobnosti datum a čas.
+    ![Klikněte na tlačítko "Spravovat projekty"][2]
+2. Klikněte na název (a) úlohy. **Stav** může být "Dokončeno" nebo "Se nezdařilo." S jeho datum a čas vytvoření a spuštění zobrazí podrobnosti úlohy (b). Seznam (c) pod prvek, který zobrazuje průběh skriptu na každou databázi ve fondu, poskytuje podrobnosti datum a čas.
    
-    ![Kontrola dokončení úlohy][3]
+    ![Kontroluje se dokončená úloha][3]
 
-## <a name="checking-failed-jobs"></a>Kontrola neúspěšné úlohy
-Pokud úloha selže, můžete najít protokolu jeho spuštění. Klikněte na název zobrazíte její podrobnosti o neúspěšné úloze.
+## <a name="checking-failed-jobs"></a>Kontroluje se neúspěšné úlohy
+Pokud úloha selže, můžete najít protokol jeho spuštění. Klikněte na název z neúspěšné úlohy zobrazíte její podrobnosti.
 
-![Podívejte se neúspěšnou úlohu][4]
+![Zkontrolujte neúspěšné úlohy][4]
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 

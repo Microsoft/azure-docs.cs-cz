@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 07/09/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: e197a251df3f34e5416bafacfd54a3fc7f51d503
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 65525114f46002c5b9300f6bbabcee06cc27ef3a
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37928212"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39091134"
 ---
 # <a name="access-the-kubernetes-dashboard-with-azure-kubernetes-service-aks"></a>Přístup k řídicímu panelu Kubernetes pomocí služby Azure Kubernetes Service (AKS)
 
@@ -38,41 +38,18 @@ Tento příkaz vytvoří proxy mezi váš vývojový systém a rozhraní API Kub
 
 ### <a name="for-rbac-enabled-clusters"></a>Pro clustery s podporou RBAC
 
-Pokud váš cluster AKS používá RBAC, *ClusterRoleBinding* , musíte vytvořit řídicí panel můžete přistupovat. Bez vazby role, rozhraní příkazového řádku Azure CLI vrátí chybu podobně jako v následujícím příkladu:
+Pokud váš cluster AKS používá RBAC, *ClusterRoleBinding* , musíte vytvořit řídicí panel můžete přistupovat správně. Chcete-li vytvořit vazbu, použijte [kubectl vytvořit clusterrolebinding] [ kubectl-create-clusterrolebinding] příkaz, jak je znázorněno v následujícím příkladu. 
 
-```
-error: unable to forward port because pod is not running. Current status=Pending
-```
+> [!WARNING]
+> Tato ukázka vazba se nevztahují žádné další ověření součásti a může vést k nezabezpečeného použití. Řídicí panel Kubernetes je otevřené všem uživatelům přístup k adrese URL. Veřejně nezveřejňujte řídicí panel Kubernetes.
+>
+> Můžete použít mechanismy, jako jsou nosné tokeny nebo uživatelského jména a hesla pro ovládací prvek, kdo má přístup k řídicím panelu a co mají oprávnění. To umožňuje lépe zabezpečit pomocí řídicího panelu. Další informace o použití různé metody ověřování, najdete v článku wikiwebu řídicí panel Kubernetes na [ovládací prvky přístupu][dashboard-authentication].
 
-Pokud chcete vytvořit vazbu, vytvořte soubor s názvem *řídicí panel admin.yaml* a vložte následující příklad. Tato ukázka vazba se nevztahuje součásti žádné další ověření. Můžete použít mechanismy, jako jsou nosné tokeny nebo uživatelského jména a hesla pro ovládací prvek, kdo má přístup k řídicím panelu a co mají oprávnění. Další informace o metodách ověřování najdete v článku wikiwebu řídicí panel Kubernetes na [ovládací prvky přístupu][dashboard-authentication].
-
-```yaml
-apiVersion: rbac.authorization.k8s.io/v1beta1
-kind: ClusterRoleBinding
-metadata:
-  name: kubernetes-dashboard
-  labels:
-    k8s-app: kubernetes-dashboard
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: cluster-admin
-subjects:
-- kind: ServiceAccount
-  name: kubernetes-dashboard
-  namespace: kube-system
-```
-
-Použít vazbu s [použití kubectl] [ kubectl-apply] a určete vaše *řídicí panel admin.yaml*, jak je znázorněno v následujícím příkladu:
-
-```
-$ kubectl apply -f dashboard-admin.yaml
-
-clusterrolebinding.rbac.authorization.k8s.io/kubernetes-dashboard created
+```console
+kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard
 ```
 
 Můžete teď přístup k řídicímu panelu Kubernetes v clusteru s podporou RBAC. Chcete-li spustit řídicí panel Kubernetes, použijte [az aks Procházet] [ az-aks-browse] příkaz podle popisu v předchozím kroku.
-
 
 ## <a name="run-an-application"></a>Spuštění aplikace
 
@@ -120,6 +97,7 @@ Další informace o řídicím panelu Kubernetes najdete v dokumentaci ke Kubern
 <!-- LINKS - external -->
 [kubernetes-dashboard]: https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/
 [dashboard-authentication]: https://github.com/kubernetes/dashboard/wiki/Access-control
+[kubectl-create-clusterrolebinding]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-clusterrolebinding-em-
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 
 <!-- LINKS - internal -->

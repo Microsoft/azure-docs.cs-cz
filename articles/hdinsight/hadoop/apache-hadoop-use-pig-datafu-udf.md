@@ -1,6 +1,6 @@
 ---
-title: Použití DataFu s Pig v HDInsight - Azure | Microsoft Docs
-description: DataFu je sada knihoven pro použití s Hadoop. Zjistěte, jak používat DataFu s Pig v clusteru HDInsight.
+title: Použití Apache DataFu s Pig na HDInsight – Azure | Dokumentace Microsoftu
+description: Apache DataFu Pig je sada knihoven pro použití s Pig na systému Hadoop. Zjistěte, jak můžete použití DataFu s Pig ve vašem clusteru HDInsight.
 services: hdinsight
 documentationcenter: ''
 author: Blackmist
@@ -13,74 +13,98 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/10/2018
+ms.date: 06/16/2018
 ms.author: larryfr
-ms.openlocfilehash: 30243d0b7db41fbe19c60d6c11d56fb7e801797b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 51949e763b77aede6df8a8ff6affa3892adbed21
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31401002"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39090210"
 ---
-# <a name="use-datafu-with-pig-on-hdinsight"></a>Použití DataFu s pig v HDInsight
+# <a name="use-apache-datafu-pig-with-pig-on-hdinsight"></a>Použití Apache DataFu Pig s pig v HDInsight
 
-Další informace o použití DataFu s HDInsight. DataFu je kolekce knihovny Open Source pro použití s Pig na Hadoop.
+Další informace o použití Apache DataFu Pig s HDInsight.
+
+DataFu Pig je kolekce Open Source knihoven pro použití s Pig na systému Hadoop.
+Další informace o DataFu Pig, naleznete v tématu [ https://datafu.apache.org/ ](https://datafu.apache.org/).
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure.
 
-* Cluster Azure HDInsight (Linux nebo systémem Windows)
+* Cluster Azure HDInsight (Linux nebo Windows na základě)
 
   > [!IMPORTANT]
   > HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 * Základní znalost [pomocí Pig v HDInsight](hdinsight-use-pig.md)
 
-## <a name="install-datafu-on-linux-based-hdinsight"></a>Nainstalujte DataFu na HDInsight se systémem Linux
+## <a name="install-datafu-on-linux-based-hdinsight"></a>Nainstalovat DataFu Linuxovým systémem HDInsight
 
 > [!IMPORTANT]
-> DataFu je nainstalován na clusterech se systémem Linux verze 3.3 a vyšší a na clusterech se systémem Windows. Není nainstalován v clusterech se systémem Linux starší než 3.3.
+> DataFu je nainstalován na linuxových clusterech verze 3.3 a vyšší a v clusterech se systémem Windows. Není nainstalován na linuxových clusterech dříve než 3.3.
 >
-> Pokud používáte cluster systému Windows nebo clusteru vyšší než verze 3.3 systémem Linux, tuto část přeskočte.
+> Pokud používáte clusteru se systémem Windows nebo linuxem clusteru vyšší než verze 3.3, tuto část přeskočte.
 
-DataFu je možné stáhnout a nainstalovat z úložiště Maven. Chcete-li přidat DataFu ke svému clusteru HDInsight pomocí následujících kroků:
+DataFu je možné stáhnout a nainstalovat z úložiště Maven. Použijte následující postup k vyhledání verze potřebujete a přidejte ho do vašeho clusteru HDInsight:
+
+> [!WARNING]
+> Verze DataFu mohou mít požadavky, které nejsou splněny HDInsight. Například pokud používáte starší verzi DataFu, můžou vyžadovat jinou verzi Pig než je počet obsažený v HDInsight.
+
+### <a name="find-a-version"></a>Najít verzi
+
+1. Ve webovém prohlížeči přejděte na https://mvnrepository.com/artifact/org.apache.datafu/datafu-pig a najít verzi budete potřebovat.
+
+2. Vyberte číslo verze propojený.
+
+3. Vyberte __zobrazit všechny__ Chcete-li zobrazit všechny soubory.
+
+4. V seznamu souborů vyhledejte soubor .jar. Tento soubor je obvykle ten největší uvedené, zahrnuje všechny závislosti. Klikněte pravým tlačítkem na odkaz a zkopírujte adresu odkazu.
+
+### <a name="download-datafu-to-hdinsight"></a>Stáhněte si DataFu do HDInsight
 
 1. Připojte ke clusteru HDInsight se systémem Linux pomocí protokolu SSH. Další informace najdete v tématu [Použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-2. Použijte následující příkaz ke stažení na soubor jar DataFu pomocí nástroje wget nebo zkopírujte a vložte odkaz do prohlížeče zahájíte stahování.
+2. Ke stažení souboru jar DataFu pomocí nástroje wget použijte následující příkaz:
+
+    > [!IMPORTANT]
+    > Odkaz v příkazu nahraďte adresu URL, které jste si zkopírovali dříve.
 
     ```
-    wget http://central.maven.org/maven2/com/linkedin/datafu/datafu/1.2.0/datafu-1.2.0.jar
+    wget http://central.maven.org/maven2/org/apache/datafu/datafu-pig/1.4.0/datafu-pig-1.4.0.jar
     ```
 
-3. V dalším kroku nahrajte soubor do výchozího úložiště pro váš cluster HDInsight. Ve výchozím umístění souboru úložiště je k dispozici na všech uzlech v clusteru.
+3. V dalším kroku soubor nahrajte do výchozího úložiště pro váš cluster HDInsight. Ve výchozím umístění souboru úložiště je dostupné pro všechny uzly v clusteru.
+
+    > [!IMPORTANT]
+    > Číslo verze v názvu souboru nahraďte verze, kterou jste si stáhli.
 
     ```
-    hdfs dfs -put datafu-1.2.0.jar /example/jars
+    hdfs dfs -put datafu-pig-1.4.0.jar /example/jars
     ```
 
     > [!NOTE]
-    > Předchozí příkaz ukládá jar v `/example/jars` vzhledem k tomu, že tento adresář již existuje v úložišti clusteru. Můžete použít libovolného umístění, které chcete v úložišti clusteru HDInsight.
+    > Předchozí příkaz uloží soubor jar v `/example/jars` protože tento adresář již existuje v úložišti clusteru. Můžete použít libovolného umístění, které chcete v úložišti clusteru HDInsight.
 
 ## <a name="use-datafu-with-pig"></a>Použití DataFu s Pig
 
-Postup v této části se předpokládá, že jste obeznámeni s používáním Pig v HDInsight. Další informace o používání Pig s HDInsight naleznete v tématu [použijte Pig s HDInsight](hdinsight-use-pig.md).
+Kroky v této části předpokládají, že máte zkušenosti s používáním Pig v HDInsight. Další informace o používání Pig s HDInsight naleznete v tématu [použití Pigu se službou HDInsight](hdinsight-use-pig.md).
 
 > [!IMPORTANT]
-> Pokud jste ručně instalovali DataFu pomocí kroků v předchozí části, je nutné jej zaregistrovat před jeho použitím.
+> Pokud jste ručně instalovali DataFu pomocí kroků v předchozí části, je musíte zaregistrovat před jeho použitím.
 >
-> * Pokud váš cluster používá Azure Storage, použijte `wasb://` cesta. Například, `register wasb:///example/jars/datafu-1.2.0.jar`.
+> * Pokud váš cluster používá službu Azure Storage, použijte `wasb://` cestu. Například, `register wasb:///example/jars/datafu-pig-1.4.0.jar`.
 >
-> * Pokud váš cluster používá Azure Data Lake Store, použijte `adl://` cesta. Například, `register adl://home/example/jars/datafu-1.2.0.jar`.
+> * Pokud váš cluster používá Azure Data Lake Store, použijte `adl://` cestu. Například, `register adl://home/example/jars/datafu-pig-1.4.0.jar`.
 
-Často definujete alias pro DataFu funkce. V následujícím příkladu definuje zástupce `SHA`:
+Často definovat jako alias pro DataFu funkce. Následující příklad definuje alias `SHA`:
 
 ```piglatin
 DEFINE SHA datafu.pig.hash.SHA();
 ```
 
-Tento alias ve skriptu Pig Latin můžete potom použít ke generování hodnoty hash pro vstupní data. Následující kód například nahrazuje umístění vstupních dat s hodnotou hash:
+Potom můžete tento alias jako skript Pig Latin pro generování hodnot hash pro vstupní data. Například následující kód nahradí umístění vstupních dat hodnoty hash:
 
 ```piglatin
 raw = LOAD '/HdiSamples/HdiSamples/SensorSampleData/building/building.csv' USING
@@ -121,5 +145,5 @@ Vygeneruje následující výstup:
 
 Další informace o DataFu nebo Pig najdete v následujících dokumentech:
 
-* [Příručka Apache DataFu Pig](http://datafu.incubator.apache.org/docs/datafu/guide.html).
+* [Apache Pig DataFu Začínáme](https://datafu.apache.org/docs/datafu/getting-started.html).
 * [Použití Pigu se službou HDInsight](hdinsight-use-pig.md)

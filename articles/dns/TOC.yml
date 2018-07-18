@@ -5,12 +5,13 @@
     - name: Co je Azure DNS?
       href: dns-overview.md
 - name: Šablony Rychlý start
+  expanded: true
   items:
     - name: Překlad adres IP – portál
       href: dns-getstarted-portal.md
-    - name: Vytvoření záznamu a zóny DNS – PowerShell
+    - name: Překlad adres IP – PowerShell
       href: dns-getstarted-powershell.md
-    - name: Vytvoření záznamu a zóny DNS – CLI
+    - name: Překlad adres IP – rozhraní příkazového řádku
       href: dns-getstarted-cli.md
 - name: Kurzy
   items:

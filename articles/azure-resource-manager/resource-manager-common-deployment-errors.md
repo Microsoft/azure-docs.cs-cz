@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/13/2018
+ms.date: 07/16/2018
 ms.author: tomfitz
-ms.openlocfilehash: 7313ea1ff26d9c732d04b02f8b88f14e2aa4dd2f
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 562e8e49d769f15ba0b965bfb03c0d56076c78f1
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/17/2018
-ms.locfileid: "39072047"
+ms.locfileid: "39091318"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Řešení potíží s běžnými chybami nasazení v Azure pomocí Azure Resource Manageru
 
@@ -104,7 +104,21 @@ Vyberte zprávu pro další podrobnosti. Na následujícím obrázku vidíte **I
 
 ### <a name="deployment-errors"></a>Chyby nasazení
 
-Při operaci projde ověřovacími, ale je během nasazení se nezdaří, zobrazí se chyba v oznámeních. Vyberte oznámení.
+Při operaci projde ověřovacími, ale je během nasazení se nezdaří, získáte chyba nasazení.
+
+Pokud chcete zobrazit kódy chyb nasazení a zpráv pomocí Powershellu, použijte:
+
+```azurepowershell-interactive
+(Get-AzureRmResourceGroupDeploymentOperation -DeploymentName exampledeployment -ResourceGroupName examplegroup).Properties.statusMessage
+```
+
+Pokud chcete zobrazit kódy chyb nasazení a zprávy pomocí Azure CLI, použijte:
+
+```azurecli-interactive
+az group deployment operation list --name exampledeployment -g examplegroup --query "[*].properties.statusMessage"
+```
+
+Na portálu vyberte oznámení.
 
 ![Chyba oznámení](./media/resource-manager-common-deployment-errors/notification.png)
 

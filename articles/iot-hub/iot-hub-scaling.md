@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: kgremban
-ms.openlocfilehash: b4c5bf3b11c2ee661d95dc50f5c93e12fe2d56bf
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 1ad2dc9d826ec42dfca8547a73117a6c967a8ae7
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37901037"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113644"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>Zvolte správné úrovně služby IoT Hub pro vaše řešení
 
@@ -59,9 +59,9 @@ Rozdíl v podporované možnosti mezi úrovněmi basic a standard služby IoT Hu
 | Získání modulu | Ano | Ano |
 | [Získání statistiky registru](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/getdeviceregistrystatistics) | Ano | Ano |
 | [Získání statistiky služby](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/getservicestatistics) | Ano | Ano |
-| [Umístit zařízení](https://docs.microsoft.com/rest/api/iothub/deviceapi/putdevice) | Ano | Ano |
+| [Vytvořit nebo aktualizovat zařízení](https://docs.microsoft.com/rest/api/iothub/service/service/createorupdatedevice) | Ano | Ano |
 | Vložit modul | Ano | Ano |
-| [Dotaz zařízení](https://docs.microsoft.com/rest/api/iothub/deviceapi/querydevices) | Ano | Ano |
+| [Dotazování služby IoT Hub](https://docs.microsoft.com/rest/api/iothub/service/service/queryiothub) | Ano | Ano |
 | Moduly dotazu | Ano | Ano |
 | [Vytvoření SAS URI pro nahrání souboru](https://docs.microsoft.com/en-us/rest/api/iothub/device/device/createfileuploadsasuri) | Ano | Ano |
 | [Vázaný oznámení](https://docs.microsoft.com/en-us/rest/api/iothub/device/device/receivedeviceboundnotification) | Ano | Ano |
@@ -94,7 +94,7 @@ Provoz se měří na základě na jednotku, nikoli pro rozbočovač. Instance sl
 
 Jako příklad funkce provozu jednotlivých úrovních zprávy typu zařízení cloud, postupujte podle následujících pokynů stabilně propustnost:
 
-| Vrstva | Propustnost | Míra odesílání zachovaného |
+| Úroveň | Propustnost | Míra odesílání zachovaného |
 | --- | --- | --- |
 | B1, S1 |Až 1111 KB za minutu za jednotku<br/>(1,5 GB/den/jednotku) |Průměr 278 zpráv za minutu za jednotku<br/>(400 000 zpráv/den na jednotku) |
 | B2, S2 |Až 16 MB za minutu za jednotku<br/>(22.8 GB/den/jednotku) |Průměr 4,167 zpráv za minutu za jednotku<br/>(6 milionů zpráv/den na jednotku) |

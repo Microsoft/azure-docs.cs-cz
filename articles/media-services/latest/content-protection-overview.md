@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/25/2018
 ms.author: juliako
-ms.openlocfilehash: fb8730e9074624ba1b0f0162ebf9156b758b59c2
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 1568ea3431f18b7a7a020d34d803f883904e18b4
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39068780"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39115226"
 ---
 # <a name="content-protection-overview"></a>Přehled ochrany obsahu
 
@@ -45,8 +45,11 @@ Pro úspěšné dokončení návrhu "content protection" systému nebo aplikace,
   > [!NOTE]
   > Každý prostředek s více typy šifrování (AES-128, PlayReady, Widevine, FairPlay) můžete šifrovat. Zobrazit [streamování protokolů a typy šifrování](#streaming-protocols-and-encryption-types), pokud chcete zobrazit, co dává smysl kombinovat.
   
-  V následujícím článku zobrazit kroky pro šifrování obsahu pomocí AES: [chránit pomocí šifrování AES](protect-with-aes128.md)
- 
+  Následující články popisují kroky pro šifrování obsahu pomocí AES a DRM: 
+  
+  * [Ochrana s využitím šifrování AES](protect-with-aes128.md)
+  * [Ochrana s využitím DRM](protect-with-drm.md)
+
 2. Přehrávač klientem DRM nebo AES. Přehrávač videa aplikaci založenou na přehrávač SDK (nativní nebo založené na prohlížeči) musí splňovat následující požadavky:
   * Přehrávač SDK podporuje potřebné klienti DRM
   * Přehrávač SDK podporuje požadované protokoly datových proudů: protokol Smooth, DASH nebo HLS
@@ -125,7 +128,10 @@ Když konfigurujete zásady omezení tokenem, musíte zadat primární ověřova
 
 ## <a name="next-steps"></a>Další postup
 
-[Jak chránit šifrováním AES v Media Services v3](protect-with-aes128.md)
+Projděte si následující články:
+
+  * [Ochrana s využitím šifrování AES](protect-with-aes128.md)
+  * [Ochrana s využitím DRM](protect-with-drm.md)
 
 Další informace najdete v [DRM referenční návrh a implementace](../previous/media-services-cenc-with-multidrm-access-control.md)
 

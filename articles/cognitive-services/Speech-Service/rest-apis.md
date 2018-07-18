@@ -1,6 +1,6 @@
 ---
-title: Rozpoznávání řeči služby REST API | Microsoft Docs
-description: Referenční dokumentace pro REST API pro rozpoznávání řeči službu.
+title: Speech service rozhraní REST API | Dokumentace Microsoftu
+description: Referenční informace pro rozhraní REST API pro službu rozpoznávání řeči.
 services: cognitive-services
 author: v-jerkin
 manager: noellelacharite
@@ -9,33 +9,33 @@ ms.technology: speech
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 53560fd4f8240c4446898f58992a9319e5177435
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 311d0cb7f208c0f720b8611510fb65efc65c12bc
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37085367"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39112869"
 ---
-# <a name="speech-service-rest-apis"></a>REST API služby řeči
+# <a name="speech-service-rest-apis"></a>Speech service rozhraní REST API
 
-Rozhraní REST API služby jednotná řeči jsou podobná rozhraní API poskytovaných [rozhraní API pro rozpoznávání řeči](https://docs.microsoft.com/azure/cognitive-services/Speech) (dříve označované jako ke službě Bing řeči). Koncové body se liší od předchozí řeči služba používá koncových bodů.
+Rozhraní REST API služby pro jednotné řeči se podobají rozhraní API poskytovaných [rozhraní Speech API](https://docs.microsoft.com/azure/cognitive-services/Speech) (dříve označované jako Speech Service Bingu). Koncové body se liší od koncových bodů použitých podle předchozí Speech service.
 
 ## <a name="speech-to-text"></a>Převod řeči na text
 
-V převod řeči na Text rozhraní API pouze koncových bodů použitých liší od předchozí řeči služby API pro rozpoznávání řeči. Nové koncové body jsou uvedeny v následující tabulce. Použijte ten, který odpovídá oblasti vašeho předplatného.
+Služba Speech to Text API pouze koncových bodů použitých liší od předchozí Speech service rozhraní API pro rozpoznávání řeči. Nové koncové body jsou uvedeny v následující tabulce. Použijte ten, který odpovídá oblasti vašeho předplatného.
 
-[!include[](includes/endpoints-speech-to-text.md)]
+[!include[](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)]
 
-Převod řeči na Text rozhraní API je jinak podobná [REST API](https://docs.microsoft.com/azure/cognitive-services/speech/getstarted/getstartedrest) pro předchozí řeči API.
+Služba Speech to Text API je podobný v opačném případě [rozhraní REST API](https://docs.microsoft.com/azure/cognitive-services/speech/getstarted/getstartedrest) pro předchozí rozhraní Speech API.
 
-Převod řeči na Text REST API podporuje pouze krátké utterances. Žádosti o může obsahovat až 10 sekund zvuk a naposledy maximálně celkové 14 sekund. Rozhraní REST API vrátí pouze poslední výsledky, částečné nebo dočasné výsledky.
+Převod řeči na Text REST API podporuje pouze krátkou projevy. Požadavky může obsahovat až 10 sekund zvuk a naposledy maximálně 14 sekund celkové. Rozhraní REST API vrátí pouze konečných výsledků, částečné nebo dočasné výsledky.
 
 > [!NOTE]
-> Pokud jste si přizpůsobili akustickými model nebo model jazyk nebo výslovnosti, použijte místo toho svůj vlastní koncový bod.
+> Pokud jste si přizpůsobili akustický model nebo jazykového modelu nebo výslovnost, místo toho použijte vlastní koncový bod.
 
 ## <a name="text-to-speech"></a>Převod textu na řeč
 
-Nové převod textu na řeč rozhraní API podporuje výstupní zvuková 24 KHz. `X-Microsoft-OutputFormat` Záhlaví může obsahovat nyní následující hodnoty.
+Nové textu na řeč rozhraní API podporuje výstupní zvuková 24 KHz. `X-Microsoft-OutputFormat` Záhlaví teď může obsahovat následující hodnoty.
 
 |||
 |-|-|
@@ -46,32 +46,32 @@ Nové převod textu na řeč rozhraní API podporuje výstupní zvuková 24 KHz.
 `riff-24khz-16bit-mono-pcm`        | `audio-24khz-160kbitrate-mono-mp3`
 `audio-24khz-96kbitrate-mono-mp3`  | `audio-24khz-48kbitrate-mono-mp3`
 
-Služba rozpoznávání řeči teď poskytuje dva hlasy 24 KHz:
+Speech service teď poskytuje dva 24 KHz hlasy:
 
-Národní prostředí | Jazyk   | Pohlaví | Mapování názvu služby
+Národní prostředí | Jazyk   | Pohlaví | Název mapování služby
 -------|------------|--------|------------
-cs-CZ  | Čeština | Žena | "Microsoft Server řeči Text na hlas rozpoznávání řeči (en US, Jessa24kRUS)" 
-cs-CZ  | Čeština | Muž   | "Microsoft Server řeči Text na hlas rozpoznávání řeči (en US, Guy24kRUS)"
+cs-CZ  | Jazykovou verzi US English | Žena | "Microsoft serveru řeči Text na řeč hlas (en US, Jessa24kRUS)" 
+cs-CZ  | Jazykovou verzi US English | Muž   | "Microsoft serveru řeči Text na řeč hlas (en US, Guy24kRUS)"
 
-Níže jsou koncové body REST pro jednotná převod služby textu na řeč rozhraní API. Pomocí koncového bodu, který odpovídá oblasti vašeho předplatného.
+Níže jsou koncové body REST pro sjednocené Speech service převod textu na řeč rozhraní API. Použití koncového bodu, který odpovídá oblasti vašeho předplatného.
 
-[!include[](includes/endpoints-text-to-speech.md)]
+[!include[](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]
 
-Zachovat tyto rozdíly v paměti, jako jste odkazovat [dokumentace k REST API](https://docs.microsoft.com/azure/cognitive-services/speech/api-reference-rest/bingvoiceoutput) pro předchozí řeči API.
+Ponechte tyto rozdíly v úvahu jako odkazujete [dokumentace k rozhraní REST API](https://docs.microsoft.com/azure/cognitive-services/speech/api-reference-rest/bingvoiceoutput) pro předchozí rozhraní Speech API.
 
 ## <a name="authentication"></a>Authentication
 
-Odesílání požadavku do rozhraní API REST služby řeči vyžaduje přístupový token. Získat token tím, že poskytuje svůj klíč předplatného v místní službě řeči `issueToken` koncový bod, uvedené v následující tabulce. Pomocí koncového bodu, který odpovídá oblasti vašeho předplatného.
+Odesílání požadavku do rozhraní REST API služby řeči vyžaduje přístupový token. Získání tokenu tím, že váš klíč předplatného do regionálních služeb řeč poskytuje `issueToken` koncový bod, je znázorněno v následující tabulce. Použití koncového bodu, který odpovídá oblasti vašeho předplatného.
 
-[!include[](includes/endpoints-token-service.md)]
+[!include[](../../../includes/cognitive-services-speech-service-endpoints-token-service.md)]
 
-Každý přístupový token je platný 10 minut. Můžete kdykoli získat nový token – včetně, pokud chcete, těsně před každým požadavkem řeči REST API. Chcete-li minimalizovat síťový provoz a latenci, ale doporučujeme používat stejný token devět minut.
+Každý přístupový token je platný 10 minut. V každém okamžiku může získat nový token – včetně, pokud chcete, těsně před každým požadavkem rozhraní REST API pro rozpoznávání řeči. Chcete-li minimalizovat síťový provoz a latence, ale doporučujeme používat stejný token devět minut.
 
-Následující části vysvětlují, jak získat token a způsobu jeho použití v požadavku.
+Následující části vysvětlují, jak získat token a jak ji používat v požadavku.
 
-### <a name="getting-a-token-http"></a>Získávání tokenu: HTTP
+### <a name="getting-a-token-http"></a>Při získávání tokenu: HTTP
 
-Níže je ukázka požadavek HTTP pro získání tokenu. Nahraďte `YOUR_SUBSCRIPTION_KEY` s svůj klíč předplatného služby řeči. Pokud vaše předplatné není v oblasti západní USA, nahraďte `Host` hlavička s vaší oblasti název hostitele.
+Následuje ukázka požadavku HTTP pro získání tokenu. Nahraďte `YOUR_SUBSCRIPTION_KEY` s klíči předplatného služby řeči. Pokud vaše předplatné není v oblasti USA – Západ, nahraďte `Host` záhlaví s názvem hostitele vaší oblasti.
 
 ```
 POST /sts/v1.0/issueToken HTTP/1.1
@@ -81,11 +81,11 @@ Content-type: application/x-www-form-urlencoded
 Content-Length: 0
 ```
 
-Text odpovědi na tento požadavek je přístupového tokenu ve formátu Java webového tokenu (JWT).
+Text odpovědi na tento požadavek je přístupový token ve formátu jazyka Java Web Token (JWT).
 
-### <a name="getting-a-token-powershell"></a>Získávání tokenu: prostředí PowerShell
+### <a name="getting-a-token-powershell"></a>Při získávání tokenu: PowerShell
 
-Následující skript Windows Powershellu znázorňuje, jak získat přístupový token. Nahraďte `YOUR_SUBSCRIPTION_KEY` s svůj klíč předplatného služby řeči. Pokud vaše předplatné není v oblasti západní USA, změňte název hostitele zadaný identifikátor URI odpovídajícím způsobem.
+Níže uvedený skript prostředí Windows PowerShell ukazuje, jak získat přístupový token. Nahraďte `YOUR_SUBSCRIPTION_KEY` s klíči předplatného služby řeči. Pokud vaše předplatné není v oblasti USA – Západ, název hostitele daného identifikátoru URI odpovídajícím způsobem měnit.
 
 ```Powershell
 $FetchTokenHeader = @{
@@ -102,12 +102,12 @@ $OAuthToken
 
 ```
 
-### <a name="getting-a-token-curl"></a>Získávání tokenu: cURL
+### <a name="getting-a-token-curl"></a>Při získávání tokenu: cURL
 
-cURL je nástroj příkazového řádku k dispozici v systému Linux (a v subsystému Windows pro Linux). Následující příkaz cURL znázorňuje, jak získat přístupový token. Nahraďte `YOUR_SUBSCRIPTION_KEY` s svůj klíč předplatného služby řeči. Pokud vaše předplatné není v oblasti západní USA, změňte název hostitele zadaný identifikátor URI odpovídajícím způsobem.
+cURL je nástroj příkazového řádku jsou k dispozici v systému Linux (a v subsystému Windows pro Linux). Následující příkaz cURL znázorňuje, jak získat přístupový token. Nahraďte `YOUR_SUBSCRIPTION_KEY` s klíči předplatného služby řeči. Pokud vaše předplatné není v oblasti USA – Západ, název hostitele daného identifikátoru URI odpovídajícím způsobem měnit.
 
 > [!NOTE]
-> Příkaz je zobrazený na více řádků čitelnější, ale musí být zadán na jeden řádek v řádku prostředí.
+> Příkaz se zobrazí na více řádků pro lepší čitelnost, ale by se zadat na jednom řádku v příkazovém řádku shell.
 
 ```
 curl -v -X POST 
@@ -117,9 +117,9 @@ curl -v -X POST
  -H "Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY"
 ```
 
-### <a name="getting-a-token-c"></a>Získávání tokenu: C#
+### <a name="getting-a-token-c"></a>Při získávání tokenu: C#
 
-C# třída níže ukazuje, jak získat přístupový token. Předejte svůj klíč předplatného služby řeči při vytvoření instance třídy. Pokud vaše předplatné není v oblasti západní USA, změňte název hostitele `FetchTokenUri` správně.
+C# třídy níže ukazuje, jak získat přístupový token. Předejte váš klíč předplatného Speech service při vytváření instance třídy. Pokud vaše předplatné není v oblasti USA – Západ, změňte název hostitele `FetchTokenUri` odpovídajícím způsobem.
 
 ```cs
     /*
@@ -160,7 +160,7 @@ C# třída níže ukazuje, jak získat přístupový token. Předejte svůj klí
 
 ### <a name="using-a-token"></a>Pomocí tokenu
 
-Pokud chcete používat token v požadavku REST API, zadat ho `Authorization` záhlaví, následující slovo `Bearer`. Zde je například ukázkový Text řeči REST žádost obsahující token. Nahraďte skutečným tokenu pro `YOUR_ACCESS_TOKEN` a použít správný název hostitele ve `Host` záhlaví.
+Použít token v požadavku REST API, zadejte ho `Authorization` záhlaví následující slovo `Bearer`. Například tady je ukázkový Text na řeč REST žádost obsahující token. Nahraďte skutečné tokenu pro `YOUR_ACCESS_TOKEN` a použijte správný název hostitele v `Host` záhlaví.
 
 ```xml
 POST /cognitiveservices/v1 HTTP/1.1
@@ -176,16 +176,16 @@ Connection: Keep-Alive
 </voice></speak>
 ```
 
-### <a name="renewing-authorization"></a>Obnovení autorizace
+### <a name="renewing-authorization"></a>Prodlužuje se platnost autorizace
 
-Autorizační token platnost vyprší za 10 minut. Obnovit vašich oprávnění tak, že získávání nový token, než vyprší její platnost – například po devět minut. 
+Ověřovací token, který vyprší za 10 minut. Obnovení vašeho oprávnění získat nový token, než vyprší její platnost – například po devět minut. 
 
-Následující kód C# je drop-in nahrazení pro třídu uvedené výše. `Authentication` Třída automaticky získá nový přístupový token každých devět minut pomocí časovač. Tento přístup zajišťuje, že platný token je vždy k dispozici a když váš program běží.
+Následující kód jazyka C# je, což je náhrada třídy uvedené výše. `Authentication` Třída automaticky získá nový přístupový token každých devět minut pomocí časovače. Tento přístup zajišťuje, že platný token je vždy k dispozici a je spuštěn program.
 
 > [!NOTE]
-> Místo použití časovač, může ukládat časové razítko při aktuální token byl získán, pak požádat o nový, pouze pokud je aktuální token blíží vypršení platnosti. Tento přístup zabraňuje zbytečně žádají o nové tokeny a může být vhodnější pro programy, které žádají o nepravidelným řeči.
+> Namísto použití časovač, může ukládat časové razítko, kdy byl získán aktuálního tokenu, pak pouze v případě, že blíží vypršení platnosti aktuálního tokenu požádat o nový. Tento přístup se vyhnete zbytečně požaduje nové tokeny a může být vhodnější pro programy, které úlohy s řídkým hlasové požadavky.
 
-Jako dříve, zkontrolujte `FetchTokenUri` hodnota odpovídá oblasti vašeho předplatného. Při vytvoření instance třídy, předejte svůj klíč předplatného.
+Stejně jako předtím, ujistěte se, že `FetchTokenUri` hodnota se shoduje s oblastí vašeho předplatného. Při vytváření instance třídy, předejte klíč předplatného.
 
 ```cs
     /*
@@ -265,7 +265,7 @@ Jako dříve, zkontrolujte `FetchTokenUri` hodnota odpovídá oblasti vašeho p�
 
 ## <a name="next-steps"></a>Další postup
 
-- [Získat zkušební verze předplatného řeči](https://azure.microsoft.com/try/cognitive-services/)
-- [Přizpůsobení akustickými modely](how-to-customize-acoustic-models.md)
-- [Přizpůsobit jazyk modely](how-to-customize-language-model.md)
+- [Získání zkušebního předplatného služby Speech](https://azure.microsoft.com/try/cognitive-services/)
+- [Přizpůsobení akustických modelů](how-to-customize-acoustic-models.md)
+- [Přizpůsobení jazykových modelů](how-to-customize-language-model.md)
 

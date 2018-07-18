@@ -1,43 +1,44 @@
-
-<!--
-includes/sql-database-include-ip-address-22-v12portal.md
-
-Latest Freshness check:  2016-03-21 , daleche.
-
-As of circa 2015-09-04, the following topics might include this include:
-articles/sql-database/sql-database-configure-firewall-settings.md
-articles/sql-database/sql-database-connect-query.md
-
-
-## Server-level firewall rules
-
-### Add a server-level firewall rule through the new Azure portal
--->
-
-
+---
+title: Pravidla brány firewall na úrovni serveru
+description: Pravidla brány firewall na úrovni serveru
+keywords: připojení k SQL, připojovací řetězec
+services: sql-database
+author: dalechen
+manager: craigg
+ms.service: sql-database
+ms.custom: develop apps
+ms.topic: include
+ms.date: 07/13/2018
+ms.author: ninarn
+ms.openlocfilehash: 07bbba28b7e1b048ef3a4e1afa4db255967dc093
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39117269"
+---
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
-2. V seznamu na levé straně vyberte **všechny služby**. 
+2. V seznamu na levé straně vyberte **všechny služby**.
 
-3. Posuňte zobrazení a vyberte **servery SQL**. 
-   
-    ![Najít server služby Azure SQL Database na portálu][b21-FindServerInPortal]
-5. Do textového pole Filtr začněte zadávat text název vašeho serveru. Řádek, který jste se zobrazí.
+3. Posuňte se a vyberte **SQL servery**.
+
+    ![Najít na portálu pro váš server Azure SQL Database][b21-FindServerInPortal]
+5. Do textového pole filtru začněte psát název vašeho serveru. Zobrazí se řádek, který jste.
 
 6. Vyberte řádek pro váš server. Zobrazí se okno pro váš server.
 
-7. V okně vaší serveru vyberte **nastavení**. 
+7. V okně serveru, vyberte **nastavení**.
 
-8. Vyberte **brány Firewall**. 
-   
+8. Vyberte **brány Firewall**.
+
     ![Vyberte nastavení > brány Firewall][b31-SettingsFirewallNavig]
-9. Vyberte **Přidání klienta IP**. První textového pole zadejte název nové pravidlo.
+9. Vyberte **přidat klienta IP**. Do prvního textového pole zadejte název pro nové pravidlo.
 
-10. Zadejte v vysoké a nízké hodnoty adres IP pro oblast, kterou chcete povolit.
-    
-    * Může být užitečný tak, aby měl nízkou hodnotu končit **.0** a vysokou hodnotu končit **.255**.
-    
-    ![Přidat rozsah IP adres umožňuje][b41-AddRange]
+10. Zadejte hodnoty adres nízký klíč a vysoký IP pro oblast, kterou chcete povolit.
+
+    * Může být užitečné mít nízkou hodnotu končit **.0** a vysoké hodnoty končit **.255**.
+
 11. Vyberte **Uložit**.
 
 <!-- Image references. -->

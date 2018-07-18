@@ -7,22 +7,19 @@ manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: conceptual
-ms.date: 04/04/2018
+ms.date: 07/17/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: f7125a18aa2496ebe8367443a67502a7a7dbac02
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 24d453dc705eb2d0ee7cb77f2ec247845247d0a8
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969183"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113627"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Správa dlouhodobého uchovávání záloh Azure SQL Database
 
 Azure SQL database s můžete nakonfigurovat [dlouhodobého uchovávání záloh](sql-database-long-term-retention.md) zásad (LTR) automaticky uchovávání záloh ve službě Azure blob storage po dobu až 10 let. Pak můžete obnovit databázi pomocí tyto zálohy pomocí webu Azure portal nebo Powershellu.
-
-> [!NOTE]
-> Jako součást počáteční verzi preview tato funkce v říjnu 2016 byly zálohy uložené v trezoru služby Azure Recovery Services. Tato aktualizace odebere tuto závislost, ale kvůli zpětné kompatibilitě se původní rozhraní API podporuje až do 31. května 2018. Pokud budete potřebovat pro interakci s zálohy v trezoru Azure Services Recovery, přečtěte si téma [dlouhodobého uchovávání záloh pomocí služby Azure Recovery Services vault](sql-database-long-term-backup-retention-configure-vault.md). 
 
 ## <a name="use-the-azure-portal-to-configure-long-term-retention-policies-and-restore-backups"></a>Pomocí webu Azure portal nakonfigurovat zásady dlouhodobou uchovávání a obnovení záloh
 
@@ -32,29 +29,21 @@ Následující části ukazují, jak pomocí webu Azure portal nakonfigurovat dl
 
 SQL Database, které můžete nakonfigurovat [uchovávání automatizovaných záloh](sql-database-long-term-retention.md) dobu delší, než je doba uchovávání vaší úrovně služby. 
 
-1. Na webu Azure Portal, vyberte váš server SQL a pak klikněte na tlačítko **dlouhodobého uchovávání záloh**.
+1. Na webu Azure Portal, vyberte váš server SQL a pak klikněte na tlačítko **spravovat zálohy**. Na **nakonfigurovat zásady** kartu, vyberte databázi, na kterém chcete nastavit nebo změnit zásady dlouhodobého uchovávání záloh.
 
-   ![odkaz na dlouhodobé uchovávání záloh](./media/sql-database-long-term-retention/ltr-configure-ltr.png)
+   ![Správa záloh odkaz](./media/sql-database-long-term-retention/ltr-configure-ltr.png)
 
-2. Na **nakonfigurovat zásady** kartu, vyberte databázi, na kterém chcete nastavit nebo změnit zásady dlouhodobého uchovávání záloh.
-
-   ![Vyberte databázi](./media/sql-database-long-term-retention/ltr-configure-select-database.png)
-
-3. V **nakonfigurovat zásady** podokně, vyberte, zda chcete uchovávat týdenní, měsíční nebo roční zálohy a určit dobu uchovávání pro každý. 
+2. V **nakonfigurovat zásady** podokně, vyberte, zda chcete uchovávat týdenní, měsíční nebo roční zálohy a určit dobu uchovávání pro každý. 
 
    ![Konfigurace zásad](./media/sql-database-long-term-retention/ltr-configure-policies.png)
 
-4. Jakmile budete hotovi, klikněte na tlačítko **použít**.
+3. Jakmile budete hotovi, klikněte na tlačítko **použít**.
 
 ### <a name="view-backups-and-restore-from-a-backup-using-azure-portal"></a>Zobrazení záloh a obnovit ze zálohy pomocí webu Azure portal
 
 Zobrazení záloh, které jsou zachovány určité databáze s zásady LTR a obnovit tyto zálohy. 
 
-1. Na webu Azure Portal, vyberte váš server SQL a pak klikněte na tlačítko **dlouhodobého uchovávání záloh**.
-
-   ![odkaz na dlouhodobé uchovávání záloh](./media/sql-database-long-term-retention/ltr-configure-ltr.png)
-
-2. Na **dostupnými zálohami** kartu, vyberte databázi, pro kterou chcete zobrazit dostupné zálohy.
+1. Na webu Azure Portal, vyberte váš server SQL a pak klikněte na tlačítko **spravovat zálohy**. Na **dostupnými zálohami** kartu, vyberte databázi, pro kterou chcete zobrazit dostupné zálohy.
 
    ![Vyberte databázi](./media/sql-database-long-term-retention/ltr-available-backups-select-database.png)
 

@@ -1,6 +1,6 @@
 ---
-title: Databáze Azure SQL spravované Instance konfiguraci virtuální sítě | Microsoft Docs
-description: Toto téma popisuje možnosti konfigurace pro virtuální síť (VNet) s Azure SQL Database spravované Instance.
+title: Azure SQL Database Managed Instance konfigurace virtuální sítě | Dokumentace Microsoftu
+description: Toto téma popisuje možnosti konfigurace pro virtuální síť (VNet) s Azure SQL Database Managed Instance.
 services: sql-database
 author: srdjan-bozovic
 manager: craigg
@@ -10,101 +10,102 @@ ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: a51923738642b0e6a8ffd420b3cf433f7e869f59
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: dbd747fd3ec53b1221536609d6355ff5b4691977
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36309329"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39091600"
 ---
-# <a name="configure-a-vnet-for-azure-sql-database-managed-instance"></a>Konfigurace virtuální sítě pro spravované Instance databáze Azure SQL
+# <a name="configure-a-vnet-for-azure-sql-database-managed-instance"></a>Konfigurace virtuální sítě pro spravovanou instanci Azure SQL Database
 
-SQL databáze spravované Instance Azure (preview) musí být nasazený v rámci Azure [virtuální síť (VNet)](../virtual-network/virtual-networks-overview.md). Toto nasazení umožňuje následující scénáře: 
-- Připojení k instanci spravované přímo z místní sítě 
-- Připojení k odkazovaný server nebo jinou instanci a spravovat místní úložiště dat 
-- Připojení do Instance spravované prostředky Azure  
+Azure SQL Database Managed Instance (preview) musí být nasazen v rámci Azure [virtuální síť (VNet)](../virtual-network/virtual-networks-overview.md). Toto nasazení umožňuje následující scénáře: 
+- Připojení k Managed Instance přímo z místní sítě 
+- Připojení Managed Instance pro odkazovaný server nebo další místní úložiště dat 
+- Připojování k prostředkům Azure Managed Instance  
 
 ## <a name="plan"></a>Plánování
 
-Naplánujte, jak nasadit a spravovat Instance ve virtuální síti pomocí vaše odpovědi na tyto otázky: 
-- Máte v úmyslu nasadit jeden nebo více instancí spravovat? 
+Naplánujte, jak nasadit spravované Instance ve virtuální síti pomocí odpovědi na následující otázky: 
+- Máte v úmyslu nasadit jeden nebo více spravovaných instancí? 
 
-  Počet instancí spravované Určuje minimální velikost podsítě přidělit pro vaše spravované instance. Další informace najdete v tématu [určit velikost podsítě pro spravované Instance](#create-a-new-virtual-network-for-managed-instances). 
-- Potřebujete nasadit spravované Instance do existující virtuální síť nebo vytvoříte novou síť? 
+  Počet spravovaných instancí Určuje minimální velikost podsítě k přidělení pro Managed instance. Další informace najdete v tématu [určit velikost podsítě pro Managed Instance](#create-a-new-virtual-network-for-managed-instances). 
+- Je potřeba k nasazení Managed Instance do existující virtuální síť nebo vytvoříte novou síť? 
 
-   Pokud budete chtít použít existující virtuální síť, musíte ke změně této konfigurace sítě pro přizpůsobení Instance spravované. Další informace najdete v tématu [upravit existující virtuální síť pro spravované Instance](#modify-an-existing-virtual-network-for-managed-instances). 
+   Pokud plánujete použití existující virtuální sítě, budete muset upravit tuto konfiguraci sítě tak, aby vyhovovaly Managed Instance. Další informace najdete v tématu [upravit existující virtuální sítě pro Managed Instance](#modify-an-existing-virtual-network-for-managed-instances). 
 
-   Pokud budete chtít vytvořit novou virtuální síť, přečtěte si téma [vytvořit novou virtuální síť pro spravované Instance](#create-a-new-virtual-network-for-managed-instances).
+   Pokud budete chtít vytvořit novou virtuální síť, přečtěte si téma [vytvořit novou virtuální síť pro Managed Instance](#create-a-new-virtual-network-for-managed-instances).
 
 ## <a name="requirements"></a>Požadavky
 
-Pro vytvoření Instance spravované nutné vyhradit podsíť uvnitř virtuální sítě, který splňuje následující požadavky:
-- **Být prázdné**: podsíť nesmí obsahovat jiné cloudové služby přidružené k němu, a nesmí se podsíť brány. Nebudete moci vytvořit spravované Instance podsítě, která obsahuje prostředky než spravované instance, nebo přidejte další prostředky uvnitř podsíť později.
-- **Žádné skupiny NSG**: podsíť nesmí mít skupinu zabezpečení sítě spojenou s ním.
-- **Máte konkrétní směrovací tabulku**: podsíť musí mít uživatele trasy tabulky (UDR) s 0.0.0.0/0 Další směrování Internetu jako pouze trasy přiřazen. Další informace najdete v tématu [vytvořte požadované směrovací tabulka a přidružte ji](#create-the-required-route-table-and-associate-it)
-3. **Volitelné vlastní DNS**: Pokud je zadán pro vlastní DNS virtuální sítě, musíte do seznamu přidat Azure rekurzivní překladače IP adresu (například 168.63.129.16). Další informace najdete v tématu [konfigurace DNS vlastní](sql-database-managed-instance-custom-dns.md).
-4. **Žádný koncový bod služby**: podsíť nesmí mít koncového bodu služby (úložiště nebo Sql) přidružené k němu. Ujistěte se, že možnost koncové body služby není povolena při vytváření virtuální sítě.
-5. **Dostatečná IP adresy**: podsíť musí mít minimálně 16 IP adres. Další informace najdete v tématu [určit velikost podsítě pro spravované instance](#determine-the-size-of-subnet-for-managed-instances)
+Pro vytvoření Managed Instance třeba vyhradit podsítě uvnitř virtuální sítě, který odpovídá následující požadavky:
+- **Být prázdný**: podsítě nesmí obsahovat jiné cloudové služby přidružené k němu a nesmí se jednat o podsíť brány. Nebudete mít k vytvoření Managed Instance v podsíti, která obsahuje prostředky než spravovaná instance nebo přidat další prostředky v podsíti později.
+- **Žádnou skupinu zabezpečení sítě**: podsítě nesmí obsahovat skupinu zabezpečení sítě spojenou s ním.
+- **Máte konkrétní směrovací tabulka**: podsíť musí mít uživatelem směrovací tabulky (UDR) 0.0.0.0/0 dalšího segmentu směrování Internetu jako pouze trasy přiřazenou. Další informace najdete v tématu [vytvoříte požadovaný směrovací tabulku a přidružíte ho](#create-the-required-route-table-and-associate-it)
+3. **Volitelné vlastní DNS**: Pokud je vlastní DNS zadaná ve virtuální síti, Azure rekurzivní překladače IP adresu (například adresy 168.63.129.16) musí být přidaný do seznamu. Další informace najdete v tématu [konfigurace vlastního DNS](sql-database-managed-instance-custom-dns.md).
+4. **Žádný koncový bod služby**: podsítě nesmí mít koncový bod služby (Storage nebo Sql) k němu přidružené. Ujistěte se, že koncové body služeb možnost je zakázaná, při vytváření virtuální sítě.
+5. **Dostatek IP adres**: podsíť musí mít minimálně 16 IP adres. Další informace najdete v tématu [určit velikost podsítě pro Managed instance](#determine-the-size-of-subnet-for-managed-instances)
 
 > [!IMPORTANT]
-> Nebudete moct nasadit novou instanci spravované, pokud není kompatibilní se všemi požadavky na předchozí cílové podsíti. Cílový virtuální síť a podsíť musí uchovávat v souladu s požadavky na tyto spravované Instance (před a po nasazení), jak nedodržení může způsobit, že instance vadný stavu a k dispozici. Obnovení ze stavu vyžaduje vám umožní vytvořit novou instanci ve virtuální síti s předpisy sítě, vytvořte znovu dat na úrovni instance a obnovit své databáze. To představuje významné výpadky pro vaše aplikace.
+> Nebude moct nasadit nové Managed Instance, pokud není kompatibilní se všemi výše uvedených požadavků cílové podsíti. Cílový virtuální síť a podsíť musí uchovávat v souladu s požadavky na tyto spravované Instance (před a po nasazení), jako jakékoliv porušení může způsobit, že instance do chybného stavu a přestanou být dostupné. Obnovení ze stavu vyžaduje k vytvoření nové instance ve virtuální síti s předpisy sítě, vytvořte znovu dat na úrovni instance a obnovit své databáze. To přináší významné výpadky vašich aplikací.
 
-##  <a name="determine-the-size-of-subnet-for-managed-instances"></a>Určit velikost podsítě pro spravované instance
+##  <a name="determine-the-size-of-subnet-for-managed-instances"></a>Určit velikost podsítě pro Managed instance
 
-Při vytváření Instance spravované Azure přiřadí počet virtuálních počítačů v závislosti na velikosti vrstvy, kterou vyberete při zřizování. Protože tyto virtuální počítače jsou spojeny s podsíť, vyžadují IP adresy. K zajištění vysoké dostupnosti během standardních operací a údržby služby, může Azure přidělit dalších virtuálních počítačů. V důsledku toho počet požadované IP adresy v podsíti, je větší než je počet instancí spravované v této podsíti. 
+Když vytvoříte Managed Instance, Platforma Azure přiřadí počet virtuálních počítačů v závislosti na velikosti vrstvy, který vyberete při zřizování. Protože tyto virtuální počítače jsou spojeny s vaší podsítě, vyžadují IP adresy. K zajištění vysoké dostupnosti během standardních operací a údržby služby, může Azure přidělte další virtuální počítače. V důsledku toho počet požadované IP adresy v podsíti je větší než počet spravovaných instancí v této podsíti. 
 
-Standardně je spravované Instance vyžaduje minimálně 16 IP adres v podsíti a může využívat až 256 IP adresy. Masek podsítě velikosti/28 do /24 v důsledku toho můžete při definování vaší rozsahy IP podsíť. 
+Návrh Managed Instance vyžaduje minimálně 16 IP adresy v podsíti a může použít až 256 IP adresy. V důsledku toho můžete použít masky podsítě velikosti/28 do /24 při definování rozsahy IP adres vaší podsítě. 
 
-Pokud máte v úmyslu nasadit několik instancí spravované prostředí podsítě a k optimalizaci na velikost podsítě, použijte k výpočtu tyto parametry: 
+Pokud budete chtít nasadit víc instancí v podsíti spravované a třeba optimalizovat na velikost podsítě, použijte k výpočtu tyto parametry: 
 
-- Azure používá pět IP adresy v podsíti pro vlastní požadavky 
-- Každá instance obecné účely musí dvě adresy 
+- Azure používá 5 IP adres v podsíti pro vlastní potřeby 
+- Každá instance pro obecné účely potřebuje dvě adresy 
+- Každá instance pro důležité obchodní informace potřebuje čtyři adresy
 
-**Příklad**: Chcete mít osm spravované instance. Aby znamená potřebujete 5 + 8 * 2 = 21 IP adresy. Jako rozsahy IP adres jsou definovány v power 2, je třeba rozsah IP adres 32 (2 ^ 5) IP adresy. Proto musíte rezervovat podsíť s maskou podsítě/27. 
+**Příklad**: bude mít tři pro obecné účely a dvě obchodní kritické Managed instance. Že znamená, že potřebujete 5 + 3 * 2 + 2 * 4 = 19 IP adresy. Když rozsahy IP adres jsou definovány v Power BI 2, budete potřebovat IP rozsahu 32 (2 ^ 5) IP adresy. Proto musíte rezervovat podsíť s maskou podsítě/27. 
 
-## <a name="create-a-new-virtual-network-for-managed-instances"></a>Vytvořit novou virtuální síť pro spravované instance 
+## <a name="create-a-new-virtual-network-for-managed-instances"></a>Vytvořit novou virtuální síť pro Managed instance 
 
-Vytvoření virtuální sítě Azure je předpokladem pro vytvoření Instance spravované. Portál Azure, můžete použít [prostředí PowerShell](../virtual-network/quick-create-powershell.md), nebo [rozhraní příkazového řádku Azure](../virtual-network/quick-create-cli.md). V následující části jsou uvedeny kroky, pomocí portálu Azure. Podrobnosti zmíněny v tomto článku se vztahují na každou z těchto metod.
+Vytvoření služby Azure virtual network je předpokladem pro vytvoření Managed Instance. Na webu Azure portal, můžete použít [PowerShell](../virtual-network/quick-create-powershell.md), nebo [rozhraní příkazového řádku Azure](../virtual-network/quick-create-cli.md). Následující část popisuje kroky, pomocí webu Azure portal. Podrobnosti zde popsané použít u každého z těchto metod.
 
 1. Klikněte na **Vytvořit prostředek** v levém horním rohu webu Azure Portal.
 2. Vyhledejte a klikněte na **Virtuální síť**, ověřte, že jako režim nasazení je vybraný **Resource Manager**, a pak klikněte na **Vytvořit**.
 
    ![vytvoření virtuální sítě](./media/sql-database-managed-instance-tutorial/virtual-network-create.png)
 
-3. Vyplňte formulář virtuální sítě se požadované informace, způsobem jako na následujícím snímku obrazovky:
+3. Vyplňte požadované informace způsobem, jako na následujícím snímku obrazovky ve formuláři virtuální sítě:
 
    ![formulář pro vytvoření virtuální sítě](./media/sql-database-managed-instance-tutorial/virtual-network-create-form.png)
 
 4. Klikněte na možnost **Vytvořit**.
 
-   Adresní prostor a podsítě jsou zadat v notaci CIDR. 
+   Adresní prostor a podsítě jsou uvedeny v zápisu CIDR. 
 
    > [!IMPORTANT]
-   > Výchozí hodnoty vytvořte podsíť, která přebírá všechny adresní prostor virtuální sítě. Pokud zvolíte tuto možnost, nelze vytvořit žádné další prostředky ve virtuální síti než spravované Instance. 
+   > Výchozí hodnoty vytvořit podsíť, která přebírá všechny adresní prostor virtuální sítě. Pokud zvolíte tuto možnost, nebude možné vytvořit všechny další prostředky ve virtuální síti, než je Managed Instance. 
 
-   Doporučený postup bude následující: 
-   - Vypočítat velikost podsítě podle [určit velikost podsítě pro spravované Instance](#determine-the-size-of-subnet-for-managed-instances) části  
-   - Vyhodnocení potřeb pro zbytek virtuální sítě 
-   - Zadejte virtuální síť a podsíť rozsahy adres odpovídajícím způsobem 
+   Doporučený postup by byl následující: 
+   - Vypočítá velikost podsítě podle [určit velikost podsítě pro Managed Instance](#determine-the-size-of-subnet-for-managed-instances) oddílu  
+   - Vyhodnocení požadavků pro ostatní virtuální sítě 
+   - Odpovídajícím způsobem vyplňte rozsahy adres virtuální sítě a podsítě 
 
-   Ujistěte se, že možnost koncové body služby zůstane **zakázané**. 
+   Ujistěte se, že možnost koncových bodů služby zůstává **zakázané**. 
 
    ![formulář pro vytvoření virtuální sítě](./media/sql-database-managed-instance-tutorial/service-endpoint-disabled.png)
 
-## <a name="create-the-required-route-table-and-associate-it"></a>Vytvořte požadované směrovací tabulka a přidružte ji
+## <a name="create-the-required-route-table-and-associate-it"></a>Vytvořit požadované směrovací tabulku a přidružíte ho
 
 1. Přihlášení k webu Azure Portal  
 2. Vyhledejte a klikněte na **Směrovací tabulka** a pak na stránce Směrovací tabulka klikněte na **Vytvořit**.
 
    ![formulář pro vytvoření směrovací tabulky](./media/sql-database-managed-instance-tutorial/route-table-create-form.png)
 
-3. Vytvořte další směrování Internet trasu 0.0.0.0/0 způsobem jako na následujících snímcích obrazovky:
+3. Vytvořte trasu dalšího segmentu směrování Internetu 0.0.0.0/0 způsobem, jako jsou na následujících snímcích obrazovky:
 
    ![přidání do směrovací tabulky](./media/sql-database-managed-instance-tutorial/route-table-add.png)
 
    ![trasa](./media/sql-database-managed-instance-tutorial/route.png)
 
-4. Tato trasa přidružte podsítě pro spravované Instance způsobem jako na následujících snímcích obrazovky:
+4. Tato trasa přidružte k podsíti pro Managed Instance, způsobem, jako jsou na následujících snímcích obrazovky:
 
     ![podsíť](./media/sql-database-managed-instance-tutorial/subnet.png)
 
@@ -113,38 +114,38 @@ Vytvoření virtuální sítě Azure je předpokladem pro vytvoření Instance s
     ![nastavení směrovací tabulky – uložení](./media/sql-database-managed-instance-tutorial/set-route-table-save.png)
 
 
-Po vytvoření virtuální sítě, budete chtít vytvořit vaší spravované Instance.  
+Po vytvoření virtuální sítě, budete chtít vytvořit Managed Instance.  
 
-## <a name="modify-an-existing-virtual-network-for-managed-instances"></a>Úprava existující virtuální síť pro spravované instance 
+## <a name="modify-an-existing-virtual-network-for-managed-instances"></a>Upravit existující virtuální sítě pro Managed instance 
 
-Otázky a odpovědi v této části ukazují, jak přidat instanci spravované na existující virtuální síť. 
+Otázky a odpovědi v této části ukazují, jak přidat do existující virtuální síť Managed Instance. 
 
 **Používáte pro existující virtuální síť modelu nasazení Classic nebo Resource Manager?** 
 
-Do spravované Instance může vytvořit pouze ve virtuálních sítích Resource Manager. 
+Managed Instance můžete vytvořit pouze ve virtuálním sítím Resource Manageru. 
 
-**Chcete vytvořit novou podsíť pro instanci SQL spravované nebo použijte existující?**
+**Chcete vytvořit novou podsíť pro spravované SQL instance nebo použijte existující?**
 
-Pokud chcete vytvořit nový: 
+Pokud chcete vytvořit nový certifikát: 
 
-- Vypočítat velikost podsítě podle pokynů v [určit velikost podsítě pro spravované instance](#determine-the-size-of-subnet-for-managed-instances) části.
-- Postupujte podle kroků v [přidat, změnit nebo odstranit podsíť virtuální sítě](../virtual-network/virtual-network-manage-subnet.md). 
-- Vytvořit směrovací tabulku, která obsahuje jednu položku **0.0.0.0/0**, jako další směrování Internet a přidružte ji k podsíti pro spravované Instance.  
+- Vypočítá velikost podsítě podle pokynů v [určit velikost podsítě pro Managed instance](#determine-the-size-of-subnet-for-managed-instances) oddílu.
+- Postupujte podle kroků v [přidání, změna nebo odstranění podsítě virtuální sítě](../virtual-network/virtual-network-manage-subnet.md). 
+- Vytvoření směrovací tabulky, která obsahuje jednu položku **0.0.0.0/0**, jako další směrování Internetu a přidružte ji k podsíti pro Managed Instance.  
 
-V případě, že chcete vytvořit instanci spravované uvnitř existující podsítí: 
-- Zkontrolujte, že pokud se podsíť prázdná - nelze vytvořit instanci a spravovat v podsíti, který obsahuje jiné prostředky, včetně podsítě brány 
-- Vypočítat velikost podsítě podle pokynů v [určit velikost podsítě pro spravované instance](#determine-the-size-of-subnet-for-managed-instances) a ověřte, že je odpovídající velikost. 
-- Zkontrolujte, že koncových bodů služby nejsou povoleny v podsíti.
+V případě, že chcete vytvořit Managed Instance uvnitř existující podsítě: 
+- Zaškrtněte, že pokud je prázdný - podsíť Managed Instance nelze vytvořit v podsíti, která obsahuje další prostředky, včetně podsítě brány 
+- Vypočítá velikost podsítě podle pokynů v [určit velikost podsítě pro Managed instance](#determine-the-size-of-subnet-for-managed-instances) a ověřte, že je odpovídající velikost. 
+- Zkontrolujte, že nejsou povolené koncové body služby v podsíti.
 - Ujistěte se, že neexistují žádné skupiny zabezpečení sítě spojenou s podsítí 
 
 **Máte vlastní server DNS nakonfigurovaný?** 
 
-Pokud ano, přečtěte si téma [konfiguraci DNS vlastní](sql-database-managed-instance-custom-dns.md). 
+Pokud ano, přečtěte si téma [konfigurace vlastního DNS](sql-database-managed-instance-custom-dns.md). 
 
-- Vytvořte požadované směrovací tabulka a přidružte ji: najdete v části [vytvořte požadované směrovací tabulka a přidružte ji](#create-the-required-route-table-and-associate-it)
+- Vytvořit požadované směrovací tabulku a přidružíte ho: viz [vytvoříte požadovaný směrovací tabulku a přidružíte ho](#create-the-required-route-table-and-associate-it)
 
 ## <a name="next-steps"></a>Další postup
 
-- Přehled najdete v tématu [co je spravované Instance](sql-database-managed-instance.md)
-- Zobrazuje postup vytvoření virtuální sítě, vytvořte instanci spravované a obnovit databázi ze zálohy databáze, na adrese [vytvoření Azure SQL Database spravované Instance](sql-database-managed-instance-create-tutorial-portal.md).
-- Problémy s DNS, najdete v části [konfiguraci vlastní DNS](sql-database-managed-instance-custom-dns.md)
+- Přehled najdete v tématu [co je Managed Instance](sql-database-managed-instance.md)
+- Kurz ukazuje, jak vytvořit virtuální síť, vytvoříte Managed Instance a obnovit databázi ze zálohy databáze, najdete v tématu [vytvoření Azure SQL Database Managed Instance](sql-database-managed-instance-create-tutorial-portal.md).
+- Problémy s DNS, najdete v článku [konfigurace vlastního DNS](sql-database-managed-instance-custom-dns.md)

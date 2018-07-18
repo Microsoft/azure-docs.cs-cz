@@ -1,6 +1,6 @@
 ---
-title: Jednotná výstrah v monitorování Azure
-description: Popis jednotná výstrah v Azure, které vám umožní spravovat výstrahy a pravidla výstrah napříč službami Azure.
+title: Sjednocené výstrah ve službě Azure Monitor
+description: Popis jednotné upozornění v Azure, které vám pomohou se správou výstrah a upozornění pravidel napříč službami Azure.
 author: manishsm-msft
 services: monitoring
 ms.service: azure-monitor
@@ -8,221 +8,223 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: mamit
 ms.component: alerts
-ms.openlocfilehash: ff2650ec7d4c2c1fffd57176327b56199335fa9d
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: c4c8279a1d4638a1c5d889b53e2d9e89e458cc37
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264812"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39117613"
 ---
-# <a name="unified-alerts-in-azure-monitor"></a>Jednotná výstrah v monitorování Azure
+# <a name="unified-alerts-in-azure-monitor"></a>Sjednocené výstrah ve službě Azure Monitor
 
 ## <a name="overview"></a>Přehled
 
 > [!NOTE]
->  V novém jednotném výstrah rozhraní, které vám umožní spravovat výstrahy z více předplatných a zavádí výstraha stavy a inteligentní skupiny je teď dostupné ve verzi public preview. Najdete v článku [poslední části tohoto článku](#enhanced-unified-alerts-experience-public-preview) popis tohoto rozšířeného prostředí a proces zapnuta.
+>  Novém jednotném výstrah rozhraní, který vám umožní spravovat výstrahy z více předplatných a zavádí upozornění stavů a inteligentní skupin je momentálně dostupná ve verzi public preview. Viz poslední část tohoto článku pro popis této rozšířeného prostředí a proces pro jeho povolení.
 
 
-Tento článek popisuje jednotném rozhraní výstrah v monitorování Azure. [Předchozí výstrahy zkušenosti](monitoring-overview-alerts.md) má k dispozici **výstrahy (klasické)** možnost v nabídce monitorování Azure. 
+Tento článek popisuje jednotné prostředí výstrah ve službě Azure Monitor. [Předchozí zkušenosti upozornění](monitoring-overview-alerts.md) je k dispozici **upozornění (klasická)** v nabídce Azure Monitor. 
 
-## <a name="features-of-the-unified-alert-experience"></a>Funkce jednotném rozhraní výstrah
+## <a name="features-of-the-unified-alert-experience"></a>Funkce sjednocené prostředí pro výstrahy
 
-Jednotné prostředí má následující výhody přes classic prostředí:
+Jednotné prostředí má následující výhody prostřednictvím klasického prostředí:
 
--   **Lepší oznámení systému**: Unified výstrahy použití [skupiny akcí]( https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups), které jsou s názvem skupiny oznámení a akce, které lze znovu použít ve více výstrah. 
-- **Unified zážitky** – můžete spravovat výstrahy a výstrahu pravidel pro metriky, protokoly a aktivity protokolu napříč Azure monitorování, analýzy protokolů a Application Insights na jednom místě. 
-- **Zobrazení aktivováno analýzy protokolů výstrahy na portálu Azure** -Zobrazit výstrahy z analýzy protokolů s další výstrahy z jiných zdrojů na portálu Azure. Dříve byly tyto samostatné portálu.
-- **Oddělení Fired výstrahy a pravidla výstrah** -výstrah, pravidla rozlišují teď z výstrah. Pravidlo výstrahy je definice podmínku, která aktivuje výstrahu. Výstraha je instance pálení pravidlo výstrahy.
-- **Lepší pracovního postupu** -sjednocené výstraha zážitky vás provede procesem konfigurace pravidla výstrahy.
+-   **Lepší systému oznámení**: [skupiny akcí](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups) jsou pojmenované skupiny oznámení a akce, které lze znovu použít ve více výstrah. 
+- **Sjednocené prostředí pro tvorbu**: upozornění a pravidla upozornění metrik, protokolů a protokolů aktivit Azure Monitor, Log Analytics a Application Insights se dají spravovat na jednom místě. 
+- **Zobrazení aktivuje upozornění Log Analytics na portálu Azure portal**: upozornění Log Analytics se teď dají Zobrazit výstrahy z jiných zdrojů na webu Azure Portal. Dříve byly výstrahy z jiných zdrojů samostatné portálu.
+- **Oddělení aktivovaná upozornění a pravidla upozornění**: pravidla upozornění se teď rozlišují z výstrah. Pravidlo výstrahy je definice podmínku, která aktivuje výstrahu. Výstraha je instance jeho spuštění pravidla upozornění.
+- **Lepší workflow**: jednotné prostředí pro tvorbu výstrahy vás provede procesem konfigurace pravidla výstrahy.
  
-Metriky výstrahy mají následující vylepšení classic metriky výstrahy:
+Upozornění na metriku mají následující vylepšení klasického upozornění metrik:
 
--   **Vylepšené latence**: metriky výstrahy můžete spustit často každou minutu. Classic metriky výstrahy vždy spustit v intervalu 5 minut. Výstrahy protokolu ještě delší než jedna minuta kvůli době je potřeba k ingestování protokoly zpoždění. 
--   **Podpora pro multidimenzionální metriky**: můžete výstrahy na dimenzí metriky, které umožňují monitorovat konkrétní instanci metriku.
--   **Větší kontrolu nad metriky podmínky**: můžete definovat bohatší pravidla výstrah, které podporují monitorování maximální, minimální, průměrná a celkové hodnoty metrik.
--   **Kombinaci monitorování více metrik**: můžete sledovat až dvě metriky s jedním pravidlem. Výstraha se spustí, pokud obě metriky narušit jejich příslušné prahové hodnoty pro zadané časové období.
--   **Metriky z protokolů** (verze public preview omezené): některé protokolu dat přejdete do analýzy protokolů můžete nyní extrahována a převést do Azure monitorování metriky a potom zobrazí upozornění na stejně jako jiné metriky. 
+-   **Vylepšené latence**: upozornění na metriku můžete spustit tak často, jak každou minutu. Klasické metriky upozornění vždy spustit s frekvencí každých 5 minut. Upozornění protokolů ještě déle než minutu z důvodu čas potřebný k ingestování protokoly zpoždění. 
+-   **Podpora pro vícerozměrné metriky**: může upozornit na jednodimenzionální metriky, což znamená, že můžete sledovat konkrétní instanci metriky.
+-   **Větší kontrolu nad metriky podmínky**: můžete definovat bohatší pravidel upozornění, které podporují monitorování maximální minimální, průměrné a celkové hodnoty metriky.
+-   **Kombinované monitorování několika metrik**: můžete monitorovat až dvě metriky pomocí jednoho pravidla. Výstraha se aktivuje, pokud obě metriky porušení jejich příslušné prahové hodnoty pro zadané časové období.
+-   **Metriky na základě protokolů** (omezené veřejné verzi preview): některé protokolu data, která se data přesunou do Log Analytics můžete nyní extrahovat a převést na metrik Azure monitoru a potom zobrazí upozornění na stejně jako jiné metriky. 
 
 
 ## <a name="alert-rules"></a>Pravidla upozornění
-Jednotná výstrahy prostředí používá následující koncepty pro oddělení pravidla výstrah z výstrah při sjednocujícího prostředí pro vytváření napříč různé typy výstrah.
+Prostředí upozornění jednotné používá následující koncepty pro oddělení pravidla upozornění z výstrah při sjednocujícího prostředí pro vytváření obsahu napříč různé typy výstrah.
 
 | Položka | Definice |
 |:---|:---|
-| Pravidlo výstrahy | Definice podmínku, která má být vytvořena výstraha. Tvořený _cíle prostředků_, _signál_, _kritéria_, a _logiku_. Pravidlo výstrahy je aktivní, pokud se nachází v pouze _povoleno_ stavu.
-| Cílový prostředek | Definuje specifické prostředky a nevydá signál k dispozici pro výstrahy. Cílem může být jakýmikoli prostředky Azure.<br>Příklady: virtuální počítač, účet úložiště, škálovací sadu virtuálních počítačů, pracovní prostor analýzy protokolů prostředek Application Insights |
-| Signál | Zdroj dat vysílaných cílový prostředek. Typy podporované signál *metrika*, *protokol aktivit*, *Application Insights*, a *protokolu*. |
-| Kritéria | Kombinace _signál_ a _logiku_ použita na cílový prostředek.<br>Příklady: Procento využití procesoru > 70 %, doba odezvy serveru > 4 ms, počet výsledků protokolu dotaz > 100 atd. |
-| Logiky | Uživatelem definované logiku zkontrolujte, jestli je signál v rámci očekává hodnoty nebo rozsahu. |
-| Akce | Akce k provedení při vyvolání výstrahy. Více akcí může dojít, když se aktivuje výstrahu. Tyto výstrahy podporovat skupiny akcí.<br>Příklady: e-mailem na e-mailovou adresu, volání URL webhooku se nenačetla. |
-| Stav monitorování | Určuje, zda je podmínka vytvořený metriky výstraha následně vyřešit. Metriky pravidla výstrah ukázkové konkrétní metriky v pravidelných intervalech. Při splnění kritérií pro pravidlo výstrahy, se vytvoří nová výstraha s podmínkou Fired.  Když je metriku vzorkovat znovu, pokud stále splnění kritérií a nedojde k žádné akci.  Pokud ale není splněna kritéria, podmínka výstrahy se změní na hodnotu Vyřešeno. Při příštím spuštění se splní kritéria a potom jinou výstrahy vytvořeny s podmínkou Fired. |
+| Pravidlo výstrahy | Definice podmínky, aby se vytvořila výstraha. Pravidlo upozornění se skládá z _cílový prostředek_, _signál_, _kritéria_, a _logiky_. Pravidlo výstrahy je aktivní, pokud je pouze _povolené_ stavu.
+| Cílový prostředek | Definuje konkrétní prostředky a signály, které jsou k dispozici pro generování výstrah. Cíl může být libovolné prostředky Azure.<br><br>Příklady: virtuální počítač, účet úložiště, škálovací sadu virtuálních počítačů, pracovní prostor Log Analytics, prostředek služby Application Insights |
+| Signál | Zdroj dat, protože ho vygeneroval cílový prostředek. Typy podporované signálů, které jsou *metrika*, *protokolu aktivit*, *Application Insights*, a *protokolu*. |
+| Kritéria | Kombinace _signál_ a _logiky_ použity na cílový prostředek.<br><br>Příklady: Procento využití procesoru > 70 %, doba odezvy serveru > 4 ms, počet výsledků protokolu dotaz > 100 a tak dále |
+| Logika | Uživatelem definované logiku a ověřte, zda je signál, který se v rámci očekávání/hodnoty rozsahu. |
+| Akce | Akce provádět, když se aktivuje upozornění. Více akcí může dojít, když se aktivuje upozornění. Tyto výstrahy podporují skupiny akcí.<br><br>Příklady: e-mailem na e-mailovou adresu, volání adresy URL webhooku |
+| Stav monitorování | Určuje, zda byl vyřešen podmínku, vytvoří upozornění na metriku. Pravidla upozornění na metriky ukázkový konkrétní metriky v pravidelných intervalech. Při splnění kritérií pro pravidlo výstrahy, pak nová výstraha se vytvoří s podmínkou "aktivována."  Když metrika se definuje tak, znovu, pokud je stále splněna kritéria, pak nic se nestane.  V případě, že nejsou splněna kritéria, pak podmínka výstrahy se změní na "přeložit." Další výstrahu při příštím při splnění kritéria, se vytvoří s podmínkou "aktivována." |
 
 
-## <a name="alert-pages"></a>Výstrahy stránky
-Jednotné místo pro zobrazit a spravovat všechny výstrahy Azure poskytuje sjednocené výstraha. Následující části popisují funkce jednotlivých stránek jednotném rozhraní.
+## <a name="alert-pages"></a>Upozornění stránky
+Sjednocené výstrahy poskytují jednotné místo, kde můžete zobrazit a spravovat všechna upozornění Azure. Následující části popisují funkce každou jednotlivou stránku jednotné prostředí.
 
-### <a name="alerts-overview-page"></a>Stránka Přehled výstrah
-**Výstrahy** přehled stránka zobrazuje agregovaný shrnutím všechny aktivní výstrahy, a celkový počet povolené pravidla výstrah. Změna odběry nebo parametry filtrování aktualizací agregace a výstrahy aktivováno seznamu.
+### <a name="alerts-overview-page"></a>Stránku přehled výstrah
+**Výstrahy** agregovaný souhrn všech aktivovaná upozornění se zobrazí stránka s přehledem, a celkový počet povolená pravidla upozornění. Změna předplatná nebo parametry filtru aktualizuje agregací a výstrahy vyvolané seznamu.
 
  ![Přehled výstrah](./media/monitoring-overview-unified-alerts/alerts-preview-overview2.png) 
 
-### <a name="alert-rules-management"></a>Pravidla výstrah správy
-**Pravidla** je jediné stránce Spravovat všechny výstrahy pravidla ve vašich předplatných Azure. Zobrazí seznam všech pravidel výstrah a lze seřadit podle cílové prostředky, skupiny prostředků, název pravidla nebo stavu. Pravidla výstrah může být také upravená a povolit nebo zakázat z této stránky.
+### <a name="alert-rules-management"></a>Správa pravidel výstrah
+**Pravidla** je jediné stránce pro správu všechna pravidla výstrah ve vašich předplatných Azure. Obsahuje seznam všech pravidel upozornění a může být řazeny podle cílové prostředky, skupiny prostředků, název pravidla nebo stav. Pravidla výstrah můžete také upravit, povolit nebo zakázat z této stránky.
 
  ![pravidla výstrah](./media/monitoring-overview-unified-alerts/alerts-preview-rules.png)
 
 
-## <a name="creating-an-alert-rule"></a>Vytvoření pravidla výstrahy
-Výstrahy můžete vytvořené konzistentním způsobem bez ohledu na to, služba monitorování nebo signál typu. Všechny aktivováno výstrahy a související podrobnosti jsou dostupné v jediné stránce.
+## <a name="create-an-alert-rule"></a>Vytvoření pravidla upozornění
+Výstrahy se můžou vytvořit konzistentním způsobem bez ohledu na to služba monitorování nebo signalizuje, že typ. Všechny výstrahy vyvolané a související podrobnosti jsou dostupné na jedné stránce.
  
-Můžete vytvořit nové pravidlo výstrahy se následující tři kroky:
-1. Vyberte _cíl_ pro výstrahu.
-1. Vyberte _signál_ z dostupných signály pro cíl.
-1. Zadejte _logiku_ má být použita k datům z signál.
+Vytvořit nové pravidlo upozornění s následující tři kroky:
+1. Vyberte si _cílové_ výstrahy.
+1. Vyberte _signál_ z dostupné signály pro cíl.
+1. Zadejte _logiky_ použít data z tohoto signálu.
  
-Tento proces zjednodušené vytváření už vyžaduje, aby uživatel vědět monitorování zdroje nebo signály podporované před výběrem prostředek služby Azure. Seznam signálů k dispozici jsou filtrovány automaticky podle vybrané cílový prostředek a provede vás procesem definování logice pravidla výstrahy.
+Tato zjednodušený proces vytváření už vyžaduje, abyste znali monitorování zdroje nebo signály, které jsou podporovány před výběrem prostředku Azure. Seznam dostupné signály se automaticky filtruje podle cílový prostředek, který jste vybrali, a provede vás těmito možnostmi definování logiky pravidla výstrahy.
 
-Další informace o tom, jak vytvořit pravidla výstrah v [vytvořit, zobrazit a spravovat výstrah pomocí Azure monitorování](monitor-alerts-unified-usage.md).
+Další informace o tom, jak vytvořit pravidla výstrah ve službě [vytvoření, zobrazení a Správa výstrah pomocí Azure monitoru](monitor-alerts-unified-usage.md).
 
-Výstrahy jsou k dispozici v rámci několik Azure monitorování služeb. Informace o tom a při použití každé z těchto služeb najdete v tématu [monitorování Azure aplikacím a prostředkům](./monitoring-overview.md). Následující tabulka obsahuje seznam typů výstrah pravidel, které jsou k dispozici v Azure a co je aktuálně nepodporuje jednotném rozhraní výstrah.
+Výstrahy jsou dostupné v rámci několika služeb monitorování v Azure. Informace, jak a kdy se má používat každý z těchto služeb najdete v tématu [aplikací a prostředků Monitoring Azure](./monitoring-overview.md). Následující tabulka obsahuje seznam typů pravidel upozornění, které jsou dostupné v rámci Azure. Také uvádí, co v současné době nepodporuje jednotné prostředí upozornění.
 
-| **Monitorování zdroje** | **Typ signálu**  | **Popis** | 
+| **Zdroj monitorování** | **Typ signálu**  | **Popis** | 
 |-------------|----------------|-------------|
-| Azure monitorování | Metrika  | Označuje taky jako [metriky výstrahy téměř v reálném čase](monitoring-near-real-time-metric-alerts.md), budou podporovat vyhodnocení metriky podmínky s četností až 1 minutu a povolit pro více metriky a komplexní metriky pravidla. Seznam typů podporovaných prostředků je k dispozici v [novější metriky výstrahy pro služby Azure na portálu Azure](monitoring-near-real-time-metric-alerts.md#metrics-and-dimensions-supported).<br>[Classic metriky výstrahy](monitoring-overview-alerts.md) nejsou podporovány v nové výstrahy prostředí. Můžete je vyhledat podle výstrahy (klasické) na portálu Azure. Classic výstrahy podporovat některé typy metriky, které dosud nebyla přesunuta novější výstrah. Úplný seznam najdete v tématu [podporované metriky](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-supported-metrics). |
-| Log Analytics | Logs  | Přijímat oznámení nebo spustit automatizované akce, pokud vyhledávací dotaz protokolu splňuje určitá kritéria. Výstrahy v analýzy protokolů jsou [kopírovány do nové prostředí](monitoring-alerts-extend.md). A [náhled z *analýzy protokolů zaznamená jako metriky* ](monitoring-alerts-extend-tool.md) je k dispozici. Verze preview umožňuje provést některé typy protokolů a jejich převedení na metriky, kde můžete lze pak výstraha na pomocí nové výstrahy prostředí. Ve verzi preview je užitečné, pokud máte protokoly mimo Azure, které chcete získat spolu s nativní metrik Azure monitorování. |
-| Protokoly aktivit | Protokol aktivit | Obsahuje záznamy všech akcí vytvoření, aktualizace a odstranění vytvořené vybraný cílový. |
-| Service Health | Protokol aktivit  | Nepodporované ve jednotná výstrahy. V tématu [vytvářet aktivity protokolu upozornění na oznámení o službách](monitoring-activity-log-alerts-on-service-notifications.md).  |
-| Application Insights | Logs  | Obsahuje protokoly výkonu podrobné informace o této aplikaci. Pomocí analýzy dotazu, můžete definovat podmínky pro akce, které mají být provedeny v závislosti na data aplikací. |
-| Application Insights | Metrika | Nepodporované ve jednotná výstrahy. V tématu [metriky výstrahy]. (.. /Application-insights/App-insights-alerts.MD) |
-| Application Insights | Testy dostupnosti webu | Nepodporované ve jednotná výstrahy.  V tématu [webového testu výstrahy](../application-insights/app-insights-monitor-web-app-availability.md). Chcete-li k dispozici na žádné web instrumentovány k odesílání dat do služby Application Insights. Přijímat oznámení v případě dostupnosti nebo odezvy webu je nižší než očekávání. |
+| Azure Monitor | Metrika  | Zkratka [upozornění na metriku téměř v reálném čase](monitoring-near-real-time-metric-alerts.md), podpora, vyhodnocování podmínek metriky často jednou za minutu a povolit pro více metrik a vícerozměrné metriky pravidla. Seznam podporovaných typů prostředků je k dispozici v [novějších upozornění metrik pro služby Azure na webu Azure Portal](monitoring-near-real-time-metric-alerts.md#metrics-and-dimensions-supported).<br>[Klasické metriky upozornění](monitoring-overview-alerts.md) nejsou podporovány v nové prostředí upozornění. Najdete je v části upozornění (klasická) na webu Azure Portal. Upozornění classic podporovat některé metriky typy, které dosud nebyla přesunuta na novější upozornění. Úplný seznam najdete v tématu [podporované metriky](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-supported-metrics). |
+| Log Analytics | Logs  | Dostávat oznámení nebo spouštět automatizované akce, když vyhledávací dotaz log splňuje určitá kritéria. Upozornění v Log Analytics jsou [kopírovaná do nového prostředí](monitoring-alerts-extend.md). A [Náhled *Log Analytics zaznamená jako metriky* ](monitoring-alerts-extend-tool.md) je k dispozici. Verze preview umožňuje provést určité typy protokolů a jejich převedení na metriky, kde vám může potom upozornit na nich s použitím nové prostředí pro upozorňování. Verzi preview je užitečné, pokud máte protokoly mimo Azure, které chcete získat společně s nativní metrikami Azure monitoru. |
+| Protokoly aktivit | Protokol aktivit | Obsahuje záznamy o všech vytvářet, aktualizovat a odstranit některé akce, které byly vytvořeny podle vybraného cíle. |
+| Stav služby | Protokol aktivit  | Nepodporuje jednotné výstrahy. Zobrazit [vytvoření upozornění protokolu aktivit pro oznámení služby](monitoring-activity-log-alerts-on-service-notifications.md).  |
+| Application Insights | Logs  | Obsahuje protokoly s podrobnostmi o výkonu vaší aplikace. Pomocí dotazu analytics můžete definovat podmínky pro akce, které mají být provedeny v závislosti na aplikační data. |
+| Application Insights | Metrika | Nepodporuje jednotné výstrahy. Zobrazit [upozornění na metriku](../application-insights/app-insights-alerts.md). |
+| Application Insights | Testy dostupnosti webu | Nepodporuje jednotné výstrahy.  Zobrazit [upozornění webových testů](../application-insights/app-insights-monitor-web-app-availability.md). K dispozici pro všechny weby, které je instrumentováno pro odesílání dat do Application Insights. Když dostupnosti nebo rychlost odezvy webu je nižší než očekávání, dostanete oznámení. |
 
-## <a name="enhanced-unified-alerts-public-preview"></a>Rozšířené jednotná výstrahy (Public Preview)
-> [!NOTE]
->  Funkce v této části je již brzy. Se nesmí objevit ještě ve vaší verzi portálu. 
+## <a name="enhanced-unified-alerts-public-preview"></a>Rozšířené jednotné výstrahy (public preview)
 
-Rozšířené výstrahy jednotné prostředí byla vydaná ve verzi public preview pro monitorování Azure na 1. června 2018. Toto prostředí je založena na výhody [unified výstrahy](#overview) vydané března 2018 a umožňuje spravovat a agregovat jednotlivé výstrahy kromě úpravy stav výstrahy. Tato část popisuje nové funkce a jak se orientovat nové výstrahy stránky na portálu Azure.
+Vylepšené výstrahy jednotné prostředí byla vydána ve verzi public preview pro Azure Monitor 1. června 2018. Toto prostředí je založena na výhody [unified výstrahy](#overview), které byly vydány v březnu 2018 a které umožňují spravovat a agregovat jednotlivá upozornění a změnit stav výstrahy. Tato část popisuje nové funkce a jak se zorientovat nové výstrahy stránky na webu Azure Portal.
 
-### <a name="features-enhanced-unified-alerts"></a>Funkce rozšířeného unified výstrahy
+### <a name="enhanced-unified-alerts"></a>Rozšířené jednotné výstrahy
 
-Nové rozhraní poskytuje následující funkce, které nejsou k dispozici jednotné přihlašování classic:
+Nové prostředí obsahuje následující funkce, které nejsou k dispozici v klasickém jednotné prostředí:
 
-- **Zobrazit výstrahy ve předplatných** – teď můžete zobrazit a spravovat jednotlivé instance výstrah napříč více předplatných v rámci jednoho zobrazení.
-- **Spravovat stav výstrahy** -výstrahy Teď máte stavu, která určuje, zda jeho byla potvrzena pro uzavřen.
-- **Uspořádání výstrahy s inteligentní skupiny** -inteligentní skupiny automaticky seskupit výstrahy související s, aby je bylo možné spravovat jako sada místo jednotlivě.
+- **Zobrazit výstrahy napříč předplatnými**: Nyní můžete zobrazit a spravovat jednotlivé instance dané výstrahy napříč několika předplatnými v rámci jednoho zobrazení.
+- **Správa stavu výstrah**: Teď máte stavu, který označuje, zda jsou jste byla potvrzena jako zavřené výstrahy.
+- **Uspořádání výstrahy se inteligentní skupinami**: inteligentní skupiny automaticky seskupení souvisejících výstrah, takže je můžete spravovat jako sadu, a ne samostatně.
 
-### <a name="enable-enhanced-unified-alerts"></a>Povolit rozšířené jednotná výstrahy
-Povolte novém jednotném rozhraní výstrah tak, že kliknete na informační zpráva v horní části stránky výstrah. Tento proces vytvoří výstrahy úložiště, která zahrnuje za posledních 30 dní aktivní výstrahy mezi podporované služby. Po povolení nové rozhraní můžete přepínat přepínat mezi novém i starém prostředí kliknutím na informační zprávě.
+### <a name="enable-enhanced-unified-alerts"></a>Povolit rozšířené jednotné výstrahy
+Povolte nové prostředí upozornění jednotné výběrem pruhu v horní části stránky s upozorněními. Tento proces vytvoří upozornění úložiště, které zahrnuje v posledních 30 dnech aktivovaná upozornění napříč podporované služby. Po povolení nové prostředí můžete vzájemně přepínat mezi novém i starém prostředí tak, že vyberete tento banner.
 
 > [!NOTE]
->  To může trvat několik minut na nové prostředí na začátku povolit.
+>  Může trvat několik minut, než se nové prostředí, aby byl zpočátku povolen.
 
-![Hlavička](media/monitoring-overview-unified-alerts/opt-in-banner.png)
+![Banner](media/monitoring-overview-unified-alerts/opt-in-banner.png)
 
-Všechny odběry, které mají přístup k se zaregistruje, když povolíte nové prostředí. Přestože celé předplatné zapnutá, bude moct dál zobrazovat pouze uživatelé, kteří vybrané nové prostředí. Ostatní uživatelé s přístupem k předplatnému musíte povolit možnosti samostatně.
+Všechna předplatná, ke kterým máte přístup k proběhne, když povolíte nové prostředí. I když je povoleno celé předplatné, můžete ji zobrazit pouze uživatelé, kteří zvolí nové prostředí. Jiní uživatelé s přístupem k předplatnému musí toto prostředí povolit samostatně.
 
-Povolení nové výstrahy prostředí nemá negativní vliv na konfiguraci skupiny akcí nebo oznámení v pravidlech vaší výstrahy. Pouze mění způsob, jak zobrazit a spravovat aktivní instance výstrahy na portálu Azure.
+Povolení nové prostředí upozornění nemá vliv na konfiguraci skupiny akcí nebo oznámení v pravidel upozornění. Změní jen způsob zobrazení a správa instancí aktivovaná upozornění na webu Azure Portal.
 
 ### <a name="smart-groups"></a>Inteligentní skupiny
-Inteligentní skupiny snížení šumu tím, že se při správě související výstrahy jako na jednu jednotku spíš než správu jednotlivé výstrahy. Můžete zobrazit podrobnosti o inteligentní skupiny a nastavit stav podobná výstrahu. Každá výstraha je členem skupiny inteligentní pouze jeden.
+Inteligentní skupiny snížit šum, neboť umožňuje spravovat související výstrahy jako celek, nikoli jako jednotlivé výstrahy. Můžete zobrazit podrobnosti o inteligentní skupiny a nastavit stav podobně jako na tom, jak s výstrahami. Každá výstraha je členem skupiny inteligentní jeden a pouze jeden.
 
-Inteligentní skupiny se automaticky vytvoří pomocí strojového učení kombinování souvisejících výstrah, které představují jeden problém. Když se vytvoří výstrahu, algoritmus přidán ke skupině inteligentní nové nebo existující skupiny inteligentní podle informace jako historických vzory, podobnosti vlastností a podobnosti struktury. V současné době algoritmus uvažuje pouze výstrahy ze služby sledování v rámci předplatného. Inteligentní skupiny může snížit až 99 % výstrahy nepůsobily prostřednictvím Tato konsolidace. Můžete zobrazit z důvodu, že výstrahy byly součástí skupiny na stránce podrobností skupiny čipové.
+Inteligentní skupiny jsou automaticky vytvořené využitím strojového učení kombinování souvisejících výstrah, které představují jeden problém. Když se vytvoří výstrahu, algoritmus ji přidá do novou inteligentní skupinu nebo existující inteligentní skupinu na základě informací, jako je například historické vzory, podobně jako vlastnosti a podobné struktury. 
 
-Název inteligentní skupiny je název své první výstraha. Nelze vytvořit ani přejmenovat skupinu inteligentní.
+V současné době algoritmus uvažuje pouze výstrahy ze stejné služby monitorování v rámci předplatného. Inteligentní skupiny můžete snížit až 99 % rušivé výstrahy prostřednictvím tohoto sloučení. Můžete prohlédnout příčinu výstrahy byly součástí skupiny na stránce podrobností inteligentní skupinu.
+
+Název inteligentní skupiny je název své první výstraha. Nelze vytvořit ani přejmenovat inteligentní skupinu.
 
 
-### <a name="alert-states"></a>Stavů výstrah
-Rozšířené jednotná výstrahy zavést koncept stav výstrahy. Stav výstrahy k určení, kde se nachází v procesu překladu, který můžete nastavit.  Když je vytvořen výstrahu, má stav *nový*. Stav můžete změnit, když jste potvrzené výstrahu a pokud jste zavřeli. Změny stavu jsou uloženy v historii výstrahy.
+### <a name="alert-states"></a>Stavy výstrah
+Rozšířené jednotné výstrahy přinášejí koncept stav výstrahy. Stav výstrahy k určení, kde je v procesu překladu, který můžete nastavit. Když se vytvoří výstrahu, je ve stavu *nový*. Po potvrzení oznámení a při zavření, můžete změnit stav. Všechny změny stavu jsou uloženy v historii upozornění.
 
-Jsou podporovány následující stavy výstrahy.
+Jsou podporovány následující stavy výstrah.
 
 | Stav | Popis |
 |:---|:---|
-| Nová | Problém se právě byl zjištěn a ještě zkontrolovat. |
-| Potvrzeno | Správce má přečetli upozornění a na něm spuštěna. |
-| Zavřeno | Tento problém byl vyřešen. Po uzavření výstrahu, můžete ho znovu otevřít Moje změna ho na jiný stav. |
+| Nová | Problém právě byl zjištěn a není zatím Nezkontrolováno. |
+| Potvrzeno | Správce zkontroluje upozornění a začnete pracovat na ní. |
+| Zavřeno | Tento problém byl vyřešen. Po zavření výstrahy, můžete ho znovu otevřít tak, že změníte do jiného stavu. |
 
-Stav výstrahy se liší od stav monitorování. Metriky pravidla výstrah můžete nastavit upozornění na stav systému _přeložit_ Pokud již není chybový stav splněna. Stav výstrahy je nastaven uživatelem a je nezávislý na stav monitorování. I když se systém může nastavit stav monitorování vyřešen, stav výstrahy není změnit, dokud uživatel změní ho.
+Stav výstrahy se liší od stav monitorování. Pravidla upozornění na metriky můžete nastavit upozornění na podmínku _přeložit_ při chybová podmínka není splněna. Stav upozornění je nastavena podle uživatele a je nezávislý na stav monitorování. I když systém lze nastavit stav monitorování na "vyřešit", stav výstrahy se změnit, dokud ji uživatel nezmění.
 
-#### <a name="changing-the-state-of-an-alert-or-smart-group"></a>Změna stavu výstrah nebo inteligentní skupinu
-Můžete změnit stav individuální výstrahu nebo spravovat více výstrah, které jsou společně s nastavení stavu inteligentní skupiny.
+#### <a name="change-the-state-of-an-alert-or-smart-group"></a>Změna stavu výstrah nebo inteligentní skupinu
+Můžete změnit stav individuální výstrahu nebo nastavením stavu inteligentní skupiny společné správě více výstrah.
 
-Změnit stav výstrahy kliknutím na **změnit stav výstrahy** v zobrazení podrobností pro výstrahu nebo změna stavu pro skupinu inteligentní kliknutím **změnit stav inteligentní skupiny** v jeho podrobné zobrazení. Stav více položek najednou můžete změnit tak, že je vyberete v zobrazení seznamu a kliknete na **změny stavu** v horní části stránky. V obou případech vyberte nový stav z rozevíracího seznamu a volitelně zadejte komentář. Pokud měníte jednu položku, pak máte také možnost použít stejné změny pro všechny výstrahy, které jsou ve skupině inteligentní.
+Změnit stav upozornění tak, že vyberete **změnit stav upozornění** v zobrazení podrobností pro výstrahu. Nebo změny stavu pro inteligentní skupiny tak, že vyberete **změnit stav inteligentní skupiny** v jeho podrobné zobrazení. Změňte stav z více položek najednou nejprve jejich zvolením v zobrazení seznamu a následným výběrem **změnit stav** v horní části stránky. 
+
+V obou případech platí vyberte z rozevírací nabídky nový stav. Zadejte volitelný komentář. Pokud chcete změnit jednu položku, máte také možnost použít stejné změny na všech výstrah ve skupině inteligentní.
 
 ![Změnit stav](media/monitoring-overview-unified-alerts/change-tate.png)
 
-### <a name="alerts-page"></a>stránka výstrah
-Výchozí stránka výstrahy poskytuje souhrnné informace o výstrahách, které jsou vytvořené v rámci konkrétní časové okno. Zobrazuje celkový počet oznámení pro každou závažnost se sloupci identifikaci celkového počtu výstrah v každém stavu pro každý závažnosti. Klikněte na jakékoliv závažnosti otevřete [všechny výstrahy](#all-alerts-page) stránky filtrovaná podle této závažnosti.
+### <a name="alerts-page"></a>Stránky s upozorněními
+Výchozí stránky s upozorněními poskytuje souhrn výstrah, které jsou vytvořeny v konkrétním časovém intervalu. Zobrazí celkový počet výstrah pro každý závažnost s sloupce, který určuje celkový počet výstrah v jednotlivých stavech závažnost v každé. Vyberte některou z závažnosti otevřete [všechny výstrahy](#all-alerts-page) stránka se vyfiltruje podle tohoto závažnosti.
 
-![stránka výstrah](media/monitoring-overview-unified-alerts/alerts-page.png)
+![Stránky s upozorněními](media/monitoring-overview-unified-alerts/alerts-page.png)
 
-Toto zobrazení můžete filtrovat výběrem hodnoty v rozevíracích seznamů v horní části stránky.
+Toto zobrazení můžete filtrovat výběrem hodnoty v rozevíracích nabídek v horní části stránky.
 
 | Sloupec | Popis |
 |:---|:---|
-| Předplatné | Vyberte až 5 předplatných Azure. V zobrazení jsou zahrnuty pouze výstrahy ve vybraných předplatných. |
-| Skupina prostředků | Vyberte jedna skupina prostředků. V zobrazení jsou zahrnuty pouze výstrahy s cíli v s vybranou skupinou prostředků. |
-| Časové rozmezí | V zobrazení budou zahrnuty pouze výstrahy aktivováno v rámci vybrané časové období. Podporované hodnoty jsou po hodině, za posledních 24 hodin, uplynulých 7 dní a posledních 30 dnů. |
+| Předplatné | Vyberte až o pěti předplatných Azure. Pouze výstrahy ve vybraných předplatných se nastavují v zobrazení. |
+| Skupina prostředků | Výběr jedné skupiny prostředků. V zobrazení jsou zahrnuty pouze výstrahy s cíli ve vybrané skupině prostředků. |
+| Časové rozmezí | Pouze výstrahy vyvolané v rámci vybrané časové období se nastavují v zobrazení. Podporované hodnoty jsou uplynulou hodinu, posledních 24 hodin, posledních 7 dní a posledních 30 dní. |
 
-Kliknutím na následující hodnoty v horní části stránky výstrahy otevřete jinou stránku.
+Vyberte následující hodnoty v horní části stránky s upozorněními na otevřením jiné stránky.
 
 | Hodnota | Popis |
 |:---|:---|
-| Celkový počet upozornění | Celkový počet upozornění, která odpovídají vybraným kritériím. Klikněte na tuto hodnotu k otevření zobrazení všechny výstrahy s žádný filtr. |
-| Inteligentní skupiny | Celkový počet inteligentní skupiny vytvořené z výstrahy, které odpovídají vybraným kritériím. Klikněte na tuto hodnotu na seznam inteligentní skupiny otevřete v zobrazení všechny výstrahy.
-| Celkový počet pravidel upozornění | Celkový počet pravidla výstrah ve vybrané skupině, předplatné a prostředků. Klikněte na tuto hodnotu k otevření zobrazení pravidla filtrováno podle vybraných předplatných a skupině prostředků.
+| Celkový počet upozornění | Celkový počet upozornění, která odpovídají vybraným kritériím. Vyberte tuto hodnotu a otevřete zobrazení všech výstrah se žádný filtr. |
+| Inteligentní skupiny | Celkový počet inteligentní skupiny, které byly vytvořeny z výstrah, které odpovídají vybraným kritériím. Vyberte tuto hodnotu a otevřete seznam inteligentní skupin v zobrazení všech výstrah.
+| Celkový počet pravidel upozornění | Celkový počet pravidel upozornění v vybrané předplatné a skupinu prostředků. Vyberte tuto hodnotu a otevřete zobrazení pravidla filtrování ve vybraném předplatném a skupině prostředků.
 
 
-### <a name="all-alerts-page"></a>Stránka všechny výstrahy 
-Všechny výstrahy stránka umožňuje zobrazit seznam výstrah, které byly vytvořeny v rámci vybrané časové období. Můžete buď zobrazit seznam jednotlivé výstrahy nebo seznam inteligentní skupiny obsahující výstrahy. Klikněte na tlačítko hlavičky v horní části stránky pro přepínání mezi zobrazeními.
+### <a name="all-alerts-page"></a>Všechny stránky s upozorněními 
+Pomocí stránky pro všechny výstrahy zobrazíte seznam výstrah, které byly vytvořeny v rámci zvoleného časového období. Můžete zobrazit seznam jednotlivých výstrah nebo seznam inteligentní skupin, které obsahují upozornění. Klikněte na banner v horní části stránky a přepínání mezi zobrazeními.
 
-![Stránka všechny výstrahy](media/monitoring-overview-unified-alerts/all-alerts-page.png)
+![Všechny stránky s upozorněními](media/monitoring-overview-unified-alerts/all-alerts-page.png)
 
-Můžete filtrovat zobrazení, vyberte následující hodnoty v rozevíracích seznamů v horní části stránky.
+Zobrazení můžete filtrovat výběrem následující hodnoty v rozevíracích nabídek v horní části stránky.
 
 | Sloupec | Popis |
 |:---|:---|
-| Předplatné | Vyberte až 5 předplatných Azure. V zobrazení jsou zahrnuty pouze výstrahy ve vybraných předplatných. |
-| Skupina prostředků | Vyberte jedna skupina prostředků. V zobrazení jsou zahrnuty pouze výstrahy s cíli v s vybranou skupinou prostředků. |
-| Typ prostředku | Vyberte jeden nebo více typů prostředků. V zobrazení jsou zahrnuty pouze výstrahy s cíli vybraného typu. Tento sloupec je k dispozici pouze po zadal skupinu prostředků. |
-| Prostředek | Vyberte prostředek. V zobrazení jsou zahrnuty pouze výstrahy s této prostředky jako cíl. Tento sloupec je k dispozici pouze po byl zadán typ prostředku. |
-| Severity | Vyberte výstrahy závažnosti nebo *všechny* zahrnout všechny závažnosti výstrahy. |
-| Stav monitorování | Vyberte stav monitorování nebo *všechny* zahrnout výstrahy podmínek. |
-| Stav upozornění | Vyberte výstrahu, stavu nebo vybrat možnost *všechny* zahrnout výstrahy stavy. |
-| Monitorovat službu | Vyberte službu nebo vyberte *všechny* zahrnout všechny služby. Pouze výstrahy vytvořené pomocí této služby jako cíl pravidla jsou zahrnuty. |
-| Časové rozmezí | V zobrazení budou zahrnuty pouze výstrahy aktivováno v rámci vybrané časové období. Podporované hodnoty jsou po hodině, za posledních 24 hodin, uplynulých 7 dní a posledních 30 dnů. |
+| Předplatné | Vyberte až o pěti předplatných Azure. Pouze výstrahy ve vybraných předplatných se nastavují v zobrazení. |
+| Skupina prostředků | Výběr jedné skupiny prostředků. V zobrazení jsou zahrnuty pouze výstrahy s cíli ve vybrané skupině prostředků. |
+| Typ prostředku | Vyberte jeden nebo více typů prostředků. Pouze výstrahy s cíli vybraného typu jsou zahrnuty v zobrazení. Tento sloupec je k dispozici pouze po zadal skupinu prostředků. |
+| Prostředek | Vyberte prostředek. V zobrazení jsou zahrnuty pouze výstrahy s tento prostředek jako cíl. Tento sloupec je k dispozici pouze po byl zadán typ prostředku. |
+| Severity | Vyberte závažnost výstrahy, nebo vyberte *všechny* zahrnout všechny závažnosti výstrahy. |
+| Stav monitorování | Vybrat podmínku monitorování, nebo vyberte *všechny* zahrnout upozornění na podmínky. |
+| Stav upozornění | Vyberte výstrahy stavu nebo *všechny* zahrnout výstrahy stavy. |
+| Monitorovat službu | Vyberte službu, nebo vyberte *všechny* zahrnout všechny služby. Jsou zahrnuty pouze výstrahy vytvořené pravidly, které používají službu jako cíl. |
+| Časové rozmezí | Pouze výstrahy vyvolané v rámci vybrané časové období se nastavují v zobrazení. Podporované hodnoty jsou uplynulou hodinu, posledních 24 hodin, posledních 7 dní a posledních 30 dní. |
 
-Klikněte na tlačítko **sloupce** v horní části stránky a vybrat sloupce, které chcete zobrazit. Můžete odebrat všechny sloupce kromě pro 
+Vyberte **sloupce** v horní části stránky a vybrat sloupce, které chcete zobrazit. 
 
-### <a name="alert-detail-page"></a>Stránka podrobností výstrahy
-Když kliknete na výstrahu, zobrazí se stránka podrobností výstrahy. Poskytuje podrobnosti o výstraze a můžete změnit její stav.
+### <a name="alert-detail-page"></a>Stránky podrobností výstrahy
+Když vyberete výstrahu, zobrazí se stránka podrobností výstrahy. Poskytuje podrobnosti upozornění a umožňuje změnit její stav.
 
-![Podrobností výstrahy](media/monitoring-overview-unified-alerts/alert-detail.png)
+![Podrobnosti upozornění](media/monitoring-overview-unified-alerts/alert-detail.png)
 
-Stránka podrobností výstrahy obsahuje následující části.
+Na stránce podrobností výstrahy obsahuje následující části.
 
 | Sekce | Popis |
 |:---|:---|
 | Základy | Zobrazí vlastnosti a další důležité informace o výstraze. |
-| Historie | Uvádí každý akce výstraha a všechny změny výstrahy. Toto je aktuálně omezená na změny stavu. |
-| Čipové skupiny | Informace o skupině inteligentní výstraha je součástí. **Počet výstrah** odkazuje na počet výstrah, které jsou součástí inteligentní skupiny. To zahrnuje další výstrahy, které jsou zahrnuté ve stejné skupině stejné inteligentní vytvořené v posledních 30 dnů.  To je bez ohledu na to filtr času na stránce Seznam výstrah. Klikněte na výstrahu zobrazíte její podrobnosti. |
-| Další informace | Zobrazí další kontextové informace pro výstrahu, která je obvykle specifické pro daný typ zdroje, který vytvořili výstrahu. |
+| Historie | Uvádí všechny akce podniknuté upozornění a všechny změny provedené na upozornění. Toto je aktuálně omezená na změny stavu. |
+| Inteligentní skupiny | Informace o skupině inteligentní výstraha je součástí. *Počet výstrah* odkazuje na počet výstrah, které jsou součástí inteligentní skupinu. To zahrnuje další výstrahy ve stejné skupině inteligentní, které se vytvořily v posledních 30 dní.  To je bez ohledu na filtr času v seznamu stránky s upozorněními. Výběrem výstrahy zobrazíte její podrobnosti. |
+| Další podrobnosti | Zobrazí další kontextové informace pro výstrahy, což je obvykle specifický pro typ zdroje, která upozornění vytvořila. |
 
 
-### <a name="smart-group-detail-page"></a>Stránka podrobností čipové skupiny
-Když kliknete na skupinu inteligentní, zobrazí se stránka inteligentní podrobností skupiny. Poskytuje podrobnosti o skupině inteligentní, včetně reasoning použít k vytvoření skupiny a můžete změnit její stav.
+### <a name="smart-group-detail-page"></a>Stránka s podrobnostmi inteligentní skupiny
+Když vyberete inteligentní skupinu, zobrazí se stránka podrobností inteligentní skupinu. Poskytuje podrobnosti o inteligentní skupiny, včetně odůvodnění, která byla použita k vytvoření skupiny a umožňuje změnit její stav.
  
-![Podrobnosti skupiny čipové](media/monitoring-overview-unified-alerts/smart-group-detail.png)
+![Inteligentní skupiny podrobností](media/monitoring-overview-unified-alerts/smart-group-detail.png)
 
 
-Inteligentní podrobností skupiny stránka obsahuje následující části.
+Stránka s podrobnostmi inteligentní skupiny obsahuje následující části.
 
 | Sekce | Popis |
 |:---|:---|
-| Výstrahy | Uvádí jednotlivé výstrahy, které jsou součástí inteligentní skupiny. Klikněte na příslušnou výstrahu otevřete stránku s jeho podrobnostmi výstrahy. |
-| Historie | Uvádí každý akce inteligentní skupiny a všechny změny. Toto je aktuálně omezená na změny stavu a výstrahy členství změny. |
+| Výstrahy | Zobrazí seznam jednotlivých výstrah, které jsou součástí inteligentní skupinu. Vyberte výstrahu a otevřete její stránku podrobností výstrahy. |
+| Historie | Obsahuje všechny akce podniknuté inteligentní skupinou a změnách, které se provedly. Toto je aktuálně omezená na změny stavu a výstrahy členství. |
 
 ## <a name="next-steps"></a>Další postup
-- [Další informace o použití nové výstrahy prostředí vytvořit, zobrazit a spravovat výstrahy](monitor-alerts-unified-usage.md)
-- [Další informace o protokolu výstrahy v možnosti výstrahy](monitor-alerts-unified-log.md)
-- [Další informace o metriky výstrahy v možnosti výstrahy](monitoring-near-real-time-metric-alerts.md)
-- [Další informace o protokolu upozornění v možnosti výstrahy](monitoring-activity-log-alerts-new-experience.md)
+- [Naučte se používat nové prostředí upozornění k vytvoření, zobrazení a Správa výstrah](monitor-alerts-unified-usage.md)
+- [Další informace o upozornění protokolů v prostředí upozornění](monitor-alerts-unified-log.md)
+- [Další informace o upozorněních metrik v prostředí upozornění](monitoring-near-real-time-metric-alerts.md)
+- [Další informace o upozornění protokolu aktivit v prostředí upozornění](monitoring-activity-log-alerts-new-experience.md)

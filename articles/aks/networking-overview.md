@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 06/15/2018
+ms.date: 07/16/2018
 ms.author: marsma
-ms.openlocfilehash: da78d388c8e9fc9684942342f48902c2a248e3b1
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: cb7b27b178197cde040e1d106ed5a5ee20905823
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39072295"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39115791"
 ---
 # <a name="network-configuration-in-azure-kubernetes-service-aks"></a>Konfigurace sítě ve službě Azure Kubernetes Service (AKS)
 
@@ -27,8 +27,7 @@ Uzly v clusteru AKS nakonfigurovaný pro základní sítě použijte [kubenet] [
 
 ## <a name="advanced-networking"></a>Rozšířeného sítě
 
-**Pokročilé** sítě umístí pody ve službě Azure Virtual Network (VNet), který konfigurujete, přičemž jim automatické připojení k virtuální síti prostředky a nastavení díky bohaté integraci funkcí nabídku virtuální sítě.
-Rozšířeného sítě je k dispozici při nasazování AKS clustery [webu Azure portal][portal], rozhraní příkazového řádku Azure, nebo pomocí šablony Resource Manageru.
+**Pokročilé** sítě umístí pody ve službě Azure Virtual Network (VNet), který konfigurujete, přičemž jim automatické připojení k virtuální síti prostředky a nastavení díky bohaté integraci funkcí nabídku virtuální sítě. Rozšířeného sítě je k dispozici při nasazování AKS clustery [webu Azure portal][portal], rozhraní příkazového řádku Azure, nebo pomocí šablony Resource Manageru.
 
 Uzly v clusteru AKS nakonfigurován pro použití rozšířeného sítě [Azure Container síťové rozhraní (CNI)] [ cni-networking] modulu plug-in Kubernetes.
 
@@ -45,9 +44,6 @@ Rozšířeného sítě poskytují následující výhody:
 * Podů v podsíti, které mají povolené koncové body služeb můžete bezpečně připojit ke službám Azure, například Azure Storage a SQL DB.
 * Použití tras definovaných uživatelem (UDR) pro směrování provozu z podů na síťové virtuální zařízení.
 * Podů mít přístup k prostředkům na veřejném Internetu. Také funkce základní sítě.
-
-> [!IMPORTANT]
-> Každý uzel v clusteru AKS konfigurován pro rozšířeného sítě může být hostitelem maximálně **30 podů** při konfiguraci pomocí webu Azure portal.  Maximální hodnota může změnit pouze úpravou vlastnosti maxPods při nasazování clusteru pomocí šablony Resource Manageru. Každá virtuální síť zřízených pro použití s modulem plug-in Azure CNI je omezené na **4096 konfigurované IP adresy**.
 
 ## <a name="advanced-networking-prerequisites"></a>Pokročilé síťové požadavky
 
@@ -67,19 +63,36 @@ Plán IP adres pro AKS cluster se skládá z virtuální sítě, alespoň jednu 
 
 | Rozsah adres / Azure resource | Omezení a změna velikosti |
 | --------- | ------------- |
-| Virtuální síť | Virtuální síť Azure můžou být velké až /8 ale může mít 4096 nakonfigurovat jenom IP adresy. |
-| Podsíť | Musí být dostatečně velký pro uzly a tyto Pody. K výpočtu velikosti vašeho minimální podsítě: (počet uzlů) + (počet uzlů * Podů na uzel). Pro cluster s 50 uzly: (50) + (50 * 30) = 1,550, vaše podsíť bude muset být /21 nebo větší. |
+| Virtuální síť | Virtuální síť Azure můžou být velké až /8 ale může mít 16 000 nakonfigurovat jenom IP adresy. |
+| Podsíť | Musí být dostatečně velký, aby uzly, podů a všechny Kubernetes a Azure prostředky, které může být zřízené ve vašem clusteru. Například pokud nasadíte interní Azure Load Balancer, jeho front-endových IP adres se přidělují z podsítě clusteru, není veřejné IP adresy. <p/>Chcete-li vypočítat *minimální* velikost podsítě: `(number of nodes) + (number of nodes * pods per node)` <p/>Příklad pro cluster s 50 uzly: `(50) + (50 * 30) = 1,550` (/ 21, nebo větší) |
 | Rozsah adres služby Kubernetes | Tento rozsah by neměly používat libovolný prvek sítě na nebo připojené k této virtuální síti. Adresa služby CIDR musí být menší než /12. |
 | IP adresa služby Kubernetes DNS | IP adresu v rámci rozhraní Kubernetes služby rozsah adres, který bude používat zjišťování služby cluster (kube-dns). |
 | Adresa mostu docker | IP adresa (v notaci CIDR) použít jako Docker bridge IP adresu na uzlech. Výchozí 172.17.0.1/16. |
 
-Jak už bylo zmíněno dříve, každá virtuální síť zřízených pro použití s modulem plug-in Azure CNI je omezené na **4096 konfigurované IP adresy**. Každý uzel v clusteru nakonfigurovaná pro rozšířeného sítě může být hostitelem maximálně **30 podů**.
+Každá virtuální síť zřízených pro použití s modulem plug-in Azure CNI je omezené na **16 000 konfigurované IP adresy**.
+
+## <a name="maximum-pods-per-node"></a>Maximální podů na jeden uzel
+
+Výchozí maximální počet podů na jeden uzel v clusteru AKS se pohybuje mezi základní a rozšířené sítě a metody nasazení clusteru.
+
+### <a name="default-maximum"></a>Výchozí maximální
+
+* Základní síť: **110 podů na jeden uzel**
+* Rozšířeného sítě **30 podů na jeden uzel**
+
+### <a name="configure-maximum"></a>Nakonfigurujte maximální
+
+V závislosti na způsobu nasazení budete moci změnit maximální počet podů na jeden uzel v clusteru AKS.
+
+* **Azure CLI**: Zadejte `--max-pods` argument při nasazování clusteru s [az aks vytvořit] [ az-aks-create] příkazu.
+* **Šablony Resource Manageru**: Zadejte `maxPods` vlastnost [ManagedClusterAgentPoolProfile] objektu při nasazování clusteru pomocí šablony Resource Manageru.
+* **Azure portal**: nelze změnit maximální počet podů na jeden uzel, při nasazování clusteru pomocí webu Azure portal. Rozšířeného sítě clustery jsou omezená na 30 podů podle počtu uzlů po nasazení na webu Azure Portal.
 
 ## <a name="deployment-parameters"></a>Parametry nasazení
 
-Při vytvoření clusteru AKS, tyto parametry se dají konfigurovat pro rozšířeného sítě:
+Při vytváření clusteru AKS následující parametry se dají konfigurovat pro rozšířeného sítě:
 
-**Virtuální síť**: virtuální síť, do které chcete nasadit Kubernetes cluster. Pokud chcete vytvořit novou virtuální síť pro cluster, vyberte *vytvořit nový* a postupujte podle pokynů *vytvořit virtuální síť* oddílu.
+**Virtuální síť**: virtuální síť, do které chcete nasadit Kubernetes cluster. Pokud chcete vytvořit novou virtuální síť pro cluster, vyberte *vytvořit nový* a postupujte podle pokynů *vytvořit virtuální síť* oddílu. Virtuální síť je omezena na 16 000 nakonfigurovaných IP adres.
 
 **Podsíť**: podsítě v rámci virtuální sítě, ve které chcete nasadit cluster. Pokud chcete vytvořit novou podsíť ve virtuální síti pro váš cluster, vyberte *vytvořit nový* a postupujte podle pokynů *vytvořit podsíť* části.
 
@@ -135,7 +148,7 @@ Platí následující dotazy a odpovědi k **Upřesnit** konfiguraci sítě.
 
 * *Maximální počet podů je nasadit do uzlu konfigurovatelné?*
 
-  Ve výchozím nastavení každý uzel může hostovat maximálně 30 pody. Maximální hodnota může změnit pouze úpravou `maxPods` vlastnost při nasazování clusteru pomocí šablony Resource Manageru.
+  Ano, pokud nasadíte cluster pomocí šablony Resource Manageru nebo rozhraní příkazového řádku Azure. Zobrazit [maximální počet podů na uzel](#maximum-pods-per-node).
 
 * *Jak nakonfigurovat další vlastnosti pro podsíť, která jsem vytvořil při vytváření clusteru AKS Například koncových bodů služby.*
 
@@ -173,3 +186,4 @@ Clustery Kubernetes jsou vytvořené pomocí modul ACS podporovat [kubenet] [ ku
 <!-- LINKS - Internal -->
 [az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
 [aks-ssh]: aks-ssh.md
+[ManagedClusterAgentPoolProfile]: /azure/templates/microsoft.containerservice/managedclusters#managedclusteragentpoolprofile-object
