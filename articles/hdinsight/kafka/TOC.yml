@@ -61,8 +61,6 @@
           maintainContext: true
         - name: Použití Kafka s Azure Container Service
           href: apache-kafka-azure-container-services.md
-        - name: Kafka a Azure Functions
-          href: apache-kafka-azure-functions.md
     - name: Vývoj
       items:
         - name: Použití prázdných hraničních uzlů
