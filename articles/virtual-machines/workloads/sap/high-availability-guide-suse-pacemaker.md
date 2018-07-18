@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/13/2018
 ms.author: sedusch
-ms.openlocfilehash: 1fa69cc09772b9f90e6de05820c823f0409d926e
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 9ce95bcf15d0186c1baea3df407d0fc0c4200f45
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39070331"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39115472"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Nastavení Pacemaker na SUSE Linux Enterprise Server v Azure
 
@@ -40,7 +40,7 @@ Pokud nechcete investovat do dalšího virtuálního počítače, můžete použ
 ![Pacemaker na SLES – přehled](./media/high-availability-guide-suse-pacemaker/pacemaker.png)
 
 >[!IMPORTANT]
-> Použití zařízení SBD pro váš cluster Pacemaker, je nezbytné pro celkovou spolehlivost celého clusteru, který směrování mezi se virtuální počítače a virtuální počítač, který je hostitelem SBD zařízení neprochází přes jakékoli jiné zařízení, jako jsou [síťovýchvirtuálníchzařízení](https://azure.microsoft.com/solutions/network-appliances/). V opačném případě problémů s síťové virtuální zařízení může mít negativní dopad na stabilitu a spolehlivost na celkové konfiguraci clusteru. Pokud se chcete vyhnout tyto překážky, prozkoumat pravidla směrování síťových virtuálních zařízení a [pravidla směrování definované uživatele](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) při plánování a nasazování SBD zařízení.
+> Při plánování a nasazení Linuxu Pacemaker Clusterované uzly a SBD zařízení, je nezbytné pro celkovou spolehlivost úplná konfigurace clusteru, který součástí směrování mezi virtuálními počítači a virtuálních počítačů, který je hostitelem SBD zařízení neprochází přes jiná zařízení, jako jsou [síťových virtuálních zařízení](https://azure.microsoft.com/solutions/network-appliances/). V opačném případě problémy a události údržby pomocí síťového virtuálního zařízení může mít negativní dopad na stabilitu a spolehlivost na celkové konfiguraci clusteru. Pokud se chcete vyhnout tyto překážky nedefinují pravidla směrování síťových virtuálních zařízení nebo [pravidla směrování definované uživatele](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) této směrovat provoz mezi uzly clusteru a SBD zařízení prostřednictvím síťových virtuálních zařízení a podobná zařízení při plánování a nasazení Linuxu Pacemaker Clusterované uzly a SBD zařízení. 
 >
 
 

@@ -8,14 +8,14 @@ manager: noellelacharite
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
-ms.date: 07/16/2018
+ms.date: 07/17/2018
 ms.author: v-jerkin
-ms.openlocfilehash: bf37ffa9b5a185845c8eeafa7e00d352486fdce2
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: ed523493f456e65f7aa5d3ad33914e3e52cd7044
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39069460"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113386"
 ---
 # <a name="about-the-cognitive-services-speech-sdk"></a>Informace o službách Cognitive Services řeči SDK
 
@@ -23,7 +23,7 @@ Cognitive Services řeči Software Development Kit (SDK) poskytuje vaše aplikac
 
 [!include[Speech SDK Platforms](../../../includes/cognitive-services-speech-service-speech-sdk-platforms.md)]
 
-[!include[License Notice](includes/license-notice.md)]
+[!include[License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
 ## <a name="get-the-windows-sdk"></a>Získat Windows SDK
 
@@ -57,14 +57,19 @@ K vytvoření aplikace, zkopírovat nebo přesunout požadované binární soubo
 
 Sady Java SDK pro Android je zabalena jako [AAR (knihovna pro Android)](https://developer.android.com/studio/projects/android-library), který obsahuje potřebné knihovny, stejně jako požadovaná Android oprávnění k jeho používání.
 Je hostován v úložiště Maven v `https://csspeechstorage.blob.core.windows.net/maven/` jako balíček `com.microsoft.cognitiveservices.speech:client-sdk:0.5.0`.
+Spotřebě balíček z vašeho projektu Android Studio proveďte následující změny:
 
-* V projektu Android Studio přidejte
+* Na úrovni projektu `build.gradle` přidejte následující kód do `repository` části:
+
+  ```text
+  maven { url 'https://csspeechstorage.blob.core.windows.net/maven/' }
+  ```
+
+* V úrovni modulu `build.gradle` přidejte následující kód do `dependencies` části:
 
   ```text
   implementation 'com.microsoft.cognitiveservices.speech:client-sdk:0.5.0'
   ```
-
-  v `dependencies` část vaší úrovni modulu `build.gradle` souboru.
 
 Sada Java SDK je také součástí [sadou SDK pro řeč zařízení](speech-devices-sdk.md).
 

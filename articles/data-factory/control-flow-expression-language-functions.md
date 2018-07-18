@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: d862cd0223609d80c511362edbcc0ed6dd512b1f
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 5cdaba2a280221fa5fa9274ebfa6cafa18e7690c
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37859143"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39055011"
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Výrazy a funkce v Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -41,14 +41,14 @@ Hodnoty JSON v definici mohou být literál nebo výrazy, které se vyhodnotí z
 ```
 
 ## <a name="expressions"></a>Výrazy  
-Výrazy může vyskytovat kdekoli v řetězcové hodnotě JSON a vždy mít za následek další hodnoty JSON. Pokud je hodnota JSON výrazu, hlavní část výrazu je extrahován odebráním znaku @ (\@). Potřeby řetězcový literál, který začíná @, musejí být uvozeny pomocí@. Následující příklady ukazují, jak jsou výrazy vyhodnocovány.  
+Výrazy může vyskytovat kdekoli v řetězcové hodnotě JSON a vždy mít za následek další hodnoty JSON. Pokud je hodnota JSON výrazu, hlavní část výrazu je extrahován odebráním znaku @ (\@). Potřeby řetězcový literál, který začíná \@, musejí být uvozeny pomocí \@ \@. Následující příklady ukazují, jak jsou výrazy vyhodnocovány.  
   
 |Hodnota JSON|Výsledek|  
 |----------------|------------|  
 |"parametrů"|Vrátí se znaky "parametrů".|  
 |"parametry [1]"|Vrátí se znaky "parametry [1]".|  
-|"\@@"|Řetězec s 1 znak "@" se vrátí.|  
-|" \@"|2 znakový řetězec, který obsahuje "@" se vrátí.|  
+|"\@\@"|1 znak řetězec, který obsahuje '\@"je vrácena.|  
+|" \@"|2 znakový řetězec, který obsahuje ' \@"je vrácena.|  
   
  Výrazy se může zobrazit i uvnitř řetězce, pomocí funkce se nazývá *interpolace* kde výrazy jsou zabaleny v `@{ ... }`. Příklad: `"name" : "First Name: @{pipeline().parameters.firstName} Last Name: @{pipeline().parameters.lastName}"`  
   
@@ -62,7 +62,7 @@ Výrazy může vyskytovat kdekoli v řetězcové hodnotě JSON a vždy mít za n
 |"\@{kanálu ().parameters.myNumber}"| Vrátí `42` jako *řetězec*.|  
 |"Odpověď je: @{kanálu ().parameters.myNumber}"| Vrátí řetězec `Answer is: 42`.|  
 |"\@concat (" odpověď je: ", string(pipeline().parameters.myNumber))"| Vrátí řetězec `Answer is: 42`|  
-|"Odpověď je: \@@{kanálu ().parameters.myNumber}"| Vrátí řetězec `Answer is: @{pipeline().parameters.myNumber}`.|  
+|"Odpověď je: \@ \@{kanálu ().parameters.myNumber}"| Vrátí řetězec `Answer is: @{pipeline().parameters.myNumber}`.|  
   
 ### <a name="examples"></a>Příklady
 
@@ -170,7 +170,7 @@ V následujícím příkladu tento kanál dostává **inputPath** a **outputPath
 |obsahuje|Vrátí hodnotu PRAVDA, pokud slovník obsahuje seznam klíčů, obsahuje hodnotu nebo řetězec obsahuje podřetězec. Například následující výraz vrací `true:``contains('abacaba','aca')`<br /><br /> **Číslo parametru**: 1<br /><br /> **Název**: v rámci kolekce<br /><br /> **Popis**: povinné. Kolekce, kterou chcete vyhledávat.<br /><br /> **Číslo parametru**: 2<br /><br /> **Název**: objektu Find<br /><br /> **Popis**: povinné. Objekt, který chcete najít **v rámci kolekce**.|  
 |Délka|Vrátí počet prvků v poli nebo řetězci. Například následující výraz vrací `3`:  `length('abc')`<br /><br /> **Číslo parametru**: 1<br /><br /> **Název**: kolekce<br /><br /> **Popis**: povinné. Kolekce, kterou chcete získat délku.|  
 |prázdný|Vrátí true, pokud objekt, pole nebo řetězec je prázdný. Například následující výraz vrací `true`:<br /><br /> `empty('')`<br /><br /> **Číslo parametru**: 1<br /><br /> **Název**: kolekce<br /><br /> **Popis**: povinné. Kolekce, kterou chcete zkontrolovat, zda není prázdná.|  
-|průnik|Vrátí jedno pole nebo objekt s společné prvky pole nebo objekty do něho předaný. Například tato funkce vrací `[1, 2]`:<br /><br /> `intersection([1, 2, 3], [101, 2, 1, 10],[6, 8, 1, 2])`<br /><br /> Parametry pro funkci může být buď sada objektů, nebo sada polí (ne kombinace). Pokud jsou dva objekty se stejným názvem, zobrazí se do konečného objektu poslední objekt s tímto názvem.<br /><br /> **Číslo parametru**: 1... *n*<br /><br /> **Název**: kolekce *n*<br /><br /> **Popis**: povinné. Kolekce k vyhodnocení. Objekt musí být ve všech kolekcích předaná do výsledku.|  
+|Průnik|Vrátí jedno pole nebo objekt s společné prvky pole nebo objekty do něho předaný. Například tato funkce vrací `[1, 2]`:<br /><br /> `intersection([1, 2, 3], [101, 2, 1, 10],[6, 8, 1, 2])`<br /><br /> Parametry pro funkci může být buď sada objektů, nebo sada polí (ne kombinace). Pokud jsou dva objekty se stejným názvem, zobrazí se do konečného objektu poslední objekt s tímto názvem.<br /><br /> **Číslo parametru**: 1... *n*<br /><br /> **Název**: kolekce *n*<br /><br /> **Popis**: povinné. Kolekce k vyhodnocení. Objekt musí být ve všech kolekcích předaná do výsledku.|  
 |sjednocení|Vrátí jedno pole nebo objekt se všemi prvky, které jsou v pole nebo objekt předaný k němu. Například tato funkce vrací `[1, 2, 3, 10, 101]:`<br /><br /> :  `union([1, 2, 3], [101, 2, 1, 10])`<br /><br /> Parametry pro funkci může být buď sada objektů, nebo sada polí (ne kombinace). Pokud existují se stejným názvem v konečném výstupu dva objekty, zobrazí se do konečného objektu poslední objekt s tímto názvem.<br /><br /> **Číslo parametru**: 1... *n*<br /><br /> **Název**: kolekce *n*<br /><br /> **Popis**: povinné. Kolekce k vyhodnocení. Objekt, který se zobrazí v některém z kolekce se zobrazí ve výsledku.|  
 |první|Vrátí první prvek v poli nebo předaný řetězec. Například tato funkce vrací `0`:<br /><br /> `first([0,2,3])`<br /><br /> **Číslo parametru**: 1<br /><br /> **Název**: kolekce<br /><br /> **Popis**: povinné. Kolekce, která se má získat první objekt z.|  
 |poslední|Vrátí poslední prvek v poli nebo předaný řetězec. Například tato funkce vrací `3`:<br /><br /> `last('0123')`<br /><br /> **Číslo parametru**: 1<br /><br /> **Název**: kolekce<br /><br /> **Popis**: povinné. Kolekce, která se má získat poslední objekt z.|  
@@ -203,7 +203,7 @@ V následujícím příkladu tento kanál dostává **inputPath** a **outputPath
   
 -   Boolean  
   
--   pole  
+-   Pole  
   
 -   slovníky  
   

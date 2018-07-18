@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 07/16/2018
 ms.author: jeedes
-ms.openlocfilehash: f0ad879bb084a8d3a50a0934557eae64621c0160
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 68613b8613a2e5a9139b83eb23e66884659efc47
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39054247"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39114930"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-atlassian-cloud"></a>Kurz: Integrace Azure Active Directory se službou Cloud od společnosti Atlassian
 
@@ -39,7 +39,7 @@ Další informace o softwaru jako integraci služby (SaaS) aplikací s Azure AD 
 Konfigurace integrace Azure AD s cloudem od společnosti Atlassian, potřebujete následující položky:
 
 - Předplatné služby Azure AD.
-- Chcete-li povolit zabezpečení kontrolního výrazu SAML (Markup Language) jednotného přihlašování pro Cloud od společnosti Atlassian produkty, nastavte Identity Manager. Další informace o [Identity Manageru]( https://www.atlassian.com/enterprise/cloud/identity-manager).
+- Chcete-li povolit zabezpečení kontrolního výrazu SAML (Markup Language) jednotného přihlašování pro Cloud od společnosti Atlassian produkty, nastavení přístupu od společnosti Atlassian. Další informace o [přístupu od společnosti Atlassian]( https://www.atlassian.com/enterprise/cloud/identity-manager).
 
 > [!NOTE]
 > Při testování kroky v tomto kurzu doporučujeme je velmi riskantní používat produkčním prostředí.
@@ -99,22 +99,27 @@ Ke konfiguraci Azure AD jednotné přihlašování s cloudem od společnosti Atl
 
     ![Okno jednotné přihlašování](./media/atlassian-cloud-tutorial/tutorial_atlassiancloud_samlbase.png)
 
-3. V části Konfigurace aplikace v režimu zahájené pomocí IDP **od společnosti Atlassian Cloudová doména a adresy URL**, postupujte takto:
+3. Konfigurace aplikace v **zahájené pomocí IDP** režim, v části **od společnosti Atlassian Cloudová doména a adresy URL**, postupujte takto:
 
     ![Cloud od společnosti Atlassian domény a adresy URL jednotného přihlašování – informace](./media/atlassian-cloud-tutorial/tutorial_atlassiancloud_url.png)
     
-    a. V **identifikátor** zadejte **`https://auth.atlassian.com/saml/<unique ID>`**.
+    a. V **identifikátor** pole, zadejte adresu URL s následujícím vzorem: `https://auth.atlassian.com/saml/<unique ID>`.
     
-    b. V **adresy URL odpovědi** zadejte **`https://auth.atlassian.com/login/callback?connection=saml-<unique ID>`**.
+    b. V **adresy URL odpovědi** pole, zadejte adresu URL s následujícím vzorem: `https://auth.atlassian.com/login/callback?connection=saml-<unique ID>`.
 
-    c. V **stav přenosu** pole, zadejte adresu URL pomocí následující syntaxe: **`https://<instancename>.atlassian.net`**.
+    c. Zkontrolujte **zobrazit pokročilé nastavení URL**.
 
-4. Pokud chcete nakonfigurovat aplikace v režimu iniciovaného Zprostředkovatelem přihlašování, vyberte **zobrazit pokročilé nastavení URL** a pak na **přihlašovací adresa URL** pole, zadejte adresu URL s následující syntaxí: **`https://<instancename>.atlassian.net`** .
+    d. V **stav přenosu** pole, zadejte adresu URL s následujícím vzorem: `https://<instancename>.atlassian.net`.
+
+    > [!NOTE]
+    > Předchozí hodnoty nejsou skutečný. Aktualizujte tyto hodnoty se skutečné identifikátorem a adresa URL odpovědi. Zobrazí se tyto skutečné hodnoty z konfigurace SAML služby Cloud od společnosti Atlassian obrazovky, který je vysvětlen později v tomto kurzu.
+
+4. Konfigurace aplikace v režimu iniciovaného Zprostředkovatelem přihlašování, vyberte **zobrazit pokročilé nastavení URL** a pak na **přihlašovací adresa URL** pole, zadejte adresu URL s následujícím vzorem: `https://<instancename>.atlassian.net`.
 
     ![Cloud od společnosti Atlassian domény a adresy URL jednotného přihlašování – informace](./media/atlassian-cloud-tutorial/tutorial_atlassiancloud_url1.png)
 
     > [!NOTE]
-    > Předchozí hodnoty nejsou skutečný. Aktualizujte identifikátor skutečné odpovědi adresy URL a přihlašování hodnoty adresy URL. Získá skutečné hodnoty z obrazovky konfigurace SAML služby Cloud od společnosti Atlassian. Vysvětlíme hodnoty v pozdější části kurzu.
+    > Předchozí přihlašovací adresa URL není skutečný. Skutečná adresa URL přihlašování zaktualizujte příslušnou hodnotu. Kontakt [tým podpory od společnosti Atlassian cloudu klienta](https://support.atlassian.com/) tuto výhodu získáte.
 
 5. V části **podpisový certifikát SAML**vyberte **Certificate(Base64)** a poté uložte soubor certifikátu v počítači.
 

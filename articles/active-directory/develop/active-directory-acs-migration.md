@@ -1,6 +1,6 @@
 ---
-title: Migrace ze služby Řízení přístupu Azure | Microsoft Docs
-description: Možnosti pro přesun aplikace a služby ze služby Řízení přístupu Azure
+title: Migrace ze služby Azure Access Control service | Dokumentace Microsoftu
+description: Možnosti pro přesun aplikace a služby ze služby Azure Access Control
 services: active-directory
 documentationcenter: dev-center-name
 author: CelesteDG
@@ -16,79 +16,79 @@ ms.workload: identity
 ms.date: 11/14/2017
 ms.author: celested
 ms.reviewer: hirsin, dastrock
-ms.openlocfilehash: 0b3e7d9b7a01767e44c7c59c7250808290a03c30
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 803dd69aed91f6e33c354d01d3f5419597d98de9
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36319220"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39115880"
 ---
-# <a name="migrate-from-the-azure-access-control-service"></a>Migrace ze služby Řízení přístupu Azure
+# <a name="migrate-from-the-azure-access-control-service"></a>Migrace ze služby Azure Access Control service
 
-Azure řízení přístupu, což je služba Azure Active Directory (Azure AD), bude vyřazeno na 7 listopadu 2018. Aplikace a služby, které používají řízení přístupu musí být plně migrovat na jiný mechanismus ověřování té. Tento článek popisuje doporučení pro aktuální zákazníci při plánování přestat používat použití řízení přístupu. Pokud nepoužijete aktuálně řízení přístupu, nemusíte provádět žádnou akci.
+Azure Access Control, služba Azure Active Directory (Azure AD), se vyřadí dne 7. května 2018. Aplikací a služeb, které používají řízení přístupu musí být plně migrovat na jiný mechanismus ověřování té. Tento článek popisuje doporučení pro stávající zákazníky, plánujete přestat používat vaše užívání řízení přístupu. Pokud nepoužíváte aktuálně řízení přístupu, není nutné provádět žádnou akci.
 
 
 ## <a name="overview"></a>Přehled
 
-Řízení přístupu je Cloudová služba ověřování, která nabízí snadný způsob, jak ověřování a autorizaci uživatelů pro přístup k webovým aplikacím a službám. To umožňuje mnoho funkcí ověřování a autorizaci se promítnou z vašeho kódu. Řízení přístupu slouží především vývojáři a architektům klienti rozhraní Microsoft .NET, webové aplikace ASP.NET a webových služeb Windows Communication Foundation (WCF).
+Řízení přístupu je Cloudová služba ověřování, která nabízí snadný způsob, jak ověřovat a autorizovat uživatele pro přístup k webovým aplikacím a službám. To umožňuje mnoho funkcí ověřování a autorizace promítnout z kódu. Řízení přístupu používá primárně vývojářům a architektům klientů Microsoft .NET, webové aplikace ASP.NET a webových služeb Windows Communication Foundation (WCF).
 
-Případy použití pro řízení přístupu můžete rozdělit do tří kategorií:
+Případy použití pro řízení přístupu můžete rozdělit do tří hlavních kategorií:
 
-- Ověřování pro určité cloudové služby společnosti Microsoft, včetně Azure Service Bus a Dynamics CRM. Klientské aplikace získat tokeny z řízení přístupu k ověření na tyto služby k provádění různých akcí.
-- Přidání ověřování pro webové aplikace, hotových (např. Sharepointu) a vlastní. Pomocí řízení přístupu "pasivní" ověřování webové aplikace může podporovat přihlášení pomocí účtu Microsoft (dříve Live ID) a s účty z Google, Facebook, Yahoo, Azure AD a služby Active Directory Federation Services (AD FS).
-- Zabezpečení vlastních webových služeb s tokeny vydané pomocí řízení přístupu. Webové služby pomocí "aktivní" ověřování můžete zajistit, že umožňují přístup pouze k známí klienti ověřené pomocí řízení přístupu.
+- Ověřování v některých cloudových služeb Microsoftu, včetně služby Azure Service Bus a Dynamics CRM. Klientských aplikací získat tokeny od řízení přístupu k ověřování k těmto službám provádět různé akce.
+- Přidání ověřování do webové aplikace, vlastní a připravená (jako je SharePoint). Pomocí řízení přístupu "pasivní" ověřování webové aplikace může podporovat přihlášení pomocí účtu Microsoft (dřív Live ID) a pomocí účtů z Google, Facebooku, Yahoo, Azure AD a služby Active Directory Federation Services (AD FS).
+- Zabezpečení vlastních webových služeb s tokeny vystavené službou Access Control. Webové služby s použitím "aktivní" ověřování, můžete zajistit, že se povolí přístup pouze k známí klienti, které jste se ověřili pomocí řízení přístupu.
 
-Každá z těchto případy a jejich doporučená migrace, které jsou popsané strategie použít v následujících částech. 
+Každá z těchto případů a jejich doporučená migrace, které jsou popsané strategie použít v následujících částech. 
 
 > [!WARNING]
-> Ve většině případů se nevyžadují změny významné kódu při migraci stávající aplikace a služby do novější technologie. Doporučujeme, abyste ihned začít plánovat a provádění migrace předejdete všechny potenciální výpadků nebo výpadek.
+> Ve většině případů jsou potřeba změny významné kódu pro migraci stávajících aplikací a služeb na novější technologií. Doporučujeme, abyste ihned začít plánovat a realizaci migrace předcházet veškerým potenciální výpadků nebo výpadek.
 
 Řízení přístupu má následující komponenty:
 
-- Zabezpečené tokenu služby (STS), která přijímá žádosti o ověření a vydává tokeny zabezpečení na oplátku.
+- Služba tokenů zabezpečení (STS), které přijímá žádosti o ověření a na oplátku vydává tokeny zabezpečení.
 - Portál Azure classic, kde můžete vytvořit, odstranit a povolit nebo zakázat obory názvů řízení přístupu.
-- Samostatné řízení přístupu portálu pro správu, kde můžete přizpůsobit a nakonfigurovat obory názvů řízení přístupu.
-- Služba správy, který můžete použít k automatizaci funkcí portálů.
-- Token transformace pravidlo modul, který můžete použít k definování složitých logických k manipulaci s formátem výstupních tokenů, které vydává řízení přístupu.
+- Samostatné řízení přístupu na portálu pro správu, kde přizpůsobení a konfiguraci oborů názvů řízení přístupu.
+- Služba správy, který můžete použít k automatizaci funkce portály.
+- Token transformace pravidlo modul, který můžete použít k definování komplexní logiku pro manipulaci s výstupního formátu tokeny, které vystavuje řízení přístupu.
 
-Pokud chcete použít tyto součásti, je nutné vytvořit jeden nebo více oborů názvů řízení přístupu. A *obor názvů* je řízení přístupu, který vašim aplikacím a službám komunikovat s vyhrazenou instancí. Obor názvů je izolován od ostatních zákazníků řízení přístupu. Zákazníci navzájem řízení přístupu používat vlastní obory názvů. Obor názvů v řízení přístupu má vyhrazenou adresu URL, které vypadá takto:
+Pokud chcete použít tyto komponenty, musíte vytvořit jeden nebo více oborů názvů řízení přístupu. A *obor názvů* je vyhrazená instance systému řízení přístupu, které vašim aplikacím a službám komunikovat. Obor názvů je izolovaná od všech ostatních zákazníků řízení přístupu. Ostatním zákazníkům řízení přístupu používat svůj vlastní obor názvů. Obor názvů řízení přístupu má vyhrazené adresy URL, který vypadá takto:
 
 ```HTTP
 https://<mynamespace>.accesscontrol.windows.net
 ```
 
-Veškerá komunikace s služby tokenů zabezpečení a operace správy se provádějí na této adrese URL. Můžete použít různé cesty pro jiné účely. Pokud chcete zjistit, jestli služby nebo aplikace pomocí řízení přístupu, monitorování pro všechny přenosy na https://<namespace>. accesscontrol.windows.net. Přenosy dat pro tuto adresu URL se zpracovává souborem řízení přístupu a musí být zastaveny. 
+Veškerá komunikace s STS a operace správy se provádějí na této adrese URL. Použití různých cest pro různé účely. Pokud chcete zjistit, jestli vaše aplikace nebo služby, použití řízení přístupu, monitorování pro veškerý provoz na https://&lt;obor názvů&gt;. accesscontrol.windows.net. Veškerý provoz na tuto adresu URL zařizuje služba Access Control a musí být ukončena. 
 
-Výjimkou je přenosy dat do `https://accounts.accesscontrol.windows.net`. Provoz tato adresa URL již zpracovává jiný službou a **není** vliv vyřazení řízení přístupu. 
+Výjimkou je veškerý provoz do `https://accounts.accesscontrol.windows.net`. Provoz na tuto adresu URL již zpracovává jinou službou a **není** ovlivněny vyřazení řízení přístupu. 
 
-Další informace o řízení přístupu najdete v tématu [2.0 služby Řízení přístupu (archivovat)](https://msdn.microsoft.com/library/hh147631.aspx).
+Další informace o řízení přístupu najdete v tématu [2.0 služby Řízení přístupu (archivovaným)](https://msdn.microsoft.com/library/hh147631.aspx).
 
-## <a name="retirement-schedule"></a>Plán vyřazování z provozu
+## <a name="retirement-schedule"></a>Plán vyřazení z provozu
 
-Od listopadu 2017 všechny součásti řízení přístupu jsou plně podporované a funkční. Pouze omezení je, že jste [nelze vytvořit nové obory názvů řízení přístupu prostřednictvím portálu Azure classic](https://azure.microsoft.com/blog/acs-access-control-service-namespace-creation-restriction/).
+Všechny součásti řízení přístupu k listopadu 2017, jsou plně podporované a provozní. Jediným omezením je to, že jste [nelze vytvořit nové obory názvů řízení přístupu prostřednictvím portálu Azure classic](https://azure.microsoft.com/blog/acs-access-control-service-namespace-creation-restriction/).
 
-Tady je plán pro místo začne součásti řízení přístupu:
+Tady je plán pro ukončení podpory pro řízení přístupu na komponenty:
 
-- **2017 listopadu**: Správce Azure AD na základě zkušeností uživatelů portálu Azure classic [je vyřazeno](https://blogs.technet.microsoft.com/enterprisemobility/2017/09/18/marching-into-the-future-of-the-azure-ad-admin-experience-retiring-the-azure-classic-portal/). V tomto okamžiku je k dispozici v nové, vyhrazené URL správu oboru názvů pro řízení přístupu: `http://manage.windowsazure.com?restoreClassic=true`. Zobrazit existující obory, povolení a zakázání obory názvů a k odstranění obory názvů, pokud zvolíte možnost, použijte tuto adresu URl.
-- **2. dubna 2018**: portál Azure classic je zcela vyřazen z provozu, znamená obor názvů řízení přístupu již není k dispozici prostřednictvím libovolná adresa URL. V tomto okamžiku nelze zakázat nebo povolit, odstranit nebo výčet obory řízení přístupu. Portálu pro správu řízení přístupu však budou plně funkční a v umístění `https://\<namespace\>.accesscontrol.windows.net`. Všechny součásti řízení přístupu i nadále fungovat normálně.
-- **7 listopadu 2018**: všechny řízení přístupu součásti jsou trvale vypnout. To zahrnuje portálu pro správu řízení přístupu, služba správy, služba tokenů zabezpečení a tokenu transformační pravidlo modul. V tomto okamžiku všechny požadavky, které byly odeslány na řízení přístupu (umístěné v \<obor názvů\>. accesscontrol.windows.net) nezdaří. Jste měli migrovali všechny existující aplikace a služby do jiných technologií dobře před tímto časem.
+- **. Listopadu 2017**: prostředí správce Azure AD na portálu Azure classic [byl vyřazen z provozu](https://blogs.technet.microsoft.com/enterprisemobility/2017/09/18/marching-into-the-future-of-the-azure-ad-admin-experience-retiring-the-azure-classic-portal/). V tomto okamžiku je k dispozici na adrese URL nového, vyhrazené Správa oboru názvů pro řízení přístupu: `http://manage.windowsazure.com?restoreClassic=true`. Zobrazit vaše stávající obory názvů, povolovat a zakazovat obory názvů a odstraňovat obory názvů, pokud budete chtít použijte tuto adresu URl.
+- **2. dubnem 2018**: na portálu Azure classic portal byl zcela vyřazen z provozu, což znamená, Správa oboru názvů řízení přístupu už nejsou k dispozici prostřednictvím libovolnou adresu URL. V tuto chvíli nelze zakázat nebo povolit, odstranit nebo výčet obory názvů řízení přístupu. Ale na portálu pro správu řízení přístupu budou plně funkční a v `https://\<namespace\>.accesscontrol.windows.net`. Fungovat normálně dál všech ostatních součástí řízení přístupu.
+- **7. listopadu 2018**: řízení přístupu na všechny komponenty jsou trvale vypnout. To zahrnuje na portálu pro správu řízení přístupu, služba správy, služba tokenů zabezpečení a stroj pravidel transformace token. V tomto okamžiku všechny požadavky odeslané na řízení přístupu (umístěný ve \<obor názvů\>. accesscontrol.windows.net) selžou. Měli jste migrovali všechny existující aplikace a služby na jiné technologie dobře před tímto časem.
 
 
 ## <a name="migration-strategies"></a>Strategie migrace
 
-Následující části popisují základní doporučení pro migraci z řízení přístupu na dalších technologiích společnosti Microsoft.
+Následující části popisují základní doporučení pro migraci ze řízení přístupu na jiné technologie Microsoftu.
 
-### <a name="clients-of-microsoft-cloud-services"></a>Klienti cloudové služby společnosti Microsoft
+### <a name="clients-of-microsoft-cloud-services"></a>Klienti cloudovým službám Microsoftu
 
-Jednotlivých cloudových služeb společnosti Microsoft, které přijímá tokeny, které jsou vydány řízení přístupu nyní podporuje aspoň jeden alternativní způsob ověřování. Správný ověřovací mechanismus se liší u každé služby. Doporučujeme, abyste naleznete konkrétní dokumentace pro každou službu oficiální pokyny. Pro usnadnění práce každou sadu dokumentace je k dispozici zde:
+Každé cloudové službě Microsoftu, které přijímá tokeny, které jsou vydány službou Access Control, teď podporuje aspoň jeden alternativní formu ověřování. Mechanismus správné ověřování se liší u každé služby. Doporučujeme vám, že odkazujete na příslušnou část dokumentace k jednotlivým službám oficiální pokyny. Pro usnadnění práce každá sada dokumentace je k dispozici zde:
 
 | Služba | Doprovodné materiály |
 | ------- | -------- |
 | Azure Service Bus | [Migrace na sdílených přístupových podpisů](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-migrate-acs-sas) |
-| Předávání přes Azure Service Bus | [Migrace na sdílených přístupových podpisů](https://docs.microsoft.com/azure/service-bus-relay/relay-migrate-acs-sas) |
+| Azure Service Bus Relay | [Migrace na sdílených přístupových podpisů](https://docs.microsoft.com/azure/service-bus-relay/relay-migrate-acs-sas) |
 | Azure Managed Cache | [Migrace na Azure Redis Cache](https://docs.microsoft.com/azure/redis-cache/cache-faq#which-azure-cache-offering-is-right-for-me) |
-| Služby Azure DataMarket | [Migrace na rozhraní API kognitivní služby](https://docs.microsoft.com/azure/machine-learning/studio/datamarket-deprecation) |
-| BizTalk Services | [Migrace s funkcí Logic Apps služby Azure App Service](https://docs.microsoft.com/azure/machine-learning/studio/datamarket-deprecation) |
+| Služby Azure DataMarket | [Migrace na rozhraní API služeb Cognitive Services](https://docs.microsoft.com/azure/machine-learning/studio/datamarket-deprecation) |
+| BizTalk Services | [Migrace do funkce Logic Apps služby Azure App Service](https://docs.microsoft.com/azure/machine-learning/studio/datamarket-deprecation) |
 | Azure Media Services | [Migrace na ověřování Azure AD](https://azure.microsoft.com/blog/azure-media-service-aad-auth-and-acs-deprecation/) |
 | Azure Backup | [Upgrade agenta Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq) |
 
@@ -102,78 +102,78 @@ Jednotlivých cloudových služeb společnosti Microsoft, které přijímá toke
 
 ### <a name="sharepoint-customers"></a>Zákazníci služby SharePoint
 
-SharePoint 2013, 2016 a SharePoint Online zákazníci použili dlouho služby ACS pro účely ověření v cloudu, místní a hybridní scénáře. Některé funkce služby SharePoint a případy použití ovlivní vyřazení služby ACS, zatímco ostatní není. Níže uvedená tabulka shrnuje migrace pokyny pro některé z nejčastěji používané SharePoint funkce této využívání služby ACS:
+SharePoint 2013, 2016, a Sharepointu Online zákazníci využili dlouho ACS pro účely ověřování v cloudu, místní a hybridní scénáře. Některé funkce služby SharePoint a případy použití ovlivňuje vyřazení z provozu služby ACS, zatímco jiné se tak nestane. Níže uvedená tabulka shrnuje pokyny k migraci pro některé z nejoblíbenějších SharePoint funkcí této služby ACS využívat:
 
 | Funkce | Doprovodné materiály |
 | ------- | -------- |
-| Ověřování uživatelů z Azure AD | Dříve Azure AD nepodporuje tokeny SAML 1.1 vyžaduje SharePoint pro ověřování a služby ACS byl použit jako prostředník, který vytvořil token s aktualizací služby SharePoint se službou Azure AD formátuje. Teď můžete [připojení služby SharePoint přímo do služby Azure AD pomocí zásad vystavování tokenů](https://docs.microsoft.com/Office365/Enterprise/using-azure-ad-for-sharepoint-server-authentication). |
-| [Ověřování aplikací & ověřování serveru na server v SharePoint místní](https://technet.microsoft.com/library/jj219571(v=office.16).aspx) | Není ovlivněné služby ACS vyřazení; nejsou nutné žádné změny. | 
-| [Autorizace nízkou vztahu důvěryhodnosti pro SharePoint doplňky (poskytovatele a hostované služby SharePoint)](https://docs.microsoft.com/sharepoint/dev/sp-add-ins/three-authorization-systems-for-sharepoint-add-ins) | Není ovlivněné služby ACS vyřazení; nejsou nutné žádné změny. |
-| [Vyhledávání hybridní cloudové služby SharePoint](https://blogs.msdn.microsoft.com/spses/2015/09/15/cloud-hybrid-search-service-application/) | Není ovlivněné služby ACS vyřazení; nejsou nutné žádné změny. |
+| Ověřování uživatelů ze služby Azure AD | Dříve Azure AD nepodporuje tokeny SAML 1.1 vyžaduje SharePoint pro ověřování a služby ACS se použil jako formátuje zprostředkovatele, který vytvořil token služby SharePoint s aktualizací s využitím Azure AD. Teď můžete [připojení služby SharePoint přímo do služby Azure AD pomocí zásad vystavování tokenů](https://docs.microsoft.com/Office365/Enterprise/using-azure-ad-for-sharepoint-server-authentication). |
+| [Aplikace ověřování a ověřování na serveru v SharePoint v místním prostředí](https://technet.microsoft.com/library/jj219571(v=office.16).aspx) | Není ovlivněna vyřazení ACS; nejsou nutné žádné změny. | 
+| [Vztah důvěryhodnosti s nízkou autorizace Sharepointových doplňků (Zprostředkovatel hostovaný a hostované služby SharePoint)](https://docs.microsoft.com/sharepoint/dev/sp-add-ins/three-authorization-systems-for-sharepoint-add-ins) | Není ovlivněna vyřazení ACS; nejsou nutné žádné změny. |
+| [Vyhledávání hybridní cloudové služby SharePoint](https://blogs.msdn.microsoft.com/spses/2015/09/15/cloud-hybrid-search-service-application/) | Není ovlivněna vyřazení ACS; nejsou nutné žádné změny. |
 
 ### <a name="web-applications-that-use-passive-authentication"></a>Webové aplikace, které používají pasivní ověřování
 
-Pro webové aplikace, které používají řízení přístupu pro ověřování uživatelů řízení přístupu nabízí následující funkce a možnosti pro vývojáře webových aplikací a architektům:
+Pro webové aplikace, které používají řízení přístupu k ověřování uživatelů řízení přístupu poskytuje následující funkce a možnosti pro webové aplikace vývojářům a architektům:
 
-- Těsná integrace s Windows Identity Foundation (WIF).
-- Federace se Google, Facebook, Yahoo, Azure Active Directory a AD FS účty a účty Microsoft.
-- Podpora pro následující protokoly pro ověřování: OAuth 2.0 koncept 13, WS-Trust a Web Services Federation (WS-Federation).
-- Podpora pro následující formáty tokenu: JSON Web Token (JWT), SAML 1.1, SAML 2.0 a jednoduché webové tokenu (SWT).
-- Prostředí pro zjišťování domovské sféry, integrované do WIF, který umožňuje uživatelům vyberte typ účtu, který bude používat k přihlášení. Toto prostředí je hostitelem webové aplikace a je plně přizpůsobitelná.
-- Token transformaci, která umožňuje bohaté přizpůsobení deklarací přijatých webovou aplikaci z řízení přístupu, včetně:
-    - Předávání deklarací identity od zprostředkovatelů identity.
-    - Přidání další vlastní deklarace.
-    - Jednoduché pak v případě logika vystavovat deklarace identity za určitých podmínek.
+- Těsnou integraci s Windows Identity Foundation (WIF).
+- Federace se službou Google, Facebooku, Yahoo, Azure Active Directory a AD FS účty a účty Microsoft.
+- Podpora pro následující protokoly pro ověřování: koncept 13 OAuth 2.0, WS-Trust a Web Services Federation (WS-Federation).
+- Podpora pro token formátech: JSON Web Token (JWT), SAML 1.1, SAML 2.0 a Simple Web Token (SWT).
+- Prostředí pro zjišťování domovské sféry, integrované do technologie WIF, který umožňuje uživatelům vybrat si typ účtu, které používají pro přihlášení. Toto prostředí je hostovaný webovou aplikací a je plně přizpůsobitelná.
+- Token transformace, která umožňuje bohaté možnosti přizpůsobení deklarací přijatých webové aplikace z řízení přístupu, včetně:
+    - Předávání deklarace identity od zprostředkovatelů identity.
+    - Přidání dalších vlastních deklarací identity.
+    - Jednoduché logiku if-then a vystavovat deklarace identity za určitých podmínek.
 
-Bohužel není jedna služba, která nabízí všechny tyto funkce ekvivalentní. Byste měli zvážit, jaké funkce řízení přístupu je třeba a pak vybrat mezi ověřováním prostřednictvím [Azure Active Directory](https://azure.microsoft.com/develop/identity/signin/), [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) (Azure AD B2C), nebo jiné cloudové ověřování Služba.
+Bohužel není jedna služba, která nabízí všechny tyto funkce ekvivalentní. By měla vyhodnotit, jaké možnosti řízení přístupu potřebujete a klikněte na tlačítko mezi použitím [Azure Active Directory](https://azure.microsoft.com/develop/identity/signin/), [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) (Azure AD B2C), nebo jiné cloudové ověřování Služba.
 
-#### <a name="migrate-to-azure-active-directory"></a>Migrace na Azure Active Directory
+#### <a name="migrate-to-azure-active-directory"></a>Migrace do Azure Active Directory
 
-Cesta ke zvážení je integrace aplikace a služby přímo s Azure AD. Azure AD je poskytovatel cloudových identit Microsoft pracovní nebo školní účty. Azure AD je zprostředkovatel identity pro Office 365, Azure a mnoho dalšího. Poskytuje podobné federovaný možnosti ověřování pro řízení přístupu, ale nepodporuje všechny funkce řízení přístupu. 
+Cesta ke zvážení integruje přímo s Azure AD s aplikacemi a službami. Azure AD je poskytovatelem cloudových identit pro Microsoft pracovní nebo školní účty. Azure AD je zprostředkovatel identity pro Office 365, Azure a spoustu dalších věcí. Poskytuje podobné federované ověřování možností na řízení přístupu, ale nepodporuje všechny funkce řízení přístupu. 
 
-Primární příkladem je federation s poskytovateli sociální identity, jako je Facebook, Google a Yahoo. Pokud vaši uživatelé přihlásit pomocí těchto typů přihlašovacích údajů, není řešení pro vás Azure AD. 
+Primární příkladem je federace se službou zprostředkovatele sociální identity, jako je Facebook, Google a Yahoo. Pokud vaši uživatelé přihlásit pomocí těchto typů přihlašovacích údajů, není řešení za vás Azure AD. 
 
-Azure AD nepodporuje ani nemusí být přesné stejné ověřovací protokoly jako řízení přístupu. Například i když řízení přístupu a Azure AD podporovat OAuth, existují malé rozdíly v každé implementace. Různé implementace vyžadují, abyste upravit kód jako součást migrace.
+Azure AD nepodporuje ani nemusí být přesně stejné ověřovací protokoly jako řízení přístupu. Například i když řízení přístupu a Azure AD podporují OAuth, existují malé rozdíly každá implementace. Jedná o rozdílné implementace vyžadovat úpravy kódu jako součást migrace.
 
-Azure AD poskytuje však několik výhod potenciální zákazníkům řízení přístupu. Je nativně podporuje Microsoft pracovní nebo školní účty hostovaná v cloudu, které se běžně používají zákazníci řízení přístupu. 
+Azure AD poskytuje však řadu potenciálních výhod zákazníkům řízení přístupu. Je nativně podporuje Microsoft pracovní nebo školní účty hostované v cloudu, které se běžně používají zákazníci řízení přístupu. 
 
-Klient služby Azure AD můžete také federovaný na jeden nebo více instancí místní služby Active Directory pomocí služby AD FS. Tímto způsobem, vaše aplikace může ověřit cloudových uživatelů a uživatelů, kteří jsou hostované na místě. Také podporuje protokol WS-Federation, takže je relativně jednoduché k integraci s webovou aplikaci pomocí WIF.
+Klient služby Azure AD můžete také federovanou se jednu nebo víc instancí v místním Active Directory pomocí služby AD FS. Tímto způsobem, vaše aplikace můžete ověřovat uživatele, založené na cloudu a uživatelů, které jsou hostované místně. Také podporuje protokol WS-Federation, je poměrně přímočarý k integraci s webovou aplikací pomocí technologie WIF.
 
-Následující tabulka porovnává funkce řízení přístupu, které jsou relevantní pro webové aplikace se tyto funkce, které jsou k dispozici ve službě Azure AD. 
+Následující tabulka porovnává funkce řízení přístupu, které jsou relevantní pro webové aplikace s funkcemi, které jsou k dispozici ve službě Azure AD. 
 
-Na vysoké úrovni *Azure Active Directory je pravděpodobně nejlepší volbou pro migraci Pokud umožníte uživatelům přihlášení v pouze s jejich Microsoft pracovní nebo školní účty*.
+Na vysoké úrovni *Azure Active Directory je pravděpodobně nejlepší volbou pro migraci je-li umožnit uživatelům přihlášení v pouze s jejich Microsoft pracovní nebo školní účty*.
 
 | Schopnost | Podpora řízení přístupu | Podpora Azure AD |
 | ---------- | ----------- | ---------------- |
 | **Typy účtů** | | |
 | Microsoft pracovní nebo školní účty | Podporováno | Podporováno |
-| Účty z Windows Server Active Directory a AD FS |-Podporované prostřednictvím federaci se klient služby Azure AD <br />-Podporované prostřednictvím přímé federační službou AD FS | Podporuje jen přes federaci se klient služby Azure AD | 
-| Účty z jiných podnikových systémů správy identit |-Možný prostřednictvím federaci se klient služby Azure AD <br />-Podporované prostřednictvím přímé federation | Možný prostřednictvím federaci se klient služby Azure AD |
-| Účty Microsoft pro osobní použití | Podporováno | Podporované přes Azure AD v2.0 protokolu OAuth, ale nikoli prostřednictvím žádné jiné protokoly | 
-| Facebook, Google, Yahoo účty | Podporováno | Nepodporuje se jakékoli |
-| **Protokoly a kompatibility SDK** | | |
-| WIF | Podporováno | Podporované, ale omezená pokyny jsou k dispozici |
+| Účty z Active Directory a AD FS ve Windows serveru |-Podporované prostřednictvím federace s tenantem Azure AD <br />-Podporované prostřednictvím přímé federace se službou AD FS | Podporuje jenom prostřednictvím federace s tenantem Azure AD | 
+| Účty z jiných podnikových systémů správy identit |-Možný prostřednictvím federace s tenantem Azure AD <br />-Podporované prostřednictvím federace s přímým přístupem | Možný prostřednictvím federace s tenantem Azure AD |
+| Účty Microsoft pro osobní použití | Podporováno | Podporované prostřednictvím Azure AD v2.0 protokolu OAuth, ale nikoli prostřednictvím dalších protokolů | 
+| Účty služby Facebook, Google, Yahoo | Podporováno | Nepodporuje se jednání |
+| **Protokoly a kompatibility sady SDK** | | |
+| TECHNOLOGIE WIF | Podporováno | Podporované, ale omezené pokyny jsou k dispozici |
 | WS-Federation | Podporováno | Podporováno |
-| OAuth 2.0 | Podpora pro koncept 13 | Podpora pro RFC 6749, většina moderních specifikace |
+| OAuth 2.0 | Podpora pro návrh 13 | Podpora pro RFC 6749, většina moderních specifikace |
 | WS-Trust | Podporováno | Nepodporuje se |
 | **Token formáty** | | |
 | JWT | Podporované ve verzi Beta | Podporováno |
 | SAML 1.1 | Podporováno | Preview |
 | SAML 2.0 | Podporováno | Podporováno |
 | SWT | Podporováno | Nepodporuje se |
-| **Přizpůsobení** | | |
-| Přizpůsobitelné domovské sféry zjišťování a účet výdej uživatelského rozhraní | Zaváděná kód, který lze začlenit do aplikace | Nepodporuje se |
+| **Vlastní nastavení** | | |
+| Přizpůsobitelné domovské sféry zjišťování/účet vybere uživatelského rozhraní | Ke stažení kódu, který lze začlenit do aplikace | Nepodporuje se |
 | Nahrát vlastní podpisové certifikáty tokenu | Podporováno | Podporováno |
-| Přizpůsobení deklarací identity v tokenech |-Předávat vstupní deklarace identity od zprostředkovatelů identity<br />-Získání tokenu přístupu z zprostředkovatele identity jako deklaraci<br />-Vystavovat deklarace identity výstup založené na hodnotách vstupních deklarací identity<br />-Vystavovat deklarace identity výstup s konstantní hodnoty |-Nelze předat prostřednictvím deklaracích identity od zprostředkovatelů federovaných identit<br />-Nelze získání tokenu přístupu z zprostředkovatele identity jako deklaraci<br />-Nemůžou vystavovat výstup deklarace identity založené na hodnotách vstupních deklarací identity<br />-Mohou vystavovat deklarace identity výstup s konstantní hodnoty<br />-Můžete vydat výstup deklarace identity založené na vlastnosti uživatelů se synchronizují do Azure AD |
+| Přizpůsobení deklarací identity v tokenech |-Předávání vstupní deklarace identity od zprostředkovatelů identity<br />-Získat přístupový token od zprostředkovatele identity jako deklarace identity<br />-Vydat výstupní deklarace identit podle hodnot ze vstupních deklarací identity<br />-Vystavovat deklarace identity výstup s konstantní hodnoty |-Nelze předat prostřednictvím deklarace identity od zprostředkovatelů federovaných identit<br />– Nelze získat přístupový token od zprostředkovatele identity jako deklarace identity<br />-Nemůžou vystavovat výstupní deklarace identit podle hodnot ze vstupních deklarací identity<br />-Můžou vystavovat deklarace identity výstup s konstantní hodnoty<br />-Můžou vystavovat deklarace identity výstup na základě vlastností uživatele synchronizují do Azure AD |
 | **Automation** | | |
-| Automatizovat úkoly konfigurace a správy | Podporované prostřednictvím služby pro správu řízení přístupu | Podporu pro Microsoft Graph a Azure AD Graph API |
+| Automatizace konfigurace a Správa úloh | Podporováno prostřednictvím služby pro správu řízení přístupu | Podporováno prostřednictvím Microsoft Graph a Azure AD Graph API |
 
-Pokud se rozhodnete, že Azure AD je nejlepší cesta migrace k vašim aplikacím a službám, by měl být vědomi dva způsoby, jak integrovat vaši aplikaci s Azure AD.
+Pokud se rozhodnete, že Azure AD je nejlepšího způsobu migrace vašich aplikací a služeb, byste měli vědět, dva způsoby, jak integrovat aplikace s Azure AD.
 
-Použití WS-Federation nebo WIF při integraci s Azure AD, doporučujeme následující přístupu popsané v [konfigurace federované jednotné přihlašování pro aplikace bez Galerie](https://docs.microsoft.com/azure/active-directory/application-config-sso-how-to-configure-federated-sso-non-gallery). Článek odkazuje ke konfiguraci Azure AD pro na základě SAML jednotné přihlašování, ale funguje i pro konfiguraci protokolu WS-Federation. Tento způsob vyžaduje licenci Azure AD Premium. Tento přístup má dvě výhody:
+Integrace s Azure AD pomocí WS-Federation nebo technologie WIF, doporučujeme tento přístup je popsáno v následující [nakonfigurovat federované jednotné přihlašování pro aplikaci mimo galerii](https://docs.microsoft.com/azure/active-directory/application-config-sso-how-to-configure-federated-sso-non-gallery). Tento článek odkazuje na konfigurace služby Azure AD pro založené na SAML jednotného přihlašování, ale také funguje pro konfiguraci WS-Federation. Tento způsob vyžaduje licenci Azure AD Premium. Tento přístup má dvě výhody:
 
-- Zobrazí se úplná flexibilita při přizpůsobení tokenu Azure AD. Deklarace identity, které jsou vydané službou Azure Active Directory tak, aby odpovídaly deklarace identity, které jsou vydány řízení přístupu můžete přizpůsobit. To zahrnuje zejména uživatelské ID nebo název identifikátor deklarace identity. Nadále přijímat identifikátory konzistentní uživatele pro uživatele po změně technologie, zkontrolujte, zda uživatel ID vydán Azure AD odpovídají certifikátů vydávaných řízení přístupu.
-- Můžete nakonfigurovat certifikát pro podpis tokenu specifický pro vaše aplikace a s životnost, kterou řídíte.
+- Získáte úplnou flexibilitu přizpůsobení tokenu Azure AD. Můžete přizpůsobit deklarace identity, které jsou vydány službou Azure AD tak, aby odpovídaly deklarace identity, které jsou vydány službou Access Control. To zahrnuje zejména uživatelské ID nebo název identifikátoru deklarace identity. Nadále získávat konzistentní uživatelské identifikátory pro vaše uživatele po změně technologie, zkontrolujte, zda uživatelské ID vydán Azure AD odpovídají vydávaných službou Access Control.
+- Můžete nakonfigurovat certifikát pro podpis tokenu, která jsou specifická pro vaši aplikaci a s životností, který určujete vy.
 
 <!--
 
@@ -186,78 +186,78 @@ Possible nameIdentifiers from Access Control (via AAD or AD FS):
 -->
 
 > [!NOTE]
-> Tento postup vyžaduje licenci Azure AD Premium. Pokud jste zákazník řízení přístupu a chcete, aby premium licenci pro nastavení jednotného přihlašování pro aplikace, kontaktujte nás. Jsme bude radostí zajistit vývojáře licence k použití.
+> Tento přístup vyžaduje licenci Azure AD Premium. Pokud jste zákazníkem Access Control a potřebujete licenci úrovně premium pro nastavení jednotného přihlašování pro aplikace, kontaktujte nás. Jsme rádi poskytovat vývojářské licence k použití.
 
-Alternativní způsob je podle [této ukázce kódu](https://github.com/Azure-Samples/active-directory-dotnet-webapp-wsfederation), což dává mírně odlišné pokyny pro nastavení služby WS-Federation. Tato ukázka kódu nepoužívá WIF, ale místo toho middlewaru ASP.NET 4.5 OWIN. Ale pokyny pro registraci aplikace jsou platné pro aplikace využívající technologii WIF a nevyžadují licenci Azure AD Premium. 
+Alternativním přístupem, je splnění [tento vzorový kód](https://github.com/Azure-Samples/active-directory-dotnet-webapp-wsfederation), což dává mírně odlišné pokyny pro nastavení WS-Federation. Tento vzorový kód nebude používat technologie WIF, ale místo toho middleware OWIN technologie ASP.NET 4.5. Pokyny pro registraci aplikace však platí pro aplikace pomocí technologie WIF a nevyžadují licenci Azure AD Premium. 
 
-Pokud zvolíte tuto metodu, musíte porozumět [podepisování výměna klíče ve službě Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-signing-key-rollover). Tento postup používá Azure AD globálního podpisového klíče problém tokeny. Ve výchozím nastavení WIF se automaticky neaktualizuje podpisové klíče. Pokud Azure AD otočí jeho globální podpisové klíče, je nutné připravit pro přijetí změn implementaci WIF.
+Pokud zvolíte tuto metodu, musíte pochopit [výměna podpisových klíčů ve službě Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-signing-key-rollover). Tento přístup používá globální podpisový klíč pro vydávání tokenů Azure AD. Ve výchozím nastavení technologie WIF neaktualizuje automaticky podpisové klíče. Když Azure AD otočí globální podpisového klíče, musí být připraveni přijmout změny vaší implementace technologie WIF.
 
-Pokud můžete integrovat se službou Azure AD prostřednictvím protokolů OpenID Connect a OAuth, doporučujeme, abyste tak. Máme rozsáhlou dokumentaci a pokyny o tom, jak integrovat Azure AD do vaší webové aplikace, které jsou k dispozici v našem [Příručka pro vývojáře Azure AD](https://aka.ms/aaddev).
+Pokud můžete integrovat se službou Azure AD prostřednictvím protokoly OpenID Connect nebo OAuth, doporučujeme, abyste to. Máme k dispozici rozsáhlou dokumentaci a pokyny o tom, jak integrovat Azure AD do webové aplikace k dispozici v našich [Příručka pro vývojáře Azure AD](https://aka.ms/aaddev).
 
 <!-- TODO: If customers ask about authZ, let's put a blurb on role claims here -->
 
-#### <a name="migrate-to-azure-active-directory-b2c"></a>Migrace na Azure Active Directory B2C
+#### <a name="migrate-to-azure-active-directory-b2c"></a>Migrace do Azure Active Directory B2C
 
-Jiné cesty migrace vzít v úvahu je Azure AD B2C. Azure AD B2C je Cloudová služba ověřování, jako je řízení přístupu, umožňuje vývojářům využívající správu logiku v cloudové službě jejich ověřování a identita. Je služba placené (s vrstvami volné a premium), která je určená pro určených aplikací, které by mohly mít až miliony aktivní uživatelé.
+Další cesty migrace vzít v úvahu je Azure AD B2C. Azure AD B2C je Cloudová služba ověřování, jako je řízení přístupu, umožňuje vývojářům externí správu logiky do cloudové služby, jejich ověřování a identita. Je placené služby (s úrovní free a premium), která je určená pro zákaznické aplikace, které může mít až na úrovni milionů aktivních uživatelů.
 
-Řízení přístupu, jako je jedním z nejvíce atraktivní funkce Azure AD B2C je, že podporuje mnoho různých typů účtů. S Azure AD B2C je uživatelé přihlásit pomocí svého účtu Microsoft nebo sítě Facebook, Google, LinkedIn, GitHub nebo Yahoo účty a další. Azure AD B2C podporuje také "místní účty," nebo uživatelského jména a hesla, které uživatelé vytvářejí speciálně pro vaši aplikaci. Azure AD B2C taky poskytuje bohaté rozšiřitelnosti, který můžete použít k přizpůsobení přihlášení toky. 
+Podobně jako řízení přístupu jednou z nejvíce atraktivní funkcí Azure AD B2C je, že podporuje mnoho různých typů účtů. S Azure AD B2C můžete přihlásit uživatele pomocí svého účtu Microsoft nebo Facebook, Google, LinkedIn, GitHub nebo Yahoo účty a další. Azure AD B2C podporuje také "místní účty," nebo uživatelského jména a hesla, které uživatelé vytvářejí speciálně pro danou aplikaci. Azure AD B2C poskytuje také bohaté možnosti rozšiřitelnosti, který můžete použít k přizpůsobení vašich toků přihlaste. 
 
-Ale Azure AD B2C nepodporuje šířky ověřovací protokoly a formáty token tuto řízení přístupu může vyžadovat zákazníků. Také nemůžete použít Azure AD B2C získat tokeny a dotazů pro další informace o uživateli od zprostředkovatele identity, Microsoft nebo jinak.
+Však nepodporují škálu protokoly pro ověřování Azure AD B2C token a formáty a toto řízení přístupu, zákazníci můžou vyžadovat. Také nelze použít Azure AD B2C můžete získat tokeny a dotazů pro další informace o uživateli od zprostředkovatele identity, Microsoft nebo jinak.
 
-Následující tabulka porovnává funkce řízení přístupu, které jsou relevantní pro webové aplikace s těmi, které jsou k dispozici v Azure AD B2C. Na vysoké úrovni *Azure AD B2C je pravděpodobně správná volba pro migraci Pokud vaše aplikace je příjemce, kterým čelí, nebo pokud ji podporuje mnoho různých typů účtů.*
+Následující tabulka porovnává funkce řízení přístupu, které jsou relevantní pro webové aplikace s těmi, které jsou k dispozici v Azure AD B2C. Na vysoké úrovni *Azure AD B2C je pravděpodobně tou správnou volbou pro migraci Pokud je vaše aplikace přístupné spotřebitelům nebo pokud ji podporuje mnoho různých typů účtů.*
 
 | Schopnost | Podpora řízení přístupu | Podpora Azure AD B2C |
 | ---------- | ----------- | ---------------- |
 | **Typy účtů** | | |
-| Microsoft pracovní nebo školní účty | Podporováno | Podporované pomocí vlastních zásad  |
-| Účty z Windows Server Active Directory a AD FS | Podporované prostřednictvím přímé federační službou AD FS | Podporované prostřednictvím SAML federace pomocí vlastních zásad |
-| Účty z jiných podnikových systémů správy identit | Podporované prostřednictvím přímé federační prostřednictvím služby WS-Federation | Podporované prostřednictvím SAML federace pomocí vlastních zásad |
+| Microsoft pracovní nebo školní účty | Podporováno | Podporováno prostřednictvím vlastních zásad  |
+| Účty z Active Directory a AD FS ve Windows serveru | Podporováno prostřednictvím přímé federace se službou AD FS | Podporováno prostřednictvím SAML federace s využitím vlastních zásad |
+| Účty z jiných podnikových systémů správy identit | Podporováno prostřednictvím přímé federace prostřednictvím WS-Federation | Podporováno prostřednictvím SAML federace s využitím vlastních zásad |
 | Účty Microsoft pro osobní použití | Podporováno | Podporováno | 
-| Facebook, Google, Yahoo účty | Podporováno | Facebook a Google podporované nativně, Yahoo podporován prostřednictvím OpenID Connect federace pomocí vlastních zásad |
-| **Protokoly a kompatibility SDK** | | |
-| Technologie Windows Identity Foundation (WIF) | Podporováno | Nepodporuje se |
+| Účty služby Facebook, Google, Yahoo | Podporováno | Facebook nebo Google nepodporuje nativně, Yahoo podporované prostřednictvím federace s OpenID Connect s použitím vlastní zásady |
+| **Protokoly a kompatibility sady SDK** | | |
+| Windows Identity Foundation (WIF) | Podporováno | Nepodporuje se |
 | WS-Federation | Podporováno | Nepodporuje se |
-| OAuth 2.0 | Podpora pro koncept 13 | Podpora pro RFC 6749, většina moderních specifikace |
+| OAuth 2.0 | Podpora pro návrh 13 | Podpora pro RFC 6749, většina moderních specifikace |
 | WS-Trust | Podporováno | Nepodporuje se |
 | **Token formáty** | | |
 | JWT | Podporované ve verzi Beta | Podporováno |
 | SAML 1.1 | Podporováno | Nepodporuje se |
 | SAML 2.0 | Podporováno | Nepodporuje se |
 | SWT | Podporováno | Nepodporuje se |
-| **Přizpůsobení** | | |
-| Přizpůsobitelné domovské sféry zjišťování a účet výdej uživatelského rozhraní | Zaváděná kód, který lze začlenit do aplikace | Plně přizpůsobitelná uživatelského rozhraní pomocí vlastních šablon stylů CSS |
-| Nahrát vlastní podpisové certifikáty tokenu | Podporováno | Vlastní podpisové klíče, ne certifikáty podporované pomocí vlastních zásad |
-| Přizpůsobení deklarací identity v tokenech |-Předávat vstupní deklarace identity od zprostředkovatelů identity<br />-Získání tokenu přístupu z zprostředkovatele identity jako deklaraci<br />-Vystavovat deklarace identity výstup založené na hodnotách vstupních deklarací identity<br />-Vystavovat deklarace identity výstup s konstantní hodnoty |-Může předávat deklarace identity od zprostředkovatelů identity; vlastní zásady, které jsou požadované pro některé deklarace identity<br />-Nelze získání tokenu přístupu z zprostředkovatele identity jako deklaraci<br />-Mohou vystavovat deklarace identity výstup založené na hodnotách vstupních deklarací identity pomocí vlastních zásad<br />-Mohou vystavovat deklarace identity výstup s konstantní hodnoty pomocí vlastních zásad |
+| **Vlastní nastavení** | | |
+| Přizpůsobitelné domovské sféry zjišťování/účet vybere uživatelského rozhraní | Ke stažení kódu, který lze začlenit do aplikace | Plně přizpůsobitelná uživatelského rozhraní pomocí vlastní šablony stylů CSS |
+| Nahrát vlastní podpisové certifikáty tokenu | Podporováno | Vlastní podpisové klíče, certifikáty, nejsou podporované prostřednictvím vlastních zásad |
+| Přizpůsobení deklarací identity v tokenech |-Předávání vstupní deklarace identity od zprostředkovatelů identity<br />-Získat přístupový token od zprostředkovatele identity jako deklarace identity<br />-Vydat výstupní deklarace identit podle hodnot ze vstupních deklarací identity<br />-Vystavovat deklarace identity výstup s konstantní hodnoty |-Můžete předat prostřednictvím deklarace identity od zprostředkovatelů identity; vlastní zásady, vyžaduje se pro některé deklarace identity<br />– Nelze získat přístupový token od zprostředkovatele identity jako deklarace identity<br />-Může vydat výstupní deklarace identit podle hodnot ze vstupních deklarací identity pomocí vlastních zásad<br />-Můžou vystavovat deklarace identity výstup s konstantních hodnot pomocí vlastních zásad |
 | **Automation** | | |
-| Automatizovat úkoly konfigurace a správy | Podporované prostřednictvím služby pro správu řízení přístupu |– Vytváření uživatelů povoleno přes Azure AD Graph API<br />-Nelze vytvořit klienty B2C, aplikací nebo zásady prostřednictvím kódu programu |
+| Automatizace konfigurace a Správa úloh | Podporováno prostřednictvím služby pro správu řízení přístupu |– Vytváření uživatelů povoleno přes Azure AD Graph API<br />-Nelze vytvořit tenanti B2C, aplikace nebo zásady prostřednictvím kódu programu |
 
-Pokud se rozhodnete, že Azure AD B2C je nejlepší cesta migrace k vašim aplikacím a službám, začněte v následujících zdrojích informací:
+Pokud se rozhodnete, že Azure AD B2C je nejlepšího způsobu migrace vašich aplikací a služeb, začínají na následujících odkazech:
 
-- [Dokumentace k Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview)
+- [Dokumentace ke službě Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview)
 - [Vlastní zásady služby Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview-custom)
-- [Ceny služby Azure AD B2C](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
+- [Ceny za Azure AD B2C](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
 
 
-#### <a name="migrate-to-ping-identity-or-auth0"></a>Migrace na příkaz Ping Identity nebo Auth0
+#### <a name="migrate-to-ping-identity-or-auth0"></a>Migrace na Ping Identity nebo Auth0
 
-V některých případech může zjistíte, že Azure AD a Azure AD B2C nejsou dostatečná k nahrazení řízení přístupu ve vaší webové aplikaci bez provedení změn hlavní kódu. Může obsahovat několik běžných příkladů:
+V některých případech můžete zjistit, Azure AD a Azure AD B2C nejsou dostatečná k nahrazení řízení přístupu ve vašich webových aplikacích bez provedení změn hlavní kód. Některé běžné příklady můžou zahrnovat:
 
-- Webové aplikace, které používají technologii WIF nebo WS-Federation pro přihlašování pomocí poskytovatelů identit sociálních třeba Google nebo Facebook.
-- Webové aplikace, které provádějí přímé federaci do zprostředkovatele identity enterprise přes protokol WS-Federation.
-- Webové aplikace, které vyžadují přístupový token vydán poskytovatele sociálních identit (například Google nebo Facebooku) jako deklarace identity v tokenech vystavený řízení přístupu.
-- Webové aplikace s pravidla komplexní tokenu transformace, které Azure AD ani Azure AD B2C nelze reprodukovat.
-- Víceklientské webové aplikace, které používají služby ACS můžete centrálně spravovat federaci do mnoho poskytovatelů jinou identitu
+- Webové aplikace, které používají technologii WIF nebo WS-Federation pro přihlášení pomocí zprostředkovatele sociální identity, jako je Google nebo Facebook.
+- Webové aplikace, které provádějí federace s přímým přístupem ke zprostředkovateli identity enterprise přes protokol WS-Federation.
+- Webové aplikace, které vyžadují přístupový token, Vystavitel zprostředkovatele identity v sociálních sítích (jako je Google nebo Facebook) jako deklarace identity v tokeny vystavené službou Access Control.
+- Webové aplikace s pravidly komplexní token transformace, které Azure AD nebo Azure AD B2C nemůže reprodukovat.
+- Víceklientské webové aplikace, které můžete centrálně spravovat federace na mnoho poskytovatelů jiná identita služby ACS
 
-V těchto případech můžete chtít zvažte migraci webovou aplikaci na jinou cloudovou službu ověřování. Doporučujeme, abyste zkoumat následující možnosti. Každý z těchto možností nabízí možnosti podobná řízení přístupu:
+V těchto případech můžete chtít zvažte migraci vaší webové aplikace na jinou cloudovou službu ověřování. Doporučujeme, abyste zkoumání následující možnosti. Každá z těchto možností nabídky Možnosti podobný řízení přístupu:
 
 
 
 |     |     | 
 | --- | --- |
-| ![Auth0](./media/active-directory-acs-migration/rsz_auth0.png) | [Auth0](https://auth0.com/acs) je flexibilní Cloudová služba identity, která si vytvořila [vysoké úrovně migrace pokyny pro zákazníky, řízení přístupu](https://auth0.com/acs)a podporuje téměř každý funkce, která nemá služby ACS. |
-| ![Ping](./media/active-directory-acs-migration/rsz_ping.png) | [Příkaz ping Identity](https://www.pingidentity.com) nabízí dvě řešení podobná služby ACS. PingOne je Cloudová služba identity, která podporuje mnoho stejných funkcí jako služby ACS a PingFederate je podobné produktu místní identity, který nabízí větší flexibilitu. Odkazovat na [pokyny vyřazení služby ACS na příkaz Ping](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html) pro další podrobnosti o použití těchto produktů. |
+| ![Auth0](./media/active-directory-acs-migration/rsz_auth0.png) | [Auth0](https://auth0.com/acs) je flexibilní Cloudová služba identit, která si vytvořila [pokyny k migraci vysoké úrovně pro zákazníky využívající řízení přístupu](https://auth0.com/acs)a podporuje téměř všechny funkce, která provádí služby ACS. |
+| ![Ping](./media/active-directory-acs-migration/rsz_ping.png) | [Ping Identity](https://www.pingidentity.com) nabízí dvě řešení podobný služby ACS. PingOne je Cloudová služba identit, který podporuje mnoho stejných funkcí jako služby ACS a služby PingFederate je podobný produkt identity v místním prostředí, která nabízí vyšší flexibilitu. Odkazovat na [pokyny vyřazení z provozu služby ACS na příkaz Ping](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html) pro další podrobnosti o použití těchto produktů. |
 
-Naše cílem při práci s příkazem Ping Identity a Auth0 je zajistit, aby měly všechny zákazníky využívající řízení přístupu migrace cestu pro své aplikace a služby, která minimalizuje množství práce potřebné k přesunutí z řízení přístupu.
+Cílem naší práce s Ping Identity a Auth0 je zajistit, aby měli všichni zákazníci řízení přístupu na cestu migrace pro své aplikace a služby, který minimalizuje množství práce potřebné k přesunutí z řízení přístupu.
 
 <!--
 
@@ -270,57 +270,57 @@ Other IDPs: use Auth0? https://auth0.com/docs/integrations/sharepoint.
 
 ### <a name="web-services-that-use-active-authentication"></a>Webové služby, které používají ověřování active
 
-Pro webové služby, které jsou zabezpečené s tokeny vydané pomocí řízení přístupu řízení přístupu nabízí následující funkce a možnosti:
+Řízení přístupu pro webové služby, které jsou zabezpečené pomocí tokeny vystavené službou Access Control, nabízí následující funkce a možnosti:
 
-- Možnost registrovat jednu nebo více *identity služby* v oboru názvů řízení přístupu. Identita služby slouží k žádosti o tokeny.
-- Podpora pro ZABALENÍ OAuth a OAuth 2.0 koncept 13 protokoly žádosti o tokeny, pomocí následujících typů přihlašovacích údajů:
-    - Jednoduché heslo, které se vytvoří identitu služby
-    - A podepsaný pomocí symetrického klíče nebo X509 SWT certifikátu
-    - Token SAML vydaný Poskytovatel důvěryhodné identity (obvykle, instance služby AD FS)
-- Podpora pro následující formáty tokenu: JWT, SAML 1.1, SAML 2.0 a SWT.
+- Možnost registrovat jednu nebo více *identity služby* ve vašem oboru názvů řízení přístupu. Služba identit umožňuje požádat o tokeny.
+- Podpora pro OBTÉKÁNÍ OAuth a OAuth 2.0 koncept 13 protokoly žádosti o tokeny, pomocí následujících typů přihlašovacích údajů:
+    - Jednoduchá hesla, který je vytvořen pro identitu služby
+    - Znaménkem SWT pomocí symetrického klíče nebo X509 certifikátu
+    - Tokenu SAML vydaném pomocí důvěryhodného zprostředkovatele identity (obvykle, instance služby AD FS)
+- Podpora pro token formátech: token JWT, SAML 1.1, SAML 2.0 nebo SWT.
 - Pravidla transformace jednoduché tokenu.
 
-Identita služby v řízení přístupu jsou obvykle používány k implementaci serveru a serverem ověřování. 
+Identita služby Access Control se obvykle používají k implementaci serveru pro ověřování. 
 
-#### <a name="migrate-to-azure-active-directory"></a>Migrace na Azure Active Directory
+#### <a name="migrate-to-azure-active-directory"></a>Migrace do Azure Active Directory
 
-Naše doporučení pro tento typ tok ověřování je pro migraci do [Azure Active Directory](https://azure.microsoft.com/develop/identity/signin/). Azure AD je poskytovatel cloudových identit Microsoft pracovní nebo školní účty. Azure AD je zprostředkovatel identity pro Office 365, Azure a mnoho dalšího. 
+Naše doporučení pro tento typ toku ověřování je migrovat do [Azure Active Directory](https://azure.microsoft.com/develop/identity/signin/). Azure AD je poskytovatelem cloudových identit pro Microsoft pracovní nebo školní účty. Azure AD je zprostředkovatel identity pro Office 365, Azure a spoustu dalších věcí. 
 
-Můžete také použít Azure AD pro ověřování serveru na server pomocí Azure AD implementace udělení pověření klienta OAuth. Následující tabulka porovnává funkce řízení přístupu v ověřování serveru na server s těmi, které jsou k dispozici ve službě Azure AD.
+Můžete také použít Azure AD pro ověřování na serveru pomocí služby Azure AD provádění udělování přihlašovacích údajů klienta OAuth. Následující tabulka porovnává funkce řízení přístupu k serveru ověřování s těmi, které jsou k dispozici ve službě Azure AD.
 
 | Schopnost | Podpora řízení přístupu | Podpora Azure AD |
 | ---------- | ----------- | ---------------- |
-| Postup registrace webové služby | Vytvoření předávající strany v portálu pro správu řízení přístupu | Vytvoření webové aplikace služby Azure AD na portálu Azure |
-| Postup registrace klienta | Vytvoření identity služby v portálu pro správu řízení přístupu | Vytvořit jinou webovou aplikaci Azure AD na portálu Azure |
-| Protokol použitý |-Protokol OAuth WRAP<br />-Udělení pověření klienta 13 koncept OAuth 2.0 | Udělení přihlašovacích údajů klienta OAuth 2.0 |
-| Metody ověřování klientů |-Jednoduché heslo<br />-Podepsaný SWT<br />-SAML token od zprostředkovatele federovaných identit |-Jednoduché heslo<br />-Podepsaný token JWT |
-| Token formáty |- JWT<br />-SAML 1.1<br />-SAML 2.0<br />-SWT<br /> | Pouze JWT |
-| Token transformace |-Přidat vlastní deklarace<br />-Jednoduché pak v případě deklarace identity logiku vystavení | Přidat vlastní deklarace | 
-| Automatizovat úkoly konfigurace a správy | Podporované prostřednictvím služby pro správu řízení přístupu | Podporu pro Microsoft Graph a Azure AD Graph API |
+| Postup při registraci webové služby | Vytvořit předávající strany v portálu pro správu řízení přístupu | Vytvořit webovou aplikaci Azure AD na webu Azure Portal |
+| Postup při registraci klienta | Vytvoření identity služby v portálu pro správu řízení přístupu | Vytvořte jinou webovou aplikaci Azure AD na webu Azure Portal |
+| Protokol použitý |– Protokol OAuth OBTÉKÁNÍ<br />-Udělení přihlašovacích údajů klienta 13 koncept OAuth 2.0 | Udělení přihlašovacích údajů klienta OAuth 2.0 |
+| Metody ověřování klientů |-Jednoduché heslo<br />-Podepsaný SWT<br />-Token SAML od poskytovatele federované identity |-Jednoduché heslo<br />-Podepsaný token JWT |
+| Token formáty |- JWT<br />-SAML 1.1<br />-SAML 2.0<br />-SWT<br /> | Pouze tokenů JWT |
+| Token transformace |-Přidat vlastní deklarace identity<br />– Logiky vystavení deklarace identity jednoduché if-then | Přidat vlastní deklarace identity | 
+| Automatizace konfigurace a Správa úloh | Podporováno prostřednictvím služby pro správu řízení přístupu | Podporováno prostřednictvím Microsoft Graph a Azure AD Graph API |
 
-Pokyny týkající se implementuje scénáře serveru na server najdete v následujících materiálech:
+Pokyny k implementaci scénářů na serveru naleznete v následujících zdrojích:
 
-- Část Service-to-Service [Příručka pro vývojáře Azure AD](https://aka.ms/aaddev)
-- [Ukázka kódu démon pomocí jednoduché heslo pověření klienta](https://github.com/Azure-Samples/active-directory-dotnet-daemon)
-- [Ukázka kódu démon pomocí pověření certifikátu klienta](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential)
+- Části služba-služba [Příručka pro vývojáře Azure AD](https://aka.ms/aaddev)
+- [Démon procesu vzorový kód s použitím přihlašovacích údajů klienta jednoduché heslo](https://github.com/Azure-Samples/active-directory-dotnet-daemon)
+- [Vzorový kód démona pomocí certifikátu klienta přihlašovacích údajů](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential)
 
-#### <a name="migrate-to-ping-identity-or-auth0"></a>Migrace na příkaz Ping Identity nebo Auth0
+#### <a name="migrate-to-ping-identity-or-auth0"></a>Migrace na Ping Identity nebo Auth0
 
-V některých případech je možné, že pověření klienta Azure AD a OAuth udělit implementace nejsou dostatečná k nahrazení řízení přístupu ve vaší architektury bez změny hlavní kódu. Může obsahovat několik běžných příkladů:
+V některých případech můžete zjistit, že přihlašovací údaje klienta služby Azure AD a OAuth udělit nejsou dostatečná k nahrazení řízení přístupu ve vaší architektuře bez jakýchkoli změn kódu hlavní implementace. Některé běžné příklady můžou zahrnovat:
 
-- Ověření serveru na server pomocí tokenu formáty než Jwt.
-- Ověření serveru na server pomocí tokenu vstupní poskytované zprostředkovatele externí identity.
-- Ověření serveru na server s pravidla tokenu transformace, které nelze reprodukovat Azure AD.
+- Na serveru ověřování pomocí tokenu formáty kromě tokeny Jwt.
+- Na serveru ověřování pomocí tokenu vstupní poskytované externího zprostředkovatele identity.
+- Na serveru ověřování pomocí tokenu transformace pravidla, které nelze reprodukovat Azure AD.
 
-V těchto případech můžete zvážit migrace webové aplikace do jiné cloudové služby ověřování. Doporučujeme, abyste zkoumat následující možnosti. Každý z těchto možností nabízí možnosti podobná řízení přístupu:
+V těchto případech zvažte migraci vaší webové aplikace na jinou cloudovou službu ověřování. Doporučujeme, abyste zkoumání následující možnosti. Každá z těchto možností nabídky Možnosti podobný řízení přístupu:
 
 |     |     | 
 | --- | --- |
-| ![Auth0](./media/active-directory-acs-migration/rsz_auth0.png) | [Auth0](https://auth0.com/acs) je flexibilní Cloudová služba identity, která si vytvořila [vysoké úrovně migrace pokyny pro zákazníky, řízení přístupu](https://auth0.com/acs)a podporuje téměř každý funkce, která nemá služby ACS. |
-| ![Ping](./media/active-directory-acs-migration/rsz_ping.png) | [Příkaz ping Identity](https://www.pingidentity.com) nabízí dvě řešení podobná služby ACS. PingOne je Cloudová služba identity, která podporuje mnoho stejných funkcí jako služby ACS a PingFederate je podobné produktu místní identity, který nabízí větší flexibilitu. Odkazovat na [pokyny vyřazení služby ACS na příkaz Ping](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html) pro další podrobnosti o použití těchto produktů. |
+| ![Auth0](./media/active-directory-acs-migration/rsz_auth0.png) | [Auth0](https://auth0.com/acs) je flexibilní Cloudová služba identit, která si vytvořila [pokyny k migraci vysoké úrovně pro zákazníky využívající řízení přístupu](https://auth0.com/acs)a podporuje téměř všechny funkce, která provádí služby ACS. |
+| ![Ping](./media/active-directory-acs-migration/rsz_ping.png) | [Ping Identity](https://www.pingidentity.com) nabízí dvě řešení podobný služby ACS. PingOne je Cloudová služba identit, který podporuje mnoho stejných funkcí jako služby ACS a služby PingFederate je podobný produkt identity v místním prostředí, která nabízí vyšší flexibilitu. Odkazovat na [pokyny vyřazení z provozu služby ACS na příkaz Ping](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html) pro další podrobnosti o použití těchto produktů. |
 
-Naše cílem při práci s příkazem Ping Identity a Auth0 je zajistit, aby měly všechny zákazníky využívající řízení přístupu migrace cestu pro své aplikace a služby, která minimalizuje množství práce potřebné k přesunutí z řízení přístupu.
+Cílem naší práce s Ping Identity a Auth0 je zajistit, aby měli všichni zákazníci řízení přístupu na cestu migrace pro své aplikace a služby, který minimalizuje množství práce potřebné k přesunutí z řízení přístupu.
 
-## <a name="questions-concerns-and-feedback"></a>Dotazy, otázky a zpětné vazby
+## <a name="questions-concerns-and-feedback"></a>Otázky, otázky a zpětná vazba
 
-Chápeme, že mnoho zákazníků řízení přístupu nebude najít migraci po přečtení tohoto článku. Může být nutné některé pomoc nebo pokynů k určení správného plánu. Pokud chcete popisují scénáře migrace a dotazy, uveďte poznámky na této stránce.
+Chápeme, mnoho zákazníků řízení přístupu nenajdete migraci po přečtení tohoto článku. Může být nutné některé pomoc nebo pokynů k určení správného plánu. Pokud chcete probrat scénáře migrace a dotazy, uveďte ji v poznámce na této stránce.

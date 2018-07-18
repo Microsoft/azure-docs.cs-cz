@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2018
 ms.author: juliako
-ms.openlocfilehash: b62c528716d9386b9da6ddee260fd1ec382fb4a5
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 3e5de521570a587b049702dabd3e3692c4227796
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036781"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39114789"
 ---
 # <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>Použití dynamického šifrování AES-128 a doručení klíče služby
 
@@ -40,7 +40,7 @@ K dokončení kurzu potřebujete následující:
 
 ## <a name="download-code"></a>Stáhnout kód
 
-Klon úložiště GitHub obsahující úplnou ukázku .NET popsané v tomto tématu k počítači pomocí následujícího příkazu:
+Klon úložiště GitHub obsahující úplnou ukázku .NET popisovaných v tomto článku k počítači pomocí následujícího příkazu:
 
  ```bash
  git clone https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials.git
@@ -53,13 +53,13 @@ Tato ukázka "šifrování pomocí AES-128" se nachází v [EncryptWithAES](http
 
 ## <a name="start-using-media-services-apis-with-net-sdk"></a>Začínáme s rozhraním API služby Media Services se sadou .NET SDK
 
-Pokud chcete začít používat rozhraní Media Services API se sadou .NET SDK, musíte vytvořit objekt **AzureMediaServicesClient**. K vytvoření tohoto objektu, musíte zadat přihlašovací údaje, aby se klient mohl připojit k Azure pomocí Azure AD. V kódu, který jste naklonovali na začátku článku, vytvoří funkce **GetCredentialsAsync** objekt ServiceClientCredentials na základě pověření zadaných v místním konfiguračním souboru. 
+Pokud chcete začít používat rozhraní Media Services API se sadou .NET SDK, musíte vytvořit objekt **AzureMediaServicesClient**. K vytvoření tohoto objektu, musíte zadat přihlašovací údaje, aby se klient mohl připojit k Azure pomocí Azure AD. V kódu, které jste naklonovali na začátku tohoto článku **GetCredentialsAsync** funkce vytvoří objekt ServiceClientCredentials na základě pověření v místním konfiguračním souboru. 
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#CreateMediaServicesClient)]
 
 ## <a name="create-an-output-asset"></a>Vytvoření výstupního prostředku  
 
-Výstupní [prostředek](https://docs.microsoft.com/rest/api/media/assets) uloží výsledek vaší úlohy kódování. Po dokončení kódování prostředku výstupu publikování pomocí šifrování AES (ClearKey).  
+Výstupní [prostředek](https://docs.microsoft.com/rest/api/media/assets) uloží výsledek vaší úlohy kódování.  
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#CreateOutputAsset)]
  
@@ -87,27 +87,22 @@ V tomto kurzu vytvoříme vstupu úlohy na základě souboru, který se ingestuj
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#WaitForJobToFinish)]
 
-## <a name="create-a-contentkey-policy"></a>Vytvořit zásadu ContentKey
+## <a name="create-a-contentkeypolicy"></a>Vytvoření ContentKeyPolicy
 
-Klíč k obsahu poskytuje zabezpečený přístup k vaše prostředky. Potřebujete k vytvoření obsahu klíče zásad, které lze konfigurovat, jak je klíč k obsahu doručit koncovým klientům. Klíč obsahu je přidružený StreamingLocator. Služba Media Services také poskytuje službu doručení klíče, který poskytuje šifrovací klíče na oprávněné uživatele. 
+Klíč k obsahu poskytuje zabezpečený přístup k vaše prostředky. Je potřeba vytvořit **ContentKeyPolicy** , který konfiguruje, jak je klíč k obsahu doručit koncovým klientům. Klíč obsahu je přidružené k **StreamingLocator**. Služba Media Services také poskytuje službu doručení klíče, který poskytuje šifrovací klíče na oprávněné uživatele. 
 
 Datový proud je žádost přehrávač, Media Services využívá se zadaným klíčem k dynamické šifrování obsahu (v tomto případě s použitím šifrování AES.) K dešifrování datového proudu, přehrávače požádá službu doručování klíčů klíč. Pokud chcete zjistit, zda je uživatel oprávnění k získání klíče, služba vyhodnocuje obsahu klíče zásadami, které jste zadali pro klíč.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#GetOrCreateContentKeyPolicy)]
 
-## <a name="get-a-token"></a>Získání tokenu
-        
-V tomto kurzu určíme u obsahu klíče zásad mají omezení s tokenem. Zásady omezení tokenem musí být doplněny tokenem vydaným službou tokenů zabezpečení (STS). Služba Media Services podporuje tokeny ve [webového tokenu JSON](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3) formáty (JWT) a že je nakonfigurujeme v ukázce.
-
-ContentKeyIdentifierClaim se používá v ContentKeyPolicy, což znamená, že token, který zobrazí ve službě Key doručování musí mít identifikátor ContentKey v ní. V ukázce jsme nezadávejte klíče k obsahu, při vytváření StreamingLocator, systém vytvoří náhodný jeden pro nás. Aby bylo možné generovat testovací token, musí získáme ContentKeyId vložit ContentKeyIdentifierClaim deklarace identity.
-
-[!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#GetToken)]
-
 ## <a name="create-a-streaminglocator"></a>Vytvoření lokátoru streamování StreamingLocator
 
-Po dokončení kódování následuje zpřístupnění videa ve výstupním prostředku, kde je k dispozici klientům pro přehrávání. Video můžete zpřístupnit ve dvou krocích: nejdřív vytvořte streamovací lokátor ([StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators)) a pak adresy URL pro streamování, které budou klienti používat. 
+Po dokončení kódování a sady obsahu klíče zásad, dalším krokem je, aby video ve výstupu prostředek k dispozici pro klienty pro přehrávání. To můžete provést ve dvou krocích: 
 
-Proces vytváření **streamovacího lokátoru** označujeme jako publikování. Pokud nenakonfigurujete volitelný počáteční a koncový čas, je **streamovací lokátor** ve výchozím nastavení platný hned po zavolání rozhraní API a jeho platnost zrušíte až jeho odstraněním. 
+1. Vytvoření [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators)
+2. Vytvoření datových proudů adresy URL, které můžou klienti používat. 
+
+Proces vytváření **StreamingLocator** nazývá publikování. Pokud nenakonfigurujete volitelný počáteční a koncový čas, je **streamovací lokátor** ve výchozím nastavení platný hned po zavolání rozhraní API a jeho platnost zrušíte až jeho odstraněním. 
 
 Když vytváříte [streamovací lokátor](https://docs.microsoft.com/rest/api/media/streaminglocators), je potřeba zadat požadovaný název zásad streamování (**StreamingPolicyName**). V tomto kurzu se používá jednu z PredefinedStreamingPolicies, která informuje Azure Media Services, jak publikovat obsah pro streamování. V tomto příkladu se použije šifrování standardu AES Envelope (označované také jako ClearKey šifrování vzhledem k tomu, že je klíč doručen klientovi přehrávání prostřednictvím protokolu HTTPS a ne licence DRM).
 
@@ -115,6 +110,14 @@ Když vytváříte [streamovací lokátor](https://docs.microsoft.com/rest/api/m
 > Pokud chcete definovat vlastní [zásady streamování](https://docs.microsoft.com/rest/api/media/streamingpolicies), doporučujeme navrhnout pro účet služby Media Service omezený počet takovýchto zásad a používat je opakovaně pro streamovací lokátory, kdykoli potřebujete stejné protokoly a možnosti šifrování. Počet záznamů StreamingPolicy je pro účty služby Media Service omezený kvótou. Neměli byste vytvářet samostatnou zásadu streamování pro každý streamovací lokátor.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#CreateStreamingLocator)]
+
+## <a name="get-a-test-token"></a>Získání testovacího tokenu
+        
+V tomto kurzu určíme u obsahu klíče zásad mají omezení s tokenem. Zásady omezení tokenem musí být doplněny tokenem vydaným službou tokenů zabezpečení (STS). Služba Media Services podporuje tokeny ve [webového tokenu JSON](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3) formáty (JWT) a že je nakonfigurujeme v ukázce.
+
+ContentKeyIdentifierClaim se používá v ContentKeyPolicy, což znamená, že token, který zobrazí ve službě Key doručování musí mít identifikátor ContentKey v ní. V ukázce jsme nezadávejte klíče k obsahu, při vytváření StreamingLocator, systém vytvoří náhodný jeden pro nás. Aby bylo možné generovat testovací token, musí získáme ContentKeyId vložit ContentKeyIdentifierClaim deklarace identity.
+
+[!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#GetToken)]
 
 ## <a name="build-a-dash-streaming-url"></a>Sestavení adresu URL streamování DASH
 
@@ -130,4 +133,4 @@ Obecně platí, že byste měli vyčistit všechno kromě objektů, které máte
 
 ## <a name="next-steps"></a>Další postup
 
-[Přehled](content-protection-overview.md)
+Podívejte se na tom, jak [chránit pomocí DRM](protect-with-drm.md)

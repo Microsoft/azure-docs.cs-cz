@@ -9,12 +9,12 @@ ms.technology: Speech to Text
 ms.topic: article
 ms.date: 07/02/2018
 ms.author: panosper
-ms.openlocfilehash: 6ea55f5d329a037ef35984cb9276b27a532824ec
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 1488f95296bcc11a55a45aff56cee83b7708a789
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37347390"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39072210"
 ---
 # <a name="speech-scenarios"></a>Scénáře pro službu Speech
 
@@ -32,11 +32,11 @@ Mnoho uživatelů chcete povolit hlasový vstup u svých aplikací. Hlasový vst
 
 ### <a name="voice-triggered-apps-with-baseline-models"></a>Hlasové aktivaci aplikací pomocí základní modely
 
-Pokud vaše aplikace pro širokou veřejností v prostředích, kde není nadměrné šum na pozadí, nejjednodušší a nejrychlejší způsob, jak to udělat jednoduše stahovat naše [sadou SDK pro řeč](speech-sdk.md) a příslušné [ Ukázky](quickstart-csharp-windows.md). Sada SDK používá technologii vaše [klíč předplatného Azure](https://azure.microsoft.com/try/cognitive-services/) vývojářům umožňuje nahrát zvuk modely pro rozpoznávání řeči standardních hodnot, které stojí za Cortana a Skype. Mdoels jsou nejmodernější optimalizaci pspo a jsou používány výše uvedené produkty. Zprovoznění může trvat několik minut.
+Pokud vaše aplikace pro širokou veřejností v prostředích, kde není nadměrné šum na pozadí, nejjednodušší a nejrychlejší způsob, jak to udělat jednoduše stahovat naše [sadou SDK pro řeč](speech-sdk.md) a příslušné [ Ukázky](quickstart-csharp-dotnet-windows.md). Sada SDK používá technologii vaše [klíč předplatného Azure](https://azure.microsoft.com/try/cognitive-services/) vývojářům umožňuje nahrát zvuk modely pro rozpoznávání řeči standardních hodnot, které stojí za Cortana a Skype. Mdoels jsou nejmodernější optimalizaci pspo a jsou používány výše uvedené produkty. Zprovoznění může trvat několik minut.
 
 ### <a name="voice-triggered-apps-with-custom-models"></a>Hlasové aktivuje aplikací s využitím vlastních modelů
 
-Pokud vaše aplikace řeší konkrétní doménu, (Řekněme chemii, biologie nebo zvláštními potřebami podávání), můžete chtít zvážit přizpůsobit [jazykový model](how-to-customize-language-model.md). Přizpůsobení jazykového modelu naučí dekodér o většiny běžných frází a slova, která vaše aplikace používá. Dekodér budete moct přesněji přepisy hlasový vstup pomocí vlastního jazykového modelu pro konkrétní doménu místo modelu směrného plánu. Podobně pokud šum na pozadí, kde se bude používat vaše aplikace je viditelného můžete k přizpůsobení akustického modelu. Projděte si dokumentaci pro další případy, ve kterém [přizpůsobení jazyka](how-to-customize-language-model.md) a [akustické přizpůsobení](how-to-customize-acoustic-models.md) zadejte hodnotu a navštivte naše [přizpůsobení portálu](https://customspeech.ai) pro spuštění s oznámením prostředí pro vytváření modelu. Podobně jako základní modely, vlastní modely jsou volány prostřednictvím našich [sadou SDK pro řeč](speech-sdk.md) a příslušné [ukázky](quickstart-csharp-windows.md).
+Pokud vaše aplikace řeší konkrétní doménu, (Řekněme chemii, biologie nebo zvláštními potřebami podávání), můžete chtít zvážit přizpůsobit [jazykový model](how-to-customize-language-model.md). Přizpůsobení jazykového modelu naučí dekodér o většiny běžných frází a slova, která vaše aplikace používá. Dekodér budete moct přesněji přepisy hlasový vstup pomocí vlastního jazykového modelu pro konkrétní doménu místo modelu směrného plánu. Podobně pokud šum na pozadí, kde se bude používat vaše aplikace je viditelného můžete k přizpůsobení akustického modelu. Projděte si dokumentaci pro další případy, ve kterém [přizpůsobení jazyka](how-to-customize-language-model.md) a [akustické přizpůsobení](how-to-customize-acoustic-models.md) zadejte hodnotu a navštivte naše [přizpůsobení portálu](https://customspeech.ai) pro spuštění s oznámením prostředí pro vytváření modelu. Podobně jako základní modely, vlastní modely jsou volány prostřednictvím našich [sadou SDK pro řeč](speech-sdk.md) a příslušné [ukázky](quickstart-csharp-dotnet-windows.md).
 
 ## <a name="transcribe-call-center-audio-calls"></a>Přepisy volání center zvuku volání
 
@@ -62,5 +62,5 @@ Kromě toho pro uživatele, které chcete přidat další posouzení vašich oso
 
 ## <a name="next-steps"></a>Další postup
 
-* [Získejte zkušební verzi předplatného řeči](https://azure.microsoft.com/try/cognitive-services/)
+* [Získání zkušebního předplatného služby Speech](https://azure.microsoft.com/try/cognitive-services/)
 * [Začínáme s rozhraním Speech SDK](speech-sdk.md)

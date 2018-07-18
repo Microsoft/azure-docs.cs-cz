@@ -1,6 +1,6 @@
 ---
-title: Jak začít pracovat s úložiště tabulek a Visual Studio připojené služby (ASP.NET Core) | Microsoft Docs
-description: Jak začít pracovat s Azure Table storage v projektu ASP.NET Core v sadě Visual Studio po připojení k účtu úložiště pomocí sady Visual Studio připojené služby
+title: Jak začít pracovat s table storage a Visual Studio připojené služby (ASP.NET Core) | Dokumentace Microsoftu
+description: Jak začít s Azure Table storage v projektu aplikace ASP.NET Core v sadě Visual Studio po připojení k účtu úložiště pomocí sady Visual Studio připojené služby
 services: storage
 author: ghogen
 manager: douge
@@ -11,74 +11,76 @@ ms.workload: azure
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ghogen
-ms.openlocfilehash: e53e8ed27cfc048f24bda4ef92fcd2a50a85ed07
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 0cb2e04d788bce2d3a5f6bc46632b9ae18b6467f
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31794112"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39112912"
 ---
-# <a name="how-to-get-started-with-azure-table-storage-and-visual-studio-connected-services"></a>Jak začít pracovat s Azure Table storage a Visual Studio připojené služby
+# <a name="how-to-get-started-with-azure-table-storage-and-visual-studio-connected-services"></a>Jak začít s Azure Table storage a Visual Studio připojené služby
 
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
 
-Tento článek popisuje, jak začít používat Azure Table storage v sadě Visual Studio, po vytvoření a odkazuje pomocí sady Visual Studio účet úložiště Azure v projektu ASP.NET Core **připojené služby** funkce. **Připojené služby** operaci nainstaluje příslušné balíčky NuGet pro přístup k úložišti Azure ve vašem projektu a přidá připojovací řetězec pro účet úložiště v konfiguračních souborech projektu. (Viz [úložiště dokumentace](https://azure.microsoft.com/documentation/services/storage/) obecné informace o službě Azure Storage.)
+Tento článek popisuje, jak začít používat Azure Table storage v sadě Visual Studio po odkazovat účtu služby Azure storage v projektu aplikace ASP.NET Core pomocí sady Visual Studio nebo vytvořili **připojené služby** funkce. **Připojené služby** operace nainstaluje příslušné balíčky NuGet pro přístup k Azure storage ve vašem projektu a přidá připojovací řetězec pro účet úložiště pro konfigurační soubory projektu. (Viz [dokumentace ke službě Storage](https://azure.microsoft.com/documentation/services/storage/) obecné informace o službě Azure Storage.)
 
-Služba úložiště Azure Table umožňuje ukládat velké množství strukturovaná data. Služba je úložiště dat typu NoSQL, která přijímá ověřených volání z uvnitř i vně cloudu Azure. Tabulky Azure jsou ideální pro ukládání strukturovaných, nerelačních dat. Další obecné informace o používání Azure Table storage najdete v tématu [Začínáme s Azure Table storage pomocí rozhraní .NET](../storage/storage-dotnet-how-to-use-tables.md).
+Služba Azure Table storage umožňuje ukládat velké objemy strukturovaných dat. Tato služba je úložiště dat typu NoSQL, která přijímá ověřených volání z uvnitř i mimo Azure cloud. Tabulky Azure jsou ideální pro ukládání strukturovaných, nerelačních dat. Další obecné informace o používání služby Azure Table storage najdete v tématu [Začínáme s Azure Table storage pomocí .NET](../storage/storage-dotnet-how-to-use-tables.md).
 
-Chcete-li začít, nejdřív vytvořte tabulku ve vašem účtu úložiště. Pak se tento článek ukazuje, jak vytvořit tabulku v jazyce C# a jak provádět základní tabulka operace, jako je přidání, úprava, čtení a odebrání položek tabulky.  Kód používá Klientská knihovna pro úložiště Azure pro .NET. Další informace o technologii ASP.NET najdete v tématu [ASP.NET](http://www.asp.net).
+Abyste mohli začít, nejprve vytvořte tabulku v účtu úložiště. Tento článek popisuje pak v tom, jak vytvořit tabulku v jazyce C# a jak provádět základní tabulka operace, jako jsou přidání, úprava, čtení a odebrání položky tabulky.  Tento kód použije klientskou knihovnu pro úložiště Azure pro .NET. Další informace o ASP.NET najdete v tématu [ASP.NET](http://www.asp.net).
 
-Některé z rozhraní API úložiště Azure jsou asynchronní a kód v tomto článku předpokládá, že asynchronní metody jsou používány. V tématu [asynchronní programování](https://docs.microsoft.com/dotnet/csharp/async) Další informace.
+Některé z rozhraní API služby Azure Storage jsou asynchronní a kódu v tomto článku se předpokládá, že se používají asynchronní metody. Zobrazit [asynchronní programování](https://docs.microsoft.com/dotnet/csharp/async) Další informace.
 
-## <a name="access-tables-in-code"></a>Přístup k tabulky v kódu
+## <a name="access-tables-in-code"></a>Tabulky přístup v kódu
 
-Chcete-li získat přístup k tabulky v projektů ASP.NET Core, zahrnují následující položky pro všechny C# zdrojové soubory, které přístupu k Azure table storage.
+Chcete-li k tabulkám v projektech ASP.NET Core, zahrnují následující položky, které chcete žádné C# zdrojové soubory, které přístup k úložišti tabulek v Azure.
 
 1. Přidat nezbytné `using` příkazy:
 
-    ```cs
-    using Microsoft.Framework.Configuration;
+    ```csharp
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Table;
     using System.Threading.Tasks;
-    using LogLevel = Microsoft.Framework.Logging.LogLevel;
     ```
 
-1. Získání `CloudStorageAccount` objekt, který reprezentuje informace o účtu úložiště. Chcete-li získat připojovací řetězec úložiště a informace o účtu úložiště z konfigurace služby Azure, použijte následující kód:
+1. Získání `CloudStorageAccount` objekt reprezentující informace o vašem účtu úložiště. Použijte následující kód, pomocí názvu účtu úložiště a klíč účtu, který najdete v souboru appSettings.json připojovacího řetězce úložiště:
 
-    ```cs
-    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-        CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
+    ```csharp
+        CloudStorageAccount storageAccount = new CloudStorageAccount(
+            new Microsoft.WindowsAzure.Storage.Auth.StorageCredentials(
+                "<name>", "<account-key>"), true);
     ```
 
-1. Získání `CloudTableClient` objekt, který má odkazovat na tabulku objekty v účtu úložiště:
+1. Získání `CloudTableClient` objekt neodkazovali na objekty Tabulka ve vašem účtu úložiště:
 
-    ```cs
+    ```csharp
     // Create the table client.
     CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
     ```
 
-1. Získání `CloudTable` odkaz na objekt, který chcete odkazovat na konkrétní tabulky a entity:
+1. Získání `CloudTable` referenční objekt odkazování na určité tabulky a entity:
 
-    ```cs
+    ```csharp
     // Get a reference to a table named "peopleTable"
     CloudTable peopleTable = tableClient.GetTableReference("peopleTable");
     ```
 
-## <a name="create-a-table-in-code"></a>Vytvoří tabulku v kódu
+## <a name="create-a-table-in-code"></a>Vytvoření tabulky v kódu
 
-Chcete-li vytvořit tabulky Azure, volejte '' CreateIfNotExistsAsync()':
+Vytvoření tabulek v Azure, vytvořte asynchronní metody a v něm, volejte `CreateIfNotExistsAsync()`:
 
-```cs
-// Create the CloudTable if it does not exist
-await peopleTable.CreateIfNotExistsAsync();
+```csharp
+async void CreatePeopleTableAsync()
+{
+    // Create the CloudTable if it does not exist
+    await peopleTable.CreateIfNotExistsAsync();
+}
 ```
-
+    
 ## <a name="add-an-entity-to-a-table"></a>Přidání entity do tabulky
 
-Chcete-li do tabulky přidat entitu, vytvořte třídu, která definuje vlastnosti vaší entity. Následující kód definuje třídu entity, která je volána `CustomerEntity` která používá jméno zákazníka jako klíč řádku a jeho příjmení jako klíč oddílu.
+Přidání entity do tabulky, vytvořte třídu, která definuje vlastnosti vaší entity. Následující kód definuje třídu entity, která je volána `CustomerEntity` , která používá jméno zákazníka jako klíč řádku a jeho příjmení jako klíč oddílu.
 
-```cs
+```csharp
 public class CustomerEntity : TableEntity
 {
     public CustomerEntity(string lastName, string firstName)
@@ -95,9 +97,9 @@ public class CustomerEntity : TableEntity
 }
 ```
 
-Tabulka operací zahrnujících použijte entity `CloudTable` objektu jste vytvořili předtím v [přístup k tabulkám v kódu](#access-tables-in-code). `TableOperation` Objekt představuje operaci provést. Následující příklad kódu ukazuje, jak vytvořit `CloudTable` objektu a `CustomerEntity` objektu. Příprava operaci `TableOperation` se vytvoří pro vložení entity zákazníka do tabulky. Nakonec se operace provede voláním `CloudTable.ExecuteAsync`.
+Operace týkající se použití entit tabulek `CloudTable` objekt jste vytvořili dříve v [přístup k tabulkám v kódu](#access-tables-in-code). `TableOperation` Objekt představuje operaci provést. Následující příklad kódu ukazuje, jak vytvořit `CloudTable` objektu a `CustomerEntity` objektu. Přípravy na operaci `TableOperation` se vytvoří pro vložení entity zákazníka do tabulky. Nakonec se operace provede voláním `CloudTable.ExecuteAsync`.
 
-```cs
+```csharp
 // Create a new customer entity.
 CustomerEntity customer1 = new CustomerEntity("Harp", "Walter");
 customer1.Email = "Walter@contoso.com";
@@ -112,9 +114,9 @@ await peopleTable.ExecuteAsync(insertOperation);
 
 ## <a name="insert-a-batch-of-entities"></a>Vložení dávky entit
 
-Do tabulky v rámci jedné zápisu operace můžete vložit více entit. Následující příklad kódu vytvoří dva objekty entity ("Jeff Smith" a "Ben Smith"), se přidají do `TableBatchOperation` pomocí `Insert` metoda, a pak spustí operaci voláním `CloudTable.ExecuteBatchAsync`.
+Do tabulky v rámci jedné zápisu operace můžete vložit více entit. Následující příklad kódu vytvoří dva objekty entity ("Jan Macek" a "Ben Smith"), se přidají do `TableBatchOperation` pomocí `Insert` metoda, a pak spustí operaci voláním `CloudTable.ExecuteBatchAsync`.
 
-```cs
+```csharp
 // Create the batch operation.
 TableBatchOperation batchOperation = new TableBatchOperation();
 
@@ -138,9 +140,9 @@ await peopleTable.ExecuteBatchAsync(batchOperation);
 
 ## <a name="get-all-of-the-entities-in-a-partition"></a>Získání všech entit v oddílu
 
-Dotaz na tabulku pro všechny entity v oddílu, použijte `TableQuery` objektu. Následující příklad kódu určuje filtr pro entity, kde Smith je klíč oddílu. Tento příklad zobrazí pole každé entity z výsledků dotazu z konzoly.
+Chcete-li dotaz na tabulku pro všechny entity v oddílu, použijte `TableQuery` objektu. Následující příklad kódu určuje filtr pro entity, kde Smith je klíč oddílu. Tento příklad zobrazí pole každé entity z výsledků dotazu z konzoly.
 
-```cs
+```csharp
 // Construct the query operation for all customer entities where PartitionKey="Smith".
 TableQuery<CustomerEntity> query = new TableQuery<CustomerEntity>().Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "Smith"));
 
@@ -159,11 +161,11 @@ do
 } while (token != null);
 ```
 
-## <a name="get-a-single-entity"></a>Získat jedné entity
+## <a name="get-a-single-entity"></a>Získat jednu entitu
 
-Můžete napsat dotaz pro získání jedné konkrétní entity. Následující kód používá `TableOperation` objekt, který chcete zadat zákazníka s názvem 'Ben Smith'. Metoda vrátí pouze jednu entitu, místo do kolekce a vrácenou hodnotou při `TableResult.Result` je `CustomerEntity` objektu. Určení klíče oddílu a řádku v dotazu je nejrychlejší způsob, jak načíst jednu entitu ze `Table` služby.
+Můžete napsat dotaz pro získání jedné konkrétní entity. Následující kód používá `TableOperation` objektu k určení zákazníka s názvem "Ben Smith". Metoda vrátí pouze jednu entitu, nikoli kolekci a vrácenou hodnotou při `TableResult.Result` je `CustomerEntity` objektu. Zadání klíče oddílu a řádku v dotazu je nejrychlejší způsob, jak načíst jednu entitu ze `Table` služby.
 
-```cs
+```csharp
 // Create a retrieve operation that takes a customer entity.
 TableOperation retrieveOperation = TableOperation.Retrieve<CustomerEntity>("Smith", "Ben");
 
@@ -179,14 +181,14 @@ else
 
 ## <a name="delete-an-entity"></a>Odstranění entity
 
-Entitu můžete odstranit po ji najít. Následující kód vyhledává a odstraní entitu zákazníka s názvem "Ben Smith":
+Entitu můžete po vás odstranit. Následující kód vyhledá a odstraní entitu zákazníka s názvem "Ben Smith":
 
-```cs
+```csharp
 // Create a retrieve operation that expects a customer entity.
 TableOperation retrieveOperation = TableOperation.Retrieve<CustomerEntity>("Smith", "Ben");
 
 // Execute the operation.
-TableResult retrievedResult = peopleTable.Execute(retrieveOperation);
+TableResult retrievedResult = await peopleTable.ExecuteAsync(retrieveOperation);
 
 // Assign the result to a CustomerEntity object.
 CustomerEntity deleteEntity = (CustomerEntity)retrievedResult.Result;

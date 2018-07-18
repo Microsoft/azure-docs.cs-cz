@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 7488bfbabaf2ce12d2f7315f5142ffea93f584c2
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 43a3458ba0f08d73931b5ecddf6a2c7b1ae259f4
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001629"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044811"
 ---
 # <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>Konfigurace vlastního názvu domény pro cloudovou službu Azure
 Při vytváření cloudové služby, Azure ho přiřadí na subdoménu **cloudapp.net**. Například pokud vaši Cloudovou službu se s názvem "contoso", uživatelé budou moct získat přístup k vaší aplikaci na adrese URL jako http://contoso.cloudapp.net. Azure také přiřadí virtuální IP adresu.
@@ -124,7 +124,7 @@ Například následující záznam předává veškerý provoz z **contoso.com**
 
 | Název hostitele nebo subdomény | IP adresa |
 | --- | --- |
-| @ |137.135.70.239 |
+| \@ |137.135.70.239 |
 
 Tento příklad ukazuje vytvoření záznamu A pro kořenovou doménu. Pokud chcete vytvořit záznam zástupných znaků pro všechny subdomény, zadali byste: *** "jako subdomény.
 

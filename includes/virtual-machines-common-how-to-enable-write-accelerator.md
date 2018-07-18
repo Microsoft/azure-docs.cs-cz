@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 6/8/2018
 ms.author: raiye
 ms.custom: include file
-ms.openlocfilehash: cd9b8eaf84ac4c1227c521628fd4156eec4506bf
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 3c5746d0fd2c471f767bac4891178c63e21f0418
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38746263"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39094376"
 ---
 # <a name="enable-write-accelerator"></a>Povolení akcelerátoru zápisu
 
@@ -67,7 +67,7 @@ Následující požadavky platí v daném okamžiku použití akcelerátorem zá
 - Disky, které chcete použít akcelerátor zápisu Azure proti musí být [Azure managed disks](https://azure.microsoft.com/services/managed-disks/) na Premium Storage.
 - Musí používat virtuálních počítačů řady M-series
 
-### <a name="enabling-azure-write-accelerator-using-azure-powershell"></a>Povolení Azure akcelerátorem zápisu pomocí Azure Powershellu
+## <a name="enabling-azure-write-accelerator-using-azure-powershell"></a>Povolení Azure akcelerátorem zápisu pomocí Azure Powershellu
 
 Modul prostředí Azure PowerShell verze 5.5.0 zahrnují změny na příslušné rutiny k povolení nebo zakázání Write Accelerator pro konkrétní disky Azure Premium Storage.
 Pokud chcete povolit nebo nasadit disky, které jsou podporovány akcelerátorem zápisu, máte následující příkazy prostředí PowerShell změnit a rozšířená tak, aby přijímat parametr pro akcelerátorem zápisu.
@@ -108,7 +108,7 @@ Get-AzureRmVmss | Update-AzureRmVmss -OsDiskWriteAccelerator:$false
 
 Dva základní scénáře možnost využívat skripty, jak je znázorněno v následujících částech.
 
-#### <a name="adding-a-new-disk-supported-by-write-accelerator-using-powershell"></a>Přidání nového disku podporované akcelerátorem zápisu pomocí Powershellu
+### <a name="adding-a-new-disk-supported-by-write-accelerator-using-powershell"></a>Přidání nového disku podporované akcelerátorem zápisu pomocí Powershellu
 
 Tento skript slouží k přidání nového disku k virtuálnímu počítači. Disk vytvořený pomocí tohoto skriptu používá akcelerátorem zápisu.
 
@@ -133,9 +133,9 @@ Add-AzureRmVMDataDisk -CreateOption empty -DiskSizeInGB $size -Name $vmname-$dat
 Update-AzureRmVM -ResourceGroupName $rgname -VM $vm
 ```
 
-#### <a name="enabling-write-accelerator-on-an-existing-azure-disk-using-powershell"></a>Povolení akcelerátoru zápisu na disk s existující Azure pomocí Powershellu
+### <a name="enabling-write-accelerator-on-an-existing-azure-disk-using-powershell"></a>Povolení akcelerátoru zápisu na disk s existující Azure pomocí Powershellu
 
-Tento skript můžete použít k povolení akcelerátorem zápisu na disk s existující. Nahraďte `myVM`, `myWAVMs`, a `test-log001` s hodnotami, které jsou vhodné pro vaše konkrétní nasazení. Skript přidá do existujícího disku, kde je hodnota $newstatus nastaven na "$true" akcelerátorem zápisu. Pomocí hodnoty "$false" zakážete akcelerátorem zápisu na daný disk.
+Tento skript můžete použít k povolení akcelerátorem zápisu na disk s existující. Nahraďte `myVM`, `myWAVMs`, a `test-log001` s hodnotami, které jsou vhodné pro vaše konkrétní nasazení. Skript přidá do existujícího disku akcelerátorem zápisu kde hodnota **$newstatus** je nastavena na "$true". Pomocí hodnoty "$false" zakážete akcelerátorem zápisu na daný disk.
 
 ```PowerShell
 #Specify your VM Name
@@ -157,15 +157,15 @@ Update-AzureRmVM -ResourceGroupName $rgname -VM $vm
 > [!Note]
 > Provádění skriptu výše odpojit disk určený, povolí akcelerátorem zápisu na disk a pak připojte disk
 
-### <a name="enabling-write-accelerator-using-the-azure-portal"></a>Povolení akcelerátoru zápisu pomocí webu Azure portal
+## <a name="enabling-write-accelerator-using-the-azure-portal"></a>Povolení akcelerátoru zápisu pomocí webu Azure portal
 
-Prostřednictvím portálu, kde můžete určit nastavení mezipaměti disku můžete povolit akcelerátorem zápisu: 
+Prostřednictvím portálu, kde můžete určit nastavení mezipaměti disku můžete povolit akcelerátorem zápisu:
 
 ![Akcelerátor zápisu na portálu Azure portal](./media/virtual-machines-common-how-to-enable-write-accelerator/wa_scrnsht.png)
 
-### <a name="enabling-write-accelerator-using-the-azure-cli"></a>Povolení akcelerátoru zápisu pomocí Azure CLI
+## <a name="enabling-write-accelerator-using-the-azure-cli"></a>Povolení akcelerátoru zápisu pomocí Azure CLI
 
-Můžete použít [rozhraní příkazového řádku Azure](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest) umožňující akcelerátorem zápisu. 
+Můžete použít [rozhraní příkazového řádku Azure](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest) umožňující akcelerátorem zápisu.
 
 Chcete-li povolit akcelerátorem zápisu na stávající disk, použijte [az vm update](https://docs.microsoft.com/en-us/cli/azure/vm?view=azure-cli-latest#az-vm-update), můžete použít následující příklady Pokud nahradíte diskName, VMName a skupina prostředků s vlastními hodnotami: `az vm update -g group1 -n vm1 -write-accelerator 1=true`
 
@@ -173,11 +173,11 @@ Připojení disku s akcelerátorem zápisu povolené použití [az vm disk attac
 
 Chcete-li zakázat akcelerátorem zápisu, použijte [az vm update](https://docs.microsoft.com/en-us/cli/azure/vm?view=azure-cli-latest#az-vm-update), nastavení vlastnosti na hodnotu false: `az vm update -g group1 -n vm1 -write-accelerator 0=false 1=false`
 
-### <a name="enabling-through-rest-apis"></a>Povolení prostřednictvím rozhraní Rest API
+## <a name="enabling-write-accelerator-using-rest-apis"></a>Povolení akcelerátoru zápisu pomocí rozhraní Rest API
 
 K nasazení pomocí Rest API služby Azure, budete muset nainstalovat Azure armclient.
 
-#### <a name="install-armclient"></a>Nainstalujte armclient
+### <a name="install-armclient"></a>Nainstalujte armclient
 
 Ke spuštění armclient, musíte ji nainstalovat prostřednictvím Chocolatey. Můžete ji nainstalovat prostřednictvím cmd.exe nebo prostředí powershell. Použití se zvýšenými oprávněními pro tyto příkazy ("Spustit jako správce").
 
@@ -187,7 +187,7 @@ Pomocí prostředí PowerShell, spusťte následující příkaz: `Set-Execution
 
 Nyní můžete nainstalovat armclient pomocí následujícího příkazu v cmd.exe nebo prostředí PowerShell `choco install armclient`
 
-#### <a name="getting-your-current-vm-configuration"></a>Získávání aktuální konfigurace virtuálního počítače
+### <a name="getting-your-current-vm-configuration"></a>Získávání aktuální konfigurace virtuálního počítače
 
 Chcete-li změnit atributy vaše konfigurace disků, musíte nejprve získat aktuální konfiguraci v souboru JSON. Aktuální konfigurace můžete získat spuštěním následujícího příkazu: `armclient GET /subscriptions/<<subscription-ID<</resourceGroups/<<ResourceGroup>>/providers/Microsoft.Compute/virtualMachines/<<virtualmachinename>>?api-version=2017-12-01 > <<filename.json>>`
 
