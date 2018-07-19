@@ -1,6 +1,6 @@
 ---
-title: Tabulky Azure Cosmos DB rozhraní API .NET SDK & prostředky | Microsoft Docs
-description: Další informace o Cosmos DB tabulky rozhraní API služby Azure včetně data vydání, vyřazení dat a změny provedené mezi každou verzi.
+title: Rozhraní API .NET SDK & zdroje tabulky Azure Cosmos DB | Dokumentace Microsoftu
+description: Další informace o Azure Cosmos DB Table API včetně data vydání, vyřazení dat a změny provedené mezi jednotlivými verzemi.
 services: cosmos-db
 author: rnagpal
 manager: kfile
@@ -10,14 +10,14 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/26/2018
 ms.author: rnagpal
-ms.openlocfilehash: 391948af7fe00e0a5e6171d5322c09c05fcd1cc3
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 2fba67b247ad0b53e11ca012969163a68013e82f
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34798470"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39126707"
 ---
-# <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB tabulky .NET API: Stažení a poznámky k verzi
+# <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB Table .NET API: Stáhněte si a poznámky k verzi
 > [!div class="op_single_selector"]
 > * [.NET](table-sdk-dotnet.md)
 > * [Java](table-sdk-java.md)
@@ -27,10 +27,10 @@ ms.locfileid: "34798470"
 |   |   |
 |---|---|
 |**Stažení sady SDK**|[NuGet](https://aka.ms/acdbtablenuget)|
-|**Dokumentaci k rozhraní API**|[Referenční dokumentace rozhraní API .NET](https://aka.ms/acdbtableapiref)|
-|**Rychlý start**|[Azure Cosmos DB: Sestavení aplikace pomocí rozhraní .NET a Table API](create-table-dotnet.md)|
-|**Kurz**|[Azure Cosmos DB: Vývoj s tabulkou rozhraní API v rozhraní .NET](tutorial-develop-table-dotnet.md)|
-|**Aktuální podporovaných prostředí**|[Rozhraní Microsoft .NET Framework 4.5.1](https://www.microsoft.com/en-us/download/details.aspx?id=40779)|
+|**Dokumentace k rozhraní API**|[Referenční dokumentace rozhraní API .NET](https://aka.ms/acdbtableapiref)|
+|**Rychlý start**|[Azure Cosmos DB: Sestavení aplikace pomocí .NET a rozhraní API tabulky](create-table-dotnet.md)|
+|**Kurz**|[Azure Cosmos DB: Vývoj s využitím rozhraní Table API v .NET](tutorial-develop-table-dotnet.md)|
+|**Aktuální podporované architektury**|[Microsoft .NET Framework 4.5.1](https://www.microsoft.com/en-us/download/details.aspx?id=40779)|
 
 > [!IMPORTANT]
 > Pokud jste vytvořili účet Table API během období Preview, vytvořte [nový účet Table API](create-table-dotnet.md#create-a-database-account) pro práci s obecně dostupnými sadami Table API SDK.
@@ -38,59 +38,64 @@ ms.locfileid: "34798470"
 
 ## <a name="release-notes"></a>Poznámky k verzi
 
+### <a name="a-name113113"></a><a name="1.1.3"/>1.1.3
+* Oprava závislostí balíčku Nuget na Microsoft.Azure.Storage.Common a Microsoft.Azure.DocumentDB.
+* Pokud je nakonfigurovaná JsonConvert.DefaultSettings opravy chyb v tabulce serializace.
+
 ### <a name="a-name111111"></a><a name="1.1.1"/>1.1.1
-* Přidání ověření poškozený značky etag binárním rozsáhlým v režimu přímého.
-* Opravené chyby dotazu LINQ v režimu brány.
-* Synchronní rozhraní API ve fondu vláken s SynchronizationContext nyní spustit.
+* Přidání ověřování pro poškozený značek etag v přímém režimu.
+* Oprava chyby dotazu LINQ v režimu brány.
+* Synchronní rozhraní API teď spouštět ve fondu vláken se třída SynchronizationContext.
 
 ### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
-* Přidání TableQueryMaxItemCount, TableQueryEnableScan, TableQueryMaxDegreeOfParallelism a TableQueryContinuationTokenLimitInKb do TableRequestOptions
+* Přidat do TableRequestOptions TableQueryMaxItemCount, TableQueryEnableScan, TableQueryMaxDegreeOfParallelism a TableQueryContinuationTokenLimitInKb
 * Opravy chyb
 
 ### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
-* Obecné dostupnosti verze
+* Verzi všeobecné dostupnosti
 
 ### <a name="a-name010-preview090-preview"></a><a name="0.1.0-preview"/>0.9.0-Preview
 * Počáteční verze Preview
 
-## <a name="release-and-retirement-dates"></a>Datum vydání a vyřazování z provozu
-Společnost Microsoft poskytuje oznámení alespoň **dobu 12 měsíců** předem vyřazení sady SDK k funkce smooth přechodu na novější nebo podporované verzi.
+## <a name="release-and-retirement-dates"></a>Datum vydání verze a vyřazení z provozu
+Společnost Microsoft poskytuje oznámení alespoň **12 měsíců** před vyřazením z provozu sady SDK ulehčení přechodu na verzi novější nebo podporované.
 
-[WindowsAzure.Storage PremiumTable](https://www.nuget.org/packages/WindowsAzure.Storage-PremiumTable/0.1.0-preview) preview balíček je zastaralý a nahrazuje [Microsoft.Azure.CosmosDB.Table](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table) balíčku. Sadu SDK WindowsAzure.Storage PremiumTable vyřadí na 15. listopadu 2018, na dobu žádosti není povoleno vyřazeno SDK.
+[WindowsAzure.Storage-PremiumTable](https://www.nuget.org/packages/WindowsAzure.Storage-PremiumTable/0.1.0-preview) balíček ve verzi preview má zastaralé a nahrazují [Microsoft.Azure.CosmosDB.Table](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table) balíčku. Sady SDK WindowsAzure.Storage-PremiumTable skončí 15. listopadu 2018, na dobu žádosti pro staré SDK nedovolí.
 
-Nové funkce a funkce a optimalizace, jsou přidány pouze v aktuální sadě SDK, jako takový se doporučuje, aby vždy upgradu na nejnovější verze sady SDK v míře. 
+Nové funkce a funkce a optimalizace jsou přidány pouze aktuální sadu SDK, proto se doporučuje, vždy upgradovat na nejnovější SDK verzi co možná nejdříve. 
 
-Služba odmítne všechny požadavky pro Azure DB Cosmos pomocí vyřazeno sady SDK.
+Služba odmítne všechny žádosti do služby Azure Cosmos DB pomocí vyřazeno sady SDK.
 <br/>
 
-| Verze | Datum vydání | Datum vyřazení |
+| Verze | Datum vydání | Datum vyřazení z provozu |
 | --- | --- | --- |
-| [1.1.1](#1.1.1) |26 března 2018|--- |
+| [1.1.3](#1.1.3) |17. července 2018|--- |
+| [1.1.1](#1.1.1) |26. března 2018|--- |
 | [1.1.0](#1.1.0) |21. února 2018|--- |
-| [1.0.0](#1.0.0) |15 listopadu 2017|--- |
-| [0.9.0-preview](#0.9.0-preview) |11 listopadu 2017 |--- |
+| [1.0.0](#1.0.0) |15. listopadu 2017|--- |
+| [0.9.0-preview](#0.9.0-preview) |11. listopadu 2017 |--- |
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-Pokud dojde k chybě 
+Pokud se zobrazí chyba 
 
 ```
 Unable to resolve dependency 'Microsoft.Azure.Storage.Common'. Source(s) used: 'nuget.org', 
 'CliFallbackFolder', 'Microsoft Visual Studio Offline Packages', 'Microsoft Azure Service Fabric SDK'`
 ```
 
-Při pokusu o použití balíčku Microsoft.Azure.CosmosDB.Table NuGet, máte dvě možnosti vyřešit problém:
+Při pokusu o použití balíčku Microsoft.Azure.CosmosDB.Table NuGet, máte dvě možnosti k vyřešení tohoto problému:
 
-* Pomocí konzoly Správa balíček nainstalovat Microsoft.Azure.CosmosDB.Table balíček a jeho závislé součásti. Chcete-li to provést, zadejte následující příkaz v konzole Správce balíčků pro vaše řešení. 
+* Pomocí konzoly Správa balíčků nainstalujte Microsoft.Azure.CosmosDB.Table balíček a jeho závislosti. Chcete-li to provést, zadejte následující příkaz v konzole Správce balíčků pro vaše řešení. 
     ```
     Install-Package Microsoft.Azure.CosmosDB.Table -IncludePrerelease
     ```
     
-* Nainstalujte balíček Microsoft.Azure.Storage.Common Nuget před instalací Microsoft.Azure.CosmosDB.Table se pomocí vaší upřednostňované nástroj pro správu balíček Nuget.
+* Před instalací Microsoft.Azure.CosmosDB.Table pomocí váš preferovaný nástroj pro správu balíčků Nuget nainstalujte balíček Microsoft.Azure.Storage.Common Nuget.
 
 ## <a name="faq"></a>Nejčastější dotazy
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>Další informace najdete v tématech
-Další informace o rozhraní API služby Azure DB Cosmos tabulky, najdete v části [Úvod do rozhraní API služby Azure Cosmos DB tabulky](table-introduction.md). 
+Další informace o rozhraní Azure Cosmos DB Table API najdete v tématu [Úvod do služby Azure Cosmos DB Table API](table-introduction.md). 

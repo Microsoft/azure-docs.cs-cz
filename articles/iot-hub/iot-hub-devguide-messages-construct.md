@@ -1,75 +1,75 @@
 ---
-title: Pochopení formát zprávy Azure IoT Hub | Microsoft Docs
-description: Příručka vývojáře - popisuje formát a očekávaný obsah zprávy IoT Hub.
+title: Vysvětlení formát zprávy služby Azure IoT Hub | Dokumentace Microsoftu
+description: Příručka pro vývojáře – popisuje formátu a očekávaný obsah zpráv ve službě IoT Hub.
 author: dominicbetts
 manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 03/20/2018
+ms.date: 07/18/2018
 ms.author: dobett
-ms.openlocfilehash: 1d84fa5ca580a1e56ba9ce17dece9ad9680c74c6
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a1296565384e60117d883a1f1407362482ba1a3e
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34633923"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39125009"
 ---
-# <a name="create-and-read-iot-hub-messages"></a>Vytvoření a čtení zpráv služby IoT Hub
+# <a name="create-and-read-iot-hub-messages"></a>Vytvoření a čtení zpráv IoT Hubu
 
-Pro podporu bezproblémové vzájemná funkční spolupráce mezi protokoly, definuje IoT Hub běžný formát zprávy pro všechny protokoly zařízení přístupem. Používá se tento formát zprávy pro [zařízení cloud] [ lnk-d2c] a [cloud zařízení] [ lnk-c2d] zprávy. 
+IoT Hub pro podporu bezproblémovou spolupráci mezi protokoly, definuje společný formát zprávy pro všechny protokoly určených pro zařízení. Zprávy ve formátu se používá pro obě [typu zařízení cloud] [ lnk-d2c] a [typu cloud zařízení] [ lnk-c2d] zprávy. 
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-[IoT Hub zpráva] [ lnk-messaging] se skládá z:
+[Zpráv služby IoT Hub] [ lnk-messaging] se skládá ze:
 
-* Sadu *vlastnosti systému*. Vlastnosti, které Centrum IoT interpretuje nebo nastaví. Tato sada je předem určený.
-* Sadu *vlastnosti aplikace*. Slovník vlastnosti řetězce, které aplikace můžete definovat a přístup, aniž by museli deserializaci textu zprávy. IoT Hub nikdy upravuje tyto vlastnosti.
-* Neprůhledné binární text.
+* Sada *vlastnosti systému*. Vlastnosti, které služby IoT Hub interpretuje nebo nastaví. Tato sada je předem.
+* Sada *vlastnosti aplikace*. Slovník vlastnosti řetězce, které můžete definovat aplikaci a přístup, aniž byste museli deserializaci textu zprávy. IoT Hub nikdy upravuje tyto vlastnosti.
+* Neprůhledný binární tělo.
 
-Názvy a hodnoty vlastností mohou obsahovat pouze alfanumerické znaky ASCII, plus ```{'!', '#', '$', '%, '&', "'", '*', '+', '-', '.', '^', '_', '`', '|', '~'}``` při můžete:  
+Názvy a hodnoty vlastností můžou obsahovat jenom alfanumerické znaky ASCII, plus ```{'!', '#', '$', '%, '&', "'", '*', '+', '-', '.', '^', '_', '`', '|', '~'}``` při můžete:  
 
 * Odesílání zpráv typu zařízení cloud pomocí protokolu HTTPS.
-* Odesílání zpráv typu cloud zařízení.
+* Odesílat zprávy typu cloud zařízení.
 
-Další informace o tom, jak kódování a dekódování zprávy odeslané pomocí různých protokolů najdete v tématu [SDK služby Azure IoT][lnk-sdks].
+Další informace o tom, jak kódování a dekódování zprávy odesílané pomocí různých protokolů najdete v tématu [sad SDK Azure IoT][lnk-sdks].
 
-Následující tabulka uvádí sadu vlastností systému ve zprávách služby IoT Hub.
+V následující tabulce jsou uvedeny sadu vlastností systému v zpráv ve službě IoT Hub.
 
 | Vlastnost | Popis |
 | --- | --- |
-| messageId |Identifikátor uživatele nastavit zprávě použité pro vzory požadavku a odpovědi. Formát: Malá a velká písmena řetězec (až 128 znaků.) z alfanumerických znaků ASCII 7bitového + `{'-', ':',’.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`. |
-| Pořadové číslo |Číslo (jedinečný pro každé zařízení fronty) přiřazené službou IoT Hub každou zprávu cloud zařízení. |
-| Akce |Cíl zadaný v [Cloud-zařízení] [ lnk-c2d] zprávy. |
-| ExpiryTimeUtc |Datum a čas vypršení platnosti zprávy. |
-| EnqueuedTime |Datum a čas [Cloud-zařízení] [ lnk-c2d] zpráva byla přijata službou IoT Hub. |
-| CorrelationId |Vlastnosti řetězce v zprávu odpovědi, která obvykle obsahuje MessageId žádosti v vzory požadavku a odpovědi. |
-| UserId |ID používané k určení původu zprávy. Zprávy generované IoT Hub, je nastavený na `{iot hub name}`. |
-| Potvrzení |Generátor zpráva zpětnou vazbu. Tato vlastnost je v zprávy typu cloud zařízení slouží k vyžádání IoT Hub, která generují zprávy zpětné vazby v důsledku spotřeby zprávy zařízení. Možné hodnoty: **žádné** (výchozí): je vygenerována žádná zpráva zpětnou vazbu, **kladné**: zobrazí zpráva zpětné vazby, pokud zpráva byla dokončena, **záporné**: přijímat zpráva zpětné vazby, pokud platnost zprávy (nebo bylo dosaženo maximální doručení počet) bez jeho dokončení zařízení, nebo **úplné**: kladné a záporné. Další informace najdete v tématu [zprávy zpětné vazby][lnk-feedback]. |
-| ConnectionDeviceId |ID nastavit službou IoT Hub na zpráv typu zařízení cloud. Obsahuje **deviceId** zařízení, která zprávu odeslala. |
-| ConnectionDeviceGenerationId |ID nastavit službou IoT Hub na zpráv typu zařízení cloud. Obsahuje **generationId** (dle [vlastnosti identity zařízení][lnk-device-properties]) zařízení, která zprávu odeslala. |
-| ConnectionAuthMethod |Metoda ověřování, nastavit službou IoT Hub na zpráv typu zařízení cloud. Tato vlastnost obsahuje informace o metodu ověřování k ověření zařízení odesílá zprávy. Další informace najdete v tématu [zařízení do cloudu ochranu proti falšování][lnk-antispoofing]. |
-| CreationTimeUtc | Datum a čas vytvoření zprávy na zařízení. Zařízení musí explicitně nastavena tato hodnota. |
+| ID zprávy |Nastavit uživatele identifikátor pro zprávu použitou pro požadavek odpověď vzory. Formát: Malá a velká písmena řetězec (až 128 znaků) alfanumerických znaků ASCII 7 bitů + `{'-', ':',’.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`. |
+| Pořadové číslo |Číslo (jedinečný za každou frontu zařízení) ve službě IoT Hub přiřazená každé zprávy typu cloud zařízení. |
+| Akce |Určení v [typu Cloud-zařízení] [ lnk-c2d] zprávy. |
+| ExpiryTimeUtc |Datum a čas vypršení platnosti zpráv. |
+| EnqueuedTime |Datum a čas [typu Cloud-zařízení] [ lnk-c2d] byla přijata zpráva ve službě IoT Hub. |
+| CorrelationId |Vlastnost řetězce v odpovědi, který obvykle obsahuje ID zprávy požadavku ve vzorech pro požadavek odpověď. |
+| UserId |ID používané k určení počátku zprávy. Při generování zpráv ve službě IoT Hub, je nastavena na `{iot hub name}`. |
+| Potvrzení |Generátor zprávy zpětné vazby. Tato vlastnost se používá v zprávy typu cloud zařízení do služby IoT Hub ke generování zpráv se zpětnou vazbou v důsledku spotřeby zprávy požadavku zařízení. Možné hodnoty: **žádný** (výchozí): je vygenerována žádná zpráva zpětnou vazbu, **kladné**: Pokud zpráva byla dokončena, zobrazí se zpráva zpětnou vazbu **negativní**: přijímat zpráva zpětnou vazbu, pokud vypršela platnost zprávy (nebo bylo dosaženo maximální počet doručení) bez dokončení zařízení, nebo **úplné**: kladné a záporné. Další informace najdete v tématu [zprávy zpětné vazby][lnk-feedback]. |
+| ConnectionDeviceId |ID nastavit na zprávy typu zařízení cloud ve službě IoT Hub. Obsahuje **deviceId** zařízení, který zprávu odeslal. |
+| ConnectionDeviceGenerationId |ID nastavit na zprávy typu zařízení cloud ve službě IoT Hub. Obsahuje **generationId** (jak je uvedeno [vlastnosti identity zařízení][lnk-device-properties]) zařízení, který zprávu odeslal. |
+| ConnectionAuthMethod |Metoda ověřování nastavena na zprávy typu zařízení cloud ve službě IoT Hub. Tato vlastnost obsahuje informace o metodu ověřování používanou k ověření zařízení posílání zprávy. Další informace najdete v tématu [zařízení do cloudu, ochranu proti falšování identity][lnk-antispoofing]. |
+| CreationTimeUtc | Datum a čas byla zpráva vytvořena na zařízení. Zařízení musí tuto hodnotu nastavit explicitně. |
 
 ## <a name="message-size"></a>Velikost zpráv
 
-IoT Hub měří velikost zprávy způsobem, bez ohledu na protokol, vzhledem k tomu jenom skutečné datové části. Velikost v bajtech se počítá jako součet z následujících akcí:
+IoT Hub měří velikosti zprávy v protokolu bez ohledu na způsob, vzhledem k tomu jenom skutečné datové části. Velikost v bajtech se počítá jako součet z následujících akcí:
 
 * Velikost textu v bajtech.
-* Velikost v bajtech všechny hodnoty vlastností zpráv systému.
-* Velikost v bajtech všechny názvy vlastností uživatele a hodnoty.
+* Velikost v bajtech všechny hodnoty vlastností zprávy systému.
+* Velikost v bajtech všechny uživatele názvy vlastností a hodnot.
 
-Názvy a hodnoty vlastností jsou omezeny na znaky ASCII, takže délka řetězce rovná velikost v bajtech.
+Názvy a hodnoty vlastností jsou omezené na znaky ASCII, takže délky řetězce se rovná velikost v bajtech.
 
 ## <a name="next-steps"></a>Další postup
 
-Informace o omezení velikosti zpráv v centru IoT najdete v tématu [IoT Hub kvót a omezování][lnk-quotas].
+Informace o omezení velikosti zpráv ve službě IoT Hub najdete v tématu [služby IoT Hub kvóty a omezování][lnk-quotas].
 
-Zjistěte, jak vytvořit a čtení zpráv v různých programovacích jazyků IoT Hub, najdete v článku [Začínáme] [ lnk-get-started] kurzy.
+Zjistěte, jak vytvořit a čtení zpráv v různých programovacích jazycích služby IoT Hub, najdete v článku [rychlých startů][lnk-get-started].
 
 [lnk-messaging]: iot-hub-devguide-messaging.md
 [lnk-quotas]: iot-hub-devguide-quotas-throttling.md
-[lnk-get-started]: iot-hub-get-started.md
+[lnk-get-started]: quickstart-send-telemetry-node.md
 [lnk-sdks]: iot-hub-devguide-sdks.md
 [lnk-c2d]: iot-hub-devguide-messages-c2d.md
 [lnk-d2c]: iot-hub-devguide-messages-d2c.md

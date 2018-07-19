@@ -1,91 +1,130 @@
 ---
-title: Upgrade na modelu nasazení Azure Resource Manager pro zálohování zásobník virtuálního počítače Azure
-description: Upgrade proces a nejčastější dotazy pro zásobník zálohování virtuálních počítačů, modelu nasazení Resource Manager
-services: backup, virtual-machines
+title: Upgrade na V2 zásobník záloh virtuálních počítačů Azure
+description: Upgrade procesu a nejčastější dotazy pro zásobník záloh virtuálních počítačů, modelu nasazení Resource Manager
+services: backup
 author: trinadhk
 manager: vijayts
 tags: azure-resource-manager, virtual-machine-backup
-ms.service: backup, virtual-machines
+ms.service: backup
 ms.topic: conceptual
-ms.date: 03/08/2018
+ms.date: 7/18/2018
 ms.author: trinadhk
-ms.openlocfilehash: e822e0c354fd671ee2802506e0e268d4078b395e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c9dff77f6b9fffc02ec94caa3454500772651195
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606898"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39137367"
 ---
-# <a name="upgrade-to-the-azure-resource-manager-deployment-model-for-azure-vm-backup-stack"></a>Upgrade na modelu nasazení Azure Resource Manager pro zálohování zásobník virtuálního počítače Azure
-Model nasazení Resource Manager pro upgrade na zálohování zásobník virtuálního počítače (VM) obsahuje následující vylepšení funkce:
-* Umožňuje zobrazit snímky, které jsou použity jako součást úlohy zálohování, která je k dispozici pro obnovení bez čekání na přenos dat do dokončení. Snižuje dobu čekání snímky zkopírovat do trezoru než obnovení. Kromě toho tato funkce eliminuje požadavek na další úložiště pro zálohování virtuálních počítačů úrovně premium, s výjimkou první zálohy.  
+# <a name="upgrade-to-azure-vm-backup-stack-v2"></a>Upgrade na zásobník záloh virtuálních počítačů Azure V2
 
-* Snížení doby zálohování a obnovení zachováním snímky místně pro sedm dní.
+Model nasazení Resource Manageru pro upgrade na zásobník záloh virtuálních počítačů (VM) obsahuje následující vylepšení funkcí:
 
-* Podpora pro disk velikostí až 4 TB.
+* Možnost zobrazit snímkům pořízeným jako součást, která je k dispozici pro obnovení bez čekání na přenos dat do dokončení úlohy zálohování. Snižuje dobu čekání pro snímky ke zkopírování do trezoru před aktivace operace obnovení. Kromě toho tato funkce eliminuje požadavek na další úložiště pro zálohování virtuálních počítačů úrovně premium, s výjimkou první zálohy.  
 
-* Možnost používat účty úložiště původní nespravované počítač při obnovení. Tato možnost existuje i v případě, že virtuální počítač obsahuje disky, které jsou distribuovány mezi různými účty úložiště. Umožňuje obnovení rychlejší pro celou řadu konfigurací virtuálních počítačů.
-    > [!NOTE] 
-    > Tato možnost není stejný jako přepsání původní virtuální počítač. 
+* Zkracuje dobu zálohování a obnovení tak, že zachová snímky místně, po dobu sedmi dní.
+
+* Podpora pro disk o velikosti až 4 TB.
+
+* Možnost používat nespravovaného virtuálního počítače na původní účty úložiště, při obnovování. Tato schopnost existuje i v případě, že virtuální počítač obsahuje disky, které jsou distribuovány mezi různými účty úložiště. Urychluje operace obnovení pro celou řadu konfigurací virtuálních počítačů.
+    > [!NOTE]
+    > Tato možnost není stejný jako přepsání původního virtuálního počítače. 
     >
 
-## <a name="whats-changing-in-the-new-stack"></a>Co je změna v novým zásobníkem?
+## <a name="whats-changing-in-the-new-stack"></a>Co se mění v nový zásobník?
 V současné době úloha zálohování se skládá ze dvou fází:
-1.  Vytvoření snímku virtuálního počítače. 
-2.  Přenos snímku virtuálního počítače do trezoru zálohování Azure. 
+1.  Pořízení snímku virtuálního počítače. 
+2.  Přenos snímku virtuálního počítače do Azure Backup vault. 
 
-Bod obnovení je považován za vytvořené pouze po provádějí fáze 1 a 2. Jako součást novým zásobníkem je bod obnovení vytvořen při dokončení snímku. Můžete také obnovit z tohoto bodu obnovení pomocí stejného toku obnovení. Tento bod obnovení na portálu Azure můžete identifikovat pomocí "snímek" jako typ bodu obnovení. Po snímku se přenese do trezoru, typ bodu obnovení se změní na "snímku a trezoru." 
+Vytvoření bodu obnovení se považuje za pouze po dokončení fáze 1 a 2. Jako součást nového zásobníku je bod obnovení vytvořen ihned po snímku. Můžete také obnovit z tohoto bodu obnovení pomocí stejný tok obnovení. Tento bod obnovení na portálu Azure portal můžete identifikovat pomocí "snímku" jako typ bodu obnovení. Po snímku se přenesou do trezoru, typ bodu obnovení se změní na "snímek a trezor." 
 
-![Úloha zálohování v VM zálohování zásobníku modelu nasazení Resource Manager – úložiště a trezoru](./media/backup-azure-vms/instant-rp-flow.jpg) 
+![Úloha zálohování ve virtuálním počítači zásobník záloh modelu nasazení Resource Manager – úložiště a trezoru](./media/backup-azure-vms/instant-rp-flow.jpg) 
 
-Ve výchozím nastavení jsou snímky v sedm dní. Tato funkce umožňuje obnovení na dokončení rychlejší z tyto snímky. Snižuje čas, které je nutné zkopírovat data zpět z trezoru do účtu úložiště zákazníka. 
+Ve výchozím nastavení snímky uchovávají po dobu sedmi dní. Tato funkce umožňuje obnovení na rychlejší dokončení z těchto snímků. Snižuje dobu potřebnou pro kopírování dat z trezoru do účtu úložiště zákazníka. 
 
 ## <a name="considerations-before-upgrade"></a>Důležité informace před provedením upgradu
-* Upgrade zásobníku zálohování virtuálních počítačů je jedním směrovou. Proto všechny zálohy, přejděte do tohoto datového toku. Protože je povolena na úrovni předplatného, všechny virtuální počítače přejít do tohoto datového toku. Všechny nové funkce přidané jsou založené na stejné zásobníku. Uvolní možnost řízení, které to na úrovni zásady pochází v budoucnosti.
 
-* Snímky jsou uložené místně pro zvýšení vytvoření bodu obnovení a také pro urychlení obnovení. Proto zobrazí náklady na úložiště, které odpovídají snímky během období sedmi dnů.
+* Upgrade zásobník záloh virtuálních počítačů je jedním směrové, všechny zálohy přejít do tohoto toku. Protože změně na úrovni předplatného, všechny virtuální počítače přejít do tohoto toku. Všechny nové funkce Doplňky jsou založeny na se stejným zásobníkem. Momentálně nemůžete určit zásobníku na úrovni zásad.
 
-* Přírůstkové snímky jsou uloženy jako objekty BLOB stránky. Všem zákazníkům, kteří používají nespravovaná disky budou účtovat sedm dní, které snímky jsou uložené v účtu zákazníka místní úložiště. Podle aktuální model tvorby cen je pro zákazníky na spravované disky bez nákladů.
+* Snímky se ukládají místně, a zvýšit tak vytvoření bodu obnovení a také ke zrychlení operací obnovení. V důsledku toho se zobrazí náklady na úložiště, které odpovídají snímkům pořízeným období sedm dní.
 
-* Pokud provedete obnovení z bodu obnovení snímku Premium virtuálních počítačů, zobrazí se umístění dočasné úložiště, který se používá při vytvoření virtuálního počítače jako součást obnovení.
+* Přírůstkové snímky se ukládají jako objekty BLOB stránky. Všichni zákazníci, které používají nespravované disky se vám účtuje sedm dní, po které snímky se ukládají v účtu místní úložiště zákazníka. Podle aktuální cenový model se neúčtují žádné poplatky pro zákazníky, kteří na spravovaných discích.
 
-* Pro účty úložiště premium zabírají snímky, které se provádějí pro rychlé obnovení 10 TB přidělené místo.
+* Pokud obnovíte na úrovni premium virtuálního počítače ze snímku do konkrétního bodu obnovení, umístění dočasného úložiště se používá při vytváření virtuálního počítače.
+
+* Pro účty služby premium storage snímkům pořízeným pro okamžité obnovení počet bodů vůči limit 10 TB přidělené místo.
 
 ## <a name="upgrade"></a>Upgrade
-### <a name="the-azure-portal"></a>Portál Azure
-Pokud používáte portál Azure, uvidíte oznámení na řídicím panelu trezoru. Toto oznámení má vztah k velké diskové podpora a vylepšení rychlosti zálohování a obnovení.
+### <a name="the-azure-portal"></a>Azure Portal
+Pokud použijete Azure portal, uvidíte oznámení na řídicím panelu trezoru. Toto oznámení se týká podporu velkých disků a zvýšení rychlosti zálohování a obnovení.
 
-![Úloha zálohování v modelu nasazení Resource Manager zálohování zásobník virtuálního počítače – podpora oznámení](./media/backup-azure-vms/instant-rp-banner.png) 
+![Úloha zálohování v modelu nasazení Resource Manager zásobník záloh virtuálních počítačů – podpora oznámení](./media/backup-azure-vms/instant-rp-banner.png) 
 
-Otevření obrazovky pro upgrade na novou zásobníku, vyberte informační zprávě. 
+Otevření obrazovky pro upgrade na nový zásobník, klikněte na banner. 
 
 ![Úloha zálohování v zásobníku zálohování virtuálních počítačů modelu nasazení Resource Manager – upgrade](./media/backup-azure-vms/instant-rp.png) 
 
 ### <a name="powershell"></a>PowerShell
-Spusťte následující rutiny z zvýšenými terminálu prostředí PowerShell:
-1.  Přihlaste se k účtu Azure: 
+Z terminálu Powershellu se zvýšenými oprávněními spusťte následující rutiny:
+1.  Přihlaste se ke svému účtu Azure: 
 
     ```
     PS C:> Connect-AzureRmAccount
     ```
 
-2.  Vyberte odběr, který chcete zaregistrovat pro verzi preview:
+2.  Vyberte předplatné, které chcete zaregistrovat verzi preview:
 
     ```
     PS C:>  Get-AzureRmSubscription –SubscriptionName "Subscription Name" | Select-AzureRmSubscription
     ```
 
-3.  Zaregistrujte toto předplatné privátní Preview verzi:
+3.  Zaregistrujte toto předplatné pro verzi private preview:
 
     ```
     PS C:>  Register-AzureRmProviderFeature -FeatureName "InstantBackupandRecovery" –ProviderNamespace Microsoft.RecoveryServices
     ```
 
 ## <a name="verify-that-the-upgrade-is-finished"></a>Ověřte, že dokončení upgradu
-Z prostředí PowerShell terminálu se zvýšenými oprávněními spusťte následující rutinu:
+Prostředí PowerShell terminálu se zvýšenými oprávněními spusťte následující rutinu:
 
 ```
 Get-AzureRmProviderFeature -FeatureName "InstantBackupandRecovery" –ProviderNamespace Microsoft.RecoveryServices
 ```
 
-Pokud se říká "Registrovaná", je vaše předplatné upgradován na modelu nasazení Resource Manager zálohování zásobníku virtuálních počítačů.
+Když je ve stavu "Registrováno", vaše předplatné upgradovat na modelu nasazení Resource Manager zásobník záloh virtuálních počítačů.
+
+## <a name="frequently-asked-questions"></a>Nejčastější dotazy
+
+Následující otázky a odpovědi mají byly shromážděny z fór a dotazy zákazníků.
+
+### <a name="will-upgrading-to-v2-impact-current-backups"></a>Upgrade na V2 aktuální zálohování ovlivní?
+
+Pokud upgradujete na V2, neexistuje žádný vliv na vaše aktuální zálohování a není potřeba změnit konfiguraci vašeho prostředí. Upgrade a prostředí zálohování dál pokračoval je na něm.
+
+### <a name="what-does-it-cost-to-upgrade-to-azure-backup-stack-v2"></a>Kolik stojí upgradovat na Azure Backup zásobníku v2?
+
+Se neúčtují žádné poplatky k upgradu na zálohování Azure stacku v2. Snímky se ukládají místně zrychlit vytvoření bodu obnovení a obnovení operací. V důsledku toho se zobrazí náklady na úložiště, které odpovídají snímkům pořízeným období sedm dní.
+
+### <a name="does-upgrading-to-stack-v2-increase-the-premium-storage-account-snapshot-limit-by-10-tb"></a>Premium storage účet omezení počtu snímků pomocí 10 TB zvýší upgrade na zásobník v2?
+
+Ne.
+
+### <a name="in-premium-storage-accounts-do-snapshots-taken-for-instant-recovery-point-occupy-the-10-tb-snapshot-limit"></a>V účtech Premium Storage snímkům pořízeným okamžité obnovení bodu zabírat omezení počtu snímků 10 TB?
+
+Ano, pro účty služby premium storage, snímkům pořízeným okamžité obnovení bodu zabírat přidělené 10 TB místa.
+
+### <a name="how-does-the-snapshot-work-during-the-seven-day-period"></a>Jak funguje snímku během sedmidenní období? 
+
+Každý den se používá nový snímek. Existuje sedm jednotlivé snímky. Službou **není** pořiďte si první den a přidat změny dalších šest dní.
+
+### <a name="what-happens-if-the-default-resource-group-is-deleted-accidentally"></a>Co se stane, pokud výchozí skupina prostředků je možné omylem odstranit?
+
+Pokud skupina prostředků se odstranila, body rychlé obnovení pro všechny chráněné virtuální počítače v dané oblasti, se ztratí. Pokud dojde k dalším zálohování, se znovu vytvoří skupina prostředků a bude zálohování pokračovat podle očekávání. Tato funkce není výhradně pro okamžité obnovení body.
+
+### <a name="can-i-delete-the-default-resource-group-created-for-instant-recovery-points"></a>Můžete odstranit výchozí skupiny prostředků vytvořené pro okamžité obnovení body?
+
+Služba Azure Backup vytváří spravovanou skupinu prostředků. V současné době nejde změnit nebo upravíte skupinu prostředků. Navíc by neměl uzamknout skupinu prostředků. Tento návod je jenom pro zásobník V2.
+ 
+### <a name="is-a-v2-snapshot-an-incremental-snapshot-or-full-snapshot"></a>Snímek v2 je přírůstkový snímek nebo úplné snímku?
+
+Přírůstkových snímků se používají pro nespravované disky. Za spravované disky je snímek úplné snímku.

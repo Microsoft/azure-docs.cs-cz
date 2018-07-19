@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: panosper
-ms.openlocfilehash: c608c1b40c7b4cdaedb2b7e7a609ad65c6357584
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 85e67be406b3d9723476821adfb09fc4db8dc1d1
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37344212"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39068569"
 ---
 # <a name="tutorial-create-a-custom-language-model"></a>Kurz: Vytvoření vlastního jazykového modelu
 
@@ -57,7 +57,7 @@ Následující tabulka obsahuje souhrn hlavních požadavků na jazyková data.
 | počet promluv na řádek | 1 |
 | Maximální velikost souboru | 1,5 GB |
 | Poznámky | Neopakujte znaky více než čtyřikrát, například „aaaaa“.|
-| Poznámky | Žádné speciální znaky jako \t ani žádné jiné znaky UTF-8 s vyšší hodnotou než U+00A1 v [tabulce znaků Unicode](http://www.utf8-chartable.de/)|
+| Poznámky | žádné speciální znaky jako \t ani žádné jiné znaky UTF-8 s vyšší hodnotou než U+00A1 v [tabulce znaků Unicode](http://www.utf8-chartable.de/)|
 | Poznámky | identifikátory URI se také zamítnou, protože identifikátor URI není možné jednoznačně vyslovit|
 
 Text se při importu normalizuje, aby ho systém mohl zpracovat. Existuje však několik důležitých normalizací, které musí provést uživatel _před_ nahráním dat. Informace o určení vhodného jazyka při přípravě jazykových dat najdete v [pokynech pro přepis](prepare-transcription.md).
@@ -115,5 +115,5 @@ Pokud někdy budete chtít změnit název nebo popis modelu, můžete k tomu pou
 ## <a name="next-steps"></a>Další kroky
 
 - [Získání zkušebního předplatného služby Speech](https://azure.microsoft.com/try/cognitive-services/)
-- [Rozpoznávání řeči v C#](quickstart-csharp-windows.md)
+- [Rozpoznávání řeči v C#](quickstart-csharp-dotnet-windows.md)
 - [Ukázková data Git](https://github.com/Microsoft/Cognitive-Custom-Speech-Service)

@@ -3,7 +3,7 @@ title: Ukázka odebrání skriptu Azure Service Fabric CLI (sfctl)
 description: Odebrání aplikace z clusteru služby Azure Service Fabric pomocí rozhraní příkazového řádku Azure Service Fabric CLI
 services: service-fabric
 documentationcenter: ''
-author: thraka
+author: TylerMSFT
 manager: timlt
 editor: ''
 tags: azure-service-management
@@ -13,14 +13,14 @@ ms.workload: multiple
 ms.devlang: na
 ms.topic: sample
 ms.date: 12/06/2017
-ms.author: adegeo
+ms.author: twhitney
 ms.custom: mvc
-ms.openlocfilehash: 83f2fc52debd24afd97a391466cb5a0b1a8cd93c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 24b645552212c502c06cc4df725e77c1d017340e
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34642712"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39069307"
 ---
 # <a name="remove-an-application-from-a-service-fabric-cluster"></a>Odebrání aplikace z clusteru Service Fabric
 

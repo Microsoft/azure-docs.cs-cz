@@ -10,28 +10,29 @@ ms.service: functions
 ms.workload: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/18/2018
+ms.date: 07/13/2018
 ms.author: tdykstra
-ms.openlocfilehash: 6c0af8f6f7e1d4aea8880a7af311aaa21f474f7e
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 9e5c56dc3679e9ffbd67d906ca7d971439319ee5
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969000"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39125372"
 ---
 # <a name="how-to-manage-connections-in-azure-functions"></a>Správa připojení v Azure Functions
 
-Funkce v aplikaci function app sdílet prostředky a mezi těmito sdílené prostředky jsou připojení &mdash; připojení HTTP, připojení k databázi a připojení ke službám Azure, jako je například úložiště. Pokud mnoho funkcí jsou spuštěny souběžně je možné mít nedostatek dostupných připojení. Tento článek vysvětluje, jak kód vaší funkce, abyste se vyhnuli použití víc připojení než které skutečně potřebují.
+Funkce v aplikaci function app sdílet prostředky a mezi těmito sdílené prostředky jsou připojení &mdash; připojení HTTP, připojení k databázi a připojení ke službám Azure, jako je například úložiště. Pokud mnoho funkcí jsou spuštěny souběžně, je možné mít nedostatek dostupných připojení. Tento článek vysvětluje, jak kód vaší funkce, abyste se vyhnuli použití víc připojení než které skutečně potřebují.
 
 ## <a name="connections-limit"></a>Omezení počtu připojení
 
 Počet dostupných připojení je omezený částečně proto, že aplikace function app se spouští v [sandboxu služby Azure App Service](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox). Jedním z omezení, izolovaný prostor ukládá váš kód je [limit počtu připojení, aktuálně 300](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#numerical-sandbox-limits). Při dosažení tohoto limitu, modul runtime služby functions vytvoří protokol s následující zprávou: `Host thresholds exceeded: Connections`.
 
-Kdy zvýšit pravděpodobnost při překročení tohoto limitu [měřítka řadiče přidána instance aplikace funkce](functions-scale.md#how-the-consumption-plan-works). Každá instance aplikace funkce může být vyvolání funkce v mnoha případech najednou, a všechny tyto funkce používají připojení, které se počítají do 300 limit.
+Když přejde pravděpodobnost, že při překročení tohoto limitu [měřítka řadiče přidána instance aplikace funkce](functions-scale.md#how-the-consumption-plan-works) zpracovávat další požadavky. Každá instance aplikace funkce může běžet současně, mnoho funkcí z nichž všechny používají připojení, které se počítají do 300 limit.
 
 ## <a name="use-static-clients"></a>Použití statických klientů
 
-Aby se zabránilo uchovávající víc připojení než je nutné, opakovaně používat instancí klientů, kteří místo vytvoření nové značky s každým vyvolání funkce. Klientů .NET, jako jsou `HttpClient`, `DocumentClient`, a klienty služby Azure Storage můžete spravovat připojení, pokud používáte statické jednoho klienta.
+Aby se zabránilo uchovávající víc připojení než je nutné, opakovaně používat instancí klientů, kteří místo vytvoření nové značky s každým vyvolání funkce. Klientů .NET, jako jsou [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx), [DocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
+), a klienty služby Azure Storage můžete spravovat připojení, pokud používáte statické jednoho klienta.
 
 Tady jsou některé zásady dodržovat při použití klienta specifickou pro službu v aplikaci Azure Functions:
 
@@ -41,7 +42,7 @@ Tady jsou některé zásady dodržovat při použití klienta specifickou pro sl
 
 ## <a name="httpclient-code-example"></a>Příklad kódu HttpClient
 
-Tady je příklad kódu funkce, která vytvoří statickou `HttpClient`:
+Tady je příklad kódu funkce, která vytvoří statickou [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx):
 
 ```cs
 // Create a single, static HttpClient
@@ -54,15 +55,16 @@ public static async Task Run(string input)
 }
 ```
 
-Běžné otázky o .NET `HttpClient` je "By měl jsem se připravuje se klient?" Obecně platí, Uvolňujte objekty, které implementují `IDisposable` po dokončení jejich používání. Ale statického klienta není vyřadit, protože není vše nastaveno použití po skončení funkce. Chcete, aby statické klienta na živá po dobu trvání aplikace.
+Běžné otázky o .NET [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) je "By měl jsem se připravuje se klient?" Obecně platí, Uvolňujte objekty, které implementují `IDisposable` po dokončení jejich používání. Ale statického klienta není vyřadit, protože není vše nastaveno použití po skončení funkce. Chcete, aby statické klienta na živá po dobu trvání aplikace.
 
 ## <a name="documentclient-code-example"></a>Příklad kódu DocumentClient
 
-`DocumentClient` se připojí k instanci databáze Cosmos DB. Dokumentace ke službě Cosmos DB doporučuje vám [používání klienta služby Azure Cosmos DB jednotlivý prvek po dobu životnosti aplikace](https://docs.microsoft.com/azure/cosmos-db/performance-tips#sdk-usage). Následující příklad ukazuje jeden vzor, který to ve funkci.
+[DocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
+) připojí k instanci služby Azure Cosmos DB. Dokumentace ke službě Azure Cosmos DB doporučuje vám [používání klienta služby Azure Cosmos DB jednotlivý prvek po dobu životnosti aplikace](https://docs.microsoft.com/azure/cosmos-db/performance-tips#sdk-usage). Následující příklad ukazuje jeden vzor, který to ve funkci:
 
 ```cs
 #r "Microsoft.Azure.Documents.Client"
-using Microsoft.Azure.Documents.Client; 
+using Microsoft.Azure.Documents.Client;
 
 private static Lazy<DocumentClient> lazyClient = new Lazy<DocumentClient>(InitializeDocumentClient);
 private static DocumentClient documentClient => lazyClient.Value;
@@ -85,6 +87,14 @@ public static async Task Run(string input)
     // Rest of function
 }
 ```
+
+## <a name="sqlclient-connections"></a>SqlClient připojení
+
+Kód vaší funkce může pomocí zprostředkovatele dat .NET Framework pro SQL Server ([SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx)) a navažte kontakty do relační databáze SQL. Toto je základní poskytovatel dat rozhraní, které využívají technologie ADO.NET, jako je například rozhraní Entity Framework. Na rozdíl od [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) a [DocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
+) připojení ADO.NET implementuje sdružování připojení ve výchozím nastavení. Ale protože lze stále spustit z připojení, doporučujeme optimalizovat připojení k databázi. Další informace najdete v tématu [SQL sdružování připojení serveru (ADO.NET)](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling).
+
+> [!TIP]
+> Některé architektury dat, jako [Entity Framework](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx), připojovacích řetězců z informace obvykle získáte **ConnectionStrings** oddílu konfiguračního souboru. V takovém případě musíte explicitně přidat připojovací řetězce databáze SQL na **připojovací řetězce** kolekce vaše nastavení aplikace function app a v [souboru local.settings.json](functions-run-local.md#local-settings-file) ve vašem místním projektu. Pokud vytváříte [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) v kódu funkce, měli byste uložit hodnotu připojovacího řetězce v **nastavení aplikace** u vašich připojení.
 
 ## <a name="next-steps"></a>Další postup
 

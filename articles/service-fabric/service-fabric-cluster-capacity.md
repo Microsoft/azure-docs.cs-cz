@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: chackdan
-ms.openlocfilehash: cc6837ab14aa8fb36317da52cf011ddbd7e464be
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: ae670eca3d655e16ddf55da2e2538ba96b7e0115
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972227"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39126047"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Co zvážit při plánování kapacity clusteru Service Fabric
 Pro každého produkčního nasazení plánování kapacity je důležitý krok. Tady jsou některé položky, které musíte zvážit jako součást tohoto procesu.
@@ -165,6 +165,7 @@ Pro produkční úlohy:
 - Doporučujeme vyhradit clusterům primární NodeType systémové služby a omezení umístění používá k nasazení aplikace na sekundární NodeTypes.
 - Doporučené skladovou Položku virtuálního počítače je Standard D3 nebo standardní D3_V2 nebo ekvivalentní s minimálně 14 GB místní disk SSD.
 - Minimální podporované použití skladovou Položku virtuálního počítače je Standard D1 nebo standardní D1_V2 nebo ekvivalentní s minimálně 14 GB místní disk SSD. 
+- 14 GB místní SSD je minimální požadavek. Naše doporučení je minimálně 50 GB. Pro vaše úlohy, zejména při spouštění kontejnerů Windows se vyžaduje větších disků. 
 - Částečné core skladové položky virtuálních počítačů jako standardní instance A0 nejsou podporovány pro produkční úlohy.
 - Standardní A1 SKU není podporována pro produkční úlohy z důvodů výkonu.
 

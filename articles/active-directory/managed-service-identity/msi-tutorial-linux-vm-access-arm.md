@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/22/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 1195161a0c4045620447439bf9361b7c4c0189ae
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 06abd7867a99c20597ed17faf6fa61b91f70baaa
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37904386"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39007702"
 ---
 # <a name="tutorial-use-a-user-assigned-identity-on-a-linux-vm-to-access-azure-resource-manager"></a>Kurz: Použití identity přiřazené uživatelem na virtuálním počítači s Linuxem pro přístup k Azure Resource Manageru
 
@@ -56,12 +56,12 @@ V tomto kurzu nejprve vytvoříte nový virtuální počítač s Linuxem. Může
 
 1. V levém horním rohu webu Azure Portal klikněte na **Vytvořit prostředek**.
 2. Vyberte **Compute** a potom vyberte **Ubuntu Server 16.04 LTS**.
-3. Zadejte informace o virtuálním počítači. Jako **Typ ověřování** vyberte **Veřejný klíč SSH** nebo **Heslo**. Vytvořené přihlašovací údaje umožňují přihlásit se k virtuálnímu počítači.
+3. Zadejte informace o virtuálním počítači. V poli **Typ ověřování** vyberte **Veřejný klíč SSH** nebo **Heslo**. Vytvořené přihlašovací údaje umožňují přihlásit se k virtuálnímu počítači.
 
-    ![Vytvoření virtuálního počítače s Linuxem](~/articles/active-directory/media/msi-tutorial-linux-vm-access-arm/msi-linux-vm.png)
+    ![Vytvoření virtuálního počítače s Linuxem](media/msi-tutorial-linux-vm-access-arm/msi-linux-vm.png)
 
 4. V rozevíracím seznamu zvolte pro virtuální počítač **Předplatné**.
-5. Pokud chcete vybrat novou **skupinu prostředků**, ve které chcete virtuální počítač vytvořit, zvolte **Vytvořit novou**. Jakmile budete hotovi, klikněte na **OK**.
+5. Pokud chcete vybrat novou **skupinu prostředků**, ve které chcete vytvořit virtuální počítač, zvolte **Vytvořit novou**. Jakmile budete hotovi, klikněte na **OK**.
 6. Vyberte velikost virtuálního počítače. Pokud chcete zobrazit další velikosti, vyberte **Zobrazit všechny** nebo změňte filtr Podporovaný typ disku. V okně Nastavení ponechte výchozí nastavení a klikněte na **OK**.
 
 ## <a name="create-a-user-assigned-identity"></a>Vytvoření identity přiřazené uživatelem
@@ -193,7 +193,7 @@ K dokončení tohoto postupu potřebujete klienta SSH. Pokud používáte Window
     
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste zjistili, jak vytvořit identitu přiřazenou uživatelem a připojit ji k virtuálnímu počítači s Linuxem kvůli přístupu k rozhraní API Azure Resource Manageru.  Další informace o Azure Resource Manageru najdete tady:
+V tomto kurzu jste zjistili, jak vytvořit identitu přiřazenou uživatelem a připojit ji k virtuálnímu počítači s Linuxem kvůli přístupu k rozhraní API Azure Resource Manageru.  Další informace o Azure Resource Manageru:
 
 > [!div class="nextstepaction"]
 >[Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview)

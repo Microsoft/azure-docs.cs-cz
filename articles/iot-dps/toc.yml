@@ -176,7 +176,7 @@
     - name: Požadavky na zákaznická data
       href: iot-dps-customer-data-requests.md
     - name: Plány Azure do budoucna
-      href: 'https://azure.microsoft.com/roadmap/?category=internet-of-things'
+      href: 'https://azure.microsoft.com/roadmap/?category=iot'
     - name: Nástroj Device Explorer
       href: 'https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer'
     - name: Nástroj iothub-diagnostics

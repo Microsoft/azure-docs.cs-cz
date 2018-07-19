@@ -165,7 +165,7 @@
         - name: Konfigurace úrovně PremiumV2
           href: app-service-configure-premium-tier.md
         - name: Horizontální navýšení kapacity na několik instancí
-          href: ../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service%2ftoc.json
+          href: ../monitoring-and-diagnostics/monitoring-autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json
         - name: Hostování s vysokou hustotou
           href: app-service-high-density-hosting.md
     - name: Monitorování aplikace

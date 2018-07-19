@@ -1,45 +1,38 @@
 ---
-title: Azure IoT Hub - začít pracovat s připojením zařízení IoT ke cloudu | Microsoft Docs
-description: Zjistěte, jak se připojit ke službě Azure IoT Hub panely IoT a Startovní sady. Zařízení může odesílat telemetrická data do služby IoT Hub a IoT Hub můžete sledovat a spravovat vaše zařízení.
+title: Azure IoT Hub – Začínáme s propojováním zařízení IoT do cloudu | Dokumentace Microsoftu
+description: Zjistěte, jak připojit IoT tabulí a úvodních sad do služby Azure IoT Hub. Vaše zařízení můžete odesílání telemetrických dat do služby IoT Hub a IoT Hub můžete monitorovat a spravovat vaše zařízení.
 author: dominicbetts
 manager: timlt
-keywords: Azure iot hub kurzu
+keywords: kurz Azure iot hub
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 01/29/2018
+ms.date: 07/18/2018
 ms.author: dobett
-ms.openlocfilehash: 76f427204f0ad31196ce8b995b9e4ed9676209ca
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 77abe7e2187a3cb28b326ffa833a856625d6c33d
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34634698"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39125188"
 ---
-# <a name="azure-iot-hub-get-started-with-real-devices"></a>Azure IoT Hub začít pracovat s skutečné zařízení
+# <a name="azure-iot-hub-get-started-with-real-devices"></a>Azure IoT Hub vám umožní začít skutečných zařízení
 
-Azure IoT Hub a sady SDK zařízení Azure IoT můžete použít k vytvoření řešení Internetu věcí (IoT):
-
-* Azure IoT Hub je plně spravovaná služba v cloudu, které bezpečně připojit, monitoruje a spravuje zařízení IoT. Implementace zařízení IoT pomocí sady SDK zařízení IoT v Azure.
-* Používejte bránu IoT v složitější scénáře IoT. Například, kdy potřebujete vezměte v úvahu faktory, jako jsou zařízení se starší verzí, náklady na šířku pásma, zásady zabezpečení a ochrana osobních údajů nebo zpracování dat okraj. V těchto scénářích použití [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/) implementovat bránu, která se připojuje zařízení do služby IoT hub.
-
-## <a name="what-the-how-to-articles-cover"></a>Co zahrnují články s návody
-
-Tyto články vám představí Azure IoT Hub a sady SDK pro zařízení. Články zahrnují běžné scénáře IoT k předvedení funkcí služby IoT Hub. Články také znázorňují, jak kombinovat s jinými službami Azure a nástroje pro vytváření výkonnější IoT řešení IoT Hub. V článcích použijte skutečné zařízení IoT.
+Tyto články s postupy vám představí službu Azure IoT Hub a spouštění sad SDK pro zařízení na skutečných zařízeních.
 
 ## <a name="set-up-your-device"></a>Nastavení zařízení
 
-Připojení zařízení IoT nebo brány Azure IoT Hub:
+Připojte se k zařízení IoT nebo brány pro službu Azure IoT Hub:
 
 | Zařízení IoT                       | Programovací jazyk |
 |----------------------------------|----------------------|
 | Raspberry Pi                     | [Python][Pi_Py], [Node.js][Pi_Nd], [C][Pi_C]  |
-| IoT DevKit                       | [Arduino v VSCode][DevKit]     |
+| IoT DevKit                       | [Arduino ve VSCode][DevKit]     |
 | Intel Edison                     | [Node.js][Ed_Nd], [C][Ed_C]    |
-| Prolnutí Adafruit HUZZAH ESP8266  | [Arduino][Hu_Ard]              |
-| Sparkfun ESP8266 věc vývojářů       | [Arduino][Th_Ard]              |
-| Prolnutí Adafruit M0              | [Arduino][M0_Ard]              |
-| Simulátor online zařízení         | [Malinová platformy (Node.js)][Ol_Sim] |
+| Sada Adafruit Feather HUZZAH ESP8266  | [Arduino][Hu_Ard]              |
+| Sparkfun ESP8266 Thing Dev       | [Arduino][Th_Ard]              |
+| Sada Adafruit Feather M0              | [Arduino][M0_Ard]              |
+| Online simulátoru zařízení         | [Raspberry Pi (Node.js)][Ol_Sim] |
 
 [!INCLUDE [iot-hub-get-started-extended](../../includes/iot-hub-get-started-extended.md)]
 

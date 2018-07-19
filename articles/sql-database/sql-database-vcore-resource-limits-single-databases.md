@@ -9,12 +9,12 @@ ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: carlrab
-ms.openlocfilehash: df7633028b9bafee8f9938432c86c7d7a24e2699
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: ac9070e328ef867a0b0e8d7d81f5147a50357928
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39092626"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39126404"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-a-single-database"></a>Založený na virtuálních jádrech zakoupení modelu omezení pro jednu databázi Azure SQL Database
 
@@ -40,7 +40,7 @@ Pro izolované databáze následující tabulky popisují prostředky dostupné 
 |Vstupně-výstupní latence (přibližné)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|
 |Maximální velikost dat (GB)|1024|1024|1536|3072|4 096|4 096|
 |Maximální velikost protokolu|307|307|461|922|1229|1229|
-|Databáze TempDB size(DB)|32|64|128|256|384|384|
+|Databáze TempDB (GB)|32|64|128|256|384|384|
 |Cíl vstupně-výstupních operací (64 KB)|500|1000|2000|4000|7000|7000|
 |Maximální počet souběžných pracovních procesů (požadavků)|200|400|800|1600|3200|4800|
 |Maximální povolené relace|30000|30000|30000|30000|30000|30000|
@@ -62,7 +62,7 @@ Pro izolované databáze následující tabulky popisují prostředky dostupné 
 |Vstupně-výstupní latence (přibližné)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|
 |Maximální velikost dat (GB)|1024|1024|1536|3072|4 096|4 096|4 096|4 096|
 |Maximální velikost protokolu|307|307|461|614|1229|1229|1229|1229|
-|Databáze TempDB size(DB)|64|128|256|384|384|384|384|384|
+|Databáze TempDB (GB)|64|128|256|384|384|384|384|384|
 |Cíl vstupně-výstupních operací (64 KB)|500|1000|2000|4000|6000|7000|7000|7000|
 |Maximální počet souběžných pracovních procesů (požadavků)|200|400|800|1600|2400|3200|4000|8000|
 |Maximální povolené relace|30000|30000|30000|30000|30000|30000|30000|30000|
@@ -85,7 +85,7 @@ Pro izolované databáze následující tabulky popisují prostředky dostupné 
 |Typ úložiště|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|
 |Maximální velikost dat (GB)|1024|1024|1024|1024|1024|1024|
 |Maximální velikost protokolu|307|307|307|307|307|307|
-|Databáze TempDB size(DB)|32|64|128|256|384|384|
+|Databáze TempDB (GB)|32|64|128|256|384|384|
 |Cíl vstupně-výstupních operací (64 KB)|5000|10000|20000|40000|80000|120000|
 |Vstupně-výstupní latence (přibližné)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|
 |Maximální počet souběžných pracovních procesů (požadavků)|200|400|800|1600|3200|4800|
@@ -108,7 +108,7 @@ Pro izolované databáze následující tabulky popisují prostředky dostupné 
 |Vstupně-výstupní latence (přibližné)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|
 |Maximální velikost dat (GB)|1024|1024|1024|1024|2 048|4 096|4 096|4 096|
 |Maximální velikost protokolu|307|307|307|307|614|1229|1229|1229|
-|Databáze TempDB size(DB)|64|128|256|384|384|384|384|384|
+|Databáze TempDB (GB)|64|128|256|384|384|384|384|384|
 |Cíl vstupně-výstupních operací (64 KB)|5000|10000|20000|40000|60000|80000|100000|200000
 |Maximální počet souběžných pracovních procesů (požadavků)|200|400|800|1600|2400|3200|4000|8000|
 |Maximální povolené relace|30000|30000|30000|30000|30000|30000|30000|30000|

@@ -1,7 +1,7 @@
 ---
-title: Upgrade bezplatné předplatné na průběžné platby | Microsoft Docs
-description: Popisuje, jak můžete provést platím průběžně upgrade z bezplatného předplatného a požadavky
-keywords: upgrade platím průběžně
+title: Upgrade bezplatné předplatné Azure s průběžnými platbami | Dokumentace Microsoftu
+description: Popisuje, jak vám pomůžou průběžnými platbami upgrade z bezplatného předplatného a požadavky
+keywords: upgrade průběžné platby
 services: ''
 documentationcenter: ''
 author: jlian
@@ -17,23 +17,28 @@ ms.workload: na
 ms.date: 08/30/2017
 ms.author: jlian
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 86c733f138e9926fb13c2c1cb404cc9b61f4780e
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 089bb6f3fd187a56495dfd353ee89086e6bea120
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32769167"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39124979"
 ---
-# <a name="upgrade-your-free-trial-or-microsoft-imagine-azure-subscription-to-pay-as-you-go"></a>Vaše bezplatné zkušební verze nebo Microsoft Azure Představte si předplatné upgradovat na průběžné platby
+# <a name="upgrade-your-free-trial-or-microsoft-imagine-azure-subscription-to-pay-as-you-go"></a>Upgradujte svoje předplatné bezplatné zkušební verze nebo Microsoft Imagine Azure na průběžné platby
 
-Upgrade vašeho [bezplatné zkušební verze](https://azure.microsoft.com/free/) nebo [Microsoft Imagine](https://azure.microsoft.com/offers/ms-azr-0144p/) předplatné [průběžné platby](https://azure.microsoft.com/offers/ms-azr-0003p/) v centru účtů Azure.
+Upgrade vašeho [bezplatnou zkušební verzi](https://azure.microsoft.com/free/) nebo [Microsoft Imagine](https://azure.microsoft.com/offers/ms-azr-0144p/) předplatné [s průběžnými platbami](https://azure.microsoft.com/offers/ms-azr-0003p/) v centru účtů Azure.
 
 1. Přihlaste se k [centra účtů Azure](https://account.windowsazure.com/subscriptions).
-2. V části stav předplatného, vyberte **upgradovat nyní** informační zpráva.
+2. V části stav předplatného vyberte **upgradovat** banner.
    
-    ![Snímek obrazovky, který ukazuje, kde chcete-li upgrade z bezplatné zkušební verze na průběžné platby](./media/billing-upgrade-azure-subscription/billpage.png)
+    ![Snímek obrazovky, který ukazuje, kde klikněte na tlačítko Upgradovat z bezplatné zkušební verze na průběžné platby](./media/billing-upgrade-azure-subscription/billpage.png)
 3. Potvrďte upgrade.
    
-    ![Snímek obrazovky zobrazující co vybrat potvrďte, že chcete provést upgrade vašeho předplatného](./media/billing-upgrade-azure-subscription/Upgrade.png)
+    ![Snímek obrazovky, který ukazuje, jak zaškrtnutím políčka potvrďte, že chcete upgradovat vaše předplatné](./media/billing-upgrade-azure-subscription/Upgrade.png)
 
- Při upgradu z bezplatné zkušební verze předplatného necháte váš zbývající kredit úplné 30 dní, po vytvoření odběru. Máte také přístup k bezplatné služby po dobu 12 měsíců.
+ Při upgradu ze zkušební verze předplatného, vaše zbývající kredit si zachováte plnou 30 dnů po vytvoření předplatného. Máte také přístup k bezplatné služby po dobu 12 měsíců.
+ 
+ Pokud chcete [převést toto předplatné](billing-subscription-transfer.md) po upgradu, musíte počkat, až do nabídky předplatného, ID se změní na **MS-AZR - 003P**. Když se změní ID nabídky
+
+* Využívat všechny zbývající kredit, nebo
+* Předejte 30 dnů od spuštění bezplatné zkušební verze

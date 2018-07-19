@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: ramamill
-ms.openlocfilehash: f305f552d576f58914bc33351331f1da3c68bc23
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: c2100ee2388ae09bd309167b1be77f7bdbe32f69
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37951644"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39126013"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>Řešení problémů replikace pro virtuální počítače VMware a fyzické servery
 
@@ -74,25 +74,7 @@ Pokud se nemůžete připojit, potom zkontrolujte, jestli problém s přístupem
 
 * **Zaškrtněte, pokud není brány firewall založeným na adresu URL na Procesovém serveru blokuje přístup**: Pokud používáte pravidla brány firewall na základě adresy URL na serveru, zkontrolujte následující adresy URL se přidají do konfigurace brány firewall.
 
-  `*.accesscontrol.windows.net:` Používá se k řízení přístupu a správě identit.
-
-  `*.backup.windowsazure.com:` Používá se k orchestraci a přenosu dat replikace.
-
-  `*.blob.core.windows.net:` Používá se pro přístup k účtu úložiště, který ukládá replikovaná data
-
-  `*.hypervrecoverymanager.windowsazure.com:` Používá se pro orchestraci a operace správy replikací.
-
-  `time.nist.gov` a `time.windows.com`: používá se ke kontrole časové synchronizace mezi systémovým a globálním časem.
-
-Adresy URL pro **Cloud Azure Government**:
-
-`* .ugv.hypervrecoverymanager.windowsazure.us`
-
-`* .ugv.backup.windowsazure.us`
-
-`* .ugi.hypervrecoverymanager.windowsazure.us`
-
-`* .ugi.backup.windowsazure.us`
+[!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]  
 
 * **Zaškrtněte, pokud nejsou nastavení serveru Proxy na Procesovém serveru blokuje přístup**.  Pokud používáte Proxy Server, zajistěte, aby že serverem DNS překládá název proxy serveru.
 Chcete-li zkontrolovat, co jste zadali v době instalace konfiguračního serveru. Přejděte ke klíči registru

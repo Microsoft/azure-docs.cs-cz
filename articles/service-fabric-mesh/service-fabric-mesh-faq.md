@@ -9,15 +9,19 @@ ms.date: 06/25/2018
 ms.topic: troubleshooting
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: 849f8e4f961bcfde2bb4984185d571601060d957
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 07c0347793f6541a3e047f3f357d0d1b05dc3bca
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39076085"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136177"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>Nejčastější dotazy služby prostředků infrastruktury sítě
 Sítě Azure Service Fabric je plně spravovaná služba, která vývojářům umožňuje nasadit mikroslužbových aplikací bez nutnosti spravovat virtuální počítače, úložiště nebo sítě. Tento článek obsahuje odpovědi na nejčastější dotazy.
+
+## <a name="how-do-i-report-an-issue-or-ask-a-question"></a>Jak ohlásit problém nebo dotaz?
+
+Ptejte se, získejte odpovědi od odborníků Microsoftu a hlášení problémů v [úložiště GitHub service-fabric sítě preview](https://aka.ms/sfmeshissues).
 
 ## <a name="quota-and-cost"></a>Kvóty a nákladů
 

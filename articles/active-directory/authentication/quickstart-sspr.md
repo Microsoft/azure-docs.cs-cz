@@ -10,21 +10,21 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 856ae994e49f809ca2ef906ba6cdc7f8624dd201
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: c99ae755705dddf501609c8f199d1977d0bde415
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33870018"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39057357"
 ---
 # <a name="azure-ad-self-service-password-reset-rapid-deployment"></a>Rychlé nasazení samoobslužného resetování hesla Azure AD
 
 > [!IMPORTANT]
-> **Jste tady, protože máte potíže s přihlášením?** Pokud ano, přečtěte si téma [Nápověda k zapomenutému heslu Azure AD](../active-directory-passwords-update-your-own-password.md).
+> **Jste tady, protože máte potíže s přihlášením?** Pokud ano, přečtěte si téma [Nápověda k zapomenutému heslu Azure AD](../user-help/active-directory-passwords-update-your-own-password.md).
 
 Samoobslužné resetování hesla nabízí správcům IT jednoduchý způsob, jak umožnit uživatelům resetovat nebo odemknout svá hesla nebo účty. Tento systém zahrnuje generování podrobných sestav, které sledují, kdy uživatelé k systému přistupují, spolu s oznámeními, která upozorňují na zneužití.
 
-Tento průvodce předpokládá, že již máte funkčního tenanta Azure Active Directory (Azure AD) ve zkušební verzi nebo s licencí. Pokud potřebujete pomoc s nastavením Azure AD, přečtěte si téma [Začínáme s Azure AD](../get-started-azure-ad.md).
+Tento průvodce předpokládá, že již máte funkčního tenanta Azure Active Directory (Azure AD) ve zkušební verzi nebo s licencí. Pokud potřebujete pomoc s nastavením Azure AD, přečtěte si téma [Začínáme s Azure AD](../fundamentals/get-started-azure-ad.md).
 
 ## <a name="enable-sspr-for-your-azure-ad-tenant"></a>Povolení SSPR pro tenanta Azure AD
 
@@ -62,7 +62,7 @@ Tento průvodce předpokládá, že již máte funkčního tenanta Azure Active 
    * Upozornit uživatele na resetování hesla.
    * Upozornit všechny správce na resetování hesla jiného správce.
 
-Právě jste pro svého tenanta Azure AD nakonfigurovali samoobslužné resetování hesla. Uživatelé teď mohou použít pokyny uvedené v článcích [Registrace pro samoobslužné resetování hesla](../active-directory-passwords-reset-register.md) a [Resetování nebo změna hesla](../active-directory-passwords-update-your-own-password.md) a aktualizovat svoje heslo bez zásahu správce. Tady můžete skončit, pokud pracujete jenom v cloudu. Nebo můžete pokračovat k další části a nakonfigurovat synchronizaci hesel s místní doménou Active Directory.
+Právě jste pro svého tenanta Azure AD nakonfigurovali samoobslužné resetování hesla. Uživatelé teď mohou použít pokyny uvedené v článcích [Registrace pro samoobslužné resetování hesla](../user-help/active-directory-passwords-reset-register.md) a [Resetování nebo změna hesla](../user-help/active-directory-passwords-update-your-own-password.md) a aktualizovat svoje heslo bez zásahu správce. Tady můžete skončit, pokud pracujete jenom v cloudu. Nebo můžete pokračovat k další části a nakonfigurovat synchronizaci hesel s místní doménou Active Directory.
 
 > [!TIP]
 > Otestujte samoobslužné resetování hesla pomocí uživatele, a ne správce, protože Microsoft pro účty správců Azure vynucuje požadavky na silné ověřování. Další informace týkající se zásad hesel správců najdete v našem článku o [zásadách hesel](concept-sspr-policy.md#administrator-password-policy-differences).
@@ -95,8 +95,8 @@ Zakázání samoobslužného resetování hesla je snadné. Otevřete svého ten
 V následujících článcích najdete další informace o resetování hesla prostřednictvím Azure AD:
 
 * [Jak dokončit úspěšné zavedení SSPR?](howto-sspr-deployment.md)
-* [Resetování nebo změna hesla](../active-directory-passwords-update-your-own-password.md)
-* [Registrace samoobslužného resetování hesla](../active-directory-passwords-reset-register.md)
+* [Resetování nebo změna hesla](../user-help/active-directory-passwords-update-your-own-password.md)
+* [Registrace samoobslužného resetování hesla](../user-help/active-directory-passwords-reset-register.md)
 * [Máte dotaz k licencování?](concept-sspr-licensing.md)
 * [Jaká data používá SSPR a která data byste měli naplnit pro vaše uživatele?](howto-sspr-authenticationdata.md)
 * [Které metody ověřování jsou dostupné pro uživatele?](concept-sspr-howitworks.md#authentication-methods)

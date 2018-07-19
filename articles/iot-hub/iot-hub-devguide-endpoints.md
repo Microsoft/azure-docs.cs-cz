@@ -1,114 +1,114 @@
 ---
-title: Pochopení koncové body Azure IoT Hub | Microsoft Docs
-description: Příručka vývojáře – referenční informace o IoT Hub směřujících zařízení a služby přístupem koncových bodů.
+title: Vysvětlení koncové body služby Azure IoT Hub | Dokumentace Microsoftu
+description: Příručka pro vývojáře – referenční informace o službě IoT Hub zařízení zákazníky i služba koncových bodů.
 author: dominicbetts
 manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 01/29/2018
+ms.date: 07/18/2018
 ms.author: dobett
-ms.openlocfilehash: 37e1bd0b479e27f0d871495c0725fc865cbb8572
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: bf23046b8a80b02bc1667f647cb1d475503a8feb
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34632573"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39125772"
 ---
-# <a name="reference---iot-hub-endpoints"></a>Odkaz – koncové body centra IoT
+# <a name="reference---iot-hub-endpoints"></a>Reference – koncové body IoT Hubu
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-## <a name="iot-hub-names"></a>Názvy IoT Hub
+## <a name="iot-hub-names"></a>Názvy služby IoT Hub
 
-Název služby IoT hub, který je hostitelem koncové body na portálu na můžete najít **přehled** okno. Ve výchozím nastavení, jako název DNS služby IoT hub vypadá takto: `{your iot hub name}.azure-devices.net`.
+Název hostitele, který je hostitelem vašich koncových bodů na portálu na vaše centrum služby IoT hub můžete najít **přehled** stránky. Ve výchozím nastavení, jako název DNS služby IoT hub bude vypadat takto: `{your iot hub name}.azure-devices.net`.
 
-Azure DNS můžete použít k vytvoření vlastní název DNS pro službu IoT hub. Další informace najdete v tématu [Azure DNS používá k poskytování nastavení vlastní domény pro službu Azure](../dns/dns-custom-domain.md).
+Azure DNS můžete použít k vytvoření vlastního názvu DNS pro službu IoT hub. Další informace najdete v tématu popisujícím [použití Azure DNS k určení nastavení vlastní domény pro službu Azure](../dns/dns-custom-domain.md).
 
-## <a name="list-of-built-in-iot-hub-endpoints"></a>Seznam předdefinovaných koncové body centra IoT
+## <a name="list-of-built-in-iot-hub-endpoints"></a>Seznam předdefinovaných koncové body IoT Hubu
 
-Azure IoT Hub je víceklientské služby, který zveřejňuje jeho funkce pro různé účastníky. Následující diagram znázorňuje různé koncových bodů, aby IoT Hub zpřístupní.
+Azure IoT Hub je víceklientská služba, která zpřístupňuje jeho funkce pro různé objekty actor. Následující diagram znázorňuje různé koncové body, aby služba IoT Hub zpřístupní.
 
 ![Koncové body IoT Hubu][img-endpoints]
 
-Následující seznam popisuje koncových bodů:
+Následující seznam popisuje koncové body:
 
-* **Poskytovatel prostředků**. Zprostředkovatel prostředků služby IoT Hub zpřístupní [Azure Resource Manager] [ lnk-arm] rozhraní. Toto rozhraní umožňuje vlastníky předplatného Azure k vytváření a odstraňování centra IoT a k aktualizaci vlastností centra IoT. Vlastnosti služby IoT Hub řídí [zásad zabezpečení na úrovni centra][lnk-accesscontrol], na rozdíl od řízení přístupu na úrovni zařízení a funkční nastavení pro zasílání zpráv typu cloud zařízení a zařízení cloud. Zprostředkovatel prostředků služby IoT Hub můžete také [exportovat identit zařízení][lnk-importexport].
-* **Správa identit zařízení**. Každé centrum IoT zpřístupňuje řadu koncové body HTTPS REST pro správu identit zařízení (vytvořit, získat, aktualizovat a odstranit). [Identit zařízení] [ lnk-device-identities] se používají pro řízení přístupu a ověřování a zařízení.
-* **Správa zařízení twin**. Každé centrum IoT zpřístupňuje řadu koncový bod HTTPS REST služby směřujících k dotazu a aktualizace [dvojčata zařízení][lnk-twins] (aktualizace značky a vlastnosti).
-* **Úlohy správy**. Každý IoT hub zpřístupní koncový bod HTTPS REST služby směřujících k dotazování a správu sadu [úlohy][lnk-jobs].
-* **Koncové body zařízení**. Pro každé zařízení v registru identit služby IoT Hub zpřístupní sada koncových bodů:
+* **Poskytovatel prostředků**. Poskytovatel prostředků služby IoT Hub zpřístupní [Azure Resource Manageru] [ lnk-arm] rozhraní. Toto rozhraní umožňuje vlastníkům předplatného Azure vytvářet a odstraňovat centra IoT hub a k aktualizaci vlastností centra IoT. Vlastnosti služby IoT Hub určují [zásady zabezpečení na úrovni centra][lnk-accesscontrol], na rozdíl od řízení přístupu na úrovni zařízení a funkční možnosti pro zasílání zpráv typu cloud zařízení a zařízení cloud. Poskytovatel prostředků služby IoT Hub můžete také [exportovat identit zařízení][lnk-importexport].
+* **Správa identit zařízení**. Každý IoT hub zveřejňuje sadu koncových bodů HTTPS REST pro správu identit zařízení (vytvářet, načítat, aktualizovat a odstranit). [Identit zařízení] [ lnk-device-identities] se používají pro účely řízení přístupu a ověřování zařízení.
+* **Správa dvojčete zařízení**. Každé centrum IoT zpřístupňuje řadu koncový bod HTTPS REST služby směřujících k dotazu a aktualizace [dvojčata zařízení][lnk-twins] (aktualizace značky a vlastnosti).
+* **Úlohy správy**. Každý IoT hub zpřístupní koncový bod HTTPS REST služby přístupem k dotazování a správu sady [úlohy][lnk-jobs].
+* **Koncové body zařízení**. Pro každé zařízení v registru identit služby IoT Hub zveřejňuje sadu koncových bodů:
 
   * *Odesílání zpráv typu zařízení cloud*. Zařízení používá tento koncový bod pro [odesílání zpráv typu zařízení cloud][lnk-d2c].
-  * *Příjem zpráv typu cloud zařízení*. Zařízení používá tento koncový bod pro příjem cílové [zprávy typu cloud zařízení][lnk-c2d].
-  * *Zahájení nahrávání souborů*. Zařízení používá tento koncový bod pro příjem identifikátor URI SAS úložiště Azure ze služby IoT Hub na [nahrát soubor][lnk-upload].
-  * *Načíst a aktualizovat vlastnosti twin zařízení*. Zařízení používá tento koncový bod pro přístup k jeho [dvojče zařízení][lnk-twins]na vlastnosti.
-  * *Přijímat požadavky přímá metoda*. Zařízení používá k naslouchání pro tento koncový bod [přímá metoda][lnk-methods]na požadavky.
+  * *Příjem zpráv typu cloud zařízení*. Zařízení s používá tento koncový bod pro příjem cílové [zprávy typu cloud zařízení][lnk-c2d].
+  * *Zahájení nahrávání souborů*. Zařízení s používá tento koncový bod pro příjem identifikátor URI SAS úložiště Azure pomocí služby IoT Hub [nahrát soubor][lnk-upload].
+  * *Načíst a aktualizovat vlastnosti dvojčat zařízení*. Zařízení používá tento koncový bod pro přístup k jeho [dvojče zařízení][lnk-twins]jeho vlastnosti.
+  * *Přijímat žádosti o přímé metody*. Zařízení používá k naslouchání pro tento koncový bod [přímá metoda][lnk-methods]vaší žádosti.
 
-    Tyto koncové body jsou vystavené pomocí [protokoly MQTT v3.1.1][lnk-mqtt], HTTPS 1.1 a [protokolu AMQP 1.0] [ lnk-amqp] protokoly. Je také k dispozici prostřednictvím protokolu AMQP [Websocket] [ lnk-websockets] na portu 443.
+    Tyto koncové body jsou přístupné přes [protokoly MQTT v3.1.1][lnk-mqtt], HTTPS 1.1 a [protokolu AMQP 1.0] [ lnk-amqp] protokoly. Je také k dispozici prostřednictvím protokolu AMQP [objekty Websocket] [ lnk-websockets] na portu 443.
 
-* **Koncové body služby**. Každé centrum IoT zpřístupňuje řadu koncové body pro váš back-end řešení pro komunikaci ve vašich zařízeních. S jednou výjimkou těchto koncových bodů jsou přístupné pouze pomocí [AMQP] [ lnk-amqp] protokolu. Koncový bod volání metoda vystavený přes protokol HTTPS.
+* **Koncové body služby**. Každý IoT hub zveřejňuje sadu koncových bodů pro back-endem řešení pro komunikaci ve vašich zařízeních. S jednou výjimkou tyto koncové body jsou dostupná jenom v případě použití [AMQP] [ lnk-amqp] protokolu. Koncový bod vyvolání metody je přístupná přes protokol HTTPS.
   
-  * *Příjem zpráv typu zařízení cloud*. Tento koncový bod je kompatibilní s [Azure Event Hubs][lnk-event-hubs]. Back-end služby můžete použít ke čtení [zpráv typu zařízení cloud] [ lnk-d2c] poslal zařízení. Můžete vytvořit vlastní koncové body ve službě IoT hub kromě tento předdefinovaný koncový bod.
-  * *Zprávy typu cloud zařízení odesílat a přijímat potvrzování doručení*. Tyto koncové body povolit back-end vašeho řešení odeslat spolehlivé [zprávy typu cloud zařízení][lnk-c2d]a získat odpovídající doručení nebo vypršení platnosti potvrzování.
-  * *Přijímat oznámení souboru*. Tento koncový bod zasílání zpráv umožňuje dostávat oznámení o, když vaše zařízení úspěšně odeslat soubor. 
-  * *Přímé volání metody*. Tento koncový bod umožňuje službě back-end pro vyvolání [přímá metoda] [ lnk-methods] na zařízení.
-  * *Zobrazí operace sledování událostí*. Tento koncový bod umožňuje sledování událostí, pokud je nakonfigurované služby IoT hub pro vydávání je operace příjmu. Další informace najdete v tématu [IoT Hub operations monitorování][lnk-operations-mon].
+  * *Příjem zpráv typu zařízení cloud*. Tento koncový bod je kompatibilní s [Azure Event Hubs][lnk-event-hubs]. Back-end služby ji můžete použít ke čtení [zpráv typu zařízení cloud] [ lnk-d2c] zaslaná z vašich zařízení. Můžete vytvořit vlastní koncové body ve službě IoT hub kromě této integrovaný koncový bod.
+  * *Odesílat zprávy typu cloud zařízení a přijímat doručování potvrzování*. Tyto koncové body umožňují vaší back-end řešení odesílat spolehlivé [zprávy typu cloud zařízení][lnk-c2d]a přijímat odpovídající doručení nebo vypršení platnosti potvrzování.
+  * *Dostávat oznámení soubor*. Tento koncový bod zasílání zpráv můžete dostávat upozornění z vašich zařízení úspěšně nahrát soubor. 
+  * *Přímá volání metody*. Tento koncový bod umožňuje službě back-end, který má být vyvolán [přímá metoda] [ lnk-methods] na zařízení.
+  * *Monitorování událostí operace příjmu*. Tento koncový bod umožňuje přijímat operace sledování událostí, pokud byl nakonfigurován váš IoT hub a vygenerovat je. Další informace najdete v tématu [monitorování operací služby IoT Hub][lnk-operations-mon].
 
-[SDK služby Azure IoT] [ lnk-sdks] článek popisuje různé způsoby, kterými pro přístup k těchto koncových bodů.
+[Sad SDK Azure IoT] [ lnk-sdks] článek popisuje různé způsoby pro přístup k tyto koncové body.
 
-Použít všechny koncové body centra IoT [TLS] [ lnk-tls] protokol a žádný koncový bod je někdy zveřejněné na bez šifrování nezabezpečené kanály.
+Použít všechny koncové body IoT Hubu [TLS] [ lnk-tls] protokol a žádný koncový bod je někdy zveřejněné na nešifrované/nezabezpečené kanály.
 
 ## <a name="custom-endpoints"></a>Vlastní koncové body
 
-Do služby IoT hub tak, aby fungoval jako koncové body pro směrování zpráv můžete propojit stávající služby Azure v rámci vašeho předplatného. Tyto koncové body fungovat jako koncové body služby a jsou použity jako jímky pro směrování zpráv. Zařízení nemůže zapisovat přímo do další koncové body. Další informace o směrování zpráv, naleznete v příspěvku Příručka vývojáře na [odesílání a přijímání zpráv službou IoT hub][lnk-devguide-messaging].
+Můžete propojit existující služby Azure ve vašem předplatném tak, aby fungoval jako koncové body pro směrování zpráv služby IoT hub. Tyto koncové body fungují jako koncové body služby a slouží jako jímky pro směrování zpráv. Zařízení nemůže zapisovat přímo do další koncové body. Další informace o směrování zpráv, naleznete v příspěvku Příručka pro vývojáře na [odesílání a příjem zpráv pomocí služby IoT hub][lnk-devguide-messaging].
 
 Následující služby Azure IoT Hub aktuálně podporuje jako další koncové body:
 
-* Kontejnery Azure Storage
+* Kontejnery služby Azure Storage
 * Event Hubs
 * Fronty služby Service Bus
 * Témata služby Service Bus
 
-IoT Hub potřebuje přístup k zápisu do těchto koncových bodů služby pro směrování zpráv pro práci. Pokud nakonfigurujete koncové body prostřednictvím portálu Azure, jsou pro vás přidat potřebná oprávnění. Zajistěte, aby že konfigurace vaší služby pro podporu očekávané propustnost. Při první konfiguraci řešení IoT, můžete sledovat další koncové body a průběhu skutečné zátěže.
+IoT Hub potřebuje oprávnění k zápisu do těchto koncových bodů služby pro směrování zpráv do práce. Při konfiguraci vašich koncových bodů na webu Azure portal, potřebná oprávnění jsou přidány automaticky. Ujistěte se, že konfigurace služeb pro podporu očekávané propustnosti. Při první konfiguraci řešení IoT, budete muset monitorovat další koncové body a proveďte všechny nezbytné úpravy podle skutečné zátěže.
 
-Pokud zpráva odpovídá více tras všechny přejděte na stejný koncový bod, IoT Hub zajišťuje zprávy do tohoto koncového bodu pouze jednou. Proto není potřeba konfigurace odstranění duplicitních dat na fronty sběrnice nebo téma. Do oddílů front oddílu spřažení zaručuje, řazení zpráv.
+Pokud zpráva odpovídá více tras odkazujících na stejný koncový bod, IoT Hub doručí zprávu do tohoto koncového bodu pouze jednou. Proto není potřeba konfigurace odstranění duplicitních dat na frontu služby Service Bus nebo téma. V dělené fronty oddílu spřažení záruky pořadí zpráv.
 
-Omezení pro počet koncových bodů můžete přidat, naleznete v části [kvóty a omezení][lnk-devguide-quotas].
+Omezení pro počet koncových bodů můžete přidat, naleznete v tématu [kvóty a omezování][lnk-devguide-quotas].
 
-### <a name="when-using-azure-storage-containers"></a>Při použití kontejnery Azure Storage
+### <a name="when-using-azure-storage-containers"></a>Při použití kontejnery služby Azure Storage
 
-IoT Hub podporuje pouze zápis dat do Azure Storage kontejnerů jako objekty BLOB v [Apache Avro](http://avro.apache.org/) formátu. IoT Hub dávek zprávy a zapisuje data do objektu blob vždy, když:
+IoT Hub podporuje pouze zápis dat do služby Azure Storage kontejnery jako objekty BLOB v [Apache Avro](http://avro.apache.org/) formátu. IoT Hub dávek zpráv a zapisuje data do objektu blob pokaždé, když:
 
 * Dávka dosáhne určité velikosti.
-* Nebo uplynutí časového intervalu.
+* Nebo uplynutí určité doby.
 
-IoT Hub budou zapisovat do prázdný objekt blob, pokud nejsou žádná data k zápisu.
+IoT Hub bude zapisovat do prázdný objekt blob, pokud neexistuje žádná data k zápisu.
 
-IoT Hub výchozí nastavení této zásady vytváření názvů souborů:
+Výchozí nastavení služby IoT Hub následujícími zásadami vytváření názvů souborů:
 
 ```
 {iothub}/{partition}/{YYYY}/{MM}/{DD}/{HH}/{mm}
 ```
 
-Můžete použít libovolnou souboru konvence, které chcete, ale je nutné použít všechny uvedené tokeny.
+Můžete použít jakýkoli soubor konvence, kterou požadujete, ale je nutné použít všechny uvedené tokeny.
 
-### <a name="when-using-service-bus-queues-and-topics"></a>Při použití front Service Bus a témat
+### <a name="when-using-service-bus-queues-and-topics"></a>Při použití fronty a témata Service Bus
 
-Fronty sběrnice a témata použít jako koncové body centra IoT nesmí mít **relací** nebo **duplicitní detekce** povolena. Pokud některá z těchto možností jsou povolené, koncový bod se zobrazí jako **Unreachable** na portálu Azure.
+Fronty služby Service Bus a témat použít jako nesmí obsahovat koncové body IoT Hubu **relace** nebo **duplicit** povolena. Pokud některý z těchto možností jsou povolené, koncový bod se zobrazí jako **Unreachable** na webu Azure Portal.
 
-## <a name="field-gateways"></a>Pole brány
+## <a name="field-gateways"></a>Bran v terénu
 
-V řešení IoT *brána pole* nachází mezi zařízeními a vaše koncové body centra IoT. Je obvykle nachází blízko zařízení. Vaše zařízení komunikují přímo s brány pole pomocí protokol podporovaný zařízení. Brána pole se připojí k koncový bod služby IoT Hub pomocí protokolu, který je podporován službou IoT Hub. Brána pole může být vyhrazené hardwarové zařízení nebo počítač úsporného režimu softwarem vlastní brány.
+V řešení IoT *hraniční brána* umístěná mezi vaším zařízením a vaše koncové body IoT Hubu. To je obvykle nachází v blízkosti vašich zařízení. Vaše zařízení komunikují přímo s brány pole pomocí protokolu podporovaných zařízení. Brána pole se připojí k koncový bod služby IoT Hub pomocí protokolu, který je podporovaný službou IoT Hub. Brána pole může být vyhrazené hardwarové zařízení nebo počítač nízkým výkonem softwarem vlastní bránu.
 
-Můžete použít [Azure IoT Edge] [ lnk-iot-edge] implementovat brána pole. Okraj IoT nabízí funkce, jako je multiplexní komunikaci od více zařízení do stejné připojení služby IoT Hub.
+Můžete použít [Azure IoT Edge] [ lnk-iot-edge] implementovat hraniční brána. IoT Edge a nabízí funkce, jako je například multiplexní komunikaci od více zařízení do stejného připojení ke službě IoT Hub.
 
 ## <a name="next-steps"></a>Další postup
 
-Zahrnout další referenční témata v této příručce pro vývojáře IoT Hub:
+Další referenční témata v této příručce pro vývojáře IoT Hub patří:
 
-* [IoT Hub dotazovacího jazyka pro dvojčata zařízení, úlohy a směrování zpráv][lnk-devguide-query]
-* [Kvóty a omezení][lnk-devguide-quotas]
+* [Dotazovací jazyk služby IoT Hub pro dvojčata zařízení, úlohy a směrování zpráv][lnk-devguide-query]
+* [Kvóty a omezování][lnk-devguide-quotas]
 * [Podpora MQTT centra IoT][lnk-devguide-mqtt]
 
 [lnk-iot-edge]: https://github.com/Azure/iot-edge

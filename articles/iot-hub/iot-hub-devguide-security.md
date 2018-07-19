@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 02/12/2018
+ms.date: 07/18/2018
 ms.author: dobett
-ms.openlocfilehash: 43eb988915fb917923ab968d22b9b7f0ee36c0f5
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 754449dcf759820c8bb99d082c3a5ba2792f02c8
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37444391"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39126319"
 ---
 # <a name="control-access-to-iot-hub"></a>Řízení přístupu k IoT Hubu
 
@@ -35,15 +35,15 @@ Musí mít příslušná oprávnění pro přístup k jakémukoli koncové body 
 
 Můžete udělit [oprávnění](#iot-hub-permissions) následujícími způsoby:
 
-* **IoT hub úrovně sdílené zásady přístupu**. Zásady sdíleného přístupu udělit libovolnou kombinaci [oprávnění](#iot-hub-permissions). Můžete definovat zásady v [webu Azure portal][lnk-management-portal], nebo prostřednictvím kódu programu pomocí [poskytovatele prostředků služby IoT Hub rozhraní REST API][lnk-resource-provider-apis]. Nově vytvořený IoT hub má následující výchozí zásady:
+* **IoT hub úrovně sdílené zásady přístupu**. Zásady sdíleného přístupu udělit libovolnou kombinaci [oprávnění](#iot-hub-permissions). Můžete definovat zásady v [webu Azure portal][lnk-management-portal], prostřednictvím kódu programu pomocí [IoT Hub prostředek REST API][lnk-resource-provider-apis], nebo [az iot hub zásad](https://docs.microsoft.com/cli/azure/iot/hub/policy?view=azure-cli-latest) rozhraní příkazového řádku. Nově vytvořený IoT hub má následující výchozí zásady:
   
   | Zásada sdíleného přístupu | Oprávnění |
   | -------------------- | ----------- |
   | iothubowner | Oprávnění All |
   | služba | **ServiceConnect** oprávnění |
   | zařízení | **DeviceConnect** oprávnění |
-  | registryRead | **RegistryRead** oprávnění |
-  | registryReadWrite | **RegistryRead** a **RegistryWrite** oprávnění |
+  | RegistryRead | **RegistryRead** oprávnění |
+  | RegistryReadWrite | **RegistryRead** a **RegistryWrite** oprávnění |
 
 * **Zabezpečovací přihlašovací údaje zařízení**. Každé centrum IoT obsahuje [registr identit][lnk-identity-registry]. Pro každé zařízení v registru identit můžete nakonfigurovat přihlašovací údaje zabezpečení, které udělují **DeviceConnect** oprávnění oboru ke koncovým bodům odpovídající zařízení.
 
@@ -91,7 +91,9 @@ HTTPS implementuje zahrnutím platný token v ověřování **autorizace** hlavi
 
 Uživatelské jméno (ID zařízení rozlišuje velká a malá písmena): `iothubname.azure-devices.net/DeviceId`
 
-Heslo (Generovat SAS token se [Průzkumník zařízení] [ lnk-device-explorer] nástroj): `SharedAccessSignature sr=iothubname.azure-devices.net%2fdevices%2fDeviceId&sig=kPszxZZZZZZZZZZZZZZZZZAhLT%2bV7o%3d&se=1487709501`
+Heslo (můžete vygenerovat token SAS se [Průzkumník zařízení] [ lnk-device-explorer] nástroje nebo příkazu pro rozšíření rozhraní příkazového řádku [az iot hub generovat--token sas](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-generate-sas-token)):
+
+`SharedAccessSignature sr=iothubname.azure-devices.net%2fdevices%2fDeviceId&sig=kPszxZZZZZZZZZZZZZZZZZAhLT%2bV7o%3d&se=1487709501`
 
 > [!NOTE]
 > [Sad SDK Azure IoT] [ lnk-sdks] automaticky generovat tokeny při připojování ke službě. V některých případech se sadami Azure IoT SDK nepodporují všechny protokoly nebo všechny metody ověřování.
@@ -268,7 +270,7 @@ Výsledek, který uděluje přístup ke všem funkcím pro ZAŘÍZENÍ1, by byl:
 `SharedAccessSignature sr=myhub.azure-devices.net%2fdevices%2fdevice1&sig=13y8ejUk2z7PLmvtwR5RqlGBOVwiq7rQR3WZ5xZX3N4%3D&se=1456971697`
 
 > [!NOTE]
-> Je možné vytvořit token SAS pomocí .NET [Průzkumník zařízení] [ lnk-device-explorer] nástroje nebo různé platformy založené na Pythonu [rozšíření IoT pro Azure CLI 2.0] [ lnk-IoT-extension-CLI-2.0] nástroj příkazového řádku.
+> Je možné vytvořit token SAS pomocí .NET [Průzkumník zařízení] [ lnk-device-explorer] nástroje nebo různé platformy založené na Pythonu [rozšíření IoT pro Azure CLI 2.0] [ lnk-IoT-extension-CLI-2.0] nástroj příkazového řádku nebo [rozšíření Azure IoT Toolkit pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit).
 
 ### <a name="use-a-shared-access-policy"></a>Použijte zásady sdíleného přístupu
 
@@ -308,7 +310,7 @@ Brána protokolu pro všechna zařízení, jednoduše nastavení identifikátoru
 
 Součásti služby můžou generovat jenom tokeny zabezpečení pomocí udělení příslušných oprávnění, jak bylo popsáno dříve zásady sdíleného přístupu.
 
-Tady je funkce služby, které jsou zveřejněné na koncové body:
+Zde jsou funkce služby, které jsou zveřejněné na koncové body:
 
 | Koncový bod | Funkce |
 | --- | --- |
@@ -348,11 +350,13 @@ Podporované certifikáty patří:
 
 Zařízení může použít certifikát X.509 nebo token zabezpečení pro ověřování, ale ne obojí.
 
-Další informace o ověřování pomocí certifikační autority najdete v tématu [koncepční znalost certifikátů webu X.509](iot-hub-x509ca-concept.md).
+Další informace o ověřování pomocí certifikační autority najdete v tématu [zařízení ověřování pomocí certifikátů X.509 certifikační Autority](iot-hub-x509ca-overview.md).
 
 ### <a name="register-an-x509-certificate-for-a-device"></a>Zaregistrovat certifikát X.509 pro zařízení
 
 [Sady SDK služby Azure IoT pro jazyk C#][lnk-service-sdk] (verze 1.0.8+) podporuje registraci zařízení, které používá certifikátu X.509. certifikát pro ověřování. Další rozhraní API, například import a export zařízení také podporují certifikáty X.509.
+
+Příkaz rozšíření rozhraní příkazového řádku můžete použít také [az iot hub-identity zařízení](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) konfigurace certifikátů X.509 pro zařízení.
 
 ### <a name="c-support"></a>C\# podpory
 

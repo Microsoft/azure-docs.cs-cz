@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/25/2018
+ms.date: 07/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 899e5dc13dfaf7d7545955e7b4b73939c3275d3f
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: cd2578f2fd8217d513a693ef348a5c26a4b18623
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37930303"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39126503"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Spouštění runbooků v procesu Hybrid Runbook Worker
 
@@ -160,9 +160,69 @@ Uložit *Export RunAsCertificateToHybridWorker* sady runbook na počítači s `.
 
 Úlohy jsou zpracovány mírně liší na procesy Hybrid Runbook Worker než při spuštění v Azure karantény. Jedním klíčovým rozdílem je, že neexistuje žádné omezení na dobu trvání úlohy na procesy Hybrid Runbook Worker. Spuštění sady Runbook v Azure izolovaných prostorů jsou omezena na 3 hodin z důvodu [spravedlivé sdílení](automation-runbook-execution.md#fair-share). Pokud máte sadu runbook dlouhotrvající chcete zajistit, že je odolný vůči možné restartovat, například pokud restartování počítače, který je hostitelem Hybrid worker. Pokud Hybrid worker hostitelský počítač restartován, všechny spuštěné úlohy runbooku se restartuje, od začátku nebo od posledního kontrolního bodu pro runbooky pracovních postupů Powershellu. Pokud více než 3krát restartování úlohy runbooku, pak je pozastavený.
 
+## <a name="run-only-signed-runbooks"></a>Spustit pouze podepsané sady Runbook
+
+Procesy hybrid Runbook Worker může být nakonfigurován pro spouštění jenom podepsané runbooky s určitou konfigurací. Následující část popisuje, jak nastavit procesy Hybrid Runbook Worker pro spuštění sady runbook podepsaný a podepsání vaší sady runbook.
+
+> [!NOTE]
+> Po nakonfigurování Hybrid Runbook Worker pro spuštění sady runbook jenom podepsané sady runbook, které mají **není** byl podepsán se nepovedlo se provést na pracovní proces.
+
+### <a name="create-signing-certificate"></a>Vytvořit certifikát pro podpis
+
+Následující příklad vytvoří vlastnoručně podepsaný certifikát, který lze použít pro podepisování sady runbook. Ukázka vytvoří certifikát a vyexportuje ho. Certifikát se později importovat do procesy Hybrid Runbook Worker. Vrátí kryptografický otisk se také že to umožňuje později odkazovat na certifikát.
+
+```powershell
+# Create a self signed runbook that can be used for code signing
+$SigningCert = New-SelfSignedCertificate -CertStoreLocation cert:\LocalMachine\my `
+                                        -Subject "CN=contoso.com" `
+                                        -KeyAlgorithm RSA `
+                                        -KeyLength 2048 `
+                                        -Provider "Microsoft Enhanced RSA and AES Cryptographic Provider" `
+                                        -KeyExportPolicy Exportable `
+                                        -KeyUsage DigitalSignature `
+                                        -Type CodeSigningCert
+
+
+# Export the certificate so that it can be imported to the hybrid workers
+Export-Certificate -Cert $SigningCert -FilePath .\hybridworkersigningcertificate.cer
+
+# Import the certificate into the trusted root store so the certificate chain can be validated
+Import-Certificate -FilePath .\hybridworkersigningcertificate.cer -CertStoreLocation Cert:\LocalMachine\Root
+
+# Retrieve the thumbprint for later use
+$SigningCert.Thumbprint
+```
+
+### <a name="configure-the-hybrid-runbook-workers"></a>Konfigurovat pracovní procesy Hybrid Runbook Worker
+
+Zkopírujte certifikát vytvořený pro každého procesu Hybrid Runbook Worker ve skupině. Spusťte následující skript pro import certifikátu a konfigurace procesu Hybrid Worker používat ověřování podpisu pro sady runbook.
+
+```powershell
+# Install the certificate into a location that will be used for validation.
+New-Item -Path Cert:\LocalMachine\AutomationHybridStore
+Import-Certificate -FilePath .\hybridworkersigningcertificate.cer -CertStoreLocation Cert:\LocalMachine\AutomationHybridStore
+
+# Import the certificate into the trusted root store so the certificate chain can be validated
+Import-Certificate -FilePath .\hybridworkersigningcertificate.cer -CertStoreLocation Cert:\LocalMachine\Root
+
+# Configure the hybrid worker to use signature validation on runbooks.
+Set-HybridRunbookWorkerSignatureValidation -Enable $true -TrustedCertStoreLocation "Cert:\LocalMachine\AutomationHybridStore"
+```
+
+### <a name="sign-your-runbooks-using-the-certificate"></a>Podepsat vaší sady Runbook pomocí certifikátu
+
+Pracovní procesy, které umožňují použít s Hybrid Runbook pouze podepsané sady runbook. Sady runbook, které se mají použít v procesu Hybrid Runbook Worker musíte podepsat. Použijte následující ukázku prostředí PowerShell k podepisování svých runbooků.
+
+```powershell
+$SigningCert = ( Get-ChildItem -Path cert:\LocalMachine\My\<CertificateThumbprint>)
+Set-AuthenticodeSignature .\TestRunbook.ps1 -Certificate $SigningCert
+```
+
+Jakmile byl podepsán sadu runbook, musíte importovat do účtu Automation a publikovanými blok signatury. Další informace jak naimportovat sady runbook, naleznete v tématu [import runbooku ze souboru do Azure Automation](automation-creating-importing-runbook.md#importing-a-runbook-from-a-file-into-azure-automation).
+
 ## <a name="troubleshoot"></a>Řešení potíží
 
-Pokud vaše sady runbook nejsou úspěšně dokončit a v souhrnu úlohy zobrazí stav **pozastaveno**, zkontrolujte Průvodce odstraňováním potíží na [selhání spuštění sady runbook](troubleshoot/hybrid-runbook-worker.md#runbook-execution-fails).
+Pokud vaše sady runbook nejsou úspěšně dokončit, zkontrolujte na Průvodce odstraňováním potíží [selhání spuštění sady runbook](troubleshoot/hybrid-runbook-worker.md#runbook-execution-fails).
 
 ## <a name="next-steps"></a>Další postup
 

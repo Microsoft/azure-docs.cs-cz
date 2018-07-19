@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 823b647dbc171050f7b36cfc729b0d3529e1f296
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 94e16156e8accc2460005cb1927a621ec7921c71
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37901224"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39043988"
 ---
 # <a name="tutorial-use-a-windows-vm-managed-service-identity-to-access-azure-storage-via-access-key"></a>Kurz: Použití identity spravované služby (MSI) virtuálního počítače s Windows pro přístup k Azure Storage prostřednictvím přístupového klíče
 
@@ -54,7 +54,7 @@ V tomto kurzu vytvoříme nový virtuální počítač s Windows. MSI také mů�
 5.  Pokud chcete vybrat novou **skupinu prostředků**, ve které chcete vytvořit virtuální počítač, zvolte **Vytvořit novou**. Jakmile budete hotovi, klikněte na **OK**.
 6.  Vyberte velikost virtuálního počítače. Pokud chcete zobrazit další velikosti, vyberte **Zobrazit všechny** nebo změňte filtr **Podporovaný typ disku**. V okně Nastavení ponechte výchozí nastavení a klikněte na **OK**.
 
-    ![Text k alternativnímu obrázku](../media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
+    ![Text k alternativnímu obrázku](media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
 
 ## <a name="enable-msi-on-your-vm"></a>Povolení MSI na virtuálním počítači
 
@@ -62,10 +62,10 @@ Funkce MSI na virtuálním počítači umožňuje získat z Azure AD přístupov
 
 1. Přejděte ke skupině prostředků nového virtuálního počítače a vyberte virtuální počítač, který jste vytvořili v předchozím kroku.
 2. V části nastavení virtuálního počítače vlevo klikněte na **Konfigurace**.
-3. Pokud chcete funkci MSI zaregistrovat a povolit, vyberte **Ano**. Pokud ji chcete zakázat, vyberte Ne.
+3. Pokud chcete MSI zaregistrovat a povolit, vyberte **Ano**. Pokud ji chcete zakázat, zvolte Ne.
 4. Nezapomeňte konfiguraci uložit kliknutím na **Uložit**.
 
-    ![Text k alternativnímu obrázku](../media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
+    ![Text k alternativnímu obrázku](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 
 ## <a name="create-a-storage-account"></a>vytvořit účet úložiště 
 
@@ -78,7 +78,7 @@ Teď vytvoříte účet úložiště (pokud ho ještě nemáte). Tento krok tak�
 5. Ověřte, že pole **Předplatné** a **Skupina prostředků** se shodují s údaji zadanými při vytvoření virtuálního počítače v předchozím kroku.
 6. Klikněte na možnost **Vytvořit**.
 
-    ![Vytvoření nového účtu úložiště](../media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
+    ![Vytvoření nového účtu úložiště](../managed-service-identity/media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
 ## <a name="create-a-blob-container-in-the-storage-account"></a>Vytvoření kontejneru objektů blob v účtu úložiště
 
@@ -89,7 +89,7 @@ Později nahrajeme a stáhneme soubor do nového účtu úložiště. Soubory vy
 3. Když nahoře na stránce kliknete na **+ Kontejner**, vysune se panel Nový kontejner.
 4. Pojmenujte kontejner, vyberte úroveň přístupu a klikněte na **OK**. Zadaný název použijeme v další části tohoto kurzu. 
 
-    ![Vytvoření kontejneru úložiště](../media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
+    ![Vytvoření kontejneru úložiště](../managed-service-identity/media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
 
 ## <a name="grant-your-vms-msi-access-to-use-storage-account-access-keys"></a>Udělení přístupu MSI virtuálnímu počítači kvůli použití přístupových klíčů k účtu úložiště 
 
@@ -103,7 +103,7 @@ Azure Storage nativně nepodporuje ověřování Azure AD.  MSI ale můžete pou
 6. Potom se ujistěte, že v rozevíracím seznamu **Předplatné** je správné předplatné, a nastavte **Skupinu prostředků** na Všechny skupiny prostředků.  
 7. Nakonec **vyberte** v rozevíracím seznamu svůj virtuální počítač s Windows a klikněte na **Uložit**. 
 
-    ![Text k alternativnímu obrázku](../media/msi-tutorial-linux-vm-access-storage/msi-storage-role.png)
+    ![Text k alternativnímu obrázku](../managed-service-identity/media/msi-tutorial-linux-vm-access-storage/msi-storage-role.png)
 
 ## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-call-azure-resource-manager"></a>Získání přístupového tokenu pomocí identity virtuálního počítače a jeho použití k volání Azure Resource Manageru 
 

@@ -10,12 +10,12 @@ ms.author: ghogen
 ms.date: 05/11/2018
 ms.topic: include
 manager: douge
-ms.openlocfilehash: 2a6118bd23c6e8319ad4fa26a266948a4dad1b9f
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
-ms.translationtype: MT
+ms.openlocfilehash: 23b5373f4986c4a3d113baebe9e04ce65b9a9df0
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37934469"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39062930"
 ---
 Zatím jste kód aplikace spouštěli tak, jako byste byli jediným vývojářem, který na aplikaci pracuje. V této části se dozvíte, jak služba Azure Dev Spaces zjednodušuje týmový vývoj:
 * Umožňuje týmu vývojářů podle potřeby pracovat ve stejném prostředí, ať už ve sdíleném pracovním prostoru nebo v oddělených pracovních prostorech.
@@ -45,7 +45,7 @@ Než je kód při vývoji pro vaši službu připravený k odevzdání, často n
 > [!Note]
 > Než budete pokračovat, zavřete všechna okna VS Code u obou služeb a potom spusťte příkaz `azds up -d` ve všech kořenových složkách služby. (Toto je omezení verze Preview.)
 
-Podívejme se podrobněji na to, kde služby momentálně běží. Spusťte příkaz `azds list` a zobrazí se podobný výstup:
+Podívejme se podrobněji na to, kde služby momentálně běží. Spusťte příkaz `azds list-up` a zobrazí se podobný výstup:
 
 ```
 Name         Space     Chart              Ports   Updated     Access Points

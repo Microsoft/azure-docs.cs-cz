@@ -1,58 +1,99 @@
 ---
-title: Konfigurovat parametry služby ve službě Azure Database pro databázi MySQL
-description: Tento článek popisuje, jak nakonfigurovat parametry služby ve službě Azure Database pro databázi MySQL pomocí nástroje příkazového řádku Azure CLI.
+title: Nastavit parametry služby ve službě Azure Database for MySQL
+description: Tento článek popisuje, jak nastavit parametry služby ve službě Azure Database for MySQL pomocí nástroje příkazového řádku Azure CLI.
 services: mysql
-author: rachel-msft
-ms.author: raagyema
+author: ajlam
+ms.author: andrela
 manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.devlang: azure-cli
 ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: 4c04cb77513ec070edce739aa0a49447dc915a1b
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.date: 07/18/2018
+ms.openlocfilehash: 637e2d27e92c1a2618fcf8b524e475a4d2f88f12
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35265210"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136368"
 ---
-# <a name="customize-server-configuration-parameters-by-using-azure-cli"></a>Přizpůsobit parametry konfigurace serveru pomocí rozhraní příkazového řádku Azure
-Seznam, zobrazit a aktualizovat parametry konfigurace pro databázi Azure pro MySQL server pomocí rozhraní příkazového řádku Azure, nástroj příkazového řádku Azure. Část konfigurace modulu je vystaven na úrovni serveru a nelze jej změnit. 
+# <a name="customize-server-configuration-parameters-by-using-azure-cli"></a>Přizpůsobení parametrů konfigurace serveru pomocí příkazového řádku Azure
+Seznam, zobrazit a aktualizovat parametry konfigurace pro serveru Azure Database for MySQL pomocí Azure CLI, nástroj příkazového řádku Azure. Podmnožina stroj konfigurace je zveřejněný na úrovni serveru a je možné upravit. 
 
 ## <a name="prerequisites"></a>Požadavky
-Chcete-li krok tímto průvodcem postupy, je třeba:
-- [Databázi Azure pro server databáze MySQL](quickstart-create-mysql-server-database-using-azure-cli.md)
-- [Azure CLI 2.0](/cli/azure/install-azure-cli) nástroj příkazového řádku nebo pomocí prostředí cloudové služby Azure v prohlížeči.
+Pro jednotlivé kroky v této příručce s postupy, musíte:
+- [Azure Database for MySQL serveru](quickstart-create-mysql-server-database-using-azure-cli.md)
+- [Azure CLI 2.0](/cli/azure/install-azure-cli) nástroj příkazového řádku nebo pomocí Azure Cloud Shell v prohlížeči.
 
-## <a name="list-server-configuration-parameters-for-azure-database-for-mysql-server"></a>Seznam parametrů konfigurace serveru pro databázi Azure pro server databáze MySQL
-Chcete-li zobrazit seznam všech změn parametrů v serveru a jejich hodnoty, spusťte [seznamu konfigurací serveru mysql az](/cli/azure/mysql/server/configuration#az_mysql_server_configuration_list) příkaz.
+## <a name="list-server-configuration-parameters-for-azure-database-for-mysql-server"></a>Seznam parametrů konfigurace serveru pro službu Azure Database pro MySQL server
+Seznam všech parametrů upravitelná v serveru a jejich hodnoty, spusťte [az mysql server configuration list](/cli/azure/mysql/server/configuration#az_mysql_server_configuration_list) příkazu.
 
 Můžete vytvořit seznam parametrů konfigurace serveru pro server **mydemoserver.mysql.database.azure.com** ve skupině prostředků **myresourcegroup**.
 ```azurecli-interactive
 az mysql server configuration list --resource-group myresourcegroup --server mydemoserver
 ```
-Definice jednotlivých uvedených parametrů, najdete v části MySQL odkaz na [serveru systémové proměnné](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html).
+Definice všech uvedených parametrů najdete v části odkaz MySQL na [serveru systémové proměnné](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html).
 
-## <a name="show-server-configuration-parameter-details"></a>Zobrazit podrobnosti parametr konfigurace serveru
-Chcete-li zobrazit podrobnosti o konkrétní konfiguračního parametru pro server, spusťte [az mysql serveru konfigurace zobrazit](/cli/azure/mysql/server/configuration#az_mysql_server_configuration_show) příkaz.
+## <a name="show-server-configuration-parameter-details"></a>Detaily parametr konfigurace serveru
+Chcete-li zobrazit podrobnosti o konkrétní konfiguraci parametru pro server, spusťte [az mysql server configuration show](/cli/azure/mysql/server/configuration#az_mysql_server_configuration_show) příkazu.
 
-Tento příklad zobrazuje podrobnosti o **pomalé\_dotazu\_protokolu** parametr konfigurace serveru pro server **mydemoserver.mysql.database.azure.com** ve skupině prostředků **myresourcegroup.**
+Tento příklad ukazuje podrobnosti o **pomalé\_dotazu\_protokolu** parametr konfigurace serveru pro server **mydemoserver.mysql.database.azure.com** ve skupině prostředků **myresourcegroup.**
 ```azurecli-interactive
 az mysql server configuration show --name slow_query_log --resource-group myresourcegroup --server mydemoserver
 ```
 ## <a name="modify-a-server-configuration-parameter-value"></a>Změnit hodnotu parametru konfigurace serveru
-Můžete také upravit hodnotu parametru určité serveru konfigurace, která aktualizuje základní hodnotu konfigurace pro modul MySQL serveru. Chcete-li aktualizovat konfiguraci, použijte [az mysql serveru konfigurační sady](/cli/azure/mysql/server/configuration#az_mysql_server_configuration_set) příkaz. 
+Můžete také změnit hodnotu parametru určité server konfigurace, která aktualizuje hodnotu základní konfigurace pro server stroje MySQL. Chcete-li aktualizovat konfiguraci, použijte [az mysql server configuration set](/cli/azure/mysql/server/configuration#az_mysql_server_configuration_set) příkazu. 
 
-Aktualizace **pomalé\_dotazu\_protokolu** parametr konfigurace serveru serveru **mydemoserver.mysql.database.azure.com** ve skupině prostředků  **myresourcegroup.**
+Aktualizovat **pomalé\_dotazu\_protokolu** server konfigurační parametr serveru **mydemoserver.mysql.database.azure.com** ve skupině prostředků  **myresourcegroup.**
 ```azurecli-interactive
 az mysql server configuration set --name slow_query_log --resource-group myresourcegroup --server mydemoserver --value ON
 ```
-Pokud chcete resetovat hodnota parametru konfigurace, vynechejte nepovinný `--value` platí výchozí hodnota parametru a služby. Pro výše uvedeném příkladu by vypadat podobně jako:
+Pokud chcete resetovat hodnotu konfigurační parametr vynechat, nechte nepovinný `--value` parametr a službou použije výchozí hodnotu. Pro výše uvedeném příkladu to vypadat nějak takto:
 ```azurecli-interactive
 az mysql server configuration set --name slow_query_log --resource-group myresourcegroup --server mydemoserver
 ```
-Tento kód resetuje **pomalé\_dotazu\_protokolu** konfigurace na výchozí hodnotu **OFF**. 
+Tento kód nastaví **pomalé\_dotazu\_protokolu** konfigurace na výchozí hodnotu **OFF**. 
+
+## <a name="working-with-the-time-zone-parameter"></a>Práce s parametrem časového pásma
+
+### <a name="populating-the-time-zone-tables"></a>Naplnění tabulek časové pásmo
+
+Časové pásmo tabulky na vašem serveru je možné naplnit s voláním `az_load_timezone` uloženou proceduru z některého nástroje, například na příkazovém řádku MySQL nebo MySQL Workbench.
+
+> [!NOTE]
+> Pokud používáte `az_load_timezone` příkaz z aplikace MySQL Workbench, budete muset nejprve vypnout režim bezpečného aktualizace pomocí `SET SQL_SAFE_UPDATES=0;`.
+
+```sql
+CALL mysql.az_load_timezone();
+```
+
+Chcete-li zobrazit hodnoty dostupné časové pásmo, spusťte následující příkaz:
+
+```sql
+SELECT name FROM mysql.time_zone_name;
+```
+
+### <a name="setting-the-global-level-time-zone"></a>Nastavení na globální úrovni časové pásmo
+
+Na globální úrovni časové pásmo lze nastavit pomocí [az mysql server configuration set](/cli/azure/mysql/server/configuration#az_mysql_server_configuration_set) příkazu.
+
+Aktualizace zadáním následujícího příkazu **čas\_zóny** server konfigurační parametr serveru **mydemoserver.mysql.database.azure.com** ve skupině prostředků  **myresourcegroup** k **US / Tichomoří**.
+
+```azurecli-interactive
+az mysql server configuration set --name time_zone --resource-group myresourcegroup --server mydemoserver --value "US/Pacific"
+```
+
+### <a name="setting-the-session-level-time-zone"></a>Nastavení časového pásma úrovni relace
+
+Relace spuštěním můžete nastavit úroveň časového pásma `SET time_zone` z některého nástroje, například na příkazovém řádku MySQL nebo MySQL Workbench. Následující příklad nastaví časové pásmo **US / Tichomoří** časové pásmo.  
+
+```sql
+SET time_zone = 'US/Pacific';
+```
+
+Naleznete v dokumentaci MySQL pro [funkce data a času](https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_convert-tz).
+
 
 ## <a name="next-steps"></a>Další postup
-- Postup konfigurace [parametry serveru, na portálu Azure](howto-server-parameters.md)
+
+- Jak nakonfigurovat [parametrů serveru na webu Azure portal](howto-server-parameters.md)

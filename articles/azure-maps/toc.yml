@@ -22,8 +22,16 @@
   items:
     - name: Úrovně přiblížení a mřížka dlaždic
       href: zoom-levels-and-tile-grid.md
-    - name: Podporované kategorie hledání
-      href: supported-search-categories.md
+    - name: Pokrytí služeb
+      items:
+        - name: Geokódování
+          href: geocoding-coverage.md
+        - name: Provoz
+          href: traffic-coverage.md
+        - name: Vykreslování
+          href: render-coverage.md
+        - name: Směrování
+          href: routing-coverage.md
     - name: Podporované jazyky
       href: supported-languages.md
 - name: Návody
@@ -64,22 +72,14 @@
           href: map-accessibility.md
 - name: Referenční informace
   items:
-    - name: Pokrytí služeb
-      items:
-        - name: Geokódování
-          href: geocoding-coverage.md
-        - name: Provoz
-          href: traffic-coverage.md
-        - name: Vykreslování
-          href: render-coverage.md
-        - name: Směrování
-          href: routing-coverage.md
     - name: Rozšíření rozhraní API a parametrů
       items:
         - name: Model spotřeby vozidel
           href: consumption-model.md
         - name: Rozšířený formát geoJSON
           href: extend-geojson.md
+        - name: Podporované kategorie hledání
+          href: supported-search-categories.md
     - name: REST
       items:
         - name: Služba Render
@@ -129,7 +129,7 @@
     - name: Centrum pro vývojáře Azure IoT
       href: 'https://azure.microsoft.com/develop/iot/'
     - name: Plány Azure do budoucna
-      href: 'https://azure.microsoft.com/roadmap/?category=internet-of-things'
+      href: 'https://azure.microsoft.com/roadmap/?category=iot'
     - name: Fórum MSDN
       href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=azurelbs'
     - name: Ceny

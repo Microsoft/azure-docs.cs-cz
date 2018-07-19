@@ -13,30 +13,30 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/16/2018
+ms.date: 07/18/2018
 ms.author: ergreenl
-ms.openlocfilehash: 5f350bacdc21ec4e5077c93ecc9d97f2fe6c39a5
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 99896b0f618151cd368a21c4a212b7d8e28b7a6f
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39090905"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39126089"
 ---
 # <a name="suspended-domains"></a>Pozastavené domén
-Pokud Azure AD Domain Services nemůže pro služby spravované domény pro dlouhou dobu, přejde do pozastaveného stavu spravované domény. Tento článek vysvětluje, proč jsou pozastavené spravovaných domén, délka pozastavení a řešení pozastavené domény.
+Pokud Azure AD Domain Services nemůže pro služby spravované domény pro dlouhou dobu, přejde do pozastaveného stavu spravované domény. Tento článek vysvětluje, proč jsou pozastavené spravovaných domén a způsobu řešení pozastavené domény.
 
 
 ## <a name="states-your-managed-domain-can-be-in"></a>Stavy vaše spravovaná doména může být v
 
 ![Časová osa pozastavené domény](media\active-directory-domain-services-suspension\suspension-timeline.PNG)
 
-Na předchozím obrázku uvádí, jak je pozastavena doméně, jak dlouho se pozastaví a nakonec odstranění spravované domény. Následující části jsou podrobně popsané důvody, proč může pozastavit domény a jak zrušit pozastavení účtu uživatele spravované domény.
+Předchozí obrázek znázorňuje všechny možné stavy spravované domény služby Azure AD Domain Services může být v.
 
 ### <a name="running-state"></a>Spuštěném stavu.
 Spravované domény, který je správně nakonfigurované a provozní pravidelně se **systémem** stavu.
 
 **Co můžete očekávat:**
-* Microsoft se pravidelně sledovat stav vaší spravované domény.
+* Microsoft může pravidelně sledovat stav vaší spravované domény.
 * Řadiče domény pro vaše spravovaná doména se opravují se a pravidelně aktualizuje.
 * Změny z Azure Active Directory jsou pravidelně synchronizována do spravované domény.
 * Pravidelné zálohy jsou prováděny vaší spravované domény.
@@ -51,9 +51,9 @@ Další informace najdete v tématu [postupy řešení výstrah ve spravované d
 
 **Co můžete očekávat:**
 
-V některých případech (například pokud máte konfigurace neplatný sítě) může nedostupný řadiče domény vaší spravované domény. Proto se společnost Microsoft nemůže zaručit vaši spravovanou doménu monitorovat, opravit, aktualizace nebo zálohovanou v pravidelných intervalech v tomto stavu.
+V některých případech (například pokud máte konfigurace neplatný sítě) může nedostupný řadiče domény vaší spravované domény. Společnost Microsoft nemůže zaručit vaši spravovanou doménu je sledovat, opravit, aktualizovat nebo zálohovanou v pravidelných intervalech v tomto stavu.
 
-* Spravovaná doména je v pořádku a průběžný stav může být ovlivněno monitorování, dokud se výstraha vyřeší.
+* Spravovaná doména je v pořádku a průběžný stav monitorování může zastavit, dokud se výstraha vyřeší.
 * Řadiče domény vaší spravované domény nemusí být opravit nebo aktualizovat.
 * Změny z Azure Active Directory se proto nemusí synchronizovat do spravované domény.
 * Může být přijata zálohování vaší spravované domény, pokud je to možné.
@@ -63,19 +63,22 @@ V některých případech (například pokud máte konfigurace neplatný sítě)
 
 ### <a name="suspended-state"></a>"Pozastavena.
 Spravovaná doména je umístěn **pozastaveno** stavu z následujících důvodů:
-* Jeden nebo více kritické výstrahy se neopravily během 15 dnů. To může způsobovat chybné konfiguraci, která zablokuje přístup k prostředkům vyžaduje Azure AD Domain Services.
+* Jeden nebo více kritické výstrahy nevyjasněné během 15 dnů. Kritické výstrahy může být způsobeno chybné konfiguraci, která zablokuje přístup k prostředkům vyžaduje Azure AD Domain Services.
     * Například, pokud spravovaná doména se výstraha [AADDS104: Chyba sítě](active-directory-ds-troubleshoot-nsg.md) nevyřešené víc než 15 dnů.
-* Fakturační problému s vaším předplatným Azure, nebo pokud vypršela platnost předplatného Azure.
+* Fakturační problému s vaším předplatným Azure, nebo vypršela platnost vašeho předplatného Azure.
 
 Spravované domény jsou pozastavené, když Microsoft nemůže ke správě, monitorování, oprava nebo zálohování domény průběžně.
 
 **Co můžete očekávat:**
 * Řadiče domény vaší spravované domény jsou zrušení zřízení a nejsou dostupné v rámci virtuální sítě.
 * Přístup ke spravované doméně přes internet (je-li povoleno) Secure LDAP přestane fungovat.
-* Zobrazí se chyby při ověřování do spravované domény, přihlášení k doméně připojené virtuální počítače, připojení prostřednictvím protokolu LDAP/LDAPS atd.
+* Všimněte si chyby v ověřování do spravované domény, protokolování virtuální počítače připojené k doméně a propojení prostřednictvím protokolu LDAP nebo LDAPS.
 * Zálohy pro vaše spravovaná doména se už přesunete.
-* Je potřeba vyřešit výstrahu způsobuje vaší spravované domény ve stavu "Pozastaveno" a potom kontaktovat podporu.
-* Podpora může mít možnost obnovit spravované domény, pouze v případě, že je existující zálohy, která je menší než 30 dní.
+* Synchronizace se službou Azure AD se zastaví.
+* Vyřešte výstrahu způsobuje vaší spravované domény ve stavu "Pozastaveno" a potom kontaktovat podporu.
+* Podpora vaší spravované domény, obnovit jenom v případě, že existuje zálohy, která je menší než 30 dní.
+
+Spravovaná doména zůstane pouze v pozastaveném stavu po dobu 15 dnů. Pokud chcete obnovit spravované domény, Microsoft doporučuje že okamžitě vyřešit kritické výstrahy.
 
 
 ### <a name="deleted-state"></a>Stavu 'Odstraněno'
@@ -83,34 +86,24 @@ Spravovaná doména, který zůstane ve stavu "Pozastaveno" po dobu 15 dnů se *
 
 **Co můžete očekávat:**
 * Odstraní se všechny prostředky a zálohy pro spravovanou doménu.
-* Nelze obnovit spravované domény a bude muset vytvořit nové spravované doméně používat službu Azure AD Domain Services.
-* Nebudou se vám účtovat spravované domény.
+* Nelze obnovit spravované domény a musíte vytvořit nové spravované doméně používat službu Azure AD Domain Services.
+* Po odstranění se vám nic neúčtuje pro spravovanou doménu.
 
 
-## <a name="what-happens-when-a-managed-domain-is-suspended"></a>Co se stane, když je pozastavený, spravované domény?
-Při pozastavení domény Azure AD Domain Services zastaví a zruší zřizuje řadiče domény vaší spravované domény. V důsledku toho již zálohy jsou prováděny, nebudou moct uživatelé přihlásit se k vaší doméně a zastaví synchronizaci se službou Azure AD.
-
-Spravovaná doména zůstane pouze v pozastaveném stavu maximálně 15 dnů. Aby bylo možné zajistit včasné obnovení, doporučujeme že nejdříve vyřešit pozastavení.
+## <a name="how-do-you-know-if-your-managed-domain-is-suspended"></a>Jak víte, pokud je pozastaveno vaše spravovaná doména?
+Zobrazí [výstraha](active-directory-ds-troubleshoot-alerts.md) na stránce stavu Azure AD Domain Services na portálu Azure portal, který deklaruje domény pozastaveno. Stav domény také ukazuje "Pozastaveno".
 
 
-## <a name="how-do-i-know-if-my-managed-domain-is-suspended"></a>Jak poznám, že pokud je pozastavený, spravované domény?
-Zobrazí se [výstraha](active-directory-ds-troubleshoot-alerts.md) na stránce stavu Azure AD Domain Services na portálu Azure portal, který deklaruje domény pozastaveno. Kromě toho stavu doméně ukazuje "Pozastaveno".
-
-
-## <a name="how-do-i-restore-a-suspended-domain"></a>Jak obnovit pozastavenou domény?
+## <a name="restore-a-suspended-domain"></a>Obnovení pozastavené domény
 Chcete-li obnovit doménu ve stavu "Pozastaveno", proveďte následující kroky:
 
 1. Přejděte [stránku Azure AD Domain Services](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.AAD%2FdomainServices) na portálu Azure portal
-2. Klikněte na doménu, kterou chcete zrušit pozastavení účtu uživatele
-3. Na levém navigačním panelu klikněte na tlačítko **stavu**
+2. Klikněte na tlačítko ve spravované doméně.
+3. Na levém navigačním panelu klikněte na tlačítko **stavu**.
 4. Klikněte na výstrahu. ID výstrahy bude AADDS503 nebo AADDS504, v závislosti na příčině, ve kterém byly pozastaveny.
 5. Klikněte na odkaz řešení k dispozici ve výstraze a postupujte podle kroků tuto výstrahu vyřešíte.
 
-Vaše doména lze obnovit pouze na datum poslední zálohy. Datum poslední zálohy je zobrazeny na stránce stav vaší spravované domény. Všechny změny, ke kterým došlo po poslední záloze nebude obnoven. Zálohy pro spravovanou doménu se uchovávají po dobu až 30 dnů. Zálohování, které jsou starší než 30 dnů se odstraní.
-
-
-## <a name="deleting-domains"></a>Odstranění domény
-Pokud domény je pozastaven po dobu více než 15 dnů, Azure AD Domain Services odstraní spravovanou doménu z důvodu nečinnosti a neschopnost služby domény. Už nebudou účtovat služby Azure AD Domain Services. V tuto chvíli nelze obnovit vaše spravovaná doména a muset znovu vytvořit.
+Vaše spravovaná doména lze obnovit pouze na datum poslední zálohy. Datum poslední zálohy je zobrazeny na stránce stav vaší spravované domény. Všechny změny, ke kterým došlo po poslední záloze nebude obnoven. Zálohy pro spravovanou doménu se uchovávají po dobu až 30 dnů. Zálohování, které jsou starší než 30 dnů se odstraní.
 
 
 ## <a name="next-steps"></a>Další postup

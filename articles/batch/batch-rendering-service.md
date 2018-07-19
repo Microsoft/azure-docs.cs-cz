@@ -8,12 +8,12 @@ ms.service: batch
 ms.topic: hero-article
 ms.date: 05/10/2018
 ms.author: danlep
-ms.openlocfilehash: 954a67ed126b505c9ba0da81b3ace0d25e840adb
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: f07b3ce85641f34462c97d16bbed8cf9e2e50652
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128584"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39114537"
 ---
 # <a name="get-started-with-batch-rendering"></a>Začínáme se službou Batch Rendering 
 
@@ -123,7 +123,7 @@ V případě aplikace 3ds Max můžete použít:
 
 Šablony Batch Labs pro 3ds Max umožňují pomocí služby Batch Rendering vykreslovat scény VRay a Arnold. Existují dvě varianty šablon pro VRay a Arnold, jedna pro standardní scény a jedna pro složitější scény, které vyžadují soubor cest 3ds Max k prostředkům a texturám (soubor .mxp). Další informace o šablonách BatchLabs pro 3ds Max najdete v úložišti [BatchLabs-data](https://github.com/Azure/BatchLabs-data/tree/master/ncj/3dsmax) na GitHubu.
 
-Kromě toho můžete pomocí sady [Batch Python SDK](https://docs.microsoft.com/azure/batch/batch-python-tutorial) integrovat vykreslování do svého existujícího kanálu.
+Kromě toho můžete pomocí sady [Batch Python SDK](/python/api/overview/azure/batch) integrovat vykreslování do svého existujícího kanálu.
 
 
 ## <a name="use-the-batch-plug-in-for-maya-to-submit-a-render-job"></a>Odeslání úlohy vykreslování pomocí modulu plug-in služby Batch pro aplikaci Maya

@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 06/28/2018
+ms.date: 07/17/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 8152a9934d6a280abfc75fdc74e0864053d82f45
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 42a11607c46f77840b14973dd5b7faf4b1734fdc
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/18/2018
-ms.locfileid: "39116074"
+ms.locfileid: "39136838"
 ---
 # <a name="built-in-roles-in-azure"></a>Předdefinované role v Azure
 [Řízení přístupu na základě role (RBAC)](overview.md) má několik definic předdefinovaná role, které jste přiřadili pro uživatele, skupiny nebo instanční objekty. Přiřazení rolí představují způsob, jak řídit přístup k prostředkům v Azure. Pokud předdefinované role nesplňují konkrétní požadavky vaší organizace, můžete si vytvořit [vlastní role](custom-roles.md).
@@ -78,6 +78,8 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 | [Operátor aplikace logiky](#logic-app-operator) | Umožňuje číst, povolovat a zakazovat aplikaci logiky. |
 | [Přispěvatel spravovaných identit](#managed-identity-contributor) | Vytváření, čtení, aktualizace a odstraňování identity přiřazené uživateli |
 | [Operátor spravovaných identit](#managed-identity-operator) | Čtení a přiřazování identity přiřazené uživateli |
+| [Přispěvatel skupiny pro správu](#management-group-contributor) | Role přispěvatele skupiny pro správu |
+| [Čtečka skupiny pro správu](#management-group-reader) | Role Čtenář skupiny pro správu |
 | [Přispěvatel monitorování](#monitoring-contributor) | Může číst všechna data monitorování a upravit nastavení monitorování. Viz také [role, oprávnění a zabezpečení prostřednictvím služby Azure Monitor vám začít](../monitoring-and-diagnostics/monitoring-roles-permissions-security.md#built-in-monitoring-roles). |
 | [Čtenář monitorování](#monitoring-reader) | Může číst všechna data monitorování (metriky, protokoly atd.). Viz také [role, oprávnění a zabezpečení prostřednictvím služby Azure Monitor vám začít](../monitoring-and-diagnostics/monitoring-roles-permissions-security.md#built-in-monitoring-roles). |
 | [Přispěvatel sítě](#network-contributor) | Umožňuje správu sítí, ale ne přístup k nim. |
@@ -617,7 +619,7 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.ClassicNetwork/virtualNetworks/join/action | Připojí se k virtuální síti. |
 > | Microsoft.ClassicNetwork/virtualNetworks/read | Umožňuje načíst virtuální síť. |
 > | Microsoft.ClassicStorage/storageAccounts/disks/read | Vrátí disk účtu úložiště. |
-> | Microsoft.ClassicStorage/storageAccounts/images/read | Vrátí image účtu storage. |
+> | Microsoft.ClassicStorage/storageAccounts/images/read | Vrátí image účtu storage. (Zastaralé. Použití "Microsoft.ClassicStorage/storageAccounts/vmImages.) |
 > | Microsoft.ClassicStorage/storageAccounts/listKeys/action | Umožňuje vypsat seznam přístupových klíčů pro účty úložiště. |
 > | Microsoft.ClassicStorage/storageAccounts/read | Umožňuje načíst účet úložiště se zadaným účtem. |
 > | Microsoft.Insights/alertRules/* | Vytvoření a Správa pravidel výstrah Insights |
@@ -826,6 +828,7 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Authorization/*/read | Další role a přiřazení rolí |
 > | Microsoft.LabServices/labAccounts/*/read |  |
 > | Microsoft.LabServices/labAccounts/createLab/action | Vytvoření testovacího prostředí v účtu testovacího prostředí. |
+> | Microsoft.LabServices/labAccounts/sizes/getRegionalAvailability/action | Získejte informace o místní dostupnosti pro každou kategorii velikost v rámci účtu testovacího prostředí |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
 
@@ -947,6 +950,28 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Resources/deployments/* | Vytváření a správě nasazení skupiny prostředků |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
 
+## <a name="management-group-contributor"></a>Přispěvatel skupiny pro správu
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Popis** | Role přispěvatele skupiny pro správu |
+> | **ID** | 5d58bcaf-24a5-4b20-bdb6-eed9f69fbe4c |
+> | **Akce** |  |
+> | Microsoft.Management/managementGroups/delete | Odstraňte skupinu pro správu. |
+> | Microsoft.Management/managementGroups/read | Seznam skupin pro správu pro ověřeného uživatele. |
+> | Microsoft.Management/managementGroups/subscriptions/delete | Přidruží zrušit předplatné ze skupiny pro správu. |
+> | Microsoft.Management/managementGroups/subscriptions/write | Přiřadí existující předplatné skupině pro správu. |
+> | Microsoft.Management/managementGroups/write | Vytvořit nebo aktualizovat skupinu pro správu. |
+
+## <a name="management-group-reader"></a>Čtečka skupiny pro správu
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Popis** | Role Čtenář skupiny pro správu |
+> | **ID** | ac63b705-f282-497d-ac71-919bf39d939d |
+> | **Akce** |  |
+> | Microsoft.Management/managementGroups/read | Seznam skupin pro správu pro ověřeného uživatele. |
+
 ## <a name="monitoring-contributor"></a>Přispěvatel monitorování
 > [!div class="mx-tableFixed"]
 > | | |
@@ -957,18 +982,18 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | * / čtení | Číst prostředky všech typů, s výjimkou tajných kódů. |
 > | Microsoft.AlertsManagement/alerts/* |  |
 > | Microsoft.AlertsManagement/alertsSummary/* |  |
+> | Microsoft.Insights/actiongroups/* |  |
 > | Microsoft.Insights/AlertRules/* | Čtení, zápisu a odstranění pravidla upozornění. |
 > | Microsoft.Insights/components/* | Čtení, zápisu a odstranění komponenty Application Insights. |
 > | Microsoft.Insights/DiagnosticSettings/* | Nastavení diagnostiky pro čtení/zápis/delete. |
 > | Microsoft.Insights/eventtypes/* | Vypsat události protokolu aktivit (události správy) v rámci předplatného. Toto oprávnění se vztahuje na programování a portálu přístup k protokolům aktivit. |
 > | Microsoft.Insights/LogDefinitions/* | Toto oprávnění je nezbytné pro uživatele, kteří potřebují přístup k protokolům aktivit na portálu. Seznam kategorií protokolu v protokolu aktivit. |
+> | Microsoft.Insights/metricalerts/* |  |
 > | Microsoft.Insights/MetricDefinitions/* | Přečíst definice metrik (seznam dostupných typů metriky pro prostředek). |
 > | Microsoft.Insights/Metrics/* | Číst metriky pro prostředek. |
-> | Microsoft.Insights/Register/Action | Registrovat poskytovatele platformy Microsoft Insights |
-> | Microsoft.Insights/webtests/* | Application Insights pro čtení, zápisu nebo odstranění webové testy. |
-> | Microsoft.Insights/actiongroups/* |  |
-> | Microsoft.Insights/metricalerts/* |  |
+> | Microsoft.Insights/Register/Action | Zaregistrujte poskytovatele Microsoft Insights |
 > | Microsoft.Insights/scheduledqueryrules/* |  |
+> | Microsoft.Insights/webtests/* | Application Insights pro čtení, zápisu nebo odstranění webové testy. |
 > | Microsoft.OperationalInsights/workspaces/intelligencepacks/* | Balíčky řešení Log Analytics pro čtení/zápis/delete. |
 > | Microsoft.OperationalInsights/workspaces/savedSearches/* | Log Analytics pro čtení/zápis/delete uložená hledání. |
 > | Microsoft.OperationalInsights/workspaces/search/action | Spouští vyhledávací dotaz |
@@ -976,6 +1001,7 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.OperationalInsights/workspaces/storageinsightconfigs/* | Konfigurace přehledu úložiště čtení/zápis/delete Log Analytics. |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
 > | Microsoft.WorkloadMonitor/workloads/* |  |
+> | Microsoft.WorkloadMonitor/workloadInsights/* |  |
 
 ## <a name="monitoring-reader"></a>Čtenář monitorování
 > [!div class="mx-tableFixed"]

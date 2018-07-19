@@ -49,7 +49,7 @@
         - name: Kopírování dat do Data Lake Storage Gen2 s využitím Distcp
           href: use-distcp.md
         - name: Kopírování dat do Data Lake Storage Gen2 s využitím Azure Data Factory
-          href: ../../data-factory/load-azure-data-lake-storage-gen2.md
+          href: ../../data-factory/load-azure-data-lake-storage-gen2.md?toc=%2fazure%2fstorage%2fdata-lake-storage%2ftoc.json
     - name: Připojení k Azure Databricks
       href: 'https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html'
 - name: Referenční informace

@@ -8,14 +8,14 @@ manager: kamran.iqbal
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 07/16/2018
 ms.author: v-geberr
-ms.openlocfilehash: b695783c6d68876d39482ed5abec24f45087603d
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: c146182c07c49cb73349df69c649601276a6e837
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39054858"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39126469"
 ---
 # <a name="improve-app-with-batch-test"></a>Vylepšit aplikaci s testováním služby batch
 
@@ -28,7 +28,7 @@ V tomto kurzu se naučíte:
 * Vytvořte dávkový soubor testu 
 * Spuštění testu služby batch
 * Kontrola výsledků testu
-* Opravte chyby pro příkazy
+* Opravit chyby 
 * Opětovné testování služby batch
 
 Pro účely tohoto článku potřebujete bezplatný účet [LUIS](luis-reference-regions.md#luis-website), abyste mohli vytvořit svou aplikaci LUIS.
@@ -38,48 +38,25 @@ Pokud nemáte aplikaci lidských zdrojů [zkontrolujte projevy koncový bod](lui
 
 Pokud chcete zachovat původní aplikaci pro lidské zdroje, naklonujte verzi na stránce [Settings](luis-how-to-manage-versions.md#clone-a-version) (Nastavení) a pojmenujte ji `batchtest`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. 
 
+Trénování aplikace.
+
 ## <a name="purpose-of-batch-testing"></a>Účelem testování služby batch
-Testování služby batch můžete ověřit stav modelu známé sadu testů projevy a označené jako entity. V souboru ve formátu JSON služby batch přidejte projevy a nastavte popisky entity, které potřebujete předpovědět uvnitř utterance. 
+Testování služby batch vám pomůže ověřit aktivní, Trénink modelu stavu se známou sadou s popiskem projevy a entit. V souboru ve formátu JSON služby batch přidejte projevy a nastavte popisky entity, které potřebujete předpovědět uvnitř utterance. 
 
-Doporučený testovací strategie pro LUIS používá tři samostatné sady dat: Příklad projevy modelu, projevy testovací služby batch a projevy koncový bod k dispozici. Pro účely tohoto kurzu Ujistěte se, že nepoužíváte projevy z obou příklad projevy (přidá k záměru) nebo projevy koncový bod. 
-
-K ověření vaší služby batch test projevy proti příklad projevy a koncový bod projevy [exportovat](luis-how-to-start-new-app.md#export-app) aplikace a [Stáhnout](luis-how-to-start-new-app.md#export-endpoint-logs) protokol dotazu. Porovnání utterance příkladu aplikace a projevy dotazu protokolu do testu projevy služby batch. 
+<!--The recommended test strategy for LUIS uses three separate sets of data: example utterances provided to the model, batch test utterances, and endpoint utterances. --> Při používání aplikace než tento kurz, ujistěte se, že jste *není* pomocí příkladu projevy již byla přidána do záměru. Chcete-li ověřit váš test projevy batch proti projevy příklad [exportovat](luis-how-to-start-new-app.md#export-app) aplikace. Porovnání aplikace příklad utterance k projevy testovací služby batch. 
 
 Požadavky pro testování služby batch:
 
-* 1000 projevy na test. 
+* Maximálně 1000 projevy na test. 
 * Žádné duplicity. 
-* Povolené typy entit: jednoduché a složené.
+* Povolené typy entit: pouze entity se naučili obrobeny použití jednoduchých, hierarchické (pouze nadřazené) a složené. Testování služby batch je užitečná pouze pro obrobeny zjistili záměry a entity.
 
 ## <a name="create-a-batch-file-with-utterances"></a>Vytvořte dávkový soubor se projevy
 1. Vytvoření `HumanResources-jobs-batch.json` v textovém editoru, jako [VSCode](https://code.visualstudio.com/). 
 
 2. V souboru ve formátu JSON batch přidání projevů s **záměr** chcete předpokládané v testu. 
 
-    ```JSON
-    [
-        {
-        "text": "Are there any janitorial jobs currently open?",
-        "intent": "GetJobInformation",
-        "entities": []
-        },
-        {
-        "text": "I would like a fullstack typescript programming with azure job",
-        "intent": "GetJobInformation",
-        "entities": []
-        },
-        {
-        "text": "Is there a database position open in Los Colinas?",
-        "intent": "GetJobInformation",
-        "entities": []
-        },
-        {
-        "text": "Can I apply for any database jobs with this resume?",
-        "intent": "GetJobInformation",
-        "entities": []
-        }
-    ]
-    ```
+   [!code-json[Add the intents to the batch test file](~/samples-luis/documentation-samples/tutorial-batch-testing/HumanResources-jobs-batch.json "Add the intents to the batch test file")]
 
 ## <a name="run-the-batch"></a>Spusťte dávku
 
@@ -112,35 +89,33 @@ Požadavky pro testování služby batch:
     [ ![Snímek obrazovky LUIS aplikace s výsledky testů služby batch](./media/luis-tutorial-batch-testing/hr-intents-only-results-1.png)](./media/luis-tutorial-batch-testing/hr-intents-only-results-1.png#lightbox)
 
 ## <a name="review-batch-results"></a>Zkontrolujte výsledky služby batch
-Batch graf zobrazuje čtyři kvadrantech výsledky. Napravo od grafu je filtr. Ve výchozím nastavení je nastaven filtr na první záměr v seznamu. Filtr obsahuje všechny záměry a pouze jednoduché, hierarchické (pouze nadřazené) a složené entity. Když vyberete graf nebo bodu v rámci tohoto grafu, přidružené utterance(s) zobrazení pod grafem. 
+Batch graf zobrazuje čtyři kvadrantech výsledky. Napravo od grafu je filtr. Ve výchozím nastavení je nastaven filtr na první záměr v seznamu. Filtr obsahuje všechny záměry a pouze jednoduché, hierarchické (pouze nadřazené) a složené entity. Když vyberete [části grafu](luis-concept-batch-test.md#batch-test-results) nebo bodu v rámci tohoto grafu, přidružené utterance(s) zobrazení pod grafem. 
 
 Když najede myší na graf, kolečko myši můžete zvětšit nebo zmenšit zobrazení v grafu. To je užitečné, když existuje mnoho bodů v grafu úzce společně v clusteru. 
 
 Graf je v čtyři kvadrantech dva oddíly zobrazí červeně. **Toto jsou oddíly pro zaměření na**. 
 
-### <a name="applyforjob-test-results"></a>Výsledky testu ApplyForJob
-**ApplyForJob** zobrazit výsledky testů zobrazené ve filtru, 1 čtyři predikcí bylo úspěšné. Vyberte název **falešně pozitivní** nad horním pravém kvadrantu zobrazíte projevy pod grafem. 
+### <a name="getjobinformation-test-results"></a>Výsledky testu GetJobInformation
+**GetJobInformation** zobrazit výsledky testů zobrazené ve filtru, že byla úspěšná 2 čtyři předpovědí. Vyberte název **falešně pozitivní** nad horním pravém kvadrantu zobrazíte projevy pod grafem. 
 
 ![Služba LUIS projevy testovací služby batch](./media/luis-tutorial-batch-testing/hr-applyforjobs-false-positive-results.png)
 
-Tři projevy měl hlavní záměr **ApplyForJob**. Záměr uvedenými v dávkovém souboru, má nižší skóre. Proč k tomu? Co se týče možnosti aplikace word a uspořádání word jsou velmi úzce souvisí dvou příkazů. Kromě toho jsou skoro tři třikrát tolik příklady **ApplyForJob** než **GetJobInformation**. Tato nerovnosti příklad projevy váží **ApplyForJob** upřednostnit na záměr. 
+Proč jsou dvě projevy předpovědět jako **ApplyForJob**, namísto správné záměr **GetJobInformation**? Co se týče možnosti aplikace word a uspořádání word jsou velmi úzce souvisí dvou příkazů. Kromě toho jsou skoro tři třikrát tolik příklady **ApplyForJob** než **GetJobInformation**. Tato nerovnosti příklad projevy váží **ApplyForJob** upřednostnit na záměr. 
 
-Všimněte si, že oba záměry mají stejný počet chyb: 
+Všimněte si, že oba záměry mají stejný počet chyb. Nesprávný predikce v jedné záměr má vliv na ostatní záměr také. Oba obsahuje chyby, protože projevy byly správně předpovědět pro jeden záměr a také nesprávně ne pro jiné záměr předpovědět. 
 
 ![Služba LUIS batch test filtrování chyb](./media/luis-tutorial-batch-testing/hr-intent-error-count.png)
 
-Utterance odpovídající vrchního bodu v **falešně pozitivní** oddíl je `Can I apply for any database jobs with this resume?`. Slovo `resume` pouze se použil **ApplyForJob**. 
-
-Ostatní dva body v grafu má mnohem nižší skóre pro chybný záměr, což znamená, že jsou blíž ke správné záměr. 
+K časovému okamžiku projevy odpovídající nahoře **falešně pozitivní** jsou části `Can I apply for any database jobs with this resume?` a `Can I apply for any database jobs with this resume?`. Pro první utterance slovo `resume` pouze se použil **ApplyForJob**. Pro druhý utterance slovo `apply` pouze se použil **ApplyForJob** záměr.
 
 ## <a name="fix-the-app-based-on-batch-results"></a>Oprava aplikace na základě výsledků služby batch
-Cílem této části je mít tři projevy, které byly správně předpovědět pro **ApplyForJob** k správně předpovědět pro **GetJobInformation**, po vyřešení aplikace. 
+Cílem této části je, aby všechny projevy správně předpovědět pro **GetJobInformation** po opravě aplikace. 
 
 Přidání projevů soubor tyto služby batch na správné záměr je zdánlivě rychlé opravy. To je, co nechcete dělat ale. Chcete, aby služba LUIS správně předpovědět těchto projevů bez nutnosti přidávat jako příklady. 
 
 Může vás také zajímat o odebrání projevy z **ApplyForJob** dokud množství utterance je stejný jako **GetJobInformation**. Který lze pravděpodobně vyřešit výsledky testů, ale bude bránit LUIS z přesně předpovídat tohoto záměru příště. 
 
-První opravu, je přidat další projevy do **GetJobInformation**. Druhý opravy je snížení váhu slovo `resume` směrem k **ApplyForJob** záměr. 
+První opravu, je přidat další projevy do **GetJobInformation**. Druhý oprava je omezení hmotnosti slova, jako je `resume` a `apply` směrem k **ApplyForJob** záměr. 
 
 ### <a name="add-more-utterances-to-getjobinformation"></a>Přidat další projevy do **GetJobInformation**
 1. Zavřít panel dávky testů tak, že vyberete **testování** tlačítko v horním navigačním panelu. 
@@ -151,25 +126,27 @@ První opravu, je přidat další projevy do **GetJobInformation**. Druhý oprav
 
     [ ![Snímek obrazovky služby LUIS se zvýrazněným tlačítkem testu](./media/luis-tutorial-batch-testing/hr-select-intent-to-fix-1.png)](./media/luis-tutorial-batch-testing/hr-select-intent-to-fix-1.png#lightbox)
 
-3. Přidat další projevy, které jsou různé délky, volba slov a uspořádání slova, nezapomeňte zahrnout podmínky `resume` a `c.v.`:
+3. Přidat další projevy, které jsou různé délky, volba slov a uspořádání slova, nezapomeňte zahrnout podmínky `resume`, `c.v.`, a `apply`:
 
-    ```JSON
-    Is there a new job in the warehouse for a stocker?
-    Where are the roofing jobs today?
-    I heard there was a medical coding job that requires a resume.
-    I would like a job helping college kids write their c.v.s. 
-    Here is my resume, looking for a new post at the community college using computers.
-    What positions are available in child and home care?
-    Is there an intern desk at the newspaper?
-    My C.v. shows I'm good at analyzing procurement, budgets, and lost money. Is there anything for this type of work?
-    Where are the earth drilling jobs right now?
-    I've worked 8 years as an EMS driver. Any new jobs?
-    New food handling jobs?
-    How many new yard work jobs are available?
-    Is there a new HR post for labor relations and negotiations?
-    I have a masters in library and archive management. Any new positions?
-    Are there any babysitting jobs for 13 year olds in the city today?
-    ```
+    |Příklad projevy pro **GetJobInformation** záměr|
+    |--|
+    |Vyžaduje novou úlohu v datovém skladu pro stocker můžu použít s životopis?|
+    |Kde se dnes střešní úlohy?|
+    |Jsem slyšela, že došlo lékařské kódovací úlohu, která vyžaduje životopis.|
+    |Chci dostávat úlohu pomáhá zápis jejich c.v.s. děti škole |
+    |Tady je Moje pokračování hledání nového příspěvku na komunitní škole pomocí počítače se.|
+    |Jaké pozice jsou k dispozici v podřízené domény a domovské péče?|
+    |Je k dispozici učně helpdesku na novinových?|
+    |Moje C.v. ukazuje, že jsem vhodný pro analýzu zajišťování rozpočtů a ke ztrátě peníze. Je cokoli, co je pro tento typ práce?|
+    |Kde jsou země procházení úlohy nyní?|
+    |Jsem pracovala 8 let jako ovladač EMS. Žádné nové úlohy?|
+    |Nové úlohy zpracování potravin vyžadují aplikace?|
+    |Kolik nové yard pracovní úlohy jsou k dispozici?|
+    |Existuje nový příspěvek HR pro práci s vývojáři a vyjednávání?|
+    |Mám k dispozici nadřízených serverů knihovny a archivní řízení. Všechny nové pozice?|
+    |Existují jakékoli babysitting úlohy pro 13 olds rok ve městě dnes?|
+
+    Neoznačuje popiskem **úlohy** entity v projevy. V této části kurzu se zaměřuje na pouze záměru předpovědi.
 
 4. Trénování aplikace tak, že vyberete **Train** v pravém horním navigačním panelu.
 
@@ -182,11 +159,70 @@ Pokud chcete ověřit, že jsou správně předpovědět projevy v testu služby
 
 3. Vyberte **zobrazit výsledky**. Příkazů by měly mít zelené ikony nalevo od názvu záměru. 
 
-    [ ![Snímek obrazovky služby LUIS se zvýrazněným tlačítkem výsledky služby batch](./media/luis-tutorial-batch-testing/hr-batch-test-intents-no-errors.png)](./media/luis-tutorial-batch-testing/hr-batch-test-intents-no-errors.png#lightbox)
+    ![Snímek obrazovky služby LUIS se zvýrazněným tlačítkem výsledky služby batch](./media/luis-tutorial-batch-testing/hr-batch-test-intents-no-errors.png)
 
+## <a name="create-batch-file-with-entities"></a>Vytvořte dávkový soubor s entitami 
+Aby bylo možné ověřit entity v rámci služby batch testu, entity muset označeny v dávkovém souboru JSON. Pouze entity zjištěné počítače se používají: jednoduchý, hierarchické (pouze nadřazené) a složené entity. Nepřidávejte mimo počítač zjistili entity, protože se nenachází vždy prostřednictvím regulární výrazy nebo explicitní text odpovídá.
+
+Změnu entity pro celkový počet slov ([token](luis-glossary.md#token)) počet může mít vliv na kvalitu předpovědi. Zajistěte, aby trénovacích dat zadané na záměr s s popiskem projevy zahrnuje celou řadu délky entity. 
+
+Při prvním psaní a testování dávkové soubory, je nejlepší začít s několika projevy a entity, které znáte pracovat, a také pár, který jste domníváte se může správně předpovědět. Díky tomu umožní věnovat v problémových oblastí rychle. Po otestování **GetJobInformation** a **ApplyForJob** záměry pomocí několika různých úloh názvy, které nebyly předpovědět, zobrazíte, pokud dojde k problému předpovědi byl vyvinut tento dávkový soubor testu s určitými hodnotami pro **úlohy** entity. 
+
+Hodnota **úlohy** entita, součástí projevy testu je obvykle jedno nebo dvě slova s pár příkladů se další slova. Pokud _vlastní_ lidských zdrojů, aplikace obvykle obsahuje názvy úlohy řada výrazů, příklad projevy označené **úlohy** entity v této aplikaci nebude fungovat správně.
+
+1. Vytvoření `HumanResources-entities-batch.json` v textovém editoru, jako [VSCode](https://code.visualstudio.com/). Nebo si stáhněte [soubor](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorial-batch-testing/HumanResources-entities-batch.json) z úložiště Githubu ukázky LUIS.
+
+
+2. V souboru ve formátu JSON služby batch, přidejte pole objektů, které zahrnují projevy s **záměr** chcete předpokládané v testu, stejně jako umístění všech entit v utterance. Entita je založená na tokenech, ujistěte se, že ke spouštění a zastavování Každá entita na znak. Začínat nebo končit utterance v prostoru. To způsobí chybu při importu souboru služby batch.  
+
+   [!code-json[Add the intents and entities to the batch test file](~/samples-luis/documentation-samples/tutorial-batch-testing/HumanResources-entities-batch.json "Add the intents and entities to the batch test file")]
+
+<!--TBD: when will the patterns fix be in for batch testing? -->
+## <a name="run-the-batch-with-entities"></a>Spusťte dávku s entitami
+
+1. Vyberte **Test** v horním navigačním panelu. 
+
+2. Vyberte **Batch testování panel** na pravé straně panelu. 
+
+3. Vyberte **datové sady importu**.
+
+4. Vyberte umístění systému souboru `HumanResources-entities-batch.json` souboru.
+
+5. Zadejte název datové sady `entities` a vyberte **provádí**.
+
+6. Vyberte tlačítko **Spustit**. Počkejte, dokud se provádí test.
+
+    [ ![Aplikace LUIS snímek obrazovky s spuštěný zvýrazněnou](./media/luis-tutorial-batch-testing/hr-run-button.png)](./media/luis-tutorial-batch-testing/hr-run-button.png#lightbox)
+
+7. Vyberte **zobrazit výsledky**.
+
+## <a name="review-entity-batch-results"></a>Zkontrolujte výsledky entit služby batch
+Grafu se otevře s všechny záměry správně předpovědět. Přejděte dolů na pravé straně filtru najít entitu predikcí ohlásí chybu. 
+
+1. Vyberte **úlohy** entity ve filtru.
+
+    ![Predikce entity ohlásí chybu ve filtru](./media/luis-tutorial-batch-testing/hr-entities-filter-errors.png)
+
+    Graf se změny zobrazily predikcí entity. 
+
+2. Vyberte **falešně negativní** v nižší, zůstane kvadrantu grafu. Pak pomocí klávesnice kombinaci CTRL + E přepněte do zobrazení tokenu. 
+
+    [ ![Token zobrazení entity predikcí](./media/luis-tutorial-batch-testing/token-view-entities.png)](./media/luis-tutorial-batch-testing/token-view-entities.png#lightbox)
+    
+    Recenzování projevy pod grafem odhalí konzistentní chyba, pokud název úlohy obsahuje `SQL`. Kontrola příklad projevy a seznam úloh frázi, SQL je jen jednou a pouze jako součást názvu větší úlohy `sql/oracle database administrator`.
+
+## <a name="fix-the-app-based-on-entity-batch-results"></a>Oprava aplikace na základě výsledků entity batch
+Oprava aplikace vyžaduje LUIS správně určit variant úloh SQL. Pro opravu několika způsoby. 
+
+* Explicitně přidáte další příklad projevy, které používají SQL a označovat pomocí popisků těchto slov jako entita úlohy. 
+* Explicitně přidáte do seznamu slovní spojení více úloh SQL
+
+Tyto úlohy jsou ponechána musíte udělat.
+
+Přidávání [vzor](luis-concept-patterns.md) před entity správně očekává se, že se chystáte tento problém vyřešit. Je to proto, že vzor nebudou odpovídat, dokud se zjistí všechny entity ve vzoru. 
 
 ## <a name="what-has-this-tutorial-accomplished"></a>Co má provést v tomto kurzu?
-Tato aplikace přesnost předpovědi zvýšila o nalezení chyby v dávce a opravu modelu tak, že přidáte další příklad projevy správné záměr a školení. 
+Nalezení chyby v dávce a opravu modelu se zvýšila přesnost předpovědi aplikace. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 Pokud už aplikaci LUIS nepotřebujete, odstraňte ji. V nabídce vlevo nahoře vyberte **Moje aplikace**. Vyberte tři tečky **...**  napravo od názvu aplikace v seznamu aplikací vyberte **odstranit**. V automaticky otevíraném dialogovém okně **Delete app?** (Odstranit aplikaci?) vyberte **Ok**.

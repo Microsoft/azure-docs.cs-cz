@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/02/2018
 ms.author: maheshu
-ms.openlocfilehash: 701fe17869d6e7744751d80330422ea47361b411
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: ff2659ed7dbdb21bccb8b5858d946b47951e40cc
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36216136"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048929"
 ---
 # <a name="enable-password-hash-synchronization-to-azure-active-directory-domain-services"></a>Povolení synchronizace hodnot hash hesel do služby Azure Active Directory Domain Services
 V předchozích úlohách jste povolili službu Azure Active Directory Domain Services pro tenanta služby Azure Active Directory (Azure AD). Další úlohou je povolení synchronizace hodnot hash hesel požadovaných pro ověřování protokolů NTLM (NT LAN Manager) a Kerberos do služby Azure AD Domain Services. Po nastavení synchronizace hodnot hash hesel se uživatelé můžou přihlásit ke spravované doméně s použitím podnikových přihlašovacích údajů.
@@ -78,7 +78,7 @@ Tyto pokyny je nutné poskytnout uživatelům, aby si mohli změnit hesla:
 Několik minut poté, co si změníte heslo, je možné používat ve službě Azure Active Directory Domain Services nové heslo. Po přibližně 20 minutách se můžete přihlašovat k počítačům připojeným k spravované doméně pomocí nově změněného hesla.
 
 ## <a name="related-content"></a>Související obsah
-* [Postup aktualizace vlastního hesla](../active-directory/active-directory-passwords-update-your-own-password.md)
+* [Postup aktualizace vlastního hesla](../active-directory/user-help/active-directory-passwords-update-your-own-password.md)
 * [Začínáme se správou hesel v Azure AD](../active-directory/authentication/quickstart-sspr.md)
 * [Povolení synchronizace hodnot hash hesel do služby Azure Active Directory Domain Services u synchronizovaného tenanta Azure AD](active-directory-ds-getting-started-password-sync-synced-tenant.md)
 * [Správa spravované domény služby Azure Active Directory Domain Services](active-directory-ds-admin-guide-administer-domain.md)

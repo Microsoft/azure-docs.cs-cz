@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 16b715261329544687fd78ed9c022d7392cc32d9
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: e775ed9d918e53b8381a010691c679d80e7dd216
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37901472"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044046"
 ---
 # <a name="tutorial-use-a-linux-vm-managed-service-identity-msi-to-access-azure-key-vault"></a>Kurz: Použití identity spravované služby (MSI) na virtuálním počítači s Linuxem pro přístup k Azure Key Vault 
 
@@ -51,7 +51,7 @@ V tomto kurzu vytvoříme nový virtuální počítač s Linuxem. MSI také mů�
 2. Vyberte **Compute** a potom vyberte **Ubuntu Server 16.04 LTS**.
 3. Zadejte informace o virtuálním počítači. V poli **Typ ověřování** vyberte **Veřejný klíč SSH** nebo **Heslo**. Vytvořené přihlašovací údaje umožňují přihlásit se k virtuálnímu počítači.
 
-    ![Text k alternativnímu obrázku](../media/msi-tutorial-linux-vm-access-arm/msi-linux-vm.png)
+    ![Text k alternativnímu obrázku](media/msi-tutorial-linux-vm-access-arm/msi-linux-vm.png)
 
 4. U virtuálního počítače v rozevíracím seznamu zvolte **Předplatné**.
 5. Pokud chcete vybrat novou **skupinu prostředků**, ve které chcete vytvořit virtuální počítač, zvolte **Vytvořit novou**. Jakmile budete hotovi, klikněte na **OK**.
@@ -63,10 +63,10 @@ Funkce MSI na virtuálním počítači umožňuje získat z Azure AD přístupov
 
 1. Vyberte **virtuální počítač**, na kterém chcete povolit MSI.
 2. Na navigačním panelu vlevo klikněte na **Konfigurace**.
-3. Zobrazí se **Identita spravované služby**. Pokud chcete funkci MSI zaregistrovat a povolit, vyberte **Ano**. Pokud ji chcete zakázat, vyberte Ne.
+3. Zobrazí se **Identita spravované služby**. Pokud chcete MSI zaregistrovat a povolit, vyberte **Ano**. Pokud ji chcete zakázat, zvolte Ne.
 4. Nezapomeňte konfiguraci uložit kliknutím na **Uložit**.
 
-    ![Text k alternativnímu obrázku](../media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
+    ![Text k alternativnímu obrázku](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 
 ## <a name="grant-your-vm-access-to-a-secret-stored-in-a-key-vault"></a>Udělení přístupu virtuálnímu počítači k tajnému kódu uloženému ve službě Key Vault  
 
@@ -83,7 +83,7 @@ Napřed potřebujete vytvořit trezor klíčů a pak k němu udělíte přístup
 7. Kliknutím na **OK** dokončete přidání nové zásady přístupu. Kliknutím na **OK** dokončete výběr zásady přístupu. 
 8. Kliknutím na **Vytvořit** dokončete vytvoření trezoru klíčů. 
 
-    ![Text k alternativnímu obrázku](../media/msi-tutorial-windows-vm-access-nonaad/msi-blade.png)
+    ![Text k alternativnímu obrázku](../managed-service-identity/media/msi-tutorial-windows-vm-access-nonaad/msi-blade.png)
 
 Potom přidejte do trezoru klíčů tajný kód, abyste ho mohli později načíst kódem spuštěným na vašem virtuálním počítači: 
 

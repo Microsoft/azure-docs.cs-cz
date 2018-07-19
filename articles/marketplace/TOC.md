@@ -28,14 +28,6 @@
 ### Podpora  
 #### [Podpora pro Azure Marketplace a AppSource](./support-azure-marketplace.md)  
 
-### Průvodci publikováním  
-#### [Konzultační služby pro Azure Marketplace](consulting-services.md)  
-#### [Technický průvodce publikováním aplikací SaaS na Azure Marketplace](marketplace-saas-applications-technical-publishing-guide.md) 
-#### [Povolení zkušební verze na Marketplace s využitím Azure Active Directory](./enable-trial-using-azure-ad.md)  
-
-### [Rozvoj vašeho podnikání prostřednictvím marketplace](./grow-your-business-with-azure-marketplace.md)  
-#### [Upřednostňovaná řešení](./preferred-solutions.md) 
-
 ## [Portál Cloud Partner](./cloud-partner-portal/cloud-partner-portal-what-is-the-cloud-partner-portal.md)  
 
 ## Zdroje a prostředky  

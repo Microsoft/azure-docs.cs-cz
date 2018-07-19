@@ -101,7 +101,7 @@
     - name: Požadavky na zákaznická data
       href: time-series-insights-customer-data-requests.md
     - name: Plány Azure do budoucna
-      href: 'https://azure.microsoft.com/roadmap/?category=internet-of-things'
+      href: 'https://azure.microsoft.com/roadmap/?category=iot'
     - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/time-series-insights/'
     - name: Cenová kalkulačka

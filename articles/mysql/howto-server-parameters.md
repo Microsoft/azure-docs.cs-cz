@@ -1,6 +1,6 @@
 ---
-title: Postup konfigurace serveru parametry v databáze Azure pro databázi MySQL
-description: Tento článek popisuje, jak nakonfigurovat parametry serveru MySQL v Azure Database pro databázi MySQL pomocí portálu Azure.
+title: Postup konfigurace parametrů serveru ve službě Azure Database for MySQL
+description: Tento článek popisuje, jak nakonfigurovat parametry serveru MySQL ve službě Azure Database for MySQL pomocí webu Azure portal.
 services: mysql
 author: ajlam
 ms.author: andrela
@@ -8,38 +8,39 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: 32414cb034bf6ee95a284021111759959054c00e
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.date: 07/18/2018
+ms.openlocfilehash: 686db4dc15eb42abead3eef6798ed2b83e248811
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35267301"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136447"
 ---
-# <a name="how-to-configure-server-parameters-in-azure-database-for-mysql-by-using-the-azure-portal"></a>Postup konfigurace serveru parametry v Azure Database pro databázi MySQL pomocí portálu Azure
+# <a name="how-to-configure-server-parameters-in-azure-database-for-mysql-by-using-the-azure-portal"></a>Postup konfigurace parametrů serveru ve službě Azure Database for MySQL pomocí webu Azure portal
 
-Azure databáze pro databázi MySQL podporuje konfiguraci některé parametry serveru. Tento článek popisuje, jak nakonfigurovat tyto parametry pomocí portálu Azure. Ne všechny parametry serveru můžete upravit. 
+Azure Database for MySQL podporuje konfiguraci některé parametry serveru. Tento článek popisuje, jak nakonfigurovat tyto parametry s využitím webu Azure portal. Ne všechny parametry serveru je možné upravit.
 
-## <a name="navigate-to-server-parameters-on-azure-portal"></a>Přejděte na parametry serveru, na portálu Azure
-1. Přihlaste se k portálu Azure a potom vyhledejte vaší databázi Azure pro server databáze MySQL.
-2. V části **nastavení** klikněte na tlačítko **parametry serveru** chcete otevřít stránku parametry Server pro databázi Azure pro databázi MySQL.
-![Stránka parametry server portálu Azure](./media/howto-server-parameters/auzre-portal-server-parameters.png)
-3. Najděte všechna nastavení, které je potřeba upravit. Zkontrolujte **popis** sloupec pochopit účel a povolené hodnoty. 
-![Zobrazení výčtu rozevírací dolů](./media/howto-server-parameters/3-toggle_parameter.png)
+## <a name="navigate-to-server-parameters-on-azure-portal"></a>Přejděte do parametrů serveru na webu Azure portal
+
+1. Přihlaste se k webu Azure portal a potom najděte váš server Azure Database for MySQL.
+2. V části **nastavení** klikněte na tlačítko **parametry serveru** otevřete stránku parametry serveru pro Azure Database for MySQL server.
+![Stránka parametry Azure portálový server](./media/howto-server-parameters/auzre-portal-server-parameters.png)
+3. Vyhledejte nastavení, které je potřeba upravit. Zkontrolujte **popis** sloupce, které vám pomohou pochopit účel a povolených hodnot.
+![Zobrazení výčtu rozevírací seznam](./media/howto-server-parameters/3-toggle_parameter.png)
 4. Klikněte na tlačítko **Uložit** uložte provedené změny.
 ![Uložit nebo zahodit změny](./media/howto-server-parameters/4-save_parameters.png)
-5. Pokud jste uložili nové hodnoty pro parametry, můžete vždy obnovit vše zpět na výchozí hodnoty výběrem **resetovat všechny výchozí**.
-![Všechny resetovat na výchozí](./media/howto-server-parameters/5-reset_parameters.png)
+5. Pokud jste uložili nové hodnoty pro parametry, můžete se vždycky vrátit vše zpět na výchozí hodnoty tak, že vyberete **Resetovat vše na výchozí**.
+![Resetovat vše na výchozí](./media/howto-server-parameters/5-reset_parameters.png)
 
+## <a name="list-of-configurable-server-parameters"></a>Seznam konfigurovatelných server parametrů
 
-## <a name="list-of-configurable-server-parameters"></a>Seznam parametrů konfigurovat server
+Seznam parametrů podporovaný server s neustále roste. Na kartě parametrů serveru na webu Azure portal k získání definice a konfigurace parametrů serveru na základě požadavků aplikace.
 
-Seznam parametrů podporovaných serveru stále roste. Na kartě Parametry server na portálu Azure a získat definici konfigurace parametry serveru, na základě požadavků vaší aplikace. 
+## <a name="non-configurable-server-parameters"></a>Parametry Nekonfigurovatelné serveru
 
-## <a name="nonconfigurable-server-parameters"></a>Parametry Nonconfigurable serveru
-InnoDB fondu vyrovnávací paměti a maximální počet připojení nejsou konfigurovatelné a vázanou na vaše [cenová úroveň](concepts-service-tiers.md). 
+InnoDB vyrovnávací paměti fondu a maximální počet připojení nejsou konfigurovatelné a vázané na vaše [cenovou úroveň](concepts-service-tiers.md).
 
-|**Cenová úroveň**| **Výpočetní generování**|**vCore(s)**|**Fond InnoDB vyrovnávací paměti (MB)**| **Maximální počet připojení**|
+|**Cenová úroveň**| **Generace výpočetních funkcí**|**počet virtuálních jader:**|**Fond vyrovnávacích pamětí InnoDB (MB)**| **Maximální počet připojení**|
 |---|---|---|---|--|
 |Basic| Gen 4| 1| 1024| 50|
 |Basic| Gen 4| 2| 2560| 100|
@@ -64,12 +65,48 @@ Tyto další server parametry nejsou konfigurovatelné v systému:
 
 |**Parametr**|**Pevná hodnota**|
 | :------------------------ | :-------- |
-|innodb_file_per_table v základní vrstvě|OFF|
+|innodb_file_per_table v úrovni Basic|OFF|
 |innodb_flush_log_at_trx_commit|1|
 |sync_binlog|1|
 |innodb_log_file_size|512MB|
 
 Další parametry serveru, které zde nejsou uvedeny jsou nastaveny na MySQL out-of-box výchozí hodnoty pro verze [5.7](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html) a [5.6](https://dev.mysql.com/doc/refman/5.6/en/innodb-parameters.html).
 
+## <a name="working-with-the-time-zone-parameter"></a>Práce s parametrem časového pásma
+
+### <a name="populating-the-time-zone-tables"></a>Naplnění tabulek časové pásmo
+
+Časové pásmo tabulky na vašem serveru je možné naplnit s voláním `az_load_timezone` uloženou proceduru z některého nástroje, například na příkazovém řádku MySQL nebo MySQL Workbench.
+
+> [!NOTE]
+> Pokud používáte `az_load_timezone` příkaz z aplikace MySQL Workbench, budete muset nejprve vypnout režim bezpečného aktualizace pomocí `SET SQL_SAFE_UPDATES=0;`.
+
+```sql
+CALL mysql.az_load_timezone();
+```
+
+Chcete-li zobrazit hodnoty dostupné časové pásmo, spusťte následující příkaz:
+
+```sql
+SELECT name FROM mysql.time_zone_name;
+```
+
+### <a name="setting-the-global-level-time-zone"></a>Nastavení na globální úrovni časové pásmo
+
+Lze nastavit na globální úrovni časové pásmo **parametry serveru** stránky na webu Azure Portal. Níže Nastaví globální časovém pásmu na hodnotu "US / Tichomoří".
+
+![Parametr časového pásma set](./media/howto-server-parameters/timezone.png)
+
+### <a name="setting-the-session-level-time-zone"></a>Nastavení časového pásma úrovni relace
+
+Relace spuštěním můžete nastavit úroveň časového pásma `SET time_zone` z některého nástroje, například na příkazovém řádku MySQL nebo MySQL Workbench. Následující příklad nastaví časové pásmo **US / Tichomoří** časové pásmo.
+
+```sql
+SET time_zone = 'US/Pacific';
+```
+
+Naleznete v dokumentaci MySQL pro [funkce data a času](https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_convert-tz).
+
 ## <a name="next-steps"></a>Další postup
-- [Knihovny připojení pro databázi Azure pro databázi MySQL](concepts-connection-libraries.md).
+
+- [Připojení knihoven pro službu Azure Database for MySQL](concepts-connection-libraries.md).

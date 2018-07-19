@@ -26,6 +26,10 @@
   items:
     - name: Přehled třídy Event Processor Host
       href: event-hubs-event-processor-host.md
+    - name: Filtry připojení IP
+      href: event-hubs-ip-filtering.md
+    - name: Koncové body služby virtuální sítě
+      href: event-hubs-service-endpoints.md
     - name: Průvodce programováním
       href: event-hubs-programming-guide.md
     - name: Integrace se službou Event Grid
@@ -150,7 +154,7 @@
     - name: Nejčastější dotazy
       href: event-hubs-faq.md
     - name: Plány Azure do budoucna
-      href: 'https://azure.microsoft.com/roadmap/?category=internet-of-things'
+      href: 'https://azure.microsoft.com/roadmap/?category=iot'
     - name: Postup výuky
       href: 'https://azure.microsoft.com/documentation/learning-paths/event-hubs/'
     - name: Ceny

@@ -1,5 +1,5 @@
 ---
-title: Rychlý start – nasazení aplikace do služby Azure Service Fabric sítě | Dokumentace Microsoftu
+title: Rychlý start – vytvoření a nasazení webové aplikace do Azure Service Fabric mřížky | Dokumentace Microsoftu
 description: V tomto rychlém startu se dozvíte, jak vytvořit web ASP.NET Core a její publikování do Azure Service Fabric mřížky.
 services: service-fabric-mesh
 documentationcenter: .net
@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/12/2018
+ms.date: 07/17/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 3ce40c87bbdd2f032b399b96a3021781e0dec341
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: ad8920ac01ce62eb676b495dcde2aae6b076cbe2
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39091963"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39125499"
 ---
 # <a name="quickstart-create-and-deploy-a-web-app-to-azure-service-fabric-mesh"></a>Rychlý start: Vytvoření a nasazení webové aplikace do Azure Service Fabric mřížky
 
@@ -46,11 +46,11 @@ Ujistěte se, že **vytvořit adresář pro řešení** je zaškrtnuté políčk
 
 ### <a name="create-a-service"></a>Vytvoření služby
 
-Po kliknutí na **OK**, **nová služba Service Fabric** se zobrazí dialogové okno. Vyberte **ASP.NET Core** typ projektu, ujistěte se, že **Container OS** je nastavena na **Windows** a stiskněte klávesu **OK** vytvořit projekt ASP.NET Core . 
+Po kliknutí na **OK**, **nová služba Service Fabric** se zobrazí dialogové okno. Vyberte **ASP.NET Core** typ projektu, ujistěte se, že **Container OS** je nastavena na **Windows** a klikněte na tlačítko **OK** vytvořit projekt ASP.NET Core . 
 
 ![Visual studio Service Fabric mřížky dialogové okno nového projektu](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-new-service-fabric-service.png)
 
-**Nová webová aplikace ASP.NET Core** se zobrazí dialogové okno. Vyberte **webovou aplikaci** a potom stiskněte klávesu **OK**.
+**Nová webová aplikace ASP.NET Core** se zobrazí dialogové okno. Vyberte **webovou aplikaci** a potom klikněte na tlačítko **OK**.
 
 ![Visual studio nové aplikace ASP.NET core](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-new-aspnetcore-app.png)
 
@@ -58,11 +58,11 @@ Visual Studio vytvoří projekt aplikace Service Fabric mřížky a projekt ASP.
 
 ## <a name="build-and-publish-to-your-local-cluster"></a>Vytvářejte a publikujte do místního clusteru
 
-Image Dockeru se automaticky vytvořená a publikovaná na místní cluster, co nejdříve po načtení projektu. Tento proces může chvíli trvat. Můžete sledovat průběh nástroje Service Fabric v **výstup** podokně, pokud chcete. Vyberte **Service Fabric Tools** položce v podokně. Můžete pokračovat v práci při nasazení image dockeru.
+Image Dockeru je automaticky vytvořená a publikovaná na místní cluster poté, co váš projekt načten. Tento proces může chvíli trvat. Můžete sledovat průběh nástroje Service Fabric v **výstup** okno, pokud chcete, aby tak, že vyberete **Service Fabric Tools** položky v **výstup** rozevírací okno. Můžete pokračovat v práci při nasazení image dockeru.
 
-Po vytvoření projektu stiskněte **F5** ladění služby místně. Po dokončení místní nasazení a váš projekt je spuštěná sada Visual Studio, otevře se okno prohlížeče se ukázkové webové stránky.
+Po vytvoření projektu klikněte na tlačítko **F5** ladění služby místně. Po dokončení místní nasazení a váš projekt je spuštěná sada Visual Studio, otevře se okno prohlížeče se ukázkové webové stránky.
 
-Až budete mít procházení v nasazované službě, můžete zastavit ladění váš projekt stisknutím kombinace kláves **Shift + F5** v sadě Visual Studio.
+Až budete mít procházení nasazené služby, zastavení ladění váš projekt stisknutím kombinace kláves **Shift + F5** v sadě Visual Studio.
 
 ## <a name="publish-to-azure"></a>Publikování aplikací do Azure
 
@@ -76,30 +76,30 @@ Zobrazí se **publikovat aplikaci Service Fabric** dialogového okna.
 
 Vyberte váš účet a předplatné Azure. Zvolte **umístění**. Tento článek používá **USA – východ**.
 
-V části **skupiny prostředků**vyberte  **\<vytvořit novou skupinu prostředků... >**. Dialogové okno se zobrazí, pokud vytvoříte novou skupinu prostředků. Tento článek používá **USA – východ** umístění a název skupiny **sfmeshTutorial1RG** (Pokud má vaše organizace více uživatelů pomocí stejného předplatného, zvolte jedinečný název skupiny).  Stisknutím klávesy **vytvořit** vytvořte skupinu prostředků a vraťte se do dialogového okna pro publikování.
+V části **skupiny prostředků**vyberte  **\<vytvořit novou skupinu prostředků... >**. **Vytvořit skupinu prostředků** se zobrazí dialogové okno. Nastavte **název skupiny prostředků** a **umístění**.  Tento rychlý start využívá **USA – východ** umístění a název skupiny **sfmeshTutorial1RG** (Pokud má vaše organizace více uživatelů pomocí stejného předplatného, zvolte název skupiny prostředků jedinečný).  Klikněte na tlačítko **vytvořit** vytvořte skupinu prostředků a vraťte se do dialogového okna pro publikování.
 
 ![Visual studio Service Fabric mřížky prostředku skupiny dialogové okno Nový](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-publish-new-resource-group-dialog.png)
 
-Zpátky **publikovat aplikaci Service Fabric** dialogového okna, v části **Azure Container Registry**vyberte  **\<vytvořit nový registr kontejneru... >**. V **vytvoření registru kontejneru** dialogového okna, použijte jedinečný název pro **název registru kontejneru**. Zadejte **umístění** (Tento kurz používá **USA – východ**). Vyberte **skupiny prostředků** , kterou jste vytvořili v předchozím kroku v rozevíracím seznamu, například **sfmeshTutorial1RG**. Nastavte **SKU** k **základní** a potom stiskněte klávesu **vytvořit** se vraťte do dialogového okna pro publikování.
+Zpátky **publikovat aplikaci Service Fabric** dialogového okna, v části **Azure Container Registry**vyberte  **\<vytvořit nový registr kontejneru... >**. V **vytvoření registru kontejneru** dialogového okna, použijte jedinečný název pro **název registru kontejneru**. Zadejte **umístění** (v tomto rychlém startu používá **USA – východ**). Vyberte **skupiny prostředků** , kterou jste vytvořili v předchozím kroku v rozevíracím seznamu, například **sfmeshTutorial1RG**. Nastavte **SKU** k **základní** a potom klikněte na tlačítko **vytvořit** se vraťte do dialogového okna pro publikování.
 
 Pokud dojde k chybě, která není zaregistrovaný poskytovatel prostředků pro vaše předplatné, můžete ho zaregistrovat. Nejprve zjistěte, zda je k dispozici pro vaše předplatné poskytovatele prostředků:
 
 ```Powershell
+Connect-AzureRmAccount
 Get-AzureRmResourceProvider -ListAvailable
 ```
 
 Pokud zprostředkovatel registru kontejneru (`Microsoft.ContainerRegistry`) je k dispozici, zaregistrujte ho z prostředí Powershell:
 
 ```Powershell
-Connect-AzureRmAccount
 Register-AzureRmResourceProvider -ProviderNamespace Microsoft.ContainerRegistry
 ```
 
 ![Visual studio Service Fabric mřížky prostředku skupiny dialogové okno Nový](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-publish-new-container-registry-dialog.png)
 
-V dialogovém okně Publikovat, stiskněte **publikovat** tlačítko pro nasazení aplikace Service Fabric sítě do Azure.
+V dialogovém okně Publikovat, klikněte na tlačítko **publikovat** tlačítko pro nasazení aplikace Service Fabric sítě do Azure.
 
-Při prvním publikování do Azure, převede se image dockeru pro Azure Container Registry (ACR) který trvá určitou dobu v závislosti na velikosti image. Další publikuje stejného projektu bude rychlejší. Můžete monitorovat průběh nasazení tak, že vyberete **Service Fabric Tools** podokno v sadě Visual Studio **výstup** okna. Po dokončení nasazení **Service Fabric Tools** výstupu se zobrazí IP adresa a port aplikace ve formuláři adresu URL.
+Při prvním publikování do Azure, převede se image dockeru pro Azure Container Registry (ACR) který trvá určitou dobu v závislosti na velikosti image. Další publikuje stejného projektu bude rychlejší. Můžete monitorovat průběh nasazení tak, že vyberete **Service Fabric Tools** v sadě Visual Studio **výstup** rozevírací okno. Po dokončení nasazení **Service Fabric Tools** výstupu se zobrazí IP adresa a port aplikace ve formuláři adresu URL.
 
 ```json
 Packaging Application...
@@ -110,23 +110,27 @@ Deploying application to remote endpoint...
 The application was deployed successfully and it can be accessed at http://...
 ```
 
-Otevřete webový prohlížeč a přejděte na adresu URL zobrazíte webu běžícího v Azure.
+Otevřete webový prohlížeč a přejděte na adresu URL zobrazíte webu běžícího v Azure:
+
+![Spuštění aplikace Service Fabric mřížky Web](media/service-fabric-mesh-tutorial-deploy-dotnetcore/deployed-web-project.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, odstraňte všechny prostředky, které jste vytvořili pro účely tohoto rychlého startu. Protože jste vytvořili novou skupinu prostředků pro hostování prostředky služby ACR i sítě pro Service Fabric, můžete bezpečně odstranit tuto skupinu prostředků, což je snadný způsob, jak odstranit všechny prostředky s ním spojená.
+Pokud už je nepotřebujete, odstraňte všechny prostředky, které jste vytvořili pro účely tohoto rychlého startu. Protože jste vytvořili novou skupinu prostředků pro hostování prostředky služby ACR i sítě pro Service Fabric, můžete bezpečně odstranit tuto skupinu prostředků, která je snadný způsob, jak odstranit všechny prostředky s ním spojená.
 
 ```azurecli
 az group delete --resource-group sfmeshTutorial1RG
 ```
 
 ```powershell
+Connect-AzureRmAccount
 Remove-AzureRmResourceGroup -Name sfmeshTutorial1RG
 ```
 
 Alternativně můžete odstranit skupinu prostředků [z portálu Azure portal](https://portal.azure.com).
 
 ## <a name="next-steps"></a>Další postup
+
 Další informace o vytvoření a nasazení aplikace Service Fabric mřížky, dál najdete v tomto kurzu.
 > [!div class="nextstepaction"]
-> [Vytvoření a nasazení s více službami webové aplikace](service-fabric-mesh-tutorial-create-dotnetcore.md)
+> [Vytvářet, ladit a nasadit víc služeb webovou aplikaci se Service Fabric](service-fabric-mesh-tutorial-create-dotnetcore.md)

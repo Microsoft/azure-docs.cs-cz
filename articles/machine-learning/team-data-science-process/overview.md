@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2017
 ms.author: deguhath
-ms.openlocfilehash: 474efbf3a9255e4699c27c6b0bfcc30ff54c4b45
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: e44b21530cb3db8a2ba354ef19ebb3d2c557ecae
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971447"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39125755"
 ---
 # <a name="what-is-the-team-data-science-process"></a>Co je vědecké zpracování týmových dat?
 
@@ -67,7 +67,7 @@ Cíle, úkoly a artefakty dokumentaci pro každou fázi životního cyklu v TDSP
 
 Následující diagram představuje zobrazení mřížky úloh (modře) a artefakty (zeleně), které jsou spojené s každou fázi životního cyklu (na vodorovné ose) pro tyto role (na svislé ose). 
 
-![TDSP-role a úlohy](./media/overview/tdsp-tasks-by-roles.png)
+[ ![TDSP-role a úlohy](./media/overview/tdsp-tasks-by-roles.png) ](./media/overview/tdsp-tasks-by-roles.png#lightbox)
 
 ## <a name="standardized-project-structure"></a>Struktura standardizované projektu
 
@@ -81,7 +81,7 @@ Poskytujeme šablony pro strukturu složek a požadované dokumenty ve standardn
 - metriky výkonu modelu, jako je například křivky roc s více TŘÍDAMI nebo MSE
 
 
-![Adresáře TDSP](./media/overview/tdsp-dir-structure.png)
+[ ![Adresáře TDSP](./media/overview/tdsp-dir-structure.png) ](./media/overview/tdsp-dir-structure.png#lightbox)
 
 Struktura adresářů můžete naklonovat z [Githubu](https://github.com/Azure/Azure-TDSP-ProjectTemplate).
 
@@ -98,7 +98,7 @@ Analýzy a úložné infrastruktuře může být v cloudu nebo místně. To je, 
 
 Tady je příklad sdílení různých komponent infrastruktury cloudové analýzy a práce v několika projektech týmu.
 
-![Infrastruktura TDSP](./media/overview/tdsp-analytics-infra.png)
+[ ![Infrastruktura TDSP](./media/overview/tdsp-analytics-infra.png) ](./media/overview/tdsp-analytics-infra.png#lightbox) 
 
 
 ## <a name="tools-and-utilities-for-project-execution"></a>Nástroje pro spuštění projektu

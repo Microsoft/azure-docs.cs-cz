@@ -9,12 +9,12 @@ editor: cgronlun
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 07/17/2018
-ms.openlocfilehash: d38148181aa18404e45f6efc029117573570e6bc
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 45cb9590e6dd0d8260f6e63b80caeca894f0fd44
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/18/2018
-ms.locfileid: "39115421"
+ms.locfileid: "39126030"
 ---
 # <a name="configure-a-domain-joined-hdinsight-cluster-by-using-azure-active-directory-domain-services"></a>Konfigurace clusteru HDInsight připojené k doméně pomocí Azure Active Directory Domain Services
 
@@ -52,7 +52,7 @@ Je jednodušší umístit instancí Azure AD DS a HDInsight cluster ve stejné v
 Když vytvoříte cluster HDInsight připojený k doméně, je nutné zadat následující parametry:
 
 - **Název domény**: název domény, který je spojen s Azure AD DS. Příkladem je contoso.onmicrosoft.com.
-- **Uživatelské jméno domény**: účet služby ve spravované doméně, kterou jste vytvořili v předchozí části. Příklad: hdiadmin@contoso.onmicrosoft.com. Tento uživatel domény, bude správce tohoto clusteru HDInsight.
+- **Uživatelské jméno domény**: účet služby v Azure přidá řadiče domény spravované domény, který jste vytvořili v předchozí části. Příklad: hdiadmin@contoso.onmicrosoft.com. Tento uživatel domény, bude správce tohoto clusteru HDInsight.
 - **Heslo domény**: heslo účtu služby.
 - **Organizační jednotka**: rozlišující název organizační jednotky, kterou chcete použít s clusterem HDInsight. Příkladem je organizační jednotky = HDInsightOU, DC = contoso, DC = onmicrosoft, DC = com. Pokud této organizační jednotky buď neexistuje, pokusí se HDInsight cluster vytvořit organizační jednotku s použitím oprávnění, která má účet služby. Například pokud účet služby je ve skupině Správci služby Azure AD DS, má správná oprávnění k vytvoření organizační jednotky. V opačném případě může musíte nejprve vytvořit organizační jednotku a udělit účtu služby, které plnou kontrolu nad dané organizační jednotky. Další informace najdete v tématu [vytvoření OU ve spravované doméně Azure AD DS](../../active-directory-domain-services/active-directory-ds-admin-guide-create-ou.md).
 

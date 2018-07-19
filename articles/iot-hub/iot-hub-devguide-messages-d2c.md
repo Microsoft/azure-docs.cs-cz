@@ -1,61 +1,61 @@
 ---
-title: Pochopení zasílání zpráv typu zařízení cloud Azure IoT Hub | Microsoft Docs
-description: Příručka vývojáře - použití službou IoT Hub zasílání zpráv typu zařízení cloud. Obsahuje informace o odeslání telemetrie a bez telemtry dat a doručování zpráv pomocí směrování.
+title: Vysvětlení, zasílání zpráv typu zařízení cloud Azure IoT Hub | Dokumentace Microsoftu
+description: Průvodce pro vývojáře – jak používat zasílání zpráv typu zařízení cloud pomocí služby IoT Hub. Obsahuje informace o odesílání telemetrických dat a jiných telemtry dat a doručování s využitím směrování zpráv.
 author: dominicbetts
 manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 01/29/2018
+ms.date: 07/18/2018
 ms.author: dobett
-ms.openlocfilehash: 6096d726d7a00a4ddf8047edeebb74ab3f151e51
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: be87b00f27f0d0b25cd77a0634ab1c653a85e5ac
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34808253"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39126438"
 ---
 # <a name="send-device-to-cloud-messages-to-iot-hub"></a>Odesílání zpráv typu zařízení cloud do služby IoT Hub
 
-Odesílání telemetrie časové řady a výstrahy z vašich zařízení pro vaše řešení back-end, odesílání zpráv typu zařízení cloud ze zařízení do služby IoT hub. Informace o dalších zařízení cloud možnosti podporované službou IoT Hub, najdete v části [pokyny komunikace zařízení cloud][lnk-d2c-guidance].
+K odesílání telemetrických dat časových řad a výstrahy z vašich zařízení k back-endem řešení, odesílání zpráv typu zařízení cloud ze zařízení do služby IoT hub. Informace o dalších typu zařízení cloud možností podporovaných službou IoT Hub, najdete v článku [doprovodných materiálech ke komunikaci typu zařízení cloud][lnk-d2c-guidance].
 
-Odesílání zpráv typu zařízení cloud prostřednictvím koncového bodu směřujících zařízení (**/devices/ {deviceId} / zprávy/události**). Pravidla směrování a směrování zpráv do jednoho z koncových bodů služby přístupem ve službě IoT hub. Pravidla směrování použijte k určení, kam je směrovat hlavičky a tělo zprávy typu zařízení cloud. Ve výchozím nastavení, zprávy jsou směrovány na předdefinovaný koncový bod služby směřujících (**zprávy nebo události**), který je kompatibilní s [Event Hubs][lnk-event-hubs]. Proto můžete použít standardní [integrace služby Event Hubs a sady SDK] [ lnk-compatible-endpoint] pro příjem zpráv typu zařízení cloud ve vašem back-end řešení.
+Odesílání zpráv typu zařízení cloud prostřednictvím koncového bodu připojeného k zařízení (**/devices/ {deviceId} / zpráv/události**). Pravidla směrování a směrování zpráv do jeden z koncových bodů určených pro služby ve službě IoT hub. Pravidla směrování použijte k určení, kam chcete směrovat je hlavičky a tělo zprávy typu zařízení cloud. Ve výchozím nastavení, zprávy jsou směrovány na integrovaný koncový bod služby přístupem (**zpráv/události**), která je kompatibilní s [Event Hubs][lnk-event-hubs]. Proto můžete použít standardní [integraci služby Event Hubs a sady SDK] [ lnk-compatible-endpoint] pro příjem zpráv typu zařízení cloud v back-endem řešení.
 
-IoT Hub implementuje zařízení cloud zasílání zpráv pomocí streamování vzorcem zasílání zpráv. Zprávy typu zařízení cloud IoT Hub se více podobají [Event Hubs] [ lnk-event-hubs] *události* než [Service Bus] [ lnk-servicebus] *zprávy* v, aby nedocházelo k velkému počtu událostí předávání prostřednictvím služby, který může číst několik čtečky.
+IoT Hub implementuje zasílání zpráv typu zařízení cloud, pomocí vzoru streamování přenosu zpráv. Zprávy typu zařízení cloud služby IoT Hub se totiž podobá spíš [Event Hubs] [ lnk-event-hubs] *události* než [služby Service Bus] [ lnk-servicebus] *zprávy* v tom, že je k velkému počtu událostí předávání přes službu, kterou si můžete přečíst více čtenářům.
 
-Zařízení cloud zasílání zpráv službou IoT Hub má následující vlastnosti:
+Zařízení cloud zasílání zpráv pomocí služby IoT Hub má následující vlastnosti:
 
-* Zprávy typu zařízení cloud jsou odolné a udržení ve výchozím nastavení služby IoT hub **zprávy nebo události** koncový bod pro až sedm dní.
-* Zprávy typu zařízení cloud může být maximálně 256 KB a mohou být seskupeny do dávky k optimalizaci odešle. Dávky může být maximálně 256 KB.
-* Jak je popsáno v [řízení přístupu ke službě IoT Hub] [ lnk-devguide-security] oddíl, IoT Hub umožňuje na zařízení ověřování a řízení přístupu.
-* IoT Hub můžete vytvořit až 10 vlastní koncové body. Doručování zpráv do koncových bodů podle trasy nakonfigurované ve službě IoT hub. Další informace najdete v tématu [pravidla směrování](iot-hub-devguide-query-language.md#device-to-cloud-message-routes-query-expressions).
-* IoT Hub umožňuje miliony současně připojených zařízení (viz [kvóty a omezení][lnk-quotas]).
-* IoT Hub neumožňuje libovolný dělení. Zprávy typu zařízení cloud jsou rozdělena na oddíly na základě jejich zdrojového **deviceId**.
+* Zprávy typu zařízení cloud jsou trvalé a zachované ve výchozím nastavení služby IoT hub **zpráv/události** koncový bod po dobu až sedmi dnů.
+* Zprávy typu zařízení cloud může obsahovat nejvýše 256 KB a mohou být seskupeny do dávek pro optimalizaci odešle. Dávky může obsahovat nejvýše 256 KB.
+* Jak je vysvětleno v [řízení přístupu ke službě IoT Hub] [ lnk-devguide-security] oddíl služby IoT Hub umožňuje řízení přístupu a ověřování podle zařízení.
+* IoT Hub umožňuje vytvořit až 10 vlastních koncových bodů. Zprávy se doručí do koncových bodů podle trasy nakonfigurované ve službě IoT hub. Další informace najdete v tématu [pravidla směrování](iot-hub-devguide-query-language.md#device-to-cloud-message-routes-query-expressions).
+* IoT Hub umožňuje pomocí miliony současně připojených zařízení (viz [kvóty a omezování][lnk-quotas]).
+* IoT Hub neumožňuje libovolného dělení. Zprávy typu zařízení cloud jsou rozdělené na základě jejich zdrojového **deviceId**.
 
-Další informace o rozdílech mezi IoT Hub a Event Hubs najdete v tématu [porovnání služeb Azure IoT Hub a Azure Event Hubs][lnk-comparison].
+Další informace o rozdílech mezi službou IoT Hub a Event Hubs najdete v tématu [porovnání služeb Azure IoT Hub a Azure Event Hubs][lnk-comparison].
 
-## <a name="send-non-telemetry-traffic"></a>Odesílat provoz telemetrická data
+## <a name="send-non-telemetry-traffic"></a>Posílání provozu bez telemetrie
 
-Kromě telemetrie, často zařízení odesílat zprávy a požadavky, které vyžadují samostatné spuštění a zpracování v back-end řešení. Například kritické výstrahy, které musí spustit určité akci v back-end. Můžete napsat [pravidlo směrování] [ lnk-devguide-custom] k odeslání tyto typy zprávy do koncového bodu vyhrazený pro jejich zpracování na základě buď hlavičku na zprávu nebo hodnotu v textu zprávy.
+Často kromě telemetrická data, zařízení odesílají zprávy a požadavky, které vyžadují samostatné spuštění a zpracování v back-endu řešení. Například kritické výstrahy, které musí spustit konkrétní akci v back-endu. Můžete napsat [pravidlo směrování] [ lnk-devguide-custom] odesílat tyto typy zpráv pro koncový bod vyhrazený pro jejich zpracování na základě záhlaví ve zprávě nebo hodnotu v textu zprávy.
 
-Další informace o nejlepší způsob, jak zpracovat tento druh zpráv najdete v tématu [kurz: postupy zpracování zpráv typu zařízení cloud IoT Hub] [ lnk-d2c-tutorial] kurzu.
+Další informace o nejlepší způsob, jak zpracovat tento druh zpráv, najdete v článku [kurz: postupy zpracování zpráv typu zařízení cloud služby IoT Hub] [ lnk-d2c-tutorial] kurzu.
 
-## <a name="route-device-to-cloud-messages"></a>Směrování zprávy typu zařízení cloud
+## <a name="route-device-to-cloud-messages"></a>Směrování zpráv typu zařízení cloud
 
-Máte dvě možnosti pro směrování zpráv typu zařízení cloud pro vaše serverové aplikace:
+Máte dvě možnosti pro směrování zpráv typu zařízení cloud do back endové aplikace:
 
-* Použijte předdefinovaný [koncový bod kompatibilní s centrem událostí] [ lnk-compatible-endpoint] k back-end aplikace číst zprávy typu zařízení cloud přijaté službou. Další informace o předdefinovaných koncový bod kompatibilní s centrem událostí najdete v tématu [číst zprávy typu zařízení cloud z předdefinovaných koncového bodu][lnk-devguide-builtin].
-* Pravidla směrování se použijte k odesílání zpráv do vlastní koncové body ve službě IoT hub. Vlastní koncové body povolit aplikace back-end umožní číst zprávy typu zařízení cloud pomocí Event Hubs, fronty sběrnice nebo témata Service Bus. Další informace o směrování a vlastní koncové body najdete v tématu [použít vlastní koncové body a pravidla směrování pro zprávy typu zařízení cloud][lnk-devguide-custom].
+* Použít integrovaný [koncový bod kompatibilní s centrem událostí] [ lnk-compatible-endpoint] umožňující back endové aplikace umožní číst zprávy typu zařízení cloud přijaté službou. Další informace o integrovaný koncový bod kompatibilní s centrem událostí, naleznete v tématu [čtení zpráv typu zařízení cloud z integrovaného koncového bodu][lnk-devguide-builtin].
+* Použijte pravidla směrování pro odesílání zpráv do vlastní koncové body služby IoT hub. Vlastní koncové body umožňují vaší back endové aplikace umožní číst zprávy typu zařízení cloud pomocí služby Event Hubs, fronty Service Bus nebo témat sběrnice Service Bus. Další informace o směrování a vlastní koncové body, naleznete v tématu [použití vlastních koncových bodů a pravidel směrování pro zprávy typu zařízení cloud][lnk-devguide-custom].
 
-## <a name="anti-spoofing-properties"></a>Ochranu proti falšování vlastnosti
+## <a name="anti-spoofing-properties"></a>Vlastnosti ochranu proti falšování identity
 
-Chcete-li vyhnout falšování identity ve zpráv typu zařízení cloud, IoT Hub zařízení razítka všechny zprávy s následujícími vlastnostmi:
+Chcete-li vyhnout falšování identity v zpráv typu zařízení cloud, IoT Hub zařízení razítka všechny zprávy s následujícími vlastnostmi:
 
 * **ConnectionDeviceId**
 * **ConnectionDeviceGenerationId**
 * **ConnectionAuthMethod**
 
-První dvě obsahovat **deviceId** a **generationId** původní zařízení dle [vlastnosti identity zařízení][lnk-device-properties].
+První dva obsahují **deviceId** a **generationId** původní zařízení, jak je uvedeno [vlastnosti identity zařízení][lnk-device-properties].
 
 **ConnectionAuthMethod** vlastnost obsahuje objekt serializován do formátu JSON, s následujícími vlastnostmi:
 
@@ -69,15 +69,15 @@ První dvě obsahovat **deviceId** a **generationId** původní zařízení dle 
 
 ## <a name="next-steps"></a>Další postup
 
-Informace o sadách SDK, můžete použít k odesílání zpráv typu zařízení cloud najdete v tématu [SDK služby Azure IoT][lnk-sdks].
+Informace o sadách SDK můžete použít k odesílání zpráv typu zařízení cloud, najdete v části [sad SDK Azure IoT][lnk-sdks].
 
-[Začínáme] [ lnk-get-started] kurzy ukazují, jak k odesílání zpráv typu zařízení cloud ze simulovaného a fyzické zařízení. Další podrobnosti najdete [zpráv typu zařízení cloud proces IoT Hub pomocí trasy] [ lnk-d2c-tutorial] kurzu.
+[Rychlých startů] [ lnk-get-started] ukazují, jak odesílat zprávy typu zařízení cloud ze simulovaných zařízení. Další podrobnosti najdete [zpráv typu zařízení cloud procesu IoT Hubu pomocí tras] [ lnk-d2c-tutorial] kurzu.
 
 [lnk-devguide-builtin]: iot-hub-devguide-messages-read-builtin.md
 [lnk-devguide-custom]: iot-hub-devguide-messages-read-custom.md
 [lnk-comparison]: iot-hub-compare-event-hubs.md
 [lnk-d2c-guidance]: iot-hub-devguide-d2c-guidance.md
-[lnk-get-started]: iot-hub-get-started.md
+[lnk-get-started]: quickstart-send-telemetry-node.md
 
 [lnk-event-hubs]: http://azure.microsoft.com/documentation/services/event-hubs/
 [lnk-servicebus]: http://azure.microsoft.com/documentation/services/service-bus/

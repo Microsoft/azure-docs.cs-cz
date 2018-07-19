@@ -9,12 +9,12 @@ ms.date: 07/12/2018
 ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: 672e27bf53679c52dab8d42a52378aa90eba33cb
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 7c3ce5571c54d6c613114ea49999e450934c8ff4
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/18/2018
-ms.locfileid: "39114306"
+ms.locfileid: "39136194"
 ---
 # <a name="service-fabric-mesh-terminology"></a>Terminologie Service Fabric mřížky
 
@@ -57,17 +57,17 @@ Service Fabric je technologie open source platforma, která na základě několi
 ## <a name="environment-framework-and-deployment-model-support-matrix"></a>Matice podpory prostředí, rozhraní a modelu nasazení
 Různá prostředí mají různé úrovně podpory platformy a modely nasazení. Následující tabulka popisuje podporované architektury a kombinace modelu nasazení.
 
-|Frameworks\Deployment modelu |Model prostředků |Nativní model | Vytvořit|
-|---|---|---|---|
-|Reliable Actors a Reliable Services |Nepodporuje se |Podporováno |Nepodporuje se |
-|Jakékoli architektury nebo jazyka |Podporované v kontejnerech |Podporované jako procesy a v kontejnerech |Podporované v kontejnerech |
+| Typ aplikace | Popisuje | Síť Azure Service Fabric | Clustery Azure Service (libovolný operační systém)| Místní cluster – Windows | Místní cluster – Linux | Místní cluster - Mac | Samostatného clusteru (Windows)
+|---|---|---|---|---|---|---|---|---|---|
+| Aplikace Service Fabric sítě | Model prostředků (YAML a JSON) | Podporováno |Nepodporuje se | Podporováno |Nepodporuje se | Nepodporuje se | Nepodporuje se |
+|Nativní aplikace Service Fabric | Model nativní aplikace (XML) | Nepodporuje se| Podporováno|Podporováno|Podporováno|Podporováno|Podporováno|
 
-Následující tabulka popisuje podporované prostředí a nasazení modelu kombinace.
+Následující tabulka popisuje různé aplikačních modelů a nástrojů, která existuje pro ně pro Service Fabric.
 
-|Environment\Deployment modelu |Model prostředků |Nativní model |Vytvořit |
-|---|---|---|---|
-|Síť Azure Service Fabric |Podporováno |Nepodporuje se|Nepodporuje se |
-|Všechna další prostředí |Podporované (některé prostředky mají požadavky pro práci v prostředí) |Podporováno |Omezená podpora |
+| Typ aplikace | Popisuje | Visual Studio 2017 | Visual Studio 2015 | Eclipse | VS Code | SFCTL | ROZHRANÍ PŘÍKAZOVÉHO ŘÁDKU AZ | PowerShell
+|---|---|---|---|---|---|---|---|---|---|
+| Aplikace Service Fabric sítě | Model prostředků (YAML a JSON) | Podporováno |Nepodporuje se |Nepodporuje se |Nepodporuje se |Nepodporuje se | Podporuje se – pouze prostředí sítě | Nepodporuje se
+|Nativní aplikace Service Fabric | Model nativní aplikace (XML) | Podporováno| Podporováno|Podporováno|Podporováno|Podporováno|Podporováno|Podporováno|
 
 ## <a name="next-steps"></a>Další postup
 
