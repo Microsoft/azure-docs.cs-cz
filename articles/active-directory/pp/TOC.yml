@@ -1,4 +1,0 @@
-- name: Použití MSI virtuálního počítače pro přístup k úložišti Azure
-  items:
-    - name: Z virtuálního počítače s Linuxem pomocí přístupového klíče
-      href: msi-tutorial-linux-vm-access-storage.md
