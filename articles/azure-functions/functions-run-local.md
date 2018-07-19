@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: glenga
-ms.openlocfilehash: 44485d04dad3ff9dfc6067a3737989c5d273541f
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: c7be9079da6be8d9d7f25b910ab07e905e8ac449
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/18/2018
-ms.locfileid: "39116176"
+ms.locfileid: "39126210"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Práce s Azure Functions Core Tools
 
@@ -121,7 +121,7 @@ Následující kroky použijte [APT](https://wiki.debian.org/Apt) instalace nás
 
 ## <a name="create-a-local-functions-project"></a>Vytvořte projekt místní funkce
 
-Adresář projektu funkce obsahuje soubory [host.json](functions-host-json.md) a [local.settings.json](#local-settings-file), podél podsložky, které obsahují kód pro jednotlivé funkce. Tento adresář je ekvivalentem aplikaci function app v Azure. Další informace o struktuře složek funkce, najdete v článku [Příručka pro vývojáře Azure Functions](functions-reference.md#folder-structure).
+Adresář projektu funkce obsahuje soubory [host.json](functions-host-json.md) a [local.settings.json](#local-settings-file), spolu s podsložky, které obsahují kód pro jednotlivé funkce. Tento adresář je ekvivalentem aplikaci function app v Azure. Další informace o struktuře složek funkce, najdete v článku [Příručka pro vývojáře Azure Functions](functions-reference.md#folder-structure).
 
 Verze 2.x je potřeba vybrat výchozí jazyk pro projekt při inicializaci a použití výchozí jazyk šablony přidány všechny funkce. Ve verzi 1.x, můžete určit jazyk pokaždé, když vytvoříte funkci.
 
@@ -137,6 +137,7 @@ Ve verzi 2.x, když spustíte tento příkaz musíte zvolit modul runtime pro v�
 Select a worker runtime:
 dotnet
 node
+java
 ```
 
 Použití nahoru a dolů šipkami zvolte jazyk, stiskněte klávesu Enter. Výstup bude vypadat jako v následujícím příkladu pro projekt jazyka JavaScript:
@@ -151,6 +152,9 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 ```
 
 Chcete-li vytvořit projekt bez místní úložiště Git, použijte `--no-source-control [-n]` možnost.
+
+> [!IMPORTANT]
+> Ve výchozím nastavení verze 2.x základní nástroje pro projekty aplikací pro .NET runtime jako vytvoří funkci [třídy projekty jazyka C#](functions-dotnet-class-library.md) (.csproj). Tyto projekty jazyka C#, které je možné použít s Visual Studio 2017 nebo Visual Studio Code, jsou zkompilovány při testování a publikování do Azure. Pokud místo toho chcete vytvořit a pracovat stejném skript jazyka C# (.csx) soubory vytvořené ve verzi 1.x a na portálu, musíte zahrnout `--csx` parametr při vytváření a nasazení služby functions.
 
 ## <a name="register-extensions"></a>Registrace rozšíření
 
@@ -177,7 +181,7 @@ Soubor local.settings.json ukládá nastavení aplikace, připojovacích řetěz
     "CORS": "*"
   },
   "ConnectionStrings": {
-    "SQLConnectionString": "Value"
+    "SQLConnectionString": "<sqlclient-connection-string>"
   }
 }
 ```
@@ -189,7 +193,7 @@ Soubor local.settings.json ukládá nastavení aplikace, připojovacích řetěz
 | **Hostitel** | Nastavení v této části přizpůsobit funkce hostitelský proces, při místním spuštění. |
 | **LocalHttpPort** | Nastaví výchozí port použitý při spuštění místního hostitele funkce (`func host start` a `func run`). `--port` Možnost příkazového řádku má přednost před tuto hodnotu. |
 | **CORS** | Určuje původ, odkud můžou pro [prostředků mezi zdroji (CORS) pro sdílení obsahu](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing). Zdroje jsou dodávány jako seznam oddělený čárkami bez mezer. Hodnota zástupného znaku (\*) je podporován, umožňující žádosti z původu. |
-| **ConnectionStrings** | Nepoužívejte připojovací řetězce, používá funkce vazby této kolekce. Tato kolekce používá pouze rozhraní, které musíte získat připojovací řetězce z **ConnectionStrings** část konfigurační soubor, třeba [Entity Framework](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx). Připojovací řetězce v tomto objektu jsou přidány do prostředí s typem zprostředkovatele [System.Data.SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx). Položky v této kolekci nejsou publikovány do Azure s jinými nastaveními aplikace. Musíte explicitně přidat tyto hodnoty **připojovací řetězce** část **nastavení aplikace** pro vaši aplikaci function app. |
+| **ConnectionStrings** | Nepoužívejte připojovací řetězce, používá funkce vazby této kolekce. Tato kolekce používá pouze rozhraní, které obvykle získat připojovací řetězce z **ConnectionStrings** část konfigurační soubor, třeba [Entity Framework](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx). Připojovací řetězce v tomto objektu jsou přidány do prostředí s typem zprostředkovatele [System.Data.SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx). Položky v této kolekci nejsou publikovány do Azure s jinými nastaveními aplikace. Musíte explicitně přidat tyto hodnoty **připojovací řetězce** kolekce vaše nastavení aplikace function app. Pokud vytváříte [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) v kódu funkce, měli byste uložit hodnotu připojovacího řetězce v **nastavení aplikace** u vašich připojení. |
 
 Hodnoty nastavení aplikace funkcí můžete číst také ve vašem kódu jako proměnné prostředí. Další informace najdete v sekci proměnných prostředí z těchto témat reference specifická pro jazyk:
 
@@ -271,8 +275,9 @@ Můžete také zadat tyto možnosti v příkaz s následujícími argumenty:
 | Argument     | Popis                            |
 | ------------------------------------------ | -------------------------------------- |
 | **`--language -l`**| Šablona programovací jazyk, jako je C#, F # nebo JavaScript. Tato možnost je vyžadována ve verzi 1.x. Ve verzi 2.x, tuto možnost použijte, nebo si vybrat výchozí jazyk projektu. |
-| **`--template -t`** | Název šablony, který může být jedna z hodnot:<br/><ul><li>`Blob trigger`</li><li>`Cosmos DB trigger`</li><li>`Event Grid trigger`</li><li>`HTTP trigger`</li><li>`Queue trigger`</li><li>`SendGrid`</li><li>`Service Bus Queue trigger`</li><li>`Service Bus Topic trigger`</li><li>`Timer trigger`</li></ul> |
+| **`--template -t`** | Použití `func templates list` příkazu zobrazte úplný seznam dostupných šablon pro každý podporovaný jazyk.   |
 | **`--name -n`** | Název funkce. |
+| **`--csx`** | (Verze 2.x) Generuje stejné jazyka C# (.csx) skript šablony používané ve verzi 1.x a na portálu. |
 
 Například pokud chcete vytvořit trigger JavaScript HTTP stačí jediný příkaz, spusťte:
 

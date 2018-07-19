@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží s hybridní Azure Active Directory nižší úrovně zařízení připojená k | Microsoft Docs
-description: Řešení potíží s hybridní Azure Active Directory připojené zařízení nižší úrovně.
+title: Zařízení s nižší úrovně připojená k řešení potíží s hybridní služby Azure Active Directory | Dokumentace Microsoftu
+description: Řešení potíží s hybridní služby Azure Active Directory zařízení připojená k nižší úrovně
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: d41e83c11f33b0bcbe4ea632332f2cd8bb12313f
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 3b99a82b59cbba22d30a4325e246c308a2042ad5
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34714108"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136303"
 ---
-# <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Nižší úrovně zařízení připojená k řešení potíží s hybridní Azure Active Directory 
+# <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Zařízení s nižší úrovně připojená k řešení potíží s hybridní služby Azure Active Directory 
 
 V tomto článku se vztahuje pouze na následujících zařízeních: 
 
@@ -33,13 +33,13 @@ V tomto článku se vztahuje pouze na následujících zařízeních:
 - Windows Server 2012 R2 
  
 
-Pro Windows 10 nebo Windows Server 2016, najdete v části [hybridní Poradce při potížích s Azure Active Directory připojené zařízení s Windows 10 a Windows Server 2016](device-management-troubleshoot-hybrid-join-windows-current.md).
+Pro Windows 10 nebo Windows Server 2016, najdete v článku [zařízení s Windows 10 a Windows serveru 2016 připojená k hybridní Poradce při potížích s Azure Active Directory](device-management-troubleshoot-hybrid-join-windows-current.md).
 
-Tento článek předpokládá, že máte [nakonfigurované hybridní Azure Active Directory zařízení připojená k](device-management-hybrid-azuread-joined-devices-setup.md) k podporují následující scénáře:
+Tento článek předpokládá, že máte [nakonfigurované hybridní služby Azure Active Directory zařízení připojená k](device-management-hybrid-azuread-joined-devices-setup.md) pro podporu následujících scénářů:
 
-- Podmíněný přístup využívající zařízení
+- Podmíněný přístup podle zařízení
 
-- [Enterprise cestovní nastavení](active-directory-windows-enterprise-state-roaming-overview.md)
+- [Podnikový roaming nastavení](active-directory-windows-enterprise-state-roaming-overview.md)
 
 - [Windows Hello pro firmy](active-directory-azureadjoin-passport-deployment.md) 
 
@@ -51,62 +51,64 @@ Tento článek poskytuje pokyny o tom, jak vyřešit potenciální problémy př
 
 **Co byste měli vědět:** 
 
-- Maximální počet zařízení na uživatele je zaměřená na zařízení. Například pokud *jdoe* a *jharnett* přihlášení do zařízení, samostatné registrace (DeviceID) se vytvoří pro každou z nich **uživatele** informace o kartě.  
+- Maximální počet zařízení na uživatele je zaměřeného na zařízení. Například pokud *jdoe* a *jharnett* přihlašovat do zařízení, samostatných registrací (DeviceID) se vytvoří pro každý z nich ve **uživatele** Karta informace.  
 
-- Počáteční registrace / připojení k zařízení, je nakonfigurována se provést k pokusu o přihlášení nebo uzamčení nebo odemčení. Může dojít k 5 minut zpoždění aktivovány úloh služby Plánovač úloh. 
+- Počáteční registraci / připojení k zařízení umožňují provést k pokusu o přihlášení nebo uzamknout nebo odemknout. Může dojít k 5 minut, než aktivované úloh služby Plánovač úloh. 
 
-- Přeinstalování operačního systému nebo ruční opětovná registrace může vytvořit nové registrace ve službě Azure AD, což vede k více položek na kartě informace uživatele na portálu Azure. 
+- Přeinstalaci operačního systému nebo ruční opětovná registrace může vytvořit nové registrace ve službě Azure AD, což vede k více položek na kartě informace uživatele na webu Azure Portal. 
+
+- Ujistěte se, že [KB4284842](https://support.microsoft.com/en-us/help/4284842) je nainstalována v případě Windows 7 SP1 nebo Windows Server 2008 R2 SP1. Tato aktualizace brání selhání budoucích ověřování kvůli ztrátám zákazníka přístup k chráněné klíče po změně hesla.
 
 ## <a name="step-1-retrieve-the-registration-status"></a>Krok 1: Načíst stav registrace 
 
-**Chcete-li ověřit stav registrace:**  
+**Pokud chcete ověřit stav registrace:**  
 
-1. Přihlásit se pomocí uživatelského účtu, který provedl spojení hybridní Azure AD.
+1. Přihlásit se pomocí uživatelského účtu, který se má provést připojení k Azure AD hybridní.
 
 2. Otevřete příkazový řádek jako správce 
 
 3. Typ `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe" /i`
 
-Tento příkaz zobrazí dialogové okno, které vám poskytne další informace o stavu připojení.
+Tento příkaz zobrazí dialogové okno, které vám poskytne další podrobnosti o stavu připojení.
 
-![Připojení k síti na pracovišti pro Windows](./media/active-directory-device-registration-troubleshoot-windows-legacy/01.png)
+![Připojení k pracovní ploše pro Windows](./media/active-directory-device-registration-troubleshoot-windows-legacy/01.png)
 
 
 ## <a name="step-2-evaluate-the-hybrid-azure-ad-join-status"></a>Krok 2: Vyhodnoťte hybridní stav připojení k Azure AD 
 
-Pokud připojení k Azure AD hybridní nebyla úspěšná, dialogové okno vám poskytuje podrobnosti o problému, který došlo k chybě.
+Pokud připojení k hybridní službě Azure AD nebylo úspěšné, dialogové okno vám poskytuje podrobnosti o problému, který došlo k chybě.
 
-**Nejběžnějším problémům, jsou:**
+**Nejčastější problémy jsou:**
 
-- Konfigurace služby AD FS nebo služby Azure AD
+- Nesprávně nakonfigurované služby AD FS nebo služby Azure AD
 
-    ![Připojení k síti na pracovišti pro Windows](./media/active-directory-device-registration-troubleshoot-windows-legacy/02.png)
+    ![Připojení k pracovní ploše pro Windows](./media/active-directory-device-registration-troubleshoot-windows-legacy/02.png)
 
-- Nejsou přihlášeni jako uživatel domény
+- Nejste přihlášení jako uživatel domény
 
-    ![Připojení k síti na pracovišti pro Windows](./media/active-directory-device-registration-troubleshoot-windows-legacy/03.png)
+    ![Připojení k pracovní ploše pro Windows](./media/active-directory-device-registration-troubleshoot-windows-legacy/03.png)
     
-    Existuje několik různých důvodů, proč k tomu může dojít:
+    Existuje několik různých důvodů, proč tato situace může nastat:
     
-    - Přihlášeného uživatele není uživatelem domény (například místního uživatele). Hybridní připojení k Azure AD na nižší úrovni. zařízení je podporována pouze pro uživatele domény.
+    - Přihlášený uživatel není uživatelem domény (například místní uživatel). Hybridní připojení k Azure AD na zařízeních s nižší úrovně je podporována pouze pro uživatele domény.
     
-    - Autoworkplace.exe není schopen bezobslužně ověření pomocí Azure AD ani AD FS. To může být způsobeno odesílací vázané problémů s připojením k adresám URL, Azure AD. Také je možné, že vícefaktorové ověřování (MFA) je povolen nebo nakonfigurovaný pro tohoto uživatele a WIAORMUTLIAUTHN není nakonfigurovaný na federačním serveru. Další možností je této stránce zjišťování domovské sféry čeká pro interakci s uživatelem, což zabraňuje **autoworkplace.exe** bezobslužně získat token.
+    - Autoworkplace.exe nedokáže bezobslužné ověření pomocí Azure AD nebo AD FS. To může být způsobeno odesílací vázané problém s připojením k adresám URL Azure AD. Také je možné, že vícefaktorové ověřování (MFA) je povolený a nakonfigurovaný pro tohoto uživatele a WIAORMUTLIAUTHN není nakonfigurovaná na federační server. Další možností je, že tuto stránku zjišťování domovské sféry čeká pro interakci s uživatelem, což zabrání **autoworkplace.exe** v bezobslužném režimu získání tokenu.
     
-    - Vaše organizace používá Azure AD bezproblémové jednotné přihlašování, `https://autologon.microsoftazuread-sso.com` nebo `https://aadg.windows.net.nsatc.net` nejsou k dispozici v nastavení intranetu IE zařízení, a **povolit aktualizace stavového řádku pomocí skriptu** není povolena pro zónu intranetu.
+    - Vaše organizace používá Azure AD bezproblémové jednotné přihlašování, `https://autologon.microsoftazuread-sso.com` nebo `https://aadg.windows.net.nsatc.net` nejsou k dispozici v nastavení aplikace Internet Explorer intranetu zařízení, a **povolit aktualizace stavového řádku prostřednictvím skriptu** není povolená pro zónu intranetu.
 
 - Bylo dosaženo kvóty
 
-    ![Připojení k síti na pracovišti pro Windows](./media/active-directory-device-registration-troubleshoot-windows-legacy/04.png)
+    ![Připojení k pracovní ploše pro Windows](./media/active-directory-device-registration-troubleshoot-windows-legacy/04.png)
 
-- Služba nereaguje. 
+- Služba nereaguje 
 
-    ![Připojení k síti na pracovišti pro Windows](./media/active-directory-device-registration-troubleshoot-windows-legacy/05.png)
+    ![Připojení k pracovní ploše pro Windows](./media/active-directory-device-registration-troubleshoot-windows-legacy/05.png)
 
-Informace o stavu můžete také najít v protokolu událostí v části: **aplikace a služby Log\Microsoft-pracovišti**
+Informace o stavu můžete také najít v protokolu událostí v: **aplikací a služeb Log\Microsoft-Workplace Join**
   
-**Nejběžnější příčiny selhání hybridní Azure AD join jsou:** 
+**Nejběžnější příčiny selhání hybridní službě Azure AD join jsou:** 
 
-- Váš počítač není připojený k interní síti vaší organizace nebo k síti VPN připojení k místní řadič domény AD.
+- Počítač není připojený k interní síti vaší organizace nebo k síti VPN s připojením k místní řadič domény služby AD.
 
 - Jste přihlášeni k počítači pomocí účtu místního počítače. 
 
@@ -114,10 +116,10 @@ Informace o stavu můžete také najít v protokolu událostí v části: **apli
 
   - Federační server nakonfigurovaný pro podporu **WIAORMULTIAUTHN**. 
 
-  - Doménové struktury vašeho počítače nemá žádný objekt spojovací bod služby, který odkazuje na název ověřené domény ve službě Azure AD 
+  - Doménová struktura počítače nemá žádný bod připojení služby objekt, který odkazuje na název ověřené domény ve službě Azure AD 
 
-  - Uživatel byl dosažen maximální počet zařízení. 
+  - Uživatel dosáhl limitu počtu zařízení. 
 
 ## <a name="next-steps"></a>Další postup
 
-Otázky, najdete v článku [nejčastější dotazy ke správě zařízení](device-management-faq.md)  
+Dotazy, najdete v článku [nejčastější dotazy ke správě zařízení](device-management-faq.md)  

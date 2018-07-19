@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: lizross
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 480bbd543ddef60dc8dd84d4b454ef5a8c742636
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 76f2bed22d62895e1c537a807ff729c0ba56fbf6
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008388"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136753"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Co je nového ve službě Azure Active Directory?
 
@@ -35,7 +35,33 @@ Azure AD obdrží vylepšení průběžně. Abyste mohli používat aktuální p
 
 Tato stránka se aktualizuje každý měsíc, takže návštěvě pravidelně.
 
+---
+
 ## <a name="july-2018"></a>. Července 2018
+
+### <a name="improvements-to-azure-active-directory-email-notifications"></a>Vylepšení e-mailová oznámení služby Azure Active Directory
+
+**Typ:** plánování změn  
+**Kategorie služby:** další  
+**Funkce produktu:** Správa životního cyklu identit
+ 
+Na **konec. července 2018**, e-mailů Azure Active Directory (Azure AD) bude funkce aktualizovaný návrh, jakož i změny v e-mailová adresa odesílatele a odesílatel zobrazovaný název, při odeslání z následující služby:
+ 
+- Kontroly přístupu Azure AD
+- Azure AD Connect Health 
+- Azure AD Identity Protection 
+- Azure AD Privileged Identity Management
+- Oznámení podnikových aplikací vypršení platnosti certifikátu
+- Oznámení služby zřizování podnikových aplikací
+ 
+E-mailová oznámení se odešlou z následujících e-mailové adresy a zobrazované jméno:
+
+- E-mailová adresa: azure-noreply@microsoft.com
+- Zobrazovaný název: Microsoft Azure
+ 
+Příklad některé z nových e-mailu návrhů a další informace najdete v tématu [e-mailová oznámení v Azure AD PIM](https://go.microsoft.com/fwlink/?linkid=2005832).
+
+---
 
 ### <a name="view-legacy-authentications-through-sign-ins-activity-logs"></a>Zobrazení starších verzí ověřování prostřednictvím protokolů aktivit přihlášení
 
@@ -49,7 +75,7 @@ Se zavedením **klientskou aplikaci** pole v aktivit přihlašování protokoly,
 
 ## <a name="june-2018"></a>Červen 2018
 
-### <a name="change-notice-security-fix-to-the-delegated-authorization-flow-for-apps-using-azure-ad-activity-logs-api"></a>Všimněte si, že změna: oprava zabezpečení do toku delegované autorizace pro aplikace využívající rozhraní API protokoly aktivit Azure AD
+### <a name="change-notice-security-fix-to-the-delegated-authorization-flow-for-apps-using-azure-ad-activity-logs-api"></a>Oznámení o změně: Oprava zabezpečení delegovaného autorizačního toku pro aplikace, které používají rozhraní protokolu aktivit Azure AD
 
 **Typ:** plánování změn  
 **Kategorie služby:** generování sestav  
@@ -73,7 +99,7 @@ Další informace najdete v tématu [udělit oprávnění](https://docs.microsof
 
 ---
 
-### <a name="configure-tls-settings-to-connect-to-azure-ad-services-for-pci-dss-compliance"></a>Konfigurace nastavení protokolu TLS pro připojení ke službám Azure AD pro dodržování předpisů PCI DSS
+### <a name="configure-tls-settings-to-connect-to-azure-ad-services-for-pci-dss-compliance"></a>Konfigurace nastavení protokolu TLS pro připojení ke službám Azure AD, aby se dodržovaly předpisy PCI DSS
 
 **Typ:** nová funkce  
 **Kategorie služby:** není k dispozici  
@@ -113,7 +139,7 @@ Zastaralé prohlížeče nemusí podporovat novější verze TLS, jako je protok
 
 ---
 
-### <a name="new-federated-apps-available-in-azure-ad-app-gallery---june-2018"></a>Nové federované aplikace k dispozici v galerii aplikací Azure AD –. června 2018
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---june-2018"></a>V galerii aplikací Azure AD jsou k dispozici nové federované aplikace – červen 2018
 
 **Typ:** nová funkce  
 **Kategorie služby:** podnikových aplikací  
@@ -127,7 +153,7 @@ Další informace o aplikacích najdete v tématu [integrace aplikací SaaS pomo
 
 ---
 
-### <a name="azure-ad-password-protection-is-available-in-public-preview"></a>Ochrana hesel Azure AD je k dispozici ve verzi public preview
+### <a name="azure-ad-password-protection-is-available-in-public-preview"></a>Ochrana hesel Azure AD je k dispozici ve verzi Public Preview
 
 **Typ:** nová funkce  
 **Kategorie služby:** Identity Protection  
@@ -145,7 +171,7 @@ Další informace o ochraně hesel služby Azure AD najdete v tématu [eliminuje
 
 ---
 
-### <a name="new-all-guests-conditional-access-policy-template-created-during-terms-of-use-tou-creation"></a>Nový "všechny hosté" podmíněného přístupu šablonu zásad během vytváření podmínky použití (ToU)
+### <a name="new-all-guests-conditional-access-policy-template-created-during-terms-of-use-tou-creation"></a>Při vytváření podmínek použití se vytváří nová šablona zásad podmíněného přístupu pro všechny hosty
 
 **Typ:** nová funkce  
 **Kategorie služby:** podmínky použití  
@@ -157,7 +183,7 @@ Další informace najdete v tématu [Azure Active Directory Terms of použít fu
 
 ---
 
-### <a name="new-custom-conditional-access-policy-template-created-during-terms-of-use-tou-creation"></a>Nové šablony zásad podmíněného přístupu "vlastní" během vytváření podmínky použití (ToU)
+### <a name="new-custom-conditional-access-policy-template-created-during-terms-of-use-tou-creation"></a>Při vytváření podmínek použití se vytváří nová vlastní šablona zásad podmíněného přístupu
 
 **Typ:** nová funkce  
 **Kategorie služby:** podmínky použití  
@@ -169,7 +195,7 @@ Další informace najdete v tématu [Azure Active Directory Terms of použít fu
 
 ---
 
-### <a name="new-and-comprehensive-guidance-about-deploying-azure-multi-factor-authentication"></a>Nové a komplexní informace o nasazení Azure Multi-Factor Authentication
+### <a name="new-and-comprehensive-guidance-about-deploying-azure-multi-factor-authentication"></a>Nové a ucelené pokyny k nasazení Azure Multi-Factor Authentication
 
 **Typ:** nová funkce  
 **Kategorie služby:** další  
@@ -181,7 +207,7 @@ Chcete-li zobrazit v Průvodci nasazením vícefaktorového ověřování, přej
 
 ---
 
-### <a name="azure-ad-delegated-app-management-roles-are-in-public-preview"></a>Delegovaná správa aplikací, které role jsou ve verzi public preview služby Azure AD
+### <a name="azure-ad-delegated-app-management-roles-are-in-public-preview"></a>Role pro delegovanou správu aplikací Azure AD jsou ve verzi Public Preview
 
 **Typ:** nová funkce  
 **Kategorie služby:** podnikových aplikací  
@@ -209,7 +235,7 @@ Další informace o verzi public preview, najdete v článku [Azure AD delegovan
 
 ## <a name="may-2018"></a>Květen 2018
 
-### <a name="expressroute-support-changes"></a>Změny podpory pro ExpressRoute
+### <a name="expressroute-support-changes"></a>Změny podpory ExpressRoute
 
 **Typ:** plánování změn  
 **Kategorie služby:** ověřování (přihlášení)  
@@ -335,7 +361,7 @@ Další informace o zobrazení aplikace v galerii aplikací Azure AD najdete v t
 
 ---
  
-### <a name="new-step-by-step-deployment-guides-for-azure-active-directory"></a>Nový Průvodce podrobný postup nasazení služby Azure Active Directory
+### <a name="new-step-by-step-deployment-guides-for-azure-active-directory"></a>Nové podrobné pokyny k nasazení pro Azure Active Directory
 
 **Typ:** nová funkce  
 **Kategorie služby:** další  
@@ -357,13 +383,13 @@ Máte potíže najít vaše aplikace / služby objekty zabezpečení? Přidali j
 
 ---
  
-### <a name="the-may-release-of-aadconnect-contains-a-public-preview-of-the-integration-with-pingfederate-important-security-updates-many-bug-fixes-and-new-great-new-troubleshooting-tools"></a>Květnové vydání AADConnect obsahuje verze public preview služby integrace s PingFederate, důležité aktualizace zabezpečení, řada oprav chyb a nové skvělé nové řešení potíží s nástroji. 
+### <a name="the-may-release-of-aadconnect-contains-a-public-preview-of-the-integration-with-pingfederate-important-security-updates-many-bug-fixes-and-new-great-new-troubleshooting-tools"></a>Verze AADConnect vydaná v květnu obsahuje verzi Public Preview integrace s PingFederate, důležité aktualizace zabezpečení, mnoho oprav chyb a vynikající nové nástroje pro řešení potíží 
 
 **Typ:** změněné funkce  
 **Kategorie služby:** AD Connect  
 **Funkce produktu:** Správa životního cyklu identit
  
-Květnové vydání AADConnect obsahuje verze public preview služby integrace s PingFederate, důležité aktualizace zabezpečení, řada oprav chyb a nové skvělé nové řešení potíží s nástroji. Můžete najít v poznámkách k verzi [tady](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnect-version-history#118190).
+Verze AADConnect vydaná v květnu obsahuje verzi Public Preview integrace s PingFederate, důležité aktualizace zabezpečení, mnoho oprav chyb a vynikající nové nástroje pro řešení potíží Můžete najít v poznámkách k verzi [tady](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnect-version-history#118190).
 
 ---
 
@@ -490,7 +516,7 @@ Další informace najdete v tématu [povolení nebo blokování pozvánek uživa
 
 ---
  
-### <a name="new-federated-apps-available-in-azure-ad-app-gallery"></a>Nové federované aplikace k dispozici v galerii aplikací Azure AD
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery"></a>V galerii aplikací Azure AD jsou k dispozici nové federované aplikace
 
 **Typ:** nová funkce  
 **Kategorie služby:** podnikových aplikací  
@@ -558,7 +584,7 @@ Další informace najdete v tématu [hesla Azure AD z přihlašovací obrazovky 
 
 ## <a name="march-2018"></a>. Března 2018
  
-### <a name="certificate-expire-notification"></a>Oznámení o vypršení platnosti certifikátu
+### <a name="certificate-expire-notification"></a>Certifikát vypršel oznámení
 
 **Typ:** oprava  
 **Kategorie služby:** podnikových aplikací  
@@ -575,7 +601,7 @@ Další informace naleznete v tématu:
  
 ---
  
-### <a name="twitter-and-github-identity-providers-in-azure-ad-b2c"></a>Zprostředkovatelé identity Twitteru a GitHubu v Azure AD B2C
+### <a name="twitter-and-github-identity-providers-in-azure-ad-b2c"></a>Zprostředkovatelé identity twitteru a Githubu v Azure AD B2C
 
 **Typ:** nová funkce  
 **Kategorie služby:** B2C - správu identit zákazníků  
@@ -587,7 +613,7 @@ Další informace najdete v tématu [co je spolupráce B2B ve službě Azure AD?
  
 ---
 
-### <a name="restrict-browser-access-using-intune-managed-browser-with-azure-ad-application-based-conditional-access-for-ios-and-android"></a>Omezení přístupu prohlížeče pomocí Intune Managed Browseru s podmíněným přístupem založeným na aplikaci Azure AD pro iOS a Android
+### <a name="restrict-browser-access-using-intune-managed-browser-with-azure-ad-application-based-conditional-access-for-ios-and-android"></a>Omezit přístup z prohlížeče pomocí Intune Managed Browseru s podmíněným přístupem založeným na aplikaci Azure AD pro iOS a Android
 
 **Typ:** nová funkce  
 **Kategorie služby:** podmíněného přístupu  
@@ -609,7 +635,7 @@ Další informace naleznete v tématu:
 
 ---
  
-### <a name="app-proxy-cmdlets-in-powershell-ga-module"></a>Rutiny Proxy aplikací v modulu PowerShell GA Module
+### <a name="app-proxy-cmdlets-in-powershell-ga-module"></a>Rutiny Proxy aplikací v modulu Powershell GA Module
 
 **Typ:** nová funkce  
 **Kategorie služby:** Proxy aplikací  
@@ -621,7 +647,7 @@ Další informace najdete v tématu [AzureAD](https://docs.microsoft.com/powersh
  
 ---
  
-### <a name="office-365-native-clients-are-supported-by-seamless-sso-using-a-non-interactive-protocol"></a>Bezproblémové jednotné přihlašování podporuje nativní klienty Office 365 pomocí neinteraktivního protokolu.
+### <a name="office-365-native-clients-are-supported-by-seamless-sso-using-a-non-interactive-protocol"></a>Podporuje nativní klienty Office 365 pomocí neinteraktivního protokolu bezproblémového jednotného přihlašování
 
 **Typ:** nová funkce  
 **Kategorie služby:** ověřování (přihlášení)  
@@ -645,7 +671,7 @@ Další informace najdete v tématu [Azure Active Directory bezproblémové jedn
 
 ---
  
-### <a name="need-to-add-only-one-azure-ad-url-instead-of-two-urls-previously-to-users-intranet-zone-settings-to-roll-out-seamless-sso"></a>K zavedení bezproblémového jednotného přihlašování se do nastavení zóny Intranet uživatele musí přidat jen jedna adresa URL Azure AD namísto dřívějších dvou.
+### <a name="need-to-add-only-one-azure-ad-url-instead-of-two-urls-previously-to-users-intranet-zone-settings-to-roll-out-seamless-sso"></a>Třeba přidat pouze jednu adresu URL služby Azure AD, namísto dřívějších dvou. do nastavení zóny Intranet uživatele k zavedení bezproblémového jednotného přihlašování
 
 **Typ:** nová funkce  
 **Kategorie služby:** ověřování (přihlášení)  

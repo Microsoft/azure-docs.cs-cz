@@ -2,24 +2,24 @@
 title: Nastavení clusteru pro Hadoop, Spark, Kafka, HBase nebo R Server – Azure HDInsight
 description: Nastavení systému Hadoop, Kafka, Spark, HBase, R Server nebo clustery Storm pro HDInsight z prohlížeče, rozhraní příkazového řádku Azure, Azure PowerShell, REST nebo sady SDK.
 keywords: nastavení clusteru hadoop, cluster kafka nastavení, nastavení clusteru spark, co je cluster hadoop
-services: hdinsight
+services: storage
 documentationcenter: ''
 author: jamesbak
 manager: jahogg
 tags: azure-portal
 ms.component: data-lake-storage-gen2
-ms.service: hdinsight
+ms.service: storage
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: jamesbak
-ms.openlocfilehash: 9c037b35af19b94b6655cf7d1d45ba6b6182879c
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 725e79596a919cba4214dba8b3cc86e9bb48cc79
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346582"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136634"
 ---
 # <a name="quickstart-set-up-clusters-in-hdinsight"></a>Rychlý start: Nastavení clusterů v HDInsight
 
@@ -258,7 +258,7 @@ Pokud narazíte na problémy s vytvářením clusterů HDInsight, podívejte se 
 ## <a name="next-steps"></a>Další postup
 
 - [Ovladač systému souborů Hadoop ABFS pro Azure Data Lake Storage Gen2](abfs-driver.md)
-- [Kurz: Extrakce, transformace a načítání dat pomocí Apache Hive v Azure HDInsight](tutorial-extract-transform-load-hive.md)
+- [Kurz: Extrakce, transformace a načítání dat pomocí Apache Hivu ve službě Azure HDInsight](tutorial-extract-transform-load-hive.md)
 - [Co jsou HDInsight, ekosystém Hadoop a clustery Hadoop?](../../hdinsight/hadoop/apache-hadoop-introduction.md)
 - [Začínáme používat Hadoop ve službě HDInsight](../../hdinsight/hadoop/apache-hadoop-linux-tutorial-get-started.md)
 - [Práce v Hadoop v HDInsight z Windows PC](../../hdinsight/hdinsight-hadoop-windows-tools.md)

@@ -1,6 +1,6 @@
 ---
-title: Rychlý start C# pro služby Azure kognitivní, analýza textu rozhraní API | Microsoft Docs
-description: Get informace a ukázky kódu můžete rychle začít používat rozhraní API Analytics Text v kognitivní služby společnosti Microsoft na platformě Azure.
+title: Rychlý start C# pro Azure Cognitive Services Text Analytics API | Dokumentace Microsoftu
+description: Získat informace a ukázky kódu můžete rychle začít používat rozhraní API pro analýzu textu ve službě Microsoft Cognitive Services v Azure.
 services: cognitive-services
 documentationcenter: ''
 author: luiscabrer
@@ -9,47 +9,47 @@ ms.component: text-analytics
 ms.topic: article
 ms.date: 09/20/2017
 ms.author: ashmaka
-ms.openlocfilehash: d9c61a83450844461f621ff16354881a029f7ad6
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 94847adf761652a25fd3e2d594c7169776fefc89
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266290"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39125121"
 ---
-# <a name="quickstart-for-text-analytics-api-with-c"></a>Rychlý start pro Analýza textu rozhraní API pomocí jazyka C# 
+# <a name="quickstart-for-text-analytics-api-with-c"></a>Rychlý start pro rozhraní Text Analytics API pomocí jazyka C# 
 <a name="HOLTop"></a>
 
-Tento článek ukazuje, jak zjišťovat jazyk, analyzovat postojích a extrahovat klíče frází pomocí [rozhraní API Analytics Text](//go.microsoft.com/fwlink/?LinkID=759711) pomocí C#. Kód byla zapsána do pracovat na .net Core aplikace s minimálním odkazy na externí knihovny, takže je může také spustit v systému Linux nebo systému MacOS.
+V tomto článku se dozvíte, jak zjistit jazyk, analýza sentimentu a extrakce klíčových frází pomocí [rozhraní Text Analytics API](//go.microsoft.com/fwlink/?LinkID=759711) pomocí jazyka C#. Kód byla zapsána do pracovat.Net Core aplikace s minimálními odkazy na externí knihovny, můžete ho také spustit v systému Linux nebo MacOS.
 
-Odkazovat [definice rozhraní API](//go.microsoft.com/fwlink/?LinkID=759346) pro technická dokumentace k rozhraní API.
+Odkazovat [definice rozhraní API](//go.microsoft.com/fwlink/?LinkID=759346) technickou dokumentaci pro rozhraní API.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Musíte mít [kognitivní rozhraní API služby účet](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s **Text Analytics API**. Můžete použít **úroveň free pro 5 000 transakce za měsíc** dokončete tento rychlý start.
+Musíte mít [účet rozhraní API služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s **rozhraní Text Analytics API**. Můžete použít **bezplatná úroveň 5 000 transakcí za měsíc** k dokončení tohoto rychlého startu.
 
-Je také nutné mít [koncový bod a přístupový klíč](../How-tos/text-analytics-how-to-access-key.md) který byl vygenerován pro vás při přihlašování nahoru. 
+Je také nutné mít [koncový bod a přístupový klíč](../How-tos/text-analytics-how-to-access-key.md) , která byla vygenerována během přihlašování nahoru. 
 
 
-## <a name="install-the-nuget-sdk-package"></a>Nainstalujte balíček Nuget sady SDK
-1. Vytvořte nové řešení konzoly v sadě Visual Studio.
-1. Klikněte pravým tlačítkem na řešení a klikněte na tlačítko **spravovat balíčky NuGet pro řešení**
-1. Označit **zahrnout předprodejní verze** zaškrtávací políčko.
-1. Vyberte **Procházet** kartě a vyhledejte **Microsoft.Azure.CognitiveServices.Language**
+## <a name="install-the-nuget-sdk-package"></a>Nainstalovat balíček Nuget sady SDK
+1. Vytvořte nové konzoly řešení v sadě Visual Studio.
+1. Klikněte pravým tlačítkem myši na řešení a klikněte na **spravovat balíčky NuGet pro řešení**
+1. Mark **zahrnout předprodejní verze** zaškrtávací políčko.
+1. Vyberte **Procházet** kartu a vyhledejte **Microsoft.Azure.CognitiveServices.Language**
 1. Vyberte balíček Nuget a nainstalujte ho.
 
 > [!Tip]
->  Když může zavolat [koncové body HTTP](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) přímo z C#, Microsoft.Azure.CognitiveServices.Language SDK je mnohem jednodušší volání služby bez nutnosti starat o serializaci a deserializaci JSON.
+>  Přestože lze volat [koncových bodů HTTP](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) přímo z jazyka C# Microsoft.Azure.CognitiveServices.Language SDK mnohem snadněji k vyvolání služby bez nutnosti starat o serializaci a deserializaci JSON.
 >
-> Několik užitečné odkazy:
+> Několik užitečných odkazů:
 > - [Stránka Nuget sady SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics)
 > - [Kód SDK ](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/CognitiveServices/dataPlane/Language/TextAnalytics)
 
 
-## <a name="call-the-text-analytics-api-using-the-sdk"></a>Volání rozhraní API Analýza textu pomocí sady SDK
-1. Nahraďte kód níže uvedenou Program.cs. Tento program předvádí možnosti rozhraní API Analytics Text v částech 3 (jazyk extrakce, extrakce klíč frázi a postojích analýzy).
-1. Nahraďte `Ocp-Apim-Subscription-Key` hodnota hlavičky se přístupový klíč platný pro vaše předplatné.
-1. Nahraďte umístění v `client.AzureRegion` (aktuálně `AzureRegions.Westus`) pro danou oblast registraci aplikace.
-1. Spusťte program.
+## <a name="call-the-text-analytics-api-using-the-sdk"></a>Volání rozhraní API pro analýzu textu pomocí sady SDK
+1. Nahraďte níže uvedený kód souboru Program.cs. Tento program předvádí možnosti rozhraní API pro analýzu textu ve 3 oddíly (jazyk extrakce, extrakce klíčových frází – to a analýza mínění).
+1. Nahradit `Ocp-Apim-Subscription-Key` hodnota hlavičky se přístupový klíč platný pro vaše předplatné.
+1. Nahraďte umístění v `client.BaseUri` ke koncovému bodu registrovanou službu. Koncový bod najdete na webu Azure Portal prostředků. Koncový bod se obvykle vypadá jako "https://[region].api.cognitive.microsoft.com/text/analytics/v2.0".
+1. Spuštění programu.
 
 ```csharp
 using System;
@@ -81,8 +81,8 @@ namespace ConsoleApp1
         {
 
             // Create a client.
-            ITextAnalyticsAPI client = new TextAnalyticsAPI(new ApiKeyServiceClientCredentials());
-            client.AzureRegion = AzureRegions.Westus;
+            ITextAnalyticsClient client = new TextAnalyticsClient(new ApiKeyServiceClientCredentials());
+            client.BaseUri = new Uri("https://westus.api.cognitive.microsoft.com/text/analytics/v2.0");
 
             Console.OutputEncoding = System.Text.Encoding.UTF8;
 
@@ -155,7 +155,7 @@ namespace ConsoleApp1
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Analýza textu pomocí Power BI](../tutorials/tutorial-power-bi-key-phrases.md)
+> [Analýza textu s využitím Power BI](../tutorials/tutorial-power-bi-key-phrases.md)
 
 ## <a name="see-also"></a>Další informace najdete v tématech 
 

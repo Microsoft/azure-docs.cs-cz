@@ -1,6 +1,6 @@
 ---
-title: Kopírování dat z a do služby Salesforce pomocí Azure Data Factory | Microsoft Docs
-description: Zjistěte, jak zkopírovat data ze služby Salesforce k úložištím dat. podporované podřízený nebo z podporované zdrojové úložiště dat do služby Salesforce pomocí aktivity kopírování v kanálu data factory.
+title: Kopírování dat z a do Salesforce pomocí služby Azure Data Factory | Dokumentace Microsoftu
+description: Zjistěte, jak kopírovat data pomocí aktivity kopírování v kanálu data factory ze Salesforce do úložišť dat jímky podporované nebo z podporovaných úložišť dat do služby Salesforce.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -11,67 +11,67 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/26/2018
+ms.date: 07/18/2018
 ms.author: jingwang
-ms.openlocfilehash: c139b68421061362f40856af55ad0338118ab49a
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 69e3e308fb5af98dd5763c56503cc28bd4ecfa9e
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37051878"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39125244"
 ---
-# <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>Kopírování dat z a do služby Salesforce pomocí Azure Data Factory
+# <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>Kopírování dat z a do Salesforce pomocí služby Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Verze 1](v1/data-factory-salesforce-connector.md)
 > * [Aktuální verze](connector-salesforce.md)
 
-Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory ke zkopírování dat z a do služby Salesforce. Vychází [aktivity kopírování přehled](copy-activity-overview.md) článek, který představuje obecný přehled o aktivitě kopírování.
+Tento článek popisuje, jak pomocí aktivity kopírování ve službě Azure Data Factory pro kopírování dat z a do Salesforce. Je nástavbou [přehled aktivit kopírování](copy-activity-overview.md) článek, který nabízí obecný přehled o aktivitě kopírování.
 
-## <a name="supported-capabilities"></a>Podporované možnosti
+## <a name="supported-capabilities"></a>Podporované funkce
 
-Ze služby Salesforce můžete zkopírovat data do úložiště dat žádné podporované jímky. Také můžete zkopírovat data z jakékoli úložiště podporované zdroje dat do služby Salesforce. Seznam úložišť dat, které jsou podporovány jako zdroje nebo jímky aktivitě kopírování najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
+Kopírovat data ze Salesforce do jakékoli podporovaného úložiště dat jímky. Můžete také můžete kopírovat data ze všech podporovaných zdrojů úložišť dat do Salesforce. Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
 
-Konkrétně tento konektor služby Salesforce podporuje:
+Konkrétně tento konektor Salesforce podporuje:
 
 - Edice Salesforce Developer, Professional, Enterprise nebo neomezený.
-- Kopírování dat z a do produkční Salesforce, izolovaného prostoru a vlastní doménu.
+- Kopírování dat z a do produkčního prostředí Salesforce, izolovaný prostor a vlastní domény.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Rozhraní API oprávnění musí být v Salesforce povoleno. Další informace najdete v tématu [povolit rozhraní API pro přístup v Salesforce podle sady oprávnění](https://www.data2crm.com/migration/faqs/enable-api-access-salesforce-permission-set/)
+Rozhraní API oprávnění musí být povolená v Salesforce. Další informace najdete v tématu [přístup k rozhraní API povolit v Salesforce. sada oprávnění](https://www.data2crm.com/migration/faqs/enable-api-access-salesforce-permission-set/)
 
 ## <a name="salesforce-request-limits"></a>Omezení žádostí o služby Salesforce
 
-Služba Salesforce má limity pro celkový počet žádostí o rozhraní API a souběžných žádostí o rozhraní API. Je třeba počítat s následujícím:
+Salesforce má omezení pro celkový počet požadavků rozhraní API a souběžných požadavků na rozhraní API. Je třeba počítat s následujícím:
 
-- Pokud počet souběžných požadavků překročí limit, dojde k omezení šířky pásma a zobrazí náhodné chyby.
-- Pokud celkový počet požadavků překračuje limit, zablokuje se účtu Salesforce ke 24 hodin.
+- Pokud počet souběžných požadavků překročí limit, dojde k omezení šířky pásma a zaznamenat náhodných chyb.
+- Pokud celkový počet požadavků překročí limit, se po dobu 24 hodin zablokuje účtu Salesforce.
 
-Může také zobrazí chybová zpráva "REQUEST_LIMIT_EXCEEDED" v obou situacích. Další informace najdete v části "Omezení žádostí o rozhraní API" v [Salesforce vývojáře omezení](http://resources.docs.salesforce.com/200/20/en-us/sfdc/pdf/salesforce_app_limits_cheatsheet.pdf).
+V obou případech může být také zobrazí chybová zpráva "REQUEST_LIMIT_EXCEEDED". Další informace najdete v části "Omezení žádostí o rozhraní API" v [limity pro vývojáře Salesforce](http://resources.docs.salesforce.com/200/20/en-us/sfdc/pdf/salesforce_app_limits_cheatsheet.pdf).
 
 ## <a name="get-started"></a>Začínáme
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Následující části obsahují podrobnosti o vlastnosti, které se používají k definování entit služby Data Factory, které jsou specifické pro konektor služby Salesforce.
+Následující části obsahují podrobnosti o vlastnostech, které se používají k definování entit služby Data Factory konkrétní konektor Salesforce.
 
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 
-Následující vlastnosti jsou podporovány pro službu propojené služby Salesforce.
+Následující vlastnosti jsou podporovány pro Salesforce, propojené služby.
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type |Vlastnost typu musí být nastavená na **Salesforce**. |Ano |
-| environmentUrl | Zadejte adresu URL instance Salesforce. <br> -Výchozí hodnota je `"https://login.salesforce.com"`. <br> -Ke zkopírování dat z izolovaného prostoru, zadejte `"https://test.salesforce.com"`. <br> -Ke zkopírování dat z vlastní domény, zadejte, například `"https://[domain].my.salesforce.com"`. |Ne |
-| uživatelské jméno |Zadejte uživatelské jméno pro uživatelský účet. |Ano |
-| heslo |Zadejte heslo pro uživatelský účet.<br/><br/>Toto pole označit jako SecureString bezpečně uložit v datové továrně nebo [odkazovat tajného klíče uložené v Azure Key Vault](store-credentials-in-key-vault.md). |Ano |
-| securityToken |Zadejte token zabezpečení pro uživatelský účet. Pokyny, jak obnovit a získat token zabezpečení, najdete v části [získat token zabezpečení](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm). Obecné informace o tokeny zabezpečení najdete v tématu [zabezpečení a rozhraní API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm).<br/><br/>Toto pole označit jako SecureString bezpečně uložit v datové továrně nebo [odkazovat tajného klíče uložené v Azure Key Vault](store-credentials-in-key-vault.md). |Ano |
-| connectVia | [Integrace runtime](concepts-integration-runtime.md) který se má použít pro připojení k úložišti. Pokud není zadaný, použije výchozí Runtime integrace Azure. | Žádné zdroje, Ano pro sink pokud propojený zdroj služba nemá integrace modulu runtime |
+| type |Vlastnost type musí být nastavená na **Salesforce**. |Ano |
+| environmentUrl | Zadejte adresu URL Salesforce instance. <br> – Výchozí hodnota je `"https://login.salesforce.com"`. <br> – Chcete-li kopírovat data z karantény, zadejte `"https://test.salesforce.com"`. <br> -Ke zkopírování dat z vlastní domény, zadejte, například `"https://[domain].my.salesforce.com"`. |Ne |
+| uživatelské jméno |Zadejte uživatelské jméno uživatelského účtu. |Ano |
+| heslo |Zadejte heslo pro uživatelský účet.<br/><br/>Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). |Ano |
+| Token securityToken |Zadejte token zabezpečení pro uživatelský účet. Pokyny o tom, jak obnovit a získat token zabezpečení najdete v tématu [získat token zabezpečení](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm). Obecné informace o tokeny zabezpečení najdete v tématu [zabezpečení a rozhraní API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm).<br/><br/>Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). |Ano |
+| connectVia | [Prostředí integration runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. | Ne pro zdroj, Ano pro jímku pokud propojený zdroj služba nemá modul runtime integrace |
 
 >[!IMPORTANT]
->Při kopírování dat do služby Salesforce, výchozí Runtime integrace Azure nelze použít ke spuštění kopírování. Jinými slovy, pokud vaše zdrojová propojené služby nemá zadaný integrace běhu, explicitně [vytvoření modulu Runtime integrace Azure](create-azure-integration-runtime.md#create-azure-ir) s umístěním téměř vaše instance služby Salesforce. Přidružení služby Salesforce propojené jako v následujícím příkladu.
+>Při kopírování dat do služby Salesforce, nelze provádět kopírování použít výchozí prostředí Azure Integration Runtime. Jinými slovy, pokud zdrojem propojená služba nemá zadaný integration runtime, explicitně [vytvořit prostředí Azure Integration Runtime](create-azure-integration-runtime.md#create-azure-ir) umístění blízko vaší instance služby Salesforce. Přidružte Salesforce propojené služby jako v následujícím příkladu.
 
-**Příklad: Přihlašovací údaje k úložišti v datové továrně**
+**Příklad: Store přihlašovacích údajů ve službě Data Factory**
 
 ```json
 {
@@ -97,7 +97,7 @@ Následující vlastnosti jsou podporovány pro službu propojené služby Sales
 }
 ```
 
-**Příklad: Přihlašovací údaje k úložišti v Key Vault**
+**Příklad: Store přihlašovacích údajů ve službě Key Vault**
 
 ```json
 {
@@ -133,14 +133,14 @@ Následující vlastnosti jsou podporovány pro službu propojené služby Sales
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datové sady](concepts-datasets-linked-services.md) článku. Tato část obsahuje seznam vlastností nepodporuje datová sada služby Salesforce.
+Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datových sad](concepts-datasets-linked-services.md) článku. Tato část obsahuje seznam vlastností podporovaných datovou sadu Salesforce.
 
-Ke zkopírování dat z a do služby Salesforce, nastavte vlastnost typu datové sady, která **SalesforceObject**. Jsou podporovány následující vlastnosti.
+Pro kopírování dat z a do Salesforce, nastavte vlastnost typ datové sady na **SalesforceObject**. Jsou podporovány následující vlastnosti.
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typu musí být nastavená na **SalesforceObject**.  | Ano |
-| objectApiName | Název objektu služby Salesforce k načtení dat z. | Ne Ano pro sink zdroje |
+| type | Vlastnost type musí být nastavená na **SalesforceObject**.  | Ano |
+| objectApiName | Název objektu Salesforce načítat data z. | Ne pro zdroj, Ano pro jímku |
 
 > [!IMPORTANT]
 > Část "__c" **název rozhraní API** je potřeba pro všechny vlastní objekt.
@@ -166,31 +166,31 @@ Ke zkopírování dat z a do služby Salesforce, nastavte vlastnost typu datové
 ```
 
 >[!NOTE]
->Pro zpětnou kompatibilitu: Při kopírování dat ze služby Salesforce, pokud používáte předchozí typ dataset "RelationalTable" udržuje práci a zobrazí návrhu přepnout na nový typ "SalesforceObject".
+>Z důvodu zpětné kompatibility: Při kopírování dat ze služby Salesforce, pokud používáte předchozí datovou sadu typu "RelationalTable" sleduje práci a uvidíte můžete přepnout na nový typ "SalesforceObject".
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typu datové sady musí být nastavena na **RelationalTable**. | Ano |
+| type | Vlastnost type datové sady, musí být nastavená na **RelationalTable**. | Ano |
 | tableName | Název tabulky v Salesforce. | Ne (když je zadán zdroj aktivity "dotaz") |
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivity, najdete v článku [kanály](concepts-pipelines-activities.md) článku. Tato část obsahuje seznam vlastností nepodporuje Salesforce zdroj a jímka.
+Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivit najdete v článku [kanály](concepts-pipelines-activities.md) článku. Tato část obsahuje seznam vlastností, které podporuje Salesforce zdroje a jímky.
 
-### <a name="salesforce-as-a-source-type"></a>Salesforce jako typ zdroje
+### <a name="salesforce-as-a-source-type"></a>Jako typ zdroje Salesforce
 
-Ke kopírování dat ze služby Salesforce, nastavte typ zdroje v aktivitě kopírování do **SalesforceSource**. Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** části.
+Pro kopírování dat ze služby Salesforce, nastavte typ zdroje v aktivitě kopírování do **SalesforceSource**. Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** oddílu.
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typ zdroje kopie aktivity musí být nastavena na **SalesforceSource**. | Ano |
-| query |Čtení dat pomocí vlastního dotazu. Můžete použít dotaz SQL 92 nebo [Salesforce objektu dotazu jazyka (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) dotazu. Příklad: `select * from MyTable__c`. | Ne (když je určena "tableName" v datové sadě) |
-| readBehavior | Označuje, zda dotaz na existující záznamy nebo dotaz na všechny záznamy, včetně těch odstraněné. Pokud není zadaný, použije se výchozí chování je první. <br>Povolené hodnoty: **dotazu** (výchozí), **queryAll**.  | Ne |
+| type | Vlastnost type zdroje aktivity kopírování musí být nastavená na **SalesforceSource**. | Ano |
+| query |Použijte vlastní dotaz číst data. Můžete použít dotaz SQL 92 nebo [Salesforce objektu dotazu jazyka (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) dotazu. Příklad: `select * from MyTable__c`. | Ne (když je "tableName" v datové sadě zadán) |
+| readBehavior | Označuje, zda dotaz existujících záznamů nebo dotazu včetně odstranil všechny záznamy. Pokud není zadán, výchozí chování je první. <br>Povolené hodnoty: **dotazu** (výchozí), **queryAll**.  | Ne |
 
 > [!IMPORTANT]
 > Část "__c" **název rozhraní API** je potřeba pro všechny vlastní objekt.
 
-![Připojení Salesforce objekt pro vytváření dat název rozhraní API seznamu](media/copy-data-from-salesforce/data-factory-salesforce-api-name-2.png)
+![Připojení Salesforce objekt pro vytváření dat seznamu název rozhraní API](media/copy-data-from-salesforce/data-factory-salesforce-api-name-2.png)
 
 **Příklad:**
 
@@ -225,21 +225,21 @@ Ke kopírování dat ze služby Salesforce, nastavte typ zdroje v aktivitě kop�
 ```
 
 >[!NOTE]
->Pro zpětnou kompatibilitu: Při kopírování dat ze služby Salesforce, pokud používáte předchozí kopie typu "RelationalSource" zdroji udržuje práci a zobrazí návrhu přepnout na nový typ "SalesforceSource".
+>Z důvodu zpětné kompatibility: Při kopírování dat ze služby Salesforce, pokud používáte předchozí kopie typu "RelationalSource" zdroj sleduje práci a najdete v článku můžete přepnout na nový typ "SalesforceSource".
 
 ### <a name="salesforce-as-a-sink-type"></a>Salesforce jako typ jímky
 
-Ke zkopírování dat do služby Salesforce, nastavte typ jímky v aktivitě kopírování do **SalesforceSink**. Následující vlastnosti jsou podporovány v aktivitě kopírování **podřízený** části.
+Ke zkopírování dat do služby Salesforce, nastavte typ jímky v aktivitě kopírování do **SalesforceSink**. Následující vlastnosti jsou podporovány v aktivitě kopírování **jímky** oddílu.
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typ jímky aktivity kopírování musíte nastavit **SalesforceSink**. | Ano |
-| writeBehavior | Chování zápisu pro danou operaci.<br/>Povolené hodnoty jsou **vložit** a **Upsert**. | Ne (výchozí hodnota je Insert) |
-| externalIdFieldName | Název pole externí ID pro operaci upsert. Zadané pole musí být definovaný jako "Externí Id pole" v objektu služby Salesforce. Odpovídající vstupních dat nemůže mít hodnotu NULL. | Ano pro "Upsert" |
-| writeBatchSize | Počet řádků dat zapsaných na Salesforce v každé dávce. | Ne (výchozí hodnota je 5 000) |
-| ignoreNullValues | Označuje, zda ignorovat hodnot NULL ze vstupních dat během operace zápisu.<br/>Povolené hodnoty jsou **true** a **false**.<br>- **Hodnota TRUE,**: ponechejte data v cílovém objektu beze změny po provedení operace upsert nebo aktualizace. Při operaci vložení, vložte definované výchozí hodnotu.<br/>- **False**: aktualizovat data v cílovém objektu na hodnotu NULL, když se operace upsert nebo aktualizace. Při operaci vložení, vložte hodnotu NULL. | Ne (výchozí hodnota je false) |
+| type | Nastavte vlastnost typ jímky aktivity kopírování **SalesforceSink**. | Ano |
+| WriteBehavior | Chování zápisu pro operaci.<br/>Povolené hodnoty jsou **vložit** a **Upsert**. | Ne (výchozí hodnota je vložení) |
+| externalIdFieldName | Název pole externího ID operace upsert. Zadané pole musí být definován jako "Pole externího Id" v objektu Salesforce. V odpovídající vstupní data nemůže mít hodnotu NULL. | Ano pro "Upsert" |
+| WriteBatchSize | Počet řádků dat zapsaných do Salesforce v každé dávce. | Ne (výchozí hodnota je 5 000) |
+| ignoreNullValues | Určuje, jestli se má ignorovat hodnot NULL ze vstupních dat během operace zápisu.<br/>Povolené hodnoty jsou **true** a **false**.<br>- **Hodnota TRUE**: ponechat data v cílové objektů beze změny, pokud tak učiníte, operace upsert nebo aktualizace. Definovaná výchozí hodnota vložte, když provedete operaci vložení.<br/>- **False**: aktualizace dat v cílového objektu na hodnotu NULL, pokud tak učiníte, operace upsert nebo aktualizace. Vložení hodnoty NULL, když provedete operaci vložení. | Ne (výchozí hodnota je false) |
 
-**Příklad: Salesforce jímka v aktivitě kopírování**
+**Příklad: Salesforce jímky v aktivitě kopírování**
 
 ```json
 "activities":[
@@ -274,20 +274,20 @@ Ke zkopírování dat do služby Salesforce, nastavte typ jímky v aktivitě kop
 ]
 ```
 
-## <a name="query-tips"></a>Typy dotazů
+## <a name="query-tips"></a>Tipy k dotazům
 
-### <a name="retrieve-data-from-a-salesforce-report"></a>Načíst data ze sestavy služby Salesforce
+### <a name="retrieve-data-from-a-salesforce-report"></a>Načtení dat ze sestav Salesforce
 
-Ze sestavy služby Salesforce můžete data načíst zadáním dotazu jako `{call "<report name>"}`. Příklad: `"query": "{call \"TestReport\"}"`.
+Zadáním dotazu, protože může načítat data ze sestav Salesforce `{call "<report name>"}`. Příklad: `"query": "{call \"TestReport\"}"`.
 
-### <a name="retrieve-deleted-records-from-the-salesforce-recycle-bin"></a>Načtení odstraněné záznamy z koše služby Salesforce
+### <a name="retrieve-deleted-records-from-the-salesforce-recycle-bin"></a>Načíst odstraněné záznamy z odpadkového koše služby Salesforce
 
-Chcete-li prohledávat logicky odstraněné záznamy z koše služby Salesforce, můžete zadat **"IsDeleted = 1"** v dotazu. Příklad:
+K dotazování obnovitelně odstraněné záznamy z koše služby Salesforce, můžete zadat **"IsDeleted = 1"** v dotazu. Příklad:
 
 * Chcete-li prohledávat pouze odstraněné záznamy, zadejte "vybrat * z MyTable__c **kde IsDeleted = 1**."
-* Chcete-li prohledávat všechny záznamy, včetně existující a Odstraněná, zadejte "vybrat * z MyTable__c **kde IsDeleted = 0 nebo IsDeleted = 1**."
+* Chcete-li prohledávat všechny záznamy, včetně stávající a Odstraněná, zadejte "vybrat * z MyTable__c **kde IsDeleted = 0 nebo IsDeleted = 1**."
 
-### <a name="retrieve-data-by-using-a-where-clause-on-the-datetime-column"></a>Načtení dat pomocí where klauzule ve sloupci data a času
+### <a name="retrieve-data-by-using-a-where-clause-on-the-datetime-column"></a>Načtení dat pomocí where klauzuli sloupce data a času
 
 Při zadávání dotazu SOQL nebo SQL věnujte pozornost rozdíl formátu data a času. Příklad:
 
@@ -296,29 +296,29 @@ Při zadávání dotazu SOQL nebo SQL věnujte pozornost rozdíl formátu data a
 
 ## <a name="data-type-mapping-for-salesforce"></a>Datový typ mapování pro Salesforce
 
-Při kopírování dat ze služby Salesforce se používají následující mapování ze služby Salesforce datové typy k objektu pro vytváření dat dočasné datové typy. Další informace o aktivitě kopírování jak mapuje typ zdroje schéma a data na jímky najdete v tématu [schéma a data zadejte mapování](copy-activity-schema-and-type-mapping.md).
+Při kopírování dat ze služby Salesforce se používají následující mapování ze Salesforce datové typy do služby Data Factory dočasné datových typů. Další informace o jak aktivita kopírování mapuje typ zdroje schéma a data jímky, najdete v článku [schéma a data zadejte mapování](copy-activity-schema-and-type-mapping.md).
 
-| Salesforce datový typ | Typ průběžných dat objektu pro vytváření dat |
+| Datový typ Salesforce | Data Factory dočasné datový typ |
 |:--- |:--- |
-| Automatické číslování |Řetězec |
-| zaškrtávací políčko |Logická hodnota |
-| Měna |Double |
+| Automatické číslo |Řetězec |
+| Zaškrtávací políčko |Logická hodnota |
+| Měna |Decimal |
 | Datum |DateTime |
 | Datum/čas |DateTime |
 | Email |Řetězec |
 | ID |Řetězec |
-| Relace hledání |Řetězec |
-| Vybrat víc rozevíracího seznamu |Řetězec |
-| Číslo |Double |
-| Procento |Double |
+| Relaci vyhledávání |Řetězec |
+| Vyberte rozevírací seznam |Řetězec |
+| Číslo |Decimal |
+| Procento |Decimal |
 | Telefon |Řetězec |
 | Rozevírací seznam |Řetězec |
 | Text |Řetězec |
-| Textová oblast |Řetězec |
-| Textová oblast (Long) |Řetězec |
-| (Rich) textová oblast |Řetězec |
-| Text (šifrované) |Řetězec |
+| Textové pole |Řetězec |
+| Textová oblast (dlouhý) |Řetězec |
+| Textové pole (RTF) |Řetězec |
+| Text (zašifrovaný) |Řetězec |
 | zprostředkovatele identity |Řetězec |
 
 ## <a name="next-steps"></a>Další postup
-Seznam úložišť dat jako zdroje a jímky nepodporuje aktivitu kopírování v objektu pro vytváření dat najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).
+Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).
