@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 690775bb2ff0d5ee16ec5d7f1869c4f23b3745ad
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 60a15c69f1ec748e366697640707804565245cea
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37900911"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39001581"
 ---
 # <a name="use-a-linux-vm-managed-service-identity-msi-to-access-azure-resource-manager"></a>Použití identity spravované služby (MSI) na virtuálním počítači s Linuxem pro přístup k Azure k Resource Manageru
 
@@ -50,7 +50,7 @@ V tomto kurzu vytvoříme nový virtuální počítač s Linuxem. MSI také mů�
 2. Vyberte **Compute** a potom vyberte **Ubuntu Server 16.04 LTS**.
 3. Zadejte informace o virtuálním počítači. V poli **Typ ověřování** vyberte **Veřejný klíč SSH** nebo **Heslo**. Vytvořené přihlašovací údaje umožňují přihlásit se k virtuálnímu počítači.
 
-    ![Text k alternativnímu obrázku](../media/msi-tutorial-linux-vm-access-arm/msi-linux-vm.png)
+    ![Text k alternativnímu obrázku](media/msi-tutorial-linux-vm-access-arm/msi-linux-vm.png)
 
 4. U virtuálního počítače v rozevíracím seznamu zvolte **Předplatné**.
 5. Pokud chcete vybrat novou **skupinu prostředků**, ve které chcete vytvořit virtuální počítač, zvolte **Vytvořit novou**. Jakmile budete hotovi, klikněte na **OK**.
@@ -62,10 +62,10 @@ Funkce MSI na virtuálním počítači umožňuje získat z Azure AD přístupov
 
 1. Vyberte **virtuální počítač**, na kterém chcete povolit MSI.
 2. Na navigačním panelu vlevo klikněte na **Konfigurace**.
-3. Zobrazí se **Identita spravované služby**. Pokud chcete funkci MSI zaregistrovat a povolit, vyberte **Ano**. Pokud ji chcete zakázat, vyberte Ne.
+3. Zobrazí se **Identita spravované služby**. Pokud chcete MSI zaregistrovat a povolit, vyberte **Ano**. Pokud ji chcete zakázat, zvolte Ne.
 4. Nezapomeňte konfiguraci uložit kliknutím na **Uložit**.
 
-    ![Text k alternativnímu obrázku](../media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
+    ![Text k alternativnímu obrázku](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 
 ## <a name="grant-your-vm-access-to-a-resource-group-in-azure-resource-manager"></a>Udělení přístupu virtuálnímu počítači ke skupině prostředků v Azure Resource Manageru 
 
@@ -79,7 +79,7 @@ Když použijete MSI, může kód získat přístupové tokeny používané při
 6. Potom zkontrolujte, že je v rozevíracím seznamu **Předplatné** uvedené správné předplatné. A ve **skupině prostředků** vyberte **Všechny skupiny prostředků**.
 7. Nakonec **vyberte** v rozevíracím seznamu svůj linuxový virtuální počítač a klikněte na **Uložit**.
 
-    ![Text k alternativnímu obrázku](../media/msi-tutorial-linux-vm-access-arm/msi-permission-linux.png)
+    ![Text k alternativnímu obrázku](media/msi-tutorial-linux-vm-access-arm/msi-permission-linux.png)
 
 ## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-call-resource-manager"></a>Získání přístupového tokenu pomocí identity virtuálního počítače a jeho použití k volání Resource Manageru 
 

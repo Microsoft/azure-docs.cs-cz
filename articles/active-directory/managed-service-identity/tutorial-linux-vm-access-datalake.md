@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 92bd7190832da6ee9da7d1679b9f27b66a15e3a4
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: ce38dabbe9aa69f7c54bb49888ad83e01a7c9522
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37904301"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39004876"
 ---
 # <a name="tutorial-use-managed-service-identity-for-a-linux-vm-to-access-azure-data-lake-store"></a>Kurz: Použití identity spravované služby (MSI) na virtuálním počítači s Linuxem pro přístup k Azure Data Lake Store
 
@@ -52,7 +52,7 @@ V tomto kurzu vytvoříme nový virtuální počítač s Linuxem. MSI také mů�
 2. Vyberte **Compute** a potom vyberte **Ubuntu Server 16.04 LTS**.
 3. Zadejte informace o virtuálním počítači. V poli **Typ ověřování** vyberte **Veřejný klíč SSH** nebo **Heslo**. Vytvořené přihlašovací údaje umožňují přihlásit se k virtuálnímu počítači.
 
-   ![Podokno základních údajů při vytvoření virtuálního počítače](../media/msi-tutorial-linux-vm-access-arm/msi-linux-vm.png)
+   ![Podokno základních údajů při vytvoření virtuálního počítače](media/msi-tutorial-linux-vm-access-arm/msi-linux-vm.png)
 
 4. V seznamu **Předplatné** vyberte předplatné virtuálního počítače.
 5. Pokud chcete vybrat novou skupinu prostředků, ve které chcete vytvořit virtuální počítač, vyberte **Skupina prostředků** > **Vytvořit nový**. Jakmile budete hotovi, vyberte **OK**.
@@ -65,7 +65,7 @@ Funkce MSI virtuálního počítače umožňuje získat z Azure AD přístupové
 1. V poli **Virtuální počítač** vyberte virtuální počítač, na kterém chcete povolit MSI.
 2. V levém podokně vyberte **Konfigurace**.
 3. Zobrazí se **Identita spravované služby**. Pokud chcete MSI zaregistrovat a povolit, vyberte **Ano**. Pokud chcete MSI zakázat, vyberte **Ne**.
-   ![Výběr možnosti Zaregistrovat do Azure Active Directory](../media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
+   ![Výběr možnosti Zaregistrovat do Azure Active Directory](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 4. Vyberte **Uložit**.
 
 ## <a name="grant-your-vm-access-to-azure-data-lake-store"></a>Udělení přístupu virtuálnímu počítači k Azure Data Lake Store

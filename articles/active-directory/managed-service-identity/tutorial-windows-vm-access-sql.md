@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: c2c93b8f6b4f8c4d888f7105f09e96dd9df7b574
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 72452382c4fd2f9c1acb0d773da5c7ed014f9bda
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37902618"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39001928"
 ---
 # <a name="tutorial-use-a-windows-vm-managed-service-identity-msi-to-access-azure-sql"></a>Kurz: Použití Identity spravované služby (MSI) virtuálního počítače s Windows pro přístup k Azure SQL
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-V tomto kurzu se dozvíte, jak použít Identitu spravované služby (MSI) pro virtuální počítač s Windows pro přístup k serveru SQL Azure. Identity spravovaných služeb, které se spravují automaticky v Azure, slouží k ověřování přihlášení ke službám podporujícím ověřování Azure AD bez nutnosti vložení přihlašovacích údajů do kódu. Získáte informace o těchto tématech:
+V tomto kurzu se dozvíte, jak použít Identitu spravované služby (MSI) pro virtuální počítač s Windows pro přístup k serveru SQL Azure. Identity spravovaných služeb, které se spravují automaticky v Azure, slouží k ověření přístupu ke službám podporujícím ověřování Azure AD bez nutnosti vložení přihlašovacích údajů do kódu. Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Povolení MSI na virtuálním počítači s Windows 
@@ -44,26 +44,26 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 
 ## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>Vytvoření virtuálního počítače s Windows v nové skupině prostředků
 
-V tomto kurzu vytvoříme nový virtuální počítač s Windows.  MSI můžete povolit také na stávajícím virtuálním počítači.
+V tomto kurzu vytvoříme nový virtuální počítač s Windows.  MSI také můžete povolit na stávajícím virtuálním počítači.
 
 1.  Klikněte na tlačítko **Vytvořit prostředek** v levém horním rohu webu Azure Portal.
 2.  Vyberte **Compute** a potom vyberte **Windows Server 2016 Datacenter**. 
-3.  Zadejte informace o virtuálním počítači. Zde vytvořené **Uživatelské jméno** a **Heslo** slouží jako přihlašovací údaje pro přihlášení k virtuálnímu počítači.
-4.  V rozevíracím seznamu zvolte pro virtuální počítač správné **Předplatné**.
+3.  Zadejte informace o virtuálním počítači. Vytvořené **Uživatelské jméno** a **Heslo** použijete při přihlášení k virtuálnímu počítači.
+4.  V rozevíracím seznamu zvolte pro virtuální počítač správné **předplatné**.
 5.  Pokud chcete vybrat novou **skupinu prostředků**, ve které se má virtuální počítač vytvořit, zvolte **Vytvořit novou**. Jakmile budete hotovi, klikněte na **OK**.
 6.  Vyberte velikost virtuálního počítače. Pokud chcete zobrazit další velikosti, vyberte **Zobrazit všechny** nebo změňte filtr **Podporovaný typ disku**. Na stránce Nastavení ponechte výchozí nastavení a klikněte na **OK**.
 
-    ![Alternativní text k obrázku](../media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
+    ![Text k alternativnímu obrázku](media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
 
 ## <a name="enable-msi-on-your-vm"></a>Povolení MSI na virtuálním počítači 
 
 MSI virtuálního počítače umožňuje získat z Azure AD přístupové tokeny bez nutnosti vložení přihlašovacích údajů do kódu. Povolením MSI sdělíte Azure, že má pro váš virtuální počítač vytvořit spravovanou identitu. Při povolení MSI se na pozadí stanou dvě věci: virtuální počítač se zaregistruje v Azure Active Directory, aby se vytvořila jeho spravovaná identita, a tato identita se nakonfiguruje na virtuálním počítači.
 
 1.  Vyberte **virtuální počítač**, na kterém chcete MSI povolit.  
-2.  Na levém navigačním panelu klikněte na **Konfigurace**. 
+2.  Na navigačním panelu vlevo klikněte na **Konfigurace**. 
 3.  Zobrazí se **Identita spravované služby**. Pokud chcete MSI zaregistrovat a povolit, vyberte **Ano**. Pokud ji chcete zakázat, zvolte Ne. 
 4.  Nezapomeňte konfiguraci uložit kliknutím na **Uložit**.  
-    ![Alternativní text k obrázku](../media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
+    ![Alternativní text k obrázku](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 
 ## <a name="grant-your-vm-access-to-a-database-in-an-azure-sql-server"></a>Udělení přístupu virtuálnímu počítači k databázi na serveru SQL Azure
 
@@ -227,7 +227,7 @@ if (accessToken != null) {
 Dalším způsobem, jak rychle otestovat kompletní nastavení bez nutnosti psát kód a nasazovat aplikaci do virtuálního počítače, je použít PowerShell.
 
 1.  Na portálu přejděte na **Virtuální počítače**, přejděte ke svému virtuálnímu počítači s Windows a v části **Přehled** klikněte na **Připojit**. 
-2.  Zadejte své **Uživatelské jméno** a **Heslo**, které jste přidali při vytváření virtuálního počítače s Windows. 
+2.  Zadejte své **uživatelské jméno** a **heslo**, které jste přidali při vytváření virtuálního počítače s Windows. 
 3.  Teď, když jste vytvořili **připojení ke vzdálené ploše** virtuálního počítače, otevřete ve vzdálené relaci **PowerShell**. 
 4.  Pomocí `Invoke-WebRequest` v PowerShellu odešlete do místního koncového bodu MSI žádost o přístupový token pro Azure SQL.
 
