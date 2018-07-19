@@ -8,12 +8,12 @@ ms.author: tomfitz
 ms.date: 07/05/2018
 ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: 4e547a97cde896acc4b6c8b19bc6c6cebf512adb
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 423995aecc6e5f29464ad140349ba27f89c75b5d
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37867626"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39068739"
 ---
 # <a name="create-and-route-blob-storage-events-with-the-azure-portal-and-event-grid"></a>Vytvoření a směrování událostí úložiště objektů blob pomocí webu Azure Portal a služby Event Grid
 
@@ -27,7 +27,7 @@ Až budete hotovi, uvidíte, že se data události odeslala do webové aplikace.
 
 ## <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
-Pokud chcete používat události úložiště objektů blob, potřebujete buď [účet úložiště objektů blob](../storage/common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-storage-accounts), nebo [účet úložiště pro obecné účely v2](../storage/common/storage-account-options.md#general-purpose-v2). Účty pro **obecné účely v2 (GPv2)** jsou účty úložiště, které podporují všechny funkce všech služeb úložiště, včetně objektů blob, souborů, front a tabulek. **Účet úložiště objektů blob** je specializovaný účet úložiště pro ukládání nestrukturovaných dat v podobě objektů blob do služby Azure Storage. Účty úložiště objektů blob jsou podobné účtům úložiště pro obecné účely a mají stejně vysokou odolnost, dostupnost, škálovatelnost a výkonnost, a navíc mají 100% konzistentnost rozhraní API pro objekty blob bloku a doplňovací objekty blob. V případě aplikací, které vyžadují jenom úložiště objektů blob bloku nebo objektů blob doporučujeme používat účty úložiště objektů blob. 
+Pokud chcete používat události úložiště objektů blob, potřebujete buď [účet úložiště objektů blob](../storage/common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-storage-accounts), nebo [účet úložiště pro obecné účely v2](../storage/common/storage-account-options.md#general-purpose-v2-accounts). Účty pro **obecné účely v2 (GPv2)** jsou účty úložiště, které podporují všechny funkce všech služeb úložiště, včetně objektů blob, souborů, front a tabulek. **Účet úložiště objektů blob** je specializovaný účet úložiště pro ukládání nestrukturovaných dat v podobě objektů blob do služby Azure Storage. Účty úložiště objektů blob jsou podobné účtům úložiště pro obecné účely a mají stejně vysokou odolnost, dostupnost, škálovatelnost a výkonnost, a navíc mají 100% konzistentnost rozhraní API pro objekty blob bloku a doplňovací objekty blob. V případě aplikací, které vyžadují jenom úložiště objektů blob bloku nebo objektů blob doporučujeme používat účty úložiště objektů blob. 
 
 1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
 

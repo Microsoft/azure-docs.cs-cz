@@ -16,12 +16,12 @@ ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6c9c4b7db93810cac4518885eb86572b2be7ca05
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 91436af0aa26c079d5cd2cc19d16a1ff0354e860
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37915336"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39126588"
 ---
 # <a name="federate-multiple-instances-of-azure-ad-with-single-instance-of-ad-fs"></a>Vytvoření federace několika instancí Azure AD s jednou instancí AD FS
 
@@ -60,7 +60,7 @@ V relaci prostředí Azure AD PowerShell proveďte následující kroky: Připoj
     Connect-MsolService
 Převeďte spravovanou doménu fabrikam.com na federovanou:
 
-    Convert-MsolDomainToFederated -DomainName anandmsft.com -Verbose -SupportMultipleDomain
+    Convert-MsolDomainToFederated -DomainName fabrikam.com -Verbose -SupportMultipleDomain
  
 Uvedená operace vytvoří federaci domény fabrikam.com se stejnou službou AD FS. Nastavení domény můžete ověřit pomocí příkazu Get-MsolDomainFederationSettings pro obě domény.
 
