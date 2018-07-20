@@ -40,6 +40,8 @@
       href: ../azure-resource-manager/resource-group-overview.md
 - name: Zdroje a prostředky
   items:
+    - name: Nejčastější dotazy
+      href: firewall-faq.md
     - name: Tvorba šablon
       href: ../azure-resource-manager/resource-group-authoring-templates.md
     - name: Plány Azure do budoucna

@@ -230,9 +230,9 @@
     - name: Vyhledání oblasti prostřednictvím kódu programu
       items:
         - name: 'Pomocí C#'
-          href: find-region-csharp.md
+          href: luis-find-region-csharp.md
         - name: Pomocí Node.js
-          href: find-region-nodejs.md
+          href: luis-find-region-nodejs.md
 - name: Referenční informace
   items:
     - name: Ochrana osobních údajů uživatele
