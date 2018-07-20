@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/14/2018
+ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: e955973008f1ba3900deb691426d0409440ad08a
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 3f2480fb1068096bf77a3677ad62c886bc4774bb
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917723"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39160150"
 ---
 # <a name="azure-active-directory-pass-through-authentication-upgrade-preview-authentication-agents"></a>Azure Active Directory předávací ověřování: Agentů ověřování upgradu ve verzi preview
 
@@ -51,7 +51,7 @@ Kontrola verze agentů ověřování, na každém serveru identifikován v před
 
 1. Přejděte na **ovládací panely -> programy -> programy a funkce** na místním serveru.
 2. Pokud je záznam pro "**agenta služby Microsoft Azure AD Connect ověřování**", není nutné provádět žádnou akci na tomto serveru.
-3. Pokud je záznam pro "**Microsoft Azure AD Application Proxy Connector**", verze 1.5.132.0 nebo starší, budete muset ručně upgradovat na tomto serveru.
+3. Pokud je záznam pro "**Microsoft Azure AD Application Proxy Connector**", je třeba ručně upgradovat na tomto serveru.
 
 ![Verze Preview ověřovacího agenta služby](./media/active-directory-aadconnect-pass-through-authentication/pta6.png)
 

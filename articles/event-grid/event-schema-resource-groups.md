@@ -1,92 +1,164 @@
 ---
-title: Azure schématu události skupiny prostředků událostí mřížky
-description: Popisuje vlastnosti, které jsou k dispozici pro události skupinu prostředků s Azure událostí mřížky
+title: Azure Event Grid prostředek skupiny událostí schématu
+description: Popisuje vlastnosti, které jsou k dispozici pro události skupiny prostředků pomocí Azure Event gridu
 services: event-grid
 author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 01/30/2018
+ms.date: 07/19/2018
 ms.author: tomfitz
-ms.openlocfilehash: 163c32bdb8a3fdc278404b9e26fdc3097797d16c
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: a195f5c20a9e2b525e683c8b9e2480b83c83207a
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34301946"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39159242"
 ---
-# <a name="azure-event-grid-event-schema-for-resource-groups"></a>Azure schématu události událostí mřížky pro skupiny prostředků
+# <a name="azure-event-grid-event-schema-for-resource-groups"></a>Schéma událostí Azure Event Grid pro skupiny prostředků
 
-Tento článek poskytuje vlastnosti a schématu pro události skupiny prostředků. Úvod do schémata událostí, naleznete v části [schématu události mřížky událostí Azure](event-schema.md).
+Tento článek obsahuje vlastnosti a schéma pro události skupiny prostředků. Úvod do schémata událostí, naleznete v tématu [schéma událostí služby Azure Event Grid](event-schema.md).
 
-Skupiny prostředků a předplatná Azure emitování stejné typy událostí. Typy událostí se vztahují na změny v prostředky. Základní rozdíl je, že skupiny prostředků emitování události pro prostředky ve skupině prostředků a předplatná Azure emitování napříč předplatného události pro prostředky. 
+Skupiny prostředků a předplatná Azure generování stejné typy událostí. Typy událostí se vztahují na změny v prostředcích. Hlavní rozdíl je, že skupiny prostředků vysílat události pro prostředky v rámci skupiny prostředků a předplatných Azure vysílat události pro prostředky v rámci předplatného. 
 
 ## <a name="available-event-types"></a>Typy událostí k dispozici
 
-Skupiny prostředků emitování události správy z Azure Resource Manager, například při vytvoření virtuálního počítače nebo je odstranit účet úložiště.
+Skupiny prostředků vysílat události management z Azure Resource Manageru, například při vytvoření virtuálního počítače nebo účet úložiště je odstraněný.
 
 | Typ události | Popis |
 | ---------- | ----------- |
-| Microsoft.Resources.ResourceWriteSuccess | Vyvolá, když prostředek vytvořit nebo aktualizovat operace úspěšná. |
-| Microsoft.Resources.ResourceWriteFailure | Vyvolá, když vytvoření prostředku nebo operace aktualizace se nezdaří. |
-| Microsoft.Resources.ResourceWriteCancel | Vyvolá, když prostředek vytvořit nebo aktualizovat operace je zrušená. |
-| Microsoft.Resources.ResourceDeleteSuccess | Vyvolá, když se podaří operaci odstranění prostředků. |
-| Microsoft.Resources.ResourceDeleteFailure | Vyvolá, když se nezdaří operace odstranění prostředků. |
-| Microsoft.Resources.ResourceDeleteCancel | Vyvolá, když je operaci odstranění prostředku došlo ke zrušení. Tato událost se stane, když nasazení šablony se zruší. |
+| Microsoft.Resources.ResourceWriteSuccess | Vyvoláno při prostředek vytvořit nebo aktualizovat operace proběhne úspěšně. |
+| Microsoft.Resources.ResourceWriteFailure | Vyvolá se při vytvoření prostředku nebo operace aktualizace se nezdaří. |
+| Microsoft.Resources.ResourceWriteCancel | Vyvoláno při prostředek vytvořit nebo aktualizovat operace se zrušila. |
+| Microsoft.Resources.ResourceDeleteSuccess | Vyvolá se při úspěšné operaci odstranění prostředku. |
+| Microsoft.Resources.ResourceDeleteFailure | Vyvoláno, když selže operace odstranění prostředku. |
+| Microsoft.Resources.ResourceDeleteCancel | Vyvoláno, když je zrušena operace odstranění prostředku. Tato událost se stane, když se zruší nasazení šablony. |
 
-## <a name="example-event"></a>Příklad událostí
+## <a name="example-event"></a>Příklad události
 
-Následující příklad ukazuje schéma prostředku vytvořit událost: 
-
-```json
-[
-  {
-    "topic":"/subscriptions/{subscription-id}/resourceGroups/{resource-group}",
-    "subject":"/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventGrid/eventSubscriptions/LogicAppdd584bdf-8347-49c9-b9a9-d1f980783501",
-    "eventType":"Microsoft.Resources.ResourceWriteSuccess",
-    "eventTime":"2017-08-16T03:54:38.2696833Z",
-    "id":"25b3b0d0-d79b-44d5-9963-440d4e6a9bba",
-    "data": {
-        "authorization":"{azure_resource_manager_authorizations}",
-        "claims":"{azure_resource_manager_claims}",
-        "correlationId":"54ef1e39-6a82-44b3-abc1-bdeb6ce4d3c6",
-        "httpRequest":"{request-operation}",
-        "resourceProvider":"Microsoft.EventGrid",
-        "resourceUri":"/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventGrid/eventSubscriptions/LogicAppdd584bdf-8347-49c9-b9a9-d1f980783501",
-        "operationName":"Microsoft.EventGrid/eventSubscriptions/write",
-        "status":"Succeeded",
-        "subscriptionId":"{subscription-id}",
-        "tenantId":"72f988bf-86f1-41af-91ab-2d7cd011db47"
-    },
-    "dataVersion": "",
-    "metadataVersion": "1"
-  }
-]
-```
-
-Schéma pro prostředek odstranit události je podobný:
+Následující příklad ukazuje schématu prostředku vytvořeného události: 
 
 ```json
 [{
-  "topic":"/subscriptions/{subscription-id}/resourceGroups/{resource-group}",
-  "subject": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventGrid/eventSubscriptions/LogicApp0ecd6c02-2296-4d7c-9865-01532dc99c93",
-  "eventType": "Microsoft.Resources.ResourceDeleteSuccess",
-  "eventTime": "2017-11-07T21:24:19.6959483Z",
-  "id": "7995ecce-39d4-4851-b9d7-a7ef87a06bf5",
+  "subject": "/subscriptions/{subscription-id}/resourcegroups/{resource-group}/providers/Microsoft.Storage/storageAccounts/{storage-name}",
+  "eventType": "Microsoft.Resources.ResourceWriteSuccess",
+  "eventTime": "2018-07-19T18:38:04.6117357Z",
+  "id": "4db48cba-50a2-455a-93b4-de41a3b5b7f6",
   "data": {
-    "authorization": "{azure_resource_manager_authorizations}",
-    "claims": "{azure_resource_manager_claims}",
-    "correlationId": "7995ecce-39d4-4851-b9d7-a7ef87a06bf5",
-    "httpRequest": "{request-operation}",
-    "resourceProvider": "Microsoft.EventGrid",
-    "resourceUri": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventGrid/eventSubscriptions/LogicAppdd584bdf-8347-49c9-b9a9-d1f980783501",
-    "operationName": "Microsoft.EventGrid/eventSubscriptions/delete",
+    "authorization": {
+      "scope": "/subscriptions/{subscription-id}/resourcegroups/{resource-group}/providers/Microsoft.Storage/storageAccounts/{storage-name}",
+      "action": "Microsoft.Storage/storageAccounts/write",
+      "evidence": {
+        "role": "Subscription Admin"
+      }
+    },
+    "claims": {
+      "aud": "{audience-claim}",
+      "iss": "{issuer-claim}",
+      "iat": "{issued-at-claim}",
+      "nbf": "{not-before-claim}",
+      "exp": "{expiration-claim}",
+      "_claim_names": "{\"groups\":\"src1\"}",
+      "_claim_sources": "{\"src1\":{\"endpoint\":\"{URI}\"}}",
+      "http://schemas.microsoft.com/claims/authnclassreference": "1",
+      "aio": "{token}",
+      "http://schemas.microsoft.com/claims/authnmethodsreferences": "rsa,mfa",
+      "appid": "{ID}",
+      "appidacr": "2",
+      "http://schemas.microsoft.com/2012/01/devicecontext/claims/identifier": "{ID}",
+      "e_exp": "{expiration}",
+      "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname": "{last-name}",
+      "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname": "{first-name}",
+      "ipaddr": "{IP-address}",
+      "name": "{full-name}",
+      "http://schemas.microsoft.com/identity/claims/objectidentifier": "{ID}",
+      "onprem_sid": "{ID}",
+      "puid": "{ID}",
+      "http://schemas.microsoft.com/identity/claims/scope": "user_impersonation",
+      "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier": "{ID}",
+      "http://schemas.microsoft.com/identity/claims/tenantid": "{ID}",
+      "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name": "{user-name}",
+      "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn": "{user-name}",
+      "uti": "{ID}",
+      "ver": "1.0"
+    },
+    "correlationId": "{ID}",
+    "resourceProvider": "Microsoft.Storage",
+    "resourceUri": "/subscriptions/{subscription-id}/resourcegroups/{resource-group}/providers/Microsoft.Storage/storageAccounts/{storage-name}",
+    "operationName": "Microsoft.Storage/storageAccounts/write",
     "status": "Succeeded",
     "subscriptionId": "{subscription-id}",
-    "tenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47"
+    "tenantId": "{tenant-id}"
   },
-  "dataVersion": "",
-  "metadataVersion": "1"
+  "dataVersion": "2",
+  "metadataVersion": "1",
+  "topic": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}"
+}]
+```
+
+Schéma prostředek odstraněn události se podobá:
+
+```json
+[{
+  "subject": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Storage/storageAccounts/{storage-name}",
+  "eventType": "Microsoft.Resources.ResourceDeleteSuccess",
+  "eventTime": "2018-07-19T19:24:12.763881Z",
+  "id": "19a69642-1aad-4a96-a5ab-8d05494513ce",
+  "data": {
+    "authorization": {
+      "scope": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Storage/storageAccounts/{storage-name}",
+      "action": "Microsoft.Storage/storageAccounts/delete",
+      "evidence": {
+        "role": "Subscription Admin"
+      }
+    },
+    "claims": {
+      "aud": "{audience-claim}",
+      "iss": "{issuer-claim}",
+      "iat": "{issued-at-claim}",
+      "nbf": "{not-before-claim}",
+      "exp": "{expiration-claim}",
+      "_claim_names": "{\"groups\":\"src1\"}",
+      "_claim_sources": "{\"src1\":{\"endpoint\":\"{URI}\"}}",
+      "http://schemas.microsoft.com/claims/authnclassreference": "1",
+      "aio": "{token}",
+      "http://schemas.microsoft.com/claims/authnmethodsreferences": "rsa,mfa",
+      "appid": "{ID}",
+      "appidacr": "2",
+      "http://schemas.microsoft.com/2012/01/devicecontext/claims/identifier": "{ID}",
+      "e_exp": "262800",
+      "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname": "{last-name}",
+      "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname": "{first-name}",
+      "ipaddr": "{IP-address}",
+      "name": "{full-name}",
+      "http://schemas.microsoft.com/identity/claims/objectidentifier": "{ID}",
+      "onprem_sid": "{ID}",
+      "puid": "{ID}",
+      "http://schemas.microsoft.com/identity/claims/scope": "user_impersonation",
+      "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier": "{ID}",
+      "http://schemas.microsoft.com/identity/claims/tenantid": "{ID}",
+      "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name": "{user-name}",
+      "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn": "{user-name}",
+      "uti": "{ID}",
+      "ver": "1.0"
+    },
+    "correlationId": "{ID}",
+    "httpRequest": {
+      "clientRequestId": "{ID}",
+      "clientIpAddress": "{IP-address}",
+      "method": "DELETE",
+      "url": "https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Storage/storageAccounts/{storage-name}?api-version=2018-02-01"
+    },
+    "resourceProvider": "Microsoft.Storage",
+    "resourceUri": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Storage/storageAccounts/{storage-name}",
+    "operationName": "Microsoft.Storage/storageAccounts/delete",
+    "status": "Succeeded",
+    "subscriptionId": "{subscription-id}",
+    "tenantId": "{tenant-id}"
+  },
+  "dataVersion": "2",
+  "metadataVersion": "1",
+  "topic": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}"
 }]
 ```
 
@@ -96,31 +168,31 @@ Událost má následující dat nejvyšší úrovně:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| Téma | řetězec | Úplné prostředků cesta ke zdroji událostí. Toto pole není možné zapisovat. Událost mřížky poskytuje tuto hodnotu. |
-| Předmět | řetězec | Cesta definované vydavatele události předmět. |
-| Typ události | řetězec | Jeden z typů událostí registrovaných pro tento zdroj událostí. |
-| eventTime | řetězec | Čas, který se vygeneruje událost založené na čas UTC poskytovatele. |
+| téma | řetězec | Úplné prostředků cesta ke zdroji události. Toto pole není zapisovatelná. Event gridu poskytuje tuto hodnotu. |
+| Předmět | řetězec | Vydavatel definované cesta předmět události. |
+| Typ události | řetězec | Jeden z typů registrované události pro tento zdroj událostí. |
+| čas události | řetězec | Vygenerování události podle času UTC poskytovatele. |
 | id | řetězec | Jedinečný identifikátor pro událost. |
-| data | objekt | Data události skupiny prostředků. |
-| dataVersion | řetězec | Verze schématu datového objektu Vydavatel definuje verze schématu. |
-| metadataVersion | řetězec | Verze schématu metadat události Událost mřížky definuje schéma vlastnosti nejvyšší úrovně. Událost mřížky poskytuje tuto hodnotu. |
+| data | objekt | Data událostí skupiny prostředků. |
+| dataVersion | řetězec | Verze schématu datového objektu Vydavatel Určuje verzi schématu. |
+| verze metadataVersion | řetězec | Verze schématu metadat události Event Grid definuje schéma vlastnosti nejvyšší úrovně. Event gridu poskytuje tuto hodnotu. |
 
 Datový objekt má následující vlastnosti:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
 | Autorizace | řetězec | Požadovaná oprávnění pro operaci. |
-| Deklarace identity | řetězec | Vlastnosti deklarace identity. |
+| deklarace identity | řetězec | Vlastnosti deklarace identity. Další informace najdete v tématu [JWT specifikace](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html). |
 | correlationId | řetězec | ID operace odstraňování potíží. |
 | httpRequest | řetězec | Podrobnosti o operaci. |
-| resourceProvider | řetězec | Zprostředkovatel prostředků provádění této operace. |
+| ResourceProvider | řetězec | Poskytovatel prostředků provádění této operace. |
 | resourceUri | řetězec | Identifikátor URI prostředku v operaci. |
 | operationName | řetězec | Operace, která byla provedena. |
 | status | řetězec | Stav operace. |
 | subscriptionId | řetězec | ID předplatného prostředku. |
-| TenantId | řetězec | ID klienta prostředku. |
+| ID Tenanta | řetězec | ID tenanta prostředku. |
 
 ## <a name="next-steps"></a>Další postup
 
-* Úvod do Azure událostí mřížky, najdete v části [co je mřížky událostí?](overview.md)
-* Další informace o vytváření předplatného služby Azure událostí mřížky, najdete v části [schématu odběru událostí mřížky](subscription-creation-schema.md).
+* Úvod do služby Azure Event Grid najdete v tématu [novinky služby Event Grid?](overview.md)
+* Další informace o vytváření předplatného služby Azure Event Grid najdete v tématu [schéma předplatného služby Event Grid](subscription-creation-schema.md).

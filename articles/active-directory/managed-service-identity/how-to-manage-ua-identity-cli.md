@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/16/2018
 ms.author: daveba
-ms.openlocfilehash: 23567c985f4f9df46ee7d80051c15dc5910a1ea8
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 1989017361c148f9a6c8fcb73537be78555fd650
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37904058"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39160586"
 ---
 # <a name="create-list-or-delete-a-user-assigned-identity-using-the-azure-cli"></a>Vytvoření seznamu nebo odstranění uživatele přiřazeny identit pomocí Azure CLI
 
@@ -32,7 +32,7 @@ V tomto článku se dozvíte, jak vytvářet, seznamu a odstraňovat identity p�
 ## <a name="prerequisites"></a>Požadavky
 
 - Pokud nejste obeznámeni s identita spravované služby, podívejte se [oddílu přehled](overview.md). **Nezapomeňte si přečíst [rozdíl mezi přiřazenou systémem a identity přiřazené uživateli](overview.md#how-does-it-work)**.
-- Pokud ještě nemáte účet Azure [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) než budete pokračovat.
+- Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
 
 - Spuštění ukázkové skripty rozhraní příkazového řádku, máte tři možnosti:
 
@@ -44,7 +44,7 @@ V tomto článku se dozvíte, jak vytvářet, seznamu a odstraňovat identity p�
 
 ## <a name="create-a-user-assigned-managed-identity"></a>Vytvoření spravované identity přiřazené uživateli 
 
-K vytvoření identity přiřazené uživateli, použijte [vytvoření az identity](/cli/azure/identity#az-identity-create) příkazu. `-g` Parametr určuje skupinu prostředků, kde k vytvoření identity přiřazené uživateli a `-n` parametr určuje její název. Nahradit `<RESOURCE GROUP>` a `<USER ASSIGNED IDENTITY NAME>` parametr hodnoty vlastními hodnotami:
+K vytvoření identity přiřazené uživateli, použijte [vytvoření az identity](/cli/azure/identity#az-identity-create) příkazu. `-g` Parametr určuje skupinu prostředků, kde k vytvoření identity přiřazené uživateli a `-n` parametr určuje její název. Minimálně je třeba přiřadit svůj účet [Přispěvatel spravovaných identit](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) role pro vytvoření identity přiřazené uživateli. Nahradit `<RESOURCE GROUP>` a `<USER ASSIGNED IDENTITY NAME>` parametr hodnoty vlastními hodnotami:
 
 [!INCLUDE[ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
@@ -53,7 +53,7 @@ az identity create -g <RESOURCE GROUP> -n <USER ASSIGNED IDENTITY NAME>
 ```
 ## <a name="list-user-assigned-identities"></a>Uživatel seznamu identit přiřazených
 
-Seznam uživatelsky přiřazených identit, použijte [seznam identit az](/cli/azure/identity#az-identity-list) příkazu.  `-g` Parametr určuje skupinu prostředků, ve kterém byla vytvořena identity přiřazené uživateli.  Nahraďte `<RESOURCE GROUP>` s vlastní hodnotou:
+Seznam uživatelsky přiřazených identit, použijte [seznam identit az](/cli/azure/identity#az-identity-list) příkazu.  `-g` Parametr určuje skupinu prostředků, ve kterém byla vytvořena identity přiřazené uživateli. Minimálně je třeba přiřadit svůj účet [operátor spravovaných identit](/azure/role-based-access-control/built-in-roles#managed-identity-operator) role má seznam vlastností identity přiřazené uživateli.  Nahraďte `<RESOURCE GROUP>` s vlastní hodnotou:
 
 ```azurecli-interactive
 az identity list -g <RESOURCE GROUP>
@@ -64,7 +64,7 @@ V odpovědi json identit uživatelů mají `"Microsoft.ManagedIdentity/userAssig
 
 ## <a name="delete-a-user-assigned-identity"></a>Odstranit identity přiřazené uživateli
 
-Chcete-li odstranit identity přiřazené uživateli, použijte [az identity odstranit](/cli/azure/identity#az-identity-delete) příkazu.  Parametr - n Určuje její název a parametr -g Určuje skupinu prostředků, ve kterém byla vytvořena identity přiřazené uživateli.  Nahradit `<USER ASSIGNED IDENTITY NAME>` a `<RESOURCE GROUP>` parametry hodnoty vlastními hodnotami:
+Chcete-li odstranit identity přiřazené uživateli, použijte [az identity odstranit](/cli/azure/identity#az-identity-delete) příkazu.  Parametr - n Určuje její název a parametr -g Určuje skupinu prostředků, ve kterém byla vytvořena identity přiřazené uživateli.  Minimálně je třeba přiřadit svůj účet [Přispěvatel spravovaných identit](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) role k odstranění identity přiřazené uživateli. Nahradit `<USER ASSIGNED IDENTITY NAME>` a `<RESOURCE GROUP>` parametry hodnoty vlastními hodnotami:
 
  ```azurecli-interactive
 az identity delete -n <USER ASSIGNED IDENTITY NAME> -g <RESOURCE GROUP>

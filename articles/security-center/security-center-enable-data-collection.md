@@ -3,7 +3,7 @@ title: Shromažďování dat ve službě Azure Security Center | Dokumentace Mic
 description: " Informace o povolení shromažďování dat ve službě Azure Security Center. "
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
@@ -12,24 +12,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/14/2018
-ms.author: terrylan
-ms.openlocfilehash: 847127c96f23bbeb3cf3a5d1c9768af6e0cc0dc4
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.date: 07/19/2018
+ms.author: rkarlin
+ms.openlocfilehash: d70eb1a329b2d1ba560aecbbb4132d2a8e2b7df1
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38619105"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39160123"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Shromažďování dat ve službě Azure Security Center
-Security Center shromažďuje data z Azure virtual machines (VM) a počítače mimo Azure monitorovat ohrožení zabezpečení a hrozby. Data se shromažďují pomocí agenta Microsoft Monitoring Agent, který z počítače načítá různé protokoly událostí a konfigurace související se zabezpečením a kopíruje data k analýze do vašeho pracovního prostoru. Mezi příklady těchto údajů patří: typ a verze operačního systému, protokoly operačního systému (protokoly událostí systému Windows), spuštěné procesy, název počítače, IP adresy, přihlášený uživatel a ID klienta. Microsoft Monitoring Agent také zkopíruje soubory se stavem systému do pracovního prostoru.
+Security Center shromažďuje data z Azure virtual machines (VM) a počítače mimo Azure monitorovat ohrožení zabezpečení a hrozby. Data se shromažďují pomocí agenta Microsoft Monitoring Agent, který z počítače načítá různé protokoly událostí a konfigurace související se zabezpečením a kopíruje data k analýze do vašeho pracovního prostoru. Mezi tato data patří: typ operačního systému a verze, protokoly operačního systému (protokoly událostí Windows), spuštěné procesy, název počítače, IP adresy, přihlášený uživatel, událostí nástroje AppLocker a ID tenanta. Microsoft Monitoring Agent také zkopíruje soubory se stavem systému do pracovního prostoru.
 
 ## <a name="enable-automatic-provisioning-of-microsoft-monitoring-agent"></a>Povolit automatické zřizování agenta Microsoft Monitoring Agent     
 Automatické zřizování je ve výchozím nastavení vypnuté. Pokud je povoleno automatické zřizování, Security Center zřídí agenta Microsoft Monitoring Agent na všech podporovaných virtuálních počítačích Azure a nových, které jsou vytvořeny. Automatické zřizování se důrazně doporučuje, ale ruční instalaci agentů je také k dispozici. [Zjistěte, jak nainstalovat rozšíření Microsoft Monitoring Agent](../log-analytics/log-analytics-quick-collect-azurevm.md#enable-the-log-analytics-vm-extension).
 
 > [!NOTE]
-> Vypnutí automatického zřizování omezí sledování zabezpečení pro vaše prostředky. Další informace najdete v tématu [vypnout automatické zřizování](security-center-enable-data-collection.md#disable-automatic-provisioning) v tomto článku. Shromažďování artefaktů a snímků disku virtuálního počítače jsou povolené i v případě, že je zakázáno automatické zřizování.
->
+> - Vypnutí automatického zřizování omezí sledování zabezpečení pro vaše prostředky. Další informace najdete v tématu [vypnout automatické zřizování](security-center-enable-data-collection.md#disable-automatic-provisioning) v tomto článku. Shromažďování artefaktů a snímků disku virtuálního počítače jsou povolené i v případě, že je zakázáno automatické zřizování.
+> - Chcete-li povolit shromažďování dat pro [adaptivní řízení aplikací](security-center-adaptive-application.md), Security Center je nakonfiguruje místní zásady nástroje AppLocker v režimu auditování povolit všechny aplikace. To způsobí, že nástroj AppLocker generovat události, které jsou pak shromážděná a využít Security Center. Je důležité si uvědomit, že tyto zásady nenakonfigurují v počítačích, na kterých je už nakonfigurovaná zásada nástroje AppLocker. 
 >
 
 Povolení automatického zřizování agenta Microsoft Monitoring Agent:
@@ -123,8 +123,8 @@ Tady je úplný přehled zabezpečení a AppLocker event ID pro každou sadu:
 | | 6273,6278,6416,6423,6424,8001,8002,8003,8004,8005,8006,8007,8222,26401,30004 |
 
 > [!NOTE]
-> Pokud používáte objekt zásad skupiny (GPO), doporučujeme, abyste povolili zásady auditu 4688 události vytváření procesů a *CommandLine* pole v rámci události 4688. Další informace o procesu vytvoření události 4688 zobrazit Security Center [nejčastější dotazy k](security-center-faq.md#what-happens-when-data-collection-is-enabled). Další informace o těchto zásady auditu najdete v tématu [doporučení k zásadám auditu](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/audit-policy-recommendations).
->
+> - Pokud používáte objekt zásad skupiny (GPO), doporučujeme, abyste povolili zásady auditu 4688 události vytváření procesů a *CommandLine* pole v rámci události 4688. Další informace o procesu vytvoření události 4688 zobrazit Security Center [nejčastější dotazy k](security-center-faq.md#what-happens-when-data-collection-is-enabled). Další informace o těchto zásady auditu najdete v tématu [doporučení k zásadám auditu](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/audit-policy-recommendations).
+> -  Chcete-li povolit shromažďování dat pro [adaptivní řízení aplikací](security-center-adaptive-application.md), Security Center je nakonfiguruje místní zásady nástroje AppLocker v režimu auditování povolit všechny aplikace. To způsobí, že nástroj AppLocker generovat události, které jsou pak shromážděná a využít Security Center. Je důležité si uvědomit, že tyto zásady nenakonfigurují v počítačích, na kterých je už nakonfigurovaná zásada nástroje AppLocker. 
 >
 
 Chcete-li zvolit filtrování zásad:

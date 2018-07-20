@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: dobett
-ms.openlocfilehash: 754449dcf759820c8bb99d082c3a5ba2792f02c8
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 227723ecea1401247f0df87bccfe058fb2273647
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126319"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39145345"
 ---
 # <a name="control-access-to-iot-hub"></a>Řízení přístupu k IoT Hubu
 
@@ -91,7 +91,7 @@ HTTPS implementuje zahrnutím platný token v ověřování **autorizace** hlavi
 
 Uživatelské jméno (ID zařízení rozlišuje velká a malá písmena): `iothubname.azure-devices.net/DeviceId`
 
-Heslo (můžete vygenerovat token SAS se [Průzkumník zařízení] [ lnk-device-explorer] nástroje nebo příkazu pro rozšíření rozhraní příkazového řádku [az iot hub generovat--token sas](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-generate-sas-token)):
+Heslo (můžete vygenerovat token SAS se [Průzkumník zařízení] [ lnk-device-explorer] nástroje, rozšíření příkazu rozhraní příkazového řádku [az iot hub generovat--token sas](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-generate-sas-token), nebo [Azure IoT Rozšíření nástrojů pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)):
 
 `SharedAccessSignature sr=iothubname.azure-devices.net%2fdevices%2fDeviceId&sig=kPszxZZZZZZZZZZZZZZZZZAhLT%2bV7o%3d&se=1487709501`
 
@@ -270,7 +270,7 @@ Výsledek, který uděluje přístup ke všem funkcím pro ZAŘÍZENÍ1, by byl:
 `SharedAccessSignature sr=myhub.azure-devices.net%2fdevices%2fdevice1&sig=13y8ejUk2z7PLmvtwR5RqlGBOVwiq7rQR3WZ5xZX3N4%3D&se=1456971697`
 
 > [!NOTE]
-> Je možné vytvořit token SAS pomocí .NET [Průzkumník zařízení] [ lnk-device-explorer] nástroje nebo různé platformy založené na Pythonu [rozšíření IoT pro Azure CLI 2.0] [ lnk-IoT-extension-CLI-2.0] nástroj příkazového řádku nebo [rozšíření Azure IoT Toolkit pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit).
+> Je možné vytvořit token SAS s [Průzkumník zařízení] [ lnk-device-explorer] nástroje, rozšíření příkazu rozhraní příkazového řádku [az iot hub generovat--token sas](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-generate-sas-token), nebo [Azure IoT Rozšíření nástrojů pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit).
 
 ### <a name="use-a-shared-access-policy"></a>Použijte zásady sdíleného přístupu
 
@@ -415,7 +415,7 @@ Tady jsou hlavní kroky vzor služby tokenů:
 
 Token služby můžete podle potřeby nastavit vypršení platnosti tokenu. Když vyprší platnost tokenu, služby IoT hub přeruší připojení k zařízení nebo modulů. Potom zařízení a modul musí požádat o nový token od služby tokenů. Čas vypršení platnosti krátký zvyšuje zatížení zařízení nebo modulů a služba tokenů.
 
-Pro zařízení a modul pro připojení k centru, je nutné ho přidat do registru identit služby IoT Hub, i když it používá token a ne klíč pro připojení. Proto můžete nadále používat řízení přístupu podle zařízení/za – moduly povolením nebo zakázáním identita zařízení a modul [registr identit][lnk-identity-registry]. Tento přístup snižuje rizika při použití s dobou dlouhé vypršení platnosti tokenů.
+Pro zařízení a modul pro připojení k centru, je nutné ho přidat do registru identit služby IoT Hub, i když se používá token a ne klíč pro připojení. Proto můžete nadále používat řízení přístupu podle zařízení/za – moduly povolením nebo zakázáním identita zařízení a modul [registr identit][lnk-identity-registry]. Tento přístup snižuje rizika při použití s dobou dlouhé vypršení platnosti tokenů.
 
 ### <a name="comparison-with-a-custom-gateway"></a>Porovnání s vlastní bránu
 
@@ -492,8 +492,6 @@ Pokud chcete vyzkoušet si některé koncepty popsané v tomto článku, najdete
 [lnk-service-sdk]: https://github.com/Azure/azure-iot-sdk-csharp/tree/master/service
 [lnk-client-sdk]: https://github.com/Azure/azure-iot-sdk-csharp/tree/master/device
 [lnk-device-explorer]: https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer
-[lnk-IoT-extension-CLI-2.0]: https://github.com/Azure/azure-iot-cli-extension
-
-[lnk-getstarted-tutorial]: iot-hub-csharp-csharp-getstarted.md
+[lnk-getstarted-tutorial]: quickstart-send-telemetry-node.md
 [lnk-c2d-tutorial]: iot-hub-csharp-csharp-c2d.md
 [lnk-d2c-tutorial]: tutorial-routing.md

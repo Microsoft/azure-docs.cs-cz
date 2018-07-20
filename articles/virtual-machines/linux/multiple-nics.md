@@ -3,7 +3,7 @@ title: Vytvoření virtuálního počítače s Linuxem v Azure s několika síť
 description: Zjistěte, jak vytvořit virtuální počítač s Linuxem s více síťovými kartami připojenými k němu pomocí šablon Resource Manageru nebo Azure CLI 2.0.
 services: virtual-machines-linux
 documentationcenter: ''
-author: cynthn
+author: iainfoulds
 manager: jeconnoc
 editor: ''
 ms.assetid: 5d2d04d0-fc62-45fa-88b1-61808a2bc691
@@ -12,19 +12,19 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/26/2017
-ms.author: cynthn
-ms.openlocfilehash: 257b80c30823be41893be8659845d4fcbc922da3
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.date: 06/07/2018
+ms.author: iainfou
+ms.openlocfilehash: aae71dafd3685e44975049c4287c083abc2330bc
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37932268"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144852"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>Jak vytvořit virtuální počítač s Linuxem v Azure s několika síťových karet
 Vytvoření virtuálního počítače (VM) v Azure, která má několik virtuálních síťových rozhraní (NIC) k němu připojená. Běžný scénář, kdy je, aby různé podsítě pro front-endu a back-end připojení nebo síť vyhrazený pro řešení monitorování nebo zálohování. Tento článek podrobně popisuje vytvoření virtuálního počítače s více síťovými kartami připojenými k němu a postup přidání nebo odebrání síťových rozhraní z existujícího virtuálního počítače. Různé [velikosti virtuálních počítačů](sizes.md) podporují různé počet síťových adaptérů, proto odpovídajícím způsobem upravit velikost virtuálního počítače.
 
-Tento článek podrobně popisuje, jak vytvořit virtuální počítač s několika síťovými kartami s Azure CLI 2.0. 
+Tento článek podrobně popisuje, jak vytvořit virtuální počítač s několika síťovými kartami s Azure CLI 2.0. K provedení těchto kroků můžete také využít [Azure CLI 1.0](multiple-nics-nodejs.md).
 
 
 ## <a name="create-supporting-resources"></a>Vytvořte Podpůrné prostředky
@@ -44,9 +44,9 @@ Vytvoření virtuální sítě s [az network vnet vytvořit](/cli/azure/network/
 az network vnet create \
     --resource-group myResourceGroup \
     --name myVnet \
-    --address-prefix 192.168.0.0/16 \
+    --address-prefix 10.0.0.0/16 \
     --subnet-name mySubnetFrontEnd \
-    --subnet-prefix 192.168.1.0/24
+    --subnet-prefix 10.0.1.0/24
 ```
 
 Vytvořte podsíť pro back-end provozu s využitím [az podsíti virtuální sítě vytvořit](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create). Následující příklad vytvoří podsíť s názvem *mySubnetBackEnd*:
@@ -56,7 +56,7 @@ az network vnet subnet create \
     --resource-group myResourceGroup \
     --vnet-name myVnet \
     --name mySubnetBackEnd \
-    --address-prefix 192.168.2.0/24
+    --address-prefix 10.0.2.0/24
 ```
 
 Vytvořte skupinu zabezpečení sítě pomocí [az network nsg vytvořit](/cli/azure/network/nsg#az_network_nsg_create). Následující příklad vytvoří skupinu zabezpečení sítě *myNetworkSecurityGroup*:
@@ -86,7 +86,7 @@ az network nic create \
 ```
 
 ## <a name="create-a-vm-and-attach-the-nics"></a>Vytvoření virtuálního počítače a připojte síťové karty
-Při vytváření virtuálního počítače, zadejte síťová rozhraní jste vytvořili pomocí `--nics`. Také je potřeba dbát při volbě velikosti virtuálního počítače. Existují omezení pro celkový počet síťových adaptérů, které můžete přidat do virtuálního počítače. Další informace o [velikosti virtuálního počítače s Linuxem](sizes.md). 
+Při vytváření virtuálního počítače, zadejte síťová rozhraní jste vytvořili pomocí `--nics`. Také je potřeba dbát při volbě velikosti virtuálního počítače. Existují omezení pro celkový počet síťových adaptérů, které můžete přidat do virtuálního počítače. Další informace o [velikosti virtuálního počítače s Linuxem](sizes.md).
 
 Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm#az_vm_create). Následující příklad vytvoří virtuální počítač *myVM*:
 
@@ -187,75 +187,68 @@ Můžete také použít `copyIndex()` pak připojte číslo s názvem prostředk
 Přidání tabulek směrování do hostovaného operačního systému podle postupu uvedeného v [konfigurace hostovaného operačního systému pro několik síťových karet](#configure-guest-os-for- multiple-nics).
 
 ## <a name="configure-guest-os-for-multiple-nics"></a>Konfigurace hostovaného operačního systému pro více síťových rozhraní
-Pokud přidáte více síťových rozhraní virtuálního počítače s Linuxem, je potřeba vytvořit pravidla směrování. Tato pravidla umožňují virtuálnímu počítači odesílat a přijímat provoz, který patří do konkrétní síťový adaptér. Jinak, provoz, který patří do *eth1*, například nemůže být zpracovány správně definovaný výchozí trasu.
 
-Chcete-li tento problém směrování, nejprve přidat dva směrovacích tabulek na */etc/iproute2/rt_tables* následujícím způsobem:
+V předchozích krocích vytvořili virtuální síť a podsíť, připojené síťové karty a vytvořili virtuální počítač. Nebyly vytvořeny veřejné IP adresy a síťového pravidla skupiny zabezpečení, které umožní provoz SSH. Konfigurace hostovaného operačního systému pro více síťových adaptérů, budete muset povolit vzdálené připojení a spouštění místních příkazů na virtuálním počítači.
 
-```bash
-echo "200 eth0-rt" >> /etc/iproute2/rt_tables
-echo "201 eth1-rt" >> /etc/iproute2/rt_tables
+Povolit provoz SSH, vytvořte pravidlo skupiny zabezpečení sítě s [az network nsg pravidlo vytvořte](/cli/azure/network/nsg/rule#az-network-nsg-rule-create) následujícím způsobem:
+
+```azurecli
+az network nsg rule create \
+    --resource-group myResourceGroup \
+    --nsg-name myNetworkSecurityGroup \
+    --name allow_ssh \
+    --priority 101 \
+    --destination-port-ranges 22
 ```
 
-Chcete-li provést změnu trvalé a použité při aktivaci zásobníku sítě, upravte */etc/sysconfig/network-scripts/ifcfg-eth0* a */etc/sysconfig/network-scripts/ifcfg-eth1*. Příkaz ALTER řádku *"NM_CONTROLLED = Ano"* k *"NM_CONTROLLED = ne"*. Bez tohoto kroku další pravidla/směrování se nepoužijí automaticky.
- 
-Dále rozšiřte směrovací tabulky. Předpokládejme, že máme následující nastavení na místě:
+Vytvoření veřejné IP adresy s [az network public-ip vytvořit](/cli/azure/network/public-ip#az-network-public-ip-create) a přiřaďte ho ke první síťové rozhraní s [az network nic ip-config update](/cli/azure/network/nic/ip-config#az-network-nic-ip-config-update):
 
-*Směrování*
+```azurecli
+az network public-ip-address create --resource-group myResourceGroup --name myPublicIP
 
-```bash
-default via 10.0.1.1 dev eth0 proto static metric 100
-10.0.1.0/24 dev eth0 proto kernel scope link src 10.0.1.4 metric 100
-10.0.1.0/24 dev eth1 proto kernel scope link src 10.0.1.5 metric 101
-168.63.129.16 via 10.0.1.1 dev eth0 proto dhcp metric 100
-169.254.169.254 via 10.0.1.1 dev eth0 proto dhcp metric 100
+az network nic ip-config update \
+    --resource-group myResourceGroup \
+    --nic-name myNic1 \
+    --name ipconfig1 \
+    --public-ip-addres myPublicIP
 ```
 
-*Rozhraní*
+Chcete-li zobrazit zobrazení veřejné IP adresu virtuálního počítače, použijte [az vm show](/cli/azure/vm#az-vm-show) následujícím způsobem:
 
-```bash
-lo: inet 127.0.0.1/8 scope host lo
-eth0: inet 10.0.1.4/24 brd 10.0.1.255 scope global eth0    
-eth1: inet 10.0.1.5/24 brd 10.0.1.255 scope global eth1
+```azurecli
+az vm show --resource-group myResourceGroup --name myVM -d --query publicIps -o tsv
 ```
 
-By potom vytvoří následující soubory a přidání příslušných pravidel a tras do každé:
-
-- */etc/sysconfig/network-scripts/rule-eth0*
-
-    ```bash
-    from 10.0.1.4/32 table eth0-rt
-    to 10.0.1.4/32 table eth0-rt
-    ```
-
-- */etc/sysconfig/network-scripts/route-eth0*
-
-    ```bash
-    10.0.1.0/24 dev eth0 table eth0-rt
-    default via 10.0.1.1 dev eth0 table eth0-rt
-    ```
-
-- */etc/sysconfig/network-scripts/rule-eth1*
-
-    ```bash
-    from 10.0.1.5/32 table eth1-rt
-    to 10.0.1.5/32 table eth1-rt
-    ```
-
-- */etc/sysconfig/network-scripts/route-eth1*
-
-    ```bash
-    10.0.1.0/24 dev eth1 table eth1-rt
-    default via 10.0.1.1 dev eth1 table eth1-rt
-    ```
-
-Aby se změny projevily, restartujte *sítě* služby následujícím způsobem:
+Nyní SSH na veřejnou IP adresu vašeho virtuálního počítače. Výchozí uživatelské jméno uvedené v předchozím kroku se *azureuser*. Zadejte své uživatelské jméno a veřejnou IP adresu:
 
 ```bash
-systemctl restart network
+ssh azureuser@137.117.58.232
 ```
 
-Pravidla směrování se nyní správně na místě a podle potřeby se můžete spojit s buď rozhraní.
+K odeslání do nebo ze sekundární síťové rozhraní, budete muset ručně přidat trvalé trasy pro operační systém pro každý sekundární síťové rozhraní. V tomto článku *eth1* je sekundární rozhraní. Pokyny pro přidání trvalé trasy v operačním systému se liší podle distribuce. Najdete v dokumentaci vaší distribuce pokyny.
 
+Při přidání trasy pro operační systém, je adresa brány *.1* podle toho, která podsítě síťové rozhraní nachází. Například, pokud je síťové rozhraní je přiřazena adresa *10.0.2.4*, brána zadáte pro trasy je *10.0.2.1*. Můžete definovat konkrétní síť pro cíl vaší trasy, nebo zadat cílového umístění *0.0.0.0*, pokud chcete, aby veškerý provoz pro rozhraní a absolvovat zadané brány. Pro každou podsíť brány se spravuje přes virtuální síť.
+
+Po přidání trasy pro sekundární rozhraní, ověřte, zda trasy ve směrovací tabulce s `route -n`. Následující příklad výstupu je pro směrovací tabulka, která má dvě síťová rozhraní, přidat do virtuálního počítače v tomto článku:
+
+```bash
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+0.0.0.0         10.0.1.1        0.0.0.0         UG    0      0        0 eth0
+0.0.0.0         10.0.2.1        0.0.0.0         UG    0      0        0 eth1
+10.0.1.0        0.0.0.0         255.255.255.0   U     0      0        0 eth0
+10.0.2.0        0.0.0.0         255.255.255.0   U     0      0        0 eth1
+168.63.129.16   10.0.1.1        255.255.255.255 UGH   0      0        0 eth0
+169.254.169.254 10.0.1.1        255.255.255.255 UGH   0      0        0 eth0
+```
+
+Potvrďte, že trasy, které jste přidali se uchovávají napříč restartování počítače tak, že zkontrolujete směrovací tabulku znovu po restartování. Chcete-li otestovat připojení, můžete zadat následující příkaz, například, kde *eth1* je název sekundární síťové rozhraní:
+
+```bash
+ping bing.com -c 4 -I eth1
+```
 
 ## <a name="next-steps"></a>Další postup
-Kontrola [velikosti virtuálního počítače s Linuxem](sizes.md) při pokusu o vytvoření virtuálního počítače s několika síťovými kartami. Věnujte pozornost maximální počet síťových adaptérů podporuje všechny velikosti virtuálních počítačů. 
+Kontrola [velikosti virtuálního počítače s Linuxem](sizes.md) při pokusu o vytvoření virtuálního počítače s několika síťovými kartami. Věnujte pozornost maximální počet síťových adaptérů podporuje všechny velikosti virtuálních počítačů.
+
+Na další zabezpečení vašich virtuálních počítačů použít dočasný přístup virtuálních počítačů v. Tato funkce se otevře pravidla skupiny zabezpečení sítě pro provoz SSH, pokud je nepotřebujete a definovaného časového období. Další informace najdete v tématu popisujícím [správu přístupu k virtuálním počítačům pomocí metody právě včas](../../security-center/security-center-just-in-time.md).

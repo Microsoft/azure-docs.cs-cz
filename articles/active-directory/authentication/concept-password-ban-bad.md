@@ -1,74 +1,74 @@
 ---
-title: Dynamicky Zakázaní. hesla ve službě Azure AD
-description: Zakázat slabý hesla ze svého prostředí pomocí hesel služby Azure AD dynamicky Zakázaní.
+title: Dynamicky zakázaná hesla ve službě Azure AD
+description: Zakázat slabé heslo z vašeho prostředí pomocí Azure AD dynamicky zakázaná hesla
 services: active-directory
 ms.service: active-directory
 ms.component: authentication
-ms.topic: article
-ms.date: 06/11/2018
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: rogoya
-ms.openlocfilehash: 89cbe386d87c6ccb81df7fabd86b197bb69e41e1
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: dfeacb266d6aa6a43e49a39bd19c9699ef65ce82
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36295607"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39162010"
 ---
-# <a name="eliminate-bad-passwords-in-your-organization"></a>Odstranění chybná hesla ve vaší organizaci
+# <a name="eliminate-bad-passwords-in-your-organization"></a>Eliminuje chybná hesla ve vaší organizaci
 
 |     |
 | --- |
-| Ochrana heslem Azure AD a seznamu zakázaných vlastního hesla jsou funkce verze public preview služby Azure Active Directory. Další informace o verze Preview najdete v tématu [doplňkové podmínky použití pro Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
+| Ochrana hesel Azure AD a v seznamu vlastních zakázaných hesel jsou funkce ve verzi public preview služby Azure Active Directory. Další informace o verzích Preview najdete v tématu [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
 |     |
 
-Vedoucími zjistíte nepoužívejte stejné heslo v několika místech, aby složitých a není vytvoření jednoduché jako Password123. Jak může organizace zaručit, že uživatelé jsou pokynů? Jak se zajistit, že uživatelé nejsou s použitím běžných hesel nebo hesel, která jsou známá, mají být zahrnuty v poslední úniky dat?
+Vedoucím postavením zjistíte to usnadňuje složité a ne se dají jednoduše jako/Password123 nepoužívejte stejné heslo na více místech. Jak může organizace zaručit, že sledujete jejich uživatelé doprovodné materiály? Jak se ujistit, že uživatelé nepoužívají společný hesel nebo hesel, která jsou známá, mají být zahrnuty v poslední úniky dat?
 
-## <a name="global-banned-password-list"></a>Seznam globální zakázaného hesel
+## <a name="global-banned-password-list"></a>Seznam globální zakázaných hesel
 
-Společnost Microsoft pracuje vždy zůstala krok před zločinci. Proto tým služby Azure AD Identity Protection průběžně běžně používané a ohroženými hesla vyhledat. Potom blokují těchto hesla, které se považují za příliš běžné v co se nazývá seznamu globální zakázaného heslo. Zločinci také použít podobné strategie při jejich útoku, proto společnost Microsoft nepublikuje obsah tohoto seznamu veřejně. Tato citlivé hesla jsou zablokovány, předtím, než vstoupí skutečné hrozby zákazníkům společnosti Microsoft. Další informace o aktuální úsilí zabezpečení najdete v tématu [sestavy Intelligence zabezpečení Microsoft](https://www.microsoft.com/security/intelligence-report).
+Microsoft pracuje vždy o krok před kybernetickými zločinci. Proto tým služby Azure AD Identity Protection průběžně běžně používané a ohrožení zabezpečení hesla vyhledat. Potom tato hesla, které se považují za moc známé v co se nazývá seznam zakázaných hesel globální blokují. Kybernetičtí zločinci také používají podobné strategie jejich útocích, proto Microsoft nebude publikován obsah tohoto seznamu veřejně. Tyto citlivá hesla jsou blokovány, než se stanou skutečnou hrozbou zákazníkům společnosti Microsoft. Další informace o aktuální zabezpečení, a to, najdete v článku [Microsoft Security Intelligence Report](https://www.microsoft.com/security/intelligence-report).
 
-## <a name="preview-custom-banned-password-list"></a>Ve verzi Preview: Vlastní zakázané seznamu heslo
+## <a name="preview-custom-banned-password-list"></a>Ve verzi Preview: Vlastní zakázané seznam hesel
 
-Některé organizace chtít provést další krok zabezpečení jeden přidáním vlastních úprav nad seznamu globální zakázaného heslo v co Microsoft volá seznamu zakázaných vlastního hesla. Podnikoví zákazníci jako Contoso může zvolte blokování variant jejich názvy značky, podmínky specifické pro společnost nebo jiných položek.
+Některé organizace mohou chtít využít zabezpečení jeden krok dál tak, že přidáte vlastní úpravy na seznamu zakázaných hesel globální v co Microsoft volá seznamu vlastních zakázaných hesel. Podnikoví zákazníci jako Contoso rozhodnout blokovat variant jejich názvy, podmínky specifické pro společnost nebo dalších položek.
 
-Vlastní zakázané seznamu hesla a možnost povolit v místní službě Active Directory integrace je spravován pomocí portálu Azure.
+Vlastní zakázané seznamu heslo a možnost povolit v místní službě Active Directory integration se spravuje pomocí webu Azure portal.
 
-![Upravte seznam zakázaných vlastního hesla v rámci metod ověřování na portálu Azure](./media/concept-password-ban-bad/authentication-methods-password-protection.png)
+![Upravit vlastní zakázaných hesel seznamu metod ověřování na webu Azure Portal](./media/concept-password-ban-bad/authentication-methods-password-protection.png)
 
 ## <a name="on-premises-hybrid-scenarios"></a>Místní hybridní scénáře
 
-Ochrana jen cloudové účty je užitečné, ale celá řada organizací udržovat hybridní scénáře, včetně místní Windows Server Active Directory. Je možné nainstalovat Azure AD ochrana heslem pro Windows Server Active Directory (preview) agenty místní rozšíření seznamů zakázaných heslo vaší stávající infrastruktuře. Teď uživatelům a správcům, kteří změnit, nastavte ani resetovat hesla jsou místní musí být v souladu se zásadami stejné heslo jako uživatele jenom pro cloud.
+Ochrana účty jenom cloudu je užitečné, ale mnoho organizací udržovat hybridních scénářů, včetně místní Windows Server Active Directory. Je možné nainstalovat ochrany hesla Azure AD pro Windows Server Active Directory (preview) agentů místní rozšířit seznamy zakázaných hesel vaší stávající infrastruktuře. Teď uživatelům a správcům, kteří změnit, nastavte ani resetovat hesla v místním se musí odpovídat zásadám stejné heslo jako uživatelů pouze cloudu.
 
-## <a name="how-does-the-banned-password-list-work"></a>Jak funguje seznamu zakázaných heslo
+## <a name="how-does-the-banned-password-list-work"></a>Jak funguje seznam zakázaných hesel
 
-Převod řetězce na malá písmena a porovnáním různých známé zakázaného hesla v rámci je upravit vzdálenost 1 s přibližné shody odpovídá seznamu zakázaných heslo hesla v seznamu.
+Seznam zakázaných hesel odpovídá hesla v seznamu převodem řetězce na malá písmena a porovnání známé zakázaných hesel v rámci úpravy vzdálenost 1 s přibližné shody.
 
-Příklad: Slova heslo je blokován v organizaci
-   - Uživatel se pokusí nastavte své heslo na "P@ssword", jsou převedeny na "password" a protože se jedná o hodnotu typu variant hesla je blokovaná.
-   - Správce, pokusí se nastavit heslo uživatele k "Password123!" kterou převést na "password123!" a protože se jedná hodnotu typu variant hesla je blokovaná.
+Příklad: Heslo aplikace word je blokované pro organizaci
+   - Uživatel se pokusí své heslo nastavte na "P@ssword", který je převeden na "password" a vzhledem k tomu, že je varianta heslo blokovaný.
+   - Správce pokusí se nastavit heslo uživatele k "/ Password123!" který převede na "/ password123!" a protože je blokovaný hodnotu typu variant heslo.
 
-Pokaždé, když uživatel resetuje nebo změny hesla Azure AD, které ven prochází přes tento proces potvrďte, že není v seznamu zakázaných heslo. Tato kontrola je součástí hybridní scénáře použití hesla pomocí samoobslužné služby resetováno, synchronizace hodnot hash hesel a předávací ověřování.
+Pokaždé, když uživatel obnoví nebo změně hesla Azure AD, který prochází přes tento proces pro potvrzení, že není na seznamu zakázaných hesel. Tato kontrola je součástí hybridní scénáře s použitím hesla pomocí samoobslužné služby obnovit, synchronizace hodnot hash hesel a předávací ověřování.
 
 ## <a name="license-requirements"></a>Licenční požadavky
 
-Výhody seznamu globální zakázaného heslo platí pro všechny uživatele služby Azure Active Directory (Azure AD).
+Výhody seznamu zakázaných hesel globální platí pro všechny uživatele služby Azure Active Directory (Azure AD).
 
-Seznam zakázaných vlastního hesla vyžaduje Azure AD Basic licence.
+Seznam zakázaných hesel vlastní vyžaduje licence Azure AD Basic.
 
-Heslo ochrany služby Azure AD pro Windows Server Active Directory vyžaduje licence Azure AD Premium. 
+Ochrana hesel Azure AD pro Windows Server Active Directory vyžaduje licence Azure AD Premium. 
 
-Další licenční informace, včetně náklady, naleznete na [Azure Active Directory ceny lokality](https://azure.microsoft.com/pricing/details/active-directory/).
+Další licenční informace, včetně nákladů, můžete najít na [cenami služby Azure Active Directory web](https://azure.microsoft.com/pricing/details/active-directory/).
 
 ## <a name="what-do-users-see"></a>Co vidí uživatelé
 
-Když se uživatel pokusí resetovat heslo na jinou hodnotu, která může být vyloučen, zobrazí se následující chybová zpráva:
+Když se uživatel pokusí o resetování hesla na něco, co může být vyloučen, zobrazí se následující chybová zpráva:
 
-Bohužel heslo obsahuje slova, fráze nebo vzor, který umožňuje snadno uhodnutelných heslo. Zkuste to prosím znovu s jiným heslem.
+Vaše heslo bohužel obsahuje slovo, frázi nebo vzor, který umožňuje snadno uhodnutelných heslo. Zkuste to prosím znovu s jiným heslem.
 
 ## <a name="next-steps"></a>Další postup
 
-* [Konfigurace seznamu zakázaných vlastního hesla](howto-password-ban-bad.md)
-* [Povolení služby Azure AD heslo ochrany agentů na místě](howto-password-ban-bad-on-premises.md)
+* [Proveďte konfiguraci seznamu vlastních zakázaných hesel](howto-password-ban-bad.md)
+* [Povolení služby Azure AD hesla ochrany agentů místní](howto-password-ban-bad-on-premises.md)

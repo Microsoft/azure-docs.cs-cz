@@ -1,21 +1,21 @@
 ---
-title: Ověřování Windows a Azure MFA Server | Microsoft Docs
+title: Ověřování Windows a Azure MFA Server | Dokumentace Microsoftu
 description: Nasazení ověření Windows a serveru Azure Multi-Factor Authentication.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
-ms.topic: get-started-article
-ms.date: 06/06/2017
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
-ms.reviewer: richagi
-ms.openlocfilehash: a72a045efe916c2aa89822984898bac5e43ea1cf
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.reviewer: michmcla
+ms.openlocfilehash: b61ecf1019442b29a4cf8120dbdd7ce9c1b4a51a
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33866016"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39160082"
 ---
 # <a name="windows-authentication-and-azure-multi-factor-authentication-server"></a>Ověření Windows a server Azure Multi-Factor Authentication
 
@@ -42,7 +42,7 @@ ms.locfileid: "33866016"
 10. Pokud chcete zadat rozsahu IP adres pomocí zápisu podsítě, vyberte **Podsíť**. Zadejte počáteční IP adresu podsítě a vyberte příslušnou síťovou masku z rozevíracího seznamu.
 11. Klikněte na **OK**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Konfigurace zařízení sítě VPN třetích stran pro Azure MFA Server](howto-mfaserver-nps-vpn.md)
 

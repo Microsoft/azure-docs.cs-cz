@@ -11,13 +11,13 @@ ms.author: grhuynh
 ms.service: microsoft-genomics
 ms.workload: genomics
 ms.topic: article
-ms.date: 04/13/2018
-ms.openlocfilehash: d3991bdbcd9c3dcd08572dc92cc75aaebb02b133
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.date: 07/18/2018
+ms.openlocfilehash: 9bd1690003fd37b6c2edd0f0421cf8d0e74f8cb5
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/04/2018
-ms.locfileid: "34627360"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144172"
 ---
 # <a name="troubleshooting-guide"></a>Průvodce odstraňováním potíží
 Tento přehled popisuje strategie pro řešení běžných potíží s při použití služby Microsoft Genomics. Nejčastější dotazy týkající se obecné, naleznete v tématu [běžné otázky](frequently-asked-questions-genomics.md). 

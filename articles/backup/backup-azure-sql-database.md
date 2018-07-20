@@ -13,15 +13,15 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/6/2018
+ms.date: 7/19/2018
 ms.author: markgal;anuragm
 ms.custom: ''
-ms.openlocfilehash: 32f45b66c4b1d22da3ffc4310a8a47c17319301f
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 249f473d7318051e0ce27bcc47a9fde080c4c8f6
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38302819"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39160311"
 ---
 # <a name="back-up-sql-server-database-in-azure"></a>Proveďte zálohu databáze serveru SQL Server v Azure
 
@@ -322,111 +322,111 @@ Konfigurace ochrany pro SQL database:
     > Azure Backup podporuje dlouhodobé uchovávání informací podle dědečka ze strany otce SYN schéma zálohování optimalizovat spotřebu úložiště back-endu současně splnit požadavky na dodržování předpisů.
     >
 
-9. Pokud chcete obnovit bod obnovení úplné nebo rozdílové, přeskočte ke kroku 3.
+9. Po výběru zásady zálohování v **nabídka zálohování** klikněte na tlačítko **povolit zálohování**.
 
-    ![Vyberte nabídku se bod obnovení](./media/backup-azure-sql-database/enable-backup-button.png)
+    ![Povolit vybrané zásady zálohování](./media/backup-azure-sql-database/enable-backup-button.png)
 
-    Bod v čase je dostupná jenom pro zálohy protokolů pro databáze s plnou & hromadné protokoluje model obnovení.
+    Můžete sledovat průběh konfigurace v oznamovací oblasti na portálu.
 
-    ![Chcete-li obnovit konkrétního bodu za běhu:](./media/backup-azure-sql-database/notifications-area.png)
+    ![zobrazení oznamovací oblasti](./media/backup-azure-sql-database/notifications-area.png)
 
 
 ### <a name="define-a-backup-policy"></a>Definice zásady zálohování
 
-Vyberte protokoly (časový okamžik) jako možnost obnovení. Zvolte typ bodu obnovení
+Zásady zálohování definují pořizování zálohování a jak dlouho jsou uchovávány zálohy. Azure Backup můžete použít k naplánování tři typy zálohování pro SQL databáze:
 
-* V části datum a čas obnovení, klepněte na ikonu kalendáře a otevřete v kalendáři. Úplné zálohování obsahuje dostatek protokolu obnovení těchto dat a všechna data v konkrétní databázi nebo sadu skupiny souborů nebo souborů. Vyberte datum v kalendáři se body obnovení. Data se žádné body obnovení nemůžete vybrat. 
-* Otevřít kalendář Jakmile vyberete datum, časová osa grafu zobrazuje dostupné body obnovení v průběžné rozsahu. Pomocí časové osy grafu nebo dialogovém okně čas zadat bod obnovení a klikněte na určitou dobu OK k dokončení kroku bod obnovení. Vyberte bod obnovení zavře nabídky a Upřesnit konfiguraci otevře se nabídka.
-* Nabídka pokročilou konfiguraci Z Upřesnit konfiguraci nabídky:
+* Úplné zálohování - úplnou zálohu databáze vytvoří zálohu celé databáze. Úplné zálohování obsahuje dostatek protokolu obnovení těchto dat a všechna data v konkrétní databázi nebo sadu skupiny souborů nebo souborů. Maximálně můžete aktivovat jednu úplnou zálohu denně. Můžete provést úplné zálohování na denní nebo týdenní interval. 
+* Rozdílová záloha - rozdílové zálohy je založená na nejnovější, předchozí úplná záloha. Rozdílové zálohování zaznamená pouze data, která se změnil od úplného zálohování. Maximálně můžete aktivovat jeden rozdílové zálohy za den. Úplné zálohování a rozdílovou zálohu nelze konfigurovat ve stejný den.
+* Zálohování protokolu transakcí – záloha protokolu obnovení bodu v čase až po konkrétní povolí druhé. Maximálně můžete nakonfigurovat zálohy transakčního protokolu každých 15 minut.
 
-Chcete-li zachovat databázi nefunkční po obnovení, na obnovit s NORECOVERY nabídce vyberte možnost povoleno. Pokud chcete změnit umístění pro obnovení na cílovém serveru, zadat novou cestu v cílové sloupce. Klikněte na tlačítko OK schválit nastavení a zavřete Upřesnit konfiguraci. Na obnovení nabídky, klikněte na tlačítko obnovení spustit úlohu obnovení. Průběh můžete sledovat v oznamovací oblasti.
+Zásada se vytvoří v trezoru služby Recovery Services úrovně. Pokud máte více trezorů trezory služby můžete použít stejné zásady zálohování, ale musíte použít zásadu zálohování, která pro každý trezor. Při vytváření zásady zálohování denně, úplné zálohování je výchozí hodnota. Rozdílovou zálohu, ale pouze můžete přidat, pokud přejdete týdně úplné zálohy. Následující postup vysvětluje, jak vytvořit zásady zálohování pro SQL server ve virtuálním počítači Azure.
 
-Můžete také sledovat průběh úlohy obnovení databáze.
+Chcete-li vytvořit zásadu zálohování
 
-1. V **vyberte bod obnovení** nabídku, vyberte bod obnovení.
+1. V nabídce zásady zálohování z **výběr zásady zálohování** rozevírací nabídky vyberte **vytvořit nový**.
 
-   ![Můžete také protokoly (časový okamžik) nebo úplné a rozdílové.](./media/backup-azure-sql-database/create-new-backup-policy.png)
+   ![Vytvoření nové zásady zálohování](./media/backup-azure-sql-database/create-new-backup-policy.png)
 
-    Pokud chcete obnovit protokol bodu v čase, vraťte se ke kroku 2.
+    Nabídka zásady zálohování přepne na poskytují pole potřebná pro všechny nové zásady zálohování serveru SQL.
 
-   ![Tento krok obnoví bod konkrétní úplnou nebo rozdílovou obnovení.](./media/backup-azure-sql-database/blank-new-policy.png)
+   ![Nová pole zásady zálohování](./media/backup-azure-sql-database/blank-new-policy.png)
 
-2. Pomocí této možnosti se zobrazí všechny úplné a rozdílové bodů obnovení za posledních 30 dní. 
+2. V **Název_zásady**, zadejte název. 
 
-3. Pokud chcete zobrazit body obnovení starší než 30 dní, klikněte na tlačítko filtr otevřít body obnovení filtr nabídky. Pokud zvolíte bod obnovení rozdílové, Azure Backup nejprve obnoví odpovídající úplný bod obnovení a poté použije vybraný rozdílové bod obnovení.
+3. Úplné zálohování je povinný. Můžete přijmout výchozí hodnoty pro úplné zálohování nebo klikněte na tlačítko **úplná záloha** pro editaci zásady.
 
-    ![Tento krok obnoví bod konkrétní úplnou nebo rozdílovou obnovení.](./media/backup-azure-sql-database/full-backup-policy.png)
+    ![Nová pole zásady zálohování](./media/backup-azure-sql-database/full-backup-policy.png)
 
-    V vyberte bod obnovení nabídku, vyberte úplné a rozdílové. Zobrazí se seznam dostupných bodů obnovení. Ze seznamu bodů obnovení vyberte bod obnovení a klikněte na tlačítko OK postup bod obnovení.
+    V rámci zásad úplné zálohování Zvolte frekvenci denně nebo týdně. Pokud zvolíte denní, vyberte hodiny a časové pásmo, po zahájení úlohy zálohování. Pokud si vyberete každodenní úplnou zálohu, nebude možné vytvořit rozdílové zálohy.
 
-   ![Vyberte bod úplné obnovení](./media/backup-azure-sql-database/daily-interval.png)
+   ![denní interval nastavení](./media/backup-azure-sql-database/daily-interval.png)
 
-    Bod obnovení zavře nabídky a Upřesnit konfiguraci otevře se nabídka.
+    Pokud se rozhodnete každý týden, zvolte den v týdnu, hodiny a časové pásmo po zahájení úlohy zálohování.
 
-   ![Obnovit s NORECOVERY je ve výchozím nastavení zakázané.](./media/backup-azure-sql-database/weekly-interval.png)
+   ![týdenní interval nastavení](./media/backup-azure-sql-database/weekly-interval.png)
 
-4. Klikněte na tlačítko OK schválit nastavení a zavřete Upřesnit konfiguraci. Obnovení a přepsat databázi Tento postup vás provede obnovení dat a přepsáním databáze.
+4. Standardně jsou vybrané všechny možnosti rozsah uchování (denní, týdenní, měsíční a roční). Zrušte zaškrtnutí políčka některý limit rozsahu uchování není chcete a nastavených intervalech používat. V nabídce Zásady úplné zálohování, klikněte na tlačítko **OK** potvrďte nastavení.
 
-   ![Pokud chcete obnovit do alternativního umístění, přejděte do části obnovení do alternativního umístění.](./media/backup-azure-sql-database/retention-range-interval.png)
+   ![nastavení intervalu rozsah uchování](./media/backup-azure-sql-database/retention-range-interval.png)
 
-    Tento postup předpokládá mají vaše otevřený trezor služby Recovery Services a jsou na obnovit konfiguraci nabídky (viz následující obrázek). V obnovit konfiguraci nabídce vyberte možnost přepsat DB a klikněte na tlačítko OK k dokončení konfigurace cíle. Klikněte na tlačítko Přepsat DB Server, Instance, a název databáze obnovit dialogových oken nejsou nutné.
+    Body obnovení jsou označené pro uchovávání dat, na základě jejich rozsahu uchování. Například pokud zvolíte denní, úplné zálohování jenom jeden úplné zálohování se aktivuje každý den. V závislosti na vaší týdenní uchovávání, konkrétní den zálohování je příznakem a uchovávají na základě týdenní rozsahu uchování. Rozsah uchování měsíční a roční chová podobně jako.
 
-5. Pokud chcete obnovit protokol bodu v čase, pokračujte v tomto kroku. 
+5. Chcete-li přidat zásadu pro rozdílové zálohování, klikněte na tlačítko **rozdílové zálohování** otevřete nabídku. 
 
-   ![Pokud chcete úplné a rozdílové obnovení bodu obnovení, přeskočte ke kroku 3.](./media/backup-azure-sql-database/backup-policy-menu-choices.png)
+   ![Otevřete rozdílové zásad](./media/backup-azure-sql-database/backup-policy-menu-choices.png)
 
-    Zvolit bod v čase na konkrétní druhé: Jakmile vyberete datum, časová osa grafu zobrazí dostupné body obnovení.
+    V nabídce zásady rozdílovou zálohu, vyberte **povolit** otevřete ovládací prvky frekvence a uchování. Můžete aktivovat, maximálně jeden rozdílové zálohy za den.
     > [!Important] 
-    > Správa operací zálohování Azure pro SQL na virtuálních počítačích Azure Tato část obsahuje informace o různých Azure Backup správy operací k dispozici pro SQL na virtuálních počítačích Azure.
+    > Rozdílové zálohování můžou uchovávat maximálně po dobu 180 dnů. Pokud budete potřebovat delší dobu uchování, je nutné použít úplné zálohy, rozdílové zálohování nelze použít.
     >
 
-   ![Existují následující základní operace:](./media/backup-azure-sql-database/enable-differential-backup-policy.png)
+   ![upravit zásady rozdílové](./media/backup-azure-sql-database/enable-differential-backup-policy.png)
 
-    Výstrahy záloh
+    Klikněte na tlačítko **OK** zásadu uložte a vraťte se do hlavní nabídky zásady zálohování.
 
-6. Zastavili ochranu databáze SQL Pokračovat v ochraně databáze SQL Spustit úlohu zálohování ad hoc Výstrahy záloh
+6. Chcete-li přidat zásadu zálohování protokolu transakcí, klikněte na tlačítko **záloha protokolu** otevřete nabídku. V nabídce záloha protokolu, vyberte **povolit**a nastavte četnost a uchování ovládací prvky. Zálohy protokolů může dojít, tak často, jak každých 15 minut a můžou uchovávat až 35 dnů. Klikněte na tlačítko **OK** zásadu uložte a vraťte se do hlavní nabídky zásady zálohování.
 
-   ![Zrušení registrace serveru SQL](./media/backup-azure-sql-database/log-backup-policy-editor.png)
+   ![upravit zásady zálohování protokolu](./media/backup-azure-sql-database/log-backup-policy-editor.png)
 
-7. Azure Backup je podnikové řešení třída poskytuje pokročilé zálohování výstrahy a oznámení pro všechny chyby (najdete níže v části výstrahy zálohování). Pokud chcete monitorovat konkrétní úlohy můžete použít některý z následujících možností na základě vašich požadavků:
+7. Zvolte, jestli se má povolit kompresi zálohování SQL. Komprese je ve výchozím nastavení zakázána.
 
-    Pomocí webu Azure portal -> trezor služby Recovery Services pro všechny operace ad-hoc
+    Na back-endu Azure Backup použije nativní kompresi záloh SQL.
 
-8. Azure Backup zobrazí všechny ručně aktivované, nebo ad hoc, úlohy na portálu pro úlohy zálohování. 
+8. Pokud jste provedli všechny změny zásady zálohování, klikněte na tlačítko **OK**. 
 
    ![přijmout nové zásady](./media/backup-azure-sql-database/backup-policy-click-ok.png)
 
-## <a name="restore-a-sql-database"></a>Všechny naplánované úlohy zálohování včetně úplné, rozdílového a protokolu zálohování se nezobrazí na portálu a je možné monitorovat pomocí SQL Server Management Studio, jak je popsáno níže.
+## <a name="restore-a-sql-database"></a>Obnovení databáze SQL
 
-Pomocí SQL Server Management Studio (SSMS) pro úlohy zálohování Azure Backup používá nativní rozhraní API SQL pro všechny operace zálohování.
+Azure Backup poskytuje funkce pro obnovení jednotlivých databází na konkrétní datum nebo čas, až po konkrétní druhé pomocí zálohování transakčního protokolu. Podle časů obnovení, které zadáte, Azure Backup automaticky určuje odpovídající úplného, rozdílového a řetězec potřebné k obnovení dat záloh protokolu.
 
-Pomocí nativních rozhraní API, můžete načíst všechny informace o úlohách z tabulku záloh SQL v databázi msdb.
+Alternativně můžete vybrat konkrétní úplné nebo rozdílové zálohy obnovit na konkrétní bod obnovení než určený čas.
  > [!Note]
  > Před aktivací obnovení "hlavní" databáze spusťte SQL Server v režimu jednoho uživatele s možností spuštění "-m AzureWorkloadBackup". Argument -m je název klienta, bude povolen pouze tento klient k otevření připojení. Pro všechny systémové databáze (master, model, msdb) zastavte službu agenta SQL před aktivace operace obnovení. Zavřete všechny aplikace, které se mohou pokusit o ukrást připojení k jakémukoli z těchto databází.
 >
 
-Můžete použít pod dotaz jako příklad se načíst všechny úlohy zálohování pro konkrétní databázi s názvem "DB1".
+Chcete-li obnovit databázi
 
 1. Otevřete trezor služby Recovery Services zaregistrovaný u virtuálního počítače SQL.
 
-2. Můžete přizpůsobit pod dotaz další rozšířené monitorování.
+2. V řídicím panelu trezoru vyberte **využití** zálohování položek otevřete nabídku zálohování položek.
 
     ![Klikněte na + zálohování a otevřete nabídku cíle zálohování](./media/backup-azure-sql-database/restore-sql-vault-dashboard.png).
 
-3. U zálohy protokolu, ke kterým dochází každých 15 minut může být čas od času monitorování úlohy zálohování tedious. 
+3. V **zálohované položky** nabídku, vyberte typ správy zálohování **SQL na virtuálním počítači Azure**. 
 
     ![Klikněte na + zálohování a otevřete nabídku cíle zálohování](./media/backup-azure-sql-database/sql-restore-backup-items.png)
 
-    Azure Backup plánované v této situaci potenciálně tedious zadáním e-mailová upozornění aktivované testováním jakékoli chyby zálohování. 
+    Zálohování položek seznamu upraví zobrazíte seznam databází SQL. 
 
-4. Upozornění konsolidované podle kódu chyby na úrovni databáze.
+4. V seznamu databází SQL vyberte databázi, kterou chcete obnovit.
 
-    ![Například pokud databáze obsahuje více selhání zálohování, místo dostanete výstrahu pro každou chybu, obdržíte e-mailu pro první selhání.](./media/backup-azure-sql-database/sql-restore-sql-in-vm.png)
+    ![Vyberte ze seznamu SQL na virtuálním počítači Azure](./media/backup-azure-sql-database/sql-restore-sql-in-vm.png)
 
-    Na webu Azure portal můžete potom přihlásit ke sledování dalších chyb pro tuto databázi. Chcete-li monitorovat výstrahy zálohování:
+    Když vyberete databázi, otevře se jeho nabídku. Tato nabídka poskytuje podrobnosti zálohování pro databázi, včetně:
 
-    * Přihlaste se k předplatnému Azure v webu Azure portal.
-    * V nabídce trezoru služby Recovery Services vyberte výstrahy a události.
+    * nejstarší a nejnovější bodů obnovení
+    * Stav zálohování protokolů za posledních 24 hodin (pro databáze v úplné a hromadně protokolovaný modelu obnovení, pokud nakonfigurované pro transakční protokol)
 
 5. V nabídce vybrané databáze, klikněte na tlačítko **obnovení DB** otevřete nabídku obnovení.
 
@@ -678,21 +678,21 @@ Ponechání bodů obnovení představuje náklady, jak body obnovení pro SQL pr
 
 1. Otevřete trezor služby Recovery Services zaregistrovaný u virtuálního počítače SQL.
 
-2. Můžete přizpůsobit pod dotaz další rozšířené monitorování.
+2. V řídicím panelu trezoru vyberte **využití** zálohování položek otevřete nabídku zálohování položek.
 
     ![Klikněte na + zálohování a otevřete nabídku cíle zálohování](./media/backup-azure-sql-database/restore-sql-vault-dashboard.png).
 
-3. U zálohy protokolu, ke kterým dochází každých 15 minut může být čas od času monitorování úlohy zálohování tedious. 
+3. V **zálohované položky** nabídku, vyberte typ správy zálohování **SQL na virtuálním počítači Azure**. 
 
     ![Klikněte na + zálohování a otevřete nabídku cíle zálohování](./media/backup-azure-sql-database/sql-restore-backup-items.png)
 
-    Azure Backup plánované v této situaci potenciálně tedious zadáním e-mailová upozornění aktivované testováním jakékoli chyby zálohování. 
+    Zálohování položek seznamu upraví zobrazíte seznam databází SQL. 
 
 4. V seznamu databází SQL vyberte databázi, kterou chcete ukončit ochranu.
 
-    ![Například pokud databáze obsahuje více selhání zálohování, místo dostanete výstrahu pro každou chybu, obdržíte e-mailu pro první selhání.](./media/backup-azure-sql-database/sql-restore-sql-in-vm.png)
+    ![Vyberte ze seznamu SQL na virtuálním počítači Azure](./media/backup-azure-sql-database/sql-restore-sql-in-vm.png)
 
-    Na webu Azure portal můžete potom přihlásit ke sledování dalších chyb pro tuto databázi. 
+    Když vyberete databázi, otevře se jeho nabídku. 
 
 5. V nabídce vybrané databáze, klikněte na tlačítko **Zastavit zálohování** zastavit ochranu databáze.
 
@@ -784,6 +784,10 @@ Ne. Při konfiguraci ochrany pro SQL server, pokud zaškrtnete políčko na úro
 ### <a name="if-i-change-the-recovery-model-how-do-i-restart-protection"></a>Jak se v případě, že mi Změna modelu obnovení restartovat ochrany
 
 Pokud změníte model obnovení, aktivujte úplné zálohování a zálohování protokolů začne podle očekávání.
+
+### <a name="can-i-protect-sql-always-on-availability-groups-where-the-primary-replica-is-on-premises"></a>Může chránit SQL skupin dostupnosti Always On se primární repliky v místním prostředí
+
+Ne. Azure Backup chrání servery SQL v Azure. Pokud se skupina dostupnosti (AG) se pak rozdělí mezi Azure a v místním počítači, skupinu dostupnosti se dají chránit jenom v případě, že primární replikou je spuštěná v Azure. Kromě toho Azure Backup chrání pouze uzly spuštěnými ve stejné oblasti Azure jako trezor služby Recovery Services.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -16,12 +16,12 @@ ms.component: compliance-reports
 ms.date: 05/31/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: bbd826b636bebca90eacba43ca879a725cddf7d2
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: aab03c92bee0d3b69062cdcb179eebbb5c0fc8f8
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971070"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39160242"
 ---
 # <a name="sign-in-activity-report-error-codes-in-the-azure-active-directory-portal"></a>Kódy chyb v sestavě aktivit přihlašování na portálu Azure Active Directory
 
@@ -59,6 +59,7 @@ Následující část poskytuje úplný přehled o všech možných chybách a s
 
 |Chyba|Popis|
 |---|---|
+|16000|Toto je interní implementaci a ne chybovou podmínku. Tento odkaz můžete bezpečně ignorovat.|
 |20001|Vyskytl se problém s federovaným zprostředkovatelem identity. Pokud chcete tento problém vyřešit, obraťte se na svůj distribuční bod vydávání (IDP).|
 |20012|Vyskytl se problém s federovaným zprostředkovatelem identity. Pokud chcete tento problém vyřešit, obraťte se na svůj distribuční bod vydávání (IDP).|
 |20033|Vyskytl se problém s federovaným zprostředkovatelem identity. Pokud chcete tento problém vyřešit, obraťte se na svůj distribuční bod vydávání (IDP).|
@@ -174,6 +175,7 @@ Následující část poskytuje úplný přehled o všech možných chybách a s
 |81001|Lístek Kerberos uživatele je příliš velký. K tomu může dojít, když je uživatel členem příliš mnoha skupin a lístek Kerberos obsahuje příliš velký počet členství. Snižte počet členství uživatele ve skupinách a zkuste to znovu.|
 |81005|Ověřovací balíček není podporovaný.|
 |81007|Tenant není povolený pro bezproblémové jednotné přihlašování.|
+|81012|Toto není chybovou podmínku. Označuje, že tento uživatel pokoušel se přihlásit ke službě Azure AD se liší od uživatele přihlášené k zařízení. Tento kód v protokolech můžete bezpečně ignorovat.|
 |90010|Požadavek není podporován z různých důvodů. Například požadavku pomocí metody Nepodporovaná žádost (podporuje se jenom metody POST) nebo token, který byl vyžádán podpisový algoritmus se nepodporuje. Obraťte se na vývojáře aplikace.|
 |90014| Chybí povinné pole. pro zprávy protokolu, obraťte se na vlastníka aplikace. Pokud jste vlastníkem aplikace, ujistěte se, že máte všechny potřebné parametry pro žádost o přihlášení. |
 |90072| Účet musí být nejprve přidán jako externí uživatel v tenantovi. Odhlášení a přihlaste se znovu pomocí jiné služby Azure AD účtu.|

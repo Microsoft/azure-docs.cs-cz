@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2017
+ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: ea7fb5951cd0b2925aa3dd5ae14b452292ba582c
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 48710bc10a57854fcbd4ffbe44bc426333baddc0
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917988"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39159225"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory předávací ověřování podrobné informace o zabezpečení
 
@@ -156,7 +156,7 @@ Aby bylo zajištěno, že předávací ověřování zůstává provozně zabezp
 
 Obnovit ověřovací Agent vztah důvěryhodnosti s Azure AD:
 
-1. Ověřovací Agent příkaz ping pravidelně Azure AD každých pár hodin ke kontrole, pokud je čas na obnovení certifikátu. 
+1. Ověřovací Agent příkaz ping pravidelně Azure AD každých pár hodin ke kontrole, pokud je čas na obnovení certifikátu. Certifikát se obnovuje 30 dnů před vypršením jeho platnosti.
     - Tato kontrola se provádí přes vzájemně ověřené kanálu protokolu HTTPS a používá stejný certifikát, který byl vydán během registrace.
 2. Pokud službu označuje, že je čas k obnovení, ověřovací Agent vygeneruje nový pár klíčů: veřejný klíč a soukromý klíč.
     - Tyto klíče jsou vygenerované pomocí standardního šifrování RSA 2048 bitů.

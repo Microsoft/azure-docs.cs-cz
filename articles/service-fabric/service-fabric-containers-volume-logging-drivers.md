@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 6/10/2018
 ms.author: subramar
-ms.openlocfilehash: a5b75a7069375f503cbe25554eb7c04cba868413
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 9bd370e8070816d62b22c1e3d5ad4b6cdd2da30a
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969601"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144947"
 ---
 # <a name="service-fabric-azure-files-volume-driver-preview"></a>Service Fabric soubory Azure svazku ovladače (Preview)
 Je modul plug-in Azure Files svazku [modulu plug-in svazku Docker](https://docs.docker.com/engine/extend/plugins_volume/) poskytující [soubory Azure](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) na základě svazky pro kontejnery Dockeru. Tento modul plug-in Docker svazek je zabalený jako aplikace Service Fabric, který je možné nasadit do clusterů Service Fabric. Jeho účelem je poskytnout službě soubory Azure založené na svazky pro ostatní kontejnerové aplikace Service Fabric, které jsou nasazené na clusteru.
@@ -36,6 +36,33 @@ Je modul plug-in Azure Files svazku [modulu plug-in svazku Docker](https://docs.
 * Postupujte podle pokynů [dokumentace ke službě Azure Files](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share) k vytvoření sdílené složky pro aplikaci Service Fabric container používat jako svazek.
 
 * Budete potřebovat [prostředí Powershell s modulem Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started) nebo [SFCTL](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli) nainstalované.
+
+* Pokud používáte kontejnery Hyper-v, je nutné přidat v části Nastavení fabricSettings šablony ARM (Azure clusteru) nebo ClusterConfig.json (samostatného clusteru) nebo ClusterManifest (místního clusteru) následující fragmenty kódu. Budete potřebovat název svazku a port, který svazek naslouchá na clusteru. 
+
+V ClusterManifest následující potřeba do ní přidat v části Hosting. V tomto příkladu je název svazku **sfazurefile** a port, který naslouchá na clusteru je **19300**.  
+
+``` xml 
+<Section Name="Hosting">
+  <Parameter Name="VolumePluginPorts" Value="sfazurefile:19300" />
+</Section>
+```
+
+V části Nastavení fabricSettings šablony ARM (pro nasazení v Azure) nebo ClusterConfig.json (pro samostatné nasazení) je potřeba přidat následující fragment kódu. 
+
+```json
+"fabricSettings": [
+  {
+    "name": "Hosting",
+    "parameters": [
+      {
+          "name": "VolumePluginPorts",
+          "value": "sfazurefile:19300"
+      }
+    ]
+  }
+]
+```
+
 
 ## <a name="deploy-the-service-fabric-azure-files-application"></a>Nasazení aplikace Service Fabric Azure Files
 

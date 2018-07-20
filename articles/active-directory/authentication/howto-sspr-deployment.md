@@ -4,18 +4,18 @@ description: Tipy pro úspěšné zavedení samoobslužného resetování hesla 
 services: active-directory
 ms.service: active-directory
 ms.component: authentication
-ms.topic: get-started-article
-ms.date: 01/11/2018
+ms.topic: conceptual
+ms.date: 07/17/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 3e14c51d644a29985e759da7c8a29927680d3891
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
-ms.translationtype: HT
+ms.openlocfilehash: 2371ad00728a47af9e96e8e711aa07cc5170266c
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39048947"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39158858"
 ---
 # <a name="how-to-successfully-roll-out-self-service-password-reset"></a>Úspěšné zavedení samoobslužného resetování hesla
 
@@ -23,35 +23,32 @@ K zajištění hladkého zavedení funkce samoobslužného resetování hesla (S
 
 > [!VIDEO https://www.youtube.com/embed/OZn5btP6ZXw]
 
-1. [Povolte resetování hesla ve svém adresáři](quickstart-sspr.md).
-2. [Nakonfigurujte oprávnění místní služby Active Directory pro zpětný zápis hesla](howto-sspr-writeback.md#active-directory-permissions).
-3. [Nakonfigurujte zpětný zápis hesel](howto-sspr-writeback.md#configure-password-writeback), aby se hesla z Azure AD zapsala zpátky do místního adresáře.
-4. [Přiřaďte a ověřte požadované licence](concept-sspr-licensing.md).
-5. Určete, jestli chcete provést postupné zavedení. Pokud chcete samoobslužné resetování hesla zavádět postupně, můžete omezit přístup jenom na konkrétní skupinu uživatelů a provést s nimi pilotní nasazení. Pokud chcete provést zavedení pro konkrétní skupinu, nastavte přepínač **Samoobslužné resetování hesla povoleno** na **Vybrané** a vyberte skupinu zabezpečení, která má mít možnost použít resetování hesel.  Vnoření skupin zabezpečení se v tomto případě podporuje.
-6. Naplňte [ověřovací data](howto-sspr-authenticationdata.md) nutná k registraci uživatelů, například jejich telefonní číslo do kanceláře, mobilní telefon a alternativní e-mailovou adresu.
-7. [Upravte prostředí přihlášení Azure AD, aby obsahovalo značku vaší společnosti](concept-sspr-customization.md).
-8. Naučte vaše uživatele, jak používat samoobslužné resetování hesla. Pošlete jim pokyny s vysvětlením postupu registrace a resetování hesel.
-9. Určete, jestli se registrace má vynucovat. K vynucení registrace se můžete rozhodnout kdykoli. Můžete také po uživatelích požadovat, aby po určité době znovu potvrdili svoje ověřovací informace.
-10. Využijte možnosti vytváření sestav. V průběhu času můžete zkontrolovat registraci uživatelů a využití pomocí [možností vytváření sestav, které poskytuje Azure AD](howto-sspr-reporting.md).
-11. Povolte resetování hesla. Až budete připravení, povolte resetování hesla pro všechny uživatele tak, že nastavíte přepínač **Samoobslužné resetování hesla povoleno** na **Všichni**. 
+1. Dokončení pilotní zavedení s malou část vaší organizace.
+   * Informace o tom, jak pilotního nasazení najdete v [kurz: dokončení pilotní resetování hesla pomocí samoobslužné služby Azure AD zavádět](tutorial-sspr-pilot.md).
+1. Informujte pracovníky helpdesk.
+   * Jak se bude pomáhají zajistit uživatelům?
+   * Vynutí uživatelům používat samoobslužné resetování HESLA a helpdesk pomoci uživatelům, aby?
+   * Mít zadané adresy URL pro registraci a resetování?
+      * Registrace:  https://aka.ms/ssprsetup
+      * Obnovení: https://aka.ms/sspr
+1. Naučit vaše uživatele.
+   * Následující části tohoto dokumentu se přenášejí prostřednictvím ukázka komunikace portály hesel, vynucování registrace a naplnění ověřovacích dat.
+   * Produktová skupina Azure Active Directory vytvořila [podrobný plán nasazení](https://aka.ms/SSPRDeploymentPlan), které organizace mohou při vytváření obchodního případu a plánování nasazení samoobslužného obnovení hesel využít současně s dokumentací, kterou najdou na tomto webu.
+1. Povolení samoobslužného resetování hesla pro celou organizaci.
+   * Až budete připravení, povolte resetování hesla pro všechny uživatele tak, že nastavíte přepínač **Samoobslužné resetování hesla povoleno** na **Všichni**.
 
-   > [!NOTE]
-   > Změnou této možnosti z vybrané skupiny na Všichni nedojde k zneplatnění stávajících ověřovacích dat, která uživatel zaregistroval jako součást testovací skupiny. Nakonfigurovaní uživatelé se zaregistrovanými platnými ověřovacími daty budou fungovat i nadále.
+## <a name="sample-communication"></a>Ukázka komunikace
 
-12. [Povolte uživatelům Windows 10 resetování hesla na přihlašovací obrazovce](tutorial-sspr-windows.md).
-
-   > [!IMPORTANT]
-   > K otestování samoobslužného resetování hesla využijte uživatele, a ne správce, protože Microsoft pro účty správců Azure vynucuje požadavky na silné ověřování. Další informace týkající se zásad hesel správců najdete v našem článku o [zásadách hesel](concept-sspr-policy.md#administrator-password-policy-differences).
-
-## <a name="email-based-rollout"></a>Zavedení přes e-mail
-
-Nejjednodušším způsobem, jak uživatele přimět používat samoobslužné resetování hesla, pro mnoho zákazníků je e-mailová kampaň se snadno použitelnými pokyny. [Vytvořili jsme tři jednoduché e-maily, které můžete použít jako šablony pro pomoc se zaváděním](https://www.microsoft.com/download/details.aspx?id=56768).
+Nejjednodušším způsobem, jak uživatele přimět používat samoobslužné resetování hesla, pro mnoho zákazníků je e-mailová kampaň se snadno použitelnými pokyny. [Vytvořili jsme jednoduché e-maily a další materiály, které můžete použít jako šablony pro pomoc při zavádění](https://www.microsoft.com/download/details.aspx?id=56768):
 
 * **Připravuje se:** Šablona e-mailu, kterou použijete během týdnů nebo dnů před zavedením, abyste uživatelům sdělili, že musí něco udělat.
 * **Nově dostupné:** Šablona e-mailu, kterou použijete v den spuštění programu, abyste přiměli uživatele k registraci a potvrzení ověřovacích dat. Pokud se uživatelé teď zaregistrují, mohou samoobslužné resetování hesla v případě potřeby použít.
 * **Připomenutí registrace:** Šablona e-mailu, kterou použijete několik dnů nebo týdnů po nasazení, abyste uživatelům připomněli, že se mají zaregistrovat a potvrdit ověřovací data.
+* **Samoobslužné resetování HESLA plakáty**: plakáty můžete přizpůsobit a zobrazí kolem vaší organizace v dny a týdnů, až vedoucí a po vaší zavedení.
+* **Samoobslužné resetování HESLA tabulky stany**: Tabulka karty můžete umístit v místnosti oběd, místnosti konference, nebo na portál upozorněte své uživatele, pro dokončení registrace.
+* **Samoobslužné resetování HESLA nálepky**: šablony nálepku můžete upravit a vytisknout umístit přenosné počítače, monitorování, klávesnice nebo mobilní telefony zapamatovat si, jak pro přístup k samoobslužné resetování HESLA.
 
-![E-mail][Email]
+![Ukázky e-mailu samoobslužné resetování HESLA][Email]
 
 ## <a name="create-your-own-password-portal"></a>Vytvoření vlastního portálu hesel
 
@@ -64,10 +61,6 @@ Nejjednodušším způsobem, jak uživatele přimět používat samoobslužné r
 
 Do e-mailů nebo letáků, které rozesíláte, můžete vložit zapamatovatelnou adresu URL obsahující značku, na kterou uživatelé mohou přejít v případě, že tyto služby potřebují využít. Vytvořili jsme pro vás [ukázkovou stránku pro resetování hesla](https://github.com/ajamess/password-reset-page), kterou můžete použít a přizpůsobit potřebám vaší organizace.
 
-## <a name="step-by-step-deployment-plan"></a>Podrobný plán nasazení
-
-Produktová skupina Azure Active Directory vytvořila [podrobný plán nasazení](https://aka.ms/SSPRDeploymentPlan), které organizace mohou při vytváření obchodního případu a plánování nasazení samoobslužného obnovení hesel využít současně s dokumentací, kterou najdou na tomto webu.
-
 ## <a name="use-enforced-registration"></a>Použití vynucené registrace
 
 Pokud chcete, aby se vaši uživatelé zaregistrovali k resetování hesla, můžete požadovat, aby se zaregistrovali při přihlášení s využitím Azure AD. Tuto možnost můžete povolit v podokně **Resetování hesla** vašeho adresáře tak, že na kartě **Registrace** povolíte možnost **Vyžadovat od uživatelů při přihlášení registraci**.
@@ -78,13 +71,13 @@ Pokud tuto možnost povolíte, uživatelům se při přihlášení zobrazí zpr�
 
 ## <a name="populate-authentication-data"></a>Naplnění ověřovacích dat
 
-Měli byste [naplnit ověřovací data pro vaše uživatele](howto-sspr-authenticationdata.md). Uživatelé se tak nebudou muset registrovat pro resetování hesla, dokud nebudou mít možnost používat SSPR. Dokud uživatelé budou mít ověřovací data splňující zásady resetování hesel, které jste definovali, budou mít možnost si svoje hesla resetovat.
+Měli byste zvážit [předem naplnění některých ověřovací data pro vaše uživatele](howto-sspr-authenticationdata.md). Uživatelé se tak nebudou muset registrovat pro resetování hesla, dokud nebudou mít možnost používat SSPR. Dokud uživatelé budou mít ověřovací data splňující zásady resetování hesel, které jste definovali, budou mít možnost si svoje hesla resetovat.
 
 ## <a name="disable-self-service-password-reset"></a>Zakázání samoobslužného resetování hesla
 
-Zakázání samoobslužného resetování hesla je snadné. Otevřete svého tenanta Azure AD, přejděte do **Resetování hesla** > **Vlastnosti** a pak v části **Samoobslužné resetování hesla povoleno** vyberte **Nikdo**.
+Pokud vaše organizace rozhodne zakázání samoobslužného resetování hesla je jednoduchý proces. Otevřete svého tenanta Azure AD, přejděte do **Resetování hesla** > **Vlastnosti** a pak v části **Samoobslužné resetování hesla povoleno** vyberte **Nikdo**. Uživatelé se přitom zachovává jejich
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Resetování nebo změna hesla](../user-help/active-directory-passwords-update-your-own-password.md)
 * [Registrace samoobslužného resetování hesla](../user-help/active-directory-passwords-reset-register.md)

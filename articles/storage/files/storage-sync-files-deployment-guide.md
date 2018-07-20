@@ -1,5 +1,5 @@
 ---
-title: Nasazení služby Azure File Sync (preview) | Dokumentace Microsoftu
+title: Nasazení služby Azure File Sync | Dokumentace Microsoftu
 description: Zjistěte, jak nasadit Azure File Sync, a to od začátku do konce.
 services: storage
 documentationcenter: ''
@@ -12,17 +12,17 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/05/2017
+ms.date: 07/19/2018
 ms.author: wgries
-ms.openlocfilehash: 808bc3908790c8d6dedf1d9f00a4c70b42c7c490
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: b3837da26868dcf3c14fab230b4dad4aa6f531b3
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37867065"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39161391"
 ---
-# <a name="deploy-azure-file-sync-preview"></a>Nasazení služby Azure File Sync (preview)
-Pomocí Azure File Sync (preview) můžete centralizovat sdílené složky organizace ve službě soubory Azure, při zachování flexibility, výkonu a kompatibility s místními souborového serveru. Azure File Sync transformuje serveru systému Windows na rychlou mezipaměť sdílené složky Azure. Můžete použít jakýkoli protokol dostupný ve Windows serveru pro přístup k datům místně, včetně SMB, NFS a FTPS. Můžete mít libovolný počet mezipamětí po celém světě potřebujete.
+# <a name="deploy-azure-file-sync"></a>Nasazení služby Azure File Sync
+Azure File Sync umožňuje centralizovat sdílené složky organizace ve službě soubory Azure, při zachování flexibility, výkonu a kompatibility s místními souborového serveru. Azure File Sync transformuje serveru systému Windows na rychlou mezipaměť sdílené složky Azure. Můžete použít jakýkoli protokol dostupný ve Windows serveru pro přístup k datům místně, včetně SMB, NFS a FTPS. Můžete mít libovolný počet mezipamětí po celém světě potřebujete.
 
 Důrazně doporučujeme, abyste si přečetli [plánování nasazení služby soubory Azure](storage-files-planning.md) a [plánování nasazení služby Azure File Sync](storage-sync-files-planning.md) před provedením kroků popsaných v tomto článku.
 
@@ -135,7 +135,7 @@ Nasazení služby Azure File Sync začíná umístěním **služba synchronizace
 > Služba synchronizace úložiště Zdědit z předplatného a skupiny prostředků, které byly nasazeny do přístupová oprávnění. Doporučujeme důkladně zkontrolovat kdo má přístup k němu. Entity s oprávněním k zápisu může provést synchronizaci nové sady souborů ze serverů zaregistrovaných do tohoto úložiště synchronizační služba a způsobit, že datový tok do úložiště Azure, který je přístupný na ně.
 
 # <a name="portaltabportal"></a>[Azure Portal](#tab/portal)
-Pokud chcete nasadit službu synchronizace úložiště, přejděte na [webu Azure portal](https://portal.azure.com/), klikněte na tlačítko *nový* a vyhledejte Azure File Sync. Ve výsledcích hledání vyberte **Azure File Sync (preview)** a pak vyberte **vytvořit** otevřít **nasadit synchronizaci úložiště** kartu.
+Pokud chcete nasadit službu synchronizace úložiště, přejděte na [webu Azure portal](https://portal.azure.com/), klikněte na tlačítko *nový* a vyhledejte Azure File Sync. Ve výsledcích hledání vyberte **Azure File Sync**a pak vyberte **vytvořit** otevřít **nasadit synchronizaci úložiště** kartu.
 
 V podokně, které se otevře zadejte následující informace:
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/15/2018
 ms.author: barbkess
 ms.reviewer: richagi
-ms.openlocfilehash: abf7d571097aefd47c90cbd0ce4aab941c4e24c4
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: b89ab77b1cd97fd501a754dbf41d1aa74ef118d9
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126656"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144988"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>Omezení Tenanta můžete spravovat přístup k SaaS cloudové aplikace
 
@@ -97,7 +97,7 @@ Příklad uživatel je v síti Contoso, ale se pokouší získat přístup k ins
 
 Během konfigurace omezení klienta se provádí na infrastruktuře podnikový proxy server, můžou správci přímý přístup exportní Tenanta sestavy na webu Azure Portal. Chcete-li zobrazit sestavy, přejděte na stránku Přehled služby Azure Active Directory a podívejte se do části "Další možnosti".
 
-ID správce pro tenanta, zadaný jako s omezeným přístupem. přístup kontextu tenanta pomocí této sestavy zobrazíte všechna přihlášení blokováno z důvodu zásad omezení Tenanta, včetně identity použité a cílový adresář.
+ID správce pro tenanta, zadaný jako s omezeným přístupem. přístup kontextu tenanta můžete pomocí této sestavy naleznete v tématu přihlášení blokováno z důvodu zásad omezení Tenanta, včetně identity použité a cílový adresář. Přihlášení jsou zahrnuty, pokud nastavení tohoto omezení tenanta je tenantovi uživatele nebo prostředků tenanta pro přihlášení.
 
 ![Zobrazení s omezeným přístupem pokusů o přihlášení pomocí webu Azure portal](./media/tenant-restrictions/portal-report.png)
 

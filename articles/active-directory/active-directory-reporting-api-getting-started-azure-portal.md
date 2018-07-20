@@ -16,12 +16,12 @@ ms.component: compliance-reports
 ms.date: 05/07/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 93532f4b0b2d527a4d5c79e2ee1b2810394b2f11
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: ce8630f5718a849f460b372d9e15b03902ac2117
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37442079"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39159675"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Začínáme s Azure Active Directory API pro vytváření sestav
 
@@ -49,7 +49,7 @@ Podrobné pokyny najdete v tématu [požadavky pro přístup k API pro vytváře
 
 ## <a name="apis-with-graph-explorer"></a>Rozhraní API pomocí Graph Exploreru
 
-Můžete použít [MSGraph explorer](https://developer.microsoft.com/en-us/graph/graph-explorer) ověřte vaše přihlášení a auditování dat rozhraní API. Ujistěte se, že pro přihlášení ke svému účtu pomocí tlačítek přihlášení v uživatelském rozhraní Graph Explorer a nastavte **Tasks.ReadWrite** a **Directory.ReadAll** oprávnění pro vašeho tenanta, jak je znázorněno.   
+Můžete použít [MSGraph explorer](https://developer.microsoft.com/en-us/graph/graph-explorer) ověřte vaše přihlášení a auditování dat rozhraní API. Ujistěte se, že pro přihlášení ke svému účtu pomocí tlačítek přihlášení v uživatelském rozhraní Graph Explorer a nastavte **AuditLog.Read.All** a **Directory.Read.All** oprávnění pro vašeho tenanta, jak je znázorněno.   
 
 ![Graph Exploreru](./media/active-directory-reporting-api-getting-started-azure-portal/graph-explorer.png)
 

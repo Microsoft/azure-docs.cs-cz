@@ -4,18 +4,18 @@ description: Tento článek popisuje, jak začít se službami Azure Multi-Facto
 services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
-ms.topic: get-started-article
-ms.date: 08/25/2017
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
-ms.reviewer: richagi
-ms.openlocfilehash: 4ed4db6fa2c712c0fd858815d89dd0094dd5cfbd
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.reviewer: michmcla
+ms.openlocfilehash: 663ed2f42f59093252506fc5bb5fe2581d4dd200
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33868224"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39160208"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-in-windows-server"></a>Konfigurace serveru Azure Multi-Factor Authentication pro práci se službou AD FS ve Windows Serveru
 
@@ -79,7 +79,7 @@ Multi-Factor Authentication Server máte teď nastavený jako dodatečného posk
 Postupujte podle těchto kroků a upravte soubor MultiFactorAuthenticationAdfsAdapter.config:
 
 1. Uzel **UseWebServiceSdk** nastavte na **true**.  
-2. Hodnotu **WebServiceSdkUrl** nastavte na URL sady SDK webové služby pro Multi-Factor Authentication. Například: *https://contoso.com/&lt;název_certifikátu&gt;/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx*, kde *název_certifikátu* je název vašeho certifikátu.  
+2. Hodnotu **WebServiceSdkUrl** nastavte na URL sady SDK webové služby pro Multi-Factor Authentication. Příklad:  *https://contoso.com/&lt; název_certifikátu&gt;/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx*, kde *název_certifikátu* je název vašeho certifikátu.  
 3. Upravte skript Register-Register-MultiFactorAuthenticationAdfsAdapter.ps1 tak, že na konec příkazu `Register-AdfsAuthenticationProvider` přidáte `-ConfigurationFilePath &lt;path&gt;`, kde *&lt;path&gt;* je úplná cesta k souboru MultiFactorAuthenticationAdfsAdapter.config.
 
 ### <a name="configure-the-web-service-sdk-with-a-username-and-password"></a>Konfigurace sady SDK webové služby pomocí uživatelského jména a hesla
@@ -142,7 +142,7 @@ K zabezpečení cloudových prostředků nastavte pravidlo deklarace identity ta
 6. Pojmenujte pravidlo.
 7. Jako typ příchozí deklarace identity vyberte **Odkazy na metody ověřování**.
 8. Vyberte **Předávat všechny hodnoty deklarací identity**.
-    ![	Průvodce přidáním pravidla – deklarace identity transformace](./media/howto-mfaserver-adfs-2012/configurewizard.png)
+    ![Průvodce přidáním pravidla deklarace identity transformace](./media/howto-mfaserver-adfs-2012/configurewizard.png)
 9. Klikněte na **Dokončit**. Uzavřete konzolu pro správu služby AD FS.
 
 ## <a name="troubleshooting-logs"></a>Řešení potíží s protokoly

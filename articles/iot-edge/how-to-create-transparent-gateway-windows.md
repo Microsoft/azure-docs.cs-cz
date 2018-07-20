@@ -8,12 +8,12 @@ ms.date: 6/20/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 96a0443a66bb826496c6af42fe6479c0a53ac964
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 2a9364d77af42623946b25506e504bf0f9a3f3e3
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036080"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39160813"
 ---
 # <a name="create-a-windows-iot-edge-device-that-acts-as-a-transparent-gateway"></a>Vytvoření zařízení Windows IoT Edge, který funguje jako transparentní brána
 
@@ -54,7 +54,7 @@ Následující kroky vás provedou procesem vytváření certifikátů a jejich 
          ```PowerShell
          .\vcpkg install openssl:x64-windows
          ```
-      1. Přidat `$VCPKGDIR\vcpkg\packages\openssl_x64-windows\tools\openssl` do vaší `PATH` proměnnou prostředí tak, aby `openssl.exe` soubor je k dispozici pro vyvolání.
+      1. Přidat `$VCPKGDIR\installed\x64-windows\tools\openssl` do vaší `PATH` proměnnou prostředí tak, aby `openssl.exe` soubor je k dispozici pro vyvolání.
 
 1. Přejděte do adresáře, ve kterém chcete pracovat. Dále budeme odkazovat na tuto jako $WRKDIR.  Vytvoří se všechny soubory v tomto adresáři.
    

@@ -4,18 +4,18 @@ description: Toto je stránka ověřování Azure Multi-Factor Authentication, k
 services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
-ms.topic: get-started-article
-ms.date: 06/27/2017
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
-ms.reviewer: richagi
-ms.openlocfilehash: ef090b51141e8d77f23472058f9c3a8d096ca171
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.reviewer: michmcla
+ms.openlocfilehash: f5511486650d538bc136449c32babfd88efab86a
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33867455"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39159630"
 ---
 # <a name="remote-desktop-gateway-and-azure-multi-factor-authentication-server-using-radius"></a>Vzdálená plocha brány a server Azure Multi-Factor Authentication využívající protokol RADIUS
 
@@ -74,7 +74,7 @@ Server Azure Multi-Factor Authentication je nakonfigurován jako proxy server pr
 
 ![Ověřování Radius](./media/howto-mfaserver-nps-rdg/radius.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Integrace Azure MFA a [webových aplikací IIS](howto-mfaserver-iis.md)
 

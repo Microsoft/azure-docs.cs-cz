@@ -1,21 +1,21 @@
 ---
-title: Jak aktivovat složité akce s Azure Monitor výstrah a skupiny akcí
+title: Jak aktivovat složité akce s Azure Monitor výstrah
 description: Zjistěte, jak vytvořit akce aplikace logiky ke zpracování Azure Monitor výstrah.
 author: dkamstra
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 04/30/2018
+ms.date: 07/18/2018
 ms.author: dukek
 ms.component: alerts
-ms.openlocfilehash: 51d47b87f898aa65fe4ee76c312240a50d45231d
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 034e708b79bbdf15d7fa628f388402998f49c0d9
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39049183"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39161502"
 ---
-# <a name="create-a-logic-app-action"></a>Vytvoření akce aplikace logiky
+# <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Jak aktivovat složité akce s Azure Monitor výstrah
 
 Tento článek ukazuje, jak nastavit a spustit aplikaci logiky vytvořte konverzaci v Microsoft Teams, když se aktivuje upozornění.
 
@@ -290,6 +290,9 @@ Je podobný procesu pro vytváření upozornění na metriku [vytvoření upozor
        !["Akci po metriky false vyskytl výstražný stav"](media/monitoring-action-groups/metric-alert-false-condition-post-action.png "akci po upozornění false podmínku metriky")
 
 - Krok 15 je stejný. Postupujte podle pokynů pro svou aplikaci logiky a aktualizaci vaší skupiny akcí.
+
+## <a name="calling-other-applications-besides-microsoft-teams"></a>Volání jiné aplikace kromě Microsoft Teams
+Logic Apps má několik různých konektorů, které vám umožní pro aktivaci akcí v celé řadě aplikací a databází. Slack, SQL Server, Oracle, Salesforce, je několik příkladů. Další informace o konektorech najdete v tématu [konektory aplikací logiky](../connectors/apis-list.md).  
 
 ## <a name="next-steps"></a>Další postup
 * Získat [přehled upozornění protokolu aktivit Azure](monitoring-overview-alerts.md) a zjistěte, jak dostávat upozornění.  

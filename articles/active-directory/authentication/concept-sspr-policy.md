@@ -1,31 +1,31 @@
 ---
-title: Samoobslužné resetování hesla zásad – Azure Active Directory
-description: Možnosti zásad resetování hesel samoobslužné služby Azure AD
+title: Zásady pro resetování hesel Azure AD samoobslužný
+description: Konfigurace možností zásady resetování hesla pomocí samoobslužné služby Azure AD
 services: active-directory
 ms.service: active-directory
 ms.component: authentication
-ms.topic: article
-ms.date: 01/11/2018
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: a851b3842e44dbb81ef80bacde645ebafdb48d86
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 8396db3a45c2b6f2c88a9fd6bbf0b8e5a7df4efb
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39054756"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39162044"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Zásady hesel a omezení v Azure Active Directory
 
 Tento článek popisuje zásady pro hesla a požadavky na složitost spojené s uživatelskými účty, které jsou uložené ve vašem tenantovi Azure Active Directory (Azure AD).
 
-## <a name="administrator-password-policy-differences"></a>Rozdíly zásady hesla správce
+## <a name="administrator-reset-policy-differences"></a>Správce resetovat zásady rozdíly
 
-Microsoft vynucuje silné výchozí *dvě brány* zásady pro libovolnou roli Správce služby Azure pro resetování hesla. 
+**Microsoft vynucuje silné výchozí *dvě brány* zásady pro libovolnou roli Správce služby Azure pro resetování hesla** tento polciy může být jiné než ta, kterou jste definovali pro vaše uživatele a nedá se změnit. Vždy byste měli otestovat funkci resetování hesla jako uživatel bez jakékoli role Správce služby Azure, které jsou přiřazeny.
 
-Pomocí zásad dvě brány nemají správci umožňuje použít bezpečnostní otázky.
+Pomocí zásad brány dvě **správci nemají možnost použít bezpečnostní otázky**.
 
  Zásady dvě brány vyžadují dva druhy dat ověřování, jako jsou e-mailovou adresu *a* telefonní číslo. Dvě brány zásady platí za následujících okolností:
 
@@ -49,7 +49,7 @@ Pomocí zásad dvě brány nemají správci umožňuje použít bezpečnostní o
   * Správce služby proxy aplikace
   * Správce služby CRM
   * Správce služby Power BI
-  
+
 * Pokud ve zkušební verzi předplatného po uplynutí 30 dnů
 
   nebo
@@ -61,18 +61,18 @@ Pomocí zásad dvě brány nemají správci umožňuje použít bezpečnostní o
 * Azure AD Connect je synchronizaci identit z místního adresáře
 
 ### <a name="exceptions"></a>Výjimky
+
 Zásada jedna brána vyžaduje jednu část ověření dat, jako jsou e-mailovou adresu *nebo* telefonní číslo. Jedna brána zásady platí za následujících okolností:
 
 * Je během prvních 30 dnů zkušebního předplatného
 
   nebo
 
-* Není přítomna individuální doména (*. onmicrosoft.com) 
+* Není přítomna individuální doména (*. onmicrosoft.com)
 
-  a 
+  a
 
   Azure AD Connect nesynchronizuje identity
-
 
 ## <a name="userprincipalname-policies-that-apply-to-all-user-accounts"></a>UserPrincipalName zásady, které platí pro všechny uživatelské účty
 
@@ -109,13 +109,13 @@ Tento návod se vztahuje na jiných poskytovatelů, jako je Intune a Office 365,
 > [!NOTE]
 > Jenom hesla pro uživatelské účty, které nejsou synchronizovány prostřednictvím synchronizace adresářů je možné nakonfigurovat na nevyprší platnost. Další informace o synchronizaci adresářů, naleznete v tématu [AD se službou Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect).
 >
->
 
 ## <a name="set-or-check-the-password-policies-by-using-powershell"></a>Nastavte nebo zkontrolujte zásady pro hesla pomocí prostředí PowerShell
 
 Chcete-li začít, je potřeba [stáhněte a nainstalujte modul Azure AD PowerShell](https://docs.microsoft.com/powershell/module/Azuread/?view=azureadps-2.0). Po jeho instalaci, můžete použít následující postup ke konfiguraci jednotlivých polí.
 
-### <a name="how-to-check-the-expiration-policy-for-a-password"></a>Návod k ověření zásad vypršení platnosti hesla
+### <a name="check-the-expiration-policy-for-a-password"></a>Zkontrolujte, že zásada vypršení platnosti hesla
+
 1. Připojení k prostředí Windows PowerShell s použitím svých přihlašovacích údajů správce společnosti.
 2. Spustí jednu z následujících příkazů:
 

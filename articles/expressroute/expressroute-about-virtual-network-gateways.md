@@ -1,53 +1,64 @@
 ---
-title: O brány virtuální sítě ExpressRoute | Microsoft Docs
-description: Další informace o brány virtuální sítě pro ExpressRoute.
+title: O branách virtuálních sítí Azure ExpressRoute | Dokumentace Microsoftu
+description: Další informace o branách virtuálních sítí pro ExpressRoute.
 services: expressroute
-documentationcenter: na
 author: cherylmc
-manager: carmonm
-editor: ''
-tags: azure-resource-manager, azure-service-management
-ms.assetid: 7e0d9658-bc00-45b0-848f-f7a6da648635
 ms.service: expressroute
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 03/22/2018
+ms.topic: conceptual
+ms.date: 07/19/2018
 ms.author: cherylmc
-ms.openlocfilehash: ae971e7743d6dd3269c0a4f976bd2a5316300f58
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: a27200803ff13ed04a194fcbe45cf5edfe62ea50
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30235321"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39161719"
 ---
 # <a name="about-virtual-network-gateways-for-expressroute"></a>O branách virtuálních sítí pro ExpressRoute
-Brána virtuální sítě se používá k posílání síťového provozu mezi virtuálními sítěmi Azure a místními umístěními. Při konfiguraci připojení ExpressRoute, musíte vytvořit a konfigurovat bránu virtuální sítě a připojení brány virtuální sítě.
+Bránu virtuální sítě slouží k posílání síťového provozu mezi virtuálními sítěmi Azure a místními umístěními. Můžete použít virtuální síťová brána lze použít pro provoz ExpressRoute nebo VPN provoz. Tento článek se týká bran virtuální sítě ExpressRoute.
 
-Při vytváření brány virtuální sítě je třeba zadat několik nastavení. Jeden z požadovaných nastavení určuje, zda brány se použije pro provoz ExpressRoute nebo VPN typu Site-to-Site. V modelu nasazení Resource Manager, je nastavení '-GatewayType'.
+## <a name="gateway-types"></a>Typy bran
 
-Pokud síťový provoz se odesílají na privátní připojení, je použít typ brány, ExpressRoute. Ten se označuje také jako brána ExpressRoute. Pokud síťový provoz posílání šifrovaných přes veřejný Internet, je použít typ brány, Vpn. Ten se označuje také jako brána VPN. Připojení typu Site-to-Site, Point-to-Site a VNet-to-VNet používají bránu VPN.
+Při vytváření brány virtuální sítě je třeba zadat několik nastavení. Jeden z požadovaných nastavení "-GatewayType", určuje, jestli je brána používat pro ExpressRoute, nebo přenosy VPN. Dvě brány typy jsou: 
 
-Každá virtuální síť může mít pouze jednu bránu virtuální sítě pro každý typ brány. Například můžete mít jednu bránu virtuální sítě, která má typ -GatewayType Vpn a jednu, který má typ -GatewayType ExpressRoute. Tento článek se zaměřuje na bránu virtuální sítě.
+* **VPN** – Pokud chcete posílat šifrovaný provoz přes veřejný Internet, použijte typ brány "Vpn". To se také označuje jako bránu sítě VPN. Připojení typu Site-to-Site, Point-to-Site a VNet-to-VNet používají bránu VPN.
+
+* **ExpressRoute** – Pokud chcete posílat síťový provoz na privátní připojení, použijte typ brány "ExpressRoute". Tím se také označuje jako bránu ExpressRoute a je typ brány, který použijete při konfiguraci ExpressRoute.
+
+
+Každá virtuální síť může mít pouze jednu bránu virtuální sítě pro každý typ brány. Například můžete mít jednu bránu virtuální sítě, která má typ -GatewayType Vpn a jednu, který má typ -GatewayType ExpressRoute.
 
 ## <a name="gwsku"></a>SKU brány
 [!INCLUDE [expressroute-gwsku-include](../../includes/expressroute-gwsku-include.md)]
 
-Pokud chcete upgradovat bránu výkonnější skladová položka brány, ve většině případů, můžete použít rutinu prostředí PowerShell, změny velikosti-AzureRmVirtualNetworkGateway'. To bude fungovat při upgradu Standard a HighPerformance SKU. Chcete-li upgradovat na UltraPerformance SKU, musíte ale bránu znovu vytvořte.
+Pokud chcete provést upgrade brány na výkonnější skladové položky brány, ve většině případů můžete použít rutinu Powershellu "Změna velikosti-AzureRmVirtualNetworkGateway". To bude fungovat pro upgrade na Standard a HighPerformance SKU. Pokud chcete upgradovat na UltraPerformance SKU, musíte však znovu vytvořte bránu.
 
-### <a name="aggthroughput"></a>Odhadované přínos podle skladová položka brány
-V následující tabulce jsou uvedeny typy brány a odhadovanou funkční. Tato tabulka platí pro model nasazení Resource Manager i pro klasický model.
+### <a name="aggthroughput"></a>Odhadované výkonů podle SKU brány
+Následující tabulka ukazuje typy brány a odhadovanou funkční. Tato tabulka platí pro model nasazení Resource Manager i pro klasický model.
 
 [!INCLUDE [expressroute-table-aggthroughput](../../includes/expressroute-table-aggtput-include.md)]
 
 > [!IMPORTANT]
-> Výkon aplikace závisí na několika faktorech, například na začátku do konce latenci a počet tok přenosů dat, které se aplikace spustí. Čísla v tabulce představují horní limit aplikace může teoreticky dosáhnout v prostředí ideální. 
+> Výkon aplikace závisí na několika faktorech, například na celkovou latenci a počet přenosové toky, které aplikace se otevře. Čísla v tabulce představují horní mez, které může aplikace dosáhnout teoreticky v prostředí ideální. 
 > 
 >
 
-## <a name="resources"></a>Rutiny prostředí PowerShell a rozhraní REST API
-Další zdroje technických informací a specifickou syntaxi požadavky při použití rozhraní REST API a rutin prostředí PowerShell pro konfiguraci brány virtuální sítě najdete na následujících stránkách:
+### <a name="zrgw"></a>Zónově redundantní brány skladové položky (Preview)
+
+Můžete také nasadit brány ExpressRoute v zónách dostupnosti Azure. To fyzicky a logicky je odděluje do různých zón dostupnosti, chrání před výpadky na úrovni zóny připojení k místní síti do Azure.
+
+![Zónově redundantní brány ExpressRoute](./media/expressroute-about-virtual-network-gateways/zone-redundant.png)
+
+Zónově redundantní brány používají konkrétní nové SKU brány pro bránu ExpressRoute. Nové SKU jsou nyní dostupné v **ve verzi Public Preview**.
+
+* ErGw1AZ
+* ErGw2AZ
+* ErGw3AZ
+
+Nové SKU brány podporovat i jiné možnosti nasazení, aby co nejlépe odpovídaly vašim potřebám. Při vytváření brány virtuální sítě pomocí nové SKU brány, máte také možnost k nasazení brány v konkrétní zóně. To se označuje jako brána oblastmi. Při nasazení oblastmi brány všechny instance brány jsou nasazené ve stejné zóně dostupnosti. K registraci ve verzi Preview, najdete v článku [vytvořit bránu virtuální sítě zónově redundantní](../../articles/vpn-gateway/create-zone-redundant-vnet-gateway.md).
+
+## <a name="resources"></a>Rutiny Powershellu a rozhraní REST API
+Pro další zdroje technických informací a požadavky na konkrétní syntaxe při použití rozhraní REST API a rutin prostředí PowerShell pro konfiguraci brány virtuální sítě naleznete na následujících stránkách:
 
 | **Classic** | **Resource Manager** |
 | --- | --- |
@@ -55,6 +66,6 @@ Další zdroje technických informací a specifickou syntaxi požadavky při pou
 | [REST API](https://msdn.microsoft.com/library/jj154113.aspx) |[REST API](https://msdn.microsoft.com/library/mt163859.aspx) |
 
 ## <a name="next-steps"></a>Další postup
-V tématu [přehled ExpressRoute](expressroute-introduction.md) pro další informace o konfiguracích dostupné připojení.
+Zobrazit [přehled ExpressRoute](expressroute-introduction.md) pro další informace o konfiguracích dostupné připojení.
 
-V tématu [vytvořit bránu virtuální sítě pro ExpressRoute](expressroute-howto-add-gateway-resource-manager.md) pro další informace o vytvoření brány ExpressRoute.
+Zobrazit [vytvořit bránu virtuální sítě pro ExpressRoute](expressroute-howto-add-gateway-resource-manager.md) pro další informace o vytváření brány ExpressRoute.

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 9795beca93ab4dbbeb1e0e99a50952ea23ca1568
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: b516dd165bfc22ad3966ffe51e99591379f9e680
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39005481"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144325"
 ---
 # <a name="become-a-cloud-marketplace-publisher"></a>Stát vydavatelem cloudové Tržiště
 
@@ -28,18 +28,18 @@ Tento článek se týká registrace jako vydavatele na webu marketplace cloudu. 
 
 |  | Krok registrace | Doba trvání | Podrobnosti |  
 |:--- |:--- |:--- |:--- |  
-| 1 | Registrace v programu Microsoft Partner Network | 15 min | [Registrace v programu Microsoft Partner Network](#register-in-microsoft-partner-network) |  
-| 2 | Vytvoření účtu Microsoft <ul>(požadovaných pro Azure Marketplace transact nabídek; doporučuje pro ostatní uživatele)</ul> | 15 minut | [Vytvoření ID Microsoftu](#create-a-microsoft-id) |  
-| 3 | Odeslat marketplace registrační formulář | 15 min | [Odeslání formulář nominace na marketplace](#submit-the-marketplace-nomination-form) |  
-| 4 |  Přihlaste se k portálu Cloud Partner | 1 – 3 dny | [Přihlaste se k portálu Cloud Partner](#sign-into-cloud-partner-portal) |  
-| 5 | Registrace v Microsoft Developer Center (Centrum pro vývojáře) (pro Azure Marketplace transact nabídky) | 5 až 10 dnů | [Registrace na webu Dev Center](#register-in-dev-center) |  
+| 1 | Registrace v programu Microsoft Partner Network | 15 min | [Registrace v programu Microsoft Partner Network](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher#1-register-in-microsoft-partner-network) |  
+| 2 | Vytvoření účtu Microsoft <ul>(požadovaných pro Azure Marketplace transact nabídek; doporučuje pro ostatní uživatele)</ul> | 15 minut | [Vytvoření ID Microsoftu](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher#2-create-a-microsoft-account) |  
+| 3 | Odeslat marketplace registrační formulář | 15 min | [Odeslání formulář nominace na marketplace](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher#3-submit-the-marketplace-registration-form) |  
+| 4 |  Přihlaste se k portálu Cloud Partner | 1 – 3 dny | [Přihlaste se k portálu Cloud Partner](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher#4-sign-into-cloud-partner-portal) |  
+| 5 | Registrace v Microsoft Developer Center (Centrum pro vývojáře) (pro Azure Marketplace transact nabídky) | 5 až 10 dnů | [Registrace na webu Dev Center](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher#5-register-in-dev-center-for-transact-publishing-option-only) |  
 
 
 ## <a name="1-register-in-microsoft-partner-network"></a>1. Registrace v programu Microsoft Partner Network  
 | 15 min |  
 Účast v cloudové Tržiště Microsoftu vyžaduje členství v Microsoft Partner Network (MPN), které také poskytuje klíčové výhody, programů a sledování výkonu partnera. Pokud vaše organizace ještě není členem, připojte se k Microsoft Partner Network (MPN) a Staňte se partnerem Microsoftu oficiální a poskytuje další výhody podpory pro publikování na webu marketplace. 
 
-*   K registraci v programu Microsoft Partner Network najdete [členství stránky](https://partner.microsoft.com/membership)a postupujte podle kroků ke spuštění vaší registrace.  
+*   K registraci v programu Microsoft Partner Network najdete [členství stránky](https://partner.microsoft.com/membership) a postupujte podle kroků ke spuštění vaší registrace.  
 
 Po registraci, zaznamenejte ID Microsoft Partner Network pro vaši organizaci. Ho budete potřebovat v kroku 3 při odesílání marketplace registračního formuláře.
 *   Další informace o výhodách [programu Microsoft Partner Network](https://partner.microsoft.com/en-us/commercial)
@@ -99,7 +99,7 @@ Po dokončení [Dev Center](https://developer.microsoft.com/en-us/store/register
 >Vzdát poplatek za zápis $99 středisko pro vývojáře, vyplňte registraci webu marketplace a obdržíte e-mail obsahující propagační kód. 
 
 >[!Important]
->Než začnete vytvářet účet Microsoft Dev Center, ověřte prosím, že vaše organizace ještě nemá účet Dev Center, aby duplicitní účty. Další informace najdete [jak se zaregistrovat ve službě Dev Center](https://review.docs.microsoft.com/en-us/azure/marketplace/become-publisher?branch=pr-en-us-44571#how-to-register-in-dev-center) oddílu.
+>Než začnete vytvářet účet Microsoft Dev Center, ověřte prosím, že vaše organizace ještě nemá účet Dev Center, aby duplicitní účty. Další informace najdete [registraci v centru vývojářů pro](https://docs.microsoft.com/en-us/azure/marketplace/register-dev-center) oddílu.
 
 
 ## <a name="next-steps"></a>Další postup

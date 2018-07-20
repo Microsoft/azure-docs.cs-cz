@@ -4,18 +4,18 @@ description: Požadavky na data pro hesla pomocí samoobslužné služby Azure A
 services: active-directory
 ms.service: active-directory
 ms.component: authentication
-ms.topic: article
-ms.date: 01/11/2018
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: ea6bf503eeba9e904c492a858139490b523a10cc
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 5d8fe6282d956d7f399aff9f7aa250c5061dc887
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39044171"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39159562"
 ---
 # <a name="deploy-password-reset-without-requiring-end-user-registration"></a>Nasazení resetování hesla bez vyžadování registrace koncového uživatele
 
@@ -47,20 +47,19 @@ Globální správce, můžete ručně nastavit kontaktní údaje pro ověření 
 
 ![Obraťte se na][Contact]
 
-Pokud je vyplněno pole Telefon a v zásadách samoobslužné resetování HESLA je povoleno mobilní telefon, uživateli se zobrazí, že číslo, na stránce registrace pro resetování hesla a během heslo pracovního postupu pro obnovení. 
+Pokud je vyplněno pole Telefon a v zásadách samoobslužné resetování HESLA je povoleno mobilní telefon, uživateli se zobrazí, že číslo, na stránce registrace pro resetování hesla a během heslo pracovního postupu pro obnovení.
 
 Pole alternativní telefon se nepoužívá pro resetování hesla.
 
 Pokud je zadáno pole e-mailu a e-mailu je v zásadách samoobslužné resetování HESLA povolené, uživateli se zobrazí, že e-mailu na registrační stránce pro resetování hesla a během heslo pracovního postupu pro obnovení.
 
-Pokud je zadáno pole s alternativní e-mailu a e-mailu je v zásadách samoobslužné resetování HESLA povolené, uživatel uvidí **není** naleznete v tématu, že registrační stránku pro resetování e-mailu na heslo, ale zobrazí se mu během heslo pracovního postupu pro obnovení. 
-
+Pokud je zadáno pole s alternativní e-mailu a e-mailu je v zásadách samoobslužné resetování HESLA povolené, uživatel uvidí **není** naleznete v tématu, že registrační stránku pro resetování e-mailu na heslo, ale zobrazí se mu během heslo pracovního postupu pro obnovení.
 
 ## <a name="security-questions-and-answers"></a>Bezpečnostní otázky a odpovědi
 
-Bezpečnostní otázky a odpovědi jsou bezpečně uložené ve vašem tenantovi Azure AD a jsou přístupné prostřednictvím pouze [portál pro registraci SSPR](https://aka.ms/ssprsetup). Správce nemůže zobrazit nebo upravit obsah otázek a odpovědí jiného uživatele.
+Bezpečnostní otázky a odpovědi jsou bezpečně uložené ve vašem tenantovi Azure AD a jsou přístupné prostřednictvím pouze [portál pro registraci SSPR](https://aka.ms/ssprsetup). Správci nelze zobrazit, nastavit nebo změnit obsah otázek a odpovědí jiného uživatele.
 
-### <a name="what-happens-when-a-user-registers"></a>Co se stane, když se uživatel zaregistruje
+## <a name="what-happens-when-a-user-registers"></a>Co se stane, když se uživatel zaregistruje
 
 Když se uživatel zaregistruje, nastaví na registrační stránku následující pole:
 

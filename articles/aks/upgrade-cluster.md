@@ -1,24 +1,24 @@
 ---
-title: Upgrade clusteru služby Azure Kubernetes služby (AKS)
-description: Upgrade clusteru služby Azure Kubernetes služby (AKS)
+title: Upgrade clusteru Azure Kubernetes Service (AKS)
+description: Upgrade clusteru Azure Kubernetes Service (AKS)
 services: container-service
 author: gabrtv
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 04/05/2018
+ms.date: 07/18/2018
 ms.author: gamonroy
 ms.custom: mvc
-ms.openlocfilehash: f6b8e964f4277150e104cd6d77db092aaa8553b4
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 9557311c97ea0fde66790c37b08d1a22d1197405
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33933270"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144580"
 ---
-# <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Upgrade clusteru služby Azure Kubernetes služby (AKS)
+# <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Upgrade clusteru Azure Kubernetes Service (AKS)
 
-Služba Azure Kubernetes (AKS) umožňuje snadno provádět běžné úlohy správy, včetně upgrade Kubernetes clustery.
+Azure Kubernetes Service (AKS) usnadňuje provádění běžných úloh správy, včetně upgradu clusterů Kubernetes.
 
 ## <a name="upgrade-an-aks-cluster"></a>Upgrade clusteru AKS
 
@@ -36,10 +36,10 @@ Name     ResourceGroup    MasterVersion    NodePoolVersion    Upgrades
 default  mytestaks007     1.8.10           1.8.10             1.9.1, 1.9.2, 1.9.6
 ```
 
-Máme tři verze, které jsou k dispozici pro upgrade: 1.9.1, 1.9.2 a otázku 1.9.6. Pomocí příkazu `az aks upgrade` můžeme upgradovat na nejnovější dostupnou verzi.  Během procesu upgradu, jsou uzly pečlivě [cordoned a k nečekaně] [ kubernetes-drain] minimalizovat přerušení spuštěných aplikací.  Před zahájením upgradu clusteru se ujistěte, že máte dostatek další výpočetní kapacity pro zvládnutí úloh během přidávání a odebírání uzlů clusteru.
+Máme na upgrade k dispozici tři verze: 1.9.1, 1.9.2 a otázku 1.9.6. Pomocí příkazu `az aks upgrade` můžeme upgradovat na nejnovější dostupnou verzi.  Během procesu upgradu AKS přidá nového uzlu do clusteru, pak pečlivě [kordon a výpusť] [ kubernetes-drain] jeden uzel v době, aby se minimalizovalo přerušení spuštěných aplikací.
 
 > [!NOTE]
-> Při aktualizaci clusteru AKS, nelze přeskočit Kubernetes podverze. Například upgraduje mezi 1.7.x > 1.8.x nebo 1.8.x > 1.9.x jsou povoleny, ale 1.7 > 1.9 není.
+> Při upgradu clusteru AKS, nelze přeskočit dílčí verze Kubernetes. Například upgrady mezi 1.8.x -> 1.9.x nebo 1.9.x -> 1.10.x jsou povoleny, není však 1.10-1.8 >.
 
 ```azurecli-interactive
 az aks upgrade --name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.9.6

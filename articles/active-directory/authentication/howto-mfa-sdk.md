@@ -1,76 +1,76 @@
 ---
-title: Sada Azure MFA software development kit pro vlastní aplikace
-description: Tento článek ukazuje, jak stáhnout a použít Azure MFA SDK k povolení dvoustupňové ověřování pro vaše vlastní aplikace.
+title: Azure MFA sada SDK pro aplikace
+description: V tomto článku se dozvíte, jak si stáhnout a zapnout dvoustupňové ověřování pro vaše vlastní aplikace pomocí Azure MFA SDK.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
-ms.topic: article
-ms.date: 11/29/2017
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
-ms.reviewer: richagi
-ms.openlocfilehash: 28b48df27bf9b2f7176b886ef684f9281b3c4f37
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.reviewer: michmcla
+ms.openlocfilehash: 6b82ba53e7a469b01d77865831c2f5fb37f71044
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33866021"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39160837"
 ---
-# <a name="building-multi-factor-authentication-into-custom-apps-sdk"></a>Vytváření služby Multi-Factor Authentication do vlastní aplikace (SDK)
+# <a name="building-multi-factor-authentication-into-custom-apps-sdk"></a>Vytváření služby Multi-Factor Authentication do vlastních aplikací (SDK)
 
 > [!IMPORTANT]
-> Proběhlo oznámení o zastarání sady Azure Multi-Factor Authentication Software Development Kit (SDK). Tato funkce bude už podporována pro nové zákazníky. Aktuální zákazníci mohou tuto sadu SDK používat až do 14. listopadu 2018. Po tomto datu se volání této sady SDK nezdaří. 
+> Proběhlo oznámení o zastarání sady Azure Multi-Factor Authentication Software Development Kit (SDK). Tato funkce se již nejsou podporovány pro nové zákazníky. Aktuální zákazníci mohou tuto sadu SDK používat až do 14. listopadu 2018. Po tomto datu se volání této sady SDK nezdaří. 
 
-Azure Multi-Factor Authentication Software Development Kit (SDK) umožňují vytvářet dvoustupňové ověření přímo do procesy přihlášení nebo transakci aplikací v klientovi služby Azure AD.
+Azure Multi-Factor Authentication Software Development Kit (SDK) umožňuje vytvářet dvoustupňové ověřování aplikací ve vašem tenantovi Azure AD přímo do procesů přihlašování a transakcí.
 
-Sada SDK služby Multi-Factor Authentication je k dispozici pro C#, Visual Basic (.NET), Java, Perl, PHP a Ruby. Sada SDK poskytuje dynamické obálku kolem dvoustupňové ověřování. Obsahuje všechno, co potřebujete k zápisu kódu, včetně soubory komentáři zdrojového kódu, například soubory a podrobné souboru ReadMe. Každý SDK zahrnuje také certifikát a soukromý klíč pro šifrování transakce, které jsou jedinečné pro vaše zprostředkovatel vícefaktorového ověřování. Tak dlouho, dokud máte poskytovatele, si můžete stáhnout sadu SDK v jako v mnoha jazycích a formátů podle potřeby.
+Multi-Factor Authentication SDK je k dispozici pro C#, Visual Basic (.NET), Java, Perl, PHP a Ruby. SDK podporuje prostřednictvím dynamického zajišťování obálku kolem dvoustupňové ověřování. Obsahuje všechno, co potřebujete k psaní kódu, včetně komentářem zdrojové soubory, například soubory a podrobné souboru ReadMe. Každá sada SDK obsahuje také certifikátu a privátního klíče pro šifrování transakcí, které jsou jedinečné pro poskytovatele služby Multi-Factor Authentication. Za předpokladu, budete mít zprostředkovatele, si můžete stáhnout sadu SDK v libovolný počet jazyků a formátů podle potřeby.
 
-Struktura rozhraní API v službu Multi-Factor Authentication SDK je jednoduché. Ujistěte se, jedné funkce volání do rozhraní API s parametry Multi-Factor možnost (jako jsou ověřování režimu) a dat uživatele (například telefonní číslo pro volání nebo číslo PIN kódu k ověření). Rozhraní API převede volání funkce do webových požadavků služby založené na cloudu Azure Multi-Factor Authentication Service. Všechna volání musí obsahovat odkaz na privátní certifikát, který je zahrnuta v každé sadě SDK.
+Struktura rozhraní API v sadě SDK pro ověřování službou Multi-Factor Authentication je jednoduché. Ujistěte se, jedinou funkci volání rozhraní API s parametry možností služby Multi-Factor Authentication (např. režim ověřování) a data uživatele (např. telefonní číslo nebo číslo PIN kód pro ověření). Rozhraní API pro překlad volání funkce do webové služby požadavky cloudové služby Azure Multi-Factor Authentication. Všechna volání musí obsahovat odkaz na privátní certifikát, který je zahrnutý v každé sadě SDK.
 
-Protože rozhraní API nemají přístup k uživatelům zaregistrovat ve službě Azure Active Directory, je třeba zadat informace o uživateli v souboru nebo databáze. Rozhraní API také neposkytují funkce správy zápisu nebo uživatele, proto musíte vytvořit tyto procesy do vaší aplikace.
+Rozhraní API nemají přístup k uživatelům v Azure Active Directory, je nutné zadat informace o uživateli v souboru nebo v databázi. Rozhraní API také neposkytují registrace nebo uživatelské funkce správy, proto budete muset sestavit tyto procesy do vaší aplikace.
 
 > [!IMPORTANT]
-> Pokud si chcete stáhnout sadu SDK, je třeba vytvořit poskytovatele Azure Multi-Factor Auth i v případě, že máte licence Azure MFA, AAD Premium nebo EMS. Pokud pro tento účel vytvořit poskytovatele Azure Multi-Factor Auth a už máte licence, nezapomeňte si vytvořit zprostředkovatele s **za povoleného uživatele** modelu. Potom propojte poskytovatele s adresářem, ve kterém jsou uložené licence Azure MFA, Azure AD Premium nebo EMS. Tato konfigurace zajistí, že se pouze účtují Pokud máte více jedinečných uživatelů, kteří pomocí sady SDK než počet licencí, které vlastníte.
+> Pokud si chcete stáhnout sadu SDK, je třeba vytvořit poskytovatele Azure Multi-Factor Auth i v případě, že máte licence Azure MFA, AAD Premium nebo EMS. Pokud vytvoříte poskytovatele Azure Multi-Factor Auth pro tento účel a již máte licence, nezapomeňte poskytovatele vytvořit podle **za povoleného uživatele** modelu. Potom propojte poskytovatele s adresářem, ve kterém jsou uložené licence Azure MFA, Azure AD Premium nebo EMS. Tato konfigurace zajistí, že nebudete dostávat faktury, pokud máte více jedinečných uživatelů využívajících sadu SDK než počet vlastněných licencí.
 
 
-## <a name="download-the-sdk"></a>Stažení sady SDK
-Stažení sady SDK Azure Multi-Factor vyžaduje [zprostředkovatel vícefaktorového ověřování Azure](concept-mfa-authprovider.md).  To vyžaduje úplné předplatné, i když jsou ve vlastnictví licence Azure MFA, Azure AD Premium nebo Enterprise Mobility Suite. Veřejné metody stahování sady SDK mít byla vyřazena, protože sadu SDK je zastaralá. Pokud budete muset stáhnout sady SDK, by měl otevřete případu podpory se společností Microsoft. Sada SDK je k dispozici pouze pro zákazníky, kteří jsou již pomocí sady SDK. Nové zákazníky nebudou zařazený nemá.
+## <a name="download-the-sdk"></a>Stáhnout sadu SDK
+Stažení Azure Multi-Factor Authentication SDK vyžaduje [poskytovatele Azure Multi-Factor Auth](concept-mfa-authprovider.md).  To vyžaduje úplné předplatné, i když jsou ve vlastnictví licence Azure MFA, Azure AD Premium nebo Enterprise Mobility Suite. Veřejné metody stažení sady SDK mají byla vyřazena, protože sada SDK se už nepoužívá. Pokud potřebujete stáhnout sadu SDK, měli byste otevřít případ podpory s Microsoftem. Sada SDK je k dispozici jenom pro zákazníky, kteří již používají sadu SDK. Noví zákazníci nebudou připojili.
 
-## <a name="whats-in-the-sdk"></a>Co je v sadě SDK
+## <a name="whats-in-the-sdk"></a>Novinky v sadě SDK
 Sada SDK zahrnuje následující položky:
 
-* **SOUBOR README**. Vysvětluje, jak používat rozhraní API služby Multi-Factor Authentication v nové nebo existující aplikaci.
-* **Zdrojové soubory** pro službu Multi-Factor Authentication
-* **Klientský certifikát** používaný ke komunikaci se službou Multi-Factor Authentication
+* **SOUBOR README**. Vysvětluje, jak používat rozhraní API ověřování službou Multi-Factor Authentication v nové nebo existující aplikace.
+* **Zdrojové soubory** ověřování službou Multi-Factor Authentication
+* **Klientský certifikát** , který používáte ke komunikaci se službou Multi-Factor Authentication
 * **Privátní klíč** certifikátu
-* **Výsledky volání.** Seznam kódy výsledků volání. K otevření tohoto souboru, použijte aplikaci s formátování textu, například WordPad. Kódy výsledků volání používejte pro testování a řešení potíží s implementací vícefaktorového ověřování ve vaší aplikaci. Nejsou ověřování stavové kódy.
-* **Příklady.** Ukázkový kód pro základní pracovní implementaci služby Multi-Factor Authentication.
+* **Výsledky volání.** Seznam kódy výsledků hovorů. Tento soubor otevřít pomocí aplikace formátování textu, jako je WordPad. Kódy výsledků hovorů používejte pro testování a řešení potíží s implementací ověřování službou Multi-Factor Authentication ve vaší aplikaci. Nejsou stavové kódy ověřování.
+* **Příklady.** Ukázkový kód pro základní implementaci pracovních služby Multi-Factor Authentication.
 
 > [!WARNING]
-> Klientský certifikát je jedinečný privátní certifikát, který byl vygenerován speciálně pro vás. Sdílené složky nebo ztratit tento soubor. Je váš klíč k zajištění zabezpečení komunikace se službou Multi-Factor Authentication.
+> Klientský certifikát je jedinečný privátní certifikát, který byl vygenerován speciálně pro vás. Sdílet nebo ztrátě tohoto souboru. To je váš klíč se zajištěním zabezpečení komunikace se službou Multi-Factor Authentication.
 
 ## <a name="code-sample"></a>Ukázka kódu
-Tento příklad ukazuje, jak přidat standardní režim hlasového hovoru ověření do vaší aplikace pomocí rozhraní API v sadě SDK Azure Multi-Factor Authentication. Je standardní režim telefonního hovoru, který uživatel odpoví na stisknutím klávesy #.
+Tento vzorový kód ukazuje, jak přidat standardní režim hlasového volání ověření do vaší aplikace pomocí rozhraní API v sadě SDK Azure Multi-Factor Authentication. Je možnost Standardní režim telefonického hovoru, který uživatel odpoví stisknutím klávesy #.
 
-Tento příklad používá C# .NET 2.0 Multi-Factor Authentication SDK v základní aplikace ASP.NET pomocí jazyka C# logiku na straně serveru, ale proces je podobný v dalších jazycích. Vzhledem k tomu, že sada SDK obsahuje zdrojové soubory, není spustitelné soubory, lze vytvořit soubory a odkazujte na ně nebo je přímo do aplikace zahrnout.
+Tento příklad používá C# .NET 2.0 Multi-Factor Authentication SDK v základní aplikace v ASP.NET s C# logiku na straně serveru, ale proces se podobá v jiných jazycích. Vzhledem k tomu, že sada SDK obsahuje zdrojové soubory, nikoli spustitelné soubory, lze vytvořit soubory a odkazovat na ně nebo jejich přímo do aplikace zahrnout.
 
 > [!NOTE]
-> Při implementaci vícefaktorového ověřování, použijte další metody (telefonního hovoru nebo textové zprávy) jako sekundární nebo terciární ověření pro doplnění vaší primární metoda ověřování (uživatelské jméno a heslo). Tyto metody se nedají jako primární metody ověřování.
+> Při implementaci ověřování službou Multi-Factor Authentication, použijte další metody (telefonní hovor nebo textovou zprávu) jako sekundární nebo terciární ověření k doplnění vaše primární metoda ověřování (uživatelské jméno a heslo). Tyto metody nejsou určeny jako primárních metod ověřování.
 
-### <a name="code-sample-overview"></a>Přehled ukázka kódu
-Tento ukázkový kód pro jednoduchou webovou aplikaci ukázku používá telefonního hovoru s klíče odpověď # ověřit uživatele. Tento faktor telefonní hovor je ověřování službou Multi-Factor Authentication označuje jako standardní režim.
+### <a name="code-sample-overview"></a>Přehled ukázky kódu
+Tento ukázkový kód pro jednoduchou webovou aplikaci Ukázka používá telefonní hovor klíče odpovědí # ověřit uživatele. Tento faktor telefonní hovor je ověřování službou Multi-Factor Authentication označuje jako standardní režim.
 
-Kód klienta neobsahuje žádné elementy specifické pro službu Multi-Factor Authentication. Protože dodatečných ověřovacích faktorů jsou nezávislé na primární ověřování, můžete je přidat beze změny existujícího rozhraní přihlášení. Rozhraní API v sadě SDK Multi-Factor umožňují přizpůsobit činnost koncového uživatele, ale možná nebudete muset nic nezmění vůbec.
+Kód na straně klienta neobsahuje žádné prvky specifické pro multi-Factor Authentication. Protože dodatečných ověřovacích faktorů platí bez ohledu na primární ověřování, můžete je přidat beze změny stávajících rozhraní přihlašování. Rozhraní API v sadě SDK služby Multi-Factor Authentication umožňují přizpůsobit uživatelské prostředí, ale možná nebudete muset nic vůbec změnit.
 
-Serverový kód přidá standardní režim ověřování v kroku 2. Vytvoří objekt PfAuthParams s parametry, které jsou požadovány pro standardní režim ověřování: uživatelské jméno, telefonní číslo a režim a cestu k certifikátu klienta (CertFilePath), který je požadován při každém volání. Ukázka všech parametrů v PfAuthParams naleznete v souboru příklad v sadě SDK.
+Kód na straně serveru přidá ověřování v režimu standard v kroku 2. Vytvoří objekt PfAuthParams s parametry, které jsou požadovány pro standardní režim ověřování: uživatelské jméno, telefonní číslo a režim a cesta k certifikátu klienta (CertFilePath), která je vyžadována v každé volání. Ukázku všech parametrů v PfAuthParams naleznete v příkladu souboru v sadě SDK.
 
-V dalším kroku kód předá objekt PfAuthParams pf_authenticate() funkce. Návratová hodnota označuje úspěch nebo selhání ověřování. Parametry, callStatus a ID chyby, obsahují další volání výsledek informace. Kódy výsledků volání jsou popsané v souboru výsledků volání v sadě SDK.
+V dalším kroku kód předá objekt PfAuthParams pf_authenticate() funkce. Návratová hodnota označuje úspěšné nebo neúspěšné ověřování. Parametry, callStatus a ID chyby, obsahují informace o výsledcích další volání. Kódy výsledků volání jsou zdokumentované v souboru výsledků volání v sadě SDK.
 
-Tato minimální implementace může být napsán v pár řádků. V produkčním kódu, bude však zahrnovat sofistikovanější zpracování chyb, kód další databáze a vylepšené uživatelské prostředí.
+Tato minimální implementace může být napsán v několika řádků. V produkčním kódu by ale obsahovat složitější zpracování chyb, kód další databáze a vylepšené uživatelské prostředí.
 
 ### <a name="web-client-code"></a>Kódu klienta webové
-Zde je kódu klienta webové stránky ukázku.
+Následuje kódu klienta webové stránky ukázku.
 
     <%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="\_Default" %>
 
@@ -104,7 +104,7 @@ Zde je kódu klienta webové stránky ukázku.
 
 
 ### <a name="server-side-code"></a>Kód na straně serveru
-V následujícím kódu na straně serveru Multi-Factor Authentication nakonfigurován a spusťte v kroku 2. Standardní režim (MODE_STANDARD) je telefonní hovor, na kterou uživatel odpovídá stisknutím klávesy #.
+V následujícím kódu na straně serveru je ověřování službou Multi-Factor Authentication konfiguraci a spuštění v kroku 2. Telefonní hovor, ke kterému uživatel odpoví stisknutím klávesy # je možnost Standardní režim (MODE_STANDARD).
 
     using System;
     using System.Collections.Generic;

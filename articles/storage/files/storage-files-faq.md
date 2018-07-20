@@ -11,17 +11,17 @@ ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 05/31/2018
+ms.date: 07/19/2018
 ms.author: renash
-ms.openlocfilehash: d11ddb0bc15798187ccea22fe1a80a9c86162dcd
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 89c1bb0404e1fbff9241fe42404123288fffea71
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37866466"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39160225"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>O službě soubory Azure – nejčastější dotazy (FAQ)
-[Služba soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné prostřednictvím standardních průmyslových [zprávy bloku SMB (Server) protokol](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Sdílené složky Azure je možné připojit současně v cloudových i místních nasazení systémů Windows, Linux a macOS. Také můžete ukládat do mezipaměti sdílených složek Azure v počítačích s Windows serverem pomocí Azure File Sync (preview) pro rychlý přístup blízko, ve kterém jsou využívány.
+[Služba soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné prostřednictvím standardních průmyslových [zprávy bloku SMB (Server) protokol](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Sdílené složky Azure je možné připojit současně v cloudových i místních nasazení systémů Windows, Linux a macOS. Také můžete ukládat do mezipaměti sdílených složek Azure v počítačích s Windows serverem pomocí Azure File Sync pro rychlý přístup blízko, ve kterém jsou využívány.
 
 Tento článek obsahuje odpovědi na běžné otázky o Azure Files funkce a funkce, včetně použití služby Azure File Sync s Azure Files. Pokud nevidíte odpověď na svoji otázku, kontaktujte nás prostřednictvím následujících kanálů (v neustále rostoucích pořadí):
 
@@ -90,8 +90,8 @@ Tento článek obsahuje odpovědi na běžné otázky o Azure Files funkce a fun
 ## <a name="azure-file-sync"></a>Azure File Sync
 
 * <a id="afs-region-availability"></a>
-**Jaké oblasti jsou podporovány pro Azure File Sync (preview)?**  
-    Azure File Sync v současné době je k dispozici v Austrálie – východ, Austrálie – jihovýchod, Kanada – střed, Kanada – východ, střed USA, východní Asie, východní USA, východní USA 2, Severní Evropa, jihovýchodní Asie, Velká Británie – Jih, Velká Británie – Západ, západní Evropa a západní USA. Podpora pro více oblastí se přidají, kdy pracujeme na obecné dostupnosti. Další informace najdete v tématu [dostupnost v oblastech](storage-sync-files-planning.md#region-availability).
+**Jaké oblasti jsou podporovány pro Azure File Sync?**  
+    Seznam dostupných oblastí najdete na [dostupnosti oblast](storage-sync-files-planning.md#region-availability) příručka k části Plánování Azure File Sync. Průběžně přidáme podporu dalších oblastech, včetně oblastí non-Public.
 
 * <a id="cross-domain-sync"></a>
 **Může mít servery připojené k doméně a není připojené k doméně ve stejné skupině synchronizace?**  
@@ -367,4 +367,4 @@ Tento článek obsahuje odpovědi na běžné otázky o Azure Files funkce a fun
 ## <a name="see-also"></a>Další informace najdete v tématech
 * [Řešení problémů se soubory Azure ve Windows](storage-troubleshoot-windows-file-connection-problems.md)
 * [Řešení problémů se soubory Azure v Linuxu](storage-troubleshoot-linux-file-connection-problems.md)
-* [Řešení potíží s Azure File Sync (preview)](storage-sync-files-troubleshoot.md)
+* [Řešení potíží s Azure File Sync](storage-sync-files-troubleshoot.md)

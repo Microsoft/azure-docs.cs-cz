@@ -1,29 +1,28 @@
 ---
-title: "Podporované zdroje dat v Azure Data Catalog | Microsoft Docs"
-description: "V tomto článku jsou uvedeny specifikace zdrojů dat aktuálně podporované."
+title: Podporované zdroje dat ve službě Azure Data Catalog | Dokumentace Microsoftu
+description: Tento článek uvádí specifikace zdrojů dat aktuálně podporované.
 services: data-catalog
-documentationcenter: 
+documentationcenter: ''
 author: steelanddata
 manager: jstevens
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: fd4345ca-2ed8-4c5e-9c4b-f954be2fc9f9
 ms.service: data-catalog
 ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-catalog
 ms.date: 01/18/2018
 ms.author: maroche
-ms.openlocfilehash: b76f3cc3d8538a50895f5be32a800cb469c81203
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: f8d24b896e6cdb39262f2c8a7f93c86f5e79fd33
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39146176"
 ---
-# <a name="supported-data-sources-in-azure-data-catalog"></a>Podporované zdroje dat v Azure Data Catalog
+# <a name="supported-data-sources-in-azure-data-catalog"></a>Podporované zdroje dat ve službě Azure Data Catalog
 
-Metadata můžete publikovat pomocí veřejné rozhraní API nebo klikněte na-jednou registrace Nástroje, nebo když ručně zadáte informace přímo do Azure Data Catalog webový portál. Následující tabulka shrnuje všechny zdroje dat, které jsou podporovány v katalogu dnes a možnosti publikování pro každou. Externí data nástroje, které všechny zdroje dat, můžete spustit z našich zkušeností portál "open in" jsou také uvedeny. Druhá tabulka obsahuje další technické specifikace každé připojení vlastnosti zdroje dat.
+Metadata můžete publikovat pomocí veřejné rozhraní API nebo kliknutím-jednou registrační nástroj nebo informace o ručním zadáním přímo do služby Azure Data Catalog webového portálu. V následující tabulce najdete souhrn všech zdrojů dat, které jsou podporovány v katalogu ještě dnes a možnosti publikování pro každou. Externí data nástroje, které každý zdroj dat můžete spustit z našich zkušeností portál "open in" jsou také uvedeny. Druhá tabulka obsahuje další technické specifikace každé připojení vlastnosti zdroje dat.
 
 
 ## <a name="list-of-supported-data-sources"></a>Seznam podporovaných zdrojů dat
@@ -34,8 +33,8 @@ Metadata můžete publikovat pomocí veřejné rozhraní API nebo klikněte na-j
        <td><b>Rozhraní API</b></td>
        <td><b>Ruční zadání</b></td>
        <td><b>Nástroj pro registraci</b></td>
-       <td><b>Nástroje pro Open in</b></td>
-       <td><b>Poznámky k</b></td>
+       <td><b>Otevřít v nástroji</b></td>
+       <td><b>Poznámky</b></td>
     </tr>
     <tr>
       <td>Adresář Azure Data Lake Store</td>
@@ -58,19 +57,19 @@ Metadata můžete publikovat pomocí veřejné rozhraní API nebo klikněte na-j
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td>Power BI Desktop</td>
+      <td>Power BI Desktopu</td>
       <td></td>
     </tr>
     <tr>
-      <td>Adresář úložiště Azure</td>
+      <td>Adresář služby Azure Storage</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td>Power BI Desktop</td>
+      <td>Power BI Desktopu</td>
       <td></td>
     </tr>
     <tr>
-      <td>Tabulky Azure Storage</td>
+      <td>Azure Storage table</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -98,7 +97,7 @@ Metadata můžete publikovat pomocí veřejné rozhraní API nebo klikněte na-j
       <td></td>
     </tr>
     <tr>
-      <td>Tabulku Hive</td>
+      <td>Tabulka Hive</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -118,7 +117,7 @@ Metadata můžete publikovat pomocí veřejné rozhraní API nebo klikněte na-j
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td>Aplikace Excel, Power BI Desktop</td>
+      <td>Aplikace Excel, Power BI Desktopu</td>
       <td></td>
     </tr>
     <tr>
@@ -126,7 +125,7 @@ Metadata můžete publikovat pomocí veřejné rozhraní API nebo klikněte na-j
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td>Aplikace Excel, Power BI Desktop</td>
+      <td>Aplikace Excel, Power BI Desktopu</td>
       <td></td>
     </tr>
     <tr>
@@ -134,7 +133,7 @@ Metadata můžete publikovat pomocí veřejné rozhraní API nebo klikněte na-j
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td>Aplikace Excel, Power BI Desktop</td>
+      <td>Aplikace Excel, Power BI Desktopu</td>
       <td></td>
     </tr>
     <tr>
@@ -142,11 +141,11 @@ Metadata můžete publikovat pomocí veřejné rozhraní API nebo klikněte na-j
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td>Aplikace Excel, Power BI Desktop</td>
+      <td>Aplikace Excel, Power BI Desktopu</td>
       <td></td>
     </tr>
     <tr>
-      <td>Jiné (Obecné asset)</td>
+      <td>Ostatní (obecný prostředek)</td>
       <td>✓</td>
       <td>✓</td>
       <td></td>
@@ -158,7 +157,7 @@ Metadata můžete publikovat pomocí veřejné rozhraní API nebo klikněte na-j
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td>Nástroje aplikace Excel, Power BI Desktop, SQL Server data tools</td>
+      <td>Nástroje aplikace Excel, Power BI Desktopu, SQL Server data tools</td>
       <td></td>
     </tr>
     <tr>
@@ -166,7 +165,7 @@ Metadata můžete publikovat pomocí veřejné rozhraní API nebo klikněte na-j
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td>Nástroje aplikace Excel, Power BI Desktop, SQL Server data tools</td>
+      <td>Nástroje aplikace Excel, Power BI Desktopu, SQL Server data tools</td>
       <td></td>
     </tr>
     <tr>
@@ -174,7 +173,7 @@ Metadata můžete publikovat pomocí veřejné rozhraní API nebo klikněte na-j
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td>Aplikace Excel, Power BI Desktop</td>
+      <td>Aplikace Excel, Power BI Desktopu</td>
       <td></td>
     </tr>
     <tr>
@@ -182,7 +181,7 @@ Metadata můžete publikovat pomocí veřejné rozhraní API nebo klikněte na-j
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td>Aplikace Excel, Power BI Desktop</td>
+      <td>Aplikace Excel, Power BI Desktopu</td>
       <td></td>
     </tr>
     <tr>
@@ -190,15 +189,15 @@ Metadata můžete publikovat pomocí veřejné rozhraní API nebo klikněte na-j
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td>Aplikace Excel, Power BI Desktop</td>
+      <td>Aplikace Excel, Power BI Desktopu</td>
       <td></td>
     </tr>
     <tr>
-      <td>Tabulky SQL Server Analysis Services</td>
+      <td>Tabulka SQL Server Analysis Services</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td>Aplikace Excel, Power BI Desktop</td>
+      <td>Aplikace Excel, Power BI Desktopu</td>
       <td></td>
     </tr>
     <tr>
@@ -207,22 +206,22 @@ Metadata můžete publikovat pomocí veřejné rozhraní API nebo klikněte na-j
       <td>✓</td>
       <td>✓</td>
       <td>Prohlížeč</td>
-      <td>Pouze servery v nativním režimu. Režim serveru SharePoint není podporována.</td>
+      <td>Pouze servery v nativním režimu. Režim serveru SharePoint není podporován.</td>
     </tr>
     <tr>
       <td>Tabulka SQL Serveru</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td>Nástroje aplikace Excel, Power BI Desktop, SQL Server data tools</td>
+      <td>Nástroje aplikace Excel, Power BI Desktopu, SQL Server data tools</td>
       <td></td>
     </tr>
     <tr>
-      <td>SQL Server view</td>
+      <td>Zobrazení systému SQL Server</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td>Nástroje aplikace Excel, Power BI Desktop, SQL Server data tools</td>
+      <td>Nástroje aplikace Excel, Power BI Desktopu, SQL Server data tools</td>
       <td></td>
     </tr>
     <tr>
@@ -234,7 +233,7 @@ Metadata můžete publikovat pomocí veřejné rozhraní API nebo klikněte na-j
       <td></td>
     </tr>
     <tr>
-      <td>Teradata view</td>
+      <td>Zobrazení Teradata</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -246,11 +245,11 @@ Metadata můžete publikovat pomocí veřejné rozhraní API nebo klikněte na-j
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td>Power BI Desktop</td>
+      <td>Power BI Desktopu</td>
       <td></td>
     </tr>
     <tr>
-      <td>Tabulka DB2</td>
+      <td>Tabulky DB2.</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -266,7 +265,7 @@ Metadata můžete publikovat pomocí veřejné rozhraní API nebo klikněte na-j
       <td></td>
     </tr>
     <tr>
-      <td>Soubor systému souborů</td>
+      <td>Soubor system</td>
       <td>✓</td>
       <td></td>
       <td></td>
@@ -282,7 +281,7 @@ Metadata můžete publikovat pomocí veřejné rozhraní API nebo klikněte na-j
       <td></td>
     </tr>
     <tr>
-      <td>Soubor FTP</td>
+      <td>Soubor protokolu FTP</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -322,7 +321,7 @@ Metadata můžete publikovat pomocí veřejné rozhraní API nebo klikněte na-j
       <td></td>
     </tr>
     <tr>
-      <td>Funkce OData</td>
+      <td>Funkci prostředí OData</td>
       <td>✓</td>
       <td></td>
       <td></td>
@@ -338,7 +337,7 @@ Metadata můžete publikovat pomocí veřejné rozhraní API nebo klikněte na-j
       <td></td>
     </tr>
     <tr>
-      <td>PostgreSQL zobrazení</td>
+      <td>Zobrazení PostgreSQL</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -354,7 +353,7 @@ Metadata můžete publikovat pomocí veřejné rozhraní API nebo klikněte na-j
       <td></td>
     </tr>
     <tr>
-      <td> Objekt služby Salesforce</td>
+      <td> Objektu Salesforce</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -362,7 +361,7 @@ Metadata můžete publikovat pomocí veřejné rozhraní API nebo klikněte na-j
       <td></td>
     </tr>
     <tr>
-      <td>Seznam serveru SharePoint </td>
+      <td>Seznam služby SharePoint </td>
       <td>✓</td>
       <td></td>
       <td></td>
@@ -370,7 +369,7 @@ Metadata můžete publikovat pomocí veřejné rozhraní API nebo klikněte na-j
       <td></td>
     </tr>
     <tr>
-      <td>Azure Cosmos DB kolekce</td>
+      <td>Kolekce Azure Cosmos DB</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -378,7 +377,7 @@ Metadata můžete publikovat pomocí veřejné rozhraní API nebo klikněte na-j
       <td></td>
     </tr>
     <tr>
-      <td>Obecná tabulka rozhraní ODBC</td>
+      <td>Obecná rozhraní ODBC tabulky</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -386,7 +385,7 @@ Metadata můžete publikovat pomocí veřejné rozhraní API nebo klikněte na-j
       <td></td>
     </tr>
     <tr>
-      <td>Obecná zobrazení rozhraní ODBC</td>
+      <td>Obecná rozhraní ODBC zobrazení</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -399,15 +398,15 @@ Metadata můžete publikovat pomocí veřejné rozhraní API nebo klikněte na-j
       <td>✓</td>
       <td>✓</td>
       <td></td>
-      <td>Publikovat jako obecný asset rozhraní ODBC</td>
+      <td>Publikovat jako obecný prostředek ODBC</td>
     </tr>
     <tr>
-      <td>Cassandra zobrazení</td>
+      <td>Zobrazení Cassandra</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
       <td></td>
-      <td>Publikovat jako obecný asset rozhraní ODBC</td>
+      <td>Publikovat jako obecný prostředek ODBC</td>
     </tr>
     <tr>
       <td>Tabulka Sybase</td>
@@ -431,7 +430,7 @@ Metadata můžete publikovat pomocí veřejné rozhraní API nebo klikněte na-j
       <td>✓</td>
       <td>✓</td>
       <td></td>
-      <td>Publikovat jako obecný asset rozhraní ODBC</td>
+      <td>Publikovat jako obecný prostředek ODBC</td>
     </tr>
     <tr>
       <td>Zobrazení MongoDB</td>
@@ -439,16 +438,16 @@ Metadata můžete publikovat pomocí veřejné rozhraní API nebo klikněte na-j
       <td>✓</td>
       <td>✓</td>
       <td></td>
-      <td>Publikovat jako obecný asset rozhraní ODBC</td>
+      <td>Publikovat jako obecný prostředek ODBC</td>
     </tr>
 </table>
 
-Pokud chcete najdete v části konkrétní zdroj dat. podporována, ho navrhne (nebo hlasové podporu, pokud již byla navrhované) přechodem na [na fórech zpětnou vazbu o Azure Data Catalog](https://feedback.azure.com/forums/906052-data-catalog).
+Pokud se chcete podívat na konkrétnímu zdroji dat nepodporuje, navrhněte ji (nebo hlasové vaši podporu, pokud již byla navržena) tak, že přejdete [zpětnou vazbu fóra Azure Data Catalog](https://feedback.azure.com/forums/906052-data-catalog).
 
 
-## <a name="data-source-reference-specification"></a>Specifikace odkaz na zdroj dat
+## <a name="data-source-reference-specification"></a>Specifikace odkazu na zdroj dat
 > [!NOTE]
-> **DSL struktura** sloupci v následující tabulce jsou uvedeny pouze vlastnosti připojení pro kontejner objektů a dat "address" používané Azure Data Catalog. To znamená balík vlastností "address" může obsahovat další vlastnosti připojení zdroje dat, které Azure Data Catalog potrvají, ale nepoužívá.
+> **DSL struktura** sloupce v následující tabulce jsou uvedeny pouze vlastnosti připojení pro "address" kontejner objektů a dat, které používají Azure Data Catalog. To znamená "address" kontejner objektů a dat může obsahovat jiné vlastnosti připojení zdroje dat, která přetrvává Azure Data Catalog, ale nepoužívá.
 
 <table>
     <tr>
@@ -1396,8 +1395,8 @@ Pokud chcete najdete v části konkrétní zdroj dat. podporována, ho navrhne (
     </tr>
     <tr>
       <td>Other (none of the above)</td>
-      <td>\*</td>
-      <td>\*</td>
+      <td>&#10033;</td>
+      <td>&#10033;</td>
       <td>
         
             Protocol: generic-asset

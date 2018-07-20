@@ -4,18 +4,18 @@ description: Podrobný návod, jak začít s místním Azure MFA Serverem
 services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
-ms.topic: get-started-article
-ms.date: 10/02/2017
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
-ms.reviewer: richagi
-ms.openlocfilehash: 130e9956702515574da47dc872b03598ca19ff29
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
-ms.translationtype: HT
+ms.reviewer: michmcla
+ms.openlocfilehash: b882f8d8ffc818de5ec459f504965015f55897a3
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37031676"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39159722"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Začínáme s Azure Multi-Factor Authentication Serverem
 
@@ -186,7 +186,7 @@ Nový server je teď zprovozněný s původní zálohovanou konfigurací a uživ
 
 Po upgradu na MFA Server verze 8.x nebo novější nebo jeho instalaci se doporučuje zakázat nebo odebrat starší a slabší šifrovací sady, pokud je vaše organizace nevyžaduje. Informace o tom, jak to provést, najdete v článku [Správa protokolů SSL a TLS a šifrovacích sad pro AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Nastavení a konfigurace portálu [User Portal](howto-mfaserver-deploy-userportal.md) pro uživatelskou samoobsluhu.
 - Nastavení a konfigurace Azure MFA Serveru pomocí [služby Active Directory Federation Service](multi-factor-authentication-get-started-adfs.md), [ověřování pomocí protokolu RADIUS](howto-mfaserver-dir-radius.md) nebo [ověřování pomocí protokolu LDAP](howto-mfaserver-dir-ldap.md).

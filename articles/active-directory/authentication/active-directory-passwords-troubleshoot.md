@@ -4,18 +4,18 @@ description: Řešení problémů s Azure AD samoobslužné resetování hesla
 services: active-directory
 ms.service: active-directory
 ms.component: authentication
-ms.topic: article
-ms.date: 01/11/2018
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: e24f5070a793f62481bdc80044c97163c5b5c79f
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 95ec87d2fdc34864b90a6596e7100cc6c1387631
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39045185"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39161986"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>Řešení potíží s resetováním hesla pomocí samoobslužné služby
 
@@ -80,7 +80,7 @@ Dochází k potížím s Azure Active Directory (Azure AD) samoobslužné reseto
 
 | Chyba | Řešení |
 | --- | --- |
-| Služba pro resetování hesel místním nespustí. Zobrazí se chyba 6800 v protokolu událostí aplikace Azure AD Connect počítače. <br> <br> Po připojení federovaný předávací ověřování nebo synchronizaci hodnoty hash hesla uživatele resetovat jejich hesla. | Když je povolený zpětný zápis hesla, synchronizační modul voláním zpětný zápis knihovny a proveďte konfiguraci (připojování) komunikaci se službou registrace cloudu. Případné chyby zjištěné při připojování nebo při spouštění Windows Communication Foundation (WCF) koncový bod pro výsledky zpětného zápisu hesla v chyby přihlášení události ve vašem počítači služby Azure AD Connect. <br> <br> Při restartování služby Azure AD Sync (ADSync) Pokud byly nakonfigurované zpětný zápis, koncového bodu WCF spuštění. Ale pokud se nezdaří spuštění koncového bodu, budeme protokolovat události 6800 a nechat spustit synchronizační službu. Přítomnost Tato událost znamená, že koncový bod zpětný zápis hesla se nespustila. Podrobnosti protokolu událostí pro tuto událost 6800, spolu s protokolu událostí, které položky vygenerovat komponentou PasswordResetService určit, proč nelze spustit koncový bod tohoto. Zkontrolujte tyto chyby v protokolu událostí a pokuste se restartovat Azure AD Connect, pokud zpětný zápis hesla není funkční. Pokud se problém nevyřeší, zkuste zakázat a znovu povolit zpětný zápis hesla.
+| Služba pro resetování hesel místním nespustí. Zobrazí se chyba 6800 v protokolu událostí aplikace Azure AD Connect počítače. <br> <br> Po připojení federovaný předávací ověřování nebo synchronizaci hodnoty hash hesla uživatele resetovat jejich hesla. | Když je povolený zpětný zápis hesla, synchronizační modul voláním zpětný zápis knihovny a proveďte konfiguraci (připojování) komunikaci se službou registrace cloudu. Případné chyby zjištěné při připojování nebo při spouštění Windows Communication Foundation (WCF) koncový bod pro výsledky zpětného zápisu hesla v chyby v protokolu událostí na svém počítači služby Azure AD Connect. <br> <br> Při restartování služby Azure AD Sync (ADSync) Pokud byly nakonfigurované zpětný zápis, koncového bodu WCF spuštění. Ale pokud se nezdaří spuštění koncového bodu, budeme protokolovat události 6800 a nechat spustit synchronizační službu. Přítomnost Tato událost znamená, že koncový bod zpětný zápis hesla se nespustila. Podrobnosti protokolu událostí pro tuto událost 6800, spolu s protokolu událostí, které položky vygenerovat komponentou PasswordResetService určit, proč nelze spustit koncový bod tohoto. Zkontrolujte tyto chyby v protokolu událostí a pokuste se restartovat Azure AD Connect, pokud zpětný zápis hesla není funkční. Pokud se problém nevyřeší, zkuste zakázat a znovu povolit zpětný zápis hesla.
 | Když se uživatel pokusí resetovat heslo nebo odemknout účet se zpětným zápisem hesla povolené, operace se nezdaří. <br> <br> Kromě toho se zobrazí události v protokolu událostí služby Azure AD Connect, který obsahuje: "synchronizační modul vrácena chyba hr = 800700CE, zpráva = Název souboru nebo příponu je příliš dlouhá" po odemčení operace probíhá. | Najděte účet služby Active Directory pro Azure AD Connect a resetování hesla tak, aby obsahoval maximálně 127 znaků. Otevřete **synchronizační služba** z **Start** nabídky. Přejděte do **konektory** a najít **konektor služby Active Directory**. Vyberte ho a pak vyberte **vlastnosti**. Přejděte **pověření** stránku a zadejte nové heslo. Vyberte **OK** zavřete stránku. |
 | V posledním kroku procesu instalace služby Azure AD Connect se zobrazí chyba oznamující, že nebylo možné nakonfigurovat tuto zpětný zápis hesla. <br> <br> V protokolu událostí aplikace Azure AD Connect obsahuje chybu 32009 s textem "Chyba při získávání ověření tokenu." | K této chybě dochází v těchto dvou případů: <br><ul><li>Zadali jste nesprávné heslo pro zadaný na začátku procesu instalace služby Azure AD Connect účet globálního správce.</li><li>Pokusili jste se s použitím federovaného uživatele pro zadaný na začátku procesu instalace služby Azure AD Connect účet globálního správce.</li></ul> Chcete-li tento problém vyřešit, ujistěte se, že nepoužíváte federovaný účet globálního správce, který jste zadali na začátku procesu instalace. Také se ujistěte, že zadané heslo je správné. |
 | Protokol událostí služby Azure AD Connect počítače obsahuje chyby 32002, která je vyvolána spuštěním PasswordResetService. <br> <br> Přečte chybu: "Chyba připojení k Service Bus. Poskytovatel tokenu nemohl poskytnout token zabezpečení." | V místním prostředí není možné se připojit ke koncovému bodu služby Azure Service Bus v cloudu. Tato chyba je obvykle způsobeno pravidlo brány firewall blokující odchozí připojení ke konkrétní port nebo webovou adresu. Zobrazit [požadavky na připojení](./../connect/active-directory-aadconnect-prerequisites.md) pro další informace. Po aktualizaci těchto pravidel, restartujte počítač služby Azure AD Connect a zpětný zápis hesla by měla začít znovu pracovat. |

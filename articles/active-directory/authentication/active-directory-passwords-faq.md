@@ -4,18 +4,18 @@ description: Nejčastější dotazy ohledně služby Azure AD hesla pomocí samo
 services: active-directory
 ms.service: active-directory
 ms.component: authentication
-ms.topic: article
-ms.date: 01/11/2018
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: c006e448b8da1acaf51c8339cbcd0b6170f29874
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 92f9732adadc4eb580d89f8a43cf76177450aeb7
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39054807"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39160738"
 ---
 # <a name="password-management-frequently-asked-questions"></a>Správa hesel – nejčastější dotazy
 
@@ -115,7 +115,7 @@ Tyto nejčastější dotazy je rozdělený do následujících částí:
   >
 * **Dotaz: jak lze informovat Moji uživatelé o tom, kde přejdete k resetování hesel?**
 
-  > **Odpověď:** vyzkoušejte některou z návrhů v našich [nasazení samoobslužného resetování HESLA](howto-sspr-deployment.md#email-based-rollout) článku.
+  > **Odpověď:** vyzkoušejte některou z návrhů v našich [nasazení samoobslužného resetování HESLA](howto-sspr-deployment.md#sample-communication) článku.
   >
   >
 * **Dotaz: lze pomocí této stránky z mobilního zařízení?**
@@ -170,7 +170,7 @@ Tyto nejčastější dotazy je rozdělený do následujících částí:
   >
 * **Otázka: jsem nakonfiguroval Moje zásady budou muset uživatelé použít bezpečnostní otázky pro obnovení, ale Azure správci zdá se, že se konfigurují jinak.**
 
-  > **Odpověď:** jedná se o očekávané chování. Microsoft vynucuje přísné výchozí zásady resetování hesla dvě brány pro libovolnou roli správce Azure. To zabrání tomu, aby správce pomocí bezpečnostních otázek. Další informace o těchto zásadách v [zásady hesel a omezení v Azure Active Directory](concept-sspr-policy.md#administrator-password-policy-differences) článku.
+  > **Odpověď:** jedná se o očekávané chování. Microsoft vynucuje přísné výchozí zásady resetování hesla dvě brány pro libovolnou roli správce Azure. To zabrání tomu, aby správce pomocí bezpečnostních otázek. Další informace o těchto zásadách v [zásady hesel a omezení v Azure Active Directory](concept-sspr-policy.md) článku.
   >
   >
 * **Otázka: Pokud uživatel zaregistroval více než maximální počet otázek požadovaných k resetování, jak se na otázky zabezpečení, které vybírají během obnovení?**
@@ -274,7 +274,7 @@ Tyto nejčastější dotazy je rozdělený do následujících částí:
   >
 * **Otázka: je zpětný zápis hesla bezpečný?  Jak se může být jisti, že mám nebudete získáte hacker?**
 
-  > **Odpověď:** Ano, jsou zabezpečené zpětný zápis hesla. Přečtěte si další informace o čtyři vrstvy zabezpečení implementovaných službou zpětný zápis hesla, přečtěte si [modelu zabezpečení zpětného zápisu hesla](howto-sspr-writeback.md#password-writeback-security-model) tématu [přehled zpětný zápis hesla](howto-sspr-writeback.md) článku.
+  > **Odpověď:** Ano, jsou zabezpečené zpětný zápis hesla. Přečtěte si další informace o několik vrstev zabezpečení implementovaných službou zpětný zápis hesla, přečtěte si [zabezpečení zpětného zápisu hesla](concept-sspr-writeback.md#password-writeback-security) tématu [přehled zpětný zápis hesla](howto-sspr-writeback.md) článku.
   >
   >
 

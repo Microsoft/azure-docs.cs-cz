@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/22/2018
+ms.date: 07/18/2018
 ms.author: terrylan
-ms.openlocfilehash: 05504f94d72f39762672d0e79669dd50d8e6435e
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 800ec83b3599dba716e7a4a015b9b8c1745a0975
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441487"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144563"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>Získejte potřebný Přehled celého tenanta pro Azure Security Center
 Tento článek vám pomůže začít pracovat způsobem několik akcí, které Maximalizace výhod, které poskytuje Azure Security Center. Provedení těchto akcí umožňuje získat přehled o ve všech předplatných Azure, které jsou propojeny do svého tenanta Azure Active Directory a efektivně spravovat stavu zabezpečení vaší organizace ve velkém měřítku pomocí zásad zabezpečení napříč více předplatná aggregative způsobem.
@@ -85,8 +85,20 @@ Správce tenanta Azure Active Directory nemá přímý přístup k předplatným
 
 5. Provádění úkolů, které je třeba provést na přístup se zvýšeným oprávněním. Jakmile budete hotovi, nastavte přepínač zpět **ne**.
 
+### <a name="open-or-refresh-security-center"></a>Otevřete nebo aktualizujte Security Center
+Jakmile musí mít zvýšená přístup, otevřete nebo aktualizujte Azure Security Center k ověření, že máte přehled o všech předplatných v rámci vašeho tenanta Azure AD. 
+
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
+2. Ujistěte se, že vyberete všechna předplatná v modulu pro výběr předplatného, který chcete zobrazit ve službě Security Center.
+    ![Snímek obrazovky výběru předplatného](./media/security-center-management-groups/subscription-selector.png)
+1. Vyberte **všechny služby** v hlavní nabídce Azure zvolte **Security Center**.
+2. V **přehled**, je graf pokrytí předplatného. 
+    ![Snímek obrazovky grafu pokrytí předplatného](./media/security-center-management-groups/security-center-subscription-coverage.png)
+3. Klikněte na **pokrytí** zobrazíte seznam předplatných zahrnuté. 
+    ![Snímek obrazovky seznamu pokrytí předplatného](./media/security-center-management-groups/security-center-coverage.png)
+
 ### <a name="assign-rbac-roles-to-users"></a>Přiřazení role RBAC uživatelům
-Jakmile správce klienta s vyšší úrovní přístupu, může přiřadit roli RBAC uživatelům důležité na kořenové úrovni skupiny pro správu. Doporučenou rolí k přiřazení je [ **čtečky**](../role-based-access-control/built-in-roles.md#reader). Tato role je potřeba zadat viditelnost na úrovni tenanta. Přiřazené role se automaticky rozšíří do všech skupin pro správu a předplatná v rámci kořenové skupině pro správu. Další informace o rolích RBAC najdete v tématu [dostupných rolí](../active-directory/users-groups-roles/directory-assign-admin-roles.md#available-roles).
+Jakmile správce klienta s vyšší úrovní přístupu, může přiřadit roli RBAC uživatelům důležité na kořenové úrovni skupiny pro správu. Doporučenou rolí k přiřazení je [ **čtečky**](../role-based-access-control/built-in-roles.md#reader). Tato role je potřeba zadat viditelnost na úrovni tenanta. Přiřazené role se automaticky rozšíří do všech skupin pro správu a předplatná v rámci kořenové skupině pro správu. Další informace o rolích RBAC najdete v tématu [dostupných rolí](../active-directory/users-groups-roles/directory-assign-admin-roles.md#available-roles). 
 
 1. Nainstalujte [Azure PowerShell](/powershell/azure/install-azurerm-ps).
 2. Spusťte následující příkazy: 
@@ -141,15 +153,7 @@ Jakmile byly přiřazeny role RBAC uživatelům, správce tenanta by měl sám o
 
 4. Klikněte na tlačítko **Uložit** uložte nastavení.
 
-### <a name="open-or-refresh-security-center"></a>Otevřete nebo aktualizujte Security Center
-Jakmile přiřadíte role RBAC, otevřete nebo aktualizujte Azure Security Center k ověření, že máte přehled o všech předplatných v rámci vašeho tenanta Azure AD. 
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
-2. Vyberte **všechny služby** v hlavní nabídce Azure zvolte **Security Center**.
-3. V **přehled**, je graf pokrytí předplatného. 
-    ![Snímek obrazovky grafu pokrytí předplatného](./media/security-center-management-groups/security-center-subscription-coverage.png)
-4. Klikněte na **pokrytí** zobrazíte seznam předplatných zahrnuté. 
-    ![Snímek obrazovky seznamu pokrytí předplatného](./media/security-center-management-groups/security-center-coverage.png)
 
 ## <a name="adding-subscriptions-to-a-management-groups"></a>Přidávání do skupin pro správu předplatných
 Odběry můžete přidat do skupiny pro správu, který jste vytvořili. Tyto kroky nejsou povinné pro získání viditelnosti celého tenanta a globálních zásad a správu přístupu.

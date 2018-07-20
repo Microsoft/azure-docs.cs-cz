@@ -1,33 +1,35 @@
 ---
-title: Výběr mezi cloudovým a serverovým Azure MFA | Dokumentace Microsoftu
-description: Zvolte pro vás ideální řešení zabezpečení Multi-Factor Authentication položením otázky, co se pokoušíte zabezpečit a kde se nachází vaši uživatelé.
+title: Azure MFA Server nebo služba, místní nebo v cloudu?
+description: Jako správce Azure AD je potřeba pochopit, kterou verzi MFA možné nasadit?
 services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
-ms.topic: get-started-article
-ms.date: 10/02/2017
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
-ms.reviewer: richagi
-ms.openlocfilehash: 8314d72aa2cc6787d3f65dd48cd693a0ac332c0a
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.reviewer: michmcla
+ms.openlocfilehash: 0d68c88bdad63bb022babcc4a6ee4ee7c59ce58a
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33866348"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39158447"
 ---
-# <a name="choose-the-azure-multi-factor-authentication-solution-for-you"></a>Výběr vhodného řešení Azure Multi-Factor Authentication
-Vzhledem k tomu, že existuje několik typů Azure Multi-Factor Authentication (MFA), musíme odpovědět na několik otázek, aby bylo možné zjistit, která verze je pro vás nejlepší.  Jsou to tyto otázky:
+# <a name="which-version-of-azure-mfa-is-right-for-my-organization"></a>Kterou verzi Azure MFA je nejvhodnější pro moji organizaci?
+
+Předtím, než se můžete rozhodnout, kde a jak nasadit služby Multi-Factor Authentication (MFA), je potřeba zodpovědět tři základní otázky.
 
 * [Co se pokouším zabezpečit?](#what-am-i-trying-to-secure)
 * [Kde se nacházejí uživatelé?](#where-are-the-users-located)
 * [Jaké funkce budu potřebovat?](#what-features-do-i-need)
 
-V následujících částech najdete tipy k zodpovězení každé z těchto otázek.
+Každá z těchto částí poskytuje podrobnosti, které vám pomůžou odpovědět na předchozí otázky.
 
 ## <a name="what-am-i-trying-to-secure"></a>Co se pokouším zabezpečit?
-Pro určení správného řešení dvoustupňového ověření si nejdříve musíme odpovědět na otázku, co se pokoušíte zabezpečit pomocí druhé metody ověřování.  Jedná se o aplikaci, která je v Azure?  Nebo systém vzdáleného přístupu?  Tím, že určíme, co se pokoušíme zabezpečit, si můžeme odpovědět na otázku, kde musí být povoleno ověřování Multi-Factor Authentication.  
+
+Pokud chcete zjistit správného řešení dvoustupňového ověření, nejprve je nutné odpovědět na otázku, co se pokoušíte zabezpečit pomocí dodatečného faktoru ověřování. Jedná se o aplikaci, která je v Azure? Nebo systém vzdáleného přístupu? Tak, že určíte, co se pokoušíte zabezpečit, vám pomůže odpovědět na otázku, kde musí být povoleno ověřování Multi-Factor Authentication.
 
 | Co se pokoušíte zabezpečit | MFA v cloudu | Server MFA |
 | --- |:---:|:---:|
@@ -38,17 +40,19 @@ Pro určení správného řešení dvoustupňového ověření si nejdříve mus
 | Vzdálený přístup, jako je například síť VPN, RDG | ● | ● |
 
 ## <a name="where-are-the-users-located"></a>Kde se nachází uživatelé
-Když se dále podíváme, kde se naši uživatelé nacházejí, pomůže nám to určit správné řešení – jestli je to v cloudu nebo místně pomocí serveru MFA.
+
+Dále určete, kde uživatelé ve vaší organizaci jsou umístěné pomáhá určit správné řešení, aby používalo, ať už v cloudu nebo místní využití serveru MFA.
 
 | Umístění uživatele | MFA v cloudu | Server MFA |
 | --- |:---:|:---:|
 | Azure Active Directory |● | |
 | Azure AD a místní AD využívající federaci se službou AD FS |● |● |
-| Azure AD a místní AD pomocí DirSync, Azure AD Sync, Azure AD Connect – bez synchronizace hodnoty hash hesel nebo předávacího ověřování |● |● |
-| Azure AD a místní AD pomocí DirSync, Azure AD Sync, Azure AD Connect – se synchronizací hodnoty hash hesel nebo předávacím ověřováním |● | |
+| Azure AD a místní AD pomocí služby Azure AD Connect – bez synchronizace hodnot hash hesel nebo předávací ověřování. |● |● |
+| Azure AD a místní AD pomocí služby Azure AD Connect – hodnoty hash hesla synchronizace předávacím ověřováním |● | |
 | Místní služby Active Directory | |● |
 
 ## <a name="what-features-do-i-need"></a>Jaké funkce budu potřebovat?
+
 Následující tabulka porovnává funkce, které jsou dostupné se službou Multi-Factor Authentication v cloudu a s Multi-Factor Authentication Serverem.
 
 | Funkce | MFA v cloudu | Server MFA |
@@ -57,13 +61,12 @@ Následující tabulka porovnává funkce, které jsou dostupné se službou Mul
 | Kód ověření mobilní aplikace jako druhý faktor | ● | ● |
 | Telefonní hovor jako druhý faktor | ● | ● |
 | Jednosměrné služby SMS jako druhý faktor | ● | ● |
-| Obousměrné služby SMS jako druhý faktor | | ● (zastaralé)| 
 | Tokeny hardwaru jako druhý faktor | | ● |
 | Hesla aplikací pro klienty Office 365, kteří nepodporují MFA | ● | |
 | Kontrola správce nad metodami ověřování | ● | ● |
 | Režim kódu PIN | | ● |
-| Výstraha podvodů |● | ● |
-| Sestavy MFA |● | ● |
+| Výstraha podvodů | ● | ● |
+| Sestavy MFA | ● | ● |
 | Jednorázové potlačení | | ● |
 | Vlastní přivítání pro telefonní hovory | ● | ● |
 | Přizpůsobitelné ID volajícího pro telefonní hovory | ● | ● |
@@ -72,7 +75,7 @@ Následující tabulka porovnává funkce, které jsou dostupné se službou Mul
 | Podmíněný přístup | ● | ● |
 | Mezipaměť |  | ● |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Když teď znáte rozdíl mezi službou Azure Multi-Factor Authentication v cloudu a místním MFA Serverem, je čas nastavit a začít používat službu Azure Multi-Factor Authentication. **Vyberte ikonu, která představuje váš scénář.**
 

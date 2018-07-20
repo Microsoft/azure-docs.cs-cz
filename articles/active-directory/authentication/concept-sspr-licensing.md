@@ -1,45 +1,47 @@
 ---
-title: Licence samoobslužné resetování hesla – Azure Active Directory
+title: Licence Azure Active Directory hesla pomocí samoobslužné služby
 description: Azure AD samoobslužné resetování hesla licenčním požadavkům
 services: active-directory
 ms.service: active-directory
 ms.component: authentication
-ms.topic: article
-ms.date: 01/11/2018
+ms.topic: conceptual
+ms.date: 07/17/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: e185b67ae73b86b5f1c3b6cda884de05eb89c6fd
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 83054c505689768c14d168841764a4557c3e1f8b
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39049080"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39158994"
 ---
 # <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Resetovat licenčních požadavcích pro hesla pomocí samoobslužné služby Azure AD
 
-V pořadí pro funkci resetování hesel v Azure Active Directory (Azure AD) můžete *musí mít v organizaci přiřazenu alespoň jednu licenci* pro tohoto uživatele. Řádná licence se požaduje, pokud uživatel přímo nebo nepřímo využívá výhod libovolné funkce, na kterou se tato licence vztahuje.
+Azure Active Directory (Azure AD) je k dispozici ve čtyřech edicích: Free, Basic, Premium P1 a Premium P2. Existuje několik různých funkcí, které se samoobslužné resetování hesla, včetně změn, resetovat, odemkněte a zpětný zápis, které jsou k dispozici v různých edicích služby Azure AD. V tomto článku se pokusí vysvětlují rozdíly. Další informace o funkcích v každé edici Azure AD můžete najít na [Azure Active Directory, na stránce s cenami](https://azure.microsoft.com/pricing/details/active-directory/).
 
-* **Uživatelů pouze cloudu**: Office 365 placených SKU nebo Azure AD Basic
-* **Cloud** nebo **místních uživatelů**: Azure AD Premium P1 nebo P2, Enterprise Mobility + Security (EMS) nebo Microsoft 365
+## <a name="compare-editions-and-features"></a>Porovnání edicí a funkce
 
-## <a name="licensing-requirements-for-password-writeback"></a>Licenční požadavky pro zpětný zápis hesla
+Hesel Azure AD samoobslužné resetování je licencovaný podle počtu uživatelů, bude zajišťovat dodržování nutí organizace, přiřadit uživatelům příslušnou licenci.
 
-**Samoobslužné služby heslo resetovat/změny/odemknutí přes místní zpětný zápis je Prémiová funkce služby Azure AD**. Další informace o licencích najdete v článku [cenami služby Azure Active Directory web](https://azure.microsoft.com/pricing/details/active-directory/).
+* Samoobslužná změna hesel pro cloudové uživatele
+   * Jsem **výhradně cloudový uživatel** a vím svoje heslo.
+      * Chci **změnit** heslo na něco nového.
+   * Tato funkce je zahrnut ve všech edicích služby Azure AD.
 
-Pokud chcete použít zpětný zápis hesla, musí mít jeden z přiřazené ve svém tenantovi následující licence:
+* Samoobslužné resetování hesla pro cloudové uživatele
+   * Jsem **výhradně cloudový uživatel** a zapomněli jste heslo.
+      * Chci **resetování** heslo na něco, co mi vědět.
+   * Tato funkce je součástí edice Azure AD Basic, Premium P1 nebo P2.
 
-* Azure AD Premium P1
-* Azure AD Premium P2
-* Enterprise Mobility + Security E3 nebo A3
-* Enterprise Mobility + Security E5 nebo A5
-* Microsoft 365 E3 nebo A3
-* Microsoft 365 E5 nebo A5
-* Microsoft 365 F1
+* Samoobslužná služba heslo resetování/změna/odemknutí **s místní zpětný zápis**
+   * Jsem **hybridní uživatele** uživatelským účtem místní služby Active Directory se synchronizuje s účtem služby Azure AD pomocí služby Azure AD Connect. Chci změnit heslo, jste zapomněli heslo nebo byl uzamčen.
+      * Chci změnit heslo, nebo ho resetovat do něco vědět nebo odemknout svůj účet **a** jste, že změny synchronizovat zpět do místní služby Active Directory.
+   * Tato funkce je zahrnutá v Azure AD Premium P1, nebo v edicích Premium P2.
 
 > [!WARNING]
-> Office 365 samostatné licenční plány *nepodporují zpětný zápis hesla* a vyžadují, abyste měli jeden z předchozích plánů pro tuto funkci pracovat.
+> Office 365 samostatné licenční plány **nepodporují zpětný zápis hesla** a vyžaduje Azure AD Premium P1 nebo edice Premium P2 pro tuto funkci pracovat.
 >
 
 Další licenční informace, včetně nákladů, najdete na následujících stránkách:

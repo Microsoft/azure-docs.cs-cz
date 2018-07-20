@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/16/2018
+ms.date: 07/18/2018
 ms.author: magoedte
-ms.openlocfilehash: 1fd5ac0f9994a4dbf4365c21ac4f31ba0eccbb15
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 6658eeb70e31593da5f3612ccac8685ecbb976b9
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39069147"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39161584"
 ---
 # <a name="monitor-azure-kubernetes-service-aks-container-health-preview"></a>Monitorovat stav kontejneru Azure Kubernetes Service (AKS) (Preview)
 
@@ -78,7 +78,7 @@ Proveďte následující kroky, pokud chcete povolit monitorování vašeho kont
 4. Na **připojení ke službě stavu kontejneru a protokoly** stránky, pokud máte existující Log Analytics pracovní prostor ve stejném předplatném jako cluster, vyberte z rozevíracího seznamu.  V seznamu vybrána hodnota výchozího pracovního prostoru a umístění kontejneru AKS nasazuje v rámci předplatného.<br><br> ![Povolit monitorování stavu kontejneru AKS](./media/monitoring-container-health/container-health-enable-brownfield-02.png) 
 
 >[!NOTE]
->Pokud chcete vytvořit nový pracovní prostor Log Analytics k ukládání dat monitorování z clusteru, postupujte podle kroků v [Cretae pracovnímu prostoru Log Analytics](../log-analytics/log-analytics-quick-create-workspace.md) a je potřeba vytvořit pracovní prostor v rámci stejného předplatného, který je kontejneru AKS nasadit.  
+>Pokud chcete vytvořit nový pracovní prostor Log Analytics k ukládání dat monitorování z clusteru, postupujte podle kroků v [vytvořit pracovní prostor Log Analytics](../log-analytics/log-analytics-quick-create-workspace.md) a je potřeba vytvořit pracovní prostor v rámci stejného předplatného, který je kontejneru AKS nasadit.  
 >
  
 Jakmile je zapnuté monitorování, může trvat přibližně 15 minut, než budete moct zobrazit provozní data v clusteru. 
@@ -371,7 +371,7 @@ Ikony v poli Stav označují online stav kontejnerů:
 | ![Připraveno spuštěné ikona stavu](./media/monitoring-container-health/container-health-ready-icon.png) | Systémem (připravená)|
 | ![Ikona čekání nebo pozastaveném stavu](./media/monitoring-container-health/container-health-waiting-icon.png) | Čeká se na nebo pozastavena|
 | ![Naposledy hlásila systémem ikona stavu](./media/monitoring-container-health/container-health-grey-icon.png) | Poslední ohlásil spuštěná, ale neodpovídá více než 30 minut|
-| ![Ikona stavu ukončení](./media/monitoring-container-health/container-health-green-icon.png) | Úspěšně zastaven nebo se nepovedlo zastavit|
+| ![Ikona úspěšný stav](./media/monitoring-container-health/container-health-green-icon.png) | Úspěšně zastaven nebo se nepovedlo zastavit|
 
 Ikona stavu zobrazují počet založené na co chcete pod poskytuje. Zobrazuje horší dva stavy a když najedete myší stav, zobrazí shrnutí stavu všech podů v kontejneru.  Pokud není k dispozici stavu Připraveno, bude zobrazovat hodnota stavu **(0)**.  
 
@@ -489,9 +489,7 @@ Pokud jste se rozhodli používat rozhraní příkazového řádku Azure, musít
           "addonProfiles": {
             "omsagent": {
               "enabled": false,
-              "config": {
-                "logAnalyticsWorkspaceResourceID": null
-              }
+              "config": null
             }
            }
          }

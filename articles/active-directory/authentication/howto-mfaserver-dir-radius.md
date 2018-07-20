@@ -1,21 +1,21 @@
 ---
-title: Ověřování pomocí protokolu RADIUS a Azure MFA Server | Microsoft Docs
+title: Ověřování pomocí protokolu RADIUS a Azure MFA Server | Dokumentace Microsoftu
 description: Nasazení ověření služby RADIUS a serveru Azure Multi-Factor Authentication.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
-ms.topic: get-started-article
-ms.date: 08/25/2017
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
-ms.reviewer: richagi
-ms.openlocfilehash: 4f61f1dedd8ddc984df89dbb7577b284c1da04f5
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.reviewer: michmcla
+ms.openlocfilehash: 651035430695c0c5082e443dabd998a196e0eefa
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33866809"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39158297"
 ---
 # <a name="integrate-radius-authentication-with-azure-multi-factor-authentication-server"></a>Integrace ověření služby RADIUS se serverem Azure Multi-Factor Authentication
 
@@ -75,6 +75,6 @@ Chcete-li nakonfigurovat klienta RADIUS, postupujte podle pokynů:
 * Použijte stejný sdílený tajný klíč, který byl nakonfigurován dříve.
 * Časový limit platnosti protokolu RADIUS nakonfigurujte na 30–60 sekund, aby byl dostatek času na ověření přihlašovacích údajů uživatele, provedení dvoustupňového ověřování, obdržení odpovědi a následnou odpověď na žádost o přístup protokolu RADIUS.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Zjistěte, jak provést [integraci s ověřováním RADIUS](howto-mfa-nps-extension.md), pokud máte službu Azure Multi-Factor Authentication v cloudu. 

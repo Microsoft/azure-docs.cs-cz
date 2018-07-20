@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: ddc9941792b0c5d8fbf29bfdc698b16a999a3858
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: c239f2b04d8aad621adb4d31146cdc105b439889
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971036"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39159804"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>Řešení potíží s chybějícími daty v nástroji Application Insights pro .NET
 ## <a name="some-of-my-telemetry-is-missing"></a>Chybí některé telemetrie
@@ -175,8 +175,11 @@ Pokud vaše aplikace odešle velké množství dat a používáte Application In
 
 Lze je vypnout, ale to se nedoporučuje. Vzorkování je navržený tak, aby souvisejícími telemetrickými daty správně přenosu, k diagnostickým účelům. 
 
+## <a name="client-ip-address-is-0000"></a>IP adresa klienta je 0.0.0.0 
+V únoru 2018 jsme [oznámili](https://blogs.msdn.microsoft.com/applicationinsights-status/2018/02/01/all-octets-of-ip-address-will-be-set-to-zero/) , že jsme odebrali protokolování IP adresu klienta. Geografické umístění to neovlivní.
+
 ## <a name="wrong-geographical-data-in-user-telemetry"></a>Chybná zeměpisná data v telemetrii uživatele
-Město, oblast a země dimenze jsou odvozeny z IP adresy a nejsou vždy přesné.
+Město, oblast a země dimenze jsou odvozeny z IP adresy a nejsou vždy přesné. Tyto IP adresy nejdřív zpracování pro umístění a potom změnit na hodnotu 0.0.0.0 mají být uloženy.
 
 ## <a name="exception-method-not-found-on-running-in-azure-cloud-services"></a>Výjimka „metoda nebyla nalezena“ při spuštění v Azure Cloud Services
 Vytvořili jste sestavení pro .NET 4.6? Verze 4.6 není v rolích Azure Cloud Services podporována automaticky. Před spuštěním aplikace [nainstalujte pro každou roli verzi 4.6](../cloud-services/cloud-services-dotnet-install-dotnet.md).

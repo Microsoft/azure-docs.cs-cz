@@ -10,12 +10,12 @@ ms.date: 05/30/2018
 ms.service: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 8baca0fc46489a22d587ba6e742615b1da79c19a
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 7726d7eae2d9b3a37ffc141e4a4cbdc9a1af459c
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970223"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39145033"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Omezení a konfigurační informace pro Azure Logic Apps
 
@@ -79,9 +79,9 @@ Tady jsou limity pro běh aplikace logiky jeden:
 | Název | Omezení | Poznámky | 
 | ---- | ----- | ----- | 
 | Do iterací | 5 000 | | 
-| Položky ForEach | 100,000 | Můžete použít [akce dotazu](../connectors/connectors-native-query.md) k filtrování větších polí podle potřeby. | 
+| Položky ForEach | 100 000 | Můžete použít [akce dotazu](../connectors/connectors-native-query.md) k filtrování větších polí podle potřeby. | 
 | Paralelní zpracování ForEach | 50 | Výchozí hodnota je 20. <p>Chcete-li změnit toto výchozí úroveň ve smyčce ForEach, nastavte `runtimeConfiguration` vlastnost `foreach` akce. <p>Postupně spusťte smyčku ForEach, nastavte `operationOptions` vlastnost "Sekvenční" v `foreach` akce. | 
-| Položky SplitOn | 100,000 | | 
+| Položky SplitOn | 100 000 | | 
 |||| 
 
 <a name="throughput-limits"></a>
@@ -92,7 +92,7 @@ Tady jsou limity pro běh aplikace logiky jeden:
 
 | Název | Omezení | Poznámky | 
 | ----- | ----- | ----- | 
-| Spuštění akcí za 5 minut | 100,000 | Pokud chcete zvýšit omezení na 300 000, můžete spustit aplikace logiky v `High Throughput` režimu. Ke konfiguraci režimu vysoké propustnosti, v části `runtimeConfiguration` prostředku pracovního postupu, nastavte `operationOptions` vlastnost `OptimizedForHighThroughput`. <p>**Poznámka:**: režim vysoké propustnosti je ve verzi preview. Navíc můžete distribuovat zatížení napříč více než jednu aplikaci podle potřeby. | 
+| Spuštění akcí za 5 minut | 100 000 | Pokud chcete zvýšit omezení na 300 000, můžete spustit aplikace logiky v `High Throughput` režimu. Ke konfiguraci režimu vysoké propustnosti, v části `runtimeConfiguration` prostředku pracovního postupu, nastavte `operationOptions` vlastnost `OptimizedForHighThroughput`. <p>**Poznámka:**: režim vysoké propustnosti je ve verzi preview. Navíc můžete distribuovat zatížení napříč více než jednu aplikaci podle potřeby. | 
 | Souběžná volání odchozí akce | ~2,500 | Snižte počet souběžných požadavků nebo zkrátit dobu trvání podle potřeby. | 
 | Koncový bod modulu runtime: příchozí souběžných volání | ~1,000 | Snižte počet souběžných požadavků nebo zkrátit dobu trvání podle potřeby. | 
 | Koncový bod modulu runtime: Číst volání za 5 minut  | 60,000 | Můžete rozdělit zatížení mezi více než jednu aplikaci, podle potřeby. | 
@@ -238,12 +238,12 @@ Všechny aplikace logiky v oblasti používat stejné rozsahy IP adres. Pro podp
 | Austrálie – východ | 13.75.149.4, 104.210.91.55, 104.210.90.241 |
 | Austrálie – jihovýchod | 13.73.114.207, 13.77.3.139, 13.70.159.205 |
 | Brazílie – jih | 191.235.82.221, 191.235.91.7, 191.234.182.26 |
-| Střední Kanada | 52.233.29.92, 52.228.39.241, 52.228.39.244 |
-| Východní Kanada | 52.232.128.155, 52.229.120.45, 52.229.126.25 |
+| Kanada – střed | 52.233.29.92, 52.228.39.241, 52.228.39.244 |
+| Kanada – východ | 52.232.128.155, 52.229.120.45, 52.229.126.25 |
 | Střed Indie | 52.172.154.168, 52.172.186.159, 52.172.185.79 |
-| Střed USA | 13.67.236.125, 104.208.25.27, 40.122.170.198 |
+| USA – střed | 13.67.236.125, 104.208.25.27, 40.122.170.198 |
 | Východní Asie | 13.75.94.173, 40.83.127.19, 52.175.33.254 |
-| Východ USA | 13.92.98.111, 40.121.91.41, 40.114.82.191 |
+| USA – východ | 13.92.98.111, 40.121.91.41, 40.114.82.191 |
 | Východní USA 2 | 40.84.30.147, 104.208.155.200, 104.208.158.174 |
 | Japonsko – východ | 13.71.158.3, 13.73.4.207, 13.71.158.120 |
 | Japonsko – západ | 40.74.140.4, 104.214.137.243, 138.91.26.45 |
@@ -255,9 +255,9 @@ Všechny aplikace logiky v oblasti používat stejné rozsahy IP adres. Pro podp
 | Západní střed USA | 52.161.27.190, 52.161.18.218, 52.161.9.108 |
 | Západní Evropa | 40.68.222.65, 40.68.209.23, 13.95.147.65 |
 | Indie – západ | 104.211.164.80, 104.211.162.205, 104.211.164.136 |
-| Západní USA | 52.160.92.112, 40.118.244.241, 40.118.241.243 |
-| Západní USA 2 | 13.66.210.167, 52.183.30.169, 52.183.29.132 |
-| Spojené království – jih | 51.140.74.14, 51.140.73.85, 51.140.78.44 |
+| USA – západ | 52.160.92.112, 40.118.244.241, 40.118.241.243 |
+| USA – západ 2 | 13.66.210.167, 52.183.30.169, 52.183.29.132 |
+| Velká Británie – jih | 51.140.74.14, 51.140.73.85, 51.140.78.44 |
 | Spojené království – západ | 51.141.54.185, 51.141.45.238, 51.141.47.136 |
 | | |
 
@@ -266,12 +266,12 @@ Všechny aplikace logiky v oblasti používat stejné rozsahy IP adres. Pro podp
 | Austrálie – východ | 3.75.153.66, 104.210.89.222, 104.210.89.244 |
 | Austrálie – jihovýchod | 13.73.115.153, 40.115.78.70, 40.115.78.237 |
 | Brazílie – jih | 191.235.86.199, 191.235.95.229, 191.235.94.220 |
-| Střední Kanada | 13.88.249.209, 52.233.30.218, 52.233.29.79 |
-| Východní Kanada | 52.232.129.143, 52.229.125.57, 52.232.133.109 |
+| Kanada – střed | 13.88.249.209, 52.233.30.218, 52.233.29.79 |
+| Kanada – východ | 52.232.129.143, 52.229.125.57, 52.232.133.109 |
 | Střed Indie | 52.172.157.194, 52.172.184.192, 52.172.191.194 |
-| Střed USA | 13.67.236.76, 40.77.111.254, 40.77.31.87 |
+| USA – střed | 13.67.236.76, 40.77.111.254, 40.77.31.87 |
 | Východní Asie | 168.63.200.173, 13.75.89.159, 23.97.68.172 |
-| Východ USA | 137.135.106.54, 40.117.99.79, 40.117.100.228 |
+| USA – východ | 137.135.106.54, 40.117.99.79, 40.117.100.228 |
 | Východní USA 2 | 40.84.25.234, 40.79.44.7, 40.84.59.136 |
 | Japonsko – východ | 13.71.146.140, 13.78.84.187, 13.78.62.130 |
 | Japonsko – západ | 40.74.140.173, 40.74.81.13, 40.74.85.215 |
@@ -283,9 +283,9 @@ Všechny aplikace logiky v oblasti používat stejné rozsahy IP adres. Pro podp
 | Západní střed USA | 52.161.26.172, 52.161.8.128, 52.161.19.82 |
 | Západní Evropa | 13.95.155.53, 52.174.54.218, 52.174.49.6 |
 | Indie – západ | 104.211.164.112, 104.211.165.81, 104.211.164.25 |
-| Západní USA | 52.160.90.237, 138.91.188.137, 13.91.252.184 |
-| Západní USA 2 | 13.66.224.169, 52.183.30.10, 52.183.39.67 |
-| Spojené království – jih | 51.140.79.109, 51.140.78.71, 51.140.84.39 |
+| USA – západ | 52.160.90.237, 138.91.188.137, 13.91.252.184 |
+| USA – západ 2 | 13.66.224.169, 52.183.30.10, 52.183.39.67 |
+| Velká Británie – jih | 51.140.79.109, 51.140.78.71, 51.140.84.39 |
 | Spojené království – západ | 51.141.48.98, 51.141.51.145, 51.141.53.164 |
 | | |
 
@@ -302,12 +302,12 @@ Pro podporu volání, která [konektory](../connectors/apis-list.md) zkontrolujt
 | Austrálie – východ | 13.70.72.192 - 13.70.72.207, 13.72.243.10, 40.126.251.213 | 
 | Austrálie – jihovýchod | 13.77.50.240 - 13.77.50.255, 13.70.136.174, 40.127.80.34 | 
 | Brazílie – jih | 191.233.203.192 - 191.233.203.207, 104.41.59.51, 191.232.38.129 | 
-| Střední Kanada | 13.71.170.208 – 13.71.170.223, 13.71.170.224 – 13.71.170.239 52.237.24.126, 52.233.31.197, 52.228.42.205, 52.228.33.76, 52.228.34.13 | 
-| Východní Kanada | 40.69.106.240 - 40.69.106.255 52.242.35.152, 52.229.123.98, 52.229.120.178, 52.229.126.202, 52.229.120.52 | 
+| Kanada – střed | 13.71.170.208 – 13.71.170.223, 13.71.170.224 – 13.71.170.239 52.237.24.126, 52.233.31.197, 52.228.42.205, 52.228.33.76, 52.228.34.13, 52.233.26.83 | 
+| Kanada – východ | 40.69.106.240 - 40.69.106.255 52.242.35.152, 52.229.123.98, 52.229.120.178, 52.229.126.202, 52.229.120.52, 52.229.120.131 | 
 | Střed Indie | 104.211.81.192 - 104.211.81.207, 52.172.211.12, 104.211.98.164 | 
-| Střed USA | 13.89.171.80 - 13.89.171.95, 52.173.245.164, 40.122.49.51 | 
+| USA – střed | 13.89.171.80 - 13.89.171.95, 52.173.245.164, 40.122.49.51 | 
 | Východní Asie | 13.75.36.64 - 13.75.36.79, 52.175.23.169, 23.99.116.181 | 
-| Východ USA | 40.71.11.80 - 40.71.11.95, 40.71.249.205, 191.237.41.52 | 
+| USA – východ | 40.71.11.80 - 40.71.11.95, 40.71.249.205, 191.237.41.52 | 
 | Východní USA 2 | 40.70.146.208 - 40.70.146.223, 52.232.188.154, 104.208.233.100 | 
 | Japonsko – východ | 13.78.108.0 - 13.78.108.15, 13.71.153.19, 40.115.186.96 | 
 | Japonsko – západ | 40.74.100.224 - 40.74.100.239, 104.215.61.248, 40.74.130.77 | 
@@ -316,13 +316,13 @@ Pro podporu volání, která [konektory](../connectors/apis-list.md) zkontrolujt
 | Střed USA – jih | 104.214.19.48 - 104.214.19.63, 13.65.86.57, 104.214.70.191 | 
 | Indie – jih | 40.78.194.240 - 40.78.194.255, 13.71.125.22, 104.211.227.225 | 
 | Jihovýchodní Asie | 13.67.8.240 - 13.67.8.255, 52.187.68.19, 13.76.231.68 | 
-| Západní střed USA | 13.71.195.32 - 13.71.195.47 52.161.102.22, 52.161.27.108, 52.161.30.5, 52.161.29.35, 52.161.26.212 | 
+| Západní střed USA | 13.71.195.32 - 13.71.195.47 52.161.102.22, 52.161.27.108, 52.161.30.5, 52.161.29.35, 52.161.26.212, 52.161.128 | 
 | Západní Evropa | 13.69.64.208 - 13.69.64.223, 52.174.88.118, 40.115.50.13 | 
 | Indie – západ | 104.211.146.224 - 104.211.146.239, 104.211.189.218, 104.211.161.203 | 
-| Západní USA | 40.112.243.160 - 40.112.243.175, 104.42.122.49, 104.40.51.248 | 
-| Západní USA 2 | 13.66.140.128 - 13.66.140.143 52.183.78.157, 13.66.225.219, 13.66.218.78, 13.66.220.135, 13.66.219.14 | 
-| Spojené království – jih | 51.140.148.0 - 51.140.148.15, 51.140.80.51, 51.140.80.51 | 
-| Spojené království – západ | 51.140.211.0 - 51.140.211.15, 51.141.47.105, 51.141.47.105 | 
+| USA – západ | 40.112.243.160 - 40.112.243.175, 104.42.122.49, 104.40.51.248 | 
+| USA – západ 2 | 13.66.140.128 - 13.66.140.143 52.183.78.157, 13.66.225.219, 13.66.218.78, 13.66.220.135, 13.66.219.14, 13.66.221.19 | 
+| Velká Británie – jih | 51.140.148.0 - 51.140.148.15, 51.140.80.51 | 
+| Spojené království – západ | 51.140.211.0 - 51.140.211.15, 51.141.47.105 | 
 | | | 
 
 ## <a name="next-steps"></a>Další postup  

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2018
 ms.author: jdial
-ms.openlocfilehash: 1c33a75363eec2b4e338ba64e3d1ad877d8b1610
-ms.sourcegitcommit: 15bfce02b334b67aedd634fa864efb4849fc5ee2
+ms.openlocfilehash: 82a7449bf75cd31f8da5bb93618c4e6977ed312b
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "34757223"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144930"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>Diagnostika potíží s filtrováním na provoz sítě virtuálního počítače
 
@@ -40,38 +40,40 @@ Následující kroky předpokládají, že máte existující virtuální počí
 2. V horní části stránky na webu Azure portal zadejte do vyhledávacího pole název virtuálního počítače. Když se ve výsledcích hledání zobrazí název virtuálního počítače, vyberte ji.
 3. V části **nastavení**vyberte **sítě**, jak je znázorněno na následujícím obrázku:
 
-    ![Zobrazit pravidla zabezpečení](./media/diagnose-network-traffic-filter-problem/view-security-rules.png)
+   ![Zobrazit pravidla zabezpečení](./media/diagnose-network-traffic-filter-problem/view-security-rules.png)
 
-    Pravidla vidíte uvedený na předchozím obrázku jsou pro síťové rozhraní s názvem **myVMVMNic**. Zjistíte, že existují **PŘÍCHOZÍ pravidla portů** pro síťové rozhraní ze dvou skupin zabezpečení různých síťových:- **mySubnetNSG**: přidruženou k podsíti, síťové rozhraní nachází.
-        - **myVMNSG**: přidruženou k síťové rozhraní ve virtuálním počítači s názvem **myVMVMNic**.
+   Pravidla vidíte uvedený na předchozím obrázku jsou pro síťové rozhraní s názvem **myVMVMNic**. Zjistíte, že existují **PŘÍCHOZÍ pravidla portů** pro síťové rozhraní ze dvou skupin zabezpečení jinou síť:
+   
+   - **mySubnetNSG**: přidruženou k podsíti, síťové rozhraní nachází.
+   - **myVMNSG**: přidruženou k síťové rozhraní ve virtuálním počítači s názvem **myVMVMNic**.
 
-    Pravidlo s názvem **DenyAllInBound** je co brání příchozí komunikace k virtuálnímu počítači přes port 80 z Internetu, jak je popsáno v [scénář](#scenario). Pravidla seznamů *0.0.0.0/0* pro **zdroj**, což zahrnuje Internetu. Žádné pravidlo s vyšší prioritou (nižším číslem) umožňuje port 80 příchozí. Aby bylo možné portem 80 příchozí provoz do virtuálního počítače z Internetu, přečtěte si téma [vyřešit problém](#resolve-a-problem). Další informace o pravidlech zabezpečení a jak Azure aplikuje je najdete v tématu [skupiny zabezpečení sítě](security-overview.md).
+   Pravidlo s názvem **DenyAllInBound** je co brání příchozí komunikace k virtuálnímu počítači přes port 80 z Internetu, jak je popsáno v [scénář](#scenario). Pravidla seznamů *0.0.0.0/0* pro **zdroj**, což zahrnuje Internetu. Žádné pravidlo s vyšší prioritou (nižším číslem) umožňuje port 80 příchozí. Aby bylo možné portem 80 příchozí provoz do virtuálního počítače z Internetu, přečtěte si téma [vyřešit problém](#resolve-a-problem). Další informace o pravidlech zabezpečení a jak Azure aplikuje je najdete v tématu [skupiny zabezpečení sítě](security-overview.md).
 
-    V dolní části obrázku se zobrazí také **ODCHOZÍ pravidla portů**. V části, která jsou odchozí port pravidla pro síťové rozhraní. I když obrázek zobrazuje pouze čtyři příchozích pravidel pro jednotlivé skupiny NSG, skupin může mít mnoho více než čtyři pravidla. Na obrázku vidíte **VirtualNetwork** pod **zdroj** a **cílové** a **AzureLoadBalancer** pod  **Zdroj**. **Virtuální síť** a **AzureLoadBalancer** jsou [značky služeb](security-overview.md#service-tags). Značky služby představuje skupinu předpon IP adres a tím pomáhá minimalizovat složitost vytváření pravidla zabezpečení.
+   V dolní části obrázku se zobrazí také **ODCHOZÍ pravidla portů**. V části, která jsou odchozí port pravidla pro síťové rozhraní. I když obrázek zobrazuje pouze čtyři příchozích pravidel pro jednotlivé skupiny NSG, skupin může mít mnoho více než čtyři pravidla. Na obrázku vidíte **VirtualNetwork** pod **zdroj** a **cílové** a **AzureLoadBalancer** pod  **Zdroj**. **Virtuální síť** a **AzureLoadBalancer** jsou [značky služeb](security-overview.md#service-tags). Značky služby představuje skupinu předpon IP adres a tím pomáhá minimalizovat složitost vytváření pravidla zabezpečení.
 
 4. Ujistěte se, že virtuální počítač ve spuštěném stavu a pak vyberte **platná pravidla zabezpečení**, jak je znázorněno na předchozím obrázku, pokud chcete zobrazit platná pravidla zabezpečení, je znázorněno na následujícím obrázku:
 
-    ![Zobrazit platná pravidla zabezpečení](./media/diagnose-network-traffic-filter-problem/view-effective-security-rules.png)
+   ![Zobrazit platná pravidla zabezpečení](./media/diagnose-network-traffic-filter-problem/view-effective-security-rules.png)
 
-    S pravidly uvedenými jsou že stejné jako jste viděli v kroku 3, i když existují různých kartách pro zabezpečení sítě přidruženou k síťovému rozhraní a podsítě. Jak je vidět na obrázku, zobrazují se jenom prvních 50 pravidel. Chcete-li stáhnout soubor CSV obsahující všechna pravidla, vyberte **Stáhnout**.
+   S pravidly uvedenými jsou že stejné jako jste viděli v kroku 3, i když existují různých kartách pro zabezpečení sítě přidruženou k síťovému rozhraní a podsítě. Jak je vidět na obrázku, zobrazují se jenom prvních 50 pravidel. Chcete-li stáhnout soubor CSV obsahující všechna pravidla, vyberte **Stáhnout**.
 
-    Pokud chcete zobrazit, které předpony adres jednotlivé značky služby představuje, vyberte pravidlo, jako je například pravidlo s názvem **AllowAzureLoadBalancerInbound**. Následující obrázek znázorňuje předpony pro **AzureLoadBalancer** značka služby:
+   Pokud chcete zobrazit, které předpony adres jednotlivé značky služby představuje, vyberte pravidlo, jako je například pravidlo s názvem **AllowAzureLoadBalancerInbound**. Následující obrázek znázorňuje předpony pro **AzureLoadBalancer** značka služby:
 
-    ![Zobrazit platná pravidla zabezpečení](./media/diagnose-network-traffic-filter-problem/address-prefixes.png)
+   ![Zobrazit platná pravidla zabezpečení](./media/diagnose-network-traffic-filter-problem/address-prefixes.png)
 
-    I když **AzureLoadBalancer** značka služby představuje pouze jednu předponu, další značky služeb představují několik předpon.
+   I když **AzureLoadBalancer** značka služby představuje pouze jednu předponu, další značky služeb představují několik předpon.
 
-4. V předchozích krocích jsme si ukázali pravidla zabezpečení pro síťové rozhraní s názvem **myVMVMNic**, ale viděli jsme také síťové rozhraní s názvem **myVMVMNic2** v některé z předchozích snímků. Virtuální počítač v tomto příkladu má dvě síťová rozhraní k němu připojená. Platná pravidla zabezpečení mohou být různé pro každé síťové rozhraní.
+5. V předchozích krocích jsme si ukázali pravidla zabezpečení pro síťové rozhraní s názvem **myVMVMNic**, ale viděli jsme také síťové rozhraní s názvem **myVMVMNic2** v některé z předchozích snímků. Virtuální počítač v tomto příkladu má dvě síťová rozhraní k němu připojená. Platná pravidla zabezpečení mohou být různé pro každé síťové rozhraní.
 
-    Pokud chcete zobrazit pravidla pro **myVMVMNic2** síťové rozhraní, vyberte ji. Jak je znázorněno na následujícím obrázku, síťové rozhraní má stejná pravidla přidružené k jeho podsítě jako **myVMVMNic** síťové rozhraní, protože obě síťová rozhraní jsou ve stejné podsíti. Pokud přidružíte skupinu NSG k podsíti, se použijí její pravidla pro všechna síťová rozhraní v podsíti.
+   Pokud chcete zobrazit pravidla pro **myVMVMNic2** síťové rozhraní, vyberte ji. Jak je znázorněno na následujícím obrázku, síťové rozhraní má stejná pravidla přidružené k jeho podsítě jako **myVMVMNic** síťové rozhraní, protože obě síťová rozhraní jsou ve stejné podsíti. Pokud přidružíte skupinu NSG k podsíti, se použijí její pravidla pro všechna síťová rozhraní v podsíti.
 
-    ![Zobrazit pravidla zabezpečení](./media/diagnose-network-traffic-filter-problem/view-security-rules2.png)
+   ![Zobrazit pravidla zabezpečení](./media/diagnose-network-traffic-filter-problem/view-security-rules2.png)
 
-    Na rozdíl od **myVMVMNic** síťového rozhraní **myVMVMNic2** síťové rozhraní nemá skupinu zabezpečení sítě přidruženou k němu. Každé síťové rozhraní a podsítě může mít nula nebo jedna skupina zabezpečení sítě přidružené k němu. Skupiny zabezpečení sítě přidružené k každé síťové rozhraní nebo podsíť může být stejný nebo jiný. Při výběru, můžete přiřadit stejnou skupinu zabezpečení sítě pro libovolný počet síťových rozhraní a podsítí.
+   Na rozdíl od **myVMVMNic** síťového rozhraní **myVMVMNic2** síťové rozhraní nemá skupinu zabezpečení sítě přidruženou k němu. Každé síťové rozhraní a podsítě může mít nula nebo jedna skupina zabezpečení sítě přidružené k němu. Skupiny zabezpečení sítě přidružené k každé síťové rozhraní nebo podsíť může být stejný nebo jiný. Při výběru, můžete přiřadit stejnou skupinu zabezpečení sítě pro libovolný počet síťových rozhraní a podsítí.
 
-I když platná pravidla zabezpečení se zobrazit pomocí virtuálního počítače, můžete také zobrazit platná pravidla zabezpečení prostřednictvím:
-- **Jednotlivých síťových rozhraní**: Zjistěte, jak [zobrazit síťové rozhraní](virtual-network-network-interface.md#view-network-interface-settings).
-- **Jednotlivých skupin zabezpečení sítě**: Zjistěte, jak [zobrazit skupinu NSG](manage-network-security-group.md#view-details-of-a-network-security-group).
+I když platná pravidla zabezpečení se zobrazit pomocí virtuálního počítače, můžete také zobrazit platná pravidla zabezpečení prostřednictvím osobně:
+- **Síťové rozhraní**: Zjistěte, jak [zobrazit síťové rozhraní](virtual-network-network-interface.md#view-network-interface-settings).
+- **Skupina zabezpečení sítě**: Zjistěte, jak [zobrazit skupinu NSG](manage-network-security-group.md#view-details-of-a-network-security-group).
 
 ## <a name="diagnose-using-powershell"></a>Diagnostikovat pomocí Powershellu
 

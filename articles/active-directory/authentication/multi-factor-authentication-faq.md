@@ -4,24 +4,25 @@ description: Nejčastější dotazy a odpovědi související s ověřováním A
 services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
-ms.topic: article
-ms.date: 06/16/2017
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
-ms.reviewer: richagi
-ms.openlocfilehash: 00eab947120cdfa76de64536ddaa0600c2dff2ec
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.reviewer: michmcla
+ms.openlocfilehash: b4fc67acae83573db772923a94cdbb6b1c4a301f
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39049407"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39159837"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Nejčastější dotazy k Azure Multi-Factor Authentication
 
 Tyto nejčastější dotazy odpovědi na běžné dotazy týkající se Azure Multi-Factor Authentication a pomocí služby Multi-Factor Authentication. To je rozdělena do otázky týkající se služby obecně modelem fakturace vázaným uživatelského prostředí a řešení potíží.
 
 ## <a name="general"></a>Obecné
+
 **Otázka: jak zpracovávat ověřování Azure Multi-Factor Authentication Server uživatelská data?**
 
 Multi-Factor Authentication Server uživatelská data uloží jenom na místních serverech. V cloudu se neukládají žádná trvalá data. Když uživatel provádí dvoustupňové ověřování, ověřování Multi-Factor Authentication Server odešle data do cloudové služby Azure Multi-Factor Authentication pro ověřování. Komunikace mezi Multi-Factor Authentication Server a cloudovou službou Multi-Factor Authentication používá vrstvy SSL (Secure Sockets) nebo zabezpečení TLS (Transport Layer) přes port 443 odchozí.
@@ -60,6 +61,7 @@ V Kanadě Microsoft používá následující kódy krátký SMS:
 Microsoft nezaručuje konzistentní SMS nebo ověřování službou Multi-Factor Authentication pomocí hlasu výzvy doručení stejné číslo. Větší naši uživatelé mohou Microsoft přidávat nebo odebírat krátké kódy kdykoli během postupu úpravy ke zlepšení doručitelnosti SMS. Microsoft nepodporuje krátké kódy zemí kromě USA a Kanada
 
 ## <a name="billing"></a>Fakturace
+
 Většina fakturaci může zodpoví odkazující na buď [stránce s cenami ověřování službou Multi-Factor Authentication](https://azure.microsoft.com/pricing/details/multi-factor-authentication/) nebo v dokumentaci o [jak získat Azure Multi-Factor Authentication](concept-mfa-licensing.md).
 
 **Otázka: je Moje organizace, účtují se poplatky za odesílání telefonní hovory a textové zprávy, které se používají k ověřování?**
@@ -119,7 +121,6 @@ Azure Active Directory je požadovaná pro licenční model, protože licence se
 Všichni uživatelé nakonfigurovaní snad více než jednu metodu ověřování. Řekněte jim, aby se zkusili znovu přihlásit, ale na přihlašovací stránce vybrali jinou metodu ověření.
 
 Pak můžete uživatelům [Průvodce odstraňováním potíží s koncovým uživatelem](../user-help/multi-factor-authentication-end-user-troubleshoot.md).
-
 
 **Otázka: Co mám dělat, když jeden z uživatelů nemůže dostat se do svého účtu?**
 
@@ -196,8 +197,8 @@ Tady je několik důvodů, že by mohla uživatelé vyzváni k registraci jejich
 - Organizace vytvořila a povolené zásady registrace MFA, který byl použit pro uživatele.
 - Uživatel dříve zaregistrovaný pro MFA, ale vybrali metodu ověřování, které od té doby správce zakázal. Uživatel musí projít proto registrace MFA znovu a vyberte nový výchozí metodu ověřování.
 
-
 ## <a name="errors"></a>Chyby
+
 **Otázka: co uživatelé dělat, když se zobrazí chybová zpráva "žádost o ověření není pro aktivovaný účet", při použití oznámení mobilní aplikace?**
 
 Řekněte jim, aby pomocí následujícího postupu odebrat svůj účet z mobilní aplikace a pak ji znovu přidat:
@@ -214,6 +215,7 @@ Při pokusu o přihlášení k aplikaci nezaložené na prohlížeči, nainstalo
 Alternativní řešení pro tuto chybu je mít samostatné uživatelské účty pro správu související a operace bez oprávnění správce. Později můžete propojit poštovní schránky mezi účtem správce a účet bez oprávnění správce tak, aby můžete se přihlásit k aplikaci Outlook pomocí účtu bez oprávnění správce. Další podrobnosti o tomto řešení, zjistěte, jak [správce umožnit otevřít a zobrazit obsah z poštovní schránky uživatele](http://help.outlook.com/141/gg709759.aspx?sl=1).
 
 ## <a name="next-steps"></a>Další postup
+
 Pokud váš dotaz zde nenalezl, nechejte ji prosím do komentářů v dolní části stránky. Nebo, tady jsou některé další možnosti pro získání nápovědy:
 
 * Hledání [znalostní báze podpory Microsoftu](https://www.microsoft.com/en-us/Search/result.aspx?form=mssupport&q=phonefactor&form=mssupport) pro řešení běžných potíží technické.
