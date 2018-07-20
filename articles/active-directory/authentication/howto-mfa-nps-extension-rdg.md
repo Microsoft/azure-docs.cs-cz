@@ -4,18 +4,18 @@ description: Integrace infrastruktury služby Brána vzdálené plochy s Azure M
 services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
-ms.topic: article
-ms.date: 08/15/2017
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
-ms.reviewer: richagi
-ms.openlocfilehash: 74e56480c5bbf86ee6cbc059431d7d5a328dfcec
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.reviewer: michmcla
+ms.openlocfilehash: e22fedda4861e68f2318aff89bc3fe5a15cb6ede
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39049061"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39160099"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>Integrace služby Brána vzdálené plochy infrastrukturu s použitím rozšíření serveru NPS (Network Policy Server) a Azure AD
 
@@ -293,7 +293,7 @@ Připomínáme, že server NPS pomocí rozšíření Azure MFA je úložiště u
  ![Zásady sítě](./media/howto-mfa-nps-extension-rdg/image24.png)
 
 ## <a name="verify-configuration"></a>Ověření konfigurace
-Pokud chcete ověřit konfiguraci, musíte přihlášení služby Brána vzdálené plochy s vhodnou klienta protokolu RDP. Nezapomeňte použít účet, který povoluje vaše zásady autorizace připojení a je povolen pro Azure MFA. 
+Pokud chcete ověřit konfiguraci, budete muset přihlásit do služby Brána vzdálené plochy pomocí vhodné klienta protokolu RDP. Nezapomeňte použít účet, který povoluje vaše zásady autorizace připojení a je povolen pro Azure MFA. 
 
 Jak je vidět na obrázku níže, můžete použít **Remote Desktop Web Access** stránky.
 
