@@ -1,0 +1,49 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Dokumentace k ověřování Azure AD
+metadata:
+  document_id: 
+  title: Dokumentace k funkci Identita spravované služby Azure Active Directory
+  description: Zjistěte, jak spravovat a nasazovat samoobslužné resetování hesel Azure Active Directory, ověřování s využitím služby Multi-Factor Authentication, vlastní seznamy zakázaných hesel a inteligentní uzamčení.
+  services: active-directory
+  ms.component: authentication
+  author: MicrosoftGuyJFlo
+  manager: mtillman
+  ms.service: active-directory
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 07/11/2018
+  ms.author: joflore
+  ms.openlocfilehash: 3830c63ec7121ddc3174b9867ca95964cde4154b
+  ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 07/19/2018
+  ms.locfileid: "39163184"
+abstract:
+  description: Zjistěte, jak nasazovat a spravovat samoobslužné resetování hesel Azure Active Directory, ověřování s využitím služby Multi-Factor Authentication, vlastní seznamy zakázaných hesel a inteligentní uzamčení. Tyto funkce společně poskytují silné ověřování se širokou škálou metod a současně přitom zajišťují jednoduchý přihlašovací proces.
+sections:
+- title: Zprovoznění během 5 minut
+  items:
+  - type: paragraph
+    text: Zjistěte, jak povolit samoobslužné resetování hesel a omezit tak telefonáty uživatelů na helpdesk.
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: ./media/index/i_protect.png
+      text: Povolení samoobslužného resetování hesel
+      href: https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr
+- title: Podrobné kurzy
+  items:
+  - type: paragraph
+    text: Zjistěte, jak povolit jednoduchý a bezpečný přihlašovací proces pro vaši organizaci.
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/active-directory/authentication/tutorial-sspr-pilot">Povolení samoobslužného resetování hesel</a>
+    - html: <a href="/azure/active-directory/authentication/tutorial-mfa-applications">vyžadování MFA pro Azure Portal</a>
+    - html: <a href="/azure/active-directory/authentication/tutorial-enable-writeback">Povolení místní integrace samoobslužného resetování hesel</a>
+    - html: <a href="/azure/active-directory/authentication/tutorial-sspr-windows">Povolení resetování hesel ve Windows 10</a>
+    - html: <a href="/azure/active-directory/authentication/tutorial-risk-based-sspr-mfa">Integrace s využitím ochrany identit Azure</a>

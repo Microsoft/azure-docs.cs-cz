@@ -8,13 +8,13 @@
       href: about-iot-accelerators.md
 - name: Šablony Rychlý start
   items:
-    - name: Nasazení řešení vzdáleného monitorování
+    - name: Vyzkoušení řešení vzdáleného monitorování
       href: quickstart-remote-monitoring-deploy.md
-    - name: Nasazení řešení propojené továrny
+    - name: Vyzkoušení řešení propojené továrny
       href: quickstart-connected-factory-deploy.md
-    - name: Nasazení řešení prediktivní údržby
+    - name: Vyzkoušení řešení prediktivní údržby
       href: quickstart-predictive-maintenance-deploy.md
-    - name: Nasazení řešení simulace zařízení
+    - name: Vyzkoušení řešení simulace zařízení
       href: quickstart-device-simulation-deploy.md
 - name: Kurzy
   items:
@@ -137,10 +137,6 @@
               href: ../iot-suite/iot-suite-v1-custom-rule.md
             - name: Informace o zařízení v řešení vzdáleného monitorování
               href: ../iot-suite/iot-suite-v1-remote-monitoring-device-info.md
-    - name: Prediktivní údržba
-      items:
-        - name: Nasazení akcelerátoru řešení
-          href: iot-accelerators-predictive-overview.md
     - name: Propojená továrna
       items:
         - name: Použití řídicího panelu

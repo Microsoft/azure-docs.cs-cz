@@ -41,6 +41,8 @@
           href: automation-update-management.md
         - name: Správa aktualizací pro několik virtuálních počítačů
           href: manage-update-multi.md
+        - name: Migrace nasazení aktualizací OMS do Azure
+          href: migrate-oms-update-deployments.md
         - name: Integrace SCCM s Update Managementem
           href: oms-solution-updatemgmt-sccmintegration.md
     - name: Sledování změn

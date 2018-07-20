@@ -29,7 +29,7 @@
       href: apache-spark-eventhub-streaming.md
     - name: Vytvoření aplikace strojového učení
       href: apache-spark-ipython-notebook-machine-learning.md
-    - name: Vytvoření sparkové aplikace s využitím IntelliJ
+    - name: Vytvoření sparkové aplikace v IntelliJ
       href: apache-spark-create-standalone-application.md
 - name: Postup
   items:

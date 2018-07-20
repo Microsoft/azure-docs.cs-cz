@@ -121,18 +121,14 @@
           href: batch-get-resource-counts.md
         - name: Efektivní dotazy na prostředky
           href: batch-efficient-list-queries.md
-    - name: Použití nástrojů pro vývojáře
+    - name: Použití skriptovacích nástrojů
       items:
-        - name: Použití .NET služby Batch
-          href: batch-dotnet-get-started.md
-        - name: Použití Pythonu služby Batch
-          href: batch-python-tutorial.md
-        - name: Použití Node.js služby Batch
-          href: batch-nodejs-get-started.md
         - name: Použití rutin PowerShell
           href: batch-powershell-cmdlets-get-started.md
         - name: Použití Azure CLI
           href: batch-cli-get-started.md
+    - name: Použití Batch Node.js SDK
+      href: batch-nodejs-get-started.md
 - name: Referenční informace
   items:
     - name: Azure CLI

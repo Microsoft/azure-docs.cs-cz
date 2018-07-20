@@ -49,6 +49,8 @@
           href: aad-integration.md
         - name: Použití Virtual Kubeletu
           href: virtual-kubelet.md
+        - name: Použití automatického škálování clusteru
+          href: autoscaler.md
         - name: Nasazení AKS s Terraformem
           href: ../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md
           maintainContext: true

@@ -164,6 +164,8 @@
               href: app-insights-proactive-application-security-detection-pack.md
             - name: Azure Cloud Services
               href: app-insights-proactive-cloud-services.md
+            - name: Správa pravidel inteligentního zjišťování
+              href: app-insights-proactive-arm-config.md
         - name: Vytvoření prostředku
           href: app-insights-create-new-resource.md
     - name: Analýza

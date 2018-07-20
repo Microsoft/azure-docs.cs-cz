@@ -12,14 +12,14 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: 
   ms.topic: landing-page
-  ms.date: 04/01/2018
+  ms.date: 07/07/2018
   ms.author: carlrab
-  ms.openlocfilehash: 5fcfe7b12acc943224d3c3158f2b39b4c35de1ee
-  ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+  ms.openlocfilehash: eae18cf5956582f3b66eb2ed837412815efbd4cf
+  ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 07/09/2018
-  ms.locfileid: "37916145"
+  ms.lasthandoff: 07/18/2018
+  ms.locfileid: "39112497"
 abstract:
   description: Azure SQL Database je relační databáze jako služba (DBaaS), která je založená na nejnovější stabilní verzi databázového stroje Microsoft SQL Server. SQL Database je vysoce výkonná, spolehlivá a zabezpečená databáze, kterou můžete použít k vytváření datových aplikací a webů v programovacím jazyce podle vašeho výběru, aniž by bylo potřeba zabývat se správou infrastruktury. Naučte se používat SQL Database prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek.
   aside:
@@ -39,39 +39,54 @@ sections:
     columns: 3
     items:
     - href: /azure/sql-database/sql-database-technical-overview
-      html: <p><a href="/azure/sql-database/sql-database-high-availability">Vysoce dostupná</a> databáze PaaS, která vždycky běží na nejnovější stabilní verzi databázového stroje SQL Server a opraveném operačním systému s <a href="/azure/sql-database/sql-database-automated-backups">automatickým zálohováním databází</a>.</p>
+      html: <p>Databáze PaaS, která vždycky běží na nejnovější stabilní verzi databázového stroje SQL Server a opraveném operačním systému s 99,99% dostupností.</p>
       image:
         src: media/index/i_managed.svg
       title: S plnou správou
     - href: /azure/sql-database/sql-database-service-tiers
-      html: <p><a href="/azure/sql-database/sql-database-service-tiers">Flexibilní úrovně výkonu</a>, od dostupných 5 USD za měsíc až po databáze s 80 jádry, umožňují přizpůsobit poměr cena/výkon vašim potřebám.</p>
+      html: <p>Flexibilní úrovně výkonu, od dostupných 5 USD za měsíc až po databáze s 80 jádry, umožňují přizpůsobit poměr cena/výkon vašim potřebám.</p>
       image:
         src: media/index/i_perftier.svg
       title: Úrovně výkonu a cen
     - href: /azure/sql-database/sql-database-scale-resources
-      html: <p>Využijte možnost snadno <a href="/azure/sql-database/sql-database-single-database-scale">vertikálně </a> nebo <a href="/azure/sql-database/sql-database-read-scale-out">horizontálně navýšit kapacitu</a> vašich databází nebo je rozdělit v závislosti na vašich potřebách a zlepšit tak výkon vaší aplikace.</p>
+      html: <p>Využijte možnost snadno vertikálně nebo horizontálně navýšit kapacitu vašich databází nebo je rozdělit v závislosti na vašich potřebách a zlepšit tak výkon vaší aplikace.</p>
       image:
         src: media/index/i_scale.svg
-      title: Škálovatelnost a elasticita
-    - href: /azure/sql-database/sql-database-technical-overview#built-in-intelligence
-      html: <p>Inteligence integrovaná do služeb umožňuje <a href="/azure/sql-database/sql-database-automatic-tuning">automaticky vyladit výkon</a> a <a href="/azure/sql-database/sql-advanced-threat-protection">identifikovat hrozby</a> a <a href="/azure/sql-database/sql-vulnerability-assessment">ohrožení zabezpečení</a> ve vašich databázích.</p>
-      image:
-        src: media/index/i_intelligence.svg
-      title: Integrované inteligentní funkce
+      title: Škálovatelnost
     - href: /azure/sql-database/sql-database-servers-databases
-      html: <p>Pro vaše <a href="/azure/sql-database/saas-tenancy-app-design-patterns">aplikace SaaS</a> a mikroslužby, které vyžadují jednoúčelovou databázi s předvídatelným výkonem, můžete využít <a href="/azure/sql-database/sql-database-managed-instance">službu Izolovaná databáze hostovanou na logických serverech</a>.</p>
+      html: <p>Pro vaše aplikace SaaS a mikroslužby, které vyžadují jednoúčelovou databázi s předvídatelným výkonem, můžete využít jednoúčelovou databázi hostovanou na logických serverech.</p>
       image:
         src: media/index/i_db.svg
       title: Izolovaná databáze
+    - href: /azure/sql-database/sql-database-elastic-pool
+      html: <p>Elastické fondy SQL Database je jednoduché a cenově výhodné řešení pro správu a škálování více databází s proměnlivými a nepředvídatelnými požadavky na využití.</p>
+      image:
+        src: media/index/i_elasticpool.svg
+      title: Elastické fondy
     - href: /azure/sql-database/sql-database-managed-instance
-      html: <p><a href="/azure/sql-database/sql-database-managed-instance">Spravovaná instance</a> umožňuje snadno <a href="azure/sql-database/sql-database-managed-instance-migrate">migrovat vaše místní databáze</a> do Azure PaaS s minimálními změnami kódu nebo dokonce úplně beze změn.</p>
+      html: <p>Spravovaná instance umožňuje snadno migrovat vaše místní databáze do plně spravované databázové služby Azure PaaS s minimálními změnami kódu nebo dokonce úplně beze změn.</p>
       image:
         src: media/index/i_mi.svg
       title: MI
+    - href: /azure/sql-database/sql-database-business-continuity
+      html: <p>Integrovaná vysoká dostupnost, automatizované zálohování a geografická replikace zabraňují tomu, aby operace údržby nebo selhání hardwaru a infrastruktury negativně ovlivnily vaše podnikání.</p>
+      image:
+        src: media/index/gear.svg
+      title: Kontinuita podnikových procesů
+    - href: /azure/sql-database/sql-database-security-overview
+      html: <p>K zabezpečení vašich databází můžete využít ověřování Azure AD, virtuální sítě, brány firewall a připojení Always Encrypted. Integrované zabezpečení pomáhá odhalit hrozby a ohrožení zabezpečení.</p>
+      image:
+        src: media/index/i_security.svg
+      title: Pokročilé zabezpečení
+    - href: /azure/sql-database/sql-database-technical-overview#built-in-intelligence
+      html: <p>Integrované inteligentní funkce pomáhají výrazně snížit náklady na provoz a správu databází a maximalizovat výkon a zabezpečení aplikací.</p>
+      image:
+        src: media/index/i_intelligence.svg
+      title: Integrované inteligentní funkce
 - title: Zprovoznění během 5 minut
   items:
   - type: paragraph
-    text: 'Azure SQL Database umožňuje snadno provádět základní úlohy správy pomocí webu Azure Portal, rozhraní příkazového řádku Azure a prostředí Azure PowerShell. Naučte se provádět základní úlohy správy pomocí následujících úvodních ukázek:'
+    text: 'Azure SQL Database umožňuje snadno provádět základní úlohy správy pomocí webu Azure Portal, rozhraní příkazového řádku Azure a prostředí Azure PowerShell. Naučte se provádět základní úlohy správy pomocí následujících ukázek rychlého zprovoznění:'
   - type: table
     style: dataMatrix
     columns:
@@ -174,6 +189,6 @@ sections:
     - title: REST
       html: <p><a href="/rest/api/sql/">Reference k rozhraní REST API</a></p>
     - title: Nástroje SQL Serveru
-      html: <p><a href="https://msdn.microsoft.com/library/mt238365.aspx">Nástroje SQL Serveru</a></p><p><a href="https://msdn.microsoft.com/library/mt238290.aspx">SQL Server Management Studio (SSMS)</a></p><p><a href="https://msdn.microsoft.com/library/mt204009.aspx">SQL Server Data Tools (SSDT)</a></p><p><a href="https://msdn.microsoft.com/library/ms162802.aspx">BCP</a></p><p><a href="https://msdn.microsoft.com/library/ms162773.aspx">SQLCMD</a></p><p><a href="https://msdn.microsoft.com/hh550080.aspx">SqlPackage</a></p><p><a href="https://www.nuget.org/packages/Microsoft.Azure.Management.Sql">Balíček knihoven pro správu SQL Database</a></p>
+      html: <p><a href="https://msdn.microsoft.com/library/mt238365.aspx">Nástroje SQL Serveru</a></p><p><a href="https://msdn.microsoft.com/library/mt238290.aspx">SQL Server Management Studio (SSMS)</a></p><p><a href="https://msdn.microsoft.com/library/mt204009.aspx">SQL Server Data Tools (SSDT)</a></p><p><a href="https://msdn.microsoft.com/library/ms162802.aspx">BCP</a></p><p><a href="https://msdn.microsoft.com/library/ms162773.aspx">SQLCMD</a></p><p><a href="https://docs.microsoft.com/sql/tools/sqlpackage">SqlPackage</a></p><p><a href="https://www.nuget.org/packages/Microsoft.Azure.Management.Sql">Balíček knihoven pro správu SQL Database</a></p>
     - title: Ovladače SQL Serveru
       html: <p><a href="https://msdn.microsoft.com/library/mt654049.aspx">Ovladače SQL Serveru</a></p><p><a href="https://msdn.microsoft.com/library/mt657768.aspx">ADO.NET</a></p><p><a href="https://msdn.microsoft.com/library/mt484311.aspx">JDBC</a></p><p><a href="https://msdn.microsoft.com/library/mt654048.aspx">ODBC</a></p>

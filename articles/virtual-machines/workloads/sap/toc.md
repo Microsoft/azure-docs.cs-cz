@@ -24,7 +24,8 @@
 ## [Přehled zálohování SAP HANA](sap-hana-backup-guide.md)
 ## [Zálohování SAP HANA na úrovni souborů](sap-hana-backup-file-level.md)
 ## [Zálohy snímků úložiště SAP HANA](sap-hana-backup-storage-snapshots.md)
-# SAP NetWeaver ve službě Azure Virtual Machines
+# SAP NetWeaver a Business One ve službě Azure Virtual Machines
+## [SAP Business One ve službě Azure Virtual Machines](business-one-azure.md)
 ## [Průvodce nasazením SAP IDES na Windows/SQL Server SAP CAL](cal-ides-erp6-erp7-sp3-sql.md)
 ## [SAP NetWeaver ve virtuálních počítačích Azure s Linuxem](suse-quickstart.md)
 ## [Plánování a implementace SAP NetWeaveru v Azure](planning-guide.md)

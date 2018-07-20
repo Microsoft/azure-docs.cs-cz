@@ -9,17 +9,17 @@
   items:
     - name: Nasazení aplikace Hello World
       href: service-fabric-mesh-quickstart-deploy-container.md
-    - name: Vytvoření a nasazení webové aplikace
+    - name: Vytvoření webové aplikace a její nasazení do služby Azure Service Fabric Mesh
       href: service-fabric-mesh-quickstart-dotnet-core.md
 - name: Kurzy
   items:
-    - name: Vytvoření a nasazení webové aplikace s více službami
+    - name: 'Vytvoření, ladění a nasazení webové aplikace Azure Service Fabric Mesh s více službami'
       items:
-        - name: 1. Sestavení aplikace ASP.NET Core
+        - name: 1. Sestavení webové aplikace Service Fabric Mesh
           href: service-fabric-mesh-tutorial-create-dotnetcore.md
-        - name: 2. Ladění aplikace
+        - name: 2. Ladění webové aplikace Service Fabric Mesh
           href: service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md
-        - name: 3. Nasazení aplikace
+        - name: 3. Nasazení webové aplikace Service Fabric Mesh
           href: service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md
 - name: Koncepty
   items:

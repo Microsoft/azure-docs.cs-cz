@@ -59,6 +59,9 @@
 #### [Vlastní kód](data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md)
 #### [Místní spuštění a ladění](data-lake-tools-for-vscode-local-run-and-debug.md)
 
+## Plánování úloh U-SQL
+### [Plánování úloh s využitím SSIS](data-lake-analytics-schedule-jobs-ssis.md)
+
 ## Průběžná integrace a průběžné nasazování
 ### [Přehled](data-lake-analytics-cicd-overview.md)
 ### [Nastavení testů](data-lake-analytics-cicd-test.md)

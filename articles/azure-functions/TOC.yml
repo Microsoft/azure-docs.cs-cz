@@ -19,7 +19,7 @@
       href: functions-create-first-azure-function-azure-cli.md
     - name: Vytvoření funkce – Linux
       href: functions-create-first-azure-function-azure-cli-linux.md
-    - name: Triggery
+    - name: Aktivační události
       items:
         - name: Blob Storage
           href: functions-create-storage-blob-triggered-function.md
@@ -145,6 +145,8 @@
           href: functions-develop-vs.md
         - name: Vývoj s využitím základních nástrojů
           href: functions-run-local.md
+        - name: Vývoj s využitím IntelliJ IDEA
+          href: functions-create-maven-intellij.md
         - name: Správa připojení
           href: manage-connections.md
         - name: Zpracování chyb
