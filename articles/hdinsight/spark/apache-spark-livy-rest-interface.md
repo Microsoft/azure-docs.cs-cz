@@ -1,91 +1,88 @@
 ---
-title: Používat k odesílání, úlohy Spark clusteru v Azure HDInsight Livy Spark | Microsoft Docs
-description: Naučte se používat k odesílání úloh Spark vzdáleně do clusteru Azure HDInsight Apache Spark REST API.
-keywords: Apache spark rest api, livy spark
+title: Použití Sparku Livy odesílat úlohy do clusteru Spark v Azure HDInsight
+description: Zjistěte, jak použít rozhraní Apache Spark REST API k odeslání úloh Spark vzdáleně do clusteru Azure HDInsight.
 services: hdinsight
-documentationcenter: ''
 author: nitinme
+ms.author: nitinme
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
 ms.assetid: 2817b779-1594-486b-8759-489379ca907d
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/11/2017
-ms.author: nitinme
-ms.openlocfilehash: 29cf245a03b38be4f5396a3c83c966a27cf038f3
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.date: 07/18/2018
+ms.openlocfilehash: f2befaea436c29b43eead63a560836446075c89f
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31517773"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144821"
 ---
-# <a name="use-apache-spark-rest-api-to-submit-remote-jobs-to-an-hdinsight-spark-cluster"></a>Použití Apache Spark REST API vzdálené úlohy do clusteru HDInsight Spark
+# <a name="use-apache-spark-rest-api-to-submit-remote-jobs-to-an-hdinsight-spark-cluster"></a>Pomocí rozhraní Apache Spark REST API můžete odesílat vzdálené úlohy ke clusteru HDInsight Spark
 
-Další informace o použití Livy, Apache Spark REST API, které se používá k odesílání vzdálené úloh do clusteru Azure HDInsight Spark. Podrobnou dokumentaci najdete v tématu [ http://livy.incubator.apache.org/ ](http://livy.incubator.apache.org/).
+Další informace o použití Livy, Apache Spark REST API, které se používá k odeslání vzdálené úlohy do clusteru Azure HDInsight Spark. Podrobnou dokumentaci najdete v tématu [ http://livy.incubator.apache.org/ ](http://livy.incubator.apache.org/).
 
-Livy můžete použít ke spuštění interaktivních Spark nutný nebo odesílat dávkové úlohy můžou běžet na Spark. V tomto článku bude zmíněn pomocí Livy odesílat dávkové úlohy. Fragmenty kódu v tomto článku pomocí cURL provádět volání rozhraní REST API ke koncovému bodu Livy Spark.
+Livy můžete použít ke spuštění interaktivních Spark prostředí nebo odesílání úloh služby batch běžet ve Sparku. Tento článek pojednává o pomocí Livy odesílat úlohy služby batch. Fragmenty kódu v tomto článku používáme nástroj cURL k volání rozhraní REST API ke koncovému bodu Livy Spark.
 
 **Požadavky:**
 
-* Cluster Apache Spark v HDInsight. Pokyny najdete v tématu [clusterů vytvořit Apache Spark v Azure HDInsight](apache-spark-jupyter-spark-sql.md).
+* Cluster Apache Spark ve službě HDInsight. Pokyny najdete v tématu [Vytváření clusterů Apache Spark ve službě Azure HDInsight](apache-spark-jupyter-spark-sql.md).
 
-* [cURL](http://curl.haxx.se/). Tento článek používá cURL k ukazují, jak provádět volání rozhraní REST API proti clusteru služby HDInsight Spark.
+* [cURL](http://curl.haxx.se/). Tento článek používá cURL k předvedení jak provádět volání rozhraní REST API pro cluster HDInsight Spark.
 
-## <a name="submit-a-livy-spark-batch-job"></a>Odeslání Livy Spark dávkovou úlohu
-Před odesláním dávkovou úlohu, musíte nahrát jar aplikace v úložišti clusteru, který je přidružen ke clusteru. Můžete použít [ **AzCopy**](../../storage/common/storage-use-azcopy.md), nástroj příkazového řádku, tak. Existují různé klienty, které můžete použít k nahrání data. Můžete najít další informace o nich v [nahrávání dat pro úlohy Hadoop do HDInsight](../hdinsight-upload-data.md).
+## <a name="submit-a-livy-spark-batch-job"></a>Odeslat úlohu služby batch Livy Spark
+Před odesláním úlohy služby batch, musíte nahrát soubor jar aplikace v úložišti clusteru přidružené ke clusteru. Můžete k tomu použít nástroj příkazového řádku [**AzCopy**](../../storage/common/storage-use-azcopy.md). Existují různé klienty, které vám umožní nahrát data. Další informace najdete v tématu [Nahrání dat pro úlohy Hadoopu do služby HDInsight](../hdinsight-upload-data.md).
 
-    curl -k --user "<hdinsight user>:<user password>" -v -H <content-type> -X POST -d '{ "file":"<path to application jar>", "className":"<classname in jar>" }' 'https://<spark_cluster_name>.azurehdinsight.net/livy/batches'
+    curl -k --user "<hdinsight user>:<user password>" -v -H <content-type> -X POST -d '{ "file":"<path to application jar>", "className":"<classname in jar>" }' 'https://<spark_cluster_name>.azurehdinsight.net/livy/batches' -H "X-Requested-By: admin"
 
 **Příklady**:
 
-* Pokud je soubor jar v úložišti clusteru (WASB)
+* Pokud je soubor .JAR v úložišti clusteru (WASB)
   
-        curl -k --user "admin:mypassword1!" -v -H 'Content-Type: application/json' -X POST -d '{ "file":"wasb://mycontainer@mystorageaccount.blob.core.windows.net/data/SparkSimpleTest.jar", "className":"com.microsoft.spark.test.SimpleFile" }' "https://mysparkcluster.azurehdinsight.net/livy/batches"
-* Pokud chcete předat jako součást vstupní soubor jar název souboru a název třídy (v tomto příkladu vstup.txt)
+        curl -k --user "admin:mypassword1!" -v -H 'Content-Type: application/json' -X POST -d '{ "file":"wasb://mycontainer@mystorageaccount.blob.core.windows.net/data/SparkSimpleTest.jar", "className":"com.microsoft.spark.test.SimpleFile" }' "https://mysparkcluster.azurehdinsight.net/livy/batches" -H "X-Requested-By: admin"
+* Pokud chcete předat název souboru jar a classname jako součást vstupní soubor (v tomto příkladu input.txt)
   
-        curl -k  --user "admin:mypassword1!" -v -H "Content-Type: application/json" -X POST --data @C:\Temp\input.txt "https://mysparkcluster.azurehdinsight.net/livy/batches"
+        curl -k  --user "admin:mypassword1!" -v -H "Content-Type: application/json" -X POST --data @C:\Temp\input.txt "https://mysparkcluster.azurehdinsight.net/livy/batches" -H "X-Requested-By: admin"
 
-## <a name="get-information-on-livy-spark-batches-running-on-the-cluster"></a>Informace o Livy Spark dávek běžící v clusteru
+## <a name="get-information-on-livy-spark-batches-running-on-the-cluster"></a>Získejte informace o dávky Livy Spark spuštěné v clusteru
     curl -k --user "<hdinsight user>:<user password>" -v -X GET "https://<spark_cluster_name>.azurehdinsight.net/livy/batches"
 
 **Příklady**:
 
-* Pokud chcete načíst všechny dávky Livy Spark běžící v clusteru:
+* Pokud chcete načíst všechny listy Livy Spark spuštěné v clusteru:
   
-        curl -k --user "admin:mypassword1!" -v -X GET "https://mysparkcluster.azurehdinsight.net/livy/batches"
-* Pokud chcete načíst konkrétní dávky s danou ID dávky
+        curl -k --user "admin:mypassword1!" -v -X GET "https://mysparkcluster.azurehdinsight.net/livy/batches" 
+* Pokud chcete načíst konkrétní služby batch pomocí dané ID dávky
   
         curl -k --user "admin:mypassword1!" -v -X GET "https://mysparkcluster.azurehdinsight.net/livy/batches/{batchId}"
 
-## <a name="delete-a-livy-spark-batch-job"></a>Odstranit Livy Spark dávkovou úlohu
+## <a name="delete-a-livy-spark-batch-job"></a>Odstranit úlohu služby batch Livy Spark
     curl -k --user "<hdinsight user>:<user password>" -v -X DELETE "https://<spark_cluster_name>.azurehdinsight.net/livy/batches/{batchId}"
 
 **Příklad**:
 
     curl -k --user "admin:mypassword1!" -v -X DELETE "https://mysparkcluster.azurehdinsight.net/livy/batches/{batchId}"
 
-## <a name="livy-spark-and-high-availability"></a>Livy Spark a vysoká dostupnost
+## <a name="livy-spark-and-high-availability"></a>Livy Spark a vysoké dostupnosti
 Livy poskytuje vysokou dostupnost pro Spark úloh spuštěných v clusteru. Tady je několik příkladů.
 
-* Pokud službu Livy přestane fungovat po odeslání úlohy vzdáleně na clusteru Spark, úloha dál běžet na pozadí. Při zálohování Livy obnoví stav úlohy a sestavy zpátky.
-* Poznámkové bloky Jupyter pro HDInsight jsou zapnuté pomocí Livy v back-end. Pokud do poznámkového bloku běží úlohy Spark a získá restartována Livy, poznámkového bloku dál běžet buňky kódu. 
+* Pokud službu Livy přestane fungovat po odeslání úlohy vzdáleně ke clusteru Spark, úloha dál běžet na pozadí. Při zálohování Livy obnoví stav úlohy a sestavy ji zpět.
+* Poznámkové bloky Jupyter pro HDInsight využívají Livy v back-endu. Pokud poznámkového bloku běží úloha Sparku a získá restartována služba Livy, zůstane spuštěný buňky kódu poznámkového bloku. 
 
 ## <a name="show-me-an-example"></a>Zobrazit příklad
-V této části se podíváme na příklady použití Livy Spark k odeslání úlohy batch, sledovat průběh úlohy a poté jej odstraňte. Aplikace v tomto příkladu používáme je vyvinuté v článku [vytvořit samostatnou Scala aplikací a ke spuštění v clusteru HDInsight Spark](apache-spark-create-standalone-application.md). Tady postup předpokládá, že:
+V této části se podíváme na příklady se sparkem Livy k odeslání úlohy služby batch, sledovat průběh úlohy a pak ho odstraňte. Aplikace v tomto příkladu používáme je vyvinutý v tomto článku [vytvoření samostatné aplikace Scala a ke spuštění v clusteru HDInsight Spark](apache-spark-create-standalone-application.md). Tady postup předpokládá, že:
 
-* Zkopíruje přes jar aplikací mít již k účtu úložiště, který je přidružen ke clusteru.
-* Máte CuRL nainstalovaná na počítači, kde se pokoušíte tyto kroky.
+* Již zkopírovali jste přes jar aplikace k účtu úložiště přidruženého clusteru.
+* Máte nainstalovaný na počítači, ve kterém chcete tyto kroky CuRL.
 
 Proveďte následující kroky:
 
-1. Dejte nám nejdřív ověřte, zda Livy Spark je spuštěna v clusteru. Jsme to provést tím, že získáme seznam spuštěných dávky. Pokud používáte úlohu pomocí Livy poprvé, výstup by měl vrátit nula.
+1. Dejte nám prosím nejdřív ověřte, že Livy Spark běží v clusteru. Jsme to tak, že načítá se seznam spuštění dávky. Pokud používáte úlohu pomocí Livy poprvé, výstup by měl vrátit nula.
    
         curl -k --user "admin:mypassword1!" -v -X GET "https://mysparkcluster.azurehdinsight.net/livy/batches"
    
-    Měli byste obdržet výstup podobná následující fragment kódu:
+    Měl zobrazit výstup podobný následujícímu fragmentu kódu:
    
         < HTTP/1.1 200 OK
         < Content-Type: application/json; charset=UTF-8
@@ -97,13 +94,13 @@ Proveďte následující kroky:
         <
         {"from":0,"total":0,"sessions":[]}* Connection #0 to host mysparkcluster.azurehdinsight.net left intact
    
-    Všimněte si, jak uvádí poslední řádek ve výstupu **celkem: 0**, která navrhuje žádné spuštěné dávky.
+    Všimněte si, jak uvádí, že poslední řádek ve výstupu **celkem: 0**, takže je možné žádná spuštění dávek.
 
-2. Dejte nám teď odešlete dávkovou úlohu. Následující fragment kódu používá vstupní soubor (vstup.txt) jako parametry předat název jar a název třídy. Pokud používáte tyto kroky ze počítači se systémem Windows, pomocí vstupní soubor se o doporučený postup.
+2. Dejte nám odešlete úlohu služby batch. Následující fragment kódu používá vstupní soubor (input.txt) k předání názvu jar a názvu třídy jako parametry. Pokud používáte tyto kroky z počítače Windows, pomocí vstupního souboru je doporučený postup.
    
-        curl -k --user "admin:mypassword1!" -v -H "Content-Type: application/json" -X POST --data @C:\Temp\input.txt "https://mysparkcluster.azurehdinsight.net/livy/batches"
+        curl -k --user "admin:mypassword1!" -v -H "Content-Type: application/json" -X POST --data @C:\Temp\input.txt "https://mysparkcluster.azurehdinsight.net/livy/batches" -H "X-Requested-By: admin"
    
-    Parametry v souboru **vstup.txt** jsou definovány takto:
+    Parametry v souboru **input.txt** jsou definovány takto:
    
         { "file":"wasb:///example/jars/SparkSimpleApp.jar", "className":"com.microsoft.spark.example.WasbIOTest" }
    
@@ -120,9 +117,9 @@ Proveďte následující kroky:
         <
         {"id":0,"state":"starting","log":[]}* Connection #0 to host mysparkcluster.azurehdinsight.net left intact
    
-    Všimněte si, jak uvádí poslední řádek výstupu **stavu: spouštění**. Také uvádí, **id: 0**. Zde **0** je ID dávky.
+    Všimněte si, jak uvádí, že poslední řádek výstupu **stavu: spouští se**. Také říká, **id: 0**. Tady **0** je ID dávky.
 
-3. Nyní můžete načíst stav této konkrétní batch pomocí ID dávky.
+3. Nyní můžete načíst stav této konkrétní služby batch pomocí ID dávky.
    
         curl -k --user "admin:mypassword1!" -v -X GET "https://mysparkcluster.azurehdinsight.net/livy/batches/0"
    
@@ -138,9 +135,9 @@ Proveďte následující kroky:
         <
         {"id":0,"state":"success","log":["\t diagnostics: N/A","\t ApplicationMaster host: 10.0.0.4","\t ApplicationMaster RPC port: 0","\t queue: default","\t start time: 1448063505350","\t final status: SUCCEEDED","\t tracking URL: http://hn0-myspar.lpel1gnnvxne3gwzqkfq5u5uzh.jx.internal.cloudapp.net:8088/proxy/application_1447984474852_0002/","\t user: root","15/11/20 23:52:47 INFO Utils: Shutdown hook called","15/11/20 23:52:47 INFO Utils: Deleting directory /tmp/spark-b72cd2bf-280b-4c57-8ceb-9e3e69ac7d0c"]}* Connection #0 to host mysparkcluster.azurehdinsight.net left intact
    
-    Nyní ukazuje výstup **stavu: Úspěch**, který naznačuje, že úloha byla úspěšně dokončena.
+    Výstup teď zobrazují **stav: Úspěch**, takže je možné, že se úloha úspěšně dokončila.
 
-4. Pokud chcete, můžete nyní odstranit dávky.
+4. Pokud chcete, můžete nyní odstranit služby batch.
    
         curl -k --user "admin:mypassword1!" -v -X DELETE "https://mysparkcluster.azurehdinsight.net/livy/batches/0"
    
@@ -156,31 +153,31 @@ Proveďte následující kroky:
         <
         {"msg":"deleted"}* Connection #0 to host mysparkcluster.azurehdinsight.net left intact
    
-    Poslední řádek výstupu ukazuje, že dávka byla úspěšně odstraněna. Odstranění úlohy, když je spuštěná, také ukončí úlohu. Pokud odstraníte úlohu, která byla dokončena úspěšně, nebo jinak, odstraní informace o úlohách úplně.
+    Poslední řádek výstupu ukazuje, že dávka byla úspěšně odstraněna. Odstraňuje se úloha, když je spuštěn, ukončuje také úlohu. Pokud odstraníte úlohu, která byla dokončena úspěšně, nebo v opačném případě odstraní informace o úloze úplně.
 
-## <a name="using-livy-spark-on-hdinsight-35-clusters"></a>Pomocí Livy Spark v clusterech HDInsight 3.5
+## <a name="using-livy-spark-on-hdinsight-35-clusters"></a>Pomocí Livy Sparku na clusterech HDInsight 3.5
 
-Cluster HDInsight 3.5, ve výchozím nastavení, zakáže použití místní cesty souborů přístup ukázkových datových souborů nebo souborů JAR. Doporučujeme, abyste použili `wasb://` cesta místo toho k přístupu k JAR nebo vzorová data souborů z clusteru. Pokud chcete používat místní cestu, je nutné aktualizovat konfiguraci Ambari odpovídajícím způsobem. Postupujte následovně:
+Cluster HDInsight 3.5 ve výchozím nastavení, zakáže použití místní cesty souborů přístup ukázkových datových souborů nebo souborů JAR. Doporučujeme vám použít `wasb://` cesta místo pro přístup k kromě souborů JAR nebo ukázková data souborů z clusteru. Pokud chcete použít místní cestu, je nutné aktualizovat konfiguraci Ambari odpovídajícím způsobem. Postupujte následovně:
 
-1. Přejděte na portál Ambari pro cluster. Webové uživatelské rozhraní Ambari je k dispozici v clusteru HDInsight na https://**CLUSTERNAME**. azurehdidnsight.net, kde CLUSTERNAME představuje název clusteru.
+1. Přejděte na portál Ambari clusteru. Webové uživatelské rozhraní Ambari je k dispozici v clusteru HDInsight na https://**CLUSTERNAME**. azurehdidnsight.net, kde CLUSTERNAME představuje název vašeho clusteru.
 
-2. V levém navigačním, klikněte na **Livy**a potom klikněte na **konfigurací**.
+2. V levém navigačním panelu klikněte na **Livy**a potom klikněte na tlačítko **Configs**.
 
-3. V části **livy výchozí** přidejte název vlastnosti `livy.file.local-dir-whitelist` a jeho hodnotu nastavte **"/"** Pokud chcete povolit úplný přístup k systému souborů. Pokud chcete povolit přístup pouze pro konkrétního adresáře, zadejte cestu k tomuto adresáři jako hodnota.
+3. V části **livy výchozí** přidejte název vlastnosti `livy.file.local-dir-whitelist` a nastavte její hodnotu na **"/"** Pokud budete chtít povolit úplný přístup k systému souborů. Pokud chcete povolit přístup jenom pro konkrétní adresář, zadejte cestu k tomuto adresáři jako hodnotu.
 
-## <a name="submitting-livy-jobs-for-a-cluster-within-an-azure-virtual-network"></a>Odesílání úloh Livy pro cluster se v rámci virtuální sítě Azure
+## <a name="submitting-livy-jobs-for-a-cluster-within-an-azure-virtual-network"></a>Odesílání úloh Livy pro cluster v rámci virtuální sítě Azure
 
-Pokud se připojit ke clusteru HDInsight Spark z v rámci virtuální síť Azure, které mohou připojovat přímo k Livy v clusteru. V takovém případě je adresa URL pro koncový bod Livy `http://<IP address of the headnode>:8998/batches`. Zde **8998** je port, na kterém běží Livy na headnode clusteru. Další informace o přístup ke službám na neveřejný portech najdete v tématu [porty používané služby Hadoop v HDInsight](../hdinsight-hadoop-port-settings-for-services.md).
+Pokud se připojíte ke clusteru HDInsight Spark z v rámci virtuální sítě Azure, můžete přímo připojit k Livy v clusteru. V takovém případě je adresa URL pro koncový bod Livy `http://<IP address of the headnode>:8998/batches`. Tady **8998** je port, na kterém poběží Livy hlavního uzlu clusteru. Další informace o přístup ke službám na jiných veřejných portech najdete v tématu [porty používané služby Hadoop v HDInsight](../hdinsight-hadoop-port-settings-for-services.md).
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-Tady jsou některé problémy, které se mohou vyskytnout při pro vzdálené úlohy odeslání clustery Spark pomocí Livy.
+Tady jsou některé problémy, které se můžete setkat při používání Livy pro odeslání vzdálené úlohy do clusterů Spark.
 
-### <a name="using-an-external-jar-from-the-additional-storage-is-not-supported"></a>Použití externí jar z další úložiště není podporováno
+### <a name="using-an-external-jar-from-the-additional-storage-is-not-supported"></a>Použití externí jar z dodatečné úložiště se nepodporuje
 
-**Problém:** Pokud vaše úlohy Livy Spark odkazuje na externí jar z další úložiště účet přidružený ke clusteru, se nezdaří úlohy.
+**Problém:** Pokud vaše úloha Sparku Livy odkazuje na externí jar z účtu úložiště přidružené ke clusteru, úloha se nezdaří.
 
-**Řešení:** Ujistěte se, že je k dispozici v výchozí úložiště přidružený k clusteru HDInsight jar, kterou chcete použít.
+**Řešení:** Ujistěte se, že soubor jar, který chcete použít je k dispozici ve výchozím nastavení úložiště přidružené ke clusteru HDInsight.
 
 
 

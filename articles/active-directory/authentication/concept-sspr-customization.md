@@ -1,21 +1,21 @@
 ---
-title: Samoobslužné resetování hesla přizpůsobení – Azure Active Directory
+title: Přizpůsobení služby Azure AD samoobslužné resetování hesla
 description: Resetovat možnosti vlastního nastavení pro hesla pomocí samoobslužné služby Azure AD
 services: active-directory
 ms.service: active-directory
 ms.component: authentication
-ms.topic: article
-ms.date: 01/11/2018
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 23a2897142f5cba90513e8b79e4cd461f1dd25b7
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 70f36447270199545ac27cf27f87f971e34ef424
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39054586"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39162122"
 ---
 # <a name="customize-the-azure-ad-functionality-for-self-service-password-reset"></a>Přizpůsobení funkce služby Azure AD pro samoobslužné resetování hesla
 
@@ -24,8 +24,9 @@ Odborníci v oblasti IT, kteří chtějí nasadit samoobslužné resetování he
 ## <a name="customize-the-contact-your-administrator-link"></a>Přizpůsobit odkaz "Kontaktujte správce"
 
 I v případě, že není povolené samoobslužné resetování HESLA, mít uživatelé dál na portál pro resetování odkaz "Kontaktujte správce" na heslo. Pokud uživatel vybere tento odkaz je buď:
-   * E-mailem správci a požádá o pomoc při změně uživatelského hesla. 
-   * Odešle uživatelům na adresu URL, které určíte pro pomoc. 
+
+   * E-mailem správci a požádá o pomoc při změně uživatelského hesla.
+   * Odešle uživatelům na adresu URL, které určíte pro pomoc.
 
 Doporučujeme nastavit tento kontakt na e-mailovou adresu nebo web, který vaši uživatelé již používají pro dotazy na podporu.
 
@@ -45,9 +46,7 @@ Další informace o správce jiné role a postupy je přiřadit, naleznete v té
 
 Pokud vaše organizace nechce upozornit, že žádosti o resetování hesla správce, můžete povolit následující konfiguraci:
 
-* Povolte samoobslužné resetování hesla pro všechny koncové uživatele. Tato možnost je v části **resetování hesla** > **vlastnosti**.
-  
-  Pokud nechcete, aby uživatelům resetování vlastních hesel, můžete omezit rozsah přístupu k prázdnou skupinou. *Nedoporučujeme tuto možnost.*
+* Povolte samoobslužné resetování hesla pro všechny koncové uživatele. Tato možnost je v části **resetování hesla** > **vlastnosti**. Pokud nechcete, aby uživatelům resetování vlastních hesel, můžete omezit rozsah přístupu k prázdnou skupinou. *Nedoporučujeme tuto možnost.*
 * Přizpůsobení helpdesku odkaz umožňující zadat adresu URL webové nebo mailto: adresu, kterou mohou uživatelé získat pomoc. Tato možnost je v části **resetování hesla** > **přizpůsobení** > **vlastní technické podpory e-mailu nebo adresa URL**.
 
 ## <a name="customize-the-ad-fs-sign-in-page-for-sspr"></a>Přizpůsobení přihlašovací stránky služby AD FS pro samoobslužné resetování HESLA

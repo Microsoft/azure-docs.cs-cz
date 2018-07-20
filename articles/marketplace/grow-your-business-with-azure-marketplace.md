@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: edafc2e0c11f4395540081e4b09614f2beb70696
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: f1616f7a20fdd55b98b3bfb37973a783997e2eb0
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39115921"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39145236"
 ---
 # <a name="grow-your-business-on-marketplace"></a>Rozvíjejte své podnikání na marketplace 
 Po publikování vaší nabídky na AppSource nebo Azure Marketplace, můžete použít svůj výpis jako hlavní panel pro společné aktivity uvedení na trh (GTM) s Microsoftem. Řízení provozu do vaší nabídky na webu marketplace a péči o zákazníky marketplace potenciálních zákazníků, třeba jsou skvělé způsoby, jak posílit firemní růst. V tomto článku budeme sdílet mnoho marketingové osvědčené postupy a rozvíjejte své podnikání na marketplace.
@@ -215,7 +215,7 @@ Ke zvýšení úrovně nabídky nebo aplikace, použijte pro přístup k více v
 | Budou připravené společný prodej IP | Můžete mít nárok na IP společný prodej připravené programu, který umožňuje spolupracovat přímo s prodejci Microsoftu a dalšími partnery na cíl zákaznických příležitostí a plánování účtu. Vaše řešení, stane se viditelným pro prodejci Microsoftu v katalogu řešení prodejce. Prodejci Microsoftu jsou nízkou pro spolupráci a winning s vámi.<br /> Další informace o připravenost na společný prodej, včetně požadavky zakládající nárok, navštivte [podporovat vaše firma](https://partner.microsoft.com/reach-customers/promote-your-business). |
 
 
-# <a name="azure-partner-revenue-attribution"></a>Attribution výnosy partnerů Azure
+## <a name="azure-partner-customer-usage-attribution"></a>Attribution využití zákazníka partnerů Azure
 
 Jako partner softwaru pro Azure řešení vyžadují komponenty Azure nebo nasazuje přímo na infrastruktuře Azure.  V současné době při partnerského řešení Zákazník nasazuje a používá prostředky Azure, které jsou zřízené příslušného zákazníka, je těžké partnera k získání přehledu na stav tohoto nasazení a obtížně získat optická dopad na Azure růstu pro zarovnání s prodejním týmům Microsoftu a kredit ve výši programy partnera společnosti Microsoft.   
 
@@ -291,8 +291,6 @@ client = azure.mgmt.servicebus.ServiceBusManagementClient(**parameters)
 
 >To je třeba provést pro každého klienta, neexistuje žádné globální statické konfigurace (můžete provést objektu factory klienta k Ujistěte se, že každý klient dělá. 
 >[Další referenční informace](https://github.com/Azure/azure-cli/blob/7402fb2c20be2cdbcaa7bdb2eeb72b7461fbcc30/src/azure-cli-core/azure/cli/core/commands/client_factory.py#L70-L79)
-
-## <a name="registering-a-guid"></a>Registrace identifikátor GUID: 
 
 Jak označit nasazení pomocí prostředí Azure PowerShell nebo rozhraní příkazového řádku Azure: při nasazení prostředků prostřednictvím AzurePowerShell vaše identifikátor GUID můžete připojit pomocí následující metody:
 
@@ -398,11 +396,14 @@ Při nasazování náš software Microsoft bude možné Identifikujte instalace 
 
 Potřebujete pomoc, postupujte následujících kroků:
  1. Navštivte stránku podpory umístění [go.microsoft.com/fwlink/?linkid=844975](https://go.microsoft.com/fwlink/?linkid=844975)
- 2. Problémy s využití přidružení – vyberte typ problému: **Marketplace připojování** a kategorie: **Další** a potom klikněte na tlačítko **začít požadavek.**
-
-Pro problémy s přístupem k Azure Marketplace portál Cloud Partner – vyberte typ problému: **Marketplace připojování** a kategorie: **potíže při přístupu k** a potom klikněte na tlačítko **začít požadavek.**
+ 2. Problémy s využití přidružení – vyberte typ problému: **Marketplace připojování** a kategorie: **Další** a potom klikněte na tlačítko **začít požadavek.** 
+>[!Note]
+>Pro problémy s přístupem k Azure Marketplace portál Cloud Partner – vyberte typ problému: **Marketplace připojování** a kategorie: **potíže při přístupu k** a potom klikněte na tlačítko **začít požadavek.**
  3. Vyplňte požadovaná pole na další stránce a klikněte na tlačítko **pokračovat.**
  4. Vyplňte pole volný text na další stránku.  
+ 
+
+
  
 >[!Important] 
 >Vyplňte název incidentu s **"Sledování využití ISV"** a popište svůj problém podrobně v poli velký volný text po.  Dokončete formuláři a klikněte na tlačítko **odeslat**.

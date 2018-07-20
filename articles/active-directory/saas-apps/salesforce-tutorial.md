@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2018
+ms.date: 07/19/2018
 ms.author: jeedes
-ms.openlocfilehash: 64b94baeaede9b05e953b69324648c63d97cea8e
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: a453e2d16edecda9753c2940a745b260a3a2b893
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39045434"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39160259"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-salesforce"></a>Kurz: Integrace Azure Active Directory se Salesforce
 
@@ -60,14 +60,14 @@ Pokud chcete nakonfigurovat integraci Salesforce do služby Azure AD, budete mus
 
 **Chcete-li přidat z Galerie služby Salesforce, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory][1]
 
 2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![V okně podnikové aplikace][2]
-    
+
 3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Tlačítko nové aplikace][3]
@@ -103,26 +103,26 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     ![Nakonfigurovat jednotné přihlašování – odkaz][4]
 
 2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
- 
+
     ![Jednotné přihlašování – dialogové okno](./media/salesforce-tutorial/tutorial_salesforce_samlbase.png)
 
 3. Na **Salesforce domény a adresy URL** části, proveďte následující kroky:
 
     ![Salesforce domény a adresy URL jednotného přihlašování – informace](./media/salesforce-tutorial/tutorial_salesforce_url.png)
-    
+
     a. V **přihlašovací adresa URL** textového pole zadejte hodnotu pomocí následujícího vzorce:
-    
+
     Účet organizace: `https://<subdomain>.my.salesforce.com`
 
     Vývojářský účet: `https://<subdomain>-dev-ed.my.salesforce.com`
-    
+
     b. V **identifikátor** textového pole zadejte hodnotu pomocí následujícího vzorce:
-    
+
     Účet organizace: `https://<subdomain>.my.salesforce.com`
 
     Vývojářský účet: `https://<subdomain>-dev-ed.my.salesforce.com`
-    
-    > [!NOTE] 
+
+    > [!NOTE]
     > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty se skutečné přihlašovací adresu URL a identifikátor. Kontakt [tým podpory klient Salesforce](https://help.salesforce.com/support) k získání těchto hodnot.
 
 4. Na **podpisový certifikát SAML** klikněte na tlačítko **certifikát** a uložte soubor certifikátu v počítači.
@@ -170,14 +170,14 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     b. V **vystavitele** pole, vložte hodnotu **SAML Entity ID**, který jste zkopírovali z portálu Azure portal.
 
     c. V **textového pole Entity Id**, zadejte název domény vaší služby Salesforce pomocí následujícího vzorce:
-      
+
       * Účet organizace: `https://<subdomain>.my.salesforce.com`
       * Vývojářský účet: `https://<subdomain>-dev-ed.my.salesforce.com`
-      
+
     d. Nahrát **certifikát poskytovatele Identity**, klikněte na tlačítko **zvolit soubor** Procházet a vyberte soubor certifikátu, který jste si stáhli z webu Azure portal.
 
     e. Jako **typ Identity SAML**, zvolte jednu z následujících možností:
-    
+
       * Vyberte **kontrolní výraz obsahuje uživatelské jméno uživatele Salesforce**, pokud uživatelské jméno Salesforce uživatele se předává v kontrolní výraz SAML
 
       * Vyberte **kontrolní výraz obsahuje ID federace z objektu uživatele**, pokud je předávána federace z objektu uživatele v kontrolní výraz SAML
@@ -189,7 +189,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     g. Pro **poskytovatele inicioval žádost o vazbu služby**vyberte **přesměrování protokolu HTTP**.
 
     h. V **přihlašovací adresa URL zprostředkovatele Identity** textového pole vložte hodnotu **jednotné přihlašování – adresa URL služby**, který jste zkopírovali z portálu Azure portal
-    
+
     i. Nakonec klikněte na tlačítko **Uložit** SAML jednotné přihlašování – nastavení použijte.
 
 14. Na levém navigačním podokně v Salesforce, klikněte na tlačítko **nastavení společnosti** související rozbalíte, a pak klikněte na **Moje doména**.
@@ -200,7 +200,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Konfigurace jednotného přihlašování](./media/salesforce-tutorial/sf-edit-auth-config.png)
 
-16. V **konfigurace ověřování** části, zkontrolujte **přihlašovací stránku** jako **ověřování Provisioning** Konfigurace jednotného přihlašování SAML, a pak klikněte na tlačítko  **Uložit**.
+16. V **konfigurace ověřování** části, zkontrolujte **AzureSSO** jako **ověřování Provisioning** Konfigurace jednotného přihlašování SAML, a pak klikněte na tlačítko **uložit** .
 
     ![Konfigurace jednotného přihlašování](./media/salesforce-tutorial/sf-auth-config.png)
 

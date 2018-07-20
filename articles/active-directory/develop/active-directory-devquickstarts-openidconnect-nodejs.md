@@ -17,12 +17,12 @@ ms.date: 04/20/2018
 ms.author: celested
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 7d9b8a740c331a73ac66398be801ba3878312969
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 7aa48b65423db2a3af032ed64d9d571fa603668d
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969074"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144750"
 ---
 # <a name="azure-ad-nodejs-web-app-getting-started"></a>Azure AD webová aplikace v Node.js Začínáme
 Tady můžeme použít Passport:
@@ -62,7 +62,10 @@ Dokončená aplikace je k dispozici na konci tohoto kurzu také.
 
 6. Až dokončíte registraci, Azure AD přiřadí vaší aplikaci jedinečné ID. Tuto hodnotu budete potřebovat v dalších částech, tedy zkopírujte ho ze stránky aplikace.
 7. Z **nastavení** -> **vlastnosti** stránce pro vaši aplikaci, aktualizujte identifikátor URI ID aplikace. **Identifikátor ID URI aplikace** je jedinečný identifikátor pro vaši aplikaci. Tato konvence je určený formát `https://<tenant-domain>/<app-name>`, například: `https://contoso.onmicrosoft.com/my-first-aad-app`.
-8. Vytvoření tajného klíče, postupujte podle kroku 4 v [přidat přihlašovací údaje aplikací nebo oprávnění pro přístup k webovým rozhraním API](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications#to-add-application-credentials-or-permissions-to-access-web-apis).
+
+8. Z **nastavení** -> **adresy URL odpovědí** stránce pro vaši aplikaci, přidejte adresu URL do přihlašovací adresu URL z kroku 5 a klikněte na Uložit.
+
+9. Vytvoření tajného klíče, postupujte podle kroku 4 v [přidat přihlašovací údaje aplikací nebo oprávnění pro přístup k webovým rozhraním API](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications#to-add-application-credentials-or-permissions-to-access-web-apis).
 
    > [!IMPORTANT]
    > Zkopírujte hodnotu klíče aplikace. Jedná se o hodnotu pro `clientSecret`, které budete potřebovat pro **kroku 3** níže. 
@@ -91,7 +94,7 @@ Jsme zde, nakonfigurujte Express pro použití ověřovacího protokolu OpenID C
 
   * `clientID` Je **Id aplikace** přiřazené vaší aplikaci v portálu registrace.
 
-  * `returnURL` Je **identifikátor Uri pro přesměrování** , kterou jste zadali v portálu.
+  * `returnURL` Je **adresy URL odpovědi** , kterou jste zadali v portálu.
 
   * `clientSecret` Je tajný kód, který jste vygenerovali na portálu.
 
