@@ -8,12 +8,12 @@ ms.service: app-service
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: sewatson
-ms.openlocfilehash: e795a6c5f76fb8d40c7e6778555de619d00b3a41
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: c01fcc7e69cf5af26b127519f183062ccf4923cc
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31600896"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39172740"
 ---
 # <a name="app-service-documentation"></a>Dokumentace ke službě App Service
 Azure App Service umožňuje vytvářet a hostovat webové aplikace v programovacím jazyce podle vašeho výběru, aniž by bylo potřeba zabývat se správou infrastruktury, jazykem nebo modulem runtime webové architektury. Nabízí automatické škálování a vysokou dostupnost, podporuje systémy Windows a Linux a umožňuje automatizované nasazení z Githubu, Visual studio Team Services nebo libovolného úložiště Git. Naučte se používat službu Azure App Service prostřednictvím našich šablon Rychlý start, kurzů a ukázek.
@@ -29,7 +29,7 @@ Jak nasadit první aplikaci do cloudu pomocí App Service pro Web Apps:
 - [Node.js](/azure/app-service/app-service-web-get-started-nodejs)
 - [PHP](/azure/app-service/app-service-web-get-started-php)
 - [Java](/azure/app-service/app-service-web-get-started-java)
-- [Python](/azure/app-service/app-service-web-get-started-python)
+- [Python](/azure/app-service/containers/quickstart-python)
 - [HTML](/azure/app-service/app-service-web-get-started-html)
 
 ## <a name="step-by-step-tutorials"></a>Podrobné kurzy
@@ -40,7 +40,7 @@ Zjistěte, jak nasadit, spravovat a monitorovat zabezpečené webové aplikace v
   - [.NET s Azure SQL DB](/azure/app-service/app-service-web-tutorial-dotnet-sqldatabase)
   - [Node.js s databází MongoDB](/azure/app-service/app-service-web-tutorial-nodejs-mongodb-app)
   - [Java s MySQL](/app-service/app-service-web-tutorial-java-mysql)
-  - [Python sh PostgreSQL](/app-service/app-service-web-tutorial-python-postgresql)
+  - [Python sh PostgreSQL](/app-service/containers/tutorial-docker-python-postgresql-app)
 - [Mapování existující vlastní domény na aplikaci](/azure/app-service/app-service-web-tutorial-custom-domain)
 - [Vytvoření vazby stávajícího certifikátu SSL na vaši aplikaci](/azure/app-service/app-service-web-tutorial-custom-SSL)
 

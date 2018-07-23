@@ -3,10 +3,9 @@
 | Maximální počet uzlů na cluster | 100 |
 | Maximální počet podů na uzel ([základní síťové funkce s využitím Kubenet][basic-networking]) | 110 |
 | Maximální počet podů na uzel ([pokročilé síťové funkce s využitím Azure CNI][advanced-networking]) | 30<sup>1</sup> |
-| Maximální počet clusterů na předplatné | 20<sup>2</sup> |
+| Maximální počet clusterů na předplatné | 100 |
 
 <sup>1</sup> Tato hodnota se dá přizpůsobit nasazením šablony ARM. Příklady najdete [tady][arm-deployment-example].<br />
-<sup>2</sup> Pokud si chcete vyžádat zvýšení limitu, vytvořte [žádost o podporu Azure][azure-support].<br />
 
 <!-- LINKS - Internal -->
 [basic-networking]: ../articles/aks/networking-overview.md#basic-networking

@@ -23,8 +23,6 @@
       href: app-service-web-get-started-php.md
     - name: Vytvoření aplikace v Javě
       href: app-service-web-get-started-java.md
-    - name: Vytvoření aplikace v Pythonu
-      href: app-service-web-get-started-python.md
     - name: Vytvoření webu ve statickém HTML
       href: app-service-web-get-started-html.md
 - name: Kurzy
@@ -41,8 +39,6 @@
           href: app-service-web-tutorial-nodejs-mongodb-app.md
         - name: Java s MySQL
           href: app-service-web-tutorial-java-mysql.md
-        - name: Python s PostgreSQL
-          href: app-service-web-tutorial-python-postgresql.md
     - name: Zabezpečený přístup k SQL DB
       href: app-service-web-tutorial-connect-msi.md
     - name: Hostování rozhraní RESTful API

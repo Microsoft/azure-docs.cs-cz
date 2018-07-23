@@ -19,6 +19,8 @@
       href: quickstart-nodejs.md
     - name: Vytvoření aplikace v Javě
       href: quickstart-java.md
+    - name: Vytvoření aplikace v Pythonu
+      href: quickstart-python.md
     - name: Vytvoření aplikace v Ruby
       href: quickstart-ruby.md
     - name: Vytvoření aplikace v Dockeru/Go

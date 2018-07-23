@@ -12,12 +12,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 05/14/2018
   ms.author: sethm
-  ms.openlocfilehash: 481a11b284f0bfba73fe8a44b640eac0cdc6f833
-  ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+  ms.openlocfilehash: 84ef019b64bba2d5b581593ae293ea612ecb4bc4
+  ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 07/02/2018
-  ms.locfileid: "37344059"
+  ms.lasthandoff: 07/20/2018
+  ms.locfileid: "39170928"
 abstract:
   description: Azure Event Hubs je platforma pro streamování dat a služba pro zpracování událostí, která je schopná přijmout a zpracovat miliony událostí za sekundu. Pro publikování událostí tato služba podporuje protokoly HTTPS a AMQP 1.0 a ekosystém Apache Kafka.
   aside:
@@ -56,7 +56,7 @@ sections:
   - type: list
     style: unordered
     items:
-    - html: <a href="https://review.docs.microsoft.com/en-us/azure/event-hubs/event-hubs-tutorial-visualize-anomalies?branch=release-mvc-event-hubs">Čtení streamu dat Event Hubs s využitím Azure Stream Analytics a vizualizace anomálií</a>
+    - html: <a href="https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-tutorial-visualize-anomalies">Čtení streamu dat Event Hubs s využitím Azure Stream Analytics a vizualizace anomálií</a>
 - title: Bezplatné školicí video od Pluralsightu
   items:
   - type: list

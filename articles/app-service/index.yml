@@ -14,12 +14,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 01/23/2017
   ms.author: carolz
-  ms.openlocfilehash: 1a4c6399f0c67df70781142db7c09a4d04d37991
-  ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+  ms.openlocfilehash: fd9ef52162933ae054263f42ca7498e24b1d863b
+  ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 06/28/2018
-  ms.locfileid: "37080907"
+  ms.lasthandoff: 07/20/2018
+  ms.locfileid: "39172649"
 abstract:
   description: Azure Web Apps umožňuje vytvářet a hostovat webové aplikace v programovacím jazyce podle vašeho výběru, aniž by bylo potřeba zabývat se správou infrastruktury. Nabízí automatické škálování a vysokou dostupnost, podporuje systémy Windows a Linux a umožňuje automatizované nasazení z Githubu, Visual studio Team Services nebo libovolného úložiště Git. Naučte se používat Azure Web Apps prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek.
   aside:
@@ -55,10 +55,6 @@ sections:
         src: https://docs.microsoft.com/azure/app-service/media/index/logo_java.svg
       text: Java
       href: https://docs.microsoft.com/azure/app-service/app-service-web-get-started-java
-    - image:
-        src: https://docs.microsoft.com/azure/app-service/media/index/logo_python.svg
-      text: Python
-      href: https://docs.microsoft.com/azure/app-service/app-service-web-get-started-python
     - image:
         src: https://docs.microsoft.com/azure/app-service/media/index/logo_html5.svg
       text: HTML
