@@ -8,12 +8,12 @@ ms.date: 04/29/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: f16fdfca704b8f8cb175de637ad7f3ef143d3ed7
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 10617c129212d8196897af750c02647f0086c8e5
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38968951"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39185886"
 ---
 # <a name="visualize-remote-monitoring-data-with-time-series-insights"></a>Vizualizace vzdáleného monitorování pomocí služby Time Series Insights
 
@@ -23,7 +23,7 @@ Operátor chtít rozšířit mimo pole dat vizualizaci pomocí vzdáleného moni
 
 Pokud chcete dokončit tento návod, budete potřebovat následující:
 
-* [Nasazení řešení vzdáleného monitorování předkonfigurované](iot-accelerators-remote-monitoring-deploy.md)
+* [Nasazení řešení vzdáleného monitorování předkonfigurované](quickstart-remote-monitoring-deploy.md)
 
 ## <a name="create-a-consumer-group"></a>Vytvořit skupinu uživatelů
 
@@ -60,7 +60,7 @@ Azure Time Series Insights je plně spravovaná služba pro analýzy, ukládán�
     | Umístění | Používáme **USA – východ**. Vytvořte prostředí ve stejné oblasti jako vaše řešení vzdálené monitorování. |
     | Skladová jednotka (SKU) |**S1** |
     | Kapacita | **1** |
-    | Připnutí na řídicí panel | **Ano** |
+    | Připnout na řídicí panel | **Ano** |
 
     ![Vytvoření služby Time Series Insights](./media/iot-accelerators-time-series-insights/new-time-series-insights-create.png)
 

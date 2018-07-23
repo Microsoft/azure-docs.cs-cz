@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 02/23/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: f8639cbb5c7ba86b4786f3d0b913d64bad59ad66
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: f0611662dfb0ad2e15f87bbe5ec5559e7d8da57d
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917512"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39185716"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory bezproblémové jednotné přihlašování: rychlý start
 
@@ -140,7 +140,7 @@ Ujistěte se, že počítač s Mac OS připojený ke službě AD. Pokyny pro př
 
 #### <a name="google-chrome-all-platforms"></a>Google Chrome (všechny platformy)
 
-Pokud je nutné přepsat [AuthNegotiateDelegateWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthNegotiateDelegateWhitelist) nebo [AuthServerWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthServerWhitelist) nastavení zásad ve vašem prostředí, ujistěte se, že můžete přidat adresu URL služby Azure AD (https://autologon.microsoftazuread-sso.com) k nim také.
+Pokud mají přepsat [AuthNegotiateDelegateWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthNegotiateDelegateWhitelist) nebo [AuthServerWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthServerWhitelist) nastavení zásad ve vašem prostředí, ujistěte se, že můžete přidat adresu URL služby Azure AD (https://autologon.microsoftazuread-sso.com) k nim také.
 
 #### <a name="google-chrome-mac-os-only"></a>Google Chrome (pouze Mac OS)
 

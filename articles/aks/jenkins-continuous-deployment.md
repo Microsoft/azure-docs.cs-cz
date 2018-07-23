@@ -1,6 +1,6 @@
 ---
-title: Průběžné nasazování volaných s Kubernetes ve službě Azure Kubernetes Service
-description: Jak automatizovat proces průběžné nasazování s volaných k nasazení a upgrade kontejnerizované aplikace na Kubernetes ve službě Azure Kubernetes Service
+title: Průběžné nasazování Jenkins s využitím Kubernetes ve službě Azure Kubernetes
+description: Jak automatizovat proces průběžného nasazování pomocí Jenkinse k nasazení a upgrade kontejnerizované aplikace v Kubernetes ve službě Azure Kubernetes
 services: container-service
 author: iainfoulds
 manager: jeconnoc
@@ -9,42 +9,42 @@ ms.topic: article
 ms.date: 03/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 84baf01ce6eeed8dc569d7a856189aefba788126
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 246943b7e3df955394a6a79f9b3130633fe4ec50
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37096471"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39186609"
 ---
-# <a name="continuous-deployment-with-jenkins-and-azure-kubernetes-service"></a>Průběžné nasazování pomocí volaných a Kubernetes služby Azure
+# <a name="continuous-deployment-with-jenkins-and-azure-kubernetes-service"></a>Průběžné nasazování pomocí Jenkinse a Azure Kubernetes Service
 
-Tento dokument ukazuje, jak nastavit průběžné nasazování základní pracovní postup mezi volaných a cluster Azure Kubernetes služby (AKS).
+Tento dokument ukazuje, jak nastavit průběžné nasazování základní pracovní postup mezi Jenkins a cluster Azure Kubernetes Service (AKS).
 
-Příklad pracovního postupu zahrnuje následující kroky:
+Ukázkový pracovní postup zahrnuje následující kroky:
 
 > [!div class="checklist"]
-> * Nasaďte aplikaci Azure hlas ke svému clusteru Kubernetes.
-> * Aktualizujte kód aplikace Azure hlas a push na Githubu úložiště, které zahájí proces průběžné nasazování.
-> * Volaných provede klonování úložiště a vytvoří novou bitovou kopii kontejnerů aktualizovaným kódem.
-> * Tuto bitovou kopii se posune do Azure kontejneru registru (ACR).
-> * Aplikace běžící v clusteru AKS se aktualizuje s novou bitovou kopii kontejneru.
+> * Nasazení aplikace Azure vote k vašemu clusteru Kubernetes.
+> * Aktualizujte kód aplikace Azure vote a vložit do úložiště GitHub, které zahájí proces průběžného nasazování.
+> * Jenkins naklonuje úložiště a sestaví novou image kontejneru s aktualizovaným kódem.
+> * Tato image se vloží do Azure Container Registry (ACR).
+> * Aplikace spuštěné v clusteru AKS je aktualizována s novou image kontejneru.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Aby bylo možné dokončit kroky v tomto článku potřebujete následující položky.
+Abyste mohli dokončit kroky v tomto článku budete potřebovat následující položky.
 
-- Základní znalosti Kubernetes, Git, CI/CD a kontejner Azure registru (ACR).
-- [Clusteru Azure Kubernetes služby (AKS)] [ aks-quickstart] a [AKS pověření nakonfigurované] [ aks-credentials] ve vývojovém systému.
-- [Registru Azure kontejneru registru (ACR)][acr-quickstart], název ACR přihlášení serveru a [ACR pověření] [ acr-authentication] nabízení a vyžadování přístup.
-- Azure CLI nainstalován ve vývojovém systému.
-- Docker nainstalován ve vývojovém systému.
-- Účet GitHub [Githubu osobní přístupový token][git-access-token]a Git klient nainstalován na váš vývojový systém.
+- Základní znalosti o Kubernetes, Git, CI/CD a Azure Container Registry (ACR).
+- [Cluster Azure Kubernetes Service (AKS)] [ aks-quickstart] a [nakonfigurované přihlašovací údaje AKS] [ aks-credentials] ve vývojovém systému.
+- [Registr Azure Container Registry (ACR)][acr-quickstart], název přihlašovacího serveru ACR a [přihlašovací údaje služby ACR] [ acr-authentication] push a pull přístup.
+- Azure CLI nainstalované ve vývojovém systému.
+- Docker nainstalovaný ve vývojovém systému.
+- Účet GitHub [osobní přístupový token Githubu][git-access-token]a klient Git ve vývojovém systému nainstalovaná.
 
 ## <a name="prepare-application"></a>Příprava aplikace
 
-V tomto dokumentu aplikace Azure hlas obsahuje webové rozhraní hostované v jedné nebo více pracovními stanicemi soustředěnými kolem a druhý pod hostování Redis pro dočasná data úložiště.
+V tomto dokumentu aplikace Azure vote obsahuje webové rozhraní hostovaným v jeden nebo více podů a druhý pod hostování pro ukládání dočasných dat Redis.
 
-Před vytvořením volaných / AKS integrace připravit a nasadit aplikaci Azure hlas AKS clusteru. Považujte jej za verze jedna aplikace.
+Před vytvořením Jenkinse / integrace AKS, přípravě a nasazení aplikace Azure vote ke svému clusteru AKS. Představte si to jako verze jedna aplikace.
 
 Rozvětvení následující úložiště GitHub.
 
@@ -52,7 +52,7 @@ Rozvětvení následující úložiště GitHub.
 https://github.com/Azure-Samples/azure-voting-app-redis
 ```
 
-Po vytvoření rozvětvení naklonujte váš vývojový systém. Ujistěte se, že používáte adresu URL vašeho rozvětvení, při klonování tohoto úložiště.
+Po vytvoření forku, naklonujte ho váš vývojový systém. Ujistěte se, že používáte adresu URL vašeho forku, při klonování toto úložiště.
 
 ```bash
 git clone https://github.com/<your-github-account>/azure-voting-app-redis.git
@@ -64,13 +64,13 @@ Změňte adresáře tak, abyste pracovali v naklonovaném adresáři.
 cd azure-voting-app-redis
 ```
 
-Spustit `docker-compose.yaml` soubor vytvořit `azure-vote-front` kontejneru image a spuštění aplikace.
+Spustit `docker-compose.yaml` souboru se má vytvořit `azure-vote-front` image kontejneru a spuštění aplikace.
 
 ```bash
 docker-compose up -d
 ```
 
-Po dokončení použít [imagí dockeru] [ docker-images] příkazu zobrazte vytvořené bitové kopie.
+Po dokončení [imagí dockeru] [ docker-images] příkazu zobrazte vytvořenou image.
 
 Všimněte si, že se stáhly nebo vytvořily tři image. Image `azure-vote-front` obsahuje aplikaci a jako základ využívá image `nginx-flask`. Image `redis` slouží ke spuštění instance Redis.
 
@@ -83,29 +83,29 @@ redis                        latest     a1b99da73d05        7 days ago          
 tiangolo/uwsgi-nginx-flask   flask      788ca94b2313        9 months ago        694MB
 ```
 
-Získat serveru ACR přihlášení s [az acr seznamu] [ az-acr-list] příkaz. Nezapomeňte aktualizovat název skupiny prostředků se skupinou prostředků hostování vaší ACR registru.
+Získat přihlašovacího serveru ACR s [az acr list] [ az-acr-list] příkazu. Nezapomeňte aktualizovat název skupiny prostředků se skupinou prostředků, který je hostitelem vašeho registru ACR.
 
 ```azurecli
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
 ```
 
-Použití [docker značka] [ docker-tag] příkaz k označení bitové kopie s přihlašovací jméno serveru a číslo verze `v1`.
+Použití [docker tag] [ docker-tag] příkaz k označení image s názvem přihlašovacího serveru a číslo verze `v1`.
 
 ```bash
 docker tag azure-vote-front <acrLoginServer>/azure-vote-front:v1
 ```
 
-Aktualizujte hodnotu ACR přihlášení serveru se název serveru ACR přihlášení a push `azure-vote-front` bitovou kopii do registru.
+Aktualizujte hodnotu ACR login server název přihlašovacího serveru ACR a nabízených oznámení `azure-vote-front` image do registru.
 
 ```bash
 docker push <acrLoginServer>/azure-vote-front:v1
 ```
 
-## <a name="deploy-application-to-kubernetes"></a>Nasaďte aplikaci do Kubernetes
+## <a name="deploy-application-to-kubernetes"></a>Nasazení aplikace do Kubernetes
 
-Kubernetes, může být soubor manifestu v kořenovém úložišti Azure hlas a slouží k nasazení aplikací do clusteru Kubernetes.
+Může být soubor manifestu Kubernetes najít v kořenovém adresáři úložiště Azure vote a slouží k nasazení aplikace do clusteru Kubernetes.
 
-Nejdřív aktualizovat **azure-vote-all-in-one-redis.yaml** souboru manifestu se umístění vašeho ACR registru. V každém textovém editoru otevřete soubor a nahraďte `microsoft` s název ACR přihlášení serveru. Tuto hodnotu najdete na řádku **47** souboru manifestu.
+Nejprve aktualizovat **azure-vote-all-in-one-redis.yaml** soubor manifestu se umístění vašeho registru ACR. Pomocí libovolného textového editoru otevřete soubor a nahradit `microsoft` použijte název přihlašovacího serveru ACR. Tuto hodnotu najdete na řádku **47** souboru manifestu.
 
 ```yaml
 containers:
@@ -113,13 +113,13 @@ containers:
   image: microsoft/azure-vote-front:v1
 ```
 
-Pak pomocí [kubectl použít] [ kubectl-apply] příkaz ke spuštění aplikace. Tento příkaz analyzuje soubor manifestu a vytvoří definované objekty Kubernetes.
+Pak pomocí [použití kubectl] [ kubectl-apply] příkaz ke spuštění aplikace. Tento příkaz analyzuje soubor manifestu a vytvoří definované objekty Kubernetes.
 
 ```bash
 kubectl apply -f azure-vote-all-in-one-redis.yaml
 ```
 
-A [Kubernetes služby] [ kubernetes-service] se vytvoří vystavit aplikace k Internetu. Tento proces může trvat několik minut.
+A [služby Kubernetes] [ kubernetes-service] se zveřejnit aplikaci na Internetu. Tento proces může trvat několik minut.
 
 Pomocí příkazu [kubectl get service][kubectl-get] s argumentem `--watch` můžete sledovat průběh.
 
@@ -143,18 +143,21 @@ Pokud se chcete na aplikaci podívat, přejděte na externí IP adresu.
 
 ![Obrázek clusteru Kubernetes v Azure](media/aks-jenkins/azure-vote-safari.png)
 
-## <a name="deploy-jenkins-to-vm"></a>Nasazení volaných k virtuálnímu počítači
+## <a name="deploy-jenkins-to-vm"></a>K virtuálnímu počítači. nasazení Jenkinse
 
-Skript byl předem vytvořený k nasazení virtuálního počítače, konfigurovat přístup k síti a dokončení základní instalace volaných. Kromě toho skript zkopíruje konfiguračního souboru Kubernetes z váš vývojový systém volaných systému. Tento soubor se používá pro ověřování mezi volaných a AKS clusteru.
+Skript se předem vytvořený k nasazení virtuálního počítače, konfigurovat přístup k síti a dokončení základní instalace Jenkinse. Kromě toho skript zkopíruje konfigurační soubor Kubernetes z vývojového systému k systému Jenkins. Tento soubor slouží k ověřování mezi Jenkins a clusteru AKS.
 
-Spusťte následující příkazy ke stažení a spuštění skriptu. Následující adresu URL lze také zkontrolovat obsah skriptu.
+Spusťte následující příkazy ke stažení a spuštění skriptu. Níže uvedenou adresu URL je také možné zkontrolovat obsah skriptu.
+
+> [!WARNING]
+> Tento ukázkový skript je pro účely ukázky k rychlému zřízení prostředí Jenkins, která běží na Virtuálním počítači Azure. Ke konfiguraci virtuálního počítače a pak zobrazí požadované přihlašovací údaje používá rozšíření vlastních skriptů Azure. Vaše *~/.kube/config* je zkopírován do virtuálního počítače s Jenkinsem.
 
 ```console
 curl https://raw.githubusercontent.com/Azure-Samples/azure-voting-app-redis/master/jenkins-tutorial/deploy-jenkins-vm.sh > azure-jenkins.sh
 sh azure-jenkins.sh
 ```
 
-Po dokončení skriptu vypíše adresu serveru volaných jako dobře klíč k odemknutí volaných. Přejděte na adresu URL, zadejte klíč a následující na obrazovce zobrazí výzvu k dokončení konfigurace volaných.
+Po dokončení skriptu vypíše adresu pro Jenkins server jako dobře klíč k odemknutí Jenkinse. Přejděte na adresu URL, zadejte klíč a po na obrazovce zobrazí výzvu k dokončení konfigurace Jenkinse.
 
 ```console
 Open a browser to http://52.166.118.64:8080
@@ -162,71 +165,71 @@ Enter the following to Unlock Jenkins:
 667e24bba78f4de6b51d330ad89ec6c6
 ```
 
-## <a name="jenkins-environment-variables"></a>Proměnné prostředí volaných
+## <a name="jenkins-environment-variables"></a>Proměnné prostředí Jenkins
 
-Proměnné prostředí volaných slouží k uložení název serveru přihlášení Azure kontejneru registru (ACR). Tato proměnná se odkazuje během úlohu volaných průběžné nasazování.
+Proměnná prostředí Jenkins se používá k uložení název přihlašovacího serveru služby Azure Container Registry (ACR). Tato proměnná odkazuje během úlohy průběžné nasazování Jenkins.
 
-Když na portál pro správu volaných klikněte na tlačítko **spravovat volaných** > **nakonfigurujte systém**.
+Na portálu pro správu Jenkinse, klikněte na tlačítko **spravovat Jenkins** > **konfigurovat systém**.
 
-V části **vlastnosti globálních**, vyberte **proměnné prostředí**a přidejte proměnná s názvem `ACR_LOGINSERVER` a hodnotu serveru ACR přihlášení.
+V části **globální vlastnosti**vyberte **proměnné prostředí**a přidat proměnnou s názvem `ACR_LOGINSERVER` a hodnota přihlašovacího serveru ACR.
 
-![Proměnné prostředí volaných](media/aks-jenkins/env-variables.png)
+![Proměnné prostředí Jenkins](media/aks-jenkins/env-variables.png)
 
-Po dokončení klikněte na tlačítko **Uložit** na stránce konfigurace volaných.
+Jakmile budete hotovi, klikněte na tlačítko **Uložit** na stránce konfigurace Jenkinse.
 
-## <a name="jenkins-credentials"></a>Přihlašovací údaje volaných
+## <a name="jenkins-credentials"></a>Přihlašovací údaje Jenkinse
 
-Nyní uložte přihlašovací údaje ACR objekt volaných přihlašovacích údajů. Tyto přihlašovací údaje se odkazuje během úlohu volaných sestavení.
+Objekt přihlašovacích údajů Jenkins nyní uložte svoje přihlašovací údaje služby ACR. Tyto přihlašovací údaje jsou odkazovány během úlohy sestavení Jenkinse.
 
-Zpět na portál pro správu volaných, klikněte na tlačítko **pověření** > **volaných** > **globální přihlašovací údaje (neomezený)**  >   **Přidejte pověření**.
+Zpět na portál pro správu Jenkinse, klikněte na tlačítko **pověření** > **Jenkins** > **globální přihlašovací údaje (neomezená)**  >   **Přidat přihlašovací údaje**.
 
-Zkontrolujte, zda je typ přihlašovacích údajů **uživatelské jméno s heslem** a zadejte následující položky:
+Ujistěte se, že typ přihlašovacích údajů **uživatelské jméno s heslem** a zadejte následující položky:
 
-- **Uživatelské jméno** -ID hlavní použití služby pro ověřování s registrem ACR.
-- **Heslo** -tajný klíč klienta hlavní použití služby pro ověřování s registrem ACR.
+- **Uživatelské jméno** – ID objektu zabezpečení pomocí služby pro ověřování pomocí služby Container registry.
+- **Heslo** -tajný kód klienta instančního objektu pomocí služby pro ověřování pomocí služby Container registry.
 - **ID** -přihlašovacích údajů, jako identifikátor `acr-credentials`.
 
-Po dokončení by měl vypadat podobně jako tento obrázek formuláře přihlašovací údaje:
+Jakmile budete hotovi, přihlašovací údaje formulář by měl vypadat nějak takto:
 
-![Přihlašovací údaje ACR](media/aks-jenkins/acr-credentials.png)
+![Přihlašovací údaje služby ACR](media/aks-jenkins/acr-credentials.png)
 
-Klikněte na tlačítko **OK** a vrátíte se k portálu pro správu volaných.
+Klikněte na tlačítko **OK** a vraťte se do portálu pro správu Jenkinse.
 
-## <a name="create-jenkins-project"></a>Vytvoření projektu volaných
+## <a name="create-jenkins-project"></a>Vytvoření projektu Jenkins
 
-Z portálu správce volaných, klikněte na tlačítko **novou položku**.
+Z portálu pro správu Jenkinse, klikněte na tlačítko **nová položka**.
 
-Pojmenujte projekt, například `azure-vote`, vyberte **volný styl projektu**a klikněte na tlačítko **OK**.
+Pojmenujte projekt, například `azure-vote`vyberte **volný styl projektu**a klikněte na tlačítko **OK**.
 
-![Volaných projektu](media/aks-jenkins/jenkins-project.png)
+![Projekt Jenkins](media/aks-jenkins/jenkins-project.png)
 
-V části **Obecné**, vyberte **Githubu projektu** a zadejte adresu URL vašeho pokračovatelem projektu Azure hlas Githubu.
+V části **Obecné**vyberte **projektu z Githubu** a zadejte adresu URL do svého forku Githubu aplikace Azure vote.
 
-![GitHub projektu](media/aks-jenkins/github-project.png)
+![Projektu z Githubu](media/aks-jenkins/github-project.png)
 
-V části **správu zdrojového kódu**, vyberte **Git**, zadejte adresu URL vašeho rozvětvení úložiště GitHub hlas Azure.
+V části **Správa zdrojového kódu**vyberte **Git**, zadejte adresu URL k vašemu forku úložiště Azure Vote GitHub.
 
-Pro přihlašovací údaje, klikněte na a **přidat** > **volaných**. V části **druhu**, vyberte **tajný text** a zadejte vaše [Githubu osobní přístupový token] [ git-access-token] jako tajný klíč.
+Zadání přihlašovacích údajů, klikněte na a **přidat** > **Jenkins**. V části **druh**vyberte **tajných kódů text** a zadejte vaše [osobní přístupový token Githubu] [ git-access-token] jako tajný klíč.
 
-Vyberte **přidat** po dokončení.
+Vyberte **přidat** až budete hotovi.
 
-![Přihlašovací údaje Githubu](media/aks-jenkins/github-creds.png)
+![Přihlašovací údaje pro GitHub](media/aks-jenkins/github-creds.png)
 
-V části **sestavení aktivační události**, vyberte **Githubu háku aktivační událost pro dotazování GITScm**.
+V části **sestavit aktivační události**vyberte **GitHub hook trigger pro dotazování GITScm**.
 
-![Volaných sestavení aktivační události](media/aks-jenkins/build-triggers.png)
+![Sestavení v Jenkinsu pro aktivační události](media/aks-jenkins/build-triggers.png)
 
-V části **sestavení prostředí**, vyberte **použít tajný texty nebo soubory**.
+V části **sestavení prostředí**vyberte **použijte skryté texty nebo**.
 
-![Prostředí sestavení volaných](media/aks-jenkins/build-environment.png)
+![Prostředí pro sestavení Jenkinse](media/aks-jenkins/build-environment.png)
 
-V části **vazby**, vyberte **přidat** > **uživatelské jméno a heslo (oddělených)**.
+V části **vazby**vyberte **přidat** > **uživatelské jméno a heslo (oddělené)**.
 
-Zadejte `ACR_ID` pro **proměnné uživatelského jména**, a `ACR_PASSWORD` pro **proměnnou hesla**.
+Zadejte `ACR_ID` pro **proměnnou uživatelského jména**, a `ACR_PASSWORD` pro **proměnnou hesla**.
 
-![Volaných vazby](media/aks-jenkins/bindings.png)
+![Vazby Jenkinse](media/aks-jenkins/bindings.png)
 
-Přidat **sestavení krok** typu **spustit prostředí** a použijte následující text. Tento skript vytvoří novou bitovou kopii kontejner a jeho nabízených oznámení do vaší ACR registru.
+Přidat **krok sestavení** typu **spustit prostředí** a použijte následující text. Tento skript vytvoří novou image kontejneru a předá je do registru ACR.
 
 ```bash
 # Build new image and push to ACR.
@@ -236,7 +239,7 @@ docker login ${ACR_LOGINSERVER} -u ${ACR_ID} -p ${ACR_PASSWORD}
 docker push $WEB_IMAGE_NAME
 ```
 
-Přidejte další **sestavení krok** typu **spustit prostředí** a použijte následující text. Tento skript aktualizace Kubernetes nasazení.
+Přidejte další **krok sestavení** typu **spustit prostředí** a použijte následující text. Tento skript aktualizace nasazení Kubernetes.
 
 ```bash
 # Update kubernetes deployment with new image.
@@ -246,35 +249,34 @@ kubectl set image deployment/azure-vote-front azure-vote-front=$WEB_IMAGE_NAME -
 
 Po dokončení klikněte na tlačítko **Uložit**.
 
-## <a name="test-the-jenkins-build"></a>Testování volaných sestavení
+## <a name="test-the-jenkins-build"></a>Testování buildu Jenkinse
 
-Než budete pokračovat, otestujte volaných sestavení. Ověří, zda úlohu sestavení byl správně nakonfigurován, správný soubor Kubernetes ověřování je místní a aby byly zadány správné přihlašovací údaje ACR.
+Než budete pokračovat, otestujte buildu Jenkinse. Tato operace ověří, že úloha sestavení není správně nakonfigurovaná, správné ověřovacího souboru Kubernetes je na místě a, že byly zadány správné přihlašovací údaje služby ACR.
 
-Klikněte na tlačítko **sestavení teď** v levé nabídce projektu.
+Klikněte na tlačítko **Build Now** v levé nabídce projektu.
 
-![Volaných testování sestavení](media/aks-jenkins/test-build.png)
+![Jenkins testovací sestavení](media/aks-jenkins/test-build.png)
 
-Během tohoto procesu je k serveru sestavení volaných klonovat úložiště GitHub. Novou bitovou kopii kontejneru je vytvořen a instaluje do registru ACR. Nakonec Azure hlas aplikace běžící v clusteru AKS je aktualizovat a použít novou bitovou kopii. Vzhledem k tomu, že byly provedeny žádné změny kódu aplikace, aplikace se nezmění.
+Během tohoto procesu je klonovat úložiště GitHub na serveru sestavení Jenkinse. Novou image kontejneru je vytvořeny a nahrány do registru ACR. Nakonec se aktualizuje aplikace Azure vote spuštěné v clusteru AKS použít nové image. Vzhledem k tomu, že byly provedeny žádné změny kódu aplikace, aplikace se nezmění.
 
-Po dokončení procesu klikněte na **sestavení #1** v části sestavení historie a vyberte **výstup konzoly** zobrazíte všechny výstup z procesu sestavení. Na posledním řádku by měl být uveden úspěšném sestavení.
+Po dokončení procesu klikněte na **sestavení #1** v části Vytvoření historie a vyberte **výstup na konzole** zobrazíte všechny výstup z procesu sestavení. Na posledním řádku by měla zobrazovat úspěšné sestavení.
 
 ## <a name="create-github-webhook"></a>Vytvoření webhooku GitHubu
 
-V dalším kroku připojit úložiště aplikací se serverem volaných sestavení tak, aby na všech potvrzení se aktivuje nové sestavení.
+V dalším kroku připojení úložiště aplikací na server sestavení Jenkinse, tak, aby na všech potvrzeních změn se aktivuje nové sestavení.
 
-1. Přejděte do forked úložiště GitHub.
-2. Vyberte **Settings** (Nastavení) a pak vyberte **Integrations & services** (Integrace a služby) na levé straně.
-3. Zvolte **přidat službu**, zadejte `Jenkins (GitHub plugin)` v pole filtru a vyberte modul plug-in.
-4. Pro volaných napojit adresu URL, zadejte `http://<publicIp:8080>/github-webhook/` kde `publicIp` je IP adresa serveru volaných. Nezapomeňte zahrnout koncový znak /.
-5. Vyberte možnost Přidat služby.
+1. Přejděte na rozvětveného úložiště GitHub.
+2. Vyberte **nastavení**a pak vyberte **Webhooky** na levé straně.
+3. Zvolit **přidat webhook**. Pro *datová část adresy URL*, zadejte `http://<publicIp:8080>/github-webhook/` kde `publicIp` je IP adresa serveru Jenkins. Nezapomeňte zahrnout koncový znak /. Nechte ostatní výchozí hodnoty pro typ obsahu a aktivační události na *nabízených* události.
+4. Vyberte **přidat webhook**.
 
-![Webhook GitHubu](media/aks-jenkins/webhook.png)
+    ![Webhook GitHubu](media/aks-jenkins/webhook.png)
 
-## <a name="test-cicd-process-end-to-end"></a>Testovat proces CI/CD koncová
+## <a name="test-cicd-process-end-to-end"></a>Testování procesu CI/CD začátku do konce
 
-Na vývojovém počítači otevře Klonovaná aplikace v editoru kódu.
+Na svém vývojovém počítači otevřete naklonované aplikace pomocí editoru kódu.
 
-V části **/azure-vote/azure-vote** adresáře, najít a soubor s názvem **config_file.cfg**. Aktualizujte hodnoty hlas v tomto souboru na jinou hodnotu než kočky a PSI.
+V části **/azure-vote/azure-vote** adresáře, najděte soubor s názvem **config_file.cfg**. Aktualizujte hodnoty hlasování v tomto souboru na něco jiného než koček a psů.
 
 Následující příklad ukazuje a aktualizovat **config_file.cfg** souboru.
 
@@ -286,13 +288,13 @@ VOTE2VALUE = 'Purple'
 SHOWHOST = 'false'
 ```
 
-Po dokončení soubor uložte, provedení změn a oznámení do vaší rozvětvení úložiště GitHub... Po dokončení potvrzení webhook Githubu aktivuje nového sestavení volaných aktualizací bitové kopie kontejneru a AKS nasazení. Monitorování procesu sestavení v konzole pro správu volaných.
+Jakmile budete hotovi, uložte soubor, potvrzení změn a push do svého forku úložiště Githubu... Po dokončení potvrzení webhook Githubu spustí nové sestavení Jenkinse, která aktualizuje image kontejneru a nasazení služby AKS. Monitorování procesu sestavení v konzole pro správu Jenkinse.
 
-Po dokončení sestavení znovu přejděte ke koncovému bodu aplikace sledovat změny.
+Po dokončení sestavení znovu přejděte na koncový bod aplikace sledovat změny.
 
-![Azure hlas aktualizovat](media/aks-jenkins/azure-vote-updated-safari.png)
+![Aktualizace Azure vote](media/aks-jenkins/azure-vote-updated-safari.png)
 
-V tomto okamžiku dokončení procesu jednoduché průběžné nasazování. Kroky a konfigurace uvedené v tomto příkladu jde použít k sestavení se průběžné sestavení automatizace robustnější a produkční prostředí.
+V tomto okamžiku procesu jednoduché průběžné nasazování se dokončila. Postup a konfigurace v tomto příkladu lze použít k sestavení automatizace průběžné sestavování více robustní a připravené pro produkční prostředí.
 
 <!-- LINKS - external -->
 [docker-images]: https://docs.docker.com/engine/reference/commandline/images/

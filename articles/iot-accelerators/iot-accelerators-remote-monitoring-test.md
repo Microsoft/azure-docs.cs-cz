@@ -1,6 +1,6 @@
 ---
-title: Simulace zařízení v řešení vzdáleného monitorování - Azure | Microsoft Docs
-description: V tomto kurzu se dozvíte, jak používat v simulátoru zařízení s vzdálené monitorování akcelerátoru řešení.
+title: Simulace zařízení v řešení vzdáleného monitorování – Azure | Dokumentace Microsoftu
+description: V tomto kurzu se dozvíte, jak použít simulátor zařízení s akcelerátoru řešení vzdáleného monitorování.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -8,39 +8,39 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/15/2018
 ms.topic: conceptual
-ms.openlocfilehash: 33566bd31f320ccc21f32a256d96d89ee25198bb
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 8d8835bd97b489a730a040e86748c668963c7196
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37088611"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39187719"
 ---
 # <a name="create-a-new-simulated-device"></a>Vytvoření nového simulovaného zařízení
 
-V tomto kurzu se dozvíte, jak přizpůsobit mikroslužbu simulátoru zařízení v akcelerátoru řešení vzdáleného monitorování. Chcete-li zobrazit možnosti v simulátoru zařízení, tento kurz používá dva scénáře v aplikaci Contoso IoT.
+V tomto kurzu se dozvíte, jak přizpůsobit mikroslužeb simulátor zařízení v akcelerátoru řešení vzdáleného monitorování. Chcete-li zobrazit možnosti simulátor zařízení, tento kurz používá dva scénáře v aplikaci Contoso IoT.
 
-Následující video obsahuje přehled možností pro přizpůsobení mikroslužbu simulátoru zařízení:
+Následující video představuje přehled možností pro přizpůsobení mikroslužeb simulátor zařízení:
 
 >[!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/How-to-customize-the-Remote-Monitoring-Preconfigured-Solution-for-Azure-IoT/Player]
 
-V prvního scénáře Contoso chce otestovat nového inteligentní žárovek zařízení. Pokud chcete provést testy, vytvořte nového simulovaného zařízení s následujícími charakteristikami:
+Do prvního scénáře Contoso chce testovat nové zařízení inteligentní žárovky. Provádění testů, můžete vytvořit nového simulovaného zařízení s následujícími charakteristikami:
 
 *Vlastnosti*
 
 | Název                     | Hodnoty                      |
 | ------------------------ | --------------------------- |
 | Barva                    | Prázdné, červená, modrá            |
-| Také průraznost               | 0 až 100                    |
-| Odhadovaný zbývající dobu životnosti | Odpočítávání 10 000 hodiny |
+| Jas               | 0 až 100                    |
+| Odhadovaný zbývající životnost | Odpočítávání za 10 000 hodin |
 
 *Telemetrie*
 
-Následující tabulka obsahuje data že žárovek sestav v cloudu jako datový proud:
+V následující tabulce jsou uvedeny data na žárovku zprávy do cloudu jako datový proud:
 
 | Název   | Hodnoty      |
 | ------ | ----------- |
 | Status | "na" "off" |
-| Teplota | Stupňů F |
+| Teplota | Stupně F |
 | Online | Hodnota TRUE, false |
 
 > [!NOTE]
@@ -61,61 +61,61 @@ Následující tabulka uvádí počáteční stav zařízení:
 
 | Název                     | Hodnoty |
 | ------------------------ | -------|
-| Počáteční barvu            | Bílá  |
-| Počáteční také průraznost       | 75     |
-| Počáteční zbývající dobu životnosti   | 10 000 |
-| Stav počáteční telemetrie | "na"   |
-| Teplotní telemetrie počáteční | 200   |
+| Počáteční barva            | Bílá  |
+| Počáteční jas       | 75     |
+| Počáteční zbývající životnost   | 10 000 |
+| Telemetrie počáteční stav | "na"   |
+| Počáteční telemetrie teploty | 200   |
 
-Druhý scénář, přidáte nový typ telemetrie a Contoso existující **chladič** zařízení.
+V druhém scénáři, přidáte nový typ telemetrických dat na Contoso existující **chladič** zařízení.
 
-V tomto kurzu se dozvíte, jak používat v simulátoru zařízení s akcelerátoru řešení vzdáleného monitorování:
+V tomto kurzu se dozvíte, jak použít simulátor zařízení s akcelerátor řešení vzdálené monitorování:
 
 V tomto kurzu se naučíte:
 
 >[!div class="checklist"]
 > * Vytvořte nový typ zařízení
-> * Simulovat chování vlastní zařízení
-> * Přidejte nový typ zařízení na řídicí panel
-> * Odeslat vlastní telemetrii z existující typ zařízení
+> * Simulace zařízení vlastní chování
+> * Přidat nový typ zařízení na řídicí panel
+> * Odesílání vlastní telemetrie z existujícího typu zařízení
 
-Následující video ukazuje návod simulované a skutečné zařízení připojovat k řešení vzdáleného monitorování:
+Následující video ukazuje názorný postup připojení k řešení vzdáleného monitorování skutečných a simulovaných zařízení:
 
 >[!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Part-38-Customizing-Azure-IoT-Suite-solution-and-connect-a-real-device/Player]
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li v tomto kurzu, je třeba:
+V tomto kurzu, budete potřebovat:
 
-* Instance nasazené řešení vzdáleného monitorování ve vašem předplatném Azure. Pokud jste nenasadili řešení vzdáleného monitorování ještě by se měla Dokončit [nasazení akcelerátoru řešení vzdáleného monitorování](../iot-accelerators/iot-accelerators-remote-monitoring-deploy.md) kurzu.
+* Nasazená instance řešení vzdálené monitorování ve vašem předplatném Azure. Pokud nemáte ještě nasazené řešení vzdáleného monitorování, by se měl Dokončit [nasazení akcelerátoru řešení vzdáleného monitorování](../iot-accelerators/quickstart-remote-monitoring-deploy.md) kurzu.
 
-* Sada Visual Studio 2017. Pokud nemáte nainstalované Visual Studio 2017, si můžete stáhnout bezplatnou [Visual Studio Community](https://www.visualstudio.com/free-developer-offers/) edition.
+* Sada Visual Studio 2017. Pokud nemáte nainstalovanou sadu Visual Studio 2017, si můžete stáhnout bezplatnou [Visual Studio Community](https://www.visualstudio.com/free-developer-offers/) edition.
 
-* [Cloudové aplikace Explorer pro Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=MicrosoftCloudExplorer.CloudExplorerforVS15Preview) rozšíření sady Visual Studio.
+* [Cloud Explorer for Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=MicrosoftCloudExplorer.CloudExplorerforVS15Preview) rozšíření sady Visual Studio.
 
-* Účet na [úložiště Docker Hub](https://hub.docker.com/). Můžete si zaregistrovat bezplatné začít pracovat.
+* Účet na [Docker Hubu](https://hub.docker.com/). Abyste mohli začít, můžete se ZDARMA zaregistrovat.
 
-* [Git](https://git-scm.com/downloads) nainstalovaný na počítači klientů.
+* [Git](https://git-scm.com/downloads) nainstalované na desktopovém počítači.
 
 ## <a name="prepare-your-development-environment"></a>Příprava vývojového prostředí
 
-Proveďte následující úkoly Příprava vývojového prostředí pro přidání nového simulovaného zařízení do řešení pro vzdálené monitorování:
+Proveďte následující úkoly Příprava vývojového prostředí pro přidání nového simulovaného zařízení do řešení vzdáleného monitorování:
 
-### <a name="configure-ssh-access-to-the-solution-virtual-machine-in-azure"></a>Konfigurace SSH přístup k virtuálnímu počítači řešení v Azure
+### <a name="configure-ssh-access-to-the-solution-virtual-machine-in-azure"></a>Konfigurovat přístup přes SSH k virtuálnímu počítači řešení v Azure
 
-Při vytváření řešení vzdáleného monitorování v [www.azureiotsolutions.com](https://www.azureiotsolutions.com), vyberete název řešení. Název řešení se změní na název skupiny prostředků Azure, která obsahuje různé nasazené prostředky, které používá řešení. Následující příkazy použijte skupinu prostředků s názvem **Contoso-01**, měli byste nahradit **Contoso-01** s názvem vaší skupiny prostředků.
+Při vytváření řešení vzdáleného monitorování v [www.azureiotsolutions.com](https://www.azureiotsolutions.com), zvolíte název řešení. Název řešení bude název skupiny prostředků Azure, který obsahuje různé nasazené prostředky, které toto řešení využívá. Následující příkazy použijte skupinu prostředků s názvem **Contoso-01**, byste měli vyměnit **Contoso-01** s názvem vaší skupiny prostředků.
 
-Následující příkazy použijte `az` příkaz [Azure CLI 2.0](https://docs.microsoft.com/cli/azure?view=azure-cli-latest). Můžete nainstalovat Azure CLI 2.0 na počítači pro vývoj nebo pomocí [cloudové prostředí](https://docs.microsoft.com/azure/cloud-shell/overview) v [portál Azure](http://portal.azure.com). Azure CLI 2.0 je předinstalován v prostředí cloudu.
+Následující příkazy použijte `az` příkaz [příkazového řádku Azure CLI 2.0](https://docs.microsoft.com/cli/azure?view=azure-cli-latest). Můžete nainstalovat rozhraní příkazového řádku Azure CLI 2.0 na vývojovém počítači, nebo použít [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) v [webu Azure portal](http://portal.azure.com). Rozhraní příkazového řádku Azure CLI 2.0 je předem nainstalovaných ve službě Cloud Shell.
 
-1. Pokud chcete ověřit název skupiny prostředků, která obsahuje vaše prostředky vzdálené monitorování, spusťte následující příkaz:
+1. Pokud chcete ověřit název skupiny prostředků obsahující prostředky vzdáleného monitorování, spusťte následující příkaz:
 
     ```sh
     az group list | grep "name"
     ```
 
-    Tento příkaz vypíše všechny skupiny prostředků v rámci vašeho předplatného. V seznamu by měla obsahovat skupinu prostředků se stejným názvem jako řešení vzdáleného monitorování.
+    Tento příkaz zobrazí seznam všech skupin prostředků ve vašem předplatném. V seznamu by měly zahrnovat skupinu prostředků se stejným názvem jako řešení vzdáleného monitorování.
 
-1. Chcete-li skupinu jako výchozí pro následné příkazy prostředku, spusťte následující příkaz, pomocí vaší název skupiny prostředků v místě **Contoso-01**:
+1. Chcete-li váš prostředek skupinu jako výchozí pro následné příkazy, spusťte následující příkaz pomocí název skupiny prostředků místo **Contoso-01**:
 
     ```sh
     az configure --defaults group=Contoso-01
@@ -127,9 +127,9 @@ Následující příkazy použijte `az` příkaz [Azure CLI 2.0](https://docs.mi
     az resource list -o table
     ```
 
-    Poznamenejte si názvy virtuální počítač a vaše skupina zabezpečení sítě. Použít tyto hodnoty v dalších krocích.
+    Poznamenejte si názvy vašeho virtuálního počítače a skupiny zabezpečení sítě. Tyto hodnoty použijete v dalších krocích.
 
-1. Pokud chcete povolit přístup SSH virtuálního počítače, spusťte následující příkaz pomocí názvu skupiny zabezpečení sítě v předchozím kroku:
+1. Pokud chcete povolit přístup přes SSH vašeho virtuálního počítače, spusťte následující příkaz pomocí názvu skupiny zabezpečení sítě z předchozího kroku:
 
     ```sh
     az network nsg rule create --name SSH --nsg-name YOUR-NETWORK-SECURITY-GROUP --priority 101 --destination-port-ranges 22 --access Allow --protocol TCP
@@ -141,24 +141,24 @@ Následující příkazy použijte `az` příkaz [Azure CLI 2.0](https://docs.mi
     az network nsg rule list --nsg-name YOUR-NETWORK-SECURITY-GROUP -o table
     ```
 
-1. Chcete-li změnit heslo pro virtuální počítače na heslo, které znáte, spusťte následující příkaz. Použijte název virtuálního počítače, které jste si poznamenali dříve a heslo podle vašeho výběru:
+1. Chcete-li změnit heslo virtuálního počítače na heslo, které už znáte, spusťte následující příkaz. Použijte název virtuálního počítače, které jste si poznamenali dříve a hesla podle svého výběru:
 
     ```sh
     az vm user update --name YOUR-VM-NAME --username azureuser --password YOUR-PASSWORD
     ```
-1. Chcete-li najít IP adresu virtuálního počítače, použijte následující příkaz a poznamenejte si veřejnou IP adresu:
+1. Chcete-li zjistit IP adresu vašeho virtuálního počítače, použijte následující příkaz a poznamenejte si veřejnou IP adresu:
 
     ```sh
     az vm list-ip-addresses --name YOUR-VM-NAME
     ```
 
-1. SSH tu teď můžete použít pro připojení k virtuálnímu počítači. `ssh` Příkaz je předinstalován v prostředí cloudu. Použijte veřejnou IP adresu z předchozího kroku, a po zobrazení výzvy heslo, můžete nakonfigurovat pro virtuální počítač:
+1. Můžete teď použít SSH pro připojení k virtuálnímu počítači. `ssh` Příkaz je předem nainstalovaných ve službě Cloud Shell. Použijte veřejnou IP adresu z předchozího kroku, a po výzvě heslo, jste nakonfigurovali pro virtuální počítač:
 
     ```sh
     ssh azureuser@public-ip-address
     ```
 
-    Nyní máte přístup k prostředí virtuální počítač, který spustí kontejnery Docker v řešení vzdáleného monitorování. Chcete-li zobrazit spuštěné kontejnery, použijte následující příkaz:
+    Teď máte přístup k prostředí ve virtuálním počítači, na kterém běží kontejnerů Dockeru v řešení vzdáleného monitorování. Chcete-li zobrazit spuštěné kontejnery, použijte následující příkaz:
 
     ```sh
     docker ps
@@ -166,9 +166,9 @@ Následující příkazy použijte `az` příkaz [Azure CLI 2.0](https://docs.mi
 
 ### <a name="find-the-service-connection-strings"></a>Vyhledání služby připojovací řetězce
 
-V tomto kurzu pracovat s řešení sady Visual Studio, který se připojuje ke službám Cosmos DB a služby IoT Hub na řešení. Následující kroky vám ukážou jeden způsob, jak najít připojení řetězcové hodnoty, které potřebujete:
+V tomto kurzu pracujete s řešení sady Visual Studio, který se připojí ke službě Cosmos DB a služby IoT Hub řešení. Následující kroky ukazují, jeden způsob, jak najít připojení řetězcové hodnoty, které potřebujete:
 
-1. Najít připojovací řetězec databáze Cosmos, spusťte následující příkaz v relaci SSH připojen k virtuálnímu počítači:
+1. K vyhledání připojovacího řetězce služby Cosmos DB, spusťte následující příkaz v relaci SSH, který je připojený k virtuálnímu počítači:
 
     ```sh
     sudo grep STORAGEADAPTER_DOCUMENTDB /app/env-vars
@@ -176,7 +176,7 @@ V tomto kurzu pracovat s řešení sady Visual Studio, který se připojuje ke s
 
     Poznamenejte si připojovací řetězec. Tuto hodnotu budete později v kurzu potřebovat.
 
-1. Pokud chcete vyhledat připojovací řetězec služby IoT Hub, spusťte následující příkaz v relaci SSH připojen k virtuálnímu počítači:
+1. Pokud chcete najít připojovací řetězec služby IoT Hub, spusťte následující příkaz v relaci SSH, který je připojený k virtuálnímu počítači:
 
     ```sh
     sudo grep IOTHUB_CONNSTRING /app/env-vars
@@ -185,21 +185,21 @@ V tomto kurzu pracovat s řešení sady Visual Studio, který se připojuje ke s
     Poznamenejte si připojovací řetězec. Tuto hodnotu budete později v kurzu potřebovat.
 
 > [!NOTE]
-> Můžete také vyhledat tyto řetězce připojení na portálu Azure nebo pomocí `az` příkaz.
+> Tyto řetězce připojení můžete také vyhledat na webu Azure Portal nebo pomocí `az` příkazu.
 
-### <a name="stop-the-device-simulation-service-in-the-virtual-machine"></a>Zastavte službu simulace zařízení ve virtuálním počítači.
+### <a name="stop-the-device-simulation-service-in-the-virtual-machine"></a>Zastavit službu simulace zařízení na virtuálním počítači
 
-Když upravíte službu simulace zařízení, můžete spustit místně a otestovat změny. Než spustíte službu simulace zařízení místně, je nutné zastavit instance běží na virtuálním počítači následujícím způsobem:
+Při úpravě službu simulace zařízení můžete jej můžete spustit místně a otestujte provedené změny. Před spuštěním služby simulace zařízení místně, je nutné zastavit instanci spuštěné na virtuálním počítači následujícím způsobem:
 
-1. Najít **ID KONTEJNERU** z **zařízení. simulace dotnet** služby, spusťte následující příkaz v relaci SSH připojen k virtuálnímu počítači:
+1. Najít **ID KONTEJNERU** z **zařízení – simulace dotnet** service, spusťte následující příkaz v relaci SSH, který je připojený k virtuálnímu počítači:
 
     ```sh
     docker ps
     ```
 
-    Poznamenejte si ID kontejneru **zařízení. simulace dotnet** služby.
+    Poznamenejte si ID kontejneru **zařízení – simulace dotnet** služby.
 
-1. Zastavit **zařízení. simulace dotnet** kontejneru, spusťte následující příkaz:
+1. Chcete-li zastavit **zařízení – simulace dotnet** kontejneru, spusťte následující příkaz:
 
     ```sh
     docker stop container-id-from-previous-step
@@ -207,67 +207,67 @@ Když upravíte službu simulace zařízení, můžete spustit místně a otesto
 
 ### <a name="clone-the-github-repositories"></a>Naklonujte úložiště GitHub
 
-V tomto kurzu pracujete s **zařízení simulace** a **adaptéru úložiště** projektů sady Visual Studio. Může klonovat úložišť zdrojového kódu z Githubu. Tento krok proveďte na místním vývojovém počítači kde máte nainstalovanou sadu Visual Studio:
+V tomto kurzu jste pracovat **simulace zařízení** a **adaptér úložiště** projektů sady Visual Studio. Můžete naklonovat úložišť zdrojového kódu z Githubu. Tento krok proveďte na svém místním vývojovém počítači, kde máte nainstalovanou sadu Visual Studio:
 
-1. Otevřete příkazový řádek a přejděte do složky, kam chcete uložit kopii **zařízení simulace** a **adaptéru úložiště** úložišť GitHub.
+1. Otevřete příkazový řádek a přejděte do složky, kam chcete uložit kopii **simulace zařízení** a **adaptér úložiště** úložištích GitHub.
 
-1. Klonování verze .NET **zařízení simulace** úložiště, spusťte následující příkaz:
+1. Naklonujte verzi .NET **simulace zařízení** úložiště, spusťte následující příkaz:
 
     ```cmd
     git clone https://github.com/Azure/device-simulation-dotnet.git
     ```
 
-    Služba simulace zařízení v řešení vzdáleného monitorování umožňuje změnit typy předdefinované simulované zařízení a pro vytváření nových simulated typy zařízení. Typy vlastní zařízení můžete použít k testování chování řešení vzdáleného monitorování, než připojíte fyzických zařízení.
+    Služba simulace zařízení v řešení vzdáleného monitorování umožňuje provádět změny typů předdefinovaných simulované zařízení a pro vytváření nových simulované typy zařízení. Typy vlastních zařízení můžete použít k testování chování řešení vzdáleného monitorování před připojení fyzických zařízení.
 
-1. Klonování verze .NET **adaptéru úložiště** úložiště, spusťte následující příkaz:
+1. Naklonujte verzi .NET **adaptér úložiště** úložiště, spusťte následující příkaz:
 
     ```cmd
     git clone https://github.com/Azure/pcs-storage-adapter-dotnet.git
     ```
 
-    Služba simulace zařízení používá službu úložiště adaptér pro připojení ke službě Cosmos DB v Azure. Řešení vzdáleného monitorování ukládá simulované zařízení konfigurační data do databáze Cosmos DB.
+    Službu simulace zařízení pomocí služby adaptér úložiště připojit ke službě Cosmos DB v Azure. Řešení vzdáleného monitorování jsou uložena konfigurační data simulovaného zařízení v databázi Cosmos DB.
 
-### <a name="run-the-storage-adapter-service-locally"></a>Místní spuštění adaptér služby úložiště
+### <a name="run-the-storage-adapter-service-locally"></a>Místní spuštění adaptér služby storage
 
-Služba simulace zařízení používá službu úložiště adaptér pro připojení k databázi na řešení Cosmos DB. Pokud spustíte službu simulace zařízení místně, je nutné spustit také službu úložiště adaptér místně. Následující kroky vám ukážou, jak spustit službu adaptér úložiště ze sady Visual Studio:
+Služba simulace zařízení používá službu úložiště adaptér pro připojení k řešení databázi Cosmos DB. Pokud službu simulace zařízení spouštíte místně, musíte také spustit službu adaptér úložiště místně. Následující kroky ukazují, jak spustit adaptér služby úložiště ze sady Visual Studio:
 
-1. V sadě Visual Studio, otevřete **počítačů storage-adapter.sln** soubor řešení ve vaší místní klon **adaptéru úložiště** úložiště.
+1. V sadě Visual Studio, otevřete **počítače storage-adapter.sln** soubor řešení v místním klonu z **adaptér úložiště** úložiště.
 
-1. V Průzkumníku řešení klikněte pravým tlačítkem myši **WebService** projektu, zvolte **vlastnosti**a potom vyberte **ladění**.
+1. V Průzkumníku řešení klikněte pravým tlačítkem myši **webová služba** projektu, zvolte **vlastnosti**a klikněte na tlačítko **ladění**.
 
-1. V **proměnné prostředí** část, upravte hodnotu **počítače\_STORAGEADAPTER\_DOCUMENTDB\_CONNSTRING** proměnná Cosmos DB připojení řetězec, který jste si poznamenali dříve. Potom změny uložte.
+1. V **proměnné prostředí** části, upravte hodnotu **počítače\_STORAGEADAPTER\_DOCUMENTDB\_CONNSTRING** proměnnou deklarovanou připojení Cosmos DB řetězec, který jste si poznamenali dříve. Uložte změny.
 
-1. V Průzkumníku řešení klikněte pravým tlačítkem myši **webovou službu** projektu, zvolte **ladění**a potom zvolte **spustit novou instanci**.
+1. V Průzkumníku řešení klikněte pravým tlačítkem myši **webová služba** projektu, zvolte **ladění**a klikněte na tlačítko **zahájit novou instanci**.
 
-1. Služba spuštěn místně a otevře `http://localhost:9022/v1/status` ve výchozím prohlížeči. Ověřte, zda **stav** hodnota je "OK: zachování připojení a dobře."
+1. Služba se spustí místně a otevře `http://localhost:9022/v1/status` ve vašem výchozím prohlížeči. Ověřte, že **stav** hodnota je "OK: aktivní a dobře."
 
-1. Ponechte službu adaptéru úložiště, který je spuštěn místně, dokud jste dokončili kurz.
+1. Nechte službu adaptér úložiště, místně spuštěná před dokončením tohoto kurzu.
 
-Nyní máte všechno, co na místě a jste připraveni začít přidávat nový typ simulované zařízení do řešení vzdáleného monitorování.
+Teď máte všechno nastavené a jste připraveni začít přidávat nového typu simulovaného zařízení k řešení vzdáleného monitorování.
 
 ## <a name="create-a-simulated-device-type"></a>Vytvoření simulovaného zařízení typu
 
-Nejjednodušší způsob, jak vytvořit nový typ zařízení ve službě simulace zařízení je zkopírovat a upravit existující typ. Následující kroky vám ukážou, jak zkopírovat integrované **chladič** zařízení pro vytvoření nového **žárovek** zařízení:
+Zkopírovat a upravit existující typ je nejjednodušší způsob, jak vytvořit nový typ zařízení ve službě simulaci zařízení. Následující kroky ukazují, jak zkopírovat předdefinované **chladič** zařízení k vytvoření nového **žárovky** zařízení:
 
-1. V Průzkumníku řešení klikněte pravým tlačítkem myši **WebService** projektu, zvolte **vlastnosti**a potom vyberte **ladění**.
+1. V Průzkumníku řešení klikněte pravým tlačítkem myši **webová služba** projektu, zvolte **vlastnosti**a klikněte na tlačítko **ladění**.
 
-1. V **proměnné prostředí** část, upravte hodnotu **počítače\_IOTHUB\_CONNSTRING** proměnné jako připojovací řetězec služby IoT Hub jste si poznamenali dříve. Potom změny uložte.
+1. V **proměnné prostředí** části, upravte hodnotu **počítače\_IOTHUB\_CONNSTRING** proměnné se připojovací řetězec služby IoT Hub jste si poznamenali dříve. Uložte změny.
 
-1. V Průzkumníku řešení klikněte pravým tlačítkem myši **zařízení simulace** řešení a zvolte **nastavit projekty po spuštění**. Zvolte **jeden projekt po spuštění** a vyberte **WebService**. Pak klikněte na **OK**.
+1. V Průzkumníku řešení klikněte pravým tlačítkem myši **simulace zařízení** řešení a zvolte **nastavit projekty po spuštění**. Zvolte **jeden spouštěný projekt** a vyberte **webová služba**. Pak klikněte na **OK**.
 
-1. Každý typ zařízení má soubor modelu JSON a související skripty v **služby/data/devicemodels** složky. V Průzkumníku řešení, zkopírujte **chladič** soubory a vytvořte **žárovek** souborů, jak je znázorněno v následující tabulce:
+1. Každý typ zařízení má soubor modelu JSON a přidružené skripty v **služby/data/devicemodels** složky. V Průzkumníku řešení, zkopírujte **chladič** soubory a vytvořte **žárovky** soubory, jak je znázorněno v následující tabulce:
 
     | Zdroj                      | Cíl                   |
     | --------------------------- | ----------------------------- |
     | chiller-01.json             | lightbulb-01.json             |
-    | skripty nebo chladič-01-state.js | skripty nebo žárovek-01-state.js |
+    | skripty/chladič-01-state.js | skripty/žárovky-01-state.js |
     | scripts/reboot-method.js    | scripts/SwitchOn-method.js    |
 
 ### <a name="define-the-characteristics-of-the-new-device-type"></a>Definovat vlastnosti nového typu zařízení
 
-**Žárovek 01.json** souboru definuje vlastnosti typu, jako je například telemetrii generuje a metody podporuje. Následující postup aktualizace **žárovek 01.json** souboru definujte **žárovek** zařízení:
+**Žárovky 01.json** soubor definuje vlastnosti typu, jako je například telemetrických dat generuje a metody podporuje. Následující postup aktualizace **žárovky 01.json** souboru k definování **žárovky** zařízení:
 
-1. V **žárovek 01.json** souboru, jak je znázorněno v následujícím fragmentu kódu k aktualizaci metadat zařízení:
+1. V **žárovky 01.json** souboru, aktualizujte metadata zařízení, jak je znázorněno v následujícím fragmentu kódu:
 
     ```json
     "SchemaVersion": "1.0.0",
@@ -278,7 +278,7 @@ Nejjednodušší způsob, jak vytvořit nový typ zařízení ve službě simula
     "Protocol": "MQTT",
     ```
 
-1. V **žárovek 01.json** souboru, aktualizujte definici simulaci, jak je znázorněno v následujícím fragmentu kódu:
+1. V **žárovky 01.json** souboru, aktualizujte definici simulaci, jak je znázorněno v následujícím fragmentu kódu:
 
     ```json
     "Simulation": {
@@ -298,7 +298,7 @@ Nejjednodušší způsob, jak vytvořit nový typ zařízení ve službě simula
     },
     ```
 
-1. V **žárovek 01.json** souboru, aktualizovat vlastnosti typu zařízení, jak je znázorněno v následujícím fragmentu kódu:
+1. V **žárovky 01.json** souboru, aktualizace vlastností zařízení zadejte, jak je znázorněno v následujícím fragmentu kódu:
 
     ```json
     "Properties": {
@@ -309,7 +309,7 @@ Nejjednodušší způsob, jak vytvořit nový typ zařízení ve službě simula
     },
     ```
 
-1. V **žárovek 01.json** souboru, aktualizovat definice telemetrie typ zařízení, jak je znázorněno v následujícím fragmentu kódu:
+1. V **žárovky 01.json** souboru, aktualizujte definice telemetrická data typu zařízení, jak je znázorněno v následujícím fragmentu kódu:
 
     ```json
     "Telemetry": [
@@ -329,7 +329,7 @@ Nejjednodušší způsob, jak vytvořit nový typ zařízení ve službě simula
     ],
     ```
 
-1. V **žárovek 01.json** souboru, jak je znázorněno v následujícím fragmentu kódu k aktualizaci metody typu zařízení:
+1. V **žárovky 01.json** soubor, aktualizovat metody typu zařízení, jak je znázorněno v následujícím fragmentu kódu:
 
     ```json
     "CloudToDeviceMethods": {
@@ -344,13 +344,13 @@ Nejjednodušší způsob, jak vytvořit nový typ zařízení ve službě simula
     }
     ```
 
-1. Uložit **žárovek 01.json** souboru.
+1. Uložit **žárovky 01.json** souboru.
 
-### <a name="simulate-custom-device-behavior"></a>Simulovat chování vlastní zařízení
+### <a name="simulate-custom-device-behavior"></a>Simulace zařízení vlastní chování
 
-**Skripty nebo žárovek-01-state.js** soubor definuje chování simulace **žárovek** typu. Následující postup aktualizace **skripty nebo žárovek-01-state.js** souboru k definování chování **žárovek** zařízení:
+**Skripty/žárovky-01-state.js** soubor definuje chování simulace **žárovky** typu. Následující postup aktualizace **skripty/žárovky-01-state.js** souboru k definování chování **žárovky** zařízení:
 
-1. Upravit definici stavu v **skripty nebo žárovek-01-state.js** souboru, jak je znázorněno v následujícím fragmentu kódu:
+1. Úprava definice stavu v **skripty/žárovky-01-state.js** sdílené, jak je znázorněno v následujícím fragmentu kódu:
 
     ```js
     // Default state
@@ -362,7 +362,7 @@ Nejjednodušší způsob, jak vytvořit nový typ zařízení ve službě simula
     };
     ```
 
-1. Přidat **překlopit** po fungovat **lišit** funkce s následující definice:
+1. Přidat **překlopit** po fungovat **lišit** funkce s následující definicí:
 
     ```js
     /**
@@ -376,7 +376,7 @@ Nejjednodušší způsob, jak vytvořit nový typ zařízení ve službě simula
     }
     ```
 
-1. Upravit **hlavní** funkce pro implementaci chování, jak je znázorněno v následujícím fragmentu kódu:
+1. Upravit **hlavní** funkci, která implementuje chování, jak je znázorněno v následujícím fragmentu kódu:
 
     ```js
     function main(context, previousState, previousProperties) {
@@ -397,11 +397,11 @@ Nejjednodušší způsob, jak vytvořit nový typ zařízení ve službě simula
     }
     ```
 
-1. Uložit **skripty nebo žárovek-01-state.js** souboru.
+1. Uložit **skripty/žárovky-01-state.js** souboru.
 
-**Skripty nebo SwitchOn-method.js** souboru implementuje **přepínač na** metoda v **žárovek** zařízení. Následující postup aktualizace **skripty nebo SwitchOn-method.js** souboru:
+**Skripty/SwitchOn-method.js** implementuje **přepínač na** metoda ve **žárovky** zařízení. Následující postup aktualizace **skripty/SwitchOn-method.js** souboru:
 
-1. Upravit definici stavu v **skripty nebo SwitchOn-method.js** souboru, jak je znázorněno v následujícím fragmentu kódu:
+1. Úprava definice stavu v **skripty/SwitchOn-method.js** sdílené, jak je znázorněno v následujícím fragmentu kódu:
 
     ```js
     var state = {
@@ -409,7 +409,7 @@ Nejjednodušší způsob, jak vytvořit nový typ zařízení ve službě simula
     };
     ```
 
-1. Chcete-li přepnout na skutečnost, upravte **hlavní** funkce následujícím způsobem:
+1. Chcete-li zapnout na žárovku, upravte **hlavní** funkce takto:
 
     ```js
     function main(context, previousState) {
@@ -419,11 +419,11 @@ Nejjednodušší způsob, jak vytvořit nový typ zařízení ve službě simula
     }
     ```
 
-1. Uložit **skripty nebo SwitchOn-method.js** souboru.
+1. Uložit **skripty/SwitchOn-method.js** souboru.
 
-1. Zkopírujte **skripty nebo SwitchOn-method.js** souboru s názvem **skripty nebo SwitchOff-method.js**.
+1. Vytvořit kopii **skripty/SwitchOn-method.js** soubor s názvem **skripty/SwitchOff-method.js**.
 
-1. Chcete-li vypnout skutečnost, upravte **hlavní** fungovat v **skripty nebo SwitchOff-method.js** následujícím způsobem:
+1. Chcete-li vypnout na žárovku, upravte **hlavní** fungovat v **skripty/SwitchOff-method.js** to následujícím způsobem:
 
     ```js
     function main(context, previousState) {
@@ -433,123 +433,123 @@ Nejjednodušší způsob, jak vytvořit nový typ zařízení ve službě simula
     }
     ```
 
-1. Uložit **skripty nebo SwitchOff-method.js** souboru.
+1. Uložit **skripty/SwitchOff-method.js** souboru.
 
-1. V Průzkumníku řešení vyberte všechny čtyři nové soubory naopak. V **vlastnosti** okna pro každý soubor, ověřte, že **kopírovat do výstupního adresáře** je nastaven na **kopírovat, pokud je novější**.
+1. V Průzkumníku řešení vyberte každé z čtyři nové soubory pak. V **vlastnosti** okna pro každý soubor, ověřte, že **kopírovat do výstupního adresáře** je nastavena na **kopírovat, pokud je novější**.
 
 ### <a name="configure-the-device-simulation-service"></a>Konfigurace služby simulace zařízení
 
-Chcete-li omezit počet Simulovaná zařízení, která se připojují k řešení během testování, konfigurovat službu ke spuštění jedné chladič a jeden žárovek zařízení. Konfigurační data jsou uložena v instanci Cosmos databáze ve skupině prostředků řešení. Chcete-li upravit konfigurační data, použijte **Průzkumník cloudu** zobrazení v sadě Visual Studio:
+Pokud chcete omezit počet simulovaných zařízení, která se připojují k řešení během testování, konfigurace služby pro spuštění jedné chladič a jeden žárovky zařízení. Konfigurační data jsou uložena v instanci databáze Cosmos DB ve skupině prostředků řešení. Chcete-li upravit konfigurační data, použijte **Průzkumníka cloudu** zobrazení v sadě Visual Studio:
 
-1. Chcete-li otevřít **Průzkumník cloudu** zobrazit v sadě Visual Studio, vyberte **zobrazení** a potom **Průzkumník cloudu**.
+1. Chcete-li otevřít **Průzkumníka cloudu** zobrazení v sadě Visual Studio, zvolte **zobrazení** a potom **Průzkumníka cloudu**.
 
 1. Najít v dokumentu konfigurace simulace, **hledat prostředky** zadejte **simualtions.1**.
 
-1. Dvakrát klikněte **simulations.1** dokumentu ji otevřete pro úpravy.
+1. Dvakrát klikněte **simulations.1** dokument otevřít pro úpravy.
 
-1. V hodnotě pro **Data**, vyhledejte **DeviceModels** pole, které vypadá jako následující fragment kódu:
+1. V hodnotě **Data**, vyhledejte **DeviceModels** pole, která vypadá jako následující fragment kódu:
 
     ```json
     [{\"Id\":\"chiller-01\",\"Count\":1},{\"Id\":\"chiller-02\",\"Count\":1},{\"Id\":\"elevator-01\",\"Count\":1},{\"Id\":\"elevator-02\",\"Count\":1},{\"Id\":\"engine-01\",\"Count\":1},{\"Id\":\"engine-02\",\"Count\":1},{\"Id\":\"prototype-01\",\"Count\":1},{\"Id\":\"prototype-02\",\"Count\":1},{\"Id\":\"truck-01\",\"Count\":1},{\"Id\":\"truck-02\",\"Count\":1}]
     ```
 
-1. Chcete-li definovat jeden chladič a jeden žárovek simulovaného zařízení, nahraďte **DeviceModels** pole s následujícím kódem:
+1. Chcete-li definovat jeden chladič a jeden žárovky simulované zařízení, nahradit **DeviceModels** pole s následujícím kódem:
 
     ```json
     [{\"Id\":\"chiller-01\",\"Count\":1},{\"Id\":\"lightbulb-01\",\"Count\":1}]
     ```
 
-    Uložte změnu **simulations.1** dokumentu.
+    Uložit změny **simulations.1** dokumentu.
 
 > [!NOTE]
-> Můžete taky Průzkumníku dat DB Cosmos na portálu Azure můžete upravit **simulations.1** dokumentu.
+> Můžete také použít Průzkumník dat Cosmos DB na webu Azure Portal upravit **simulations.1** dokumentu.
 
-### <a name="test-the-lightbulb-device-type-locally"></a>Typ zařízení žárovek místně testu
+### <a name="test-the-lightbulb-device-type-locally"></a>Typ zařízení žárovky místně testu
 
-Nyní jste připraveni k testování nového typu simulované žárovek spuštěním projektu simulace zařízení místně.
+Nyní jste připraveni k testování nového typu žárovka s Simulovaná spuštěním projektu simulace zařízení místně.
 
-1. V Průzkumníku řešení klikněte pravým tlačítkem na **WebService**, zvolte **ladění** a potom zvolte **spustit novou instanci**.
+1. V Průzkumníku řešení klikněte pravým tlačítkem na **webová služba**, zvolte **ladění** a klikněte na tlačítko **zahájit novou instanci**.
 
-1. Pokud chcete zkontrolovat, že jsou připojené dva Simulovaná zařízení do služby IoT Hub, otevřete v prohlížeči na portálu Azure.
+1. Pokud chcete zkontrolovat, že dvě Simulovaná zařízení jsou připojené ke službě IoT Hub, otevřete v prohlížeči na webu Azure portal.
 
-1. Přejděte do služby IoT hub ve skupině prostředků, která obsahuje vaše řešení vzdáleného monitorování.
+1. Přejděte do služby IoT hub ve skupině prostředků, která obsahuje vaše řešení vzdálené monitorování.
 
 1. V **monitorování** zvolte **metriky**. Ověřte, že počet **připojená zařízení** dvě:
 
     ![Počet připojených zařízení](./media/iot-accelerators-remote-monitoring-test/connecteddevices.png)
 
-1. V prohlížeči přejděte na **řídicí panel** pro vaše řešení vzdáleného monitorování. V panelu telemetrii na **řídicí panel**, vyberte **teploty**. Teplotní všechna Simulovaná zařízení zobrazí v grafu:
+1. V prohlížeči přejděte **řídicí panel** pro vaše řešení vzdáleného monitorování. Na panelu telemetrických dat **řídicí panel**vyberte **teploty**. Teplota pro všechny vaše simulované zařízení zobrazí v grafu:
 
     ![Teplotní telemetrie](./media/iot-accelerators-remote-monitoring-test/telemetry.png)
 
-Nyní máte simulaci zařízení žárovek spuštěn místně. Dalším krokem je nasazení aktualizované simulátoru kódu do virtuálního počítače, který spouští mikroslužeb vzdálené monitorování v Azure.
+Teď máte simulace zařízení žárovky spuštěná místně. Dalším krokem je nasazení aktualizované simulátor kódu k virtuálnímu počítači, na kterém běží vzdálené monitorování mikroslužeb v Azure.
 
 Než budete pokračovat, můžete zastavit ladění simulace zařízení i úložiště adaptér projekty v sadě Visual Studio.
 
 ### <a name="deploy-the-updated-simulator-to-the-cloud"></a>Nasazení aktualizované simulátor do cloudu
 
-V kontejnerech docker spustit mikroslužeb v řešení vzdáleného monitorování. Kontejnery hostovaným ve virtuálním počítači na řešení v Azure. V této části:
+Mikroslužby v řešení vzdáleného monitorování běží v kontejnerech dockeru. Kontejnery jsou hostované v řešení virtuálního počítače v Azure. V této části:
 
-* Vytvořte novou bitovou kopii docker simulace zařízení.
-* Odešlete bitovou kopii do úložiště docker hub.
-* Importujte bitovou kopii do vašeho řešení virtuálního počítače.
+* Vytvoření nové image dockeru simulaci zařízení.
+* Odešlete image do úložiště docker hub.
+* Importujte bitovou kopii k virtuálnímu počítači, vaše řešení.
 
-Následující kroky předpokládají, že byl úložiště volána **žárovek** ve vašem účtu úložiště Docker Hub.
+Následující postup předpokládá, že máte úložiště volána **žárovky** ve vašem účtu Docker Hubu.
 
-1. V sadě Visual Studio v **zařízení simulace** projektu, otevřete soubor **solution\scripts\docker\build.cmd**.
+1. V sadě Visual Studio v **simulace zařízení** projektu, otevřete soubor **solution\scripts\docker\build.cmd**.
 
-1. Upravíte řádek, který nastaví **DOCKER_IMAGE** proměnnou prostředí na název úložiště Docker Hub:
-
-    ```cmd
-    SET DOCKER_IMAGE=your-docker-hub-acccount/lightbulb
-    ```
-
-    Uložte změnu.
-
-1. V sadě Visual Studio v **zařízení simulace** projektu, otevřete soubor **solution\scripts\docker\publish.cmd**.
-
-1. Upravíte řádek, který nastaví **DOCKER_IMAGE** proměnnou prostředí na název úložiště Docker Hub:
+1. Upravit řádek, který nastaví **DOCKER_IMAGE** proměnné prostředí na název úložiště Docker Hub:
 
     ```cmd
     SET DOCKER_IMAGE=your-docker-hub-acccount/lightbulb
     ```
 
-    Uložte změnu.
+    Uložte změny.
 
-1. Otevřete příkazový řádek jako správce. Pak přejděte do složky **scripts\docker** ve vašem klon **zařízení simulace** úložiště GitHub.
+1. V sadě Visual Studio v **simulace zařízení** projektu, otevřete soubor **solution\scripts\docker\publish.cmd**.
 
-1. Pokud chcete vytvořit bitovou kopii docker, spusťte následující příkaz:
+1. Upravit řádek, který nastaví **DOCKER_IMAGE** proměnné prostředí na název úložiště Docker Hub:
+
+    ```cmd
+    SET DOCKER_IMAGE=your-docker-hub-acccount/lightbulb
+    ```
+
+    Uložte změny.
+
+1. Otevřete příkazový řádek jako správce. Pak přejděte do složky **scripts\docker** ve vašem klonu z **simulace zařízení** úložiště GitHub.
+
+1. Pokud chcete sestavit image dockeru, spusťte následující příkaz:
 
     ```cmd
     build.cmd
     ```
 
-1. Pro přihlášení k účtu úložiště Docker Hub, spusťte následující příkaz:
+1. Přihlásit se ke svému účtu Docker Hubu, spusťte následující příkaz:
 
     ```cmd
     docker login
     ```
 
-1. Chcete-li odeslat vaší novou bitovou kopii do svého účtu úložiště Docker Hub, spusťte následující příkaz:
+1. Pokud chcete nahrát novou bitovou kopii do svého účtu Docker Hubu, spusťte následující příkaz:
 
     ```cmd
     publish.cmd
     ```
 
-1. Chcete-li ověřit nahrávání, přejděte na [ https://hub.docker.com/ ](https://hub.docker.com/). Vyhledání vašeho **žárovek** úložiště a zvolte **podrobnosti**. Zvolte **značky**:
+1. Pokud chcete ověřit nahrání, přejděte na [ https://hub.docker.com/ ](https://hub.docker.com/). Vyhledejte vaši **žárovky** úložiště a zvolte **podrobnosti**. Klikněte na tlačítko **značky**:
 
-    ![Úložiště docker hub](./media/iot-accelerators-remote-monitoring-test/dockerhub.png)
+    ![Docker hubu](./media/iot-accelerators-remote-monitoring-test/dockerhub.png)
 
-    Skripty vložené **testování** značky na bitovou kopii.
+    Skripty přidané **testování** značky do bitové kopie.
 
-1. Použití SSH se připojit k virtuálnímu počítači na řešení v Azure. Pak přejděte do **aplikace** složku a upravit **docker-compose.yml** souboru:
+1. Pomocí SSH se připojte k virtuálnímu počítači vaše řešení v Azure. Přejděte na **aplikace** složky a úpravy **docker-compose.yml** souboru:
 
     ```sh
     cd /app
     sudo nano docker-compose.yml
     ```
 
-1. Upravte položku služby simulace zařízení používat docker image:
+1. Upravte položku pro službu simulace zařízení pomocí image dockeru:
 
     ```yaml
     devicesimulation:
@@ -564,68 +564,68 @@ Následující kroky předpokládají, že byl úložiště volána **žárovek*
     sudo ./start.sh
     ```
 
-1. Pokud chcete zkontrolovat soubor protokolu z vašeho nový kontejner simulace zařízení, spusťte následující příkaz k vyhledání ID kontejneru:
+1. Můžete zkontrolovat soubor protokolu z vašeho nového kontejneru simulace zařízení, spuštěním následujícího příkazu najděte ID kontejneru:
 
     ```sh
     docker ps
     ```
 
-    Spusťte následující příkaz pomocí ID kontejneru:
+    Potom spusťte následující příkaz s použitím ID kontejneru:
 
     ```sh
     docker logs {container ID}
     ```
 
-Nyní jste dokončili postup nasazení aktualizované verze služby simulace zařízení do řešení vzdáleného monitorování.
+Teď jste dokončili postup nasazení aktualizovanou verzi služby simulace zařízení do řešení vzdáleného monitorování.
 
-V prohlížeči přejděte na **řídicí panel** pro vaše řešení vzdáleného monitorování. V panelu telemetrii na **řídicí panel**, vyberte **teploty**. Teplotní dvě Simulovaná zařízení zobrazí v grafu:
+V prohlížeči přejděte **řídicí panel** pro vaše řešení vzdáleného monitorování. Na panelu telemetrických dat **řídicí panel**vyberte **teploty**. Teplota dvě Simulovaná zařízení zobrazí v grafu:
 
 ![Teplotní telemetrie](./media/iot-accelerators-remote-monitoring-test/telemetry.png)
 
-Na **zařízení** stránky, můžete zřídit instance nového typu:
+Na **zařízení** stránky, můžete zřídit instance stejného nového typu:
 
-![Zobrazit seznam dostupných simulace](./media/iot-accelerators-remote-monitoring-test/devicesmodellist.png)
+![Zobrazí se seznam dostupných simulace](./media/iot-accelerators-remote-monitoring-test/devicesmodellist.png)
 
-Můžete zobrazit telemetrii ze simulovaného zařízení:
+Můžete zobrazit telemetrická data ze simulovaného zařízení:
 
-![Zobrazení telemetrie žárovek](./media/iot-accelerators-remote-monitoring-test/devicestelemetry.png)
+![Zobrazení telemetrie žárovky](./media/iot-accelerators-remote-monitoring-test/devicestelemetry.png)
 
-Můžete volat **SwitchOn** a **SwitchOff** metody na vašem zařízení:
+Můžete volat **SwitchOn** a **SwitchOff** metody v zařízení:
 
-![Volání metody žárovek](./media/iot-accelerators-remote-monitoring-test/devicesmethods.png)
+![Volání metody žárovky](./media/iot-accelerators-remote-monitoring-test/devicesmethods.png)
 
-## <a name="add-a-new-telemetry-type"></a>Přidejte nový typ telemetrie
+## <a name="add-a-new-telemetry-type"></a>Přidat nový typ telemetrie
 
-Tato část popisuje postup úpravy existujícího typu simulované zařízení pro podporu nového typu telemetrie.
+Tato část popisuje, jak upravit existující typ simulovaného zařízení pro podporu nového typu telemetrická data.
 
-### <a name="locate-the-chiller-device-type-files"></a>Vyhledejte chladič soubory typ zařízení
+### <a name="locate-the-chiller-device-type-files"></a>Vyhledejte soubory typu chladič zařízení
 
-Následující kroky vám ukážou, jak najít soubory, které definují integrované **chladič** zařízení:
+Následující kroky ukazují, jak k vyhledání souborů, které definují předdefinované **chladič** zařízení:
 
-1. Pokud jste tak již neučinili, použijte následující příkaz klonovat **zařízení. simulace dotnet** úložiště GitHub do místního počítače:
+1. Pokud jste tak již neučinili, použijte následující příkaz, naklonujte **zařízení – simulace dotnet** úložiště GitHub do svého místního počítače:
 
     ```cmd/sh
     git clone https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet.git
     ```
 
-1. Každý typ zařízení má soubor modelu JSON a související skripty v `data/devicemodels` složky. Soubory, které definují simulovaném **chladič** typ zařízení:
+1. Každý typ zařízení má soubor modelu JSON a přidružené skripty v `data/devicemodels` složky. Soubory, které definují simulované **chladič** typ zařízení:
 
     * **data/devicemodels/chiller-01.json**
     * **data/devicemodels/scripts/chiller-01-state.js**
 
 ### <a name="specify-the-new-telemetry-type"></a>Zadejte nový typ telemetrie
 
-Následující kroky vám ukážou, jak přidat nové **interní teploty** typ, který má **chladič** typ zařízení:
+Následující kroky ukazují, jak přidat nové **vnitřní teplota** typ, který **chladič** typ zařízení:
 
-1. Otevřete **chladič 01.json** souboru.
+1. Otevřít **chladič 01.json** souboru.
 
-1. Aktualizace **SchemaVersion** hodnotu následujícím způsobem:
+1. Aktualizace **SchemaVersion** hodnota následujícím způsobem:
 
     ```json
     "SchemaVersion": "1.1.0",
     ```
 
-1. V **InitialState** přidejte toto dvě definice:
+1. V **InitialState** části, přidejte naleznete dvě definice:
 
     ```json
     "internal_temperature": 65.0,
@@ -651,53 +651,53 @@ Následující kroky vám ukážou, jak přidat nové **interní teploty** typ, 
 
 1. Uložit **chladič 01.json** souboru.
 
-1. Otevřete **skripty nebo chladič-01-state.js** souboru.
+1. Otevřít **skripty/chladič-01-state.js** souboru.
 
-1. Přidejte následující pole do **stavu** proměnné:
+1. Přidejte následující pole na **stavu** proměnné:
 
     ```js
     internal_temperature: 65.0,
     internal_temperature_unit: "F",
     ```
 
-1. Přidejte následující řádek na **hlavní** funkce:
+1. Přidejte následující řádek, který **hlavní** funkce:
 
     ```js
     state.internal_temperature = vary(65, 2, 15, 125);
     ```
 
-1. Uložit **skripty nebo chladič-01-state.js** souboru.
+1. Uložit **skripty/chladič-01-state.js** souboru.
 
 ### <a name="test-the-chiller-device-type"></a>Typ zařízení chladič testu
 
-K testování aktualizovaný **chladič** typ zařízení, nejprve spusťte místní kopii **zařízení. simulace dotnet** služby k testování typu vašeho zařízení chová podle očekávání. Když máte testovat a ladit typu vašeho zařízení aktualizované místně, můžete znovu vytvořit kontejner a znovu nasaďte **zařízení. simulace dotnet** službu Azure.
+K otestování aktualizované **chladič** typ zařízení, nejdříve spusťte místní kopii **zařízení – simulace dotnet** služby k otestování typu vašeho zařízení se chová podle očekávání. Když jste otestovali a ladit místně typu vašeho zařízení aktualizované, můžete znovu sestavovat kontejner a opětovné nasazení **zařízení – simulace dotnet** služby do Azure.
 
-Při spuštění **zařízení. simulace dotnet** místně služby, odešle telemetrie do řešení vzdáleného monitorování. Na **zařízení** stránky, můžete zřídit instance vaše aktualizované typu.
+Při spuštění **zařízení – simulace dotnet** služby místně, se odesílá telemetrická data do vašeho řešení vzdáleného monitorování. Na **zařízení** stránky, můžete zřídit instance stejného typu aktualizované.
 
-K testování a ladění změny místně, najdete v předchozí části [testování typ zařízení žárovek místně](#test-the-lightbulb-device-type-locally).
+Testovat a ladit své změny místně, viz předchozí oddíl [typ zařízení žárovky místně testu](#test-the-lightbulb-device-type-locally).
 
-Nasazení služby simulace aktualizované zařízení k virtuálnímu počítači na řešení v Azure najdete v tématu v předchozí části [simulátoru aktualizované nasadit do cloudu](#deploy-the-updated-simulator-to-the-cloud).
+Nasazení služby simulace aktualizované zařízení do řešení virtuálního počítače v Azure, viz předchozí oddíl [aktualizované simulátor nasadit do cloudu](#deploy-the-updated-simulator-to-the-cloud).
 
-Na **zařízení** stránky, můžete zřídit instance vaše aktualizované typu:
+Na **zařízení** stránky, můžete zřídit instance stejného typu aktualizace:
 
-![Přidejte aktualizovanou chladič](./media/iot-accelerators-remote-monitoring-test/devicesupdatedchiller.png)
+![Přidejte aktualizované chladič](./media/iot-accelerators-remote-monitoring-test/devicesupdatedchiller.png)
 
-Můžete zobrazit nové **interní teploty** telemetrie ze simulovaného zařízení.
+Můžete zobrazit nové **vnitřní teplota** telemetrie ze simulovaných zařízení.
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu ukázal, jak na:
+Tento kurz vám ukázali, jak do:
 
 <!-- Repeat task list from intro -->
 >[!div class="checklist"]
 > * Vytvořte nový typ zařízení
-> * Simulovat chování vlastní zařízení
-> * Přidejte nový typ zařízení na řídicí panel
-> * Odeslat vlastní telemetrii z existující typ zařízení
+> * Simulace zařízení vlastní chování
+> * Přidat nový typ zařízení na řídicí panel
+> * Odesílání vlastní telemetrie z existujícího typu zařízení
 
-Nyní jste se naučili postup přizpůsobení službu simulace zařízení. Navrhované dalším krokem je další postup [připojení fyzického zařízení k řešení vzdáleného monitorování](iot-accelerators-connecting-devices-node.md).
+Nyní jste se naučili, jak přizpůsobit službu simulace zařízení. Navrhované dalším krokem je další způsob [připojení fyzických zařízení k řešení vzdáleného monitorování](iot-accelerators-connecting-devices-node.md).
 
-Další informace pro vývojáře o řešení vzdáleného monitorování najdete v části:
+Další informace pro vývojáře o řešení vzdáleného monitorování najdete v tématu:
 
 * [Referenční příručka pro vývojáře](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide)
 * [Průvodce řešením potíží pro vývojáře](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide)

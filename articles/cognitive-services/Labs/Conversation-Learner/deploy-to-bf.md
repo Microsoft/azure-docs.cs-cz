@@ -1,7 +1,7 @@
 ---
-title: Postup nasazení konverzace student robota - kognitivní služby Microsoft | Microsoft Docs
+title: Jak nasadit konverzace Learner bot – Microsoft Cognitive Services | Dokumentace Microsoftu
 titleSuffix: Azure
-description: Informace o nasazení robota student konverzace.
+description: Zjistěte, jak nasadit robota Learner konverzace.
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,24 +10,24 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 77cc998227d996a6e52b1b5629204da5dc735ede
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: bb977df92cf0ada1e50a929a9ea714313a70165a
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343224"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171472"
 ---
-# <a name="how-to-deploy-a-conversation-learner-bot"></a>Postup nasazení konverzace student robota
+# <a name="how-to-deploy-a-conversation-learner-bot"></a>Jak nasadit robota Learner konverzace
 
-Tento dokument vysvětluje, jak nasadit konverzace student robota – buď místně, nebo do Azure.
+Tento dokument vysvětluje, jak nasadit konverzace Learner bot – buď místně, nebo do Azure.
 
-## <a name="prerequisite-determine-the-application-id"></a>Předpoklad: Určete ID aplikace 
+## <a name="prerequisite-determine-the-model-id"></a>Předpoklad: určení ID modelu 
 
-Pokud chcete spustit robota mimo rozhraní student konverzace, musíte nastavit konverzace student ID aplikace, které budou používat robota – tj ID model strojového učení v cloudu student konverzace.  (Oproti tomu při spuštění robota prostřednictvím uživatelského rozhraní student konverzace, uživatelské rozhraní zvolí které ID aplikace).  
+Spustit mimo rozhraní Learner konverzace robota, musíte nastavit konverzace Learner ID modelu, který bude používat robota – to znamená ID modelu strojového učení v cloudu Learner konverzace.  (Oproti tomu při spuštění robota prostřednictvím uživatelského rozhraní Learner konverzace, uživatelské rozhraní zvolí které ID modelu.).  
 
-Chcete-li získat číslo ID aplikace:
+Tady je postup získání ID modelu:
 
-1. Spuštění uživatelského rozhraní student konverzace a vaše robota.  Naleznete v Průvodci rychlý start pro úplné pokyny; Shrnutí:
+1. Spuštění vašeho robota a uživatelského rozhraní Learner konverzace.  Zobrazit úvodní příručky pro úplné pokyny; Shrnutí:
 
     V okně jednoho příkazu:
 
@@ -37,7 +37,7 @@ Chcete-li získat číslo ID aplikace:
     npm start
     ```
 
-    V jiném příkazové okno
+    V příkazovém okně jiného
 
     ```bash
     [open second command prompt window]
@@ -45,27 +45,27 @@ Chcete-li získat číslo ID aplikace:
     npm run ui
     ```
 
-2. Otevřete prohlížeč http://localhost:5050 
+2. Otevřít v prohlížeči na http://localhost:5050 
 
-3. Klikněte na konverzace student aplikace, které chcete získat ID
+3. Klikněte na modelu konverzace Learner budete chtít získat ID
 
-4. Klikněte na "Nastavení" v navigačního panelu na levé straně.
+4. Na navigačním panelu na levé straně klikněte na "Nastavení".
 
-5. Identifikátor GUID "ID aplikace" se zobrazí v horní části stránky.
+5. Identifikátor GUID "ID modelu" se zobrazí v horní části stránky.
 
-## <a name="option-1-deploying-a-conversation-learner-bot-to-run-locally"></a>Možnost 1: Nasazení konverzace student robota spustit místně
+## <a name="option-1-deploying-a-conversation-learner-bot-to-run-locally"></a>Možnost 1: Nasazení konverzace Learner bot spustit místně
 
-To nasadí robotu do místního počítače a ukazuje, jak můžete přistupovat pomocí emulátoru robota Framework.
+To nasadí robota do místního počítače a ukazuje, jak k němu máte přístup pomocí emulátoru služby Bot Framework.
 
-### <a name="configure-your-bot-for-access-outside-the-conversation-learner-ui"></a>Konfigurace vaší robota pro přístup mimo rozhraní student konverzace
+### <a name="configure-your-bot-for-access-outside-the-conversation-learner-ui"></a>Konfigurace vašeho robota pro přístup mimo rozhraní Learner konverzace
 
-Při místním spuštění robotu, přidat do robota ID aplikace `.env` souboru:
+Při místním spuštění robota, přidat ID aplikace do bodu robotů také `.env` souboru:
 
     ```
-    CONVERSATION_LEARNER_APP_ID=<YOUR_APP_ID>
+    CONVERSATION_LEARNER_MODEL_ID=<YOUR_MODEL_ID>
     ```
 
-Spusťte vaší robota:
+Potom spusťte váš robot:
 
     ```
     [open a command window]
@@ -73,9 +73,9 @@ Spusťte vaší robota:
     npm start
     ```
 
-Robota je nyní spuštěna místně.  Můžete k němu přístup pomocí emulátoru robota Framework.
+Robot je nyní spuštěna místně.  Můžete k němu přístup s emulátorem Bot Framework.
 
-### <a name="download-and-install-the-emulator"></a>Stáhněte a nainstalujte si emulátor
+### <a name="download-and-install-the-emulator"></a>Stáhněte si a nainstalujte si emulátor
 
     ```
     git clone https://github.com/Microsoft/BotFramework-Emulator
@@ -84,44 +84,44 @@ Robota je nyní spuštěna místně.  Můžete k němu přístup pomocí emulát
     npm start
     ```
 
-### <a name="connect-the-emulator-to-your-bot"></a>Připojení k vaší robota emulátoru
+### <a name="connect-the-emulator-to-your-bot"></a>Pro svého robota připojit emulátoru
 
-1. V levém horním emulátoru, v poli "zadejte adresu URL vašeho koncového bodu", zadejte `http://127.0.0.1:3978/api/messages`.  Ostatní pole ponechte prázdné a klikněte na tlačítko "Připojit".
+1. V levém horním rohu emulátor v poli "Zadejte vaši adresu URL koncového bodu", zadejte `http://127.0.0.1:3978/api/messages`.  Ostatní pole nechte prázdné a klikněte na tlačítko "Připojit".
 
-2. Jsou nyní konverzaci s vaší robota.
+2. Jsou nyní rozhovory s vaším robotem.
 
 ## <a name="option-2-deploy-to-azure"></a>Možnost 2: Nasazení do Azure
 
-Publikujte vaší konverzace student robota podobná stejným způsobem jako jiné robota bude publikována. Na vysoké úrovni nahrát kód na hostované web, nastavte hodnoty odpovídající konfiguraci a potom proveďte registraci robota s různými kanály. Podrobné pokyny naleznete v tomto videu znázorňující postup publikování vašeho robota pomocí služby Azure robota.
+Publikování podobné stejným způsobem, jakým bude publikována libovolnému robotu konverzace Learner robota. Na vysoké úrovni Nahrajte svůj kód na hostovaný web, nastavte odpovídající konfiguraci hodnoty a pak zaregistrujte robot s různými kanály. Podrobné pokyny jsou toto video ukazuje, jak publikovat robotů pomocí služeb Azure Bot Service.
 
-Jakmile je nasazený robota a je spuštěna různé kanály k nim mohla připojit jako je Facebook, týmů, Skype atd pomocí Azure robota kanálu registrace. Dokumentaci najdete v tématu proces: https://docs.microsoft.com/en-us/bot-framework/bot-service-quickstart-registration
+Po nasazení robota a spuštěná, můžete různé kanály k němu můžete připojit například Facebook, Teams, Skype atd pomocí Azure Bot kanálu registrace. Dokumentaci najdete v tématu proces: https://docs.microsoft.com/en-us/bot-framework/bot-service-quickstart-registration
 
-Níže jsou uvedeny podrobné pokyny pro nasazení student robota konverzace do Azure.  Tyto pokyny předpokládají, že váš zdroj robota je k dispozici z cloudové zdroje například služby VSTS, Githubu, BitBucket nebo OneDrive a nakonfiguruje vaše robota pro průběžné nasazování.
+Níže jsou uvedeny podrobné pokyny pro nasazení do Azure Bot Learner konverzace.  Tyto pokyny předpokládají, že váš robot zdroj je k dispozici z cloudové zdroje, jako VSTS, Githubu, BitBucket nebo OneDrive a nakonfiguruje svého robota pro průběžné nasazování.
 
-1. Přihlaste se k portálu Azure v https://portal.azure.com
+1. Přihlaste se na webu Azure portal https://portal.azure.com
 
-2. Vytvoření nového prostředku "Robota webové aplikace" 
+2. Vytvořit nový prostředek "Web App Bot" 
 
-    1. Pojmenujte robota
-    2. Klikněte na "Robota šablona", zvolte "Node.js", zvolte "Základní" a pak klikněte na tlačítko "Vyberte"
-    3. Klikněte na "vytvořit" k vytvoření robota aplikaci Web.
-    4. Počkejte, než pro webové aplikace robota prostředek má být vytvořen.
+    1. Název robota
+    2. Klikněte na "Bot Template", zvolte "Node.js", zvolte možnost "Základní" a potom klikněte na tlačítko "Vyberte"
+    3. Klikněte na "vytvořit", chcete-li vytvořit Web App Bot.
+    4. Počkejte Web App Bot prostředku.
 
-3. Na portálu Azure upravte zdroj robota webové aplikace, který jste právě vytvořili.
+3. Na webu Azure Portal upravte prostředek Web App Bot, kterou jste právě vytvořili.
 
-    1. Kliknutím na položku "Nastavení aplikace" navigaci vlevo
-    1. Přejděte do části "Nastavení aplikace."
+    1. Klikněte na "Nastavení aplikace" navigační prvek na levé straně
+    1. Posuňte se dolů do části "Nastavení aplikace"
     2. Přidejte tato nastavení:
 
         Proměnná prostředí | hodnota
         --- | --- 
         CONVERSATION_LEARNER_SERVICE_URI | https://westus.api.cognitive.microsoft.com/conversationlearner/v1.0/
-        CONVERSATION_LEARNER_APP_ID      | Identifikátor GUID Id aplikace, získané z uživatelského rozhraní student konverzace v části "nastavení" aplikace >
-        LUIS_AUTHORING_KEY               | LEOŠ vytváření klíč pro tuto aplikaci.
+        CONVERSATION_LEARNER_MODEL_ID      | Aplikace identifikátor GUID získaný v uživatelském rozhraní Learner konverzace v části "nastavení" pro model >
+        LUIS_AUTHORING_KEY               | Vytváření klíč pro tento model LUIS
     
-    4. V horní části stránky klikněte na "Uložit"
-    5. Otevřete položky "Sestavení" navigaci vlevo
-    6. Klikněte na "Konfigurace průběžné nasazování" 
-    7. Klikněte na ikonu "Instalaci" v části nasazení
-    8. Klikněte na "Požadované nastavení"
-    9. Vyberte zdroje, kde je k dispozici robota kódu a nastavit zdroj.
+    4. V horní části stránky klikněte na "uložit.
+    5. Otevřít navigační prvek "Sestavení" na levé straně
+    6. Klikněte na "Konfigurace průběžného nasazování" 
+    7. Klikněte na ikonu "Nastavení" v části nasazení
+    8. Klikněte na "Required nastavení"
+    9. Vyberte zdroj, kde je k dispozici bot kódu a konfigurace zdroje.

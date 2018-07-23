@@ -1,6 +1,6 @@
 ---
-title: Zprávy typu cloud zařízení s Azure IoT Hub (Java) | Microsoft Docs
-description: Postupy pro odesílání zpráv typu cloud zařízení pro zařízení ze služby Azure IoT hub pro jazyk Java pomocí sady SDK služby Azure IoT. Můžete upravit aplikaci simulovaného zařízení příjem zpráv typu cloud zařízení a úpravě back-end aplikace k odesílání zpráv typu cloud zařízení.
+title: Zprávy typu cloud zařízení pomocí služby Azure IoT Hub (Java) | Dokumentace Microsoftu
+description: Jak odesílat zprávy typu cloud zařízení na zařízení ze služby Azure IoT hub pomocí sad Azure IoT SDK pro Javu. Upravíte aplikaci simulovaného zařízení pro příjem zpráv z cloudu do zařízení a upravovat back endové aplikace odesílat zprávy typu cloud zařízení.
 author: dominicbetts
 manager: timlt
 ms.service: iot-hub
@@ -9,50 +9,50 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 06/28/2017
 ms.author: dobett
-ms.openlocfilehash: 410a156d60aa9b17da9c36e043082c291eea4849
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 853754947b8d89af15a8c773a765f33523721e12
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34808107"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39187878"
 ---
-# <a name="send-cloud-to-device-messages-with-iot-hub-java"></a>Odesílání zpráv typu cloud zařízení službou IoT Hub (Java)
+# <a name="send-cloud-to-device-messages-with-iot-hub-java"></a>Odesílání zpráv typu cloud zařízení pomocí služby IoT Hub (Java)
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
 
-Azure IoT Hub je plně spravovaná služba, která pomáhá povolit spolehlivou a zabezpečenou obousměrnou komunikaci mezi miliony zařízení a back-end řešení. [Začínáme s centrem IoT] kurz ukazuje, jak k vytvoření služby IoT hub, zřídit identitu zařízení v ní a kódu aplikaci ze simulovaného zařízení, která odesílá zprávy typu zařízení cloud.
+Azure IoT Hub je plně spravovaná služba, která pomáhá povolit spolehlivou a zabezpečenou obousměrnou komunikaci mezi miliony zařízení a back-endu řešení. [Začínáme se službou IoT Hub] kurz ukazuje postupy při vytvoření služby IoT hub, zřídit identitu zařízení v něm a kódu aplikace simulovaného zařízení, která odesílá zprávy typu zařízení cloud.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-V tomto kurzu vychází [Začínáme s centrem IoT]. Jak ukazuje na:
+Tento kurz vychází [Začínáme se službou IoT Hub]. To se dozvíte, jak do:
 
-* Z back-end vašeho řešení odesílání zpráv typu cloud zařízení na jedno zařízení prostřednictvím služby IoT Hub.
+* Z back-end vašeho řešení odesílat zprávy typu cloud zařízení na jediné zařízení prostřednictvím služby IoT Hub.
 * Příjem zpráv typu cloud zařízení na zařízení.
-* Z back-end vašeho řešení, žádosti o potvrzení o doručení (*zpětné vazby*) pro zprávy odeslané do zařízení ze služby IoT Hub.
+* Z back-end vašeho řešení, požádat o doručení potvrzení (*zpětnou vazbu*) pro zprávy odeslané do zařízení ze služby IoT Hub.
 
-Můžete najít další informace o zprávy typu cloud zařízení v [Příručka vývojáře pro službu IoT Hub][IoT Hub developer guide - C2D].
+Můžete najít další informace o zprávy typu cloud zařízení v [Příručka vývojáře pro IoT Hub][IoT Hub developer guide - C2D].
 
-Na konci tohoto kurzu můžete spustit dvě aplikace konzoly v jazyce Java:
+Na konci tohoto kurzu spusťte dvě konzolové aplikace Java:
 
-* **simulated-device**, upravenou verzi aplikace vytvořená v [Začínáme s centrem IoT], který se připojuje ke službě IoT hub a přijímá zprávy typu cloud zařízení.
-* **Send-c2d-zprávy**, který odešle zprávu cloud zařízení na aplikaci simulovaného zařízení prostřednictvím služby IoT Hub a pak obdrží jeho potvrzení o doručení.
+* **simulated-device**, upravenou verzi aplikaci vytvořenou v [Začínáme se službou IoT Hub], který se připojí ke službě IoT hub a přijímá zprávy typu cloud zařízení.
+* **odeslání c2d-messages**, která odesílá zprávy typu cloud zařízení do aplikace simulovaného zařízení prostřednictvím služby IoT Hub a potom přijímá jeho doručení potvrzení.
 
 > [!NOTE]
-> IoT Hub je podpora v sadě SDK pro mnoho zařízení platformy a jazyky (například C, Javy a JavaScriptu) prostřednictvím SDK pro zařízení Azure IoT. Podrobné pokyny o tom, jak připojit zařízení ke kódu v tomto kurzu a obecně do služby Azure IoT Hub, najdete v článku [Centrum pro vývojáře Azure IoT].
+> IoT Hub má sady SDK podporují mnoho platforem zařízení a jazyky (včetně C, Javy a JavaScriptu) prostřednictvím sady SDK pro zařízení Azure IoT. Podrobné pokyny o tom, jak připojit zařízení ke kódu v tomto kurzu a obecně pro službu Azure IoT Hub, najdete v článku [centrum pro vývojáře Azure IoT].
 
 Pro absolvování tohoto kurzu potřebujete:
 
-* Úplnou verzi práci [Začínáme se službou IoT Hub](iot-hub-java-java-getstarted.md) nebo [zprávy typu zařízení cloud proces IoT Hub](tutorial-routing.md) kurzu.
+* Kompletní funkční verzi [Začínáme se službou IoT Hub](quickstart-send-telemetry-java.md) nebo [zpráv typu zařízení cloud procesu IoT Hub](tutorial-routing.md) kurzu.
 * Nejnovější [Java SE Development Kit 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 * [Maven 3](https://maven.apache.org/install.html)
 * Aktivní účet Azure. (Pokud účet nemáte, můžete si během několika minut vytvořit [bezplatný účet][lnk-free-trial].)
 
 ## <a name="receive-messages-in-the-simulated-device-app"></a>Příjem zpráv v aplikaci simulovaného zařízení
 
-V této části upravíte aplikaci simulovaného zařízení, kterou jste vytvořili v [Začínáme s centrem IoT] pro příjem zpráv typu cloud zařízení ze služby IoT hub.
+V této části upravíte aplikaci simulovaného zařízení, kterou jste vytvořili v [Začínáme se službou IoT Hub] pro příjem zpráv typu cloud zařízení ze služby IoT hub.
 
 1. Pomocí textového editoru otevřete soubor simulated-device\src\main\java\com\mycompany\app\App.java.
 
-2. Přidejte následující **MessageCallback** jako vnořené třída uvnitř **aplikace** třídy. **Provést** metoda je volána, když zařízení obdrží zprávu ze služby IoT Hub. V tomto příkladu zařízení vždy upozorní služby IoT hub splnění zpráva:
+2. Přidejte následující **MessageCallback** třídu jako vnořené třídy uvnitř **aplikace** třídy. **Provést** metoda je voláno, když zařízení přijímá zprávy ze služby IoT Hub. V tomto příkladu zařízení vždy oznámí služby IoT hub dokončení zprávy:
 
     ```java
     private static class AppMessageCallback implements MessageCallback {
@@ -64,7 +64,7 @@ V této části upravíte aplikaci simulovaného zařízení, kterou jste vytvo�
       }
     }
     ```
-3. Změnit **hlavní** metodu pro vytvoření **AppMessageCallback** instance a volání **setMessageCallback** metoda před jeho otevřením klienta následujícím způsobem:
+3. Upravit **hlavní** metodu pro vytvoření **AppMessageCallback** instance a volání **setMessageCallback** metoda předtím, než se otevře klienta následujícím způsobem:
 
     ```java
     client = new DeviceClient(connString, protocol);
@@ -75,7 +75,7 @@ V této části upravíte aplikaci simulovaného zařízení, kterou jste vytvo�
     ```
 
     > [!NOTE]
-    > Pokud použijete protokol HTTPS místo MQTT nebo AMQP jako přenos, **DeviceClient** instance vyhledává zprávy ze služby IoT Hub zřídka (méně než každých 25 minut). Další informace o rozdílech mezi podpora MQTT, AMQP a HTTPS a omezení služby IoT Hub, najdete v článku [Příručka vývojáře pro službu IoT Hub][IoT Hub developer guide - C2D].
+    > Pokud pomocí protokolu HTTPS místo protokol MQTT nebo AMQP k přenosu **DeviceClient** instance kontroluje pro zprávy ze služby IoT Hub zřídka (méně než každých 25 minut). Další informace o rozdílech mezi podpora MQTT, AMQP a protokolu HTTPS a omezení šířky pásma služby IoT Hub, najdete v článku [Příručka vývojáře pro IoT Hub][IoT Hub developer guide - C2D].
 
 4. Aplikaci **simulated-device** pomocí nástroje Maven sestavíte tak, že v příkazovém řádku ve složce simulated-device spustíte následující příkaz:
 
@@ -85,17 +85,17 @@ V této části upravíte aplikaci simulovaného zařízení, kterou jste vytvo�
 
 ## <a name="send-a-cloud-to-device-message"></a>Odeslání zprávy typu cloud zařízení
 
-V této části vytvoříte konzolovou aplikaci Java, která posílání zpráv typu cloud zařízení do aplikaci simulovaného zařízení. Je třeba ID zařízení v zařízení, které jste přidali v [Začínáme s centrem IoT] kurzu. Připojovací řetězec služby IoT Hub pro vaše centrum, které můžete najít v musíte taky [Azure Portal].
+V této části vytvoříte konzolovou aplikaci Java, která odesílá zprávy typu cloud zařízení do aplikace simulovaného zařízení. ID zařízení, zařízení, které jste přidali v kroku budete potřebovat [Začínáme se službou IoT Hub] kurzu. Budete potřebovat připojovací řetězec služby IoT Hub pro vaše centrum, které můžete najít v [Azure Portal].
 
-1. Vytvořte projekt Maven s názvem **send-c2d-zprávy** pomocí následujícího příkazu na příkazovém řádku. Poznámka: Tento příkaz je jeden dlouhý příkaz:
+1. Vytvořte projekt Maven s názvem **odesílat c2d-zprávy** pomocí následujícího příkazu na příkazovém řádku. Všimněte si, že tento příkaz je jeden dlouhý příkaz:
 
     ```cmd/sh
     mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=send-c2d-messages -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
-2. Na příkazovém řádku přejděte do nové složky send-c2d-zprávy.
+2. Na příkazovém řádku přejděte do nové složky odesílat c2d-zprávy.
 
-3. Pomocí textového editoru otevřete soubor pom.xml ve složce send-c2d-zprávy a přidejte následující závislost na **závislosti** uzlu. Přidání závislost umožňuje používat **iothub-java-service-client** balíček ve vaší aplikaci ke komunikaci s vaší služby IoT hub:
+3. Pomocí textového editoru otevřete soubor pom.xml ve složce odesílat c2d-zprávy a přidejte následující závislost **závislosti** uzlu. Přidat závislost vám umožní použít **iothub-java-service-client** balíčku v aplikaci komunikovat s vaší službou IoT hub:
 
     ```xml
     <dependency>
@@ -120,7 +120,7 @@ V této části vytvoříte konzolovou aplikaci Java, která posílání zpráv 
     import java.net.URISyntaxException;
     ```
 
-7. Přidejte následující proměnné na úrovni třídy k **aplikace** třídy a nahraďte **{yourhubconnectionstring}** a **{yourdeviceid}** s hodnotami jste si dříve poznamenali:
+7. Přidejte následující proměnné na úrovni třídy pro **aplikace** třídy, nahraďte **{yourhubconnectionstring}** a **{yourdeviceid}** hodnotami, které vaše uvedené výše:
 
     ```java
     private static final String connectionString = "{yourhubconnectionstring}";
@@ -128,7 +128,7 @@ V této části vytvoříte konzolovou aplikaci Java, která posílání zpráv 
     private static final IotHubServiceClientProtocol protocol = IotHubServiceClientProtocol.AMQPS;
     ```
 
-8. Nahraďte **hlavní** metoda následujícím kódem. Tento kód se připojí ke službě IoT hub, odešle zprávu do zařízení a pak čeká na potvrzení, že zařízení přijme a zpracuje zprávy:
+8. Nahradit **hlavní** metodu s následujícím kódem. Tento kód se připojí ke službě IoT hub, odešle zprávu do vašeho zařízení a pak čeká na potvrzení, že zařízení přijme a zpracuje zprávy:
    
     ```java
     public static void main(String[] args) throws IOException,
@@ -161,7 +161,7 @@ V této části vytvoříte konzolovou aplikaci Java, která posílání zpráv 
     ```
 
     > [!NOTE]
-    > Pro saké na jednoduchost tento kurz neimplementuje žádné zásady opakování. V produkčním kódu, měli byste implementovat zásady opakování (například exponenciálního omezení rychlosti), dle pokynů v článku na webu MSDN [Přechodná chyba zpracování].
+    > Pro saké pro zjednodušení tento kurz neimplementuje žádné zásady opakování. V produkčním kódu by měly implementovat zásady opakování (například exponenciální regresí), jak je navrženo v článku na webu MSDN [zpracování přechodných chyb].
 
 
 9. Aplikaci **simulated-device** pomocí nástroje Maven sestavíte tak, že v příkazovém řádku ve složce simulated-device spustíte následující příkaz:
@@ -182,34 +182,34 @@ Nyní můžete spustit aplikace.
 
     ![Spusťte aplikaci simulovaného zařízení][img-simulated-device]
 
-2. Na příkazovém řádku ve složce send-c2d-zprávy spusťte následující příkaz k odeslání zprávy typu cloud zařízení a počkat na potvrzení o názor:
+2. Na příkazovém řádku ve složce odesílat c2d-zprávy spusťte následující příkaz k odeslání zprávy typu cloud zařízení a počkejte na potvrzení zpětnou vazbu:
 
     ```cmd/sh
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
     ```
 
-    ![Spusťte příkaz k odeslání zprávy typu cloud zařízení][img-send-command]
+    ![Spustit příkaz, který odesílá zprávy typu cloud zařízení][img-send-command]
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu jste zjistili, jak odesílat a přijímat zprávy typu cloud zařízení. 
+V tomto kurzu jste zjistili, jak posílat a přijímat zprávy typu cloud zařízení. 
 
-Příklady dokončení začátku do konce řešení, které pomocí služby IoT Hub, najdete v sekci [Accelerator řešení Azure IoT vzdálené monitorování].
+Příklady kompletní řešení začátku do konce, které používají služby IoT Hub najdete v tématu [Akcelerátor řešení Azure IoT vzdálené monitorování].
 
-Další informace o vývoji řešení službou IoT Hub, najdete v článku [Příručka vývojáře pro službu IoT Hub].
+Další informace o vývoji řešení s využitím služby IoT Hub, najdete v článku [Příručka vývojáře pro IoT Hub].
 
 <!-- Images -->
 [img-simulated-device]: media/iot-hub-java-java-c2d/receivec2d.png
 [img-send-command]:  media/iot-hub-java-java-c2d/sendc2d.png
 <!-- Links -->
 
-[Začínáme s centrem IoT]: iot-hub-java-java-getstarted.md
+[Začínáme se službou IoT Hub]: quickstart-send-telemetry-java.md
 [IoT Hub developer guide - C2D]: iot-hub-devguide-messaging.md
-[Příručka vývojáře pro službu IoT Hub]: iot-hub-devguide.md
+[Příručka vývojáře pro IoT Hub]: iot-hub-devguide.md
 [Centrum pro vývojáře Azure IoT]: http://azure.microsoft.com/develop/iot
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-java
-[Přechodná chyba zpracování]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
+[Zpracování přechodných chyb]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 [Azure Portal]: https://portal.azure.com
-[Accelerator řešení Azure IoT vzdálené monitorování]: https://azure.microsoft.com/documentation/suites/iot-suite/
+[Akcelerátor řešení Azure IoT vzdálené monitorování]: https://azure.microsoft.com/documentation/suites/iot-suite/
 [lnk-maven-service-search]: http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22

@@ -1,6 +1,6 @@
 ---
-title: Zprávy typu cloud zařízení s Azure IoT Hub (.NET) | Microsoft Docs
-description: Postupy pro odesílání zpráv typu cloud zařízení pro zařízení ze služby Azure IoT hub pomocí sady Azure IoT SDK pro .NET. Můžete upravit aplikaci zařízení příjem zpráv typu cloud zařízení a úpravě back-end aplikace k odesílání zpráv typu cloud zařízení.
+title: Zprávy typu cloud zařízení Azure IoT Hub (.NET) | Dokumentace Microsoftu
+description: Jak odesílat zprávy typu cloud zařízení na zařízení ze služby Azure IoT hub pomocí sad Azure IoT SDK pro .NET. Můžete upravit zařízení aplikaci pro příjem zpráv z cloudu do zařízení a upravovat back endové aplikace odesílat zprávy typu cloud zařízení.
 author: fsautomata
 manager: ''
 ms.service: iot-hub
@@ -9,36 +9,36 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/24/2017
 ms.author: elioda
-ms.openlocfilehash: e4bec631550d6ca3dc2c702b3b3f56bd29c59f03
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e2090977813f5335f2170ff543bde19cd8bf123b
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34631883"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39185789"
 ---
-# <a name="send-messages-from-the-cloud-to-your-device-with-iot-hub-net"></a>Odesílání zpráv z cloudu do zařízení s centra IoT (.NET)
+# <a name="send-messages-from-the-cloud-to-your-device-with-iot-hub-net"></a>Odesílání zpráv z cloudu do zařízení pomocí IoT Hub (.NET)
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
 
 ## <a name="introduction"></a>Úvod
-Azure IoT Hub je plně spravovaná služba, která pomáhá povolit spolehlivou a zabezpečenou obousměrnou komunikaci mezi miliony zařízení a back-end řešení. [Začínáme s centrem IoT] kurz ukazuje, jak k vytvoření služby IoT hub, zřídit identitu zařízení v ní a kódu aplikaci ze zařízení, která odesílá zprávy typu zařízení cloud.
+Azure IoT Hub je plně spravovaná služba, která pomáhá povolit spolehlivou a zabezpečenou obousměrnou komunikaci mezi miliony zařízení a back-endu řešení. [Začínáme se službou IoT Hub] kurz ukazuje postupy při vytvoření služby IoT hub, zřídit identitu zařízení v něm a kódu aplikace pro zařízení, která odesílá zprávy typu zařízení cloud.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-V tomto kurzu vychází [Začínáme s centrem IoT]. Jak ukazuje na:
+Tento kurz vychází [Začínáme se službou IoT Hub]. To se dozvíte, jak do:
 
-* Z back-end vašeho řešení odesílání zpráv typu cloud zařízení na jedno zařízení prostřednictvím služby IoT Hub.
+* Z back-end vašeho řešení odesílat zprávy typu cloud zařízení na jediné zařízení prostřednictvím služby IoT Hub.
 * Příjem zpráv typu cloud zařízení na zařízení.
-* Z back-end vašeho řešení, žádosti o potvrzení o doručení (*zpětné vazby*) pro zprávy odeslané do zařízení ze služby IoT Hub.
+* Z back-end vašeho řešení, požádat o doručení potvrzení (*zpětnou vazbu*) pro zprávy odeslané do zařízení ze služby IoT Hub.
 
-Můžete najít další informace o zprávy typu cloud zařízení v [Příručka vývojáře pro službu IoT Hub][IoT Hub developer guide - C2D].
+Můžete najít další informace o zprávy typu cloud zařízení v [Příručka vývojáře pro IoT Hub][IoT Hub developer guide - C2D].
 
-Na konci tohoto kurzu můžete spustit dvě aplikace konzoly .NET:
+Na konci tohoto kurzu spusťte dvě konzolové aplikace .NET:
 
-* **SimulatedDevice**, upravenou verzi aplikace vytvořená v [Začínáme s centrem IoT], který se připojuje ke službě IoT hub a přijímá zprávy typu cloud zařízení.
-* **SendCloudToDevice**, který odešle zprávu cloud zařízení do aplikace zařízení prostřednictvím služby IoT Hub a pak obdrží jeho potvrzení o doručení.
+* **SimulatedDevice**, upravenou verzi aplikaci vytvořenou v [Začínáme se službou IoT Hub], který se připojí ke službě IoT hub a přijímá zprávy typu cloud zařízení.
+* **SendCloudToDevice**, která odesílá zprávy typu cloud zařízení do aplikace pro zařízení prostřednictvím služby IoT Hub a potom přijímá jeho doručení potvrzení.
 
 > [!NOTE]
-> IoT Hub je podpora v sadě SDK pro mnoho zařízení platformy a jazyky (například C, Javy a JavaScriptu) prostřednictvím [Azure SDK zařízení IoT]. Podrobné pokyny o tom, jak připojit zařízení ke kódu v tomto kurzu a obecně do služby Azure IoT Hub, najdete v článku [Příručka vývojáře pro službu IoT Hub].
+> IoT Hub má sady SDK podporují mnoho platforem zařízení a jazycích (včetně C, Javy a JavaScriptu) prostřednictvím [Azure IoT SDK pro zařízení]. Podrobné pokyny o tom, jak připojit zařízení ke kódu v tomto kurzu a obecně pro službu Azure IoT Hub, najdete v článku [Příručka vývojáře pro IoT Hub].
 > 
 > 
 
@@ -47,10 +47,10 @@ Pro absolvování tohoto kurzu potřebujete:
 * Visual Studio 2015 nebo Visual Studio 2017
 * Aktivní účet Azure. (Pokud účet nemáte, můžete si během několika minut vytvořit [bezplatný účet][lnk-free-trial].)
 
-## <a name="receive-messages-in-the-device-app"></a>Příjem zpráv v aplikaci zařízení
-V této části upravíte zařízení aplikaci, kterou jste vytvořili v [Začínáme s centrem IoT] pro příjem zpráv typu cloud zařízení ze služby IoT hub.
+## <a name="receive-messages-in-the-device-app"></a>Příjem zpráv do aplikace pro zařízení
+V této části upravíte zařízení aplikaci, kterou jste vytvořili v [Začínáme se službou IoT Hub] pro příjem zpráv typu cloud zařízení ze služby IoT hub.
 
-1. V sadě Visual Studio v **SimulatedDevice** projekt, přidejte následující metodu do **Program** třídy.
+1. V sadě Visual Studio v **SimulatedDevice** projektu, přidejte následující metodu do **Program** třídy.
    
         private static async void ReceiveC2dAsync()
         {
@@ -68,40 +68,40 @@ V této části upravíte zařízení aplikaci, kterou jste vytvořili v [Začí
             }
         }
    
-    `ReceiveAsync` Metoda přijaté zprávy asynchronně vrátí v čase, který je přijatých zařízení. Vrátí *null* po specifiable časový limit (v takovém případě se používá výchozí minutu). Pokud aplikace obdrží *null*, by měly být nadále čekat na nové zprávy. Tento požadavek je důvody, proč `if (receivedMessage == null) continue` řádku.
+    `ReceiveAsync` Metody asynchronně vrací přijaté zprávy v době, které se získaly v zařízení. Vrátí *null* po specifiable časový limit (v tomto případě je použita výchozí jednu minutu). Když aplikace obdrží *null*, by měly být nadále čekat pro nové zprávy. Tento požadavek není důvod `if (receivedMessage == null) continue` řádku.
    
-    Volání `CompleteAsync()` IoT Hub upozorní, že zpráva byla úspěšně zpracována. Zprávu lze bezpečně odebrat z fronty zařízení. Pokud se něco stalo, která zabránila aplikace zařízení dokončení zpracování zprávy, IoT Hub zajišťuje ho znovu. Je důležité, že zpráva zpracování logiky v aplikaci zařízení *idempotent*tak, aby přijímá stejnou zprávu vícekrát vytváří stejný výsledek. Aplikace můžete také dočasně abandon zprávu, což vede k zachování zprávu ve frontě pro budoucí používání služby IoT hub. Nebo můžete aplikaci odmítnout zprávu, která trvale odstraní zprávu z fronty. Další informace o životním cyklu zprávy typu cloud zařízení najdete v tématu [Příručka vývojáře pro službu IoT Hub][IoT Hub developer guide - C2D].
+    Volání `CompleteAsync()` upozorní služby IoT Hub, že zpráva byla úspěšně zpracována. Zpráva může bezpečně odebrána z fronty zařízení. Pokud se něco stalo, která znemožňuje dokončení zpracování zprávy aplikace pro zařízení služby IoT Hub doručí ho znovu. Pak je důležité zprávy zpracování logiky v aplikaci zařízení *idempotentní*tak, aby příjem stejná zpráva několikrát vytváří stejný výsledek. Aplikace můžete také dočasně opustit zprávu, což vede k zachování zprávu ve frontě pro budoucí využití služby IoT hub. Nebo aplikaci můžete odmítnout zprávu, která se trvale odstraní zprávu z fronty. Další informace o životním cyklu zprávy typu cloud zařízení, najdete v článku [Příručka vývojáře pro IoT Hub][IoT Hub developer guide - C2D].
    
    > [!NOTE]
-   > Při použití protokolu HTTPS místo MQTT nebo AMQP přenos, `ReceiveAsync` metoda vrátí okamžitě. Podporované vzor pro zprávy typu cloud zařízení s protokolem HTTPS je občas připojená zařízení, které zkontrolujte zprávy zřídka (méně než každých 25 minut). Vydání další HTTPS přijme výsledky v IoT Hub, omezení požadavků. Další informace o rozdílech mezi podpora MQTT, AMQP a HTTPS a omezení služby IoT Hub, najdete v článku [Příručka vývojáře pro službu IoT Hub][IoT Hub developer guide - C2D].
+   > Při použití protokolu HTTPS místo protokol MQTT nebo AMQP jako přenosového mechanismu, `ReceiveAsync` metoda vrátí hodnotu okamžitě. Podporovaný model pro zprávy typu cloud zařízení pomocí protokolu HTTPS se přerušovaně připojeným zařízením, které kontrolují zřídka zprávy (méně než každých 25 minut). Vydávání další HTTPS přijímá výsledky ve službě IoT Hub omezování požadavků. Další informace o rozdílech mezi podpora MQTT, AMQP a protokolu HTTPS a omezení šířky pásma služby IoT Hub, najdete v článku [Příručka vývojáře pro IoT Hub][IoT Hub developer guide - C2D].
    > 
    > 
-2. Přidejte následující metodu v **hlavní** metoda, těsně před `Console.ReadLine()` řádku:
+2. Přidejte následující metodu v **hlavní** metody, těsně před `Console.ReadLine()` řádku:
    
         ReceiveC2dAsync();
 
 > [!NOTE]
-> Pro saké na jednoduchost tento kurz neimplementuje žádné zásady opakování. V produkčním kódu, měli byste implementovat zásady opakování (například exponenciálního omezení rychlosti), dle pokynů v článku na webu MSDN [Přechodná chyba zpracování].
+> Pro saké pro zjednodušení tento kurz neimplementuje žádné zásady opakování. V produkčním kódu by měly implementovat zásady opakování (například exponenciální regresí), jak je navrženo v článku na webu MSDN [zpracování přechodných chyb].
 > 
 > 
 
 ## <a name="send-a-cloud-to-device-message"></a>Odeslání zprávy typu cloud zařízení
-V této části napíšete konzolovou aplikaci .NET, která odesílá zprávy typu cloud zařízení na zařízení aplikaci.
+V této části napíšete konzolovou aplikaci .NET, která odesílá zprávy typu cloud zařízení do aplikace pro zařízení.
 
-1. V aktuálním řešení sady Visual Studio, vytvoření projektu Visual C# plochy aplikace pomocí **konzolové aplikace** šablona projektu. Název projektu **SendCloudToDevice**.
+1. V aktuálním řešení sady Visual Studio vytvořte projekt desktopové aplikace Visual C# s použitím **konzolovou aplikaci** šablony projektu. Pojmenujte projekt **SendCloudToDevice**.
    
     ![Nový projekt v sadě Visual Studio][20]
-2. V Průzkumníku řešení klikněte pravým tlačítkem na řešení a pak klikněte na tlačítko **spravovat balíčky NuGet pro řešení...** . 
+2. V Průzkumníku řešení klikněte pravým tlačítkem myši na řešení a potom klikněte na tlačítko **spravovat balíčky NuGet pro řešení...** . 
    
-    Tato akce otevře **spravovat balíčky NuGet** okno.
+    Tato akce otevře **spravovat balíčky NuGet** okna.
 3. Vyhledejte **Microsoft.Azure.Devices**, klikněte na tlačítko **nainstalovat**a přijměte podmínky použití. 
    
-    To stáhne, nainstaluje a přidá odkaz na [balíček NuGet sady SDK služby Azure IoT].
+    Toto stáhne, nainstaluje a přidá odkaz na [balíček NuGet sady SDK služby Azure IoT].
 
 4. Do horní části souboru **Program.cs** přidejte následující příkaz `using`:
    
         using Microsoft.Azure.Devices;
-5. Do třídy **Program** přidejte následující pole. Nahraďte hodnotu zástupného symbolu připojovacím řetězcem IoT hub z [Začínáme s centrem IoT]:
+5. Do třídy **Program** přidejte následující pole. Nahraďte hodnotu zástupného symbolu připojovacím řetězcem IoT hub z [Začínáme se službou IoT Hub]:
    
         static ServiceClient serviceClient;
         static string connectionString = "{iot hub connection string}";
@@ -113,7 +113,7 @@ V této části napíšete konzolovou aplikaci .NET, která odesílá zprávy ty
             await serviceClient.SendAsync("myFirstDevice", commandMessage);
         }
    
-    Tato metoda odesílá novou zprávu typu cloud zařízení na zařízení s ID, `myFirstDevice`. Tento parametr změnit, pouze v případě, že se změnil z používaný v [Začínáme s centrem IoT].
+    Tato metoda odesílá novou zprávu typu cloud zařízení na zařízení s ID, `myFirstDevice`. Tento parametr měnit, jenom v případě, že jste změnili než jaký se používá v [Začínáme se službou IoT Hub].
 7. Nakonec do metody **Main** přidejte následující řádky:
    
         Console.WriteLine("Send Cloud-to-Device message\n");
@@ -123,17 +123,17 @@ V této části napíšete konzolovou aplikaci .NET, která odesílá zprávy ty
         Console.ReadLine();
         SendCloudToDeviceMessageAsync().Wait();
         Console.ReadLine();
-8. V sadě Visual Studio, klikněte pravým tlačítkem na řešení a vyberte **nastavit projekty po spuštění...** . Vyberte **více projektů po spuštění**, vyberte **spustit** akce pro **ReadDeviceToCloudMessages**, **SimulatedDevice**, a **SendCloudToDevice**.
-9. Stiskněte klávesu **F5**. Všechny tři aplikace by se měl spustit. Vyberte **SendCloudToDevice** windows a stiskněte klávesu **Enter**. Měli byste vidět zprávu přijímá aplikace zařízení.
+8. Ze sady Visual Studio, klikněte pravým tlačítkem na řešení a vyberte **nastavit projekty po spuštění...** . Vyberte **více projektů po spuštění**a pak **Start** akce pro **ReadDeviceToCloudMessages**, **SimulatedDevice**, a **SendCloudToDevice**.
+9. Stisknutím klávesy **F5**. Všechny tři aplikace by měla začít. Vyberte **SendCloudToDevice** windows a klávesu **Enter**. Měli byste vidět zprávy přijímají aplikací zařízení.
    
-   ![Zprávy přijímající aplikace][21]
+   ![Přijímající aplikaci zprávu][21]
 
 ## <a name="receive-delivery-feedback"></a>Přijímat zpětnou vazbu o doručení
-Je možné k potvrzení žádosti o doručení (nebo vypršení platnosti) ze služby IoT Hub pro každou zprávu cloud zařízení. Tato možnost umožňuje back-end řešení snadno informovat opakovat, nebo kompenzace logiku. Další informace o zpětné vazbě z cloudu do zařízení, najdete v článku [Příručka vývojáře pro službu IoT Hub][IoT Hub developer guide - C2D].
+Je možné žádost o potvrzení doručování (nebo vypršení platnosti) ze služby IoT Hub pro každou zprávu typu cloud zařízení. Tato možnost povolí back-end řešení snadno informovat logiku opakování nebo kompenzaci. Další informace o zpětnou vazbu typu cloud zařízení, najdete v článku [Příručka vývojáře pro IoT Hub][IoT Hub developer guide - C2D].
 
-V této části upravíte **SendCloudToDevice** aplikaci žádosti o zpětnou vazbu a přijímat ze služby IoT Hub.
+V této části můžete změnit **SendCloudToDevice** aplikaci žádost o zpětnou vazbu a přijímat je ze služby IoT Hub.
 
-1. V sadě Visual Studio v **SendCloudToDevice** projekt, přidejte následující metodu do **Program** třídy.
+1. V sadě Visual Studio v **SendCloudToDevice** projektu, přidejte následující metodu do **Program** třídy.
    
         private async static void ReceiveFeedbackAsync()
         {
@@ -153,28 +153,28 @@ V této části upravíte **SendCloudToDevice** aplikaci žádosti o zpětnou va
             }
         }
    
-    Všimněte si, že tento vzor receive se shoduje s klíčem pro příjem zpráv typu cloud zařízení z aplikace zařízení.
-2. Přidejte následující metodu v **hlavní** metoda hned po `serviceClient = ServiceClient.CreateFromConnectionString(connectionString)` řádku:
+    Všimněte si, že tento model receive je stejný, slouží k přijímání zpráv z cloudu do zařízení z aplikace pro zařízení.
+2. Přidejte následující metodu v **hlavní** metodu, `serviceClient = ServiceClient.CreateFromConnectionString(connectionString)` řádku:
    
         ReceiveFeedbackAsync();
-3. K žádosti o zpětnou vazbu pro doručení zprávy typu cloud zařízení, budete muset určit na vlastnost ve **SendCloudToDeviceMessageAsync** metoda. Přidejte následující řádek, hned po `var commandMessage = new Message(...);` řádku:
+3. Na žádost o zpětnou vazbu k doručení zpráv typu cloud zařízení, je nutné zadat vlastnost **SendCloudToDeviceMessageAsync** metody. Přidejte následující řádek hned po `var commandMessage = new Message(...);` řádku:
    
         commandMessage.Ack = DeliveryAcknowledgement.Full;
-4. Spuštění aplikace stisknutím **F5**. Měli byste vidět všechny tři aplikace spustit. Vyberte **SendCloudToDevice** windows a stiskněte klávesu **Enter**. Měli byste vidět zprávu přijímání aplikace zařízení a za několik sekund, přijímá zprávy zpětnou vazbu vaše **SendCloudToDevice** aplikace.
+4. Spouštění aplikací stisknutím kombinace kláves **F5**. Měli byste vidět všechny tři aplikace spustit. Vyberte **SendCloudToDevice** windows a klávesu **Enter**. By se zobrazit zpráva přijímají aplikací zařízení a po několika sekundách se přijal zprávu zpětnou vazbu vaše **SendCloudToDevice** aplikace.
    
-   ![Zprávy přijímající aplikace][22]
+   ![Přijímající aplikaci zprávu][22]
 
 > [!NOTE]
-> Pro saké na jednoduchost tento kurz neimplementuje žádné zásady opakování. V produkčním kódu, měli byste implementovat zásady opakování (například exponenciálního omezení rychlosti), dle pokynů v článku na webu MSDN [Přechodná chyba zpracování].
+> Pro saké pro zjednodušení tento kurz neimplementuje žádné zásady opakování. V produkčním kódu by měly implementovat zásady opakování (například exponenciální regresí), jak je navrženo v článku na webu MSDN [zpracování přechodných chyb].
 > 
 > 
 
 ## <a name="next-steps"></a>Další postup
-V tomto kurzu jste zjistili, jak odesílat a přijímat zprávy typu cloud zařízení. 
+V tomto kurzu jste zjistili, jak posílat a přijímat zprávy typu cloud zařízení. 
 
-Příklady dokončení začátku do konce řešení, které pomocí služby IoT Hub, najdete v sekci [Accelerator řešení Azure IoT vzdálené monitorování].
+Příklady kompletní řešení začátku do konce, které používají služby IoT Hub najdete v tématu [Akcelerátor řešení Azure IoT vzdálené monitorování].
 
-Další informace o vývoji řešení službou IoT Hub, najdete v článku [Příručka vývojáře pro službu IoT Hub].
+Další informace o vývoji řešení s využitím služby IoT Hub, najdete v článku [Příručka vývojáře pro IoT Hub].
 
 <!-- Images -->
 [20]: ./media/iot-hub-csharp-csharp-c2d/create-identity-csharp1.png
@@ -184,12 +184,12 @@ Další informace o vývoji řešení službou IoT Hub, najdete v článku [Př�
 <!-- Links -->
 
 [Balíček NuGet sady SDK služby Azure IoT]: https://www.nuget.org/packages/Microsoft.Azure.Devices/
-[Přechodná chyba zpracování]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
+[Zpracování přechodných chyb]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 
 [IoT Hub developer guide - C2D]: iot-hub-devguide-messaging.md
 
-[Příručka vývojáře pro službu IoT Hub]: iot-hub-devguide.md
-[Začínáme s centrem IoT]: iot-hub-csharp-csharp-getstarted.md
+[Příručka vývojáře pro IoT Hub]: iot-hub-devguide.md
+[Začínáme se službou IoT Hub]: quickstart-send-telemetry-dotnet.md
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
-[Accelerator řešení Azure IoT vzdálené monitorování]: https://docs.microsoft.com/azure/iot-suite/
-[Azure SDK zařízení IoT]: iot-hub-devguide-sdks.md
+[Akcelerátor řešení Azure IoT vzdálené monitorování]: https://docs.microsoft.com/azure/iot-suite/
+[Azure IoT SDK pro zařízení]: iot-hub-devguide-sdks.md

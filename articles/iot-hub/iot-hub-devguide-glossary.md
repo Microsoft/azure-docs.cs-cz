@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 91a89d5db7c763fc3fe275d6c01f5fe9dd9af3af
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 1dae926a3a368e518877b210fb1caf487688750c
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39125913"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39187362"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Glosář termínů služby IoT Hub
 Tento článek uvádí některé běžné pojmy používané v článcích služby IoT Hub.
@@ -151,7 +151,7 @@ Služba IoT hub zpřístupní více [koncové body](iot-hub-devguide-endpoints.m
 Přečíst [typu zařízení cloud](#device-to-cloud) zprávy odeslané do služby IoT hub, můžete připojit k koncový bod na rozbočovače a číst tyto zprávy použít libovolnou metodu kompatibilní s centrem událostí. Zahrnují metody kompatibilního s centrem událostí pomocí [sady SDK pro Event Hubs](../event-hubs/event-hubs-programming-guide.md) a [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md).
 
 ## <a name="field-gateway"></a>Brána pole
-Hraniční brána umožňuje propojení pro zařízení, která se nemůže připojit přímo na [služby IoT Hub](#iot-hub) a je obvykle nasazena místně ve vašich zařízeních. Další informace najdete v tématu [co je Azure IoT Hub?](iot-hub-what-is-iot-hub.md)
+Hraniční brána umožňuje propojení pro zařízení, která se nemůže připojit přímo na [služby IoT Hub](#iot-hub) a je obvykle nasazena místně ve vašich zařízeních. Další informace najdete v tématu [co je Azure IoT Hub?](about-iot-hub.md)
 
 ## <a name="free-account"></a>Bezplatný účet
 Můžete vytvořit [bezplatný účet Azure](https://azure.microsoft.com/pricing/free-trial/) dokončování služby IoT Hub a experimentovat s služby IoT Hub (a dalších služeb Azure).
@@ -168,7 +168,7 @@ Interaktivní zpráva [typu cloud zařízení](#cloud-to-device) zprávu, která
 [!INCLUDE [azure-iot-hub-edge-glossary-includes](../../includes/azure-iot-hub-edge-glossary-includes.md)]
 
 ## <a name="iot-hub"></a>IoT Hub
-IoT Hub je plně spravovaná služba Azure, která umožňuje spolehlivou a zabezpečenou obousměrnou komunikaci mezi miliony zařízení a back-end řešení. Další informace najdete v tématu [co je Azure IoT Hub?](iot-hub-what-is-iot-hub.md) Pomocí vaší [předplatného Azure](#subscription), můžete vytvořit IoT hub pro zpracování IoT úloh zasílání zpráv.
+IoT Hub je plně spravovaná služba Azure, která umožňuje spolehlivou a zabezpečenou obousměrnou komunikaci mezi miliony zařízení a back-end řešení. Další informace najdete v tématu [co je Azure IoT Hub?](about-iot-hub.md) Pomocí vaší [předplatného Azure](#subscription), můžete vytvořit IoT hub pro zpracování IoT úloh zasílání zpráv.
 
 ## <a name="iot-hub-metrics"></a>Metriky služby IoT Hub
 [Metriky služby IoT Hub](iot-hub-metrics.md) poskytují data o stavu centra IoT hub ve vašich [předplatného Azure](#subscription). Metriky služby IoT Hub umožňují posouzení celkového stavu služby a zařízení k němu připojená. Metriky služby IoT Hub můžete vidět, co se děje ve vašem Centru IoT a zkoumání příčin problémů bez nutnosti kontaktovat podporu Azure.
@@ -180,7 +180,7 @@ IoT Hub je plně spravovaná služba Azure, která umožňuje spolehlivou a zabe
 Můžete použít [rozhraní REST API služby IoT Hub prostředků](https://docs.microsoft.com/rest/api/iothub/iothubresource) ke správě centra IoT hub ve vaší [předplatného Azure](#subscription) provádění operací, jako je vytváření, aktualizaci a odstraňování rozbočovače.
 
 ## <a name="iot-solution-accelerators"></a>Akcelerátory řešení IoT
-Akcelerátory řešení Azure IoT zabalit společně několik služeb Azure do řešení. Tato řešení umožňují rychle začít s implementací začátku do konce běžné scénáře IoT. Další informace najdete v tématu [co jsou akcelerátory řešení Azure IoT?](../iot-accelerators/iot-accelerators-what-are-solution-accelerators.md)
+Akcelerátory řešení Azure IoT zabalit společně několik služeb Azure do řešení. Tato řešení umožňují rychle začít s implementací začátku do konce běžné scénáře IoT. Další informace najdete v tématu [co jsou akcelerátory řešení Azure IoT?](../iot-accelerators/about-iot-accelerators.md)
 
 ## <a name="the-iot-extension-for-azure-cli-20"></a>Rozšíření IoT pro Azure CLI 2.0
 [Rozšíření IoT pro Azure CLI 2.0](https://github.com/Azure/azure-iot-cli-extension) je nástroj pro různé platformy, příkazového řádku. Nástroj umožňuje spravovat vaše zařízení [registr identit](#identity-registry), odesílání a příjem zpráv a souborů ze zařízení a monitorovat vaše operace centra IoT.
@@ -201,7 +201,7 @@ Fyzické zařízení je skutečné zařízení, jako je Raspberry Pi, která se 
 Když se připojíte ke koncovému bodu určených pro zařízení nebo přístupem k služby ve službě IoT hub, vaše [připojovací řetězec](#connection-string) klíčem k udělení přístupu. Když přidáte zařízení, které chcete [registr identit](#identity-registry) nebo přidat [sdílené zásady přístupu](#shared-access-policy) k centru, generuje tato služba primární a sekundární klíč. Existence dvou klíčů umožňuje přejít z jednoho klíče na jiné při aktualizaci klíče, aniž by ztratily přístup ke službě IoT hub.
 
 ## <a name="protocol-gateway"></a>Brána protokolu
-Brána protokolu obvykle nasazuje v cloudu a poskytuje protokol překladatelské služby pro připojení k zařízení [služby IoT Hub](#iot-hub). Další informace najdete v tématu [co je Azure IoT Hub?](iot-hub-what-is-iot-hub.md)
+Brána protokolu obvykle nasazuje v cloudu a poskytuje protokol překladatelské služby pro připojení k zařízení [služby IoT Hub](#iot-hub). Další informace najdete v tématu [co je Azure IoT Hub?](about-iot-hub.md)
 
 ## <a name="quotas-and-throttling"></a>Kvóty a omezování
 Existují různé [kvóty](iot-hub-devguide-quotas-throttling.md) , které se týkají používání [služby IoT Hub](#iot-hub), mnoho kvót se liší v závislosti na úrovni služby IoT hub. [IoT Hub](#iot-hub) platí také [omezuje](iot-hub-devguide-quotas-throttling.md) na používání služby za běhu.
