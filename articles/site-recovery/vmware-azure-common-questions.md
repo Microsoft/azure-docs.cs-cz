@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.date: 07/06/2018
+ms.date: 07/19/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: dc316df754ea0b8630abe341dc5ce6b0adffa685
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
-ms.translationtype: HT
+ms.openlocfilehash: 1c52a97bce1b18e16cb5109049f36e146165dff4
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920031"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39172125"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Časté otázky – VMware pro replikaci Azure
 
@@ -95,8 +95,12 @@ Ano, můžete vyloučit disky z replikace.
 ### <a name="can-i-replicate-vms-with-dynamic-disks"></a>Můžete replikovat virtuální počítače s dynamickými disky?
 Dynamické disky se dají replikovat. Disk s operačním systémem musí být základní disk.
 
-### <a name="can-i-add-a-new-vm-to-an-existing-replication-group"></a>Můžete přidat nový virtuální počítač do existující skupiny replikace?
-Ano.
+### <a name="if-i-use-replication-groups-for-multi-vm-consistency-can-i-add-a-new-vm-to-an-existing-replication-group"></a>Pokud budu používat skupiny replikace konzistenci, můžu přidat nový virtuální počítač do existující skupiny replikace?
+Ano, můžete přidat nové virtuální počítače do existující skupiny replikace, když povolíte replikaci pro ně. Virtuální počítač nelze přidat do existující skupiny replikace po replikaci se zahájí, a nelze vytvořit replikační skupinu pro stávající virtuální počítače.
+
+### <a name="can-i-modify-vms-that-are-replicating-by-adding-or-resizing-disks"></a>Můžete upravit virtuální počítače, které se replikují přidáním nebo změnou velikosti disků?
+
+Pro replikaci VMware do Azure můžete upravit velikost disku. Pokud chcete přidat nové disky, které potřebujete přidat disk a znovu povolit ochranu virtuálního počítače.
 
 ## <a name="configuration-server"></a>Konfigurační server
 
