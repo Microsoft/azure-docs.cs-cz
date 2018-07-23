@@ -1,6 +1,6 @@
 ---
-title: Vytvoření datových sad v Azure Data Factory | Microsoft Docs
-description: Postup vytvoření datových sad v Azure Data Factory s příklady, které používají vlastnosti, například posun a anchorDateTime.
+title: Vytvoření datové sady ve službě Azure Data Factory | Dokumentace Microsoftu
+description: Zjistěte, jak vytvářet datové sady ve službě Azure Data Factory s příklady, které používají vlastnosti, jako je posun a anchorDateTime.
 services: data-factory
 documentationcenter: ''
 author: sharonlo101
@@ -15,11 +15,11 @@ ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: f33ff3f588dac49e295a5aa96d71557d32407e46
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37046982"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38667434"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Datové sady ve službě Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -27,28 +27,28 @@ ms.locfileid: "37046982"
 > * [Verze 2 (aktuální verze)](../concepts-datasets-linked-services.md)
 
 > [!NOTE]
-> Tento článek se týká verze 1 služby Data Factory. Pokud používáte aktuální verze služby Data Factory, přečtěte si téma [datové sady v V2](../concepts-datasets-linked-services.md).
+> Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte si téma [datové sady ve V2](../concepts-datasets-linked-services.md).
 
-Tento článek popisuje, jaké datové sady se, jak jsou definovány ve formátu JSON, a způsobu jejich použití v Azure Data Factory kanálů. Poskytuje podrobnosti o jednotlivých částech (například struktura, dostupnost a zásad) v definici JSON datové sady. Tento článek také poskytuje příklady pro použití **posun**, **anchorDateTime**, a **styl** vlastnosti v definici JSON datové sady.
+Tento článek popisuje, jaké datové sady se, jak jsou definované ve formátu JSON, a jak se používají v kanály Azure Data Factory. Poskytuje podrobnosti o každé části (například struktura, dostupnost a zásady) v definici JSON datové sady. Tento článek také obsahuje příklady pro použití **posun**, **anchorDateTime**, a **styl** vlastnosti v definici JSON datové sady.
 
 > [!NOTE]
-> Pokud jste nový objekt pro vytváření dat, najdete v části [Úvod do Azure Data Factory](data-factory-introduction.md) Přehled. Pokud nemáte praktických zkušeností s vytvářením objektů pro vytváření dat, vám může pomoci lépe porozumět načtením [kurzu transformaci dat](data-factory-build-your-first-pipeline.md) a [kurzu přesun dat](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md). 
+> Pokud do služby Data Factory začínáte, přečtěte si téma [Úvod do služby Azure Data Factory](data-factory-introduction.md) Přehled. Pokud nemáte praktické zkušenosti s vytvářením datové továrny, můžete získat lepší pochopení článku [kurzu transformace dat](data-factory-build-your-first-pipeline.md) a [kurzu přesunu dat](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md). 
 
 ## <a name="overview"></a>Přehled
-Objekt pro vytváření dat může mít jeden nebo víc kanálů. A **kanálu** je logické seskupení **aktivity** společně provádějí úlohy. Aktivity v kanálu definují akce, které se mají provést s vašimi daty. Může například pomocí aktivity kopírování zkopírovat data z místního serveru SQL do úložiště objektů Blob v Azure. Pak můžete použít aktivitu Hive, která se spouští skript Hive v clusteru Azure HDInsight pro zpracování dat z úložiště objektů Blob nevytvořila výstupní data. Nakonec můžete použít druhý aktivity kopírování zkopírovat výstupní data do Azure SQL Data Warehouse, na které business intelligence (BI), vytváření sestav jsou integrované řešení. Další informace o kanály a aktivity, najdete v části [kanály a aktivity v Azure Data Factory](data-factory-create-pipelines.md).
+Objekt pro vytváření dat může mít jeden nebo víc kanálů. A **kanálu** je logické seskupení **aktivity** , které dohromady provádějí určitou úlohu. Aktivity v kanálu definují akce, které se mají provést s vašimi daty. Například můžete použít aktivitu kopírování ke kopírování dat z místního SQL serveru do úložiště objektů Blob v Azure. Potom můžete použít aktivitu Hivu, která spouští skript Hive v clusteru Azure HDInsight ke zpracování dat z úložiště objektů Blob a generuje výstupní data. Nakonec můžete použít druhou aktivitu kopírování ke kopírování dat výstup do Azure SQL Data Warehouse, na které business intelligence (BI), vytváření sestav jsou integrované řešení. Další informace o kanálech a aktivitách najdete v tématu [kanály a aktivity ve službě Azure Data Factory](data-factory-create-pipelines.md).
 
-Aktivita může trvat vstup nula nebo více **datové sady**a vytvoří výstupní datové sady. Představuje vstupní datová sada vstupem pro aktivitu v kanálu a výstupní datové reprezentuje výstup aktivity. Datové sady identifikují data v rámci různých úložišť dat, jako jsou tabulky, soubory, složky a dokumenty. Například datové sadě služby Azure Blob Určuje kontejner objektů blob a složky v úložišti objektů Blob, ze kterého by měl kanálu číst data. 
+Každá aktivita může mít nula nebo více vstupních **datových sad**a vytvoří výstupní datové sady. Vstupní datová sada představuje vstup pro aktivitu v kanálu a výstupní datovou sadu představuje výstup pro aktivitu. Datové sady identifikují data v rámci různých úložišť dat, jako jsou tabulky, soubory, složky a dokumenty. Datová sada služby Azure Blob například Určuje kontejner objektů blob a složku v úložišti objektů Blob, ze kterého by měl kanál číst data. 
 
-Než vytvoříte datové sady, vytvořit **propojená služba** propojit data store k objektu pro vytváření dat. Propojené služby jsou velmi podobné připojovacím řetězcům, které definují informace o připojení, které služba Data Factory potřebuje pro připojení k externím prostředkům. Datové sady identifikují dat v rámci propojených úložištích dat, jako jsou tabulky SQL, souborů, složek a dokumentů. Například Azure Storage propojená služba propojuje účet úložiště do služby data factory. Datové sadě služby Azure Blob představuje kontejner objektů blob a složky, která obsahuje vstupní objekty BLOB ke zpracování. 
+Než vytvoříte datovou sadu, vytvořte **propojená služba** k propojení vašeho úložiště dat do služby data factory. Propojené služby jsou velmi podobné připojovacím řetězcům, které definují informace o připojení, které služba Data Factory potřebuje pro připojení k externím prostředkům. Datové sady identifikují data v rámci propojených úložištích dat, jako jsou tabulky SQL, souborů, složek a dokumenty. Například Azure Storage propojená služba propojuje účet úložiště do služby data factory. Datová sada služby Azure Blob představuje kontejner objektů blob a složku obsahující vstupní objekty BLOB ke zpracování. 
 
-Tady je ukázkový scénář. Ke zkopírování dat z úložiště objektů Blob k databázi SQL, vytvoříte dvě propojené služby: úložiště Azure a Azure SQL Database. Pak vytvořte dvě datové sady: datovou sadu objektu Blob Azure, (který odkazuje na službu Azure Storage, propojené) a tabulky SQL Azure datovou sadu (odkazuje na službu Azure SQL Database propojené). Azure Storage a Azure SQL Database propojené služby obsahovat připojovací řetězce, které objekt pro vytváření dat používá za běhu k připojení k Azure Storage a Azure SQL Database, v uvedeném pořadí. Datovou sadu objektu Blob Azure Určuje kontejner objektů blob a objektů blob složku, která obsahuje vstupní objekty BLOB ve službě Blob storage. Datová sada tabulky SQL Azure Určuje tabulku SQL ve vaší databázi SQL, na které má zkopírovat data.
+Tady je ukázkový scénář. Ke zkopírování dat z úložiště objektů Blob do služby SQL database, vytvoříte dvě propojené služby: Azure Storage a Azure SQL Database. Vytvořte dvě datové sady: Datová sada objektů Blob v Azure (což odkazuje propojenou službu Azure Storage) a datová sada tabulky SQL Azure (což odkazuje na službu Azure SQL Database, která je propojená). Azure Storage a Azure SQL Database propojené služby obsahují připojovací řetězce, které služby Data Factory používá za běhu pro připojení k Azure Storage a Azure SQL Database, v uvedeném pořadí. Datová sada Azure Blob Určuje kontejner objektů blob a složka objektů blob obsahující vstupní objekty BLOB v úložišti objektů Blob. Datová sada tabulky SQL Azure Určuje tabulku SQL ve službě SQL database, ke které se mají zkopírovat data.
 
-Následující obrázek znázorňuje vztahy mezi kanálu, aktivity, datové sady a propojené služby objektu pro vytváření dat: 
+Následující diagram znázorňuje vztahy mezi kanálu, aktivit, datové sady a propojené služby ve službě Data Factory: 
 
-![Vztah mezi kanálu, aktivity, datové sady, propojených služeb](media/data-factory-create-datasets/relationship-between-data-factory-entities.png)
+![Vztah mezi kanálu, aktivita, datové sady, propojené služby](media/data-factory-create-datasets/relationship-between-data-factory-entities.png)
 
 ## <a name="dataset-json"></a>JSON datové sady
-Datové sady ve službě Data Factory je definováno ve formátu JSON následujícím způsobem:
+Datové sady ve službě Data Factory je definovaná ve formátu JSON následujícím způsobem:
 
 ```json
 {
@@ -78,20 +78,20 @@ Datové sady ve službě Data Factory je definováno ve formátu JSON následuj�
 }
 ```
 
-Následující tabulka popisuje vlastnosti v výše uvedený kód JSON:   
+Následující tabulka popisuje vlastnosti v výše uvedený text JSON:   
 
 | Vlastnost | Popis | Požaduje se | Výchozí |
 | --- | --- | --- | --- |
-| jméno |Název datové sady. V tématu [Azure Data Factory - pravidla po pojmenování](data-factory-naming-rules.md) pravidla pojmenování. |Ano |Není k dispozici |
-| type |Typ datové sady. Zadejte jeden z typů podporovaných službou Data Factory (například: AzureBlob, AzureSqlTable). <br/><br/>Podrobnosti najdete v tématu [typ sady](#Type). |Ano |Není k dispozici |
-| Struktura |Schéma datové sady.<br/><br/>Podrobnosti najdete v tématu [strukturu datové sady](#Structure). |Ne |Není k dispozici |
-| typeProperties | Vlastnosti typu se liší pro jednotlivé typy (například: Azure Blob, tabulka Azure SQL). Podrobnosti o svých vlastnostech a podporované typy najdete v tématu [typ sady](#Type). |Ano |Není k dispozici |
-| external | Logický příznak k určení, zda datové sady je explicitně produkovaný kanálu objekt pro vytváření dat nebo ne. Není-li vstupní datové sady pro aktivitu v kanálu aktuální, tento příznak nastavte na hodnotu true. Tento příznak nastavte na hodnotu true pro vstupní datové sady první aktivitu v kanálu.  |Ne |false (nepravda) |
-| dostupnosti | Definuje okna pro zpracování (například hodinové nebo denní) nebo řezů model pro produkční datovou sadu. Jednotlivé jednotky data využívat a vyprodukované spuštění aktivity se nazývá datový řez. Pokud dostupnosti výstupní datové je nastavena na hodnotu denně (frekvenci - den, interval - 1), řez se vytvoří každý den. <br/><br/>Podrobnosti najdete v tématu [datovou sadu dostupnosti](#Availability). <br/><br/>Podrobnosti na datovou sadu řezů modelu najdete v tématu [plánování a provádění](data-factory-scheduling-and-execution.md) článku. |Ano |Není k dispozici |
-| policy |Definuje kritéria nebo podmínku, musíte splnit řezy datovou sadu. <br/><br/>Podrobnosti najdete v tématu [datovou sadu zásad](#Policy) části. |Ne |Není k dispozici |
+| jméno |Název datové sady. Zobrazit [Azure Data Factory – pravidla pojmenování](data-factory-naming-rules.md) pravidla pojmenování. |Ano |Není k dispozici |
+| type |Typ datové sady. Zadejte jeden z typů podporovaných službou Data Factory (například: AzureBlob, AzureSqlTable). <br/><br/>Podrobnosti najdete v tématu [typ datové sady](#Type). |Ano |Není k dispozici |
+| Struktura |Schéma datové sady.<br/><br/>Podrobnosti najdete v tématu [struktury datové sady](#Structure). |Ne |Není k dispozici |
+| typeProperties | Vlastnosti typu se liší pro každý typ (například: Azure Blob, tabulky Azure SQL). Podrobnosti o podporovaných typech a jejich vlastností najdete v tématu [typ datové sady](#Type). |Ano |Není k dispozici |
+| external | Logický příznak k určení, zda datové sady je explicitně vytvořen kanál datové továrny nebo ne. Pokud není aktuální kanál vytvoří vstupní datovou sadu pro aktivitu, můžete tento příznak nastavte na hodnotu true. Tento příznak nastavte na hodnotu true pro vstupní datové sady první aktivity v kanálu.  |Ne |false (nepravda) |
+| dostupnosti | Definuje okno zpracování (například každou hodinu nebo každý den) nebo řezů model pro produkční prostředí datové sady. Každá jednotka data využívaná a produkovaná spuštění aktivity se nazývá datový řez. Pokud dostupnost výstupní datovou sadu je nastavena na hodnotu denně (frekvence - den, interval - 1), řez každý den. <br/><br/>Podrobnosti najdete v tématu [dostupnosti datové sady](#Availability). <br/><br/>Podrobnosti o datové sady, model dělení časového, najdete v článku [plánování a provádění](data-factory-scheduling-and-execution.md) článku. |Ano |Není k dispozici |
+| policy |Definuje kritéria nebo podmínky, které musí splnit řezy datové sady. <br/><br/>Podrobnosti najdete v tématu [datovou sadu zásad](#Policy) oddílu. |Ne |Není k dispozici |
 
 ## <a name="dataset-example"></a>Příklad datové sady
-V následujícím příkladu představuje datovou sadu tabulku s názvem **MyTable** v databázi SQL.
+V následujícím příkladu, datová sada představuje tabulku s názvem **MyTable** ve službě SQL database.
 
 ```json
 {
@@ -114,12 +114,12 @@ V následujícím příkladu představuje datovou sadu tabulku s názvem **MyTab
 
 Je třeba počítat s následujícím:
 
-* **typ** je nastaven na AzureSqlTable.
-* **Název tabulky** typu (specifické pro typ AzureSqlTable) je nastavena na MyTable.
-* **linkedServiceName** odkazuje na propojené služby typu azuresqldatabase., která je definována v další fragmentu kódu JSON. 
-* **frekvence dostupnosti** je nastaven na den a **interval** je nastaven na hodnotu 1. To znamená, že je řez datovou sadu vytváří denně.  
+* **typ** je nastavena na AzureSqlTable.
+* **tableName** (specifické pro typ AzureSqlTable) vlastnost type je nastavená na MyTable.
+* **Vlastnost linkedServiceName** odkazuje na propojenou službu typu AzureSqlDatabase, která je definována v následující fragment kódu JSON. 
+* **frekvence dostupnosti** je nastavena na den, a **interval** je nastavená na 1. To znamená, že datová sada řez každý den.  
 
-**AzureSqlLinkedService** je definován následujícím způsobem:
+**AzureSqlLinkedService** je definovaná následujícím způsobem:
 
 ```json
 {
@@ -137,23 +137,23 @@ Je třeba počítat s následujícím:
 V předchozím fragmentu kódu JSON:
 
 * **typ** je nastaven na azuresqldatabase.
-* **connectionString** vlastnost typu Určuje informace pro připojení k databázi SQL.  
+* **připojovací řetězec** informace pro připojení k SQL database určuje vlastnosti typu.  
 
-Jak vidíte, propojené služby definuje, jak se připojit k databázi SQL. Datová sada definuje, jaký tabulka je použít jako vstup a výstup aktivity v kanálu.   
+Jak je vidět, propojená služba definuje připojení ke službě SQL database. Datová sada definuje, jaké tabulka se používá jako vstup a výstup aktivity v kanálu.   
 
 > [!IMPORTANT]
-> Pokud se vytváří datové sady v kanálu, by měl být označen jako **externí**. Toto nastavení obecně platí pro vstupy první aktivitu v kanálu.   
+> Pokud datová sada je právě vytváří kanál, by měla být označena jako **externí**. Toto nastavení platí obecně pro vstupy první aktivitu v kanálu.   
 
 
-## <a name="Type"></a> Typ sady
-Typ datové sady závisí na úložiště dat, které používáte. Najdete v následující tabulce najdete seznam úložišť dat podporovaných službou Data Factory. Klikněte na úložiště dat pro informace o vytvoření propojené služby a sadu dat pro toto datové úložiště.
+## <a name="Type"></a> Typ datové sady
+Typ datové sady, která závisí na úložiště dat, které používáte. Najdete v následující tabulce najdete seznam úložišť dat podporovaných službou Data Factory. Klikněte na úložiště dat se informace o vytvoření propojené služby a datové sady pro toto úložiště dat.
 
 [!INCLUDE [data-factory-supported-data-stores](../../../includes/data-factory-supported-data-stores.md)]
 
 > [!NOTE]
-> Úložiště dat, s * může být místní nebo v Azure infrastruktura jako služba (IaaS). Tyto úložiště dat vyžaduje instalaci [Brána pro správu dat](data-factory-data-management-gateway.md).
+> Úložiště dat s * mohou být místní nebo v Azure infrastruktury jako služby (IaaS). Tyto úložiště dat vyžadují, abyste si nainstalovali [brána správy dat](data-factory-data-management-gateway.md).
 
-V příkladu v předchozí části, typ datové sady je nastavený na **AzureSqlTable**. Pro datové sadě služby Azure Blob podobně typ datové sady je nastaven na **AzureBlob**, jak je znázorněno v následujícím kódu JSON:
+V příkladu v předchozí části, typ datové sady je nastaven na **AzureSqlTable**. U datové sady objektů Blob v Azure, podobně, typ datové sady je nastaven na **AzureBlob**, jak je znázorněno v následujícím kódu JSON:
 
 ```json
 {
@@ -179,8 +179,8 @@ V příkladu v předchozí části, typ datové sady je nastavený na **AzureSql
 }
 ```
 
-## <a name="Structure"></a>Struktura datové sady
-**Struktura** část je nepovinná. Definuje schéma datové sady ve obsahující kolekci názvů a typy dat sloupců. V části struktura použijete k poskytování informací o typu, který se používá k převést typy a mapování sloupců ze zdroje do cíle. V následujícím příkladu, datová sada má tři sloupce: `slicetimestamp`, `projectname`, a `pageviews`. Jsou typu řetězec, řetězec a Decimal, v uvedeném pořadí.
+## <a name="Structure"></a>Struktury datové sady
+**Struktura** část je nepovinná. Definuje schéma datové sady pomocí obsahující kolekci názvů a datové typy sloupců. Pomocí části struktury poskytují informace o typu, který se používá k převodu typů a namapovat sloupce ze zdroje do cíle. V následujícím příkladu datová sada obsahuje tři sloupce: `slicetimestamp`, `projectname`, a `pageviews`. Jsou typu String, String a desetinné číslo, v uvedeném pořadí.
 
 ```json
 structure:  
@@ -191,31 +191,31 @@ structure:
 ]
 ```
 
-Každý sloupec ve struktuře obsahuje následující vlastnosti:
+Všechny sloupce struktury obsahují následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
 | jméno |Název sloupce. |Ano |
 | type |Datový typ sloupce.  |Ne |
-| jazyková verze |. Na základě NET jazykovou verzi, která se použije, když je typ typ formátu .NET: `Datetime` nebo `Datetimeoffset`. Výchozí hodnota je `en-us`. |Ne |
-| Formát |Řetězec, který se má použít, když je typ typ formátu .NET formátu: `Datetime` nebo `Datetimeoffset`. |Ne |
+| Jazyková verze |. NET jazykovou verzi na základě používané pro typ je typ .NET: `Datetime` nebo `Datetimeoffset`. Výchozí hodnota je `en-us`. |Ne |
+| Formát |Formátovací řetězec se použije, když typ je typ .NET: `Datetime` nebo `Datetimeoffset`. |Ne |
 
-Následující pokyny vám pomohou určit, kdy se mají zahrnout informace o struktuře a co mají být zahrnuty **struktura** části.
+Podle následujících pokynů můžete určit, kdy se mají zahrnout informace o struktuře a co mají být zahrnuty **struktura** oddílu.
 
-* **Pro strukturovaná data zdroje**, zadejte v části struktura pouze v případě, že chcete namapovat zdrojové sloupce na jímky sloupců a jejich názvy nejsou stejné. Tento druh zdroj strukturovaných dat ukládá informace schématu a typu dat společně s samotná data. Příklady strukturovaných dat zdroje: SQL Server, Oracle a tabulky Azure. 
+* **Pro strukturovaná data zdroje**, zadejte v části struktury jenom v případě, že chcete, aby mapování sloupců zdroje do jímky sloupců a jejich názvy se neshodují. Tento druh zdroje strukturovaná data ukládá informace schématu a typu dat spolu s vlastní data. Příklady zdrojů strukturovaných dat: SQL Server, Oracle a tabulek v Azure. 
   
-    Protože je již k dispozici pro strukturovaná data zdroje informací o typu, by neměla zahrnovat informace o typu, pokud obsahovat části struktura.
-* **Pro schéma pro zdroje dat pro čtení (konkrétně úložiště objektů Blob)**, můžete k ukládání dat bez ukládání žádné schéma nebo typ informace s daty. Pro tyto typy zdrojů dat zahrnovat chcete namapovat zdrojové sloupce na jímky sloupce struktury. Také zahrnovat struktura, když je datová sada vstupem pro aktivitu kopírování a datové typy sady zdroje dat mají být převedeny na nativní typy pro jímky. 
+    Informace o typu je již k dispozici pro strukturované datové zdroje, by neměl obsahovat informace o typu, pokud zahrnete oddíl struktury.
+* **Pro schéma na zdroje dat pro čtení (konkrétně služby Blob storage)**, můžete k ukládání dat bez ukládání žádné schéma nebo typ informací s daty. Pro tyto typy zdrojů dat patří struktura Pokud chcete mapování sloupců zdroje do jímky sloupce. Také zahrnovat struktury datová sada je vstupní hodnota pro aktivitu kopírování a datové typy zdrojové datové sady mají být převedeny na nativní typy pro jímku. 
     
-    Objekt pro vytváření dat podporuje následující hodnoty pro poskytnutí informací o typu ve struktuře: **Int16, Int32, Int64, jedním, Double, Decimal, Byte [], logická hodnota, řetězec, Guid, Datetime, Datetimeoffset a časový interval**. Tyto hodnoty jsou specifikace CLS (Common Language)-vyhovující,. Na základě NET typ hodnoty.
+    Data Factory podporuje následující hodnoty pro poskytnutí informací o typu struktury: **Int16, Int32, Int64, Single, Double, Decimal, bajtů [], datový typ Boolean, řetězec, Guid, data a času, Datetimeoffset a časový interval**. Tyto hodnoty jsou specifikace CLS (Common Language)-kompatibilní. Na základě NET typ hodnoty.
 
-Objekt pro vytváření dat automaticky provede převody typů, při přesouvání dat ze zdrojového úložiště dat do úložiště dat jímky. 
+Data Factory automaticky provádí převody typů, při přesouvání dat ze zdrojového úložiště dat do úložiště dat jímky. 
   
 
-## <a name="dataset-availability"></a>Datovou sadu dostupnosti
-**Dostupnosti** oddíl v datové sadě definuje okna zpracování (například hodinový, denní, nebo každý týden) pro datovou sadu. Další informace o aktivity windows najdete v tématu [plánování a provádění](data-factory-scheduling-and-execution.md).
+## <a name="dataset-availability"></a>Dostupnost datové sady
+**Dostupnosti** oddíl v datové sadě definuje okno zpracování (například každou hodinu, každý den, nebo jednou týdně) pro tuto datovou sadu. Další informace o časových obdobích aktivity, naleznete v tématu [plánování a provádění](data-factory-scheduling-and-execution.md).
 
-V následující části dostupnosti Určuje, že výstupní datovou sadu se vytvářejí buď hodinu nebo vstupní datové sady každou hodinu je k dispozici:
+Následující části Dostupnost určuje, že výstupní datová sada buď vytváří každou hodinu nebo každou hodinu je k dispozici vstupní datové sady:
 
 ```json
 "availability":    
@@ -225,27 +225,27 @@ V následující části dostupnosti Určuje, že výstupní datovou sadu se vyt
 }
 ```
 
-Pokud kanálu má následující počáteční a koncový čas:  
+Pokud tento kanál obsahuje následující počáteční a koncový čas:  
 
 ```json
     "start": "2016-08-25T00:00:00Z",
     "end": "2016-08-25T05:00:00Z",
 ```
 
-Výstupní sada vytváří každou hodinu v rámci kanálu spuštění a ukončení. Proto jsou pět řezy datové sady vyprodukované tímto kanálem, jeden pro každou aktivitu okno (12: 00 - 1 AM, 1: 00 - 2 AM, 2: 00 - 3 AM, 3: 00 - 4 AM, 4: 00 - 5: 00). 
+Výstupní datová sada vytváří každou hodinu v rámci kanálu počáteční a koncové časy. Proto je pět řezů datové sady vyprodukované tímto kanálem, jeden pro každý okna aktivity (00: 00 - 1 AM, 1 AM - 2 AM, 2: 00 - 3 AM, 3 AM - 4 AM, 4: 00 - 5: 00). 
 
 Následující tabulka popisuje vlastnosti, které můžete použít v části dostupnosti:
 
 | Vlastnost | Popis | Požaduje se | Výchozí |
 | --- | --- | --- | --- |
-| frequency |Určuje časovou jednotku pro produkční řez datovou sadu.<br/><br/><b>Podporované frekvence</b>: minutu, hodinu, den, týden, měsíc |Ano |Není k dispozici |
-| interval |Určuje multiplikátor pro četnost.<br/><br/>"Frekvence x interval" Určuje, jak často se vytvářejí řez. Například pokud budete potřebovat datovou sadu, která se rozříznut hodinu, nastavíte <b>frekvence</b> k <b>hodinu</b>, a <b>interval</b> k <b>1</b>.<br/><br/>Všimněte si, že pokud zadáte **frekvence** jako **minutu**, měli byste nastavit interval hodnotu menší než 15. |Ano |Není k dispozici |
-| Styl |Určuje, zda by měl být řez vytváří na začátku nebo na konci interval.<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul>Pokud **frekvence** je nastaven na **měsíc**, a **styl** je nastaven na **EndOfInterval**, řez se vytváří poslední den v měsíci. Pokud **styl** je nastaven na **StartOfInterval**, řez se vytváří první den v měsíci.<br/><br/>Pokud **frekvence** je nastaven na **den**, a **styl** je nastaven na **EndOfInterval**, řez se vytváří za poslední hodinu dne.<br/><br/>Pokud **frekvence** je nastaven na **hodinu**, a **styl** je nastaven na **EndOfInterval**, řez se vytvářejí na konci za hodinu. Například pro řez dobu 13: 00 – 14: 00, je řez vytvořeného ve 2. |Ne |EndOfInterval |
-| anchorDateTime |Definuje absolutní pozici v čase plánovačem slouží k výpočtu hranice řez datovou sadu. <br/><br/>Všimněte si, že pokud tento propoerty částí data, která jsou podrobnější než je zadaná četnost, se ignorují podrobnější částí. Například pokud **interval** je **každou hodinu** (frekvence: hodin a interval: 1) a **anchorDateTime** obsahuje **minuty a sekundy**, pak části minuty a sekundy **anchorDateTime** jsou ignorovány. |Ne |01/01/0001 |
-| Posun |Časový interval, ve kterém jsou zapuštěno počáteční a koncová všech řezech datovou sadu. <br/><br/>Všimněte si, že pokud obě **anchorDateTime** a **posun** jsou nastaveny, výsledkem je kombinovaná shift. |Ne |Není k dispozici |
+| frequency |Určuje časovou jednotku pro produkční prostředí řez datové sady.<br/><br/><b>Podporované frekvence</b>: minuta, hodina, dne, týdne, měsíce |Ano |Není k dispozici |
+| interval |Určuje multiplikátor pro četnost.<br/><br/>"Interval četnosti x" Určuje, jak často se řez. Například pokud potřebujete datové sady na průřezem podle počtu hodin, nastavíte <b>frekvence</b> k <b>hodinu</b>, a <b>interval</b> k <b>1</b>.<br/><br/>Všimněte si, že pokud zadáte **frekvence** jako **minutu**, byste měli nastavit interval na menší než 15. |Ano |Není k dispozici |
+| Styl |Určuje, zda by měl být řez na začátku nebo konci interval.<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul>Pokud **frekvence** je nastavena na **měsíc**, a **styl** je nastavena na **EndOfInterval**, řez na poslední den v měsíci. Pokud **styl** je nastavena na **StartOfInterval**, řez v první den v měsíci.<br/><br/>Pokud **frekvence** je nastavena na **den**, a **styl** je nastavena na **EndOfInterval**, řez za poslední hodinu dne.<br/><br/>Pokud **frekvence** je nastavena na **hodinu**, a **styl** je nastavena na **EndOfInterval**, řez na konec hodiny. Například pro určitý řez dobu 13: 00 – 2 hodin řez ve 14. |Ne |EndOfInterval |
+| anchorDateTime |Definuje absolutní pozici v čase plánovačem slouží k výpočtu hranice řez datové sady. <br/><br/>Všimněte si, že pokud je tato propoerty částí data, která jsou podrobnější než je zadaná četnost, se ignorují podrobnější částí. Například pokud **interval** je **každou hodinu** (frekvence: hour a interval: 1) a **anchorDateTime** obsahuje **minuty a sekundy**, pak části minuty a sekundy **anchorDateTime** jsou ignorovány. |Ne |01/01/0001 |
+| Posun |Interval TimeSpan, podle kterého se posune začátku a konce všechny řezy datové sady. <br/><br/>Všimněte si, že pokud mají oba **anchorDateTime** a **posun** jsou zadána, výsledkem je kombinované shift. |Ne |Není k dispozici |
 
 ### <a name="offset-example"></a>Příklad posunutí
-Ve výchozím nastavení, každý den (`"frequency": "Day", "interval": 1`) řezy začnou ve 12: 00 (půlnoc) koordinovaný světový čas (UTC). Pokud chcete, aby čas spuštění jako čas UTC 6: 00, nastavte posun, jak je znázorněno v následujícím fragmentu kódu: 
+Ve výchozím nastavení, každý den (`"frequency": "Day", "interval": 1`) řezy spustit v 12: 00 (půlnoc) koordinovaný univerzální čas (UTC). Pokud chcete čas spuštění jako čas UTC 6: 00, nastavte posun, jak je znázorněno v následujícím fragmentu kódu: 
 
 ```json
 "availability":
@@ -256,7 +256,7 @@ Ve výchozím nastavení, každý den (`"frequency": "Day", "interval": 1`) řez
 }
 ```
 ### <a name="anchordatetime-example"></a>Příklad anchorDateTime
-V následujícím příkladu se sada vytváří jednou za 23 hodin. První řez spustí v době určeného **anchorDateTime**, který je nastaven na `2017-04-19T08:00:00` (UTC).
+V následujícím příkladu je vytvořen datové sady jednou za 23 hodin. První řez začíná časový limit určený parametrem **anchorDateTime**, který je nastaven na `2017-04-19T08:00:00` (UTC).
 
 ```json
 "availability":    
@@ -267,8 +267,8 @@ V následujícím příkladu se sada vytváří jednou za 23 hodin. První řez 
 }
 ```
 
-### <a name="offsetstyle-example"></a>Posun nebo styl příklad
-Tyto datové sady je každý měsíc a vytváří 3. v každém měsíci v 8:00 AM (`3.08:00:00`):
+### <a name="offsetstyle-example"></a>Příklad posun a styl
+Následující datová sada je měsíční a je vytvořen na 3. v každém měsíci v 8:00:00 (`3.08:00:00`):
 
 ```json
 "availability": {
@@ -279,14 +279,14 @@ Tyto datové sady je každý měsíc a vytváří 3. v každém měsíci v 8:00 
 }
 ```
 
-## <a name="Policy"></a>Datovou sadu zásad
-**Zásad** oddíl v definici datové sady definuje kritéria nebo podmínku, musíte splnit řezy datovou sadu.
+## <a name="Policy"></a>Datové sady zásad
+**Zásady** oddíl v definici datové sady definuje kritéria nebo podmínky, které musí splnit řezy datové sady.
 
-### <a name="validation-policies"></a>Zásady ověřování
-| Název zásady | Popis | Použít | Požaduje se | Výchozí |
+### <a name="validation-policies"></a>Ověření zásad
+| Název zásady | Popis | Použít na | Požaduje se | Výchozí |
 | --- | --- | --- | --- | --- |
-| minimumSizeMB |Ověří, jestli data v **úložiště objektů Azure Blob** splňuje požadavky na minimální velikost (v megabajtech). |Azure Blob Storage |Ne |Není k dispozici |
-| minimumRows |Ověří, jestli data v **Azure SQL database** nebo **tabulky Azure** obsahuje minimální počet řádků. |<ul><li>Databáze SQL Azure</li><li>Tabulka Azure</li></ul> |Ne |Není k dispozici |
+| minimumSizeMB |Ověří, jestli data v **úložiště objektů Blob v Azure** splňuje požadavky na minimální velikost (v megabajtech). |Azure Blob Storage |Ne |Není k dispozici |
+| minimumRows |Ověří, jestli data v **Azure SQL database** nebo **tabulek v Azure** obsahuje minimální počet řádků. |<ul><li>Databáze SQL Azure</li><li>Tabulka Azure</li></ul> |Ne |Není k dispozici |
 
 #### <a name="examples"></a>Příklady
 **minimumSizeMB:**
@@ -315,20 +315,20 @@ Tyto datové sady je každý měsíc a vytváří 3. v každém měsíci v 8:00 
 ```
 
 ### <a name="external-datasets"></a>Externích datových sad
-Externích datových sad, jsou ty, které nejsou spuštěné kanálu v datové továrně. Pokud se datová sada je označena jako **externí**, **ExternalData** zásad může být definována, jež ovlivňují chování řez dostupnost datové sady.
+Externích datových sad, jsou ty, které nejsou od spuštění kanálu v datové továrně. Pokud datová sada je označená jako **externí**, **ExternalData** zásad může být definována a ovlivnit chování řez dostupnosti datové sady.
 
-Pokud datové sady je vytvářen službou Data Factory, by měl být označen jako **externí**. Toto nastavení se obvykle platí pro vstupy první aktivitu v kanálu, pokud se používá aktivitu nebo řetězení kanálu.
+Pokud datové sady se vytvořil objekt pro vytváření dat, by měla být označena jako **externí**. Toto nastavení platí obecně pro vstupy první aktivitu v kanálu, pokud používá aktivitu nebo řetězení kanálu.
 
 | Název | Popis | Požaduje se | Výchozí hodnota |
 | --- | --- | --- | --- |
-| dataDelay |Doba zpoždění kontroly na dostupnost externích dat pro danou řez. Můžete například zpoždění hodinové kontroly pomocí tohoto nastavení.<br/><br/>Toto nastavení platí jenom pro aktuální čas.  Například pokud je 1:00 PM hned teď a tato hodnota je 10 minut, ověření se spustí: 10: 00.<br/><br/>Všimněte si, že toto nastavení neovlivňuje řezy v minulosti. Řezy s **řez koncový čas** + **dataDelay** < **nyní** jsou zpracovávány bez jakéhokoli zpoždění.<br/><br/>Časy větší než 23:59 hodin by měl být určena pomocí `day.hours:minutes:seconds` formátu. Například pokud chcete zadat 24 hodin, nepoužívejte 24:00:00. Místo toho použijte 1.00:00:00. Pokud používáte 24:00:00, bude považován za 24 dní (24.00:00:00). 1 den a 4 hodiny zadejte 1:04:00:00. |Ne |0 |
-| retryInterval |Doba čekání mezi selhání a další pokus. Toto nastavení platí pro aktuální čas. Pokud předchozí zkuste se nezdařila, je dalším pokusu o po **retryInterval** období. <br/><br/>Pokud je 1:00 PM nyní, můžeme začít prvního pokusu. Pokud doba trvání dokončení první kontrola ověření je 1 minuta a operace se nezdařila, další pokus proběhne v 1:00 + 1 min (doba trvání) + 1min (interval opakování) = 1:02 PM. <br/><br/>Řezy v minulosti není k dispozici žádné zpoždění není. Opakovaném dojde okamžitě. |Ne |00:01:00 (1 min) |
-| retryTimeout |Časový limit pro jednotlivé pokusy o opakování.<br/><br/>Pokud je tato vlastnost nastavená na 10 minut, by se během deseti minut dokončit ověření. Pokud trvá déle než 10 minut, aby k ověření, opakovaném časového limitu.<br/><br/>Pokud všechny pokusy o ověření časový limit řez je označen jako **TimedOut**. |Ne |00:10:00 (10 minut) |
-| maximumRetry |Stanovený počet zkontrolujte dostupnost externí data. Maximální povolená hodnota je 10. |Ne |3 |
+| dataDelay |Doba zpoždění kontroly dostupnosti externích dat pro danou řez. Například můžete kontrolu hodinové pozdržet pomocí tohoto nastavení.<br/><br/>Toto nastavení platí pouze pro aktuální čas.  Například pokud je 1:00 PM hned teď a tato hodnota je 10 minut, ověření se spustí v 13:10.<br/><br/>Všimněte si, že toto nastavení nemá vliv na kolekce obsahuje nějaké řezy v minulosti. Řezy s **koncový čas řezu** + **dataDelay** < **nyní** zpracovávají bez jakéhokoli zpoždění.<br/><br/>Krát větší než 23:59 hodin zadat pomocí `day.hours:minutes:seconds` formátu. Například pokud chcete zadat 24 hodin, nepoužívejte 24:00:00. Místo toho použijte 1.00:00:00. Pokud používáte 24:00:00, je považován za 24 dní (24.00:00:00). 1 den a 4 hodiny zadejte 1:04:00:00. |Ne |0 |
+| retryInterval |Doba čekání mezi selhání a dalším pokusem. Toto nastavení platí pro aktuální čas. Pokud předchozí akci se nezdařilo, je dalším pokusu o po **retryInterval** období. <br/><br/>Pokud je 1:00 PM teď začneme první pokus. Pokud doba trvání dokončení první ověření je 1 minuta a operace se nezdařila, další opakování je v 1:00 + 1 min (doba trvání) + 1 minuta (interval opakování) = 1:02 odp. <br/><br/>Řezy v minulosti neexistuje žádné zpoždění. Opakování dojde okamžitě. |Ne |00:01:00 (1 minuta) |
+| retryTimeout |Časový limit pro každý opakovaný pokus.<br/><br/>Pokud je tato vlastnost nastavená na 10 minut, ověření by měla dokončit během 10 minut. Pokud to trvá déle než 10 minut, než se provést ověření, opakování vyprší časový limit.<br/><br/>Pokud všechny pokusy o vypršení časového limitu ověření řezu se označí jako **vypršel časový limit**. |Ne |00:10:00 (10 minut) |
+| maximumRetry |Počet pokusů ke kontrole dostupnosti externí data. Maximální povolená hodnota je 10. |Ne |3 |
 
 
 ## <a name="create-datasets"></a>Vytvoření datových sad
-Datové sady můžete vytvořit pomocí jedné z těchto nástrojů nebo sady SDK: 
+Datové sady můžete vytvořit pomocí některého z těchto nástrojů nebo sad SDK: 
 
 - Průvodce kopírováním 
 - Azure Portal
@@ -338,22 +338,22 @@ Datové sady můžete vytvořit pomocí jedné z těchto nástrojů nebo sady SD
 - REST API
 - .NET API
 
-Najdete v následujících kurzech podrobné pokyny pro vytváření kanálů a datové sady pomocí jedné z těchto nástrojů nebo sady SDK:
+Najdete v následujících kurzech najdete podrobné pokyny pro vytváření kanálů a datových sad pomocí jedné z těchto nástrojů nebo sad SDK:
  
 - [Vytvoření kanálu s aktivitou transformace dat](data-factory-build-your-first-pipeline.md)
-- [Vytvoření kanálu s aktivitou přesun dat](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+- [Vytvoření kanálu s aktivitou přesunu dat](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 
-Po kanálu se vytvoří a nasadí, můžete spravovat a monitorovat kanály pomocí oken Azure portal nebo aplikace, monitorování a správu. Najdete v následujících tématech podrobné pokyny: 
+Po vytvoření a nasazení kanálu můžete spravovat a monitorování kanálů pomocí oken Azure portal nebo monitorování a Správa aplikací. Naleznete v následujících tématech pro podrobné pokyny: 
 
 - [Monitorování a Správa kanálů pomocí oken webu Azure portal](data-factory-monitor-manage-pipelines.md)
-- [Monitorování a Správa kanálů pomocí monitorování a správy aplikace](data-factory-monitor-manage-app.md)
+- [Monitorování a Správa kanálů pomocí monitorování a Správa aplikací](data-factory-monitor-manage-app.md)
 
 
-## <a name="scoped-datasets"></a>Oboru datové sady
-Můžete vytvořit datové sady, které jsou omezená na kanálu pomocí **datové sady** vlastnost. Tyto datové sady lze použít pouze aktivity v rámci tohoto kanálu, nikoli aktivity v jiné kanály. V následujícím příkladu definuje kanál pomocí dvě datové sady (InputDataset rdc a OutputDataset rdc) má být použit v rámci kanálu.  
+## <a name="scoped-datasets"></a>Datové sady s vymezeným oborem
+Můžete vytvořit datové sady, které jsou omezená na kanálu pomocí **datových sad** vlastnost. Tyto datové sady je možné pouze aktivity v rámci tohoto kanálu, nikoli aktivity v jiných kanálech. Následující příklad definuje kanál s dvě datové sady (InputDataset rdc a OutputDataset-funkci Remote Differential Compression) se dá použít v kanálu.  
 
 > [!IMPORTANT]
-> Oboru datové sady jsou podporovány pouze s jednorázové kanály (kde **pipelineMode** je nastaven na **OneTime**). V tématu [Onetime kanálu](data-factory-create-pipelines.md#onetime-pipeline) podrobnosti.
+> Datové sady s vymezeným oborem jsou podporovány pouze s jednorázové kanálů (kde **pipelineMode** je nastavena na **OneTime**). Zobrazit [Onetime kanálu](data-factory-create-pipelines.md#onetime-pipeline) podrobnosti.
 >
 >
 
@@ -449,5 +449,5 @@ Můžete vytvořit datové sady, které jsou omezená na kanálu pomocí **datov
 ```
 
 ## <a name="next-steps"></a>Další postup
-- Další informace o kanály najdete v tématu [vytvořit kanály](data-factory-create-pipelines.md). 
-- Další informace o tom, jak jsou naplánované kanálů a jsou prováděny najdete v tématu [plánování a provádění v Azure Data Factory](data-factory-scheduling-and-execution.md). 
+- Další informace o kanálech najdete v tématu [vytvářet kanály](data-factory-create-pipelines.md). 
+- Další informace o tom, jak jsou kanály naplánovala a provést, najdete v části [plánování a provádění ve službě Azure Data Factory](data-factory-scheduling-and-execution.md). 

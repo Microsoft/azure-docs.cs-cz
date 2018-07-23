@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: dlap
-ms.openlocfilehash: cf24810c0aa414e751e55df163563f013c1a0081
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
-ms.translationtype: HT
+ms.openlocfilehash: 9d71efa35713500911c67d1df15612b64c8e97da
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969941"
+ms.locfileid: "38990825"
 ---
 # <a name="trusted-internet-connection-guidance"></a>Pokyny k důvěryhodné internetové připojení
 
@@ -30,7 +30,7 @@ Jednoduše řečeno, cílem PIŠKVORKY je pro instituce vědět:
 
 Dnes, které všechny externí připojení agentura musí ho směrovat pomocí PIŠKVORKY OMB schválení. Federální instituce jsou nutné k účasti v programu PIŠKVORKY se jako zprostředkovatel přístup PIŠKVORKY (TICAP) nebo které smluvní služby s jednou z hlavních poskytovatelů služeb vrstvy 1 Internet označuje jako poskytovatelé spravované důvěryhodné Internet Protocol služby (MTIPS).  PIŠKVORKY zahrnuje povinná pro chod firem, které provádí ještě dnes agency a MTIPS zprostředkovatele. V aktuální verzi PIŠKVORKY zjišťování neoprávněných vniknutí EINSTEIN verze 2 a EINSTEIN verze 3 accelerated (3A) jsou nasazeny zařízení pro prevenci neoprávněných vniknutí pro každou TICAP a MTIPS a agentura vytváří protokolu o porozumění se oddělení Vnitřní zabezpečení (DHS) k nasazení funkce EINSTEIN federální systémy.
 
-Jako součást její odpovědnosti, aby síť .gov vyžaduje DHS nezpracované datové kanály data agentury Netflow korelaci incidentů organizace Federální a provádět analýzy pomocí specializované nástroje. DHS směrovačů poskytuje schopnost shromažďovat IP síťového provozu, protože zadá nebo ukončí rozhraní. Díky analýze net toku dat, správce sítě určit věci, jako je například zdroj a cíl provozu, třídu služby atd. NET toku dat je považován za "bez obsahu dat" (například záhlaví, zdrojové IP, cílová IP adresa, atd.) a umožňuje DHS znát informace kolem obsahu; To znamená, kdo dělal co a jak dlouho.
+Jako součást její odpovědnosti, aby síť .gov vyžaduje DHS nezpracované datové kanály data agentury Netflow korelaci incidentů organizace Federální a provádět analýzy pomocí specializované nástroje. DHS směrovačů poskytuje schopnost shromažďovat IP síťového provozu, protože zadá nebo ukončí rozhraní. Díky analýze net tok dat do sítě můžete určit správce věci, jako je například zdroj a cíl provozu, třídu služby atd. NET toku dat je považován za "bez obsahu dat" (například záhlaví, zdrojové IP, cílová IP adresa, atd.) a umožňuje DHS znát informace kolem obsahu; To znamená, kdo dělal co a jak dlouho.
 
 Iniciativa zaměřená také obsahuje zásady zabezpečení, pokyny a architektur, které předpokládají na místní infrastrukturu. Jako instituce státní správy přesunout do cloudu, abyste dosáhli úspory nákladů, provozní efektivitu a inovace, implementace požadavky PIŠKVORKY se v některých případech zpomalování síťového provozu a omezení rychlosti a agility u vlády, které můžou uživatelé přístup ke svým datům založené na cloudu.
 
@@ -92,27 +92,27 @@ Pokud používáte bránu založenou na směrování virtuální sítě, vynucen
 
 #### <a name="border-gateway-protocol"></a>Protokol BGP
 
-Sítě v oblastech sledováno Network Watcher můžete provést testy "Dalšího segmentu směrování", umožňuje snadný přístup k zadávání zdrojové a cílové pro ukázkový tok sítě, pro kterou se Network Watcher rozpoznávání cíle "Dalšího segmentu směrování" založené na portálu. To můžete použít pro virtuální počítače a příklad internetové adresy tak, aby byl "dalšího segmentu směrování" ve skutečnosti brány virtuální sítě.
+Pokud používáte ExpressRoute nebo brány virtuální sítě povolené protokol BGP (Border Gateway), protokol BGP je upřednostňovaný postup pro inzerování tras. Se protokol BGP inzerovaný trasy 0.0.0.0/0, protokol BGP brány používající virtuální sítě a ExpressRoute se ujistit, že této výchozí trase je všech podsítí ve virtuálních sítích.
 
-### <a name="azure-iaas-tic-compliance-auditing"></a>Další směrování sledovací proces sítě
+### <a name="azure-iaas-tic-compliance-auditing"></a>Azure IaaS FONETICKÝ auditování dodržování předpisů
 
-Přístup k Microsoft Azure, Office 365 a Dynamics 365, dají se snadno konfigurovat umožňující v souladu s pokyny PIŠKVORKY 2.0 příloha H i písemné definované v květnu 2018.
+Azure nabízí několik způsobů, jak auditovat PIŠKVORKY dodržování předpisů.
 
 #### <a name="effective-routes"></a>Efektivní trasy
 
-Microsoft si je vědoma, že tyto pokyny se může změnit a bude endeavor pomáhá zákazníkům při vydání nové pokyny podle pokynů včas. Dodatek: PIŠKVORKY vzory pro běžné úlohy Vyhrazené PaaS / vkládání virtuální sítě
+Potvrďte, že nebyly rozšířeny výchozí trasu, můžete sledovat "Efektivní trasy" konkrétního virtuálního počítače, konkrétní síťové rozhraní nebo směrovací tabulky definované uživatelem. To můžete to udělat pomocí webu Azure portal, jak je popsáno v https://docs.microsoft.com/azure/virtual-network/virtual-network-routes-troubleshoot-portal, nebo přes PowerShell, jak je popsáno v https://docs.microsoft.com/azure/virtual-network/virtual-network-routes-troubleshoot-powershell. V okně efektivní trasy vám umožní vidět, že odpovídající trasy definované uživatelem, protokol BGP Inzerovat trasy a systémové trasy, které se vztahují k příslušné entitě, jak je vidět níže.
 
-![prostřednictvím služby App Service Environment (ASE)](media/tic-screen-1.png)
+![snímek obrazovky trasy](media/tic-screen-1.png)
 
-**Interní webové aplikace
+**Poznámka:**: nelze zobrazit efektivní trasy pro síťové rozhraní, pokud spojené s spuštěného virtuálního počítače.
 
 #### <a name="network-watcher"></a>Network Watcher
 
-Interní mobilních aplikací  Azure Container Service (ACS)
+Azure Network Watcher nabízí několik nástrojů, se dají auditovat PIŠKVORKY dodržování předpisů.  Další informace o službě Network Watcher na https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview.
 
-##### <a name="network-security-groups-flow-logs"></a>Azure Container Service (AKS) * 
+##### <a name="network-security-groups-flow-logs"></a>Protokoly toku skupin zabezpečení sítě 
 
-Azure SQL Database spravované Instance * *: Verzi public Preview ve službě Azure Government od. května 2018. **: Privátní verze Preview ve službě Azure Government od. května 2018. 
+Azure Network Watcher umožňuje zachytit síťové protokoly toku označující metadat okolní provozu IP. Kromě dalších dat síťové protokoly toku obsahovat adresy zdroje a cíle cílů. To, v kombinaci s protokoly ze Brána virtuální sítě, On-Premises hraničními zařízeními a/nebo PIŠKVORKY, vám umožní pro monitorování, že veškerý provoz se ve skutečnosti ještě směrované On-Premises. 
 
 ## <a name="how-azure-platform-as-a-service-offerings-can-help-with-tic-compliance"></a>Jak Azure Paas nabídky služeb vám může pomoct s PIŠKVORKY dodržování předpisů
 
@@ -250,4 +250,3 @@ Přístup k Microsoft Azure, Office 365 a Dynamics 365, dají se snadno konfigur
 
 *: Verzi public Preview ve službě Azure Government od. května 2018.  
 **: Privátní verze Preview ve službě Azure Government od. května 2018.
-

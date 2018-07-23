@@ -1,6 +1,6 @@
 ---
-title: Vkládání reklam na straně klienta | Microsoft Docs
-description: Toto téma ukazuje, jak vložit reklamy na straně klienta.
+title: Vkládání reklam na straně klienta | Dokumentace Microsoftu
+description: Toto téma ukazuje, jak vkládání reklam na straně klienta.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,41 +14,41 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
-ms.openlocfilehash: 57cb06fcee029f72dd1cf81ef086985fdda3f45f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 0ca9c7ff1ac4cfbb50f251679286a933429bf03f
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788967"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37903043"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>Vkládání reklam na straně klienta
-Tento článek obsahuje informace o tom, jak vložit různých typů reklamy na straně klienta.
+Tento článek obsahuje informace o tom, jak vložit různé typy reklam na straně klienta.
 
-Informace o podpoře uzavřené přidávání titulků a ad v živé streamování videa najdete v tématu [podporované titulky a standardy vložení Ad](media-services-live-streaming-with-onprem-encoders.md#cc_and_ads).
+Informace o podpoře uzavřené titulky a ad v živé streamování videa najdete v tématu [podporované titulky a standardy vložení Ad](media-services-live-streaming-with-onprem-encoders.md#cc_and_ads).
 
 > [!NOTE]
 > Azure Media Player v současné době nepodporuje reklamy.
 > 
 > 
 
-## <a id="insert_ads_into_media"></a>Vkládání reklamy do vašeho média
-Azure Media Services poskytuje podporu pro vkládání reklam prostřednictvím platformu Windows Media: architektury přehrávačů. Architektury přehrávačů s podporou ad jsou dostupné pro zařízení s Windows 8, Silverlight, Windows Phone 8 a iOS. Každý player framework obsahuje ukázkový kód, který ukazuje, jak implementovat aplikace přehrávače. Existují tři různé druhy služby Active Directory, které lze vložit do seznamu média: seznam.
+## <a id="insert_ads_into_media"></a>Vkládání reklam na média
+Azure Media Services poskytuje podporu pro vkládání reklam prostřednictvím platformy Windows Media: přehrávačů. Přehrávačů s podporou ad jsou k dispozici pro zařízení s Windows 8, Silverlight, Windows Phone 8 a iOS. Každý player framework obsahuje ukázkový kód, který ukazuje, jak implementovat aplikace přehrávače. Existují tři různé druhy reklamy, které lze vložit do seznamu média: seznam.
 
-* **Lineární** – úplné rámce služby Active Directory, které pozastavit hlavní video.
-* **Nelineární** – reklamy překrytí, které se zobrazují jako přehrávání videa hlavní, obvykle logo nebo jiné statický obrázek umístit přehrávač.
-* **Doprovodná** – reklamu, které se zobrazují mimo přehrávač.
+* **Lineární** – úplné rámce reklamy, které pozastavit hlavní video.
+* **Nelineárních** – překrytí reklamy, které jsou zobrazeny, protože přehrávání videa hlavní, obvykle logo nebo jiný statický obrázek umístěny v přehrávači.
+* **Doprovodná** – reklamy, které se zobrazují mimo přehrávač.
 
-Služby Active Directory mohou být umístěny v libovolném bodě hlavní video časovou osu. Přehrávač musí zjistit, kdy přehrávání ad a které reklamy přehrávání. To se provádí pomocí sady standardní soubory formátu XML: Video Ad služby šablony (VAST), více Ad seznam stop (VMAP) ve digitální Video, šablony abstraktní sekvencování na média (STOŽÁRŮ) a digitální Video Player Ad rozhraní definice (VPAID). VELKÁ soubory zadejte co zobrazit reklamy. Soubory VMAP určete, kdy k přehrávání různých reklamy a obsahují velká XML. STOŽÁRŮ soubory jsou jiný způsob, jak pořadí služby Active Directory, které také může obsahovat velká XML. Soubory VPAID definovat rozhraní mezi přehrávání videa a ad nebo serveru služby ad.
+Služby Active Directory je možné použít v libovolném bodě hlavní video časové ose. Hráč musí zjistit, kdy se má přehrát ad a které reklamy přehrávání. To se provádí pomocí sady standardních souborů založený na formátu XML: Video Ad Service šablony (VAST), několik Ad seznamu testů (VMAP) ve digitální Video, šablona abstraktní pořadí úloh na média (STOŽÁRŮ) a digitální Video přehrávač Ad rozhraní definice (VPAID). ROZSÁHLÉ soubory určují jaké služby Active Directory k zobrazení. Soubory VMAP určují, kdy přehrát různých reklamy a obsahovat OBROVSKÉ XML. Dalším způsobem, jak pořadí reklamy, které také mohou obsahovat OBROVSKÉ XML jsou STOŽÁRŮ soubory. Soubory VPAID definují rozhraní mezi přehrávače videa a ad nebo serveru služby ad.
 
-Každý player framework funguje jinak, každý bude uvedena v jeho vlastní článku. Tento článek popisuje základní mechanismus používaný k vkládání reklam. Aplikací pro přehrávání videa žádost služby Active Directory ze serveru služby ad. Serveru služby ad může reagovat v mnoha různými způsoby:
+Každý player framework funguje jinak a každá se budeme v jeho vlastní článku. Tento článek popisuje základní mechanismus používaný k vkládání reklam. Aplikací pro přehrávání videa požadavku služby Active Directory ze serveru služby ad. Serveru služby ad může reagovat v několika způsoby:
 
-* Vrátí soubor velká
-* Vrátí VMAP soubor (s embedded VAST)
-* Vrátit STOŽÁRŮ soubor (s embedded VAST)
-* Vrátí velká soubor s VPAID služby Active Directory
+* Vrátit ROZSÁHLÉ soubor
+* Vrátit VMAP soubor (pomocí vložených VAST)
+* Vrátit STOŽÁRŮ soubor (pomocí vložených VAST)
+* Vrátit ROZSÁHLÉ soubor s VPAID reklamy
 
-### <a name="using-a-video-ad-service-template-vast-file"></a>Pomocí souboru šablony (VAST) služby Video Ad
-Soubor velká Určuje, jaké ad nebo zobrazit reklamy. Následující kód XML je příkladem soubor velká pro lineární ad:
+### <a name="using-a-video-ad-service-template-vast-file"></a>Pomocí souboru šablony (VAST) služby Ad videa
+ROZSÁHLÉ soubor Určuje, jaké ad nebo zobrazit reklamy. Následující kód XML je příkladem souboru ROZSÁHLÉ pro lineární ad:
 
 ```xml
     <VAST version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="oxml.xsd">
@@ -94,9 +94,9 @@ Soubor velká Určuje, jaké ad nebo zobrazit reklamy. Následující kód XML j
     </VAST>
 ```
 
-Lineární ad je popsán <**lineární**> elementu. Určuje dobu trvání ad, sledování událostí, klikněte na tlačítko prostřednictvím, klikněte na sledování a několika **MediaFile** elementy. Sledování události jsou určené v rámci <**TrackingEvents**> elementu a povolit serveru služby ad sledovat různé události, ke kterým došlo při prohlížení ad. V tomto případě začátku středový, dokončení a rozbalte události se sledují. Událost spuštění nastane, když se zobrazí ad. Středový událost nastane, když alespoň, že byl zobrazen 50 % osy ad. Událost complete nastane, když ad byla spuštěna na konec. Rozbalte událost nastane, když uživatel rozšíří přehrávání videa na celou obrazovku. Se zadaným Clickthroughs <**interaktivní**> v rámci <**VideoClicks**> elementu a určuje identifikátoru URI prostředku zobrazíte, když uživatel klikne na ad. ClickTracking je uveden v <**ClickTracking**> elementu, také uvnitř <**VideoClicks**> elementu a určuje sledování prostředků pro player k vyžádání, když uživatel klikne na ad . <**MediaFile**> elementy zadejte informace o konkrétní kódování ad. Když je více než jedna <**MediaFile**> elementu přehrávání videa můžete zvolit nejvhodnější kódování pro platformu. 
+Lineární ad je popsán <**lineární**> element. Určuje dobu trvání AD, sledování událostí, klikněte na tlačítko prostřednictvím sledování kliknutí a několik **MediaFile** elementy. Sledování události jsou uvedeny v rámci <**TrackingEvents**> element a povolit serveru služby ad pro sledování různých událostí, ke kterým dochází při zobrazování reklamy. V tomto případě start, střední, dokončeno a rozbalte události jsou sledovány. Událost zahájení nastane, pokud se zobrazí ad. Střední událost nastane, pokud alespoň, že se nezobrazil 50 % ad časové osy. Událost dokončení vyvolá se po spuštění služby ad na konec. Když je uživatel rozbalí na celou obrazovku přehrávač videa, dojde k události rozbalit. Clickthroughs zadávají se <**interaktivní**> element v rámci <**VideoClicks**> element a určuje identifikátor URI pro prostředek má zobrazit, když uživatel klikne na ad. ClickTracking je zadán v <**ClickTracking**> element, také v rámci <**VideoClicks**> prvku a určuje prostředek sledování pro přehrávač požadovat, když uživatel klikne na ad . <**MediaFile**> elementy zadejte informace o konkrétním kódováním reklamu. Když je více než jeden <**MediaFile**> elementu videopřehrávač můžete zvolit nejvhodnější kódování pro platformu. 
 
-Lineární reklamy lze zobrazit v zadaném pořadí. Chcete-li to provést, přidejte další <Ad> elementy na VAST souboru a určit pořadí, pomocí pořadí atributu. Následující příklad ilustruje toto:
+Lineární reklamy lze zobrazit v uvedeném pořadí. Chcete-li to provést, přidejte další <Ad> prvků, které mají VAST souboru a určete pořadí pomocí atributu pořadí. Následující příklad ukazuje toto:
 
 ```xml
     <VAST version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="oxml.xsd">
@@ -143,7 +143,7 @@ Lineární reklamy lze zobrazit v zadaném pořadí. Chcete-li to provést, při
     </VAST>
 ```
 
-Nelineární reklamy jsou určené v <Creative> také element. Následující příklad ukazuje <Creative> element, který popisuje nelineární ad.
+Nelineárních reklamy jsou určené v <Creative> i element. Následující příklad ukazuje <Creative> element, který popisuje nelineárních ad.
 
 ```xml
     <Creative id="video" sequence="1" AdID="">
@@ -160,20 +160,20 @@ Nelineární reklamy jsou určené v <Creative> také element. Následující p�
     </Creative>
 ```
 
-<**NonLinearAds**> element může obsahovat jednu nebo více <**NonLinear**> prvky, z nichž každý lze popsat nelineární ad. <**NonLinear**> element určuje prostředek pro nelineární ad. Prostředek může být <**StaticResouce**>, <**IFrameResource**>, nebo <**HTMLResouce**>. <**StaticResource**> popisuje prostředků jiného typu než HTML a definuje creativeType atribut, který určuje, jak se zobrazí prostředku:
+<**NonLinearAds**> element může obsahovat jeden nebo více <**NonLinear**> elementy, z nichž každý lze popsat nelineárních ad. <**NonLinear**> prvek určuje prostředek pro nelineárních ad. Prostředek může být <**StaticResouce**>, <**IFrameResource**>, nebo <**HTMLResouce**>. <**StaticResource**> popisuje prostředků jiného typu než HTML a definuje atribut creativeType, který určuje způsob zobrazení zdroje:
 
-Bitové kopie nebo gif, image nebo jpeg, image nebo png – prostředku se zobrazí v kódu HTML <**img**> značky.
+Image/gif, image/jpeg, image/png – prostředku se zobrazí v HTML <**img**> značky.
 
-Application/x-javascript – prostředku se zobrazí v kódu HTML <**skriptu**> značky.
+Application/x-javascript – prostředku se zobrazí v HTML <**skript**> značky.
 
-Application/x-shockwave-flash – prostředku se zobrazí v Flash player.
+Application/x-shockwave-flash – prostředku se zobrazí v přehrávače pro Flash.
 
-**IFrameResource** popisuje prostředek HTML, který lze zobrazit v elementu IFrame. **HTMLResource** popisuje kód HTML, který lze vložit do webové stránky. **TrackingEvents** zadejte sledování událostí a identifikátor URI požadavku dojde k události. V této ukázce jsou sledovány acceptInvitation a sbalit události. Další informace o **NonLinearAds** elementu a jeho podřízených položek, najdete v části IAB.NET/VAST. Všimněte si, že **TrackingEvents** se nachází v rámci elementu **NonLinearAds** element místo **NonLinear** element.
+**IFrameResource** popisuje prostředek ve formátu HTML, který lze zobrazit v elementu IFrame. **HTMLResource** popisuje část kódu HTML, který může být vložen do webové stránky. **TrackingEvents** zadejte sledování událostí a identifikátor URI pro žádosti při výskytu události. V této ukázce jsou sledovány události acceptInvitation a sbalení. Další informace o **NonLinearAds** elementu a jejích potomků, najdete v části IAB.NET/VAST. Všimněte si, že **TrackingEvents** se nachází v rámci elementu **NonLinearAds** element místo **NonLinear** elementu.
 
-Doprovodná reklamy jsou definovány v rámci <CompanionAds> elementu. <CompanionAds> Element může obsahovat jednu nebo více <Companion> elementy. Každý <Companion> element popisuje doprovodné ad a může obsahovat <StaticResource>, <IFrameResource>, nebo <HTMLResource> které je určené stejným způsobem jako nelineární ad. VELKÁ soubor může obsahovat více doprovodných reklamy a aplikace přehrávače můžete zvolit nejvhodnější ad k zobrazení. Další informace o VAST najdete v tématu [velká 3.0](http://www.iab.net/media/file/VASTv3.0.pdf).
+Doprovodná reklamy jsou definována v rámci <CompanionAds> elementu. <CompanionAds> Element může obsahovat jeden nebo více <Companion> elementy. Každý <Companion> element popisuje doprovodná ad a může obsahovat <StaticResource>, <IFrameResource>, nebo <HTMLResource> které je určené stejným způsobem jako v nelineárních ad. ROZSÁHLÉ soubor může obsahovat více doprovodných reklamy a aplikace přehrávače můžete vybrat nejvhodnější ad k zobrazení. Další informace o VAST najdete v tématu [ROZSÁHLÉ 3.0](http://www.iab.net/media/file/VASTv3.0.pdf).
 
-### <a name="using-a-digital-video-multiple-ad-playlist-vmap-file"></a>Použití více soubor seznamu stop (VMAP) Ad digitální Video
-Soubor VMAP umožňuje zadat, když dojde k zalomení ad, jak dlouho je každý konec, kolik reklamy, může se zobrazit v rámci zalomení a jaké typy služby Active Directory může být při zalomení zobrazovat. Následující soubor VMAP příklad, který definuje zalomení jeden ad:
+### <a name="using-a-digital-video-multiple-ad-playlist-vmap-file"></a>Použití více souboru se seznamem testů (VMAP) Ad digitální Video
+Soubor VMAP umožňuje zadat, pokud dojde k zalomení ad, jak dlouho trvá každé přerušení, kolik reklamy lze zobrazit v rámci přerušení a co mohou být typy reklamy při přerušení. Následující příklad VMAP souboru, který definuje jeden ad přerušení:
 
 ```xml
     <vmap:VMAP xmlns:vmap="http://www.iab.net/vmap-1.0" version="1.0">
@@ -224,34 +224,34 @@ Soubor VMAP umožňuje zadat, když dojde k zalomení ad, jak dlouho je každý 
     </vmap:VMAP>
 ```
 
-Soubor VMAP začíná <VMAP> element, který obsahuje jeden nebo více <AdBreak> elementy, každý definování přerušení služby ad. Každý ad zalomení Určuje typ ukončení, pozastavení ID a posun času. Atribut breakType Určuje typ ad, která může být přehráván během rozdělení: lineární, nelineární, nebo zobrazení. Pro velká doprovodné reklamy zobrazit reklamy mapy. Více než jeden typ ad můžete zadat seznam oddělený čárkami (bez mezer). BreakID je volitelné identifikátor pro služby ad. TimeOffset Určuje, kdy má být zobrazena ad. Určit lze v jednom z následujících způsobů:
+Soubor VMAP začíná <VMAP> element, který obsahuje jeden nebo více <AdBreak> prvky nichž každý definuje přerušení ad. Konec každého ad určuje typu break, přerušení ID a časovým posunem. Atribut breakType Určuje typ služby ad, která může být přehrávané během přerušení: lineární, nelineárních, nebo zobrazení. Zobrazit mapu reklamy ROZSÁHLÉ doprovodná reklamy. V seznamu odděleném čárkami (bez mezer) lze zadat více než jeden typ ad. BreakID je volitelný identifikátor služby ad. TimeOffset Určuje, kdy má být zobrazena ad. To se dá nastavit v jednom z následujících způsobů:
 
-1. Čas – ve formátu hh: mm: nebo hh:mm:ss.mmm kde .mmm je milisekundách. Hodnota tohoto atributu určuje dobu od začátku video časovou osu na začátek rozdělení ad.
-2. Procento – ve formátu n % tam, kde n je procento video časovou osu přehrávání před přehrávání ad
-3. Počáteční nebo koncové – Určuje, že ad by měla zobrazit před nebo po video byla zobrazena.
-4. Pozice – určuje pořadí zalomení ad, když načasování zalomení ad je neznámý, například v živé vysílání datového proudu. Pořadí od konce každé ad je zadána ve formátu #n, kde n je celé číslo větší nebo 1. 1 znamená, že neexistuje ad by měla být přehráván při první příležitosti 2 označuje, že ad by měla být přehráván na druhou možnost a tak dále.
+1. Čas – ve formátu hh: mm: nebo hh:mm:ss.mmm kde .mmm je milisekund. Hodnota tohoto atributu určuje čas začátku pozastavení ad od začátku časové osy videa.
+2. Procento – ve formátu n %, kde n je procento časové osy videa k přehrání před přehrávání ad
+3. Začátek/konec – Určuje, že ad mají být zobrazeny před nebo po byla zobrazena videa
+4. Umístění – určuje pořadí ad konce, když načasování konce ad je neznámý, například v živého streamování. Pořadí každý konec ad se zadává v #n formát, kde n je celé číslo 1 nebo větší. 1 znamená ad by možné přehrát, při první příležitosti, 2 označuje, že ad by měl být přehrán při druhém příležitosti a tak dále.
 
-V rámci <AdBreak> elementu, může být jedna <**AdSource**> elementu. <**AdSource**> element obsahuje následující atributy:
+V rámci <AdBreak> elementu, může dojít k jednomu <**AdSource**> element. <**AdSource**> prvek obsahuje následující atributy:
 
-1. ID – Určuje identifikátor zdroje ad
-2. allowMultipleAds – logická hodnota, která určuje, zda lze zobrazit více reklamy během pozastavení ad
-3. followRedirects – přesměruje volitelné logickou hodnotu, která určuje, pokud by měl respektovat přehrávání videa v rámci odpověď ad
+1. ID – Určuje identifikátor zdroje služby ad
+2. allowMultipleAds – logická hodnota, která určuje, zda při přerušení ad může zobrazovat více reklamy
+3. followRedirects – přesměruje volitelná logická hodnota určující, pokud by měl případném dalším sdílení dodržovat přehrávač videa v rámci ad odpovědi
 
-<**AdSource**> element poskytuje přehrávač odpověď ad vložené nebo odkaz na odpověď ad. Může obsahovat jeden z následujících elementů:
+<**AdSource**> element poskytuje hráč odpověď ad vložené nebo odkaz na odpověď ad. Může obsahovat jednu z následujících elementů:
 
-* <VASTAdData> Označuje, že odpověď velká ad vložené v rámci tohoto souboru VMAP
-* <AdTagURI> identifikátor URI, který odkazuje na odpověď ad z jiného systému
-* <CustomAdData> -libovolný řetězec, který reprezentuje-velká odpověď
+* <VASTAdData> indikuje, že odpověď ROZSÁHLÉ ad je vložený v souboru VMAP
+* <AdTagURI> identifikátor URI, který odkazuje na ad odpověď z jiného systému
+* <CustomAdData> -libovolný řetězec, který představuje-ROZSÁHLÉ odpovědi
 
-V tomto příkladu je definován odpověď ad v řádku s <VASTAdData> element, který obsahuje odpověď velká ad. Další informace o dalších prvků najdete v tématu [VMAP](http://www.iab.net/guidelines/508676/digitalvideo/vsuite/vmap).
+V tomto příkladu se zadaným odpověď ad v řádku <VASTAdData> element, který obsahuje odpověď ROZSÁHLÉ ad. Další informace o dalších prvků, naleznete v tématu [VMAP](http://www.iab.net/guidelines/508676/digitalvideo/vsuite/vmap).
 
-<**AdBreak**> element může také obsahovat jednu <**TrackingEvents**> elementu. <**TrackingEvents**> elementu umožňuje sledovat počáteční nebo koncový přerušení služby ad nebo zda došlo k chybě během pozastavení ad. <**TrackingEvents**> element obsahuje jeden nebo více <**sledování**> prvky, z nichž každý určuje sledování událostí a sledování identifikátor URI. Jsou možné sledování události:
+<**AdBreak**> element může obsahovat také jeden <**TrackingEvents**> element. <**TrackingEvents**> element umožňuje sledovat začátek nebo konec přerušení ad nebo zda došlo k chybě během pozastavení ad. <**TrackingEvents**> element obsahuje jeden nebo více <**sledování**> elementy, z nichž každý určuje sledování událostí a sledování identifikátoru URI. Jsou možné sledování události:
 
-1. breakStart – sleduje začátku přerušení služby ad
-2. breakEnd – sledování dokončení přerušení služby ad
-3. Chyba – sleduje chybu, ke které došlo k chybě během pozastavení ad
+1. breakStart – sleduje začátku pozastavení ad
+2. breakEnd – sledování dokončení přerušení ad
+3. Chyba – sleduje chybu, ke které došlo během pozastavení ad
 
-Následující příklad ukazuje VMAP soubor, který určuje sledování událostí
+Následující příklad ukazuje VMAP soubor, který specifikuje události sledování
 
 ```xml
     <vmap:VMAP xmlns:vmap="http://www.iab.net/vmap-1.0" version="1.0">
@@ -276,10 +276,10 @@ Následující příklad ukazuje VMAP soubor, který určuje sledování událos
     </vmap:VMAP>
 ```
 
-Další informace o <**TrackingEvents**> elementu a jeho podřízených položek, najdete v tématu http://iab.org/VMAP.pdf
+Další informace o <**TrackingEvents**> element a jeho podřízené položky, naleznete v tématu http://iab.net/VMAP.pdf
 
-### <a name="using-a-media-abstract-sequencing-template-mast-file"></a>Pomocí médií abstraktní, pořadí úloh souboru šablony (STOŽÁRŮ)
-Soubor STOŽÁRŮ umožňuje zadat aktivační události, které definují, kdy se má zobrazit ad. Následující příklad je STOŽÁRŮ soubor obsahující aktivačních událostí pro před kumulativní ad, střední kumulativní ad a po vrácení ad.
+### <a name="using-a-media-abstract-sequencing-template-mast-file"></a>Pomocí Media abstraktní klasifikace soubor šablony (STOŽÁRŮ)
+Soubor STOŽÁRŮ můžete k určení aktivačních událostí, které definují, když se objeví reklamu. Následuje příklad STOŽÁRŮ souboru, který obsahuje aktivační události pro ad vrácení pre, střední vrácení ad a ad po vrácení.
 
 ```xml
     <MAST xsi:schemaLocation="http://openvideoplayer.sf.net/mast http://openvideoplayer.sf.net/mast/mast.xsd" xmlns="http://openvideoplayer.sf.net/mast" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
@@ -325,16 +325,16 @@ Soubor STOŽÁRŮ umožňuje zadat aktivační události, které definují, kdy 
 ```
 
 
-Soubor STOŽÁRŮ začíná **STOŽÁRŮ** element, který obsahuje jeden **aktivační události** elementu. <triggers> Element obsahuje jeden nebo více **aktivační událost** prvky, které definují, kdy by měly být přehrány ad. 
+Soubor STOŽÁRŮ začíná **STOŽÁRŮ** element, který obsahuje jeden **aktivační události** elementu. <triggers> Element obsahuje jeden nebo více **aktivační událost** prvky, které definují, kdy by měl ad přehrána. 
 
-**Aktivační událost** obsahuje element **startConditions** element, který zadejte, kdy by měl začínat ad přehrávání. **StartConditions** element obsahuje jeden nebo více <condition> elementy. Při každé <condition> vyhodnotí jako true aktivační událost se zahájí nebo odebrán, podle toho, jestli <condition> je obsažena v **startConditions** nebo **endConditions** element v uvedeném pořadí. Když více <condition> elementy jsou přítomny, jsou považovány za implicitní nebo, aktivační událost zahájíte způsobí, že všechny podmínky vyhodnocení na hodnotu true. <condition> elementy mohou být použity. Když podřízené <condition> jsou přednastavení elementy, jsou považovány za implicitní a, všechny podmínky musí vyhodnotit na hodnotu true pro aktivační událost k zahájení. <condition> Prvek obsahuje následující atributy, které definují podmínky: 
+**Aktivační událost** obsahuje element **startConditions** element, který zadejte, kdy by měla začít přehrávat ad. **StartConditions** element obsahuje jeden nebo více <condition> elementy. Při každé <condition> vyhodnotí jako true aktivační události je zahájeno nebo odvolat, v závislosti na, jestli se <condition> je součástí **startConditions** nebo **endConditions** – element v uvedeném pořadí. Když více <condition> prvky jsou k dispozici, jsou považovány za implicitní nebo všechny podmínky vyhodnotí na hodnotu true způsobí, že trigger pro zahájení. <condition> mohou být vnořené elementy. Pokud podřízený <condition> jsou přednastaveny elementy, jsou považovány za implicitní a, všechny podmínky se musí vyhodnotit na hodnotu true pro trigger pro zahájení. <condition> Prvek obsahuje následující atributy, které definují podmínky: 
 
 1. **typ** – Určuje typ podmínky, události nebo vlastnosti
-2. **název** – název vlastnosti nebo událost, která má použít při vyhodnocení
-3. **Hodnota** – hodnota, která vlastnost vyhodnotí proti
-4. **operátor** – operaci má použít při vyhodnocení: EQ (stejná), NEQ (není rovno), GTR (větší), GEQ (větší nebo rovna), LT (menší než), LEQ (je menší než nebo rovno), MOD (modulo)
+2. **název** – název vlastnosti nebo události, které se použijí při vyhodnocení
+3. **Hodnota** – hodnota, která vlastnost se vyhodnotí oproti
+4. **operátor** – operace má použít při vyhodnocení: EQ (rovná), NEQ (není rovno), GTR (větší), GEQ (větší nebo rovnou hodnotě), LT (menší než), LEQ (menší než nebo rovno), MOD (modulo)
 
-**endConditions** také obsahovat <condition> elementy. Pokud je podmínka vyhodnocena jako true aktivační událost se resetuje. <trigger> Také obsahuje element <sources> element, který obsahuje jeden nebo více <source> elementy. <source> Elementy zadejte identifikátor URI odpovědi ad a typ odpovědi ad. V tomto příkladu je identifikátor URI zadána odpověď na velká. 
+**endConditions** také obsahovat <condition> elementy. Pokud je podmínka vyhodnocena jako true aktivační událost se vynuluje. <trigger> Také obsahuje element <sources> element, který obsahuje jeden nebo více <source> elementy. <source> Elementy definovat identifikátor URI odpovědi ad a typ odpovědi ad. V tomto příkladu je uveden identifikátoru URI k ROZSÁHLÉ odpovědi. 
 
 ```xml
     <trigger id="postroll" description="postroll"  >
@@ -349,10 +349,10 @@ Soubor STOŽÁRŮ začíná **STOŽÁRŮ** element, který obsahuje jeden **akti
     </trigger>
 ```
 
-### <a name="using-video-player-ad-interface-definition-vpaid"></a>Pomocí definice rozhraní Video Player ve službě Active Directory (VPAID)
-VPAID je rozhraní API pro povolení spustitelné ad jednotky ke komunikaci s přehrávání videa. To umožňuje prostředí vysoce interaktivní ad. Uživatel může komunikovat s ad a služby ad může reagovat na akce provedené v prohlížeči. Například může ad zobrazení tlačítka, která umožňují uživateli zobrazit další informace nebo delší verze služby ad. Přehrávání videa musí podporovat rozhraní API VPAID a spustitelné ad musí implementovat rozhraní API. Když přehrávač požadavky že ze serveru služby ad serveru ad může být použit velká odpovědi, která obsahuje VPAID ad.
+### <a name="using-video-player-ad-interface-definition-vpaid"></a>Pomocí definice rozhraní Video přehrávač Ad (VPAID)
+VPAID je rozhraní API umožňující použití jednotky spustitelného souboru ad ke komunikaci s přehrávač videa. To umožňuje ad vysoce interaktivní prostředí. Uživatelé můžou komunikovat se službou ad a ad můžou reagovat na akce provedené v prohlížeči. Ad může například zobrazit tlačítka, která umožní uživateli zobrazit další informace nebo delší verzi ad. Přehrávač videa musí podporovat rozhraní API VPAID a spustitelné ad musí implementovat rozhraní API. Když hráč požadavky že ze serveru služby ad serveru ad může reagovat obrovského množství odpovědí, který obsahuje VPAID ad.
 
-Spustitelný soubor ad se vytvoří v kódu, který je třeba spustit v prostředí runtime například Adobe Flash™ nebo JavaScript, může být spuštěn ve webovém prohlížeči. Po návratu velká odpověď obsahující VPAID ad serveru služby ad hodnotu apiFramework atribut <MediaFile> element musí být "VPAID". Tento atribut určuje, že obsahují ad je spustitelný soubor ad VPAID. Atribut type musí být nastaven na typ MIME ke spustitelnému souboru, například "application/x-shockwave-flash" nebo "application/x-javascript". Následující fragment kódu ukazuje XML <MediaFile> element z velká odpověď obsahující spustitelné ad VPAID. 
+Spustitelný soubor ad se vytvoří v kódu, který je třeba spustit v běhovém prostředí, jako je například Adobe Flash™ nebo JavaScript, které mohou být provedeny ve webovém prohlížeči. ROZSÁHLÉ odpověď obsahující VPAID ad návratu server služby ad hodnotu apiFramework atribut <MediaFile> element musí být "VPAID". Tento atribut určuje, že omezením ad je spustitelný soubor ad VPAID. Atribut type musí být nastaven na typ MIME spustitelného souboru, například "application/x-shockwave-flash" nebo "application/x-javascript". Následující fragment kódu ukazuje XML <MediaFile> element z ROZSÁHLÉ odpověď obsahující spustitelný soubor ad VPAID. 
 
 ```xml
     <MediaFiles>
@@ -363,27 +363,27 @@ Spustitelný soubor ad se vytvoří v kódu, který je třeba spustit v prostře
     </MediaFiles>
 ```
 
-Spustitelný soubor ad může být inicializována pomocí <AdParameters> v rámci <Linear> nebo <NonLinear> elementy v odpovědi na velká. Další informace o <AdParameters> elementu, najdete v části [velká 3.0](http://www.iab.net/media/file/VASTv3.0.pdf). Další informace o rozhraní API VPAID najdete v tématu [VPAID 2.0](http://www.iab.net/media/file/VPAID_2.0_Final_04-10-2012.pdf).
+Spustitelný soubor ad mohou být inicializovány pomocí <AdParameters> element v rámci <Linear> nebo <NonLinear> prvky v odpovědi na velké. Další informace o <AdParameters> prvku, naleznete v tématu [ROZSÁHLÉ 3.0](http://www.iab.net/media/file/VASTv3.0.pdf). Další informace o rozhraní API VPAID najdete v tématu [VPAID 2.0](http://www.iab.net/media/file/VPAID_2.0_Final_04-10-2012.pdf).
 
-## <a name="implementing-a-windows-or-windows-phone-8-player-with-ad-support"></a>Implementace systému Windows nebo Windows Phone 8 hráče s podpora služby Ad
-Platforma Microsoft média: Player Framework pro Windows 8 a Windows Phone 8 obsahuje kolekci ukázkové aplikace, které ukazují, jak implementovat přehrávání videa aplikace pomocí rozhraní. Můžete si stáhnout přehrávač Framework a ukázky z [Player Framework pro Windows 8 a Windows Phone 8](https://playerframework.codeplex.com).
+## <a name="implementing-a-windows-or-windows-phone-8-player-with-ad-support"></a>Implementace Windows nebo Windows Phone 8 Player s podporou Ad
+Platforma Microsoft Media: Player Framework pro systém Windows 8 a Windows Phone 8 obsahuje kolekci z ukázkových aplikací, které ukazují, jak implementovat aplikace přehrávače videa pomocí rozhraní. Architekturu přehrávače a ukázky od si můžete stáhnout [Player Framework pro systém Windows 8 a Windows Phone 8](https://playerframework.codeplex.com).
 
-Když otevřete řešení Microsoft.PlayerFramework.Xaml.Samples, zobrazí se počet složek v projektu. Inzerování složka obsahuje ukázkový kód, který je důležité pro vytvoření přehrávání videa s podpora služby ad. Uvnitř reklama složka je počet XAML nebo cs soubory, které ukazují, jak vložit reklamy jiným způsobem. Následující seznam popisuje všechny:
+Když otevřete řešení Microsoft.PlayerFramework.Xaml.Samples, zobrazí se počet složek v rámci projektu. Inzerování složka obsahuje ukázkový kód, který je relevantní pro vytváření přehrávač videa s podporou ad. Uvnitř reklama složka je počet XAML/cs soubory, které ukazují, jak vkládání reklam jiným způsobem. Následující seznam popisuje všechny:
 
-* AdPodPage.xaml ukazuje způsob zobrazení pod služby ad.
-* AdSchedulingPage.xaml ukazuje, jak při plánování služby Active Directory.
-* FreeWheelPage.xaml ukazuje, jak naplánování služby Active Directory pomocí modulu plug-in FreeWheel.
-* MastPage.xaml ukazuje, jak při plánování služby Active Directory pomocí souboru STOŽÁRŮ.
-* ProgrammaticAdPage.xaml ukazuje, jak programově naplánování služby Active Directory do video.
-* ScheduleClipPage.xaml ukazuje, jak naplánovat ad bez velká souboru.
-* VastLinearCompanionPage.xaml ukazuje, jak k vložení lineární a doprovodné ad.
-* VastNonLinearPage.xaml ukazuje, jak vložit – lineární ad.
-* VmapPage.xaml ukazuje, jak zadat soubor VMAP služby Active Directory.
+* AdPodPage.xaml ukazuje, jak zobrazit pod ad.
+* AdSchedulingPage.xaml ukazuje, jak k naplánování služby Active Directory.
+* FreeWheelPage.xaml ukazuje, jak používat modul plug-in FreeWheel naplánování služby Active Directory.
+* MastPage.xaml ukazuje, jak k naplánování služby Active Directory pomocí souboru STOŽÁRŮ.
+* ProgrammaticAdPage.xaml ukazuje, jak prostřednictvím kódu programu naplánování služby Active Directory do videa.
+* ScheduleClipPage.xaml ukazuje, jak naplánovat ad bez ROZSÁHLÉ souboru.
+* VastLinearCompanionPage.xaml ukazuje, jak vložit lineární a doprovodné ad.
+* VastNonLinearPage.xaml ukazuje, jak vložit nelineárních ad.
+* VmapPage.xaml ukazuje, jak určit reklamy souborem VMAP.
 
-Všechny tyto ukázky používá třídu Media Player definované rozhraní přehrávač. Většina ukázek pomocí modulů plug-in, který přidat podporu pro různými formáty odpovědi ad. Ukázka ProgrammaticAdPage prostřednictvím kódu programu komunikuje s instancí Media Player.
+Každá ukázka používá MediaPlayer – třída definována v rámci rozhraní přehrávače. Většina ukázek používat moduly plug-in, které přidává funkce pro různé formáty reklam odpovědi. Ukázka ProgrammaticAdPage programově komunikuje instanci MediaPlayer.
 
 ### <a name="adpodpage-sample"></a>Ukázka AdPodPage
-Tato ukázka používá AdSchedulerPlugin definovat, kdy se mají zobrazit ad. V tomto příkladu inzerování střední kumulativní oprava má být přehráván po pět sekund. Pod ad (skupina služby Active Directory pro zobrazení v pořadí) je zadána v velká souboru, kterou vrátil server služby ad. Identifikátor URI pro velká souboru je uveden v <RemoteAdSource> elementu.
+Tento příklad používá AdSchedulerPlugin k definování, kdy se má zobrazit reklamu. V tomto příkladu je naplánované ohlášení uprostřed vrácení přehrána po pěti sekundách. Pod ad (skupiny služby Active Directory pro zobrazení v pořadí) je zadáno v souboru ROZSÁHLÉ vrácená ze serveru služby ad. Identifikátor URI pro ROZSÁHLÉ souboru je zadaná v <RemoteAdSource> elementu.
 
 ```xml
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
@@ -405,10 +405,10 @@ Tato ukázka používá AdSchedulerPlugin definovat, kdy se mají zobrazit ad. V
     </mmppf:MediaPlayer>
 ```
 
-Další informace o AdSchedulerPlugin najdete v tématu [inzerování v rámci Player ve Windows 8 a Windows Phone 8](http://playerframework.codeplex.com/wikipage?title=Advertising&referringTitle=Windows%208%20Player%20Documentation)
+Další informace o AdSchedulerPlugin najdete v tématu [reklamy v rámci Playeru ve Windows 8 a Windows Phone 8](http://playerframework.codeplex.com/wikipage?title=Advertising&referringTitle=Windows%208%20Player%20Documentation)
 
 ### <a name="adschedulingpage"></a>AdSchedulingPage
-Tato ukázka používá také AdSchedulerPlugin. Naplánuje tři služby Active Directory, ad před, střední kumulativní ad a po vrácení ad. Zadaný identifikátor URI pro VAST u každé reklamy v <RemoteAdSource> elementu.
+Tato ukázka také používá AdSchedulerPlugin. Naplánuje tři reklamy, před ad, střední role ad a ad po vrácení. Identifikátor URI pro VAST u každé je zadán v <RemoteAdSource> elementu.
 
 ```xml
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
@@ -442,7 +442,7 @@ Tato ukázka používá také AdSchedulerPlugin. Naplánuje tři služby Active 
 ```
 
 ### <a name="freewheelpage"></a>FreeWheelPage
-Tato ukázka používá FreeWheelPlugin, která určuje zdrojový atribut, který určuje identifikátor URI, který ukazuje na soubor SmartXML, který určuje ad obsahu a také informace o plánování ad.
+Tato ukázka používá FreeWheelPlugin, který určuje zdrojový atribut, který určuje identifikátor URI, který odkazuje na soubor SmartXML určující ad obsahu, jakož i informace o plánování ad.
 
 ```xml
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
@@ -465,13 +465,13 @@ Tato ukázka používá MastSchedulerPlugin, která umožňuje použít soubor S
 ```
 
 ### <a name="programmaticadpage"></a>ProgrammaticAdPage
-Tato ukázka prostřednictvím kódu programu komunikuje s Media Player. Soubor ProgrammaticAdPage.xaml vytvoří Media Player:
+Tato ukázka programově komunikuje MediaPlayer. Soubor ProgrammaticAdPage.xaml vytvoří instanci MediaPlayer:
 
 ```xml
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4"/>
 ```
 
-Soubor ProgrammaticAdPage.xaml.cs vytvoří AdHandlerPlugin, přidá TimelineMarker zadat při ad mají být zobrazeny a potom přidá obslužné rutiny pro MarkerReached událost, která načte RemoteAdSource, určující identifikátor URI pro velká soubor a pak hraje ad.
+Soubor ProgrammaticAdPage.xaml.cs vytvoří AdHandlerPlugin, přidá TimelineMarker zadat při ad by se mělo zobrazit a pak přidá obslužnou rutinu pro událost MarkerReached, který načte RemoteAdSource určující identifikátor URI pro ROZSÁHLÉ souboru a pak hraje ad.
 
 ```csharp
     public sealed partial class ProgrammaticAdPage : Microsoft.PlayerFramework.Samples.Common.LayoutAwarePage
@@ -504,7 +504,7 @@ Soubor ProgrammaticAdPage.xaml.cs vytvoří AdHandlerPlugin, přidá TimelineMar
 ```
 
 ### <a name="scheduleclippage"></a>ScheduleClipPage
-Tato ukázka používá AdSchedulerPlugin k naplánování střední kumulativní ad zadáním soubor .wmv, který obsahuje ad.
+Tento příklad používá AdSchedulerPlugin naplánování uprostřed vrácení ad tak, že zadáte soubor .wmv, který obsahuje ad.
 
 ```xml
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.cloudapp.net/html5/media/bigbuck.mp4">
@@ -530,7 +530,7 @@ Tato ukázka používá AdSchedulerPlugin k naplánování střední kumulativn�
 ```
 
 ### <a name="vastlinearcompanionpage"></a>VastLinearCompanionPage
-Tato ukázka znázorňuje, jak naplánovat střední kumulativní lineární ad s ad doprovodné pomocí AdSchedulerPlugin. <RemoteAdSource> Element určuje umístění souboru velká.
+Tento příklad ukazuje, jak použít AdSchedulerPlugin k plánování střední vrácení lineární ad se službou companion ad. <RemoteAdSource> Prvek určuje umístění souboru obrovského množství.
 
 ```xml
     <mmppf:MediaPlayer Grid.Row="1"  x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
@@ -552,7 +552,7 @@ Tato ukázka znázorňuje, jak naplánovat střední kumulativní lineární ad 
 ```
 
 ### <a name="vastlinearnonlinearpage"></a>VastLinearNonLinearPage
-Tato ukázka používá AdSchedulerPlugin při plánování lineární a -lineární ad. Umístění souboru velká zadaný <RemoteAdSource> elementu.
+Tato ukázka používá AdSchedulerPlugin naplánování lineární a nelineárních ad. Umístění souboru ROZSÁHLÉ zadán s parametrem <RemoteAdSource> elementu.
 
 ```xml
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
@@ -574,7 +574,7 @@ Tato ukázka používá AdSchedulerPlugin při plánování lineární a -lineá
 ```
 
 ### <a name="vmappage"></a>VMAPPage
-Tato ukázka používá k naplánování služby Active Directory pomocí souboru VMAP VmapSchedulerPlugin. Zadaný identifikátor URI k souboru VMAP v zdrojový atribut <VmapSchedulerPlugin> elementu.
+Tento příklad používá VmapSchedulerPlugin naplánování služby Active Directory pomocí souboru VMAP. Identifikátor URI souboru VMAP je zadaný v atributu zdrojové <VmapSchedulerPlugin> elementu.
 
 ```xml
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
@@ -585,11 +585,11 @@ Tato ukázka používá k naplánování služby Active Directory pomocí soubor
             </mmppf:MediaPlayer>
 ```
 
-## <a name="implementing-an-ios-video-player-with-ad-support"></a>Implementace iOS Video hráče s podpora služby Ad
-Platforma Microsoft média: Architektura Player pro iOS obsahuje kolekci ukázkové aplikace, které ukazují, jak implementovat přehrávání videa aplikace pomocí rozhraní. Můžete si stáhnout přehrávač Framework a ukázky z [Azure Media Player Framework](https://github.com/Azure/azure-media-player-framework). Stránku githubu obsahuje odkaz na Wiki, který obsahuje další informace o rozhraní player a úvod do ukázka player: [Wiki přehrávač médií Azure](https://github.com/Azure/azure-media-player-framework/wiki/How-to-use-Azure-media-player-framework).
+## <a name="implementing-an-ios-video-player-with-ad-support"></a>Implementace přehrávače videa s podporou Ad pro iOS
+Platforma Microsoft Media: Architekturu přehrávače pro iOS obsahuje kolekci z ukázkových aplikací, které ukazují, jak implementovat aplikace přehrávače videa pomocí rozhraní. Architekturu přehrávače a ukázky od si můžete stáhnout [Azure Media Player Framework](https://github.com/Azure/azure-media-player-framework). Na stránce githubu má odkaz na Wiki, který obsahuje další informace o architekturu přehrávače a úvod do ukázkové player: [Azure Media Player Wiki](https://github.com/Azure/azure-media-player-framework/wiki/How-to-use-Azure-media-player-framework).
 
 ### <a name="scheduling-ads-with-vmap"></a>Plánování služby Active Directory s VMAP
-Následující příklad ukazuje, jak při plánování služby Active Directory pomocí souboru VMAP.
+Následující příklad ukazuje, jak k naplánování služby Active Directory pomocí souboru VMAP.
 
 ```csharp
     // How to schedule an Ad using VMAP.
@@ -610,7 +610,7 @@ Následující příklad ukazuje, jak při plánování služby Active Directory
 ```
 
 ### <a name="scheduling-ads-with-vast"></a>Plánování služby Active Directory s VAST
-Následující příklad ukazuje, jak naplánovat pozdní vazby velká ad.
+Následující příklad ukazuje, jak naplánovat pozdní ROZSÁHLÉ ad vazby.
 
 
 ```csharp
@@ -640,7 +640,7 @@ Následující příklad ukazuje, jak naplánovat pozdní vazby velká ad.
     }
 ```
 
-   Následující příklad ukazuje, jak naplánovat ad pro velká časné vazby.
+   Následující příklad ukazuje, jak naplánovat předčasné ROZSÁHLÉ ad vazby.
 
 ```csharp
     //Example:4 Schedule an early binding VAST ad
@@ -669,7 +669,7 @@ Následující příklad ukazuje, jak naplánovat pozdní vazby velká ad.
     }
 ```
 
-Následující příklad ukazuje, jak vložit ad pomocí hrubý vyjmout úpravy (RCE)
+Následující příklad ukazuje, jak vložit ad pomocí hrubý vyjmout úpravy (zdrojový)
 
 ```csharp
     //Example:1 How to use RCE.
@@ -687,7 +687,7 @@ Následující příklad ukazuje, jak vložit ad pomocí hrubý vyjmout úpravy 
     }
 ```
 
-Následující příklad ukazuje, jak naplánovat pod služby ad.
+Následující příklad ukazuje, jak naplánovat pod ad.
 
 ```csharp
     //Example:5 Schedule an ad Pod.
@@ -717,7 +717,7 @@ Následující příklad ukazuje, jak naplánovat pod služby ad.
     }
 ```
 
-Následující příklad ukazuje, jak naplánovat-rychlých ad střední vrácení. Rychlých ad pouze přehraje po bez ohledu na jakékoli vyhledávání se provádí v prohlížeči.
+Následující příklad ukazuje, jak naplánovat – rychlé ad uprostřed vrácení. Rychlé ad pouze přehrání po bez ohledu na jakékoli hledání v prohlížeči provede.
 
 ```csharp
     //Example:6 Schedule a single non sticky mid roll Ad
@@ -746,7 +746,7 @@ Následující příklad ukazuje, jak naplánovat-rychlých ad střední vrácen
     }
 ```
 
-Následující příklad ukazuje, jak naplánovat rychlých ad střední vrácení. Rychlých ad se zobrazí pokaždé, když je dosaženo Zadaný bod na video časovou osu.
+Následující příklad ukazuje, jak naplánovat rychlé ad uprostřed vrácení. Jako vždy navrchu ad se zobrazí pokaždé, když je dosaženo Zadaný bod v časové osy videa.
 
 ```csharp
     //Example:7 Schedule a single sticky mid roll Ad
@@ -794,7 +794,7 @@ Následující příklad ukazuje, jak naplánovat po vrácení ad.
     }
 ```
 
-Následující příklad ukazuje, jak naplánovat před ad.
+Následující příklad ukazuje, jak plánovat před ad.
 
 ```csharp
     //Example:9 Schedule Pre Roll Ad
@@ -816,7 +816,7 @@ Následující příklad ukazuje, jak naplánovat před ad.
     }
 ```
 
-Následující příklad ukazuje, jak naplánovat ad střední kumulativní překrytí.
+Následující příklad ukazuje, jak naplánovat ad uprostřed vrácení překrytí.
 
 ```csharp
     // Example10: Schedule a Mid Roll overlay Ad

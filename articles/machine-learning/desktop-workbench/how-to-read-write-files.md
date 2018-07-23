@@ -1,59 +1,59 @@
 ---
-title: Čtení a zápis velkých objemů dat souborů | Microsoft Docs
-description: Čtení a zápis velkých souborů ve experimenty Azure Machine Learning.
+title: Čtení a zapisování velkých datových souborů | Dokumentace Microsoftu
+description: Čtení a zápis velkých souborů v experimenty Azure Machine Learning.
 services: machine-learning
 author: hning86
 ms.author: haining
 manager: mwinkle
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/10/2017
-ms.openlocfilehash: 3e7436c4b69a27931238ea80304231394074ffe3
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 5a772f8792c02139e45977e207b5be4bebc63a9c
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34831090"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37908235"
 ---
-# <a name="persisting-changes-and-working-with-large-files"></a>Uložením změn a práce s velkými soubory
-Ve službě Azure Machine Learning experimentování můžete nakonfigurovat různé provádění cílů. Některé cíle jsou místní, například v místním počítači nebo kontejner Docker v místním počítači. Ostatní jsou vzdálené, jako je například kontejner Docker na vzdáleném počítači nebo clusteru služby HDInsight. Další informace najdete v tématu [přehled Azure Machine Learning experimentovat služba provedení](experimentation-service-configuration.md). 
+# <a name="persisting-changes-and-working-with-large-files"></a>Uložením změn prostředků a práci s velkými soubory
+Pomocí služby experimentování ve službě Azure Machine Learning můžete nakonfigurovat různé cíle spuštění. Některé cíle jsou místní, jako je například v místním počítači nebo kontejneru Docker v místním počítači. Ostatní jsou vzdálené, jako je například kontejneru Docker ve vzdáleném počítači nebo clusteru služby HDInsight. Další informace najdete v tématu [přehled Azure Machine Learning vyzkoušet spuštění služby](experimentation-service-configuration.md). 
 
-Předtím, než můžete spustit na cíl, musíte zkopírovat složce projektu výpočetní cíl. Je potřeba udělat, tak i s místní spuštění, který používá místní dočasnou složku pro tento účel. 
+Předtím, než můžete spustit na cíli, je třeba zkopírovat složku projektu do cílového výpočetního prostředí. Je potřeba udělat, tak i s místní spuštění, který používá místní dočasnou složku pro tento účel. 
 
-## <a name="execution-isolation-portability-and-reproducibility"></a>Provádění izolace, přenositelnost a reprodukovatelnost
-Účelem tohoto návrhu je zajištění izolace, reprodukovatelnosti a přenositelnost spuštění. Pokud dvakrát spustit stejný skriptu na stejném nebo jiném výpočetní cíl, obdržíte stejné výsledky. Změny provedené při prvním spuštění by neměl určovat nastavení v druhé provádění. V tomto návrhu může výpočetní cíle považovat bezstavové výpočetních prostředků, každý s bez přidružení pro úlohy, které jsou spouštěny po ukončení práce.
+## <a name="execution-isolation-portability-and-reproducibility"></a>Spuštění izolace, přenositelnost a reprodukovatelnosti problémových
+Účelem tohoto návrhu je pro zajištění izolace, reprodukovatelnost a přenositelnost spuštění. Pokud stejný skript spustíte dvakrát, na stejném nebo jiném cílové výpočetní prostředí, se zobrazí stejné výsledky. Změny provedené při prvním spuštění by neměl mít vliv na ve spuštění druhého. S tímto návrhem lze považovat cílových výpočetních prostředí jako bezstavové výpočetní prostředky, mají spřažení s úlohami, které jsou spouštěny po jejich dokončení.
 
 ## <a name="challenges"></a>Výzvy
-I když tento návrh poskytuje výhody přenositelnosti a opakovatelnosti, přináší také některé jedinečné výzvy.
+Přestože tento návrh přináší výhody přenositelnosti a opakovatelnost, přináší také některé jedinečné výzvy.
 
-### <a name="persisting-state-changes"></a>Zachování změny stavu
-Pokud váš skript upravit stav kontext výpočetní, nejsou pro vaše další provádění trvalé změny a jejich nebudou rozšířeny zpět na klientský počítač automaticky. 
+### <a name="persisting-state-changes"></a>Zachování změn stavu
+Pokud váš skript změní stav výpočetním kontextu, nejsou trvalé změny pro další spuštění a jejich nejsou šířeny zpět do klientského počítače automaticky. 
 
-Přesněji řečeno pokud váš skript vytvoří podsložky nebo zapisuje do souboru, složky nebo souboru nebude existovat v adresáři projektu po spuštění. Soubory jsou uloženy v dočasnou složku v cílovém prostředí výpočty. Můžete je použít pro účely ladění, ale nelze spoléhat na jejich trvalé existence.
+Přesněji řečeno pokud váš skript vytvoří podsložky nebo zapisuje do souboru, složky nebo souboru nebudou k dispozici v adresáři projektu po spuštění. Soubory se ukládají do dočasné složky v cílovém prostředí compute. Můžete je použít pro účely ladění, ale nelze spoléhat na jejich trvalé existence.
 
 ### <a name="working-with-large-files-in-the-project-folder"></a>Práce s velkými soubory ve složce projektu
 
-Pokud složky projektu obsahuje velké soubory, když složce je zkopírován do cílové výpočetní prostředí na začátku provádění zpoplatněná latence. I v případě, že k provádění dojde místně, je stále nepotřebné disku provoz předejdete. Z tohoto důvodu jsme aktuálně cap projektu maximální velikost v 25 MB.
+Pokud složky vašeho projektu obsahuje velké soubory, vznikne vám latence při složce je zkopírován do cílové výpočetní prostředí na začátku provádění. I v případě provedení dochází místně, je stále zbytečné diskové přenosy, aby se zabránilo. Z tohoto důvodu sledujeme aktuálně projektu maximální velikost na 25 MB.
 
 ## <a name="option-1-use-the-outputs-folder"></a>Možnost 1: Použití *výstupy* složky
 Tato možnost je vhodnější, pokud platí následující podmínky:
 * Váš skript vytvoří soubory.
-* Očekáváte soubory a změnit s každou experimentu.
+* Očekáváte, že soubory, které chcete změnit s každou experimentu.
 * Chcete zachovat historii těchto souborů. 
 
 Běžné případy použití jsou:
-* Cvičení modelu
+* Trénování modelu
 * Vytvoření datové sady
-* Vykreslení graf jako soubor bitové kopie v rámci vašeho modelu školení provádění 
+* Vykreslení grafu jako soubor obrázku jako součást provádění trénování modelu 
 
-Kromě toho chcete porovnat výstupy napříč běží, vyberte výstupního souboru (například model), která byla vytvořena pomocí předchozí spustit a následně použít pro následné úlohy (například vyhodnocování).
+Kromě toho chcete porovnat výstupy během spuštění, vyberte výstupního souboru (například model), který byl vytvořen předchozí spustit a použít jej pro následující úlohy (například vyhodnocování).
 
-Lze zapisovat soubory do složky s názvem *výstupy* , je relativní vzhledem ke kořenovému adresáři. Složka obdrží zvláštní zacházení službou experimenty. Nic váš skript vytvoří ve složce během provádění, například souboru modelu, datový soubor nebo soubor možná vykreslená bitové kopie (souhrnně známé jako _artefakty_), se zkopíruje do účtu Azure Blob storage, který je spojen s vaší Po dokončení spuštění experimentování účet. Soubory se stanou součástí vaší záznam historie spouštění.
+Lze zapisovat soubory do složky s názvem *výstupy* , která je relativní vzhledem k kořenový adresář. Složka obdrží zvláštní zacházení pomocí služby experimentování ve službě. Nic váš skript vytvoří ve složce během provádění, jako je například soubor modelu, datový soubor nebo soubor možná vykreslená bitové kopie (souhrnně označované jako _artefakty_), je zkopírován do účtu služby Azure Blob storage, který je spojen s vaší Po dokončení spuštění se experimentální účet. Soubory se stanou součástí záznamu historie spuštění.
 
-Zde je stručný příklad kódu pro ukládání model v *výstupy* složky:
+Zde je příklad krátkého kódu pro ukládání modelu *výstupy* složky:
 ```python
 import os
 import pickle
@@ -63,41 +63,41 @@ import pickle
 with open(os.path.join('.', 'outputs', 'model.pkl'), 'wb') as f:    
     pickle.dump(m, f)
 ```
-Si můžete stáhnout všechny artefaktů procházením **výstupní soubory** část na stránku podrobností spuštění konkrétní spustit v Azure Machine Learning Workbench. Jednoduše vyberte spustit a pak vyberte **Stáhnout** tlačítko. Alternativně můžete zadat `az ml asset download` příkazu v okně rozhraní příkazového řádku (CLI).
+Si můžete stáhnout tak, že přejdete do všech artefaktů **výstupní soubory** část na stránku podrobné konkrétní spustit v Azure Machine Learning Workbench. Jednoduše vyberte spustit a pak vyberte **Stáhnout** tlačítko. Alternativně můžete zadat `az ml asset download` příkazu v okně rozhraní příkazového řádku (CLI).
 
-Více kompletní příklad, najdete v článku `iris_sklearn.py` Python script v _klasifikace Iris_ ukázkový projekt.
+Kompletní příklad, najdete v článku `iris_sklearn.py` Pythonového skriptu v _klasifikace Iris_ ukázkového projektu.
 
 ## <a name="option-2-use-the-shared-folder"></a>Možnost 2: Použití sdílené složky
-Pokud nepotřebujete zachovat historie souborů každé spuštění, může být sdílená složka, která je přístupná přes nezávislé spustí pomocí skvělou možnost pro následující scénáře: 
-- Skript musí načtení dat z místních souborů, jako jsou soubory .csv nebo adresář souborů text či image, jako školení nebo testovací data. 
-- Váš skript zpracovává nezpracovaná data a zapíše se mezilehlých výsledků, jako je například featurized Cvičná data z textu nebo bitové kopie souborů, které se používají v následných školení spustit. 
-- Váš skript průměrů modelu a následné vyhodnocování skript musí vyzvednutí modelu a použít jej pro vyhodnocení. 
+Pokud není nutné udržovat historii každé spuštění souborů, použití sdílené složky, který je přístupný přes nezávislé spuštění může být skvělou možností pro následující scénáře: 
+- Skript je potřeba načítat data z místních souborů, například soubory CSV nebo adresář souborů text či image jako školení nebo testovací data. 
+- Váš skript zpracovává nezpracovaných dat a zapíše mezilehlé výsledky, jako je například natrénuje trénovacích dat ze souborů text či image, které se používají v následných školení spustit. 
+- Váš skript průměrů modelu a následné hodnoticího skriptu musí vyzvednutí modelu a použít pro hodnocení. 
 
-Je důležité si uvědomit, místně žije sdílenou složku na cílovém zvolené výpočetní. Proto tato možnost funguje jenom v případě, že všechny vaše skript se spustí odkazující na tuto sdílenou složku jsou spouštěny ve stejném výpočetní cíl a cíl výpočetní není recykluje mezi spustí.
+Je důležité si uvědomit, že sdílené složka se nachází místně na vaše cílové výpočetní prostředí zvolené. Proto tato možnost funguje pouze v případě, že je všechno, co váš skript se spustí, které odkazují na tuto sdílenou složku, které jsou spouštěny ve stejném cílové výpočetní prostředí a cílové výpočetní prostředí není recyklován mezi spuštění.
 
-Využitím funkce sdílené složky, může číst nebo zapisovat do speciální složky, která je identifikovaná proměnná prostředí `AZUREML_NATIVE_SHARE_DIRECTORY`. 
+S využitím funkce sdílené složky, může číst nebo zapisovat do složky, která je identifikovaná proměnnou prostředí `AZUREML_NATIVE_SHARE_DIRECTORY`. 
 
 ### <a name="example"></a>Příklad:
-Tady je ukázkový kód Python pro čtení a zápis do textového souboru pomocí tuto sdílenou složku:
+Tady je ukázkový kód Pythonu pro použití této sdílené složky pro čtení a zápis do textového souboru:
 ```python
 import os
 
 # write to the shared folder
-with open(os.environ['AZUREML_NATIVE_SHARE_DIRECTORY'] + 'test.txt', 'wb') as f:
-    f.write(“Hello World”)
+with open(os.environ['AZUREML_NATIVE_SHARE_DIRECTORY'] + 'test.txt', "w") as f1:
+    f1.write(“Hello World”)
 
 # read from the shared folder
-with open(os.environ['AZUREML_NATIVE_SHARE_DIRECTORY'] + 'test.txt', 'r') as f:
-    text = file.read()
+with open(os.environ['AZUREML_NATIVE_SHARE_DIRECTORY'] + 'test.txt', "r") as f2:
+    text = f2.read()
 ```
 
-Více kompletní příklad najdete v tématu *iris_sklearn_shared_folder.py* v soubor _klasifikace Iris_ ukázkový projekt.
+Podrobnější příklad naleznete v tématu *iris_sklearn_shared_folder.py* soubor _klasifikace Iris_ ukázkového projektu.
 
-Před použitím této funkce budete muset nastavit *.compute* některé jednoduché konfigurace, které představují kontextu cílové spuštění v souboru *aml_config* složky. Skutečné cesty ke složce se může lišit v závislosti na cílových výpočetní zvolíte a hodnota, kterou konfigurujete.
+Tuto funkci mohli používat, je nutné nastavit *.compute* některé jednoduché konfigurace, které představují kontextu cílové spuštění v souboru *aml_config* složky. Skutečné cesty ke složce se může lišit v závislosti na cílové výpočetní prostředí, které zvolíte a hodnota, kterou nakonfigurujete.
 
-### <a name="configure-local-compute-context"></a>Nakonfigurujte místní výpočetní kontextu
+### <a name="configure-local-compute-context"></a>Konfigurovat místní výpočetní kontext
 
-Chcete-li povolit tuto funkci v kontextu místního výpočetní, jednoduše přidat do vaší *.compute* souboru následující řádek, který představuje _místní_ prostředí (obvykle s názvem *local.compute*).
+Pokud chcete povolit tuto funkci v místním výpočetním kontextu, jednoduše přidejte do vašeho *.compute* souboru následující řádek, který představuje _místní_ prostředí (obvykle s názvem *local.compute*).
 ```
 # local.runconfig
 ...
@@ -105,7 +105,7 @@ nativeSharedDirectory: ~/.azureml/share
 ...
 ```
 
-Cesta ~/.azureml/share cesta je výchozí základní složky. Můžete ho změnit na jakékoli místní cestou absolutní, který je přístupný pro skript spustit. Název účtu experimentování, název pracovního prostoru a název projektu se automaticky připojí název základního adresáře, který se stane úplná cesta sdíleného adresáře. Například soubory lze zapisovat do (a načítat z) následující cestu, pokud používáte předchozí výchozí hodnota:
+~/.Azureml/share cesta je výchozí cesta základní složky. Můžete ho změnit na místní absolutní cestu, který je přístupný pro skript spustit. Název experimentálního účtu, název pracovního prostoru a název projektu jsou automaticky připojeným k názvu základního adresáře, který bude úplná cesta sdíleného adresáře. Například soubory můžete zapsána do (a získaných) následující cestu, pokud používáte předchozí výchozí hodnota:
 
 ```
 # on Windows
@@ -115,8 +115,8 @@ C:\users\<username>\.azureml\share\<exp_acct_name>\<workspace_name>\<proj_name>\
 /Users/<username>/.azureml/share/<exp_acct_name>/<workspace_name>/<proj_name>/
 ```
 
-### <a name="configure-the-docker-compute-context-local-or-remote"></a>Konfigurovat kontext Docker výpočetní (místní nebo vzdálené)
-Chcete-li povolit tuto funkci v kontextu výpočetní Docker, musíte přidat následující dva řádky do vaší místní nebo vzdálené Docker *.compute* souboru.
+### <a name="configure-the-docker-compute-context-local-or-remote"></a>Konfigurace Dockeru výpočetním kontextu (místní nebo vzdálené)
+Pokud chcete povolit tuto funkci na výpočetním kontextu Dockeru, musíte přidat následující dva řádky do místního nebo vzdáleného Docker *.compute* souboru.
 
 ```
 # docker.compute
@@ -126,9 +126,9 @@ nativeSharedDirectory: ~/.azureml/share
 ...
 ```
 >[!IMPORTANT]
->**SharedVolumes** musí být nastavena na *true* při použití `AZUREML_NATIVE_SHARE_DIRECTORY` proměnnou prostředí k přístupu ke sdílené složce. Provádění, jinak selže.
+>**SharedVolumes** musí být vlastnost nastavena na *true* při použití `AZUREML_NATIVE_SHARE_DIRECTORY` proměnné prostředí pro přístup ke sdílené složce. V opačném případě se nezdaří spuštění.
 
-Kód spuštěný ve kontejner Docker vždy zobrazí tuto sdílenou složku jako */azureml-share /*. Cesta ke složce, jak je vidět ve kontejner Docker se nedá konfigurovat. Nepoužívejte název této složky ve vašem kódu. Místo toho použijte název proměnné prostředí vždy `AZUREML_NATIVE_SHARE_DIRECTORY` odkazovat na tuto složku. Je mapován na místní složku na hostiteli Docker počítač nebo výpočetní kontextu. Základní adresář této místní složky je nastavitelná hodnota `nativeSharedDirectory` nastavení v *.compute* souboru. Místní cesta sdílené složky na hostitelském počítači, pokud použijete výchozí hodnota je následující:
+Kód v kontejneru Dockeru běží vždy uvidí tuto sdílenou složku jako */azureml-share /*. Cesta ke složce, jak je vidět v kontejneru Dockeru, není konfigurovatelné. Nepoužívejte název této složky ve vašem kódu. Místo toho použijte název proměnné prostředí vždy `AZUREML_NATIVE_SHARE_DIRECTORY` odkazovat na tuto složku. Je mapován na místní složky v hostitele Docker machine nebo výpočetního kontextu. Základní adresář tuto místní složku je konfigurovatelná hodnota `nativeSharedDirectory` nastavení *.compute* souboru. Místní cesta sdílenou složku na hostitelském počítači, pokud nechcete použít výchozí hodnotu, je následující:
 ```
 # Windows
 C:\users\<username>\.azureml\share\<exp_acct_name>\<workspace_name>\<proj_name>\
@@ -141,27 +141,28 @@ C:\users\<username>\.azureml\share\<exp_acct_name>\<workspace_name>\<proj_name>\
 ```
 
 >[!NOTE]
->Cesta sdílené složky na místním disku je stejný, ať už místní výpočetní kontext nebo lokální kontext výpočetní Docker. To znamená, že můžete sdílet soubory mezi místním spuštění a spuštění místní Docker.
+>Cestu sdílené složce na místním disku, je stejný, ať už jde o místní výpočetní kontext nebo místní výpočetní kontext Dockeru. To znamená, že můžou i sdílet soubory mezi místním spuštění a místní spuštění Docker.
 
-Můžete umístit vstupní data přímo v uvedených složkách a očekávají, že místní nebo Docker spustí na počítači můžete vyzvedávat ho. Můžete také zapisovat soubory do této složky z vaší místní nebo Docker spustí a očekávají, že soubory získat uchovávané v této složce zbývajících provádění životního cyklu.
+Můžete umístit vstupních dat přímo v uvedených složkách a očekávají, že vaše místní nebo spuštění Dockeru na počítači můžete ji vybrat. Můžete také zápisu do této složky souborů z místního počítače nebo spuštění Docker a očekávají, že v této složce získat trvalé soubory přežití životní cyklus spuštění.
 
-Další informace najdete v tématu [Azure Machine Learning Workbench provádění konfigurační soubory](experimentation-service-configuration-reference.md).
+Další informace najdete v tématu [Azure Machine Learning Workbench spouštění konfiguračních souborů](experimentation-service-configuration-reference.md).
 
 >[!NOTE]
->`AZUREML_NATIVE_SHARE_DIRECTORY` Proměnnou prostředí není podporován v kontextu výpočetní HDInsight. Je však snadno dosažení stejného výsledku explicitně pomocí absolutní cestu úložiště objektů Blob v Azure číst a zapisovat do úložiště objektů blob připojené.
+>`AZUREML_NATIVE_SHARE_DIRECTORY` Proměnná prostředí není podporován ve výpočetním kontextu HDInsight. Je však snadné k dosažení stejného výsledku explicitně pomocí absolutní cestu úložiště objektů Blob v Azure pro čtení a zápis do úložiště objektů blob v připojené.
 
-## <a name="option-3-use-external-durable-storage"></a>Možnost 3: Použití externího odolná úložiště
+## <a name="option-3-use-external-durable-storage"></a>Možnost 3: Použití externí odolné úložiště
 
-Externí odolná úložiště můžete použít k uchování stavu během provádění. Tato možnost je užitečná v následujících scénářích:
-- Vstupní data je již uložen v odolná úložiště, který je přístupný z cílového výpočetním prostředí.
-- Soubory nemusí být součástí záznamy historie spouštění.
-- Soubory musí být ve spuštěních sdíleny různých výpočetních prostředí.
-- Soubory musí být schopen zůstanou platné i po jeho výpočetní kontextu.
+Externí odolné úložiště můžete použít k uchování stavu během provádění. Tato možnost je užitečná v následujících scénářích:
+- Vstupní data již uložena do odolného úložiště, který je přístupný z cílového výpočetního prostředí.
+- Soubory nemusí být součástí záznamy historie spuštění.
+- Soubory musí být sdílí spuštění v různých výpočetních prostředích.
+- Soubory musí být možné nezbytné k překonání výpočetní kontext.
 
-Jedním z těchto způsobů je použití Azure Blob storage z Pythonu nebo PySpark kódu. Zde je stručný příklad:
+Jedním z těchto přístupů je použít úložiště objektů Blob v Azure z vašeho kódu Python nebo PySpark. Tady je krátké příklad:
 
 ```python
 from azure.storage.blob import BlockBlobService
+from azure.storage.blob.models import PublicAccess
 import glob
 import os
 
@@ -172,7 +173,7 @@ CONTAINER_NAME = "<container name>"
 blob_service = BlockBlobService(account_name=ACCOUNT_NAME, account_key=ACCOUNT_KEY)
 
 ## Create a new container if necessary, or use an existing one
-my_service.create_container(CONTAINER_NAME, fail_on_exist=False, public_access=PublicAccess.Container)
+blob_service.create_container(CONTAINER_NAME, fail_on_exist=False, public_access=PublicAccess.Container)
 
 # df is a pandas DataFrame
 df.to_csv('mydata.csv', sep='\t', index=False)
@@ -182,7 +183,7 @@ for name in glob.iglob('mydata.csv'):
     blob_service.create_blob_from_path(CONTAINER_NAME, 'single_file.csv', name)
 ```
 
-Tady je příklad Krátký pro připojení k modulu runtime HDI Spark jakékoli libovolný úložiště objektů Blob v Azure:
+Zde je příklad krátká pro připojení k prostředí runtime HDI Spark jakékoli libovolné úložiště objektů Blob v Azure:
 ```python
 def attach_storage_container(spark, account, key):
     config = spark._sc._jsc.hadoopConfiguration()
@@ -194,8 +195,8 @@ attach_storage_container(spark, "<storage account name>", "<storage key>”)
 ```
 
 ## <a name="conclusion"></a>Závěr
-Vzhledem k tomu, že Azure Machine Learning spustí skripty tak, že zkopírujete složku celý projekt k cíli výpočetní kontextu, věnujte zvláštní pozornost s velké vstupní, výstupní a zprostředkující soubory. Pro transakce velkých souborů, můžete použít složku speciální výstupy, sdílené složky, která je přístupná prostřednictvím `AZUREML_NATIVE_SHARE_DIRECTORY` proměnné prostředí, nebo externí odolné úložiště. 
+Azure Machine Learning spouští skripty zkopírováním celé složky projektu do cílového výpočetního kontextu, věnujte zvláštní pozornost s velké vstupní, výstupní a zprostředkující soubory. Pro transakce velké soubory, můžete použít speciální výstupy složku sdílenou složku, která je přístupná prostřednictvím `AZUREML_NATIVE_SHARE_DIRECTORY` proměnné prostředí, nebo externí odolné úložiště. 
 
 ## <a name="next-steps"></a>Další postup
-- Zkontrolujte [Azure Machine Learning Workbench provádění konfigurační soubory](experimentation-service-configuration-reference.md) článku.
-- V tématu Jak [klasifikace Iris](tutorial-classifying-iris-part-1.md) kurz projektu používá složce výstupy k zachování modulu trained model.
+- Zkontrolujte [Azure Machine Learning Workbench spouštění konfiguračních souborů](experimentation-service-configuration-reference.md) článku.
+- V tématu Jak [klasifikace Iris](tutorial-classifying-iris-part-1.md) kurz projekt používá k uchování trénovaného modelu složce výstupy.

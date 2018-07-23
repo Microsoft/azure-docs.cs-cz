@@ -1,6 +1,6 @@
 ---
-title: Proces Team dat. vědecké účely v akce – pomocí clusteru Azure HDInsight Hadoop na datovou sadu 1 TB | Microsoft Docs
-description: Pomocí procesu Team dat vědecké účely začátku do konce scénář nasazení clusteru služby HDInsight Hadoop pro sestavení a nasazení modelu pomocí velké veřejně dostupné datové sady (1 TB)
+title: Vědecké zpracování týmových dat v akci – pomocí clusteru Azure HDInsight Hadoop na datové sadě 1 TB | Dokumentace Microsoftu
+description: Použití vědeckého zpracování týmových dat začátku do konce scénář použití clusteru HDInsight Hadoop pro sestavování a nasazování modelů pomocí velkou veřejně dostupnou datovou sadu (1 TB)
 services: machine-learning,hdinsight
 documentationcenter: ''
 author: deguhath
@@ -16,117 +16,117 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: deguhath
 ms.openlocfilehash: 4c368c3f06347b1164731d056a7341bdabb759b4
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
+ms.lasthandoff: 07/10/2018
 ms.locfileid: "34837340"
 ---
-# <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Proces Team dat. vědecké účely v akce – pomocí clusteru Azure HDInsight Hadoop na 1 TB datové sady
+# <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Vědecké zpracování týmových dat v akci – pomocí clusteru Azure HDInsight Hadoop na 1 TB datové sady
 
-Tento návod ukazuje, jak používat proces vědecké účely Team dat ve scénáři s začátku do konce s [clusteru Azure HDInsight Hadoop](https://azure.microsoft.com/services/hdinsight/) k uložení, prozkoumejte, funkci pracovníka a dolů ukázková data z jednoho z veřejně dostupné [ Criteo](http://labs.criteo.com/downloads/download-terabyte-click-logs/) datové sady. Azure Machine Learning používá k vytvoření modelu binární klasifikace na tato data. Také ukazuje, jak k publikování některého z těchto modelů jako webovou službu.
+Tento návod ukazuje, jak používat vědecké zpracování týmových dat ve scénáři začátku do konce se [clusteru Azure HDInsight Hadoop](https://azure.microsoft.com/services/hdinsight/) k ukládání, zkoumat, funkce technik a ukázková data z jednoho z veřejně dostupné dolů[ Criteo](http://labs.criteo.com/downloads/download-terabyte-click-logs/) datové sady. Využívá Azure Machine Learning a začít vytvářet binární klasifikační model pro tato data. Také ukazuje, jak k publikování některého z těchto modelů jako webové služby.
 
-Je také možné použít k provádění úloh uvedené v tomto návodu IPython poznámkového bloku. Uživatelé, kteří by chtěli opakujte tento postup by se měli obrátit [Criteo návod pomocí připojení Hive ODBC](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-hive-walkthrough-criteo.ipynb) tématu.
+Je také možné použít k provádění úloh, které jsou uvedené v tomto názorném postupu IPython notebook. Uživatelé, kteří chtěli vyzkoušet tohoto přístupu by se měli obrátit [Criteo návod používání Hive ODBC připojení](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-hive-walkthrough-criteo.ipynb) tématu.
 
 ## <a name="dataset"></a>Popis Criteo datové sady
-Criteo dat je předpovědi klikněte na datovou sadu, která je přibližně 370 gzip komprimované TSV souborů (~1.3TB nekomprimovaným), která obsahuje více než miliardu 4.3 záznamů. Jsou převzaty z 24 dní klikněte na tlačítko dat, které poskytují [Criteo](http://labs.criteo.com/downloads/download-terabyte-click-logs/). Pro usnadnění práce datových vědců byla data dostupná pro nás a experimentovat s rozbalené.
+Criteo dat je predikce klikněte na datovou sadu, přibližně 370 GB souborů gzip komprimované TSV (~1.3TB nekomprimovaný), zahrnující více než 4.3 miliard záznamů. Je převzata z 24 dní klikněte na data k dispozici ve [Criteo](http://labs.criteo.com/downloads/download-terabyte-click-logs/). Pro usnadnění práce odborníci přes data byla data dostupná pro nás můžete experimentovat s rozbaleny.
 
-Každý záznam v této datové sadě obsahuje 40 sloupce:
+Každý záznam v této datové sadě obsahuje 40 sloupců:
 
-* první sloupec je sloupec popisek, který označuje, zda uživatel klikne **přidat** (hodnota 1) nebo není klikněte na jednu (hodnota 0)
-* Další 13 sloupce jsou číselné, a
-* poslední 26 jsou kategorií sloupců
+* první sloupec je sloupec popisek, který označuje, zda uživatel klikne **přidat** (hodnota 1) nebo není klikněte na jednu (hodnotou 0)
+* dále 13 sloupce obsahují číselné hodnoty a a
+* posledních 26 jsou zařazené do kategorií sloupce
 
-Sloupce jsou anonymizovány a použijte řadu výčtové názvy: "Sloupec1" (pro popisek sloupce) do "Col40" (pro poslední kategorií sloupec).            
+Sloupce, které jsou anonymní a použijte řadu Výčtový názvy: "Sloupec1" (pro popisek sloupce) do "Col40" (pro poslední sloupec zařazené do kategorií).            
 
-Tady je výňatek prvních 20 sloupců dvě hodnoty (řádky) s tuto datovou sadu:
+Tady je výpisem prvních 20 sloupce vyjádření dva (řádky) z této sestavy:
 
     Col1    Col2    Col3    Col4    Col5    Col6    Col7    Col8    Col9    Col10    Col11    Col12    Col13    Col14    Col15            Col16            Col17            Col18            Col19        Col20
 
     0       40      42      2       54      3       0       0       2       16      0       1       4448    4       1acfe1ee        1b2ff61f        2e8b2631        6faef306        c6fc10d3    6fcd6dcb           
     0               24              27      5               0       2       1               3       10064           9a8cb066        7a06385f        417e6103        2170fc56        acf676aa    6fcd6dcb                      
 
-V této datové sady je chybějící hodnoty ve sloupcích číselné a kategorií. Je popsána jednoduchý způsob zpracování chybějící hodnoty. Další podrobnosti dat jsou prozkoumali při ukládání do tabulek Hive.
+Jsou chybějící hodnoty zařazené do kategorií a číselné sloupce v této datové sadě. Je popsána jednoduchý způsob zpracování chybějících hodnot. Další podrobnosti dat jsou probírány při ukládání do tabulek Hive.
 
-**Definice:** *Interaktivní kurz (PEV.cenu):* Toto je procento kliknutí v datech. V této datové sadě Criteo PEV.cenu je přibližně % 3.3 nebo 0.033.
+**Definice:** *Interaktivní kurz (KONT):* Toto je procento kliknutí v datech. V této datové sadě Criteo PEV.cenu je přibližně % 3.3 nebo 0.033.
 
-## <a name="mltasks"></a>Příklady předpovědi úlohy
-Dva ukázkové předpovědi problémy řešeny v tomto průvodci:
+## <a name="mltasks"></a>Příklady úloh predikcí
+V tomto názorném postupu se tak vyřeší dva ukázkové předpovědi problémy:
 
-1. **Binární klasifikace**: předpovídá, zda uživatel klikli add:
+1. **Binární klasifikace**: předpovídá, jestli uživatel kliknutí na add:
    
-   * Třída 0: Žádné klikněte na
+   * Třída 0: Žádné kliknutím
    * Třídy 1: klikněte na
-2. **Regrese**: předpovídá pravděpodobnost ad klikněte na z funkcí uživatelů.
+2. **Regrese**: předpovídá pravděpodobnost ad kliknutím uživatelské funkce.
 
-## <a name="setup"></a>Nastavit až HDInsight Hadoop clusteru pro vědecké zpracování dat
-**Poznámka:** se obvykle jedná **správce** úloh.
+## <a name="setup"></a>Nastavte si HDInsight Hadoop cluster pro datové vědy
+**Poznámka:** obvykle se jedná **správce** úloh.
 
-Nastavení prostředí vědecké zpracování dat Azure pro vytváření řešení prediktivní analýzy s clustery HDInsight v tři kroky:
+Nastavení prostředí Azure pro datové vědy pro vytváření řešení prediktivní analýzy s využitím clusterů HDInsight ve třech krocích:
 
-1. [Vytvoření účtu úložiště](../../storage/common/storage-create-storage-account.md): Tento účet úložiště se používá k ukládání dat do Azure Blob Storage. Data použitá v clusterech HDInsight je zde uloženy.
-2. [Přizpůsobení clusterů systému Hadoop HDInsight Azure pro vědecké zpracování dat](customize-hadoop-cluster.md): Tento krok vytvoří s 64-bit Anaconda Python 2.7 nainstalované na všech uzlech clusteru Azure HDInsight Hadoop. Existují dva důležité kroky (popsaný v tomto tématu) provést při přizpůsobení clusteru HDInsight.
+1. [Vytvoření účtu úložiště](../../storage/common/storage-create-storage-account.md): Tento účet úložiště se používá k ukládání dat ve službě Azure Blob Storage. Data používaná v clusterech HDInsight je zde uloženy.
+2. [Přizpůsobení clusterů Azure HDInsight Hadoop pro vědecké zkoumání dat](customize-hadoop-cluster.md): Tento krok vytvoří cluster Azure HDInsight Hadoop s 64bitovým kompilátorem Anaconda Python 2.7 nainstalované na všech uzlech. Existují dva důležité kroky (popsané v tomto tématu) k dokončení při vlastním nastavení clusteru HDInsight.
    
-   * Je nutné propojit vytvořili v kroku 1 k vašemu clusteru HDInsight při vytvoření účtu úložiště. Tento účet úložiště se používá pro přístup k datům, která může být zpracována v rámci clusteru.
-   * Po vytvoření je nutné povolit vzdálený přístup k hlavnímu uzlu clusteru. Pamatovat přihlašovací údaje vzdáleného přístupu, zde určíte (liší od nastavení zadané pro cluster při jeho vytváření): je třeba, aby proveďte následující postupy.
-3. [Vytvořit pracovní prostor služby Azure ML](../studio/create-workspace.md): Tento Azure Machine Learning prostoru slouží k vytváření modelů machine learning po zkoumání počáteční data a dolů vzorkování v clusteru HDInsight.
+   * Je třeba propojit účet úložiště vytvořený v kroku 1 s vaším clusterem HDInsight při jeho vytvoření. Tento účet úložiště se používá pro přístup k datům, které mohou být zpracovány v rámci clusteru.
+   * Po vytvoření je nutné povolit vzdálený přístup k hlavnímu uzlu clusteru. Pamatovat přihlašovací údaje vzdáleného přístupu, které zadáte tady (liší od zadaného clusteru při jeho vytváření): budete potřebovat následující postup.
+3. [Vytvořit pracovní prostor služby Azure ML](../studio/create-workspace.md): pracovní prostor tento Azure Machine Learning je určená k vytváření modelů strojového učení po počáteční zkoumání a dolů vzorkování v clusteru HDInsight.
 
 ## <a name="getdata"></a>Získání a využívat data z veřejné zdroje
-[Criteo](http://labs.criteo.com/downloads/download-terabyte-click-logs/) datové sady je přístupná kliknutím na odkaz, vyjádření souhlasu s podmínkami použití a poskytnutím název. Zobrazí se zde snímek co vypadá takto:
+[Criteo](http://labs.criteo.com/downloads/download-terabyte-click-logs/) datová sada je přístupná, klikněte na odkaz, přijetí podmínek použití a poskytnutí názvu. Jak to vypadá snímku je znázorněna zde:
 
 ![Přijměte podmínky Criteo](./media/hive-criteo-walkthrough/hLxfI2E.png)
 
-Klikněte na tlačítko **pokračovat ke stažení** Další informace o sadě dat a jeho dostupnost.
+Klikněte na tlačítko **pokračovat ke stažení** Další informace o datové sady a jeho dostupnosti.
 
-Data se nachází v veřejné [úložiště objektů blob Azure](../../storage/blobs/storage-dotnet-how-to-use-blobs.md) umístění: wasb://criteo@azuremlsampleexperiments.blob.core.windows.net/raw/. "wasb" odkazuje na umístění úložiště objektů Blob Azure. 
+Data se nachází ve veřejném [úložiště objektů blob v Azure](../../storage/blobs/storage-dotnet-how-to-use-blobs.md) umístění: wasb://criteo@azuremlsampleexperiments.blob.core.windows.net/raw/. "wasb" odkazuje na umístění úložiště objektů Blob v Azure. 
 
-1. Data v této veřejného objektu blob úložiště se skládá z tři podsložky rozbalené data.
+1. Data v této veřejné blob storage se skládá z tři podsložky rozzipovaný data.
    
-   1. Podsložky *nezpracovanou nebo počet/* obsahuje první 21 dnů dat – dni\_00 den\_20
-   2. Podsložky *nezpracovanou nebo train/* se skládá z jednoho dne dat, den\_21
-   3. Podsložky *nezpracovaná/testovací/* se skládá ze dvou dnů dat, den\_22 a den\_23
-2. Pro osoby, které chcete začít s daty nezpracovaná gzip, ty jsou také k dispozici ve složce hlavní *nezpracovanou nebo* jako day_NN.gz, kde NN přejde od 00 do 23.
+   1. Podsložky *raw nebo count/* obsahuje první 21 dnů dat – denně\_00 den\_20
+   2. Podsložky *nezpracované/trénování/* se skládá z jednoho dne dat, den\_21
+   3. Podsložky *nezpracované/testovací/* se skládá ze dvou dnů dat, den\_22 a den\_23
+2. Pro ty, kteří chtějí s daty nezpracovaná gzip, jsou také k dispozici ve složce hlavní *nezpracované /* jako day_NN.gz, kde NN přejde od 00 do 23.
 
-Alternativní způsob přístup, prozkoumat a model, který tato data, která nevyžaduje žádné místní stažení se vysvětluje dále v tomto návodu při vytváření tabulek Hive.
+Alternativním přístupem k přístupu, prozkoumejte a modelu, který tato data, která nevyžaduje žádné místní soubory ke stažení je vysvětlen později v tomto názorném postupu při vytváření tabulek Hive.
 
-## <a name="login"></a>Přihlaste se k headnode clusteru
-K přihlášení do headnode clusteru, použijte [portál Azure](https://ms.portal.azure.com) najít clusteru. Klikněte na ikonu Slon HDInsight na levé straně a pak dvakrát klikněte na název clusteru. Přejděte na **konfigurace** kartě, dvakrát klikněte na ikonu připojit v dolní části stránky a zadejte své přihlašovací údaje vzdáleného přístupu při zobrazení výzvy. Tím přejdete na headnode clusteru.
+## <a name="login"></a>Přihlaste se k hlavnímu uzlu clusteru
+Chcete-li přihlásit se k hlavnímu uzlu clusteru, použijte [webu Azure portal](https://ms.portal.azure.com) k vyhledání clusteru. Klikněte na ikonu Slon HDInsight na levé straně a potom dvakrát klikněte na název vašeho clusteru. Přejděte **konfigurace** kartu, dvakrát klikněte na ikonu připojit v dolní části stránky a zadejte svoje přihlašovací údaje vzdáleného přístupu po zobrazení výzvy. Tím přejdete k hlavnímu uzlu clusteru.
 
-Zde je typické první protokol v na clusteru headnode vypadá takto:
+Zde je, jak vypadá typické prvním přihlášení k hlavnímu uzlu clusteru:
 
 ![Přihlaste se ke clusteru](./media/hive-criteo-walkthrough/Yys9Vvm.png)
 
-Na levé straně je "Hadoop příkazového řádku", což je naše Centrem pro zkoumání dat. Všimněte si dvě užitečné adresy URL - "Hadoop Yarn stav" a "Hadoop název uzlu". Adresa URL yarn stavu zobrazuje průběh úlohy a adresu URL uzlu název obsahuje údaje o konfiguraci clusteru.
+Na levé straně je "Hadoop příkazového řádku", což je naše Centrem pro zkoumání dat. Všimněte si, že dvě užitečné adresy URL – "Hadoop Yarn stavu" a "Hadoop název uzlu". Adresa URL yarn stavu zobrazuje průběh úlohy a adresu URL uzlu název obsahuje údaje o konfiguraci clusteru.
 
-Nyní jsou nastavené a připravené k zahájení první část tohoto návodu: zkoumání dat pomocí Hive a získání dat připravené pro Azure Machine Learning.
+Nyní jsou nastaveny a jste připravení začít první část návodu: zkoumání dat pomocí Hivu a příprava dat pro Azure Machine Learning.
 
-## <a name="hive-db-tables"></a> Vytvoření databáze Hive a tabulky
-Chcete-li vytvořit tabulek Hive pro naše Criteo datovou sadu, otevřete ***Hadoop příkazového řádku*** na ploše hlavního uzlu a zadejte adresář Hive zadáním příkazu
+## <a name="hive-db-tables"></a> Vytvořit databázi Hive a tabulky
+K vytvoření tabulky Hive pro datovou sadu Criteo, otevřete ***příkazového řádku Hadoopu*** v klientských počítačích k hlavnímu uzlu a zadejte adresář Hive zadáním příkazu
 
     cd %hive_home%\bin
 
 > [!NOTE]
-> Spusťte všechny příkazy Hive v tomto návodu z podregistru bin / directory řádku. To postará o všech problémech, cesta automaticky. Můžete použít s podmínkami "Hive directory výzva", "Hive bin / directory řádku", "Hadoop příkazový řádek" a zcela zaměnitelným významem.
+> Spustit všechny příkazy Hive v tomto názorném postupu z koše Hive / directory řádku. To se postará o případné problémy cestu automaticky. Můžete využít podmínky "Hive directory řádku", "Hive bin / directory řádku" a "příkazového řádku Hadoopu" Zaměnitelně.
 > 
 > [!NOTE]
-> K provedení jakýkoli dotaz Hive, jeden vždy použít následující příkazy:
+> Ke spuštění libovolného dotazu Hive, jeden vždy použijte následující příkazy:
 > 
 > 
 
         cd %hive_home%\bin
         hive
 
-Jakmile se objeví Hive REPL s "hive >"přihlásit, stačí vyjmout a vložit dotaz tak, aby ho provést.
+Jakmile se objeví Hive REPL s "hive >"podepsat, stačí vyjmout a vložit dotaz k jeho provedení.
 
-Následující kód vytvoří databázi "criteo" a poté generuje 4 tabulky:
+Následující kód vytvoří databázi "criteo" a poté vygeneruje 4 tabulky:
 
-* *tabulku pro generování počty* založený na den dnů\_00 den\_20,
-* *tabulky pro použití jako datové sady train* založený na den\_21, a
-* dva *tabulky pro použití jako testovací datové sady* založený na den\_22 a den\_23 v uvedeném pořadí.
+* *tabulku pro generování počty* založená na den dnů\_00 den\_20,
+* *tabulky pro použití jako datovou sadu trénování* založená na den\_21, a
+* dvě *tabulky pro použití jako datových sad testů* založená na den\_22 a den\_23 v uvedeném pořadí.
 
-Rozdělte testovací datové sady na dvou různých tabulek, protože jedna dny volný den. Cílem je určit, pokud model zjistit rozdíly mezi svátek a bez svátek kurz, klikněte na tlačítko prostřednictvím.
+Testovací datové rozdělte do dvou různých tabulek, protože je jeden volný den. Cílem je určit, pokud model lze zjistit rozdíly mezi svátku a mimo svátků kurz, klikněte na tlačítko procházení.
 
-Skript [ukázka&#95;hive&#95;vytvořit&#95;criteo&#95;databáze&#95;a&#95;tables.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_criteo_database_and_tables.hql) se zde zobrazí ke zvýšení pohodlí:
+Skript [ukázka&#95;hive&#95;vytvořit&#95;criteo&#95;databáze&#95;a&#95;tables.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_criteo_database_and_tables.hql) se tady zobrazí pro usnadnění práce:
 
     CREATE DATABASE IF NOT EXISTS criteo;
     DROP TABLE IF EXISTS criteo.criteo_count;
@@ -159,36 +159,36 @@ Skript [ukázka&#95;hive&#95;vytvořit&#95;criteo&#95;databáze&#95;a&#95;tables
 
 Tyto tabulky jsou externí, takže můžete jednoduše přejděte na jejich umístění Azure Blob Storage (wasb).
 
-**Existují dva způsoby, jak provést dotaz ANY Hive:**
+**Ke spuštění dotazu Hive v ANY dvěma způsoby:**
 
-1. **Pomocí příkazového řádku Hive REPL**: první je vydat příkaz "hive" a zkopírujte a vložte dotaz na REPL Hive, příkazového řádku. Chcete-li to provést, postupujte:
+1. **Použití Hivu REPL příkazového řádku**: první je vydat příkaz "hive" a zkopírujte a vložte dotaz na podregistr REPL příkazového řádku. Provedete to udělat:
    
         cd %hive_home%\bin
         hive
    
-     Nyní v REPL příkazového řádku, vyjímání a vkládání dotaz provede ji.
-2. **Uložení dotazů do souboru a provádění příkazu**: druhý přístup spočívá v dotazech uložit do souboru .hql ([ukázka&#95;hive&#95;vytvořit&#95;criteo&#95;databáze&#95;a&#95;tables.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_criteo_database_and_tables.hql)) a potom vydat příkaz k provedení dotazu:
+     Teď v REPL příkazového řádku, vyjmutí a vložení dotazu jej provede.
+2. **Ukládání dotazů do souboru a provádění příkazu**: druhým je uložit do souboru .hql dotazy ([ukázka&#95;hive&#95;vytvořit&#95;criteo&#95;databáze&#95;a&#95;tables.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_criteo_database_and_tables.hql)) a potom vydat příkaz k provedení dotazu:
    
         hive -f C:\temp\sample_hive_create_criteo_database_and_tables.hql
 
-### <a name="confirm-database-and-table-creation"></a>Potvrďte vytváření databáze a tabulky
-Dále zkontrolujte vytvoření databáze pomocí následujícího příkazu z podregistru bin / directory řádku:
+### <a name="confirm-database-and-table-creation"></a>Ověřte vytvoření databáze a tabulky
+Dále zkontrolujte vytvoření databáze pomocí následujícího příkazu z koše Hive / directory řádku:
 
         hive -e "show databases;"
 
-Díky tomu jsou:
+Díky tomu:
 
         criteo
         default
         Time taken: 1.25 seconds, Fetched: 2 row(s)
 
-Vytvoření nové databáze, "criteo" potvrdíte.
+Tím potvrdíte vytvoření nové databáze "criteo".
 
-Pokud chcete zobrazit, jaké tabulky byly vytvořeny, jednoduše vydejte příkaz zde z koše Hive / directory řádku:
+Pokud chcete zobrazit, jaké tabulky byly vytvořeny, jednoduše vydejte příkaz tady z koše Hive / directory řádku:
 
         hive -e "show tables in criteo;"
 
-Potom byste měli vidět následující výstup:
+Pak by měl zobrazit následující výstup:
 
         criteo_count
         criteo_test_day_22
@@ -196,63 +196,63 @@ Potom byste měli vidět následující výstup:
         criteo_train
         Time taken: 1.437 seconds, Fetched: 4 row(s)
 
-## <a name="exploration"></a> Zkoumání dat v Hive
-Nyní jste připraveni provést některé základní data zkoumání v Hive. Začněte tím, že určovat počet příklady vlaku a testování datových tabulek.
+## <a name="exploration"></a> Zkoumání dat v Hivu
+Teď jste připravení na provádění některých základních zkoumání v podregistru. Začněte tím, že počítání příklady vlaku a data tabulky testů.
 
-### <a name="number-of-train-examples"></a>Počet train příklady
-Obsah [ukázka&#95;hive&#95;počet&#95;cvičení&#95;tabulky&#95;examples.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_count_train_table_examples.hql) zde se zobrazují:
+### <a name="number-of-train-examples"></a>Řadu příkladů trénování
+Obsah [ukázka&#95;hive&#95;počet&#95;trénování&#95;tabulky&#95;examples.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_count_train_table_examples.hql) se tady zobrazí:
 
         SELECT COUNT(*) FROM criteo.criteo_train;
 
-Dostaneme:
+To poskytuje:
 
         192215183
         Time taken: 264.154 seconds, Fetched: 1 row(s)
 
-Alternativně jeden může také vydejte následující příkaz z podregistru bin / directory řádku:
+Můžete také jeden může také vydejte následující příkaz z koše Hive / directory řádku:
 
         hive -f C:\temp\sample_hive_count_criteo_train_table_examples.hql
 
-### <a name="number-of-test-examples-in-the-two-test-datasets"></a>Počet testů příklady v dvě datové sady testů
-Nyní určený počet příklady v dvě testovací datové sady. Obsah [ukázka&#95;hive&#95;počet&#95;criteo&#95;testování&#95;den&#95;22&#95;tabulky&#95;examples.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_count_criteo_test_day_22_table_examples.hql) jsou tady:
+### <a name="number-of-test-examples-in-the-two-test-datasets"></a>Řadu příkladů testu v obou datových sadách testů
+Nyní počet příklady v obou datových sadách testů. Obsah [ukázka&#95;hive&#95;počet&#95;criteo&#95;testování&#95;den&#95;22&#95;tabulky&#95;examples.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_count_criteo_test_day_22_table_examples.hql) se nacházíte tady:
 
         SELECT COUNT(*) FROM criteo.criteo_test_day_22;
 
-Dostaneme:
+To poskytuje:
 
         189747893
         Time taken: 267.968 seconds, Fetched: 1 row(s)
 
-Obvyklým způsobem, může také zavolat skript z podregistru bin / directory řádku vydání příkazu:
+Obvyklým způsobem, může také volání skriptu z koše Hive / directory řádku vydání příkazu:
 
         hive -f C:\temp\sample_hive_count_criteo_test_day_22_table_examples.hql
 
-Nakonec zkontrolujte počet příklady testů v testovací datové sady na základě dne\_23.
+Nakonec zkontrolujte počet testů příklady v této datové sadě testů založené na den\_23.
 
-Příkaz k tomu je podobná právě uvedeno (odkazovat na [ukázka&#95;hive&#95;počet&#95;criteo&#95;testování&#95;den&#95;23&#95;examples.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_count_criteo_test_day_23_examples.hql)):
+K tomu příkaz je podobný tomu, který právě vidíte (odkazovat na [ukázka&#95;hive&#95;počet&#95;criteo&#95;testování&#95;den&#95;23&#95;examples.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_count_criteo_test_day_23_examples.hql)):
 
         SELECT COUNT(*) FROM criteo.criteo_test_day_23;
 
-Díky tomu jsou:
+Díky tomu:
 
         178274637
         Time taken: 253.089 seconds, Fetched: 1 row(s)
 
-### <a name="label-distribution-in-the-train-dataset"></a>Popisek distribuce v datové sadě train
-Popisek distribuce v datové sadě train je určen. Tím zobrazíte zobrazit obsah [ukázka&#95;hive&#95;criteo&#95;popisek&#95;distribuční&#95;cvičení&#95;table.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_label_distribution_train_table.hql):
+### <a name="label-distribution-in-the-train-dataset"></a>Distribuce označení v datové sadě trénování
+Distribuce označení v datové sadě trénování je relevantní. Tento údaj zobrazíte, zobrazit obsah [ukázka&#95;hive&#95;criteo&#95;popisek&#95;distribuce&#95;trénování&#95;table.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_label_distribution_train_table.hql):
 
         SELECT Col1, COUNT(*) AS CT FROM criteo.criteo_train GROUP BY Col1;
 
-Popisek distribuce dostaneme:
+To poskytuje distribuce označení:
 
         1       6292903
         0       185922280
         Time taken: 459.435 seconds, Fetched: 2 row(s)
 
-Všimněte si, že procento kladné popisky přibližně 3.3 % (konzistentní s původní datové sady).
+Všimněte si, že procento kladné popisky o 3.3 % (stejně jako u původní datové sady).
 
-### <a name="histogram-distributions-of-some-numeric-variables-in-the-train-dataset"></a>Histogram distribuce některých číselné proměnných v datové sadě train
-Můžete použít na Hive nativní "histogram\_číselné" funkce a zjistěte, distribuci číselné proměnné, která bude vypadat takto. Tady jsou obsah [ukázka&#95;hive&#95;criteo&#95;histogram&#95;numeric.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_histogram_numeric.hql):
+### <a name="histogram-distributions-of-some-numeric-variables-in-the-train-dataset"></a>Histogram distribuce některé číselné proměnné v datové sadě trénování
+Můžete použít pro Hive nativní "histogram\_číselné" funkce a zjistěte, jak vypadá distribuce číselné proměnné. Tady je obsah [ukázka&#95;hive&#95;criteo&#95;histogram&#95;numeric.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_histogram_numeric.hql):
 
         SELECT CAST(hist.x as int) as bin_center, CAST(hist.y as bigint) as bin_height FROM
             (SELECT
@@ -262,7 +262,7 @@ Můžete použít na Hive nativní "histogram\_číselné" funkce a zjistěte, d
             ) a
             LATERAL VIEW explode(col2_hist) exploded_table as hist;
 
-Dostaneme následující:
+To poskytuje následující:
 
         26      155878415
         2606    92753
@@ -286,52 +286,52 @@ Dostaneme následující:
         65510   3446
         Time taken: 317.851 seconds, Fetched: 20 row(s)
 
-LATERÁLNÍ zobrazení – rozbalit kombinace v Hive slouží k vytváření výstupu SQL jako místo obvyklé seznamu. Všimněte si, že se v této tabulce, první sloupec odpovídá center Koš a druhou pro frekvenci Koš.
+LATERÁLNÍ zobrazení – rozbalit kombinace v Hive slouží SQL jako výstup namísto seznamu obvyklé. Všimněte si, že v této tabulce, na první sloupec odpovídá bin center a druhou pro frekvenci bin.
 
-### <a name="approximate-percentiles-of-some-numeric-variables-in-the-train-dataset"></a>Přibližná percentily některé číselné proměnné v datové sadě train
-Také týkající se s číselnou proměnné je výpočet přibližnou percentily. Hive je nativní "percentilu\_přibl" tomu pro nás. Obsah [ukázka&#95;hive&#95;criteo&#95;přibližnou&#95;percentiles.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_approximate_percentiles.hql) jsou:
+### <a name="approximate-percentiles-of-some-numeric-variables-in-the-train-dataset"></a>Přibližná percentily některé číselné proměnné v datové sadě trénování
+Také zajímá číselné proměnné je výpočet přibližné percentil. Hive je nativní "percentilu\_přibližně" to udělá za nás. Obsah [ukázka&#95;hive&#95;criteo&#95;přibližné&#95;percentiles.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_approximate_percentiles.hql) jsou:
 
         SELECT MIN(Col2) AS Col2_min, PERCENTILE_APPROX(Col2, 0.1) AS Col2_01, PERCENTILE_APPROX(Col2, 0.3) AS Col2_03, PERCENTILE_APPROX(Col2, 0.5) AS Col2_median, PERCENTILE_APPROX(Col2, 0.8) AS Col2_08, MAX(Col2) AS Col2_max FROM criteo.criteo_train;
 
-Dostaneme:
+To poskytuje:
 
         1.0     2.1418600917169246      2.1418600917169246    6.21887086390288 27.53454893115633       65535.0
         Time taken: 564.953 seconds, Fetched: 1 row(s)
 
-Distribuce percentily souvisí s distribuční histogram jakékoli číselné proměnné obvykle.         
+Distribuce percentily úzce souvisí s histogram distribuce jakékoli číselné proměnné obvykle.         
 
-### <a name="find-number-of-unique-values-for-some-categorical-columns-in-the-train-dataset"></a>Najít počet jedinečných hodnot pro některé kategorií sloupců v datové sadě train
-Pokračováním zkoumání dat, najdete, pro některé sloupce kategorií počet jedinečných hodnot, které jejich trvat. K tomuto účelu zobrazit obsah [ukázka&#95;hive&#95;criteo&#95;jedinečný&#95;hodnoty&#95;categoricals.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_unique_values_categoricals.hql):
+### <a name="find-number-of-unique-values-for-some-categorical-columns-in-the-train-dataset"></a>Zjistit počet jedinečných hodnot pro některé zařazené do kategorií sloupců v datové sadě trénování
+Pokračování zkoumání dat, najdete, pro některé sloupce zařazené do kategorií počtem jedinečných hodnot, které přebírají. Chcete-li to provést, zobrazit obsah [ukázka&#95;hive&#95;criteo&#95;jedinečný&#95;hodnoty&#95;categoricals.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_unique_values_categoricals.hql):
 
         SELECT COUNT(DISTINCT(Col15)) AS num_uniques FROM criteo.criteo_train;
 
-Dostaneme:
+To poskytuje:
 
         19011825
         Time taken: 448.116 seconds, Fetched: 1 row(s)
 
-Všimněte si, že Col15 má jedinečné hodnoty 19M! Pomocí technik naïve jako "horkou jeden kódování" ke kódování takovéto vysokou dimenzí kategorií proměnné není možné je. Konkrétně efektivní a výkonné technika volá [Learning s počty](http://blogs.technet.com/b/machinelearning/archive/2015/02/17/big-learning-made-easy-with-counts.aspx) pro efektivní řešení tohoto problému je vysvětlené a ukázán.
+Všimněte si, že Col15 má jedinečné hodnoty 19M! Pomocí technik naivní jako "horkou jeden kódování" ke kódování těchto vysokým počtem rozměrů zařazené do kategorií proměnné není možné. Zejména, výkonné a robustní technika nazývá [učení s počty](http://blogs.technet.com/b/machinelearning/archive/2015/02/17/big-learning-made-easy-with-counts.aspx) pro efektivní řeší tento problém je vysvětlené a jsme vám ukázali.
 
-Nakonec se podívejte na počet jedinečných hodnot pro některé kategorií sloupce také. Obsah [ukázka&#95;hive&#95;criteo&#95;jedinečný&#95;hodnoty&#95;více&#95;categoricals.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_unique_values_multiple_categoricals.hql) jsou:
+Nakonec se podívejte na počet jedinečných hodnot pro některé zařazené do kategorií sloupce také. Obsah [ukázka&#95;hive&#95;criteo&#95;jedinečný&#95;hodnoty&#95;více&#95;categoricals.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_unique_values_multiple_categoricals.hql) jsou:
 
         SELECT COUNT(DISTINCT(Col16)), COUNT(DISTINCT(Col17)),
         COUNT(DISTINCT(Col18), COUNT(DISTINCT(Col19), COUNT(DISTINCT(Col20))
         FROM criteo.criteo_train;
 
-Dostaneme:
+To poskytuje:
 
         30935   15200   7349    20067   3
         Time taken: 1933.883 seconds, Fetched: 1 row(s)
 
-Znovu si všimněte, že s výjimkou Col20, všechny sloupce mají mnoho jedinečné hodnoty.
+Znovu Všimněte si, že kromě Col20, všechny ostatní sloupce mnoho jedinečné hodnoty.
 
-### <a name="co-occurrence-counts-of-pairs-of-categorical-variables-in-the-train-dataset"></a>Společné výskyt počty párů kategorií proměnných v datové sadě train
+### <a name="co-occurrence-counts-of-pairs-of-categorical-variables-in-the-train-dataset"></a>Párů zařazené do kategorií proměnných v datové sadě trénování se počítá společného výskytu
 
-Počty společné výskyt párů kategorií proměnných je také určen. To se dá určit pomocí kódu v [ukázka&#95;hive&#95;criteo&#95;spárované&#95;kategorií&#95;counts.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_paired_categorical_counts.hql):
+Počty společného výskytu párů zařazené do kategorií proměnných je také zajímavé. To se dá určit pomocí kódu v [ukázka&#95;hive&#95;criteo&#95;spárované&#95;zařazené do kategorií&#95;counts.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_paired_categorical_counts.hql):
 
         SELECT Col15, Col16, COUNT(*) AS paired_count FROM criteo.criteo_train GROUP BY Col15, Col16 ORDER BY paired_count DESC LIMIT 15;
 
-Zpětného řadit počty podle jejich výskytu a podívejte se na horní 15 v tomto případě. To nám poskytuje:
+Reverzní řadit počty podle jejich výskytu a hledat v horní části stránky 15 v tomto případě. Tento produkt nám nabízí:
 
         ad98e872        cea68cd3        8964458
         ad98e872        3dbb483e        8444762
@@ -350,10 +350,10 @@ Zpětného řadit počty podle jejich výskytu a podívejte se na horní 15 v to
         265366bf        6f5c7c41        782142
         Time taken: 560.22 seconds, Fetched: 15 row(s)
 
-## <a name="downsample"></a> Dolů ukázkové sady dat pro Azure Machine Learning
-S prozkoumali datové sady a ukázal, jak lze provést tento typ zkoumání pro všechny proměnné (včetně kombinace), dolů ukázkových datových sad, aby se dají vytvářet modely v Azure Machine Learning. Odvolání, který je zaměřená problém: danou sadu atributů příklad (funkce hodnoty z Col2 - Col40), předpovědi, pokud je Sloupec1 0 (žádné kliknutím) nebo 1 (kliknutím).
+## <a name="downsample"></a> Dolů ukázkové datové sady pro Azure Machine Learning
+Prozkoumat datové sady a ukázal, jak lze provést zadáním průzkumu proměnných (včetně kombinace), dolů ukázkové sady dat tak, aby modelů ve službě Azure Machine Learning se dají. Vzpomínáte, který se zaměřuje problém: vzhledem k sadě atributů příkladu (hodnoty funkcí z Col2 - Col40), předpovědět, jestli Sloupec1 je 0 (žádné kliknutím) nebo 1 (kliknutí).
 
-Ukázka vlaku a testovací datové sady, které 1 % původní velikost používat nativní funkce RAND() na Hive. Další skriptu [ukázka&#95;hive&#95;criteo&#95;převzorkovat&#95;cvičení&#95;dataset.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_downsample_train_dataset.hql) tomu pro datovou sadu train:
+Dolů ukázkové datové sady trénování a testování na původní velikost % 1, pomocí funkce RAND() nativní pro Hive. Další skriptu [ukázka&#95;hive&#95;criteo&#95;převzorkovat&#95;trénování&#95;dataset.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_downsample_train_dataset.hql) to dělá pro trénování datovou sadu:
 
         CREATE TABLE criteo.criteo_train_downsample_1perc (
         col1 string,col2 double,col3 double,col4 double,col5 double,col6 double,col7 double,col8 double,col9 double,col10 double,col11 double,col12 double,col13 double,col14 double,col15 string,col16 string,col17 string,col18 string,col19 string,col20 string,col21 string,col22 string,col23 string,col24 string,col25 string,col26 string,col27 string,col28 string,col29 string,col30 string,col31 string,col32 string,col33 string,col34 string,col35 string,col36 string,col37 string,col38 string,col39 string,col40 string)
@@ -365,12 +365,12 @@ Ukázka vlaku a testovací datové sady, které 1 % původní velikost používa
 
         INSERT OVERWRITE TABLE criteo.criteo_train_downsample_1perc SELECT * FROM criteo.criteo_train WHERE RAND() <= 0.01;
 
-Dostaneme:
+To poskytuje:
 
         Time taken: 12.22 seconds
         Time taken: 298.98 seconds
 
-Skript [ukázka&#95;hive&#95;criteo&#95;převzorkovat&#95;testování&#95;den&#95;22&#95;dataset.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_downsample_test_day_22_dataset.hql) nemá pro testovací data den\_22:
+Skript [ukázka&#95;hive&#95;criteo&#95;převzorkovat&#95;testování&#95;den&#95;22&#95;dataset.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_downsample_test_day_22_dataset.hql) to udělá za testovacích dat, den\_22:
 
         --- Now for test data (day_22)
 
@@ -382,13 +382,13 @@ Skript [ukázka&#95;hive&#95;criteo&#95;převzorkovat&#95;testování&#95;den&#9
 
         INSERT OVERWRITE TABLE criteo.criteo_test_day_22_downsample_1perc SELECT * FROM criteo.criteo_test_day_22 WHERE RAND() <= 0.01;
 
-Dostaneme:
+To poskytuje:
 
         Time taken: 1.22 seconds
         Time taken: 317.66 seconds
 
 
-Nakonec skript [ukázka&#95;hive&#95;criteo&#95;převzorkovat&#95;testování&#95;den&#95;23&#95;dataset.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_downsample_test_day_23_dataset.hql) nemá pro testovací data den\_23:
+Nakonec skript [ukázka&#95;hive&#95;criteo&#95;převzorkovat&#95;testování&#95;den&#95;23&#95;dataset.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_downsample_test_day_23_dataset.hql) to udělá za testovacích dat, den\_23:
 
         --- Finally test data day_23
         CREATE TABLE criteo.criteo_test_day_23_downsample_1perc (
@@ -399,237 +399,237 @@ Nakonec skript [ukázka&#95;hive&#95;criteo&#95;převzorkovat&#95;testování&#9
 
         INSERT OVERWRITE TABLE criteo.criteo_test_day_23_downsample_1perc SELECT * FROM criteo.criteo_test_day_23 WHERE RAND() <= 0.01;
 
-Dostaneme:
+To poskytuje:
 
         Time taken: 1.86 seconds
         Time taken: 300.02 seconds
 
-S tím budete chtít používat naše dolů jen Vzorkovaná train a testovací datové sady pro vytváření modelů v Azure Machine Learning.
+Díky tomu budete chtít použít naše dolů vzorky trénování a testování datových sad pro vytváření modelů ve službě Azure Machine Learning.
 
-Než přejdete na Azure Machine Learning, která se týká počtu tabulky není konečné důležité součásti. V následující dílčí části tabulky počet podrobněji některé.
+Před přechodem na Azure Machine Learning, která se týká tabulky count není konečný důležitou součástí. V následující dílčí části tabulce počet je podrobněji popsána podrobněji.
 
-## <a name="count"></a> Stručný diskuzi na počet tabulky
-Jak už jste viděli, několik kategorií proměnné mají velmi vysoká dimenzionalitu. V tomto návodu výkonné technika volá [Learning s počty](http://blogs.technet.com/b/machinelearning/archive/2015/02/17/big-learning-made-easy-with-counts.aspx) ke kódování těchto proměnných v efektivní, se zobrazí robustní způsobem. Další informace o této technice je v odkazu.
+## <a name="count"></a> Stručný popis v tabulce počet
+Jak už jste viděli, několik kategorií proměnné mají velmi vysoké dimenzionalitu. V tomto návodu, volá účinnou techniku [učení s počty](http://blogs.technet.com/b/machinelearning/archive/2015/02/17/big-learning-made-easy-with-counts.aspx) ke kódování těchto proměnných v efektivní, se zobrazí robustní způsobem. Další informace o této technice je v odkazu.
 
 [!NOTE]
->V tomto návodu je zaměřená na použití počet tabulek k vytvoření compact reprezentace vysokou dimenzí kategorií funkce. Toto není jediný způsob, jak kódování kategorií funkcí. Další informace o jinými technikami, můžete také zajímat, uživatelé rezervovat [jeden hot kódování](http://en.wikipedia.org/wiki/One-hot) a [hashování](http://en.wikipedia.org/wiki/Feature_hashing).
+>V tomto názorném postupu se zaměřuje na použití počet tabulek pro vytvoření compact reprezentace vysokým počtem rozměrů zařazené do kategorií funkce. To není jediný způsob, jak kódovat zařazené do kategorií funkcí. Další informace o jiných technikách zúčastněných uživatelů najdete v dokumentu [jedním hot-encoding](http://en.wikipedia.org/wiki/One-hot) a [hashování](http://en.wikipedia.org/wiki/Feature_hashing).
 >
 
-Pro sestavení počet tabulek na základě počtu dat, použijte data ve složce nezpracovanou nebo počet. Uživatelům se zobrazí v části modelování, jak vytvářet tyto tabulky počet kategorií funkcí od začátku, nebo můžete také použít tabulku předdefinovaných počet pro jejich explorations. V jaké způsobem když "předem vytvořené tabulky počet" se označují, jsme znamenat pomocí počet tabulek, které byly zadány. Podrobné pokyny o tom, jak tyto tabulky přístupu jsou uvedené v následující části.
+K sestavení počet tabulek na údaje o počtu, použijte data ve složce raw nebo count. Uživatelům se zobrazí v části modelování, jak vytvořit tyto tabulky počet kategorií funkcí od začátku, nebo můžete také použít předem sestavených počet tabulku pro jejich průzkumy. V jaké způsobem při "předchystané počet tabulek" označují, myslíme pomocí počet tabulek, které byly zadány. Podrobné pokyny o tom, jak přistupovat k tyto tabulky jsou uvedené v další části.
 
-## <a name="aml"></a> Vytvoření modelu pomocí Azure Machine Learning
-Naše model procesu v Azure Machine Learning vytváření zahrnuje následující kroky:
+## <a name="aml"></a> Vytvoření modelu s Azure Machine Learning
+Náš model vytváření procesů ve službě Azure Machine Learning zahrnuje následující kroky:
 
 1. [Získat data z tabulek Hive do Azure Machine Learning](#step1)
-2. [Vytvoření experimentu: Vyčištění dat a featurize s počet tabulek](#step2)
-3. [Sestavení, školení a modul score model](#step3)
+2. [Vytvoření experimentu: Vyčištění dat a zpracování volných se počet tabulek](#step2)
+3. [Vytváření, trénování a modul score model](#step3)
 4. [Vyhodnocení modelu](#step4)
-5. [Publikování model jako webovou službu](#step5)
+5. [Publikování modelu jako webové služby](#step5)
 
-Nyní jste připraveni k sestavení modely v Azure Machine Learning studio. Naše dolů jen Vzorkovaná data se uloží jako tabulek Hive v clusteru. Pomocí Azure Machine Learning **importovat Data** modul tato data přečíst. Přihlašovací údaje pro přístup k účtu úložiště tohoto clusteru jsou uvedené v následující.
+Nyní jste připraveni k sestavení modelů v Azure Machine Learning studio. Naše dolů jen Vzorkovaná data budou uloženy jako tabulek Hive v clusteru. Pomocí služby Azure Machine Learning **Import dat** modul tato data přečíst. Přihlašovací údaje pro přístup k účtu úložiště tohoto clusteru jsou uvedené v následující.
 
-### <a name="step1"></a> Krok 1: Načíst data do Azure Machine Learning pomocí modulu importovat Data z tabulek Hive a vyberte pro experimentu strojového učení
-Začněte výběrem **+ nový** -> **EXPERIMENTU** -> **prázdný Experiment**. Potom z **vyhledávání** pole nahoře vlevo, vyhledejte "Importovat Data". Přetáhnout myší **importovat Data** modulu k experimentu plátno (střední část obrazovky) pro použití modulu pro přístup k datům.
+### <a name="step1"></a> Krok 1: Získání dat z tabulek Hive do Azure Machine Learning pomocí modulu Import dat a vyberte pro experimentu služby machine learning
+Začněte výběrem **+ nová** -> **EXPERIMENT** -> **prázdný Experiment**. Pak v **hledání** nahoře vlevo, vyhledejte "Import dat" pole. Přetáhnout myší **Import dat** modulů na experiment plátno (střední části okna) pro použití modulu pro přístup k datům.
 
-To znamená, co **importovat Data** vypadá podobně jako při získávání dat z tabulky Hive:
+To je, co **Import dat** vypadá podobně jako při získávání dat z tabulky Hive:
 
-![Umožňuje importovat Data získá data](./media/hive-criteo-walkthrough/i3zRaoj.png)
+![Import dat získá data](./media/hive-criteo-walkthrough/i3zRaoj.png)
 
-Pro **importovat Data** modulu, hodnoty parametrů, které jsou součástí na obrázku jsou jenom příklady řazení hodnot, budete muset zadat. Tady je některé obecné pokyny o tom, jak vyplnit samostatné sady parametrů **importovat Data** modulu.
+Pro **Import dat** modulu, hodnoty parametrů, které jsou k dispozici na obrázku jsou jenom příklady řazení je potřeba zadat hodnoty. Tady je některé obecné pokyny o tom, jak vyplnit sady parametrů **Import dat** modulu.
 
-1. Volba "Dotaz Hive" pro **zdroje dat**
-2. V **databázový dotaz Hive** pole jednoduchý příkaz SELECT * FROM < vaše\_databáze\_name.your\_tabulky\_název >-je dost.
+1. Zvolte možnost "Dotaz Hive" pro **zdroj dat**
+2. V **databázový dotaz Hive** pole jednoduchý příkaz SELECT * FROM < váš\_databáze\_name.your\_tabulky\_název >-je dostatečná.
 3. **Identifikátor URI serveru Hcatalog**: Pokud je váš cluster "abc", pak toto je jednoduše: https://abc.azurehdinsight.net
-4. **Název uživatelského účtu Hadoop**: uživatelské jméno zvolena při uvedení do provozu clusteru. (Není název vzdáleného přístupu uživatele!)
-5. **Heslo uživatelského účtu Hadoop**: heslo pro uživatelské jméno zvolena při uvedení do provozu clusteru. (Není heslo vzdáleného přístupu!)
-6. **Umístění výstupu dat**: Zvolte "Azure"
-7. **Název účtu úložiště Azure**: účet úložiště, který je přidružen ke clusteru
-8. **Klíč účtu úložiště Azure**: klíč účtu úložiště, které jsou přidruženy ke clusteru.
+4. **Název uživatelského účtu systému Hadoop**: uživatelské jméno zvolené při uvedení do provozu clusteru. (Nikoli vzdáleného přístupu uživatele název!)
+5. **Heslo uživatelského účtu systému Hadoop**: heslo pro uživatelské jméno zvolené při uvedení do provozu clusteru. (Ne heslo vzdáleného přístupu.)
+6. **Umístění výstupních dat**: Zvolte možnost "Azure"
+7. **Název účtu služby Azure storage**: účet úložiště, které jsou přidružené ke clusteru
+8. **Klíč účtu úložiště Azure**: klíč účtu úložiště přidruženého clusteru.
 9. **Název kontejneru Azure**: Pokud je název clusteru "abc", pak toto je jednoduše "abc", obvykle.
 
-Jednou **importovat Data** dokončení získání dat (zobrazí zelená značka na modul), uložte tato data jako datové sady (s názvem podle svého výběru). Co to vypadá takto:
+Jednou **Import dat** dokončení získání dat (vidíte zelené značky na modul), uložit tato data jako datovou sadu (s názvem podle vašeho výběru). Jak to vypadá:
 
 ![Umožňuje importovat Data uložit data](./media/hive-criteo-walkthrough/oxM73Np.png)
 
-Klikněte pravým tlačítkem na výstupní port modulu **importovat Data** modulu. Zobrazí se **uložit jako datovou sadu** možnost a **vizualizovat** možnost. **Vizualizovat** možnost, pokud kliknutí zobrazí 100 řádků dat, včetně pravém panelu, které jsou užitečné pro některé souhrnné statistiky. Chcete-li uložit data, jednoduše vyberte **uložit jako datovou sadu** a postupujte podle pokynů.
+Klikněte pravým tlačítkem na výstupní port modulu **Import dat** modulu. Zobrazí se **uložit jako datovou sadu** možnost a **vizualizovat** možnost. **Vizualizovat** možnost, if kliknuto, zobrazuje 100 řádků dat, včetně pravý panel, který je vhodný pro některé souhrnnou statistiku. Chcete-li uložit data, stačí vybrat **uložit jako datovou sadu** a postupujte podle pokynů.
 
-Chcete-li vybrat uložené datové sady pro použití v experimentu machine learning, vyhledejte pomocí datové sady **vyhledávání** okno zobrazené na následujícím obrázku. Jednoduše zadejte název dáte datovou sadu částečně k přístupu a přetáhněte datovou sadu na hlavní panel. Umístíte jej na hlavní panel vybere pro použití v machine learning modelování.
+Vyberte uloženou datovou sadu pro použití v experimentu machine learning, vyhledejte datových sad pomocí **hledání** pole je znázorněno na následujícím obrázku. Jednoduše zadejte název dáte datové sady částečně na přístup a přetáhněte datovou sadu na hlavním panelu. Zastaví na hlavní panel vybere pro použití v machine learning modelování.
 
-![Datová sada Drage na hlavní panel](./media/hive-criteo-walkthrough/cl5tpGw.png)
+![Datová sada Drage na hlavním panelu](./media/hive-criteo-walkthrough/cl5tpGw.png)
 
 > [!NOTE]
-> To lze proveďte pro vlaku a testovací datové sady. Kromě toho musíte použít název databáze a názvy tabulek, které jste zadali pro tento účel. Hodnoty používané na obrázku jsou výhradně pro obrázek purposes.* *
+> To lze proveďte trénování a datových sad testů. Nezapomeňte použít název databáze a názvy tabulek, které jste zadali pro tento účel. Hodnoty použité na obrázku jsou pouze pro ilustraci purposes.* *
 > 
 > 
 
-### <a name="step2"></a> Krok 2: Vytvoření jednoduchého experimentu v nástroji Azure Machine Learning k předvídání klikne na tlačítko nebo bez kliknutí
-Naše Azure ML experimentu vypadá takto:
+### <a name="step2"></a> Krok 2: Vytvoření jednoduchého experimentu v Azure Machine Learning k predikci kliknutí / žádné kliknutí
+Náš Azure ML experiment vypadá takto:
 
-![Machine Learning experimentu](./media/hive-criteo-walkthrough/xRpVfrY.png)
+![Experimentu služby Machine Learning](./media/hive-criteo-walkthrough/xRpVfrY.png)
 
-Nyní zkontrolujte klíčové komponenty tohoto experimentu. Přetáhněte naše uložené train a nejdřív otestovat datové sady na našem plátno experimentu.
+Nyní prozkoumejte klíčové součásti tohoto experimentu. Přetáhněte naše uložených vlaku a nejdřív otestovat datové sady do našich plátno experimentu.
 
 #### <a name="clean-missing-data"></a>Vyčištění chybějících dat
-**Vyčištění chybějících dat** modul nemá naznačuje název: ho vyčistí chybějící data způsobem, který může být zadán uživatel. Podívejte se do tohoto modulu toto:
+**Vyčištění chybějících dat** modul provádí co její název napovídá: vyčistí chybějící data způsobem, který může být zadán uživatel. Podívejte se do tohoto modulu a prohlédnout si to:
 
 ![Vyčištění chybějících dat](./media/hive-criteo-walkthrough/0ycXod6.png)
 
-Zde se rozhodli nahraďte všechny chybějící hodnoty 0. Existují další možnosti, které se můžete podívat prohlížením rozevíracích seznamů v modulu.
+Tady se rozhodli nahradit všechny chybějící hodnoty 0. Existují další možnosti, které lze zobrazit pomocí rozevíracích seznamů v modulu.
 
-#### <a name="feature-engineering-on-the-data"></a>Konstruování na data
-Může existovat miliony jedinečné hodnoty pro některé kategorií funkce rozsáhlých datových sad. Pomocí metod naïve třeba jeden horkou kódování představující vysokou dimenzí kategorií funkce, je zcela nebude proveditelné. Tento návod ukazuje, jak používat funkce count pomocí integrované moduly Azure Machine Learning k vygenerování compact reprezentace těchto vysoce dimenzí kategorií proměnných. Konečný výsledek je menší velikost modelu, školení rychlejší a metriky výkonu, které jsou poměrně srovnatelná pomocí jiných metod.
+#### <a name="feature-engineering-on-the-data"></a>Vytváření funkcí pro data
+Mohou existovat miliony jedinečné hodnoty pro některé funkce zařazené do kategorií rozsáhlých datových sad. Pomocí metod naivní například horká jeden kódování představující vysokým počtem rozměrů zařazené do kategorií funkcí, je zcela bylo neproveditelné. Tento návod ukazuje, jak používat funkce počet použití integrované moduly Azure Machine Learning k vygenerování compact reprezentace těchto proměnných vysokým počtem rozměrů zařazené do kategorií. Konečný výsledek je menší velikost modelu, kratší časy školení a metriky výkonu, který jsou poměrně srovnatelné s další metody.
 
-##### <a name="building-counting-transforms"></a>Vytváření počítání transformací
-Chcete-li vytvořit funkce count, použijte **sestavení počítání transformace** modul, který je k dispozici v Azure Machine Learning. Modul vypadá takto:
+##### <a name="building-counting-transforms"></a>Vytváření, počítací transformace
+Chcete-li vytvářet funkce count, použijte **sestavení počítání transformace** modul, který je k dispozici ve službě Azure Machine Learning. V modulu vypadá takto:
 
-![Sestavení modulu počítání transformace](./media/hive-criteo-walkthrough/e0eqKtZ.png)
-![sestavení počítání transformace modulu](./media/hive-criteo-walkthrough/OdDN0vw.png)
+![Vytvořit modul počítání transformace](./media/hive-criteo-walkthrough/e0eqKtZ.png)
+![modul sestavení počítání transformace](./media/hive-criteo-walkthrough/OdDN0vw.png)
 
 > [!IMPORTANT] 
-> V **počet sloupců** zadejte tyto sloupce, které chcete provést počty na. Obvykle jde o (jak je uvedeno) vysokou dimenzí kategorií sloupců. Mějte na paměti, že Criteo datová sada má 26 kategorií sloupce: z Col15 k Col40. Zde počet všem z nich a poskytněte jejich indexy (od 15 do 40 oddělených čárkami, jak je znázorněno).
+> V **počet sloupců** zadejte sloupce, které chcete provádět počty. Ty jsou obvykle (jak je uvedeno) vysokým počtem rozměrů zařazené do kategorií sloupce. Mějte na paměti, že datová sada Criteo má 26 zařazené do kategorií sloupce: z Col15 k Col40. Tady, Spolehněte se na všechny z nich a umožňují jejich indexy (z 15 na 40 oddělených čárkami, jak je znázorněno).
 > 
 
-Pokud chcete použít modul v režimu MapReduce (vhodné pro velké datové sady), potřebujete přístup ke clusteru HDInsight Hadoop (používaný pro zkoumání funkce lze znovu použít pro tento účel také) a přihlašovací údaje. Předchozí následující obrázky znázorňují, jaké vyplněné hodnoty vypadá jako (Nahraďte hodnoty ilustrativní s těmi, které jsou relevantní pro vlastní případ použití).
+Pokud chcete použít modul v režimu MapReduce (vhodné pro velké datové sady), potřebujete přístup ke clusteru HDInsight Hadoop (jaký se používá pro zkoumání funkcí lze opětovně použít pro tento účel také) a přihlašovací údaje. Předchozí obrázky znázorňují jaké vyplněné hodnoty vypadat (Nahraďte hodnoty ilustrativní s těmi, které jsou relevantní pro vlastní případy použití).
 
 ![Parametry modulu](./media/hive-criteo-walkthrough/05IqySf.png)
 
-Předchozí obrázek ukazuje, jak zadat umístění vstupního objektu blob. Toto umístění obsahuje data vyhrazené pro vytváření počet tabulek.
+Předchozí obrázek ukazuje, jak zadat umístění vstupnímu objektu blob. Toto umístění obsahuje data vyhrazené pro vytváření počet tabulek v.
 
-Po dokončení spuštění tento modul uložit transformace pro později kliknutím pravým tlačítkem myši na modul a výběrem možnosti **uložit jako transformace** možnost:
+Po dokončení tohoto modulu, uložit transformace pro později tak, že kliknete pravým tlačítkem v modulu a vyberete **uloží jako transformace** možnost:
 
 ![Možnost "Uložit jako transformace"](./media/hive-criteo-walkthrough/IcVgvHR.png)
 
-V našem experimentu architektuře výše uvedeném datovou sadu "ytransform2" odpovídá přesněji uložené počet transformace. Pro zbývající část tohoto experimentu, se předpokládá, že čtečka používat **sestavení počítání transformace** modul na některá data pro generování počty a můžete pak použít tyto počty ke generování počet funkce na train a testovací datové sady.
+V našem experiment architektuře zobrazené výše datové sady "ytransform2" odpovídá přesně transformace uloženého počtu. Pro zbývající část tohoto experimentu, předpokládá se, že čtecí modul používá **sestavení počítání transformace** modulu na některá data ke generování počty a můžete pak pomocí těchto počtů pro generování počet funkce u datových sad trénování a testování.
 
-##### <a name="choosing-what-count-features-to-include-as-part-of-the-train-and-test-datasets"></a>Výběr, jaký počet funkce má být zahrnut jako součást train a testovací datové sady
-Jednou počet transformace připravené, uživatel může vybrat, jaké funkce, které chcete zahrnout do své train a testování pomocí datové sady **upravit parametry tabulky počet** modulu. Pro úplnost je tento modul zobrazeny zde. Ale v zájmu jednoduchosti nepoužívejte ve skutečnosti ho v našem experimentu.
+##### <a name="choosing-what-count-features-to-include-as-part-of-the-train-and-test-datasets"></a>Výběr, jaký počet funkcí zahrnout jako součást datové sady trénování a testování
+Jednou připraveného počet transformace, uživatel může zvolit jaké funkce, které chcete zahrnout do jejich trénování a testování pomocí datových sad **upravit parametry tabulky Count** modulu. Pro úplnost je znázorněna zde tento modul. Ale v zájmu jednoduchosti nepoužívejte skutečně ho v našich experimentu.
 
-![Upravit parametry počet tabulky](./media/hive-criteo-walkthrough/PfCHkVg.png)
+![Úprava tabulky počet parametrů](./media/hive-criteo-walkthrough/PfCHkVg.png)
 
-V takovém případě jak je vidět, je pravděpodobnost protokolu mají být použita a regrese sloupec je ignorována. Můžete také nastavit parametry, třeba bin prahová hodnota paměti, kolik částečně předchozí příklady přidat pro vyhlazení a jestli se má použít jakékoli Laplacian šumu nebo ne. Všechny tyto pokročilé funkce a je potřeba poznamenat, že výchozí hodnoty jsou to dobrý výchozí bod pro uživatele, kteří jsou nové pro tento typ funkce generování.
+V tomto případě jak je vidět, se použijí protokol změn a regrese sloupce se ignoruje. Můžete také nastavit parametry jako prahovou hodnotu bin uvolňování paměti, kolik částečně předchozí příklady přidat pro vyhlazení a jestli se mají ale nemusíte používat jakékoli Laplacian šumu. Všechny tyto pokročilé funkce a je potřeba poznamenat, že výchozí hodnoty jsou dobrým výchozím bodem pro uživatele, kteří jsou k tomuto typu funkce generování nové.
 
-##### <a name="data-transformation-before-generating-the-count-features"></a>Transformace dat před vygenerováním počet funkcí
-Teď zaměřuje se na důležité bodu o transformace naše train a testovacích dat před ve skutečnosti generování funkce count. Všimněte si, že existují dvě **spustit skript jazyka R** moduly používané před použitím transformace počet pro naše data.
+##### <a name="data-transformation-before-generating-the-count-features"></a>Transformace dat před generováním počet funkcí
+Nyní je zaměřena na důležitý bod o transformaci naše trénování a testování dat před skutečně generování počet funkcí. Všimněte si, že existují dvě **spustit skript jazyka R** moduly používané před počet transformací, která platí pro naše data.
 
 ![Spustit skript jazyka R moduly](./media/hive-criteo-walkthrough/aF59wbc.png)
 
-Tady je první R skript:
+Zde je první skript jazyka R:
 
 ![První skript jazyka R](./media/hive-criteo-walkthrough/3hkIoMx.png)
 
-Tento skript jazyka R přejmenuje naše sloupců na názvy "Sloupec1" na "Col40". Je to proto, že počet transformace očekává názvy tohoto formátu.
+Tento skript R přejmenuje abychom sloupce na názvy "Sloupec1" k "Col40". Je to proto, že počet transformací, která se očekává, že názvy tohoto formátu.
 
-Druhý skript jazyka R vyrovnává rozdělení mezi kladné a záporné třídy (třídy 1 a 0) podle nižší – vzorkování záporné – třída. R skript ukazuje, jak to udělat:
+Druhý skriptu jazyka R vyrovnává rozdělení mezi kladnou a zápornou třídy (třídy 1 a 0) dolů – vzorkováním negativní třídy. Skript jazyka R se tady ukazuje, jak to udělat:
 
-![Druhý skript jazyka R](./media/hive-criteo-walkthrough/91wvcwN.png)
+![Druhý skriptu jazyka R](./media/hive-criteo-walkthrough/91wvcwN.png)
 
-V této jednoduché skript jazyka R "pos\_záporné\_poměr" se používá k nastavení velikosti rovnováhu mezi kladnou a zápornou třídy. To je důležité pro protože vylepšení nevyváženosti třída obvykle má výhody výkonu pro klasifikaci problémy, kde je třída distribuce nesouměrně rozdělí (odvolání, v takovém případě máte 3.3 % kladné a záporné třída 96.7 %).
+V tomto jednoduchý skript jazyka R "pos\_neg\_poměr" se používá k nastavení velikosti rovnováhu mezi pozitivní a negativní třídy. To je důležité provést, protože vylepšení imbalance třídy obvykle má přinese zlepšení výkonu pro klasifikaci problémy, kde třída distribuce je zkosený (Vzpomínáte, že v tomto případě máte kladné a záporné třídu 96.7 % 3.3 %).
 
-##### <a name="applying-the-count-transformation-on-our-data"></a>Použití transformace počet na našich dat
-Nakonec můžete použít **použít transformaci** modulu pro použití transformace počet na našem train a testovací datové sady. Tento modul trvá transformace uložené počet jako jeden vstup a train nebo testovací datové sady jako jiného vstupu a vrátí data pomocí funkce count. V tomto poli se zobrazí:
+##### <a name="applying-the-count-transformation-on-our-data"></a>Použití transformace počet u našich dat
+Nakonec můžete použít **použít transformace** modulu pro použití počet transformací na naše trénování a testování datových sad. Tento modul přebírá uloženého počtu transformace jako jeden vstup a trénování nebo testovací datové sady jako ostatní vstupy a vrací data pomocí funkce count. Je znázorněna zde:
 
 ![Použít modul transformace](./media/hive-criteo-walkthrough/xnQvsYf.png)
 
-##### <a name="an-excerpt-of-what-the-count-features-look-like"></a>Výňatek funkcí počet vypadat
-Je významné vzhled počet funkcí v našem případě zobrazit. Tady je výňatek tohoto:
+##### <a name="an-excerpt-of-what-the-count-features-look-like"></a>Výňatek funkcích počet vypadat
+Je poučné zobrazíte vypadat počet funkcí v našem případě. Tady je výpisem toto:
 
 ![Počet funkcí](./media/hive-criteo-walkthrough/FO1nNfw.png)
 
-Tato výňatek ze ukazuje, že pro sloupce počítají, můžete získat počty a protokolu pravděpodobnost kromě všechny relevantní backoffs.
+Tento výpis ukazuje, že u sloupců na můžete získat počtů a protokolovat číslům umocněným na druhou kromě všechny relevantní backoffs.
 
-Nyní jste připraveni k sestavení model Azure Machine Learning použití těchto transformovaných datových sad. V další části ukazuje, jak to lze provést.
+Teď jste připravení sestavit model ve službě Azure Machine Learning pomocí těchto transformovaných datových sad. V další části ukazuje, jak to lze provést.
 
-### <a name="step3"></a> Krok 3: Vytvoření, školení a modul score model
+### <a name="step3"></a> Krok 3: Vytvoření, trénování a modul score model
 
-#### <a name="choice-of-learner"></a>Volba student
-Nejprve budete muset zvolit student. Použijte jako naše student two-class boosted rozhodovacího stromu. Tady jsou výchozí možnosti pro tento student:
+#### <a name="choice-of-learner"></a>Volba learner
+Nejprve musíte zvolit learner. Použijte jako naše learner dvěma třídami posíleného rozhodovacího stromu. Tady jsou výchozí možnosti pro tento learner:
 
 ![Two-Class Boosted Decision Tree parametry](./media/hive-criteo-walkthrough/bH3ST2z.png)
 
-Experiment vyberte výchozí hodnoty. Všimněte si, že výchozí hodnoty jsou obvykle smysluplný a vhodný způsob, jak získat rychlý standardních hodnot na výkon. Můžete zlepšit výkon komínů parametry, pokud se rozhodnete, až budete mít směrný plán.
+Experiment vyberte výchozí hodnoty. Všimněte si, že jsou obvykle smysluplné výchozí hodnoty a vhodným způsobem, jak získat rychlé směrné plány na výkon. Můžete zlepšit výkon cílit na konkrétní parametry Pokud budete chtít po směrný plán.
 
 #### <a name="train-the-model"></a>Trénování modelu
-Školení, jednoduše vyvolání **Train Model** modulu. Dva vstupy do ní jsou student Two-Class Boosted Decision Tree a naší datové sadě vlaku. To je znázorněno zde:
+Školení, jednoduše vyvolat **Train Model** modulu. Dva vstupy jsou learner Two-Class Boosted Decision Tree a trénování datovou sadu. To je znázorněna zde:
 
-![Modulu Train Model](./media/hive-criteo-walkthrough/2bZDZTy.png)
+![Modul trénování modelu](./media/hive-criteo-walkthrough/2bZDZTy.png)
 
 #### <a name="score-the-model"></a>Ohodnocení modelu
-Jakmile máte modulu trained model, jste připraveni ke stanovení skóre na základě testovací datové a vyhodnotit jeho výkon. To provedete pomocí **Score Model** modulu vidět na následujícím obrázku, spolu s **Evaluate Model** modul:
+Jakmile budete mít trénovaného modelu, jste připraveni ke stanovení skóre pro datovou sadu testů a vyhodnotit její výkon. To provést pomocí **určení skóre modelu** modulu je znázorněno na následujícím obrázku, spolu s **Evaluate Model** modul:
 
 ![Modul Určení skóre modelu](./media/hive-criteo-walkthrough/fydcv6u.png)
 
 ### <a name="step4"></a> Krok 4: Vyhodnocení modelu
-Nakonec byste měli provést analýzu výkonu modelu. Pro dva – třída (binární) klasifikaci problémy, je dobré míru obvykle AUC. K vizualizaci to, propojte **Score Model** modulu **Evaluate Model** modulu pro tento. Kliknutím na tlačítko **vizualizovat** na **Evaluate Model** modulu vypočítá obrázek stejný, jako je následující:
+Nakonec byste měli provést analýzu výkonu modelu. Pro dva problémy (binární) klasifikace třídy, je dobré míru obvykle AUC. Vizualizace těchto informací, připojení **určení skóre modelu** modulu **Evaluate Model** modul pro to. Kliknutím na **vizualizovat** na **Evaluate Model** modulu vrací obrázek, jako je následující:
 
-![Vyhodnocení modelu BDT modulu](./media/hive-criteo-walkthrough/0Tl0cdg.png)
+![Vyhodnocení modulu Tabelární model](./media/hive-criteo-walkthrough/0Tl0cdg.png)
 
-Binární soubor (nebo dvě třídy) oblasti pod křivky (AUC) je klasifikace problémy, dobrý míru přesnost předpovědi. Následující část popisuje naše výsledků pomocí tohoto modelu na naše testovací datové sady. Potřebujete, klikněte pravým tlačítkem na výstupní port modulu **Evaluate Model** modul a potom **vizualizovat**.
+V binárním souboru (nebo dvě třídy) klasifikaci problémy, dobré míra přesnost předpovědi je v oblasti pod křivky (AUC). Následující část popisuje naši výsledků pomocí tohoto modelu v naší datové sadě testů. Tím získáte klikněte pravým tlačítkem na výstupní port modulu **Evaluate Model** modul a poté **vizualizovat**.
 
-![Vizualizace modulu pro vyhodnocení modelu](./media/hive-criteo-walkthrough/IRfc7fH.png)
+![Vizualizujte modulu pro vyhodnocení modelu](./media/hive-criteo-walkthrough/IRfc7fH.png)
 
-### <a name="step5"></a> Krok 5: Publikování model jako webovou službu
-Umožňuje publikovat jako webové služby s minimální fuss model Azure Machine Learning je cenné funkce pro vytváření široce dostupné. Po dokončení, každý, kdo může provádět volání k webové službě s vstupní data, která potřebují předpovědi a webové služby používá model vrátit těchto předpovědi.
+### <a name="step5"></a> Krok 5: Publikování modelu jako webové služby
+Možnost publikovat jako webové služby s minimální fuss model ve službě Azure Machine Learning je užitečné funkce pro vytváření široce dostupné. Po dokončení, každý uživatel mohl provádět volání do webové služby s využitím vstupní data, která potřebují předpovědi a webová služba používá model se vraťte tyto předpovědi.
 
-Nejprve je třeba uložte naše trained model jako objekt Trained Model. K tomu je potřeba kliknete pravým tlačítkem **Train Model** modul a pomocí **uložit jako Trained Model** možnost.
+Nejprve je třeba uložte naše trénovaného modelu jako objekt Trénovaného modelu. To kliknutím pravým tlačítkem myši **Train Model** modulu a použití **uložit jako Trénovaného modelu** možnost.
 
-V dalším kroku vytvoření vstupní a výstupní porty pro naše webové služby:
+V dalším kroku vytvoříte vstupní a výstupní porty pro naši webovou službu:
 
-* vstupní port vezme všechna data ve formuláři stejné jako data, která potřebujete předpovědi
-* na výstupní port vrátí popisky vyhodnocení a spojena pravděpodobnost.
+* vstupní port přebírá data ve formuláři stejné jako data, která potřebujete předpovědi
+* na výstupní port vrátí popisky vyhodnocení a přidružené pravděpodobnosti.
 
-#### <a name="select-a-few-rows-of-data-for-the-input-port"></a>Vyberte pár řádků dat pro vstupní port
-Je možné použít **použít transformaci SQL** modul a vyberte právě 10 řádků, který má sloužit jako vstupní port data. Vyberte pouze na tyto řádky dat pro naše vstupní port pomocí dotazu SQL znázorněno zde:
+#### <a name="select-a-few-rows-of-data-for-the-input-port"></a>Vybrat několik řádků dat pro vstupní port
+Je vhodné použít **použít transformace SQL** modul se vybere pouze 10 řádků, který má sloužit jako vstupní port data. Vyberte pouze na tyto řádky dat pro naše vstupní port pomocí jazyka SQL je vidět tady:
 
-![Vstupní port dat](./media/hive-criteo-walkthrough/XqVtSxu.png)
+![Data z vstupního portu](./media/hive-criteo-walkthrough/XqVtSxu.png)
 
 #### <a name="web-service"></a>Webová služba
-Nyní jste připraveni ke spuštění malý experiment, kterou můžete použít k publikování naše webové služby.
+Nyní jste připraveni spustit malý experiment, který slouží k publikování naši webovou službu.
 
 #### <a name="generate-input-data-for-webservice"></a>Generovat vstupní data pro webovou službu
-Jako zeroth krok vzhledem k tomu, že je velký počet tabulka, trvat pár řádků testovací data a vygenerovat výstupní data z něj pomocí funkce count. To může sloužit jako formát vstupní data pro naše webovou službu. To je znázorněno zde:
+Jako ID nultého krok protože je velký počet tabulka, trvat pár řádků testovací data a vygenerovat výstupní data z něj pomocí funkcí, počet. To může sloužit jako formát vstupní data pro naši webovou službu. To je znázorněna zde:
 
-![Vytvoření vstupní data BDT](./media/hive-criteo-walkthrough/OEJMmst.png)
+![Vytvoření BDT vstupních dat](./media/hive-criteo-walkthrough/OEJMmst.png)
 
 > [!NOTE]
-> Pro vstupní data formátu, použijte výstup **počet Featurizer** modulu. Jakmile to experimentovat dokončení systémem, uložte si výstup z **počet Featurizer** modulu jako datové sady. Tato datová sada se používá pro vstupní data v webovou službu.
+> Pro vstupní data formátu, použijte výstup **počet Featurizer** modulu. Jakmile to dokončí spouštění experimentovat, uložte si výstup z **počet Featurizer** modul jako datovou sadu. Tato datová sada se používá pro vstupní data v webové služby.
 > 
 > 
 
-#### <a name="scoring-experiment-for-publishing-webservice"></a>Vyhodnocování experimentu pro publikování webovou službu
-Nejprve je zobrazen, jak to vypadá. Základní struktura je **Score Model** modul, který přijímá objekt naše trained model a pár řádků vstupních dat, které byly vygenerovány v předchozích krocích pomocí **počet Featurizer** modulu. "Vyberte sloupců v datové sadě" pomocí projektu popisky Scored a pravděpodobnostech skóre.
+#### <a name="scoring-experiment-for-publishing-webservice"></a>Vyhodnocování experimentu pro publikování webové služby
+Nejprve se zobrazí, jak to vypadá. Základní struktura je **Score Model** modul, který přijímá naše trénovaného modelu objektu a vstupních dat, které byly generovány v předchozích krocích pomocí pár řádků **počet Featurizer** modulu. Do projektu si Scored popisky a skóre pravděpodobnosti pomocí "Výběr sloupců v datové sadě".
 
 ![Výběr sloupců v datové sadě](./media/hive-criteo-walkthrough/kRHrIbe.png)
 
-Všimněte si jak **výběr sloupců v datové sadě** modul lze použít pro 'filtrování, data z datové sady. Zde se zobrazují obsah:
+Všimněte si, že jak **výběr sloupců v datové sadě** modul lze použít pro "filtrování" data z datové sady. Obsah se tady zobrazí:
 
-![Filtrování s výběr sloupců v datové sadě modulu](./media/hive-criteo-walkthrough/oVUJC9K.png)
+![Filtrování pomocí výběr sloupců v datové sadě modulu](./media/hive-criteo-walkthrough/oVUJC9K.png)
 
-Pokud chcete získat blue vstupní a výstupní porty, klepněte na tlačítko **Příprava webservice** v pravé dolní části. Spuštění tohoto experimentu také umožňuje nám publikování webové služby: klikněte na tlačítko **publikování webové služby** ikonu v dolní správné, uvedené tady:
+Chcete-li získat modré vstupní a výstupní porty, stačí kliknout **připravit webovou službu** v pravém dolním rohu. Spuštění tohoto experimentu také umožňuje publikovat webové služby: klikněte na tlačítko **publikovat webovou službu** ikony v dolní pravé, jak je znázorněno zde:
 
 ![Publikování webové služby](./media/hive-criteo-walkthrough/WO0nens.png)
 
-Po publikování webovou službu přesměrováni na stránku, která vypadá takto:
+Po publikování webové služby získat přesměrováni na stránku, která vypadá takto:
 
 ![Řídicí panel webové služby](./media/hive-criteo-walkthrough/YKzxAA5.png)
 
-Všimněte si dva odkazy pro webovým službám na levé straně:
+Všimněte si, že dva odkazy pro webové služby na levé straně:
 
-* **Požadavků a odpovědí** služby (nebo RRS) je určená pro jeden předpovědi a je, co bylo dílčí tento Workshop.
-* **BATCH EXECUTION** služby (BES) se používá pro předpovědi batch a vyžaduje, aby vstupních dat umožňuje provádět předpovědi, které jsou umístěny v úložišti objektů Blob Azure.
+* **Žádostí a odpovědí** služby (nebo RRS) je určená pro jeden předpovědi a je, co byly využity v tomto seminář.
+* **BATCH EXECUTION** Service (BES) se používá k předpovědím služby batch a vyžaduje, že se vstupní data používá k vytvoření predikcí se nacházejí ve službě Azure Blob Storage.
 
-Kliknutím na odkaz **požadavků a odpovědí** trvá nám stránky, který nám dává předem konzervované kódu v C#, python a R. Tento kód můžete pohodlně použít pro volání webovou službu. Všimněte si, že klíč rozhraní API na této stránce musí být použit pro ověřování.
+Kliknutím na odkaz **žádostí a odpovědí** přebírá nám na stránku, která poskytuje v každém okamžiku předem konzervované kód v C#, python a R. Tento kód můžete jednoduše použít pro volání webové služby. Všimněte si, že klíč rozhraní API na této stránce se musí použít pro ověřování.
 
-Je vhodné tento kód python zkopírovat do nové buňky v poznámkovém bloku IPython.
+Je vhodné zkopírovat tuto kódu v pythonu do nové buňky v IPython notebook.
 
-Zde je segment kódu python se správným klíčem rozhraní API.
+Tady je segment kódu v pythonu se správným klíčem rozhraní API.
 
-![Kód jazyka Python](./media/hive-criteo-walkthrough/f8N4L4g.png)
+![Kód v Pythonu](./media/hive-criteo-walkthrough/f8N4L4g.png)
 
-Všimněte si, že výchozí klíč rozhraní API byla nahrazena s klíčem rozhraní API naše webovým službám. Kliknutím na tlačítko **spustit** v této buňce v IPython vypočítá poznámkového bloku následující odpověď:
+Všimněte si, že výchozí klíč rozhraní API bylo nahrazeno tématem klíč rozhraní API pro naše webové služby. Kliknutím na **spustit** na tuto buňku v IPython notebook provede následující odpověď:
 
-![IPython odpovědi](./media/hive-criteo-walkthrough/KSxmia2.png)
+![Odpověď IPython](./media/hive-criteo-walkthrough/KSxmia2.png)
 
-Pro dva testovací příklady požádáni o (v rámci JSON skript pythonu), můžete získat zpátky odpovědi ve formátu "Scored označení Scored Pravděpodobnostech". V takovém případě výchozí hodnoty bylo vybráno, poskytuje předdefinovaným kódu (0 je pro všechny číselné sloupce a řetězec "value" pro všechny sloupce kategorií).
+Pro obě testování příkladů dotázáni na (v rámci JSON skript pythonu), získáte zpět odpovědi v podobě "Scored popisky, Scored pravděpodobnosti". V tomto případě výchozí hodnoty byly vybrány, předem uvedeny kód poskytuje (0 pro všechny číselné sloupce a řetězec "value" pro všechny sloupce zařazené do kategorií).
 
-Tím končí naše návod znázorňující způsob zpracování rozsáhlé datové sady pomocí Azure Machine Learning. Práce s terabajt dat, sestavený předpovědi modelu a nasadit jako webovou službu v cloudu.
+Tím končí naše názorný postup ukazuje, jak zpracovávat rozsáhlé datové sady pomocí Azure Machine Learning. Práce s terabajtu dat, vytvořen prediktivního modelu a nasadit jako webovou službu v cloudu.
 
