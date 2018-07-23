@@ -1,32 +1,32 @@
 ---
-title: Uživatelem definované agregace JavaScript v Azure Stream Analytics
-description: Tento článek popisuje, jak provádět mechanismy rozšířený dotaz s uživatelem definovaných agregacích JavaScript v Azure Stream Analytics.
+title: Javascriptové uživatelsky definované agregace v Azure Stream Analytics
+description: Tento článek popisuje, jak provádět mechanics rozšířený dotaz pomocí jazyka JavaScript, uživatelem definované agregace v Azure Stream Analytics.
 services: stream-analytics
-author: minhe-msft
-ms.author: minhe
-manager: santoshb
-ms.reviewer: jasonh
+author: rodrigoamicrosoft
+ms.author: rodrigoa
+manager: kfile
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2017
-ms.openlocfilehash: 718109d17309747a3c19f22921e4a316b0b88dc6
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: eb433a322f8077c947fd6db1aaa0e2266a109938
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30907319"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39187050"
 ---
-# <a name="azure-stream-analytics-javascript-user-defined-aggregates-preview"></a>Azure Stream Analytics JavaScript uživatelem definovaných agregacích (Preview)
+# <a name="azure-stream-analytics-javascript-user-defined-aggregates-preview"></a>Azure Stream Analytics JavaScript uživatelsky definované agregace (Preview)
+ 
+Azure Stream Analytics podporuje uživatelem definované agregace (UDA) napsané v jazyce JavaScript, umožňuje implementovat komplexní stavové obchodní logiku. V UDA máte plnou kontrolu stavu datová struktura, akumulací stav, stav dekumulaci a agregační výsledek výpočtu. Tento článek přináší dvě různé UDA JavaScriptu Implementovat rozhraní, postup vytvoření UDA a jak pomocí UDA se systémem Windows operace v dotazu Stream Analytics.
 
-Azure Stream Analytics podporuje uživatelem definované agregace (UDA) napsané v jazyce JavaScript, umožňuje implementovat komplexní stavová obchodní logiku. V rámci UDA máte plnou kontrolu stavu datová struktura, akumulace stav, stav dekumulaci a agregační výsledek výpočtu. Článek zavádí dvě různé JavaScript UDA rozhraní, postup vytvoření UDA a jak používat UDA se systémem Windows operací v dotazu Stream Analytics.
+## <a name="javascript-user-defined-aggregates"></a>Uživatelem definované agregace jazyka JavaScript
 
-## <a name="javascript-user-defined-aggregates"></a>Uživatelem definované agregace JavaScript
+Uživatelem definovaná agregace se používá na časový rozsah okna pro agregaci událostí v tomto okně a vytvoří jednu výslednou hodnotu. Existují dva typy rozhraní UDA, Stream Analytics podporuje v současné době AccumulateOnly a AccumulateDeaccumulate. Oba typy UDA můžete využívat Přeskakujícího okna, kdy se skok provádí okno a posuvné okno. AccumulateDeaccumulate UDA vrací lepší výsledky než AccumulateOnly UDA spolupráci s dosáhneme okno a posuvné okno. Vyberte jeden ze dvou typů podle algoritmus, který používáte.
 
-Uživatelem definovaná agregace je použít na vrcholku specifikaci okno čas k agregaci událostí v okně a vytvořit jednu výslednou hodnotu. Existují dva typy UDA rozhraní, Stream Analytics podporuje v současné době AccumulateOnly a AccumulateDeaccumulate. Oba typy UDA použitím Přeskakujícího okna, posílání okna a klouzavé okna. AccumulateDeaccumulate UDA provede lépe než AccumulateOnly UDA při použití spolu s posílání a klouzavé okna. Vyberte jednu z těchto dvou typů založený na algoritmu, který používáte.
+### <a name="accumulateonly-aggregates"></a>AccumulateOnly agregace
 
-### <a name="accumulateonly-aggregates"></a>Agregace AccumulateOnly
-
-Agregace AccumulateOnly můžete hromadit pouze nové události do stavu, algoritmus neumožňuje deaccumulation hodnot. Vyberte tento typ agregace při deaccumulate událost informace z hodnoty stavu není možné implementovat. Toto je šablona JavaScript pro AccumulatOnly agregace:
+Agregace AccumulateOnly lze nashromáždit pouze nové události do stavu, algoritmus neumožňuje deaccumulation hodnot. Vyberte tento požadovaný typ agregace při deaccumulate událost informace z hodnoty stavu je možné implementovat. Toto je šablona jazyka JavaScript pro AccumulatOnly agregace:
 
 ````JavaScript
 // Sample UDA which state can only be accumulated.
@@ -45,9 +45,9 @@ function main() {
 }
 ````
 
-### <a name="accumulatedeaccumulate-aggregates"></a>Agregace AccumulateDeaccumulate
+### <a name="accumulatedeaccumulate-aggregates"></a>AccumulateDeaccumulate agregace
 
-Agregace AccumulateDeaccumulate povolit deaccumulation předchozí Akumulovaná hodnotu ze stavu, například, odebrat dvojici klíč / hodnota ze seznamu hodnot událostí nebo odečíst hodnotu ze stavu Sum agregační. Toto je šablona JavaScript pro AccumulateDeaccumulate agregace:
+Agregace AccumulateDeaccumulate povolí deaccumulation předchozí celkové hodnoty ze stavu, například, odebrat ze seznamu událostí hodnoty pár klíč hodnota nebo odečíst hodnotu ze stavu agregace Sum. Toto je šablona jazyka JavaScript pro AccumulateDeaccumulate agregace:
 
 ````JavaScript
 // Sample UDA which state can be accumulated and deaccumulated.
@@ -76,58 +76,58 @@ function main() {
 
 ## <a name="uda---javascript-function-declaration"></a>UDA - deklarace funkce jazyka JavaScript
 
-Každý UDA JavaScript je definována deklaraci funkce objektu. Tady jsou důležité elementy v definici UDA.
+Každý UDA JavaScriptu je definována deklaraci objektu funkce. Toto jsou hlavními prvky ve UDA definice.
 
 ### <a name="function-alias"></a>Alias funkce
 
-Funkce alias, je identifikátor UDA. Při volání v dotazu Stream Analytics, vždy použijte UDA alias společně s "uda". Předpona.
+Alias funkce je identifikátor UDA. Při volání v dotazu Stream Analytics, vždy používejte alias UDA spolu s "uda". Předpona.
 
 ### <a name="function-type"></a>Typ funkce
 
-Pro UDA, musí být typ funkce **Javascript UDA**.
+UDA, by měl být typu funkce **UDA JavaScriptu Implementovat**.
 
 ### <a name="output-type"></a>Typ výstupu
 
-Konkrétní typ této úlohy Stream Analytics podporováno, nebo "Žádné" Pokud chcete ke zpracování typu v dotazu.
+Konkrétní typ úlohy Stream Analytics nepodporuje, nebo "Libovolné" Pokud chcete zpracovat typ v dotazu.
 
 ### <a name="function-name"></a>Název funkce
 
-Název tohoto objektu funkce. Název funkce názvy shodovat UDA alias (Náhled chování, jsme zvažují anonymní funkce podpory při GA).
+Název tohoto objektu funkce. Název funkce by měl odpovídat doslova UDA alias (ve verzi preview chování, jsme zvažuje anonymní funkce podpory při všeobecné dostupnosti).
 
 ### <a name="method---init"></a>Metoda - init()
 
-Metoda init() inicializuje stav agregace. Tato metoda je volána, když se spustí okno.
+Metoda init() inicializuje stav agregace. Tato metoda je volána, když se otevře se okno.
 
 ### <a name="method--accumulate"></a>Metoda – accumulate()
 
-Metoda accumulate() vypočítá UDA stav na základě předchozího stavu a aktuální hodnoty události. Tato metoda je volána, když událost zadá časový interval (TUMBLINGWINDOW, HOPPINGWINDOW nebo SLIDINGWINDOW).
+Metoda accumulate() počítá UDA stavu na základě předchozího stavu a aktuální hodnoty událostí. Tato metoda je volána, když událost zadá časový interval (TUMBLINGWINDOW, HOPPINGWINDOW nebo SLIDINGWINDOW).
 
 ### <a name="method--deaccumulate"></a>Metoda – deaccumulate()
 
-Metoda deaccumulate() přepočítá stavu na základě předchozího stavu a aktuální hodnoty události. Tato metoda je volána, když událost opustí SLIDINGWINDOW.
+Metoda deaccumulate() přepočítá stavu na základě předchozího stavu a aktuální hodnoty událostí. Tato metoda je volána, když událost opustí SLIDINGWINDOW.
 
 ### <a name="method--deaccumulatestate"></a>Metoda – deaccumulateState()
 
-Metoda deaccumulateState() přepočítá stavu na základě předchozího stavu a stavu směrování. Tato metoda je volána, když sada ponechejte události a HOPPINGWINDOW.
+Metoda deaccumulateState() přepočítá stavu na základě předchozího stavu a stavu směrování. Tato metoda je volána, když sada nechte události a HOPPINGWINDOW.
 
 ### <a name="method--computeresult"></a>Metoda – computeResult()
 
-Metoda computeResult() vrátí agregovaná výsledků na základě aktuálního stavu. Tato metoda je volána na konci časový interval (TUMBLINGWINDOW, HOPPINGWINDOW a SLIDINGWINDOW).
+Metoda computeResult() vrátí agregace výsledků na základě aktuálního stavu. Tato metoda je volána na konci časový interval (TUMBLINGWINDOW HOPPINGWINDOW a SLIDINGWINDOW).
 
-## <a name="javascript-uda-supported-input-and-output-data-types"></a>JavaScript UDA podporované typy vstupní a výstupní data
-Datové typy JavaScript UDA, najdete v oddílu **Stream Analytics a JavaScript typ – převod** z [integrovat funkce JavaScript UDF](stream-analytics-javascript-user-defined-functions.md).
+## <a name="javascript-uda-supported-input-and-output-data-types"></a>UDA JavaScriptu Implementovat podporované typy vstupní a výstupní data
+Typy dat UDA JavaScriptu Implementovat, najdete v části **Stream Analytics a JavaScript převod typu** z [integrace funkcí UDF JavaScriptu](stream-analytics-javascript-user-defined-functions.md).
 
-## <a name="adding-a-javascript-uda-from-the-azure-portal"></a>Přidání JavaScript UDA z portálu Azure
+## <a name="adding-a-javascript-uda-from-the-azure-portal"></a>Přidání UDA JavaScriptu na webu Azure Portal
 
-Níže budeme provede procesem vytvoření UDA z portálu. V příkladu, kterou tady používáme počítá čas vážené průměry.
+Níže najdete provedeme procesem vytvoření UDA z portálu. V příkladu, které zde používáme je computing časově vážené průměry.
 
-Nyní vytvoříme JavaScript UDA pod existující úlohy ASA podle následujících kroků.
+Teď vytvoříme UDA JavaScriptu v rámci existující úlohy Azure Stream Analytics podle následujících kroků.
 
-1. Přihlaste se k portálu Azure a vyhledejte existující úlohu služby Stream Analytics.
-1. Klikněte na odkaz funkce v části **úlohy TOPOLOGIE**.
-1. Klikněte na **přidat** ikonu, čímž přidáte nové funkce.
-1. V zobrazení nové funkce, vyberte **JavaScript UDA** jako typ funkce, pak se zobrazí výchozí šablonu UDA zobrazí v editoru.
-1. Vyplňte "TWA" jako UDA alias a změňte implementaci funkce takto:
+1. Přihlaste se k webu Azure portal a vyhledejte existující úlohy Stream Analytics.
+1. Klikněte na odkaz funkce v rámci **TOPOLOGIE úlohy**.
+1. Klikněte na **přidat** ikona pro přidání nové funkce.
+1. Na novou funkci zobrazení, vyberte **UDA JavaScriptu Implementovat** jako typ funkce, pak se zobrazí výchozí šablona UDA zobrazí v editoru.
+1. Zadejte "TWA" jako UDA alias a změňte implementaci funkce takto:
 
     ````JavaScript
     // Sample UDA which calculate Time-Weighted Average of incoming values.
@@ -169,13 +169,13 @@ Nyní vytvoříme JavaScript UDA pod existující úlohy ASA podle následujíc�
     }
     ````
 
-1. Po kliknutí na tlačítko "Uložit" vaší UDA objeví v seznamu funkce.
+1. Po kliknutí na tlačítko "Save" vaší UDA se zobrazí v seznamu funkcí.
 
-1. Klikněte na nové funkce "TWA", můžete zkontrolovat v definici funkce.
+1. Klikněte na novou funkci "TWA", můžete zkontrolovat definici funkce.
 
-## <a name="calling-javascript-uda-in-asa-query"></a>Volání metody JavaScript UDA v dotazu ASA
+## <a name="calling-javascript-uda-in-asa-query"></a>Volání UDA JavaScriptu Implementovat v dotazu Azure Stream Analytics
 
-Na portálu Azure a spusťte úlohu, upravte dotaz a volání funkce TWA() s předponou pověření "uda.". Příklad:
+Na webu Azure portal a otevřete úlohu, upravte dotaz a volání funkce TWA() s předponou pověření "uda.". Příklad:
 
 ````SQL
 WITH value AS
@@ -193,9 +193,9 @@ FROM value
 GROUP BY TumblingWindow(minute, 5)
 ````
 
-## <a name="testing-query-with-uda"></a>Testování dotazů s UDA
+## <a name="testing-query-with-uda"></a>Testování dotazu s UDA
 
-Vytvořit místní soubor JSON s níže obsah, nahrát soubor do úlohy Stream Analytics a testování výše dotazu.
+Vytvořte místní soubor JSON s níže obsah, nahrajte soubor do úlohy Stream Analytics a testovat dotaz výše.
 
 ````JSON
 [
@@ -227,12 +227,12 @@ Vytvořit místní soubor JSON s níže obsah, nahrát soubor do úlohy Stream A
 
 ## <a name="get-help"></a>Podpora
 
-Potřebujete další pomoc, zkuste naši [fórum Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+Pokud potřebujete další pomoc, vyzkoušejte naše [fórum Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Další postup
 
 * [Úvod do služby Azure Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme používat službu Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Škálování služby Stream Analytics](stream-analytics-scale-jobs.md)
-* [Azure Stream Analytics query language – referenční informace](https://msdn.microsoft.com/library/azure/dn834998.aspx)
-* [Správa Azure Stream Analytics odkazu k REST API](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Referenční dokumentace jazyka dotazu Azure Stream Analytics](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Pro správu Azure Stream Analytics reference k rozhraní REST API](https://msdn.microsoft.com/library/azure/dn835031.aspx)

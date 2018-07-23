@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: v-geberr
-ms.openlocfilehash: af5079e8c448a0df6b1109f5f23e3e3a2871a167
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: f666b59db978774cd299cb91eccdfac99e66ae76
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37887262"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39172047"
 ---
 # <a name="web-app-bot-using-the-luis-template-for-c"></a>Web App Bot pomocí služby LUIS šablony pro jazyk C#
 
@@ -80,7 +80,7 @@ Otevřít **nastavení aplikace** a upravit **LuisAppId** pole obsahující ID a
 > Pokud nemáte ID aplikace LUIS [Domů automatizace aplikace](luis-get-started-create-app.md), přihlaste se k [LUIS](luis-reference-regions.md) webu pomocí stejného účtu, který používáte k přihlášení k Azure. 
 > 1. Klikněte na **Moje aplikace**. 
 > 2. Najdete LUIS aplikaci, kterou jste dříve vytvořili, a která obsahuje záměry a entity z HomeAutomation domény.
-> 3. V **nastavení** stránky pro aplikaci LUIS, najít a zkopírovat ID aplikace. Ujistěte se, že je [trénovaného](interactive-test.md) a [publikované](luis-how-to-publish-app.md). 
+> 3. V **nastavení** stránky pro aplikaci LUIS, najít a zkopírovat ID aplikace. Ujistěte se, že je [trénovaného](luis-interactive-test.md) a [publikované](luis-how-to-publish-app.md). 
 
     > [!WARNING]
     > If you delete your app ID or LUIS key, the bot will stop working.
@@ -145,7 +145,7 @@ Na webu Azure Portal, klikněte na **testování ve Web Chat** otestovat robota.
    ![Testování ve Web Chat HomeAutomation bot](./media/luis-tutorial-cscharp-web-bot/bot-service-chat-results.png)
 
 > [!TIP]
-> Mohou uchovávat aplikace LUIS bez jakékoli změny kódu vašeho robota. Zobrazit [přidání projevů příklad](https://docs.microsoft.com/azure/cognitive-services/LUIS/add-example-utterances) a [trénování a testování vaší aplikace LUIS](https://docs.microsoft.com/azure/cognitive-services/LUIS/interactive-test). 
+> Mohou uchovávat aplikace LUIS bez jakékoli změny kódu vašeho robota. Zobrazit [přidání projevů příklad](https://docs.microsoft.com/azure/cognitive-services/LUIS/add-example-utterances) a [trénování a testování vaší aplikace LUIS](https://docs.microsoft.com/azure/cognitive-services/LUIS/luis-interactive-test). 
 
 ## <a name="download-the-bot-to-debug"></a>Stáhněte si robota, aby ladění
 Pokud váš robot nefunguje, stáhněte si projekt do svého místního počítače a pokračovat [ladění](https://docs.microsoft.com/bot-framework/bot-service-debug-bot#debug-an-azure-app-service-web-app-c-bot). 

@@ -8,12 +8,12 @@ ms.date: 6/20/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 2a9364d77af42623946b25506e504bf0f9a3f3e3
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 5ffb1b5c9889e2325eab32306b61899b37d22488
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39160813"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39187464"
 ---
 # <a name="create-a-windows-iot-edge-device-that-acts-as-a-transparent-gateway"></a>Vytvoření zařízení Windows IoT Edge, který funguje jako transparentní brána
 
@@ -221,7 +221,7 @@ Odkazovat [modulu složení článku] [ lnk-module-composition] podrobné inform
 [lnk-tutorial1-lin]: tutorial-simulate-device-linux.md
 [lnk-edge-as-gateway]: ./iot-edge-as-gateway.md
 [lnk-module-dev]: module-development.md
-[lnk-iothub-getstarted]: ../iot-hub/iot-hub-csharp-csharp-getstarted.md
+[lnk-iothub-getstarted]: ../iot-hub/quickstart-send-telemetry-dotnet.md
 [lnk-iothub-x509]: ../iot-hub/iot-hub-x509ca-overview.md
 [lnk-iothub-secure-deployment]: ../iot-hub/iot-hub-security-deployment.md
 [lnk-iothub-tokens]: ../iot-hub/iot-hub-devguide-security.md#security-tokens

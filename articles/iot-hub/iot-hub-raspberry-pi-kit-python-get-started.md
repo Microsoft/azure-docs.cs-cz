@@ -10,18 +10,18 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: 15b917d811dff2d70b638ab82c808bdc7fa1012b
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 47a9b04e98337bb9ef4222b3f124d3fb063913a2
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38235725"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39187107"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-python"></a>Připojte Raspberry Pi pro službu Azure IoT Hub (Python)
 
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
-V tomto kurzu začnete pomocí seznámení se základy práce s Raspberry Pi, na kterém běží Raspbian. Pak se naučíte bez problémů propojit si zařízení do cloudu s využitím [Azure IoT Hub](iot-hub-what-is-iot-hub.md). Ukázky Windows 10 IoT Core najdete [Windows Dev Center](http://www.windowsondevices.com/).
+V tomto kurzu začnete pomocí seznámení se základy práce s Raspberry Pi, na kterém běží Raspbian. Pak se naučíte bez problémů propojit si zařízení do cloudu s využitím [Azure IoT Hub](about-iot-hub.md). Ukázky Windows 10 IoT Core najdete [Windows Dev Center](http://www.windowsondevices.com/).
 
 Sadu ještě nemáte? Zkuste [online simulátor Raspberry Pi](iot-hub-raspberry-pi-web-simulator-get-started.md). Nebo zakoupit sadu nových [tady](https://azure.microsoft.com/develop/iot/starter-kits).
 

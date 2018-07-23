@@ -7,14 +7,14 @@ manager: rochakm
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2018
+ms.date: 07/19/2018
 ms.author: sujayt
-ms.openlocfilehash: 3825183fa7e8ca15a86935b5b96ff8d25d7bef14
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: c2892d51c6eb5e71c0b1af400b78e993742fede0
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39070858"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173046"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Matice podpory pro které se replikují z jedné oblasti Azure do jiné
 
@@ -27,34 +27,21 @@ Tento článek shrnuje podporované konfigurace a komponenty při replikaci a ob
 **Uživatelské rozhraní** |  **Podporované / nepodporované**
 --- | ---
 **Azure Portal** | Podporováno
-**Portál Classic** | Nepodporuje se
 **PowerShell** | [Replikace z Azure do Azure pomocí Powershellu](azure-to-azure-powershell.md)
 **REST API** | Aktuálně se nepodporuje.
 **Rozhraní příkazového řádku** | Aktuálně se nepodporuje.
 
 
-## <a name="resource-move-support"></a>Podpora přesunu prostředků
+## <a name="resource-support"></a>Podpora prostředků
 
-**Typ přesunu prostředku** | **Podporované / nepodporované** | **Poznámky**  
+**Typ přesunu prostředku** | **Podrobnosti** 
 --- | --- | ---
-**Přesun trezoru mezi skupinami prostředků** | Nepodporuje se |Trezor služby Recovery services nelze přesouvat mezi skupinami prostředků.
-**Přesunout výpočty, úložiště a síť mezi skupinami prostředků** | Nepodporuje se |Pokud přesunete po povolení replikace virtuálního počítače (nebo jeho přidružené komponenty, jako je například úložiště a sítě), musíte zakázat replikaci a znovu ji povolte pro virtuální počítač.
+**Přesun trezoru mezi skupinami prostředků** | Nepodporuje se<br/><br/> Trezoru služby Recovery services nelze přesouvat mezi skupinami prostředků.
+**Přesunout výpočetní síťi prostředků mezi skupinami prostředků** | Nepodporuje se.<br/><br/> Při přesunutí virtuálního počítače nebo přidružené komponent, jako jsou úložiště nebo sítě po replikuje, musíte zakázat replikaci a znovu povolit replikaci pro virtuální počítač.
+**Replikace virtuálních počítačů Azure z jednoho předplatného do druhého pro zotavení po havárii** | Nepodporuje se.
+**Migrace virtuálních počítačů mezi předplatnými** | Nepodporuje se.
+**Migrace virtuálních počítačů ve stejné oblasti** | Nepodporuje se.
 
-
-
-## <a name="support-for-deployment-models"></a>Podpora pro modely nasazení
-
-**Model nasazení** | **Podporované / nepodporované** | **Poznámky**  
---- | --- | ---
-**Classic** | Podporováno | Můžete replikovat klasický virtuální počítač a obnovit jako klasický virtuální počítač. Nelze ho obnovit jako virtuální počítač Resource Manageru. Pokud provádíte nasazení klasickém virtuálním počítači bez připojení k virtuální síti a přímo do oblasti Azure, se nepodporuje.
-**Resource Manager** | Podporováno |
-
->[!NOTE]
->
-> 1. Replikace virtuálních počítačů Azure z jednoho předplatného do druhého pro scénáře zotavení po havárii se nepodporuje.
-> 2. Migrace Azure virtuální počítače napříč předplatnými se nepodporuje.
-> 3. Migrace Azure nepodporuje virtuální počítače ve stejné oblasti.
-> 4. Migrace virtuálních počítačů Azure z modelu nasazení Classic do Resource manager model nasazení se nepodporuje.
 
 ## <a name="support-for-replicated-machine-os-versions"></a>Podporu pro replikované počítače verze operačního systému
 
@@ -145,6 +132,13 @@ Německo | Německo – střed, Německo – severovýchod
 >[!NOTE]
 >
 > Pro oblast Brazílie – jih můžete replikovat a na některý střed USA – Jih, střed USA – Západ, USA – východ, USA – východ 2, USA – Západ, USA – západ 2 a oblasti střed USA – sever převzetí služeb při selhání a navrácení služeb po obnovení.
+
+## <a name="support-for-vmdisk-management"></a>Podpora pro správu virtuálních počítačů/disků
+
+**Akce** | **Podrobnosti**
+-- | ---
+Změna velikosti disku na replikovaný virtuální počítač | Podporováno
+Přidání disku do replikovaný virtuální počítač | Nepodporuje se. Potřebujete zakázat replikaci příslušného virtuálního počítače přidejte disk a pak replikaci zase povolte.
 
 
 ## <a name="support-for-compute-configuration"></a>Podpora pro konfiguraci výpočtů

@@ -48,6 +48,8 @@
       href: tutorials/15-branching-and-undo.md
     - name: Správa verzí a označování
       href: tutorials/16-versioning-and-tagging.md
+    - name: Hybridní roboti
+      href: tutorials/17-hybrid-bots.md
     - name: Ukázka – resetování hesel
       href: tutorials/demo-password-reset.md
     - name: Ukázka – objednávka pizzy

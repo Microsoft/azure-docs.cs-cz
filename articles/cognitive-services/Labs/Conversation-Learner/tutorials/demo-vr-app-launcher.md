@@ -1,7 +1,7 @@
 ---
-title: Ukázka konverzace student skutečnosti aplikace, virtuální aplikace Spouštěče - kognitivní služby Microsoft | Microsoft Docs
+title: Ukázka Spouštěče aplikací konverzace Learner modelů, virtuální realitu – Microsoft Cognitive Services | Dokumentace Microsoftu
 titleSuffix: Azure
-description: Informace o vytvoření ukázkové aplikace student konverzace.
+description: Zjistěte, jak vytvořit model konverzace Learner ukázku.
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,90 +10,94 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 3e41125bf7da9ee64d666d22cb275af01af54012
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 896ec007c03e30e5c20a5344430be040271bc00b
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343261"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171140"
 ---
-# <a name="demo-virtual-reality-app-launcher"></a>Ukázku: Spouštěč aplikace virtuální skutečnosti
+# <a name="demo-virtual-reality-app-launcher"></a>Ukázka: Spouštěč aplikací virtuální realitu
 
-Tato ukázka znázorňuje Spouštěč aplikace virtuální skutečnosti, podpora příkazy, jako jsou "spustit Skype a umístí stěny." Uživatel potřebuje a sdělit, chcete-li spustit aplikaci název aplikace a umístění. Spuštění aplikace zpracovává volání rozhraní API. Název aplikace rozpoznané od uživatele, entityDetectionCallback kontroluje, zda požadovaná aplikace odpovídá jedné nebo víc aplikací v seznamu nainstalovaných aplikací. Zpracovává tento případ, kde není nainstalována požadovaná aplikace, a název aplikace je nejednoznačný (odpovídá více než jeden nainstalovanou aplikaci).
+Tato ukázka znázorňuje Spouštěč virtuální realitu modelu, který podporuje příkazech, jako je "start Skype a umístit na zdi." Uživatel musí třeba název aplikace a služby umístění Pokud chcete spustit aplikaci. Spouštění modelu zpracovává volání rozhraní API. Název aplikace rozpoznané od uživatele, entityDetectionCallback kontroluje, zda požadovaná aplikace odpovídá jedné nebo víc aplikací v seznamu nainstalovaných aplikací. Zpracovává případ, kde není nainstalována požadovaná aplikace, a název aplikace je nejednoznačný (odpovídá více než jeden nainstalované aplikace).
+
+## <a name="video"></a>Video
+
+[![Ukázka VR aplikací ve verzi Preview](http://aka.ms/cl-demo-vrapp-preview)](http://aka.ms/blis-demo-vrapp)
 
 ## <a name="requirements"></a>Požadavky
 
-Tento kurz vyžaduje, aby robota VRAppLauncher běží
+Tento kurz vyžaduje, že VRAppLauncher bot běží:
 
     npm run demo-vrapp
-
+    
 ### <a name="open-the-demo"></a>Otevřete ukázku
 
-V seznamu aplikací webového uživatelského rozhraní klikněte na VRAppLauncher. 
+V seznamu modelu ve webovém uživatelském rozhraní kliknutím na VRAppLauncher. 
 
 ## <a name="entities"></a>Entity
 
 Vytvořili jsme čtyři entity:
 
 - AppName: pro příklad Skype
-- PlacementLocation: pro příklad wall
-- UnknownAppName: programové entita, která nastaví systému při nerozpoznal název entity uživateli říká, například nebyl nainstalován.
-- DisAmbigAppNames: uvedená pole dvou nebo více názvů nainstalovanou aplikaci, které odpovídají to, co uživatel. 
+- PlacementLocation: pro příklad zeď
+- UnknownAppName: programové entity, která nastavuje systému, když ho nedokáže rozpoznat název entity uživatel zvolí, například protože není nainstalována.
+- DisAmbigAppNames: pole dvou nebo více názvů nainstalované aplikace, které odpovídají uživatele, ale nutné dodat. 
 
 ![](../media/tutorial_vrapplauncher_entities.PNG)
 
 ### <a name="actions"></a>Akce
 
-Vytvořili jsme sadu akcí, která zahrnuje rozhraní API volat LaunchApp, čímž se spustí volání funkce spustí aplikaci.
+Vytvořili jsme sadu akcí, která zahrnuje rozhraní API volá LaunchApp, čímž se spustí volání funkce ke spuštění aplikace.
 
 ![](../media/tutorial_vrapplauncher_actions.PNG)
 
-### <a name="training-dialogs"></a>Školení dialogová okna
+### <a name="training-dialogs"></a>Dialogová okna školení
 Jsme definovali dialogy školení.
 
 ![](../media/tutorial_vrapplauncher_dialogs.PNG)
 
-Jako příklad Zkusme vyučující relace.
+Jako příklad si vyzkoušíme relaci výuky.
 
-1. Klikněte na tlačítko Train dialogová okna, dialogové okno pak nový vlaku.
+1. Klikněte na dialogová okna trénování, pak nové dialogové okno trénování.
 1. Zadejte "hi".
-2. Klikněte na tlačítko akce skóre.
-3. Klikněte na možnost vyberte, které aplikace Opravdu chcete spustit?"
-4. Zadejte "outlook".
-    - Všimněte si, že LEOŠ ho rozpozná jako entity.
-5. Klikněte na tlačítko akce skóre.
-3. Kliknutím vyberte, kde chcete ji umístit?"
-4. Zadejte "na wall'.
-    - Všimněte si, že LEOŠ ho rozpozná jako PlacementLocation.
+2. Klikněte na akci skóre.
+3. Klikněte na Vybrat "kterou aplikaci chcete spustit?"
+4. Zadejte "Outlooku".
+    - Služba LUIS je rozpozná jako entity.
+5. Klikněte na výsledek akce.
+3. Kliknutím vyberte "kde chcete ji umístit?"
+4. Zadejte "na zeď".
+    - Služba LUIS je rozpozná jako PlacementLocation.
 2. Zadejte akce skóre.
-6. Vyberte 'LaunchApp.
-7. System: 'spuštění aplikace Microsoft outlook na stěny'.
-    - Všimněte si, že tento stav aktivován volání rozhraní API. Kód pro toto volání je ve C:\<\installedpath > \src\demos\demoVRAppLauncher.ts. Logika pro aplikaci outlook pro tuto ukázku spustit ale ve skutečnosti nemá.
-    - Vypne AppName a PlacementLocation entity. Se vrátí řetězec uvedený výše jako odpověď.
-4. Klikněte na tlačítko Hotovo vyučující.
+6. Vyberte "LaunchApp.
+7. System: "spuštění aplikace Microsoft outlook na zeď".
+    - Aktivuje toto volání rozhraní API. Kód pro toto volání je c:\<\installedpath > \src\demos\demoVRAppLauncher.ts. Však neobsahuje ve skutečnosti kód ke spuštění aplikace Outlook pro tuto ukázku.
+    - Vymaže AppName a PlacementLocation entit. Vrátí řetězec uvedený výše jako odpověď.
+4. Klikněte na Hotovo výuky.
 
 ![](../media/tutorial_vrapplauncher_callbackcode.PNG)
 
 Začněme jiná relace školení pro zpracování neznámé a nejednoznačný entity.
 
-1. Kliknutím na dialogové okno Nový vlaku.
-1. Zadejte 'start OneNote'. 
-    - Rozpozná ho jako název aplikace vzhledem k tomu, že EntityDetectionCallback definované v kódu trvá zadá uživatelské jméno a přeloží na název aplikace pomocí odpovídajících u seznamu aplikací, které jsou definované v kódu. Pak vrátí sadu všechny odpovídající aplikace. 
-    - Pokud je seznam shod nula, to znamená, že aplikace není nainstalovaná. Vloží jej do unknownAppName.
-    - Pokud najde více než jednu aplikaci, bude zkopírujte je do DisambigAppNames a vymazat AppName entity.
-2. Klikněte na tlačítko akce skóre.
-3. Kliknutím vyberte "Bohužel neznámého aplikace $UknownAppName."
-4. Zadejte 'start amazon'. Pokusíme se jiné cesty.
-5. Klikněte na tlačítko akce skóre.
-    - Poznámka: Amazon Video a Amazon hudba jsou teď ve DisambigAppNames paměti. A OneNote byl vymazán.
-3. Kliknutím vyberte "Existuje několik aplikací, které zvukových jako je například..."
-    - Všimněte si, že skóre není velmi vysoké, protože máme několik dialogů školení až tento bod. Vypadá to by potřebujeme některé zde chcete-li model více klíčovou.
+1. Kliknutím na dialogové okno Nový trénování.
+1. Zadejte 'start Onenotu'. 
+    - Model rozpozná Onenotu jako název aplikace. `EntityDetectionCallback` Funkci definovanou v kódu přeloží název zadaný uživatelem na název aplikace to provede spárováním odpovídajících do seznamu aplikací, které jsou definovány v kódu. Pak vrací sadu všech odpovídajících aplikací. 
+    - Pokud je seznam shod nula, znamená to, že aplikace není nainstalovaná. Vloží jej do unknownAppName.
+    - Pokud se najde více než jednu aplikaci, zkopíruje je do `DisambigAppNames` a vymaže AppName entity.
+2. Klikněte na akci skóre.
+3. Kliknutím vyberte: je nám líto, nevím aplikace $UknownAppName."
+4. Zadejte 'start Amazon'. Zkusíme jiné cesty.
+5. Klikněte na výsledek akce.
+    - Amazon videa a Hudba Amazon jsou teď v `DisambigAppNames` se vymazala paměti a OneNote.
+3. Kliknutím vyberte "Existuje několik aplikací, která zní tímto způsobem..."
+    - Skóre je velmi vysoké, protože jsme definovali pouze několik dialogů školení do této chvíle. Definování další dialogová okna školení s žádným modelu rychlejší rozhodování.
 2. Zadejte akce skóre.
-4. Klikněte na tlačítko Hotovo vyučující.
+4. Klikněte na Hotovo výuky.
 
-Nyní jste viděli postup řešení entity. Ukázku také ukazuje zpětná volání rozhraní API a vám ukázal, šablony pro shromažďování informací o, Kontrola přítomnosti a nejednoznačnosti a pravém akce, která na základě.
+Nyní jste viděli jak dělat entit řešení. Ukázky také popisují zpětná volání rozhraní API a jsme si ukázali, šablony pro shromažďování informací o provedení kontroly na přítomnost a nejednoznačnosti a odpovídajícím způsobem trvá správnou akci.
 
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Nasazení konverzace student robota](../deploy-to-bf.md)
+> [Nasazení robota Learner konverzace](../deploy-to-bf.md)

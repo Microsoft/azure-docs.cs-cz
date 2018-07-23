@@ -1,7 +1,7 @@
 ---
-title: Ukázka aplikace student konverzace, resetování hesla - kognitivní služby Microsoft | Microsoft Docs
+title: Ukázka konverzace Learner modelu, pro resetování hesla – Microsoft Cognitive Services | Dokumentace Microsoftu
 titleSuffix: Azure
-description: Informace o vytvoření ukázkové aplikace student konverzace.
+description: Zjistěte, jak vytvořit model konverzace Learner ukázku.
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,66 +10,70 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 24d61787a79ee1a1a9737c417aa966cc8fd75930
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: f633dd375d690a1c3e66a2a6e02ae69665dbe960
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343235"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39170629"
 ---
 # <a name="demo-password-reset"></a>Ukázka: Resetování hesla
-Tato ukázka znázorňuje robota jednoduché technické podpory, které vám pomohou při resetování hesla. 
+Tato ukázka znázorňuje robota jednoduché technické podpory, který vám pomůže s resetování hesla. 
 
-Ukazuje, jak student konverzace další netriviální dialogu toky, pořadí více zapnout, včetně třídu na více systémů domény. Tato ukázka nepoužívá kód ani entity.
+Ukazuje, jak konverzace Learner další toky netriviální dialogového okna, sekvence více zapnout, včetně třídu mimo doménu. Tato ukázka nepoužívá žádné kódu nebo entity.
+
+## <a name="video"></a>Video
+
+[![Ukázka heslo ve verzi Preview](http://aka.ms/cl-demo-password-preview)](http://aka.ms/blis-demo-password)
 
 ## <a name="requirements"></a>Požadavky
-Tento kurz vyžaduje, zda je spuštěna robota resetování hesla
+Tento kurz vyžaduje, zda je spuštěna bot resetování hesla
 
     npm run demo-password
 
 ### <a name="open-the-demo"></a>Otevřete ukázku
 
-V seznamu aplikací webového uživatelského rozhraní klikněte na kurz ukázku pro resetování hesla. 
+V seznamu modelu ve webovém uživatelském rozhraní kliknutím na kurz ukázka pro resetování hesla. 
 
 ### <a name="actions"></a>Akce
 
-Vytvořili jsme sadu akcí, kde je uživatel hledá pomoc s své heslo, včetně řešení.
+Vytvořili jsme sadu akcí, kde se uživatel dívá pro pomoc s jejich hesla, včetně řešení.
 
 ![](../media/tutorial_pw_reset_actions.PNG)
 
-### <a name="training-dialogs"></a>Školení dialogová okna
+### <a name="training-dialogs"></a>Dialogová okna školení
 
-Existuje několik dialogů, školení. Existují také předvádění out třídy domény – například požadavků uživatele jako "řídí pokynů, jsou mimo doménu. robota udělil příklady pár mimo požadavky domény a může odpovědět, nelze zvýšit s třídou."
+Existuje několik dialogů, školení. Existují také ukázky out doménové třídy – například požadavky uživatelů jako "řízení pokynů" jsou mimo doménu. robot se předala příklady některé z požadavků domény a můžou reagovat s "Nelze zvýšit s ním."
 
 ![](../media/tutorial_pw_reset_entities.PNG)
 
-Jako příklad Zkusme vyučující relace.
+Jako příklad si vyzkoušíme relaci výuky.
 
-1. Klikněte na tlačítko Train dialogová okna, dialogové okno pak nový vlaku.
-1. Zadejte 'I ztráty hesla'.
-2. Klikněte na tlačítko akce skóre.
+1. Klikněte na dialogová okna trénování, pak nové dialogové okno trénování.
+1. Zadejte "Můžu ztráty hesla".
+2. Klikněte na akci skóre.
 3. Kliknutím vyberte "Je, že pro místní účet nebo účet Microsoft?"
-4. Zadejte 'Místní účet'.
-5. Klikněte na tlačítko akce skóre.
-3. Kliknutím vyberte, kterou verzi Windows máte?"
-4. Zadejte, Windows 8'.
-5. Klikněte na tlačítko akce skóre.
-6. Vyberte ' řešení: jak resetovat heslo v systému Windows 8. "
-4. Klikněte na tlačítko Hotovo vyučující.
+4. Zadejte "Místní účet".
+5. Klikněte na výsledek akce.
+3. Klikněte na Vybrat "kterou verzi Windows máte?"
+4. Zadejte "Windows 8'.
+5. Klikněte na výsledek akce.
+6. Vyberte "řešení: resetování hesla v systému Windows 8."
+4. Klikněte na Hotovo výuky.
 
-Nyní si vyzkoušíte, jak robota další třídu na více systémů domény.
+Pojďme si vyzkoušet, jak robota další třídu mimo doménu.
 
-1. Klikněte na tlačítko Train dialogová okna, dialogové okno pak nový vlaku.
-1. Zadejte, webové vyhledávání'.
-    - Jedná se o příklad třídy na více systémů domény. 
-2. Klikněte na tlačítko akce skóre.
-3. Kliknutím vyberte "Bohužel nelze zvýšit s třídou."
-    - Všimněte si, že je nyní nízká skóre pro tuto možnost. Ale po trochu další vyučující získají skóre vyšší.
-4. Klikněte na tlačítko Hotovo vyučující.
+1. Klikněte na dialogová okna trénování, pak nové dialogové okno trénování.
+1. Zadejte 'vyhledávání na webu'.
+    - Toto je příklad mimo doménovou třídu. 
+2. Klikněte na akci skóre.
+3. Kliknutím vyberte: je nám líto, můžu vám nemůže pomoci s ním."
+    - Všimněte si, že skóre pro tuto možnost je nyní nízká. Ale po pár dalších výuky, se zobrazí skóre vyšší.
+4. Klikněte na Hotovo výuky.
 
-Viděli jste nyní, jak vytvořit základní technickou podporu ukázku a jak můžete naučit, abyste poskytovat řešení a taky zpracovat mimo ukázkové dotazy.
+Viděli jste nyní jak vytvořit na základní technickou podporu ukázku a jak můžete zjistěte, jak poskytnout řešení a také zpracování z ukázkové dotazy.
 
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Demo - pizza pořadí](./demo-pizza-order.md)
+> [Ukázka – pizza pořadí](./demo-pizza-order.md)

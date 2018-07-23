@@ -10,11 +10,11 @@ ms.date: 05/31/2018
 ms.author: daveba
 ms.custom: include file
 ms.openlocfilehash: 55814f5515649e0fc6d646d3580f281fd9ec37a5
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/20/2018
-ms.locfileid: "39165266"
+ms.locfileid: "39188615"
 ---
 | Kategorie | Omezení |
 | --- | --- |

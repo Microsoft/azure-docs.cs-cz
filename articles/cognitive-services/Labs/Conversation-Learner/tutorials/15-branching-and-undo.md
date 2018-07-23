@@ -1,7 +1,7 @@
 ---
-title: Jak používat vytvoření větve a vrátit zpět operace s aplikací konverzace student - kognitivní služby Microsoft | Microsoft Docs
+title: Jak používat větvení a zrušení operací s modelem konverzace Learner – Microsoft Cognitive Services | Dokumentace Microsoftu
 titleSuffix: Azure
-description: Naučte se používat vytvoření větve a vrátit zpět operace s aplikací student konverzace.
+description: Zjistěte, jak používat větvení a zrušení operací s modelem Learner konverzace.
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,77 +10,78 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 724a9e47267e0bd7417130efe54c609ac7a465fb
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 05140693026e21a73b756ed0ea7bc9936bef067e
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343248"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173294"
 ---
-# <a name="how-to-use-branching-and-undo-operations"></a>Operace vrácení zpět a jak používat vytvoření větve
-V tomto kurzu jsme budou přenášeny po vrácení zpět a větvení operace.
+# <a name="how-to-use-branching-and-undo-operations"></a>Jak používat větvení a operace vrácení zpět
+V tomto kurzu jsme přejděte zpět a větvení operace.
+
 
 ## <a name="details"></a>Podrobnosti
-- Vrácení zpět: umožňuje vývojáři "zrušit" volba vstup nebo akce uživatele. Na pozadí "zrušit" ve skutečnosti vytvoří nové dialogové okno a znovu ji hraje až v předchozím kroku.  To znamená, že detekce entity zpětného volání a rozhraní API, zavolá v dialogovém okně opět bude volána.
+- Vrácení zpět: umožňuje vývojářům "zpět" možnost vstup nebo akce uživatele. Na pozadí "zpět" ve skutečnosti vytváří nové dialogové okno a znovu hraje až v předchozím kroku.  To znamená, že entita detekce zpětného volání a rozhraní API volá v dialogovém okně opět bude volána.
 
-- Pobočky: vytvoří nový train dialog, který začíná stejným způsobem jako existující cvičení dialogové okno – to umožňuje ušetřit úsilí změní ručně znovu zadávat dialogové okno. Na pozadí "větve" vytvoří nové dialogové okno a znovu hraje dialogu existující train až vybraný krok.  To znamená, že detekce entity zpětného volání a rozhraní API, zavolá v dialogovém okně opět bude volána.
+- Větev: vytvoří nový dialog trénování, který začíná stejným způsobem jako existující trénování dialogové okno – tato akce uloží snaha o ručně znovu zadávat dialogové okno se změní. Na pozadí "větve" vytvoří nové dialogové okno a znovu hraje existující dialogu trénování až vybraný krok.  To znamená, že entita detekce zpětného volání a rozhraní API volá v dialogovém okně opět bude volána.
 
 
 ## <a name="requirements"></a>Požadavky
-Tento kurz vyžaduje, aby robota pořadí pizza běží:
+Tento kurz vyžaduje, zda je spuštěna bot pizza pořadí:
 
     npm run demo-pizza
 
 ### <a name="open-the-demo"></a>Otevřete ukázku
 
-V seznamu aplikací webového uživatelského rozhraní klikněte na TutorialDemo Pizza pořadí. 
+V seznamu modelu ve webovém uživatelském rozhraní kliknutím na TutorialDemo Pizza pořadí. 
 
-Podrobnosti o ukázku Pizza pořadí v tématu kurzu Pizza pořadí.
+Podrobnosti o ukázku Pizza pořadí najdete v kurzu Pizza pořadí.
 
 ## <a name="undo"></a>Zpět
 
-Jsme zruší součástí dialogové okno a znovu ji vytvořte z tohoto kroku.
+Budeme součástí dialogu vrátit zpět a znovu jej vytvořte z tohoto kroku.
 
-### <a name="training-dialogs"></a>Školení dialogová okna
-Začněme relaci školení. 
+### <a name="training-dialogs"></a>Dialogová okna školení
+Začněme celodenního školení. 
 
-1. Klikněte na tlačítko Train dialogová okna, dialogové okno pak nový vlaku.
-1. Zadejte, řazení pizza'.
-2. Klikněte na tlačítko akce skóre.
-3. Kliknutím vyberte, co chcete použít na vaše pizza?"
-4. Zadejte "hub a sýr".
-5. Klikněte na tlačítko akce skóre.
-3. Kliknutím vyberte 'máte $Toppings na vaše pizza'.
-6. Vyberte, chcete cokoliv jiného?"
-7. Zadejte "Odebrat hub a přidat zeleninová".
-    - Vyberte hub a zrušte zaškrtnutí Toppings entity. Vytváříme akci, která jsme se vrátit zpět.
-2. Klikněte na tlačítko Zpět krok.
-    - Upozorňujeme, že poslední položka je odebrána a jsme se vrátíte do 'chcete cokoliv jiného?"  (následující snímek obrazovky)
-2. Zadejte "Odebrat hub a přidat zeleninová".
+1. Klikněte na dialogová okna trénování, pak nové dialogové okno trénování.
+1. Zadejte "pořadí pizza".
+2. Klikněte na akci skóre.
+3. Kliknutím vyberte "co chcete na vaše pizza?"
+4. Zadejte "hub a produkci minipivovarů ve wisconsinu".
+5. Klikněte na výsledek akce.
+3. Kliknutím vyberte "máte $Toppings na vaše pizza".
+6. Vyberte možnost "Chcete cokoli?"
+7. Zadejte "odeberte hub a přidejte papriky".
+    - Vyberte hub a zrušte zaškrtnutí políčka Toppings entity. Vytváříme akci, která se vrátíme zpět.
+2. Klikněte na krok zpět.
+    - Poslední položka je odebrána, a My jsme na "Chcete cokoli?"  (snímek)
+2. Zadejte "odeberte hub a přidejte papriky".
 8. Kliknutím vyberte "máte $Toppings na vaše pizza.
-    - Zkontrolujte, zda že jsou obě entity vybrané správně.
-2. Klikněte na tlačítko akce skóre. Můžete pokračovat v dialogu opravené teď.
-4. Klikněte na tlačítko Hotovo vyučující.
+    - Ujistěte se, že jsou obě entity vybraný správně.
+2. Klikněte na akci skóre. Můžete pokračovat v dialogovém okně opravený teď.
+4. Klikněte na Hotovo výuky.
 
-Jste nyní viděli, jak používat zpět, chcete-li odebrat vstup uživatele a akce.
+Nyní jste viděli použití zpět k odebrání vstupu uživatele a akce.
 
 ![](../media/tutorial15_undo.PNG)
 
 ## <a name="branch"></a>Větev
 
-Například můžeme otevřete dialogovým existující train a vytvořte další dialog train rozvětvováním.
+Jako příklad můžeme otevřete existující dialogu trénování a vytvořte další dialog trénování rozvětvováním.
 
-1. Klikněte na tlačítko Train v dialogových oknech, pak 'nové pořadí, otevřete dialogové okno existující. 
-2. Klikněte na poslední "Ne" v dialogovém okně (viz obrázek).
+1. Klikněte na tlačítko trénování dialogová okna a potom "Nová objednávka" otevřete existující dialogové okno. 
+2. Klikněte na poslední 'ne' v dialogovém okně (viz následující snímek obrazovky).
 3. Klikněte na větev.
-    - Upozorňujeme, že "žádný" odebere a dialogu celý až tento bod se zkopíruje do nové. 
-    - Tím ušetříte, které můžete znovu zadávat předchozím změní prozkoumat nové "větve" z tohoto bodu.
-1. Zadejte "Ano".
-2. Klikněte na tlačítko akce skóre.
-3. Vyberte, máte $Toppings na vaše pizza'.
-6. Vyberte, chcete cokoliv jiného?"
-7. Zadejte "žádné".
-4. Klikněte na tlačítko Hotovo vyučující.
+    - "žádný" odebrána a celý dialog až k danému bodu je zkopírována do nové. 
+    - Tím se ušetří, který vám znovu zadávat předchozí displeje prozkoumat nové "větve" od této chvíle.
+1. Zadejte "yes".
+2. Klikněte na akci skóre.
+3. Vyberte "Máte $Toppings na vaše pizza".
+6. Vyberte možnost "Chcete cokoli?"
+7. Zadejte "žádný".
+4. Klikněte na Hotovo výuky.
 
 ![](../media/tutorial15_branch.PNG)
 

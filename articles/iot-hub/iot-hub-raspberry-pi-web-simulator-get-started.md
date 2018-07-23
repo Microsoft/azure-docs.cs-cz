@@ -10,18 +10,18 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: dc8216f6b0a610b556b94637970bfd3e721f38d2
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 2dd9b14ebd7e64a1073ab773b2f1ac8d8c05ac0a
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38482111"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39185243"
 ---
 # <a name="connect-raspberry-pi-online-simulator-to-azure-iot-hub-nodejs"></a>Připojte se ke službě Azure IoT Hub (Node.js) online simulátor Raspberry Pi
 
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
-V tomto kurzu začnete pomocí seznámení se základy práce se simulátor Raspberry Pi online. Pak zjistěte, jak hladce simulátor Pi do cloudu s využitím [Azure IoT Hub](iot-hub-what-is-iot-hub.md). 
+V tomto kurzu začnete pomocí seznámení se základy práce se simulátor Raspberry Pi online. Pak zjistěte, jak hladce simulátor Pi do cloudu s využitím [Azure IoT Hub](about-iot-hub.md). 
 
 Pokud máte fyzických zařízení, navštivte [připojte Raspberry Pi pro službu Azure IoT Hub](iot-hub-raspberry-pi-kit-node-get-started.md) začít. 
 

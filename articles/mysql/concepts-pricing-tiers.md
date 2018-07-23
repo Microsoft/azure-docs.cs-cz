@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
 ms.date: 07/11/2018
-ms.openlocfilehash: 547839234e15455f3e268bad4d92972ea1f47e4c
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 70891e4c1425badb43dac66ada9c0b3a43b8fb0d
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971933"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173669"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL cenové úrovně
 
@@ -45,21 +45,21 @@ Výpočetní prostředky jsou k dispozici jako virtuální jádra, která předs
 
 | **Oblasti Azure** | **4. generace** | **Generace 5** |
 |:---|:----------:|:--------------------:|
-| Střed USA | X |  |
-| Východ USA | X | X |
+| USA – střed | X |  |
+| USA – východ | X | X |
 | Východní USA 2 | X | X |
 | Střed USA – sever | X | X |
 | Střed USA – jih | X | X |
-| Západní USA | X | X |
-| Západní USA 2 |  | X |
-| Střední Kanada | X | X |
-| Východní Kanada | X | X |
+| USA – západ | X | X |
+| USA – západ 2 |  | X |
+| Kanada – střed | X | X |
+| Kanada – východ | X | X |
 | Brazílie – jih | X | X |
 | Severní Evropa | X | X |
 | Západní Evropa |  | X |
 | Francie – střed |  | X |
 | Spojené království – západ |  | X |
-| Spojené království – jih |  | X |
+| Velká Británie – jih |  | X |
 | Východní Asie | X | X |
 | Jihovýchodní Asie | X | X |
 | Austrálie – východ |  | X |
@@ -94,6 +94,8 @@ Můžete monitorovat spotřebu vstupně-výstupních operací na webu Azure Port
 Server je označen jen pro čtení, když velikost volného místa nedosáhne menší než 5 GB nebo 5 % zřízeného úložiště, podle toho, co je menší. Například, pokud jste zřídili 100 GB úložiště a skutečné využití prochází přes 95 GB, na serveru je označen jen pro čtení. Případně pokud jste zřídili 5 GB úložiště, server je označen jen pro čtení dosáhne volný úložný prostor na méně než 250 MB.  
 
 Když se služba pokusí o nastavení serveru jen pro čtení, jsou blokovány všechny nové požadavky na zápis transakce a existující aktivní transakce budou i nadále spouštět. Navrácení služeb po potvrzení, když serveru je nastavena na jen pro čtení, všechny následné zápisu operace a transakce. Čtení dotazy budou nadále fungovat bez přerušení. Po zvýšíte zřízeného úložiště, server bude možné znovu přijmout transakce zápisu.
+
+Doporučujeme nastavit upozornění pro upozornění, úložiště serveru se blíží prahové hodnoty, tomu se můžete vyhnout, převedení do stavu jen pro čtení. Další informace najdete v dokumentaci na [jak nastavit výstrahu](howto-alert-on-metric.md).
 
 ## <a name="backup"></a>Backup
 

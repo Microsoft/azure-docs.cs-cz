@@ -10,12 +10,12 @@ ms.service: postgresql
 ms.devlang: azure-cli
 ms.topic: article
 ms.date: 04/01/2018
-ms.openlocfilehash: 4e745a5de8000e0f26491c9f4f236f7f8a735ae9
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: de0d6ee32380367bfba4a27958c9c1e739b5dba3
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38635064"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173422"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql-using-the-azure-cli"></a>Jak zálohovat a obnovovat server ve službě Azure Database for PostgreSQL pomocí Azure CLI
 
@@ -84,6 +84,8 @@ Umístění a cenová úroveň obnoveného serveru budou stejné jako původní 
 
 Po dokončení procesu obnovení, vyhledejte na nový server a ověřte, že budou data obnovena podle očekávání.
 
+Nový server vytvořené během obnovení nemá pravidla brány firewall, které existovaly na původním serveru. Pravidla brány firewall musí nastavit zvlášť pro tento nový server.
+
 ## <a name="geo-restore"></a>Geografické obnovení
 Pokud jste nakonfigurovali server pro geograficky redundantní zálohy, lze vytvořit nový server ze zálohy existujícího serveru. Tento nový server lze vytvořit v libovolné oblasti Azure Database for PostgreSQL je k dispozici.  
 
@@ -121,6 +123,8 @@ az postgres server georestore --resource-group newresourcegroup --name mydemoser
 >Při vytváření nového serveru geografické obnovení, dědí jako zdrojový server stejnou velikostí úložiště a cenovou úroveň. Tyto hodnoty nelze změnit během vytváření. Po vytvoření nového serveru je možné škálovat jeho velikost.
 
 Po dokončení procesu obnovení, vyhledejte na nový server a ověřte, že budou data obnovena podle očekávání.
+
+Nový server vytvořené během obnovení nemá pravidla brány firewall, které existovaly na původním serveru. Pravidla brány firewall musí nastavit zvlášť pro tento nový server.
 
 ## <a name="next-steps"></a>Další postup
 - Další informace týkající se služby [zálohy](concepts-backup.md).

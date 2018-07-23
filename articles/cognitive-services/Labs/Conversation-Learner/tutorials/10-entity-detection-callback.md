@@ -1,7 +1,7 @@
 ---
-title: Jak používat entity detekce zpětné volání s aplikací konverzace student - kognitivní služby Microsoft | Microsoft Docs
+title: Jak používat entity detekce zpětného volání s modelem konverzace Learner – Microsoft Cognitive Services | Dokumentace Microsoftu
 titleSuffix: Azure
-description: Naučte se používat s aplikací konverzace student entity detekce zpětného volání.
+description: Další informace o použití zjišťování entit zpětného volání s modelem Learner konverzace.
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,48 +10,52 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: e41ea5930ff0c8395d0c93aa42e224ebfc894ba8
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: f168018a23d03ffb957da2dd1f67881420a21208
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343244"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171099"
 ---
 # <a name="how-to-use-entity-detection-callback"></a>Jak používat entity detekce zpětného volání
 
-Tento kurz ukazuje zpětného volání detekce entity a znázorňuje běžný vzor řešení entity.
+Tento kurz ukazuje zpětného volání zjišťování entit a znázorňuje běžný vzor pro vyřešení entity.
+
+## <a name="video"></a>Video
+
+[![Kurz 10 ve verzi Preview](http://aka.ms/cl-tutorial-10-preview)](http://aka.ms/blis-tutorial-10)
 
 ## <a name="requirements"></a>Požadavky
-Tento kurz vyžaduje, zda je spuštěna robota "tutorialEntityDetectionCallback".
+Tento kurz vyžaduje, aby `tutorialEntityDetectionCallback` bot běží.
 
     npm run tutorial-entity-detection
 
 ## <a name="details"></a>Podrobnosti
-Zpětné volání detekce entity umožňuje pomocí vlastní kód pro zpracování obchodní pravidla související s entitami. V této ukázce použijeme zpětná volání a programové entity přeložit název města zadá uživatel kanonický název – například řešení "velký apple" na "Praha".
+Zpětné volání zjišťování entit umožňuje psát vlastní kód pro zpracování obchodních pravidel související s entitami. Tato ukázka používá zpětná volání a programové entity název města zadaná uživatelem do kanonického názvu – například řešení "velký objem apple" k "new york".
 
 ### <a name="open-the-demo"></a>Otevřete ukázku
 
-V seznamu aplikací klepněte na kurz-10-EntityDetenctionCallback. 
+V seznamu model klikněte na kurz-10-EntityDetectionCallback. 
 
 ### <a name="entities"></a>Entity
 
-V aplikaci jsme definovali tři entity.
+Tři entity jsou definovány v modelu.
 
 ![](../media/tutorial10_entities.PNG)
 
-1. Město je vlastní entity, který uživatel bude poskytovat jako zadávání textu.
-2. CityUnknown je programový entita. Budou obsazeny v systému. Pokud systém nebude vědět, které města, je budou zkopírovány vstup uživatele.
-3. CityResolved je město, které systém vědět o. Název v kanonickém tvaru města je například "velký apple, bude odkazující na, new york, bude.
+1. Město je vlastní entitu, která uživatel poskytne jako textové zadání.
+2. CityUnknown je entita, prostřednictvím kódu programu. Tuto entitu budou obsazeny v systému. Pokud systém nezná Město, které je budou zkopírovány uživatelský vstup.
+3. CityResolved je město, která upozorní systém. Tato entita bude třeba se přeloží "velký objem apple" "new york" kanonický název města.
 
 ### <a name="actions"></a>Akce
 
-Vytvořili jsme tři akce. 
+Tři akce jsou definovány v modelu.
 
 ![](../media/tutorial10_actions.PNG)
 
-1. Je první akcí, které města chcete?"
-2. Druhá ' neznámého tento města $CityUknown. Které města chcete? "
-3. Je třetí "uvedená $City a který lze přeložit na $CityResolved."
+1. První "action" je "Město, který chcete?"
+2. Druhým je "Toto město $CityUknown nevím. Město, které si přejete? "
+3. Třetí je "jsi $City a můžu vyřešit, který $CityResolved."
 
 ### <a name="callback-code"></a>Zpětné volání kódu
 
@@ -61,49 +65,49 @@ Podívejme se na kód. Metoda EntityDetectionCallback můžete najít v jednotce
 
 Tato funkce volána po entity řešení došlo k chybě.
  
-- První krok, který ji provede je zrušte $CityUknown. $CityUknown se uchová pouze pro jeden zapnout, jako jeho vždy získá zaškrtnutí zrušit na začátku.
-- Potom se nám získat seznam města, které byly rozpoznány. Provést první z nich a pokuste se ho vyřešit.
-- Je definována funkce, která přeloží ji (resolveCity) Další výše v kódu. Obsahuje seznam názvů kanonický města. Najde název města v seznamu, se vrátí. Jinak hledá v 'cityMap a vrátí název namapované. Pokud nemůže najít města, vrátí hodnotu null.
-- Navíc pokud město rozpoznal na název, uložíme ho v $CityKnown entity. Jinak vymažte, co uživatel má uvedená a naplnit $CityUknown entity.
+- První věc, které budou provádět, je vymazat $CityUknown. $CityUknown se zachová jenom pro jeden zapnout, jako jeho získá na začátku vždy zaškrtnuto.
+- Potom Získejte seznam měst, které byly rozpoznány. Provést první z nich a pokusí se ho vyřešit.
+- Funkce, který se přeloží ho (resolveCity) je definována další výše v kódu. Obsahuje seznam názvů canonical město. Najde v seznamu název města, vrátí jej. Jinak hledá v "cityMap" a vrátí mapované název. Pokud ji nemůžete najít Město, vrátí hodnotu null.
+- Nakonec pokud město má přeložit na název, uložíme ho $CityKnown entity. Jinak zrušte, co uživatel má říká, že a naplnit $CityUknown entity.
 
-### <a name="train-dialogs"></a>Cvičení dialogová okna
+### <a name="train-dialogs"></a>Trénování dialogová okna
 
-1. Klikněte na tlačítko Train dialogová okna, dialogové okno pak nový vlaku.
-2. Zadejte text "hello".
-3. Klikněte na tlačítko akce skóre a vyberte, které města chcete?"
-2. Zadejte, new york'.
-    - Všimněte si, že získá rozpoznán jako města entity.
-5. Klikněte na tlačítko akce skóre
-    - Všimněte si, že jsou vyplněna Město a CityResolved.
-6. Vyberte 'uvedená $City a který lze přeložit na $CityResolved'.
-7. Klikněte na tlačítko Hotovo vyučující.
+1. Klikněte na dialogová okna trénování, pak nové dialogové okno trénování.
+2. Zadejte "hello".
+3. Klikněte na výsledek akce a vyberte "Město, který chcete?"
+2. Zadejte "new york".
+    - Text je rozpoznán jako město entity.
+5. Klikněte na výsledek akce
+    - `City` a `CityResolved` jsou vyplněna.
+6. Vyberte "jsi $City a můžu vyřešit, který $CityResolved".
+7. Klikněte na Hotovo výuky.
 
-Přidejte další dialog příklad:
+Přidáte jiný příklad – dialogové okno:
 
-1. Kliknutím na dialogové okno Nový vlaku.
-2. Zadejte text "hello".
-3. Klikněte na tlačítko akce skóre a vyberte, které města chcete?"
-2. Zadejte 'velký apple'.
-    - Všimněte si, že získá rozpoznán jako města entity.
-5. Klikněte na tlačítko akce skóre
-    - Všimněte si, že CityResolved ukazuje účinek kód spuštěný.
-6. Vyberte 'uvedená $City a který lze přeložit na $CityResolved'.
-7. Klikněte na tlačítko Hotovo vyučující.
+1. Kliknutím na dialogové okno Nový trénování.
+2. Zadejte "hello".
+3. Klikněte na výsledek akce a vyberte "Město, který chcete?"
+2. Zadejte "velký objem apple".
+    - Text je rozpoznán jako město entity.
+5. Klikněte na výsledek akce
+    - `CityResolved` Demonstruje účinek kód spuštěný.
+6. Vyberte "jsi $City a můžu vyřešit, který $CityResolved".
+7. Klikněte na Hotovo výuky.
 
-Přidejte další dialog příklad:
+Přidáte jiný příklad – dialogové okno:
 
-1. Kliknutím na dialogové okno Nový vlaku.
-2. Zadejte text "hello".
-3. Klikněte na tlačítko akce skóre a vyberte, které města chcete?"
+1. Kliknutím na dialogové okno Nový trénování.
+2. Zadejte "hello".
+3. Klikněte na výsledek akce a vyberte "Město, který chcete?"
 2. Zadejte "foo".
-    - Jedná se o příklad města, které systém nezná. 
-5. Klikněte na tlačítko akce skóre
-6. Vyberte ' neznámého tento města $CityUknown. Které města chcete? ".
-7. Zadejte, new york'.
-8. Klikněte na tlačítko akce skóre.
-    - Upozorňujeme, že byl vymazán CityUknown a CityResolved se naplní.
-6. Vyberte 'uvedená $City a který lze přeložit na $CityResolved'.
-7. Klikněte na tlačítko Hotovo vyučující.
+    - Toto je příklad, který systém nezná města. 
+5. Klikněte na výsledek akce
+6. Vyberte "Toto město $CityUknown nevím. Město, které si přejete? ".
+7. Zadejte "new york".
+8. Klikněte na výsledek akce.
+    - `CityUknown` bylo vymazáno, a `CityResolved` naplnění.
+6. Vyberte "jsi $City a můžu vyřešit, který $CityResolved".
+7. Klikněte na Hotovo výuky.
 
 ![](../media/tutorial10_bigapple.PNG)
 

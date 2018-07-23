@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 77bfaad4909927d277d856a6b79f9f4c871b4f35
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: a104578b0c010ea7ded99e6bf24e4daa30526318
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39159748"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39187315"
 ---
 # <a name="azure-marketplace-and-appsource-publishing-guide"></a>Azure Marketplace a AppSource Průvodce publikováním
 
@@ -71,10 +71,9 @@ Poté co [odeslání vašeho řešení](https://azuremarketplace.microsoft.com/s
 Další informace o výhodách Microsoft Go-To-Market a způsobech rozvoje vašeho podnikání na Marketplace najdete v tématu [Microsoft Go-To-Market Services](https://partner.microsoft.com/reach-customers/gtm).
 
 ## <a name="storefronts"></a>Prodejní místa
-Ve storu můžete seznam nabídek, povolit zkušební verze a provádět transakce přímo se zákazníky Microsoftu. Společnost Microsoft poskytuje různé prodejní místa na webu Marketplace a AppSource. Podrobné informace a porovnání prodejní místa naleznete v následujících článcích:
-*   [Porovnání AppSource a na webu Azure Marketplace](./comparing-appsource-azure-Marketplace.md)
-*   [Rozvoj podnikání s využitím AppSource](./grow-your-business-with-appsource.md)
-*   [Rozvíjejte své podnikání díky Azure Marketplace](./grow-your-business-with-azure-Marketplace.md)
+Ve storu můžete seznam nabídek, povolit zkušební verze a provádět transakce přímo se zákazníky Microsoftu. Společnost Microsoft poskytuje různé prodejní místa na webu Marketplace a AppSource. Podrobností výhod jednotlivých prodejních míst naleznete na následující odkaz:
+* [Porovnání AppSource a Azure Marketplace](https://docs.microsoft.com/en-us/azure/marketplace/comparing-appsource-azure-marketplace)
+* [Rozvíjejte své podnikání na Marketplace](https://docs.microsoft.com/en-us/azure/marketplace/grow-your-business-with-azure-marketplace)
 
 Prodejní místa pomáhá zákazníkům najít, zkoušet a nakupovat aplikace a služby, které zrychlení digitální transformace zákazníka. Prodejní místa umožňují rozvoji vašeho podnikání zvýšením přístupu k Microsoft zákazníkům a partnerům.
  
@@ -88,13 +87,12 @@ Každé z prodejních míst zajišťuje specializované možnosti vám pomůžou
 | Typ nabídky | <ul><li>Konzultační služby</li><li>Kontaktujte mě</li><li>Bezplatná zkušební verze</li><li>Získat</li><li>Testovací verze</li></ul> | <ul><li>Aplikace Azure: spravované aplikace</li><li>Aplikace Azure: Šablona řešení</li><li>Konzultační služby</li><li>Kontaktujte mě</li><li>Zkušební verze</li><li>Virtuální počítač</li></ul> |
 | V aplikaci prostředí můžete uživatelům udělit přístup k aplikacím a službám v rámci vaší aplikace | <ul><li>Dynamics 365</li><li>Office 365</li><li>Klientské aplikace Office</li><li>Power BI</li></ul> | <ul><li>Azure Portal</li><li>Azure Resource Manager</li><li>Azure CLI</li></ul> |
 
-## <a name="publish-in-a-storefront-in-the-marketplace"></a>Publikovat ve storu na webu Marketplace
+## <a name="publish-in-the-marketplace"></a>Publikovat na webu Marketplace
 Tyto články vám můžou pomoct při o možnosti publikování v AppSource a webu Azure Marketplace.
 
 Stát vydavatelem na prodejních míst na webu Marketplace ve třech snadných krocích:
-1. [Určení publikování řešení](./determine-your-listing-type.md)
-2. [Stát vydavatelem na webu Marketplace prodejních míst](./become-publisher.md)
-3. [Typ seznamu pochopit požadavky](./listing-type-requirements.md) 
+1. [Určení, která možnost publikování](https://review.docs.microsoft.com/en-us/azure/marketplace/determine-your-listing-type?branch=pr-en-us-47093)
+2. [Stát vydavatelem na webu Marketplace prodejních míst](https://review.docs.microsoft.com/en-us/azure/marketplace/become-publisher?branch=pr-en-us-47093)
 
 ## <a name="publishing-checklists"></a>Kontrolní seznamy pro publikování
 *   [Publikování kontrolní seznam pro AppSource](publishing-checklist-appsource.md)

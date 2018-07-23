@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 02/15/2018
 ms.author: cahann
 ms.reviewer: v-geberr
-ms.openlocfilehash: 0dc1dbf32114e989fd2b9c2be61bd531f7b5e839
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: f7abf6d8a9f0fe18017fe5c54801ac0d3b6c379e
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37347393"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39170779"
 ---
 # <a name="prebuilt-entities"></a>Předem připravených entit
 
@@ -37,7 +37,7 @@ Služba LUIS zahrnuje sadu předem připravených entit pro rozpoznávání bě�
 ## <a name="use-a-prebuilt-number-entity"></a>Použití předem připravených číselnou entitu
 Předem připravených entit je obsažen ve vaší aplikaci, jeho předpovědi jsou zahrnuty v publikované aplikaci. Chování předem připravených entit je předem vytrénovaných a **nelze** upravit. Postupujte podle těchto kroků, abyste viděli, jak funguje předem připravených entit:
 
-1. Přidat **číslo** entity do aplikace, pak [Train](interactive-test.md) a [publikovat](luis-how-to-publish-app.md) aplikace.
+1. Přidat **číslo** entity do aplikace, pak [Train](luis-interactive-test.md) a [publikovat](luis-how-to-publish-app.md) aplikace.
 2. Klikněte na adresu URL koncového bodu v **publikovat aplikaci** stránky ve webovém prohlížeči otevřete koncový bod služby LUIS. 
 3. Připojte utterance na adresu URL, který obsahuje číselný výraz. Například můžete zadat v `buy two plane ticktets`a zjistit, který identifikuje LUIS `two` jako `builtin.number` entity a identifikuje `2` jako svou hodnotu v `resolution` pole. `resolution` Pole pomáhá při řešení čísel a dat pro kanonický tvar, který je pro klientskou aplikaci používat. 
 
@@ -70,7 +70,7 @@ Následující příklad ukazuje služby luis, odpověď ve formátu JSON, kter�
 ## <a name="use-a-prebuilt-datetimev2-entity"></a>Použití předem připravených datetimeV2 entity
 **DatetimeV2** předem připravených entit rozpozná data, časy, rozsahy kalendářních dat a dob trvání. Použijte následující postup v tématu Jak `datetimeV2` předem připravených entit funguje:
 
-1. Přidat **datetimeV2** entity do aplikace, pak [Train](interactive-test.md) a [publikovat](luis-how-to-publish-app.md) aplikace.
+1. Přidat **datetimeV2** entity do aplikace, pak [Train](luis-interactive-test.md) a [publikovat](luis-how-to-publish-app.md) aplikace.
 2. Klikněte na adresu URL koncového bodu v **publikovat aplikaci** stránky ve webovém prohlížeči otevřete koncový bod služby LUIS. 
 3. Připojte utterance na adresu URL, který obsahuje konkrétní období. Například můžete zadat v `book a flight tomorrow`a zjistit, který identifikuje LUIS `tomorrow` jako `builtin.datetimeV2.date` entity a identifikuje zítřejší datum jako hodnotu v `resolution` pole. 
 

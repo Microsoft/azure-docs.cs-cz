@@ -25,7 +25,7 @@
       href: azure-stack-solution-pipeline.md
     - name: Konfigurace hybridní Cloudová identita
       href: azure-stack-solution-hybrid-identity.md
-    - name: Konfigurace připojení hybridního cloudu
+    - name: Konfigurace připojení k hybridní cloud
       href: azure-stack-solution-hybrid-connectivity.md
     - name: Přihlášení k odběru nabídky
       href: azure-stack-subscribe-services.md
@@ -35,13 +35,13 @@
   items:
     - name: Použití portálu Azure Stack
       href: azure-stack-use-portal.md
-    - name: Použití zásobníku rozhraní API v Azure
+    - name: Použití rozhraní API v Azure stacku
       href: azure-stack-rest-api-use.md
     - name: "Zabezpečení a\_dodržování předpisů"
       items:
         - name: Použití řízení přístupu na základě rolí
           href: azure-stack-manage-permissions.md
-        - name: Použít objekty služby
+        - name: Použít instanční objekty
           href: Azure-stack-create-service-principals.md
     - name: Použití služeb
       items:
@@ -110,14 +110,15 @@
         - name: Nastavení vývojového prostředí
           items:
             - name: Instalace Azure Stack PowerShellu
-              href: 'https://docs.microsoft.com/azure/azure-stack/user/azure-stack-powershell-install'
-            - name: Stažení nástroje Azure zásobníku
+              href: ../azure-stack-powershell-install.md
+              maintainContext: true
+            - name: Stáhnout nástroje pro Azure Stack
               href: azure-stack-powershell-download.md
             - name: Konfigurace PowerShellu – uživatel
               href: azure-stack-powershell-configure-user.md
             - name: Instalace sady Visual Studio
               href: azure-stack-install-visual-studio.md
-            - name: Pomocí profilů verze rozhraní API
+            - name: Použití profilů verzí API
               href: azure-stack-version-profiles.md
               items:
                 - name: PowerShell
@@ -130,9 +131,9 @@
                   href: azure-stack-version-profiles-ruby.md
                 - name: Python
                   href: azure-stack-version-profiles-python.md
-                - name: Rozhraní API podporuje profily poskytovatele prostředků
+                - name: Poskytovatel prostředků rozhraní API podporuje profily
                   href: azure-stack-profiles-azure-resource-manager-versions.md
-        - name: Použití modulu zásad Azure zásobníku
+        - name: Použití modulu zásad Azure Stack
           href: azure-stack-policy-module.md
         - name: Použití šablon
           items:
@@ -148,7 +149,7 @@
               href: azure-stack-deploy-template-powershell.md
             - name: Nasazení s využitím sady Visual Studio
               href: azure-stack-deploy-template-visual-studio.md
-    - name: Povolit poskytovatele cloudové služby
+    - name: Povolit poskytovatele cloudových služeb
       href: azure-stack-csp-enable-billing-usage-tracking.md
 - name: Referenční informace
   items:
@@ -160,15 +161,15 @@
   items:
     - name: Dokumentace operátora k Azure Stacku
       href: /azure/azure-stack/
-    - name: ASDK dokumentace
+    - name: Dokumentace ke službě ASDK
       href: /azure/azure-stack/asdk/
 - name: Zdroje a prostředky
   items:
-    - name: Přehled Azure zásobníku
+    - name: Plán služby Azure Stack
       href: 'https://azure.microsoft.com/roadmap/?tag=azure-stack'
-    - name: Azure fórum MSDN zásobníku
+    - name: Fóru pro Azure Stack MSDN
       href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStack'
-    - name: Azure zásobníku dokumentace zpětné vazby
+    - name: Váš názor na Azure Stack dokumentace
       href: 'https://feedback.azure.com/forums/344565-azure-stack?category_id=160275'
     - name: Informace o cenách
       href: 'https://azure.microsoft.com/overview/azure-stack/how-to-buy/'

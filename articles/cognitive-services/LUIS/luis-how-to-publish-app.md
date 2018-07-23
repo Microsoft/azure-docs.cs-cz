@@ -10,17 +10,17 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr;
-ms.openlocfilehash: 43a26f9e81b788c2a110c24bf2e02c56c0714f1e
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: d579ba8913eeb6ce22e277dab454ba7e3b628703
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38988832"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171928"
 ---
 # <a name="publish-your-trained-app"></a>Publikování trénovaného aplikace
 Po dokončení vytváření a testování vaší aplikace LUIS, publikujte ho. Po publikování aplikace na stránce publikování se zobrazí všechny přidružené HTTP [koncové body](luis-glossary.md#endpoint). Tyto koncové body za [oblasti](luis-reference-regions.md) a za [klíč](luis-how-to-manage-keys.md), pak jsou integrované do libovolné aplikace klienta, chatovací robot nebo back-endu. 
 
-Vždy můžete [testování](interactive-test.md) vaši aplikaci před publikováním. 
+Vždy můžete [testování](luis-interactive-test.md) vaši aplikaci před publikováním. 
 
 ## <a name="production-and-staging-slots"></a>Produkční a přípravné sloty
 Můžete publikovat aplikaci tak, aby **přípravný slot** nebo **produkčního slotu**. Pomocí dvou publikování sloty díky tomu budete mít dvě různé verze s koncovými body publikované nebo stejnou verzi na dvou různých koncových bodů. 
@@ -154,4 +154,4 @@ Testování publikované koncový bod tak, že vyberete na adresu URL v **koncov
 ## <a name="next-steps"></a>Další postup
 
 * Zobrazit [spravovat klíče](./luis-how-to-manage-keys.md) přidat klíče aplikace LUIS, a další informace o mapování klíčů do oblasti.
-* Zobrazit [trénování a testování vaší aplikace](interactive-test.md) pokyny o tom, jak v testovací konzole testování publikované aplikace.
+* Zobrazit [trénování a testování vaší aplikace](luis-interactive-test.md) pokyny o tom, jak v testovací konzole testování publikované aplikace.

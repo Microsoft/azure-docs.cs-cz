@@ -1,6 +1,6 @@
 ---
-title: Funkce zabezpečení služby Azure SQL Database
-description: Tento článek poskytuje že obecný popis Azure SQL Database chrání data zákazníků v Azure.
+title: Funkce zabezpečení Azure SQL Database
+description: Tento článek obsahuje obecný popis, jak Azure SQL Database chrání zákaznických dat v Azure.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -14,95 +14,95 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: cca8febb004029b13b0df09a047da701c4528e8e
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: cce1ff1102c42bd1627caeba7b2c86432b228607
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37102226"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39170850"
 ---
-# <a name="microsoft-azure-sql-database-security-features"></a>Zabezpečení funkce Microsoft Azure SQL Database    
-Microsoft Azure SQL Database nabízí služba relační databáze v Azure. K ochraně dat zákazníků a poskytují spolehlivé zabezpečení funkce, které zákazníci očekávají služba relační databáze, SQL Database má svou vlastní sadu funkce zabezpečení. Tyto možnosti stavějí ovládacích prvků, které se dědí z Azure.
+# <a name="azure-sql-database-security-features"></a>Funkce zabezpečení Azure SQL Database    
+Azure SQL Database poskytuje relační databázovou službu v Azure. Pro ochranu dat zákazníků a poskytuje silné zabezpečení funkce, které zákazníci očekávat od služba relační databáze, databáze SQL má svou vlastní sadu možností zabezpečení. Tyto možnosti jsou postavené ovládací prvky, které jsou zděděny z Azure.
 
 ## <a name="security-capabilities"></a>Možnosti zabezpečení
 
-### <a name="usage-of-tabular-data-stream-tds-protocol"></a>Použití protokolu datový proud TDS (Tabular Data)
-Microsoft Azure SQL Database podporuje jenom protokol TDS, který vyžaduje databáze byla přístupná jenom přes výchozí port z TCP/1433.
+### <a name="usage-of-the-tds-protocol"></a>Využití protokolu TDS.
+Azure SQL Database podporuje pouze protokol stream (TDS) tabulková data, která vyžaduje, aby databáze byla přístupná přes pouze výchozí port z protokol TCP/1433.
 
-### <a name="microsoft-azure-sql-database-firewall"></a>Brány Firewall pro Microsoft Azure SQL Database
-K ochraně dat zákazníků, Microsoft Azure SQL Database zahrnuje funkce brány firewall, který ve výchozím nastavení brání veškerý přístup k databázi SQL serveru, jak je uvedeno níže.
+### <a name="azure-sql-database-firewall"></a>Brána firewall služby Azure SQL Database
+Azure SQL Database pomáhá chránit zákaznická data, obsahuje funkci brány firewall, která ve výchozím nastavení brání veškerému přístupu k databázi SQL serveru, jak je znázorněno níže.
 
-![Azure SQL Database brány firewall][1]
+![Brána firewall služby Azure SQL Database][1]
 
-Brány firewall poskytuje možnost omezit umožní pro přesná kontrola zákazníkům zadejte rozsahy přijatelné adres IP adresy. Brána firewall uděluje přístup na základě původní IP adresy každého požadavku.
+Brány firewall můžete omezit adresy, které zákazníkům umožňuje podrobnou kontrolu určit rozsahy přípustných IP adres. Brána firewall uděluje přístup na základě původní IP adresy každé žádosti.
 
-Konfigurace brány firewall, můžete to udělat pomocí portálu pro správu nebo programově pomocí Microsoft Azure SQL Database Management REST API. Microsoft Azure SQL Database brány firewall ve výchozím nastavení brání veškerý přístup TDS zákazníka k databázím SQL Microsoft Azure. Přístup musí být nakonfigurovaný pomocí seznamů řízení přístupu tak, aby povolovala připojení Microsoft Azure SQL Database zdrojové a cílové adresy Internet, protokoly a čísla portů.
+Zákazníky můžete dosáhnout konfigurace brány firewall pomocí portálu pro správu nebo programově pomocí rozhraní REST API Azure SQL Database Management. Brány firewall Azure SQL Database ve výchozím nastavení brání všech zákazníků TDS přístup do instance databáze Azure SQL. Zákazníkům musíte nakonfigurovat přístup pomocí seznamů řízení přístupu (ACL) tak, aby povolovala připojení k databázi SQL Azure ve zdrojové a cílové adresy internet, protokoly a čísla portů.
 
 ### <a name="dosguard"></a>Dosguardu
-Odmítnutí služby (DoS) útoky jsou sníženy služby SQL Database brány názvem Dosguardu. Dosguardu aktivně sleduje neúspěšných přihlášení z IP adres. Pokud je v časovém období několik neúspěšných přihlášení z konkrétní IP adresu, IP adresa je blokovaný přístup k veškeré prostředky ve službě pro předem definované časové období.
+Útoky na dostupnost služby (DoS) jsou sníženy brány služby SQL Database zvané Dosguardu. Dosguardu aktivně sleduje neúspěšných přihlášení z IP adres. Pokud v časovém období několik neúspěšných přihlášení z konkrétní adresy IP, IP adresa má zablokovaný přístup k žádné prostředky ve službě pro předem definované časové období.
 
-Kromě výše uvedeného také provádí bránu Microsoft Azure SQL Database:
+Kromě toho provádí brána Azure SQL Database:
 
-- Zabezpečený kanál schopností jednání implementovat TDS FIPS 140-2 ověřit šifrované připojení při připojování k serveru databáze.
-- Stavová kontroly paketů TDS při přijímání připojení od klientů. Brány ověří informace o připojení a předá na pakety TDS příslušný fyzický server na základě názvu databáze zadaná v připojovacím řetězci.
+- Funkce jednání zabezpečený kanál pro implementaci TDS FIPS 140-2 ověřit šifrovaná připojení při připojování k databázovým serverům.
+- Stavové TDS kontroly paketů při přijímá připojení od klientů. Brány ověří informace o připojení a předá TDS pakety k příslušnému fyzického serveru na základě názvu databáze, která je zadaná v připojovacím řetězci.
 
-Zastřešující Princip pro zabezpečení sítě nabídky Microsoft Azure SQL Database je povolit pouze připojení a komunikaci, která je potřeba povolit službu k provozu. Ve výchozím nastavení jsou blokovány všechny ostatní porty, protokoly a připojení. Sítě VLAN a seznamy ACL se používá k omezení síťové komunikace zdrojové a cílové sítě, protokoly a čísla portů.
+Zastřešujícího zásady zabezpečení sítě nabídky Azure SQL Database je umožnit pouze připojení a komunikaci, která je potřeba povolit provoz služby. Ve výchozím nastavení jsou blokovány všechny ostatní porty, protokoly a připojení. Virtuální místní sítě (VLAN) a seznamy řízení přístupu se používají k omezení síťové komunikace mezi zdrojovou a cílovou sítí, protokoly a čísla portů.
 
-Zahrnout schválené mechanismy pro implementaci seznamy ACL založené na síti: seznamy řízení přístupu na směrovačích a nástroje pro vyrovnávání zatížení. Tyto jsou spravovány sítí Azure, hosta virtuálního počítače brány firewall a pravidla brány firewall brány Microsoft Azure SQL Database, která jsou nakonfigurované zákazník.
+Mechanismy, které jsou schváleny pro implementaci seznamů ACL založených na síti zahrnují seznamy ACL na směrovačích a nástroje pro vyrovnávání zatížení. Tyto mechanismy se spravují pomocí sítě Azure, brána firewall hosta virtuálního počítače a pravidla brány firewall brány Azure SQL Database, které jsou nakonfigurované zákazníka.
 
-## <a name="data-segregation-and-customer-isolation"></a>Data oddělení a k zákaznickým izolace
-Azure produkční sítě strukturovaná tak, aby komponenty veřejně přístupná system jsou oddělené od interním prostředkům. Fyzické a logické hranice existovat mezi webové servery, které poskytuje přístup k portálu Azure veřejné a základní virtuální infrastruktura Azure, kde jsou umístěny zákazníka instancemi aplikace a data zákazníků.
+## <a name="data-segregation-and-customer-isolation"></a>Izolace dat oddělení a zákazníků
+Produkční sítě Azure je strukturována tak, aby veřejně přístupné součásti jsou odděleni od interním prostředkům. Hranice fyzická a logická existují mezi webové servery, které poskytují přístup k webu Azure portal veřejnou a základní virtuální infrastrukturu Azure, kde jsou umístěné zákazníka instancemi aplikace a data zákazníků.
 
-Všechny veřejně dostupné informace o správě v rámci Azure produkční sítě. Produkční sítě podléhá dvoufaktorové ověřování a mechanismy ochrany hranic, používá funkci brány firewall a zabezpečení nastavení popsané v předchozí části a používá funkce izolace dat dole uvedených položek.
+Veškeré informace veřejně přístupné spravovanou v rámci produkční sítě Azure. Produkční sítě je v souladu s dvoufaktorovým ověřováním a hranice mechanismy ochrany, použije sada funkcí brány firewall a zabezpečení, je popsaný v předchozí části, který používá funkce izolace dat, jak je uvedeno v dalších částech.
 
-### <a name="unauthorized-systems-and-isolation-of-fc"></a>Neoprávněné systémy a izolace FC
-Vzhledem k tomu, že FC je centrální orchestrator prostředků infrastruktury Microsoft Azure, jsou významné ovládací prvky zavedené zmírnit hrozby, zejména z potenciálně ohroženými DM v aplikacích zákazníka. FC nerozpoznal žádný hardware, jehož informace o zařízení (například adresy MAC) není v rámci FC předinstalována. Servery DHCP, na FC nakonfigurovali seznamy adres MAC, které jsou ochotni spouštěcí uzly. I v případě, že neoprávněným systémy připojené, jejich nejsou součástí infrastruktury inventáře a proto připojen nebo oprávnění ke komunikaci se všechny systémy v rámci prostředků infrastruktury inventáře. Tím se snižuje riziko neoprávněného systémy komunikaci s FC a získání přístupu k síti VLAN a Azure.
+### <a name="unauthorized-systems-and-isolation-of-the-fc"></a>Neoprávněné systémy a izolaci FC
+Protože kontroler prostředků infrastruktury (FC) je centrálního orchestrátora prostředky infrastruktury Azure, významné ovládací prvky jsou na místě ke zmírnění hrozeb, zejména z potenciálně napadeného FAs v rámci zákaznických aplikací. FC nebyl rozpoznán žádný hardware, jehož informace o zařízení (například adresy MAC) není předem načíst v rámci FC. Servery DHCP na FC nakonfigurovali seznamy adres MAC z uzlů, které jsou natolik, abyste spuštění. I v případě neoprávněného systémy jsou připojené, jejich nejsou součástí inventář prostředků infrastruktury a proto připojený nebo oprávnění ke komunikaci u každého systému v rámci inventář prostředků infrastruktury. Tím se snižuje riziko neoprávněného systémů komunikuje FC a získání přístupu k síti VLAN a Azure.
 
 ### <a name="vlan-isolation"></a>Izolace sítě VLAN
 Produkční sítě Azure je logicky rozdělen na tři primární sítě VLAN:
 
-- Hlavní sítě VLAN – propojení uzlů nedůvěryhodné zákazníka
-- Sítě VLAN FC – obsahuje důvěryhodné FCs a podporuje systémy
-- Zařízení sítě VLAN – obsahuje důvěryhodné sítě a jiných zařízeních infrastruktury
+- Hlavní sítě VLAN: propojení uzlů nedůvěryhodné zákazníka.
+- Síť VLAN FC: Obsahuje důvěryhodné FCs a podpůrných systémů.
+- Zařízení sítě VLAN: obsahuje důvěryhodné sítě a jiných zařízeních infrastruktury.
 
 ### <a name="packet-filtering"></a>Filtrování paketů
-IPFilter a software brány firewall, implementuje na kořenové operačního systému a hostovaného operačního systému uzlů vynutit omezení připojení a zabránit neoprávněným provoz mezi virtuálními počítači.
+IPFilter software brány firewall, které jsou implementovány v kořenovém operačním systému a hostovaného operačního systému uzlů vynutit omezení připojení a zabránit neoprávněné přenosy mezi virtuálními počítači.
 
-### <a name="hypervisor-root-os-and-guest-vms"></a>Hypervisor, kořenové operačního systému a hostovaný virtuální počítače
-Izolace kořenové operačního systému z virtuálních počítačů hostovaného a hostovaný virtuální počítače od sebe navzájem spravuje hypervisoru a kořenové operačního systému.
+### <a name="hypervisor-root-os-and-guest-vms"></a>Hypervisor, kořenové operačního systému a virtuálních počítačů hosta
+Izolace kořenové operačního systému z virtuálních počítačů hosta a virtuální počítače hosta od sebe spravuje hypervisoru a kořenové operačního systému.
 
 ### <a name="types-of-rules-on-firewalls"></a>Typy pravidla brány firewall
-Pravidlo je definován jako:
+Pravidlo je definována takto:
 
-{Security Response Center (Src), Src Port, cílové IP adresy, cílový Port cílový protokol IP, vstupně -výstupnímu Stateful/Stateless, stavová toku vypršení časového limitu}.
+{Security Response Center (Src), Src Port, cílové IP, cílový Port cíl protokolu IP, příchozí/odchozí tok stavové a bezstavové, stavové vypršení časového limitu}.
 
-SYN pakety jsou povoleny pouze v případě, že umožňuje některého z pravidel příchozí nebo odchozí. Pro TCP Microsoft Azure používá bezstavové pravidla, kde se zásadou je, že pouze umožňuje všechny pakety bez SYN do nebo z virtuálního počítače. Místní zabezpečení je odolný ignorování jiný SYN, pokud nebylo nikdy paket SYN dříve zásobníkem žádné hostitele. Samotný protokol TCP je stavová a v kombinaci s bezstavové SYNbased pravidla, která patří dosahuje celkového chování stavová implementace.
+Pakety synchronní nečinný znak (SYN) jsou povoleny pouze v případě, že některá pravidla to umožňuje snížení nebo navýšení kapacity. Pro protokol TCP Azure využívá Bezstavová pravidla, kde se zásadou je, že všechny pakety jiných SYN umožňuje do nebo z virtuálního počítače. Místní zabezpečení je odolné bez SYN ignorovat, pokud ji ještě před tím nezobrazil paket SYN jakoukoli sadu hostitelů. Samotný protokol TCP je stavový a v kombinaci s Bezstavová pravidla na základě SYN dosahuje celkové chování stavové implementace.
 
-Pro protokol UDP (User Datagram), Microsoft Azure používá stavová pravidla. Pokaždé, když paket UDP odpovídá pravidlu, vytvoří se zpětné toku v opačným směrem. Tento tok má integrovanou vypršení časového limitu.
+Pro protokol UDP (User Datagram), Azure využívá stavové pravidlo. Pokaždé, když se paket UDP, který odpovídá pravidlu, vytvoří zpětný tok v opačném směru. Tento tok má integrované vypršení časového limitu.
 
-Je zodpovědností nastavení své vlastní brány firewall v Microsoft Azure poskytuje zákazníků. Zde je možné definovat pravidla pro příchozí a odchozí přenosy zákazníků.
+Zákazníci odpovídají za své vlastní brány firewall na Azure poskytuje nastavení. Tady zákazníci mají možnost definovat pravidla pro příchozí a odchozí provoz.
 
-### <a name="production-configuration-management"></a>Produkční Configuration Management.
-Standardní konfigurace zabezpečení se spravují týmů příslušné operace ve službě Azure a Microsoft Azure SQL Database. Všechny změny konfigurace produkční systémy jsou zdokumentovaný a sledovaný prostřednictvím centrální sledování systému. Prostřednictvím centrální sledování systému se sledují změny softwaru a hardwaru. Změny v sítích týkající se řízení přístupu jsou sledovány pomocí seznamu ACL Management Service (AMS).
+### <a name="production-configuration-management"></a>Konfigurace řízení výroby
+Standardní konfigurace zabezpečeného spravuje příslušných provozní týmy v Azure a Azure SQL Database. Všechny změny konfigurace na provozní systémy jsou zdokumentované a sledovat prostřednictvím centrální sledovacím systémem. Softwarové a hardwarové změny jsou sledovány pomocí centrální sledování systému. Změny v sítích, které se týkají ACL jsou sledovány pomocí služby service management seznamu ACL.
 
-Všechny změny konfigurace Microsoft Azure se vývoji a testování v testovacím prostředí; a následně nasazené v provozním prostředí. Software sestavení jsou kontrolovány v rámci testování. Jako součást kritérií pro položku seznamu úkolů jsou kontrolovány kontroly zabezpečení a ochrany osobních údajů. Změny jsou nasazeny v naplánovaných intervalech tým příslušného nasazení. Verze jsou zkontrolovány a podepisuje pracovníky team příslušných nasazení před jejich nasazením v produkčním prostředí.
+Všechny změny konfigurace do Azure jsou vyvíjeny a testování v testovacím prostředí, a poté jsou nasazené v produkčním prostředí. Softwarová sestavení jsou kontrolovány jako součást testování. Kontroly zabezpečení a ochrany osobních údajů jsou kontrolovány jako součást kritérií kontrolní seznam pro položku. Změny jsou nasazeny v naplánovaných intervalech týmem příslušného nasazení. Verze jsou zkontrolovány a proběhlo schválení pracovníky týmu příslušných nasazení před jejich nasazením do produkčního prostředí.
 
-Změny jsou monitorovat úspěch. V případě selhání změna je vrácena zpět do původního stavu nebo opravu hotfix je nasazená k vyřešení selhání pomocí schválení určených osob. Zdroj skladu, Git, sady TFS, MDS, závodníky, Azure Security Monitoring (ASM), FC a platformou WinFabric slouží k centrálně spravovat, použití a ověřte nastavení konfigurace v Azure virtuální prostředí.
+Změny jsou sledovány pro úspěch. V případě selhání změny se vrátí zpět do předchozího stavu nebo opravu hotfix je nasazený k vyřešení selhání pomocí schválení určeným pracovníků. Depot zdroje, Git, TFS, Master Data Services (MDS), spouštěčů, monitorování zabezpečení Azure, FC a platformu WinFabric umožňují centrálně spravovat, použití a ověřte nastavení konfigurace v Azure virtuální prostředí.
 
-Podobně mají změny hardwaru a sítě navázat postup ověření vyhodnotit jejich dodržování požadavky na sestavení. Verze jsou zkontrolovány a oprávnění prostřednictvím koordinované změnu poradní Tabule (soubor CAB) příslušných skupin napříč zásobníku.
+Podobně změny hardwaru a sítě zavedli kroky ověření vyhodnotit jejich splňuje požadavky na sestavení. Verze jsou zkontrolovány a oprávnění prostřednictvím koordinovat poradní výbor změn (CAB) z příslušných skupin napříč zásobníku.
 
 ## <a name="next-steps"></a>Další postup
-Další informace o funkci Microsoft pro zabezpečení infrastruktury Azure najdete v tématu:
+Další informace o Microsoft nemá pro zabezpečení infrastruktury Azure, najdete v tématech:
 
-- [Azure zařízení, místní a fyzické zabezpečení](azure-physical-security.md)
+- [Zařízení Azure, místním prostředí a fyzické zabezpečení](azure-physical-security.md)
 - [Dostupnost infrastruktury Azure](azure-infrastructure-availability.md)
 - [Součásti systému Azure informace a hranice](azure-infrastructure-components.md)
 - [Architektura sítě Azure](azure-infrastructure-network.md)
 - [Produkční sítě Azure](azure-production-network.md)
-- [Azure produkční operace a Správa](azure-infrastructure-operations.md)
+- [Operace Azure výroby a správu](azure-infrastructure-operations.md)
 - [Monitorování infrastruktury Azure](azure-infrastructure-monitoring.md)
-- [Integritu infrastruktury Azure](azure-infrastructure-integrity.md)
-- [Ochrana dat zákazníka v Azure](azure-protection-of-customer-data.md)
+- [Integrity infrastruktury Azure](azure-infrastructure-integrity.md)
+- [Ochrana dat zákazníků Azure](azure-protection-of-customer-data.md)
 
 <!--Image references-->
 [1]: ./media/azure-infrastructure-sql/sql-database-firewall.png

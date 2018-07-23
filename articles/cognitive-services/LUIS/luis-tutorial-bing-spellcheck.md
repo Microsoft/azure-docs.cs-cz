@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 02/27/2018
 ms.author: v-geberr
-ms.openlocfilehash: e7bf447dafecf090f610f670539ca4673827953a
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 8d86bf3974cd11b644f59799e3d6140b46899244
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37343974"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173822"
 ---
 # <a name="correct-misspelled-words-with-bing-spell-check"></a>Správné chybně napsaná slova s kontrolu pravopisu Bingu
 
@@ -30,7 +30,7 @@ Vaše [první klíč API kontrola pravopisu Bingu v7](https://azure.microsoft.co
 ## <a name="create-endpoint-key"></a>Vytvoření klíče koncového bodu
 Je-li klíč volný vypršela platnost, vytvořte klíč koncového bodu.
 
-1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
 
 2. Vyberte **vytvořit prostředek** v levém horním rohu.
 
@@ -57,7 +57,7 @@ Je-li klíč volný vypršela platnost, vytvořte klíč koncového bodu.
 10. První klíč si zkopírujte. Potřebujete jenom jeden ze dvou klíčů. 
 
 ## <a name="using-the-key-in-luis-test-panel"></a>V panelu testu LUIS pomocí klíče
-Existují dvě místa v LUIS používat klíč. První je v [test panelu](interactive-test.md#view-bing-spell-check-corrections-in-test-panel). Klíč se neuloží do LUIS, ale místo toho je proměnná relace. Je potřeba nastavit klíč pokaždé, když chcete, aby panelu testu použít službu API kontrola pravopisu Bingu v7 utterance. Zobrazit [pokyny](interactive-test.md#view-bing-spell-check-corrections-in-test-panel) v panelu testu pro nastavení klíče.
+Existují dvě místa v LUIS používat klíč. První je v [test panelu](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel). Klíč se neuloží do LUIS, ale místo toho je proměnná relace. Je potřeba nastavit klíč pokaždé, když chcete, aby panelu testu použít službu API kontrola pravopisu Bingu v7 utterance. Zobrazit [pokyny](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel) v panelu testu pro nastavení klíče.
 
 ## <a name="adding-the-key-to-the-endpoint-url"></a>Přidávání klíče do adresu URL koncového bodu
 Dotaz koncový bod, musí klíč předávaný do parametrů řetězce dotazu pro každý dotaz, že který chcete použít opravy pravopisu. Můžete mít chatovací robot, který volá LUIS nebo koncový bod rozhraní API LUIS může volat přímo. Bez ohledu na to, jak se nazývá koncový bod musí obsahovat každého volání požadované informace pro opravy pravopisu fungovala správně.

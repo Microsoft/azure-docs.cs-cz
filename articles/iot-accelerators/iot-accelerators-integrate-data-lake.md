@@ -8,12 +8,12 @@ ms.date: 04/29/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 5ba9b5534e986be1cbe55043a9acdd981d2ed7fd
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: a918866ff5e206ea4d2dedde2711424924a478fe
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971733"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39188060"
 ---
 # <a name="integrate-the-remote-monitoring-solution-with-azure-data-lake-store"></a>Při integraci řešení vzdáleného monitorování Azure Data Lake Store
 
@@ -25,7 +25,7 @@ V tomto návodu použijete úlohy Azure Stream Analytics pro streamování dat z
 
 Pokud chcete dokončit tento návod, budete potřebovat následující:
 
-* [Nasazení akcelerátoru řešení vzdáleného monitorování](iot-accelerators-remote-monitoring-deploy.md).
+* [Nasazení akcelerátoru řešení vzdáleného monitorování](quickstart-remote-monitoring-deploy.md).
   * Řešení vzdáleného monitorování bude nasazení služby IoT hub a úlohy Azure Stream Analytics používá v tomto článku do vašeho předplatného Azure.
 * [Nasazení Azure Data Lake Store](../data-lake-store/data-lake-store-get-started-portal.md)
   * Vaše Data Lake Store musí být nasazené do stejné oblasti jako vaše řešení vzdálené monitorování.

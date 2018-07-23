@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 07/04/2017
 ms.author: dobett
-ms.openlocfilehash: 96cad0fc7f387c5f0cb14996ae6ac015c104b81d
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: b8884cafbf250b9d7a88219b5647addafee9904a
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38619433"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39186896"
 ---
 # <a name="get-started-with-device-twins-java"></a>Začínáme s dvojčaty zařízení (Java)
 
@@ -350,8 +350,8 @@ V tomto kurzu jste nakonfigurovali novou službu IoT Hub na webu Azure Portal a 
 
 Pomocí následujících zdrojích se dozvíte jak:
 
-* Odesílání telemetrie ze zařízení s [Začínáme se službou IoT Hub](iot-hub-java-java-getstarted.md) kurzu.
-* Ovládací prvek zařízení interaktivně (například zapnutí ventilátor z aplikace řízené uživatelem) [použití přímých metod](iot-hub-java-java-direct-methods.md) kurzu.
+* Odesílání telemetrie ze zařízení s [Začínáme se službou IoT Hub](quickstart-send-telemetry-java.md) kurzu.
+* Ovládací prvek zařízení interaktivně (například zapnutí ventilátor z aplikace řízené uživatelem) [použití přímých metod](quickstart-control-device-java.md) kurzu.
 
 <!-- Images. -->
 [7]: ./media/iot-hub-java-java-twin-getstarted/invoke-method.png

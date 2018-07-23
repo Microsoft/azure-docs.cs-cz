@@ -10,18 +10,18 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: dbbe30377564f40eb654842b8814a4d13864ecfa
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 7e4057db6c7e42755bbaf8d05f68809cca0bc257
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38666979"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39185733"
 ---
 # <a name="connect-intel-edison-to-azure-iot-hub-nodejs"></a>Intel Edison připojit ke službě Azure IoT Hub (Node.js)
 
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
-V tomto kurzu začnete pomocí seznámení se základy práce s Intel Edison. Pak se naučíte bez problémů propojit si zařízení do cloudu s využitím [Azure IoT Hub](iot-hub-what-is-iot-hub.md).
+V tomto kurzu začnete pomocí seznámení se základy práce s Intel Edison. Pak se naučíte bez problémů propojit si zařízení do cloudu s využitím [Azure IoT Hub](about-iot-hub.md).
 
 Sadu ještě nemáte? Spustit [zde](https://azure.microsoft.com/develop/iot/starter-kits)
 

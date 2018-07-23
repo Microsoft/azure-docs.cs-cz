@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: v-geberr
-ms.openlocfilehash: 5babe089575d03db1f6bc0dd3f01bd3b6a5475fe
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: acf328b706a992df03de837ba8837c5810593ae5
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37951895"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173737"
 ---
 # <a name="utterances-in-luis"></a>Projevy v LUIS
 
@@ -47,7 +47,7 @@ Termín core tady není různorodé "počítač". Slibují může stolní počí
 Každý záměr musí mít příklad projevy, alespoň 10 až 15. Pokud máte záměru, který nemá jakékoli projevy příklad, nebudete moci natrénovat LUIS. Pokud máte záměru s velmi málo nebo jeden příklad projevy, nebude LUIS přesně předpovídat záměr. 
 
 ## <a name="add-small-groups-of-10-15-utterances-for-each-authoring-iteration"></a>Přidat malé skupiny 10 až 15 projevy pro každou iteraci pro tvorbu
-V každé iteraci modelu nepřidávejte velké množství projevy. Přidání projevů množství desítky. [Trénování](luis-how-to-train.md), [publikovat](luis-how-to-publish-app.md), a [testování](interactive-test.md) znovu.  
+V každé iteraci modelu nepřidávejte velké množství projevy. Přidání projevů množství desítky. [Trénování](luis-how-to-train.md), [publikovat](luis-how-to-publish-app.md), a [testování](luis-interactive-test.md) znovu.  
 
 Služba LUIS sestavení efektivní modely s projevy, které jsou vybrány pečlivě. Přidání příliš mnoho projevy není cenné, protože zavádí nejasnostem.  
 

@@ -4,14 +4,14 @@ description: Poskytuje přehled o vyhodnocení výpočtů ve službě Azure Migr
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/05/2018
+ms.date: 07/20/2018
 ms.author: raynew
-ms.openlocfilehash: 6d5a0b959b25c0ee294b22b3f4066d006806b524
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 890614133649762788418c538bd22bb6ffc425bf
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920919"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173754"
 ---
 # <a name="assessment-calculations"></a>Výpočty hodnocení
 
@@ -106,10 +106,9 @@ Pro určení velikosti na základě výkonu začíná Azure Migrate disky připo
 Pokud je kritérium určení velikosti *jako v místním nastavení velikosti*, Azure Migrate nebere v úvahu historie výkonu virtuálních počítačů a disků a přiděluje skladovou Položku virtuálního počítače v Azure na základě velikosti přidělené místní. Podobně jako pro určení velikosti disku, vyhledá úložiště typ určený ve vlastnostech posouzení (Standard nebo Premium) a odpovídajícím způsobem doporučuje typ disku. Výchozí typ úložiště je prémiové disky.
 
 ### <a name="confidence-rating"></a>Hodnocení spolehlivosti
+Každý posouzení na základě výkonu ve službě Azure Migrate se přidruží hodnocení spolehlivosti v rozsahu od 1 do 5 hvězdiček (1 hvězdička znamená nejnižší a 5 hvězdiček nejvyšší spolehlivost). Hodnocení spolehlivosti se k posouzení přiřadí na základě dostupnosti datových bodů potřebných pro výpočet posouzení. Hodnocení spolehlivosti posouzení pomáhá odhadnout spolehlivost doporučení velikostí poskytovaných službou Azure Migrate. Hodnocení spolehlivosti se nevztahuje na jako místních posouzení.
 
-Ke každému posouzení ve službě Azure Migrate se přidruží hodnocení spolehlivosti v rozsahu od 1 do 5 hvězdiček (1 hvězdička znamená nejnižší a 5 hvězdiček nejvyšší spolehlivost). Hodnocení spolehlivosti se k posouzení přiřadí na základě dostupnosti datových bodů potřebných pro výpočet posouzení. Hodnocení spolehlivosti posouzení pomáhá odhadnout spolehlivost doporučení velikostí poskytovaných službou Azure Migrate.
-
-Hodnocení spolehlivosti posouzení je užitečnější u posouzení s kritériem velikosti založeným na výkonu. K určení velikosti na základě výkonu potřebuje Azure Migrate data o využití procesoru a paměti virtuálního počítače. Pro každý disk připojený k virtuálnímu počítači navíc potřebuje IOPS a propustnost disku. Podobně u každého síťového adaptéru připojeného k virtuálnímu počítači potřebuje Azure Migrate k určení velikosti na základě výkonu informace o síťových vstupech a výstupech. Pokud některá z výše uvedených čísel o využití nejsou v systému vCenter Server k dispozici, doporučení velikosti provedené službou Azure Migrate nemusí být spolehlivé. Tady je poskytnuté hodnocení spolehlivosti posouzení v závislosti na procentu dostupných datových bodů:
+K určení velikosti na základě výkonu potřebuje Azure Migrate data o využití procesoru a paměti virtuálního počítače. Pro každý disk připojený k virtuálnímu počítači navíc potřebuje IOPS a propustnost disku. Podobně u každého síťového adaptéru připojeného k virtuálnímu počítači potřebuje Azure Migrate k určení velikosti na základě výkonu informace o síťových vstupech a výstupech. Pokud některá z výše uvedených čísel o využití nejsou v systému vCenter Server k dispozici, doporučení velikosti provedené službou Azure Migrate nemusí být spolehlivé. Tady je poskytnuté hodnocení spolehlivosti posouzení v závislosti na procentu dostupných datových bodů:
 
    **Dostupnost datových bodů** | **Hodnocení spolehlivosti**
    --- | ---

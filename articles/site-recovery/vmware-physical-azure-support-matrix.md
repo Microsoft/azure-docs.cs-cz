@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/13/2018
+ms.date: 07/19/2018
 ms.author: raynew
-ms.openlocfilehash: a02218922a4d4238abf752190293a788504e0cfb
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 516cb69042e923a46168c7655dc3e3010d9557e6
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39070905"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173788"
 ---
 # <a name="support-matrix-for-vmware-and-physical-server-replication-to-azure"></a>Matice podpory pro VMware a replikací fyzických serverů do Azure
 
@@ -61,7 +61,7 @@ Site Recovery podporuje jakoukoli úlohu spuštěnou na podporovaném počítač
 **Komponenta** | **Podrobnosti**
 --- | ---
 Nastavení počítače | Počítače, které se replikují do Azure, musí splňovat [požadavky služby Azure](#azure-vm-requirements).
-Operační systém Windows | 64bitová verze Windows serveru 2016 (jádro serveru, Server s desktopovým prostředím), Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 s na minimálně SP1. </br></br>  [Windows Server 2008 s na minimálně SP2 – 32bitové a 64bitové](migrate-tutorial-windows-server-2008.md) (pouze migrace). </br></br> * *Windows 2016 Nano Server není podporován.*
+Operační systém Windows | 64bitová verze Windows serveru 2016 (jádro serveru, Server s desktopovým prostředím), Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 s na minimálně SP1. </br></br>  [Windows Server 2008 s na minimálně SP2 – 32bitové a 64bitové](migrate-tutorial-windows-server-2008.md) (pouze migrace). </br></br> Windows 2016 Nano Server není podporován.
 Operační systém platformy Linux | Red Hat Enterprise Linux: 5.2 na 5,11, 6.1 k 6.9 7.0 pro 7.5 <br/><br/>CentOS: 5.2 na 5,11, 6.1 k 6.9 7.0 pro 7.5 <br/><br/>Server se systémem Ubuntu 14.04 LTS[ (podporované verze jádra)](#ubuntu-kernel-versions)<br/><br/>Server se systémem Ubuntu 16.04 LTS[ (podporované verze jádra)](#ubuntu-kernel-versions)<br/><br/>Debian 7/Debian 8[ (podporované verze jádra)](#debian-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 12 SP1, SP2 SP3 [ (podporované verze jádra)](#suse-linux-enterprise-server-12-supported-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 11 SP3, operačním systémem SUSE Linux Enterprise Server 11 SP4 * </br></br>Oracle Enterprise Linux 6.4, 6.5 kompatibilní jádra Red Hat nebo nedělitelné Enterprise jádra verze 3 (UEK3) <br/><br/></br>* *Upgrade replikované počítače z operačního systému SUSE Linux Enterprise Server 11 SP3 SP4 není podporován. Pokud chcete upgradovat, zakažte replikaci a povolte znovu po dokončení upgradu.*
 
 
@@ -120,7 +120,12 @@ Adresáře | Tyto adresáře (Pokud nastavený jako samostatné oddíly /-systé
 Požadavky na volné místo| 2 GB na oddíl/root <br/><br/> 250 MB v instalační složce Nástroje
 XFSv5 | XFSv5 v systémech souborů s XFS, jako je například metadata kontrolního součtu, jsou však podporovány ze služby Mobility verze dále 9.10. Pomocí nástroje xfs_info tzv XFS pro oddíl. Pokud ftype je nastavena na hodnotu 1, funkce XFSv5 jsou používána.
 
+## <a name="vmdisk-management"></a>Správa virtuálních počítačů/disků
 
+**Akce** | **Podrobnosti**
+--- | ---
+Změna velikosti disku na replikovaný virtuální počítač | Podporuje se.
+Přidání disku na replikovaný virtuální počítač | Zakažte replikaci virtuálního počítače, přidejte disk a potom znovu povolit replikaci. Přidání disku na virtuálním počítači replikaci se momentálně nepodporuje.
 
 ## <a name="network"></a>Síť
 

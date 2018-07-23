@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 07/19/2018
 ms.author: tomfitz
-ms.openlocfilehash: a195f5c20a9e2b525e683c8b9e2480b83c83207a
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 242a0cee6e76250288f51f75dd695b608fd4d914
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39159242"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173172"
 ---
 # <a name="azure-event-grid-event-schema-for-resource-groups"></a>Schéma událostí Azure Event Grid pro skupiny prostředků
 
@@ -181,10 +181,10 @@ Datový objekt má následující vlastnosti:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| Autorizace | řetězec | Požadovaná oprávnění pro operaci. |
-| deklarace identity | řetězec | Vlastnosti deklarace identity. Další informace najdete v tématu [JWT specifikace](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html). |
+| Autorizace | objekt | Požadovaná oprávnění pro operaci. |
+| deklarace identity | objekt | Vlastnosti deklarace identity. Další informace najdete v tématu [JWT specifikace](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html). |
 | correlationId | řetězec | ID operace odstraňování potíží. |
-| httpRequest | řetězec | Podrobnosti o operaci. |
+| httpRequest | objekt | Podrobnosti o operaci. |
 | ResourceProvider | řetězec | Poskytovatel prostředků provádění této operace. |
 | resourceUri | řetězec | Identifikátor URI prostředku v operaci. |
 | operationName | řetězec | Operace, která byla provedena. |

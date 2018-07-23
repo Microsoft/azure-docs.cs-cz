@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr
-ms.openlocfilehash: 7e60bc217562d91aa5ed3c653458a46251a45c8d
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: bcdd4b681992b015b817e1245681c41c09b78210
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37347398"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173686"
 ---
 # <a name="manage-entities"></a>Správa entit
 Po identifikaci vaší aplikace [záměry](luis-concept-intent.md), budete muset [popisek příklad projevy](luis-concept-utterance.md) s [entity](luis-concept-entity-types.md). Entity jsou důležité části příkaz nebo dotaz a může být důležitá pro vaši klientskou aplikaci k provedení svých úkolů. 
@@ -260,5 +260,5 @@ Můžete vyhledávat a filtrovat projevy s ikonou lupy na panelu nástrojů.
 Po přidání, úprava nebo odebrání entity, [trénování](luis-how-to-train.md) a [publikovat](luis-how-to-publish-app.md) vaší aplikace pro vaše změny ovlivnit dotazy koncový bod. 
 
 ## <a name="next-steps"></a>Další postup
-Teď, když jste přidali projevy záměry a entity, budete mít základní aplikaci LUIS. Zjistěte, jak [trénování](luis-how-to-train.md), [testování](interactive-test.md), a [publikovat](luis-how-to-publish-app.md) vaší aplikace.
+Teď, když jste přidali projevy záměry a entity, budete mít základní aplikaci LUIS. Zjistěte, jak [trénování](luis-how-to-train.md), [testování](luis-interactive-test.md), a [publikovat](luis-how-to-publish-app.md) vaší aplikace.
  

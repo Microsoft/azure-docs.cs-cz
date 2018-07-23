@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/20/2018
 ms.author: daveba
-ms.openlocfilehash: 8779600f2c85a8bb309f7b2a8874608170de8877
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 34911c6133a6a2549a98db426f979b0c3c85dbd7
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39035237"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39185293"
 ---
 # <a name="configure-a-virtual-machine-scale-set-managed-service-identity-msi-using-the-azure-portal"></a>Konfigurace virtuálního počítače škálovací sady Identity spravované služby (MSI) pomocí webu Azure portal
 
@@ -30,13 +30,14 @@ Identita spravované služby poskytuje služby Azure se automaticky spravované 
 V tomto článku jste se dozvíte, jak povolit a zakázat identitu pro škálovací sadu virtuálních počítačů přiřazenou systémem pomocí webu Azure portal. Přiřazení a odebrání uživatelsky přiřazených identit z škálovací sady virtuálních počítačů Azure prostřednictvím portálu Azure portal momentálně nepodporuje.
 
 > [!NOTE]
-> Operace identity přiřazené uživateli nejsou v současnosti podporované prostřednictvím webu Azure Portal. Sledujte novinky.
+> Operace identity přiřazené uživateli nejsou v současnosti podporované prostřednictvím webu Azure Portal. Vraťte se sem a přečtěte si nové informace.
 
 ## <a name="prerequisites"></a>Požadavky
 
-
 - Pokud nejste obeznámeni s identita spravované služby, podívejte se [oddílu přehled](overview.md).
-- Pokud ještě nemáte účet Azure [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) než budete pokračovat.
+- Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
+- Váš účet k provádění operací správy v tomto článku, potřebuje následující přiřazení role:
+    - [Přispěvatel virtuálních počítačů](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) povolit a odebrat identita spravované služby ze škálovací sady virtuálních počítačů.
 
 ## <a name="managed-service-identity-during-creation-of-an-azure-virtual-machine-scale-set"></a>Identita spravované služby během vytváření škálovací sady virtuálních počítačů Azure
 

@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 214573374498955c4abf018e8c7854c6d9c2c164
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ae5218bae12b9489d67b0264f0e5fdb6d833cb9e
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34627138"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39187763"
 ---
 # <a name="connected-factory-solution-accelerator-walkthrough"></a>Seznámení s akcelerátorem řešení propojené továrny
 
@@ -231,7 +231,7 @@ Další informace o akcelerátorech řešení IoT najdete v následujících čl
 
 [connected-factory-logical]:media/iot-accelerators-connected-factory-sample-walkthrough/cf-logical-architecture.png
 
-[lnk-preconfigured-solutions]:iot-accelerators-what-are-solution-accelerators.md
+[lnk-preconfigured-solutions]:about-iot-accelerators.md
 [lnk-customize]: iot-accelerators-connected-factory-customize.md
 [lnk-IoT Hub]: https://azure.microsoft.com/documentation/services/iot-hub/
 [lnk-direct-methods]: ../iot-hub/iot-hub-devguide-direct-methods.md

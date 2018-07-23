@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 07/12/2018
 ms.author: rclaus
 ms.custom: ''
-ms.openlocfilehash: d1d2bd74a5118b48f7ed79a77ca2d7b6545607c6
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: f293adc6a25ef9e6ed916043c40233f9dd7bfbc1
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39072376"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171274"
 ---
 # <a name="sap-certifications-and-configurations-running-on-microsoft-azure"></a>Certifikace SAP a konfigurace běžící v Microsoft Azure
 
@@ -36,13 +36,13 @@ Odkazy:
 | Produkt SAP | Podporovaný operační systém | Nabídky Azure |
 | --- | --- | --- |
 | SAP HANA Developer Edition (včetně klientského softwaru HANA sestává z SQLDBC, ODBO – Windows pouze, ODBC a ovladače JDBC, HANA studio a HANA database) | Red Hat Enterprise Linux, SUSE Linux Enterprise | Řady virtuálních počítačů řady D-Series |
-| Obchodní jeden on HANA | SUSE Linux Enterprise | DS14_v2 |
-| SAP S/4 HANA | Red Hat Enterprise Linux, SUSE Linux Enterprise | Řízená dostupnost pro GS5, M64s, M64ms, M128s, M128ms, SAP HANA v Azure (velké instance) |
-| Suite on HANA, OLTP | Red Hat Enterprise Linux, SUSE Linux Enterprise | GS5 pro neprodukční scénáře, M64s, M64ms, M128s, M128ms, od SAP HANA v Azure (velké instance) |
-| HANA Enterprise for BW, OLAP | Red Hat Enterprise Linux, SUSE Linux Enterprise | GS5, M64s, M64ms, M128s, M128ms, SAP HANA v Azure (velké instance) |
-| SAP BW/4 HANA | Red Hat Enterprise Linux, SUSE Linux Enterprise | GS5, M64s, M64ms, M128s, M128ms, SAP HANA v Azure (velké instance) |
+| Obchodní jeden on HANA | SUSE Linux Enterprise | DS14_v2 <br /> [SAP HANA s certifikací platformy IaaS](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure%23SAP%20Business%20One) |
+| SAP S/4 HANA | Red Hat Enterprise Linux, SUSE Linux Enterprise | Řízená dostupnost pro GS5. Plná podpora pro M64s, M64ms, M128s, M128ms, od SAP HANA v Azure (velké instance) <br /> [SAP HANA s certifikací platformy IaaS](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) |
+| Suite on HANA, OLTP | Red Hat Enterprise Linux, SUSE Linux Enterprise | M64s, M64ms, M128s, M128ms, od SAP HANA v Azure (velké instance) <br /> [SAP HANA s certifikací platformy IaaS](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) |
+| HANA Enterprise for BW, OLAP | Red Hat Enterprise Linux, SUSE Linux Enterprise | GS5, M64s, M64ms, M128s, M128ms, SAP HANA v Azure (velké instance) <br /> [SAP HANA s certifikací platformy IaaS](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) |
+| SAP BW/4 HANA | Red Hat Enterprise Linux, SUSE Linux Enterprise | GS5, M64s, M64ms, M128s, M128ms, SAP HANA v Azure (velké instance) <br /> [SAP HANA s certifikací platformy IaaS](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) |
 
-Všechny virtuální počítače Azure se zatím certifikaci pro SAP HANA škálovat.
+Mějte na paměti, že SAP používá termín "slučování" v [platformách IaaS certifikací SAP HANA](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) jako synonymum pro "škálování" a není pro zajištění vysoké dostupnosti "clustering.
 
 ## <a name="sap-netweaver-certifications"></a>Certifikace SAP NetWeaver
 Microsoft Azure má certifikaci pro následující produkty SAP, se zárukou plné podpory od Microsoftu i SAPu.

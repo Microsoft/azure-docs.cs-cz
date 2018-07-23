@@ -7,14 +7,14 @@ author: mayanknayar
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 07/19/2018
 ms.author: manayar
-ms.openlocfilehash: e8094c582af6ea03f5ffcc4f61914488891cb556
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 3a2ad35a5382394a6886ed14dcc4f659762f2833
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920885"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39172234"
 ---
 # <a name="use-azure-site-recovery-to-protect-active-directory-and-dns"></a>Ochrana služby Active Directory a DNS pomocí Azure Site Recovery
 
@@ -31,13 +31,10 @@ Tento článek vysvětluje, jak vytvořit řešení zotavení po havárii pro sl
 
 ## <a name="replicate-the-domain-controller"></a>Replikace řadiče domény
 
-Musíte nastavit [replikace Site Recovery](#enable-protection-using-site-recovery), na alespoň jeden virtuální počítač, který je hostitelem řadiče domény nebo DNS. Pokud máte [několika řadičů domény](#environment-with-multiple-domain-controllers) ve vašem prostředí, je třeba také nastavit [další řadič domény](#protect-active-directory-with-active-directory-replication) v cílové lokalitě. Další řadič domény může být v Azure, nebo sekundárního místního datového centra.
-
-### <a name="single-domain-controller"></a>Single – řadič domény
-Pokud máte pouze několik aplikací a jeden řadič domény, můžete převzetí služeb při selhání celé lokality společně. V takovém případě vám doporučujeme používat Site Recovery pro replikaci řadiče domény do cílového webu (buď v Azure nebo sekundárního místního datového centra). Můžete použít stejné řadič domény replikovaný nebo DNS virtuálního počítače pro [testovací převzetí služeb při selhání](#test-failover-considerations).
-
-### <a name="multiple-domain-controllers"></a>Víc řadičů domény
-Pokud máte mnoho aplikací a více než jeden řadič domény ve vašem prostředí, nebo pokud máte v plánu převzetí služeb při selhání několik aplikací najednou, navíc k replikaci virtuálního počítače řadiče domény s využitím Site Recovery, doporučujeme, abyste nastavili [další řadič domény](#protect-active-directory-with-active-directory-replication) v cílové lokalitě (buď v Azure nebo sekundárního místního datového centra). Pro [testovací převzetí služeb při selhání](#test-failover-considerations), můžete použít řadič domény, který se replikuje pomocí Site Recovery. Pro převzetí služeb při selhání můžete použít další řadič domény v cílové lokalitě.
+- Musíte nastavit [replikace Site Recovery](#enable-protection-using-site-recovery), na alespoň jeden virtuální počítač, který je hostitelem řadiče domény nebo DNS.
+- Pokud máte [několika řadičů domény](#environment-with-multiple-domain-controllers) ve vašem prostředí, je třeba také nastavit [další řadič domény](#protect-active-directory-with-active-directory-replication) v cílové lokalitě. Další řadič domény může být v Azure, nebo sekundárního místního datového centra.
+- Pokud máte pouze několik aplikací a jeden řadič domény, můžete převzetí služeb při selhání celé lokality společně. V takovém případě vám doporučujeme používat Site Recovery pro replikaci řadiče domény do cílového webu (buď v Azure nebo sekundárního místního datového centra). Můžete použít stejné řadič domény replikovaný nebo DNS virtuálního počítače pro [testovací převzetí služeb při selhání](#test-failover-considerations).
+- - Pokud máte mnoho aplikací a více než jeden řadič domény ve vašem prostředí, nebo pokud máte v plánu převzetí služeb při selhání několik aplikací najednou, navíc k replikaci virtuálního počítače řadiče domény s využitím Site Recovery, doporučujeme, abyste nastavili [další řadič domény](#protect-active-directory-with-active-directory-replication) v cílové lokalitě (buď v Azure nebo sekundárního místního datového centra). Pro [testovací převzetí služeb při selhání](#test-failover-considerations), můžete použít řadič domény, který se replikuje pomocí Site Recovery. Pro převzetí služeb při selhání můžete použít další řadič domény v cílové lokalitě.
 
 ## <a name="enable-protection-with-site-recovery"></a>Povolit ochranu pomocí služby Site Recovery
 
@@ -186,9 +183,11 @@ Pokud předchozí podmínky splněny, je pravděpodobné, že řadič domény sp
     Další informace najdete v tématu [zakažte požadavek na server globálního katalogu se ověření přihlášení uživatele k dispozici](http://support.microsoft.com/kb/241789).
 
 ### <a name="dns-and-domain-controller-on-different-machines"></a>DNS a řadič domény na různých počítačích
-Pokud DNS není na stejný virtuální počítač jako řadič domény, musíte vytvořit virtuální počítač DNS pro testovací převzetí služeb. Pokud DNS a řadiči domény nejsou ve stejném virtuálním počítači, můžete tuto část přeskočit.
 
-Můžete použít nový server DNS a vytvořit všechny požadované zóny. Například pokud je vaší doménou služby Active Directory contoso.com, můžete vytvořit zónu DNS s názvem contoso.com. Položky, které odpovídají služby Active Directory musí aktualizovat ve službě DNS následujícím způsobem:
+Pokud používáte řadiče domény a DNs na stejný virtuální počítač, můžete tento postup přeskočit.
+
+
+Pokud DNS není na stejný virtuální počítač jako řadič domény, musíte vytvořit virtuální počítač DNS pro testovací převzetí služeb. Můžete použít nový server DNS a vytvořit všechny požadované zóny. Například pokud je vaší doménou služby Active Directory contoso.com, můžete vytvořit zónu DNS s názvem contoso.com. Položky, které odpovídají služby Active Directory musí aktualizovat ve službě DNS následujícím způsobem:
 
 1. Ujistěte se, že tato nastavení jsou na místě před zahájením ostatních virtuálních počítačů v plánu obnovení:
    * Za názvem kořenového doménové struktury musí mít název zóny.

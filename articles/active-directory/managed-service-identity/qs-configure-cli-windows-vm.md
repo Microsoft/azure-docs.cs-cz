@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: daveba
-ms.openlocfilehash: db32f56c55f189001e51a727ca6b5703e82dafe4
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 064c2dfe625435d3faddae45c413d6b91eac8346
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37903993"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39188017"
 ---
 # <a name="configure-managed-service-identity-msi-on-an-azure-vm-using-azure-cli"></a>Konfigurace Identity spravované služby (MSI) na Virtuálním počítači Azure pomocí Azure CLI
 
@@ -34,9 +34,12 @@ V tomto článku se dozvíte, jak provádět následující operace Identity spr
 ## <a name="prerequisites"></a>Požadavky
 
 - Pokud nejste obeznámeni s identita spravované služby, podívejte se [oddílu přehled](overview.md). **Nezapomeňte si přečíst [rozdíl mezi přiřazenou systémem a identity přiřazené uživateli](overview.md#how-does-it-work)**.
-- Pokud ještě nemáte účet Azure [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) než budete pokračovat.
+- Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
+- Váš účet k provádění operací správy v tomto článku, potřebuje následující přiřazení rolí:
+    - [Přispěvatel virtuálních počítačů](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) k vytvoření virtuálního počítače a povolit, odeberte z virtuálního počítače Azure spravované identitu přiřazenou systémem.
+    - [Spravovaná identita Přispěvatel](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) role pro vytvoření identity přiřazené uživateli.
+    - [Operátor Identity spravované](/azure/role-based-access-control/built-in-roles#managed-identity-operator) roli přiřadit a odebrat identity přiřazené uživateli, ze kterých a do virtuálního počítače.
 - Spuštění ukázkové skripty rozhraní příkazového řádku, máte tři možnosti:
-
     - Použití [Azure Cloud Shell](../../cloud-shell/overview.md) z portálu Azure portal (viz další část).
     - Použijte vložené Azure Cloud Shell pomocí "Vyzkoušet" tlačítka, nachází v pravém horním rohu každý blok kódu.
     - [Nainstalujte nejnovější verzi 2.0 rozhraní příkazového řádku](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.13 nebo novější) Pokud byste radši chtěli použít místní konzoly příkazového řádku. 
@@ -51,19 +54,19 @@ V této části se dozvíte, jak můžete povolit nebo zakázat identitu na Virt
 
 Vytvoření virtuálního počítače Azure s přiřazenou identity povoleno systémem:
 
-1. Pokud používáte rozhraní příkazového řádku Azure v místní konzole, nejdřív přihlásit k Azure s využitím [az login](/cli/azure/reference-index#az_login). Použijte účet, který je přidružený k předplatnému Azure, ve které chcete nasadit virtuální počítač:
+1. Pokud používáte Azure CLI v místní konzole, nejprve se přihlaste k Azure pomocí příkazu [az login](/cli/azure/reference-index#az_login). Použijte účet přidružený k předplatnému Azure, ve kterém chcete virtuální počítač nasadit:
 
    ```azurecli-interactive
    az login
    ```
 
-2. Vytvoření [skupiny prostředků](../../azure-resource-manager/resource-group-overview.md#terminology) pro členství ve skupině a nasazení virtuálního počítače a její související prostředky, pomocí [vytvořit skupiny az](/cli/azure/group/#az_group_create). Tento krok můžete přeskočit, pokud již máte skupinu prostředků, kterou chcete místo toho použít:
+2. Pomocí příkazu [az group create](/cli/azure/group/#az_group_create) vytvořte [skupinu prostředků](../../azure-resource-manager/resource-group-overview.md#terminology) pro nasazení a uchování virtuálního počítače a souvisejících prostředků. Pokud už máte skupinu prostředků, kterou chcete použít, můžete tento krok přeskočit:
 
    ```azurecli-interactive 
    az group create --name myResourceGroup --location westus
    ```
 
-3. Vytvoření virtuálního počítače pomocí [az vm vytvořit](/cli/azure/vm/#az_vm_create). Následující příklad vytvoří virtuální počítač s názvem *myVM* s identitou přiřazenou systémem, jak to požadoval `--assign-identity` parametru. `--admin-username` a `--admin-password` parametry zadejte účet správce jméno a heslo pro přihlášení k virtuálnímu počítači. Aktualizujte tyto hodnoty podle požadavků vašeho prostředí: 
+3. Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm/#az_vm_create). Následující příklad vytvoří virtuální počítač s názvem *myVM* s identitou přiřazenou systémem, jak to požadoval `--assign-identity` parametru. Parametry `--admin-username` a `--admin-password` určují uživatelské jméno a heslo účtu správce pro přihlášení k virtuálnímu počítači. Aktualizujte tyto hodnoty odpovídajícím způsobem pro vaše prostředí: 
 
    ```azurecli-interactive 
    az vm create --resource-group myResourceGroup --name myVM --image win2016datacenter --generate-ssh-keys --assign-identity --admin-username azureuser --admin-password myPassword12
@@ -73,7 +76,7 @@ Vytvoření virtuálního počítače Azure s přiřazenou identity povoleno sys
 
 Pokud je potřeba povolit identitu přiřazenou systémem na existující virtuální počítač:
 
-1. Pokud používáte rozhraní příkazového řádku Azure v místní konzole, nejdřív přihlásit k Azure s využitím [az login](/cli/azure/reference-index#az_login). Použijte účet, který je přidružený k předplatnému Azure, která obsahuje virtuální počítač. Také ujistěte se, že váš účet patří do role, která poskytuje oprávnění k zápisu na virtuálním počítači, jako je například "Přispěvatel virtuálních počítačů":
+1. Pokud používáte Azure CLI v místní konzole, nejprve se přihlaste k Azure pomocí příkazu [az login](/cli/azure/reference-index#az_login). Použijte účet, který je přidružený k předplatnému Azure, která obsahuje virtuální počítač.
 
    ```azurecli-interactive
    az login
@@ -103,13 +106,13 @@ az vm identity --resource-group myResourceGroup --vm-name myVm -n ManagedIdentit
 
 ## <a name="user-assigned-identity"></a>Identita uživatele přiřazeno
 
-V této části se dozvíte, jak přidávat a odebírat uživatele identity přiřazené z virtuálního počítače Azure, pomocí Azure CLI.
+V této části se dozvíte, jak přidávat a odebírat uživatele identity přiřazené z virtuálního počítače Azure pomocí Azure CLI.
 
 ### <a name="assign-a-user-assigned-identity-during-the-creation-of-an-azure-vm"></a>Přiřazování identity přiřazené během vytváření virtuálního počítače Azure uživateli
 
 Tato část vás provede vytvořením virtuálního počítače s přiřazením identity přiřazené uživateli. Pokud už máte virtuální počítač, který chcete použít, tuto část přeskočit a pokračovat na další.
 
-1. Pokud už máte skupinu prostředků, kterou chcete použít, můžete tento krok přeskočit. Vytvoření [skupiny prostředků](~/articles/azure-resource-manager/resource-group-overview.md#terminology) pro nasazení MSI a členství ve skupině pomocí [az skupiny vytvořit](/cli/azure/group/#az_group_create). Nezapomeňte nahradit `<RESOURCE GROUP>` a `<LOCATION>` parametr hodnoty vlastními hodnotami. :
+1. Pokud už máte skupinu prostředků, kterou chcete použít, můžete tento krok přeskočit. Vytvoření [skupiny prostředků](~/articles/azure-resource-manager/resource-group-overview.md#terminology) pro nasazení MSI a členství ve skupině pomocí [az skupiny vytvořit](/cli/azure/group/#az_group_create). Nezapomeňte nahradit hodnoty parametrů `<RESOURCE GROUP>` a `<LOCATION>` vlastními hodnotami. :
 
    ```azurecli-interactive 
    az group create --name <RESOURCE GROUP> --location <LOCATION>
@@ -140,7 +143,7 @@ Odpověď obsahuje podrobnosti o identity přiřazené uživateli vytvořené, p
 }
 ```
 
-3. Vytvoření virtuálního počítače pomocí [az vm vytvořit](/cli/azure/vm/#az_vm_create). Následující příklad vytvoří virtuální počítač přidružený k nové identity přiřazené uživateli, jak jsou určené `--assign-identity` parametru. Nezapomeňte nahradit `<RESOURCE GROUP>`, `<VM NAME>`, `<USER NAME>`, `<PASSWORD>`, a `<MSI ID>` parametr hodnoty vlastními hodnotami. Pro `<MSI ID>`, používat identity přiřazené uživateli prostředek `id` vlastnost vytvořenou v předchozím kroku: 
+3. Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm/#az_vm_create). Následující příklad vytvoří virtuální počítač přidružený k nové identity přiřazené uživateli, jak jsou určené `--assign-identity` parametru. Nezapomeňte nahradit hodnoty parametrů `<RESOURCE GROUP>`, `<VM NAME>`, `<USER NAME>`, `<PASSWORD>` a `<MSI ID>` vlastními hodnotami. Pro `<MSI ID>`, používat identity přiřazené uživateli prostředek `id` vlastnost vytvořenou v předchozím kroku: 
 
 ```azurecli-interactive 
 az vm create --resource-group <RESOURCE GROUP> --name <VM NAME> --image UbuntuLTS --admin-username <USER NAME> --admin-password <PASSWORD> --assign-identity <MSI ID>
@@ -148,10 +151,10 @@ az vm create --resource-group <RESOURCE GROUP> --name <VM NAME> --image UbuntuLT
 
 ### <a name="assign-a-user-assigned-identity-to-an-existing-azure-vm"></a>Přiřazování identity přiřazené do stávajícího virtuálního počítače Azure uživateli
 
-1. Vytvoření uživatele přiřadit pomocí identity [vytvoření az identity](/cli/azure/identity#az-identity-create).  `-g` Parametr určuje skupinu prostředků, ve kterém se vytvoří identity přiřazené uživateli, a `-n` parametr určuje její název. Nezapomeňte nahradit `<RESOURCE GROUP>` a `<MSI NAME>` parametr hodnoty vlastními hodnotami:
+1. Vytvoření uživatele přiřadit pomocí identity [vytvoření az identity](/cli/azure/identity#az-identity-create).  `-g` Parametr určuje skupinu prostředků, ve kterém se vytvoří identity přiřazené uživateli, a `-n` parametr určuje její název. Nezapomeňte nahradit hodnoty parametrů `<RESOURCE GROUP>` a `<MSI NAME>` vlastními hodnotami:
 
     > [!IMPORTANT]
-    > Vytváří se uživatel přiřazené identity se speciálními znaky (třeba podtržítko) v názvu se momentálně nepodporuje. Použijte prosím alfanumerické znaky. Sledujte novinky.  Další informace najdete v části [nejčastější dotazy a známé problémy](known-issues.md)
+    > Vytváří se uživatel přiřazené identity se speciálními znaky (třeba podtržítko) v názvu se momentálně nepodporuje. Použijte prosím alfanumerické znaky. Vraťte se sem a přečtěte si nové informace.  Další informace najdete v části [nejčastější dotazy a známé problémy](known-issues.md)
 
     ```azurecli-interactive
     az identity create -g <RESOURCE GROUP> -n <MSI NAME>
@@ -173,7 +176,7 @@ Odpověď obsahuje podrobnosti o uživateli přiřadit MSI vytvořené, podobně
    }
    ```
 
-2. Přiřazení k virtuálnímu počítači pomocí identity přiřazené uživateli [az vm identity přiřadit](/cli/azure/vm#az-vm-identity-assign). Nezapomeňte nahradit `<RESOURCE GROUP>` a `<VM NAME>` parametr hodnoty vlastními hodnotami. `<MSI ID>` Bude prostředek identity přiřazené uživateli `id` vlastnost, protože vytvořili v předchozím kroku:
+2. Přiřazení k virtuálnímu počítači pomocí identity přiřazené uživateli [az vm identity přiřadit](/cli/azure/vm#az-vm-identity-assign). Nezapomeňte nahradit hodnoty parametrů `<RESOURCE GROUP>` a `<VM NAME>` vlastními hodnotami. `<MSI ID>` Bude prostředek identity přiřazené uživateli `id` vlastnost, protože vytvořili v předchozím kroku:
 
     ```azurecli-interactive
     az vm identity assign -g <RESOURCE GROUP> -n <VM NAME> --identities <MSI ID>
@@ -184,7 +187,7 @@ Odpověď obsahuje podrobnosti o uživateli přiřadit MSI vytvořené, podobně
 > [!NOTE]
 > Odebrání všech uživatelsky přiřazených identit z virtuálního počítače se aktuálně nepodporuje, pokud máte identitu přiřazenou systémem.
 
-Pokud se váš virtuální počítač má více uživatelsky přiřazených identit, můžete odebrat všechny kromě poslední pomocí [az identita virtuálního počítače odeberte](/cli/azure/vm#az-vm-identity-remove). Nezapomeňte nahradit `<RESOURCE GROUP>` a `<VM NAME>` parametr hodnoty vlastními hodnotami. `<MSI NAME>` Bude identity přiřazené uživateli `name` vlastnosti, které najdete v části Identita virtuálního počítače pomocí `az vm show`:
+Pokud se váš virtuální počítač má více uživatelsky přiřazených identit, můžete odebrat všechny kromě poslední pomocí [az identita virtuálního počítače odeberte](/cli/azure/vm#az-vm-identity-remove). Nezapomeňte nahradit hodnoty parametrů `<RESOURCE GROUP>` a `<VM NAME>` vlastními hodnotami. `<MSI NAME>` Bude identity přiřazené uživateli `name` vlastnosti, které najdete v části Identita virtuálního počítače pomocí `az vm show`:
 
 ```azurecli-interactive
 az vm identity remove -g <RESOURCE GROUP> -n <VM NAME> --identities <MSI NAME>

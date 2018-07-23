@@ -1,6 +1,6 @@
 ---
 title: Součásti systému Azure informace a hranice
-description: Tento článek obsahuje obecné popisu architektury Microsoft Azure a správu.
+description: Tento článek obsahuje obecný popis architektury Microsoft Azure a správu.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -14,102 +14,118 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 8db1dce5fcc56c229d1fdd746bafbd2fae2c9bad
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: b2e8ef232e1b25c7d000f4683830ff2e188047fb
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37102212"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39186472"
 ---
 # <a name="azure-information-system-components-and-boundaries"></a>Součásti systému Azure informace a hranice
-Tento článek obsahuje obecné popisu architektury Microsoft Azure a správu. Prostředí Azure systému se skládá z následujících sítí:
+Tento článek obsahuje obecný popis Azure architekturu a správu. Prostředí systému Azure se skládá z následující sítě:
 
-- Microsoft Azure produkční síť (síť Azure)
-- Microsoft Corporate sítě (Corpnet síť)
+- Microsoft Azure produkční sítě (Azure)
+- Microsoft podnikové sítě (corpnet)
 
-Samostatné IT oddělení jsou zodpovědní za provoz a údržba síť Azure a CorpNet sítí.
+Samostatné týmy IT zodpovídají za provoz a údržba těchto sítích.
 
-## <a name="azure-architecture"></a>Architektura Azure
-Microsoft Azure je Cloudová platforma a infrastruktury pro vytváření, nasazení a Správa aplikací a služeb prostřednictvím sítě datových center spravovaných společností Microsoft. Na základě počtu prostředky zadané zákazníků, Azure vytvoří virtuální počítače podle potřeb prostředků. Tyto virtuální počítače, spusťte v Microsoft Azure hypervisoru, který je určený pro použití v cloudu a není přístupný na veřejnost.
+## <a name="azure-architecture"></a>Architektura služby Azure
+Azure je Cloudová výpočetní platforma a infrastruktura pro vytváření, nasazování a správu aplikací a služeb prostřednictvím sítě datových center. Tato datová centra, spravuje Microsoft. Podle počtu prostředků, kterou zadáte, Azure vytvoří virtuální počítače (VM) podle potřeb prostředků. Tyto virtuální počítače spustit v Azure hypervisoru, který je určený pro použití v cloudu a není přístupná veřejně.
 
-Na každém uzlu Azure fyzický server je Hypervisor, který běží přímo nad hardwarem. Hypervisor rozděluje uzlu do proměnné počet hostované virtuální počítače (VM). Každý uzel má také jeden speciální "Root" virtuální počítač, který se spouští hostitelským operačním systémem. Pro každý virtuální počítač je povolená brána Windows Firewall. Interně nebo externě, jsou pouze porty otevřené a adresovatelné, porty explicitně definované v souboru definice služby konfigurovat tak, že zákazník. Všechny přenosy a přístup k disku a sítě je zprostředkovaného hypervisoru a kořenové operačního systému.
+Na každý uzel fyzického serveru Azure je hypervisoru, který běží přímo nad hardwarem. Hypervisor rozdělí uzel proměnný počet virtuálních počítačů hosta. Každý uzel má také jeden kořenový virtuální počítač, který používá operační systém hostitele. Brána Windows Firewall je povolena na každém virtuálním počítači. Můžete definovat, které porty jsou adresovatelné nakonfigurováním definičního souboru služby. Tyto porty jsou pouze ty, které otevřete a adresovatelný, interně nebo externě. Všechny přenosy a přístup k disku a sítě zprostředkována hypervisoru a kořenové operační systém.
 
-Ve vrstvě hostitele, virtuální počítače Azure, které používají vlastní verzi posílené nejnovější Windows Server. Microsoft Azure používá stripped-down verzi systému Windows Server, který obsahuje pouze součásti potřebné k hostiteli virtuálních počítačů. Děje se tak ke zlepšení výkonu a omezte prostor pro útoky. Počítač hranice vynucuje hypervisoru, které nezávisí na zabezpečení operačního systému.
+Ve vrstvě hostitele, virtuální počítače Azure s vlastní a posílené verzí nejnovější Windows serveru. Azure používá verzi systému Windows Server, který obsahuje pouze součásti potřebné pro hostování virtuálních počítačů. To zvyšuje výkon a snižuje prostor pro napadení. Počítač hranice se vynucují na hypervisoru, které nejsou závislé na zabezpečení operačního systému.
 
-**Azure správu Kontrolerů prostředků infrastruktury (FCs)**: V Azure, virtuální počítače běžící na fyzických serverech (oken nebo uzly) jsou seskupené do asi 1000 "clustery". Virtuální počítače se spravují nezávisle škálovat na více systémů a redundantní platformy součástí softwaru s názvem FC.
+### <a name="azure-management-by-fabric-controllers"></a>Azure management od kontrolerů prostředků infrastruktury
 
-Každý FC spravuje životní cyklus aplikací běžících v jeho clusteru a předpisy a sledovat stav hardwaru pod její kontrolou. Se provede oba autonomic operace, jako je například reincarnating instance virtuálních počítačů na serverech v pořádku, když zjistí, že serveru se nezdařilo. FC také provádí operace správy aplikací jako je nasazení, aktualizace a škálování aplikací.
+V Azure jsou virtuální počítače spuštěné na fyzických serverech (servery blade/uzly) seskupeny do clusterů přibližně 1 000. Virtuální počítače jsou spravovány nezávisle na sobě komponenty platformy horizontálním navýšením kapacity a redundantní software s názvem kontroler prostředků infrastruktury (FC).
 
-Datového centra je rozdělené do clusterů. Clustery izolovat chyb na úrovni FC a zabránit určité třídy chyb, které mají vliv na servery nad rámec clusteru, ve kterém k nim dojde. FCs, která sloužit konkrétní cluster Azure jsou seskupeny do clusteru služby FC.
+Každý FC spravuje životní cyklus aplikací běžících v jeho cluster a zřizuje a sledovat stav hardwaru pod svou kontrolou. Spouští autonomic operace, jako je například reincarnating instancí virtuálních počítačů na serverech v pořádku, když zjistí, že serveru se nezdařilo. FC také provádí operace správy aplikací, jako je například nasazení, aktualizace nebo horizontální navýšení kapacity aplikace.
 
-**Inventář hardwaru**: shromážděny během procesu spuštění konfigurace a zdokumentované v konfiguračním souboru datacenter.xml inventář Azure hardwaru a síťových zařízení. Proces zavedení konfigurace musí následovat žádný nový hardware a síťové součásti zadávání Azure produkčního prostředí. FC je zodpovědný za správu celý inventář uveden v konfiguračním souboru datacenter.xml.
+Datového centra je rozdělené do clusterů. Clustery izolovat chyby na úrovni FC a zabránit určité třídy chyb by to ovlivnilo servery mimo cluster, ve kterém k nim dojde. FCs, který bude sloužit konkrétní cluster Azure jsou seskupené do clusteru služby FC.
 
-**Spravované FC OS**: team operačního systému poskytuje bitové kopie operačního systému, ve tvaru z virtuálních pevných disků (VHD), které jsou nasazeny na všechny hostitele a virtuální počítače hostované v Azure provozním prostředí. Tým služby operačního systému tyto vytvoří "Základní Image" prostřednictvím procesu automatizované offline sestavení. Základní Image je verze operačního systému, ve kterém jádra a další komponenty jádra byly upravit a optimalizované pro podporu prostředí Azure.
+### <a name="hardware-inventory"></a>Inventář hardwaru
 
-Existují tři typy bitových kopií operačního systému spravovaných prostředků infrastruktury:
+FC připraví inventář hardwaru a sítě k zařízením Azure během procesu konfigurace spuštění. Žádný nový hardware a síťové součásti zadávání Azure produkčního prostředí musí následovat po spuštění konfigurace procesu. FC zodpovídá za správu uvedená v konfiguračním souboru datacenter.xml celý inventář.
 
-- Operační systém hostitele – operační systém hostitele je upravený operační systém, který běží na hostiteli virtuálních počítačů
-- Nativní OS – nativní operační systém, který běží na klienty (například Azure Storage), nemá jakéhokoli hypervisoru
-- Hostovaného operačního systému – hostovaného operačního systému, který běží na virtuálních počítačích hosta
+### <a name="fc-managed-operating-system-images"></a>Bitové kopie operačního systému spravované FC
 
-Hostitele a nativní FC spravované operační systémy jsou navrženy pro použití v cloudu a nejsou veřejně přístupná.
+Operační systém týmu poskytuje obrázků ve formuláři z virtuálních pevných disků, nasadit na všechny hostitele a hostů virtuálních počítačů v Azure produkčního prostředí. Tým vytváří tyto základní Image prostřednictvím automatizovaného offline procesu sestavení. Základní image je verze operačního systému, ve kterém jádra a další součásti core byly upravit a optimalizovaná pro podporu prostředí Azure.
 
-**Hostitele a nativní OS**: hostitelským operačním systémem a nativní operačního systému jsou posílené bitové kopie operačního systému, které jsou hostiteli infrastruktury agenty (IM) a spusťte na výpočetním uzlu (spouští jako první virtuální počítač na uzlu) a uzly úložiště. Výhody použití optimalizované základní bitové kopie hostitele a nativní operačního systému je to, že snižuje možnosti útoku na zveřejněný prostřednictvím rozhraní API nebo nepoužívané součásti, které mohou představovat vysoké bezpečnostní rizika a zvýšit nároky na operačního systému. Tyto operační systémy snížení nároků zahrnují jenom součásti potřebné k Azure. To zlepšuje výkon a snižuje prostor pro útoky.
+Existují tři typy imagí operačních systémů spravovaných prostředků infrastruktury:
 
-**Hostovaného operačního systému**: Azure interních komponent běžící na virtuálních počítačích hostovaného operačního systému mít žádná možnost spustit protokol RDP (Remote Desktop) na rozdíl od externí zákazníky. Jakékoli změny nastavení konfigurace standardních hodnot by byly zapotřebí k projít změn a procesu správy verzí.
+- Hostitel: Přizpůsobené operační systém, na kterém běží na hostiteli virtuálních počítačů.
+- Nativní: Nativní operační systém, který běží na klientům (například Azure Storage). Tento operační systém nemá jakéhokoli hypervisoru.
+- Host: Hostovaný operační systém, na kterém běží na virtuálních počítačích hosta.
+
+Hostitele a nativní FC spravovat operační systémy jsou určeny k použití v cloudu a nejsou veřejně přístupné.
+
+#### <a name="host-and-native-operating-systems"></a>Hostitele a nativní operačních systémů
+
+Hostitele a nativní jsou Image posílené operačního systému, které hostitele prostředků infrastruktury agentů a běží na výpočetním uzlu (spouští jako první virtuální počítač na uzlu) a uzly úložiště. Výhodou použití optimalizované základní Image z hostitele a nativní je, že ji snižuje plochu vystavenou ani rozhraní API nepoužívané komponenty. Tyto může představovat riziko zabezpečení, vysoké a zvyšovat nároky na operační systém. Operační systémy nízkými nároky na prostředky pouze obsahují součásti potřebné k Azure.
+
+#### <a name="guest-operating-system"></a>Hostovaný operační systém
+
+Interní komponenty Azure běží na hostovaného operačního systému virtuálních počítačů mají nebude mít možnost spustit Remote Desktop Protocol. Jakékoli změny nastavení konfigurace standardních hodnot musí projít změn a správy proces vydávání verzí.
 
 ## <a name="azure-datacenters"></a>Datacentra Azure
-Tým Microsoft cloudové infrastruktury a operací (MCIO) spravuje společnosti Microsoft fyzické infrastruktury a datacenter zařízení pro všechny Microsoft online services. MCIO především zodpovídá za správu fyzických a prostředí ovládacích prvků v datových centrech, jakož i správa a podpůrné vnější hraniční síťových zařízení (hraniční směrovače a Datacenter směrovače). MCIO zodpovídá taky za nastavení hardwaru úplného serveru minimálně na stojany v datovém centru. Zákazníci, mají bez přímé interakce s Azure.
+Tým Microsoft cloudové infrastruktury a operací (MCIO) spravuje fyzických systémů infrastruktury a datacenter pro všechny Microsoft online services. MCIO primárně zodpovídá za správu fyzických a prostředí ovládací prvky v rámci datových center, jakož i správě a podpoře vnější hraniční síti zařízení (např. hraniční směrovače a datacenter směrovače). MCIO zodpovídá také za nastavení úplné minimální serverový hardware v stojanů v datovém centru. Zákazníci mají bez přímé interakce s Azure.
 
-## <a name="service-management--service-teams"></a>Správa služby a služby týmy
-Počet engineering skupin, které jsou známé jako "Service týmy, spravuje podporu služby Azure. Každý týmů služba je zodpovědná za oblast podpory pro Azure. Každý tým služby musíte nastavit technika k dispozici 24 x 7 prozkoumat a vyřešit chyby ve službě. Týmy služeb, ve výchozím nastavení, nemají fyzický přístup k hardwaru v Azure.
+## <a name="service-management-and-service-teams"></a>Správa služeb a týmy služeb
+Různé technických skupin, označované jako týmy služeb spravovat podporu služby Azure. Každý tým služba je zodpovědná za oblasti podpory pro Azure. Každý tým služby musíte provést zpětnou analýzu k dispozici 24 x 7 prozkoumat a vyřešit chyby ve službě. Týmy služeb, ve výchozím nastavení, nemají fyzický přístup k hardwaru fungování v Azure.
 
-Týmy služby jsou:
+Týmy služeb jsou:
 
 - Aplikační platforma
 - Azure Active Directory
 - Azure Compute
-- Azure Net
-- Cloudové služby inženýrství
+- Síť Azure
+- Cloudového inženýrství služba
 - ISSD: zabezpečení
 - Multi-factor Authentication
 - SQL Database
 - Úložiště
 
 ## <a name="types-of-users"></a>Typy uživatelů
-Všechny Azure interní uživatelé mají stav zaměstnanec zařazené do kategorie s úrovní citlivosti, který definuje přístup pro data zákazníků (přístupu nebo žádný přístup). Zaměstnanci (nebo dodavatelů) společnosti Microsoft jsou považovány za interní uživatele. Všichni ostatní uživatelé jsou považovány za externí uživatele. Oprávnění uživatele do Azure (autorizace oprávnění po provedení ověřování) jsou popsané v následující tabulce:
+Zaměstnanci (nebo dodavatele) společnosti Microsoft jsou považovány za interní uživatele. Všichni ostatní uživatelé jsou považovány za externí uživatele. Všichni Azure interní uživatelé mají stav jejich zaměstnance zařazený do kategorie s úrovní citlivosti, který definuje přístup k zákaznickým datům (přístup nebo žádný přístup). Oprávnění uživatele pro Azure (povolení oprávnění po provedení ověřování) jsou popsány v následující tabulce:
 
-| Role | Interní nebo externí | Úroveň velkých a malých písmen | Autorizovaný oprávnění a funkce prováděné | Typ přístupu
+| Role | Interní nebo externí | Úroveň citlivosti | Autorizované oprávnění a funkce prováděné | Typ přístupu
 | --- | --- | --- | --- | --- |
-| Azure pracovníka Datacenter | Interní | Žádný přístup k datům zákazníka | Správa fyzického zabezpečení místní; Proveďte hlídky směřující datového centra a monitorovat všechny vstupní body; Poskytovat služby doprovodu do a z datacenter u některých jiných vymazat pracovníky, kteří poskytují obecné služby (jídlo, čištění) nebo pracovní IT v rámci datového centra; Proveďte běžné monitorování a údržby síťový hardware; Provádění správy incidentů a opravu práce pomocí různých nástrojů; Proveďte běžné monitorování a údržby fyzického hardwaru v datových centrech; Přístup k prostředí na vyžádání od vlastníků vlastnost. Umožňující provádět forenzní šetření, protokolování incidentů sestavy a vyžadují povinné bezpečnostního školení & požadavky zásad; Provozní vlastnictví a údržba nástroje důležité zabezpečení, například skenery a shromáždění protokolů. | Trvalý přístup do prostředí |
-| Microsoft Azure incidentu třídění (rychlé odpovědi Engineers) | Interní | Přístup k datům zákazníka | Správa komunikace mezi týmy operace infrastruktury, podpory a Azure Engineering; Třídění platformy incidenty, problémy při nasazení a žádosti o služby. | Jenom při běhu je přístup k prostředí - s omezeným přístupem trvalé pro systémy bez zákazníka |
-| Techniky nasazení Microsoft Azure | Interní | Přístup k datům zákazníka | Proveďte nasazení/upgrade součástí platformy, softwaru a změny konfigurace naplánované na podporu Microsoft Azure. | Jenom při běhu je přístup k prostředí - s omezeným přístupem trvalé pro systémy bez zákazníka |
-| Microsoft Azure výpadku oddělení podpory zákazníků (klientů) | Interní | Přístup k datům zákazníka | Ladění a diagnostikovat výpadků platformy a chyb pro jednotlivé výpočetní klientů a účty Microsoft Azure; Analýza chyb a jednotky důležité opravy na platformy nebo zákazníka, jednotky technické vylepšení napříč podpory. | Jenom při běhu je přístup k prostředí - s omezeným přístupem trvalé pro systémy bez zákazníka |
-| Technici živý web Microsoft Azure (monitorování Engineers) & Incident | Interní | Přístup k datům zákazníka | Odpovědnost za pro diagnostiku a zmírnění platformy stavu pomocí diagnostických nástrojů; Jednotka opravy pro svazek ovladače, opravte položky vyplývající z výpadky a pomůže akce obnovení výpadku. | Jenom při běhu je přístup k prostředí - s omezeným přístupem trvalé pro systémy bez zákazníka |
-|Zákazníci společnosti Microsoft Azure | Externí | neuvedeno | neuvedeno | neuvedeno |
+| Technika datové centrum Azure | Interní | Žádný přístup k zákaznickým datům | Spravujte fyzického zabezpečení místním prostředí. Chování hlídky do a z datového centra a monitorovat všechny vstupní body. Přepravu do proměnné a z datového centra určité-vymazat pracovníky, kteří poskytují obecné služby (například jídlo nebo čištění) nebo IT práce v rámci datového centra. Provádění rutiny monitorování a údržby síťového hardwaru. Provedení incidentu správy a typu break-fix práce pomocí různých nástrojů. Provádění rutiny monitorování a údržby fyzického hardwaru v datových centrech. Přístup k prostředí na vyžádání z vlastníkům nemovitostí. Dokáže provádět forenzní šetření, protokolování incidentů sestavy a vyžadují povinné zabezpečení školení a zásad požadavků. Provozní vlastnictví a údržby důležité zabezpečení nástrojů, jako je například skenery a shromažďování protokolů. | Trvalý přístup k prostředí. |
+| Azure incidentu třídění (rychlá reakce engineers) | Interní | Přístup k zákaznickým datům | Spravujte komunikaci mezi MCIO, podpory a vývojové týmy. Třídění platformu, incidentů, problémů s nasazením a žádosti o služby. | Just-in-time přístup k prostředí, s omezenou trvalého přístupu k systémům jiných zákazníků. |
+| Techniky nasazení Azure | Interní | Přístup k zákaznickým datům | Nasazení a upgrade komponenty platformy, softwaru a změny konfigurace plánované podporu Azure. | Just-in-time přístup k prostředí, s omezenou trvalého přístupu k systémům jiných zákazníků. |
+| Podpora výpadek zákazníka v systému Azure (tenant) | Interní | Přístup k zákaznickým datům | Ladění a Diagnostika platformy výpadky a chyb pro tenanty jednotlivé výpočetní prostředky a účty Azure. Analýza chyb. Jednotky důležité opravy na platformy nebo zákazníků a vylepšovat technické napříč podpory. | Just-in-time přístup k prostředí, s omezenou trvalého přístupu k systémům jiných zákazníků. |
+| Technici Azure živého webu (monitorování engineers) a incident | Interní | Přístup k zákaznickým datům | Diagnostikovat a zmírnit stavu platformy pomocí diagnostických nástrojů. Jednotka opravy ovladačů svazků, opravte položek vyplývající z výpadky a pomáhají akce obnovení výpadek. | Just-in-time přístup k prostředí, s omezenou trvalého přístupu k systémům jiných zákazníků. |
+|Zákazníci Azure | Externí | neuvedeno | neuvedeno | neuvedeno |
 
-Azure k ověřování organizace uživatelů a zákazníky (nebo procesy, které jednají jménem organizace uživatelů) používá jedinečné identifikátory pro všechny prostředky nebo zařízení, které jsou součástí prostředí Azure.
+Azure používá jedinečné identifikátory pro ověřování organizace uživatelů a zákazníků (nebo procesy, které jednají jménem organizace uživatelů). To platí pro všechny prostředky a zařízení, které jsou součástí prostředí Azure.
 
-**Interní ověřování Microsoft Azure**: komunikace mezi součástmi Azure interní jsou chráněné pomocí šifrování TLS. Ve většině případů jsou podepsané svým držitelem certifikáty X.509. Výjimky jsou vytvářeny pro certifikáty pomocí připojení, která může být subjekty mimo síť Azure a FCs. FCs mít certifikáty vydané Microsoft Certificate z autority (CA), která je zálohovaný díky důvěryhodné kořenové certifikační Autority. To umožňuje snadno převracet FC veřejné klíče. Veřejné klíče FC kromě toho jsou používány vývojové nástroje společnosti Microsoft, tak, že když vývojáři odeslání nové Image aplikací, se šifrují s veřejným klíčem FC ochráníte žádné embedded tajných klíčů.
+### <a name="azure-internal-authentication"></a>Interní ověřování Azure
 
-**Ověřování Microsoft Azure hardwaru zařízení**: FC udržuje sadu přihlašovacích údajů (klíče nebo hesla) používá k ověření samotné různé hardwarová zařízení pod její kontrolou. Systém používaný pro přenos, uchování a používání těchto přihlašovacích údajů je určeno k ochraně Azure vývojáře, správci a zálohování služby nebo pracovníky přístup k citlivým, důvěrné nebo soukromé informace.
+Komunikace mezi komponentami Azure interní jsou chráněné pomocí šifrování TLS. Ve většině případů jsou podepsané svým držitelem certifikáty X.509. Certifikáty s připojeními, která je přístupná z mimo síť Azure jsou výjimku, jako jsou certifikáty pro FCs. FCs mít certifikáty vystavené infrastrukturou Certificate Microsoft z Certifikační autority, která je založená na důvěryhodné kořenové certifikační Autority. To umožňuje snadno převracet FC veřejné klíče. Kromě toho vývojovými nástroji společnosti Microsoft pomocí veřejných klíčů FC. Při vývojářům odeslat nové Image aplikací, obrázky budou šifrované s veřejným klíčem FC, pokud chcete chránit všechny vložené tajné klíče.
 
-Šifrování na základě hlavní identity FC, veřejný klíč se používá v nastavení FC a Rekonfigurace FC časový limit pro přenos přihlašovací údaje používané pro přístup k síťové hardwarová zařízení. Přihlašovací údaje jsou načteny a dešifrovat FC, když je potřebuje.
+### <a name="azure-hardware-device-authentication"></a>Ověřování Azure hardwaru zařízení
 
-**Síťová zařízení**: účty služby sítě jsou nakonfigurované tým sítí Azure povolení klienta Microsoft Azure k ověření do síťových zařízení (směrovače, přepínače a nástroje pro vyrovnávání zatížení).
+FC udržuje sadu přihlašovacích údajů (klíče a hesla) používá ke svému ověření ke různých hardwarových zařízení pod svou kontrolou. Společnost Microsoft používá systém zabránit přístupu k těmto přihlašovacím údajům. Konkrétně přenosu, trvalé a použijte tyto přihlašovací údaje slouží k zabránění vývojáře v Azure, správce a zálohování služby a pracovníky přístup k citlivé, důvěrné nebo soukromé informace.
 
-## <a name="secure-service-administration"></a>Zabezpečení služby správy
-Microsoft Azure operations pracovníky nutné použít Správce zabezpečení pracovních stanic (pily; zákazníkům může implementovat podobné ovládacích prvků pomocí privilegovaného přístupu pracovní stanice nebo PAWs). Přístup pila je rozšířením zavedené doporučený postup pro správu pracovníky používat samostatný správce a uživatelské účty. Tento postup používá jednotlivě přiřazené účtu správce, která je oddělená od uživatele standardní uživatelský účet. VIDĚLI sestavení na tento účet oddělení postupů tím, že poskytuje trustworthy pracovní stanice pro tyto citlivé účty.
+Společnost Microsoft používá šifrování založené na veřejný klíč FC hlavní identity. K tomu dochází v nastavení FC a čas Rekonfigurace FC, přenášet pověření používaná pro přístup k síti hardwarovým zařízením. Když FC potřebuje přihlašovací údaje, FC načte a dešifruje je.
+
+### <a name="network-devices"></a>Síťová zařízení
+
+Tým Azure sítě konfiguruje účty síťové služby pro umožnění spolupráce klienta Azure k ověření do síťových zařízení (směrovače, přepínače a nástroje pro vyrovnávání zatížení).
+
+## <a name="secure-service-administration"></a>Zabezpečení správy služeb
+Pracovníci na provoz Azure je potřeba pomocí zabezpečených pracovních stanic správců (Microsoftu). Zákazníci můžou implementovat podobně jako ovládací prvky pomocí pracovní stanice s privilegovaným přístupem. S Microsoftu pracovníci správy použít jednotlivě přiřazený účet pro správu, která je oddělená od standardního uživatelského účtu uživatele. SAW navazuje na tento postup oddělení účet tím, že poskytuje pro citlivé účty důvěryhodné pracovní stanice.
 
 ## <a name="next-steps"></a>Další postup
-Další informace o funkci Microsoft pro zabezpečení infrastruktury Azure najdete v tématu:
+Další informace o co společnost Microsoft k zajištění infrastruktury Azure, najdete v tématech:
 
-- [Azure zařízení, místní a fyzické zabezpečení](azure-physical-security.md)
+- [Zařízení Azure, místním prostředí a fyzické zabezpečení](azure-physical-security.md)
 - [Dostupnost infrastruktury Azure](azure-infrastructure-availability.md)
 - [Architektura sítě Azure](azure-infrastructure-network.md)
 - [Produkční sítě Azure](azure-production-network.md)
-- [Zabezpečení funkce Microsoft Azure SQL Database](azure-infrastructure-sql.md)
-- [Azure produkční operace a Správa](azure-infrastructure-operations.md)
+- [Funkce zabezpečení Azure SQL Database](azure-infrastructure-sql.md)
+- [Operace Azure výroby a správu](azure-infrastructure-operations.md)
 - [Monitorování infrastruktury Azure](azure-infrastructure-monitoring.md)
-- [Integritu infrastruktury Azure](azure-infrastructure-integrity.md)
-- [Ochrana dat zákazníka v Azure](azure-protection-of-customer-data.md)
+- [Integrity infrastruktury Azure](azure-infrastructure-integrity.md)
+- [Ochrana dat zákazníků Azure](azure-protection-of-customer-data.md)

@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 06fd547ff87263b660e697693c65d9ac1a907628
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 41fe350fd712f6c521a9020af9a540e554abe94b
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37866721"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39170595"
 ---
 # <a name="how-to-teach-with-conversation-learner"></a>Výuka s využitím služby Conversation Learner 
 
@@ -56,9 +56,10 @@ Zapnout akcí v systému před předchozí | 4 |
 Entity k dispozici na oplátku před aktuální zapnout | 4 | 
 Zapnout projevy uživatele před aktuální | 5 | 
 
-Všimněte si, že výběr akce nevyužívá obsah akcí v systému – text, obsah karty, nebo název rozhraní API nebo chování – pouze identity akce systému.  V důsledku toho při změně obsahu akci nemění chování výběru modelu akce.
-
-Dále Všimněte si, že obsah/hodnoty entit nejsou použít – pouze jejich přítomnosti nebo absenci.
+> [!NOTE]
+> Výběr akce nevyužívá obsah akcí v systému – text, obsah karty, nebo název rozhraní API nebo chování – pouze identity akce systému.  V důsledku toho při změně obsahu akci nemění chování výběru modelu akce.
+>
+> Dále obsah a hodnoty entit nejsou použít – pouze jejich přítomnosti nebo absenci.
 
 Pokud výběr akce se nechová podle očekávání, tady jsou možné náhrad:
 

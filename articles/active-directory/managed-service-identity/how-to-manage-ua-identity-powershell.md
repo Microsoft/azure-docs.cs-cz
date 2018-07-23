@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/16/2018
 ms.author: daveba
-ms.openlocfilehash: 6fb376cb5924fc283fa405f1a03643d79bac44b0
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: def5788b83116ce0843f1fdd86933830cabc9ee2
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39159011"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39187992"
 ---
 # <a name="create-list-or-delete-a-user-assigned-identity-using-azure-powershell"></a>Vytvoření seznamu nebo odstranění identity přiřazené uživateli, pomocí Azure Powershellu
 
@@ -35,10 +35,13 @@ V tomto článku se dozvíte, jak vytvářet, seznamu a odstraňovat identity p�
 - Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
 - Nainstalujte [nejnovější verzi Azure Powershellu](https://www.powershellgallery.com/packages/AzureRM) Pokud jste tak již neučinili.
 - Pokud se rozhodnete nainstalovat a používat PowerShell místně, tento kurz vyžaduje Azure PowerShell verze modulu 5.7.0 nebo novější. Verzi zjistíte spuštěním příkazu ` Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Login-AzureRmAccount` pro vytvoření připojení k Azure.
+- Váš účet k provádění operací správy v tomto článku, potřebuje následující přiřazení rolí:
+    - [Spravovaná identita Přispěvatel](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) role k vytvoření, čtení (list), aktualizace a odstranění identity přiřazené uživateli.
+    - [Operátor Identity spravované](/azure/role-based-access-control/built-in-roles#managed-identity-operator) role ke čtení vlastnosti identity přiřazené uživateli (seznam).
 
 ## <a name="create-a-user-assigned-identity"></a>Vytvoření identity přiřazené uživatelem
 
-K vytvoření identity přiřazené uživateli, použijte [New-AzureRmUserAssignedIdentity](/powershell/module/azurerm.managedserviceidentity/new-azurermuserassignedidentity) příkazu. `ResourceGroupName` Parametr určuje skupinu prostředků, kde k vytvoření identity přiřazené uživateli a `-Name` parametr určuje její název. Minimálně je třeba přiřadit svůj účet [Přispěvatel spravovaných identit](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) role pro vytvoření identity přiřazené uživateli. Nahradit `<RESOURCE GROUP>` a `<USER ASSIGNED IDENTITY NAME>` parametr hodnoty vlastními hodnotami:
+K vytvoření identity přiřazené uživateli, použijte [New-AzureRmUserAssignedIdentity](/powershell/module/azurerm.managedserviceidentity/new-azurermuserassignedidentity) příkazu. `ResourceGroupName` Parametr určuje skupinu prostředků, kde k vytvoření identity přiřazené uživateli a `-Name` parametr určuje její název. Nahradit `<RESOURCE GROUP>` a `<USER ASSIGNED IDENTITY NAME>` parametr hodnoty vlastními hodnotami:
 
 [!INCLUDE[ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
@@ -47,7 +50,7 @@ New-AzureRmUserAssignedIdentity -ResourceGroupName <RESOURCEGROUP> -Name <USER A
 ```
 ## <a name="list-user-assigned-identities"></a>Uživatel seznamu identit přiřazených
 
-Seznam uživatelsky přiřazených identit, použijte [Get-AzureRmUserAssigned](/powershell/module/azurerm.managedserviceidentity/get-azurermuserassignedidentity) příkazu.  `-ResourceGroupName` Parametr určuje skupinu prostředků, ve kterém byla vytvořena identity přiřazené uživateli. Minimálně je třeba přiřadit svůj účet [operátor spravovaných identit](/azure/role-based-access-control/built-in-roles#managed-identity-operator) role má seznam vlastností identity přiřazené uživateli. Nahraďte `<RESOURCE GROUP>` s vlastní hodnotou:
+Seznam uživatelsky přiřazených identit, použijte [Get-AzureRmUserAssigned](/powershell/module/azurerm.managedserviceidentity/get-azurermuserassignedidentity) příkazu.  `-ResourceGroupName` Parametr určuje skupinu prostředků, ve kterém byla vytvořena identity přiřazené uživateli. Nahraďte `<RESOURCE GROUP>` s vlastní hodnotou:
 
 ```azurepowershell-interactive
 Get-AzureRmUserAssignedIdentity -ResourceGroupName <RESOURCE GROUP>
@@ -58,7 +61,7 @@ V odpovědi, identity uživatelů mají `"Microsoft.ManagedIdentity/userAssigned
 
 ## <a name="delete-a-user-assigned-identity"></a>Odstranit identity přiřazené uživateli
 
-Chcete-li odstranit identitu uživatele, použijte [odebrat AzureRmUserAssignedIdentity](/powershell/module/azurerm.managedserviceidentity/remove-azurermuserassignedidentity) příkazu.  `-ResourceGroupName` Parametr určuje skupinu prostředků, ve kterém byla vytvořena identity přiřazené uživateli a `-Name` parametr určuje její název. Minimálně je třeba přiřadit svůj účet [Přispěvatel spravovaných identit](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) role k odstranění identity přiřazené uživateli. Nahradit `<RESOURCE GROUP>` a `<USER ASSIGNED IDENTITY NAME>` parametry hodnoty vlastními hodnotami:
+Chcete-li odstranit identitu uživatele, použijte [odebrat AzureRmUserAssignedIdentity](/powershell/module/azurerm.managedserviceidentity/remove-azurermuserassignedidentity) příkazu.  `-ResourceGroupName` Parametr určuje skupinu prostředků, ve kterém byla vytvořena identity přiřazené uživateli a `-Name` parametr určuje její název. Nahradit `<RESOURCE GROUP>` a `<USER ASSIGNED IDENTITY NAME>` parametry hodnoty vlastními hodnotami:
 
  ```azurecli-interactive
 Remove-AzurRmUserAssignedIdentity -ResourceGroupName <RESOURCE GROUP> -Name <USER ASSIGNED IDENTITY NAME>

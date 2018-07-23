@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/13/2018
+ms.date: 07/20/2018
 ms.author: kumud
-ms.openlocfilehash: dd92fca89e3bdb123be46a52708feec1c939f7cc
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 8d354e3f409a51bdbb03ad340c951c39cc6137e1
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39112718"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39186439"
 ---
 # <a name="understand-load-balancer-probes"></a>Porozumění testům nástroje pro vyrovnávání zatížení
 
@@ -28,7 +28,7 @@ Nástroj Azure Load Balancer používá k určení, která instance back-endový
 
 Sondy stavu služby se řídí, zda jsou vytvořeny nové toky v dobrém stavu back-endových instancí. Při selhání sondy stavu nástroje pro vyrovnávání zatížení zastaví odesílání nových toků do příslušné instance není v pořádku.  Navázané připojení TCP pokračovat po selhání sondy stavu.  Stávající toky UDP se přesune z instance není v pořádku, k jiné instanci v pořádku v back-endový fond.
 
-Pokud selžou i všechny testy pro back-endový fond, základní nástroje pro vyrovnávání zatížení se ukončí všechny existující Velkoobjemové toky na back-endového fondu, zatímco Load balancer úrovně Standard vám umožní zavedené Velkoobjemové toky pokračovat; žádné nové toky se odešlou do back-endový fond.  Všechny stávající toky UDP se ukončí u úrovní Basic a Standard nástroje pro vyrovnávání zatížení, pokud všechny testy pro back-end fondu selhání.
+Pokud selžou i všechny testy pro back-endový fond, základní nástroje pro vyrovnávání zatížení se ukončí všechny existující Velkoobjemové toky na back-endového fondu, zatímco Load balancer úrovně Standard vám umožní zavedené Velkoobjemové toky pokračovat; žádné nové toky se odešlou do back-endový fond.  Všechny stávající toky UDP se ukončí u úrovní Basic a Standard nástroje pro vyrovnávání zatížení, pokud všechny testy pro back-end fondu selhání.  Je přenos UDP a neexistuje žádný stav toku sledovány pro protokol UDP.  Za předpokladu, algoritmu hash vytváří stejný výsledek, tok datagramy zůstane na konkrétní instanci.  Změnu sondu stavu v back-endový fond může nové datagramy přesunout do jiné instance v back-endový fond.
 
 Role cloudové služby (role pracovního procesu a webové role) hostovaného agenta použít pro test monitorování. Při použití cloudových služeb s virtuálními počítači IaaS za nástrojem pro vyrovnávání zatížení musí být nakonfigurovaný protokol TCP nebo HTTP vlastních testů stavu paměti.
 

@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 06/30/2018
-ms.openlocfilehash: dc1f8581df5dc7c5728094577298ba078cc2c527
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 52dfac826de86f67b3143cce49c35088547c4b39
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37342913"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171768"
 ---
 # <a name="limitations-in-azure-database-for-postgresql"></a>Omezení ve službě Azure Database for PostgreSQL
 Následující části popisují kapacitu a limity funkční ve službě database.
@@ -55,11 +55,12 @@ Systému Azure vyžaduje pět připojení ke sledování serveru Azure Database 
 ### <a name="vnet-service-endpoints"></a>Koncové body služby virtuální sítě
 - Podpora pro koncové body služby virtuální sítě je pouze pro servery pro obecné účely a optimalizovaný pro paměť.
 
-### <a name="point-in-time-restore-pitr"></a>Obnovení bodu v čas-(PITR)
-- Při použití funkce PITR se vytvoří nový server se stejnou konfiguraci jako server, který je založen na.
+### <a name="restoring-a-server"></a>Obnovení serveru
+- Při použití funkce PITR se vytvoří nový server se stejnou cenovou úroveň konfiguraci jako server, který je založen na.
+- Nový server vytvořené během obnovení nemá pravidla brány firewall, které existovaly na původním serveru. Pravidla brány firewall musí nastavit zvlášť pro tento nový server.
 - Obnovení odstraněné serveru není podporováno.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 - Vysvětlení [co je k dispozici v jednotlivých cenových úrovní](concepts-pricing-tiers.md)
 - Další informace o [podporované verze databáze PostgreSQL](concepts-supported-versions.md)
 - Kontrola [jak zálohovat a obnovovat server ve službě Azure Database for PostgreSQL pomocí webu Azure portal](howto-restore-server-portal.md)

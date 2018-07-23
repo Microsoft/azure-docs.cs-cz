@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 07/19/18
 ms.author: sakthivetrivel
 ms.custom: mvc
-ms.openlocfilehash: 629659a3a5090bae987be77637a574fcbe0abe98
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 4f8df8e7004ca3cee832b6230dc153b21e2a6c18
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39163884"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39186709"
 ---
 # <a name="cluster-autoscaler-on-azure-kubernetes-service-aks---preview"></a>Cluster automatického škálování ve službě Azure Kubernetes Service (AKS) – ve verzi Preview
 
@@ -32,7 +32,19 @@ Tento dokument předpokládá, že máte cluster AKS RBAC povolena. Pokud potře
 
 ## <a name="gather-information"></a>Shromážděte informace
 
-V následující tabulce jsou uvedeny všechny informace, které je nutné zadat v definici automatického škálování.
+Následující seznam obsahuje všechny informace, které je nutné zadat v definici automatického škálování.
+
+- *ID předplatného*: ID odpovídající předplatné použité pro tento cluster
+- *Název skupiny prostředků* : název clusteru, patří do skupiny prostředků 
+- *Název clusteru*: název clusteru
+- *ID klienta*: ID aplikace, které udělují oprávnění generování kroku
+- *Tajný kód klienta*: tajný kód aplikace, které udělují oprávnění generování kroku
+- *ID tenanta*: ID tenanta (Vlastník účtu)
+- *Skupina prostředků uzel*: název skupiny prostředků obsahující agentské uzly v clusteru
+- *Název fondu uzlu*: název uzlu fondu, které byste o ni stupnice
+- *Minimální počet uzlů*: minimální počet uzlů v clusteru
+- *Maximální počet uzlů*: maximální počet uzlů v clusteru
+- *Typ virtuálního počítače*: služby sloužící ke generování clusteru Kubernetes
 
 Získejte ID vašeho předplatného: 
 
@@ -91,19 +103,8 @@ $ echo AKS | base64
 QUtTCg==
 ```
 
-## <a name="create-secret"></a>Vytvoření tajného klíče
-Na základě těchto dat vytvořte tajný kód k nasazení pomocí na hodnoty zjištěné v předchozích krocích, jako například:
-
-- ClientID: `<base64-encoded-client-id>`
-- ClientSecret: `<base64-encoded-client-secret>`
-- Skupina prostředků: `<base64-encoded-resource-group>` (použít malá písmena)
-- ID předplatného: `<base64-encode-subscription-id>`
-- ID Tenanta: `<base64-encoded-tenant-id>`
-- VMType: `<base64-encoded-vm-type>`
-- Název clusteru: `<base64-encoded-clustername>`
-- NodeResourceGroup: `<base64-encoded-node-resource-group>` (hodnota popisku použijte verbatim. Velká a malá písmena)
-
-v následujícím formátu:
+## <a name="create-secret"></a>Vytvoření tajného kódu
+Na základě těchto dat vytvořte tajný kód k nasazení pomocí na hodnoty zjištěné v předchozích krocích v následujícím formátu:
 
 ```yaml
 ---

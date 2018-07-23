@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: 21e02a9ae4679c1f9521cc188a6f72878276fb93
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: ba0d81761904be74632f8f0025488b7f501bd715
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39076008"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39185995"
 ---
 # <a name="frequently-asked-questions-for-remote-monitoring-solution-accelerator"></a>Nejčastější dotazy k akcelerátoru řešení vzdáleného monitorování
 
@@ -42,7 +42,7 @@ Další informace najdete v tématu [klíč upgradu mapě zobrazíte zařízení
 
 Můžete si také prostudovat některé další funkce a možnosti akcelerátorů řešení IoT:
 
-* [Prozkoumejte možnosti akcelerátor řešení vzdálené monitorování](iot-accelerators-remote-monitoring-explore.md)
+* [Prozkoumejte možnosti akcelerátor řešení vzdálené monitorování](quickstart-remote-monitoring-deploy.md)
 * [Přehled akcelerátorů řešení prediktivní údržby](iot-accelerators-predictive-overview.md)
 * [Nasazení akcelerátoru řešení připojená továrna](quickstart-connected-factory-deploy.md)
 * [Zabezpečení IoT od počátku](/azure/iot-fundamentals/iot-security-ground-up)

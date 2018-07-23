@@ -79,6 +79,10 @@
           href: luis-tutorial-batch-testing.md
         - name: S využitím vzorů
           href: luis-tutorial-pattern.md
+        - name: S využitím rolí
+          href: luis-tutorial-pattern-roles.md
+        - name: S využitím entity Pattern.any
+          href: luis-tutorial-pattern-any.md
 - name: Ukázky
   items:
     - name: Ukázky kódů
@@ -194,7 +198,7 @@
     - name: Test
       items:
         - name: Interaktivní testování
-          href: interactive-test.md
+          href: luis-interactive-test.md
         - name: Dávkové testování
           href: luis-how-to-batch-test.md
     - name: Publikování aplikace
@@ -226,7 +230,7 @@
             - name: Rozložení kvóty koncových bodů napříč klíči s využitím Traffic Manageru
               href: luis-traffic-manager.md
     - name: Migrace na API V2
-      href: migration-v1-to-v2.md
+      href: luis-migration-api-v1-to-v2.md
     - name: Vyhledání oblasti prostřednictvím kódu programu
       items:
         - name: 'Pomocí C#'

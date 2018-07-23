@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/15/2018
 ms.author: daveba
-ms.openlocfilehash: 8851d2cad5958b01df1d21ea44e5c03bb788c83b
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: c90ab99908f2fd8095eca1a8d58582fb339362be
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37904038"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39187974"
 ---
 # <a name="configure-a-virtual-machine-scale-set-managed-service-identity-msi-using-azure-cli"></a>Konfigurace virtuálního počítače škálovací sady Identity spravované služby (MSI) pomocí rozhraní příkazového řádku Azure
 
@@ -35,13 +35,15 @@ V tomto článku se dozvíte, jak provádět následující operace identita spr
 ## <a name="prerequisites"></a>Požadavky
 
 - Pokud nejste obeznámeni s identita spravované služby, podívejte se [oddílu přehled](overview.md). **Nezapomeňte si přečíst [rozdíl mezi přiřazenou systémem a identity přiřazené uživateli](overview.md#how-does-it-work)**.
-- Pokud ještě nemáte účet Azure [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) než budete pokračovat.
-
-Spuštění ukázkové skripty rozhraní příkazového řádku, máte tři možnosti:
-
-- Použití [Azure Cloud Shell](../../cloud-shell/overview.md) z portálu Azure portal (viz další část).
-- Použijte vložené Azure Cloud Shell pomocí "Vyzkoušet" tlačítka, nachází v pravém horním rohu každý blok kódu.
-- [Nainstalujte nejnovější verzi 2.0 rozhraní příkazového řádku](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.13 nebo novější) Pokud byste radši chtěli použít místní konzoly příkazového řádku. 
+- Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
+- Váš účet k provádění operací správy v tomto článku, potřebuje následující přiřazení rolí:
+    - [Přispěvatel virtuálních počítačů](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) vytvořit škálovací sadu virtuálních počítačů a povolit a odebrat ze škálovací sady virtuálních počítačů spravovaných identitu přiřazenou systémem.
+    - [Spravovaná identita Přispěvatel](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) role pro vytvoření identity přiřazené uživateli.
+    - [Operátor Identity spravované](/azure/role-based-access-control/built-in-roles#managed-identity-operator) roli přiřadit a odebrat identity přiřazené uživateli, ze kterých a do škálovací sady virtuálních počítačů.
+- Spuštění ukázkové skripty rozhraní příkazového řádku, máte tři možnosti:
+    - Použití [Azure Cloud Shell](../../cloud-shell/overview.md) z portálu Azure portal (viz další část).
+    - Použijte vložené Azure Cloud Shell pomocí "Vyzkoušet" tlačítka, nachází v pravém horním rohu každý blok kódu.
+    - [Nainstalujte nejnovější verzi 2.0 rozhraní příkazového řádku](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.13 nebo novější) Pokud byste radši chtěli použít místní konzoly příkazového řádku. 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -53,7 +55,7 @@ V této části se dozvíte, jak můžete povolit nebo zakázat systému identit
 
 Vytvoření virtuálního počítače škálovací sady s přiřazenou identity povoleno systémem:
 
-1. Pokud používáte rozhraní příkazového řádku Azure v místní konzole, nejdřív přihlásit k Azure s využitím [az login](/cli/azure/reference-index#az_login). Použijte účet, který je přidružený k předplatnému Azure, ve které chcete nasadit škálovací sadu virtuálních počítačů:
+1. Pokud používáte Azure CLI v místní konzole, nejprve se přihlaste k Azure pomocí příkazu [az login](/cli/azure/reference-index#az_login). Použijte účet, který je přidružený k předplatnému Azure, ve které chcete nasadit škálovací sadu virtuálních počítačů:
 
    ```azurecli-interactive
    az login
@@ -65,7 +67,7 @@ Vytvoření virtuálního počítače škálovací sady s přiřazenou identity 
    az group create --name myResourceGroup --location westus
    ```
 
-3. Vytvoření virtuálního počítače škálovací sady s použitím [az vmss vytvořit](/cli/azure/vmss/#az_vmss_create) . Následující příklad vytvoří škálovací sadu virtuálních počítačů *myVMSS* s identitou přiřazenou systémem, jak to požadoval `--assign-identity` parametru. `--admin-username` a `--admin-password` parametry zadejte účet správce jméno a heslo pro přihlášení k virtuálnímu počítači. Aktualizujte tyto hodnoty podle požadavků vašeho prostředí: 
+3. Vytvoření virtuálního počítače škálovací sady s použitím [az vmss vytvořit](/cli/azure/vmss/#az_vmss_create) . Následující příklad vytvoří škálovací sadu virtuálních počítačů *myVMSS* s identitou přiřazenou systémem, jak to požadoval `--assign-identity` parametru. Parametry `--admin-username` a `--admin-password` určují uživatelské jméno a heslo účtu správce pro přihlášení k virtuálnímu počítači. Aktualizujte tyto hodnoty odpovídajícím způsobem pro vaše prostředí: 
 
    ```azurecli-interactive 
    az vmss create --resource-group myResourceGroup --name myVMSS --image win2016datacenter --upgrade-policy-mode automatic --custom-data cloud-init.txt --admin-username azureuser --admin-password myPassword12 --assign-identity --generate-ssh-keys
@@ -75,7 +77,7 @@ Vytvoření virtuálního počítače škálovací sady s přiřazenou identity 
 
 Pokud je potřeba povolit identitu přiřazenou systémem v existující škálovací sady virtuálních počítačů Azure:
 
-1. Pokud používáte rozhraní příkazového řádku Azure v místní konzole, nejdřív přihlásit k Azure s využitím [az login](/cli/azure/reference-index#az_login). Použijte účet, který je přidružený k předplatnému Azure, který obsahuje škálovací sadu virtuálních počítačů.
+1. Pokud používáte Azure CLI v místní konzole, nejprve se přihlaste k Azure pomocí příkazu [az login](/cli/azure/reference-index#az_login). Použijte účet, který je přidružený k předplatnému Azure, který obsahuje škálovací sadu virtuálních počítačů.
 
    ```azurecli-interactive
    az login
@@ -90,7 +92,7 @@ Pokud je potřeba povolit identitu přiřazenou systémem v existující škálo
 ### <a name="disable-system-assigned-identity-from-an-azure-virtual-machine-scale-set"></a>Zakázat identitu přiřazenou systémem ze škálovací sady virtuálních počítačů Azure
 
 > [!NOTE]
-> Zakáže identita spravované služby ze Škálovací sady virtuálních počítačů se aktuálně nepodporuje. Do té doby můžete přepínat mezi použitím systém přiřadil a přiřazené identity uživatele. Sledujte novinky.
+> Zakáže identita spravované služby ze Škálovací sady virtuálních počítačů se aktuálně nepodporuje. Do té doby můžete přepínat mezi použitím systém přiřadil a přiřazené identity uživatele. Vraťte se sem a přečtěte si nové informace.
 
 Pokud máte škálovací sadu virtuálních počítačů, které už nepotřebuje identitu přiřazenou systémem, ale stále potřebuje identity přiřazené uživateli, proveďte následující příkaz:
 
@@ -112,13 +114,13 @@ V této části se dozvíte, jak povolit a odebrání identity přiřazené uži
 
 Tato část vás provede vytváření VMSS a přiřazení uživatele VMSS přiřazené identity. Pokud už máte VMSS, kterou chcete použít, tuto část přeskočit a pokračovat na další.
 
-1. Pokud už máte skupinu prostředků, kterou chcete použít, můžete tento krok přeskočit. Vytvoření [skupiny prostředků](~/articles/azure-resource-manager/resource-group-overview.md#terminology) pro členství ve skupině a nasazení vaší identity přiřazené uživateli pomocí [vytvořit skupiny az](/cli/azure/group/#az_group_create). Nezapomeňte nahradit `<RESOURCE GROUP>` a `<LOCATION>` parametr hodnoty vlastními hodnotami. :
+1. Pokud už máte skupinu prostředků, kterou chcete použít, můžete tento krok přeskočit. Vytvoření [skupiny prostředků](~/articles/azure-resource-manager/resource-group-overview.md#terminology) pro členství ve skupině a nasazení vaší identity přiřazené uživateli pomocí [vytvořit skupiny az](/cli/azure/group/#az_group_create). Nezapomeňte nahradit hodnoty parametrů `<RESOURCE GROUP>` a `<LOCATION>` vlastními hodnotami. :
 
    ```azurecli-interactive 
    az group create --name <RESOURCE GROUP> --location <LOCATION>
    ```
 
-2. Vytvoření uživatele přiřadit pomocí identity [vytvoření az identity](/cli/azure/identity#az-identity-create).  `-g` Parametr určuje skupinu prostředků, ve kterém se vytvoří identity přiřazené uživateli, a `-n` parametr určuje její název. Nezapomeňte nahradit `<RESOURCE GROUP>` a `<USER ASSIGNED IDENTITY NAME>` parametr hodnoty vlastními hodnotami:
+2. Vytvoření uživatele přiřadit pomocí identity [vytvoření az identity](/cli/azure/identity#az-identity-create).  `-g` Parametr určuje skupinu prostředků, ve kterém se vytvoří identity přiřazené uživateli, a `-n` parametr určuje její název. Nezapomeňte nahradit hodnoty parametrů `<RESOURCE GROUP>` a `<USER ASSIGNED IDENTITY NAME>` vlastními hodnotami:
 
 [!INCLUDE[ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
@@ -143,7 +145,7 @@ Odpověď obsahuje podrobnosti o identity přiřazené uživateli vytvořené, p
    }
    ```
 
-3. Vytvoření pomocí VMSS [az vmss vytvořit](/cli/azure/vmss/#az-vmss-create). Následující příklad vytvoří VMSS přidružené k nové identity přiřazené uživateli, jak jsou určené `--assign-identity` parametru. Nezapomeňte nahradit `<RESOURCE GROUP>`, `<VMSS NAME>`, `<USER NAME>`, `<PASSWORD>`, a `<USER ASSIGNED IDENTITY ID>` parametr hodnoty vlastními hodnotami. Pro `<USER ASSIGNED IDENTITY ID>`, používat identity přiřazené uživateli prostředek `id` vlastnost vytvořenou v předchozím kroku: 
+3. Vytvoření pomocí VMSS [az vmss vytvořit](/cli/azure/vmss/#az-vmss-create). Následující příklad vytvoří VMSS přidružené k nové identity přiřazené uživateli, jak jsou určené `--assign-identity` parametru. Nezapomeňte nahradit hodnoty parametrů `<RESOURCE GROUP>`, `<VMSS NAME>`, `<USER NAME>`, `<PASSWORD>` a `<USER ASSIGNED IDENTITY ID>` vlastními hodnotami. Pro `<USER ASSIGNED IDENTITY ID>`, používat identity přiřazené uživateli prostředek `id` vlastnost vytvořenou v předchozím kroku: 
 
    ```azurecli-interactive 
    az vmss create --resource-group <RESOURCE GROUP> --name <VMSS NAME> --image UbuntuLTS --admin-username <USER NAME> --admin-password <PASSWORD> --assign-identity <USER ASSIGNED IDENTITY ID>
@@ -151,10 +153,10 @@ Odpověď obsahuje podrobnosti o identity přiřazené uživateli vytvořené, p
 
 ### <a name="assign-a-user-assigned-identity-to-an-existing-azure-vm"></a>Přiřazování identity přiřazené do stávajícího virtuálního počítače Azure uživateli
 
-1. Vytvoření uživatele přiřadit pomocí identity [vytvoření az identity](/cli/azure/identity#az-identity-create).  `-g` Parametr určuje skupinu prostředků, ve kterém se vytvoří identity přiřazené uživateli, a `-n` parametr určuje její název. Nezapomeňte nahradit `<RESOURCE GROUP>` a `<USER ASSIGNED IDENTITY NAME>` parametr hodnoty vlastními hodnotami:
+1. Vytvoření uživatele přiřadit pomocí identity [vytvoření az identity](/cli/azure/identity#az-identity-create).  `-g` Parametr určuje skupinu prostředků, ve kterém se vytvoří identity přiřazené uživateli, a `-n` parametr určuje její název. Nezapomeňte nahradit hodnoty parametrů `<RESOURCE GROUP>` a `<USER ASSIGNED IDENTITY NAME>` vlastními hodnotami:
 
     > [!IMPORTANT]
-    > Vytváří se uživatel přiřazené identity se speciálními znaky (třeba podtržítko) v názvu se momentálně nepodporuje. Použijte prosím alfanumerické znaky. Sledujte novinky.  Další informace najdete v části [nejčastější dotazy a známé problémy](known-issues.md)
+    > Vytváří se uživatel přiřazené identity se speciálními znaky (třeba podtržítko) v názvu se momentálně nepodporuje. Použijte prosím alfanumerické znaky. Vraťte se sem a přečtěte si nové informace.  Další informace najdete v části [nejčastější dotazy a známé problémy](known-issues.md)
 
     ```azurecli-interactive
     az identity create -g <RESOURCE GROUP> -n <USER ASSIGNED IDENTITY NAME>
@@ -176,7 +178,7 @@ Odpověď obsahuje podrobnosti o identity přiřazené uživateli vytvořené, p
    }
    ```
 
-2. Přiřadit identity přiřazené uživateli na VMSS pomocí [az vmss identity přiřadit](/cli/azure/vmss/identity#az_vm_assign_identity). Nezapomeňte nahradit `<RESOURCE GROUP>` a `<VMSS NAME>` parametr hodnoty vlastními hodnotami. `<USER ASSIGNED IDENTITY ID>` Bude prostředek identity přiřazené uživateli `id` vlastnost, protože vytvořili v předchozím kroku:
+2. Přiřadit identity přiřazené uživateli na VMSS pomocí [az vmss identity přiřadit](/cli/azure/vmss/identity#az_vm_assign_identity). Nezapomeňte nahradit hodnoty parametrů `<RESOURCE GROUP>` a `<VMSS NAME>` vlastními hodnotami. `<USER ASSIGNED IDENTITY ID>` Bude prostředek identity přiřazené uživateli `id` vlastnost, protože vytvořili v předchozím kroku:
 
     ```azurecli-interactive
     az vmss identity assign -g <RESOURCE GROUP> -n <VMSS NAME> --identities <USER ASSIGNED IDENTITY ID>
@@ -187,7 +189,7 @@ Odpověď obsahuje podrobnosti o identity přiřazené uživateli vytvořené, p
 > [!NOTE]
 >  Odebrání všech uživatelsky přiřazených identit ze Škálovací sady virtuálních počítačů se aktuálně nepodporuje, pokud máte identitu přiřazenou systémem. 
 
-Pokud vaše VMSS má více uživatelsky přiřazených identit, můžete odebrat všechny kromě poslední pomocí [az vmss identity odebrat](/cli/azure/vmss/identity#az-vmss-identity-remove). Nezapomeňte nahradit `<RESOURCE GROUP>` a `<VMSS NAME>` parametr hodnoty vlastními hodnotami. `<MSI NAME>` Je vlastnost name identity přiřazené uživateli, které najdete v části Identita virtuálního počítače pomocí `az vm show`:
+Pokud vaše VMSS má více uživatelsky přiřazených identit, můžete odebrat všechny kromě poslední pomocí [az vmss identity odebrat](/cli/azure/vmss/identity#az-vmss-identity-remove). Nezapomeňte nahradit hodnoty parametrů `<RESOURCE GROUP>` a `<VMSS NAME>` vlastními hodnotami. `<MSI NAME>` Je vlastnost name identity přiřazené uživateli, které najdete v části Identita virtuálního počítače pomocí `az vm show`:
 
 ```azurecli-interactive
 az vmss identity remove -g <RESOURCE GROUP> -n <VMSS NAME> --identities <MSI NAME>

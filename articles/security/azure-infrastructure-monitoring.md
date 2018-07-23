@@ -1,6 +1,6 @@
 ---
 title: Monitorování infrastruktury Azure
-description: Tento článek popisuje, monitorování produkční sítě Azure.
+description: Tento článek popisuje monitorování produkční sítě Azure.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -14,49 +14,49 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 17e7183ff56725462dc43cba21db418a86d86b51
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 59f54487d89aee199e35e741ac4683d4784818a0
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37102214"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39172479"
 ---
-# <a name="monitoring-of-azure-infrastructure"></a>Monitorování infrastruktury Azure   
+# <a name="azure-infrastructure-monitoring"></a>Monitorování infrastruktury Azure   
 
-## <a name="configuration-and-change-management"></a>Konfigurace a správu změn
-Microsoft Azure kontroluje a aktualizuje nastavení konfigurace a standardních hodnot konfigurace hardwaru, softwaru a síťová zařízení ročně. Změny vyvinuté, otestovány a schváleny před zadáním produkčního prostředí z vývoj nebo testovací prostředí.
+## <a name="configuration-and-change-management"></a>Konfiguraci a správu změn
+Azure kontroluje a aktualizuje nastavení konfigurace a standardních hodnot konfigurace hardwaru, softwaru a síťová zařízení pořizují na rok. Změny jsou vyvíjeny, testovat a schválení před vstupem z vývojové a testovací prostředí v provozním prostředí.
 
-Standardní hodnoty konfigurace požadované pro služeb založených na Azure je zkontrolovat tým zabezpečení Azure a dodržování předpisů a týmy služby. Zkontrolujte týmu service je součástí testování před nasazením služby jejich produkční.
+Standardní hodnoty konfigurace, které jsou požadovány pro služby založené na Azure jsou kontrolovány týmem Azure zabezpečení a dodržování předpisů a týmy služeb. Přehled týmu služeb je součástí testování, který se nachází před nasazením služby v produkčním prostředí.
 
-## <a name="vulnerability-management"></a>Ohrožení zabezpečení správy
-Správa aktualizací zabezpečení pomáhá chránit systémy ze známých slabých míst. Systémy integrované nasazení Azure používá ke správě distribuce a instalaci aktualizací zabezpečení softwaru společnosti Microsoft. Azure je také možné využívat zdroje z Microsoft Security Response Center (MSRC). Střediska MSRC identifikuje, sleduje, odpoví na a vyřeší incidenty zabezpečení a cloudové ohrožení zabezpečení po celý den, každý den v roce.
+## <a name="vulnerability-management"></a>Správa ohrožení zabezpečení
+Správa aktualizací zabezpečení pomáhá chránit systémy před známými chybami zabezpečení. Azure používá integrované nasazovací systémy zvládají distribuci a instalaci aktualizací zabezpečení softwaru společnosti Microsoft. Azure je také možnost využívat prostředky z Microsoft Security Response Center (MSRC). MSRC identifikuje, monitoruje, odpovídá a řeší bezpečnostní incidenty a cloud neustále a zobrazuje ohrožení zabezpečení, každý den v roce.
 
-## <a name="vulnerability-scanning"></a>Kontrola ohrožení zabezpečení
-Zjišťování ohrožení zabezpečení se provádí na serverové operační systémy, databáze a síťových zařízení. Čtvrtletně minimálně jsou prováděny prověřování ohrožení zabezpečení. Kontrakty Microsoft Azure s nezávislí posuzovatelé provést průnikům testování hranice Microsoft Azure. Cvičení Red týmu se také pravidelně provádí a výsledky používat k vylepšení zabezpečení.
+## <a name="vulnerability-scanning"></a>Zjišťování ohrožení zabezpečení
+Zjišťování ohrožení zabezpečení se provádí na serverové operační systémy, databáze a síťová zařízení. Prověřování ohrožení zabezpečení jsou prováděny čtvrtletně na minimum. Azure smluv s nezávislými posuzovateli provádět testování průniku hranice Azure. Cvičení týmu se také pravidelně provádí a výsledky se používají k vylepšování zabezpečení.
 
-## <a name="protective-monitoring"></a>Ochranné monitorování
-Požadavky pro aktivní monitorování má definováno zabezpečení Microsoft Azure. Služba týmy nakonfigurovat active nástroje monitorování v souladu s těmito požadavky. Aktivní monitorování nástroje patří sledování agenta (MA) a System Center Operations Manager. Tyto nástroje jsou nakonfigurované na poskytování čas výstrahy zabezpečení Microsoft Azure osobám v situacích, které vyžadují okamžitou akci.
+## <a name="protective-monitoring"></a>Ochranná monitorování
+Zabezpečení Azure je definován požadavky při monitorování aktivní. Týmy služeb konfigurace aktivní nástrojů pro monitorování v souladu s těmito požadavky. Aktivní monitorování nástroje patří Microsoft Monitoring Agent (MMA) a System Center Operations Manager. Tyto nástroje umožňují poskytovat čas upozornění k zabezpečení Azure pracovníky v situacích, které vyžadují okamžitou akci.
 
 ## <a name="incident-management"></a>Správa incidentů
 Microsoft implementuje proces správy incidentů zabezpečení pro usnadnění koordinovanou reakci na incidenty, musí dojít k některým.
 
-Zjistí-li Microsoft neoprávněného přístupu k zákaznická data uložená na jeho zařízení nebo v jeho zařízení nebo neoprávněného přístupu k těchto zařízení nebo zařízení, což vede ke ztrátě, zpřístupnění nebo změnou dat zákazníka, společnost Microsoft má následující akce:
+Pokud Microsoft obdrží informace o neoprávněný přístup k zákaznickým datům, která je uložena na jeho zařízení nebo v jeho zařízení, nebo se dozví o neoprávněný přístup do těchto zařízení nebo zařízení, což vede ke ztrátě, zpřístupnění nebo změně zákaznických dat, Microsoft provede následující akce:
 
-- Neprodleně upozorní zákazník bezpečnostního incidentu
-- Rychle prověří incidentu zabezpečení a poskytuje podrobné informace o incidentu zabezpečení zákazníka
-- Trvá přiměřené a vyzvat postup zmírněna rizika a minimalizovat škod vzniklých v důsledku incidentu zabezpečení.
+- Okamžitě upozorní zákazníky incidentu zabezpečení.
+- Rychle prověří incidentu zabezpečení a poskytuje zákazníkům podrobné informace o incidentu zabezpečení.
+- Přijímá přiměřené a rychlé kroky pro zmírněna rizika a minimalizovali škody vzniklé incidentu zabezpečení.
 
-Představuje rozhraní správy incidentů bylo vytvořeno s definovány role a odpovědnosti přidělené. Tým služby Windows Azure Security Incident správy (WASIM) zodpovídá za správu incidenty zabezpečení, včetně Eskalace a zajištění zapojení specialisty týmy, pokud je to nezbytné. Azure vedoucí provozu, kteří jsou zodpovědní za dohled nad vyšetřování a řešení incidentů zabezpečení a ochrana osobních údajů.
+Vytvořilo se rozšiřovatelnou platformu pro správu incidentů, který definuje role a zodpovědnosti přiděluje. Tým správy incidentů zabezpečení Azure je zodpovědný za Správa incidentů zabezpečení, včetně Eskalace a zajišťuje zapojení specializované týmy, pokud je to nezbytné. Vedoucí provozní technici Azure zodpovídají za dohled vyšetření a řešení incidentů zabezpečení a ochrana osobních údajů.
 
 ## <a name="next-steps"></a>Další postup
-Další informace o funkci Microsoft pro zabezpečení infrastruktury Azure najdete v tématu:
+Další informace o Microsoft nemá pro zabezpečení infrastruktury Azure, najdete v tématech:
 
-- [Azure zařízení, místní a fyzické zabezpečení](azure-physical-security.md)
+- [Zařízení Azure, místním prostředí a fyzické zabezpečení](azure-physical-security.md)
 - [Dostupnost infrastruktury Azure](azure-infrastructure-availability.md)
 - [Součásti systému Azure informace a hranice](azure-infrastructure-components.md)
 - [Architektura sítě Azure](azure-infrastructure-network.md)
 - [Produkční sítě Azure](azure-production-network.md)
-- [Zabezpečení funkce Microsoft Azure SQL Database](azure-infrastructure-sql.md)
-- [Azure produkční operace a Správa](azure-infrastructure-operations.md)
-- [Integritu infrastruktury Azure](azure-infrastructure-integrity.md)
-- [Ochrana dat zákazníka v Azure](azure-protection-of-customer-data.md)
+- [Funkce zabezpečení Azure SQL Database](azure-infrastructure-sql.md)
+- [Operace Azure výroby a správu](azure-infrastructure-operations.md)
+- [Integrity infrastruktury Azure](azure-infrastructure-integrity.md)
+- [Ochrana dat zákazníků Azure](azure-protection-of-customer-data.md)

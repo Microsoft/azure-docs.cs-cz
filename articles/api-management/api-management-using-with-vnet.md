@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: apimpm
-ms.openlocfilehash: 067404193507f9787c994e82267679737ebe4832
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: deba3ad8a283b111dc94a5361f3fa4e73d95c0b8
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39145413"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39187379"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Jak používat Azure API Management s virtuálními sítěmi
 Virtuální sítě Azure (Vnet) umožňuje umístit některé z vašich prostředků Azure, které řídí přístup k síti možnosti směrování Internetu jiných. Potom se dá propojit tyto sítí k místním sítím pomocí různých technologií VPN. Další informace o Azure Virtual Networks začínat tyto informace tady: [Přehled služby Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -150,6 +150,7 @@ Když jsou instance služby API Management je hostované ve virtuální síti, s
 * **Počáteční nastavení**: při počátečním nasazení služby API Management do podsítě selže, se doporučuje pro virtuální počítač nasadit nejdřív do stejné podsítě. Další vzdálené plochy k virtuálnímu počítači a ověřit, že je spojení s jednou z každého prostředku pod ve vašem předplatném azure
     * Azure Storage blob
     * Azure SQL Database
+    * Tabulka úložišť v Azure
 
  > [!IMPORTANT]
  > Po ověření připojení nezapomeňte odebrat všechny prostředky nasazené v podsíti, před nasazením API Management do podsítě.

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: spelluru
-ms.openlocfilehash: 0414fa16f277c7495cc7fe4bdd7a51fc3a23ad93
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: ad9e9e893dc831530b69a30cc3dd930e879e9d7b
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38988618"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39185114"
 ---
 # <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>Při vytváření vlastních artefaktů pro virtuální počítač DevTest Labs
 
@@ -113,7 +113,7 @@ Následující příklad ukazuje, jak používat výrazy a funkce k vytvoření 
 1. Nainstalujte JSON editor. Potřebujete editor JSON pro práci se soubory definice artefaktů. Doporučujeme používat [Visual Studio Code](https://code.visualstudio.com/), které je dostupné pro Windows, Linuxu a OS X.
 2. Získáte definici artifactfile.json ukázkový soubor. Podívejte se na artefakty vytvořené týmem DevTest Labs v našich [úložiště GitHub](https://github.com/Azure/azure-devtestlab). Vytvořili jsme bohatá knihovna artefakty, které vám pomůžou vytvářet vlastní artefakty. Stáhněte si soubor definice artefaktů a provádění změn, při vytváření vlastních artefaktů.
 3. Využijte IntelliSense. Pomocí IntelliSense můžete zobrazit platné prvky, které můžete použít k vytvoření souboru definice artefaktů. Taky uvidíte různé možnosti pro hodnoty prvku. Například při úpravách **targetOsType** elementu, technologie IntelliSense zobrazí dvě možnosti pro Windows nebo Linux.
-4. Store artefakt v [veřejného úložiště Git pro DevTest Labs](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts) nebo [úložiště Git](devtest-lab-add-artifact-repo.md).
+4. Store artefakt v [veřejného úložiště Git pro DevTest Labs](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts) nebo [úložiště Git](devtest-lab-add-artifact-repo.md). Ve veřejném úložišti můžete zobrazit artefakty, které sdílí ostatní, můžete použít přímo nebo přizpůsobit je tak, aby odpovídala vašim potřebám. 
    
    1. Vytvořte samostatný adresář pro každý artefakt. Název adresáře by měl být stejný jako název artefaktu.
    2. Soubor definice artefaktu (artifactfile.json) Store do adresáře, který jste vytvořili.

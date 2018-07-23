@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/19/2018
 ms.author: aljo
-ms.openlocfilehash: 6bc979e277c71610ebc0f7a603915689b0b0605b
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: a6351971ceb502297193bf0f2c3a452f30cade5d
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39160371"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39187396"
 ---
 # <a name="customize-service-fabric-cluster-settings-and-fabric-upgrade-policy"></a>Přizpůsobení nastavení clusteru Service Fabric a zásady upgradu prostředků infrastruktury
 Tento dokument vysvětluje, jak přizpůsobit různá nastavení prostředků infrastruktury a zásady pro váš cluster Service Fabric upgradu prostředků infrastruktury. Můžete je přizpůsobit [webu Azure portal](https://portal.azure.com) nebo pomocí šablony Azure Resource Manageru.
@@ -59,11 +59,11 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 ## <a name="applicationgatewayhttp"></a>Brána ApplicationGateway/Http
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|ApplicationCertificateValidationPolicy|řetězec, výchozí je "None"|Statická| ApplicationCertificateValidationPolicy: None: nelze ověřit certifikát serveru; úspěšná žádost. ServiceCertificateThumbprints: Najdete config ServiceCertificateThumbprints čárkami oddělený seznam kryptografických otisků, ze vzdáleného certifikáty, které můžete důvěřovat reverzního proxy serveru. ServiceCommonNameAndIssuer: Najdete config ServiceCommonNameAndIssuer subjektu název a vystavitele kryptografický otisk vzdálené certifikáty, které můžete důvěřovat reverzního proxy serveru. |
+|ApplicationCertificateValidationPolicy|řetězec, výchozí je "None"|Statická| Nelze ověřit certifikát serveru; úspěšná žádost. Odkazovat na config ServiceCertificateThumbprints čárkami oddělený seznam kryptografických otisků, ze vzdáleného certifikáty, které můžete důvěřovat reverzního proxy serveru. Odkazovat na config ServiceCommonNameAndIssuer subjektu název a vystavitele kryptografický otisk vzdálené certifikáty, které můžete důvěřovat reverzního proxy serveru. |
 |BodyChunkSize |Uint, výchozí hodnota je 16384 |Dynamická| Dává velikost bloků dat v bajtech používá ke čtení textu. |
 |CrlCheckingFlag|uint, výchozí je 0x40000000 |Dynamická| Příznaky pro ověřování řetězu certifikátů aplikace/služby; třeba kontroly seznamu odvolaných certifikátů 0x10000000 CERT_CHAIN_REVOCATION_CHECK_END_CERT 0x20000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN 0x40000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT 0x80000000 CERT_CHAIN_REVOCATION_CHECK_CACHE_ONLY nastavení na hodnotu 0 Zakáže seznamu CRL kontrola, zda úplný seznam podporovaných hodnot je popsána pomocí dwFlags CertGetCertificateChain: http://msdn.microsoft.com/library/windows/desktop/aa376078(v=vs.85).aspx  |
 |DefaultHttpRequestTimeout |Čas v sekundách. Výchozí hodnota je 120 |Dynamická|Zadejte časový interval v sekundách.  Poskytuje výchozí časový limit žádosti pro požadavky http jsou zpracovávány v aplikaci bránu http. |
-|ForwardClientCertificate|Logická hodnota, výchozí hodnotu FALSE|Dynamická| |
+|ForwardClientCertificate|Logická hodnota, výchozí hodnotu FALSE|Dynamická|Když nastavenou na hodnotu false, reverzní proxy server nebude vyžadovat zadání klientského certifikátu. Pokud se žádost o certifikát klienta během metody handshake SSL a předávání kódovanou jako base64 nastavenou na hodnotu true, reverzní proxy řetězec formátu PEM do služby v hlavičce X-klienta Certificate.The služby s názvem převzít požadavek s odpovídající stavový kód až po kontrole data certifikátu. Pokud klient není k dispozici certifikát má hodnotu true, budou reverzní proxy server předat prázdnou hlavičku a nechat službu zpracování případu. Reverzní proxy server bude sloužit jako transparentní vrstvy.|
 |GatewayAuthCredentialType |řetězec, výchozí je "None" |Statická| Určuje typ zabezpečovací přihlašovací údaje pro použití na http aplikace brány koncový bod platné hodnoty jsou "None / X 509. |
 |GatewayX509CertificateFindType |řetězec, výchozí je "FindByThumbprint" |Dynamická| Určuje, jak vyhledat certifikát v úložišti určené GatewayX509CertificateStoreName podporované hodnoty: FindByThumbprint; FindBySubjectName. |
 |GatewayX509CertificateFindValue | řetězec, výchozí hodnota je "" |Dynamická| Hodnota filtru hledání používaná k nalezení certifikát brány aplikace http. Tento certifikát je nakonfigurovaná na koncový bod https a je také použít k ověření identity aplikace v případě potřeby prostřednictvím služeb. Nejdříve; je vyhledán FindValue a pokud, který neexistuje; FindValueSecondary se hledá. |
@@ -76,12 +76,12 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 |RemoveServiceResponseHeaders|řetězec, výchozí je "datum; Server"|Statická|Středníkem nebo čárkou oddělený seznam hlaviček odpovědí, které budou odebrány z odpovědi služby; Před předáním do klienta. Pokud je nastavené na prázdný řetězec. Předejte všechny hlavičky vrácené službou jako-je. tj Nepřepisovat data a serveru |
 |ResolveServiceBackoffInterval |Čas v sekundách, výchozí hodnota je 5 |Dynamická|Zadejte časový interval v sekundách.  Poskytuje řešení výchozí regresní interval před opakováním nezdařené operace služby. |
 |SecureOnlyMode|Logická hodnota, výchozí hodnotu FALSE|Dynamická| SecureOnlyMode: true: reverzní proxy server pouze přeposílají do služby, které publikovat zabezpečené koncové body. FALSE: reverzní proxy server může předat požadavky na zabezpečení/nezabezpečené koncových bodů.  |
-|ServiceCertificateThumbprints|řetězec, výchozí hodnota je ""|Dynamická| |
+|ServiceCertificateThumbprints|řetězec, výchozí hodnota je ""|Dynamická|Čárkou oddělený seznam kryptografické otisky vzdálené certifikáty, které můžete důvěřovat reverzního proxy serveru.  |
 
 ## <a name="applicationgatewayhttpservicecommonnameandissuer"></a>Brána ApplicationGateway/Http/ServiceCommonNameAndIssuer
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|PropertyGroup|X509NameMap, výchozí hodnota je None|Dynamická|  |
+|PropertyGroup|X509NameMap, výchozí hodnota je None|Dynamická| Předmět název a vystavitele kryptografický otisk vzdálené certifikáty, které můžete důvěřovat reverzního proxy serveru.|
 
 ## <a name="backuprestoreservice"></a>BackupRestoreService
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
@@ -157,10 +157,10 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 ## <a name="dnsservice"></a>Služba DnsService
 | **Parametr** | **Povolené hodnoty** |**Zásady upgradu**| **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|InstanceCount|je int, výchozí hodnota -1|Statická|  |
-|IsEnabled|Logická hodnota, výchozí hodnotu FALSE|Statická| |
-|PartitionPrefix|řetězec, výchozí hodnota je "-"|Statická|Nastaví řetězec předpony oddíl v názvech oddílů služby DNS: \<First-Label-Of-Partitioned-Service-DNSName\>\<PartitionPrefix\>\<cílový název oddílu\> \< PartitionSuffix\>.\< Zbývající-rozdělit na oddíly Service-DNSName\>.|
-|PartitionSuffix|řetězec, výchozí hodnota je ""|Statická|Nastaví řetězec přípony oddílu v názvech oddílů služby DNS: \<First-Label-Of-Partitioned-Service-DNSName\>\<PartitionPrefix\>\<cílový název oddílu\> \< PartitionSuffix\>.\< Zbývající-rozdělit na oddíly Service-DNSName\>. |
+|InstanceCount|je int, výchozí hodnota -1|Statická|Výchozí hodnota je -1, což znamená, že služba DnsService běží na všech uzlech. OneBox musí to být nastavena na hodnotu 1, protože služba DnsService používá dobře známý port 53, takže nemůže mít více instancí ve stejném počítači.|
+|IsEnabled|Logická hodnota, výchozí hodnotu FALSE|Statická|Povolí nebo zakáže služba DnsService. Služba DnsService je ve výchozím nastavení vypnutá. Tato konfigurace se musí nastavit, aby je. |
+|PartitionPrefix|řetězec, výchozí hodnota je "-"|Statická|Určuje předponu řetězce oddílu v dotazy DNS pro dělené služby. Další informace najdete v tématu věnovaném tento odkaz:[služba DNS Service Fabricu.](service-fabric-dnsservice.md)|
+|PartitionSuffix|řetězec, výchozí hodnota je ""|Statická|Určuje řetězcovou hodnotu přípony oddílu v dotazy DNS pro dělené služby. Další informace najdete v tématu věnovaném tento odkaz:[služba DNS Service Fabricu.](service-fabric-dnsservice.md) |
 
 ## <a name="fabricclient"></a>FabricClient
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
@@ -253,6 +253,7 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 ## <a name="federation"></a>metadata
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
+|GlobalTicketLeaseDuration|Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(300)|Statická|Zadejte časový interval v sekundách. Uzly v clusteru potřeba, abyste se voličů globální zapůjčení. Voliče odešlete své globální zapůjčení mohly rozšířit v clusteru pro této hodnotě duration. Pokud vyprší doba trvání; potom dojde ke ztrátě zapůjčení. Ztrátou kvora zapůjčení způsobí, že uzel spustit metodu Abandon clusteru; pomocí služeb při selhání pro příjem komunikace s Kvorum uzlů v tomto časovém období.  Tato hodnota musí být upravena v závislosti na velikosti clusteru. |
 |LeaseDuration |Čas v sekundách, výchozí hodnota je 30 |Dynamická|Doba, po kterou má platnost zapůjčení mezi uzlem a jeho okolím. |
 |LeaseDurationAcrossFaultDomain |Čas v sekundách, výchozí hodnota je 30 |Dynamická|Doba trvání zapůjčení vydrží mezi uzlem a jeho okolím napříč doménami selhání. |
 
@@ -321,7 +322,7 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 |ContainerServiceArguments|řetězec, výchozí hodnota je "-H localhost: 2375 -H npipe: / /"|Statická|Service Fabric (SF) spravuje démona dockeru (s výjimkou na klientské počítače s windows jako Win10). Tato konfigurace umožňuje uživateli zadat vlastní argumenty, které by měly být předány démona dockeru, při jeho spuštění. Když zadáte vlastní argumenty, Service Fabric do modulu Dockeru s výjimkou nepředávejte žádné další argumenty '--pidfile "argument. Proto by neměl určovat uživatele '--pidfile "argument jako součást svých argumentů zákazníka. Kromě toho vlastní argumenty se ujistěte, které docker démon naslouchá na kanálu s výchozím názvem ve Windows (nebo Unixovému soketu domény v Linuxu) služba Service Fabric komunikovat s ním.|
 |CreateFabricRuntimeTimeout|Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(120)|Dynamická| Zadejte časový interval v sekundách. Hodnota časového limitu pro synchronizaci FabricCreateRuntime volání |
 |DefaultContainerRepositoryAccountName|řetězec, výchozí hodnota je ""|Statická|Výchozí pověření použít místo přihlašovacích údajů zadaných v souboru ApplicationManifest.xml |
-|DefaultContainerRepositoryPassword|řetězec, výchozí hodnota je ""|Statická||
+|DefaultContainerRepositoryPassword|řetězec, výchozí hodnota je ""|Statická|Výchozí heslo pověření použít místo přihlašovacích údajů zadaných v souboru ApplicationManifest.xml|
 |DeploymentMaxFailureCount|Int, výchozí hodnota je 20| Dynamická|Nasazení aplikace se provede pro časy DeploymentMaxFailureCount před selháním nasazení této aplikace na uzlu.| 
 |DeploymentMaxRetryInterval| Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(3600)|Dynamická| Zadejte časový interval v sekundách. Maximální interval opakování pro nasazení. Při každé průběžné selhání interval opakování se počítá jako Min (DeploymentMaxRetryInterval; Průběžný počet selhání * DeploymentRetryBackoffInterval) |
 |DeploymentRetryBackoffInterval| Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(10)|Dynamická|Zadejte časový interval v sekundách. Regresní interval selhání nasazení. Při každé selhání průběžného nasazování bude systém pokusem o nasazení pro až MaxDeploymentFailureCount. Interval opakování je produkt selhání průběžného nasazování a interval omezení rychlosti nasazení. |
@@ -333,7 +334,7 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 |FirewallPolicyEnabled|Logická hodnota, výchozí hodnotu FALSE|Statická| Umožňuje otevřít porty brány firewall pro koncový bod prostředků s explicitní portů zadaných v souboru ServiceManifest |
 |GetCodePackageActivationContextTimeout|Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(120)|Dynamická|Zadejte časový interval v sekundách. Hodnota časového limitu pro CodePackageActivationContext volání. To neplatí pro služby ad-hoc. |
 |IPProviderEnabled|Logická hodnota, výchozí hodnotu FALSE|Statická|Umožňuje pomocí správy IP adres. |
-|IsDefaultContainerRepositoryPasswordEncrypted|Logická hodnota, výchozí hodnotu FALSE|Statická||
+|IsDefaultContainerRepositoryPasswordEncrypted|Logická hodnota, výchozí hodnotu FALSE|Statická|Určuje, zda je nebo není zašifrovaná DefaultContainerRepositoryPassword.|
 |LinuxExternalExecutablePath|řetězec, výchozí hodnota je "/ usr/bin /" |Statická|Primární adresář externí spustitelné příkazy na uzlu.|
 |NTLMAuthenticationEnabled|Logická hodnota, výchozí hodnotu FALSE|Statická| Povolí podporu pro balíčky kódu, které jsou s jiným uživatelům, aby procesy napříč počítači zabezpečeně komunikovat pomocí protokolu NTLM. |
 |NTLMAuthenticationPasswordSecret|SecureString, výchozí hodnota je Common::SecureString("")|Statická|Není že šifrované má, který se používá ke generování hesla pro uživatele, protokol NTLM. Musí být nastavena pokud NTLMAuthenticationEnabled má hodnotu true. Ověřuje modul pro nasazení. |

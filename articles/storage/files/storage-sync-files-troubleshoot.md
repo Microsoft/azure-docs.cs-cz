@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2018
 ms.author: jeffpatt
-ms.openlocfilehash: 1aa834330035b7537de02388031af357ca28eeab
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: ad82cde2dc6048c5a87766b21bd38ed3fbc6bd39
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39160294"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173277"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Řešení problémů se službou Azure File Sync
 Azure File Sync umožňuje centralizovat sdílené složky organizace ve službě soubory Azure, při zachování flexibility, výkonu a kompatibility s místními souborového serveru. Azure File Sync transformuje serveru systému Windows na rychlou mezipaměť sdílené složky Azure. Můžete použít jakýkoli protokol dostupný ve Windows serveru pro přístup k datům místně, včetně SMB, NFS a FTPS. Můžete mít libovolný počet mezipamětí po celém světě potřebujete.
@@ -748,22 +748,22 @@ Následující části uvádějí, jak potíží vrstvení cloudu a určení, zd
 <a id="monitor-tiering-activity"></a>**Jak monitorovat vrstvení aktivity na serveru**  
 K monitorování vrstvení aktivity na serveru, použijte 9002 ID události, 9003, události 9016 a 9029 v protokolu událostí Telemetrie (nachází se v umístění Applications and Services\Microsoft\FileSync\Agent v prohlížeči událostí).
 
-ID události 9002 poskytuje zástupných položek statistiky pro koncový bod serveru. Například TotalGhostedFileCount, SpaceReclaimedMB, atd.
+- ID události 9002 poskytuje zástupných položek statistiky pro koncový bod serveru. Například TotalGhostedFileCount, SpaceReclaimedMB, atd.
 
-ID události 9003 poskytuje distribucí chyb pro koncový bod serveru. Celkový počet chyb, kód chyby, apod. Všimněte si, že se jedna událost je protokolována za kód chyby.
+- ID události 9003 poskytuje distribucí chyb pro koncový bod serveru. Celkový počet chyb, kód chyby, apod. Všimněte si, že se jedna událost je protokolována za kód chyby.
 
-ID události 9016 poskytuje zástupných položek výsledky pro svazek. Například volného místa, které zbývá, počet souborů, které vytvořena zástupná položka v relaci, počet souborů se nezdařilo. Chcete-li ghost, atd.
+- ID události 9016 poskytuje zástupných položek výsledky pro svazek. Například volného místa, které zbývá, počet souborů, které vytvořena zástupná položka v relaci, počet souborů se nezdařilo. Chcete-li ghost, atd.
 
-ID události 9029 poskytuje informace o relaci zástupných položek. Třeba počet souborů v této relaci, počet souborů, které se pokusil vrstvami v této relaci, počet souborů, které již vrstvené atd.
+- ID události 9029 poskytuje informace o relaci zástupných položek. Třeba počet souborů v této relaci, počet souborů, které se pokusil vrstvami v této relaci, počet souborů, které již vrstvené atd.
 
 <a id="monitor-recall-activity"></a>**Jak monitorovat aktivity spojené s vracením na serveru**  
 Monitorování aktivity spojené s vracením na serveru, použijte událost ID 9005 9006, 9007 v protokolu událostí Telemetrie (nachází se v umístění Applications and Services\Microsoft\FileSync\Agent v prohlížeči událostí). Všimněte si, že se tyto události jsou protokolovány po hodinách.
 
-ID události 9005 poskytuje spojené s vracením spolehlivost pro koncový bod serveru. Například celkový počet jedinečných souborů přístup, celkový počet jedinečných souborů s neúspěšných přístupů atd.
+- ID události 9005 poskytuje spojené s vracením spolehlivost pro koncový bod serveru. Například celkový počet jedinečných souborů přístup, celkový počet jedinečných souborů s neúspěšných přístupů atd.
 
-ID události 9006 poskytuje distribuci chyby spojené s vracením pro koncový bod serveru. Celkový počet neúspěšných požadavků, kód chyby, apod. Všimněte si, že se jedna událost je protokolována za kód chyby.
+- ID události 9006 poskytuje distribuci chyby spojené s vracením pro koncový bod serveru. Celkový počet neúspěšných požadavků, kód chyby, apod. Všimněte si, že se jedna událost je protokolována za kód chyby.
 
-ID události 9007 poskytuje spojené s vracením výkon pro koncový bod serveru. Například TotalRecallIOSize, TotalRecallTimeTaken, atd.
+- ID události 9007 poskytuje spojené s vracením výkon pro koncový bod serveru. Například TotalRecallIOSize, TotalRecallTimeTaken, atd.
 
 <a id="files-fail-tiering"></a>**Řešení problémů se soubory, které se nepodařilo vrstvy**  
 Pokud soubory vrstvy do služby soubory Azure:

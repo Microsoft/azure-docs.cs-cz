@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/27/2017
 ms.author: daveba
-ms.openlocfilehash: 61fa6c94c0d717fe1e71bf8929f2e3b4a0982562
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: d5071a55c49a0749d91ec9617558ced76ebb007e
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37903875"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39188093"
 ---
 # <a name="configure-a-vmss-managed-service-identity-msi-using-powershell"></a>Konfigurace VMSS Identity spravované služby (MSI) pomocí Powershellu
 
@@ -34,7 +34,11 @@ V tomto článku se dozvíte, jak k provádění operací identita spravované s
 ## <a name="prerequisites"></a>Požadavky
 
 - Pokud nejste obeznámeni s identita spravované služby, podívejte se [oddílu přehled](overview.md). **Nezapomeňte si přečíst [rozdíl mezi přiřazenou systémem a identity přiřazené uživateli](overview.md#how-does-it-work)**.
-- Pokud ještě nemáte účet Azure [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) než budete pokračovat.
+- Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
+- Váš účet k provádění operací správy v tomto článku, potřebuje následující přiřazení rolí:
+    - [Přispěvatel virtuálních počítačů](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) vytvořit škálovací sadu virtuálních počítačů a povolit a odebrat ze škálovací sady virtuálních počítačů spravovaných identitu přiřazenou systémem.
+    - [Spravovaná identita Přispěvatel](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) role pro vytvoření identity přiřazené uživateli.
+    - [Operátor Identity spravované](/azure/role-based-access-control/built-in-roles#managed-identity-operator) roli přiřadit a odebrat identity přiřazené uživateli, ze kterých a do škálovací sady virtuálních počítačů.
 - Nainstalujte [nejnovější verzi Azure Powershellu](https://www.powershellgallery.com/packages/AzureRM) Pokud jste tak již neučinili. 
 
 ## <a name="system-assigned-managed-identity"></a>Spravovanou identitu přiřazenou systémem
@@ -108,7 +112,7 @@ V této části se dozvíte, jak přidávat a odebírat uživatele identity při
 
 ### <a name="assign-a-user-assigned-identity-during-creation-of-an-azure-vmss"></a>Přiřadit uživatele identity přiřazené během vytváření Azure VMSS
 
-Vytváření nových VMSS identity přiřazené uživateli není aktuálně podporováno prostřednictvím prostředí PowerShell. Viz následující část o tom, jak přidat do existující VMSS identity přiřazené uživateli. Sledujte novinky.
+Vytváření nových VMSS identity přiřazené uživateli není aktuálně podporováno prostřednictvím prostředí PowerShell. Viz následující část o tom, jak přidat do existující VMSS identity přiřazené uživateli. Vraťte se sem a přečtěte si nové informace.
 
 ### <a name="assign-a-user-identity-to-an-existing-azure-vmss"></a>Identita uživatele přiřadit existující VMSS Azure
 
@@ -133,9 +137,9 @@ Přiřazení uživatele přiřadit k existující VMSS Azure identity:
 ### <a name="remove-a-user-assigned-identity-from-an-azure-vmss"></a>Odebrání uživatele ze Azure VMSS identity přiřazené
 
 > [!NOTE]
-> Odebrání všech uživatelsky přiřazených identit ze Škálovací sady virtuálních počítačů se aktuálně nepodporuje, pokud máte identitu přiřazenou systémem. Sledujte novinky.
+> Odebrání všech uživatelsky přiřazených identit ze Škálovací sady virtuálních počítačů se aktuálně nepodporuje, pokud máte identitu přiřazenou systémem. Vraťte se sem a přečtěte si nové informace.
 
-Pokud vaše VMSS má více uživatelsky přiřazených identit, můžete odebrat všechny kromě poslední z nich pomocí následujících příkazů. Nezapomeňte nahradit `<RESOURCE GROUP>` a `<VMSS NAME>` parametr hodnoty vlastními hodnotami. `<MSI NAME>` Je název vlastnosti identity přiřazené uživateli, která by měla zůstat na VMSS. Tyto informace můžete zobrazit tak v části Identita VMSS pomocí `az vmss show`:
+Pokud vaše VMSS má více uživatelsky přiřazených identit, můžete odebrat všechny kromě poslední z nich pomocí následujících příkazů. Nezapomeňte nahradit hodnoty parametrů `<RESOURCE GROUP>` a `<VMSS NAME>` vlastními hodnotami. `<MSI NAME>` Je název vlastnosti identity přiřazené uživateli, která by měla zůstat na VMSS. Tyto informace můžete zobrazit tak v části Identita VMSS pomocí `az vmss show`:
 
 ```powershell
 $vmss = Get-AzureRmVmss -ResourceGroupName myResourceGroup -Name myVmss

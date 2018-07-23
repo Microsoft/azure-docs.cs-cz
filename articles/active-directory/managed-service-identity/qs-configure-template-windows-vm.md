@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: daveba
-ms.openlocfilehash: 7acbef216c182e5de80515258841af59d9529908
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: d3c0cad8743869c904db38e089cbaa28b237ed56
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39114875"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39185808"
 ---
 # <a name="configure-a-vm-managed-service-identity-by-using-a-template"></a>Konfigurace virtuálních počítačů spravovaná identita služby s použitím šablony
 
@@ -33,6 +33,10 @@ V tomto článku se dozvíte, jak provádět následující operace Identity spr
 
 - Pokud nejste obeznámeni s identita spravované služby, podívejte se [oddílu přehled](overview.md). **Nezapomeňte si přečíst [rozdíl mezi přiřazenou systémem a identity přiřazené uživateli](overview.md#how-does-it-work)**.
 - Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
+- Váš účet k provádění operací správy v tomto článku, potřebuje následující přiřazení rolí:
+    - [Přispěvatel virtuálních počítačů](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) k vytvoření virtuálního počítače a povolit, odeberte z virtuálního počítače Azure spravované identitu přiřazenou systémem.
+    - [Spravovaná identita Přispěvatel](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) role pro vytvoření identity přiřazené uživateli.
+    - [Operátor Identity spravované](/azure/role-based-access-control/built-in-roles#managed-identity-operator) roli přiřadit a odebrat identity přiřazené uživateli, ze kterých a do virtuálního počítače.
 
 ## <a name="azure-resource-manager-templates"></a>Šablony Azure Resource Manageru
 
@@ -51,7 +55,7 @@ V této části se povolí a zakáže systému přiřazené identity pomocí ša
 
 ### <a name="enable-system-assigned-identity-during-creation-of-an-azure-vm-or-on-an-existing-vm"></a>Povolit při vytváření virtuálního počítače Azure nebo z existujícího virtuálního počítače identitu přiřazenou systémem
 
-1. Ať už místně se přihlaste do Azure nebo prostřednictvím portálu Azure portal pomocí účtu, který je přidružený k předplatnému Azure, která obsahuje virtuální počítač. Také se ujistěte, že váš účet patří do role, která poskytuje oprávnění k zápisu na virtuálním počítači (například role "Přispěvatel virtuálních počítačů").
+1. Ať už místně se přihlaste do Azure nebo prostřednictvím portálu Azure portal pomocí účtu, který je přidružený k předplatnému Azure, která obsahuje virtuální počítač.
 
 2. Po načtení šablony do editoru, vyhledejte `Microsoft.Compute/virtualMachines` prostředků zájmu v rámci `resources` oddílu. Váš může vypadat trochu jinak než na následujícím snímku obrazovky, v závislosti na používaném editoru a určuje, zda jsou úpravy šablony pro existující nebo nové nasazení.
 
@@ -105,7 +109,7 @@ V této části se povolí a zakáže systému přiřazené identity pomocí ša
 
 Po povolení identitou přiřazenou systémem ve virtuálním počítači, můžete jí udělit roli, jako **čtečky** přístup do skupiny prostředků, ve kterém byla vytvořena.
 
-1. Ať už místně se přihlaste do Azure nebo prostřednictvím portálu Azure portal pomocí účtu, který je přidružený k předplatnému Azure, která obsahuje virtuální počítač. Také se ujistěte, že váš účet patří do role, která poskytuje oprávnění k zápisu na virtuálním počítači (například role "Přispěvatel virtuálních počítačů").
+1. Ať už místně se přihlaste do Azure nebo prostřednictvím portálu Azure portal pomocí účtu, který je přidružený k předplatnému Azure, která obsahuje virtuální počítač.
  
 2. Načíst šablonu do [editor](#azure-resource-manager-templates) a přidejte následující informace poskytují vašemu virtuálnímu počítači **čtečky** přístup do skupiny prostředků, ve kterém byla vytvořena.  Struktury vaší šablony může lišit v závislosti na editoru a model nasazení, které zvolíte.
    
@@ -149,7 +153,7 @@ Po povolení identitou přiřazenou systémem ve virtuálním počítači, můž
 
 Pokud máte virtuální počítač, který už je identita spravované služby:
 
-1. Ať už místně se přihlaste do Azure nebo prostřednictvím portálu Azure portal pomocí účtu, který je přidružený k předplatnému Azure, která obsahuje virtuální počítač. Také se ujistěte, že váš účet patří do role, která poskytuje oprávnění k zápisu na virtuálním počítači (například role "Přispěvatel virtuálních počítačů").
+1. Ať už místně se přihlaste do Azure nebo prostřednictvím portálu Azure portal pomocí účtu, který je přidružený k předplatnému Azure, která obsahuje virtuální počítač.
 
 2. Načíst šablonu do [editor](#azure-resource-manager-templates) a vyhledejte `Microsoft.Compute/virtualMachines` prostředků zájmu v rámci `resources` oddílu. Pokud máte virtuální počítač, který má jenom identitou přiřazenou systémem, můžete jej zakázat tak, že změníte typ identity k `None`.  Pokud má virtuální počítač systémových i uživatelských identit přiřazených, odeberte `SystemAssigned` z typ identity a zachovat `UserAssigned` spolu s `identityIds` pole uživatelsky přiřazených identit.  Následující příklad ukazuje, jak odebrat systému identity přiřazené z virtuálního počítače bez uživatele identit přiřazených:
    

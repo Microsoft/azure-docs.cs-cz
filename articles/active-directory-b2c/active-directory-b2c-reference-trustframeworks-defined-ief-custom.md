@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 4eee1f2c9ca37227ca2cea0ef5e2ff25f6fad828
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 00d2f37068c5bedb17ba9a4064d1f5058f5ab72c
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37443405"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39185774"
 ---
 # <a name="define-trust-frameworks-with-azure-ad-b2c-identity-experience-framework"></a>Definice architektury důvěryhodnosti s architekturu rozhraní identit Azure AD B2C
 
@@ -89,7 +89,7 @@ Z hlediska implementace TF specifikace sestává ze sady zásad, které umožní
 
 - Metadata pro navázání komunikace mezi účastníky v síti. Tato metadata, spolu s technické profily se používají během transakce pro vložení "na lince" vzájemná funkční spolupráce mezi předávající strany a ostatní účastníci komunity.
 
-- Protokol převodu, pokud existuje (například SAML, OAuth2, WS-Federation a OpenID Connect).
+- Protokol převodu, pokud existuje (například SAML 2.0, OAuth2, WS-Federation a OpenID Connect).
 
 - Požadavky na ověřování.
 

@@ -1,8 +1,8 @@
 > [!div class="op_single_selector"]
 > * [Webový simulátor Raspberry Pi](../articles/iot-hub/iot-hub-raspberry-pi-web-simulator-get-started.md)   
-> * [Simulované zařízení s .NET](../articles/iot-hub/iot-hub-csharp-csharp-getstarted.md)
-> * [Simulované zařízení s Javou](../articles/iot-hub/iot-hub-java-java-getstarted.md)
-> * [Simulované zařízení s Node.js](../articles/iot-hub/iot-hub-node-node-getstarted.md)
+> * [Simulované zařízení s .NET](../articles/iot-hub/quickstart-send-telemetry-dotnet.md)
+> * [Simulované zařízení s Javou](../articles/iot-hub/quickstart-send-telemetry-java.md)
+> * [Simulované zařízení s Node.js](../articles/iot-hub/quickstart-send-telemetry-node.md)
 > * [IoT DevKit AZ3166 se sadou VSCode](../articles/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started.md)
 > * [Raspberry Pi s Node.js](../articles/iot-hub/iot-hub-raspberry-pi-kit-node-get-started.md)
 > * [Raspberry Pi s Pythonem](../articles/iot-hub/iot-hub-raspberry-pi-kit-python-get-started.md)

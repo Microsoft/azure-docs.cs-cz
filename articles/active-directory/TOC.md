@@ -140,33 +140,13 @@
 #### [Ukázky přihlašování](active-directory-reporting-api-sign-in-activity-samples.md)
 #### [Použití certifikátů](active-directory-reporting-api-with-certificates.md)
 
-## Správa hesel
-### [Přehled hesel](authentication/active-directory-passwords-overview.md)
+## Správa hesel (active-directory/authentication/concept-sspr-howitworks.md)
 ### Dokumenty uživatele
 #### [Resetování nebo změna hesla](user-help/active-directory-passwords-update-your-own-password.md)
 #### [Osvědčené postupy pro hesla](active-directory-secure-passwords.md)
 #### [Registrace samoobslužného resetování hesla](user-help/active-directory-passwords-reset-register.md)
-### [Jak funguje SSPR](authentication/concept-sspr-howitworks.md)
-### [Průvodce nasazením SSPR](authentication/howto-sspr-deployment.md)
-### [SSPR a Windows 10](authentication/tutorial-sspr-windows.md)
-### [Zásady SSPR](authentication/concept-sspr-policy.md)
-### [Přizpůsobení SSPR](authentication/concept-sspr-customization.md)
-### [Požadavky SSPR na data](authentication/howto-sspr-authenticationdata.md)
-### [Vytváření sestav SSPR](authentication/howto-sspr-reporting.md)
-### [Inteligentní uzamčení](authentication/howto-password-smart-lockout.md)
-### [Eliminace slabých hesel](authentication/concept-password-ban-bad.md)
-### [Konfigurace seznamu zakázaných hesel](authentication/howto-password-ban-bad.md)
-### [Místní integrace](authentication/concept-password-ban-bad-on-premises.md)
-### [Nasazení ochrany hesel Azure AD](authentication/howto-password-ban-bad-on-premises.md)
-### [Konfigurace ochrany hesel Azure AD](authentication/howto-password-ban-bad-on-premises-operations.md)
-### [Monitorování ochrany hesel Azure AD](authentication/howto-password-ban-bad-on-premises-troubleshoot.md)
 ### Správci IT: Resetování hesel
 #### [Azure Portal](fundamentals/active-directory-users-reset-password-azure-portal.md)
-### [Samoobslužné resetování hesla licence](authentication/concept-sspr-licensing.md)
-### [Zpětný zápis hesla](authentication/howto-sspr-writeback.md)
-### [Řešení problémů](authentication/active-directory-passwords-troubleshoot.md)
-### [Nejčastější dotazy](authentication/active-directory-passwords-faq.md)
-
 
 ## Správa zařízení
 ### [Úvod](device-management-introduction.md)

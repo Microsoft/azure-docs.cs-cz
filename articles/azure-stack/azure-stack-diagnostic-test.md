@@ -1,6 +1,6 @@
 ---
-title: Spustit test pro ověření v zásobníku Azure | Microsoft Docs
-description: Jak chcete shromažďovat soubory protokolů pro diagnostiku v Azure zásobníku
+title: Spustit test pro ověření ve službě Azure Stack | Dokumentace Microsoftu
+description: Jak chcete shromažďovat soubory protokolů pro diagnostiku ve službě Azure Stack.
 services: azure-stack
 author: mattbriggs
 manager: femila
@@ -9,49 +9,50 @@ ms.assetid: D44641CB-BF3C-46FE-BCF1-D7F7E1D01AFA
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
-ms.devlang: na
+ms.devlang: PowerShell
 ms.topic: article
-ms.date: 04/06/2018
+ms.date: 07/19/2018
 ms.author: mabrigg
-ms.openlocfilehash: c28216ced2a7cd2995c55a9faacb93cf27e60c65
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.reviewer: hectorl
+ms.openlocfilehash: a70c736489b25f6e8fd0d838c4c7b4b4db96a4f2
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31394386"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39188796"
 ---
-# <a name="run-a-validation-test-for-azure-stack"></a>Spustit test pro ověření pro Azure zásobníku
+# <a name="run-a-validation-test-for-azure-stack"></a>Spustit test pro ověření pro službu Azure Stack
 
-*Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
+*Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
  
-Můžete ověřit stav zásobník Azure. Pokud máte potíže, obraťte se na zákaznickou podporu služeb společnosti Microsoft. Podpory se žádostí o spustit Test AzureStack z vaší správy uzlu. Ověřovací test izoluje selhání. Podporu můžete analyzovat podrobné protokoly, soustředit na oblasti, kde došlo k chybě a pracovat s vámi při řešení problému.
+Můžete ověřit stav služby Azure Stack. Pokud máte potíže, požádejte zákaznickou podporu služeb Microsoftu. Podporu žádá můžete spouštět **testovací AzureStack** z uzlu pro správu. Izoluje ověřovací test chybou. Podpora pak můžete analyzovat podrobné protokoly, zaměřte se na oblasti, kde došlo k chybě a pracovat s vámi při řešení problému.
 
 ## <a name="run-test-azurestack"></a>Run Test-AzureStack
 
-Pokud máte potíže, obraťte se na zákaznickou podporu služeb společnosti Microsoft a pak spusťte **spustit Test-AzureStack**.
+Pokud máte potíže, obraťte se na zákaznickou podporu služeb Microsoft a pak spusťte **spustit Test-AzureStack**.
 
 1. Máte potíže.
-2. Obraťte se na zákaznický Microsoft služby podpory.
-3. Spustit **Test AzureStack** od privilegovaného koncového bodu.
-    1. Přístup k privilegované koncový bod. Pokyny najdete v tématu [pomocí privilegované koncový bod v zásobníku Azure](azure-stack-privileged-endpoint.md). 
-    2. Na ASDK, přihlaste se k hostiteli správy jako **AzureStack\CloudAdmin**.  
-    Na integrovaný systém musíte použít IP adresu pro privilegovaný end bod pro správu, které jste získali od dodavatele hardwaru, od výrobců OEM.
+2. Obraťte se na zákaznickou Microsoft služby podpory.
+3. Spustit **testovací AzureStack** z privileged koncového bodu.
+    1. Přístup k privilegovaným koncový bod. Pokyny najdete v tématu [pomocí privilegovaných koncového bodu ve službě Azure Stack](azure-stack-privileged-endpoint.md). 
+    2. Na ASDK, přihlaste se k hostiteli správu jako **AzureStack\CloudAdmin**.  
+    Na integrovaný systém je potřeba použít IP adresu pro privilegovaný koncový – bod správy, které jste získali od výrobce OEM dodavatele hardwaru.
     3. Spusťte PowerShell jako správce.
-    4. Spusťte: `Enter-PSSession -ComputerName <ERCS VM name> -ConfigurationName PrivilegedEndpoint`
+    4. Spusťte: `Enter-PSSession -ComputerName <ERCS-VM-name> -ConfigurationName PrivilegedEndpoint`
     5. Spusťte: `Test-AzureStack`
-4. Pokud všechny testy sestavy služeb při selhání, spusťte: `Get-AzureStackLog -FilterByRole SeedRing -OutputPath <Log output path>` rutinu shromažďuje protokoly z AzureStack testu. Další informace o diagnostických protokolů najdete v tématu [zásobník Azure diagnostické nástroje](azure-stack-diagnostics.md).
-5. Odeslat **SeedRing** protokoly na zákaznickou podporu služeb společnosti Microsoft. Služby podpory zákazníků společnosti Microsoft funguje s vámi k vyřešení problému.
+4. Pokud všechny testy hlásí selhání, spusťte: `Get-AzureStackLog -FilterByRole SeedRing -OutputPath <Log output path>` rutina shromažďuje protokoly z AzureStack testu. Další informace o diagnostických protokolech najdete v tématu [diagnostické nástroje služby Azure Stack](azure-stack-diagnostics.md).
+5. Odeslat **SeedRing** protokoly do služby zákaznické podpory Microsoftu. Zákaznická podpora Microsoftu vás služby spolupracuje při řešení problému.
 
-## <a name="reference-for-test-azurestack"></a>Referenční dokumentace pro Test AzureStack
+## <a name="reference-for-test-azurestack"></a>Referenční informace pro Test AzureStack
 
-Tato část obsahuje přehled pro rutinu Test-AzureStack a souhrn ověření sestavy.
+Tato část obsahuje přehled pro rutinu Test-AzureStack a souhrnné informace o sestavu ověření.
 
 ### <a name="test-azurestack"></a>Test-AzureStack
 
-Ověří stav zásobník Azure. Rutina hlásí stav zásobník Azure hardware a software. Tato sestava pracovníky technické podpory slouží ke zkrácení doby řešení případů podpory Azure zásobníku.
+Ověří stav služby Azure Stack. Rutina hlásí stav služby Azure Stack hardware a software. Pracovníci podpory zákazníků můžete zkrátit čas, chcete-li vyřešit případy podpory služby Azure Stack pomocí této sestavy.
 
 > [!Note]  
-> Test AzureStack může rozpoznat chyby, které nejsou vést k výpadkům cloudu, jako jednoho nepodařilo disku nebo selhání uzlu jednom fyzickém hostiteli.
+> **Test-AzureStack** může rozpoznat chyb, nezaručují výpadky cloudu, jako je jeden nepovedlo disku nebo selhání uzlu jednom fyzickém hostiteli.
 
 #### <a name="syntax"></a>Syntaxe
 
@@ -63,113 +64,140 @@ Ověří stav zásobník Azure. Rutina hlásí stav zásobník Azure hardware a 
 
 | Parametr               | Hodnota           | Požaduje se | Výchozí |
 | ---                     | ---             | ---      | ---     |
-| ServiceAdminCredentials | Přihlašovací údaje    | Ne       | FALSE   |
-| DoNotDeployTenantVm     | Přepínací parametr | Ne       | FALSE   |
-| AdminCredential         | Přihlašovací údaje    | Ne       | Není k dispozici      |
-<!-- | StorageConnectionString | Řetězec          | Ne       | Není k dispozici      | není podporována v 1802-->
-| Seznam                    | Přepínací parametr | Ne       | FALSE   |
+| ServiceAdminCredentials | PSCredential    | Ne       | FALSE   |
+| DoNotDeployTenantVm     | SwitchParameter | Ne       | FALSE   |
+| AdminCredential         | PSCredential    | Ne       | Není k dispozici      |
+| Seznam                    | SwitchParameter | Ne       | FALSE   |
 | Ignorovat                  | Řetězec          | Ne       | Není k dispozici      |
 | Zahrnout                 | Řetězec          | Ne       | Není k dispozici      |
+| BackupSharePath         | Řetězec          | Ne       | Není k dispozici      |
+| BackupShareCredential   | PSCredential    | Ne       | Není k dispozici      |
 
-Test AzureStack rutina podporuje běžné parametry: podrobné nastavení, ladění, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable a OutVariable. Další informace najdete v tématu [o společných parametrech](http://go.microsoft.com/fwlink/?LinkID=113216). 
 
-### <a name="examples-of-test-azurestack"></a>Příklady AzureStack testu
+Test-AzureStack rutina podporuje běžné parametry: podrobné nastavení, ladění, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable a OutVariable. Další informace najdete v tématu [o společných parametrech](http://go.microsoft.com/fwlink/?LinkID=113216). 
 
-Následující příklady předpokládají, že jste přihlášeni jako **CloudAdmin** a přístup k privilegované koncový bod (období). Pokyny najdete v tématu [pomocí privilegované koncový bod v zásobníku Azure](azure-stack-privileged-endpoint.md). 
+### <a name="examples-of-test-azurestack"></a>Příkladem testu AzureStack
 
-#### <a name="run-test-azurestack-interactively-without-cloud-scenarios"></a>Spustit Test AzureStack interaktivně bez scénářích cloudu
+Následující příklady předpokládají, že jste přihlášeni jako **CloudAdmin** a přístup k privilegovaným koncový bod (období). Pokyny najdete v tématu [pomocí privilegovaných koncového bodu ve službě Azure Stack](azure-stack-privileged-endpoint.md). 
 
-Spusťte v relaci období:
+#### <a name="run-test-azurestack-interactively-without-cloud-scenarios"></a>Interaktivní spuštění testu AzureStack bez cloudové scénáře
+
+V relaci období spusťte:
 
 ````PowerShell
-  Enter-PSSession -ComputerName <ERCS VM name> -ConfigurationName PrivilegedEndpoint `
-      Test-AzureStack
+    Enter-PSSession -ComputerName <ERCS-VM-name> -ConfigurationName PrivilegedEndpoint -Credential $localcred
+    Test-AzureStack
 ````
 
-#### <a name="run-test-azurestack-with-cloud-scenarios"></a>Spusťte Test AzureStack s scénářích cloudu
+#### <a name="run-test-azurestack-with-cloud-scenarios"></a>Spustit Test AzureStack s cloudové scénáře
 
-Test AzureStack můžete použít ke spouštění vaší zásobník Azure cloud scénáře. Mezi tyto scénáře patří:
+Můžete použít **testovací AzureStack** ke spuštění scénáře v cloudu služby Azure Stack. Mezi tyto scénáře patří:
 
  - Vytvoření skupiny prostředků
  - Vytváření plánů
  - Vytvoření nabídky
- - Vytvoření účtů úložiště
+ - Vytváření účtů úložiště
  - Vytvoření virtuálního počítače
- - Provedení operace objektů blob pomocí účtu úložiště vytvořeném ve scénáři testu
- - Provedení operace fronty pomocí účtu úložiště vytvořeném ve scénáři testu
- - Provést operace s tabulkou pomocí účtu úložiště vytvořeném ve scénáři testu
+ - Provedení operace objektů blob pomocí účet úložiště vytvořený ve scénáři testu
+ - Provedení operace fronty pomocí účet úložiště vytvořený ve scénáři testu
+ - Provádět operace s tabulkou používat účet úložiště vytvořený ve scénáři testu
 
-Cloud scénáře vyžadují přihlašovací údaje správce cloudu. 
+Cloudové scénáře vyžadují přihlašovací údaje správce ke cloudu. 
 > [!Note]  
-> Nelze spustit scénářích cloudu pomocí přihlašovacích údajů pro Active Directory Federated Services (ADFS). **Test AzureStack** rutina je pouze přístupné přes období. Ale období nepodporuje přihlašovací údaje služby AD FS.
+> Nelze spustit cloudové scénáře pomocí přihlašovacích údajů Active Directory Federated Services (AD FS). **Testovací AzureStack** rutina je k dispozici pouze prostřednictvím období. Ale, období nepodporuje přihlašovací údaje služby AD FS.
 
-Zadejte uživatelské jméno správce cloudu ve formátu UPN serviceadmin@contoso.onmicrosoft.com (AAD). Po zobrazení výzvy zadejte heslo k účtu správce cloudu.
+Zadejte uživatelské jméno správce cloudu ve formátu hlavního názvu uživatele serviceadmin@contoso.onmicrosoft.com (Azure AD). Po zobrazení výzvy zadejte heslo pro účet správce cloudu.
 
-Spusťte v relaci období:
+V relaci období spusťte:
 
 ````PowerShell
-  Enter-PSSession -ComputerName <ERCS VM name> -ConfigurationName PrivilegedEndpoint `
+  Enter-PSSession -ComputerName <ERCS-VM-name> -ConfigurationName PrivilegedEndpoint -Credential $localcred
   Test-AzureStack -ServiceAdminCredentials <Cloud administrator user name>
 ````
 
-#### <a name="run-test-azurestack-without-cloud-scenarios"></a>Spustit Test AzureStack bez scénářích cloudu
+#### <a name="run-test-azurestack-without-cloud-scenarios"></a>Spustit Test AzureStack bez cloudové scénáře
 
-Spusťte v relaci období:
+V relaci období spusťte:
 
 ````PowerShell
-  $session = New-PSSession -ComputerName <ERCS VM name> -ConfigurationName PrivilegedEndpoint `
+  $session = New-PSSession -ComputerName <ERCS-VM-name> -ConfigurationName PrivilegedEndpoint -Credential $localcred
   Invoke-Command -Session $session -ScriptBlock {Test-AzureStack}
 ````
 
-#### <a name="list-available-test-scenarios"></a>Seznam dostupných testovací scénáře:
+#### <a name="list-available-test-scenarios"></a>Seznam dostupných testovacích scénářů:
 
-Spusťte v relaci období:
+V relaci období spusťte:
 
 ````PowerShell
-  Enter-PSSession -ComputerName <ERCS VM name> -ConfigurationName PrivilegedEndpoint `
+  Enter-PSSession -ComputerName <ERCS-VM-name> -ConfigurationName PrivilegedEndpoint -Credential $localcred
   Test-AzureStack -List
 ````
 
-#### <a name="run-a-specified-test"></a>Spuštění zadaný testu
+#### <a name="run-a-specified-test"></a>Spuštění zadaného testu
 
-Spusťte v relaci období:
+V relaci období spusťte:
 
 ````PowerShell
-  Enter-PSSession -ComputerName <ERCS VM name> -ConfigurationName PrivilegedEndpoint `
+  Enter-PSSession -ComputerName <ERCS-VM-name> -ConfigurationName PrivilegedEndpoint -Credential $localcred
   Test-AzureStack -Include AzsSFRoleSummary, AzsInfraCapacity
 ````
 
-Vyloučit konkrétní testy:
+Vyloučit specifické testy:
 
 ````PowerShell
-  Enter-PSSession -ComputerName <ERCS VM name> -ConfigurationName PrivilegedEndpoint `
-  Test-AzureStack -Ignore AzsInfraPerformance
+    Enter-PSSession -ComputerName <ERCS-VM-name> -ConfigurationName PrivilegedEndpoint  -Credential $localcred
+    Test-AzureStack -Ignore AzsInfraPerformance
+````
+
+### <a name="run-test-azurestack-to-test-infrastructure-backup-settings"></a>Spustit Test-AzureStack infrastruktura zálohování nastavení testu
+
+Před konfigurací zálohování infrastruktury, můžete otestovat cestu sdílené složky záloh a přihlašovacích údajů pomocí **AzsBackupShareAccessibility** testování.
+
+V relaci období spusťte:
+
+````PowerShell
+    Enter-PSSession -ComputerName <ERCS-VM-name> -ConfigurationName PrivilegedEndpoint -Credential $localcred
+    Test-AzureStack -Include AzsBackupShareAccessibility -BackupSharePath "\\<fileserver>\<fileshare>" -BackupShareCredential <PSCredentials-for-backup-share>
+````
+Po dokončení konfigurace zálohování, můžete spustit AzsBackupShareAccessibility ověření sdílená složka přístupná z ERCS, z období relace spuštění:
+
+````PowerShell
+    Enter-PSSession -ComputerName <ERCS-VM-name> -ConfigurationName PrivilegedEndpoint  -Credential $localcred
+    Test-AzureStack -Include AzsBackupShareAccessibility
+````
+
+Test spusťte nové přihlašovací údaje s nakonfigurovanou zálohování sdílené složky, v relaci období:
+
+````PowerShell
+    Enter-PSSession -ComputerName <ERCS-VM-name> -ConfigurationName PrivilegedEndpoint -Credential $localcred
+    Test-AzureStack -Include AzsBackupShareAccessibility -BackupShareCredential <PSCredential for backup share>
 ````
 
 ### <a name="validation-test"></a>Ověřovací test
 
-Následující tabulka shrnuje spustit Test AzureStack ověřovací testy.
+Následující tabulka shrnuje ověřovací testy spustit **testovací AzureStack**.
 
 | Název                                                                                                                              |
 |-----------------------------------------------------------------------------------------------------------------------------------|-----------------------|
-| Hostování souhrn infrastruktury cloudu Azure zásobníku                                                                                  |
-| Souhrn služby Azure zásobník úložiště                                                                                              |
-| Souhrn Instance Role infrastruktury Azure zásobníku                                                                                  |
-| Hostování využití infrastruktury cloudu Azure zásobníku                                                                              |
-| Kapacita infrastruktury Azure zásobníku                                                                                               |
-| Portál Azure zásobníku a souhrn rozhraní API                                                                                                |
-| Azure zásobníku Souhrn certifikátu Azure Resource Manager                                                                                               |
-| Řadiče pro správu infrastruktury, síťový adaptér, služby úložiště a koncový bod privilegované role infrastruktury          |
-| Řadiče pro správu infrastruktury, síťový adaptér, služby úložiště a privilegovaných koncový bod instance rolí infrastruktury |
-| Souhrn Azure Role infrastruktury zásobníku                                                                                           |
-| Azure zásobníku cloudové služby prostředků infrastruktury služby                                                                                         |
-| Azure zásobníku infrastruktury Role Instance výkonu                                                                              |
-| Souhrn výkonu hostitele cloudu Azure zásobníku                                                                                        |
-| Souhrn spotřeby prostředků služby Azure zásobníku                                                                                  |
-| Azure zásobníku Škálovací jednotky kritické události (posledních 8 hodin)                                                                             |
-| Souhrn fyzické disky služby Azure zásobník úložiště                                                                               |
+| Azure Stack na Cloudový Hosting infrastruktury souhrn                                                                                  |
+| Souhrn služby úložiště Azure Stack                                                                                              |
+| Souhrn Instance Role infrastruktury Azure stacku                                                                                  |
+| Azure Stack na Cloudový Hosting infrastruktury využití                                                                              |
+| Kapacity infrastruktury Azure stacku                                                                                               |
+| Souhrn rozhraní API a portálu Azure Stack                                                                                                |
+| Azure Stack Souhrn certifikátu Azure Resource Manageru                                                                                               |
+| Řadič pro správu základní infrastruktury, síťový adaptér, služeb úložiště a koncový bod privilegovaných rolí infrastruktury          |
+| Řadič pro správu základní infrastruktury, síťový adaptér, služeb úložiště a Privileged koncový bod instance rolí infrastruktury |
+| Azure Stack infrastrukturu Role souhrn                                                                                           |
+| Služeb Azure Stack Cloud Service Fabric                                                                                         |
+| Azure Stack infrastrukturu Role Instance výkonu                                                                              |
+| Souhrn výkonu hostitele cloudu Azure Stack                                                                                        |
+| Souhrn využití prostředků služby Azure Stack                                                                                  |
+| Azure Stack Škálovací jednotku kritické události (posledních 8 hodin)                                                                             |
+| Souhrn fyzických disků služby úložiště Azure Stack                                                                               |
+|Souhrn přístupnost sdílené složky záloh Azure Stack                                                                                     |
 
 ## <a name="next-steps"></a>Další postup
 
- - Další informace o problému protokolování a diagnostické nástroje zásobník Azure najdete v tématu [ zásobník Azure diagnostické nástroje](azure-stack-diagnostics.md).
- - Další informace o řešení problémů naleznete v tématu [řešení potíží s Microsoft Azure zásobníku](azure-stack-troubleshooting.md)
+ - Další informace o problému protokolování a diagnostické nástroje služby Azure Stack, najdete v článku [ diagnostické nástroje služby Azure Stack](azure-stack-diagnostics.md).
+ - Další informace o řešení potíží najdete v tématu [řešení potíží s Microsoft Azure Stack](azure-stack-troubleshooting.md)

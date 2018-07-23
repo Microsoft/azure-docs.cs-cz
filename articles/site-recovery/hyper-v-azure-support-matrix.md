@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: 3204329dc7c9efe2b0ba0ae05d17bc93d51620b4
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 709afe03570ca4cf81718fb071778439444d6bf6
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37921525"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171979"
 ---
 # <a name="support-matrix-for-hyper-v-replication-to-azure"></a>Matice podpory pro replikaci Hyper-V do Azure
 
@@ -48,7 +48,12 @@ Konfigurace virtuálního počítače | Virtuální počítače, které se repli
 Hostovaný operační systém | Žádné hostovaný operační systém nepodporuje v Azure.<br/><br/> Windows Server 2016 Nano Server není podporována.
 
 
+## <a name="vmdisk-management"></a>Správa virtuálních počítačů/disků
 
+**Akce** | **Podrobnosti**
+--- | ---
+Změna velikosti disku na replikovaný virtuální počítač Hyper-V | Nepodporuje se. Zakázat replikaci, proveďte požadovanou změnu a potom znovu povolit replikaci pro virtuální počítač.
+Přidání disku na replikovaný virtuální počítač Hyper-V | Nepodporuje se. Zakázat replikaci, proveďte požadovanou změnu a potom znovu povolit replikaci pro virtuální počítač.
 
 ## <a name="hyper-v-network-configuration"></a>Konfigurace sítě technologie Hyper-V
 

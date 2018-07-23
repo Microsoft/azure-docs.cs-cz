@@ -6,14 +6,14 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 07/06/2018
+ms.date: 07/20/2018
 ms.author: babanisa
-ms.openlocfilehash: 266ddced5f1949fa72508d914f76953101a7aac6
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: f7be7e5f5e51a47b95d39047af9bcf08e463ca34
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37902221"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39186107"
 ---
 # <a name="azure-event-grid-event-schema"></a>Schéma událostí služby Azure Event Grid
 
@@ -83,7 +83,7 @@ Všechny události mají stejné nejvyšší úrovně následující data:
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
 | téma | řetězec | Úplné prostředků cesta ke zdroji události. Toto pole není zapisovatelná. Event gridu poskytuje tuto hodnotu. |
-| předmět | řetězec | Vydavatel definované cesta předmět události. |
+| Předmět | řetězec | Vydavatel definované cesta předmět události. |
 | Typ události | řetězec | Jeden z typů registrované události pro tento zdroj událostí. |
 | čas události | řetězec | Vygenerování události podle času UTC poskytovatele. |
 | id | řetězec | Jedinečný identifikátor pro událost. |
@@ -94,6 +94,7 @@ Všechny události mají stejné nejvyšší úrovně následující data:
 Další informace o vlastnosti datového objektu, naleznete v tématu zdroje událostí:
 
 * [Předplatná Azure (operace správy)](event-schema-subscriptions.md)
+* [Container Registry](event-schema-container-registry.md)
 * [Blob Storage](event-schema-blob-storage.md)
 * [Event Hubs](event-schema-event-hubs.md)
 * [IoT Hub](event-schema-iot-hub.md)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/16/2018
 ms.author: daveba
-ms.openlocfilehash: ced2a8354e63288ad9957b6a177b43c97b58698c
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 42d5b55e0bddf2d027810bfdf146de9bfee8a0fb
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39160531"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39188127"
 ---
 # <a name="create-list-and-delete-a-user-assigned-identity-using-azure-resource-manager"></a>Vytváření, výpisu a odstranění identity přiřazené uživateli, pomocí Azure Resource Manageru
 
@@ -37,8 +37,8 @@ Není možné vypsat a odstranit uživatele přiřazeny identity pomocí šablon
 
 - Pokud nejste obeznámeni s identita spravované služby, podívejte se [oddílu přehled](overview.md). **Nezapomeňte si přečíst [rozdíl mezi přiřazenou systémem a identity přiřazené uživateli](overview.md#how-does-it-work)**.
 - Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
-
-Ať už místně se přihlaste do Azure nebo prostřednictvím portálu Azure portal pomocí účtu, který je přidružený k předplatnému Azure, která obsahuje virtuální počítač. Také se ujistěte, že váš účet patří do role, která poskytuje oprávnění k zápisu na virtuálním počítači (například role "Přispěvatel virtuálních počítačů").
+- Váš účet k provádění operací v tomto článku, potřebuje následující přiřazení role:
+    - [Spravovaná identita Přispěvatel](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) role k vytvoření, čtení (list), aktualizace a odstranění identity přiřazené uživateli.
 
 ## <a name="template-creation-and-editing"></a>Vytváření šablon a úpravy
 
@@ -51,7 +51,7 @@ Jak s Azure portal a vytváření skriptů, šablon Azure Resource Manageru umo�
 
 ## <a name="create-a-user-assigned-identity"></a>Vytvoření identity přiřazené uživatelem 
 
-Pokud chcete vytvořit identity přiřazené uživateli, pomocí následující šablony. Minimálně je třeba přiřadit svůj účet [Přispěvatel spravovaných identit](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) role pro vytvoření identity přiřazené uživateli. Nahradit `<USER ASSIGNED IDENTITY NAME>` hodnoty vlastními hodnotami:
+Pokud chcete vytvořit identity přiřazené uživateli, pomocí následující šablony. Nahradit `<USER ASSIGNED IDENTITY NAME>` hodnoty vlastními hodnotami:
 
 [!INCLUDE[ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 

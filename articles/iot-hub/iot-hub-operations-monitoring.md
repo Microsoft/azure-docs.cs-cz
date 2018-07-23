@@ -1,6 +1,6 @@
 ---
-title: Operace v Azure IoT Hub monitorování | Microsoft Docs
-description: Jak používat Azure IoT Hub operations monitorování ke sledování stavu operací ve službě IoT hub v reálném čase.
+title: Monitorování operací Azure IoT Hub | Dokumentace Microsoftu
+description: Jak používat Azure IoT Hub operace monitorování ke sledování stavu operací ve službě IoT hub v reálném čase.
 author: nberdy
 manager: briz
 ms.service: iot-hub
@@ -8,54 +8,54 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/10/2017
 ms.author: nberdy
-ms.openlocfilehash: 0a1da3812d6f11aa6525857596b394fbfa3dc88a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0f4d5105b7266ba24fc5efa9af887b4458c05d5e
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34634800"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39186192"
 ---
-# <a name="iot-hub-operations-monitoring"></a>Operace služby IoT Hub monitorování
+# <a name="iot-hub-operations-monitoring"></a>Monitorování operací služby IoT Hub
 
-Operace služby IoT Hub monitorování umožňuje sledovat stav operace ve službě IoT hub v reálném čase. IoT Hub sleduje události napříč několika kategorií operací. Můžete se taky rozhodnout do odesílání událostí z jedné nebo více kategorií pro koncový bod služby IoT hub pro zpracování. Můžete sledovat data chyby nebo nastavit složitější zpracování vámi data.
+Monitorování operací služby IoT Hub umožňuje monitorovat stav operací ve službě IoT hub v reálném čase. IoT Hub sleduje události napříč několika kategoriemi těchto operací. Můžete se rozhodnout do odesílání událostí z jedné nebo více kategorií pro koncový bod služby IoT hub pro zpracování. Můžete monitorovat data o chybách nebo nastavení složitější zpracování na základě způsobů data.
 
 >[!NOTE]
->Monitorování operací služby IoT Hub je zastaralá a odebere ze služby IoT Hub na 10. října 2018. Monitorování operací a stavu služby IoT Hub, najdete v části [monitorování stavu služby Azure IoT Hub a rychle diagnostikovat problémy][lnk-monitor]. Další informace o vyřazení časovou osu najdete v tématu [monitorovat řešení Azure IoT s monitorování Azure a Azure Resource Health][lnk-blog-announcement].
+>Monitorování operací služby IoT Hub je zastaralá a bude odebrán ze služby IoT Hub na 10. března 2019. Monitorování operací a stavu služby IoT Hub, najdete v části [monitorování stavu služby Azure IoT Hub a rychlá Diagnostika potíží][lnk-monitor]. Další informace o vyřazení časové osy, naleznete v tématu [monitorování řešení Azure IoT pomocí Azure monitoru a Azure Resource Health][lnk-blog-announcement].
 
-IoT Hub monitoruje šesti kategorie události:
+IoT Hub monitoruje šest kategorie události:
 
 * Operace identity zařízení
-* Zařízení telemetrie
+* Telemetrie zařízení
 * Zprávy typu cloud zařízení
 * Připojení
-* Nahrávání souborů
+* Nahrání souborů
 * Směrování zpráv
 
 > [!IMPORTANT]
-> Operace služby IoT Hub monitorování nezaručuje spolehlivé nebo seřazené doručení událostí. V závislosti na IoT Hub podpůrné infrastruktuře může být některé události ztráty nebo doručit mimo pořadí. Pomocí operací monitorování Generovat výstrahy založené na signály chyba například neúspěšné pokusy o připojení nebo odpojení vysoká frekvence pro konkrétní zařízení. Neměli byste tedy spoléhat na operace sledování událostí pro vytvoření konzistentní úložiště pro stavu zařízení, např. obchod sledování připojení nebo odpojení stavu zařízení. 
+> Monitorování operací služby IoT Hub nezaručuje doručení událostí spolehlivé nebo nejsou seřazené. V závislosti na základní infrastruktury služby IoT Hub může být některé události ztráty nebo odeslaná mimo pořadí. Pomocí operací monitorování Generovat výstrahy na základě signálů chyby, jako je například neúspěšné pokusy o připojení nebo odpojení vysokou frekvencí pro konkrétní zařízení. Neměli byste tedy spoléhat na provoz, monitorování událostí k vytvoření konzistentní úložiště pro stav zařízení, třeba úložiště sledování připojení nebo odpojení stav zařízení. 
 
-## <a name="how-to-enable-operations-monitoring"></a>Postup povolení operací monitorování
+## <a name="how-to-enable-operations-monitoring"></a>Povolení monitorování operací
 
-1. Vytvoření služby IoT hub. Pokyny k vytvoření služby IoT hub v naleznete [Začínáme] [ lnk-get-started] průvodce.
+1. Vytvoření služby IoT hub. Můžete najít pokyny o tom, jak vytvořit IoT hub v [Začínáme] [ lnk-get-started] průvodce.
 
-1. Otevřete okno služby IoT hub. Zde, klikněte na tlačítko **Operations monitorování**.
+1. Otevře se okno služby IoT hub. Odtud, klikněte na tlačítko **monitorování operací**.
 
-    ![Monitorování konfigurace na portálu pro operace přístupu.][1]
+    ![Konfigurace na portálu pro sledování operací přístupu k][1]
 
-1. Vyberte monitorování kategorie, které chcete monitorovat a pak klikněte na tlačítko **Uložit**. Události jsou k dispozici pro čtení z koncového bodu kompatibilního s centrem událostí uvedený v **nastavení sledování**. Koncový bod centra IoT se nazývá `messages/operationsmonitoringevents`.
+1. Vyberte monitorování kategorie, které chcete monitorovat a potom klikněte na **Uložit**. Události jsou k dispozici pro čtení z koncového bodu kompatibilní s centrem událostí uvedený v **nastavení monitorování**. Koncový bod služby IoT Hub se nazývá `messages/operationsmonitoringevents`.
 
-    ![Konfigurace operací monitorování ve službě IoT hub][2]
+    ![Konfigurace monitorování ve službě IoT hub operací][2]
 
 > [!NOTE]
-> Výběr **podrobné** monitorování **připojení** kategorie způsobí, že Centrum IoT k vygenerování hlášení další diagnostiky. U všech ostatních kategorií **podrobné** změny nastavení množství informací IoT Hub obsahuje v každém chybová zpráva.
+> Výběr **Verbose** monitorování **připojení** kategorie způsobí, že služby IoT Hub generovat další diagnostické informace. U všech ostatních kategorií **Verbose** množství informací o službě IoT Hub změny nastavení obsahuje každá chybová zpráva.
 
 ## <a name="event-categories-and-how-to-use-them"></a>Kategorie události a jejich použití
 
-Každý operations monitorování sleduje kategorie má jiný typ interakci s IoT Hub a každou kategorii monitorování schéma, které definuje, jak jsou strukturovaná události v této kategorii.
+Každé monitorování sleduje kategorii operací má jiný typ interakce s centrem IoT a každou kategorii monitorování schéma, který definuje, jak jsou strukturované události do této kategorie spadají.
 
 ### <a name="device-identity-operations"></a>Operace identity zařízení
 
-Kategorie operations identity zařízení sleduje chyby, ke kterým dochází při pokusu o vytvoření, aktualizace nebo odstranění položku v registru identit služby IoT hub. Sledování této kategorie jsou užitečné pro zřizování scénáře.
+Kategorie zařízení identity operace sleduje chyby, ke kterým dochází při pokusu o vytvoření, aktualizaci nebo odstraňte položku v registru identit služby IoT hub. Sledování této kategorie je užitečné pro zřizování scénáře.
 
 ```json
 {
@@ -72,9 +72,9 @@ Kategorie operations identity zařízení sleduje chyby, ke kterým dochází p�
 }
 ```
 
-### <a name="device-telemetry"></a>Zařízení telemetrie
+### <a name="device-telemetry"></a>Telemetrie zařízení
 
-Kategorie zařízení telemetrie sleduje chybách, ke kterým dochází při služby IoT hub a souvisí s telemetrie kanálu. Tato kategorie zahrnuje chyb vzniklých při odesílání telemetrie událostí (například omezení šířky pásma) a příjem telemetrické události (například neoprávněným čtečky). Tuto kategorii nelze catch chyby způsobené kód spuštěný v samotném zařízení.
+Kategorie telemetrie zařízení sleduje chyby, ke kterým dochází za služby IoT hub, jež se vztahují k telemetrická data profilace. Tato kategorie zahrnuje chyby, ke kterým dochází při odesílání telemetrických událostí (například omezování využití) a příjem telemetrických událostí (například neoprávněné čtečky). Tato kategorie nemůže zachytávat chyby způsobené kód spuštěný na samotném zařízení.
 
 ```json
 {
@@ -98,7 +98,7 @@ Kategorie zařízení telemetrie sleduje chybách, ke kterým dochází při slu
 
 ### <a name="cloud-to-device-commands"></a>Příkazy typu cloud zařízení
 
-Kategorie příkazy typu cloud zařízení sleduje chybách, ke kterým dochází při služby IoT hub a souvisí s kanálu zpráv typu cloud zařízení. Tato kategorie zahrnuje chyb vzniklých při odesílání zpráv typu cloud zařízení (například neautorizovaného odesílatele), přijímání zpráv typu cloud zařízení (například počet doručení překročena) a přijímání zpráv typu cloud zařízení zpětnou vazbu (například zpětné vazby jeho platnost). Tuto kategorii nezachytí chyby ze zařízení, která nesprávně zpracovává zprávy typu cloud zařízení, pokud zpráva cloud zařízení byla úspěšně doručeno.
+Příkazy typu cloud zařízení kategorie sleduje chyby, ke kterým dochází za služby IoT hub, jež se vztahují k kanál zpracování zpráv typu cloud zařízení. Tato kategorie zahrnuje chyby, ke kterým dochází při odesílání zprávy typu cloud zařízení (například neautorizovaného odesílatele), příjem zpráv typu cloud zařízení (například překročení počtu doručených položek) a příjem zpráv typu cloud zařízení zpětnou vazbu (např. zpětnou vazbu s prošlou platností). Tato kategorie nebude zachytávat chyby ze zařízení, která zpracovává nesprávně zprávu typu cloud zařízení, pokud byl úspěšně doručit zprávu typu cloud zařízení.
 
 ```json
 {
@@ -122,7 +122,7 @@ Kategorie příkazy typu cloud zařízení sleduje chybách, ke kterým docház�
 
 ### <a name="connections"></a>Připojení
 
-Kategorie připojení sleduje chyb vzniklých při zařízení připojení nebo odpojení od služby IoT hub. Sledování této kategorie jsou užitečné pro identifikaci pokusy o neoprávněné připojení a sledování při ztrátě pro zařízení v oblastech malé možnosti připojení připojení.
+Kategorie připojení sleduje chyby, ke které dochází, když zařízení připojit nebo odpojit od služby IoT hub. Sledování této kategorie je užitečné pro identifikaci pokusy o neautorizovaný připojení a pro sledování při ztrátě zařízení v oblastech špatnému připojení k připojení.
 
 ```json
 {
@@ -140,15 +140,15 @@ Kategorie připojení sleduje chyb vzniklých při zařízení připojení nebo 
 }
 ```
 
-### <a name="file-uploads"></a>Nahrávání souborů
+### <a name="file-uploads"></a>Nahrání souborů
 
-Kategorie nahrávání souboru sleduje chybách, ke kterým dochází při služby IoT hub a souvisí s funkcí nahrávání souboru. Tato kategorie zahrnuje:
+Kategorie nahrávání souborů sleduje chybách, ke kterým dochází za služby IoT hub a souvisí s funkcí odesílání souborů. Tato kategorie zahrnuje:
 
-* Chyby, které se identifikátor URI SAS, jako je například vypršení platnosti před zařízení upozorní rozbočovače dokončená nahrávání.
-* Nepodařilo nahrávání údajů ze zařízení.
-* Chyby, které nastat, pokud soubor nebyl nalezen v úložišti během vytváření zpráv oznámení služby IoT Hub.
+* Chyby, ke kterým dochází s identifikátorem URI SAS, jako je například vypršení platnosti předtím, než oznámí zařízení centra dokončená nahrávání.
+* Nepovedlo nahrávání oznámí zařízení.
+* Chyby, ke kterým dochází při soubor nebyl nalezen v úložišti během vytváření zprávy oznámení služby IoT Hub.
 
-Tuto kategorii nelze catch chyb, které přímo nastat, když je zařízení nahrání souboru do úložiště.
+Tato kategorie nemůže zachytávat chyby, které se stanou přímo ve chvíli, kdy zařízení odesílá do souboru do úložiště.
 
 ```json
 {
@@ -169,7 +169,7 @@ Tuto kategorii nelze catch chyb, které přímo nastat, když je zařízení nah
 
 ### <a name="message-routing"></a>Směrování zpráv
 
-Kategorie směrování zpráv sleduje chyb vzniklých při vyhodnocení zpráva trasy a stav koncového bodu zaznamenatelného službou IoT Hub. Tato kategorie zahrnuje události, například pokud se pravidlo vyhodnotí jako "undefined", když IoT Hub označí koncový bod zpráv a všechny ostatní chyby přijaté z koncového bodu. Tato kategorie nezahrnuje konkrétní chyby týkající se zpráv sami (například zařízení omezení chyby), které jsou v části kategorie "zařízení telemetrická".
+Kategorie směrování zpráv sleduje chyb vzniklých při hodnocení trasy zpráv a koncový bod stavu vnímanou ve službě IoT Hub. Tato kategorie zahrnuje události, jako když pravidlo vyhodnotí jako "undefined", když IoT Hub označí koncový bod jako dead a případných dalších chybách přijatých z koncového bodu. Tato kategorie neobsahuje konkrétní chyby o samotné zprávy (jako je například zařízení chybám omezování), které jsou hlášeny v kategorii "telemetrii zařízení".
 
 ```json
 {
@@ -188,49 +188,49 @@ Kategorie směrování zpráv sleduje chyb vzniklých při vyhodnocení zpráva 
 
 ## <a name="view-events"></a>Zobrazení událostí
 
-Můžete použít *iothub-explorer* nástroj rychle otestovat, zda služby IoT hub je generování události monitorování. Chcete-li nainstalovat nástroj, postupujte podle pokynů v [iothub-explorer] [ lnk-iothub-explorer] úložiště GitHub.
+Můžete použít *iothub-explorer* nástroj rychle otestovat, zda služby IoT hub generuje události monitorování. Pokud chcete nástroj nainstalovat, přečtěte si pokyny v [iothub-explorer] [ lnk-iothub-explorer] úložiště GitHub.
 
-1. Zajistěte, aby **připojení** monitorování kategorie je nastaven na **podrobné** na portálu.
+1. Ujistěte se, že **připojení** monitorování kategorie je nastavena na **Verbose** na portálu.
 
-1. V příkazovém řádku spusťte následující příkaz pro čtení z koncového bodu monitorování:
+1. Na příkazovém řádku spusťte následující příkaz pro čtení z koncového bodu monitorování:
 
     ```
     iothub-explorer monitor-ops --login {your iothubowner connection string}
     ```
 
-1. V jiné příkazového řádku spusťte následující příkaz k simulaci zařízení odesílání zpráv typu zařízení cloud:
+1. V jiném příkazového řádku spusťte následující příkaz, který simuluje zařízení odesílající zprávy typu zařízení cloud:
 
     ```
     iothub-explorer simulate-device {your device name} --send "My test message" --login {your iothubowner connection string}
     ```
 
-1. První příkazového řádku ukazuje události monitorování simulované zařízení připojí ke službě IoT hub.
+1. První příkazového řádku zobrazí monitorování události jako připojení simulovaného zařízení do služby IoT hub.
 
-## <a name="connect-to-the-monitoring-endpoint"></a>Připojení ke koncovému bodu monitorování
+## <a name="connect-to-the-monitoring-endpoint"></a>Připojte se k monitorování koncového bodu
 
-Monitorování koncový bod ve službě IoT hub je koncový bod kompatibilní s centrem událostí. Můžete použít všechny mechanismus, který funguje se službou Event Hubs umožní číst zprávy typu monitorování z tento koncový bod. Následující příklad vytvoří základní čtečka, která není vhodná pro vysoce výkonná nasazení. Další informace o zpracování zpráv ze služby Event Hubs najdete v kurzu [Začínáme se službou Event Hubs][lnk-eventhubs-tutorial].
+Monitorování koncového bodu ve službě IoT hub je koncový bod kompatibilní s centrem událostí. Můžete použít libovolný mechanismus, který funguje s Event Hubs slouží ke čtení z tohoto koncového bodu monitorování zpráv. Následující příklad vytvoří čtečku, která není vhodná pro vysoce výkonná nasazení. Další informace o zpracování zpráv ze služby Event Hubs najdete v kurzu [Začínáme se službou Event Hubs][lnk-eventhubs-tutorial].
 
-Pro připojení k monitorování koncového bodu, budete potřebovat připojovací řetězec a název koncového bodu. Následující kroky vám ukážou, jak najít potřebné hodnoty na portálu:
+Pro připojení k monitorování koncového bodu, budete potřebovat připojovací řetězec a název koncového bodu. Následující kroky ukazují, jak najít potřebné hodnoty na portálu:
 
-1. Na portálu přejděte do okna prostředků vaší služby IoT Hub.
+1. Na portálu přejděte do okna vaší služby IoT Hub prostředků.
 
-1. Zvolte **Operations monitorování**a poznamenejte si **název kompatibilní s centrem událostí** a **koncový bod kompatibilní s centrem událostí** hodnoty:
+1. Zvolte **monitorování operací**a poznamenejte si, **název kompatibilní s centrem událostí** a **koncový bod kompatibilní s centrem událostí** hodnoty:
 
-    ![Hodnoty koncový bod kompatibilní s centrem událostí][img-endpoints]
+    ![Hodnoty koncového bodu kompatibilního s centrem událostí][img-endpoints]
 
-1. Zvolte **zásady sdíleného přístupu**, zvolte **služby**. Poznamenejte si **primární klíč** hodnotu:
+1. Zvolte **zásady sdíleného přístupu**, klikněte na tlačítko **služby**. Poznamenejte si, **primární klíč** hodnotu:
 
-    ![Primární klíč pro zásady sdíleného přístupu služby][img-service-key]
+    ![Primární klíč zásad sdíleného přístupu služby][img-service-key]
 
-Následující ukázka kódu C# jsou převzaty ze sady Visual Studio **Windows Classic Desktop** konzolovou aplikaci C#. Tento projekt **WindowsAzure.ServiceBus** nainstalovat balíček NuGet.
+Následující vzorový kód jazyka C# je přijata ze sady Visual Studio **klasická plocha Windows** konzolovou aplikaci C#. Projekt má **WindowsAzure.ServiceBus** nainstalovaný balíček NuGet.
 
-* Nahraďte zástupný symbol připojovacího řetězce připojovací řetězec, který používá **koncový bod kompatibilní s centrem událostí** a služba **primární klíč** hodnoty, které jste si poznamenali dříve, jak je znázorněno v následujícím příkladu:
+* Nahraďte zástupný symbol připojovacího řetězce připojovacím připojovacím řetězcem, který používá **koncový bod kompatibilní s centrem událostí** a služba **primární klíč** hodnoty, které jste si poznamenali dříve, jak je znázorněno v následujícím příkladu:
 
     ```cs
     "Endpoint={your Event Hub-compatible endpoint};SharedAccessKeyName=service;SharedAccessKey={your service primary key value}"
     ```
 
-* Nahraďte monitorování zástupný symbol název koncového bodu se **název kompatibilní s centrem událostí** hodnoty, které jste si poznamenali dříve.
+* Nahraďte monitorování zástupný název koncového bodu s **název kompatibilní s centrem událostí** hodnotu, kterou jste si poznamenali dříve.
 
 ```cs
 class Program
@@ -283,9 +283,9 @@ class Program
 ```
 
 ## <a name="next-steps"></a>Další postup
-Pokud chcete prozkoumat další možnosti IoT Hub, najdete v části:
+Podrobněji prozkoumat možnosti služby IoT Hub, najdete v tématech:
 
-* [Příručka vývojáře pro službu IoT Hub][lnk-devguide]
+* [Příručka vývojáře pro IoT Hub][lnk-devguide]
 * [Nasazení AI do hraničních zařízení s použitím Azure IoT Edge][lnk-iotedge]
 
 <!-- Links and images -->
@@ -296,7 +296,7 @@ Pokud chcete prozkoumat další možnosti IoT Hub, najdete v části:
 
 [lnk-blog-announcement]: https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health
 [lnk-monitor]: iot-hub-monitor-resource-health.md
-[lnk-get-started]: iot-hub-csharp-csharp-getstarted.md
+[lnk-get-started]: quickstart-send-telemetry-dotnet.md
 [lnk-diagnostic-metrics]: iot-hub-metrics.md
 [lnk-scaling]: iot-hub-scaling.md
 [lnk-dr]: iot-hub-ha-dr.md

@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 07/21/2018
-ms.openlocfilehash: 3637ee63c94ea54145d99b9d5632f0a77c95d2f4
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 7494f139f824d3794fced3a0eb4f8d676f3961f5
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970257"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173703"
 ---
 # <a name="azure-database-for-postgresql-pricing-tiers"></a>Azure Database for PostgreSQL cenové úrovně
 
@@ -46,21 +46,21 @@ Výpočetní prostředky jsou k dispozici jako virtuální jádra, která předs
 
 | **Oblasti Azure** | **4. generace** | **Generace 5** |
 |:---|:----------:|:--------------------:|
-| Střed USA | X |  |
-| Východ USA | X | X |
+| USA – střed | X |  |
+| USA – východ | X | X |
 | Východní USA 2 | X | X |
 | Střed USA – sever | X | X |
 | Střed USA – jih | X | X |
-| Západní USA | X | X |
-| Západní USA 2 |  | X |
-| Střední Kanada | X | X |
-| Východní Kanada | X | X |
+| USA – západ | X | X |
+| USA – západ 2 |  | X |
+| Kanada – střed | X | X |
+| Kanada – východ | X | X |
 | Brazílie – jih | X | X |
 | Severní Evropa | X | X |
 | Západní Evropa |  | X |
 | Francie – střed |  | X |
 | Spojené království – západ |  | X |
-| Spojené království – jih |  | X |
+| Velká Británie – jih |  | X |
 | Východní Asie | X | X |
 | Jihovýchodní Asie | X | X |
 | Austrálie – východ |  | X |
@@ -97,6 +97,8 @@ Server je označen jen pro čtení, když velikost volného místa nedosáhne me
 Když serveru je nastavena na jen pro čtení, jsou odpojené všechny existující relace a nepotvrzené transakce jsou vrácena zpět. Všechny operace zápisu následné a transakce potvrzení nezdaří. Všechny následné čtení dotazy budou fungovat bez přerušení.  
 
 Můžete zvýšit velikost zřízeného úložiště na serveru nebo zahájit novou relaci v datech režimu a drop pro čtení i zápis uvolnit volné úložiště. Spuštění `SET SESSION CHARACTERISTICS AS TRANSACTION READ WRITE;` nastaví aktuální relace do režimu zápisu pro čtení. Pokud se chcete vyhnout poškození dat, nebude provádět všechny operace zápisu server je stále ve stavu jen pro čtení.
+
+Doporučujeme nastavit upozornění pro upozornění, úložiště serveru se blíží prahové hodnoty, tomu se můžete vyhnout, převedení do stavu jen pro čtení. Další informace najdete v dokumentaci na [jak nastavit výstrahu](howto-alert-on-metric.md).
 
 ## <a name="backup"></a>Backup
 

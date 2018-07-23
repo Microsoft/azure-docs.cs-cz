@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: spelluru
-ms.openlocfilehash: 0397c520dd0135df56e7eb7e8cd6ed7ffa46156e
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: d87c8a46459a9b4bf80bef895ec97e436d38e699
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39009389"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39186828"
 ---
 # <a name="store-secrets-in-a-key-vault-in-azure-devtest-labs"></a>Store tajné klíče v trezoru klíčů ve službě Azure DevTest Labs
 Budete muset zadat komplexní tajný klíč, když pomocí Azure DevTest Labs: heslo pro váš virtuální počítač Windows veřejný klíč SSH pro virtuální počítač s Linuxem nebo osobní přístupový token pro klonování úložiště Git pomocí artefakt. Tajné kódy jsou obvykle dlouhé a mají náhodných znaků. Proto je zadání může být složité a nepohodlná, zejména pokud používáte stejný tajný klíč více než jednou.
 
-Chcete-li tento problém vyřešit a zároveň udržovat vaše tajné kódy na bezpečném místě, DevTest Labs podporuje ukládání tajných kódů v [službou Azure key vault](../key-vault/key-vault-overview.md). Když uživatel uloží tajného kódu poprvé, služba DevTest Labs automaticky vytvoří trezor klíčů ve stejné skupině prostředků, který obsahuje testovací prostředí a uloží ve službě key vault tajný klíč. 
+Chcete-li tento problém vyřešit a zároveň udržovat vaše tajné kódy na bezpečném místě, DevTest Labs podporuje ukládání tajných kódů v [službou Azure key vault](../key-vault/key-vault-overview.md). Když uživatel uloží tajného kódu poprvé, služba DevTest Labs automaticky vytvoří trezor klíčů ve stejné skupině prostředků, který obsahuje testovací prostředí a uloží ve službě key vault tajný klíč. DevTest Labs vytvoří samostatné služby key vault pro každého uživatele. 
 
 ## <a name="save-a-secret-in-azure-key-vault"></a>Uložte tajný klíč ve službě Azure Key Vault
 Uložte tajný klíč ve službě Azure Key Vault, proveďte následující kroky:

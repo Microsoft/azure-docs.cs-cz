@@ -1,9 +1,9 @@
 ---
-title: Spravovat sady záznamů DNS a záznamy s Azure DNS | Microsoft Docs
-description: Azure DNS poskytuje možnost spravovat sady záznamů DNS a záznamy při hostování vaší domény.
+title: Spravovat sady záznamů DNS a záznamy s využitím Azure DNS | Dokumentace Microsoftu
+description: Azure DNS umožňuje spravovat záznamy a sadami záznamů DNS, při hostování domény.
 services: dns
 documentationcenter: na
-author: KumudD
+author: vhorne
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2016
-ms.author: kumud
-ms.openlocfilehash: da7d2118a0fb6bc5004856d994a01a932094ca45
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.author: victorh
+ms.openlocfilehash: b95ec9b4b5077b236c5f3a7183820552b7ccac49
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39174427"
 ---
-# <a name="manage-dns-records-and-record-sets-by-using-the-azure-portal"></a>Záznamy DNS spravovat a sady záznamů pomocí portálu Azure
+# <a name="manage-dns-records-and-record-sets-by-using-the-azure-portal"></a>Ke správě DNS záznamů a sad záznamů pomocí webu Azure portal
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](dns-operations-recordsets-portal.md)
@@ -29,99 +30,99 @@ ms.lasthandoff: 05/03/2018
 > * [Azure CLI 2.0](dns-operations-recordsets-cli.md)
 > * [PowerShell](dns-operations-recordsets.md)
 
-Tento článek ukazuje, jak spravovat sady záznamů a záznamů zóny DNS pomocí portálu Azure.
+V tomto článku se dozvíte, jak spravovat sady záznamů a záznamů zóny DNS pomocí webu Azure portal.
 
-Je důležité si uvědomit rozdíl mezi sady záznamů DNS a jednotlivé záznamy DNS. Sada záznamů je kolekce záznamů v zóně, které mají stejný název a jsou stejného typu. Další informace najdete v tématu [DNS vytvoření sady záznamů a záznamy pomocí portálu Azure](dns-getstarted-create-recordset-portal.md).
+Je důležité porozumět rozdílu mezi jednotlivé záznamy DNS a sad záznamů DNS. Sady záznamů je kolekcí záznamů v zóně, které mají stejný název a jsou stejného typu. Další informace najdete v tématu [DNS vytvořit sad záznamů a záznamů pomocí webu Azure portal](dns-getstarted-create-recordset-portal.md).
 
-## <a name="create-a-new-record-set-and-record"></a>Vytvoření nové sady záznamů a záznamů
+## <a name="create-a-new-record-set-and-record"></a>Vytvořit novou sadu záznamů a záznamu
 
-Vytvoření záznamů na portálu Azure, naleznete v části [záznamy DNS vytvořit pomocí portálu Azure](dns-getstarted-create-recordset-portal.md).
+Vytvoření záznamu nastavit na webu Azure Portal najdete v tématu [vytvářet DNS záznamy pomocí webu Azure portal](dns-getstarted-create-recordset-portal.md).
 
 ## <a name="view-a-record-set"></a>Zobrazení sady záznamů
 
-1. V portálu Azure přejděte do **zónu DNS** okno.
-2. Hledání pro sadu záznamů a vyberte jej. Otevře vlastnosti sady záznamů.
+1. Na webu Azure Portal, přejděte **zónu DNS** okno.
+2. Vyhledání sady záznamů a vyberte ji. Tím se otevře vlastnosti sady záznamů.
 
-    ![Vyhledejte sady záznamů](./media/dns-operations-recordsets-portal/searchset500.png)
+    ![Hledání pro sadu záznamů](./media/dns-operations-recordsets-portal/searchset500.png)
 
-## <a name="add-a-new-record-to-a-record-set"></a>Přidejte nový záznam do sady záznamů
+## <a name="add-a-new-record-to-a-record-set"></a>Přidat nový záznam do sady záznamů
 
-Můžete přidat až 20 záznamů pro všechny sady záznamů. Sada záznamů nesmí obsahovat dva identické záznamy. Prázdný sady záznamů (s nulový počet záznamů) mohou být vytvořeny, ale nejsou zobrazeny na názvových serverů Azure DNS. Sady záznamů typu CNAME může obsahovat maximálně jeden záznam.
+Můžete přidat až 20 záznamů do žádné sady záznamů. Sada záznamů nesmí obsahovat dva shodné záznamy. Prázdné sady záznamů (s nulovou záznamy) je možné vytvořit, ale nejsou zobrazeny na názvové servery Azure DNS. Sady záznamů CNAME typu může obsahovat nanejvýš jeden záznam.
 
-1. Na **záznam nastavit vlastnosti** pro zónu DNS, klikněte na sadu záznamů, které chcete přidat záznam do.
+1. Na **vlastnosti sady záznamů** okno pro vaši zónu DNS, klikněte na sadu záznamů, které chcete přidat záznam.
 
-    ![Vyberte sady záznamů](./media/dns-operations-recordsets-portal/selectset500.png)
+    ![Vyberte sadu záznamů](./media/dns-operations-recordsets-portal/selectset500.png)
 
-2. Zadejte, že záznam nastaven vlastnosti vyplnění polí.
+2. Zadejte že vlastnosti sady záznamu vyplněním polí.
 
-    ![Přidání záznamu](./media/dns-operations-recordsets-portal/addrecord500.png)
+    ![Přidejte záznam](./media/dns-operations-recordsets-portal/addrecord500.png)
 
-3. Klikněte na tlačítko **Uložit** v horní části okna nastavení uložte. Zavřete okno.
-4. V horním uvidíte, zda je ukládání záznamu.
+3. Klikněte na tlačítko **Uložit** v horní části okna uložte nastavení. Potom toto okno zavřete.
+4. V pravém rohu zobrazí se, že je uložení záznamu.
 
-    ![Ukládání sady záznamů](./media/dns-operations-recordsets-portal/saving150.png)
+    ![Ukládá se záznamová sada](./media/dns-operations-recordsets-portal/saving150.png)
 
-Záznam po uložení, hodnoty na **zóny DNS** okně se projeví nový záznam.
+Po záznam byl uložen, hodnoty **zónu DNS** okno bude odrážet nový záznam.
 
-## <a name="update-a-record"></a>Aktualizace záznamu
+## <a name="update-a-record"></a>Aktualizovat záznam
 
-Při aktualizaci záznamu v existující sady záznamů pole, která můžete aktualizovat závisí na vybraném typu záznamu, kterými pracujete.
+Při aktualizaci záznamu v existující sady záznamů, které můžete aktualizovat pole závisí na typu záznamu pracujete s.
 
-1. Na **vlastnosti sady záznamů** okna pro vaše sadu záznamů, vyhledejte záznam.
-2. Upravte záznamu. Když upravíte záznam, můžete změnit nastavení k dispozici pro tento záznam. V následujícím příkladu **IP adresu** pole je vybrána, a IP adresu právě upravována.
+1. Na **vlastnosti sady záznamů** okno pro sadu záznamů, vyhledejte záznam.
+2. Upravte záznamu. Pokud chcete záznam upravit, můžete změnit dostupná nastavení pro záznam. V následujícím příkladu **IP adresu** vybrané pole, a IP adresa je právě upravována.
 
-    ![Upravte záznam](./media/dns-operations-recordsets-portal/modifyrecord500.png)
+    ![Pokud chcete záznam upravit](./media/dns-operations-recordsets-portal/modifyrecord500.png)
 
-3. Klikněte na tlačítko **Uložit** v horní části okna nastavení uložte. V pravém horním rohu uvidíte oznámení, které byly uloženy v záznamu.
+3. Klikněte na tlačítko **Uložit** v horní části okna uložte nastavení. V pravém horním rohu uvidíte oznámení, které se uložil záznam.
 
-    ![Uložit záznamovou sadu](./media/dns-operations-recordsets-portal/saved150.png)
+    ![Uložila se záznamová sada](./media/dns-operations-recordsets-portal/saved150.png)
 
-Po uložení záznamu, nastavte hodnoty pro záznam na **zónu DNS** okně se projeví aktualizovaný záznam.
+Po uložení záznamu na nastavit hodnoty pro záznam **zónu DNS** okno bude odrážet aktualizovaný záznam.
 
 ## <a name="remove-a-record-from-a-record-set"></a>Odebrat záznam ze sady záznamů
 
-Na portálu Azure můžete odebrat záznamy ze sady záznamů. Všimněte si, že odstraněním poslední záznam ze záznamů sady nedojde k odstranění sady záznamů.
+Můžete na webu Azure portal odebrat záznamy ze sady záznamů. Všimněte si, že poslední záznam odebrání sady záznamů nedojde k odstranění sady záznamů.
 
-1. Na **vlastnosti sady záznamů** okna pro vaše sadu záznamů, vyhledejte záznam.
+1. Na **vlastnosti sady záznamů** okno pro sadu záznamů, vyhledejte záznam.
 2. Klikněte na záznam, který chcete odebrat. Potom vyberte **odebrat**.
 
-    ![Odebrat záznam](./media/dns-operations-recordsets-portal/removerecord500.png)
+    ![Odebrání záznamu](./media/dns-operations-recordsets-portal/removerecord500.png)
 
-3. Klikněte na tlačítko **Uložit** v horní části okna nastavení uložte.
-4. Po odebrání záznamu, hodnoty pro záznam na **zónu DNS** okně se projeví odebrání.
+3. Klikněte na tlačítko **Uložit** v horní části okna uložte nastavení.
+4. Po odebrání záznamu hodnoty pro záznam na **zónu DNS** okno se odebrání projeví.
 
-## <a name="delete"></a>Odstranit sadu záznamů
+## <a name="delete"></a>Odstranit záznamovou sadu
 
-1. Na **vlastnosti sady záznamů** pro vaše sadu záznamů, klikněte na **odstranit**.
+1. Na **vlastnosti sady záznamů** okno pro sadu záznamů, klikněte na tlačítko **odstranit**.
 
-    ![Odstranit sadu záznamů](./media/dns-operations-recordsets-portal/deleterecordset500.png)
+    ![Odstranit záznamovou sadu](./media/dns-operations-recordsets-portal/deleterecordset500.png)
 
 2. Zobrazí se zpráva s dotazem, pokud chcete odstranit záznamovou sadu.
-3. Zkontrolujte, zda název odpovídá sady záznamů, který chcete odstranit a potom klikněte na **Ano**.
-4. Na **zóny DNS** okno, ověřte, zda sada záznamů je již nebudou viditelné.
+3. Zkontrolujte, zda odpovídá názvu sady záznamů, které chcete odstranit a potom klikněte na tlačítko **Ano**.
+4. Na **zónu DNS** okno, ověřte, že sada záznamů již není viditelný.
 
 ## <a name="work-with-ns-and-soa-records"></a>Práce se záznamy NS a SOA
 
-Záznamy NS a SOA, které se automaticky vytvoří spravuje odlišně od ostatních typů záznamu.
+Záznamy NS a SOA, které se automaticky vytvoří spravují jinak než ostatní typy záznamů.
 
-### <a name="modify-soa-records"></a>Upravit záznamy SOA
+### <a name="modify-soa-records"></a>Úprava záznamů SOA
 
-Nelze přidat nebo odebrat záznamy z automaticky vytvořený záznam SOA nastavit ve vrcholu zóny (název = "@"). Ale můžete upravit některý z parametrů v rámci záznamu SOA (s výjimkou "hostitel") a hodnota TTL sady záznamu.
+Nelze přidat ani odebrat záznamy automaticky vytvořený záznam SOA nastavit ve vrcholu zóny (název = "\@"). Však můžete upravit některé parametry v záznamu SOA (s výjimkou "hostitel") a hodnota TTL sady záznamu.
 
-### <a name="modify-ns-records-at-the-zone-apex"></a>Upravit NS záznamů ve vrcholu zóny
+### <a name="modify-ns-records-at-the-zone-apex"></a>Upravte záznamy NS ve vrcholu zóny
 
-S každou zónou DNS se automaticky vytvoří záznam NS nastavit ve vrcholu zóny. Obsahuje názvy názvových serverů Azure DNS přiřadit do zóny.
+S každou zónou DNS se automaticky vytvoří sadu ve vrcholu zóny záznamů NS. Obsahuje názvy názvových serverů Azure DNS přiřazených k zóně.
 
-Můžete přidat další název nastavit servery na tento záznam NS, podporuje společné hosting domén s více než jednoho poskytovatele DNS. Můžete také upravit TTL a metadat pro tuto sadu záznamů. Však nelze odebrat ani změnit předem vyplněná názvových serverů Azure DNS.
+Můžete přidat další názvové servery pro tento záznam NS nastavit podporuje společné hosting domén s více než jednoho poskytovatele DNS. Můžete také upravit hodnotu TTL a metadata pro tuto sadu záznamů. Ale nejde odebrat ani změnit předem naplněných názvové servery Azure DNS.
 
-Všimněte si, že vztahuje se pouze na vrcholu zóny sady záznamů NS. Jiné sady záznamů NS v pásmu (jak je používá delegovat podřízených zónách) můžete změnit bez omezení.
+Všimněte si, že to platí pouze pro záznam NS, nastavte ve vrcholu zóny. Bez omezení, lze upravit jinými sadami záznamů NS v pásmu (jak se používá k delegování podřízené zóny).
 
-### <a name="delete-soa-or-ns-record-sets"></a>Odstranění sady záznamů SOA nebo NS
+### <a name="delete-soa-or-ns-record-sets"></a>Odstranit sady záznamů SOA nebo NS
 
-Nelze odstranit, SOA a sady záznamů NS ve vrcholu zóny (název = "@"), jsou vytvořeny automaticky při vytváření zóny. Jsou automaticky odstraněny při odstranění zóny.
+Nelze odstranit SOA a sady záznamů NS ve vrcholu zóny (název = "\@"), který se vytvoří automaticky při vytváření zóny. Odstraní se automaticky při odstranění zóny.
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o službě Azure DNS najdete v tématu [přehled Azure DNS](dns-overview.md).
-* Další informace o automatizaci DNS najdete v tématu [vytvoření DNS zóny a sad záznamů pomocí sady .NET SDK](dns-sdk.md).
-* Další informace o zpětné záznamy DNS, najdete v části [přehled zpětné DNS a podpory v Azure](dns-reverse-dns-overview.md).
+* Další informace o službě Azure DNS, najdete v článku [přehled Azure DNS](dns-overview.md).
+* Další informace o automatizaci DNS najdete v tématu [vytváření DNS zón a sad záznamů pomocí sady .NET SDK](dns-sdk.md).
+* Další informace o reverzních záznamů DNS najdete v tématu [přehled reverzní DNS a podporu v Azure](dns-reverse-dns-overview.md).

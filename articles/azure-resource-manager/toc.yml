@@ -15,6 +15,13 @@
       href: resource-manager-quickstart-create-templates-use-visual-studio-code.md
     - name: Vytváření šablon – Visual Studio
       href: vs-azure-tools-resource-groups-deployment-projects-create-deploy.md
+- name: Kurzy
+  expanded: true
+  items:
+    - name: Vytvoření šifrovaného účtu úložiště
+      href: resource-manager-tutorial-create-encrypted-storage-accounts.md
+    - name: Vytvoření několika prostředků
+      href: resource-manager-tutorial-create-templates-with-dependent-resources.md
 - name: Koncepty
   items:
     - name: Poskytovatelé a typy prostředků

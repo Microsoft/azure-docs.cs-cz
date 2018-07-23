@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/26/2018
 ms.author: v-geberr
-ms.openlocfilehash: ab70839b4fa8f2064a3ff929034a6ffcb8fc7788
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 1f6f05376240b90aa82c25172349d716fb49234a
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37887738"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39170656"
 ---
 # <a name="data-alterations"></a>Změny dat
 Služba LUIS poskytuje možnosti pro manipulaci s utterance před nebo během do predikce. 
@@ -22,7 +22,7 @@ Služba LUIS poskytuje možnosti pro manipulaci s utterance před nebo během do
 ## <a name="correct-spelling-errors-in-utterance"></a>Psaní opravovat pravopisné chyby v utterance
 Služba LUIS používá [API V7 kontrola pravopisu Bingu](https://azure.microsoft.com/services/cognitive-services/spell-check/) opravte pravopisné chyby utterance. Služba LUIS, musí klíč spojený s touto službou. Vytvoření klíče a pak přidejte klíč jako parametr řetězce dotazu na [koncový bod](https://aka.ms/luis-endpoint-apis). 
 
-Můžete také opravte pravopisné chyby v **testovací** panelu podle [zadávání klíče](interactive-test.md#view-bing-spell-check-corrections-in-test-panel). Klíč se ukládají jako proměnné relace v prohlížeči pro panelu Test. Přidáte klíč do panelu testů v každé relaci prohlížeče má kontrolu pravopisu opravit. 
+Můžete také opravte pravopisné chyby v **testovací** panelu podle [zadávání klíče](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel). Klíč se ukládají jako proměnné relace v prohlížeči pro panelu Test. Přidáte klíč do panelu testů v každé relaci prohlížeče má kontrolu pravopisu opravit. 
 
 Použití klíče v panelu testu a na koncový bod počítají [použití klíče](https://azure.microsoft.com/pricing/details/cognitive-services/spellcheck-api/) kvóty. Služba LUIS implementuje kontrolu pravopisu Bingu omezení pro délku textu. 
 

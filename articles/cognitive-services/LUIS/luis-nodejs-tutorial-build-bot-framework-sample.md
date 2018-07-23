@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: v-geberr
-ms.openlocfilehash: 23809b40026955f0c864764781d7a151e5ab2756
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: b685dd65954da7a898875b67faa798fb2a1e33f9
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39144388"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39172251"
 ---
 # <a name="integrate-luis-with-a-bot-using-the-bot-builder-sdk-for-nodejs"></a>Integrace LUIS s využitím botu pomocí Bot Builder SDK pro Node.js
 
@@ -235,7 +235,7 @@ Na webu Azure Portal, vyberte na **testování ve Web Chat** otestovat robota. Z
    ![Testování ve Web Chat HomeAutomation bot](./media/luis-tutorial-node-bot/bot-service-chat-results.png)
 
 > [!TIP]
-> Pokud zjistíte, že váš robot nerozpoznal vždy správné záměr nebo entity, zvýšit výkon aplikace LUIS tím, že je další příklad projevy jeho trénování. Mohou uchovávat aplikace LUIS bez jakékoli změny kódu vašeho robota. Zobrazit [přidání projevů příklad](https://docs.microsoft.com/azure/cognitive-services/LUIS/add-example-utterances) a [trénování a testování vaší aplikace LUIS](https://docs.microsoft.com/azure/cognitive-services/LUIS/interactive-test).
+> Pokud zjistíte, že váš robot nerozpoznal vždy správné záměr nebo entity, zvýšit výkon aplikace LUIS tím, že je další příklad projevy jeho trénování. Mohou uchovávat aplikace LUIS bez jakékoli změny kódu vašeho robota. Zobrazit [přidání projevů příklad](https://docs.microsoft.com/azure/cognitive-services/LUIS/add-example-utterances) a [trénování a testování vaší aplikace LUIS](https://docs.microsoft.com/azure/cognitive-services/LUIS/luis-interactive-test).
 
 ## <a name="learn-more-about-bot-framework"></a>Další informace o rozhraní Bot Framework
 Další informace o [Bot Framework](https://dev.botframework.com/) a [3.x](https://github.com/Microsoft/BotBuilder) a [4.x](https://github.com/Microsoft/botbuilder-js) sady SDK.

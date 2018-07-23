@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: na
 ms.date: 04/05/2018
 ms.author: danlep
-ms.openlocfilehash: fd4226254e076957ac8651f9172f1f3f82427a60
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 5a321ef7dca86993a913a283fe7b9b076c127d94
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001826"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171251"
 ---
 # <a name="monitor-batch-solutions"></a>Monitorování řešení Batch
 
@@ -63,7 +63,7 @@ V aplikacích Batch pomocí rozhraní API služby Batch ke sledování nebo dota
   > Může způsobit dodatečné náklady, jak pomocí Application Insights. Zobrazit [cenové možnosti](https://azure.microsoft.com/pricing/details/application-insights/). 
   >
 
-* [BatchLabs](https://github.com/Azure/BatchLabs) je bezplatný a samostatný klientský nástroj s bohatými funkcemi, který pomáhá vytvářet, ladit a monitorovat aplikace Azure Batch. Můžete si stáhnout [instalační balíček](https://azure.github.io/BatchLabs/) pro Mac, Linux nebo Windows. Volitelně můžete nakonfigurovat řešení Batch k [zobrazit data Application Insights](https://github.com/Azure/batch-insights) jako jsou čítače výkonu virtuálních počítačů v nástroji BatchLabs.
+* [Batch Explorer](https://github.com/Azure/BatchExplorer) je zdarma, bohatými funkcemi, samostatný klientský nástroj umožňující vytvářet, ladit a monitorovat aplikace Azure Batch. Můžete si stáhnout [instalační balíček](https://azure.github.io/BatchExplorer/) pro Mac, Linux nebo Windows. Volitelně můžete nakonfigurovat řešení Batch k [zobrazit data Application Insights](https://github.com/Azure/batch-insights) jako jsou čítače výkonu virtuálních počítačů v Průzkumníkovi služby Batch.
 
 
 ## <a name="next-steps"></a>Další postup

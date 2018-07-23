@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: b516dd165bfc22ad3966ffe51e99591379f9e680
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: fb3f307642dc6f4607a626e0b320949306129759
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39144325"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39172309"
 ---
 # <a name="become-a-cloud-marketplace-publisher"></a>Stát vydavatelem cloudové Tržiště
 
@@ -65,7 +65,7 @@ Po registraci, zaznamenejte ID Microsoft Partner Network pro vaši organizaci. H
 
 ## <a name="3-submit-the-marketplace-registration-form"></a>3. Odeslat marketplace registrační formulář  
 | 15 minut |  
-Vyplňte tento krátký registraci se stát vydavatelem na webu marketplace. Informací v tomto formuláři se použije k vytvoření vydavatelského účtu na portálu Cloud Partner, což vám umožní vytvářet, publikovat a spravovat nabídky na webu marketplace.
+Dokončete tento článek [registrační formulář](https://azuremarketplace.microsoft.com/en-us/sell/signup) se stát vydavatelem na webu marketplace. Informací v tomto formuláři se použije k vytvoření vydavatelského účtu na portálu Cloud Partner, což vám umožní vytvářet, publikovat a spravovat nabídky na webu marketplace.
 
 Zobrazí se výzva k uveďte následující informace:
 *   Podrobnosti o vaší organizaci, včetně vašeho ID programu Microsoft Partner Network (což můžete vyhledat v jednom [partnerského centra](https://partnercenter.microsoft.com/partner/home) nebo [Partner Membership Center](https://partners.microsoft.com/partnerprogram/PartnerMembershipCenter.aspx))

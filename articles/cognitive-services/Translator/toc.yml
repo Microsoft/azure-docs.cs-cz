@@ -105,6 +105,10 @@
           href: quickstart-ruby-languages.md
         - name: Zjištění délky vět v textu
           href: quickstart-ruby-sentences.md
+- name: Kurzy
+  items:
+    - name: Vytvoření aplikace WPF pro Translator Text
+      href: tutorial-wpf-translation-csharp.md
 - name: Koncepty
   items:
     - name: Podporované jazyky
@@ -125,8 +129,6 @@
       href: word-alignment.md
     - name: Použití funkce dynamického slovníku
       href: dynamic-dictionary.md
-    - name: Vytvoření aplikace Translator Text s využitím WPF
-      href: tutorial-wpf-translation-csharp.md
 - name: Referenční informace
   items:
     - name: Referenční informace k rozhraní Translator Text API v3

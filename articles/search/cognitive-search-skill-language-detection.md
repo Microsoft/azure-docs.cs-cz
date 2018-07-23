@@ -1,6 +1,6 @@
 ---
-title: Jazyk detekce kognitivní vyhledávání odborností (Azure Search) | Microsoft Docs
-description: Vyhodnotí nestrukturovaných text a pro každý záznam, vrátí identifikátor jazyka se skóre označující sílu analýzy v obohacení kanál služby Azure Search.
+title: Dovednosti kognitivního vyhledávání detekce jazyka (Azure Search) | Dokumentace Microsoftu
+description: Vyhodnotí nestrukturovaného textu a pro každý záznam, vrátí se skóre označující sílu analýzy v kanálu služby Azure Search obohacování identifikátor jazyka.
 services: search
 manager: pablocas
 author: luiscabrer
@@ -10,42 +10,42 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 338d89b47ea451efcf8300d4ac016a6946a95259
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 443ac895085053b7c4c876c3deecaa1943c9f506
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33791053"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171054"
 ---
-#   <a name="language-detection-cognitive-skill"></a>Jazyk detekce kognitivní dovedností
+#   <a name="language-detection-cognitive-skill"></a>Kognitivní dovednosti detekce jazyka
 
-Až 120 jazyků **zjišťování jazyka** odborností jazyk je vstupního textu a sestavy jeden jazyk kódu pro každý dokument odeslaných v požadavku. Kód jazyka je spárován s skóre, která určuje, jaká síla analýzy.
+Až 120 jazyků **rozpoznávání jazyka** dovednosti jazyk vstupního textu zjišťuje a vykazuje jeden jazyk kódu pro každý dokument podání žádosti. Kód jazyka je spárovaná s skóre označuje sílu analýzy.
 
-Tato funkce je obzvláště užitečná při budete muset zadat jazyk textu jako vstup pro jiné dovednosti (například [odborností postojích Snalysis](cognitive-search-skill-sentiment.md) nebo [Text rozdělení odborností](cognitive-search-skill-textsplit.md)).
+Tato funkce je obzvláště užitečná při budete muset zadat jazyk textu jako vstup pro další dovednosti (například [analýzu subjektivního hodnocení dovednosti](cognitive-search-skill-sentiment.md) nebo [dovedností rozdělit textové](cognitive-search-skill-textsplit.md)).
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.LanguageDetectionSkill
 
 ## <a name="data-limits"></a>Omezení dat
-Maximální velikost záznamu by měla být 50 000 znaků měřený podle `String.Length`. Pokud potřebujete rozdělit vaše data před odesláním do analyzátor postojích, můžete použít [Text rozdělení odborností](cognitive-search-skill-textsplit.md).
+Maximální velikost záznamu by měla být 50 000 znaků pohledu `String.Length`. Pokud je potřeba rozdělit data před odesláním analýza mínění, můžete použít [dovedností rozdělit textové](cognitive-search-skill-textsplit.md).
 
 ## <a name="skill-inputs"></a>Vstupy dovedností
 
-Parametry jsou malá a velká písmena.
+Parametry rozlišují malá a velká písmena.
 
 | Vstupy     | Popis |
 |--------------------|-------------|
-| Text | Text, který má být analyzován.|
+| text | Text, který má být analyzován.|
 
 ## <a name="skill-outputs"></a>Výstupy dovedností
 
-| Název výstupu    | Popis |
+| Název výstupního    | Popis |
 |--------------------|-------------|
-| languageCode | Kód jazyka ISO 6391 pro jazyk identifikovat. Například "en". |
+| languageCode | Kód jazyka ISO 6391 pro jazyky identifikovat. Například "en". |
 | LanguageName | Název jazyka. Například "Angličtina". |
-| Skóre | Hodnota mezi 0 a 1. Pravděpodobnost, že jazyk je identifikovány správně. Skóre může být nižší než 1, pokud se věta se smíšenými jazyky.  |
+| skóre | Hodnota mezi 0 a 1. Pravděpodobnost, že je správně identifikovat jazyk. Skóre může být nižší než 1, pokud věty se smíšenými jazyků.  |
 
-##  <a name="sample-definition"></a>Ukázka definice
+##  <a name="sample-definition"></a>Ukázková definice
 
 ```json
  {
@@ -74,7 +74,7 @@ Parametry jsou malá a velká písmena.
   }
 ```
 
-##  <a name="sample-input"></a>Ukázka vstup
+##  <a name="sample-input"></a>Ukázkový vstup
 
 ```json
 {
@@ -125,10 +125,10 @@ Parametry jsou malá a velká písmena.
 ```
 
 
-## <a name="error-cases"></a>Případech chyb
-Pokud text je vyjádřena v nepodporovaný jazyk, je generována chyba a je vrácen žádný identifikátor jazyka.
+## <a name="error-cases"></a>Případy chyb
+Pokud textu je vyjádřena v nepodporovaný jazyk, je vygenerována chyba a vrátí se žádný identifikátor jazyka.
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
 + [Předdefinované dovednosti](cognitive-search-predefined-skills.md)
-+ [Jak definovat skillset](cognitive-search-defining-skillset.md)
++ [Definování dovedností](cognitive-search-defining-skillset.md)

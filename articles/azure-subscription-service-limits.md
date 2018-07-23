@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: byvinyal
-ms.openlocfilehash: 8b023540f57cb69fc1d2773ef533364f64820359
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 570eee6cc849c474cfeacf5a9ba1798f64f27183
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39069535"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39188067"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity, kvóty a omezení předplatného a služeb Azure
 Tento dokument uvádí některé nejčastějšími omezeními Microsoft Azure, které se taky říká se jim kvóty. Tento dokument nepopisuje aktuálně všech služeb Azure. V průběhu času v seznamu rozbalit a doplněn o popis další platformy.
@@ -59,7 +59,7 @@ V následující omezení se přidala nová tabulka tak, aby odrážel případn
 * [Cloud Services](#cloud-services-limits)
 * [Container Instances](#container-instances-limits)
 * [Container Registry](#container-registry-limits)
-* [Služby Kubernetes](#container-service-aks-limits)
+* [Služby Kubernetes](#kubernetes-service-limits)
 * [Data Factory](#data-factory-limits)
 * [Data Lake Analytics](#data-lake-analytics-limits)
 * [Data Lake Store](#data-lake-store-limits)

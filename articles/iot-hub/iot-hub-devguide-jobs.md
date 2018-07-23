@@ -1,6 +1,6 @@
 ---
-title: Pochopení úlohy Azure IoT Hub | Microsoft Docs
-description: Příručka vývojáře - plánování úloh spouštět na několika zařízeních připojení do služby IoT hub. Úlohy můžete aktualizovat značky a požadované vlastnosti a volat přímé metody na několika zařízeních.
+title: Vysvětlení úloh služby Azure IoT Hub | Dokumentace Microsoftu
+description: Příručka pro vývojáře – plánování spouštění úloh v různých zařízeních připojené ke službě IoT hub. Úlohy můžete aktualizovat značky a požadované vlastnosti a vyvolání přímých metod na více zařízeních.
 author: dominicbetts
 manager: timlt
 ms.service: iot-hub
@@ -8,33 +8,33 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 35b8536b944df39d0d47bf3529698fc94e51110e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 47d321788251462f2b34e1eb60231454dd6a72cf
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34633940"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39185927"
 ---
 # <a name="schedule-jobs-on-multiple-devices"></a>Plánování úloh na několika zařízeních
 
-Azure IoT Hub umožňuje počet stavební bloky jako [zařízení twin vlastnosti a značky] [ lnk-twin-devguide] a [přímé metody][lnk-dev-methods].  Back-end aplikace obvykle povolit operátory a Správci zařízení k aktualizaci a komunikovat se zařízeními IoT hromadně a v naplánovaném čase.  Úlohy provést aktualizace twin zařízení a přímé metody oproti sadě zařízení v naplánovaném čase.  Operátor byste například použili back-end aplikace, který iniciuje a sleduje úlohu restartovat sadu zařízení při vytváření 43 a podlaží 3 v čase, který nebude rušivý pro operace vytvoření.
+Azure IoT Hub umožňuje pomocí stavebních bloků, jako je číslo [vlastnosti dvojčat zařízení a značky] [ lnk-twin-devguide] a [přímé metody][lnk-dev-methods].  Back endové aplikace obvykle povolit zařízení správci a operátoři, aktualizovat a komunikovat se zařízeními IoT hromadně a v naplánovaném čase.  Úlohy spustit aktualizace dvojčat zařízení nebo přímých metod pro skupiny zařízení v naplánovaném čase.  Operátor byste například použili back endové aplikace, který iniciuje a sleduje úlohu restartujte sadu zařízení v budově 43 a podlaží 3 v čase, který nebude působit rušivě pro operace vytvoření.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-Zvažte použití úlohy když potřebujete plánovat a sledovat průběh některý z následujících aktivit na skupiny zařízení:
+Zvažte použití úloh když budete potřebovat k plánování a sledování průběhu některý z následujících aktivit na skupiny zařízení:
 
 * Aktualizace požadovaných vlastností
 * Aktualizace značky
-* Vyvolání metody přímé
+* Vyvolání přímých metod
 
 ## <a name="job-lifecycle"></a>Životní cyklus úlohy
-Úlohy jsou iniciovaná back-end řešení a udržované pomocí služby IoT Hub.  Můžete spustit úlohu pomocí identifikátoru URI služby přístupem (`{iot hub}/jobs/v2/{device id}/methods/<jobID>?api-version=2016-11-14`) a dotaz na průběh na úlohu prováděné prostřednictvím identifikátoru URI služby přístupem (`{iot hub}/jobs/v2/<jobId>?api-version=2016-11-14`). K aktualizaci stavu spuštěných úloh, jakmile se zahájí úlohu, spusťte dotaz úlohy.
+Úlohy jsou iniciovaných back-end řešení a spravuje pomocí služby IoT Hub.  Můžete spustit úlohu prostřednictvím služby přístupem k identifikátoru URI (`{iot hub}/jobs/v2/{device id}/methods/<jobID>?api-version=2016-11-14`) a dotazování na průběh provádění úlohy prostřednictvím služby přístupem k identifikátoru URI (`{iot hub}/jobs/v2/<jobId>?api-version=2016-11-14`). K aktualizaci stavu spuštěných úloh po zahájení úlohy, spusťte dotaz úlohy.
 
 > [!NOTE]
-> Při zahájení úlohy, názvů a hodnot vlastností mohou obsahovat pouze US-ASCII tisknutelná alfanumerické znaky, s výjimkou těch následující sady: `$ ( ) < > @ , ; : \ " / [ ] ? = { } SP HT`.
+> Když spustíte úlohu, názvy a hodnoty vlastností může obsahovat pouze US-ASCII tisknutelný alfanumerické znaky, s výjimkou těch v následující sadě: `$ ( ) < > @ , ; : \ " / [ ] ? = { } SP HT`.
 
-## <a name="jobs-to-execute-direct-methods"></a>Úlohy provést přímý metody
-Následující fragment kódu ukazuje podrobnosti požadavku HTTPS 1.1 pro provádění [přímá metoda] [ lnk-dev-methods] na sadu zařízení pomocí úlohy:
+## <a name="jobs-to-execute-direct-methods"></a>Úlohy spouštějí přímé metody
+Následující fragment kódu ukazuje podrobnosti o žádosti HTTPS 1.1 pro spouštění [přímá metoda] [ lnk-dev-methods] na sadu zařízení pomocí úlohy:
 
     PUT /jobs/v2/<jobId>?api-version=2016-11-14
 
@@ -56,17 +56,17 @@ Následující fragment kódu ukazuje podrobnosti požadavku HTTPS 1.1 pro prov�
         maxExecutionTimeInSeconds: <maxExecutionTimeInSeconds>        
     }
 
-Podmínka dotazu může být také na ID jednoho zařízení nebo na seznam zařízení, ID, jak je znázorněno v následujících příkladech:
+Podmínka dotazu může být také na jedno zařízení ID nebo na seznam zařízení ID, jak je znázorněno v následujícím příkladu:
 
 ```
 queryCondition = "deviceId = 'MyDevice1'"
 queryCondition = "deviceId IN ['MyDevice1','MyDevice2']"
 queryCondition = "deviceId IN ['MyDevice1']
 ```
-[IoT Hub dotazovací jazyk] [ lnk-query] obsahuje dotazovací jazyk IoT Hub v další podrobnosti.
+[Dotazovací jazyk IoT Hub] [ lnk-query] pokrývá dotazovací jazyk služby IoT Hub v dalších podrobností.
 
-## <a name="jobs-to-update-device-twin-properties"></a>Úlohy aktualizace twin vlastnosti zařízení
-Následující fragment kódu ukazuje podrobnosti požadavku HTTPS 1.1 pro aktualizace zařízení dvojici vlastností pomocí úlohy:
+## <a name="jobs-to-update-device-twin-properties"></a>Úlohy se aktualizovat vlastnosti dvojčat zařízení
+Následující fragment kódu ukazuje podrobnosti o žádosti HTTPS 1.1 pro aktualizaci vlastnosti dvojčat zařízení pomocí úlohy:
 
     PUT /jobs/v2/<jobId>?api-version=2016-11-14
     Authorization: <config.sharedAccessSignature>
@@ -83,8 +83,8 @@ Následující fragment kódu ukazuje podrobnosti požadavku HTTPS 1.1 pro aktua
         maxExecutionTimeInSeconds: <maxExecutionTimeInSeconds>        // format TBD
     }
 
-## <a name="querying-for-progress-on-jobs"></a>Dotaz na průběh na úlohách
-Následující fragment kódu ukazuje podrobnosti požadavku HTTPS 1.1 pro [dotazování pro úlohy][lnk-query]:
+## <a name="querying-for-progress-on-jobs"></a>Dotazování na průběh úlohy
+Následující fragment kódu ukazuje podrobnosti požadavku HTTPS 1.1 [dotazování pro úlohy][lnk-query]:
 
     GET /jobs/v2/query?api-version=2016-11-14[&jobType=<jobType>][&jobStatus=<jobStatus>][&pageSize=<pageSize>][&continuationToken=<continuationToken>]
 
@@ -93,47 +93,47 @@ Následující fragment kódu ukazuje podrobnosti požadavku HTTPS 1.1 pro [dota
     Request-Id: <guid>
     User-Agent: <sdk-name>/<sdk-version>
 
-Je k dispozici continuationToken z odpovědi.  
+Token continuationToken je k dispozici z odpovědi.  
 
 ## <a name="jobs-properties"></a>Vlastnosti úlohy
-Následující seznam obsahuje vlastnosti a odpovídající popisy, které se dají použít při dotazování pro úlohy nebo výsledky úlohy.
+Následující seznam obsahuje vlastnosti a odpovídající popisy, které je možné použít při dotazování pro úlohy nebo výsledky úlohy.
 
 | Vlastnost | Popis |
 | --- | --- |
-| **JobId** |Aplikace zadat ID pro úlohu. |
-| **startTime** |Aplikace zadat čas spuštění (ISO-8601) pro úlohu. |
-| **endTime** |Centrum IoT k dispozici po dokončení úlohy datum (ISO-8601). Platné jenom po úlohu dosáhne stavu 'dokončení'. |
+| **ID úlohy** |Aplikace uvedené ID pro úlohu. |
+| **startTime** |Aplikace zadaný počáteční čas (ISO-8601) pro konkrétní úlohu. |
+| **endTime** |IoT Hub poskytuje data (ISO-8601) pro dokončení úlohy. Platné až po úloze dosáhne stavu "dokončení". |
 | **type** |Typy úloh: |
-| | **scheduledUpdateTwin**: úlohu použít k aktualizaci sadu požadované vlastnosti a značky. |
-| | **scheduledDeviceMethod**: úloha používá k volání metody zařízení na sadu dvojčata zařízení. |
+| | **scheduledUpdateTwin**: úloha používá k aktualizaci sadu požadovaných vlastností nebo značky. |
+| | **scheduledDeviceMethod**: úloha použít k vyvolání metody zařízení na sadu dvojčata zařízení. |
 | **Stav** |Aktuální stav úlohy. Možné hodnoty pro stav: |
-| | **Čekající**: naplánováno a čeká se na být zachyceny pomocí služby úlohy. |
+| | **Čekající**: naplánované a čeká, aby ji mohla služba úloh. |
 | | **naplánované**: naplánováno na dobu v budoucnu. |
-| | **spuštění**: aktuálně aktivní úlohy. |
-| | **došlo ke zrušení**: Úloha byla zrušena. |
-| | **se nezdařilo**: Nepodařilo se provést úlohu. |
-| | **Dokončit**: Úloha byla dokončena. |
-| **deviceJobStatistics** |Statistika týkající se spouštění úlohy. |
+| | **spuštění**: aktuálně aktivní úloha. |
+| | **bylo zrušeno**: Úloha byla zrušena. |
+| | **nepovedlo**: zpracování úlohy se nezdařilo. |
+| | **dokončení**: Úloha byla dokončena. |
+| **deviceJobStatistics** |Statistika týkající se spuštění úlohy. |
 | | **deviceJobStatistics** vlastnosti: |
-| | **deviceJobStatistics.deviceCount**: počet zařízení pro úlohu. |
+| | **deviceJobStatistics.deviceCount**: počet zařízení v rámci úlohy. |
 | | **deviceJobStatistics.failedCount**: počet zařízení, kde úloha se nezdařila. |
-| | **deviceJobStatistics.succeededCount**: počet zařízení, kde byla úloha úspěšná. |
+| | **deviceJobStatistics.succeededCount**: počet zařízení, ve kterém úloha úspěšně. |
 | | **deviceJobStatistics.runningCount**: počet zařízení, které jsou aktuálně spuštěné úlohy. |
-| | **deviceJobStatistics.pendingCount**: počet zařízení, které čekají na vyřízení. Pokud chcete spustit úlohu. |
+| | **deviceJobStatistics.pendingCount**: počet zařízení, která čekají na spuštění úlohy. |
 
-### <a name="additional-reference-material"></a>Odkaz na další materiály
-Další témata referenční příručka vývojáře IoT Hub patří:
+### <a name="additional-reference-material"></a>Další referenční materiál
+Další referenční témata v příručce pro vývojáře IoT Hub patří:
 
-* [Koncové body centra IoT] [ lnk-endpoints] popisuje různé koncových bodů, které každý IoT hub zpřístupní pro spuštění a management operace.
-* [Omezování a kvóty] [ lnk-quotas] popisuje kvóty, které platí pro službu IoT Hub a omezení chování se očekává při použití služby.
-* [Azure IoT zařízení a služby sady SDK] [ lnk-sdks] uvádí různé jazykové sady SDK můžete použít při vývoji aplikace zařízení a služby, které interakci s centrem IoT.
-* [IoT Hub dotazovacího jazyka pro dvojčata zařízení, úlohy a směrování zpráv] [ lnk-query] popisuje dotazovací jazyk IoT Hub. Tento dotaz jazyk se použije k načtení informací o úlohách a dvojčata zařízení ze služby IoT Hub.
-* [Podpora IoT Hub MQTT] [ lnk-devguide-mqtt] poskytuje další informace o podpoře služby IoT Hub pro protokol MQTT.
+* [Koncové body IoT Hubu] [ lnk-endpoints] popisuje různé koncové body, které každý IoT hub zpřístupní pro operace za běhu a správy.
+* [Omezování a kvótách] [ lnk-quotas] popisuje kvóty, které platí pro službu IoT Hub a omezování chování očekávat, když používáte službu.
+* [Azure IoT zařízení a služby sady SDK] [ lnk-sdks] uvádí různé jazykové sady SDK můžete použít při vývoji aplikace s zařízení i služby, které pracují s centrem IoT.
+* [Dotazovací jazyk služby IoT Hub pro dvojčata zařízení, úlohy a směrování zpráv] [ lnk-query] popisuje dotazovací jazyk služby IoT Hub. Použijte tento dotazovací jazyk k načtení informací ze služby IoT Hub o dvojčata zařízení a úlohy.
+* [Podpora IoT Hub MQTT] [ lnk-devguide-mqtt] poskytuje další informace o podpoře služby IoT Hub pro protokolu MQTT.
 
 ## <a name="next-steps"></a>Další postup
-Můžete vyzkoušet na některé z konceptů popsaných v tomto článku, najdete v následujícím kurzu IoT Hub:
+Vyzkoušet si některé koncepty popsané v tomto článku, najdete v následujícím kurzu služby IoT Hub:
 
-* [Plán a všesměrovým úlohy][lnk-jobs-tutorial]
+* [Úlohy vysílání a plánování][lnk-jobs-tutorial]
 
 <!-- links and images -->
 
@@ -143,7 +143,7 @@ Můžete vyzkoušet na některé z konceptů popsaných v tomto článku, najdet
 [lnk-query]: iot-hub-devguide-query-language.md
 [lnk-devguide-mqtt]: iot-hub-mqtt-support.md
 [lnk-jobs-tutorial]: iot-hub-node-node-schedule-jobs.md
-[lnk-c2d-methods]: iot-hub-node-node-direct-methods.md
+[lnk-c2d-methods]: quickstart-control-device-node.md
 [lnk-dev-methods]: iot-hub-devguide-direct-methods.md
 [lnk-get-started-twin]: iot-hub-node-node-twin-getstarted.md
 [lnk-twin-devguide]: iot-hub-devguide-device-twins.md

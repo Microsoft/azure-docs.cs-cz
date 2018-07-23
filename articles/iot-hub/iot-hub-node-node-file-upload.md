@@ -9,12 +9,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 06/28/2017
 ms.author: dobett
-ms.openlocfilehash: 48a2d302727f2f8e9c87552a05bc7506fbef3120
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 936063e1419d5e2261033ea74d75687eade928e8
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38235555"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39187314"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub"></a>Nahrání souborů ze zařízení do cloudu pomocí služby IoT Hub
 
@@ -25,7 +25,7 @@ V tomto kurzu vychází z kódu v [odesílat zprávy typu Cloud-zařízení pomo
 - Zabezpečeně dodávají zařízení s Azure blob identifikátorů URI pro nahrání souboru.
 - Oznámení o nahrávání souborů služby IoT Hub použijte k aktivaci zpracování souboru v back-endu aplikace.
 
-[Začínáme se službou IoT Hub](iot-hub-node-node-getstarted.md) kurz ukazuje základní funkce zasílání zpráv typu zařízení cloud ze služby IoT Hub. Nicméně v některých scénářích nelze mapovat snadno data, která vaše zařízení odesílají do poměrně málo početnému zpráv typu zařízení cloud, které služby IoT Hub přijímá. Příklad:
+[Začínáme se službou IoT Hub](quickstart-send-telemetry-node.md) kurz ukazuje základní funkce zasílání zpráv typu zařízení cloud ze služby IoT Hub. Nicméně v některých scénářích nelze mapovat snadno data, která vaše zařízení odesílají do poměrně málo početnému zpráv typu zařízení cloud, které služby IoT Hub přijímá. Příklad:
 
 * Velké soubory, které obsahují obrázky
 * Videa

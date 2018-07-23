@@ -1,7 +1,7 @@
 ---
-title: Jak používat vlastnost "očekávané entity" konverzace student akcí - kognitivní služby Microsoft | Microsoft Docs
+title: Jak používat vlastnost "očekáván entity" konverzace Learner akce – služba Microsoft Cognitive Services | Dokumentace Microsoftu
 titleSuffix: Azure
-description: Naučte se používat vlastnost "očekávané entity" aplikace student konverzace.
+description: Zjistěte, jak použít vlastnost "očekáván entity" konverzace Learner modelu.
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,107 +10,112 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 83911eba8112cf356af8c4cd562a87f746fbabc5
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 9e013e237a996d722d958920a1310e3aaea36c52
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343256"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39170904"
 ---
-# <a name="how-to-use-the-expected-entity-property-of-actions"></a>Jak používat vlastnost "Očekávané entity" akcí
+# <a name="how-to-use-the-expected-entity-property-of-actions"></a>Jak používat vlastnost "Očekáván entity" akcí
 
-Tento kurz představuje pole "očekávané entity" akcí.
+Tento kurz ukazuje, pole "očekáván entity" akcí.
+
+## <a name="video"></a>Video
+
+[![Kurz 4 ve verzi Preview](http://aka.ms/cl-tutorial-04-preview)](http://aka.ms/blis-tutorial-04)
 
 ## <a name="requirements"></a>Požadavky
-Tento kurz vyžaduje, aby obecné kurz robota běží
+Tento kurz vyžaduje, zda je spuštěna obecné kurz bot
 
     npm run tutorial-general
 
 ## <a name="details"></a>Podrobnosti
-Použití pole "očekávané entity" akce ke komunikaci systému, které předpokládáte, že odpověď uživatele na akci bude do stavu entity.
+Použijte pole "očekáván entity" akce pro komunikaci v systému, můžete očekávat, že odpověď uživatele na akci bude do stavu entity.
 
-Namítají Pokud je pole "očekávané entity" akce nastavená $entity a potom na další utterance uživatele, bude systém:
+Namítají Pokud je pole "očekáván entity" akce nastavená $entity a potom na další utterance uživatele, systém bude:
 
-1. Nejprve obvyklým způsobem, pokus o vyhledání entit pomocí modelu machine learningu založené na entity extrakce
-2. Pokud žádné entity se nacházejí v kroku 1, pak – jako Heuristika – přiřadíte utterance celé uživatelské $entity.
-3. Volání `EntityDetectionCallback` obvyklým způsobem a pokračujte výběr akce.
+1. Nejprve už jsme zvyklí, se pokusí vyhledat entity pomocí modelu extrakce entity na základě strojového učení
+2. Pokud se nenajdou žádné entity v kroku 1, pak – jako heuristické metody – celé uživatelské utterance přiřadíte $entity.
+3. Volání `EntityDetectionCallback` obvyklým způsobem a pokračujte na výběr akce.
 
 ## <a name="steps"></a>Kroky
 
-### <a name="create-the-application"></a>Vytvoření aplikace
+### <a name="create-the-model"></a>Vytvoření modelu
 
-1. Ve webovém uživatelském rozhraní klikněte na nové aplikace
-2. Do pole Název zadejte ExpectedEntities. Klikněte na tlačítko vytvořit.
+1. V webového uživatelského rozhraní klikněte na nový Model
+2. Do pole Název zadejte ExpectedEntities. Pak klikněte na tlačítko vytvořit.
 
-### <a name="create-an-entity"></a>Vytvořte entitu
+### <a name="create-an-entity"></a>Vytvoření entity
 
-1. Klikněte na tlačítko entity, pak novou entitu.
-2. Název Entity zadejte název.
+1. Klikněte na entity a pak novou entitu.
+2. V názvu Entity zadejte název.
 3. Kliknutí na Vytvořit
 
-Poznámka: typ entity je "vlastní" – to znamená, že entita může cvičení.  Existují také předem připravené entity, což znamená, že jejich chování nemůže být upravena – to jsou popsané v jiné kurzu.
+> [!NOTE]
+> Typ entity je "vlastní". Tato hodnota znamená, že entita může školení.  Existují také předem vytvořené entity, což znamená, že jejich chování nejde upravit.  Tyto entity se věnují [předem připravených entit kurzu](./7-built-in-entities.md).
 
 ![](../media/tutorial4_entities.PNG)
 
 ### <a name="create-two-actions"></a>Vytvořte dvě akce
 
-1. Klikněte na tlačítko akce, pak nová akce
-2. V odpovědi zadejte, co je název vaší?".
-3. Očekávaný entity zadejte $name. Klikněte na tlačítko Uložit.
-    - To znamená, že pokud tuto otázku se zobrazí výzva, a odpověď uživatele nemá žádné entity zjištěna, robota by měl předpokládají, že celé odpovědi uživatele je této entity.
-2. Klikněte na tlačítko akce pak nová akce vytvoří druhou akci.
-3. V odpovědi zadejte 'Hello $name'.
-    - Všimněte si, že entita se automaticky přidá jako disqualifying entitu. 
+1. Klikněte na tlačítko akce a potom novou akci
+2. V odpovědi zadejte "Jak se jmenuješ?".
+3. Byl očekáván entity zadejte $name. Klikněte na Uložit.
+    - Tato hodnota znamená, že pokud tento dotaz se zobrazí výzva, a odpověď uživatele nemá žádné entity, zjistili, robot by měl Předpokládejme, že celá odpověď uživatele je tuto entitu.
+2. Klikněte na tlačítko akce a pak novou akci na vytvoří druhou akci.
+3. V odpovědi zadejte "Hello $name".
+    - Entita je automaticky přidán jako disqualifying entity. 
 4. Kliknutí na Uložit
 
 Nyní máte dvě akce.
 
 ![](../media/tutorial4_actions.PNG)
 
-### <a name="train-the-bot"></a>Cvičení robota
+### <a name="train-the-bot"></a>Natrénování robota
 
-1. Klikněte na tlačítko Train dialogová okna, dialogové okno pak nový vlaku.
-2. Zadejte text "hello".
-3. Klikněte na tlačítko akce skóre a vyberte "Co je název vaší?"
-    - Všimněte si, že odpověď "Hello $name' není k dispozici, protože ho requies entity $name, která má být definován a $name není v paměti na robota.
-2. Zadejte 'david'. 
-    - Všimněte si, že název je označený jako entity. To je kvůli heuristiky, které jsme vytvořili výše vybrat odpovědi jako entity.
-5. Klikněte na tlačítko akce skóre
-    - Poznámka: název hodnota je nyní v paměti robota.
-    - 'Hello $name' je nyní k dispozici jako odpověď. 
-6. Vyberte 'Hello $name'.
-7. Klikněte na tlačítko Hotovo vyučující.
+1. Klikněte na dialogová okna trénování, pak nové dialogové okno trénování.
+2. Zadejte "hello".
+3. Klikněte na výsledek akce a vyberte "Jak se jmenuješ?"
+    - Odpověď 'Hello $name' nelze vybrat, protože vyžaduje entita $name, která má být definována, a $name se nenachází v paměti bodu robotů také.
+2. Zadejte "david". 
+    - Název je zvýrazněn jako entity. Toto je z důvodu heuristiky, který nastavíme výše vyberte odpovědi jako entity.
+5. Klikněte na výsledek akce
+    - Hodnota názvu je nyní v bodu robotů také paměti.
+    - "Hello $name" je teď dostupná jako odpověď. 
+6. Vyberte "Hello $name".
+7. Klikněte na Hotovo výuky.
 
-Tady jsou dva příklady kde extrakce model entity strojové učení identifikuje název, takže heuristiky "očekávané entity" není aktivována.
+Tady jsou dva příklady kde extrakce entity model strojového učení identifikuje název, tak heuristiky "očekáván entity" neaktivuje.
 
-1. Kliknutím na dialogové okno Nový vlaku.
-2. Zadejte "Moje název je david".
-    - Všimněte si, že toto identifikaci david jako název entity protože zaznamenal slovo před.
-2. Klikněte na tlačítko akce skóre
-3. Vyberte 'Hello $name'.
-4. Zadejte "Moje název je susan".
-    - Všimněte si, že ho susan identifikuje jako název vzhledem k tomu, že má již vidět tento vzor.
-2. Klikněte na tlačítko akce skóre.
-2. Vyberte 'Hello susan'.
-3. Klikněte na tlačítko Hotovo vyučující.
+1. Kliknutím na dialogové okno Nový trénování.
+2. Zadejte "Moje jméno je david".
+    - David modelu identifikuje jako název entity, protože zaznamenal toto slovo před.
+2. Klikněte na výsledek akce
+3. Vyberte "Hello $name".
+4. Zadejte "Moje jméno je susan".
+    - Model identifikuje susan jako název, protože ji už zobrazit tento model.
+2. Klikněte na výsledek akce.
+2. Vyberte "Hello susan".
+3. Klikněte na Hotovo výuky.
 
-Tady je jsou dva další příklady kde aktivuje heuristiky "očekávané entity", ale není správný, a jak bychom mohli opravu.
+V následujících příkladech heuristiky "očekáván entity" spustí, ale je nesprávný. V příkladech potom ukazují, jak k provedení opravy.
 
-1. Zadejte 'zavolat jose'.
-    - Všimněte si, že jako entity nelze rozpoznat název.
-2. Klikněte na jose a vyberte název.
-3. Klikněte na tlačítko akce skóre.
+1. Zadejte "zavolat jose".
+    - Model nemůže rozpoznat název jako entity.
+2. Klikněte na blog jose a vyberte název.
+3. Klikněte na výsledek akce.
 4. Vyberte hello $name.
-5. Klikněte na tlačítko Hotovo vyučující.
-1. Kliknutím na dialogové okno Nový vlaku.
-2. Zadejte text "hello".
-3. V reakci na "co je název" zadejte 'Mě volání František'.
-    - Všimněte si, že je označený celou frázi. Je to proto, že model statistické nebyl nalezen název, takže heuristiky aktivováno a vybrat celé odpovědi jako název entity.
-2. Opravte ho, klikněte na zvýrazněné frázi a potom klikněte na červené x. 
-3. Kliknutím vyberte František a potom klikněte na název.
-2. Klikněte na tlačítko akce skóre
-3. Vyberte 'Hello $name'.
-4. Klikněte na tlačítko Hotovo vyučující.
+5. Klikněte na Hotovo výuky.
+1. Kliknutím na dialogové okno Nový trénování.
+2. Zadejte "hello".
+3. V reakci na "jak se jmenuješ" zadejte "Mi někdo volá frank".
+    - Je zvýrazněn celou frázi. Je to proto statistické modelu nebyl nalezen název, takže heuristiky aktivoval a vybrat celé odpovědi jako název entity.
+2. Chcete-li ji opravit, klikněte na zvýrazněné věty a potom klikněte na červený symbol x. 
+3. Kliknutím vyberte frank a potom klikněte na název.
+2. Klikněte na výsledek akce
+3. Vyberte "Hello $name".
+4. Klikněte na Hotovo výuky.
 
 ![](../media/tutorial4_dialogs.PNG)
 

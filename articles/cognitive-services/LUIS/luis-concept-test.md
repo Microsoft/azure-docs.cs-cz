@@ -9,18 +9,18 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: v-geberr
-ms.openlocfilehash: d6cbba2a5bf9ff44439c6e98debde5cd47d4bfc3
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 46aa23ee359fd1f2f5a1cf8a05854d5c4cc7c739
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37950385"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39170612"
 ---
 # <a name="testing-in-luis"></a>Testování v LUIS
 
 Testování je proces poskytování ukázka projevy LUIS a získat odpověď ze služby LUIS rozpoznán záměry a entity. 
 
-Můžete [testování](interactive-test.md) LUIS interaktivně, jeden utterance najednou, nebo poskytněte [batch](luis-concept-batch-test.md) z projevy. Při testování, porovnávat aktuální [aktivní](luis-concept-version.md#active-version) modelů do publikovaného modelu. 
+Můžete [testování](luis-interactive-test.md) LUIS interaktivně, jeden utterance najednou, nebo poskytněte [batch](luis-concept-batch-test.md) z projevy. Při testování, porovnávat aktuální [aktivní](luis-concept-version.md#active-version) modelů do publikovaného modelu. 
 
 <a name="A-test-score"></a>
 <a name="Score-all-intents"></a>
@@ -57,4 +57,4 @@ Přečtěte si [osvědčené postupy](luis-concept-best-practices.md).
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o [testování](interactive-test.md) vaše projevy.
+* Další informace o [testování](luis-interactive-test.md) vaše projevy.

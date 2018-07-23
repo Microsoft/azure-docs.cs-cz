@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: 3ac5c00aa0c617659f7ac5d386003b8bc34aac81
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: c5621d5e16e31104ee28cc521386a5c0ca290a8b
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39075973"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39187695"
 ---
 # <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>Nejčastější dotazy k akcelerátorům řešení IoT
 
@@ -86,7 +86,7 @@ Najdete v příspěvku blogu Eric Golpeho [Walkthrough of Deleting Tenanta služ
 
 Můžete si také prostudovat některé další funkce a možnosti akcelerátorů řešení IoT:
 
-* [Prozkoumejte možnosti akcelerátor řešení vzdálené monitorování](iot-accelerators-remote-monitoring-explore.md)
+* [Prozkoumejte možnosti akcelerátor řešení vzdálené monitorování](quickstart-remote-monitoring-deploy.md)
 * [Přehled akcelerátorů řešení prediktivní údržby](iot-accelerators-predictive-overview.md)
 * [Nasazení akcelerátoru řešení připojená továrna](quickstart-connected-factory-deploy.md)
 * [Zabezpečení IoT od počátku](/azure/iot-fundamentals/iot-security-ground-up)

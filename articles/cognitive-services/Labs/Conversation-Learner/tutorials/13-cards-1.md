@@ -1,7 +1,7 @@
 ---
-title: Jak použít karty s aplikací student konverzace, část 1 - kognitivní služby Microsoft | Microsoft Docs
+title: Použití karty s modelem Learner konverzace, část 1 – Microsoft Cognitive Services | Dokumentace Microsoftu
 titleSuffix: Azure
-description: Další informace o použití karty s aplikací student konverzace.
+description: Další informace o použití karty s modelem Learner konverzace.
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,42 +10,48 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: e90ccd42b21eea6139c402937be7e20513d73c84
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 988a2433f098f41bca4796299825293efd4de44b
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343231"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171130"
 ---
-# <a name="how-to-use-cards-part-1-of-2"></a>Postup použití karty (část 1 / 2)
+# <a name="how-to-use-cards-part-1-of-2"></a>Použití karty (část 1 ze 2)
 
-Tento kurz ukazuje, jak přidat a používat jednoduché karty ve vaší robota.
+Tento kurz ukazuje, jak přidat a používat jednoduché karty svého robota.
 
-Všimněte si, že konverzace student očekává, že soubory karty definice umístěný v adresář s názvem "znaky", který se nachází v adresáři, kde je spuštěna robota.
+> [!NOTE]
+> Aktuálně konverzace Learner očekává, že vaše karta definiční soubory umístěné v adresáři s názvem "karty", který se nachází v adresáři začínali robota. Budeme to konfigurovat v budoucnu.
+
+## <a name="video"></a>Video
+
+[![Kurz 13 ve verzi Preview](http://aka.ms/cl-tutorial-13-preview)](http://aka.ms/blis-tutorial-13)
 
 ## <a name="requirements"></a>Požadavky
-Tento kurz vyžaduje, aby obecné kurz robota běží
+Tento kurz vyžaduje, zda je spuštěna obecné kurz bot
 
     npm run tutorial-general
 
 ## <a name="details"></a>Podrobnosti
 
-Karty jsou prvky uživatelského rozhraní, které umožňují uživateli vybrat možnost v konverzaci. 
+Karty jsou prvky uživatelského rozhraní, které umožní uživateli vybrat možnost v konverzaci. 
 
 ### <a name="open-the-demo"></a>Otevřete ukázku
 
-V seznamu aplikací webového uživatelského rozhraní klikněte na kurz 13 karty 1. 
+V seznamu modelu ve webovém uživatelském rozhraní kliknutím na kurz 13 karty 1. 
 
 ### <a name="the-card"></a>Karta
 
 Karta definice je v následujícím umístění: C:\<installedpath\>\src\cards\prompt.json.
 
-Systém očekává definic karty v tomto adresáři karty.
+Systém se očekává, že vaše definice karta najít v tomto adresáři karty.
 
 ![](../media/tutorial13_prompt.PNG)
 
-- Poznámka: TextBlock a šablony otázku.
-- Existují dva odeslání tlačítka a text, který získá odeslané pro každou.
+> [!NOTE]
+> Všimněte si, že typ těla zprávy `TextBlock` a `{{question}}` zástupný symbol v textovém poli.
+> Existují dvě odeslání tlačítka a text, který získá odeslané pro každý.
 
 ### <a name="actions"></a>Akce
 
@@ -57,31 +63,32 @@ Podívejme se, jak byl vytvořen typ akce karty:
 
 ![](../media/tutorial13_cardaction.PNG)
 
-Poznámka: vstup otázku a tlačítka 1 a 2. Ty jsou šablony odkazy na kartě, kde zadáte na otázku a příslušných odpovědí. Můžete taky odkazovat a použít entit nebo s kombinaci textu a entity.
+> [!NOTE]
+> Vstupní dotaz a tlačítka 1 a 2. To jsou odkazy na šablony v kartě, kde můžete zadat otázku a příslušných odpovědí. Lze také odkazovat a používat entity nebo kombinaci textu a entity.
 
-Ikona oka ukazuje, jak vypadá na kartu.
+Na ikonu oka se dozvíte, jak vypadá karta.
 
-### <a name="train-dialog"></a>Dialogové okno Train
+### <a name="train-dialog"></a>Dialogové okno trénování
 
-Projděme vyučující dialogové okno.
+Projděme si dialogové okno výuky.
 
-1. Klikněte na tlačítko Train dialogová okna, dialogové okno pak nový vlaku.
+1. Klikněte na dialogová okna trénování, pak nové dialogové okno trénování.
 1. Zadejte "hi".
-2. Klikněte na tlačítko akce skóre.
-3. Kliknutím vyberte 'Výzva přejděte doleva nebo doprava'.
-    - Kliknutím na tlačítko 'left' nebo 'right' je stejné, jako uživatel zadání 'left' nebo 'práva, v uvedeném pořadí. 
-4. Klikněte na tlačítko akce skóre.
+2. Klikněte na akci skóre.
+3. Kliknutím vyberte "Prompt Přejít doleva nebo doprava".
+    - Klepnutím na tlačítko 'left' nebo 'right' je uživatel zadat text 'left' nebo 'přímo v uvedeném pořadí. 
+4. Klikněte na výsledek akce.
 4. Kliknutím vyberte 'left'. Toto je akce bez čekání.
-6. Kliknutím vyberte 'Výzva přejděte doleva nebo doprava'.
+6. Kliknutím vyberte "Prompt Přejít doleva nebo doprava".
 4. Klikněte na tlačítko "vpravo".
-5. Klikněte na tlačítko akce skóre.
+5. Klikněte na výsledek akce.
 3. Kliknutím vyberte 'Right'
-6. Kliknutím vyberte 'Výzva přejděte doleva nebo doprava'.
+6. Kliknutím vyberte "Prompt Přejít doleva nebo doprava".
 4. Klikněte na tlačítko Hotovo testování.
 
-Nyní jste mohli vidět, jak fungují karty. V adresáři karty jsou definovány jako šablony json. V uživatelském rozhraní, které lze načíst pomocí řetězce nebo entitu nebo kombinaci obou bude surface šablony.
+Nyní jste viděli, jak karty fungují. V adresáři karet jsou definovány jako šablony json. Šablony, bude přinášet v uživatelském rozhraní, která můžete naplnit pomocí řetězce nebo entity nebo kombinaci obou.
 
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Karty část 2](./14-cards-2.md)
+> [2. část karty](./14-cards-2.md)

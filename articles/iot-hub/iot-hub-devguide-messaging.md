@@ -1,6 +1,6 @@
 ---
-title: Pochopení zasílání zpráv Azure IoT Hub | Microsoft Docs
-description: Příručka vývojáře - zařízení cloud a cloud zařízení zasílání zpráv službou IoT Hub. Obsahuje informace o formáty zpráv a protokoly podporované komunikace.
+title: Vysvětlení, zasílání zpráv služby Azure IoT Hub | Dokumentace Microsoftu
+description: Příručka pro vývojáře – typu zařízení cloud a cloud zařízení pomocí služby IoT Hub pro zasílání zpráv. Obsahuje informace o formáty zpráv a podporovaných komunikační protokoly.
 author: dominicbetts
 manager: timlt
 ms.service: iot-hub
@@ -8,40 +8,40 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 451a8226bbc52727dad562a4be352e352925bd0b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b0667f820145f16c75a07ebe1849e20d2de36cc7
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34632702"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39185505"
 ---
-# <a name="device-to-cloud-and-cloud-to-device-messaging-with-iot-hub"></a>Zařízení cloud a cloud zařízení zasílání zpráv s centrem IoT
+# <a name="device-to-cloud-and-cloud-to-device-messaging-with-iot-hub"></a>Typu zařízení cloud a cloud zařízení pomocí služby IoT Hub pro zasílání zpráv
 
-Pomocí zasílání zpráv pro komunikaci se vaše zařízení pomocí služby IoT Hub:
+Pomocí zasílání zpráv pro komunikaci ve vašich zařízeních pomocí služby IoT Hub:
 
-* Odesílání [zařízení cloud] [ lnk-d2c] zpráv ze zařízení do řešení back-end.
-* Odesílání [cloud zařízení] [ lnk-c2d] zprávy z řešení back-end pro vaše zařízení.
+* Odesílání [typu zařízení cloud] [ lnk-d2c] zpráv ze zařízení do řešení back-endu.
+* Odesílání [typu cloud zařízení] [ lnk-c2d] zprávy z řešení back-endu pro vaše zařízení.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-Základní vlastnosti funkce zasílání zpráv služby IoT Hub jsou spolehlivost a odolnost zpráv. Tyto vlastnosti umožňují odolnost proti přerušované připojení na straně zařízení a načíst špičky v případě zpracování na straně cloudu. IoT Hub implementuje *alespoň jednou* doručení zaručuje pro zasílání zpráv typu zařízení cloud a cloud zařízení.
+Základní vlastnosti funkce zasílání zpráv služby IoT Hub se spolehlivost a odolnost zpráv. Tyto vlastnosti zajištěna odolnost k přerušovaným připojením na straně zařízení a načíst poraďte se špičkami na straně cloudu pro zpracování událostí. IoT Hub implementuje *alespoň jednou* záruky doručení pro zasílání zpráv typu zařízení cloud a cloud zařízení.
 
-Úvod k funkcím služby IoT Hub, najdete v článku [Přehled služby Azure IoT Hub][lnk-iot-hub-overview].
+Úvod k možnostem služby IoT Hub najdete v článku [Přehled služby Azure IoT Hub][lnk-iot-hub-overview].
 
-## <a name="when-to-use-iot-hub-messaging"></a>Kdy použít Centrum IoT zasílání zpráv
+## <a name="when-to-use-iot-hub-messaging"></a>Kdy použít zasílání zpráv služby IoT Hub
 
-Jednosměrné oznámení do aplikace pro zařízení pomocí zpráv typu zařízení cloud pro odesílání výstrahy a časové řady telemetrie z vaší aplikace zařízení a zprávy typu cloud zařízení.
+Jednosměrná oznámení do aplikace pro zařízení pomocí zpráv typu zařízení cloud pro odesílání čas řady telemetrii a upozornění z aplikace pro zařízení a zprávy typu cloud zařízení.
 
-* Odkazovat na [pokyny komunikace zařízení cloud] [ lnk-d2c-guidance] Pokud máte pochybnosti mezi pomocí zpráv typu zařízení cloud, hlášen vlastnostech nebo nahrávání souborů.
-* Odkazovat na [Cloud zařízení komunikace pokyny] [ lnk-c2d-guidance] Pokud nejistých mezi pomocí zpráv typu cloud zařízení, požadované vlastnosti nebo metody direct.
+* Odkazovat na [pokyny komunikace typu zařízení cloud] [ lnk-d2c-guidance] Pokud máte pochybnosti mezi pomocí zpráv typu zařízení cloud, ohlášených vlastností nebo odeslání souboru.
+* Odkazovat na [pokyny komunikaci typu Cloud zařízení] [ lnk-c2d-guidance] Pokud máte pochybnosti mezi použitím zprávy typu cloud zařízení, požadovaných vlastností nebo přímých metod.
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o IoT Hub [zasílání zpráv typu zařízení cloud][lnk-d2c].
-* Další informace o IoT Hub [zasílání zpráv typu cloud zařízení][lnk-c2d].
+* Další informace o službě IoT Hub [zasílání zpráv typu zařízení cloud][lnk-d2c].
+* Další informace o službě IoT Hub [zasílání zpráv typu cloud zařízení][lnk-c2d].
 
 [lnk-azure-iot]: ../iot-fundamentals/index.yml
-[lnk-iot-hub-overview]: iot-hub-what-is-iot-hub.md
+[lnk-iot-hub-overview]: about-iot-hub.md
 [lnk-d2c]: iot-hub-devguide-messages-d2c.md
 [lnk-c2d]: iot-hub-devguide-messages-c2d.md
 [lnk-c2d-guidance]: iot-hub-devguide-c2d-guidance.md
