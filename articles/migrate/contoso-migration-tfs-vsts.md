@@ -5,14 +5,14 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/05/2018
+ms.date: 07/12/2018
 ms.author: raynew
-ms.openlocfilehash: 02a790907908daf2db282a320f50d3a27efbd177
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 05340c8504150ed568e0d5ce5c8250127e59bca0
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917182"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39003233"
 ---
 # <a name="contoso-migration--refactor-a-team-foundation-server-deployment-to-visual-studio-team-services-vsts"></a>Migrace Contoso: Refaktorovat nasazení Team Foundation Server pro Visual Studio Team Services (VSTS)
 
@@ -33,6 +33,8 @@ Tento dokument je příplatku série článků, které ukazují, jak fiktivní s
 [Článek 9: Refaktorujte aplikace do webové aplikace Azure a Azure SQL Database](contoso-migration-refactor-web-app-sql.md) | Předvádí, jak společnosti Contoso migruje SmartHotel aplikací založených na kontejnerech webové aplikace Azure a migraci databáze aplikace do Azure SQL Server. | K dispozici.
 [Článek 10: Refaktorujte Linuxovou aplikaci do Azure App Service a Azure serveru MySQL](contoso-migration-refactor-linux-app-service-mysql.md) | Ukazuje, jak společnosti Contoso migruje osTicket Linuxovou aplikaci do služby Azure App Service pomocí kontejneru Dockeru s PHP 7.0. Základ kódu pro nasazení je migrovat na Githubu. Databáze aplikace je migrovat na Azure MySQL. | K dispozici.
 Článek 11: Refaktorujte nasazení TFS ve VSTS | Migrace aplikace dev TFS na VSTS v Azure | V tomto článku
+[Článek 12: Úprava architektury aplikace na kontejnery služby Azure a Azure SQL Database](contoso-migration-rearchitect-container-sql.md) | Ukazuje, jak společnosti Contoso migruje a rearchitects jeho SmartHotel aplikace do Azure. Jejich úprava architektury webové vrstvy aplikace jako kontejner Windows a databáze aplikace ve službě Azure SQL Database. | K dispozici.
+[Článek 13: Znovu sestavte aplikaci v Azure](contoso-migration-rebuild.md) | Ukazuje, jak společnosti Contoso znovu sestavte své aplikace SmartHotel pomocí celé řady funkcí Azure a služeb, včetně služeb App Services, Kubernetes v Azure, Azure Functions, Cognitive services a Cosmos DB. | K dispozici.
 
 
 ## <a name="business-drivers"></a>Obchodní faktory
@@ -283,63 +285,63 @@ Před zahájením, Contoso má místní zálohování serveru SQL Server a VMwar
 Contoso vytvoří zálohu (DACPAC) pro import do VSTS.
 
 - SqlPackage.exe v SQL Server Data Tools slouží k vytvoření DACPAC. Existuje více verzí nástroje SqlPackage.exe nainstalované s SQL Server Data Tools, která je umístěna ve složce složky s názvy, například 120, 130 a 140. Je důležité použít správnou verzi Příprava DACPAC.
-- TFS 2018 importy potřebovat SqlPackage.exe ve složce 140 nebo vyšší.  Zahájit migraci, stejně jako zkušební spuštění: **TfsMigrator import /importFile:C:\TFSMigrator\import.json**.
+- TFS 2018 importy potřebovat SqlPackage.exe ve složce 140 nebo vyšší.  CONTOSOTFS, tento soubor se nachází ve složce: **C:\Program Files (x86) \Microsoft Visual Studio\2017\Enterprise\Common7\IDE\Extensions\Microsoft\SQLDB\DAC\140**.
 
 
-Zpráva zobrazí potvrďte migraci a vás upozorní, že data může uchovávat na bezpečném místě jako pracovní oblasti po dobu až sedmi dnů.
+Contoso generuje DACPAC následujícím způsobem:
 
-1. V Azure AD přihlásit určuje Contoso přihlášení správce společnosti Contoso. Po přibližně 15 minut společnosti Contoso přejde na adresu URL a zobrazí následující informace:
+1. Otevřete příkazový řádek a přejděte do umístění SQLPackage.exe. Zadání tohoto příkazu vygenerujte DACPAC:
 
-    **Po dokončení migrace vede Dev Contoso přihlásí do VSTS zkontroluje, jestli migrace fungovala správně.** 
+    **SqlPackage.exe /sourceconnectionstring: "zdroj dat = SQLSERVERNAME\INSTANCENAME; Initial Catalog = Tfs_ContosoDev; Integrated Security = True" /targetFile:C:\TFSMigrator\Tfs_ContosoDev.dacpac /action:extract /p:ExtractAllTableData = true /p: mi gnoreUserLoginMappings = true /p:IgnorePermissions = true /p:Storage = paměti** 
 
     ![Backup](./media/contoso-migration-tfs-vsts/backup1.png)
 
-2. Po přihlášení si může vidí, že projekty byly migrovány.
+2. Po provedení příkazu se zobrazí následující zpráva.
 
     ![Backup](./media/contoso-migration-tfs-vsts/backup2.png)
 
-3. Má kontroluje jiných pracovních položek k potvrzení.
+3. Po ověření, že vlastnosti DACPACfile
 
     ![Backup](./media/contoso-migration-tfs-vsts/backup3.png)
 
-### <a name="update-the-file-to-storage"></a>Přesunutí správy zdrojového kódu od TFVC ke GITU
+### <a name="update-the-file-to-storage"></a>Aktualizace souboru do úložiště
 
-Pomocí migrace byla dokončena Contoso chce přesunout od TFVC ke Gitu pro správu zdrojového kódu.
+Po vytvoření DACPAC Contoso nahraje ho do služby Azure Storage.
 
-1. Je třeba importovat zdrojový kód aktuálně v jejich účtu VSTS jako úložiště Git ve stejném účtu.
+1. Jejich [stáhnout a nainstalovat](https://azure.microsoft.com/features/storage-explorer/) Průzkumníka služby Azure Storage.
 
     ![Odeslat](./media/contoso-migration-tfs-vsts/backup5.png)
 
-4. Na portálu pro VSTS otevření jedno úložiště TFVC (**$/ PolicyConnect**) a zkontrolujte ji. Kliknutí **zdroj** rozevíracího seznamu > Import.
+4. Připojte se k jejich odběru a vyhledejte účet úložiště, jejich vytvoření na migraci (**contosodevmigration**). Vytvoří nový kontejner objektů blob **vstsmigration**.
 
     ![Odeslat](./media/contoso-migration-tfs-vsts/backup6.png)
 
-5. V typ zdroje vyberou TFVCa zadejte cestu k úložišti.
+5. Určí soubor DACPAC nahrát jako objekt blob bloku.
 
     ![Odeslat](./media/contoso-migration-tfs-vsts/backup7.png)
     
-7. Jste se rozhodli není pro migraci historie. Z důvodu rozdílů v tom, jak TFVC a Git ukládat informace o správě verzí doporučujeme není pro migraci historie.
+7. Po nahrání souboru je klepnutím na název souboru > **generovat SAS**. Rozbalte kontejnery objektů blob v účtu úložiště, vyberte kontejner s import souborů a klikněte na tlačítko **získat sdílený přístupový podpis**.
 
     ![Odeslat](./media/contoso-migration-tfs-vsts/backup8.png)
 
-8. Jedná se o postup, který přijal Microsoft při její migraci Windows a další produkty od centralizované správy verzí na Git. Po dokončení importu Contoso revize kódu.
+8. Přijměte výchozí hodnoty a klikněte na tlačítko **vytvořit**. To umožňuje přístup po dobu 24 hodin.
 
     ![Odeslat](./media/contoso-migration-tfs-vsts/backup9.png)
 
-9. Jejich postupujte stejně jako u druhé úložiště ($/ SmartHotelContainer).
+9. Jejich zkopírujte sdíleného přístupu podpis adresu URL, tak, aby ho můžete použít nástroj pro migraci TFS.
 
     ![Odeslat](./media/contoso-migration-tfs-vsts/backup10.png)
 
 > [!NOTE]
-> Prohlédněte si zdroj, Dev vede souhlas s tím, že se provádí migrace na VSTS.
-> VSTS teď bude zdroj pro všechny vývoje v rámci týmů účastnících migrace. Další informace import od TFVC.
+> Migrace musí dojít před v povoleném čase okno nebo oprávnění vyprší.
+> Není generovat SAS klíč z portálu Azure portal. Klíče generované tímto způsobem jsou rozsahem účtu a nebude fungovat v importu.
 
-### <a name="fill-in-the-import-settings"></a>Pomocí migrace byla dokončena Contoso potřebuje provést následující kroky:
+### <a name="fill-in-the-import-settings"></a>Zadejte nastavení importu
 
-Zkontrolujte po importu informace o importu další aktivity. Odstranit úložiště TFVC, nebo je umístit do režimu jen pro čtení.
+Contoso dříve, částečně doplnit soubor se specifikacemi importu (import.json). Teď se musí přidat zbývající nastavení.
 
-Kód, který nesmí základních tříd používá, ale může být uvedené v jejich historie.
-Contoso muset zadat VSTS a Git školení pro členy týmu relevantní. Příponu ".dacpac".
+Otevřete soubor import.json a vyplňte následující pole: • umístění: umístění klíče SAS, který byl vygenerován výše.
+• Dacpac: nastavte název souboru DACPAC jste nahráli do účtu úložiště. Příponu ".dacpac".
 • ImportType: nastavte na DryRun teď.
 
 
