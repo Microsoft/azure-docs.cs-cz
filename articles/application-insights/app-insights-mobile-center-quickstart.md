@@ -4,18 +4,19 @@ description: Pokyny pro rychlé nastavení mobilní aplikace pro monitorování 
 services: application-insights
 keywords: ''
 author: mrbullwinkle
-ms.author: daviste; mbullwin
-ms.date: 10/05/2017
+ms.author: mbullwin
+ms.date: 07/11/2018
 ms.service: application-insights
+ms.reviewer: daviste
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 252d16a5c4ef2d1f8230746dff681f7fbf5f44b1
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: fd594e65de79844720462996a89477e0a6237ceb
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33867946"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38988921"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>Začínáme s analýzou mobilní aplikace pomocí App Center a Application Insights
 
@@ -66,7 +67,7 @@ Pokud chcete ověřit přijímání vlastních událostí, přejděte v App Cent
 
 Jakmile vaše aplikace odesílá vlastní události a App Center tyto události přijímá, je potřeba na webu Azure Portal vytvořit prostředek Application Insights typu App Center:
 
-1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. Vyberte **Vytvořit prostředek** > **Monitorování a správa** > **Application Insights**.
 
     ![Přidání prostředku Application Insights](./media/app-insights-mobile-center-quickstart/add.png)
@@ -144,7 +145,7 @@ Nad rámec analytických nástrojů, které poskytuje App Center, může Applica
 
    Nástroj Toky uživatelů vizualizuje, jaké události uživatelé odesílají po nějaké počáteční události. To je užitečné k získání celkového přehledu o způsobu, jakým uživatelé procházejí vaši aplikaci. Nástroj může také odhalit některá místa, kde mnoho uživatelů z vaší aplikace odchází nebo kde opakované provádějí stejné akce.
 
-   Kromě nástroje Toky uživatelů obsahuje Application Insights několik dalších nástrojů pro analýzu využití, které řeší konkrétní otázky:
+   Kromě nástroje Toky uživatelů obsahuje Application Insights několik dalších nástrojů pro analýzu chování uživatelů, které řeší konkrétní otázky:
 
    * **Trychtýře** pro analýzy a monitorování konverzního poměru.
    * **Udržení** pro analýzy toho, jak dobře vaše aplikace udržuje uživatele v průběhu času.

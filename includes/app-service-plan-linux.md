@@ -4,5 +4,5 @@ Plány služby App Service definují:
 
 * Oblast (například Severní Evropa, Východní USA nebo Jihovýchodní Asie)
 * Velikost instance (Malá, Střední, Velká)
-* Počet škálování (1 až 10 instance)
+* Počet škálování (1 až 10 instancí)
 * Skladová položka (Basic, Standard)

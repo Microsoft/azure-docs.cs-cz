@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 5bde54a65160c58d8bfba2f6c4c3b6a4317e46ed
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 54a8b5f14cc2f9fb0ac887da8995623353e73ac9
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38540227"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39115581"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-windows-device---preview"></a>Rychlý start: Nasazení prvního modulu IoT Edge z webu Azure Portal do zařízení s Windows – Preview
 
@@ -51,8 +51,10 @@ Počítač, který používáte jako zařízení IoT Edge, musí splňovat násl
 
 ## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
-V tomto rychlém startu nejprve na webu Azure Portal vytvoříte službu IoT Hub.
+V tomto rychlém startu nejprve na webu Azure Portal vytvoříte IoT Hub.
 ![Vytvoření IoT Hubu][3]
+
+Vytvořte IoT Hub ve skupině prostředků, pomocí které můžete udržovat a spravovat všechny prostředky vytvořené v tomto rychlém startu. Použijte pro ni nějaký snadno zapamatovatelný název, například **IoTEdgeResources**. Když umístíte všechny prostředky používané v těchto rychlých startech a kurzech do skupiny, můžete je spravovat společně. Až testování dokončíte, můžete je snadno odebrat. 
 
 [!INCLUDE [iot-hub-create-hub](../../includes/iot-hub-create-hub.md)]
 
@@ -81,14 +83,15 @@ Podle pokynů v této části se nakonfiguruje modul runtime IoT Edge s kontejne
 
 2. Stáhněte balíček služby IoT Edge.
 
-  ```powershell
-  Invoke-WebRequest https://aka.ms/iotedged-windows-latest -o .\iotedged-windows.zip
-  Expand-Archive .\iotedged-windows.zip C:\ProgramData\iotedge -f
-  Move-Item c:\ProgramData\iotedge\iotedged-windows\* C:\ProgramData\iotedge\ -Force
-  rmdir C:\ProgramData\iotedge\iotedged-windows
-  $env:Path += ";C:\ProgramData\iotedge"
-  SETX /M PATH "$env:Path"
-  ```
+   ```powershell
+   Invoke-WebRequest https://aka.ms/iotedged-windows-latest -o .\iotedged-windows.zip
+   Expand-Archive .\iotedged-windows.zip C:\ProgramData\iotedge -f
+   Move-Item c:\ProgramData\iotedge\iotedged-windows\* C:\ProgramData\iotedge\ -Force
+   rmdir C:\ProgramData\iotedge\iotedged-windows
+   $sysenv = "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment"
+   $path = (Get-ItemProperty -Path $sysenv -Name Path).Path + ";C:\ProgramData\iotedge"
+   Set-ItemProperty -Path $sysenv -Name Path -Value $path
+   ```
 
 3. Nainstalujte vcruntime.
 
@@ -160,7 +163,7 @@ Nakonfigurujte modul runtime s použitím připojovacího řetězce zařízení 
   SETX /M IOTEDGE_HOST "http://<ip_address>:15580"
   ```
 
-6. V souboru `config.yaml` vyhledejte část **Connect settings** (Nastavení připojení). Aktualizujte hodnoty **management_uri** a **workload_uri** s použitím vaší IP adresy a portů, které jste otevřeli v předchozí části. Nahraďte **\<GATEWAY_ADDRESS\>** svojí IP adresou. 
+6. V souboru `config.yaml` vyhledejte část **Connect settings** (Nastavení připojení). Aktualizujte hodnoty **management_uri** a **workload_uri** s použitím vaší IP adresy a portů, které jste otevřeli v předchozí části. Nahraďte **\<GATEWAY_ADDRESS\>** IP adresou z DockerNAT, kterou jste zkopírovali.
 
    ```yaml
    connect: 
@@ -249,14 +252,55 @@ K zobrazení zpráv, které přijímá vaše centrum IoT, můžete použít tak�
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Simulované zařízení, které jste nakonfigurovali v tomto rychlém startu, můžete použít k testování kurzů o IoT Edge. Pokud chcete zastavit odesílání dat z modulu tempSensor do centra IoT, pomocí následujícího příkazu zastavte službu IoT Edge a odstraňte kontejnery, které se vytvořily ve vašem zařízení. Až budete chtít znovu použít svůj počítač jako zařízení IoT Edge, nezapomeňte službu spustit. 
+Pokud chcete pokračovat dalšími kurzy o IoT Edge, použijte zařízení, které jste zaregistrovali a nastavili v tomto rychlém startu. Jinak můžete odstranit prostředky Azure, které jste vytvořili, a odebrat modul runtime IoT Edge ze zařízení. 
+
+### <a name="delete-azure-resources"></a>Odstranění prostředků Azure
+
+Pokud jste virtuální počítač a centrum IoT vytvořili v nové skupině prostředků, můžete odstranit tuto skupinu a všechny související prostředky. Pokud chcete z této skupiny prostředků něco zachovat, odstraňte pouze jednotlivé prostředky, které chcete vyčistit. 
+
+Pokud chcete odebrat skupinu prostředků, postupujte následovně: 
+
+1. Přihlaste se k webu [Azure Portal ](https://portal.azure.com) a klikněte na **Skupiny prostředků**.
+2. Do textového pole **Filtrovat podle názvu...** zadejte název skupiny prostředků obsahující vaši službu IoT Hub. 
+3. V seznamu výsledků klikněte na **...** napravo od vaší skupiny prostředků a pak na **Odstranit skupinu prostředků**.
+4. Zobrazí se výzva k potvrzení odstranění skupiny prostředků. Potvrďte odstranění tím, že znovu zadáte název vaší skupiny prostředků, a pak klikněte na **Odstranit**. Po chvíli bude skupina prostředků včetně všech obsažených prostředků odstraněná.
+
+### <a name="remove-the-iot-edge-runtime"></a>Odebrání modulu runtime IoT Edge
+
+Pokud máte v úmyslu používat zařízení IoT Edge pro testování v budoucnu, ale v době, kdy se nepoužívá, chcete zastavit odesílání dat z modulu tempSensor do vašeho IoT Hubu, zastavte službu IoT Edge pomocí následujícího příkazu. 
 
    ```powershell
    Stop-Service iotedge -NoWait
-   docker rm -f $(docker ps -aq)
    ```
 
-Pokud již vytvořenou službu IoT Hub nepotřebujete, pomocí webu Azure Portal můžete odebrat prostředek i všechna přidružená zařízení. Přejděte na stránku přehledu vašeho centra IoT a vyberte **Odstranit**. 
+Až budete připravení k opětovnému zahájení testování, můžete tuto službu znovu spustit.
+
+   ```powershell
+   Start-Service iotedge
+   ```
+
+Pokud chcete instalace ze zařízení odebrat, použijte následující příkazy.  
+
+Odeberte modul runtime IoT Edge.
+
+   ```powershell
+   cmd /c sc delete iotedge
+   rm -r c:\programdata\iotedge
+   ```
+
+Při odebrání modulu runtime IoT Edge se zastaví kontejnery, které vytvořil, ale na zařízení se zachovají. Zobrazte všechny kontejnery.
+
+   ```powershell
+   docker ps -a
+   ```
+
+Odstraňte kontejnery, které na vašem zařízení vytvořil modul runtime IoT Edge. Změňte název kontejneru tempSensor, pokud jste ho pojmenovali nějak jinak. 
+
+   ```powershell
+   docker rm -f tempSensor
+   docker rm -f edgeHub
+   docker rm -f edgeAgent
+   ```
 
 ## <a name="next-steps"></a>Další kroky
 

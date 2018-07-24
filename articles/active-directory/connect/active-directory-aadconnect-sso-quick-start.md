@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/23/2017
+ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: f0611662dfb0ad2e15f87bbe5ec5559e7d8da57d
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: bf83a98010631fc20c5fd7365a3ca081bd9c8c75
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39185716"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214852"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory bezproblémové jednotné přihlašování: rychlý start
 
@@ -41,9 +41,13 @@ Ujistěte se, že jsou splněné následující požadavky:
     >[!NOTE]
     >Azure AD Connect verze 1.1.557.0, 1.1.558.0, 1.1.561.0 a 1.1.614.0 máte problém související se synchronizace hodnot hash hesel. Pokud jste _není_ používat synchronizaci hodnot hash hesel ve spojení se předávací ověřování, přečtěte si [poznámky k verzi Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history#116470) Další informace.
 
+* **Použití podporované topologie služby Azure AD Connect**: Ujistěte se, že používáte jednu z Azure AD Connect podporované topologie popsané [tady](active-directory-aadconnect-topologies.md).
+
 * **Nastavit přihlašovací údaje správce domény**: musíte mít přihlašovací údaje správce domény pro každé služby Active Directory doménové struktury, které:
     * Synchronizovat s Azure AD prostřednictvím služby Azure AD Connect.
     * Obsahuje uživatele, které chcete povolit pro bezproblémové jednotné přihlašování.
+    
+* **Povolit moderní ověřování**: je nutné povolit [moderní ověřování](https://aka.ms/modernauthga) ve svém tenantovi pro tuto funkci pracovat.
 
 ## <a name="step-2-enable-the-feature"></a>Krok 2: Povolení funkce
 
@@ -77,21 +81,27 @@ Postupujte podle těchto pokynů a ověřte, že jste povolili bezproblémového
 
 ## <a name="step-3-roll-out-the-feature"></a>Krok 3: Zavedení funkce
 
-Zavedení funkce pro vaše uživatele, budete muset přidat následující adresu URL služby Azure AD do nastavení zóny Intranet uživatele pomocí zásad skupiny ve službě Active Directory:
+Můžete postupně zavedení bezproblémového jednotného přihlašování pro vaše uživatele pomocí níže uvedených pokynů. Začněte přidáním následující adresu URL služby Azure AD pro všechny nebo vybrané nastavení zóny Intranet uživatele pomocí zásad skupiny ve službě Active Directory:
 
 - https://autologon.microsoftazuread-sso.com
-
 
 Kromě toho je potřeba povolit zásadu zóny intranetu názvem **povolit aktualizace stavového řádku prostřednictvím skriptu** prostřednictvím zásad skupiny. 
 
 >[!NOTE]
-> Postupujte podle následujících pokynů fungují pouze u Internet Exploreru a Google Chrome na Windows (Pokud je sada adres URL důvěryhodných lokalit, která sdílí s aplikací Internet Explorer). Přečtěte si další části Pokyny o tom, jak nastavit Mozilla Firefox a Google Chrome na počítači Mac.
+> Postupujte podle následujících pokynů fungují pouze u Internet Exploreru a Google Chrome na Windows (Pokud je sada adres URL důvěryhodných lokalit, která sdílí s aplikací Internet Explorer). Přečtěte si další části Pokyny o tom, jak nastavit Mozilla Firefox a Google Chrome v systému macOS.
 
 ### <a name="why-do-you-need-to-modify-users-intranet-zone-settings"></a>Proč je třeba změnit nastavení zóny Intranet uživatele?
 
 Ve výchozím nastavení prohlížeč automaticky vypočítá správné zóně, Internetu nebo intranetu, z konkrétní adresy URL. Například "http://contoso/"mapuje do zóny Intranet, zatímco"http://intranet.contoso.com/" mapuje na zóně Internet (vzhledem k tomu, že adresa URL obsahuje tečku). Prohlížeče nebude odesílat lístky protokolu Kerberos do koncového bodu cloudu, podobně jako adresu URL Azure AD, pokud explicitně přidat adresu URL do zóny intranetu prohlížeče.
 
-### <a name="detailed-steps"></a>Podrobné kroky
+Existují dva způsoby, jak upravit nastavení zóny Intranet uživatele:
+
+| Možnost | Zvážení správce | Činnost koncového uživatele |
+| --- | --- | --- |
+| Zásady skupiny | Správce zámků dolů úpravy nastavení zóny Intranet | Uživatelé nemohou upravovat svoje vlastní nastavení |
+| Předvoleb zásad skupiny |  Správce umožňuje úpravy nastavení zóny Intranet | Uživatelé mohou upravovat svoje vlastní nastavení |
+
+### <a name="group-policy-option---detailed-steps"></a>Možnost "Zásady skupiny" – podrobný postup
 
 1. Otevřete nástroj Editor správy zásad skupiny.
 2. Upravit zásady skupiny, které se použije k některým nebo všem uživatelům. Tento příklad používá **výchozí zásady domény**.
@@ -123,6 +133,32 @@ Ve výchozím nastavení prohlížeč automaticky vypočítá správné zóně, 
 
     ![Jednotné přihlašování](./media/active-directory-aadconnect-sso/sso12.png)
 
+### <a name="group-policy-preference-option---detailed-steps"></a>Možnost "Předvoleb zásad skupiny" – podrobný postup
+
+1. Otevřete nástroj Editor správy zásad skupiny.
+2. Upravit zásady skupiny, které se použije k některým nebo všem uživatelům. Tento příklad používá **výchozí zásady domény**.
+3. Přejděte do **konfigurace uživatele** > **Předvolby** > **nastavení Windows** > **registru**  >  **Nový** > **položka registru**.
+
+    ![Jednotné přihlašování](./media/active-directory-aadconnect-sso/sso15.png)
+
+4. Do příslušných polí zadejte následující hodnoty a klikněte na tlačítko **OK**.
+   - **Cesta klíče**: ***Software\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\Domains\microsoftazuread-sso.com\autologon***
+   - **Název hodnoty**: ***https***.
+   - **Typ hodnoty**: ***REG_DWORD***.
+   - **Údaj hodnoty**: ***00000001***.
+ 
+    ![Jednotné přihlašování](./media/active-directory-aadconnect-sso/sso16.png)
+ 
+    ![Jednotné přihlašování](./media/active-directory-aadconnect-sso/sso17.png)
+
+6. Přejděte do **konfigurace uživatele** > **šablony pro správu** > **součásti Windows**  >   **Aplikace Internet Explorer** > **ovládací Panel Možnosti Internetu** > **stránku zabezpečení** > **zóny intranetu**. Potom vyberte **povolit aktualizace stavového řádku prostřednictvím skriptu**.
+
+    ![Jednotné přihlašování](./media/active-directory-aadconnect-sso/sso11.png)
+
+7. Povolit nastavení zásady a pak vyberte **OK**.
+
+    ![Jednotné přihlašování](./media/active-directory-aadconnect-sso/sso12.png)
+
 ### <a name="browser-considerations"></a>Důležité informace o prohlížeči
 
 #### <a name="mozilla-firefox-all-platforms"></a>Mozilla Firefox (všechny platformy)
@@ -134,15 +170,15 @@ Mozilla Firefox nebude automaticky používat ověřování protokolem Kerberos.
 4. Zadejte https://autologon.microsoftazuread-sso.com v poli.
 5. Vyberte **OK** a pak znovu otevřít prohlížeč.
 
-#### <a name="safari-mac-os"></a>Safari (Mac OS)
+#### <a name="safari-macos"></a>Safari (macOS)
 
-Ujistěte se, že počítač s Mac OS připojený ke službě AD. Pokyny pro připojení AD, najdete v článku [osvědčené postupy pro OS X integraci se službou Active Directory](http://www.isaca.org/Groups/Professional-English/identity-management/GroupDocuments/Integrating-OS-X-with-Active-Directory.pdf).
+Ujistěte se, že počítač s macOS připojený ke službě AD. Pokyny pro připojení AD, najdete v článku [osvědčené postupy pro OS X integraci se službou Active Directory](http://www.isaca.org/Groups/Professional-English/identity-management/GroupDocuments/Integrating-OS-X-with-Active-Directory.pdf).
 
 #### <a name="google-chrome-all-platforms"></a>Google Chrome (všechny platformy)
 
 Pokud mají přepsat [AuthNegotiateDelegateWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthNegotiateDelegateWhitelist) nebo [AuthServerWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthServerWhitelist) nastavení zásad ve vašem prostředí, ujistěte se, že můžete přidat adresu URL služby Azure AD (https://autologon.microsoftazuread-sso.com) k nim také.
 
-#### <a name="google-chrome-mac-os-only"></a>Google Chrome (pouze Mac OS)
+#### <a name="google-chrome-macos-only"></a>Google Chrome (pouze v systému macOS)
 
 Google Chrome na Mac OS a jiných platformách než Windows, najdete v tématu [chromu projektu Policy List](https://dev.chromium.org/administrators/policy-list-3#AuthServerWhitelist) informace o tom, jak přidat na seznam povolených adresu URL služby Azure AD pro integrované ověřování.
 
@@ -169,7 +205,12 @@ K otestování tohoto scénáře, ve kterém uživatel nemusí zadávat uživate
 
 ## <a name="step-5-roll-over-keys"></a>Krok 5: Nespotřebujete klíče
 
-V kroku 2 vytvoří účty počítačů (reprezentace služby Azure AD) ve všech struktur služby Active Directory, na které jste povolili bezproblémového jednotného přihlašování Azure AD Connect. Další informace najdete v tématu [Azure Active Directory bezproblémové jednotné přihlašování: podrobné technické informace](active-directory-aadconnect-sso-how-it-works.md). Pro důkladnější zabezpečení doporučujeme pravidelně vyměnit protokolu Kerberos dešifrovací klíče tyto účty počítačů. Pokyny k výměně klíčů najdete v tématu [Azure Active Directory bezproblémové jednotné přihlašování: Nejčastější dotazy k](active-directory-aadconnect-sso-faq.md#how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacc-computer-account).
+V kroku 2 vytvoří účty počítačů (reprezentace služby Azure AD) ve všech struktur služby Active Directory, na které jste povolili bezproblémového jednotného přihlašování Azure AD Connect. Další informace najdete v tématu [Azure Active Directory bezproblémové jednotné přihlašování: podrobné technické informace](active-directory-aadconnect-sso-how-it-works.md).
+
+>[!IMPORTANT]
+>Dešifrovací klíč protokolu Kerberos na účet počítače, pokud úniku, lze použít ke generování lístky protokolu Kerberos pro všechny uživatele v doménové struktuře AD. Útočníky můžete poté k zosobnění přihlášení ohrožených uživatelů Azure AD. Důrazně doporučujeme pravidelná obměna přes tyto dešifrovací klíče Kerberos – alespoň jednou za 30 dnů.
+
+Pokyny k výměně klíčů najdete v tématu [Azure Active Directory bezproblémové jednotné přihlašování: Nejčastější dotazy k](active-directory-aadconnect-sso-faq.md#how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacc-computer-account). Pracujeme na schopnost zavádět automatické vrácení přes klíčů.
 
 >[!IMPORTANT]
 >Není nutné tento krok _okamžitě_ budete mít povolenou funkci. Ho znovu vygenerovat dešifrovací klíče Kerberos alespoň jednou za 30 dnů.

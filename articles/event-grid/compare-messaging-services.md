@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: overview
 ms.date: 07/05/2018
 ms.author: tomfitz
-ms.openlocfilehash: 69db32698951519c2630a0a8697e4ebe74f69b04
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: c54f5c5fba31933a6dd9f98d1ecfb6d03a3ad9be
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37930473"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39003743"
 ---
 # <a name="choose-between-azure-services-that-deliver-messages"></a>Výběr mezi službami Azure, které doručují zprávy
 
@@ -82,7 +82,8 @@ Má následující vlastnosti:
 
 * Spolehlivé asynchronní doručování zpráv, které vyžaduje dotazování
 * Pokročilé funkce zasílání zpráv, jako je FIFO, dávky/relace, transakce, ukládání nedoručených zpráv, časová kontrola, směrování, filtrování a vyhledávání duplicit
-* Přesně jedno doručení
+* Alespoň jedno doručení
+* Volitelné doručení v daném pořadí
 
 ## <a name="use-the-services-together"></a>Použití služeb v kombinaci
 

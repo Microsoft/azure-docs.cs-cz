@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.custom: mvc
-ms.date: 05/08/2018
+ms.date: 07/17/2018
 ms.author: barclayn
-ms.openlocfilehash: f9648e15c720c076a65e84a95f4160f27eec598d
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 2cda30c85ce8a8dc9b7a6c0134b7cabc58b842a4
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34068594"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39115316"
 ---
 # <a name="what-is-azure-key-vault"></a>Co je Azure Key Vault?
 
@@ -39,9 +39,9 @@ Centralizace ukládání tajných klíčů aplikací ve službě Azure Key Vault
 
 Vaše aplikace můžou v případě potřeby bezpečně přistupovat k těmto informacím pomocí identifikátorů URI, které jim po uložení klíče nebo tajného klíče aplikace ve službě Azure Key Vault umožňují načíst konkrétní verzi tajného klíče. Toto se děje bez nutnosti psát vlastní kód pro zajištění ochrany tajných informací.
 
-### <a name="securely-store-secrets"></a>Bezpečné ukládání tajných klíčů
+### <a name="securely-store-secrets-and-keys"></a>Bezpečné ukládání tajných klíčů a klíčů
 
-Klíče jsou chráněné systémem Azure pomocí standardních algoritmů, délek klíčů a modulů hardwarového zabezpečení (HSM). Použité moduly HMS jsou ověřené podle standardu FIPS (Federal Information Processing Standards) 140-2 Level 2.
+Tajné kódy a klíče jsou chráněné systémem Azure pomocí standardních algoritmů, délek klíčů a modulů hardwarového zabezpečení (HSM). Použité moduly HMS jsou ověřené podle standardu FIPS (Federal Information Processing Standards) 140-2 Level 2.
 
 Pro přístup k trezoru klíčů se vyžaduje řádné ověření a autorizace volajícího (uživatel nebo aplikace). Ověření určí identitu volajícího a autorizace následně určí, které operace má volající povoleno provádět.
 
@@ -49,7 +49,7 @@ Ověření se provádí prostřednictvím Azure Active Directory. Autorizace se 
 
 Trezory klíčů Azure můžou být chráněné softwarovým nebo hardwarovým modulem HSM. Pro situace, kdy potřebujete lepší kontrolu, můžete v modulech hardwarového zabezpečení (HSM) importovat nebo generovat klíče, které nikdy neopustí hranice HSM. Microsoft využívá moduly hardwarového zabezpečení Thales. K přesunu klíče z vašeho HSM do služby Azure Key Vault můžete použít nástroje Thales.
 
-A konečně, služba Azure Key Vault je navržená tak, aby společnost Microsoft vaše klíče neznala ani neextrahovala.
+Služba Azure Key Vault je navržená tak, aby Microsoft vaše data neviděl ani je nemohl extrahovat.
 
 ### <a name="monitor-access-and-use"></a>Monitorování přístupu a využití
 

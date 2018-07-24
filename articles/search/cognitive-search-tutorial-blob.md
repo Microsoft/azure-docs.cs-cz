@@ -1,20 +1,20 @@
 ---
-title: 'Kurz: Volání rozhraní API pro kognitivní hledání v Azure Search | Microsoft Docs'
-description: Příklad extrakce dat a zpracování přirozeného jazyka a obrázků pomocí umělé inteligence v indexování Azure Search s cílem extrahovat a transformovat data
+title: Kurz zaměřený na volání rozhraní API pro kognitivní hledání v Azure Search | Microsoft Docs
+description: Tento kurz vás krok za krokem provede ukázkovou extrakcí dat a zpracováním přirozeného jazyka a obrázků pomocí umělé inteligence v indexování Azure Search s cílem extrahovat a transformovat data.
 manager: pablocas
 author: luiscabrer
 services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: tutorial
-ms.date: 05/01/2018
+ms.date: 07/11/2018
 ms.author: luisca
-ms.openlocfilehash: 0bca64675ed656373d6a73ca772fa713ad36a57e
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
+ms.openlocfilehash: 35295f00b9264e4b6fba2ff9d293772c22b91c50
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34757566"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38991869"
 ---
 # <a name="tutorial-learn-how-to-call-cognitive-search-apis-preview"></a>Kurz: Jak volat rozhraní API kognitivního hledání (Preview)
 
@@ -23,8 +23,8 @@ V tomto kurzu se naučíte, jak v Azure Search naprogramovat rozšiřování dat
 V tomto kurzu budete volat rozhraní REST API, aby provedlo tyto úlohy:
 
 > [!div class="checklist"]
-> * Vytvoření kanálu indexace, který rozšiřuje zdrojová data na cestě k indexu
-> * Využití integrovaných dovedností na ukázkové sadě dat: rozpoznávání entit, zjišťování jazyka, manipulace s textem a extrakce klíčových frází
+> * Vytvoření kanálu indexace, který rozšiřuje ukázková data na cestě k indexu
+> * Použití integrovaných dovedností: rozpoznávání entit, zjišťování jazyka, manipulace s textem a extrakce klíčových frází
 > * Zjištění, jak mapováním vstupů na výstupy v sadě dovedností řetězit dovednosti za sebe
 > * Spouštění požadavků a kontrola výsledků
 > * Resetování indexu a indexerů pro další vývoj

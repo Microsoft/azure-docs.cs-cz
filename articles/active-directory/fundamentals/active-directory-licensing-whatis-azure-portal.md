@@ -15,12 +15,12 @@ ms.date: 06/13/2018
 ms.author: lizross
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: c6800e5a00d2fb837538141571c105a1d21e4374
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 5f5aab6a8514636e8be09deb773748080871b9d4
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37860337"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39005227"
 ---
 # <a name="group-based-licensing-basics-in-azure-active-directory"></a>Základní informace o licencování na základě skupin v Azure Active Directory
 
@@ -30,8 +30,8 @@ Až doposud bylo možné licence přiřazovat jenom na úrovni jednotlivých už
 
 Aby se tyto problémy odstranily, umožňuje teď Azure AD licencování na základě skupin. Jednu nebo více licencí produktů je možné přiřadit skupině. Azure AD zajišťuje, že se tyto licence přiřadí všem členům dané skupiny. Všem novým členům, kteří se ke skupině připojí, se přiřadí příslušné licence. Když členové skupinu opustí, tyto licence se odeberou. Tím se eliminuje potřeba, aby automatizace správy licencí přes PowerShell odrážela změny jednotlivých uživatelů ve struktuře organizace a oddělení.
 
->[!NOTE]
->Tato funkce je v tuto chvíli ve verzi Public Preview. Buďte připravení na to, že jakékoli změny se můžou zrušit nebo odebrat. Tato funkce je během období Public Preview dostupná ve všech placených licenčních plánech Azure Active Directory (Azure AD). Až ale bude tato funkce obecně dostupná, můžou některé aspekty této funkce vyžadovat jednu nebo více licencí Azure Active Directory Premium.
+>[!Note]
+>Licencování na základě skupin je funkce Azure Active Directory (Azure AD) ve verzi Public Preview, která je dostupná ve všech placených licenčních plánech Azure AD. Další informace o verzích Preview najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="features"></a>Funkce
 

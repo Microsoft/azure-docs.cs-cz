@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 05/17/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: b82eeb43c29fd52f4df2d453bb24bb2b3bd581ad
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 747a0fc7f66edbae8d4a99eeaf0ea45f844d6465
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37030511"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39125931"
 ---
 # <a name="tutorial-configure-an-azure-web-application-to-read-a-secret-from-key-vault"></a>Kurz: Konfigurace webové aplikace Azure pro čtení tajného kódu ze služby Key Vault
 
@@ -128,8 +128,8 @@ Vaše webová aplikace musí mít nainstalované dva balíčky NuGet. Při jejic
 3. Zaškrtněte políčko vedle vyhledávacího pole. **Zahrnout předběžné verze**
 4. Vyhledejte dva balíčky NuGet uvedené níž a potvrďte jejich přidání do vašeho řešení:
 
-    * [Microsoft.Azure.Services.AppAuthentication (Preview)](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) – usnadňuje načítání přístupových tokenů pro scénáře ověřování služeb pro služby Azure. 
-    * [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault/2.4.0-preview) – obsahuje metody pro interakci se službou Key Vault.
+    * [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) – usnadňuje načítání přístupových tokenů u scénářů ověřování služeb pro služby Azure. 
+    * [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) – obsahuje metody pro interakci se službou Key Vault.
 
 5. Pomocí Průzkumníka řešení otevřete `Program.cs` a obsah souboru Program.cs nahraďte následujícím kódem. Nahraďte ```<YourKeyVaultName>``` názvem vašeho trezoru klíčů:
 
@@ -142,37 +142,36 @@ Vaše webová aplikace musí mít nainstalované dva balíčky NuGet. Při jejic
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Configuration.AzureKeyVault;
     
-        namespace WebKeyVault
-        {
-        public class Program
-        {
-        public static void Main(string[] args)
-        {
-        BuildWebHost(args).Run();
-        }
-    
-            public static IWebHost BuildWebHost(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .ConfigureAppConfiguration((ctx, builder) =>
-                {
-                    var keyVaultEndpoint = GetKeyVaultEndpoint();
-                    if (!string.IsNullOrEmpty(keyVaultEndpoint))
-                    {
-                        var azureServiceTokenProvider = new AzureServiceTokenProvider();
-                        var keyVaultClient = new KeyVaultClient(
-                            new KeyVaultClient.AuthenticationCallback(
-                                azureServiceTokenProvider.KeyVaultTokenCallback));
-                        builder.AddAzureKeyVault(
-                            keyVaultEndpoint, keyVaultClient, new DefaultKeyVaultSecretManager());
-                    }
-                }
-             )
-                .UseStartup<Startup>()
-                .Build();
-    
-            private static string GetKeyVaultEndpoint() => "https://<YourKeyVaultName>.vault.azure.net";
-        }
-        }
+    namespace WebKeyVault
+    {
+       public class Program
+       {
+           public static void Main(string[] args)
+           {
+               BuildWebHost(args).Run();
+           }
+
+           public static IWebHost BuildWebHost(string[] args) =>
+           WebHost.CreateDefaultBuilder(args)
+               .ConfigureAppConfiguration((ctx, builder) =>
+               {
+                   var keyVaultEndpoint = GetKeyVaultEndpoint();
+                   if (!string.IsNullOrEmpty(keyVaultEndpoint))
+                   {
+                       var azureServiceTokenProvider = new AzureServiceTokenProvider();
+                       var keyVaultClient = new KeyVaultClient(
+                           new KeyVaultClient.AuthenticationCallback(
+                               azureServiceTokenProvider.KeyVaultTokenCallback));
+                       builder.AddAzureKeyVault(
+                           keyVaultEndpoint, keyVaultClient, new DefaultKeyVaultSecretManager());
+                   }
+               }
+            ).UseStartup<Startup>()
+             .Build();
+
+           private static string GetKeyVaultEndpoint() => "https://<YourKeyVaultName>.vault.azure.net";
+         }
+    }
     ```
 
 6. Pomocí Průzkumníka řešení přejděte do části **Stránky** a otevřete `About.cshtml`. Obsah **About.cshtml.cs** nahraďte následujícím kódem:
@@ -206,7 +205,8 @@ Vaše webová aplikace musí mít nainstalované dva balíčky NuGet. Při jejic
 7. V hlavní nabídce zvolte **Ladit** > **Spustit bez ladění**. Jakmile se zobrazí prohlížeč, přejděte na stránku **O aplikaci**. Zobrazí se hodnota pro AppSecret.
 
 >[!IMPORTANT]
-> Pokud se zobrazí chyba HTTP 502.5 – selhání procesu, ověřte název trezoru klíčů uvedený v souboru `Program.cs`.
+> Pokud se zobrazí chyba protokolu HTTP 502.5 – Selhání procesu,
+> > ověřte název trezoru klíčů uvedený v souboru `Program.cs`.
 
 ## <a name="publish-the-web-application-to-azure"></a>Publikování webové aplikace do Azure
 

@@ -1,26 +1,26 @@
 ---
-title: Přístup k datům v Azure Data Lake Storage Gen2 Preview v DataBricks pomocí Sparku | Microsoft Docs
-description: Naučte se spouštět dotazy Sparku v clusteru DataBricks, abyste měli přístup k datům v účtu úložiště Azure Data Lake Storage Gen2.
+title: Přístup k datům v Azure Data Lake Storage Gen2 Preview v Azure Databricks pomocí Sparku | Microsoft Docs
+description: Naučte se spouštět dotazy Sparku v clusteru Azure Databricks, abyste měli přístup k datům v účtu úložiště Azure Data Lake Storage Gen2.
 services: hdinsight,storage
 tags: azure-portal
 author: dineshm
 manager: twooley
 ms.component: data-lake-storage-gen2
-ms.service: hdinsight
+ms.service: storage
 ms.workload: big-data
 ms.topic: tutorial
 ms.date: 6/27/2018
 ms.author: dineshm
-ms.openlocfilehash: 27ed860c7dd3b979a25860d453231de74d3f46be
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 41c34b2c1459178c59af66a75e7b34e2ec158025
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37096912"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136399"
 ---
-# <a name="tutorial-access-azure-data-lake-storage-gen2-preview-data-with-databricks-using-spark"></a>Kurz: Přístup k datům v Azure Data Lake Storage Gen2 Preview v DataBricks pomocí Sparku
+# <a name="tutorial-access-azure-data-lake-storage-gen2-preview-data-with-azure-databricks-using-spark"></a>Kurz: Přístup k datům v Azure Data Lake Storage Gen2 Preview v Azure Databricks pomocí Sparku
 
-V tomto kurzu se naučíte spouštět dotazy Sparku v clusteru DataBricks, abyste se mohli dotazovat na data v účtu, který podporuje Azure Data Lake Storage Gen2 Preview.
+V tomto kurzu se naučíte spouštět dotazy Sparku v clusteru Azure Databricks, abyste se mohli dotazovat na data v účtu, který podporuje Azure Data Lake Storage Gen2 Preview.
 
 > [!div class="checklist"]
 > * Vytvoření clusteru Databricks
@@ -49,9 +49,9 @@ Název účtu a klíč budete potřebovat v dalších krocích tohoto kurzu. Ote
 
 ## <a name="create-a-databricks-cluster"></a>Vytvoření clusteru Databricks
 
-V dalším kroku vytvoříte [cluster DataBricks](https://docs.azuredatabricks.net/) jako pracovní prostor pro data.
+V dalším kroku vytvoříte [cluster Databricks](https://docs.azuredatabricks.net/) jako pracovní prostor pro data.
 
-1. Vytvořte [službu DataBricks](https://ms.portal.azure.com/#create/Microsoft.Databricks) a pojmenujte ji **myFlightDataService** (při vytvoření služby nezapomeňte zaškrtnout políčko *Připnout na řídicí panel*).
+1. Vytvořte [službu Databricks](https://ms.portal.azure.com/#create/Microsoft.Databricks) a pojmenujte ji **myFlightDataService** (při vytvoření služby nezapomeňte zaškrtnout políčko *Připnout na řídicí panel*).
 2. Klikněte, že chcete **spustit pracovní prostor** a otevřete pracovní prostor v novém okně prohlížeče.
 3. V navigačním podokně vlevo klikněte na **clustery**.
 4. Klikněte, že chcete **vytvořit cluster**.
@@ -85,9 +85,9 @@ set ACCOUNT_KEY=<ACCOUNT_KEY>
 azcopy cp "<DOWNLOAD_FILE_PATH>" https://<ACCOUNT_NAME>.dfs.core.windows.net/dbricks/folder1/On_Time --recursive 
 ```
 
-### <a name="use-databricks-notebook-to-convert-csv-to-parquet"></a>Použití poznámkového bloku DataBricks k převodu CSV na formát Parquet
+### <a name="use-databricks-notebook-to-convert-csv-to-parquet"></a>Použití poznámkového bloku Databricks k převodu CSV na formát Parquet
 
-Znovu otevřete v prohlížeči DataBricks a proveďte následující kroky:
+Znovu otevřete v prohlížeči Databricks a proveďte následující kroky:
 
 1. Na navigačním panelu vlevo nahoře vyberte **Azure Databricks**.
 2. V dolní polovině stránky vyberte v oddílu **Nový** položku **Poznámkový blok**.
@@ -116,7 +116,7 @@ Znovu otevřete v prohlížeči DataBricks a proveďte následující kroky:
 
 ## <a name="explore-data-using-hadoop-distributed-file-system"></a>Prozkoumání dat pomocí systému souborů HDFS (Hadoop Distributed File System)
 
-Vraťte se do pracovního prostoru DataBricks a na navigačním panelu vlevo klikněte na ikonu **Nedávné**.
+Vraťte se do pracovního prostoru Databricks a na navigačním panelu vlevo klikněte na ikonu **Nedávné**.
 
 1. Klikněte na poznámkový blok **Flight Data Analytics** (Analýza letových dat).
 2. Stisknutím kombinace kláves **Ctrl+Alt+N** vytvořte novou buňku.

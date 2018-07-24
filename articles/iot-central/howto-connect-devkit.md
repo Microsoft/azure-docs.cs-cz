@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 99d69c7e49179a7849e274c830d539833da33786
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: ea9ff8f93ede3b9ec5e7eed83c6049b0c23de7e8
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39049448"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205455"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Připojení MXChip IoT DevKit zařízení do aplikace Azure IoT Central
 
@@ -26,76 +26,38 @@ K dokončení kroků v tomto článku budete potřebovat následující:
 1. Azure IoT Central aplikace vytvořené z **ukázka Devkits** šablony aplikace. Další informace najdete v tématu [vytvoření aplikace Azure IoT Central](howto-create-application.md).
 1. DevKit zařízení. Koupit DevKit zařízení, najdete v tématu [MXChip IoT DevKit](http://mxchip.com/az3166).
 
-Aplikace vytvořené z **ukázka Devkits** zahrnuje šablony aplikace **MXChip** šablona zařízení s následujícími charakteristikami:
 
-### <a name="measurements"></a>Měření
+## <a name="sample-devkits-application"></a>**Ukázkový Devkits** aplikace
 
-#### <a name="telemetry"></a>Telemetrická data 
+Aplikace vytvořené z **ukázka Devkits** zahrnuje šablony aplikace **MXChip** šablona zařízení s následujícími charakteristikami: 
 
-| Název pole     | Jednotky  | Minimální | Maximum | Desetinná místa |
-| -------------- | ------ | ------- | ------- | -------------- |
-| vlhkost       | %      | 0       | 100     | 0              |
-| temp           | ° C     | -40     | 120     | 0              |
-| tlak       | hPa    | 260     | 1260    | 0              |
-| magnetometerX  | mgauss | -1000   | 1000    | 0              |
-| magnetometerY  | mgauss | -1000   | 1000    | 0              |
-| magnetometerZ  | mgauss | -1000   | 1000    | 0              |
-| accelerometerX | mg     | -2000   | 2000    | 0              |
-| accelerometerY | mg     | -2000   | 2000    | 0              |
-| accelerometerZ | mg     | -2000   | 2000    | 0              |
-| gyroscopeX     | mdps   | -2000   | 2000    | 0              |
-| gyroscopeY     | mdps   | -2000   | 2000    | 0              |
-| gyroscopeZ     | mdps   | -2000   | 2000    | 0              |
-
-#### <a name="states"></a>Stavy 
-
-| Název          | Zobrazované jméno   | NORMÁLNÍ | UPOZORNĚNÍ: | NEBEZPEČÍ | 
-| ------------- | -------------- | ------ | ------- | ------ | 
-| Devicestate povolená   | Stav zařízení   | Zelená  | Orange  | Červená    | 
-
-#### <a name="events"></a>Události 
-
-| Název             | Zobrazované jméno      | 
-| ---------------- | ----------------- | 
-| ButtonBPressed   | Stiskne tlačítko B  | 
+- Telemetrická data, která obsahuje měření pro zařízení **vlhkosti**, **teploty**, **tlak**, **Magnometer** (měřeno podél X Y, Z osy), **Accelorometer** (měří podél X, Y, Z osy) a **volný setrvačník** (měří podél X, Y, osy Z).
+- Stav, který obsahuje příklad měření **stav zařízení**.
+- Měření událostí s **stiskne tlačítko B** událostí. 
+- Nastavení zobrazení **napětí**, **aktuální**, **ventilátor rychlost**a **reakcí na Incidenty** přepínací tlačítko.
+- Vlastnosti obsahující vlastnosti zařízení **kostka číslo** a **umístění zařízení** což je vlastnost umístění stejně jako v **vyroben v** cloudové vlastnosti. 
 
 
-
-### <a name="settings"></a>Nastavení
-
-Číselné nastavení
-
-| Zobrazované jméno | Název pole | Jednotky | Desetinná místa | Minimální | Maximum | Počáteční |
-| ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
-| Snímač napětí      | setVoltage | Intenzita | 0              | 0       | 240     | 0       |
-| Aktuální      | setCurrent | A  | 0              | 0       | 100     | 0       |
-| Ventilátor rychlost    | fanSpeed   | OT. / MIN   | 0              | 0       | 1000    | 0       |
-
-Přepínací tlačítko Nastavení
-
-| Zobrazované jméno | Název pole | Na text | Vypnout text | Počáteční |
-| ------------ | ---------- | ------- | -------- | ------- |
-| PROSTŘEDÍ IR           | activateIR | ON      | OFF      | Vypnuto     |
-
-### <a name="properties"></a>Vlastnosti
-
-| Typ            | Zobrazované jméno | Název pole | Typ dat |
-| --------------- | ------------ | ---------- | --------- |
-| Vlastnosti zařízení | Kostka čísla   | dieNumber  | číslo    |
-| Vlastnosti zařízení | Umístění zařízení   | location  | location    |
-| Text            | Vyroben v     | manufacturedIn   | neuvedeno       |
+Všechny podrobnosti o konfiguraci najdete [Podrobnosti šablony MXChip zařízení](howto-connect-devkit.md#mxchip-device-template-details)
 
 
-### <a name="add-a-real-device"></a>Přidání skutečného zařízení
+## <a name="add-a-real-device"></a>Přidání skutečného zařízení
 
 V aplikaci Azure IoT Central přidat z reálného zařízení **MXChip** šablona zařízení a zkontrolujte poznamenejte si připojovací řetězec zařízení. Další informace najdete v tématu [skutečné zařízení přidat do aplikace Azure IoT Central](tutorial-add-device.md).
 
-## <a name="prepare-the-devkit-device"></a>Připravte zařízení DevKit
+### <a name="prepare-the-devkit-device"></a>Připravte zařízení DevKit
 
 > [!NOTE]
 > Pokud jste už dřív použili zařízení a máte Wi-Fi přihlašovací údaje uloženy a chcete změnit konfiguraci zařízení používat jinou síť Wi-Fi, připojovací řetězec nebo telemetrická data měření, stiskněte klávesu i **A** a **B** tlačítka na panelu současně. Pokud to nepomůže, stiskněte **resetování** tlačítko a zkuste to znovu.
 
-K přípravě DevKit zařízení:
+#### <a name="before-you-start-configuring-the-device"></a>Před zahájením konfigurace zařízení:
+1. V IoT Central **ukázka Devkits** přejděte na `Device Explorer` ->  `select MXChip Template`  ->  `Click on +New and choose **Real** Device`  ->  `Connect this device` (v pravém horním rohu) 
+2. Zkopírujte primární připojovací řetězec
+3. Ujistěte se, že chcete uložit připojovací řetězec, jako je bude temporaritly získat odpojení od Internetu během přípravy zařízení DevKit. 
+
+
+#### <a name="to-prepare-the-devkit-device"></a>K přípravě DevKit zařízení:
+
 
 1. Stáhněte si nejnovější předem sestavených Azure IoT Central firmware pro MXChip z [uvolní](https://github.com/Azure/iot-central-firmware/releases) stránku na Githubu. Název souboru ke stažení na stránce vydání vypadá jako `AZ3166-IoT-Central-X.X.X.bin`.
 
@@ -113,7 +75,7 @@ K přípravě DevKit zařízení:
     ```
 
     > [!NOTE]
-    > Pokud na obrazovce se zobrazí cokoli jiného, stiskněte **resetování** na zařízení tlačítko. 
+    > Pokud na obrazovce se zobrazí cokoli jiného, stiskněte **A** a **B** tlačítka na zařízení ve stejnou dobu až po restartování zařízení. 
 
 1. Zařízení je nyní v režimu přístupu bod (přístupový bod). Můžete se připojit k této přístupový bod Wi-Fi ze svého počítače nebo mobilního zařízení.
 
@@ -125,10 +87,9 @@ K přípravě DevKit zařízení:
 
     Na webové stránce: 
     - Přidat název sítě Wi-Fi 
-    - vaše heslo sítě Wi-Fi 
+    - vaše heslo sítě Wi-Fi
     - KÓD PIN, zobrazí na zařízení LCD 
-    - připojovací řetězec zařízení. 
-      Připojovací řetězec můžete najít \@ `https://apps.iotcentral.com`  ->  `Device Explorer`  ->  `Device`  ->  `Select or Create a new Real Device`  ->  `Connect this device` (v pravém horním rohu) 
+    - připojovací řetězec zařízení (by již uložení tohoto postupu) můžete najít v připojovacím řetězci `https://apps.iotcentral.com` -> `Device Explorer` -> `Device` -> `Select or Create a new Real Device` -> `Connect this device` (v pravém horním rohu)
     - Vyberte všechny dostupné telemetrie měření! 
 
 1. Po zvolení **konfigurovat zařízení**, zobrazí tato stránka:
@@ -206,6 +167,66 @@ Funkce `telemetryLoop` odešle **doubleTap** hlášené vlastnosti, když zjist�
 Kód v **iotHubClient.cpp** zdrojový soubor používá funkce z [ sadami SDK služby Microsoft Azure IoT a knihovny pro jazyk C](https://github.com/Azure/azure-iot-sdk-c) k interakci se službou IoT Hub.
 
 Informace o tom, jak změnit, vytvořit a nahrát ukázkový kód do vašeho zařízení, najdete v článku **readme.md** soubor `AZ3166` složky.
+
+## <a name="mxchip-device-template-details"></a>Podrobnosti o zařízení MXChip šablony 
+
+Aplikace vytvořené z této šablony Devkits ukázkové aplikace zahrnovat šablonu MXChip zařízení s následujícími charakteristikami:
+
+### <a name="measurements"></a>Měření
+
+#### <a name="telemetry"></a>Telemetrická data 
+
+| Název pole     | Jednotky  | Minimální | Maximum | Desetinná místa |
+| -------------- | ------ | ------- | ------- | -------------- |
+| vlhkost       | %      | 0       | 100     | 0              |
+| temp           | ° C     | -40     | 120     | 0              |
+| tlak       | hPa    | 260     | 1260    | 0              |
+| magnetometerX  | mgauss | -1000   | 1000    | 0              |
+| magnetometerY  | mgauss | -1000   | 1000    | 0              |
+| magnetometerZ  | mgauss | -1000   | 1000    | 0              |
+| accelerometerX | mg     | -2000   | 2000    | 0              |
+| accelerometerY | mg     | -2000   | 2000    | 0              |
+| accelerometerZ | mg     | -2000   | 2000    | 0              |
+| gyroscopeX     | mdps   | -2000   | 2000    | 0              |
+| gyroscopeY     | mdps   | -2000   | 2000    | 0              |
+| gyroscopeZ     | mdps   | -2000   | 2000    | 0              |
+
+
+#### <a name="states"></a>Stavy 
+| Název          | Zobrazované jméno   | NORMÁLNÍ | UPOZORNĚNÍ: | NEBEZPEČÍ | 
+| ------------- | -------------- | ------ | ------- | ------ | 
+| Devicestate povolená   | Stav zařízení   | Zelená  | Orange  | Červená    | 
+
+#### <a name="events"></a>Události 
+| Název             | Zobrazované jméno      | 
+| ---------------- | ----------------- | 
+| ButtonBPressed   | Stiskne tlačítko B  | 
+
+### <a name="settings"></a>Nastavení
+
+Číselné nastavení
+
+| Zobrazované jméno | Název pole | Jednotky | Desetinná místa | Minimální | Maximum | Počáteční |
+| ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
+| Snímač napětí      | setVoltage | Intenzita | 0              | 0       | 240     | 0       |
+| Aktuální      | setCurrent | A  | 0              | 0       | 100     | 0       |
+| Ventilátor rychlost    | fanSpeed   | OT. / MIN   | 0              | 0       | 1000    | 0       |
+
+Přepínací tlačítko Nastavení
+
+| Zobrazované jméno | Název pole | Na text | Vypnout text | Počáteční |
+| ------------ | ---------- | ------- | -------- | ------- |
+| PROSTŘEDÍ IR           | activateIR | ON      | OFF      | Vypnuto     |
+
+### <a name="properties"></a>Vlastnosti
+
+| Typ            | Zobrazované jméno | Název pole | Typ dat |
+| --------------- | ------------ | ---------- | --------- |
+| Vlastnosti zařízení | Kostka čísla   | dieNumber  | číslo    |
+| Vlastnosti zařízení | Umístění zařízení   | location  | location    |
+| Text            | Vyroben v     | manufacturedIn   | neuvedeno       |
+
+
 
 ## <a name="next-steps"></a>Další postup
 

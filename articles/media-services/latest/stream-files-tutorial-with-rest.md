@@ -10,14 +10,14 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 05/30/2018
+ms.date: 07/16/2018
 ms.author: juliako
-ms.openlocfilehash: 0faed5d72002f24d7be7602c5f16c18e66a0089e
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 5cc109467f9affa9cf5f43342203e8d4298269e0
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38308609"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39115202"
 ---
 # <a name="tutorial-upload-encode-and-stream-videos-with-rest"></a>Kurz: Nahrávání, kódování a streamování videí pomocí rozhraní REST
 
@@ -77,16 +77,17 @@ Tato část popisuje konfiguraci nástroje Postman.
     > [!Note]
     > Aktualizujte přístupové proměnné pomocí hodnot, které jste získali výše v části **Přístup k rozhraní API služby Media Services**.
 
-7. Zavřete dialogové okno.
-8. Z rozevíracího seznamu vyberte prostředí **Azure Media Service v3 Environment**.
+7. Poklikejte na vybraný soubor a zadejte hodnoty, které jste získali v postupu pro [přístup k rozhraní API](#access-the-media-services-api).
+8. Zavřete dialogové okno.
+9. Z rozevíracího seznamu vyberte prostředí **Azure Media Service v3 Environment**.
 
     ![Výběr prostředí](./media/develop-with-postman/choose-env.png)
    
 ### <a name="configure-the-collection"></a>Konfigurace kolekce
 
 1. Kliknutím na **Import** importujte soubor kolekce.
-1. Vyhledejte soubor `Media Services v3 (2018-03-30-preview).postman_collection.json`, který se stáhl při klonování úložiště `https://github.com/Azure-Samples/media-services-v3-rest-postman.git`.
-3. Vyberte soubor **Media Services v3 (2018-03-30-preview).postman_collection.json**.
+1. Vyhledejte soubor `Media Services v3.postman_collection.json`, který se stáhl při klonování úložiště `https://github.com/Azure-Samples/media-services-v3-rest-postman.git`.
+3. Vyberte soubor **Media Services v3.postman_collection.json**.
 
     ![Importovat soubor](./media/develop-with-postman/postman-import-collection.png)
 
@@ -128,11 +129,21 @@ Výstupní [prostředek](https://docs.microsoft.com/rest/api/media/assets) ulož
 2. Pak vyberte „Create or update an Asset“ (Vytvořit nebo aktualizovat prostředek).
 3. Stiskněte **Odeslat**.
 
-    Odešle se následující operace **PUT**.
+    * Odešle se následující operace **PUT**:
 
-    ```
-    https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/assets/:assetName?api-version={{api-version}}
-    ```
+        ```
+        https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/assets/:assetName?api-version={{api-version}}
+        ```
+    * Operace obsahuje následující text:
+
+        ```json
+        {
+        "properties": {
+            "description": "My Asset",
+            "alternateId" : "some GUID"
+         }
+        }
+        ```
 
 ### <a name="create-a-transform"></a>Vytvoření transformace
 
@@ -149,11 +160,30 @@ Můžete použít předdefinovanou předvolbu EncoderNamedPreset, nebo si vytvo�
 2. Potom vyberte „Create Transform“ (Vytvořit transformaci).
 3. Stiskněte **Odeslat**.
 
-    Odešle se následující operace **PUT**.
+    * Odešle se následující operace **PUT**.
 
-    ```
-    https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/transforms/:transformName?api-version={{api-version}}
-    ```
+        ```
+        https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/transforms/:transformName?api-version={{api-version}}
+        ```
+    * Operace obsahuje následující text:
+
+        ```json
+        {
+            "properties": {
+                "description": "Basic Transform using an Adaptive Streaming encoding preset from the libray of built-in Standard Encoder presets",
+                "outputs": [
+                    {
+                    "onError": "StopProcessingJob",
+                "relativePriority": "Normal",
+                    "preset": {
+                        "@odata.type": "#Microsoft.Media.BuiltInStandardEncoderPreset",
+                        "presetName": "AdaptiveStreaming"
+                    }
+                    }
+                ]
+            }
+        }
+        ```
 
 ### <a name="create-a-job"></a>Vytvoření úlohy
 
@@ -165,11 +195,32 @@ V tomto příkladu se vstup úlohy vytvoří na základě adresy URL protokolu H
 2. Pak vyberte „Create or Update Job“ (Vytvořit nebo aktualizovat úlohu).
 3. Stiskněte **Odeslat**.
 
-    Odešle se následující operace **PUT**.
+    * Odešle se následující operace **PUT**.
 
-    ```
-    https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/transforms/:transformName/jobs/:jobName?api-version={{api-version}}
-    ```
+        ```
+        https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/transforms/:transformName/jobs/:jobName?api-version={{api-version}}
+        ```
+    * Operace obsahuje následující text:
+
+        ```json
+        {
+        "properties": {
+            "input": {
+            "@odata.type": "#Microsoft.Media.JobInputHttp",
+            "baseUri": "https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/",
+            "files": [
+                    "Ignite-short.mp4"
+                ]
+            },
+            "outputs": [
+            {
+                "@odata.type": "#Microsoft.Media.JobOutputAsset",
+                "assetName": "testAsset1"
+            }
+            ]
+        }
+        }
+        ```
 
 Úloze chvíli trvá, než se dokončí, a když k tomu dojde, budete na to pravděpodobně chtít upozornit. K zobrazení průběhu úlohy doporučujeme použít službu Event Grid. Ta je navržená s ohledem na vysokou dostupnost, stabilní výkon a dynamické škálování. Díky službě Event Grid můžou vaše aplikace naslouchat událostem a reagovat na ně, ať už pocházejí z kterékoli služby Azure. Události můžou pocházet i z vlastních zdrojů. Jednoduché, reaktivní zpracování událostí založené na protokolu HTTP pomáhá sestavovat efektivní řešení prostřednictvím inteligentního filtrování a směrování událostí.  Další informace najdete v článku [Směrování událostí na vlastní webový koncový bod](job-state-events-cli-how-to.md).
 
@@ -189,14 +240,24 @@ Když vytváříte [streamovací lokátor](https://docs.microsoft.com/rest/api/m
 Počet záznamů StreamingPolicy je pro účty služby Media Service omezený kvótou. Neměli byste vytvářet samostatnou zásadu streamování pro každý streamovací lokátor.
 
 1. V levém okně nástroje Postman vyberte „Streaming Policies“ (Zásady streamování).
-2. Potom vyberte možnost „Create a Streaming Policy“ (Vytvořit zásadu streamování).
+2. Potom vyberte možnost „Create a Streaming Locator“ (Vytvořit lokátor streamování).
 3. Stiskněte **Odeslat**.
 
-    Odešle se následující operace **PUT**.
+    * Odešle se následující operace **PUT**.
 
-    ```
-    https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/streamingPolicies/:streamingPolicyName?api-version={{api-version}}
-    ```
+        ```
+        https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/streamingPolicies/:streamingPolicyName?api-version={{api-version}}
+        ```
+    * Operace obsahuje následující text:
+
+        ```json
+        {
+            "properties":{
+            "assetName": "{{assetName}}",
+            "streamingPolicyName": "{{streamingPolicyName}}"
+            }
+        }
+        ```
 
 ### <a name="list-paths-and-build-streaming-urls"></a>Seznam cest a vytvoření adres URL pro streamování
 
@@ -208,40 +269,40 @@ Teď, když máte vytvořený [streamovací lokátor](https://docs.microsoft.com
 2. Potom vyberte „List Paths“ (Seznam cest).
 3. Stiskněte **Odeslat**.
 
-    Odešle se následující operace **POST**.
+    * Odešle se následující operace **POST**.
 
-    ```
-    https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/streamingLocators/:streamingLocatorName/listPaths?api-version={{api-version}}
-    ```
+        ```
+        https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/streamingLocators/:streamingLocatorName/listPaths?api-version={{api-version}}
+        ```
+        
+    * Operace neobsahuje žádný text.
+        
 4. Poznamenejte si jednu z cest, které chcete použít pro streamování, budete ji potřebovat v další části. V tomto případě se vrátily následující cesty:
     
     ```
-    {
-        "streamingPaths": [
-            {
-                "streamingProtocol": "Hls",
-                "encryptionScheme": "NoEncryption",
-                "paths": [
-                    "/fd384f76-2d23-4e50-8fad-f9b3ebcd675b/Ignite-short.ism/manifest(format=m3u8-aapl)"
-                ]
-            },
-            {
-                "streamingProtocol": "Dash",
-                "encryptionScheme": "NoEncryption",
-                "paths": [
-                    "/fd384f76-2d23-4e50-8fad-f9b3ebcd675b/Ignite-short.ism/manifest(format=mpd-time-csf)"
-                ]
-            },
-            {
-                "streamingProtocol": "SmoothStreaming",
-                "encryptionScheme": "NoEncryption",
-                "paths": [
-                    "/fd384f76-2d23-4e50-8fad-f9b3ebcd675b/Ignite-short.ism/manifest"
-                ]
-            }
-        ],
-        "downloadPaths": []
-    }
+    "streamingPaths": [
+        {
+            "streamingProtocol": "Hls",
+            "encryptionScheme": "NoEncryption",
+            "paths": [
+                "/cdb80234-1d94-42a9-b056-0eefa78e5c63/Ignite-short.ism/manifest(format=m3u8-aapl)"
+            ]
+        },
+        {
+            "streamingProtocol": "Dash",
+            "encryptionScheme": "NoEncryption",
+            "paths": [
+                "/cdb80234-1d94-42a9-b056-0eefa78e5c63/Ignite-short.ism/manifest(format=mpd-time-csf)"
+            ]
+        },
+        {
+            "streamingProtocol": "SmoothStreaming",
+            "encryptionScheme": "NoEncryption",
+            "paths": [
+                "/cdb80234-1d94-42a9-b056-0eefa78e5c63/Ignite-short.ism/manifest"
+            ]
+        }
+    ]
     ```
 
 #### <a name="build-the-streaming-urls"></a>Vytvoření adres URL pro streamování
@@ -253,16 +314,27 @@ V této části vytvoříme adresu URL pro streamování HLS. Adresy URL se skl�
     > [!NOTE]
     > Pokud se přehrávač hostuje na webu HTTPS, nezapomeňte adresu URL aktualizovat tak, aby obsahovala „https“. 
 
-2. Název hostitele koncového bodu streamování. V našem případě je to „amsaccount-usw22.streaming.media.azure.net“.
-3. Cesta, kterou jste získali v předchozí části.  
+2. Název hostitele koncového bodu streamování. V tomto případě je to „amsaccount-usw22.streaming.media.azure.net“.
+
+    K získání názvu hostitele můžete použít následující operaci GET:
+    
+    ```
+    https://management.azure.com/subscriptions/00000000-0000-0000-0000-0000000000000/resourceGroups/amsResourceGroup/providers/Microsoft.Media/mediaservices/amsaccount/streamingEndpoints/default?api-version={{api-version}}
+    ```
+    
+3. Cesta, kterou jste získali v předchozí části (Seznam cest).  
 
 Výsledkem pak je následující adresa URL pro streamování HLS
 
 ```
-https://amsaccount-usw22.streaming.media.azure.net/fd384f76-2d23-4e50-8fad-f9b3ebcd675b/Ignite-short.ism/manifest(format=m3u8-aapl)
+https://amsaccount-usw22.streaming.media.azure.net/cdb80234-1d94-42a9-b056-0eefa78e5c63/Ignite-short.ism/manifest(format=m3u8-aapl)
 ```
 
 ## <a name="test-the-streaming-url"></a>Testování adresy URL pro streamování
+
+
+> [!NOTE]
+> Zkontrolujte, že je spuštěný koncový bod streamování, ze kterého chcete streamovat.
 
 Tento článek používá k otestování streamu přehrávač Azure Media Player. 
 

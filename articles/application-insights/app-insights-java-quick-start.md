@@ -1,21 +1,21 @@
 ---
-title: Rychlý start pro Azure Application Insights | Microsoft Docs
+title: Rychlý start pro Azure Application Insights | Dokumentace Microsoftu
 description: Pokyny pro rychlé nastavení webové aplikace v Javě pro monitorování s využitím Application Insights
 services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 12/12/2017
+ms.date: 07/11/2018
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 7248e2477a217c769bd232b87a8e510fcfd59790
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: c0a1caca1c7b026965d2a83211c87d49db53c4ca
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34798436"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38991596"
 ---
 # <a name="start-monitoring-your-java-web-application"></a>Zahájení monitorování webové aplikace v Javě
 
@@ -39,7 +39,7 @@ Pokud dáváte přednost rozhraní Spring, zkuste [nakonfigurovat aplikaci Sprin
 
 ## <a name="log-in-to-the-azure-portal"></a>Přihlášení k portálu Azure Portal
 
-Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 ## <a name="enable-application-insights"></a>Povolení Application Insights
 
@@ -56,7 +56,7 @@ Application Insights může shromažďovat telemetrická data ze všech aplikac�
    | **Název**      | Globálně jedinečná hodnota | Název identifikující aplikaci, kterou monitorujete |
    | **typ aplikace** | Webová aplikace Java | Typ aplikace, kterou monitorujete |
    | **Skupina prostředků**     | myResourceGroup      | Název pro novou skupinu prostředků, která bude hostovat data App Insights |
-   | **Umístění** | Východ USA | Vyberte umístění ve vaší blízkosti nebo v blízkosti místa, kde se vaše aplikace hostuje. |
+   | **Umístění** | USA – východ | Vyberte umístění ve vaší blízkosti nebo v blízkosti místa, kde se vaše aplikace hostuje. |
 
 2. Klikněte na možnost **Vytvořit**.
 
@@ -89,25 +89,25 @@ Application Insights může shromažďovat telemetrická data ze všech aplikac�
 
 1. Teď můžete znovu otevřít stránku **Přehled** služby Application Insights na webu Azure Portal, kde jste získali svůj instrumentační klíč, a zobrazit podrobné informace o aktuálně spuštěné aplikaci.
 
-   ![Nabídka Přehled služby Application Insights](./media/app-insights-java-quick-start/0008-j.png)
+   ![Nabídka Přehled služby Application Insights](./media/app-insights-java-quick-start/overview-001.png)
 
 2. Po kliknutí na **Mapa aplikace** se zobrazí rozložení vztahů závislosti mezi komponentami vaší aplikace. U každé komponenty se zobrazují klíčové ukazatele výkonu, jako je zatížení, výkon, selhání a upozornění.
 
-   ![Mapa aplikace](./media/app-insights-java-quick-start/005-j.png)
+   ![Mapa aplikace](./media/app-insights-java-quick-start/application-map-001.png)
 
 3. Klikněte na ikonu **Analýza aplikace** ![Ikona Mapa aplikace](./media/app-insights-java-quick-start/006.png). Otevře se **Application Insights – Analytics** s bohatým dotazovacím jazykem pro analýzu všech dat shromážděných službou Application Insights. V tomto případě jsme za vás vytvořili dotaz, který vykreslí počet požadavků ve formě grafu. Můžete psát své vlastní dotazy pro analýzu dalších dat.
 
    ![Graf analýzy uživatelských požadavků za časové období](./media/app-insights-java-quick-start/0010-j.png)
 
-4. Vraťte se na stránku **Přehled** a prozkoumejte **časovou osu přehledu stavu**.  Tento řídicí panel poskytuje statistické údaje o stavu vaší aplikace, včetně počtu příchozích požadavků, doby jejich trvání a všech chyb, ke kterým došlo.
+4. Vraťte se na stránku **Přehled** a prozkoumejte grafy klíčových ukazatelů výkonu.  Tento řídicí panel poskytuje statistické údaje o stavu vaší aplikace, včetně počtu příchozích požadavků, doby jejich trvání a všech chyb, ke kterým došlo.
 
-   ![Graf s časovou osou přehledu stavu](./media/app-insights-java-quick-start/0009-j.png)
+   ![Graf s časovou osou přehledu stavu](./media/app-insights-java-quick-start/overview-perf.png)
 
    Pokud chcete povolit, aby se graf **Page View Load Time** naplnil **telemetrií na straně klienta**, na každou stránku, kterou chcete sledovat, přidejte následující skript:
 
    ```HTML
    <!-- 
-   To collect end-user usage analytics about your application, 
+   To collect user behavior analytics about your application, 
    insert the following script into each page you want to track.
    Place this code immediately before the closing </head> tag,
    and before any other scripts. Your first data will appear 

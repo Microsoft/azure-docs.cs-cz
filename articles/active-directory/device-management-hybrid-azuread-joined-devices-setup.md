@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 03/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: fd23da29324dc5cb212c144f5bb303a46d6f4d42
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 3fbf47eca2c623e55ff5e70095c04f16a1a1b3e6
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37868431"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39215158"
 ---
 # <a name="how-to-configure-hybrid-azure-active-directory-joined-devices"></a>Jak nakonfigurovat zařízení Azure Active Directory připojená k hybridní
 
@@ -97,7 +97,7 @@ Pokud vaše organizace plánuje pomocí bezproblémového jednotného přihlašo
 
 Pokud vaše organizace používá spravované instalace (jiné než federované) s místním AD a nepoužívá služby AD FS pro federaci s Azure AD, a připojení k hybridní službě Azure AD na Windows 10 spoléhá na počítačových objektů ve službě AD být sync'ed do služby Azure AD. Ujistěte se, že jsou povolené všechny organizační jednotky (OU), které obsahují objekty počítače, které musí být připojená k hybridní Azure AD pro synchronizaci v konfiguraci synchronizace Azure AD Connect.
 
-Pokud vaše organizace potřebuje přístup k Internetu prostřednictvím odchozího proxy serveru, je nutné implementovat Proxy Auto-Discovery WPAD (Web) umožňující počítače s Windows 10 k registraci do služby Azure AD.
+Pro zařízení s Windows 10 ve verzi 1703 nebo starší Pokud vaše organizace potřebuje přístup k Internetu prostřednictvím odchozího proxy serveru, musíte implementovat Proxy Auto-Discovery WPAD (Web) umožňující počítače s Windows 10 k registraci do služby Azure AD. 
 
 ## <a name="configuration-steps"></a>Postup konfigurace
 
@@ -541,7 +541,7 @@ Ve službě AD FS je nutné přidat pravidel transformace pro vystavování, kte
 2. Klikněte pravým tlačítkem na objekt vztahu důvěryhodnosti platforma identit Microsoft Office 365 předávající strany a pak vyberte **upravit pravidla deklarací identity**.
 3. Na **pravidlech transformace vystavení** kartu, vyberte možnost **přidat pravidlo**.
 4. V **pravidlo deklarace identity** seznamu šablon vyberte **odesílat deklarace pomocí vlastního pravidla**.
-5. Vyberte **Next** (Další).
+5. Vyberte **Další**.
 6. V **název pravidla deklarace identity** zadejte **pravidlo deklarace identity metoda ověřování**.
 7. V **pravidlo deklarace identity** zadejte následující pravidlo:
 

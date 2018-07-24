@@ -14,12 +14,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 03/28/2018
 ms.author: daveba
-ms.openlocfilehash: 3d6df04df8ceac1f868e64f0e8fbc7eb0fa317e3
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: d25d868d8f3542d74de8edf8d7d5d26037409911
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38547969"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39006926"
 ---
 #  <a name="what-is-managed-service-identity-for-azure-resources"></a>Co je Identita spravované služby pro prostředky Azure?
 
@@ -40,7 +40,7 @@ To znamená, že váš kód může k vyžádání přístupových tokenů pro sl
 
 Tady je příklad toho, jak identity přiřazené systémem fungují s virtuálními počítači Azure:
 
-![Příklad spravované identity virtuálního počítače](overview/msi-vm-vmextension-imds-example.png)
+![Příklad spravované identity virtuálního počítače](media/overview/msi-vm-vmextension-imds-example.png)
 
 1. Azure Resource Manager obdrží požadavek na povolení identity přiřazené systémem na virtuálním počítači.
 2. Azure Resource Manager vytvoří instanční objekt ve službě Azure AD, který reprezentuje identitu virtuálního počítače. Instanční objekt se vytvoří v tenantovi Azure AD důvěryhodném pro toto předplatné.
@@ -101,6 +101,7 @@ Vyzkoušejte kurz Identity spravované služby a seznamte se s kompletními scé
 | Azure Functions    | [Použití Identity spravované služby se službou Azure App Service nebo Azure Functions](/azure/app-service/app-service-managed-service-identity) |
 | Azure Service Bus  | [Použití Identity spravované služby se službou Azure Service Bus](../../service-bus-messaging/service-bus-managed-service-identity.md) |
 | Azure Event Hubs   | [Použití Identity spravované služby se službou Azure Event Hubs](../../event-hubs/event-hubs-managed-service-identity.md) |
+| Azure API Management | [Použití Identity spravované služby se službou Azure API Management](../../api-management/api-management-howto-use-managed-service-identity.md) |
 
 ## <a name="which-azure-services-support-managed-service-identity"></a>Které služby Azure podporují Identitu spravované služby?
 

@@ -1,5 +1,5 @@
 ---
-title: Co je Azure Log Analytics? | Dokumenty Microsoft
+title: Co je Azure Log Analytics? | Microsoft Docs
 description: Log Analytics je služba v Azure, která pomáhá shromažďovat a analyzovat provozní data vygenerovaná prostředky ve vašem cloudovém a místním prostředí.  Tento článek poskytuje stručný přehled různých komponent služby Log Analytics a odkazy na podrobný obsah.
 services: log-analytics
 documentationcenter: ''
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/14/2018
+ms.date: 07/11/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 463ac7ee3e640f8bc275adb9e6ac27cc3e6a037a
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 8e78528783d57d31e1eb9bcda82fa9acccf69dde
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37127955"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39005245"
 ---
 # <a name="what-is-azure-log-analytics"></a>Co je Azure Log Analytics?
 Log Analytics hraje hlavní roli ve správě Azure díky tomu, že shromažďuje telemetrii a další data z široké škály zdrojů a poskytuje dotazovací jazyk a analytický modul, který zajišťuje přehled o provozu aplikací a prostředků.  S daty Log Analytics můžete pracovat buď přímo prostřednictvím prohledávání protokolů a zobrazení, nebo můžete použít analytické nástroje v dalších službách Azure, které ukládají data v Log Analytics, jako jsou například Application Insights nebo Azure Security Center.  
@@ -41,12 +41,12 @@ Log Analytics shromažďuje data z široké škály zdrojů.  Po shromáždění
 
 Mezi metody shromažďování dat do Log Analytics patří následující:
 
-- Konfigurace služby Azure Monitor pro kopírování metrik a protokolů, které shromáždí z prostředků Azure.
-- Agenti na virtuálních počítačích s [Windows](log-analytics-windows-agent.md) a [Linuxem](log-analytics-linux-agents.md), kteří odesílají telemetrii z hostovaného operačního systému a aplikací do Log Analytics podle [zdrojů dat](log-analytics-data-sources.md), které nakonfigurujete.  
-- Připojení [skupiny pro správu nástroje System Center Operations Manager](log-analytics-om-agents.md) k Log Analytics pro shromažďování dat z agentů, které obsahuje.
+- Konfigurace služby Azure Monitor pro kopírování [metrik a protokolů](../monitoring/monitoring-data-collection.md#types-of-monitoring-data), které tato služba shromáždí z prostředků Azure.
+- Shromažďování telemetrie, která se zapisuje do [Azure Storage](log-analytics-azure-storage-iis-table.md).
+- Agenti na virtuálních počítačích s [Windows](log-analytics-windows-agent.md) a [Linuxem](log-analytics-linux-agents.md), kteří odesílají telemetrii z hostovaného operačního systému a aplikací do Log Analytics podle [zdrojů dat](log-analytics-data-sources.md), které nakonfigurujete. Agenty lze připojit přímo, přes [bránu OMS](log-analytics-oms-gateway.md), pokud nemají přístup přes firewall, nebo prostřednictvím [skupiny pro správu nástroje System Center Operations Manager](log-analytics-om-agents.md).
 - Služby Azure, jako jsou [Application Insights](https://docs.microsoft.com/azure/application-insights/) a [Azure Security Center](https://docs.microsoft.com/azure/security-center/), které ukládají data přímo do Log Analytics bez jakékoli konfigurace.
 - Zápis dat z příkazového řádku PowerShellu nebo [runbooku Azure Automation](../automation/automation-runbook-types.md) pomocí rutin Log Analytics.
-- Pokud máte vlastní požadavky, můžete použít [rozhraní API kolekce dat HTTP](log-analytics-data-collector-api.md) a zapisovat do Log Analytics data z jakéhokoli klienta REST API.
+- Pokud máte vlastní požadavky, můžete použít [rozhraní API kolekce dat HTTP](log-analytics-data-collector-api.md) a zapisovat data do Log Analytics z jakéhokoli klienta REST API, nebo použít [Azure Logic App](https://docs.microsoft.com/azure/logic-apps/) a zapisovat data z vlastního pracovního postupu.
 
 
 ![Komponenty služby Log Analytics](media/log-analytics-overview/collecting-data.png)

@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: sngun
-ms.openlocfilehash: fb8ae3b6225b2029ced3687083777ae47cb54acf
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: b792798c64ed0a2eb12a16d868d8a17302466fea
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39002326"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39215352"
 ---
 # <a name="azure-cosmos-db-faq"></a>Nejčastější dotazy k Azure Cosmos DB
 ## <a name="azure-cosmos-db-fundamentals"></a>Základy služby Azure Cosmos DB
@@ -68,7 +68,7 @@ Podrobnosti najdete [podrobnosti o cenách služby Azure Cosmos DB](https://azur
 ### <a name="is-a-free-account-available"></a>Je k dispozici bezplatný účet?
 Ano, můžete registraci časově omezený účet zdarma, bez jakýchkoli závazků. Chcete-li zaregistrovat, navštivte [vyzkoušejte si Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) nebo Další informace najdete v [vyzkoušejte Azure Cosmos DB – nejčastější dotazy](#try-cosmos-db).
 
-Pokud jste ještě do Azure, můžete si zaregistrovat [bezplatný účet Azure](https://azure.microsoft.com/free/), kterým získáte 30 dnů a a Dal na vyzkoušení všech služeb Azure. Pokud máte předplatné sady Visual Studio máte také nárok na [bezplatné kredity Azure](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) použít pro libovolnou službu Azure. 
+Pokud jste ještě do Azure, můžete si zaregistrovat [bezplatný účet Azure](https://azure.microsoft.com/free/), které získáte 30 dnů a kredit na vyzkoušení všech služeb Azure. Pokud máte předplatné sady Visual Studio máte také nárok na [bezplatné kredity Azure](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) použít pro libovolnou službu Azure. 
 
 Můžete také použít [emulátor služby Azure Cosmos DB](local-emulator.md) vyvíjet a testovat aplikace místně pro zdarma, bez vytváření předplatného Azure. Jakmile budete spokojeni s fungováním aplikace v emulátoru, můžete přejít na účet služby Azure Cosmos DB v cloudu.
 

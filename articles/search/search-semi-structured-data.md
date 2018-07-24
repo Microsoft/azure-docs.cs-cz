@@ -1,21 +1,21 @@
 ---
-title: Prohledávání částečně strukturovaných dat v cloudovém úložišti Azure
-description: Prohledávání částečně strukturovaných dat objektů blob pomocí služby Azure Search
-author: roygara
+title: Kurz pro prohledávání částečně strukturovaných dat z cloudového úložiště Azure ve službě Azure Search | Microsoft Docs
+description: V tomto kurzu se dozvíte, jak prohledávat částečně strukturovaná data objektů blob Azure pomocí služby Azure Search.
+author: HeidiSteen
 manager: cgronlun
 services: search
 ms.service: search
 ms.topic: tutorial
-ms.date: 10/12/2017
-ms.author: v-rogara
-ms.openlocfilehash: 7579862e132724d101e4267023afd9e3336bc3b1
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.date: 07/12/2018
+ms.author: heidist
+ms.openlocfilehash: a7b006bd8469ddce1415ab6cb7c52c0171ae11cd
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31795037"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39005073"
 ---
-# <a name="part-2-search-semi-structured-data-in-cloud-storage"></a>Část 2: Prohledávání částečně strukturovaných dat v cloudovém úložišti
+# <a name="tutorial-search-semi-structured-data-in-azure-cloud-storage"></a>Kurz: Prohledávání částečně strukturovaných dat v cloudovém úložišti Azure
 
 V této dvoudílné sérii kurzů se dozvíte, jak pomocí služby Azure Search prohledávat částečně strukturovaná a nestrukturovaná data. [Část 1](../storage/blobs/storage-unstructured-search.md) vás provedla prohledáváním nestrukturovaných dat, ale obsahovala také důležité požadavky pro tento kurz, například vytvoření účtu úložiště. 
 
@@ -28,14 +28,16 @@ V části 2 získáte informace o těchto tématech:
 > * Vytvoření a naplnění indexu a indexeru Azure Search pro procházení kontejneru a extrahování prohledávatelného obsahu
 > * Prohledávání právě vytvořeného indexu
 
-> [!NOTE]
-> Tento kurz se spoléhá na podporu polí JSON, která je aktuálně ve službě Azure Search funkcí ve verzi Preview. Na portálu není k dispozici. Z tohoto důvodu používáme rozhraní REST API verze Preview, které tuto funkci poskytuje, a klientský nástroj REST k volání tohoto rozhraní API.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Dokončení [předchozího kurzu](../storage/blobs/storage-unstructured-search.md) a vytvoření účtu úložiště a služby Search.
 
 * Instalace klienta REST a porozumění vytváření požadavků HTTP. Pro účely tohoto kurzu používáme nástroj [Postman](https://www.getpostman.com/). Můžete použít i jiného klienta REST, pokud se vám už s některým dobře pracuje.
+
+> [!NOTE]
+> Tento kurz se spoléhá na podporu polí JSON, která je aktuálně ve službě Azure Search funkcí ve verzi Preview. Na portálu není k dispozici. Z tohoto důvodu používáme rozhraní REST API verze Preview, které tuto funkci poskytuje, a klientský nástroj REST k volání tohoto rozhraní API.
 
 ## <a name="set-up-postman"></a>Nastavení nástroje Postman
 
@@ -55,9 +57,9 @@ Připravili jsme pro vás ukázkovou datovou sadu. **Stáhněte soubor [clinical
 
 Ukázka obsahuje příklady souborů JSON, které byly původně textové soubory získané z webu [clinicaltrials.gov](https://clinicaltrials.gov/ct2/results). Pro usnadnění práce jsme je převedli do formátu JSON.
 
-## <a name="log-in-to-azure"></a>Přihlášení k Azure
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k portálu [Azure Portal](http://portal.azure.com).
+Přihlaste se k [portálu Azure](http://portal.azure.com).
 
 ## <a name="upload-the-sample-data"></a>Nahrání ukázkových dat
 
@@ -277,15 +279,13 @@ Pokud chcete, můžete experimentovat a vyzkoušet si sami několik dalších do
 
 Parametr `$filter` pracuje pouze s metadaty, která se při vytváření indexu označila jako filtrovatelná.
 
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Nejrychlejší způsob, jak po kurzu vše vyčistit, je odstranit skupinu prostředků, která obsahuje službu Azure Search. Odstraněním skupiny prostředků teď můžete trvale odstranit všechno, co se v ní nachází. Název příslušné skupiny prostředků najdete na portálu na stránce Přehled služby Azure Search.
+
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se seznámili s prohledáváním částečně strukturovaných dat pomocí služby Azure Search a následujícími tématy:
-
-> [!div class="checklist"]
-> * Vytvoření služby Azure Search pomocí rozhraní REST API
-> * Použití služby Azure Search k prohledávání kontejneru
-
-Další informace o vyhledávání najdete na následujícím odkazu.
+Algoritmy využívající AI je možné připojit ke kanálu indexování. Jako další krok pokračujte následujícím kurzem.
 
 > [!div class="nextstepaction"]
 > [Indexování dokumentů ve službě Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)

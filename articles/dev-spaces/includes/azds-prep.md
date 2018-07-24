@@ -11,27 +11,27 @@ ms.date: 05/11/2018
 ms.topic: include
 manager: douge
 ms.openlocfilehash: d44f33b0e9f71c1d8d6e2c9878b08f9fa0e1f8a1
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
-ms.translationtype: MT
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36938168"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38990984"
 ---
-## <a name="preparing-code-for-docker-and-kubernetes-development"></a>Příprava Docker a Kubernetes vývoj kódu
-Pokud máte základní webové aplikace, kterou můžete spustit místně. Budete je nyní containerize vytvořením prostředky, které definují kontejneru aplikace a jak ji nasadí na Kubernetes. Tato úloha je snadné provést prostory Dev Azure: 
+## <a name="preparing-code-for-docker-and-kubernetes-development"></a>Příprava kódu pro vývoj v Dockeru a Kubernetes
+Zatím máte základní webovou aplikaci, kterou můžete spustit místně. Teď ji vytvořením prostředků, které definují kontejner aplikace a způsob nasazení do Kubernetes, kontejnerizujete. Tento úkol snadno provedete v Azure Dev Spaces: 
 
-1. Spusťte VS Code a otevřete `webfrontend` složky. (Zobrazování výzev výchozí přidat prostředky ladění nebo obnovení projektu můžete ignorovat.)
-1. Otevřete integrované terminálu v produktu VS Code (pomocí **zobrazení > integrované Terminálové** nabídky).
-1. Spusťte tento příkaz (ujistěte **webfrontend** je aktuální složku):
+1. Spusťte VS Code a otevřete složku `webfrontend`. (Případné výchozí výzvy ohledně přidání prostředků ladění nebo obnovení projektu můžete ignorovat.)
+1. Otevřete ve VS Code integrovaný terminál (v nabídce **Zobrazení > Integrovaný terminál**).
+1. Spusťte následující příkaz (přesvědčte se, že je aktuálním adresářem **webfrontend**):
 
     ```cmd
     azds prep --public
     ```
 
-Rozhraní příkazového řádku Azure `azds prep` příkaz generuje Docker a Kubernetes prostředky s výchozím nastavením:
-* `./Dockerfile` Popisuje aplikace kontejneru bitové kopie, a jak zdrojový kód je vytvořen a běží v kontejneru.
-* A [Helm grafu](https://docs.helm.sh) pod `./charts/webfrontend` popisuje, jak nasadit kontejner Kubernetes.
+Příkaz Azure CLI `azds prep` vygeneruje prostředky Dockeru a Kubernetes s výchozím nastavením:
+* `./Dockerfile` popisuje image kontejneru aplikace a způsob vytvoření a běhu zdrojového kódu v rámci kontejneru.
+* [Helm chart](https://docs.helm.sh) v `./charts/webfrontend` popisuje, jak do Kubernetes nasadit kontejner.
 
-Zatím není nutné pochopit celý obsah těchto souborů. Je vhodné odkazující na, ale který **stejné Kubernetes a Docker prostředky jako kód konfigurace lze z vývojového prostřednictvím do produkčního prostředí, a zajišťuje tak lepší konzistence různých prostředích.**
+Celému obsahu těchto souborů prozatím rozumět nemusíte. Stojí však za zmínku, že **stejné prostředky konfigurace jako kódu pro Kubernetes a Docker můžete používat v různých fázích od vývoje až po produkci, takže si napříč různými prostředími zajistíte lepší konzistentnost**.
  
-Soubor s názvem `./azds.yaml` je také vygenerované `prep` příkaz a je konfiguračního souboru pro Azure Dev prostory. Doplňuje artefakty Docker a Kubernetes další konfiguraci, která umožňuje iterativní vývojového prostředí v Azure.
+Příkaz `prep` také vygeneruje soubor s názvem `./azds.yaml`, což je konfigurační soubor pro Azure Dev Spaces. Doplňuje artefakty Dockeru a Kubernetes další konfigurací, která v Azure zapne iterativní vývojové prostředí.

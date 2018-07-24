@@ -7,24 +7,22 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 06/07/2018
+ms.date: 07/12/2018
 ms.author: dobett
-ms.openlocfilehash: 3671f63b9e27cb6af55c31e3e61dc6d19932f54c
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 65c10f393efbeaa111e2b413a0568da053c04567
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972909"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39001123"
 ---
-# <a name="quickstart-deploy-a-cloud-based-solution-to-run-a-predictive-maintenance-analysis-on-my-connected-devices"></a>Rychlý start: Nasazení cloudového řešení za účelem spuštění analýzy prediktivní údržby na připojených zařízeních
+# <a name="quickstart-try-a-cloud-based-solution-to-run-a-predictive-maintenance-analysis-on-my-connected-devices"></a>Rychlý start: Vyzkoušení cloudového řešení za účelem spuštění analýzy prediktivní údržby na připojených zařízeních
 
-V tomto rychlém startu se dozvíte, jak nasadit akcelerátor řešení prediktivní údržby Azure IoT, který použijete jako cloudové řešení prediktivní údržby pro zařízení IoT. Po nasazení akcelerátoru řešení spustíte na stránce **řídicího panelu** řešení simulaci pomocí dat leteckého motoru.
+V tomto rychlém startu se dozvíte, jak nasadit akcelerátor řešení prediktivní údržby Azure IoT, abyste mohli spustit cloudovou simulaci prediktivní údržby. Po nasazení akcelerátoru řešení spustíte na stránce **řídicího panelu** řešení analýzu prediktivní údržby u dat ze simulace leteckého motoru. Tento akcelerátor řešení můžete využít jako výchozí bod pro vlastní implementaci nebo jako učební nástroj.
 
-Fabrikam je regionální letecká společnost, která se zaměřuje na pohodlí zákazníků za konkurenční ceny. Jednou z příčin zpoždění letů jsou problémy s údržbou, protože údržba leteckých motorů je velmi náročná. Společnost Fabrikam musí za každou cenu zabránit poruchám motorů během letu, a proto své motory pravidelně kontroluje a plánuje údržbu v souladu s plánem. Letecké motory se ale neopotřebovávají všechny stejně. Některou údržbu motorů není vždy nutné provádět. Naproti tomu se můžou vyskytnout problémy, kvůli kterým musí letadlo zůstat na zemi, dokud není opravené. Pokud je letadlo v místě, kde nejsou k dispozici vhodní technici nebo náhradní díly, pak tyto problémy můžou být zvláště nákladné.
+V simulaci Fabrikam představuje regionální leteckou společnost, která se zaměřuje na pohodlí zákazníků za konkurenční ceny. Jednou z příčin zpoždění letů jsou problémy s údržbou, protože údržba leteckých motorů je velmi náročná. Společnost Fabrikam musí za každou cenu zabránit poruchám motorů během letu, a proto své motory pravidelně kontroluje a plánuje údržbu v souladu s plánem. Letecké motory se ale neopotřebovávají všechny stejně. Některou údržbu motorů není vždy nutné provádět. Naproti tomu se můžou vyskytnout problémy, kvůli kterým musí letadlo zůstat na zemi, dokud není opravené. Pokud je letadlo v místě, kde nejsou k dispozici vhodní technici nebo náhradní díly, pak tyto problémy můžou být zvláště nákladné.
 
 Motory letadel společnosti Fabrikam jsou vybaveny snímači, které monitorují stav motoru během letu. Z údajů o provozu a selháních motorů nashromážděných za mnoho let analytici společnosti Fabrikam vytvořili model, který předpovídá zbývající dobu životnosti (RUL) leteckého motoru. Tento model využívá korelaci mezi daty ze čtyř snímačů v motoru a opotřebením motoru, které vede k jeho případnému selhání. I když společnost Fabrikam stále provádí pravidelné kontroly k zajištění bezpečnosti, může pomocí modelu vypočítat zbývající životnost jednotlivých motorů po každém letu. Společnost Fabrikam nyní může předvídat budoucí riziková místa a tím minimalizovat prostoje letadel a snižovat provozní náklady a současně zajistit bezpečnost cestujících i posádek.
-
-## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto rychlého startu potřebujete aktivní předplatné Azure.
 
@@ -40,9 +38,9 @@ Klikněte na **Vyzkoušejte** na dlaždici **Prediktivní údržba**.
 
 ![Volba dlaždice Prediktivní údržba](./media/quickstart-predictive-maintenance-deploy/predictivemaintenance.png)
 
-Na stránce **vytvoření řešení prediktivní údržby** zadejte jedinečný **název řešení** pro akcelerátor řešení prediktivní údržby.
+Na stránce **vytvoření řešení prediktivní údržby** zadejte jedinečný **název řešení** pro akcelerátor řešení prediktivní údržby. Pro účely tohoto rychlého startu používáme název **MyPredictiveMaintenance**.
 
-Vyberte **Předplatné** a **Oblast**, které chcete při nasazování akcelerátoru řešení použít. Obvykle byste měli zvolit oblast, která je vám nejblíže. V předplatném musíte být [globálním správcem nebo uživatelem](iot-accelerators-permissions.md).
+Vyberte **Předplatné** a **Oblast**, které chcete při nasazování akcelerátoru řešení použít. Obvykle byste měli zvolit oblast, která je vám nejblíže. V tomto rychlém startu používáme možnosti **Visual Studio Enterprise** a **Východní USA**. V předplatném musíte být [globálním správcem nebo uživatelem](iot-accelerators-permissions.md).
 
 Kliknutím na **Vytvořit řešení** zahájíte nasazování. Dokončení tohoto procesu trvá minimálně pět minut:
 
@@ -50,7 +48,7 @@ Kliknutím na **Vytvořit řešení** zahájíte nasazování. Dokončení tohot
 
 ## <a name="sign-in-to-the-solution"></a>Přihlášení k řešení
 
-Po dokončení nasazení do předplatného Azure se můžete přihlásit k řídicímu panelu akcelerátoru řešení prediktivní údržby.
+Po dokončení nasazení předplatného Azure se na dlaždici řešení zobrazí zelené zaškrtnutí a **Připraveno**. Nyní se můžete přihlásit k řídicímu panelu akcelerátoru řešení prediktivní údržby.
 
 Na stránce **Zřízená řešení** klikněte na nový akcelerátor řešení prediktivní údržby. Na panelu, který se zobrazí, si můžete prohlédnout informace o akcelerátoru řešení. Zvolte **Řídicí panel řešení** a zobrazte akcelerátor řešení prediktivní údržby:
 
@@ -78,7 +76,7 @@ Simulaci lze zastavit v libovolný okamžik, ale kliknutím na tlačítko **Star
 
 Pokud chcete pokračovat v prozkoumávání, ponechte akcelerátor řešení prediktivní údržby nasazený.
 
-Pokud už akcelerátor řešení nepotřebujete, odstraňte ho na stránce [Zřízená řešení](https://www.azureiotsolutions.com/Accelerators#dashboard):
+Pokud už akcelerátor řešení nepotřebujete, odstraňte ho na stránce [Zřízená řešení](https://www.azureiotsolutions.com/Accelerators#dashboard) tak, že ho vyberete a pak kliknete na **Odstranit řešení**:
 
 ![Odstranění řešení](media/quickstart-predictive-maintenance-deploy/deletesolution.png)
 
@@ -86,7 +84,7 @@ Pokud už akcelerátor řešení nepotřebujete, odstraňte ho na stránce [Zř�
 
 V tomto rychlém startu jste nasadili akcelerátor řešení prediktivní údržby a spustili jste simulaci.
 
-Další informace o akcelerátoru řešení najdete v následujícím článku.
+Další informace o akcelerátoru řešení a simulovaných leteckých motorech najdete v následujícím článku.
 
 > [!div class="nextstepaction"]
 > [Přehled akcelerátorů řešení prediktivní údržby](iot-accelerators-predictive-walkthrough.md)

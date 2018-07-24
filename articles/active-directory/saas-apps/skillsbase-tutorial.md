@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2018
+ms.date: 07/20/2018
 ms.author: jeedes
-ms.openlocfilehash: 84aac0017496c50f0006fd6e184537e4c14f10c7
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: e11ba8ca9c4ad17b2ade909bb474ad2d1fcf4410
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39059442"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205370"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skills-base"></a>Kurz: Integrace Azure Active Directory se službou základní dovednosti
 
@@ -110,7 +110,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://app.skills-base.com/o/<customer-unique-key>`
 
     > [!NOTE] 
-    > Hodnota přihlašovací adresa URL není skutečný. Aktualizujte příslušnou hodnotu skutečné přihlašovací adresa URL. Kontakt [tým podpory klienta základní dovednosti](mailto:support@skills-base.com) má být získána hodnota.
+    > Z aplikace základní dovednosti můžete získat adresu URL přihlašování. Prosím přihlášení jako správce a přejděte na správu -> Nastavení -> Instance podrobnosti -> místní odkaz. Zkopírujte adresu URL přihlašování a vložte ji vyšší než textovém poli.
 
 4. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor metadat ve vašem počítači.
 
@@ -141,7 +141,6 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     b. Klikněte na **Uložit**.
     
-
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
 Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
@@ -179,7 +178,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 Cílem této části je vytvořte uživatele Britta Simon v základní dovednosti. Základní znalosti podporuje just-in-time zřizování, který je ve výchozím nastavení povolená. Neexistuje žádná položka akce pro vás v této části. Nový uživatel se vytvoří během pokusu o přístup k základní dovednosti, pokud ještě neexistuje.
 
 >[!Note]
->Pokud je potřeba ručně vytvořit uživatele, obraťte se na [tým podpory klienta základní dovednosti](mailto:support@skills-base.com).
+>Pokud je potřeba ručně vytvořit uživatele, postupujte podle pokynů [tady](http://wiki.skills-base.net/index.php?title=Adding_people_and_enabling_them_to_log_in).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 

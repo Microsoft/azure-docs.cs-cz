@@ -8,14 +8,14 @@ ms.service: managed-applications
 ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
-ms.date: 04/13/2018
+ms.date: 07/11/2018
 ms.author: tomfitz
-ms.openlocfilehash: d87b27101b5bbb3fb589987865649e102d7835de
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 628a936d85eb94a1ee332205047527b0f9795d50
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34639203"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38990510"
 ---
 # <a name="azure-managed-applications-overview"></a>Přehled spravovaných aplikací Azure
 
@@ -25,7 +25,7 @@ Spravovaná aplikace se podobá šabloně řešení v Marketplace, ale s jedním
 
 ## <a name="advantages-of-managed-applications"></a>Výhody spravovaných aplikací
 
-Spravované aplikace usnadňují zákazníkům používání vašich řešení. Zákazníci díky tomu nepotřebují mít k používání vašeho řešení zkušenosti s cloudovou infrastrukturou. Zákazníci mají omezený přístup ke kriticky důležitým prostředkům. Nemusejí se obávat, že při jejich správě udělají chybu. 
+Spravované aplikace usnadňují zákazníkům používání vašich řešení. Zákazníci díky tomu nepotřebují mít k používání vašeho řešení zkušenosti s cloudovou infrastrukturou. Zákazníci mají omezený přístup ke kriticky důležitým prostředkům. Nemusí se obávat, že při jejich správě udělají chybu. 
 
 Spravované aplikace vám umožňují vytvořit si se zákazníky dlouhodobý vztah. Vy určujete podmínky správy aplikace a všechny platby se zpracovávají prostřednictvím fakturace v Azure.
 
@@ -41,7 +41,7 @@ Spravovanou aplikaci můžete publikovat externě nebo interně.
 
 ### <a name="service-catalog"></a>Katalog služeb
 
-Katalog služeb je interní katalog schválených řešení určených pro uživatele v rámci organizace. Katalog slouží k zajištění dodržování určitých standardů organizace při poskytování řešení pro organizaci. Zaměstnanci najdou v katalogu bohatou nabídku aplikací doporučených a schválených jejich oddělením IT. Zobrazují se jim spravované aplikace, které s nimi sdílejí jiní lidé z jejich organizace.
+Katalog služeb je interní katalog schválených řešení určených pro uživatele v rámci organizace. Katalog slouží k zajištění dodržování určitých standardů organizace při poskytování řešení pro organizaci. Zaměstnanci v katalogu najdou aplikace doporučené a schválené oddělením IT. Zobrazují se jim spravované aplikace, které s nimi sdílejí jiní lidé z jejich organizace.
 
 Informace o publikování spravované aplikace v katalogu služeb najdete v článku [Vytvoření aplikace katalogu služeb](publish-service-catalog-app.md).
 
@@ -70,6 +70,10 @@ Zákazník má k této skupině prostředků plný přístup a používá ji ke 
 Tato skupina prostředků obsahuje všechny prostředky, které spravovaná aplikace potřebuje. Tato skupina prostředků třeba obsahuje virtuální počítače, účty úložiště a virtuální sítě pro dané řešení. Zákazník má k této skupině prostředků omezený přístup, protože nespravuje jednotlivé prostředky spravované aplikace. Přístup vydavatele k této skupině prostředků odpovídá roli stanovené v definici spravované aplikace. Vydavatel si může pro tuto skupinu prostředků vyžádat třeba roli vlastníka nebo přispěvatele.
 
 Když zákazník spravovanou aplikaci odstraní, dojde i k odstranění spravované skupiny prostředků.
+
+## <a name="azure-policy"></a>Azure Policy
+
+Na spravovanou aplikaci můžete použít zásady [Azure Policy](../azure-policy/azure-policy-introduction.md). Zásady se používají k zajištění, že nasazené instance vaší spravované aplikace jsou v souladu s požadavky na data a zabezpečení. Pokud aplikace pracuje s citlivými daty, nezapomeňte vyhodnotit, jak by se měly chránit. Například pokud aplikace pracuje s daty z Office 365, použijte zásadu, abyste měli jistotu, že je šifrování dat zapnuté.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,22 +1,22 @@
 ---
 title: Kurz indexování databází Azure SQL ve službě Azure Search | Dokumentace Microsoftu
-description: Procházejte databázi Azure SQL, extrahujte prohledávatelná data a naplňte jimi index služby Azure Search.
+description: V tomto kurzu projdete databázi Azure SQL, extrahujete prohledávatelná data a naplníte jimi index služby Azure Search.
 author: HeidiSteen
 manager: cgronlun
 services: search
 ms.service: search
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/10/2017
+ms.date: 07/10/2018
 ms.author: heidist
-ms.openlocfilehash: abf121ec369d84dd307416d2c08971d9096de4a8
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: b40d3a74904d6814eb01b5d41d10632e8c9af5be
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31799511"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38988791"
 ---
-# <a name="how-to-crawl-an-azure-sql-database-using-azure-search-indexers"></a>Procházení databáze Azure SQL pomocí indexerů Azure Search
+# <a name="tutorial-crawl-an-azure-sql-database-using-azure-search-indexers"></a>Kurz: Procházení databáze Azure SQL pomocí indexerů Azure Search
 
 V tomto kurzu se dozvíte, jak nakonfigurovat indexer pro extrahování prohledávatelných dat z ukázkové databáze Azure SQL. [Indexery](search-indexer-overview.md) jsou součástí služby Azure Search, které procházejí externí zdroje dat a naplňují [index vyhledávání](search-what-is-an-index.md) obsahem. Ze všech indexerů je nejpoužívanější indexer pro databázi Azure SQL. 
 
@@ -33,9 +33,9 @@ V tomto kurzu pomocí [klientských knihoven Azure Search pro .NET](https://aka.
 > * Prohledání indexu
 > * Zobrazení konfigurace indexeru na portálu
 
-## <a name="prerequisites"></a>Požadavky
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-* Aktivní účet Azure. Pokud žádný nemáte, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/free/). 
+## <a name="prerequisites"></a>Požadavky
 
 * Služba Azure Search. Nápovědu k jejímu nastavení najdete v tématu [Vytvoření vyhledávací služby](search-create-service-portal.md).
 
@@ -269,21 +269,14 @@ Všechny indexery, včetně toho, který jste právě vytvořili prostřednictv�
 
   ![Dlaždice Indexery a Zdroje dat](./media/search-indexer-tutorial/tiles-portal.png)
 
+
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud nebudete tyto služby nadále používat, pomocí tohoto postupu odstraňte všechny prostředky vytvořené v rámci tohoto kurzu na webu Azure Portal. 
-
-1. V nabídce vlevo na portálu Azure Portal klikněte na **Skupiny prostředků** a pak klikněte na název vytvořeného prostředku. 
-2. Na stránce skupiny prostředků klikněte na **Odstranit skupinu prostředků**, do textového pole zadejte prostředek, který chcete odstranit, a pak klikněte na **Odstranit**.
+Nejrychlejší způsob, jak po kurzu vše vyčistit, je odstranit skupinu prostředků, která obsahuje službu Azure Search. Odstraněním skupiny prostředků teď můžete trvale odstranit všechno, co se v ní nachází. Název příslušné skupiny prostředků najdete na portálu na stránce Přehled služby Azure Search.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o úlohy specifické pro ostatní podporované zdroje dat najdete v následujících článcích:
+Algoritmy využívající AI je možné připojit ke kanálu indexování. Jako další krok pokračujte následujícím kurzem.
 
-* [Azure SQL Database nebo SQL Server na virtuálním počítači Azure](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-* [Azure Cosmos DB](search-howto-index-cosmosdb.md)
-* [Azure Table Storage](search-howto-indexing-azure-tables.md)
-* [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
-* [Indexování objektů blob CSV pomocí indexeru Azure Search Blob](search-howto-index-csv-blobs.md)
-* [Indexování objektů blob JSON pomocí indexeru Azure Search Blob](search-howto-index-json-blobs.md)
-
+> [!div class="nextstepaction"]
+> [Indexování dokumentů ve službě Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)

@@ -1,6 +1,6 @@
 ---
-title: Visual vytváření obsahu v Azure Data Factory | Microsoft Docs
-description: Další informace o použití visual vytváření obsahu v Azure Data Factory
+title: Vizuální vytváření obsahu v Azure Data Factory | Dokumentace Microsoftu
+description: Další informace o použití vizuálního vytváření ve službě Azure Data Factory
 services: data-factory
 documentationcenter: ''
 author: sharonlo101
@@ -13,114 +13,114 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/01/2018
 ms.author: shlo
-ms.openlocfilehash: a7efe75507fad8e0391f9ad433ba416ed771063b
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 655a6ab2960047cde50bec2953015283ca8577f0
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265284"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214846"
 ---
-# <a name="visual-authoring-in-azure-data-factory"></a>Visual vytváření obsahu v Azure Data Factory
-Azure Data Factory uživatelské rozhraní prostředí (UX) umožňuje vizuálně vytvořit a nasadit prostředky pro vytváření dat bez nutnosti psaní jakéhokoli kódu. Můžete přetáhněte na plátno kanálu aktivity, proveďte test spustí, interaktivně, ladění a nasadit a monitorovat běží vaše kanálu. Pro použití uživatelského k provedení visual vytváření dvěma způsoby:
+# <a name="visual-authoring-in-azure-data-factory"></a>Vizuální vytváření obsahu v Azure Data Factory
+Azure Data Factory uživatelské rozhraní rozhraní (UX) umožňuje vizuálně vytvoříte a nasadíte prostředky pro službu data factory bez nutnosti psát jakýkoli kód. Můžete přetáhnout aktivity na plátno kanálu, provádějte testovací běhy, využívejte iterativní ladění a nasadit a monitorovat spuštění kanálů. Existují dvě metody pro provádění vizuálního vytváření pomocí uživatelského rozhraní:
 
-- Vytvořit přímo ve službě Data Factory.
-- Autor integrace Gitu Visual Studio Team Services (VSTS) pro spolupráci, Správa zdrojového kódu a správa verzí.
+- Autor přímo ve službě Data Factory.
+- Autor integrace Visual Studio Team Services (VSTS) Git pro spolupráci, správy zdrojového kódu nebo Správa verzí.
 
-## <a name="author-directly-with-the-data-factory-service"></a>Vytvořit přímo ve službě Data Factory
-Visual vytváření obsahu pomocí služby Data Factory se liší od visual vytváření obsahu pomocí služby VSTS dvěma způsoby:
+## <a name="author-directly-with-the-data-factory-service"></a>Autor přímo ve službě Data Factory
+Vizuální vytváření obsahu pomocí služby Data Factory se liší od vizuálním vytváření s VSTS dvěma způsoby:
 
-- Služba Data Factory neobsahuje úložiště pro ukládání entity JSON pro změny.
-- Služba Data Factory není optimalizována pro spolupráci nebo Správa verzí.
+- Služba Data Factory neobsahuje úložiště pro ukládání entity JSON pro vaše změny.
+- Služba Data Factory není optimalizovaná pro spolupráci a správu verzí.
 
-![Konfigurovat službu Data Factory ](media/author-visually/configure-data-factory.png)
+![Konfigurace služby Data Factory ](media/author-visually/configure-data-factory.png)
 
-Při použití uživatelského **vytváření plátno** k vytváření přímo se službou Data Factory, jenom **publikovat všechny** režim je k dispozici. Veškeré změny, které provedete jsou publikovány přímo ke službě Data Factory.
+Při použití uživatelského rozhraní **plátno pro vytváření obsahu** vytvořit přímo ve službě Data Factory, pouze **Publikovat vše** režim je k dispozici. Všechny změny, které provedete, se publikují přímo do služby Data Factory.
 
 ![Režim publikování](media/author-visually/data-factory-publish.png)
 
-## <a name="author-with-vsts-git-integration"></a>Autor s integrací služby VSTS Git
-Vytváření Visual s integrací služby VSTS Git podporuje zdrojového kódu a spolupráce for work v objektu pro vytváření datových kanálů. Objekt pro vytváření dat můžete přidružit účet úložiště služby VSTS Git pro řízení zdrojů, spolupráce, Správa verzí a tak dále. Jeden účet služby VSTS Git může mít několik úložiště, ale úložiště Git služby VSTS může být přidružen pouze jeden datový objekt pro vytváření. Pokud nemáte účet služby VSTS nebo úložiště, postupujte podle [tyto pokyny](https://docs.microsoft.com/vsts/accounts/create-account-msa-or-work-student) k vytvoření vašich prostředků.
+## <a name="author-with-vsts-git-integration"></a>Vytváření s využitím integrace VSTS Git
+Pro práci na vaše kanály data factory vizuálním vytváření s využitím integrace VSTS Git podporuje správu zdrojového kódu a spolupráci. Datové továrny můžete přidružit účet úložiště VSTS Git pro správy zdrojového kódu, spolupráci, správu verzí a tak dále. Jeden účet úložiště VSTS Git můžete mít více úložišť, ale může být přidružený pouze jeden datový objekt pro vytváření úložiště VSTS Git. Pokud nemáte účet VSTS nebo úložišti, postupujte podle [tyto pokyny](https://docs.microsoft.com/vsts/accounts/create-account-msa-or-work-student) k vytvoření vašich prostředků.
 
 > [!NOTE]
-> Soubory skriptu a data můžete ukládat v úložišti služby VSTS GIT. Ale budete muset ručně odeslat soubory do úložiště Azure. Objekt pro vytváření dat kanál nebyl automaticky odeslán skriptu nebo datové soubory uložené v úložišti GIT služby VSTS do služby Azure Storage.
+> Skript a datových souborů můžete uložit v úložišti GIT služby VSTS. Ale budete muset ručně nahrání souborů do služby Azure Storage. Kanál služby Data Factory není automaticky odeslat soubory skriptu nebo data uložená v úložišti GIT služby VSTS do služby Azure Storage.
 
-### <a name="configure-a-vsts-git-repository-with-azure-data-factory"></a>Konfigurace úložiště Git služby VSTS s Azure Data Factory
-Úložiště GIT služby VSTS můžete nakonfigurovat pomocí služby data factory pomocí dvou metod.
+### <a name="configure-a-vsts-git-repository-with-azure-data-factory"></a>Konfigurace úložiště VSTS Git s Azure Data Factory
+Úložiště VSTS GIT můžete nakonfigurovat pomocí služby data factory pomocí dvou metod.
 
-#### <a name="method1"></a> Metoda konfigurace 1: Pojďme stránku Začínáme
+#### <a name="method1"></a> Metoda konfigurace 1: Stránka Začínáme
 
-V Azure Data Factory, přejděte do **můžeme začít** stránky. Vyberte **konfigurace úložiště kódu**:
+Ve službě Azure Data Factory, přejděte **pusťme se do práce** stránky. Vyberte **konfigurace úložiště kódu**:
 
-![Konfigurace úložiště služby VSTS kódu](media/author-visually/configure-repo.png)
+![Konfigurace úložiště kódu VSTS](media/author-visually/configure-repo.png)
 
-**Nastavení úložiště** se zobrazí v podokně Konfigurace:
+**Nastavení úložiště** otevře se podokno konfigurace:
 
 ![Konfigurovat nastavení úložiště kódu](media/author-visually/repo-settings.png)
 
-V podokně se zobrazují následující kód služby VSTS nastavení úložiště:
+V podokně se zobrazí nastavení úložiště VSTS následovně:
 
 | Nastavení | Popis | Hodnota |
 |:--- |:--- |:--- |
-| **Typ úložiště** | Typ úložiště služby VSTS kódu.<br/>**Poznámka:**: Githubu se aktuálně nepodporuje. | Visual Studio Team Services Git |
-| **Azure Active Directory** | Název vašeho klienta Azure AD. | <your tenant name> |
-| **Visual Studio Team Services účtu** | Název účtu služby VSTS. Můžete vyhledat název účtu služby VSTS v `https://{account name}.visualstudio.com`. Můžete [přihlásit ke svému účtu služby VSTS](https://www.visualstudio.com/team-services/git/) přístup váš profil Visual Studio a zobrazit projekty a úložiště. | <your account name> |
-| **ProjectName** | Služby VSTS název projektu. Můžete vyhledat název projektu služby VSTS v `https://{account name}.visualstudio.com/{project name}`. | <your VSTS project name> |
-| **RepositoryName** | Název vaší služby VSTS kód úložiště. Služby VSTS projekty obsahují úložiště Git ke správě zdrojového kódu s růstem projektu. Můžete vytvořit nové úložiště, nebo použití existující úložiště, který už v projektu. | <your VSTS code repository name> |
-| **Větev spolupráce** | Větev vaší služby VSTS spolupráce, který se použije pro publikování. Ve výchozím nastavení, je `master`. Toto nastavení změňte v případě, že chcete publikovat prostředky z jiné větve. | <your collaboration branch name> |
-| **Kořenová složka** | Kořenové složky v služby VSTS spolupráce větev. | <your root folder name> |
-| **Import existujících prostředků pro vytváření dat do úložiště** | Určuje, zda chcete importovat existující objekt pro vytváření zdroje dat z uživatelského **vytváření plátno** do úložiště Git služby VSTS. Vyberte pole pro import vašich prostředků objekt pro vytváření dat do úložiště Git přidruženého ve formátu JSON. Tato akce exportuje každého prostředku jednotlivě (to znamená, propojené služby a datové sady exportují do samostatné JSONs). Pokud není toto políčko zaškrtnuto, nebudou importovány existující prostředky. | Vybrané (výchozí) |
+| **Typ úložiště** | Typ úložištěm kódu VSTS.<br/>**Poznámka:**: GitHub v tuto chvíli nepodporuje. | Visual Studio Team Services Git |
+| **Azure Active Directory** | Název tenanta Azure AD. | <your tenant name> |
+| **Účet služby Visual Studio Team Services** | Název účtu VSTS. Můžete najít název účtu VSTS na `https://{account name}.visualstudio.com`. Je možné [přihlásit ke svému účtu VSTS](https://www.visualstudio.com/team-services/git/) pro přístup k profilu Visual Studio a zobrazit projekty a úložiště. | <your account name> |
+| **ProjectName** | Název projektu VSTS. Můžete najít na název projektu VSTS `https://{account name}.visualstudio.com/{project name}`. | <your VSTS project name> |
+| **RepositoryName** | Název úložiště kódu VSTS. Úložiště Git pro správu zdrojového kódu, jak se projekt rozrůstá obsahují projekty VSTS. Můžete vytvořit nové úložiště nebo použít existující úložiště, který je již ve vašem projektu. | <your VSTS code repository name> |
+| **Spolupráce větve** | Větvi VSTS spolupráci, které se použije pro publikování. Ve výchozím nastavení je to `master`. Toto nastavení změňte v případě, že chcete publikovat prostředky z jiné větve. | <your collaboration branch name> |
+| **Kořenová složka** | Kořenové složky ve vaší větvi spolupráci VSTS. | <your root folder name> |
+| **Importovat do úložiště stávající prostředky Data Factory** | Určuje, jestli se má naimportovat stávající prostředky data factory z uživatelského rozhraní **plátno pro vytváření obsahu** do úložiště VSTS Git. Vyberte pole pro import prostředky data factory do přidružené úložiště Git ve formátu JSON. Tato akce exportuje každého prostředku zvlášť (to znamená, propojené služby a datové sady se exportují do samostatných JSONs). Když toto políčko není zaškrtnuto, nenaimportují se existující prostředky. | Vybrané (výchozí) |
 
-#### <a name="configuration-method-2-ux-authoring-canvas"></a>Metoda konfigurace 2: UX vytváření plátno
-V Azure Data Factory UX **vytváření plátno**, vyhledejte datovou továrnu. Vyberte **Data Factory** rozevírací nabídce a potom vyberte **konfigurace úložiště kódu**.
+#### <a name="configuration-method-2-ux-authoring-canvas"></a>Metoda konfigurace 2: UX plátno pro vytváření obsahu
+V uživatelském prostředí Azure Data Factory **plátno pro vytváření obsahu**, vyhledejte svou datovou továrnu. Vyberte **služby Data Factory** rozevírací nabídky a pak vyberte **konfigurace úložiště kódu**.
 
-Zobrazí se podokno konfigurace. Podrobnosti o nastavení konfigurace najdete v tématu popisů v <a href="#method1">metoda konfigurace 1</a>.
+Otevře se podokno konfigurace. Podrobnosti o nastavení konfigurace najdete v popisech v <a href="#method1">metody konfigurace 1</a>.
 
-![Konfigurovat nastavení úložiště kódu UX pro vytváření obsahu](media/author-visually/configure-repo-2.png)
+![Konfigurovat nastavení úložiště kódu pro vytváření uživatelského rozhraní](media/author-visually/configure-repo-2.png)
 
-#### <a name="switch-to-a-different-git-repo"></a>Přepnout na jiný úložiště Git
+#### <a name="switch-to-a-different-git-repo"></a>Přepnout na jiné úložiště Git
 
-Přepnout na jiný úložiště Git, vyhledejte na ikonu v pravém horním rohu stránky přehled objektu pro vytváření dat, jak je znázorněno na následujícím snímku obrazovky. Pokud nevidíte ikonu, vymažte mezipaměť místní prohlížeče. Vyberte ikonu k odstranění přidružení s aktuální úložišti.
+Přepnout na jiné úložiště Git, vyhledejte ikonu v pravém horním rohu na stránce Přehled služby Data Factory, jak je znázorněno na následujícím snímku obrazovky. Pokud nevidíte ikonu, vymažte mezipaměť místní prohlížeče. Vyberte ikonu a odebere přidružení aktuální úložiště.
 
-Po odebrání přidružení k aktuální úložišti, můžete nakonfigurovat nastavení Git na použití různých úložišti. Pak můžete importovat existující prostředky pro vytváření dat do nového úložiště.
+Po odebrání přidružení k aktuální úložiště, můžete nakonfigurovat nastavení Git použít jiné úložiště. Pak můžete importovat stávající prostředky Data Factory do nového úložiště.
 
-![Odeberte přidružení k aktuální úložiště Git.](media/author-visually/remove-repo.png)
+![Odebere přidružení aktuálního úložiště Git.](media/author-visually/remove-repo.png)
 
-### <a name="use-version-control"></a>Použití správy verzí
-Systémy kontroly verze (také označované jako _ovládací prvek zdroje_) mohli spolupracovat na kód a sledovat změny, které jsou vytvářeny pomocí kódu základní vývojáři. Správa zdrojového kódu je základní nástroj pro projekty více vývojáři.
+### <a name="use-version-control"></a>Správa verzí
+Systémy správy verzí (označované také jako _správy zdrojového kódu_) umožňují vývojářům spolupráce na kódu a sledování změn provedených na kód základní. Správy zdrojového kódu je to důležitý nástroj pro vývojáře více projekty.
 
-Má každý úložiště Git služby VSTS, který je spojen s objekt pro vytváření dat spolupráce větev. (`master` je výchozí větev spolupráce). Uživatelé mohou také vytvářet funkce větví kliknutím **+ nové větve** a vývoj v větví funkce.
+Každé úložiště VSTS Git, který je spojen s data factory má větev spolupráci. (`master` je výchozím nastavení spolupráci větev). Uživatelé mohou také vytvářet větve funkcí kliknutím **+ novou větev** a vývoj v větve funkcí.
 
-![Změnit kód tak, že synchronizace nebo publikování](media/author-visually/sync-publish.png)
+![Změnit kód synchronizace nebo publikování](media/author-visually/sync-publish.png)
 
-Až budete připravení s vývojem pro funkce v větev funkci, kliknutí na tlačítko **vytvořit žádost o přijetí změn**. Tím přejdete do služby VSTS GIT, kde můžete zvýšit vyžádání požadavků, kód recenze a sloučit změny do svojí větve spolupráce. (`master` je výchozí nastavení). Jsou povoleny pouze k publikování do služby Data Factory z vaší větve spolupráce. 
+Jakmile budete připraveni s vývojem pro funkce ve vaší větvi funkce, můžete kliknout na **vytvořit žádost o přijetí změn**. Tím přejdete na VSTS GIT, kde můžete zvýšit o přijetí změn požadavků, revizemi kódu, a sloučit změny do větve spolupráci. (`master` je výchozí nastavení). Jsou povoleny pouze pro publikování do služby Data Factory ze své větve spolupráci. 
 
-![Vytvoření nové žádosti o přijetí změn](media/author-visually/create-pull-request.png)
+![Vytvořte novou žádost o přijetí změn](media/author-visually/create-pull-request.png)
 
 #### <a name="publish-code-changes"></a>Publikování změn kódu
-Po mít sloučit změny do větve spolupráce (`master` je výchozí nastavení), vyberte **publikovat** Ruční publikování změn kódu v hlavní větvi ke službě Data Factory.
+Poté, co mají sloučit změny do větve spolupráce (`master` je výchozí nastavení), vyberte **publikovat** ručního publikování změn kódu v hlavní větvi do služby Data Factory.
 
-![Publikování změn do služby Data Factory](media/author-visually/publish-changes.png)
+![Publikujte změny do služby Data Factory](media/author-visually/publish-changes.png)
 
 > [!IMPORTANT]
-> Hlavní větve se nemusí shodovat s co je nasazen ve službě Data Factory. Hlavní větve *musí* ke službě Data Factory publikovat ručně.
+> Hlavní větev se nemusí shodovat s co je nasazená ve službě Data Factory. V hlavní větvi *musí* ručně publikovat do služby Data Factory.
 
-## <a name="use-the-expression-language"></a>Použití výrazu jazyka
-Výrazy pro hodnoty vlastností můžete zadat pomocí výrazu jazyka, která je podporována službou Azure Data Factory. 
+## <a name="use-the-expression-language"></a>Použijte jazyk výrazů
+Výrazy pro hodnoty vlastnosti můžete určit pomocí výrazů jazyka, který je podporovaný službou Azure Data Factory. 
 
-Zadejte výrazy pro hodnoty vlastností výběrem **přidat dynamického obsahu**:
+Zadejte výrazy pro hodnoty vlastnosti tak, že vyberete **Přidání dynamického obsahu**:
 
-![Použití výrazu jazyka](media/author-visually/dynamic-content-1.png)
+![Použijte jazyk výrazů](media/author-visually/dynamic-content-1.png)
 
-## <a name="use-functions-and-parameters"></a>Použití funkcí a parametry
+## <a name="use-functions-and-parameters"></a>Pomocí služby functions a parametry
 
-Můžete použít funkce nebo zadejte parametry pro kanálů a datové sady v datové továrně **Tvůrce**:
+Můžete použít funkce nebo zadejte parametry pro kanálů a datových sad v datové továrně **Tvůrce výrazů**:
 
-Informace o podporovaných výrazech naleznete v tématu [výrazy a funkce v Azure Data Factory](control-flow-expression-language-functions.md).
+Informace o podporovaných výrazů naleznete v tématu [výrazům a funkcím ve službě Azure Data Factory](control-flow-expression-language-functions.md).
 
-![Přidejte dynamický obsah](media/author-visually/dynamic-content-2.png)
+![Přidat dynamický obsah](media/author-visually/dynamic-content-2.png)
 
 ## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
-Vyberte **zpětné vazby** komentář o funkcí nebo oznámení o problémech s nástrojem Microsoft:
+Vyberte **zpětnou vazbu** komentovat funkcí nebo oznámení o problémech s nástrojem Microsoft:
 
 ![Váš názor](media/author-visually/provide-feedback.png)
 

@@ -9,18 +9,16 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 07/05/2018
 ms.author: dobett
-ms.openlocfilehash: f3a252d6f7c49a65e0c548599b1958825b134ee8
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: fd4a637ebb05493bf0c0a940c3ff0cb56ad94c54
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37966897"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39005029"
 ---
 # <a name="quickstart-deploy-and-run-a-cloud-based-device-simulation-solution"></a>Rychlý start: Nasazení a spuštění cloudového řešení simulace zařízení
 
 V tomto rychlém startu se dozvíte, jak nasadit akcelerátor řešení simulace zařízení Azure IoT pro účely testování řešení IoT. Po nasazení akcelerátoru řešení na stránce **Simulace** vytvoříte a spustíte simulaci.
-
-## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto rychlého startu potřebujete aktivní předplatné Azure.
 
@@ -88,7 +86,7 @@ Z každé zřízené instance akcelerátoru řešení můžete spustit pouze jed
 
 Pokud chcete pokračovat v prozkoumávání, ponechte akcelerátor řešení simulace zařízení nasazený.
 
-Pokud už akcelerátor řešení nepotřebujete, odstraňte ho na stránce [Zřízená řešení](https://www.azureiotsolutions.com/Accelerators#dashboard):
+Pokud už akcelerátor řešení nepotřebujete, odstraňte ho na stránce [Zřízená řešení](https://www.azureiotsolutions.com/Accelerators#dashboard) tak, že ho vyberete a pak kliknete na **Odstranit řešení**:
 
 ![Odstranění řešení](media/quickstart-device-simulation-deploy/deletesolution.png)
 
@@ -96,7 +94,7 @@ Pokud už akcelerátor řešení nepotřebujete, odstraňte ho na stránce [Zř�
 
 V tomto rychlém startu jste nasadili akcelerátor řešení simulace zařízení a spustili jste simulaci zařízení IoT.
 
-Informace o tom, jak v simulaci použít stávající službu IoT Hub, najdete v této příručce:
+Informace o tom, jak v simulaci použít stávající IoT Hub, najdete v této příručce:
 
 > [!div class="nextstepaction"]
 > [Použití stávajícího centra IoT s akcelerátorem řešení simulace zařízení](iot-accelerators-device-simulation-choose-hub.md)

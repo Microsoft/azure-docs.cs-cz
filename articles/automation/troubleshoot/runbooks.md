@@ -4,16 +4,16 @@ description: Zjistěte, jak řešit problémy pomocí runbooků Azure Automation
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 06/19/2018
+ms.date: 07/13/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: b96d723f6c7ca423343c0586f59770abb55ada9f
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
-ms.translationtype: HT
+ms.openlocfilehash: 286a777e16dea72e38b316e86ba57e1811888eec
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37929345"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044862"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Řešení potíží s runbooky
 
@@ -95,6 +95,31 @@ Pomocí rutin modelu nasazení Azure classic pomocí certifikátu, najdete v té
 
 ## <a name="common-errors-when-working-with-runbooks"></a>Běžné chyby při práci s runbooky
 
+### <a name="not-recognized-as-cmdlet"></a>Scénář: Sada runbook selže z důvodu chybějící rutiny
+
+#### <a name="issue"></a>Problém
+
+Vaše sada runbook selže s chybou podobně jako v následujícím příkladu:
+
+```
+The term 'Connect-AzureRmAccount' is not recognized as the name of a cmdlet, function, script file, or operable program.  Check the spelling of the name, or if the path was included verify that the path is correct and try again.
+```
+
+#### <a name="cause"></a>Příčina
+
+Tato chyba může být způsobeno z následujících důvodů:
+
+1. Modul, který obsahuje rutinu není importován do účtu automation
+2. Containg modulu rutiny importu, ale je zastaralá
+
+#### <a name="resolution"></a>Řešení
+
+Tuto chybu lze vyřešit provedením jedné z následujících úloh:
+
+Pokud modul je modul služby Azure, přečtěte si téma [aktualizace modulů Azure Powershellu ve službě Azure Automation](../automation-update-azure-modules.md) informace o aktualizaci modulů ve vašem účtu automation.
+
+Pokud je samostatný modul, zkontrolujte modulu v naimportovat do svého účtu služby Automation.
+
 ### <a name="job-attempted-3-times"></a>Scénář: Spuštění úlohy sady runbook došlo k pokusu o třikrát po sobě, ale její spuštění pokaždé, když se nezdařilo
 
 #### <a name="issue"></a>Problém
@@ -121,7 +146,7 @@ Některé z následujících řešení tento problém vyřešit:
 
 * Aktualizovat moduly Azure pomocí následujících kroků [aktualizace modulů Azure Powershellu ve službě Azure Automation](../automation-update-azure-modules.md).  
 
-### <a name="fails-deserialized-object"></a>Modul nejde importovat nebo se importuje správně, ale jsou extrahovány žádné rutiny.
+### <a name="fails-deserialized-object"></a>Scénář: Sada Runbook selže z důvodu deserializovaný objekt
 
 #### <a name="issue"></a>Problém
 
@@ -135,21 +160,21 @@ Cannot convert the <ParameterType> value of type Deserialized <ParameterType> to
 
 #### <a name="cause"></a>Příčina
 
-Je několik běžných příčin, které modul nemusí úspěšně importovat do Azure Automation:
+Pokud vaše sada runbook v pracovním postupu Powershellu, ukládá komplexních objektů ve formátu deserializovaný aby bylo možné zachovat svůj stav sady runbook, pokud pracovní postup se pozastaví.
 
 #### <a name="resolution"></a>Řešení
 
-Struktura neodpovídá struktuře Automation musí být v.
+Tento problém vyřešit některé z následujících tří řešení:
 
-1. Modul je závislá na jiný modul, který nebyl nasazen do vašeho účtu Automation.
-2. Modul chybí jeho závislosti do složky.
-3. Rutina se používá k nahrání modulu a nedali úložiště úplnou cestu nebo nebyly načteny modulu pomocí adresy URL veřejně přístupná.
+1. Pokud se přesměrujete složité objekty z jedné rutiny do druhého, zabalte tyto rutiny v bloku InlineScript.
+2. Název nebo hodnotu, která je nutné předejte z komplexní objekt místo předávání celý objekt.
+3. Místo pracovních postupů Powershellu použijte Powershellový runbook.
 
-### <a name="quota-exceeded"></a>Ujistěte se, že modul má tento formát: ModuleName.Zip <a name="quota-exceeded"> </a>  název modulu nebo číslo verze    (ModuleName.psm1, ModuleName.psd1)
+### <a name="quota-exceeded"></a>Scénář: Úloha Runbooku se nezdařila, protože překročil přidělenou kvótu.
 
 #### <a name="issue"></a>Problém
 
-Otevření souboru .psd1 a zjistěte, jestli modul mají všechny závislosti.
+Vaše úloha runbooku se nezdaří s chybou:
 
 ```
 The quota for the monthly total job run time has been reached for this subscription
@@ -157,11 +182,11 @@ The quota for the monthly total job run time has been reached for this subscript
 
 #### <a name="cause"></a>Příčina
 
-Pokud ano, nahrajte do účtu Automation tyto moduly. Ujistěte se, že jsou ve složce modulu všechny odkazované knihovny DLL debuggle. Pokud nenalezli váš problém nebo nepovedlo se vyřešit vaše potíže, navštíví některý z následujících kanálů pro další podporu:
+Této chybě dochází při provádění úlohy překročí 500 minut bezplatnou kvótu pro váš účet. Tato kvóta se vztahuje na všechny typy spuštění úloh, jako je například testování úlohy, spouští úlohu z portálu, provádění úlohy pomocí webhooků a plánování úloh ke spuštění s použitím portálu Azure nebo ve vašem datovém centru. Další informace o cenách pro službu Automation najdete v tématu [ceny služby Automation](https://azure.microsoft.com/pricing/details/automation/).
 
 #### <a name="resolution"></a>Řešení
 
-Pokud potřebujete další pomoc, můžete soubor incidentu podpory Azure. Můžete upgradovat na úroveň Basic podle následujících kroků:  
+Pokud chcete využívat víc než 500 minut zpracování za měsíc, budete muset změnit předplatné z bezplatné vrstvy na úrovni Basic. Můžete upgradovat na úroveň Basic podle následujících kroků:  
 
 1. Přihlaste se ke svému předplatnému Azure.  
 2. Vyberte účet Automation, který chcete upgradovat.  
@@ -172,7 +197,7 @@ Pokud potřebujete další pomoc, můžete soubor incidentu podpory Azure. Můž
 
 #### <a name="issue"></a>Problém
 
-Otevření souboru .psd1 a zjistěte, jestli modul mají všechny závislosti.
+Vaše úloha runbooku se nezdaří s chybou:
 
 ```
 <cmdlet name>: The term <cmdlet name> is not recognized as the name of a cmdlet, function, script file, or operable program.

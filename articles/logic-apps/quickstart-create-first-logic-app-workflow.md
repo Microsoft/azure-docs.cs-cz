@@ -6,17 +6,17 @@ ms.service: logic-apps
 author: ecfan
 ms.author: estfan
 manager: jeconnoc
-ms.date: 1/12/2018
 ms.topic: quickstart
 ms.custom: mvc
+ms.date: 07/20/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 0a629deec0cc18f65dfe5e88a3eaea528636dd0f
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 4774efda6748ac640d87ce83e2d5c4ee68310546
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35300935"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39125735"
 ---
 # <a name="quickstart-create-your-first-automated-workflow-with-azure-logic-apps---azure-portal"></a>Rychlý start: Vytvoření prvního automatizovaného pracovního postupu pomocí Azure Logic Apps – Azure Portal
 
@@ -34,7 +34,7 @@ Přihlaste se k webu <a href="https://portal.azure.com" target="_blank">Azure Po
 
 ## <a name="create-your-logic-app"></a>Vytvoření aplikace logiky 
 
-1. V hlavní nabídce Azure zvolte **Vytvořit prostředek** > **Podniková integrace** > **Aplikace logiky**.
+1. V hlavní nabídce Azure zvolte **Vytvořit prostředek** > **Integrace** > **Aplikace logiky**.
 
    ![Vytvoření aplikace logiky](./media/quickstart-create-first-logic-app-workflow/create-logic-app.png)
 
@@ -42,12 +42,12 @@ Přihlaste se k webu <a href="https://portal.azure.com" target="_blank">Azure Po
 
    ![Zadání podrobností o aplikaci logiky](./media/quickstart-create-first-logic-app-workflow/create-logic-app-settings.png)
 
-   | Nastavení | Hodnota | Popis | 
-   | ------- | ----- | ----------- | 
+   | Vlastnost | Hodnota | Popis | 
+   |----------|-------|-------------| 
    | **Název** | MyFirstLogicApp | Název vaší aplikace logiky | 
    | **Předplatné** | <*název_vašeho_předplatného_Azure*> | Název vašeho předplatného Azure | 
    | **Skupina prostředků** | My-First-LA-RG | Název [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md) sloužící k uspořádání souvisejících prostředků | 
-   | **Umístění** | Východní USA 2 | Oblast, do které se uloží informace o vaší aplikaci logiky | 
+   | **Umístění** | USA – západ | Oblast, do které se uloží informace o vaší aplikaci logiky | 
    | **Log Analytics** | Vypnuto | Pokud chcete zapnout protokolování diagnostiky, ponechte nastavení **Vypnuto**. | 
    |||| 
 
@@ -69,12 +69,12 @@ Dále přidejte [trigger](../logic-apps/logic-apps-overview.md#logic-app-concept
 
    ![Nastavení triggeru s informačním kanálem RSS, frekvencí a intervalem](./media/quickstart-create-first-logic-app-workflow/add-trigger-rss-settings.png)
 
-   | Nastavení | Hodnota | Popis | 
-   | ------- | ----- | ----------- | 
+   | Vlastnost | Hodnota | Popis | 
+   |----------|-------|-------------| 
    | **Adresa URL informačního kanálu RSS** | ```http://feeds.reuters.com/reuters/topNews``` | Odkaz na informační kanál RSS, který chcete monitorovat | 
    | **Interval** | 1 | Počet intervalů, po které se má čekat mezi kontrolami | 
    | **Frekvence** | Minuta | Jednota času pro každý interval mezi kontrolami  | 
-   |  |  |  | 
+   |||| 
 
    Interval a frekvence společně definují plán pro trigger vaší aplikace logiky. 
    Tato aplikace logiky kontroluje kanál každou minutu.
@@ -95,9 +95,11 @@ Nyní přidejte [akci](../logic-apps/logic-apps-overview.md#logic-app-concepts),
 
    ![Přidání akce](./media/quickstart-create-first-logic-app-workflow/add-new-action.png)
 
-2. V části **Zvolit akci** vyhledejte „odeslat e-mail“ a pak vyberte akci „odeslat e-mail“ pro požadovaného poskytovatele e-mailu. Pokud chcete v seznamu akcí vyfiltrovat konkrétní službu, můžete nejprve vybrat konektor v části **Konektory**.
+2. V části **Zvolte akci** zadejte jako filtr Odeslat e-mail. V seznamu akcí vyberte akci Odeslat e-mail pro požadovaného poskytovatele e-mailu. 
 
    ![Výběr akce Office 365 Outlook – Odeslat e-mail](./media/quickstart-create-first-logic-app-workflow/add-action-send-email.png)
+
+   Pokud chcete v seznamu akcí vyfiltrovat konkrétní aplikaci nebo službu, můžete nejprve tuto aplikaci nebo službu vybrat:
 
    * Pro pracovní nebo školní účty Azure vyberte Office 365 Outlook. 
    * Pro osobní účty Microsoft vyberte Outlook.com.
@@ -109,21 +111,14 @@ Nyní přidejte [akci](../logic-apps/logic-apps-overview.md#logic-app-concepts),
    1. Do pole **Komu** zadejte e-mailovou adresu příjemce. 
    Pro účely testování můžete použít svou vlastní e-mailovou adresu.
 
-      Prozatím ignorujte seznam parametrů nebo seznam **Přidat dynamický obsah**, které se zobrazí. 
-      Tento seznam se zobrazí po kliknutí do některých textových polí a zobrazí všechny dostupné parametry z předchozího kroku, které můžete do svého pracovního postupu zahrnout jako vstupy.
-      Šířka vašeho prohlížeče určuje, který seznam se zobrazí.
+      Prozatím ignorujte seznam **Přidat dynamický obsah**, který se zobrazí. 
+      Tento seznam se zobrazí po kliknutí do některých textových polí a zobrazí všechny dostupné parametry z předchozího kroku, které můžete do svého pracovního postupu zahrnout jako vstupy. 
 
    2. Do pole **Předmět** zadejte tento text s mezerou na konci: ```New RSS item: ```
 
       ![Zadání předmětu e-mailu](./media/quickstart-create-first-logic-app-workflow/add-action-send-email-subject.png)
  
-   3. Ze seznamu parametrů nebo seznamu **Přidat dynamický obsah** vyberte **Název informačního kanálu** a zahrňte název položky RSS.
-
-      Tady je příklad seznamu parametrů:
-
-      ![Seznam parametrů – Název informačního kanálu](./media/quickstart-create-first-logic-app-workflow/add-action-send-email-subject-parameters-list.png)
-
-      A tady je seznam dynamického obsahu:
+   3. V seznamu **Přidat dynamický obsah** vyberte **Název informačního kanálu** a zahrňte název položky RSS.
 
       ![Seznam dynamického obsahu – Název informačního kanálu](./media/quickstart-create-first-logic-app-workflow/add-action-send-email-subject-dynamic-content.png)
 
@@ -131,18 +126,18 @@ Nyní přidejte [akci](../logic-apps/logic-apps-overview.md#logic-app-concepts),
 
       ![Přidaný název informačního kanálu](./media/quickstart-create-first-logic-app-workflow/add-action-send-email-feed-title.png)
 
-      Pokud se v návrháři zobrazí smyčka For each, pak jste vybrali pole obsahující pole, například pole **categories-item**. 
-      Pro tyto typy polí návrhář automaticky přidá tuto smyčku okolo akce, která obsahuje referenci na příslušné pole. 
+      Pokud se v návrháři zobrazí smyčka For each, pak jste vybrali token obsahující pole, například token **categories-Item**. 
+      Pro tyto typy tokenů návrhář automaticky přidá tuto smyčku okolo akce, která obsahuje referenci na příslušný token. 
       Aplikace logiky tak provede stejnou akci pro každou položku pole. 
       Pokud chcete smyčku odebrat, zvolte **tři tečky** (**...**) v záhlaví smyčky a pak zvolte **Odstranit**.
 
-   4. Do pole **Text** zadejte tento text a pro text e-mailu vyberte tato pole. 
+   4. Do pole **Text** zadejte tento text a pro text e-mailu vyberte tyto tokeny. 
    Pokud chcete do textového pole přidat prázdné řádky, stiskněte Shift + Enter. 
 
       ![Přidání obsahu e-mailu](./media/quickstart-create-first-logic-app-workflow/add-action-send-email-body.png)
 
-      | Nastavení | Popis | 
-      | ------- | ----------- | 
+      | Vlastnost | Popis | 
+      |----------|-------------| 
       | **Název informačního kanálu** | Název položky | 
       | **Datum publikování informačního kanálu** | Datum a čas publikování položky | 
       | **Odkaz na primární informační kanál** | Adresa URL položky | 
@@ -167,9 +162,15 @@ Blahopřejeme, právě jste pomocí webu Azure Portal úspěšně sestavili a sp
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, odstraňte skupinu prostředků, která obsahuje vaši aplikaci logiky, a všechny související prostředky. V hlavní nabídce Azure přejděte na **Skupiny prostředků** a vyberte skupinu prostředků pro vaši aplikaci logiky. Zvolte **Odstranit skupinu prostředků**. Pro ověření zadejte název skupiny prostředků a zvolte **Odstranit**.
+Pokud tuto ukázku už nepotřebujete, odstraňte skupinu prostředků, která obsahuje vaši aplikaci logiky a související prostředky. 
 
-![Skupiny prostředků > Přehled > Odstranit skupinu prostředků](./media/quickstart-create-first-logic-app-workflow/delete-resource-group.png)
+1. V hlavní nabídce Azure přejděte na **Skupiny prostředků** a vyberte skupinu prostředků vaší aplikace logiky. Na stránce **Přehled** zvolte **Odstranit skupinu prostředků**. 
+
+   ![Skupiny prostředků > Přehled > Odstranit skupinu prostředků](./media/quickstart-create-first-logic-app-workflow/delete-resource-group.png)
+
+2. Pro ověření zadejte název skupiny prostředků a zvolte **Odstranit**.
+
+   ![Potvrzení odstranění](./media/quickstart-create-first-logic-app-workflow/delete-resource-group-2.png)
 
 ## <a name="get-support"></a>Získat podporu
 
