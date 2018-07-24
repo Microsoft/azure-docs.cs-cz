@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: ff1f6fcae1d21d47b5ee0263b4e038287a588991
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: a6db6b7f1a0e81867a1db75ed3b31a38a8dbdeb0
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008225"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213533"
 ---
 # <a name="deep-dive---advanced-analytics"></a>Podrobné informace – pokročilé analýzy
 
@@ -97,7 +97,7 @@ V tomto scénáři pokročilých analýz existují tři klíčové úkoly:
 
 1. Vytvoření clusteru Azure HDInsight Hadoop Apache Spark 2.1.0 rozdělení. 
 2. Spusťte vlastní skript pro instalaci sady Microsoft Cognitive Toolkit na všech uzlech clusteru Azure HDInsight Spark. 
-3. Nahrajte předem sestavených Poznámkový blok Jupyter pro váš cluster HDInsight Spark pro použití trénovaného Microsoft Cognitive Toolkit hloubkového učení modelu do souborů v účtu úložiště objektů Blob v Azure pomocí rozhraní Python API služby Spark (PySpark). 
+3. Nahrajte předem sestavených poznámkového bloku Jupyter pro váš cluster HDInsight Spark pro použití trénovaného Microsoft Cognitive Toolkit hloubkového učení modelu do souborů v účtu úložiště objektů Blob v Azure pomocí rozhraní Python API služby Spark (PySpark). 
 
 Tento příklad používá sada kompilované a distribuované Alex Krizhevsky, Vinod Nair a Geoffrey Hinton CIFAR 10 obrázků. Datová sada CIFAR 10 obsahuje 60 000 32 × 32 bitové kopie, které patří k 10 vzájemně se vylučuje třídám barev:
 

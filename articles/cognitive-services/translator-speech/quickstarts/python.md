@@ -9,12 +9,12 @@ ms.component: translator-speech
 ms.topic: article
 ms.date: 07/17/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 40535f400bc5359019e89320489721bf481c1210
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 8bf904b2029790d64a806fcf4a7e4860579a5a2f
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39124823"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39204846"
 ---
 # <a name="quickstart-for-microsoft-translator-speech-api-with-python"></a>Rychlý start pro Microsoft Translator Speech API s využitím Pythonu 
 <a name="HOLTop"></a>
@@ -27,7 +27,7 @@ Budete potřebovat [Python 3.x](https://www.python.org/downloads/) tento kód sp
 
 Budete muset nainstalovat [klient technologie websocket balíčku](https://pypi.python.org/pypi/websocket-client) pro Python.
 
-Budete potřebovat soubor WAV s názvem "speak.wav" ve stejné složce jako spustitelný soubor, který kompilaci z níže uvedeného kódu. Tento soubor ve formátu WAV musí být ve standardní PCM, 16 bitů, 16kHz, mono formátu.
+Budete potřebovat soubor WAV s názvem "speak.wav" ve stejné složce jako spustitelný soubor, který kompilaci z níže uvedeného kódu. Tento soubor ve formátu WAV musí být ve standardní PCM, 16 bitů, 16kHz, mono formátu. Můžete získat takový WAV soubor z [převod textu na řeč API](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-apis#text-to-speech).
 
 Musíte mít [účet rozhraní API služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s **Microsoft Translator Speech API**. Budete potřebovat placené předplatné klíče z vašeho [řídicí panel Azure](https://portal.azure.com/#create/Microsoft.CognitiveServices).
 

@@ -1,6 +1,6 @@
 ---
 title: Architektura sítě Azure
-description: Tento článek obsahuje obecné popis sítě infrastruktury Microsoft Azure.
+description: Tento článek obsahuje obecný popis síťové infrastruktury Microsoft Azure.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -14,105 +14,106 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 67781f196b445c9330e0dcb1fc7d8b0a1a53cbc0
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: a6800b18d1bb588c747d4e9ef7049ac4cbb82f60
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37102115"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213465"
 ---
 # <a name="azure-network-architecture"></a>Architektura sítě Azure
-Architektura sítě Azure následuje upravenou verzi odvětví standardní jádra nebo distribuční nebo přístup k modelu, s vrstvami odlišné hardwaru. Vrstvy, které patří:
+Architektura sítě Azure se řídí upravenou verzi oboru standardní core / / přístup k distribuce modelu s vrstvami odlišné hardwaru. Tyto vrstvy patří:
 
-- Základní (Datacenter směrovače)
-- Distribuce (přístup směrovače a agregace L2) - vrstvě distribuční odděluje L3 směrování v L2 přepínání
-- Přístup (přepínače hostitele L2)
+- Jádro (datacenter směrovače)
+- Distribuce (přístup směrovače a agregací Ú2). Vrstvy distribuce odděluje L3 směrování od přepínání L2.
+- Přístup (L2 hostitele přepínače)
 
-Architektura sítě má dvě úrovně vrstvy 2 přepínače, jedné vrstvy agregování provoz z jiných a vrstvy 2 smyčky, abyste zapracovali redundance. To poskytuje výhod, třeba flexibilnější nároků sítě VLAN a zlepšuje port škálování. Architektura udržuje Ú2 a Ú3 jedinečné, což umožňuje použití hardwaru v každé z různých vrstev v síti a minimalizuje se při selhání v jedné vrstvy, ze které mají vliv na ostatní vrstvy. Použití šachty umožňuje sdílení, jako je například připojení k infrastruktuře L3 prostředků.
+Architektura sítě má dvě úrovně přepínače vrstvy 2. Jedna vrstva agregace provoz z jiných vrstev. Druhá vrstva smyčky začlenit redundance. Flexibilnější nároky na síť VLAN a vylepšuje škálování portu. Architektura udržuje L2 a L3 distinct, která umožňuje používat hardware v každé z různých vrstev v síti a minimalizuje selhání v jedné vrstvě výstrahy neovlivňovaly další vrstvy. Použití šachty umožňuje sdílení, jako je například připojení L3 infrastruktury prostředků.
 
 ## <a name="network-configuration"></a>Konfigurace sítě
-Architektura sítě clusteru Microsoft Azure v rámci datového centra se skládá z následujících zařízení:
+Architektura sítě clusteru služby Azure v datacentru se skládá z následujících zařízení:
 
-- Směrovače (Datacenter, směrovač přístup a okrajové směrovače listu)
-- Přepínače (agregace a horní části přepínače Rack)
+- Směrovače (datacenter, směrovač přístupu a hraniční směrovače listu)
+- Přepínače (přepínače agregace a top-of-rack)
 - Digi CMs
-- Jednotky PDU nebo Nucleons
+- Jednotek pro distribuci napájení
 
-Následující obrázek poskytuje podrobný přehled architektury sítě Azure v rámci clusteru. Azure má dva samostatné architektury. Některé stávající zákazníky služby Azure a sdílených služeb nacházet v architektuře výchozí LAN (DLA), zatímco nové oblasti a virtuální zákazníci budou mít přístup prostřednictvím architektury Quantum 10 (Otázka č. 10). Architektura DLA je návrh tradiční stromu s active pasivní přístup směrovače a přístupu (ACL) použity na směrovači přístup. Architektura 10 Quantum je návrh clos nebo OK směrovačů kde seznamy řízení přístupu se nepoužije na směrovači, ale pod směrování prostřednictvím Vyrovnávání zatížení softwaru (SLB), nebo softwarově definované sítě VLAN.
+Azure má dva samostatné architektury. Některé stávající zákazníky Azure a sdílené služby umístěné v architektuře sítě LAN výchozí (DLA), zatímco nové oblasti a virtuální zákazníky umístěné v architektuře Quantum 10 (10). DLA architektura je tradiční stromu návrh, s použitím směrovače přístup aktivní/pasivní vysoká dostupnost a zabezpečení seznamy řízení přístupu (ACL) použitý k přístupu k směrovačům. Architektura Quantum 10 je návrh Clos nebo síť směrovače, kde seznamů ACL nejsou aplikována na směrovači. Místo toho seznamy řízení přístupu se použijí následující směrování, prostřednictvím služby Vyrovnávání zatížení softwaru (SLB) nebo softwarově definovaných sítí VLAN.
 
-![Síť Azure][1]
+Následující diagram představuje podrobný přehled síťové architektury v Azure cluster:
 
-### <a name="quantum-10-devices"></a>Zařízení quantum 10
-Návrh Quantum 10 provede vrstvy 3 přepínání šíření více zařízení v návrhu CLOS nebo OK. Výhody návrhu Otázka č. 10 zahrnují větší schopnosti a lepší možnosti škálování stávající síťové infrastruktuře. Návrh využívá ohraničení listu směrovače, přepínače spine a horní Rack směrovače mají být předány provoz clusterů mezi víc tras, aby vám umožnil odolnost proti chybám. Zabezpečení služeb, jako je překlad síťových adres jsou zpracovávány prostřednictvím Vyrovnávání zatížení softwaru místo v hardwarových zařízeních.
+![Diagram sítě Azure][1]
+
+### <a name="quantum-10-devices"></a>Quantum 10 zařízení
+Návrh Quantum 10 provádí přepínání rozšíření vrstvy 3 přes různá zařízení v návrhu Clos nebo síť. Výhody návrh 10 patří schopnost větší a lepší možnosti škálování stávající síťové infrastruktuře. Návrh využívá hraniční směrovače listu, spine přepínače a směrovače top-of-rack přenášena clustery ve více tras, povolení pro odolnost proti chybám. Softwarové Vyrovnávání zatížení, namísto hardwarových zařízení zpracovává zabezpečení služeb, jako je překlad síťových adres.
 
 ### <a name="access-routers"></a>Přístup směrovače
-Směrovače nebo přístup k distribuce L3 (ARs) provést primární funkci směrování pro vrstvy distribuce a přístup. Tato zařízení jsou nasazeny jako pár a jsou výchozí brána pro podsítě. Každý pár AR může podporovat více párů přepínač L2 agregace, v závislosti na kapacitu. Maximální počet závisí na kapacitu na zařízení a také domény selhání. Typické čísel na základě očekávané kapacitou by tři dvojice přepínač L2 agregace za pár AR.
+Rozdělení/přístup L3 směrovače (ARs) provést primární funkce směrování vrstvy distribuce a přístup. Tato zařízení jsou nasazeny jako dvojici a jsou výchozí brána pro podsítě. Každý pár AR může podporovat více párů přepínač agregace L2, v závislosti na kapacitu. Maximální počet závisí na objemu zařízení, jakož i domén selhání. Typické číslo je za pár AR tři páry přepínač agregace L2.
 
-### <a name="l2-aggregation-switches"></a>L2 Přepínače agregace  
-Tato zařízení sloužit jako agregačního bodu L2 provozu. Jsou vrstvy distribuce pro prostředek infrastruktury L2 a může zpracovávat velké objemy přenosů. Vzhledem k tomu, že tato zařízení agregovat provoz, 802.1Q funkce je povinná a velkou šířku pásma technologie, jako je port agregaci a 10GE používají.
+### <a name="l2-aggregation-switches"></a>Přepínače agregace L2  
+Tato zařízení sloužit jako agregačního bodu pro provoz L2. Jsou vrstvy distribuce pro L2 prostředky infrastruktury a může zpracovávat velké objemy přenosů. Vzhledem k tomu, že tato zařízení agregovat provoz, vyžadují 802.1Q funkce a velkou šířku pásma technologie, jako je agregace portů a 10GE.
 
-### <a name="l2-host-switches"></a>L2 Přepínače hostitele
-Hostitelé připojit přímo k tyto přepínače. Mohou být přepínače rack připojené nebo skříň nasazení. Standard 802.1Q umožňuje označení jednu síť VLAN jako nativní sítě VLAN, považuje tento VLAN jako normální (vyžadující) rámce sítě Ethernet. Za normálních okolností jsou odeslaných a přijatých vyžadující na 802.1Q rámce na nativní síť VLAN trunk portu. Tato funkce byla navržena pro migraci 802.1Q a kompatibilitu s jiný-802.1Q zařízením. V této architektuře síťové infrastruktury využívá nativní síť VLAN.
+### <a name="l2-host-switches"></a>Přepínače hostitele L2
+Hostitelé připojení přímo k tyto přepínače. Mohou být přepínače racku nebo skříně nasazení. Standard 802.1Q umožňuje označení jednoho VLAN jako nativní síť VLAN, zpracuje síť VLAN jako normální (neoznačených) rámce sítě Ethernet. Za normálních okolností jsou odeslaných a přijatých neoznačených na 802.1Q snímků na nativní síť VLAN trunk portu. Tato funkce je navržená pro migraci do 802.1Q a kompatibilitu s bez-802.1Q zařízení. V této architektuře síťové infrastruktury používá nativní síť VLAN.
 
-Tato architektura Určuje standard pro nativní výběr sítě VLAN, které zajišťuje, kde je to možné, že zařízení AR mají jedinečné nativní síť VLAN pro každý trunk a L2Aggregation k L2Aggregation šachty. L2Aggregation k přepínači L2Host šachty mít jiné než výchozí nativní síť VLAN.
+Tato architektura Určuje standard pro výběr nativní síť VLAN. Standardní zajistí, kde je to možné, AR zařízení jedinečné, nativní síť VLAN pro každý trunk a L2Aggregation k šachty L2Aggregation. L2Aggregation k přepínači L2Host šachty mají jiné než výchozí nativní síť VLAN.
 
 ### <a name="link-aggregation-8023ad"></a>Odkaz agregace (802.3ad)
-Odkaz agregace (PRODLEVA) umožňuje více jednotlivých odkazy na spojeno dohromady a považován za jedné logické linky. Číslo používaný k označení portu kanál rozhraní musí být standardizované, aby provozní ladění snadnější, zbytku sítě bude používat stejné číslo na obou koncích port kanál. To vyžaduje standardní určit které konec kanál portu k definování dalším dostupným číslem.
+Odkaz agregace povoluje více jednotlivé odkazy na spojeny dohromady a považován za jediný odkaz na logickou. K usnadnění provozní ladění, by měl standardizované číslo používané k určení portu kanál rozhraní. Zbytku sítě používá stejné číslo na obou koncích port kanálu.
 
-Čísla zadaná pro L2Agg k přepínači L2Host jsou čísla portu kanál používá na straně L2Agg. Rozsah čísel je více omezená na stranu L2Host, a proto je standardní použití čísla 1 a 2 na straně L2Host odkazovat na port kanál, který má na straně "a" a "b".
+Čísla zadané pro L2Agg k přepínači L2Host jsou čísla portu kanál používá na straně L2Agg. Vzhledem k tomu, že je rozsah čísel na straně L2Host omezenější, je pomocí čísla 1 a 2 na straně L2Host standardní. Jde o portu kanál má straně "b" a "a" strana v uvedeném pořadí.
 
 ### <a name="vlans"></a>Sítě VLAN
-Architektura sítě pomocí sítí VLAN skupiny serverů společně do jedné domény všesměrového vysílání. Čísla VLAN 802.1Q odpovídat standardy, které podporuje sítě VLAN číslované 1 – 4094.
+Síťovou architekturu používají sítě VLAN na skupinu serverů dohromady do jedné domény všesměrového vysílání. Čísla VLAN 802.1Q odpovídat 1 – 4094 číslované standardy, které podporuje sítě VLAN.
 
-### <a name="customer-vlans"></a>Zákazník sítí VLAN
-Zákazníci, mají různé možnosti sítě VLAN implementace můžete nasadit pomocí portálu Azure, aby vyhovovaly oddělení a architektura jejich řešení. Tato řešení se nasazují přes virtuální počítače. Odkaz na odběratele najdete příklady architektura [Azure referenční architektury](https://docs.microsoft.com/azure/architecture/reference-architectures/).
+### <a name="customer-vlans"></a>Virtuální místní sítě zákazníka
+Existují různé možnosti implementace sítě VLAN, můžete nasadit pomocí webu Azure portal pro oddělení a architektura potřeby vašeho řešení. Tato řešení prostřednictvím virtuálních počítačů nasadit. Zákazník referenční architektury příklady najdete v tématu [referenční architektury Azure](https://docs.microsoft.com/azure/architecture/reference-architectures/).
 
 ### <a name="edge-architecture"></a>Architektura Edge
-Datových centrech Azure jsou založena na vysoce redundantní a dobře zřízené síťové infrastruktury. Sítě v datových centrech Azure jsou implementované v "nutné plus jedna" (N + 1) redundance architektur nebo lepší. Úplné převzetí služeb při selhání funkce v rámci i mezi datovými centry pomáhají k zajištění dostupnosti sítě a služby. Externě jsou datová centra obsloužených okruhy vyhrazené, velkou šířku pásma sítě, které redundantně připojit vlastnosti s více než 1200 poskytovatelům internetových služeb globálně na více bodů partnerského vztahu, poskytuje více než 2 000 GB/s potenciální edge kapacity v síti.
+Datacentra Azure jsou postavené na vysoce redundantní a dobře zřízené síťové infrastruktury. Microsoft implementuje sítěmi v rámci datových centrech Azure "potřebu plus jeden" (N + 1) redundance architektury nebo vyšší. Úplné převzetí služeb při selhání funkce v rámci a mezi datacentry, pomáhají zajistit dostupnost sítě a služby. Externě datacentry obsluhuje vyhrazené a velkou šířku pásma sítě okruhů. Vlastnosti těchto okruhů redundantně připojení s víc než 1200 poskytovatelů internetových služeb globálně v několika bodech partnerského vztahu. Tímto způsobem přesahující 2 000 GB/s potenciální edge kapacity přes síť.
 
-Filtrování směrovačů ve vrstvě okraj a přístupu k síti Microsoft Azure poskytuje dobře známou zabezpečení na úrovni paketů, aby se zabránilo neoprávněné pokusy o připojení k Azure. Mohou pomoci zajistit, že skutečný obsah paketů obsahují data v očekávaném formátu a schéma komunikace očekávané klienta nebo serveru v souladu s. Azure implementuje vrstvené architektura skládající se z následujících oddělení sítě a součásti řízení přístupu:
+Filtrování směrovače ve vrstvě edge a přístup sítě Azure poskytují zavedené zabezpečení na úrovni paketů. To pomáhá zabránit neoprávněné pokusy o připojení k Azure. Směrovače pomáhají zajistit, že obsahují data v očekávaném formátu skutečný obsah pakety a v souladu s komunikační schéma očekávané klient/server. Implementace vrstvené architektury, skládající se z následujících oddělení sítí a součástí řízení přístupu v Azure:
 
-- Okraj směrovače – oddělit prostředí aplikace z Internetu. Hraniční směrovače jsou navrženy pro zajištění ochrany proti falešná identita a omezit přístup pomocí seznamů řízení přístupu (ACL).
-- Distribuce (přístup k) směrovače - směrovače přístupu jsou navrženy pro povolit pouze Microsoft schválena IP adresy, poskytují ochranu proti falšování a zavedené připojení pomocí seznamů řízení přístupu.
+- **Hraniční směrovače.** Toto oddělení prostředí aplikace z Internetu. Hraniční směrovače slouží k zajištění ochrany proti falešného a omezení přístupu pomocí seznamů řízení přístupu.
+- **Směrovače distribuce (access).** Tyto povolit že IP adresy schválené jenom Microsoft poskytuje ochranu proti falšování identity a připojení pomocí seznamů řízení přístupu.
 
-### <a name="a10-ddos-mitigation-architecture"></a>A10 Architektura zmírnění DDOS
-Útoků DOS i nadále k dispozici skutečnou hrozbou pro spolehlivost online službách společnosti Microsoft. Více stát cílem útoků, složitější a jako služby společnosti Microsoft k více geograficky různorodá schopnost poskytovat efektivní mechanismy pro identifikaci a minimalizovat dopad útoků těchto je s vysokou prioritou.
+### <a name="a10-ddos-mitigation-architecture"></a>Architektura zmírnění a10 před útoky DDOS
+Útoky na dostupnost služby i nadále k dispozici skutečnou hrozbou spolehlivosti služeb online services. Útoky stát cílové a propracované a jako služby Microsoft poskytuje další zeměpisně odlišných identifikující a minimalizovat dopad útoků těchto je s vysokou prioritou. Následující postup podrobně vysvětluje, jak je implementovaná systému před útoky DDOS A10 omezení rizik z hlediska architektury sítě.
 
-Následující podrobnosti vysvětlují, jak je implementována systému zmírnění A10 DDOS z hlediska architektury sítě.  
-Microsoft Azure používá v DCR (směrovač Datacenter), které poskytují automatické zjišťování a ke zmírnění A10 síťových zařízení. A10 řešení využívá monitorování sítě Azure k ukázkové Net toku paketů a zjistěte, jestli je útok. Jakmile se detekuje útoku, zařízení A10 slouží jako šachtové pece zmírnit útoky. Po snížení rizika, další čistou provoz je povolený v datovém centru Azure přímo z DCR. A10 řešení se používá k ochraně Azure síťové infrastruktury.
+Azure používá A10 síťových zařízení v datovém centru směrovač (DCR), které poskytují automatické detekci a zmírnění distribuovaných útoků. Řešení A10 využívá monitorování sítě Azure k ukázkový tok paketů a určení, zda je útok. Pokud se detekuje útok, přesouváním A10 zařízení ke zmírnění útoků. Teprve pak je čistá je povolený provoz do datacentra Azure přímo z DCR. Společnost Microsoft používá A10 řešení pro ochranu Azure síťovou infrastrukturu.
 
-Ochrana DDoS v řešení A10 patří:
+Ochrana před útoky DDoS v řešení A10 patří:
 
 - UDP IPv4 a IPv6 vyplnění ochrany
 - ICMP IPv4 a IPv6 vyplnění ochrany
 - TCP IPv4 a IPv6 vyplnění ochrany
-- Prevence útoků TCP SYN pro protokol IPv4 a IPv6
-- Útok fragmentace
+- Ochrany útoky TCP SYN pro protokoly IPv4 a IPv6
+- Fragmentace útoku
 
 > [!NOTE]
-> Ochrana proti útoku DDoS zajišťuje ve výchozím nastavení pro všechny zákazníky Azure.
+> Společnost Microsoft poskytuje pro všechny zákazníky Azure DDoS protection ve výchozím nastavení.
 >
 >
 
-## <a name="network-connection-rules"></a>Pravidla pro připojení sítě
-Azure nasadí hraniční směrovače ve své síti, které poskytují zabezpečení na úrovni paketů, aby se zabránilo neoprávněné pokusy o připojení k Microsoft Azure. Jejich zajistěte, aby skutečný obsah paketů obsahují data v očekávaném formátu a v souladu s schéma komunikace očekávané klienta nebo serveru.
+## <a name="network-connection-rules"></a>Pravidla síťových připojení
+Ve své síti Azure nasadí hraniční směrovače, které poskytují zabezpečení na úrovni paketů zabránit neoprávněné pokusy o připojení k Azure. Hraniční směrovače zkontrolujte, zda obsahují data v očekávaném formátu skutečný obsah paketů a odpovídat schématu komunikace očekávané klient/server.
 
-Hraniční směrovače oddělit prostředí aplikace z Internetu. Hraniční směrovače jsou navrženy pro zajištění ochrany proti falešná identita a omezit přístup pomocí seznamů řízení přístupu (ACL). Tyto hraniční směrovače jsou konfigurováni pomocí vrstvený přístup seznam ACL k limit síťové protokoly, které jsou povoleny přenosu hraniční směrovače a přístup k směrovače.
+Hraniční směrovače oddělit prostředí aplikace z Internetu. Tyto směrovače, jestliže jsou navržené pro zajištění ochrany proti falešného a omezení přístupu pomocí seznamů řízení přístupu. Microsoft nakonfiguruje hraniční směrovače s použitím vrstveného přístupu seznamu ACL pro omezení síťových protokolů, které jsou povoleny přenosu hraniční směrovače a přistupovat k nim směrovače.
 
-Síťová zařízení jsou umístěny v přístup a hraniční umístění a fungovat jako hranic body, které jsou použity filtry příchozí nebo odchozí.
+Microsoft se umístí na přístup a hraniční umístění jako hranice body, ve kterém jsou použity filtry příchozí a výchozí přenos dat síťových zařízení.
 
 ## <a name="next-steps"></a>Další postup
-Další informace o funkci Microsoft pro zabezpečení infrastruktury Azure najdete v tématu:
+Další informace o co společnost Microsoft k zajištění infrastruktury Azure, najdete v tématech:
 
-- [Azure zařízení, místní a fyzické zabezpečení](azure-physical-security.md)
+- [Zařízení Azure, místním prostředí a fyzické zabezpečení](azure-physical-security.md)
 - [Dostupnost infrastruktury Azure](azure-infrastructure-availability.md)
 - [Součásti systému Azure informace a hranice](azure-infrastructure-components.md)
 - [Produkční sítě Azure](azure-production-network.md)
-- [Zabezpečení funkce Microsoft Azure SQL Database](azure-infrastructure-sql.md)
-- [Azure produkční operace a Správa](azure-infrastructure-operations.md)
+- [Funkce zabezpečení Azure SQL Database](azure-infrastructure-sql.md)
+- [Operace Azure výroby a správu](azure-infrastructure-operations.md)
 - [Monitorování infrastruktury Azure](azure-infrastructure-monitoring.md)
-- [Integritu infrastruktury Azure](azure-infrastructure-integrity.md)
-- [Ochrana dat zákazníka v Azure](azure-protection-of-customer-data.md)
+- [Integrity infrastruktury Azure](azure-infrastructure-integrity.md)
+- [Ochrana dat zákazníků Azure](azure-protection-of-customer-data.md)
 
 <!--Image references-->
 [1]: ./media/azure-infrastructure-network/network-arch.png

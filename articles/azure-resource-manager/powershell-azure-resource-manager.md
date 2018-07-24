@@ -12,14 +12,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: powershell
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/16/2018
+ms.date: 07/20/2018
 ms.author: tomfitz
-ms.openlocfilehash: 5f7c569eabcf6e4b743f1b6616161787764e8f84
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 7cda2a406c6c49e9252bfd5840e8f943e5b7043f
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38723858"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205795"
 ---
 # <a name="manage-resources-with-azure-powershell"></a>Správa prostředků pomocí Azure Powershellu
 
@@ -72,13 +72,9 @@ New-AzureRmRoleAssignment -ObjectId $adgroup.ObjectId `
 
 Obvykle tento postup zopakujete pro role **Přispěvatel sítě** a **Přispěvatel účtů úložiště**, abyste zajistili přiřazení uživatelů ke správě nasazených prostředků. V tomto článku můžete tyto kroky vynechat.
 
-## <a name="azure-policies"></a>Zásady Azure
+## <a name="azure-policy"></a>Azure Policy
 
-[!INCLUDE [Resource Manager governance policy](../../includes/resource-manager-governance-policy.md)]
-
-### <a name="apply-policies"></a>Použití zásad
-
-Vaše předplatné už obsahuje několik definic zásad. Pokud chcete zobrazit dostupné definice zásad, použijte:
+[Služba Azure Policy](../azure-policy/azure-policy-introduction.md) pomůže vám zajistit, aby všechny prostředky v předplatném splňují standardy elektronického odesílání podnikové. Vaše předplatné už obsahuje několik definic zásad. Pokud chcete zobrazit dostupné definice zásad, použijte:
 
 ```azurepowershell-interactive
 (Get-AzureRmPolicyDefinition).Properties | Format-Table displayName, policyType
@@ -186,17 +182,17 @@ Find-AzureRmResource -TagName Environment -TagValue Test | Where-Object {$_.Reso
 
 ### <a name="view-costs-by-tag-values"></a>Zobrazení nákladů podle hodnoty značky
 
-Po použití značek k prostředkům, můžete zobrazit náklady na prostředky s těmito značkami. To chvíli trvat, než analýzu nákladů zobrazíte nejnovější využití, tak náklady na nemusíte vidět ještě. Když náklady jsou k dispozici, můžete zobrazit náklady na prostředky napříč skupinami prostředků ve vašem předplatném. Uživatelé musí mít [úrovně přístup k předplatnému na fakturační informace](../billing/billing-manage-access.md) zobrazíte náklady.
+Po označení prostředků můžete zobrazit náklady na prostředky s příslušnými značkami. Zobrazení nejnovějšího využití v analýze nákladů nějakou dobu trvá, proto náklady možná ještě nevidíte. Jakmile budou náklady k dispozici, můžete zobrazit náklady na prostředky napříč skupinami prostředků ve vašem předplatném. K zobrazení nákladů musí mít uživatelé [přístup k fakturačním údajům na úrovni předplatného](../billing/billing-manage-access.md).
 
-Chcete-li zobrazit náklady podle klíčových slov na portálu, vyberte své předplatné a vyberte **Cost Analysis**.
+Pokud chcete na portálu zobrazit náklady podle značky, vyberte své předplatné a pak **Analýza nákladů**.
 
 ![Analýza nákladů](./media/powershell-azure-resource-manager/select-cost-analysis.png)
 
-Potom vyfiltrovat hodnotu značky a vyberte **použít**.
+Pak vyberte filtr hodnoty značky a vyberte **Použít**.
 
 ![Zobrazení nákladů podle značky](./media/powershell-azure-resource-manager/view-costs-by-tag.png)
 
-Můžete také použít [API pro fakturaci Azure](../billing/billing-usage-rate-card-overview.md) programově zobrazit náklady.
+Můžete použít také [rozhraní API pro fakturaci Azure](../billing/billing-usage-rate-card-overview.md) a zobrazit náklady prostřednictvím kódu programu.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

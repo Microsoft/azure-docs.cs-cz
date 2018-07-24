@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 07/19/2018
 ms.author: bsiva
-ms.openlocfilehash: 17238e8714593eeac9ad8d9611f57976531ecb49
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 747189c7cab2c76c6695bdb8e13f77532adc46d4
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171163"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39216069"
 ---
 # <a name="monitor-and-troubleshoot-site-recovery"></a>Monitorování a řešení Site Recovery
 

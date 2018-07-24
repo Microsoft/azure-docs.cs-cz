@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: a104578b0c010ea7ded99e6bf24e4daa30526318
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: c06811afbf575b36dd1cf185a4554427ce2cd9e3
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39187315"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205227"
 ---
 # <a name="azure-marketplace-and-appsource-publishing-guide"></a>Azure Marketplace a AppSource Průvodce publikováním
 
@@ -91,8 +91,8 @@ Každé z prodejních míst zajišťuje specializované možnosti vám pomůžou
 Tyto články vám můžou pomoct při o možnosti publikování v AppSource a webu Azure Marketplace.
 
 Stát vydavatelem na prodejních míst na webu Marketplace ve třech snadných krocích:
-1. [Určení, která možnost publikování](https://review.docs.microsoft.com/en-us/azure/marketplace/determine-your-listing-type?branch=pr-en-us-47093)
-2. [Stát vydavatelem na webu Marketplace prodejních míst](https://review.docs.microsoft.com/en-us/azure/marketplace/become-publisher?branch=pr-en-us-47093)
+1. [Určení, která možnost publikování](https://docs.microsoft.com/en-us/azure/marketplace/determine-your-listing-type) 
+2. [Stát vydavatelem na webu Marketplace prodejních míst](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher) 
 
 ## <a name="publishing-checklists"></a>Kontrolní seznamy pro publikování
 *   [Publikování kontrolní seznam pro AppSource](publishing-checklist-appsource.md)

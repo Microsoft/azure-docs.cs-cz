@@ -8,6 +8,8 @@
       href: cheat-sheet.md
 - name: Poznámky k verzi
   items:
+    - name: Červenec 2018
+      href: release-notes-july-2018.md
     - name: Červen 2018
       href: release-notes-june-2018.md
     - name: Květen 2018

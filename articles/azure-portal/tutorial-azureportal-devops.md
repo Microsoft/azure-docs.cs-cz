@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: DevOps pomocí portálu Azure | Microsoft Docs'
+title: 'Kurz: DevOps s portálem Azure | Dokumentace Microsoftu'
 description: Poznejte různé pracovní postupy pro DevOps v portálu Azure.
 services: azure-portal
 documentationcenter: ''
@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/05/2016
 ms.author: mlearned
-ms.openlocfilehash: 7fb3de72e28b19f9ca30968b267bf985ae384275
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: 2764d8a17d50f1589d413c2343badfded6adb66e
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34164835"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39216338"
 ---
-# <a name="tutorial-devops-with-the-azure-portal"></a>Kurz: DevOps pomocí portálu Azure
-Platforma Azure je plná flexibilních pracovních postupů DevOps. V tomto kurzu zjistěte, jak využít možnosti portálu Azure k vývoji, testování, nasazení, řešení potíží s, monitorování a správě spuštěných aplikací. Tento kurz se zaměřuje na:
+# <a name="tutorial-devops-with-the-azure-portal"></a>Kurz: DevOps s využitím webu Azure portal
+Platforma Azure je plná flexibilních pracovních postupů DevOps. V tomto kurzu se dozvíte, jak využít možnosti portálu Azure pro vývoj, testování, nasazení, řešení potíží, monitorování a správu běžících aplikací. Tento kurz se zaměřuje na:
 
 1. Vytvoření webové aplikace a povolení průběžného nasazování
 2. Vývoj a testování aplikace
@@ -30,12 +30,12 @@ Platforma Azure je plná flexibilních pracovních postupů DevOps. V tomto kurz
 4. Úlohy správy obecné aplikace
 
 ## <a name="creating-a-web-app-and-enabling-continuous-deployment"></a>Vytvoření webové aplikace a povolení průběžného nasazování
-Vytvořte webovou aplikaci pomocí služby [Azure App Service](https://azure.microsoft.com/services/app-service/), budete ji používat v dalších částech tohoto kurzu. Průběžné nasazování budete nejprve povolit z vašeho úložiště zdrojového kódu do prostředí provozu Azure.
+Vytvořte webovou aplikaci pomocí služby [Azure App Service](https://azure.microsoft.com/services/app-service/), budete ji používat v dalších částech tohoto kurzu. Začátku povolíte průběžné nasazování z vašeho úložiště zdrojového kódu do vaší spuštěného prostředí Azure.
 
-1. Přihlaste se k portálu Azure
+1. Přihlaste se na webu Azure portal
 2. Vyberte **App Services** &gt; **Přidat ikonu** a zadejte název, vyberte předplatné a vytvořte novou skupinu prostředků, která bude sloužit jako kontejner pro službu.
    
-   Skupiny prostředků vám umožňují spravovat různé aspekty řešení například k fakturaci, nasazení a sledování všech jako jednu skupinu prostřednictvím [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
+   Skupiny prostředků umožňují spravovat různé aspekty řešení, jako třeba fakturaci, nasazení a sledování všeho jako jedné skupiny pomocí [Azure Resource Manageru](../azure-resource-manager/resource-group-overview.md).
    
    ![image1][image1]
 3. Za malou chvíli se vytvoří vaše aplikační služba. Projděte si různé nabídky a možnosti, které jsou v portálu pro službu dostupné. Dejte tomu několik minut.
@@ -44,7 +44,7 @@ Vytvořte webovou aplikaci pomocí služby [Azure App Service](https://azure.mic
 4. Klikněte na adresu URL. Všimněte si, že jsou pro nástroje a úložiště dostupné různé možnosti. Můžete taky použít jazyky a rozhraní, které chcete, včetně .NET, Java a Ruby.
    
    ![image3][image3]    
-5. S portálem Azure je nasazování jednoduchý proces s několika málo kroky. Na portálu Azure zvolte nastavení z ikony pro app service, kterou jste vytvořili.
+5. S portálem Azure je nasazování jednoduchý proces s několika málo kroky. Na webu Azure portal vyberte nastavení z ikony pro službu app service, kterou jste vytvořili.
    
    ![image4][image4]
    
@@ -54,7 +54,7 @@ Vytvořte webovou aplikaci pomocí služby [Azure App Service](https://azure.mic
 6. Teď změníte některá nastavení a povolíte pro aplikaci průběžné nasazení. Klikněte na Zdroj nasazení a potom klikněte na tlačítko Vybrat zdroj. Všimněte si, že si můžete vybrat z různých úložišť zdroje.
    
    ![image6][image6]
-7. V tomto příkladu vyberte Githubu. Volitelně můžete vybrat úložiště podle vašeho výběru a nastavit přihlašovací údaje pro autorizaci.
+7. V tomto příkladu vyberte GitHub. Volitelně můžete vybrat jiné úložiště podle vašeho výběru a nastavit přihlašovací údaje pro ověření.
    
    ![image7][image7]
 8. Po ověření přístupu úložiště pak můžete vybrat projekt a větev, kterou chcete nasadit. Dole je několik smyšlených příkladů.
@@ -63,7 +63,7 @@ Vytvořte webovou aplikaci pomocí služby [Azure App Service](https://azure.mic
 9. Když si vyberete projekt a větev, klikněte na OK. Měla by se vám začít objevovat upozornění na nasazení.
    
    ![image9][image9]
-10. Přejděte zpět na GitHub, kde uvidíte webhook vytvořený pro integraci úložiště správy zdrojového kódu s Azure. Portál Azure umožňuje integraci s Githubu se jenom pár jednoduchých kroků.
+10. Přejděte zpět na GitHub, kde uvidíte webhook vytvořený pro integraci úložiště správy zdrojového kódu s Azure. Na webu Azure portal umožňuje integraci s Githubem jenom pár jednoduchých krocích.
     
     ![image10][image10]
 11. Abychom si ukázali průběžné nasazování, rychle do úložiště přidáte nějaký obsah. Snadné je třeba přidání ukázkového textového souboru do úložiště GitHub. Se službou App Service můžete použít aplikaci .NET, Ruby, Python nebo i jiný druh. Do vybraného úložiště můžete přidat textový soubor nebo aplikaci napsanou v ASP.NET MVC, Javě nebo Ruby.
@@ -72,7 +72,7 @@ Vytvořte webovou aplikaci pomocí služby [Azure App Service](https://azure.mic
 12. Po potvrzení změn do úložiště uvidíte, že se v oblasti upozornění portálu oznámí zahájení nasazení. Pokud do několika chvil po odeslání do úložiště, neuvidíte změny, klikněte na Synchronizovat.
     
     ![image12][image12]
-13. Pokud se teď pokusíte načíst stránku pro službu aplikace, může se zobrazit chyba 403. V tomto příkladu to nastalo, protože pro tuto stránku nejsou dostupná výchozí nastavení dokumentů, jako je třeba soubor index.htm nebo default.html. Můžete to rychle napravit pomocí nástrojů na portálu Azure.  Na portálu Azure vyberte nastavení &gt; nastavení aplikace.
+13. Pokud se teď pokusíte načíst stránku pro službu aplikace, může se zobrazit chyba 403. V tomto příkladu to nastalo, protože pro tuto stránku nejsou dostupná výchozí nastavení dokumentů, jako je třeba soubor index.htm nebo default.html. To můžete rychle napravit pomocí nástrojů na webu Azure Portal.  Na webu Azure portal vyberte nastavení &gt; nastavení aplikace.
     
      ![image13][image13]
 14. Otevře se okno s nastavením aplikace. Zadejte název stránky „SamplePage.html“ a klikněte na Uložit. Podívejte se i na další nastavení, dejte tomu několik minut.
@@ -82,18 +82,18 @@ Vytvořte webovou aplikaci pomocí služby [Azure App Service](https://azure.mic
     
     ![image15][image15]
     
-    Povolení průběžné nasazování pomocí portálu Azure je snadný prostředí. Pro nasazení do Azure můžete vytvořit i složitější kanály pro vydávání a použít spoustu jiných postupů s existující správou zdrojového kódu a systémů průběžné integrace, jako je například využití automatizovaných systémů správy sestavení a vydávání.
+    Povolení průběžného nasazování pomocí webu Azure portal je snadná záležitost. Pro nasazení do Azure můžete vytvořit i složitější kanály pro vydávání a použít spoustu jiných postupů s existující správou zdrojového kódu a systémů průběžné integrace, jako je například využití automatizovaných systémů správy sestavení a vydávání.
 
 ## <a name="develop-and-test-an-app"></a>Vývoj a testování aplikace
-Teď uděláme nějaké pár změn v základu kódu a tyto změny rychle nasadíme. Také nastavíte některé testování výkonu pro webové aplikace.
+Teď uděláme nějaké pár změn v základu kódu a tyto změny rychle nasadíme. Bude také nastavit některá testování výkonu pro webovou aplikaci.
 
-1. Na portálu Azure v navigačním podokně zvolte aplikační služby a vyhledejte App Service.
+1. Na webu Azure Portal v navigačním podokně vyberte App Services a vyhledejte svoji aplikační službu.
    
    ![image16][image16]
 2. Klikněte na Nástroje
    
    ![image17][image17]
-3. Všimněte si kategorie vývoje v části Nástroje. Existuje několik užitečné nástroje zde umožňujících nám pro práci s aplikací, aniž byste museli opustit portálu Azure. Klikněte na Konzolu.
+3. Všimněte si kategorie vývoje v části Nástroje. Nejsou tu několik užitečných nástrojů, které umožňují nám práci s aplikací, aniž byste museli opustit Azure portal. Klikněte na Konzolu.
    
    ![image18][image18]
 4. V okně konzoly může v reálném čase zadávat příkazy pro svoji aplikaci. Zadejte příkaz dir a stiskněte enter. Všimněte si, že příkazy, které potřebují zvýšená oprávnění, nebudou fungovat.
@@ -142,7 +142,7 @@ Teď uděláme nějaké pár změn v základu kódu a tyto změny rychle nasadí
     Když test skončí, klikněte na výsledek, tak zobrazíte další podrobnosti.
     
     ![image33][image33]
-16. V tomto příkladu jste vytvořili malý testovací běh, takže k analýze máte jen omezené množství dat, ale můžete se podívat na různé metriky a z tohoto zobrazení test spustit znovu. Portál Azure díky vytváření, provádění a analýza výkonu webové testy jednoduchý proces. Dole na snímcích jsou vidět výkonnostní data.
+16. V tomto příkladu jste vytvořili malý testovací běh, takže k analýze máte jen omezené množství dat, ale můžete se podívat na různé metriky a z tohoto zobrazení test spustit znovu. Azure portal umožňuje vytváření, provádění a analýzu výkonu webové testy jednoduchý proces. Dole na snímcích jsou vidět výkonnostní data.
     
     ![image34][image34]
     
@@ -153,7 +153,7 @@ Teď uděláme nějaké pár změn v základu kódu a tyto změny rychle nasadí
 ## <a name="monitoring-and-troubleshooting-an-app"></a>Sledování a řešení potíží s aplikací
 Azure poskytuje mnoho funkcí pro sledování a řešení potíží se spuštěnými aplikacemi.
 
-1. Na portálu Azure pro webovou aplikaci příkaz nástroje.
+1. Na webu Azure Portal pro webovou aplikaci vyberte nástroje.
    
    ![image37][image37]
 2. V kategorii Řešení potíží si všimněte si různých možností pro řešení potíží s potenciální problémy se spuštěnými aplikacemi. Můžete třeba monitorovat živé přenosy HTTP, povolit samoopravování, zobrazit protokoly a další.
@@ -176,7 +176,7 @@ Azure poskytuje mnoho funkcí pro sledování a řešení potíží se spuštěn
    Kliknutím na soubor Výpis stavu paměti můžete stáhnout a analyzovat sestavu analýzy nástroje DebugDiag, která vám pomůže najít potenciální problémy.
    
    ![image43][image43]
-6. Pokud chcete zobrazit víc dat, musíte povolit další protokolování. Na portálu Azure přejděte do webové aplikace a zvolte nastavení.
+6. Pokud chcete zobrazit víc dat, musíte povolit další protokolování. Na webu Azure Portal přejděte na webovou aplikaci a vyberte nastavení.
    
    ![image44][image44]
 7. Přejděte dolů do kategorie funkcí a vyberte Diagnostické protokoly.
@@ -194,10 +194,10 @@ Azure poskytuje mnoho funkcí pro sledování a řešení potíží se spuštěn
 11. Kliknutím na soubor protokolu HTML můžete vytvářet bohaté sestavy na bázi prohlížeče pro další zkoumání.
     
     ![image49][image49]
-12. Zpět do části nástroje na portálu Azure pro aplikaci. Přejděte do části Nástroje a vyberte Process Explorer.
+12. Přejděte zpět do části nástroje na webu Azure Portal pro aplikaci. Přejděte do části Nástroje a vyberte Process Explorer.
     
     ![image50][image50]
-13. Když vyberete Process Explorer, můžete se podívat na podrobnosti o spuštěných procesech. Všimněte si níže můžete přejít k podrobnostem procesy a i ukončit procesy všechny z portálu Azure.
+13. Když vyberete Process Explorer, můžete se podívat na podrobnosti o spuštěných procesech. Všimněte si, že níže můžete přejít k podrobnostem procesy a dokonce ukončit všechny procesy na webu Azure portal.
     
     ![image51][image51]
     
@@ -205,13 +205,13 @@ Azure poskytuje mnoho funkcí pro sledování a řešení potíží se spuštěn
 14. Přejděte zpět do levého okna nastavení. Klikněte na Novou žádost o podporu.
     
     ![image53][image53]
-15. V pravém okně můžete zadat podrobnosti o problémech, kontaktní informace a dokonce odeslat diagnostická data. Portál Azure umožňuje práce s podporu společnosti Microsoft integrované prostředí.
+15. V pravém okně můžete zadat podrobnosti o problémech, kontaktní informace a dokonce odeslat diagnostická data. Na webu Azure portal umožňuje pracovat s podporou Microsoftu bezproblémové prostředí.
     
     ![image54][image54]
     
     ![image55][image55]
     
-    Portál Azure, pomáhá poskytovat výkonný a známých nástrojů prostředí, které vám pomůžou monitorování a řešení potíží s běžící aplikací. Můžete taky rychle provádět různé akce pomocí úloh, jako je například recyklace procesů, povolování a zakazování různých sběrů dat a dokonce integrace s profesionální podporou společnosti Microsoft.
+    Na webu Azure portal poskytuje výkonné a povědomé nástroje prostředí, které vám pomůžou monitorování a řešení potíží s běžící aplikací. Můžete taky rychle provádět různé akce pomocí úloh, jako je například recyklace procesů, povolování a zakazování různých sběrů dat a dokonce integrace s profesionální podporou společnosti Microsoft.
 
 ## <a name="general-application-management"></a>Obecná správa aplikací
 Při správě aplikací často potřebujete provádět množství různých činností, jako je například konfigurace strategií zálohování, implementace a správa poskytovatelů identit a konfigurace řízení přístupu na základě rolí. Stejně jiná prostředí DevOps i platforma Azure integruje tyto úlohy přímo do portálu.
@@ -231,7 +231,7 @@ Při správě aplikací často potřebujete provádět množství různých čin
 5. Teď vytvořte a vyberte kontejner úložiště pro uložení záloh. Dole na formuláři klikněte na Vytvořit. Potom vyberte kontejner.
    
    ![image60][image60]
-6. Po zvolení kontejneru, vám může konfigurovat plány, stejně jako nastavení zálohování pro své databáze. V tomto scénáři, klikněte na ikonu Uložit.
+6. Když vyberete kontejner, je můžete nakonfigurovat plány, jakož i nastavení zálohování databází. V tomto scénáři, klikněte na ikonu Uložit.
    
     ![image61][image61]
 7. Po uložení přejděte zpět do levého okna pro Zálohy. Klikněte na Zálohovat a aplikace se zazálohuje.
@@ -249,13 +249,13 @@ Při správě aplikací často potřebujete provádět množství různých čin
 11. V pravém okně vyberte Ověřování pomocí služby App Service. Všimněte si, že máte na výběr různé možnosti, které můžete konfigurovat pro oblíbené zprostředkovatele.
     
      ![image66][image66]
-12. Vyberte poskytovatele, kterého chcete, a všimněte si možností pro obor. Můžete zadat ID aplikace a Tajný klíč aplikace a snadno pro aplikaci povolit ověření na Facebooku. Portál Azure umožňuje ověřování, jako to řešení na klíč pro aplikace.
+12. Vyberte poskytovatele, kterého chcete, a všimněte si možností pro obor. Můžete zadat ID aplikace a Tajný klíč aplikace a snadno pro aplikaci povolit ověření na Facebooku. Na webu Azure portal umožňuje ověřování jako řešení na klíč pro aplikace.
     
      ![image67][image67]
 13. Přejděte zpět do okna Nastavení a v kategorii Správa prostředků vyberte možnost Uživatelé.
     
      ![image68][image68]
-14. V pravém okně se podívejte na různé možnosti pro přidávání rolí a uživatelů. Na portálu Azure můžete snadno nastavit RBAC (řízení přístupu na základě rolí) pro aplikaci.
+14. V pravém okně se podívejte na různé možnosti pro přidávání rolí a uživatelů. Na webu Azure portal umožňuje snadno ovládat RBAC (řízení přístupu na základě Role) pro aplikaci.
     
      ![image69][image69]
 

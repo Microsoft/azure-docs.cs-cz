@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2018
+ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2e7f3b0f01dbd6656413c233fcf64c46963d00ef
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 6cd6b139699b38a06a8e3f9fce5eb6e24fe24654
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917366"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214171"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Řešení potíží s Azure Active Directory předávací ověřování
 
@@ -97,7 +97,7 @@ Ověřte, že používáte cloudový účet globálního správce pro všechny s
 
 Pokud máte ve svém tenantovi povoleno předávací ověřování a odinstalaci služby Azure AD Connect, zobrazuje se následující upozornění: "uživatelé nebudou moct přihlásit ke službě Azure AD bez dalších předávací ověřování agenti nainstalovaní na ostatní servery."
 
-Ujistěte se, že vaše instalace [vysoce dostupné](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability) před odinstalováním vyhnuli narušení funkčnosti přihlášení uživatele Azure AD Connect.
+Ujistěte se, že vaše instalace [vysoce dostupné](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability) před odinstalováním vyhnuli narušení funkčnosti přihlášení uživatele Azure AD Connect.
 
 ## <a name="issues-with-enabling-the-feature"></a>Potíže s povolením této funkce
 
@@ -112,18 +112,6 @@ Ujistěte se, že server, na kterém je nainstalovaný Azure AD Connect může k
 ### <a name="enabling-the-feature-failed-due-to-token-or-account-authorization-errors"></a>Povolením této funkce se nezdařilo z důvodu chyby autorizace účtu nebo token
 
 Ujistěte se, že používáte výhradně cloudový účet globálního správce při povolení funkce. Existuje známý problém s ověřováním Multi-Factor Authentication (MFA)-povolené účty globálních správců; Vypněte MFA dočasně (pouze pro dokončení operace) jako alternativní řešení.
-
-## <a name="exchange-activesync-configuration-issues"></a>Problémy s konfigurací protokolu Exchange ActiveSync
-
-Toto jsou běžné problémy při konfiguraci podporu protokolu Exchange ActiveSync pro předávací ověřování.
-
-### <a name="exchange-powershell-issue"></a>Problém Powershellu v Exchangi
-
-Pokud se zobrazí "**parametr nebyl nalezen, který odpovídá názvu parametru"PerTenantSwitchToESTSEnabled"\.**" Chyba při spuštění `Set-OrganizationConfig` Powershellu v Exchangi příkazu, obraťte se na Microsoft Support.
-
-### <a name="exchange-activesync-not-working"></a>Exchange ActiveSync nefunguje
-
-Konfigurace trvá nějakou dobu, než se projeví – časové období závisí na vašem prostředí. Pokud tento stav trvá dlouhou dobu, obraťte se na Microsoft Support.
 
 ## <a name="collecting-pass-through-authentication-agent-logs"></a>Shromažďování protokolů předávací ověřování agenta
 

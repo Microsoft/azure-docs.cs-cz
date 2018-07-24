@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
-ms.openlocfilehash: 77ccfccc0a575cb64272b634b11e80f9e07280f1
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 79f3787713d7615d8f5c42d1747dfa5ed96780cd
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39160023"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214879"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Plánování nasazení služby Azure File Sync
 Azure File Sync umožňuje centralizovat sdílené složky organizace ve službě soubory Azure, při zachování flexibility, výkonu a kompatibility s místními souborového serveru. Azure File Sync transformuje serveru systému Windows na rychlou mezipaměť sdílené složky Azure. Můžete použít jakýkoli protokol dostupný ve Windows serveru pro přístup k datům místně, včetně SMB, NFS a FTPS. Můžete mít libovolný počet mezipamětí po celém světě potřebujete.
@@ -149,7 +149,7 @@ Další informace najdete v tématu [Přehled replikace DFS](https://technet.mic
 Pomocí nástroje sysprep na serveru, který má nainstalovaného agenta Azure File Sync není podporováno a může vést k neočekávaným výsledkům. Instalace a server registrace agenta se budou objevovat po nasazení bitové kopie serveru a dokončení zkrácené instalace nástroje sysprep.
 
 ### <a name="windows-search"></a>Windows Search
-Pokud cloud na koncovém bodu serveru vrstvení je povoleno, jsou soubory, které jsou už vás nebaví přeskočen a není indexované podle Windows Search. Bez vrstvené soubory jsou správně indexovány.
+Pokud cloud na koncovém bodu serveru vrstvení je povoleno, soubory, které proběhne jsou vynechány a není indexované podle Windows Search. Bez vrstvené soubory jsou správně indexovány.
 
 ### <a name="antivirus-solutions"></a>Antivirová řešení
 Protože antivirové ochrany v programu funguje tak, že prohledávání souborů známých škodlivý kód, může způsobit antivirový odvolání vrstvené soubory. Vzhledem k tomu, že vrstvené soubory mít nastaven atribut "offline", doporučujeme konzultaci s dodavatelem softwaru se naučíte konfigurovat jejich řešení Chcete-li přeskočit čtení offline soubory. 
@@ -180,7 +180,7 @@ Azure File Sync se ví, že pracovat:
 
 - Systém souborů (EFS Encrypting File) zašifrované systémem souborů NTFS
 
-Azure File Sync obecně by měly podporovat interoperabilitu s řešeními šifrování, které se nacházejí pod systému souborů, jako je například BitLocker a s řešeními, které jsou implementovány ve formátu souboru, jako je například BitLocker. Řešení, které se nacházejí nahoře systému souborů (jako je systém souborů EFS systému souborů NTFS) nebyly provedeny žádné speciální vzájemná funkční spolupráce.
+Azure File Sync obecně by měly podporovat interoperabilitu s řešeními šifrování, které se nacházejí pod systému souborů, jako je například BitLocker a s řešeními, které jsou implementovány ve formátu souboru, jako je Azure Information Protection. Řešení, které se nacházejí nahoře systému souborů (jako je systém souborů EFS systému souborů NTFS) nebyly provedeny žádné speciální vzájemná funkční spolupráce.
 
 ### <a name="other-hierarchical-storage-management-hsm-solutions"></a>Jiná řešení správy hierarchických úložišť (HSM)
 Pomocí služby Azure File Sync je třeba použít jiná řešení modulu hardwarového zabezpečení.

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 07/20/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 4714a2792b30bfe5cb8a25f0b8912969858f5c34
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 7495ac8b1414412dba9d62d0fb5668c6db364997
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39187083"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39215046"
 ---
 # <a name="what-is-azure-load-balancer"></a>Co je Azure Load Balancer?
 

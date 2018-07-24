@@ -157,8 +157,6 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Blog
       href: 'http://blogs.msdn.com/b/streamanalytics/'
-    - name: Videa
-      href: 'https://azure.microsoft.com/resources/videos/index/?services=stream-analytics&sort=newest'
     - name: Fórum pro názory
       href: 'http://feedback.azure.com/forums/270577-azure-stream-analytics'
     - name: Fórum
@@ -172,7 +170,7 @@
     - name: Stack Overflow
       href: 'http://stackoverflow.com/questions/tagged/azure-stream-analytics'
     - name: Videa
-      href: 'https://azure.microsoft.com/documentation/videos/index/?services=stream-analytics'
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=stream-analytics&sort=newest'
     - name: Zákaznické případové studie
       href: 'https://azure.microsoft.com/case-studies/?service=stream-analytics'
     - name: Dokument white paper – Zpracování událostí v reálném čase

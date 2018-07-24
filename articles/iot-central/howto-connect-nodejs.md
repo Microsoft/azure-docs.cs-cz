@@ -1,6 +1,6 @@
 ---
-title: Připojit obecné klienta aplikace Node.js ve službě Azure IoT centrální | Microsoft Docs
-description: Jako vývojář zařízení jak se připojit k aplikaci Azure IoT centrální Obecné zařízení Node.js.
+title: Připojit obecný klientská aplikace Node.js do Azure IoT Central | Dokumentace Microsoftu
+description: Jako vývojář zařízení jak se připojit k aplikaci Azure IoT Central Obecné zařízení Node.js.
 author: tbhagwat3
 ms.author: tanmayb
 ms.date: 04/16/2018
@@ -8,44 +8,46 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 42ede975f2cfde2d9c0a61d15ba1af412a88c556
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 55ce85702804d99d806220d7f0a4ea0820975f4f
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34628534"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39206033"
 ---
-# <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Připojit obecné klientskou aplikaci, aby vaše aplikace Azure IoT centrální (Node.js)
+# <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Připojení aplikace obecného klienta aplikace Azure IoT Central (Node.js)
 
-Tento článek popisuje, jak jako vývojář zařízení připojit Obecná aplikace Node.js do aplikace Microsoft Azure IoT centrální představující fyzického zařízení.
+Tento článek popisuje, jak jako vývojář zařízení připojit Obecná aplikace Node.js představující fyzické zařízení na aplikaci Microsoft Azure IoT Central.
 
 ## <a name="before-you-begin"></a>Než začnete
 
 K dokončení kroků v tomto článku budete potřebovat následující:
 
-1. Azure IoT centrální aplikaci. Další informace najdete v tématu [vytvořit aplikaci Azure IoT centrální](howto-create-application.md).
-1. Vývoj pro počítač s [Node.js](https://nodejs.org/) verze 4.0.0 nainstalovaný nebo novější. Můžete spustit `node --version` v příkazovém řádku zkontrolujte vaši verzi. Node.js je k dispozici pro širokou škálu operačních systémů.
+1. Aplikace Azure IoT Central. Další informace najdete v tématu [vytvoření aplikace Azure IoT Central](howto-create-application.md).
+1. Vývojovém počítači s [Node.js](https://nodejs.org/) verze 4.0.0 nebo novější. Můžete spustit `node --version` na příkazovém řádku k ověření verze. Node.js je k dispozici pro širokou škálu operačních systémů.
 
-V aplikaci Azure IoT centrální potřebujete šablonu zařízení s následující měření a definované vlastnosti zařízení:
+## <a name="create-a-device-template"></a>Vytvoření šablony zařízení
+
+V aplikaci Azure IoT Central je třeba zařízení šablona s následující měření a definovány vlastnosti zařízení:
 
 ### <a name="telemetry-measurements"></a>Měření telemetrie
 
-Přidejte následující telemetrie **měření** stránky:
+Přidejte následující telemetrii v **měření** stránky:
 
-| Zobrazovaný název | Název pole  | Jednotky | Minimum | Maximum | Desetinných míst |
+| Zobrazovaný název | Název pole  | Jednotky | Minimum | Maximum | Desetinná místa |
 | ------------ | ----------- | ----- | --- | --- | -------------- |
-| Teplota  | Teplota | F     | 60  | 110 | 0              |
-| Vlhkost     | vlhkosti    | %     | 0   | 100 | 0              |
-| Tlak     | pressure    | kPa   | 80  | 110 | 0              |
+| Teplota  | teplota | F     | 60  | 110 | 0              |
+| Vlhkost     | vlhkost    | %     | 0   | 100 | 0              |
+| Tlak     | tlak    | kPa   | 80  | 110 | 0              |
 
 > [!NOTE]
-  Datový typ měření telemetrie je double.
+  Datový typ telemetrických dat měření je double.
 
-Názvy polí zadejte přesně tak, jak je znázorněno v tabulce do šablony zařízení. Pokud se názvy polí neshodují, nelze zobrazit telemetrii, v aplikaci.
+Názvy polí zadejte přesně tak, jak je znázorněno v tabulce do šablony zařízení. Pokud se názvy polí nejsou shodné, nelze zobrazit telemetrická data v aplikaci.
 
 ### <a name="state-measurements"></a>Měření stavu
 
-Přidejte následující stav v **měření** stránky:
+Přidat následující stav v **měření** stránky:
 
 | Zobrazovaný název | Název pole  | Hodnota 1 | Zobrazovaný název | Hodnota 2 | Zobrazovaný název |
 | ------------ | ----------- | --------| ------------ | ------- | ------------ | 
@@ -54,7 +56,7 @@ Přidejte následující stav v **měření** stránky:
 > [!NOTE]
   Datový typ měření stavu je řetězec.
 
-Názvy polí zadejte přesně tak, jak je znázorněno v tabulce do šablony zařízení. Pokud se názvy polí neshodují, stav nelze zobrazit v aplikaci.
+Názvy polí zadejte přesně tak, jak je znázorněno v tabulce do šablony zařízení. Pokud se názvy polí nejsou shodné, stav nelze zobrazit v aplikaci.
 
 ### <a name="event-measurements"></a>Měření událostí
 
@@ -76,30 +78,30 @@ Přidejte následující vlastnosti zařízení v **stránku vlastností**:
 | Sériové číslo       | serialNumber      | text      |
 | Výrobce zařízení | výrobce      | text      |
 
-Názvy polí zadejte přesně tak, jak je znázorněno v tabulce do šablony zařízení. Pokud se názvy polí neshodují, aplikace nejde zobrazit hodnotu vlastnosti.
+Názvy polí zadejte přesně tak, jak je znázorněno v tabulce do šablony zařízení. Pokud se názvy polí nejsou shodné, aplikace nejde zobrazit hodnotu vlastnosti.
 
 ### <a name="settings"></a>Nastavení
 
-Přidejte následující **číslo** nastavení v **stránka nastavení**:
+Přidejte následující **číslo** nastavení **stránka nastavení**:
 
-| Zobrazovaný název    | Název pole     | Jednotky | Počet desetinných míst | Minimum | Maximum  | Počáteční |
+| Zobrazovaný název    | Název pole     | Jednotky | Desetinná místa | Minimum | Maximum  | Počáteční |
 | --------------- | -------------- | ----- | -------- | --- | ---- | ------- |
-| Ventilátor rychlosti       | fanSpeed       | ot. / min   | 0        | 0   | 3000 | 0       |
+| Ventilátor rychlost       | fanSpeed       | ot. / min   | 0        | 0   | 3000 | 0       |
 | Nastavená teplota | setTemperature | F     | 0        | 20  | 200  | 80      |
 
-Název pole zadejte přesně tak, jak je znázorněno v tabulce do šablony zařízení. Pokud se názvy polí neshodují, zařízení nelze získat hodnotu nastavení.
+Pole Název zadejte přesně tak, jak je znázorněno v tabulce do šablony zařízení. Pokud se názvy polí nejsou shodné, zařízení nelze získat hodnota nastavení.
 
-### <a name="add-a-real-device"></a>Přidání skutečného zařízení
+## <a name="add-a-real-device"></a>Přidání skutečného zařízení
 
-V aplikaci Azure IoT centrální přidáte skutečné zařízení ze zařízení šablony můžete vytvořit a poznamenejte si připojovací řetězec zařízení. Další informace najdete v tématu [přidat skutečné zařízení Azure IoT centrální aplikace](tutorial-add-device.md)
+V aplikaci Azure IoT Central přidání skutečné zařízení ze šablony zařízení můžete vytvořit a poznamenejte si připojovací řetězec zařízení. Další informace najdete v tématu [skutečné zařízení přidat do aplikace Azure IoT Central](tutorial-add-device.md)
 
-## <a name="create-a-nodejs-application"></a>Vytvoření aplikace Node.js
+### <a name="create-a-nodejs-application"></a>Vytvoření aplikace Node.js
 
 Následující kroky ukazují, jak vytvořit klientskou aplikaci, která implementuje skutečné zařízení, které jste přidali do aplikace.
 
 1. Na počítači vytvořte složku s názvem `connected-air-conditioner-adv`. Přejděte do této složky ve vašem prostředí příkazového řádku.
 
-1. K chybě při inicializaci projekt Node.js, spusťte následující příkazy:
+1. Inicializace projektu Node.js, spusťte následující příkazy:
 
     ```cmd/sh
     npm init
@@ -127,9 +129,9 @@ Následující kroky ukazují, jak vytvořit klientskou aplikaci, která impleme
     var client = clientFromConnectionString(connectionString);
     ```
 
-    Aktualizujte zástupný symbol `{your device connection string}` připojovacím řetězcem zařízení. Tato hodnota na stránce podrobností připojení zkopírovat přidali skutečné zařízení. V této ukázce jsme inicializovat `targetTemperature` na nulu, můžete volitelně provést aktuální při čtení ze zařízení nebo hodnota z dvojče zařízení. 
+    Aktualizujte zástupný text `{your device connection string}` vaším připojovacím řetězcem zařízení. Tuto hodnotu na stránce podrobností připojení kopírovat, pokud jste přidali skutečné zařízení. V této ukázce jsme inicializovat `targetTemperature` na nulu, můžete volitelně provést aktuální čtení ze zařízení nebo hodnotu z dvojčete zařízení. 
 
-1. Pokud chcete odeslat do aplikace Azure IoT centrální měření telemetrických dat, stavu a událostí, přidejte do souboru následující funkce:
+1. K odesílání telemetrických dat, stavu a událostí měření do aplikace Azure IoT Central, přidejte následující funkci k souboru:
 
     ```javascript
     // Send device measurements.
@@ -151,7 +153,7 @@ Následující kroky ukazují, jak vytvořit klientskou aplikaci, která impleme
     }
     ```
 
-    1. Pokud chcete odeslat do aplikace Azure IoT centrální vlastnosti zařízení, do souboru přidejte následující funkce:
+    1. Vlastnosti zařízení odesílat do aplikace Azure IoT Central, do souboru přidejte následující funkci:
 
     ```javascript
     // Send device properties.
@@ -165,7 +167,7 @@ Následující kroky ukazují, jak vytvořit klientskou aplikaci, která impleme
     }
     ```
 
-1. K definování nastavení, které zařízení reaguje na, přidejte následující definice:
+1. Chcete-li definovat nastavení, která odpovídá vaše zařízení, přidejte následující definice:
 
     ```javascript
     // Add any settings your device supports,
@@ -191,7 +193,7 @@ Následující kroky ukazují, jak vytvořit klientskou aplikaci, která impleme
     };
     ```
 
-1. Pro zpracování aktualizované nastavení z vaší aplikace Azure IoT centrální, přidejte do souboru následující:
+1. Pro zpracování aktualizované nastavení aplikace Azure IoT Central, přidejte do souboru následující:
 
     ```javascript
     // Handle settings changes that come from Azure IoT Central via the device twin.
@@ -218,7 +220,7 @@ Následující kroky ukazují, jak vytvořit klientskou aplikaci, která impleme
     }
     ```
 
-1. Přidejte následující příkaz a dokončete připojení ke službě Azure IoT centrální a propojte funkce v klientském kódu:
+1. Přidejte následující text do dokončete připojení ke službě Azure IoT Central a propojení funkcí v klientském kódu:
 
     ```javascript
     // Handle device connection to Azure IoT Central.
@@ -249,7 +251,7 @@ Následující kroky ukazují, jak vytvořit klientskou aplikaci, která impleme
     client.open(connectCallback);
     ```
 
-## <a name="run-your-nodejs-application"></a>Spusťte aplikaci Node.js
+## <a name="run-your-nodejs-application"></a>Spustit aplikaci v Node.js
 
 V prostředí příkazového řádku spusťte následující příkaz:
 
@@ -257,9 +259,9 @@ V prostředí příkazového řádku spusťte následující příkaz:
 node connectedAirConditionerAdv.js
 ```
 
-Jako operátor v aplikaci Azure IoT centrální pro skutečné zařízení můžete:
+Jako operátor v aplikaci Azure IoT Central pro skutečné zařízení můžete:
 
-* Zobrazit telemetrii na **měření** stránky:
+* Zobrazení telemetrických dat na **měření** stránky:
 
     ![Zobrazení telemetrických dat](media/howto-connect-nodejs/viewtelemetry.png)
 
@@ -267,12 +269,12 @@ Jako operátor v aplikaci Azure IoT centrální pro skutečné zařízení můž
 
     ![Zobrazení vlastností zařízení](media/howto-connect-nodejs/viewproperties.png)
 
-* Nastavit ventilátor rychlost a cíle teploty z **nastavení** stránky.
+* Nastavte ventilátor rychlost a cíl teploty od **nastavení** stránky.
 
-    ![Ventilátor rychlost sady](media/howto-connect-nodejs/setfanspeed.png)
+    ![Ventilátor rychlost set](media/howto-connect-nodejs/setfanspeed.png)
 
 ## <a name="next-steps"></a>Další postup
 
-Teď, když jste se naučili jak připojit obecné Node.js klienta aplikace Azure IoT centrální, tady jsou navrhované další kroky:
-* [Příprava a připojení Raspberry Pi](howto-connect-raspberry-pi-python.md)
+Teď, když jste se naučili, jak připojit obecného klienta Node.js do aplikace Azure IoT Central, tady jsou další navrhované kroky:
+* [Příprava a připojte Raspberry Pi](howto-connect-raspberry-pi-python.md)
 <!-- Next how-tos in the sequence -->

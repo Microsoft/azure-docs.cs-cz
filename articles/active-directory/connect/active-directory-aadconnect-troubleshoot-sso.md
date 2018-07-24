@@ -1,5 +1,5 @@
 ---
-title: 'Azure Active Directory Connect: Řešení potíží s bezproblémové jednotné přihlašování | Microsoft Docs'
+title: 'Azure Active Directory Connect: Řešení potíží s bezproblémové jednotné přihlašování | Dokumentace Microsoftu'
 description: Toto téma popisuje postupy řešení potíží s Azure Active Directory bezproblémové jednotné přihlašování
 services: active-directory
 author: billmath
@@ -9,88 +9,88 @@ ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
 ms.workload: identity
 ms.topic: article
-ms.date: 06/28/2018
+ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4df60668f6b9aa0afb2203fa59788c47e2ffaefb
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: ba8392509f47ae91525841966d992c3ddfd9cd52
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37110885"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39216372"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Řešení potíží s Azure Active Directory bezproblémové jednotné přihlašování
 
-Tento článek vám pomůže najít informace o běžné problémy týkající se služby Azure Active Directory (Azure AD) bezproblémové jednotné přihlašování (SSO bezproblémové) k řešení potíží.
+Tento článek vám pomůže najít řešení potíží s informace o běžných problémech týkajících se služby Azure Active Directory (Azure AD) bezproblémové jednotné přihlašování (bezproblémové jednotné přihlašování).
 
 ## <a name="known-issues"></a>Známé problémy
 
-- V určitých případech povolení jednotného přihlašování bezproblémové může trvat až 30 minut.
-- Pokud zakázat a znovu povolit bezproblémové jednotného přihlašování na váš klient, nebudou uživatelé získat jeden přihlašování dokud jejich uložené v mezipaměti lístky protokolu Kerberos, obvykle platný pro 10 hodin, vypršela.
+- V několika případech povolení bezproblémového jednotného přihlašování může trvat až 30 minut.
+- Je-li zakázat a znovu povolit bezproblémového jednotného přihlašování ve svém tenantovi, nebudou uživatelé získají jednotné přihlašování do své mezipaměti lístky protokolu Kerberos, obvykle platný po dobu 10 hodin, platnost vypršela.
 - Podpora prohlížeče Microsoft Edge není k dispozici.
-- Pokud bezproblémové jednotného přihlašování k úspěšné, uživatel nemá možnost vybrat **zůstat přihlášeni**. Z důvodu toto chování služby SharePoint a OneDrive scénáře mapování nefungují.
-- Klienti Office nižší než verze 16.0.8730.xxxx nepodporují neinteraktivnímu přihlašování pomocí bezproblémové jednotné přihlašování. U těchto klientů musí uživatelé zadat svá uživatelská jména, ale není hesla k přihlášení.
-- Bezproblémové SSO nefunguje v privátním režimu procházení na Firefox.
-- Po zapnutí rozšířeného chráněný režim bezproblémové jednotného přihlašování k nefunguje v aplikaci Internet Explorer.
-- Bezproblémové SSO nefunguje v mobilních prohlížečích na iOS a Android.
-- Pokud uživatel je součástí příliš mnoho skupin ve službě Active Directory, lístek protokolu Kerberos uživatele budou pravděpodobně příliš velký pro zpracování, a to způsobí, že bezproblémové jednotného přihlašování k selhání. Požadavky služby Azure AD HTTPS může mít záhlaví s maximální velikost souboru 16 KB; Lístky protokolu Kerberos musí být mnohem menší než počet zohlednit další služby Azure AD artefaktů, jako jsou soubory cookie. Naše doporučení je snížit členství uživatele ve skupině a zkuste to znovu.
-- Pokud se synchronizace 30 nebo více doménových struktur služby Active Directory, nelze povolit bezproblémové jednotné přihlašování přes Azure AD Connect. Jako alternativní řešení můžete [ručně povolit](#manual-reset-of-azure-ad-seamless-sso) funkci na klientovi.
-- Přidat adresu URL služby Azure AD (https://autologon.microsoftazuread-sso.com) do zóny důvěryhodných serverů místo zóny místního intranetu *blokuje uživatelům v přihlašování*.
-- Zákaz použití **RC4_HMAC_MD5** typ šifrování pro protokol Kerberos v nastaveních služby Active Directory poruší bezproblémové jednotné přihlašování. V nástroji vaší Editor správy zásad skupiny zkontrolujte, zda hodnota zásady pro **RC4_HMAC_MD5** pod **konfigurace počítače -> Nastavení systému Windows -> Nastavení zabezpečení -> Místní zásady -> Možnosti zabezpečení - > "Zabezpečení sítě: Konfigurace povolená pro protokol Kerberos šifrování typu"** "Povolen".
+- Pokud bude úspěšné bezproblémového jednotného přihlašování, uživatel nemá možnost vybrat **neodhlašovat**. Kvůli tomuto chování [Sharepointu a Onedrivu mapování scénářů](https://support.microsoft.com/help/2616712/how-to-configure-and-to-troubleshoot-mapped-network-drives-that-connec) nefungují.
+- Klienty Office 365 Win32 (Outlook, Word, Excel a jiné) s verze 16.0.8730.xxxx a vyšší jsou podporovány při použití toku jako neinteraktivní. Jiné verze nejsou podporovány. Tyto verze budou uživatelé zadávat svá uživatelská jména, ale ne hesla k přihlášení. Pro OneDrive, budete muset aktivovat [Onedrivu bezobslužné konfiguraci funkce](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894) bezobslužné možnosti přihlašování.
+- Bezproblémové jednotné přihlašování nefunguje v privátním režimu procházení ve Firefoxu.
+- Bezproblémové jednotné přihlašování v aplikaci Internet Explorer nebude fungovat, pokud je zapnuté rozšířené chráněný režim.
+- Bezproblémové jednotné přihlašování nefunguje pro mobilní prohlížeče na zařízení s iOS a Android.
+- Pokud je uživatel součástí příliš mnoho skupin ve službě Active Directory, lístku Kerberos uživatele budou pravděpodobně příliš velký pro zpracování, a to způsobí, že bezproblémového jednotného přihlašování k selhání. Požadavky služby Azure AD HTTPS může obsahovat záhlaví a maximální velikost 50 KB; Lístky protokolu Kerberos musí být menší než toto omezení tak, aby vyhovovaly jiné artefakty Azure AD (obvykle 2 – 5 KB) jako jsou soubory cookie. Naše doporučení je omezit uživatele členství ve skupinách a zkuste to znovu.
+- Pokud se synchronizace 30 nebo více doménovými strukturami Active Directory, nelze povolit bezproblémového jednotného přihlašování pomocí služby Azure AD Connect. Jako alternativní řešení můžete [ručně povolit](#manual-reset-of-azure-ad-seamless-sso) funkci ve vašem tenantovi.
+- Přidat adresu URL služby Azure AD (https://autologon.microsoftazuread-sso.com) do zóny důvěryhodných serverů místo zóny místního intranetu *blokuje uživatele z přihlášení*.
+- Zákaz použití **RC4_HMAC_MD5** typ šifrování pro protokol Kerberos v nastavení služby Active Directory přeruší bezproblémového jednotného přihlašování. V nástroji Editor správy zásad skupiny Ujistěte se, že hodnota zásad pro **RC4_HMAC_MD5** pod **konfigurace počítače -> Nastavení Windows -> Nastavení zabezpečení -> Místní zásady -> Možnosti zabezpečení – > "Zabezpečení sítě: konfigurovat typy šifrování povolené pro protokol Kerberos"** je "povoleno".
 
 ## <a name="check-status-of-feature"></a>Zkontrolujte stav funkce
 
-Zajistěte, aby funkce jednotného přihlašování bezproblémové stále **povoleno** na klientovi. Stav můžete zkontrolovat přechodem na **Azure AD Connect** v podokně [centra pro správu Azure Active Directory](https://aad.portal.azure.com/).
+Ujistěte se, že funkce bezproblémového jednotného přihlašování je stále **povoleno** ve svém tenantovi. Stav můžete zkontrolovat tak, že přejdete **Azure AD Connect** v podokně [centra pro správu Azure Active Directory](https://aad.portal.azure.com/).
 
-![Centrum pro správu Azure Active Directory: podokně Azure AD Connect](./media/active-directory-aadconnect-sso/sso10.png)
+![Centrum pro správu Azure Active Directory: podokně služby Azure AD Connect](./media/active-directory-aadconnect-sso/sso10.png)
 
-Klikněte na Zobrazit všechny doménových struktur služby AD, které jsou zapnuty pro bezproblémové jednotné přihlašování.
+Klikněte na Zobrazit všechny doménové struktury AD, které jsou zapnuty pro bezproblémové jednotné přihlašování.
 
-![Centrum pro správu Azure Active Directory: podokně bezproblémové jednotného přihlašování](./media/active-directory-aadconnect-sso/sso13.png)
+![Centrum pro správu Azure Active Directory: podokně bezproblémového jednotného přihlašování](./media/active-directory-aadconnect-sso/sso13.png)
 
-## <a name="sign-in-failure-reasons-in-the-azure-active-directory-admin-center-needs-a-premium-license"></a>Chyba přihlášení z důvodů v Centru správy služby Azure Active Directory (potřebuje licenci Premium)
+## <a name="sign-in-failure-reasons-in-the-azure-active-directory-admin-center-needs-a-premium-license"></a>Důvody selhání přihlášení v Centru pro správu Azure Active Directory (potřebuje licenci Premium)
 
-Pokud váš klient má licenci Azure AD Premium s ním spojená, můžete také prohlédnout [přihlašovací aktivita sestavy](../active-directory-reporting-activity-sign-ins.md) v [centra pro správu Azure Active Directory](https://aad.portal.azure.com/).
+Pokud váš tenant licenci Azure AD Premium s ním spojená, můžete také prohlédnout [sestavy aktivit přihlašování](../active-directory-reporting-activity-sign-ins.md) v [centra pro správu Azure Active Directory](https://aad.portal.azure.com/).
 
-![Centrum pro správu Azure Active Directory: Sestava přihlášení](./media/active-directory-aadconnect-sso/sso9.png)
+![Centrum pro správu Azure Active Directory: přihlášení](./media/active-directory-aadconnect-sso/sso9.png)
 
-Přejděte do **Azure Active Directory** > **přihlášení** v [centra pro správu Azure Active Directory](https://aad.portal.azure.com/)a potom vyberte přihlašovací aktivity konkrétního uživatele. Vyhledejte **kód chyby SIGN-IN** pole. Mapování hodnotu tohoto pole na příčinu selhání a řešení v následující tabulce:
+Přejděte do **Azure Active Directory** > **přihlášení** v [centra pro správu Azure Active Directory](https://aad.portal.azure.com/)a pak vyberte aktivit přihlašování konkrétního uživatele. Hledat **Přihlašovací chyba kódu** pole. Mapování hodnotu pole Důvod selhání a řešení pomocí následující tabulky:
 
-|Kód chyby přihlášení|Důvod selhání přihlášení|Řešení
+|Kód chyby přihlášení|Příčina chyby přihlášení|Řešení
 | --- | --- | ---
 | 81001 | Lístek Kerberos uživatele je příliš velký. | Snižte počet členství uživatele ve skupinách a zkuste to znovu.
-| 81002 | Nelze ověřit uživatele lístek protokolu Kerberos. | Najdete v článku [řešení potíží s kontrolní seznam](#troubleshooting-checklist).
-| 81003 | Nelze ověřit uživatele lístek protokolu Kerberos. | Najdete v článku [řešení potíží s kontrolní seznam](#troubleshooting-checklist).
-| 81004 | Pokus o ověření protokolu Kerberos selhal. | Najdete v článku [řešení potíží s kontrolní seznam](#troubleshooting-checklist).
-| 81008 | Nelze ověřit uživatele lístek protokolu Kerberos. | Najdete v článku [řešení potíží s kontrolní seznam](#troubleshooting-checklist).
-| 81009 | Nelze ověřit uživatele lístek protokolu Kerberos. | Najdete v článku [řešení potíží s kontrolní seznam](#troubleshooting-checklist).
-| 81010 | Bezproblémové jednotné přihlašování selhalo, protože vypršela platnost lístku Kerberos uživatele nebo je neplatný. | Uživatel potřebuje k přihlášení ze zařízení připojeného k doméně uvnitř firemní sítě.
-| 81011 | Nepodařilo se najít objekt uživatele na základě informací v lístku protokolu Kerberos uživatele. | Použijte Azure AD Connect k synchronizaci informací o uživateli do služby Azure AD.
-| 81012 | Uživatel pokusu o přihlášení k Azure AD se liší od uživatele, který je přihlášený do zařízení. | Uživatel musí přihlásit z jiného zařízení.
-| 81013 | Nepodařilo se najít objekt uživatele na základě informací v lístku protokolu Kerberos uživatele. |Použijte Azure AD Connect k synchronizaci informací o uživateli do služby Azure AD. 
+| 81002 | Nelze ověřit lístek Kerberos uživatele. | Zobrazit [řešení potíží s kontrolní seznam](#troubleshooting-checklist).
+| 81003 | Nelze ověřit lístek Kerberos uživatele. | Zobrazit [řešení potíží s kontrolní seznam](#troubleshooting-checklist).
+| 81004 | Pokus o ověření protokolu Kerberos selhal. | Zobrazit [řešení potíží s kontrolní seznam](#troubleshooting-checklist).
+| 81008 | Nelze ověřit lístek Kerberos uživatele. | Zobrazit [řešení potíží s kontrolní seznam](#troubleshooting-checklist).
+| 81009 | Nelze ověřit lístek Kerberos uživatele. | Zobrazit [řešení potíží s kontrolní seznam](#troubleshooting-checklist).
+| 81010 | Bezproblémové jednotné přihlašování selhalo, protože vypršela platnost lístku Kerberos uživatele nebo je neplatný. | Uživatel musí přihlásit ze zařízení připojeného k doméně uvnitř firemní sítě.
+| 81011 | Nepovedlo se najít objekt uživatele na základě informací v lístku Kerberos uživatele. | Pomocí služby Azure AD Connect synchronizuje informace uživatele do služby Azure AD.
+| 81012 | Uživatel pokoušel se přihlásit ke službě Azure AD se liší od uživatele, který je přihlášený do zařízení. | Uživatel musí přihlásit z jiného zařízení.
+| 81013 | Nepovedlo se najít objekt uživatele na základě informací v lístku Kerberos uživatele. |Pomocí služby Azure AD Connect synchronizuje informace uživatele do služby Azure AD. 
 
 ## <a name="troubleshooting-checklist"></a>Řešení potíží s kontrolní seznam
 
-Následující kontrolní seznam využít k řešení problémů bezproblémové jednotné přihlašování:
+Použijte následující kontrolní seznam k řešení problémů bezproblémového jednotného přihlašování:
 
-- Ujistěte se, povolení funkce bezproblémové jednotné přihlašování v Azure AD Connect. Nelze-li povolit funkci (například z důvodu blokované port), ujistěte se, že budete mít vše [požadavky](active-directory-aadconnect-sso-quick-start.md#step-1-check-the-prerequisites) na místě.
-- Pokud jste povolili obě [Azure AD Join](../active-directory-azureadjoin-overview.md) a bezproblémové jednotného přihlašování na váš klient, ujistěte se, že problém není s Azure AD Join. Jednotné přihlašování z Azure AD Join má přednost před bezproblémové jednotné přihlašování, pokud zařízení není registrované s Azure AD i připojený k doméně. Pomocí jednotného přihlašování z Azure AD Join uživateli se zobrazí na dlaždici přihlášení, která říká "Připojení k Windows".
-- Ujistěte se, že adresa URL služby Azure AD (https://autologon.microsoftazuread-sso.com) je součástí nastavení zóny intranetu uživatele.
-- Ujistěte se, že o firemní zařízení je připojený k doméně služby Active Directory.
-- Ujistěte se, že je uživatel přihlášen do zařízení přes účet domény služby Active Directory.
-- Ujistěte se, že účet uživatele z doménové struktury služby Active Directory, kde byl bezproblémové jednotného přihlašování k nastavení.
-- Ujistěte se, že zařízení je připojené k podnikové síti.
-- Ujistěte se, že je zařízení čas synchronizovaný s časem ve službě Active Directory a řadiče domény a že jsou během pěti minut.
-- Ujistěte se, že `AZUREADSSOACCT` účet počítače je přítomen a povolené v každé doménové struktuře AD, které chcete bezproblémové SSO povolena. 
-- Seznam existujících lístků protokolu Kerberos na zařízení pomocí `klist` příkazu z příkazového řádku. Ujistěte se, že lístky vydané pro `AZUREADSSOACCT` účet počítače jsou k dispozici. Lístky protokolu Kerberos uživatelů jsou obvykle platné po dobu 10 hodin. Můžete mít různá nastavení ve službě Active Directory.
-- Pokud zakázána a znovu povolena bezproblémové jednotného přihlašování na váš klient, nebudou uživatelé získat jeden přihlašování dokud vypršela jejich uložené v mezipaměti lístky protokolu Kerberos.
-- Vyprázdnění existujících lístků protokolu Kerberos ze zařízení pomocí `klist purge` příkaz a akci opakujte.
-- Pokud chcete zjistit, zda existují problémy související s JavaScript, projděte si protokoly konzoly prohlížeče (v části **Developer Tools**).
-- Zkontrolujte [protokoly řadiče domény](#domain-controller-logs).
+- Povolte funkci bezproblémového jednotného přihlašování ve službě Azure AD Connect. Pokud nelze povolit funkci (například kvůli zablokování portů), ujistěte se, že budete mít vše [požadavky](active-directory-aadconnect-sso-quick-start.md#step-1-check-the-prerequisites) na místě.
+- Pokud jste povolili obě [Azure AD Join](../active-directory-azureadjoin-overview.md) a bezproblémového jednotného přihlašování ve svém tenantovi, ujistěte se, že problém není s Azure AD Join. Jednotné přihlašování z Azure AD Join má přednost před bezproblémového jednotného přihlašování, pokud je zařízení registrované v Azure AD i připojených k doméně. Uživateli se zobrazí s jednotným Přihlašováním z Azure AD Join dlaždici přihlášení s textem "Připojení k Windows".
+- Ujistěte se, že adresa URL služby Azure AD (https://autologon.microsoftazuread-sso.com) je součástí nastavení zóny Intranet uživatele.
+- Ujistěte se, že podnikových zařízení je připojené k doméně služby Active Directory.
+- Ujistěte se, že uživatel je přihlášen k zařízení pomocí účtu domény služby Active Directory.
+- Ujistěte se, že uživatelský účet je z doménové struktury služby Active Directory, kde byl bezproblémové jednotné přihlašování nastavit.
+- Ujistěte se, že je zařízení připojené k podnikové síti.
+- Ujistěte se, že čas zařízení synchronizované s časem v Active Directory a řadiče domény a že jsou do pěti minut od sebe navzájem.
+- Ujistěte se, `AZUREADSSOACCT` účet počítače je k dispozici a povoleno v každé doménové struktuře AD, který chcete bezproblémového jednotného přihlašování povolená. Pokud účet počítače se odstranil nebo chybí, můžete použít [rutin prostředí PowerShell](#manual-reset-of-the-feature) je vytvořit znovu.
+- Seznam existujících lístků protokolu Kerberos na zařízení s použitím `klist` z příkazového řádku. Ujistěte se, že lístky vydané pro `AZUREADSSOACCT` účet počítače jsou k dispozici. Lístky protokolu Kerberos uživatele jsou obvykle platné po dobu 10 hodin. Můžete mít různá nastavení ve službě Active Directory.
+- Je-li zakázána a znovu povolit bezproblémového jednotného přihlašování ve svém tenantovi, nebudou uživatelé získají jednotné přihlašování do své mezipaměti lístky protokolu Kerberos vypršela.
+- Vymazání existujících lístků protokolu Kerberos ze zařízení s použitím `klist purge` příkazu a zkuste to znovu.
+- Chcete-li zjistit, zda jsou problémy související s jazyka JavaScript, zkontrolovat protokoly konzoly prohlížeče (v části **vývojářské nástroje**).
+- Zkontrolujte [protokolu řadiče domény](#domain-controller-logs).
 
 ### <a name="domain-controller-logs"></a>Protokoly řadiče domény
 
-Pokud povolíte auditování úspěšných na vašem řadiči domény a potom pokaždé, když se uživatel přihlásí pomocí bezproblémové jednotné přihlašování, položku zabezpečení se zaznamená do protokolu událostí. Tyto události zabezpečení můžete najít pomocí následujícího dotazu. (Vyhledejte událost **4769** přidružené k účtu počítače **AzureADSSOAcc$**.)
+Pokud povolíte auditování úspěšných na vašem řadiči domény a pak pokaždé, když se uživatel přihlásí pomocí bezproblémového jednotného přihlašování, záznam zabezpečení se zaznamená do protokolu událostí. Tyto události zabezpečení získáte pomocí následujícího dotazu. (Vyhledejte událost **4769** přidružené k účtu počítače **AzureADSSOAcc$**.)
 
 ```
     <QueryList>
@@ -102,31 +102,31 @@ Pokud povolíte auditování úspěšných na vašem řadiči domény a potom po
 
 ## <a name="manual-reset-of-the-feature"></a>Ruční vynulování funkce
 
-Pokud vám nepomohly řešení potíží, můžete ručně obnovit funkci na klientovi. Proveďte tyto kroky na místní server, kde spouštíte Azure AD Connect.
+Pokud se vám nepomohly řešení potíží, můžete ručně obnovit funkci ve svém tenantovi. Proveďte tyto kroky na místní server, pokud používáte Azure AD Connect.
 
-### <a name="step-1-import-the-seamless-sso-powershell-module"></a>Krok 1: Naimportujte modul Powershellu bezproblémové jednotného přihlašování
+### <a name="step-1-import-the-seamless-sso-powershell-module"></a>Krok 1: Naimportujte modul Powershellu bezproblémové jednotné přihlašování
 
-1. Stáhněte a nainstalujte [Microsoft Online Services Sign-In Assistant](http://go.microsoft.com/fwlink/?LinkID=286152).
-2. Stáhněte a nainstalujte [64-bit modulu Azure Active Directory pro prostředí Windows PowerShell](http://go.microsoft.com/fwlink/p/?linkid=236297).
-3. Vyhledejte `%programfiles%\Microsoft Azure Active Directory Connect` složky.
-4. Naimportujte modul Powershellu bezproblémové jednotného přihlašování pomocí tohoto příkazu: `Import-Module .\AzureADSSO.psd1`.
+1. Stáhněte a nainstalujte [Microsoft Online Services přihlášení pomocníka](http://go.microsoft.com/fwlink/?LinkID=286152).
+2. Stáhněte a nainstalujte [64bitová verze modulu Azure Active Directory pro prostředí Windows PowerShell](http://go.microsoft.com/fwlink/p/?linkid=236297).
+3. Přejděte `%programfiles%\Microsoft Azure Active Directory Connect` složky.
+4. Naimportujte modul Powershellu bezproblémové jednotné přihlašování pomocí tohoto příkazu: `Import-Module .\AzureADSSO.psd1`.
 
-### <a name="step-2-get-the-list-of-active-directory-forests-on-which-seamless-sso-has-been-enabled"></a>Krok 2: Získání seznamu doménových struktur služby Active Directory, u kterých je povolena bezproblémové jednotného přihlašování
+### <a name="step-2-get-the-list-of-active-directory-forests-on-which-seamless-sso-has-been-enabled"></a>Krok 2: Získání seznamu doménových struktur služby Active Directory, na kterých se povolila bezproblémového jednotného přihlašování
 
-1. Spusťte prostředí PowerShell jako správce. V prostředí PowerShell, zavolejte `New-AzureADSSOAuthenticationContext`. Po zobrazení výzvy zadejte přihlašovací údaje globálního správce vašeho klienta.
-2. Volání `Get-AzureADSSOStatus`. Tento příkaz vám poskytne seznam doménové struktury služby Active Directory (podívejte se na seznamu "Domény") na které tato funkce povolená.
+1. Spusťte PowerShell jako správce. V prostředí PowerShell, zavolejte `New-AzureADSSOAuthenticationContext`. Po zobrazení výzvy zadejte přihlašovací údaje globálního správce vašeho tenanta.
+2. Volání `Get-AzureADSSOStatus`. Tento příkaz vám poskytne seznam doménových struktur služby Active Directory (pohled na seznamu "Domény") na které tato funkce povolená.
 
-### <a name="step-3-disable-seamless-sso-for-each-active-directory-forest-where-youve-set-up-the-feature"></a>Krok 3: Zakázat bezproblémové jednotného přihlašování pro každou doménovou strukturu služby Active Directory, kde jste nastavili funkci
+### <a name="step-3-disable-seamless-sso-for-each-active-directory-forest-where-youve-set-up-the-feature"></a>Krok 3: Zakázání bezproblémového jednotného přihlašování pro každou doménovou strukturu služby Active Directory, kde jste tuto funkci nastavili
 
-1. Volání `$creds = Get-Credential`. Po zobrazení výzvy zadejte přihlašovací údaje správce domény určený doménové struktury služby Active Directory.
-2. Volání `Disable-AzureADSSOForest -OnPremCredentials $creds`. Tento příkaz odebere `AZUREADSSOACCT` účet počítače z místního řadiče domény pro tento konkrétní doménovou strukturu služby Active Directory.
-3. Opakujte předchozí kroky pro každou doménovou strukturu služby Active Directory, kde jste nastavili funkci.
+1. Volání `$creds = Get-Credential`. Po zobrazení výzvy zadejte přihlašovací údaje správce domény pro určené doménové struktuře služby Active Directory.
+2. Volání `Disable-AzureADSSOForest -OnPremCredentials $creds`. Tento příkaz odebere `AZUREADSSOACCT` účet počítače z místního kontroleru domény pro tento konkrétní doménovou strukturu služby Active Directory.
+3. Zopakujte předchozí kroky pro každou doménovou strukturu služby Active Directory, kde jste tuto funkci nastavili.
 
-### <a name="step-4-enable-seamless-sso-for-each-active-directory-forest"></a>Krok 4: Povolení bezproblémové jednotného přihlašování pro každou doménovou strukturu služby Active Directory
+### <a name="step-4-enable-seamless-sso-for-each-active-directory-forest"></a>Krok 4: Povolení bezproblémového jednotného přihlašování pro každou doménovou strukturu služby Active Directory
 
-1. Volání `Enable-AzureADSSOForest`. Po zobrazení výzvy zadejte přihlašovací údaje správce domény určený doménové struktury služby Active Directory.
+1. Volání `Enable-AzureADSSOForest`. Po zobrazení výzvy zadejte přihlašovací údaje správce domény pro určené doménové struktuře služby Active Directory.
 2. Opakujte předchozí krok pro každou doménovou strukturu služby Active Directory, ve které chcete nastavit tuto funkci.
 
-### <a name="step-5-enable-the-feature-on-your-tenant"></a>Krok 5. Povolit tuto funkci v klientovi
+### <a name="step-5-enable-the-feature-on-your-tenant"></a>Krok 5. Povolení této funkce na tenantovi
 
-Chcete-li zapnout funkci na klientovi, volejte `Enable-AzureADSSO` a zadejte **true** na `Enable:` řádku.
+Chcete-li zapnout funkci ve vašem tenantovi, zavolejte `Enable-AzureADSSO` a zadejte **true** na `Enable:` řádku.

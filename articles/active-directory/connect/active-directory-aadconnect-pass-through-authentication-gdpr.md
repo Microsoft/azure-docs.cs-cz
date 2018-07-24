@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/21/2018
+ms.date: 07/23/2018
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: f53f8ffcf8354d35fa552f099302456fa5226ca8
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: b785b23b41981efeb7fe160a18dc0c3c38f3772f
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37915873"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39215386"
 ---
 # <a name="user-privacy-and-azure-active-directory-pass-through-authentication"></a>Předávací ověřování ochrana osobních údajů uživatelů a Azure Active Directory
 
@@ -75,7 +75,7 @@ Chcete-li zobrazit protokoly vztahujících se k agentovi předávací ověřov�
 Měli byste pravidelně zkontrolovat obsah **%ProgramData%\Microsoft\Azure AD Connect Agent\Trace ověřování\**  a odstraňte její obsah této složky každých 48 hodin. 
 
 >[!IMPORTANT]
->Pokud je spuštěna Služba agenta ověřování, není možné odstranit aktuální soubor protokolu ve složce. Zastavte službu než to zkusíte znovu. Aby se zabránilo neúspěšných přihlášení uživatele, měli byste mít už nakonfigurovaný předávací ověřování pro [vysoké dostupnosti](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability).
+>Pokud je spuštěna Služba agenta ověřování, není možné odstranit aktuální soubor protokolu ve složce. Zastavte službu než to zkusíte znovu. Aby se zabránilo neúspěšných přihlášení uživatele, měli byste mít už nakonfigurovaný předávací ověřování pro [vysoké dostupnosti](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability).
 
 Můžete zkontrolovat a odstranit tyto soubory pomocí Průzkumníka Windows, nebo můžete použít následující skript provádět potřebné akce:
 

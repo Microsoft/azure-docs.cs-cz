@@ -3,23 +3,18 @@ title: Stav Azure Analytics podrobného plánu
 description: Pokyny pro nasazení podrobný plán Analytics stavu HIPAA/HITRUST
 services: security
 documentationcenter: na
-author: jomolesk
-manager: mbaldwin
-editor: tomsh
+author: RajeevRangappa
 ms.assetid: 26566e0a-0a54-49f4-a91d-48e20b7cef71
 ms.service: security
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/27/2018
-ms.author: jomolesk
-ms.openlocfilehash: f58466bb4cc90823d8e75e0371b400ee674e8b5d
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.date: 07/23/2018
+ms.author: rarangap
+ms.openlocfilehash: b20da0f31f197ed23aa73b185d127a6d5f2dbd8a
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37113227"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214937"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Zabezpečení Azure a dodržování předpisů – Data o stavu HIPAA/HITRUST a AI
 
@@ -31,7 +26,7 @@ Azure zabezpečení a dodržování předpisů – Data o stavu HIPAA/HITRUST a 
 
 ![](images/components.png)
 
-Řešení je navrženo využívat formátována pomocí rychlé Healthcare Interoperability prostředky (FHIR), po celém světě standard k výměně informací o zdravotní péče elektronicky, ukázkovou datovou sadu a uloží je bezpečným způsobem. Zákazníci pak mohou využívat Azure Machine Learning využívat nástroje výkonné business intelligence a analytické nástroje ke kontrole předpovědí na ukázková data. Jako příklad takového typu, experiment, který může usnadnit Azure Machine Learning obsahuje podrobný plán ukázkovou datovou sadou, skripty a nástroje pro předpověď délky pobytu pacienta v nemocnici zařízení. 
+Řešení je navrženo využívat formátována pomocí rychlé Healthcare Interoperability prostředky (FHIR), po celém světě standard k výměně informací o zdravotní péče elektronicky, ukázkovou datovou sadu a uloží je bezpečným způsobem. Zákazníci mohou využívat Azure Machine Learning Studio pak umožní využívat nástroje výkonné business intelligence a analytické nástroje ke kontrole předpovědí na ukázková data. Jako příklad takového typu, experiment, který může usnadnit Azure Machine Learning Studio obsahuje podrobný plán ukázkovou datovou sadou, skripty a nástroje pro předpověď délky pobytu pacienta v nemocnici zařízení. 
 
 Tento podrobný plán má sloužit jako základ pro zákazníky, chcete-li upravit jejich konkrétním požadavkům, vyvíjet nové Azure se strojovým učením k řeší oba scénáře použití klinické a provozní modulární. Slouží k zabezpečení a splňovat předpisy při nasazení; Zákazníci však zodpovídají za konfigurace rolí správně a implementaci změny. Je třeba počítat s následujícím:
 
@@ -66,7 +61,7 @@ Získejte rychlý přehled toho, jak toto řešení funguje, podívejte se na to
 
 Základní architektura se skládá z následujících součástí:
 
--   **[Model hrozeb](https://aka.ms/healththreatmodel)**  komplexní rizik je součástí tm7 formátu pro použití se službou [nástroj pro modelování hrozeb Microsoftu](https://www.microsoft.com/en-us/download/details.aspx?id=49168), zobrazuje součástmi řešení, data proudí mezi a vztah důvěryhodnosti hranice. Model může pomoci zákazníkům pochopit body potenciální riziko v infrastruktuře systému při vývoji součástí machine learning nebo jiné úpravy.
+-   **[Model hrozeb](https://aka.ms/healththreatmodel)**  komplexní rizik je součástí tm7 formátu pro použití se službou [nástroj pro modelování hrozeb Microsoftu](https://www.microsoft.com/en-us/download/details.aspx?id=49168), zobrazuje součástmi řešení, data proudí mezi a vztah důvěryhodnosti hranice. Model může pomoci zákazníkům pochopit body potenciální riziko v infrastruktuře systému při vývoji součástí Machine Learning Studio nebo jiné úpravy.
 
 -   **[Zákaznická implementace matice](https://aka.ms/healthcrmblueprint)**  sešit aplikace Excel A Microsoft je uveden seznam požadavků příslušných HITRUST a vysvětluje, jak jsou zodpovědný za splnění každé z nich Microsoft a zákazníka.
 
@@ -107,7 +102,7 @@ Nemají přístup k záznamy o pacientech.
  ### <a name="data-scientist"></a>Mezi odborníky přes data
 
 
-Mezi odborníky přes data provozuje službu Azure Machine Learning. Můžete importovat, exportovat a spravovat data a spouštět sestavy. Má přístup k datům o pacientech mezi odborníky přes data, ale nemá oprávnění správce.
+Mezi odborníky přes data funguje nástroje Azure Machine Learning Studio. Můžete importovat, exportovat a spravovat data a spouštět sestavy. Má přístup k datům o pacientech mezi odborníky přes data, ale nemá oprávnění správce.
 
 -   Integrovaná přiřazení rolí: [Přispěvatel účtů úložiště](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor)
 
@@ -148,12 +143,12 @@ Auditor je vyhodnocen jako řešení pro dodržování předpisů. Jejich nemaj�
 ## <a name="example-use-case"></a>Případy použití příklad
 
 
-Tento plán je součástí případ použití příklad ukazuje, jak podrobný plán slouží k povolení strojového učení a analýz na data o stavu v cloudu. Contosoclinic je malý nemocnici nachází ve Spojených státech. Správci sítě nemocniční institucí, která chcete lépe předvídat délku pobytu pacienta v době opravňujících, aby bylo možné zvýšit efektivitu provozu a zvýšit tak kvalitu péče, které můžete zadat pomocí Azure Machine Learning.
+Tento plán je součástí případ použití příklad ukazuje, jak podrobný plán slouží k povolení strojového učení a analýz na data o stavu v cloudu. Contosoclinic je malý nemocnici nachází ve Spojených státech. Nemocniční síti chtějí správci používat Azure Machine Learning Studio lépe předvídat délku pobytu pacienta v době opravňujících, aby bylo možné zvýšit efektivitu provozu a zvýšit tak kvalitu péče, který může poskytnout.
 
 ### <a name="predicting-length-of-stay"></a>Předpověď délky pobytu
 
 
-Příklad scénáře případu použití využívá Azure Machine Learning k predikci nově dovezené pacienta délky pobytu porovnáním lékařské podrobnosti provedené v pacientů příjmu agregované historických dat z předchozí pacientů.
+Příklad scénáře případu použití využívá Azure Machine Learning Studio předpovědět nově dovezené pacienta délky pobytu porovnáním lékařské podrobnosti provedené v pacientů příjmu agregované historických dat z předchozí pacientů.
 Podrobný plán zahrnuje velké sady anonymizované zdravotnickými záznamy na trénovací a prediktivní předvedou možnosti dostupné v řešení. V produkčním nasazení by zákazníci používat jejich vlastní záznamy tak moct trénovat řešení pro přesnějších predikcí odráží jedinečné podrobnosti o jejich prostředí, zařízení a pacientů.
 
 ### <a name="users-and-roles"></a>Uživatelé a role
@@ -356,8 +351,8 @@ K dosažení úložiště dat, společné schéma rozhraní API implementované 
 ### <a name="machine-learning"></a>Machine Learning
 
 
--   [Je povoleno protokolování](/azure/machine-learning/studio/web-services-logging) pro Machine Learning web services.
-- pomocí [Machine Learning](/azure/machine-learning/desktop-workbench/experimentation-service-configuration) workbench vyžaduje vývoj experimenty, poskytující možnost predikce délky sadu řešení. [Integrace aplikace workbench](/azure/machine-learning/desktop-workbench/using-git-ml-project) pomáhají zjednodušit správu experimentů.
+-   [Je povoleno protokolování](/azure/machine-learning/studio/web-services-logging) pro Machine Learning Studio webové služby.
+- pomocí [Machine Learning Studio](/azure/machine-learning/desktop-workbench/experimentation-service-configuration) workbench vyžaduje vývoj experimenty, poskytující možnost predikce délky sadu řešení. [Integrace aplikace workbench](/azure/machine-learning/desktop-workbench/using-git-ml-project) pomáhají zjednodušit správu experimentů.
 
 ## <a name="security"></a>ZABEZPEČENÍ
 

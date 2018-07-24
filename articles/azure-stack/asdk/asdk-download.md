@@ -1,6 +1,6 @@
 ---
-title: Stažení a extrakci Azure zásobníku Development Kit (ASDK) | Microsoft Docs
-description: Popisuje postup stažení a extrakci Azure zásobníku Development Kit (ASDK).
+title: Stažení a extrakci Azure Stack Development Kit (ASDK) | Dokumentace Microsoftu
+description: Popisuje, jak stáhnout a extrahovat Azure Stack Development Kit (ASDK).
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
@@ -15,40 +15,40 @@ ms.topic: article
 ms.date: 03/16/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 0cf389c9443a9cff477b884c277d72de27769afc
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: b55bc7f6aab522a6313498b6fdccc88870796224
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
-ms.locfileid: "29975878"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213023"
 ---
-# <a name="download-and-extract-the-azure-stack-development-kit-asdk"></a>Stažení a extrakci Azure zásobníku Development Kit (ASDK)
-Jakmile ověříte, že hostitelského počítače development kit splňuje základní požadavky pro instalaci ASDK, je dalším krokem pro stažení a extrakci ASDK balíček pro nasazení získat Cloudbuilder.vhdx.
+# <a name="download-and-extract-the-azure-stack-development-kit-asdk"></a>Stažení a extrakci Azure Stack Development Kit (ASDK)
+Až se ujistíte, že hostitelského počítače development kit splňuje základní požadavky na instalaci ASDK, dalším krokem je ke stažení a extrahování balíčku pro nasazení ASDK zobrazíte Cloudbuilder.vhdx.
 
-## <a name="download-the-asdk"></a>Stažení ASDK
-1. Než začnete stahování, ujistěte se, zda počítač splňuje následující požadavky:
+## <a name="download-the-asdk"></a>Stáhněte si ASDK
+1. Před zahájením stahování, ujistěte se, že váš počítač splňuje následující požadavky:
 
-  - Počítač musí mít minimálně 60 GB volné místo na disku k dispozici na čtyři samostatné, stejné logické pevné disky kromě na disk operačního systému.
-  - [Rozhraní .NET framework 4.6 (nebo novější verze)](https://aka.ms/r6mkiy) musí být nainstalován.
+  - Počítač musí mít alespoň 60 GB volného místa k dispozici na čtyřech samostatných, stejné logické pevné disky kromě na disk s operačním systémem.
+  - [Rozhraní .NET framework 4.6 (nebo novější)](https://aka.ms/r6mkiy) musí být nainstalována.
 
-2. [Přejděte na stránku Začínáme](https://azure.microsoft.com/overview/azure-stack/try/?v=try) kde můžete stáhnout Development Kit zásobník Azure, zadejte svoje údaje a pak klikněte na tlačítko **odeslání**.
-3. Stažení a spuštění [kontrolu nasazení pro Azure zásobníku Development Kit](https://go.microsoft.com/fwlink/?LinkId=828735&clcid=0x409) skriptu kontrolu požadovaných součástí. Tento skript samostatné projde požadavcích kontroly provádí instalace pro Azure zásobníku Development Kit. Poskytuje způsob, jak potvrďte, že byly splněny požadavky na hardware a software před stažením větší balíčku pro Azure zásobníku Development Kit.
-4. V části **stáhnout software**, klikněte na tlačítko **Azure zásobníku Development Kit**.
+2. [Přejděte na stránku Začínáme](https://azure.microsoft.com/overview/azure-stack/try/?v=try) kde lze stáhnout Azure Stack Development Kit, zadejte své údaje a klikněte na **odeslat**.
+3. Stáhněte a spusťte [kontrola nasazení Azure Stack Development Kit](https://go.microsoft.com/fwlink/?LinkId=828735&clcid=0x409) skript požadovaných součástí. Tento skript samostatné prochází kontroly požadavků provádí nastavení pro Azure Stack Development Kit. Poskytuje způsob, jak potvrďte, že jsou splňuje požadavky na hardware a software, než si stáhnete balíček větší pro Azure Stack Development Kit.
+4. V části **stáhnout software**, klikněte na tlačítko **Azure Stack Development Kit**.
 
   > [!NOTE]
-  > Stahování ASDK (AzureStackDevelopmentKit.exe) je přibližně 10GB.
+  > Stažení ASDK (AzureStackDevelopmentKit.exe) je přibližně 10GB.
 
-## <a name="extract-the-asdk"></a>Extrahování ASDK
-1. Po dokončení stahování, klikněte na tlačítko **spustit** ke spuštění ASDK Self-Extractor (AzureStackDevelopmentKit.exe).
-2. Přečtěte si a přijměte zobrazených licenční smlouvy z **licenční smlouvy** Self-Extractor průvodce a potom klikněte na tlačítko **Další**.
-3. Přečtěte si informace o prohlášení o ochraně osobních údajů zobrazené na **důležité informace** Self-Extractor průvodce a potom klikněte na tlačítko **Další**.
-4. Vyberte umístění pro instalační soubory zásobník Azure extrahovat na **vyberte cílové umístění** Self-Extractor průvodce a potom klikněte na tlačítko **Další**. Výchozí umístění je *aktuální složce*\Azure zásobníku Development Kit. 
-5. Zkontrolujte souhrn na cílové umístění **připraven k extrahování** Self-Extractor průvodce, a pak klikněte na tlačítko **extrahovat** k extrakci CloudBuilder.vhdx (přibližně 25 GB) a ThirdPartyLicenses.rtf soubory. Tento proces trvat delší dobu.
-6. Zkopírovat nebo přesunout soubor CloudBuilder.vhdx kořenové jednotce C:\ (C:\CloudBuilder.vhdx) na hostitelském počítači ASDK.
+## <a name="extract-the-asdk"></a>Extrahovat ASDK
+1. Po dokončení stahování, klikněte na tlačítko **spustit** spustit vlastní Extraktor ASDK (AzureStackDevelopmentKit.exe).
+2. Přečtěte si a přijměte zobrazená licenční smlouvě se společností **licenční smlouvy** Self-Extractor průvodce a pak klikněte na stránce **Další**.
+3. Projděte si informace o prohlášení o ochraně osobních údajů zobrazené na **důležité informace** Self-Extractor průvodce a pak klikněte na stránce **Další**.
+4. Vyberte umístění pro instalační soubory služby Azure Stack extrahovat on **vyberte cílové umístění** Self-Extractor průvodce a pak klikněte na stránce **Další**. Výchozí umístění je *aktuální složce*\Azure Stack Development Kit. 
+5. Zkontrolujte souhrn na cílové umístění **připraveno k extrahování** Self-Extractor průvodce a pak klikněte na stránce **extrahovat** extrahovat CloudBuilder.vhdx (přibližně 25 GB) a ThirdPartyLicenses.rtf soubory. Tento proces trvá delší dobu.
+6. Zkopírovat nebo přesunout soubor CloudBuilder.vhdx kořen jednotky C:\ (C:\CloudBuilder.vhdx) na hostitelském počítači ASDK.
 
 > [!NOTE]
-> Po extrahování souborů, můžete odstranit. EXE a. KOŠ soubory k obnovení místa na pevném disku. Nebo můžete zálohovat tyto soubory tak, aby nemusíte znovu stáhnout soubory, pokud potřebujete znovu nasadit ASDK.
+> Po extrahování souborů můžete odstranit. Soubor EXE a. Soubory BIN obnovení místa na pevném disku. Nebo můžete tyto soubory můžete zálohovat, takže nemusíte stahovat soubory znovu, pokud budete muset znovu nasadit ASDK.
 
 
 ## <a name="next-steps"></a>Další postup
-[Příprava na hostitelském počítači ASDK](asdk-prepare-host.md)
+[Příprava hostitelském počítači ASDK](asdk-prepare-host.md)

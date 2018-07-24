@@ -1,6 +1,6 @@
 ---
 title: Shromažďování údajů o monitorování dat v Azure | Dokumentace Microsoftu
-description: Přehled monitorování dat, která se shromažďují z aplikací a služeb v Azure a nástroje umožňuje analyzovat ho.
+description: Přehled shromážděných z aplikace a služby v Azure a nástroje používané k analýzám dat monitorování.
 documentationcenter: ''
 author: bwren
 manager: carmonm
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/06/2018
 ms.author: bwren
-ms.openlocfilehash: d3ebd512f8244de74c009ac8a2936ed8e817dad9
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: efbf0907f3ed75957159c38a536bd31e88a0dbb3
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38991175"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213295"
 ---
 # <a name="collecting-monitoring-data-in-azure"></a>Shromažďování dat monitorování v Azure
-Tento článek obsahuje přehled monitorování data shromážděná z aplikací a služeb v Azure a nástroje používají k analýzám. 
+Tento článek obsahuje přehled shromážděných z aplikace a služby v Azure a nástroje používané k analýzám dat monitorování. 
 
 ## <a name="types-of-monitoring-data"></a>Typy dat monitorování
 Všechna data monitorování se vejde do jedné ze dvou základních typů, metriky nebo protokoly. Každý typ má různé vlastnosti a je nejvhodnější pro konkrétní scénáře, jak je popsáno níže.

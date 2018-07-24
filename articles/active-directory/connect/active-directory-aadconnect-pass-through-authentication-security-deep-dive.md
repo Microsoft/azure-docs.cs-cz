@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 48710bc10a57854fcbd4ffbe44bc426333baddc0
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: ad4567ffb927694872d5b86dd38833466f944ca8
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39159225"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39215080"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory předávací ověřování podrobné informace o zabezpečení
 
@@ -37,14 +37,14 @@ Zákazníky a vyřešené témata:
 Jde o aspektech zabezpečení klíče této funkce:
 - Orchard je založen na zabezpečenou architekturu s více klienty, která zajišťuje izolaci žádostí o přihlášení mezi tenanty.
 - Místních hesel se nikdy neukládají v cloudu v libovolné formě.
-- Místní ověřování agenty, které naslouchají hrozeb a reakce na, odchozí připojení z v rámci vaší sítě vytvořit pouze žádostí o ověření hesla. Není nutné k instalaci těchto agentů ověřování v hraniční síti (DMZ).
+- Místní ověřování agenty, které naslouchají hrozeb a reakce na, odchozí připojení z v rámci vaší sítě vytvořit pouze žádostí o ověření hesla. Není nutné k instalaci těchto agentů ověřování v hraniční síti (DMZ). Jako osvědčený postup považovat všechny servery vrstvy 0 systémy spuštěná agentů ověřování (viz [odkaz](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)).
 - Pro odchozí komunikaci z agentů ověřování do služby Azure AD se používají pouze standardní porty (80 a 443). Není nutné otevřít příchozí porty na bráně firewall. 
   - Pro všechny ověřené odchozí komunikace se používá port 443.
   - Port 80 slouží pouze pro stahování seznamy odvolaných certifikátů (CRL) k zajištění, že žádný z certifikátů používaných touto funkcí byl odvolán.
   - Úplný seznam požadavků na síť, naleznete v tématu [předávacího ověřování Azure Active Directory: rychlý start](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-1-check-the-prerequisites).
 - Hesla, které uživatelé poskytnout během přihlášení jsou šifrované v cloudu, předtím, než je agentů ověřování místní přijmout pro ověření na základě služby Active Directory.
 - Kanál protokolu HTTPS mezi službami Azure AD a místní ověřovací Agent se šifrují pomocí vzájemného ověřování.
-- Tato funkce se hladce integrují s funkcí Ochrana cloudu služby Azure AD, například zásady podmíněného přístupu (včetně Azure Multi-Factor Authentication), identity protection a inteligentním uzamčením.
+- Chrání vaše uživatelské účty tím, že funguje bez problémů s [zásady podmíněného přístupu Azure AD](../active-directory-conditional-access-azure-portal.md), včetně služby Multi-Factor Authentication (MFA), [blokování starší verze ověřování](../active-directory-conditional-access-conditions.md) a [ filtrování útoky na hesla hrubou silou](../authentication/howto-password-smart-lockout.md).
 
 ## <a name="components-involved"></a>Součástí
 
@@ -209,6 +209,7 @@ K automatické aktualizaci ověřovací Agent:
 ## <a name="next-steps"></a>Další postup
 - [Aktuální omezení](active-directory-aadconnect-pass-through-authentication-current-limitations.md): Zjistěte, jaké postupy se podporují, a ty, které nejsou.
 - [Rychlý start](active-directory-aadconnect-pass-through-authentication-quick-start.md): uvedení do provozu na předávacího ověřování Azure AD.
+- [Migrace ze služby AD FS na předávací ověřování](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx) – podrobné pokyny k migraci ze služby AD FS (nebo jiné technologie federation) na předávací ověřování.
 - [Inteligentní uzamčení](../authentication/howto-password-smart-lockout.md): Nakonfigurujte schopnosti inteligentním uzamčením ve svém tenantovi k ochraně uživatelské účty.
 - [Jak to funguje](active-directory-aadconnect-pass-through-authentication-how-it-works.md): Seznamte se se základy toho, jak funguje předávacího ověřování Azure AD.
 - [Nejčastější dotazy k](active-directory-aadconnect-pass-through-authentication-faq.md): Najděte odpovědi na nejčastější dotazy.

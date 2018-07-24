@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 05/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4c01a63867ca3df85b4e7203c93855b43e9cd04c
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 3dfe16cc09f0453aef8adf8bf87a00aebd2054bc
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39044845"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214631"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Spuštění Runbooku ve službě Azure Automation
 
@@ -65,21 +65,21 @@ Na této dlaždici se zobrazuje počet a grafické vyjádření stavu úlohy pro
 
 Kliknutím na soubor představuje **úlohy** okno, které obsahuje souhrnný seznam všech úloh provedeny, se stavem, provádění úlohy a časy spuštění a dokončení.
 
-![Toto je k ochraně služby z runbooky, které běží po neomezenou dobu bez dokončení, nejsou schopna provést do následujícího kontrolního bodu bez uvolňován znovu.](./media/automation-runbook-execution/automation-account-jobs-status-blade.png)
+![Okno úlohy účet služby Automation](./media/automation-runbook-execution/automation-account-jobs-status-blade.png)
 
-Pokud sada runbook nemá žádné kontrolní body nebo úloha nedosáhla první kontrolní bod před uvolňován, pak restartuje od začátku.
+Seznam úloh můžete filtrovat výběrem **filtrování úloh** a jsou filtrované na konkrétní sadu runbook, stav úloh, nebo z rozevíracího seznamu datový/časový rozsah má hledat.
 
-![Pro dlouho běžící úlohy, doporučuje se použít Hybrid Runbook Worker.](./media/automation-runbook-execution/automation-account-jobs-filter.png)
+![Filtr stavu úlohy](./media/automation-runbook-execution/automation-account-jobs-filter.png)
 
-Procesy hybrid Runbook Worker není omezena spravedlivé sdílení a mít nemají omezení můžete spustit na jak dlouho sady runbook. Pokud použijete runbook pracovního postupu Powershellu v Azure, při vytváření sady runbook, měli byste zajistit, že čas ke spuštění všech aktivit mezi dvěma body obnovení není delší než tři hodiny.
+Alternativně můžete zobrazit podrobnosti souhrnu úlohy pro konkrétní sadu runbook tak, že vyberete dané sady runbook z **sady Runbook** okna účtu Automation a pak vyberte **úlohy** dlaždici. To představuje **úlohy** okně, a z něj můžete kliknout na úlohu záznam, který chcete zobrazit podrobnosti a výstup.
 
-![Toto je k ochraně služby z runbooky, které běží po neomezenou dobu bez dokončení, nejsou schopna provést do následujícího kontrolního bodu bez uvolňován znovu.](./media/automation-runbook-execution/automation-runbook-job-summary-blade.png)
+![Okno úlohy účet služby Automation](./media/automation-runbook-execution/automation-runbook-job-summary-blade.png)
 
 ### <a name="job-summary"></a>Souhrn úlohy
 
-Budete muset přidání kontrolních bodů do sady runbook a ujistěte se, že nemá dosažení maximálního počtu 3 hodiny nebo rozdělte dlouhé běžící operace. Vaše sada runbook může například provádět reindex velké databáze SQL. Pokud tento jedné operace nedokončí v rámci limitu spravedlivé sdílení, je tato úloha byla uvolněna a spuštěno znovu od začátku. V takovém případě by měl rozdělte reindex operace do více kroků, jako je například Reindexace jedné tabulky v době a vložte kontrolní bod po každé operaci tak, aby úloha může pokračovat po poslední operaci dokončit.
+Můžete zobrazit seznam všech úloh, které byly vytvořeny pro konkrétní sadu runbook a jejich aktuální stav. Můžete filtrovat tento seznam podle stavu úlohy a rozsahu dat poslední změny úlohy. Chcete-li zobrazit podrobné informace a výstup, klikněte na název úlohy. V podrobném zobrazení úlohy obsahuje hodnoty parametrů runbooku poskytnuté pro tuto úlohu.
 
-Další informace o různých metodách, které můžete použít ke spuštění sady runbook ve službě Azure Automation najdete v tématu spuštění runbooku ve službě Azure Automation
+Chcete-li zobrazit úlohy pro sady runbook můžete použít následující kroky.
 
 1. Na webu Azure Portal, vyberte **automatizace** a potom vyberte název účtu Automation.
 2. Z centra, vyberte **sady Runbook** a pak na **sady Runbook** okno Vybrat sadu runbook ze seznamu.
@@ -145,7 +145,7 @@ Toto je k ochraně služby z runbooky, které běží po neomezenou dobu bez dok
 
 Pokud sada runbook nemá žádné kontrolní body nebo úloha nedosáhla první kontrolní bod před uvolňován, pak restartuje od začátku.
 
-Pro dlouho běžící úlohy, doporučuje se použít [Hybrid Runbook Worker](automation-hrw-run-runbooks.md#job-behavior). Procesy hybrid Runbook Worker není omezena spravedlivé sdílení a mít nemají omezení můžete spustit na jak dlouho sady runbook.
+Pro dlouho běžící úlohy, doporučuje se použít [Hybrid Runbook Worker](automation-hrw-run-runbooks.md#job-behavior). Procesy hybrid Runbook Worker není omezena spravedlivé sdílení a nemají omezení můžete spustit na jak dlouho sady runbook.
 
 Pokud použijete runbook pracovního postupu Powershellu v Azure, při vytváření sady runbook, měli byste zajistit, že čas ke spuštění všech aktivit mezi dvěma body obnovení není delší než tři hodiny. Budete muset přidání kontrolních bodů do sady runbook a ujistěte se, že nemá dosažení maximálního počtu 3 hodiny nebo rozdělte dlouhé běžící operace. Vaše sada runbook může například provádět reindex velké databáze SQL. Pokud tento jedné operace nedokončí v rámci limitu spravedlivé sdílení, je tato úloha byla uvolněna a spuštěno znovu od začátku. V takovém případě by měl rozdělte reindex operace do více kroků, jako je například Reindexace jedné tabulky v době a vložte kontrolní bod po každé operaci tak, aby úloha může pokračovat po poslední operaci dokončit.
 

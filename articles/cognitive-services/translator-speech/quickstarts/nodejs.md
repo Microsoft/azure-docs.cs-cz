@@ -1,6 +1,6 @@
 ---
-title: Node.js rychlý úvodní kurz pro Azure kognitivní služby Microsoft překladač řeči rozhraní API | Microsoft Docs
-description: Get informace a ukázky kódu můžete rychle začít používat rozhraní API pro rozpoznávání řeči překladač Microsoft v kognitivní služby společnosti Microsoft na platformě Azure.
+title: Rychlý úvod k Node.js pro Azure Cognitive Services, Microsoft Translator Speech API | Dokumentace Microsoftu
+description: Získat informace a ukázky kódu můžete rychle začít používat Microsoft Translator Speech API ve službě Microsoft Cognitive Services v Azure.
 services: cognitive-services
 documentationcenter: ''
 author: v-jaswel
@@ -9,36 +9,36 @@ ms.component: translator-speech
 ms.topic: article
 ms.date: 3/5/2018
 ms.author: v-jaswel
-ms.openlocfilehash: d469fa008ba8acaf505fa09596dd739d5cc7744c
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 0c0f3120811bba164a07783bc7ce3b7af389fd2b
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342661"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205210"
 ---
-# <a name="quickstart-for-microsoft-translator-speech-api-with-nodejs"></a>Rychlý start pro Microsoft překladač řeči rozhraní API pomocí Node.js 
+# <a name="quickstart-for-microsoft-translator-speech-api-with-nodejs"></a>Rychlý start pro Microsoft Translator Speech API s využitím Node.js 
 <a name="HOLTop"></a>
 
-Tento článek ukazuje, jak používat rozhraní API pro rozpoznávání řeči překladač Microsoft překládat slova používaný v souboru ve formátu WAV.
+V tomto článku se dozvíte, jak používat Microsoft Translator Speech API pro převod slova v souboru ve formátu WAV.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Je třeba [Node.js 6](https://nodejs.org/en/download/) pro spuštění tohoto kódu.
+Potřebujete [Node.js 6](https://nodejs.org/en/download/) tento kód spustit.
 
-Je potřeba nainstalovat [Websocket balíček](https://www.npmjs.com/package/websocket) pro Node.js.
+Je potřeba nainstalovat [balíček pomocí protokolu Websocket](https://www.npmjs.com/package/websocket) pro Node.js.
 
-Je třeba soubor ve formátu WAV s názvem "speak.wav" ve stejné složce jako spustitelný soubor, které zkompilujete z následující kód. Tento soubor ve formátu WAV musí být ve standardní PCM, 16 bitů, 16 kHz mono formátu. Můžete získat takové .wav soubor z [překladač Text řeči API](http://docs.microsofttranslator.com/text-translate.html#!/default/get_Speak).
+Budete potřebovat soubor ve formátu WAV s názvem "speak.wav" ve stejné složce jako spustitelný soubor, který kompilaci z níže uvedeného kódu. Tento soubor ve formátu WAV musí být ve standardní PCM, 16 bitů, 16 kHz, mono formátu. Můžete získat takový WAV soubor z [převod textu na řeč API](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-apis#text-to-speech).
 
-Musíte mít [kognitivní rozhraní API služby účet](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s **rozhraní API služby Microsoft překladač řeči**. Potřebujete placené předplatné klíč z vaší [řídicí panel Azure](https://portal.azure.com/#create/Microsoft.CognitiveServices).
+Musíte mít [účet rozhraní API služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s **Microsoft Translator Speech API**. Budete potřebovat placené předplatné klíče z vašeho [řídicí panel Azure](https://portal.azure.com/#create/Microsoft.CognitiveServices).
 
-## <a name="translate-speech"></a>Převede řeči
+## <a name="translate-speech"></a>Překlad řeči
 
-Následující kód překládá řeči z jednoho jazyka do druhého.
+Následující kód přeloží řeči z jednoho jazyka do druhého.
 
-1. Vytvořte nový projekt Node.js v vaše oblíbená rozhraní IDE.
-2. Přidejte kód níže uvedenou.
+1. Vytvořte nový projekt Node.js v oblíbeném prostředí IDE.
+2. Přidejte níže uvedený kód.
 3. Nahraďte `key` hodnotu s přístupový klíč platný pro vaše předplatné.
-4. Spusťte program.
+4. Spuštění programu.
 
 ```nodejs
 /* To install this dependency, run:
@@ -64,8 +64,8 @@ let params = '?api-version=1.0&from=en-US&to=it-IT&features=texttospeech&voice=i
 let uri = host + path + params;
 
 /* The input .wav file is in PCM 16bit, 16kHz, mono format.
-You can obtain such a .wav file using the Translator Text Speak API. See:
-http://docs.microsofttranslator.com/text-translate.html#!/default/get_Speak
+You can obtain such a .wav file using the Text to Speech API. See:
+https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-apis#text-to-speech
 */
 let input_path = 'speak.wav';
 
@@ -110,7 +110,8 @@ function send(connection, filename) {
     });
 
 /* Make sure the audio file is followed by silence.
-This lets the service know that the audio input is finished. */
+This lets the service know that the audio file is finished.
+At 32 bytes per millisecond, this is 100 seconds of silence. */
     myReadableStreamBuffer.put(fs.readFileSync(filename));
     myReadableStreamBuffer.put(new Buffer(3200000));
     myReadableStreamBuffer.stop();
@@ -154,18 +155,18 @@ function connect() {
 connect();
 ```
 
-**Převede řeči odpovědi**
+**Překlad řeči odpovědi**
 
-Úspěšné výsledkem je vytvoření souboru s názvem "speak2.wav". Tento soubor obsahuje překlad slova používaný v "speak.wav".
+Úspěšný výsledek je vytvoření souboru s názvem "speak2.wav". Tento soubor obsahuje překlad slova, kterým se mluví ve "speak.wav".
 
 [Zpět na začátek](#HOLTop)
 
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Překladač řeči kurzu](../tutorial-translator-speech-csharp.md)
+> [Translator Speech kurz](../tutorial-translator-speech-csharp.md)
 
 ## <a name="see-also"></a>Další informace najdete v tématech 
 
-[Přehled řeči překladač](../overview.md)
-[referenční dokumentace rozhraní API](http://docs.microsofttranslator.com/speech-translate.html)
+[Přehled rozhraní Translator Speech](../overview.md)
+[Reference k rozhraní API](http://docs.microsofttranslator.com/speech-translate.html)

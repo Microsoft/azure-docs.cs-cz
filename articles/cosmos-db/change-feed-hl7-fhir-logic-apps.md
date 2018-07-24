@@ -1,6 +1,6 @@
 ---
-title: Změna kanálu pro prostředky HL7 FHIR - Azure Cosmos DB | Microsoft Docs
-description: Zjistěte, jak nastavit oznámení o změnách pro záznamy HL7 FHIR pacientů zdravotní péče pomocí Azure Logic Apps, Azure Cosmos DB a služby Service Bus.
+title: Změna datového kanálu pro prostředky HL7 FHIR – Azure Cosmos DB | Dokumentace Microsoftu
+description: Zjistěte, jak nastavit oznamování změn pro pacienty zdravotní péče záznamy HL7 FHIR pomocí Azure Logic Apps služby Azure Cosmos DB a služby Service Bus.
 keywords: hl7 fhir
 services: cosmos-db
 author: SnehaGunda
@@ -10,92 +10,92 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/08/2017
 ms.author: sngun
-ms.openlocfilehash: 9d05c41e7ebf9d1cc0735da8853e4ad1617eb810
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d40ab5d6bb29878c633a2645810d6256ac661071
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34610493"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213696"
 ---
-# <a name="notifying-patients-of-hl7-fhir-health-care-record-changes-using-logic-apps-and-azure-cosmos-db"></a>Upozornění pacientů HL7 FHIR zdravotní péče záznam změn pomocí Logic Apps a Azure Cosmos DB
+# <a name="notifying-patients-of-hl7-fhir-health-care-record-changes-using-logic-apps-and-azure-cosmos-db"></a>Upozornění pacientů změny zdravotní péče záznamu HL7 FHIR pomocí Logic Apps a Azure Cosmos DB
 
-Azure MVP Howard Edidin byla nedávno kontaktovat zdravotní péče organizací, které chcete přidat nové funkce na svých pacientech portál. Jsou potřeba k odesílání oznámení do pacientů, když byla aktualizována jejich stavu záznamů a jejich potřeby pacientů moct přihlásit k odběru těchto aktualizací. 
+Azure MVP Howard Edidin byl nedávno kontaktovat zdravotní péče organizací, které chcete přidat nové funkce pro jejich portál pro pacienty. Jsou potřebné k odeslání oznámení pacientů, když v případě potřeby zapíná pacientů a tím moct přihlásit k odběru těchto aktualizací a jejich stavu záznam byl aktualizován. 
 
-Tento článek vás provede změnu kanálu oznámení řešení vytvořené pro tuto zdravotní péče organizaci, která používá databázi Cosmos Azure Logic Apps a Service Bus. 
+Tento článek vás provede změnu kanálu oznámení se řešení vytvořilo pro tento zdravotnické organizace pomocí služby Azure Cosmos DB, Logic Apps a služby Service Bus. 
 
-## <a name="project-requirements"></a>Požadavky na projektu
-- Zprostředkovatelé send že hl7 konsolidované klinické dokumentu architektura (C-CDA) dokumenty ve formátu XML. C – CDA dokumenty zahrnovat téměř každý typ klinické dokumentu, včetně klinické dokumenty jako rodiny historie a záznamy o očkování, stejně jako správce, pracovní postup a finanční dokumenty. 
-- C – CDA dokumenty jsou převedeny na [HL7 FHIR prostředky](http://hl7.org/fhir/2017Jan/resourcelist.html) ve formátu JSON.
-- Upravené dokumenty prostředků FHIR odesílá e-mailu ve formátu JSON.
+## <a name="project-requirements"></a>Požadavky projektu
+- Poskytovatelé poslat že hl7 konsolidované klinické architektura dokumentů (C-CDA) dokumenty ve formátu XML. Dokumenty C CDA zahrnovat téměř všechny typy klinické dokumentu, včetně klinické dokumenty, jako jsou záznamy očkování, stejně jako správce a řady historie pracovního postupu a finanční dokumenty. 
+- C CDA dokumentům se převedou na [HL7 FHIR prostředky](http://hl7.org/fhir/2017Jan/resourcelist.html) ve formátu JSON.
+- Upravené FHIR prostředku se odesílají prostřednictvím e-mailu ve formátu JSON.
 
 ## <a name="solution-workflow"></a>Pracovní postup řešení 
 
-Na vysoké úrovni projekt vyžaduje následující kroky pracovního postupu: 
-1. Převeďte C-CDA dokumenty FHIR prostředky.
-2. Proveďte opakované aktivační událost dotazování pro upravené FHIR prostředky. 
-2. Volání vlastní aplikaci, FhirNotificationApi pro připojení k databázi Cosmos Azure a dotazů pro nové nebo upravené dokumenty.
-3. Ukládání odpovědi do fronty na Service Bus.
-4. Dotazování pro nové zprávy ve frontě Service Bus.
-5. Pacientům odešlete e-mailová oznámení.
+Na vysoké úrovni projektu vyžaduje následující kroky pracovního postupu: 
+1. Převeďte dokumenty C CDA FHIR prostředky.
+2. Proveďte opakovaný trigger cyklickém modifikované prostředky FHIR. 
+2. Volání vlastní aplikaci FhirNotificationApi pro připojení k Azure Cosmos DB a dotazů pro nové nebo upravené dokumenty.
+3. Uložte odpověď do fronty služby Service Bus.
+4. Dotazování pro nové zprávy ve frontě služby Service Bus.
+5. Odeslání e-mailová oznámení pro pacienty.
 
-## <a name="solution-architecture"></a>Architektura řešení
-Toto řešení vyžaduje tři Logic Apps, abyste splňují výše uvedené požadavky a dokončení pracovního postupu řešení. Tři aplikace logiky jsou:
-1. **Aplikace HL7. FHIR mapování**: obdrží HL7 C-CDA dokumentu, transformuje FHIR prostředek a pak uloží do databáze Azure Cosmos.
-2. **Aplikace EHR**: dotazuje úložiště Azure Cosmos DB FHIR a uloží odpovědi do fronty Service Bus. Tato aplikace logiky používá [aplikace API](#api-app) načíst nové a změněné dokumenty.
-3. **Proces oznámení aplikace**: odešle e-mail s oznámením s dokumenty prostředků FHIR v textu.
+## <a name="solution-architecture"></a>Architektury řešení
+Toto řešení vyžaduje tři Logic Apps splnění výš uvedených požadavků a dokončete pracovní postup řešení. Jsou tři aplikace logiky:
+1. **Aplikace HL7 FHIR mapování**: obdrží HL7 C-CDA dokument, ho transformuje na prostředek FHIR a pak uloží jej do služby Azure Cosmos DB.
+2. **Aplikace EHR**: dotazuje úložiště Azure Cosmos DB FHIR a uloží odpověď do fronty služby Service Bus. Tato aplikace logiky používá [aplikace API](#api-app) k načtení nové a změněné dokumenty.
+3. **Proces oznámení aplikace**: odešle e-mailové oznámení s dokumenty FHIR prostředků v textu.
 
-![Tři Logic Apps použité v řešení zdravotní péče HL7 FHIR](./media/change-feed-hl7-fhir-logic-apps/health-care-solution-hl7-fhir.png)
+![Tři Logic Apps použité v řešení HL7 FHIR zdravotní péče](./media/change-feed-hl7-fhir-logic-apps/health-care-solution-hl7-fhir.png)
 
 
 
-### <a name="azure-services-used-in-the-solution"></a>Použít v řešení služby Azure
+### <a name="azure-services-used-in-the-solution"></a>Použité v řešení služby Azure
 
-#### <a name="azure-cosmos-db-sql-api"></a>Rozhraní API pro Azure Cosmos databáze SQL
-Azure Cosmos DB slouží jako úložiště pro prostředky FHIR, jak je znázorněno na následujícím obrázku.
+#### <a name="azure-cosmos-db-sql-api"></a>SQL API služby Azure Cosmos DB
+Azure Cosmos DB je úložiště pro FHIR prostředky, jak je znázorněno na následujícím obrázku.
 
-![Účet Azure Cosmos DB použitý v tomto kurzu HL7 FHIR zdravotní péče](./media/change-feed-hl7-fhir-logic-apps/account.png)
+![Účet Azure Cosmos DB použité v tomto kurzu HL7 FHIR zdravotní péče](./media/change-feed-hl7-fhir-logic-apps/account.png)
 
 #### <a name="logic-apps"></a>Logic Apps
-Aplikace logiky zpracování procesu pracovního postupu. Na následujících snímcích obrazovky zobrazit Logic apps vytvořené pro toto řešení. 
+Logic Apps zpracovávat procesu pracovního postupu. Na následujících snímcích obrazovky zobrazit aplikace logiky vytvořené pro toto řešení. 
 
 
-1. **Aplikace HL7. FHIR mapování**: dokument HL7 C-CDA přijmout a transformují je na prostředek FHIR pomocí Enterprise integrační balíček pro Logic Apps. Integrační balíček Enterprise zpracovává mapování z C-CDA na FHIR prostředky.
+1. **Aplikace HL7 FHIR mapování**: dokument HL7 C-CDA přijmout a transformovat ho na prostředek FHIR pomocí sady Enterprise Integration Pack pro Logic Apps. Enterprise Integration Pack zpracovává mapování C-CDA FHIR prostředky.
 
-    ![Aplikace logiky používá k přijetí HL7 FHIR zdravotní péče záznamů](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-logic-apps-json-transform.png)
+    ![Slouží k přijímání HL7 FHIR zdravotní záznamy aplikace logiky](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-logic-apps-json-transform.png)
 
 
-2. **Aplikace EHR**: dotazování úložiště Azure Cosmos DB FHIR a ukládání odpovědi do fronty Service Bus. Kód pro aplikace GetNewOrModifiedFHIRDocuments je níže.
+2. **Aplikace EHR**: dotazování úložiště Azure Cosmos DB FHIR a uložit odpověď do fronty služby Service Bus. Kód pro aplikace GetNewOrModifiedFHIRDocuments je níže.
 
-    ![Aplikace logiky používá k dotazování databáze Cosmos Azure](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-logic-apps-api-app.png)
+    ![Aplikace logiky používá k dotazování služby Azure Cosmos DB](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-logic-apps-api-app.png)
 
-3. **Proces oznámení aplikace**: Odeslat oznámení e-mailu s dokumenty prostředků FHIR v textu.
+3. **Proces oznámení aplikace**: poslat e-mailové oznámení s dokumenty FHIR prostředků v textu.
 
-    ![Aplikace logiky, který odešle pacienta e-mailu pomocí prostředků HL7 FHIR v textu](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-logic-apps-send-email.png)
+    ![Aplikace logiky, která odešle e-mail o pacientech HL7 FHIR prostředku v textu](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-logic-apps-send-email.png)
 
 #### <a name="service-bus"></a>Service Bus
-Následující obrázek znázorňuje pacienty fronty. Hodnota vlastnosti značky se používá pro předmět e-mailu.
+Následující obrázek znázorňuje pacientů fronty. Hodnota vlastnosti značka se používá pro předmět e-mailu.
 
-![Frontou Service Bus používá v tomto kurzu HL7 FHIR](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-service-bus-queue.png)
+![Fronty služby Service Bus použité v tomto kurzu HL7 FHIR](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-service-bus-queue.png)
 
 <a id="api-app"></a>
 
 #### <a name="api-app"></a>Aplikace API
-Aplikace API připojí k databázi Cosmos Azure a dotazů pro nové nebo upravené dokumenty FHIR podle typů prostředků. Tato aplikace má jeden řadič **FhirNotificationApi** s jednu operaci **GetNewOrModifiedFhirDocuments**, najdete v části [zdroje pro aplikaci API](#api-app-source).
+Aplikace API připojí k Azure Cosmos DB a dotazy pro nové nebo upravené dokumenty FHIR podle typu prostředku. Tato aplikace nemá jeden řadič **FhirNotificationApi** pomocí jedné operace **GetNewOrModifiedFhirDocuments**, naleznete v tématu [zdroje pro aplikaci API](#api-app-source).
 
-Používáme [ `CreateDocumentChangeFeedQuery` ](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdocumentchangefeedquery.aspx) třídy z Azure SQL DB Cosmos .NET rozhraní API. Další informace najdete v tématu [změnu kanálu článku](change-feed.md). 
+Používáme [ `CreateDocumentChangeFeedQuery` ](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdocumentchangefeedquery.aspx) třídy z rozhraní Azure Cosmos DB SQL .NET API. Další informace najdete v tématu [změnit informační kanál článku](change-feed.md). 
 
 ##### <a name="getnewormodifiedfhirdocuments-operation"></a>Operace GetNewOrModifiedFhirDocuments
 
-**Vstupy**
-- Hodnotu DatabaseId
+**vstupy**
+- ID databáze
 - CollectionId
-- Název typu prostředku FHIR HL7
+- Název typu prostředku HL7 FHIR
 - Logická hodnota: Začít od začátku
 - Int: Počet vrácených dokumentů
 
 **Výstupy**
-- Úspěch: Stavový kód: odpovědi 200,: seznam dokumentů (pole JSON)
-- Chyba: Stavový kód: odpovědi 404,: "nalezeny žádné dokumenty pro '*název prostředku '* typ prostředku"
+- Úspěchu: Stavový kód: 200, odpovědi: seznam dokumentů (pole JSON)
+- Chyby: Kód stav: odpovědi 404,: "pro nenašly žádné dokumenty"*název prostředku "* typ prostředku"
 
 <a id="api-app-source"></a>
 
@@ -206,25 +206,25 @@ Používáme [ `CreateDocumentChangeFeedQuery` ](https://msdn.microsoft.com/libr
 
 ### <a name="testing-the-fhirnotificationapi"></a>Testování FhirNotificationApi 
 
-Následující obrázek ukazuje, jak byl swagger použit k testování [FhirNotificationApi](#api-app-source).
+Následující obrázek znázorňuje, jak se používá swagger k testování [FhirNotificationApi](#api-app-source).
 
 ![Soubor Swagger používá k testování aplikace API](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-testing-app.png)
 
 
-### <a name="azure-portal-dashboard"></a>Řídicí panel portálu Azure
+### <a name="azure-portal-dashboard"></a>Řídicí panel Azure
 
-Následující obrázek znázorňuje všechny služby Azure pro toto řešení systémem na portálu Azure.
+Následující obrázek ukazuje všechny služby Azure pro toto řešení, které běží na webu Azure Portal.
 
-![Portálu Azure znázorňující všechny služby použili v tomto kurzu HL7 FHIR](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-portal.png)
+![Na webu Azure portal zobrazující všechny služby použité v tomto kurzu HL7 FHIR](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-portal.png)
 
 
 ## <a name="summary"></a>Souhrn
 
-- Jste zjistili, jestli má Azure Cosmos DB nativní podpora pro oznámení o nových nebo upravené dokumenty a jak snadné je použít. 
-- S využitím Logic Apps, můžete vytvořit pracovní postupy bez psaní jakéhokoli kódu.
-- Pomocí fronty služby Service Bus Azure pro zpracování distribuce pro HL7 FHIR dokumenty.
+- Jste se naučili, Azure Cosmos DB má nativní podpora pro oznámení pro nové nebo upravené dokumenty a jak snadné je používat. 
+- S využitím Logic Apps, můžete vytvářet pracovní postupy bez psaní kódu.
+- Ke zpracování distribuce pro dokumenty HL7 FHIR pomocí fronty Azure Service Bus.
 
 ## <a name="next-steps"></a>Další postup
-Další informace o databázi Cosmos Azure najdete v tématu [domovské stránky Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/). Více informací o Logic Apps, naleznete v části [Logic Apps](https://azure.microsoft.com/services/logic-apps/).
+Další informace o službě Azure Cosmos DB najdete v tématu [domovskou stránku služby Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/). Další informace o Logic Apps, najdete v části [Logic Apps](https://azure.microsoft.com/services/logic-apps/).
 
 

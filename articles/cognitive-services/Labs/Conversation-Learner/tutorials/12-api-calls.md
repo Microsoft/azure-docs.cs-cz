@@ -1,7 +1,7 @@
 ---
-title: Jak používat rozhraní API použijte volání s modelem konverzace Learner – Microsoft Cognitive Services | Dokumentace Microsoftu
+title: Jak používat rozhraní API volá s modelem konverzace Learner – Microsoft Cognitive Services | Dokumentace Microsoftu
 titleSuffix: Azure
-description: Další informace o použití volání rozhraní API pro použití s modelem Learner konverzace.
+description: Další informace o použití volání rozhraní API s modelem Learner konverzace.
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: d16f36a70ac176a895d9ba44d42d3fae5730f7ea
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 1d4013d736d8cfcb75874bc0c86d20b86ab4dd62
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173260"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39215835"
 ---
 # <a name="how-to-add-api-calls-to-a-conversation-learner-model"></a>Jak přidat volání rozhraní API do modelu Learner konverzace
 

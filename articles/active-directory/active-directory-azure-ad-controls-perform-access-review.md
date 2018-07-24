@@ -11,15 +11,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: compliance-reports
-ms.date: 09/19/2017
+ms.date: 07/16/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: 52d832de10de93c5bd4b91df821f96845b3b21be
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 2e0a522f6125a9e34a37c50f547e725072ec65b4
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446635"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39204999"
 ---
 # <a name="review-access-with-azure-ad-access-reviews"></a>Zkontrolovat přístup s Azure AD kontroly přístupu
 
@@ -27,7 +27,11 @@ Azure Active Directory (Azure AD) zjednodušuje podnikům správu přístupu k a
 
 ## <a name="open-an-access-review"></a>Otevřete kontroly přístupu
 
-Kontroly přístupu zobrazíte výběrem odkazu v e-mailu. Pokud nemáte k dispozici v e-mailu, můžete vyhledat kontrol přístupu pomocí následujících kroků:
+Chcete-li zobrazit kontroly přístupu, klikněte na odkaz kontroly přístupu k e-mailu. Od srpna 2018 se e-mailová oznámení pro role Azure AD mají aktualizovaný návrh. Následuje ukázkový e-mail, který se odešle, když uživatel vyzván k být kontrolora. 
+
+![Kontrola přístupu k e-mailu](./media/active-directory-azure-ad-controls-perform-access-review/new-ar-email.png)
+
+Pokud nemáte k dispozici v e-mailu, můžete vyhledat kontrol přístupu pomocí následujících kroků:
 
 1. Přihlaste se [přístupový panel služby Azure AD](https://myapps.microsoft.com).
 

@@ -1,6 +1,6 @@
 ---
-title: Spojení jednotlivých malin pí do aplikace Azure IoT centrální (C#) | Microsoft Docs
-description: Jako vývojář zařízení jak připojit malin platformy Azure IoT centrální aplikace pomocí jazyka C#.
+title: Connnect Raspberry Pi až po aplikace Azure IoT Central (C#) | Dokumentace Microsoftu
+description: Jako vývojář zařízení jak se připojit k Azure IoT Central aplikace pomocí jazyka C# Raspberry Pi.
 author: dominicbetts
 ms.author: dobett
 ms.date: 01/22/2018
@@ -8,83 +8,54 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 58f363c522f3e5abe6bf49a2aebafe4e953e00df
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 63843797cca7fe84cdb9ce91d2282b1c0c288f0c
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34628585"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205132"
 ---
-# <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-c"></a>Pi malin připojit k aplikaci Azure IoT centrální (C#)
+# <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-c"></a>Připojte Raspberry Pi do aplikace Azure IoT Central (C#)
 
 [!INCLUDE [howto-raspberrypi-selector](../../includes/iot-central-howto-raspberrypi-selector.md)]
 
-Tento článek popisuje, jak jako vývojář zařízení pro připojení k Microsoft Azure IoT centrální aplikace pomocí programovacího jazyka C# malin pí.
+Tento článek popisuje, jak jako vývojář zařízení připojit Raspberry Pi do aplikace Microsoft Azure IoT Central, pomocí programovacího jazyka C#.
 
 ## <a name="before-you-begin"></a>Než začnete
 
 K dokončení kroků v tomto článku budete potřebovat následující:
 
-* [.NET core 2](https://www.microsoft.com/net) nainstalovaný na počítači pro vývoj. Měli byste také mít editor vhodný kódu, jako [Visual Studio Code](https://code.visualstudio.com/).
-* Azure IoT centrální aplikace vytvořené pomocí **Devkits ukázka** šablony aplikace. Další informace najdete v tématu [vytvořit aplikaci Azure IoT centrální](howto-create-application.md).
-* Malin platformy zařízení se systémem Raspbian operačního systému.
+* [.NET core 2](https://www.microsoft.com/net) nainstalována na vývojovém počítači. Také byste měli mít vhodný kód editoru, jako [Visual Studio Code](https://code.visualstudio.com/).
+* Azure IoT Central aplikace vytvořené z **ukázka Devkits** šablony aplikace. Další informace najdete v tématu [vytvoření aplikace Azure IoT Central](howto-create-application.md).
+* Raspberry Pi zařízení se systémem Raspbian operačního systému.
 
-Aplikace vytvořené z **ukázka Devkits** obsahuje šablony aplikace **malin pí** šablona zařízení s následujícími charakteristikami:
 
-### <a name="telemetry-measurements"></a>Měření telemetrie
+## <a name="sample-devkits-application"></a>**Ukázkový Devkits** aplikace
 
-| Název pole     | Jednotky  | Minimální | Maximum | Desetinná místa |
-| -------------- | ------ | ------- | ------- | -------------- |
-| vlhkosti       | %      | 0       | 100     | 0              |
-| dočasné           | ° C     | -40     | 120     | 0              |
-| pressure       | hPa    | 260     | 1260    | 0              |
-| magnetometerX  | mgauss | -1000   | 1000    | 0              |
-| magnetometerY  | mgauss | -1000   | 1000    | 0              |
-| magnetometerZ  | mgauss | -1000   | 1000    | 0              |
-| accelerometerX | mg     | -2000   | 2000    | 0              |
-| accelerometerY | mg     | -2000   | 2000    | 0              |
-| accelerometerZ | mg     | -2000   | 2000    | 0              |
-| gyroscopeX     | mdps   | -2000   | 2000    | 0              |
-| gyroscopeY     | mdps   | -2000   | 2000    | 0              |
-| gyroscopeZ     | mdps   | -2000   | 2000    | 0              |
+Aplikace vytvořené z **ukázka Devkits** zahrnuje šablony aplikace **Raspberry Pi** šablona zařízení s následujícími charakteristikami: 
 
-### <a name="settings"></a>Nastavení
+- Telemetrická data, která obsahuje měření pro zařízení **vlhkosti**, **teploty**, **tlak**, **Magnometer** (měřeno podél X Y, Z osy), **Accelorometer** (měří podél X, Y, Z osy) a **volný setrvačník** (měří podél X, Y, osy Z).
+- Nastavení zobrazení **napětí**, **aktuální**,**ventilátor rychlost** a **reakcí na Incidenty** přepínací tlačítko.
+- Vlastnosti obsahující vlastnosti zařízení **kostka číslo** a **umístění** cloudové vlastnosti.
 
-Číselné nastavení
 
-| Zobrazované jméno | Název pole | Jednotky | Desetinná místa | Minimální | Maximum | Počáteční |
-| ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
-| Napětí      | setVoltage | Intenzita | 0              | 0       | 240     | 0       |
-| Aktuální      | setCurrent | A  | 0              | 0       | 100     | 0       |
-| Ventilátor rychlosti    | fanSpeed   | OT. / MIN   | 0              | 0       | 1000    | 0       |
+Najdete všechny podrobnosti o konfiguraci zařízení šablony [Podrobnosti šablony Raspberry PI zařízení](howto-connect-raspberry-pi-csharp.md#raspberry-pi-device-template-details)
 
-Přepnutí nastavení
 
-| Zobrazované jméno | Název pole | Na text | Vypnout text | Počáteční |
-| ------------ | ---------- | ------- | -------- | ------- |
-| REAKCÍ NA INCIDENTY           | activateIR | ON      | OFF      | Vypnuto     |
+## <a name="add-a-real-device"></a>Přidání skutečného zařízení
 
-### <a name="properties"></a>Vlastnosti
+V aplikaci Azure IoT Central přidat z reálného zařízení **Raspberry Pi** šablona zařízení a zkontrolujte poznamenejte si připojovací řetězec zařízení. Další informace najdete v tématu [skutečné zařízení přidat do aplikace Azure IoT Central](tutorial-add-device.md).
 
-| Typ            | Zobrazované jméno | Název pole | Typ dat |
-| --------------- | ------------ | ---------- | --------- |
-| Vlastnosti zařízení | Kostka číslo   | dieNumber  | číslo    |
-| Text            | Umístění     | location   | neuvedeno       |
+### <a name="create-your-net-application"></a>Vytvoření aplikace .NET
 
-### <a name="add-a-real-device"></a>Přidání skutečného zařízení
+Vytvoření a testování aplikace zařízení na desktopovém počítači.
 
-V aplikaci Azure IoT centrální přidat skutečné zařízení z **malin pí** šablona zařízení a je zaznamenána připojovací řetězec zařízení. Další informace najdete v tématu [přidat skutečné zařízení Azure IoT centrální aplikace](tutorial-add-device.md).
-
-## <a name="create-your-net-application"></a>Vytvoření aplikace .NET
-
-Vytvoření a testování aplikace zařízení na stolního počítače.
-
-Pokud chcete provést následující kroky, můžete použít Visual Studio Code. Další informace najdete v tématu [práce s C#](https://code.visualstudio.com/docs/languages/csharp).
+Dokončete následující postup můžete použít Visual Studio Code. Další informace najdete v tématu [práce s jazykem C#](https://code.visualstudio.com/docs/languages/csharp).
 
 > [!NOTE]
-> Pokud dáváte přednost, můžete provést následující kroky pomocí editoru jiný kód.
+> Pokud dáváte přednost, můžete použít následující kroky pomocí editoru odlišný kód.
 
-1. K inicializaci projektu rozhraní .NET a přidat požadované balíčky NuGet, spusťte následující příkazy:
+1. Inicializace projektu .NET a přidat požadované balíčky NuGet, spusťte následující příkazy:
 
   ```cmd/sh
   mkdir pisample
@@ -94,7 +65,7 @@ Pokud chcete provést následující kroky, můžete použít Visual Studio Code
   dotnet restore
   ```
 
-1. Otevřete `pisample` složky ve Visual Studio Code. Otevřete **pisample.csproj** souboru projektu. Přidat `<RuntimeIdentifiers>` značky uvedené v následující fragment kódu:
+1. Otevřít `pisample` složky ve Visual Studio Code. Otevřete **pisample.csproj** souboru projektu. Přidat `<RuntimeIdentifiers>` značka je znázorněno v následujícím fragmentu kódu:
 
     ```xml
     <Project Sdk="Microsoft.NET.Sdk">
@@ -110,11 +81,11 @@ Pokud chcete provést následující kroky, můžete použít Visual Studio Code
     ```
 
     > [!NOTE]
-    > Vaše **Microsoft.Azure.Devices.Client** číslo verze balíčku může být vyšší než ten, který zobrazí.
+    > Vaše **Microsoft.Azure.Devices.Client** může být vyšší než ten, který zobrazí číslo verze balíčku.
 
-1. Uložit **pisample.csproj**. Pokud Visual Studio Code zobrazí výzvu k provedení příkazu restore, zvolte **obnovení**.
+1. Uložit **pisample.csproj**. Pokud Visual Studio Code zobrazí výzvu ke spuštění příkazu restore, zvolte **obnovení**.
 
-1. Otevřete **Program.cs** a nahraďte jeho obsah následujícím kódem:
+1. Otevřít **Program.cs** a nahraďte jeho obsah následujícím kódem:
 
     ```csharp
     using System;
@@ -286,13 +257,13 @@ Pokud chcete provést následující kroky, můžete použít Visual Studio Code
     ```
 
     > [!NOTE]
-    > Aktualizujte zástupný symbol `{your device connection string}` v dalším kroku.
+    > Aktualizujte zástupný text `{your device connection string}` v dalším kroku.
 
-## <a name="run-your-net-application"></a>Spuštění aplikace rozhraní .NET
+## <a name="run-your-net-application"></a>Spustit aplikaci v .NET
 
-Přidáte kód pro zařízení k ověřování pro Azure IoT centrální konkrétní zařízení připojovací řetězec. Při přidání zařízení skutečné do aplikace Azure IoT centrální, učinit poznámku o tento připojovací řetězec.
+Přidání konkrétní zařízení připojovací řetězec do kódu pro zařízení pro ověřování pomocí Azure IoT Central. Jste si poznamenali připojovacího řetězce při přidání skutečné zařízení do aplikace Azure IoT Central.
 
-1. Nahraďte `{your device connection string}` v **Program.cs** souboru připojovacím řetězcem, který jste si poznamenali dříve.
+1. Nahraďte `{your device connection string}` v **Program.cs** soubor s připojovacím řetězcem, který jste si poznamenali dříve.
 
 1. V prostředí příkazového řádku spusťte následující příkaz:
 
@@ -301,22 +272,22 @@ Přidáte kód pro zařízení k ověřování pro Azure IoT centrální konkré
   dotnet publish -r linux-arm
   ```
 
-1. Kopírování `pisample\bin\Debug\netcoreapp2.0\linux-arm\publish` složky malin platformy zařízení. Můžete použít **spojovací bod služby** příkaz pro kopírování souborů, například:
+1. Kopírovat `pisample\bin\Debug\netcoreapp2.0\linux-arm\publish` složku pro Raspberry Pi zařízení. Můžete použít **spojovací bod služby** příkaz pro kopírování souborů, například:
 
     ```cmd/sh
     scp -r publish pi@192.168.0.40:publish
     ```
 
-    Další informace najdete v tématu [vzdáleného přístupu platformy malin](https://www.raspberrypi.org/documentation/remote-access/).
+    Další informace najdete v tématu [vzdáleného přístupu Raspberry Pi](https://www.raspberrypi.org/documentation/remote-access/).
 
-1. Přihlaste se k zařízení malin platformy a spusťte následující příkazy v prostředí:
+1. Přihlaste se k zařízení Raspberry Pi a spusťte následující příkazy v prostředí:
 
     ```cmd/sh
     sudo apt-get update
     sudo apt-get install libc6 libcurl3 libgcc1 libgssapi-krb5-2 liblttng-ust0 libstdc++6 libunwind8 libuuid1 zlib1g
     ```
 
-1. Na vaše malin Pi spusťte následující příkazy:
+1. Raspberry Pi spusťte následující příkazy:
 
     ```cmd/sh
     cd publish
@@ -324,20 +295,65 @@ Přidáte kód pro zařízení k ověřování pro Azure IoT centrální konkré
     ./pisample
     ```
 
-    ![Zahájí programu](./media/howto-connect-raspberry-pi-csharp/device_begin.png)
+    ![Spuštění programu](./media/howto-connect-raspberry-pi-csharp/device_begin.png)
 
-1. V aplikaci Azure IoT centrální můžete zjistit, jak kód spuštěný na platformy malin komunikuje s aplikací:
+1. V aplikaci Azure IoT Central uvidíte, jak kód spuštěný na Raspberry Pi komunikuje s aplikací:
 
-    * Na **měření** stránky pro skutečné zařízení, můžete zobrazit telemetrii.
-    * Na **vlastnosti** stránky, se zobrazí hodnota hlášení **kostka číslo** vlastnost.
-    * Na **nastavení** stránky, můžete změnit různá nastavení na platformy malin například napětí a ventilátor rychlosti.
+    * Na **měření** stránky pro skutečné zařízení, zobrazí se telemetrie.
+    * Na **vlastnosti** stránky, zobrazí se hodnota hlášení **kostka číslo** vlastnost.
+    * Na **nastavení** stránky, můžete změnit různá nastavení na Raspberry Pi, jako je například napětí a podporuje a rychlost.
 
-    Následující snímek obrazovky ukazuje pí malin přijetí Změna nastavení:
+    Následující snímek obrazovky ukazuje Raspberry Pi přijetí změny nastavení:
 
-    ![Změna nastavení obdrží Malinová platformy](./media/howto-connect-raspberry-pi-csharp/device_switch.png)
+    ![Změna nastavení obdrží Raspberry Pi](./media/howto-connect-raspberry-pi-csharp/device_switch.png)
+
+
+## <a name="raspberry-pi-device-template-details"></a>Podrobnosti šablony Raspberry PI zařízení
+
+Aplikace vytvořené z **ukázka Devkits** zahrnuje šablony aplikace **Raspberry Pi** šablona zařízení s následujícími charakteristikami:
+
+### <a name="telemetry-measurements"></a>Měření telemetrie
+
+| Název pole     | Jednotky  | Minimální | Maximum | Desetinná místa |
+| -------------- | ------ | ------- | ------- | -------------- |
+| vlhkost       | %      | 0       | 100     | 0              |
+| temp           | ° C     | -40     | 120     | 0              |
+| tlak       | hPa    | 260     | 1260    | 0              |
+| magnetometerX  | mgauss | -1000   | 1000    | 0              |
+| magnetometerY  | mgauss | -1000   | 1000    | 0              |
+| magnetometerZ  | mgauss | -1000   | 1000    | 0              |
+| accelerometerX | mg     | -2000   | 2000    | 0              |
+| accelerometerY | mg     | -2000   | 2000    | 0              |
+| accelerometerZ | mg     | -2000   | 2000    | 0              |
+| gyroscopeX     | mdps   | -2000   | 2000    | 0              |
+| gyroscopeY     | mdps   | -2000   | 2000    | 0              |
+| gyroscopeZ     | mdps   | -2000   | 2000    | 0              |
+
+### <a name="settings"></a>Nastavení
+
+Číselné nastavení
+
+| Zobrazované jméno | Název pole | Jednotky | Desetinná místa | Minimální | Maximum | Počáteční |
+| ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
+| Snímač napětí      | setVoltage | Intenzita | 0              | 0       | 240     | 0       |
+| Aktuální      | setCurrent | A  | 0              | 0       | 100     | 0       |
+| Ventilátor rychlost    | fanSpeed   | OT. / MIN   | 0              | 0       | 1000    | 0       |
+
+Přepínací tlačítko Nastavení
+
+| Zobrazované jméno | Název pole | Na text | Vypnout text | Počáteční |
+| ------------ | ---------- | ------- | -------- | ------- |
+| PROSTŘEDÍ IR           | activateIR | ON      | OFF      | Vypnuto     |
+
+### <a name="properties"></a>Vlastnosti
+
+| Typ            | Zobrazované jméno | Název pole | Typ dat |
+| --------------- | ------------ | ---------- | --------- |
+| Vlastnosti zařízení | Kostka čísla   | dieNumber  | číslo    |
+| Text            | Umístění     | location   | neuvedeno       |
 
 ## <a name="next-steps"></a>Další postup
 
-Teď, když jste se naučili jak se připojit k aplikaci Azure IoT centrální malin Pi, tady jsou navrhované další kroky:
+Teď, když jste se naučili, jak připojit Raspberry Pi do aplikace Azure IoT Central, tady jsou další navrhované kroky:
 
-* [Připojit obecné klienta aplikace Node.js ve službě Azure IoT centrální](howto-connect-nodejs.md)
+* [Připojit obecný klientská aplikace Node.js do Azure IoT Central](howto-connect-nodejs.md)

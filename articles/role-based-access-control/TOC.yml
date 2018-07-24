@@ -41,6 +41,8 @@
           href: role-assignments-cli.md
         - name: REST API
           href: role-assignments-rest.md
+        - name: Šablona
+          href: role-assignments-template.md
     - name: Vlastní role
       href: custom-roles.md
       items:

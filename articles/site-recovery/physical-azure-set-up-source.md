@@ -2,19 +2,17 @@
 title: Nastavit zdrojové prostředí (fyzických serverů do Azure) | Dokumentace Microsoftu
 description: Tento článek popisuje, jak nastavit v místním prostředí ke spuštění replikace fyzických serverů s Windows nebo Linuxem do Azure.
 services: site-recovery
-documentationcenter: ''
-author: AnoopVasudavan
-manager: gauravd
+author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
-ms.author: anoopkv
-ms.openlocfilehash: 00b09db97e597521de5c73eeefab77b0dfa1304d
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.date: 07/21/2018
+ms.author: raynew
+ms.openlocfilehash: 0cbba45ce49667293d8f16bf370424acd70ff78b
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38671018"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213479"
 ---
 # <a name="set-up-the-source-environment-physical-server-to-azure"></a>Nastavit zdrojové prostředí (z fyzického serveru do Azure)
 
@@ -23,8 +21,9 @@ Tento článek popisuje, jak nastavit v místním prostředí ke spuštění rep
 ## <a name="prerequisites"></a>Požadavky
 
 Tento článek předpokládá, že již máte:
-1. V trezoru služby Recovery Services [webu Azure portal](http://portal.azure.com "webu Azure portal").
-3. Fyzický počítač, na kterém se má nainstalovat konfigurační server.
+- V trezoru služby Recovery Services [webu Azure portal](http://portal.azure.com "webu Azure portal").
+- Fyzický počítač, na kterém se má nainstalovat konfigurační server.
+- Pokud jste jste zakázali protokol TLS 1.0 na počítači, na kterém instalujete konfiguračního serveru, ujistěte se, že je povoleno TLs 1.2, a rozhraní .NET Framework verze 4.6 nebo novější byl nainstalován na počítači (pomocí silného šifrování, zakázáno). [Další informace](https://support.microsoft.com/help/4033999/how-to-resolve-azure-site-recovery-agent-issues-after-disabling-tls-1).
 
 ### <a name="configuration-server-minimum-requirements"></a>Minimální požadavky na konfiguraci serveru
 V následující tabulce jsou uvedeny minimální hardware, software a požadavky na síť pro konfigurační server.
@@ -63,7 +62,7 @@ V následující tabulce jsou uvedeny minimální hardware, software a požadavk
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
 
 > [!NOTE]
-> Konfigurační server můžete nainstalovat pomocí příkazového řádku. Další informace najdete v tématu [instalace konfiguračního serveru pomocí nástroje příkazového řádku](http://aka.ms/installconfigsrv).
+> Konfigurační server můžete nainstalovat pomocí příkazového řádku. [Další informace](physical-manage-configuration-server.md#install-from-the-command-line).
 
 
 ## <a name="common-issues"></a>Běžné problémy

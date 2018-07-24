@@ -2,24 +2,17 @@
 title: Jaké úlohy je možné chránit pomocí Azure Site Recovery? | Dokumenty Microsoft
 description: Popisuje úlohy, které se dají chránit pomocí zotavení po havárii se službou Azure Site Recovery.
 services: site-recovery
-documentationcenter: ''
 author: rayne-wiselman
-manager: cfreeman
-editor: ''
-ms.assetid: 4953948f-26c0-4699-8fe7-59d3bfc1d3da
 ms.service: site-recovery
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 07/06/2018
+ms.topic: conceptual
+ms.date: 07/22/2018
 ms.author: raynew
-ms.openlocfilehash: e0094b48bc602a1b59339458b430319f4a705d44
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
-ms.translationtype: HT
+ms.openlocfilehash: 5295002e823dc864f0f0dcc67594f49b5431bce7
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920101"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205948"
 ---
 # <a name="what-workloads-can-you-protect-with-azure-site-recovery"></a>Jaké úlohy je možné chránit pomocí Azure Site Recovery?
 
@@ -61,7 +54,6 @@ Site Recovery dokáže replikovat jakoukoli aplikaci spuštěnou na podporované
 | Vzdálená plocha/VDI |Ano |Ano |Ano |Ano |Ano|
 | Linux (operační systém a aplikace) |Ano (testováno Microsoftem) |Ano (testováno Microsoftem) |Ano (testováno Microsoftem) |Ano (testováno Microsoftem) |Ano (testováno Microsoftem)|
 | Dynamics AX |Ano |Ano |Ano |Ano |Ano|
-| Oracle |Ano (testováno Microsoftem) |Ano (testováno Microsoftem) |Ano (testováno Microsoftem) |Ano (testováno Microsoftem) |Ano (testováno Microsoftem)|
 | Souborový server systému Windows |Ano |Ano |Ano |Ano |Ano|
 | Citrix XenApp a XenDesktop |Ano|neuvedeno |Ano |neuvedeno |Ano |
 
@@ -162,6 +154,6 @@ K ochraně nasazení Citrix XenApp a XenDesktop použijte Site Recovery následu
 
 [Další informace](site-recovery-citrix-xenapp-and-xendesktop.md) o ochraně nasazení Citrix XenApp a XenDesktop Můžete si také projít [dokument whitepaper od Citrixu](https://aka.ms/citrix-xenapp-xendesktop-with-asr), kde najdete podrobnosti o tomtéž.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 [Začínáme](azure-to-azure-quickstart.md) s replikací virtuálních počítačů Azure.

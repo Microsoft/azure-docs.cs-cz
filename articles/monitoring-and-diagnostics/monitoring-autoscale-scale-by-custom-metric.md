@@ -1,6 +1,6 @@
 ---
-title: Škálování v Azure pomocí vlastní metriku
-description: Zjistěte, jak se škálovat prostředek podle vlastní metriky v Azure.
+title: Automatické škálování v Azure s použitím vlastních metrik
+description: Zjistěte, jak můžete škálovat prostředek vlastní metrika v Azure.
 author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,40 +8,40 @@ ms.topic: conceptual
 ms.date: 05/07/2017
 ms.author: ancav
 ms.component: autoscale
-ms.openlocfilehash: 739ef5423f7b1769fa793f0cac5306efa634b781
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 97836c4160349b8095ba2095176783ae17b46e82
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35262969"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39216195"
 ---
-# <a name="get-started-with-auto-scale-by-custom-metric-in-azure"></a>Začínáme s automatické škálování podle vlastní metriky v Azure
-Tento článek popisuje postup škálování prostředku podle vlastní metriky v portálu Azure.
+# <a name="get-started-with-auto-scale-by-custom-metric-in-azure"></a>Začínáme s automatické škálování na vlastní metrika v Azure
+Tento článek popisuje, jak škálovat prostředek vlastní metriky na webu Azure portal.
 
-Azure monitorování automatického škálování se vztahuje pouze na virtuální počítač škálování sady (VMSS), cloudové služby, plány služby app a prostředí app service. 
+Azure Monitor automatické škálování se vztahuje pouze na virtuální počítač Škálovací sady (VMSS), cloud services, plánů služby app service a app service Environment. 
 
-# <a name="lets-get-started"></a>Umožňuje Začínáme
-Tento článek předpokládá, že máte webovou aplikaci pomocí nástroje application insights nakonfigurované. Pokud nemáte již, můžete [nastavte Application Insights pro váš web ASP.NET][1]
+# <a name="lets-get-started"></a>Umožňuje začít
+Tento článek předpokládá, že máte webové aplikace pomocí application insights, které jsou nakonfigurované. Pokud je nemáte, můžete si [nastavení Application Insights pro váš web ASP.NET][1]
 
-- Otevřete [portálu Azure][2]
-- Klikněte na ikonu monitorování Azure v levém navigačním podokně.
-  ![Spustit sledování Azure][3]
-- Klikněte na nastavení automatického škálování, chcete-li zobrazit všechny prostředky, na které automatického škálování se vztahuje, společně s jeho aktuální stav škálování ![zjistit automatického měřítka v Azure monitorování][4]
-- Otevřete okno 'Škálování' v Azure monitorování a vyberte prostředek, který chcete škálovat
-> Poznámka: Následující postup použijte plán služby app service přidružené k webové aplikaci, která má Statistika aplikace nakonfigurovaná.
-- V okně Nastavení škálování pro prostředek Všimněte si, že je aktuální počet instancí 1. Klikněte na 'Povolit škálování'.
+- Otevřít [webu Azure portal][2]
+- Klikněte na ikonu Azure Monitor v levém navigačním podokně.
+  ![Spusťte Azure Monitor][3]
+- Klikněte na nastavení automatického škálování, chcete-li zobrazit všechny prostředky, pro které automatického škálování je použít společně s jeho aktuální stav automatického škálování ![zjistit automatické škálování ve službě Azure monitor][4]
+- Otevře se okno "Automatického škálování" ve službě Azure Monitor a vyberte prostředek, který chcete škálovat
+> Poznámka: Následující postup použijte plán služby app service přidružené webové aplikace, která má app insights nakonfigurované.
+- V okně Nastavení škálování pro prostředek Všimněte si, že je aktuální počet instancí 1. Klikněte na "Povolit automatické škálování".
   ![Nastavení škálování pro novou webovou aplikaci][5]
-- Zadejte název pro nastavení škálování a klikněte na "Přidat pravidlo". Všimněte si, že pravidlo škálování možnostech, které se otevře jako kontext podokno v pravé straně. Ve výchozím nastavení nastaví možnost škálování vašeho počet instancí 1, pokud percetage procesoru prostředku je vyšší než 70 %. Změnit metriky zdroje v horní části na "Application Insights", vyberte prostředek Statistika aplikace v rozevírací nabídce 'prostředků a pak vyberte vlastní metrika na základě na kterou chcete škálovat.
-  ![Škálování podle vlastní metriky][6]
-- Podobně jako výše, přidejte pravidlo škálování, který bude škálovat v a snížit počet škálování o 1, pokud vlastní metrika je pod prahovou hodnotu.
+- Zadejte název pro nastavení škálování a klikněte na "Přidat pravidlo". Všimněte si, že pravidla možností škálování, které se otevře jako kontextovém podokně na pravé straně. Ve výchozím nastavení nastaví možnost škálování vašeho počtu instancí o 1, pokud procesor percetage prostředku přesáhne 70 %. Změnit zdroj metriky v horní části na "Application Insights", vyberte prostředek app insights v rozevíracím seznamu "Prostředek" a pak vyberte vlastní metrika založené na který chcete škálovat.
+  ![Škálování podle vlastních metrik][6]
+- Podobně jako výše, přidejte pravidlo škálování, které budou škálovat v a snížit počet škálování o 1, pokud je vlastní metrika je pod prahovou hodnotu.
   ![Škálování podle využití procesoru][7]
-- Nastavit vy instance omezení. Například pokud chcete změnit měřítko mezi instancemi 2 až 5 v závislosti na vlastní metriky kolísání, nastavte minimální na "2", maximální "5" a "default" na "2"
-> Poznámka: V případě, že je potíže při čtení metrika prostředků a aktuální kapacita je nižší než výchozí kapacity, pak pro zajištění dostupnosti prostředků, automatické škálování bude škálovat na výchozí hodnotu. Pokud je aktuální kapacita již vyšší než výchozí kapacita, nebude v škálovat škálování.
-- Klikněte na 'uložit.
+- Vy nastavit limity instancí. Například pokud chcete škálovat mezi instancemi 2 – 5 v závislosti na vlastní metriky kolísání, nastavte "minimální" na "2", "maximální" na "5" a "default" na "2"
+> Poznámka: V případě dojde k nějakému problému čtení metrik prostředku a aktuální kapacita bude pod výchozí kapacitou, pak a zajistit tak dostupnost prostředků, automatického škálování se horizontální navýšení kapacity na výchozí hodnotu. Pokud už je aktuální kapacita vyšší než výchozí kapacita pro dotazy, automatické škálování neprovede horizontální snížení.
+- Klikněte na "uložit.
 
-Blahopřejeme. Jste teď úspěšně vytvořili vaší škálování nastavení na automatické škálování webové aplikace založené na vlastní metriku.
+Blahopřejeme. Teď byl úspěšně vytvořen vaše nastavení automatického škálování škálovat webové aplikace na základě vlastní metriky.
 
-> Poznámka: Stejný postup platí pro začít pracovat s rolí služby VMSS nebo cloud.
+> Poznámka: Stejný postup platí pro začít pracovat s rolí služby VMSS nebo v cloudu.
 
 <!--Reference-->
 [1]: https://docs.microsoft.com/azure/application-insights/app-insights-asp-net

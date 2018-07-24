@@ -291,6 +291,8 @@
           items:
             - name: Správa zasílání zpráv cloudových zařízení s využitím iothub-exploreru
               href: iot-hub-explorer-cloud-device-messaging.md
+            - name: Správa zasílání zpráv cloudových zařízení s využitím Azure IoT Toolkit pro VS Code
+              href: iot-hub-vscode-iot-toolkit-cloud-device-messaging.md
             - name: Uložení zpráv služby IoT Hub do Azure Blob Storage
               href: iot-hub-store-data-in-azure-table-storage.md
             - name: Vizualizace dat v Power BI

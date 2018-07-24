@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2018
 ms.author: glenga
-ms.openlocfilehash: bc280e9b4ade8a4fb8107ec2dcc1c33f538472e1
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 318a39e244f0fca3a1b2d8531dd9197a15400e02
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38602971"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205353"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Vývoj Azure Functions pomocí sady Visual Studio  
 
@@ -132,7 +132,7 @@ V předem zkompilované funkce jsou definovány vazby používá funkci použit�
         }
     }
     ````
-    Atribut specifické pro vazbu se použije pro každý parametr vazby zadaný pro metodu vstupního bodu. Atribut přijímá informace o vazbě jako parametry. V předchozím příkladu má první parametr **QueueTrigger** atribut, která funkce aktivované frontou. Název fronty a nastavení název připojovacího řetězce jsou předány jako parametry **QueueTrigger** atribut.
+    Atribut specifické pro vazbu se použije pro každý parametr vazby zadaný pro metodu vstupního bodu. Atribut přijímá informace o vazbě jako parametry. V předchozím příkladu má první parametr **QueueTrigger** atribut, která funkce aktivované frontou. Název fronty a nastavení název připojovacího řetězce jsou předány jako parametry **QueueTrigger** atribut. Další informace najdete v tématu [vazby úložiště front Azure pro službu Azure Functions](functions-bindings-storage-queue.md#trigger---c-example).
     
 Výše uvedený postup slouží k přidání dalších funkcí pro váš projekt aplikace funkcí. Každá funkce v projektu může mít jinou aktivační událost, ale funkce musí mít přesně jeden trigger. Další informace najdete v tématu [aktivace Azure Functions a vazby koncepty](functions-triggers-bindings.md).
 

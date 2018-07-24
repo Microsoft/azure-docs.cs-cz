@@ -1,6 +1,6 @@
 ---
-title: Připojení zařízení jádro IoT Windows do aplikace Azure IoT centrální | Microsoft Docs
-description: Jako vývojář zařízení zjistěte, jak se připojit k aplikaci Azure IoT centrální zařízení s MXChip IoT DevKit.
+title: Připojit zařízení s Windows IoT Core do aplikace Azure IoT Central | Dokumentace Microsoftu
+description: Jako vývojář zařízení zjistěte, jak připojit zařízení MXChip IoT DevKit do aplikace Azure IoT Central.
 author: miriambrus
 ms.author: mriamb
 ms.date: 04/09/2018
@@ -8,33 +8,102 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: c36a9798718c37fba889323830b76cf8201785cf
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 39eb6f137750f7f741c88dcdf9a55f34d24eaa59
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261895"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205744"
 ---
-# <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>Jádro IoT Windows zařízení připojit k Azure IoT centrální aplikace
+# <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>Připojit zařízení s Windows IoT Core do aplikace Azure IoT Central
 
-Tento článek popisuje, jak jako vývojář zařízení pro připojení k aplikaci Microsoft Azure IoT centrální zařízení IoT jádro systému Windows.
+Tento článek popisuje, jak jako vývojář zařízení pro zařízení s Windows IoT Core připojit k aplikaci Microsoft Azure IoT Central.
 
 ## <a name="before-you-begin"></a>Než začnete
 
 K dokončení kroků v tomto článku budete potřebovat následující:
 
-1. Azure IoT centrální aplikace vytvořené pomocí **Devkits ukázka** šablony aplikace. Další informace najdete v tématu [vytvořit aplikaci Azure IoT centrální](howto-create-application.md).
-2. Zařízení se systémem Windows 10 IoT Core operačního systému. V tomto návodu použijeme malin platformy
+1. Azure IoT Central aplikace vytvořené z **ukázka Devkits** šablony aplikace. Další informace najdete v tématu [vytvoření aplikace Azure IoT Central](howto-create-application.md).
+2. Zařízení s operačním systémem Windows 10 IoT Core. V tomto návodu budeme používat Raspberry Pi.
 
-Aplikace vytvořené z **ukázka Devkits** obsahuje šablony aplikace **jádro IoT Windows** šablona zařízení s následujícími charakteristikami:
+
+## <a name="sample-devkits-application"></a>**Ukázkový Devkits** aplikace
+
+Aplikace vytvořené z **ukázka Devkits** zahrnuje šablony aplikace **Windows IoT Core** šablona zařízení s následujícími charakteristikami: 
+
+- Telemetrická data, která obsahuje měření pro zařízení **vlhkosti**, **teploty** a **tlak**. 
+- Nastavení zobrazení **ventilátor rychlost**.
+- Vlastnosti obsahující vlastnosti zařízení **kostka číslo** a **umístění** cloudové vlastnosti.
+
+
+Najdete všechny podrobnosti o konfiguraci zařízení šablony [Podrobnosti šablony zařízení Windows IoT Core](howto-connect-windowsiotcore.md#windows-iot-core-device-template-details)
+
+## <a name="add-a-real-device"></a>Přidání skutečného zařízení
+
+V aplikaci Azure IoT Central přidat z reálného zařízení **Windows IoT Core** šablona zařízení a zkontrolujte poznamenejte si připojovací řetězec zařízení. Další informace najdete v tématu [skutečné zařízení přidat do aplikace Azure IoT Central](tutorial-add-device.md).
+
+### <a name="prepare-the-windows-iot-core-device"></a>Připravit zařízení Windows IoT Core
+
+Nastavení zařízení s Windows IoT Core postupujte podle podrobného průvodce na [nastavení zařízení s Windows IoT Core] (https://github.com/Microsoft/microsoft-iot-central-firmware/tree/master/WindowsIoT#setup-a-physical-device).
+
+### <a name="add-a-real-device"></a>Přidání skutečného zařízení
+
+V aplikaci Azure IoT Central přidat z reálného zařízení **Windows IoT Core** šablona zařízení a zkontrolujte poznamenejte si připojovací řetězec zařízení. Další informace najdete v tématu [skutečné zařízení přidat do aplikace Azure IoT Central](tutorial-add-device.md).
+
+## <a name="prepare-the-windows-10-iot-core-device"></a>Připravit zařízení Windows 10 IoT Core
+
+### <a name="what-youll-need"></a>Co budete potřebovat
+
+Nastavení fyzického zařízení Windows 10 IoT Core, musíte nejprve mít zařízení se systémem Windows 10 IoT Core. Zjistěte, jak nastavit zařízení s Windows 10 IoT Core [tady](https://developer.microsoft.com/en-us/windows/iot/getstarted/prototype/setupdevice).
+
+Budete také potřebovat klientské aplikace, který může komunikovat s Azure IoT Central. Můžete sestavit vlastní aplikaci pomocí sady Azure SDK a nasaďte ji do zařízení pomocí sady Visual Studio, nebo si můžete stáhnout [předem připravené ukázky](https://developer.microsoft.com/en-us/windows/iot/samples) a jednoduše nasadit a spustit ho v zařízení. 
+
+### <a name="deploying-the-sample-client-application"></a>Nasazení ukázkové aplikace klienta
+
+Pokud chcete nasadit aplikaci klienta z předchozího kroku do zařízení Windows 10 IoT aby bylo možné připravit:
+
+**Ujistěte se, že je připojovací řetězec je uložen na zařízení pro klientskou aplikaci používat**
+* Na ploše uložte do textového souboru s názvem connection.string.iothub připojovací řetězec.
+* Zkopírujte tento textový soubor do složku dokumentů zařízení: `[device-IP-address]\C$\Data\Users\DefaultAccount\Documents\connection.string.iothub`
+
+Jakmile, který jste provedli, budete muset otevřít [Windows Device Portal](https://docs.microsoft.com/en-us/windows/iot-core/manage-your-device/deviceportal) tak, že zadáte http://[device-IP-address]:8080 do libovolného prohlížeče.
+
+Z zde a, jak ukazuje if níže budete chtít:
+1. Rozbalte uzel "Aplikace" na levé straně.
+2. Klikněte na tlačítko "rychlého spuštění ukázky".
+3. Klikněte na tlačítko "Klient služby Azure IoT Hub".
+4. Klikněte na tlačítko "Nasadit a spustit".
+
+![GIF klienta služby Azure IoT Hub na Windows Device Portal](./media/howto-connect-windowsiotcore/iothubapp.gif)
+
+V případě úspěchu aplikace spustí na zařízení a vypadat nějak takto:
+
+![Snímek obrazovky s Azure IoT Hub klientské aplikace](./media/howto-connect-windowsiotcore/IoTHubForegroundClientScreenshot.png)
+
+V Azure IoT Central uvidíte, jak kód spuštěný na Raspberry Pi komunikuje s aplikací:
+
+* Na **měření** stránky pro skutečné zařízení, zobrazí se telemetrie.
+* Na **vlastnosti** stránky, můžete zobrazit hodnotu ohlášené vlastnosti kostka číslo.
+* Na **nastavení** stránky, můžete změnit různá nastavení na Raspberry Pi, jako je například napětí a podporuje a rychlost.
+
+## <a name="download-the-source-code"></a>Stáhněte si zdrojový kód
+
+Pokud chcete prozkoumat a upravit zdrojový kód pro klientskou aplikaci, si můžete stáhnout z Githubu [tady](https://github.com/Microsoft/Windows-iotcore-samples/tree/develop/Samples/Azure/IoTHubClients). Pokud budete chtít upravit kód, postupujte podle těchto pokynů v souboru readme [tady](https://github.com/Microsoft/Windows-iotcore-samples) pro desktopové operační systém.
+
+> [!NOTE]
+> Pokud **git** není nainstalovaný ve vašem vývojovém prostředí, můžete ji stáhnout [ https://git-scm.com/download ](https://git-scm.com/download).
+
+## <a name="windows-iot-core-device-template-details"></a>Podrobnosti šablony zařízení Windows IoT Core
+
+Aplikace vytvořené z **ukázka Devkits** zahrnuje šablony aplikace **Windows IoT Core** šablona zařízení s následujícími charakteristikami:
 
 ### <a name="telemetry-measurements"></a>Měření telemetrie
 
 | Název pole     | Jednotky  | Minimální | Maximum | Desetinná místa |
 | -------------- | ------ | ------- | ------- | -------------- |
-| vlhkosti       | %      | 0       | 100     | 0              |
-| dočasné           | ° C     | -40     | 120     | 0              |
-| pressure       | hPa    | 260     | 1260    | 0              |
+| vlhkost       | %      | 0       | 100     | 0              |
+| temp           | ° C     | -40     | 120     | 0              |
+| tlak       | hPa    | 260     | 1260    | 0              |
 
 ### <a name="settings"></a>Nastavení
 
@@ -42,67 +111,12 @@ Aplikace vytvořené z **ukázka Devkits** obsahuje šablony aplikace **jádro I
 
 | Zobrazované jméno | Název pole | Jednotky | Desetinná místa | Minimální | Maximum | Počáteční |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
-| Ventilátor rychlosti    | fanSpeed   | OT. / MIN   | 0              | 0       | 1000    | 0       |
+| Ventilátor rychlost    | fanSpeed   | OT. / MIN   | 0              | 0       | 1000    | 0       |
 
 
 ### <a name="properties"></a>Vlastnosti
 
 | Typ            | Zobrazované jméno | Název pole | Typ dat |
 | --------------- | ------------ | ---------- | --------- |
-| Vlastnosti zařízení | Kostka číslo   | dieNumber  | číslo    |
+| Vlastnosti zařízení | Kostka čísla   | dieNumber  | číslo    |
 | Text            | Umístění     | location   | neuvedeno       |
-
-## <a name="add-a-real-device"></a>Přidání skutečného zařízení
-
-V aplikaci Azure IoT centrální přidat skutečné zařízení z **jádro IoT Windows** šablona zařízení a je zaznamenána připojovací řetězec zařízení. Další informace najdete v tématu [přidat skutečné zařízení Azure IoT centrální aplikace](tutorial-add-device.md).
-
-### <a name="prepare-the-windows-iot-core-device"></a>Připravte zařízení IoT jádro systému Windows
-
-Nastavit jádro IoT Windows zařízení postupujte podle průvodce krok za krokem v [nastavení zařízení IoT jádro systému Windows] (https://github.com/Microsoft/microsoft-iot-central-firmware/tree/master/WindowsIoT#setup-a-physical-device).
-
-### <a name="add-a-real-device"></a>Přidání skutečného zařízení
-
-V aplikaci Azure IoT centrální přidat skutečné zařízení z **jádro IoT Windows** šablona zařízení a je zaznamenána připojovací řetězec zařízení. Další informace najdete v tématu [přidat skutečné zařízení Azure IoT centrální aplikace](tutorial-add-device.md).
-
-## <a name="prepare-the-windows-10-iot-core-device"></a>Připravte zařízení jádro IoT Windows 10
-
-### <a name="what-youll-need"></a>Co budete potřebovat
-
-Pokud chcete nastavit fyzické zařízení jádro IoT Windows 10, musíte napřed zařízení se systémem Windows 10 IoT Core. Zjistěte, jak nastavit zařízení s Windows 10 IoT Core [zde](https://developer.microsoft.com/en-us/windows/iot/getstarted/prototype/setupdevice).
-
-Budete také potřebovat klientskou aplikaci, která může komunikovat se službou Azure IoT centrální. Můžete buď vytvořit své vlastní aplikaci pomocí sady Azure SDK a nasadíte ho do zařízení pomocí sady Visual Studio, nebo si můžete stáhnout [předdefinovaných ukázka](https://developer.microsoft.com/en-us/windows/iot/samples) a jednoduše nasaďte a spusťte ho na zařízení. 
-
-### <a name="deploying-the-sample-client-application"></a>Nasazení ukázkové aplikace klienta
-
-K nasazení aplikace klienta z předchozího kroku do zařízení s Windows 10 IoT Chcete-li připravit:
-
-**Ujistěte se, že připojovací řetězec je uložený na zařízení pro klientskou aplikaci používat**
-* Na ploše uložte do textového souboru s názvem connection.string.iothub připojovací řetězec.
-* Textový soubor zkopírujte do složky dokumentů zařízení: `[device-IP-address]\C$\Data\Users\DefaultAccount\Documents\connection.string.iothub`
-
-Jakmile provedete tento krok, budete muset otevřít [portál zařízení Windows](https://docs.microsoft.com/en-us/windows/iot-core/manage-your-device/deviceportal) zadáním http://[device-IP-address]:8080 do libovolného prohlížeče.
-
-Z tam a, jak ukazuje Pokud níže budete chtít:
-1. Rozbalte uzel "Aplikací" na levé straně.
-2. Klikněte na tlačítko "rychlé spuštění ukázky".
-3. Klikněte na tlačítko "Klient Azure IoT Hub".
-4. Klikněte na tlačítko "Nasadit a spustit".
-
-![GIF klienta Azure IoT Hub v portálu pro zařízení Windows](./media/howto-connect-windowsiotcore/iothubapp.gif)
-
-Po úspěšné, bude aplikace spustí na zařízení a vypadat takto:
-
-![Snímek obrazovky Azure IoT Hub klientské aplikace](./media/howto-connect-windowsiotcore/IoTHubForegroundClientScreenshot.png)
-
-V Azure IoT centrální můžete zjistit, jak kód spuštěný na platformy malin komunikuje s aplikací:
-
-* Na **měření** stránky pro skutečné zařízení, můžete zobrazit telemetrii.
-* Na **vlastnosti** stránky, se zobrazí hodnota hlášené vlastnosti kostka číslo.
-* Na **nastavení** stránky, můžete změnit různá nastavení na platformy malin například napětí a ventilátor rychlosti.
-
-## <a name="download-the-source-code"></a>Stáhnout zdrojový kód
-
-Pokud chcete prozkoumat a upravit zdrojový kód pro klientskou aplikaci, můžete ho stáhnout z webu GitHub [zde](https://github.com/Microsoft/Windows-iotcore-samples/tree/develop/Samples/Azure/IoTHubClients). Pokud máte v úmyslu změnit kód, postupujte podle těchto pokynů v souboru readme [sem](https://github.com/Microsoft/Windows-iotcore-samples) plochy operačního systému.
-
-> [!NOTE]
-> Pokud **git** není nainstalován ve vašem vývojovém prostředí si můžete stáhnout z [ https://git-scm.com/download ](https://git-scm.com/download).

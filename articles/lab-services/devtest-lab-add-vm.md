@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: spelluru
-ms.openlocfilehash: 9ddf44ef933270c08b42f67387866cd7a3b34719
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: ce95a2177260e97113fd5e639671075eb6ad40cd
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39004075"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39215012"
 ---
 # <a name="add-a-vm-to-a-lab-in-azure-devtest-labs"></a>Přidání virtuálního počítače do testovacího prostředí ve službě Azure DevTest Labs
 Pokud už máte [vytvoření vašeho prvního virtuálního počítače](devtest-lab-create-first-vm.md), pravděpodobně jste to v předem načtené [image z marketplace](devtest-lab-configure-marketplace-images.md). Nyní, pokud chcete přidat další virtuální počítače do testovacího prostředí, můžete také *základní* , který je buď [vlastní image](devtest-lab-create-template.md) nebo [vzorec](devtest-lab-manage-formulas.md). Tento kurz vás provede Přidání virtuálního počítače do testovacího prostředí v DevTest Labs pomocí webu Azure portal.
@@ -35,17 +35,21 @@ Tento článek také ukazuje, jak spravovat artefakty pro virtuální počítač
     ![Přidání tlačítka virtuálního počítače](./media/devtest-lab-add-vm/devtestlab-home-blade-add-vm.png)
 
 1. Na **vyberte bázi** podokně, vyberte základ pro virtuální počítač.
-1. Na **virtuálního počítače** podokně, zadejte název pro nový virtuální počítač v **název virtuálního počítače** textového pole.
+1. Na **virtuálního počítače** podokně **název virtuálního počítače** pro vás předem vyplněna jedinečný název, který je generován automaticky. Název odpovídá uživatelské jméno v e-mailovou adresu, za nímž následuje jedinečný 3 číslice. Tato funkce vám ušetří čas přemýšlení o název počítače a zadávat pokaždé, když vytváříte počítač. Pokud budete chtít, můžete přepsat toto pole automaticky vyplněný s názvem podle vašeho výběru. Pokud chcete přepsat automaticky vyplněný název pro virtuální počítač, zadejte název do **název virtuálního počítače** textového pole. 
 
     ![Podokno virtuálního počítače testovacího prostředí](./media/devtest-lab-add-vm/devtestlab-lab-vm-blade.png)
 
-1. Zadejte **uživatelské jméno** , která jsou udělena oprávnění správce na virtuálním počítači.  
-1. Pokud chcete použít heslo uložené v [službou Azure key vault](devtest-lab-store-secrets-in-key-vault.md)vyberte **použít uložený tajný kód**a zadat hodnotu klíče, který odpovídá váš tajný klíč (heslo). V opačném případě zadejte heslo do textového pole s popiskem **zadejte hodnotu**. Další informace o ukládání tajných klíčů v trezoru klíčů a jejich používání při vytváření prostředků testovacího prostředí, najdete v článku [Store tajné kódy ve službě Azure Key Vault](devtest-lab-store-secrets-in-key-vault.md).
-1. **Typ disku virtuálního počítače** Určuje, jaký typ disku úložiště je povolený pro virtuální počítače v testovacím prostředí.
-2. Vyberte **velikost virtuálního počítače** a vyberte jednu z předdefinovaných položek, které určují jader procesoru, velikosti paměti RAM a velikost pevného disku virtuálního počítače k vytvoření.
-3. Vyberte **artefakty** a – z seznam artefakty - vybrat a nakonfigurovat artefakty, které chcete přidat do základní image.
+1. **Uživatelské jméno** pro počítač je předem vyplněná jedinečný automaticky generovaný název. Název odpovídá uživatelské jméno v e-mailovou adresu. Tato funkce vám ušetří čas při rozhodování o uživatelského jména pokaždé, když vytvoříte nový počítač. Pokud chcete znovu, můžete přepsat toto pole automaticky vyplněný s uživatelským jménem podle svého výběru. Chcete-li přepsat automaticky vyplněné hodnoty pro uživatelské jméno, zadejte hodnotu v **uživatelské jméno** textového pole. Tomuto uživateli je udělen **správce** oprávnění na virtuálním počítači.     
+1. Pro **heslo**:
+    
+    Pokud vytváříte první virtuální počítač v testovacím prostředí, zadejte heslo **zadejte hodnotu** textového pole. Chcete-li uložit toto heslo jako výchozí heslo ve službě Azure key vault související s testovacím prostředí, vyberte **uložit jako výchozí heslo**. Výchozí heslo se uloží ve službě key vault s názvem: **VmPassword**. Při pokusu o vytvoření dalších virtuálních počítačů v testovacím prostředí, **VmPassword** je automaticky vybrána pro **heslo**. Chcete-li přepsat hodnotu, zrušte **použít uložený tajný kód** zaškrtněte políčko a zadejte heslo. 
+
+    Můžete také tajné kódy ve službě key vault nejdříve uložte a pak použít při vytváření virtuálního počítače v testovacím prostředí. Další informace najdete v tématu [Store tajné kódy ve službě key vault](devtest-lab-store-secrets-in-key-vault.md). Chcete-li použít heslo uložené ve službě key vault, vyberte **použít uložený tajný kód**a zadat hodnotu klíče, který odpovídá váš tajný klíč (heslo). 
+3. **Typ disku virtuálního počítače** Určuje, jaký typ disku úložiště je povolený pro virtuální počítače v testovacím prostředí.
+4. Vyberte **velikost virtuálního počítače** a vyberte jednu z předdefinovaných položek, které určují jader procesoru, velikosti paměti RAM a velikost pevného disku virtuálního počítače k vytvoření.
+5. Vyberte **artefakty** a – z seznam artefakty - vybrat a nakonfigurovat artefakty, které chcete přidat do základní image.
     **Poznámka:** Pokud začínáte s DevTest Labs začínáte nebo konfigurace artefakty, vyhledejte [k virtuálnímu počítači přidat existující artefakt](#add-an-existing-artifact-to-a-vm) části a pak se sem vraťte po dokončení.
-4. Vyberte **upřesňující nastavení** konfigurovat možnosti sítě Virtuálního počítače a možností vypršení platnosti. 
+6. Vyberte **upřesňující nastavení** konfigurovat možnosti sítě Virtuálního počítače a možností vypršení platnosti. 
 
    Chcete-li nastavit možnost vypršení platnosti, zvolte ikonu kalendáře pro výběr data, na kterém virtuální počítač se automaticky odstraní.  Ve výchozím nastavení virtuální počítač nikdy nevyprší. 
 1. Pokud chcete zobrazit nebo zkopírujte šablony Azure Resource Manageru, přečtěte si [šablonu uložte Azure Resource Manageru](#save-azure-resource-manager-template) části a vraťte se sem po dokončení.
@@ -102,7 +106,7 @@ Následující kroky ukazují, jak zobrazit nebo upravit parametry artefaktu:
 Šablony Azure Resource Manageru poskytuje deklarativní způsob, jak definovat opakovatelné nasazování. Následující postup vysvětluje, jak uložit šablonu Azure Resource Manageru pro virtuální počítač vytváří.
 Po uložení, můžete použít šablony Azure Resource Manageru k [nasazení nových virtuálních počítačů pomocí Azure Powershellu](../azure-resource-manager/resource-group-overview.md#template-deployment).
 
-1. Na **virtuálního počítače** vyberte **zobrazit šablonu ARM**.
+1. Na **virtuálního počítače** vyberte **zobrazení šablony Azure Resource Manageru**.
 2. Na **zobrazení Azure Resource Manageru šablony** podokně, vyberte text šablony.
 3. Zkopírování vybraného textu do schránky.
 4. Vyberte **OK** zavřete **šablony Azure Resource Manageru zobrazit podokno**.

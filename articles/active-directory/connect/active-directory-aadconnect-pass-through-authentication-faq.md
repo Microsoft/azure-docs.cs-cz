@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/04/2018
+ms.date: 07/23/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6d5cd79a6336b2e5c4b3c5c6f5765d92cd602552
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 8b5f62daf2b43453aadb0373171bc98f96494688
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39048964"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39215063"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory předávací ověřování: Nejčastější dotazy
 
@@ -28,7 +28,7 @@ Tento článek se zabývá nejčastější dotazy týkající se předávací ov
 
 ## <a name="which-of-the-methods-to-sign-in-to-azure-ad-pass-through-authentication-password-hash-synchronization-and-active-directory-federation-services-ad-fs-should-i-choose"></a>Které metody pro přihlášení k Azure AD, předávací ověřování hesla hash synchronizace a Active Directory Federation Services (AD FS), mám zvolit?
 
-To závisí na vaše organizace požadavky a v místním prostředí. Zkontrolujte [možnosti přihlášení uživatele Azure AD Connect](active-directory-aadconnect-user-signin.md) článku pro porovnání metod služby Azure AD přihlášení.
+Kontrola [Tato příručka](https://docs.microsoft.com/azure/security/azure-ad-choose-authn) porovnání různé služby Azure AD přihlášení metod a jak zvolit metodu přímo přihlášení pro vaši organizaci.
 
 ## <a name="is-pass-through-authentication-a-free-feature"></a>Předávací ověřování je bezplatná funkce?
 
@@ -48,7 +48,7 @@ Ano. Předávací ověřování podporuje `Alternate ID` jako uživatelské jmé
 
 ## <a name="does-password-hash-synchronization-act-as-a-fallback-to-pass-through-authentication"></a>Synchronizaci hodnot hash hesel fungují jako záložní předávací ověřování?
 
-Ne. Předávací ověřování _nemá_ automatické převzetí služeb při selhání pro synchronizaci hodnot hash hesel. Funguje pouze jako záložní pro [scénáře, které předávací ověřování nepodporuje Dnes](active-directory-aadconnect-pass-through-authentication-current-limitations.md#unsupported-scenarios). Aby se zabránilo neúspěšných přihlášení uživatele, měli byste nakonfigurovat předávací ověřování pro [vysoké dostupnosti](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability).
+Ne. Předávací ověřování _nemá_ automatické převzetí služeb při selhání pro synchronizaci hodnot hash hesel. Funguje pouze jako záložní pro [scénáře, které předávací ověřování nepodporuje Dnes](active-directory-aadconnect-pass-through-authentication-current-limitations.md#unsupported-scenarios). Aby se zabránilo neúspěšných přihlášení uživatele, měli byste nakonfigurovat předávací ověřování pro [vysoké dostupnosti](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability).
 
 ## <a name="can-i-install-an-azure-ad-application-proxymanage-appsapplication-proxymd-connector-on-the-same-server-as-a-pass-through-authentication-agent"></a>Je možné nainstalovat [Proxy aplikací Azure AD](../manage-apps/application-proxy.md) konektor na stejném serveru jako Agent předávací ověřování?
 
@@ -82,7 +82,7 @@ Ano. Pokud Proxy Auto-Discovery WPAD (Web) je povoleno v místním prostředí, 
 
 ## <a name="can-i-install-two-or-more-pass-through-authentication-agents-on-the-same-server"></a>Můžete nainstalovat dvě nebo více agentů předávací ověřování na stejný server?
 
-Ne, můžete jenom nainstalovat jeden ověřovací Agent nebyl předávací na jednom serveru. Pokud chcete nakonfigurovat předávací ověřování pro zajištění vysoké dostupnosti, postupujte podle pokynů v [předávacího ověřování Azure Active Directory: rychlý start](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability).
+Ne, můžete jenom nainstalovat jeden ověřovací Agent nebyl předávací na jednom serveru. Pokud chcete nakonfigurovat předávací ověřování pro zajištění vysoké dostupnosti, postupujte podle pokynů v [předávacího ověřování Azure Active Directory: rychlý start](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability).
 
 ## <a name="how-do-i-remove-a-pass-through-authentication-agent"></a>Jak odstranit agenta předávací ověřování?
 
@@ -92,12 +92,7 @@ Pokud najdete v okně předávací ověřování na [centra pro správu Azure Ac
 
 ## <a name="i-already-use-ad-fs-to-sign-in-to-azure-ad-how-do-i-switch-it-to-pass-through-authentication"></a>Služba AD FS už používám pro přihlášení k Azure AD. Jak se přepíná ho na předávací ověřování?
 
-Pokud jste nakonfigurovali službu AD FS jako způsob k přihlášení pomocí Průvodce Azure AD Connect, změňte metodu, která uživatel použije k přihlášení na předávací ověřování. Tato změna umožňuje předávací ověřování u klienta a převede _všechny_ federovaných domén do spravované domény. Předávací ověřování zpracovává všechny následné požadavky pro přihlášení do svého tenanta. V současné době se nedají podporované v rámci Azure AD Connect použít ke kombinaci komponent služby AD FS a předávací ověřování mezi různými doménami.
-
-Pokud byla služba AD FS nakonfigurovaný jako metodu pro přihlášení _mimo_ Průvodce Azure AD Connect, změnit přihlášení uživatele metodu na předávací ověřování. Provedete tuto změnu z **nekonfigurujte** možnost. Tato změna umožňuje předávací ověřování u klienta, ale všechny federované domény budou i nadále používat pro přihlášení do služby AD FS. Chcete-li ručně převést některé nebo všechny tyto federovaných domén do spravované domény pomocí Powershellu. Když provedete tuto změnu *pouze* předávací ověřování zpracuje všechny žádosti pro přihlášení do spravované domény.
-
->[!IMPORTANT]
->Předávací ověřování nezpracuje přihlášení pro výhradně cloudovou Azure AD uživatelům.
+Pokud migrujete ze služby AD FS (nebo jiné technologie federation) na předávací ověřování, doporučujeme, abyste postupovali podle našeho podrobné nasazení Průvodce publikování [tady](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx).
 
 ## <a name="can-i-use-pass-through-authentication-in-a-multi-forest-active-directory-environment"></a>Můžete použít předávací ověřování v prostředí s více doménovými strukturami služby Active Directory?
 
@@ -105,7 +100,7 @@ Ano. Podporují se prostředí s více doménovými strukturami, pokud existují
 
 ## <a name="how-many-pass-through-authentication-agents-do-i-need-to-install"></a>Kolik agentů předávací ověřování je nutné nainstalovat?
 
-Instalace více agentů předávací ověřování zajišťuje [vysoké dostupnosti](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability). Ale neposkytuje deterministické rozložení zátěže mezi agentů ověřování.
+Instalace více agentů předávací ověřování zajišťuje [vysoké dostupnosti](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability). Ale neposkytuje deterministické rozložení zátěže mezi agentů ověřování.
 
 Vezměte v úvahu maximální a průměrné zatížení žádostí o přihlášení, které byste měli vidět ve svém tenantovi. Jako srovnávací test může zpracovávat jeden ověřovací Agent 300 až 400 ověření za sekundu na standardní 4jádrový procesor, 16 GB paměti RAM serveru.
 
@@ -133,6 +128,7 @@ Pokud odinstalujete agenta předávací ověřování ze serveru, způsobí, že
 ## <a name="next-steps"></a>Další postup
 - [Aktuální omezení](active-directory-aadconnect-pass-through-authentication-current-limitations.md): Zjistěte, jaké postupy se podporují, a ty, které nejsou.
 - [Rychlý start](active-directory-aadconnect-pass-through-authentication-quick-start.md): uvedení do provozu na předávacího ověřování Azure AD.
+- [Migrace ze služby AD FS na předávací ověřování](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx) – podrobné pokyny k migraci ze služby AD FS (nebo jiné technologie federation) na předávací ověřování.
 - [Inteligentní uzamčení](../authentication/howto-password-smart-lockout.md): Zjistěte, jak nakonfigurovat možnosti inteligentního uzamčení ve svém tenantovi k ochraně uživatelské účty.
 - [Podrobné technické informace](active-directory-aadconnect-pass-through-authentication-how-it-works.md): pochopit, jak funguje funkce předávací ověřování.
 - [Řešení potíží s](active-directory-aadconnect-troubleshoot-pass-through-authentication.md): Zjistěte, jak řešit běžné problémy s funkcí předávací ověřování.

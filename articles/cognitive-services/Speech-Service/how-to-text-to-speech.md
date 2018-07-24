@@ -1,6 +1,6 @@
 ---
 title: Použití textu na řeč pomocí hlasové služby | Dokumentace Microsoftu
-description: Další informace o použití pomocí textu do mluvené řeči ve službě řeči.
+description: Další informace o použití převod textu na řeč služby řeči.
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: v-jerkin
@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 5e278d622557626068618d03eba221b9609d4969
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 84b577cd00d333717a7a5ad1f66182605429f9f1
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39115744"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213329"
 ---
 # <a name="use-text-to-speech-in-speech-service"></a>Použití "Převod textu na řeč" v Speech service
 

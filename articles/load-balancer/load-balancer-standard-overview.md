@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/20/2018
 ms.author: kumud
-ms.openlocfilehash: 58e98baa2bc628e92fd54c389376818e6fdb43a0
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 1a7f37d3f95701779a16cf5dc6844fb67ee7f956
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39187957"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39215097"
 ---
 # <a name="azure-load-balancer-standard-overview"></a>Přehled služby Azure Load balancer úrovně Standard
 

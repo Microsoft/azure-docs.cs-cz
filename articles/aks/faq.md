@@ -6,14 +6,14 @@ author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 07/11/2018
+ms.date: 07/20/2018
 ms.author: iainfou
-ms.openlocfilehash: 915f74df69596b1677a0e03770e076ae50efc609
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: ea22b33233f85da117de54829e5a16bd7dcab36a
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001241"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205244"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Nejčastější dotazy o Azure Kubernetes Service (AKS)
 
@@ -37,7 +37,7 @@ Ano, je k dispozici prostřednictvím automatické škálování [Kubernetes aut
 
 ## <a name="does-aks-support-kubernetes-role-based-access-control-rbac"></a>Podporuje AKS Kubernetes řízení přístupu na základě role (RBAC)?
 
-Ano, je možné povolit RBAC při nasazování clusteru AKS pomocí šablony Azure Resource Manageru nebo rozhraní příkazového řádku Azure. Tato funkce brzy přijde na webu Azure portal.
+Ano, může být RBAC povolen [nasazujete cluster AKS pomocí šablony Azure Resource Manageru nebo rozhraní příkazového řádku Azure](https://docs.microsoft.com/en-us/azure/aks/aad-integration). Tato funkce brzy přijde na webu Azure portal.
 
 ## <a name="what-kubernetes-admission-controllers-does-aks-support-can-this-be-configured"></a>Jaké řadiče jejich příchodu Kubernetes AKS podporuje? Lze to nakonfigurovat?
 
@@ -59,6 +59,10 @@ Není aktuálně možné upravit seznam jejich příchodu řadiče ve službě A
 ## <a name="can-i-deploy-aks-into-my-existing-virtual-network"></a>Můžete nasadit AKS do existující virtuální síť?
 
 Ano, můžete nasadit cluster AKS do existující virtuální sítě pomocí [rozšířeného sítě funkce](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/aks/networking-overview.md).
+
+## <a name="can-i-restrict-the-kubernetes-api-server-to-only-be-accessible-within-my-virtual-network"></a>Můžete omezit na serveru Kubernetes API k přístupné jenom v rámci virtuální sítě?
+
+V tuto chvíli to není možné. Na serveru Kubernetes API je vystavena jako veřejný plně kvalifikovaný název domény (plně kvalifikovaný název domény). By měla řídit přístup k vašemu clusteru pomocí [Kubernetes na základě rolí řízení přístupu (RBAC) a Azure Active Directory (AAD)](https://docs.microsoft.com/en-us/azure/aks/aad-integration).
 
 ## <a name="is-azure-key-vault-integrated-with-aks"></a>Azure Key Vault integrovaná AKS?
 

@@ -1,6 +1,6 @@
 ---
-title: Implementace funkce v Azure Service Fabric aktéři | Microsoft Docs
-description: Popisuje, jak psát vlastní objektu actor služba, která implementuje funkce na úrovni služby, které byste při dědění StatefulService stejným způsobem jako.
+title: Implementace funkce v Azure Service Fabric actors | Dokumentace Microsoftu
+description: Popisuje, jak psát vlastní služba objektu actor, který implementuje stejným způsobem jako při dědění StatefulService funkce na úrovni služby.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,22 +14,22 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/19/2018
 ms.author: vturecek
-ms.openlocfilehash: 41548c3395fa0c8f56e62cfcfb7338a2d53f040f
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 6aff9e9599d31942f994f3cb4e5e9219f33dc7e1
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212887"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205516"
 ---
-# <a name="implementing-service-level-features-in-your-actor-service"></a>Implementace funkce na úrovni služby ve službě objektu actor
-Jak je popsáno v [služby rozvrstvení](service-fabric-reliable-actors-platform.md#service-layering), samotné služby objektu actor je spolehlivá služba.  Můžete napsat vlastní službu, která je odvozena z `ActorService` a implementovat funkce úrovně služeb stejným způsobem jako při dědění StatefulService, jako například:
+# <a name="implementing-service-level-features-in-your-actor-service"></a>Implementace funkce na úrovni služby v rámci služby objektu actor
+Jak je popsáno v [služby vrstvení](service-fabric-reliable-actors-platform.md#service-layering), samotnou službu objektu actor je spolehlivé služby.  Můžete napsat vlastní služby, která je odvozena z `ActorService` a implementujte funkce na úrovni služby stejným způsobem jako při dědění StatefulService, jako například:
 
-- Služba zálohování a obnovení.
-- Sdílené funkce pro všechny účastníky, například jistič.
-- Vzdálená volání procedur v samotné služby objektu actor a v každé jednotlivé objektu actor.
+- Zálohování a obnovení služby.
+- Sdílené funkce pro všechny objekty actor, například jističe.
+- Vzdálené volání procedur na samotnou službu objektu actor a na každé jednotlivé objektu actor.
 
 ## <a name="using-the-actor-service"></a>Pomocí služby objektu actor
-Instance objektu actor mít přístup ke službě objektu actor, ve kterém běží. Prostřednictvím služby objektu actor instancí objektu actor prostřednictvím kódu programu získat kontext služby. Kontext služby má ID oddílu, název služby, název aplikace a další informace specifické pro platformu Service Fabric:
+Instance objektu actor mají přístup ke službě objektu actor, ve kterém jsou spuštěné. Prostřednictvím služby objektu actor instance objektu actor prostřednictvím kódu programu můžete získat kontext služby. Kontext služby má ID oddílu, název služby, název aplikace a další informace specifické pro platformu Service Fabric:
 
 ```csharp
 Task MyActorMethod()
@@ -50,7 +50,7 @@ CompletableFuture<?> MyActorMethod()
 }
 ```
 
-Podobně jako všechny spolehlivé služby musí být zaregistrován služby objektu actor s typem služby v modulu runtime Service Fabric. Služby objektu actor ke spuštění vaše instance objektu actor musí být typu vašeho objektu actor také zaregistrován u služby objektu actor. Pro objekty actor tuto práci provádí metoda registrace `ActorRuntime`. V nejjednodušším případě zaregistrujete na typ vašeho objektu actor a služby objektu actor s výchozím nastavením se implicitně použije:
+Stejně jako Reliable Services musí být služba objektu actor zaregistrovaný s typem služby v modulu runtime Service Fabric. Pro službu objektu actor pro spuštění vaší instance objektu actor musí být typ actor zaregistrovaná taky v služba objektu actor. Pro objekty actor tuto práci provádí metoda registrace `ActorRuntime`. V nejjednodušším případě zaregistrujete na typ actor a služba objektu actor s výchozím nastavením se implicitně použije:
 
 ```csharp
 static class Program
@@ -64,7 +64,7 @@ static class Program
 }
 ```
 
-Alternativně můžete lambda poskytované registrace metoda služby objektu actor vytvořit sami. Můžete pak nakonfigurovat služby objektu actor a explicitně vytvořit vaše objektu actor instance, kde můžete vložit závislosti na vaší objektu actor prostřednictvím jeho konstruktoru:
+Alternativně můžete použít výraz lambda poskytuje způsob registrace k sestavení kompletních služba objektu actor, sami. Můžete pak nakonfigurovat služba objektu actor a explicitní tvorbu vaší instance objektu actor, kde můžete vložit závislosti pro objekt actor pomocí jeho konstruktoru:
 
 ```csharp
 static class Program
@@ -95,11 +95,11 @@ static class Program
 ```
 
 ## <a name="actor-service-methods"></a>Metody služby objektu actor
-Implementuje služby objektu Actor `IActorService` (C#) nebo `ActorService` (Java), který naopak implementuje `IService` (C#) nebo `Service` (Java). Toto je rozhraní používá vzdálenou komunikaci spolehlivé služby, které umožňuje vzdálené volání procedur u metod služby. Obsahuje úrovně služby metod, které je možné volat vzdáleně přes vzdálené komunikace služby a umožňují [výčet](service-fabric-reliable-actors-enumerate.md) a [odstranit](service-fabric-reliable-actors-delete-actors.md) aktéři.
+Implementuje služba objektu Actor `IActorService` (C#) nebo `ActorService` (Java), která zase implementuje `IService` (C#) nebo `Service` (Java). Toto je rozhraní, který používá vzdálenou komunikaci modelu Reliable Services, která umožňuje vzdálené volání procedur na metody služby. Obsahuje metody úrovně služeb, které lze volat vzdáleně přes vzdálené komunikace služby a umožní vám [výčet](service-fabric-reliable-actors-enumerate.md) a [odstranit](service-fabric-reliable-actors-delete-actors.md) objektů actor.
 
 
-## <a name="custom-actor-service"></a>Služba vlastní objektu actor
-Pomocí lambda registrace objektu actor můžete zaregistrovat vlastní vlastní objektu actor služba, která je odvozena z `ActorService` (C#) a `FabricActorService` (Java). V rámci této služby objektu actor vlastní můžete implementovat vlastní úroveň služby funkce napsáním třídu služby, který dědí `ActorService` (C#) nebo `FabricActorService` (Java). Služby objektu actor vlastní dědí všechny funkcionalita modulu runtime objektu actor z `ActorService` (C#) nebo `FabricActorService` (Java) a lze použít k implementaci vlastních metod služby.
+## <a name="custom-actor-service"></a>Vlastní objekt actor service
+Pomocí výrazu lambda registrace objektu actor, můžete zaregistrovat vlastní vlastní objekt actor služby, která je odvozena z `ActorService` (C#) a `FabricActorService` (Java). V této službě vlastní objekt actor, můžete implementovat vlastní funkce úrovně služeb zápisem, která dědí třídu služby `ActorService` (C#) nebo `FabricActorService` (Java). Služba objektu actor vlastní dědí všechny funkce modulu runtime actor z `ActorService` (C#) nebo `FabricActorService` (Java) a je možné implementovat vlastní metody služby.
 
 ```csharp
 class MyActorService : ActorService
@@ -147,43 +147,72 @@ public class Program
 ```
 
 ## <a name="implementing-actor-backup-and-restore"></a>Implementace objektu actor zálohování a obnovení
-Vlastní objektu actor služby můžou zpřístupnit metody zálohování dat objektu actor využívat výhod naslouchacího procesu vzdálené komunikace, která je již v `ActorService`.  Příklad, naleznete v části [zálohování a obnovení aktéři](service-fabric-reliable-actors-backup-and-restore.md).
+Vlastní objekt actor service můžete vystavit metodu k zálohování dat objektu actor s využitím naslouchací proces vzdálené komunikace, která je již v `ActorService`.  Příklad najdete v tématu [zálohování a obnovení objektů actor](service-fabric-reliable-actors-backup-and-restore.md).
 
-## <a name="actor-using-remoting-v2-stack"></a>Použití zásobníku V2 vzdálenou komunikaci objektu actor
-2,8 balíčkem nuget uživatelé teď můžou používat vzdálenou komunikaci V2 zásobníku, která je další původce a poskytuje funkce, například vlastní serializace. Vzdálená komunikace V2 není zpětně kompatibilní s existující vzdálenou komunikaci zásobníku (voláme teď ho jako Vzdálená komunikace V1 zásobníku).
+## <a name="actor-using-remoting-v2interfacecompatible-stack"></a>Použití vzdálené komunikace V2(InterfaceCompatible) zásobníku objektu actor
+Vzdálená komunikace V2 zásobníku (InterfaceCompatible neboli V2_1) má všechny funkce vzdálené komunikace V2 zásobníku kromě je rozhraní kompatibilní zásobníku do zásobníku vzdálené komunikace V1, ale není zpětně kompatibilní s V2 a V1. Aby bylo možné provést upgrade z V1 na V2_1 bez dopadu na dostupnost služeb, postupujte podle následujících [článku](#actor-service-upgrade-to-remoting-v2interfacecompatible-stack-without-impacting-service-availability).
 
-Následující změny vyžadovaných pro použití zásobníku V2 vzdálenou komunikaci.
- 1. Přidejte následující atribut sestavení v objektu Actor rozhraní.
+Následující změny jsou nutné k použití vzdálené komunikace V2_1 zásobníku.
+ 1. Přidejte následující atribut sestavení rozhraní objektu Actor.
    ```csharp
-   [assembly:FabricTransportActorRemotingProvider(RemotingListener = RemotingListener.V2Listener,RemotingClient = RemotingClient.V2Client)]
+   [assembly:FabricTransportActorRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V2_1,RemotingClientVersion = RemotingClientVersion.V2_1)]
    ```
 
- 2. Sestavení a upgradovat ActorService a objektu Actor klienta projekty k použití zásobníku V2.
+ 2. Projekty sestavení a upgradovat ActorService objektu Actor klienta a pokud chcete začít používat V2 zásobníku.
 
-### <a name="actor-service-upgrade-to-remoting-v2-stack-without-impacting-service-availability"></a>Objektu actor služby upgradovat na vzdálenou komunikaci V2 zásobníku bez dopadu na dostupnost služeb.
+#### <a name="actor-service-upgrade-to-remoting-v2interfacecompatible-stack-without-impacting-service-availability"></a>Objektu actor Service Upgrade na zásobník V2(InterfaceCompatible) vzdálené komunikace bez dopadu na dostupnost služeb.
 Tato změna bude upgrade kroku 2. Jak je uvedeno, postupujte podle kroků ve stejném pořadí.
 
-1.  Přidejte následující atribut sestavení v objektu Actor rozhraní. Tento atribut se spustí dva naslouchací procesy pro ActorService V1 (existující) a V2 naslouchací proces. Upgrade ActorService v této změně.
+1.  Přidejte následující atribut sestavení rozhraní objektu Actor. Tento atribut se spustí dva naslouchací procesy pro ActorService V1 (existující) a V2_1 naslouchacího procesu. Upgrade ActorService díky této změně.
 
   ```csharp
-  [assembly:FabricTransportActorRemotingProvider(RemotingListener = RemotingListener.CompatListener,RemotingClient = RemotingClient.V2Client)]
+  [assembly:FabricTransportActorRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V1|RemotingListenerVersion.V2_1,RemotingClientVersion = RemotingClientVersion.V2_1)]
   ```
 
 2. Upgrade ActorClients po dokončení upgradu výše.
-Tento krok zajistí, že Proxy objektu Actor používá zásobník V2 vzdálenou komunikaci.
+Tento krok zajistí, že objekt Actor Proxy používá vzdálené komunikace V2_1 zásobníku.
 
-3. Tento krok je volitelný. Změňte atribut výše, čímž odeberete naslouchací proces V1.
+3. Tento krok je volitelný. Změňte atribut výše k odebrání naslouchacího procesu V1.
 
     ```csharp
-    [assembly:FabricTransportActorRemotingProvider(RemotingListener = RemotingListener.V2Listener,RemotingClient = RemotingClient.V2Client)]
+    [assembly:FabricTransportActorRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V2_1,RemotingClientVersion = RemotingClientVersion.V2_1)]
+    ```
+
+## <a name="actor-using-remoting-v2-stack"></a>Použití vzdálené komunikace V2 zásobníku objektu actor
+2.8 součástí balíčku nuget uživatelé teď můžou používat vzdálenou komunikaci V2 zásobník. Díky tomu je výkonnější a poskytuje funkce, jako jsou vlastní serializace. Vzdálená komunikace V2 není zpětně kompatibilní s existující vzdálenou komunikaci zásobníku (voláme teď ho jako vzdálené komunikace V1 stack).
+
+Následující změny jsou nutné k použití vzdálené komunikace V2 zásobníku.
+ 1. Přidejte následující atribut sestavení rozhraní objektu Actor.
+   ```csharp
+   [assembly:FabricTransportActorRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V2,RemotingClientVersion = RemotingClientVersion.V2)]
+   ```
+
+ 2. Projekty sestavení a upgradovat ActorService objektu Actor klienta a pokud chcete začít používat V2 zásobníku.
+
+#### <a name="actor-service-upgrade-to-remoting-v2-stack-without-impacting-service-availability"></a>Objektu actor Service Upgrade na zásobník V2 vzdálené komunikace bez dopadu na dostupnost služeb.
+Tato změna bude upgrade kroku 2. Jak je uvedeno, postupujte podle kroků ve stejném pořadí.
+
+1.  Přidejte následující atribut sestavení rozhraní objektu Actor. Tento atribut se spustí dva naslouchací procesy pro ActorService V1 (existující) a naslouchacího procesu V2. Upgrade ActorService díky této změně.
+
+  ```csharp
+  [assembly:FabricTransportActorRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V1|RemotingListenerVersion.V2,RemotingClientVersion = RemotingClientVersion.V2)]
+  ```
+
+2. Upgrade ActorClients po dokončení upgradu výše.
+Tento krok zajistí, že objekt Actor Proxy používá vzdálené komunikace V2 zásobníku.
+
+3. Tento krok je volitelný. Změňte atribut výše k odebrání naslouchacího procesu V1.
+
+    ```csharp
+    [assembly:FabricTransportActorRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V2,RemotingClientVersion = RemotingClientVersion.V2)]
     ```
 
 ## <a name="next-steps"></a>Další postup
-* [Řízení stavu objektu actor](service-fabric-reliable-actors-state-management.md)
-* [Kolekce paměti a životního cyklu objektu actor](service-fabric-reliable-actors-lifecycle.md)
-* [Referenční dokumentace rozhraní API actors](https://msdn.microsoft.com/library/azure/dn971626.aspx)
-* [Ukázkový kód rozhraní .NET](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [Ukázkový kód Java](http://github.com/Azure-Samples/service-fabric-java-getting-started)
+* [Správa stavu objektu actor](service-fabric-reliable-actors-state-management.md)
+* [Životní cyklus a uvolňování paměti kolekce objektu actor](service-fabric-reliable-actors-lifecycle.md)
+* [Referenční dokumentace rozhraní API objektů actor](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [Vzorový kód .NET](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+* [Vzorový kód Java](http://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-platform/actor-service.png

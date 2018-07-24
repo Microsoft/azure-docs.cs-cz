@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2017
+ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2d88bf5d20beb9de9bf4a0cdcb43548d0d582779
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: dfee42f813989da2333720ac92313344343d57a7
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917274"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214025"
 ---
 # <a name="user-sign-in-with-azure-active-directory-pass-through-authentication"></a>Přihlášení uživatele pomocí předávacího ověřování Azure Active Directory
 
@@ -30,7 +30,7 @@ Předávací ověřování Azure Active Directory (Azure AD) umožňuje uživate
 
 >[!VIDEO https://www.youtube.com/embed/PyeAC85Gm7w]
 
-Tato funkce se o alternativu k [synchronizaci hodnot Hash hesel služby Azure AD](active-directory-aadconnectsync-implement-password-hash-synchronization.md), která nabízí stejné výhody cloudové ověřování pro organizace. Zabezpečení a dodržování předpisů zásadám některých organizací ale nedovolují těchto organizací odesílat hesla uživatelů, dokonce i ve formě hodnoty hash mimo hranice své interní. Předávací ověřování je to pravé řešení pro tyto organizace.
+Tato funkce se o alternativu k [synchronizaci hodnot Hash hesel služby Azure AD](active-directory-aadconnectsync-implement-password-hash-synchronization.md), která nabízí stejné výhody cloudové ověřování pro organizace. Některé organizace chtějí zajistit jejich zabezpečení místní služby Active Directory a zásad pro hesla, ale můžete místo toho použít předávací ověřování. Kontrola [Tato příručka](https://docs.microsoft.com/azure/security/azure-ad-choose-authn) porovnání různé služby Azure AD přihlášení metod a jak zvolit metodu přímo přihlášení pro vaši organizaci.
 
 ![Azure AD předávací ověřování](./media/active-directory-aadconnect-pass-through-authentication/pta1.png)
 
@@ -49,7 +49,7 @@ Můžete kombinovat předávacího ověřování s [bezproblémové jednotné p�
 - *Zabezpečení*
   - Místních hesel se nikdy neukládají v cloudu v libovolné formě.
   - Agent je pouze odchozí připojení z v rámci vaší sítě. Proto neexistuje žádný požadavek na instalaci agenta v hraniční síti, označované také jako DMZ.
-  - Chrání vaše uživatelské účty tím, že funguje bez problémů s [zásady podmíněného přístupu Azure AD](../active-directory-conditional-access-azure-portal.md), včetně ověřování službou Multi-Factor Authentication (MFA) a tím [odfiltrováním útoky na hesla hrubou silou](../authentication/howto-password-smart-lockout.md).
+  - Chrání vaše uživatelské účty tím, že funguje bez problémů s [zásady podmíněného přístupu Azure AD](../active-directory-conditional-access-azure-portal.md), včetně služby Multi-Factor Authentication (MFA), [blokování starší verze ověřování](../active-directory-conditional-access-conditions.md) a [ filtrování útoky na hesla hrubou silou](../authentication/howto-password-smart-lockout.md).
 - *S vysokou dostupností*
   - Další agenty lze nainstalovat na několik místních serverů pro zajištění vysoké dostupnosti žádostí o přihlášení.
 
@@ -68,12 +68,13 @@ Můžete kombinovat předávacího ověřování s [bezproblémové jednotné p�
 
 ## <a name="next-steps"></a>Další postup
 
-- [**Rychlý Start** ](active-directory-aadconnect-pass-through-authentication-quick-start.md) – rychle zprovoznit a systémem předávacího ověřování Azure AD.
-- [**Inteligentní uzamčení** ](../authentication/howto-password-smart-lockout.md) – konfigurace inteligentním uzamčením funkce na tenantovi služby ochrany uživatelských účtů.
-- [**Aktuální omezení** ](active-directory-aadconnect-pass-through-authentication-current-limitations.md) – zjistěte, jaké postupy se podporují, a ty, které nejsou.
-- [**Podrobné technické informace** ](active-directory-aadconnect-pass-through-authentication-how-it-works.md) -pochopit, jak tato funkce funguje.
-- [**Nejčastější dotazy** ](active-directory-aadconnect-pass-through-authentication-faq.md) – odpovědi na nejčastější dotazy.
-- [**Řešení potíží s** ](active-directory-aadconnect-troubleshoot-pass-through-authentication.md) – zjistěte, jak vyřešit běžné problémy s funkcí.
-- [**Podrobné informace o zabezpečení** ](active-directory-aadconnect-pass-through-authentication-security-deep-dive.md) – další podrobné technické informace o funkci.
-- [**Azure AD bezproblémového jednotného přihlašování k** ](active-directory-aadconnect-sso.md) – Další informace o této doplňkové funkce.
-- [**UserVoice** ](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) – k podání žádostí o nové funkce.
+- [Rychlý Start](active-directory-aadconnect-pass-through-authentication-quick-start.md) – rychle zprovoznit a systémem předávacího ověřování Azure AD.
+- [Migrace ze služby AD FS na předávací ověřování](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx) – podrobné pokyny k migraci ze služby AD FS (nebo jiné technologie federation) na předávací ověřování.
+- [Inteligentní uzamčení](../authentication/howto-password-smart-lockout.md) – konfigurace inteligentním uzamčením funkce na tenantovi služby ochrany uživatelských účtů.
+- [Aktuální omezení](active-directory-aadconnect-pass-through-authentication-current-limitations.md) – zjistěte, jaké postupy se podporují, a ty, které nejsou.
+- [Podrobné technické informace](active-directory-aadconnect-pass-through-authentication-how-it-works.md) -pochopit, jak tato funkce funguje.
+- [Nejčastější dotazy](active-directory-aadconnect-pass-through-authentication-faq.md) – odpovědi na nejčastější dotazy.
+- [Řešení potíží s](active-directory-aadconnect-troubleshoot-pass-through-authentication.md) – zjistěte, jak vyřešit běžné problémy s funkcí.
+- [Podrobné informace o zabezpečení](active-directory-aadconnect-pass-through-authentication-security-deep-dive.md) – další podrobné technické informace o funkci.
+- [Azure AD bezproblémového jednotného přihlašování k](active-directory-aadconnect-sso.md) – Další informace o této doplňkové funkce.
+- [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) – k podání žádostí o nové funkce.

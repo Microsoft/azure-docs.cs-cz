@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: fc98f15303f23937d58131de971d5c60017c9034
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 280d62f127c333ff195e921de380721170fd6a96
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917706"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214978"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Azure předávací ověřování služby Active Directory: Rychlý start
 
@@ -29,9 +29,9 @@ ms.locfileid: "37917706"
 Předávací ověřování Azure Active Directory (Azure AD) umožňuje uživatelům se přihlásit k místním i cloudovým aplikacím pomocí přihlašovali stejnými hesly. Předávací ověřování přihlášení uživatele pomocí ověřování hesla přímo proti místní služby Active Directory.
 
 >[!IMPORTANT]
->Pokud používáte tuto funkci prostřednictvím verze preview, ujistěte se, upgrade verze preview agentů ověřování pomocí pokynů uvedených v [předávacího ověřování Azure Active Directory: Upgrade ve verzi preview Agentů ověřování](./active-directory-aadconnect-pass-through-authentication-upgrade-preview-authentication-agents.md).
+>Pokud migrujete ze služby AD FS (nebo jiné technologie federation) na předávací ověřování, doporučujeme, abyste postupovali podle našeho podrobné nasazení Průvodce publikování [tady](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx).
 
-Postupujte podle těchto pokynů k nasazení předávací ověřování:
+Postupujte podle těchto pokynů můžete nasadit ve svém tenantovi předávací ověřování:
 
 ## <a name="step-1-check-the-prerequisites"></a>Krok 1: Kontrola požadavků
 
@@ -50,7 +50,11 @@ Ujistěte se, že jsou splněné následující požadavky.
     >[!NOTE]
     >Azure AD Connect verze 1.1.557.0, 1.1.558.0, 1.1.561.0 a 1.1.614.0 máte problém související se synchronizace hodnot hash hesel. Pokud jste _není_ používat synchronizaci hodnot hash hesel ve spojení se předávací ověřování, přečtěte si [poznámky k verzi Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history#116470).
 
-3. Určit další server (s Windows serverem 2012 R2 nebo novější) kde můžete spouštět samostatný ověřovacího agenta. Verze ověření agenta musí být 1.5.193.0 nebo novější. Tento další server, je potřeba zajistit vysokou dostupnost žádostí o přihlášení. Přidejte server do stejné doménové struktuře služby Active Directory jako uživatelé, jejichž hesla je potřeba ověřit.
+3. Identifikujte jednu nebo více dalších serverů (s Windows serverem 2012 R2 nebo novější) kde můžete spouštět samostatný agentů ověřování. Tyto další servery jsou potřebné k zajištění vysoké dostupnosti žádostí o přihlášení. Přidáte servery do stejné doménové struktuře služby Active Directory jako uživatelé, jejichž hesla je potřeba ověřit.
+
+    >[!IMPORTANT]
+    >V produkčním prostředí doporučujeme, abyste měli aspoň 3 agentů ověřování systémem ve svém tenantovi. Platí omezení systému 12 agentů ověřování každého tenanta. A jako osvědčený postup považovat všechny servery vrstvy 0 systémy spuštěná agentů ověřování (viz [odkaz](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)).
+
 4. Pokud je brána firewall mezi servery a službou Azure AD, nakonfigurujte následující položky:
    - Ujistěte se, že můžete provést agentů ověřování *odchozí* žádostí do služby Azure AD prostřednictvím následující porty:
    
@@ -62,32 +66,14 @@ Ujistěte se, že jsou splněné následující požadavky.
     Pokud brána firewall vynucuje pravidla podle původního uživatele, otevřete tyto porty pro provoz služby Windows, na kterých běží jako síťové služby.
    - Pokud je vaše brána firewall nebo proxy server umožňuje DNS na seznam povolených, seznam povolených připojení k  **\*. msappproxy.net** a  **\*. servicebus.windows.net**. Pokud ne, povolit přístup k [rozsahy IP adres datacentra Azure](https://www.microsoft.com/download/details.aspx?id=41653), který se každý týden aktualizuje.
    - Agentů ověřování potřebovat přístup k **login.windows.net** a **login.microsoftonline.com** pro počáteční registraci. Otevřete firewall pro tyto adresy URL také.
-   - Pro ověření certifikátu, odblokovat následující adresy URL: **mscrl.microsoft.com:80**, **crl.microsoft.com:80**, **ocsp.msocsp.com:80**, a  **www.microsoft.com:80**. Tyto adresy URL se používají k ověření certifikátu s dalšími produkty Microsoftu. Již můžete mít tyto adresy URL odblokováno.
+   - Pro ověření certifikátu, odblokovat následující adresy URL: **mscrl.microsoft.com:80**, **crl.microsoft.com:80**, **ocsp.msocsp.com:80**, a  **www.microsoft.com:80**. Protože tyto adresy URL se používají k ověření certifikátu s dalšími produkty Microsoftu, které už můžete mít tyto adresy URL odblokováno.
 
-## <a name="step-2-enable-exchange-activesync-support-optional"></a>Krok 2: Povolení podpory Exchange ActiveSync (volitelné)
-
-Postupujte podle těchto pokynů a povolte podporu protokolu Exchange ActiveSync:
-
-1. Použití [Powershellu v Exchangi](https://technet.microsoft.com/library/mt587043(v=exchg.150).aspx) a spusťte následující příkaz:
-```
-Get-OrganizationConfig | fl per*
-```
-
-2. Zkontrolujte hodnotu `PerTenantSwitchToESTSEnabled` nastavení. Pokud je hodnota **true**, váš tenant je správně nakonfigurované. To platí obecně pro většinu zákazníků. Pokud je hodnota **false**, spusťte následující příkaz:
-```
-Set-OrganizationConfig -PerTenantSwitchToESTSEnabled:$true
-```
-
-3. Ověřte, že hodnota `PerTenantSwitchToESTSEnabled` je nyní nastavení **true**. Počkejte hodinu, než budete pokračovat k dalšímu kroku.
-
-Pokud během tohoto kroku budete mít jakékoli problémy, zkontrolujte, [Průvodce odstraňováním potíží](active-directory-aadconnect-troubleshoot-pass-through-authentication.md#exchange-activesync-configuration-issues).
-
-## <a name="step-3-enable-the-feature"></a>Krok 3: Povolení funkce
+## <a name="step-2-enable-the-feature"></a>Krok 2: Povolení funkce
 
 Povolit předávací ověřování prostřednictvím [služby Azure AD Connect](active-directory-aadconnect.md).
 
 >[!IMPORTANT]
->Na serveru primární nebo pracovní Azure AD Connect můžete povolit předávací ověřování. Měli byste ji povolit z primárního serveru.
+>Na serveru primární nebo pracovní Azure AD Connect můžete povolit předávací ověřování. Doporučujeme, abyste povolili z primárního serveru.
 
 Pokud Azure AD Connect instalujete poprvé, zvolte [vlastní instalační cesta](active-directory-aadconnect-get-started-custom.md). Na **přihlášení uživatele** zvolte **předávací ověřování** jako **způsob přihlášení**. Při úspěšném dokončení předávací ověřovací Agent nainstalovaný na stejném serveru jako Azure AD Connect. Kromě toho že předávací ověřování je povolena funkce ve svém tenantovi.
 
@@ -98,9 +84,9 @@ Pokud jste již nainstalovali Azure AD Connect s použitím [Expresní instalace
 ![Azure AD Connect: Změna uživatele přihlášení](./media/active-directory-aadconnect-user-signin/changeusersignin.png)
 
 >[!IMPORTANT]
->Předávací ověřování je funkce úrovni tenanta. Zapnutí ovlivňuje přihlášení pro uživatele napříč _všechny_ spravovaných domén ve vašem tenantovi. Pokud přecházíte z Active Directory Federation Services (AD FS) na předávací ověřování, byste měli počkat alespoň 12 hodin před ukončením infrastruktury služby AD FS. Tato čekací doba je zajistit, že uživatelé můžete zachovat přihlášení k Exchange ActiveSync během přechodu.
+>Předávací ověřování je funkce úrovni tenanta. Zapnutí ovlivňuje přihlášení pro uživatele napříč _všechny_ spravovaných domén ve vašem tenantovi. Pokud přecházíte z Active Directory Federation Services (AD FS) na předávací ověřování, byste měli počkat alespoň 12 hodin před ukončením infrastruktury služby AD FS. Tato čekací doba je zajistit, že uživatelé můžete zachovat přihlášení k Exchange ActiveSync během přechodu. Další informace o migraci ze služby AD FS na předávací ověřování, najdete v naší příručce podrobné nasazení, publikování [tady](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx).
 
-## <a name="step-4-test-the-feature"></a>Krok 4: Testování funkce
+## <a name="step-3-test-the-feature"></a>Krok 3: Testování funkce
 
 Postupujte podle těchto pokynů a ověřte, že je povoleno předávací ověřování správně:
 
@@ -116,9 +102,12 @@ Postupujte podle těchto pokynů a ověřte, že je povoleno předávací ověř
 
 V této fázi uživatelů ze všech spravovaných domén v tenantovi můžete přihlásit pomocí předávacího ověřování. Uživatele z federovaných domén se však nadále přihlašovat pomocí služby AD FS nebo jiného zprostředkovatele federace, kterou jste dříve nakonfigurovali. Při převodu domény z Federovaná do služby managed, všichni uživatelé z této domény, automaticky spustí, přihlášení pomocí předávacího ověřování. Předávací ověřování funkce neovlivňuje uživatelů pouze cloudu.
 
-## <a name="step-5-ensure-high-availability"></a>Krok 5: Zajištění vysoké dostupnosti
+## <a name="step-4-ensure-high-availability"></a>Krok 4: Zajištění vysoké dostupnosti
 
-Pokud plánujete nasadit předávací ověřování v produkčním prostředí, měli byste nainstalovat aspoň jeden další samostatné ověřovacího agenta služby. Nainstalujte tyto ověřovacího agenta na servery _jiných_ než jeden začít Azure AD Connect. Toto nastavení poskytuje vysokou dostupnost pro požadavky přihlášení uživatele.
+Pokud plánujete nasadit předávací ověřování v produkčním prostředí, měli byste nainstalovat další samostatné agentů ověřování. Nainstalujte tyto ověřovacího agenta na servery _jiných_ než jeden začít Azure AD Connect. Toto nastavení poskytuje vysokou dostupnost pro požadavky přihlášení uživatele.
+
+>[!IMPORTANT]
+>V produkčním prostředí doporučujeme, abyste měli aspoň 3 agentů ověřování systémem ve svém tenantovi. Platí omezení systému 12 agentů ověřování každého tenanta. A jako osvědčený postup považovat všechny servery vrstvy 0 systémy spuštěná agentů ověřování (viz [odkaz](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)).
 
 Postupujte podle těchto pokynů ke stahování softwaru ověřovací Agent:
 
@@ -132,7 +121,7 @@ Postupujte podle těchto pokynů ke stahování softwaru ověřovací Agent:
 ![Centrum pro správu Azure Active Directory: podokně stáhnout agenta](./media/active-directory-aadconnect-pass-through-authentication/pta10.png)
 
 >[!NOTE]
->Můžete také přímo stahovat software ověřovací Agent nebyl [tady](https://aka.ms/getauthagent). Přečtěte si a přijměte ověřovací Agent [podmínkami služby](https://aka.ms/authagenteula) _před_ její instalaci.
+>Můžete také přímo [stáhnout software ověřovací Agent nebyl](https://aka.ms/getauthagent). Přečtěte si a přijměte ověřovací Agent [podmínkami služby](https://aka.ms/authagenteula) _před_ její instalaci.
 
 Existují dva způsoby, jak nasadit samostatný ověřovací Agent:
 
@@ -152,6 +141,7 @@ Za druhé můžete vytvořit a spustit skript bezobslužné nasazení. To je už
         RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft Azure AD Connect Authentication Agent\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Credentials -Usercredentials $cred -Feature PassthroughAuthentication
 
 ## <a name="next-steps"></a>Další postup
+- [Migrace ze služby AD FS na předávací ověřování](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx) – podrobné pokyny k migraci ze služby AD FS (nebo jiné technologie federation) na předávací ověřování.
 - [Inteligentní uzamčení](../authentication/howto-password-smart-lockout.md): Zjistěte, jak nakonfigurovat možnosti inteligentního uzamčení ve svém tenantovi k ochraně uživatelské účty.
 - [Aktuální omezení](active-directory-aadconnect-pass-through-authentication-current-limitations.md): Zjistěte, jaké postupy se podporují pomocí předávacího ověřování a ty, které nejsou.
 - [Podrobné technické informace](active-directory-aadconnect-pass-through-authentication-how-it-works.md): pochopit, jak funguje funkce předávací ověřování.

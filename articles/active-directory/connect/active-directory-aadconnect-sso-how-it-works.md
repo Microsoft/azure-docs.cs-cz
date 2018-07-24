@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/15/2018
+ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 0b1940894ffb01595d11bc49889c6ec01714816b
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 6507158a63de508164fc74bcafe39785046a2c79
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37918250"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213346"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Azure Active Directory bezproblémové jednotné přihlašování: podrobné technické informace
 
@@ -36,8 +36,8 @@ Tato část obsahuje tři části:
 ### <a name="how-does-set-up-work"></a>Jak nastavit práce?
 
 Bezproblémového jednotného přihlašování se aktivuje pomocí služby Azure AD Connect, jak je znázorněno [tady](active-directory-aadconnect-sso-quick-start.md). Při povolení funkce, dojde k následujícím krokům:
-- Účet počítače s názvem `AZUREADSSOACC` (která představuje Azure AD) se vytvoří ve vaší místní služby Active Directory (AD).
-- Účet počítače Kerberos dešifrovací klíč je bezpečně sdílet s Azure AD.
+- Účet počítače s názvem `AZUREADSSOACC` (která představuje Azure AD) se vytvoří v místní službě Active Directory (AD) v každé doménové struktuře AD.
+- Účet počítače Kerberos dešifrovací klíč je bezpečně sdílet s Azure AD. Pokud existuje více doménových struktur AD, každý z nich bude mít svůj vlastní protokol Kerberos dešifrovací klíč.
 - Kromě toho jsou vytvořeny dva Kerberos hlavních názvů služby (SPN) představující dvě adresy URL, které se používají při přihlášení k Azure AD.
 
 >[!NOTE]

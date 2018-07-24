@@ -1,6 +1,6 @@
 ---
-title: Použití zařízení nastaví v aplikaci Azure IoT centrální | Microsoft Docs
-description: Jako operátor jak používat zařízení nastaví v Azure IoT centrální aplikaci.
+title: Použití zařízení nastaví v aplikaci Azure IoT Central | Dokumentace Microsoftu
+description: Jakožto Obsluha nastaví použití zařízení v aplikaci Azure IoT Central.
 author: ellenfosborne
 ms.author: elfarber
 ms.date: 01/21/2018
@@ -8,22 +8,22 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpfr
-ms.openlocfilehash: ef1fa64a276926a35dbf98646317bfe29200bb22
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: d0b802842d60d68bab36e87913a84c5e40b8e431
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261674"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39206067"
 ---
-# <a name="use-device-sets-in-your-azure-iot-central-application"></a>Pomocí sady zařízení ve vaší aplikaci Azure IoT centrální
+# <a name="use-device-sets-in-your-azure-iot-central-application"></a>Pomocí sady zařízení ve vaší aplikaci Azure IoT Central
 
-Tento článek popisuje, jak, jakožto Obsluha k použití zařízení nastaví v aplikaci Microsoft Azure IoT centrální.
+Tento článek popisuje, jak, jakožto obsluha používat zařízení nastaví v aplikaci Microsoft Azure IoT Central.
 
-Sada zařízení je seznam zařízení, které jsou seskupeny dohromady, protože všechny odpovídají některé zadaná kritéria. Zařízení nastaví pomáhají spravovat, vizualizovat a analyzovat zařízení tím, že zařízení do menších, logických skupin. Například můžete vytvořit seznam všech zařízení klimatizace v Praze, chcete-li povolit technika Praha najít všechna zařízení, pro které je zodpovědná. Tento článek ukazuje, jak vytvořit a nakonfigurovat zařízení sady.
+Sada zařízení je seznam zařízení, které jsou seskupeny vzhledem k tomu, aby všechny odpovídaly některé zadaným kritériím. Nastaví zařízení pomáhají spravovat, vizualizovat a analyzovat zařízení ve velkém měřítku pomocí seskupení zařízení do menších logické skupiny. Například v Praze umožňující technika Seattle najít všechna zařízení, pro které je zodpovědný vytvořit seznam všech zařízení klimatizace. V tomto článku se dozvíte, jak vytvořit a nakonfigurovat sady zařízení.
 
 ## <a name="create-a-device-set"></a>Vytvoření sady zařízení
 
-Chcete-li vytvořit sadu zařízení:
+Vytvořit sadu zařízení:
 
 1. Zvolte **sady zařízení** v levé navigační nabídce.
 
@@ -31,121 +31,121 @@ Chcete-li vytvořit sadu zařízení:
 
     ![Nová sada zařízení](media/howto-use-device-sets/image1.png)
 
-1. Zadejte název, který je jedinečný v rámci celé aplikace sada vaše zařízení. Můžete také přidat popis. Sada zařízení může obsahovat jenom zařízení ze šablony jedno zařízení. Vyberte šablonu použitou pro tuto sadu na zařízení.
+1. Pojmenujte svou sadu zařízení, které jsou jedinečné v celé aplikaci. Můžete také přidat popis. Sada zařízení může obsahovat jenom zařízení ze šablony jedno zařízení. Výběr šablony zařízení pro tuto sadu.
 
-1. Vytvořte dotaz k identifikaci zařízení pro zařízení nastavit tak, že vyberete vlastnost, relační operátor a hodnotu. Můžete přidat více dotazy a zařízení, která splňují **všechny** kritéria jsou umístěny v sadě zařízení. Sada zařízení, které vytvoříte je přístupný pro každý, kdo má přístup k aplikaci, takže každý, kdo může zobrazit, upravit nebo odstranit sadu zařízení.
+1. Vytvořte dotaz pro účely identifikace zařízení pro zařízení nastavit tak, že vyberete vlastnost, relační operátor a hodnotu. Můžete přidat více dotazů a zařízení, která splňují **všechny** kritéria jsou umístěny do sady zařízení. Sadu zařízení, které vytvoříte je přístupný každému, kdo má přístup k aplikaci, aby všem uživatelům zobrazit, upravit nebo odstranit sadu zařízení.
 
-    ![Zařízení nastavit dotazu](media/howto-use-device-sets/image2.png)
+    ![V zařízení nastavené dotazu](media/howto-use-device-sets/image2.png)
 
     > [!NOTE]
-    > Sada zařízení je dynamická dotazu. Pokaždé, když se zobrazí seznam zařízení, může být různých zařízení v seznamu. V seznamu, závisí na zařízení, která aktuálně splňují kritéria dotazu.
+    > Sada zařízení je dynamický dotaz. Pokaždé, když se podíváte seznam zařízení, může být různá zařízení v seznamu. Seznam závisí na zařízení, která aktuálně splňují kritéria dotazu.
 
 1. Zvolte **Uložit**.
 
-## <a name="configure-the-dashboard-for-your-device-set"></a>Konfigurace řídicí panel pro vaše zařízení sadu
+## <a name="configure-the-dashboard-for-your-device-set"></a>Konfigurace řídicího panelu pro vaši sadu zařízení
 
-Po vytvoření sady zařízení, můžete nakonfigurovat jeho **řídicí panel**. **Řídicí panel** je na domovskou stránku, kde můžete umístit obrázky a odkazy. Můžete také přidat mřížky, které se zobrazí seznam zařízení v sadě zařízení.
+Po vytvoření sady zařízení, můžete nakonfigurovat jeho **řídicí panel**. **Řídicí panel** je domovská stránka, kde můžete umístit obrázky a odkazy. Můžete také přidat mřížky, které se seznam zařízení v sadě zařízení.
 
 1. Zvolte **sady zařízení** v levé navigační nabídce.
 
-1. Vyberte **řídicí panel** kartě.
+1. Zvolte **řídicí panel** kartu.
 
-1. Zapnout **návrh režimu**.
+1. Zapnout **návrhovém režimu**.
 
     ![Režim návrhu](media/howto-use-device-sets/image3.png)
 
-1. Informace o přidání obrázku najdete v tématu [Příprava a nahrajte Image aplikace Azure IoT centrální](howto-prepare-images.md).
+1. Informace o přidání obrázku, naleznete v tématu [Prepare a nahrávání imagí do aplikace Azure IoT Central](howto-prepare-images.md).
 
-1. Přidáte dlaždice odkaz:
+1. Přidání dlaždice odkaz:
     1. Zvolte **odkaz** v pravém podokně.
 
-        ![Vyberte propojení](media/howto-use-device-sets/image6.png)
+        ![Zvolte odkaz](media/howto-use-device-sets/image6.png)
 
-    1. Zadejte odkaz na vaši **název**.
-    1. Vyberte adresu URL k otevření při kliknutí na odkaz.
-    1. Zadejte popis, který ukazuje níže odkaz na vaši **název**.
+    1. Zadejte odkaz **Title**.
+    1. Zvolte adresu URL otevřít po kliknutí na odkaz.
+    1. Zadejte popis, který zobrazuje následující odkaz **Title**.
     1. Zvolte **Uložit**.
 
         ![Uložit odkaz](media/howto-use-device-sets/image7.png)
 
-    1. Můžete změnit umístění a velikost na dlaždici odkaz **řídicí panel**.
+    1. Můžete přesunutí a změna velikosti dlaždice odkaz na **řídicí panel**.
 
-1. Přidáte mřížku. Mřížka je tabulka zařízení na zařízení s sloupce, které zvolíte.
+1. Přidáte mřížku. Mřížka je tabulka zařízení na zařízení, nastavit pomocí sloupce, které zvolíte.
     1. Zvolte **mřížky** v pravém podokně.
 
         ![Zvolte mřížky](media/howto-use-device-sets/image8.png)
 
-    1. Poskytnout vaše mřížky **název**.
-    1. Vyberte sloupce, které chcete zobrazit kliknutím na tlačítko nastavení. V panelu, která se objeví vyberte sloupec mají zobrazit a vybrat na šipku vpravo a vyberte ji.
+    1. Poskytují vaší mřížkou **Title**.
+    1. Vyberte sloupce, které chcete zobrazit kliknutím na tlačítko nastavení. V panelu, která se otevře zvolte sloupec má a klikněte na šipku doprava a vyberte ji.
     1. Vyberte **OK**.
     1. Zvolte **Uložit**.
 
-        ![Uložit mřížka](media/howto-use-device-sets/image9.png)
+        ![Ukládat mřížka](media/howto-use-device-sets/image9.png)
 
-    1. Přetáhnout myší na tabulku a umístěte ji na **řídicí panel**.
+    1. Přetáhnout myší na tabulku a umístěte ho na **řídicí panel**.
 
     > [!NOTE]
-    > Můžete přidat více bitových kopií, odkazy a mřížky.
+    > Můžete přidat více imagí, odkazy a mřížky.
   
     1. Vypnout **režimu návrhu**.
 
     ![Návrh režimu mimo](media/howto-use-device-sets/image10.png)
 
 
-### <a name="configuring-location-map-in-your-device-sets-dashboard"></a>Konfigurace Mapa umístění ve vašem zařízení nastaví řídicí panel 
-Můžete přidat sady umístění mapu, která bude vizualizovat umístění zařízení na mapě. 
+### <a name="configuring-location-map-in-your-device-sets-dashboard"></a>Konfigurace mapování umístění vašeho zařízení nastaví řídicí panel 
+Můžete přidat mapu umístění, která bude vizualizovat umístění zařízení nastaví v objektu Map. 
 
-Chcete-li přidat Mapa umístění na vašem zařízení nastaví řídicí panel, musí mít vlastnost umístění nakonfigurované v šabloně zařízení, najdete v části [vytvořit vlastnost umístění používá technologii Azure mapy](howto-set-up-template.md).
-
-
-1. Na zařízení nastaví řídicí panel vyberte mapu z knihovny. 
-
-    ![Zařízení nastaví mapy řídicí panel](media/howto-use-device-sets/LocationMaps1.png)
+Pokud chcete přidat mapu umístění, která bude zařízení nastaví řídicí panel, musíte mít vlastnost nakonfigurovaného umístění ve vaší šabloně zařízení, najdete v článku [vytvoření vlastnosti umístění používá technologii Azure Maps](howto-set-up-template.md).
 
 
-2. Zadejte název a zvolte vlastnost umístění, které jste dříve nakonfigurovali jako součást vlastností vaše zařízení.
+1. Na řídicím panelu sady zařízení vyberte mapování z knihovny. 
 
-    ![Konfigurace mapy řídicí panel](media/howto-use-device-sets/LocationMaps2.png)
-
-3. Uložit a zobrazí mapy dlaždici zobrazení umístění zařízení v nastavení zařízení.
-
-    ![Uložení řídicího panelu mapy](media/howto-use-device-sets/LocationMaps3.png)
+    ![Nastaví mapy řídicího panelu zařízení](media/howto-use-device-sets/LocationMaps1.png)
 
 
-5. Nyní když operátor zobrazení řídicího panelu sady zařízení, tak může vidět všechny dlaždice jste nakonfigurovali, včetně umístění mapu, která bude vizualizovat všechna zařízení umístění na první pohled!
+2. Zadejte název a vyberte vlastnost umístění, které jste dříve nakonfigurovali v rámci vlastnosti zařízení.
+
+    ![Nakonfigurujte mapování řídicí panel](media/howto-use-device-sets/LocationMaps2.png)
+
+3. Uložit a můžete se zobrazí na mapě dlaždici zobrazení umístění zařízení v nastavení zařízení.
+
+    ![Uložit řídicí panel mapy](media/howto-use-device-sets/LocationMaps3.png)
+
+
+5. Teď když operátor řídicí panel sady zařízení, tak může vidět všechny dlaždice jste nakonfigurovali, včetně umístění mapu, která bude vizualizovat všechna umístění zařízení na první pohled! 
 
     ![Operátor mapy zobrazení řídicího panelu](media/howto-use-device-sets/LocationMaps4.png)
 
-    Bude moct změnit velikost mapy požadovaná velikost.
+    Budete moct změnit velikost mapování na požadovanou velikost.
+
+    Kliknutím na kód pin na mapě zobrazíte informace o zařízení, název a umístění. Můžete kliknout na automaticky otevírané okno, přejděte na stránku vlastností zařízení.  
 
 
+## <a name="configure-the-list-for-your-device-set"></a>Proveďte konfiguraci seznamu pro vaši sadu zařízení
 
-
-## <a name="configure-the-list-for-your-device-set"></a>Konfigurace seznamu pro vaše zařízení sadu
-
-Po vytvoření sady zařízení, můžete nakonfigurovat **seznamu**. **Seznamu** zobrazí všechna zařízení v zařízení nastavit v tabulce s sloupce, které zvolíte.
+Po vytvoření sady zařízení, můžete nakonfigurovat **seznamu**. **Seznamu** zobrazuje všechna zařízení na zařízení nastavit v tabulce se sloupci zvolíte.
 
 1. Zvolte **sady zařízení** v levé navigační nabídce.
 
-1. Vyberte **seznamu** kartě.
+1. Zvolte **seznamu** kartu.
 
-1. Zvolte **sloupec možnosti**.
+1. Zvolte **možnosti sloupce**.
 
     ![Možnosti sloupce](media/howto-use-device-sets/image11.png)
 
-1. Vyberte sloupce, které chcete zobrazit výběrem sloupec, který chcete zobrazit a vybrat na šipku vpravo a vyberte ji.
+1. Vyberte sloupce, které má být zobrazen výběrem sloupce, který chcete zobrazit a klepnutím na šipku vpravo a vyberte ji.
 
-    ![Vyberte sloupce](media/howto-use-device-sets/image12.png)
+    ![Volba sloupce](media/howto-use-device-sets/image12.png)
 
 1. Vyberte **OK**.
 
 ## <a name="analytics"></a>Analýzy
 
-Analýza v sadách zařízení je stejný jako kartě Hlavní analýzy v levé navigační nabídce. Další informace o analýzy v článku na [vytvoření analytics](howto-create-analytics.md).
+Analýzy ve skupinách zařízení je stejný jako hlavní analytics kartu v levé navigační nabídce. Další informace o analýze v článku na [vytvoření analytics](howto-create-analytics.md).
 
 ## <a name="next-steps"></a>Další postup
 
-Teď, když jste se naučili způsob použití sady zařízení v aplikaci Azure IoT centrální, zde je navržené další krok:
+Teď, když jste se naučili, jak pomocí sady zařízení ve vaší aplikaci Azure IoT Central, tady je navrhované další krok:
 
 > [!div class="nextstepaction"]
-> [Postup vytvoření pravidla telemetrie](howto-create-telemetry-rules.md)
+> [Vytvoření pravidla telemetrie](howto-create-telemetry-rules.md)

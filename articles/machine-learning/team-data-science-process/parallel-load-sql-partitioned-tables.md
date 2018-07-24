@@ -1,5 +1,5 @@
 ---
-title: Sestavení a optimalizovat tabulky pro rychlé paralelní import dat do systému SQL Server na virtuálním počítači Azure | Microsoft Docs
+title: Vytváření a optimalizaci tabulky pro rychlé paralelní import dat do systému SQL Server na Virtuálním počítači Azure | Dokumentace Microsoftu
 description: Paralelní hromadný import dat pomocí tabulek oddílů SQL
 services: machine-learning
 documentationcenter: ''
@@ -15,28 +15,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: deguhath
-ms.openlocfilehash: 2de926746a5e6b94a458dbc1a126ab5bc86b12fe
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: f87bc1d8140bea9ebb09e45d42b27e201b474026
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34838530"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214338"
 ---
 # <a name="parallel-bulk-data-import-using-sql-partition-tables"></a>Paralelní hromadný import dat pomocí tabulek oddílů SQL
-Tento dokument popisuje, jak sestavit dělené tabulky pro rychlé paralelní hromadný import dat do databáze systému SQL Server. Pro velké objemy dat načítání nebo přenos k databázi SQL, import dat do databáze SQL a následné dotazy lze zvýšit pomocí *rozdělena na oddíly tabulky a zobrazení*. 
+Tento dokument popisuje, jak vytvářet dělené tabulky pro rychlé paralelní hromadný import dat do databáze SQL serveru. Pro načítání velkých objemů dat nebo přenos do služby SQL database, import dat do SQL DB a dalších dotazů lze zvýšit pomocí *dělené tabulky a zobrazení*. 
 
 ## <a name="create-a-new-database-and-a-set-of-filegroups"></a>Vytvořit novou databázi a sadu skupin souborů
 * [Vytvořit novou databázi](https://technet.microsoft.com/library/ms176061.aspx), pokud již neexistuje.
-* Přidejte skupiny souborů databáze pro databázi, která obsahuje oddílů fyzické soubory. 
-* To lze provést pomocí [CREATE DATABASE](https://technet.microsoft.com/library/ms176061.aspx) Pokud nové nebo [ALTER DATABASE](https://msdn.microsoft.com/library/bb522682.aspx) Pokud databáze již existuje.
-* Přidejte jeden nebo více souborů (podle potřeby) do každé skupině souborů databáze.
+* Přidání skupin souborů databáze k databázi, která obsahuje dělené fyzické soubory. 
+* To lze provést pomocí [CREATE DATABASE](https://technet.microsoft.com/library/ms176061.aspx) Pokud nová nebo [ALTER DATABASE](https://msdn.microsoft.com/library/bb522682.aspx) Pokud databáze již existuje.
+* Přidejte jeden nebo více souborů do každé skupiny souborů databáze (podle potřeby).
   
   > [!NOTE]
-  > Zadejte cílové skupiny souborů, který obsahuje data pro tento oddíl a názvy souborů fyzická databáze, které jsou uložená data souborů.
+  > Zadejte cílové skupině souborů, která obsahuje data pro tento oddíl a názvy souborů fyzická databáze je ukládat data souborů.
   > 
   > 
 
-Následující příklad vytvoří novou databázi pomocí tří skupin souborů jiné než primární a skupiny protokolu obsahující jeden fyzický soubor v každé. Soubory databáze jsou vytvářeny dat systému SQL Server do výchozí složky jako nakonfigurovaný v instanci systému SQL Server. Další informace o výchozí umístění souborů najdete v tématu [umístění souborů pro výchozí a s názvem instance systému SQL Server](https://msdn.microsoft.com/library/ms143547.aspx).
+Následující příklad vytvoří novou databázi pomocí tří skupin souborů jiné než primární a skupiny protokolu, který obsahuje jeden fyzický soubor v každém. Soubory databáze se vytvoří ve složce výchozí Data serveru SQL Server nakonfigurovaná v instanci systému SQL Server. Další informace o výchozích umístění souborů najdete v tématu [umístění souborů pro výchozí a název instance systému SQL Server](https://msdn.microsoft.com/library/ms143547.aspx).
 
     DECLARE @data_path nvarchar(256);
     SET @data_path = (SELECT SUBSTRING(physical_name, 1, CHARINDEX(N'master.mdf', LOWER(physical_name)) - 1)
@@ -57,11 +57,11 @@ Následující příklad vytvoří novou databázi pomocí tří skupin souborů
         ( NAME = ''LogFileGroup'', FILENAME = ''' + @data_path + '<log_file_name>.ldf'' , SIZE = 1024KB , FILEGROWTH = 10%)
     ')
 
-## <a name="create-a-partitioned-table"></a>Vytvoření oddílů tabulky
-K vytvoření oddílů tabulky či tabulek podle schématu dat, mapované na skupiny souborů databáze, vytvořili v předchozím kroku, musíte nejprve vytvořit funkce oddílu a schématu. Když data hromadně importovat do oddílů tabulky či tabulek, záznamy jsou rozděleny do skupin podle schéma oddílu, jak je popsáno níže.
+## <a name="create-a-partitioned-table"></a>Vytvořit tabulku oddílů
+Vytvořit dělené tabulky podle schématu dat, mapované na skupiny souborů databáze, které vytvořili v předchozím kroku, musíte nejprve vytvořit funkci oddílu a schéma. Když jsou data hromadného importu do dělené tabulky, záznamy jsou rozděleny do skupin podle schématu oddílu, jak je popsáno níže.
 
-### <a name="1-create-a-partition-function"></a>1. Vytvořit funkci oddílu
-[Vytvořit funkci oddílu](https://msdn.microsoft.com/library/ms187802.aspx) tuto funkci definuje rozsah hodnot nebo hranic mají být zahrnuty v každé tabulce jednotlivých oddílu, například můžete omezit oddíly po měsících (některé\_data a času\_pole) roku 2013:
+### <a name="1-create-a-partition-function"></a>1. Vytvoření funkce oddílu
+[Vytvořit funkci oddílu](https://msdn.microsoft.com/library/ms187802.aspx) této funkce definuje rozsah hodnot/hranic mají být zahrnuty v každé tabulce jednotlivých oddílů, například, chcete-li omezit oddílů podle kategorie month (některé\_data a času\_pole) v roce 2013:
   
         CREATE PARTITION FUNCTION <DatetimeFieldPFN>(<datetime_field>)  
         AS RANGE RIGHT FOR VALUES (
@@ -69,8 +69,8 @@ K vytvoření oddílů tabulky či tabulek podle schématu dat, mapované na sku
             '20130501', '20130601', '20130701', '20130801',
             '20130901', '20131001', '20131101', '20131201' )
 
-### <a name="2-create-a-partition-scheme"></a>2. Vytvořit schéma oddílu
-[Vytvořit schéma oddílu](https://msdn.microsoft.com/library/ms179854.aspx). Toto schéma mapuje každý oddíl rozsah ve funkci oddílu fyzického souborů, například:
+### <a name="2-create-a-partition-scheme"></a>2. Vytvořte schéma oddílu
+[Vytvořte schéma oddílu](https://msdn.microsoft.com/library/ms179854.aspx). Toto schéma mapuje každý rozsah oddílu ve funkci oddílu fyzického skupině souborů, například:
   
         CREATE PARTITION SCHEME <DatetimeFieldPScheme> AS  
         PARTITION <DatetimeFieldPFN> TO (
@@ -78,7 +78,7 @@ K vytvoření oddílů tabulky či tabulek podle schématu dat, mapované na sku
         <filegroup_5>, <filegroup_6>, <filegroup_7>, <filegroup_8>,
         <filegroup_9>, <filegroup_10>, <filegroup_11>, <filegroup_12> )
   
-  Pokud chcete ověřit rozsahům výsledkem bude každý oddíl podle funkce nebo schéma, spusťte následující dotaz:
+  Chcete-li ověření rozsahů v platnosti v každém oddílu podle funkce nebo schématu, spusťte následující dotaz:
   
         SELECT psch.name as PartitionScheme,
             prng.value AS ParitionValue,
@@ -88,23 +88,23 @@ K vytvoření oddílů tabulky či tabulek podle schématu dat, mapované na sku
         INNER JOIN sys.partition_range_values prng ON prng.function_id=pfun.function_id
         WHERE pfun.name = <DatetimeFieldPFN>
 
-### <a name="3-create-a-partition-table"></a>3. Vytvoří tabulku oddílů
-[Vytvoření oddílů tabulky](https://msdn.microsoft.com/library/ms174979.aspx)(s) podle vašeho schématu dat a zadejte oddílu schématu a omezení pole použité při vytváření oddílů v tabulce, například:
+### <a name="3-create-a-partition-table"></a>3. Vytvořit tabulku oddílů
+[Vytvoření dělenou tabulku](https://msdn.microsoft.com/library/ms174979.aspx)(s) podle schématu dat, a zadat oddíl schématu a omezení pole použitá při vytváření oddílů v tabulce, například:
   
         CREATE TABLE <table_name> ( [include schema definition here] )
         ON <TablePScheme>(<partition_field>)
 
-Další informace najdete v tématu [vytvoření tabulky rozdělena na oddíly a indexy](https://msdn.microsoft.com/library/ms188730.aspx).
+Další informace najdete v tématu [vytvořit dělené tabulky a indexy](https://msdn.microsoft.com/library/ms188730.aspx).
 
-## <a name="bulk-import-the-data-for-each-individual-partition-table"></a>Hromadný import dat pro každou tabulku jednotlivých oddílu
+## <a name="bulk-import-the-data-for-each-individual-partition-table"></a>Hromadný import dat pro každou tabulku jednotlivých oddílů
 
-* Můžete použít BCP, BULK INSERT nebo jiné metody, jako [Průvodce migrací serveru SQL](http://sqlazuremw.codeplex.com/). Ukázkový používá metodu BCP.
-* [Provádění změn v databázi](https://msdn.microsoft.com/library/bb522682.aspx) ke změně schématu protokolování transakcí BULK_LOGGED k minimalizaci režie protokolování, například:
+* Může používat BCP, BULK INSERT nebo jiné metody, jako [Průvodce migrací sady SQL Server](http://sqlazuremw.codeplex.com/). Poskytnutý příklad používá metodu BCP.
+* [Mění databázi](https://msdn.microsoft.com/library/bb522682.aspx) Chcete-li změnit režim protokolování transakce BULK_LOGGED minimalizovat nároky na protokolování, například:
   
         ALTER DATABASE <database_name> SET RECOVERY BULK_LOGGED
-* Cílem urychlit jejich nahrávání dat, spusťte hromadné operace importu paralelně. Tipy k urychlení hromadný import velkých objemů dat do databáze systému SQL Server, najdete v tématu [načíst 1TB za méně než 1 hodinu](http://blogs.msdn.com/b/sqlcat/archive/2006/05/19/602142.aspx).
+* K urychlení načítání dat, spuštění operace hromadného importu paralelně. Tipy k urychlení hromadného importu velkých objemů dat do databáze SQL serveru, naleznete v tématu [načtení 1TB za méně než 1 hodina](http://blogs.msdn.com/b/sqlcat/archive/2006/05/19/602142.aspx).
 
-Následující skript prostředí PowerShell je příklad paralelní dat pomocí BCP načítání.
+Následující příkaz powershellu je příkladem paralelních dat pomocí BCP načítají.
 
     # Set database name, input data directory, and output log directory
     # This example loads comma-separated input data files
@@ -168,22 +168,22 @@ Následující skript prostředí PowerShell je příklad paralelní dat pomocí
     date
 
 
-## <a name="create-indexes-to-optimize-joins-and-query-performance"></a>Vytvářejte indexy k optimalizaci spojení a výkon dotazů
-* Pokud extrahování dat pro modelování z více tabulek, vytvořte na klíče připojení ke zlepšení výkonu spojení indexy.
-* [Vytvářejte indexy](https://technet.microsoft.com/library/ms188783.aspx) (Clusterované či neclusterované) cílení na stejnou skupinu souborů pro každý oddíl pro například:
+## <a name="create-indexes-to-optimize-joins-and-query-performance"></a>Vytváření indexů pro optimalizaci spojení a výkon dotazů
+* Pokud extrahovat data pro modelování z více tabulek, vytváření indexů na klíčích spojení ke zlepšení výkonu spojení.
+* [Vytváření indexů](https://technet.microsoft.com/library/ms188783.aspx) (Clusterované či neclusterované) cílení na stejnou skupinu souborů pro každý oddíl, třeba:
   
         CREATE CLUSTERED INDEX <table_idx> ON <table_name>( [include index columns here] )
         ON <TablePScheme>(<partition)field>)
-  Nebo,
+  nebo,
   
         CREATE INDEX <table_idx> ON <table_name>( [include index columns here] )
         ON <TablePScheme>(<partition)field>)
   
   > [!NOTE]
-  > Můžete vytvořit indexy před hromadný import data. Vytvoření indexu před hromadný import zpomaluje načítání dat.
+  > Můžete k vytvoření indexů před hromadného importování dat. Vytvoření indexu před hromadný import může zpomalit načítání dat.
   > 
   > 
 
-## <a name="advanced-analytics-process-and-technology-in-action-example"></a>Proces pokročilou analýzu a technologie v příkladu akce
-Příklad začátku do konce návod, vědecké účely procesu Team dat pomocí veřejné datové sady, naleznete v části [proces vědecké účely Team dat v akci: pomocí SQL serveru](sql-walkthrough.md).
+## <a name="advanced-analytics-process-and-technology-in-action-example"></a>Proces pokročilých analýz a technologie v příkladu akce
+Příklad začátku do konce Průvodce vědecké zpracování týmových dat pomocí veřejné datové sady, naleznete v tématu [vědecké zpracování týmových dat v akci: použití serveru SQL Server](sql-walkthrough.md).
 

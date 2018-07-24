@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: 7e4057db6c7e42755bbaf8d05f68809cca0bc257
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 5adb6e6119856879e52836a8d3a797a7b40c6fe8
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39185733"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214426"
 ---
 # <a name="connect-intel-edison-to-azure-iot-hub-nodejs"></a>Intel Edison připojit ke službě Azure IoT Hub (Node.js)
 
@@ -27,7 +27,7 @@ Sadu ještě nemáte? Spustit [zde](https://azure.microsoft.com/develop/iot/star
 
 ## <a name="what-you-do"></a>Co můžete dělat
 
-* Nastavení Intel Edison a a Groove moduly.
+* Nastavení Intel Edison a Groove moduly.
 * Vytvoření služby IoT hub.
 * Registrace zařízení pro Edison ve službě IoT hub.
 * Spusťte ukázkovou aplikaci na Edison k odesílání dat ze senzorů do služby IoT hub.

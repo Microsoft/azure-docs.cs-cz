@@ -10,12 +10,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 4/11/2018
 ms.author: rangv
-ms.openlocfilehash: 2e0f8b46f2020db0bb657a8e099158c349af6a89
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 0138b44141bb64671ed2feb522c4b7fa14cab696
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39187661"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213312"
 ---
 # <a name="connect-intel-edison-to-azure-iot-hub-c"></a>Připojení k Azure IoT Hub (C) Intel Edison
 
@@ -27,7 +27,7 @@ Sadu ještě nemáte? Spustit [zde](https://azure.microsoft.com/develop/iot/star
 
 ## <a name="what-you-do"></a>Co můžete dělat
 
-* Nastavení Intel Edison a a Groove moduly.
+* Nastavení Intel Edison a Groove moduly.
 * Vytvoření služby IoT hub.
 * Registrace zařízení pro Edison ve službě IoT hub.
 * Spusťte ukázkovou aplikaci na Edison k odesílání dat ze senzorů do služby IoT hub.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/19/2017
 ms.author: daveba
-ms.openlocfilehash: 81aa8153198f69abd1722f97462927a0c242d4e7
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 6ba090065b18a44cc1f01a62eefb5dcf52bcf356
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39186155"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213261"
 ---
 # <a name="configure-a-vm-managed-service-identity-using-the-azure-portal"></a>Nakonfigurujte identitu spravované služby virtuálního počítače pomocí webu Azure portal
 
@@ -37,7 +37,7 @@ V tomto článku se dozvíte, jak povolit a zakázat systému identity přiřaze
 - Pokud nejste obeznámeni s identita spravované služby, podívejte se [oddílu přehled](overview.md).
 - Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
 - Váš účet k provádění operací správy v tomto článku, potřebuje následující přiřazení role:
-    - [Přispěvatel virtuálních počítačů](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) povolit a odebrání identita spravované služby virtuálního počítače Azure.
+    - [Přispěvatel virtuálních počítačů](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) povolit a odebrat identitou přiřazenou systémem od virtuálního počítače Azure.
 
 ## <a name="managed-service-identity-during-creation-of-an-azure-vm"></a>Identita spravované služby během vytváření virtuálního počítače Azure
 

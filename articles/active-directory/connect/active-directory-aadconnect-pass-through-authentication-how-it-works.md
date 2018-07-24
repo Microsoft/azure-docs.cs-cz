@@ -15,20 +15,20 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 371f3ea3b764eecbb621fc06ec483de4778e7db2
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 674952982ac4342caaf31c05f3d644c1e74b649d
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39159487"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39215892"
 ---
 # <a name="azure-active-directory-pass-through-authentication-technical-deep-dive"></a>Azure předávací ověřování služby Active Directory: Podrobné technické informace
 Tento článek je přehled toho, jak funguje předávací ověřování služby Azure Active directory (Azure AD). Podrobné technické a informace o zabezpečení najdete v tématu [podrobné informace o zabezpečení](active-directory-aadconnect-pass-through-authentication-security-deep-dive.md) článku.
 
 ## <a name="how-does-azure-active-directory-pass-through-authentication-work"></a>Jak funguje předávacího ověřování Azure Active Directory?
 
-[!NOTE]
-Jako předpoklad pro předávací ověřování pro práci uživatelé musí zřídit v Azure AD z místní služby Active Directory pomocí služby Azure AD Connect. Předávací ověřování se nevztahují na uživatelů pouze cloudu.
+>[!NOTE]
+>Jako předpoklad pro předávací ověřování pro práci uživatelé musí zřídit v Azure AD z místní služby Active Directory pomocí služby Azure AD Connect. Předávací ověřování se nevztahují na uživatelů pouze cloudu.
 
 Když se uživatel pokusí k přihlášení k aplikaci zabezpečené službou Azure AD a předávací ověřování je povoleno na tenantovi, dojde k následujícím krokům:
 
@@ -52,6 +52,7 @@ Následující diagram znázorňuje všechny součásti a kroky:
 ## <a name="next-steps"></a>Další postup
 - [Aktuální omezení](active-directory-aadconnect-pass-through-authentication-current-limitations.md): Zjistěte, jaké postupy se podporují, a ty, které nejsou.
 - [Rychlý Start](active-directory-aadconnect-pass-through-authentication-quick-start.md): uvedení do provozu na předávacího ověřování Azure AD.
+- [Migrace ze služby AD FS na předávací ověřování](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx) – podrobné pokyny k migraci ze služby AD FS (nebo jiné technologie federation) na předávací ověřování.
 - [Inteligentní uzamčení](../authentication/howto-password-smart-lockout.md): Nakonfigurujte schopnosti inteligentním uzamčením ve svém tenantovi k ochraně uživatelské účty.
 - [Nejčastější dotazy](active-directory-aadconnect-pass-through-authentication-faq.md): Najděte odpovědi na nejčastější dotazy.
 - [Řešení potíží s](active-directory-aadconnect-troubleshoot-pass-through-authentication.md): Zjistěte, jak řešit běžné problémy s funkcí předávací ověřování.

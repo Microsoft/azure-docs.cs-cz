@@ -1,6 +1,6 @@
 ---
-title: Povolit protokolování diagnostiky pro webové aplikace v Azure App Service
-description: Zjistěte, jak povolit protokolování diagnostiky a přidání instrumentace do aplikace, jakož i postupy pro přístup k informacím v Azure protokolu.
+title: Povolení protokolování diagnostiky pro webové aplikace ve službě Azure App Service
+description: Zjistěte, jak povolit diagnostické protokolování a přidat do svojí aplikace instrumentaci, jakož i jak získat přístup k informacím protokolovaným v Azure.
 services: app-service
 documentationcenter: .net
 author: cephalin
@@ -14,267 +14,267 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 15c580a026495d11ffdeb161d4bf0793850040f5
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 0eefb8ecb7c9641b3e025054f54e2b7cf97b94bd
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32158762"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205999"
 ---
-# <a name="enable-diagnostics-logging-for-web-apps-in-azure-app-service"></a>Povolit protokolování diagnostiky pro webové aplikace v Azure App Service
+# <a name="enable-diagnostics-logging-for-web-apps-in-azure-app-service"></a>Povolení protokolování diagnostiky pro webové aplikace ve službě Azure App Service
 ## <a name="overview"></a>Přehled
-Azure poskytuje integrované diagnostiky vám pomůže při ladění [webové aplikace App Service](http://go.microsoft.com/fwlink/?LinkId=529714). V tomto článku se dozvíte, jak povolit protokolování diagnostiky a přidání instrumentace do aplikace, jakož i postupy pro přístup k informacím v Azure protokolu.
+Azure nabízí předdefinovanou diagnostiku, která vám pomůže s laděním [webová aplikace App Service](http://go.microsoft.com/fwlink/?LinkId=529714). V tomto článku se dozvíte, jak povolit diagnostické protokolování a přidat do svojí aplikace instrumentaci, jakož i jak získat přístup k informacím protokolovaným v Azure.
 
-Tento článek používá [portál Azure](https://portal.azure.com), Azure PowerShell a rozhraní příkazového řádku Azure (Azure CLI) pro práci s diagnostické protokoly. Informace o práci s diagnostických protokolů pomocí sady Visual Studio najdete v tématu [řešení potíží s Azure v sadě Visual Studio](web-sites-dotnet-troubleshoot-visual-studio.md).
+Tento článek používá [webu Azure portal](https://portal.azure.com), prostředí Azure PowerShell a rozhraní příkazového řádku Azure (Azure CLI) pro práci s diagnostické protokoly. Informace o práci se diagnostické protokoly pomocí sady Visual Studio najdete v tématu [řešení potíží s Azure v sadě Visual Studio](web-sites-dotnet-troubleshoot-visual-studio.md).
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
-## <a name="whatisdiag"></a>Webový server diagnostics a application diagnostics
-Webové aplikace služby App Service poskytují diagnostické funkce pro protokolování informací z webového serveru a webové aplikace. Tyto jsou logicky rozdělené do **webový server diagnostiky** a **rozhraní application diagnostics**.
+## <a name="whatisdiag"></a>Diagnostika webového serveru a application diagnostics
+Aplikace služby App Service web apps poskytují diagnostické funkce pro protokolování informací z webového serveru a webové aplikace. Tyto jsou logicky rozdělena do **webového serveru diagnostiky** a **konzole application diagnostics**.
 
 ### <a name="web-server-diagnostics"></a>Diagnostika webového serveru
 Můžete povolit nebo zakázat následující typy protokolů:
 
-* **Podrobné protokolování chyb** -podrobné informace o chybě pro stavové kódy HTTP, které indikují chybu (kód stavu 400 nebo vyšší). Může obsahovat informace, které vám mohou pomoci určit, proč server vrátil kód chyby.
-* **Se nezdařilo, trasování požadavku** -podrobné informace o chybných žádostech, včetně trasování pro součásti služby IIS používá ke zpracování žádostí a doba trvání v jednotlivých součástí. Je užitečné, pokud se pokoušíte zvýšit výkon webu nebo izolovat, co ho způsobuje. konkrétní chyba protokolu HTTP, který se má vrátit.
-* **Webový Server protokolování** -informace o transakcích HTTP pomocí [rozšířený formát protokolu W3C souboru](http://msdn.microsoft.com/library/windows/desktop/aa814385.aspx). Je vhodné při určování metriky celkového lokality, jako je počet požadavků zpracovaných nebo je počet požadavků z konkrétní IP adresu.
+* **Podrobné protokolování chyb** – podrobné informace o chybě pro stavové kódy HTTP, které indikují chybu (stavový kód 400 nebo vyšší). Může obsahovat informace, které vám pomůže určit, proč server vrátil kód chyby.
+* **Se nezdařilo, trasování požadavku** – podrobné informace o neúspěšných požadavcích, včetně trasování součásti služby IIS používá ke zpracování požadavku a doba trvání v jednotlivých komponentách. To je užitečné, pokud se pokoušíte zvýšit výkon webu a izolovat co způsobuje konkrétní chyba protokolu HTTP, který se má vrátit.
+* **Web, protokolování na Server** – informace o transakce HTTP pomocí [rozšířený formát protokolu W3C souboru](http://msdn.microsoft.com/library/windows/desktop/aa814385.aspx). Je užitečné při určování celkové lokality metriky, jako je počet požadavků zpracovaných nebo kolik žádostí se z konkrétní IP adresu.
 
 ### <a name="application-diagnostics"></a>Diagnostika aplikace
-Rozhraní Application diagnostics umožňuje zaznamenat informace o vytvořil webovou aplikací. Aplikace ASP.NET můžete použít [System.Diagnostics.Trace](http://msdn.microsoft.com/library/36hhw2t6.aspx) třída do protokolu informace o protokolu diagnostiky aplikace. Příklad:
+Konzole Application diagnostics můžete zachytit informace vytvořené webové aplikace. Můžete použít aplikace ASP.NET [System.Diagnostics.Trace](http://msdn.microsoft.com/library/36hhw2t6.aspx) třídy k protokolování informací do protokolu diagnostiky aplikace. Příklad:
 
     System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
 
-V době běhu může načíst tyto protokoly, které pomáhají při řešení potíží. Další informace najdete v tématu [řešení potíží s Azure webové aplikace v sadě Visual Studio](web-sites-dotnet-troubleshoot-visual-studio.md).
+Za běhu můžete načíst tyto protokoly, které pomůžou při řešení potíží. Další informace najdete v tématu [řešení potíží s Azure web apps v sadě Visual Studio](web-sites-dotnet-troubleshoot-visual-studio.md).
 
-Webové aplikace služby App Service také protokolu informace o nasazení, při publikování obsahu do webové aplikace. Probíhá automaticky a nejsou žádné nastavení konfigurace pro nasazení protokolování. Nasazení protokolování umožňuje určit, proč nasazení se nezdařilo. Například pokud používáte vlastní nasazení skriptu, můžete použít nasazení protokolování určit, proč se skript selhává.
+Aplikace služby App Service web apps zaznamenávat informace o nasazení při publikování obsahu do webové aplikace. Probíhá automaticky a nejsou žádná nastavení konfigurace pro nasazení protokolování. Nasazení protokolování umožňuje určit, proč se nepovedlo nasazení. Například pokud používáte skript vlastního nasazení, můžete použít nasazení protokolování k určení, proč se skript selhává.
 
 ## <a name="enablediag"></a>Postup povolení diagnostiky
-Povolí se Diagnostika v [portál Azure](https://portal.azure.com), přejděte na stránku pro vaši webovou aplikaci a klikněte na tlačítko **Nastavení > diagnostické protokoly**.
+Povolení diagnostiky v [webu Azure portal](https://portal.azure.com), přejděte na stránku pro vaši webovou aplikaci a klikněte na tlačítko **Nastavení > diagnostické protokoly**.
 
 <!-- todo:cleanup dogfood addresses in screenshot -->
 ![Část protokoly](./media/web-sites-enable-diagnostic-log/logspart.png)
 
-Když povolíte **rozhraní application diagnostics**, můžete také zvolit **úroveň**. Toto nastavení umožňuje filtrovat informace zachycen **informační**, **upozornění**, nebo **chyba** informace. Jeho nastavení na hodnotu **podrobné** zaznamená všechny informace o vytvořil aplikací.
+Když povolíte **konzole application diagnostics**, také zvolte **úroveň**. Toto nastavení vám umožní filtrovat informace zachycen **informační**, **upozornění**, nebo **chyba** informace. Nastavení na **podrobné** zaznamená všechny informace o vytvářené aplikace.
 
 > [!NOTE]
-> Na rozdíl od změny v souboru web.config, povolení rozhraní Application diagnostics nebo změna úrovně protokolů diagnostiky není recyklujte doménu aplikace, která je aplikace spuštěná v rámci.
+> Na rozdíl od změny v souboru web.config, neprobíhá povolení rozhraní Application diagnostics nebo změna úrovně diagnostický protokol, na kterém aplikace běží v rámci domény aplikace.
 >
 >
 
-Pro **protokolování aplikací**, můžete zapnout možnost systému souboru dočasně pro účely ladění. Tato možnost vypne automaticky za 12 hodin. Můžete taky zapnout možnost úložiště objektů blob a vyberte kontejner objektů blob k zápisu v protokolech.
+Pro **protokolování aplikací**, můžete zapnout možnost souboru systému dočasně pro účely ladění. Tato volba vypne automaticky za 12 hodin. Můžete také zapnout možnost úložiště objektů blob kontejner objektů blob, do kterého se zapisují protokoly.
 
-Pro **protokolování webového serveru**, můžete vybrat **úložiště** nebo **systém souborů**. Výběr **úložiště** vám umožní vybrat účet úložiště a kontejner objektů blob, které se zapisují protokoly do. 
+Pro **protokolování webového serveru**, můžete vybrat **úložiště** nebo **systém souborů**. Výběr **úložiště** vám umožní vybrat účet úložiště a kontejner objektů blob, který protokolů zapisován. 
 
-Pokud ukládáte protokoly v systému souborů, soubory můžete získat přístup pomocí protokolu FTP nebo stáhnout jako archivu Zip pomocí prostředí Azure PowerShell nebo rozhraní příkazového řádku Azure (Azure CLI).
+Pokud uchováváte v systému souborů protokolů, soubory můžete získat přístup pomocí protokolu FTP nebo pomocí Azure Powershellu nebo rozhraní příkazového řádku Azure (Azure CLI) stáhnout jako archiv Zip.
 
-Ve výchozím nastavení, nejsou automaticky odstraněny protokoly (s výjimkou produktů **protokolování aplikace (systém souborů)**). Chcete-li automaticky odstranit protokoly, nastavte **doba uchování dat (dny)** pole.
+Ve výchozím nastavení, nejsou automaticky odstraněny protokoly (s výjimkou produktů **protokolování aplikace (systém souborů)**). Pokud chcete automaticky odstranit protokoly, nastavte **doba uchování (dny)** pole.
 
 > [!NOTE]
-> Pokud jste [opět vytvořit přístupové klíče účtu úložiště](../storage/common/storage-create-storage-account.md), musíte nastavit konfiguraci příslušných protokolování používali aktualizované klíče. Použijte následující postup:
+> Pokud jste [znovu vygenerovat přístupové klíče účtu úložiště](../storage/common/storage-create-storage-account.md), musíte obnovit konfiguraci příslušných protokolování použití aktualizované klíčů. Použijte následující postup:
 >
-> 1. V **konfigurace** kartě, nastavte funkce příslušných protokolování na **vypnout**. Uložte vaše nastavení.
-> 2. Povolte protokolování na účtu úložiště objektů blob nebo table znovu. Uložte vaše nastavení.
+> 1. V **konfigurovat** kartu, nastavte funkci příslušných protokolování na **vypnout**. Uložte nastavení.
+> 2. Povolení protokolování pro tento objekt blob účtu úložiště nebo tabulku znovu. Uložte nastavení.
 >
 >
 
-Libovolnou kombinaci systému souborů, úložiště table nebo úložiště objektů blob může být povoleno ve stejnou dobu a mají vlastní protokol úrovni konfigurace. Například můžete chtít protokolovat chyby a upozornění do úložiště objektů blob jako dlouhodobé řešení protokolování, při povolování protokolování systému souborů s úrovní verbose.
+Libovolnou kombinaci systému souborů, table storage a blob storage je možné povolit ve stejnou dobu a mají vlastní protokol úrovni konfigurace. Můžete například chtít protokolovat chyby a upozornění do úložiště objektů blob jako dlouhodobé řešení pro protokolování při povolování protokolování systému souborů s úroveň verbose.
 
-Zatímco všech tří umístění úložiště poskytují stejnou základní informace o protokolu událostí, **tabulky úložiště** a **úložiště objektů blob** protokolu Další informace, jako je instance ID, ID vlákna a časové razítko podrobnější (formát značek) než protokolování, aby se **systém souborů**.
+Zatímco všech tří umístění úložiště poskytují stejné základní informace o protokolované události **tabulky úložiště** a **úložiště objektů blob** Protokolovat další informace, jako je například instance ID, ID vlákna a více Detailní časové razítko (formát značek) než protokolování **systém souborů**.
 
 > [!NOTE]
-> Informace uložené v **tabulky úložiště** nebo **úložiště objektů blob** lze přistupovat pouze pomocí klienta úložiště nebo aplikaci, která může pracovat přímo s těchto systémů úložiště. Například Visual Studio 2013 obsahuje Průzkumníka úložiště, který slouží k prozkoumání tabulky nebo objekt blob úložiště a HDInsight můžete přístup k datům uloženým v úložišti objektů blob. Je také možné zapsat aplikaci, která přistupuje k službě Azure Storage pomocí jednoho z [sady Azure SDK](/downloads/#).
+> Informace uložené v **tabulky úložiště** nebo **úložiště objektů blob** lze přistupovat pouze pomocí klienta úložiště nebo aplikaci, která může pracovat přímo s těmito systémy úložišť. Například sadu Visual Studio 2013 obsahuje Průzkumníka služby Storage, který slouží k prozkoumání tabulkou nebo objektem blob storage a HDInsight můžete přístup k datům uloženým ve službě blob storage. Můžete také psát aplikace, která přistupuje k Azure Storage pomocí jednoho z [sady Azure SDK](https://azure.microsoft.com/en-us/downloads/).
 >
 > [!NOTE]
-> Diagnostika se dá taky povolit z prostředí Azure PowerShell pomocí **Set-AzureWebsite** rutiny. Pokud jste nenainstalovali prostředí Azure PowerShell nebo nenakonfigurovali ho na používání vašeho předplatného Azure, najdete v části [nainstalovat a nakonfigurovat Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.6.0).
+> Diagnostika se dá povolit i z Azure Powershellu pomocí **Set-AzureWebsite** rutiny. Pokud jste ještě nenainstalovali Azure Powershellu nebo nebyly nakonfigurované na používání vašeho předplatného Azure, přečtěte si téma [nainstalovat a nakonfigurovat Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.6.0).
 >
 >
 
 ## <a name="download"></a> Postupy: stažení protokolů
-Diagnostické informace uložené na systém souborů webové aplikace lze přistupovat přímo pomocí protokolu FTP. Lze ji také stáhnout jako archivu Zip pomocí prostředí Azure PowerShell nebo rozhraní příkazového řádku Azure.
+Diagnostické informace ukládají do systému souborů webové aplikace lze přistupovat přímo pomocí FTP. Taky ho můžete stáhnout jako archiv Zip pomocí Azure Powershellu nebo rozhraní příkazového řádku Azure.
 
-Strukturu adresáře, které protokoly jsou uložené v vypadá takto:
+Struktura adresářů, které protokoly se ukládají v vypadá takto:
 
-* **Protokoly aplikací** -/LogFiles/aplikace /. Tato složka obsahuje jeden nebo více souborů textu obsahujícího informace o vyprodukované protokolování aplikací.
-* **Trasování požadavku se nezdařilo** -/ LogFiles/W3SVC ### /. Tato složka obsahuje soubor XSL a jeden nebo více souborů XML. Ujistěte se, stáhněte soubor XSL do stejného adresáře jako soubor XML souborům, protože soubor XSL poskytuje funkce pro formátování a filtrování obsah soubory XML, pokud v prohlížeči Internet Explorer.
-* **Podrobné protokoly chyb** -/LogFiles/DetailedErrors /. Tato složka obsahuje jeden nebo více souborů HTM, které poskytují podrobné informace pro chyby protokolu HTTP, ke kterým došlo.
-* **Web Server Logs** - /LogFiles/http/RawLogs. Tato složka obsahuje jeden nebo více textových souborů formátován pomocí [rozšířený formát protokolu W3C souboru](http://msdn.microsoft.com/library/windows/desktop/aa814385.aspx).
-* **Protokoly nasazení** -/ LogFiles/Git. Tato složka obsahuje protokoly interní nasazení procesy používané modulem webové aplikace Azure, jakož i protokoly pro nasazení Git. Můžete také získat protokoly nasazení v části D:\home\site\deployments.
+* **Protokoly aplikací** -/LogFiles/aplikace /. Tato složka obsahuje jeden nebo více textové soubory obsahující informace o vytvářené protokolování aplikací.
+* **Trasování požadavku se nezdařilo** – / LogFiles/W3SVC ### /. Tato složka obsahuje soubor XSL a jeden nebo více souborů XML. Ujistěte se stáhnout soubor XSL do stejného adresáře jako soubory XML, protože soubor XSL poskytuje funkce pro formátování a filtrování obsahu souborů XML v aplikaci Internet Explorer.
+* **Podrobné protokoly chyb** -/LogFiles/DetailedErrors /. Tato složka obsahuje jeden nebo více souborů HTM, které poskytují podrobné informace, které se vyskytly chyby protokolu HTTP.
+* **Web Server Logs** - /LogFiles/http/RawLogs. Tato složka obsahuje jeden nebo více textových souborů ve formátu pomocí [rozšířený formát protokolu W3C souboru](http://msdn.microsoft.com/library/windows/desktop/aa814385.aspx).
+* **Protokoly nasazení** – / LogFiles/Git. Tato složka obsahuje protokoly generované interní nasazení procesy používané modulem Azure web apps, jakož i protokoly pro nasazení Git. Můžete také najít protokoly nasazení v rámci D:\home\site\deployments.
 
 ### <a name="ftp"></a>FTP
 
-Chcete-li otevřít připojení k serveru FTP na server FTP vaší aplikace, najdete v části [nasazení vaší aplikace do Azure App Service pomocí FTP nebo S](app-service-deploy-ftp.md).
+Chcete-li otevřít připojení FTP k serveru FTP aplikace, najdete v článku [nasazení aplikace do Azure App Service pomocí FTP/S](app-service-deploy-ftp.md).
 
-Po připojení k serveru FTP nebo S vaší webové aplikace, otevřete **LogFiles** složku, kde jsou uloženy soubory protokolu.
+Po připojení k serveru FTP/S vaší webové aplikace, otevřete **LogFiles** složku, ve kterém jsou uložené soubory protokolů.
 
-### <a name="download-with-azure-powershell"></a>Stáhnout pomocí prostředí Azure PowerShell
-Chcete-li stáhnout soubory protokolů, spustit novou instanci třídy Azure PowerShell a použijte následující příkaz:
+### <a name="download-with-azure-powershell"></a>Stáhněte si pomocí Azure Powershellu
+Stáhněte si soubory protokolů, spustit novou instanci prostředí Azure PowerShell a pomocí následujícího příkazu:
 
     Save-AzureWebSiteLog -Name webappname
 
-Tento příkaz uloží protokoly pro webovou aplikaci určeného **-název** parametr do souboru s názvem **logs.zip** v aktuálním adresáři.
+Tento příkaz uloží protokoly pro webovou aplikaci určené **– název** parametr do souboru s názvem **logs.zip** v aktuálním adresáři.
 
 > [!NOTE]
-> Pokud jste nenainstalovali prostředí Azure PowerShell nebo nenakonfigurovali ho na používání vašeho předplatného Azure, najdete v části [nainstalovat a nakonfigurovat Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.6.0).
+> Pokud jste ještě nenainstalovali Azure Powershellu nebo nebyly nakonfigurované na používání vašeho předplatného Azure, přečtěte si téma [nainstalovat a nakonfigurovat Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.6.0).
 >
 >
 
-### <a name="download-with-azure-command-line-interface"></a>Stáhnout pomocí rozhraní příkazového řádku Azure
+### <a name="download-with-azure-command-line-interface"></a>Stáhněte si pomocí rozhraní příkazového řádku Azure
 Chcete-li stáhnout soubory protokolů pomocí rozhraní příkazového řádku Azure, otevřete nový příkazový řádek, prostředí PowerShell, Bash nebo relaci Terminálové služby a zadejte následující příkaz:
 
     az webapp log download --resource-group resourcegroupname --name webappname
 
-Tento příkaz uloží protokoly pro webovou aplikaci s názvem "webappname" do souboru s názvem **diagnostics.zip** v aktuálním adresáři.
+Tento příkaz uloží protokoly pro webovou aplikaci s názvem "webappname' do souboru s názvem **diagnostics.zip** v aktuálním adresáři.
 
 > [!NOTE]
-> Pokud jste nenainstalovali rozhraní příkazového řádku Azure (Azure CLI), nebo nenakonfigurovali ho na používání vašeho předplatného Azure, najdete v části [postup pomocí příkazového řádku Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest).
+> Pokud jste ještě nenainstalovali rozhraní příkazového řádku Azure (Azure CLI) nebo nebyly nakonfigurované na používání vašeho předplatného Azure, přečtěte si téma [tom, jak pomocí Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest).
 >
 >
 
 ## <a name="how-to-view-logs-in-application-insights"></a>Postupy: zobrazení protokolů ve službě Application Insights
-Visual Studio Application Insights poskytuje nástroje pro filtrování a vyhledávání protokolů a korelace protokoly s požadavky a další události.
+Visual Studio Application Insights poskytuje nástroje pro filtrování a prohledávání protokolů a pro korelaci protokolů s žádostmi a jinými událostmi.
 
 1. Přidejte Application Insights SDK do projektu v sadě Visual Studio.
-   * V Průzkumníku řešení klikněte pravým tlačítkem na projekt a zvolte Přidat službu Application Insights. Rozhraní vás provede kroky, které zahrnují vytváření prostředek Application Insights. [Další informace](../application-insights/app-insights-asp-net.md)
-2. Do projektu přidejte balíček naslouchací proces trasování.
+   * V Průzkumníku řešení klikněte pravým tlačítkem myši na projekt a vyberte Přidat Application Insights. Rozhraní vás provede kroky, které patří vytvoření prostředku Application Insights. [Další informace](../application-insights/app-insights-asp-net.md)
+2. Do projektu přidejte balíček naslouchací služby stopy.
    * Klikněte pravým tlačítkem na projekt a zvolte spravovat balíčky NuGet. Vyberte `Microsoft.ApplicationInsights.TraceListener` [Další informace](../application-insights/app-insights-asp-net-trace-logs.md)
-3. Odeslání projektu a spusťte ji k vygenerování dat protokolu.
-4. V [portál Azure](https://portal.azure.com/), přejděte na váš nový prostředek Application Insights a otevřete **vyhledávání**. Měli byste vidět data protokolu, společně s žádost o využití a další telemetrií. Nějaké telemetrie může trvat několik minut příchod: klikněte na tlačítko Aktualizovat. [Další informace](../application-insights/app-insights-diagnostic-search.md)
+3. Nahrajte svůj projekt a spusťte jej. tím vygenerujete data protokolu.
+4. V [webu Azure portal](https://portal.azure.com/), přejděte na nový prostředek Application Insights a otevřete **hledání**. Měli byste vidět data protokolu, společně se žádosti, využití a další telemetrie. Některé telemetrických dat může trvat několik minut, než dorazí: klikněte na tlačítko Aktualizovat. [Další informace](../application-insights/app-insights-diagnostic-search.md)
 
-[Další informace o s Application Insights pro sledování výkonu](../application-insights/app-insights-azure-web-apps.md)
+[Další informace o výkonu sledování pomocí Application Insights](../application-insights/app-insights-azure-web-apps.md)
 
-## <a name="streamlogs"></a> Postupy: Stream protokoly
-Při vývoji aplikace, je často užitečné informace protokolování v skoro v reálném čase. Informace o protokolování dá Streamovat do vývojového prostředí pomocí prostředí Azure PowerShell nebo rozhraní příkazového řádku Azure.
+## <a name="streamlogs"></a> Postupy: Stream protokolů
+Při vývoji aplikace, je často užitečné prohlédnout si informace o protokolování v téměř reálném čase. Informace o protokolování můžete Streamovat do svého vývojového prostředí pomocí Azure Powershellu nebo rozhraní příkazového řádku Azure.
 
 > [!NOTE]
-> Některé typy protokolování vyrovnávací paměť k zápisu do souboru protokolu, což může vést k události mimo pořadí v datovém proudu. Například položku protokolu aplikace, která nastane, když uživatel navštíví stránky nemusí být zobrazeny v datovém proudu před odpovídající záznam protokolu HTTP pro požadavek na stránku.
+> Některé typy vyrovnávací paměti pro protokolování zapisovat do souboru protokolu, což může vést k události mimo pořadí v datovém proudu. Například může se zobrazit položky protokolu aplikace, která nastane, pokud uživatel navštíví stránku ve službě stream před odpovídající položka protokolu HTTP pro požadavek na stránku.
 >
 > [!NOTE]
-> Vysílání datového proudu protokolu také datové proudy informace zapsané na libovolný textový soubor, který je uložen v **D:\\domácí\\LogFiles\\**  složky.
+> Streamování protokolů také datové proudy informací, zapsán do jakékoli textového souboru, který je uložen v **D:\\domácí\\LogFiles\\**  složky.
 >
 >
 
-### <a name="streaming-with-azure-powershell"></a>Streamování pomocí prostředí Azure PowerShell
-Informace o protokolování datového proudu, spustit novou instanci třídy Azure PowerShell a použijte následující příkaz:
+### <a name="streaming-with-azure-powershell"></a>Streamování s využitím Azure Powershellu
+Streamování informace o protokolování, spusťte novou instanci prostředí Azure PowerShell a pomocí následujícího příkazu:
 
     Get-AzureWebSiteLog -Name webappname -Tail
 
-Tento příkaz připojí do webové aplikace určeného **-název** parametr a začít streamování informace do okna prostředí PowerShell jako protokolu událostí, ke kterým došlo u webové aplikace. Žádné informace, zapisovat do souborů končící na .txt, .log nebo htm, které jsou uložené v adresáři /LogFiles (d: nebo Domovská nebo soubory protokolů) je streamování na místní konzoly.
+Tento příkaz se připojí k webové aplikaci určené **– název** parametr a začít Streamovat informace do okna prostředí PowerShell, jak ve webové aplikaci dojde k událostem protokolu. Veškeré informace, které zapisují do souborů HTM, txt nebo .log, které jsou uložené v adresáři /LogFiles (d:/home/logfiles) se streamují do místní konzoly.
 
-Chcete-li filtrovat konkrétní události, jako je například chyby, použijte **– zpráva** parametr. Příklad:
+Chcete-li filtrovat konkrétní události, jako jsou chyby, použijte **– zpráva** parametru. Příklad:
 
     Get-AzureWebSiteLog -Name webappname -Tail -Message Error
 
-Chcete-li filtrovat konkrétní typy, jako je například HTTP, použijte **-cesta** parametr. Příklad:
+Chcete-li filtrovat konkrétní typy, jako je například HTTP, použijte **-cesta** parametru. Příklad:
 
     Get-AzureWebSiteLog -Name webappname -Tail -Path http
 
-Pokud chcete zobrazit seznam dostupných cesty, použijte parametr - ListPath.
+Pokud chcete zobrazit seznam dostupných cest, použijte parametr - ListPath.
 
 > [!NOTE]
-> Pokud jste nenainstalovali prostředí Azure PowerShell nebo nenakonfigurovali ho na používání vašeho předplatného Azure, najdete v části [jak používat Azure PowerShell](/develop/nodejs/how-to-guides/powershell-cmdlets/).
+> Pokud jste ještě nenainstalovali Azure Powershellu nebo nebyly nakonfigurované na používání vašeho předplatného Azure, přečtěte si téma [tom, jak pomocí Azure Powershellu](/develop/nodejs/how-to-guides/powershell-cmdlets/).
 >
 >
 
 ### <a name="streaming-with-azure-command-line-interface"></a>Streamování pomocí rozhraní příkazového řádku Azure
-Stream informace o protokolování, otevřete nový příkazový řádek, prostředí PowerShell, Bash nebo relaci terminálu a zadejte následující příkaz:
+Informace o protokolování datový proud stream, otevřete nový příkazový řádek, prostředí PowerShell, Bash nebo relaci Terminálové služby a zadejte následující příkaz:
 
     az webapp log tail --name webappname --resource-group myResourceGroup
 
-Tento příkaz připojí do webové aplikace s názvem 'webappname' a začít streamování informace do okna události protokolu jsou prováděny ve webové aplikaci. Žádné informace, zapisovat do souborů končící na .txt, .log nebo htm, které jsou uložené v adresáři /LogFiles (d: nebo Domovská nebo soubory protokolů) je streamování na místní konzoly.
+Tento příkaz se připojí k webové aplikaci s názvem "webappname" a začít Streamovat informace do okna ve webové aplikaci dojde k události protokolu. Veškeré informace, které zapisují do souborů HTM, txt nebo .log, které jsou uložené v adresáři /LogFiles (d:/home/logfiles) se streamují do místní konzoly.
 
-Chcete-li filtrovat konkrétní události, jako je například chyby, použijte **– filtru** parametr. Příklad:
+Chcete-li filtrovat konkrétní události, jako jsou chyby, použijte **– filtr** parametru. Příklad:
 
     az webapp log tail --name webappname --resource-group myResourceGroup --filter Error
 
-Chcete-li filtrovat konkrétní typy, jako je například HTTP, použijte **– cesta** parametr. Příklad:
+Chcete-li filtrovat konkrétní typy, jako je například HTTP, použijte **– cesta** parametru. Příklad:
 
     az webapp log tail --name webappname --resource-group myResourceGroup --path http
 
 > [!NOTE]
-> Pokud jste nenainstalovali rozhraní příkazového řádku Azure nebo nenakonfigurovali ho na používání vašeho předplatného Azure, najdete v části [postupy pro použití rozhraní příkazového řádku Azure](../cli-install-nodejs.md).
+> Pokud jste ještě nenainstalovali rozhraní příkazového řádku Azure, nebo nebyly nakonfigurované na používání vašeho předplatného Azure, přečtěte si téma [jak chcete používat rozhraní příkazového řádku Azure](../cli-install-nodejs.md).
 >
 >
 
-## <a name="understandlogs"></a> Postupy: pochopení protokolů diagnostiky
-### <a name="application-diagnostics-logs"></a>Diagnostické protokoly aplikací
-Rozhraní Application diagnostics ukládá informace v konkrétním formátu pro aplikace .NET, v závislosti na tom, jestli ukládání protokolů systému souborů, úložiště table nebo úložiště objektů blob. Základní sada dat uložených je stejná napříč všechny tři typy úložiště - datum a čas výskytu události, ID procesu, který vytváří událost, typu události (informace, upozornění, chyby) a zprávy událostí.
+## <a name="understandlogs"></a> Postupy: pochopení diagnostické protokoly
+### <a name="application-diagnostics-logs"></a>Protokoly diagnostiky aplikací
+Konzole Application diagnostics ukládá informace v určitém formátu pro aplikace .NET, v závislosti na tom, jestli ukládání protokolů do systému souborů, table storage a blob storage. Základní sadu uložených dat je stejná napříč všemi třemi typy úložiště – datum a čas, ke které došlo k události, ID procesu, který vytvořil události, typu události (informace, upozornění a chyby) a zpráva o události.
 
 **Systém souborů**
 
-Každý řádek přihlášení k systému souborů nebo pomocí vysílání datového proudu je v následujícím formátu:
+Každý řádek přihlášení k systému souborů nebo přijaty pomocí vysílání datového proudu je v následujícím formátu:
 
     {Date}  PID[{process ID}] {event type/level} {message}
 
-Událost chyby například vypadat podobně jako v následujícím příkladu:
+Například událost chyby vypadat podobně jako v následujícím příkladu:
 
     2014-01-30T16:36:59  PID[3096] Error       Fatal error on the page!
 
-Protokolování do systému souborů poskytuje nejzákladnější informace tři dostupné metody poskytnutí jenom čas, ID procesu, úroveň události a zprávy.
+Protokolování do systému souborů poskytuje základní informace o tři dostupné metody pouze čas, ID procesu, úroveň události a zprávy.
 
 **Table Storage**
 
-Při přihlašování do úložiště table, další vlastnosti se používají pro usnadnění hledání data uložená v tabulce a také podrobnější informace o události. U každé entity (řádek) uložené v tabulce se používají následující vlastnosti (sloupce).
+Při přihlašování do table storage, se používají další vlastnosti pro usnadnění vyhledávání data uložená v tabulce, stejně jako podrobnější informace o události. Pro každou entitu (řádků), uložené v tabulce se používají následující vlastnosti (sloupce).
 
-| Název vlastnosti | Hodnota nebo formátu |
+| Název vlastnosti | / Ve formátu |
 | --- | --- |
 | PartitionKey |Datum a čas ve formátu yyyyMMddHH události |
 | RowKey |Hodnota identifikátoru GUID, který jedinečně identifikuje tuto entitu |
 | Časové razítko |Datum a čas, kdy došlo k události |
-| EventTickCount |Datum a čas, kdy došlo k události, ve formátu značky (větší přesnost) |
+| EventTickCount |Datum a čas, kdy došlo k události, formát značky (větší přesnost) |
 | ApplicationName |Název webové aplikace |
 | Úroveň |Úroveň události (například Chyba, upozornění, informace) |
-| ID události |ID události této události<p><p>Výchozí hodnota je 0-li zadán žádný |
-| ID instance |Instanci webové aplikace, které i došlo |
-| PID |ID procesu |
-| TID |ID vlákna vlákna, která vytváří událost |
-| Zpráva |Podrobná zpráva události |
+| ID události |ID události této události<p><p>Výchozí hodnota je 0, pokud zadaný žádný |
+| ID instance |Instance webové aplikace, které i připadá na |
+| Identifikátor PID |ID procesu |
+| TID. |ID vlákna vlákna, která vytváří události |
+| Zpráva |Podrobná zpráva o události |
 
 **Blob Storage**
 
-Při přihlašování do úložiště objektů blob, data se ukládají ve formátu hodnot oddělených čárkami (CSV). Úložiště table, podobně jako další pole jsou protokolovány k poskytnutí podrobnější informace o události. Pro každý řádek ve sdíleném svazku clusteru se používají následující vlastnosti:
+Při přihlašování do úložiště objektů blob, data se ukládají ve formátu hodnot oddělených čárkami (CSV). Table Storage, podobně jako další pole jsou protokolovány k poskytnutí podrobnější informace o události. Pro každý řádek ve sdíleném svazku clusteru se používají následující vlastnosti:
 
-| Název vlastnosti | Hodnota nebo formátu |
+| Název vlastnosti | / Ve formátu |
 | --- | --- |
 | Datum |Datum a čas, kdy došlo k události |
 | Úroveň |Úroveň události (například Chyba, upozornění, informace) |
 | ApplicationName |Název webové aplikace |
-| ID instance |Instanci webové aplikace, které došlo k události |
-| EventTickCount |Datum a čas, kdy došlo k události, ve formátu značky (větší přesnost) |
-| ID události |ID události této události<p><p>Výchozí hodnota je 0-li zadán žádný |
-| PID |ID procesu |
-| TID |ID vlákna vlákna, která vytváří událost |
-| Zpráva |Podrobná zpráva události |
+| ID instance |Instance webové aplikace, na došlo k události |
+| EventTickCount |Datum a čas, kdy došlo k události, formát značky (větší přesnost) |
+| ID události |ID události této události<p><p>Výchozí hodnota je 0, pokud zadaný žádný |
+| Identifikátor PID |ID procesu |
+| TID. |ID vlákna vlákna, která vytváří události |
+| Zpráva |Podrobná zpráva o události |
 
-Data uložená v objektu blob by vypadat podobně jako v následujícím příkladu:
+Data uložená v objektu blob, by vypadalo podobně jako v následujícím příkladu:
 
     date,level,applicationName,instanceId,eventTickCount,eventId,pid,tid,message
     2014-01-30T16:36:52,Error,mywebapp,6ee38a,635266966128818593,0,3096,9,An error occurred
 
 > [!NOTE]
-> První řádek protokolu obsahuje záhlaví sloupců reprezentovaný v tomto příkladu.
+> První řádek v protokolu obsahuje záhlaví sloupců, jak je v tomto příkladu.
 >
 >
 
 ### <a name="failed-request-traces"></a>Trasování požadavku se nezdařilo
-Trasování chybných požadavků, které jsou uložené v soubory XML s názvem **fr ### .xml**. Aby bylo snazší zaznamenané informace zobrazit, s názvem šablony stylů XSL **freb.xsl** ve stejném adresáři jako soubory XML. Pokud jeden ze souborů XML otevřít v aplikaci Internet Explorer, Internet Explorer používá šablony stylů XSL zajistit formátovaný zobrazení informací trasování, podobně jako v následujícím příkladu:
+Trasování chybných požadavků jsou uloženy v souborech XML s názvem **fr ### .xml**. Aby bylo snazší zobrazit zaznamenané informace, s názvem šablony stylů XSL **freb.xsl** je k dispozici ve stejném adresáři jako soubor XML. Pokud jeden ze souborů XML otevřít v aplikaci Internet Explorer, aplikace Internet Explorer šablonu stylů XSL používá k poskytování formátovaný zobrazení informací trasování, podobně jako v následujícím příkladu:
 
-![Zobrazit v prohlížeči chybných požadavků](./media/web-sites-enable-diagnostic-log/tws-failedrequestinbrowser.png)
+![Neúspěšná žádost zobrazit v prohlížeči](./media/web-sites-enable-diagnostic-log/tws-failedrequestinbrowser.png)
 
-### <a name="detailed-error-logs"></a>Podrobné protokoly chyb
-Podrobné protokoly chyb jsou dokumenty HTML, které poskytují podrobnější informace o chyby protokolu HTTP, které mají došlo k chybě. Vzhledem k tomu, že se jednoduše dokumentů HTML, bylo možné zobrazit pomocí webového prohlížeče.
+### <a name="detailed-error-logs"></a>Podrobnější protokoly chyb
+Podrobnější protokoly chyb jsou dokumentů HTML, které poskytují podrobnější informace o chyby protokolu HTTP, ke kterým došlo. Protože jsou jednoduše dokumentů HTML, bylo možné zobrazit pomocí webového prohlížeče.
 
 ### <a name="web-server-logs"></a>Protokoly webového serveru
-Protokoly webového serveru jsou formátovány pomocí [rozšířený formát protokolu W3C souboru](http://msdn.microsoft.com/library/windows/desktop/aa814385.aspx). Tyto informace lze číst pomocí textového editoru nebo analyzovat pomocí nástrojů, jako třeba [analyzátoru protokolů](http://go.microsoft.com/fwlink/?LinkId=246619).
+Protokoly webového serveru jsou formátovány pomocí [rozšířený formát protokolu W3C souboru](http://msdn.microsoft.com/library/windows/desktop/aa814385.aspx). Tyto informace lze číst pomocí textového editoru nebo analyzovat pomocí nástrojů, jako [analyzátoru protokolů](http://go.microsoft.com/fwlink/?LinkId=246619).
 
 > [!NOTE]
-> Nepodporuje protokol vytváří ve službě Azure web apps **s-computername**, **s-ip**, nebo **cs-version** pole.
+> Nepodporuje protokoly vytvořené metodou webové aplikace Azure **s-computername**, **s-ip**, nebo **cs-version** pole.
 >
 >
 
 ## <a name="nextsteps"></a> Další kroky
-* [Postup monitorování webové aplikace](web-sites-monitor.md)
+* [Monitorování webových aplikací](web-sites-monitor.md)
 * [Řešení potíží s aplikací Azure web apps v sadě Visual Studio](web-sites-dotnet-troubleshoot-visual-studio.md)
-* [Analýza protokolů webové aplikace v prostředí HDInsight](http://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)
+* [Analýza protokolů webové aplikace v HDInsight](http://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)
 
 > [!NOTE]
 > Pokud chcete začít používat službu Azure App Service před registrací k účtu Azure, přejděte k možnosti [Vyzkoušet službu App Service](https://azure.microsoft.com/try/app-service/), kde můžete okamžitě vytvořit krátkodobou úvodní webovou aplikaci. Není vyžadována platební karta a nevzniká žádný závazek.

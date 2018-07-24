@@ -9,12 +9,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: rayne
-ms.openlocfilehash: 97006f2dfecc8d3ade680f97cbb7776dfda98dd5
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 95941b3f9333273c11208c56a63c62d5d37a9386
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37921021"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213550"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>Řešení potíží s technologií Hyper-V do Azure replikace a převzetí služeb při selhání
 
@@ -131,7 +131,7 @@ Konzistentní vzhledem k snímku je bodu v čase snímek dat aplikací ve virtu�
 2. Chcete-li generovat snímky VSS pro virtuální počítač, zkontrolujte, že jsou na virtuálním počítači nainstalované integrační služby Hyper-V, a zda je povolena Služba integrace zálohování (VSS).
     - Zkontrolujte, zda běží na hostovaném služby/procesy démon integrace služby VSS a jsou v **OK** stavu.
     - Můžete to ověřit z relace Powershellu se zvýšenými oprávněními na hostiteli Hyper-V pomocí příkazu **et-VMIntegrationService - VMName<VMName>– název VSS** tuto informaci můžou získat po přihlášení na virtuálním počítači hosta. [Další informace](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services).
-    - Ujistěte se, že integrační služby Backup/VSS ve virtuálním počítači jsou spuštěné a v dobrém stavu. Pokud ne, spusťte znovu tyto služby a a službu Stínová kopie svazku technologie Hyper-V žadatele na hostitelském serveru Hyper-V.
+    - Ujistěte se, že integrační služby Backup/VSS ve virtuálním počítači jsou spuštěné a v dobrém stavu. Pokud tomu tak není, znovu tyto služby a služby Stínová kopie svazku technologie Hyper-V žadatele na hostitelském serveru Hyper-V.
 
 ### <a name="common-errors"></a>Běžné chyby
 

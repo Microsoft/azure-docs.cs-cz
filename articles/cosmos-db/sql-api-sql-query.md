@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: laviswa
-ms.openlocfilehash: ee804ddc9e8fe9901173bb3d9357a273ea28057d
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: f6829d497c85ef1b4e74e26befe42d5d6fa87e36
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056813"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205965"
 ---
 # <a name="sql-queries-for-azure-cosmos-db"></a>Dotazy SQL pro službu Azure Cosmos DB
 
@@ -522,7 +522,7 @@ Pro ostatní operátory porovnání, jako například >, > =,! =, < a < =, násl
 
 Pokud je výsledkem výrazu skalární ve filtru Undefined, odpovídající dokument není zahrnuta do výsledku, protože není typu Undefined logicky odpovídá "true".
 
-### <a name="between-keyword"></a>MEZI klíčové slovo
+## <a name="between-keyword"></a>MEZI klíčové slovo
 Můžete také pomocí klíčového slova BETWEEN můžete dotazy na rozsah hodnot jako ANSI SQL express. MEZI dá se použít pro řetězce nebo čísla.
 
 Například tento dotaz vrátí všechny rodiny dokumenty, ve kterých je prvním podřízeným objektem na podnikové úrovni mezi 1-5 (obojí včetně). 
@@ -561,7 +561,7 @@ Logické operátory pracují s logickými hodnotami. Logické tabulky pravdivýc
 | False |True |
 | Nedefinováno |Nedefinováno |
 
-### <a name="in-keyword"></a>IN – klíčové slovo
+## <a name="in-keyword"></a>IN – klíčové slovo
 Po klíčovém slovu IN slouží ke kontrole, zda zadaná hodnota odpovídá libovolné hodnotě v seznamu. Například tento dotaz vrátí všechny rodiny dokumenty, kde id je jedním z "WakefieldFamily" nebo "AndersenFamily". 
 
     SELECT *
@@ -574,7 +574,7 @@ V tomto příkladu vrátí všechny dokumenty, kde je stav libovolné ze zadaný
     FROM Families 
     WHERE Families.address.state IN ("NY", "WA", "CA", "PA", "OH", "OR", "MI", "WI", "MN", "FL")
 
-### <a name="ternary--and-coalesce--operators"></a>Ternary (?) a operátory Coalesce (?)
+## <a name="ternary--and-coalesce--operators"></a>Ternary (?) a operátory Coalesce (?)
 Ternary a Coalesce operátory lze používat k vytváření podmíněné výrazy, podobně jako oblíbené programovací jazyky, jako je C# a JavaScript. 
 
 Ternary (?) – operátor může být velmi užitečná při vytváření nových vlastností JSON v reálném čase. Například teď můžete psát dotazy ke klasifikaci úrovně třídy v podobě čitelné člověkem jako Začátečník nebo zprostředkující/Upřesnit, jak je znázorněno níže.
@@ -594,7 +594,7 @@ Coalesce (?) – operátor umožňuje efektivně vyhledávat přítomnost vlastn
     SELECT f.lastName ?? f.surname AS familyName
     FROM Families f
 
-### <a id="EscapingReservedKeywords"></a>Přistupující objekt vlastnosti v uvozovkách
+## <a id="EscapingReservedKeywords"></a>Přistupující objekt vlastnosti v uvozovkách
 Můžete také přistupovat k vlastnosti pomocí operátoru v uvozovkách vlastnost `[]`. Například `SELECT c.grade` a `SELECT c["grade"]` jsou ekvivalentní. Tato syntaxe je užitečné, když budete chtít řídicí vlastnost, která obsahuje mezery, speciální znaky, nebo se stane, chcete-li sdílet stejný název jako klíčové slovo SQL nebo vyhrazené slovo.
 
     SELECT f["lastName"]
@@ -682,7 +682,7 @@ Podívejme se na roli `$1` tady. `SELECT` Klauzule potřebuje k vytvoření obje
     }]
 
 
-### <a name="aliasing"></a>Vyhlazení
+## <a name="aliasing"></a>Vyhlazení
 Teď můžeme rozšířit v příkladu výše s aliasy explicitní hodnoty. Je klíčové slovo používané pro aliasy. Zadání je volitelné, jak je znázorněno při projekci druhá hodnota jako `NameInfo`. 
 
 V případě, že dotaz má dvě vlastnosti se stejným názvem, aliasy musíte použít k přejmenujte jednu nebo obě vlastnosti tak, aby jejich jsou jednoznačně rozlišit předpokládané výsledku.
@@ -708,7 +708,7 @@ V případě, že dotaz má dvě vlastnosti se stejným názvem, aliasy musíte 
     }]
 
 
-### <a name="scalar-expressions"></a>Skalární výrazy
+## <a name="scalar-expressions"></a>Skalární výrazy
 Kromě odkazy na vlastnosti klauzuli SELECT podporuje také skalární výrazy, jako jsou konstanty, výrazy aritmetické, logické výrazy atd. Například tady je jednoduchý dotaz "Hello World".
 
 **Dotaz**
@@ -754,7 +754,7 @@ V následujícím příkladu výsledkem skalární výraz, který je logická ho
     ]
 
 
-### <a name="object-and-array-creation"></a>Vytvoření objektu a pole
+## <a name="object-and-array-creation"></a>Vytvoření objektu a pole
 Další klíčovou funkcí rozhraní SQL API je vytvoření pole nebo objektu. V předchozím příkladu mějte na paměti, že jsme vytvořili nový objekt JSON. Podobně jedna můžete také sestavit pole jak je znázorněno v následujícím příkladu:
 
 **Dotaz**
@@ -779,7 +779,7 @@ Další klíčovou funkcí rozhraní SQL API je vytvoření pole nebo objektu. V
       }
     ]
 
-### <a id="ValueKeyword"></a>VALUE – klíčové slovo
+## <a id="ValueKeyword"></a>VALUE – klíčové slovo
 **Hodnotu** – klíčové slovo poskytuje způsob, jak vrátit hodnotu JSON. Například níže dotaz vrátí skalárních `"Hello World"` místo `{$1: "Hello World"}`.
 
 **Dotaz**
@@ -830,7 +830,7 @@ Následující příklad rozšiřuje toto ukazují, jak vrátit primitivní hodn
     ]
 
 
-### <a name="-operator"></a>* – Operátor
+## <a name="-operator"></a>* – Operátor
 Speciální operátor (*) se podporuje do projektu dokumentu jako-je. Při použití, musí být pouze očekávané pole. Zatímco dotaz podobný tomuto: `SELECT * FROM Families f` je platný, `SELECT VALUE * FROM Families f ` a `SELECT *, f.id FROM Families f ` nejsou platné.
 
 **Dotaz**
@@ -859,7 +859,7 @@ Speciální operátor (*) se podporuje do projektu dokumentu jako-je. Při použ
         "isRegistered": true
     }]
 
-### <a id="TopKeyword"></a>Operátor TOP
+## <a id="TopKeyword"></a>Operátor TOP
 HORNÍ – klíčové slovo je možné omezit počet hodnot z dotazu. Při horní se používá ve spojení s klauzulí ORDER BY, není omezen na první číslo N hodnot seřazených; sada výsledků dotazu v opačném případě vrátí prvních N počet výsledků v nedefinované pořadí. Jako osvědčený postup v příkazu SELECT, vždy pomocí klauzule ORDER BY klauzuli TOP. Toto je jediný způsob, jak předvídatelným způsobem označit řádky, které jsou ovlivněny nahoru. 
 
 **Dotaz**
@@ -889,7 +889,7 @@ HORNÍ – klíčové slovo je možné omezit počet hodnot z dotazu. Při horn�
 
 NAHORU je možné s konstantní hodnotou (jak jsme ukázali výše) nebo s hodnotou proměnné použití parametrizovaných dotazů. Další podrobnosti najdete v tématu parametrizované dotazy níže.
 
-### <a id="Aggregates"></a>Agregační funkce
+## <a id="Aggregates"></a>Agregační funkce
 Můžete také provádět agregace v `SELECT` klauzuli. Agregační funkce provádí výpočet na sadu hodnot a vrátí jednu hodnotu. Například následující dotaz vrátí počet řady dokumentů v kolekci.
 
 **Dotaz**
@@ -1396,7 +1396,7 @@ Cosmos DB podporuje také řadu integrovaných funkcí pro běžné operace, kte
 |-------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|
 | Matematické funkce  | ABS, horní MEZ, EXP, FLOOR, protokolu, LOG10, POWER, KRUHOVÉ, přihlášení, SQRT, ČTVEREC, TRUNC –, ACOS, ASIN, ATAN, ATN2, COS, COT, STUPŇŮ, PI, RADIANS, SIN a TAN |
 | Kontrola funkce typu | Is_array – IS_BOOL, IS_NULL, IS_NUMBER, is_object –, IS_STRING, IS_DEFINED a IS_PRIMITIVE                                                           |
-| Řetězcové funkce        | CONCAT, obsahuje, ENDSWITH, INDEX_OF, vlevo, délka, nižší, LTRIM, nahradit, REPLIKACE, zpětné, vpravo, RTRIM, STARTSWITH, PODŘETĚZEC a horní       |
+| Funkce řetězců        | CONCAT, obsahuje, ENDSWITH, INDEX_OF, vlevo, délka, nižší, LTRIM, nahradit, REPLIKACE, zpětné, vpravo, RTRIM, STARTSWITH, PODŘETĚZEC a horní       |
 | Funkce pole         | ARRAY_CONCAT, ARRAY_CONTAINS, ARRAY_LENGTH a ARRAY_SLICE                                                                                         |
 | Prostorové funkce       | ST_DISTANCE ST_WITHIN, ST_INTERSECTS, ST_ISVALID a ST_ISVALIDDETAILED                                                                           | 
 
@@ -1497,7 +1497,7 @@ Použití těchto funkcí, můžete nyní spouštět dotazy vypadat asi takto:
 
     [true]
 
-### <a name="string-functions"></a>Řetězcové funkce
+### <a name="string-functions"></a>Funkce řetězců
 Následující skalární funkce provádění operací na vstupní hodnotu řetězce a vrátí řetězec, číslo nebo logickou hodnotu. Tady je tabulka funkcí integrovaných řetězec:
 
 | Využití | Popis |

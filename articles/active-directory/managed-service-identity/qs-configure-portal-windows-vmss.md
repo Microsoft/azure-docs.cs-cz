@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/20/2018
 ms.author: daveba
-ms.openlocfilehash: 34911c6133a6a2549a98db426f979b0c3c85dbd7
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 3421d0ab9007bdfe9fab093871a8517531059008
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39185293"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213169"
 ---
 # <a name="configure-a-virtual-machine-scale-set-managed-service-identity-msi-using-the-azure-portal"></a>Konfigurace virtuálního počítače škálovací sady Identity spravované služby (MSI) pomocí webu Azure portal
 
@@ -37,7 +37,7 @@ V tomto článku jste se dozvíte, jak povolit a zakázat identitu pro škálova
 - Pokud nejste obeznámeni s identita spravované služby, podívejte se [oddílu přehled](overview.md).
 - Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
 - Váš účet k provádění operací správy v tomto článku, potřebuje následující přiřazení role:
-    - [Přispěvatel virtuálních počítačů](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) povolit a odebrat identita spravované služby ze škálovací sady virtuálních počítačů.
+    - [Přispěvatel virtuálních počítačů](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) povolit a odebrat ze škálovací sady virtuálních počítačů spravovaných identitu přiřazenou systémem.
 
 ## <a name="managed-service-identity-during-creation-of-an-azure-virtual-machine-scale-set"></a>Identita spravované služby během vytváření škálovací sady virtuálních počítačů Azure
 

@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2018
+ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: ad7c412ee92db53dd797e38df2fc6db0a762fe78
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 88869fbeef0475f2c674e0f154a3624545182363
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37916162"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213227"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory bezproblémové jednotné přihlašování
 
@@ -55,7 +55,7 @@ Bezproblémové jednotné přihlašování je možné kombinovat s buď [synchro
 - Pokud manifest aplikace (například https://myapps.microsoft.com/contoso.com) předává `domain_hint` (OpenID Connect) nebo `whr` (SAML) parametr - identifikaci vašeho tenanta, nebo `login_hint` parametr - ne k identifikaci uživatelů, v jeho služby Azure AD žádost o přihlášení, jsou uživatelé přihlášení se automaticky bez jejich zadávání uživatelských jmen a hesel.
 - Uživatelé získají bezobslužné možnosti přihlašování také, pokud manifest aplikace (například https://contoso.sharepoint.com) odešle žádostí o přihlášení k Azure AD bezproblémovým koncové body – to znamená, https://login.microsoftonline.com/contoso.com/<..> nebo https://login.microsoftonline.com/<tenant_ID>/<..> – místo pro běžné koncového bodu Azure AD – to znamená, https://login.microsoftonline.com/common/<...>.
 - Odhlaste se podporuje. To umožňuje uživatelům si vybrat jiný účet služby Azure AD se přihlásit pomocí, namísto automaticky Probíhá přihlašování pomocí bezproblémového jednotného přihlašování automaticky.
-- Klienti Office 365 (16.0.8730.xxxx a vyšší) jsou podporovány při použití toku jako neinteraktivní.
+- Klienty Office 365 Win32 (Outlook, Word, Excel a jiné) s verze 16.0.8730.xxxx a vyšší jsou podporovány při použití toku jako neinteraktivní. Pro OneDrive, budete muset aktivovat [Onedrivu bezobslužné konfiguraci funkce](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894) bezobslužné možnosti přihlašování.
 - Je možné povolit prostřednictvím služby Azure AD Connect.
 - Je funkci a není nutné žádné placené edice Azure AD, aby ho použít.
 - Podporováno od webovými klienty založené na prohlížeči a klienti Office, které podporují [moderní ověřování](https://aka.ms/modernauthga) na platformy a prohlížeče podporující ověřování protokolu Kerberos:

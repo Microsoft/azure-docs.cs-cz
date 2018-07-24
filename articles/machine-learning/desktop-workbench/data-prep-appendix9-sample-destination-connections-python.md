@@ -1,37 +1,37 @@
 ---
-title: Příklad cíle nebo výstupy možné přípravy dat Azure Machine Learning | Microsoft Docs
-description: Tento dokument obsahuje sadu příklady cílů vlastních dat nebo výstupy přípravy dat Azure Machine Learning
+title: Příklad cíle či výstupy možné s přípravou dat Azure Machine Learning | Dokumentace Microsoftu
+description: Tento dokument obsahuje sadu příklady vlastních dat cíle či výstupy s přípravou dat Azure Machine Learning
 services: machine-learning
 author: euangMS
 ms.author: euang
 manager: lanceo
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.custom: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 02/01/2018
-ms.openlocfilehash: 93da07006280b38c9e6539773e6ac22e50e48b57
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 2173ff15906940b8628aba3615f31e3f7137e3e2
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34831808"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39216493"
 ---
-# <a name="sample-of-destination-connections-python"></a>Ukázka cílových připojení (Python) 
-Před čtením této příloha, přečtěte si [Python rozšiřitelnost přehled](data-prep-python-extensibility-overview.md).
+# <a name="sample-of-destination-connections-python"></a>Ukázka připojení cíle (Python) 
+Předtím, než se pustíte do čtení tohoto dodatku, přečtěte si [přehled rozšíření Python](data-prep-python-extensibility-overview.md).
 
 
 ## <a name="write-to-excel"></a>Zápis do aplikace Excel 
 
 
-Zápis do aplikace Excel vyžaduje další knihovny. Přidání nové knihovny je popsána v přehledu rozšíření. `openpyxl` je knihovnu, která je nutné přidat.
+Zápis do aplikace Excel vyžaduje další knihovny. Přidání nové knihovny najdete v přehledu rozšiřitelnosti. `openpyxl` je knihovny, kterou je třeba přidat.
 
-Než napíšete do aplikace Excel, může být potřeba některé další změny. Některé typy dat, které se používají v rámci přípravy dat nejsou podporovány v některé cílové formáty. Například pokud "Chyba" objekty existují, se nebude serializovat správně do aplikace Excel. Před pokusem o zápis do aplikace Excel, proto musíte transformace "Nahradí chybové hodnoty", který odebere chyby žádné sloupce.
+Než napíšete do aplikace Excel, může být nutné nějaké změny. Některé typy dat, které se používají v rámci přípravy dat nejsou podporovány v některé cílové formáty. Například pokud existují objekty "Chyba", nebude serializovat správně do Excelu. Proto než se pokusíte zapsat do aplikace Excel, je třeba "Nahradí chybové hodnoty" transformace, která zruší všechny sloupce chyby.
 
-Pokud všechny předchozí pracovní dokončení se zapíše následující řádek tabulky datového jeden list v dokumentu aplikace Excel. Přidejte transformace transformace toku dat (skript). Potom zadejte následující kód ve výrazu oddílu.
+Pokud všechny předchozí práce je dokončena, zapíše následující řádek v tabulce dat do jedné tabulky v dokumentu aplikace Excel. Přidáte transformaci Transform DataFlow (Script). Zadejte následující kód do oddílu výrazu.
 
 
 ### <a name="on-windows"></a>V systému Windows 

@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 7/18/2018
 ms.author: trinadhk
-ms.openlocfilehash: c9dff77f6b9fffc02ec94caa3454500772651195
-ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
+ms.openlocfilehash: 787c4b0f6e8d5ed76260582bfa3d6c49574bd102
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39137367"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39205336"
 ---
 # <a name="upgrade-to-azure-vm-backup-stack-v2"></a>Upgrade na zásobník záloh virtuálních počítačů Azure V2
 
@@ -48,7 +48,7 @@ Ve výchozím nastavení snímky uchovávají po dobu sedmi dní. Tato funkce um
 
 * Snímky se ukládají místně, a zvýšit tak vytvoření bodu obnovení a také ke zrychlení operací obnovení. V důsledku toho se zobrazí náklady na úložiště, které odpovídají snímkům pořízeným období sedm dní.
 
-* Přírůstkové snímky se ukládají jako objekty BLOB stránky. Všichni zákazníci, které používají nespravované disky se vám účtuje sedm dní, po které snímky se ukládají v účtu místní úložiště zákazníka. Podle aktuální cenový model se neúčtují žádné poplatky pro zákazníky, kteří na spravovaných discích.
+* Přírůstkové snímky se ukládají jako objekty BLOB stránky. Všichni zákazníci, které používají nespravované disky se vám účtuje sedm dní, po které snímky se ukládají v účtu místní úložiště zákazníka. Protože kolekce bodů obnovení, který se používá záloh virtuálních počítačů spravovaných pomocí snímky objektů blob na základní úrovni úložiště, za spravované disky se zobrazí náklady odpovídající [blob snapshot ceny](https://docs.microsoft.com/rest/api/storageservices/understanding-how-snapshots-accrue-charges) a jsou přírůstkové. 
 
 * Pokud obnovíte na úrovni premium virtuálního počítače ze snímku do konkrétního bodu obnovení, umístění dočasného úložiště se používá při vytváření virtuálního počítače.
 
@@ -56,7 +56,7 @@ Ve výchozím nastavení snímky uchovávají po dobu sedmi dní. Tato funkce um
 
 ## <a name="upgrade"></a>Upgrade
 ### <a name="the-azure-portal"></a>Azure Portal
-Pokud použijete Azure portal, uvidíte oznámení na řídicím panelu trezoru. Toto oznámení se týká podporu velkých disků a zvýšení rychlosti zálohování a obnovení.
+Pokud použijete Azure portal, uvidíte oznámení na řídicím panelu trezoru. Toto oznámení se týká podporu velkých disků a zvýšení rychlosti zálohování a obnovení. Případně můžete přejít na stránku vlastností zobrazíte možnost upgrade trezoru.
 
 ![Úloha zálohování v modelu nasazení Resource Manager zásobník záloh virtuálních počítačů – podpora oznámení](./media/backup-azure-vms/instant-rp-banner.png) 
 
@@ -72,13 +72,13 @@ Z terminálu Powershellu se zvýšenými oprávněními spusťte následující 
     PS C:> Connect-AzureRmAccount
     ```
 
-2.  Vyberte předplatné, které chcete zaregistrovat verzi preview:
+2.  Vyberte předplatné, pro kterou chcete zaregistrovat:
 
     ```
     PS C:>  Get-AzureRmSubscription –SubscriptionName "Subscription Name" | Select-AzureRmSubscription
     ```
 
-3.  Zaregistrujte toto předplatné pro verzi private preview:
+3.  Zaregistrujte toto předplatné:
 
     ```
     PS C:>  Register-AzureRmProviderFeature -FeatureName "InstantBackupandRecovery" –ProviderNamespace Microsoft.RecoveryServices
@@ -101,13 +101,13 @@ Následující otázky a odpovědi mají byly shromážděny z fór a dotazy zá
 
 Pokud upgradujete na V2, neexistuje žádný vliv na vaše aktuální zálohování a není potřeba změnit konfiguraci vašeho prostředí. Upgrade a prostředí zálohování dál pokračoval je na něm.
 
-### <a name="what-does-it-cost-to-upgrade-to-azure-backup-stack-v2"></a>Kolik stojí upgradovat na Azure Backup zásobníku v2?
+### <a name="what-does-it-cost-to-upgrade-to-azure-vm-backup-stack-v2"></a>Kolik stojí upgradovat na v2 zásobníku zálohování virtuálních počítačů Azure?
 
-Se neúčtují žádné poplatky k upgradu na zálohování Azure stacku v2. Snímky se ukládají místně zrychlit vytvoření bodu obnovení a obnovení operací. V důsledku toho se zobrazí náklady na úložiště, které odpovídají snímkům pořízeným období sedm dní.
+Se neúčtují žádné poplatky k upgradu zásobníku v2. Snímky se ukládají místně zrychlit vytvoření bodu obnovení a obnovení operací. V důsledku toho se zobrazí náklady na úložiště, které odpovídají snímkům pořízeným období sedm dní.
 
 ### <a name="does-upgrading-to-stack-v2-increase-the-premium-storage-account-snapshot-limit-by-10-tb"></a>Premium storage účet omezení počtu snímků pomocí 10 TB zvýší upgrade na zásobník v2?
 
-Ne.
+Snímkům pořízeným jako součást v2 počet zásobníku směrem k 10 TB omezení účtu služby premium storage pro nespravované disky. 
 
 ### <a name="in-premium-storage-accounts-do-snapshots-taken-for-instant-recovery-point-occupy-the-10-tb-snapshot-limit"></a>V účtech Premium Storage snímkům pořízeným okamžité obnovení bodu zabírat omezení počtu snímků 10 TB?
 
@@ -117,14 +117,6 @@ Ano, pro účty služby premium storage, snímkům pořízeným okamžité obnov
 
 Každý den se používá nový snímek. Existuje sedm jednotlivé snímky. Službou **není** pořiďte si první den a přidat změny dalších šest dní.
 
-### <a name="what-happens-if-the-default-resource-group-is-deleted-accidentally"></a>Co se stane, pokud výchozí skupina prostředků je možné omylem odstranit?
-
-Pokud skupina prostředků se odstranila, body rychlé obnovení pro všechny chráněné virtuální počítače v dané oblasti, se ztratí. Pokud dojde k dalším zálohování, se znovu vytvoří skupina prostředků a bude zálohování pokračovat podle očekávání. Tato funkce není výhradně pro okamžité obnovení body.
-
-### <a name="can-i-delete-the-default-resource-group-created-for-instant-recovery-points"></a>Můžete odstranit výchozí skupiny prostředků vytvořené pro okamžité obnovení body?
-
-Služba Azure Backup vytváří spravovanou skupinu prostředků. V současné době nejde změnit nebo upravíte skupinu prostředků. Navíc by neměl uzamknout skupinu prostředků. Tento návod je jenom pro zásobník V2.
- 
 ### <a name="is-a-v2-snapshot-an-incremental-snapshot-or-full-snapshot"></a>Snímek v2 je přírůstkový snímek nebo úplné snímku?
 
-Přírůstkových snímků se používají pro nespravované disky. Za spravované disky je snímek úplné snímku.
+Přírůstkových snímků se používají pro nespravované disky. Bod kolekce vytvořené pomocí Azure Backup používá snímků objektů blob a proto se přičítají obnovení v případě, že za spravované disky. 

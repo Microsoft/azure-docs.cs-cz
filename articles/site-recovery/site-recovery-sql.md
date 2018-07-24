@@ -2,24 +2,16 @@
 title: Aplikace s využitím SQL serveru a Azure Site Recovery replikovat | Dokumentace Microsoftu
 description: Tento článek popisuje, jak replikace SQL serveru pomocí Azure Site Recovery pro možnosti SQL serveru po havárii.
 services: site-recovery
-documentationcenter: ''
-author: prateek9us
-manager: gauravd
-editor: ''
-ms.assetid: 9126f5e8-e9ed-4c31-b6b4-bf969c12c184
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 07/06/2018
-ms.author: pratshar
-ms.openlocfilehash: c877f4bbc0ed14e859ff39f1d719a9cd0b787118
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.topic: conceptual
+ms.date: 07/22/2018
+ms.author: raynew
+ms.openlocfilehash: fecf7366417a8a592578a425d8b028249c2681d7
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920827"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39216355"
 ---
 # <a name="protect-sql-server-using-sql-server-disaster-recovery-and-azure-site-recovery"></a>Ochrana systému SQL Server pomocí zotavení po havárii pro SQL Server a Azure Site Recovery
 
@@ -78,7 +70,7 @@ Tato tabulka shrnuje našimi doporučeními k integraci technologiemi BCDR SQL s
 
 | **Verze** | **Edice** | **Nasazení** | **V místním prostředí pro místní prostředí** | **V místním prostředí do Azure** |
 | --- | --- | --- | --- | --- |
-| SQL Server 2014 nebo 2012 |Enterprise |Instance clusteru převzetí služeb při selhání |Skupiny dostupnosti AlwaysOn |Skupiny dostupnosti AlwaysOn |
+| SQL Server 2014, 2016 a 2012 |Enterprise |Instance clusteru převzetí služeb při selhání |Skupiny dostupnosti AlwaysOn |Skupiny dostupnosti AlwaysOn |
 || Enterprise |Skupiny dostupnosti AlwaysOn pro vysokou dostupnost |Skupiny dostupnosti AlwaysOn |Skupiny dostupnosti AlwaysOn | |
 || Standard |Instance clusteru převzetí služeb při selhání (FCI) |Replikace služby Site Recovery s místní zrcadlový svazek |Replikace služby Site Recovery s místní zrcadlový svazek | |
 || Enterprise nebo Standard |Standalone |Replikace služby Site Recovery |Replikace služby Site Recovery | |

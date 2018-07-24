@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: efd8a8290525c27cddaa713a1b24b6afc187bb09
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 2cc030bf9724e98c1ef0a43134c5066c81b38b6b
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37921392"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213084"
 ---
 # <a name="about-migration"></a>Informace o migraci
 
@@ -39,7 +39,7 @@ Kromě používání Site Recovery pro zotavení po havárii místní a virtuál
 --- | ---
 **Migrace z místní do Azure** | Můžete migrovat místní virtuální počítače VMware, virtuálních počítačů Hyper-V a fyzické servery do Azure. K tomuto účelu dokončení téměř stejným způsobem jako při úplné havárii. Jednoduše není počítačů obnovení z Azure do místní lokality nezdaří.
 **Migrace mezi oblastmi Azure** | Můžete migrovat virtuální počítače Azure z jedné oblasti Azure do jiné. Po dokončení migrace můžete nakonfigurovat zotavení po havárii pro virtuální počítače Azure nyní v sekundární oblasti, do které jste migrovali.
-**Migrace AWS do Azure** | Můžete migrovat instance AWS do virtuálních počítačů Azure. Site Recovery zachází jako s fyzickými servery pro pro účely migrace instancí AWS. 
+**Migrace AWS do Azure** | Můžete migrovat instance AWS do virtuálních počítačů Azure. Site Recovery zachází jako s fyzickými servery pro účely migrace instancí AWS. 
 
 ## <a name="next-steps"></a>Další postup
 
