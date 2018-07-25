@@ -1,5 +1,5 @@
 ---
-title: 'Azure Cosmos DB: Referenční informace SQL syntaxe dotazu | Microsoft Docs'
+title: 'Azure Cosmos DB: Referenční informace SQL syntaxe dotazu | Dokumentace Microsoftu'
 description: Referenční dokumentace pro Azure Cosmos DB SQL dotazovací jazyk.
 services: cosmos-db
 author: LalithaMV
@@ -10,23 +10,23 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 10/18/2017
 ms.author: laviswa
-ms.openlocfilehash: 13337e7979a378382df5e62661b04bac8dffa689
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 4e9bdfab3abf9545218e80bf79d1b9b5df0cf2ff
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34798827"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39042006"
 ---
-# <a name="azure-cosmos-db-sql-syntax-reference"></a>Azure Cosmos DB SQL reference syntaxe
+# <a name="azure-cosmos-db-sql-syntax-reference"></a>Reference k syntaxi služby Azure Cosmos DB SQL
 
-Azure Cosmos DB podporuje dotazování dokumentů pomocí známých SQL (Structured Query Language) jako gramatika přes hierarchické dokumenty JSON bez nutnosti explicitního schématu nebo vytváření sekundárních indexů. Toto téma obsahuje referenční dokumentaci k nástroji pro dotaz jazyka SQL, který je kompatibilní s účty rozhraní SQL API.
+Azure Cosmos DB podporuje dotazování dokumentů pomocí známých SQL (Structured Query Language), jako je gramatika přes hierarchické dokumenty JSON bez nutnosti explicitního schématu nebo vytváření sekundárních indexů. Toto téma obsahuje referenční dokumentaci pro dotazovací jazyk SQL, který je kompatibilní s účty SQL API.
 
-Návod dotazovací jazyk SQL najdete v tématu [dotazy SQL pro Azure Cosmos DB](sql-api-sql-query.md).  
+Postup dotazovacího jazyka SQL, najdete v části [dotazů SQL pro službu Azure Cosmos DB](sql-api-sql-query.md).  
   
-Také doporučujeme přejděte [Query Playground](http://www.documentdb.com/sql/demo) kde mohou zkuste Azure Cosmos DB a spouštění dotazů SQL na naší datové sadě.  
+Také neváhejte přejděte [Query Playground](http://www.documentdb.com/sql/demo) kde vyzkoušejte si Azure Cosmos DB a spouštět dotazy SQL proti naší datové sadě.  
   
-## <a name="select-query"></a>Vyberte možnost dotazu  
-Načte z databáze dokumentů JSON. Podporuje vyhodnocení výrazu, projekce, filtrování a připojí.  V části syntaxe názvů jsou v tabulce konvencemi použitými pro popisující příkazů SELECT.  
+## <a name="select-query"></a>Zpracování dotazu SELECT  
+Načte z databáze dokumentů JSON. Podporuje vyhodnocení výrazu, projekce, filtrování a připojí.  Konvence pro příkazy SELECT popisující jsou uvedených v části konvence syntaxe.  
   
 **Syntaxe**  
   
@@ -40,7 +40,7 @@ SELECT <select_specification>
   
  **Poznámky**  
   
- Viz následující části Podrobnosti na každý klauzule:  
+ Viz následující oddíly podrobnosti na každou klauzuli:  
   
 -   [Klauzule SELECT](#bk_select_query)  
   
@@ -48,33 +48,33 @@ SELECT <select_specification>
   
 -   [Klauzule WHERE](#bk_where_clause)  
   
--   [Klauzuli ORDER by](#bk_orderby_clause)  
+-   [ORDER BY – klauzule](#bk_orderby_clause)  
   
-Klauzule v příkazu SELECT musejí být seřazeny, jak je uvedeno výše. Kterákoli z volitelné klauzule lze vynechat. Ale pokud volitelné klauzule používají, musí být ve správném pořadí.  
+Klauzule v příkazu SELECT musejí být seřazeny, jak je znázorněno výše. Některý volitelný klauzule lze vynechat. Ale v případě volitelná klauzule používají, musí být ve správném pořadí.  
   
 **Logické pořadí zpracování příkazu SELECT**  
   
-Pořadí, ve kterém jsou zpracovány klauzule je:  
+Pořadí, ve kterém jsou zpracovány klauzulí je:  
 
 1.  [FROM – klauzule](#bk_from_clause)  
 2.  [Klauzule WHERE](#bk_where_clause)  
-3.  [Klauzuli ORDER by](#bk_orderby_clause)  
+3.  [ORDER BY – klauzule](#bk_orderby_clause)  
 4.  [Klauzule SELECT](#bk_select_query)  
 
-Všimněte si, že se jedná o liší od pořadí, ve kterém se zobrazí v syntaxi. Pořadí je tak, aby všechny nové symboly zavedených v klauzuli zpracovaná viditelné a zda lze použít v klauzulích zpracovat později. Pro instanci, jsou dostupné aliasy deklarované v klauzuli FROM tam, kde a klauzule FROM.  
+Všimněte si, že se liší od pořadí, v jakém jsou uvedeny v syntaxi. Řazení je tak, aby všechny nové symboly zavedených v klauzuli zpracovaných vidí a můžou používat v klauzulích zpracovány později. Pro instanci, jsou dostupné aliasy, které jsou deklarované v klauzuli FROM tam, kde a klauzule FROM.  
 
 **Prázdné znaky a komentáře**  
 
-Všechny znaky prázdné znaky, které nejsou součástí řetězec v uvozovkách nebo identifikátor v uvozovkách nejsou součástí gramatika jazyka a jsou ignorovány během analýzy.  
+Všechny prázdných znaků, které nejsou součástí řetězec v uvozovkách nebo identifikátor v uvozovkách nejsou součástí jazyk gramatiky a ignorují během analýzy.  
 
-Dotazovací jazyk podporuje komentáře styl T-SQL jako  
+Dotazovací jazyk podporuje komentáře stylu jazyka T-SQL jako  
 
 -   Příkaz jazyka SQL `-- comment text [newline]`  
 
-Prázdné znaky a komentáře v není k dispozici žádné násobek gramatiku, musí se používají k oddělení tokeny. Pro instanci: `-1e5` je jeden číslo tokenu, chvíli`: – 1 e5` token znaménkem minus následuje identifikátor e5 a číslo 1.  
+Zatímco prázdné znaky a komentáře nemají žádné význam v gramatice, musíte použít k oddělení tokeny. Například: `-1e5` je jednotné číslo token, nějakou`: – 1 e5` minus token následuje číslo 1 a identifikátor e5.  
 
 ##  <a name="bk_select_query"></a> Klauzule SELECT  
-Klauzule v příkazu SELECT musejí být seřazeny, jak je uvedeno výše. Kterákoli z volitelné klauzule lze vynechat. Ale pokud volitelné klauzule používají, musí být ve správném pořadí.  
+Klauzule v příkazu SELECT musejí být seřazeny, jak je znázorněno výše. Některý volitelný klauzule lze vynechat. Ale v případě volitelná klauzule používají, musí být ve správném pořadí.  
 
 **Syntaxe**  
 ```  
@@ -94,29 +94,29 @@ SELECT <select_specification>
   
  `<select_specification>`  
   
- Vlastnosti nebo hodnota, která má být vybrán pro sadu výsledků dotazu.  
+ Vlastnosti nebo hodnota, která má být vybrána sada výsledků.  
   
  `'*'`  
   
-Určuje, zda mají být načtena hodnota beze změn. Konkrétně Pokud zpracovaná hodnota objektu, budou všechny vlastnosti načteny.  
+Určuje, že mají být načtena hodnota beze změn. Konkrétně, pokud je zpracovaných hodnota objekt, budou načítat všechny vlastnosti.  
   
  `<object_property_list>`  
   
-Určuje seznam vlastností, které mají být načteny. Každý vrácená hodnota bude objekt s byly zadány vlastnosti.  
+Určuje seznam vlastností, které se mají načíst. Každá vrácená hodnota bude objekt s vlastnostmi zadán.  
   
 `VALUE`  
   
-Určuje, zda mají být načtena hodnota JSON místo kompletní objekt JSON. To, na rozdíl od `<property_list>` nezalamuje očekávaná hodnota v objektu.  
+Určuje, že hodnota JSON má být načtena namísto kompletního objektu JSON. To, na rozdíl od `<property_list>` nezalamuje očekávaná hodnota do objektu.  
   
 `<scalar_expression>`  
   
-Výraz představující hodnotu počítaný. V tématu [skalární výrazy](#bk_scalar_expressions) podrobnosti.  
+Výraz představující hodnotu, která chcete vypočítat. Zobrazit [skalární výrazy](#bk_scalar_expressions) podrobné informace.  
   
 **Poznámky**  
   
-`SELECT *` Syntaxe je platný, pokud klauzule FROM deklaruje právě jednu alias. `SELECT *` poskytuje identitu projekce, které mohou být užitečné, pokud není nutná žádná projekce. Vyberte * platí, pouze pokud je zadána klauzule FROM a zavedl pouze jeden vstupní zdroj.  
+`SELECT *` Syntaxe je platná pouze pokud klauzule FROM deklaroval přesně jeden alias. `SELECT *` poskytuje identitu projekce, které mohou být užitečné v případě potřeby žádná projekce. Vyberte * je platná pouze pokud je zadaná klauzule FROM a zavedl pouze jednoho vstupního zdroje.  
   
-Všimněte si, že `SELECT <select_list>` a `SELECT *` jsou "syntaktické sugar" a může být případně vyjádřený pomocí jednoduchého příkazů SELECT, jak je uvedeno níže.  
+Všimněte si, že `SELECT <select_list>` a `SELECT *` jsou "syntaktické sugar" a může být také vyjádřena pomocí jednoduchých příkazů SELECT, jak je znázorněno níže.  
   
 1.  `SELECT * FROM ... AS from_alias ...`  
   
@@ -136,7 +136,7 @@ Všimněte si, že `SELECT <select_list>` a `SELECT *` jsou "syntaktické sugar"
 [Klauzule SELECT](#bk_select_query)  
   
 ##  <a name="bk_from_clause"></a> FROM – klauzule  
-Určuje zdroj nebo připojený k zdroje. V klauzuli FROM je volitelný. Pokud není zadaný, další klauzule bude proveden stále jako, pokud klauzule FROM zadaný jednotlivý dokument.  
+Určuje zdroj nebo zdroje připojené k doméně. V klauzuli FROM je volitelný. Pokud není zadaný, další klauzule se spustí stále jakoby z klauzule zadaný jednotlivý dokument.  
   
 **Syntaxe**  
   
@@ -162,153 +162,153 @@ FROM <from_specification>
   
 `<from_source>`  
   
-Určuje zdroj dat s nebo bez alias. Pokud není zadán alias, bude odvodit z `<collection_expression>` pomocí následujících pravidel:  
+Určuje zdroj dat, s nebo bez něj alias. Pokud není zadaný alias, bude odvodit z `<collection_expression>` pomocí následujících pravidel:  
   
--   Pokud ve výrazu název_kolekce, bude Název_kolekce použít jako alias.  
+-   Pokud má výraz hodnotu název_kolekce, se Název_kolekce používat jako alias.  
   
--   Pokud je výraz `<collection_expression>`, pak %{Property_Name/ pak %{Property_Name/ se použije jako alias. Pokud ve výrazu název_kolekce, bude Název_kolekce použít jako alias.  
+-   Pokud má výraz hodnotu `<collection_expression>`, pak %{Property_Name/ pak %{Property_Name/ se použije jako alias. Pokud má výraz hodnotu název_kolekce, se Název_kolekce používat jako alias.  
   
 STEJNĚ JAKO `input_alias`  
   
-Určuje, že `input_alias` je sada hodnot vrácených základní výraz kolekce.  
+Určuje, že `input_alias` je sada hodnot vrácených základní výrazu kolekce.  
  
-`input_alias` V  
+`input_alias` INDIE  
   
-Určuje, že `input_alias` by měl představovat sadu hodnot získat iterování přes všechny elementy pole každé pole vrácené výrazem základní kolekce. Libovolná hodnota vrácený základní kolekce výraz, který není pole se ignoruje.  
+Určuje, že `input_alias` by měly představovat sadu hodnot získala iterace přes všechny prvky pole každé pole vrácené výrazem podkladová kolekce. Libovolnou hodnotu vrácenou základní výrazu kolekce, která není pole se ignoruje.  
   
 `<collection_expression>`  
   
-Určuje výraz kolekce, který má použít k načtení dokumenty.  
+Určuje výraz kolekce se použije k načtení dokumentů.  
   
 `ROOT`  
   
-Určuje, že tento dokument se mají načíst výchozí kolekci aktuálně připojené.  
+Určuje, že tento dokument by mělo být získáno z výchozí hodnoty, aktuálně připojeného kolekce.  
   
 `collection_name`  
   
-Určuje, že tento dokument mají být načtena ze zadané kolekci. Název kolekce musí odpovídat názvu aktuálně připojených do kolekce.  
+Určuje, že tento dokument by mělo být získáno ze zadané kolekce. Název kolekce musí odpovídat názvu kolekce aktuálně připojeni.  
   
 `input_alias`  
   
-Určuje, že tento dokument mají být načtena z jiného zdroje definované zadaný alias.  
+Určuje, že tento dokument by měl být načten z jiného zdroje určené zadaný alias.  
   
 `<collection_expression> '.' property_`  
   
-Určuje v tomto dokumentu mají být načtena přímým přístupem `property_name` element pole vlastnosti nebo array_index pro všechny dokumenty načíst zadaný výraz kolekce.  
+Určuje tento dokument by mělo být získáno díky přístupu `property_name` zadaná vlastnost nebo array_index prvek pole pro všechny dokumenty pomocí výrazu kolekce.  
   
 `<collection_expression> '[' "property_name" | array_index ']'`  
   
-Určuje v tomto dokumentu mají být načtena přímým přístupem `property_name` element pole vlastnosti nebo array_index pro všechny dokumenty načíst zadaný výraz kolekce.  
+Určuje tento dokument by mělo být získáno díky přístupu `property_name` zadaná vlastnost nebo array_index prvek pole pro všechny dokumenty pomocí výrazu kolekce.  
   
 **Poznámky**  
   
-Všechny aliasy zadáno nebo odvození v `<from_source>(`s) musí být jedinečný. Syntaxe `<collection_expression>.`%{Property_Name/ je stejný jako `<collection_expression>' ['"property_name"']'`. Druhé syntaxe však může být použita, pokud název vlastnosti obsahuje jiný identifikátor – znaky.  
+K dispozici všechny aliasy nebo odvozen `<from_source>(`s) musí být jedinečný. Syntaxe `<collection_expression>.`%{Property_Name/ je stejný jako `<collection_expression>' ['"property_name"']'`. Druhá možnost syntaxi však můžete použít, pokud název vlastnosti obsahuje znaky jiné identifikátor.  
   
-**Chybí vlastnosti, chybějící pole prvky, není definovaná hodnoty zpracování**  
+**Chybí vlastnosti chybějící prvky pole, nedefinované hodnoty zpracování**  
   
-Pokud výraz kolekce přístup k vlastnosti nebo elementy pole a že hodnota neexistuje, bude se tato hodnota ignorována a není další zpracování.  
+Pokud kolekce výrazu přistupuje k vlastnosti nebo prvky pole a že hodnota neexistuje, tuto hodnotu budou ignorovány a další nebyl zpracován.  
   
-**Kolekce výraz kontextu rozsahu**  
+**Zkoumání kontextu výraz kolekce**  
   
-Výraz kolekce může být celou kolekci nebo obor dokumentu:  
+Výraz kolekce může být kolekce rozsahem nebo rozsahem dokumentu:  
   
--   Výraz je celou kolekci, pokud je základní zdroj výrazu kolekce buď KOŘENOVÉ nebo `collection_name`. Takové výraz představuje sadu dokumenty načíst přímo z kolekce a není závislá na zpracování jiné kolekce výrazy.  
+-   Výraz je kolekce s rozsahem, pokud je podkladový zdroj výrazu kolekce buď ROOT nebo `collection_name`. Takový výraz představuje sadu dokumentů načíst přímo z kolekce a není závislá na zpracování jiných výrazech kolekce.  
   
--   Výraz je dokument s rozsahem, pokud je základní zdroj výrazu kolekce `input_alias` zavedená dříve v dotazu. Takové výraz představuje sadu dokumenty získala při vyhodnocování výrazu kolekce v oboru jednotlivých dokumentů, které patří do sady přidružené ke kolekci alias.  Výsledná sada bude spojení získala při vyhodnocování výrazu kolekce pro jednotlivé dokumenty v sadě základní sady.  
+-   Výraz je dokument s rozsahem, pokud je podkladový zdroj výrazu kolekce `input_alias` zavedené dříve v dotazu. Takový výraz představuje sadu dokumentů získanou vyhodnocením výrazu kolekce v rámci každého dokumentu, které patří do sady přidružené ke kolekci alias.  Výsledná sada bude sjednocení sad získanou vyhodnocením výrazu kolekce pro jednotlivé dokumenty v základní sadě.  
   
 **Spojení**  
   
-V aktuální verzi podporuje Azure Cosmos DB vnitřní spojení. Připojení k další možnosti jsou chystaný.
+V aktuální verzi služby Azure Cosmos DB podporuje vnitřní spojení. Zobrazování poruch se připojení k další možnosti.
 
-Vnitřní spojení vést k dokončení smíšený produkt sad účastní spojení. Výsledek spojení N-způsob, jak je sada N element řazené kolekce členů, kde každá hodnota v řazené kolekci členů je spojena s alias nastavit účasti ve spojení a je přístupný pomocí odkazující na tento alias v jiných klauzulích.  
+Vnitřní spojení za následek úplnou smíšený produkt sad účastní spojení. Výsledek spojení N-způsob, jak je sada N prvek řazené kolekce členů, kde každá hodnota řazené kolekce členů je přidružen alias nastavit účast ve spojení a je přístupný pomocí odkazu na tento alias v jiných klauzule.  
   
-Připojení k vyhodnocení, závisí na oboru kontextu zúčastněných sad:  
+Vyhodnocení spojení závisí na kontext rozsah zúčastněných sad:  
   
--  Spojení mezi sadu kolekce A a celou kolekci nastavení B, výsledky v produktu mezi všechny elementy ve sady A a B.
+-  Spojení mezi sadu kolekce A a celou kolekci nastavení B, výsledkem smíšený produkt všechny prvky v sadách A a B.
   
--   Spojení mezi sada A a sada obor dokumentu B, výsledkem spojení všech sad získat vyhodnocením dokumentu obor sady B pro každý dokument z nastavit A.  
+-   Spojení mezi sada A a rozsahem dokumentu sada B, výsledkem sjednocení všech sad získanou vyhodnocením rozsahem dokumentu nastavte B pro každý dokument z A.  
   
- V aktuální verzi maximálně jeden výraz celou kolekci podporuje procesor dotazů.  
+ V aktuální verzi maximálně jeden výraz s rozsahem kolekce podporuje procesor dotazů.  
   
 **Příklady spojení:**  
   
 Podívejme se na následující klauzule FROM: `<from_source1> JOIN <from_source2> JOIN ... JOIN <from_sourceN>`  
   
- Umožní každý zdroj definovat `input_alias1, input_alias2, …, input_aliasN`. Tato klauzule FROM vrací sadu N-řazené kolekce členů (řazené kolekce členů s hodnotami N). Každá řazená kolekce členů má vyprodukované všechny aliasy kolekce iterování přes jejich příslušné sady hodnot.  
+ Umožnit každému zdroji definovat `input_alias1, input_alias2, …, input_aliasN`. Tato klauzule FROM vrací sadu N-řazených kolekcí členů (řazené kolekce členů s N hodnot). Všechny řazené kolekce členů obsahuje hodnoty vytvořené ve všechny aliasy kolekce iterování celého jejich příslušných sad.  
   
-*Připojit ke Příklad 1, s 2 zdrojů:*  
+*Připojte se k – Příklad 1, 2 zdroje:*  
   
-- Umožní `<from_source1>` celou kolekci být a představují sadu {A, B, C}.  
+- Umožní `<from_source1>` být kolekce rozsahem a reprezentaci sady {A, B, C}.  
   
-- Umožní `<from_source2>` být obor dokumentu, odkazující na input_alias1 a představují sady:  
+- Umožní `<from_source2>` být dokument s rozsahem odkazující na input_alias1 a představují sady:  
   
     {1, 2} pro `input_alias1 = A,`  
   
-    {3} Pro `input_alias1 = B,`  
+    {3} pro `input_alias1 = B,`  
   
     {4, 5} pro `input_alias1 = C,`  
   
-- V klauzuli FROM `<from_source1> JOIN <from_source2>` bude mít za následek následující řazené kolekce členů:  
+- Klauzule FROM `<from_source1> JOIN <from_source2>` bude mít za následek následující řazených kolekcí členů:  
   
     (`input_alias1, input_alias2`):  
   
     `(A, 1), (A, 2), (B, 3), (C, 4), (C, 5)`  
   
-*Příklad 2, s 3 zdroje připojení:*  
+*Připojte se k příkladu 2, 3 zdrojů:*  
   
-- Umožní `<from_source1>` celou kolekci být a představují sadu {A, B, C}.  
+- Umožní `<from_source1>` být kolekce rozsahem a reprezentaci sady {A, B, C}.  
   
-- Umožní `<from_source2>` být obor dokumentu odkazující na `input_alias1` a představují sady:  
+- Umožní `<from_source2>` být odkazující na dokument s rozsahem `input_alias1` a představují sady:  
   
     {1, 2} pro `input_alias1 = A,`  
   
-    {3} Pro `input_alias1 = B,`  
+    {3} pro `input_alias1 = B,`  
   
     {4, 5} pro `input_alias1 = C,`  
   
-- Umožní `<from_source3>` být obor dokumentu odkazující na `input_alias2` a představují sady:  
+- Umožní `<from_source3>` být odkazující na dokument s rozsahem `input_alias2` a představují sady:  
   
     {100, 200} pro `input_alias2 = 1,`  
   
-    {300} Pro `input_alias2 = 3,`  
+    {300} pro `input_alias2 = 3,`  
   
-- V klauzuli FROM `<from_source1> JOIN <from_source2> JOIN <from_source3>` bude mít za následek následující řazené kolekce členů:  
+- Klauzule FROM `<from_source1> JOIN <from_source2> JOIN <from_source3>` bude mít za následek následující řazených kolekcí členů:  
   
     (input_alias1, input_alias2, input_alias3):  
   
     (A, 1, 100), (A, 1, 200), (B, 3, 300)  
   
 > [!NOTE]
-> Nedostatečná řazené kolekce členů pro jiné hodnoty `input_alias1`, `input_alias2`, pro kterou `<from_source3>` nevrátil žádné hodnoty.  
+> Chybějící řazených kolekcí členů pro ostatní hodnoty `input_alias1`, `input_alias2`, pro kterou `<from_source3>` nevrátil žádné hodnoty.  
   
-*Připojit ke příklad 3, s 3 zdrojů:*  
+*Připojte se k příklad 3, 3 zdroje:*  
   
-- Umožní < from_source1 > být celou kolekci a představují sadu {A, B, C}.  
+- Umožní < from_source1 > se s rozsahem kolekce a reprezentaci sady {A, B, C}.  
   
-- Umožní `<from_source1>` celou kolekci být a představují sadu {A, B, C}.  
+- Umožní `<from_source1>` být kolekce rozsahem a reprezentaci sady {A, B, C}.  
   
-- Umožní < from_source2 > být obor dokumentu odkazující input_alias1 a představují sady:  
+- Umožní < from_source2 > se s rozsahem dokumentu odkazující input_alias1 a představují sady:  
   
     {1, 2} pro `input_alias1 = A,`  
   
-    {3} Pro `input_alias1 = B,`  
+    {3} pro `input_alias1 = B,`  
   
     {4, 5} pro `input_alias1 = C,`  
   
-- Umožní `<from_source3>` být omezená na `input_alias1` a představují sady:  
+- Umožní `<from_source3>` omezené na `input_alias1` a představují sady:  
   
     {100, 200} pro `input_alias2 = A,`  
   
-    {300} Pro `input_alias2 = C,`  
+    {300} pro `input_alias2 = C,`  
   
-- V klauzuli FROM `<from_source1> JOIN <from_source2> JOIN <from_source3>` bude mít za následek následující řazené kolekce členů:  
+- Klauzule FROM `<from_source1> JOIN <from_source2> JOIN <from_source3>` bude mít za následek následující řazených kolekcí členů:  
   
     (`input_alias1, input_alias2, input_alias3`):  
   
-    (A, 1, 100), (A, 1, 200), (A, 2, 100), (A, 2, 200), (C, 4, 300) (C, 5, 300)  
+    (A, 1, 100), (A, 1, 200), (A, 2, 100), (A, 2, 200), C, 4, 300, (C, 5, 300)  
   
 > [!NOTE]
-> To bylo způsobeno v smíšený produkt mezi `<from_source2>` a `<from_source3>` vzhledem k tomu, jak jsou omezená na stejné `<from_source1>`.  To bylo způsobeno 4 (2 x 2) řazených kolekcí členů má hodnotu, 0 řazené kolekce členů s hodnota B (1 × 0) a 2 (2 × 1) řazených kolekcí členů mají hodnotu C.  
+> Výsledkem byl smíšený produkt mezi `<from_source2>` a `<from_source3>` protože obě jsou omezená na stejný `<from_source1>`.  Výsledkem byl 4 (2 x 2) řazené kolekce členů s hodnotou A 0 řazené kolekce členů s hodnotou B (1 x 0) a 2 (2 × 1) řazené kolekce členů s hodnotou C.  
   
 **Viz také**  
   
@@ -329,18 +329,18 @@ WHERE <filter_condition>
   
 -   `<filter_condition>`  
   
-     Určuje podmínku, která má být splněny pro dokumenty, které má být vrácen.  
+     Určuje podmínku, která má být splněny pro dokumenty, které se mají vrátit.  
   
 -   `<scalar_expression>`  
   
-     Výraz představující hodnotu počítaný. Najdete v článku [skalární výrazy](#bk_scalar_expressions) podrobnosti.  
+     Výraz představující hodnotu, která chcete vypočítat. Zobrazit [skalární výrazy](#bk_scalar_expressions) podrobné informace.  
   
  **Poznámky**  
   
- Aby dokumentu, který má být vrácen výraz zadaný jako filtr musí podmínka vyhodnocena jako true. Pouze logickou hodnotu true budou splňovat podmínky, jakoukoli jinou hodnotu: nedefinované, null, hodnotu false, číslo, pole nebo objekt nebude splňují zadanou podmínku.  
+ Aby dokumentu, který má být vrácen výraz zadaný jako filtr musí podmínka vyhodnocena na hodnotu true. Pouze pro logickou hodnotu true budou splňují zadanou podmínku, jakákoli jiná hodnota: undefined, null, hodnotu false, číslo, pole nebo objekt nebude splňují zadanou podmínku.  
   
-##  <a name="bk_orderby_clause"></a> Klauzuli ORDER by  
- Určuje pořadí řazení výsledků vrácených dotazem.  
+##  <a name="bk_orderby_clause"></a> ORDER BY – klauzule  
+ Určuje pořadí řazení pro výsledky vrácené dotazem.  
   
  **Syntaxe**  
   
@@ -355,32 +355,32 @@ ORDER BY <sort_specification>
   
 -   `<sort_specification>`  
   
-     Určuje vlastnosti nebo výraz, podle kterého řazení sady výsledků dotazu. Sloupec pro řazení lze zadat jako název nebo sloupci alias.  
+     Určuje vlastnost nebo výraz, podle kterého chcete řazení sady výsledků dotazu. Sloupec pro řazení lze zadat jako název nebo sloupci alias.  
   
-     Je možné zadat více řazení sloupců. Názvy sloupců musí být jedinečný. Definuje pořadí řazení sloupců v klauzuli ORDER by organizace ze seřazené sady. To znamená sadu výsledků dotazu je seřazen podle první vlastnost a potom tento seřazený seznam je seřazen podle druhý vlastností a tak dále.  
+     Je možné zadat více sloupců seřadit. Názvy sloupců musí být jedinečné. Definuje pořadí řazení sloupců v klauzuli ORDER by organizace sady seřazených výsledků. To znamená sada výsledků je seřazený podle první vlastnost a potom tuto seřazený seznam je seřazen podle druhý vlastnosti a tak dále.  
   
-     Názvy sloupců, na který odkazuje klauzule ORDER BY musí odpovídat buď na sloupec v seznamu select nebo na sloupec definovaný v tabulce zadané v klauzuli FROM bez jakékoli nejednoznačnosti.  
+     Názvy sloupců odkazovat v klauzuli ORDER by musí odpovídat na sloupec v seznamu select nebo sloupce definované v tabulce zadaný v klauzuli FROM bez jakékoli nejednoznačnosti.  
   
 -   `<sort_expression>`  
   
-     Určuje vlastnosti jediné nebo výraz, podle kterého řazení sady výsledků dotazu.  
+     Určuje jednu vlastnost nebo výraz, podle kterého chcete řazení sady výsledků dotazu.  
   
 -   `<scalar_expression>`  
   
-     Najdete v článku [skalární výrazy](#bk_scalar_expressions) podrobnosti.  
+     Zobrazit [skalární výrazy](#bk_scalar_expressions) podrobné informace.  
   
 -   `ASC | DESC`  
   
-     Určuje, že hodnoty ve vybraném sloupci by měly být seřazeny ve vzestupném nebo sestupném pořadí. ASC seřadí od nejnižší hodnoty po nejvyšší hodnotu. DESC seřadí od nejvyšší hodnoty nejnižší hodnotu. ASC je výchozí pořadí řazení. Hodnoty Null jsou považovány za nejnižší možné hodnoty.  
+     Určuje, zda mají být řazeny hodnot v zadaném sloupci ve vzestupném nebo sestupném pořadí. ASC řadí od nejnižší hodnoty po nejvyšší hodnotu. DESC seřadí od nejvyšší hodnotu na nejnižší hodnotu. ASC se použije výchozí pořadí řazení. Hodnoty Null jsou považovány za nejnižší možné hodnoty.  
   
  **Poznámky**  
   
- I když gramatiky dotazů podporuje více pořadí podle vlastností, modulu runtime Azure Cosmos DB dotazu podporuje řazení pouze s jedinou vlastností a pouze s názvy vlastností, tj., není pro počítané vlastnosti. Řazení také vyžaduje, zásady indexování zahrnuje indexem rozsahu pro vlastnost a zadaného typu, s maximální přesnost. Naleznete v dokumentaci indexování zásady další podrobnosti.  
+ I když gramatiky dotazů podporuje více pořadí podle vlastností, dotaz runtime služby Azure Cosmos DB podporuje řazení pouze proti jedné vlastnosti a pouze názvy vlastností, to znamená, nejsou proti vypočítané vlastnosti. Řazení také vyžaduje, zásady indexování obsahuje index rozsahu pro vlastnost a zadaného typu s nejvyšší přesností. Odkazovat na indexování dokumentace k zásadám pro další podrobnosti.  
   
 ##  <a name="bk_scalar_expressions"></a> Skalární výrazy  
- Skalární výraz, který je kombinací symbolů a operátory, které lze vyhodnotit na získat jednu hodnotu. Jednoduché výrazy může být konstanty, odkazy na vlastnost, odkazuje na element pole, odkazy na alias nebo volání funkce. Jednoduché výrazy lze spojovat do složité výrazy pomocí operátorů.  
+ Skalární výraz, který je kombinací symbolů a operátorů, které lze vyhodnotit na získání jedné hodnoty. Jednoduché výrazy mohou být konstanty, odkazy na vlastnosti, odkazy na prvky pole, odkazy na alias nebo volání funkce. Jednoduché výrazy je možné kombinovat do složité výrazy pomocí operátorů.  
   
- Podrobnosti na hodnotách, které skalární výraz, který může mít najdete v tématu [konstanty](#bk_constants) části.  
+ Podrobnosti o hodnoty, které skalární výraz, který může mít, naleznete v tématu [konstanty](#bk_constants) oddílu.  
   
  **Syntaxe**  
   
@@ -415,40 +415,40 @@ ORDER BY <sort_specification>
   
 -   `<constant>`  
   
-     Představuje konstantní hodnotu. V tématu [konstanty](#bk_constants) podrobnosti.  
+     Reprezentuje hodnotu konstanty. Zobrazit [konstanty](#bk_constants) podrobné informace.  
   
 -   `input_alias`  
   
-     Reprezentuje hodnotu definované `input_alias` počínaje `FROM` klauzule.  
-    Tato hodnota představuje záruku není **nedefinované** –**nedefinované** hodnoty ve vstupu se přeskočí.  
+     Představuje hodnoty definované `input_alias` zavedený `FROM` klauzuli.  
+    Tato hodnota je zaručeno, že nebudou **nedefinované** –**nedefinované** hodnoty ve vstupu se přeskočí.  
   
 -   `<scalar_expression>.property_name`  
   
-     Reprezentuje hodnotu vlastnosti objektu. Pokud vlastnost neexistuje nebo je odkazováno vlastnost na hodnotu, která není objekt a potom vyhodnocen jako **nedefinované** hodnotu.  
+     Reprezentuje hodnotu vlastnosti objektu. Vlastnost neexistuje nebo vlastnost se odkazuje na hodnotu, která není objekt a potom je výraz vyhodnocen **nedefinované** hodnotu.  
   
 -   `<scalar_expression>'['"property_name"|array_index']'`  
   
-     Reprezentuje hodnotu vlastnosti s názvem `property_name` nebo element pole s indexem `array_index` objekt nebo pole. Pokud neexistuje index vlastnost nebo pole nebo vlastnost nebo pole indexu je odkazováno na hodnotu, která není objekt nebo pole, pak je vyhodnocen nedefinovanou hodnotu.  
+     Reprezentuje hodnotu vlastnosti s názvem `property_name` nebo element pole s indexem `array_index` objekt nebo pole. Pokud vlastnost nebo pole index neexistuje nebo index vlastnost nebo pole se odkazuje na hodnotu, která není objekt nebo pole, pak je výraz vyhodnocen nedefinovaná hodnota.  
   
 -   `unary_operator <scalar_expression>`  
   
-     Představuje operátor, který se použije pro jednu hodnotu. V tématu [operátory](#bk_operators) podrobnosti.  
+     Představuje operátor, který se použije na jednu hodnotu. Zobrazit [operátory](#bk_operators) podrobné informace.  
   
 -   `<scalar_expression> binary_operator <scalar_expression>`  
   
-     Představuje operátor, který se použije pro dvě hodnoty. V tématu [operátory](#bk_operators) podrobnosti.  
+     Představuje operátor, který se použije na dvě hodnoty. Zobrazit [operátory](#bk_operators) podrobné informace.  
   
 -   `<scalar_function_expression>`  
   
-     Reprezentuje hodnotu definované výsledku volání funkce.  
+     Představuje hodnou definovanou ve výsledku volání funkce.  
   
 -   `udf_scalar_function`  
   
-     Jméno uživatele definované skalární funkce.  
+     Jméno uživatele definované skalární funkci.  
   
 -   `builtin_scalar_function`  
   
-     Název předdefinované skalární funkce.  
+     Název integrovanou skalární funkci.  
   
 -   `<create_object_expression>`  
   
@@ -456,97 +456,97 @@ ORDER BY <sort_specification>
   
 -   `<create_array_expression>`  
   
-     Reprezentuje hodnotu získala při vytváření nové pole se zadanými hodnotami, jako elementy  
+     Reprezentuje hodnotu získala při vytváření nové pole pomocí zadaných hodnot jako prvky  
   
 -   `parameter_name`  
   
-     Reprezentuje hodnotu zadaný název parametru. Názvy parametrů musí mít jeden @ jako první znak.  
+     Reprezentuje hodnotu zadaný název parametru. Názvy parametrů musí mít jeden \@ jako první znak.  
   
  **Poznámky**  
   
- Při volání předdefinované nebo uživatel definované skalární funkce musí být definovány všechny argumenty. Pokud některý z argumentů není definován, nebude volána funkce a výsledkem bude definován.  
+ Při volání na uživatele nebo integrovanou skalární funkci definovanou všechny argumenty musí být definovaný. Pokud některý z argumentů není definován, nebude volána funkce a bude výsledek nedefinovaný.  
   
- Při vytvoření objektu, bude přeskočen a nejsou zahrnuty v vytvořený objekt jakákoli vlastnost, která je přiřazena nedefinovanou hodnotu.  
+ Při vytvoření objektu, bude přeskočen a není součástí vytvořený objekt jakákoli vlastnost, která je přiřazena hodnota undefined.  
   
- Při vytváření pole, libovolná hodnota elementu, který je přiřazen **nedefinované** hodnota bude přeskočen a nejsou zahrnuty v vytvořený objekt. To způsobí, že další definované elementu, který chcete provést jeho tak, že vytvořený pole nebude přeskočena indexy.  
+ Při vytváření pole, libovolný element, který je přiřazen **nedefinované** hodnota bude přeskočen a není součástí vytvořený objekt. To způsobí, že další definovaný prvek k provedení jeho tak, že vytvořené pole nebude přeskočena indexy.  
   
 ##  <a name="bk_operators"></a> Operátory  
- Tato část popisuje podporované operátory. Každý operátor lze přiřadit k přesně jednu kategorii.  
+ Tato část popisuje podporované operátory. Každý operátor je možné přiřadit přesně jednu kategorii.  
   
- V tématu **operátor kategorie** tabulce podrobnosti ohledně zpracování **nedefinované** hodnoty, požadavky na typ vstupní hodnoty a zpracování hodnot s není odpovídající typy.  
+ Naleznete v tématu **operátor kategorie** níže uvedené tabulky Podrobnosti týkající se zpracování **nedefinované** hodnoty, požadavky na typ pro vstupní hodnoty a zpracování hodnot se neshodují s typy.  
   
  **Operátor kategorie:**  
   
 |**Kategorie**|**Podrobnosti**|  
 |-|-|  
-|**Aritmetické operace**|Operátor očekává input(s) být čísel. Výstup je také číslo. Pokud je některý ze vstupních údajů **nedefinované** nebo typ než číslo potom výsledek **nedefinované**.|  
-|**Bitový**|Operátor očekává input(s) být 32bitové číslo se znaménkem čísel. Výstup je také 32bitové číslo se znaménkem číslo.<br /><br /> Libovolná hodnota není celé číslo se zaokrouhlí. Kladné celé číslo se zaokrouhlí směrem dolů, záporné hodnoty zaokrouhlený nahoru.<br /><br /> Provedením poslední 32 bity jeho dva pro zápis doplňku budou převedeny jakoukoli hodnotu, která je mimo rozsah 32bitové celé číslo.<br /><br /> Pokud je některý ze vstupních údajů **nedefinované** nebo jiného typu než čísla, potom je **nedefinované**.<br /><br /> **Poznámka:** výše uvedené chování je kompatibilní s chováním bitový operátor jazyka JavaScript.|  
-|**Logické**|Operátor očekává input(s) být Boolean(s). Výstup je také logickou hodnotu.<br />Pokud je některý ze vstupních údajů **nedefinované** nebo jiného typu než logickou hodnotu, bude výsledkem **nedefinované**.|  
-|**Porovnání**|Operátor očekává input(s) stejného typu a nesmí být definován. Výstup je logická hodnota.<br /><br /> Pokud je některý ze vstupních údajů **nedefinované** nebo mají různé typy vstupních hodnot, potom je **nedefinované**.<br /><br /> V tématu **řazení hodnot pro porovnání** tabulky pro hodnotu řazení podrobnosti.|  
-|**Řetězec**|Operátor očekává input(s) jako řetězec nebo řetězce. Výstup je také řetězec.<br />Pokud je některý ze vstupních údajů **nedefinované** nebo jiného typu než řetězec potom je **nedefinované**.|  
+|**Aritmetické operace**|Operátor očekává, že nahráním být číslo nebo čísla. Výstup je také číslo. Pokud kterýkoli ze vstupních **nedefinované** nebo je typ jiný než číslo potom výsledek **nedefinované**.|  
+|**bitové operace**|Operátor očekává, že nahráním jako 32bitové celé číslo se znaménkem číslo nebo čísla. Výstup je také 32bitové celé číslo se znaménkem číslo.<br /><br /> Libovolná hodnota celé číslo se zaokrouhlí. Kladná hodnota se zaokrouhlí směrem dolů, záporné hodnoty zaokrouhluje nahoru.<br /><br /> Libovolnou hodnotu, která je mimo rozsah 32bitové celé číslo se převedou provedením poslední 32 bity jeho dvojkový doplněk zápisu.<br /><br /> Pokud kterýkoli ze vstupních **nedefinované** nebo jiného typu než číslo, bude výsledkem **nedefinované**.<br /><br /> **Poznámka:** výše uvedené chování je kompatibilní s chováním bitový operátor jazyka JavaScript.|  
+|**Logické**|Operátor očekává, že nahráním bude Boolean(s). Výstup je také logickou hodnotu.<br />Pokud kterýkoli ze vstupních **nedefinované** nebo jiného typu než logickou hodnotu, bude výsledkem **nedefinované**.|  
+|**Porovnání**|Operátor očekává, že nahráním být stejného typu a nesmí být definován. Výstup je logická hodnota.<br /><br /> Pokud kterýkoli ze vstupních **nedefinované** nebo vstupy mají rozdílné typy a výsledkem je **nedefinované**.<br /><br /> Zobrazit **řazení hodnot pro porovnání** tabulky pro hodnotu řazení podrobnosti.|  
+|**řetězec**|Operátor očekává, že nahráním být řetězce. Výstup je také řetězec.<br />Pokud kterýkoli ze vstupních **nedefinované** nebo jiného typu než řetězce a výsledkem je **nedefinované**.|  
   
- **Unární operátory:**  
+ **Jednočlenné operátory:**  
   
-|**Název**|**Operátor**|**Podrobnosti**|  
+|**Název**|**– Operátor**|**Podrobnosti**|  
 |-|-|-|  
-|**Aritmetické operace**|+<br /><br /> -|Vrátí číselnou hodnotu.<br /><br /> Bitovou negaci. Vrátí Negované číselnou hodnotu.|  
-|**Bitový**|~|Ty, které se doplňku. Vrátí zbytek číselnou hodnotu.|  
-|**Logické**|**NENÍ**|Negace. Vrátí Negované logická hodnota.|  
+|**Aritmetické operace**|+<br /><br /> -|Vrátí číselnou hodnotu.<br /><br /> Bitová negace. Vrátí negovat číselnou hodnotu.|  
+|**bitové operace**|~|Doplněk těch, které jsou. Vrátí zbytek číselnou hodnotu.|  
+|**Logické**|**NOT**|Negace. Vrátí negovat logickou hodnotu.|  
   
  **Binární operátory:**  
   
-|**Název**|**Operátor**|**Podrobnosti**|  
+|**Název**|**– Operátor**|**Podrobnosti**|  
 |-|-|-|  
-|**Aritmetické operace**|+<br /><br /> -<br /><br /> *<br /><br /> /<br /><br /> %|Přidání.<br /><br /> Odčítání.<br /><br /> Násobení.<br /><br /> Dělení.<br /><br /> Modulační.|  
-|**Bitový**|&#124;<br /><br /> &<br /><br /> ^<br /><br /> <<<br /><br /> >><br /><br /> >>>|Bitový operátor OR.<br /><br /> Bitové operace AND.<br /><br /> Bitové operace XOR.<br /><br /> Operátor posunu vlevo.<br /><br /> Posunutí doprava.<br /><br /> Posunutí doprava výplně nula.|  
+|**Aritmetické operace**|+<br /><br /> -<br /><br /> *<br /><br /> /<br /><br /> %|Přidání.<br /><br /> Odčítání.<br /><br /> Násobení.<br /><br /> Dělení.<br /><br /> Modulace.|  
+|**bitové operace**|&#124;<br /><br /> &<br /><br /> ^<br /><br /> <<<br /><br /> >><br /><br /> >>>|Bitový operátor OR.<br /><br /> Bitový AND.<br /><br /> Bitový operátor XOR.<br /><br /> Operátor posunu vlevo.<br /><br /> Posunutí doprava.<br /><br /> Výplň nulové posunutí doprava.|  
 |**Logické**|**A**<br /><br /> **OR**|Logické spojení. Vrátí **true** Pokud jsou oba argumenty **true**, vrátí **false** jinak.<br /><br /> Logické spojení. Vrátí **true** Pokud jsou oba argumenty **true**, vrátí **false** jinak.|  
-|**Porovnání**|**=**<br /><br /> **!=, <>**<br /><br /> **>**<br /><br /> **>=**<br /><br /> **<**<br /><br /> **<=**<br /><br /> **??**|Rovná se. Vrátí **true** Pokud argumenty jsou stejné, vrátí **false** jinak.<br /><br /> Není rovno. Vrátí **true** Pokud argumenty nejsou stejné, vrátí **false** jinak.<br /><br /> Větší než. Vrátí **true** Pokud je větší než druhý argument, vrátí **false** jinak.<br /><br /> Větší než nebo rovna hodnotě. Vrátí **true** Pokud první argument je větší než nebo rovno druhý, vrátí **false** jinak.<br /><br /> Menší než. Vrátí **true** Pokud první argument je menší než druhý jeden návratový **false** jinak.<br /><br /> Menší než nebo rovno. Vrátí **true** Pokud první argument je menší než nebo rovna druhý, vrátí **false** jinak.<br /><br /> Sloučení. Vrátí druhý argument, pokud je první argument **nedefinované** hodnotu.|  
-|**Řetězec**|**&#124;&#124;**|Zřetězení. Vrátí zřetězení oba argumenty.|  
+|**Porovnání**|**=**<br /><br /> **!=, <>**<br /><br /> **>**<br /><br /> **>=**<br /><br /> **<**<br /><br /> **<=**<br /><br /> **??**|Rovná se. Vrátí **true** Pokud argumenty jsou stejné, vrátí **false** jinak.<br /><br /> Není rovno. Vrátí **true** Pokud argumenty nejsou stejné, vrátí **false** jinak.<br /><br /> Větší než. Vrátí **true** Pokud je první argument větší než druhá, vrátí **false** jinak.<br /><br /> Větší než nebo rovna hodnotě. Vrátí **true** Pokud první argument je větší než nebo rovna hodnotě pro druhou kolekci, vrátí **false** jinak.<br /><br /> Menší než. Vrátí **true** Pokud je první argument menší než druhý jeden návratový **false** jinak.<br /><br /> Menší než nebo rovno. Vrátí **true** Pokud první argument menší než ten druhý, vrátí **false** jinak.<br /><br /> Sloučení. Vrátí druhý argument, pokud je první argument **nedefinované** hodnotu.|  
+|**řetězec**|**&#124;&#124;**|Zřetězení. Vrátí zřetězení těchto oba argumenty.|  
   
  **Ternární operátory:**  
   
-|Ternární operátor|?|Vrátí druhý argument, pokud se vyhodnotí jako první argument **true**; jinak vrátí třetí argument.|  
+|Ternární operátor|?|Vrátí druhý argument, pokud je vyhodnocen jako první argument **true**; v opačném případě vrátí třetí argument.|  
 |-|-|-|  
   
- **Řazení hodnot pro porovnání**  
+ **Řazení porovnávaných hodnot**  
   
-|**Typ**|**Pořadí hodnoty**|  
+|**Typ**|**Hodnoty pořadí**|  
 |-|-|  
-|**Nedefinovaná**|Není porovnatelný.|  
-|**Hodnotu Null**|Jedna hodnota: **hodnotu null.**|  
-|**Číslo**|Fyzická reálné číslo.<br /><br /> Zápornou hodnotu Infinity je menší než ostatní číselnou hodnotu.<br /><br /> Je větší než jakoukoli jinou hodnotu, číslo kladné nekonečnou hodnotu. **NaN** hodnota není porovnatelný. Porovnávání s **NaN** bude mít za následek **nedefinované** hodnotu.|  
-|**Řetězec**|Lexicographical pořadí.|  
-|**Pole**|Žádné řazení, ale přiměřenou.|  
-|**Objekt**|Žádné řazení, ale přiměřenou.|  
+|**Nedefinovaný**|Není porovnatelný.|  
+|**Hodnotu Null**|Jedna hodnota: **null**|  
+|**Číslo**|Přirozené reálné číslo.<br /><br /> Záporná hodnota nekonečno je menší než jakoukoli jinou číselnou hodnotu.<br /><br /> Kladná hodnota nekonečno je větší než jakoukoli jinou číselnou hodnotu. **NaN** hodnota není porovnatelný. Výsledkem porovnání s **NaN** způsobí **nedefinované** hodnotu.|  
+|**řetězec**|Lexicographical pořadí.|  
+|**Pole**|Žádné řazení, ale spravedlivé.|  
+|**objekt**|Žádné řazení, ale spravedlivé.|  
   
  **Poznámky**  
   
- V Azure DB Cosmos typy hodnot, často není známý, dokud se ve skutečnosti načítají z databáze. Za účelem podpory efektivní provádění dotazů, většina operátory má požadavky na typ strict. Operátory samy o sobě taky neprovádět implicitní převody.  
+ Ve službě Azure Cosmos DB typy hodnot, často nejsou známé, dokud se ve skutečnosti jsou načteny z databáze. Aby bylo možné podporovat efektivní provádění dotazů, většina operátory mají požadavky na striktní typy. Operátory samy také neprovádějte implicitní převody.  
   
- To znamená, že jako dotaz: vybrat * z ROOT r kde r.Age = 21 vrátí jenom dokumenty s vlastností stáří rovná počtu 21. Dokumenty s vlastností stáří rovna řetězec "21" nebo "0021" řetězec nebude odpovídat jako výraz "21" = 21 vyhodnotí na nedefinovaný. To umožňuje lepší využití indexy, protože je vyhledávání určitou hodnotu (tj. počet 21) je rychlejší než vyhledávání nekonečný počet potenciální odpovídá (tj. počet 21 nebo řetězce "21", "021", "21.0"...). To se liší od způsobu JavaScript vyhodnotí operátory na hodnoty různých typů.  
+ To znamená, že jako dotaz: vybrat * z kořenového r WHERE r.Age = 21 vrátí jenom dokumenty s vlastností stáří rovná počtu 21. Dokumenty s vlastností rovno řetězci "21" nebo "0021" řetězec věk nebudou odpovídat jako výraz "21" = 21 vyhodnotí na nedefinovaný. To umožňuje lepší využití indexy, protože vyhledávání konkrétní hodnotu (tj. číslo 21) je rychlejší než hledání nekonečný počet možných shod (tj. číslo 21 nebo řetězce "21", "021", "21.0"...). Tím se liší od způsob, jak JavaScript vyhodnocuje operátory na hodnoty různých typů.  
   
- **Porovnání rovnosti pole a objekty a**  
+ **Pole a objekty rovnosti a porovnání**  
   
- Porovnání hodnot pole nebo objekt pomocí operátorů rozsah (>, > =, <, < =) bude mít za následek není definována jako není pořadí na objekt nebo pole hodnot. Ale pomocí operátory rovnosti/nerovnosti (=,! =, <>) je podporována a hodnoty budou porovnány strukturálně.  
+ Porovnání hodnot pole nebo objekt pomocí operátorů rozsah (>, > =, <, < =) způsobí nedefinované, protože není definované na objekt nebo pole hodnot není pořadí. Nicméně použití operátory rovnosti nebo nerovnosti (=,! =, <>) je podporován a hodnoty budou strukturálně porovnávat.  
   
- Pole jsou stejné, pokud obě pole mají stejný počet elementů a prvky v odpovídajícím pozic jsou také stejné. Pokud není definovaná porovnání výsledků elementy v žádném páru, výsledku porovnání pole není definováno.  
+ Pokud obě pole mají stejný počet prvků a elementů na odpovídající pozice jsou také stejné pole jsou si rovny. Pokud nějaká dvojice prvků výsledkem porovnání nedefinovaný výsledek porovnání pole není definován.  
   
- Objekty jsou stejné, pokud mají oba objekty stejné vlastnosti definované a jsou také stejné hodnoty odpovídající vlastnosti. Pokud není definovaná porovnání výsledků hodnoty vlastností v žádném páru, výsledku porovnání objekt není definován.  
+ Pokud oba objekty stejné vlastnosti definované, a pokud jsou hodnoty odpovídajících vlastností také stejné objekty rovnají. Pokud porovnání nějaká dvojice vlastnost hodnot za následek nedefinované výsledek porovnání objekt není definován.  
   
 ##  <a name="bk_constants"></a> Konstanty  
- Konstanta, také známé jako literál nebo skalární hodnota, je symbol, který představuje konkrétní datové hodnoty. Formát konstanta závisí na datový typ hodnoty, který představuje.  
+ Konstanta, označované také jako literál nebo skalární hodnota, je symbol, který reprezentuje hodnotu konkrétního data. Formát konstantě závisí na datový typ, který představuje.  
   
- **Podporované typy skalární data:**  
+ **Podporované skalárních datových typů:**  
   
-|**Typ**|**Pořadí hodnoty**|  
+|**Typ**|**Hodnoty pořadí**|  
 |-|-|  
-|**Nedefinovaná**|Jedna hodnota: **Nedefinovaná**|  
-|**Hodnotu Null**|Jedna hodnota: **hodnotu null.**|  
-|**Logická hodnota**|Hodnoty: **false**, **true**.|  
-|**Číslo**|Dvojitá přesnost s plovoucí desetinnou čárkou číslo, IEEE 754 standard.|  
-|**Řetězec**|Pořadí nula nebo více znaků Unicode. Řetězce musí být uzavřena do jednoduchých nebo dvojitých uvozovek.|  
-|**Pole**|Pořadí počtu nula či více elementů. Každý element může být hodnota všechny skalární datového typu, s výjimkou Undefined.|  
-|**Objekt**|Neseřazený sadu nula nebo více dvojic název hodnota. Název je řetězec znaků Unicode, hodnota může být jakékoli skalární datového typu, s výjimkou **Undefined**.|  
+|**Nedefinovaný**|Jedna hodnota: **nedefinované**|  
+|**Hodnotu Null**|Jedna hodnota: **null**|  
+|**Datový typ Boolean**|Hodnoty: **false**, **true**.|  
+|**Číslo**|Číslo dvojité přesnosti s plovoucí desetinnou čárkou, standardní IEEE 754.|  
+|**řetězec**|Posloupnost nula nebo více znaků Unicode. Řetězce musí být uzavřen v jednoduchých nebo dvojitých uvozovkách.|  
+|**Pole**|Posloupnost nula nebo více prvků. Každý prvek může být hodnota libovolného skalární datového typu, s výjimkou typu Undefined.|  
+|**objekt**|Neuspořádanou sadu párů název/hodnota nula nebo více. Název je řetězec znaků Unicode, hodnota může být libovolného skalární datového typu, s výjimkou **Nedefinováno**.|  
   
  **Syntaxe**  
   
@@ -582,7 +582,7 @@ ORDER BY <sort_specification>
   
 1.  `<undefined_constant>; undefined`  
   
-     Představuje není definovaná hodnota typu Undefined.  
+     Představuje nedefinované hodnoty typu Nedefinováno.  
   
 2.  `<null_constant>; null`  
   
@@ -590,15 +590,15 @@ ORDER BY <sort_specification>
   
 3.  `<boolean_constant>`  
   
-     Představuje konstanta typu Boolean.  
+     Představuje konstantu typu Boolean.  
   
 4.  `false`  
   
-     Představuje **false** hodnota typu Boolean.  
+     Představuje **false** hodnotu typu Boolean.  
   
 5.  `true`  
   
-     Představuje **true** hodnota typu Boolean.  
+     Představuje **true** hodnotu typu Boolean.  
   
 6.  `<number_constant>`  
   
@@ -606,104 +606,104 @@ ORDER BY <sort_specification>
   
 7.  `decimal_literal`  
   
-     Decimal literály jsou reprezentované pomocí zápisu s tečkou nebo exponenciální notace čísla.  
+     Desítkové literály jsou čísla vyjadřuje desítkovém zápisu nebo vědecký zápis.  
   
 8.  `hexadecimal_literal`  
   
-     Šestnáctkové literály jsou reprezentované pomocí předpony '0 x, za nímž následuje jeden nebo více šestnáctkové číslice čísla.  
+     Šestnáctkové literály jsou čísla, které jsou reprezentovány pomocí předpony "0 x" a jedné nebo několika šestnáctkovými číslicemi.  
   
 9. `<string_constant>`  
   
-     Představuje konstantu typu řetězec.  
+     Představuje konstantu typu String.  
   
 10. `string _literal`  
   
-     Textové literály jsou reprezentována posloupnost nula nebo více znaků Unicode nebo řídicí sekvence řetězců v kódu Unicode. Textové literály jsou uzavřená do jednoduchých uvozovek (apostrof: ') nebo dvojité uvozovky (uvozovky: ").  
+     Řetězcové literály jsou reprezentovány posloupnost nula nebo více znaků Unicode nebo řídicí sekvence řetězců v kódu Unicode. Řetězcové literály jsou uzavřeny v jednoduchých uvozovkách (apostrof: ") nebo dvojité uvozovky (uvozovky:").  
   
- Jsou povoleny následující řídicí sekvence:  
+ Následující řídicí sekvence jsou povoleny:  
   
 |**Řídicí sekvence**|**Popis**|**Znak Unicode**|  
 |-|-|-|  
 |\\'|apostrof (')|U+0027|  
 |\\"|dvojité uvozovky (")|U+0022|  
-|\\\|obrácené lomítko (\\)|U+005C|  
+|\\\|zpětné lomítko (\\)|U+005C|  
 |\\/|lomítko (/)|U+002F|  
 |\b|BACKSPACE|U+0008|  
-|\f|řídicí znak|U + 000C|  
+|\f|Posun strany|U + 000C|  
 |\n|Přechod na nový řádek|U + 000A|  
 |\r|Návrat na začátek|U + 000D|  
 |\t|tabulátor|U+0009|  
-|\uXXXX|Znak Unicode definované 4 hexadecimální číslice.|U+XXXX|  
+|\uXXXX|Znak Unicode definované 4 šestnáctkovými číslicemi.|U+XXXX|  
   
-##  <a name="bk_query_perf_guidelines"></a> Pravidla výkonu dotazu  
- Aby dotaz nelze provést efektivně pro velké kolekce měla by používat filtry, které je možné dodávat prostřednictvím jednoho nebo více indexů.  
+##  <a name="bk_query_perf_guidelines"></a> Pokyny k výkonu dotazů  
+ Aby dotazu pro velkou kolekci efektivně provádět měla by používat filtry, které se dají obsluhovat pomocí jednoho nebo více indexů.  
   
- Následující filtry se bude zvažovat indexu vyhledávání:  
+ Následující filtry se budou považovat za pro index vyhledávání:  
   
--   Operátor rovnosti (=) pomocí výrazu cesty dokumentu a konstanta.  
+-   Operátor rovnosti (=) pomocí výrazu cesty dokumentu a konstanty.  
   
--   Rozsah operátory (<, \<=, >, > =) s výraz cesty dokumentu a číselné konstanty.  
+-   Použití operátorů rozsah (<, \<=, >, > =) pomocí výrazu cesty dokumentu a číselné konstanty.  
   
--   Výraz cesty dokumentu zastupuje všechny výraz, který identifikuje konstantní cestu v dokumentech z kolekce odkazovaná databáze.  
+-   Výraz cesty dokumentu jsou zahrnovaného libovolný výraz, který identifikuje konstantní cestu v dokumentech z kolekce odkazovaná databáze.  
   
  **Výraz cesty dokumentu**  
   
- Výrazy cesty dokumentu jsou výrazy, cesta vlastnost nebo pole posuzovatelů indexer přes dokumentu pocházejících z databáze kolekce dokumentů. Tuto cestu můžete použít pro určení umístění hodnot odkazuje ve filtru přímo v rámci dokumentů v kolekci databáze.  
+ Výrazy jsou výrazy cesta k dokumentu, který cestu vlastnosti nebo pole assessors indexer přes dokumentu z databáze kolekce dokumentů. Tuto cestu můžete použít pro určení umístění hodnoty odkazované ve filtru přímo v rámci dokumenty v databázové kolekci.  
   
- Pro výraz považovat za výraz cesty dokumentu by měl:  
+ Pro výraz považuje za výraz cesty dokumentu by měl:  
   
-1.  Kořenové kolekce odkazujte přímo.  
+1.  Kořenové kolekce odkazovat přímo.  
   
-2.  Odkaz na vlastnost nebo konstanta indexer pole některé výrazu cesta dokumentu  
+2.  Odkaz na vlastnost nebo konstantu indexer pole některé výrazu cesta dokumentu  
   
-3.  Referenční alias, který představuje výraz cesty některé dokumentu.  
+3.  Odkazovat na alias, který představuje výraz cesty některé dokumentu.  
   
-     **Syntaxe konvence**  
+     **Konvencí syntaxe**  
   
-     Následující tabulka popisuje konvence používají k popisu syntaxi následující odkaz SQL.  
+     Následující tabulka popisuje konvence pro popis syntaxe v následujícím odkazu SQL.  
   
-    |**Konvence**|**Použít pro**|  
+    |**Konvence**|**Používá pro**|  
     |-|-|    
     |VELKÁ PÍSMENA|Klíčová slova velká a malá písmena.|  
-    |malá písmena|Klíčová slova malá a velká písmena.|  
-    |\<nonterminal >|Nonterminal, definované samostatně.|  
-    |\<nonterminal >:: =|Syntaxe definice nonterminal.|  
-    |other_terminal|Terminálové (token), podrobně popsané v slova.|  
-    |Identifikátor|Identifikátor. Umožňuje následující pouze znaky: a – z A-Z 0-9 _First znak nemůže být číslice.|  
-    |"řetězec"|Řetězec v uvozovkách. Umožňuje libovolný platný řetězec. Viz popis string_literal.|  
-    |'symbol.|Literál symbol, který je součástí syntaxe.|  
-    |&#124;(svislé čáry)|Alternativy pro položky syntaxe. Můžete vytvořit pouze jeden položky.|  
-    |[] /(brackets)|Závorky uzavřete jeden nebo více nepovinných položek.|  
-    |[,.. .n]|Označuje, že předchozí položce může být opakovaný n stanovený počet. Výskytů jsou oddělené čárkami.|  
-    |[ ...n ]|Označuje, že předchozí položce může být opakovaný n stanovený počet. Výskytů se oddělují mezerami.|  
+    |Malá|Malá a velká písmena slov.|  
+    |\<neterminálu >|Neterminálu, definovat samostatně.|  
+    |\<neterminálu >:: =|Syntaxe definice neterminálu.|  
+    |other_terminal|Ve slovech podrobně terminálu (token).|  
+    |identifikátor|Identifikátor. Umožňuje následující znaky: a – z A-Z, 0-9 _First znak nemůže být číslice.|  
+    |"string"|Řetězec v uvozovkách. Povoluje libovolný platný řetězec. Zobrazit popis řetězcový_literál.|  
+    |'symbol'|Literál symbol, který je součástí syntaxe.|  
+    |&#124;(svislá čára)|Alternativy syntaxe položky. Lze použít pouze jednu ze zadané položky.|  
+    |/(brackets) [] č.|Hranaté závorky uzavřete jeden nebo více volitelných položek.|  
+    |[,.. .n]|Označuje, že předchozí položka může být n počet opakovaných pokusů o. Opakování jsou odděleny čárkami.|  
+    |[ ...n ]|Označuje, že předchozí položka může být n počet opakovaných pokusů o. Opakování jsou oddělené mezerami.|  
   
-##  <a name="bk_built_in_functions"></a> Integrované funkce  
- Azure Cosmos DB poskytuje mnoho předdefinovaných funkcí SQL. Kategorie integrované funkce jsou uvedeny níže.  
+##  <a name="bk_built_in_functions"></a> Předdefinované funkce  
+ Azure Cosmos DB poskytuje mnoho předdefinovaných funkcí SQL. Kategorie předdefinované funkce jsou uvedeny níže.  
   
 |Funkce|Popis|  
 |--------------|-----------------|  
-|[Matematické funkce](#bk_mathematical_functions)|Matematické funkce provedení výpočtů, obvykle podle vstupní hodnoty, které jsou k dispozici jako argumenty a vrátí číselnou hodnotu.|  
-|[Typ kontroly funkce](#bk_type_checking_functions)|Kontrola, zda funkce typů umožňují zkontrolujte typ výrazu v rámci dotazů SQL.|  
-|[Funkce řetězců](#bk_string_functions)|Funkce řetězce provést operaci s vstupní hodnotu řetězce a vrátí řetězec, číselnou nebo logická hodnota.|  
-|[Funkce pole](#bk_array_functions)|Funkce pole provést operaci na hodnotu vstupní pole a vrátí číselnou, logická hodnota nebo pole hodnota.|  
-|[Prostorové funkce](#bk_spatial_functions)|Prostorové funkce provést operaci s vstupní hodnotu prostorový objekt a vrátit hodnotu číselná nebo logická hodnota.|  
+|[Matematické funkce](#bk_mathematical_functions)|Matematické funkce provádí výpočet, obvykle podle vstupní hodnoty, které jsou k dispozici jako argumenty a vrátit číselnou hodnotu.|  
+|[Kontrola funkce typu](#bk_type_checking_functions)|Funkce pro kontrolu typů umožňují zkontrolujte typ výrazu v rámci dotazů SQL.|  
+|[Funkce řetězců](#bk_string_functions)|Řetězcové funkce provádění operací na vstupní hodnotu řetězce a vrátí řetězec, číslo nebo logickou hodnotu.|  
+|[Funkce pole](#bk_array_functions)|Funkce pole provést operaci na hodnotu vstupního pole a vrátit číselné, hodnota logická hodnota nebo pole.|  
+|[Prostorové funkce](#bk_spatial_functions)|Prostorové funkce provádění operací na prostorový vstupní hodnotu a vrátí číslo nebo logickou hodnotu.|  
   
 ###  <a name="bk_mathematical_functions"></a> Matematické funkce  
- Následující funkce provedení výpočtů, obvykle podle vstupní hodnoty, které jsou k dispozici jako argumenty a vrátí číselnou hodnotu.  
+ Následující funkce provádí výpočet, obvykle podle vstupní hodnoty, které jsou k dispozici jako argumenty a vrátit číselnou hodnotu.  
   
 ||||  
 |-|-|-|  
 |[ABS](#bk_abs)|[ACOS](#bk_acos)|[ASIN](#bk_asin)|  
-|[ATAN](#bk_atan)|[ATN2](#bk_atn2)|[MEZNÍ HODNOTY](#bk_ceiling)|  
+|[ATAN](#bk_atan)|[ATN2](#bk_atn2)|[HORNÍ MEZ](#bk_ceiling)|  
 |[COS](#bk_cos)|[COT](#bk_cot)|[STUPŇŮ](#bk_degrees)|  
-|[EXP](#bk_exp)|[FLOOR](#bk_floor)|[LOG](#bk_log)|  
+|[EXP](#bk_exp)|[DOLNÍ MEZ](#bk_floor)|[LOG](#bk_log)|  
 |[LOG10](#bk_log10)|[PI](#bk_pi)|[NAPÁJENÍ](#bk_power)|  
-|[RADIÁNECH](#bk_radians)|[ZAOKROUHLIT](#bk_round)|[SIN](#bk_sin)|  
-|[SQRT](#bk_sqrt)|[HRANATÉ](#bk_square)|[SIGN](#bk_sign)|  
-|[TAN](#bk_tan)|[TRUNC](#bk_trunc)||  
+|[RADIANS](#bk_radians)|[ZAOKROUHLIT](#bk_round)|[SIN](#bk_sin)|  
+|[SQRT](#bk_sqrt)|[ČTVEREC](#bk_square)|[SIGN](#bk_sign)|  
+|[TAN](#bk_tan)|[TRUNC –](#bk_trunc)||  
   
 ####  <a name="bk_abs"></a> ABS  
- Vrátí absolutní hodnotu (kladné) zadaný číselný výraz.  
+ Vrátí absolutní hodnotu (pozitivní) zadaný číselný výraz.  
   
  **Syntaxe**  
   
@@ -719,24 +719,24 @@ ABS (<numeric_expression>)
   
  **Návratové typy**  
   
- Vrátí číselný výraz.  
+ Vrátí hodnotu číselného výrazu.  
   
  **Příklady**  
   
- Následující příklad ukazuje výsledky pomocí funkce ABS na tři odlišné počty.  
+ Následující příklad ukazuje výsledky pomocí funkce ABS na tři různá čísla.  
   
 ```  
 SELECT ABS(-1), ABS(0), ABS(1)  
 ```  
   
- Zde je sada výsledků.  
+ Tady je sada výsledků.  
   
 ```  
 [{$1: 1, $2: 0, $3: 1}]  
 ```  
   
 ####  <a name="bk_acos"></a> ACOS  
- Vrací úhel, v radiánech, jehož kosinus je zadaný číselný výraz. Zkratka Arkus.  
+ Vrací úhel v radiánech, jehož kosinus je zadaný číselný výraz. Zkratka Arkus kosinus.  
   
  **Syntaxe**  
   
@@ -752,24 +752,24 @@ ACOS(<numeric_expression>)
   
  **Návratové typy**  
   
- Vrátí číselný výraz.  
+ Vrátí hodnotu číselného výrazu.  
   
  **Příklady**  
   
- Následující příklad vrátí ACOS-1.  
+ Následující příklad vrátí ACOS -1.  
   
 ```  
 SELECT ACOS(-1)  
 ```  
   
- Zde je sada výsledků.  
+ Tady je sada výsledků.  
   
 ```  
 [{"$1": 3.1415926535897931}]  
 ```  
   
 ####  <a name="bk_asin"></a> ASIN  
- Vrací úhel, v radiánech, jehož sinus je zadaný číselný výraz. To je také označován Arkus sinus.  
+ Vrací úhel v radiánech, jehož sinus je zadaný číselný výraz. Označuje se také Arkus sinus.  
   
  **Syntaxe**  
   
@@ -785,24 +785,24 @@ ASIN(<numeric_expression>)
   
  **Návratové typy**  
   
- Vrátí číselný výraz.  
+ Vrátí hodnotu číselného výrazu.  
   
  **Příklady**  
   
- Následující příklad vrátí ASIN-1.  
+ Následující příklad vrátí ASIN -1.  
   
 ```  
 SELECT ASIN(-1)  
 ```  
   
- Zde je sada výsledků.  
+ Tady je sada výsledků.  
   
 ```  
 [{"$1": -1.5707963267948966}]  
 ```  
   
 ####  <a name="bk_atan"></a> ATAN  
- Vrací úhel, v radiánech, jehož tangens je zadaný číselný výraz. To je také označován Arkus.  
+ Vrací úhel v radiánech, jehož tangens odpovídá zadané číselný výraz. Označuje se také Arkus tangens.  
   
  **Syntaxe**  
   
@@ -818,24 +818,24 @@ ATAN(<numeric_expression>)
   
  **Návratové typy**  
   
- Vrátí číselný výraz.  
+ Vrátí hodnotu číselného výrazu.  
   
  **Příklady**  
   
- Následující příklad vrátí ATAN zadané hodnoty.  
+ Následující příklad vrátí ATAN zadanou hodnotu.  
   
 ```  
 SELECT ATAN(-45.01)  
 ```  
   
- Zde je sada výsledků.  
+ Tady je sada výsledků.  
   
 ```  
 [{"$1": -1.5485826962062663}]  
 ```  
   
 ####  <a name="bk_atn2"></a> ATN2  
- Vrací hlavní hodnotu tangens oblouk y / x, vyjádřené v radiánech.  
+ Vrátí hlavní hodnotu arkustangens y / x, vyjádřené v radiánech.  
   
  **Syntaxe**  
   
@@ -851,24 +851,24 @@ ATN2(<numeric_expression>, <numeric_expression>)
   
  **Návratové typy**  
   
- Vrátí číselný výraz.  
+ Vrátí hodnotu číselného výrazu.  
   
  **Příklady**  
   
- Následující příklad vypočítá ATN2 pro zadaný x a y součásti.  
+ Následující příklad vypočítá ATN2 pro zadaný rozbočovač x a y komponenty.  
   
 ```  
 SELECT ATN2(35.175643, 129.44)  
 ```  
   
- Zde je sada výsledků.  
+ Tady je sada výsledků.  
   
 ```  
 [{"$1": 1.3054517947300646}]  
 ```  
   
-####  <a name="bk_ceiling"></a> MEZNÍ HODNOTY  
- Vrátí nejmenší hodnotu, celé číslo větší než nebo rovna hodnotě zadané číselný výraz.  
+####  <a name="bk_ceiling"></a> HORNÍ MEZ  
+ Vrátí nejmenší hodnotu celé číslo větší než nebo rovna zadané číselný výraz.  
   
  **Syntaxe**  
   
@@ -884,24 +884,24 @@ CEILING (<numeric_expression>)
   
  **Návratové typy**  
   
- Vrátí číselný výraz.  
+ Vrátí hodnotu číselného výrazu.  
   
  **Příklady**  
   
- Následující příklad ukazuje kladné číselné, záporné a nulové hodnoty pomocí funkce mezní hodnoty.  
+ Následující příklad ukazuje kladná číselná, záporná a nulové hodnoty funkcí mezní hodnoty.  
   
 ```  
 SELECT CEILING(123.45), CEILING(-123.45), CEILING(0.0)  
 ```  
   
- Zde je sada výsledků.  
+ Tady je sada výsledků.  
   
 ```  
 [{$1: 124, $2: -123, $3: 0}]  
 ```  
   
 ####  <a name="bk_cos"></a> COS  
- Vrací trigonometrické kosinus určeného úhlu v radiánech v zadaným výrazem.  
+ Vrátí trigonometrických kosinus úhlu určeného v radiánech v zadaným výrazem.  
   
  **Syntaxe**  
   
@@ -917,7 +917,7 @@ COS(<numeric_expression>)
   
  **Návratové typy**  
   
- Vrátí číselný výraz.  
+ Vrátí hodnotu číselného výrazu.  
   
  **Příklady**  
   
@@ -927,14 +927,14 @@ COS(<numeric_expression>)
 SELECT COS(14.78)  
 ```  
   
- Zde je sada výsledků.  
+ Tady je sada výsledků.  
   
 ```  
 [{"$1": -0.59946542619465426}]  
 ```  
   
 ####  <a name="bk_cot"></a> COT  
- Vrací trigonometrické kotangens zadaný úhel v radiánech v zadaný číselný výraz.  
+ Vrátí trigonometrických kotangens úhlu určeného v radiánech v zadané číselný výraz.  
   
  **Syntaxe**  
   
@@ -950,24 +950,24 @@ COT(<numeric_expression>)
   
  **Návratové typy**  
   
- Vrátí číselný výraz.  
+ Vrátí hodnotu číselného výrazu.  
   
  **Příklady**  
   
- Následující příklad vypočítá COP z určeného úhlu.  
+ Následující příklad vypočítá COT určeného úhlu.  
   
 ```  
 SELECT COT(124.1332)  
 ```  
   
- Zde je sada výsledků.  
+ Tady je sada výsledků.  
   
 ```  
 [{"$1": -0.040311998371148884}]  
 ```  
   
 ####  <a name="bk_degrees"></a> STUPŇŮ  
- Vrací odpovídající úhel ve stupních pro úhlu uvedeného v radiánech.  
+ Vrátí odpovídající úhel ve stupních, kterým je úhel zadaný v radiánech.  
   
  **Syntaxe**  
   
@@ -983,24 +983,24 @@ DEGREES (<numeric_expression>)
   
  **Návratové typy**  
   
- Vrátí číselný výraz.  
+ Vrátí hodnotu číselného výrazu.  
   
  **Příklady**  
   
- Následující příklad vrátí počet stupňů v úhel radiánech PÍ/2.  
+ Následující příklad vrátí počet stupňů v úhel PÍ/2 radiánů.  
   
 ```  
 SELECT DEGREES(PI()/2)  
 ```  
   
- Zde je sada výsledků.  
+ Tady je sada výsledků.  
   
 ```  
 [{"$1": 90}]  
 ```  
   
 ####  <a name="bk_floor"></a> FLOOR  
- Vrátí největší celé číslo menší než nebo rovna zadané číselný výraz.  
+ Vrátí největší celé číslo menší nebo rovna zadané číselný výraz.  
   
  **Syntaxe**  
   
@@ -1016,24 +1016,24 @@ FLOOR (<numeric_expression>)
   
  **Návratové typy**  
   
- Vrátí číselný výraz.  
+ Vrátí hodnotu číselného výrazu.  
   
  **Příklady**  
   
- Následující příklad ukazuje kladné číselné, záporné a nulové hodnoty pomocí funkce FLOOR.  
+ Následující příklad ukazuje kladná číselná, záporná a nulová s FLOOR – funkce.  
   
 ```  
 SELECT FLOOR(123.45), FLOOR(-123.45), FLOOR(0.0)  
 ```  
   
- Zde je sada výsledků.  
+ Tady je sada výsledků.  
   
 ```  
 [{$1: 123, $2: -124, $3: 0}]  
 ```  
   
 ####  <a name="bk_exp"></a> EXP  
- Vrátí hodnotu exponenciálního zadaný číselný výraz.  
+ Vrátí hodnotu exponenciální zadaný číselný výraz.  
   
  **Syntaxe**  
   
@@ -1049,44 +1049,44 @@ EXP (<numeric_expression>)
   
  **Návratové typy**  
   
- Vrátí číselný výraz.  
+ Vrátí hodnotu číselného výrazu.  
   
  **Poznámky**  
   
  Konstanta **e** (2.718281...), je základ přirozeného logaritmu.  
   
- Exponent číslo je konstanta **e** umocněné číslo. Například EXP(1.0) = e ^ 1.0 = 2.71828182845905 a EXP(10) = e ^ 10 = 22026.4657948067.  
+ Exponent číslo je konstanta **e** umocněné na čísla. Například EXP(1.0) = e ^ 1.0 = 2.71828182845905 a EXP(10) = e ^ 10 = 22026.4657948067.  
   
- Exponent přirozený logaritmus čísla se číslo samotné: EXP (protokol (ne)) = n. A přirozený logaritmus čísla exponenciální je číslo samotné: protokolu (EXP (ne)) = n.  
+ Exponent přirozený logaritmus čísla je číslo samotné: EXP (protokol (n).) = n. A přirozený logaritmus čísla exponenciální je číslo samotné: protokolu (EXP (n).) = n.  
   
  **Příklady**  
   
- Následující příklad deklaruje proměnné a vrátí hodnotu exponenciálního zadanou proměnnou (10).  
+ Následující příklad deklaruje proměnnou a vrátí hodnotu exponenciální hodnotu zadanou proměnnou (10).  
   
 ```  
 SELECT EXP(10)  
 ```  
   
- Zde je sada výsledků.  
+ Tady je sada výsledků.  
   
 ```  
 [{$1: 22026.465794806718}]  
 ```  
   
- Následující příklad vrátí hodnotu exponenciálního natural logarithm 20 a přirozený logaritmus exponenciální 20. Protože tyto funkce jsou inverzní funkce vzájemně, návratovou hodnotu s zaokrouhlení pro plovoucí matematické bodu v obou případech je 20.  
+ Následující příklad vrátí hodnotu exponenciální natural logarithm 20 a přirozený logaritmus exponenciální 20. Protože tyto funkce jsou inverzní funkce navzájem, vrácená hodnota s zaokrouhlení s plovoucí desetinnou čárkou matematické bod v obou případech je 20.  
   
 ```  
 SELECT EXP(LOG(20)), LOG(EXP(20))  
 ```  
   
- Zde je sada výsledků.  
+ Tady je sada výsledků.  
   
 ```  
 [{$1: 19.999999999999996, $2: 20}]  
 ```  
   
-####  <a name="bk_log"></a> PROTOKOLU  
- Vrátí přirozený logaritmus zadaný číselný výraz.  
+####  <a name="bk_log"></a> PROTOKOL  
+ Vrátí přirozený logaritmus zadaného číselný výraz.  
   
  **Syntaxe**  
   
@@ -1102,48 +1102,48 @@ LOG (<numeric_expression> [, <base>])
   
 -   `base`  
   
-     Nepovinný argument číselné, který nastaví základ pro logaritmus  
+     Volitelné číselný argument, který nastaví základ logaritmu.  
   
  **Návratové typy**  
   
- Vrátí číselný výraz.  
+ Vrátí hodnotu číselného výrazu.  
   
  **Poznámky**  
   
- Ve výchozím nastavení LOG() vrátí přirozený logaritmus. Základ logaritmu. můžete změnit na jinou hodnotu pomocí základní volitelný parametr.  
+ Ve výchozím nastavení LOG() vrátí přirozený logaritmus. Základ logaritmu na jinou hodnotu můžete změnit pomocí volitelného parametru základní.  
   
- Přirozený logaritmus je logaritmus s jejím základem **e**, kde **e** je přibližně rovna 2.718281828 nenormální konstanta.  
+ Přirozený logaritmus se logaritmus o základu **e**, kde **e** rovná nenormální – konstanta přibližně 2.718281828.  
   
- Přirozený logaritmus čísla exponenciální je číslo samotné: protokolu (EXP (ne)) = n. A exponent přirozený logaritmus čísla je číslo samotné: EXP (protokol (ne)) = n.  
+ Přirozený logaritmus čísla exponenciální je číslo samotné: protokolu (EXP (n).) = n. A exponent přirozený logaritmus čísla je číslo samotné: EXP (protokol (n).) = n.  
   
  **Příklady**  
   
- Následující příklad deklaruje proměnné a Vrátí logaritmus hodnotu zadanou proměnnou (10).  
+ Následující příklad deklaruje proměnnou a Vrátí logaritmus o hodnotu zadanou proměnnou (10).  
   
 ```  
 SELECT LOG(10)  
 ```  
   
- Zde je sada výsledků.  
+ Tady je sada výsledků.  
   
 ```  
 [{$1: 2.3025850929940459}]  
 ```  
   
- Následující příklad vypočítá protokol pro exponent číslo.  
+ Následující příklad vypočítá protokolu pro exponent číslo.  
   
 ```  
 SELECT EXP(LOG(10))  
 ```  
   
- Zde je sada výsledků.  
+ Tady je sada výsledků.  
   
 ```  
 [{$1: 10.000000000000002}]  
 ```  
   
 ####  <a name="bk_log10"></a> LOG10  
- Vrátí logaritmus o základu 10 zadaný číselný výraz.  
+ Vrátí logaritmus o základu base 10 zadaný číselný výraz.  
   
  **Syntaxe**  
   
@@ -1159,21 +1159,21 @@ LOG10 (<numeric_expression>)
   
  **Návratové typy**  
   
- Vrátí číselný výraz.  
+ Vrátí hodnotu číselného výrazu.  
   
  **Poznámky**  
   
- Funkce LOG10 a POWER souvisejí nepřímo jednu na druhou. Například 10 ^ LOG10(n) = n.  
+ LOG10 a výkonu funkce jsou nepřímo sebou mají nějaký vztah. Například 10 ^ LOG10(n) = n.  
   
  **Příklady**  
   
- Následující příklad deklaruje proměnné a vrátí hodnotu LOG10 zadanou proměnnou (100).  
+ Následující příklad deklaruje proměnnou a vrátí LOG10 hodnotu zadanou proměnnou (100).  
   
 ```  
 SELECT LOG10(100)  
 ```  
   
- Zde je sada výsledků.  
+ Tady je sada výsledků.  
   
 ```  
 [{$1: 2}]  
@@ -1196,7 +1196,7 @@ PI ()
   
  **Návratové typy**  
   
- Vrátí číselný výraz.  
+ Vrátí hodnotu číselného výrazu.  
   
  **Příklady**  
   
@@ -1206,7 +1206,7 @@ PI ()
 SELECT PI()  
 ```  
   
- Zde je sada výsledků.  
+ Tady je sada výsledků.  
   
 ```  
 [{"$1": 3.1415926535897931}]  
@@ -1229,28 +1229,28 @@ POWER (<numeric_expression>, <y>)
   
 -   `y`  
   
-     Je napájení, do kterého se mají zvýšit `numeric_expression`.  
+     Jsou možnosti, na který se má použít `numeric_expression`.  
   
  **Návratové typy**  
   
- Vrátí číselný výraz.  
+ Vrátí hodnotu číselného výrazu.  
   
  **Příklady**  
   
- Následující příklad ukazuje, vyvolání číslo exponentem 3 (datové krychle číslo).  
+ Následující příklad ukazuje vyvolání číslo exponentem 3 (datové krychle čísla).  
   
 ```  
 SELECT POWER(2, 3), POWER(2.5, 3)  
 ```  
   
- Zde je sada výsledků.  
+ Tady je sada výsledků.  
   
 ```  
 [{$1: 8, $2: 15.625}]  
 ```  
   
-####  <a name="bk_radians"></a> RADIÁNECH  
- Vrátí radiánech při zadání číselného výrazu, ve stupních, se.  
+####  <a name="bk_radians"></a> RADIANS  
+ Radians vrátí, pokud je zadán číselný výraz ve stupních.  
   
  **Syntaxe**  
   
@@ -1266,17 +1266,17 @@ RADIANS (<numeric_expression>)
   
  **Návratové typy**  
   
- Vrátí číselný výraz.  
+ Vrátí hodnotu číselného výrazu.  
   
  **Příklady**  
   
- Následující příklad vezme jako vstupní údaje několik úhly a vrátí jejich příslušné hodnoty radián.  
+ Následující příklad vezme jako vstupní údaje několik úhly a vrátí jejich odpovídající hodnoty radián.  
   
 ```  
 SELECT RADIANS(-45.01), RADIANS(-181.01), RADIANS(0), RADIANS(0.1472738), RADIANS(197.1099392)  
 ```  
   
- Zde je sada výsledků.  
+ Tady je sada výsledků.  
   
 ```  
 [{  
@@ -1289,7 +1289,7 @@ SELECT RADIANS(-45.01), RADIANS(-181.01), RADIANS(0), RADIANS(0.1472738), RADIAN
 ```  
   
 ####  <a name="bk_round"></a> ZAOKROUHLIT  
- Vrátí číselnou hodnotu, zaokrouhlí na nejbližší celé číslo.  
+ Vrátí číselnou hodnotu, zaokrouhlený na nejbližší celočíselnou hodnotu.  
   
  **Syntaxe**  
   
@@ -1305,24 +1305,24 @@ ROUND(<numeric_expression>)
   
  **Návratové typy**  
   
- Vrátí číselný výraz.  
+ Vrátí hodnotu číselného výrazu.  
   
  **Příklady**  
   
- V následujícím příkladu se zaokrouhlí na následující kladné a záporné čísla na nejbližší celé číslo.  
+ V následujícím příkladu se zaokrouhlí na následující kladná a záporná čísla na nejbližší celé číslo.  
   
 ```  
 SELECT ROUND(2.4), ROUND(2.6), ROUND(2.5), ROUND(-2.4), ROUND(-2.6)  
 ```  
   
- Zde je sada výsledků.  
+ Tady je sada výsledků.  
   
 ```  
 [{$1: 2, $2: 3, $3: 3, $4: -2, $5: -3}]  
 ```  
   
 ####  <a name="bk_sign"></a> PŘIHLÁŠENÍ  
- Vrátí kladnou (+ 1), nula (0) nebo záporné znaménko (-1) zadaný číselný výraz.  
+ Vrátí kladné (+ 1), nula (0) nebo záporné znaménko (-1), z určeného číselného výrazu.  
   
  **Syntaxe**  
   
@@ -1338,24 +1338,24 @@ SIGN(<numeric_expression>)
   
  **Návratové typy**  
   
- Vrátí číselný výraz.  
+ Vrátí hodnotu číselného výrazu.  
   
  **Příklady**  
   
- Následující příklad vrací hodnoty znaménko čísla z -2 2.  
+ Následující příklad vrátí hodnoty znaménko čísel od -2 do 2.  
   
 ```  
 SELECT SIGN(-2), SIGN(-1), SIGN(0), SIGN(1), SIGN(2)  
 ```  
   
- Zde je sada výsledků.  
+ Tady je sada výsledků.  
   
 ```  
 [{$1: -1, $2: -1, $3: 0, $4: 1, $5: 1}]  
 ```  
   
 ####  <a name="bk_sin"></a> SIN  
- Vrací trigonometrické sinus určeného úhlu v radiánech v zadaným výrazem.  
+ Vrátí trigonometrických sinus úhlu určeného v radiánech v zadaným výrazem.  
   
  **Syntaxe**  
   
@@ -1371,24 +1371,24 @@ SIN(<numeric_expression>)
   
  **Návratové typy**  
   
- Vrátí číselný výraz.  
+ Vrátí hodnotu číselného výrazu.  
   
  **Příklady**  
   
- Následující příklad vypočítá SIN z určeného úhlu.  
+ Následující příklad vypočítá SIN určeného úhlu.  
   
 ```  
 SELECT SIN(45.175643)  
 ```  
   
- Zde je sada výsledků.  
+ Tady je sada výsledků.  
   
 ```  
 [{"$1": 0.929607286611012}]  
 ```  
   
 ####  <a name="bk_sqrt"></a> SQRT  
- Vrátí druhou odmocninu čísla zadaná číselná hodnota.  
+ Vrátí druhou odmocninu zadanou číselnou hodnotu.  
   
  **Syntaxe**  
   
@@ -1404,24 +1404,24 @@ SQRT(<numeric_expression>)
   
  **Návratové typy**  
   
- Vrátí číselný výraz.  
+ Vrátí hodnotu číselného výrazu.  
   
  **Příklady**  
   
- Následující příklad vrátí druhé odmocniny čísel 1 – 3.  
+ Následující příklad vrátí druhé odmocniny čísla 1-3.  
   
 ```  
 SELECT SQRT(1), SQRT(2.0), SQRT(3)  
 ```  
   
- Zde je sada výsledků.  
+ Tady je sada výsledků.  
   
 ```  
 [{$1: 1, $2: 1.4142135623730952, $3: 1.7320508075688772}]  
 ```  
   
-####  <a name="bk_square"></a> HRANATÉ  
- Vrátí druhou mocninu Zadaná číselná hodnota.  
+####  <a name="bk_square"></a> ČTVEREC  
+ Vrátí druhou mocninu zadané číselnou hodnotu.  
   
  **Syntaxe**  
   
@@ -1437,24 +1437,24 @@ SQUARE(<numeric_expression>)
   
  **Návratové typy**  
   
- Vrátí číselný výraz.  
+ Vrátí hodnotu číselného výrazu.  
   
  **Příklady**  
   
- Následující příklad vrátí čtverce čísel 1 – 3.  
+ Následující příklad vrátí druhých mocnin čísla 1-3.  
   
 ```  
 SELECT SQUARE(1), SQUARE(2.0), SQUARE(3)  
 ```  
   
- Zde je sada výsledků.  
+ Tady je sada výsledků.  
   
 ```  
 [{$1: 1, $2: 4, $3: 9}]  
 ```  
   
 ####  <a name="bk_tan"></a> TAN  
- Vrací tangens určeného úhlu v radiánech v zadaným výrazem.  
+ Vrátí tangens úhlu určeného v radiánech v zadaným výrazem.  
   
  **Syntaxe**  
   
@@ -1470,24 +1470,24 @@ TAN (<numeric_expression>)
   
  **Návratové typy**  
   
- Vrátí číselný výraz.  
+ Vrátí hodnotu číselného výrazu.  
   
  **Příklady**  
   
- Následující příklad vypočítá tangens PI () / 2.  
+ Následující příklad vypočítá tangens (PÍ) / 2.  
   
 ```  
 SELECT TAN(PI()/2);  
 ```  
   
- Zde je sada výsledků.  
+ Tady je sada výsledků.  
   
 ```  
 [{"$1": 16331239353195370 }]  
 ```  
   
-####  <a name="bk_trunc"></a> TRUNC  
- Vrátí číselnou hodnotu, zkrácen na nejbližší celé číslo.  
+####  <a name="bk_trunc"></a> TRUNC –  
+ Vrátí číselnou hodnotu, zkrácen na nejbližší celočíselnou hodnotu.  
   
  **Syntaxe**  
   
@@ -1503,33 +1503,33 @@ TRUNC(<numeric_expression>)
   
  **Návratové typy**  
   
- Vrátí číselný výraz.  
+ Vrátí hodnotu číselného výrazu.  
   
  **Příklady**  
   
- Následující příklad zkrátí následující kladné a záporné čísla na nejbližší celé číslo.  
+ V následujícím příkladu se zkrátí na následující kladná a záporná čísla na nejbližší celočíselnou hodnotu.  
   
 ```  
 SELECT TRUNC(2.4), TRUNC(2.6), TRUNC(2.5), TRUNC(-2.4), TRUNC(-2.6)  
 ```  
   
- Zde je sada výsledků.  
+ Tady je sada výsledků.  
   
 ```  
 [{$1: 2, $2: 2, $3: 2, $4: -2, $5: -2}]  
 ```  
   
-###  <a name="bk_type_checking_functions"></a> Typ kontroly funkce  
- Následující funkce podporují kontroly proti vstupní hodnoty typu a každý vrátit logickou hodnotu.  
+###  <a name="bk_type_checking_functions"></a> Kontrola funkce typu  
+ Následující funkce podporují typ kontroly proti vstupní hodnoty a vrátí hodnotu typu Boolean.  
   
 ||||  
 |-|-|-|  
-|[IS_ARRAY](#bk_is_array)|[IS_BOOL](#bk_is_bool)|[IS_DEFINED](#bk_is_defined)|  
-|[IS_NULL](#bk_is_null)|[IS_NUMBER](#bk_is_number)|[IS_OBJECT](#bk_is_object)|  
+|[IS_ARRAY –](#bk_is_array)|[IS_BOOL](#bk_is_bool)|[IS_DEFINED](#bk_is_defined)|  
+|[IS_NULL](#bk_is_null)|[IS_NUMBER](#bk_is_number)|[IS_OBJECT –](#bk_is_object)|  
 |[IS_PRIMITIVE](#bk_is_primitive)|[IS_STRING](#bk_is_string)||  
   
-####  <a name="bk_is_array"></a> IS_ARRAY  
- Vrátí logickou hodnotu udávající, pokud je typ zadaný výraz pole.  
+####  <a name="bk_is_array"></a> IS_ARRAY –  
+ Vrátí logickou hodnotu označující, zda je typ z určeného výrazu pole.  
   
  **Syntaxe**  
   
@@ -1541,7 +1541,7 @@ IS_ARRAY(<expression>)
   
 -   `expression`  
   
-     Je jakýkoli platný výraz.  
+     Je libovolný platný výraz.  
   
  **Návratové typy**  
   
@@ -1549,7 +1549,7 @@ IS_ARRAY(<expression>)
   
  **Příklady**  
   
- Následující příklad ověří objekty JSON Boolean, číslo, řetězec hodnotu null, objekt, pole a nedefinované typy pomocí funkce IS_ARRAY.  
+ Následující příklad zkontroluje objekty JSON logická, číslo, řetězec, null, objekt, pole a nedefinované typů pomocí funkce is_array –.  
   
 ```  
 SELECT   
@@ -1562,14 +1562,14 @@ SELECT
  IS_ARRAY({prop: "value"}.prop2)  
 ```  
   
- Zde je sada výsledků.  
+ Tady je sada výsledků.  
   
 ```  
 [{$1: false, $2: false, $3: false, $4: false, $5: false, $6: true}]  
 ```  
   
 ####  <a name="bk_is_bool"></a> IS_BOOL  
- Vrátí logickou hodnotu udávající, pokud typ zadaný výraz je logická hodnota.  
+ Vrátí logickou hodnotu označující, pokud typ z určeného výrazu je logická hodnota.  
   
  **Syntaxe**  
   
@@ -1581,7 +1581,7 @@ IS_BOOL(<expression>)
   
 -   `expression`  
   
-     Je jakýkoli platný výraz.  
+     Je libovolný platný výraz.  
   
  **Návratové typy**  
   
@@ -1589,7 +1589,7 @@ IS_BOOL(<expression>)
   
  **Příklady**  
   
- Následující příklad ověří objekty JSON Boolean, číslo, řetězec hodnotu null, objekt, pole a nedefinované typy pomocí funkce IS_BOOL.  
+ Následující příklad zkontroluje objekty JSON logická, číslo, řetězec, null, objekt, pole a nedefinované typů pomocí funkce IS_BOOL.  
   
 ```  
 SELECT   
@@ -1602,14 +1602,14 @@ SELECT
     IS_BOOL({prop: "value"}.prop2)  
 ```  
   
- Zde je sada výsledků.  
+ Tady je sada výsledků.  
   
 ```  
 [{$1: true, $2: false, $3: false, $4: false, $5: false, $6: false}]  
 ```  
   
 ####  <a name="bk_is_defined"></a> IS_DEFINED  
- Vrátí logickou hodnotu udávající, pokud byla vlastnost přiřazenou hodnotu.  
+ Vrátí logickou hodnotu označující, pokud vlastnost byla přiřazena hodnota.  
   
  **Syntaxe**  
   
@@ -1621,7 +1621,7 @@ IS_DEFINED(<expression>)
   
 -   `expression`  
   
-     Je jakýkoli platný výraz.  
+     Je libovolný platný výraz.  
   
  **Návratové typy**  
   
@@ -1629,13 +1629,13 @@ IS_DEFINED(<expression>)
   
  **Příklady**  
   
- Následující příklad zjišťuje přítomnost vlastnosti v rámci zadaný dokument JSON. První vrací hodnotu true, protože "a" je k dispozici, ale druhý vrací hodnotu false, protože chybí "b".  
+ Následující příklad zkontroluje přítomnost vlastnosti v rámci zadaného dokumentu JSON. První vrátí hodnotu true, protože "a" je k dispozici, ale druhá vrátí hodnotu false, protože chybí "b".  
   
 ```  
 SELECT IS_DEFINED({ "a" : 5 }.a), IS_DEFINED({ "a" : 5 }.b)  
 ```  
   
- Zde je sada výsledků.  
+ Tady je sada výsledků.  
   
 ```  
 [{  
@@ -1645,7 +1645,7 @@ SELECT IS_DEFINED({ "a" : 5 }.a), IS_DEFINED({ "a" : 5 }.b)
 ```  
   
 ####  <a name="bk_is_null"></a> IS_NULL  
- Vrátí logickou hodnotu udávající, pokud není typ zadaného výrazu hodnotu null.  
+ Vrátí logickou hodnotu označující, zda je typ z určeného výrazu hodnotu null.  
   
  **Syntaxe**  
   
@@ -1657,7 +1657,7 @@ IS_NULL(<expression>)
   
 -   `expression`  
   
-     Je jakýkoli platný výraz.  
+     Je libovolný platný výraz.  
   
  **Návratové typy**  
   
@@ -1665,7 +1665,7 @@ IS_NULL(<expression>)
   
  **Příklady**  
   
- Následující příklad ověří objekty JSON Boolean, číslo, řetězec hodnotu null, objekt, pole a nedefinované typy pomocí funkce IS_NULL.  
+ Následující příklad zkontroluje objekty JSON logická, číslo, řetězec, null, objekt, pole a nedefinované typů pomocí funkce IS_NULL.  
   
 ```  
 SELECT   
@@ -1678,14 +1678,14 @@ SELECT
     IS_NULL({prop: "value"}.prop2)  
 ```  
   
- Zde je sada výsledků.  
+ Tady je sada výsledků.  
   
 ```  
 [{$1: false, $2: false, $3: false, $4: true, $5: false, $6: false}]  
 ```  
   
 ####  <a name="bk_is_number"></a> IS_NUMBER  
- Vrátí logickou hodnotu udávající, pokud typ zadaný výraz je číslo.  
+ Vrátí logickou hodnotu označující, pokud typ z určeného výrazu je číslo.  
   
  **Syntaxe**  
   
@@ -1697,7 +1697,7 @@ IS_NUMBER(<expression>)
   
 -   `expression`  
   
-     Je jakýkoli platný výraz.  
+     Je libovolný platný výraz.  
   
  **Návratové typy**  
   
@@ -1705,7 +1705,7 @@ IS_NUMBER(<expression>)
   
  **Příklady**  
   
- Následující příklad ověří objekty JSON Boolean, číslo, řetězec hodnotu null, objekt, pole a nedefinované typy pomocí funkce IS_NULL.  
+ Následující příklad zkontroluje objekty JSON logická, číslo, řetězec, null, objekt, pole a nedefinované typů pomocí funkce IS_NULL.  
   
 ```  
 SELECT   
@@ -1718,14 +1718,14 @@ SELECT
     IS_NUMBER({prop: "value"}.prop2)  
 ```  
   
- Zde je sada výsledků.  
+ Tady je sada výsledků.  
   
 ```  
 [{$1: false, $2: true, $3: false, $4: false, $5: false, $6: false}]  
 ```  
   
-####  <a name="bk_is_object"></a> IS_OBJECT  
- Vrátí logickou hodnotu udávající, pokud typ zadaný výraz je objekt JSON.  
+####  <a name="bk_is_object"></a> IS_OBJECT –  
+ Vrátí logickou hodnotu označující, pokud je typ z určeného výrazu objektu JSON.  
   
  **Syntaxe**  
   
@@ -1737,7 +1737,7 @@ IS_OBJECT(<expression>)
   
 -   `expression`  
   
-     Je jakýkoli platný výraz.  
+     Je libovolný platný výraz.  
   
  **Návratové typy**  
   
@@ -1745,7 +1745,7 @@ IS_OBJECT(<expression>)
   
  **Příklady**  
   
- Následující příklad ověří objekty JSON Boolean, číslo, řetězec hodnotu null, objekt, pole a nedefinované typy pomocí funkce IS_OBJECT.  
+ Následující příklad zkontroluje objekty JSON logická, číslo, řetězec, null, objekt, pole a nedefinované typů pomocí funkce is_object –.  
   
 ```  
 SELECT   
@@ -1758,14 +1758,14 @@ SELECT
     IS_OBJECT({prop: "value"}.prop2)  
 ```  
   
- Zde je sada výsledků.  
+ Tady je sada výsledků.  
   
 ```  
 [{$1: false, $2: false, $3: false, $4: false, $5: true, $6: false}]  
 ```  
   
 ####  <a name="bk_is_primitive"></a> IS_PRIMITIVE  
- Vrátí logickou hodnotu udávající, pokud není typ zadaného výrazu jednoduchého typu (řetězec, logická hodnota, číselná nebo má hodnotu null).  
+ Vrátí logickou hodnotu označující, zda je typ z určeného výrazu jednoduchého typu (string, Boolean, číselné nebo mít hodnotu null).  
   
  **Syntaxe**  
   
@@ -1777,7 +1777,7 @@ IS_PRIMITIVE(<expression>)
   
 -   `expression`  
   
-     Je jakýkoli platný výraz.  
+     Je libovolný platný výraz.  
   
  **Návratové typy**  
   
@@ -1785,7 +1785,7 @@ IS_PRIMITIVE(<expression>)
   
  **Příklady**  
   
- Následující příklad ověří objekty JSON Boolean, číslo, řetězec hodnotu null, objekt, pole a nedefinované typy pomocí funkce IS_PRIMITIVE.  
+ Následující příklad zkontroluje objekty JSON logická, číslo, řetězec, null, objekt, pole a nedefinované typů pomocí funkce IS_PRIMITIVE.  
   
 ```  
 SELECT   
@@ -1798,14 +1798,14 @@ SELECT
            IS_PRIMITIVE({prop: "value"}.prop2)  
 ```  
   
- Zde je sada výsledků.  
+ Tady je sada výsledků.  
   
 ```  
 [{"$1": true, "$2": true, "$3": true, "$4": true, "$5": false, "$6": false, "$7": false}]  
 ```  
   
 ####  <a name="bk_is_string"></a> IS_STRING  
- Vrátí logickou hodnotu udávající, pokud typ zadaný výraz obsahuje řetězec.  
+ Vrátí logickou hodnotu označující, pokud je typ z určeného výrazu string.  
   
  **Syntaxe**  
   
@@ -1817,7 +1817,7 @@ IS_STRING(<expression>)
   
 -   `expression`  
   
-     Je jakýkoli platný výraz.  
+     Je libovolný platný výraz.  
   
  **Návratové typy**  
   
@@ -1825,7 +1825,7 @@ IS_STRING(<expression>)
   
  **Příklady**  
   
- Následující příklad ověří objekty JSON Boolean, číslo, řetězec hodnotu null, objekt, pole a nedefinované typy pomocí funkce IS_STRING.  
+ Následující příklad zkontroluje objekty JSON logická, číslo, řetězec, null, objekt, pole a nedefinované typů pomocí funkce IS_STRING.  
   
 ```  
 SELECT   
@@ -1838,14 +1838,14 @@ SELECT
        IS_STRING({prop: "value"}.prop2)  
 ```  
   
- Zde je sada výsledků.  
+ Tady je sada výsledků.  
   
 ```  
 [{$1: false, $2: false, $3: true, $4: false, $5: false, $6: false}]  
 ```  
   
 ###  <a name="bk_string_functions"></a> Řetězcové funkce  
- Následující skalární funkce provést operaci s vstupní hodnotu řetězce a vrátí řetězec, číselnou nebo logická hodnota.  
+ Následující skalární funkce provádění operací na vstupní hodnotu řetězce a vrátí řetězec, číslo nebo logickou hodnotu.  
   
 ||||  
 |-|-|-|  
@@ -1854,10 +1854,10 @@ SELECT
 |[NIŽŠÍ](#bk_lower)|[LTRIM](#bk_ltrim)|[NAHRADIT](#bk_replace)|  
 |[REPLIKACE](#bk_replicate)|[REVERSE](#bk_reverse)|[RIGHT](#bk_right)|  
 |[RTRIM](#bk_rtrim)|[STARTSWITH](#bk_startswith)|[DÍLČÍ ŘETĚZEC](#bk_substring)|  
-|[HORNÍ](#bk_upper)|||  
+|[ToString](#bk_tostring)|[HORNÍ](#bk_upper)|||  
   
 ####  <a name="bk_concat"></a> CONCAT  
- Vrátí řetězec, který je výsledkem zřetězení dvou nebo více řetězcové hodnoty.  
+ Vrátí řetězec, který je výsledkem zřetězení dvou nebo více řetězcových hodnot.  
   
  **Syntaxe**  
   
@@ -1869,11 +1869,11 @@ CONCAT(<str_expr>, <str_expr> [, <str_expr>])
   
 -   `str_expr`  
   
-     Je jakýkoli platný řetězec výraz.  
+     Je libovolný výraz platný řetězec.  
   
  **Návratové typy**  
   
- Vrací výraz řetězce.  
+ Vrátí řetězcový výraz.  
   
  **Příklady**  
   
@@ -1883,14 +1883,14 @@ CONCAT(<str_expr>, <str_expr> [, <str_expr>])
 SELECT CONCAT("abc", "def")  
 ```  
   
- Zde je sada výsledků.  
+ Tady je sada výsledků.  
   
 ```  
 [{"$1": "abcdef"}  
 ```  
   
 ####  <a name="bk_contains"></a> OBSAHUJE  
- Vrátí logická hodnota, která určuje zda první řetězec výraz obsahuje druhý.  
+ Vrátí hodnotu typu Boolean označující, zda řetězec prvního výrazu obsahuje druhý.  
   
  **Syntaxe**  
   
@@ -1902,7 +1902,7 @@ CONTAINS(<str_expr>, <str_expr>)
   
 -   `str_expr`  
   
-     Je jakýkoli platný řetězec výraz.  
+     Je libovolný výraz platný řetězec.  
   
  **Návratové typy**  
   
@@ -1910,20 +1910,20 @@ CONTAINS(<str_expr>, <str_expr>)
   
  **Příklady**  
   
- Následující příklad zkontroluje Pokud "abc" "ab" a "d" obsahuje.  
+ Následující příklad zkontroluje Pokud "abc" obsahuje "ab" a "d".  
   
 ```  
 SELECT CONTAINS("abc", "ab"), CONTAINS("abc", "d")  
 ```  
   
- Zde je sada výsledků.  
+ Tady je sada výsledků.  
   
 ```  
 [{"$1": true, "$2": false}]  
 ```  
   
 ####  <a name="bk_endswith"></a> ENDSWITH  
- Vrátí logická hodnota, která určuje zda první řetězec výraz končí druhý.  
+ Vrátí hodnotu typu Boolean označující, zda se první výraz řetězce končí na druhý.  
   
  **Syntaxe**  
   
@@ -1935,7 +1935,7 @@ ENDSWITH(<str_expr>, <str_expr>)
   
 -   `str_expr`  
   
-     Je jakýkoli platný řetězec výraz.  
+     Je libovolný výraz platný řetězec.  
   
  **Návratové typy**  
   
@@ -1943,20 +1943,20 @@ ENDSWITH(<str_expr>, <str_expr>)
   
  **Příklady**  
   
- Následující příklad vrátí "abc" končí textem "b" a "bc".  
+ Následující příklad vrátí "abc" končí "b" a "bc".  
   
 ```  
 SELECT ENDSWITH("abc", "b"), ENDSWITH("abc", "bc")  
 ```  
   
- Zde je sada výsledků.  
+ Tady je sada výsledků.  
   
 ```  
 [{"$1": false, "$2": true}]  
 ```  
   
 ####  <a name="bk_index_of"></a> INDEX_OF  
- Vrátí počáteční pozici prvního výskytu druhý řetězec výrazu v rámci první zadaného řetězcového výrazu nebo -1, pokud není nalezen řetězec.  
+ Vrátí počáteční pozici prvního výskytu druhý řetězec výrazu v rámci prvního zadaného řetězcového výrazu nebo -1, pokud není nalezen řetězec.  
   
  **Syntaxe**  
   
@@ -1968,28 +1968,28 @@ INDEX_OF(<str_expr>, <str_expr>)
   
 -   `str_expr`  
   
-     Je jakýkoli platný řetězec výraz.  
+     Je libovolný výraz platný řetězec.  
   
  **Návratové typy**  
   
- Vrátí číselný výraz.  
+ Vrátí hodnotu číselného výrazu.  
   
  **Příklady**  
   
- Následující příklad vrátí index různé dílčích řetězců uvnitř "abc".  
+ Následující příklad vrátí index různých podřetězců uvnitř "abc".  
   
 ```  
 SELECT INDEX_OF("abc", "ab"), INDEX_OF("abc", "b"), INDEX_OF("abc", "c")  
 ```  
   
- Zde je sada výsledků.  
+ Tady je sada výsledků.  
   
 ```  
 [{"$1": 0, "$2": 1, "$3": -1}]  
 ```  
   
-####  <a name="bk_left"></a> VLEVO  
- Vrátí levé části řetězec s zadaný počet znaků.  
+####  <a name="bk_left"></a> DOLEVA  
+ Vrátí levou část řetězec zadaný počet znaků.  
   
  **Syntaxe**  
   
@@ -2001,25 +2001,25 @@ LEFT(<str_expr>, <num_expr>)
   
 -   `str_expr`  
   
-     Je jakýkoli platný řetězec výraz.  
+     Je libovolný výraz platný řetězec.  
   
 -   `num_expr`  
   
-     Je libovolný platný číselný výraz.  
+     Je jakýkoli platný číselný výraz.  
   
  **Návratové typy**  
   
- Vrací výraz řetězce.  
+ Vrátí řetězcový výraz.  
   
  **Příklady**  
   
- Následující příklad vrátí levé části "abc" pro různé hodnoty pro délku.  
+ Následující příklad vrátí levou část "abc" pro různé hodnoty pro délku.  
   
 ```  
 SELECT LEFT("abc", 1), LEFT("abc", 2)  
 ```  
   
- Zde je sada výsledků.  
+ Tady je sada výsledků.  
   
 ```  
 [{"$1": "a", "$2": "ab"}]  
@@ -2038,11 +2038,11 @@ LENGTH(<str_expr>)
   
 -   `str_expr`  
   
-     Je jakýkoli platný řetězec výraz.  
+     Je libovolný výraz platný řetězec.  
   
  **Návratové typy**  
   
- Vrací výraz řetězce.  
+ Vrátí řetězcový výraz.  
   
  **Příklady**  
   
@@ -2052,14 +2052,14 @@ LENGTH(<str_expr>)
 SELECT LENGTH("abc")  
 ```  
   
- Zde je sada výsledků.  
+ Tady je sada výsledků.  
   
 ```  
 [{"$1": 3}]  
 ```  
   
 ####  <a name="bk_lower"></a> NIŽŠÍ  
- Vrací výraz řetězce po převodu dat velké písmeno na malá písmena.  
+ Vrátí řetězcový výraz po převedení dat velkým písmenem na malá písmena.  
   
  **Syntaxe**  
   
@@ -2071,21 +2071,21 @@ LOWER(<str_expr>)
   
 -   `str_expr`  
   
-     Je jakýkoli platný řetězec výraz.  
+     Je libovolný výraz platný řetězec.  
   
  **Návratové typy**  
   
- Vrací výraz řetězce.  
+ Vrátí řetězcový výraz.  
   
  **Příklady**  
   
- Následující příklad ukazuje, jak používat nižší v dotazu.  
+ Následující příklad ukazuje způsob použití nižší v dotazu.  
   
 ```  
 SELECT LOWER("Abc")  
 ```  
   
- Zde je sada výsledků.  
+ Tady je sada výsledků.  
   
 ```  
 [{"$1": "abc"}]  
@@ -2093,7 +2093,7 @@ SELECT LOWER("Abc")
 ```  
   
 ####  <a name="bk_ltrim"></a> LTRIM  
- Vrací výraz řetězce po ho odebere úvodní mezery.  
+ Vrátí řetězcový výraz po odebere úvodní mezery.  
   
  **Syntaxe**  
   
@@ -2105,21 +2105,21 @@ LTRIM(<str_expr>)
   
 -   `str_expr`  
   
-     Je jakýkoli platný řetězec výraz.  
+     Je libovolný výraz platný řetězec.  
   
  **Návratové typy**  
   
- Vrací výraz řetězce.  
+ Vrátí řetězcový výraz.  
   
  **Příklady**  
   
- Následující příklad ukazuje, jak používat LTRIM uvnitř dotazu.  
+ Následující příklad ukazuje, jak použít LTRIM uvnitř dotazu.  
   
 ```  
 SELECT LTRIM("  abc"), LTRIM("abc"), LTRIM("abc   ")  
 ```  
   
- Zde je sada výsledků.  
+ Tady je sada výsledků.  
   
 ```  
 [{"$1": "abc", "$2": "abc", "$3": "abc   "}]  
@@ -2138,11 +2138,11 @@ REPLACE(<str_expr>, <str_expr>, <str_expr>)
   
 -   `str_expr`  
   
-     Je jakýkoli platný řetězec výraz.  
+     Je libovolný výraz platný řetězec.  
   
  **Návratové typy**  
   
- Vrací výraz řetězce.  
+ Vrátí řetězcový výraz.  
   
  **Příklady**  
   
@@ -2152,7 +2152,7 @@ REPLACE(<str_expr>, <str_expr>, <str_expr>)
 SELECT REPLACE("This is a Test", "Test", "desk")  
 ```  
   
- Zde je sada výsledků.  
+ Tady je sada výsledků.  
   
 ```  
 [{"$1": "This is a desk"}]  
@@ -2171,32 +2171,32 @@ REPLICATE(<str_expr>, <num_expr>)
   
 -   `str_expr`  
   
-     Je jakýkoli platný řetězec výraz.  
+     Je libovolný výraz platný řetězec.  
   
 -   `num_expr`  
   
-     Je libovolný platný číselný výraz.  
+     Je jakýkoli platný číselný výraz.  
   
  **Návratové typy**  
   
- Vrací výraz řetězce.  
+ Vrátí řetězcový výraz.  
   
  **Příklady**  
   
- Následující příklad ukazuje, jak používat REPLIKACE v dotazu.  
+ Následující příklad ukazuje, jak pomocí provádí REPLIKACI v dotazu.  
   
 ```  
 SELECT REPLICATE("a", 3)  
 ```  
   
- Zde je sada výsledků.  
+ Tady je sada výsledků.  
   
 ```  
 [{"$1": "aaa"}]  
 ```  
   
 ####  <a name="bk_reverse"></a> REVERSE  
- Vrátí obráceném pořadí řetězcovou hodnotu.  
+ Vrátí hodnotu řetězce obráceném pořadí.  
   
  **Syntaxe**  
   
@@ -2208,28 +2208,28 @@ REVERSE(<str_expr>)
   
 -   `str_expr`  
   
-     Je jakýkoli platný řetězec výraz.  
+     Je libovolný výraz platný řetězec.  
   
  **Návratové typy**  
   
- Vrací výraz řetězce.  
+ Vrátí řetězcový výraz.  
   
  **Příklady**  
   
- Následující příklad ukazuje, jak používat zpětného v dotazu.  
+ Následující příklad ukazuje, jak použít reverzní v dotazu.  
   
 ```  
 SELECT REVERSE("Abc")  
 ```  
   
- Zde je sada výsledků.  
+ Tady je sada výsledků.  
   
 ```  
 [{"$1": "cbA"}]  
 ```  
   
-####  <a name="bk_right"></a> VPRAVO  
- Vrátí pravou část řetězec s zadaný počet znaků.  
+####  <a name="bk_right"></a> DOPRAVA  
+ Vrátí část reprezentující správný řetězec zadaný počet znaků.  
   
  **Syntaxe**  
   
@@ -2241,15 +2241,15 @@ RIGHT(<str_expr>, <num_expr>)
   
 -   `str_expr`  
   
-     Je jakýkoli platný řetězec výraz.  
+     Je libovolný výraz platný řetězec.  
   
 -   `num_expr`  
   
-     Je libovolný platný číselný výraz.  
+     Je jakýkoli platný číselný výraz.  
   
  **Návratové typy**  
   
- Vrací výraz řetězce.  
+ Vrátí řetězcový výraz.  
   
  **Příklady**  
   
@@ -2259,14 +2259,14 @@ RIGHT(<str_expr>, <num_expr>)
 SELECT RIGHT("abc", 1), RIGHT("abc", 2)  
 ```  
   
- Zde je sada výsledků.  
+ Tady je sada výsledků.  
   
 ```  
 [{"$1": "c", "$2": "bc"}]  
 ```  
   
 ####  <a name="bk_rtrim"></a> RTRIM  
- Vrací výraz řetězce po odebere koncové mezery.  
+ Vrátí řetězcový výraz po odebere koncové mezery.  
   
  **Syntaxe**  
   
@@ -2278,28 +2278,28 @@ RTRIM(<str_expr>)
   
 -   `str_expr`  
   
-     Je jakýkoli platný řetězec výraz.  
+     Je libovolný výraz platný řetězec.  
   
  **Návratové typy**  
   
- Vrací výraz řetězce.  
+ Vrátí řetězcový výraz.  
   
  **Příklady**  
   
- Následující příklad ukazuje, jak používat RTRIM uvnitř dotazu.  
+ Následující příklad ukazuje, jak použít RTRIM uvnitř dotazu.  
   
 ```  
 SELECT RTRIM("  abc"), RTRIM("abc"), RTRIM("abc   ")  
 ```  
   
- Zde je sada výsledků.  
+ Tady je sada výsledků.  
   
 ```  
 [{"$1": "   abc", "$2": "abc", "$3": "abc"}]  
 ```  
   
 ####  <a name="bk_startswith"></a> STARTSWITH  
- Vrátí logická hodnota, která určuje zda první řetězec výraz začíná druhý.  
+ Vrátí hodnotu typu Boolean označující, zda se první výraz řetězce začíná druhé.  
   
  **Syntaxe**  
   
@@ -2311,7 +2311,7 @@ STARTSWITH(<str_expr>, <str_expr>)
   
 -   `str_expr`  
   
-     Je jakýkoli platný řetězec výraz.  
+     Je libovolný výraz platný řetězec.  
   
  **Návratové typy**  
   
@@ -2319,20 +2319,20 @@ STARTSWITH(<str_expr>, <str_expr>)
   
  **Příklady**  
   
- Následující příklad zkontroluje, zda řetězec "abc" začíná "b" a "a".  
+ Následující příklad zkontroluje, pokud se řetězec "abc" začíná písmenem "b" a "a".  
   
 ```  
 SELECT STARTSWITH("abc", "b"), STARTSWITH("abc", "a")  
 ```  
   
- Zde je sada výsledků.  
+ Tady je sada výsledků.  
   
 ```  
 [{"$1": false, "$2": true}]  
 ```  
   
 ####  <a name="bk_substring"></a> DÍLČÍ ŘETĚZEC  
- Vrátí část řetězcového výrazu od pozice s nulovým základem zadaný znak a pokračuje na určenou délku nebo na konci řetězce.  
+ Vrátí část řetězcového výrazu počínaje pozice s nulovým základem zadaný znak a pokračuje na určenou délku nebo na konci řetězce.  
   
  **Syntaxe**  
   
@@ -2344,32 +2344,105 @@ SUBSTRING(<str_expr>, <num_expr> [, <num_expr>])
   
 -   `str_expr`  
   
-     Je jakýkoli platný řetězec výraz.  
+     Je libovolný výraz platný řetězec.  
   
 -   `num_expr`  
   
-     Je libovolný platný číselný výraz.  
+     Je jakýkoli platný číselný výraz.  
   
  **Návratové typy**  
   
- Vrací výraz řetězce.  
+ Vrátí řetězcový výraz.  
   
  **Příklady**  
   
- Následující příklad vrátí dílčí řetězec "abc" spouštění v 1 a o délce 1 znak.  
+ Následující příklad vrátí podřetězec "abc", spouštění na 1 a pro o délce 1 znak.  
   
 ```  
 SELECT SUBSTRING("abc", 1, 1)  
 ```  
   
- Zde je sada výsledků.  
+ Tady je sada výsledků.  
   
 ```  
 [{"$1": "b"}]  
 ```  
+####  <a name="bk_tostring"></a> ToString  
+ Vrátí řetězcovou reprezentaci skalární výraz. 
   
+ **Syntaxe**  
+  
+```  
+ToString(<expr>)
+```  
+  
+ **Argumenty**  
+  
+-   `expr`  
+  
+     Je libovolný platný skalární výraz.  
+  
+ **Návratové typy**  
+  
+ Vrátí řetězcový výraz.  
+  
+ **Příklady**  
+  
+ Následující příklad ukazuje, jak se chová ToString do různých typů.   
+  
+```  
+SELECT ToString(1.0000), ToString("Hello World"), ToString(NaN), ToString(Infinity),
+ToString(IS_STRING(ToString(undefined))), IS_STRING(ToString(0.1234), ToString(false), ToString(undefined))
+```  
+  
+ Tady je sada výsledků.  
+  
+```  
+[{"$1": "1", "$2": "Hello World", "$3": "NaN", "$4": "Infinity", "$5": "false", "$6": true, "$7": "false"}]  
+```  
+ Daný následující vstup:
+```  
+{"Products":[{"ProductID":1,"Weight":4,"WeightUnits":"lb"},{"ProductID":2,"Weight":32,"WeightUnits":"kg"},{"ProductID":3,"Weight":400,"WeightUnits":"g"},{"ProductID":4,"Weight":8999,"WeightUnits":"mg"}]}
+```    
+ Následující příklad ukazuje, jak lze ToString s jinými funkcemi řetězec jako CONCAT.   
+ 
+```  
+SELECT 
+CONCAT(ToString(p.Weight), p.WeightUnits) 
+FROM p in c.Products 
+```  
+
+ Tady je sada výsledků.  
+  
+```  
+[{"$1":"4lb" },
+ {"$1":"32kg"},
+ {"$1":"400g" },
+ {"$1":"8999mg" }]
+
+```  
+Daný následující vstup.
+```
+{"id":"08259","description":"Cereals ready-to-eat, KELLOGG, KELLOGG'S CRISPIX","nutrients":[{"id":"305","description":"Caffeine","units":"mg"},{"id":"306","description":"Cholesterol, HDL","nutritionValue":30,"units":"mg"},{"id":"307","description":"Sodium, NA","nutritionValue":612,"units":"mg"},{"id":"308","description":"Protein, ABP","nutritionValue":60,"units":"mg"},{"id":"309","description":"Zinc, ZN","nutritionValue":null,"units":"mg"}]}
+```
+ Následující příklad ukazuje, jak lze ToString s jinými funkcemi řetězec jako nahradit.   
+```
+SELECT 
+    n.id AS nutrientID,
+    REPLACE(ToString(n.nutritionValue), "6", "9") AS nutritionVal
+FROM food 
+JOIN n IN food.nutrients
+```
+ Tady je sada výsledků.  
+ ```
+[{"nutrientID":"305"},
+{"nutrientID":"306","nutritionVal":"30"},
+{"nutrientID":"307","nutritionVal":"912"},
+{"nutrientID":"308","nutritionVal":"90"},
+{"nutrientID":"309","nutritionVal":"null"}]
+ ```  
 ####  <a name="bk_upper"></a> HORNÍ  
- Vrací výraz řetězce po převodu dat malé písmeno na velká písmena.  
+ Vrátí řetězcový výraz po převedení data znaků na malá písmena na velká písmena.  
   
  **Syntaxe**  
   
@@ -2381,11 +2454,11 @@ UPPER(<str_expr>)
   
 -   `str_expr`  
   
-     Je jakýkoli platný řetězec výraz.  
+     Je libovolný výraz platný řetězec.  
   
  **Návratové typy**  
   
- Vrací výraz řetězce.  
+ Vrátí řetězcový výraz.  
   
  **Příklady**  
   
@@ -2395,14 +2468,14 @@ UPPER(<str_expr>)
 SELECT UPPER("Abc")  
 ```  
   
- Zde je sada výsledků.  
+ Tady je sada výsledků.  
   
 ```  
 [{"$1": "ABC"}]  
 ```  
   
 ###  <a name="bk_array_functions"></a> Funkce pole  
- Provedení operace hodnota vstupní pole a vrátí číselnou, logická hodnota nebo pole hodnota následující skalární funkce  
+ Následující skalární funkce provádění operací na hodnotu vstupního pole a vrátit číselné, hodnota logická hodnota nebo pole  
   
 ||||  
 |-|-|-|  
@@ -2410,7 +2483,7 @@ SELECT UPPER("Abc")
 |[ARRAY_SLICE](#bk_array_slice)|||  
   
 ####  <a name="bk_array_concat"></a> ARRAY_CONCAT  
- Vrátí pole, které je výsledkem zřetězení dvě nebo více hodnot pole.  
+ Vrátí pole, která je výsledkem zřetězení dvou nebo více hodnot pole.  
   
  **Syntaxe**  
   
@@ -2422,28 +2495,28 @@ ARRAY_CONCAT (<arr_expr>, <arr_expr> [, <arr_expr>])
   
 -   `arr_expr`  
   
-     Je jakýkoli platný pole výraz.  
+     Je libovolný výraz, platným polem.  
   
  **Návratové typy**  
   
- Vrací výraz pole.  
+ Vrátí výraz pole.  
   
  **Příklady**  
   
- Následující příklad postup řetězení dvěma poli.  
+ Následující příklad jak ke zřetězení dvou polí.  
   
 ```  
 SELECT ARRAY_CONCAT(["apples", "strawberries"], ["bananas"])  
 ```  
   
- Zde je sada výsledků.  
+ Tady je sada výsledků.  
   
 ```  
 [{"$1": ["apples", "strawberries", "bananas"]}]  
 ```  
   
 ####  <a name="bk_array_contains"></a> ARRAY_CONTAINS  
-Vrátí logickou hodnotu udávající, zda pole obsahuje zadanou hodnotu. Můžete zadat, pokud je shoda celé nebo jeho část. 
+Vrátí logickou hodnotu označující, zda pole obsahuje zadanou hodnotu. Můžete zadat, pokud shoda není celé nebo jeho část. 
 
  **Syntaxe**  
   
@@ -2455,15 +2528,15 @@ ARRAY_CONTAINS (<arr_expr>, <expr> [, bool_expr])
   
 -   `arr_expr`  
   
-     Je jakýkoli platný pole výraz.  
+     Je libovolný výraz, platným polem.  
   
 -   `expr`  
   
-     Je jakýkoli platný výraz.  
+     Je libovolný platný výraz.  
 
 -   `bool_expr`  
   
-     Je libovolný logický výraz.       
+     Je libovolný výraz boolean.       
   
  **Návratové typy**  
   
@@ -2479,13 +2552,13 @@ SELECT
            ARRAY_CONTAINS(["apples", "strawberries", "bananas"], "mangoes")  
 ```  
   
- Zde je sada výsledků.  
+ Tady je sada výsledků.  
   
 ```  
 [{"$1": true, "$2": false}]  
 ```  
 
- Následující příklad postup kontroly částečnou shodu JSON v poli pomocí ARRAY_CONTAINS.  
+ Následující příklad návod k ověření pro částečnou shodu JSON v poli pomocí ARRAY_CONTAINS.  
   
 ```  
 SELECT  
@@ -2494,7 +2567,7 @@ SELECT
     ARRAY_CONTAINS([{"name": "apples", "fresh": true}, {"name": "strawberries", "fresh": true}], {"name": "mangoes"}, true) 
 ```  
   
- Zde je sada výsledků.  
+ Tady je sada výsledků.  
   
 ```  
 [{
@@ -2505,7 +2578,7 @@ SELECT
 ```  
   
 ####  <a name="bk_array_length"></a> ARRAY_LENGTH  
- Vrátí počet prvků výrazu zadané pole.  
+ Vrátí počet prvků výrazu určeném poli.  
   
  **Syntaxe**  
   
@@ -2517,28 +2590,28 @@ ARRAY_LENGTH(<arr_expr>)
   
 -   `arr_expr`  
   
-     Je jakýkoli platný pole výraz.  
+     Je libovolný výraz, platným polem.  
   
  **Návratové typy**  
   
- Vrátí číselný výraz.  
+ Vrátí hodnotu číselného výrazu.  
   
  **Příklady**  
   
- Následující příklad jak získat délka pole pomocí ARRAY_LENGTH.  
+ Následující příklad jak získat délku pole pomocí ARRAY_LENGTH.  
   
 ```  
 SELECT ARRAY_LENGTH(["apples", "strawberries", "bananas"])  
 ```  
   
- Zde je sada výsledků.  
+ Tady je sada výsledků.  
   
 ```  
 [{"$1": 3}]  
 ```  
   
 ####  <a name="bk_array_slice"></a> ARRAY_SLICE  
- Vrátí část výraz pole.
+ Vrátí část reprezentující výraz pole.
   
  **Syntaxe**  
   
@@ -2550,11 +2623,11 @@ ARRAY_SLICE (<arr_expr>, <num_expr> [, <num_expr>])
   
 -   `arr_expr`  
   
-     Je jakýkoli platný pole výraz.  
+     Je libovolný výraz, platným polem.  
   
 -   `num_expr`  
   
-     Je libovolný platný číselný výraz.  
+     Je jakýkoli platný číselný výraz.  
   
  **Návratové typy**  
   
@@ -2562,7 +2635,7 @@ ARRAY_SLICE (<arr_expr>, <num_expr> [, <num_expr>])
   
  **Příklady**  
   
- Následující příklad jak získat součástí pomocí ARRAY_SLICE pole.  
+ Následující příklad získání část k poli pomocí ARRAY_SLICE.  
   
 ```  
 SELECT   
@@ -2570,7 +2643,7 @@ SELECT
            ARRAY_SLICE(["apples", "strawberries", "bananas"], 1, 1)  
 ```  
   
- Zde je sada výsledků.  
+ Tady je sada výsledků.  
   
 ```  
 [{  
@@ -2580,7 +2653,7 @@ SELECT
 ```  
   
 ###  <a name="bk_spatial_functions"></a> Prostorové funkce  
- Následující skalární funkce provádění operací na prostorový objekt vstupní hodnotu a vrátí číslo nebo logická hodnota.  
+ Následující skalární funkce provádění operací na prostorový vstupní hodnotu a vrátí číslo nebo logickou hodnotu.  
   
 ||||  
 |-|-|-|  
@@ -2588,7 +2661,7 @@ SELECT
 |[ST_ISVALIDDETAILED](#bk_st_isvaliddetailed)|||  
   
 ####  <a name="bk_st_distance"></a> ST_DISTANCE  
- Vrací vzdálenost mezi dvěma GeoJSON bodu, mnohoúhelníku nebo LineString výrazy.  
+ Vrací vzdálenost mezi dvěma GeoJSON bodu mnohoúhelníku či LineString výrazy.  
   
  **Syntaxe**  
   
@@ -2600,15 +2673,15 @@ ST_DISTANCE (<spatial_expr>, <spatial_expr>)
   
 -   `spatial_expr`  
   
-     Je jakýkoli platný objekt výraz GeoJSON bodu, mnohoúhelníku nebo LineString.  
+     Je libovolný platný výraz, objektu GeoJSON bodu mnohoúhelníku či LineString.  
   
  **Návratové typy**  
   
- Vrátí číselný výraz obsahující vzdálenost. Vyjadřuje se v měřidla pro výchozí odkaz na systém.  
+ Vrátí hodnotu číselného výrazu obsahujícího vzdálenost. Vyjadřuje se v metrech pro výchozí odkaz na systém.  
   
  **Příklady**  
   
- Následující příklad ukazuje, jak vrátit všechny rodiny dokumenty, které jsou v rámci 30 km v zadaném umístění pomocí předdefinované funkci ST_DISTANCE. .  
+ Následující příklad ukazuje, jak vrátí všechny rodiny dokumenty, které jsou v rámci 30 km pomocí integrované funkce ST_DISTANCE zadaného umístění. .  
   
 ```  
 SELECT f.id   
@@ -2616,7 +2689,7 @@ FROM Families f
 WHERE ST_DISTANCE(f.location, {'type': 'Point', 'coordinates':[31.9, -4.8]}) < 30000  
 ```  
   
- Zde je sada výsledků.  
+ Tady je sada výsledků.  
   
 ```  
 [{  
@@ -2625,7 +2698,7 @@ WHERE ST_DISTANCE(f.location, {'type': 'Point', 'coordinates':[31.9, -4.8]}) < 3
 ```  
   
 ####  <a name="bk_st_within"></a> ST_WITHIN  
- Vrátí hodnotu určující, zda je v prvním argumentu zadaného objektu GeoJSON (bod, mnohoúhelníku nebo LineString) v rámci GeoJSON (bod, mnohoúhelníku nebo LineString) v druhý argument logický výraz.  
+ Vrací výraz Boolean určující, zda je objekt GeoJSON (bodu, mnohoúhelník nebo LineString) zadané v prvním argumentu v rámci GeoJSON (bodu, mnohoúhelník nebo LineString) v druhý argument.  
   
  **Syntaxe**  
   
@@ -2637,11 +2710,11 @@ ST_WITHIN (<spatial_expr>, <spatial_expr>)
   
 -   `spatial_expr`  
   
-     Je jakýkoli platný objekt výraz GeoJSON bodu, mnohoúhelníku nebo LineString.  
+     Je libovolný platný výraz, objektu GeoJSON bodu mnohoúhelníku či LineString.  
  
 -   `spatial_expr`  
   
-     Je jakýkoli platný objekt výraz GeoJSON bodu, mnohoúhelníku nebo LineString.  
+     Je libovolný platný výraz, objektu GeoJSON bodu mnohoúhelníku či LineString.  
   
  **Návratové typy**  
   
@@ -2649,7 +2722,7 @@ ST_WITHIN (<spatial_expr>, <spatial_expr>)
   
  **Příklady**  
   
- Následující příklad ukazuje, jak najít všechny rodiny dokumenty pomocí ST_WITHIN mnohoúhelníku.  
+ Následující příklad ukazuje, jak najít všechny řady dokumenty v rámci pomocí ST_WITHIN mnohoúhelníku.  
   
 ```  
 SELECT f.id   
@@ -2660,14 +2733,14 @@ WHERE ST_WITHIN(f.location, {
 })  
 ```  
   
- Zde je sada výsledků.  
+ Tady je sada výsledků.  
   
 ```  
 [{ "id": "WakefieldFamily" }]  
 ```  
 
 ####  <a name="bk_st_intersects"></a> ST_INTERSECTS  
- Vrátí hodnotu označující, zda zadaného v prvním argumentu objektu GeoJSON (bod, mnohoúhelníku nebo LineString) protíná GeoJSON (bod, mnohoúhelníku nebo LineString) v druhý argument logický výraz.  
+ Vrací výraz Boolean určující, zda objekt GeoJSON (bodu, mnohoúhelník nebo LineString) zadané v prvním argumentu protíná GeoJSON (bodu, mnohoúhelník nebo LineString) v druhý argument.  
   
  **Syntaxe**  
   
@@ -2679,11 +2752,11 @@ ST_INTERSECTS (<spatial_expr>, <spatial_expr>)
   
 -   `spatial_expr`  
   
-     Je jakýkoli platný objekt výraz GeoJSON bodu, mnohoúhelníku nebo LineString.  
+     Je libovolný platný výraz, objektu GeoJSON bodu mnohoúhelníku či LineString.  
  
 -   `spatial_expr`  
   
-     Je jakýkoli platný objekt výraz GeoJSON bodu, mnohoúhelníku nebo LineString.  
+     Je libovolný platný výraz, objektu GeoJSON bodu mnohoúhelníku či LineString.  
   
  **Návratové typy**  
   
@@ -2702,14 +2775,14 @@ WHERE ST_INTERSECTS(a.location, {
 })  
 ```  
   
- Zde je sada výsledků.  
+ Tady je sada výsledků.  
   
 ```  
 [{ "id": "IntersectingPolygon" }]  
 ```  
   
 ####  <a name="bk_st_isvalid"></a> ST_ISVALID  
- Vrátí logickou hodnotu udávající, zda je zadaný výraz GeoJSON bodu, mnohoúhelníku nebo LineString platný.  
+ Vrátí logickou hodnotu označující, zda je zadaný výraz GeoJSON bodu mnohoúhelníku či LineString platný.  
   
  **Syntaxe**  
   
@@ -2721,7 +2794,7 @@ ST_ISVALID(<spatial_expr>)
   
 -   `spatial_expr`  
   
-     Je platný výraz GeoJSON bodu, mnohoúhelníku nebo LineString.  
+     Je libovolný platný výraz GeoJSON bodu mnohoúhelníku či LineString.  
   
  **Návratové typy**  
   
@@ -2729,24 +2802,24 @@ ST_ISVALID(<spatial_expr>)
   
  **Příklady**  
   
- Následující příklad ukazuje, jak zkontrolovat, jestli je platný, pomocí ST_VALID bod.  
+ Následující příklad ukazuje, jak zkontrolovat, zda je platný pomocí ST_VALID bod.  
   
- Například tohoto bodu má hodnotu zeměpisnou šířku, která není v platném rozsahu hodnot [-90, 90], takže dotaz vrátí hodnotu false.  
+ Například tento bod má hodnotu šířky, který není v platném rozsahu hodnot [-90, 90], takže dotaz vrátí hodnotu false.  
   
- Pro mnohoúhelníky specifikace GeoJSON vyžaduje, aby poslední souřadnic pár zadat stejný jako první, chcete-li vytvořit uzavřený obrazec. Je třeba zadat body v rámci mnohoúhelníku v pořadí proti směru hodinových ručiček. Mnohoúhelníku zadaný v po směru hodinových ručiček pořadí představuje inverzní oblasti v něm.  
+ Mnohoúhelníky vyžaduje specifikaci GeoJSON poslední souřadnic pár poskytuje by měl být stejný jako první, chcete-li vytvořit zavřeného tvaru. Body v rámci mnohoúhelníku musí zadat v pořadí proti směru hodinových ručiček. Mnohoúhelník zadat v pořadí po směru hodinových ručiček představuje inverzní oblasti v rámci něj.  
   
 ```  
 SELECT ST_ISVALID({ "type": "Point", "coordinates": [31.9, -132.8] })  
 ```  
   
- Zde je sada výsledků.  
+ Tady je sada výsledků.  
   
 ```  
 [{ "$1": false }]  
 ```  
   
 ####  <a name="bk_st_isvaliddetailed"></a> ST_ISVALIDDETAILED  
- Vrátí hodnotu hodnotu JSON obsahující logickou hodnotu, pokud zadaný výraz GeoJSON bodu, mnohoúhelníku nebo LineString je platný a pokud neplatný, dále z důvodu jako hodnotu řetězce.  
+ Vrátí hodnotu JSON obsahující logická hodnota, pokud zadaný výraz GeoJSON bodu mnohoúhelníku či LineString je platný a pokud není platný, kromě důvod jako hodnotu řetězce.  
   
  **Syntaxe**  
   
@@ -2758,15 +2831,15 @@ ST_ISVALID(<spatial_expr>)
   
 -   `spatial_expr`  
   
-     Je jakýkoli platný výraz bodu nebo mnohoúhelníku GeoJSON.  
+     Je libovolný platný výraz bodu nebo mnohoúhelník GeoJSON.  
   
  **Návratové typy**  
   
- Vrátí hodnotu hodnotu JSON obsahující logickou hodnotu, pokud zadaný výraz bodu nebo mnohoúhelníku GeoJSON je platný a pokud je neplatný, dále z důvodu jako hodnotu řetězce.  
+ Vrátí hodnotu JSON obsahující logická hodnota, pokud zadaný výraz bodu nebo mnohoúhelník GeoJSON je platný a pokud není platný, kromě důvod jako hodnotu řetězce.  
   
  **Příklady**  
   
- Následující příklad postup kontroly platnosti (s podrobnostmi) pomocí ST_ISVALIDDETAILED.  
+ Následující příklad návod k ověření platnosti (s podrobnostmi) pomocí ST_ISVALIDDETAILED.  
   
 ```  
 SELECT ST_ISVALIDDETAILED({   
@@ -2775,7 +2848,7 @@ SELECT ST_ISVALIDDETAILED({
 })  
 ```  
   
- Zde je sada výsledků.  
+ Tady je sada výsledků.  
   
 ```  
 [{  
@@ -2787,7 +2860,7 @@ SELECT ST_ISVALIDDETAILED({
 ```  
   
 ## <a name="next-steps"></a>Další postup  
- [Syntaxe jazyka SQL a dotaz SQL pro Azure Cosmos DB](sql-api-sql-query.md)   
- [Dokumentace k Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/)  
+ [Syntaxe SQL a dotaz SQL pro službu Azure Cosmos DB](sql-api-sql-query.md)   
+ [Dokumentace ke službě Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/)  
   
   

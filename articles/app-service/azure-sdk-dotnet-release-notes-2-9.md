@@ -1,6 +1,6 @@
 ---
-title: Poznámky k verzi sady Azure SDK pro .NET 2.9
-description: Poznámky k verzi sady Azure SDK pro .NET 2.9
+title: Zpráva k vydání verze Azure SDK pro .NET 2.9
+description: Zpráva k vydání verze Azure SDK pro .NET 2.9
 services: app-service\web
 documentationcenter: .net
 author: chrissfanos
@@ -13,82 +13,82 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 02/24/2017
 ms.author: juliako
-ms.openlocfilehash: 30013c0bd8ded31ccaf3cdc142bbf8dc6b375031
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 01b8ccc9fe6b5469408131bce68a903f15382998
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32150953"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39222524"
 ---
-# <a name="azure-sdk-for-net-29-release-notes"></a>Poznámky k verzi sady Azure SDK pro .NET 2.9
+# <a name="azure-sdk-for-net-29-release-notes"></a>Poznámky k verzi Azure SDK pro .NET 2.9
 
 Toto téma obsahuje poznámky k verzi pro verze 2.9 a 2.9.6 sady Azure SDK pro .NET.
 
-## <a name="azure-sdk-for-net-296-release-summary"></a>Azure SDK pro .NET 2.9.6 verze souhrn
+## <a name="azure-sdk-for-net-296-release-summary"></a>Souhrn vydání Azure SDK pro .NET 2.9.6
 
 Datum vydání: 11/16/2016
  
-V této verzi byly zavedeny žádné nejnovější změny do Azure SDK 2.9. Je také žádné procesu upgradu potřeby využít tuto sadu SDK s existující projekty cloudové služby.
+V této verzi byly zavedeny žádné významné změny do Azure SDK 2.9. Neexistuje žádný proces upgradu potřebné k využití této sady SDK pomocí existujících projektů cloudové služby.
 
 ### <a name="visual-studio-2017-release-candidate"></a>Visual Studio 2017 Release Candidate
 
-- V sadě Visual Studio 2017 RC tato verze sady Azure SDK pro .NET je součástí pracovního vytížení Azure. Všechny nástroje, které musíte udělat Azure development budou součástí Visual Studio RC 2017 do budoucna. Pro Visual Studio 2015 a Visual Studio 2013 sadu SDK bude stále k dispozici prostřednictvím WebPI. Již Azure SDK pro .NET verze pro sadu Visual Studio 2013, když Visual Studio 2017 uvolní jako poslední produktu. Chcete-li stáhnout sadu Visual Studio RC 2017 na tento odkaz: https://www.visualstudio.com/vs/visual-studio-2017-rc/
+- V sadě Visual Studio 2017 RC jsou integrované pro úlohy Azure pro tuto verzi sady Azure SDK pro .NET. Všechny nástroje, které je třeba provést vývoj pro Azure budou součástí Visual Studio 2017 RC do budoucna. Pro Visual Studio 2015 a Visual Studio 2013 SDK bude stále k dispozici prostřednictvím instalace webové platformy. Jsme se být zrušený sady Azure SDK pro .NET verze pro Visual Studio 2013, jakmile vyjde nová verze sady Visual Studio 2017 jako konečného produktu. Přejděte na tento odkaz ke stažení Visual Studio 2017 RC: https://www.visualstudio.com/vs/visual-studio-2017-rc/
 
 ### <a name="azure-diagnostics"></a>Diagnostika Azure
 
-- Změnit chování pouze ukládat částečné připojovací řetězec s klíčem nahrazuje token pro připojovací řetězec úložiště diagnostiky cloudové služby. Klíč skutečné úložiště jsou teď uložená v složce profilu uživatele, přístup se dá řídit. Visual Studio bude číst ze složky profilu uživatele pro místní ladění a proces publikování klíče úložiště. 
-- V reakci na změnu popsané výše Visual Studio Online team rozšířené šablony úloh nasazení Azure Cloud Services, mohou uživatelé zadat klíč úložiště pro nastavení rozšíření diagnostiky při publikování do Azure na průběžnou integraci a nasazení.
-- Jsme provedli jsme je umožněno ukládání zabezpečené připojovací řetězec a tokenizaci pro Azure Diagnostics (WAD), které vám pomůžou vyřešit problémy s konfigurací napříč environements.
+- Změnit chování při pouze částečné připojovací řetězec uložit pomocí klíče, nahrazuje token pro připojovací řetězec úložiště diagnostiky cloudové služby. Klíč skutečného úložiště jsou teď uložená v složce profilu uživatele, takže je možné řídit jeho přístup. Visual Studio načte klíč úložiště ze složky profil uživatele pro místní ladění a proces publikování. 
+- V reakci na změnu je popsáno výše, vylepšené týmu Visual Studio Online šablony nasazení úloh Azure Cloud Services tak, aby uživatelé mohli zadat klíč úložiště pro nastavení diagnostické rozšíření při publikování do Azure na průběžné integrace a Nasazení.
+- Provedli jsme je možné ukládat zabezpečeného připojovacího řetězce a Tokenizace pro Azure Diagnostics (WAD), které vám pomůžou vyřešit problémy s konfigurací v prostředí koordinovaná.
  
-### <a name="windows-server-2016-virtual-machines"></a>Windows Server 2016 virtuální počítače
+### <a name="windows-server-2016-virtual-machines"></a>Virtuálních počítačů Windows serveru 2016
 
-- Visual Studio teď podporuje nasazení cloudové služby na virtuální počítače operačního systému rodiny 5 (Windows Server 2016). Pro existující cloudové služby můžete změnit nastavení pro nové řada operačního systému. Při vytváření nových cloudových služeb, pokud zvolíte možnost vytvoření služby pomocí rozhraní .net 4.6 nebo vyšší, bude použita výchozí služba používají operačního systému rodiny 5.  Další informace najdete [skupina hostovaných operačních systémů podporují tabulky](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/).
+- Visual Studio teď podporuje nasazení Cloud Services na virtuální počítače řady 5 operačního systému (Windows Server 2016). Pro existující cloudové služby můžete změnit nastavení pro cílení nová řada operačního systému. Při vytváření nových cloudových služeb, pokud se rozhodnete pro vytvoření služby pomocí .net 4.6 nebo novější, nastaví se jako výchozí služby pro operační systém řady 5.  Další informace, můžete zkontrolovat [hostovaný operační systém řady podporují tabulky](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/).
 
 #### <a name="known-issues"></a>Známé problémy
 
-- Azure .NET SDK 2.9.6 zavedená omezení, které blokuje nasazení projektů pomocí nepodporované rozhraní .NET Framework (například .NET 4.6) do všech operačního systému rodiny < 5. Alternativní řešení [zde](https://github.com/MicrosoftDocs/azure-cloud-services-files/tree/master/Azure%20Targets%20SDK%202.9).
+- Azure .NET SDK 2.9.6 zavedené omezení, která blokuje nasazení projektů pomocí nepodporované rozhraní .NET Framework (například .NET 4.6) pro libovolný operační systém řady < 5. Alternativní [tady](https://github.com/MicrosoftDocs/azure-cloud-services-files/tree/master/Azure%20Targets%20SDK%202.9).
 
  
-### <a name="azure-in-role-cache"></a>Mezipaměť hostovaná v instanci Role na Azure 
+### <a name="azure-in-role-cache"></a>Mezipaměť In-Role Azure 
 
-- Podpora pro Azure Cache v roli končí na 30. listopadu 2016. Další podrobnosti získáte kliknutím na [zde](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/).
+- Podpora pro Azure Cache In-Role končí 30. listopadu 2016. Další podrobnosti získáte kliknutím [tady](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/).
 
-### <a name="azure-resource-manager-templates-for-azure-stack"></a>Šablony Azure Resource Manageru pro Azure zásobníku
+### <a name="azure-resource-manager-templates-for-azure-stack"></a>Šablony Azure Resource Manageru pro službu Azure Stack
 
-- Zavedli jsme zásobník Azure jako cíl nasazení pro vaše šablony Azure Resource Manager.
+- Zavedli jsme Azure Stack jako cíl nasazení pro šablony Azure Resource Manageru.
 
 
 ## <a name="azure-sdk-for-net-29-summary"></a>Azure SDK pro .NET 2.9 souhrn
 
 ## <a name="overview"></a>Přehled
-Tento dokument obsahuje poznámky k verzi sady Azure SDK pro .NET 2.9 verze. 
+Tento dokument obsahuje zpráva k vydání verze pro sadu Azure SDK pro .NET 2.9 verzi. 
 
-Podrobné informace o aktualizacích v této verzi najdete v tématu [sadu Azure SDK 2.9 oznámení post](https://azure.microsoft.com/blog/announcing-visual-studio-azure-tools-and-sdk-2-9/).
+Podrobné informace o aktualizacích v této verzi najdete v tématu [sadu Azure SDK 2.9 oznámení příspěvku](https://azure.microsoft.com/blog/announcing-visual-studio-azure-tools-and-sdk-2-9/).
 
-## <a name="azure-sdk-29-for-visual-studio-2015-update-2-and-visual-studio-15-preview"></a>Azure SDK 2.9 pro Visual Studio 2015 Update 2 a Visual Studio "15" Preview
-Tato aktualizace zahrnuje následující opravy chyb:
+## <a name="azure-sdk-29-for-visual-studio-2015-update-2-and-visual-studio-15-preview"></a>Azure SDK 2.9 pro Visual Studio 2015 Update 2 a sady Visual Studio "15" Preview
+Tato aktualizace zahrnuje následující opravy:
 
-* Problém související s REST API generování klienta v, ve kterém se zobrazí řetězec "Neznámý typ" jako název složky generace kód nebo název oboru názvů vyřadit do generovaného kódu.
-* Problém týkající se naplánované WebJobs, ve kterém ověřovacích informací došlo k selhání mají být předány Plánovač procesu zřizování.
+* Problém související s REST API pro generování klientů ve kterém se zobrazí řetězec "Neznámý typ" jako název složky code-gen a/nebo název oboru názvů přetáhnout do generovaného kódu.
+* Problém týkající se plánovaných WebJobs, ve kterém ověřovacích informací došlo k selhání mají být předány do zřizovacího procesu plánovače.
 
 Tato aktualizace zahrnuje následující nové funkce:
 
-* Podpora pro sekundární aplikační služby na kartě "Služby" dialogové okno zřizování App Service. 
+* Podpora pro sekundární App Services na kartě "Služby" dialogové okno zřizování App Service. 
 
-## <a name="azure-data-lake-tools-for-visual-studio-2015-update-2"></a>Nástroje Azure Data Lake pro Visual Studio 2015 Update 2
+## <a name="azure-data-lake-tools-for-visual-studio-2015-update-2"></a>Azure Data Lake Tools pro Visual Studio 2015 Update 2
 Tato aktualizace zahrnuje následující položky:
 
-* **Nástroje Azure Data Lake** pro Visual Studio je nyní sloučeny do Azure SDK pro .NET verze. Tento nástroj se automaticky nainstaluje při instalaci sady Azure SDK. 
+* **Azure Data Lake Tools** pro Visual Studio je nyní sloučeny do sady Azure SDK pro .NET verze. Nástroj je automaticky nainstalován při instalaci sady Azure SDK. 
   
-    Tento nástroj se často aktualizuje, přejděte [sem](http://aka.ms/datalaketool) získat aktualizace.
-* **V Průzkumníku serveru** teď umožňuje zobrazit všechny a vytvořit některé entity metadata U-SQL. Další informace najdete v tématu [to](https://azure.microsoft.com/documentation/services/data-lake-analytics/) blogu.
+    Nástroj se často aktualizuje, přejděte [tady](http://aka.ms/datalaketool) můžou získat aktualizace.
+* **Průzkumník serveru** teď umožňuje zobrazit vše a vytvořit některé metadat entity U-SQL. Další informace najdete v tématu [to](https://azure.microsoft.com/documentation/services/data-lake-analytics/) blogu.
 
 ## <a name="hdinsight-tools"></a>Nástroje HDInsight
-**Nástroje HDInsight** pro sadu Visual Studio teď podporuje HDInsight verze 3.3, včetně grafech Tez a dalších jazyků opravy.
+**Nástroje HDInsight** pro sadu Visual Studio teď podporuje opravy HDInsight verze 3.3, včetně zobrazení grafech Tez a jiný jazyk.
 
 ## <a name="azure-resource-manager"></a>Azure Resource Manager
 Tato verze přidává [KeyVault](../azure-resource-manager/resource-manager-keyvault-parameter.md) podporu pro šablony Resource Manageru.
 
 ## <a name="see-also"></a>Další informace najdete v tématech
-[Azure SDK 2.9 oznámení post](https://azure.microsoft.com/blog/announcing-visual-studio-azure-tools-and-sdk-2-9/)
+[Azure SDK 2.9 oznámení příspěvku](https://azure.microsoft.com/blog/announcing-visual-studio-azure-tools-and-sdk-2-9/)
 

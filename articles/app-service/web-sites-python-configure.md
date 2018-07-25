@@ -1,10 +1,10 @@
 ---
-title: Konfigurace Python s webovými aplikacemi Azure App Service
-description: Tento kurz popisuje možnosti pro vytváření obsahu a konfigurace základní serveru webové aplikace Python kompatibilní s brány rozhraní (WSGI) v Azure App Service Web Apps.
+title: Konfigurace Pythonu pomocí služby Azure App Service Web Apps
+description: Tento kurz popisuje možnosti pro vytváření a konfiguraci brány rozhraní s rozhraním WSGI () aplikaci v Pythonu kompatibilní základní webový server na Azure App Service Web Apps.
 services: app-service
 documentationcenter: python
 tags: python
-author: huguesv
+author: cephalin
 manager: erikre
 editor: ''
 ms.assetid: fd00dc91-9935-4331-b955-4bd71e66d518
@@ -15,37 +15,39 @@ ms.devlang: python
 ms.topic: article
 ms.date: 02/26/2016
 ms.author: huvalo
-ms.openlocfilehash: 32d9cd6c42387b67881877a1165dfcbcaef405ba
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f1859660d2370093ab582c417233b25d363ce952
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34598636"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39228006"
 ---
-# <a name="configuring-python-with-azure-app-service-web-apps"></a>Konfigurace Python s webovými aplikacemi Azure App Service
-Tento kurz popisuje možnosti pro vytváření obsahu a konfigurace základní aplikace kompatibilní s Python Webový Server brány rozhraní (WSGI) na [Azure App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714).
+# <a name="configuring-python-with-azure-app-service-web-apps"></a>Konfigurace Pythonu pomocí služby Azure App Service Web Apps
+Tento kurz popisuje možnosti pro vytváření a konfigurovat základní aplikaci Pythonu kompatibilní Web Server Gateway Interface s rozhraním WSGI () na [Azure App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714).
 
-Popisuje další funkce nasazení Git, například virtuální prostředí a instalaci balíčku pomocí souboru requirements.txt.
+Popisuje další funkce nasazení z Gitu, jako je například virtuální prostředí a instalace balíčku používání souboru requirements.txt.
 
 ## <a name="bottle-django-or-flask"></a>Bottle, Django nebo Flask?
-Azure Marketplace obsahuje šablony pro rozhraní Bottle, Flask a Django. Pokud vyvíjíte první webové aplikace v Azure App Service, můžete vytvořit jeden rychle z portálu Azure:
+Na webu Azure Marketplace obsahuje šablony pro rozhraní Bottle, Django a Flask. Pokud vyvíjíte vaší první webové aplikace ve službě Azure App Service, můžete vytvořit jednu rychle z portálu Azure portal:
 
-* [Webové aplikace s Bottle](https://portal.azure.com/#create/PTVS.Bottle)
-* [Webovou aplikaci s rozhraním Django](https://portal.azure.com/#create/PTVS.Django)
-* [Webové aplikace s Flask v systému Linux](https://portal.azure.com/#create/PTVS.FlaskLinux)
+* [Webové aplikace pomocí Bottle v Linuxu](https://portal.azure.com/#create/PTVS.BottleLinux)
+* [Webové aplikace pomocí Django v Linuxu](https://portal.azure.com/#create/PTVS.DjangoLinux)
+* [Webové aplikace pomocí Flask v Linuxu](https://portal.azure.com/#create/PTVS.FlaskLinux)
 
-## <a name="web-app-creation-on-azure-portal"></a>Vytvoření webové aplikace v portálu Azure
-Tento kurz předpokládá stávající předplatné Azure a přístup k portálu Azure.
+Nebo můžete [prozkoumat sami na webu Azure Marketplace](https://portal.azure.com/#create/hub).
 
-Pokud nemáte existující webovou aplikaci, můžete vytvořit jeden z [portál Azure](https://portal.azure.com). V levém horním rohu klikněte na **vytvořit prostředek** > **Web + mobilní** > **webové aplikace**.
+## <a name="web-app-creation-on-azure-portal"></a>Vytvoření webové aplikace na webu Azure portal
+Tento kurz předpokládá stávající předplatné Azure a přístup k webu Azure portal.
+
+Pokud nemáte stávající webovou aplikaci, můžete vytvořit jeden z [webu Azure portal](https://portal.azure.com). V levém horním rohu klikněte na tlačítko **vytvořit prostředek** > **Web + mobilní zařízení** > **webovou aplikaci**.
 
 ## <a name="git-publishing"></a>Publikování Git
-Pro nově vytvořenou webovou aplikaci nakonfigurujte publikování Git podle pokynů uvedených v tématu [Místní nasazení GIT ve službě Azure App Service](app-service-deploy-local-git.md). Tento kurz používá Git pro vytváření, správu a publikování webové aplikace Python do služby Azure App Service.
+Pro nově vytvořenou webovou aplikaci nakonfigurujte publikování Git podle pokynů uvedených v tématu [Místní nasazení GIT ve službě Azure App Service](app-service-deploy-local-git.md). Tento kurz používá Git k vytvoření, správě a publikování vaší webové aplikace v Pythonu do služby Azure App Service.
 
-Po publikování Git úložiště Git se vytvoří a přidružené k vaší webové aplikace. V úložišti adresa URL se zobrazí a dá se nabízet data z místního vývojového prostředí do cloudu. K publikování aplikací prostřednictvím Git, zkontrolujte, zda že je zároveň nainstalován klient Git a postupujte podle pokynů uvedených k webovému obsahu aplikace do služby Azure App Service.
+Po nastavení publikování Git se úložiště Git a související s vaší webovou aplikací. Adresa URL úložiště se zobrazí a slouží k zápisu dat z místního vývojového prostředí do cloudu. Publikování aplikací prostřednictvím Git, ujistěte se, že klient Git je rovněž nainstalován a postupujte podle pokynů uvedených tak, aby nabízel obsah vaší webové aplikace do služby Azure App Service.
 
 ## <a name="application-overview"></a>Přehled aplikace
-V následujících částech jsou vytvořeny následující soubory. Musí být umístěny v kořenovém úložišti Git.
+V následujících částech jsou vytvořeny následující soubory. Musí být umístěné ve kořenového adresáře úložiště Git.
 
     app.py
     requirements.txt
@@ -54,10 +56,10 @@ V následujících částech jsou vytvořeny následující soubory. Musí být 
     ptvs_virtualenv_proxy.py
 
 
-## <a name="wsgi-handler"></a>Obslužná rutina WSGI
-WSGI je standard Python popsaného [období 3333](http://www.python.org/dev/peps/pep-3333/) definování rozhraní mezi webového serveru a Python. Poskytuje standardizovaná rozhraní pro zápis různé webové aplikace a rozhraní používá Python. Oblíbených webových rozhraní Python v dnešní době používá WSGI. Azure App Service Web Apps nabízí podporu pro tyto architektury; Kromě toho Pokročilí uživatelé můžete i vytvářet své vlastní tak dlouho, dokud vlastní obslužná rutina se řídí WSGI specifikace pokyny.
+## <a name="wsgi-handler"></a>Obslužná rutina s rozhraním WSGI
+S rozhraním WSGI je standard Python popsal [období 3333](http://www.python.org/dev/peps/pep-3333/) definování rozhraní mezi webovým serverem a Python. Poskytuje standardizované rozhraní pro zápis různých webových aplikací a architektur pomocí Pythonu. Oblíbené webové architektury Python pomocí ještě dnes s rozhraním WSGI. Azure App Service Web Apps poskytuje podporu pro takové architektury; Kromě toho Pokročilí uživatelé můžete dokonce vytvářet vlastní tak dlouho, dokud tato vlastní obslužná rutina řídí specifikaci pokyny s rozhraním WSGI.
 
-Tady je příklad `app.py` , který definuje vlastní obslužnou rutinu:
+Tady je příklad `app.py` , který definuje vlastní obslužné rutiny:
 
     def wsgi_app(environ, start_response):
         status = '200 OK'
@@ -72,19 +74,19 @@ Tady je příklad `app.py` , který definuje vlastní obslužnou rutinu:
         httpd = make_server('localhost', 5555, wsgi_app)
         httpd.serve_forever()
 
-Můžete spustit tuto aplikaci místně s `python app.py`, vyhledejte `http://localhost:5555` ve webovém prohlížeči.
+Můžete tuto aplikaci místně spustíte `python app.py`, vyhledejte `http://localhost:5555` ve webovém prohlížeči.
 
 ## <a name="virtual-environment"></a>Virtuální prostředí
-I když předchozí příklad aplikace nevyžaduje žádné externí balíčky, je pravděpodobné, že vaše aplikace vyžaduje některé.
+Ačkoli předchozí příklad aplikace nevyžaduje, aby veškeré případné externí balíčky, je pravděpodobné, že vaše aplikace vyžaduje některé.
 
-Ke správě závislosti externí balíčků nasazení Git v Azure podporuje vytváření virtuálních prostředí.
+Nasazení z Gitu Azure ke správě externího balíčku závislosti, podporuje vytváření virtuálních prostředí.
 
-Zjistí-li Azure soubor requirements.txt v kořenovém adresáři úložiště, automaticky vytvoří virtuální prostředí s názvem `env`. K tomu dochází pouze při prvním nasazení nebo během všechna nasazení po vybrané Python runtime změnila.
+Když Azure zjistí soubor requirements.txt v kořenové složce úložiště, se automaticky vytvoří virtuální prostředí s názvem `env`. K tomu dochází pouze při prvním nasazení nebo během každého nasazení po vybrané Python runtime změnila.
 
-Pravděpodobně chcete vytvořit virtuální prostředí pro vývoj místně, ale nemáte její zahrnutí do úložiště Git.
+Pravděpodobně chcete vytvořit virtuální prostředí pro vývoj, ale nezahrne ho v úložišti Git.
 
 ## <a name="package-management"></a>Správa balíčků
-Ve virtuálním prostředí pomocí nástroje pip balíčky uvedené v souboru requirements.txt instalují automaticky. K tomu dojde při každém nasazení, ale pip instalaci přeskočí, pokud balíček je již nainstalován.
+Balíčky uvedené v souboru requirements.txt jsou nainstalovány automaticky ve virtuálním prostředí pomocí nástroje pip. To se stane při každém nasazení, ale pip instalaci přeskočí, pokud balíček je už nainstalovaný.
 
 Příklad `requirements.txt`:
 
@@ -100,13 +102,13 @@ Příklad `runtime.txt`:
 
 
 ## <a name="webconfig"></a>Soubor web.config
-Budete muset vytvořit soubor web.config k určení, jak má server pracovat s požadavky.
+Je potřeba vytvořit soubor web.config k určení, jak má server pracovat s požadavky.
 
-Pokud máte soubor web.x.y.config souboru ve svém úložišti, kde x.y odpovídá vybraný modul runtime jazyka Python, pak Azure automaticky zkopíruje příslušný soubor jako soubor web.config.
+Pokud máte soubor web.x.y.config souboru v úložišti, kde x.y odpovídá vybraný modul runtime Python, pak Azure automaticky zkopíruje odpovídající soubor jako soubor web.config.
 
-Následující příklady web.config spoléhají na skript virtuální prostředí proxy serveru, který je popsaný v následující části.  Pracují s obslužná rutina WSGI použitých v tomto příkladu `app.py` výše.
+Následující příklady web.config závisí na virtuální prostředí skriptu proxy serveru, která je popsána v následující části.  Při práci s obslužnou rutinu s rozhraním WSGI použitých v příkladu `app.py` výše.
 
-Příklad `web.config` pro jazyk Python 2.7:
+Příklad `web.config` pro Python 2.7:
 
     <?xml version="1.0"?>
     <configuration>
@@ -156,7 +158,7 @@ Příklad `web.config` pro jazyk Python 2.7:
     </configuration>
 
 
-Příklad `web.config` pro jazyk Python 3.4:
+Příklad `web.config` pro Python 3.4:
 
     <?xml version="1.0"?>
     <configuration>
@@ -204,16 +206,16 @@ Příklad `web.config` pro jazyk Python 3.4:
     </configuration>
 
 
-Statické soubory jsou zpracovávány pro webový server přímo, aniž by bylo nutné prostřednictvím kódu Pythonu pro zlepšení výkonu.
+Statické soubory jsou zpracovány webovým serverem přímo, bez nutnosti kontaktovat za účelem vylepšení výkonu kódu Python.
 
-V předchozích ukázkách umístění statické soubory na disku by měl odpovídat umístění v adrese URL. To znamená, že žádost o `http://pythonapp.azurewebsites.net/static/site.css` bude sloužit k souboru na disku v `\static\site.css`.
+V předchozích ukázkách umístění statické soubory na disku by měl odpovídat umístění v adrese URL. To znamená, že žádost o `http://pythonapp.azurewebsites.net/static/site.css` bude sloužit k souboru na disku na `\static\site.css`.
 
-`WSGI_ALT_VIRTUALENV_HANDLER` je, kde můžete určit WSGI obslužná rutina. V předchozích ukázkách má `app.wsgi_app` protože rutina je funkce s názvem `wsgi_app` v `app.py` v kořenové složce.
+`WSGI_ALT_VIRTUALENV_HANDLER` je, kde můžete určit obslužnou rutinu s rozhraním WSGI. V předchozích příkladech má `app.wsgi_app` protože rutina je funkce s názvem `wsgi_app` v `app.py` v kořenové složce.
 
-`PYTHONPATH` můžete přizpůsobit, ale pokud nainstalujete všechny závislosti ve virtuálním prostředí zadáním v souboru requirements.txt, neměli byste potřebovat změnit.
+`PYTHONPATH` je možné přizpůsobit, ale pokud nainstalujete všechny závislosti ve virtuálním prostředí tak, že zadáte v souboru requirements.txt, neměli byste potřebovat ho změnit.
 
 ## <a name="virtual-environment-proxy"></a>Virtuální prostředí Proxy
-Následující skript se používá k načtení obslužná rutina WSGI, aktivujte virtuální prostředí a protokolu chyb. Je určený jako obecný a použít bez úprav.
+Následující skript slouží k načtení obslužná rutina s rozhraním WSGI, aktivovat virtuální prostředí a protokolu chyb. To je navržena jako obecný a používaných bez úprav.
 
 Obsah `ptvs_virtualenv_proxy.py`:
 
@@ -341,7 +343,7 @@ Obsah `ptvs_virtualenv_proxy.py`:
         return handler
 
 
-## <a name="customize-git-deployment"></a>Přizpůsobení nasazení Git
+## <a name="customize-git-deployment"></a>Přizpůsobuje nasazení Git
 [!INCLUDE [web-sites-python-customizing-runtime](../../includes/web-sites-python-customizing-deployment.md)]
 
 ## <a name="troubleshooting---package-installation"></a>Řešení potíží – instalace balíčku
@@ -350,8 +352,11 @@ Obsah `ptvs_virtualenv_proxy.py`:
 ## <a name="troubleshooting---virtual-environment"></a>Řešení potíží – virtuální prostředí
 [!INCLUDE [web-sites-python-troubleshooting-virtual-environment](../../includes/web-sites-python-troubleshooting-virtual-environment.md)]
 
+## <a name="troubleshooting---startup-errors"></a>Řešení potíží – chyby při spuštění
+[!INCLUDE [web-sites-python-troubleshooting-wsgi-error-log](../../includes/web-sites-python-troubleshooting-wsgi-error-log.md)]
+
 ## <a name="next-steps"></a>Další postup
-Další informace naleznete ve [Středisku pro vývojáře Python](/develop/python/).
+Další informace naleznete ve [Středisku pro vývojáře Python](/python/azure/).
 
 > [!NOTE]
 > Pokud chcete začít používat službu Azure App Service před registrací k účtu Azure, přejděte k možnosti [Vyzkoušet službu App Service](https://azure.microsoft.com/try/app-service/), kde můžete okamžitě vytvořit krátkodobou úvodní webovou aplikaci. Není vyžadována platební karta a nevzniká žádný závazek.

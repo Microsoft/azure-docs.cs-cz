@@ -1,6 +1,6 @@
 ---
-title: Začínáme s Azure queue storage a Visual Studio připojené služby (ASP.NET) | Microsoft Docs
-description: Jak začít používat fronty Azure storage v projektu ASP.NET v sadě Visual Studio po připojení k účtu úložiště pomocí Visual Studio připojené Services
+title: Začínáme s Azure queue storage a Visual Studio připojené služby (ASP.NET) | Dokumentace Microsoftu
+description: Jak začít pracovat pomocí Azure queue storage v projektu aplikace ASP.NET v sadě Visual Studio po připojení k účtu úložiště pomocí připojených služeb sady Visual Studio
 services: storage
 author: ghogen
 manager: douge
@@ -12,20 +12,20 @@ ms.topic: conceptual
 ms.date: 12/23/2016
 ms.author: ghogen
 ms.openlocfilehash: d06fde0dc6c289a09b9fe4c9e2ffbb50c3027490
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31798317"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38719438"
 ---
 # <a name="get-started-with-azure-queue-storage-and-visual-studio-connected-services-aspnet"></a>Začínáme s Azure queue storage a Visual Studio připojené služby (ASP.NET)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
 
 ## <a name="overview"></a>Přehled
 
-Azure queue storage poskytuje cloudu zasílání zpráv mezi součástmi aplikace. Při navrhování aplikací pro škálování ve větším měřítku jsou jednotlivé součásti aplikací často nepropojené, aby je bylo možné škálovat nezávisle. Queue Storage zajišťuje asynchronní přenos zpráv pro komunikaci mezi součástmi aplikace bez ohledu na to, jestli běží v cloudu, na desktopu, na místním serveru nebo na mobilním zařízení. Queue Storage také podporuje správu asynchronních úloh a pracovní postupy procesů sestavování buildů.
+Úložiště Azure queue zajišťuje cloudový přenos zpráv mezi součástmi aplikace. Při navrhování aplikací pro škálování ve větším měřítku jsou jednotlivé součásti aplikací často nepropojené, aby je bylo možné škálovat nezávisle. Queue Storage zajišťuje asynchronní přenos zpráv pro komunikaci mezi součástmi aplikace bez ohledu na to, jestli běží v cloudu, na desktopu, na místním serveru nebo na mobilním zařízení. Queue Storage také podporuje správu asynchronních úloh a pracovní postupy procesů sestavování buildů.
 
-Tento kurz ukazuje, jak napsat kód ASP.NET pro některé běžné scénáře použití fronty Azure storage entity. Mezi tyto scénáře patří běžné úkoly, jako je například vytváření fronty Azure a přidání, úprava, čtení a odebrání zprávy do fronty.
+Tento kurz ukazuje, jak napsat kód technologie ASP.NET pro některé běžné scénáře pomocí Azure queue storage entit. Mezi tyto scénáře patří běžné úkoly, jako je například vytváření fronty služby Azure a přidání, úpravy, čtení a odstranění fronty zpráv.
 
 ##<a name="prerequisites"></a>Požadavky
 
@@ -38,21 +38,21 @@ Tento kurz ukazuje, jak napsat kód ASP.NET pro některé běžné scénáře po
 
 [!INCLUDE [storage-development-environment-include](../../includes/vs-storage-aspnet-getting-started-setup-dev-env.md)]
 
-### <a name="create-an-mvc-controller"></a>Vytvořit řadič MVC 
+### <a name="create-an-mvc-controller"></a>Vytvořit kontroler MVC 
 
-1. V **Průzkumníku řešení**, klikněte pravým tlačítkem na **řadiče**a v místní nabídce vyberte **Přidat -> řadiče**.
+1. V **Průzkumníka řešení**, klikněte pravým tlačítkem na **řadiče**a v místní nabídce vyberte **Přidat -> řadiče**.
 
-    ![Přidat řadič do aplikace ASP.NET MVC](./media/vs-storage-aspnet-getting-started-queues/add-controller-menu.png)
+    ![Přidání kontroleru aplikace ASP.NET MVC](./media/vs-storage-aspnet-getting-started-queues/add-controller-menu.png)
 
-1. Na **přidat vygenerované uživatelské rozhraní** dialogovém okně, vyberte **kontroler MVC 5 – prázdný**a vyberte **přidat**.
+1. Na **přidat vygenerované uživatelské rozhraní** dialogového okna, vyberte **kontroler MVC 5 – prázdný**a vyberte **přidat**.
 
-    ![Zadejte typ řadiče MVC](./media/vs-storage-aspnet-getting-started-queues/add-controller.png)
+    ![Zadejte typ kontroleru MVC](./media/vs-storage-aspnet-getting-started-queues/add-controller.png)
 
-1. Na **přidat kontroler** dialogové okno, názvu kontroleru *QueuesController*a vyberte **přidat**.
+1. Na **přidat kontroler** dialogového okna, názvu kontroleru *QueuesController*a vyberte **přidat**.
 
-    ![Název řadiče MVC](./media/vs-storage-aspnet-getting-started-queues/add-controller-name.png)
+    ![Název kontroleru MVC](./media/vs-storage-aspnet-getting-started-queues/add-controller-name.png)
 
-1. Přidejte následující *pomocí* direktivy pro `QueuesController.cs` souboru:
+1. Přidejte následující *pomocí* direktivy `QueuesController.cs` souboru:
 
     ```csharp
     using Microsoft.Azure;
@@ -66,11 +66,11 @@ Následující kroky ukazují, jak vytvořit frontu:
 
 > [!NOTE]
 > 
-> V této části předpokládá, že jste dokončili postup [nastavení vývojového prostředí](#set-up-the-development-environment). 
+> Této části se předpokládá dokončení kroků [nastavení vývojového prostředí](#set-up-the-development-environment). 
 
 1. Otevřete soubor `QueuesController.cs`. 
 
-1. Přidejte metodu s názvem **CreateQueue** , který vrací **ActionResult**.
+1. Přidat metodu nazvanou **CreateQueue** , který vrátí **ActionResult**.
 
     ```csharp
     public ActionResult CreateQueue()
@@ -81,7 +81,7 @@ Následující kroky ukazují, jak vytvořit frontu:
     }
     ```
 
-1. V rámci **CreateQueue** metody get **CloudStorageAccount** objekt, který reprezentuje informace o účtu úložiště. Použít následující kód k získání připojovacího řetězce úložiště a informace o účtu úložiště z konfigurace služby Azure: (Změna  *&lt;název účtu úložiště >* k názvu účtu úložiště Azure přistupujete.)
+1. V rámci **CreateQueue** metoda, získání **CloudStorageAccount** objekt reprezentující informace o vašem účtu úložiště. Použijte následující kód k získání připojovacího řetězce k úložišti a informace o účtu úložiště z konfigurace služby Azure: (Změna  *&lt;název účtu úložiště >* k názvu účtu úložiště Azure jste přístup.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -93,29 +93,29 @@ Následující kroky ukazují, jak vytvořit frontu:
     ```csharp
     CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
     ```
-1. Získání **CloudQueue** objekt, který reprezentuje odkaz na název požadovaného fronty. **CloudQueueClient.GetQueueReference** metoda neprovede požadavek fronty úložiště. Odkaz se vrátí, zda fronta existuje. 
+1. Získání **CloudQueue** objekt, který představuje odkaz na požadovaný název. **CloudQueueClient.GetQueueReference** metoda neprovede požadavek fronty úložiště. Odkaz se vrátí, zda fronta existuje. 
    
     ```csharp
     CloudQueue queue = queueClient.GetQueueReference("test-queue");
     ```
 
-1. Volání **CloudQueue.CreateIfNotExists** metodu pro vytvoření fronty, pokud ještě neexistuje. **CloudQueue.CreateIfNotExists** metoda vrátí **true** Pokud fronta neexistuje a je úspěšně vytvořen. V opačném **false** je vrácen.    
+1. Volání **CloudQueue.CreateIfNotExists** metodu pro vytvoření fronty, pokud ještě neexistuje. **CloudQueue.CreateIfNotExists** vrátí metoda **true** Pokud fronta neexistuje a byl úspěšně vytvořen. V opačném případě **false** je vrácena.    
 
     ```csharp
     ViewBag.Success = queue.CreateIfNotExists();
     ```
 
-1. Aktualizace **ViewBag** s názvem fronty.
+1. Aktualizace **objekt ViewBag** s názvem fronty.
 
     ```csharp
     ViewBag.QueueName = queue.Name;
     ```
 
-1. V **Průzkumníku řešení**, rozbalte **zobrazení** složku, klikněte pravým tlačítkem na **fronty**a v místní nabídce vyberte **Přidat -> zobrazení**.
+1. V **Průzkumníka řešení**, rozbalte **zobrazení** složky, klikněte pravým tlačítkem na **fronty**a v místní nabídce vyberte **Přidat -> zobrazení**.
 
-1. Na **přidat zobrazení** dialogové okno, zadejte **CreateQueue** pro název zobrazení, vyberte **přidat**.
+1. Na **přidat zobrazení** dialogové okno, zadejte **CreateQueue** názvu zobrazení a vyberte **přidat**.
 
-1. Otevřete `CreateQueue.cshtml`a upravit ho tak, aby vypadal jako následující fragment kódu:
+1. Otevřít `CreateQueue.cshtml`a upravit ji tak, aby vypadal jako následující fragment kódu:
 
     ```csharp
     @{
@@ -127,7 +127,7 @@ Následující kroky ukazují, jak vytvořit frontu:
     Creation of @ViewBag.QueueName @(ViewBag.Success == true ? "succeeded" : "failed")
     ```
 
-1. V **Průzkumníku řešení**, rozbalte **-zobrazení > sdílené** složky a otevřete `_Layout.cshtml`.
+1. V **Průzkumníka řešení**, rozbalte **zobrazení -> sdílený** složky a otevřete `_Layout.cshtml`.
 
 1. Za poslední **Html.ActionLink**, přidejte následující **Html.ActionLink**:
 
@@ -135,23 +135,23 @@ Následující kroky ukazují, jak vytvořit frontu:
     <li>@Html.ActionLink("Create queue", "CreateQueue", "Queues")</li>
     ```
 
-1. Spusťte aplikaci a vyberte **fronty vytvořit** a zobrazte výsledky podobné následujícím snímku obrazovky:
+1. Spusťte aplikaci a vyberte **vytvořit frontu** zobrazíte výsledky podobně jako na následujícím snímku obrazovky:
   
     ![Vytvořit frontu](./media/vs-storage-aspnet-getting-started-queues/create-queue-results.png)
 
-    Jak je uvedeno nahoře, **CloudQueue.CreateIfNotExists** metoda vrátí **true** pouze když neexistuje a k vytvoření fronty. Proto pokud spustíte aplikaci, když fronta existuje, vrátí metoda **false**. Aplikace je třeba spustit vícekrát, je nutné odstranit frontu před spuštěním aplikace znovu. Odstranění fronty, můžete to udělat pomocí **CloudQueue.Delete** metoda. Můžete také odstranit pomocí fronty [portál Azure](http://go.microsoft.com/fwlink/p/?LinkID=525040) nebo [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md).  
+    Jak už bylo zmíněno dříve, **CloudQueue.CreateIfNotExists** vrátí metoda **true** pouze když neexistuje a vytvoření fronty. Proto při spuštění aplikace, fronta existuje, metoda vrátí **false**. Ke spuštění aplikace více než jednou, je nutné odstranit fronty před spuštěním aplikace. Odstranění fronty, můžete to udělat pomocí **CloudQueue.Delete** metody. Můžete také odstranit pomocí fronty [webu Azure portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) nebo [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md).  
 
 ## <a name="add-a-message-to-a-queue"></a>Přidání zprávy do fronty
 
-Jakmile jste [vytvořili frontu](#create-a-queue), můžete taky přidat zprávy do této fronty. Tato část vás provede procesem přidání zprávu do fronty *zkušební fronty*. 
+Jakmile [vytvořili frontu](#create-a-queue), můžete taky přidat zprávy do této fronty. Tato část popisuje přidání zprávy do fronty *zkušební fronty*. 
 
 > [!NOTE]
 > 
-> V této části předpokládá, že jste dokončili postup [nastavení vývojového prostředí](#set-up-the-development-environment). 
+> Této části se předpokládá dokončení kroků [nastavení vývojového prostředí](#set-up-the-development-environment). 
 
 1. Otevřete soubor `QueuesController.cs`.
 
-1. Přidejte metodu s názvem **AddMessage** , který vrací **ActionResult**.
+1. Přidat metodu nazvanou **AddMessage** , který vrátí **ActionResult**.
 
     ```csharp
     public ActionResult AddMessage()
@@ -162,7 +162,7 @@ Jakmile jste [vytvořili frontu](#create-a-queue), můžete taky přidat zprávy
     }
     ```
  
-1. V rámci **AddMessage** metody get **CloudStorageAccount** objekt, který reprezentuje informace o účtu úložiště. Použít následující kód k získání připojovacího řetězce úložiště a informace o účtu úložiště z konfigurace služby Azure: (Změna  *&lt;název účtu úložiště >* k názvu účtu úložiště Azure přistupujete.)
+1. V rámci **AddMessage** metoda, získání **CloudStorageAccount** objekt reprezentující informace o vašem účtu úložiště. Použijte následující kód k získání připojovacího řetězce k úložišti a informace o účtu úložiště z konfigurace služby Azure: (Změna  *&lt;název účtu úložiště >* k názvu účtu úložiště Azure jste přístup.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -175,36 +175,36 @@ Jakmile jste [vytvořili frontu](#create-a-queue), můžete taky přidat zprávy
     CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
     ```
 
-1. Získání **CloudQueueContainer** objekt, který reprezentuje odkaz na frontu. 
+1. Získání **CloudQueueContainer** objekt, který představuje odkaz na frontu. 
    
     ```csharp
     CloudQueue queue = queueClient.GetQueueReference("test-queue");
     ```
 
-1. Vytvořte **CloudQueueMessage** objektu, který představuje zprávu, kterou chcete přidat do fronty. A **CloudQueueMessage** můžete vytvořit objekt z řetězce (ve formátu UTF-8) nebo pole bajtů.
+1. Vytvořte **CloudQueueMessage** objekt představující zprávu, kterou chcete přidat do fronty. A **CloudQueueMessage** objekt můžete vytvořit z řetězce (ve formátu UTF-8) nebo s polem bajtů.
 
     ```csharp
     CloudQueueMessage message = new CloudQueueMessage("Hello, Azure Queue Storage");
     ```
 
-1. Volání **CloudQueue.AddMessage** metody přidat messaged do fronty.
+1. Volání **CloudQueue.AddMessage** způsob, jak přidat messaged do fronty.
 
     ```csharp
     queue.AddMessage(message);
     ```
 
-1. Vytvoření a nastavení několika **ViewBag** vlastnosti pro zobrazení v zobrazení.
+1. Vytvořte a nastavte pár **objekt ViewBag** vlastnosti zobrazit v zobrazení.
 
     ```csharp
     ViewBag.QueueName = queue.Name;
     ViewBag.Message = message.AsString;
     ```
 
-1. V **Průzkumníku řešení**, rozbalte **zobrazení** složku, klikněte pravým tlačítkem na **fronty**a v místní nabídce vyberte **Přidat -> zobrazení**.
+1. V **Průzkumníka řešení**, rozbalte **zobrazení** složky, klikněte pravým tlačítkem na **fronty**a v místní nabídce vyberte **Přidat -> zobrazení**.
 
-1. Na **přidat zobrazení** dialogové okno, zadejte **AddMessage** pro název zobrazení, vyberte **přidat**.
+1. Na **přidat zobrazení** dialogové okno, zadejte **AddMessage** názvu zobrazení a vyberte **přidat**.
 
-1. Otevřete `AddMessage.cshtml`a upravit ho tak, aby vypadal jako následující fragment kódu:
+1. Otevřít `AddMessage.cshtml`a upravit ji tak, aby vypadal jako následující fragment kódu:
 
     ```csharp
     @{
@@ -216,7 +216,7 @@ Jakmile jste [vytvořili frontu](#create-a-queue), můžete taky přidat zprávy
     The message '@ViewBag.Message' was added to the queue '@ViewBag.QueueName'.
     ```
 
-1. V **Průzkumníku řešení**, rozbalte **-zobrazení > sdílené** složky a otevřete `_Layout.cshtml`.
+1. V **Průzkumníka řešení**, rozbalte **zobrazení -> sdílený** složky a otevřete `_Layout.cshtml`.
 
 1. Za poslední **Html.ActionLink**, přidejte následující **Html.ActionLink**:
 
@@ -224,23 +224,23 @@ Jakmile jste [vytvořili frontu](#create-a-queue), můžete taky přidat zprávy
     <li>@Html.ActionLink("Add message", "AddMessage", "Queues")</li>
     ```
 
-1. Spusťte aplikaci a vyberte **přidat zprávu** a zobrazte výsledky podobné následujícím snímku obrazovky:
+1. Spusťte aplikaci a vyberte **přidat zprávu** zobrazíte výsledky podobně jako na následujícím snímku obrazovky:
   
     ![Přidat zprávu](./media/vs-storage-aspnet-getting-started-queues/add-message-results.png)
 
-Dva oddíly - [přečte zprávu z fronty bez odebráním](#read-a-message-from-a-queue-without-removing-it) a [pro čtení a odebere zprávu z fronty](#read-and-remove-a-message-from-a-queue) -ukazují, jak číst zprávy z fronty.    
+Dva oddíly - [čtení zprávy z fronty, ale neodebrali.](#read-a-message-from-a-queue-without-removing-it) a [pro čtení a odebrání zprávy z fronty](#read-and-remove-a-message-from-a-queue) -ukazují, jak číst zprávy z fronty.    
 
-## <a name="read-a-message-from-a-queue-without-removing-it"></a>Přečte zprávu z fronty bez odebráním
+## <a name="read-a-message-from-a-queue-without-removing-it"></a>Čtení zprávy z fronty, ale neodebrali.
 
-Tato část ukazuje postup prohlížet zprávu ve frontě (první zprávu přečíst bez odebráním).  
+Tato část ukazuje, jak prohlížet zprávy ve frontě (první zprávu přečíst ale neodebrali.).  
 
 > [!NOTE]
 > 
-> V této části předpokládá, že jste dokončili postup [nastavení vývojového prostředí](#set-up-the-development-environment). 
+> Této části se předpokládá dokončení kroků [nastavení vývojového prostředí](#set-up-the-development-environment). 
 
 1. Otevřete soubor `QueuesController.cs`.
 
-1. Přidejte metodu s názvem **PeekMessage** , který vrací **ActionResult**.
+1. Přidat metodu nazvanou **PeekMessage** , který vrátí **ActionResult**.
 
     ```csharp
     public ActionResult PeekMessage()
@@ -251,7 +251,7 @@ Tato část ukazuje postup prohlížet zprávu ve frontě (první zprávu přeč
     }
     ```
  
-1. V rámci **PeekMessage** metody get **CloudStorageAccount** objekt, který reprezentuje informace o účtu úložiště. Použít následující kód k získání připojovacího řetězce úložiště a informace o účtu úložiště z konfigurace služby Azure: (Změna  *&lt;název účtu úložiště >* k názvu účtu úložiště Azure přistupujete.)
+1. V rámci **PeekMessage** metoda, získání **CloudStorageAccount** objekt reprezentující informace o vašem účtu úložiště. Použijte následující kód k získání připojovacího řetězce k úložišti a informace o účtu úložiště z konfigurace služby Azure: (Změna  *&lt;název účtu úložiště >* k názvu účtu úložiště Azure jste přístup.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -264,30 +264,30 @@ Tato část ukazuje postup prohlížet zprávu ve frontě (první zprávu přeč
     CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
     ```
 
-1. Získání **CloudQueueContainer** objekt, který reprezentuje odkaz na frontu. 
+1. Získání **CloudQueueContainer** objekt, který představuje odkaz na frontu. 
    
     ```csharp
     CloudQueue queue = queueClient.GetQueueReference("test-queue");
     ```
 
-1. Volání **CloudQueue.PeekMessage** metoda číst první zprávu ve frontě bez odebere ji z fronty. 
+1. Volání **CloudQueue.PeekMessage** metodu za účelem čtení bez odebrání z fronty první zprávu ve frontě. 
 
     ```csharp
     CloudQueueMessage message = queue.PeekMessage();
     ```
 
-1. Aktualizace **ViewBag** se dvěma hodnotami: název fronty a zprávy, která byla načtena. **CloudQueueMessage** objekt poskytuje dvě vlastnosti pro získání hodnota objektu: **CloudQueueMessage.AsBytes** a **CloudQueueMessage.AsString**. **AsString** (používá se v tomto příkladu) vrátí řetězec, zatímco **AsBytes** vrátí pole bajtů.
+1. Aktualizace **objekt ViewBag** pomocí dvou hodnot: název fronty a zpráva, která byla načtena. **CloudQueueMessage** objekt poskytuje dvě vlastnosti pro získání hodnoty objektu: **CloudQueueMessage.AsBytes** a **CloudQueueMessage.AsString**. **AsString** (používá se v tomto příkladu) vrátí řetězec, zatímco **AsBytes** vrátí pole bajtů.
 
     ```csharp
     ViewBag.QueueName = queue.Name; 
     ViewBag.Message = (message != null ? message.AsString : "");
     ```
 
-1. V **Průzkumníku řešení**, rozbalte **zobrazení** složku, klikněte pravým tlačítkem na **fronty**a v místní nabídce vyberte **Přidat -> zobrazení**.
+1. V **Průzkumníka řešení**, rozbalte **zobrazení** složky, klikněte pravým tlačítkem na **fronty**a v místní nabídce vyberte **Přidat -> zobrazení**.
 
-1. Na **přidat zobrazení** dialogové okno, zadejte **PeekMessage** pro název zobrazení, vyberte **přidat**.
+1. Na **přidat zobrazení** dialogové okno, zadejte **PeekMessage** názvu zobrazení a vyberte **přidat**.
 
-1. Otevřete `PeekMessage.cshtml`a upravit ho tak, aby vypadal jako následující fragment kódu:
+1. Otevřít `PeekMessage.cshtml`a upravit ji tak, aby vypadal jako následující fragment kódu:
 
     ```csharp
     @{
@@ -302,7 +302,7 @@ Tato část ukazuje postup prohlížet zprávu ve frontě (první zprávu přeč
     </table>    
     ```
 
-1. V **Průzkumníku řešení**, rozbalte **-zobrazení > sdílené** složky a otevřete `_Layout.cshtml`.
+1. V **Průzkumníka řešení**, rozbalte **zobrazení -> sdílený** složky a otevřete `_Layout.cshtml`.
 
 1. Za poslední **Html.ActionLink**, přidejte následující **Html.ActionLink**:
 
@@ -310,21 +310,21 @@ Tato část ukazuje postup prohlížet zprávu ve frontě (první zprávu přeč
     <li>@Html.ActionLink("Peek message", "PeekMessage", "Queues")</li>
     ```
 
-1. Spusťte aplikaci a vyberte **funkce Náhled zpráva** a zobrazte výsledky podobné následujícím snímku obrazovky:
+1. Spusťte aplikaci a vyberte **Peek message** zobrazíte výsledky podobně jako na následujícím snímku obrazovky:
   
-    ![Prohlížení zpráv](./media/vs-storage-aspnet-getting-started-queues/peek-message-results.png)
+    ![Náhled zprávy](./media/vs-storage-aspnet-getting-started-queues/peek-message-results.png)
 
-## <a name="read-and-remove-a-message-from-a-queue"></a>Přečtěte si a odebrání zprávy z fronty
+## <a name="read-and-remove-a-message-from-a-queue"></a>Čtení a odebrání zprávy z fronty
 
-V této části se dozvíte, jak ke čtení a odebrání zprávy z fronty.   
+V této části se dozvíte, jak číst a odebere zprávu z fronty.   
 
 > [!NOTE]
 > 
-> V této části předpokládá, že jste dokončili postup [nastavení vývojového prostředí](#set-up-the-development-environment). 
+> Této části se předpokládá dokončení kroků [nastavení vývojového prostředí](#set-up-the-development-environment). 
 
 1. Otevřete soubor `QueuesController.cs`.
 
-1. Přidejte metodu s názvem **ReadMessage** , který vrací **ActionResult**.
+1. Přidat metodu nazvanou **ReadMessage** , který vrátí **ActionResult**.
 
     ```csharp
     public ActionResult ReadMessage()
@@ -335,7 +335,7 @@ V této části se dozvíte, jak ke čtení a odebrání zprávy z fronty.
     }
     ```
  
-1. V rámci **ReadMessage** metody get **CloudStorageAccount** objekt, který reprezentuje informace o účtu úložiště. Použít následující kód k získání připojovacího řetězce úložiště a informace o účtu úložiště z konfigurace služby Azure: (Změna  *&lt;název účtu úložiště >* k názvu účtu úložiště Azure přistupujete.)
+1. V rámci **ReadMessage** metoda, získání **CloudStorageAccount** objekt reprezentující informace o vašem účtu úložiště. Použijte následující kód k získání připojovacího řetězce k úložišti a informace o účtu úložiště z konfigurace služby Azure: (Změna  *&lt;název účtu úložiště >* k názvu účtu úložiště Azure jste přístup.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -348,37 +348,37 @@ V této části se dozvíte, jak ke čtení a odebrání zprávy z fronty.
     CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
     ```
 
-1. Získání **CloudQueueContainer** objekt, který reprezentuje odkaz na frontu. 
+1. Získání **CloudQueueContainer** objekt, který představuje odkaz na frontu. 
    
     ```csharp
     CloudQueue queue = queueClient.GetQueueReference("test-queue");
     ```
 
-1. Volání **CloudQueue.GetMessage** metoda první zprávu ve frontě číst. **CloudQueue.GetMessage** metoda usnadňuje zpráva neviditelná pro jakýkoli jiný kód čtení zpráv tak, aby žádný jiný kód, můžete upravit nebo odstranit zpráva při vaší zpracování, je 30 sekund (ve výchozím nastavení). Chcete-li změnit dobu zpráva je neviditelná, změňte **visibilityTimeout** parametr předána **CloudQueue.GetMessage** metoda.
+1. Volání **CloudQueue.GetMessage** metodu za účelem čtení první zprávu ve frontě. **CloudQueue.GetMessage** metoda provádí zprávy neviditelná po dobu 30 sekund (ve výchozím nastavení) pro jakýkoli jiný kód tak, aby žádný kód můžete upravit nebo odstranit zprávy při vaší zpracování čtení zpráv. Chcete-li změnit dobu zprávy je neviditelné, upravte **visibilityTimeout** parametr předávaný do **CloudQueue.GetMessage** metody.
 
     ```csharp
     // This message will be invisible to other code for 30 seconds.
     CloudQueueMessage message = queue.GetMessage();     
     ```
 
-1. Volání **CloudQueueMessage.Delete** metoda odstranění zprávy z fronty.
+1. Volání **CloudQueueMessage.Delete** metodu k odstranění zprávy z fronty.
 
     ```csharp
     queue.DeleteMessage(message);
     ```
 
-1. Aktualizace **ViewBag** zprávu odstranit a s názvem fronty.
+1. Aktualizace **objekt ViewBag** zprávu odstranit a s názvem fronty.
 
     ```csharp
     ViewBag.QueueName = queue.Name;
     ViewBag.Message = message.AsString;
     ```
  
-1. V **Průzkumníku řešení**, rozbalte **zobrazení** složku, klikněte pravým tlačítkem na **fronty**a v místní nabídce vyberte **Přidat -> zobrazení**.
+1. V **Průzkumníka řešení**, rozbalte **zobrazení** složky, klikněte pravým tlačítkem na **fronty**a v místní nabídce vyberte **Přidat -> zobrazení**.
 
-1. Na **přidat zobrazení** dialogové okno, zadejte **ReadMessage** pro název zobrazení, vyberte **přidat**.
+1. Na **přidat zobrazení** dialogové okno, zadejte **ReadMessage** názvu zobrazení a vyberte **přidat**.
 
-1. Otevřete `ReadMessage.cshtml`a upravit ho tak, aby vypadal jako následující fragment kódu:
+1. Otevřít `ReadMessage.cshtml`a upravit ji tak, aby vypadal jako následující fragment kódu:
 
     ```csharp
     @{
@@ -393,7 +393,7 @@ V této části se dozvíte, jak ke čtení a odebrání zprávy z fronty.
     </table>
     ```
 
-1. V **Průzkumníku řešení**, rozbalte **-zobrazení > sdílené** složky a otevřete `_Layout.cshtml`.
+1. V **Průzkumníka řešení**, rozbalte **zobrazení -> sdílený** složky a otevřete `_Layout.cshtml`.
 
 1. Za poslední **Html.ActionLink**, přidejte následující **Html.ActionLink**:
 
@@ -401,21 +401,21 @@ V této části se dozvíte, jak ke čtení a odebrání zprávy z fronty.
     <li>@Html.ActionLink("Read/Delete message", "ReadMessage", "Queues")</li>
     ```
 
-1. Spusťte aplikaci a vyberte **pro čtení nebo odstranění zprávy** a zobrazte výsledky podobné následujícím snímku obrazovky:
+1. Spusťte aplikaci a vyberte **pro čtení nebo odstranění zprávy** zobrazíte výsledky podobně jako na následujícím snímku obrazovky:
   
-    ![Čtení a odstraňování zpráv](./media/vs-storage-aspnet-getting-started-queues/read-message-results.png)
+    ![Čtení a odstranění zprávy](./media/vs-storage-aspnet-getting-started-queues/read-message-results.png)
 
 ## <a name="get-the-queue-length"></a>Získání délky fronty
 
-Tato část ukazuje postup získání délky fronty (počet zpráv). 
+Tato část ukazuje, jak získat délku fronty (počet zpráv). 
 
 > [!NOTE]
 > 
-> V této části předpokládá, že jste dokončili postup [nastavení vývojového prostředí](#set-up-the-development-environment). 
+> Této části se předpokládá dokončení kroků [nastavení vývojového prostředí](#set-up-the-development-environment). 
 
 1. Otevřete soubor `QueuesController.cs`.
 
-1. Přidejte metodu s názvem **GetQueueLength** , který vrací **ActionResult**.
+1. Přidat metodu nazvanou **GetQueueLength** , který vrátí **ActionResult**.
 
     ```csharp
     public ActionResult GetQueueLength()
@@ -426,7 +426,7 @@ Tato část ukazuje postup získání délky fronty (počet zpráv).
     }
     ```
  
-1. V rámci **ReadMessage** metody get **CloudStorageAccount** objekt, který reprezentuje informace o účtu úložiště. Použít následující kód k získání připojovacího řetězce úložiště a informace o účtu úložiště z konfigurace služby Azure: (Změna  *&lt;název účtu úložiště >* k názvu účtu úložiště Azure přistupujete.)
+1. V rámci **ReadMessage** metoda, získání **CloudStorageAccount** objekt reprezentující informace o vašem účtu úložiště. Použijte následující kód k získání připojovacího řetězce k úložišti a informace o účtu úložiště z konfigurace služby Azure: (Změna  *&lt;název účtu úložiště >* k názvu účtu úložiště Azure jste přístup.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -439,13 +439,13 @@ Tato část ukazuje postup získání délky fronty (počet zpráv).
     CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
     ```
 
-1. Získání **CloudQueueContainer** objekt, který reprezentuje odkaz na frontu. 
+1. Získání **CloudQueueContainer** objekt, který představuje odkaz na frontu. 
    
     ```csharp
     CloudQueue queue = queueClient.GetQueueReference("test-queue");
     ```
 
-1. Volání **CloudQueue.FetchAttributes** metoda načtení atributů fronty (včetně jeho délky). 
+1. Volání **CloudQueue.FetchAttributes** metodu pro načtení atributů fronty (včetně jeho délky). 
 
     ```csharp
     queue.FetchAttributes();
@@ -457,18 +457,18 @@ Tato část ukazuje postup získání délky fronty (počet zpráv).
     int? nMessages = queue.ApproximateMessageCount;
     ```
 
-1. Aktualizace **ViewBag** s názvem fronty a jeho délka.
+1. Aktualizace **objekt ViewBag** názvem fronty a jeho délka.
 
     ```csharp
     ViewBag.QueueName = queue.Name;
     ViewBag.Length = nMessages;
     ```
  
-1. V **Průzkumníku řešení**, rozbalte **zobrazení** složku, klikněte pravým tlačítkem na **fronty**a v místní nabídce vyberte **Přidat -> zobrazení**.
+1. V **Průzkumníka řešení**, rozbalte **zobrazení** složky, klikněte pravým tlačítkem na **fronty**a v místní nabídce vyberte **Přidat -> zobrazení**.
 
-1. Na **přidat zobrazení** dialogové okno, zadejte **GetQueueLength** pro název zobrazení, vyberte **přidat**.
+1. Na **přidat zobrazení** dialogové okno, zadejte **GetQueueLength** názvu zobrazení a vyberte **přidat**.
 
-1. Otevřete `GetQueueLengthMessage.cshtml`a upravit ho tak, aby vypadal jako následující fragment kódu:
+1. Otevřít `GetQueueLengthMessage.cshtml`a upravit ji tak, aby vypadal jako následující fragment kódu:
 
     ```csharp
     @{
@@ -480,7 +480,7 @@ Tato část ukazuje postup získání délky fronty (počet zpráv).
     The queue '@ViewBag.QueueName' has a length of (number of messages): @ViewBag.Length
     ```
 
-1. V **Průzkumníku řešení**, rozbalte **-zobrazení > sdílené** složky a otevřete `_Layout.cshtml`.
+1. V **Průzkumníka řešení**, rozbalte **zobrazení -> sdílený** složky a otevřete `_Layout.cshtml`.
 
 1. Za poslední **Html.ActionLink**, přidejte následující **Html.ActionLink**:
 
@@ -488,21 +488,21 @@ Tato část ukazuje postup získání délky fronty (počet zpráv).
     <li>@Html.ActionLink("Get queue length", "GetQueueLength", "Queues")</li>
     ```
 
-1. Spusťte aplikaci a vyberte **získat délka fronty** a zobrazte výsledky podobné následujícím snímku obrazovky:
+1. Spusťte aplikaci a vyberte **získání délky fronty** zobrazíte výsledky podobně jako na následujícím snímku obrazovky:
   
     ![Získání délky fronty](./media/vs-storage-aspnet-getting-started-queues/get-queue-length-results.png)
 
 
 ## <a name="delete-a-queue"></a>Odstranění fronty
-Tato část ukazuje postup odstranění fronty. 
+Tato část ukazuje, jak se odstranění fronty. 
 
 > [!NOTE]
 > 
-> V této části předpokládá, že jste dokončili postup [nastavení vývojového prostředí](#set-up-the-development-environment). 
+> Této části se předpokládá dokončení kroků [nastavení vývojového prostředí](#set-up-the-development-environment). 
 
 1. Otevřete soubor `QueuesController.cs`.
 
-1. Přidejte metodu s názvem **DeleteQueue** , který vrací **ActionResult**.
+1. Přidat metodu nazvanou **DeleteQueue** , který vrátí **ActionResult**.
 
     ```csharp
     public ActionResult DeleteQueue()
@@ -513,7 +513,7 @@ Tato část ukazuje postup odstranění fronty.
     }
     ```
  
-1. V rámci **DeleteQueue** metody get **CloudStorageAccount** objekt, který reprezentuje informace o účtu úložiště. Použít následující kód k získání připojovacího řetězce úložiště a informace o účtu úložiště z konfigurace služby Azure: (Změna  *&lt;název účtu úložiště >* k názvu účtu úložiště Azure přistupujete.)
+1. V rámci **DeleteQueue** metoda, získání **CloudStorageAccount** objekt reprezentující informace o vašem účtu úložiště. Použijte následující kód k získání připojovacího řetězce k úložišti a informace o účtu úložiště z konfigurace služby Azure: (Změna  *&lt;název účtu úložiště >* k názvu účtu úložiště Azure jste přístup.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -526,29 +526,29 @@ Tato část ukazuje postup odstranění fronty.
     CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
     ```
 
-1. Získání **CloudQueueContainer** objekt, který reprezentuje odkaz na frontu. 
+1. Získání **CloudQueueContainer** objekt, který představuje odkaz na frontu. 
    
     ```csharp
     CloudQueue queue = queueClient.GetQueueReference("test-queue");
     ```
 
-1. Volání **CloudQueue.Delete** metoda odstranění fronty reprezentována **CloudQueue** objektu.
+1. Volání **CloudQueue.Delete** metoda Odstranit frontu reprezentována **CloudQueue** objektu.
 
     ```csharp
     queue.Delete();
     ```
 
-1. Aktualizace **ViewBag** s názvem fronty a jeho délka.
+1. Aktualizace **objekt ViewBag** názvem fronty a jeho délka.
 
     ```csharp
     ViewBag.QueueName = queue.Name;
     ```
  
-1. V **Průzkumníku řešení**, rozbalte **zobrazení** složku, klikněte pravým tlačítkem na **fronty**a v místní nabídce vyberte **Přidat -> zobrazení**.
+1. V **Průzkumníka řešení**, rozbalte **zobrazení** složky, klikněte pravým tlačítkem na **fronty**a v místní nabídce vyberte **Přidat -> zobrazení**.
 
-1. Na **přidat zobrazení** dialogové okno, zadejte **DeleteQueue** pro název zobrazení, vyberte **přidat**.
+1. Na **přidat zobrazení** dialogové okno, zadejte **DeleteQueue** názvu zobrazení a vyberte **přidat**.
 
-1. Otevřete `DeleteQueue.cshtml`a upravit ho tak, aby vypadal jako následující fragment kódu:
+1. Otevřít `DeleteQueue.cshtml`a upravit ji tak, aby vypadal jako následující fragment kódu:
 
     ```csharp
     @{
@@ -560,7 +560,7 @@ Tato část ukazuje postup odstranění fronty.
     @ViewBag.QueueName deleted.
     ```
 
-1. V **Průzkumníku řešení**, rozbalte **-zobrazení > sdílené** složky a otevřete `_Layout.cshtml`.
+1. V **Průzkumníka řešení**, rozbalte **zobrazení -> sdílený** složky a otevřete `_Layout.cshtml`.
 
 1. Za poslední **Html.ActionLink**, přidejte následující **Html.ActionLink**:
 
@@ -568,12 +568,12 @@ Tato část ukazuje postup odstranění fronty.
     <li>@Html.ActionLink("Delete queue", "DeleteQueue", "Queues")</li>
     ```
 
-1. Spusťte aplikaci a vyberte **získat délka fronty** a zobrazte výsledky podobné následujícím snímku obrazovky:
+1. Spusťte aplikaci a vyberte **získání délky fronty** zobrazíte výsledky podobně jako na následujícím snímku obrazovky:
   
     ![Odstranit frontu](./media/vs-storage-aspnet-getting-started-queues/delete-queue-results.png)
 
 ## <a name="next-steps"></a>Další postup
 Projděte si další průvodce funkcemi, kde najdete další informace o dalších možnostech pro ukládání dat v Azure.
 
-  * [Začínáme s Azure blob storage a Visual Studio připojené služby (ASP.NET)](../storage/vs-storage-aspnet-getting-started-blobs.md)
+  * [Začínáme s úložištěm objektů blob v Azure a Visual Studio připojené služby (ASP.NET)](../storage/vs-storage-aspnet-getting-started-blobs.md)
   * [Začínáme s Azure table storage a Visual Studio připojené služby (ASP.NET)](vs-storage-aspnet-getting-started-tables.md)

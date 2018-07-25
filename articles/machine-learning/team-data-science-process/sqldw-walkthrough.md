@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/24/2017
 ms.author: deguhath
-ms.openlocfilehash: 205c62246210373333c1315d5f3a9b3ec8571e59
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 6178c4a55d24bb37aae787129c9a0d390a2e536b
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39004366"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39226222"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>Vědecké zpracování týmových dat v akci: použití služby SQL Data Warehouse
 V tomto kurzu jsme vás provede procesem vytvoření a nasazení modelu strojového učení pomocí SQL Data Warehouse (SQL data Warehouse) veřejně dostupné datové sady – [cesty taxíkem NYC](http://www.andresmh.com/nyctaxitrips/) datové sady. Binární klasifikační model vytvořený předpovídá, zda tip platí pro cesty a které předpovědět distribuce pro tip částky zaplacené jsou popsány také pro víc tříd klasifikačních a regresních modelů.

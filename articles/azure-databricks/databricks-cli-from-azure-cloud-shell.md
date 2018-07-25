@@ -1,6 +1,6 @@
 ---
-title: Pomocí rozhraní příkazového řádku Databricks z prostředí cloudu Azure | Microsoft Docs
-description: Naučte se používat rozhraní příkazového řádku Databricks z prostředí cloudu Azure.
+title: Použití rozhraní příkazového řádku Databricks z Azure Cloud Shell | Dokumentace Microsoftu
+description: Zjistěte, jak používat rozhraní příkazového řádku Databricks z Azure Cloud Shell.
 services: azure-databricks
 documentationcenter: ''
 author: nitinme
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: c20ad02f962fbee22bb16653c5eab351d9f3de17
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 3ea4ebbd95237b50054fb0e344f260120d597ab5
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34598721"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39225230"
 ---
 # <a name="use-databricks-cli-from-azure-cloud-shell"></a>Použití rozhraní příkazového řádku Databricks z Azure Cloud Shellu
 
-Naučte se používat rozhraní příkazového řádku Databricks z prostředí cloudu Azure k provádění operací na Databricks.
+Zjistěte, jak používat rozhraní příkazového řádku Databricks z Azure Cloud Shell k provádění operací v Databricks.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -30,62 +30,60 @@ Naučte se používat rozhraní příkazového řádku Databricks z prostředí 
 
 * Nastavte osobní přístupový token v Databricks. Pokyny najdete v tématu [Token správu](https://docs.azuredatabricks.net/api/latest/authentication.html#token-management).
 
-## <a name="use-the-azure-cloud-shell"></a>Použití prostředí cloudu Azure
+## <a name="use-the-azure-cloud-shell"></a>Pomocí služby Azure Cloud Shell
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
  
-2. V pravém horním rohu klikněte na **cloudové prostředí** ikonu.
+2. V pravém horním rohu klikněte **Cloud Shell** ikonu.
 
-   ![Spusťte prostředí cloudu](./media/databricks-cli-from-azure-cloud-shell/launch-azure-cloud-shell.png "spusťte ODBC z Excelu")
+   ![Spustit Cloud Shell](./media/databricks-cli-from-azure-cloud-shell/launch-azure-cloud-shell.png "spustit Azure Cloud Shell")
 
-3. Zkontrolujte, zda jste vybrali **Bash** pro cloudové prostředí hodnotit. Můžete vybrat z rozevíracího seznamu možnost, jak je znázorněno na následujícím snímku obrazovky.
+3. Ujistěte se, že vyberete **Bash** pro prostředí Cloud Shell. Můžete vybrat z rozevíracího seznamu možnosti, jak je znázorněno na následujícím snímku obrazovky.
 
-   ![Spusťte prostředí cloudu](./media/databricks-cli-from-azure-cloud-shell/select-bash-for-shell.png "spusťte ODBC z Excelu") 
+   ![Vyberte Bash pro prostředí Cloud Shellu](./media/databricks-cli-from-azure-cloud-shell/select-bash-for-shell.png "vyberte Bash") 
 
-4. Vytvoření virtuálního prostředí, ve kterém můžete nainstalovat rozhraní příkazového řádku Databtricks. V tomto fragmentu kódu níže, vytvořte virtuální prostředí s názvem `databrickscli`.
+4. Vytvoření virtuálního prostředí, ve kterém můžete nainstalovat rozhraní příkazového řádku Databricks. V následujícím fragmentu kódu, můžete vytvořit virtuální prostředí volá `databrickscli`.
 
        virtualenv -p /usr/bin/python2.7 databrickscli
 
-5. Umožňuje přepnout do virtuálního prostředí, které jste vytvořili.
+5. Přepnout do virtuálního prostředí, které jste vytvořili.
 
        source databrickscli/bin/activate
 
-6. Nainstalujte rozhraní příkazového řádku Databricks.
+6. Instalace rozhraní příkazového řádku Databricks.
 
        pip install databricks-cli
 
-7. Nastavení ověřování s Databricks pomocí přístupového tokenu, který jste vytvořili musí, uvedené v rámci požadavků. Použijte následující příkaz:
+7. Nastavení ověřování pomocí služby Databricks pomocí přístupového tokenu, který musíte mít vytvořený, uvedený jako součást požadavků. Použijte následující příkaz:
 
        databricks configure --token
 
-    Zobrazí se následující pokynů:
+    Zobrazí se tyto výzvy:
 
-    * Zobrazí se výzva k zadání Databricks hostitele. Ente hodnota ve formátu `https://eastus2.azuredatabricks.net`. Zde **východní USA 2** je oblast Azure, kde jste vytvořili pracovní prostor Azure Databricks.
+    * Nejprve se výzva k zadání hostitele Databricks. Zadejte hodnotu ve formátu `https://eastus2.azuredatabricks.net`. Tady **USA – východ 2** je oblast Azure, ve kterém jste vytvořili pracovní prostor Azure Databricks.
 
-    * Zobrazí se výzva k zadání uživatelského jména. Zadejte **tokenu**.
+    * V dalším kroku budete vyzváni k zadání tokenu. Zadejte token, který jste vytvořili dříve.
 
-    * Nakonec zobrazí se výzva k zadání hesla. Zadejte token, který jste vytvořili dříve.
+Po dokončení těchto kroků můžete začít používat rozhraní příkazového řádku Databricks z Azure Cloud Shell.
 
-Po dokončení těchto kroků můžete začít používat rozhraní příkazového řádku Databricks z prostředí cloudu Azure.
+## <a name="use-databricks-cli"></a>Použití rozhraní příkazového řádku Databricks
 
-## <a name="use-databricks-cli"></a>Pomocí rozhraní příkazového řádku Databricks
-
-Nyní můžete spustit pomocí rozhraní příkazového řádku Databricks. Například spusťte následující příkaz, který zobrazí seznam všech Databricks clustery, které máte v pracovním prostoru.
+Teď můžete začít používat rozhraní příkazového řádku Databricks. Například spusťte následující příkaz k výpisu všech clusterech Databricks, které mají ve vašem pracovním prostoru.
 
     databricks clusters list
 
-Můžete také následující příkaz pro přístup k systému souborů Databricks (DBFS).
+Můžete také použít následující příkaz pro přístup k systému souborů Databricks (DBFS).
 
     databricks fs ls
 
 
-Úplný referenční příkazy, najdete v části [Databricks CLI](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html).
+Úplný popis příkazy pro probuzení, naleznete v tématu [rozhraní příkazového řádku Databricks](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html).
 
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o rozhraní příkazového řádku Azure najdete v tématu [přehled rozhraní příkazového řádku Azure](../cloud-shell/overview.md)
-* Pokud chcete zobrazit seznam příkazů pro Azure CLI, najdete v části [referenční dokumentace rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest)
-* Pokud chcete zobrazit seznam příkazů Databricks CLI, najdete v části [Databricks rozhraní příkazového řádku](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html)
+* Další informace o Azure CLI najdete v tématu [přehled Azure CLI](../cloud-shell/overview.md)
+* Seznam příkazů rozhraní příkazového řádku Azure najdete v tématu [referenční informace k Azure CLI](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest)
+* Seznam příkazů rozhraní příkazového řádku Databricks najdete v tématu [rozhraní příkazového řádku Databricks](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html)
 
 

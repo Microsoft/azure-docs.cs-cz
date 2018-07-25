@@ -1,67 +1,67 @@
 ---
-title: Nasazení Azure Blockchain Workbench
+title: Nasadit Azure Blockchain Workbench
 description: Jak nasadit Azure Blockchain Workbench
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 5/17/2018
+ms.date: 7/13/2018
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: e226aadbe499d5905b1814bec5d042f67d898c18
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 57b610b40edff56207617e212d0eb6e591ad50d4
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294845"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39224292"
 ---
-# <a name="deploy-azure-blockchain-workbench"></a>Nasazení Azure Blockchain Workbench
+# <a name="deploy-azure-blockchain-workbench"></a>Nasadit Azure Blockchain Workbench
 
-Azure Blockchain Workbench se nasazuje pomocí šablony řešení v Azure Marketplace. Šablona zjednodušuje nasazení komponent potřebných k vytvoření blockchain aplikací. Po nasazení Blockchain Workbench poskytuje přístup k aplikacím klienta k vytváření a správě uživatelů a blockchain aplikací.
+Azure Blockchain Workbench se nasadí pomocí šablony řešení na webu Azure Marketplace. Šablona zjednodušuje nasazení součásti potřebné k vytvoření blockchainové aplikace. Po nasazení Blockchain Workbench poskytuje přístup ke klientské aplikace k vytváření a správě uživatelů a blockchainové aplikace.
 
-Další informace o součástech nástroje Blockchain Workbench najdete v tématu [Azure Blockchain Workbench architektura](blockchain-workbench-architecture.md).
+Další informace o komponentách Blockchain Workbench najdete v tématu [architektury Azure Blockchain Workbench](blockchain-workbench-architecture.md).
 
 ## <a name="prepare-for-deployment"></a>Příprava nasazení
 
-Blockchain Workbench umožňuje nasadit blockchain knihy společně se sadou nejčastěji používá k vytvoření aplikace na základě blockchain příslušné služby Azure. Nasazení Blockchain Workbench za následek následující služby Azure se zřídí v rámci skupiny prostředků ve vašem předplatném Azure.
+Blockchain Workbench umožňuje nasadit blockchain účetní kniha společně se sadou relevantní služby Azure, které jsou nejčastěji používají k vytvoření blockchainové aplikace. Nasazení Blockchain Workbench výsledkem v rámci skupiny prostředků ve vašem předplatném Azure zřídí následující služby Azure.
 
-* Téma 1 událost mřížky
+* Téma 1 event gridu
 * Namespace 1 Service Bus
-* Přehled aplikace: 1
-* 1 databáze SQL (Standard S0)
-* Aplikační služby 2 (standardní)
-* 2 azure trezorů klíčů
-* 2 účty azure Storage (Standard LRS)
-* 2 sady škálování virtuálního počítače (pro ověření a pracovní uzly)
-* 2 virtuální sítě (včetně nástroj pro vyrovnávání zatížení, skupinu zabezpečení sítě a veřejnou IP adresu pro každou virtuální síť)
-* Volitelné: Azure monitorování
+* 1 application Insights
+* 1 SQL Database (Standard S0)
+* 2 app Services (Standard)
+* 2 trezory klíčů azure
+* 2 účtů služby azure Storage (Standard LRS)
+* 2 škálovací sady virtuálních počítačů (pro program pro ověření a pracovní uzly)
+* 2 virtuální sítě (včetně nástroje pro vyrovnávání zatížení, skupiny zabezpečení sítě a veřejnou IP adresu pro každou virtuální síť)
+* Volitelné: Azure Monitor
 
-Tady je příklad nasazení vytvořené v **myblockchain** skupinu prostředků.
+Tady je příklad nasazení vytvořit v **myblockchain** skupinu prostředků.
 
 ![Příklad nasazení](media/blockchain-workbench-deploy/example-deployment.png)
 
-Náklady na Blockchain Workbench je agregace náklady na základní služby Azure. Informace o cenách pro služby Azure, lze vypočítat pomocí [cenové kalkulačky](https://azure.microsoft.com/pricing/calculator/).
+Náklady na Blockchain Workbench není agregovaný a nákladů na podpůrné služby Azure. Informace o cenách pro Azure services je možné vypočítat pomocí [cenové kalkulačky](https://azure.microsoft.com/pricing/calculator/).
 
-Azure Blockchain Workbench potřeba splnit několik předpokladů před nasazení. Požadavky zahrnout registrace konfigurace a aplikace Azure AD.
+Azure Blockchain Workbench potřeba splnit několik předpokladů předcházející nasazení. Požadavky zahrnují konfiguraci a uplatnění registrace Azure AD.
 
-### <a name="blockchain-workbench-api-app-registration"></a>Registrace aplikací Blockchain Workbench API
+### <a name="blockchain-workbench-api-app-registration"></a>Registrace aplikace Blockchain Workbench API
 
-Nasazení Blockchain Workbench vyžaduje registraci aplikace Azure AD. Je nutné klienta služby Azure Active Directory (Azure AD) pro registraci aplikace. Můžete použít existujícího klienta nebo vytvořit nového klienta. Pokud používáte existujícího klienta Azure AD, je třeba dostatečná oprávnění k registraci aplikací a udělte oprávnění rozhraní Graph API v rámci klienta Azure AD. Pokud nemáte dostatečná oprávnění v existujícího klienta Azure AD vytvořte nového klienta. 
+Blockchain Workbench umožňuje nasazení vyžaduje registrace aplikace Azure AD. Budete potřebovat tenanta služby Azure Active Directory (Azure AD) k registraci aplikace. Můžete používat existujícího tenanta nebo vytvořit nového tenanta. Pokud používáte existujícího tenanta Azure AD, musíte dostatečná oprávnění k registraci aplikací a udělení oprávnění rozhraní Graph API v rámci tenanta služby Azure AD. Pokud nemáte dostatečná oprávnění v existujícím tenantovi Azure AD vytvořte nového tenanta. 
 
 > [!IMPORTANT]
-> Workbench nemusí být nasazen ve stejném klientovi jako ten, který používáte pro registraci aplikace Azure AD. Workbench musí být nasazený v klientovi, kdy máte dostatečná oprávnění k nasazování prostředky. Další informace o klienty Azure AD najdete v tématu [jak získat klienta služby Active Directory](../active-directory/develop/active-directory-howto-tenant.md) a [integrace aplikací s Azure Active Directory](../active-directory/develop/active-directory-integrating-applications.md).
+> Aplikace Workbench nemusí být nasazená ve stejném tenantovi, které používáte k registraci aplikace Azure AD. Aplikace Workbench musí být nasazeny v tenantovi, kde máte dostatečná oprávnění k nasazení prostředků. Další informace o tenantů Azure AD najdete v tématu [získání tenanta služby Active Directory](../active-directory/develop/active-directory-howto-tenant.md) a [integrace aplikací s Azure Active Directory](../active-directory/develop/active-directory-integrating-applications.md).
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Vyberte účet v pravém horním rohu a přepněte do požadovaného Azure AD klienta. Klient musí být správce předplatného klienta předplatného, kde je nasazená Workbench a máte dostatečná oprávnění k registraci aplikací.
-3. V levém navigačním podokně, vyberte **Azure Active Directory** služby. Vyberte **registrace aplikace** > **nové registrace aplikace**.
+2. Vyberte svůj účet v pravém horním rohu a přepnout na požadovanou Azure AD tenanta. Klient by měl být správce předplatného tenanta předplatného, ve kterém je nasazená aplikace Workbench a máte dostatečná oprávnění k registraci aplikace.
+3. V levém navigačním podokně, vyberte **Azure Active Directory** služby. Vyberte **registrace aplikací** > **registrace nové aplikace**.
 
     ![Registrace aplikace](media/blockchain-workbench-deploy/app-registration.png)
 
-4. Zadejte **název** a **přihlašovací adresa URL** pro aplikaci. Vzhledem k tomu, že jsou během nasazení změnit hodnoty, můžete použít zástupný symbol hodnoty. 
+4. Zadejte **název** a **přihlašovací adresa URL** pro aplikaci. Hodnoty zástupných symbolů můžete použít, protože byly změněny hodnoty během nasazení. 
 
-    ![Vytvoření aplikace registrace](media/blockchain-workbench-deploy/app-registration-create.png)
+    ![Vytvoření registrace aplikace](media/blockchain-workbench-deploy/app-registration-create.png)
 
     |Nastavení  | Hodnota  |
     |---------|---------|
@@ -69,15 +69,15 @@ Nasazení Blockchain Workbench vyžaduje registraci aplikace Azure AD. Je nutné
     |Typ aplikace |Webová aplikace / webové rozhraní API|
     |Přihlašovací adresa URL | `https://blockchainapi` |
 
-5. Vyberte **vytvořit** zaregistrovat aplikaci Azure AD.
+5. Vyberte **vytvořit** registrace aplikace Azure AD.
 
-### <a name="modify-application-manifest"></a>Upravte manifest aplikace
+### <a name="modify-application-manifest"></a>Upravit manifest aplikace
 
-Dále musíte upravit manifest aplikace pro použití aplikační role v rámci Azure AD k určení Blockchain Workbench správci.  Další informace o manifestů aplikace najdete v tématu [manifest aplikace Azure Active Directory](../active-directory/develop/active-directory-application-manifest.md).
+Dále je třeba upravit manifest aplikace pomocí aplikačních rolí v rámci Azure AD můžete určit Blockchain Workbench umožňuje správci.  Další informace o manifestech aplikace naleznete v tématu [manifest aplikace Azure Active Directory](../active-directory/develop/active-directory-application-manifest.md).
 
-1. Pro aplikaci jste zaregistrovali, vyberte **Manifest** v podokně podrobností zaregistrovanou aplikaci.
-2. Generovat identifikátor GUID. Můžete vygenerovat identifikátor GUID pomocí příkazu Powershellu [identifikátor guid]:: NewGuid () nebo rutinu New-GUID. Další možností je použít web generátor identifikátor GUID.
-3. Chcete-li aktualizovat **appRoles** oddílu manifest. V podokně manifestu upravit, vyberte **upravit** a nahraďte `"appRoles": []` s zadaný formát JSON. Nezapomeňte nahradit hodnotu **id** pole s identifikátorem GUID jste vygenerovali. 
+1. Pro aplikace, které jste zaregistrovali, vyberte **Manifest** v podokně podrobností registrované aplikaci.
+2. Generování identifikátoru GUID. Můžete vygenerovat identifikátor GUID, pomocí příkazu prostředí PowerShell [identifikátor guid]:: NewGuid () nebo rutiny New-GUID. Další možností je použití webu generátor identifikátor GUID.
+3. Chcete aktualizovat **appRoles** manifestu. V podokně úpravy manifestu vyberte **upravit** a nahraďte `"appRoles": []` pomocí zadaného kódu JSON. Nezapomeňte nahradit hodnotu **id** pole identifikátoru GUID, který jste vygenerovali. 
 
     ``` json
     "appRoles": [
@@ -98,87 +98,87 @@ Dále musíte upravit manifest aplikace pro použití aplikační role v rámci 
     ![Upravit manifest](media/blockchain-workbench-deploy/edit-manifest.png)
 
     > [!IMPORTANT]
-    > Hodnota **správce** je potřeba k identifikaci Blockchain Workbench správci.
+    > Hodnota **správce** , je potřeba identifikovat Blockchain Workbench umožňuje správci.
 
 4.  Klikněte na tlačítko **Uložit** se uložit změny manifestu aplikace.
 
-### <a name="add-graph-api-required-permissions"></a>Přidání rozhraní Graph API vyžaduje oprávnění
+### <a name="add-graph-api-required-permissions"></a>Přidání oprávnění požadované rozhraní Graph API
 
-Rozhraní API aplikace musí požádat o oprávnění uživatele pro přístup k adresáři. Nastavte následující požadované oprávnění pro aplikaci API:
+Aplikace rozhraní API je potřeba požádat o oprávnění uživatele pro přístup k adresáři. Nastavte následující požadované oprávnění pro aplikaci API:
 
-1. V registraci aplikace Blockchain API, vyberte **Nastavení > požadovaná oprávnění > Vybrat rozhraní API > Microsoft Graph**.
+1. V registraci aplikace API Blockchainu vyberte **Nastavení > požadovaná oprávnění > vyberte rozhraní API > Microsoft Graph**.
 
     ![Výběr rozhraní API](media/blockchain-workbench-deploy/client-app-select-api.png)
 
     Klikněte na **Vybrat**.
 
-2. V **povolit přístup** pod **oprávnění aplikací**, zvolte **číst úplných profilů všech uživatelů**.
+2. V **povolit přístup z** pod **oprávnění aplikace**, zvolte **čtení úplných profilů všech uživatelů**.
 
     ![Povolit přístup](media/blockchain-workbench-deploy/client-app-read-perms.png)
 
     Klikněte na tlačítko **vyberte** klikněte **provádí**.
 
-3. V **požadovaná oprávnění**, vyberte **udělit oprávnění** vyberte **Ano** pro výzvu ověření.
+3. V **požadovaná oprávnění**vyberte **udělit oprávnění** vyberte **Ano** zobrazení výzvy k ověření.
 
    ![Udělení oprávnění](media/blockchain-workbench-deploy/client-app-grant-permissions.png)
 
-   Udělení oprávnění umožňuje Blockchain Workbench pro přístup uživatelé v adresáři. Vyhledávání a přidání členů do Blockchain Workbench je potřeba oprávnění ke čtení.
+   Udělení oprávnění umožňuje Blockchain Workbench a jak přistupovat k uživatelé v adresáři. K vyhledání a přidání členů do Blockchain Workbench se vyžaduje oprávnění ke čtení.
 
-### <a name="add-graph-api-key-to-application"></a>Přidání rozhraní Graph API klíč do aplikace
+### <a name="add-graph-api-key-to-application"></a>Přidat klíč rozhraní Graph API k aplikaci
 
-Blockchain Workbench používá Azure AD jako hlavní identity systém správy uživatelům interakci s blockchain aplikace. Aby Blockchain Workbench pro přístup k Azure AD a načíst informace o uživateli, jako jsou jména a e-mailů je nutné přidat přístupový klíč. Blockchain Workbench používá klíč k ověření s Azure AD.
+Blockchain Workbench umožňuje uživatelům interakci s blockchainové aplikace používá Azure AD jako hlavní identita systému pro správu. Aby Blockchain Workbench umožňuje přístup ke službě Azure AD a načítání informací o uživatelích, jako jsou jména a e-mailů budete muset přidat přístupový klíč. Blockchain Workbench používá klíč k ověření ve službě Azure AD.
 
-1. Pro aplikaci jste zaregistrovali, vyberte **nastavení** v podokně podrobností zaregistrovanou aplikaci.
+1. Pro aplikace, které jste zaregistrovali, vyberte **nastavení** v podokně podrobností registrované aplikaci.
 2. Vyberte **Klíče**.
-3. Přidejte nový klíč zadáním klíče **popis** a výběr **vyprší platnost** hodnoty duration. 
+3. Přidejte nový klíč zadáním klíče **popis** a zvolíte **vyprší platnost** hodnoty duration. 
 
     ![Vytvořit klíč](media/blockchain-workbench-deploy/app-key-create.png)
 
     |Nastavení  | Hodnota  |
     |---------|---------|
     | Popis | `Service` |
-    | Platí do | Vyberte dobu trvání vypršení platnosti |
+    | Platí do | Zvolte doba vypršení platnosti |
 
 4. Vyberte **Uložit**. 
-5. Zkopírujte hodnotu klíče a uloží jej pro pozdější. Je třeba pro nasazení.
+5. Hodnotu klíče zkopírovat a uložit pro pozdější. Budete potřebovat pro nasazení.
 
     > [!IMPORTANT]
-    >  Pokud nemáte uložit klíč pro nasazení, musíte vygenerovat nový klíč. Hodnota klíče nelze načíst později z portálu.
+    >  Pokud je neuložíte klíč pro nasazení, musíte vygenerovat nový klíč. Hodnota klíče nelze načíst později z portálu.
 
 ### <a name="get-application-id"></a>Získání ID aplikace
 
-Informace ID a klienta aplikace jsou požadované pro nasazení. Shromažďovat a ukládat informace o použití během nasazení.
+Informace o aplikaci ID a klienta jsou požadovány pro nasazení. Shromažďování a ukládání informací pro použití během nasazování.
 
-1. Pro aplikaci jste zaregistrovali, vyberte **nastavení** > **vlastnosti**.
-2.  V **vlastnosti** podokně, kopírování a úložiště následující hodnoty pro pozdější použití při nasazení.
+1. Pro aplikace, které jste zaregistrovali, vyberte **nastavení** > **vlastnosti**.
+2.  V **vlastnosti** podokno, kopírování a úložiště následující hodnoty pro pozdější použití během nasazování.
 
     ![Vlastnosti aplikace API](media/blockchain-workbench-deploy/app-properties.png)
 
-    | Nastavení pro uložení  | Nasazení |
+    | Nastavení pro ukládání  | Použít v nasazení |
     |------------------|-------------------|
     | ID aplikace | Instalace nástroje Azure Active Directory > ID aplikace |
 
-### <a name="get-tenant-domain-name"></a>Získat název domény klienta
+### <a name="get-tenant-domain-name"></a>Získat název domény tenanta
 
-Shromažďovat a ukládat název domény klienta služby Active Directory, kde jsou registrované aplikace. 
+Shromažďování a ukládání název domény tenanta Active Directory, kde jsou registrovány v aplikacích. 
 
-V levém navigačním podokně, vyberte **Azure Active Directory** služby. Vyberte **vlastní názvy domén**. Zkopírujte a uložte názvu domény.
+V levém navigačním podokně, vyberte **Azure Active Directory** služby. Vyberte **Názvy vlastních domén**. Zkopírujte a uložte název domény.
 
 ![Název domény](media/blockchain-workbench-deploy/domain-name.png)
 
-## <a name="deploy-blockchain-workbench"></a>Nasazení Blockchain Workbench
+## <a name="deploy-blockchain-workbench"></a>Nasadit Blockchain Workbench
 
-Po dokončení požadovaných kroků jste připravení nasadit Blockchain Workbench. Následující oddíly popisují postup nasazení rozhraní.
+Po dokončení nezbytných kroků jste připravení nasadit Blockchain Workbench. Následující oddíly popisují postup nasazení rozhraní framework.
 
 1.  Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2.  V horní pravé, že rohu a přepnete se do požadovaného Azure AD klienta, kde chcete nasadit Azure Blockchain Workbench vyberte svůj účet.
-3.  V levém podokně vyberte **vytvořit prostředek**. Vyhledejte `Azure Blockchain Workbench` v **vyhledávání na webu Marketplace** panelu vyhledávání. 
+2.  V pravém rohu a přepnout na požadovanou Azure AD tenanta, ve které chcete nasadit Azure Blockchain Workbench vyberte svůj účet.
+3.  V levém podokně vyberte **vytvořit prostředek**. Vyhledejte `Azure Blockchain Workbench` v **Hledat na Marketplace** panelu hledání. 
 
-    ![Panel hledání Marketplace.](media/blockchain-workbench-deploy/marketplace-search-bar.png)
+    ![Panel hledání Marketplace](media/blockchain-workbench-deploy/marketplace-search-bar.png)
 
 4.  Vyberte **Azure Blockchain Workbench**.
 
-    ![Výsledky hledání Marketplace.](media/blockchain-workbench-deploy/marketplace-search-results.png)
+    ![Výsledky hledání Marketplace](media/blockchain-workbench-deploy/marketplace-search-results.png)
 
 4.  Vyberte **Vytvořit**.
 5.  Dokončení základní nastavení.
@@ -187,108 +187,128 @@ Po dokončení požadovaných kroků jste připravení nasadit Blockchain Workbe
 
     | Nastavení | Popis  |
     |---------|--------------|
-    | Předpona prostředků | Krátký jedinečný identifikátor pro vaše nasazení. Tato hodnota se používá jako základ pro názvy prostředků. |
-    | Virtuální počítač uživatelské jméno | Uživatelské jméno se používá jako správce pro všechny virtuální počítače (VM). |
-    | Typ ověřování | Vyberte, pokud chcete použít heslo nebo klíč pro připojení k virtuálním počítačům. |
+    | Předpona prostředků | Krátký jedinečný identifikátor pro vaše nasazení. Tato hodnota se používá jako základ pro vytváření názvů prostředků. |
+    | Uživatelské jméno virtuálního počítače | Uživatelské jméno slouží jako správce pro všechny virtuální počítače (VM). |
+    | Typ ověřování | Vyberte, pokud chcete použít hesla nebo klíče pro připojení k virtuálním počítačům. |
     | Heslo | Heslo se používá pro připojení k virtuálním počítačům. |
-    | SSH | Použijte veřejným klíčem RSA ve formátu jeden řádek začínající **ssh-rsa** nebo použijte formát PEM víceřádkový. Můžete vygenerovat pomocí klíče SSH `ssh-keygen` na Linuxu a OS X nebo PuTTYGen ve Windows. Další informace o klíče SSH, viz [klíče použití SSH se systémem Windows v Azure](../virtual-machines/linux/ssh-from-windows.md). |
-    | Databáze heslo / potvrďte heslo k databázi | Zadejte heslo pro přístup k databázi vytvořené jako součást nasazení. |
-    | Oblast nasazení | Zadejte, kam chcete nasadit Blockchain Workbench prostředky. Nejlepší dostupnost, mělo by to odpovídat **umístění** nastavení. |
+    | SSH | Použít veřejný klíč RSA v jednořádkovém formátu začíná **ssh-rsa** nebo víceřádkovém formátu PEM. Pomocí klíče SSH můžete vygenerovat `ssh-keygen` v Linuxu a OS X nebo PuTTYGen ve Windows. Další informace o klíči SSH, viz [klíče, jak použít SSH s Windows v Azure](../virtual-machines/linux/ssh-from-windows.md). |
+    | Heslo databáze / potvrďte heslo k databázi | Zadejte heslo pro přístup k databázi vytvořenou jako součást nasazení. |
+    | Oblast nasazení | Zadejte, kam chcete nasadit prostředky Blockchain Workbench. Pro nejlepší dostupnost, mělo by to odpovídat **umístění** nastavení. |
     | Předplatné | Zadejte předplatné Azure, které chcete použít pro vaše nasazení. |
-    | Skupiny prostředků | Vytvořit novou skupinu prostředků výběrem **vytvořit nový** a zadejte název skupiny prostředků jedinečný. |
-    | Umístění | Zadejte oblast, kterou chcete nasadit rozhraní. |
+    | Skupiny prostředků | Vytvořit novou skupinu prostředků tak, že vyberete **vytvořit nový** a zadejte název skupiny prostředků jedinečný. |
+    | Umístění | Zadejte oblast, kterou chcete nasadit rozhraní framework. |
 
-6.  Vyberte **OK** ukončíte základní nastavení konfigurační oddíl.
+6.  Vyberte **OK** dokončete nastavení základní konfigurační oddíl.
 
 7.  Dokončení **instalační program služby Azure Active Directory**.
 
-    ![Instalace nástroje Azure AD](media/blockchain-workbench-deploy/blockchain-workbench-settings-aad.png)
+    ![Azure AD – nastavení](media/blockchain-workbench-deploy/blockchain-workbench-settings-aad.png)
 
     | Nastavení | Popis  |
     |---------|--------------|
-    | Název domény | Použití Azure AD klienta shromážděny v [název domény klienta Get](#get-tenant-domain-name) část předpoklady v tématu. |
-    | ID aplikace | Pomocí ID aplikace z aplikace registrace klienta Blockchain shromažďované [získání ID aplikace](#get-application-id) část předpoklady v tématu. |
-    | Klíč aplikace | Použijte klíč aplikace z aplikace registrace klienta Blockchain shromážděny v [klíč přidat rozhraní Graph API k aplikaci](#add-graph-api-key-to-application) část předpoklady v tématu. |
+    | Název domény | Pomocí služby Azure AD tenant soustředěné [název domény tenantu Get](#get-tenant-domain-name) část předpoklady v tématu. |
+    | ID aplikace | Pomocí ID aplikace z registrace aplikace klienta Blockchain shromážděných v [získání ID aplikace](#get-application-id) část předpoklady v tématu. |
+    | Klíč aplikace | Použijte klíč aplikace z registrace aplikace klienta Blockchain shromážděných v [klíč přidat rozhraní Graph API k aplikaci](#add-graph-api-key-to-application) část předpoklady v tématu. |
 
 
-8.  Klikněte na tlačítko **OK** ukončíte část konfigurace Azure AD parametry.
+8.  Klikněte na tlačítko **OK** dokončete konfiguračního oddílu parametry Azure AD.
 
-9.  Dokončení **sítě velikost a výkon** nastavení.
+9.  V **nastavení sítě a výkonu**, zvolte, pokud chcete vytvořit novou síť blockchain, nebo použijte existující síť testování of-authority blockchain.
 
-    ![Nastavení sítě a výkonu](media/blockchain-workbench-deploy/blockchain-workbench-settings-network.png)
+    Pro **vytvořit nový**:
+
+    *Vytvořit nový* se vytvoří sada uzlů ethereum během testování of Authority (PoA) v rámci předplatného jeden člen. 
+
+    ![Nastavení sítě a výkonu](media/blockchain-workbench-deploy/blockchain-workbench-settings-network-new.png)
 
     | Nastavení | Popis  |
     |---------|--------------|
-    | Počet uzlů blockchain | Zvolte počet Ethereum druhů validátoru uzlů nasadit ve vaší síti. |
-    | Výkon úložiště | Vyberte upřednostňovaný výkon úložiště virtuálních počítačů ve vaší síti blockchain. |
-    | Velikost virtuálního počítače | Vyberte upřednostňovanou velikost virtuálního počítače ve vaší síti blockchain. |
+    | Počet uzlů blockchain | Zvolte počet Etherea PoA uzly program pro ověření nasazení ve vaší síti. |
+    | Výkon úložiště | Vyberte upřednostňovaný výkon úložiště virtuálního počítače pro vaši síť blockchain. |
+    | Velikost virtuálního počítače | Výběr upřednostňovaného velikosti virtuálního počítače pro vaši síť blockchain. |
 
-10. Vyberte **OK** ukončíte části velikost a výkon sítě.
+    Pro **použít existující**:
 
-11. Dokončení **Azure monitorování** nastavení.
+    *Použít existující* možnost umožňuje zadat síť blockchain ethereum během testování of-Authority (PoA). Koncové body mají následující požadavky.
+
+    * Koncový bod musí být síť blockchain ethereum během testování of-Authority (PoA).
+    * Koncový bod musí být veřejně přístupná přes síť.
+    * Síťové blockchainové PoA by měl být povolen mají cenu plynu nastaven na hodnotu nula (Poznámka: nejsou financování Blockchain Workbench účty. Pokud jsou vyžadovány fondy, transakce selže).
+
+    ![Nastavení sítě a výkonu](media/blockchain-workbench-deploy/blockchain-workbench-settings-network-existing.png)
+
+    | Nastavení | Popis  |
+    |---------|--------------|
+    | Koncový bod Etherea RPC | Zadejte koncový bod existující síť blockchain PoA RPC. Koncový bod začíná http:// a končí číslem portu. Například `http://contoso-chain.onmicrosoft.com:8545`. |
+    | Výkon úložiště | Vyberte upřednostňovaný výkon úložiště virtuálního počítače pro vaši síť blockchain. |
+    | Velikost virtuálního počítače | Výběr upřednostňovaného velikosti virtuálního počítače pro vaši síť blockchain. |
+
+10. Vyberte **OK** dokončete nastavení sítě a výkonu.
+
+11. Dokončení **Azure Monitor** nastavení.
 
     ![Azure Monitor](media/blockchain-workbench-deploy/blockchain-workbench-settings-oms.png)
 
     | Nastavení | Popis  |
     |---------|--------------|
-    | Monitorování | Zvolte, zda chcete povolit monitorování Azure, který chcete monitorovat vaši síť blockchain |
-    | Připojte se k existující instanci analýzy protokolů | Zvolte, zda chcete použít existující analýzy protokolů instance nebo vytvořte novou. Pokud používáte existující instanci, zadejte své ID pracovního prostoru a primární klíč. |
+    | Monitorování | Zvolte, jestli chcete povolit Azure Monitor k monitorování sítě blockchain |
+    | Připojte se k existující instanci Log Analytics | Zvolte, zda chcete použít existující instanci Log Analytics, nebo vytvořte novou. Pokud používáte existující instanci, zadejte ID pracovního prostoru a primární klíč. |
 
-12. Klikněte na tlačítko **OK** ukončíte části monitorování Azure.
+12. Klikněte na tlačítko **OK** k dokončení části Azure Monitor.
 
-13. Zkontrolujte souhrn k ověření, že parametry jsou správné.
+13. Kontrola souhrnných informací k ověření, že vaše parametry jsou správné.
 
     ![Souhrn](media/blockchain-workbench-deploy/blockchain-workbench-summary.png)
 
-14. Vyberte **vytvořit** souhlas s podmínkami a nasadit vaši Azure Blockchain Workbench.
+14. Vyberte **vytvořit** souhlasit s podmínkami a nasadit vaši aplikaci Azure Blockchain Workbench.
 
-Nasazení může trvat až 90 minut. Na portálu Azure můžete sledovat průběh. V nově vytvořený prostředek skupiny, vyberte **nasazení > Přehled** zobrazíte stav nasazených artefakty.
+Nasazení může trvat až 90 minut. Na webu Azure portal můžete použít ke sledování průběhu. V nově vytvořenou skupinu, vyberte **nasazení > Přehled** a zjistit stav nasazených artefakty.
 
 ## <a name="blockchain-workbench-web-url"></a>Adresa URL webové Blockchain Workbench
 
-Po dokončení nasazení nástroje Blockchain Workbench novou skupinu prostředků obsahuje prostředky Blockchain Workbench. Blockchain Workbench služby jsou přístupné prostřednictvím adresu URL webu. Následující kroky ukazují, jak získat adresu URL webové rozhraní nasazené.
+Po dokončení nasazení Blockchain Workbench, novou skupinu prostředků obsahuje prostředky Blockchain Workbench. Blockchain Workbench služby jsou přístupné prostřednictvím adresu URL webu. Následující kroky ukazují, jak načíst adresu URL webové rozhraní nasazené.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. V levém navigačním podokně vyberte **skupiny prostředků**
-3. Vyberte název skupiny prostředků, kterou jste zadali při nasazení Blockchain Workbench.
-4. Klikněte **typ** záhlaví sloupce seřadíte seznam podle abecedy podle typu.
-5. Existují dva prostředky s typem **služby App Service**. Vyberte prostředek typu **služby App Service** *bez* "-api" příponu.
+3. Zvolte název skupiny prostředků, které jste zadali při nasazení Blockchain Workbench.
+4. Klikněte na tlačítko **typ** záhlaví sloupce seřadíte seznam podle abecedy podle typu.
+5. Existují dva prostředky s typem **služby App Service**. Vyberte prostředek typu **služby App Service** *bez* "– rozhraní api" příponu.
 
-    ![Seznam služeb aplikace](media/blockchain-workbench-deploy/resource-group-list.png)
+    ![Seznam služeb App](media/blockchain-workbench-deploy/resource-group-list.png)
 
-6.  Ve službě App Service **Essentials** část, zkopírujte **URL** hodnotu, která představuje adresu URL webového vaše nasazené Blockchain Workbench.
+6.  Ve službě App Service **Essentials** tématu, zkopírujte **URL** hodnotu, která představuje adresu URL webové nasazené Blockchain Workbench.
 
-    ![Aplikace služby essentials](media/blockchain-workbench-deploy/app-service.png)
+    ![Základy služby aplikací](media/blockchain-workbench-deploy/app-service.png)
 
-Pokud chcete přiřadit vlastní název domény Blockchain Workbench, najdete v části [konfigurace vlastního názvu domény pro webovou aplikaci v Azure App Service pomocí Traffic Manager](../app-service/web-sites-traffic-manager-custom-domain-name.md).
+Blockchain Workbench umožňuje přidružit vlastní název domény, najdete v článku [konfigurace vlastního názvu domény pro webovou aplikaci ve službě Azure App Service pomocí Traffic Manageru](../app-service/web-sites-traffic-manager-custom-domain-name.md).
 
-## <a name="configuring-the-reply-url"></a>Konfigurace adresa URL odpovědi
+## <a name="configuring-the-reply-url"></a>Konfigurace adresy URL odpovědi
 
-Po nasazený Azure Blockchain Workbench, dalším krokem je zajistit, klientská aplikace Azure Active Directory (Azure AD) je zaregistrován na správnou **adresa URL odpovědi** nástroje Blockchain Workbench nasazené webové adresy URL.
+Po nasazení Azure Blockchain Workbench, dalším krokem je Ujistěte se, že klientská aplikace služby Azure Active Directory (Azure AD) je zaregistrován na správné **adresy URL odpovědi** adresa URL webu nasazené Blockchain Workbench.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Ověřte, zda že jsou v klientovi, kde registrovaná aplikace klienta Azure AD.
+2. Ověřte, že máte v tenantovi, kde jste zaregistrovali klientskou aplikaci služby Azure AD.
 3. V levém navigačním podokně, vyberte **Azure Active Directory** služby. Vyberte **Registrace aplikací**.
-4. Vyberte aplikaci klienta Azure AD, které je registrované v části požadavků.
-5. Vyberte **Nastavení > odpovědět adresy URL**.
-6. Zadejte adresu URL hlavní webové jste získali v nasazení Azure Blockchain Workbench **získat adresu URL webové Workbench Blockchain Azure** části. Adresa URL odpovědi je s předponou `https://`. Například `https://myblockchain2-7v75.azurewebsites.net`.
+4. Vyberte klientské aplikace Azure AD, které jste zaregistrovali v části požadavků.
+5. Vyberte **Nastavení > adresy URL odpovědí**.
+6. Zadejte adresu URL hlavní webové aplikaci Azure Blockchain Workbench nasazení, který jste získali v **získat adresu URL Azure Blockchain Workbench webové** oddílu. Adresa URL odpovědi je s předponou `https://`. Například `https://myblockchain2-7v75.azurewebsites.net`.
 
     ![Adresy URL odpovědí](media/blockchain-workbench-deploy/configure-reply-url.png)
 
-7. Vyberte **Uložit** aktualizace registrace klienta.
+7. Vyberte **Uložit** se aktualizovat registraci klienta.
 
-## <a name="remove-a-deployment"></a>Odebrat nasazení
+## <a name="remove-a-deployment"></a>Odebrání nasazení
 
-Při nasazení je již nepotřebujete, můžete odebrat odstraněním skupiny prostředků Blockchain Workbench nasazení.
+Pokud nasazení je už nepotřebujete, můžete odebrat nasazení tak, že odstraníte skupinu prostředků Blockchain Workbench.
 
-1. Na portálu Azure přejděte do **skupiny prostředků** v levém navigačním podokně a vyberte skupinu prostředků, které chcete odstranit. 
-2. Vyberte **Odstranit skupinu prostředků**. Ověřte odstranění zadáním názvu skupiny prostředků a vyberte **odstranit**.
+1. Na webu Azure Portal, přejděte na **skupiny prostředků** v levém navigačním podokně a vyberte skupinu prostředků, kterou chcete odstranit. 
+2. Vyberte **Odstranit skupinu prostředků**. Ověření odstranění proveďte tak, že zadáte název skupiny prostředků a vyberte **odstranit**.
 
     ![Odstranění skupiny prostředků](media/blockchain-workbench-deploy/delete-resource-group.png)
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto článku postupy nasadit Azure Blockchain Workbench. Chcete-li zjistit, jak vytvořit aplikaci blockchain, nadále další postupy článek.
+V tomto článku s postupy nasadit Azure Blockchain Workbench. Naučíte se vytvářet blockchainové aplikace, pokračujte na další článek.
 
 > [!div class="nextstepaction"]
-> [Vytvoření aplikace blockchain v Azure Blockchain Workbench](blockchain-workbench-create-app.md)
+> [Vytvoření blockchainové aplikace v Azure Blockchain Workbench](blockchain-workbench-create-app.md)

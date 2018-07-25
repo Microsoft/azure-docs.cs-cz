@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/20/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: d9fc643d9645f6b55ea885e3045a341ce6da88f6
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 669ac28302275c07365acad18cbd6cabebca5637
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39186957"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39239164"
 ---
 # <a name="overview-active-geo-replication-and-auto-failover-groups"></a>Přehled: Aktivní geografickou replikaci a automatické převzetí služeb při selhání skupiny
 Aktivní geografická replikace je navržená jako řešení obchodní kontinuity podnikových procesů, které umožňuje, aby aplikace k provádění rychlé zotavení po havárii v případě výpadku datového centra škálování. Pokud je povolené geografickou replikaci, aplikaci můžete spustit převzetí služeb při selhání do sekundární databáze v jiné oblasti Azure. V jedné nebo několika oblastech se podporují až čtyři sekundární databáze a sekundárních replik lze také pro dotazy přístup jen pro čtení. Převzetí služeb při selhání musí ručně zahájit uživatel nebo aplikace. Po převzetí služeb při selhání má nový primární koncový bod jiné připojení. 
@@ -92,7 +92,7 @@ Funkce automatického převzetí služeb skupiny poskytuje výkonné abstrakce a
 
 * **Naslouchací proces převzetí služeb při selhání skupiny pro čtení i zápis**: vytvořený záznam A DNS CNAME jako  **&lt;název skupiny převzetí služeb při selhání&gt;. database.windows.net** , která odkazuje na adresu URL aktuální primární server. Umožňuje aplikacím SQL pro čtení a zápis se transparentně znovu připojit k primární databáze, pokud se primární změní po převzetí služeb při selhání. 
 * **Převzetí služeb při selhání jen pro čtení naslouchacího procesu skupiny**: vytvořený záznam A DNS CNAME jako  **&lt;název skupiny převzetí služeb při selhání&gt;. secondary.database.windows.net** , která odkazuje na adresu URL na sekundární server. Umožňuje aplikacím SQL jen pro čtení transparentně připojení k sekundární databázi pomocí zadaného pravidla Vyrovnávání zatížení. 
-* **Automatické převzetí služeb při selhání zásad**: ve výchozím nastavení, je nakonfigurovaná skupina převzetí služeb při selhání k zásadám automatické převzetí služeb při selhání. Systém aktivuje převzetí služeb při selhání, když se zjistí selhání a období odkladu vypršelo. Systému musíte ověřit, že výpadek nelze možné zmírnit zajištěním integrovanou vysokou dostupnost infrastruktury služby SQL Database z důvodu škále dopad. Pokud chcete řídit pracovní postup převzetí služeb při selhání z aplikace, můžete vypnout automatické převzetí služeb při selhání. 
+* **Automatické převzetí služeb při selhání zásad**: ve výchozím nastavení, je nakonfigurovaná skupina převzetí služeb při selhání k zásadám automatické převzetí služeb při selhání. Systém aktivuje převzetí služeb při selhání, když se zjistí selhání a období odkladu vypršelo. Systému musíte ověřit, že výpadek nelze možné zmírnit zajištěním integrovanou vysokou dostupnost infrastruktury služby SQL Database z důvodu škálování dopad. Pokud chcete řídit pracovní postup převzetí služeb při selhání z aplikace, můžete vypnout automatické převzetí služeb při selhání. 
 * **Zásada převzetí služeb při selhání jen pro čtení**: ve výchozím nastavení, převzetí služeb při selhání naslouchacího zápisu jen pro čtení zakázána. Zajišťuje, že není při offline sekundární dopad na výkon primární. Ale to také znamená, že relace jen pro čtení nebudete moct připojit, dokud je obnovit sekundární. Pokud jste nejde tolerovat výpadku pro relace jen pro čtení a lze dočasně použít primární pro jen pro čtení pro čtení i zápis přenosy i za cenu potenciální snížení výkonu z primární, můžete povolit převzetí služeb při selhání pro naslouchací proces jen pro čtení. V takovém případě provozu jen pro čtení automaticky přesměrováni na primární server Pokud sekundární server není k dispozici.  
 * **Ruční převzetí služeb při selhání**: převzetí služeb při selhání můžete spustit ručně kdykoli bez ohledu na to, konfiguraci automatického převzetí služeb při selhání. Pokud není nakonfigurované zásady pro automatické převzetí služeb při selhání, ruční převzetí služeb při selhání je potřeba obnovit databáze ve skupině převzetí služeb při selhání. Můžete zahájit vynucené nebo popisný převzetí služeb při selhání (se úplná synchronizace dat). Ten může použít k přesunutí aktivního serveru do primární oblasti. Po dokončení převzetí služeb při selhání se automaticky aktualizují záznamy DNS pro zajištění možnosti připojení ke správnému serveru.
 * **Období odkladu se ztrátou dat**: protože primárních a sekundárních databází se synchronizují pomocí asynchronní replikace, převzetí služeb může způsobit ztrátu dat. Zásady automatické převzetí služeb při selhání tak, aby odrážely tolerance vaší aplikace ke ztrátě dat. můžete přizpůsobit. Tím, že nakonfigurujete **GracePeriodWithDataLossHours**, můžete řídit, jak dlouho systém čeká před inicializací převzetí služeb při selhání, která by mohla ztrátě dat výsledků. 

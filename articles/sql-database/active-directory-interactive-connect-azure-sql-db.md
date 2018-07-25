@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/06/2018
 ms.author: MirekS
 ms.reviewer: GeneMi
-ms.openlocfilehash: cbbaa789295a0e8fe602d7d90055f6d3af6bfc01
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 3d6eb70b3ce9072dc2c51220af89549022b5dacf
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "34643752"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39238264"
 ---
 # <a name="use-activedirectoryinteractive-mode-to-connect-to-azure-sql-database"></a>Režim ActiveDirectoryInteractive slouží k připojení ke službě Azure SQL Database
 
@@ -124,7 +124,7 @@ Je jeden obory názvů, příklad jazyka C# využívající **System.Data.SqlCli
 
 - **SqlAuthenticationMethod.ActiveDirectory*interaktivní ***:&nbsp; použijte tento fragment se uživatelské jméno Azure AD k dosažení vícefaktorové ověřování služby Multi-Factor authentication.
     - Tato hodnota je hlavním cílem tohoto článku. Vytvoří interaktivní zobrazením dialogová okna pro heslo uživatele a pro ověřování MFA, pokud vícefaktorové ověřování se vynucují na tohoto uživatele.
-    - Tato hodnota je k dispozici počínaje rozhraním .NET Framework verze 4.7.2 s.
+    - Tato hodnota je k dispozici od verze rozhraní .NET Framework verze 4.7.2.
 
 - **SqlAuthenticationMethod.ActiveDirectory*integrované ***:&nbsp; se používá *federované* účtu. Pro federované účet, který se označuje uživatelské jméno k doméně Windows. Tato metoda nepodporuje vícefaktorové ověřování.
 

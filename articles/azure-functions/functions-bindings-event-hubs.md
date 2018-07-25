@@ -16,12 +16,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: tdykstra
-ms.openlocfilehash: 7ea233f3d5b0e0b6ad1470af146f963fce6c4e94
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
-ms.translationtype: HT
+ms.openlocfilehash: 51f64f6f74875c6afac350dc9cc235573b89c524
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970668"
+ms.locfileid: "38989584"
 ---
 # <a name="azure-event-hubs-bindings-for-azure-functions"></a>Azure Event Hubs vazby pro službu Azure Functions
 
@@ -236,7 +236,7 @@ let Run(myEventHubMessage: string, log: TraceWriter) =
 
 ### <a name="trigger---javascript-example"></a>Aktivační události – příklad v jazyce JavaScript
 
-Tento připojovací řetězec musí mít oprávnění k odesílání k odeslání zprávy do datového proudu událostí. V jazyce C# a skript jazyka C#, odesílání zpráv s použitím parametru metody, jako [.
+Následující příklad ukazuje vazby v aktivační procedura událostí centra *function.json* souboru a [funkce jazyka JavaScript](functions-reference-node.md) , který používá vazba. Funkce přečte [metadat události](#trigger---event-metadata) a zaprotokoluje zprávu.
 
 Následující příklady znázorňují data vazby služby Event Hubs v *function.json* souboru. První příklad je určený pro funkce 1.x a druhý je pro službu Functions 2.x. 
 
@@ -272,7 +272,7 @@ module.exports = function (context, eventHubMessage) {
 };
 ```
 
-Ve skriptu jazyka C# `cardinality` je zadaná hodnota v `many` vlastnost *function.json*. První příklad je určený pro funkce 1.x a druhý je pro službu Functions 2.x. 
+Chcete-li přijímat události v dávce, nastavte `cardinality` k `many` v *function.json* souboru, jak je znázorněno v následujícím příkladu. První příklad je určený pro funkce 1.x a druhý je pro službu Functions 2.x. 
 
 ```json
 {
@@ -309,11 +309,11 @@ module.exports = function (context, eventHubMessages) {
 };
 ```
 
-## <a name="trigger---attributes"></a>Pro zápis zpráv více, můžete použít  nebo  místo .
+## <a name="trigger---attributes"></a>Aktivační události – atributy
 
-V jazyce JavaScript, k výstupní událost s využitím [.
+V [knihoven tříd C#](functions-dotnet-class-library.md), použijte [EventHubTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubTriggerAttribute.cs) atribut.
 
-je zadaná hodnota v  vlastnost function.json. Další informace o těchto nastaveních najdete v tématu [aktivovat konfigurační oddíl](#trigger---configuration). Tady je `EventHubTriggerAttribute` příkladu atribut:
+Konstruktor atributu má název centra událostí, název skupiny uživatelů a název nastavení aplikace, které obsahuje připojovací řetězec. Další informace o těchto nastaveních najdete v tématu [aktivovat konfigurační oddíl](#trigger---configuration). Tady je `EventHubTriggerAttribute` příkladu atribut:
 
 ```csharp
 [FunctionName("EventHubTriggerCSharp")]
@@ -367,6 +367,8 @@ Zobrazit [příklady kódu](#trigger---example) , které používají tyto vlast
 ## <a name="output"></a>Výstup
 
 Pomocí služby Event Hubs výstupní vazbu zapsat události do datového proudu událostí. Musíte mít oprávnění Odeslat do centra událostí zapsat události do něj.
+
+Ujistěte se odkazy na požadované balíčky jsou na místě: [funkce 1.x](#packages---functions-1.x) nebo [funkce 2.x](#packages---functions-2.x) 
 
 ## <a name="output---example"></a>Výstup – příklad
 
@@ -477,7 +479,7 @@ let Run(myTimer: TimerInfo, outputEventHubMessage: byref<string>, log: TraceWrit
 
 ### <a name="output---javascript-example"></a>Výstup – příklad v jazyce JavaScript
 
-Tento připojovací řetězec musí mít oprávnění k odesílání k odeslání zprávy do datového proudu událostí. Funkce zapíše zprávu do centra událostí.
+Následující příklad ukazuje vazby v aktivační procedura událostí centra *function.json* souboru a [funkce jazyka JavaScript](functions-reference-node.md) , který používá vazba. Funkce zapíše zprávu do centra událostí.
 
 Následující příklady znázorňují data vazby služby Event Hubs v *function.json* souboru. První příklad je určený pro funkce 1.x a druhý je pro službu Functions 2.x. 
 

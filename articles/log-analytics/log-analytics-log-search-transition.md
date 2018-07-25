@@ -50,7 +50,7 @@ Následující tabulka uvádí srovnání mezi celou řadu běžných dotazů na
 |                        | Typ = událostí &#124; prvních 100 | Událost &#124; trvat 100 |
 | Porovnání řetězců      | Typ = Computer=srv01.contoso.com událostí   | Událost &#124; kde počítač == "srv01.contoso.com" |
 |                        | Typ = Computer=contains("contoso") událostí | Událost &#124; kde počítač obsahuje "contoso" (ne velká a malá písmena)<br>Událost &#124; kde počítač contains_cs "Contoso" (malá a velká písmena) |
-|                        | Typ = počítač událostí = RegEx ("\@contoso @")  | Událost &#124; kde počítače odpovídá regulárnímu výrazu ". *contoso*" |
+|                        | Typ = počítač událostí = RegEx ("\@contoso \@\")  | Událost &#124; kde počítače odpovídá regulárnímu výrazu ". *contoso*" |
 | Porovnání kalendářních dat        | Typ události TimeGenerated = > nyní 1DAYS | Událost &#124; kde TimeGenerated > ago(1d) |
 |                        | Typ události TimeGenerated = > 2017-05-01 TimeGenerated < 2017-05-31 | Událost &#124; kde TimeGenerated mezi (datetime(2017-05-01)... DATETIME(2017-05-31)) |
 | Logická hodnota porovnání     | Typ = prezenčního signálu IsGatewayInstalled = false  | Prezenční signál \| kde IsGatewayInstalled hodnotu false |
