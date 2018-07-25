@@ -1,47 +1,37 @@
 ---
-title: Začínáme s DNS Azure pomocí PowerShellu | Dokumentace Microsoftu
-description: Naučíte se vytvořit zónu a záznam DNS v DNS Azure. Pomocí tohoto podrobného průvodce můžete vytvořit a spravovat první zónu a záznam DNS pomocí PowerShellu.
+title: 'Rychlé zprovoznění: Vytvoření záznamu a zóny Azure DNS pomocí Azure PowerShellu'
+description: Naučíte se vytvořit zónu a záznam DNS v DNS Azure. Pomocí tohoto podrobného postupu můžete vytvořit a spravovat první zónu a záznam DNS pomocí Azure PowerShellu.
 services: dns
-documentationcenter: na
-author: KumudD
-manager: timlt
-editor: ''
-tags: azure-resource-manager
-ms.assetid: fb0aa0a6-d096-4d6a-b2f6-eda1c64f6182
+author: vhorne
 ms.service: dns
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 03/10/2017
-ms.author: kumud
-ms.openlocfilehash: 050111f4a5e8459e89d049ccb879b5079ff68527
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.topic: quickstart
+ms.date: 07/16/2018
+ms.author: victorh
+ms.openlocfilehash: e5801e9ed512a32d793f7b4b71be86174f656ab0
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30175320"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39089974"
 ---
-# <a name="get-started-with-azure-dns-using-powershell"></a>Začínáme s DNS Azure pomocí PowerShellu
+# <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-powershell"></a>Rychlé zprovoznění: Vytvoření záznamu a zóny Azure DNS pomocí Azure PowerShellu
 
-> [!div class="op_single_selector"]
-> * [Azure Portal](dns-getstarted-portal.md)
-> * [PowerShell](dns-getstarted-powershell.md)
-> * [Azure CLI 1.0](dns-getstarted-cli-nodejs.md)
-> * [Azure CLI 2.0](dns-getstarted-cli.md)
-
-Tento článek vás provede kroky k vytvoření první zóny a záznamu DNS pomocí Azure PowerShellu. Tyto kroky můžete provést také pomocí webu Azure Portal nebo Azure CLI pro různé platformy. Azure DNS také podporuje vytváření privátních domén. Podrobné pokyny k vytvoření první privátní zóny DNS a záznamu najdete v tématu [Začínáme s privátními zónami DNS Azure pomocí PowerShellu](private-dns-getstarted-powershell.md).
+V tomto rychlém zprovoznění vytvoříte první záznam a zónu Azure DNS pomocí Azure PowerShellu. Tyto kroky můžete provést také pomocí webu [Azure Portal](dns-getstarted-portal.md) nebo [Azure CLI](dns-getstarted-cli.md). 
 
 K hostování záznamů DNS v určité doméně se používá zóna DNS. Pokud chcete začít hostovat svou doménu v DNS Azure, musíte vytvořit zónu DNS pro daný název domény. Všechny záznamy DNS pro vaši doménu se pak vytvoří v této zóně DNS. Nakonec, pokud chcete zónu DNS publikovat na internetu, bude potřeba nakonfigurovat pro doménu názvové servery. Jednotlivé kroky jsou popsány níže.
 
-Tyto pokyny předpokládají, že již máte nainstalované prostředí Azure PowerShell a jste k němu přihlášeni. Nápovědu získáte v tématu [Správa zón DNS pomocí PowerShellu](dns-operations-dnszones.md).
+Azure DNS také podporuje vytváření privátních domén. Podrobné pokyny k vytvoření první privátní zóny DNS a záznamu najdete v tématu [Začínáme s privátními zónami DNS Azure pomocí PowerShellu](private-dns-getstarted-powershell.md).
+
+[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
+
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="create-the-resource-group"></a>Vytvoření skupiny prostředků
 
-Před vytvořením zóny DNS se vytvoří skupina prostředků, která bude obsahovat zónu DNS. Následuje ukázka příkazu.
+Před vytvořením zóny DNS vytvořte skupinu prostředků, která bude obsahovat zónu DNS.
 
 ```powershell
-New-AzureRMResourceGroup -name MyResourceGroup -location "westus"
+New-AzureRMResourceGroup -name MyResourceGroup -location "eastus"
 ```
 
 ## <a name="create-a-dns-zone"></a>Vytvoření zóny DNS
@@ -51,7 +41,6 @@ Zóna DNS se vytvoří pomocí rutiny `New-AzureRmDnsZone`. Následující pří
 ```powershell
 New-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyResourceGroup
 ```
-Azure DNS teď podporuje také privátní zóny DNS (aktuálně ve verzi Public Preview).  Další informace o privátních zónách DNS najdete v tématu [Použití DNS Azure pro privátní domény](private-dns-overview.md). Příklad vytvoření privátní zóny DNS najdete v tématu [Začínáme s privátními zónami Azure DNS pomocí PowerShellu](./private-dns-getstarted-powershell.md).
 
 ## <a name="create-a-dns-record"></a>Vytvoření záznamu DNS
 
@@ -60,9 +49,6 @@ Sady záznamů vytvoříte pomocí rutiny `New-AzureRmDnsRecordSet`. Následují
 ```powershell
 New-AzureRmDnsRecordSet -Name www -RecordType A -ZoneName contoso.com -ResourceGroupName MyResourceGroup -Ttl 3600 -DnsRecords (New-AzureRmDnsRecordConfig -IPv4Address "1.2.3.4")
 ```
-
-Informace o dalších typech záznamů, sadách záznamů s více než jedním záznamem a úpravě existujících záznamů najdete v tématu [Správa záznamů a sad záznamů DNS pomocí Azure PowerShellu](dns-operations-recordsets.md). 
-
 
 ## <a name="view-records"></a>Zobrazení záznamů
 
@@ -95,7 +81,7 @@ Tyto názvové servery by měly být nakonfigurované u registrátora názvu dom
 
 ## <a name="delete-all-resources"></a>Odstranění všech prostředků
 
-Pokud chcete odstranit všechny prostředky vytvořené v rámci tohoto článku, proveďte následující krok:
+Pokud už nejsou potřeba, můžete všechny prostředky vytvořené v rámci tohoto rychlého startu odstranit odstraněním této skupiny prostředků:
 
 ```powershell
 Remove-AzureRMResourceGroup -Name MyResourceGroup
@@ -103,9 +89,8 @@ Remove-AzureRMResourceGroup -Name MyResourceGroup
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o DNS Azure najdete v tématu [Přehled DNS Azure](dns-overview.md).
+Teď když jste vytvořili svoji první zónu a záznam DNS pomocí Azure Powershellu, můžete vytvořit záznamy pro webovou aplikaci ve vlastní doméně.
 
-Další informace o správě zón DNS v DNS Azure najdete v tématu [Správa zón DNS v DNS Azure pomocí PowerShellu](dns-operations-dnszones.md).
-
-Další informace o správě záznamů DNS v DNS Azure najdete v tématu [Správa záznamů a sad záznamů DNS v DNS Azure pomocí PowerShellu](dns-operations-recordsets.md).
+> [!div class="nextstepaction"]
+> [Vytvoření záznamů DNS pro webovou aplikaci ve vlastní doméně](./dns-web-sites-custom-domain.md)
 

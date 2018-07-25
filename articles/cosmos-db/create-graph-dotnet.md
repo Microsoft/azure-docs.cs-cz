@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: bbe60fb6a6371551f588d5472ac304148a4a1aa7
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 27cfb391c5c47ef44c443e2603da62fe5d6a3122
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38453412"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113041"
 ---
 # <a name="azure-cosmos-db-build-a-net-framework-or-core-application-using-the-graph-api"></a>Azure Cosmos DB: Vytvoření aplikace v .NET Framework nebo .NET Core s využitím rozhraní Graph API
 
@@ -153,21 +153,25 @@ Všechny následující fragmenty kódu pocházejí ze souboru Program.cs.
 
 Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připojovacím řetězci, a zkopírujte je do aplikace.
 
-1. Na [portálu Azure](http://portal.azure.com/) klikněte na **Klíče**. 
+1. Na webu [Azure Portal](http://portal.azure.com/) přejděte k vašemu účtu databáze grafů. Na kartě **Přehled** se zobrazují dva koncové body: 
+ 
+   **.Net SDK URI** – Tato hodnota se použije, když se k účtu databáze grafů připojíte s využitím knihovny Microsoft.Azure.Graphs. 
 
-    Zkopírujte první část hodnoty identifikátoru URI.
+   **Koncový bod Gremlin** – Tato hodnota se použije, když se k účtu databáze grafů připojíte s využitím knihovny Gremlin.Net.
 
-    ![Zobrazení a zkopírování přístupového klíče na portálu Azure na stránce Klíče](./media/create-graph-dotnet/keys.png)
+    ![Kopírování koncového bodu](./media/create-graph-dotnet/endpoint.png)
+
+   Pokud chcete spustit tuto ukázku, zkopírujte hodnotu **Koncový bod Gremlin** a odstraňte číslo portu na konci. To znamená, že URI pak má tvar `https://<your cosmos db account name>.gremlin.cosmosdb.azure.com`.
 
 2. V souboru Program.cs vložte místo hodnoty `your-endpoint` v proměnné `hostname` na řádku 19 název vašeho koncového bodu. 
 
-    `"private static string hostname = "your-endpoint.gremlin.cosmosdb.azure.com";`
+    `"private static string hostname = "<your cosmos db account name>.gremlin.cosmosdb.azure.com";`
 
     Hodnota koncového bodu by teď měla vypadat takto:
 
     `"private static string hostname = "testgraphacct.gremlin.cosmosdb.azure.com";`
 
-3. Zkopírujte z portálu hodnotu vašeho **PRIMÁRNÍHO KLÍČE** a vložte ji do proměnné `authkey` na řádku 21 místo zástupné hodnoty `"your-authentication-key"`. 
+3. Potom přejděte na kartu **Klíče**, zkopírujte z portálu hodnotu **PRIMÁRNÍ KLÍČ** a vložte ji do proměnné `authkey` na řádku 21 místo zástupné hodnoty `"your-authentication-key"`. 
 
     `private static string authKey = "your-authentication-key";`
 

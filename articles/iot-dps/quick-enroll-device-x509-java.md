@@ -1,5 +1,5 @@
 ---
-title: Registrace zařízení X.509 do služby Azure Device Provisioning pomocí Javy | Microsoft Docs
+title: Registrace zařízení X.509 do služby Azure Device Provisioning pomocí Javy | Dokumentace Microsoftu
 description: Rychlý start Azure – Registrace zařízení X.509 do služby Azure IoT Hub Device Provisioning pomocí sady SDK služby pro Javu
 author: dsk-2015
 ms.author: dkshir
@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: cea83fbe9c60bab687eb3d43fc269fa9f6bea325
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e9400c476179d801eb66f574373bf75cfb672d9d
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34630455"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39091080"
 ---
 # <a name="enroll-x509-devices-to-iot-hub-device-provisioning-service-using-java-service-sdk"></a>Registrace zařízení X.509 do služby IoT Hub Device Provisioning pomocí sady SDK služby pro Javu
 
@@ -54,7 +54,12 @@ Než budete pokračovat, nezapomeňte [nastavit službu IoT Hub Device Provision
 
 ## <a name="download-and-modify-the-java-sample-code"></a>Stažení a úprava vzorového kódu v Javě
 
-Tato část ukazuje, jak do vzorového kódu přidat podrobnosti o zřizování vašeho zařízení X.509. 
+V této části se používá certifikát X.509 podepsaný svým držitelem. Je důležité vzít v úvahu následující body:
+
+* Certifikáty podepsané svým držitelem jsou určené jenom pro testování a neměly by se používat v produkčním prostředí.
+* Výchozí datum vypršení platnosti certifikátu podepsaného svým držitelem je 1 rok.
+
+Následující kroky ukazují, jak do vzorového kódu přidat podrobnosti o zřízení vašeho zařízení X.509. 
 
 1. Otevřete příkazový řádek. Naklonujte úložiště GitHub se vzorovým kódem pro registraci zařízení pomocí sady SDK služby pro Javu:
     

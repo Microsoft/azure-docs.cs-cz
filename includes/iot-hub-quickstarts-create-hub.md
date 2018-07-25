@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/17/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: ddecf2f75e80f95291b12d9c139a8da85f45ac94
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 63acf0297a694ff442d56e67d52fd9b4e49f812d
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36288040"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39008582"
 ---
 Prvním krokem je vytvoření centra IoT ve vašem předplatném pomocí webu Azure Portal. Centrum IoT umožňuje ingestovat velké objemy telemetrických dat z řady zařízení do cloudu. Centrum pak umožní jedné nebo více back-endovým službám v cloudu tato telemetrická data číst a zpracovat.
 
@@ -26,12 +26,9 @@ Prvním krokem je vytvoření centra IoT ve vašem předplatném pomocí webu Az
 1. V podokně **Centrum IoT** zadejte následující informace o centru IoT:
 
    * **Předplatné:** Vyberte předplatné, které chcete použít při vytváření tohoto centra IoT Hub.
-
-   * **Skupina prostředků:** Vytvořte skupinu prostředků, která bude hostitelem centra IoT, nebo použijte existující. Když umístíte všechny související prostředky do skupiny, můžete je spravovat společně. Například odstraněním skupiny prostředků se odstraní všechny prostředky, které tato skupina obsahuje. Další informace najdete v tématu [Použití skupin prostředků ke správě prostředků Azure][lnk-resource-groups].
-
-   * **Oblast:** Vyberte umístění, které je vám nejbližší.
-
-   * **Název:** Vytvořte název centra IoT. Pokud je zadaný název platný, zobrazí se zelený symbol zaškrtnutí.
+   * **Skupina prostředků:** Vytvořte skupinu prostředků, která bude obsahovat centrum IoT, nebo použijte existující skupinu. Když umístíte všechny související prostředky do jedné skupiny, jako je třeba **TestResources**, můžete je spravovat společně. Například odstraněním skupiny prostředků se odstraní všechny prostředky, které tato skupina obsahuje. Další informace najdete v tématu [Použití skupin prostředků ke správě prostředků Azure][lnk-resource-groups].
+   * **Oblast:** Vyberte pro zařízení nejbližší umístění.
+   * **Název:** Vytvořte jedinečný název centra IoT. Pokud je zadaný název platný, zobrazí se zelený symbol zaškrtnutí.
 
    [!INCLUDE [iot-hub-pii-note-naming-hub](iot-hub-pii-note-naming-hub.md)]
 

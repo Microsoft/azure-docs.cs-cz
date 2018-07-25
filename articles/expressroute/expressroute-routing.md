@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/09/2018
 ms.author: ganesr
-ms.openlocfilehash: 998d4f8017af51a21e13695a8491e9b6bd62af9a
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 7fd2dd870338dc6778d192658143d14d9d9895cc
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37930524"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39072142"
 ---
 # <a name="expressroute-routing-requirements"></a>Požadavky na směrování služby ExpressRoute
 Pokud se chcete připojit ke cloudovým službám Microsoftu pomocí služby ExpressRoute, budete muset nastavit a spravovat směrování. Někteří poskytovatelé připojení nabízejí nastavení a správu směrování jako spravovanou službu. Zeptejte se svého poskytovatele připojení, jestli tuto službu nabízí. Pokud ne, je nutné splnit následující požadavky:
@@ -159,22 +159,22 @@ Můžete zakoupit víc než jeden okruh ExpressRoute na geopolitickou oblast. Po
 | **Oblast Microsoft Azure** | **Hodnota komunity protokolu BGP** |
 | --- | --- |
 | **Severní Amerika** | |
-| Východ USA | 12076:51004 |
+| USA – východ | 12076:51004 |
 | Východní USA 2 | 12076:51005 |
-| Západní USA | 12076:51006 |
-| Západní USA 2 | 12076:51026 |
+| USA – západ | 12076:51006 |
+| USA – západ 2 | 12076:51026 |
 | Západní střed USA | 12076:51027 |
 | Střed USA – sever | 12076:51007 |
 | Střed USA – jih | 12076:51008 |
 | Střed USA | 12076:51009 |
-| Střední Kanada | 12076:51020 |
-| Východní Kanada | 12076:51021 |
+| Kanada – střed | 12076:51020 |
+| Kanada – východ | 12076:51021 |
 | **Jižní Amerika** | |
 | Brazílie – jih | 12076:51014 |
 | **Evropa** | |
 | Severní Evropa | 12076:51003 |
 | Západní Evropa | 12076:51002 |
-| Spojené království – jih | 12076:51024 |
+| Velká Británie – jih | 12076:51024 |
 | Spojené království – západ | 12076:51025 |
 | Francie – střed | 12076:51030 |
 | Francie – jih | 12076:51031 |
@@ -222,7 +222,7 @@ Kromě výše uvedeného bude Microsoft také označovat předpony podle služby
 > 
 > 
 
-### <a name="bgp-community-support-in-national-clouds-preview"></a>Podpora komunity protokolu BGP v národních cloudech (Preview)
+### <a name="bgp-community-support-in-national-clouds"></a>Podpora komunity protokolu BGP v národních cloudech
 
 | **Oblast Azure národních cloudů**| **Hodnota komunity protokolu BGP** |
 | --- | --- |

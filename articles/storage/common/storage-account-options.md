@@ -1,5 +1,5 @@
 ---
-title: Možnosti účtu Azure Storage | Microsoft Docs
+title: Možnosti účtu Azure Storage | Dokumentace Microsoftu
 description: Vysvětlení možností použití služby Azure Storage.
 services: storage
 author: xyh1
@@ -7,35 +7,35 @@ manager: jwillis
 ms.service: storage
 ms.workload: storage
 ms.topic: get-started-article
-ms.date: 07/03/2018
+ms.date: 07/14/2018
 ms.author: hux
-ms.openlocfilehash: 6efc50bfee54c38511fb3346f1341f81741d14eb
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 9ea4a6f0d1ff6e78d97fbc64b8a23406172ebf36
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37445416"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39072410"
 ---
 # <a name="azure-storage-account-options"></a>Možnosti účtu Azure Storage
 
 ## <a name="overview"></a>Přehled
 Azure Storage poskytuje tři různé možnosti účtu s různými cenami a podporovanými funkcemi. Než vytvoříte účet úložiště, zvažte následující rozdíly a určete možnost, která je pro vaše aplikace nejvhodnější. Tyto tři různé možnosti účtu úložiště jsou následující:
 
-* Účty **pro obecné účely verze 2 (GPv2)** 
-* Účty **pro obecné účely verze 1 (GPv1)**
-* Účty **úložiště Blob**
+* [Účty **pro obecné účely verze 2 (GPv2)**](#general-purpose-v2-accounts)
+* [Účty **pro obecné účely verze 1 (GPv1)**](#general-purpose-v1-accounts)
+* [Účty **Blob Storage**](#blob-storage-accounts)
 
 Jednotlivé typy účtů jsou podrobněji popsané v následujících částech:
 
 ## <a name="storage-account-options"></a>Možnosti účtu úložiště
 
-### <a name="general-purpose-v2"></a>Účty pro obecné účely verze 2
+### <a name="general-purpose-v2-accounts"></a>Účty úložiště pro obecné účely verze 2
 
-Účty pro obecné účely verze 2 (GPv2) jsou účty úložiště, které podporují všechny nejnovější funkce pro objekty blob, soubory, fronty a tabulky. Účty GPv2 podporují všechna rozhraní API a funkce podporované v účtech úložiště GPv1 a Blob. Podporují také stejné funkce odolnosti, dostupnosti, škálovatelnosti a výkonu jako tyto typy účtů. Ceny za účty GPv2 byly navržené pro zajištění nejnižších cen za gigabajt a konkurenceschopných cen za transakce.
+Účty pro obecné účely verze 2 (GPv2) jsou účty úložiště, které podporují všechny nejnovější funkce pro objekty blob, soubory, fronty a tabulky. Účty GPv2 podporují všechna rozhraní API, služby a funkce podporované v účtech úložiště pro obecné účely verze 1 (GPv1) a Blob. Zachovávají si také stejné funkce odolnosti, dostupnosti, škálovatelnosti a výkonu poskytované všemi typy účtů úložiště. Ceny za účty GPv2 byly navržené pro zajištění nejnižších cen za gigabajt a konkurenceschopných cen za transakce.
 
 Účet GPv1 nebo účet úložiště objektu blob můžete upgradovat na účet GPv2 s použitím portálu Azure Portal, PowerShellu nebo Azure CLI. 
 
-Pro objekty blob bloku v účtu úložiště GPv2 si můžete vybrat mezi horkou a studenou úrovní úložiště na úrovni účtu, nebo mezi horkou, studenou a archivní úrovní na úrovni objektu blob, a to v závislosti na vzorech přístupu. Pro zajištění optimalizace nákladů ukládejte často, občas a zřídka používaná data v horké, studené a archivní úrovni úložiště (v uvedeném pořadí). 
+Pro objekty blob bloku v účtu úložiště GPv2 si můžete vybrat mezi horkou a studenou úrovní přístupu k úložišti na úrovni účtu a mezi horkou, studenou a archivní úrovní přístupu na úrovni objektu blob, a to v závislosti na vzorech použití. Pro zajištění optimalizace nákladů na ukládání a transakce ukládejte často, občas a zřídka používaná data v horké, studené a archivní úrovni úložiště (v uvedeném pořadí). 
 
 Účty GPv2 zveřejňují atribut **Access Tier** na úrovni účtu. Tento atribut specifikuje výchozí úroveň účtu úložiště jako **horkou** nebo **studenou**. Výchozí úroveň účtu úložiště se použije pro všechny objekty blob, které nemají nastavenou explicitní úroveň na úrovni objektů blob. Pokud začnete k datům přistupovat jinak často, můžete mezi úrovněmi úložiště kdykoliv přepnout. **Archivní úroveň** je možné použít pouze na úrovni objektu blob.
 
@@ -46,7 +46,10 @@ Pro objekty blob bloku v účtu úložiště GPv2 si můžete vybrat mezi horkou
 
 ### <a name="upgrade-a-storage-account-to-gpv2"></a>Upgrade účtu úložiště na účet GPv2
 
-Uživatelé můžou účet GPv1 nebo účet úložiště Blob kdykoli upgradovat na účet GPv2 pomocí portálu Azure Portal, PowerShellu nebo Azure CLI. Tato změna je nevratná a žádné jiné změny nejsou povoleny.
+Uživatelé můžou účet GPv1 nebo účet úložiště Blob kdykoli upgradovat na účet GPv2 pomocí portálu Azure Portal, PowerShellu nebo Azure CLI. Tato změna je nevratná a žádné jiné změny typu účtu nejsou povolené. Další informace o vyhodnocení existujícího účtu úložiště najdete v oddílu [Vyhodnocení a migrace na účty úložiště GPv2](#evaluating-and-migrating-to-gpv2-storage-accounts).
+* [Upgrade na GPv2 pomocí portálu Azure Portal](#upgrade-with-azure-portal)
+* [Upgrade na GPv2 pomocí PowerShellu](#upgrade-with-powershell)
+* [Upgrade na GPv2 pomocí Azure CLI](#upgrade-with-azure-cli)
 
 #### <a name="upgrade-with-azure-portal"></a>Upgrade pomocí portálu Azure Portal
 Pokud chcete účet GPv1 nebo účet úložiště Blob upgradovat na účet GPv2 pomocí portálu Azure Portal, nejprve se přihlaste k portálu [Azure Portal](https://portal.azure.com) a vyberte účet úložiště. Vyberte **Nastavení** > **Konfigurace**. Uvidíte tlačítko **Upgradovat** a poznámku týkající se procesu upgradu.
@@ -67,7 +70,7 @@ Pokud chcete upgradovat účet GPv1 účet úložiště objektu blob na účet G
 az storage account update -g <resource-group> -n <storage-account> --set kind=StorageV2
 ```` 
 
-### <a name="general-purpose-v1"></a>Účty pro obecné účely verze 1
+### <a name="general-purpose-v1-accounts"></a>Účty pro obecné účely verze 1
 
 Účty pro obecné účely verze 1 (GPv1) poskytují přístup ke všem službám Azure Storage, ale nemusí zahrnovat nejnovější funkce nebo nejnižší ceny za gigabajt. Účty GPv1 například nepodporují studené úložiště a úložiště archivu. Ceny za transakce jsou u účtů GPv1 nižší, takže z tohoto typu účtu můžou mít užitek úlohy s vysokou četností změn dat nebo vysokou frekvencí čtení.
 
@@ -196,14 +199,19 @@ V této části chceme uživatelům pomoci s hladkým přechodem na používán�
 * Máte účet úložiště GPv1 a chcete vyhodnotit přechod na účtu úložiště GPv2 s vhodnou úrovní úložiště.
 * Rozhodli jste se používat účet úložiště GPv2, nebo už ho dokonce máte, a chcete vyhodnotit, jestli máte použít horkou nebo studenou úroveň úložiště.
 
-V obou případech je hlavní prioritou odhad nákladů na ukládání a přístup k datům uloženým v účtu úložiště GPv2 a jejich porovnání s aktuálními náklady.
+V obou případech je hlavní prioritou odhad nákladů na ukládání, přístup a práci s daty uloženými v účtu úložiště GPv2 a jejich porovnání s aktuálními náklady.
 
 ## <a name="evaluating-gpv2-storage-account-tiers"></a>Vyhodnocení úrovní účtu úložiště GPv2
 
 Abyste stanovili přibližnou cenu za ukládání a přístup k datům uloženým v účtu úložiště GPv2, musíte vyhodnotit, jak v současné době k datům přistupujete, nebo odhadnout, jak k nim přistupovat budete. Celkově vzato potřebujete vědět:
 
-* Spotřebu úložiště – Kolik dat ukládáte a jak se toto množství měsíc od měsíce mění?
-* Vzorec přistupování k úložišti – Kolik dat se na účtu čte a zapisuje (včetně nových dat)? Ke kolika transakcím dochází při přístupu k datům a o jaké transakce se jedná?
+* Spotřeba úložiště dat (GB)
+    - Kolik dat se v účtu úložiště ukládá?
+    - Jak se mění objem dat měsíčně? Nahrazují nová data neustále stará data?
+* Váš vzorec přístupu k úložišti (operace a přenos dat)
+    - Jak velký objem dat se čte z účtu úložiště (odchozí přenos) a zapisuje do něj (příchozí přenos)? 
+    - Počet operací s daty, ke kterým došlo v rámci účtu úložiště?
+    - Jaké druhy operací (čtení nebo zápisu) se provádí s daty jako transakce?
 
 ## <a name="monitoring-existing-storage-accounts"></a>Monitorování existujících účtů úložiště
 
@@ -244,7 +252,7 @@ Součet *TotalBillableRequests* všech položek rozhraní API v tabulce metrik t
 Pokud chcete pro účet Blob Storage odhadnout náklady za transakce, je potřeba rozdělit transakce do tří skupin, protože se cenově liší.
 
 * Transakce zápisu jako *PutBlob*, *PutBlock*, *PutBlockList*, *AppendBlock*, *ListBlobs*, *ListContainers*, *CreateContainer*, *SnapshotBlob* a *CopyBlob*.
-* Transakce odstranění jako *DeleteBlob* a *DeleteContainer*.
+* Transakce čtení jako *GetBlob*.
 * Veškeré ostatní transakce.
 
 Pokud chcete odhadnout náklady na transakce pro účet úložiště GPv1, je potřeba započítat všechny transakce bez ohledu na operaci nebo rozhraní API.

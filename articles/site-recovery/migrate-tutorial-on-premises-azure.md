@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 07/06/2018
+ms.date: 07/16/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: b297e2ef2f4c276b9183d1874e104d686b304a14
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: bc04483c35162c0b461fd03c63aaa894b1bc199a
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37919117"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39070673"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>Migrace místních počítačů do Azure
 
@@ -40,7 +40,10 @@ Než začnete, doporučujeme zkontrolovat architekturu [VMware](vmware-azure-arc
 
 ## <a name="prerequisites"></a>Požadavky
 
-Zařízení exportovaná paravirtualizovanými ovladači se nepodporují.
+- Zařízení exportovaná paravirtualizovanými ovladači se nepodporují.
+ 
+> [!WARNING]
+> Virtuální počítače je možné migrovat na další virtualizační platformy (jiné než VMware a Hyper-V), jako je XenServer, a to tak, že s nimi budete zacházet jako s fyzickými servery. Tento přístup ale Microsoft neotestoval a neověřil, a proto může a nemusí fungovat. Například virtuální počítače spuštěné na platformě XenServer nemusejí v Azure běžet, pokud se před zahájením migrace z těchto virtuálních počítačů neodinstalovaly nástroje XenServer a paravirtualizované úložiště a síťové ovladače.
 
 
 ## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru Služeb zotavení
@@ -109,7 +112,7 @@ Spusťte převzetí služeb při selhání pro počítače, které chcete migrov
 1. V části **Nastavení** > **Replikované položky** klikněte na počítač a pak na **Převzetí služeb při selhání**.
 2. V části **Převzetí služeb při selhání** vyberte **Bod obnovení**, ke kterému se mají převzít služby při selhání. Vyberte nejnovější bod obnovení.
 3. Nastavení šifrovacího klíče není pro tento scénář podstatné.
-4. Vyberte **Před spuštěním převzetí služeb při selhání vypnout počítač**. Site Recovery se pokusí před aktivací převzetí služeb při selhání vypnout zdrojové virtuální počítače. Převzetí služeb při selhání bude pokračovat i v případě, že se vypnutí nepovede. Průběh převzetí služeb při selhání můžete sledovat na stránce **Úlohy**.
+4. Vyberte **Před spuštěním převzetí služeb při selhání vypnout počítač**. Site Recovery se před aktivací převzetí služeb při selhání pokusí vypnout virtuální počítače. Převzetí služeb při selhání bude pokračovat i v případě, že se vypnutí nepovede. Průběh převzetí služeb při selhání můžete sledovat na stránce **Úlohy**.
 5. Zkontrolujte, že se virtuální počítač Azure zobrazuje v Azure podle očekávání.
 6. V části **Replikované položky** klikněte pravým tlačítkem na virtuální počítač a klikněte na **Dokončit migraci**. Tím se dokončí proce migrace, zastaví se replikace virtuálního počítače a zastaví se fakturace služby Site Recovery pro daný virtuální počítač.
 
@@ -124,7 +127,7 @@ V některých scénářích vyžaduje převzetí služeb při selhání další 
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste migrovali místní virtuální počítače na virtuální počítače Azure. Teď můžete pro virtuální počítače Azure nakonfigurovat zotavení po havárii.
-
-> [!div class="nextstepaction"]
-> [Nastavení zotavení po havárii](azure-to-azure-replicate-after-migration.md) pro virtuální počítače Azure po migraci z místní lokality.
+V tomto kurzu jste migrovali místní virtuální počítače na virtuální počítače Azure. Teď když máte virtuální počítače úspěšně migrované:
+- Pro migrované virtuální počítače [nastavte zotavení po havárii](azure-to-azure-replicate-after-migration.md).
+- Ke správě vašich virtuálních počítačů v Azure využijte výhod [zabezpečeného a dobře spravovaného cloudu](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/) Azure.
+  

@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 04/08/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: dcc384fad0479c66211fe31e547ad7076150b58e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 256c951b5bf193f5ee5bfe5f70c3549ef17a4d9b
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34611224"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39071974"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Vítá vás Azure Cosmos DB
 
@@ -68,7 +68,7 @@ Azure Cosmos DB jakožto globálně distribuovaná databázová služba s více 
     * Databázový stroj služby Azure Cosmos DB je zcela nezávislý na schématu – automaticky indexuje všechna data, která ingestuje, bez vyžadování jakéhokoli schématu nebo indexů a zajišťuje bleskově rychlé dotazy. 
 
 * **Nízké náklady na vlastnictví**
-    * Toto řešení je pětkrát až desetkrát [méně nákladné](https://aka.ms/cosmos-db-tco-paper) než nespravované řešení nebo místní řešení NoSQL.
+    * Toto řešení je pětkrát až desetkrát méně nákladné než nespravované řešení nebo místní řešení NoSQL.
     * Třikrát levnější než AWS DynamoDB nebo Google Spanner.
 
 ## <a name="capability-comparison"></a>Porovnání schopností

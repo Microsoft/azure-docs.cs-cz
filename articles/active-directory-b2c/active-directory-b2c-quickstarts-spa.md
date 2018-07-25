@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: quickstart
-ms.date: 2/13/2018
+ms.date: 7/13/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 7e600f55b9eeb2682b005b8c84c74ec25e054c36
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 155cdaf51ac5725a315259a0d809ba644f64110c
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37447247"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048912"
 ---
 # <a name="quickstart-set-up-sign-in-for-a-single-page-app-using-azure-active-directory-b2c"></a>Rychlý start: Nastavení přihlášení pro jednostránkovou aplikaci pomocí služby Azure Active Directory B2C
 
@@ -29,7 +29,7 @@ V tomto rychlém startu použijete ukázkovou jednostránkovou aplikaci s povole
 
 * Sada [Visual Studio 2017](https://www.visualstudio.com/downloads/) se sadou funkcí **Vývoj pro ASP.NET a web**.
 * Instalovat [Node.js](https://nodejs.org/en/download/)
-* Účet na sociální síti Facebook, Google, Microsoft nebo Twitter.
+* Facebookový účet
 
 ## <a name="download-the-sample"></a>Stažení ukázky
 
@@ -63,21 +63,17 @@ Ve webovém prohlížeči přejděte na adresu URL aplikace `http://localhost:64
 
 Kliknutím na tlačítko **Login** (Přihlášení) spusťte pracovní postup Azure AD B2C **Registrace nebo přihlášení** na základě zásady Azure AD B2C. 
 
-Ukázka podporuje několik možností registrace, včetně použití zprostředkovatele sociální identity nebo vytvoření místního účtu pomocí e-mailové adresy. Pro účely tohoto rychlého startu použijte účet zprostředkovatele sociální identity Facebook, Google, Microsoft nebo Twitter. 
+Ukázka podporuje několik možností registrace, včetně vytvoření místního účtu pomocí e-mailové adresy. Pro tento rychlý start použijte facebookový účet. 
 
 ### <a name="sign-up-using-a-social-identity-provider"></a>Registrace pomocí zprostředkovatele sociální identity
 
 Azure AD B2C zobrazí v ukázkové webové aplikaci vlastní přihlašovací stránku pro fiktivní značku Wingtip Toys. 
 
-1. Pokud se chcete přihlásit pomocí zprostředkovatele sociální identity, klikněte na tlačítko zprostředkovatele sociální identity, kterého chcete použít.
-
-    ![Zprostředkovatel registrace nebo přihlašování](media/active-directory-b2c-quickstarts-spa/sign-in-or-sign-up-spa.png)
+1. Pokud se chcete přihlásit pomocí zprostředkovatele sociální identity, klikněte na tlačítko zprostředkovatele identity Facebook.
 
     Ověříte (přihlásíte) se pomocí přihlašovacích údajů ke svému účtu na sociální síti a autorizujete aplikaci ke čtení informací z tohoto účtu. Díky udělení přístupu může aplikace z účtu na sociální síti načíst informace o profilu, jako je vaše jméno a město. 
 
-2. Dokončete proces přihlašování příslušného zprostředkovatele identity. Pokud jste například zvolili Twitter, zadejte své přihlašovací údaje k Twitteru a klikněte na **Přihlásit se**.
-
-    ![Ověřování a autorizace pomocí účtu na sociální síti](media/active-directory-b2c-quickstarts-spa/twitter-authenticate-authorize-spa.png)
+2. Zadejte vaše přihlašovací údaje a dokončete proces přihlášení pro příslušného zprostředkovatele identity.
 
     Podrobnosti o vašem novém profilu účtu se předvyplní informacemi z vašeho účtu na sociální síti. 
 

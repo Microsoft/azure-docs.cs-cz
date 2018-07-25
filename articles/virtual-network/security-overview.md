@@ -1,6 +1,6 @@
 ---
-title: Přehled zabezpečení sítě Azure | Microsoft Docs
-description: Seznamte se s možnostmi zabezpečení pro řízení toku síťového provozu mezi prostředky Azure.
+title: Přehled skupin zabezpečení Azure | Microsoft Docs
+description: Přečtěte si víc o skupinách zabezpečení sítě a aplikací. Skupiny zabezpečení pomáhají filtrovat síťový provoz mezi prostředky Azure.
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: jdial
-ms.openlocfilehash: 11178c574bcfa2224d15f81653f7d202ba88fb55
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8e43f476c6f816a912e5739d5e2c13676cd1ca3e
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34657583"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39092663"
 ---
-# <a name="network-security"></a>Zabezpečení sítě
+# <a name="network-and-application-security-groups"></a>Skupiny zabezpečení sítě a aplikací
 
-Pomocí skupiny zabezpečení sítě můžete omezit síťový provoz směřující do prostředků ve virtuální síti. Skupina zabezpečení sítě obsahuje seznam pravidel zabezpečení, která povolují nebo odepírají příchozí nebo odchozí síťový provoz v závislosti na zdrojové nebo cílové IP adrese, portu a protokolu. 
+Pomocí skupin zabezpečení sítě a aplikací můžete omezit síťový provoz směřující do prostředků ve virtuální síti. Skupina zabezpečení sítě obsahuje seznam pravidel zabezpečení, která povolují nebo odepírají příchozí nebo odchozí síťový provoz v závislosti na zdrojové nebo cílové IP adrese, portu a protokolu. Skupina zabezpečení aplikací umožňuje seskupovat virtuální počítače, které mají podobné funkce, například webové servery. Skupinu zabezpečení aplikace můžete v pravidlu skupiny zabezpečení sítě zadat jako zdroj nebo cíl.
 
 ## <a name="network-security-groups"></a>Skupiny zabezpečení sítě
 
-Každé síťové rozhraní má přidruženou jednu nebo žádnou skupinu zabezpečení sítě. Každé síťové rozhraní existuje v podsíti [virtuální sítě](virtual-networks-overview.md). Podsíť také může mít přidruženou jednu nebo žádnou skupinu zabezpečení sítě. 
+Každé síťové rozhraní má přidruženou jednu nebo žádnou skupinu zabezpečení sítě. Každé síťové rozhraní existuje v podsíti [virtuální sítě](virtual-networks-overview.md). Podsíť také může mít přidruženou jednu nebo žádnou skupinu zabezpečení sítě.
 
 Při použití pravidel zabezpečení na podsíť se pravidla zabezpečení použijí na všechny prostředky v této podsíti. Kromě síťových rozhraní můžete mít v podsíti nasazené instance dalších služeb Azure, například HDInsight, škálovací sady virtuálních počítačů a prostředí aplikačních služeb.
 
@@ -167,10 +167,10 @@ Pro skupiny zabezpečení aplikací platí následující omezení:
 
      - **Smlouva Enterprise:** Odchozí komunikace přes port 25 je povolená. Odchozí emaily můžete z virtuálních počítačů odesílat přímo externím poskytovatelům e-mailu bez jakýchkoli omezení platformy Azure. 
      - **Průběžné platby:** Odchozí komunikace přes port 25 ze všech prostředků je blokovaná. Pokud potřebujete odesílat e-maily z virtuálního počítače přímo externím poskytovatelům e-mailu (bez použití přenosu přes zabezpečený protokol SMTP), můžete vytvořit žádost o odebrání tohoto omezení. Žádosti se posuzují a schvalují na základě vlastního uvážení Microsoftu a vyhoví se jim pouze po provedení kontrol v souvislosti s možnými podvody. Pokud chcete vytvořit žádost, otevřete případ podpory s typem problému *Technický*, *Možnosti připojení k virtuální síti*, *Nelze odesílat e-maily (SMTP/port 25)*. Do případu podpory zahrňte podrobnosti o tom, proč vaše předplatné potřebuje odesílat e-maily přímo poskytovatelům e-mailu místo používání přenosu přes ověřený protokol SMTP. Pokud má vaše předplatné výjimku, odchozí komunikace přes port 25 jsou schopné pouze virtuální počítače vytvořené po datu udělení výjimky.
-     - **Poskytovatel cloudových služeb (CSP), MSDN, Azure Pass, Azure v rámci licenčního programu Open License, Azure ve vzdělávání, BizSpark a bezplatná zkušební verze:** Odchozí komunikace přes port 25 ze všech prostředků je blokovaná. Není možné vytvořit žádost o odebrání omezení, protože takovým žádostem se nevyhovuje. Pokud z virtuálního počítače potřebujete odesílat e-maily, musíte k tomu použít službu pro přenos přes protokol SMTP.
+     - **MSDN, Azure Pass, Azure v rámci licenčního programu Open License, Azure ve vzdělávání, BizSpark a bezplatná zkušební verze:** Odchozí komunikace přes port 25 ze všech prostředků je blokovaná. Není možné vytvořit žádost o odebrání omezení, protože takovým žádostem se nevyhovuje. Pokud z virtuálního počítače potřebujete odesílat e-maily, musíte k tomu použít službu pro přenos přes protokol SMTP.
+     - **Poskytovatel cloudových služeb:** Zákazníci, kteří využívají prostředky Azure prostřednictvím poskytovatele cloudových služeb, si mohou u poskytovatele cloudových služeb vytvořit případ podpory a požádat ho, aby v jejich zastoupení vytvořil případ odblokování, pokud se nedá použít zabezpečený přenos SMTP.
 
-  Pokud vám Azure povolí odesílat e-maily přes port 25, Microsoft nemůže zaručit přijetí příchozích e-mailů z vašeho virtuálního počítače poskytovateli e-mailu. Pokud konkrétní poskytovatel odmítá e-maily z vašeho virtuálního počítače, musíte spolupracovat přímo s daným poskytovatelem a vyřešit případné problémy s doručováním zpráv nebo filtrováním nevyžádané pošty, nebo použít službu pro přenos přes ověřený protokol SMTP. 
-
+  Pokud vám Azure povolí odesílat e-maily přes port 25, Microsoft nemůže zaručit přijetí příchozích e-mailů z vašeho virtuálního počítače poskytovateli e-mailu. Pokud konkrétní poskytovatel odmítá e-maily z vašeho virtuálního počítače, musíte spolupracovat přímo s daným poskytovatelem a vyřešit případné problémy s doručováním zpráv nebo filtrováním nevyžádané pošty, nebo použít službu pro přenos přes ověřený protokol SMTP.
 
 ## <a name="next-steps"></a>Další kroky
 

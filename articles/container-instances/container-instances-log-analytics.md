@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: overview
-ms.date: 06/06/2018
+ms.date: 07/17/2018
 ms.author: marsma
-ms.openlocfilehash: a0772d1009021ca64b448710c5353407a5492fae
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: e4c1efbf4c2c844bae971fa1136e0fe3bed18bcc
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34809861"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39112959"
 ---
 # <a name="container-instance-logging-with-azure-log-analytics"></a>Protokolování instancí kontejnerů s využitím Azure Log Analytics
 
@@ -43,9 +43,26 @@ Získání ID a primárního klíče pracovního prostoru služby Log Analytics:
 
 ## <a name="create-container-group"></a>Vytvoření skupiny kontejnerů
 
-Jakmile máte ID a primární klíč pracovního prostoru služby Log Analytics, jste připravení vytvořit skupinu kontejnerů s povoleným protokolováním. Následující příklad vytvoří skupinu kontejnerů s jediným kontejnerem [fluentd][fluentd]. Kontejner fluentd ve výchozí konfiguraci produkuje několik řádků výstupu. Tento výstup se odesílá do pracovního prostoru služby Log Analytics, takže se dobře hodí pro ukázku zobrazení a dotazování protokolů.
+Jakmile máte ID a primární klíč pracovního prostoru služby Log Analytics, jste připravení vytvořit skupinu kontejnerů s povoleným protokolováním.
 
-Nejdřív zkopírujte následující soubor YAML, který definuje skupinu kontejnerů s jediným kontejnerem, do nového souboru. Nahraďte `LOG_ANALYTICS_WORKSPACE_ID` a `LOG_ANALYTICS_WORKSPACE_KEY` hodnotami, které jste získali v předchozím kroku, a pak soubor uložte s názvem **deploy-aci.yaml**.
+Následující příklady ukazují dva způsoby vytvoření skupiny kontejnerů s využitím jednoho kontejneru [fluentd][fluentd]: Azure CLI a Azure CLI se šablonou YAML. Kontejner fluentd ve výchozí konfiguraci produkuje několik řádků výstupu. Tento výstup se odesílá do pracovního prostoru služby Log Analytics, takže se dobře hodí pro ukázku zobrazení a dotazování protokolů.
+
+### <a name="deploy-with-azure-cli"></a>Nasazení s Azure CLI
+
+Pokud chcete k nasazení využít Azure CLI, zadejte v příkazu [az container create][az-container-create] parametry `--log-analytics-workspace` a `--log-analytics-workspace-key`. Tyto dvě hodnoty pracovního prostoru nahraďte hodnotami, které jste získali v předchozím kroku (a aktualizujte název skupiny prostředků). Teprve potom spusťte následující příkaz.
+
+```azurecli-interactive
+az container create \
+    --resource-group myResourceGroup \
+    --name mycontainergroup001 \
+    --image fluent/fluentd \
+    --log-analytics-workspace <WORKSPACE_ID> \
+    --log-analytics-workspace-key <WORKSPACE_KEY>
+```
+
+### <a name="deploy-with-yaml"></a>Nasazení pomocí YAML
+
+Tuto metodu použijte, pokud dáváte přednost nasazení skupiny kontejnerů pomocí souboru YAML. Následující soubor YAML definuje skupinu kontejnerů s jediným kontejnerem. Zkopírujte tento soubor YAML do nového souboru a potom nahraďte `LOG_ANALYTICS_WORKSPACE_ID` a `LOG_ANALYTICS_WORKSPACE_KEY` hodnotami, které jste získali v předchozím kroku. Soubor uložte pod názvem **deploy-aci.yaml**.
 
 ```yaml
 apiVersion: 2018-06-01
@@ -75,7 +92,7 @@ type: Microsoft.ContainerInstance/containerGroups
 Potom spusťte následující příkaz, který nasadí skupinu kontejnerů. Parametr `myResourceGroup` nahraďte názvem skupiny prostředků ve vašem předplatném (nebo napřed vytvořte skupinu prostředků s názvem myResourceGroup):
 
 ```azurecli-interactive
-az container create -g myResourceGroup -n mycontainergroup001 -f deploy-aci.yaml
+az container create --resource-group myResourceGroup --name mycontainergroup001 --file deploy-aci.yaml
 ```
 
 Krátce po spuštění příkazu byste měli dostat odpověď z Azure s podrobnostmi o nasazení.
@@ -135,3 +152,4 @@ Informace o monitorování prostředků procesoru a paměti instance kontejneru 
 [query_lang]: https://docs.loganalytics.io/
 
 <!-- LINKS - Internal -->
+[az-container-create]: /cli/azure/container#az-container-create

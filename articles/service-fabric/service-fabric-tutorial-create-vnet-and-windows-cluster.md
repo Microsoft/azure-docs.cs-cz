@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/22/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 91bb57f49f8c92967275d340410e22381adad19e
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: f795333e8af2f09800dedc0b65030c42165d6bbb
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37114271"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39068899"
 ---
 # <a name="tutorial-deploy-a-service-fabric-windows-cluster-into-an-azure-virtual-network"></a>Kurz: Nasazení clusteru Service Fabric s Windows do virtuální sítě Azure
 
@@ -43,7 +43,7 @@ V této sérii kurzů se naučíte:
 > * Vytvoření zabezpečeného clusteru v Azure
 > * [Horizontální snížení nebo navýšení kapacity clusteru](service-fabric-tutorial-scale-cluster.md)
 > * [Upgrade modulu runtime clusteru](service-fabric-tutorial-upgrade-cluster.md)
-> * [Nasazení API Managementu se Service Fabric](service-fabric-tutorial-deploy-api-management.md)
+> * [Nasazení služby API Management s využitím Service Fabric](service-fabric-tutorial-deploy-api-management.md)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -97,7 +97,7 @@ Cluster s Windows je nasazen s následujícími charakteristikami:
 * [reverzní proxy server](service-fabric-reverseproxy.md) je povolen
 * [služba DNS](service-fabric-dnsservice.md) je povolena
 * bronzová [úroveň odolnosti](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) (možnost konfigurace v parametrech šablony)
-* stříbrná [úroveň spolehlivosti](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) (možnost konfigurace v parametrech šablony)
+ * stříbrná [úroveň spolehlivosti](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) (možnost konfigurace v parametrech šablony)
 * koncový bod připojení klienta: 19000 (možnost konfigurace v parametrech šablony)
 * koncový bod brány HTTP: 19080 (možnost konfigurace v parametrech šablony)
 
@@ -139,9 +139,9 @@ Soubor s parametry [vnet-cluster.parameters.json][parameters] deklaruje mnoho ho
 
 |Parametr|Příklad hodnoty|Poznámky|
 |---|---||
-|adminUserName|vmadmin| Uživatelské jméno správce pro virtuální počítače clusteru. |
-|adminPassword|Password#1234| Heslo správce pro virtuální počítače clusteru.|
-|clusterName|mysfcluster123| Název clusteru. |
+|adminUserName|vmadmin| Uživatelské jméno správce pro cluster virtuálních počítačů.[Požadavky na uživatelské jméno pro virtuální počítač](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/faq#what-are-the-username-requirements-when-creating-a-vm) |
+|adminPassword|Password#1234| Heslo správce pro virtuální počítače clusteru. [Požadavky na heslo pro virtuální počítač](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm)|
+|clusterName|mysfcluster123| Název clusteru. Může obsahovat jenom písmena a číslice. Může mít délku 3 až 23 znaků.|
 |location|southcentralus| Umístění clusteru. |
 |certificateThumbprint|| <p>Pokud vytváříte certifikát podepsaný svým držitelem nebo poskytujete soubor certifikátu, měla by být hodnota prázdná.</p><p>Pokud chcete použít existující certifikát, který byl dříve odeslán do trezoru klíčů, vyplňte hodnotu kryptografického otisku certifikátu. Například: 6190390162C988701DB5676EB81083EA608DCCF3</p>. |
 |certificateUrlValue|| <p>Pokud vytváříte certifikát podepsaný svým držitelem nebo poskytujete soubor certifikátu, měla by být hodnota prázdná. </p><p>Pokud chcete použít existující certifikát, který byl dříve odeslán do trezoru klíčů, vyplňte URL certifikátu. Například https://mykeyvault.vault.azure.net:443/secrets/mycertificate/02bea722c9ef4009a76c5052bcbf8346.</p>|

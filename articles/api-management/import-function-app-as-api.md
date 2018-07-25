@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/22/2017
+ms.date: 07/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 1962a4aac8e2d15caf4ec33998da1985d3b8a9af
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 0ee83446bb08e66c7f325bdd5585b8cc0484a74e
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38306469"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39090924"
 ---
 # <a name="import-a-function-app-as-an-api"></a>Importování Function App jako rozhraní API
 
@@ -34,7 +34,8 @@ V tomto článku získáte informace o těchto tématech:
 ## <a name="prerequisites"></a>Požadavky
 
 + Projděte si následující rychlý start: [Vytvoření instance služby Azure API Management](get-started-create-service-instance.md)
-+ Zkontrolujte, jestli máte Function App v předplatném. Další informace najdete ve [Vytvoření Function App](../azure-functions/functions-create-first-azure-function.md#create-a-function-app).
++ Zkontrolujte, jestli máte v předplatném Azure Function App. Další informace najdete ve [Vytvoření Function App](../azure-functions/functions-create-first-azure-function.md#create-a-function-app).
++ [Vytvoření definice OpenAPI](../azure-functions/functions-openapi-definition.md) pro Azure Function App
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
@@ -56,6 +57,24 @@ V tomto článku získáte informace o těchto tématech:
     * **Starter**
     * **Unlimited**   
 7. Vyberte **Vytvořit**.
+
+## <a name="populate-azure-functions-keys-in-azure-api-management"></a>Naplnění klíčů Azure Functions ve službě Azure API Management
+
+Pokud jsou importované Azure Functions chráněné klíčem, Azure API Management pro ně automaticky vytvoří **Pojmenované hodnoty**, ale nenaplní položky tajnými kódy. Pro každou položku je potřeba provést následující postup.  
+
+1. Přejděte na kartu **Pojmenované hodnoty** v instanci API Managementu.
+2. Klikněte na položku a stiskněte na bočním panelu **Zobrazit hodnotu**.
+
+    ![Pojmenované hodnoty](./media/import-function-app-as-api/apim-named-values.png)
+
+3. Pokud se obsah podobá *kódu pro {název funkce Azure Functions}*, přistupte k importované aplikaci Azure Functions a přejděte na svoji funkci Azure Functions.
+4. Spusťte **spravovanou** sekci požadované funkce Azure Functions a zkopírujte příslušný klíč podle metody ověřování funkce Azure Functions.
+
+    ![Function App](./media/import-function-app-as-api/azure-functions-app-keys.png)
+
+5. Vložte klíč do textového pole v části **Pojmenované hodnoty** a klikněte na **Uložit**.
+
+    ![Function App](./media/import-function-app-as-api/apim-named-values-2.png)
 
 ## <a name="test-the-new-apim-api-in-the-azure-portal"></a>Testování nového rozhraní API služby APIM na portálu Azure Portal
 

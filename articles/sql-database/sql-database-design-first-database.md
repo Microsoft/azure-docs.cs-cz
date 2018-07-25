@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: mvc,develop databases
 ms.topic: tutorial
-ms.date: 6/20/2018
+ms.date: 07/16/2018
 ms.author: carlrab
-ms.openlocfilehash: c89b03baccc7e20ae945da154fbd78d5d0dac376
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 6f12c44c2d65eef7e8d3345ec79b812304fe9791
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36311027"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39091533"
 ---
 # <a name="tutorial-design-your-first-azure-sql-database-using-ssms"></a>Kurz: Návrh první databáze Azure SQL Database pomocí SSMS
 
@@ -31,7 +31,7 @@ Azure SQL Database je relační databáze jako služba (DBaaS) v cloudu Microsof
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
    >[!NOTE]
-   > Pro účely tohoto kurzu používáme [nákupní model založený na DTU](sql-database-service-tiers-dtu.md), ale můžete si zvolit i [nákupní model založený na virtuálních jádrech (ve verzi Preview)](sql-database-service-tiers-vcore.md). 
+   > Pro účely tohoto kurzu používáme [nákupní model založený na DTU](sql-database-service-tiers-dtu.md), ale můžete si zvolit i [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md). 
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -41,7 +41,7 @@ Před tímto kurzem se ujistěte, že máte nainstalované tyto položky:
 
 ## <a name="log-in-to-the-azure-portal"></a>Přihlášení k portálu Azure Portal
 
-Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-blank-sql-database"></a>Vytvoření prázdné databáze SQL
 
@@ -77,7 +77,7 @@ Pomocí následujících kroků vytvořte prázdnou databázi SQL.
 
 5. Klikněte na **Vybrat**.
 
-6. Klikněte na **Cenová úroveň** a zadejte úroveň služby, počet DTU nebo virtuálních jader a velikost úložiště. Prozkoumejte možnosti počtu DTU nebo virtuálních jader a velikosti úložiště, které máte k dispozici na jednotlivých úrovních služby. Pro účely tohoto kurzu používáme [nákupní model založený na DTU](sql-database-service-tiers-dtu.md), ale můžete si zvolit i [nákupní model založený na virtuálních jádrech (ve verzi Preview)](sql-database-service-tiers-vcore.md). 
+6. Klikněte na **Cenová úroveň** a zadejte úroveň služby, počet DTU nebo virtuálních jader a velikost úložiště. Prozkoumejte možnosti počtu DTU nebo virtuálních jader a velikosti úložiště, které máte k dispozici na jednotlivých úrovních služby. Pro účely tohoto kurzu používáme [nákupní model založený na DTU](sql-database-service-tiers-dtu.md), ale můžete si zvolit i [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md). 
 
 7. Pro účely tohoto kurzu vyberte úroveň služby **Standard** a potom pomocí posuvníku vyberte **100 DTU (S3)** a **400** GB úložiště.
 
@@ -131,7 +131,7 @@ Nyní se můžete z této IP adresy připojit k serveru SQL Database a jeho data
 
 Na webu Azure Portal získejte plně kvalifikovaný název serveru služby Azure SQL Database. Plně kvalifikovaný název serveru použijete k připojení k serveru pomocí aplikace SQL Server Management Studio.
 
-1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. V nabídce vlevo vyberte **Databáze SQL** a na stránce **Databáze SQL** klikněte na vaši databázi. 
 3. V podokně **Základy** na stránce webu Azure Portal pro vaši databázi vyhledejte a potom zkopírujte **Název serveru**.
 

@@ -9,12 +9,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 05/29/2018
 ms.author: sangsinh
-ms.openlocfilehash: 195537b271c442b954d6d6e6fa8d1491c07822e8
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 04e88725c04fc88a8394bafd455d25ea13718f7d
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970240"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39070004"
 ---
 # <a name="immutable-storage-feature-of-azure-blob-storage-preview"></a>Funkce Immutable Storage služby Azure Blob Storage (Preview)
 
@@ -178,11 +178,11 @@ Funkci Immutable Storage můžete používat s jakýmikoli stávajícími účty
 
 **Co se stane, když se pokusím odstranit kontejner s *uzamknutou* zásadou uchovávání informací podle času nebo blokováním z právních důvodů?**
 
-Operace odstranění kontejneru selže, pokud obsahuje alespoň jeden objekt blob s uzamknutou zásadou uchovávání informací pode času nebo blokováním z právních důvodů. Operace odstranění kontejneru bude úspěšná, pokud neobsahuje žádný objekt blob s aktivním intervalem uchovávání informací a pokud v něm nejsou žádná blokování z právních důvodů. Před odstraněním kontejneru je potřeba nejprve odstranit objekty blob.
+Operace odstranění kontejneru selže, pokud obsahuje alespoň jeden objekt blob s uzamknutou zásadou uchovávání informací pode času nebo blokováním z právních důvodů. To platí i v případě, že se data [odstraní obnovitelně](storage-blob-soft-delete.md). Operace odstranění kontejneru bude úspěšná, pokud neobsahuje žádný objekt blob s aktivním intervalem uchovávání informací a pokud v něm nejsou žádná blokování z právních důvodů. Před odstraněním kontejneru je potřeba nejprve odstranit objekty blob. 
 
 **Co se stane, když se pokusím odstranit účet úložiště obsahující kontejner WORM s *uzamknutou* zásadou uchovávání informací podle času nebo blokováním z právních důvodů?**
 
-Odstranění účtu úložiště selže, pokud obsahuje alespoň jeden kontejner WORM s blokováním z právních důvodů nebo objektem blob s aktivním intervalem uchovávání informací.  Před odstraněním účtu úložiště je potřeba odstranit všechny kontejnery WORM.  Informace o odstranění kontejneru najdete v odpovědi na otázku 2.
+Odstranění účtu úložiště selže, pokud obsahuje alespoň jeden kontejner WORM s blokováním z právních důvodů nebo objektem blob s aktivním intervalem uchovávání informací.  Před odstraněním účtu úložiště je potřeba odstranit všechny kontejnery WORM.  Informace o odstranění kontejneru najdete v u předchozí otázky.
 
 **Můžu přesouvat data mezi různými úrovněmi objektu blob (horká, studená, archivní), když je objekt blob v neměnném stavu?**
 
