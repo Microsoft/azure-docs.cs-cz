@@ -16,12 +16,12 @@ ms.component: compliance-reports
 ms.date: 01/15/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 16f5ffbfbb3ec4e0c01dd2ad151f282e5b2d0a87
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 1ae7286bb08379b12f3e5b35e97a5f9538c605f6
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213679"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39238144"
 ---
 # <a name="azure-active-directory-reporting"></a>Generování sestav v Azure Active Directory
 
@@ -38,7 +38,6 @@ Architektura generování sestav se spoléhá na dva hlavní pilíře:
 - Sestavy aktivit
 
 ![Vytváření sestav](./media/active-directory-reporting-azure-portal/01.png)
-
 
 
 ## <a name="security-reports"></a>Sestavy zabezpečení

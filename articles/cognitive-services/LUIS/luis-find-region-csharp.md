@@ -2,19 +2,19 @@
 title: Najít oblast LUIS s jazykem C# v hranicích Language Understanding (LUIS) | Dokumentace Microsoftu
 description: Prostřednictvím kódu programu publikovat najít oblast s klíče koncového bodu a aplikace ID LUIS.
 services: cognitive-services
-author: v-geberr
-manager: kamran.iqbal
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 05/31/2018
-ms.author: v-geberr
-ms.openlocfilehash: f0df14736e0ed47957999e3aa7c6a22b0b0c0a35
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.author: diberry
+ms.openlocfilehash: 6f2688e492dbba718dc55825de164c189a9b46c9
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39163065"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39225104"
 ---
 # <a name="region-can-be-determined-from-api-call"></a>Můžete určit oblast volání rozhraní API 
 Pokud máte LUIS ID aplikace a služby LUIS ID předplatného, můžete najít jaké oblasti se má použít pro koncový bod dotazy.

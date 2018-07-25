@@ -9,12 +9,12 @@ ms.workload: storage-backup-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: nisoneji
-ms.openlocfilehash: f4e8a579e020e81540c1fd52e412c8e6184813d2
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 120c78d9adb83ca58ae61700ae70d07ead42ebd0
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37921208"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39226556"
 ---
 # <a name="site-recovery-deployment-planner-for-hyper-v-to-azure"></a>Site Recovery Deployment Planner pro Hyper-V do Azure
 
@@ -94,13 +94,13 @@ Nástroj má pro Hyper-V tři hlavní fáze: získání seznamu virtuálních po
 ## <a name="steps-to-add-servers-into-trustedhosts-list"></a>Postup přidání serverů do seznamu TrustedHosts
 1.  Virtuální počítač, ze kterého se má nástroj nasadit, by měl mít všechny profilované hostitele ve svém seznamu TrustedHosts. Pokud chcete přidat klienta do seznamu Trustedhosts, spusťte na virtuálním počítači následující příkaz z PowerShellu se zvýšenými oprávněními. Virtuální počítač může být Windows Server 2012 R2 nebo Windows Server 2016. 
 
-            set-item wsman:\localhost\Client\TrustedHosts -value <ComputerName>[,<ComputerName>]
+            set-item wsman:\localhost\Client\TrustedHosts -value '<ComputerName>[,<ComputerName>]' -Concatenate
 
 2.  Každý hostitel Hyper-V, který potřebuje profilaci, musí splňovat následující:
 
     a. V seznamu TrustedHosts musí být uvedený virtuální počítač, na kterém se bude nástroj spouštět. Na hostiteli Hyper-V spusťte z PowerShellu se zvýšenými oprávněními následující příkaz.
 
-            set-item wsman:\localhost\Client\TrustedHosts -value <ComputerName>[,<ComputerName>]
+            set-item wsman:\localhost\Client\TrustedHosts -value '<ComputerName>[,<ComputerName>]' -Concatenate
 
     b. Je povolená vzdálená komunikace PowerShellu.
 

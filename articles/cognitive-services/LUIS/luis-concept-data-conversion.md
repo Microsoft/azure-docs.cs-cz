@@ -1,43 +1,43 @@
 ---
-title: Základními pojmy převodu dat v LEOŠ - Azure | Microsoft Docs
-description: Zjistěte, jak lze změnit utterances před předpovědi znalosti jazyka (LEOŠ)
+title: Koncepce převodu dat v LUIS – Azure | Dokumentace Microsoftu
+description: Zjistěte, jak lze změnit projevy před predikce v Language Understanding (LUIS)
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.technology: luis
 ms.topic: article
 ms.date: 06/27/2018
-ms.author: v-geberr;
-ms.openlocfilehash: 16b0df4b81220885e2c3747470272cee9536e10c
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.author: diberry
+ms.openlocfilehash: 05a02191af171936dd9f5c4bf469b9c84aa144a3
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063557"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39223697"
 ---
-# <a name="data-conversion-concepts-in-luis"></a>Koncepty převodu dat v LEOŠ
-LEOŠ poskytuje způsob, jak převést utterances mluvené utterances na text utterances před předpovědi. 
+# <a name="data-conversion-concepts-in-luis"></a>Koncepce převodu dat při LUIS
+Služba LUIS poskytuje způsob, jak převést projevy projevy mluvené slovo na text projevy před předpovědi. 
 
-## <a name="speech-to-intent-conversion-concepts"></a>Převod řeči na záměrné převod koncepty
-Převod řeči na text v LEOŠ umožňuje odesílat mluvené utterances koncový bod a obdrží odpověď LEOŠ předpovědi. Proces je integraci [řeči](https://docs.microsoft.com/azure/cognitive-services/Speech) služby s LEOŠ. 
+## <a name="speech-to-intent-conversion-concepts"></a>Převod řeči na záměr převod koncepty
+Převod řeči na text v LUIS umožňuje odeslat mluvené slovo projevy na koncový bod a trvá příjem odpovědi na predikce služby LUIS. Tento proces je integrace produktů [řeči](https://docs.microsoft.com/azure/cognitive-services/Speech) service pomocí služby LUIS. 
 
 ### <a name="key-requirements"></a>Klíčové požadavky
-Není potřeba vytvořit **rozhraní API pro rozpoznávání řeči Bing** klíče pro této integrace. A **znalosti jazyka** klíč vytvořený na portálu Azure funguje u této integrace. Nepoužívejte LEOŠ starter klíč, nebudou fungovat pro této integrace.
+Není potřeba vytvořit **rozhraní API pro zpracování řeči Bingu** klíče pro tuto integraci. A **Language Understanding** klíče vytvořeného na webu Azure Portal se dá použít pro integraci. Nepoužívejte klávesu starter LUIS, nebude fungovat pro integraci.
 
 ### <a name="new-endpoint"></a>Nový koncový bod 
-Tato integrace vytvoří nový koncový bod a [ceny](luis-boundaries.md#key-limits) modelu. Koncový bod, prostřednictvím [SDK řeči](https://github.com/Azure-Samples/cognitive-services-speech-sdk), je schopný přijímat obě oznamována a text utterances budete moci použít jako jeden koncový bod. 
+Tato integrace vytvoří nový koncový bod a [ceny](luis-boundaries.md#key-limits) modelu. Koncový bod, přes [sadou SDK pro řeč](https://github.com/Azure-Samples/cognitive-services-speech-sdk), může přijímat obě slyšet a text projevy, abyste mohli používat jako jeden koncový bod. 
 
 ### <a name="quota-usage"></a>Využití kvóty
-V tématu [klíče omezení](luis-boundaries.md#key-limits) informace. 
+Zobrazit [klíče omezení](luis-boundaries.md#key-limits) informace. 
 
 ### <a name="data-retention"></a>Uchovávání dat
-Data odeslaná na koncový bod, pomocí sady SDK rozpoznávání řeči, bez ohledu na to, je-li řeči nebo text, se používá pouze pro zlepšení rozpoznávání řeči modelu. Nad rámec modelu se nepoužije pro zlepšení rozpoznávání řeči nebo LEOŠ v obecné kapacity. Při odstranění aplikace LEOŠ uchovaná data je taky odstranit.
+Data odeslaná do koncového bodu prostřednictvím sadou SDK pro řeč, bez ohledu na to, pokud se jedná o řeči nebo text, slouží pouze ke zvýšení modelu řeči. Nad rámec modelu není použit k vylepšení řeči nebo také LUIS v obecné kapacity. Při odstranění aplikace LUIS uchovaná data se také odstraní.
 
 <!-- TBD: Machine translation conversion concepts -->
 
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Použít převod řeči na text](luis-tutorial-speech-to-intent.md)
+> [Umožňuje využít řeč na text](luis-tutorial-speech-to-intent.md)
 

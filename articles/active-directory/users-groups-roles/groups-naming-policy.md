@@ -4,7 +4,7 @@ description: Jak nastavit vypršení platnosti pro skupiny Office 365 ve služb�
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: michael.tillman
+manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
@@ -12,14 +12,14 @@ ms.component: users-groups-roles
 ms.topic: article
 ms.date: 05/21/2018
 ms.author: curtand
-ms.reviewer: kairaz.contractor
+ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: c973245b6c8ee3557f9bf410544f9f698b2733c5
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 111be7d3ee00f2b40ace3bfe4efdacc5029ccf77
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37871801"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39239130"
 ---
 # <a name="enforce-a-naming-policy-for-office-365-groups-in-azure-active-directory-preview"></a>Vynucení zásad pojmenování pro skupiny Office 365 ve službě Azure Active Directory (preview)
 
@@ -200,9 +200,9 @@ Centrum pro správu Office 365 | Centrum pro správu Office 365 je kompatibilní
 ## <a name="next-steps"></a>Další postup
 Tyto články poskytují další informace o skupinách Azure AD.
 
-* [Zobrazit existující skupiny](../fundamentals/active-directory-groups-view-azure-portal.md)
+* [Zobrazení existujících skupin](../fundamentals/active-directory-groups-view-azure-portal.md)
 * [Zásady vypršení platnosti pro skupiny Office 365](groups-lifecycle.md)
 * [Správa nastavení skupiny](../fundamentals/active-directory-groups-settings-azure-portal.md)
-* [Spravovat členy skupiny](../fundamentals/active-directory-groups-members-azure-portal.md)
+* [Správa členů skupiny](../fundamentals/active-directory-groups-members-azure-portal.md)
 * [Správa členství ve skupině](../fundamentals/active-directory-groups-membership-azure-portal.md)
-* [Správa dynamické pravidel pro uživatele ve skupině](groups-dynamic-membership.md)
+* [Správa dynamických pravidel pro uživatele ve skupině](groups-dynamic-membership.md)

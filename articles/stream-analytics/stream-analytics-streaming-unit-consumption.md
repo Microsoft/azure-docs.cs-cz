@@ -1,6 +1,6 @@
 ---
-title: Rady pro pochopení a upravit jednotek streamování v Azure Stream Analytics
-description: Tento článek popisuje nastavení jednotek streamování a dalších faktorů, které mají vliv výkon v Azure Stream Analytics.
+title: Principy a úpravy jednotek streamování ve službě Azure Stream Analytics
+description: Tento článek popisuje nastavení jednotky streamování a dalších faktorů, které ovlivňují výkon ve službě Azure Stream Analytics.
 services: stream-analytics
 author: JSeb225
 ms.author: jeanb
@@ -9,70 +9,71 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/12/2018
-ms.openlocfilehash: c96e9825cddd0b60e67cd4752fab8f440ceaae76
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 482f0403cfd4bbd6587ba7e3e936cdac7f82b54a
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39227984"
 ---
-# <a name="understand-and-adjust-streaming-units"></a>Rady pro pochopení a upravit jednotek streamování
+# <a name="understand-and-adjust-streaming-units"></a>Principy a úpravy jednotek streamování
 
-Azure Stream Analytics agreguje výkonu "váhu" běžící úlohy do jednotek streamování (SUs). Služba SUs představují výpočetní prostředky, které jsou využívat k provedení úlohy. Jednotky SU umožňují popsat relativní kapacitu zpracování událostí na základě výkonu procesoru, paměti a rychlosti čtení a zápisu. Tento kapacita vám umožní soustředit na logice dotazu a přehledů potřeba spravovat hardwaru ke spuštění Stream Analytics úlohy v časovém limitu.
+Streamování (su) jednotky představuje výpočetní prostředky, které jsou přiděleny k provedení úlohy. Čím vyšší číslo ze služby SUs, jsou přiděleny další prostředky procesoru a paměti pro vaši úlohu. Tato kapacita vám umožní soustředit na logiku dotazu a přehledů nutnosti spravovat hardware pro spuštění vašeho Stream Analytics úlohy včas.
 
-Aby bylo možné dosáhnout s nízkou latencí streamování zpracování, provádět úlohy Azure Stream Analytics veškeré zpracování v paměti. Když spustíte nedostatek paměti, úloha streamování se nezdaří. V důsledku toho pro provozní úlohy, je důležité monitorovat využití prostředků úlohu streamování a ujistěte se, není dostatek prostředků přidělené abychom zachovali úloh spuštěných 24 hodin denně 7.
+Pokud chcete dosáhnout zpracování datových proudů s nízkou latencí, provádět úlohy Azure Stream Analytics veškeré zpracování v paměti. Při spuštění nedostatek paměti, úloha streamování se nezdaří. V důsledku toho pro produkční úlohy, je důležité monitorovat využití prostředků úlohy streamování a ujistěte se, že není dostatek prostředků přidělených zachovat úloh spuštěných 24 hodin denně 7.
 
-Metrika je procento číslo od 0 % až 100 %. Pro úlohu streamování s minimální nároky metriky využití SU % je obvykle mezi 10 až 20 %. Je nejlepší mít metrika nižší než 80 %, aby se zohlednily příležitostně špičky. Společnost Microsoft doporučuje nastavení upozornění na 80 % využití SU metrika, aby se zabránilo vyčerpání prostředků. Další informace najdete v tématu [kurz: nastavení výstrah pro úlohy Azure Stream Analytics](stream-analytics-set-up-alerts.md).
+Metriky využití SU %, která od 0 % do 100 %, popisuje využití paměti vaší úlohy. Pro úlohy streamování s minimálními nároky na místo tato metrika je obvykle mezi 10 až 20 %. Pokud dochází % využití SU a získat vstupní události v backlogu, úloha pravděpodobně vyžaduje další výpočetní prostředky, které je potřeba zvýšit počet SUs. Doporučujeme zachovat metrika SU nižší než 80 % pro občasné špičky. Společnost Microsoft doporučuje nastavení upozornění na metriku 80 % využití SU zabránit vyčerpání prostředků. Další informace najdete v tématu [kurz: nastavení výstrah pro úlohy Azure Stream Analytics](stream-analytics-set-up-alerts.md).
 
-## <a name="configure-stream-analytics-streaming-units-sus"></a>Konfigurace služby Stream Analytics streamování jednotky (SUs)
-1. Přihlaste se k [portálu Azure](http://portal.azure.com/)
+## <a name="configure-stream-analytics-streaming-units-sus"></a>Konfigurace Stream Analytics Streaming jednotek (su)
+1. Přihlaste se k [webu Azure portal](http://portal.azure.com/)
 
-2. V seznamu prostředků najděte úlohu služby Stream Analytics, kterou chcete škálovat a potom ho otevřete. 
+2. V seznamu prostředků najdete úlohu Stream Analytics, kterou chcete škálovat a pak ho otevřete. 
 
-3. Na stránce úlohy v části **konfigurace** záhlaví, vyberte **škálování**. 
+3. Na stránce úlohy v části **konfigurovat** záhlaví, vyberte **škálování**. 
 
-    ![Azure konfigurace portálu úlohy Stream Analytics][img.stream.analytics.preview.portal.settings.scale]
+    ![Azure portal konfigurace úlohy Stream Analytics][img.stream.analytics.preview.portal.settings.scale]
     
-4. K nastavení služby SUs úlohy použijte posuvníku. Všimněte si, že jste omezeni na konkrétní nastavení SU. 
+4. Nastavení služby SUs úlohy pomocí posuvníku. Všimněte si, že jste omezeni na konkrétní nastavení SU. 
 
-## <a name="monitor-job-performance"></a>Monitorování výkonu úlohy
-Pomocí portálu Azure, můžete sledovat propustnost úlohy:
+## <a name="monitor-job-performance"></a>Výkon úlohy monitorování
+Pomocí webu Azure portal, můžete sledovat propustnost úlohy:
 
-![Azure Stream Analytics monitorování úloh][img.stream.analytics.monitor.job]
+![Monitorování úloh Azure Stream Analytics][img.stream.analytics.monitor.job]
 
-Vypočítejte očekávané propustnost zatížení. Pokud propustnost je menší než se očekávalo, ladit vstupní oddílu, odladění dotazu a přidejte služby SUs na úlohu.
+Vypočítá očekávané propustnosti zatížení. Pokud se propustnost je menší než se očekávalo, vyladit vstupního oddílu, odladění dotazu a přidat su pro vaši úlohu.
 
-## <a name="how-many-sus-are-required-for-a-job"></a>Kolik služby SUs jsou potřeba pro úlohu?
+## <a name="how-many-sus-are-required-for-a-job"></a>Počtu jednotek su jsou požadovány pro úlohu?
 
-Volba číslo požadované služby SUs pro konkrétní úlohy závisí na konfiguraci oddílů pro vstupy a dotaz, který je definován v rámci úlohy. **Škálování** stránce můžete nastavit správné počet služby SUs. Je osvědčeným postupem přidělit další služby SUs, než je potřeba. Modul služby Stream Analytics zpracování optimalizuje latence a propustnosti cenu přidělování další paměť.
+Volba počet požadovaných SUs pro konkrétní úlohy závisí na konfiguraci oddílů pro vstupy a dotaz, který je definován v rámci úlohy. **Škálování** stránka umožňuje nastavit správný počet su. Doporučuje se přidělit další su, než je potřeba. Modul pro zpracování Stream Analytics optimalizuje latenci a propustnost za cenu přidělování další paměti.
 
-Obecně platí, osvědčeným postupem je začínat 6 služby SUs pro dotazy, které nepoužívají **PARTITION BY**. Pak určete místo paprika pomocí metody omyl a ve kterém můžete změnit počet SUs po předání reprezentativní objemy dat a prozkoumat metriky využití SU %.
+Obecně platí, osvědčeným postupem je začít s 6 SUs pro dotazy, které nepoužívají **PARTITION BY**. Pak zjistěte sladkost místě pomocí omyl a metody, ve kterém můžete upravit počet SUs po předání reprezentativního objemu dat a zkontrolovat metriku % využití SU. Maximální počet jednotek streamování, které je možné úlohu Stream Analytics, závisí na počtu kroků v dotazu definovaném pro úlohy a počtu oddílů v každém kroku. Další informace o omezeních [tady](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-parallelization#calculate-the-maximum-streaming-units-of-a-job).
 
-Další informace o volbě správného počtu služby SUs, zobrazí tato stránka: [úlohy škálování Azure Stream Analytics ke zvýšení propustnosti](stream-analytics-scale-jobs.md)
+Další informace o výběru správné číslo su, najdete na této stránce: [úloh škálování Azure Stream Analytics pro zvýšení prostupnosti](stream-analytics-scale-jobs.md)
 
 > [!Note]
-> Výběr kolik služby SUs jsou požadovány pro konkrétní úlohy závisí na konfiguraci oddílů pro vstupy a na dotaz definovaný pro úlohu. Můžete vybrat až vaší kvóty v služby SUs pro úlohu. Ve výchozím nastavení má každé předplatné Azure kvótu až 200 služby SUs pro všechny úlohy analýzy v určité oblasti. Chcete-li zvýšit služby SUs pro vaše předplatné nad rámec této kvóty, obraťte se na [Microsoft Support](http://support.microsoft.com). Platné hodnoty pro služby SUs na úlohu jsou 1, 3, 6 a až v přírůstcích po 6.
+> Určení počtu jednotek su jsou požadovány pro konkrétní úlohy závisí na konfiguraci oddílů pro vstupy a na dotazu definovaném pro příslušnou úlohu. Můžete vybrat až do vaší kvóty služby SUs pro úlohu. Každé předplatné Azure má ve výchozím nastavení se kvóta až 200 SUs pro všechny úlohy analýzy v určité oblasti. Pro vaše předplatné nad tuto kvótu zvýšit su, obraťte se na [Microsoft Support](http://support.microsoft.com). Platné hodnoty pro služby SUs na úlohu jsou 1, 3, 6 a až v přírůstcích po 6.
 
-## <a name="factors-that-increase-su-utilization"></a>Faktory, které se zvyšují % využití SU 
+## <a name="factors-that-increase-su-utilization"></a>Faktory, které zvyšují % využití SU 
 
-Dočasné (čas orientace) dotazu prvky jsou základní sady stavová operátory poskytované Stream Analytics. Stream Analytics spravuje stav těchto operací interně jménem uživatele, pomocí správy využití paměti, vytváření kontrolních bodů pro zajištění odolnosti a obnovení stavu během upgradu služby. I když Stream Analytics plně spravuje stavy, existuje několik doporučených postupů, které uživatelé měli zvážit.
+Základní sada operátorů stavová služba Stream Analytics k dispozici jsou prvky dočasných dotazů (orientované na čas). Stream Analytics spravuje stav tyto operace interně jménem uživatele tím, že spravuje spotřebu paměti, vytváření kontrolních bodů pro zajištění odolnosti a obnovení stavu během upgradu služby. I když Stream Analytics plně řídí stavy, existují některé z doporučených osvědčených postupů, které uživatelé měli zvážit.
 
-## <a name="stateful-query-logic-in-temporal-elements"></a>Stavová dotazu logiky v elementech dočasné
-Jedním z jedinečné možnosti úlohy Azure Stream Analytics je provést stavová zpracování, např. agregací v časových oknech, dočasných spojení a dočasné analytické funkce. Každý z těchto operátorů udržuje informace o stavu. Je maximální velikost okna pro tyto elementy dotazu je sedm dní. 
+## <a name="stateful-query-logic-in-temporal-elements"></a>Stavových dotazů logiky v elementech dočasné
+Jeden jedinečné funkce úlohy Azure Stream Analytics je stavové zpracování, jako jsou agregace v okně, dočasné spojení a dočasné analytických funkcí. Každý z těchto operátorů uchovává informace o stavu. Je maximální velikost okna pro tyto elementy dotazu je sedm dní. 
 
-Koncept dočasné okno se zobrazí v několika elementy dotaz služby Stream Analytics:
-1. Oddílové agregace: skupiny podle z Přeskakujícího, posílání a klouzavé windows
+Koncept dočasné okno se zobrazí v několika elementy dotazu Stream Analytics:
+1. Agregace v okně: skupiny podle z Přeskakujícího, kdy se skok provádí a klouzavé systému windows
 
-2. Dočasné spojení: připojení pomocí funkce DATEDIFF
+2. Dočasná spojení: připojení pomocí funkce DATEDIFF
 
-3. Dočasné analytické funkce: ISFIRST, poslední a PRODLEVA s LIMIT DURATION
+3. Dočasné analytických funkcí: ISFIRST, LAST a PRODLEVA s dobou trvání LIMIT
 
-Tyto faktory ovlivňují paměť použitá (část streamování jednotky metrika) pomocí úlohy Stream Analytics:
+Paměť použitá ovlivňují následující faktory (součást metrika jednotek streamování) pomocí úloh Stream Analytics:
 
-## <a name="windowed-aggregates"></a>Oddílové agregace
-Paměť spotřebované (velikost stavu) pro oddílové agregace není vždy přímo úměrná velikosti okna. Využitá paměť místo toho je úměrná Kardinalita data nebo počet skupin v každé časové okno.
+## <a name="windowed-aggregates"></a>Agregace v okně
+Využitá paměť (velikost stavu) pro oddílové agregace není vždy přímo úměrná velikosti okna. Místo toho využitá paměť je přímo úměrná Kardinalita dat nebo počet skupin v každé časový interval.
 
 
-Například v následujícím dotazu číslo přiřazené `clusterid` je Kardinalita dotazu. 
+Například v následujícím dotazu číslo přidružené k `clusterid` je kardinalitou dotazu. 
 
    ```sql
    SELECT count(*)
@@ -80,7 +81,7 @@ Například v následujícím dotazu číslo přiřazené `clusterid` je Kardina
    GROUP BY  clusterid, tumblingwindow (minutes, 5)
    ```
 
-Chcete-li ameliorate problémů způsobených vysokou kardinalitou v předchozí dotaz, může odesílat události do centra událostí rozdělena na oddíly pomocí `clusterid`a tím, že systém pro každý vstupní oddíl samostatně pomocí zpracovat dotaz s více instancemi **oddílu PODLE** jak je znázorněno v následujícím příkladu:
+Pokud chcete zmírnit potíže způsobené vysokou kardinalitou v předchozím dotazu, můžete odesílat události do centra událostí, které jsou rozdělené podle `clusterid`a horizontální navýšení kapacity dotazu tím, že systém ke zpracování jednotlivých vstupních oddílů samostatně pomocí **oddílu PODLE** jak je znázorněno v následujícím příkladu:
 
    ```sql
    SELECT count(*) 
@@ -88,14 +89,14 @@ Chcete-li ameliorate problémů způsobených vysokou kardinalitou v předchozí
    GROUP BY PartitionId, clusterid, tumblingwindow (minutes, 5)
    ```
 
-Jakmile je dotaz rozdělený, rozprostře se mezi několik uzlů. V důsledku toho počet `clusterid` hodnoty, než dorazí do každého uzlu se snižuje a snižují se mohutnost skupiny operátorem. 
+Jakmile je dotaz rozdělený, rozprostře se mezi několik uzlů. V důsledku toho počet `clusterid` hodnoty přicházejících na jednotlivé uzly a tím se zmenší kardinalitou této skupině operátorem. 
 
-Oddíly centra událostí by měl pomocí klíče seskupení, abyste nemuseli pro fází reduce rozdělit na oddíly. Další informace najdete v tématu [Přehled služby Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md). 
+Oddílů centra událostí by měly být rozdělené podle klíče seskupení nemuseli snižte kroku. Další informace najdete v tématu [Přehled služby Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md). 
 
-## <a name="temporal-joins"></a>Dočasné spojení
-Paměť spotřebované (velikost stavu) dočasných spojení je úměrná počtu událostí v místnosti dočasné rychlý pohyb spojení, která je vstupní rychlost událostí násobkem velikostí rychlý pohyb místnosti. Jinými slovy paměť spotřebovávají spojení je úměrná časové rozmezí DateDiff násobí hodnotou průměrný počet událostí.
+## <a name="temporal-joins"></a>Dočasná spojení
+Využitá paměť (velikost stavu) dočasná spojení je přímo úměrný počtu událostí v místnosti otáčením dočasných spojení, což je vstupní frekvence událostí vícenásobně podle velikosti otáčením místnosti. Jinými slovy je úměrná časový rozsah DateDiff vynásobené průměrný počet událostí paměti spotřebované ve spojení.
 
-Využití paměti pro dotaz ovlivnit počet neodpovídající události ve spojení. Následující dotaz hledá imprese reklamy, které generují kliknutí:
+Počet nespárovaných událostí ve spojení vliv na využití paměti v aplikaci pro dotaz. Následující dotaz hledá imprese reklamy, které generují kliknutí:
 
    ```sql
    SELECT clicks.id
@@ -103,9 +104,9 @@ Využití paměti pro dotaz ovlivnit počet neodpovídající události ve spoje
    INNER JOIN impressions ON impressions.id = clicks.id AND DATEDIFF(hour, impressions, clicks) between 0 AND 10.
    ```
 
-V tomto příkladu je možné, že se zobrazují spoustu reklamy a několik lidí, klikněte na možnost na něm a je potřeba zachovat všechny události v časovém intervalu. Využitá paměť je přímo úměrná velikosti tohoto okna a frekvenci událostí. 
+V tomto příkladu je možné, že jsou uvedeny zobrazuje spousta reklamy a několik lidí, klikněte na něj a je nutné zachovat všechny události v časovém intervalu. Využitá paměť je přímo úměrná velikosti tohoto okna a frekvenci událostí. 
 
-Toto řešení, odesílání událostí do centra událostí rozdělena na oddíly tak, že spojení klíče (id v tomto případě) a škálování dotaz tím, že systém pro každý vstupní oddíl samostatně pomocí zpracování **PARTITION BY** znázorněné:
+Pokud to pokud chcete napravit, odesílání událostí do centra událostí rozdělit na oddíly tak, že spojení klíče (id v tomto případě) a horizontální navýšení kapacity dotazu tím, že systém ke zpracování jednotlivých vstupních oddílů samostatně pomocí **PARTITION BY** uvedeno:
 
    ```sql
    SELECT clicks.id
@@ -114,34 +115,34 @@ Toto řešení, odesílání událostí do centra událostí rozdělena na oddí
    ON impression.PartitionId = clicks.PartitionId AND impressions.id = clicks.id AND DATEDIFF(hour, impressions, clicks) between 0 AND 10 
    ```
 
-Jakmile je dotaz rozdělený, rozprostře se mezi několik uzlů. Výsledkem je snížen počet události pocházející do každého uzlu, a snižují se velikost stavu uchovává se v okně připojení. 
+Jakmile je dotaz rozdělený, rozprostře se mezi několik uzlů. V důsledku počet událostí přicházejících na jednotlivé uzly a tím se zmenší velikost stavu, v okně připojení. 
 
-## <a name="temporal-analytic-functions"></a>Dočasné analytické funkce
-Paměť spotřebované (velikost stavu) dočasné analytické funkce je úměrná rychlost těchto událostí násobkem DURATION. Paměťové nároky analytické funkce není přímo úměrná velikosti okna, ale spíš oddílu počet v každé časové okno.
+## <a name="temporal-analytic-functions"></a>Dočasné analytických funkcí
+Využitá paměť (velikost stavu) dočasné analytické funkce je přímo úměrný frekvence událostí vícenásobně DURATION. Paměti používané analytických funkcí není přímo úměrná velikosti okna, ale spíše oddílu počet v každé časové okno.
 
-Oprava je podobná dočasné připojení. Je možné škálovat pomocí dotazu **PARTITION BY**. 
+Náprava se podobá dočasná spojení. Můžete horizontálně navýšit dotazu pomocí **PARTITION BY**. 
 
-## <a name="out-of-order-buffer"></a>Mimo pořadí vyrovnávací paměti 
-Uživatel může konfigurovat velikost vyrovnávací paměti mimo pořadí, v případě, že řazení podokně Konfigurace. Vyrovnávací paměti se používá pro uložení vstupy pro dobu trvání okna, změnit jejich pořadí. Velikost vyrovnávací paměti je úměrná vstupní rychlost těchto událostí násobkem velikostí okno mimo pořadí. Výchozí velikost okna je 0. 
+## <a name="out-of-order-buffer"></a>Vyrovnávací paměť mimo pořadí 
+Uživatel může konfigurovat velikost vyrovnávací paměti mimo pořadí, v případě, že řazení konfigurační podokno. Vyrovnávací paměť se používá pro uložení vstupy po dobu trvání okna, změnit jejich pořadí. Velikost vyrovnávací paměti je úměrný vstupní frekvence událostí vícenásobně podle velikosti okna mimo pořadí. Výchozí velikost okna je 0. 
 
-K nápravě přetečení mimo pořadí vyrovnávací paměti, škálovat pomocí dotazu **PARTITION BY**. Jakmile je dotaz rozdělený, rozprostře se mezi několik uzlů. V důsledku toho se snižuje počet událostí, než dorazí do každého uzlu, a snižují počet událostí ve vyrovnávací paměti jednotlivých změnit pořadí. 
+Oprava přetečení vyrovnávací paměti pro mimo pořadí, horizontální navýšení kapacity dotazu pomocí **PARTITION BY**. Jakmile je dotaz rozdělený, rozprostře se mezi několik uzlů. V důsledku toho počet událostí přicházejících na jednotlivé uzly a tím se zmenší počet událostí v každé označovaném jako vyrovnávací paměť. 
 
 ## <a name="input-partition-count"></a>Počet vstupních oddílů 
-Každý oddíl vstupní vstupu úlohy má vyrovnávací paměť. Větší počet vstupních oddílů, více prostředků spotřebuje úlohy. Pro každou jednotku streamování Azure Stream Analytics může zpracovat přibližně 1 MB/s vstupu. Proto můžete optimalizovat odpovídající počet Stream Analytics streamování jednotky s počet oddílů v Centru událostí. 
+Každý oddíl vstupu úlohy vstup má vyrovnávací paměť. Větší počet vstupních oddílů, další zdroj úloha spotřebovává. Pro každou jednotku streamování Azure Stream Analytics může zpracovat přibližně 1 MB/s vstupu. Proto můžete optimalizovat to provede spárováním odpovídajících počet Stream Analytics streaming jednotek s počtu oddílů v Centru událostí. 
 
-Úlohu nakonfigurované jednu jednotku streamování obvykle stačí pro centra událostí s dva oddíly (což je minimální pro Centrum událostí). Pokud centra událostí má více oddíly, vaše úlohy služby Stream Analytics využívá více prostředků, ale používá nemusí navíc propustnost poskytované centra událostí. 
+Úlohu nakonfigurovanou jednu jednotku streamování, obvykle stačí pro Centrum událostí s dva oddíly (což je minimum pro centra událostí). Pokud více oddílů centra událostí, vaší úlohy Stream Analytics využívá více prostředků, ale používá nemusí doplňující propustnost k dispozici v Centru událostí. 
 
-Pro úlohu s 6 jednotek streamování může být nutné 4 nebo 8 oddíly z centra událostí. Vzhledem k tomu, které způsobí, že využití prostředků nadměrné-li však příliš mnoho nepotřebné oddíly. Například centra událostí s 16 oddíly nebo větší v úloze Stream Analytics, který má 1 jednotka streamování. 
+Pro úlohu s 6 jednotkami streamování možná bude nutné 4 nebo 8 oddíly z centra událostí. Se však vyhněte příliš mnoho oddílů nepotřebné vzhledem k tomu, který způsobí, že nadměrného využití prostředků. Například centra událostí s 16 oddíly nebo větší úlohu Stream Analytics, která má 1 jednotka streamování. 
 
 ## <a name="reference-data"></a>Referenční data 
-Referenční data v ASA jsou načtena do paměti pro rychlé vyhledávání. S aktuální implementace každé operace spojení u referenčních dat zachová kopii referenční data v paměti, i v případě, že připojení pomocí stejné referenční data vícekrát. Pro dotazy s **PARTITION BY**, každý oddíl obsahuje kopii referenční data, takže jsou plně odpojeného oddíly. S násobitel platit využití paměti můžete rychle získat velmi vysoké, pokud připojíte u referenčních dat vícekrát s více oddílů.  
+Referenční data v Azure Stream Analytics jsou načtena do paměti pro rychlé vyhledávání. S aktuální implementace každé operace spojení s referenčními daty udržuje kopie referenčních dat v paměti, i když se do programu se stejnými daty odkaz na více než jednou. Pro dotazy s **PARTITION BY**, každý oddíl má kopie referenčních dat tak, aby byly plně samostatné oddíly. S účinností multiplikátor využití paměti můžete rychle získat velmi vysoké, když se do programu s referenčními daty více než jednou s více oddílů.  
 
-### <a name="use-of-udf-functions"></a>Použití funkce UDF
-Když přidáte funkce UDF, načte Azure Stream Analytics prostředí JavaScript runtime do paměti. Tato akce ovlivní SU %.
+### <a name="use-of-udf-functions"></a>Použití funkcí UDF
+Při přidání funkce UDF, Azure Stream Analytics načítá modulu runtime jazyka JavaScript do paměti. To ovlivní SU %.
 
 ## <a name="next-steps"></a>Další postup
-* [Vytvoření paralelní dotazy v Azure Stream Analytics](stream-analytics-parallelization.md)
-* [Škálování služby Stream Analytics ke zvýšení propustnosti](stream-analytics-scale-jobs.md)
+* [Vytváření paralelizovat dotazů ve službě Azure Stream Analytics](stream-analytics-parallelization.md)
+* [Škálování služby Stream Analytics pro zvýšení prostupnosti](stream-analytics-scale-jobs.md)
 
 <!--Image references-->
 

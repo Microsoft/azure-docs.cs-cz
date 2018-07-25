@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 68baab14e2adf7f43bb1e0e0f47c414555a28659
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: ff2968f8e2fa9a705817b020f2daa6582d78029c
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213397"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39225298"
 ---
 # <a name="manage-lab-accounts-in-azure-lab-services"></a>Správa účtů testovacího prostředí ve službě Azure Lab Services 
 Ve službě Azure Lab Services účet testovacího prostředí je kontejner pro spravované testovací prostředí, jako je například testovací prostředí v učebnách. Správce nastaví účet testovacího prostředí pomocí Azure Lab Services a poskytuje přístup k vlastníků testovacího prostředí, kteří můžou vytvářet testovací prostředí v rámci účtu. Tento článek popisuje, jak vytvořit účet testovacího prostředí, zobrazit všechny účty testovacího prostředí nebo odstranění účtu služby testovacího prostředí.
@@ -54,6 +54,22 @@ Nastavení testovacího prostředí v učebně v účtu testovacího prostředí
 
     ![Přidání uživatele do role Autor testovacího prostředí](../media/tutorial-setup-lab-account/add-user-to-lab-creator-role.png)
 
+## <a name="specify-marketplace-images-available-to-lab-owners"></a>Zadejte Image z Marketplace k dispozici pro vlastníků testovacího prostředí
+V této části zadáte Image Marketplace, které vlastníků testovacího prostředí můžete použít k vytvoření testovacích prostředí v učebnách. 
+
+1. Vyberte **Image z Marketplace** v nabídce na levé straně. Ve výchozím nastavení najdete v článku na seznam všech imagí (povolené i zakázané). Můžete filtrovat seznam a zobrazit pouze povoleno/zakázáno Image tak, že vyberete **povolí jenom**/**pouze** možnost z rozevíracího seznamu v horní části. 
+
+    ![Stránka imagí Marketplace](../media/tutorial-setup-lab-account/marketplace-images-page.png)
+2. K **zakázat** image Marketplace, který je povolen, proveďte jednu z následujících akcí: 
+    1. Vyberte **... (tři tečky)**  v posledním sloupci a vyberte **zakázat image**. 
+
+        ![Zakažte jednu image](../media/tutorial-setup-lab-account/disable-one-image.png) 
+    2. Vyberte jednu nebo víc imagí ze seznamu vyberte zaškrtávací políčka před názvy těchto imagí v seznamu a vyberte **zakázat vybrané bitové kopie**. 
+
+        ![Zakázat více bitových kopií](../media/tutorial-setup-lab-account/disable-multiple-images.png) 
+1. Podobně, **povolit** image z Marketplace, proveďte jednu z následujících akcí: 
+    1. Vyberte **... (tři tečky)**  v posledním sloupci a vyberte **bitové kopie povoleným**. 
+    2. Vyberte jednu nebo víc imagí ze seznamu vyberte zaškrtávací políčka před názvy těchto imagí v seznamu a vyberte **povolit vybrané bitové kopie**. 
 
 ## <a name="view-lab-accounts"></a>Zobrazení účtů testovacího prostředí
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).

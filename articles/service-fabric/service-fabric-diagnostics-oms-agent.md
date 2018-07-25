@@ -1,6 +1,6 @@
 ---
-title: Azure Service Fabric - s analýzy protokolů pro monitorování výkonu | Microsoft Docs
-description: Zjistěte, jak nastavit agenta analýzy protokolů pro monitorování kontejnery a čítače výkonu pro Azure Service Fabric clusterů.
+title: Azure Service Fabric – sledování výkonu pomocí Log Analytics | Dokumentace Microsoftu
+description: Zjistěte, jak nastavit agenta Log Analytics pro monitorování kontejnerů a čítače výkonu pro své clustery Azure Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: srrengar
@@ -14,51 +14,51 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/16/2018
 ms.author: srrengar
-ms.openlocfilehash: a31fe62f2e81a0e39e4c314fc736e91e72bf7517
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: b97a32e2e859a5bb370873bfbdc5c6b4dffa1ac1
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36301549"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39237838"
 ---
-# <a name="performance-monitoring-with-log-analytics"></a>Pomocí analýzy protokolů pro sledování výkonu
+# <a name="performance-monitoring-with-log-analytics"></a>Sledování výkonu pomocí Log Analytics
 
-Tento článek popisuje kroky pro přidat agenta analýzy protokolů jako škálování virtuálního počítače nastavit rozšíření do clusteru a připojte ho k vaší existující pracovní prostor analýzy protokolů Azure. To umožňuje shromažďování dat diagnostiky o kontejnery, aplikací a monitorování výkonu. Přidejte jej jako rozšíření do prostředek sady škálování virtuálního počítače Azure Resource Manager zajistí, že ho získá nainstalovat na všech uzlech, i když škálování clusteru.
+Tento článek popisuje kroky pro přidání agenta Log Analytics, jak škálovací sady virtuálních počítačů rozšíření do clusteru a připojte ho k existující pracovní prostor Azure Log Analytics. To umožňuje shromažďování diagnostická data o kontejnerech, aplikací a monitorování výkonu. Tak, že přidáte jako rozšíření k prostředku virtuálního počítače škálovací sady, Azure Resource Manageru se zajistí, že se nainstaluje na všech uzlech i při škálování clusteru.
 
 > [!NOTE]
-> Tento článek předpokládá, že máte k pracovnímu prostoru analýzy protokolů Azure už nastavili. Pokud ho použít nechcete, přejděte na [nastavení analýzy protokolů Azure](service-fabric-diagnostics-oms-setup.md)
+> Tento článek předpokládá, že máte pracovní prostor služby Azure Log Analytics, už nastavili. Pokud tak neučiníte, přejděte na [nastavení Azure Log Analytics](service-fabric-diagnostics-oms-setup.md)
 
-## <a name="add-the-agent-extension-via-azure-cli"></a>Přidat agenta rozšíření prostřednictvím rozhraní příkazového řádku Azure
+## <a name="add-the-agent-extension-via-azure-cli"></a>Přidat rozšíření agenta pomocí příkazového řádku Azure
 
-Nejlepší způsob, jak přidat agenta Analytics protokolu ke clusteru prostřednictvím škálování virtuálních počítačů nastavena dostupných rozhraní API pomocí Azure CLI. Pokud jste ještě nastavení rozhraní příkazového řádku Azure, přejděte na portál Azure a otevře [cloudové prostředí](../cloud-shell/overview.md) instanci, nebo [nainstalovat Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Nejlepší způsob, jak přidat agenta Log Analytics ke svému clusteru je prostřednictvím škálování virtuálního počítače nastavte API pomocí Azure CLI. Pokud nemáte ještě nastavení rozhraní příkazového řádku Azure, jděte na webu Azure portal a otevřete [Cloud Shell](../cloud-shell/overview.md) instanci, nebo [instalace Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
-1. Jakmile se vyžaduje vaše cloudové prostředí, zkontrolujte, zda že pracujete v rámci stejného předplatného jako prostředku. Zkontrolovat to s `az account show` a zajistěte, aby hodnota "název" odpovídá předplatného vašeho clusteru.
+1. Jakmile vaší služby Cloud Shell je požadováno, ujistěte se, že pracujete ve stejném předplatném jako prostředek. Zkontrolujte to s `az account show` a ujistěte se, že hodnota "name" odpovídá předplatné vašeho clusteru.
 
-2. Na portálu přejděte do skupiny prostředků, kde je umístěn pracovní prostor analýzy protokolů. Klikněte do prostředků analýzy protokolů (typ prostředku bude analýzy protokolů). Jakmile jste na stránce Přehled prostředků, klikněte na **Upřesnit nastavení** v levé nabídce v části nastavení.
+2. Na portálu přejděte do skupiny prostředků, ve kterém se nachází váš pracovní prostor Log Analytics. Klikněte na prostředek Log Analytics (typ prostředku bude Log Analytics). Jakmile budete na stránce Přehled zdrojů, klikněte na **Upřesnit nastavení** v nabídce vlevo v části nastavení.
 
-    ![Stránka vlastností analýzy protokolů](media/service-fabric-diagnostics-oms-agent/oms-advanced-settings.png)
+    ![Stránka Vlastnosti log Analytics](media/service-fabric-diagnostics-oms-agent/oms-advanced-settings.png)
  
-3. Klikněte na **servery Windows** Pokud jsou stálého do clusteru se systémem Windows, a **servery se systémem Linux** při vytváření clusteru s podporou systému Linux. Tato stránka zobrazí vaše `workspace ID` a `workspace key` (uvedené na portálu jako primární klíč). Budete potřebovat pro další krok.
+3. Klikněte na **servery Windows** Pokud jsou připraveni cluster Windows, a **servery s Linuxem** při vytváření clusteru s Linuxem. Tato stránka zobrazí vaše `workspace ID` a `workspace key` (uvedené jako primárního klíče na portálu). Budete potřebovat i na další krok.
 
-4. Spusťte příkaz pro instalaci agenta analýzy protokolů do clusteru, pomocí `vmss extension set` rozhraní API ve své cloudové prostředí:
+4. Spusťte příkaz k instalaci agenta Log Analytics do clusteru, pomocí `vmss extension set` rozhraní API ve službě Cloud Shell:
 
-    Pro cluster s podporou Windows:
+    Pro Windows cluster:
     
     ```sh
     az vmss extension set --name MicrosoftMonitoringAgent --publisher Microsoft.EnterpriseCloud.Monitoring --resource-group <nameOfResourceGroup> --vmss-name <nameOfNodeType> --settings "{'workspaceId':'<Log AnalyticsworkspaceId>'}" --protected-settings "{'workspaceKey':'<Log AnalyticsworkspaceKey>'}"
     ```
 
-    Pro cluster s podporou Linux:
+    Pro cluster s Linuxem:
 
     ```sh
-    az vmss extension set --name Log AnalyticsAgentForLinux --publisher Microsoft.EnterpriseCloud.Monitoring --resource-group <nameOfResourceGroup> --vmss-name <nameOfNodeType> --settings "{'workspaceId':'<Log AnalyticsworkspaceId>'}" --protected-settings "{'workspaceKey':'<Log AnalyticsworkspaceKey>'}"
+    az vmss extension set --name OmsAgentForLinux --publisher Microsoft.EnterpriseCloud.Monitoring --resource-group <nameOfResourceGroup> --vmss-name <nameOfNodeType> --settings "{'workspaceId':'<Log AnalyticsworkspaceId>'}" --protected-settings "{'workspaceKey':'<Log AnalyticsworkspaceKey>'}"
     ```
 
-    Tady je příklad Agent analýzy protokolů, který se přidává do clusteru se systémem Windows.
+    Tady je příklad agenta Log Analytics přidávají do clusteru Windows.
 
-    ![Přihlaste se analýza agenta rozhraní příkazového řádku příkaz](media/service-fabric-diagnostics-oms-agent/cli-command.png)
+    ![Protokolovat příkaz rozhraní příkazového řádku pro agenta Analytics](media/service-fabric-diagnostics-oms-agent/cli-command.png)
  
-5. Je třeba vzít méně než 15 minut úspěšně přidat agenta do uzlů. Můžete ověřit, že byly přidány agenty pomocí `az vmss extension list` rozhraní API:
+5. To by měla trvat méně než 15 minut úspěšně přidat agenta na svých uzlech. Můžete ověřit, že byly přidány pomocí agentů `az vmss extension list` rozhraní API:
 
     ```sh
     az vmss extension list --resource-group <nameOfResourceGroup> --vmss-name <nameOfNodeType>
@@ -66,38 +66,38 @@ Nejlepší způsob, jak přidat agenta Analytics protokolu ke clusteru prostřed
 
 ## <a name="add-the-agent-via-the-resource-manager-template"></a>Přidat agenta pomocí šablony Resource Manageru
 
-Ukázka Resource Manager šablony, které nasazení k pracovnímu prostoru analýzy protokolů Azure a přidat agenta na každý z uzlů je k dispozici pro [Windows](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Samples/Windows) nebo [Linux](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Samples/Linux).
+Je k dispozici pro ukázková Resource Manageru šablony, které nasazení pracovnímu prostoru Azure Log Analytics a přidání agenta na jednotlivé uzly [Windows](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Samples/Windows) nebo [Linux](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Samples/Linux).
 
-Můžete stáhnout a upravit tato šablona nasazení clusteru, který nejlépe vyhovuje vašim potřebám.
+Můžete stáhnout a upravit této šablony můžete nasadit do clusteru, který nejlépe vyhovuje vašim potřebám.
 
-## <a name="view-performance-counters"></a>Čítače výkonu zobrazení
+## <a name="view-performance-counters"></a>Zobrazit čítače výkonu
 
-Teď, když jste přidali agenta analýzy protokolů, head na over na portál analýzy protokolů a zvolte čítače výkonu, které jste chtěli shromažďovat. 
+Teď, když jste přidali agenta Log Analytics, přejděte na přes portál Log Analytics k výběru, které čítače výkonu je chcete shromáždit. 
 
-1. Na portálu Azure přejděte do skupiny prostředků, ve které jste vytvořili řešení Service Fabric analýzy. Vyberte **ServiceFabric\<nameOfLog AnalyticsWorkspace\>**.
+1. Na webu Azure Portal přejděte do skupiny prostředků, ve které jste vytvořili řešení analýza služby Service Fabric. Vyberte **ServiceFabric\<nameOfLog AnalyticsWorkspace\>**.
 
 2. Klikněte na **Log Analytics**.
 
 3. Klikněte na tlačítko **upřesňující nastavení**.
 
-4. Klikněte na tlačítko **Data**, pak klikněte na tlačítko **Windows nebo Linux čítače výkonu**. Je seznam Výchozí čítače, které můžete povolit a můžete nastavit interval pro kolekci také. Můžete také přidat [další čítače výkonu](service-fabric-diagnostics-event-generation-perf.md) ke shromažďování. Správný formát je odkazováno v tomto [článku](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85).aspx).
+4. Klikněte na tlačítko **Data**, pak klikněte na tlačítko **čítačů výkonu systému Linux nebo Windows**. Zde je seznam Výchozí čítače, které můžete povolit a interval pro shromažďování lze nastavit příliš. Můžete také přidat [další čítače výkonu](service-fabric-diagnostics-event-generation-perf.md) ke shromažďování. Správný formát je odkazováno v tomto [článku](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85).aspx).
 
 5. Klikněte na tlačítko **Uložit**, pak klikněte na tlačítko **OK**.
 
 6. Zavřete okno Upřesnit nastavení.
 
-7. V části Obecné záhlaví, klikněte na **přehled**.
+7. V části Obecné, klikněte na tlačítko **přehled**.
 
-8. Zobrazí se dlaždice ve formě grafu pro každou z řešení povoleno, včetně jeden pro Service Fabric. Klikněte **Service Fabric** grafu nadále řešení Service Fabric analýzy.
+8. Zobrazí se dlaždice ve formě grafu pro každou z řešení povolené, včetně pro Service Fabric. Klikněte na tlačítko **Service Fabric** grafu a pokračujte v Service Fabric analytického řešení.
 
-9. Zobrazí se několik dlaždic s grafy na provozní kanál a spolehlivé služby události. Grafické znázornění dat odesílaných v pro čítače, které jste vybrali se zobrazí v uzlu metriky. 
+9. Zobrazí se na několik dlaždic s grafy na provozní kanál a události reliable services. Grafické znázornění dat odesílaných v čítačů, které jste vybrali se zobrazí pod uzlem metriky. 
 
-10. Klikněte na graf kontejneru metrika zobrazíte další podrobnosti. Můžete taky zadat dotaz na data čítače výkonu podobně jako na clusteru události a na uzly, název čítače výkonu a hodnoty pomocí dotazovacího jazyka pro Kusto filtr.
+10. Klikněte na graf kontejneru metriky zobrazíte další podrobnosti. Můžete také zadávat dotazy na data čítače výkonu podobně k události clusteru a filtrováním podle uzlů, název čítače výkonu a hodnoty v jazyce dotaz Kusto.
 
-![Dotaz čítače výkonu protokolu analýzy](media/service-fabric-diagnostics-event-analysis-oms/oms_node_metrics_table.PNG)
+![Dotazu čítače výkonu log Analytics](media/service-fabric-diagnostics-event-analysis-oms/oms_node_metrics_table.PNG)
 
 ## <a name="next-steps"></a>Další postup
 
-* Shromažďovat relevantní [čítače výkonu](service-fabric-diagnostics-event-generation-perf.md). Konfigurace agenta analýzy protokolů ke shromažďování konkrétních čítačích výkonu, zkontrolujte [konfigurace zdroje dat](../log-analytics/log-analytics-data-sources.md#configuring-data-sources).
-* Konfigurace analýzy protokolů nastavit [automatizované výstrahy](../log-analytics/log-analytics-alerts.md) které pomáhají při zjišťování a Diagnostika
-* Jako alternativu můžete shromáždit čítače výkonu prostřednictvím [rozšíření diagnostiky Azure a odešlete je Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md#add-the-ai-sink-to-the-resource-manager-template)
+* Shromažďovat relevantní [čítače výkonu](service-fabric-diagnostics-event-generation-perf.md). Konfigurace agenta Log Analytics ke shromažďování konkrétních čítačích výkonu najdete v tématu [konfigurace zdroje dat](../log-analytics/log-analytics-data-sources.md#configuring-data-sources).
+* Nakonfigurujte Log Analytics a nastavit [automatické upozorňování](../log-analytics/log-analytics-alerts.md) které vám pomůže se zjišťováním a diagnostikou
+* Jako alternativu můžete shromáždit čítače výkonu prostřednictvím [rozšíření Azure Diagnostics a posílat do Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md#add-the-ai-sink-to-the-resource-manager-template)

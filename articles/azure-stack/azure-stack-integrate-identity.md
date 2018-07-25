@@ -1,113 +1,113 @@
 ---
-title: Zásobník datacenter integrace se službou Azure - Identity
-description: Zjistěte, jak integrovat zásobník Azure AD FS s vaším datovým centrem služby AD FS
+title: Integrace datových center Azure Stack – Identity
+description: Informace o integraci služby AD FS pro Azure Stack s vaším datovým centrem služby AD FS
 services: azure-stack
 author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 05/15/2018
+ms.date: 07/16/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: ''
-ms.openlocfilehash: ee1c48c4a33d699dcb3da24b2e9a3d6e001b16c5
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 706afa7cb79b7b5c2afcd729f36ff150b87dd6df
+ms.sourcegitcommit: d76d9e9d7749849f098b17712f5e327a76f8b95c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801469"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39242933"
 ---
-# <a name="azure-stack-datacenter-integration---identity"></a>Zásobník datacenter integrace se službou Azure - Identity
-Zásobník Azure pomocí Azure Active Directory (Azure AD) nebo Active Directory Federation Services (AD FS) můžete nasadit jako zprostředkovatele identity. Volba je nutné provést před nasazením Azure zásobníku. Nasazení pomocí služby AD FS se také označuje jako nasazení Azure zásobníku v odpojeném režimu.
+# <a name="azure-stack-datacenter-integration---identity"></a>Integrace datových center Azure Stack – Identity
+Azure Stack pomocí Azure Active Directory (Azure AD) nebo Active Directory Federation Services (AD FS) můžete nasadit jako zprostředkovatele identity. Volba je třeba provést před nasazením služby Azure Stack. Nasazení pomocí služby AD FS se také označuje jako při nasazování služby Azure Stack v odpojeném režimu.
 
-V následující tabulce jsou uvedeny rozdíly mezi dvěma identity volby:
+V následující tabulce jsou uvedeny rozdíly mezi identity dvě možnosti:
 
 ||Odpojení od Internetu|Připojení k Internetu|
 |---------|---------|---------|
-|Fakturace|Musí být kapacity<br> Smlouva Enterprise Agreement (EA) pouze|Kapacitu nebo platím jako jste – použití<br>EA nebo poskytovatele Cloud Solution Provider (CSP)|
-|Identita|Musí být služba AD FS|Azure AD ani AD FS|
-|Syndikace Marketplace.|Podporováno<br>BYOL licencování|Podporováno<br>BYOL licencování|
-|Registrace|Doporučené, vyžaduje vyměnitelné médium<br> a samostatné připojené zařízení.|Automatizované|
-|Opravy a aktualizace|Vyžaduje, vyžaduje vyměnitelné médium<br> a samostatné připojené zařízení.|Balíček aktualizace můžete stáhnout přímo<br> z Internetu do Azure zásobníku.|
+|Fakturace|Musí být kapacity<br> Pouze Enterprise Agreement (EA)|Kapacita nebo platbami jako využití<br>EA nebo poskytovatele Cloud Solution Provider (CSP)|
+|Identita|Musí být služba AD FS|Azure AD nebo AD FS|
+|Syndikace Marketplace|Podporováno<br>BYOL licencování|Podporováno<br>BYOL licencování|
+|Registrace|Doporučuje, vyžaduje vyměnitelné médium<br> a samostatné připojené zařízení.|Automatizované|
+|Opravy a aktualizace|Povinné, vyžaduje vyměnitelné médium<br> a samostatné připojené zařízení.|Balíček aktualizace si můžete stáhnout přímo<br> z Internetu do služby Azure Stack.|
 
 > [!IMPORTANT]
-> Bez opětovného nasazení celé řešení Azure zásobníku nelze přepnout zprostředkovatele identity.
+> Zprostředkovatel identity se nedá přejít bez opětovného nasazení celé řešení Azure Stack.
 
-## <a name="active-directory-federation-services-and-graph"></a>Graf a služby Active Directory Federation Services
+## <a name="active-directory-federation-services-and-graph"></a>Active Directory Federation Services a grafu
 
-Nasazení se službou AD FS umožňuje identit v existující doménové struktury služby Active Directory k ověření s prostředky v Azure zásobníku. Tento existující doménové struktury služby Active Directory vyžaduje nasazení služby AD FS umožňuje vytvoření vztahu důvěryhodnosti federace služby AD FS.
+Nasazování se službou AD FS umožňuje identit v existující doménové struktury služby Active Directory k ověření pomocí prostředků ve službě Azure Stack. Tento existující doménové struktury služby Active Directory vyžaduje nasazení služby AD FS a umožňuje vytvoření důvěryhodnosti federace AD FS.
 
-Ověřování je jednou ze součástí identity. Ke správě na základě řízení přístupu Role (RBAC) v Azure zásobníku, musí být nakonfigurované komponentu grafu. Když je delegovaný přístup k prostředku, vyhledá komponentu grafu uživatelský účet v existující doménové struktuře služby Active Directory pomocí protokolu LDAP.
+Ověřování je jednou ze součástí identity. Ke správě na základě řízení přístupu Role (RBAC) ve službě Azure Stack, musí být nakonfigurované komponenty grafu. Když se deleguje přístup k prostředku, komponenta grafu vyhledá uživatelský účet v existující doménové struktuře služby Active Directory pomocí protokolu LDAP.
 
-![Architektura Azure zásobníku služby AD FS](media/azure-stack-integrate-identity/Azure-Stack-ADFS-architecture.png)
+![Architektura služby Azure Stack služby AD FS](media/azure-stack-integrate-identity/Azure-Stack-ADFS-architecture.png)
 
-Existující služby AD FS je účet služby tokenů zabezpečení (STS), odešle deklarace identity ve službě AD FS Azure zásobníku (prostředků služby tokenů zabezpečení). V zásobníku Azure automation vytvoří vztah důvěryhodnosti zprostředkovatele deklarací s koncovým bodem metadat pro stávající službu AD FS.
+Existující služby AD FS je účet služby tokenů zabezpečení (STS), která odesílá deklarace identity do služby Azure Stack AD FS (zdrojem STS). Ve službě Azure Stack automatizace vytvoří vztah důvěryhodnosti zprostředkovatele deklarací se koncový bod metadat pro existující službu AD FS.
 
-Na stávající služby AD FS musí být nakonfigurované vztah důvěryhodnosti předávající strany. Tento krok není potřeba automatizace a musí být nakonfigurované operátorem. Koncový bod metadat zásobník Azure je popsána v souboru AzureStackStampDeploymentInfo.JSON, nebo prostřednictvím privilegované koncový bod spuštěním příkazu `Get-AzureStackInfo`.
+V existující služby AD FS musí být nakonfigurovaný vztah důvěryhodnosti předávající strany. Tento krok se provádí automatizace a musí být nakonfigurovaný pomocí operátoru. Koncový bod metadat služby Azure Stack je popsána v souboru AzureStackStampDeploymentInfo.JSON nebo prostřednictvím privilegovaných koncový bod pomocí příkazu `Get-AzureStackInfo`.
 
-Konfigurace vztahu důvěryhodnosti předávající strany také vyžaduje, abyste nakonfigurovali pravidla transformace deklarací identity, které jsou k dispozici společností Microsoft.
+Konfiguraci vztahu důvěryhodnosti předávající strany také vyžaduje, abyste nakonfigurovali pravidla transformace deklarací identity, které jsou k dispozici společností Microsoft.
 
-Pro konfiguraci grafu musí být účet služby za předpokladu, že má oprávnění v existující služby Active Directory pro čtení. Tento účet je nutný jako vstup pro automatizaci k povolení scénářů RBAC.
+Pro konfiguraci grafu musí být účet služby, za předpokladu, že má oprávnění v existující služby Active Directory pro čtení. Tento účet je požadován jako vstup pro automatizaci, aby se povolily scénáře RBAC.
 
-Poslední krok je pro výchozí zprostředkovatel předplatné nakonfigurované nového vlastníka. Tento účet má úplný přístup ke všem prostředkům při přihlášení k portálu správce Azure zásobníku.
+Poslední krok je nakonfigurován nového vlastníka pro výchozí předplatné poskytovatele. Tento účet má úplný přístup ke všem prostředkům při přihlášení k portálu Správce služby Azure Stack.
 
 Požadavky:
 
 
 |Komponenta|Požadavek|
 |---------|---------|
-|Graph|Microsoft Active Directory 2012 nebo 2012 R2/2016|
+|Graph|Microsoft Active Directory 2012/2012 R2/2016|
 |AD FS|Windows Server 2012/2012 R2/2016|
 
 ## <a name="setting-up-graph-integration"></a>Nastavení integrace grafu
 
-Graf pouze podporuje integraci s jednou doménovou strukturou Active Directory. Pokud existuje několik doménových struktur, pouze struktuře zadaný v konfiguraci se použije k načtení uživatelů a skupin.
+Graf podporuje pouze integraci s jednou doménovou strukturou Active Directory. Pokud existuje více doménových struktur, pouze struktuře zadaný v konfiguraci se použije k načtení uživatelů a skupin.
 
-Tyto informace se vyžaduje jako vstupy pro automatizaci parametry:
+Tyto informace se vyžaduje jako vstup pro automatizaci parametry:
 
 
 |Parametr|Popis|Příklad:|
 |---------|---------|---------|
-|CustomADGlobalCatalog|Plně kvalifikovaný název domény cílového doménové struktury služby Active Directory<br>Chcete-li integrovat|contoso.com|
+|CustomADGlobalCatalog|Plně kvalifikovaný název domény cílové doménové struktuře služby Active Directory<br>Chcete integrovat s|contoso.com|
 |CustomADAdminCredentials|Uživatel s oprávněním ke čtení protokolu LDAP|YOURDOMAIN\graphservice|
 
 ### <a name="create-user-account-in-the-existing-active-directory-optional"></a>Vytvoření uživatelského účtu ve stávající službě Active Directory (volitelné)
 
-Volitelně můžete vytvořit účet pro službu grafu v existující služby Active Directory. Tento krok proveďte, pokud ještě nemáte účet, který chcete použít.
+Volitelně můžete vytvořit účet služby Graph v existující služby Active Directory. Tento krok proveďte, pokud ještě nemáte účet, který chcete použít.
 
-1. V existující služby Active Directory vytvořte následující uživatelský účet (doporučení):
+1. V existující služby Active Directory vytvořte následující uživatelský účet (recommendation):
    - **Uživatelské jméno**: graphservice
-   - **Heslo**: použijte silné heslo<br>Nakonfigurujte hesla nikdy nevyprší.
+   - **Heslo**: použijte silné heslo<br>Konfigurace hesla nikdy nevyprší.
 
-   Není potřeba žádná zvláštní oprávnění nebo členství.
+   Je potřeba žádná zvláštní oprávnění nebo členství.
 
-#### <a name="trigger-automation-to-configure-graph"></a>Aktivační události automatizace konfigurace grafu
+#### <a name="trigger-automation-to-configure-graph"></a>Aktivování automatizace konfigurace grafu
 
-Pro tento postup použijte počítač v síti datového centra, který může komunikovat s privilegované koncového bodu v zásobníku Azure.
+Pro tento postup použijte počítač v síti datového centra, který může komunikovat s koncovým bodem privilegovaných ve službě Azure Stack.
 
-2. Otevřete relaci prostředí Windows PowerShell zvýšenými oprávněními (Spustit jako správce) a připojte na IP adresu privilegované koncového bodu. Použijte pověření pro **CloudAdmin** k ověření.
+2. Otevřete relaci Windows Powershellu se zvýšenými oprávněními (Spustit jako správce) a připojit k IP adrese privileged koncového bodu. Použijte přihlašovací údaje pro **CloudAdmin** k ověření.
 
    ```PowerShell  
    $creds = Get-Credential
    Enter-PSSession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $creds
    ```
 
-3. Teď, když jste připojení ke koncovému bodu privilegované, spusťte následující příkaz: 
+3. Teď, když jste připojeni k privilegovaným koncový bod, spusťte následující příkaz: 
 
    ```PowerShell  
    Register-DirectoryService -CustomADGlobalCatalog contoso.com
    ```
 
-   Po zobrazení výzvy zadejte přihlašovací údaje pro uživatelský účet, který chcete použít pro službu grafu (například graphservice). Vstup pro rutinu Register-DirectoryService musí být název doménové struktury nebo kořen domény v doménové struktuře a nikoli všech ostatních domén v doménové struktuře.
+   Po zobrazení výzvy zadejte přihlašovací údaje pro uživatelský účet, který chcete použít pro službu grafu (třeba graphservice). Vstup pro rutinu Register-DirectoryService musí odpovídat názvu doménové struktury / kořenové domény v doménové struktuře, nikoli všech ostatních domén v doménové struktuře.
 
    > [!IMPORTANT]
-   > Počkejte místní přihlašovací údaje (Get-Credential není podporována v privilegované koncového bodu) a zadejte přihlašovací údaje účtu grafu.
+   > Počkejte místní přihlašovací údaje (Get-Credential není podporována v privilegovaných koncový bod) a zadejte přihlašovací údaje účtu služby Graph.
 
 #### <a name="graph-protocols-and-ports"></a>Graf protokoly a porty
 
-Grafu služby v zásobníku Azure používá následující protokoly a porty pro komunikaci s možností zápisu Server globální katalog (GC) a Center KDC (Key Distribution), může zpracovat žádosti o přihlášení v cílové doménové struktury služby Active Directory.
+Služba Graph ve službě Azure Stack používá následující protokoly a porty, ke komunikaci se zapisovatelné Server globálního katalogu (GC) a distribuce softwaru KDC (Key), která dokáže zpracovávat žádosti o přihlášení v cílové doménové struktuře služby Active Directory.
 
-Služba grafu v zásobníku Azure používá následující protokoly a porty pro komunikaci s cílem služby Active Directory:
+Služba Graph ve službě Azure Stack používá následující protokoly a porty pro komunikaci s cílem služby Active Directory:
 
 |Typ|Port|Protocol (Protokol)|
 |---------|---------|---------|
@@ -118,57 +118,57 @@ Služba grafu v zásobníku Azure používá následující protokoly a porty pr
 
 ## <a name="setting-up-ad-fs-integration-by-downloading-federation-metadata"></a>Nastavení integrace služby AD FS stažením federačních metadat
 
-Tyto informace o požadované jako vstup pro automatizaci parametry:
+Tyto informace se vyžaduje jako vstup pro automatizaci parametry:
 
 |Parametr|Popis|Příklad:|
 |---------|---------|---------|
-|CustomAdfsName|Název zprostředkovatele deklarací identity. <cr>Zobrazí se tak na cílovou stránku služby AD FS.|Contoso|
+|CustomAdfsName|Název zprostředkovatele deklarací identity. <cr>Zobrazí se tak na cílové stránce služby AD FS.|Contoso|
 |CustomAD<br>FSFederationMetadataEndpointUri|Federační metadata odkaz|https://ad01.contoso.com/federationmetadata/2007-06/federationmetadata.xml|
 
 
-### <a name="trigger-automation-to-configure-claims-provider-trust-in-azure-stack"></a>Automation aktivační události. ke konfiguraci vztahu důvěryhodnosti zprostředkovatele deklarací identity v Azure zásobníku
+### <a name="trigger-automation-to-configure-claims-provider-trust-in-azure-stack"></a>Aktivování automatizace ke konfiguraci vztahu důvěryhodnosti zprostředkovatele deklarací identity ve službě Azure Stack
 
-Pro tento postup použijte počítač, který může komunikovat s privilegované koncovým bodem v zásobníku Azure. Očekává se, že certifikát použít účet **služby tokenů zabezpečení AD FS** důvěřují zásobník Azure.
+Pro tento postup použijte počítač, který může komunikovat s privileged koncového bodu ve službě Azure Stack. Očekává se, že tento účet používat certifikát **služby tokenů zabezpečení AD FS** je důvěryhodný pro Azure Stack.
 
-1. Otevřete relaci prostředí Windows PowerShell zvýšenými oprávněními a připojení k privilegované koncový bod.
+1. Otevřete relaci Windows Powershellu se zvýšenými oprávněními a připojte se k privilegovaným koncový bod.
 
    ```PowerShell  
    $creds = Get-Credential
    Enter-PSSession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $creds
    ```
 
-2. Teď, když jste připojení ke koncovému bodu privilegované, spusťte následující příkaz pomocí parametrů, které jsou vhodné pro vaše prostředí:
+2. Teď, když jste připojeni k privilegovaným koncový bod, spusťte následující příkaz pomocí parametrů, které jsou vhodné pro vaše prostředí:
 
    ```PowerShell  
    Register-CustomAdfs -CustomAdfsName Contoso -CustomADFSFederationMetadataEndpointUri https://win-SQOOJN70SGL.contoso.com/federationmetadata/2007-06/federationmetadata.xml
    ```
 
-3. Spusťte následující příkaz k aktualizaci vlastník předplatného poskytovatele výchozí, s parametry, které jsou vhodné pro vaše prostředí:
+3. Spusťte následující příkaz k aktualizaci vlastníkem předplatného poskytovatele výchozí, pomocí parametrů, které jsou vhodné pro vaše prostředí:
 
    ```PowerShell  
    Set-ServiceAdminOwner -ServiceAdminOwnerUpn "administrator@contoso.com"
    ```
 
-## <a name="setting-up-ad-fs-integration-by-providing-federation-metadata-file"></a>Nastavení integrace služby AD FS tím, že poskytuje soubor federačních metadat
+## <a name="setting-up-ad-fs-integration-by-providing-federation-metadata-file"></a>Nastavení integrace služby AD FS tím, že poskytuje soubor metadat federace
 
 Tuto metodu použijte, pokud platí některá z následujících podmínek:
 
-- Řetěz certifikátů se liší pro službu AD FS ve srovnání s všechny ostatní koncové body v zásobníku Azure.
-- Neexistuje žádné připojení k síti na existující server služby AD FS z Azure zásobníku instanci služby AD FS.
+- Řetěz certifikátů se liší pro službu AD FS ve srovnání s všechny ostatní koncové body ve službě Azure Stack.
+- Z instance služby AD FS v Azure stacku neexistuje žádné připojení k síti na existující server služby AD FS.
 
-Tyto informace o požadované jako vstup pro automatizaci parametry:
+Tyto informace se vyžaduje jako vstup pro automatizaci parametry:
 
 
 |Parametr|Popis|Příklad:|
 |---------|---------|---------|
-|CustomAdfsName|Název zprostředkovatele deklarací identity. Zobrazí se tak na cílovou stránku služby AD FS.|Contoso|
-|CustomADFSFederationMetadataFile|Soubor metadat federace|https://ad01.contoso.com/federationmetadata/2007-06/federationmetadata.xml|
+|CustomAdfsName|Název zprostředkovatele deklarací identity. Zobrazí se tak na cílové stránce služby AD FS.|Contoso|
+|CustomADFSFederationMetadataFileContent|Metadata obsahu|$using: federationMetadataFileContent|
 
-### <a name="create-federation-metadata-file"></a>Vytvoření souboru federační metadata
+### <a name="create-federation-metadata-file"></a>Vytvořit soubor metadat federace
 
-Pro následující postup musíte použít počítač, který má síťové připojení k existující nasazení služby AD FS, který se stane účet služby tokenů zabezpečení. Navíc musí být nainstalován potřebné certifikáty.
+Následující postup musíte použít počítač, který má síťové připojení k existující nasazení služby AD FS, který bude účet služby tokenů zabezpečení. Také musí být nainstalován potřebné certifikáty.
 
-1. Otevřete relaci prostředí Windows PowerShell zvýšenými oprávněními a spusťte následující příkaz, parametry, které jsou vhodné pro vaše prostředí:
+1. Otevřete relaci Windows Powershellu se zvýšenými oprávněními a spusťte následující příkaz, parametry, které jsou vhodné pro vaše prostředí:
 
    ```PowerShell  
    [XML]$Metadata = Invoke-WebRequest -URI https://win-SQOOJN70SGL.contoso.com/federationmetadata/2007-06/federationmetadata.xml -UseBasicParsing
@@ -176,41 +176,36 @@ Pro následující postup musíte použít počítač, který má síťové při
    $Metadata.outerxml|out-file c:\metadata.xml
    ```
 
-2. Zkopírujte soubor metadat do sdílené složky, která je přístupná z privilegovaných koncového bodu.
+2. Zkopírujte soubor metadat do počítače, který může komunikovat s koncovým bodem privileged.
 
+### <a name="trigger-automation-to-configure-claims-provider-trust-in-azure-stack"></a>Aktivování automatizace ke konfiguraci vztahu důvěryhodnosti zprostředkovatele deklarací identity ve službě Azure Stack
 
-### <a name="trigger-automation-to-configure-claims-provider-trust-in-azure-stack"></a>Automation aktivační události. ke konfiguraci vztahu důvěryhodnosti zprostředkovatele deklarací identity v Azure zásobníku
+Tento postup použijte počítač, který může komunikovat s privileged koncového bodu ve službě Azure Stack a má přístup k souboru metadat, který jste vytvořili v předchozím kroku.
 
-Pro tento postup použijte počítač, který může komunikovat s privilegované koncovým bodem v zásobníku Azure.
-
-1. Otevřete relaci prostředí Windows PowerShell zvýšenými oprávněními a připojení k privilegované koncový bod.
+1. Otevřete relaci Windows Powershellu se zvýšenými oprávněními.
 
    ```PowerShell  
+   $federationMetadataFileContent = get-content c:\metadata.cml
    $creds=Get-Credential
    Enter-PSSession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $creds
+   Register-CustomAdfs -CustomAdfsName Contoso -CustomADFSFederationMetadataFileContent $using:federationMetadataFileContent
    ```
 
-2. Teď, když jste připojení ke koncovému bodu privilegované, spusťte následující příkaz pomocí parametrů, které jsou vhodné pro vaše prostředí:
-
-   ```PowerShell  
-   Register-CustomAdfs -CustomAdfsName Contoso – CustomADFSFederationMetadataFile \\share\metadataexample.xml
-   ```
-
-3. Spusťte následující příkaz k aktualizaci vlastník předplatného poskytovatele výchozí, s parametry, které jsou vhodné pro vaše prostředí:
+2. Spusťte následující příkaz k aktualizaci vlastníkem předplatného poskytovatele výchozí, pomocí parametrů, které jsou vhodné pro vaše prostředí:
 
    ```PowerShell  
    Set-ServiceAdminOwner -ServiceAdminOwnerUpn "administrator@contoso.com"
    ```
 
-## <a name="configure-relying-party-on-existing-ad-fs-deployment-account-sts"></a>Nakonfigurovat předávající strany na existující nasazení služby AD FS (účet služby tokenů zabezpečení)
+## <a name="configure-relying-party-on-existing-ad-fs-deployment-account-sts"></a>Nakonfigurovat předávající stranu na existující nasazení služby AD FS (účet služby tokenů zabezpečení)
 
-Společnost Microsoft poskytuje skript, který nakonfiguruje důvěryhodnosti předávající strany, včetně pravidla transformace deklarací identity. Pomocí skriptu je nepovinný, protože příkazy můžete spustit ručně.
+Společnost Microsoft poskytuje skript, který nakonfiguruje vztah důvěryhodnosti předávající strany, včetně pravidel transformace deklarací identity. Použití skriptu není povinné, jako příkazy můžete spustit ručně.
 
-Si můžete stáhnout skript pomocné rutiny z [nástroje Azure zásobníku](https://github.com/Azure/AzureStack-Tools/tree/vnext/DatacenterIntegration/Identity) na Githubu.
+Můžete stáhnout skript pomocné rutiny z [nástroje Azure Stack](https://github.com/Azure/AzureStack-Tools/tree/vnext/DatacenterIntegration/Identity) na Githubu.
 
-Pokud se rozhodnete ručně spustit příkazy, postupujte takto:
+Pokud se rozhodnete ručně spuštěním příkazů, postupujte podle těchto kroků:
 
-1. Zkopírujte následující obsah do souboru .txt (například uložit jako c:\ClaimRules.txt) ve vašem datovém centru člen instance nebo farmy služby AD FS:
+1. Zkopírujte následující obsah do souboru .txt (například uložený jako c:\ClaimRules.txt) u vašeho datového centra člena instance nebo farmy služby AD FS:
 
    ```text
    @RuleTemplate = "LdapClaims"
@@ -243,13 +238,13 @@ Pokud se rozhodnete ručně spustit příkazy, postupujte takto:
    => issue(claim = c);
    ```
 
-2. Pokud chcete povolit ověřování pomocí formulářů Windows, otevřete relaci prostředí Windows PowerShell jako uživatel s oprávněním vyšší úrovně a spusťte následující příkaz:
+2. Pokud chcete povolit ověřování pomocí formulářů Windows, spusťte relaci prostředí Windows PowerShell jako uživatel se zvýšenými oprávněními a spusťte následující příkaz:
 
    ```PowerShell  
    Set-AdfsProperties -WIASupportedUserAgents @("MSAuthHost/1.0/In-Domain","MSIPC","Windows Rights Management Client","Kloud")
    ```
 
-3. Pokud chcete přidat vztah důvěryhodnosti předávající strany, spusťte následující příkaz prostředí Windows PowerShell na vaše instance služby AD FS nebo členem farmy. Zajistěte, aby se aktualizovat koncový bod služby AD FS a přejděte na soubor vytvořený v kroku 1.
+3. Chcete-li přidat vztah důvěryhodnosti předávající strany, spusťte následující příkaz prostředí Windows PowerShell na vaší instance služby AD FS nebo farmy člena. Ujistěte se, že aktualizujete koncový bod služby AD FS a přejděte na soubor vytvořený v kroku 1.
 
    **Pro službu AD FS 2016**
 
@@ -257,69 +252,69 @@ Pokud se rozhodnete ručně spustit příkazy, postupujte takto:
    Add-ADFSRelyingPartyTrust -Name AzureStack -MetadataUrl "https://YourAzureStackADFSEndpoint/FederationMetadata/2007-06/FederationMetadata.xml" -IssuanceTransformRulesFile "C:\ClaimIssuanceRules.txt" -AutoUpdateEnabled:$true -MonitoringEnabled:$true -enabled:$true -AccessControlPolicyName "Permit everyone"
    ```
 
-   **Pro AD FS 2012 nebo 2012 R2**
+   **Pro AD FS 2012/2012 R2**
 
    ```PowerShell  
    Add-ADFSRelyingPartyTrust -Name AzureStack -MetadataUrl "https://YourAzureStackADFSEndpoint/FederationMetadata/2007-06/FederationMetadata.xml" -IssuanceTransformRulesFile "C:\ClaimIssuanceRules.txt" -AutoUpdateEnabled:$true -MonitoringEnabled:$true -enabled:$true
    ```
 
    > [!IMPORTANT]
-   > Modul snap-in konzoly MMC AD FS musíte použít ke konfiguraci autorizačních pravidel vystavování, pokud používáte Windows Server 2012 nebo 2012 R2 AD FS.
+   > Konfigurace autorizačních pravidel vystavování, při použití systému Windows Server 2012 nebo 2012 R2 AD FS musíte použít modul snap-in konzoly MMC AD FS.
 
-4. Pokud používáte Internet Explorer nebo Microsoft Edge prohlížeč pro přístup k Azure zásobníku, musí ignorovat token vazby. V opačném pokusů o přihlášení nezdaří. Na vaše instance služby AD FS nebo členem farmy spusťte následující příkaz:
+4. Pokud používáte Internet Explorer nebo Microsoft Edge prohlížeč pro přístup k Azure zásobníku, musí ignorovat token vazby. V opačném případě se nezdaří pokusy o přihlášení. Na vaše instance služby AD FS nebo členem farmy spusťte následující příkaz:
 
    > [!note]  
-   > Tento krok není použitelný, pokud používáte Windows Server 2012 nebo 2012 R2 AD FS. Je bezpečné Přeskočit tento příkaz a pokračujte integrace.
+   > Tento krok není použitelné při použití systému Windows Server 2012 nebo 2012 R2 AD FS. Je bezpečné tento příkaz přeskočit a pokračovat pomocí integrace rozhraní.
 
    ```PowerShell  
    Set-AdfsProperties -IgnoreTokenBinding $true
    ```
 
-5. Portály zásobník Azure a nástrojů (Visual Studio) vyžadují obnovovacích tokenů. Toto musí být nakonfigurovaný podle vztahu důvěryhodnosti strany. Otevřete relaci prostředí Windows PowerShell zvýšenými oprávněními a spusťte následující příkaz:
+5. Azure Stack portály a nástroje (Visual Studio) vyžadovat obnovovací tokeny. Ty je nutné nakonfigurovat spoléhání se na vztah důvěryhodnosti strany. Otevřete relaci Windows Powershellu se zvýšenými oprávněními a spusťte následující příkaz:
 
    ```PowerShell  
    Set-ADFSRelyingPartyTrust -TargetName AzureStack -TokenLifeTime 1440
    ```
 
-## <a name="spn-creation"></a>Vytvoření názvu SPN
+## <a name="spn-creation"></a>Vytvoření hlavního názvu služby
 
-Existuje mnoho scénářů, které vyžadují použití hlavní název služby (SPN) pro ověřování. Následuje několik příkladů:
+Existuje mnoho scénářů, které vyžadují používání hlavní název služby (SPN) pro ověřování. Následuje několik příkladů:
 
-- Použití rozhraní příkazového řádku se nasazení služby AD FS Azure zásobníku
-- System Center Management Pack pro Azure zásobníku při nasazení se službou AD FS
-- Zprostředkovatelé prostředků v Azure zásobníku při nasazení se službou AD FS
-- Různé aplikace
-- Vyžadujete-interaktivní přihlášení
+- Použití rozhraní příkazového řádku pomocí služby AD FS nasazení služby Azure Stack
+- System Center Management Pack pro službu Azure Stack po nasazení se službou AD FS
+- Poskytovatelé prostředků ve službě Azure Stack po nasazení se službou AD FS
+- Různými aplikacemi
+- Budete potřebovat jako neinteraktivní přihlášení
 
 > [!Important]  
-> Služba AD FS podporuje pouze interaktivní uživatelské relace. Pokud budete potřebovat neinteraktivní přihlášení automatizované scénář, musíte použít hlavního názvu služby.
+> Služba AD FS podporuje pouze interaktivní přihlašovací relace. Pokud budete potřebovat jako neinteraktivní přihlášení pro automatizované scénář, je nutné použít hlavní název služby.
 
-Další informace o vytvoření názvu SPN najdete v tématu [vytvořit objekt služby pro službu AD FS](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals#create-service-principal-for-ad-fs).
+Další informace o vytvoření názvu SPN najdete v tématu [vytvořit instanční objekt služby AD FS](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals#create-service-principal-for-ad-fs).
 
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-### <a name="configuration-rollback"></a>Vrácení zpět konfigurace
+### <a name="configuration-rollback"></a>Vrácení změn konfigurace
 
-Pokud dojde k chybě, který zůstane ve stavu, kde můžete už ověřovat prostředí, je k dispozici možnost vrácení zpět.
+Pokud dojde k chybě, která nechává prostředí ve stavu, ve kterém můžete nadále ověřovat, je k dispozici možnost vrácení zpět.
 
-1. Otevřete relaci prostředí Windows PowerShell zvýšenými oprávněními a spusťte následující příkazy:
+1. Otevřete relaci Windows Powershellu se zvýšenými oprávněními a spusťte následující příkazy:
 
    ```PowerShell  
    $creds = Get-Credential
    Enter-PSSession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $creds
    ```
 
-2. Spusťte následující rutinu:
+2. Potom spusťte následující rutinu:
 
    ```PowerShell  
    Reset-DatacenterIntegationConfiguration
    ```
 
-   Po spuštění akce vrácení zpět, budou vráceny všechny změny konfigurace. Pouze ověřování pomocí integrované **CloudAdmin** uživatele je možné.
+   Po spuštění akce vrácení zpět, budou vráceny všechny změny konfigurace. Pouze ověřování pomocí integrovaného **CloudAdmin** uživatele je možné.
 
    > [!IMPORTANT]
-   > Je nutné nakonfigurovat původní vlastník předplatného výchozí zprostředkovatel
+   > Je nutné nakonfigurovat původního vlastníka výchozí předplatné poskytovatele.
 
    ```PowerShell  
    Set-ServiceAdminOwner -ServiceAdminOwnerUpn "azurestackadmin@[Internal Domain]"
@@ -327,9 +322,9 @@ Pokud dojde k chybě, který zůstane ve stavu, kde můžete už ověřovat pros
 
 ### <a name="collecting-additional-logs"></a>Shromažďování dalších protokolů
 
-Pokud žádné z rutiny selže, můžete shromažďovat další protokoly pomocí `Get-Azurestacklogs` rutiny.
+Pokud některou z rutin selže, můžete shromažďovat další protokoly pomocí `Get-Azurestacklogs` rutiny.
 
-1. Otevřete relaci prostředí Windows PowerShell zvýšenými oprávněními a spusťte následující příkazy:
+1. Otevřete relaci Windows Powershellu se zvýšenými oprávněními a spusťte následující příkazy:
 
    ```PowerShell  
    $creds = Get-Credential
@@ -345,4 +340,4 @@ Pokud žádné z rutiny selže, můžete shromažďovat další protokoly pomoc�
 
 ## <a name="next-steps"></a>Další postup
 
-[Integrovat externí řešení monitorování](azure-stack-integrate-monitor.md)
+[Integrace externích řešení monitorování](azure-stack-integrate-monitor.md)

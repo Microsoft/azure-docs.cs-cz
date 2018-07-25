@@ -1,68 +1,68 @@
 ---
-title: Přidat LEOŠ data do služby Application Insights pomocí Node.js | Microsoft Docs
+title: Přidat LUIS data do Application Insights s využitím Node.js | Dokumentace Microsoftu
 titleSuffix: Azure
-description: Sestavení robotu integrované s LEOŠ aplikace a služby Application Insights pomocí Node.js.
+description: Vytvořte robota, integruje se službou LUIS aplikace a Application Insights s využitím Node.js.
 services: cognitive-services
-author: v-geberr
-manager: kamran.iqbal
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 01/18/2018
-ms.author: v-geberr
-ms.openlocfilehash: 929b6e1cc980d7215f91a616820e257aed26bab7
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.author: diberry
+ms.openlocfilehash: 5b65747bea7d2496558c5b3b533bb8420eee6254
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343726"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39236835"
 ---
-# <a name="add-luis-results-to-application-insights-from-a-web-app-bot"></a>Přidat LEOŠ výsledky do služby Application Insights z robotu webové aplikace
-V tomto kurzu přidá LEOŠ žádosti a odpovědi informace, které [Application Insights](https://azure.microsoft.com/services/application-insights/) telemetrická data úložiště. Jakmile máte tato data, můžete ho dotazování pomocí jazyka Kusto nebo Power BI a analyzovat, agregaci a vytváření sestav o záměry a entity utterance v reálném čase. Tato analysis pomáhá při určení, pokud by měla přidat nebo upravit tříd Intent a entity LEOŠ aplikace.
+# <a name="add-luis-results-to-application-insights-from-a-web-app-bot"></a>Přidání služby LUIS výsledky do Application Insights z použijete web app bot
+V tomto kurzu přidá LUIS požadavku a odpovědi informace, které [Application Insights](https://azure.microsoft.com/services/application-insights/) úložiště dat telemetrie. Až budete mít data, můžete ji dotazovat s Kusto jazyk nebo Power BI k analýze, agregovat a vytváření sestav o záměry a entity utterance v reálném čase. Tato analýza pomůže zároveň pomáhá určit, pokud by měl přidat nebo upravit záměry a entity aplikace LUIS.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-* Přidejte Application Insights knihovnu robotu webové aplikace
-* Zaznamenání a odesílání LEOŠ výsledky dotazu Application Insights
-* Dotaz pro horní záměr, skóre a utterance Application Insights
+* Přidejte Application Insights knihovnu použijete web app bot
+* Zaznamenávat a odesílat LUIS výsledků dotazu do Application Insights
+* Dotaz Application Insights pro hlavní záměr, skóre a utterance
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Vaše robota LEOŠ webové aplikace z **[předchozí kurzu](luis-nodejs-tutorial-build-bot-framework-sample.md)** s Application Insights zapnutý. 
+* Váš robot LUIS webové aplikace z **[předchozí kurz o službě](luis-nodejs-tutorial-build-bot-framework-sample.md)** pomocí Application Insights zapnuté. 
 
 > [!Tip]
-> Pokud již nemáte předplatné, můžete si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/).
+> Pokud ještě nemáte předplatné, si můžete zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/).
 
-Kód v tomto kurzu je k dispozici na [úložiště github LEOŠ-Samples](https://github.com/Microsoft/LUIS-Samples/tree/master/documentation-samples/tutorial-web-app-bot-application-insights/nodejs) a každý řádek přidružený tento kurz je označeno jako komentář s `//APPINSIGHT:`. 
+Veškerý kód v tomto kurzu je k dispozici na [úložišti github s ukázkami LUIS](https://github.com/Microsoft/LUIS-Samples/tree/master/documentation-samples/tutorial-web-app-bot-application-insights/nodejs) a každý řádek spojený s tímto kurzem je zakomentovaný s `//APPINSIGHT:`. 
 
-## <a name="web-app-bot-with-luis"></a>Webové aplikace robota s LEOŠ
-Tento kurz předpokládá, že máte kódu vypadá podobně jako následující nebo že jste dokončili [další kurz](luis-nodejs-tutorial-build-bot-framework-sample.md): 
+## <a name="web-app-bot-with-luis"></a>Web app bot služba luis
+Tento kurz předpokládá, že budete mít kód vypadá podobně jako následující nebo, že jste dokončili [další kurz](luis-nodejs-tutorial-build-bot-framework-sample.md): 
 
    [!code-javascript[Web app bot with LUIS](~/samples-luis/documentation-samples/tutorial-web-app-bot/nodejs/app.js "Web app bot with LUIS")]
 
-## <a name="add-application-insights-library-to-web-app-bot"></a>Přidání knihovny Application Insights pro webové aplikace robota
-V současné době službu Application Insights, používanou v této webové aplikace robota, shromažďuje celkový stav telemetrii robota. Neshromažďuje LEOŠ žádosti a odpovědi informace, které je třeba kontrola a oprava tříd Intent a entity. 
+## <a name="add-application-insights-library-to-web-app-bot"></a>Přidejte Application Insights knihovnu použijete web app bot
+V současné době služba Application Insights, použít v tomto použijete web app bot shromažďuje telemetrii celkový stav pro robota. Neshromažďuje LUIS požadavku a odpovědi informace, které je potřeba zkontrolovat a opravit záměry a entity. 
 
-Aby bylo možné zachytit LEOŠ žádosti a odpovědi, potřebuje robota aplikace web **[Application Insights](https://www.npmjs.com/package/applicationinsights)** NPM balíček nainstalován a nakonfigurován v **app.js** souboru. Obslužné rutiny záměrné dialogu je pak potřeba odesílat informace žádosti a odpovědi LEOŠ Application Insights. 
+K zachycení LUIS žádost a odpověď, použijete web app bot potřebuje **[Application Insights](https://www.npmjs.com/package/applicationinsights)** balíčku NPM ve nainstalovaná a nakonfigurovaná **app.js** souboru. Obslužné rutiny záměru dialogového okna je pak potřeba odesílání informací o požadavku a odpovědi LUIS Application Insights. 
 
-1. Na portálu Azure v rámci webové aplikace robota služby, vyberte **sestavení** pod **robota správu** části. 
+1. Na webu Azure Portal, ve službě web app bot vyberte **sestavení** pod **Bot správu** oddílu. 
 
-    ![Hledání přehledů aplikace](./media/luis-tutorial-appinsights/build.png)
+    ![Vyhledávání pro službu app insights](./media/luis-tutorial-appinsights/build.png)
 
-2. Pomocí editoru služby aplikace se otevře novou kartu prohlížeče. V horním panelu vyberte název aplikace a pak vyberte **otevřít konzolu Kudu**. 
+2. S App Service editoru se otevře na nové kartě prohlížeče. V horním panelu vyberte název aplikace a pak vyberte **otevřete konzoly Kudu**. 
 
-    ![Hledání přehledů aplikace](./media/luis-tutorial-appinsights/kudu-console.png)
+    ![Vyhledávání pro službu app insights](./media/luis-tutorial-appinsights/kudu-console.png)
 
-3. V konzole zadejte následující příkaz pro instalaci služby Application Insights a podtržítka balíčky:
+3. V konzole zadejte následující příkaz k instalaci služby Application Insights a podtržítka balíčky:
 
     ```
     cd site\wwwroot && npm install applicationinsights && npm install underscore
     ```
 
-    ![Hledání přehledů aplikace](./media/luis-tutorial-appinsights/npm-install.png)
+    ![Vyhledávání pro službu app insights](./media/luis-tutorial-appinsights/npm-install.png)
 
-    Počkejte balíčky určené k instalaci:
+    Vyčkat, než instalace balíčků:
 
     ```
     luisbot@1.0.0 D:\home\site\wwwroot
@@ -79,16 +79,16 @@ Aby bylo možné zachytit LEOŠ žádosti a odpovědi, potřebuje robota aplikac
     `-- underscore@1.8.3 
     ```
 
-    Jste hotovi s kartu kudu konzoly prohlížeče.
+    Na kartě prohlížeče konzoly kudu dokončíte.
 
-## <a name="capture-and-send-luis-query-results-to-application-insights"></a>Zaznamenání a odesílání LEOŠ výsledky dotazu Application Insights
-1. Na kartě aplikace služby Editor prohlížeče otevřete **app.js** souboru.
+## <a name="capture-and-send-luis-query-results-to-application-insights"></a>Zaznamenávat a odesílat LUIS výsledků dotazu do Application Insights
+1. V App Service Editor záložku prohlížeče, otevřete **app.js** souboru.
 
-2. Přidejte následující NPM knihovny pod existující `requires` řádky:
+2. Přidejte následující knihovny NPM v rámci existující `requires` řádky:
 
    [!code-javascript[Add NPM packages to app.js](~/samples-luis/documentation-samples/tutorial-web-app-bot-application-insights/nodejs/app.js?range=12-16 "Add NPM packages to app.js")]
 
-3. Vytvoření objektu Application Insights a použijte nastavení webové aplikace robota aplikace **BotDevInsightsKey**: 
+3. Vytvořit objekt služby Application Insights a použijte nastavení aplikace web app bot **BotDevInsightsKey**: 
 
    [!code-javascript[Create the Application Insights object](~/samples-luis/documentation-samples/tutorial-web-app-bot-application-insights/nodejs/app.js?range=68-80 "Create the Application Insights object")]
 
@@ -96,49 +96,49 @@ Aby bylo možné zachytit LEOŠ žádosti a odpovědi, potřebuje robota aplikac
 
    [!code-javascript[Add the appInsightsLog function](~/samples-luis/documentation-samples/tutorial-web-app-bot-application-insights/nodejs/app.js?range=82-109 "Add the appInsightsLog function")]
 
-    Poslední řádek funkce je, kde je přidat data do služby Application Insights. Název události je **LEOŠ výsledky**, jedinečný název kromě jiných telemetrická data shromažďovaná společností robota této webové aplikace. 
+    Poslední řádek funkce je, kde data je přidána do Application Insights. Název události je **LUIS výsledky**, jedinečný název kromě další telemetrická data shromážděná tento web app bot. 
 
-5. Použití **appInsightsLog** funkce. Přidejte do každé záměrné dialogového okna:
+5. Použití **appInsightsLog** funkce. Přidejte do každé záměru dialogového okna:
 
    [!code-javascript[Use the appInsightsLog function](~/samples-luis/documentation-samples/tutorial-web-app-bot-application-insights/nodejs/app.js?range=117-118 "Use the appInsightsLog function")]
 
-6. Chcete-li otestovat robota vaší webové aplikace, použijte **testů ve webové Chat** funkce. Měli byste vidět žádné rozdíly, protože všechnu práci není ve službě Application Insights v odpovědi robota.
+6. Chcete-li otestovat použijete web app bot, použijte **testování ve Web Chat** funkce. Protože veškerá práce není ve službě Application Insights v odpovědi robotů, měli byste vidět žádné rozdíly.
 
-## <a name="view-luis-entries-in-application-insights"></a>Zobrazení položek LEOŠ ve službě Application Insights
-Otevřete službu Application Insights zobrazíte LEOŠ položky. 
+## <a name="view-luis-entries-in-application-insights"></a>Zobrazení LUIS položky ve službě Application Insights
+Otevřete službu Application Insights zobrazíte položky LUIS. 
 
-1. Na portálu, vyberte **všechny prostředky** pak filtrovat podle robota název webové aplikace. Klikněte na prostředek s typem **Application Insights**. Ikona pro službu Application Insights je žárovky. 
+1. Na portálu vyberte **všechny prostředky** pak filtrovat podle názvu webové aplikace robota. Klikněte na prostředek s typem **Application Insights**. Ikona pro službu Application Insights je žárovky. 
 
-    ![Hledání přehledů aplikace](./media/luis-tutorial-appinsights/search-for-app-insights.png)
+    ![Vyhledávání pro službu app insights](./media/luis-tutorial-appinsights/search-for-app-insights.png)
 
 
 
-2. Když prostředek otevře, klikněte na **vyhledávání** ikonu lupy v pravém panelu. Nový panel na správné zobrazí. V závislosti na tom, kolik telemetrická data nachází, panelu může trvat druhý k zobrazení. Vyhledejte `LUIS-results` a stiskněte klávesu enter na klávesnici. V seznamu je zúžit právě LEOŠ výsledky dotazu přidat v tomto kurzu.
+2. Pokud prostředek se otevře, klikněte na **hledání** ikonu na lupu v pravém panelu. Nový panel zobrazuje správné. V závislosti na tom, kolik dat telemetrie nenajde, panelu může chvíli trvat, chcete-li zobrazit. Vyhledejte `LUIS-results` a stiskněte klávesu enter na klávesnici. V seznamu je zúžit jen LUIS výsledky dotazu přidat v tomto kurzu.
 
-    ![Filtrovat, aby závislosti](./media/luis-tutorial-appinsights/app-insights-filter.png)
+    ![Filtrování závislostí](./media/luis-tutorial-appinsights/app-insights-filter.png)
 
-3. Vyberte na horní položku. Nové okno zobrazí podrobnější data, včetně vlastních dat pro dotaz LEOŠ úplně vpravo. Data obsahují nejvyšší záměr a jeho skóre.
+3. Vyberte na horní položku. Nové okno zobrazí podrobnější data, včetně vlastních dat pro dotaz LUIS úplně vpravo. Data obsahují hlavní záměr a jeho skóre.
 
     ![Podrobnosti o závislosti](./media/luis-tutorial-appinsights/app-insights-detail.png)
 
-    Až skončíte, vyberte úplně vpravo nahoře **X** se vraťte do seznamu položek závislostí. 
+    Jakmile budete hotovi, vyberte úplně vpravo nahoře **X** se vraťte do seznamu položek závislostí. 
 
 
 > [!Tip]
-> Pokud chcete uložit v seznamu závislostí a vraťte se k němu později, klikněte na **... Další** a klikněte na tlačítko **uložit oblíbené**.
+> Pokud chcete uložit seznam závislostí a vrátit se k němu později, klikněte na **... Další** a klikněte na tlačítko **uložit oblíbenou**.
 
 ## <a name="query-application-insights-for-intent-score-and-utterance"></a>Dotaz Application Insights pro záměr, skóre a utterance
-Application Insights vám dává k dotazování dat pomocí [Kusto](https://docs.microsoft.com/azure/application-insights/app-insights-analytics#query-data-in-analytics) jazyka, i jako export jeho [PowerBI](https://powerbi.microsoft.com). 
+Služba Application Insights poskytuje výkonné nástroje pro dotazování dat pomocí služby [Kusto](https://docs.microsoft.com/azure/application-insights/app-insights-analytics#query-data-in-analytics) jazyka, stejně jako export umožňuje [PowerBI](https://powerbi.microsoft.com). 
 
-1. Klikněte na **Analytics** v horní části závislost výpis nad pole filtru. 
+1. Klikněte na **Analytics** v horní části závislosti výpis výše pole filtru. 
 
     ![Tlačítko Analytics](./media/luis-tutorial-appinsights/analytics-button.png)
 
-2. Otevře se nové okno s okno dotazu v horní části a v okně data tabulky nižší, než je. Pokud jste použili databáze před, je dobře známé toto uspořádání. Dotaz obsahuje všechny položky z posledních 24 hodin od s názvem `LUIS-results`. **CustomDimensions** sloupec má LEOŠ výsledky dotazu jako dvojice název/hodnota.
+2. Otevře se okno nové okno dotazu v horní části a okno tabulky dat pod ním. Pokud jste použili databází před, je toto uspořádání zkušenosti. Dotaz obsahuje všechny položky z posledních 24 hodin, počínaje název `LUIS-results`. **CustomDimensions** sloupec má LUIS výsledky dotazu jako dvojice název/hodnota.
 
     ![Okno dotazu Analytics](./media/luis-tutorial-appinsights/analytics-query-window.png)
 
-3. Vysunout nejvyšší záměr, skóre a utterance, přidejte následující nad poslední řádek v okně dotazu:
+3. Vyžádá si hlavní záměr, skóre a utterance, přidejte následující přímo nad poslední řádek v okně dotazu:
 
     ```SQL
     | extend topIntent = tostring(customDimensions.LUIS_intent_intent)
@@ -146,18 +146,18 @@ Application Insights vám dává k dotazování dat pomocí [Kusto](https://docs
     | extend utterance = tostring(customDimensions.LUIS_text)
     ```
 
-4. Spusťte dotaz. Posuňte se úplně vpravo v tabulce data. Nové sloupce topIntent, skóre a utterance jsou k dispozici. Klikněte na tento sloupec topIntent seřadit.
+4. Spusťte dotaz. Posuňte se úplně vpravo v datové tabulce. Nové sloupce topIntent, skóre a utterance jsou k dispozici. Klikněte na sloupec topIntent seřadit.
 
-    ![Horní záměr Analytics](./media/luis-tutorial-appinsights/app-insights-top-intent.png)
+    ![Analýza hlavní záměr](./media/luis-tutorial-appinsights/app-insights-top-intent.png)
 
 
-Další informace o [Kusto dotazovací jazyk](https://docs.loganalytics.io/docs/Learn/Getting-Started/Getting-started-with-queries) nebo [export dat do PowerBi](https://docs.microsoft.com/azure/application-insights/app-insights-export-power-bi). 
+Další informace o [Kusto dotazovací jazyk](https://docs.loganalytics.io/docs/Learn/Getting-Started/Getting-started-with-queries) nebo [export dat do Power BI](https://docs.microsoft.com/azure/application-insights/app-insights-export-power-bi). 
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace, které chcete přidat k datům přehledů aplikace obsahuje ID aplikace, ID verze, datum poslední změny modelu, datum posledního train, datum posledního publikování. Tyto hodnoty lze získat buď z adresu URL koncového bodu (ID aplikace a ID verze), nebo [vytváření rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c3d) volat potom nastavit v nastavení webové aplikace robota a vyžádat odtud.  
+Další informace, které chcete přidat do application insights data zahrnuje ID aplikace, ID verze, datum poslední změny modelu, datum posledního trénování, datum posledního publikování. Tyto hodnoty lze získat buď z adresu URL koncového bodu (ID aplikace a ID verze) nebo z [vytváření rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c3d) volání pak v nastavení web app bot a získaná z něj.  
 
-Pokud používáte stejného předplatného. koncový bod pro více než jednu aplikaci LEOŠ, měli byste také zahrnout ID předplatného a vlastnost, že je sdílený klíč. 
+Pokud používáte stejné předplatné koncový bod pro více než jednu aplikaci LUIS, by měl také obsahovat ID předplatného a vlastnost s informacemi o tom, že se jedná o sdílený klíč. 
 
 > [!div class="nextstepaction"]
-> [Další informace o příklad utterances](luis-how-to-add-example-utterances.md)
+> [Další informace o příklad projevy](luis-how-to-add-example-utterances.md)

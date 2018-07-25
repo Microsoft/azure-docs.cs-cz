@@ -2,19 +2,19 @@
 title: Přidání záměrů aplikace LUIS | Dokumentace Microsoftu
 description: Language Understanding (LUIS) použijte k přidání záměrů, což umožní aplikace porozumět uživatelských požadavků a reagovat na ně správně.
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
-ms.author: v-geberr
+ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: 479fa450b86d19032e75ef6aa511a7bdca608d75
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 0ebf15ea49467674ab3c56aa7983131593cf5c9a
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37869039"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39225882"
 ---
 # <a name="manage-intents"></a>Správa záměrů 
 Přidat [záměry](luis-concept-intent.md) do vaší aplikace LUIS k identifikaci skupin dotazy nebo příkazy, které mají stejné záměry. 

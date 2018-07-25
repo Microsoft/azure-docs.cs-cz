@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 47d321788251462f2b34e1eb60231454dd6a72cf
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 460c7d24b2810de41e20ea803ded2ea988613f10
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39185927"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39223792"
 ---
 # <a name="schedule-jobs-on-multiple-devices"></a>Plánování úloh na několika zařízeních
 
@@ -84,7 +84,7 @@ Následující fragment kódu ukazuje podrobnosti o žádosti HTTPS 1.1 pro aktu
     }
 
 ## <a name="querying-for-progress-on-jobs"></a>Dotazování na průběh úlohy
-Následující fragment kódu ukazuje podrobnosti požadavku HTTPS 1.1 [dotazování pro úlohy][lnk-query]:
+Následující fragment kódu ukazuje podrobnosti o žádosti HTTPS 1.1 pro dotazování pro úlohy:
 
     GET /jobs/v2/query?api-version=2016-11-14[&jobType=<jobType>][&jobStatus=<jobStatus>][&pageSize=<pageSize>][&continuationToken=<continuationToken>]
 
@@ -94,6 +94,8 @@ Následující fragment kódu ukazuje podrobnosti požadavku HTTPS 1.1 [dotazov�
     User-Agent: <sdk-name>/<sdk-version>
 
 Token continuationToken je k dispozici z odpovědi.  
+
+Můžete zadat dotaz na stav provádění úlohy na každé zařízení pomocí [dotazovací jazyk služby IoT Hub pro dvojčata zařízení, úlohy a směrování zpráv][lnk-query].
 
 ## <a name="jobs-properties"></a>Vlastnosti úlohy
 Následující seznam obsahuje vlastnosti a odpovídající popisy, které je možné použít při dotazování pro úlohy nebo výsledky úlohy.

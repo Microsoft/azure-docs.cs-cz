@@ -2,19 +2,19 @@
 title: Principy spolupráce aplikace služby LUIS – Azure | Dokumentace Microsoftu
 description: Služba LUIS aplikace vyžadují jednoho vlastníka a spolupracovníky volitelné.
 services: cognitive-services
-author: v-geberr
-manager: kamran.iqbal
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
-ms.author: v-geberr
-ms.openlocfilehash: 54a7ecec653218af8f92b405bd0cf8c049d18616
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.author: diberry
+ms.openlocfilehash: 684507b58e5ac766e9b42d3aa53cb0867a131a93
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37888445"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39222668"
 ---
 # <a name="collaborating"></a>Spolupráce
 

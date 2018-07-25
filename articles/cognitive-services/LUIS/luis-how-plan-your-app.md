@@ -2,19 +2,19 @@
 title: Plánování aplikace LUIS | Dokumentace Microsoftu
 description: Popisují relevantní aplikaci záměry a entity a pak vytvořte plány aplikace v Language Understanding Intelligent Services (LUIS).
 services: cognitive-services
-author: DeniseMak
-manager: hsalama
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2017
-ms.author: v-geberr
-ms.openlocfilehash: 2ce202bbb1479db18fb88cfef4d510ae4cb39a78
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.author: diberry
+ms.openlocfilehash: 8cafe2be190988cbcbe8da616fe17c9a35c722f3
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37952096"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39226019"
 ---
 # <a name="plan-your-luis-app"></a>Plánování aplikace LUIS
 

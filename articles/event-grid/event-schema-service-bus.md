@@ -1,36 +1,36 @@
 ---
-title: Azure schématu události událostí mřížky Service Bus
-description: Popisuje vlastnosti, které jsou k dispozici pro události služby Service Bus s Azure událostí mřížky
+title: Schéma událostí služby Azure Event Grid služby Service Bus
+description: Popisuje vlastnosti, které jsou k dispozici pro události služby Service Bus pomocí služby Azure Event Grid
 services: event-grid
 author: banisadr
 manager: darosa
 ms.service: event-grid
 ms.topic: reference
-ms.date: 02/21/2018
+ms.date: 07/23/2018
 ms.author: babanisa
-ms.openlocfilehash: 991679eeb0f7c98606133750b193a5895f39178f
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 39bf8df69f491aace546386b1b3aabce9ea6c696
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34303313"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39226539"
 ---
-# <a name="azure-event-grid-event-schema-for-service-bus"></a>Azure schématu události událostí mřížky pro Service Bus
+# <a name="azure-event-grid-event-schema-for-service-bus"></a>Schéma událostí Azure Event Grid pro Service Bus
 
-Tento článek poskytuje vlastnosti a schématu pro události služby Service Bus. Úvod do schémata událostí, naleznete v části [schématu události mřížky událostí Azure](event-schema.md).
+Tento článek obsahuje vlastnosti a schéma pro události služby Service Bus. Úvod do schémata událostí, naleznete v tématu [schéma událostí služby Azure Event Grid](event-schema.md).
 
 ## <a name="available-event-types"></a>Typy událostí k dispozici
 
-Service Bus vysílá následující typy událostí:
+Služba Service Bus vysílá následující typy událostí:
 
 | Typ události | Popis |
 | ---------- | ----------- |
-| Microsoft.ServiceBus.ActiveMessagesAvailableWithNoListeners | Vyvolá, když existují aktivní zprávy fronty nebo předplatného a žádné příjemci naslouchá. |
-| Microsoft.ServiceBus.DeadletterMessagesAvailableWithNoListener | Vyvolá, když existují aktivní zprávy do fronty nedoručených zpráv a žádné aktivní naslouchací procesy. |
+| Microsoft.ServiceBus.ActiveMessagesAvailableWithNoListeners | Vyvoláno, když existují aktivní zprávy ve frontě nebo odběru, ale žádný příjemce nenaslouchá. |
+| Microsoft.ServiceBus.DeadletterMessagesAvailableWithNoListener | Vyvoláno, když existují aktivní zprávy do fronty nedoručených zpráv a žádné aktivní naslouchací procesy. |
 
-## <a name="example-event"></a>Příklad událostí
+## <a name="example-event"></a>Příklad události
 
-Následující příklad ukazuje schéma active zprávy s žádné naslouchací procesy událostí:
+Následující příklad ukazuje schématu aktivní zprávy s žádné naslouchacích procesů událostí:
 
 ```json
 [{
@@ -52,7 +52,7 @@ Následující příklad ukazuje schéma active zprávy s žádné naslouchací 
 }]
 ```
 
-Schéma pro událost fronty nedoručených zpráv je podobný:
+Schéma pro událost fronty nedoručených zpráv se podobá:
 
 ```json
 [{
@@ -80,29 +80,29 @@ Událost má následující dat nejvyšší úrovně:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| Téma | řetězec | Úplné prostředků cesta ke zdroji událostí. Toto pole není možné zapisovat. Událost mřížky poskytuje tuto hodnotu. |
-| Předmět | řetězec | Cesta definované vydavatele události předmět. |
-| Typ události | řetězec | Jeden z typů událostí registrovaných pro tento zdroj událostí. |
-| eventTime | řetězec | Čas, který se vygeneruje událost založené na čas UTC poskytovatele. |
+| téma | řetězec | Úplné prostředků cesta ke zdroji události. Toto pole není zapisovatelná. Event gridu poskytuje tuto hodnotu. |
+| Předmět | řetězec | Vydavatel definované cesta předmět události. |
+| Typ události | řetězec | Jeden z typů registrované události pro tento zdroj událostí. |
+| čas události | řetězec | Vygenerování události podle času UTC poskytovatele. |
 | id | řetězec | Jedinečný identifikátor pro událost. |
 | data | objekt | Data události úložiště objektů BLOB. |
-| dataVersion | řetězec | Verze schématu datového objektu Vydavatel definuje verze schématu. |
-| metadataVersion | řetězec | Verze schématu metadat události Událost mřížky definuje schéma vlastnosti nejvyšší úrovně. Událost mřížky poskytuje tuto hodnotu. |
+| dataVersion | řetězec | Verze schématu datového objektu Vydavatel Určuje verzi schématu. |
+| verze metadataVersion | řetězec | Verze schématu metadat události Event Grid definuje schéma vlastnosti nejvyšší úrovně. Event gridu poskytuje tuto hodnotu. |
 
 Datový objekt má následující vlastnosti:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| nameSpaceName | řetězec | Obor názvů sběrnice prostředku v existuje. |
-| requestUri | řetězec | Identifikátor URI do konkrétní fronty nebo generování událost odběru. |
-| Typ entity | řetězec | Typ entity služby sběrnice generování událostí (fronty nebo předplatné). |
-| queueName | řetězec | Fronta s active zprávy, pokud se přihlášení k odběru do fronty. Hodnotu null, pokud pomocí témata nebo předplatných. |
-| TopicName | řetězec | Téma patří předplatné služby Service Bus s active zprávy. Hodnota null, pokud pomocí fronty. |
-| Název_předplatného | řetězec | Předplatné služby Service Bus s active zprávy. Hodnota null, pokud pomocí fronty. |
+| namespaceName | řetězec | V existuje prostředek oboru názvů Service Bus. |
+| requestUri | řetězec | Identifikátor URI, do konkrétní fronty nebo předplatné, které vysílá události. |
+| Typ entity | řetězec | Typ entity služby Service Bus generování událostí (fronty nebo odběru). |
+| queueName | řetězec | Frontu s aktivní zprávy, pokud se přihlášení k odběru do fronty. Hodnota null, pokud používáte témata a odběry. |
+| topicName | řetězec | V tématu odběr služby Service Bus s aktivní zprávy patří. Hodnota null, pokud používáte fronty. |
+| subscriptionName | řetězec | Odběr služby Service Bus s aktivní zprávy. Hodnota null, pokud používáte fronty. |
 
 ## <a name="next-steps"></a>Další postup
 
-* Úvod do Azure událostí mřížky, najdete v části [co je mřížky událostí?](overview.md)
-* Další informace o vytváření předplatného služby Azure událostí mřížky, najdete v části [schématu odběru událostí mřížky](subscription-creation-schema.md).
-* Podrobnosti o používání mřížky událostí Azure se službou Service Bus najdete v tématu [služba Service Bus Přehled integrace událostí mřížky](../service-bus-messaging/service-bus-to-event-grid-integration-concept.md).
-* Zkuste [příjem událostí služby Service Bus pomocí funkcí nebo Logic Apps](../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json).
+* Úvod do služby Azure Event Grid najdete v tématu [novinky služby Event Grid?](overview.md)
+* Další informace o vytváření předplatného služby Azure Event Grid najdete v tématu [schéma předplatného služby Event Grid](subscription-creation-schema.md).
+* Podrobnosti o používání služby Azure Event Grid se službou Service Bus, najdete v článku [Service Bus do služby Event Grid Přehled integrace](../service-bus-messaging/service-bus-to-event-grid-integration-concept.md).
+* Zkuste [přijímat události služby Service Bus s Functions nebo Logic Apps](../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json).

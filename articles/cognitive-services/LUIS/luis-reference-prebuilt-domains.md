@@ -3,19 +3,19 @@ title: Informace o předem připravených domény – Azure | Dokumentace Micros
 titleSuffix: Azure
 description: Referenční informace pro předem připravených domén, které jsou předem sestavené kolekce záměry a entity z Language Understanding Intelligent Services (LUIS).
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 06/20/2018
-ms.author: v-geberr
-ms.openlocfilehash: 45289b712a127e70636e225778d7a36578b34fa5
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.author: diberry
+ms.openlocfilehash: 36e527f9afdce58475ca4c3c6e54ce393c48c983
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37931622"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39238892"
 ---
 # <a name="prebuilt-domain-reference"></a>Referenční informace k předem připraveným doménám
 V tomto materiálu najdete informace o [předem připravených domén](luis-how-to-use-prebuilt-domains.md), které jsou předem sestavené kolekce záměry a entity, které nabízí služba LUIS.
@@ -162,7 +162,7 @@ Ukazuje, zábava, které doména poskytuje záměry a entity související hled�
 | Person (Osoba)| Objekt actor, ředitel, výrobce, hudebníkem nebo interpreta přidružené videa, aplikaci, hru nebo televizního pořadu.|Madonna<br/>Stanley Kubrick|
 | Role| Roli hrají osoby při vytváření média.|Souboru<br/>Podle<br/>Od společnosti|
 | Titul| Název filmu, aplikace, hry, televizního pořadu nebo skladby.|Přátelé<br/>Minecraftu.|
-| Typ| Formát typu nebo media Video, aplikace, hry, televizního pořadu nebo skladby.|Hudba<br/>MovieTV <br/>ukazuje|
+| Typ| Formát typu nebo media Video, aplikace, hry, televizního pořadu nebo skladby.|Hudba<br/>MovieTV <br/>Ukazuje|
 | UserRating| Uživatel star nebo thumbs hodnocení.|5 hvězdiček<br/>3 hvězdičky<br/>4 hvězdičky|
 
 ## <a name="events"></a>Události 
@@ -373,8 +373,8 @@ Can you make the screen brighter?
 | AppName | Název aplikace na zařízení.|SoundCloud<br/>YouTube|
 | BrightnessLevel | Nastaví úroveň jasu na zařízení.|100 %<br/>Padesát<br/>40%|
 | Jméno kontaktu | Jméno kontaktu na zařízení.|Paul<br/>Maximální počet Marlen|
-| DeviceType | Typ zařízení. |Telefon<br/>Kindle<br/>Přenosný počítač|
-| MediaType | Typ média stará zařízení.|Hudba<br/>Video<br/>Televizní pořady|
+| deviceType | Typ zařízení. |Telefon<br/>Kindle<br/>Přenosný počítač|
+| mediaType | Typ média stará zařízení.|Hudba<br/>Video<br/>Televizní pořady|
 | Typem SettingType | Typ nastavení nebo nastavení panelu, který chce uživatel upravit.|Wi-Fi<br/>Bezdrátové sítě<br/>Barevné schéma<br/>Centrum oznámení|
 
 ## <a name="places"></a>Místa  
@@ -431,10 +431,10 @@ restart|
 | Kuchyni | Kuchyni na místě. |Středozemního<br/>italština<br/>Území v Indickém|
 | DestinationAddress| Cílové umístění nebo adresu.|Palo Alto<br/>300 112th uložit SE<br/>Seattle|
 | DestinationPlaceName| Název cíl, který je firmy, restaurace, veřejné přitažlivosti nebo instituce.|centrální park<br/>safeway<br/>walmart|
-| DestinationPlaceType | Zadejte cíl, který je místní firmy, restaurace, veřejné přitažlivosti nebo instituce. |Restaurace<br/>Opera<br/>Kina|
+| DestinationPlaceType | Zadejte cíl, který je místní firmy, restaurace, veřejné přitažlivosti nebo instituce. |Restaurace<br/>Opera<br/>kina|
 | Vzdálenost | Vzdálenost na místo.|15 mil.<br/>5 mil.<br/>10 mil okamžitě|
-| MealType | Typ jídla jako snídani nebo oběd. |snídani<br/>Společnost dinner<br/>oběd<br/>supper|
-| OpenStatus | Určuje, zda místo, kde je otevřeno nebo Uzavřeno.|Otevřenost<br/>Uzavřeno<br/>otevření|
+| MealType | Typ jídla jako snídani nebo oběd. |Snídani<br/>Společnost dinner<br/>Oběd<br/>Supper|
+| OpenStatus | Určuje, zda místo, kde je otevřeno nebo Uzavřeno.|Otevřenost<br/>Uzavřeno<br/>Otevření|
 | PlaceName | Název na místě.|Objekt pro vytváření cheesecake|
 | PlaceType | Typ na místě.|Cafe<br/>Oblasti divadla<br/>Knihovna|
 | PreferredRoute | O trasu upřednostňovanou specifikovaných uživatelem. | 101 <br/>202 <br/>Trasa 401|
@@ -492,7 +492,7 @@ Table for 3 in Palo Alto at 7
 | AppName | Název aplikace pro provedení rezervace.|OtevřítTabulku<br/>Yelp<br/>TripAdvisor|
 | Prostředí | Popis prostředí restaurace nebo druhém místě.|Romantický<br/>příležitostné<br/>vhodné pro skupiny|
 | Kuchyni | Typ food, kuchyni nebo kuchyni příslušnosti. |Čínština<br/>italština<br/>Mexické|
-| MealType | Typ jídla přidružené k rezervaci.|snídani<br/>Společnost dinner<br/>oběd<br/>supper|
+| MealType | Typ jídla přidružené k rezervaci.|Snídani<br/>Společnost dinner<br/>Oběd<br/>Supper|
 | PlaceName | Název místní firmy, restaurace, veřejné přitažlivosti nebo instituce.|IHOP<br/>Objekt pro vytváření cheesecake<br/>Louvre|
 | PlaceType | Typ místní firmy, restaurace, veřejné přitažlivosti nebo instituce.|restaurace<br/>Opera<br/>kina|
 | Hodnocení | Hodnocení místa nebo restauraci.|5 hvězdiček<br/>3 hvězdičky<br/>4 hvězdičky|
@@ -521,9 +521,9 @@ Cancel my Uber
 | Adresa| Adresa přidružená k rezervace taxislužby. |Palo Alto<br/>300 112th uložit SE<br/>Seattle|
 | DestinationAddress| Cílové umístění nebo adresu. |Palo Alto<br/>300 112th uložit SE<br/>Seattle|
 | DestinationPlaceName | Název cíl, který je místní firmy, restaurace, veřejné přitažlivosti nebo instituce. |Centrální Park<br/>Safeway<br/>Walmart|
-| DestinationPlaceType | Zadejte cíl, který je místní firmy, restaurace, veřejné přitažlivosti nebo instituce. |Restaurace<br/>Opera<br/>Kina|
+| DestinationPlaceType | Zadejte cíl, který je místní firmy, restaurace, veřejné přitažlivosti nebo instituce. |Restaurace<br/>Opera<br/>kina|
 | PlaceName | Název místní pracovní, restaurace, veřejné přitažlivosti nebo instituce. |Centrální Park<br/>Safeway<br/>Walmart|
-| PlaceType| Typ místa v žádosti o rezervovat taxislužby.|Restaurace<br/>Opera<br/>Kina|
+| PlaceType| Typ místa v žádosti o rezervovat taxislužby.|Restaurace<br/>Opera<br/>kina|
 | TransportationCompany | Název zprostředkovatele přenosu.|Amtrak<br/>Acela<br/>Greyhound|
 | TransportationType | Typ dopravy.|Service Bus<br/>Trénování<br/>Autem|
 

@@ -10,12 +10,12 @@ ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 891206e88173d72a0bacf6694a331c4ad8cc9acc
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 86b8f76bd221be9f30a5b9336af858359ae0af8f
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39069443"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39238875"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Sledování změn ve vašem prostředí pomocí řešení Change Tracking
 
@@ -99,7 +99,7 @@ Použijte následující postup ke konfiguraci soubory sledování na počítač
 
 ## <a name="configure-file-content-tracking"></a>Konfigurovat sledování obsah souboru
 
-Můžete zobrazit obsah před a po změně souboru s File Content Change Tracking. To je k dispozici pro soubory Windows a Linuxem, pro jednotlivé změny do souboru, obsah souboru je uložené v účtu úložiště a zobrazuje soubor před a po změnu, vložených nebo vedle sebe. Další informace najdete v tématu [zobrazit obsah souboru sledované](change-tracking-file-contents.md).
+Zobrazí se obsah a před a po změně souboru s File Content Change Tracking. To je k dispozici pro soubory Windows a Linuxem, pro jednotlivé změny do souboru, obsah souboru je uložené v účtu úložiště a zobrazuje soubor před a po změnu, vložených nebo vedle sebe. Další informace najdete v tématu [zobrazit obsah souboru sledované](change-tracking-file-contents.md).
 
 ![zobrazení změn v souboru](./media/change-tracking-file-contents/view-file-changes.png)
 

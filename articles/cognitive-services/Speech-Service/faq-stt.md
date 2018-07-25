@@ -9,14 +9,14 @@ ms.component: custom-speech
 ms.topic: article
 ms.date: 06/11/2018
 ms.author: panosper
-ms.openlocfilehash: ad4b31fa7b4f4b062f01935c34f7cacf82f99106
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 543e8d6fb68a351dfe75c962debaf15eeb080a3f
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39072122"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39223883"
 ---
-# <a name="custom-speech-service-frequently-asked-questions"></a>Custom Speech Service – nejčastější dotazy
+# <a name="speech-to-text-frequently-asked-questions"></a>Převod řeči na Text – nejčastější dotazy
 
 Pokud nemůžete najít odpovědi na své dotazy v tomto dokumentu, zkuste se zeptat komunity služby Custom Speech Service na [StackOverflow](https://stackoverflow.com/questions/tagged/project-oxford+or+microsoft-cognitive) a [UserVoice](https://cognitive.uservoice.com/)
 
@@ -36,7 +36,7 @@ Pokud nemůžete najít odpovědi na své dotazy v tomto dokumentu, zkuste se ze
 
 **Dotaz**: Jak zjistím, že po dokončení zpracování sady dat nebo model?
 
-**Odpověď**: v současné době je pouze chcete vědět, stav modelu nebo sadu dat v tabulce.
+**Odpověď**: v současné době stav modelu nebo sadu dat v tabulce je jediný způsob, jak zjistit.
 Po dokončení zpracování se stav bude mít "bylo dokončeno".
 
 **Dotaz**: můžete vytvořit více než jeden model?
@@ -49,7 +49,7 @@ Po dokončení zpracování se stav bude mít "bylo dokončeno".
 
 **Dotaz**: Jaký je rozdíl mezi hledání & diktování modely a konverzační modely?
 
-**Odpověď**: existuje více než jedna základní modely na výběr v Speech Service. Konverzační model je vhodný pro rozpoznávání řeči, kterým se mluví ve stylu konverzační. Tento model by byla ideální pro volání trnascribing při vyhledávání a je ideální pro aplikace aktivované hlasem diktování. Univerzální je nový model, který řeší oba scénáře.
+**Odpověď**: existuje více než jedna základní modely na výběr v Speech Service. Konverzační model je vhodný pro rozpoznávání řeči, kterým se mluví ve stylu konverzační. Tento model by byla ideální pro přepisování volání při vyhledávání a je ideální pro aplikace aktivované hlasem diktování. Univerzální je nový model, který řeší oba scénáře.
 
 **Dotaz**: můžete aktualizovat mé existující model (model překrývání)?
 
@@ -133,7 +133,7 @@ Bychom se měli snažit beat základního modelu provádět přizpůsobení smys
 
 **Dotaz**: kolik textová data je potřeba nahrát?
 
-**Odpověď**: závisí na různých slovníku a frází ve vaší aplikaci využívá pocházejí z výchozí jazykové modely. Pro všechny nové slova je užitečný k zadání počtu příklady nejvíce využití těchto slov. Běžné vět, které se používají ve vaší aplikaci včetně fráze v datech jazyk je také užitečné jako říká systému pro naslouchání i tyto podmínky. Je běžné mít alespoň jeden hudrend a obvykle několik stovek projevy v datové sadě jazyka nebo více. Také pokud se očekává, že některé typy dotazů být častější než jiné, můžete vložit více kopií běžných dotazů v datové sadě.
+**Odpověď**: závisí na různých slovníku a frází ve vaší aplikaci využívá pocházejí z výchozí jazykové modely. Pro všechny nové slova je užitečný k zadání počtu příklady nejvíce využití těchto slov. Běžné vět, které se používají ve vaší aplikaci včetně fráze v datech jazyk je také užitečné jako říká systému pro naslouchání i tyto podmínky. Je běžné mít alespoň 100 a obvykle několik stovek projevy v datové sadě jazyka nebo více. Také pokud se očekává, že některé typy dotazů být častější než jiné, můžete vložit více kopií běžných dotazů v datové sadě.
 
 **Dotaz**: Mohu stačí načíst seznam slov?
 

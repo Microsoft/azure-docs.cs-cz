@@ -2,19 +2,19 @@
 title: Testování aplikace LUIS – Azure batch | Dokumentace Microsoftu
 description: Pomocí služby batch testování neustále pracovat na aplikaci zpřesnit jej a zvýšit jeho umožňující porozumět jazyku.
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 07/06/2018
-ms.author: v-geberr
-ms.openlocfilehash: a51fcc9c0729c18428b51cbdbdf0b6ff13ca1372
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.author: diberry
+ms.openlocfilehash: bba3f2ff942fbe5dffc9b694990964e4e3078dbe
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39039991"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39222649"
 ---
 # <a name="batch-testing-in-luis"></a>Testování v LUIS služby batch
 

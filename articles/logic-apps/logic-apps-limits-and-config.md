@@ -10,12 +10,12 @@ ms.date: 05/30/2018
 ms.service: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 7726d7eae2d9b3a37ffc141e4a4cbdc9a1af459c
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: eaf05d44a4d77f1a294664485e38c6f5719ce238
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39145033"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39238307"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Omezení a konfigurační informace pro Azure Logic Apps
 
@@ -96,8 +96,9 @@ Tady jsou limity pro běh aplikace logiky jeden:
 | Souběžná volání odchozí akce | ~2,500 | Snižte počet souběžných požadavků nebo zkrátit dobu trvání podle potřeby. | 
 | Koncový bod modulu runtime: příchozí souběžných volání | ~1,000 | Snižte počet souběžných požadavků nebo zkrátit dobu trvání podle potřeby. | 
 | Koncový bod modulu runtime: Číst volání za 5 minut  | 60,000 | Můžete rozdělit zatížení mezi více než jednu aplikaci, podle potřeby. | 
-| Koncový bod modulu runtime: vyvolat volání za 5 minut| 45,000 | Můžete rozdělit zatížení mezi více než jednu aplikaci, podle potřeby. | 
-|||| 
+| Koncový bod modulu runtime: vyvolat volání za 5 minut| 45,000 | Můžete rozdělit zatížení mezi více než jednu aplikaci, podle potřeby. |
+| Obsahu propustnost za 5 minut | 600 MB | Můžete rozdělit zatížení mezi více než jednu aplikaci, podle potřeby. |  
+||||| 
 
 Ambice tato omezení v normálním zpracování nebo spustit zátěžové testování, který může přejít nad tyto limity [obraťte se na tým Logic Apps](mailto://logicappsemail@microsoft.com) nápovědu k vašim požadavkům.
 

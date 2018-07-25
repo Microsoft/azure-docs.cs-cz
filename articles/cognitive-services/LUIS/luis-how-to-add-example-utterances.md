@@ -3,19 +3,19 @@ title: Přidání projevů příklad v aplikacích LUIS | Dokumentace Microsoftu
 titleSuffix: Azure
 description: Informace o přidání projevů v aplikacích Language Understanding (LUIS).
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
-ms.author: v-geberr
-ms.openlocfilehash: 80ccedc7299836cae689edd8a277a7c6d23befa7
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.author: diberry
+ms.openlocfilehash: cf6fc131a1ae2ba0a77bdbeda942c9f85aadd189
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37345052"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39226283"
 ---
 # <a name="add-example-utterances-and-label-with-entities"></a>Přidejte příklad projevy a popisek s entitami
 
@@ -196,6 +196,6 @@ Fix this - moved to luis-how-to-add-intents.md - how ?
 ## <a name="train-your-app-after-changing-model-with-utterances"></a>Po změně modelu s projevy trénování vaší aplikace
 Po přidání, úprava nebo odebrání projevy, [trénování](luis-how-to-train.md) a [publikovat](luis-how-to-publish-app.md) vaší aplikace pro vaše změny ovlivnit dotazy koncový bod. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Po označování projevy v vaše záměry, teď můžete vytvářet [složený entity](luis-how-to-add-entities.md).

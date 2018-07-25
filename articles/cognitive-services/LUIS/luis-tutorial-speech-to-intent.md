@@ -3,19 +3,19 @@ title: Služba luis - Azure umožňuje využít řeč SDK jazyk C# | Dokumentace
 titleSuffix: Azure
 description: Pomocí ukázky řeči C# SDK do mikrofon a získání záměru a entity predikcí služby LUIS vrátila.
 services: cognitive-services
-author: v-geberr
+author: diberry
 manager: kamran.iqbal
 ms.service: cognitive-services
 ms.technology: luis
 ms.topic: article
 ms.date: 06/26/2018
-ms.author: v-geberr;
-ms.openlocfilehash: 3b225a012abe4796172327d8a723338e8de67749
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.author: diberry;
+ms.openlocfilehash: 4249b908cc64eb229281cff60ddaa0394f946433
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37930014"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39238909"
 ---
 # <a name="integrate-speech-service"></a>Integrace Speech service
 [Speech service](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/) umožňuje použití jednoho požadavku a přijímat zvuk vrátit LUIS předpovědi objekty JSON.

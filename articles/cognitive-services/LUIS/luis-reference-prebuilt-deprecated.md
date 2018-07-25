@@ -1,35 +1,35 @@
 ---
-title: Předem sestavené LEOŠ zastaralé odkaz entity - Azure | Microsoft Docs
+title: Předem připravené služby LUIS zastaralé referenční informace k entitám – Azure | Dokumentace Microsoftu
 titleSuffix: Azure
-description: Tento článek obsahuje informace zastaralé předem entity znalosti jazyka (LEOŠ).
+description: Tento článek obsahuje informace zastaralé předem připravených entit v Language Understanding (LUIS).
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 06/20/2018
-ms.author: v-geberr
-ms.openlocfilehash: 8ff260adf437eb8b390d5cfb708d2a98f989bdcb
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.author: diberry
+ms.openlocfilehash: 8fbd2e7ea0998a6a3dc141b97d64341c8140fa61
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36321873"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39237056"
 ---
-# <a name="deprecated-entities"></a>Nepoužívané entity
-Následující předem entity jsou zastaralé a nelze přidat do nové aplikace LEOŠ.
+# <a name="deprecated-entities"></a>Zastaralé entity
+Následující předem připravených entit se považují za zastaralé a nelze přidat do nové aplikace LUIS.
 
-* **Data a času**: LEOŠ existující aplikace, které používají **data a času** mají být migrovány do **datetimeV2**, i když entity data a času i nadále fungovat v existující aplikace, které ho používají.
-* **Geography**: LEOŠ existující aplikace, které používají **geography** se podporuje do prosince 2018.
-* **Encyklopedie**: LEOŠ existující aplikace, které používají **encyklopedie** se podporuje do prosince 2018.
+* **Datum a čas**: aplikace existující LUIS, používající **data a času** by se měly migrovat do **datetimeV2**, i když entity data a času je nadále funkční v již existující aplikace, které ji používají.
+* **Zeměpisné oblasti**: aplikace existující LUIS, používající **zeměpisné oblasti** platí až do prosince 2018.
+* **Encyklopedie**: aplikace existující LUIS, používající **encyklopedie** platí až do prosince 2018.
 
-## <a name="geography-culture"></a>Geography jazykovou verzi
-**Geography** je k dispozici pouze v `en-us` národní prostředí.
+## <a name="geography-culture"></a>Zeměpisné oblasti jazykovou verzi
+**Zeměpisné oblasti** je k dispozici pouze v `en-us` národní prostředí.
 
-#### <a name="3-geography-subtypes"></a>3 geography podtypů
+#### <a name="3-geography-subtypes"></a>3 podtypy zeměpisné oblasti
 
-Předkompilované entity   |   Příklad utterance   |   JSON
+Předem připravených entit   |   Příklad utterance   |   JSON
 ------|------|------|
 ```builtin.geography.city```   |  ```seattle```    |```{ "type": "builtin.geography.city", "entity": "seattle" }```|
 ```builtin.geography.city```   |  ```paris```    |```{ "type": "builtin.geography.city", "entity": "paris" }```|
@@ -41,8 +41,8 @@ Předkompilované entity   |   Příklad utterance   |   JSON
 ## <a name="encyclopedia-culture"></a>Encyklopedie jazykovou verzi
 **Encyklopedie** je k dispozici pouze v `en-US` národní prostředí.
 
-#### <a name="encyclopedia-subtypes"></a>Encyklopedie podtypů
-Předdefinované entity encyklopedie zahrnuje více než 100 dílčí typy v následující tabulce: Kromě toho encyklopedie entity se často mapují na víc typů. Například dotaz Vojtěch Reagan vypočítá: 
+#### <a name="encyclopedia-subtypes"></a>Podtypy encyklopedie
+Integrované entity encyklopedie obsahuje více než 100 podtypy v následující tabulce: encyklopedie entity se navíc často mapují na víc typů. Například dotaz Ronald Reagan poskytuje: 
 
 ```JSON
 {
@@ -64,7 +64,7 @@ Předdefinované entity encyklopedie zahrnuje více než 100 dílčí typy v ná
  ```
 
 
-Předkompilované entity   |   Předkompilované entity (dílčí typy)   |   Příklad utterance
+Předem připravených entit   |   Předem připravených entit (podtypy)   |   Příklad utterance
 ------|------|------|
 ```builtin.encyclopedia.people.person```| ```builtin.encyclopedia.people.person ```|```bryan adams``` |
 ```builtin.encyclopedia.people.person```| ```builtin.encyclopedia.film.producer ```| ```walt disney``` |
@@ -120,7 +120,7 @@ Předkompilované entity   |   Předkompilované entity (dílčí typy)   |   P�
 ```builtin.encyclopedia.organization.organization```| ```builtin.encyclopedia.american_football.team  ```| ``` green bay packers  ```|
 ```builtin.encyclopedia.organization.organization```| ```builtin.encyclopedia.ice_hockey.team  ```| ``` hamilton bulldogs  ```|
 ```builtin.encyclopedia.organization.organization```| ```builtin.encyclopedia.soccer.team  ```| ``` fc bayern munich  ```|
-"' builtin.encyclopedia.organization.organization |Builtin.Encyclopedia.Government.political_party|pertubuhan kebangsaan melayu singapura ".|
+"" builtin.encyclopedia.organization.organization |Builtin.Encyclopedia.Government.political_party|pertubuhan kebangsaan melayu singapura'' '|
 ```builtin.encyclopedia.time.event  ```| ``` builtin.encyclopedia.time.event  ```| ``` 1740 batavia massacre   ```|
 ```builtin.encyclopedia.time.event  ```| ``` builtin.encyclopedia.sports.championship_event  ```| ``` super bowl xxxix  ```|
 ```builtin.encyclopedia.time.event  ```| ``` builtin.encyclopedia.award.competition  ```| ``` eurovision song contest 2003  ```|

@@ -1,30 +1,30 @@
 ---
-title: Předem sestavené LEOŠ entity telefonní číslo odkaz - Azure | Microsoft Docs
+title: Služba LUIS předem připravených entit telefonní číslo reference – Azure | Dokumentace Microsoftu
 titleSuffix: Azure
-description: Tento článek obsahuje telefonní číslo předem entity informace znalosti jazyka (LEOŠ).
+description: Tento článek obsahuje informace telefonním čísle předem připravených entit v Language Understanding (LUIS).
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 06/20/2018
-ms.author: v-geberr
-ms.openlocfilehash: 0f72b807b9b0ec110a80d67babb1c45902b8c810
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.author: diberry
+ms.openlocfilehash: 1ae14f72f0dc610b9399e675f49ef5fff51a6965
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36321880"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39238987"
 ---
-# <a name="phonenumber-entity"></a>Telefonní číslo entity
-`phonenumber` Entity extrahuje celou řadu telefonní čísla, včetně kód země. Protože tato entita je již vycvičena, není potřeba přidat příklad utterances k aplikaci. `phonenumber` Entity je podporována v `en-us` pouze jazykovou verzi. 
+# <a name="phonenumber-entity"></a>Entita Phonenumber
+`phonenumber` Entity extrahuje širokou škálu telefonní čísla, včetně směrové číslo země. Protože tato entita je už vytrénovaný, není potřeba přidat příklad projevy do aplikace. `phonenumber` Entity se podporuje v `en-us` pouze jazykovou verzi. 
 
 ## <a name="types-of-phonenumber"></a>Typy telefonní číslo
-Telefonní číslo je spravovat z [rozpoznávání text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-PhoneNumbers.yaml) úložiště Github
+Spravuje se z telefonní číslo [rozpoznávání textu](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-PhoneNumbers.yaml) úložiště Github
 
-## <a name="resolution-for-prebuilt-phonenumber-entity"></a>Řešení pro entitu předem telefonní číslo
-Následující příklad ukazuje řešení **builtin.phonenumber** entity.
+## <a name="resolution-for-prebuilt-phonenumber-entity"></a>Řešení pro telefonní číslo předem připravených entit
+Následující příklad ukazuje rozlišení **builtin.phonenumber** entity.
 
 ```JSON
 {

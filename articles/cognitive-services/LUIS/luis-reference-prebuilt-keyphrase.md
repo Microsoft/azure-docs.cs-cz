@@ -3,21 +3,21 @@ title: Předem připravené služby LUIS keyphrase referenční informace k enti
 titleSuffix: Azure
 description: Tento článek obsahuje keyphrase informace předem připravených entit v Language Understanding (LUIS).
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 07/09/2018
-ms.author: v-geberr
-ms.openlocfilehash: f7c71c409a1d32eb7ca0984e9fdfe4d5d0ed0cef
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.author: diberry
+ms.openlocfilehash: 904f327dfe20e3d0864cbf355fd10237659879ee
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37932921"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39238596"
 ---
-# <a name="keyphrase-entity"></a>keyPhrase entity
+# <a name="keyphrase-entity"></a>Entita klíčové fráze
 keyPhrase extrahuje celou řadu klíčových frází z utterance. Nemusíte přidání projevů příklad obsahující keyPhrase do aplikace. keyPhrase entity se podporuje v [mnoha jazykových verzí](luis-supported-languages.md#languages-supported) jako součást [rozhraní text analytics](../text-analytics/overview.md) funkce. 
 
 ## <a name="resolution-for-prebuilt-keyphrase-entity"></a>Řešení pro keyPhrase předem připravených entit

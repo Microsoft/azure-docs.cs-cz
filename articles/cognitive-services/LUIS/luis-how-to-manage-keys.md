@@ -3,19 +3,19 @@ title: Spravovat klíče koncového bodu v LUIS | Dokumentace Microsoftu
 description: Language Understanding (LUIS) použijte ke správě programových rozhraní API, koncový bod a externí klíče.
 titleSuffix: Azure
 services: cognitive-services
-author: v-geberr
-manager: Kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 03/21/2018
-ms.author: v-geberr
-ms.openlocfilehash: 288c1456979ff9214b2f333768da65bd3da1a734
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.author: diberry
+ms.openlocfilehash: 127c09a022f5efb95ab6a5ec2db0de633b437a54
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917791"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39223034"
 ---
 # <a name="manage-your-luis-endpoint-keys"></a>Spravovat klíče pro koncový bod služby LUIS
 Klíč umožňuje vytvářet a publikovat aplikace LUIS nebo dotazu váš koncový bod. 

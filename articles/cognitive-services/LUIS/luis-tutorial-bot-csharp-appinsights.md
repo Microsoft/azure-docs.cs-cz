@@ -1,143 +1,143 @@
 ---
-title: Přidat LEOŠ data do služby Application Insights pomocí jazyka C# | Microsoft Docs
+title: Přidat LUIS data do Application Insights pomocí jazyka C# | Dokumentace Microsoftu
 titleSuffix: Azure
-description: Sestavení robotu integrované s LEOŠ aplikace a služby Application Insights pomocí jazyka C#.
+description: Vytvořte robota, integruje se službou LUIS aplikace a služby Application Insights pomocí jazyka C#.
 services: cognitive-services
-author: v-geberr
-manager: kamran.iqbal
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 03/07/2018
-ms.author: v-geberr
-ms.openlocfilehash: 52b6ae224b0e8da12eb4903f5100a6e5cc39704d
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.author: diberry
+ms.openlocfilehash: f1efe305f5659bfab50cee13ac30d56531cc6093
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "35343929"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39237787"
 ---
-# <a name="add-luis-results-to-application-insights-from-a-web-app-bot"></a>Přidat LEOŠ výsledky do služby Application Insights z robotu webové aplikace
-V tomto kurzu přidá LEOŠ odpovědi informace, které [Application Insights](https://azure.microsoft.com/services/application-insights/) telemetrická data úložiště. Jakmile máte tato data, můžete ho dotazování pomocí jazyka Kusto nebo Power BI a analyzovat, agregaci a vytváření sestav o záměry a entity utterance v reálném čase. Tato analysis pomáhá při určení, pokud by měla přidat nebo upravit tříd Intent a entity LEOŠ aplikace.
+# <a name="add-luis-results-to-application-insights-from-a-web-app-bot"></a>Přidání služby LUIS výsledky do Application Insights z použijete web app bot
+V tomto kurzu přidá informace o odpovědi LUIS k [Application Insights](https://azure.microsoft.com/services/application-insights/) úložiště dat telemetrie. Až budete mít data, můžete ji dotazovat s Kusto jazyk nebo Power BI k analýze, agregovat a vytváření sestav o záměry a entity utterance v reálném čase. Tato analýza pomůže zároveň pomáhá určit, pokud by měl přidat nebo upravit záměry a entity aplikace LUIS.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-* Přidejte Application Insights do robotu webové aplikace
-* Zaznamenání a odesílání LEOŠ výsledky dotazu Application Insights
-* Dotaz pro horní záměr, skóre a utterance Application Insights
+* Přidejte Application Insights do webové aplikace robota
+* Zaznamenávat a odesílat LUIS výsledků dotazu do Application Insights
+* Dotaz Application Insights pro hlavní záměr, skóre a utterance
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Vaše robota LEOŠ webové aplikace z **[předchozí kurzu](luis-csharp-tutorial-build-bot-framework-sample.md)** s Application Insights zapnutý. 
+* Váš robot LUIS webové aplikace z **[předchozí kurz o službě](luis-csharp-tutorial-build-bot-framework-sample.md)** pomocí Application Insights zapnuté. 
 * [Visual Studio 2017](https://www.visualstudio.com/downloads/) nainstalovány místně na vašem počítači.
 
 > [!Tip]
-> Pokud již nemáte předplatné, můžete si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/).
+> Pokud ještě nemáte předplatné, si můžete zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/).
 
-Kód v tomto kurzu je k dispozici na [úložiště github LEOŠ-Samples](https://github.com/Microsoft/LUIS-Samples/tree/master/documentation-samples/tutorial-web-app-bot-application-insights/csharp) a každý řádek přidružený tento kurz je označeno jako komentář s `//LUIS Tutorial:`. 
+Veškerý kód v tomto kurzu je k dispozici na [úložišti github s ukázkami LUIS](https://github.com/Microsoft/LUIS-Samples/tree/master/documentation-samples/tutorial-web-app-bot-application-insights/csharp) a každý řádek spojený s tímto kurzem je zakomentovaný s `//LUIS Tutorial:`. 
 
-## <a name="review-luis-web-app-bot"></a>Zkontrolujte LEOŠ webové aplikace robota
-Tento kurz předpokládá, že máte kódu vypadá podobně jako následující nebo že jste dokončili [další kurz](luis-csharp-tutorial-build-bot-framework-sample.md): 
+## <a name="review-luis-web-app-bot"></a>Zkontrolujte LUIS web app bot
+Tento kurz předpokládá, že budete mít kód vypadá podobně jako následující nebo, že jste dokončili [další kurz](luis-csharp-tutorial-build-bot-framework-sample.md): 
 
    [!code-csharp[Web app bot with LUIS](~/samples-luis/documentation-samples/tutorial-web-app-bot/csharp/BasicLuisDialog.cs "Web app bot with LUIS")]
 
-## <a name="application-insights-in-web-app-bot"></a>Application Insights ve webové aplikaci robota
-V současné době službu Application Insights, přidat jako součást služby vytvoření webové aplikace robota shromažďuje celkový stav telemetrii robota. Neshromažďuje informace LEOŠ odpovědi. Pro analýzy a vylepšení LEOŠ, budete potřebovat informace LEOŠ odpovědi.  
+## <a name="application-insights-in-web-app-bot"></a>Application Insights v použijete web app bot
+V současné době služba Application Insights přidané jako součást vytváření služby web app bot, shromažďuje telemetrii celkový stav pro robota. Neshromažďuje informace o odpovědi služby LUIS. K analýze a vylepšení služby LUIS, budete potřebovat informace LUIS odpovědi.  
 
-Aby bylo možné zachytit LEOŠ odpovědi, potřebuje robota aplikace webové **[Application Insights](https://www.nuget.org/packages/Microsoft.ApplicationInsights/)** nainstalovaný a nakonfigurovaný pro projekt. 
+Abyste mohli zaznamenat odpovědi LUIS, použijete web app bot musí **[Application Insights](https://www.nuget.org/packages/Microsoft.ApplicationInsights/)** nainstalovaná a nakonfigurovaná pro projekt. 
 
-## <a name="download-web-app-bot"></a>Stáhnout robota webové aplikace
-Použití [Visual Studio 2017](https://www.visualstudio.com/downloads/) k přidání a konfigurace pro robota aplikace webové služby Application Insights. Chcete-li použít robota aplikaci web v sadě Visual Studio, stáhněte si robota kódu webové aplikace.
+## <a name="download-web-app-bot"></a>Stáhněte si web app bot
+Použití [Visual Studio 2017](https://www.visualstudio.com/downloads/) přidat a nakonfigurovat Application Insights pro webové aplikace robota. Chcete-li použít použijete web app bot v sadě Visual Studio, stáhněte si kód webové aplikace robota.
 
-1. Na portálu Azure pro aplikaci robota web, vyberte **sestavení**.
+1. Na webu Azure Portal, pro web app bot, vyberte **sestavení**.
 
     ![Výběr sestavení na portálu](./media/luis-tutorial-bot-csharp-appinsights/download-build-menu.png)
 
-2. Vyberte **stažení souboru zip** a počkejte, až je připravený soubor.
+2. Vyberte **soubor zip ke stažení** a počkejte, dokud tento soubor je připravený.
 
-    ![Stáhněte si soubor zip](./media/luis-tutorial-bot-csharp-appinsights/download-link.png)
+    ![Stáhnout soubor zip](./media/luis-tutorial-bot-csharp-appinsights/download-link.png)
 
-3. Vyberte **stažení souboru zip** v místním okně. Mějte na paměti, umístění v počítači, budete ho potřebovat v další části.
+3. Vyberte **soubor zip ke stažení** v místním okně. Zapamatujte si umístění v počítači, budete ji potřebovat v další části.
 
-    ![Stáhněte si soubor zip automaticky otevřeném okně.](./media/luis-tutorial-bot-csharp-appinsights/download-popup.png)
+    ![Stáhnout soubor zip – místní nabídka](./media/luis-tutorial-bot-csharp-appinsights/download-popup.png)
 
-## <a name="open-solution-in-visual-studio-2017"></a>Otevřete řešení v Visual Studio 2017
+## <a name="open-solution-in-visual-studio-2017"></a>Otevřete řešení v sadě Visual Studio 2017
 
-1. Extrahujte soubor do složky. 
+1. Rozbalte soubor do nějaké složky. 
 
-2. Otevřete Visual Studio 2017 a otevřete soubor řešení `Microsoft.Bot.Sample.LuisBot.sln`. Pokud se objeví upozornění zabezpečení, vyberte možnost "OK".
+2. Otevřít Visual Studio 2017 a otevřete soubor řešení `Microsoft.Bot.Sample.LuisBot.sln`. Pokud se zobrazí upozornění zabezpečení, vyberte "OK".
 
-    ![Otevřete řešení v Visual Studio 2017](./media/luis-tutorial-bot-csharp-appinsights/vs-2017-security-warning.png)
+    ![Otevřete řešení v sadě Visual Studio 2017](./media/luis-tutorial-bot-csharp-appinsights/vs-2017-security-warning.png)
 
-3. Visual Studio je potřeba do řešení přidat závislosti. V **Průzkumníku řešení**, klikněte pravým tlačítkem na **odkazy**a vyberte **spravovat balíčky NuGet...** . 
+3. Visual Studio je potřeba přidat závislosti do řešení. V **Průzkumníka řešení**, klikněte pravým tlačítkem na **odkazy**a vyberte **spravovat balíčky NuGet...** . 
 
     ![Správa balíčků NuGet](./media/luis-tutorial-bot-csharp-appinsights/vs-2017-manage-nuget-packages.png)
 
-4. Správce balíčků NuGet zobrazuje seznam nainstalovaných balíčků. Vyberte **obnovení** v žlutý pruh. Počkejte na dokončení procesu obnovení.
+4. Správce balíčků NuGet se zobrazí seznam nainstalovaných balíčků. Vyberte **obnovení** v žlutý pruh. Počkejte na dokončení procesu obnovení.
 
     ![Obnovení balíčků NuGet](./media/luis-tutorial-bot-csharp-appinsights/vs-2017-restore-packages.png)
 
-## <a name="add-application-insights-to-the-project"></a>Do projektu přidejte Application Insights
-Instalace a konfigurace Application Insights v sadě Visual Studio. 
+## <a name="add-application-insights-to-the-project"></a>Přidejte Application Insights do projektu
+Nainstalujte a nakonfigurujte Application Insights v sadě Visual Studio. 
 
-1. V aplikaci Visual Studio 2017 v horní nabídce vyberte **projektu**, pak vyberte **přidat Telemetrii Application Insights...** .
+1. V sadě Visual Studio 2017, v horní nabídce vyberte **projektu**a pak vyberte **přidat Telemetrii Application Insights...** .
 
-2. V **konfiguraci statistiky aplikace** vyberte **spustit volné**
+2. V **konfigurace Application Insights** okně **začít zdarma**
 
-    ![Spuštění konfigurace Application Insights](./media/luis-tutorial-bot-csharp-appinsights/vs-2017-configure-app-insights.png)
+    ![Spusťte konfiguraci Application Insights](./media/luis-tutorial-bot-csharp-appinsights/vs-2017-configure-app-insights.png)
 
-3. Svou aplikaci zaregistrujte pomocí nástroje Application Insights. Budete muset zadat přihlašovací údaje Azure portálu. 
+3. Registrace aplikace pomocí Application Insights. Může se stát, že je nutné zadat přihlašovací údaje Azure portal. 
 
-4. Visual Studio přidá Application Insights do projektu, zobrazení stavu, jako to dělá. 
+4. Visual Studio přidá Application Insights do projektu, zobrazení stavu, jak to dělá. 
 
-    ![Přehled stavu aplikace.](./media/luis-tutorial-bot-csharp-appinsights/vs-2017-adding-application-insights-to-project.png)
+    ![Stav Application Insights](./media/luis-tutorial-bot-csharp-appinsights/vs-2017-adding-application-insights-to-project.png)
 
-    Po dokončení procesu **konfiguraci statistiky aplikace** zobrazuje stav průběhu. 
+    Po dokončení procesu **konfigurace Application Insights** zobrazuje stav průběhu. 
 
-    ![Application Insights průběh](./media/luis-tutorial-bot-csharp-appinsights/vs-2017-configured-application-insights-to-project.png)
+    ![Stav průběhu Application Insights](./media/luis-tutorial-bot-csharp-appinsights/vs-2017-configured-application-insights-to-project.png)
 
-    **Povolit trasování kolekce** je červená, což znamená, není povoleno. V tomto kurzu nepoužívá funkci. 
+    **Povolit shromažďování trasování** je červené, což znamená, není povolený. V tomto kurzu nepoužívá funkci. 
 
 ## <a name="build-and-resolve-errors"></a>Sestavení a řešení chyb
 
-1. Sestavte řešení výběrem **sestavení** nabídce pak vyberte **znovu sestavit řešení**. Počkejte na dokončení sestavení. 
+1. Sestavte řešení tak, že vyberete **sestavení** nabídce pak vyberte **znovu sestavit řešení**. Počkejte na dokončení sestavení. 
 
-2. Když je sestavení neúspěšné s `CS0104` chyby, je třeba opravit. V `Controllers` složky v `MessagesController.cs file`, opravte nejednoznačný použití `Activity` typu pomocí prefixu typ aktivity s typem konektor. Chcete-li to provést, změňte název `Activity` na řádcích 22 a 36 z `Activity` k `Connector.Activity`. Znovu sestavte řešení. Měla by existovat žádné další chyby sestavení.
+2. Pokud se sestavení nezdaří s `CS0104` chyby, je potřeba je opravit. V `Controllers` složky v `MessagesController.cs file`, opravte nejednoznačný využití `Activity` typu jsou typ aktivity typu konektoru. Chcete-li to provést, změňte název `Activity` na řádcích 22 a 36 z `Activity` k `Connector.Activity`. Znovu sestavte řešení. Měla by existovat žádné další chyby buildu.
 
-    Úplný zdrojový tohoto souboru je:
+    Úplný zdroj tohoto souboru je:
 
     [!code-csharp[MessagesController.cs file](~/samples-luis/documentation-samples/tutorial-web-app-bot-application-insights/csharp/MessagesController.cs "MessagesController.cs file")]
 
-## <a name="publish-project-to-azure"></a>Publikování projektu v Azure
-**Application Insights** balíčku je nyní v projektu a správně nakonfigurován pro svoje přihlašovací údaje na portálu Azure. Změny pro projekt je třeba publikovat zpět do Azure.
+## <a name="publish-project-to-azure"></a>Publikování projektu do Azure
+**Application Insights** balíčku je nyní v projektu a správně nakonfigurovaný pro svoje přihlašovací údaje na webu Azure Portal. Změny pro projekt je třeba publikovat zpět do Azure.
 
-1. V **Průzkumníku řešení**, klikněte pravým tlačítkem na název projektu a pak vyberte **publikovat**.
+1. V **Průzkumníka řešení**, klikněte pravým tlačítkem na název projektu a pak vyberte **publikovat**.
 
-    ![Publikování projektu v portálu](./media/luis-tutorial-bot-csharp-appinsights/vs-2017-publish.png)
+    ![Publikovat na portál projektu](./media/luis-tutorial-bot-csharp-appinsights/vs-2017-publish.png)
 
-2. V **publikovat** vyberte **vytvořit nový profil**.
+2. V **publikovat** okně **vytvořit nový profil**.
 
-    ![Publikování projektu v portálu](./media/luis-tutorial-bot-csharp-appinsights/vs-2017-publish-1.png)
+    ![Publikovat na portál projektu](./media/luis-tutorial-bot-csharp-appinsights/vs-2017-publish-1.png)
 
 3. Vyberte **importovat profil**a vyberte **OK**.
 
-    ![Publikování projektu v portálu](./media/luis-tutorial-bot-csharp-appinsights/vs-2017-publish-2.png)
+    ![Publikovat na portál projektu](./media/luis-tutorial-bot-csharp-appinsights/vs-2017-publish-2.png)
 
-4. V **soubor nastavení publikování importu** windows, přejděte do složky projektu, přejděte na `PostDeployScripts` složky, vyberte soubor, který končí v `.PublishSettings`a vyberte `Open`. Nyní máte nakonfigurovaný publikování pro tento projekt. 
+4. V **importovat soubor nastavení publikování** windows, přejděte do složky vašeho projektu, přejděte `PostDeployScripts` složky, vyberte soubor, který končí na `.PublishSettings`a vyberte `Open`. Nyní jste nakonfigurovali publikování pro tento projekt. 
 
-5. Publikování místního zdrojového kódu službě robota výběrem **publikovat** tlačítko. **Výstup** okno zobrazuje stav. Zbytek tohoto kurzu je dokončit na portálu Azure. Zavřete Visual Studio 2017. 
+5. Publikování místního zdrojového kódu do služby Bot Service tak, že vyberete **publikovat** tlačítko. **Výstup** okno zobrazuje stav. Zbývající část tohoto kurzu je dokončit na webu Azure Portal. Zavřete Visual Studio 2017. 
 
 ## <a name="open-three-browser-tabs"></a>Otevřete tři karty prohlížeče
-Na portálu Azure najít robota aplikaci web a otevřete jej. Následující kroky pomocí tří různých zobrazení robota aplikaci web. Může být snazší mít tři samostatné karty, otevřete v prohlížeči: 
+Na webu Azure Portal najít použijete web app bot a otevřete jej. Následující kroky používají tři různá zobrazení použijete web app bot. Může být jednodušší mají tři samostatné karty otevřete v prohlížeči: 
   
->  * Testování v webového chatu
->  * Editor kódu online sestavení nebo Open-> Editor služby aplikace
->  * Aplikace služby Editor/otevřít Kudu konzoly -> konzole diagnostiky
+>  * Testování webového chatu
+>  * Editor kódu online sestavení/Open-> App Service Editor
+>  * Konzola Kudu Editor/Open služba aplikace -> konzole diagnostiky
 
-## <a name="modify-basicluisdialogcs-code"></a>Upravit BasicLuisDialog.cs kódu
+## <a name="modify-basicluisdialogcs-code"></a>Úprava kódu BasicLuisDialog.cs
 
-1. V **App Service Editor** kartu prohlížeče, otevřete `BasicLuisDialog.cs` souboru.
+1. V **App Service Editor** záložku prohlížeče, otevřete `BasicLuisDialog.cs` souboru.
 
 2. Přidejte následující závislost NuGet v rámci existující `using` řádky:
 
@@ -147,20 +147,20 @@ Na portálu Azure najít robota aplikaci web a otevřete jej. Následující kro
 
    [!code-csharp[Add the LogToApplicationInsights function](~/samples-luis/documentation-samples/tutorial-web-app-bot-application-insights/csharp/BasicLuisDialog.cs?range=61-92 "Add the LogToApplicationInsights function")]
 
-    Klíč instrumentace Application Insights je již v aplikaci robota webové aplikace nastavení s názvem `BotDevInsightsKey`. 
+    Instrumentační klíč Application Insights se už bot app webové aplikace nastavení s názvem `BotDevInsightsKey`. 
 
-    Poslední řádek funkce přidá data do služby Application Insights. Název je trasování je `LUIS`, jedinečný název kromě jiných telemetrická data shromažďovaná společností robota této webové aplikace. Všechny vlastnosti jsou také předponou `LUIS_` abyste viděli, jaká data v tomto kurzu přidá porovnání s informacemi, které je dán robota aplikace web.
+    Poslední řádek funkce přidá data do Application Insights. Je název pro trasovacího `LUIS`, jedinečný název kromě další telemetrická data shromážděná tento web app bot. Všechny vlastnosti jsou také s předponou `LUIS_` tak uvidíte, jaká data v tomto kurzu přidá do informace, které je dán použijete web app bot porovnání.
 
 4. Volání `LogToApplicationInsights` funkce v horní části `ShowLuisResult` funkce:
 
    [!code-csharp[Use the LogToApplicationInsights function](~/samples-luis/documentation-samples/tutorial-web-app-bot-application-insights/csharp/BasicLuisDialog.cs?range=114-115 "Use the LogToApplicationInsights function")]
 
-## <a name="build-web-app-bot"></a>Vytvoření webové aplikace robota
-1. Sestavení robota aplikaci web v jednom ze dvou způsobů. První metoda má klikněte pravým tlačítkem na `build.cmd` v **App Service Editor**, pak vyberte **spustit z konzoly**. Výstup konzoly zobrazí a dokončí se `Finished successfully.`
+## <a name="build-web-app-bot"></a>Sestavit web app bot
+1. Sestavte robota webové aplikace v jednom ze dvou způsobů. Prvním způsobem je klikněte pravým tlačítkem na `build.cmd` v **App Service Editor**a pak vyberte **spustit z konzoly**. Výstup konzoly zobrazí a dokončí se `Finished successfully.`
 
-2. Pokud to úspěšně nedokončí, budete muset otevřete konzolu, přejděte na skript a spusťte ji pomocí následujících kroků. V **App Service Editor**na horním panelu blue, vyberte název vaší robota a pak vyberte **otevřít konzolu Kudu** v rozevíracím seznamu.
+2. Pokud to úspěšně nedokončí, musíte otevřete konzolu, přejděte na skript a spusťte ho pomocí následujících kroků. V **App Service Editor**, na horním panelu modrá, vyberte název vašeho robota a potom vyberte **otevřete konzoly Kudu** v rozevíracím seznamu.
 
-    ![Otevřete Kudu konzoly](./media/luis-tutorial-bot-csharp-appinsights/open-kudu-console.png)
+    ![Konzola Kudu otevřít](./media/luis-tutorial-bot-csharp-appinsights/open-kudu-console.png)
 
 3. V okně konzoly zadejte následující příkaz:
 
@@ -168,17 +168,17 @@ Na portálu Azure najít robota aplikaci web a otevřete jej. Následující kro
     cd site\wwwroot && build.cmd
     ```
 
-    Počkejte na dokončení s sestavení `Finished successfully.`
+    Počkejte na dokončení se sestavení `Finished successfully.`
 
-## <a name="test-the-web-app-bot"></a>Testování robota aplikaci web
+## <a name="test-the-web-app-bot"></a>Testování použijete web app bot
 
-1. Chcete-li otestovat robota vaší webové aplikace, otevřete **testů ve webové Chat** funkce na portálu. 
+1. Chcete-li otestovat použijete web app bot, otevřete **testování ve Web Chat** funkce na portálu. 
 
-2. Zadejte fráze `Coffee bar on please`.  
+2. Zadejte větu `Coffee bar on please`.  
 
-    ![Test webové aplikace robota v chatu](./media/luis-tutorial-bot-csharp-appinsights/test-in-web-chat.png)
+    ![Testování použijete web app bot chatu](./media/luis-tutorial-bot-csharp-appinsights/test-in-web-chat.png)
 
-3. Měli byste vidět žádné rozdíly v chatbot odpovědi. Změna je odesílání dat do Application Insights, není v robota odpovědi. Zadejte pár další utterances, takže ještě více dat ve službě Application Insights:
+3. Měli byste vidět žádné rozdíly v odpovědi chatovací robot. Změna odesílá data do Application Insights, není v robota odpovědi. Zadejte několik další projevů je trochu více dat ve službě Application Insights:
 
 ```
 Please deliver a pizza
@@ -186,39 +186,39 @@ Turn off all the lights
 Turn on the hall light
 ```
 
-## <a name="view-luis-entries-in-application-insights"></a>Zobrazení položek LEOŠ ve službě Application Insights
-Otevřete službu Application Insights zobrazíte LEOŠ položky. 
+## <a name="view-luis-entries-in-application-insights"></a>Zobrazení LUIS položky ve službě Application Insights
+Otevřete službu Application Insights zobrazíte položky LUIS. 
 
-1. Na portálu, vyberte **všechny prostředky** pak filtrovat podle robota název webové aplikace. Klikněte na prostředek s typem **Application Insights**. Ikona pro službu Application Insights je žárovky. 
+1. Na portálu vyberte **všechny prostředky** pak filtrovat podle názvu webové aplikace robota. Klikněte na prostředek s typem **Application Insights**. Ikona pro službu Application Insights je žárovky. 
 
-    ![Hledání přehledů aplikace](./media/luis-tutorial-bot-csharp-appinsights/portal-service-list-app-insights.png)
+    ![Vyhledávání pro službu app insights](./media/luis-tutorial-bot-csharp-appinsights/portal-service-list-app-insights.png)
 
-2. Když prostředek otevře, klikněte na **vyhledávání** ikonu lupy v pravém panelu. Nový panel na správné zobrazí. V závislosti na tom, kolik telemetrická data nachází, panelu může trvat druhý k zobrazení. Vyhledejte `LUIS`. V seznamu je zúžit právě LEOŠ výsledky dotazu přidat v tomto kurzu.
+2. Pokud prostředek se otevře, klikněte na **hledání** ikonu na lupu v pravém panelu. Nový panel zobrazuje správné. V závislosti na tom, kolik dat telemetrie nenajde, panelu může chvíli trvat, chcete-li zobrazit. Vyhledejte `LUIS`. V seznamu je zúžit jen LUIS výsledky dotazu přidat v tomto kurzu.
 
-    ![Vyhledejte trasování](./media/luis-tutorial-bot-csharp-appinsights/portal-service-list-app-insights-search-luis-trace.png)
+    ![Hledat trasování](./media/luis-tutorial-bot-csharp-appinsights/portal-service-list-app-insights-search-luis-trace.png)
 
-3. Vyberte na horní položku. Nové okno zobrazí podrobnější data, včetně vlastních dat pro dotaz LEOŠ úplně vpravo. Data obsahují nejvyšší záměr a jeho skóre.
+3. Vyberte na horní položku. Nové okno zobrazí podrobnější data, včetně vlastních dat pro dotaz LUIS úplně vpravo. Data obsahují hlavní záměr a jeho skóre.
 
     ![Projděte si položku trasování](./media/luis-tutorial-bot-csharp-appinsights/portal-service-list-app-insights-search-luis-trace-item.png)
 
-    Až skončíte, vyberte úplně vpravo nahoře **X** se vraťte do seznamu položek závislostí. 
+    Jakmile budete hotovi, vyberte úplně vpravo nahoře **X** se vraťte do seznamu položek závislostí. 
 
 
 > [!Tip]
-> Pokud chcete uložit v seznamu závislostí a vraťte se k němu později, klikněte na **... Další** a klikněte na tlačítko **uložit oblíbené**.
+> Pokud chcete uložit seznam závislostí a vrátit se k němu později, klikněte na **... Další** a klikněte na tlačítko **uložit oblíbenou**.
 
 ## <a name="query-application-insights-for-intent-score-and-utterance"></a>Dotaz Application Insights pro záměr, skóre a utterance
-Application Insights vám dává k dotazování dat pomocí [Kusto](https://docs.microsoft.com/azure/application-insights/app-insights-analytics#query-data-in-analytics) jazyka, i jako export jeho [PowerBI](https://powerbi.microsoft.com). 
+Služba Application Insights poskytuje výkonné nástroje pro dotazování dat pomocí služby [Kusto](https://docs.microsoft.com/azure/application-insights/app-insights-analytics#query-data-in-analytics) jazyka, stejně jako export umožňuje [PowerBI](https://powerbi.microsoft.com). 
 
-1. Klikněte na **Analytics** v horní části závislost výpis nad pole filtru. 
+1. Klikněte na **Analytics** v horní části závislosti výpis výše pole filtru. 
 
     ![Tlačítko Analytics](./media/luis-tutorial-bot-csharp-appinsights/portal-service-list-app-insights-search-luis-analytics-button.png)
 
-2. Otevře se nové okno s okno dotazu v horní části a v okně data tabulky nižší, než je. Pokud jste použili databáze před, je dobře známé toto uspořádání. Dotaz obsahuje všechny položky z posledních 24 hodin od s názvem `LUIS`. **CustomDimensions** sloupec má LEOŠ výsledky dotazu jako dvojice název/hodnota.
+2. Otevře se okno nové okno dotazu v horní části a okno tabulky dat pod ním. Pokud jste použili databází před, je toto uspořádání zkušenosti. Dotaz obsahuje všechny položky z posledních 24 hodin, počínaje název `LUIS`. **CustomDimensions** sloupec má LUIS výsledky dotazu jako dvojice název/hodnota.
 
-    ![Sestava analýzy výchozí](./media/luis-tutorial-bot-csharp-appinsights/analytics-query-1.png)
+    ![Výchozí analytická sestava](./media/luis-tutorial-bot-csharp-appinsights/analytics-query-1.png)
 
-3. Vysunout nejvyšší záměr, skóre a utterance, přidejte následující nad poslední řádek v okně dotazu:
+3. Vyžádá si hlavní záměr, skóre a utterance, přidejte následující přímo nad poslední řádek v okně dotazu:
 
     ```SQL
     | extend topIntent = tostring(customDimensions.LUIS_topScoringIntent)
@@ -226,22 +226,22 @@ Application Insights vám dává k dotazování dat pomocí [Kusto](https://docs
     | extend utterance = tostring(customDimensions.LUIS_query)
     ```
 
-4. Spusťte dotaz. Posuňte se úplně vpravo v tabulce data. Nové sloupce topIntent, skóre a utterance jsou k dispozici. Klikněte na tento sloupec topIntent seřadit.
+4. Spusťte dotaz. Posuňte se úplně vpravo v datové tabulce. Nové sloupce topIntent, skóre a utterance jsou k dispozici. Klikněte na sloupec topIntent seřadit.
 
-    ![Sestava vlastní analytics](./media/luis-tutorial-bot-csharp-appinsights/analytics-query-2.png)
-
-
-Další informace o [Kusto dotazovací jazyk](https://docs.loganalytics.io/docs/Learn/Getting-Started/Getting-started-with-queries) nebo [export dat do PowerBi](https://docs.microsoft.com/azure/application-insights/app-insights-export-power-bi). 
+    ![Vlastní analytická sestava](./media/luis-tutorial-bot-csharp-appinsights/analytics-query-2.png)
 
 
-## <a name="learn-more-about-bot-framework"></a>Další informace o robota Framework
-Další informace o [robota Framework](https://dev.botframework.com/).
+Další informace o [Kusto dotazovací jazyk](https://docs.loganalytics.io/docs/Learn/Getting-Started/Getting-started-with-queries) nebo [export dat do Power BI](https://docs.microsoft.com/azure/application-insights/app-insights-export-power-bi). 
+
+
+## <a name="learn-more-about-bot-framework"></a>Další informace o rozhraní Bot Framework
+Další informace o [Bot Framework](https://dev.botframework.com/).
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace, které chcete přidat k datům přehledů aplikace obsahuje ID aplikace, ID verze, datum poslední změny modelu, datum posledního train, datum posledního publikování. Tyto hodnoty lze získat buď z adresu URL koncového bodu (ID aplikace a ID verze), nebo [vytváření rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c3d) volat potom nastavit v nastavení webové aplikace robota a vyžádat odtud.  
+Další informace, které chcete přidat do application insights data zahrnuje ID aplikace, ID verze, datum poslední změny modelu, datum posledního trénování, datum posledního publikování. Tyto hodnoty lze získat buď z adresu URL koncového bodu (ID aplikace a ID verze) nebo z [vytváření rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c3d) volání pak v nastavení web app bot a získaná z něj.  
 
-Pokud používáte stejného předplatného. koncový bod pro více než jednu aplikaci LEOŠ, měli byste také zahrnout ID předplatného a vlastnost, že je sdílený klíč. 
+Pokud používáte stejné předplatné koncový bod pro více než jednu aplikaci LUIS, by měl také obsahovat ID předplatného a vlastnost s informacemi o tom, že se jedná o sdílený klíč. 
 
 > [!div class="nextstepaction"]
-> [Další informace o příklad utterances](luis-how-to-add-example-utterances.md)
+> [Další informace o příklad projevy](luis-how-to-add-example-utterances.md)

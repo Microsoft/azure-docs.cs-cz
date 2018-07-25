@@ -1,131 +1,132 @@
 ---
-title: Nastavení a datový roaming – nejčastější dotazy | Microsoft Docs
-description: Poskytuje odpovědi na dotazy, které správci IT můžou mít o nastavení a synchronizaci dat aplikací.
+title: Nastavení a datovému roamingu – nejčastější dotazy | Dokumentace Microsoftu
+description: Poskytuje odpovědi na některé dotazy, které správce IT může mít informace o nastavení a synchronizace dat aplikace.
 services: active-directory
-keywords: Enterprise stavu nastavení roamingu windows cloudu, nejčastější dotazy na enterprise stavu roaming
+keywords: Enterprise stavu cestovní nastavení cloudu systému windows, nejčastější dotazy k enterprise stav roamingu
 documentationcenter: ''
-author: tanning
+author: MarkusVi
 manager: mtillman
 editor: curtand
+ms.component: devices
 ms.assetid: c0824f5c-129b-4240-969f-921f6a64eae7
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/14/2018
+ms.date: 07/23/2018
 ms.author: markvi
-ms.openlocfilehash: f33376d5f68d64495a7a90e62870f3ec14f73246
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: ee03ed3159ad2fc1cd8da4a84fd1be34d0b656c8
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34258710"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39224326"
 ---
 # <a name="settings-and-data-roaming-faq"></a>Nejčastější dotazy k nastavení a datovému roamingu
-Tento článek obsahuje odpovědi na některé dotazy, které správci IT mohou mít o nastavení a synchronizaci dat aplikací.
+Tento článek obsahuje odpovědi na některé otázky, které správce IT může mít informace o nastavení a synchronizace dat aplikace.
 
-## <a name="what-data-roams"></a>Jaká data přemístí?
-**Nastavení systému Windows**: nastavení počítače, které jsou součástí operačního systému Windows. Obecně platí jsou to nastavení, které přizpůsobení počítače a obsahují následující rozsáhlé kategorie:
+## <a name="what-data-roams"></a>Jaká data při roamingu?
+**Nastavení Windows**: nastavení počítače, které jsou součástí operačního systému Windows. Obecně platí jedná se o nastavení, které přizpůsobení počítače a zahrnují následujících kategorií:
 
-* *Motiv*, což zahrnuje funkce, jako je nastavení plochy motiv a na hlavním panelu.
-* *Nastavení aplikace Internet Explorer*, včetně posledních otevřených karet a Oblíbené položky.
-* *Okraj nastavení prohlížeče*, jako jsou například oblíbených položek a čtení seznamu.
-* *Hesla*, včetně Internetu hesla, profily Wi-Fi a další.
-* *Jazykové předvolby*, což zahrnuje nastavení pro rozložení klávesnice, jazykem, datum a čas a další.
-* *Snadné získat přístup k funkcím*, jako jsou například motiv s vysokým kontrastem a Předčítání, Lupa.
-* *Další nastavení Windows*, jako jsou nastavení příkazového řádku a seznam aplikací.
+* *Motiv*, což zahrnuje funkce, jako je nastavení motivu a na hlavním panelu na ploše.
+* *Nastavení aplikace Internet Explorer*, včetně naposledy otevřených karet a Oblíbené položky.
+* *Okraj nastavení prohlížeče*, jako je například oblíbené položky a čtení seznamu.
+* *Hesla*, včetně Internet hesla, profilů sítě Wi-Fi a další.
+* *Jazykové předvolby*, což zahrnuje nastavení pro rozložení klávesnice, jazyk systému, datum a čas a další.
+* *Snadné získat přístup k funkcím*, jako je například motiv s vysokým kontrastem a program Předčítání, Lupa.
+* *Další nastavení Windows*, jako je například nastavení příkazového řádku a seznam aplikací.
 
-**Data aplikací**: univerzální aplikace pro Windows může zapsat do složky cestovního nastavení data a všechny data zapsaná do této složky se budou automaticky synchronizovat. Je to na vývojáře jednotlivých aplikací k návrhu aplikace využít tuto funkci. Další podrobnosti o tom, jak vyvíjet aplikace Universal Windows, který používá roaming najdete v tématu [úložiště data aplikací API](https://msdn.microsoft.com/library/windows/apps/mt299098.aspx) a [data aplikací Windows 8 roaming blogu pro vývojáře](http://blogs.msdn.com/b/windowsappdev/archive/2012/07/17/roaming-your-app-data.aspx).
+**Data aplikací**: Universal Windows apps můžete zapisovat do složky cestovního nastavení data a všechny data zapsaná do této složky se budou automaticky synchronizovat. Záleží jen na jednotlivé aplikace pro vývojáře k návrhu aplikace, abyste mohli využít tuto funkci. Další podrobnosti o tom, jak vývoj aplikace pro Universal Windows, který používá roaming, najdete v článku [API úložiště appdata](https://msdn.microsoft.com/library/windows/apps/mt299098.aspx) a [roaming blog pro vývojáře aplikací Windows 8](http://blogs.msdn.com/b/windowsappdev/archive/2012/07/17/roaming-your-app-data.aspx).
 
-## <a name="what-account-is-used-for-settings-sync"></a>Který účet se používá pro nastavení synchronizace?
-V systému Windows 8 a Windows 8.1 nastavení synchronizace vždycky používají účty Microsoft příjemce. Enterprise uživatelé měli možnost připojit se k účtu domény služby Active Directory k získání přístupu k synchronizaci nastavení účtu Microsoft. Ve Windows 10 toto připojení účtu Microsoft, že funkce je nahrazován framework primární a sekundární účet.
+## <a name="what-account-is-used-for-settings-sync"></a>Který účet se používá pro synchronizaci nastavení?
+Synchronizace nastavení v systému Windows 8 a Windows 8.1, vždy používá účty zákazníků Microsoftu. Podnikoví uživatelé měli možnost připojení k účtu v doméně služby Active Directory k získání přístupu k synchronizaci nastavení účtu Microsoft. Ve Windows 10 připojené to účet Microsoft, že funkce je nahrazen účtu primárního/sekundárního framework.
 
-Primární účet je definován jako účet použitý k přihlášení k systému Windows. To může být účet Microsoft, účet služby Azure Active Directory (Azure AD), účet místní služby Active Directory nebo místní účet. Kromě primární účet uživatelé Windows 10, můžete přidat jeden nebo více účtů sekundární cloudu do svého zařízení. Sekundární účet je obvykle účet Microsoft, účet Azure AD nebo jiný účet třeba z Gmailu nebo Facebook. Tyto účty sekundární poskytují přístup k další služby, jako je například jednotné přihlašování a úložiště systému Windows, ale nejsou schopná pohánějící nastavení synchronizace.
+Primární účet je definován jako účet použitý k přihlášení k Windows. To může být účet Microsoft, účet služby Azure Active Directory (Azure AD), účet místní služby Active Directory nebo místní účet. Kromě primárního účtu uživatele Windows 10 přidat jeden nebo více účtů sekundárního cloudu do svého zařízení. Sekundární účet je obvykle účet Microsoft, účet Azure AD nebo jiného účtu třeba z Gmailu nebo Facebook. Tyto sekundární účty poskytují přístup k další služby, jako je jednotné přihlašování a Windows Store, ale nejsou schopná běží na ní takové nastavení synchronizace.
 
-V systému Windows 10, lze použít pouze primární účet pro zařízení pro synchronizaci nastavení (viz [jak se dá upgradovat z synchronizaci nastavení účtu Microsoft ve Windows 8 do služby Azure AD nastavení synchronizace ve Windows 10?](active-directory-windows-enterprise-state-roaming-faqs.md#how-do-i-upgrade-from-microsoft-account-settings-sync-in-windows-8-to-azure-ad-settings-sync-in-windows-10)).
+Ve Windows 10, je možné jenom primární účet zařízení pro synchronizaci nastavení (viz [Jak můžu upgradovat z synchronizaci nastavení účtu Microsoft ve Windows 8 do služby Azure AD sync nastavení ve Windows 10?](active-directory-windows-enterprise-state-roaming-faqs.md#how-do-i-upgrade-from-microsoft-account-settings-sync-in-windows-8-to-azure-ad-settings-sync-in-windows-10)).
 
-Data se nikdy kombinované mezi různé uživatelské účty v zařízení. Existují dvě pravidla pro synchronizaci nastavení:
+Data se nikdy směšovat mezi různé uživatelské účty na zařízení. Existují dvě pravidla pro synchronizaci nastavení:
 
-* Nastavení systému Windows bude vždy spolu s primární účet.
-* Data aplikací budou označené účet použitý k získání aplikací. Jenom aplikace, které jsou označené primární účet bude synchronizovat. Označování vlastnictví aplikace je určen, když je aplikace zkušebně načtených prostřednictvím Windows Store nebo Správa mobilních zařízení (MDM).
+* Nastavení Windows se vždy zpřístupní primárního účtu.
+* Data aplikací budou označené účet použitý k získání aplikace. Synchronizuje jenom aplikace, které jsou označené primárního účtu. Označování vlastnictví aplikace je určena při aplikace se zkušebně načtených prostřednictvím Windows Store nebo správu mobilních zařízení (MDM).
 
-Pokud aplikace vlastníka nelze identifikovat, bude spolu s primární účet. Pokud zařízení je upgrade z Windows 8 nebo Windows 8.1 na Windows 10, všechny aplikace označí jako získat účet Microsoft. Je to proto, že většina uživatelů získat aplikace z Windows Store a se žádná podpora pro Windows Store pro účty Azure AD před Windows 10. Pokud je aplikace nainstalována licenci offline, aplikace označené pomocí primární účtu na zařízení.
+Pokud vlastník aplikace nelze identifikovat, zpřístupní se primární účet. Pokud zařízení je upgradovat z Windows 8 nebo Windows 8.1 na Windows 10, protože získat účet Microsoft se označí všechny aplikace. Je to proto, že většina uživatelů získat aplikace přes Windows Store a došlo k dispozici žádná podpora pro Windows Store pro účty Azure AD před Windows 10. Pokud je aplikace nainstalovaná prostřednictvím offline licence, aplikace označené pomocí primárního účtu v zařízení.
 
 > [!NOTE]
-> Zařízení s Windows 10, které jsou ve vlastnictví společnosti a jsou připojené ke službě Azure AD můžete připojit své účty Microsoft už na účet domény. Možnost připojit k účtu Microsoft na účet domény a mít všechny uživatele synchronizaci dat do účtu Microsoft (to znamená, že účet Microsoft roaming prostřednictvím připojeného účtu Microsoft a funkce služby Active Directory) je odstraněná z Windows 10 zařízení, které jsou připojeny k připojeném prostředí služby Active Directory nebo Azure AD.
+> Zařízení s Windows 10, které jsou ve vlastnictví organizace a jsou připojené ke službě Azure AD už můžete připojit své účty Microsoft na účet domény. Možnost připojení k účtu domény s účtem Microsoft a mít synchronizace dat všech uživatelů k účtu Microsoft (to znamená, účet Microsoft roaming přes připojený účet Microsoft a funkce služby Active Directory) je odstraněná z Windows 10 zařízení, která jsou připojená k propojené prostředí služby Active Directory nebo Azure AD.
 >
 >
 
-## <a name="how-do-i-upgrade-from-microsoft-account-settings-sync-in-windows-8-to-azure-ad-settings-sync-in-windows-10"></a>Jak se dá upgradovat z synchronizaci nastavení účtu Microsoft ve Windows 8 do služby Azure AD sync nastavení v systému Windows 10?
-Pokud jsou připojena k doméně služby Active Directory, systémem Windows 8 nebo Windows 8.1 připojených účtem Microsoft, bude synchronizovat nastavení prostřednictvím účtu Microsoft. Po upgradu na Windows 10, bude pokračovat na synchronizaci nastavení uživatele prostřednictvím účtu Microsoft, dokud se uživatel připojený k doméně a názvu domény služby Active Directory se nemůže spojit se Azure AD.
+## <a name="how-do-i-upgrade-from-microsoft-account-settings-sync-in-windows-8-to-azure-ad-settings-sync-in-windows-10"></a>Jak můžu upgradovat z synchronizaci nastavení účtu Microsoft ve Windows 8 do služby Azure AD sync nastavení ve Windows 10?
+Pokud jsou připojeny k doméně služby Active Directory, systémem Windows 8 nebo Windows 8.1 připojených účtem Microsoft, budou synchronizovat nastavení prostřednictvím účtu Microsoft. Po upgradu na Windows 10, budete i nadále synchronizovat nastavení uživatele přes účet Microsoft, jako je uživatel připojený k doméně a doméně služby Active Directory s Azure AD nepřipojuje.
 
-Pokud se s Azure AD připojit místní doméně služby Active Directory, zařízení se pokusí o synchronizaci nastavení pomocí připojené účet Azure AD. Pokud správce Azure AD není povolen Enterprise State Roaming, vaše připojené účet Azure AD se zastaví synchronizaci nastavení. Pokud jste uživatelem systému Windows 10 a přihlásit Azure AD identity, se spustí, jakmile správce umožní synchronizace nastavení přes Azure AD synchronizovat nastavení systému windows.
+Pokud místní domény služby Active Directory s Azure AD connect, zařízení se pokusí o synchronizaci nastavení pomocí připojeném účtu služby Azure AD. Pokud správce Azure AD neumožňuje Enterprise State Roaming, vaše připojení účtu služby Azure AD se zastaví, synchronizovat nastavení. Pokud jste uživatelem systému Windows 10 a přihlaste se pomocí identity Azure AD, se spustí, synchronizovat nastavení systému windows, poté, co váš správce povolí synchronizaci nastavení přes Azure AD.
 
-Pokud jste uložili všechna osobní data v podnikových zařízení, byste měli vědět, že operačního systému Windows a data aplikací bude zahájena synchronizace Azure AD. To má následující důsledky:
+Pokud jste si uložili všechny osobní údaje na firemní zařízení, byste měli vědět, že operační systém Windows a data aplikací se začnou synchronizují do služby Azure AD. To má následující důsledky:
 
-* Nastavení svého osobního účtu Microsoft se soubor kromě nastavení na váš pracovní nebo školní účty Azure AD. Důvodem je, že účet Microsoft a nastavení služby Azure AD synchronizovat nyní používáte samostatné účty.
-* Osobní data, jako jsou hesla Wi-Fi, webové pověření a Oblíbené položky aplikace Internet Explorer, dříve synchronizované prostřednictvím připojeného účtu Microsoft se budou synchronizovat přes Azure AD.
+* Osobní nastavení účtu Microsoft bude odchylek kromě nastavení na váš pracovní nebo školní účty Azure AD. Důvodem je, že účet Microsoft a nastavení služby Azure AD synchronizovat nyní používají samostatné účty.
+* Osobní údaje, jako jsou hesla Wi-Fi, webových přihlašovacích údajů a Oblíbené položky aplikace Internet Explorer, které byly dříve synchronizovaná přes propojeném účtu Microsoft se budou synchronizovat prostřednictvím služby Azure AD.
 
-## <a name="how-do-microsoft-account-and-azure-ad-enterprise-state-roaming-interoperability-work"></a>Jak se účet Microsoft a pracovní vzájemná funkční spolupráce Azure AD Enterprise stavu Roaming?
-V listopadu 2015 nebo novější verze Windows 10 Enterprise State Roaming je podporována pouze pro jeden účet najednou. Pokud se přihlaste do Windows pomocí pracovní nebo školní účet Azure AD, všechna data synchronizují přes Azure AD. Pokud se přihlásíte se k systému Windows pomocí osobního účtu Microsoft, všechna data se budou synchronizovat prostřednictvím účtu Microsoft. Univerzální data aplikací bude přenášet pomocí pouze primární přihlášení účtu na zařízení, a bude mohla používat pouze v případě, že primární účet vlastní licenci aplikace. Nebudou synchronizovat data univerzálních aplikací pro aplikace vlastníkem všechny sekundární účty.
+## <a name="how-do-microsoft-account-and-azure-ad-enterprise-state-roaming-interoperability-work"></a>Jak vytvořit účet Microsoft a pracovní vzájemná funkční spolupráce Azure AD podnikový Roaming stavu?
+V listopadu 2015 nebo novější verze Windows 10 Enterprise State Roaming je podporována pouze pro jeden účet v čase. Pokud se přihlášení k Windows pomocí svého pracovního nebo školního účtu služby Azure AD, všechna data se budou synchronizovat prostřednictvím služby Azure AD. Pokud se přihlásíte se k Windows pomocí osobního účtu Microsoft, všechna data se budou synchronizovat prostřednictvím účtu Microsoft. Univerzální appdata se zpřístupní účtem jenom primární přihlášení na zařízení a zpřístupní pouze v případě, že licence aplikace je vlastníkem primárního účtu. Univerzálních aplikací pro aplikace pro vlastní sekundární účtů nebudou synchronizovány.
 
-## <a name="do-settings-sync-for-azure-ad-accounts-from-multiple-tenants"></a>Nastavení synchronizace pro účty Azure AD od víc klientů?
-Když více Azure AD účty z různých klientů Azure AD jsou na stejném zařízení, musíte aktualizovat registru zařízení ke komunikaci se službou Azure Rights Management pro každého klienta Azure AD.  
+## <a name="do-settings-sync-for-azure-ad-accounts-from-multiple-tenants"></a>Nastavení synchronizace pro účty Azure AD z více tenantů?
+Pokud několik služeb Azure AD pro účty z různých tenantů Azure AD jsou na stejném zařízení, je nutné aktualizovat registr zařízení komunikovat se službou Azure Rights Management pro jednotlivé tenanty Azure AD.  
 
-1. Najdete identifikátor GUID pro každý klient Azure AD. Otevřete portál Azure a vyberte klienta Azure AD. Identifikátor GUID pro klienta je na stránce vlastnosti vybraného klienta (https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties), s popiskem **ID adresáře**. 
-2. Až budete mít identifikátor GUID, budete muset přidat klíč registru **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\SettingSync\WinMSIPC\<klienta ID GUID >**.
-   Z **klienta ID GUID** klíče, vytvořte novou víceřetězcovou hodnotu (REG SZ více) s názvem **AllowedRMSServerUrls**. Pro svá data zadejte distribuční bod adresy URL licencování Azure klientů, které má přístup k zařízení.
+1. Najdete identifikátor GUID pro jednotlivé tenanty Azure AD. Otevřete na webu Azure portal a vyberte tenanta Azure AD. Na stránce vlastnosti vybraného tenanta je identifikátor GUID pro klienta (https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties), s popiskem **ID adresáře**. 
+2. Jakmile budete mít identifikátor GUID, budete muset přidat klíč registru **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\SettingSync\WinMSIPC\<tenanta Identifikátor GUID >**.
+   Z **tenanta Identifikátor GUID** klíče, vytvořte novou víceřetězcovou hodnotu (REG-MULTI-SZ) s názvem **AllowedRMSServerUrls**. Její data určete distribuční bod adresy URL licencování Azure tenantů, které má přístup k zařízení.
 3. Licenční adresy URL distribučního bodu můžete najít spuštěním **Get-AadrmConfiguration** rutiny z modulu AADRM. Pokud hodnoty **LicensingIntranetDistributionPointUrl** a **LicensingExtranetDistributionPointUrl** se liší, zadat obě hodnoty. Pokud jsou hodnoty stejné, zadejte hodnotu pouze jednou.
 
-## <a name="what-are-the-roaming-settings-options-for-existing-windows-desktop-applications"></a>Jaké jsou možnosti cestovní nastavení pro existující aplikace pracovní plochy Windows?
-Roaming funguje pouze pro univerzální aplikace pro Windows. K dispozici pro povolení roamingu na existující aplikaci plochy Windows existují dvě možnosti:
+## <a name="what-are-the-roaming-settings-options-for-existing-windows-desktop-applications"></a>Jaké jsou možnosti cestovního nastavení pro existující aplikace klasické pracovní plochy Windows?
+Roaming funguje jenom pro Universal Windows apps. Pro povolení roamingu v existující aplikace klasické pracovní plochy Windows k dispozici jsou dvě možnosti:
 
-* [Plochy most](https://aka.ms/desktopbridge) umožňuje uvést vaše stávající aplikace Windows desktop do univerzální platformy Windows. Z tohoto místa budou muset využít výhod roaming dat aplikací Azure AD minimálními změnami kódu. Most plocha poskytuje aplikace s identitou aplikace, která je nutná pro povolení existující aplikací klasické pracovní plochy roaming dat aplikací.
-* [Virtualizace uživatelského prostředí (UE-V)](https://technet.microsoft.com/library/dn458947.aspx) vám pomůže vytvořit šablonu vlastní nastavení pro existující aplikacích klasické pracovní plochy Windows a povolit roaming pro aplikace Win32. Tato možnost nevyžaduje, aby vývojáři aplikace změny kódu aplikace. UE-V je omezený na místní služby Active Directory roamingu pro zákazníky, kteří si koupili sady Microsoft Desktop Optimization Pack.
+* [Přemostění na Desktop](https://aka.ms/desktopbridge) umožňuje přenést existující desktopové aplikace Windows do univerzální platformy Windows. Tady bude minimálními změnami kódu vyžaduje, abyste mohli využívat roaming dat aplikací Azure AD. Přemostění na Desktop poskytuje vaše aplikace s identitou aplikace, která je potřebná k povolení pro existující aplikace klasické pracovní plochy roaming dat aplikací.
+* [Virtualizace uživatelského prostředí (UE-V)](https://technet.microsoft.com/library/dn458947.aspx) vám pomůže vytvořit vlastní nastavení šablony pro existující aplikace klasické pracovní plochy Windows a povolit roaming pro aplikace Win32. Tato možnost nevyžaduje, aby vývojáři aplikace Změna kódu aplikace. UE-V je omezený na místní služby Active Directory roamingu pro zákazníky, kteří si zakoupili Microsoft Desktop Optimization Pack.
 
-Správci mohou nakonfigurovat UE-V se bude používat roaming dat aplikace na ploše systému Windows, změnou cestovní nastavení operačního systému Windows a univerzální aplikace pro data prostřednictvím [UE-V zásady skupiny](https://technet.microsoft.com/itpro/mdop/uev-v2/configuring-ue-v-2x-with-group-policy-objects-both-uevv2), včetně:
+Správci mohou nakonfigurovat UE-V do roaming dat aplikací klasické pracovní plochy Windows tak, že změníte cestovní nastavení operačního systému Windows a univerzální aplikace pro data prostřednictvím [UE-V zásady skupiny](https://technet.microsoft.com/itpro/mdop/uev-v2/configuring-ue-v-2x-with-group-policy-objects-both-uevv2), včetně:
 
-* Mohla používat zásady skupiny nastavení systému Windows
-* Nesynchronizovat zásad skupiny aplikací pro Windows
-* Roaming v části aplikace Internet Explorer
+* Zásady skupiny Windows nastavení roamingu
+* Nesynchronizovat zásad skupiny aplikací Windows
+* V části aplikace Internet Explorer
 
-Microsoft může v budoucnu, prozkoumejte způsoby, jak provést UE-V, které úzce integruje do systému Windows a rozšířit UE-V se bude používat roaming nastavení prostřednictvím cloudu Azure AD.
+Microsoft může v budoucnu, prozkoumat způsoby, jak provést UE-V, které jsou hluboce integrovány do Windows a rozšiřují UE-V do roaming nastavení prostřednictvím cloudové služby Azure AD.
 
-## <a name="can-i-store-synced-settings-and-data-on-premises"></a>Může ukládat synchronizovaná nastavení a data místně?
-Enterprise State Roaming ukládá všechna synchronizovaná data v cloudu Azure. UE-V nabízí místní řešení roamingu.
+## <a name="can-i-store-synced-settings-and-data-on-premises"></a>Můžete ukládat synchronizovaná nastavení a data v místním prostředí?
+Enterprise State Roaming ukládá všechna synchronizovaná data v cloudu Azure. UE-V nabízí místní cestovní řešení.
 
-## <a name="who-owns-the-data-thats-being-roamed"></a>Kdo je vlastníkem dat, který je právě roamované?
-Podniky vlastní data roamované prostřednictvím Enterprise State Roaming. Data jsou uložena v datovém centru Azure. Všechna data se šifrují během přenosu i v klidovém stavu uložených v cloudu pomocí služby Azure Rights Management z Azure Information Protection. Toto je zlepšení ve srovnání s synchronizaci nastavení založeného na účet Microsoft, který šifruje jenom určité citlivých dat jako pověření uživatele před opuštěním zařízení.
+## <a name="who-owns-the-data-thats-being-roamed"></a>Kdo vlastní data, která je přenosné?
+Podniky vlastní data s roamingem prostřednictvím Enterprise State Roaming. Data se ukládají v datovém centru Azure. Všechna data se šifrují přenášená i neaktivní uložená v cloudu pomocí služby Azure Rights Management z Azure Information Protection. Toto je vylepšení v porovnání s synchronizace nastavení založené na účtu Microsoft, který šifruje jenom určité citlivých dat jako jsou přihlašovací údaje uživatele, před opuštěním zařízení.
 
-Společnost Microsoft se zavazuje chránit data zákazníků. Uživatel s enterprise nastavení data se šifrují automaticky pomocí služby Azure Rights Management, než opustí zařízením s Windows 10, aby žádný jiný uživatel může číst tato data. Pokud má vaše organizace na placené předplatné pro službu Azure Rights Management, můžete využívat další funkce ochrany, jako je například sledovat a odvolat dokumenty, automaticky chránit e-mailů, které obsahují citlivé informace a spravovat vlastní klíče ("přineste vlastní klíč"řešení, také známé jako BYOK). Další informace o těchto funkcích a o tom, jak tuto službu ochrany funguje, najdete v části [co je Azure Rights Management](https://docs.microsoft.com/azure/information-protection/understand-explore/what-is-information-protection).
+Společnosti Microsoft záleží na ochranu dat zákazníků. Organizace uživatele nastavení data budou automaticky šifrována pomocí služby Azure Rights Management před opuštěním zařízení s Windows 10, aby žádný jiný uživatel může číst data. Pokud vaše organizace má předplatné pro službu Azure Rights Management, můžete využívat jiné funkce ochrany, jako je například sledovat a odvolat dokumenty, automaticky chránit e-mailů, které obsahují citlivé informace a správu vlastních klíčů ("přineste your own key"řešení, označované také jako BYOK). Další informace o těchto funkcích a jak tuto službu ochrany funguje, najdete v části [co je Azure Rights Management](https://docs.microsoft.com/azure/information-protection/understand-explore/what-is-information-protection).
 
 ## <a name="can-i-manage-sync-for-a-specific-app-or-setting"></a>Můžete spravovat synchronizace pro konkrétní aplikaci nebo nastavení?
-V systému Windows 10 neexistuje žádné MDM nebo zásady skupiny nastavení zakázat roamingu pro jednotlivé aplikace. Správci klienta můžete zakázat synchronizaci data aplikací pro všechny aplikace na spravované zařízení, ale neexistuje žádné jemnějšího ovládání na úrovni pro aplikaci nebo v rámci aplikace.
+Ve Windows 10 neexistuje žádné MDM nebo zásady skupiny nastavení zakázat roamingu pro jednotlivé aplikace. Správci klientů mohou zakázat synchronizaci appdata u všech aplikací na spravovaná zařízení, ale neexistuje žádná lepší kontrolu na úrovni pro aplikaci nebo v rámci aplikace.
 
 ## <a name="how-can-i-enable-or-disable-roaming"></a>Jak můžete povolit nebo zakázat roaming?
-V **nastavení** aplikace, přejděte na **účty** > **synchronizace nastavení**. Z této stránky se zobrazí, který účet se používá se bude používat roaming nastavení, a můžete povolit nebo zakázat jednotlivé skupiny nastavení, chcete-li být roamované.
+V **nastavení** aplikaci, přejděte na **účty** > **synchronizovat nastavení**. Na této stránce můžete zobrazit, který účet se používá k nastavení roamingu a můžete povolit nebo zakázat jednotlivé skupiny nastavení, chcete-li být s roamingem.
 
-## <a name="what-is-microsofts-recommendation-for-enabling-roaming-in-windows-10"></a>Co je doporučením společnosti Microsoft pro povolení roaming v systému Windows 10?
-Microsoft má několik různých nastavení roamingu řešení, které jsou k dispozici, včetně cestovních profilů uživatelů, UE-V a Enterprise stavu roamingu.  Společnost Microsoft se zaměřuje na poskytování investicemi v podniku stavu Roaming v budoucích verzích systému Windows. Pokud vaše organizace není připraveno nebo možnost s přesun dat do cloudu, pak doporučujeme použít UE-V jako primární roamingu technologie. Pokud vaše organizace vyžaduje roaming podporu pro existující aplikace pracovní plochy Windows, ale je přes přesunout do cloudu, doporučujeme, abyste použili Enterprise stavu roamingu a UE-V. I když jsou velmi podobné technologie UE-V a Enterprise State Roaming, nejsou vzájemně vylučují. Doplňují navzájem k zajištění, že vaše organizace poskytuje roamingu služby, které uživatelé potřebují.  
+## <a name="what-is-microsofts-recommendation-for-enabling-roaming-in-windows-10"></a>Co je doporučením společnosti Microsoft pro povolení roaming ve Windows 10?
+Microsoft má několik různých nastavení roamingu řešení, které jsou k dispozici, včetně cestovních profilů uživatelů, UE-V a Enterprise stav roamingu.  Společnost Microsoft se zaměřuje na poskytování investice do organizace stav roamingu v budoucích verzích Windows. Pokud vaše organizace není připravena nebo pohodlné s přesunem dat do cloudu, pak doporučujeme použít UE-V jako váš primární technologii ve roamingu. Pokud vaše organizace vyžaduje podporu pro existující aplikace klasické pracovní plochy Windows roamingu, ale nemůžou dočkat, až cloud mohli přejít, doporučujeme použít Enterprise stav roamingu a UE-V. I když UE-V a Enterprise State Roaming jsou velmi podobné technologie, nejsou vzájemně vylučují. Doplňují ostatní pomáhá zajistit, že vaše organizace poskytuje roamingu služby, které uživatelé potřebují.  
 
 Pokud používáte Enterprise State Roaming a UE-V, platí následující pravidla:
 
-* Enterprise State Roaming je primární roamingu agent na zařízení. UE-V se používá k doplnění "Win32 mezery."
-* Cestovní nastavení systému Windows a moderní data aplikací UWP UE-V by mělo být zakázáno, když pomocí skupiny UE-V zásady. Tyto jsou již vztahuje Enterprise State Roaming.
+* Enterprise State Roaming je agent, kterého primární roamingu v zařízení. UE-V se používá k doplnění "Win32 mezery."
+* Roaming nastavení Windows a dat moderních aplikací UPW UE-V by měl být zakázáno, pokud skupině UE-V pomocí zásady. Tyto jsou již zahrnuté ve Enterprise State Roaming.
 
 ## <a name="how-does-enterprise-state-roaming-support-virtual-desktop-infrastructure-vdi"></a>Jak Enterprise State Roaming podporuje infrastruktury virtuálních klientských (počítačů VDI)?
-Enterprise State Roaming je podporována v klientovi Windows 10 SKU, ale není na serveru SKU. Pokud klient virtuálního počítače je hostované na hypervisoru počítače a vzdáleně přihlaste k virtuálnímu počítači, bude přenášet data. Pokud se více uživateli sdílet stejný operační systém a uživatelé vzdáleně přihlašují k serveru pro úplné desktopové prostředí, roaming nemusí fungovat. V druhé situaci na bázi relace není oficiálně podporován.
+Enterprise State Roaming je podporována v klientovi Windows 10 skladové položky, ale není na serveru skladové položky. Pokud klientského virtuálního počítače je hostované na hypervisoru počítači a vzdáleně přihlaste k virtuálnímu počítači, zpřístupní se vaše data. Pokud více mohou uživatelé sdílet stejný operační systém a uživatelé vzdáleně přihlašují k serveru pro úplné desktopové prostředí, roaming, nemusí fungovat. Druhý scénář na základě relace není oficiálně podporován.
 
-## <a name="what-happens-when-my-organization-purchases-a-subscription-that-includes-azure-rights-management-after-using-roaming"></a>Po použití roamingu co se stane, když Moje organizace zakoupí předplatné, které zahrnuje Azure Rights Management?
-Pokud vaše organizace už používá roaming v systému Windows 10 s omezeným využitím bezplatné předplatné Azure Rights Management, nákup [placené předplatné](https://azure.microsoft.com/pricing/details/information-protection/) nebude mít služby ochrany služby Azure Rights Management, který obsahuje dopady na funkci funkci roamingu a žádné změny konfigurace, bude nutné váš správce IT.
+## <a name="what-happens-when-my-organization-purchases-a-subscription-that-includes-azure-rights-management-after-using-roaming"></a>Jakmile používáte roaming, co se stane, když Moje organizace koupí předplatné, které zahrnuje Azure Rights Management?
+Pokud vaše organizace už používá roaming v systému Windows 10 s omezeným použitím bezplatné předplatné Azure Rights Management, nákupu [placené předplatné](https://azure.microsoft.com/pricing/details/information-protection/) , které zahrnuje Azure Rights Management nebudete mít službu ochrany žádný vliv na funkčnost funkci cestovní a bez změny konfigurace se vyžaduje správce IT.
 
 ## <a name="known-issues"></a>Známé problémy
-Podrobnosti najdete v dokumentaci v [řešení potíží s](active-directory-windows-enterprise-state-roaming-troubleshooting.md) části Seznam známých problémů. 
+Podrobnosti najdete v dokumentaci [řešení potíží s](active-directory-windows-enterprise-state-roaming-troubleshooting.md) najdete seznam známých problémů. 
 
 ## <a name="related-topics"></a>Související témata
-* [Přehled roamingu stavu Enterprise](active-directory-windows-enterprise-state-roaming-overview.md)
-* [Povolit stav enterprise roaming v Azure Active Directory](active-directory-windows-enterprise-state-roaming-enable.md)
-* [Nastavení MDM pro synchronizaci nastavení zásad skupiny a](active-directory-windows-enterprise-state-roaming-group-policy-settings.md)
-* [Odkaz nastavení roamingu Windows 10](active-directory-windows-enterprise-state-roaming-windows-settings-reference.md)
+* [Cestovní přehled stavu Enterprise](active-directory-windows-enterprise-state-roaming-overview.md)
+* [Povolit enterprise state roaming v Azure Active Directory](active-directory-windows-enterprise-state-roaming-enable.md)
+* [Skupina zásad a nastavení MDM pro nastavení synchronizace](active-directory-windows-enterprise-state-roaming-group-policy-settings.md)
+* [Informace o cestovní nastavení Windows 10](active-directory-windows-enterprise-state-roaming-windows-settings-reference.md)
 * [Řešení potíží](active-directory-windows-enterprise-state-roaming-troubleshooting.md)

@@ -3,19 +3,19 @@ title: Migrace rozhraní API Průvodce v1 na v2 | Dokumentace Microsoftu
 titleSuffix: Azure
 description: Zjistěte, jak migrace na nejnovější rozhraní API nastavit.
 services: cognitive-services
-author: v-geberr
-manager: kamran.iqbal
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 03/01/2018
-ms.author: v-geberr
-ms.openlocfilehash: b60aa551d55907fcac7953efa61473c845e3c2ae
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.author: diberry
+ms.openlocfilehash: cb68ad57302f151975c1ca6616a24db9804a6a68
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39174555"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39223051"
 ---
 # <a name="api-v2-migration-guide"></a>Pokyny k migraci v2 rozhraní API
 Verze 1 [koncový bod](https://aka.ms/v1-endpoint-api-docs) a [vytváření](https://aka.ms/v1-authoring-api-docs) rozhraní API se přestanou používat. Tento průvodce vám pochopit, jak migrovat na verzi 2 [koncový bod](https://aka.ms/luis-endpoint-apis) a [vytváření](https://aka.ms/luis-authoring-apis) rozhraní API. 

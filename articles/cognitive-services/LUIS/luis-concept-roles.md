@@ -1,51 +1,51 @@
 ---
-title: Pochopení způsobu použití role v Azure na základě vzoru entity - | Microsoft Docs
-description: Zjistěte, jak role se používá v entitě na základě vzoru pro pojmenujte podtypem kontextové entity.
+title: Vysvětlení, používání role na základě vzoru entit – Azure | Dokumentace Microsoftu
+description: Přečtěte si použití role v entity na základě vzoru pojmenovat podtyp kontextové entity.
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.technology: luis
 ms.topic: article
 ms.date: 06/08/2018
-ms.author: v-geberr;
-ms.openlocfilehash: ab6100e33fb767528b87c6afde4c5ef275fc7c81
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.author: diberry
+ms.openlocfilehash: d2692cdce9da7428bd7b30c4feaf7347792618f5
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35345997"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39222699"
 ---
-# <a name="entity-roles-in-patterns-are-contextual-subtypes"></a>Entita role v vzory jsou kontextové podtypů
-Role jsou pojmenované, kontextové podtypů entity použít pouze v [vzory](luis-concept-patterns.md).
+# <a name="entity-roles-in-patterns-are-contextual-subtypes"></a>Entita role ve vzorech jsou kontextové subtypes
+Role jsou pojmenované, kontextové podtypy entity používá pouze v [vzory](luis-concept-patterns.md).
 
-Například v utterance `buy a ticket from New York to London`, New York a Londýnem jsou města, ale každý má jiný význam ve větě. New Yorku je města původ a Londýn města cílový. 
+Například v utterance `buy a ticket from New York to London`, jsou města New York i Londýn, ale každý má jiný význam ve větě. New York city původu a Londýn je město cílové. 
 
-Role pojmenujte tyto rozdíly:
+Role zadejte název těchto rozdílů:
 
 |Entita|Role|Účel|
 |--|--|--|
-|Umístění|počátek|kde rovině odejde z|
-|Umístění|Cílový|kde rovině pojmenováváme|
+|Umístění|počátek|kde opustí rovině z|
+|Umístění|cíl|kde jsou rovina|
 
-## <a name="how-are-roles-used-in-patterns"></a>Jak se používají role v vzory?
+## <a name="how-are-roles-used-in-patterns"></a>Jak se používají role ve vzorech?
 Role v utterance vzor šablony, se používají v rámci utterance: 
 
 ```
 buy a ticket from {Location:origin} to {Location:destination}
 ```
 
-## <a name="role-syntax-in-patterns"></a>Role syntaxi vzory
-Entitu a role jsou uvedeny v závorkách, `{}`. Entity a role jsou oddělené dvojtečkou. 
+## <a name="role-syntax-in-patterns"></a>Syntaxe role ve vzorcích
+Entity a role jsou uzavřeny v závorkách, `{}`. Entity a role jsou odděleny dvojtečkou. 
 
 ## <a name="roles-versus-hierarchical-entities"></a>Role a hierarchické entity
-Hierarchická entity poskytovat stejné kontextové informace jako pro role, ale jenom na utterances v **záměry**. Podobně role poskytují stejné kontextové informace jako hierarchické entity, ale jenom v **vzory**.
+Hierarchické entity poskytují stejné kontextové informace jako role, ale pouze projevy v **záměry**. Podobně, v těchto rolích zajišťují stejné kontextové informace jako hierarchické entity, ale pouze v **vzory**.
 
-|Kontextová učení|Použít v|
+|Kontextové učení|Použít v|
 |--|--|
-|Hierarchická entity|Záměry|
+|hierarchické entity|Záměrů|
 |role|Vzory|
 
 ## <a name="next-steps"></a>Další postup
 
-* Informace o postupu přidání [role](luis-how-to-add-entities.md#add-role-to-pattern-based-entity)
+* Zjistěte, jak přidat [role](luis-how-to-add-entities.md#add-role-to-pattern-based-entity)

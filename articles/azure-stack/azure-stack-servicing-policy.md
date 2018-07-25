@@ -1,6 +1,6 @@
 ---
-title: Azure zásobníku obsluhy zásad | Microsoft Docs
-description: Další informace o Azure zásobníku údržby zásad a jak zajistit, aby integrovaný systém v podporovaném stavu.
+title: Údržba zásad služby Azure Stack | Dokumentace Microsoftu
+description: Další informace o službě Azure Stack údržby, zásad a tom, jak zajistit integrovaný systém v podporovaném stavu.
 services: azure-stack
 documentationcenter: ''
 author: brenduns
@@ -12,56 +12,54 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 07/24/2018
 ms.author: brenduns
 ms.reviewer: harik
-ms.openlocfilehash: c3cc8857373238079fee06c61faec962d7e3a6b2
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: b1e162b9ae151ee947559d40f02909aea4010e5b
+ms.sourcegitcommit: d76d9e9d7749849f098b17712f5e327a76f8b95c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34796415"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39242916"
 ---
-# <a name="azure-stack-servicing-policy"></a>Údržba zásad Azure zásobníku
-Tento článek popisuje údržby zásady pro Azure zásobníku integrované systémy a co je třeba udělat, aby byl váš systém v podporovaném stavu. 
+# <a name="azure-stack-servicing-policy"></a>Údržba zásad služby Azure Stack
+Tento článek popisuje údržby zásady pro integrované systémy Azure Stack, a co musíte udělat, aby byl váš systém v podporovaném stavu. 
 
-## <a name="update-package-types"></a>Typy balíčku aktualizací
+## <a name="update-package-types"></a>Typy aktualizace balíčků
 
-Existují dva typy balíčky aktualizací pro integrované systémy: 
+Existují dva typy balíčků aktualizací pro integrované systémy: 
 
-- **Aktualizace softwaru Microsoft**. Microsoft je zodpovědná za začátku do konce životního cyklu údržby pro aktualizace softwaru společnosti Microsoft. Tyto balíčky můžete zahrnout nejnovější aktualizace zabezpečení systému Windows Server, se zabezpečením aktualizace a aktualizace funkcí Azure zásobníku. Tato aktualizace balíčky můžete stáhnout přímo od společnosti Microsoft.
+- **Aktualizace softwaru Microsoft**. Společnost Microsoft zodpovídá za začátku do konce životní cyklus údržby pro balíčky aktualizací softwaru společnosti Microsoft. Tyto balíčky můžou zahrnovat nejnovější aktualizace zabezpečení Windows serveru, které se netýkají zabezpečení aktualizace a aktualizace funkcí služby Azure Stack. Balíčky těchto aktualizací můžete stáhnout přímo od Microsoftu.
 
-- **Aktualizace pro zadaný dodavatele hardwaru OEM**. Azure zásobníku hardwarovými partnery jsou zodpovědní za začátku do konce údržby životní cyklus (včetně pokyny) pro související s hardwarem firmware a aktualizace balíčků ovladačů. Kromě toho Azure zásobníku hardwarovými partnery vlastní a Udržovat pokyny pro všechny softwarové a hardwarové na hostiteli životního cyklu hardwaru. Na dodavatele hardwaru pro výrobce OEM hostitelem tyto balíčky na vlastní web pro stahování aktualizací.
+- **Výrobce OEM aktualizací poskytnutých dodavatelem hardwaru**. Partneři hardware Azure Stack je zodpovědná za začátku do konce údržby životní cyklus (včetně pokynů) pro související s hardwarem firmware a aktualizace balíčků ovladačů. Kromě toho partneři hardware Azure Stack vlastní a Udržovat pokyny pro veškerý software a hardware na hostitelský hardware životního cyklu. Výrobce OEM dodavatele hardwaru hostitelem tyto balíčky na vlastní web pro stahování aktualizací.
 
 
-## <a name="update-package-release-cadence"></a>Aktualizace balíčku verze cadence
-Microsoft očekává, že verze balíčky aktualizací softwaru v měsíčním cadence. Je však možné, že více nebo žádné aktualizace verze za měsíc. Výrobce OEM výrobci hardwaru verze jejich aktualizace na podle potřeby. 
+## <a name="update-package-release-cadence"></a>Aktualizace balíčku vydávání verzí
+Microsoft se očekává, že verze balíčků aktualizací softwaru v měsíčním tempo. Je však možné mít více nebo žádná verze aktualizace v daném měsíci. Výrobce OEM výrobci hardwaru vydávat jejich aktualizace na základě podle potřeby. 
 
-Vyhledat dokumentaci pro plánování a správě aktualizací a jak určit vaší aktuální verzí v [spravovat aktualizace přehled](azure-stack-updates.md). Informace o konkrétní aktualizaci, včetně toho, jak stáhnout, naleznete v poznámkách k verzi, aktualizovat: 
-- [Azure aktualizace 1805 zásobníku](azure-stack-update-1805.md)
-- [Azure aktualizace 1804 zásobníku](azure-stack-update-1804.md)
-- [Azure aktualizace 1803 zásobníku](azure-stack-update-1803.md)
-
+Vyhledejte si dokumentaci na tom, jak naplánovat a spravovat aktualizace a jak určit vaší aktuální verzí v [spravovat aktualizace přehled](azure-stack-updates.md). Informace o konkrétní aktualizaci včetně si ho stáhnout, naleznete v tématu poznámky k verzi pro, které aktualizace: 
+- [Aktualizace služby Azure Stack 1805](azure-stack-update-1805.md)
+- [Aktualizace služby Azure Stack 1804](azure-stack-update-1804.md)
 
 ## <a name="hotfixes"></a>Opravy hotfix
-V některých případech společnost Microsoft poskytuje opravy hotfix pro Azure zásobníku tuto adresu určitého problému, který je často preventivní nebo čase.  Každá oprava hotfix je vydané s odpovídající článek znalostní báze Microsoft Knowledge Base, který podrobně popisuje problém, příčina a řešení. 
+V některých případech společnost Microsoft poskytuje opravy hotfix pro Azure Stack, které řeší konkrétní problém, který je často preventivní nebo časovým počitadlem.  Každý opravy hotfix jsou vydány s odpovídající článek znalostní báze Microsoft s podrobnostmi o problému, příčině a řešení. 
 
-Opravy hotfix jsou stáhnout a nainstalovat stejně jako balíčky pravidelné úplné aktualizace pro Azure zásobníku. Na rozdíl od úplné aktualizace, ale opravy hotfix můžete nainstalovat v minutách. Doporučujeme, aby že Azure zásobníku operátory nastavení časového období údržby při instalaci opravy hotfix. Opravy hotfix aktualizovat verzi vašeho cloudu Azure zásobníku tak může snadno zjistit, pokud byl použit opravy hotfix. Samostatná oprava hotfix se poskytuje pro každou verzi zásobník Azure, která je stále v podpory. Každý opravu pro konkrétní iterace kumulativní a zahrnuje předchozí aktualizace pro stejnou verzi. Další informace o použitelnosti konkrétní opravu hotfix v opravy, odpovídající znalostní báze Knowledge Base, článek.  
+Opravy hotfix se stahují a instalují stejně jako regulární úplnou aktualizaci balíčků pro službu Azure Stack. Ale na rozdíl od úplné aktualizace, opravy hotfix můžete nainstalovat během několika minut. Doporučujeme, abyste že operátorům Azure stacku nastavení časového období údržby při instalaci oprav hotfix. Opravy hotfix aktualizujte verzi cloudu služby Azure Stack, můžete snadno zjistit, pokud byl použit opravu hotfix. Samostatné opravy hotfix se poskytuje pro každou verzi služby Azure Stack, která se stále podpory. Jednotlivé opravy pro konkrétní iteraci je kumulativní a obsahuje předchozí aktualizace pro stejnou verzi. Další informace o použitelnosti konkrétního oprava hotfix v opravy odpovídající znalostní báze Knowledge Base article.  
 
 
-## <a name="keep-your-system-under-support"></a>Udržování systému v rámci podpory
-Chcete-li pokračovat, pokud chcete získat podporu, musí udržovat nasazením Azure zásobníku aktuální. Tato zásada odložení aktualizací je: pro vaše nasazení Azure zásobníku zůstat v podporu, musí se nedávno vydaných verzí aktualizace nebo spusťte některý z dvě předchozí verze aktualizace. Opravy hotfix nejsou považovány za verze hlavní aktualizací. Pokud vaše zásobník Azure cloud je za *více než dvě aktualizace*, se považuje za mimo dodržování předpisů a musíte aktualizovat alespoň minimální podporovaná verze Odborná pomoc. 
+## <a name="keep-your-system-under-support"></a>Zachovat systému v rámci podpory
+Pokračujte k získání podpory, je nutné zachovat vašeho nasazení Azure stacku aktuální. Zásady odložení aktualizace je: pro nasazení Azure Stack tak si zachováte podporu, musí spustit nedávno vydané verze aktualizace nebo spusťte jeden z dvě předchozí verze aktualizace. Opravy hotfix, se nepovažují aktualizace hlavní verze. Pokud cloudu služby Azure Stack je za *více než dvě aktualizace*, je to považovat za nedodržení a musíte aktualizovat alespoň minimální podporovaná verze získání podpory. 
 
-Například pokud je 1805 nejnovější dostupné aktualizace verze a předchozí dva balíčky aktualizací byly verze 1804 a 1803, 1803 i 1804 zůstanou na podporu. 1802 však není podporován. Zásady platí, pokud neexistuje žádná verze pro měsíc nebo dvě. Například pokud aktuální verze je 1805 a došlo bez uvolnění 1804, předchozí dva balíčky aktualizací 1803 a 1802 zůstanou na podporu.
+Například pokud nejvíce dostupného aktualizovanou verzi je 1805 a předchozí dva balíčky aktualizace byly verze 1804 a 1803, 1803 a 1804 zůstanou na podporu. Je však 1802 bez podpory. Zásady platí, pokud neexistuje žádná verze pro měsíc nebo dvě. Například pokud v aktuální verzi je 1805 a nebyly žádné verzi 1804, předchozí dva balíčky aktualizací 1803 a 1802 zůstanou na podporu.
 
-Balíčky aktualizací softwaru společnosti Microsoft jsou oddělené a vyžaduje, aby předchozí balíček aktualizace předpokladem je. Pokud se rozhodnete odložení jeden nebo více aktualizací, zvažte celkové modulu runtime, pokud chcete získat nejnovější verzi. 
+Balíčky aktualizací softwaru společnosti Microsoft jsou mimo kumulativní a vyžadují předchozí aktualizace jako předpoklad. Pokud se rozhodnete odložení jeden nebo více aktualizací, zvažte celkové modulu runtime, pokud chcete získat nejnovější verzi. 
 
 ## <a name="get-support"></a>Získat podporu
-Azure zásobníku postupuje stejně podporu jako Azure. Podnikoví zákazníci mohou postupujte podle procesu popsaného v tématu [postup vytvoření žádosti o podporu Azure](/azure/azure-supportability/how-to-create-azure-support-request). Pokud jste zákazníkem služby poskytovatele cloudové služby (CSP), požádejte o podporu zprostředkovatelem kryptografických služeb.  Další informace najdete v tématu [Azure podporu nejčastější dotazy k](https://azure.microsoft.com/support/faq/). 
+Azure Stack se řídí podporu stejně jako Azure. Podnikoví zákazníci můžou postupujte podle procesu popsaného v [postupy vytvoření žádosti o podporu Azure](/azure/azure-supportability/how-to-create-azure-support-request). Pokud jste zákazník z Cloud Service Provider (CSP), požádejte o podporu poskytovatel cloudových služeb.  Další informace najdete v tématu [nejčastější dotazy k podpoře Azure](https://azure.microsoft.com/support/faq/). 
 
 
 ## <a name="next-steps"></a>Další postup
 
-- [Správa aktualizací v Azure zásobníku](azure-stack-updates.md)
+- [Správa aktualizací ve službě Azure Stack](azure-stack-updates.md)
 
 

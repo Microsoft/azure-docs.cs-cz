@@ -2,19 +2,19 @@
 title: Projevy LUIS aplikací v Azure | Dokumentace Microsoftu
 description: Přidání projevů v aplikacích Language Understanding Intelligent Service (LUIS).
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 02/13/2018
-ms.author: v-geberr
-ms.openlocfilehash: acf328b706a992df03de837ba8837c5810593ae5
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.author: diberry
+ms.openlocfilehash: 6f962d0aaf631051c841be29d2854a89bf58ac25
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173737"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39224411"
 ---
 # <a name="utterances-in-luis"></a>Projevy v LUIS
 

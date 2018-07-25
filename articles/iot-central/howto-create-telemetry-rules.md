@@ -8,12 +8,12 @@ ms.date: 04/16/2018
 ms.topic: article
 ms.prod: microsoft-iot-central
 manager: timlt
-ms.openlocfilehash: 083410c6407ce7aa83c3829f884890561b0b44b8
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 42516e4dd6a85e0d07d4a8e70e958b2ec6e84aad
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008208"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39225196"
 ---
 # <a name="create-a-telemetry-rule-and-set-up-an-action-in-your-azure-iot-central-application"></a>Vytvořit pravidlo telemetrie a nastavit akci v aplikaci Azure IoT Central
 
@@ -60,7 +60,9 @@ Tato část ukazuje, jak přidat podmínku monitorování teplotní telemetrie.
 
 ### <a name="add-an-action"></a>Přidání akce
 
-jeho části se dozvíte, jak přidat akci pro pravidlo. To ukazuje, jak přidat akci e-mailu, ale můžete také [přidejte akci Microsoft Flow](howto-add-microsoft-flow.md) pravidla aktivovala pracovního postupu v Microsoft Flow, když se aktivuje pravidlo.
+Tento příklad ukazuje, jak přidat akci pro pravidlo. To ukazuje, jak přidat akci e-mailu, ale můžete také přidat další akce:
+-  [Microsoft Flow akce](howto-add-microsoft-flow.md) aktivovala pracovního postupu v Microsoft Flow, když se aktivuje pravidlo
+- [Akce Webhooku](howto-create-webhooks.md) upozornit jiné služby, když se aktivuje pravidlo
 
 > [!NOTE]
 > V tuto chvíli může být přidružená k jediné pravidlo pouze 1 akce.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/15/2018
 ms.author: daveba
-ms.openlocfilehash: fe0b2531ef4bb85513d63207b903ee14b6652fc0
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 36df9d00d41f3c092320fa88772b41c9a41c6d8e
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216255"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39237277"
 ---
 # <a name="configure-a-virtual-machine-scale-set-managed-service-identity-msi-using-azure-cli"></a>Konfigurace virtuálního počítače škálovací sady Identity spravované služby (MSI) pomocí rozhraní příkazového řádku Azure
 
@@ -91,20 +91,26 @@ Pokud je potřeba povolit identitu přiřazenou systémem v existující škálo
 
 ### <a name="disable-system-assigned-identity-from-an-azure-virtual-machine-scale-set"></a>Zakázat identitu přiřazenou systémem ze škálovací sady virtuálních počítačů Azure
 
-> [!NOTE]
-> Zakáže identita spravované služby ze Škálovací sady virtuálních počítačů se aktuálně nepodporuje. Do té doby můžete přepínat mezi použitím systém přiřadil a přiřazené identity uživatele. Vraťte se sem a přečtěte si nové informace.
-
-Pokud máte škálovací sadu virtuálních počítačů, které už nepotřebuje identitu přiřazenou systémem, ale stále potřebuje identity přiřazené uživateli, proveďte následující příkaz:
+Pokud máte škálovací sadu virtuálních počítačů, které už nepotřebuje identitu přiřazenou systémem, ale stále potřebuje identity přiřazené uživateli, použijte následující příkaz:
 
 ```azurecli-interactive
-az vmss update -n myVMSS -g myResourceGroup --set identity.type='UserAssigned' 
+az vmss update -n myVM -g myResourceGroup --set identity.type='UserAssigned' 
+```
+
+Pokud máte virtuální počítač se už nepotřebuje identitu přiřazenou systémem a nemá žádný uživatel identit přiřazených, použijte následující příkaz:
+
+> [!NOTE]
+> Hodnota `none` je velká a malá písmena. Musí obsahovat malá písmena. 
+
+```azurecli-interactive
+az vmss update -n myVM -g myResourceGroup --set identity.type="none"
 ```
 
 Chcete-li odebrat rozšíření MSI virtuálního počítače, použijte [az vmss identity odebrat](/cli/azure/vmss/identity/#az_vmss_remove_identity) příkazu k odebrání identitou přiřazenou systémem VMSS:
 
-   ```azurecli-interactive
-   az vmss extension delete -n ManagedIdentityExtensionForWindows -g myResourceGroup -vmss-name myVMSS
-   ```
+```azurecli-interactive
+az vmss extension delete -n ManagedIdentityExtensionForWindows -g myResourceGroup -vmss-name myVMSS
+```
 
 ## <a name="user-assigned-identity"></a>Identity přiřazené uživateli
 
@@ -122,13 +128,12 @@ Tato část vás provede vytváření VMSS a přiřazení uživatele VMSS přiř
 
 2. Vytvoření uživatele přiřadit pomocí identity [vytvoření az identity](/cli/azure/identity#az-identity-create).  `-g` Parametr určuje skupinu prostředků, ve kterém se vytvoří identity přiřazené uživateli, a `-n` parametr určuje její název. Nezapomeňte nahradit hodnoty parametrů `<RESOURCE GROUP>` a `<USER ASSIGNED IDENTITY NAME>` vlastními hodnotami:
 
-[!INCLUDE[ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
+   [!INCLUDE[ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
-
-    ```azurecli-interactive
-    az identity create -g <RESOURCE GROUP> -n <USER ASSIGNED IDENTITY NAME>
-    ```
-Odpověď obsahuje podrobnosti o identity přiřazené uživateli vytvořené, podobně jako následující. Prostředek `id` hodnota přiřazená k identity přiřazené uživateli se používá v následujícím kroku.
+   ```azurecli-interactive
+   az identity create -g <RESOURCE GROUP> -n <USER ASSIGNED IDENTITY NAME>
+   ```
+   Odpověď obsahuje podrobnosti o identity přiřazené uživateli vytvořené, podobně jako následující. Prostředek `id` hodnota přiřazená k identity přiřazené uživateli se používá v následujícím kroku.
 
    ```json
    {
@@ -184,20 +189,27 @@ Odpověď obsahuje podrobnosti o identity přiřazené uživateli vytvořené, p
     az vmss identity assign -g <RESOURCE GROUP> -n <VMSS NAME> --identities <USER ASSIGNED IDENTITY ID>
     ```
 
-### <a name="remove-a-user-assigned-identity-from-an-azure-vmss"></a>Odebrání uživatele ze Azure VMSS identity přiřazené
+### <a name="remove-a-user-assigned-identity-from-an-azure-virtual-machine-scale-set"></a>Odebrání identity přiřazené uživateli z škálovací sady virtuálních počítačů Azure
 
-> [!NOTE]
->  Odebrání všech uživatelsky přiřazených identit ze Škálovací sady virtuálních počítačů se aktuálně nepodporuje, pokud máte identitu přiřazenou systémem. 
-
-Pokud vaše VMSS má více uživatelsky přiřazených identit, můžete odebrat všechny kromě poslední pomocí [az vmss identity odebrat](/cli/azure/vmss/identity#az-vmss-identity-remove). Nezapomeňte nahradit hodnoty parametrů `<RESOURCE GROUP>` a `<VMSS NAME>` vlastními hodnotami. `<MSI NAME>` Je vlastnost name identity přiřazené uživateli, které najdete v části Identita virtuálního počítače pomocí `az vm show`:
+K odebrání identitu uživatele, které jsou přiřazeny k využívání sady škálování virtuálního počítače [az vmss identity odebrat](/cli/azure/vmss/identity#az-vmss-identity-remove). Nezapomeňte nahradit hodnoty parametrů `<RESOURCE GROUP>` a `<VMSS NAME>` vlastními hodnotami. `<MSI NAME>` Bude identity přiřazené uživateli `name` vlastnosti, které najdete v části Identita virtuálního počítače pomocí `az vmss identity show`:
 
 ```azurecli-interactive
 az vmss identity remove -g <RESOURCE GROUP> -n <VMSS NAME> --identities <MSI NAME>
 ```
-Pokud vaše VMSS má přiřazenou systémem a identity přiřazené uživateli, můžete odebrat všechny uživatele identit přiřazených přepnutím používat pouze přiřazenou systémem. Použijte následující příkaz: 
+
+Pokud chcete odebrat všechny uživatele identit přiřazených z něj škálovací sadu virtuálních počítačů nemá identitu přiřazenou systémem, použijte následující příkaz:
+
+> [!NOTE]
+> Hodnota `none` je velká a malá písmena. Musí obsahovat malá písmena.
 
 ```azurecli-interactive
-az vmss update -n <VMSS NAME> -g <RESOURCE GROUP> --set identity.type='SystemAssigned' identity.identityIds=null
+az vmss update -n myVMSS -g myResourceGroup --set identity.type="none" identity.identityIds=null
+```
+
+Pokud vaše škálovací sada virtuálních počítačů má přiřazenou systémem a identity přiřazené uživateli, můžete odebrat všechny uživatele identit přiřazených přepnutím používat pouze přiřazenou systémem. Použijte následující příkaz:
+
+```azurecli-interactive
+az vmss update -n myVMSS -g myResourceGroup --set identity.type='SystemAssigned' identity.identityIds=null 
 ```
 
 ## <a name="next-steps"></a>Další postup

@@ -3,19 +3,19 @@ title: Kurz použití vzorců k vylepšení predikce služby LUIS – Azure | Do
 titleSuffix: Cognitive Services
 description: V tomto kurzu používá vzor pro příkazy k vylepšení predikce služby LUIS záměr a entity.
 services: cognitive-services
-author: v-geberr
-manager: kamran.iqbal
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.technology: luis
 ms.topic: article
 ms.date: 07/20/2018
-ms.author: v-geberr;
-ms.openlocfilehash: 5d486272f7f713c5d4e6f7b598073c5c09875d43
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.author: diberry
+ms.openlocfilehash: 9ad1d9e1543c3d9a74025fb23bd1767478b53b4b
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39172462"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39238450"
 ---
 # <a name="tutorial-improve-app-with-patterns"></a>Kurz: Vylepšit aplikaci pomocí vzorů
 

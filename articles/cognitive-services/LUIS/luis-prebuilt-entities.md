@@ -2,20 +2,20 @@
 title: Předem připravených entit v LUIS | Dokumentace Microsoftu
 description: Tento článek obsahuje seznam předem připravených entit, které jsou zahrnuty v Language Understanding Intelligent Services (LUIS).
 services: cognitive-services
-author: cahann
-manager: hsalama
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 02/15/2018
 ms.author: cahann
-ms.reviewer: v-geberr
-ms.openlocfilehash: f7abf6d8a9f0fe18017fe5c54801ac0d3b6c379e
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.reviewer: diberry
+ms.openlocfilehash: 0ef91019e713a708d02edd2e9b09450d64a7ef6b
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39170779"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39222918"
 ---
 # <a name="prebuilt-entities"></a>Předem připravených entit
 

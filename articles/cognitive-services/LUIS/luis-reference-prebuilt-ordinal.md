@@ -1,30 +1,30 @@
 ---
-title: Předem sestavené LEOŠ entity odkazu na pořadí - Azure | Microsoft Docs
+title: Předem připravené služby LUIS ordinální referenční informace k entitám – Azure | Dokumentace Microsoftu
 titleSuffix: Azure
-description: Tento článek obsahuje informace pořadí předem entity znalosti jazyka (LEOŠ).
+description: Tento článek obsahuje informace o pořadovém místě předem připravených entit v Language Understanding (LUIS).
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 06/20/2018
-ms.author: v-geberr
-ms.openlocfilehash: 2ff9b083e6cabe455baea3ed777dd6cc00b6fbfe
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.author: diberry
+ms.openlocfilehash: 216114ec521e2065cb13cd39b4086f50ec81ba56
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36321964"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39236750"
 ---
-# <a name="ordinal-entity"></a>Pořadí entity
-Řadová číslovka je číselné reprezentace objektu uvnitř sady: `first`, `second`, `third`. Protože tato entita je již vycvičena, není potřeba přidat příklad utterances obsahující pořadí do tříd Intent aplikace. Pořadí entity je podporována v [mnoho jazykové verze](luis-reference-prebuilt-entities.md). 
+# <a name="ordinal-entity"></a>Entita Ordinal
+Řadová číslovka je číselnou reprezentaci objektu uvnitř sady: `first`, `second`, `third`. Protože tato entita je už vytrénovaný, není potřeba přidat příklad projevy obsahující ordinální záměry aplikace. Ordinální entity se podporuje v [mnoha jazykových verzí](luis-reference-prebuilt-entities.md). 
 
 ## <a name="types-of-ordinal"></a>Typy pořadí
-Pořadí je spravovat z [rozpoznávání text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml#L45) úložiště Github
+Spravuje se z pořadí [rozpoznávání textu](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml#L45) úložiště Github
 
-## <a name="resolution-for-prebuilt-ordinal-entity"></a>Řešení pro předkompilované pořadí entitu
-Následující příklad ukazuje řešení **builtin.ordinal** entity.
+## <a name="resolution-for-prebuilt-ordinal-entity"></a>Řešení pro předem připravených entit podle pořadového čísla
+Následující příklad ukazuje rozlišení **builtin.ordinal** entity.
 
 ```JSON
 {

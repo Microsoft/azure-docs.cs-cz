@@ -1,20 +1,20 @@
 ---
 title: Pomocí Microsoft Azure Traffic Manager o zvýšení kvóty koncový bod v Language Understanding (LUIS) – Azure | Dokumentace Microsoftu
 description: Pomocí Microsoft Azure Traffic Manager koncový bod kvóty rozložit napříč několika předplatnými v Language Understanding (LUIS) o zvýšení kvóty koncového bodu
-author: v-geberr
+author: diberry
 manager: kaiqb
 services: cognitive-services
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 06/07/2018
-ms.author: v-geberr
-ms.openlocfilehash: 8c8228b13c972c65596f0389e2fdfde585f8a742
-ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
+ms.author: diberry
+ms.openlocfilehash: 77a9d4197804dcdd1e0c8b3f8a0d66100f770855
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39137489"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39238188"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>Microsoft Azure Traffic Manager můžete používat ke správě kvóty koncový bod napříč klíče
 Language Understanding (LUIS) nabízí možnost zvýšení kvóty požadavku koncového bodu nad rámec kvót jeden klíč. Uděláte to pomocí vytváření více klíčů pro LUIS a jejich přidání do aplikace LUIS na **publikovat** stránku **prostředky a klíče** oddílu. 

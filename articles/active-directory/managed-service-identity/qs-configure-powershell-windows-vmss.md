@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/27/2017
 ms.author: daveba
-ms.openlocfilehash: 6033269ab1dd35721aff17b1732d1f02cc452b31
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: b82785d0f4b6a5952334e891e7adec570c624f2d
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216152"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39238127"
 ---
 # <a name="configure-a-vmss-managed-service-identity-msi-using-powershell"></a>Konfigurace VMSS Identity spravované služby (MSI) pomocí Powershellu
 
@@ -27,9 +27,9 @@ ms.locfileid: "39216152"
 
 Identita spravované služby poskytuje služby Azure se automaticky spravované identity v Azure Active Directory. Tuto identitu můžete použít k ověření na libovolnou službu, která podporuje ověřování Azure AD, aniž by bylo přihlašovací údaje ve vašem kódu. 
 
-V tomto článku se dozvíte, jak k provádění operací identita spravované služby v virtuálního počítače Škálovací nastavit (VMSS), pomocí prostředí PowerShell:
-- Povolit nebo zakázat identitu na Azure VMSS přiřazenou systémem
-- Přidávat a odebírat uživatele přiřazeny identitu na Azure VMSS
+V tomto článku se dozvíte, jak k provádění operací identita spravované služby ve škálovací sadě virtuálních počítačů Azure pomocí Powershellu:
+- Povolit a zakázat identitu přiřazenou systémem ve škálovací sadě virtuálních počítačů
+- Přidání a odebrání identity přiřazené uživateli na škálovací sadu virtuálních počítačů
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -45,7 +45,7 @@ V tomto článku se dozvíte, jak k provádění operací identita spravované s
 
 V této části se dozvíte, jak povolit a odebrat přiřazenou systémem identit pomocí Azure Powershellu.
 
-### <a name="enable-system-assigned-identity-during-the-creation-of-an-azure-vmss"></a>Povolit během vytváření Azure VMSS identitu přiřazenou systémem
+### <a name="enable-system-assigned-identity-during-the-creation-of-an-azure-virtual-machine-scale-set"></a>Povolit identitu přiřazenou systémem při vytváření škálovací sady virtuálních počítačů Azure
 
 Chcete-li vytvořit VMSS s identitou přiřazenou systémem povoleno:
 
@@ -55,7 +55,7 @@ Chcete-li vytvořit VMSS s identitou přiřazenou systémem povoleno:
     $VMSS = New-AzureRmVmssConfig -Location $Loc -SkuCapacity 2 -SkuName "Standard_A0" -UpgradePolicyMode "Automatic" -NetworkInterfaceConfiguration $NetCfg -IdentityType SystemAssigned`
     ```
 
-2. (Volitelné) Přidat pomocí rozšíření MSI VMSS `-Name` a `-Type` parametru u [Add-AzureRmVmssExtension](/powershell/module/azurerm.compute/add-azurermvmssextension) rutiny. Můžete předat "ManagedIdentityExtensionForWindows" nebo "ManagedIdentityExtensionForLinux", v závislosti na typu virtuálního počítače a pojmenujte ho pomocí `-Name` parametru. `-Settings` Parametr určuje port používaný programem koncový bod tokenu OAuth pro získání tokenu:
+2. (Volitelné) Přidat pomocí rozšíření MSI VMSS `-Name` a `-Type` parametru u [Add-AzureRmVmssExtension](/powershell/module/azurerm.compute/add-azurermvmssextension) rutiny. Můžete předat buď "ManagedIdentityExtensionForWindows" nebo "ManagedIdentityExtensionForLinux", v závislosti na typu sady škálování virtuálního počítače nastavte a pojmenujte ho pomocí `-Name` parametru. `-Settings` Parametr určuje port používaný programem koncový bod tokenu OAuth pro získání tokenu:
 
     > [!NOTE]
     > Tento krok je volitelný, i identitu koncového bodu Azure Instance Metadata služby (IMDS), můžete použít k získání tokenů také.
@@ -66,24 +66,23 @@ Chcete-li vytvořit VMSS s identitou přiřazenou systémem povoleno:
    Add-AzureRmVmssExtension -VirtualMachineScaleSet $vmss -Name "ManagedIdentityExtensionForWindows" -Type "ManagedIdentityExtensionForWindows" -Publisher "Microsoft.ManagedIdentity" -TypeHandlerVersion "1.0" -Setting $settings 
    ```
 
-## <a name="enable-system-assigned-identity-on-an-existing-azure-vmss"></a>Povolit na existujících VMSS Azure identitu přiřazenou systémem
+## <a name="enable-system-assigned-identity-on-an-existing-azure-virtual-machine-scale-set"></a>Povolit identitu přiřazenou systémem v existující škálovací sady virtuálních počítačů Azure
 
-Pokud je potřeba povolit identitu přiřazenou systémem na existující VMSS Azure:
+Pokud je potřeba povolit identitu přiřazenou systémem v existující škálovací sady virtuálních počítačů Azure:
 
-1. Přihlaste se k Azure s využitím `Login-AzureRmAccount`. Použijte účet, který je přidružený k předplatnému Azure, která obsahuje virtuální počítač. Také ujistěte se, že váš účet patří do role, která poskytuje oprávnění k zápisu na virtuálním počítači, jako je například "Přispěvatel virtuálních počítačů":
+1. Přihlaste se k Azure s využitím `Login-AzureRmAccount`. Použijte účet, který je přidružený k předplatnému Azure, který obsahuje škálovací sadu virtuálních počítačů. Také ujistěte se, že váš účet patří do role, která poskytuje oprávnění k zápisu na škálovací sadu virtuálních počítačů, jako je například "Přispěvatel virtuálních počítačů":
 
    ```powershell
    Login-AzureRmAccount
    ```
 
-2. Nejdřív načtěte pomocí vlastnosti VMSS [ `Get-AzureRmVmss` ](/powershell/module/azurerm.compute/get-azurermvmss) rutiny. Chcete-li povolit identitu přiřazenou systémem, použijte `-IdentityType` přepnout [Update-AzureRmVM](/powershell/module/azurerm.compute/update-azurermvm) rutiny:
+2. Prvním načtení škálovací sady virtuálních počítačů pomocí vlastnosti [ `Get-AzureRmVmss` ](/powershell/module/azurerm.compute/get-azurermvmss) rutiny. Chcete-li povolit identitu přiřazenou systémem, použijte `-IdentityType` přepnout [Update-AzureRmVmss](/powershell/module/azurerm.compute/update-azurermvmss) rutiny:
 
    ```powershell
-   $vm = Get-AzureRmVmss -ResourceGroupName myResourceGroup -Name myVM
-   Update-AzureRmVmss -ResourceGroupName myResourceGroup -Name -myVM -IdentityType "SystemAssigned"
+   Update-AzureRmVmss -ResourceGroupName myResourceGroup -Name -myVmss -IdentityType "SystemAssigned"
    ```
 
-3. Přidat pomocí rozšíření MSI VMSS `-Name` a `-Type` parametru u [Add-AzureRmVmssExtension](/powershell/module/azurerm.compute/add-azurermvmssextension) rutiny. Můžete předat "ManagedIdentityExtensionForWindows" nebo "ManagedIdentityExtensionForLinux", v závislosti na typu virtuálního počítače a pojmenujte ho pomocí `-Name` parametru. `-Settings` Parametr určuje port používaný programem koncový bod tokenu OAuth pro získání tokenu:
+3. Přidat pomocí rozšíření MSI VMSS `-Name` a `-Type` parametru u [Add-AzureRmVmssExtension](/powershell/module/azurerm.compute/add-azurermvmssextension) rutiny. Můžete předat buď "ManagedIdentityExtensionForWindows" nebo "ManagedIdentityExtensionForLinux", v závislosti na typu sady škálování virtuálního počítače nastavte a pojmenujte ho pomocí `-Name` parametru. `-Settings` Parametr určuje port používaný programem koncový bod tokenu OAuth pro získání tokenu:
 
    ```powershell
    $setting = @{ "port" = 50342 }
@@ -91,68 +90,66 @@ Pokud je potřeba povolit identitu přiřazenou systémem na existující VMSS A
    Add-AzureRmVmssExtension -VirtualMachineScaleSet $vmss -Name "ManagedIdentityExtensionForWindows" -Type "ManagedIdentityExtensionForWindows" -Publisher "Microsoft.ManagedIdentity" -TypeHandlerVersion "1.0" -Setting $settings 
    ```
 
-### <a name="disable-the-system-assigned-identity-from-an-azure-vmss"></a>Zakázat systému identity přiřazené ze Azure VMSS
+### <a name="disable-the-system-assigned-identity-from-an-azure-virtual-machine-scale-set"></a>Zakázat identitu přiřazenou systémem ze škálovací sady virtuálních počítačů Azure
 
-> [!NOTE]
-> Zakáže identita spravované služby ze Škálovací sady virtuálních počítačů se aktuálně nepodporuje. Do té doby můžete přepínat mezi použitím systém přiřadil a přiřazené identity uživatele.
+Pokud máte škálovací sadu virtuálních počítačů, který už nepotřebuje identitu přiřazenou systémem, ale stále potřebuje uživatel identit přiřazených, použijte následující rutinu:
 
-Pokud máte Škálovací sadu virtuálních počítačů, které už nepotřebuje identitu přiřazenou systémem, ale stále potřebuje identity přiřazené uživateli, použijte následující rutinu:
-
-1. Přihlaste se k Azure s využitím `Login-AzureRmAccount`. Použijte účet, který je přidružený k předplatnému Azure, která obsahuje virtuální počítač. Také ujistěte se, že váš účet patří do role, která poskytuje oprávnění k zápisu na virtuálním počítači, jako je například "Přispěvatel virtuálních počítačů":
+1. Přihlaste se k Azure s využitím `Login-AzureRmAccount`. Použijte účet, který je přidružený k předplatnému Azure, která obsahuje virtuální počítač. Také ujistěte se, že váš účet patří do role, která poskytuje oprávnění k zápisu na škálovací sadu virtuálních počítačů, jako je například "Přispěvatel virtuálních počítačů":
 
 2. Spusťte následující rutinu:
 
-    ```powershell
-    Update-AzureRmVmss -ResourceGroupName myResourceGroup -Name myVmss -IdentityType "UserAssigned"
-    ```
+   ```powershell
+   Update-AzureRmVmss -ResourceGroupName myResourceGroup -Name myVmss -IdentityType "UserAssigned"
+   ```
+
+Pokud máte škálovací sadu virtuálních počítačů, které už nepotřebuje identitu přiřazenou systémem a nemá žádný uživatel identit přiřazených, použijte následující příkazy:
+
+```powershell
+Update-AzureRmVmss -ResourceGroupName myResourceGroup -Name myVmss -IdentityType None
+```
 
 ## <a name="user-assigned-identity"></a>Identity přiřazené uživateli
 
-V této části se dozvíte, jak přidávat a odebírat uživatele identity přiřazené z VMSS pomocí Azure Powershellu.
+V této části se dozvíte, jak přidávat a odebírat uživatele identity přiřazené z virtuálního počítače škálovací sady pomocí Azure Powershellu.
 
-### <a name="assign-a-user-assigned-identity-during-creation-of-an-azure-vmss"></a>Přiřadit uživatele identity přiřazené během vytváření Azure VMSS
+### <a name="assign-a-user-assigned-identity-during-creation-of-an-azure-virtual-machine-scale-set"></a>Přiřadit identity přiřazené uživateli při vytváření škálovací sady virtuálních počítačů Azure
 
-Vytváření nových VMSS identity přiřazené uživateli není aktuálně podporováno prostřednictvím prostředí PowerShell. Viz následující část o tom, jak přidat do existující VMSS identity přiřazené uživateli. Vraťte se sem a přečtěte si nové informace.
+Vytváření nového virtuálního počítače škálovací sadu s identity přiřazené uživateli není aktuálně podporováno prostřednictvím prostředí PowerShell. Viz následující část o tom, jak přidat identitu uživatele přiřadit do existující škálovací sady virtuálních počítačů. Vraťte se sem a přečtěte si nové informace.
 
-### <a name="assign-a-user-identity-to-an-existing-azure-vmss"></a>Identita uživatele přiřadit existující VMSS Azure
+### <a name="assign-a-user-identity-to-an-existing-azure-virtual-machine-scale-set"></a>Identita uživatele přiřadit existující škálovací sadě virtuálních počítačů Azure
 
-Přiřazení uživatele přiřadit k existující VMSS Azure identity:
+Při přiřazování identity přiřazené uživateli do existující škálovací sady virtuálních počítačů Azure:
 
-1. Přihlaste se k Azure s využitím `Connect-AzureRmAccount`. Použijte účet, který je přidružený k předplatnému Azure, která obsahuje virtuální počítač. Také ujistěte se, že váš účet patří do role, která poskytuje oprávnění k zápisu na virtuálním počítači, jako je například "Přispěvatel virtuálních počítačů":
+1. Přihlaste se k Azure s využitím `Connect-AzureRmAccount`. Použijte účet, který je přidružený k předplatnému Azure, který obsahuje škálovací sadu virtuálních počítačů. Také ujistěte se, že váš účet patří do role, která poskytuje oprávnění k zápisu na škálovací sadu virtuálních počítačů, jako je například "Přispěvatel virtuálních počítačů":
 
    ```powershell
    Connect-AzureRmAccount
    ```
 
-2. Nejdřív načtěte pomocí vlastnosti virtuálního počítače `Get-AzureRmVM` rutiny. Pak můžete přiřadit Azure VMSS identity přiřazené uživateli, pomocí `-IdentityType` a `-IdentityID` zapnout [Update-AzureRmVM](/powershell/module/azurerm.compute/update-azurermvm) rutiny. Nahraďte `<VM NAME>`, `<SUBSCRIPTION ID>`, `<RESROURCE GROUP>`, `<USER ASSIGNED ID1>`, `USER ASSIGNED ID2` vlastními hodnotami.
+2. Prvním načtení škálovací sady virtuálních počítačů pomocí vlastnosti `Get-AzureRmVM` rutiny. Pak můžete přiřadit identity přiřazené uživateli škálovací sadu virtuálních počítačů, pomocí `-IdentityType` a `-IdentityID` zapnout [Update-AzureRmVmss](/powershell/module/azurerm.compute/update-azurermvmss) rutiny. Nahraďte `<VM NAME>`, `<SUBSCRIPTION ID>`, `<RESROURCE GROUP>`, `<USER ASSIGNED ID1>`, `USER ASSIGNED ID2` vlastními hodnotami.
 
    [!INCLUDE[ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
-
    ```powershell
-   $vmss = Get-AzureRmVmss -ResourceGroupName <RESOURCE GROUP> -Name <VMSS NAME>
-   Update-AzureRmVmss -ResourceGroupName <RESOURCE GROUP> -VM $vmss -IdentityType UserAssigned -IdentityID "<USER ASSIGNED ID1>","<USER ASSIGNED ID2>"
+   Update-AzureRmVmss -ResourceGroupName <RESOURCE GROUP> -Name <VMSS NAME> -IdentityType UserAssigned -IdentityID "<USER ASSIGNED ID1>","<USER ASSIGNED ID2>"
    ```
 
-### <a name="remove-a-user-assigned-identity-from-an-azure-vmss"></a>Odebrání uživatele ze Azure VMSS identity přiřazené
+### <a name="remove-a-user-assigned-managed-identity-from-an-azure-virtual-machine-scale-set"></a>Odebrat uživatele, přiřazenou spravovanou identitu ze škálovací sady virtuálních počítačů Azure
 
-> [!NOTE]
-> Odebrání všech uživatelsky přiřazených identit ze Škálovací sady virtuálních počítačů se aktuálně nepodporuje, pokud máte identitu přiřazenou systémem. Vraťte se sem a přečtěte si nové informace.
-
-Pokud vaše VMSS má více uživatelsky přiřazených identit, můžete odebrat všechny kromě poslední z nich pomocí následujících příkazů. Nezapomeňte nahradit hodnoty parametrů `<RESOURCE GROUP>` a `<VMSS NAME>` vlastními hodnotami. `<MSI NAME>` Je název vlastnosti identity přiřazené uživateli, která by měla zůstat na VMSS. Tyto informace můžete zobrazit tak v části Identita VMSS pomocí `az vmss show`:
+Pokud vaše škálovací sada virtuálních počítačů má více uživatelsky přiřazených identit, můžete odebrat všechny kromě poslední z nich pomocí následujících příkazů. Nezapomeňte nahradit hodnoty parametrů `<RESOURCE GROUP>` a `<VMSS NAME>` vlastními hodnotami. `<MSI NAME>` Je název vlastnosti identity přiřazené uživateli, která by měla zůstat na škálovací sadu virtuálních počítačů. Tyto informace najdete v části Identita škálovací sady virtuálních počítačů `az vmss show`:
 
 ```powershell
-$vmss = Get-AzureRmVmss -ResourceGroupName myResourceGroup -Name myVmss
-$vmss.Identity.IdentityIds = "<MSI NAME>"
-Update-AzureRmVmss -ResourceGroupName myResourceGroup -Name myVmss -VirtualMachineScaleSet $vmss
+Update-AzureRmVmss -ResourceGroupName myResourceGroup -Name myVmss -IdentityType UserAssigned -IdentityID "<MSI NAME>"
 ```
-
-Pokud vaše VMSS má přiřazenou systémem a identity přiřazené uživateli, můžete odebrat všechny uživatele identit přiřazených přepnutím používat pouze přiřazenou systémem. Použijte následující příkaz:
+Pokud chcete odebrat všechny uživatele identit přiřazených z něj škálovací sadu virtuálních počítačů nemá identitu přiřazenou systémem, použijte následující příkaz:
 
 ```powershell
-$vmss = Get-AzureRmVmss -ResourceGroupName myResourceGroup -Name myVmss
-$vmss.Identity.IdentityIds = $null
-Update-AzureRmVmss -ResourceGroupName myResourceGroup -Name myVmss -VirtualMachine $vmss -IdentityType "SystemAssigned"
+Update-AzureRmVmss -ResourceGroupName myResourceGroup -Name myVmss -IdentityType None
+```
+Pokud vaše škálovací sada virtuálních počítačů má přiřazenou systémem a identity přiřazené uživateli, můžete odebrat všechny uživatele identit přiřazených přepnutím používat pouze přiřazenou systémem.
+
+```powershell 
+Update-AzureRmVmss -ResourceGroupName myResourceGroup -Name myVmss -IdentityType "SystemAssigned"
 ```
 
 ## <a name="related-content"></a>Související obsah

@@ -3,19 +3,19 @@ title: Předem připravené služby LUIS datetimeV2 referenční informace k ent
 titleSuffix: Azure
 description: Tento článek obsahuje datetimeV2 informace předem připravených entit v Language Understanding (LUIS).
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 06/20/2018
-ms.author: v-geberr
-ms.openlocfilehash: c72c17fe683b771d01e619ba7889f46424ee9158
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.author: diberry
+ms.openlocfilehash: 13f62e98a33aac51eae86d5ce1b802d4701ef3f6
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37916947"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39236767"
 ---
 # <a name="datetimev2-entity"></a>Entita DatetimeV2
 

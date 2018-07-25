@@ -2,19 +2,19 @@
 title: Vysvětlení správy verzí v LUIS – Azure | Dokumentace Microsoftu
 description: Další informace o použití verze správě změn v Language Understanding (LUIS)
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 03/13/2018
-ms.author: v-geberr
-ms.openlocfilehash: f897a3c85bebff3c4534679d45e8af49aacba44a
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.author: diberry
+ms.openlocfilehash: 17abe383d3074d636605c3b1b91927f89f7dd896
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37888112"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39225723"
 ---
 # <a name="versions"></a>Verze
 Vytvořit stejnou aplikaci pomocí různých modelů [verze](luis-how-to-manage-versions.md). 

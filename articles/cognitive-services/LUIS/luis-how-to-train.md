@@ -2,19 +2,19 @@
 title: Trénování služby LUIS aplikace – Azure | Dokumentace Microsoftu
 description: Language Understanding (LUIS) použijete k natrénování modelu.
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 03/14/2018
-ms.author: v-geberr
-ms.openlocfilehash: 8ec731ee2110b21a35d76d53fae4a1a6756fb5b8
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.author: diberry
+ms.openlocfilehash: e947df20141b0b9870f318f410488aea23bafcf5
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37951810"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39223180"
 ---
 # <a name="train-your-luis-app"></a>Trénování aplikace LUIS
 
@@ -32,7 +32,7 @@ Pokud chcete začít iterativní proces, musíte nejprve trénování aplikace L
 
 2. Ve vaší aplikaci, vyberte **Train** v horním panelu. 
 
-    ![Tlačítko trénování](./media/luis-how-to-train/train-button.png)
+    ![Tlačítko Train (Trénovat)](./media/luis-how-to-train/train-button.png)
 
 3. Po dokončení školení, zobrazí se zelená oznamovací pruh v horní části stránky prohlížeče.
 

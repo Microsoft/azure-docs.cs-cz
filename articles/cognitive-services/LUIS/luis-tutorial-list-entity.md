@@ -1,109 +1,109 @@
 ---
-title: Označení entity automaticky seznamu entitu pomocí Nodejs | Microsoft Docs
-description: Informace o postupu přidání entity seznamu pomohou LEOŠ popisek variace slovo nebo frázi.
+title: Popisek entity automaticky s entitou seznamu pomocí Node.js | Dokumentace Microsoftu
+description: Zjistěte, jak přidat entitu seznamu umožňující LUIS popisek variace slova nebo fráze.
 services: cognitive-services
-author: v-geberr
+author: diberry
 titleSuffix: Azure
-manager: kamran.iqbal
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 02/21/2018
-ms.author: v-geberr
-ms.openlocfilehash: e8558ecf4a64dbccef6e6367c1447bdcdb005126
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.author: diberry
+ms.openlocfilehash: 12a6cfbe7267d3575fbb33978d7ea6e743802d12
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "35342496"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39237158"
 ---
-# <a name="use-a-list-entity-to-increase-entity-detection"></a>Pomocí seznamu entity zvýšit detekce entity 
-Tento kurz ukazuje použití [seznamu entity](luis-concept-entity-types.md) zvýšit detekce entity. Seznam entity není potřeba s názvem bez přípony, jako jsou přesnou shodu podmínek.  
+# <a name="use-a-list-entity-to-increase-entity-detection"></a>Zvyšte zjišťování entit pomocí seznamu entit 
+Tento kurz ukazuje použití [seznam entit](luis-concept-entity-types.md) zvýšit zjišťování entit. Seznam entit není nutné popisek, protože jde o přesnou shodu podmínek.  
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 * Vytvoření seznamu entit 
-* Přidat normalizovaný hodnoty a synonyma.
+* Přidat normalizované hodnoty a synonyma
 * Ověření identifikace vylepšené entity
 
 ## <a name="prerequisites"></a>Požadavky
 
 > [!div class="checklist"]
 > * Nejnovější [Node.js](https://nodejs.org)
-> * [Aplikace LEOŠ HomeAutomation](luis-get-started-create-app.md). Pokud jste vytvořili aplikaci Domů automatizace, vytvořte novou aplikaci a přidejte předem domény **HomeAutomation**. Trénování a publikování aplikace. 
-> * [AuthoringKey](luis-concept-keys.md#authoring-key), [EndpointKey](luis-concept-keys.md#endpoint-key) (Pokud dotazování mnohokrát), ID aplikace, ID verze, a [oblast](luis-reference-regions.md) LEOŠ aplikace.
+> * [Aplikace LUIS HomeAutomation](luis-get-started-create-app.md). Pokud nemáte aplikaci Domů Automation vytvořili, vytvořte novou aplikaci a přidejte předem připravených domény **HomeAutomation**. Trénování a publikování aplikace. 
+> * [AuthoringKey](luis-concept-keys.md#authoring-key), [EndpointKey](luis-concept-keys.md#endpoint-key) (je-li dotazování v mnoha případech), ID aplikace, ID verze a [oblasti](luis-reference-regions.md) aplikace LUIS.
 
 > [!Tip]
-> Pokud již nemáte předplatné, můžete si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/).
+> Pokud ještě nemáte předplatné, si můžete zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/).
 
-Kód v tomto kurzu je k dispozici na [úložiště github LEOŠ-Samples](https://github.com/Microsoft/LUIS-Samples/tree/master/documentation-samples/tutorial-list-entity). 
+Veškerý kód v tomto kurzu je k dispozici na [úložišti github s ukázkami LUIS](https://github.com/Microsoft/LUIS-Samples/tree/master/documentation-samples/tutorial-list-entity). 
 
-## <a name="use-homeautomation-app"></a>Použití HomeAutomation aplikace
-Poskytuje aplikaci HomeAutomation kontrolu nad zařízení, jako jsou indikátory, zábava systémy a prostředí ovládací prvky jako je například vytápění a chlazení. Tyto systémy obsahovat několik odlišné názvy, které mohou obsahovat názvy, přezdívky, režim a slang výrobce. 
+## <a name="use-homeautomation-app"></a>Používání HomeAutomation aplikace
+Umožňuje aplikaci HomeAutomation například zahřívání a vychladnutí ovládací prvky řízení zařízení, například světla, systémy pro zábavu a prostředí. Tyto systémy obsahovat několik jiné názvy, které mohou obsahovat názvy, přezdívky, zkratky a slangem výrobce. 
 
-Jeden systém, který má mnoho názvů v jiných jazykových verzí a demografie je termostatu. Termostatu může řídit chlazení i vytápění úklidové nebo sestavení.
+Systémů, který má mnoho názvů přes různé jazykové verze a demografických údajů je termostat. Termostat můžete řídit chlazení i vytápění pro domácnosti nebo v budově.
 
-V ideálním případě by měl směrovat následující utterances předem entity **HomeAutomation.Device**:
+V ideálním případě by měla vyřešit následující projevy na předem připravených entit **HomeAutomation.Device**:
 
-|#|utterance|entitu identifikovanou|skóre|
+|#|Utterance|entitu identifikovanou|skóre|
 |--|--|--|--|
-|1|zapnout ac|HomeAutomation.Device - "ac"|0.8748562|
-|2|zapnout až heat|HomeAutomation.Device - "heat"|0.784990132|
+|1|zapnout ac|HomeAutomation.Device – "ac"|0.8748562|
+|2|objevit tepla|HomeAutomation.Device – "heat"|0.784990132|
 |3|Zkontrolujte nižší|||
 
-První dva utterances mapovat do různých zařízení. Třetí utterance "bylo nižší", není namapován na zařízení, ale místo toho požadavky výsledku. LEOŠ neví, že termín "nižší", znamená, že termostatu je požadovaná zařízení. V ideálním případě LEOŠ měli vyřešit všechny tyto utterances do stejného zařízení. 
+První dva projevy namapovat na různých zařízeních. Třetí utterance "usnadňují nižší", není namapován na zařízení ale vyžádá výsledek. Služba LUIS neví, že termín "nižší", znamená to, že termostat požadované zařízení. V ideálním případě LUIS by měla vyřešit všechny tyto projevy do stejného zařízení. 
 
-## <a name="use-a-list-entity"></a>Pomocí seznamu entit
-Entita HomeAutomation.Device je ideální pro malé množství zařízení nebo s několika rozdíly názvy. Kancelářská budova nebo kanceláře názvy zařízení nárůst užitečnost HomeAutomation.Device entity. 
+## <a name="use-a-list-entity"></a>Použijte seznam entit
+HomeAutomation.Device entity se skvěle hodí pro malý počet zařízení nebo pomocí několika variant názvy. Kancelářská budova nebo areálu názvy zařízení nárůst užitečnost HomeAutomation.Device entity. 
 
-A **seznamu entity** je vhodná pro tento scénář, protože sadu podmínek pro zařízení v budově nebo kanceláře se známou sadou, i když je velmi velké sady. Pomocí seznamu entity můžete LEOŠ přijímat žádné možnou hodnotu v sadě pro termostatu a přeložte ho dolů jedno zařízení "termostatu". 
+A **seznam entit** je dobrou volbou pro tento scénář, protože sadu podmínek pro zařízení v budově nebo areálu je sada známých i v případě, že je velmi velké sady. Pomocí seznamu entit může LUIS přijímat všechny možné hodnoty v sadě pro termostat a vyřešit dolů jedno zařízení "termostat". 
 
-V tomto kurzu bude vytvoření seznamu entity pomocí termostatu. Alternativní názvy pro termostatu v tomto kurzu jsou: 
+V tomto kurzu bude vytvoření seznamu entit pomocí termostat. Alternativní názvy pro termostat v tomto kurzu jsou následující: 
 
-|alternativní názvy pro termostatu|
+|alternativní názvy pro termostat|
 |--|
 | ac |
 | z účtu|
 | -c|
-|topení|
+|Ohřívač|
 |za běhu|
 |hotter|
-|uloží málo používaná data|
+|studené|
 |nižší|
 
-Pokud je potřeba určit nový alternativní často LEOŠ pak [frázi seznamu](luis-concept-feature.md#how-to-use-phrase-lists) je lepší odpověď.
+Pokud je potřeba určit nový alternativní často, LUIS o [seznam frází](luis-concept-feature.md#how-to-use-phrase-lists) je lepší odpověď.
 
 ## <a name="create-a-list-entity"></a>Vytvoření seznamu entit
-Vytvořte soubor Node.js a zkopírujte do ní následující kód. Změňte hodnoty authoringKey, appId, versionId a oblast.
+Vytvořte soubor Node.js a zkopírujte do něj následující kód. Změňte hodnoty authoringKey, appId, versionId a oblast.
 
    [!code-javascript[Create DevicesList List Entity](~/samples-luis/documentation-samples/tutorial-list-entity/add-entity-list.js "Create DevicesList List Entity")]
 
-Závislosti NPM nainstalovat a spustit kód k vytvoření seznamu entity použijte následující příkaz:
+Závislosti na NPM nainstalovat a spustit kód, který vytvoří seznam entit, použijte následující příkaz:
 
 ```Javascript
 npm install && node add-entity-list.js
 ```
 
-Výstup spuštění, je ID entity seznamu:
+Výstup spuštění je ID entity seznamu:
 
 ```Javascript
 026e92b3-4834-484f-8608-6114a83b03a6
 ```
 ## <a name="train-the-model"></a>Trénování modelu
-Cvičení LEOŠ v pořadí pro nový seznam ovlivnit výsledky dotazu. Školení je proces dvě části školení, pak kontrola stavu, pokud se provádí školení. Aplikace s mnoha modely může chvíli trvat ke cvičení. Následující kód učí aplikace potom počká, dokud nebude úspěšná školení. Kód používá strategie počkejte a opakujte, aby se zabránilo 429 "příliš mnoho požadavků" Chyba. 
+Trénování služby LUIS v pořadí pro nový seznam ovlivnit výsledky dotazu. Školení je proces dvojdílného školení, pak kontrola stavu, pokud se provádí na školení. Aplikace s více modely může trvat několik minut pro trénování. Následující kód trénovat aplikace pak počká, dokud neproběhne školení. Tento kód použije strategie opakování a počkejte, aby 429 "příliš mnoho požadavků" Chyba. 
 
-Vytvořte soubor Node.js a zkopírujte do ní následující kód. Změňte hodnoty authoringKey, appId, versionId a oblast.
+Vytvořte soubor Node.js a zkopírujte do něj následující kód. Změňte hodnoty authoringKey, appId, versionId a oblast.
 
    [!code-javascript[Train LUIS](~/samples-luis/documentation-samples/tutorial-list-entity/train.js "Train LUIS")]
 
-Spustí kód pro učení aplikace použijte následující příkaz:
+Použijte následující příkaz pro spuštění kódu pro trénování aplikace:
 
 ```Javascript
 node train.js
 ```
 
-Výstup spuštění, je stav každé iteraci školení LEOŠ modelů. Následující provádění vyžadována pouze jedna kontrola školení:
+Výstup spuštění je stav každé iteraci trénování modelů služby LUIS. Následující spuštění vyžaduje pouze jedna kontrola školení:
 
 ```Javascript
 1 trained = true
@@ -122,19 +122,19 @@ Výstup spuštění, je stav každé iteraci školení LEOŠ modelů. Následuj�
 
 ```
 ## <a name="publish-the-model"></a>Publikování modelu
-Publikujte tak entita seznamu je k dispozici z koncového bodu.
+Publikujte seznam entit je dostupné z koncového bodu.
 
-Vytvořte soubor Node.js a zkopírujte do ní následující kód. Změňte hodnoty endpointKey appId a oblast. Vaše authoringKey můžete použít, pokud neplánujete volání tento soubor překračuje limit kvóty.
+Vytvořte soubor Node.js a zkopírujte do něj následující kód. Změňte hodnoty endpointKey appId a oblast. Vaše authoringKey můžete použít, pokud nemáte v plánu pro tento soubor mimo maximální kvóty volání.
 
    [!code-javascript[Publish LUIS](~/samples-luis/documentation-samples/tutorial-list-entity/publish.js "Publish LUIS")]
 
-Spustí kód k dotazování aplikace použijte následující příkaz:
+Použijte následující příkaz pro spuštění kódu k dotazování aplikace:
 
 ```Javascript
 node publish.js
 ```
 
-Tento výstup obsahuje adresu url koncového bodu pro všechny dotazy. Skutečné výsledky JSON by obsahovat skutečné ID aplikace. 
+Následující výstup zahrnuje adresu url koncového bodu pro všechny dotazy. Skutečné výsledky JSON by obsahovat skutečné ID aplikace. 
 
 ```JSON
 { 
@@ -149,19 +149,19 @@ Tento výstup obsahuje adresu url koncového bodu pro všechny dotazy. Skutečn�
 ```
 
 ## <a name="query-the-app"></a>Dotaz aplikace 
-Dotaz aplikace z koncového bodu k prokázání, že entita seznamu pomáhá LEOŠ určit typ zařízení.
+Dotaz na aplikace z koncového bodu prokázat, že seznam entit přispívá k LUIS určit typ zařízení.
 
-Vytvořte soubor Node.js a zkopírujte do ní následující kód. Změňte hodnoty endpointKey appId a oblast. Vaše authoringKey můžete použít, pokud neplánujete volání tento soubor překračuje limit kvóty.
+Vytvořte soubor Node.js a zkopírujte do něj následující kód. Změňte hodnoty endpointKey appId a oblast. Vaše authoringKey můžete použít, pokud nemáte v plánu pro tento soubor mimo maximální kvóty volání.
 
    [!code-javascript[Query LUIS](~/samples-luis/documentation-samples/tutorial-list-entity/query.js "Query LUIS")]
 
-Spuštění kódu a dotazovat se aplikace použijte následující příkaz:
+Použijte následující příkaz pro spuštění kódu a dotazování aplikací:
 
 ```Javascript
 node train.js
 ```
 
-Výstup se výsledky dotazu. Protože kód přidána **podrobné** obsahuje dvojice název/hodnota do řetězce dotazu, výstup všech tříd Intent a jejich výsledky:
+Výstup se výsledky dotazu. Protože kód přidá **podrobné** dvojice název/hodnota řetězce dotazu, výstup zahrnuje veškeré záměry a jejich výsledky:
 
 ```JSON
 {
@@ -207,16 +207,16 @@ Výstup se výsledky dotazu. Protože kód přidána **podrobné** obsahuje dvoj
 }
 ```
 
-Konkrétní zařízení, které **termostatu** přiřazen dotaz orientované na výsledek "zapnout až heat". Vzhledem k tomu, že původní entita HomeAutomation.Device je stále v aplikaci, můžete zobrazit také své výsledky. 
+Konkrétní zařízení **termostat** se určuje podle orientované na výsledek dotazu "zapnutí nahoru heat". Protože původní entita HomeAutomation.Device je stále v aplikaci, zobrazí se i jeho výsledky. 
 
-Zkuste další dva utterances zobrazíte, že jsou také vráceny jako termostatu. 
+Vyzkoušejte další dva projevy zobrazíte, že jsou také vrácena jako termostat. 
 
-|#|utterance|entita|type|hodnota|
+|#|Utterance|entita|type|hodnota|
 |--|--|--|--|--|
 |1|zapnout ac| ac | DevicesList | Termostat|
-|2|zapnout až heat|Heat| DevicesList |Termostat|
+|2|objevit tepla|tepla| DevicesList |Termostat|
 |3|Zkontrolujte nižší|nižší|DevicesList|Termostat|
 
 ## <a name="next-steps"></a>Další postup
 
-Můžete vytvořit jinou entitou seznamu rozšiřovat umístění zařízení na místnosti, podlah nebo budovy. 
+Můžete vytvořit jinou entitou seznamu Rozbalit umístění zařízení do místnosti, podlažích nebo budovy. 

@@ -1,6 +1,6 @@
 ---
-title: Automatizovat replikaci změny schématu v synchronizaci dat SQL Azure | Microsoft Docs
-description: Informace o automatizaci replikace změny schématu v synchronizaci dat SQL Azure.
+title: Automatizace replikace změn schématu synchronizace dat SQL Azure | Dokumentace Microsoftu
+description: Zjistěte, jak automatizovat replikaci změn schématu synchronizace dat SQL Azure.
 services: sql-database
 ms.date: 06/19/2018
 ms.topic: conceptual
@@ -10,35 +10,35 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.custom: data-sync
-ms.openlocfilehash: a39e060708514fdca11a5d89858486b442a18309
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: cc1c9c9385d34f317ff911d131058b9210065edf
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37019583"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39237039"
 ---
-# <a name="automate-the-replication-of-schema-changes-in-azure-sql-data-sync"></a>Automatizovat replikaci změny schématu v synchronizaci dat SQL Azure
+# <a name="automate-the-replication-of-schema-changes-in-azure-sql-data-sync"></a>Automatizace replikace změn schématu synchronizace dat SQL Azure
 
-Synchronizaci dat SQL umožňuje uživatelům synchronizovat data mezi databázemi SQL Azure a místní systém SQL Server v jednom směru nebo v obou směrech. Jedním z aktuálních omezení synchronizaci dat SQL je chybějících podpory pro replikaci změny schématu. Pokaždé, když změníte schématu tabulky, budete muset použít změny na všechny koncové body, včetně rozbočovače a všechny členy, ručně a pak aktualizujte schématu synchronizace.
+Synchronizace dat SQL umožňuje uživatelům synchronizovat data mezi databázemi SQL Azure a místním SQL serverem v jednom směru nebo v obou směrech. Jednou z aktuálních omezení synchronizace dat SQL je chybějící podpora jazyků replikace změn schématu. Pokaždé, když změníte schéma tabulky, budete muset použít změny ručně pro všechny koncové body, včetně centra a všechny členy a potom aktualizovat schéma synchronizace.
 
-Tento článek představuje řešení automaticky replikovat změny schématu pro všechny koncové body synchronizaci dat SQL.
-1. Toto řešení používá aktivační událost jazyka DDL sledovat změny schématu.
+Tento článek představuje řešení, které automaticky replikovat změny schématu pro všechny koncové body synchronizace dat SQL.
+1. Toto řešení používá ke sledování změn schématu aktivační událost jazyka DDL.
 2. Aktivační událost vloží příkazy změna schématu tabulky sledování.
-3. Toto sledování tabulku se synchronizuje všechny koncové body pomocí synchronizaci dat služby.
-4. Aktivační události DML po vložení se používá k aplikování změny schématu na dalších koncových bodů.
+3. Tato tabulka sledování se synchronizuje s všechny koncové body pomocí synchronizace dat služby.
+4. Triggery DML po vložení se používají k použití změn schématu v dalších koncových bodů.
 
-Tento článek používá příkaz ALTER TABLE jako příklad změny schématu, ale toto řešení funguje i pro jiné typy změny schématu.
+Tento článek používá příkaz ALTER TABLE s ukázkovým změnu schématu, ale toto řešení funguje i pro jiné typy změn schématu.
 
 > [!IMPORTANT]
-> Doporučujeme, abyste si přečetli Tento článek pečlivě, zejména v částech o [Poradce při potížích s](#troubleshooting) a [další důležité informace](#other), než můžete začít provádět automatizované schématu replikace změn v prostředí synchronizace. Doporučujeme, abyste si přečetli [synchronizaci dat mezi několika databází cloudu a místně s synchronizaci dat SQL](sql-database-sync-data.md). Některé operace databáze je možné ukončit řešení popsaných v tomto článku. Další domény znalosti jazyka Transact-SQL a SQL serveru může být nutné tyto problémy vyřešit.
+> Doporučujeme, abyste si přečetli to článek pečlivě, zejména v částech o [Poradce při potížích s](#troubleshooting) a [další důležité informace](#other), než začnete provádět automatizované schématu replikace změn v prostředí synchronizace. Doporučujeme také, abyste si přečetli [synchronizaci dat napříč několika cloudu a místními databázemi pomocí synchronizace dat SQL](sql-database-sync-data.md). Některé operace databáze způsobit nefunkčnost řešení popsaných v tomto článku. Další znalosti SQL serveru a jazyka Transact-SQL, může být nutné tyto problémy vyřešit.
 
-![Automatizaci replikace změny schématu](media/sql-database-update-sync-schema/automate-schema-changes.png)
+![Automatizace replikace změn schématu](media/sql-database-update-sync-schema/automate-schema-changes.png)
 
-## <a name="set-up-automated-schema-change-replication"></a>Nastavení replikace změn automatizované schématu
+## <a name="set-up-automated-schema-change-replication"></a>Nastavení replikace změnit automatizované schématu
 
-### <a name="create-a-table-to-track-schema-changes"></a>Vytvořte tabulku pro sledování změn schématu
+### <a name="create-a-table-to-track-schema-changes"></a>Vytvoření tabulky sledování změn schématu
 
-Vytvořte tabulku pro sledování změn schématu do všechny databáze ve skupině synchronizace:
+Vytvořte tabulku pro sledování změn schématu ve všech databází ve skupině synchronizace:
 
 ```sql
 CREATE TABLE SchemaChanges (
@@ -50,9 +50,9 @@ SqlStmt nvarchar(max),
 
 Tato tabulka obsahuje sloupec identity ke sledování pořadí změny schématu. Můžete přidat další pole do protokolu informace v případě potřeby.
 
-### <a name="create-a-table-to-track-the-history-of-schema-changes"></a>Vytvořte tabulku pro sledování historie změn schématu
+### <a name="create-a-table-to-track-the-history-of-schema-changes"></a>Vytvořte tabulku pro sledovat historii změn schématu
 
-U všech koncových bodů vytvořte tabulku pro sledování ID použité jako poslední příkaz změnu schématu.
+Pro všechny koncové body vytvořte tabulku pro sledování ID příkazu nedávno použité změnu schématu.
 
 ```sql
 CREATE TABLE SchemaChangeHistory (
@@ -63,9 +63,9 @@ GO
 INSERT INTO SchemaChangeHistory VALUES (0)
 ```
 
-### <a name="create-an-alter-table-ddl-trigger-in-the-database-where-schema-changes-are-made"></a>Vytvořit aktivační událost INSTEAD ALTER DDL tabulky v databázi, ve kterém jsou provedeny změny schématu
+### <a name="create-an-alter-table-ddl-trigger-in-the-database-where-schema-changes-are-made"></a>Vytvoření triggeru příkaz ALTER TABLE DDL v databázi, pokud dojde ke změně schématu
 
-Vytvořte aktivační událost jazyka DDL pro operace ALTER TABLE. Potřebujete vytvořit této aktivační události v databázi, ve kterém jsou provedeny změny schématu. Aby nedocházelo ke konfliktům, povolíte jenom změny schématu v jedna databáze ve skupině pro synchronizaci.
+Vytvořte aktivační událost jazyka DDL pro operace ALTER TABLE. Potřebujete jenom k vytvoření této aktivační události v databázi, pokud dojde ke změně schématu. Aby nedocházelo ke konfliktům, povolit pouze změny schématu v jedné databázi ve skupině synchronizace.
 
 ```sql
 CREATE TRIGGER AlterTableDDLTrigger
@@ -81,13 +81,13 @@ INSERT INTO SchemaChanges (SqlStmt, Description)
     VALUES (EVENTDATA().value('(/EVENT_INSTANCE/TSQLCommand/CommandText)[1]', 'nvarchar(max)'), 'From DDL trigger')
 ```
 
-Aktivační událost vloží záznam v tabulce pro každý příkaz ALTER TABLE sledování změn schémat. Tento příklad přidá filtr předejdete replikace schématu změny provedené v schématu **DataSync**, protože se jedná nejpravděpodobnější, provedené synchronizaci dat služby. Pokud chcete replikovat určitých typů změny schématu, přidejte další filtry.
+Aktivační událost vloží záznam v tabulce pro každý příkaz ALTER TABLE sledování změn schémat. V tomto příkladu přidá filtr, aby replikace změn schématu provedených v rámci schématu **DataSync**, protože ty budou s největší pravděpodobností provedené při synchronizaci dat služby. Pokud chcete replikovat určité typy změn schématu, přidáte další filtry.
 
-Můžete také přidat další aktivační události pro replikaci jiných typů změny schématu. Můžete například vytvořte CREATE_PROCEDURE, ALTER_PROCEDURE a DROP_PROCEDURE aktivační události k replikaci změn k uloženým procedurám.
+Můžete také přidat zobrazíte další aktivační události pro replikaci jiné typy změn schématu. Například vytvoření aktivační události CREATE_PROCEDURE, ALTER_PROCEDURE a DROP_PROCEDURE replikovat změny uložené procedury.
 
-### <a name="create-a-trigger-on-other-endpoints-to-apply-schema-changes-during-insertion"></a>Vytvořit aktivační událost na dalších koncových bodů během vkládání použít změny schématu
+### <a name="create-a-trigger-on-other-endpoints-to-apply-schema-changes-during-insertion"></a>Vytvoření aktivační události na ostatní koncové body k použití změn schématu při vložení
 
-Této aktivační události provede příkaz změnu schématu, když je synchronizovat s další koncové body. Je potřeba vytvořit této aktivační události na všechny koncové body, s výjimkou toho, kde jsou provedeny změny schématu (to znamená, v databázi, kde DDL aktivovat `AlterTableDDLTrigger` je vytvořen v předchozím kroku).
+Tato aktivační událost provede příkaz změnu schématu při se synchronizují do dalších koncových bodů. Je potřeba vytvořit tento aktivační událost pro všechny koncové body, s výjimkou toho, kdy dojde ke změně schématu (to znamená, že v databázi, ve kterém jazyka DDL aktivovat `AlterTableDDLTrigger` vytvořili v předchozím kroku).
 
 ```sql
 CREATE TRIGGER SchemaChangesTrigger
@@ -118,100 +118,100 @@ BEGIN
 END
 ```
 
-Této aktivační události spustí po vložení a zkontroluje, zda se má aktuální příkaz spustit další. Kód logiku zajistí, že žádný příkaz změnu schématu bylo přeskočeno, a všechny změny se použijí, i když je vložení mimo pořadí.
+Tato aktivační událost se spustí po vložení a zkontroluje, zda má aktuální příkaz spustit další. Logika kódu zajistí, že žádný příkaz změny schématu se přeskočilo, a všechny změny se použijí i v případě, že je kurzor na místo mimo pořadí.
 
-### <a name="sync-the-schema-change-tracking-table-to-all-endpoints"></a>Synchronizovat změny schématu sledování tabulky pro všechny koncové body
+### <a name="sync-the-schema-change-tracking-table-to-all-endpoints"></a>Synchronizovat změny schématu tabulky sledování pro všechny koncové body
 
-Můžete synchronizovat sledování tabulky pro všechny koncové body pomocí stávající skupiny synchronizace nebo novou skupinu synchronizace změn schémat. Zajistěte, aby se že změny v tabulce sledování mohou být synchronizovány pro všechny koncové body, zejména v případě, že používáte jeden směr synchronizace.
+Můžete synchronizovat sledování tabulku pro všechny koncové body pomocí stávající skupině synchronizace nebo nová skupina synchronizace změn schématu. Ujistěte se, že změny v tabulce sledování se synchronizují všechny koncové body, zvláště když používáte jeden směr synchronizace.
 
-Vzhledem k tomu, že tato tabulka udržuje jiný stav na různými koncovými body se nesynchronizují v tabulce historie změn schématu.
+Nesynchronizují tabulky historie změn schématu, protože danou tabulku udržuje jiný stav na různých koncových bodů.
 
-### <a name="apply-the-schema-changes-in-a-sync-group"></a>Použít změny schématu ve skupině pro synchronizaci
+### <a name="apply-the-schema-changes-in-a-sync-group"></a>Použít změny schématu ve skupině synchronizace
 
-Se replikují jenom schématu změny provedené v databázi, kde se má vytvořit aktivační událost jazyka DDL. Schéma změny v ostatních databázích nejsou replikovány.
+Se replikují jenom změny schématu provedených v databázi, kde se vytvoří aktivační událost jazyka DDL. Nebudou se replikovat změn schématu provedených v jiných databázích.
 
-Po změny schématu se replikují do všech koncových bodů, musíte také provést další kroky pro aktualizaci schématu synchronizace spuštění nebo zastavení synchronizuje nové sloupce.
+Po změny schématu se replikují do všech koncových bodů, musíte také provést další kroky a aktualizovat schéma synchronizace, spuštění nebo zastavení synchronizace nové sloupce.
 
 #### <a name="add-new-columns"></a>Přidat nové sloupce
 
-1.  Ujistěte se, schéma změnit.
+1.  Ujistěte se, změňte schéma.
 
-2.  Vyhněte se všechny změny dat, které se podílejí nové sloupce, dokud nedokončíte krok, který vytvoří aktivační událost.
+2.  Vyhněte se všechny změny dat, ve kterém se podílejí nové sloupce, dokud nedokončíte krok, který vytvoří aktivační událost.
 
-3.  Počkejte, dokud změny schématu jsou použity na všechny koncové body.
+3.  Počkejte, dokud změny schématu se použijí pro všechny koncové body.
 
-4.  Aktualizujte schéma databáze a přidat nový sloupec schématu synchronizace.
+4.  Aktualizovat schéma databáze a přidat nový sloupec do schématu synchronizace.
 
-5.  Během další operace synchronizace je synchronizovat data do nového sloupce.
+5.  Data v tomto novém sloupci se synchronizuje během další operace synchronizace.
 
 #### <a name="remove-columns"></a>Odebrání sloupců
 
-1.  Sloupce odeberte z schématu synchronizace. Synchronizaci dat zastaví synchronizuje data v těchto sloupcích.
+1.  Odeberte sloupce ze schématu synchronizace. Synchronizace dat se zastaví synchronizují se data v těchto sloupcích.
 
-2.  Ujistěte se, schéma změnit.
+2.  Ujistěte se, změňte schéma.
 
-3.  Aktualizace schématu databáze.
+3.  Aktualizujte schéma databáze.
 
 #### <a name="update-data-types"></a>Aktualizace datové typy
 
-1.  Ujistěte se, schéma změnit.
+1.  Ujistěte se, změňte schéma.
 
-2.  Počkejte, dokud změny schématu jsou použity na všechny koncové body.
+2.  Počkejte, dokud změny schématu se použijí pro všechny koncové body.
 
-3.  Aktualizace schématu databáze.
+3.  Aktualizujte schéma databáze.
 
-4.  Pokud novém i starém datové typy nejsou plně kompatibilní – například pokud se změní z `int` k `bigint` -synchronizace mohou selhat, než dokončení kroků, které vytvářejí aktivačních událostí. Synchronizace se podaří po opakovaném pokusu.
+4.  Pokud novém i starém datové typy, které nejsou plně kompatibilní – například pokud změníte z `int` k `bigint` – synchronizace mohou selhat, aby dokončení kroků, které vytvářejí aktivačních událostí. Synchronizace zdaří po zkuste to znovu.
 
-#### <a name="rename-columns-or-tables"></a>Přejmenování sloupce nebo tabulky
+#### <a name="rename-columns-or-tables"></a>Přejmenování sloupců nebo tabulek
 
-Přejmenování sloupce nebo tabulky provede synchronizaci dat přestat pracovat. Vytvoření nové tabulky nebo sloupce, obnovení dat dat a pak odstraňte původní tabulky nebo sloupce místo přejmenování.
+Přejmenování sloupců nebo tabulek provede synchronizaci dat přestanou fungovat. Vytvořit novou tabulku nebo sloupec, obnovení dat data a pak odstraňte původní tabulky nebo sloupce místo přejmenování.
 
-#### <a name="other-types-of-schema-changes"></a>Jiné typy změny schématu
+#### <a name="other-types-of-schema-changes"></a>Jiné typy změn schématu
 
-U jiných typů změny schématu – například uložené procedury vytváří nebo vyřazuje indexu - aktualizace schématu synchronizace se nevyžaduje.
+U jiných typů změn schématu – například uložené procedury vytváří nebo vyřazuje indexu – aktualizace schématu synchronizace se nevyžaduje.
 
 ## <a name="troubleshoot"></a> Řešení potíží s replikace změn automatizované schématu
 
-Replikace logiku popsané v tomto článku přestane fungovat v některých situacích – například pokud jste provedli schéma změnit v místní databázi, což není podporováno ve službě Azure SQL Database. V takovém případě synchronizuje tabulka sledování změn schématu se nezdaří. Tento problém je nutné opravit ručně:
+Logika replikace je popsáno v tomto článku přestane fungovat v některých situacích – například pokud jste schéma změna v místní databázi, což není podporováno ve službě Azure SQL Database. V takovém případě tabulky sledování změn schématu synchronizace se nezdaří. Tento problém potřebujete vyřešit ručně:
 
 1.  Zakázat aktivační událost jazyka DDL a vyhnout se žádné další změny schématu, dokud nebude problém vyřešen.
 
-2.  V databázi koncový bod, kde se děje problém zakažte aktivační události AFTER INSERT v koncovém bodě, kde nelze provést změny schématu. Tato akce umožňuje příkaz změnu schématu možné synchronizovat.
+2.  V databázi koncový bod, ve kterém dochází k problému zakažte aktivační události AFTER INSERT na koncový bod, ve kterém nelze provést změnu schématu. Tato akce umožní příkaz změny schématu se.
 
-3.  Spouštění synchronizace pro synchronizaci tabulky sledování změn schémat.
+3.  Aktivovat synchronizaci pro synchronizaci tabulky sledování změn schémat.
 
-4.  V databázi koncový bod, kde se děje problém změnit dotaz schématu tabulky historie získat ID poslední příkaz změnu použité schéma.
+4.  V databázi koncový bod, ve kterém dochází k problému změňte dotaz schématu tabulky historie k získání ID poslední příkaz změnu použité schéma.
 
-5.  Dotaz na tabulku na seznam všech příkazů s ID větší než hodnota ID, že jste získali v předchozím kroku sledování změn schémat.
+5.  Dotaz na tabulku na seznam všech příkazů s ID větší než hodnota ID, že který jste získali v předchozím kroku sledování změn schémat.
 
-    a.  Ignorujte příkazy, které nelze v databázi koncový bod. Budete muset řešit nekonzistence schématu. Vrátit se původní změny schématu, pokud nekonzistence ovlivní vaše aplikace.
+    a.  Ignorujte příkazy, které nelze provést, v databázi koncový bod. Je potřeba řešit nekonzistence schématu. Vrátit zpět původní změny schématu, pokud nekonzistencí má vliv na vaše aplikace.
 
-    b.  Použít tyto příkazy, které bude použito ručně.
+    b.  Příkazy, které bude použito aplikovat ručně.
 
-6.  Aktualizovat tabulky historie změn schématu a nastavit ID poslední použité na správnou hodnotu.
+6.  Aktualizovat tabulku historie změn schématu a ID poslední použité na správnou hodnotu.
 
 7.  Zkontrolujte, zda je aktuální schéma.
 
-8.  Znovu povolte po vložení aktivační událost v druhém kroku zakázáno.
+8.  Znovu povolte trigger AFTER INSERT zakázaná v druhém kroku.
 
 9.  Znovu povolte aktivační událost jazyka DDL zakázaná v prvním kroku.
 
-Pokud chcete vyčistit záznamy v tabulky sledování změn schématu, použijte místo TRUNCATE odstranit. Nikdy opakovaným přidáním sloupce identity v sledování tabulky pomocí příkazu DBCC CHECKIDENT změn schématu. Můžete vytvořit nové změny schématu tabulky sledování a pokud reseeding je potřeba aktualizovat název tabulky v aktivační událost jazyka DDL.
+Pokud chcete vyčistit záznamy v tabulce pro sledování změn schématu, použijte místo TRUNCATE odstranit. Nikdy reseed sloupec identity v řešení change tracking tabulky pomocí příkazu DBCC CHECKIDENT schématu. Můžete vytvořit novou změnu schématu sledovacích tabulek a pokud reseeding je potřeba aktualizovat název tabulky v aktivační událost jazyka DDL.
 
 ## <a name="other"></a> Další důležité informace
 
--   Databáze uživatelé, kteří konfigurovat databáze rozbočovače a člen musí mít dostatečná oprávnění ke spuštění příkazů změny schématu.
+-   Uživatelé databáze, kteří konfigurují databáze centra a člen musí mít dostatečná oprávnění ke spuštění příkazů změnu schématu.
 
--   Můžete přidat další filtry v aktivační událost jazyka DDL pouze replikovat změny schématu ve vybraných tabulkách nebo operace.
+-   V aktivační událost jazyka DDL pouze replikovat změny schématu vybrané tabulky nebo operace můžete přidat další filtry.
 
--   Změny schématu lze vytvořit pouze v databázi, kde se má vytvořit aktivační událost jazyka DDL.
+-   Změny schématu lze vytvořit pouze v databázi, kde se vytvoří aktivační událost jazyka DDL.
 
--   Pokud jsou provedení změny v databázi SQL serveru místní, ujistěte se, že změny schématu je podporována v Azure SQL Database.
+-   Jestliže provádíte změnu v databázi SQL serveru v místním, ujistěte se, že změny schématu se podporuje ve službě Azure SQL Database.
 
--   Pokud změny schématu jsou provedeny v databázích než databáze, kde se má vytvořit aktivační událost jazyka DDL, nejsou replikovat změny. K tomuto problému vyhnout, můžete vytvořit aktivační události DDL blokování změny na ostatní koncové body.
+-   Pokud dojde ke změně schématu v databázích než databáze, kde se vytvoří aktivační událost jazyka DDL, změny se replikují. K tomuto problému vyhnout, můžete vytvořit aktivační procedury DDL zablokovat změny v ostatních koncových bodů.
 
--   Pokud potřebujete změnit schéma tabulky sledování změn schématu, zakažte aktivační událost jazyka DDL před změnou a pak ručně použití změny na všechny koncové body. Aktualizace schématu v aktivační události AFTER INSERT ve stejné tabulce nefunguje.
+-   Pokud potřebujete změnit schéma tabulky sledování změn schématu, zakažte aktivační událost jazyka DDL před změnou a ručně tato změna platí pro všechny koncové body. Aktualizace schématu v aktivační událost po vložení ve stejné tabulce nefunguje.
 
--   Pomocí příkazu DBCC CHECKIDENT si opakovaným přidáním sloupce identity.
+-   Pomocí příkazu DBCC CHECKIDENT není reseed sloupec identity.
 
--   Nepoužívejte TRUNCATE vyčistit data v tabulce sledování změn schémat.
+-   Nepoužívejte TRUNCATE vyčistit data v tabulce pro sledování změn schémat.

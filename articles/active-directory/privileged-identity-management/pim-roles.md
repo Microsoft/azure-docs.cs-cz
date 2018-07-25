@@ -10,25 +10,22 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.component: protection
-ms.date: 03/04/2018
+ms.date: 07/23/2018
 ms.author: rolyon
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
-ms.openlocfilehash: bbc87f529cb70b6f4b21984199ed87427b4e3108
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 6553fdba463144c6eda1e35c0967e92a3c44aff6
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38590342"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39225572"
 ---
-# <a name="different-administrative-role-in-azure-active-directory-pim"></a>Různé role pro správu v Azure Active Directory PIM
+# <a name="directory-roles-you-can-manage-using-azure-ad-pim"></a>Role adresáře, které můžete spravovat pomocí Azure AD PIM
 <!-- **PLACEHOLDER: Need description of how this works. Azure PIM uses roles from MSODS objects.**-->
 
-Přiřadit uživatele ve vaší organizaci pro různé role pro správu ve službě Azure AD. Tato přiřazení rolí řídit, jaké úkoly, jako je například přidávání nebo odebírání uživatelů nebo změna nastavení služby, uživatelé budou moct provádět v Azure AD, Office 365 a dalších Microsoft Online Services a propojených aplikací.  
+Přiřadit uživatele ve vaší organizaci pro různé role pro správu ve službě Azure AD. Tato přiřazení rolí řídit, jaké úkoly, jako je například přidávání nebo odebírání uživatelů nebo změna nastavení služby, uživatelé budou moct provádět v Azure AD, Office 365 a další Microsoft Online Services a propojené aplikace.  
 
-> [!IMPORTANT]
-> Microsoft doporučuje při správě služby Azure AD používat [centrum pro správu Azure AD](https://aad.portal.azure.com) na webu Azure Portal.
-
-Globální správce můžete aktualizovat, které jsou uživatelům **trvale** přiřazená role ve službě Azure AD, například pomocí rutin prostředí PowerShell `Add-MsolRoleMember` a `Remove-MsolRoleMember`, nebo prostřednictvím portálu, jak je popsáno v [přiřazení rolí správce ve službě Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md).
+Globální správce můžete aktualizovat, které jsou uživatelům **trvale** přiřazená role ve službě Azure AD na portálu, jak je popsáno v [přiřazení rolí správce v Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md) nebo pomocí [ Příkazy prostředí PowerShell](/powershell/module/azuread#directory_roles).
 
 Azure AD Privileged Identity Management (PIM) spravuje zásady pro privilegovaný přístup pro uživatele ve službě Azure AD. PIM uživatelům přiřadí jednu nebo více rolí ve službě Azure AD a můžete přiřadit někdo bude trvale v roli, nebo na roli oprávnění. Když uživatel trvale přiřazená k roli nebo aktivuje přiřazení oprávněné role, pak se oprávnění přiřazená k jejich rolí můžou spravovat služby Azure Active Directory, Office 365 a dalších aplikací.
 
@@ -66,7 +63,7 @@ Pokud chcete jiné uživateli dát přístup ke správě v PIM samotné, role, k
 ## <a name="roles-not-managed-in-pim"></a>Role, která nejsou spravovaná v PIM
 Role v systému Exchange Online nebo SharePoint Online, kromě těch, které uvedených výše, nejsou reprezentovány ve službě Azure AD a proto nejsou viditelné v PIM. Další informace o změně přiřazení rolí podrobných v těchto služeb Office 365 najdete v tématu [oprávnění ve službách Office 365](https://support.office.com/article/Permissions-in-Office-365-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
-Skupiny prostředků a předplatná Azure nejsou také reprezentovány ve službě Azure AD. Správa předplatných Azure, najdete v článku [postup přidání nebo změna rolí správce Azure](../../billing/billing-add-change-azure-subscription-administrator.md) a další informace o Azure RBAC najdete [řízení přístupu](../../role-based-access-control/role-assignments-portal.md).
+Skupiny prostředků a předplatná Azure nejsou také reprezentovány ve službě Azure AD. Správa předplatných Azure, najdete v článku [postup přidání nebo změna rolí správce Azure](../../billing/billing-add-change-azure-subscription-administrator.md) a další informace o funkci Azure RBAC najdete v tématu [řízení přístupu na základě rolí Azure](../../role-based-access-control/role-assignments-portal.md).
 
 <!--**The above links might be replaced by ones that are from within this documentation repository **-->
 

@@ -1,11 +1,11 @@
 ---
 title: Co je migrace zásad podmíněného přístupu Azure Active Directory? | Dokumenty Microsoft
-description: Zjistěte, co potřebujete vědět o migraci na portálu Azure classic zásad.
+description: Zjistěte, co potřebujete vědět o migrace klasických zásad na webu Azure Portal.
 services: active-directory
-keywords: podmíněný přístup k aplikacím, podmíněného přístupu s Azure AD, zabezpečený přístup k prostředkům společnosti, zásady podmíněného přístupu
+keywords: podmíněný přístup pro aplikace, podmíněný přístup s Azure AD, zabezpečený přístup k prostředkům společnosti, zásady podmíněného přístupu
 documentationcenter: ''
 author: MarkusVi
-manager: femila
+manager: mtillman
 editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
@@ -14,102 +14,102 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/13/2018
+ms.date: 07/24/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 4a9b3df66567c4170ba861d3e597261e37271bf1
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 6123e05d6e20d213a859836ddf55a3ca6f7255a5
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36232286"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39224564"
 ---
 # <a name="what-is-a-policy-migration-in-azure-active-directory-conditional-access"></a>Co je migrace zásad podmíněného přístupu Azure Active Directory? 
 
 
-[Podmíněný přístup](active-directory-conditional-access-azure-portal.md) je funkce služby Azure Active directory (Azure AD), jak vám umožní řídit oprávnění uživatelům přístup cloudových aplikací. Účelem je pořád stejné, má verzi na nový portál Azure zavedla významná vylepšení na tom, jak podmíněný přístup funguje.
+[Podmíněný přístup](active-directory-conditional-access-azure-portal.md) je funkce Azure Active directory (Azure AD), která umožňuje řídit jak Autorizovaní uživatelé přistupovat ke vašim cloudovým aplikacím. Když účel zůstává stejný, vydání nového portálu Azure přináší významná vylepšení na tom, jak podmíněný přístup funguje.
 
-Měli byste zvážit, zásady, které jste dosud nevytvořili na portálu Azure, protože migrace:
+Migrace zásad, které jste ještě nevytvořili na webu Azure Portal, protože byste měli zvážit:
 
-- Scénáře, které nelze zpracovat před můžete vyřešit.
+- Nyní můžete řešit situace, které nelze zpracovat před.
 
-- Můžete snížit počet zásad, které budete muset spravovat konsolidovat.   
+- Můžete snížit počet zásad, které je nutné spravovat jejich sloučení.   
 
 - Můžete spravovat všechny zásady podmíněného přístupu v jednom centrálním místě.
 
-- Portál Azure classic vyřadí.   
+- Na portálu Azure classic se vyřadí z provozu.   
 
-Tento článek vysvětluje, co potřebujete vědět o migraci stávající zásady podmíněného přístupu na nové architektury.
+Tento článek vysvětluje, co potřebujete vědět o migraci stávající zásady podmíněného přístupu na nový rámec.
  
 ## <a name="classic-policies"></a>Klasické zásady
 
-V [portál Azure](https://portal.azure.com), [podmíněný přístup – zásady](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) stránka je zásady vaší vstupní bod do podmíněného přístupu. Ve vašem prostředí, může však také mít zásady podmíněného přístupu, které jste dosud nevytvořili pomocí této stránky. Tyto zásady se označují jako *classic zásady*. Zásady podmíněného přístupu jsou Classic zásady, které jste vytvořili v:
+V [webu Azure portal](https://portal.azure.com), [podmíněného přístupu – zásady](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) je stránka zásady podmíněného přístupu vaším vstupním bodem. Ve vašem prostředí, může však také mít zásady podmíněného přístupu, které nebyly vytvořené pomocí této stránky. Tyto zásady jsou označovány jako *klasické zásady*. Klasické zásady se zásady podmíněného přístupu, které jste vytvořili v:
 
-- Portál Azure classic
-- Klasický portál služby Intune
-- Na portálu ochrany aplikace Intune
+- Na portálu Azure classic
+- Na klasickém portálu Intune
+- Na portálu Intune App Protection
 
 
-Na **podmíněného přístupu** stránky, dostanete classic zásad kliknutím [ **zásady Classic (preview)** ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/ClassicPolicies) v **spravovat** oddíl. 
+Na **podmíněného přístupu** stránky, klasické zásady se zpřístupní po kliknutí [ **klasické zásady (preview)** ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/ClassicPolicies) v **spravovat** oddíl. 
 
 
 ![Azure Active Directory](./media/active-directory-conditional-access-migration/71.png)
 
 
-**Classic zásady** zobrazení vám poskytuje možnost:
+**Klasické zásady** zobrazení vám poskytuje možnost:
 
-- Filtrujte classic zásad.
+- Filtrovat klasické zásady.
  
     ![Azure Active Directory](./media/active-directory-conditional-access-migration/72.png)
 
-- Zakážete classic zásady.
+- Zakážete klasické zásady.
 
     ![Azure Active Directory](./media/active-directory-conditional-access-migration/73.png)
    
-- Zkontrolujte nastavení classic zásad (a ji zakázat).
+- Zkontrolujte nastavení, klasické zásady (a pro jeho zakázání).
 
     ![Azure Active Directory](./media/active-directory-conditional-access-migration/74.png)
 
 
-Pokud jste zakázali zásadu classic, bude možné už vrátit tento krok. Z tohoto důvodu můžete upravit členství ve skupině v classic zásad pomocí **podrobnosti** zobrazení. 
+Pokud jste zakázali klasické zásady, nemůže už vrátit tento krok. To je důvod, proč můžete upravit členství ve skupině do pomocí klasické zásady **podrobnosti** zobrazení. 
 
 ![Azure Active Directory](./media/active-directory-conditional-access-migration/75.png)
 
-Změnou vybrané skupiny nebo vyloučení konkrétních skupin můžete otestovat efektu zakázané classic zásad pro několik testovací uživatele před jeho zakázáním zásady pro všechny zahrnuté uživatele a skupiny. 
+Změna vybrané skupiny nebo vyloučení konkrétních skupin můžete otestovat efekt zakázané klasické zásady pro několik testovacích uživatelů před vypnutím zásad pro všechna zahrnutí uživatelé a skupiny. 
 
 
 
 ## <a name="azure-ad-conditional-access-policies"></a>Zásady podmíněného přístupu Azure AD
 
-Pomocí podmíněného přístupu na portálu Azure můžete spravovat všechny zásady v jednom centrálním místě. Protože se změnil výrazně implementace jak podmíněný přístup, byste si měli přečíst se základními koncepcemi před migrací classic zásad.
+Pomocí podmíněného přístupu na webu Azure Portal můžete spravovat všechny zásady v jednom centrálním místě. Protože došlo ke změně výrazně provádění jak podmíněný přístup, měli byste seznámit se základními koncepcemi před migrací klasické zásady.
 
 Přečtěte si:
 
-- [Co je podmíněného přístupu v Azure Active Directory](active-directory-conditional-access-azure-portal.md) Další informace o základních koncepcích a technologiím.
+- [Co je podmíněný přístup v Azure Active Directory](active-directory-conditional-access-azure-portal.md) Další informace o základních konceptech a terminologii.
 
-- [Osvědčené postupy pro podmíněný přístup v Azure Active Directory](active-directory-conditional-access-best-practices.md) získat některé pokyny k nasazení podmíněného přístupu ve vaší organizaci.
+- [Osvědčené postupy pro podmíněný přístup ve službě Azure Active Directory](active-directory-conditional-access-best-practices.md) chcete získat nějaké pokyny k nasazení podmíněného přístupu ve vaší organizaci.
 
-- [Vícefaktorové ověřování vyžadovat pro konkrétní aplikace s podmíněným přístupem Azure Active Directory](active-directory-conditional-access-app-based-mfa.md) Seznamte se s uživatelského rozhraní na portálu Azure.
+- [Vyžadovat vícefaktorové ověřování pro konkrétní aplikace s podmíněným přístupem Azure Active Directory](active-directory-conditional-access-app-based-mfa.md) Seznamte se s uživatelským rozhraním webu Azure Portal.
 
 
  
-## <a name="migration-considerations"></a>Posouzení migrace
+## <a name="migration-considerations"></a>Aspekty migrace
 
-V tomto článku zásady podmíněného přístupu Azure AD jsou také označovány jako *nové zásady*.
-Classic zásad pokračovat v práci node souběžně s nové zásady, dokud nebude zakázat nebo smazat. 
+V tomto článku, zásady podmíněného přístupu Azure AD jsou také označovány jako *nové zásady*.
+Klasické zásady dál fungovat společně s vaší nové zásady, dokud zakázat nebo odstranit. 
 
-Tyto aspekty jsou důležité v kontextu konsolidace zásad:
+Tyto aspekty jsou důležité v kontextu sloučení zásad:
 
-- Při classic zásady jsou svázané s konkrétní cloudové aplikace, můžete vybrat libovolný počet cloudových aplikací, jako je třeba v nové zásady.
+- Zatímco klasické zásady jsou vázané na konkrétní cloudové aplikaci, můžete vybrat podle musíte v nových zásad cloudových aplikací.
 
-- Ovládací prvky nové zásady pro cloudové aplikace a classic zásad vyžadovat všechny ovládací prvky (*a*) musí být splněny. 
+- Ovládací prvky klasické zásady a nové zásady pro cloudové aplikace vyžadují všechny ovládací prvky (*a*) musí být splněny. 
 
 
 - V nové zásady můžete:
  
-    - Pokud to vyžaduje váš scénář, kombinovat více podmínek. 
+    - Pokud to váš scénář vyžaduje zkombinovat více podmínek. 
 
-    - Vyberte několik udělit požadavky na přístup řízení a zkombinovat s logickou *nebo* (vyžadují jeden z vybraných ovládacích prvků) nebo s logickou *a* (vyžadují všechny vybrané ovládací prvky).
+    - Vyberte několik udělit požadavky na přístup, řízení a zkombinujte je se logické *nebo* (vyžadovat jeden z vybraných ovládacích prvků) nebo s logickým *a* (vyžadovat všechny vybrané ovládací prvky).
 
         ![Azure Active Directory](./media/active-directory-conditional-access-migration/25.png)
 
@@ -118,37 +118,37 @@ Tyto aspekty jsou důležité v kontextu konsolidace zásad:
 
 ### <a name="office-365-exchange-online"></a>Office 365 Exchange online
 
-Pokud chcete migrovat classic zásady pro **Office 365 Exchange online** , zahrnout **protokolu Exchange Active Sync** jako podmínku aplikace klienta, nemusí být možné konsolidovat je do jedné nové zásady. 
+Pokud chcete migrovat klasické zásady pro **Office 365 Exchange online** , které zahrnují **protokolu Exchange Active Sync** jako stav klienta aplikace, nemusí být možné sloučit do jedné nové zásady. 
 
-To nastane, například pokud chcete podporovat všechny typy aplikací klienta. V nové zásady, který má **protokolu Exchange Active Sync** jako podmínku aplikace klienta, nelze vybrat jiné klientské aplikace.
+To platí, například pokud chcete podporovat všechny typy klientských aplikací. V nové zásady, který má **protokolu Exchange Active Sync** jako stav klienta aplikace, nelze vybrat jiné klientské aplikace.
 
 ![Azure Active Directory](./media/active-directory-conditional-access-migration/64.png)
 
-Konsolidace do jedné nové zásady není možné v případě, že vaše classic zásady obsahují několik podmínek. Nová zásada, která má **protokolu Exchange Active Sync** podmínky, které jsou nakonfigurované jako klientské aplikace nepodporuje další podmínky:   
+Konsolidaci do jedné nové zásady není možné, pokud klasické zásady obsahují několik podmínek. Novou zásadu, která má **protokolu Exchange Active Sync** jako klientských aplikací nepodporuje podmínky nakonfigurované další podmínky:   
 
 ![Azure Active Directory](./media/active-directory-conditional-access-migration/08.png)
 
-Pokud máte novou zásadu, která má **protokolu Exchange Active Sync** jako klientské aplikace podmínky nakonfigurované, musíte zajistit, aby nebyly nakonfigurovány všechny další podmínky. 
+Pokud máte novou zásadu, která má **protokolu Exchange Active Sync** jako klientské aplikace podmínky nakonfigurované, musíte zajistit, aby nebyly nakonfigurovány všechny ostatní podmínky. 
 
 ![Azure Active Directory](./media/active-directory-conditional-access-migration/16.png)
  
 
-[Na základě aplikace](active-directory-conditional-access-technical-reference.md#approved-client-app-requirement) classic zásady pro Office 365 Exchange Online, které obsahují **protokolu Exchange Active Sync** jako podmínku aplikace klienta povolit **podporované** a **nepodporovaný** [platformy zařízení](active-directory-conditional-access-technical-reference.md#device-platform-condition). Při platformy jednotlivých zařízení nelze konfigurovat v související nové zásady, můžete omezit podporu, aby [podporované platformy zařízení](active-directory-conditional-access-technical-reference.md#device-platform-condition) pouze. 
+[Na základě aplikace](active-directory-conditional-access-technical-reference.md#approved-client-app-requirement) klasické zásady pro Office 365 Exchange Online, které obsahují **protokolu Exchange Active Sync** jako stav klienta aplikace povolit **podporované** a **nepodporované** [platformy zařízení](active-directory-conditional-access-technical-reference.md#device-platform-condition). Zatímco nelze konfigurovat jednotlivá zařízení platformy v související nové zásady, můžete omezit podporu o [podporované platformy zařízení](active-directory-conditional-access-technical-reference.md#device-platform-condition) pouze. 
 
 ![Azure Active Directory](./media/active-directory-conditional-access-migration/65.png)
 
-Může konsolidovat více classic zásady, které obsahují **protokolu Exchange Active Sync** jako podmínku aplikace klienta, pokud mají:
+Můžete konsolidovat více klasické zásady, které obsahují **protokolu Exchange Active Sync** jako podmínku aplikace klienta, pokud mají:
 
 - Pouze **protokolu Exchange Active Sync** jako podmínku 
 
 - Několik požadavků pro udělení přístupu nakonfigurované
 
-Jeden běžný scénář je konsolidací:
+Jeden běžný scénář je konsolidovaná:
 
-- Zásady klasické založené na zařízení z portálu Azure classic 
-- Zásady klasické založené na aplikaci na portálu služby Intune aplikaci ochrany 
+- Klasické zásady z portálu Azure classic podle zařízení 
+- Základě aplikace klasické zásady na portálu Intune app protection 
  
-V takovém případě lze konsolidovat classic zásad do jednoho nová zásada, která má oba požadavky na vybrané.
+V takovém případě můžete konsolidovat klasické zásady do jedné nové zásady, který má i požadavky na vybrané.
 
 ![Azure Active Directory](./media/active-directory-conditional-access-migration/62.png)
 
@@ -156,9 +156,9 @@ V takovém případě lze konsolidovat classic zásad do jednoho nová zásada, 
 
 ### <a name="device-platforms"></a>Platformy zařízení
 
-Classic zásad [ovládací prvky založené na aplikaci](active-directory-conditional-access-technical-reference.md#approved-client-app-requirement) jsou předem nakonfigurovaná s iOS a Android, jako [podmínku platformy zařízení](active-directory-conditional-access-technical-reference.md#device-platform-condition). 
+Klasické zásady se [ovládacích prvků na základě aplikace](active-directory-conditional-access-technical-reference.md#approved-client-app-requirement) předem nakonfigurovaným programem zařízení s iOS a Android jako [podmínku platformy zařízení](active-directory-conditional-access-technical-reference.md#device-platform-condition). 
 
-V nové zásady, budete muset vybrat možnost [platformy zařízení](active-directory-conditional-access-technical-reference.md#device-platform-condition) chcete podporují individuálně.
+V nové zásady, budete muset vybrat [platformy zařízení](active-directory-conditional-access-technical-reference.md#device-platform-condition) chcete zajistit podporu jednotlivě.
 
 ![Azure Active Directory](./media/active-directory-conditional-access-migration/41.png)
 
@@ -170,6 +170,6 @@ V nové zásady, budete muset vybrat možnost [platformy zařízení](active-dir
 
 ## <a name="next-steps"></a>Další postup
 
-- Pokud chcete vědět, jak konfigurovat zásadu podmíněného přístupu, najdete v článku [GRequire MFA pro konkrétní aplikace s podmíněným přístupem Azure Active Directory](active-directory-conditional-access-app-based-mfa.md).
+- Pokud chcete vědět, jak nakonfigurovat zásady podmíněného přístupu najdete v tématu [GRequire vícefaktorové ověřování pro konkrétní aplikace s podmíněným přístupem Azure Active Directory](active-directory-conditional-access-app-based-mfa.md).
 
-- Pokud jste připraveni ke konfiguraci zásad podmíněného přístupu pro prostředí, najdete v článku [osvědčené postupy pro podmíněný přístup v Azure Active Directory](active-directory-conditional-access-best-practices.md). 
+- Pokud jste připraveni ke konfiguraci zásad podmíněného přístupu pro vaše prostředí, najdete v článku [osvědčené postupy pro podmíněný přístup ve službě Azure Active Directory](active-directory-conditional-access-best-practices.md). 

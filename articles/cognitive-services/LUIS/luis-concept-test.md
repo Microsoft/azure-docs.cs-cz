@@ -2,19 +2,19 @@
 title: Otestujte aplikaci LUIS – Azure | Dokumentace Microsoftu
 description: Language Understanding (LUIS) umožňuje neustále pracovat na aplikaci zpřesnit jej a zvýšit jeho umožňující porozumět jazyku.
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 03/14/2018
-ms.author: v-geberr
-ms.openlocfilehash: 46aa23ee359fd1f2f5a1cf8a05854d5c4cc7c739
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.author: diberry
+ms.openlocfilehash: d231eaf98358e3f8237a820e59433558d293872f
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39170612"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39224343"
 ---
 # <a name="testing-in-luis"></a>Testování v LUIS
 

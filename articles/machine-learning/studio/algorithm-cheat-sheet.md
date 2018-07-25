@@ -1,7 +1,7 @@
 ---
-title: Strojového učení rychlý přehled algoritmů | Microsoft Docs
-description: Tisknutelná strojového učení rychlý přehled algoritmů umožňuje vybrat správné algoritmus prediktivního modelu v Azure Machine Learning Studio.
-keywords: rychlý přehled algoritmů, tahák, algoritmu strojového učení
+title: Služby Machine learning tahák k algoritmům – Azure | Dokumentace Microsoftu
+description: Tisknutelný strojového učení tahák k algoritmům pomůže vám zvolit správný algoritmus pro prediktivní model Azure Machine Learning Studio.
+keywords: tahák k algoritmům, tahák, algoritmu strojového učení
 services: machine-learning
 documentationcenter: ''
 author: pakalra
@@ -16,64 +16,64 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
-ms.openlocfilehash: a448d6931330f7b2f0730add65473097bb2b5a57
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: b080a739aa73e3c8ef95c7db9a6358d942e94bba
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34833559"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39238382"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-microsoft-azure-machine-learning-studio"></a>Tahák k algoritmům služby Machine Learning pro Microsoft Azure Machine Learning Studio
-**Aktualizace Microsoft Azure Machine Learning algoritmus cheaty list** umožňuje vybrat správné algoritmus pro model prediktivní analýzy.
+**Aktualizace Microsoft Azure Machine Learning algoritmus Ošidit list** pomáhá vybrat správné algoritmu pro model prediktivní analýzy.
 
-[Azure Machine Learning Studio](https://studio.azureml.net/) má velké knihovny algoritmů z ***regrese***, ***klasifikace***, ***clustering***, a  ***detekce anomálií*** rodiny. Každý je určena pro různé typy machine learning problému adres.
+[Azure Machine Learning Studio](https://studio.azureml.net/) má velké knihovny algoritmů z ***regrese***, ***klasifikace***, ***clustering***, a  ***detekce anomálií*** rodiny. Každý se zaměřuje na řešení jiného typu problému machine learning.
 
-## <a name="download-machine-learning-algorithm-cheat-sheet"></a>Stáhnout: Strojového učení algoritmu – tahák
-**Stáhněte si tahák zde: [Machine Learning algoritmus cheaty list (11 × 17 palců.)](http://download.microsoft.com/download/A/6/1/A613E11E-8F9C-424A-B99D-65344785C288/microsoft-machine-learning-algorithm-cheat-sheet-v6.pdf)**
+## <a name="download-machine-learning-algorithm-cheat-sheet"></a>Stažení: Machine learning tahák k algoritmům
+**Stáhněte si tahák tady: [Machine Learning algoritmus Ošidit list (11 × 17 palců)](http://download.microsoft.com/download/A/6/1/A613E11E-8F9C-424A-B99D-65344785C288/microsoft-machine-learning-algorithm-cheat-sheet-v6.pdf)**
 
-![Machine Learning algoritmus tahák: Zjistěte, jak vybrat algoritmus Machine Learning.][cheat-sheet]
+![Machine Learning tahák: Zjistěte, jak zvolit algoritmus Machine Learning.][cheat-sheet]
 
 [cheat-sheet]: ./media/algorithm-cheat-sheet/machine-learning-algorithm-cheat-sheet-small_v_0_6-01.png
 
-Stáhnout a vytisknout Machine Learning algoritmus cheaty list ve velikosti tabloid získat pomoc s výběrem algoritmu a mít je k dispozici.
+Stáhnout a vytisknout Machine Learning algoritmus Ošidit listu ve velikosti tabloid zachovat po ruce a získat pomoc s výběrem algoritmus.
 
 > [!NOTE]
-> Najdete v článku [jak zvolit algoritmy pro Microsoft Azure Machine Learning](algorithm-choice.md) podrobné příručce k použití této tahák.
+> Přečtěte si článek [jak zvolit algoritmy pro Microsoft Azure Machine Learning](algorithm-choice.md) podrobné pokyny k používání tento tahák.
 > 
 > 
 
 ## <a name="more-help-with-algorithms"></a>Další pomoc s algoritmy
-* Pomoc při použití této tahák pro výběr správné algoritmus plus podrobnější diskuzi o různé typy algoritmů machine learningu a způsobu jejich použití najdete v tématu [jak zvolit algoritmy pro Microsoft Azure Machine Learning](algorithm-choice.md).
-* Infografice ke stažení, který popisuje algoritmy a obsahuje příklady, najdete v části [ke stažení Infografice: strojového učení základy s příklady algoritmus](basics-infographic-with-algorithm-examples.md).
-* Seznam podle kategorie všechny algoritmy strojového učení dostupné v nástroji Machine Learning Studio najdete v tématu [inicializovat Model] [ initialize-model] v Machine Learning Studio algoritmus a pomáhají modulu.
-* Dokončení abecední seznam algoritmů a modulů v Machine Learning Studio najdete v tématu [seznam A-Z modulů Machine Learning Studio] [ a-z-list] v Machine Learning Studio algoritmus a pomoci modulu.
+* Pomoc při používání tento tahák pro výběr správné algoritmus plus hlubší diskuzi o různých typech algoritmů strojového učení a jak se používají, najdete v části [jak zvolit algoritmy pro Microsoft Azure Machine Learning](algorithm-choice.md).
+* Infografika ke stažení, která popisuje algoritmy a poskytuje příklady, naleznete v tématu [Infografika ke stažení: Základy s příklady algoritmů služby Machine learning](basics-infographic-with-algorithm-examples.md).
+* Seznam podle kategorie všechny dostupných algoritmů strojového učení v nástroji Machine Learning Studio najdete v tématu [inicializovat Model] [ initialize-model] Machine Learning Studio algoritmus a pomůže modulu.
+* Úplný abecední seznam algoritmů a modulů v Machine Learning Studio najdete v tématu [seznam A-Z modulů Machine Learning Studio] [ a-z-list] Studio algoritmu strojového učení a pomůže modulu.
 * Pokud si chcete stáhnout a vytisknout diagram s přehledem funkcí nástroje Machine Learning Studio, nahlédněte do tématu [Diagram s přehledem možností nástroje Machine Learning Studio](studio-overview-diagram.md).
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
 ## <a name="notes-and-terminology-definitions-for-the-machine-learning-algorithm-cheat-sheet"></a>Poznámky a definice terminologie pro strojové učení algoritmu tahák
 
-* Návrhy nenabízí tento rychlý přehled algoritmů jsou přibližné pravidla z jezdce. Některé můžete ohnuty a některé můžou být flagrantly došlo k porušení. Slouží k návrhu počáteční bod. Není třeba obávat spustit head-to-head konfliktům mezi několik algoritmů na vaše data. Neexistuje žádné jednoduše substitute pro seznámení se zásadami jednotlivých algoritmů a pochopení systému, která vygenerovala data.
+* Tento tahák k algoritmům nabízí návrhy jsou přibližné pravidla nástroje jezdce. Některé můžou ohnuty a některé mohou být flagrantly došlo k porušení. To je určený pro návrh výchozí bod. Nebojte se ke spuštění head-to-head konkurence mezi několik algoritmů s vašimi daty. Není jednoduše náhradu pochopení principů jednotlivých algoritmů a Principy systému, která vygenerovala vaše data.
 
-* Každý algoritmu strojového učení má svůj vlastní styl nebo *induktivní odchylka*. Pro určitý problém může být vhodné několik algoritmů a jeden algoritmus může být lépe odpovídaly než jiné. Ale není vždy možné předem znát, což je nejlepší. V takových případech jsou několik algoritmů uvedené v listu podvést společně. Vhodná strategie by mohla být opakujte jeden algoritmus a pokud nejsou výsledky ještě uspokojivé, zkuste jiné. Tady je příklad z [Azure AI Galerie](http://gallery.cortanaintelligence.com/) experimentu několik algoritmů proti stejná data se pokusí a porovná výsledky: [porovnat více třída třídění: písmeno rozpoznávání](http://gallery.cortanaintelligence.com/Details/a635502fc98b402a890efe21cec65b92).
+* Každý algoritmu strojového učení má svůj vlastní styl nebo *indukční posun*. Pro určitý problém může být vhodné několik algoritmů a jeden algoritmus může být vhodný lepší než jiné. Ale to není vždy možné předem znát, což je nejvhodnější. V takových případech patří několik algoritmů společně v stručný přehled stylů. Vhodné strategie může být jeden algoritmus a pokud výsledky ještě nejsou uspokojivé kvality, akci ostatní. Tady je příklad z [galerii Azure AI](http://gallery.cortanaintelligence.com/) experimentu, který se pokusí několik algoritmů na stejná data a porovnává výsledky: [porovnání třídění roc: písmeno rozpoznávání](http://gallery.cortanaintelligence.com/Details/a635502fc98b402a890efe21cec65b92).
 
-* Existují tři hlavní kategorie machine learning: **učení se supervizí**, **supervize**, a **posílení learning**.
+* Existují tři hlavní kategorie služby machine learning: **pod dohledem learning**, **supervize**, a **zpětnovazebnému učení**.
 
-  * V **učení se supervizí**, každý datový bod je označené nebo ve spojení s kategorie nebo hodnoty, které vás zajímají.  Příklad kategorií popisku je přiřazování bitovou kopii jako 'cat' nebo 'PSA.  Příklad popisku hodnota je prodejní ceny automobilu použitých přidružené. Cílem pod dohledem learning je studovat mnoho s popiskem příklady takovéto a potom mohli provádět předpovědi o budoucích datových bodů. Například identifikace nové fotografie s správné zvíře nebo přiřazení k jiné automobilů přesné prodej ceny. Toto je Oblíbené a užitečné typ strojové učení. Všechny moduly v Azure Machine Learning jsou pod dohledem učení algoritmy s výjimkou [K-Means Clustering][k-means-clustering].
+  * V **pod dohledem learning**, každý datový bod je označené nebo související s kategorií nebo hodnoty, které vás zajímají.  Příklad popisku kategorií se přiřazení bitovou kopii jako "cat" nebo "pes.  Příklad popisku hodnoty je prodejní cena přidružené používané automobilu. Cílem učení je cílem studovat mnoho označených příklady takových a pak bude schopen provést předpovědi budoucích datových bodů. Například identifikující novou fotografie s správné zvířat nebo přiřazení k jiné automobilů přesné prodejní ceny. Toto je Oblíbené a vhodné typ služby machine learning. Všechny moduly v Azure Machine Learning jsou pod dohledem učení se supervizí s výjimkou [Clustering K-Means][k-means-clustering].
 
-  * V **supervize**, datové body mají žádné popisky s nimi spojených. Cílem algoritmus učení bez dohledu místo toho je k uspořádání dat nějakým způsobem nebo k popisu jeho struktury. To může znamenat seskupení do clusterů, protože K-means, nebo při hledání různé způsoby prohlížení komplexní data tak, aby se jednodušší.
+  * V **supervize**, datové body mají se k nim má přiřazené žádné popisky. Místo toho je cílem algoritmus učení bez dohledu uspořádání dat nějakým způsobem nebo k popisu struktury. To může znamenat seskupení do clusterů, stejně jako K-means nebo vyhledání různé způsoby prohlížení komplexních datových, aby se zobrazovala jednodušší.
 
-  * V **posílení learning**, algoritmus získá vybrat akci v reakci na každý datový bod. Je běžný postup v robotics, kde sada odečty snímačů v jednom bodě v čase je hodnota datového bodu, a algoritmus musíte zvolit další akce robot. Je také přírodní pro Internet věcí aplikace. Algoritmus učení dále přijímá signál potřebu po krátkou dobu později, znamenající, jak dobrý byla rozhodnutí. Na základě algoritmus upravuje jeho strategie pro dosažení nejvyšší potřebu. Aktuálně neexistují žádné posílení učení algoritmu modulů v Azure ML.
+  * V **zpětnovazebnému učení**, získá algoritmu a vybrat akci v reakci na každý datový bod. Je běžným přístupem v robotika, kde je sada údajů snímačů přes v jednom bodě v čase na datový bod a algoritmus musíte zvolit robot další akci. Je také přirozený pro Internet of Things aplikací. Algoritmus učení také obdrží signál reward krátkou dobu později, určující, jak kvalitní byl rozhodnutí. Na základě toho algoritmus změní svoji strategii, abyste dosáhli nejvyšší potřebu. Aktuálně nejsou žádné zpětnovazební učení algoritmu moduly ve službě Azure ML.
 
-* **Metody Bayesova** se předpokládá statisticky nezávislé datových bodů. To znamená, že je bez korelace nejsou s ostatními unmodeled variabilita jeden datový bod, tedy nelze předpovědět. Například pokud jsou data dále zaznamenávána počet minut, dokud nebude další train podzemní dráha dorazí, dvě měření pořízených za den od sebe jsou statisticky nezávislé. Ale dvě měření pořízených minutu od sebe nejsou statisticky nezávislé – hodnota jednoho je vysoce prediktivní druhá hodnota.
+* **Metody Bayesova** předpokládá statisticky nezávislé datové body. To znamená, že je s ostatními bez korelace nejsou nemodelované variabilita jeden datový bod, to znamená, ho nemůže být předpovězen. Například pokud jsou data zaznamenává počet minut, než dorazí další subway trénování, dvěma měřeními rozebrali za den se statisticky nezávislé. Ale dvěma měřeními rozebrali jednu minutu nejsou statisticky nezávislé – jednu hodnotu vysoce prediktivní druhé hodnoty.
 
-* **Rozhodovací strom regrese boosted** využívá funkce překrývají nebo interakce mezi funkcí. To znamená, že kdykoli daná data hodnotu jedna z funkcí je poněkud prediktivní hodnoty jiného. Například v denních dat vysokou/low teploty znalost nízkou teploty dne vám umožní zajistit přiměřené odhad pro vysoké. Informace obsažené v tyto dvě funkce je poněkud redundantní.
+* **Vylepšené regrese rozhodovacího stromu** využívá funkce překrývají nebo interakci mezi funkcemi. Která znamená, že, během čárky daná data hodnotu jednu funkci prediktivní trochu jiné hodnoty. Například v denní data o teplotě vysoká nebo Nízká, znalost nejnižší teplota daného dne umožňuje přiměřené odhad toho, že. Informace obsažené v dvě funkce se poněkud redundantní.
 
-* Klasifikace dat do více než dvou kategorií lze provést pomocí buď třídění ze své podstaty více tříd, nebo kombinace sady two-class třídění do **komplet**. V metodě komplet je samostatný třídění two-class pro každou třídu – každé z nich data dělí do dvou kategorií: "Tato třída" a "není tato třída." Potom tyto třídění hlasovat o správné přiřazení datového bodu. Toto je provozní Princip za [One-vs-All Multiclass][one-vs-all-multiclass].
+* Klasifikace dat do více než dvou kategorií lze provést buď pomocí ze své podstaty roc třídění, nebo zkombinováním sadu třídění dvě třídy do **komplet**. V metodě komplet je zvláštní třídění dvě třídy pro každou třídu – každé z nich data odděluje do dvou kategorií: "Tato třída" a "není této třídy." Potom tyto třídění hlasovat pro správné přiřazení datového bodu. Je to provozní Princip za [One-vs-All Multiclass][one-vs-all-multiclass].
 
-* Předpokládejme, několik metod, včetně logistic regression a počítač bodu Bayes, **lineární třída hranice**. To znamená že předpokládají, že jsou hranice mezi třídami přibližně přímé řádky (nebo hyperplanes v případě, že další obecné). Často je typické pro data, která neznáte až poté, co jste se pokusili oddělení, ale je něco, co obvykle můžete poznat předem vizualizace. Pokud třída hranice vypadají velmi nestandardní, přilepit s rozhodovací stromy, decision Džungle, podporu vektoru počítače nebo neuronové sítě.
+* Několik metod, včetně logistické regrese a Bayes point machine, předpokládají **lineární třídy hranice**. To znamená předpokládají, že jsou hranice mezi třídami přibližně přímé spojnic (nebo v případě obecnější hyperplanes). Často je jím charakteristiku data, která si nejste jisti až poté, co jste se pokusili oddělení, ale je to něco, obvykle je možné zjistit předem vizualizací. Pokud hranice třídy vypadají velmi nestandardní, Zůstaňte u rozhodovacích stromů, rozhodnutí Džungle, podporu vektoru počítače nebo neuronových sítí.
 
-* Neuronové sítě lze použít s kategorií proměnné tak, že vytvoříte **fiktivní proměnné** pro každou kategorii jeho nastavení na hodnotu 1 v případech, kde platí kategorii, 0, kde nepodporuje.
+* Neuronové sítě je možné s kategorií proměnné tak, že vytvoříte **fiktivní proměnná** pro každou kategorii ji nastavíte na 1 v případech, kde platí kategorii, 0, pokud tomu tak není.
 
 
 <!-- This is how you can embed a link in an image in HTML. Don't know how to do this in markdown.

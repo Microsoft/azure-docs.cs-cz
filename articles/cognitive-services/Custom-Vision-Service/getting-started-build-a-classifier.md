@@ -1,6 +1,6 @@
 ---
-title: Sestavení třídění službou vize vlastní - kognitivní služeb Azure | Microsoft Docs
-description: Zjistěte, jak používat službu vize vlastní vytvoření klasifikátoru, který může rozpoznat objekty v fotografie.
+title: Sestavení klasifikátoru pomocí služby Custom Vision Service - služeb Azure Cognitive Services | Dokumentace Microsoftu
+description: Informace o používání služby Custom Vision Service k vytvoření klasifikátor, který lze rozpoznat objektů v fotografie.
 services: cognitive-services
 author: anrothMSFT
 manager: corncar
@@ -9,124 +9,122 @@ ms.component: custom-vision
 ms.topic: article
 ms.date: 05/02/2018
 ms.author: anroth
-ms.openlocfilehash: 6dc271c13f53a445c7d1101f5264d890208bd03c
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: c5183078d2f9d5eb16abef4f5df240f77eea6b8b
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342873"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39223365"
 ---
-# <a name="how-to-build-a-classifier-with-custom-vision"></a>Jak sestavit třídění s vlastní vize
+# <a name="how-to-build-a-classifier-with-custom-vision"></a>Sestavení klasifikátoru s Custom Vision
 
-Používat službu vlastní vize, musíte nejprve vytvořit třídění. V tomto dokumentu Naučte se vytvářet třídění prostřednictvím webového prohlížeče.
+Pokud chcete používat službu Custom Vision Service, musíte nejprve sestavení klasifikátoru. V tomto dokumentu se naučíte sestavit klasifikátor prostřednictvím webového prohlížeče.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud chcete vytvořit třídění, musíte nejprve mít:
+K sestavení klasifikátoru, nejprve potřebujete:
 
-- Platná [účtu Microsoft](https://account.microsoft.com/account) nebo Azure Active Directory OrgID ("pracovní nebo školní účet"), tak můžete přihlásit k customvision.ai a začít pracovat.
+- Platný [účtu Microsoft](https://account.microsoft.com/account) nebo Azure Active Directory OrgID ("pracovní nebo školní účet"), takže budou moct přihlašovat do customvision.ai a můžete začít.
 
     > [!IMPORTANT] 
-    > OrgID přihlášení pro uživatele Azure Active Directory (Azure AD) z [národních cloudů](https://www.microsoft.com/en-us/trustcenter/cloudservices/nationalcloud) není aktuálně podporováno.
+    > Přihlašovací jméno OrgID pro uživatele Azure Active Directory (Azure AD) z [národních cloudů](https://www.microsoft.com/en-us/trustcenter/cloudservices/nationalcloud) v tuto chvíli nepodporuje.
 
-- Řada bitových kopií pro učení vaší třídění (s minimálně 30 bitové kopie na značka).
+- Řadu obrázků k trénování klasifikátoru (s minimálně 30 obrázků na značky).
 
-- Několik Image pro testování vaší třídění po třídění je vycvičena.
+- Několik obrázků otestovat klasifikátoru po školení třídění.
 
-- Volitelné: Předplatné Azure spojené s Account Microsoft nebo OrgID. Pokud nemáte předplatné Azure, můžete vytvořit [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před zahájením.
+- Volitelné: Předplatné Azure spojené s Account Microsoft nebo OrgID. Pokud nemáte předplatné Azure, můžete vytvořit [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) předtím, než začnete.
 
     > [!IMPORTANT]
-    > Bez předplatného Azure, pouze bude moct vytvářet __omezené zkušební verze__ projekty. Pokud máte předplatné Azure, zobrazí se výzva k vytvoření vlastní vize služby školení a předpovědi prostředky v [portál Azure](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision) během vytváření projektu.   
+    > Bez předplatného Azure pouze budete moct vytvořit __omezenou zkušební verzi__ projekty. Pokud máte předplatné Azure, zobrazí se výzva k vytvoření Custom Vision Service trénování a Predikcí prostředky v [webu Azure portal](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision) během vytváření projektu.   
 
 ## <a name="create-a-new-project"></a>Vytvoření nového projektu
 
 Chcete-li vytvořit nový projekt, použijte následující kroky:
 
-1. Ve webovém prohlížeči, přejděte na [vize vlastní webové stránky](https://customvision.ai). Vyberte __přihlášení__ začít používat službu.
+1. Ve webovém prohlížeči přejděte [vizi vlastní webovou stránku](https://customvision.ai). Vyberte __přihlášení__ chcete začít používat službu.
 
-    ![Obrázek na přihlašovací stránce](./media/getting-started-build-a-classifier/custom-vision-web-ui.png)
+    ![Obrázek přihlašovací stránky](./media/getting-started-build-a-classifier/custom-vision-web-ui.png)
 
     > [!NOTE]
-    > Po přihlášení k službě vize vlastní se zobrazí seznam projektů. Mimo projekty pro dvě "omezené zkušební verze" pro testování projekty jsou přidružena k prostředku Azure. Pokud jste Azure uživatel, zobrazí se všechny projekty, které jsou přidružené k [prostředky Azure](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#grant-access-to-resources) ke které máte přístup. 
+    > Po přihlášení do služby Custom Vision Service, zobrazí se seznam projektů. Mimo dvě "omezenou zkušební verze" projektů pro testování projekty jsou přidružené k prostředku Azure. Pokud jste uživatelem Azure, zobrazí se všechny projekty, které jsou přidružené k [prostředků Azure](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#grant-access-to-resources) ke kterému máte přístup. 
 
-2. Pokud chcete vytvořit svůj první projekt, vyberte **nový projekt**. Pro svůj první projekt zobrazí se výzva souhlas s podmínkami služby. Zaškrtněte políčko a potom vyberte **souhlasím** tlačítko. **Nový projekt** zobrazí se dialogové okno.
+2. Chcete-li vytvořit svůj první projekt, vyberte **nový projekt**. Váš první projekt zobrazí se výzva k svůj souhlas s podmínkami služby. Zaškrtněte políčko a potom vyberte **souhlasím** tlačítko. **Nový projekt** zobrazí se dialogové okno.
 
-    ![Dialogového okna Nový projekt má pole pro název, popis a domén.](./media/getting-started-build-a-classifier/new-project.png)
+    ![Dialogovém okně Nový projekt obsahuje pole pro název, popis a domén.](./media/getting-started-build-a-classifier/new-project.png)
 
-3. Zadejte název a popis pro projekt. Vyberte jednu z dostupných domén. Každá doména, optimalizuje třídění pro konkrétní typy imagí, jak je popsáno v následující tabulce:
+3. Zadejte název a popis pro projekt. Vyberte jednu z dostupných domén. Každá doména optimalizuje třídění pro konkrétní typy obrázků, jak je popsáno v následující tabulce:
 
     |Doména|Účel|
     |---|---|
-    |__Obecné__| Optimalizovaná pro širokou škálu úloh klasifikace bitové kopie. Pokud žádná z jiných domén jsou vhodné nebo si nejste jistí, ve které doméně zvolit, vyberte obecný doménu. |
-    |__Jídlo__|Optimalizovaná pro fotografie misek, jako byste je v nabídce restaurace. Pokud chcete klasifikovat fotografií jednotlivé plody nebo zeleniny, použijte jídlo domény.|
-    |__Zajímavá__|Optimalizovaná pro rozpoznatelném zajímavá přirozené a umělé. Tato doména funguje nejlíp, když je významné jasně viditelný v fotografie. Tato doména funguje i v případě, že významné mírně brání osoby úrovních před ním.|
-    |__Prodejní__|Optimalizovaná pro bitové kopie, které se nacházejí v nákupní katalogu nebo nákupní web. Pokud chcete vysokou přesnost klasifikace mezi šatů, kalhoty a košile, použijte tuto doménu.|
-    |__Pro dospělé__|Optimalizovaná tak, aby lépe definovat obsah pro dospělé a nezletilých obsahu. Například pokud chcete blokovat bitové kopie osoby koupání barev, tuto doménu můžete vytvořit vlastní třídění k tomu.|
-    |__Compact domén__| Optimalizovaná pro omezení v reálném čase klasifikace na mobilních zařízeních. Modely generované compact domény je možné exportovat do spouštět místně.|
+    |__Obecné__| Optimalizovaná pro širokou škálu obrázek úlohy klasifikace. Pokud žádný z jiných domén není vhodné nebo si nejste jistí, ve které doméně zvolit, vyberte doménu, Obecné. |
+    |__Potravin__|Optimalizované pro fotografie si pochutnává, při které byste měli v nabídka restaurace. Pokud chcete klasifikovat fotografie jednotlivá ovoce nebo zeleniny, použijte potravin domény.|
+    |__Zajímavá__|Optimalizovaná pro rozpoznatelných památek, přirozené a umělé. Tato doména funguje nejlépe, když je památek jasně viditelný v fotografie. Tato doména funguje i v případě, že památek mírně nelze blokovat uživatelé před tímto prvkem.|
+    |__Maloobchodního prodeje__|Optimalizovaná pro bitové kopie, které se nacházejí v nákupní katalogu nebo nákupního webu. Pokud chcete vysokou přesnost klasifikace mezi šatů pants a košile, použijte tuto doménu.|
+    |__Pro dospělé__|Optimalizované a lépe tak definovat obsah pro dospělé a obsahu jiných dospělá osoba. Například pokud chcete blokovat obrázky ve koupání barvy, tuto doménu vám umožní vytvářet vlastní třídění to udělat.|
+    |__Kompaktní domén__| Optimalizovaná pro omezení v reálném čase klasifikace na mobilních zařízeních. Modely generované balíky compact domény je možné exportovat do spouštět místně.|
 
     Pokud chcete, můžete později změnit doménu.
 
-4. Vyberte skupinu prostředků. Rozevírací seznam skupiny prostředků jsou zobrazeny všechny vaše skupiny prostředků Azure, které zahrnují vlastní prostředek služby vize. Můžete také vytvořit vyberte __omezené zkušební verze__. Omezené zkušební položka je skupina prostředků pouze uživatele mimo Azure, budou moci vybrat z.
+4. Vyberte skupinu prostředků. Rozevírací seznam skupina prostředků se dozvíte, všechny vaše skupiny prostředků Azure, která obsahují vlastní prostředek služby pro zpracování obrazu. Můžete také vytvořit vyberte __omezenou zkušební verze__. Omezený zkušební vstup je jediný zdroj skupinu, kterou uživatel mimo Azure budete moct vybírat.
 
     Chcete-li vytvořit projekt, vyberte __vytvořit projekt__.
 
-## <a name="upload-and-tag-images"></a>Nahrávání a značky obrázků
+## <a name="upload-and-tag-images"></a>Nahrávání a značka Image
 
-1. K přidání bitové kopie do třídění, použijte __přidávat image__ tlačítko a potom vyberte __procházet místních souborů__. Vyberte __otevřete__ přesunout do označování.
-
-    > [!TIP]
-    > Po výběru Image, musíte označit je. Značky se použije ke skupině bitových kopií, které jste vybrali nahrát, takže možná bude snazší nahrajte Image podle značky, které budete používat. Značky pro vybrané bitové kopie můžete změnit i po jejich označí a nahrát.
+1. Chcete-li přidat Image do třídění, použijte __přidávat image__ tlačítko a pak vyberte __procházet místní soubory__. Vyberte __otevřít__ přesunout do označení.
 
     > [!TIP]
-    > Nahrajte obrázky s jinou úhlů, osvětlení, pozadí, typy, styly, skupiny, velikosti, atd. Zajistěte, aby vaše třídění není tendenční a můžete generalize dobře pomocí celou řadu typů fotografii.
+    > Po výběru Image, musíte označit je. Značka se použije ke skupině imagí, které jste vybrali k nahrání, tak může být jednodušší nahrání imagí podle značky, které chcete použít. Můžete také změnit značky pro vybrané bitové kopie po svém označení a nahrání.
 
-    Vlastní vize služba přijímá školení obrázků JPG, PNG a formátu BMP, až 6 MB za bitové kopie. (Předpovědi Image může být až 4 MB volného místa na bitovou kopii.) Doporučuje se, že bitové kopie byl 256 pixelů na nejkratší okraj. Všechny Image, která je kratší než 256 pixelů na nejkratší hraniční jsou škálovat službou vize vlastní.
+    > [!TIP]
+    > Nahrávání obrázků s jinou kamer, osvětlení, pozadí, typy, styly, skupiny, velikosti, atd. Použijte celou řadu typů fotografii klasifikátoru není tendenční a můžete také zobecnit.
 
-    ![Ovládací prvek Image přidat se zobrazí v levém horním a jako tlačítka na dolní softwaru.](./media/getting-started-build-a-classifier/add-images01.png)
+    Služba Custom Vision Service přijímá trénovacích obrázků JPG, PNG a formátu BMP, až 6 MB za bitové kopie. (Předpověď Image může být až 4 MB za bitové kopie.) Doporučujeme, abyste se 256 pixelů na hraničních zařízeních nejkratší bitové kopie. Všechny Image, která je kratší než 256 pixelů na hraničních zařízeních nejkratší se škálovat pomocí služby Custom Vision Service.
 
-    ![Zobrazí se na tlačítko Procházet místních souborů téměř dolů na střed.](./media/getting-started-build-a-classifier/add-images02.png)
+    ![Přidat ovládací prvek Image se zobrazí v levém horním rohu a jako tlačítko dole uprostřed.](./media/getting-started-build-a-classifier/add-images01.png)
 
     >[!NOTE] 
-    > Rozhraní REST API slouží k načtení školení bitové kopie z adresy URL.
+    > Rozhraní REST API je možné načíst trénovacích obrázků z adresy URL.
 
-2. Pokud chcete nastavit značky, zadejte text v __Moje značky__ pole a pak použijte __+__ tlačítko. Pokud chcete nahrát bitové kopie a označit, použijte __nahrání souborů [číslo]__ tlačítko. Můžete přidat více než jednu značku do bitových kopií. 
+2. Chcete-li nastavit značku, zadejte text do __značky__ pole a pak použijte __+__ tlačítko. Nahrání Image a označte je, použijte __nahrávání souborů [číslo]__ tlačítko. Můžete přidat více než jednu značku imagí. 
 
     > [!NOTE]
-    > Čas odeslání se liší podle počtu a velikosti obrázků, které jste vybrali.
+    > Doba odeslání se liší podle počtu a velikosti obrázků, které jste vybrali.
 
-    ![Obrázek značky a odeslání stránky](./media/getting-started-build-a-classifier/add-images03.png)
+    ![Obrázek stránky značku a nahrávání](./media/getting-started-build-a-classifier/add-images03.png)
 
-3. Vyberte __provádí__ po odeslali bitové kopie.
+3. Vyberte __provádí__ po bitové kopie byly nahrány.
 
-    ![Indikátor průběhu ukazuje všechny úkoly dokončené.](./media/getting-started-build-a-classifier/add-images04.png)
+    ![Indikátor průběhu vám ukáže všechny úlohy dokončeny.](./media/getting-started-build-a-classifier/add-images04.png)
 
-4. Pokud chcete nahrát jiný soubor bitové kopie, vraťte se ke kroku 1. Například pokud chcete rozlišit mezi psi a poníci, odeslání a označit bitové kopie poníci.
+4. Nahrát další sadu imagí, vraťte se ke kroku 1. Pokud chcete rozlišit mezi psi a poníci, nahrát a značku Image poníci.
 
 ## <a name="train-and-evaluate-the-classifier"></a>Natrénování a vyhodnocení třídění
 
-Při školení třídění, vyberte **cvičení** tlačítko.
+K trénování třídění, vyberte **trénování** tlačítko.
 
-![Tlačítko train je v pravé horní části okna prohlížeče.](./media/getting-started-build-a-classifier/train01.png)
+![Tlačítko trénovat na základě modelu se v pravé horní části okna prohlížeče.](./media/getting-started-build-a-classifier/train01.png)
 
-Trvá jenom pár minut ke cvičení třídění. Během této doby zobrazí se informace o procesu školení.
+Trvá jenom pár minut a trénování třídění. Během této doby se zobrazí informace o procesu trénování.
 
-![Tlačítko train je v pravé horní části okna prohlížeče.](./media/getting-started-build-a-classifier/train02.png)
+![Tlačítko trénovat na základě modelu se v pravé horní části okna prohlížeče.](./media/getting-started-build-a-classifier/train02.png)
 
-Po školení, __výkonu__ se zobrazí. Indikátory přesnost a odvolání zjistíte jak funkční, které vaše třídění, na základě automatického testování. Vlastní vize služba používá bitové kopie, které jste odeslali pro školení k výpočtu tato čísla pomocí procesu volat [tisíc skládání křížového ověření](https://en.wikipedia.org/wiki/Cross-validation_(statistics)).
+Po školení, __výkonu__ se zobrazí. Indikátory přesnosti a spojené s vracením dozvíte, jak kvalitní klasifikátor je, v závislosti na automatické testování. Služba Custom Vision Service používá imagí, které jste odeslali pro školení k výpočtu tato čísla pomocí procesu [k přeložení křížového ověření](https://en.wikipedia.org/wiki/Cross-validation_(statistics)).
 
-![Výsledky školení Zobrazit celkový přesnost a odvolání a přesnost a odvolat pro jednotlivé značky v třídění.](./media/getting-started-build-a-classifier/train03.png)
+![Školení výsledky zobrazit celkový přesnosti a spojené s vracením a přesnost a stránkám znovu vyvolat pro jednotlivé značky v třídění.](./media/getting-started-build-a-classifier/train03.png)
 
 > [!NOTE] 
-> Pokaždé, když vyberete **Train** tlačítko vytvoříte novou iteraci vaší třídění. Můžete zobrazit všechny vaše staré iterací v **výkonu** kartě a vy můžete odstranit všechny, které mohou být zastaralé. Pokud odstraníte iterace, skončili odstraňování všechny Image, které jsou jedinečně k ní přidružena.
+> Pokaždé, když vyberete **trénování** tlačítko, vytvoříte novou iteraci klasifikátoru. Můžete zobrazit všechny původní iterací ve **výkonu** kartu kde můžete odstranit všechny, které může být zastaralá. Když odstraníte iterace, ale nakonec bude odstranění všech imagí, které je jedinečným způsobem k ní přidružena.
 
-Třídění používá všechny bitové kopie pro vytvoření modelu, který identifikuje jednotlivé značky. Pro otestování kvality modelu, se pokusí třídění každé bitové kopie na modelu chcete zobrazit, co modelu najde.
+Třídění použije všechny Image k vytvoření modelu, který identifikuje jednotlivé značky. Pro otestování kvality modelu, se pokusí třídění každý obrázek v modelu, který má zobrazit, co zjistí model.
 
-Zobrazí se vlastností třídění výsledky.
+Zobrazí se kvality výsledků třídění.
 
 |Označení|Definice|
 |---|---|
-|__Přesnost__|Při klasifikaci bitovou kopii, jak pravděpodobně je vaše třídění správně klasifikovat bitovou kopii? Mimo všechny bitové kopie, které jsou použity při cvičení třídění (PSI a poníci) jaké procento modelu získat správné? 99 správné značky mimo 100 bitových kopií poskytuje přesností 99 %.|
-|__Odvolat__|Mimo všechny bitové kopie, které by byly klasifikovány správně kolik vaše třídění správně identifikovat? Odvolání 100 % znamená, že pokud jsou bitové kopie, které byly použity při cvičení třídění 38 PSA obrázky, nalezeno třídění 38 PSI.|
+|__Přesnost__|Při klasifikaci obrázku, jak pravděpodobné je klasifikátor a klasifikaci obrázku správně? Mimo všechny bitové kopie, které se používají k trénování třídění (PSI a poníci) jaké procento modelu jsou k dispozici správné? 99 správné značky mimo 100 imagí poskytuje 99 % přesností.|
+|__Odvolání__|Mimo všechny bitové kopie, které by byly klasifikovány správně kolik klasifikátoru správně identifikovat? Účinnost 100 % znamená, že pokud jsou v imagích, které byly použity k trénování třídění 38 pes imagí, třídění nalézt 38 PSI.|
 
 ## <a name="next-steps"></a>Další postup
 

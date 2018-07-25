@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2018
+ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 6cdfb40ce02cc5f80e3347b921e2b2c75ae3d8ea
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 5b8c7e8880f7e467b1b5a305cc7381e6499571f5
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37437133"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39238617"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Konfigurace a správa problémů pro Azure Cloud Services: Nejčastější dotazy (FAQ)
 
@@ -41,6 +41,7 @@ Tento článek obsahuje nejčastější dotazy o konfiguraci a správě problém
 
 - [Jaké jsou možnosti nadcházející cloudové služby na webu Azure Portal, což může pomoci spravovat a monitorovat aplikace?](#what-are-the-upcoming-cloud-service-capabilities-in-the-azure-portal-which-can-help-manage-and-monitor-applications)
 - [Proč služba IIS zastavili zápis na adresář protokolu?](#why-does-iis-stop-writing-to-the-log-directory)
+- [Jak povolit protokolování WAD pro cloudové služby?](#how-do-i-enable-wad-logging-for-cloud-services)
 
 **Konfigurace sítě**
 
@@ -138,6 +139,15 @@ Vyčerpání místního úložiště kvóty pro zápis k adresáři protokolů.�
 Další informace najdete v tématu v následujících dokumentech:
 * [Ukládání a zobrazení diagnostických dat v Azure Storage](cloud-services-dotnet-diagnostics-storage.md)
 * [Protokoly služby IIS zastavení zápisu v cloudové službě](https://blogs.msdn.microsoft.com/cie/2013/12/21/iis-logs-stops-writing-in-cloud-service/)
+
+### <a name="how-do-i-enable-wad-logging-for-cloud-services"></a>Jak povolit protokolování WAD pro cloudové služby?
+Můžete povolit protokolování Windows Azure Diagnostics (WAD), pomocí následujících možností:
+1. [Povolit ze sady Visual Studio](https://docs.microsoft.com/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
+2. [Povolit prostřednictvím kódu rozhraní .net](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-diagnostics)
+3. [Povolit pomocí Powershellu](https://docs.microsoft.com/azure/cloud-services/cloud-services-diagnostics-powershell)
+
+Pokud chcete získat aktuální nastavení WAD cloudové služby, můžete použít [Get-AzureServiceDiagnosticsExtensions](https://docs.microsoft.com/azure/cloud-services/cloud-services-diagnostics-powershell#get-current-diagnostics-extension-configuration) ps cmd, nebo můžete zobrazit přes portál v okně "Cloudové služby--> rozšíření".
+
 
 ## <a name="network-configuration"></a>Konfigurace sítě
 
