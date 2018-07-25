@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/12/2018
 ms.author: raynew
-ms.openlocfilehash: 05340c8504150ed568e0d5ce5c8250127e59bca0
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
-ms.translationtype: HT
+ms.openlocfilehash: 6d1d90ff0f9a49d3db9f4dc8894c9837942658f0
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003233"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214995"
 ---
 # <a name="contoso-migration--refactor-a-team-foundation-server-deployment-to-visual-studio-team-services-vsts"></a>Migrace Contoso: Refaktorovat nasazení Team Foundation Server pro Visual Studio Team Services (VSTS)
 
@@ -242,7 +242,7 @@ Dříve, než začnou, Contoso naplánuje výpadků díky vývojový tým se kol
 2. **Generovat zálohy**: dál procesu migrace je potřeba vytvořit zálohu, která se dají importovat do VSTS. Datové vrstvy aplikace součástí balíčků (DACPAC), je funkce systému SQL Server, který umožňuje změny databáze zabalené do jednoho souboru, a nasadit do jiné instance SQL. Můžete také obnovit přímo do VSTS a proto se používá jako metodu vytváření balíčků pro získání kolekce dat do cloudu. Společnost Contoso použije k vygenerování DACPAC nástroje SqlPackage.exe. Tento nástroj je součástí nástrojů SQL Server Data Tools.
 3. **Nahrání do úložiště**: po balíčku DACPAC se vytvoří, odesílají do služby Azure Storage. Po nahrání, dostanou sdíleného přístupového podpisu (SAS), pokud chcete povolit přístup nástroj pro migraci TFS na úložiště.
 4. **Vyplňte import**: Contoso potom vyplnit chybějící pole v souboru importu, včetně nastavení balíčku DACPAC. Začít s jejich určíte, že se mají provádět **DryRun** import, chcete-li zkontrolovat, že všechno funguje správně před plné migraci.
-5. **Provedení suchého**: zkušební spuštění importy vám pomůže otestovat migrace kolekce. Zkušební spuštění mají omezenou životnost a jsou odstraněny ještě před migraci produkčního prostředí probíhá. Že se po nastaveném časovém období automaticky odstraní. Poznámka k při spuštění zkušební odstraní je součástí úspěchu přijetí e-mailu po dokončení importu. Všimněte si a podle toho naplánujte.
+5. **Provedení suchého**: zkušební spuštění importy vám pomůže otestovat migrace kolekce. Zkušební spuštění mají omezenou životnost a odstraní se před spuštěním migraci produkčního prostředí. Že se po nastaveném časovém období automaticky odstraní. Poznámka k při spuštění zkušební odstraní je součástí úspěchu přijetí e-mailu po dokončení importu. Všimněte si a podle toho naplánujte.
 6. **Dokončení migrace produkčních**: Contoso s se zkušebním migrace dokončila, nemá konečnou migrací aktualizací import.json a spustit import znovu.
 
 
