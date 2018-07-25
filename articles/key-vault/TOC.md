@@ -7,7 +7,7 @@
 ## [Vytvoření služby Key Vault – Rozhraní příkazového řádku](quick-create-cli.md)
 ## [Vytvoření služby Key Vault – PowerShell](quick-create-powershell.md)
 ## [Vytvoření služby Key Vault – Portál](quick-create-portal.md)
-
+## [Čtení ze služby Key Vault – .NET](quick-create-net.md)
 # Kurzy
 ## [Čtení tajného kódu ze služby Key Vault ](tutorial-web-application-keyvault.md)
 ## [Začínáme se službou Key Vault](key-vault-get-started.md)

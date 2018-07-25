@@ -53,6 +53,8 @@
           href: howto-create-telemetry-rules.md
         - name: Vytvoření pravidla událostí
           href: howto-create-event-rules.md
+        - name: Vytváření akcí webhooků na základě pravidel
+          href: howto-create-webhooks.md
         - name: Sestavení pracovních postupů v Microsoft Flow
           href: howto-add-microsoft-flow.md
         - name: Konfigurace domovské stránky

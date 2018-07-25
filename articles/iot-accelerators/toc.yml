@@ -157,18 +157,26 @@
           href: iot-accelerators-device-simulation-custom-model.md
 - name: Referenční informace
   items:
-    - name: Referenční příručka pro vývojáře
-      href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide'
-    - name: Průvodce řešením potíží pro vývojáře
-      href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide'
-    - name: Architektura zabezpečení
-      href: /azure/iot-fundamentals/iot-security-architecture?context=azure/iot-accelerators/rc/rc
-    - name: Osvědčené postupy zabezpečení
-      href: /azure/iot-fundamentals/iot-security-best-practices?context=azure/iot-accelerators/rc/rc
-    - name: Zabezpečení nasazení IoT
-      href: /azure/iot-fundamentals/iot-security-deployment?context=azure/iot-accelerators/rc/rc
-    - name: Zabezpečení od počátku
-      href: /azure/iot-fundamentals/iot-security-ground-up?context=azure/iot-accelerators/rc/rc
+    - name: Vzdálené monitorování
+      items:
+        - name: Referenční příručka pro vývojáře
+          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide'
+        - name: Průvodce řešením potíží pro vývojáře
+          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide'
+    - name: Simulace zařízení
+      items:
+        - name: Referenční příručka pro vývojáře
+          href: 'https://github.com/Azure/device-simulation-dotnet/wiki/Simulation-Service-Developer-Reference-Guide'
+    - name: Zabezpečení
+      items:
+        - name: Architektura zabezpečení
+          href: /azure/iot-fundamentals/iot-security-architecture?context=azure/iot-accelerators/rc/rc
+        - name: Osvědčené postupy zabezpečení
+          href: /azure/iot-fundamentals/iot-security-best-practices?context=azure/iot-accelerators/rc/rc
+        - name: Zabezpečení nasazení IoT
+          href: /azure/iot-fundamentals/iot-security-deployment?context=azure/iot-accelerators/rc/rc
+        - name: Zabezpečení od počátku
+          href: /azure/iot-fundamentals/iot-security-ground-up?context=azure/iot-accelerators/rc/rc
 - name: Související
   items:
     - name: Řešení
@@ -203,6 +211,18 @@
       href: /azure/machine-learning/
 - name: Zdroje a prostředky
   items:
+    - name: Úložiště GitHub
+      items:
+        - name: Vzdálené monitorování (.NET)
+          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet'
+        - name: Vzdálené monitorování (Java)
+          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-java'
+        - name: Propojená továrna
+          href: 'https://github.com/Azure/azure-iot-connected-factory'
+        - name: Prediktivní údržba
+          href: 'https://github.com/Azure/azure-iot-predictive-maintenance'
+        - name: Simulace zařízení
+          href: 'https://github.com/Azure/device-simulation-dotnet'
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Nejčastější dotazy
