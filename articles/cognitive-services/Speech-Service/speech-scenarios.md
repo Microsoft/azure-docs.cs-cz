@@ -9,12 +9,12 @@ ms.technology: Speech to Text
 ms.topic: article
 ms.date: 07/02/2018
 ms.author: panosper
-ms.openlocfilehash: 1488f95296bcc11a55a45aff56cee83b7708a789
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 9e6be3608f5aa5ec5d68e6bbefff6da6c23c62fd
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39072210"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39247950"
 ---
 # <a name="speech-scenarios"></a>Scénáře pro službu Speech
 
@@ -36,7 +36,7 @@ Pokud vaše aplikace pro širokou veřejností v prostředích, kde není nadmě
 
 ### <a name="voice-triggered-apps-with-custom-models"></a>Hlasové aktivuje aplikací s využitím vlastních modelů
 
-Pokud vaše aplikace řeší konkrétní doménu, (Řekněme chemii, biologie nebo zvláštními potřebami podávání), můžete chtít zvážit přizpůsobit [jazykový model](how-to-customize-language-model.md). Přizpůsobení jazykového modelu naučí dekodér o většiny běžných frází a slova, která vaše aplikace používá. Dekodér budete moct přesněji přepisy hlasový vstup pomocí vlastního jazykového modelu pro konkrétní doménu místo modelu směrného plánu. Podobně pokud šum na pozadí, kde se bude používat vaše aplikace je viditelného můžete k přizpůsobení akustického modelu. Projděte si dokumentaci pro další případy, ve kterém [přizpůsobení jazyka](how-to-customize-language-model.md) a [akustické přizpůsobení](how-to-customize-acoustic-models.md) zadejte hodnotu a navštivte naše [přizpůsobení portálu](https://customspeech.ai) pro spuštění s oznámením prostředí pro vytváření modelu. Podobně jako základní modely, vlastní modely jsou volány prostřednictvím našich [sadou SDK pro řeč](speech-sdk.md) a příslušné [ukázky](quickstart-csharp-dotnet-windows.md).
+Pokud vaše aplikace řeší konkrétní doménu, (Řekněme chemii, biologie nebo zvláštními potřebami podávání), můžete chtít zvážit přizpůsobit [jazykový model](how-to-customize-language-model.md). Přizpůsobení jazykového modelu naučí dekodér o většiny běžných frází a slova, která vaše aplikace používá. Dekodér budete moct přesněji přepisy hlasový vstup pomocí vlastního jazykového modelu pro konkrétní doménu místo modelu směrného plánu. Podobně pokud šum na pozadí, kde se bude používat vaše aplikace je viditelného můžete k přizpůsobení akustického modelu. Projděte si dokumentaci pro další případy, ve kterém [přizpůsobení jazyka](how-to-customize-language-model.md) a [akustické přizpůsobení](how-to-customize-acoustic-models.md) zadejte hodnotu a navštivte náš [přizpůsobení portálu](https://customspeech.ai) pro kick-Starting prostředí pro vytváření modelu. Podobně jako základní modely, vlastní modely jsou volány prostřednictvím našich [sadou SDK pro řeč](speech-sdk.md) a příslušné [ukázky](quickstart-csharp-dotnet-windows.md).
 
 ## <a name="transcribe-call-center-audio-calls"></a>Přepisy volání center zvuku volání
 

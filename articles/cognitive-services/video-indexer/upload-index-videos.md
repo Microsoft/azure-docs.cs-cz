@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 05/30/2018
 ms.author: juliako
-ms.openlocfilehash: df3ebdcb07980c297204d6d2959cac6a759b34e2
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 64c4c8e4df0179f1644f23f0ae489015222a4ffd
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37347394"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258360"
 ---
 # <a name="upload-and-index-your-videos"></a>Nahrání a indexovat vaše videa  
 
@@ -37,6 +37,12 @@ Tento parametr použijte, pokud raw nebo externí záznamy obsahují šum na poz
 - `DefaultWithNoiseReduction` – Index a extrakce poznatků z zvuku a videa, při použití algoritmů snížení šumu na zvukový datový proud
 
 Cena závisí na vybrané možnosti indexování.  
+
+### <a name="callbackurl"></a>callbackUrl
+
+Adresa URL příspěvku Upozornit při indexování byla dokončena. Video Indexer přidá dvě parametrů řetězce dotazu: id a stav. Například, pokud je adresa url zpětného volání 'https://test.com/notifyme?projectName=MyProject", se pošle oznámení s další parametry"https://test.com/notifyme?projectName=MyProject&id=1234abcd&state=Processed".
+
+Můžete také přidat více parametrů k adrese URL před publikováním volání do nástroje Video Indexer a tyto parametry budou zahrnuty ve zpětné volání. Později v kódu můžete analyzovat řetězec dotazu a získat zpět všechny ze zadaných parametrů v řetězci dotazu (data, která původně měli připojí adresu URL a Video Indexer zadané informace.) 
 
 ### <a name="streamingpereset"></a>streamingPereset
 

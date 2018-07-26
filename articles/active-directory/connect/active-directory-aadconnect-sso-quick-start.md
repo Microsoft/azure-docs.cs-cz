@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2018
+ms.date: 07/25/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: bf83a98010631fc20c5fd7365a3ca081bd9c8c75
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: df936c697f500f5ab98becd1529cd321f9f3f5c4
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214852"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39259115"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory bezproblémové jednotné přihlašování: rychlý start
 
@@ -48,6 +48,8 @@ Ujistěte se, že jsou splněné následující požadavky:
     * Obsahuje uživatele, které chcete povolit pro bezproblémové jednotné přihlašování.
     
 * **Povolit moderní ověřování**: je nutné povolit [moderní ověřování](https://aka.ms/modernauthga) ve svém tenantovi pro tuto funkci pracovat.
+
+* **Použít nejnovější verze klientů Office 365**: Pokud chcete získat tiché přihlašování s klienty Office 365 (Outlook, Word, Excel a další), je třeba verze 16.0.8730.xxxx nebo vyšší.
 
 ## <a name="step-2-enable-the-feature"></a>Krok 2: Povolení funkce
 
