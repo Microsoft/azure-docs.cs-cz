@@ -98,7 +98,7 @@
         - name: Převod textu na řeč – nejčastější dotazy
           href: faq-text-to-speech.md
         - name: Aplikace Translator – nejčastější dotazy
-          href: 'https://www.microsoft.com/en-us/translator/faq.aspx'
+          href: 'https://www.microsoft.com/translator/faq.aspx'
     - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
     - name: UserVoice

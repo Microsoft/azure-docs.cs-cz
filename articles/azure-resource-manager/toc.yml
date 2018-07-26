@@ -76,7 +76,7 @@
               href: resource-manager-cli-sas-token.md
             - name: Export šablony a opětovné nasazení
               href: resource-manager-export-template-cli.md
-        - name: Azure Portal
+        - name: portál Azure
           items:
             - name: Nasazení prostředků
               href: resource-group-template-deploy-portal.md
@@ -96,8 +96,8 @@
         - name: Azure PowerShell
           href: powershell-azure-resource-manager.md
         - name: Azure CLI
-          href: xplat-cli-azure-resource-manager.md
-        - name: Azure Portal
+          href: cli-azure-resource-manager.md
+        - name: portál Azure
           href: resource-group-portal.md
         - name: Používání značek k uspořádání prostředků
           href: resource-group-using-tags.md
@@ -120,7 +120,7 @@
             - name: Azure CLI
               href: /cli/azure/create-an-azure-service-principal-azure-cli
               maintainContext: true
-            - name: Azure Portal
+            - name: portál Azure
               href: resource-group-create-service-principal-portal.md
         - name: Ověřovací rozhraní API pro přístup k předplatným
           href: resource-manager-api-authentication.md

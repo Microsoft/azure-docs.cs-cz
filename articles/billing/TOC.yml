@@ -131,6 +131,9 @@
   items:
     - name: Scénáře automatizace služby Billing
       href: billing-cost-management-automation-scenarios.md
+      items:
+        - name: Správa nákladů s využitím služby Azure Budgets
+          href: billing-cost-management-budget-scenario.md
     - name: Přehled rozhraní API služby Azure Billing
       href: billing-usage-rate-card-overview.md
       items:

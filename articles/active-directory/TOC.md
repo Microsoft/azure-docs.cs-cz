@@ -46,6 +46,7 @@
 ## Správa uživatelů
 ### [Přidání nových uživatelů do Azure AD](fundamentals/add-users-azure-active-directory.md)
 ### [Správa uživatelských profilů](fundamentals/active-directory-users-profile-azure-portal.md)
+### [Resetování uživatelského hesla](fundamentals/active-directory-users-reset-password-azure-portal.md)
 ### [Sdílení účtů](active-directory-sharing-accounts.md)
 ### [Přiřazení uživatelů k rolím správce](fundamentals/active-directory-users-assign-role-azure-portal.md)
 ### [Obnovení odstraněného uživatele](fundamentals/active-directory-users-restore.md)
@@ -113,26 +114,32 @@
 ### [Ohrožení uživatelé](active-directory-reporting-security-user-at-risk.md)
 ### [Riziková přihlášení](active-directory-reporting-security-risky-sign-ins.md)
 ### [Rizikové události](active-directory-reporting-risk-events.md)
+### [Monitorování protokolů pomocí Azure Monitoru](reporting-azure-monitor-diagnostics-overview.md)
 ### [Nejčastější dotazy](active-directory-reporting-faq.md)
+
 ### Úlohy
 #### [Konfigurace pojmenovaných umístění](active-directory-named-locations.md)
 #### [Vyhledávání sestav aktivit](active-directory-reporting-migration.md)
-#### [Použití sady Azure Active Directory Power BI Content Pack](active-directory-reporting-power-bi-content-pack-how-to.md)
+#### [Použití balíčku obsahu Power BI služby Azure AD](active-directory-reporting-power-bi-content-pack-how-to.md)
 #### [Oprava uživatelů označených příznakem rizika](active-directory-report-security-user-at-risk-remediation.md)
+#### [Směrování protokolů aktivit do centra událostí Azure](reporting-azure-monitor-diagnostics-azure-event-hub.md)
+#### [Archivace protokolů aktivit do účtu úložiště Azure](reporting-azure-monitor-diagnostics-azure-storage-account.md)
+#### [Integrace protokolů aktivit s využitím Splunku pomocí Azure Monitoru](reporting-azure-monitor-diagnostics-splunk-integration.md)
+
 ### Referenční informace
 #### [Uchování](active-directory-reporting-retention.md)
 #### [Latence](active-directory-reporting-latencies-azure-portal.md)
 #### [Reference k aktivitě auditování](active-directory-reporting-activity-audit-reference.md)
 #### [Kódy chyb aktivit přihlašování](active-directory-reporting-activity-sign-ins-errors.md)
 #### [Multi-Factor Authentication](active-directory-reporting-activity-sign-ins-mfa.md)
-
+#### [Interpretace schéma protokolu auditu ve službě Azure Monitor](reporting-azure-monitor-diagnostics-audit-log-schema.md)
+#### [Interpretace schéma protokolu přihlašování ve službě Azure Monitor](reporting-azure-monitor-diagnostics-sign-in-log-schema.md)
 
 ### Řešení potíží
 #### [Chybějící data auditu](active-directory-reporting-troubleshoot-missing-audit-data.md)
 #### [Chybějící data v souborech ke stažení](active-directory-reporting-troubleshoot-missing-data-download.md)
-#### [Chyby balíčku obsahu protokolů aktivit Azure Active Directory](active-directory-reporting-troubleshoot-content-pack.md)
-#### [Chyby v rozhraní API pro generování sestav v Azure Active Directory](active-directory-reporting-troubleshoot-graph-api.md)
-
+#### [Chyby balíčku obsahu protokolů aktivit Azure AD](active-directory-reporting-troubleshoot-
+#### [Chyby v rozhraní API pro vytváření sestav Azure AD](active-directory-reporting-troubleshoot-graph-api.md)
 
 ### [Programový přístup](active-directory-reporting-api-getting-started-azure-portal.md)
 #### [Požadavky](active-directory-reporting-api-prerequisites-azure-portal.md)
@@ -140,13 +147,11 @@
 #### [Ukázky přihlašování](active-directory-reporting-api-sign-in-activity-samples.md)
 #### [Použití certifikátů](active-directory-reporting-api-with-certificates.md)
 
-## Správa hesel (active-directory/authentication/concept-sspr-howitworks.md)
+## [Správa hesel](authentication/concept-sspr-howitworks.md)
 ### Dokumenty uživatele
 #### [Resetování nebo změna hesla](user-help/active-directory-passwords-update-your-own-password.md)
-#### [Osvědčené postupy pro hesla](active-directory-secure-passwords.md)
 #### [Registrace samoobslužného resetování hesla](user-help/active-directory-passwords-reset-register.md)
-### Správci IT: Resetování hesel
-#### [Azure Portal](fundamentals/active-directory-users-reset-password-azure-portal.md)
+
 
 ## Správa zařízení
 ### [Úvod](device-management-introduction.md)

@@ -45,11 +45,11 @@
       href: ../networking/disaster-recovery-dns-traffic-manager.md
 - name: Postup
   items:
-    - name: Vytvoření vlastní zóny DNS a záznamu – Azure CLI
+    - name: Vytvoření privátní zóny a záznamu DNS – Azure CLI
       href: private-dns-getstarted-cli.md
     - name: Správa zón DNS
       items:
-        - name: Azure Portal
+        - name: portál Azure
           href: dns-operations-dnszones-portal.md
         - name: Azure PowerShell
           href: dns-operations-dnszones.md
@@ -57,7 +57,7 @@
           href: dns-operations-dnszones-cli.md
     - name: Správa záznamů DNS
       items:
-        - name: Azure Portal
+        - name: portál Azure
           href: dns-operations-recordsets-portal.md
         - name: Azure PowerShell
           href: dns-operations-recordsets.md

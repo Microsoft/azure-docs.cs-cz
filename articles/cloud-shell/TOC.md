@@ -8,16 +8,17 @@
 ## [Funkce a nástroje](features.md)
 
 # Postupy
-## [Zachování úložiště](persisting-shell-storage.md)
-## [Použití okna](using-the-shell-window.md)
 ## [PowerShell Cloud Shell pro uživatele Windows](cloud-shell-windows-users.md)
+## [Trvalé uložení souborů v úložišti](persisting-shell-storage.md)
+## [Použití okna](using-the-shell-window.md)
+## [Použití Instalační služby MSI ve službě Cloud Shell](msi-authorization.md)
+## [Vložení služby Cloud Shell](embed-cloud-shell.md)
 
 # Příklady
 ## [Bash – vytváření prostředků s využitím Terraformu](example-terraform-bash.md)
 ## [Bash – spouštění runbooků Ansible](../ansible/ansible-run-playbook-in-cloudshell.md)
 
-# [Vložení služby Cloud Shell](embed-cloud-shell.md)
-# [Použití Instalační služby MSI ve službě Cloud Shell](msi-authorization.md)
+# [Použití editoru Cloud Shell](using-cloud-shell-editor.md)
 
 # [Řešení potíží a omezení](troubleshooting.md)
 

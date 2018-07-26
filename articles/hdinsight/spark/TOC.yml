@@ -61,7 +61,7 @@
     - name: Použití nástrojů HDInsight
       items:
         - name: Nástroje pro sadu Visual Studio
-          href: ../hdinsight-hadoop-visual-studio-tools-get-started.md
+          href: ../hadoop/apache-hadoop-visual-studio-tools-get-started.md
           maintainContext: true
         - name: Nástroje pro VSCode
           href: ../hdinsight-for-vscode.md
