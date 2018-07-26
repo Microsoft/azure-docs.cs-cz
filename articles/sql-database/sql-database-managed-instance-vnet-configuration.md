@@ -2,7 +2,7 @@
 title: Azure SQL Database Managed Instance konfigurace virtuální sítě | Dokumentace Microsoftu
 description: Toto téma popisuje možnosti konfigurace pro virtuální síť (VNet) s Azure SQL Database Managed Instance.
 services: sql-database
-author: srdjan-bozovic
+author: srdan-bozovic-msft
 manager: craigg
 ms.service: sql-database
 ms.custom: managed instance
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: dbd747fd3ec53b1221536609d6355ff5b4691977
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 0fea91fb067a6d78ef25cb0ff8014b65a8b6a916
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39091600"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258096"
 ---
 # <a name="configure-a-vnet-for-azure-sql-database-managed-instance"></a>Konfigurace virtuální sítě pro spravovanou instanci Azure SQL Database
 

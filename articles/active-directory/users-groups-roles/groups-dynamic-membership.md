@@ -10,19 +10,20 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 07/05/2018
+ms.date: 07/24/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: a48dcff6eedc2aa6e8bb6cd5b0668af72259493b
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: e49da237584a48c01e72552abae01da2514da3c1
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37869083"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248885"
 ---
-# <a name="create-attribute-based-rules-for-dynamic-group-membership-in-azure-active-directory"></a>Vytvoření pravidel založených na atributech pro členství v dynamické skupině v Azure Active Directory
-Ve službě Azure Active Directory (Azure AD) můžete vytvořit vlastní pravidla pro povolení komplexní založených na atributech dynamické členství ve skupinách. Tento článek podrobně popisuje atributy a syntaxe pro vytvoření pravidla dynamického členství pro uživatele nebo zařízení. Pravidlo pro dynamické členství můžete nastavit pro skupiny zabezpečení nebo pro skupiny Office 365.
+# <a name="create-dynamic-groups-with-attribute-based-membership-in-azure-active-directory"></a>Vytvoření dynamické skupiny s založených na atributech členství ve službě Azure Active Directory
+
+Ve službě Azure Active Directory (Azure AD) můžete vytvořit komplexní pravidla založená na atributu umožňující dynamickým členstvím ve skupinách. Tento článek podrobně popisuje atributy a syntaxe pro vytvoření pravidla dynamického členství pro uživatele nebo zařízení. Pravidlo pro dynamické členství můžete nastavit pro skupiny zabezpečení nebo pro skupiny Office 365.
 
 Když se změní libovolné atributy uživatele nebo zařízení, systém vyhodnotí všechna dynamická pravidla skupin v adresáři a zjistěte, jestli tato změna se aktivuje všechny skupiny přidá nebo odebere. Pokud uživatel nebo zařízení splňuje pravidlo pro skupinu, se přidají jako člena této skupiny. Pokud již uživatel pravidlo, se odeberou.
 
@@ -34,8 +35,9 @@ Když se změní libovolné atributy uživatele nebo zařízení, systém vyhodn
 > V tomto okamžiku není možné vytvořit skupinu zařízení na základě atributů vlastnícího uživatele. Pravidla členství zařízení mohou odkazovat pouze na okamžité atributy zařízení objektů v adresáři.
 
 ## <a name="to-create-an-advanced-rule"></a>Chcete-li vytvořit rozšířené pravidlo
+
 1. Přihlaste se k [centrum pro správu Azure AD](https://aad.portal.azure.com) pomocí účtu, který je globální správce nebo správce uživatelských účtů.
-2. Vyberte **uživatelů a skupin**.
+2. Vyberte **Uživatelé a skupiny**.
 3. Vyberte **všechny skupiny**a vyberte **novou skupinu**.
 
    ![Přidat novou skupinu](./media/groups-dynamic-membership/new-group-creation.png)
@@ -58,6 +60,7 @@ Zobrazí se zpracování stavu a datum poslední aktualizace na stránce s přeh
 
 
 Tyto stavové zprávy lze zobrazit pro **členství zpracování** stavu:
+
 * **Vyhodnocení**: byla přijata změnu skupiny a aktualizace se právě vyhodnocována.
 * **Zpracování**: aktualizace se právě zpracovává.
 * **Dokončena aktualizace**: bylo dokončeno zpracování a provedli všechny použitelné aktualizace.
@@ -65,6 +68,7 @@ Tyto stavové zprávy lze zobrazit pro **členství zpracování** stavu:
 * **Pozastavená aktualizace**: aktualizace byla pozastavena správcem pravidlo dynamického členství. MembershipRuleProcessingState nastavená na "Pozastaveno".
 
 Tyto stavové zprávy lze zobrazit pro **členství poslední aktualizace** stavu:
+
 * &lt;**Datum a čas**&gt;: poslední čas aktualizace členství.
 * **V průběhu**: momentálně probíhají aktualizace.
 * **Neznámý**: Nelze získat čas poslední aktualizace. Může být příčinou nově vytvářené skupiny.
@@ -74,6 +78,7 @@ Pokud dojde k chybě při zpracování pravidla členství pro konkrétní skupi
 ![zpracování chybová zpráva](./media/groups-dynamic-membership/processing-error.png)
 
 ## <a name="constructing-the-body-of-an-advanced-rule"></a>Tělo rozšířené pravidlo vytváření
+
 Pokročilé pravidlo, které můžete vytvořit pro dynamické členství pro skupiny je v podstatě binární výraz, který se skládá ze tří částí a výsledkem výsledek true nebo false. Jsou tři části:
 
 * Levý parametr
@@ -96,6 +101,7 @@ Celková délka obsahu rozšířené pravidlo nemůže být delší než 2 048 z
 > Řetězce, který obsahuje uvozovky "by měla být uzavřena" znak, například user.department - eq \`"Prodeje".
 
 ## <a name="supported-expression-rule-operators"></a>Operátory pravidel podporované výraz
+
 V následující tabulce jsou uvedeny všechny operátory pravidel podporované výrazu a jejich syntaxi pro použití v těle rozšířené pravidlo:
 
 | Operátor | Syntaxe |
@@ -114,6 +120,7 @@ V následující tabulce jsou uvedeny všechny operátory pravidel podporované 
 ## <a name="operator-precedence"></a>Priorita operátorů
 
 Všechny operátory jsou uvedeny dole podle priority od dolní na vyšší. Operátory na stejném řádku jsou v stejnou prioritu:
+
 ````
 -any -all
 -or
@@ -121,15 +128,20 @@ Všechny operátory jsou uvedeny dole podle priority od dolní na vyšší. Oper
 -not
 -eq -ne -startsWith -notStartsWith -contains -notContains -match –notMatch -in -notIn
 ````
+
 Všechny operátory lze používat s nebo bez předpony spojovníkem. Závorky jsou potřeba jenom v případě, že priorita nesplňuje vaše požadavky.
 Příklad:
+
 ```
    user.department –eq "Marketing" –and user.country –eq "US"
 ```
+
 je ekvivalentní:
+
 ```
    (user.department –eq "Marketing") –and (user.country –eq "US")
 ```
+
 ## <a name="using-the--in-and--notin-operators"></a>Pomocí-v a notIn – operátory
 
 Pokud chcete porovnat hodnotu atributu uživatele s celou řadou různých hodnot můžete použít-v nebo - notIn operátory. Tady je příklad použití / v operátora:
@@ -140,6 +152,7 @@ Všimněte si, "[" a "]" na začátku a konce seznamu hodnot. Tato podmínka vyh
 
 
 ## <a name="query-error-remediation"></a>Náprava chyba dotazu
+
 V následující tabulce jsou uvedeny běžné chyby a jak je opravit
 
 | Chyba analýzy dotazu | Chyba využití | Opravené využití |
@@ -149,9 +162,11 @@ V následující tabulce jsou uvedeny běžné chyby a jak je opravit
 | Chyba: Chyba při kompilaci dotazu. |1. (user.department - eq "Prodej") (user.department - eq "Marketing")<br/><br/>2. (user.userPrincipalName-odpovídají "*@domain.ext") |1. Chybějící operátor. Pomocí parametru - a - nebo dvě spojení predikátů<br/><br/>(user.department - eq "Prodej")- nebo (user.department - eq "Marketing")<br/><br/>2. Chyba u regulární výraz používaný s parametrem - odpovídá<br/><br/>(user.userPrincipalName-odpovídají ". *@domain.ext"), případně: (user.userPrincipalName-odpovídají "\@domain.ext$")|
 
 ## <a name="supported-properties"></a>Podporovaných vlastností
+
 Tady jsou všechny vlastnosti uživatele, které vám v rozšířené pravidlo:
 
 ### <a name="properties-of-type-boolean"></a>Vlastnosti typu boolean
+
 Povolené operátory
 
 * -eq
@@ -163,6 +178,7 @@ Povolené operátory
 | dirSyncEnabled |Hodnota TRUE, false |true – eq user.dirSyncEnabled |
 
 ### <a name="properties-of-type-string"></a>Vlastnosti typu řetězec
+
 Povolené operátory
 
 * -eq
@@ -179,9 +195,9 @@ Povolené operátory
 | Vlastnosti | Povolené hodnoty | Využití |
 | --- | --- | --- |
 | city |Některé řetězcová hodnota nebo *null* |(user.city - eq "value") |
-| země |Některé řetězcová hodnota nebo *null* |(user.country - eq "value") |
+| Země |Některé řetězcová hodnota nebo *null* |(user.country - eq "value") |
 | Firma | Některé řetězcová hodnota nebo *null* | (user.companyName - eq "value") |
-| oddělení |Některé řetězcová hodnota nebo *null* |(user.department - eq "value") |
+| Oddělení |Některé řetězcová hodnota nebo *null* |(user.department - eq "value") |
 | displayName |Libovolnou hodnotou řetězce |(user.displayName - eq "value") |
 | employeeId |Libovolnou hodnotou řetězce |(user.employeeId - eq "value")<br>(user.employeeId - ne *null*) |
 | facsimileTelephoneNumber |Některé řetězcová hodnota nebo *null* |(user.facsimileTelephoneNumber - eq "value") |
@@ -189,7 +205,7 @@ Povolené operátory
 | pracovní funkce |Některé řetězcová hodnota nebo *null* |(user.jobTitle - eq "value") |
 | e-mailu |Některé řetězcová hodnota nebo *null* (adresa SMTP uživatele) |(user.mail - eq "value") |
 | mailNickName |Libovolnou hodnotou řetězce (poštovní alias uživatele) |(user.mailNickName - eq "value") |
-| mobilní |Některé řetězcová hodnota nebo *null* |(user.mobile - eq "value") |
+| Mobilní zařízení |Některé řetězcová hodnota nebo *null* |(user.mobile - eq "value") |
 | ID objektu |Identifikátor GUID objektu uživatele |(user.objectId - eq "11111111-1111-1111-1111-111111111111") |
 | onPremisesSecurityIdentifier | On-premises identifikátor zabezpečení (SID) pro uživatele, kteří byly synchronizované z místní do cloudu. |(user.onPremisesSecurityIdentifier - eq "S-1-1-11-1111111111-1111111111-1111111111-1111111") |
 | passwordPolicies |Žádný DisableStrongPassword DisablePasswordExpiration DisablePasswordExpiration, DisableStrongPassword |(user.passwordPolicies - eq "DisableStrongPassword") |
@@ -203,9 +219,10 @@ Povolené operátory
 | telephoneNumber |Některé řetězcová hodnota nebo *null* |(user.telephoneNumber - eq "value") |
 | Místo využívání |Dvě lettered směrové číslo země |(user.usageLocation - eq "USA") |
 | userPrincipalName |Libovolnou hodnotou řetězce |(user.userPrincipalName -eq "alias@domain") |
-| userType |člen hosta *null* |(user.userType - eq "Člen") |
+| UserType |člen hosta *null* |(user.userType - eq "Člen") |
 
 ### <a name="properties-of-type-string-collection"></a>Vlastnosti kolekce typu řetězec
+
 Povolené operátory
 
 * -obsahuje
@@ -217,6 +234,7 @@ Povolené operátory
 | proxyAddresses |SMTP: alias@domain smtp: alias@domain |(user.proxyAddresses – obsahuje "SMTP: alias@domain") |
 
 ## <a name="multi-value-properties"></a>Vícehodnotový vlastnosti
+
 Povolené operátory
 
 * -žádný (splněn pokud alespoň jedna položka v kolekci odpovídá podmínce)
@@ -225,6 +243,7 @@ Povolené operátory
 | Vlastnosti | Hodnoty | Využití |
 | --- | --- | --- |
 | assignedPlans |Každý objekt v kolekci zveřejňuje následující vlastnosti řetězce: capabilityStatus, služby, servicePlanId |user.assignedPlans – všechny (assignedPlan.servicePlanId - eq "efb87545-963c-4e0d-99df-69c6916d9eb0"- a assignedPlan.capabilityStatus - eq "Povoleno") |
+| proxyAddresses| SMTP: alias@domain smtp: alias@domain | (user.proxyAddresses – všechny (\_ – obsahuje "contoso")) |
 
 Vícehodnotový vlastnosti jsou kolekce objektů stejného typu. Můžete použít – všechny - všechny operátory a použít podmínku pro jednu nebo všechny položky v kolekci, v uvedeném pořadí. Příklad:
 
@@ -234,7 +253,7 @@ assignedPlans je vlastnost více hodnotami, který obsahuje seznam všech plánu
 user.assignedPlans -any (assignedPlan.servicePlanId -eq "efb87545-963c-4e0d-99df-69c6916d9eb0" -and assignedPlan.capabilityStatus -eq "Enabled")
 ```
 
-(Identifikátor Guid identifikuje plánu služby Exchange Online (plán 2).)
+(Identifikátor GUID identifikuje plánu služby Exchange Online (plán 2).)
 
 > [!NOTE]
 > To je užitečné, pokud chcete určit všichni uživatelé, pro kterého služby Office 365 (nebo jiné služby Microsoft Online Service) povolená funkce například cílit pomocí sady zásad.
@@ -242,6 +261,16 @@ user.assignedPlans -any (assignedPlan.servicePlanId -eq "efb87545-963c-4e0d-99df
 Následující výraz vybere všechny uživatele, kteří mají všechny plán služeb, která je přidružená ke službě Intune (identifikovaný podle názvu služby "SCO"):
 ```
 user.assignedPlans -any (assignedPlan.service -eq "SCO" -and assignedPlan.capabilityStatus -eq "Enabled")
+```
+
+### <a name="using-the-underscore--syntax"></a>Pomocí podtržítka (\_) syntaxe
+
+Podtržítko (\_) syntaxe odpovídá výskytů určité hodnoty v jednom z vlastnosti kolekce s více hodnotami řetězce pro přidání uživatelů nebo zařízení do dynamické skupiny. Se použije s parametrem- nebo - všemi operátory.
+
+Tady je příklad použití podtržítko (\_) v pravidlu pro přidání členů podle user.proxyAddress (to funguje stejně v případě user.otherMails). Toto pravidlo se přidá každý uživatel s adresa proxy serveru, který obsahuje "contoso" do skupiny.
+
+```
+(user.proxyAddresses -any (_ -contains "contoso"))
 ```
 
 ## <a name="use-of-null-values"></a>Použití hodnoty Null
@@ -256,14 +285,17 @@ Atributy rozšíření a uživatelských atributů, které jsou podporovány v p
 
 Atributy rozšíření jsou synchronizované z místní Windows Server AD a využijte formát "ExtensionAttributeX", kde X je rovno 1 – 15.
 Jedná se například pravidlo, které používá atribut rozšíření
+
 ```
 (user.extensionAttribute15 -eq "Marketing")
 ```
-Uživatelských atributů, které jsou synchronizované z místní Windows Server AD nebo z připojených aplikací SaaS a formát "user.extension_[GUID]\__ [Attribute]", kde [identifikátor GUID] je jedinečný identifikátor v adresáři AAD pro aplikaci, kterou vytvořili atribut v AAD a [Attribute] je název atributu, který byl vytvořen.
-Je například pravidla, která používá vlastní atribut
+
+Uživatelských atributů, které jsou synchronizované z místní Windows Server AD nebo z připojených aplikací SaaS a formát "user.extension_[GUID]\__ [Attribute]", kde [identifikátor GUID] je jedinečný identifikátor v adresáři AAD pro aplikaci, kterou vytvořili atribut ve službě Azure AD a [Attribute] je název atributu, protože byl vytvořen. Je například pravidla, která používá vlastní atribut
+
 ```
 user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber  
 ```
+
 Vlastní název atributu najdete v adresáři zadáním dotazu na atribut pomocí Graph Exploreru a vyhledávání pro název atributu.
 
 ## <a name="direct-reports-rule"></a>Pravidlo "Přímé podřízené"
@@ -405,8 +437,8 @@ ConvertStaticGroupToDynamic "a58913b2-eee4-44f9-beb2-e381c375058f" "user.display
 ## <a name="next-steps"></a>Další postup
 Tyto články poskytují další informace o skupinách ve službě Azure Active Directory.
 
-* [Zobrazit existující skupiny](../fundamentals/active-directory-groups-view-azure-portal.md)
+* [Zobrazení existujících skupin](../fundamentals/active-directory-groups-view-azure-portal.md)
 * [Vytvoření nové skupiny a přidání členů](../fundamentals/active-directory-groups-create-azure-portal.md)
 * [Správa nastavení skupiny](../fundamentals/active-directory-groups-settings-azure-portal.md)
 * [Správa členství ve skupině](../fundamentals/active-directory-groups-membership-azure-portal.md)
-* [Správa dynamické pravidel pro uživatele ve skupině](groups-dynamic-membership.md)
+* [Správa dynamických pravidel pro uživatele ve skupině](groups-dynamic-membership.md)

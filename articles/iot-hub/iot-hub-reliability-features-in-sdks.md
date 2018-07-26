@@ -12,12 +12,12 @@ documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: a318a1ef8b13b8fcb4f4401ac4d0e45037958d63
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 7717c026b4c09f47159fe62640f9a2eedf409d30
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39127579"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39247677"
 ---
 # <a name="how-to-manage-connectivity-and-reliable-messaging-using-azure-iot-hub-device-sdks"></a>Správa připojení a spolehlivé zasílání zpráv pomocí sady SDK pro zařízení Azure IoT Hub
 
@@ -111,3 +111,8 @@ V jiných jazycích najdete v dokumentaci implementace níže.  Ukázky použív
 - [Java SDK](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/devdoc/requirement_docs/com/microsoft/azure/iothub/retryPolicy.md)
 - [Node SDK](https://github.com/Azure/azure-iot-sdk-node/wiki/Connectivity-and-Retries#types-of-errors-and-how-to-detect-them)
 
+## <a name="next-steps"></a>Další postup
+- [Použití sad SDK pro zařízení a služby](.\iot-hub-devguide-sdks.md)
+- [Použití sady SDK pro zařízení IoT pro C](.\iot-hub-device-sdk-c-intro.md)
+- [Vývoj pro zařízení s omezením](.\iot-hub-devguide-develop-for-constrained-devices.md)
+- [Vývoj pro mobilní zařízení](.\iot-hub-how-to-develop-for-mobile-devices.md)

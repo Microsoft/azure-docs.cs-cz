@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: protection
-ms.date: 07/14/2018
+ms.date: 07/24/2018
 ms.author: rolyon
 ms.reviewer: hanki
 ms.custom: pim
-ms.openlocfilehash: 6c329554b5854f113fb216f874fa5a918110f9c5
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: ffac7768fefece24cb69789558ce500e1ff64d98
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39059778"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39257890"
 ---
 # <a name="email-notifications-in-azure-ad-pim"></a>E-mailových oznámení v Azure AD PIM
 
@@ -32,7 +32,7 @@ Po události kláves se generují v Azure AD Privileged Identity Management (PIM
 - Když se přiřazení privilegovaných rolí
 - Pokud je povolená Azure AD PIM
 
-Cena začíná na konci. července 2018, budou mít e-mailová oznámení odesílat prostřednictvím PIM novou e-mailovou adresu odesílatele a nové vizuální návrh. Tato aktualizace ovlivní obě PIM pro Azure AD a PIM pro prostředky Azure. Všechny události, které dříve aktivovaly e-mailové oznámení bude nadále rozešle e-mail. Tato aktualizace je výhradně vizuální změny pomocí funkce nebyly provedeny žádné změny.
+Cena začíná na konci. července 2018, budou mít e-mailová oznámení odesílat prostřednictvím PIM novou e-mailovou adresu odesílatele a nové vizuální návrh. Tato aktualizace ovlivní obě PIM pro Azure AD a PIM pro prostředky Azure. Všechny události, které dříve aktivovaly e-mailové oznámení bude nadále rozešle e-mail. Některé e-mailů bude aktualizovaný obsah poskytování více cílových informací.
 
 ## <a name="sender-email-address"></a>E-mailová adresa odesílatele
 
@@ -45,6 +45,12 @@ Dříve musely e-mailová oznámení na následující adresu:
 
 - E-mailová adresa:  **azureadnotifications@microsoft.com**
 - Zobrazovaný název: Služba oznámení Microsoft Azure AD
+
+## <a name="email-subject-line"></a>Řádek předmětu e-mailu
+
+Spouští se na konci z července 2018 se e-mailová oznámení pro Azure AD a budou mít role prostředků Azure **PIM** předponu v řádku předmětu. Tady je příklad:
+
+- PIM: Alain Charon byl trvale přiřadit role Čtenář zálohování.
 
 ## <a name="pim-emails-for-azure-ad-roles"></a>E-mailů PIM pro role Azure AD
 

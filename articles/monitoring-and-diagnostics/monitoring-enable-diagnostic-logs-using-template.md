@@ -8,24 +8,24 @@ ms.topic: conceptual
 ms.date: 3/26/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 18a2aa289c89f98e6d20ddcdbd1217785fc163d1
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: e8af84467c008f5c576142fa094b2757cfd30387
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37918406"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248074"
 ---
 # <a name="automatically-enable-diagnostic-settings-at-resource-creation-using-a-resource-manager-template"></a>Automaticky povolení diagnostických nastavení při vytváření prostředků pomocí šablony Resource Manageru
 V tomto článku vám ukážeme, jak můžete použít [šablony Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md) ke konfiguraci nastavení diagnostiky pro prostředek při jeho vytvoření. To umožňuje automaticky spustit streamování diagnostických protokolů a metrik do služby Event Hubs, archivovat v účtu úložiště nebo odeslání do Log Analytics, když se vytvoří prostředek.
 
 > [!WARNING]
-> Formát dat protokolů v účtu úložiště se změní na řádky JSON na 1. listopadu 2018. [Najdete v článku popis dopad a postup aktualizace nástrojů pro zpracování na nový formát.](./monitor-diagnostic-logs-append-blobs.md) 
+> 1. listopadu 2018 se formát dat protokolů v účtu úložiště změní na řádky JSON. [Informace o dopadu a postup pro aktualizaci nástrojů, aby si s novým formátem poradily, najdete v tomto článku](./monitor-diagnostic-logs-append-blobs.md). 
 >
 > 
 
 Metoda pro povolení diagnostických protokolů pomocí šablony Resource Manageru závisí na typu prostředku.
 
-* **Non-Compute** používají prostředky (například skupiny zabezpečení sítě, Logic Apps, automatizace) [nastavení diagnostiky, které jsou popsané v tomto článku](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings).
+* **Non-Compute** používají prostředky (například skupiny zabezpečení sítě, Logic Apps, automatizace) [nastavení diagnostiky, které jsou popsané v tomto článku](monitoring-overview-of-diagnostic-logs.md#diagnostic-settings).
 * **COMPUTE** používají prostředky (WAD/LAD min.) [WAD/LAD konfigurační soubor je popsáno v tomto článku](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md).
 
 V tomto článku zjistíte, jak nakonfigurovat diagnostiku pomocí některé z metod.
@@ -265,7 +265,7 @@ Povolit diagnostiku na výpočetní prostředek, třeba clusteru virtuálního p
 
 Celý proces, včetně ukázek, je popsaná [v tomto dokumentu](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Další informace o diagnostické protokoly Azure](monitoring-overview-of-diagnostic-logs.md)
 * [Stream diagnostické protokoly Azure do služby Event Hubs](monitoring-stream-diagnostic-logs-to-event-hubs.md)
 

@@ -10,22 +10,20 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: wolfma
-ms.openlocfilehash: 4599c3c4c69397a1ab1f65c246e4440085b8bb91
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 751736a4333932a68775589dddeb82ef6fa6f398
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39072555"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258204"
 ---
 # <a name="quickstart-recognize-speech-in-a-uwp-app-using-the-speech-sdk"></a>Rychlý start: Rozpoznávat řeč v aplikace pro UPW pomocí sady SDK pro řeč
 
 V tomto článku se dozvíte, jak vytvořit aplikaci univerzální platformy Windows (UPW) přepisy převod řeči na text pomocí Cognitive Services SDK řeči.
-Aplikace je založena na [Microsoft Cognitive Services řeči balíčku sady SDK NuGet](https://aka.ms/csspeech/nuget) a Microsoft Visual Studio 2017.
+Aplikace je sestavená s [Microsoft Cognitive Services řeči balíčku sady SDK NuGet](https://aka.ms/csspeech/nuget) a Microsoft Visual Studio 2017.
 
 > [!NOTE]
-> Aplikace UPW vytvořené pomocí sadou SDK pro řeč ještě nepředávejte Kit certifikaci aplikace Windows (souboru).
-> Zkušební načtení aplikací je možné, odesílá se, že je aplikace pro Windows Store.
-> Tato chyba bude opravena v nadcházející verzi.
+> Univerzální platforma Windows umožňuje vyvíjet aplikace, které běží na všech zařízeních, která podporuje Windows 10, včetně počítačů, Xbox, Surface Hubu a dalších zařízení. Aplikace s využitím sadou SDK pro řeč ještě nepředávejte Kit certifikaci aplikace Windows (souboru). Je možné nainstalovat ji bokem, které vaše aplikace, ale nemusí být odeslány aktuálně pro Windows Store.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -46,12 +44,12 @@ Aplikace je založena na [Microsoft Cognitive Services řeči balíčku sady SDK
 
     ![](media/sdk/qs-csharp-uwp-02-new-uwp-project.png)
 
-1. Pokud máte spuštěný na instalaci Windows 64-bit, přepnete platforma sestavení k `x64`:
+1. Pokud máte spuštěný na instalaci Windows 64-bit, přepnete platforma sestavení k `x64`.
 
    ![Přepnout na x64 platforma sestavení](media/sdk/qs-csharp-uwp-03-switch-to-x64.png)
 
    > [!NOTE]
-   > V tuto chvíli nepodporuje sadou SDK pro řeč pro procesory ARM cíl.
+   > V současné době podporuje sadou SDK pro řeč procesory kompatibilní s verzí Intel, ale ne ARM.
 
 1. Instalaci a odkazují [balíček NuGet sady SDK pro řeč](https://aka.ms/csspeech/nuget). V Průzkumníku řešení klikněte pravým tlačítkem myši na řešení a vyberte **spravovat balíčky NuGet pro řešení**.
 
@@ -61,11 +59,11 @@ Aplikace je založena na [Microsoft Cognitive Services řeči balíčku sady SDK
 
     ![Nainstalujte balíček NuGet Microsoft.CognitiveServices.Speech](media/sdk/qs-csharp-uwp-05-nuget-install-0.5.0.png "balíček Nuget nainstalovat")
 
-1. Na obrazovce licenci, která se otevře přijměte licenci:
+1. Přijměte licenci v zobrazeném dialogu.
 
     ![Přijměte licenci](media/sdk/qs-csharp-uwp-06-nuget-license.png "přijměte licenci")
 
-1. V konzole Správce balíčků byste měli vidět následující výstup:
+1. Následující řádek výstupu se zobrazí v konzole Správce balíčků.
 
    ```text
    Successfully installed 'Microsoft.CognitiveServices.Speech 0.5.0' to helloworld
@@ -78,13 +76,14 @@ Aplikace je založena na [Microsoft Cognitive Services řeči balíčku sady SDK
 
    ![](media/sdk/qs-csharp-uwp-07-capabilities.png)
 
-1. Upravit aplikaci uživatelského rozhraní na něj poklikejte `MainPage.xaml` v Průzkumníku řešení.
-   V zobrazení návrháři XAML, vložte následující fragment kódu XAML do mřížky značky (mezi `<Grid>` a `</Grid>`):
+1. Upravit uživatelské rozhraní vaší aplikace na něj poklikejte `MainPage.xaml` v Průzkumníku řešení. 
+
+    V zobrazení návrháři XAML, vložte následující fragment kódu XAML do mřížky značky (mezi `<Grid>` a `</Grid>`).
 
    [!code-xml[UI elements](~/samples-cognitive-services-speech-sdk/quickstart/csharp-uwp/helloworld/MainPage.xaml#StackPanel)]
 
 1. Úprava kódu XAML dvojitým kliknutím `MainPage.xaml.cs` v Průzkumníku řešení (je seskupený pod `MainPage.xaml` položky).
-   Veškerý kód nahraďte následujícím kódem:
+   Veškerý kód v tomto souboru nahraďte následujícím kódem.
 
    [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp-uwp/helloworld/MainPage.xaml.cs#code)]
 
@@ -96,7 +95,7 @@ Aplikace je založena na [Microsoft Cognitive Services řeči balíčku sady SDK
 
 ## <a name="build-and-run-the-sample"></a>Sestavení a spuštění ukázky
 
-1. Sestavení aplikace. V panelu nabídky vyberte **sestavení** > **sestavit řešení**. Kód by měl nyní zkompiluje bez chyb:
+1. Sestavení aplikace. V panelu nabídky vyberte **sestavení** > **sestavit řešení**. Kód by měl nyní kompilovat bez chyb.
 
     ![Úspěšné sestavení](media/sdk/qs-csharp-uwp-08-build.png "úspěšné sestavení")
 
@@ -108,8 +107,7 @@ Aplikace je založena na [Microsoft Cognitive Services řeči balíčku sady SDK
 
     ![Spusťte aplikaci do ladění](media/sdk/qs-csharp-uwp-10-access-prompt.png "spusťte aplikaci do ladění")
 
-1. Klikněte **rozpoznávání řeči se vstupem mikrofon** a číst obsah krátké fráze do mikrofonu.
-   Výsledek rozpoznání řeči, by měla být zobrazení v grafickém Uživatelském rozhraní.
+1. Klikněte na tlačítko **rozpoznávání řeči se vstupem mikrofon** a Mluvte krátkých frází do vašeho zařízení mikrofon. Rozpoznaný text se zobrazí v okně.
 
     ![](media/sdk/qs-csharp-uwp-11-ui-result.png)
 

@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/23/2018
+ms.date: 07/25/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2fff52a7909a1f3c59ebe4944386e096bd1a8d95
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: e549293bf09781363e74c85ae689869d35de3092
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213414"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258282"
 ---
 # <a name="azure-active-directory-pass-through-authentication-current-limitations"></a>Azure předávací ověřování služby Active Directory: Aktuální omezení
 
@@ -35,7 +35,7 @@ Jsou podporovány následující scénáře:
 - Přihlášení uživatelů do Outlookové klienty pomocí starší verze protokoly, například Exchange ActiveSync, EAS, SMTP, POP a IMAP.
 - Přihlášení uživatele do starší klientské aplikace Office a aplikace Office, které podporují [moderní ověřování](https://aka.ms/modernauthga): verze Office 2010, 2013 a 2016.
 - Přihlašování uživatelů na starší verzi protokolu aplikace, jako je PowerShell verze 1.0 a další.
-- Doména služby Azure AD připojí pro zařízení s Windows 10.
+- Azure AD připojí pro zařízení s Windows 10.
 - Hesla aplikací pro ověřování službou Multi-Factor Authentication.
 
 ## <a name="unsupported-scenarios"></a>Nepodporované scénáře
@@ -47,7 +47,7 @@ Následující scénáře jsou _není_ podporovány:
 - Předávací ověřování není integrován s [Azure AD Connect Health](../connect-health/active-directory-aadconnect-health.md).
 
 >[!IMPORTANT]
->Jako alternativní řešení pro nepodporované scénáře _pouze_, povolte synchronizaci hodnot Hash hesel na [volitelné funkce](active-directory-aadconnect-get-started-custom.md#optional-features) stránky v průvodci službou Azure AD Connect. Při přihlášení uživatelů do aplikací uvedených v "nepodporované scénáře", jsou tyto konkrétní žádostí o přihlášení _není_ zpracování pomocí agentů předávací ověřování a proto je nebudou zaznamenána v [ Předávací ověřování protokoly](active-directory-aadconnect-troubleshoot-pass-through-authentication.md#collecting-pass-through-authentication-agent-logs).
+>Jako alternativní řešení pro nepodporované scénáře _pouze_ (s výjimkou integrace Azure AD Connect Health), povolte na synchronizaci hodnot Hash hesel [volitelné funkce](active-directory-aadconnect-get-started-custom.md#optional-features) stránky v průvodci službou Azure AD Connect. Při přihlášení uživatelů do aplikací uvedených v "nepodporované scénáře", jsou tyto konkrétní žádostí o přihlášení _není_ zpracování pomocí agentů předávací ověřování a proto je nebudou zaznamenána v [ Předávací ověřování protokoly](active-directory-aadconnect-troubleshoot-pass-through-authentication.md#collecting-pass-through-authentication-agent-logs).
 
 >[!NOTE]
 Povolení synchronizace hodnot Hash hesel nabízí možnost převzetí služeb při selhání ověřování je-li přerušit vaši místní infrastrukturu. Toto převzetí služeb při selhání z předávací ověřování na synchronizaci hodnot Hash hesel nebude automatická. Budete potřebovat přepnout metodu přihlašování ručně pomocí služby Azure AD Connect. Pokud server se službou Azure AD Connect ocitne mimo provoz, bude vyžadovat pomoc od společnosti Microsoft Support vypnout předávací ověřování.

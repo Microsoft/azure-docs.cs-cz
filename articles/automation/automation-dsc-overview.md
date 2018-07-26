@@ -1,7 +1,7 @@
 ---
-title: Přehled služby Azure Automation DSC
-description: Přehled o DSC Azure Automation požadovaného stavu konfigurace (), podmínky a známé problémy
-keywords: prostředí PowerShell dsc, konfigurace požadovaného stavu prostředí powershell dsc azure
+title: Přehled Azure Automation DSC
+description: Přehled o Azure Automation Desired State Configuration (DSC), podmínky a známé problémy
+keywords: PowerShell dsc, konfigurace požadovaného stavu prostředí powershell dsc azure
 services: automation
 ms.service: automation
 ms.component: dsc
@@ -10,56 +10,56 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 83d5b89422a0181c06dbfe3b2bd8975ef7214b9d
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f6d49ffa59ed53c0a1966a4132fd5fe1689a13ce
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34193253"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39247345"
 ---
-# <a name="azure-automation-dsc-overview"></a>Přehled služby Azure Automation DSC
+# <a name="azure-automation-dsc-overview"></a>Přehled Azure Automation DSC
 
-Azure Automation DSC je služba Azure, který umožňuje zapisovat a spravovat zkompilovat PowerShell požadovaného stavu konfigurace (DSC) [konfigurace](https://msdn.microsoft.com/powershell/dsc/configurations), import [prostředky DSC](https://msdn.microsoft.com/powershell/dsc/resources)a přiřadit konfigurace pro cílové uzly, všechny v cloudu.
+Azure Automation DSC je služba Azure, která umožňuje zápis, spravovat a kompilovat PowerShell Desired State Configuration (DSC) [konfigurace](https://msdn.microsoft.com/powershell/dsc/configurations), importovat [prostředky DSC](https://msdn.microsoft.com/powershell/dsc/resources)a přiřadit konfigurace na cílových uzlů, vše v cloudu.
 
-## <a name="why-use-azure-automation-dsc"></a>Proč používat Azure Automation DSC.
+## <a name="why-use-azure-automation-dsc"></a>Proč používat Azure Automation DSC
 
 Azure Automation DSC poskytuje několik výhod oproti použití DSC mimo Azure.
 
-### <a name="built-in-pull-server"></a>Předdefinované načítacího serveru
+### <a name="built-in-pull-server"></a>Server integrované o přijetí změn
 
-Poskytuje služby Azure Automation [server DSC za](https://msdn.microsoft.com/powershell/dsc/pullserver) tak, aby cílové uzly automaticky zobrazí konfigurace, podřídit se požadované stavu a zpětně hlásit dodržování předpisů.
-Předdefinované vyžádání serveru ve službě Azure Automation se eliminuje potřeba nastavit a spravovat vlastní server vyžádané replikace.
-Služby Azure Automation, můžete vybrat virtuální nebo fyzická systému Windows nebo Linux počítače, v cloudu nebo místně.
+Azure Automation poskytuje server DSC o přijetí změn, podobně jako [služba DSC funkce Windows](/powershell/dsc/pullserver) tak, aby cílové uzly automaticky zobrazí konfigurace, v souladu s požadovaného stavu a zpětně hlásit dodržování předpisů.
+Server integrované o přijetí změn ve službě Azure Automation eliminuje potřebu nastavili a spravovali vlastním serverem vyžádané replikace.
+Azure Automation můžete cílit na virtuálních nebo fyzických Windows nebo Linuxem počítačů, v cloudu nebo místně.
 
-### <a name="management-of-all-your-dsc-artifacts"></a>Správa všech artefaktů DSC
+### <a name="management-of-all-your-dsc-artifacts"></a>Správa všechny artefakty DSC
 
-Azure Automation DSC přináší stejné vrstva správy [konfigurace požadovaného stavu prostředí PowerShell](https://msdn.microsoft.com/powershell/dsc/overview) jako Azure Automation nabízí skriptů prostředí PowerShell.
+Azure Automation DSC přináší stejnou úroveň správy do [PowerShell Desired State Configuration](https://msdn.microsoft.com/powershell/dsc/overview) jako nabízí Azure Automation pro skriptování PowerShell.
 
-Z portálu Azure nebo z prostředí PowerShell můžete spravovat všechny vaše DSC konfigurace, prostředky a cílové uzly.
+Na webu Azure Portal nebo prostředí PowerShell můžete spravovat všechny vaše DSC konfigurace, prostředků a cílové uzly.
 
 ![Snímek obrazovky okna Azure Automation.](./media/automation-dsc-overview/azure-automation-blade.png)
 
-### <a name="import-reporting-data-into-log-analytics"></a>Importovat data pro generování sestav do analýzy protokolů
+### <a name="import-reporting-data-into-log-analytics"></a>Importovat data pro generování sestav do Log Analytics
 
-Uzly, které budou spravovat pomocí Azure Automation DSC poslat podrobné údaje o chybách stav předdefinované načítacího serveru.
-Můžete nakonfigurovat odesílat tato data do pracovního prostoru analýzy protokolů Azure Automation DSC.
-Zjistěte, jak odesílat data o stavu DSC do pracovního prostoru analýzy protokolů, najdete v tématu [dál Azure Automation DSC data pro vytváření sestav k analýze protokolů](automation-dsc-diagnostics.md).
+Uzly, které se spravují pomocí Azure Automation DSC odeslat podrobná data sestav stavu serveru integrované o přijetí změn.
+Azure Automation DSC k odesílání dat do pracovního prostoru Log Analytics můžete nakonfigurovat.
+Zjistěte, jak odesílat data o stavu DSC do pracovního prostoru Log Analytics, najdete v článku [vpřed Azure Automation DSC data pro generování sestav do služby Log Analytics](automation-dsc-diagnostics.md).
 
 ## <a name="introduction-video"></a>Úvodní video
 
-Raději se díváte, než čtete? Podíváme se na následující videa z květen 2015, když se poprvé oznámeno Azure Automation DSC.
+Raději se díváte, než čtete? Podíváme se na následující video z května 2015, kdy bylo poprvé oznámena Azure Automation DSC.
 
 >[!NOTE]
->Koncepty a životního cyklu, které jsou popsané v tomto videu jsou sice správné, Azure Automation DSC má posunula hodně dopředu a vzhledem k tomu, že záznamu tohoto videa.
->Nyní je obecně k dispozici, má mnohem rozsáhlejší uživatelské rozhraní na portálu Azure a podporuje mnoho další funkce.
+>Koncepty a životního cyklu, které jsou popsané v tomto videu jsou sice správné, Azure Automation DSC provedení určité mnohem od tohoto videa.
+>Je teď obecně dostupná, má mnohem rozsáhlejší uživatelské rozhraní na webu Azure Portal a podporuje řadu dalších funkcí.
 
 > [!VIDEO https://channel9.msdn.com/Events/Ignite/2015/BRK3467/player]
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace jak pro zařadit uzly pro správu ve službě Azure Automation DSC, najdete v části [registrace počítačů pro správu Azure Automation DSC.](automation-dsc-onboarding.md)
-* Chcete-li začít používat Azure Automation DSC, přečtěte si téma [Začínáme s Azure Automation DSC.](automation-dsc-getting-started.md)
-* Další informace o kompilaci konfigurace DSC, takže můžete je přiřadit k cílové uzly najdete v tématu [kompilování konfigurace v Azure Automation DSC.](automation-dsc-compile.md)
-* Referenční informace o rutinách prostředí PowerShell pro Azure Automation DSC, najdete v části [rutiny Azure Automation DSC.](/powershell/module/azurerm.automation/#automation)
-* Informace o cenách naleznete v tématu [ceny Azure Automation DSC.](https://azure.microsoft.com/pricing/details/automation/)
-* Příklad použití Azure Automation DSC v kanálu průběžné nasazování, najdete v sekci [průběžné nasazování a Chocolatey IaaS virtuálních počítačů pomocí Azure Automation DSC](automation-dsc-cd-chocolatey.md)
+* Další informace jak připojit uzly pro správu s Azure Automation DSC, najdete v článku [připojování počítačů pro správu pomocí Azure Automation DSC](automation-dsc-onboarding.md)
+* Chcete-li začít používat Azure Automation DSC, přečtěte si téma [Začínáme s Azure Automation DSC](automation-dsc-getting-started.md)
+* Další informace o kompilaci konfigurace DSC, takže můžete je přiřadit k cílové uzly, naleznete v tématu [kompilace konfigurací v Azure Automation DSC](automation-dsc-compile.md)
+* Reference k rutinám Powershellu pro Azure Automation DSC, naleznete v tématu [rutiny Azure Automation DSC](/powershell/module/azurerm.automation/#automation)
+* Informace o cenách najdete v tématu [ceny Azure Automation DSC](https://azure.microsoft.com/pricing/details/automation/)
+* Příklad použití Azure Automation DSC v kanálu průběžného nasazování najdete v tématu [průběžné nasazování do IaaS virtuálních počítačů pomocí Azure Automation DSC a Chocolatey](automation-dsc-cd-chocolatey.md)

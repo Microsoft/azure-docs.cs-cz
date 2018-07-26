@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 06/07/2018
 ms.author: wolfma
-ms.openlocfilehash: fe171ba9f6f0ff36a7c23c47f145d83f7a94fb5d
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: c2b06ed4c31dc585111000266e57888f490938ec
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39069484"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258963"
 ---
 # <a name="shipping-an-application"></a>Přesouvání aplikace
 
@@ -27,7 +27,7 @@ V závislosti na platformě existují různých závislostí ke spuštění vaš
 
 Cognitive Services SDK řeči je testován na Windows 10 a Windows serveru 2016.
 
-Cognitive Services řeči SDK vyžaduje [Microsoft Visual C++ Redistributable pro Visual Studio 2017](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads) v systému. Instalační programy pro nejnovější verzi si můžete stáhnout `Microsoft Visual C++ Redistributable for Visual Studio 2017` tady:
+Cognitive Services řeči SDK vyžaduje [Microsoft Visual C++ Redistributable pro Visual Studio 2017](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) v systému. Instalační programy pro nejnovější verzi si můžete stáhnout `Microsoft Visual C++ Redistributable for Visual Studio 2017` tady:
 
 - [Win32](https://aka.ms/vs/15/release/vc_redist.x86.exe)
 - [x64](https://aka.ms/vs/15/release/vc_redist.x64.exe)

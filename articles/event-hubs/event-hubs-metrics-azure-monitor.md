@@ -1,6 +1,6 @@
 ---
-title: Azure Event Hubs metriky v nástroji Sledování Azure (preview) | Microsoft Docs
-description: Použití Azure monitorování ke sledování služby Event Hubs
+title: Metriky Azure Event Hubs ve službě Azure Monitor (preview) | Dokumentace Microsoftu
+description: Monitorování služby Event Hubs pomocí monitorování Azure
 services: event-hubs
 documentationcenter: .NET
 author: ShubhaVijayasarathy
@@ -14,106 +14,106 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/12/2018
 ms.author: sethm
-ms.openlocfilehash: 445b439ff77a88a4b7783427f5fab0e40a485542
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: f25900ddffd9d8be008abbb3672a3f6a2eabd481
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31405136"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248109"
 ---
-# <a name="azure-event-hubs-metrics-in-azure-monitor-preview"></a>Azure Event Hubs metriky v nástroji Sledování Azure (preview)
+# <a name="azure-event-hubs-metrics-in-azure-monitor-preview"></a>Metriky Azure Event Hubs ve službě Azure Monitor (preview)
 
-Metriky Event Hubs poskytuje stav služby Event Hubs prostředky ve vašem předplatném Azure. S bohatou sadu dat metrik můžete vyhodnotit celkový stav služby event hubs, jenom na úrovni oboru názvů, ale taky na úrovni entit. Ve statistikách může být důležité, protože pomáhají monitorovat stav služby event hubs. Metriky také může pomoci potíže hlavní příčinu, bez nutnosti požádejte podporu Azure.
+Metriky Event Hubs poskytuje stav služby Event Hubs prostředků ve vašem předplatném Azure. S bohatou sadou dat metrik můžete posouzení celkového stavu služby event hubs, pouze na úrovni oboru názvů, ale také na úrovni entity. Ve statistikách může být důležité, protože pomáhají s monitorováním stavu služby event hubs. Metriky může také pomoct potíží hlavní příčinu, aniž byste museli kontaktovat podporu Azure.
 
-Monitorování Azure poskytuje uživatelské rozhraní pro monitorování napříč různými službami Azure. Další informace najdete v tématu [monitorování v Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview.md) a [metriky načíst monitorování Azure s .NET](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) ukázku na Githubu.
+Azure Monitor nabízí jednotné uživatelské rozhraní pro monitorování napříč různými službami Azure. Další informace najdete v tématu [monitorování v Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview.md) a [metriky načíst Azure Monitor s využitím .NET](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) ukázka na Githubu.
 
 ## <a name="access-metrics"></a>Metriky přístup
 
-Azure monitorování poskytuje několik způsobů metriky přístup. Můžete buď metriky přístup prostřednictvím [portál Azure](https://portal.azure.com), nebo pomocí rozhraní API Správce Azure monitorování (REST a rozhraní .NET) a řešení pro analýzu například operace Management Suite a Event Hubs. Další informace najdete v tématu [metrik Azure monitorování](../monitoring-and-diagnostics/monitoring-overview-metrics.md#access-metrics-via-the-rest-api).
+Azure Monitor poskytuje několik způsobů přístupu metriky. Můžete buď metriky přístup prostřednictvím [webu Azure portal](https://portal.azure.com), nebo pomocí rozhraní API služby Azure Monitor (REST a .NET) a řešení pro analýzu, jako je například Operations Management Suite a Služba Event Hubs. Další informace najdete v tématu [metrik Azure monitoru](../monitoring-and-diagnostics/monitoring-overview-metrics.md#access-metrics-via-the-rest-api).
 
-Ve výchozím nastavení jsou povolené metriky a dostanete nejnovější 30 dní od data. Pokud potřebujete zachování dat pro delší časové období, můžete archivovat metriky dat do účtu Azure Storage. Toto je nakonfigurováno v [nastavení pro diagnostiku](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings) v Azure monitorování.
+Ve výchozím nastavení jsou povolené metriky a posledních 30 dnů dat můžete přistupovat. Pokud je potřeba data uchovávat po delší dobu, můžete archivovat data metrik do účtu služby Azure Storage. Toto je nakonfigurováno v [nastavení diagnostiky](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#diagnostic-settings) ve službě Azure Monitor.
 
-## <a name="access-metrics-in-the-portal"></a>Metriky přístup na portálu
+## <a name="access-metrics-in-the-portal"></a>Přístup metrik na portálu
 
-Metriky můžete sledovat v čase v [portál Azure](https://portal.azure.com). Následující příklad ukazuje, jak zobrazit úspěšné požadavky a příchozí požadavky na úrovni účtu:
+Metriky můžete sledovat v čase [webu Azure portal](https://portal.azure.com). Následující příklad ukazuje, jak zobrazit úspěšné požadavky a příchozí žádosti na úrovni účtu:
 
 ![][1]
 
-Můžete taky přejít metriky přímo prostřednictvím oboru názvů. To pokud chcete udělat, zvolte svůj obor názvů a pak klikněte na tlačítko **metriky (Peview)**. Pokud chcete zobrazit metriky filtruje tak, aby oboru centra událostí, vyberte centra událostí a pak klikněte na **metriky (preview)**.
+Můžete také přístup k metrikám přímo prostřednictvím oboru názvů. Uděláte to tak, zvolte svůj obor názvů a pak klikněte na tlačítko **metriky (Peview)**. Pokud chcete zobrazit metriky vyfiltrovaný tak, aby oboru centra událostí, vyberte Centrum událostí a klikněte na **metriky (preview)**.
 
-Pro podporu dimenze metriky musí filtrovat hodnotou požadované dimenze, jak je znázorněno v následujícím příkladu:
+Pro metrika podporuje dimenze musí filtr s hodnotou požadované dimenze, jak je znázorněno v následujícím příkladu:
 
 ![][2]
 
 ## <a name="billing"></a>Fakturace
 
-Použití metriky v Azure monitorování není aktuálně volné při ve verzi preview. Ale pokud používáte další řešení, které ingestují data metriky, může být fakturuje podle těchto řešení. Například fakturuje se podle Azure Storage archivujete metriky dat do účtu Azure Storage. Také fakturuje se službou Azure Pokud stream metriky dat k analýze protokolů pro účely provádění pokročilých analýz.
+Použití metrik ve službě Azure Monitor je aktuálně zdarma ve verzi preview. Ale pokud používáte další řešení, která ingestovat data metrik, vám může účtovat podle těchto řešení. Například jste se účtují po Azure Storage při archivaci dat metrik do účtu služby Azure Storage. Se taky účtují Azure Pokud streamování dat metrik do Log Analytics pro pokročilé analýzy.
 
-Následující metriky vám poskytl přehled o stavu služby. 
+Následujících metrik získáte přehled o stavu vaší služby. 
 
 > [!NOTE]
-> Několik metriky jsme se místo začne pohybu pod jiným názvem. To může vyžadovat aktualizaci vaše odkazy. Metriky, které jsou označené jako "zastaralé" – klíčové slovo již nebude podporována do budoucna.
+> Jak se přesunout pod jiným názvem jsme se vyřazení několik metrik. To může vyžadovat aktualizaci vašeho odkazů. Metriky, které jsou označeny klíčovým slovem "zastaralé" nebude podporovat do budoucna.
 
-Všechny hodnoty metrik odešlou do Azure monitorování každou minutu. Členitost času definuje časový interval, pro které jsou uvedené hodnoty metrik. Podporované časový interval pro všechny metriky služby Event Hubs je 1 minuta.
+Všechny hodnoty metriky se posílají do Azure monitoru každou minutu. Časové intervaly definuje časový interval, pro které jsou uvedeny hodnoty metrik. Podporované časový interval pro všechny metriky služby Event Hubs je 1 minuta.
 
-## <a name="request-metrics"></a>Žádost o metriky
+## <a name="request-metrics"></a>Metrika žádosti
 
-Spočítá počet požadavků operations dat a správu.
+Spočítá počet dat a správu požadavků operace.
 
 | Název metriky | Popis |
 | ------------------- | ----------------- |
-| Příchozí žádosti (preview) | Počet žádostí odeslaných do služby Azure Event Hubs v zadaném období. <br/><br/> Jednotka: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName |
-| Úspěšné požadavky (preview)   | Počet úspěšných požadavků provedené ve službě Azure Event Hubs v zadaném období. <br/><br/> Jednotka: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName |
-| Chyby serveru (preview) | Počet požadavků nebyl zpracován z důvodu chyby ve službě Azure Event Hubs v zadaném období. <br/><br/>Jednotka: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName |
-|Chyby uživatelského (preview)|Počet požadavků nebyl zpracován z důvodu chyb uživatele v zadaném období.<br/><br/> Jednotka: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
-|Omezenému požadavky (preview)|Počet požadavků, které byly omezené, protože byl překročen využití jednotek propustnosti.<br/><br/> Jednotka: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
-|Chyby překročena kvóta (preview)|Počet požadavků překročila kvótu pro dostupné. V tématu [v tomto článku](event-hubs-quotas.md) Další informace o službě Event Hubs kvóty.<br/><br/> Jednotka: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
+| Příchozí žádosti (preview) | Počet požadavků provedených na službu Azure Event Hubs v zadaném období. <br/><br/> Jednotky: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName |
+| Úspěšné požadavky (preview)   | Počet úspěšných požadavků provedených na službu Azure Event Hubs v zadaném období. <br/><br/> Jednotky: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName |
+| Chyby serveru (preview) | Počet požadavků není zpracována z důvodu chyby ve službě Azure Event Hubs v zadaném období. <br/><br/>Jednotky: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName |
+|Chyby uživatele (preview)|Počet požadavků není zpracována z důvodu chyby uživatele v zadaném období.<br/><br/> Jednotky: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
+|Omezené požadavky (preview)|Počet požadavků, které byly omezené, protože byl překročen využití jednotek propustnosti.<br/><br/> Jednotky: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
+|Chyby překročení kvóty (preview)|Počet žádostí překročil dostupnou kvótu. Zobrazit [v tomto článku](event-hubs-quotas.md) Další informace o kvótách služby Event Hubs.<br/><br/> Jednotky: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
 
 ## <a name="throughput-metrics"></a>Metriky propustnosti
 
 | Název metriky | Popis |
 | ------------------- | ----------------- |
-|Omezenému požadavky (preview)|Počet požadavků, které byly omezené, protože byl překročen využití jednotek propustnosti.<br/><br/> Jednotka: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
+|Omezené požadavky (preview)|Počet požadavků, které byly omezené, protože byl překročen využití jednotek propustnosti.<br/><br/> Jednotky: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
 
-## <a name="message-metrics"></a>Zpráva metriky
-
-| Název metriky | Popis |
-| ------------------- | ----------------- |
-|Příchozí zprávy (preview)|Počet událostí nebo zprávy odeslané do centra událostí v zadaném období.<br/><br/> Jednotka: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
-|Odchozí zprávy (preview)|Počet událostí nebo zprávy načíst ze služby Event Hubs v zadaném období.<br/><br/> Jednotka: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
-|Příchozí bajty (preview)|Počet bajtů odeslaných do služby Azure Event Hubs v zadaném období.<br/><br/> Jednotka: bajtů <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
-|Odchozí bajty (preview)|Počet bajtů získaný ze služby Azure Event Hubs v zadaném období.<br/><br/> Jednotka: bajtů <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
-
-## <a name="connection-metrics"></a>Metriky připojení
+## <a name="message-metrics"></a>Metriky zpráv
 
 | Název metriky | Popis |
 | ------------------- | ----------------- |
-|ActiveConnections (preview)|Počet aktivních připojení u oboru názvů, a také na entitu.<br/><br/> Jednotka: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
-|Připojení otevřeno (preview)|Počet otevřená připojení.<br/><br/> Jednotka: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
-|Připojení uzavřené (preview)|Počet připojení uzavřené.<br/><br/> Jednotka: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
+|Příchozí zprávy (preview)|Počet zpráv odeslaných do služby Event Hubs v zadaném období nebo události.<br/><br/> Jednotky: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
+|Odchozí zprávy (preview)|Počet zpráv nebo událostí načte ze služby Event Hubs v zadaném období.<br/><br/> Jednotky: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
+|Příchozí bajty (preview)|Počet bajtů odeslaných do služby Azure Event Hubs v zadaném období.<br/><br/> Jednotka: bajty <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
+|Odchozí bajty (preview)|Počet bajtů načtených ze služby Azure Event Hubs v zadaném období.<br/><br/> Jednotka: bajty <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
 
-## <a name="event-hubs-capture-metrics"></a>Metriky zaznamenat centra událostí
-
-Zaznamenat centra událostí metriky můžete sledovat, když povolíte funkci zachycení pro event hubs. Následující metriky popisují, můžete monitorovat pomocí zachycení povoleno.
+## <a name="connection-metrics"></a>Metrik připojení
 
 | Název metriky | Popis |
 | ------------------- | ----------------- |
-|Zaznamenat nevyřízených položek (Preview)|Počet bajtů, které ještě mají se zachytit k vybrané cílové.<br/><br/> Jednotka: bajtů <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
-|Zachycené zprávy (Preview)|Počet zpráv nebo událostí, které jsou vybrané cílové zachycen v zadaném období.<br/><br/> Jednotka: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
-|Zaznamenané bajtů (Preview)|Počet bajtů, které jsou vybrané cílové zachycen v zadaném období.<br/><br/> Jednotka: bajtů <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
+|ActiveConnections (preview)|Počet aktivních připojení na obor názvů i na entity.<br/><br/> Jednotky: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
+|Připojení otevřeno (preview)|Počet otevřených připojení.<br/><br/> Jednotky: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
+|Připojení uzavřeno (preview)|Počet uzavřených připojení.<br/><br/> Jednotky: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
+
+## <a name="event-hubs-capture-metrics"></a>Metriky Event Hubs Capture
+
+Metriky Event Hubs Capture můžete sledovat, když povolíte funkci Capture pro vaši službu event hubs. Následující metriky popisují, co můžete monitorovat pomocí zapnutým zachytáváním.
+
+| Název metriky | Popis |
+| ------------------- | ----------------- |
+|Zachytit Backlog (Preview)|Počet bajtů, které ještě mají být zaznamenány do zvoleného cíle.<br/><br/> Jednotka: bajty <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
+|Zachycené zprávy (Preview)|Počet zpráv nebo událostí, které jsou zachyceny do zvoleného cíle v zadaném období.<br/><br/> Jednotky: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
+|Zachycené bajty (Preview)|Počet bajtů, které jsou zachyceny do zvoleného cíle v zadaném období.<br/><br/> Jednotka: bajty <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
 
 ## <a name="metrics-dimensions"></a>Dimenze metriky
 
-Azure Event Hubs podporuje následující dimenze pro metriky v Azure monitorování. Přidání dimenze pro vaše metriky je nepovinné. Pokud nepřidáte dimenzí, metriky jsou zadaná na úrovni oboru názvů. 
+Azure Event Hubs podporuje následující dimenze pro metriky ve službě Azure Monitor. Přidání dimenzí k metriky je nepovinné. Pokud nepřidáte dimenze, jsou určeny metriky na úrovni oboru názvů. 
 
 | Název metriky | Popis |
 | ------------------- | ----------------- |
-|entityName| Služba Event Hubs podporuje entit centra událostí pod oborem názvů.|
+|EntityName| Event Hubs podporuje entit centra událostí v rámci oboru názvů.|
 
 ## <a name="next-steps"></a>Další postup
 
-* Najdete v článku [Přehled monitorování Azure](../monitoring-and-diagnostics/monitoring-overview.md).
-* [Načtení metrik Azure monitorování s .NET](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) ukázku na Githubu. 
+* Zobrazit [Přehled monitorování Azure](../monitoring-and-diagnostics/monitoring-overview.md).
+* [Načíst metriky Azure Monitor s využitím .NET](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) ukázka na Githubu. 
 
 Další informace o službě Event Hubs naleznete pod těmito odkazy:
 

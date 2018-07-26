@@ -2,19 +2,19 @@
 title: Podpora lokalizace pomocí služby LUIS aplikace v Azure | Dokumentace Microsoftu
 description: Další informace o jazycích, které podporuje služba LUIS.
 services: cognitive-services
-author: cahann
-manager: hsalama
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 06/04/2017
-ms.author: cahann
-ms.openlocfilehash: f2c9514f03019a742044dc077b395025d7d698e3
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.author: diberry
+ms.openlocfilehash: d2c479445aabe05013470724c623978402abeb9d
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37927753"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248413"
 ---
 # <a name="culture-specific-understanding-in-luis-apps"></a>Pochopení specifické pro jazykovou verzi aplikace LUIS
 
@@ -32,7 +32,7 @@ Služba LUIS rozumí projevy v následujících jazycích:
 | Americkou angličtinu |`en-US` | ✔ | ✔  |✔|✔|
 | Francouzština (Kanada) |`fr-CA` |-|   -   |-|✔|
 | *[Čínština](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
-| Nizozemština |`nl-NL` |-|  -   |-|✔|
+| Holandština |`nl-NL` |-|  -   |-|✔|
 | Francouzština (Francie) |`fr-FR` |-| ✔ |✔ |✔|
 | Němčina |`de-DE` |-| ✔ |✔ |✔|
 | italština |`it-IT` |-| ✔ |✔|✔|
@@ -79,7 +79,7 @@ Pro strojové učení, LUIS, rozdělí do utterance [tokeny](luis-glossary.md#to
 |Jazyk|  Každý mezera nebo speciální znak | úroveň znak|složených slov|[Vrátí tokenizovaná entity](luis-concept-data-extraction.md#tokenized-entity-returned)
 |--|:--:|:--:|:--:|:--:|
 |Čínština||✔||✔|
-|Nizozemština|||✔|✔|
+|Holandština|||✔|✔|
 |Angličtina (en-us)|✔ ||||
 |Francouzština (fr-FR)|✔||||
 |Francouzština (fr-CA)|✔||||

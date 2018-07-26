@@ -1,83 +1,83 @@
 ---
-title: Azure SQL Database spravované Instance připojit aplikace | Microsoft Docs
-description: Tento článek popisuje postup připojení aplikace k provádění příkazu spravované Instance databáze SQL Azure.
+title: Azure SQL Database Managed Instance připojit aplikace | Dokumentace Microsoftu
+description: Tento článek popisuje, jak vaši aplikaci do Azure SQL Database Managed Instance připojit.
 ms.service: sql-database
-author: srdjan-bozovic
+author: srdan-bozovic-msft
 manager: craigg
 ms.custom: managed instance
 ms.topic: conceptual
 ms.date: 05/21/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: bea1dc88d66717717cdeacbc8504f5df7e37ba04
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c9d656908d265aeb6143e857b0ea4f635203bdd9
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34647829"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258724"
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Připojit vaši aplikaci ke spravované instanci Azure SQL Database
 
-Dnes mají více možností při rozhodování o tom, jak a kde hostování vaší aplikace. 
+Už dnes máte více možností při rozhodování o tom, jak a kde hostujete vaší aplikace. 
  
-Můžete rozhodnout, který bude hostovat aplikaci v cloudu, buď pomocí služby Azure App Service nebo jen některé z Azure a virtuální síť (VNet) integrované možnosti jako sadu škálování virtuálního počítače v Azure App Service Environment, virtuální počítač. Také můžete postup hybridní cloud a zachovat aplikace místní. 
+Můžete se rozhodnout pro hostování aplikace v cloudu pomocí služby Azure App Service nebo některé z možností Azure pro virtuální síť (VNet) integrovaná jako je Azure App Service Environment, virtuální počítač, Virtual Machine Scale Sets. Může také využít hybridní cloudový přístup a ponechat přitom vašich aplikací v místním prostředí. 
  
-Ať volbou, která jste udělali, můžete se připojit k instanci spravované (preview).  
+Jakékoli volby provedené, můžete ho připojíte k Managed Instance (preview).  
 
 ![Vysoká dostupnost](./media/sql-database-managed-instance/application-deployment-topologies.png)  
 
-## <a name="connect-an-application-inside-the-same-vnet"></a>Připojení aplikace uvnitř stejnou virtuální síť 
+## <a name="connect-an-application-inside-the-same-vnet"></a>Připojení aplikace uvnitř stejné virtuální síti 
 
-Tento scénář je nejjednodušší. Virtuální počítače uvnitř sítě VNet můžete připojit přímo k sobě navzájem i v případě, že jsou v různých podsítích. To znamená, všechny potřebné k připojení aplikace v prostředí aplikace Azure nebo virtuálního počítače je správně nastavit připojovací řetězec.  
+Tento scénář je nejjednodušší. Virtuální počítače v rámci virtuální sítě můžete připojit přímo k sobě navzájem i v případě, že jsou v různých podsítích. To znamená, že všechno, co potřebujete k připojení aplikace v prostředí Azure aplikace nebo virtuálního počítače je odpovídajícím způsobem nastavit připojovací řetězec.  
  
-V případě, že nelze navázat připojení, zkontrolujte, pokud máte skupinu zabezpečení sítě, nastavte v podsíti aplikace. V takovém případě budete muset otevřít odchozí připojení na portu SQL 1433, jakož i 11000 12000 rozsah portů pro přesměrování. 
+V případě, že nelze navázat připojení, zkontrolujte, pokud máte skupinu zabezpečení sítě, nastavte v podsíti aplikace. V takovém případě budete muset otevřít odchozí připojení na portu 1433 SQL také 11000 12000 rozsah portů pro přesměrování. 
 
-## <a name="connect-an-application-inside-a-different-vnet"></a>Připojení aplikace uvnitř jiné virtuální sítě 
+## <a name="connect-an-application-inside-a-different-vnet"></a>Připojení aplikace uvnitř jiné virtuální síti 
 
-Tento scénář je trochu složitější, protože spravované Instance má privátní IP adresu ve své vlastní virtuální síti. Pro připojení, aplikace potřebuje přístup k virtuální síti, kde je nasazená spravované Instance. Ano je třeba nejprve připojení mezi aplikací a virtuální síť spravované Instance. Virtuální sítě nemusí být ve stejném předplatném v pořadí pro tento scénář fungovat. 
+Tento scénář je o něco složitější, protože Managed Instance je privátní IP adresou ve své vlastní virtuální sítě. Pro připojení, aplikace potřebuje přístup k virtuální síti, ve kterém je nasazená Managed Instance. Ano je třeba nejprve navázat připojení mezi aplikací a virtuální síť Managed Instance. Virtuální sítě nemusí být ve stejném předplatném, aby se tento scénář fungovat. 
  
-Existují dvě možnosti připojení virtuální sítě: 
-- [Partnerský vztah Azure virtuální sítě](../virtual-network/virtual-network-peering-overview.md) 
-- Brána sítě VPN VNet-to-VNet ([portál Azure](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md), [prostředí PowerShell](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md), [rozhraní příkazového řádku Azure](../vpn-gateway/vpn-gateway-howto-vnet-vnet-cli.md)) 
+Existují dvě možnosti pro propojení virtuálních sítí: 
+- [Partnerský vztah Azure Virtual Network](../virtual-network/virtual-network-peering-overview.md) 
+- Připojení typu VNet-to-VNet VPN gateway ([webu Azure portal](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md), [PowerShell](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md), [rozhraní příkazového řádku Azure](../vpn-gateway/vpn-gateway-howto-vnet-vnet-cli.md)) 
  
-Možnost partnerského vztahu je vhodnější než ten, protože partnerský vztah používá tedy páteřní síti Microsoft z hlediska připojení, neexistuje žádné významné rozdíly v latenci mezi virtuálními počítači ve virtuální síti peered a ve stejné virtuální síti. VNet peering je omezený na sítí ve stejné oblasti.  
+Možnost vytvoření partnerského vztahu je vhodnější než ten, protože partnerský vztah pomocí páteřní síti Microsoft tedy z hlediska připojení, není žádný rozdíl znatelný latence mezi virtuálními počítači v partnerské virtuální síti a ve stejné virtuální síti. Služba VNet peering je omezená na sítě ve stejné oblasti.  
  
 > [!IMPORTANT]
-> Scénář sítě VNet partnerského vztahu pro spravované Instance je omezený na sítí ve stejné oblasti kvůli [omezení globální virtuální sítě partnerského vztahu](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints). 
+> Scénář sítě VNet peering pro Managed Instance je omezená na sítě ve stejné oblasti kvůli [omezení partnerských vztahů virtuálních sítí globální](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints). 
 
-## <a name="connect-an-on-premises-application"></a>Připojení místní aplikace 
+## <a name="connect-an-on-premises-application"></a>Připojení místní aplikaci 
 
-Spravované Instance je přístupné pouze prostřednictvím privátní IP adresy. Chcete-li získat přístup pomocí místní, budete muset vytvořit připojení Site-to-Site mezi aplikací a virtuální síť spravované Instance. 
+Spravovaná Instance je přístupný pouze prostřednictvím privátní IP adresu. Aby bylo možné získat přístup z místních, budete muset vytvoření připojení Site-to-Site mezi aplikace a virtuální sítí Managed Instance. 
  
-Jak připojit místní virtuální síť Azure existují dvě možnosti: 
-- Připojení VPN typu Site-to-Site ([portál Azure](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md), [prostředí PowerShell](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md), [rozhraní příkazového řádku Azure](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md)) 
+Jak se připojit k virtuální síti Azure v místním existují dvě možnosti: 
+- Připojení VPN typu Site-to-Site ([webu Azure portal](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md), [PowerShell](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md), [rozhraní příkazového řádku Azure](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md)) 
 - [ExpressRoute](../expressroute/expressroute-introduction.md) připojení  
  
-Pokud jste vytvořili místním nasazením a Azure připojení úspěšně a nemůže navázat připojení k spravované Instance, zkontrolujte, jestli brána firewall má otevřené odchozí připojení na portu SQL 1433, jakož i 11000 12000 rozsah portů pro přesměrování. 
+Pokud jste úspěšně navázáno připojení Azure k místní a nemůže navázat připojení k Managed Instance, zkontrolujte, jestli brána firewall má otevřené odchozí připojení na portu 1433 SQL také 11000 12000 rozsah portů pro přesměrování. 
 
-## <a name="connect-an-azure-app-service-hosted-application"></a>Připojení aplikace hostované službě Azure App Service 
+## <a name="connect-an-azure-app-service-hosted-application"></a>Připojení aplikace hostované služby Azure App Service 
 
-Spravované Instance jsou přístupné pouze prostřednictvím privátní IP adresy, aby bylo možné získat přístup pomocí služby Azure App Service je nutné nejprve navázat připojení mezi aplikací a virtuální síť spravované Instance. V tématu [integraci aplikace s virtuální sítě Azure](../app-service/web-sites-integrate-with-vnet.md).  
+Spravovaná Instance je přístupný pouze prostřednictvím privátních IP adres tak, aby bylo možné získat přístup pomocí služby Azure App Service je nutné nejprve navázat připojení mezi aplikací a virtuální síť Managed Instance. Zobrazit [integrujte svou aplikaci s Azure Virtual Network](../app-service/web-sites-integrate-with-vnet.md).  
  
-Řešení potíží, najdete v části [řešení potíží s virtuálními sítěmi a aplikace](../app-service/web-sites-integrate-with-vnet.md#troubleshooting). Pokud nelze navázat připojení, zkuste [synchronizace konfigurace sítí](sql-database-managed-instance-sync-network-configuration.md). 
+Řešení potíží, najdete v části [řešení potíží s virtuálními sítěmi a aplikacemi](../app-service/web-sites-integrate-with-vnet.md#troubleshooting). Pokud nejde navázat připojení, zkuste [synchronizace konfigurace sítě](sql-database-managed-instance-sync-network-configuration.md). 
  
-Zvláštním případem propojíte spravované Instance služby Azure App Service je když je integrované že peered Azure App Service k síti do spravovaných Instance virtuální sítě. Tento případ vyžaduje nastavit následující konfiguraci: 
+Zvláštním případem připojení služby Azure App Service k Managed Instance je při vám integraci že služby Azure App Service k síti s partnerskými uzly do spravované Instance virtuální sítě. Tento případ vyžaduje následující konfigurace až: 
 
-- Spravované Instance virtuální síť musí mít není brány  
-- Spravované Instance virtuální síť musí mít sadu možností použití vzdáleného brány 
-- Peered virtuální síť musí mít možnost přenosu brány povolit nastavení 
+- Virtuální síť spravované Instance není musí mít bránu  
+- Spravované Instance virtuální síť musí mít nastavenou možnost použití vzdálené brány 
+- Partnerské virtuální síti musí mít možnost přenosu brány povolit nastavení 
  
 Tento scénář je znázorněn v následujícím diagramu:
 
-![partnerský vztah integrované aplikace](./media/sql-database-managed-instance/integrated-app-peering.png)
+![vytvoření partnerského vztahu integrované aplikace](./media/sql-database-managed-instance/integrated-app-peering.png)
  
-## <a name="connect-an-application-on-the-developers-box"></a>Připojení se v poli vývojáři aplikace 
+## <a name="connect-an-application-on-the-developers-box"></a>Připojení aplikace ve službě box vývojáře 
 
-Spravované Instance se dá dostat pouze privátní IP adresy, aby měli přístup z vaší vývojáře pole, je nutné nejprve zkontrolujte připojení mezi vaší vývojáře pole a virtuální síť spravované Instance.  
+Spravovaná Instance je přístupný pouze prostřednictvím privátních IP adres tak aby bylo možné přistupovat z vašeho seznamu pro vývojáře, musíte nejprve navázat připojení mezi vaší pole pro vývojáře a ve virtuální síti spravované Instance.  
  
-Konfigurace připojení typu Point-to-Site k virtuální síti pomocí nativní Azure certifikát ověřování články ([portál Azure](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md), [prostředí PowerShell](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md), [rozhraní příkazového řádku Azure](../vpn-gateway/vpn-gateway-howto-point-to-site-classic-azure-portal.md)) podrobně zobrazuje jak může být provedeno.  
+Konfigurace připojení typu Point-to-Site k virtuální síti pomocí nativního certifikátu Azure ověřování článků ([webu Azure portal](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md), [PowerShell](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md), [rozhraní příkazového řádku Azure](../vpn-gateway/vpn-gateway-howto-point-to-site-classic-azure-portal.md)) podrobně zobrazuje jak To se dělá.  
 
 ## <a name="next-steps"></a>Další postup
 
-- Informace o instanci spravované najdete v tématu [co je Instance spravované](sql-database-managed-instance.md).
-- Kurz ukazuje, jak vytvořit novou instanci spravované, najdete v části [vytvořit instanci spravované](sql-database-managed-instance-create-tutorial-portal.md).
+- Informace o Managed Instance najdete v tématu [co je Managed Instance](sql-database-managed-instance.md).
+- Kurz ukazuje, jak vytvořit nový Managed Instance, najdete v tématu [vytvoříte Managed Instance](sql-database-managed-instance-create-tutorial-portal.md).

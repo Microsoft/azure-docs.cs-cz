@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: daveba
-ms.openlocfilehash: d8b8aee508ff1b243bf40261819071fc2a5194a3
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: cb23db13d67047225102c6888e27e8f79a3e5abf
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39237610"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39259309"
 ---
-# <a name="configure-managed-service-identity-msi-on-an-azure-vm-using-azure-cli"></a>Konfigurace Identity spravované služby (MSI) na Virtuálním počítači Azure pomocí Azure CLI
+# <a name="configure-managed-service-identity-on-an-azure-vm-using-azure-cli"></a>Konfigurace Identity spravované služby na Virtuálním počítači Azure pomocí Azure CLI
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
@@ -105,7 +105,7 @@ Pokud máte virtuální počítač se už nepotřebuje identitu přiřazenou sys
 az vm update -n myVM -g myResourceGroup --set identity.type="none"
 ```
 
-Odebrat rozšíření MSI virtuálního počítače, uživatele `-n ManagedIdentityExtensionForWindows` nebo `-n ManagedIdentityExtensionForLinux` přepnout (v závislosti na typu virtuálních počítačů) s [odstranění rozšíření az vm](https://docs.microsoft.com/cli/azure/vm/#assign-identity):
+Odebrat rozšíření virtuálního počítače identitu spravované služby, uživatel `-n ManagedIdentityExtensionForWindows` nebo `-n ManagedIdentityExtensionForLinux` přepnout (v závislosti na typu virtuálních počítačů) s [odstranění rozšíření az vm](https://docs.microsoft.com/cli/azure/vm/#assign-identity):
 
 ```azurecli-interactive
 az vm identity --resource-group myResourceGroup --vm-name myVm -n ManagedIdentityExtensionForWindows
@@ -119,7 +119,7 @@ V této části se dozvíte, jak přidávat a odebírat uživatele identity při
 
 Tato část vás provede vytvořením virtuálního počítače s přiřazením identity přiřazené uživateli. Pokud už máte virtuální počítač, který chcete použít, tuto část přeskočit a pokračovat na další.
 
-1. Pokud už máte skupinu prostředků, kterou chcete použít, můžete tento krok přeskočit. Vytvoření [skupiny prostředků](~/articles/azure-resource-manager/resource-group-overview.md#terminology) pro nasazení MSI a členství ve skupině pomocí [az skupiny vytvořit](/cli/azure/group/#az_group_create). Nezapomeňte nahradit hodnoty parametrů `<RESOURCE GROUP>` a `<LOCATION>` vlastními hodnotami. :
+1. Pokud už máte skupinu prostředků, kterou chcete použít, můžete tento krok přeskočit. Vytvoření [skupiny prostředků](~/articles/azure-resource-manager/resource-group-overview.md#terminology) pro nasazení vaší Identity spravované služby a členství ve skupině pomocí [vytvořit skupiny az](/cli/azure/group/#az_group_create). Nezapomeňte nahradit hodnoty parametrů `<RESOURCE GROUP>` a `<LOCATION>` vlastními hodnotami. :
 
    ```azurecli-interactive 
    az group create --name <RESOURCE GROUP> --location <LOCATION>
@@ -165,7 +165,7 @@ Tato část vás provede vytvořením virtuálního počítače s přiřazením 
     ```azurecli-interactive
     az identity create -g <RESOURCE GROUP> -n <MSI NAME>
     ```
-Odpověď obsahuje podrobnosti o uživateli přiřadit MSI vytvořené, podobně jako následující. Prostředek `id` hodnota přiřazená k identity přiřazené uživateli se používá v následujícím kroku.
+Odpověď obsahuje podrobnosti o uživateli přiřadit spravovanou identitu vytvořené, podobně jako následující. Prostředek `id` hodnota přiřazená k identity přiřazené uživateli se používá v následujícím kroku.
 
    ```json
    {

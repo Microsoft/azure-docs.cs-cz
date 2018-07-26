@@ -5,19 +5,19 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: reference
-ms.date: 7/06/2018
+ms.date: 7/18/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: f4bf77f07bd8f6b8172798ec3faf8c0bdaf3d3f5
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: c1189e1b120f0bd1b3169618bebdb929d1cee18e
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37921225"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248784"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Podporované služby, schémat a kategorie pro diagnostické protokoly Azure
 
-[Diagnostické protokoly Azure prostředků](monitoring-overview-of-diagnostic-logs.md) jsou protokoly generované ve vašich prostředků Azure, které popisují operace tohoto prostředku. Všechny diagnostické protokoly, které jsou k dispozici prostřednictvím služby Azure Monitor sdílejí společné schéma nejvyšší úrovně, s flexibilitou pro každou službu a vygenerovat jedinečné vlastnosti pro vlastní události.
+[Diagnostické protokoly Azure monitoru](monitoring-overview-of-diagnostic-logs.md) jsou protokoly generované službami Azure, které popisují operace z těchto služeb prostředků. Všechny diagnostické protokoly, které jsou k dispozici prostřednictvím služby Azure Monitor sdílejí společné schéma nejvyšší úrovně, s flexibilitou pro každou službu a vygenerovat jedinečné vlastnosti pro vlastní události.
 
 Kombinace typu prostředku (k dispozici v `resourceId` vlastnost) a `category` jednoznačné identifikaci schéma. Tento článek popisuje nejvyšší úrovni schématu pro diagnostické protokoly a odkazy na schémat pro každou službu.
 
@@ -26,7 +26,8 @@ Kombinace typu prostředku (k dispozici v `resourceId` vlastnost) a `category` j
 | Název | Požadované a volitelné | Popis |
 |---|---|---|
 | time | Požaduje se | Časové razítko (UTC) události. |
-| resourceId | Požaduje se | ID prostředku prostředků, které události, protože ho. |
+| resourceId | Požaduje se | ID prostředku prostředků, které události, protože ho. Pro tenanta služby to je /tenants/tenant-id/providers/provider-name formuláře. |
+| ID Tenanta | Vyžaduje se pro tenanta protokoly | ID tenanta, který tato událost se váže na tenanta Active Directory. Tato vlastnost slouží pouze pro protokoly na úrovni tenanta, nezobrazí se v protokolech úrovni prostředků. |
 | operationName | Požaduje se | Název operace reprezentovaný touto událostí. Pokud událost představuje operaci RBAC, jedná se o název operace RBAC (např.) Microsoft.Storage/storageAccounts/blobServices/blobs/Read). Obvykle modelována ve formě operaci Resource Manager i v případě, že se nejedná o skutečný zdokumentovaných operace Resource Manageru (`Microsoft.<providerName>/<resourceType>/<subtype>/<Write/Read/Delete/Action>`) |
 | operationVersion | Nepovinné | Přidružené operaci, pokud operationName byla provedena pomocí rozhraní API (např api-version. http://myservice.windowsazure.net/object?api-version=2016-06-01). Pokud neexistuje žádné rozhraní API, která odpovídá této operace, verze představuje verzi jazyka tuto operaci v případě, že v budoucnu změnit vlastnosti přidružené k operaci. |
 | category | Požaduje se | Kategorie protokolu události. Kategorie je týdenní i členitost, ve kterém můžete povolit nebo zakázat přihlásí k určitému prostředku. Vlastnosti, které se zobrazují v rámci objektu blob vlastnosti události jsou stejné v rámci typu protokolu konkrétní kategorie a prostředků. Kategorie typické protokolu jsou "Audit" "provozní" "Spuštění" a "Požadavek." |
@@ -46,6 +47,7 @@ Schéma protokolů diagnostiky prostředků se liší podle kategorie prostředk
 
 | Služba | Schéma a dokumentace |
 | --- | --- |
+| Azure Active Directory | [Přehled](../active-directory/reporting-azure-monitor-diagnostics-overview.md), [schéma protokolu auditu](../active-directory/reporting-azure-monitor-diagnostics-audit-log-schema.md) a [Sign in schématu](../active-directory/reporting-azure-monitor-diagnostics-sign-in-log-schema.md) |
 | Analysis Services | https://azure.microsoft.com/blog/azure-analysis-services-integration-with-azure-diagnostic-logs/ |
 | API Management | [Diagnostické protokoly služby API Management](../api-management/api-management-howto-use-azure-monitor.md#diagnostic-logs) |
 | Brány Application Gateway |[Diagnostika protokolování pro službu Application Gateway](../application-gateway/application-gateway-diagnostics.md) |

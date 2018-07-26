@@ -1,6 +1,6 @@
 ---
-title: Konfigurace MSI ve Virtuálním počítači Azure pomocí Powershellu
-description: Projděte pokyny ke konfiguraci Identity spravované služby (MSI) na virtuálním počítači Azure pomocí Powershellu.
+title: Postup konfigurace Identity spravované služby na Virtuálním počítači Azure pomocí Powershellu
+description: Projděte pokyny ke konfiguraci Identity spravované služby na virtuálním počítači Azure pomocí Powershellu.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/27/2017
 ms.author: daveba
-ms.openlocfilehash: 9a40ad66f104a33230484f24e20a5f3bd9ed6175
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 68c9ae7baa6b8fa1ebf672c28bf3c466b4b54860
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39237651"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258388"
 ---
-# <a name="configure-a-vm-managed-service-identity-msi-using-powershell"></a>Konfigurace virtuálním počítači Identity spravované služby (MSI) pomocí Powershellu
+# <a name="configure-a-vm-managed-service-identity-using-powershell"></a>Nakonfigurujte identitu spravované služby virtuálního počítače pomocí Powershellu
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
@@ -59,7 +59,7 @@ Vytvoření virtuálního počítače Azure s přiřazenou identity povoleno sys
    - [Vytvoření virtuálního počítače s Windows pomocí Powershellu](../../virtual-machines/windows/quick-create-powershell.md)
    - [Vytvoření virtuálního počítače s Linuxem pomocí Powershellu](../../virtual-machines/linux/quick-create-powershell.md)
 
-2. (Volitelné) Přidat direktivu using MSI virtuálního počítače rozšíření `-Type` parametru u [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) rutiny. Můžete předat "ManagedIdentityExtensionForWindows" nebo "ManagedIdentityExtensionForLinux", v závislosti na typu virtuálního počítače a pojmenujte ho pomocí `-Name` parametru. `-Settings` Parametr určuje port používaný programem koncový bod tokenu OAuth pro získání tokenu:
+2. (Volitelné) Přidat pomocí rozšíření virtuálního počítače identitu spravované služby `-Type` parametru u [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) rutiny. Můžete předat "ManagedIdentityExtensionForWindows" nebo "ManagedIdentityExtensionForLinux", v závislosti na typu virtuálního počítače a pojmenujte ho pomocí `-Name` parametru. `-Settings` Parametr určuje port používaný programem koncový bod tokenu OAuth pro získání tokenu:
 
    ```powershell
    $settings = @{ "port" = 50342 }
@@ -85,7 +85,7 @@ Pokud je potřeba povolit identitu přiřazenou systémem na existující virtu�
    Update-AzureRmVM -ResourceGroupName myResourceGroup -VM $vm -AssignIdentity:$SystemAssigned
    ```
 
-3. (Volitelné) Přidat direktivu using MSI virtuálního počítače rozšíření `-Type` parametru u [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) rutiny. Můžete předat "ManagedIdentityExtensionForWindows" nebo "ManagedIdentityExtensionForLinux", v závislosti na typu virtuálního počítače a pojmenujte ho pomocí `-Name` parametru. `-Settings` Parametr určuje port používaný programem koncový bod tokenu OAuth pro získání tokenu. Nezapomeňte zadat správné `-Location` parametr odpovídající umístění existujícího virtuálního počítače:
+3. (Volitelné) Přidat pomocí rozšíření virtuálního počítače identitu spravované služby `-Type` parametru u [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) rutiny. Můžete předat "ManagedIdentityExtensionForWindows" nebo "ManagedIdentityExtensionForLinux", v závislosti na typu virtuálního počítače a pojmenujte ho pomocí `-Name` parametru. `-Settings` Parametr určuje port používaný programem koncový bod tokenu OAuth pro získání tokenu. Nezapomeňte zadat správné `-Location` parametr odpovídající umístění existujícího virtuálního počítače:
 
    ```powershell
    $settings = @{ "port" = 50342 }
@@ -118,7 +118,7 @@ $vm = Get-AzureRmVM -ResourceGroupName myResourceGroup -Name myVM
 Update-AzureRmVm -ResourceGroupName myResourceGroup -VM $vm -IdentityType None
 ```
 
-Odebrat rozšíření MSI virtuálního počítače, uživatele – název přepínače s [Remove-AzureRmVMExtension](/powershell/module/azurerm.compute/remove-azurermvmextension) rutiny, určení stejným názvem, který při přidání rozšíření:
+K odebrání rozšíření virtuálního počítače identitu spravované služby uživatele – název přepínače s [Remove-AzureRmVMExtension](/powershell/module/azurerm.compute/remove-azurermvmextension) rutiny, určení stejným názvem, který při přidání rozšíření:
 
    ```powershell
    Remove-AzureRmVMExtension -ResourceGroupName myResourceGroup -Name "ManagedIdentityExtensionForWindows" -VMName myVM
@@ -143,7 +143,7 @@ Postup přiřazení identity přiřazené uživateli na Virtuálním počítači
     - [Vytvoření virtuálního počítače s Windows pomocí Powershellu](../../virtual-machines/windows/quick-create-powershell.md)
     - [Vytvoření virtuálního počítače s Linuxem pomocí Powershellu](../../virtual-machines/linux/quick-create-powershell.md)
 
-2. (Volitelné) Přidat direktivu using MSI virtuálního počítače rozšíření `-Type` parametru u [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) rutiny. Můžete předat "ManagedIdentityExtensionForWindows" nebo "ManagedIdentityExtensionForLinux", v závislosti na typu virtuálního počítače a pojmenujte ho pomocí `-Name` parametru. `-Settings` Parametr určuje port používaný programem koncový bod tokenu OAuth pro získání tokenu. Nezapomeňte zadat správné `-Location` parametr odpovídající umístění existujícího virtuálního počítače:
+2. (Volitelné) Přidat pomocí rozšíření virtuálního počítače identitu spravované služby `-Type` parametru u [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) rutiny. Můžete předat "ManagedIdentityExtensionForWindows" nebo "ManagedIdentityExtensionForLinux", v závislosti na typu virtuálního počítače a pojmenujte ho pomocí `-Name` parametru. `-Settings` Parametr určuje port používaný programem koncový bod tokenu OAuth pro získání tokenu. Nezapomeňte zadat správné `-Location` parametr odpovídající umístění existujícího virtuálního počítače:
       > [!NOTE]
     > Tento krok je volitelný, i identitu koncového bodu Azure Instance Metadata služby (IMDS), můžete použít k získání tokenů také.
 
@@ -177,7 +177,7 @@ K přiřazování identity přiřazené do stávajícího virtuálního počíta
    Update-AzureRmVM -ResourceGroupName <RESOURCE GROUP> -VM $vm -IdentityType UserAssigned -IdentityID "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/<RESROURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<USER ASSIGNED IDENTITY NAME>"
    ```
 
-4. Přidat direktivu using MSI virtuálního počítače rozšíření `-Type` parametru u [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) rutiny. Můžete předat "ManagedIdentityExtensionForWindows" nebo "ManagedIdentityExtensionForLinux", v závislosti na typu virtuálního počítače a pojmenujte ho pomocí `-Name` parametru. `-Settings` Parametr určuje port používaný programem koncový bod tokenu OAuth pro získání tokenu. Zadejte správný `-Location` parametr odpovídající umístění existujícího virtuálního počítače.
+4. Přidat pomocí rozšíření virtuálního počítače identitu spravované služby `-Type` parametru u [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) rutiny. Můžete předat "ManagedIdentityExtensionForWindows" nebo "ManagedIdentityExtensionForLinux", v závislosti na typu virtuálního počítače a pojmenujte ho pomocí `-Name` parametru. `-Settings` Parametr určuje port používaný programem koncový bod tokenu OAuth pro získání tokenu. Zadejte správný `-Location` parametr odpovídající umístění existujícího virtuálního počítače.
 
    ```powershell
    $settings = @{ "port" = 50342 }

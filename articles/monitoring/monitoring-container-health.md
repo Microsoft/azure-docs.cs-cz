@@ -1,5 +1,5 @@
 ---
-title: Monitorování stavu služby Azure Kubernetes Service (AKS) (Preview) | Dokumentace Microsoftu
+title: Monitorování stavu služby Azure Kubernetes Service (AKS) (preview) | Dokumentace Microsoftu
 description: Tento článek popisuje, jak můžete snadno zkontrolovat výkon vašeho kontejneru AKS, které umožňují rychle porozumět využití vaše hostované prostředí Kubernetes.
 services: log-analytics
 documentationcenter: ''
@@ -14,89 +14,98 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/18/2018
 ms.author: magoedte
-ms.openlocfilehash: 6658eeb70e31593da5f3612ccac8685ecbb976b9
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 806487ec731a1b7fe02ccdfe6b285f5b2e119787
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39161584"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39249093"
 ---
-# <a name="monitor-azure-kubernetes-service-aks-container-health-preview"></a>Monitorovat stav kontejneru Azure Kubernetes Service (AKS) (Preview)
+# <a name="monitor-azure-kubernetes-service-aks-container-health-preview"></a>Monitorovat stav kontejneru Azure Kubernetes Service (AKS) (preview)
 
-Tento článek popisuje, jak nastavit a používat stav kontejneru Azure monitoru ke sledování výkonu vašich úloh nasazených do prostředí Kubernetes hostované ve službě Azure Kubernetes Service (AKS).  Monitorování clusteru a kontejnerů Kubernetes je důležité, zejména pokud provozujete produkční cluster ve velkém měřítku a s několika aplikacemi.
+Tento článek popisuje, jak nastavit a používat stav kontejneru Azure monitoru ke sledování výkonu úlohy, které se nasazují do prostředí Kubernetes a hostované ve službě Azure Kubernetes Service (AKS). Monitorování vašeho clusteru a kontejnerů Kubernetes je důležité, zejména v případě, že spouštíte produkční cluster ve velkém měřítku, s několika aplikacemi.
 
-Stav kontejneru poskytuje monitorování možnost shromažďováním paměti a procesoru metriky z řadiče, uzly a kontejnery, které jsou k dispozici v Kubernetes prostřednictvím rozhraní API metrik výkonu.  Po povolení stavu kontejneru, tyto metriky jsou automaticky za vás pomocí kontejnerizovaných verzi agenta OMS pro Linux shromažďují a ukládají ve vašich [Log Analytics](../log-analytics/log-analytics-overview.md) pracovního prostoru.  Předdefinované zobrazení zahrnuté zobrazit nacházejícím úlohy kontejneru a co ovlivňuje výkon stav clusteru Kubernetes to vám umožní pochopit:  
+Stav kontejneru poskytuje monitorování možnost shromažďováním paměti a procesoru metriky z řadiče, uzly a kontejnerů, které jsou k dispozici v Kubernetes prostřednictvím rozhraní API metrik výkonu. Po povolení stavu kontejneru, tyto metriky jsou automaticky shromažďovaná za vás prostřednictvím kontejnerizovaných verzi agenta Operations Management Suite (OMS) pro Linux a uloženy v vaše [Log Analytics](../log-analytics/log-analytics-overview.md) pracovního prostoru. Na zahrnuté předdefinované zobrazení nacházejícím úlohy kontejneru a co ovlivňuje výkon stav clusteru Kubernetes, abyste mohli:  
 
-* Jaké kontejnery běží na uzlu a jejich průměrné využití procesoru a paměti k identifikaci kritických bodů prostředků
-* Identifikovat, ve kterém se nachází kontejneru v kontroleru a/nebo podů zobrazíte celkový výkon pro kontroler nebo pod 
-* Zkontrolujte využití prostředků úlohy běžící na hostiteli nezávislé na standardních procesů lusků podpoře
-* Pochopte chování clusteru pod zátěží průměrné a nejčastěji používaný k identifikaci na kapacitu a určení maximálního zatížení, které může tolerovat 
+* Určete kontejnery, které běží na uzlu a jejich průměrné využití procesoru a paměti. Tyto znalosti můžete identifikovat kritické body prostředků.
+* Určete, kde se nachází kontejneru v kontroleru nebo pod. Tyto znalosti můžete zobrazit kontroleru nebo pod na celkový výkon. 
+* Zkontrolujte využití prostředků úlohy běžící na hostiteli, které nesouvisí s standardních procesů, které podporují pod.
+* Pochopte chování clusteru ve skupinovém rámečku průměrných a rozděluje zatížení. Tyto znalosti můžete určit, potřeb kapacity a určení maximálního zatížení, který může cluster tolerovat. 
 
 Pokud vás zajímá monitorování a správu Docker a Windows najdete v hostitelích kontejnerů na zobrazení konfigurace, auditování a využití prostředků [řešení pro monitorování kontejnerů](../log-analytics/log-analytics-containers.md).
 
-## <a name="requirements"></a>Požadavky 
-Než začnete, zkontrolujte následující podrobnosti to vám umožní pochopit požadavky podporované.
+## <a name="prerequisites"></a>Požadavky 
+Než začnete, ujistěte se, že máte následující:
 
-- Nový nebo existující cluster AKS
-- Kontejnerizované agenta OMS pro Linux verze microsoft / oms:ciprod04202018 a novější. Číslo verze je reprezentována datum ve formátu - *mmddyyyy*.  Automaticky se nainstaluje během připojování stavu kontejneru.  
-- Pracovní prostor Log Analytics.  Když povolíte monitorování nový cluster AKS, nebo můžete vytvořit jednu prostřednictvím lze vytvořit [Azure Resource Manageru](../log-analytics/log-analytics-template-workspace-configuration.md), [PowerShell](https://docs.microsoft.com/azure/log-analytics/scripts/log-analytics-powershell-sample-create-workspace?toc=%2fpowershell%2fmodule%2ftoc.json), nebo z [webu Azure portal](../log-analytics/log-analytics-quick-create-workspace.md).
-- Člen role Přispěvatel Log Analytics, chcete-li povolit monitorování kontejnerů.  Další informace o tom, jak řídit přístup k pracovnímu prostoru Log Analytics najdete v tématu [Správa pracovních prostorů](../log-analytics/log-analytics-manage-access.md).
+- Nové nebo existující cluster AKS.
+- A kontejnerizovaných agenta OMS pro Linux verze microsoft / oms:ciprod04202018 nebo novější. Číslo verze představuje datum v následujícím formátu: *mmddyyyy*. Agent je automaticky nainstalován během registrace stavu kontejneru. 
+- Pracovní prostor Log Analytics. Můžete vytvořit, když povolíte monitorování nový cluster AKS, nebo můžete vytvořit pomocí [Azure Resource Manageru](../log-analytics/log-analytics-template-workspace-configuration.md), pomocí [PowerShell](https://docs.microsoft.com/azure/log-analytics/scripts/log-analytics-powershell-sample-create-workspace?toc=%2fpowershell%2fmodule%2ftoc.json), nebo [webu Azure portal](../log-analytics/log-analytics-quick-create-workspace.md).
+- Log Analytics roli Přispěvatel, chcete-li povolit monitorování kontejnerů. Další informace o tom, jak řídit přístup k pracovnímu prostoru Log Analytics najdete v tématu [Správa pracovních prostorů](../log-analytics/log-analytics-manage-access.md).
 
 ## <a name="components"></a>Komponenty 
 
-Tato funkce využívá kontejnerizovaných agenta OMS pro Linux ke shromažďování výkonu a data události ze všech uzlů v clusteru.  Agent automaticky nasazení a registraci s zadaný pracovní prostor Log Analytics, když povolíte monitorování kontejnerů. 
+Vaše schopnost sledování výkonu spoléhá na kontejnerizovaných agenta OMS pro Linux, které shromažďuje data událostí výkonu a ze všech uzlů v clusteru. Agent automaticky nasazení a registraci s zadaný pracovní prostor Log Analytics, když povolíte monitorování kontejnerů. 
 
 >[!NOTE] 
->Pokud už jste nasadili AKS cluster, povolte monitorování pomocí zadané šablony Azure Resource Manageru, jak je uvedeno dále v tomto článku. Nemůžete použít `kubectl` k upgradu, odstranit, znovu nasadit nebo nasadit agenta.  
+>Pokud už jste nasadili AKS cluster, povolíte monitorování s použitím zadané šablony Azure Resource Manageru, jak je uvedeno dále v tomto článku. Nemůžete použít `kubectl` k upgradu, odstranit, znovu nasadit nebo nasadit agenta. 
 >
 
-## <a name="sign-in-to-azure-portal"></a>Přihlásit se na Azure Portal
-Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com). 
+## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
+Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
 
 ## <a name="enable-container-health-monitoring-for-a-new-cluster"></a>Povolit monitorování stavu kontejneru pro nový cluster
-Můžete povolit monitorování nový cluster AKS během nasazení na webu Azure Portal.  Postupujte podle kroků v tomto článku rychlý Start [Nasaďte cluster Azure Kubernetes Service (AKS)](../aks/kubernetes-walkthrough-portal.md).  Když jste na **monitorování** stránce **Ano** pro možnost **povolit monitorování** povolit a potom vyberte existující nebo vytvořte nový pracovní prostor Log Analytics.  
+Během nasazení můžete povolit monitorování nový cluster AKS na portálu Azure portal. Postupujte podle kroků v tomto článku rychlý Start [Nasaďte cluster Azure Kubernetes Service (AKS)](../aks/kubernetes-walkthrough-portal.md). Na **monitorování** stránky, pro **povolit monitorování** možnosti, vyberte **Ano**a potom vyberte existující pracovní prostor Log Analytics nebo vytvořte novou. 
 
-Poté, co je zapnuto monitorování jsou úspěšně dokončeny všechny úlohy konfigurace, můžete sledovat výkon vašeho clusteru z jednoho ze dvou způsobů:
+Poté, co jste povolili monitorování a úspěšném dokončení všech konfiguračních úloh, můžete sledovat výkon cluster v některém ze dvou způsobů:
 
-1. Přímo z clusteru AKS tak, že vyberete **stavu** v levém podokně.<br><br> 
-2. Kliknutím na **monitorovat stav kontejneru** dlaždice na stránce clusteru AKS pro vybraný cluster.  Ve službě Azure Monitor, vyberte **stavu** v levém podokně.  
+* Přímo v clusteru AKS tak, že vyberete **stavu** v levém podokně.
+* Výběrem **monitorovat stav kontejneru** dlaždice na stránce clusteru AKS pro vybraný cluster. Ve službě Azure Monitor, v levém podokně vyberte **stavu**. 
 
-![V možnostech stavu kontejneru ve službě AKS](./media/monitoring-container-health/container-performance-and-health-select-01.png)
+  ![Možnosti pro výběr stavu kontejneru ve službě AKS](./media/monitoring-container-health/container-performance-and-health-select-01.png)
 
-Jakmile je zapnuté monitorování, může trvat přibližně 15 minut, než budete moct zobrazit provozní data v clusteru.  
+Po povolení sledování, může trvat přibližně 15 minut, než lze zobrazit provozní data pro cluster. 
 
 ## <a name="enable-container-health-monitoring-for-existing-managed-clusters"></a>Povolit monitorování stavu kontejneru pro existující spravované clustery
-Můžete povolit monitorování cluster AKS, už nasazená na webu Azure Portal nebo pomocí zadané šablony Azure Resource Manageru pomocí rutiny Powershellu **New-AzureRmResourceGroupDeployment** nebo rozhraní příkazového řádku Azure.  
+Monitorování clusteru AKS, který je nasazen na webu Azure Portal nebo pomocí zadané šablony Azure Resource Manageru pomocí rutiny prostředí PowerShell můžete povolit `New-AzureRmResourceGroupDeployment` nebo rozhraní příkazového řádku Azure. 
 
+### <a name="enable-monitoring-in-the-azure-portal"></a>Povolit monitorování na webu Azure Portal
+Pokud chcete povolit monitorování vašeho kontejneru AKS na portálu Azure portal, postupujte takto:
 
-### <a name="enable-from-azure-portal"></a>Povolit z portálu Azure portal
-Proveďte následující kroky, pokud chcete povolit monitorování vašeho kontejneru AKS z webu Azure portal.
+1. Na webu Azure Portal, vyberte **všechny služby**. 
+2. V seznamu prostředků, začněte psát **kontejnery**.  
+    Seznam se průběžně filtruje podle vašeho zadání. 
+3. Vyberte **služby Kubernetes**.  
 
-1. Na webu Azure Portal klikněte na **Všechny služby**. V seznamu prostředků zadejte **kontejnery**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **služby Kubernetes**.<br><br> ![Azure Portal](./media/monitoring-container-health/azure-portal-01.png)<br><br>  
-2. V seznamu kontejnerů vyberte kontejner.
-3. Na stránce Přehled kontejnerů, vyberte **monitorovat stav kontejneru** a **připojení ke službě stavu kontejneru a protokoly** se zobrazí stránka.
-4. Na **připojení ke službě stavu kontejneru a protokoly** stránky, pokud máte existující Log Analytics pracovní prostor ve stejném předplatném jako cluster, vyberte z rozevíracího seznamu.  V seznamu vybrána hodnota výchozího pracovního prostoru a umístění kontejneru AKS nasazuje v rámci předplatného.<br><br> ![Povolit monitorování stavu kontejneru AKS](./media/monitoring-container-health/container-health-enable-brownfield-02.png) 
+    ![Propojení služby Kubernetes](./media/monitoring-container-health/azure-portal-01.png)
+
+4. V seznamu kontejnerů vyberte kontejner.
+5. Na stránce Přehled kontejnerů, vyberte **monitorovat stav kontejneru**.  
+6. Na **připojení ke službě stavu kontejneru a protokoly** stránky, pokud máte existující Log Analytics pracovní prostor ve stejném předplatném jako cluster, vyberte v rozevíracím seznamu.  
+    V seznamu vybrána hodnota výchozího pracovního prostoru a umístění, ke kterému kontejneru AKS nasazuje v rámci předplatného. 
+
+    ![Povolit monitorování stavu kontejneru AKS](./media/monitoring-container-health/container-health-enable-brownfield-02.png)
 
 >[!NOTE]
->Pokud chcete vytvořit nový pracovní prostor Log Analytics k ukládání dat monitorování z clusteru, postupujte podle kroků v [vytvořit pracovní prostor Log Analytics](../log-analytics/log-analytics-quick-create-workspace.md) a je potřeba vytvořit pracovní prostor v rámci stejného předplatného, který je kontejneru AKS nasadit.  
->
+>Pokud chcete vytvořit nový pracovní prostor Log Analytics pro ukládání dat monitorování z clusteru, postupujte podle pokynů v [vytvořit pracovní prostor Log Analytics](../log-analytics/log-analytics-quick-create-workspace.md). Je potřeba vytvořit pracovní prostor v rámci stejného předplatného, který se nasazuje kontejneru AKS. 
  
-Jakmile je zapnuté monitorování, může trvat přibližně 15 minut, než budete moct zobrazit provozní data v clusteru. 
+Po povolení sledování, může trvat přibližně 15 minut, než lze zobrazit provozní data pro cluster. 
 
-### <a name="enable-using-azure-resource-manager-template"></a>Povolení s využitím šablony Azure Resource Manageru
-Tato metoda obsahuje dvě šablony JSON, jedna šablona určuje konfiguraci povolení monitorování a jiné šablony JSON obsahuje hodnoty parametrů, které nakonfigurujete, zadejte následující informace:
+### <a name="enable-monitoring-by-using-an-azure-resource-manager-template"></a>Povolte monitorování pomocí šablony Azure Resource Manageru
+Tato metoda obsahuje dvě šablony JSON. Jedna šablona určuje konfiguraci povolení monitorování a druhý obsahuje hodnoty parametrů, které nakonfigurujete, zadejte následující informace:
 
 * ID prostředku kontejneru AKS 
-* Skupina prostředků clusteru je nasazena v 
-* Pracovní prostor log Analytics a oblasti, kterou chcete vytvořit pracovní prostor v 
+* Skupina prostředků, která je nasazená clusteru.
+* Pracovní prostor Log Analytics a oblasti se má vytvořit v pracovním prostoru. 
 
-Pracovní prostor Log Analytics je potřeba vytvořit ručně.  Pokud chcete vytvořit pracovní prostor, můžete nastavit jednu prostřednictvím [Azure Resource Manageru](../log-analytics/log-analytics-template-workspace-configuration.md), [Powershellu](https://docs.microsoft.com/azure/log-analytics/scripts/log-analytics-powershell-sample-create-workspace?toc=%2fpowershell%2fmodule%2ftoc.json), z [webu Azure portal](../log-analytics/log-analytics-quick-create-workspace.md).
+Pracovní prostor Log Analytics je potřeba vytvořit ručně. Vytvořit pracovní prostor, můžete nastavit ji prostřednictvím [Azure Resource Manageru](../log-analytics/log-analytics-template-workspace-configuration.md), pomocí [PowerShell](https://docs.microsoft.com/azure/log-analytics/scripts/log-analytics-powershell-sample-create-workspace?toc=%2fpowershell%2fmodule%2ftoc.json), nebo [webu Azure portal](../log-analytics/log-analytics-quick-create-workspace.md).
 
-Pokud nejste obeznámeni s koncepty nasazení prostředků pomocí šablony s využitím Powershellu, přečtěte si téma [nasazení prostředků pomocí šablon Resource Manageru a prostředí Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md)nebo rozhraní příkazového řádku Azure najdete v tématu, [nasazení prostředků pomocí Šablony Resource Manageru a Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md).
+Pokud nejste obeznámeni s konceptem nasazení prostředků pomocí šablony, naleznete v tématu:
+* [Nasazení prostředků pomocí šablon Resource Manageru a Azure PowerShellu](../azure-resource-manager/resource-group-template-deploy.md)
+* [Nasazení prostředků pomocí šablon Resource Manageru a Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md)
 
-Pokud jste se rozhodli používat rozhraní příkazového řádku Azure, musíte nejprve nainstalovat a používat rozhraní příkazového řádku místně.  Je vyžadován, že používáte Azure CLI verze 2.0.27 nebo novější. Spustit `az --version` pro určení verze. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli). 
+Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte nejprve nainstalovat a používat rozhraní příkazového řádku místně. Musíte používat Azure CLI verze 2.0.27 nebo novější. Zjistěte verzi, spusťte `az --version`. Pokud potřebujete instalaci nebo upgrade rozhraní příkazového řádku Azure, najdete v článku [instalace rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli). 
 
-#### <a name="create-and-execute-template"></a>Vytvoření a provedení šablony
+#### <a name="create-and-execute-a-template"></a>Vytvoření a provedení šablony
 
 1. Zkopírujte a vložte do souboru následující syntaxi JSON:
 
@@ -188,7 +197,7 @@ Pokud jste se rozhodli používat rozhraní příkazového řádku Azure, musít
     ```
 
 2. Uložte soubor jako **existingClusterOnboarding.json** do místní složky.
-3. Zkopírujte a vložte do souboru následující syntaxi JSON:
+3. Vložte následující syntaxi JSON do souboru:
 
     ```json
     {
@@ -211,22 +220,22 @@ Pokud jste se rozhodli používat rozhraní příkazového řádku Azure, musít
     }
     ```
 
-4. Upravit její hodnotu **aksResourceId**, **aksResourceLocation** s hodnotami, které můžete najít na **Přehled služby AKS** stránky pro AKS cluster.  Hodnota pro **workspaceResourceId** je úplné ID prostředku pracovního prostoru Log Analytics, která zahrnuje název pracovního prostoru.  Také zadejte umístění, pracovní prostor je v **workspaceRegion**.    
+4. Upravte hodnoty **aksResourceId** a **aksResourceLocation** pomocí hodnot na **Přehled služby AKS** stránky pro AKS cluster. Hodnota pro **workspaceResourceId** je úplné ID prostředku pracovního prostoru Log Analytics, která zahrnuje název pracovního prostoru. Také zadejte umístění pracovního prostoru pro **workspaceRegion**. 
 5. Uložte soubor jako **existingClusterParam.json** do místní složky.
 6. Jste připraveni k nasazení této šablony. 
 
-    * Ze složky obsahující šablonu použijte následující příkazy Powershellu:
+    * Do složky obsahující šablonu použijte následující příkazy Powershellu:
 
         ```powershell
         New-AzureRmResourceGroupDeployment -Name OnboardCluster -ResourceGroupName ClusterResourceGroupName -TemplateFile .\existingClusterOnboarding.json -TemplateParameterFile .\existingClusterParam.json
         ```
-        Změna konfigurace může trvat několik minut. Po dokončení se zobrazí zpráva podobná následující, který obsahuje výsledek:
+        Změna konfigurace může trvat několik minut. Když se dokončí, zobrazí se zpráva, která je podobný následujícímu a zahrnuje výsledek:
 
         ```powershell
         provisioningState       : Succeeded
         ```
 
-    * Pokud chcete spustit následující příkaz pomocí rozhraní příkazového řádku Azure v Linuxu:
+    * Chcete-li pomocí rozhraní příkazového řádku Azure v Linuxu spusťte následující příkaz:
     
         ```azurecli
         az login
@@ -234,24 +243,24 @@ Pokud jste se rozhodli používat rozhraní příkazového řádku Azure, musít
         az group deployment create --resource-group <ResourceGroupName> --template-file ./existingClusterOnboarding.json --parameters @./existingClusterParam.json
         ```
 
-        Změna konfigurace může trvat několik minut. Po dokončení se zobrazí zpráva podobná následující, který obsahuje výsledek:
+        Změna konfigurace může trvat několik minut. Když se dokončí, zobrazí se zpráva, která je podobný následujícímu a zahrnuje výsledek:
 
         ```azurecli
         provisioningState       : Succeeded
         ```
-Jakmile je zapnuté monitorování, může trvat přibližně 15 minut, než budete moct zobrazit provozní data v clusteru.  
+Po povolení sledování, může trvat přibližně 15 minut, než lze zobrazit provozní data pro cluster. 
 
 ## <a name="verify-agent-and-solution-deployment"></a>Ověření nasazení agenta a řešení
-Verze agenta *06072018* a vyšší, budete moct ověřit, že agent a řešení se úspěšně nasadily.  V předchozích verzích agenta můžete pouze ověření nasazení agenta.
+Verze agenta *06072018* nebo později, můžete ověřit, že agent a řešení se úspěšně nasadily. V předchozích verzích agenta můžete ověřit pouze nasazení agenta.
 
-### <a name="agent-version-06072018-and-higher"></a>Verze agenta 06072018 a vyšší
-Spusťte následující příkaz k ověření, že je agent úspěšně nasazen.   
+### <a name="agent-version-06072018-or-later"></a>Verze agenta 06072018 nebo novější
+Spusťte následující příkaz k ověření, že je agent úspěšně nasazen. 
 
 ```
 kubectl get ds omsagent --namespace=kube-system
 ```
 
-Výstup by měl vypadat následující určující, které správně nasadit:
+Výstup by měl vypadat podobně jako následující text, který označuje, že byla správně nasazena:
 
 ```
 User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system 
@@ -265,7 +274,7 @@ Pokud chcete ověřit nasazení řešení, spusťte následující příkaz:
 kubectl get deployment omsagent-rs -n=kube-system
 ```
 
-Výstup by měl vypadat následující určující, které správně nasadit:
+Výstup by měl vypadat podobně jako následující text, který označuje, že byla správně nasazena:
 
 ```
 User@aksuser:~$ kubectl get deployment omsagent-rs -n=kube-system 
@@ -275,13 +284,13 @@ omsagent   1         1         1            1            3h
 
 ### <a name="agent-version-earlier-than-06072018"></a>Dříve než 06072018 verze agenta
 
-Chcete-li ověřit verzi agenta OMS vydané dřív než *06072018* nasazení správně, spusťte následující příkaz:  
+Chcete-li ověřit, že verze agenta OMS vydané dřív než *06072018* nasazení správně, spusťte následující příkaz:  
 
 ```
 kubectl get ds omsagent --namespace=kube-system
 ```
 
-Výstup by měl vypadat následující určující, které správně nasadit:  
+Výstup by měl vypadat podobně jako následující text, který označuje, že byla správně nasazena:  
 
 ```
 User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system 
@@ -290,57 +299,57 @@ omsagent   2         2         2         2            2           beta.kubernete
 ```  
 
 ## <a name="view-performance-utilization"></a>Zobrazení výkonu využití
-Při otevření stavu kontejneru, na stránce okamžitě zobrazí využití výkonu celý cluster.  Zobrazení informací o clusteru AKS je uspořádaný do čtyř perspektiv:
+Při otevření stavu kontejneru, na stránce okamžitě zobrazí využití výkonu celý cluster. Zobrazení informací o clusteru AKS je uspořádaný do čtyř perspektiv:
 
 - Cluster
 - Uzly 
 - Kontrolery  
 - Containers
 
-Na kartě clusteru spojnicové grafy výkonu zobrazit klíčové metriky výkonu ve vašem clusteru.  
+Na **clusteru** kartě čtyři spojnicové grafy výkonu zobrazit klíčové metriky výkonu ve vašem clusteru. 
 
 ![Příklad grafy výkonu na kartě clusteru](./media/monitoring-container-health/container-health-cluster-perfview.png)
 
-Tady je přehled metrik výkonu zobrazí:
+Graf výkonu zobrazí čtyři metriky výkonu:
 
-- Uzel procesoru % využití – tento graf představuje agregované perspektivy využití výkonu procesoru pro celý cluster.  Můžete filtrovat výsledky pro časový rozsah výběrem *Avg*, *Min*, *maximální*, *50*, *90. percentil*, a *95* z modulu pro výběr percentily nad grafem, buď samostatně nebo v kombinaci. 
-- % Využití paměti uzlu – tento graf představuje agregované perspektivy využití paměti pro celý cluster.  Můžete filtrovat výsledky pro časový rozsah výběrem *Avg*, *Min*, *maximální*, *50*, *90. percentil*, a *95* z modulu pro výběr percentily nad grafem, buď samostatně nebo v kombinaci. 
-- Počet uzlů – tento graf představuje počet uzlů a stav z Kubernetes.  Stav uzlů clusteru, který je reprezentován *všechny*, *připravené*, a *Nepřipraveno* a můžete filtrovat jednotlivě nebo kombinaci z modulu pro výběr nad grafem.    
-- Počet podů aktivity – tento graf představuje stav a počet podů Kubernetes.  Stav podů reprezentované *všechny*, *čekající*, *systémem*, a *neznámý* a můžete filtrovat jednotlivě nebo kombinaci z selektor nad grafem.  
+- **Využití procesoru uzlu&nbsp;%**: agregovaná perspektivy využití výkonu procesoru pro celý cluster. Můžete filtrovat výsledky pro časový rozsah výběrem **Avg**, **Min**, **maximální**, **50**, **90. percentil**, a **95** v modulu pro výběr percentily nad grafem, buď samostatně nebo v kombinaci. 
+- **Využití paměti v aplikaci node&nbsp;%**: agregovaná perspektivy využití paměti pro celý cluster. Můžete filtrovat výsledky pro časový rozsah výběrem **Avg**, **Min**, **maximální**, **50**, **90. percentil**, a **95** v modulu pro výběr percentily nad grafem, buď samostatně nebo v kombinaci. 
+- **Počet uzlů**: počet uzlů a stav ze Kubernetes. Stavy uzlů clusteru, který je reprezentován *všechny*, *připravené*, a *Nepřipraveno* a můžete filtrovat jednotlivě nebo kombinaci v modulu pro výběr nad grafem. 
+- **Počet podů aktivit**: počet podů a stav ze Kubernetes. Stavy podů reprezentované *všechny*, *čekající*, *systémem*, a *neznámý* a můžete filtrovat jednotlivě nebo v kombinaci selektor nad grafem. 
 
-Přepnutí na kartě uzly, hierarchie řádek postupuje od uzlu v clusteru Kubernetes objektový model.  Rozbalte uzel se zobrazí jedna nebo více podů se spuštěnou na uzlu a pokud existuje více než jednoho kontejneru seskupením pod, se zobrazují jako poslední řádek v hierarchii. Budete moci také vidět, kolik souvisejících úlohách bez pod běží na hostiteli v případě, že hostitel má procesor nebo tlaku na paměť.
+Pokud přejdete na **uzly** kartě hierarchii řádek následuje počínaje uzlu v clusteru Kubernetes objektového modelu. Rozbalte uzel a můžete zobrazit jeden nebo více podů se spuštěnou na uzlu. Pokud více než jednoho kontejneru je seskupení pod, se zobrazí jako poslední řádek v hierarchii. Můžete také zobrazit, kolik souvisejících úlohách bez pod běží na hostiteli, pokud má hostitel procesoru nebo tlaku na paměť.
 
 ![Příklad Kubernetes uzlu hierarchie v zobrazení výkonu](./media/monitoring-container-health/container-health-nodes-view.png)
 
-Můžete vybrat řadiče nebo kontejnerů z horní části stránky a zkontrolujte stav a využití prostředků týkajících se těchto objektů.  Pomocí pole rozevíracího seznamu v horní části obrazovky můžete filtrovat podle oboru názvů, služby a uzel. Pokud místo toho chcete zkontrolovat využití paměti, z **metrika** rozevíracího seznamu vyberte **paměti RSS** nebo **pracovní sada paměti**.  **Paměť RSS** je podporována pouze pro Kubernetes verze 1.8 a novější. V opačném případě se zobrazí hodnoty pro **MIN %** zobrazuje jako *NaN %*, což je hodnota číselný datový typ představující hodnotu undefined nebo přičtení. 
+Můžete vybrat, řadiče nebo kontejnery v horní části stránky a zkontrolujte stav a využití prostředků týkajících se těchto objektů. Použití polí rozevíracího seznamu v horní části můžete filtrovat podle oboru názvů, služby a uzel. Pokud místo toho chcete zkontrolovat využití paměti v **metrika** rozevíracího seznamu vyberte **paměti RSS** nebo **pracovní sada paměti**. **Paměť RSS** se podporuje jenom pro Kubernetes verze 1.8 a novější. V opačném případě zobrazení hodnot pro **Min&nbsp; %**  jako *NaN&nbsp;%*, má hodnotu číselný datový typ, který představuje Nedefinovaná nebo přičtení hodnotu. 
 
 ![Zobrazení výkonu uzly kontejneru](./media/monitoring-container-health/container-health-node-metric-dropdown.png)
 
-Ve výchozím nastavení, údaje o výkonu podle posledních 6 hodin, ale můžete změnit v okně s **časový rozsah** rozevírací seznam najdete v pravém horním rohu stránky. V tuto chvíli stránky není automatické aktualizace, takže budete muset ručně aktualizovat. Můžete také filtrovat výsledky v rámci časový rozsah výběrem *Avg*, *Min*, *maximální*, *50*, *90. percentil*, a *95* z modulu pro výběr percentil. 
+Ve výchozím nastavení, údaje o výkonu podle posledních 6 hodin, ale můžete změnit v okně pomocí **časový rozsah** rozevíracího seznamu v pravém horním rohu. V tuto chvíli stránky není automatické aktualizace, takže budete muset ručně aktualizovat. Můžete také filtrovat výsledky v rámci časový rozsah výběrem **Avg**, **Min**, **maximální**, **50**, **90. percentil**, a **95** v modulu pro výběr percentil. 
 
 ![Výběr percentilu pro filtrování dat](./media/monitoring-container-health/container-health-metric-percentile-filter.png)
 
-V následujícím příkladu, si všimnete pro uzel *aks. nodepool 3977305*, hodnota **kontejnery** je 5, což je kumulativní počet kontejnerů.
+V následujícím příkladu si všimněte pro uzel *aks. nodepool 3977305*, hodnota **kontejnery** je 5, což je souhrnné celkový počet kontejnerů.
 
 ![Souhrn kontejnerů na příklad uzlu](./media/monitoring-container-health/container-health-nodes-containerstotal.png)
 
-Pomůže vám rychle zjistit, zda nemáte správná zůstatek kontejnerů mezi uzly v clusteru.  
+Pomůže vám rychle zjistit, jestli máte správnou rovnováhu mezi uzly v clusteru a kontejnerů. 
 
-Následující tabulka popisuje informace při zobrazení uzlů.
+Informace, které se zobrazí při zobrazení uzlů je popsaný v následující tabulce:
 
 | Sloupec | Popis | 
 |--------|-------------|
-| Název | Název hostitele |
-| Status | Kubernetes zobrazení stavu uzlu |
-| PRŮMĚRNÝ %, MIN %, MAX %, 50 %, 90 % | Průměrné procento uzlů podle percentilu během tuto dobu trvání vybrané. |
-| AVG, MIN, MAX, 50, 90 | Průměrná uzlů podle percentilu během tuto dobu trvání vybrané skutečnou hodnotu.  Průměrné hodnoty se měří z procesoru nebo paměti limitu nastaveného pro uzel; pro podů a kontejnery je průměrná hodnotu hlášenou síťovým hostitele. |
+| Název | Název hostitele. |
+| Status | Kubernetes pohled na stav uzlu. |
+| AVG&nbsp;%, Min&nbsp;% Max&nbsp;%, 50&nbsp;%, 90. percentil&nbsp;% | Průměrné procento uzlů podle percentilu během vybrané doby trvání. |
+| Avg, Min, Max, 50, 90 | Průměrná uzlů podle percentilu během tuto dobu trvání vybrané skutečnou hodnotu. Průměrné hodnoty se měří z procesoru nebo paměti limitu nastaveného pro uzel; pro podů a kontejnery je průměrná hodnotu hlášenou síťovým hostitele. |
 | Containers | Počet kontejnerů. |
 | Doba provozu | Představuje čas, protože uzel spuštěn nebo byl restartován. |
-| Kontrolery | Pouze pro kontejnery a tyto pody. Ukazuje kontroler, který je umístěný. Ne všechny podů bude v kontroleru, tak některé můžou zobrazovat není k dispozici. | 
-| Trend Průměrný %, MIN %, MAX %, 50 %, 90 % | Pruhový graf trendu nabízí ten samý percentilu metrik % kontroleru. |
+| Kontrolery | Pouze pro kontejnery a tyto pody. Zobrazuje kontroleru, který je umístěný v. Ne všechny podů jsou v kontroleru, takže některé se může zobrazit **není k dispozici**. | 
+| Trend Avg&nbsp;%, Min&nbsp;% Max&nbsp;%, 50&nbsp;%, 90. percentil&nbsp;% | Pruhový graf trendu nabízí ten samý percentilu metrik procento kontroleru. |
 
 
-V modulu pro výběr, zvolte **řadiče**.
+V modulu pro výběr, vyberte **řadiče**.
 
 ![Vyberte kontrolerů zobrazení](./media/monitoring-container-health/container-health-controllers-tab.png)
 
@@ -348,21 +357,21 @@ Zde můžete zobrazit stav výkonu řadiče.
 
 ![zobrazení výkonu řadiče < název >](./media/monitoring-container-health/container-health-controllers-view.png)
 
-Hierarchie řádek začíná kontroleru a rozbalí kontroleru a zobrazí jeden nebo jeden nebo více kontejnerů.  Rozbalte pod a poslední řádek zobrazit seskupené pod celému kontejneru.  
+Hierarchie řádek začíná kontroleru a rozbalí kontroleru. Můžete zobrazit jeden nebo více kontejnerů. Rozbalte pod a poslední řádek zobrazuje seskupené pod celému kontejneru. 
 
-Následující tabulka popisuje informace při zobrazení řadičů.
+Informace, které se zobrazí, když zobrazujete řadiče je popsaný v následující tabulce:
 
 | Sloupec | Popis | 
 |--------|-------------|
-| Název | Název kontroleru|
-| Status | Souhrn stavu kontejnerů po dokončení spuštění se stavem, jako například *OK*, *ukončeno*, *neúspěšné* *Zastaveno*, nebo  *Pozastaveno*. Pokud je kontejner spuštěný, ale stav byl buď není správně zobrazí nebo nebyl vyzvednou agenta a neodpověděl více než 30 minut, stav je *neznámý*. V následující tabulce jsou uvedeny další podrobnosti o ikona stavu.|
-| PRŮMĚRNÝ %, MIN %, MAX %, 50 %, 90 % | Souhrnné průměrem průměrné procento Každá entita pro vybranou metriku a percentil. |
-| AVG, MIN, MAX, 50, 90  | Shrnutí průměrné využití procesoru millicore nebo paměti výkon kontejneru pro vybrané percentil.  Průměrné hodnoty se měří z procesoru nebo paměti limitu nastaveného pro pod. |
+| Název | Název kontroleru.|
+| Status | Shrnutí stavu kontejnerů po dokončení spuštění se stavem, jako například *OK*, *ukončeno*, *neúspěšné* *Zastaveno*, nebo *Pozastaveno*. Pokud je kontejner spuštěný, ale stav byl buď není správně zobrazeny nebo nebyl vyzvednou agenta a neodpověděl více než 30 minut, stav je *neznámý*. V následující tabulce jsou uvedeny další podrobnosti o ikona stavu.|
+| AVG&nbsp;%, Min&nbsp;% Max&nbsp;%, 50&nbsp;%, 90. percentil&nbsp;% | Souhrn průměrem průměrnou procentuální hodnotu Každá entita pro vybranou metriku a percentil. |
+| Avg, Min, Max, 50, 90  | Shrnující průměrné využití procesoru millicore nebo paměti výkon kontejneru pro vybrané percentil. Průměrné hodnoty se měří z procesoru nebo paměti limitu nastaveného pro pod. |
 | Containers | Celkový počet kontejnerů pro kontroler nebo pod. |
-| Restartování | Shrnutí počtu restartování z kontejnerů. |
+| Restartování | Souhrn počtu restartování z kontejnerů. |
 | Doba provozu | Představuje čas od spuštění kontejneru. |
 | Node | Pouze pro kontejnery a tyto pody. Ukazuje kontroler, který je umístěný. | 
-| Trend Průměrný %, MIN %, MAX %, 50 %, 90 %| Pruhový graf trendu představující percentilu metrik kontroleru. |
+| Trend Avg&nbsp;%, Min&nbsp;% Max&nbsp;%, 50&nbsp;%, 90. percentil&nbsp;%| Pruhový graf trendu představující percentilu metrik kontroleru. |
 
 Ikony v poli Stav označují online stav kontejnerů:
  
@@ -373,46 +382,46 @@ Ikony v poli Stav označují online stav kontejnerů:
 | ![Naposledy hlásila systémem ikona stavu](./media/monitoring-container-health/container-health-grey-icon.png) | Poslední ohlásil spuštěná, ale neodpovídá více než 30 minut|
 | ![Ikona úspěšný stav](./media/monitoring-container-health/container-health-green-icon.png) | Úspěšně zastaven nebo se nepovedlo zastavit|
 
-Ikona stavu zobrazují počet založené na co chcete pod poskytuje. Zobrazuje horší dva stavy a když najedete myší stav, zobrazí shrnutí stavu všech podů v kontejneru.  Pokud není k dispozici stavu Připraveno, bude zobrazovat hodnota stavu **(0)**.  
+Ikona stavu zobrazuje počet založené na co chcete pod poskytuje. Zobrazuje nejhorší dvou stavů, a když najedete myší stav, zobrazí shrnutí stavu ze všech podů v kontejneru. Pokud není k dispozici stavu Připraveno, hodnota stavu zobrazí **(0)**. 
 
-V modulu pro výběr, zvolte **kontejnery**.
+V modulu pro výběr, vyberte **kontejnery**.
 
 ![Vyberte kontejnery zobrazení](./media/monitoring-container-health/container-health-containers-tab.png)
 
-Tady vidíme hlediska výkonu pro vaše kontejnery.
+Zde můžete zobrazit hlediska výkonu pro vaše kontejnery.
 
 ![zobrazení výkonu řadiče < název >](./media/monitoring-container-health/container-health-containers-view.png)
 
-Následující tabulka popisuje informace při zobrazení kontejnerů.
+Informace, které se zobrazí, když zobrazujete kontejnery je popsaný v následující tabulce:
 
 | Sloupec | Popis | 
 |--------|-------------|
-| Název | Název kontroleru|
-| Status | Stav kontejnerů, pokud existuje. V následující tabulce jsou uvedeny další podrobnosti o ikona stavu.|
-| PRŮMĚRNÝ %, MIN %, MAX %, 50 %, 90 % | Souhrnné průměrem průměrné procento Každá entita pro vybranou metriku a percentil. |
-| AVG, MIN, MAX, 50, 90  | Shrnutí průměrné využití procesoru millicore nebo paměti výkon kontejneru pro vybrané percentil.  Průměrné hodnoty se měří z procesoru nebo paměti limitu nastaveného pro pod. |
+| Název | Název kontroleru.|
+| Status | Stav kontejnerů, pokud existuje. V další tabulce jsou uvedeny další podrobnosti o ikona stavu.|
+| AVG&nbsp;%, Min&nbsp;% Max&nbsp;%, 50&nbsp;%, 90. percentil&nbsp;% | Kumulativní z průměrnou procentuální hodnotu Každá entita pro vybranou metriku a percentil. |
+| Avg, Min, Max, 50, 90  | Kumulativní průměrné využití procesoru millicore nebo paměti výkonu kontejneru pro vybrané percentil. Průměrné hodnoty se měří z procesoru nebo paměti limitu nastaveného pro pod. |
 | Pod | Kontejner, ve které se nachází pod.| 
 | Node |  Uzel, ve které se nachází kontejneru. | 
 | Restartování | Představuje čas od spuštění kontejneru. |
 | Doba provozu | Představuje čas, protože kontejneru se spustit nebo restartovat. |
-| Trend Průměrný %, MIN %, MAX %, 50 %, 90 % | Pruhový graf trendu představující průměrnou metriky % kontejneru. |
+| Trend Avg&nbsp;%, Min&nbsp;% Max&nbsp;%, 50&nbsp;%, 90. percentil&nbsp;% | Trend pruhový graf, který představuje průměrnou procentuální hodnotu metriky kontejneru. |
 
-Ikony v poli Stav označují online stav pody:
+Ikony v poli Stav označují online stavy podů, jak je popsáno v následující tabulce:
  
 | Ikona | Status | 
 |--------|-------------|
 | ![Připraveno spuštěné ikona stavu](./media/monitoring-container-health/container-health-ready-icon.png) | Systémem (připravená)|
 | ![Ikona čekání nebo pozastaveném stavu](./media/monitoring-container-health/container-health-waiting-icon.png) | Čeká se na nebo pozastavena|
-| ![Naposledy hlásila systémem ikona stavu](./media/monitoring-container-health/container-health-grey-icon.png) | Poslední ohlásil spuštěná, ale neodpovídá více než 30 minut|
+| ![Naposledy hlásila systémem ikona stavu](./media/monitoring-container-health/container-health-grey-icon.png) | Poslední ohlásil spuštěná, ale neodpovídá za více než 30 minut|
 | ![Ikona stavu ukončení](./media/monitoring-container-health/container-health-terminated-icon.png) | Úspěšně zastaven nebo se nepovedlo zastavit|
 | ![Ikona stavu se nezdařilo](./media/monitoring-container-health/container-health-failed-icon.png) | Chybovém stavu |
 
-## <a name="container-data-collection-details"></a>Podrobnosti o kontejneru dat kolekce
+## <a name="container-data-collection-details"></a>Podrobnosti o kontejneru shromažďování dat
 Stav kontejneru různých metrik a protokolů shromažďuje údaje o výkonu z hostitelů kontejnerů a kontejnery. Data jsou shromažďována každé 3 minuty.
 
 ### <a name="container-records"></a>Záznamy kontejneru
 
-Následující tabulka uvádí příklady záznamy shromážděné stav kontejneru a datové typy, které se zobrazí ve výsledcích hledání v protokolu.
+Příklady záznamů, které byly shromážděny sadou stav kontejneru a datové typy, které se zobrazí ve výsledcích hledání protokolů, které jsou zobrazeny v následující tabulce:
 
 | Typ dat | Datový typ v prohledávání protokolu | Fields (Pole) |
 | --- | --- | --- |
@@ -431,29 +440,33 @@ Následující tabulka uvádí příklady záznamy shromážděné stav kontejne
 | Metriky výkonu pro kontejnery jsou součástí clusteru Kubernetes | Perf &#124; kde ObjectName == "K8SContainer" | Hodnota counterName &#40;cpuUsageNanoCores memoryWorkingSetBytes, memoryRssBytes, restartTimeEpoch, cpuRequestNanoCores, memoryRequestBytes, cpuLimitNanoCores, memoryLimitBytes&#41;, CounterValue, TimeGenerated, Cesta_k_čítači, SourceSystem | 
 
 ## <a name="search-logs-to-analyze-data"></a>Hledání protokolů pro analýzu dat
-Log Analytics můžete hledat trendy, diagnostikovat problémových míst, předpovědi nebo korelovat data, která vám může pomoct určit, zda je aktuální konfiguraci clusteru optimální výkon.  Prohledávání protokolů předem definovaných jsou k dispozici okamžitě začít používat a přizpůsobit, aby mohla vrátit informace způsobem, jaký požadujete. 
+Log Analytics můžete hledat trendy, diagnostikovat problémových míst, předpovědi nebo korelovat data, která vám může pomoct určit, zda je aktuální konfiguraci clusteru optimální výkon. Prohledávání protokolů předem definovaných jsou k dispozici pro vás okamžitě začít využívat nebo přizpůsobit vrátit informace způsobem, jaký požadujete. 
 
-Můžete provádět interaktivní analýzu dat v pracovním prostoru tak, že vyberete **zobrazit protokol** možnost je k dispozici na úplně vpravo, když rozšiřujete kontroleru nebo kontejneru.  **Prohledávání protokolů** stránka se zobrazí vpravo nahoře na stránce jste byli na portálu.
+Můžete provádět interaktivní analýzu dat v pracovním prostoru tak, že vyberete **zobrazit protokol** možnost je k dispozici úplně vpravo, když rozšiřujete kontroleru nebo kontejneru. **Prohledávání protokolů** nad stránky Azure portal, který jste byli, zobrazí se stránka.
 
 ![Analýza dat v Log Analytics](./media/monitoring-container-health/container-health-view-logs.png)   
 
-Výstupní protokoly kontejneru předávají do Log Analytics jsou STDOUT a STDERR. Protože Azure spravované Kubernetes (AKS) je monitorování stavu kontejneru, Kube-system nejsou z důvodu velkého objemu dat vygenerovaných shromažďovány ještě dnes.     
+Výstup protokoly kontejneru, který se předávají do Log Analytics jsou STDOUT a STDERR. Protože Azure managed Kubernetes (AKS) je monitorování stavu kontejneru, Kube-system nejsou ještě dnes shromažďovány z důvodu velkého objemu generovaná data. 
 
 ### <a name="example-log-search-queries"></a>Příklad protokolu vyhledávacích dotazů
-Často je užitečné k sestavování dotazů od jedné až dvou příklad a následnou úpravou jejich podle svých požadavků. Můžete experimentovat s následující ukázkové dotazy, které vám pomůžou vytvářet složitější dotazy.
+Často je užitečné k sestavování dotazů, které začínají s příkladem jedné až dvou a následnou úpravou podle svých požadavků. Které vám pomůžou vytvářet složitější dotazy, můžete experimentovat s následující ukázkové dotazy:
 
 | Dotaz | Popis | 
 |-------|-------------|
-| ContainerInventory<br> &#124;Projekt počítače, jméno, obrázek, ImageTag, ContainerState, čas vytvoření, StartedTime, FinishedTime<br> &#124;vykreslit tabulku | Seznam všech kontejnerů životního cyklu informací| 
+| ContainerInventory<br> &#124;Projekt počítače, jméno, obrázek, ImageTag, ContainerState, čas vytvoření, StartedTime, FinishedTime<br> &#124;vykreslit tabulku | Seznam všech informací o životním cyklu kontejneru| 
 | KubeEvents_CL<br> &#124;kde not(isempty(Namespace_s))<br> &#124;Seřadit podle TimeGenerated desc<br> &#124;vykreslit tabulku | Události Kubernetes|
 | ContainerImageInventory<br> &#124;summarize AggregatedValue = count() by bitové kopie, ImageTag, spuštění | Inventář imagí | 
 | **V Advanced Analytics, vyberte spojnicové grafy**:<br> Výkonu<br> &#124;kde ObjectName == "Kontejneru" a hodnota CounterName == "čas procesoru v %"<br> &#124;shrnutí AvgCPUPercent = avg(CounterValue) podle bin (TimeGenerated, 30 min), InstanceName | Procesoru kontejneru | 
 | **V Advanced Analytics, vyberte spojnicové grafy**:<br> Perf &#124; kde ObjectName == "Kontejneru" a hodnota CounterName == "MB využití paměti"<br> &#124;shrnutí AvgUsedMemory = avg(CounterValue) podle bin (TimeGenerated, 30 min), InstanceName | Paměti kontejneru |
 
 ## <a name="how-to-stop-monitoring-with-container-health"></a>Postup zastavení monitorování pomocí stavu kontejneru
-Po povolení monitorování vašeho kontejneru AKS se rozhodnete chcete monitorovat, můžete *Odhlásit se totiž* dodané šablony Azure Resource Manageru pomocí rutiny Powershellu  **Nový AzureRmResourceGroupDeployment** nebo rozhraní příkazového řádku Azure.  Jedna šablona JSON Určuje konfiguraci tak, aby *Odhlásit se totiž* a jiné šablony JSON obsahuje hodnoty parametrů můžete nakonfigurovat a určit tak AKS skupinu prostředků clusteru ID a prostředků v nasazení clusteru.  Pokud nejste obeznámeni s koncepty nasazení prostředků pomocí šablony s využitím Powershellu, přečtěte si téma [nasazení prostředků pomocí šablon Resource Manageru a prostředí Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md) nebo rozhraní příkazového řádku Azure najdete v tématu, [nasazení prostředků pomocí Šablony Resource Manageru a Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md).
+Pokud povolíte monitorování vašeho kontejneru AKS, rozhodnete, že už chcete monitorovat, můžete *Odhlásit se totiž* pomocí dodané šablony Azure Resource Manageru pomocí rutiny Powershellu  **Nový AzureRmResourceGroupDeployment** nebo rozhraní příkazového řádku Azure CLI. Jedna šablona JSON Určuje konfiguraci tak, aby *Odhlásit se totiž*. Druhý obsahuje hodnoty parametrů, které můžete nakonfigurovat a určit tak AKS skupinu prostředků clusteru ID a prostředků, která je nasazená clusteru. 
 
-Pokud jste se rozhodli používat rozhraní příkazového řádku Azure, musíte nejprve nainstalovat a používat rozhraní příkazového řádku místně.  Je vyžadován, že používáte Azure CLI verze 2.0.27 nebo novější. Spustit `az --version` pro určení verze. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli). 
+Pokud nejste obeznámeni s konceptem nasazení prostředků pomocí šablony, naleznete v tématu:
+* [Nasazení prostředků pomocí šablon Resource Manageru a Azure PowerShellu](../azure-resource-manager/resource-group-template-deploy.md)
+* [Nasazení prostředků pomocí šablon Resource Manageru a Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md)
+
+Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte nejprve nainstalovat a používat rozhraní příkazového řádku místně. Musíte používat Azure CLI verze 2.0.27 nebo novější. Zjistěte verzi, spusťte `az --version`. Pokud potřebujete instalaci nebo upgrade rozhraní příkazového řádku Azure, najdete v článku [instalace rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli). 
 
 ### <a name="create-and-execute-template"></a>Vytvoření a provedení šablony
 
@@ -499,7 +512,7 @@ Pokud jste se rozhodli používat rozhraní příkazového řádku Azure, musít
     ```
 
 2. Uložte soubor jako **OptOutTemplate.json** do místní složky.
-3. Zkopírujte a vložte do souboru následující syntaxi JSON:
+3. Vložte následující syntaxi JSON do souboru:
 
     ```json
     {
@@ -516,16 +529,16 @@ Pokud jste se rozhodli používat rozhraní příkazového řádku Azure, musít
     }
     ```
 
-4. Upravit její hodnotu **aksResourceId** a **aksResourceLocation** s hodnotami cluster AKS, který můžete najít na **vlastnosti** stránek pro vybraný cluster.
+4. Upravte hodnoty **aksResourceId** a **aksResourceLocation** pomocí hodnot clusteru AKS, které můžete vyhledat na **vlastnosti** stránek pro vybraný cluster .
 
     ![Stránka vlastnosti kontejneru](./media/monitoring-container-health/container-properties-page.png)
 
-    Když jste na **vlastnosti** stránky, zkopírujte také **ID prostředku pracovního prostoru**.  Tato hodnota je povinná, pokud se rozhodnete, že chcete odstranit pracovnímu prostoru Log Analytics později, což není provedeno jako součást tohoto procesu.  
+    Když jste na **vlastnosti** stránky, zkopírujte také **ID prostředku pracovního prostoru**. Tato hodnota je povinná, pokud se rozhodnete, že chcete odstranit pracovní prostor Log Analytics později. Odstraňuje se pracovní prostor Log Analytics se neprovádí jako součást tohoto procesu. 
 
 5. Uložte soubor jako **OptOutParam.json** do místní složky.
 6. Jste připraveni k nasazení této šablony. 
 
-    * Chcete-li ze složky obsahující šablonu použijte následující příkazy Powershellu:
+    * Chcete-li do složky obsahující šablonu použijte následující příkazy Powershellu:
 
         ```powershell
         Connect-AzureRmAccount
@@ -533,7 +546,7 @@ Pokud jste se rozhodli používat rozhraní příkazového řádku Azure, musít
         New-AzureRmResourceGroupDeployment -Name opt-out -ResourceGroupName <ResourceGroupName> -TemplateFile .\OptOutTemplate.json -TemplateParameterFile .\OptOutParam.json
         ```
 
-        Změna konfigurace může trvat několik minut. Po dokončení, je vrácena zpráva podobná následující, který obsahuje výsledek:
+        Změna konfigurace může trvat několik minut. Když se dokončí, je vrácena zpráva podobná následující, který obsahuje výsledek:
 
         ```powershell
         ProvisioningState       : Succeeded
@@ -547,35 +560,35 @@ Pokud jste se rozhodli používat rozhraní příkazového řádku Azure, musít
         az group deployment create --resource-group <ResourceGroupName> --template-file ./OptOutTemplate.json --parameters @./OptOutParam.json  
         ```
 
-        Změna konfigurace může trvat několik minut. Po dokončení, je vrácena zpráva podobná následující, který obsahuje výsledek:
+        Změna konfigurace může trvat několik minut. Když se dokončí, je vrácena zpráva podobná následující, který obsahuje výsledek:
 
         ```azurecli
         ProvisioningState       : Succeeded
         ```
 
-Pokud pracovní prostor byl vytvořen pouze k podpoře monitorování clusteru a už je nepotřebujete, budete muset odstranit ručně. Pokud nejste obeznámeni s postup odstranění pracovního prostoru, přečtěte si téma [odstranění pracovního prostoru Azure Log Analytics pomocí webu Azure portal](../log-analytics/log-analytics-manage-del-workspace.md).  Nezapomeňte **ID prostředku pracovního prostoru** jsme si zkopírovali dříve v kroku 4, budete potřebovat, který.  
+Pokud pracovní prostor byl vytvořen pouze k podpoře monitorování clusteru a už je nepotřebujete, budete muset odstranit ručně. Pokud nejste obeznámeni s postup odstranění pracovního prostoru, přečtěte si téma [odstranění pracovního prostoru Azure Log Analytics pomocí webu Azure portal](../log-analytics/log-analytics-manage-del-workspace.md). Nezapomeňte **ID prostředku pracovního prostoru** jsme si zkopírovali dříve v kroku 4, budete potřebovat, který. 
 
 ## <a name="troubleshooting"></a>Řešení potíží
 Tato část obsahuje informace k řešení potíží s stavu kontejneru.
 
-Pokud stav kontejneru byl úspěšně povolen a nakonfigurován, ale není zobrazuje informace o stavu nebo výsledky v Log Analytics, když provedete hledání v protokolu, můžete provést následující postup vám pomůže diagnostikovat problém.   
+Pokud stav kontejneru byl úspěšně povolen a nakonfigurován, ale nelze zobrazit informace o stavu nebo výsledky v Log Analytics při provádění prohledávání protokolu, pomůžete diagnostikovat problém následujícím způsobem: 
 
 1. Zkontrolujte stav agenta spuštěním následujícího příkazu: 
 
     `kubectl get ds omsagent --namespace=kube-system`
 
-    Výstup by měl vypadat následující určující, které správně nasadit:
+    Výstup by měl vypadat podobně jako následující text, který označuje, že byla správně nasazena:
 
     ```
     User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system 
     NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR                 AGE
     omsagent   2         2         2         2            2           beta.kubernetes.io/os=linux   1d
     ```  
-2. Zkontrolujte stav nasazení řešení s verzí agenta *06072018* nebo vyšší spuštěním následujícího příkazu:
+2. Zkontrolujte stav nasazení řešení s verzí agenta *06072018* nebo novější spuštěním následujícího příkazu:
 
     `kubectl get deployment omsagent-rs -n=kube-system`
 
-    Výstup by měl vypadat následující určující, které správně nasadit:
+    Výstup by měl vypadat podobně jako následující text, který označuje, že byla správně nasazena:
 
     ```
     User@aksuser:~$ kubectl get deployment omsagent-rs -n=kube-system 
@@ -583,7 +596,7 @@ Pokud stav kontejneru byl úspěšně povolen a nakonfigurován, ale není zobra
     omsagent   1         1         1            1            3h
     ```
 
-3. Postup kontroly stavu pod ověřte, zda že je spuštěna nebo není spuštěním následujícího příkazu: `kubectl get pods --namespace=kube-system`
+3. Postup kontroly stavu pod celému ověřte, zda je spuštěna ve spuštění následujícího příkazu: `kubectl get pods --namespace=kube-system`
 
     Výstup by měl vypadat takto se stavem *systémem* pro omsagent:
 
@@ -597,8 +610,9 @@ Pokud stav kontejneru byl úspěšně povolen a nakonfigurován, ale není zobra
     omsagent-fkq7g                      1/1       Running   0          1d 
     ```
 
-4. V protokolech agenta. Když se nasadí kontejnerizovanou agenta, je spuštěna Rychlá kontrola spuštěním OMI příkazy a zobrazuje verzi agenta a 
-5.  Zprostředkovatel. Pokud chcete zobrazit, že agent byl úspěšně připojit, spusťte následující příkaz: `kubectl logs omsagent-484hw --namespace=kube-system`
+4. V protokolech agenta. Když se nasadí kontejnerizovanou agenta, spustí rychlou kontrolu spuštěním příkazů (OMI) a zobrazí verzi agenta a poskytovatele. 
+
+5. Pokud chcete ověřit, že agent byl úspěšně připojit, spusťte následující příkaz: `kubectl logs omsagent-484hw --namespace=kube-system`
 
     Stav by měl vypadat takto:
 
@@ -625,4 +639,4 @@ Pokud stav kontejneru byl úspěšně povolen a nakonfigurován, ale není zobra
 
 ## <a name="next-steps"></a>Další postup
 
-[Hledání protokolů](../log-analytics/log-analytics-log-search.md) zobrazíte podrobné kontejneru stavu a výkonu informace o aplikacích.  
+Chcete-li zobrazit podrobné kontejneru stavu a výkonu informace o aplikacích, naleznete v tématu [vyhledávání protokolů](../log-analytics/log-analytics-log-search.md). 

@@ -12,21 +12,21 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 02/15/2018
+ms.date: 07/24/2018
 ms.author: juluk
-ms.openlocfilehash: 4ee02bc2a1956994da0ba49a24eefabf9608565c
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 9588bebdc827760f0e0d3e2aadccbff5f24723f1
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37856456"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258921"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Přehled služby Azure Cloud Shell
 Azure Cloud Shell je interaktivní, prohlížeč přístupné prostředí pro správu prostředků Azure.
 Poskytuje možnost vybrat si prostředí, která nejlépe vyhovuje stylu vaší práce.
 Uživatelé Linuxu si mohou vybrat Bash. Uživatelé Windows se mohou rozhodnout pro PowerShell.
 
-Zkuste z shell.azure.com pomocí tohoto tlačítka.
+Zkuste z shell.azure.com kliknutím níže.
 
 [![](https://shell.azure.com/images/launchcloudshell.png "Spustit Azure Cloud Shell")](https://shell.azure.com)
 
@@ -49,7 +49,12 @@ Uživatelé Linuxu můžete použít Bash ve službě Cloud Shell, zatímco uži
 ### <a name="authenticated-and-configured-azure-workstation"></a>Ověřený a nakonfigurovanou Azure pracovní stanice
 Cloud Shell se spravuje přes Microsoft proto jde o s oblíbenými nástroji příkazového řádku a podpora jazyků. Cloud Shell také bezpečně ověří automaticky pro okamžitý přístup k prostředkům pomocí rutin Azure PowerShell nebo příkazového řádku Azure CLI 2.0.
 
-Projděte si kompletní [nástrojů seznamu.](features.md#tools)
+Projděte si kompletní [seznam nástrojů, které jsou nainstalované ve službě Cloud Shell.](features.md#tools)
+
+### <a name="integrated-cloud-shell-editor"></a>Integrovaný editor Cloud Shell
+Cloud Shell nabízí integrované grafické text editor založený na editoru Monaco open source. Jednoduše vytvořte a upravte konfigurační soubory spuštěním `code .` umožňuje snadné nasazení prostřednictvím příkazového řádku Azure CLI 2.0 nebo Azure Powershellu.
+
+[Další informace o službě Cloud Shell editor](using-cloud-shell-editor.md).
 
 ### <a name="multiple-access-points"></a>Několik přístupových bodů
 Cloud Shell je flexibilní nástroj, který je možné z:

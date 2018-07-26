@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 91ed8a073dd95ddf37e4a71bfd7c3ab1dcb94f09
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 2560296c088491b7ae0cd414f88ae337c1383c9a
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39161357"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258792"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Možnosti zasílání zpráv o správě hesel Azure AD
 
@@ -54,6 +54,10 @@ V Azure portal ještě neznáte vylepšili jsme způsobu, jakým se zobrazí res
 6. Chcete-li filtrovat toto zobrazení můžete zobrazit jenom události související s hesly obnovení, vyberte **filtr** tlačítko v horní části podokna.
 7. Z **filtr** nabídce vyberte možnost **kategorie** rozevíracího seznamu a změňte ho na **samoobslužné správy hesel** typ kategorie.
 8. Volitelně můžete dál filtrovat seznam výběrem konkrétní **aktivity** vás zajímá.
+
+### <a name="converged-registration-preview"></a>Konvergované registrace (preview)
+
+Pokud se účastníte ve verzi public preview sblížené registraci, najdete informace týkající se aktivity uživatele v protokolech auditování v kategorii **metody ověřování**.
 
 ## <a name="description-of-the-report-columns-in-the-azure-portal"></a>Popis sloupce sestavy na webu Azure Portal
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 7/24/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: d131fb09e365a7a2d17b8a96c6a5fbc5d82164dc
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 0376fc3eb3ad0b98f1d98ecd35683b08e08090da
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/25/2018
-ms.locfileid: "39237928"
+ms.locfileid: "39248092"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>Pomocí externího nástroje pro monitorování data do centra událostí pro používání Azure Stream
 
@@ -29,8 +29,9 @@ V rámci prostředí Azure existuje několik "vrstvy" dat monitorování a způs
   - Upravením kódu pomocí sady SDK [Application Insights SDK](../application-insights/app-insights-overview.md).
   - Spuštěním agenta monitorování, která naslouchá novou aplikaci protokoly na počítači provozování vaší aplikace, jako [Windows agenta diagnostiky Azure](./azure-diagnostics.md) nebo [agenta diagnostiky Azure Linux](../virtual-machines/linux/diagnostic-extension.md).
 - **Data monitorování hostovaného operačního systému:** Data o operačním systému, na kterém je aplikace spuštěna. Příklady data monitorování hostovaného operačního systému by události systému Windows nebo protokolu syslog v Linuxu. Pokud chcete shromažďovat data tohoto typu, je potřeba nainstalovat agenta, jako [Windows agenta diagnostiky Azure](./azure-diagnostics.md) nebo [agenta diagnostiky Azure Linux](../virtual-machines/linux/diagnostic-extension.md).
-- **Data monitorování prostředků Azure:** Data o provozu prostředku Azure. Pro některé typy prostředků Azure, jako jsou virtuální počítače je hostovaný operační systém a aplikace pro monitorování v rámci této služby Azure. Za další prostředky Azure, jako jsou skupiny zabezpečení sítě zdroje dat monitorování je na nejvyšší úrovni nejsou k dispozici data (protože neexistuje žádný hostovaný operační systém nebo aplikace běžící v těchto prostředků). Tato data lze shromažďovat pomocí [nastavení diagnostiky prostředků](./monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings).
-- **Data monitorování platformy Azure:** Data o provozu a správy předplatného Azure nebo tenanta, jakož i informace o stavu a provoz Azure samotný. [Protokolu aktivit](./monitoring-overview-activity-logs.md), včetně data o stavu služby a služby Active Directory audity jsou příkladem platforma dat monitorování. Tato data lze shromažďovat pomocí také nastavení diagnostiky.
+- **Data monitorování prostředků Azure:** Data o provozu prostředku Azure. Pro některé typy prostředků Azure, jako jsou virtuální počítače je hostovaný operační systém a aplikace pro monitorování v rámci této služby Azure. Za další prostředky Azure, jako jsou skupiny zabezpečení sítě zdroje dat monitorování je na nejvyšší úrovni nejsou k dispozici data (protože neexistuje žádný hostovaný operační systém nebo aplikace běžící v těchto prostředků). Tato data lze shromažďovat pomocí [nastavení diagnostiky prostředků](./monitoring-overview-of-diagnostic-logs.md#diagnostic-settings).
+- **Předplatné Azure, monitorování dat:** Data o provozu a správy předplatného Azure, jakož i informace o stavu a provoz Azure samotný. [Protokolu aktivit](./monitoring-overview-activity-logs.md) obsahuje většinu předplatné sledování dat, jako jsou incidenty health service a Azure Resource Manageru audity. Můžete shromažďovat tato data pomocí profilu protokolu.
+- **Data monitorování klienta Azure:** Data o provozu Azure služby na úrovni tenanta, jako je Azure Active Directory. Auditování Azure Active Directory a přihlášení jsou příklady dat monitorování klientů. Tato data se můžou shromažďovat diagnostické nastavení tenanta.
 
 Data ze všech úrovních lze odesílat do centra událostí, kde lze načíst do nástroje partnera. Tento oddíl popisuje, jak nakonfigurovat data z každé vrstvy Streamovat do centra událostí. Kroky předpokládají, že už máte prostředky na dané úrovni, která se má monitorovat.
 
@@ -47,11 +48,17 @@ Než začnete, budete muset [vytvoření Event Hubs oboru názvů a Centrum udá
 
 Podrobnosti najdete také [Azure Event Hubs – nejčastější dotazy](../event-hubs/event-hubs-faq.md).
 
-## <a name="how-do-i-set-up-azure-platform-monitoring-data-to-be-streamed-to-an-event-hub"></a>Jak nastavit monitorování dat platformy Azure Streamovat do centra událostí?
+## <a name="how-do-i-set-up-azure-tenant-monitoring-data-to-be-streamed-to-an-event-hub"></a>Jak nastavit monitorování dat tenanta Azure Streamovat do centra událostí?
 
-Data monitorování platformy Azure pochází z dva hlavní zdroje:
-1. [Protokolu aktivit Azure](./monitoring-overview-activity-logs.md)obsahující vytvořit, aktualizovat a operace odstranění z Resource Manageru, změny v [službě Azure service health](../service-health/service-health-overview.md) , který může mít vliv na prostředky ve vašem předplatném, [služba resource health](../service-health/resource-health-overview.md) přechodů mezi stavy a několik dalších typů událostí na úrovni předplatného. [Tento článek podrobně popisuje všechny kategorie událostí, které se zobrazují v protokolu aktivit Azure](./monitoring-activity-log-schema.md).
-2. [Generování sestav v Azure Active Directory](../active-directory/active-directory-reporting-azure-portal.md), která obsahuje historii přihlašovací aktivitu a revizní záznam změn provedených v rámci konkrétního tenanta. Ještě není možné data Azure Active Directory Streamovat do centra událostí.
+Data monitorování klienta Azure je momentálně dostupný jenom pro Azure Active Directory. Můžete použít data z [generování sestav Azure Active Directory](../active-directory/active-directory-reporting-azure-portal.md), která obsahuje historii přihlašovací aktivitu a revizní záznam změn provedených v rámci konkrétního tenanta.
+
+### <a name="stream-azure-active-directory-data-into-an-event-hub"></a>Stream služby Azure Active Directory data do centra událostí
+
+K odesílání dat z protokolů služby Azure Active Directory do Event Hubs oboru názvů, je nastavit nastavení diagnostiky tenanta ve svém tenantovi AAD. [Tento návod](../active-directory/reporting-azure-monitor-diagnostics-azure-event-hub.md) nastavit nastavení diagnostiky tenanta.
+
+## <a name="how-do-i-set-up-azure-subscription-monitoring-data-to-be-streamed-to-an-event-hub"></a>Jak nastavit předplatné Azure, data monitorování Streamovat do centra událostí?
+
+Dat monitorování Azure předplatné k dispozici na [protokolu aktivit Azure](./monitoring-overview-activity-logs.md). Obsahuje vytvořit, aktualizovat a operace odstranění z Resource Manageru, změny v [službě Azure service health](../service-health/service-health-overview.md) , který může mít vliv na prostředky v rámci vašeho předplatného [služba resource health](../service-health/resource-health-overview.md) stavu přechody a několik dalších typů událostí na úrovni předplatného. [Tento článek podrobně popisuje všechny kategorie událostí, které se zobrazují v protokolu aktivit Azure](./monitoring-activity-log-schema.md).
 
 ### <a name="stream-azure-activity-log-data-into-an-event-hub"></a>Stream data protokolu aktivit Azure do centra událostí
 

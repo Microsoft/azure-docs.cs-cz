@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: ad9d517be930f68dcddba87fc59eab8b830a2b1c
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 25af61ce51828691d08210f4089afa0cf56b9846
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39159147"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39257839"
 ---
 # <a name="how-it-works-azure-multi-factor-authentication"></a>Jak to funguje: ověřování Azure Multi-Factor Authentication
 
@@ -60,6 +60,8 @@ Protože většina uživatelů jsou zvyklí používat jenom hesla pro ověřen�
 * Nasazení [Azure AD Identity Protection](../active-directory-identityprotection.md) a aktivovat dvoustupňové ověřování založené na rizikové události.
 
 ## <a name="next-steps"></a>Další postup
+
+- Získat podrobné MFA [plán nasazení](https://aka.ms/MFADeploymentPlan)
 
 - Najít podrobnosti o [Licencování uživatelů](concept-mfa-licensing.md)
 

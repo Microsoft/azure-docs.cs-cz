@@ -5,22 +5,22 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 06/07/2018
+ms.date: 07/18/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: a0146c0bf2b5a10f27cb59e32978aa6dff8f5982
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 266404a69c691cfbbfabc49e4d78deb11db74b52
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37916322"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39249151"
 ---
 # <a name="archive-azure-diagnostic-logs"></a>Archivovat diagnostické protokoly Azure
 
 V tomto článku vám ukážeme, jak pomocí webu Azure portal, rutin prostředí PowerShell, rozhraní příkazového řádku nebo rozhraní REST API pro archivaci vaše [diagnostické protokoly Azure](monitoring-overview-of-diagnostic-logs.md) v účtu úložiště. Tato možnost je užitečná, pokud byste chtěli zachovat diagnostických protokolů k zásadám volitelné uchovávání informací pro auditování, statické analýzy nebo pro zálohování. Účet úložiště nemusí být ve stejném předplatném jako prostředek, které vysílá protokoly za předpokladu, že uživatel, který konfiguruje nastavení má odpovídající přístup RBAC k oběma předplatným.
 
 > [!WARNING]
-> Formát dat protokolů v účtu úložiště se změní na řádky JSON na 1. listopadu 2018. [Najdete v článku popis dopad a postup aktualizace nástrojů pro zpracování na nový formát.](./monitor-diagnostic-logs-append-blobs.md) 
+> 1. listopadu 2018 se formát dat protokolů v účtu úložiště změní na řádky JSON. [Informace o dopadu a postup pro aktualizaci nástrojů, aby si s novým formátem poradily, najdete v tomto článku](./monitor-diagnostic-logs-append-blobs.md). 
 >
 > 
 
@@ -33,7 +33,7 @@ Než začnete, budete muset [vytvořit účet úložiště](../storage/storage-c
 
 ## <a name="diagnostic-settings"></a>Nastavení diagnostiky
 
-Archivace diagnostických protokolů některou z níže uvedených způsobů je nastavit **nastavení diagnostiky** určitého prostředku. Nastavení diagnostiky pro prostředek definuje kategorie protokolů a metrik data odeslaná do cíle (účet úložiště, obor názvů Event Hubs nebo Log Analytics). Definuje také zásady uchovávání informací (počet dní uchování) pro události z každé kategorie protokolu a data metriky, které jsou uložené v účtu úložiště. Pokud zásady uchovávání informací je nastavena na hodnotu nula, události pro dané kategorie protokolu se ukládají po neomezenou dobu (které je třeba navždy). Zásady uchovávání informací v opačném případě může být libovolný počet dnů mezi 1 a 2147483647. [Další informace o nastavení diagnostiky zde](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings). Zásady uchovávání informací jsou použité za den, takže na konci za den (UTC), tento počet protokolů ze dne, který je nyní mimo uchovávání se zásada odstraní. Například pokud máte zásady uchovávání informací o jeden den, na začátku dne dnes protokoly ze včerejška před den se odstraní. Proces odstraňování začíná o půlnoci UTC, ale Všimněte si, že může trvat až 24 hodin pro protokoly, které mají být odstraněny z vašeho účtu úložiště. 
+Archivace diagnostických protokolů některou z níže uvedených způsobů je nastavit **nastavení diagnostiky** určitého prostředku. Nastavení diagnostiky pro prostředek definuje kategorie protokolů a metrik data odeslaná do cíle (účet úložiště, obor názvů Event Hubs nebo Log Analytics). Definuje také zásady uchovávání informací (počet dní uchování) pro události z každé kategorie protokolu a data metriky, které jsou uložené v účtu úložiště. Pokud zásady uchovávání informací je nastavena na hodnotu nula, události pro dané kategorie protokolu se ukládají po neomezenou dobu (které je třeba navždy). Zásady uchovávání informací v opačném případě může být libovolný počet dnů mezi 1 a 2147483647. [Další informace o nastavení diagnostiky zde](monitoring-overview-of-diagnostic-logs.md#diagnostic-settings). Zásady uchovávání informací jsou použité za den, takže na konci za den (UTC), tento počet protokolů ze dne, který je nyní mimo uchovávání se zásada odstraní. Například pokud máte zásady uchovávání informací o jeden den, na začátku dne dnes protokoly ze včerejška před den se odstraní. Proces odstraňování začíná o půlnoci UTC, ale Všimněte si, že může trvat až 24 hodin pro protokoly, které mají být odstraněny z vašeho účtu úložiště. 
 
 > [!NOTE]
 > Odesílání vícedimenzionálních metrik přes nastavení diagnostiky se v současné době nepodporuje. Metriky s dimenzemi se exportují jako ploché jednodimenzionální metriky agregované napříč hodnotami dimenzí.
@@ -163,4 +163,5 @@ V rámci souboru pt1h.JSON, když se ukládají všechny události v poli "zázn
 
 * [Stažení objektů blob pro analýzu](../storage/storage-dotnet-how-to-use-blobs.md)
 * [Stream diagnostické protokoly na obor názvů služby Event Hubs](monitoring-stream-diagnostic-logs-to-event-hubs.md)
+* [Archivovat protokoly služby Azure Active Directory prostřednictvím služby Azure Monitor](../active-directory/reporting-azure-monitor-diagnostics-azure-storage-account.md)
 * [Další informace o diagnostických protokolů](monitoring-overview-of-diagnostic-logs.md)

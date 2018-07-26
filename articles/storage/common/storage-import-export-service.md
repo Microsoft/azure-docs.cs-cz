@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: alkohli
-ms.openlocfilehash: ab73420d1bfe0dbddcf2a0e3c3dd34203e4bb2d7
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: c435e21d85ae0ab35bc2fa99f7006e841eaecec0
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008412"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248770"
 ---
 # <a name="what-is-azure-importexport-service"></a>Co je služba Azure Import/Export?
 
@@ -71,13 +71,18 @@ V této části kroky vysoké úrovně, které jsou součástí import a export 
 1. Určení data mají být importovány, počet jednotek, které potřebujete, cílové objektů blob v umístění pro vaše data ve službě Azure storage.
 2. Použijte nástroj WAImportExport ke zkopírování dat do diskové jednotky. Šifrování disků s Bitlockerem.
 3. Vytvořte úlohu importu na webu Azure portal v účtu cílového úložiště. Nahrajte soubory deníku jednotky.
-2. Zadejte zpáteční adresu a číslo účtu dopravce pro přesouvání jednotky zpět.
-3. Dodávejte diskové jednotky na dodací adresu zadali při vytváření úlohy.
-4. Aktualizovat doručování číslo v podrobnostech o úloze importu sledování a odešlete úlohu importu.
-5. Jednotky přijímaly a zpracovávaly v datovém centru Azure.
-6. Jednotky se dodávají pomocí svého účtu dopravce na návratovou adresu součástí úlohy importu.
-  
-    ![Obrázek toku 1:Import úlohy](./media/storage-import-export-service/importjob.png)
+4. Zadejte zpáteční adresu a číslo účtu dopravce pro přesouvání jednotky zpět.
+5. Dodávejte diskové jednotky na dodací adresu zadali při vytváření úlohy.
+6. Aktualizovat doručování číslo v podrobnostech o úloze importu sledování a odešlete úlohu importu.
+7. Jednotky přijímaly a zpracovávaly v datovém centru Azure.
+8. Jednotky se dodávají pomocí svého účtu dopravce na návratovou adresu součástí úlohy importu.
+
+> [!NOTE]
+> Pro místní (v rámci datového centra země) dodávky Podělte se prosím účet přepravce domácí 
+>
+> Pro (mimo zemi data center) v zahraničí dodávky Podělte se prosím účet přepravce mezinárodní
+
+ ![Obrázek toku 1:Import úlohy](./media/storage-import-export-service/importjob.png)
 
 Podrobné pokyny o data importovat, přejděte na:
 
@@ -101,8 +106,13 @@ Na vysoké úrovni úlohy exportu zahrnuje následující kroky:
 8. Jednotky přijímaly a zpracovávaly v datovém centru Azure.
 9. Jednotky jsou šifrované pomocí Bitlockeru a klíče jsou k dispozici prostřednictvím webu Azure portal.  
 10. Jednotky se dodávají pomocí svého účtu dopravce na návratovou adresu součástí úlohy importu.
+
+> [!NOTE]
+> Pro místní (v rámci datového centra země) dodávky Podělte se prosím účet přepravce domácí 
+>
+> Pro (mimo zemi data center) v zahraničí dodávky Podělte se prosím účet přepravce mezinárodní
   
-    ![Obrázek toku 2:Export úlohy](./media/storage-import-export-service/exportjob.png)
+ ![Obrázek toku 2:Export úlohy](./media/storage-import-export-service/exportjob.png)
 
 Podrobné pokyny o export dat, přejděte na [Export dat z objektů BLOB Azure](storage-import-export-data-from-blobs.md).
 

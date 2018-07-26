@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 6d1002fd5131ca97f7bc1b9d081ae1471191a6cf
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: d2f5ce97ee81deaf590771f4794af4adf0fdbd1b
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39076018"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248583"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>Nejčastější dotazy pro akcelerátor řešení připojená továrna
 
@@ -125,7 +125,7 @@ Můžete také přihlásit k virtuálnímu počítači přes SSH a kontrola soub
 
 ### <a name="how-can-i-check-if-the-simulation-is-sending-data-to-the-cloud"></a>Jak můžu zkontrolovat, pokud simulace odesílá data do cloudu?
 
-S [DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) nebo [iothub-explorer](https://github.com/azure/iothub-explorer) nástroj, můžete si prohlédnout data odeslaná do služby IoT Hub z některých zařízení. Tyto nástroje používat, musíte znát připojovací řetězec služby IoT hub ve vašem nasazení. Zobrazit [Jak zjistím připojovací řetězec služby IoT hub používá Moje řešení?](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)
+S [DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) nebo [rozšíření rozhraní příkazového řádku Azure IoT monitorování události](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-monitor-events) příkazu, můžete si prohlédnout data odeslaná do služby IoT Hub z některých zařízení. Tyto nástroje používat, musíte znát připojovací řetězec služby IoT hub ve vašem nasazení. Zobrazit [Jak zjistím připojovací řetězec služby IoT hub používá Moje řešení?](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)
 
 Kontrolovat data zaslaná z jednoho zařízení vydavatele:
 

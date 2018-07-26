@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: nolach
-ms.openlocfilehash: 011358e223db419f31e0181b05ce6f89479dba81
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 7c4abb6832a030c2cb3cc2088dc5d0f1350a6ab8
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39070939"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258843"
 ---
 # <a name="creating-custom-voice-fonts"></a>Vytvoření vlastního hlasového písma
 
@@ -29,7 +29,7 @@ Přizpůsobení hlasu je k dispozici pro Americkou angličtinu (en US) a Španě
 
 Převod textu na řeč hlasová přizpůsobení funkce je aktuálně ve verzi private preview. [Vyplňte formulář přihlášky](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0N8Vcdi8MZBllkZb70o6KdURjRaUzhBVkhUNklCUEMxU0tQMEFPMjVHVi4u) považovat pro přístup.
 
-Potřebujete účet Azure a předplatné služby řeči. [Vytvořit] (https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/get-started) Pokud jste tak již neučinili. Vaše předplatné připojení k portálu vlastní hlasové následujícím způsobem.
+Potřebujete účet Azure a předplatné služby řeči. [Vytvořte si ho](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started) Pokud jste tak již neučinili. Vaše předplatné připojení k portálu vlastní hlasové následujícím způsobem.
 
 1. Přihlaste se k [vlastní hlasové portál](https://customvoice.ai) pomocí stejného účtu Microsoft, používá k aplikování pro přístup.
 
@@ -208,21 +208,21 @@ Jakmile vyplníte textové pole a potvrzení vstupní režim, kliknutím na tla�
 
 Po úspěšně jste vytvořili a testování modelu hlasové, nasaďte vlastní převod textu na řeč koncový bod. Pak použijete tento koncový bod místo obvyklých koncového bodu při vytváření žádosti o převod textu na řeč přes rozhraní REST API. Vlastní koncový bod lze volat pouze podle předplatného, který jste použili k nasazení písma.
 
-Chcete-li vytvořit nové vlastní koncový bod, zvolte **koncové body** vlastní hlasové nabídce v horní části stránky. Nasazení se zobrazí, s jeho tabulkou aktuální koncové body vlastní hlasové, pokud existuje.
+Chcete-li vytvořit nové vlastní koncový bod, zvolte **koncové body** vlastní hlasové nabídce v horní části stránky. Na stránce Mé nasazené hlasy se zobrazí s jeho tabulkou aktuální koncové body vlastní hlasové případné. Aktuální národní prostředí se projeví v první řádek tabulky. Vytvoření nasazení pro jiný jazyk, změňte zobrazený národní prostředí. (Musí se shodovat hlasové, které nasazujete.)
 
-Klikněte na tlačítko **nasazení hlasy** pro vytvoření nového koncového bodu. Stránka vytvořit koncový bod"aktuální národní prostředí se projeví v první řádek tabulky. Vytvoření nasazení pro jiný jazyk, změňte zobrazený národní prostředí. (Musí se shodovat hlasové, které nasazujete.) Zadejte název a popis vlastní koncový bod.
+Klikněte na tlačítko **nasazení hlasy** pro vytvoření nového koncového bodu. Zadejte název a popis vlastní koncový bod.
 
 V nabídce předplatné vyberte předplatné, pro kterou chcete použít. Uživatelé bezplatné předplatné může mít pouze jeden model nasazení po jednom. Standardní předplatné uživatele můžete vytvořit až 20 koncové body, každý s vlastním hlasem vlastní.
 
 ![Vytvoření koncového bodu](media/custom-voice/create-endpoint.png)
 
-Po výběru modelu, který má být nasazen, klikněte na **vytvořit**. Stránka nasazení znovu objeví, nyní s položkou pro nový koncový bod. Může trvat několik minut pro vytvoření instance nového koncového bodu. Když je úspěšně nahlášen stav nasazení, koncový bod je připraven k použití.
+Po výběru modelu, který má být nasazen, klikněte na **vytvořit**. Na stránce Mé nasazené hlasy znovu objeví, nyní s položkou pro nový koncový bod. Může trvat několik minut pro vytvoření instance nového koncového bodu. Když je úspěšně nahlášen stav nasazení, koncový bod je připraven k použití.
 
 ![Mé nasazené hlasů](media/custom-voice/my-deployed-voices.png)
 
-Když je úspěšně nahlášen stav nasazení, koncový bod nasazené hlasového písma se zobrazí v tabulka nasazené hlasy. Tento identifikátor URI můžete použít přímo v jednom požadavku HTTP.
+Když je úspěšně nahlášen stav nasazení, se zobrazí v tabulce mé nasazené hlasy koncovým bodem nasazeného hlasového písma. Tento identifikátor URI můžete použít přímo v jednom požadavku HTTP.
 
-Online testování koncového bodu je také k dispozici prostřednictvím portálu pro vlastní hlasové. Chcete-li otestovat váš koncový bod, zvolte **testování koncových bodů** z rozevírací nabídky vlastní hlasové. Koncový bod testování stránky se zobrazí. Zvolte hlasový vstup, který jste nasadili a do textového pole zadejte text, který má být používán (ve formátu prostého textu nebo SSML formátu).
+Online testování koncového bodu je také k dispozici prostřednictvím portálu pro vlastní hlasové. Chcete-li otestovat váš koncový bod, zvolte **testování koncových bodů** z rozevírací nabídky vlastní hlasové. Koncový bod testování stránky se zobrazí. Zvolte nasazené vlastní hlasové a zadejte text, který má být španělským (prostý text nebo formátu SSML) do textového pole.
 
 > [!NOTE] 
 > Při použití SSML, `<voice>` značky musí být zadán název jste zadali vlastní hlasové při jeho vytváření.

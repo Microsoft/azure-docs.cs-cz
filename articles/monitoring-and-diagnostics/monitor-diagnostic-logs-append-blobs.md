@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: 654c458c419db9e2849b55df45f389dd5d282f00
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: b83c67e5c2ca47e73c1743d8eeaea03a8d92ea1f
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37921413"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39247848"
 ---
 # <a name="prepare-for-format-change-to-azure-monitor-diagnostic-logs-archived-to-a-storage-account"></a>Příprava pro změnu formátu pro diagnostické protokoly Azure monitoru archivovat do účtu úložiště
 
@@ -32,7 +32,7 @@ Azure Monitor nabízí možnosti, které vám umožní odesílat data diagnostik
 * Tato změna dojde současně ve všech veřejných cloudových oblastech. Změna ještě nedojde v cloudech Azure China, Azure Germany a Azure Government.
 * Tato změna má vliv na následující typy dat:
   * [Diagnostické protokoly Azure prostředků](./monitoring-archive-diagnostic-logs.md) ([najdete v seznamu prostředků zde](./monitoring-diagnostic-logs-schema.md))
-  * [Metriky prostředků Azure se exportované sadou nastavení diagnostiky](./monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings)
+  * [Metriky prostředků Azure se exportované sadou nastavení diagnostiky](./monitoring-overview-of-diagnostic-logs.md#diagnostic-settings)
   * [Azure data protokolu aktivit se exportované sadou profily protokolů](./monitoring-archive-activity-log.md)
 * Tato změna nemá vliv:
   * Protokoly toku Network

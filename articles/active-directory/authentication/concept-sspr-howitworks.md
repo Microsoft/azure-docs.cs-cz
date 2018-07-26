@@ -10,16 +10,21 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 6b4c709f27a0c23c4fb977f64ef45e82df378d47
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: efc62243370ff2cc5214a4ae235139bdb5965486
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39159470"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248215"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Jak to funguje: resetování hesla pomocí samoobslužné služby Azure AD
 
 Jak samoobslužné služby pro resetování hesla (SSPR)? Co tato možnost znamená rozhraní? Pokračujte ve čtení a zjistěte další informace o samoobslužné resetování HESLA Azure Active Directory (Azure AD).
+
+|     |
+| --- |
+| Oznámení mobilní aplikace a kód mobilní aplikace jako metody pro hesla pomocí samoobslužné služby Azure AD obnovení jsou funkce ve verzi public preview služby Azure Active Directory. Další informace o verzích Preview najdete v tématu [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
+|     |
 
 ## <a name="how-does-the-password-reset-portal-work"></a>Jak resetovat heslo portálu?
 
@@ -54,6 +59,8 @@ Když uživatel přejde na portál pro resetování hesla, pracovní postup je v
 
 Pokud je povolené samoobslužné resetování HESLA, musíte vybrat aspoň jednu z následujících možností pro metody ověřování. Někdy uslyšíte. Tyto možnosti uvedené jako "brány." Důrazně doporučujeme vám **zvolit dvě nebo více metod ověřování** tak, aby vaši uživatelé měli větší flexibilitu v případě, kdy ho potřebují nebudou moct získat přístup k některému.
 
+* Oznámení mobilní aplikace (Preview)
+* Kód mobilní aplikace (Preview)
 * Email
 * Mobilní telefon
 * Telefon do kanceláře
@@ -70,6 +77,16 @@ Tato možnost určuje minimální počet dostupné metody ověření nebo brány
 Uživatelé mohou poskytnout další metody ověřování, pokud správce povolí tuto metodu ověřování.
 
 Pokud uživatel nemá zaregistrované minimální požadované metody, zobrazí se jim chybovou stránku, který je nasměruje k požadavku, že správce resetovat své heslo.
+
+#### <a name="mobile-app-and-sspr-preview"></a>Mobilní aplikace a samoobslužné resetování HESLA (ve verzi Preview)
+
+Při použití mobilní aplikace, jako je aplikace Microsoft Authenticator jako metoda pro resetování hesel uživatelů mějte na paměti z následujících akcí. Samoobslužné resetování hesla při jenom jedna metoda, je třeba obnovit ověřovací kód je jedinou možností, které jsou dostupné pro uživatele. Když se vyžadují dvě metody budou uživatelé moct resetovat pomocí **buď** oznámení **nebo** ověřovací kód kromě jiných povolené metody.
+
+| Počet metod nutných pro resetování | jeden | Dvě |
+| :---: | :---: | :---: |
+| Funkce mobilních aplikací, které jsou k dispozici | Kód | Kód nebo oznámení |
+
+Uživatelé nebudou mít možnost zaregistrovat svoje mobilní aplikace při registraci pro resetování hesla pomocí samoobslužné služby. Místo toho uživatelé můžou registrovat svoje mobilní aplikace na aka.ms/mfasetup nebo v náhledu registrační informace o zabezpečení na aka.ms/setupsecurityinfo. 
 
 ### <a name="change-authentication-methods"></a>Změna metody ověřování
 
@@ -95,7 +112,7 @@ Příklad:
 Když tuto možnost povolíte, musí uživatel k dokončení registrace pro resetování hesla, pokud se přihlásí do všech aplikací pomocí služby Azure AD. To zahrnuje následující aplikace:
 
 * Office 365
-* Azure Portal
+* portál Azure
 * Přístupový panel
 * Federované aplikace
 * Vlastní aplikace pomocí Azure AD

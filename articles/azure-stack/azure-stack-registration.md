@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/09/2018
+ms.date: 07/25/2018
 ms.author: jeffgilb
 ms.reviewer: brbartle
-ms.openlocfilehash: 65525ffe33ddc100dd3066e7c2b52ef8a856fbc3
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: a5e31df435d5e9af8543301e7a4540faa3d6410f
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37934672"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258061"
 ---
 # <a name="register-azure-stack-with-azure"></a>Registrace Azure Stack s Azure
 
@@ -47,7 +47,7 @@ Pokud nemáte předplatné Azure, které splňuje tyto požadavky, můžete si [
 
 Zajištění úspěšné registrace Azure Stack, musí být nastavena na režim jazyka PowerShell **FullLanguageMode**.  Pokud chcete ověřit, že aktuální režim jazyka nastaven na úplné, otevřete okno Powershellu se zvýšenými oprávněními a spusťte následující příkazy Powershellu:
 
-```powershell
+```PowerShell  
 $ExecutionContext.SessionState.LanguageMode
 ```
 
@@ -78,7 +78,7 @@ Registraci poskytovatele prostředků služby Azure Stack v Azure, spusťte pros
 
 1. Přidáte účet Azure, který používáte k registraci Azure Stack. Chcete-li přidat účet, spusťte **Add-AzureRmAccount** rutiny. Zobrazí se výzva k zadání přihlašovacích údajů k účtu globálního správce služby Azure a budete muset použít 2 ověřování na základě konfigurace vašeho účtu.
 
-   ```PowerShell
+   ```PowerShell  
       Add-AzureRmAccount -EnvironmentName "<Either AzureCloud or AzureChinaCloud>"
    ```
 
@@ -89,13 +89,13 @@ Registraci poskytovatele prostředků služby Azure Stack v Azure, spusťte pros
 
 2. Pokud máte více předplatných, spuštěním následujícího příkazu vyberte předplatné, že které chcete použít:  
 
-   ```PowerShell
+   ```PowerShell  
       Get-AzureRmSubscription -SubscriptionID '<Your Azure Subscription GUID>' | Select-AzureRmSubscription
    ```
 
 3. Spuštěním následujícího příkazu zaregistrujte poskytovatele prostředků služby Azure Stack ve vašem předplatném Azure:
 
-   ```PowerShell
+   ```PowerShell  
    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.AzureStack
    ```
 
@@ -105,24 +105,26 @@ Tyto kroky použijte k registraci ve službě Azure s využitím fakturace model
 
 1. Spusťte prostředí PowerShell ISE jako správce a přejděte do **registrace** složky v **AzureStack-Tools-master** vytvořen adresář, kdy jste [stáhnout nástroje Azure Stack](#bkmk_tools). Import **RegisterWithAzure.psm1** modulu pomocí prostředí PowerShell:
 
-   ```powershell
+   ```PowerShell  
    Import-Module .\RegisterWithAzure.psm1
    ```
 
 2. V dalším kroku ve stejné relaci Powershellu, ujistěte se, že jste přihlášeni k správný kontext Azure Powershellu. Toto je účet azure, který se použije k registraci poskytovatele prostředků služby Azure Stack výše. Prostředí PowerShell pro spuštění:
 
-   ```powershell
+   ```PowerShell  
    Add-AzureRmAccount -Environment "<Either AzureCloud or AzureChinaCloud>"
    ```
 
 3. Ve stejné relaci prostředí PowerShell, spusťte **Set-AzsRegistration** rutiny. Prostředí PowerShell pro spuštění:  
 
-   ```powershell
+   ```PowerShell  
    $CloudAdminCred = Get-Credential -UserName <Privileged endpoint credentials> -Message "Enter the cloud domain credentials to access the privileged endpoint."
+   $RegistrationName = "<unique-registration-name>"
    Set-AzsRegistration `
       -PrivilegedEndpointCredential $CloudAdminCred `
       -PrivilegedEndpoint <PrivilegedEndPoint computer name> `
       -BillingModel PayAsYouUse
+      -RegistrationName $RegistrationName
    ```
 
   |Parametr|Popis|
@@ -130,7 +132,7 @@ Tyto kroky použijte k registraci ve službě Azure s využitím fakturace model
   |PrivilegedEndpointCredential|Pověření používaná k [přístup k privilegovaným koncový bod](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint). Uživatelské jméno je ve formátu **AzureStackDomain\CloudAdmin**.|
   |PrivilegedEndpoint|Předem nakonfigurované vzdálenou konzolu Powershellu, který vám poskytne funkce, jako je shromažďování protokolů a další příspěvek úlohy nasazení. Další informace najdete [pomocí privilegovaných koncového bodu](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint) článku.|
   |BillingModel|Model fakturace předplatného používá. Povolené jsou hodnoty pro tento parametr: kapacity, PayAsYouUse a vývoj.|
-  |  |  |
+  | registrationName | Nastavit jedinečný název pro registraci, pokud používáte skript registrace na více než jednu instanci služby Azure Stack pomocí stejného předplatného Azure ID. Parametr má výchozí hodnotu **AzureStackRegistration**. Nicméně pokud použijete stejný název ve více než jednu instanci služby Azure Stack, skript se nezdaří. |
 
   Tento proces bude trvat 10 až 15 minut. Po dokončení příkazu se zobrazí zpráva **"prostředí je teď zaregistrované a aktivovat pomocí zadaných parametrů."**
 
@@ -140,13 +142,15 @@ Použijte stejné pokyny pro registraci pomocí fakturační model plateb jako v
 
 Prostředí PowerShell pro spuštění:
 
-```powershell
+```PowerShell  
 $CloudAdminCred = Get-Credential -UserName <Privileged endpoint credentials> -Message "Enter the cloud domain credentials to access the privileged endpoint."
+$RegistrationName = "<unique-registration-name>"
 Set-AzsRegistration `
     -PrivilegedEndpointCredential $CloudAdminCred `
     -PrivilegedEndpoint <PrivilegedEndPoint computer name> `
     -AgreementNumber <EA agreement number> `
     -BillingModel Capacity
+    -RegistrationName $RegistrationName
 ```
 
 ## <a name="register-azure-stack-in-disconnected-environments"></a>Registrace Azure Stack v odpojeném prostředí
@@ -156,7 +160,7 @@ Pokud při registraci služby Azure Stack v odpojeném prostředí (bez připoje
 
 1. Spusťte prostředí PowerShell ISE jako správce a přejděte do **registrace** složky v **AzureStack-Tools-master** vytvořen adresář, kdy jste [stáhnout nástroje Azure Stack](#bkmk_tools). Import **RegisterWithAzure.psm1** modul:  
 
-   ```powershell
+   ```PowerShell  
    Import-Module .\RegisterWithAzure.psm1
    ```
 
@@ -174,18 +178,19 @@ Pokud při registraci služby Azure Stack v odpojeném prostředí (bez připoje
 
 ### <a name="connect-to-azure-and-register"></a>Připojení k Azure a registrace
 
-Na počítači, který je připojených k Internetu proveďte stejné kroky k importu modulu RegisterWithAzure.psm1 a přihlaste se do správného kontextu prostředí Azure Powershell. Potom Register-AzsEnvironment volání a specifikaci registračního tokenu pro registraci v Azure:
+Na počítači, který je připojený k Internetu proveďte stejné kroky pro import modulu RegisterWithAzure.psm1 a přihlaste se k správný kontext Azure Powershellu. Potom zavolejte AzsEnvironment registru. Zadejte token registrace k registraci ve službě Azure. Pokud registrujete více než jednu instanci služby Azure Stack pomocí stejného ID předplatného Azure, zadejte název jedinečné registrace. Spusťte následující rutinu:
 
-  ```Powershell  
+  ```PowerShell  
   $registrationToken = "<Your Registration Token>"
-  Register-AzsEnvironment -RegistrationToken $registrationToken  
+  $RegistrationName = "<unique-registration-name>"
+  Register-AzsEnvironment -RegistrationToken $registrationToken  -RegistrationName $RegistrationName
   ```
 
 Volitelně můžete použít rutinu Get-obsah tak, aby odkazoval na soubor, který obsahuje registrační token:
 
-  ```Powershell  
+  ```PowerShell  
   $registrationToken = Get-Content -Path '<Path>\<Registration Token File>'
-  Register-AzsEnvironment -RegistrationToken $registrationToken  
+  Register-AzsEnvironment -RegistrationToken $registrationToken -RegistrationName $RegistrationName
   ```
 
   > [!NOTE]  
@@ -208,7 +213,7 @@ Pokud chcete získat aktivační klíč, spusťte následující příkazy Power
 
 ### <a name="create-an-activation-resource-in-azure-stack"></a>Vytvoření prostředku Aktivace ve službě Azure Stack
 
-Vraťte se do prostředí Azure Stack pomocí souboru nebo text od aktivace klíče vytvořeného z Get-AzsActivationKey. Dále vytvoříte prostředek aktivace ve službě Azure Stack pomocí této aktivační kód. A vytvoří prostředek aktivace, spusťte následující příkazy Powershellu:  
+Vraťte se do prostředí Azure Stack pomocí souboru nebo text od aktivace klíče vytvořeného z Get-AzsActivationKey. Dále vytvoříte prostředek aktivace ve službě Azure Stack pomocí této aktivační kód. K vytvoření prostředku Aktivace, spusťte následující příkazy Powershellu:  
 
   ```Powershell
   $ActivationKey = "<activation key>"
@@ -248,18 +253,18 @@ Budete muset aktualizovat nebo obnovit vaše registrace v následujících pří
 
 Pokud chcete změnit předplatné používáte, je třeba nejprve spustit **odebrat AzsRegistration** rutiny, zajistěte jste přihlášeni do správného kontextu prostředí Azure PowerShell a nakonec spusťte **Set AzsRegistration**  s žádným změnit parametry:
 
-  ```powershell
+  ```PowerShell  
   Remove-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint
   Set-AzureRmContext -SubscriptionId $NewSubscriptionId
-  Set-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel PayAsYouUse
+  Set-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel PayAsYouUse -RegistrationName $RegistrationName
   ```
 
 #### <a name="change-the-billing-model-or-syndication-features"></a>Změna funkcí fakturace modelu nebo syndikace
 
 Pokud chcete změnit model fakturace nebo syndikace funkce pro vaši instalaci, můžete volat funkci registrace k nastavení nových hodnot. Není nutné nejprve odebrat aktuální registrace:
 
-  ```powershell
-  Set-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel PayAsYouUse
+  ```PowerShell  
+  Set-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel PayAsYouUse -RegistrationName $RegistrationName
   ```
 
 ### <a name="renew-or-change-registration-in-disconnected-environments"></a>Prodloužení nebo změnit registrace v odpojených prostředích

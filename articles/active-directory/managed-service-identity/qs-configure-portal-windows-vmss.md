@@ -1,6 +1,6 @@
 ---
-title: Konfigurace MSI v virtuálním počítači Azure škálovací sada s použitím webu Azure portal
-description: Projděte pokyny ke konfiguraci Identity spravované služby (MSI) na Azure VMSS, pomocí webu Azure portal.
+title: Konfigurace Identity spravované služby v měřítku virtuálních počítačů Azure pomocí webu Azure portal
+description: Projděte pokyny ke konfiguraci Identity spravované služby na Azure VMSS, pomocí webu Azure portal.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/20/2018
 ms.author: daveba
-ms.openlocfilehash: 3421d0ab9007bdfe9fab093871a8517531059008
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 93c532cf2864db28b580303ecefec8b6dbed65f6
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213169"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39257755"
 ---
-# <a name="configure-a-virtual-machine-scale-set-managed-service-identity-msi-using-the-azure-portal"></a>Konfigurace virtuálního počítače škálovací sady Identity spravované služby (MSI) pomocí webu Azure portal
+# <a name="configure-a-virtual-machine-scale-set-managed-service-identity-using-the-azure-portal"></a>Konfigurace virtuálního počítače škálovací sady identita spravované služby pomocí webu Azure portal
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
@@ -45,7 +45,7 @@ Vytvoření virtuálního počítače prostřednictvím webu Azure portal v sou�
 
 - [Vytvoření Škálovací sady virtuálních počítačů na webu Azure Portal](../../virtual-machine-scale-sets/quick-create-portal.md)  
 
-Pokračujte k další části Podrobnosti o povolení MSI ve škálovací sadě virtuálních počítačů.
+Pokračujte k další části Podrobnosti o povolení Identity spravované služby ve škálovací sadě virtuálních počítačů.
 
 ## <a name="enable-managed-service-identity-on-an-existing-azure-vmms"></a>Povolit identitu spravované služby v existující VMMS Azure
 
@@ -61,7 +61,7 @@ Pokud chcete povolit identitu na virtuálním počítači, který byl původně 
 
 ## <a name="remove-managed-service-identity-from-an-azure-virtual-machine-scale-set"></a>Odebrat identita spravované služby ze škálovací sady virtuálních počítačů Azure
 
-Pokud máte škálovací sady virtuálního počítače, který už je Instalační služba MSI:
+Pokud máte škálovací sadu virtuálních počítačů, které už nepotřebuje identita spravované služby:
 
 1. Přihlaste se k [webu Azure portal](https://portal.azure.com) použijte účet spojený s předplatným služby Azure, který obsahuje škálovací sadu virtuálních počítačů. Také ujistěte se, že váš účet patří do role, která poskytuje oprávnění k zápisu na škálovací sadu virtuálních počítačů.
 
@@ -77,6 +77,6 @@ Pokud máte škálovací sady virtuálního počítače, který už je Instalač
 
 ## <a name="next-steps"></a>Další postup
 
-- Pomocí webu Azure portal, poskytují Azure škálovací sady virtuálních počítačů MSI [přístup do jiného prostředku Azure](howto-assign-access-portal.md).
+- Pomocí webu Azure portal, poskytují Azure škálovací sady virtuálních počítačů identita spravované služby [přístup do jiného prostředku Azure](howto-assign-access-portal.md).
 
 Pomocí následujícího oddílu pro komentáře na svůj názor a Pomozte nám vylepšit a obrazce náš obsah.

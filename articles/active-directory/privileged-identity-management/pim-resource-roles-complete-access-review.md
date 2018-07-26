@@ -14,20 +14,20 @@ ms.component: protection
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: e21d0240469a9c775e610c97f98c073b8f83ce8e
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 3b27e4e26899b27557bdac4371283a8095847c94
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37442186"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39257772"
 ---
 # <a name="complete-an-access-review-for-azure-resources-by-using-privileged-identity-management"></a>Dokončení kontroly přístupu pro prostředky Azure s použitím Privileged Identity Management
-Správci privilegovaných rolí můžete zkontrolovat privilegovaný přístup po [se spustila kontrola zabezpečení](pim-resource-roles-start-access-review.md). Privileged Identity Management (PIM) pro prostředky Azure automaticky odesílá e-mail, který vyzve uživatele ke kontrole jejich přístupu. Pokud uživatel e-mailu, můžete jim poslat pokyny [provádění kontroly zabezpečení](pim-resource-roles-perform-access-review.md).
+Správci privilegovaných rolí můžete zkontrolovat privilegovaný přístup po [se spustila kontrola přístupu](pim-resource-roles-start-access-review.md). Privileged Identity Management (PIM) pro prostředky Azure automaticky odesílá e-mail, který vyzve uživatele ke kontrole jejich přístupu. Pokud uživatel e-mailu, můžete jim poslat pokyny [jak k provádění kontroly přístupu](pim-resource-roles-perform-access-review.md).
 
-Po období kontroly zabezpečení, nebo po dokončení všech uživatelů jejich svým přezkoumat, postupujte podle kroků v tomto článku můžete spravovat revize a zobrazit výsledky.
+Po období kontroly přístupu, nebo po dokončení jejich svým přezkoumat všechny uživatele, postupujte podle kroků v tomto článku můžete spravovat revize a zobrazit výsledky.
 
-## <a name="manage-security-reviews"></a>Spravovat revize zabezpečení
-1. Přejděte na [portál Azure](https://portal.azure.com/). Vyberte na řídicím panelu **prostředky Azure** aplikace.
+## <a name="manage-access-reviews"></a>Správa kontroly přístupu
+1. Přejděte na [Azure Portal](https://portal.azure.com/). Vyberte na řídicím panelu **prostředky Azure** aplikace.
 
 2. Vyberte prostředek.
 

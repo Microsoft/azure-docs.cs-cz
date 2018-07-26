@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 227fae2f38189a5b8ed5b6eff359e09bedc8e628
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: e3543c2056934372a2795bd50f340432ceec3b6d
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39071126"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39257942"
 ---
 # <a name="about-the-text-to-speech-api"></a>O převod textu na řeč rozhraní API
 
@@ -35,7 +35,7 @@ Mezi scénáře, v které řeči syntézu přijali patří:
 
 ## <a name="voice-support"></a>Podpora hlasu
 
-Microsoft **převod textu na řeč** služba nabízí více než 75 hlasy ve více než 45 jazyků a národních prostředí. Pokud chcete použít tyto standardní "hlasová písma", stačí zadat název hlas s několika dalších parametrů při volání rozhraní REST API služby. Podrobnosti hlasy podporované, najdete v článku [podporované jazyky](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/supported-languages#text-to-speech). 
+Microsoft **převod textu na řeč** služba nabízí více než 75 hlasy ve více než 45 jazyků a národních prostředí. Pokud chcete použít tyto standardní "hlasová písma", stačí zadat název hlas s několika dalších parametrů při volání rozhraní REST API služby. Podrobnosti hlasy podporované, najdete v článku [podporované jazyky](https://docs.microsoft.com/azure/cognitive-services/speech-service/supported-languages#text-to-speech). 
 
 Pokud chcete jedinečný hlas pro vaši aplikaci, můžete vytvořit [vlastní hlasové písmo](how-to-customize-voice-font.md) z vlastní ukázky řeči.
 

@@ -1,52 +1,52 @@
 ---
-title: Datový proud Azure diagnostických protokolů do centra událostí
-description: Zjistěte, jak k vysílání datového proudu do centra událostí Azure diagnostické protokoly.
+title: Diagnostické protokoly Azure Stream do centra událostí
+description: Naučíte se Streamovat diagnostické protokoly Azure do centra událostí.
 author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 06/20/2018
+ms.date: 07/25/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: c59b9982f5ba5a4fa52ab36df5ebb6995b2d45b0
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 5b4a15204a934bf55810fcdccd48a7a15a48c5ed
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37085085"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258180"
 ---
-# <a name="stream-azure-diagnostic-logs-to-an-event-hub"></a>Datový proud Azure diagnostických protokolů do centra událostí
-**[Azure diagnostické protokoly](monitoring-overview-of-diagnostic-logs.md)**  Streamovat skoro v reálném čase pro žádnou aplikaci pomocí předdefinované možnosti "Export do služby Event Hubs" na portálu nebo povolením ID události rozbočovače autorizační pravidla v nastavení diagnostiky prostřednictvím Azure Rutiny prostředí PowerShell nebo Azure CLI 2.0.
+# <a name="stream-azure-diagnostic-logs-to-an-event-hub"></a>Diagnostické protokoly Azure Stream do centra událostí
+**[Diagnostické protokoly Azure](monitoring-overview-of-diagnostic-logs.md)**  můžete streamování v reálném čase pro libovolné aplikace na portálu nebo tím, že ID pravidla autorizace centra událostí v nastavení diagnostiky Azure pomocí integrovaných možností "Export do služby Event Hubs" Rutiny Powershellu nebo Azure CLI 2.0.
 
-## <a name="what-you-can-do-with-diagnostics-logs-and-event-hubs"></a>Co můžete dělat s protokolů diagnostiky a Event Hubs
-Můžete použít k diagnostickým protokolům streamování schopností několika způsoby:
+## <a name="what-you-can-do-with-diagnostics-logs-and-event-hubs"></a>Co můžete dělat s Event Hubs a protokoly diagnostiky
+Můžete například použít funkci streamování pro diagnostické protokoly několika způsoby:
 
-* **Stream protokoluje události do 3. stran protokolování a telemetrie systémy** – dá Streamovat všechny k diagnostickým protokolům k rozbočovači jedna událost tak, aby data protokolu kanálu nástroje třetích stran SIEM nebo log analytics.
-* **Zobrazit stav služby streamování "aktivní cesta" dat do PowerBI** – pomocí služby Event Hubs, Stream Analytics a PowerBI, můžete snadno transformovat data diagnostiky v poblíž přehledy v reálném čase na služeb Azure. [V tomto článku dokumentace podává přehled o tom, jak nastavit službu Event Hubs, zpracování dat pomocí služby Stream Analytics a použít PowerBI jako výstup](../stream-analytics/stream-analytics-power-bi-dashboard.md). Zde je několik tipů pro získání nastavení diagnostické protokoly.
+* **Stream protokolů systémy telemetrie a protokolování 3. stran** – můžete Streamovat všechny diagnostických protokolů do jednoho centra událostí do datového kanálu protokolu do nástrojů třetích stran SIEM nebo log analytics.
+* **Zobrazit stav služby streamování "kritickou cestu" dat do Power BI** – pomocí služby Event Hubs, Stream Analytics a Power BI, můžete snadno transformovat vaše diagnostická data v k téměř v reálném čase přehledy o vašich službách Azure. [Tento článek dokumentace podává přehled o tom, jak nastavit službu Event Hubs, zpracování dat pomocí Stream Analytics a Power BI využívat jako výstup](../stream-analytics/stream-analytics-power-bi-dashboard.md). Tady je pár tipů pro získání nastavení diagnostické protokoly:
 
-  * Centra událostí pro kategorii diagnostické protokoly se vytvoří automaticky, když zaškrtnutí políčka na portálu nebo povolit pomocí prostředí PowerShell, kterou chcete vybrat centra událostí v oboru názvů s názvem, který začíná **insights -**.
-  * Následující kód SQL je ukázkový dotaz služby Stream Analytics, který můžete použít k analýze všechna data protokolu v do PowerBI tabulky:
+  * Centra událostí pro kategorii diagnostické protokoly se vytvoří automaticky při zaškrtnutím možnosti na portálu nebo povolit prostřednictvím prostředí PowerShell, takže vyberte Centrum událostí v oboru názvů s názvem, který začíná **insights -**.
+  * Následující kód SQL je ukázkového dotazu Stream Analytics, který můžete použít k analýze všechna data protokolu do tabulky Power BI:
 
     ```sql
     SELECT
     records.ArrayValue.[Properties you want to track]
     INTO
-    [OutputSourceName – the PowerBI source]
+    [OutputSourceName – the Power BI source]
     FROM
     [InputSourceName] AS e
     CROSS APPLY GetArrayElements(e.records) AS records
     ```
 
-* **Vytvoření vlastní telemetrii a protokolování platformy** – Pokud už máte uživatelské telemetrie platformy nebo jsou jenom přemýšlíte o vytváření jeden vysoce škálovatelné, publikování a odběru na povaze služby Event Hubs umožňuje flexibilně ingestování diagnostické protokoly. [Naleznete v Průvodci Dana Rosanova pomocí služby Event Hubs telemetrie platformy globálním měřítku zde](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/).
+* **Vytvářejte vlastní telemetrii a protokolování platformy** – Pokud už máte vlastními silami sestavených telemetrická data platform nebo se uvažujete o 1, vysoce škálovatelné sestavování publikování a odběru povaha služby Event Hubs umožňuje flexibilně ingestovat diagnostické protokoly. [Viz Dan Rosanova návod k použití služby Event Hubs v telemetrii platformě globální škálování zde](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/).
 
-## <a name="enable-streaming-of-diagnostic-logs"></a>Povolení diagnostických protokolů streamování
+## <a name="enable-streaming-of-diagnostic-logs"></a>Povolení streamování diagnostických protokolů
 
-Můžete povolit vysílání datového proudu diagnostické protokoly prostřednictvím kódu programu, prostřednictvím portálu nebo pomocí [rozhraní REST API Azure monitorování](https://docs.microsoft.com/en-us/rest/api/monitor/diagnosticsettings). V obou případech vytvoříte nastavení diagnostiky v němž jsou uvedeny na obor názvů služby Event Hubs a protokolu kategorií a metriky, které se mají posílat do oboru názvů. Centra událostí je vytvořen v oboru názvů pro každou kategorii protokolu, které povolíte. Diagnostika **kategorie protokolu** je typ protokolu, který může shromažďovat prostředku.
+Streamování diagnostických protokolů prostřednictvím kódu programu, prostřednictvím portálu, nebo pomocí můžete povolit [REST API služby Azure Monitor](https://docs.microsoft.com/en-us/rest/api/monitor/diagnosticsettings). V obou případech můžete vytvořit nastavení diagnostiky ve kterém určíte, obor názvů služby Event Hubs a kategorie protokolů a metrik, které chcete odeslat do oboru názvů. Centra událostí je vytvořen v oboru názvů pro každou kategorii protokolů, které povolíte. Diagnostika **kategorie protokolu** je typ protokolu, který může shromažďovat prostředku.
 
 > [!WARNING]
-> Povolení a vysílání datového proudu diagnostických protokolů z výpočetní prostředky (například virtuální počítače nebo Service Fabric) [vyžaduje jinou sadu kroků](../event-hubs/event-hubs-streaming-azure-diags-data.md).
+> Povolení a streamování diagnostických protokolů z výpočetních prostředků (například virtuální počítače nebo Service Fabric) [vyžaduje jinou sadu kroků](../event-hubs/event-hubs-streaming-azure-diags-data.md).
 
-Obor názvů služby Event Hubs nemusí být ve stejném předplatném jako prostředek emitování protokoly tak dlouho, dokud uživatel, který konfiguruje nastavení, má odpovídající přístup RBAC do oba odběry.
+Event Hubs, který obor názvů nemusí být ve stejném předplatném jako prostředek, které vysílá protokoly za předpokladu, uživatel, který konfiguruje nastavení, má odpovídající přístup RBAC pro předplatná a obě předplatná jsou součástí stejného tenanta služby AAD.
 
 > [!NOTE]
 > Odesílání vícedimenzionálních metrik přes nastavení diagnostiky se v současné době nepodporuje. Metriky s dimenzemi se exportují jako ploché jednodimenzionální metriky agregované napříč hodnotami dimenzí.
@@ -55,45 +55,45 @@ Obor názvů služby Event Hubs nemusí být ve stejném předplatném jako pros
 >
 >
 
-## <a name="stream-diagnostic-logs-using-the-portal"></a>Diagnostické protokoly datového proudu pomocí portálu
+## <a name="stream-diagnostic-logs-using-the-portal"></a>Diagnostické protokoly Stream pomocí portálu
 
-1. Na portálu, přejděte do monitorování Azure a klikněte na **nastavení diagnostiky**
+1. Na portálu přejděte do Azure monitoru a klikněte na **nastavení diagnostiky**
 
-    ![Monitorování části monitorování Azure](media/monitoring-stream-diagnostic-logs-to-event-hubs/diagnostic-settings-blade.png)
+    ![Monitorování bodu služby Azure Monitor](media/monitoring-stream-diagnostic-logs-to-event-hubs/diagnostic-settings-blade.png)
 
-2. Volitelně můžete seznam filtrovat podle skupiny prostředků nebo typ prostředku, a potom klikněte na prostředek, pro kterou chcete provést nastavení diagnostiky.
+2. Volitelně můžete filtrovat seznam podle skupiny prostředků nebo prostředek typu a potom klikněte na prostředek, pro kterou chcete nastavit nastavení diagnostiky.
 
-3. Pokud neexistuje žádné nastavení na prostředku jste vybrali, zobrazí se výzva k vytvoření nastavení. Klikněte na tlačítko "Zapnout diagnostiky."
+3. Pokud neexistuje žádná nastavení pro prostředek jste vybrali, se zobrazí výzva k vytvoření nastavení. Klikněte na tlačítko "Zapnout diagnostiku."
 
-   ![Přidat nastavení diagnostiky - žádná existující nastavení](media/monitoring-stream-diagnostic-logs-to-event-hubs/diagnostic-settings-none.png)
+   ![Přidejte nastavení diagnostiky – žádná existující nastavení](media/monitoring-stream-diagnostic-logs-to-event-hubs/diagnostic-settings-none.png)
 
-   Pokud máte stávající nastavení na prostředek, zobrazí se seznam nastavení, které jsou již nakonfigurována na tomto prostředku. Klikněte na tlačítko "Přidat nastavení diagnostiky."
+   Pokud existuje stávající nastavení na prostředek, zobrazí se seznam nastavení, které jsou už nakonfigurovaná na tento prostředek. Klikněte na tlačítko "Přidat nastavení diagnostiky."
 
-   ![Přidat nastavení diagnostiky - stávající nastavení](media/monitoring-stream-diagnostic-logs-to-event-hubs/diagnostic-settings-multiple.png)
+   ![Přidejte nastavení diagnostiky – stávající nastavení](media/monitoring-stream-diagnostic-logs-to-event-hubs/diagnostic-settings-multiple.png)
 
-3. Zadejte název nastavení a zaškrtněte políčko pro **datový proud do centra událostí**, pak vyberte obor názvů Event Hubs.
+3. Zadejte název nastavení a zaškrtněte políčko u **Stream do centra událostí**, vyberte obor názvů služby Event Hubs.
 
-   ![Přidat nastavení diagnostiky - stávající nastavení](media/monitoring-stream-diagnostic-logs-to-event-hubs/diagnostic-settings-configure.png)
+   ![Přidejte nastavení diagnostiky – stávající nastavení](media/monitoring-stream-diagnostic-logs-to-event-hubs/diagnostic-settings-configure.png)
 
-   Obor názvů vybrané bude kde vytvoření (pokud to vaše první čas diagnostické protokoly streamování) nebo prostřednictvím datového proudu do centra událostí (Pokud již existují prostředky, které jsou streamování této kategorie protokolu na tento obor názvů), a definuje zásady oprávnění, streamování mechanismus má. V současné době streamování do centra událostí vyžadují oprávnění spravovat, odeslání a naslouchání. Můžete vytvářet nebo upravovat Event Hubs obor názvů sdílených zásad přístupu na portálu na kartě Konfigurace oboru názvů. Pokud chcete aktualizovat jednu z těchto nastavení diagnostiky, klient musí mít oprávnění ListKey na autorizační pravidlo Event Hubs. Volitelně můžete zadat název centra událostí. Pokud zadáte název centra událostí, protokoly jsou směrovány do tohoto centra událostí a nikoli k rozbočovači nově vytvořený událostí podle kategorie protokolu.
+   Vybraný obor názvů bude kde vytvoření (pokud to vaše první čas streamování diagnostických protokolů) nebo Streamovat do centra událostí (Pokud již existují prostředky, které jsou streamování protokolů kategorie se tento obor názvů), a definuje zásady oprávnění, která streamování mechanismus má. Streamování do centra událostí v současné době vyžaduje oprávnění spravovat, odesílání a naslouchání. Můžete vytvořit nebo upravit zásady přístupu sdílený obor názvů služby Event Hubs na portálu na kartě Konfigurace pro váš obor názvů. Pokud chcete aktualizovat jeden z těchto nastavení diagnostiky, klient musí mít oprávnění ListKey na autorizační pravidlo Event Hubs. Můžete také v případě potřeby zadejte název centra událostí. Pokud zadáte název centra událostí, protokoly se směrují do tohoto centra událostí, nikoli do nově vytvořeného event hub podle jednotlivých kategorií protokolu.
 
 4. Klikněte na **Uložit**.
 
-Po chvíli se nové nastavení se zobrazí v seznamu nastavení pro tento prostředek a diagnostické protokoly jsou datového proudu do tohoto centra událostí, také se vygeneruje nová data událostí.
+Po chvíli se nové nastavení se zobrazí v seznamu nastavení pro tento prostředek a diagnostické protokoly se streamují do tohoto centra událostí, jakmile je vygenerována nová data události.
 
 ### <a name="via-powershell-cmdlets"></a>Pomocí rutin prostředí PowerShell
 
-Povolit vysílání datového proudu prostřednictvím [rutin prostředí Azure PowerShell](insights-powershell-samples.md), můžete použít `Set-AzureRmDiagnosticSetting` rutiny s těmito parametry:
+Pokud chcete povolit streamování prostřednictvím [rutin prostředí Azure PowerShell](insights-powershell-samples.md), můžete použít `Set-AzureRmDiagnosticSetting` rutiny s těmito parametry:
 
 ```powershell
 Set-AzureRmDiagnosticSetting -ResourceId [your resource ID] -EventHubAuthorizationRuleId [your Event Hub namespace auth rule ID] -Enabled $true
 ```
 
-ID události rozbočovače autorizační pravidlo je řetězec s Tento formát: `{Event Hub namespace resource ID}/authorizationrules/{key name}`, například `/subscriptions/{subscription ID}/resourceGroups/{resource group}/providers/Microsoft.EventHub/namespaces/{Event Hub namespace}/authorizationrules/RootManageSharedAccessKey`. Nelze vybrat aktuálně název rozbočovače určitá událost pomocí prostředí PowerShell.
+ID pravidla autorizace centra událostí je řetězec v tomto formátu: `{Event Hub namespace resource ID}/authorizationrules/{key name}`, například `/subscriptions/{subscription ID}/resourceGroups/{resource group}/providers/Microsoft.EventHub/namespaces/{Event Hub namespace}/authorizationrules/RootManageSharedAccessKey`. Nelze aktuálně vyberte název určité události centra pomocí Powershellu.
 
 ### <a name="via-azure-cli-20"></a>Via Azure CLI 2.0
 
-Povolit vysílání datového proudu prostřednictvím [Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/monitor?view=azure-cli-latest), můžete použít [vytvořit az monitorování diagnostiky – nastavení](https://docs.microsoft.com/en-us/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az-monitor-diagnostic-settings-create) příkaz.
+Pokud chcete povolit streamování prostřednictvím [příkazového řádku Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/monitor?view=azure-cli-latest), můžete použít [az monitor diagnostiky – nastavení vytváření](https://docs.microsoft.com/en-us/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az-monitor-diagnostic-settings-create) příkazu.
 
 ```azurecli
 az monitor diagnostic-settings create --name <diagnostic name> \
@@ -108,13 +108,13 @@ az monitor diagnostic-settings create --name <diagnostic name> \
     ]'
 ```
 
-Přidáním dalších kategorií do protokolů diagnostiky tak, že přidáte do pole JSON, který je předán jako slovník `--logs` parametr.
+Můžete přidat další kategorie pro protokol diagnostiky tak, že přidáte slovníky předané jako pole JSON `--logs` parametru.
 
-`--event-hub-rule` Argument používá stejný formát jako ID události rozbočovače autorizační pravidla, jak je popsáno pro rutinu prostředí PowerShell.
+`--event-hub-rule` Argument používá stejný formát jako ID pravidla autorizace centra událostí, jak je vysvětleno pro rutinu Powershellu.
 
-## <a name="how-do-i-consume-the-log-data-from-event-hubs"></a>Způsob, jakým využívají data protokolu ze služby Event Hubs?
+## <a name="how-do-i-consume-the-log-data-from-event-hubs"></a>Jak se využívají data protokolů ze služby Event Hubs?
 
-Zde je ukázka výstupní data ze služby Event Hubs:
+Tady je ukázkový výstup dat z Event Hubs:
 
 ```json
 {
@@ -179,7 +179,7 @@ Zde je ukázka výstupní data ze služby Event Hubs:
 
 | Název elementu | Popis |
 | --- | --- |
-| záznamy |Pole všechny protokolu události v této datové části. |
+| záznamy |Pole všech protokolů událostí v této datové části. |
 | time |Čas, kdy došlo k události. |
 | category |Kategorie protokolu pro tuto událost. |
 | resourceId |ID prostředku prostředku, který vytvořil tuto událost. |
@@ -187,13 +187,14 @@ Zde je ukázka výstupní data ze služby Event Hubs:
 | úroveň |Volitelné. Určuje úroveň protokolu událostí. |
 | properties |Vlastnosti události. |
 
-Můžete zobrazit seznam všech poskytovatelů prostředků, které podporují streamování Event Hubs [zde](monitoring-overview-of-diagnostic-logs.md).
+Můžete zobrazit seznam všech poskytovatelů prostředků, které podporují streamování do Event Hubs [tady](monitoring-overview-of-diagnostic-logs.md).
 
-## <a name="stream-data-from-compute-resources"></a>Datový proud dat z výpočetní prostředky
+## <a name="stream-data-from-compute-resources"></a>Datový Stream z výpočetních prostředků
 
-Můžete také stream diagnostických protokolů z výpočetní prostředky pomocí agenta Windows Azure Diagnostics. [Najdete v článku](../event-hubs/event-hubs-streaming-azure-diags-data.md) jak k tomuto nastavení.
+Také můžete Streamovat diagnostické protokoly z výpočetních prostředků pomocí agenta diagnostiky Windows Azure. [Najdete v článku](../event-hubs/event-hubs-streaming-azure-diags-data.md) jak k tomuto nastavení.
 
 ## <a name="next-steps"></a>Další postup
 
-* [Další informace o diagnostických protokolů Azure.](monitoring-overview-of-diagnostic-logs.md)
+* [Stream protokolů služby Azure Active Directory pomocí Azure monitoru](../active-directory/reporting-azure-monitor-diagnostics-azure-event-hub.md)
+* [Další informace o diagnostické protokoly Azure](monitoring-overview-of-diagnostic-logs.md)
 * [Začínáme s Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)

@@ -11,20 +11,43 @@ ms.topic: article
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
 manager: douge
-ms.openlocfilehash: c5224422c88690ccf063a27b053963ebde622a1e
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: b2ef450a429b26843cf770a6243c6f4de932de43
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39172098"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39247314"
 ---
 # <a name="troubleshooting-guide"></a>Průvodce odstraňováním potíží
 
 Tato příručka obsahuje informace o běžných problémů, možná bude při používání Azure Dev mezery.
 
+## <a name="error-failed-to-create-azure-dev-spaces-controller"></a>Chyba "nepovedlo se vytvořit Azure Dev prostory kontroleru.
+
+Tato chyba může zobrazit, když dojde k chybě při vytváření kontroleru. Pokud se jedná o přechodnou chybu, odstranění a opětovné vytvoření kontroleru opraví ho.
+
+### <a name="try"></a>Zkuste:
+
+Pokud chcete odstranit kontroleru, použijte rozhraní příkazového řádku Azure Dev mezery. Není možné provést v sadě Visual Studio nebo službě Cloud Shell. Pokud chcete nainstalovat rozhraní příkazového řádku AZDS, nejprve nainstalovat rozhraní příkazového řádku Azure a pak spusťte tento příkaz:
+
+```cmd
+az aks use-dev-spaces -g <resource group name> -n <cluster name>
+```
+
+A pak spuštěním následujícího příkazu odstraňte kontroleru:
+
+```cmd
+azds remove -g <resource group name> -n <cluster name>
+```
+
+Opětovné vytvoření kontroleru můžete udělat v sadě Visual Studio nebo rozhraní příkazového řádku. Postupujte podle pokynů v kurzech, jako kdyby spouští poprvé.
+
+
 ## <a name="error-service-cannot-be-started"></a>Chyba "službu nelze spustit."
 
 Tato chyba může zobrazit, když kódu služby se nepodaří spustit. Příčinou je často v uživatelském kódu. Pokud chcete získat další diagnostické informace, proveďte následující změny k příkazům a nastavení:
+
+### <a name="try"></a>Zkuste:
 
 Na příkazovém řádku:
 

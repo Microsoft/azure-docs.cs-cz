@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/16/2018
+ms.date: 07/25/2018
 ms.author: douglasl
-ms.openlocfilehash: 4da9696761747874395ec90cb3b446e3621650ba
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 9c45b428a6d2060243f1eba9a284c7eb1b1b21c0
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39113253"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39259098"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Monitorování prostředí integration runtime ve službě Azure Data Factory  
 **Prostředí Integration runtime** je výpočetní infrastruktura, službou Azure Data Factory používá k poskytování různé možnosti integrace dat v různých síťových prostředích. Existují tři typy prostředí integration runtime nabízí datové továrny:
@@ -76,10 +76,18 @@ Následující tabulka obsahuje popis vlastností pro monitorování **každý u
 | Dostupná paměť | Dostupná paměť na uzel v místním prostředí integration runtime. Tato hodnota je snímek téměř v reálném čase. | 
 | Využití procesoru | Využití procesoru uzlu místního prostředí integration runtime. Tato hodnota je snímek téměř v reálném čase. |
 | Síť (vstup/výstup) | Využití sítě uzel v místním prostředí integration runtime. Tato hodnota je snímek téměř v reálném čase. | 
-| Souběžné úlohy (spuštění / Limit) | Počet úloh nebo úlohy spuštěné na každém uzlu. Tato hodnota je snímek téměř v reálném čase. Limit označuje maximální počet souběžných úloh pro každý uzel. Tato hodnota je definována v závislosti na velikosti počítačů. Můžete zvýšit limit vertikální navýšení kapacity provádění souběžné úlohy v pokročilých scénářích, kdy je využití procesoru/paměti/sítě nevyužitých, ale aktivity se nestíhají dokončit. Tato možnost je také dostupné s jedním uzlem místní prostředí integration runtime. |
+| Souběžné úlohy (spuštění / Limit) | **Spuštění**. Počet úloh nebo úlohy spuštěné na každém uzlu. Tato hodnota je snímek téměř v reálném čase. <br/><br/>**Limit**. Limit označuje maximální počet souběžných úloh pro každý uzel. Tato hodnota je definována v závislosti na velikosti počítačů. Můžete zvýšit limit vertikální navýšení kapacity provádění souběžné úlohy v pokročilých scénářích, když se nestíhají dokončit i v případě procesor, paměť nebo síť je nevyužitých aktivity. Tato možnost je také dostupné s jedním uzlem místní prostředí integration runtime. |
 | Role | Existují dva typy rolí v několika uzly místního prostředí integration runtime – dispečer a pracovního procesu. Všechny uzly jsou pracovních procesů, což znamená, že jsou všechny slouží ke spuštění úlohy. Existuje pouze jeden uzel dispečer, který slouží k vyžádání úlohy nebo úlohy ze služby cloud services a jejich vypravování do různých pracovních uzlů. Dispečer uzel je také pracovního uzlu. |
 
-Některá nastavení vlastnosti smysl další při existují dva nebo více uzlů (horizontální navýšení kapacity scénáři) do místního prostředí integration runtime. 
+Některá nastavení vlastnosti dávat větší smysl, pokud existují dva nebo více uzlů v místním prostředí integration runtime (to znamená, že v s horizontálním navýšením kapacity scénář).
+
+#### <a name="concurrent-jobs-limit"></a>Limit souběžných úloh
+
+Výchozí hodnota je nastavený limit souběžných úloh podle velikosti počítačů. Faktory, které slouží k výpočtu tato hodnota závisí na množství paměti RAM a počet jader procesoru počítače. Takže více jader a větší množství paměti, tím vyšší výchozí omezení souběžných úloh.
+
+Horizontální navýšení kapacity zvýšením počtu uzlů. Pokud zvýšíte počet uzlů, je limit souběžných úloh součet hodnot limitu souběžných úloh všech dostupných uzlů.  Například pokud se jeden uzel umožňuje spouštět až 12 souběžných úloh, přidáte tři uzly podobné vám umožní spustit určitý počet souběžných úloh 48 (4 x 12). Doporučujeme, abyste zvýšili limit souběžných úloh pouze v případě, že se zobrazí využití prostředků nízké výchozí hodnoty na každém uzlu.
+
+Můžete přepsat počítané výchozí hodnotu na webu Azure Portal. Vyberte Vytvořit > připojení > prostředí Integration runtime > Edi > uzlů > změnit hodnotu souběžných úloh na uzlu. Můžete také použít rutinu prostředí PowerShell [aktualizace azurermdatafactoryv2integrationruntimenode](https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactoryv2/update-azurermdatafactoryv2integrationruntimenode?view=azurermps-6.4.0#examples) příkazu.
   
 ### <a name="status-per-node"></a>Stav (na uzel)
 Následující tabulka uvádí možné stavy uzel v místním prostředí integration runtime:

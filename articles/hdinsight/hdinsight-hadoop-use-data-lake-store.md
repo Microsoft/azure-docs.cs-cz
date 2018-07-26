@@ -3,8 +3,8 @@ title: Použití Data Lake Store se systémem Hadoop v Azure HDInsight
 description: Zjistěte, jak zadávat dotazy na data ze služby Azure Data Lake Store a ukládat výsledky analýzy.
 services: hdinsight,storage
 tags: azure-portal
-author: mumian
-ms.author: jgao
+author: jasonwhowell
+ms.author: jasonh
 manager: jhubbard
 editor: cgronlun
 ms.service: hdinsight
@@ -12,12 +12,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 07/23/2018
-ms.openlocfilehash: 8f81e04c1b80173868f068957b6ca7da6bfe19c1
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 48b98e170601f80e8cd1348ccc9afa3b5fc0c4e1
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39222885"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258027"
 ---
 # <a name="use-data-lake-store-with-azure-hdinsight-clusters"></a>Použití služby Data Lake Store s clustery Azure HDInsight
 
@@ -28,7 +28,7 @@ V tomto článku se dozvíte, jak služba Data Lake Store pracuje s clustery HDI
 > [!NOTE]
 > Ke službě Data Lake Store se vždy přistupuje prostřednictvím zabezpečeného kanálu, takže se nepoužívá název schématu systému souborů `adls`. Vždy používáte `adl`.
 > 
-> 
+
 
 ## <a name="availability-for-hdinsight-clusters"></a>Dostupnosti pro clustery HDInsight
 
@@ -136,8 +136,8 @@ Na následujících odkazech najdete podrobné pokyny k vytvoření clusterů HD
 Následující příklad kódu Powershellu načte do místního souboru certifikátu a aktualizuje svůj cluster HDInsight pomocí nového certifikátu pro přístup k Azure Data Lake Store. Zadejte vlastní název clusteru HDInsight, název skupiny prostředků, ID předplatného, ID aplikace, místní cesta k certifikátu. Zadejte heslo po zobrazení výzvy.
 
 ```powershell-interactive
-$clusterName = 'MyCluster'
-$resourceGroupName = 'MyResourceGroup'
+$clusterName = '<clustername>'
+$resourceGroupName = '<resourcegroupname>'
 $subscriptionId = '01234567-8a6c-43bc-83d3-6b318c6c7305'
 $appId = '01234567-e100-4118-8ba6-c25834f4e938'
 $generateSelfSignedCert = $false

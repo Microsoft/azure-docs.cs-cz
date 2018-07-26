@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: 48f3a77d2aa81cda62f8206709268bae8e7c8737
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 9141658c25ea3051d8e7c866f523c54afb7d6e18
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39163886"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248340"
 ---
 # <a name="what-are-authentication-methods"></a>Co jsou metody ověřování?
 
@@ -30,10 +30,17 @@ Společnost Microsoft důrazně doporučuje správcům umožňuje uživatelům v
 | Heslo | Vícefaktorové ověřování a samoobslužné resetování HESLA |
 | Bezpečnostní otázky | Pouze samoobslužné resetování HESLA |
 | E-mailová adresa | Pouze samoobslužné resetování HESLA |
-| Aplikace Microsoft Authenticator | Pouze MFA |
+| Aplikace Microsoft Authenticator | Vícefaktorové ověřování a verze Public Preview pro samoobslužné resetování HESLA |
 | SMS | Vícefaktorové ověřování a samoobslužné resetování HESLA |
 | Hlasový hovor | Vícefaktorové ověřování a samoobslužné resetování HESLA |
 | Hesla aplikací | MFA pouze v určitých případech |
+
+![Metody ověřování použité v přihlašovací obrazovky](media/concept-authentication-methods/overview-login.png)
+
+|     |
+| --- |
+| Oznámení mobilní aplikace a kód mobilní aplikace jako metody pro hesla pomocí samoobslužné služby Azure AD obnovení jsou funkce ve verzi public preview služby Azure Active Directory. Další informace o verzích Preview najdete v tématu [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
+|     |
 
 ## <a name="password"></a>Heslo
 
@@ -116,13 +123,27 @@ Aplikace Microsoft Authenticator poskytuje další úroveň zabezpečení, kter�
 
 Aplikace Microsoft Authenticator je k dispozici pro [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594) a [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071).
 
+> [!NOTE]
+> Uživatelé nebudou mít možnost zaregistrovat svoje mobilní aplikace při registraci pro resetování hesla pomocí samoobslužné služby. Místo toho uživatelé můžou registrovat svoje mobilní aplikace na [ https://aka.ms/mfasetup ](https://aka.ms/mfasetup) nebo v náhledu registrační informace o zabezpečení v [ https://aka.ms/setupsecurityinfo ](https://aka.ms/setupsecurityinfo).
+>
+
 ### <a name="notification-through-mobile-app"></a>Oznámení přes mobilní aplikaci
 
 Aplikace Microsoft Authenticator pomáhá zabránit neoprávněnému přístupu k účtům a zastavte podvodné transakce doručením (push) oznámení na tablet nebo smartphone. Uživatelé oznámení zobrazte a pokud je legitimní, vyberte možnost ověřit. V opačném případě může vybrat odepřít.
 
+> [!WARNING]
+> Samoobslužné resetování hesla při jenom jedna metoda, je třeba obnovit ověřovací kód je jedinou možností, které jsou dostupné pro uživatele.
+>
+> Když se vyžadují dvě metody budou uživatelé moct resetovat pomocí **buď** oznámení **nebo** ověřovací kód kromě jiných povolené metody.
+>
+
 ### <a name="verification-code-from-mobile-app"></a>Ověřovací kód z mobilní aplikace
 
-Aplikace Microsoft Authenticator nebo jiným aplikacím třetích stran může sloužit jako softwarový token k vygenerování kódu ověřování OAuth. Po zadání uživatelského jména a hesla, zadejte kód aplikace k dispozici na přihlašovací obrazovku. Ověřovací kód, který obsahuje druhou podobu ověřování.
+Aplikace Microsoft Authenticator nebo jiným aplikacím třetích stran může sloužit jako softwarový token k vygenerování ověřovacího kódu OATH. Po zadání uživatelského jména a hesla, zadejte kód aplikace k dispozici na přihlašovací obrazovku. Ověřovací kód, který obsahuje druhou podobu ověřování.
+
+> [!WARNING]
+> Samoobslužné resetování hesla při jenom jedna metoda, je třeba obnovit ověřovací kód je jedinou možností, které jsou dostupné pro uživatele.
+>
 
 ## <a name="mobile-phone"></a>Mobilní telefon
 

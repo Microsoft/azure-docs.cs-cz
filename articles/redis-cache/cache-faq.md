@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: wesmc
-ms.openlocfilehash: 6c308205c5adb05f4c7e1668c67adea414020ea2
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: c0d88f0eaacaadbb508519f2e6804b9b311408c2
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38232957"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39259326"
 ---
 # <a name="azure-redis-cache-faq"></a>Nejčastější dotazy k Azure Redis Cache
 Přečtěte si odpovědi na běžné dotazy, vzory a osvědčené postupy pro Azure Redis Cache.
@@ -139,7 +139,7 @@ Z této tabulky jsme lze nakreslit následující závěry:
 | C0 |250 MB |Shared |100 / 12.5 |15,000 |7 500 |
 | C1 |1 GB |1 |500 / 62.5 |38,000 |20,720 |
 | C2 |2,5 GB |2 |500 / 62.5 |41,000 |37 000 |
-| C3 |6 GB |4 |1 000 / 125 |100,000 |90,000 |
+| C3 |6 GB |4 |1 000 / 125 |100 000 |90,000 |
 | C4 |13 GB |2 |500 / 62.5 |60,000 |55,000 |
 | C5 |26 GB |4 |1,000 / 125 |102 000 |93,000 |
 | C6 |53 GB |8 |2,000 / 250 |126,000 |120,000 |
@@ -358,7 +358,7 @@ Následující příkazy jsou příkladem použití redis benchmark.exe. Pro př
 ### <a name="important-details-about-threadpool-growth"></a>Důležité podrobnosti o růstu fondu vláken
 Fondu vláken CLR má dva typy vláken – "Pracovní" a "Portu dokončení I/O%N" (neboli portu IOCP) vlákna.
 
-* Pracovní vlákna se používají při pro takové věci, jako jsou zpracování `Task.Run(…)` nebo `ThreadPool.QueueUserWorkItem(…)` metody. Tato vlákna používají různé součásti v CLR také, když pracovní musí dojít na vlákně na pozadí.
+* Pracovní vlákna se používají pro takové věci, jako je zpracování `Task.Run(…)`, nebo `ThreadPool.QueueUserWorkItem(…)` metody. Tato vlákna používají různé součásti v CLR také, když pracovní musí dojít na vlákně na pozadí.
 * Portu IOCP vlákna se používají, když asynchronní vstupně-výstupní operace se stane (třeba čtení ze sítě).
 
 Fondu vláken poskytuje nové pracovní vlákna nebo vlákna dokončení vstupně-výstupních operací na vyžádání (bez žádné omezení) dokud nedosáhne nastavení "Minimální" pro každý typ vlákna. Ve výchozím nastavení je nastavit minimální počet vláken na počet procesorů v systému.

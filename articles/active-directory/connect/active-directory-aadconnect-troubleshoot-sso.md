@@ -9,15 +9,15 @@ ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
 ms.workload: identity
 ms.topic: article
-ms.date: 07/19/2018
+ms.date: 07/25/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: ba8392509f47ae91525841966d992c3ddfd9cd52
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 563958458979d0a0a28046ce35d21bd58be631ce
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216372"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39259292"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Řešení potíží s Azure Active Directory bezproblémové jednotné přihlašování
 
@@ -119,12 +119,20 @@ Pokud se vám nepomohly řešení potíží, můžete ručně obnovit funkci ve 
 ### <a name="step-3-disable-seamless-sso-for-each-active-directory-forest-where-youve-set-up-the-feature"></a>Krok 3: Zakázání bezproblémového jednotného přihlašování pro každou doménovou strukturu služby Active Directory, kde jste tuto funkci nastavili
 
 1. Volání `$creds = Get-Credential`. Po zobrazení výzvy zadejte přihlašovací údaje správce domény pro určené doménové struktuře služby Active Directory.
+
+>[!NOTE]
+>Používáme zadané v uživatele hlavní názvy (UPN) uživatelské jméno správce domény (johndoe@contoso.com) formát nebo kvalifikovaný účtu sam formát názvu domény (contoso\janmacek nebo contoso.com\johndoe), se najít odpovídající doménovou strukturu AD. Pokud používáte účtu sam kvalifikovaný název domény, používáme doména uživatelské jméno pro [vyhledejte řadič domény ze správce domény s DNS](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx). Pokud místo toho použít hlavní název uživatele jsme [přeložit na účtu sam kvalifikovaný název domény](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa) před vyhledání vhodné řadiče domény.
+
 2. Volání `Disable-AzureADSSOForest -OnPremCredentials $creds`. Tento příkaz odebere `AZUREADSSOACCT` účet počítače z místního kontroleru domény pro tento konkrétní doménovou strukturu služby Active Directory.
 3. Zopakujte předchozí kroky pro každou doménovou strukturu služby Active Directory, kde jste tuto funkci nastavili.
 
 ### <a name="step-4-enable-seamless-sso-for-each-active-directory-forest"></a>Krok 4: Povolení bezproblémového jednotného přihlašování pro každou doménovou strukturu služby Active Directory
 
 1. Volání `Enable-AzureADSSOForest`. Po zobrazení výzvy zadejte přihlašovací údaje správce domény pro určené doménové struktuře služby Active Directory.
+
+>[!NOTE]
+>Používáme zadané v uživatele hlavní názvy (UPN) uživatelské jméno správce domény (johndoe@contoso.com) formát nebo kvalifikovaný účtu sam formát názvu domény (contoso\janmacek nebo contoso.com\johndoe), se najít odpovídající doménovou strukturu AD. Pokud používáte účtu sam kvalifikovaný název domény, používáme doména uživatelské jméno pro [vyhledejte řadič domény ze správce domény s DNS](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx). Pokud místo toho použít hlavní název uživatele jsme [přeložit na účtu sam kvalifikovaný název domény](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa) před vyhledání vhodné řadiče domény.
+
 2. Opakujte předchozí krok pro každou doménovou strukturu služby Active Directory, ve které chcete nastavit tuto funkci.
 
 ### <a name="step-5-enable-the-feature-on-your-tenant"></a>Krok 5. Povolení této funkce na tenantovi

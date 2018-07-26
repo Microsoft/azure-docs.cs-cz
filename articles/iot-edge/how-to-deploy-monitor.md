@@ -5,16 +5,16 @@ keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 06/07/2018
+ms.date: 07/25/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0432a1782ab5e3aef471666e2f0a3ca18dead73e
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 28aa2904f63a9802305d24fec1650f84e38601ab
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001503"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258429"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-portal"></a>Nasazení a monitorování modulů IoT Edge ve velkém měřítku pomocí webu Azure portal
 
@@ -106,7 +106,7 @@ Můžete cílit na konkrétní zařízení, které by měl obdrží toto nasazen
 Protože více nasazení mohou být zaměřeny na stejném zařízení, je třeba přiřadit každého nasazení priorita. Pokud někdy dojde ke konfliktu, wins nasazení s nejvyšší prioritou (vyšší hodnoty znamenat vyšší prioritou). Pokud mají dvě nasazení stejnou prioritu číslo, ten, který byl vytvořen většina nedávno wins. 
 
 1. Zadejte kladné celé číslo pro nasazení **Priority**. V případě, že dvě nebo víc nasazení cílí na stejném zařízení, budou platit nasazení s nejvyšší číselnou hodnotou priority.
-1. Zadejte **cílová podmínka** k určení zařízení, která budou cílem s tímto nasazením. Podmínka je založen na značky dvojčat zařízení nebo požadované vlastnosti dvojčete zařízení a by měl odpovídat formátu výrazu. Například `tags.environment='test'` nebo `properties.desired.devicemodel='4000x'`. 
+1. Zadejte **cílová podmínka** k určení zařízení, která budou cílem s tímto nasazením. Podmínka je založen na značky dvojčat zařízení nebo ohlášené vlastnosti dvojčete zařízení a by měl odpovídat formátu výrazu. Například `tags.environment='test'` nebo `properties.reported.devicemodel='4000x'`. 
 1. Vyberte **Další** přejít k poslednímu kroku.
 
 ### <a name="step-5-review-template"></a>Krok 5: Zkontrolujte šablony

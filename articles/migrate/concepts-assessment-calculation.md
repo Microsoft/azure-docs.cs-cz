@@ -4,14 +4,14 @@ description: Poskytuje přehled o vyhodnocení výpočtů ve službě Azure Migr
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/24/2018
+ms.date: 07/25/2018
 ms.author: raynew
-ms.openlocfilehash: af832cb3791f0175b38aad16526acd51509bbe52
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 7900a02ba9112b910589d04850a4cd5d52e044d2
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223680"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39249185"
 ---
 # <a name="assessment-calculations"></a>Výpočty hodnocení
 
@@ -58,7 +58,8 @@ Windows Server 2016 a všechny aktualizace Service packu | Azure poskytuje plnou
 Windows Server 2012 R2 a všechny aktualizace Service packu | Azure poskytuje plnou podporu. | Připraveno pro Azure
 Windows Server 2012 a všechny aktualizace Service packu | Azure poskytuje plnou podporu. | Připraveno pro Azure
 Windows Server 2008 R2 s všechny aktualizace Service packu | Azure poskytuje plnou podporu.| Připraveno pro Azure
-Windows Server 2003 – 2008 | Tyto operační systémy prošly jejich koncové datum podpory a potřebu [smlouvy podporují vlastní (CSA)](https://aka.ms/WSosstatement) pro podporu v Azure. | Podmíněně připraveno pro Azure, zvažte možnost upgradovat operační systém před migrací do Azure.
+Windows Server 2008 (32bitová verze a 64bitová verze) | Azure poskytuje plnou podporu. | Připraveno pro Azure
+Windows Server 2003, 2003 R2 | Tyto operační systémy prošly jejich koncové datum podpory a potřebu [smlouvy podporují vlastní (CSA)](https://aka.ms/WSosstatement) pro podporu v Azure. | Podmíněně připraveno pro Azure, zvažte možnost upgradovat operační systém před migrací do Azure.
 98, 95, Windows 2000 NT, 3.1, zástupného kódu MS-DOS | Tyto operační systémy prošly jejich podporu datum konce, tento počítač může spustit v Azure, ale Azure nenabízí žádnou podporu operačního systému. | Podmíněně připraveno pro Azure, se doporučuje upgradovat operační systém před migrací do Azure.
 Klient Windows 7, 8 a 10 | Azure poskytuje podporu s pouze předplatné sady Visual Studio. | Připraveno pro Azure s podmínkou
 Windows Vista, XP Professional | Tyto operační systémy prošly jejich podporu datum konce, tento počítač může spustit v Azure, ale Azure nenabízí žádnou podporu operačního systému. | Podmíněně připraveno pro Azure, se doporučuje upgradovat operační systém před migrací do Azure.

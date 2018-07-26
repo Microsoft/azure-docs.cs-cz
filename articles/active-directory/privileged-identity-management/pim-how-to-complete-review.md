@@ -13,19 +13,19 @@ ms.component: protection
 ms.date: 06/06/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 386be8737fcddacab9fdd7ec19ae00188342d917
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: e8aacc95f73294420042549681aff5494dc63cce
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38314445"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39257806"
 ---
 # <a name="how-to-complete-an-access-review-in-azure-ad-privileged-identity-management"></a>Dokončení kontroly přístupu v Azure AD Privileged Identity Management
-Správci privilegovaných rolí můžete zkontrolovat privilegovaný přístup jednou [se spustila kontrola zabezpečení](pim-how-to-start-security-review.md). Azure AD Privileged Identity Management (PIM) se automaticky pošle e-mail vyzývá uživatele, aby zkontrolujte svůj přístup. Pokud uživatel nezískaly v e-mailu, můžete jim poslat pokyny [provádění kontroly zabezpečení](pim-how-to-perform-security-review.md).
+Správci privilegovaných rolí jednou zkontrolovat privilegovaný přístup [se spustila kontrola přístupu](pim-how-to-start-security-review.md). Azure AD Privileged Identity Management (PIM) se automaticky pošle e-mail vyzývá uživatele, aby zkontrolujte svůj přístup. Pokud uživatel nezískaly v e-mailu, můžete jim poslat pokyny [jak k provádění kontroly přístupu](pim-how-to-perform-security-review.md).
 
-Po období kontroly zabezpečení nebo dokončení jejich svým přezkoumat všechny uživatele, postupujte podle kroků v tomto článku můžete spravovat revize a zobrazit výsledky.
+Po období kontroly přístupu je nad nebo dokončení jejich svým přezkoumat všechny uživatele, postupujte podle kroků v tomto článku můžete spravovat revize a zobrazit výsledky.
 
-## <a name="manage-security-reviews"></a>Spravovat revize zabezpečení
+## <a name="manage-access-reviews"></a>Správa kontroly přístupu
 1. Přejděte [webu Azure portal](https://portal.azure.com/) a vyberte **Azure AD Privileged Identity Management** aplikace na řídicím panelu.
 2. Vyberte **kontrol přístupu** část řídicího panelu.
 3. Vyberte kontroly přístupu, kterou chcete spravovat.
@@ -44,7 +44,7 @@ Všechny kontroly přístupu mají koncové datum, ale můžete použít **Zasta
 Po dokončení kontroly přístupu, protože se dosáhlo koncové datum nebo ručně, je zastavena **použít** tlačítko implementuje výsledek kontroly. Pokud v revizi byl odepřen přístup uživatelů, jedná se krok, který se odebrat přiřazení role.  
 
 ### <a name="export"></a>Export
-Pokud chcete ručně použití výsledků kontroly zabezpečení, můžete to taky revizi. **Exportovat** tlačítka se spustí stažení souboru CSV. Můžete spravovat výsledky v Excelu nebo jinými programy, které otevřete soubory CSV.
+Pokud chcete použít výsledky kontroly přístupu ručně, můžete to taky revizi. **Exportovat** tlačítka se spustí stažení souboru CSV. Můžete spravovat výsledky v Excelu nebo jinými programy, které otevřete soubory CSV.
 
 ### <a name="delete"></a>Odstranění
 Pokud si nejste zájem o další revizi, odstraňte ho. **Odstranit** tlačítko kontroly odebere z aplikace PIM.

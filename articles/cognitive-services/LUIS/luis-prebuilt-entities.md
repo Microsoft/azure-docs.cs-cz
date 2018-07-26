@@ -8,14 +8,13 @@ ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 02/15/2018
-ms.author: cahann
-ms.reviewer: diberry
-ms.openlocfilehash: 0ef91019e713a708d02edd2e9b09450d64a7ef6b
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.author: diberry
+ms.openlocfilehash: 95ff173a843e7ad18ec396a1130b2e2b4035f656
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39222918"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248233"
 ---
 # <a name="prebuilt-entities"></a>Předem připravených entit
 

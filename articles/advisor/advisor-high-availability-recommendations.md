@@ -1,6 +1,6 @@
 ---
-title: Azure doporučení služby Advisor vysokou dostupnost | Microsoft Docs
-description: Pomocí Azure Advisor lze zvýšit vysokou dostupnost vašich Azure nasazení.
+title: Doporučení Azure Advisoru vysoké dostupnosti | Dokumentace Microsoftu
+description: Použití Azure Advisoru ke zlepšení vysoké dostupnosti všech vašich nasazení Azure.
 services: advisor
 documentationcenter: NA
 author: KumudD
@@ -14,57 +14,71 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
-ms.openlocfilehash: 23764b476f01c30b1755c507a0cfa5ead27be91e
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 297a213fe4219b834187f977e3281eb939352f60
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34736547"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39249059"
 ---
-# <a name="advisor-high-availability-recommendations"></a>Doporučení pro vysokou dostupnost služby Advisor
+# <a name="advisor-high-availability-recommendations"></a>Poradce doporučení k vysoké dostupnosti
 
-Azure Advisor pomáhá zajistit, a zlepšování kontinuity důležitými obchodními aplikacemi. Můžete získat vysokou dostupnost doporučení Advisor z **vysokou dostupnost** Advisor řídicího panelu.
+Azure Advisor pomáhá zajistit a zlepšování kontinuity důležité podnikové aplikace. Doporučení k vysoké dostupnosti v Advisoru z tak můžete získat **vysoké dostupnosti** karty řídicí panel služby Advisor.
 
-## <a name="ensure-virtual-machine-fault-tolerance"></a>Zajištění odolnosti proti chybám virtuálního počítače
+## <a name="ensure-virtual-machine-fault-tolerance"></a>Zajištění odolnosti proti chybám virtuálních počítačů
 
-Pokud chcete zajistit redundanci pro vaši aplikaci, doporučujeme seskupit dva nebo více virtuálních počítačů do skupiny dostupnosti. Advisor identifikuje virtuálních počítačů, které nejsou součástí skupiny dostupnosti a doporučuje jejich přesunutí do skupiny dostupnosti. Tato konfigurace zajistí, že během buď plánované i neplánované údržby alespoň jeden virtuální počítač je k dispozici a splňuje virtuální počítač Azure SLA. Můžete vytvořit sadu dostupnosti pro virtuální počítač nebo virtuální počítač přidat do stávající sadu dostupnosti.
+Pokud chcete zajistit redundanci pro vaši aplikaci, doporučujeme seskupit dva nebo více virtuálních počítačů do skupiny dostupnosti. Advisor identifikuje virtuální počítače, které nejsou součástí skupiny dostupnosti a doporučuje jejich přesunutí do skupiny dostupnosti. Tato konfigurace zajistí, že během buď plánované i neplánované údržby, alespoň jeden virtuální počítač je k dispozici a splňuje SLA pro Azure virtual Machines. Můžete vytvořit skupinu dostupnosti pro virtuální počítač nebo virtuální počítač přidat do stávající sady dostupnosti.
 
 > [!NOTE]
-> Pokud se rozhodnete vytvořit skupinu dostupnosti, je nutné přidat alespoň jeden další virtuální počítač do ní. Doporučujeme, které jsou seskupeny dvě nebo více virtuálních počítačů ve skupině dostupnosti nastavena zajistit, aby aspoň jeden počítač je k dispozici během výpadku.
+> Pokud budete chtít vytvořit skupinu dostupnosti, je nutné přidat alespoň jeden další virtuální počítač do něj. Doporučujeme, abyste během výpadku je k dispozici, které sami seskupíte dvě nebo více virtuálních počítačů ve skupině dostupnosti nastavena zajistit, že aspoň jeden počítač.
 
-## <a name="ensure-availability-set-fault-tolerance"></a>Ujistěte se, že odolnost proti chybám sadu dostupnosti 
+## <a name="ensure-availability-set-fault-tolerance"></a>Ujistěte se, že skupina dostupnosti, odolnosti proti chybám 
 
-Pokud chcete zajistit redundanci pro vaši aplikaci, doporučujeme seskupit dva nebo více virtuálních počítačů do skupiny dostupnosti. Advisor určí skupiny dostupnosti, které obsahují jeden virtuální počítač a doporučuje přidání do jednoho nebo více virtuálních počítačů. Tato konfigurace zajistí, že během buď plánované i neplánované údržby alespoň jeden virtuální počítač je k dispozici a splňuje virtuální počítač Azure SLA. Můžete k vytvoření virtuálního počítače nebo při přidání existujícího virtuálního počítače do skupiny dostupnosti.  
+Pokud chcete zajistit redundanci pro vaši aplikaci, doporučujeme seskupit dva nebo více virtuálních počítačů do skupiny dostupnosti. Advisor určí skupiny dostupnosti, které obsahují jeden virtuální počítač a doporučuje přidání jednoho nebo více virtuálních počítačů k němu. Tato konfigurace zajistí, že během buď plánované i neplánované údržby, alespoň jeden virtuální počítač je k dispozici a splňuje SLA pro Azure virtual Machines. Můžete k vytvoření virtuálního počítače nebo přidat existující virtuální počítač do skupiny dostupnosti.  
 
-## <a name="ensure-application-gateway-fault-tolerance"></a>Ujistěte se, aplikace brány odolnost proti chybám
-Zajištění kontinuity obchodních procesů důležitých aplikací, které jsou zapnuté nástrojem application Gateway, Advisor identifikuje instance brány aplikace, kteří nejsou nakonfigurovaní pro odolnost proti chybám, a navrhování nápravné akce, které můžete provést. Advisor určí střední a velké aplikace s jedinou instancí brány a doporučí přidat nejméně jedna další instance. Také určí jeden nebo více instance malé application Gateway a doporučuje migrace na střední a velké jednotky SKU. Advisor doporučuje tyto akce se ujistíte, že instance brány vaší aplikace nakonfigurovaná vyhovět požadavkům SLA pro tyto prostředky.
+## <a name="ensure-application-gateway-fault-tolerance"></a>Zajištění odolnosti proti chybám application gateway
+Zajištění kontinuity obchodních procesů klíčových aplikací, které využívají služby application Gateway, identifikuje Advisor bránu instance aplikace, které nejsou konfigurovány pro odolnost proti chybám a navrhne nápravné akce, které můžete provést. Advisor určuje střední a velké aplikace s jedinou instancí brány a doporučí přidávání nejméně jedna další instance. Také určuje instance jednoho nebo více malých aplikačních bran a doporučuje migrace na střední nebo velké skladové položky. Advisor doporučuje tyto akce, které vaše aplikace instance brány jsou nakonfigurujte tak, aby splňovat požadavky na aktuální smlouvy SLA pro tyto prostředky.
 
-## <a name="improve-the-performance-and-reliability-of-virtual-machine-disks"></a>Zvýšení výkonu a spolehlivosti disky virtuálního počítače
+## <a name="improve-the-performance-and-reliability-of-virtual-machine-disks"></a>Zvýšit výkon a spolehlivost disků virtuálního počítače.
 
-Advisor určí virtuálních počítačů s standardní disky a doporučuje upgrade na prémiové disky.
+Advisor identifikuje virtuální počítače s disky standard a doporučuje upgrade na disky premium.
  
-Azure Premium Storage nabízí podporu vysoce výkonné, nízkou latencí disků pro virtuální počítače spustit I náročnými úlohy. Disky virtuálního počítače, které používají účty úložiště premium ukládat data do disků SSD (Solid-State Drive). Nejlepšího výkonu pro vaši aplikaci doporučujeme migraci všechny disky virtuálního počítače, které vyžadují vysokou IOPS pro storage úrovně premium. 
+Azure Premium Storage poskytuje podporu vysoce výkonných disků s nízkou latencí pro virtuální počítače, na kterých běží I intenzivních vstupně-výstupních operací. Disky virtuálních počítačů, které používají účty služby premium storage ukládat data na jednotky SSD (Solid-State Drive). Pro zajištění nejlepšího výkonu pro vaši aplikaci doporučujeme migrovat všechny disky virtuálního počítače, které vyžadují vysokou vstupně-výstupních operací na premium storage. 
 
-Pokud vaše disky nevyžadují vysokou IOPS, můžete omezit náklady na údržbu je v standardní úložiště. Standardní úložiště ukládá data disku virtuálního počítače na jednotkách pevných disků (HDD) namísto SSD. Můžete migrovat disky virtuálního počítače do prémiové disky. Pro prémiové disky jsou podporovány na virtuálním počítači většina SKU. Ale v některých případech, pokud chcete použít prémiové disky, může musíte upgradovat virtuální počítač SKU také.
+Pokud vaše disky nevyžadují vysoké IOPS, můžete omezit náklady na údržbu ve standardním úložišti. Storage úrovně Standard ukládá data na disku virtuálního počítače na jednotky pevných disků (HDD) namísto jednotky SSD. Můžete k migraci disků vašich virtuálních počítačů na disky premium. Disky Premium podporují ve většině skladových položek virtuálních počítačů. Ale v některých případech, pokud chcete použít disky úrovně premium, potřebujete k upgradu vašeho skladových položek virtuálních počítačů i.
 
-## <a name="protect-your-virtual-machine-data-from-accidental-deletion"></a>Virtuální počítač data chránit před nechtěným odstraněním
-Nastavení zálohování virtuálních počítačů zajistíte dostupnost důležitých podnikových dat a poskytuje ochranu před náhodným odstraněním nebo poškození.  Advisor identifikuje virtuální počítače, kde není povolené zálohování, a doporučí povolení zálohování. 
+## <a name="protect-your-virtual-machine-data-from-accidental-deletion"></a>Ochrana před náhodným odstraněním dat virtuálního počítače
 
-## <a name="ensure-you-have-access-to-azure-cloud-experts-when-you-need-it"></a>Ujistěte se, že máte přístup do cloudu Azure Odborníci v případě potřeby
-Při spuštění důležitých zatížení, je důležité mít přístup k technické podpory v případě potřeby. Advisor určí potenciální důležitých podnikových odběry, které nemají součástí jejich plán podpory se na technickou podporu a doporučuje upgrade na možnost, která zahrnuje se na technickou podporu.
+Nastavení zálohování virtuálních počítačů zajistí dostupnost důležitých podnikových dat a poskytuje ochranu proti náhodnému odstranění nebo poškození.  Advisor identifikuje virtuální počítače, kde není povolené zálohování, a doporučí povolení zálohování. 
 
-## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Informace o přístupu k zajištění vysoké dostupnosti doporučení v Advisor
+## <a name="ensure-you-have-access-to-azure-cloud-experts-when-you-need-it"></a>Zajistěte, že abyste měli přístup k odborníkům cloudu Azure, kdykoli ji potřebujete
 
-1. Přihlaste se k [portál Azure](https://portal.azure.com)a pak otevřete [Advisor](https://aka.ms/azureadvisordashboard).
+Při spuštění nejzásadnější úlohy, je důležité mít přístup k technické podpoře v případě potřeby. Advisor identifikuje potenciální nejzásadnější odběry, které nemají v jejich plán podpory součástí je technická podpora a doporučuje upgrade na možnost, která obsahuje technickou podporu.
 
-2.  Na řídicím panelu služby Advisor, klikněte na **vysokou dostupnost** kartě.
+## <a name="create-azure-service-health-alerts-to-be-notified-when-azure-issues-affect-you"></a>Vytvoření služby Azure Service Health výstrahy, která vás upozorní, kdy vás ovlivňují problémy Azure
+
+Doporučujeme nastavit upozornění služby Azure Service Health, která vás upozorní, kdy vás ovlivňují problémy se službami Azure. [Azure Service Health](https://azure.microsoft.com/features/service-health/) je bezplatná služba, která poskytuje individuální pokyny a podporu, když jsou ovlivněny problém se službou Azure. Advisor určí odběry, které nemají v nakonfigurovaná upozornění a doporučuje vytvoření nového.
+
+## <a name="configure-traffic-manager-endpoints-for-resiliency"></a>Konfigurace koncových bodů Traffic Manageru pro odolnost proti chybám
+
+Profily Traffic Manageru s více než jeden koncový bod prostředí vyšší dostupnost, pokud se nezdaří libovolný daný koncový bod. Umístění koncových bodů v různých oblastech dále zvyšuje spolehlivost služby. Advisor identifikuje profily Traffic Manageru níž se nachází pouze jeden koncový bod a doporučuje přidávání aspoň jeden další koncový bod v jiné oblasti.
+
+Pokud všechny koncové body v profilu služby Traffic Manager, který je nakonfigurovaný pro směrování blízkých výrazů jsou ve stejné oblasti, uživatelé z jiných oblastí zaznamenat zpoždění připojení. Přidání nebo přesunutí koncový bod do jiné oblasti bude celkový výkon a zajištění lepší dostupnosti, pokud selžou i všechny koncové body v jedné oblasti. Advisor určí profily Traffic Manageru, které jsou nakonfigurované pro bezkontaktní směrování, kde jsou všechny koncové body ve stejné oblasti a doporučuje přidání nebo přesunutí koncový bod do jiné oblasti Azure.
+
+Pokud se profil služby Traffic Manager je nakonfigurovaný pro geografické směrování, provoz se směruje do koncových bodů podle definovaných oblastí. Pokud se nezdaří oblasti, neexistuje žádné předdefinované převzetí služeb při selhání. Máte koncový bod, ve které oblastní seskupení je konfigurována pro "Všechny (celý svět)" vyhnout provoz probíhá vyřazování a vylepšit dostupnost služeb. Advisor identifikuje profily Traffic Manageru, které jsou nakonfigurované pro geografické směrování, pokud neexistuje žádný koncový bod nakonfigurovaný tak, aby mít oblastní seskupení jako "Všechny (celý svět)" a doporučuje provedením této změny konfigurace.
+
+## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Jak získat přístup k doporučení k vysoké dostupnosti v Advisoru
+
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com)a pak otevřete [Advisor](https://aka.ms/azureadvisordashboard).
+
+2.  Na řídicím panelu služby Advisor, klikněte na tlačítko **vysoké dostupnosti** kartu.
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o doporučení služby Advisor najdete v tématu:
-* [Úvod do Azure Advisor](advisor-overview.md)
+Další informace o doporučení Advisoru naleznete v tématu:
+* [Úvod do Azure Advisoru](advisor-overview.md)
 * [Začínáme se službou Advisor](advisor-get-started.md)
-* [Náklady na doporučení služby Advisor](advisor-performance-recommendations.md)
-* [Poradce při hodnocení výkonu doporučení](advisor-performance-recommendations.md)
-* [Doporučení zabezpečení Advisor](advisor-security-recommendations.md)
+* [Náklady na doporučení advisoru](advisor-performance-recommendations.md)
+* [Poradce doporučení k výkonu](advisor-performance-recommendations.md)
+* [Bezpečnostní doporučení advisoru](advisor-security-recommendations.md)
 

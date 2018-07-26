@@ -9,14 +9,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: conceptual
-ms.date: 07/16/2018
+ms.date: 07/24/2018
 ms.author: bonova
-ms.openlocfilehash: e0de9a1494641fef87d11545b99e5e7275f6b614
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: a9a02f9007c174024028305746682f9ac07dab22
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39069259"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39247206"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Migrace instance SQL serveru do Azure SQL Database Managed Instance
 
@@ -24,7 +24,7 @@ V tomto článku se dozvíte o metodách migrace systému SQL Server 2005 nebo n
 
 MI je rozšíření stávající služby SQL Database, které nabízí třetí možnost nasazení vedle jedné databáze a elastických fondů.  Cílem totiž je aby databáze lift and shift na plně spravovaný model PaaS, bez nutnosti změny návrhu aplikace. SQL Database Managed Instance poskytuje vysokou kompatibilitu díky místnímu programovacímu modelu SQL Serveru a integrované podpoře valné většiny funkcí SQL Serveru a doprovodných nástrojů a služeb.
 
-Na vysoké úrovni proces migrace aplikace vypadá jako na následujícím diagramu:
+Na vysoké úrovni proces migrace aplikace vypadá takto:
 
 ![Proces migrace](./media/sql-database-managed-instance-migration/migration-process.png)
 
@@ -105,7 +105,7 @@ Následující tabulka obsahuje další informace týkající se metod, které m
 |Obnovení z Azure Storage do spravované Instance|[OBNOVENÍ z adresy URL pomocí pověření SAS](sql-database-managed-instance-restore-from-backup-tutorial.md)|
 
 > [!IMPORTANT]
-> - Při migraci databáze chráněn [transparentního šifrování dat](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) do spravované Instance Azure SQL pomocí možnosti nativní obnovení, je třeba migrovat před odpovídající certifikát z místní nebo IaaS SQL Server obnovení databáze. Podrobné pokyny najdete v článku [cert TDE migrovat do Managed Instance](sql-database-managed-instance-migrate-tde-certificate.md)
+> - Při migraci databáze chráněné [transparentním šifrováním dat](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) (TDE) do spravované instance Azure SQL pomocí nativní možnosti obnovení je třeba před obnovením databáze migrovat odpovídající certifikát z místního nebo IaaS systému SQL Server. Podrobné pokyny najdete v článku [cert TDE migrovat do Managed Instance](sql-database-managed-instance-migrate-tde-certificate.md)
 > - Obnovení databází systému se nepodporuje. Pokud chcete migrovat objekty na úrovni instance (uložené v databázi master a databázi msdb databáze), doporučujeme je skriptování a spouštění skriptů T-SQL v cílové instanci.
 
 Úplný kurz, který zahrnuje obnovení zálohy databáze do Managed Instance pomocí pověření SAS najdete v tématu [obnovit ze zálohy do spravované Instance](sql-database-managed-instance-restore-from-backup-tutorial.md).

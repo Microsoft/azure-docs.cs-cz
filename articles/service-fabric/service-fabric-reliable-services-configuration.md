@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/02/2017
 ms.author: sumukhs
-ms.openlocfilehash: c320f27dd53f0545ff5074d2d4f5a7bdd445fd89
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: f2af7c65d42cbbec28fd511be18c72a6cd3c3d0c
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37866174"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39249015"
 ---
 # <a name="configure-stateful-reliable-services"></a>Konfigurace stavového modelu reliable services
 Existují dvě sady nastavení konfigurace pro služby reliable services. Jedna sada je globální pro všechny služby reliable services v clusteru, zatímco je další sada specifická pro konkrétní službu reliable.
@@ -118,12 +118,13 @@ ReplicatorConfig
 | CheckpointThresholdInMB |MB |50 |Množství místa souboru protokolu, po jejímž uplynutí je stav byl vytvořen kontrolní bod. |
 | MaxRecordSizeInKB |kB |1024 |Největší velikost záznamu, který Replikátor může zapisovat do protokolu. Tato hodnota musí být násobkem 4 a je větší než 16. |
 | MinLogSizeInMB |MB |0 (určit systém) |Minimální velikost protokolu transakcí. V protokolu, nebudou moct zkrátit na velikost pod toto nastavení. Hodnota 0 znamená, že Replikátor určí minimální velikost protokolu. Zvýšení této hodnoty zvyšuje pravděpodobnost způsobem částečné kopie a přírůstkové zálohování od šance na příslušných protokolových záznamy, které vedlo ke zkrácení klesnou. |
-| TruncationThresholdFactor |Faktor |2 |Určuje, jakou velikost protokolu se budou aktivovat zkrácení. Prahová hodnota pro zkrácení je určeno MinLogSizeInMB vynásobené TruncationThresholdFactor. TruncationThresholdFactor musí být větší než 1. MinLogSizeInMB * TruncationThresholdFactor musí být menší než MaxStreamSizeInMB. |
-| ThrottlingThresholdFactor |Faktor |4 |Určuje, jakou velikost protokolu replika začne omezené. Omezení prahovou hodnotu (v MB) se určuje podle maximální ((MinLogSizeInMB * ThrottlingThresholdFactor),(CheckpointThresholdInMB * ThrottlingThresholdFactor)). Omezení prahovou hodnotu (v MB) musí být větší než prahová hodnota zkrácení (v MB). Zkrácení prahovou hodnotu (v MB) musí být menší než MaxStreamSizeInMB. |
+| TruncationThresholdFactor |faktor |2 |Určuje, jakou velikost protokolu se budou aktivovat zkrácení. Prahová hodnota pro zkrácení je určeno MinLogSizeInMB vynásobené TruncationThresholdFactor. TruncationThresholdFactor musí být větší než 1. MinLogSizeInMB * TruncationThresholdFactor musí být menší než MaxStreamSizeInMB. |
+| ThrottlingThresholdFactor |faktor |4 |Určuje, jakou velikost protokolu replika začne omezené. Omezení prahovou hodnotu (v MB) se určuje podle maximální ((MinLogSizeInMB * ThrottlingThresholdFactor),(CheckpointThresholdInMB * ThrottlingThresholdFactor)). Omezení prahovou hodnotu (v MB) musí být větší než prahová hodnota zkrácení (v MB). Zkrácení prahovou hodnotu (v MB) musí být menší než MaxStreamSizeInMB. |
 | MaxAccumulatedBackupLogSizeInMB |MB |800 |Maximální počet shromážděných velikost (v MB) protokoly zálohování v řetězci dané zálohy protokolu. Přírůstkové zálohování žádostí selže, pokud Přírůstková záloha vygeneruje protokol zálohování, která může způsobit nahromaděné protokoly zálohování od odpovídající úplné zálohování větší než tato velikost. V takovém případě je potřeba uživatele proveďte úplnou zálohu. |
 | SharedLogId |GUID |"" |Určuje jedinečný identifikátor GUID pro účely identifikace sdílené protokol využít tuto repliku. Služby by neměl obvykle, pomocí tohoto nastavení. Nicméně pokud SharedLogId je, pak SharedLogPath musí také uvést. |
 | SharedLogPath |Plně kvalifikovaný název cesty |"" |Určuje plně kvalifikovanou cestu, kde se vytvoří soubor sdílený protokolu pro tuto repliku. Služby by neměl obvykle, pomocí tohoto nastavení. Nicméně pokud SharedLogPath je, pak SharedLogId musí také uvést. |
 | SlowApiMonitoringDuration |Sekundy |300 |Nastaví interval monitorování pro spravované volání rozhraní API. Příklad: uživatel k dispozici funkce zálohování zpětného volání. Po uplynutí intervalu, sestava stavu upozornění se odešlou do Správce stavu. |
+| LogTruncationIntervalSeconds |Sekundy |0 |Při přihlášení, které se iniciovalo zkrácení na každou repliku konfigurovatelným intervalem. Používá se k Ujistěte se, že protokol zkrácen také na základě času namísto pouze velikost protokolu. Toto nastavení taky vynutí, mazání odstraněných položek spolehlivého slovníku. Proto jej lze použít k zajištění odstraněné položky mažou včas. |
 
 ### <a name="sample-configuration-via-code"></a>Ukázkové konfiguraci prostřednictvím kódu
 ```csharp

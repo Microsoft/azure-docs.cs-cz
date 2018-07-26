@@ -1,6 +1,6 @@
 ---
-title: Konfigurace MSI na škálovací sadu pomocí šablony Azure virtuálních počítačů
-description: Podrobné pokyny ke konfiguraci Identity spravované služby (MSI) na VMSS Azure pomocí šablony Azure Resource Manageru.
+title: Konfigurace Identity spravované služby na škálovací sadu pomocí šablony Azure virtuálních počítačů
+description: Podrobné pokyny ke konfiguraci Identity spravované služby ve VMSS Azure pomocí šablony Azure Resource Manageru.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/20/2018
 ms.author: daveba
-ms.openlocfilehash: b4fa875c71869dc3fd671f5dc4b801934c27f0ff
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 562bf5e5239114a8dad16727089f94f378db82ff
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39237192"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258860"
 ---
 # <a name="configure-managed-service-identity-on-virtual-machine-scale-using-a-template"></a>Konfigurace Identity spravované služby v měřítku virtuálního počítače pomocí šablony
 
@@ -49,7 +49,7 @@ Stejně jako webu Azure portal a skriptování, [Azure Resource Manageru](../../
    - Pomocí místní [editor JSON (například VS Code)](../../azure-resource-manager/resource-manager-create-first-template.md)a nahrání a nasazení pomocí Powershellu nebo rozhraní příkazového řádku.
    - Pomocí sady Visual Studio [projekt skupiny prostředků Azure](../../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) jak vytvořit a nasadit šablonu.  
 
-Bez ohledu na vámi zvolené možnosti syntaxe šablony je stejný během počátečního nasazení a opětovné nasazení. Povolení MSI nového nebo existujícího virtuálního počítače se provádí stejným způsobem. Také ve výchozím nastavení, provede Azure Resource Manageru [přírůstkové aktualizace](../../azure-resource-manager/resource-group-template-deploy.md#incremental-and-complete-deployments) až po nasazení.
+Bez ohledu na vámi zvolené možnosti syntaxe šablony je stejný během počátečního nasazení a opětovné nasazení. Povolení Identity spravované služby na novou nebo existující virtuální počítač se provádí stejným způsobem. Také ve výchozím nastavení, provede Azure Resource Manageru [přírůstkové aktualizace](../../azure-resource-manager/resource-group-template-deploy.md#incremental-and-complete-deployments) až po nasazení.
 
 ## <a name="system-assigned-identity"></a>Identitu přiřazenou systémem
 
@@ -69,7 +69,7 @@ V této části se povolí a zakáže systém přiřadil identity pomocí šablo
    },
    ```
 
-3. (Volitelné) Přidat škálovací sady virtuálních počítačů rozšíření MSI jako `extensionsProfile` elementu. Tento krok je volitelný, i identitu služby Azure Instance Metadata služby (IMDS), můžete použít k získání tokenů také.  Použijte následující syntaxi:
+3. (Volitelné) Přidejte identitu spravované služby rozšíření jako virtuálního počítače škálovací sady `extensionsProfile` elementu. Tento krok je volitelný, i identitu služby Azure Instance Metadata služby (IMDS), můžete použít k získání tokenů také.  Použijte následující syntaxi:
 
    >[!NOTE] 
    > V následujícím příkladu se předpokládá škálovací sadu virtuálních počítačů Windows nastavit rozšíření (`ManagedIdentityExtensionForWindows`) se nasazuje. Můžete také nakonfigurovat pro Linux s použitím `ManagedIdentityExtensionForLinux` namísto toho `"name"` a `"type"` elementy.

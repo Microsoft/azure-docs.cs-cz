@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2018
+ms.date: 07/25/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 8e4cc67af4276bc244d402258a90dfec01d61add
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 2d49164748079346f24aeeebe216b2668a4e3aed
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37919015"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258484"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory bezproblémové jednotné přihlašování: Nejčastější dotazy
 
@@ -52,7 +52,7 @@ Kromě toho, uživatelé získají bezobslužné možnosti přihlašování, kdy
 | Název aplikace | Adresa URL aplikace, který se má použít |
 | -- | -- |
 | SharePoint Online | contoso.sharepoint.com |
-| Azure Portal | portal.azure.com/contoso.com |
+| portál Azure | portal.azure.com/contoso.com |
 
 Ve výše uvedeným tabulkám nahraďte název vaší domény, abyste se dostali adresy URL správné aplikace pro vašeho tenanta "contoso.com".
 
@@ -93,6 +93,12 @@ Proveďte tyto kroky na místním serveru, kde je spuštěn nástroj Azure AD Co
 ### <a name="step-2-update-the-kerberos-decryption-key-on-each-ad-forest-that-it-was-set-it-up-on"></a>Krok 2. Aktualizovat dešifrovací klíč protokolu Kerberos v každé doménové struktuře AD, který ho se ho nastavit na
 
 1. Volání `$creds = Get-Credential`. Po zobrazení výzvy zadejte přihlašovací údaje správce domény pro určené doménové struktuře AD.
+
+>[!NOTE]
+>Používáme zadané v uživatele hlavní názvy (UPN) uživatelské jméno správce domény (johndoe@contoso.com) formát nebo kvalifikovaný účtu sam formát názvu domény (contoso\janmacek nebo contoso.com\johndoe), se najít odpovídající doménovou strukturu AD. Pokud používáte účtu sam kvalifikovaný název domény, používáme doména uživatelské jméno pro [vyhledejte řadič domény ze správce domény s DNS](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx). Pokud místo toho použít hlavní název uživatele jsme [přeložit na účtu sam kvalifikovaný název domény](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa) před vyhledání vhodné řadiče domény.
+
+použít UPN, jsme přeložit 
+
 2. Volání `Update-AzureADSSOForest -OnPremCredentials $creds`. Tento příkaz aktualizuje dešifrovací klíč protokolu Kerberos pro `AZUREADSSOACC` účet počítače v této konkrétní doménové struktuře AD a aktualizuje ve službě Azure AD.
 3. Zopakujte předchozí kroky pro každou doménovou strukturu AD, který jste nastavili tuto funkci na.
 

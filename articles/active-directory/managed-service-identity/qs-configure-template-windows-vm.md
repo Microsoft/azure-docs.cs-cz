@@ -1,6 +1,6 @@
 ---
-title: Konfigurace MSI ve Virtuálním počítači Azure pomocí šablony
-description: Podrobné pokyny ke konfiguraci Identity spravované služby (MSI) na virtuálním počítači Azure pomocí šablony Azure Resource Manageru.
+title: Postup konfigurace Identity spravované služby na Virtuálním počítači Azure pomocí šablony
+description: Podrobné pokyny ke konfiguraci Identity spravované služby na virtuálním počítači Azure pomocí šablony Azure Resource Manageru.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: daveba
-ms.openlocfilehash: 703595bbc13fb859f406e7c9fa422a9c573957ab
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 15a743f524c58e56247ec46fee27611b33595bad
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39237243"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258690"
 ---
 # <a name="configure-a-vm-managed-service-identity-by-using-a-template"></a>Konfigurace virtuálních počítačů spravovaná identita služby s použitím šablony
 
@@ -73,7 +73,7 @@ V této části se povolí a zakáže systému přiřazené identity pomocí ša
    },
    ```
 
-4. (Volitelné) Přidat rozšíření MSI virtuálního počítače jako `resources` elementu. Tento krok je volitelný, i identitu koncového bodu Azure Instance Metadata služby (IMDS), můžete použít k získání tokenů také.  Použijte následující syntaxi:
+4. (Volitelné) Přidejte identitu spravované služby virtuálního počítače rozšíření jako `resources` elementu. Tento krok je volitelný, i identitu koncového bodu Azure Instance Metadata služby (IMDS), můžete použít k získání tokenů také.  Použijte následující syntaxi:
 
    >[!NOTE] 
    > V následujícím příkladu se předpokládá rozšíření virtuálního počítače Windows (`ManagedIdentityExtensionForWindows`) se nasazuje. Můžete také nakonfigurovat pro Linux s použitím `ManagedIdentityExtensionForLinux` namísto toho `"name"` a `"type"` elementy.

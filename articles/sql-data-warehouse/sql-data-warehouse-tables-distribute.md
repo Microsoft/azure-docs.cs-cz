@@ -1,6 +1,6 @@
 ---
-title: Návrh distribuovaných tabulky pokyny - Azure SQL Data Warehouse | Microsoft Docs
-description: Doporučení pro navrhování distribuovat algoritmu hash a kruhového dotazování distribuované tabulky v Azure SQL Data Warehouse.
+title: Distribuované tabulky s pokyny k návrhu – Azure SQL Data Warehouse | Dokumentace Microsoftu
+description: Doporučení pro navrhování distribuovaných hash a kruhové dotazování distribuované tabulky ve službě Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg-msft
@@ -10,65 +10,65 @@ ms.component: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: d65ca91fc4cffa53adf3a7c56c7919e46c5037d9
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 99a063abb3edea75b14fbcf67a889c5ba435daf3
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31526249"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258044"
 ---
-# <a name="guidance-for-designing-distributed-tables-in-azure-sql-data-warehouse"></a>Pokyny pro návrh distribuovaných tabulek v Azure SQL Data Warehouse
-Doporučení pro navrhování distribuovat algoritmu hash a kruhového dotazování distribuované tabulky v Azure SQL Data Warehouse.
+# <a name="guidance-for-designing-distributed-tables-in-azure-sql-data-warehouse"></a>Pokyny k návrhu distribuované tabulky ve službě Azure SQL Data Warehouse
+Doporučení pro navrhování distribuovaných hash a kruhové dotazování distribuované tabulky ve službě Azure SQL Data Warehouse.
 
-Tento článek předpokládá, že jste obeznámeni s distribuci dat a koncepty přesun dat v SQL Data Warehouse.  Další informace najdete v tématu [Azure SQL Data Warehouse - masivně paralelní zpracování () architektura MPP](massively-parallel-processing-mpp-architecture.md). 
+Tento článek předpokládá, že máte zkušenosti s distribuci dat a koncepty přesouvání dat ve službě SQL Data Warehouse.  Další informace najdete v tématu [Azure SQL Data Warehouse – architektura masivně paralelní zpracování (MPP)](massively-parallel-processing-mpp-architecture.md). 
 
 ## <a name="what-is-a-distributed-table"></a>Co je distribuované tabulky?
-Distribuované tabulka se zobrazí jako jednu tabulku, ale řádky jsou ve skutečnosti ukládat v rámci 60 distribuce. Řádky jsou distribuované s hash nebo algoritmus kruhového dotazování.  
+Distribuované tabulky se zobrazí jako jedné tabulky, ale řádky jsou ve skutečnosti uložených ve 60 distribucí. Řádky se distribuují se kruhové dotazování algoritmus nebo hash.  
 
-**Distribuovat algoritmu hash tabulky** zlepšit výkon dotazu na tabulky faktů velké a jsou zaměřeny tohoto článku. **Kruhové dotazování tabulky** jsou užitečné pro zlepšení rychlost načítání. Tyto možnosti návrhu, které mají významný dopad na vylepšení dotazů a načítání výkonu.
+**Hodnoty hash distribuované tabulky** zlepšení výkonu dotazů na velkých tabulek faktů, a jsou hlavním cílem tohoto článku. **Kruhové dotazování tabulky** jsou užitečné pro zlepšení rychlosti. Tyto volby návrhu mít významný dopad na zlepšení dotazu a výkon při načítání.
 
-Další možností úložiště table je replikaci malé tabulky pro všechny výpočetní uzly. Další informace najdete v tématu [návrh pokyny pro replikované tabulky](design-guidance-for-replicated-tables.md). Rychle vybrat mezi tři možnosti, najdete v části tabulky distribuované [tabulky přehled](sql-data-warehouse-tables-overview.md). 
+Další možností úložiště table je replikovat malé tabulky do výpočetních uzlů. Další informace najdete v tématu [pro replikované tabulky s pokyny k návrhu](design-guidance-for-replicated-tables.md). Rychle vybrat mezi tři možnosti, najdete v článku distribuované tabulky v [Přehled tabulek](sql-data-warehouse-tables-overview.md). 
 
-Jako součást návrh tabulky Pochopte, co nejvíce o vašich dat a jak je dotazován data.  Například zvažte tyto otázky:
+Jako součást návrh tabulky zjistěte, co nejvíc o vašich datech a jak dotazovat data.  Představte si třeba tyto otázky:
 
-- Jak velká je tabulka?   
-- Jak často se aktualizují v tabulce?   
-- Je nutné provést tabulkami faktů a dimenzí v datovém skladu?   
+- Jak velké jsou tabulky?   
+- Jak často se aktualizuje v tabulce?   
+- Musím tabulkami faktů a dimenzí v datovém skladu?   
 
 
-### <a name="hash-distributed"></a>Hodnota hash distribuované
-Distribuovat algoritmu hash tabulku rozděluje řádky tabulky na výpočetní uzly pomocí funkce deterministickou hash přiřadit každý řádek jednu [distribuční](massively-parallel-processing-mpp-architecture.md#distributions). 
+### <a name="hash-distributed"></a>Provádět distribuci hodnot hash
+Tabulka hash distribuce distribuuje řádky tabulky na výpočetních uzlech pomocí funkce hash deterministické přiřadit každý řádek jednu [distribuce](massively-parallel-processing-mpp-architecture.md#distributions). 
 
-![Tabulka distribuované](media/sql-data-warehouse-distributed-data/hash-distributed-table.png "distribuované tabulky")  
+![Distribuované tabulky](media/sql-data-warehouse-distributed-data/hash-distributed-table.png "distribuované tabulky")  
 
-Vzhledem k tomu, že identické hodnoty hash vždycky na stejný distribuční, datový sklad má integrovanou znalosti o umístění řádek. SQL Data Warehouse používá tyto znalosti minimalizovat přesun dat během dotazů, což zvyšuje výkon dotazů. 
+Vzhledem k tomu, že stejné hodnoty hash vždycky na stejný distribuční, data warehouse má integrované znalosti o umístění řádku. SQL Data Warehouse používá tyto znalosti, chcete-li minimalizovat přesun dat v dotazech, což zvyšuje výkon dotazů. 
 
-Distribuovat algoritmu hash tabulky fungují dobře u velkých fakt tabulek v hvězdicové schéma. Můžou mít velmi velké počty řádků a stále dosáhnout vysoký výkon. Existují samozřejmě některé aspekty návrhu, které pomáhají při dosažení výkonu, které je distribuovaný systém určená k poskytnutí. Výběr správné distribuční sloupce je jeden tyto vklady, který je popsaný v tomto článku. 
+Hodnoty hash distribuované tabulky fungují dobře u velkých tabulek faktů v hvězdicovém schématu. Mohou být velmi velký počet řádků a zachováním vysoký výkon. Existuje samozřejmě některé aspekty návrhu, které vám umožní získat distribuovaného systému je navržené pro poskytování výkonu. Volba vhodné distribučního sloupce je jeden takový faktor, který je popsaný v tomto článku. 
 
-Zvažte použití distribuovat algoritmu hash tabulky, když:
+Zvažte použití algoritmu hash distribuce tabulky, když:
 
 - Velikost tabulky na disku je větší než 2 GB.
-- Tabulka obsahuje časté vložit, aktualizovat a odstraňovat operace. 
+- Tabulka obsahuje často vložení, aktualizace a odstranění operace. 
 
-### <a name="round-robin-distributed"></a>Distribuované kruhového dotazování
-Řádky tabulky distribuované tabulku kruhového dotazování rovnoměrně distribuuje mezi všechny distribuce. Přiřazení řádků, které mají distribuce je náhodný. Na rozdíl od distribuovat algoritmu hash tabulky řádky s stejné hodnoty není zaručena bezpečnost pro přiřazení ke stejné rozdělení. 
+### <a name="round-robin-distributed"></a>Distribuované metodou kruhového
+Řádky tabulky distribuovanou tabulku kruhového rovnoměrně distribuuje mezi všechny distribuce. Přiřazení řádků, které mají distribuce je náhodné. Na rozdíl od tabulky hash distribuované není zaručena řádků pomocí stejné hodnoty k přiřazení ke stejné rozdělení. 
 
-V důsledku toho systém někdy potřebuje k vyvolání operace přesunu dat lepší uspořádání dat před překlad dotazu.  Tento krok navíc může zpomalit své dotazy. Například obvykle připojení pomocí kruhového dotazování tabulky vyžaduje promísení řádky, což je podle výkonu.
+V důsledku toho systém někdy potřebuje k vyvolání operace přesunu dat lépe uspořádat data před překlad dotazu.  Tento krok navíc může zpomalit vaše dotazy. Například připojení kruhové dotazování tabulky obvykle vyžaduje promísení řádky, což je výkon.
 
-Zvažte použití rozdělení kruhového dotazování pro tabulku v následujících scénářích:
+Zvažte použití kruhové dotazování na distribuci pro tabulky v následujících scénářích:
 
-- Když Začínáme jako jednoduchý počáteční bod, protože je to výchozí hodnota
-- Pokud neexistuje zřejmé spojující klíč
-- Pokud není k dispozici vhodným kandidátem sloupce pro hodnoty hash distribuce tabulky
+- Při zahájení práce jako jednoduchý výchozí bod, protože jde o výchozí nastavení
+- Pokud není žádný zřejmý spojovacího klíč
+- Pokud není k dispozici sloupec vhodným kandidátem pro algoritmus hash distribuce tabulky
 - Pokud v tabulce nesdílí společný klíč spojení s jinými tabulkami
 - Pokud je méně důležité než jiné spojení v dotazu spojení
-- Pokud je tabulka dočasné pracovní tabulky
+- Když je tabulka dočasnou fázovou tabulku
 
-Tento kurz [data taxicab zatížení New Yorku k Azure SQL Data Warehouse](load-data-from-azure-blob-storage-using-polybase.md#load-the-data-into-your-data-warehouse) poskytuje příklad načítání dat do pracovní tabulky pomocí kruhového dotazování.
+Tento kurz [data taxislužby města New York zatížení do služby Azure SQL Data Warehouse](load-data-from-azure-blob-storage-using-polybase.md#load-the-data-into-your-data-warehouse) poskytuje příklad načítání dat do kruhové dotazování pracovní tabulky.
 
 
-## <a name="choosing-a-distribution-column"></a>Výběr distribuční sloupce
-Tabulku distribuovat algoritmu hash má distribuční sloupec, který je klíč algoritmu hash. Například následující kód vytvoří tabulku distribuovat algoritmu hash se ProductKey jako distribuční sloupce.
+## <a name="choosing-a-distribution-column"></a>Výběr distribučního sloupce
+Má tabulka hash distribuované distribučního sloupce, který je klíč algoritmu hash. Například následující kód vytvoří tabulku hash distribuované se ProductKey jako sloupec distribuce.
 
 ```SQL
 CREATE TABLE [dbo].[FactInternetSales]
@@ -88,55 +88,55 @@ WITH
 ;
 ``` 
 
-Výběr sloupce distribuce je rozhodnutí o návrhu důležité, protože hodnoty v tomto sloupci určují, jak jsou distribuovány řádky. Nejlepší volbou závisí na několika faktorech a obvykle zahrnuje kompromisy. Ale když nebude sloupci nejlepší poprvé, můžete použít [vytvořit tabulku AS vyberte funkce CTAS ()](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) opětovné vytvoření tabulky se sloupcem jiný distribuční. 
+Výběr distribučního sloupce je rozhodnutí o návrhu důležité, protože hodnoty v tomto sloupci určit, jakým způsobem se distribuují řádky. Nejlepší volbou závisí na několika faktorech a obvykle zahrnuje kompromisy. Nicméně, pokud se rozhodnete není nejlepší sloupec poprvé, můžete použít [vytvořit TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) k opětovnému vytvoření tabulky se sloupcem různé distribuční. 
 
-### <a name="choose-a-distribution-column-that-does-not-require-updates"></a>Zvolte distribuční sloupec, který nevyžaduje aktualizace
-Distribuční sloupce nelze aktualizovat, není-li odstranit řádek a vložit nový řádek aktualizovanými hodnotami. Proto vyberte sloupec s statické hodnoty. 
+### <a name="choose-a-distribution-column-that-does-not-require-updates"></a>Zvolte distribuční sloupce, který nevyžaduje, aby aktualizace
+Rozdělení sloupce nelze aktualizovat, není-li odstranit řádek a vložit nový řádek s aktualizovanými hodnotami. Proto zvolte sloupec s statickými hodnotami. 
 
 ### <a name="choose-a-distribution-column-with-data-that-distributes-evenly"></a>Zvolte distribuční sloupce s daty, která distribuuje rovnoměrně
 
-Pro nejlepší výkon všechny z rozdělení musí mít přibližně stejný počet řádků. Pokud jeden nebo více distribuce nesoustředil příliš velký počet řádků, některých distribucích dokončit jejich část paralelního dotazu než jiné. Vzhledem k tomu, že dotaz nelze dokončit, dokud všechny distribuce dokončení zpracování, je pouze tak rychlý jako nejpomalejší distribuce každý dotaz.
+Pro zajištění nejlepšího výkonu všechny distribuce by měl mít přibližně stejný počet řádků. Pokud jeden nebo více distribuce nepoměrně velký počet řádků, finish některých distribucích jejich část paralelní dotaz před ostatními. Protože dotaz nelze dokončit, dokud nedokončí zpracování všech distribucí, každý dotaz je pouze nejrychleji nejpomalejší distribuce.
 
-- Zkosení dat znamená, že data není rovnoměrně mezi distribucí
-- Zpracování zkosení znamená, že některé distribuce trvat déle než jiné při spouštění paralelní dotazy. To může dojít, když se nesouměrně rozdělí data.
+- Nerovnoměrná distribuce dat znamená, že se data rovnoměrně distribuovaných prostřednictvím distribuce
+- Zpracování zkosení znamená, že některých distribucích trvat déle než jiné spouštěním paralelních dotazů. To může nastat při zkosený data.
   
-Vyvážit paralelní zpracování, vyberte distribuční sloupec, který:
+Pro paralelní zpracování, výběr distribučního sloupce, který:
 
-- **Má mnoho jedinečné hodnoty.** Sloupec může mít některé duplicitní hodnoty. Všechny řádky se stejnou hodnotou, ale jsou přiřazeny k stejné rozdělení. Vzhledem k tomu, že existují 60 distribuce, měli sloupec minimálně 60 jedinečné hodnoty.  Obvykle je mnohem větší počet jedinečných hodnot.
-- **Nemá žádné hodnoty Null, nebo má jenom pár hodnoty Null.** Příklad extreme Pokud jsou všechny hodnoty ve sloupci NULL, všechny řádky přiřazené k stejné rozdělení. V důsledku toho zpracování dotazu se nesouměrně rozdělí na jeden distribuční a nevyužívají paralelní zpracování. 
-- **Není sloupec kalendářních**. Všechna data pro stejné datum pojmenováváme stejné rozdělení. Pokud několik uživatelů se filtrování ve stejný den, udělejte jenom 1 60 distribuce všechnu práci zpracování. 
+- **Má mnoho jedinečné hodnoty.** Sloupce mají duplicitní hodnoty. Však všechny řádky se stejnou hodnotou jsou přiřazeny do stejné distribuce. Protože je 60 distribucí, sloupec by měl mít alespoň 60 jedinečné hodnoty.  Počet jedinečných hodnot, který je obvykle mnohem větší.
+- **Nemá žádné hodnoty Null, nebo má jenom pár hodnoty Null.** Extrémní příklad Pokud jsou všechny hodnoty ve sloupci Hodnota NULL, všechny řádky jsou přiřazeny k stejné rozdělení. V důsledku toho zpracování dotazů zkosený k jednomu distribučnímu a nijak přínosné paralelní zpracování. 
+- **Sloupec data není**. Všechna data pro stejné datum, jsou ve stejné rozdělení. Pokud se několik uživatelů jsou filtrování na stejné datum, pouze 1 60 distribucí udělal všechnu práci zpracování. 
 
-### <a name="choose-a-distribution-column-that-minimizes-data-movement"></a>Zvolte distribuční sloupec, který minimalizuje přesun dat
+### <a name="choose-a-distribution-column-that-minimizes-data-movement"></a>Zvolte distribuční sloupce, který minimalizuje přesun dat
 
-Získat výsledek dotazů se správným dotazem může přesun dat z jednom výpočetním uzlu do jiného. Přesun dat obvykle dojde, když dotazy mít spojování a agregaci pro distribuované tabulky. Výběr distribuční sloupec, který se může minimalizovat přesun dat je jedním z nejdůležitějších strategie pro optimalizaci výkonu SQL Data Warehouse.
+Chcete-li získat správný dotaz dotazů s výsledkem může být přesunout data z jednom výpočetním uzlu do jiného. Přesun dat běžně dochází v případě dotazů mít spojování a agregaci pro distribuované tabulky. Výběr distribučního sloupce, který se může minimalizovat přesun dat je jednou z vašich nejdůležitějších strategie pro optimalizaci výkonu služby SQL Data Warehouse.
 
-Minimalizovat přesun dat, vyberte distribuční sloupec, který:
+Chcete-li minimalizovat přesun dat, vyberte sloupec distribuce, které:
 
-- Se používá v `JOIN`, `GROUP BY`, `DISTINCT`, `OVER`, a `HAVING` klauzule. Pokud dvě tabulky faktů velké časté spojení, zlepšuje výkon dotazů při distribuci obě tabulky v jednom ze sloupce spojení.  Při tabulku se nepoužívá v spojení, vezměte v úvahu tabulky na sloupci, který je často v distribuci `GROUP BY` klauzule.
-- Je *není* použít v `WHERE` klauzule. To může upřesněte dotaz pro nejde spustit na všechny distribuce. 
-- Je *není* sloupec data. Klauzule WHERE často filtrovat podle data.  V takovém případě by mohl spustit veškeré zpracování na pouze několik distribuce.
+- Se používá v `JOIN`, `GROUP BY`, `DISTINCT`, `OVER`, a `HAVING` klauzule. Pokud často spojení dvou velkých tabulek faktů, zvyšuje výkon dotazů při distribuci obou tabulek na jednotlivé sloupce spojení.  Pokud tabulka není použit ve spojeních, vezměte v úvahu distribuce tabulku podle sloupce, který se často ve `GROUP BY` klauzuli.
+- Je *není* používané `WHERE` klauzule. To může zúžení dotazu a nebudou tedy spuštěny na distribuce. 
+- Je *není* sloupec data. Klauzule WHERE často filtrovat podle data.  Pokud k tomu dojde, veškeré zpracování může spustit v pouze několika distribucích.
 
-### <a name="what-to-do-when-none-of-the-columns-are-a-good-distribution-column"></a>Co dělat, pokud žádná ze sloupce jsou správné distribuční sloupce
+### <a name="what-to-do-when-none-of-the-columns-are-a-good-distribution-column"></a>Co dělat, když žádný sloupec jsou dobré distribučního sloupce
 
-Pokud žádná z vaší sloupce mají dostatek jedinečných hodnot ve sloupci distribuční, můžete vytvořit nový sloupec jako složené z jedné nebo více hodnot. Abyste se vyhnuli přesun dat během provádění dotazu, používejte složené distribuční sloupec jako sloupec spojení v dotazech.
+Pokud žádný sloupců nemá dostatek různé hodnoty pro sloupec distribuce, můžete vytvořit nový sloupec jako složený z jednoho nebo více hodnot. Pokud chcete vyhnout přesun dat při provádění dotazu, použijte jako sloupec spojení v dotazech složené distribučního sloupce.
 
-Když navrhujete tabulku distribuovat algoritmu hash, dalším krokem je načíst data do tabulky.  Načítání pokyny, najdete v části [přehledem načítání](sql-data-warehouse-overview-load.md). 
+Když navrhujete distribuované hash tabulku, dalším krokem je načtení dat do tabulky.  Doprovodné materiály k načítání, najdete v části [přehledem načítání](sql-data-warehouse-overview-load.md). 
 
-## <a name="how-to-tell-if-your-distribution-column-is-a-good-choice"></a>Jak zjistit, pokud vaše distribuční sloupce je dobrá volba
-Po načtení dat do tabulky distribuovat algoritmu hash, zkontrolujte, jak se řádky rovnoměrně mezi 60 distribuce. Řádky za distribuční se může lišit až 10 % bez znatelný dopad na výkon. 
+## <a name="how-to-tell-if-your-distribution-column-is-a-good-choice"></a>Jak zjistit, zda distribučního sloupce je dobrou volbou
+Po načtení dat do tabulky hash distribuované, zkontrolujte, jak se řádky rovnoměrně mezi 60 distribucí. Až 10 % znatelný vliv na výkon se může lišit řádků na distribuci. 
 
-### <a name="determine-if-the-table-has-data-skew"></a>Určete, jestli tabulka obsahuje data zkreslit
-Rychlý způsob, jak zkontrolovat pro zkosení dat je použití [DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql). Následující kód SQL vrátí počet řádků tabulky, které jsou uložené v každé z 60 distribuce. Vyrovnáváním výkonu by měl být řádky v tabulce distribuované, rovnoměrně rozloženy všechny distribuce.
+### <a name="determine-if-the-table-has-data-skew"></a>Určete, jestli tabulka obsahuje nerovnoměrnou distribucí dat.
+Rychlý způsob, jak zkontrolujte, zda je Nerovnoměrná distribuce dat pomocí [DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql). Následující kód SQL, vrátí počet řádků tabulky, které jsou uloženy v každém 60 distribucí. Vyvážený výkon by měl být řádky v tabulce distribuované, rovnoměrně rozloženy distribuce.
 
 ```sql
 -- Find data skew for a distributed table
 DBCC PDW_SHOWSPACEUSED('dbo.FactInternetSales');
 ```
 
-Určení, které tabulky mít víc než 10 % data zkosení:
+Určení, které tabulky může být maximálně Nerovnoměrná distribuce dat 10 %:
 
-1. Vytvoření dbo.vTableSizes zobrazení, které se zobrazí v [Přehled tabulek](sql-data-warehouse-tables-overview.md#table-size-queries) článku.  
-2. Spusťte následující dotaz:
+1. Vytvořit zobrazení dbo.vTableSizes, zobrazené v [Přehled tabulek](sql-data-warehouse-tables-overview.md#table-size-queries) článku.  
+2. Spuštěním následujícího dotazu:
 
 ```sql
 select *
@@ -154,27 +154,27 @@ order by two_part_name, row_count
 ```
 
 ### <a name="check-query-plans-for-data-movement"></a>Zkontrolujte plány dotazů pro přesun dat
-Sloupec správné distribuční umožňuje spojování a agregaci tak, aby měl přesun dat minimální. Tato akce ovlivní způsob, jakým budou zasílány spojení. Získat přesun minimální dat pro připojení k na dvě tabulky distribuovat algoritmu hash, některý ze sloupců připojení musí být distribuční sloupce.  Pokud na stejný datový typ. sloupec distribuční připojení dvě tabulky distribuovat algoritmu hash, spojení přesun dat nevyžaduje. Spojení můžete použít další sloupce, aniž by docházelo k přesunu dat.
+Dobré distribučního sloupce umožňuje spojování a agregaci mít přesun dat minimální. Tato akce ovlivní způsob, jakým by měly být napsány spojení. Přesun minimální dat pro připojení na dvě tabulky hash distribuované získáte jednu spojované sloupce musí být sloupec distribuce.  Když se připojí k dvě tabulky hash distribuován na stejný datový typ. sloupec distribuce, spojení přesun dat nevyžaduje. Spojení můžete použít další sloupce, aniž by došlo k přesunu dat.
 
 Aby se zabránilo přesun dat během spojení:
 
-- Příslušné tabulky ve spojení musí být hodnota hash rozdělit na **jeden** sloupců podílejících se připojení.
-- Datové typy sloupce spojení se musí shodovat mezi obě tabulky.
+- Příslušné tabulky ve spojení musí být distribuován na hodnotu hash **jeden** sloupců podílejících se ve spojení.
+- Datové typy sloupce spojení musí odpovídat mezi oběma tabulkami.
 - Sloupce musí být připojené pomocí operátoru rovná se.
-- Typ spojení nesmí být `CROSS JOIN`.
+- Typ spojení nemůže být `CROSS JOIN`.
 
-Pokud chcete zobrazit, pokud dotazy dochází k přesunu dat, můžete si prohlédnout plán dotazu.  
+Pokud chcete zobrazit, pokud dotazů dochází k přesunu dat, můžete si prohlédnout plán dotazu.  
 
 
-## <a name="resolve-a-distribution-column-problem"></a>Vyřešení problému distribuční sloupce
-Není nutné vyřešit že všechny případy dat zkreslit. Distribuci dat je řádu najít rovnováhu mezi minimalizovat přesun dat a dat zkosení. Vždy není možné minimalizovat zkosení dat a přesun dat. Výhodou vytvoření přesun dat minimální někdy může převažují nad důsledky toho, že data zkreslit.
+## <a name="resolve-a-distribution-column-problem"></a>Řešení problémů sloupec distribuce
+Není nutné vyřešit, že všechny případy dat zkosení. Distribuce dat je otázkou najít správnou rovnováhu mezi minimalizovat Nerovnoměrná distribuce dat a přesun dat. Není vždy možné minimalizovat Nerovnoměrná distribuce dat a přesun dat. Výhodou přesouvání dat minimální někdy může převážit nad s nerovnoměrnou distribucí dat. dopad.
 
-Rozhodnout, pokud byste měli vyřešit dat zkosení v tabulce, měli byste se seznámit co nejvíce o datové svazky a dotazy v vaše úlohy. Můžete použít kroky v [dotazu monitorování](sql-data-warehouse-manage-monitor.md) článek k monitorování dopad na výkon dotazů zkosení. Konkrétně podívejte se na tom, jak dlouho trvalo rozsáhlé dotazy dokončení pro jednotlivé distribuce.
+Rozhodování, pokud by měla vyřešit data zkosení v tabulce, měli byste porozumět co nejvíc o objemy dat a dotazy ve vašich úloh. Můžete použít kroky v [monitorování dotazů](sql-data-warehouse-manage-monitor.md) článku sledovat dopad na výkon dotazů nerovnoměrné rozdělení. Hledejte především, jak dlouho trvá dokončení pro jednotlivé distribuce rozsáhlé dotazy.
 
-Vzhledem k tomu, že sloupec distribuční na existující tabulky nelze změnit, typické způsob řešení zkosení dat je znovu vytvořit tabulku se sloupcem jiný distribuční.  
+Protože distribučního sloupce na existující tabulky nelze změnit, je typické způsob, jak vyřešit Nerovnoměrná distribuce dat k opětovnému vytvoření tabulky se sloupcem různé distribuční.  
 
-### <a name="re-create-the-table-with-a-new-distribution-column"></a>Opětovným vytvořením tabulky se sloupcem nové distribuce
-Tento příklad používá [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse.md) a znovu vytvořte tabulku se sloupcem distribuční různé hodnoty hash.
+### <a name="re-create-the-table-with-a-new-distribution-column"></a>Znovu vytvořit v tabulce nový sloupec distribuce
+Tento příklad používá [CREATE TABLE AS SELECT](https://docs.microsoft.com/en-us/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?view=aps-pdw-2016-au7) znovu vytvořit tabulku se sloupci distribuce jiný algoritmus hash.
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales_CustomerKey]

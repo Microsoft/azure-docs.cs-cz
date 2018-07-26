@@ -1,5 +1,5 @@
 ---
-title: Konfigurace MSI ve VMSS Azure pomocí Powershellu
+title: Postup konfigurace Identity spravované služby na VMSS Azure pomocí Powershellu
 description: Podrobné pokyny ke konfiguraci systémových a uživatelských identit přiřazených na VMSS Azure pomocí Powershellu.
 services: active-directory
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/27/2017
 ms.author: daveba
-ms.openlocfilehash: b82785d0f4b6a5952334e891e7adec570c624f2d
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 5d4539c05d05053ac2ea6cd1c5fadbd161b41173
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238127"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39257738"
 ---
-# <a name="configure-a-vmss-managed-service-identity-msi-using-powershell"></a>Konfigurace VMSS Identity spravované služby (MSI) pomocí Powershellu
+# <a name="configure-a-vmss-managed-service-identity-using-powershell"></a>Nakonfigurujte identitu spravované služby VMSS pomocí Powershellu
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
@@ -55,7 +55,7 @@ Chcete-li vytvořit VMSS s identitou přiřazenou systémem povoleno:
     $VMSS = New-AzureRmVmssConfig -Location $Loc -SkuCapacity 2 -SkuName "Standard_A0" -UpgradePolicyMode "Automatic" -NetworkInterfaceConfiguration $NetCfg -IdentityType SystemAssigned`
     ```
 
-2. (Volitelné) Přidat pomocí rozšíření MSI VMSS `-Name` a `-Type` parametru u [Add-AzureRmVmssExtension](/powershell/module/azurerm.compute/add-azurermvmssextension) rutiny. Můžete předat buď "ManagedIdentityExtensionForWindows" nebo "ManagedIdentityExtensionForLinux", v závislosti na typu sady škálování virtuálního počítače nastavte a pojmenujte ho pomocí `-Name` parametru. `-Settings` Parametr určuje port používaný programem koncový bod tokenu OAuth pro získání tokenu:
+2. (Volitelné) Přidat pomocí Managed Service Identity VMSS rozšíření `-Name` a `-Type` parametru u [Add-AzureRmVmssExtension](/powershell/module/azurerm.compute/add-azurermvmssextension) rutiny. Můžete předat buď "ManagedIdentityExtensionForWindows" nebo "ManagedIdentityExtensionForLinux", v závislosti na typu sady škálování virtuálního počítače nastavte a pojmenujte ho pomocí `-Name` parametru. `-Settings` Parametr určuje port používaný programem koncový bod tokenu OAuth pro získání tokenu:
 
     > [!NOTE]
     > Tento krok je volitelný, i identitu koncového bodu Azure Instance Metadata služby (IMDS), můžete použít k získání tokenů také.
@@ -82,7 +82,7 @@ Pokud je potřeba povolit identitu přiřazenou systémem v existující škálo
    Update-AzureRmVmss -ResourceGroupName myResourceGroup -Name -myVmss -IdentityType "SystemAssigned"
    ```
 
-3. Přidat pomocí rozšíření MSI VMSS `-Name` a `-Type` parametru u [Add-AzureRmVmssExtension](/powershell/module/azurerm.compute/add-azurermvmssextension) rutiny. Můžete předat buď "ManagedIdentityExtensionForWindows" nebo "ManagedIdentityExtensionForLinux", v závislosti na typu sady škálování virtuálního počítače nastavte a pojmenujte ho pomocí `-Name` parametru. `-Settings` Parametr určuje port používaný programem koncový bod tokenu OAuth pro získání tokenu:
+3. Přidat pomocí Managed Service Identity VMSS rozšíření `-Name` a `-Type` parametru u [Add-AzureRmVmssExtension](/powershell/module/azurerm.compute/add-azurermvmssextension) rutiny. Můžete předat buď "ManagedIdentityExtensionForWindows" nebo "ManagedIdentityExtensionForLinux", v závislosti na typu sady škálování virtuálního počítače nastavte a pojmenujte ho pomocí `-Name` parametru. `-Settings` Parametr určuje port používaný programem koncový bod tokenu OAuth pro získání tokenu:
 
    ```powershell
    $setting = @{ "port" = 50342 }
