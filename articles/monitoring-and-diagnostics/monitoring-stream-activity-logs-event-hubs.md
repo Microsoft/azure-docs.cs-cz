@@ -5,15 +5,15 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 03/02/2018
+ms.date: 07/25/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: 45352c1cf4aca9043c23bbe12e94ba770a38c01b
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 7a5372174fcc7cd9552c00c9d283772c9863b815
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37436701"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39257994"
 ---
 # <a name="stream-the-azure-activity-log-to-event-hubs"></a>Stream protokolů aktivit Azure do služby Event Hubs
 Můžete Streamovat [protokolu aktivit Azure](monitoring-overview-activity-logs.md) téměř v reálném čase pro libovolné aplikace buď:
@@ -34,7 +34,7 @@ Pokud nemáte k dispozici obor názvů služby Event Hubs, musíte nejdřív vyt
 
 Zásady sdíleného přístupu definuje oprávnění, která má mechanismu datových proudů. Streamování do Event Hubs v současné době vyžaduje **spravovat**, **odeslat**, a **naslouchání** oprávnění. Můžete vytvářet nebo upravovat zásady sdíleného přístupu pro službu Event Hubs oboru názvů na webu Azure Portal v části **konfigurovat** kartu pro váš obor názvů služby Event Hubs. 
 
-K aktualizaci profilu protokolu aktivit protokolu zahrnout streamování, musí mít uživatel, který je provádění změny ListKey oprávnění na tento autorizační pravidlo Event Hubs. Obor názvů Event Hubs, nemusí být ve stejném předplatném jako předplatné, které je vysílá protokoly, za předpokladu, že uživatel, který konfiguruje nastavení má odpovídající přístup RBAC k oběma předplatným.
+K aktualizaci profilu protokolu aktivit protokolu zahrnout streamování, musí mít uživatel, který je provádění změny ListKey oprávnění na tento autorizační pravidlo Event Hubs. Obor názvů Event Hubs, nemusí být ve stejném předplatném jako předplatné, které je vysílá protokoly, jako má uživatel, který konfiguruje nastavení odpovídající roli RBAC přístup k oběma předplatným a obě předplatná jsou ve stejném tenantovi AAD.
 
 ### <a name="via-the-azure-portal"></a>Prostřednictvím portálu Azure portal
 1. Přejděte **protokolu aktivit** části pomocí **všechny služby** hledání na levé straně na portálu.
@@ -53,8 +53,9 @@ K aktualizaci profilu protokolu aktivit protokolu zahrnout streamování, musí 
    > Pokud něco jiného než vyberete **všech oblastech**, budete si ujít klíčových událostí, které očekáváte, že pro příjem. Protokol aktivit je globální protokolu (– neregionální), tak nejvíce událostem nemají k nim má přiřazené oblasti. 
    >
 
-4. Vyberte **Uložit** nastavení uložte. Nastavení se okamžitě použijí k vašemu předplatnému.
-5. Pokud máte několik předplatných, opakujte tuto akci a odeslat veškerá data do centra událostí, stejné.
+4. Klikněte na tlačítko **Azure Event Hubs** možnost a vyberte obor názvů služby event hubs do protokolů, které mají být odeslány, pak klikněte na **OK**.
+5. Vyberte **Uložit** nastavení uložte. Nastavení se okamžitě použijí k vašemu předplatnému.
+6. Pokud máte několik předplatných, opakujte tuto akci a odeslat veškerá data do centra událostí, stejné.
 
 ### <a name="via-powershell-cmdlets"></a>Pomocí rutin prostředí PowerShell
 Pokud profil protokolu již existuje, musíte nejprve odstranit stávající profilu protokolu a potom vytvořit nový profil protokolu.
