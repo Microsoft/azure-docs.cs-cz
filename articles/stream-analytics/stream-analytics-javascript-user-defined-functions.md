@@ -3,25 +3,25 @@ title: 'Kurz: Uživatelem definované funkce jazyka JavaScript v Azure Stream An
 description: V tomto kurzu se provádějí postupy pro pokročilé dotazy, které využívají uživatelem definované funkce jazyka JavaScript.
 keywords: javascript, uživatelem definované funkce, udf
 services: stream-analytics
-author: SnehaGunda
+author: rodrigoamicrosoft
 manager: kfile
 ms.assetid: ''
 ms.service: stream-analytics
 ms.topic: tutorial
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.custom: mvc
 ms.date: 04/01/2018
 ms.workload: data-services
-ms.author: sngun
-ms.openlocfilehash: f3a94017b95eb614669fa42594fe3a3499c74be7
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.author: rodrigoa
+ms.openlocfilehash: a50b96f128fb32b8ac7b7b9971beeb3b12397b5f
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31415292"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39184974"
 ---
 # <a name="tutorial-azure-stream-analytics-javascript-user-defined-functions"></a>Kurz: Uživatelem definované funkce jazyka JavaScript v Azure Stream Analytics
-
+ 
 Azure Stream Analytics podporuje uživatelem definované funkce, které jsou napsané v jazyce JavaScript. Díky bohaté sadě metod **String**, **RegExp**, **Math**, **Array** a **Date**, které jazyk JavaScript poskytuje, je teď vytváření komplexních transformací dat pomocí úloh Stream Analytics snadnější.
 
 V tomto kurzu se naučíte:

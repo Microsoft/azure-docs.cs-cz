@@ -2,23 +2,23 @@
 title: 'Kurz: Vytvoření a správa úlohy Stream Analytics pomocí webu Azure Portal | Microsoft Docs'
 description: V tomto kurzu získáte ucelenou představu o tom, jak používat Azure Stream Analytics k analýze podvodných volání ve streamu telefonních hovorů.
 services: stream-analytics
-author: SnehaGunda
-ms.author: sngun
+author: sidramadoss
+ms.author: sidram
 manager: kfile
 ms.service: stream-analytics
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/04/2018
-ms.openlocfilehash: 524b15747a275c76fec6c529e4f00d0da1b41420
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 39b39a1d00c91e0ff114a28c13da0d4b6920ec13
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "32778185"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39186226"
 ---
 # <a name="create-a-stream-analytics-job-to-analyze-phone-call-data-and-visualize-results-in-a-power-bi-dashboard"></a>Vytvoření úlohy Stream Analytics k analýze dat telefonních hovorů a vizualizaci výsledků v řídicím panelu Power BI
-
+ 
 Tento kurz ukazuje, jak používat Azure Stream Analytics k analýze ukázkového telefonního hovoru, který je generovaný klientskou aplikací. Data telefonního hovoru vytvářená klientskou aplikací obsahují některá podvodná volání. V tomto kurzu definujeme úlohu Stream Analytics, která bude taková volání filtrovat.
 
 V tomto kurzu se naučíte:
@@ -36,7 +36,7 @@ V tomto kurzu se naučíte:
 Než začnete, ujistěte se, že jste provedli následující akce:
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/).  
-* Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).  
+* Přihlaste se k webu [Azure Portal](https://portal.azure.com/).  
 * Stáhněte si aplikaci pro generování událostí telefonního hovoru [TelcoGenerator.zip](http://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip) z webu Microsoft Download Center. Případně můžete získat zdrojový kód z [GitHubu](https://aka.ms/azure-stream-analytics-telcogenerator).  
 
 ## <a name="create-an-azure-event-hub"></a>Vytvoření centra událostí Azure 

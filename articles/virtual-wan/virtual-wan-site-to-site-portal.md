@@ -8,22 +8,22 @@ ms.topic: tutorial
 ms.date: 07/13/2018
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: 1b61c335dec2c641862c08fd6f752d78b2ee5866
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: ea36a3d4a2471cee6a18d70275aaf2e83ffc6f39
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056660"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39159647"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan-preview"></a>Kurz: Vytvoření připojení typu site-to-site pomocí Azure Virtual WAN (verze Preview)
 
 V tomto kurzu se dozvíte, jak se připojit ke svým prostředkům v Azure přes připojení VPN IPsec/IKE (IKEv2) pomocí služby Virtual WAN. Tento typ připojení vyžaduje místní zařízení VPN, které má přiřazenou veřejnou IP adresu. Další informace o službě Virtual WAN najdete v článku [Přehled služby Virtual WAN](virtual-wan-about.md)
 
 > [!NOTE]
-> Pokud máte hodně lokalit, doporučujeme využít k vytvoření této konfigurace [partnera pro Virtual WAN](https://aka.ms.virtualwan). Pokud se ale vyznáte ve vytváření sítí a umíte nakonfigurovat vlastní zařízení VPN, můžete tuto konfiguraci vytvořit sami.
+> Pokud máte hodně lokalit, doporučujeme využít k vytvoření této konfigurace [partnera pro Virtual WAN](https://aka.ms/virtualwan). Pokud se ale vyznáte ve vytváření sítí a umíte nakonfigurovat vlastní zařízení VPN, můžete tuto konfiguraci vytvořit sami.
 >
 
-![Diagram služby Virtual WAN](./media/virtual-wan-about/virtualwan.png)
+![Diagram virtuální sítě WAN](./media/virtual-wan-about/virtualwan.png)
 
 V tomto kurzu se naučíte:
 
@@ -325,7 +325,7 @@ Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 
 ## <a name="feedback"></a>Zpětná vazba na verzi Preview
 
-Vaší zpětné vazby si velmi vážíme. Chcete-li oznámit problémy nebo poskytnout zpětnou vazbu (kladnou i zápornou) na službu Virtual WAN, odešlete e-mail na adresu <azurevirtualwan@microsoft.com>. V řádku předmětu uveďte název vaší společnosti v hranatých závorkách „[]“. Pokud oznamujete problém, nezapomeňte taky uvést ID předplatného.
+Vaší zpětné vazby si velmi vážíme. Chcete-li oznámit problémy nebo nám poskytnout zpětnou vazbu (kladnou i zápornou) na službu Virtual WAN, odešlete e-mail na adresu <azurevirtualwan@microsoft.com>. V řádku předmětu uveďte název vaší společnosti v hranatých závorkách „[]“. Pokud oznamujete problém, nezapomeňte také uvést ID předplatného.
 
 ## <a name="next-steps"></a>Další kroky
 
