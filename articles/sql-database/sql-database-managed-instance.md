@@ -10,12 +10,12 @@ ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: bonova
-ms.openlocfilehash: 698b02e1bad7da3f793a35184d634eaf5c948988
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
-ms.translationtype: HT
+ms.openlocfilehash: 0951281a584d3c534d82ec5760d29f4b80616d2d
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/17/2018
-ms.locfileid: "39071573"
+ms.locfileid: "39091989"
 ---
 # <a name="what-is-a-managed-instance-preview"></a>Co je Managed Instance (preview)?
 
@@ -68,9 +68,9 @@ V následující tabulce jsou uvedeny několik vlastností, které jsou přístu
 
 ![Jednotné přihlašování](./media/sql-database-managed-instance/sso.png) 
 
-## <a name="vcore-based-purchasing-model-preview"></a>nákupní model založený na virtuálních jádrech (preview)
+## <a name="vcore-based-purchasing-model"></a>nákupní model založený na virtuálních jádrech
 
-Založený na virtuálních jádrech nákupní model (preview) poskytuje vám flexibilitu, ovládací prvek, transparentnost a jednoduchý způsob převodu místních požadavků na zatížení do cloudu. Tento model umožňuje škálování výpočetních prostředků, paměť a úložiště na základě jejich potřebám provádění úloh. Je také nárok až na 30 procent spoření s modelu virt. jader [zvýhodněné hybridní využití Azure pro SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md).
+Nákupní model založený na virtuálních jádrech poskytuje vám flexibilitu, ovládací prvek, transparentnost a jednoduchý způsob převodu místních požadavků na zatížení do cloudu. Tento model umožňuje škálování výpočetních prostředků, paměť a úložiště na základě jejich potřebám provádění úloh. Je také nárok až na 30 procent spoření s modelu virt. jader [zvýhodněné hybridní využití Azure pro SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md).
 
 Virtuální jádro reprezentuje logický procesor nabízený s možností volby mezi generacemi hardwaru.
 - Logické CPU 4. generace jsou založené na procesorech Intel E5-2673 v3 (Haswell) 2,4 GHz.
