@@ -1,84 +1,77 @@
 ---
-title: Nasazení do Azure App Service pomocí modulu plug-in volaných | Microsoft Docs
-description: Další informace o použití modulu plug-in Azure App Service volaných nasazení webové aplikace v jazyce Java do Azure ve volaných
-services: app-service\web
-documentationcenter: ''
-author: mlearned
-manager: douge
-editor: ''
-ms.assetid: ''
-ms.service: multiple
-ms.devlang: na
+title: Nasazení do služby Azure App Service pomocí modulu plug-in Jenkinse
+description: Další informace o použití modulu plug-in Jenkinse pro Azure App Service k nasazení webové aplikace v Javě do Azure v Jenkinsu
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: web
-ms.date: 7/24/2017
-ms.author: mlearned
-ms.custom: Jenkins
-ms.openlocfilehash: 0128ad37e3ba66710279de42cf4eae0ce5431b5b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.author: tarcher
+author: tomarcher
+manager: jpconnock
+ms.service: devops
+ms.custom: jenkins
+ms.date: 07/25/2018
+ms.openlocfilehash: 407ec2bbb145e73b1a903886204b660aadc9a65f
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31418412"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39284410"
 ---
-# <a name="deploy-to-azure-app-service-by-using-the-jenkins-plugin"></a>Nasazení do Azure App Service pomocí modulu plug-in volaných 
+# <a name="deploy-to-azure-app-service-by-using-the-jenkins-plugin"></a>Nasazení do služby Azure App Service pomocí modulu plug-in Jenkinse 
 
-Chcete-li nasadit webovou aplikaci Java do Azure, můžete použít rozhraní příkazového řádku Azure v [volaných kanálu](/azure/jenkins/execute-cli-jenkins-pipeline) nebo můžete použít [modul plug-in Azure App Service volaných](https://plugins.jenkins.io/azure-app-service). Modul plug-in verze 1.0 volaných podporuje průběžné nasazování pomocí funkce Web Apps služby Azure App Service pomocí:
+Pokud chcete nasadit webové aplikace v Javě do Azure, můžete použít rozhraní příkazového řádku Azure v [kanálu Jenkins](/azure/jenkins/execute-cli-jenkins-pipeline) nebo můžete použít [modulu plug-in Jenkinse pro Azure App Service](https://plugins.jenkins.io/azure-app-service). Jenkins modul plug-in verze 1.0 podporuje průběžné nasazování pomocí funkce Web Apps služby Azure App Service prostřednictvím:
 * Git a FTP.
-* Docker pro webové aplikace v systému Linux.
+* Docker for Web Apps v Linuxu.
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
-> * Nakonfigurujte volaných jak nasadit webové aplikace prostřednictvím Git a FTP.
-> * Nakonfigurujte volaných nasadit webovou aplikaci pro kontejnery.
+> * Konfigurace Jenkinse k nasazování webových aplikací pomocí Gitu nebo FTP.
+> * Konfigurace Jenkinse k nasazení aplikace Web App for Containers.
 
-## <a name="create-and-configure-a-jenkins-instance"></a>Vytvořit a nakonfigurovat instanci volaných
+## <a name="create-and-configure-a-jenkins-instance"></a>Vytvoření a konfigurace instance Jenkinse
 
-Pokud ještě nemáte volaných Master, začínat [šablona řešení](install-jenkins-solution-template.md), což zahrnuje Java Development Kit (JDK) verze 8 a modulů plug-in volaných vyžaduje následující:
+Pokud ještě nemáte hlavní server Jenkinse, začněte tématem [šablonu řešení](install-jenkins-solution-template.md), což zahrnuje Java Development Kit (JDK) 8 verzí a požadované moduly plug-in Jenkins:
 
-* [Modul plug-in klienta volaných Git](https://plugins.jenkins.io/git-client) verze 2.4.6 
+* [Modul plug-in Jenkinse Git klienta](https://plugins.jenkins.io/git-client) verze 2.4.6 
 * [Modul plug-in docker Commons](https://plugins.jenkins.io/docker-commons) verze 1.4.0
 * [Přihlašovací údaje Azure](https://plugins.jenkins.io/azure-credentials) verze 1.2
-* [Aplikační služba Azure](https://plugins.jenkins.io/azure-app-service) verze 0,1
+* [Azure App Service](https://plugins.jenkins.io/azure-app-service) verze 0.1
 
-Modul plug-in volaných můžete použít k nasazení webové aplikace ve všech jazycích, které podporuje webové aplikace, například C#, PHP, Java a Node.js. V tomto kurzu používáme [jednoduché webové aplikace Java pro Azure](https://github.com/azure-devops/javawebappsample). Chcete-li rozvětvit úložiště k účtu GitHub, vyberte **rozvětvení** tlačítko v pravém horním rohu rozhraní Githubu.  
+Modul plug-in Jenkinse můžete použít k nasazení webové aplikace v jakémkoli jazyce, který podporuje webové aplikace, například C#, PHP, Java nebo Node.js. V tomto kurzu používáme [jednoduché webové aplikace v Javě pro Azure](https://github.com/azure-devops/javawebappsample). Chcete-li vytvořit fork úložiště do vlastního účtu Githubu, vyberte **Forku** tlačítko v pravém horním rohu rozhraní Githubu.  
 > [!NOTE]
-> Vyžaduje Java JDK a Maven k sestavení projektu Java. Tyto součásti nainstalujte, nebo na hlavním volaných na agenta virtuálního počítače používáte-li pro nepřetržitou integraci agenta. 
+> Java JDK a Maven jsou nutné k vytvoření projektu jazyka Java. Tyto součásti nainstalujte, nebo na hlavního serveru Jenkinse na agenta virtuálního počítače používáte agenta pro průběžnou integraci. 
 
-Chcete-li nainstalovat komponenty, přihlaste se k instanci volaných pomocí protokolu SSH a spusťte následující příkazy:
+Pokud chcete nainstalovat součásti, připojte se k instance Jenkinse pomocí protokolu SSH a spusťte následující příkazy:
 
 ```bash
 sudo apt-get install -y openjdk-7-jdk
 sudo apt-get install -y maven
 ```
 
-Pokud chcete nasadit do webové aplikace pro kontejnery, nainstalujte Docker na hlavním volaných nebo na agenta virtuálního počítače, který se používá pro sestavení. Pokyny najdete v tématu [Docker nainstalovat na Ubuntu](https://docs.docker.com/engine/installation/linux/ubuntu/).
+Nasazení do Web App for Containers, nainstalujte Docker na hlavního serveru Jenkinse nebo agenta virtuálního počítače, který se používá pro sestavení. Pokyny najdete v tématu [nainstalovat Docker v Ubuntu](https://docs.docker.com/engine/installation/linux/ubuntu/).
 
-##<a name="service-principal"></a> Přidat objektu zabezpečení služby Azure na volaných pověření
+##<a name="service-principal"></a> Přidání instančního objektu Azure k přihlašovacím údajům Jenkinse
 
-Budete potřebovat objektu zabezpečení služby Azure k nasazení do Azure. 
-
-
-1. Chcete-li vytvořit objekt služby Azure, použijte [rozhraní příkazového řádku Azure](/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json) nebo [portál Azure](/azure/azure-resource-manager/resource-group-create-service-principal-portal).
-2. Na řídicím panelu volaných vyberte **pověření** > **systému**. Pak vyberte **globální credentials(unrestricted)**.
-3. Chcete-li přidat hlavní název služby Microsoft Azure, vyberte **přidat přihlašovací údaje**. Zadejte hodnoty pro **ID předplatného**, **ID klienta**, **tajný klíč klienta**, a **koncový bod tokenu OAuth 2.0** pole. Nastavte **ID** do **mySp**. Toto ID použít v následných kroků v tomto článku.
+Potřebujete instanční objekt Azure k nasazení do Azure. 
 
 
-## <a name="configure-jenkins-to-deploy-web-apps-by-uploading-files"></a>Konfigurace volaných nasazování webových aplikací s nahrávání souborů
-
-K nasazení projektu do webové aplikace, můžete nahrát artefaktů sestavení (například soubor WAR v jazyce Java) pomocí Git a FTP.
-
-Před nastavením pro úlohu ve volaných potřebujete plán aplikační služby Azure a webové aplikace a spusťte aplikaci Java.
+1. Chcete-li vytvořit instanční objekt služby Azure, použijte [rozhraní příkazového řádku Azure](/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json) nebo [webu Azure portal](/azure/azure-resource-manager/resource-group-create-service-principal-portal).
+2. Na řídicím panelu Jenkinse vyberte **pověření** > **systému**. Vyberte **globální credentials(unrestricted)**.
+3. Chcete-li přidat hlavní název služby Microsoft Azure, **přidat přihlašovací údaje**. Zadejte hodnoty pro **ID předplatného**, **ID klienta**, **tajný kód klienta**, a **koncový bod tokenu OAuth 2.0** pole. Nastavte **ID** pole **mySp**. Toto ID použít v dalších krocích v tomto článku.
 
 
-1. Vytvořit plán aplikační služby Azure s **volné** cenová úroveň pomocí `az appservice plan create` [příkazu příkazového řádku Azure CLI](/cli/azure/appservice/plan#az_appservice_plan_create). Plán služby App Service definuje fyzické prostředky, které budou použity k hostování vaší aplikace. Všechny aplikace, které jsou přiřazeny k plán služby App Service sdílení těchto prostředků. Sdílené prostředky můžete uložit na nákladů při hostování více aplikací.
-2. Vytvořte webovou aplikaci. Můžete použít [portál Azure](/azure/app-service-web/web-sites-configure) nebo následující `az` příkazu příkazového řádku Azure CLI:
+## <a name="configure-jenkins-to-deploy-web-apps-by-uploading-files"></a>Konfigurace Jenkinse k nasazování webových aplikací tím, že nahraje soubory
+
+Nasazení projektu do webové aplikace, můžete nahrát artefakty sestavení (například soubor WAR v Javě) pomocí Gitu nebo FTP.
+
+Před nastavením úlohy v Jenkinsovi, potřebujete plán služby Azure App Service a webovou aplikaci spusťte aplikaci v Javě.
+
+
+1. Vytvoření plánu služby Azure App Service s **FREE** cenovou úroveň s využitím `az appservice plan create` [rozhraní příkazového řádku Azure](/cli/azure/appservice/plan#az_appservice_plan_create). Plán služby App Service definuje fyzické prostředky, které se používají k hostování vašich aplikací. Všechny aplikace, které jsou přiřazené k plánu služby App Service sdílí tyto prostředky. Sdílené prostředky můžete uložit na nákladů při hostování více aplikací.
+2. Vytvořte webovou aplikaci. Můžete použít [webu Azure portal](/azure/app-service-web/web-sites-configure) nebo následující `az` rozhraní příkazového řádku Azure:
     ```azurecli-interactive 
     az webapp create --name <myAppName> --resource-group <myResourceGroup> --plan <myAppServicePlan>
     ```
     
-3. Nastavte konfiguraci Java runtime, která vaše aplikace potřebuje. Následující příkaz rozhraní příkazového řádku Azure nakonfiguruje webové aplikace pro spouštění v posledních 8 JDK a [Apache Tomcat](http://tomcat.apache.org/) verze 8.0:
+3. Nastavte konfiguraci modulu runtime Java podle potřeb vaší aplikace. Následující příkaz rozhraní příkazového řádku Azure nakonfiguruje ve webové aplikaci spouštět na posledních 8 JDK a [Apache Tomcat](http://tomcat.apache.org/) verze 8.0:
     ```azurecli-interactive
     az webapp config set \
     --name <myAppName> \
@@ -88,130 +81,130 @@ Před nastavením pro úlohu ve volaných potřebujete plán aplikační služby
     --java-container-version 8.0
     ```
 
-### <a name="set-up-the-jenkins-job"></a>Nastavení úloh volaných
+### <a name="set-up-the-jenkins-job"></a>Nastavení úlohy Jenkinse
 
-1. Vytvořte novou **volný styl** projektu na řídicím panelu volaných.
-2. Konfigurace **správu zdrojového kódu** pole, které chcete používat vaše místní pokračovatelem [jednoduché webové aplikace Java pro Azure](https://github.com/azure-devops/javawebappsample). Zadejte **adresu URL úložiště** hodnotu. Příklad: http://github.com/ &lt;your_ID > / javawebappsample.
-3. Přidejte krok pro sestavení projektu pomocí Maven přidáním **spustit prostředí** příkaz. V tomto příkladu budeme potřebovat další příkaz Přejmenovat \*.war souborů v cílové složce do **ROOT.war**:   
+1. Vytvořte nový **volný styl** projektu na řídicím panelu Jenkinse.
+2. Konfigurace **Správa zdrojového kódu** pole, které chcete použít místní rozvětvení [jednoduché webové aplikace v Javě pro Azure](https://github.com/azure-devops/javawebappsample). Zadejte **adresa URL úložiště** hodnotu. Příklad: http://github.com/&lt; your_ID > / javawebappsample.
+3. Přidejte krok sestavení projektu pomocí nástroje Maven tak, že přidáte **spustit prostředí** příkazu. V tomto příkladu budeme potřebovat další příkaz a přejmenujte \*soubor .war v cílové složce pro **ROOT.war**:   
     ```bash
     mvn clean package
     mv target/*.war target/ROOT.war
     ```
 
-4. Přidat akci po sestavení tak, že vyberete **publikování webové aplikace Azure**.
-5. Zadejte **mySp** jako objekt zabezpečení služby Azure. Tento objekt zabezpečení byl uložený jako [přihlašovací údaje Azure](#service-principal) v předchozím kroku.
-6. V **konfigurace aplikací** zvolte prostředků skupiny a webové aplikace v rámci vašeho předplatného. Modul plug-in volaných automaticky zjistí, zda webová aplikace je založena na systému Windows nebo Linux. Pro webovou aplikaci systému Windows **publikovat soubory** možnost se zobrazí.
-7. Zadejte soubory, které chcete nasadit. Můžete například zadejte balíček WAR, pokud používáte Java. Použít nepovinný **zdrojový adresář** a **cílový adresář** parametry k určení zdrojové a cílové složky, které chcete použít pro nahrávání souborů. Webové aplikace Java v Azure běží na serveru Tomcat. Proto pro jazyk Java, nahrajete vašeho balíčku WAR do je umístěna složka. V tomto příkladu nastavit **zdrojový adresář** hodnotu **cíl** a **cílový adresář** hodnotu **webapps**.
-8. Pokud chcete nasadit do přihrádky než produkční, můžete také nastavit **slotu** název.
-9. Uložte projekt a sestavte jej. Webové aplikace se nasadí do Azure, po dokončení sestavení.
+4. Přidání akce po sestavení tak, že vyberete **publikovat webovou aplikaci Azure**.
+5. Zadat **mySp** jako objekt zabezpečení služby Azure. Tento objekt zabezpečení byl uložen jako [přihlašovací údaje Azure](#service-principal) v předchozím kroku.
+6. V **konfigurace aplikace** zvolte prostředek skupiny a webovou aplikaci ve vašem předplatném. Modul plug-in Jenkinse automaticky zjišťuje, zda webová aplikace je založena na Windows nebo Linux. Pro webovou aplikaci Windows **publikovat soubory** možnost se zobrazí.
+7. Zadejte soubory, které chcete nasadit. Například určete balíček WAR, pokud používáte Javu. Použít nepovinný **zdrojový adresář** a **cílový adresář** parametrů určíte zdrojovou a cílovou složku pro nahrání souboru. Webová aplikace Java v Azure běží na serveru Tomcat. Proto pro Javu, nahrajete váš balíček WAR ke složce webové aplikace. V tomto příkladu nastavte **zdrojový adresář** hodnota, která se **cílové** a **cílový adresář** hodnota, která se **webapps**.
+8. Pokud chcete nasadit jiné než produkční slot, můžete také nastavit **slotu** název.
+9. Uložení projektu a sestavte ho. Webové aplikace se nasadí do Azure, po dokončení sestavení.
 
-### <a name="deploy-web-apps-by-uploading-files-using-jenkins-pipeline"></a>Nahrávání souborů pomocí kanálu volaných nasadit webové aplikace
+### <a name="deploy-web-apps-by-uploading-files-using-jenkins-pipeline"></a>Nasazení webové aplikace díky nahrávání souborů s využitím kanálu Jenkins
 
-Modul plug-in Azure App Service volaných je připravené pro kanál. Najdete v následujícím příkladu v úložišti GitHub.
+Modul plug-in Jenkinse pro Azure App Service je připravený pro kanál. Najdete v následujícím příkladu v úložišti na Githubu.
 
-1. V rozhraní Githubu, otevřete **Jenkinsfile_ftp_plugin** souboru. Pokud chcete soubor upravit, vyberte ikonu tužky. Aktualizace **resourceGroup** a **webAppName** definice pro vaši webovou aplikaci na řádků 11 a 12, v uvedeném pořadí:
+1. V rozhraní Githubu otevřete **Jenkinsfile_ftp_plugin** souboru. Chcete-li upravit soubor, vyberte ikonu tužky. Aktualizace **resourceGroup** a **webAppName** definice pro vaši webovou aplikaci na řádky 11 a 12, v uvedeném pořadí:
     ```java
     def resourceGroup = '<myResourceGroup>'
     def webAppName = '<myAppName>'
     ```
 
-2. Nastavte **withCredentials** definici v řádku 14 ID přihlašovacích údajů v instanci volaných:
+2. Nastavte **withCredentials** definice na řádku 14 pro ID přihlašovacích údajů do instance Jenkinse:
     ```java
     withCredentials([azureServicePrincipal('<mySp>')]) {
     ```
 
-### <a name="create-a-jenkins-pipeline"></a>Vytvoření kanálu volaných
+### <a name="create-a-jenkins-pipeline"></a>Vytvoření kanálu Jenkins
 
-1. Volaných otevřete ve webovém prohlížeči. Vyberte **novou položku**.
-2. Zadejte název pro úlohy, vyberte **kanálu**. Vyberte **OK**.
-3. Vyberte **kanálu** kartě.
-4. Pro **definice** hodnotu, vyberte **kanálu skript z SCM**.
-5. Pro **SCM** hodnotu, vyberte **Git**. Zadejte adresu URL webu GitHub pro vaše forked úložišti. Příklad: https://&lt;your_forked_repo > .git.
-6. Aktualizace **cestu ke skriptu** hodnotu **Jenkinsfile_ftp_plugin**.
+1. Otevřete Jenkinse ve webovém prohlížeči. Vyberte **New Item** (Nová položka).
+2. Zadejte název projektu a vyberte **kanálu**. Vyberte **OK**.
+3. Vyberte **kanálu** kartu.
+4. Pro **definice** hodnotu, vyberte **kanálu skriptu ze Správce řízení služeb**.
+5. Pro **SCM** hodnotu, vyberte **Git**. Zadejte adresu URL GitHub vašeho rozvětveného úložiště. Příklad: https://&lt;your_forked_repo > .git.
+6. Aktualizace **cesta ke skriptu** hodnota, která se **Jenkinsfile_ftp_plugin**.
 7. Vyberte **Uložit** a spusťte úlohu.
 
-## <a name="configure-jenkins-to-deploy-web-app-for-containers"></a>Konfigurace volaných nasadit webovou aplikaci pro kontejnery
+## <a name="configure-jenkins-to-deploy-web-app-for-containers"></a>Konfigurace Jenkinse k nasazení aplikace Web App for Containers
 
-Webové aplikace v systému Linux podporuje nasazení pomocí Docker. Nasazení webové aplikace pomocí Docker, budete muset zadat soubor Docker, který balíčky vaší webové aplikace s běh služby do bitové kopie Docker. Modul plug-in volaných potom vytvoří bitovou kopii, doručí do registru Docker a nasadí bitovou kopii do vaší webové aplikace.
+Web Apps v Linuxu podporuje nasazení s využitím Dockeru. K nasazení vaší webové aplikace s využitím Dockeru, musíte zadat soubor Dockerfile, která zabalí vaší webové aplikace s modulem runtime služby do image Dockeru. Modul plug-in Jenkinse potom sestaví image, nasdílí do registru Dockeru a nasadí image do webové aplikace.
 
-Webové aplikace v systému Linux také podporuje tradiční nasazení metody, jako je Git a FTP, ale jenom pro předdefinované jazyků (.NET Core, Node.js, PHP a Ruby). Pro jiné jazyky potřebujete společně balíček runtime kód a služby vaší aplikace do bitové kopie Docker a nasadit pomocí Docker.
+Web Apps v Linuxu podporuje také metody tradiční nasazení, jako je Git a FTP, ale pouze pro integrované jazyků (.NET Core, Node.js, PHP a Ruby). Pro ostatní jazyky se budete muset balíček spuštění kódu a služby vaší aplikace společně do image Dockeru a nasadit pomocí Dockeru.
 
-Před nastavením pro úlohu ve volaných, je třeba webové aplikace v systému Linux. Budete také potřebovat kontejneru registru k ukládání a správě privátního kontejner imagí Dockeru. DockerHub slouží k vytvoření kontejneru registru. V tomto příkladu používáme registru kontejner Azure.
+Před nastavením úlohy v Jenkinsovi, musíte webové aplikace v Linuxu. Budete také potřebovat registr kontejnerů k ukládání a správě privátních imagí kontejnerů Dockeru. Dockerhubu slouží k vytvoření registru kontejneru. V tomto příkladu používáme Azure Container Registry.
 
-* [Vytvoření webové aplikace v systému Linux](../app-service/containers/quickstart-nodejs.md).
-* Azure registru kontejneru je spravované [Docker registru](https://docs.docker.com/registry/) služba, která je založena na open source Docker registru verze 2.0. [Vytvoření služby Azure kontejneru registru](/azure/container-registry/container-registry-get-started-azure-cli). Můžete také použít DockerHub.
+* [Vytvoření webové aplikace v Linuxu](../app-service/containers/quickstart-nodejs.md).
+* Služba Azure Container Registry je spravovaná [registru Dockeru](https://docs.docker.com/registry/) služba, která je založená na open source registru Dockeru verze 2.0. [Vytvoření služby Azure container registry](/azure/container-registry/container-registry-get-started-azure-cli). Můžete také použít Dockerhubu.
 
-### <a name="set-up-the-jenkins-job-for-docker"></a>Nastavení úloh volaných pro Docker
+### <a name="set-up-the-jenkins-job-for-docker"></a>Nastavení úlohy Jenkinse pro Docker
 
-1. Vytvořte novou **volný styl** projektu na řídicím panelu volaných.
-2. Konfigurace **správu zdrojového kódu** pole, které chcete používat vaše místní pokračovatelem [jednoduché webové aplikace Java pro Azure](https://github.com/azure-devops/javawebappsample). Zadejte **adresu URL úložiště** hodnotu. Příklad: http://github.com/ &lt;your_ID > / javawebappsample.
-3. Přidejte krok pro sestavení projektu pomocí Maven přidáním **spustit prostředí** příkaz. Následující řádek do příkazu zahrnout:
+1. Vytvořte nový **volný styl** projektu na řídicím panelu Jenkinse.
+2. Konfigurace **Správa zdrojového kódu** pole, které chcete použít místní rozvětvení [jednoduché webové aplikace v Javě pro Azure](https://github.com/azure-devops/javawebappsample). Zadejte **adresa URL úložiště** hodnotu. Příklad: http://github.com/&lt; your_ID > / javawebappsample.
+3. Přidejte krok sestavení projektu pomocí nástroje Maven tak, že přidáte **spustit prostředí** příkazu. V příkazu, přidejte následující řádek:
     ```bash
     mvn clean package
     ```
 
-4. Přidat akci po sestavení tak, že vyberete **publikování webové aplikace Azure**.
-5. Zadejte **mySp** jako objekt zabezpečení služby Azure. Tento objekt zabezpečení byl uložený jako [přihlašovací údaje Azure](#service-principal) v předchozím kroku.
-6. V **konfigurace aplikací** zvolte skupinu prostředků a Linux webové aplikace v rámci vašeho předplatného.
+4. Přidání akce po sestavení tak, že vyberete **publikovat webovou aplikaci Azure**.
+5. Zadat **mySp** jako objekt zabezpečení služby Azure. Tento objekt zabezpečení byl uložen jako [přihlašovací údaje Azure](#service-principal) v předchozím kroku.
+6. V **konfigurace aplikace** zvolte skupinu prostředků a Linuxovou webovou aplikaci ve vašem předplatném.
 7. Zvolte **publikování přes Docker**.
-8. Vyplňte **soubor Docker** hodnota cesty. Můžete ponechat /Dockerfile výchozí hodnotu.
-Pro **Docker registru URL** hodnotu, zadejte adresu URL pomocí formátu https://&lt;yourRegistry >. azurecr.io, pokud používáte Azure kontejneru registru. Pokud používáte DockerHub, ponechejte tuto hodnotu prázdnou.
-9. Pro **registru pověření** hodnotu, přidat přihlašovací údaje pro kontejner registru. ID uživatele a heslo můžete získat spuštěním následujících příkazů v Azure CLI. První příkaz umožňuje účet správce:
+8. Vyplňte **soubor Dockerfile** hodnota cesty. Abyste mohli /Dockerfile výchozí hodnotu.
+Pro **adresa URL registru Dockeru** hodnoty, zadejte adresu URL pomocí formátu https://&lt;yourRegistry >. azurecr.io použijete Azure Container Registry. Pokud používáte Dockerhubu, ponechte hodnotu prázdný.
+9. Pro **přihlašovacích údajů registru** hodnotu, přidejte přihlašovací údaje pro registr kontejneru. Spuštěním následujících příkazů v rozhraní příkazového řádku Azure můžete získat ID uživatele a heslo. První příkaz povolí správce účtu:
     ```azurecli-interactive
     az acr update -n <yourRegistry> --admin-enabled true
     az acr credential show -n <yourRegistry>
     ```
 
-10. Docker název a značky hodnotu obrázku v **Upřesnit** kartě jsou volitelné. Výchozí hodnota pro název bitové kopie se získávají z název bitové kopie, který jste nakonfigurovali v portálu Azure v **kontejner Docker** nastavení. Značky se generují z $BUILD_NUMBER.
+10. Docker název a značku hodnotu obrázku v **Upřesnit** kartě jsou volitelné. Ve výchozím nastavení, je hodnota pro název image získané název image, kterou jste nakonfigurovali na webu Azure Portal v **kontejneru Dockeru** nastavení. Značka se generuje z $BUILD_NUMBER.
     > [!NOTE]
-    > Nezapomeňte zadat název bitové kopie na portálu Azure nebo zadat **Docker Image** hodnotu **Upřesnit** kartě. V tomto příkladu nastavit **Docker image** hodnotu &lt;your_Registry >.azurecr.io/calculator a nechte **značka obrázku Docker** prázdnou hodnotu.
+    > Nezapomeňte zadat název image na webu Azure Portal nebo zadat **Image Dockeru** hodnotu **Upřesnit** kartu. V tomto příkladu nastavte **image Dockeru** hodnota, která se &lt;your_Registry >.azurecr.io/calculator a nechte **značce Image Dockeru** prázdnou hodnotu.
 
-11. Nasazení selže, pokud použijete předdefinované nastavení Docker bitové kopie. Změnit konfiguraci Docker používat vlastní image ve **kontejner Docker** nastavení na portálu Azure. Předdefinované bitové kopie použijte postup nahrávání souboru k nasazení.
-12. Podobně jako u Postup nahrání souboru, můžete zvolit jiné **slotu** název jiné než **produkční**.
-13. Uložte a sestavte projekt. Bitové kopie kontejneru vložena do registru a webové aplikace je nasazená.
+11. Nasazení se nezdaří, pokud použijete předdefinované nastavení image Dockeru. Změnit konfiguraci Dockeru na použití vlastní image v **kontejneru Dockeru** nastavení na portálu Azure portal. Pro integrované image použijte k nasazení přístupu nahrávání souboru.
+12. Podobný postup nahrání souboru můžete použít jiný **slotu** název jiného než **produkční**.
+13. Uložit a sestavte projekt. Svou image kontejneru je nahrány do vašeho registru a webová aplikace nasazená.
 
-### <a name="deploy-web-app-for-containers-by-using-jenkins-pipeline"></a>Nasazení webové aplikace pro kontejnery pomocí volaných kanálu
+### <a name="deploy-web-app-for-containers-by-using-jenkins-pipeline"></a>Nasazení aplikace Web App for Containers s využitím kanálu Jenkins
 
-1. V rozhraní Githubu, otevřete **Jenkinsfile_container_plugin** souboru. Pokud chcete soubor upravit, vyberte ikonu tužky. Aktualizace **resourceGroup** a **webAppName** definice pro vaši webovou aplikaci na řádků 11 a 12, v uvedeném pořadí:
+1. V rozhraní Githubu otevřete **Jenkinsfile_container_plugin** souboru. Chcete-li upravit soubor, vyberte ikonu tužky. Aktualizace **resourceGroup** a **webAppName** definice pro vaši webovou aplikaci na řádky 11 a 12, v uvedeném pořadí:
     ```java
     def resourceGroup = '<myResourceGroup>'
     def webAppName = '<myAppName>'
     ```
 
-2. Změňte řádek 13 k registru serveru kontejneru:
+2. Změňte řádek 13 k serveru registru kontejneru:
     ```java
     def registryServer = '<registryURL>'
     ```
 
-3. Změňte řádek 16 používat ID přihlašovacích údajů v instanci volaných:
+3. Změňte řádek 16 použijte ID přihlašovacích údajů do instance Jenkinse:
     ```java
     azureWebAppPublish azureCredentialsId: '<mySp>', publishType: 'docker', resourceGroup: resourceGroup, appName: webAppName, dockerImageName: imageName, dockerImageTag: imageTag, dockerRegistryEndpoint: [credentialsId: 'acr', url: "http://$registryServer"]
     ```
 
-### <a name="create-a-jenkins-pipeline"></a>Vytvoření kanálu volaných    
+### <a name="create-a-jenkins-pipeline"></a>Vytvoření kanálu Jenkins    
 
-1. Volaných otevřete ve webovém prohlížeči. Vyberte **novou položku**.
-2. Zadejte název pro úlohy, vyberte **kanálu**. Vyberte **OK**.
-3. Vyberte **kanálu** kartě.
-4. Pro **definice** hodnotu, vyberte **kanálu skript z SCM**.
-5. Pro **SCM** hodnotu, vyberte **Git**. Zadejte adresu URL webu GitHub pro vaše forked úložišti. Příklad: https://&lt;your_forked_repo > .git.
-7. Aktualizace **cestu ke skriptu** hodnotu **Jenkinsfile_container_plugin**.
+1. Otevřete Jenkinse ve webovém prohlížeči. Vyberte **New Item** (Nová položka).
+2. Zadejte název projektu a vyberte **kanálu**. Vyberte **OK**.
+3. Vyberte **kanálu** kartu.
+4. Pro **definice** hodnotu, vyberte **kanálu skriptu ze Správce řízení služeb**.
+5. Pro **SCM** hodnotu, vyberte **Git**. Zadejte adresu URL GitHub vašeho rozvětveného úložiště. Příklad: https://&lt;your_forked_repo > .git.
+7. Aktualizace **cesta ke skriptu** hodnota, která se **Jenkinsfile_container_plugin**.
 8. Vyberte **Uložit** a spusťte úlohu.
 
-## <a name="verify-your-web-app"></a>Ověření webové aplikace
+## <a name="verify-your-web-app"></a>Ověřte svou webovou aplikaci
 
-1. Pokud chcete ověřit, že je soubor WAR úspěšně nasazena do vaší webové aplikace, otevřete webový prohlížeč.
+1. Pokud chcete ověřit úspěšné nasazení souboru WAR do vaší webové aplikace, otevřete webový prohlížeč.
 2. Přejděte na http://&lt;your_app_name >.azurewebsites.net/api/calculator/ping. Nahraďte &lt;your_app_name > s názvem vaší webové aplikace. Zobrazí se zpráva:
     ```
     Welcome to Java Web App!!! This is updated!
     Sun Jun 17 16:39:10 UTC 2017
     ```
 
-3. Přejděte na http://&lt;your_app_name >.azurewebsites.net/api/calculator/add?x=&lt;x > & y =&lt;y >. Nahraďte &lt;x > a &lt;y > s všechna čísla získat součet hodnot x a y. Rozhraní kalkulačky zobrazí součet: ![kalkulačky: Přidat](./media/execute-cli-jenkins-pipeline/calculator-add.png)
+3. Přejděte na http://&lt;your_app_name >.azurewebsites.net/api/calculator/add?x=&lt;x > & y =&lt;y >. Nahraďte &lt;x > a &lt;y > s všechna čísla zobrazíte součet hodnot x + y. Kalkulačce zobrazí součet: ![Kalkulačka: Přidat](./media/execute-cli-jenkins-pipeline/calculator-add.png)
 
-### <a name="for-azure-app-service-on-linux"></a>Pro službu Azure App Service v systému Linux
+### <a name="for-azure-app-service-on-linux"></a>Pro službu Azure App Service v Linuxu
 
-1. Pokud chcete ověřit vaší webové aplikace, spusťte následující příkaz v rozhraní příkazového řádku Azure:
+1. Pokud chcete ověřit vaši webovou aplikaci, spusťte následující příkaz v rozhraní příkazového řádku Azure:
     ```CLI
     az acr repository list -n <myRegistry> -o json
     ```
@@ -226,14 +219,18 @@ Pro **Docker registru URL** hodnotu, zadejte adresu URL pomocí formátu https:/
     Sun Jul 09 16:39:10 UTC 2017
     ```
 
-3. Přejděte na http://&lt;your_app_name >.azurewebsites.net/api/calculator/add?x=&lt;x > & y =&lt;y >. Nahraďte &lt;x > a &lt;y > s všechna čísla získat součet hodnot x a y.
+3. Přejděte na http://&lt;your_app_name >.azurewebsites.net/api/calculator/add?x=&lt;x > & y =&lt;y >. Nahraďte &lt;x > a &lt;y > s všechna čísla zobrazíte součet hodnot x + y.
     
+## <a name="troubleshooting"></a>Řešení potíží
+
+Pokud narazíte na jakékoli chyby s moduly plug-in Jenkins, založte problém v [Jenkins JIRA](https://issues.jenkins-ci.org/) pro konkrétní komponentu.
+
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu použít modul plug-in Azure App Service volaných k nasazení do Azure.
+V tomto kurzu se používá modul plug-in Jenkinse pro Azure App Service nasadit do Azure.
 
 Naučili jste se tyto postupy:
 
 > [!div class="checklist"]
-> * Konfigurace volaných k nasazení služby Azure App Service pomocí služby FTP 
-> * Konfigurace volaných k nasazení do webové aplikace pro kontejnery 
+> * Konfigurace Jenkinse k nasazení služby Azure App Service pomocí FTP 
+> * Konfigurace Jenkinse k nasazení do Web App for Containers 
