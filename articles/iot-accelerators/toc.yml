@@ -44,6 +44,12 @@
       items:
         - name: Architektura
           href: iot-accelerators-connected-factory-sample-walkthrough.md
+    - name: Simulace zařízení
+      items:
+        - name: Schéma modelu zařízení
+          href: iot-accelerators-device-simulation-device-schema.md
+        - name: Chování modelu zařízení
+          href: iot-accelerators-device-simulation-device-behavior.md
     - name: Oprávnění na webu azureiotsolutions.com
       href: iot-accelerators-permissions.md
 - name: Návody

@@ -169,7 +169,9 @@
 - name: Referenční informace
   items:
     - name: Rozhraní REST API
-      href: 'https://msdn.microsoft.com/library/mt704034(Azure.100).aspx'
+      href: 'https://docs.microsoft.com/rest/api/securitycenter/'
+    - name: Aktualizace služeb
+      href: 'https://azure.microsoft.com/updates/?product=security-center'
 - name: Zdroje a prostředky
   items:
     - name: Správa uživatelských dat

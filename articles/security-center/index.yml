@@ -1,4 +1,10 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: 2a7957a1fd75a91864b372f9c976d90b245b6d79
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39281261"
 documentType: LandingData
 title: Dokumentace ke službě Azure Security Center
 metadata:
@@ -11,14 +17,8 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 01/05/18
+  ms.date: 07/26/18
   ms.author: cmcclister
-  ms.openlocfilehash: 2d0c22cc59e0185caa9c298e1c26026e00faf2a5
-  ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
-  ms.translationtype: HT
-  ms.contentlocale: cs-CZ
-  ms.lasthandoff: 01/10/2018
-  ms.locfileid: "27741095"
 abstract:
   description: Azure Security Center zajišťuje jednotnou správu zabezpečení a pokročilou ochranu před hrozbami napříč hybridními cloudovými úlohami. Prostřednictvím našich šablon Rychlý start a kurzů se dozvíte, jak začít se službou Security Center, jak používat zásady zabezpečení napříč vašimi úlohami, jak omezit vystavení hrozbám a jak detekovat útoky a reagovat na ně.
 sections:
@@ -66,11 +66,11 @@ sections:
       image:
         src: https://docs.microsoft.com/media/logos/logo_azure.svg
         href: https://mva.microsoft.com/en-US/training-courses/hybrid-cloud-workload-protection-with-azure-security-center-18173?l=Ld0LK42jE_006218965
-- title: Odkaz
+- title: Referenční informace
   items:
   - type: list
     style: cards
     className: cardsD
     items:
-    - title: REST
-      html: <p><a href="https://msdn.microsoft.com/library/mt704034(Azure.100).aspx">Reference k rozhraní REST API</a></p>
+    - html: <a href="https://msdn.microsoft.com/library/mt704034(Azure.100).aspx">Reference k rozhraní REST API</a>
+    - html: <a href="https://azure.microsoft.com/updates/?product=security-center">Aktualizace služeb</a>
