@@ -1,21 +1,20 @@
 ---
-title: 'Rychlý start: Rozpoznávat řeč v jazyce C# v rozhraní .NET Framework na Windows s využitím Cognitive Services SDK řeči | Dokumentace Microsoftu'
+title: 'Rychlý start: Rozpoznávat řeč v jazyce C# v rozhraní .NET Framework na Windows s využitím Cognitive Services SDK řeči'
 titleSuffix: Microsoft Cognitive Services
 description: Zjistěte, jak rozpoznávat řeč v jazyce C# v rozhraní .NET Framework na Windows s využitím Cognitive Services SDK řeči
 services: cognitive-services
 author: wolfma61
-manager: onano
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: wolfma
-ms.openlocfilehash: f3b181c8d65cf8618b7599a999b2b8edf20ed809
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: e91e79fc54a39aafda5bdd3801a71c8e8a53e39f
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39259023"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39282240"
 ---
 # <a name="quickstart-recognize-speech-in-c-under-net-framework-on-windows-using-the-speech-sdk"></a>Rychlý start: Rozpoznávat řeč v jazyce C# v rozhraní .NET Framework ve Windows pomocí sady SDK pro řeč
 

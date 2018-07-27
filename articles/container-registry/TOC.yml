@@ -55,6 +55,8 @@
       href: container-registry-get-started-docker-cli.md
     - name: Zobrazení úložišť
       href: container-registry-repositories.md
+    - name: Odstranění imagí kontejneru
+      href: container-registry-delete.md
     - name: Upgrade registru Classic
       href: container-registry-upgrade.md
     - name: Použití webhooků ACR

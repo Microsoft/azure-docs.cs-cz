@@ -1,20 +1,19 @@
 ---
-title: Azure Cognitive Services Speech Service | Dokumentace Microsoftu
+title: Speech Service služeb Azure Cognitive Services
 description: Zjistěte, jak přizpůsobit výslovnost s hlasové služby Cognitive Service.
 services: cognitive-services
 author: PanosPeriorellis
-manager: onano
 ms.service: cognitive-services
 ms.component: custom-speech
 ms.topic: article
 ms.date: 07/02/2018
 ms.author: panosper
-ms.openlocfilehash: f926bf8686a279c93d8f1ed03e8a0ecf3f4a9632
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: c7c06fc2f33baa7357fd5f945414daf2bc6e4858
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37347389"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39284934"
 ---
 # <a name="enable-custom-pronunciation"></a>Povolit vlastní výslovnost
 Vlastní výslovnost umožňuje uživatelům definovat zapsané ve fonetické formuláře a zobrazení slovo nebo termín. Je vhodný pro zpracování vlastní podmínky, jako jsou názvy produktů nebo zkratky. Vše, co potřebujete je soubor výslovnosti (soubor simple .txt).

@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2018
+ms.date: 07/26/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2d49164748079346f24aeeebe216b2668a4e3aed
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 9c59db56ad78818d9b6165d27fd2e64f0bfd902c
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258484"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39283219"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory bezproblémové jednotné přihlašování: Nejčastější dotazy
 
@@ -94,10 +94,8 @@ Proveďte tyto kroky na místním serveru, kde je spuštěn nástroj Azure AD Co
 
 1. Volání `$creds = Get-Credential`. Po zobrazení výzvy zadejte přihlašovací údaje správce domény pro určené doménové struktuře AD.
 
->[!NOTE]
->Používáme zadané v uživatele hlavní názvy (UPN) uživatelské jméno správce domény (johndoe@contoso.com) formát nebo kvalifikovaný účtu sam formát názvu domény (contoso\janmacek nebo contoso.com\johndoe), se najít odpovídající doménovou strukturu AD. Pokud používáte účtu sam kvalifikovaný název domény, používáme doména uživatelské jméno pro [vyhledejte řadič domény ze správce domény s DNS](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx). Pokud místo toho použít hlavní název uživatele jsme [přeložit na účtu sam kvalifikovaný název domény](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa) před vyhledání vhodné řadiče domény.
-
-použít UPN, jsme přeložit 
+    >[!NOTE]
+    >Používáme zadané v uživatele hlavní názvy (UPN) uživatelské jméno správce domény (johndoe@contoso.com) formát nebo kvalifikovaný účtu sam formát názvu domény (contoso\janmacek nebo contoso.com\johndoe), se najít odpovídající doménovou strukturu AD. Pokud používáte účtu sam kvalifikovaný název domény, používáme doména uživatelské jméno pro [vyhledejte řadič domény ze správce domény s DNS](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx). Pokud místo toho použít hlavní název uživatele jsme [přeložit na účtu sam kvalifikovaný název domény](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa) před vyhledání vhodné řadiče domény.
 
 2. Volání `Update-AzureADSSOForest -OnPremCredentials $creds`. Tento příkaz aktualizuje dešifrovací klíč protokolu Kerberos pro `AZUREADSSOACC` účet počítače v této konkrétní doménové struktuře AD a aktualizuje ve službě Azure AD.
 3. Zopakujte předchozí kroky pro každou doménovou strukturu AD, který jste nastavili tuto funkci na.
@@ -107,17 +105,36 @@ použít UPN, jsme přeložit
 
 ## <a name="how-can-i-disable-seamless-sso"></a>Jak lze zakázat bezproblémového jednotného přihlašování?
 
-Bezproblémové jednotné přihlašování je možné zakázat pomocí služby Azure AD Connect.
+### <a name="step-1-disable-the-feature-on-your-tenant"></a>Krok 1. Zakázat funkci ve svém tenantovi
 
-Spusťte Azure AD Connect, zvolte "Změna uživatele přihlášení stránka" a klikněte na "Next". Potom zrušte zaškrtnutí možnosti "Povolit jednotné přihlašování". Pokračujte v průvodci. Po dokončení průvodce je bezproblémové jednotné přihlašování zakázáno ve svém tenantovi.
+#### <a name="option-a-disable-using-azure-ad-connect"></a>Odpověď: možnost Zakázat pomocí služby Azure AD Connect
 
-Nicméně zobrazí se zpráva na obrazovce, který čte následujícím způsobem:
+1. Spusťte Azure AD Connect, zvolte **změnit uživatelské přihlašovací stránku** a klikněte na tlačítko **Další**.
+2. Zrušte zaškrtnutí políčka **povolit jednotné přihlašování** možnost. Pokračujte v průvodci.
+
+Po dokončení průvodce, se zakážou bezproblémového jednotného přihlašování ve svém tenantovi. Zprávu se však zobrazí na obrazovce, který čte následujícím způsobem:
 
 "Jednotného přihlašování je teď zakázané, ale existují další kroky za účelem kompletního vyčištění. Další informace"
 
-K dokončení procesu, postupujte takto ruční na místním serveru, kde je spuštěn nástroj Azure AD Connect:
+Dokončete proces vyčištění proveďte kroky 2 a 3 na na místním serveru, kde je spuštěn nástroj Azure AD Connect.
 
-### <a name="step-1-get-list-of-ad-forests-where-seamless-sso-has-been-enabled"></a>Krok 1. Načíst seznam doménových struktur AD, ve kterém bylo povoleno bezproblémového jednotného přihlašování
+#### <a name="option-b-disable-using-powershell"></a>Možnost B: zakázat pomocí Powershellu
+
+Provedením následujících kroků na místní server, kde je spuštěn nástroj Azure AD Connect:
+
+1. Nejprve stáhnout a nainstalovat [Microsoft Online Services přihlášení pomocníka](http://go.microsoft.com/fwlink/?LinkID=286152).
+2. Pak si stáhnout a nainstalovat [64bitová verze modulu Azure Active Directory pro prostředí Windows PowerShell](http://go.microsoft.com/fwlink/p/?linkid=236297).
+3. Přejděte do složky `%programfiles%\Microsoft Azure Active Directory Connect`.
+4. Naimportujte modul Powershellu bezproblémové jednotné přihlašování pomocí tohoto příkazu: `Import-Module .\AzureADSSO.psd1`.
+5. Spusťte PowerShell jako správce. V prostředí PowerShell, zavolejte `New-AzureADSSOAuthenticationContext`. Tento příkaz by vám měl dát automaticky otevíraného okna zadejte přihlašovací údaje globálního správce vašeho tenanta.
+6. Volání `Enable-AzureADSSO -Enable $false`.
+
+>[!IMPORTANT]
+>Zakázání bezproblémového jednotného přihlašování pomocí Powershellu nedojde ke změně stavu ve službě Azure AD Connect. Bezproblémové jednotné přihlašování se zobrazí jako povolené v **změnit přihlášení uživatele** stránky.
+
+### <a name="step-2-get-list-of-ad-forests-where-seamless-sso-has-been-enabled"></a>Krok 2. Načíst seznam doménových struktur AD, ve kterém bylo povoleno bezproblémového jednotného přihlašování
+
+Pokud jste zakázali bezproblémového jednotného přihlašování pomocí služby Azure AD Connect, postupujte podle kroků 1 až 5 níže. Pokud jste zakázali bezproblémového jednotného přihlašování, místo toho pomocí Powershellu, přejděte ke kroku 6 níže.
 
 1. Nejprve stáhnout a nainstalovat [Microsoft Online Services přihlášení pomocníka](http://go.microsoft.com/fwlink/?LinkID=286152).
 2. Pak si stáhnout a nainstalovat [64bitová verze modulu Azure Active Directory pro prostředí Windows PowerShell](http://go.microsoft.com/fwlink/p/?linkid=236297).
@@ -126,7 +143,7 @@ K dokončení procesu, postupujte takto ruční na místním serveru, kde je spu
 5. Spusťte PowerShell jako správce. V prostředí PowerShell, zavolejte `New-AzureADSSOAuthenticationContext`. Tento příkaz by vám měl dát automaticky otevíraného okna zadejte přihlašovací údaje globálního správce vašeho tenanta.
 6. Volání `Get-AzureADSSOStatus`. Tento příkaz poskytuje seznam doménových struktur AD (pohled na seznamu "Domény") na které tato funkce povolená.
 
-### <a name="step-2-manually-delete-the-azureadssoacct-computer-account-from-each-ad-forest-that-you-see-listed"></a>Krok 2. Odstraňte ručně `AZUREADSSOACCT` účet počítače v každé doménové struktuře AD, které vidíte uvedený.
+### <a name="step-3-manually-delete-the-azureadssoacct-computer-account-from-each-ad-forest-that-you-see-listed"></a>Krok 3. Odstraňte ručně `AZUREADSSOACCT` účet počítače v každé doménové struktuře AD, které vidíte uvedený.
 
 ## <a name="next-steps"></a>Další postup
 

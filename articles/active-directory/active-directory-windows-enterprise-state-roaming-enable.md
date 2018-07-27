@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: markvi
-ms.openlocfilehash: 81a404a19dc1604f0aa87ef86883d0c18edac5cd
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: bb2210619e481189fc88ca3bb6b8044a8f5d7e14
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224883"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39262944"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>Povolení služby Enterprise State Roaming v Azure Active Directory
 Enterprise State Roaming je k dispozici pro všechny organizace s Azure AD Premium nebo Enterprise Mobility + Security (EMS) licence. Další informace o tom, jak získat předplatné Azure AD, najdete v článku [stránce produktu Azure AD](https://azure.microsoft.com/services/active-directory).
@@ -56,7 +56,7 @@ Postupujte podle těchto kroků pro zobrazení zprávy o stavu synchronizace za�
 
 1. Přihlaste se k [centrum pro správu Azure AD](https://aad.portal.azure.com/).
 
-2. Vyberte **Azure Active Directory** &gt; **uživatelů a skupin** &gt; **všichni uživatelé**.
+2. Vyberte **Azure Active Directory** &gt; **uživatelé** &gt; **všichni uživatelé**.
 
 3. Vyberte uživatele a pak vyberte **zařízení**.
 

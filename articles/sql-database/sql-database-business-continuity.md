@@ -9,15 +9,15 @@ ms.service: sql-database
 ms.custom: business continuity
 ms.topic: conceptual
 ms.workload: On Demand
-ms.date: 07/16/2018
+ms.date: 07/25/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: dfea1587cddbf7440771ca7007928f7e4054f61a
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 46ab4a177cc7d86e5d967ff8e219dae96f82a0dc
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39092286"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39263142"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Přehled provozní kontinuity se službou Azure SQL Database
 
@@ -33,7 +33,7 @@ Následující tabulka porovnává ERT a RPO pro každou vrstvu služby pro tři
 | --- | --- | --- | --- |--- |--- |
 | Obnovení k určitému bodu v čase ze zálohy |Libovolný bod obnovení do 7 dní |Libovolný bod obnovení do 35 dní |Libovolný bod obnovení do 35 dní |Libovolný bod obnovení v rámci nakonfigurované doby (až po 35 dnů)|Libovolný bod obnovení v rámci nakonfigurované doby (až po 35 dnů)|
 | Geografické obnovení z geograficky replikovaných záloh |ERT < 12 h, RPO < 1 h |ERT < 12 h, RPO < 1 h |ERT < 12 h, RPO < 1 h |ERT < 12 h, RPO < 1 h|ERT < 12 h, RPO < 1 h|
-| Obnovení z úložiště záloh Azure Backup Vault |ERT < 12 h, RPO < 1 týden |ERT < 12 h, RPO < 1 týden |ERT < 12 h, RPO < 1 týden |ERT < 12 h, RPO < 1 týden|ERT < 12 h, RPO < 1 týden|
+| Obnovení z dlouhodobě uchovávaných SQL |ERT < 12 h, RPO < 1 týden |ERT < 12 h, RPO < 1 týden |ERT < 12 h, RPO < 1 týden |ERT < 12 h, RPO < 1 týden|ERT < 12 h, RPO < 1 týden|
 | Aktivní geografická replikace |ERT < 30 s, RPO < 5 s |ERT < 30 s, RPO < 5 s |ERT < 30 s, RPO < 5 s |ERT < 30 s, RPO < 5 s|ERT < 30 s, RPO < 5 s|
 
 ### <a name="use-point-in-time-restore-to-recover-a-database"></a>Obnovení databáze pomocí obnovení k určitému bodu v čase
@@ -102,7 +102,7 @@ Další informace a podrobné pokyny k obnovení odstraněné databáze pomocí 
 
 ### <a name="restore-backups-from-long-term-retention"></a>Obnovení z dlouhodobě uchovávaných záloh
 
-Pokud je databáze nakonfigurovaná pro dlouhodobé uchovávání došlo ke ztrátě dat mimo aktuální dobu uchovávání automatizovaných záloh, můžete do nové databáze obnovit z úplné zálohy v úložišti zleva doprava. V tuto chvíli můžete původní databázi nahradit obnovenou databází nebo zkopírovat potřebná data z obnovené databáze do původní databáze. Pokud potřebujete načíst starší verzi databáze před upgradem hlavní aplikace, by vyhovovaly žádosti o auditorů nebo soudnímu, že můžete vytvořit databázi pomocí úplné zálohy uložené v trezoru záloh Azure.  Další informace najdete v tématu [Dlouhodobé uchovávání](sql-database-long-term-retention.md).
+Pokud došlo ke ztrátě dat mimo aktuální dobu uchovávání pro automatizované zálohování a databáze je nakonfigurovaná pro dlouhodobé uchování s využitím úložiště objektů blob v Azure, můžete do nové databáze obnovit z úplné zálohy v úložišti objektů blob v Azure. V tuto chvíli můžete původní databázi nahradit obnovenou databází nebo zkopírovat potřebná data z obnovené databáze do původní databáze. Pokud potřebujete načíst starší verzi databáze před upgradem hlavní aplikace, by vyhovovaly žádosti o auditorů nebo soudnímu, že můžete vytvořit databázi pomocí úplné zálohy uložené ve službě Azure blob storage.  Další informace najdete v tématu [Dlouhodobé uchovávání](sql-database-long-term-retention.md).
 
 ## <a name="recover-a-database-to-another-region-from-an-azure-regional-data-center-outage"></a>Obnovení databáze do jiné oblasti po výpadku regionálního datového centra Azure
 <!-- Explain this scenario -->

@@ -1,69 +1,68 @@
 ---
-title: Začínáme se sadou SDK řeči zařízení | Microsoft Docs
-description: Požadavky a pokyny pro Začínáme se sadou SDK řeči zařízení.
+title: Začínáme se sadou SDK pro řeč zařízení
+description: Požadavky a pokyny, jak začít se sadou SDK pro řeč zařízení.
 services: cognitive-services
 author: v-jerkin
-manager: noellelacharite
 ms.service: cognitive-services
 ms.technology: speech
 ms.topic: article
 ms.date: 05/18/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 32dd295132e26e46d64b01b194b557cae26575ad
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 266315a731eec8a2c0ab0a880ce9e1db58331184
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36750790"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39283132"
 ---
-# <a name="get-started-with-the-speech-devices-sdk"></a>Začínáme se sadou SDK řeči zařízení
+# <a name="get-started-with-the-speech-devices-sdk"></a>Začínáme se sadou SDK pro řeč zařízení
 
-Tento článek popisuje, jak nakonfigurovat váš vývojový počítač a vaše řeči zařízení development kit pro vývoj pomocí sady SDK zařízení řeči zařízení rozpoznávání řeči. Potom sestavení a nasazení ukázkové aplikace do zařízení. 
+Tento článek popisuje, jak nakonfigurovat váš vývojový počítač a vaše řeči zařízení development kit pro vývoj zařízení s podporou řeči pomocí sady SDK zařízení řeči. Bude potom sestavíte a nasadíte ukázkovou aplikaci na zařízení. 
 
-Zdrojový kód pro ukázkovou aplikaci, je součástí sady SDK zařízení řeči a je také [dostupná na Githubu](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
+Zdrojový kód ukázkové aplikace je součástí sady SDK zařízení pro zpracování řeči a je také [k dispozici na Githubu](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Před zahájením vývoj pomocí sady SDK zařízení rozpoznávání řeči, shromážděte informace a softwaru, které budete potřebovat.
+Před zahájením vývoj pomocí sady SDK zařízení řeči, shromážděte informace a softwaru, které budete potřebovat.
 
-* Získat development kit [z Roobo](http://ddk.roobo.com/). Sady jsou k dispozici s konfigurací pole Lineární nebo cyklické mikrofon; Vyberte tu správnou vašim potřebám.
+* Získat development kit [z Roobo](http://ddk.roobo.com/). Sady jsou k dispozici s konfiguracemi pro pole Lineární nebo cyklický mikrofon; Vyberte tu správnou pro vaše potřeby.
 
-    |Konfigurace Development kit|Mluvčího umístění|
+    |Konfigurace Development kit|Umístění mluvčího|
     |-----------------------------|------------|
-    |Cyklické|Libovolným směrem ze zařízení|
-    |Lineární|Před zařízení|
+    |Cyklické|Libovolném směru ze zařízení|
+    |Lineární|U zařízení|
 
-* Získejte nejnovější verzi sady SDK zařízení rozpoznávání řeči, včetně Android ukázkové aplikace, ze sady SDK zařízení řeči [ke stažení](https://shares.datatransfer.microsoft.com/). Extrahujte soubor ZIP do místní složky (například `C:\SDSDK`).
+* Získat nejnovější verzi sady SDK zařízení řeči, včetně Androidu ukázkovou aplikaci, ze sady SDK zařízení řeči [web pro stažení](https://shares.datatransfer.microsoft.com/). Extrahujte soubor ZIP do místní složky (například `C:\SDSDK`).
 
 * Nainstalujte [Android Studio](https://developer.android.com/studio/) a [Vysor](http://vysor.io/download/) ve vašem počítači.
 
-* Získat služby řeči [klíč předplatného](get-started.md). Můžete získat bezplatnou 30denní zkušební verzi nebo získání klíče z řídicího panelu Azure.
+* Získat Speech service [klíč předplatného](get-started.md). Můžete získat 30denní bezplatné zkušební verze nebo získání klíče z řídicího panelu Azure.
 
-* Pokud chcete použít záměrné rozpoznávání řeči služby, přihlášení k odběru [znalosti jazyka služby](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) (LEOŠ) a [získat klíč předplatného](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/azureibizasubscription). 
+* Pokud chcete použít rozpoznání záměru řeči service, přihlášení k odběru [služby Language Understanding](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) (LUIS) a [získat klíč předplatného](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/azureibizasubscription). 
 
-    Mohou [vytvoření jednoduchého modelu LEOŠ](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/) nebo použijte ukázku, LEOŠ modelu `LUIS-example.json`, k dispozici ze sady SDK zařízení řeči [ke stažení](https://shares.datatransfer.microsoft.com/). Nahrát soubor JSON váš model do [LEOŠ portál](https://www.luis.ai/home) kliknutím **novou aplikaci Import** a výběr souboru JSON.
+    Vám může [vytvoření jednoduchého modelu LUIS](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/) nebo použijte ukázku, LUIS model, `LUIS-example.json`, která je dostupná z sadou SDK pro řeč zařízení [web pro stažení](https://shares.datatransfer.microsoft.com/). Nahrání souboru JSON modelu [LUIS portál](https://www.luis.ai/home) kliknutím **Import novou aplikaci** a výběrem souboru JSON.
 
-## <a name="set-up-the-development-kit"></a>Nastavit development kit
+## <a name="set-up-the-development-kit"></a>Nastavení sady development kit
 
-1. Připojte se v adaptéru power development kit. Na zelenou power ukazatel by měl light v horním panelu.
+1. Zařaďte adaptér power development kit. Indikátor zelené power by bylo možné v horním panelu.
 
-1. Připojte k počítači pomocí kabelu USB malé sadě pro vývoj.
+1. Připojení k počítači pomocí USB kabelu minimální development kit.
 
-    ![připojení kit vývojářů](media/speech-devices-sdk/qsg-1.jpg)
+    ![připojení dev kit](media/speech-devices-sdk/qsg-1.jpg)
 
-1. Vaše development kit orientaci správně.
+1. Vývojová sada orientovat odpovídajícím způsobem.
 
     |Konfigurace Development kit|Orientace|
     |-----------------------------|------------|
-    |Cyklické|Svisle s mikrofon čelí horní meze.|
-    |Lineární|Na jeho straně s mikrofon směrem k vám (zobrazené dole)|
+    |Cyklické|Sloupku s mikrofonů, kterým čelí horní mez|
+    |Lineární|Na své straně s mikrofonů směrem k vám (viz dole)|
 
-    ![orientace kit lineární vývojářů](media/speech-devices-sdk/qsg-2.jpg)
+    ![orientace lineární dev kit](media/speech-devices-sdk/qsg-2.jpg)
 
-1. Nainstalujte certifikáty a soubor tabulky probuzení word (– klíčové slovo) a nastavte oprávnění zvukového zařízení. Zadejte následující příkazy v příkazovém okně.
+1. Nainstalujte certifikáty a soubor tabulky probuzení word (klíčové slovo) a nastavit oprávnění zvukové zařízení. Zadejte následující příkazy v příkazovém okně.
 
     > [!NOTE]
-    > Tyto příkazy používají most ladění Android, `adb.exe`, který je součástí instalace Android Studio. Tento nástroj naleznete v `C:\Users\[user name]\AppData\Local\Android\Sdk\platform-tools`. Tento adresář může přidat do své cestě aby pohodlnější k vyvolání `adb`. Jinak, musíte zadat úplnou cestu pro instalaci produktu `adb.exe` v každé příkazu, která volá `adb`.
+    > Tyto příkazy používají Android Debug Bridge, `adb.exe`, který je součástí instalace sady Android Studio. Tento nástroj najdete v `C:\Users\[user name]\AppData\Local\Android\Sdk\platform-tools`. Tento adresář může přidat do cesty k němu pohodlnější, který má být vyvolán `adb`. V opačném případě musíte zadat úplnou cestu k instalaci sady `adb.exe` v každý příkaz, který vyvolá `adb`.
 
     ```
     adb push C:\SDSDK\Android-Sample-Release\scripts\roobo_setup.sh /data/ 
@@ -75,33 +74,33 @@ Před zahájením vývoj pomocí sady SDK zařízení rozpoznávání řeči, sh
     ```
 
     > [!TIP]
-    > Ztlumení mikrofon a mluvčího vašeho počítače. Tímto způsobem lze zajistit pracujete s mikrofon development kit a nebudou neúmyslně aktivuje zařízení s zvuk z počítače.
+    > Ztlumení mikrofonu a reproduktorů počítače. Díky tomu lze zajistit pracujete s mikrofonů development kit a nebudou neúmyslně aktivovat zařízení se zvukem z počítače.
     
 1.  Spusťte Vysor ve vašem počítači.
 
     ![Vysor](media/speech-devices-sdk/qsg-3.png)
 
-1.  Zařízení by měl být uvedený v části "Vyberte zařízení". Klikněte **zobrazení** vedle sebe tlačítko. 
+1.  Vaše zařízení by měly být uvedeny v části "Zvolte zařízení". Klikněte na tlačítko **zobrazení** vedle sebe tlačítko. 
  
-1.  Připojit k bezdrátové síti kliknutím **nastavení**, pak **WLAN**.
+1.  Připojení k bezdrátové síti kliknutím **nastavení**, pak **WLAN**.
 
     ![Vysor WLAN](media/speech-devices-sdk/qsg-4.png)
  
 ## <a name="run-a-sample-application"></a>Spuštění ukázkové aplikace
 
-Pokud chcete spustit testy Roobo a ověření vašeho development kit nastavení, sestavte a nainstalovat ukázkovou aplikaci.
+Ke spuštění testů Roobo a ověření nastavení development kit, sestavit a nainstalovat ukázkovou aplikaci.
 
-1.  Spustíte Android Studio.
+1.  Spusťte Android Studio.
 
-1.  Vyberte, chcete-li otevřít existující projekt Android Studio.
+1.  Vyberte a otevřete existující projekt Android Studio.
 
     ![Android studio – otevřít existující projekt](media/speech-devices-sdk/qsg-5.png)
  
-1.  Přejděte do `C:\SDSDK\Android-Sample-Release\example`, pak klikněte na tlačítko **OK** otevřete příklad projektu.
+1.  Přejděte do `C:\SDSDK\Android-Sample-Release\example`, pak klikněte na tlačítko **OK** Chcete-li spustit příklad projektu.
  
-1.  Přidejte svůj klíč předplatného řeči ke zdrojovému kódu. Pokud chcete vyzkoušet záměrné rozpoznávání, přidejte také vaše [znalosti jazyka služby](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) klíč předplatného a aplikace. 
+1.  Přidáte klíč předplatného řeči ke zdrojovému kódu. Pokud chcete vyzkoušet rozpoznání záměru, přidejte také vaše [služby Language Understanding](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) klíč předplatného a aplikace. 
 
-    Klíče a ukládá informace o aplikaci následující řádky do zdrojového souboru `MainActivity.java`.
+    Klíče a ukládá informace o aplikaci následující řádky ve zdrojovém souboru `MainActivity.java`.
 
     ```java
     // Subscription
@@ -112,13 +111,13 @@ Pokud chcete spustit testy Roobo a ověření vašeho development kit nastavení
     private static final String LuisAppId = "[your LUIS app id]"
     ```
 
-1. Aplikace word probuzení výchozí (– klíčové slovo) je "Počítač".  Pokud chcete, můžete zkusit akci jednu z dalších poskytuje probuzení slova, "Počítač" a "Pomocníka." Soubory prostředků pro tyto alternativní slova naleznete v sadě SDK řeči zařízení ve složce "– klíčové slovo". Například `C:\SDSDK\Android-Sample-Release\keyword\Computer` obsahuje soubory používané pro "Počítač".
+1. Výchozí probuzení word (klíčové slovo) je "Počítač".  Pokud chcete, může použijte jeden z nich k dispozici funkce slova, "Počítač" a "Assistant". Soubory prostředků pro těchto alternativních slov najdete v sadou SDK pro řeč zařízení ve složce "– klíčové slovo". Například `C:\SDSDK\Android-Sample-Release\keyword\Computer` obsahuje soubory používané pro "Počítač".
 
     Můžete také [vytvořit vlastní probuzení slovo](speech-devices-sdk-create-kws.md).
 
-    Instalace požadované probuzení word:
+    K instalaci požadovaného probuzení word:
  
-    * Vytvoření `keyword` složky ve složce \data\ na zařízení tak, že spustíte následující příkazy v příkazovém okně.
+    * Vytvoření `keyword` složky ve složce \data\ na zařízení spuštěním následujících příkazů v příkazovém okně.
 
         ```
         adb shell
@@ -136,7 +135,7 @@ Pokud chcete spustit testy Roobo a ověření vašeho development kit nastavení
         adb push C:\SDSDK\Android-Sample-Release\keyword\Computer\words_kw.txt /data/keyword
         ```
     
-    * Odkazovat na tyto soubory v ukázkové aplikaci. Najít následující řádky do `MainActivity.java`. Ujistěte se, že zadané klíčové slovo je ten, který je používáte a že cesta odkazuje na `kws.table` soubor, který instaluje do zařízení.
+    * Odkazovat na tyto soubory v ukázkové aplikaci. Vyhledejte následující řádky v `MainActivity.java`. Ujistěte se, že zadané klíčové slovo je použijete jeden a že cesta odkazuje na `kws.table` soubor, který jste odeslali do zařízení.
         
         ```java
         private static final String Keyword = "Computer";
@@ -144,14 +143,14 @@ Pokud chcete spustit testy Roobo a ověření vašeho development kit nastavení
         ```
 
         > [!NOTE]
-        > V kódu, můžete použít `kws.table` soubor k vytvoření instance modelu – klíčové slovo a spouštění rozpoznávání následujícím způsobem.
+        > Ve svém vlastním kódu, můžete použít `kws.table` soubor pro vytvoření instance modelu – klíčové slovo a rozpoznávání spuštění následujícím způsobem.
         >
         > ```java
         > KeywordRecognitionModel km = KeywordRecognitionModel.fromFile(KeywordModel);
         > final Task<?> task = reco.startKeywordRecognitionAsync(km);
         > ```
 
-1.  Aktualizujte následující řádky obsahující nastavení geometrie mikrofon pole.
+1.  Aktualizujte následující řádky obsahující nastavení geometrie pole mikrofonu.
 
     ```java
     private static final String DeviceGeometry = "Circular6+1";
@@ -160,28 +159,28 @@ Pokud chcete spustit testy Roobo a ověření vašeho development kit nastavení
 
     |Proměnná|Význam|Dostupné hodnoty|
     |--------|-------|----------------|
-    |`DeviceGeometry`|Konfigurace fyzického povinná kontrola úrovně důvěryhodnosti|`Circular6+1` pro cyklické dev kit|
-    ||| `Linear4` pro vývojáře lineární kit|
-    |`SelectedGeometry`|Konfigurace softwaru povinná kontrola úrovně důvěryhodnosti|`Circular6+1` pro cyklické dev kit pomocí všechny MIC, algoritmus|
-    |||`Circular3+1` pro cyklické dev kit pomocí čtyř MIC, algoritmus|
-    |||`Linear4` pro použití všechny MIC, algoritmus kit lineární vývojářů|
-    |||`Linear2` pro použití dvou MIC, algoritmus kit lineární vývojářů|
+    |`DeviceGeometry`|Konfigurace fyzického mic|`Circular6+1` pro cyklické dev kit|
+    ||| `Linear4` Lineární dev Kit|
+    |`SelectedGeometry`|Konfigurace softwaru povinná kontrola úrovně důvěryhodnosti|`Circular6+1` Cyklické dev kit pomocí všech mikrofonu|
+    |||`Circular3+1` Cyklické dev kit pomocí čtyř mikrofonu|
+    |||`Linear4` Lineární dev kit pomocí všech mikrofonu|
+    |||`Linear2` Lineární dev kit pomocí dvou mikrofonu|
 
 
-1.  Sestavení aplikace tak, že zvolíte **spuštění "aplikace"** z nabídky spustit. Otevře se dialogové okno Vybrat cíl nasazení. Vyberte zařízení a klikněte na **OK** k nasazení aplikace do zařízení.
+1.  Sestavte aplikaci výběrem **spuštění "aplikace"** z nabídky spustit. Zobrazí se dialogové okno Vyberte cíl nasazení. Vyberte zařízení a klikněte na tlačítko **OK** k nasazení aplikace do zařízení.
 
     ![Vyberte cíl nasazení](media/speech-devices-sdk/qsg-7.png)
  
-1.  Ukázková aplikace sady SDK zařízení řeči spustí tady zobrazené možnosti.
+1.  Ukázková aplikace sadou SDK pro řeč zařízení spustí možnosti je vidět tady.
 
-    ![Ukázková aplikace zařízení řeči](media/speech-devices-sdk/qsg-8.png)
+    ![ukázkové aplikace zařízení řeči](media/speech-devices-sdk/qsg-8.png)
 
-1. Si ji vyzkoušeli!
+1. Pohrajte si s ní!
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-Pokud při používání služby řeči selhání certifikátu, ujistěte se, že zařízení má správné datum a čas.
+Pokud se zobrazí selhání certifikátu, při použití služby řeči, ujistěte se, že zařízení má správné datum a čas.
 
-Další informace vývoj najdete v tématu na Roobo [Průvodce vývojem](http://dwn.roo.bo/server_upload/ddk/ROOBO%20Dev%20Kit-User%20Guide.pdf).
+Vývoj podrobnosti naleznete v tématu společnosti Roobo [Příručka pro vývojáře](http://dwn.roo.bo/server_upload/ddk/ROOBO%20Dev%20Kit-User%20Guide.pdf).
 
-Roobo poskytuje nástroj, který zachycuje všechny zvuk do paměti, která může pomoci při řešení potíží s zvuk flash. Verze nástroje se poskytuje pro každé konfiguraci development kit. Vyberte si zařízení na [webu Roobo](http://ddk.roobo.com/), klikněte **ROOBO nástroje** odkaz ve spodní části stránky.
+Roobo poskytuje nástroj, který zachycuje všechny zvuk na flash paměti, což může pomoci při řešení potíží s zvuku. Verze nástroje se poskytuje pro každou konfiguraci development kit. Zvolte si zařízení na [lokality Roobo](http://ddk.roobo.com/), klikněte **ROOBO nástroje** odkaz v dolní části stránky.

@@ -45,6 +45,12 @@
       href: service-fabric-mesh-howto-deploy-app-azurefiles-volume.md
     - name: Nezávislé škálování mikroslužeb v aplikaci
       href: service-fabric-mesh-howto-app-scale-out.md
+- name: Referenční informace
+  items:
+    - name: Rozhraní REST API poskytovatele prostředků služby Service Fabric Mesh
+      href: /rest/api/servicefabric/sfmeshrp-index
+    - name: Rozhraní REST API prostředků klienta služby Service Fabric
+      href: '/rest/api/servicefabric/sfclient-index#service-fabric-resource-model'
 - name: Zdroje a prostředky
   items:
     - name: Časté dotazy

@@ -10,12 +10,12 @@ ms.date: 05/30/2018
 ms.service: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: eaf05d44a4d77f1a294664485e38c6f5719ce238
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: d153fa495c82103460dd8e4e2aae6000e49eb3eb
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238307"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39283584"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Omezení a konfigurační informace pro Azure Logic Apps
 
@@ -52,7 +52,7 @@ Tady jsou limity pro běh aplikace logiky jeden:
 | Název | Omezení | Poznámky | 
 |------|-------|-------| 
 | Doba trvání běhu | 90 dnů | Chcete-li tento limit změnit, přečtěte si téma [doba trvání běhu změnit](#change-duration). | 
-| Uchování úložiště | čas zahájení 90 dnů od spuštění | Chcete-li tento limit změnit, přečtěte si téma [změnit uchování úložiště](#change-retention). | 
+| Uchování úložiště | čas zahájení 90 dnů od spuštění | Chcete-li tento limit můžete změnit na hodnotu 7 dní až 90 dnů, přečtěte si téma [změnit uchování úložiště](#change-retention). | 
 | Interval minimální opakování | 1 sekunda | | 
 | Maximální počet opakování interval | 500 dnů | | 
 |||| 
@@ -62,7 +62,7 @@ Tady jsou limity pro běh aplikace logiky jeden:
 
 ### <a name="change-run-duration-and-storage-retention"></a>Změna spuštění uchovávání doba trvání a ukládání
 
-Tento limit můžete změnit na hodnotu 7 dní až 90 dnů. Přejít nad maximální limit [obraťte se na tým Logic Apps](mailto://logicappsemail@microsoft.com) nápovědu k vašim požadavkům.
+Chcete-li změnit výchozí limit 7 dní až 90 dnů, postupujte podle těchto kroků. Pokud budete muset přejít nad maximální limit [obraťte se na tým Logic Apps](mailto://logicappsemail@microsoft.com) nápovědu k vašim požadavkům.
 
 1. Na webu Azure Portal, v nabídce aplikace logiky zvolte **nastavení pracovního postupu**. 
 
@@ -72,16 +72,18 @@ Tento limit můžete změnit na hodnotu 7 dní až 90 dnů. Přejít nad maximá
 
 <a name="looping-debatching-limits"></a>
 
-## <a name="looping-and-debatching-limits"></a>Cykly a rušení dávek omezení
+## <a name="concurrency-looping-and-debatching-limits"></a>Souběžnost, cykly a rušení dávek omezení
 
 Tady jsou limity pro běh aplikace logiky jeden:
 
 | Název | Omezení | Poznámky | 
 | ---- | ----- | ----- | 
-| Do iterací | 5 000 | | 
-| Položky ForEach | 100 000 | Můžete použít [akce dotazu](../connectors/connectors-native-query.md) k filtrování větších polí podle potřeby. | 
-| Paralelní zpracování ForEach | 50 | Výchozí hodnota je 20. <p>Chcete-li změnit toto výchozí úroveň ve smyčce ForEach, nastavte `runtimeConfiguration` vlastnost `foreach` akce. <p>Postupně spusťte smyčku ForEach, nastavte `operationOptions` vlastnost "Sekvenční" v `foreach` akce. | 
+| Souběžnosti triggeru | 50 | Výchozí limit je 20. Tato omezení popisuje maximální počet instancí aplikace logiky, spuštěné ve stejnou dobu nebo paralelně. <p><p>Chcete-li změnit výchozí omezení na hodnotu mezi 1 až 50 znaků (včetně), [souběžnosti aktivační události změnit](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) nebo [aktivovat instance postupně](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). | 
+| Maximální čekací spuštění | 100 | Výchozí limit je 10. Tato omezení popisuje maximální počet instancí aplikace logiky, které mohou čekat na spustit, když vaše aplikace logiky je již spuštěn maximální počet souběžných instancí. <p><p>Chcete-li změnit výchozí omezení na hodnotu mezi 0 a 100 (včetně), [omezit spuštění čekajících změn](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs). | 
+| Položky foreach | 100 000 | Tato omezení popisuje maximální počet položek pole, které může zpracovat smyčka "for each". <p><p>K filtrování větších polí, můžete použít [akce dotazu](../connectors/connectors-native-query.md). | 
+| Foreach iterací | 50 | Výchozí limit je 20. Popisuje tento limit maximálního počtu "pro každý" iterací, které lze spustit ve stejnou dobu nebo paralelní smyčky. <p><p>Chcete-li změnit výchozí omezení na hodnotu mezi 1 až 50 znaků (včetně), [změnit "for each" souběžnosti](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency) nebo [spuštění "for each" smyčky postupně](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each). | 
 | Položky SplitOn | 100 000 | | 
+| Do iterací | 5 000 | | 
 |||| 
 
 <a name="throughput-limits"></a>
@@ -91,14 +93,14 @@ Tady jsou limity pro běh aplikace logiky jeden:
 Tady jsou limity pro běh aplikace logiky jeden:
 
 | Název | Omezení | Poznámky | 
-| ----- | ----- | ----- | 
-| Spuštění akcí za 5 minut | 100 000 | Pokud chcete zvýšit omezení na 300 000, můžete spustit aplikace logiky v `High Throughput` režimu. Ke konfiguraci režimu vysoké propustnosti, v části `runtimeConfiguration` prostředku pracovního postupu, nastavte `operationOptions` vlastnost `OptimizedForHighThroughput`. <p>**Poznámka:**: režim vysoké propustnosti je ve verzi preview. Navíc můžete distribuovat zatížení napříč více než jednu aplikaci podle potřeby. | 
-| Souběžná volání odchozí akce | ~2,500 | Snižte počet souběžných požadavků nebo zkrátit dobu trvání podle potřeby. | 
-| Koncový bod modulu runtime: příchozí souběžných volání | ~1,000 | Snižte počet souběžných požadavků nebo zkrátit dobu trvání podle potřeby. | 
-| Koncový bod modulu runtime: Číst volání za 5 minut  | 60,000 | Můžete rozdělit zatížení mezi více než jednu aplikaci, podle potřeby. | 
-| Koncový bod modulu runtime: vyvolat volání za 5 minut| 45,000 | Můžete rozdělit zatížení mezi více než jednu aplikaci, podle potřeby. |
-| Obsahu propustnost za 5 minut | 600 MB | Můžete rozdělit zatížení mezi více než jednu aplikaci, podle potřeby. |  
-||||| 
+| ---- | ----- | ----- | 
+| Akcí: Spuštění za 5 minut | 300,000 | Výchozí limit je 100 000. Chcete-li změnit výchozí omezení, [spuštění aplikace logiky v režimu "Vysoká propustnost"](../logic-apps/logic-apps-workflow-actions-triggers.md#run-high-throughput-mode), což je ve verzi preview. Nebo můžete distribuovat zatížení napříč více než jedné aplikace logiky podle potřeby. | 
+| Akce: Souběžná volání odchozí | ~2,500 | Můžete snížit počet souběžných požadavků nebo zkrátit dobu trvání podle potřeby. | 
+| Koncový bod modulu runtime: příchozí souběžných volání | ~1,000 | Můžete snížit počet souběžných požadavků nebo zkrátit dobu trvání podle potřeby. | 
+| Koncový bod modulu runtime: Číst volání za 5 minut  | 60,000 | Rozdělit zatížení mezi více než jednu aplikaci podle potřeby. | 
+| Koncový bod modulu runtime: vyvolat volání za 5 minut | 45,000 | Rozdělit zatížení mezi více než jednu aplikaci podle potřeby. | 
+| Obsahu propustnost za 5 minut | 600 MB | Rozdělit zatížení mezi více než jednu aplikaci podle potřeby. | 
+|||| 
 
 Ambice tato omezení v normálním zpracování nebo spustit zátěžové testování, který může přejít nad tyto limity [obraťte se na tým Logic Apps](mailto://logicappsemail@microsoft.com) nápovědu k vašim požadavkům.
 
@@ -278,7 +280,7 @@ Všechny aplikace logiky v oblasti používat stejné rozsahy IP adres. Pro podp
 | Japonsko – západ | 40.74.140.173, 40.74.81.13, 40.74.85.215 |
 | Střed USA – sever | 168.62.249.81, 157.56.12.202, 65.52.211.164 |
 | Severní Evropa | 13.79.173.49, 52.169.218.253, 52.169.220.174 |
-| Střed USA – jih | 52.172.9.47, 52.172.49.43, 52.172.51.140 |
+| Střed USA – jih | 13.65.98.39, 13.84.41.46, 13.84.43.45 |
 | Indie – jih | 52.172.9.47, 52.172.49.43, 52.172.51.140 |
 | Jihovýchodní Asie | 52.163.93.214, 52.187.65.81, 52.187.65.155 |
 | Západní střed USA | 52.161.26.172, 52.161.8.128, 52.161.19.82 |

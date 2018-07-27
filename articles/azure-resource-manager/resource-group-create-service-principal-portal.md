@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: 7a1b6aa9afd26116253482a2e1a9c6a25bdf3c55
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 57d017e2320e5cfea15f1716bc3b6518606e2ea4
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441569"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39282236"
 ---
 # <a name="use-portal-to-create-an-azure-active-directory-application-and-service-principal-that-can-access-resources"></a>Vytvoření aplikace Azure Active Directory a instančního objektu, který má přístup k prostředkům pomocí portálu
 
-Až budete mít kód, který je potřeba přistupovat nebo změnit prostředky, musíte vytvořit aplikaci Azure Active Directory (AD). Přiřadit požadovaná oprávnění k aplikaci AD. Tento přístup je vhodnější pro spuštění aplikace pod svými přihlašovacími údaji, protože můžete přiřadit oprávnění pro aplikace identitu, která se liší od své vlastní oprávnění. Tato oprávnění jsou obvykle omezená přesně na to, co aplikace potřebuje dělat.
+Až budete mít kód, který je potřeba přistupovat nebo změnit prostředky, musíte vytvořit aplikaci Azure Active Directory (AD). Pak můžete přiřadit požadovaná oprávnění k aplikaci AD. Tento přístup je vhodnější pro spuštění aplikace pod svými přihlašovacími údaji, protože můžete přiřadit oprávnění pro aplikace identitu, která se liší od své vlastní oprávnění. Tato oprávnění jsou obvykle omezená přesně na to, co aplikace potřebuje dělat.
 
-Tento článek popisuje, jak provést tyto kroky na portálu. Zaměřuje se na jednoho tenanta aplikaci, kde je aplikace určena pro spuštění v rámci organizace jenom jeden. Obvykle používají aplikace s jedním tenantem pro řádek podnikovým aplikacím, které běží v rámci vaší organizace.
+Tento článek ukazuje, jak tento postup na portálu. Zaměřuje se na jednoho tenanta aplikaci, kde je aplikace určena pro spuštění v rámci organizace jenom jeden. Obvykle používají aplikace s jedním tenantem pro řádek podnikovým aplikacím, které běží v rámci vaší organizace.
 
 > [!IMPORTANT]
 > Místo vytvoření instančního objektu zvažte použití Identity spravované služby Azure AD (Azure AD MSI) pro identitu vaší aplikace. Azure AD MSI je funkce služby Azure Active Directory ve veřejné verzi Preview, která zjednodušuje vytváření identity pro kód. Pokud váš kód běží na službě, která podporuje Azure AD MSI a pracuje s prostředky, které podporují ověřování Azure Active Directory, je pro vás Azure AD MSI lepší volbou. Další informace o Azure AD MSI, včetně služeb, které ji aktuálně podporují, najdete v článku [Spravovaná identita služby pro prostředky Azure](../active-directory/managed-service-identity/overview.md).
@@ -156,7 +156,7 @@ Nastavit obor na úrovni předplatného, skupinu prostředků nebo prostředek. 
 
    ![Výběr možnosti Přidat](./media/resource-group-create-service-principal-portal/select-add.png)
 
-1. Vyberte roli, kterou chcete přiřadit k aplikaci. Na následujícím obrázku **čtečky** role.
+1. Vyberte roli, kterou chcete přiřadit k aplikaci. Aby bylo možné povolit aplikaci provést akce, jako je **restartovat**, **start** a **Zastavit** instancí, musíte mít roli vyberte **Přispěvatel**. Na následujícím obrázku **čtečky** role.
 
    ![Vyberte roli](./media/resource-group-create-service-principal-portal/select-role.png)
 

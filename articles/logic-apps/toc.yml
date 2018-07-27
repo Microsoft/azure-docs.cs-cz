@@ -2,7 +2,7 @@
   href: index.yml
 - name: Přehled
   items:
-    - name: Co je služba Azure Logic Apps?
+    - name: Co je Azure Logic Apps?
       href: logic-apps-overview.md
 - name: Šablony Rychlý start
   expanded: true
@@ -312,9 +312,9 @@
     - name: Jazykové schéma pro definování pracovních postupů
       href: logic-apps-workflow-definition-language.md
       items:
-        - name: Triggery a akce pracovních postupů
+        - name: Odkazy na typy spouštěčů a akcí
           href: logic-apps-workflow-actions-triggers.md
-        - name: Jazykové funkce pro definování pracovních postupů
+        - name: Reference k funkcím
           href: workflow-definition-language-functions-reference.md
         - name: GA – historie schématu
           href: logic-apps-schema-2016-04-01.md

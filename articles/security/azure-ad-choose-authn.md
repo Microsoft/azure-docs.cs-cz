@@ -9,12 +9,12 @@ ms.date: 04/12/2018
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
-ms.openlocfilehash: d0d72694fe2d88e257a8684dc37a250bc0ad7f3f
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 7acf18c4624373dff8994a1996e9082770b90270
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970985"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39283683"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Vyberte metodu správné ověřování pro vaše řešení hybridní identity Azure Active Directory 
 
@@ -106,9 +106,9 @@ Odkazovat na [implementace synchronizace hodnot hash hesel](https://docs.microso
 
     Existuje Další výhodou až po nasazení synchronizace hodnot hash hesel kromě předávací ověřování. Funguje jako záložní ověřování, když primární ověřování už není k dispozici.
 
-* **Důležité informace o**. Synchronizace hodnot hash hesel může použít jako záložní ověřování pro předávací ověřování a agenty nelze ověřit přihlašovací údaje uživatele. Pak převzetí služeb při selhání pro synchronizaci hodnot hash hesel nedojde automaticky. Přepněte metodu přihlašování ručně pomocí služby Azure AD Connect. 
+* **Důležité informace o**. Synchronizace hodnot hash hesel můžete použít jako záložní ověřování pro předávací ověřování při agenty nelze ověřit pověření uživatele kvůli chybě významné místní. Převzetí služeb při selhání pro synchronizaci hodnot hash hesel nedojde automaticky a ručně přepínat metody přihlašování musí používat Azure AD Connect. 
 
-    Předávací ověřování podporuje pouze cloudové aplikace, které používají moderní ověřování a protokolů Exchange Online. Některé protokoly jsou ActiveSync a IMAP4 POP3. Například si Microsoft Office 2013 a novější podporu moderní ověřování, ale starší verze. Další informace o podporovaných aplikací Office najdete v tématu [moderní ověřování Office 365 aktualizovat](https://blogs.office.com/en-us/2015/11/19/updated-office-365-modern-authentication-public-preview/). Další důležité informace na předávací ověřování, včetně alternativní ID podporovat, najdete v části [– nejčastější dotazy](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-faq).
+    Další důležité informace na předávací ověřování, včetně alternativní ID podporovat, najdete v části [– nejčastější dotazy](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-faq).
 
 Odkazovat na [implementace předávací ověřování](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication) pro jednotlivé kroky nasazení.
 

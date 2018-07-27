@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 06/14/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: f215136c5d07eca098d68d882d22f6c9dd14b0b9
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: e63f07e7819d464b4ee430571d8c5a05259c8df5
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214672"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39282030"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Postupy: Vyžadovat spravovaná zařízení pro přístup k aplikaci cloud s podmíněným přístupem
 
@@ -64,7 +64,7 @@ Pokud chcete získat zařízení registrovaná službou Azure AD, máte tři mo�
 
 - **[Zařízení připojená k Azure AD](device-management-introduction.md#azure-ad-joined-devices)**  – Pokud chcete získat organizační zařízení Windows 10, které není připojené k místní AD registrované v Azure AD. 
 
-- **[Zařízení připojená k hybridní službě Azure AD](device-management-introduction.md#hybrid-azure-ad-joined-devices)**  – Pokud chcete získat zařízení s Windows 10, který je připojený k místní AD registrované v Azure AD.
+- **[Zařízení připojená k hybridní službě Azure AD](device-management-introduction.md#hybrid-azure-ad-joined-devices)**  – Pokud chcete získat Windows 10 nebo podporovaných zařízení nižší úrovně, které je připojené k místní AD registrované v Azure AD.
 
 Se spravované zařízení zaregistrovaného zařízení musí být buď **zařízení připojenému k hybridní službě Azure AD** nebo **zařízení, která byla označena jako vyhovující**.  
 
@@ -77,7 +77,7 @@ Ve své zásady podmíněného přístupu můžete vybrat **vyžadovat zařízen
 
 ![Podmínky na základě zařízení](./media/active-directory-conditional-access-policy-connected-applications/10.png)
 
-Toto nastavení platí jenom pro zařízení s Windows 10, které jsou připojené k místní AD. Tato zařízení můžete zaregistrovat pouze s Azure AD pomocí připojení k hybridní službě Azure AD, která je [automatizovat proces](device-management-hybrid-azuread-joined-devices-setup.md) získat zařízení s Windows 10 zaregistrované. 
+Toto nastavení platí jenom pro Windows 10 nebo nižší úrovně zařízení, jako jsou Windows 7 nebo Windows 8, které jsou připojeny k místní AD. Tato zařízení můžete zaregistrovat pouze s Azure AD pomocí připojení k hybridní službě Azure AD, která je [automatizovat proces](device-management-hybrid-azuread-joined-devices-setup.md) získat zařízení s Windows 10 zaregistrované. 
 
 ![Podmínky na základě zařízení](./media/active-directory-conditional-access-policy-connected-applications/45.png)
 

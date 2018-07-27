@@ -1,54 +1,54 @@
 ---
-title: Postup vytvoření DSVM a HDI jako výpočetní cíle pro Azure ML
-description: Vytvoření clusteru DSVM a HDI Spark jako výpočetní cíle pro Azure ML experimenty.
+title: Jak vytvořit DSVM a HDI podle cílových výpočetních prostředí pro Azure ML
+description: Vytvoření clusteru DSVM a HDI Spark jako cílových výpočetních prostředí pro experimentování ve službě Azure ML.
 services: machine-learning
 author: hning86
 ms.author: haining
 manager: mwinkle
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/26/2017
-ms.openlocfilehash: 40711c424d3d552253deba85110b0c4447f4ec62
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 18cf885cd71822c2c24791f3c6f55835c3204d35
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34831016"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39285695"
 ---
-# <a name="create-dsvm-and-hdi-spark-cluster-as-compute-targets"></a>Vytvoření clusteru DSVM a HDI Spark jako výpočetní cíle
+# <a name="create-dsvm-and-hdi-spark-cluster-as-compute-targets"></a>Vytvoření clusteru DSVM a HDI Spark jako cílových výpočetních prostředí
 
-Můžete snadno škálovat nahoru i horizontální navýšení kapacity experimentu machine learning přidáním další výpočetní cílů například na základě Ubuntu DSVM (datové vědy virtuálního počítače) a Apache Spark pro cluster Azure HDInsight. Tento článek nevystavíte slabé stránky zabezpečení vás provede kroky k vytvoření těchto výpočetní cílů v Azure. Další informace o Azure ML výpočetní cíle, najdete v části [Přehled služby Azure Machine Learning experimentování](experimentation-service-configuration.md).
+Můžete snadno vertikálně navýšit kapacitu nebo horizontální navýšení kapacity experimentu s Machine learningem tak, že přidáte další výpočetní cíle jako je založený na Ubuntu DSVM (virtuální počítač datové vědy) a Apache Spark pro cluster Azure HDInsight. Tento článek procházení vás provede kroky k vytvoření těchto cílů v Azure compute. Další informace o Azure ML cílových výpočetních prostředí najdete [Přehled služby experimentování ve službě Azure Machine Learning](experimentation-service-configuration.md).
 
 >[!NOTE]
->Je potřeba zajistit, máte příslušná oprávnění k vytvoření prostředkům, například virtuálních počítačů a HDI clustery v Azure, než budete pokračovat. Obě tyto prostředky také spotřebovat mnoho výpočetních jader v závislosti na konfiguraci. Ujistěte se, že vaše předplatné má dostatečnou kapacitu pro virtuální jader procesoru. Ve spojení se podpory Azure může vždy získat zvýšit maximální počet jader, které jsou povoleny v rámci vašeho předplatného.
+>Je nutné se ujistit, máte příslušná oprávnění k vytváření prostředků, jako je například virtuální počítač a HDI clustery v Azure, než budete pokračovat. Také oba tyto prostředky můžou využívat mnoho výpočetních jader, v závislosti na vaší konfiguraci. Ujistěte se, že vaše předplatné má dostatečnou kapacitu pro virtuálních jader procesoru. Kontaktovat podporu Azure můžete získat vždy zvýšit maximální počet jader, které jsou povoleny v rámci vašeho předplatného.
 
-## <a name="create-an-ubuntu-dsvm-in-azure-portal"></a>Vytvoření DSVM Ubuntu na portálu Azure
+## <a name="create-an-ubuntu-dsvm-in-azure-portal"></a>Vytvoření DSVM Ubuntu na webu Azure portal
 
-Můžete vytvořit DSVM z portálu Azure. 
+Můžete vytvořit DSVM z webu Azure portal. 
 
-1. Přihlaste se k portálu Azure z https://portal.azure.com
-2. Klikněte na **+ nový** odkaz a vyhledejte "datové vědy virtuálního počítače pro Linux".
+1. Přihlaste se k webu Azure portal https://portal.azure.com
+2. Klikněte na **+ nová** odkaz a vyhledejte "virtuální počítač pro datové vědy pro Linux".
     ![Ubuntu](media/how-to-create-dsvm-hdi/ubuntu_dsvm.png)
-4. Zvolte **datové vědy virtuálního počítače pro Linux (Ubuntu)** v seznamu a postupujte podle kroků na obrazovce pokyny pro vytvoření DSVM.
+4. Zvolte **virtuální počítač pro datové vědy pro Linux (Ubuntu)** v seznamu a použijte na obrazovce pokyny k vytvoření datové VĚDY.
 
 >[!IMPORTANT]
->Zajistěte, aby si zvolíte **heslo** jako _typ ověřování_.
+>Ujistěte se, že zvolíte **heslo** jako _typ ověřování_.
 
 ![použít pwd](media/how-to-create-dsvm-hdi/use_pwd.png)
 
-## <a name="create-an-ubuntu-dsvm-using-azure-cli"></a>Vytvoření DSVM Ubuntu pomocí rozhraní příkazového řádku azure
+## <a name="create-an-ubuntu-dsvm-using-azure-cli"></a>Vytvoření DSVM Ubuntu pomocí azure cli
 
-Také můžete šablonu správu prostředků Azure k nasazení DSVM.
+Šablony Azure resource management můžete použít také k nasazení DSVM.
 
 >[!NOTE]
->Všechny následující příkazy se předpokládá, že být vydaný v kořenové složce projektu Azure ML.
+>Všechny tyto příkazy se předpokládá, že z kořenové složky projektu aplikace Azure ML něhož budou vydány.
 
-Nejprve vytvořte `mydsvm.json` pomocí svém oblíbeném textovém editoru v souboru `docs` složky. (Pokud nemáte `docs` vytvořit složky v kořenové složce projektu.) Tento soubor použít ke konfiguraci některých základních parametrů šablony správu prostředků Azure. 
+Nejprve vytvořte `mydsvm.json` soubor pomocí ve svém oblíbeném textovém editoru `docs` složky. (Pokud nemáte k dispozici `docs` vytvoření složky v kořenové složce projektu.) Tento soubor použít ke konfiguraci některých základních parametrů pro šablony Azure resource management. 
 
-Zkopírujte a vložte následující fragment kódu JSON do `mydsvm.json` souboru a zadejte příslušné hodnoty:
+Zkopírujte a vložte následující fragment kódu JSON do `mydsvm.json` souboru a vyplňte příslušné hodnoty:
 
 ```json
 {
@@ -63,11 +63,11 @@ Zkopírujte a vložte následující fragment kódu JSON do `mydsvm.json` soubor
 }
 ```
 
-Pro _vmSize_ pole, můžete použít libovolnou velikost virtuálního počítače suppported uvedené v [šablony správu prostředků Ubuntu DSVM Azure](https://github.com/Azure/DataScienceVM/blob/master/Scripts/CreateDSVM/Ubuntu/multiazuredeploywithext.json). Doporučujeme použít jednu z níže velikosti jako výpočetní cíle pro Azure ML. 
+Pro _vmSize_ pole, můžete použít jakoukoli velikost virtuálního počítače nepodporuje uvedené v [šablony správy prostředků Ubuntu DSVM Azure](https://github.com/Azure/DataScienceVM/blob/master/Scripts/CreateDSVM/Ubuntu/multiazuredeploywithext.json). Doporučujeme, abyste použili některou z níže velikosti podle cílových výpočetních prostředí pro Azure ML. 
 
 
 >[!TIP]
-> Pro [hloubkové učení úlohy](how-to-use-gpu.md) můžete nasadit do GPU používá technologii virtuálních počítačů.
+> Pro [hloubkové strojové učení](how-to-use-gpu.md) můžete nasadit do GPU s využitím virtuálních počítačů.
 
 - [Virtuální počítače pro obecné účely](/virtual-machines/linux/sizes-general.md)
   - Standard_DS2_v2 
@@ -76,7 +76,7 @@ Pro _vmSize_ pole, můžete použít libovolnou velikost virtuálního počíta�
   - Standard_DS12_v2 
   - Standard_DS13_v2 
   - Standard_DS14_v2 
-- [Grafický procesor používá technologii virtuálních počítačů](/virtual-machines/linux/sizes-gpu.md)
+- [GPU s využitím virtuálních počítačů](/virtual-machines/linux/sizes-gpu.md)
   - Standard_NC6 
   - Standard_NC12 
   - Standard_NC24 
@@ -84,12 +84,12 @@ Pro _vmSize_ pole, můžete použít libovolnou velikost virtuálního počíta�
 
 Další informace o těchto [velikostí pro virtuální počítače s Linuxem v Azure](../../virtual-machines/linux/sizes.md) a jejich [informace o cenách](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
 
-Spusťte okno příkazového řádku z aplikace Azure ML Workbench kliknutím na **soubor** --> **spusťte příkazový řádek**, nebo **otevřete PowerShell** položku nabídky. 
+Otevřete okno příkazového řádku z aplikace Azure ML Workbench kliknutím na **souboru** --> **otevřít příkazový řádek**, nebo **otevřete PowerShell** položky nabídky. 
 
 >[!NOTE]
->Můžete to provést taky v jakémkoli příkazového řádku prostředí, kde máte az rozhraní příkazového řádku nainstalována.
+>Můžete to provést také v jakémkoli příkazového řádku prostředí, kde máte nainstalován az-cli.
 
-V okně příkazového řádku, zadejte následující příkazy:
+V okně příkazového řádku, zadejte následujících příkazů:
 
 ```azurecli
 # first make sure you have a valid Azure authentication token
@@ -121,8 +121,8 @@ $ az vm show -g <resource group name> -n <vm name> --query "fqdns"
 # find the IP address of the VM just created
 $ az vm show -g <resource group name> -n <vm name> --query "publicIps"
 ```
-## <a name="attach-a-dsvm-compute-target"></a>Připojte cíl výpočetní DSVM
-Po vytvoření DSVM nyní můžete připojit se k projektu Azure ML.
+## <a name="attach-a-dsvm-compute-target"></a>Připojit cílové výpočetní prostředí DSVM
+Po vytvoření datové VĚDY je nyní můžete připojit ho do projektu Azure ML.
 
 ```azurecli
 # attach the DSVM compute target
@@ -132,48 +132,48 @@ $ az ml computetarget attach remotedocker --name <compute target name> --address
 # prepare the Docker image on the DSVM 
 $ az ml experiment prepare -c <compute target name>
 ```
-Nyní byste měli být připraven ke spuštění na tento DSVM experimenty.
+Teď byste měli být připravení spouštět experimenty v tomto DSVM.
 
-## <a name="deallocate-a-dsvm-and-restart-it-later"></a>Navrácení DSVM a později ji znovu spustit
-Po dokončení úlohy výpočetní z Azure ML, můžete zrušit přidělení DSVM. Tato akce vypne virtuální počítač, uvolnit výpočetní prostředky, ale ponechá virtuální disky. Výpočet nákladů na vám není účtován, když je virtuální počítač navrácený.
+## <a name="deallocate-a-dsvm-and-restart-it-later"></a>Zrušit přidělení DSVM a počítač restartovat později
+Po dokončení výpočetní úlohy v Azure ML, můžete navrátit datové VĚDY. Tato akce vypne virtuální počítač uvolnit výpočetní prostředky, ale zachová virtuálních disků. Se vám neúčtovaly výpočetní náklady při zrušení přidělení virtuálního počítače.
 
-Chcete-li zrušit přidělení virtuálního počítače:
+K uvolnění virtuálního počítače:
 
 ```azurecli
 $ az vm deallocate -g <resource group name> -n <vm name>
 ```
 
-Chcete-li Oživte virtuální počítač zpět, použijte `az ml start` příkaz:
+Chcete-li Vdechněte život virtuálního počítače, použijte `az ml start` příkaz:
 
 ```azurecli
 $ az vm start -g <resource group name> -n <vm name>
 ```
 
-## <a name="expand-the-dsvm-os-disk"></a>Rozbalte disk operačního systému DSVM
-Ubuntu DSVM se dodává s 50 GB místa na disku operačního systému a data 100 GB místa na disku. Docker ukládá jeho bitové kopie na datový disk jako více místa je k dispozici. Pokud se použije jako výpočetní cíl pro Azure ML, lze tento disk pomocí modulu Docker stahování dolů imagí Dockeru a sestavování conda vrstvy nad ho. Musíte může k tomu chyba "disk plný", jsou právě spuštění rozšíření se disku na větší velikost (jako je například 200 GB). Referenční dokumentace [způsob, jak rozbalit virtuální pevné disky na virtuální počítač s Linuxem pomocí rozhraní příkazového řádku Azure](../../virtual-machines/linux/expand-disks.md) se dozvíte, jak k tomu snadno z příkazového řádku azure. 
+## <a name="expand-the-dsvm-os-disk"></a>Rozšíření disku operačního systému DSVM
+Datové VĚDY se systémem Ubuntu obsahuje disk s operačním systémem 50GB a 100GB datový disk. Docker ukládá obrázky na datový disk jako více místa je k dispozici. Když se použije jako cílové výpočetní prostředí pro Azure ML, tento disk je možné modul Docker potažením dolů imagí Dockeru a vytváření conda vrstvy dojde k jeho zvýraznění. Můžete potřebovat vyhnout chybě "disk je plný", když jste uprostřed spuštění rozšíření disku na větší velikost (například 200 GB). Referenční dokumentace [způsob, jak rozbalit virtuální pevné disky na virtuální počítač s Linuxem pomocí Azure CLI](../../virtual-machines/linux/expand-disks.md) se dozvíte, jak to snadno provést z příkazového řádku azure. 
 
-## <a name="create-an-apache-spark-for-azure-hdinsight-cluster-in-azure-portal"></a>Vytvoření serveru Apache Spark pro cluster Azure HDInsight na portálu Azure
+## <a name="create-an-apache-spark-for-azure-hdinsight-cluster-in-azure-portal"></a>Na webu Azure portal vytvořit Apache Spark pro cluster Azure HDInsight
 
-Ke spuštění úloh Spark Škálováním na více systémů, musíte vytvořit Apache Spark pro cluster Azure HDInsight na portálu Azure.
+Ke spuštění úlohy Spark horizontální navýšení kapacity, je potřeba vytvořit Apache Spark pro cluster Azure HDInsight na webu Azure portal.
 
-1. Přihlaste se k portálu Azure z https://portal.azure.com
-2. Klikněte na **+ nový** odkaz a vyhledejte "HDInsight".
+1. Přihlaste se k webu Azure portal https://portal.azure.com
+2. Klikněte na **+ nová** odkaz a vyhledejte "HDInsight".
 
     ![Najít hdi](media/how-to-create-dsvm-hdi/hdi.png)
     
-3. Zvolte **HDInsight** v seznamu a klikněte na **vytvořit** tlačítko.
-4. V **Základy** konfigurační obrazovce **clusteru typ** nastavení, ujistěte se, zvolíte **Spark** jako _clusteru typu_, **Linux** jako _operačního systému_, a **Spark 2.1.0 (HDI 3.6)** jako _Version.
+3. Zvolte **HDInsight** v seznamu a potom kliknout na **vytvořit** tlačítko.
+4. V **Základy** obrazovce konfigurace **typ clusteru** nastavení, ujistěte se, že zvolíte **Spark** jako _typ clusteru_, **Linux** jako _operační systém_, a **Spark 2.1.0 (HDI 3.6)** jako _verze.
 
     ![Konfigurace hdi](media/how-to-create-dsvm-hdi/configure_hdi.png)
 
     >[!IMPORTANT]
-    >Oznámení na obrazovce výše má cluster _uživatelské jméno přihlášení clusteru_ pole a _uživatelské jméno Secure Shell (SSH)_ pole. Toto jsou dvě identity jiného uživatele, i když pro usnadnění práce můžete zadat stejné heslo pro obě přihlášení. _Uživatelské jméno přihlášení clusteru_ se používá k přihlášení do správy webového uživatelského rozhraní clusteru HDI. _Uživatelské jméno přihlášení SSH_ se používá k přihlášení k hlavnímu uzlu clusteru, a to je, co je potřeba pro Azure ML odesláním úloh Spark.
+    >Všimněte si, že na obrazovce výše má cluster _uživatelské jméno přihlášení clusteru_ pole a _uživatelské jméno Secure Shell (SSH)_ pole. Toto jsou dvě různé uživatelské identity, i když pro usnadnění práce můžete zadat stejné heslo pro obě přihlášení. _Uživatelské jméno přihlášení clusteru_ se používá k přihlášení k management webové uživatelské rozhraní clusteru HDI. _Přihlašovací uživatelské jméno SSH_ se používá k přihlášení k hlavnímu uzlu clusteru, a je to, co je potřeba pro Azure ML k odeslání Sparkových úloh.
 
-5. Zvolte velikost clusteru a velikost uzlu potřebovat a dokončete Průvodce vytvořením. To může trvat až 30 minut na dokončení zřizování clusteru. 
+5. Zvolte velikost clusteru a velikost uzlu, které potřebujete a dokončete Průvodce vytvořením. Může trvat až 30 minut na dokončení zřízení clusteru. 
 
-## <a name="attach-an-hdi-spark-cluster-compute-target"></a>Připojení cílové výpočetní cluster HDI Spark
+## <a name="attach-an-hdi-spark-cluster-compute-target"></a>Připojení cílové výpočetní prostředí clusteru Hdinsight Spark
 
-Po vytvoření clusteru Spark HDI nyní můžete připojit se k projektu Azure ML.
+Po vytvoření clusteru Hdinsight Spark, můžete ji teď připojit do projektu Azure ML.
 
 ```azurecli
 # attach the HDI compute target
@@ -182,12 +182,12 @@ $ az ml computetarget attach cluster --name <compute target name> --address <clu
 # prepare the conda environment on HDI
 $ az ml experiment prepare -c <compute target name>
 ```
-Nyní byste měli být připravení spustit experimenty na tomto clusteru Spark.
+Teď byste měli být připravení spouštět experimenty v tomto clusteru Spark.
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o:
-- [Přehled služby Azure Machine Learning experimentování](experimentation-service-configuration.md)
-- [Azure Machine Learning Workbench experimentování služby konfigurační soubory](experimentation-service-configuration-reference.md)
+Další informace:
+- [Přehled služby experimentování ve službě Azure Machine Learning](experimentation-service-configuration.md)
+- [Soubory služby experimentování ve službě konfigurace služby Azure Machine Learning Workbench](experimentation-service-configuration-reference.md)
 - [Apache Spark pro cluster Azure HDInsight](https://azure.microsoft.com/services/hdinsight/apache-spark/)
-- [Datové vědy virtuálního počítače](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/)
+- [Virtuální počítač pro datové vědy](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/)

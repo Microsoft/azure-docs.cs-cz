@@ -1,6 +1,6 @@
 ---
-title: Zkopírovat nebo přesunout data do služby Azure Storage s AzCopy v systému Linux | Microsoft Docs
-description: Pomocí AzCopy na nástroj Linux přesunutí nebo zkopírování dat do nebo z objektu blob a obsahu souborů. Kopírování dat do úložiště Azure z místních souborů, nebo zkopírujte data v rámci nebo mezi účty úložiště. Snadno migrujte data do úložiště Azure.
+title: Kopírování nebo přesun dat do služby Azure Storage pomocí AzCopy v Linuxu | Dokumentace Microsoftu
+description: Pomocí nástroje AzCopy v Linuxu nástroj Pokud chcete přesunout nebo kopírovat data do nebo z objektu blob a souboru obsahu. Kopírování dat do služby Azure Storage z místních souborů nebo kopírování dat v rámci nebo mezi účty úložiště. Snadno migrate data do služby Azure Storage.
 services: storage
 documentationcenter: ''
 author: seguler
@@ -14,54 +14,54 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2018
 ms.author: seguler
-ms.openlocfilehash: 3ed449912df1e16b5c8f1dfa3c83b81eaf635227
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: f45630a99d9045d0909e11d4ccc1517782d39779
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37035799"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39284439"
 ---
-# <a name="transfer-data-with-azcopy-on-linux"></a>Přenos dat pomocí nástroje AzCopy v systému Linux
+# <a name="transfer-data-with-azcopy-on-linux"></a>Přenos dat pomocí AzCopy v Linuxu
 
-AzCopy je nástroj příkazového řádku pro kopírování dat z úložiště objektů Blob v Microsoft Azure a soubor jednoduché příkazy určené pro optimální výkon. Data můžete kopírovat mezi systémem souborů a účtem úložiště nebo mezi účty úložiště.  
+AzCopy je nástroj příkazového řádku určený pro kopírování dat do a z úložiště objektů Blob v Microsoft Azure a soubor, pomocí jednoduchých příkazů, které jsou navržené pro zajištění optimálního výkonu. Data můžete kopírovat mezi systémem souborů a účtem úložiště nebo mezi účty úložiště.  
 
-Existují dvě verze nástroje AzCopy, které si můžete stáhnout. AzCopy v systému Linux cílí platformy Linux nabídky stylu POSIX možnosti příkazového řádku. [AzCopy v systému Windows](../storage-use-azcopy.md) styl Windows nabízí možnosti příkazového řádku. Tento článek se zabývá AzCopy v systému Linux. 
+Existují dvě verze AzCopy, který si můžete stáhnout. AzCopy v Linuxu cílí na platformy Linuxu nabízí možnosti příkazového řádku stylu POSIX. [AzCopy ve Windows](../storage-use-azcopy.md) stylu Windows nabízí možnosti příkazového řádku. Tento článek se týká AzCopy v Linuxu. 
 
 > [!NOTE]  
-> Od verze nástroje AzCopy 7.2 se závislostí .NET Core spojených s tímto balíčkem AzCopy. Pokud používáte verzi 7,2 nebo novější, již nebudou muset nainstalovat .NET Core jako nezbytný předpoklad.
+> Od verze AzCopy 7.2 se závislosti .NET Core jsou zabaleny s balíčkem AzCopy. Pokud používáte verzi 7.2 nebo novější, už nebude potřeba jako předpoklad instalace .NET Core.
 
-## <a name="download-and-install-azcopy"></a>Stáhněte a nainstalujte AzCopy
+## <a name="download-and-install-azcopy"></a>Stáhněte a nainstalujte nástroje AzCopy
 
-### <a name="installation-on-linux"></a>Instalace v systému Linux
+### <a name="installation-on-linux"></a>Instalace v Linuxu
 
 > [!NOTE]
-> Možná budete muset nainstalovat rozhraní .NET Core 2.1 závislosti zvýrazněných v tomto [článku .NET Core předpoklady](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) v závislosti na vaší distribuce. 
+> Možná budete muset nainstalovat .NET Core 2.1 závislosti zvýrazněno to [článku .NET Core předpoklady](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) v závislosti na vaší distribuci. 
 >
-> Pro RHEL 7 distribuce instalace ICU a libunwind závislosti: ```yum install -y libunwind icu```
+> Pro distribuce RHEL 7 nainstalujte ICU a libunwind závislosti: ```yum install -y libunwind icu```
 
-Instalace nástroje AzCopy v systému Linux (v7.2 nebo novější) je stejně snadná jako extrahování balíčku vkládání a spuštění skriptu install. 
+Instalace nástroje AzCopy v Linuxu (v7.2 nebo novější) je stejně jednoduché jako extrahování balíčku cíl a spuštění skriptu install. 
 
-**RHEL 6 na základě distribuce**: [stáhnout odkaz](https://aka.ms/downloadazcopylinuxrhel6)
+**Distribucích založených na systému RHEL 6**: [odkaz ke stažení](https://aka.ms/downloadazcopylinuxrhel6)
 ```bash
 wget -O azcopy.tar.gz https://aka.ms/downloadazcopylinuxrhel6
 tar -xf azcopy.tar.gz
 sudo ./install.sh
 ```
 
-**Všechny ostatní Linuxových distribucích**: [stáhnout odkaz](https://aka.ms/downloadazcopylinux64)
+**Ostatní Linuxové distribuce**: [odkaz ke stažení](https://aka.ms/downloadazcopylinux64)
 ```bash
 wget -O azcopy.tar.gz https://aka.ms/downloadazcopylinux64
 tar -xf azcopy.tar.gz
 sudo ./install.sh
 ```
 
-Po instalaci nástroje AzCopy v systému Linux můžete odebrat extrahované soubory. Případně, pokud nemáte oprávnění superuživatele můžete také spustit `azcopy` pomocí azcopy skriptu prostředí v extrahovanou složku.
+Extrahované soubory můžete odebrat po instalaci nástroje AzCopy v Linuxu. Případně, pokud nemáte oprávnění superuživatele můžete také spustit `azcopy` pomocí azcopy skriptu prostředí v extrahovanou složku.
 
 ### <a name="alternative-installation-on-ubuntu"></a>Alternativní instalace na Ubuntu
 
 **Ubuntu 14.04**
 
-Přidejte výstižný zdroj pro produkt úložiště Linux společnosti Microsoft a nainstalujte AzCopy:
+Přidání zdroje apt úložiště produktu Linux společnosti Microsoft a nainstalujte nástroje AzCopy:
 
 ```bash
 sudo echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-trusty-prod/ trusty main" > azure.list
@@ -76,7 +76,7 @@ sudo apt-get install azcopy
 
 **Ubuntu 16.04**
 
-Přidejte výstižný zdroj pro produkt úložiště Linux společnosti Microsoft a nainstalujte AzCopy:
+Přidání zdroje apt úložiště produktu Linux společnosti Microsoft a nainstalujte nástroje AzCopy:
 
 ```bash
 echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-xenial-prod/ xenial main" > azure.list
@@ -89,17 +89,17 @@ sudo apt-get update
 sudo apt-get install azcopy
 ```
 
-## <a name="writing-your-first-azcopy-command"></a>Zápis vaše první příkaz AzCopy
+## <a name="writing-your-first-azcopy-command"></a>Zápis prvního příkazu AzCopy
 Základní syntaxe pro příkazy AzCopy je:
 
 ```azcopy
 azcopy --source <source> --destination <destination> [Options]
 ```
 
-Následující příklady ukazují různé scénáře pro kopírování dat do a z Microsoft Azure Blobs a soubory. Odkazovat `azcopy --help` nabídky podrobné vysvětlení parametrů použitých v každém vzorku.
+Následující příklady ukazují různé scénáře pro kopírování dat do a z Microsoft Azure Blobs a souborů. Odkazovat `azcopy --help` nabídky podrobné vysvětlení parametrů použitých v každém vzorku.
 
 ## <a name="blob-download"></a>Objekt BLOB: stažení
-### <a name="download-single-blob"></a>Stáhnout jediného objektu blob
+### <a name="download-single-blob"></a>Stáhněte si jeden objekt blob
 
 ```azcopy
 azcopy \
@@ -108,9 +108,9 @@ azcopy \
     --source-key <key> 
 ```
 
-Pokud složka `/mnt/myfiles` neexistuje, AzCopy ji vytvoří a stáhne `abc.txt ` do nové složky. 
+Pokud složka `/mnt/myfiles` buď neexistuje, AzCopy ho vytvoří a stáhne `abc.txt ` do nové složky. 
 
-### <a name="download-single-blob-from-secondary-region"></a>Stáhnout jediného objektu blob ze sekundární oblasti
+### <a name="download-single-blob-from-secondary-region"></a>Stáhněte si jeden objekt blob ze sekundární oblasti
 
 ```azcopy
 azcopy \
@@ -119,9 +119,9 @@ azcopy \
     --source-key <key>
 ```
 
-Všimněte si, že je nutné mít přístup pro čtení geograficky redundantní úložiště s povoleným.
+Všimněte si, že musí mít povolené geograficky redundantní úložiště jen pro čtení.
 
-### <a name="download-all-blobs"></a>Stažení všech objektů BLOB
+### <a name="download-all-blobs"></a>Stáhnout všechny objekty BLOB
 
 ```azcopy
 azcopy \
@@ -131,7 +131,7 @@ azcopy \
     --recursive
 ```
 
-Předpokládejme, že následující objekty BLOB se nacházejí v zadaném kontejneru:  
+Předpokládejme, že následující objekty BLOB jsou umístěny v zadaném kontejneru:  
 
 ```
 abc.txt
@@ -141,7 +141,7 @@ vd1/a.txt
 vd1/abcd.txt
 ```
 
-Po stažení operaci adresáři `/mnt/myfiles` zahrnuje následující soubory:
+Po provedení této operace stažení adresáři `/mnt/myfiles` zahrnuje následující soubory:
 
 ```
 /mnt/myfiles/abc.txt
@@ -151,9 +151,9 @@ Po stažení operaci adresáři `/mnt/myfiles` zahrnuje následující soubory:
 /mnt/myfiles/vd1/abcd.txt
 ```
 
-Pokud nezadáte možnost `--recursive`, budou staženy žádné objektů blob.
+Pokud nezadáte možnost `--recursive`, stáhnou se žádný objekt blob.
 
-### <a name="download-blobs-with-specified-prefix"></a>Stáhnout objekty BLOB se zadanou předponou.
+### <a name="download-blobs-with-specified-prefix"></a>Stažení objektů BLOB pomocí zadané předpony
 
 ```azcopy
 azcopy \
@@ -164,7 +164,7 @@ azcopy \
     --recursive
 ```
 
-Předpokládejme, že následující objekty BLOB se nacházejí v zadaném kontejneru. Všechny objekty BLOB začínající předponou `a` staženy.
+Předpokládejme, že následující objekty BLOB jsou umístěny v zadaném kontejneru. Všechny objekty BLOB začínající předponou `a` se stáhnou.
 
 ```
 abc.txt
@@ -175,7 +175,7 @@ vd1\a.txt
 vd1\abcd.txt
 ```
 
-Po stažení operaci složce `/mnt/myfiles` zahrnuje následující soubory:
+Po provedení této operace stažení složce `/mnt/myfiles` zahrnuje následující soubory:
 
 ```
 /mnt/myfiles/abc.txt
@@ -183,9 +183,9 @@ Po stažení operaci složce `/mnt/myfiles` zahrnuje následující soubory:
 /mnt/myfiles/abc2.txt
 ```
 
-Předpona, která se vztahuje na virtuální adresář, který tvoří první část názvu objektu blob. Ve výše uvedeném příkladu virtuální adresář neodpovídá zadané předpony, takže se stáhne žádné objektů blob. Kromě toho pokud možnost `--recursive` není zadán, AzCopy nestáhne žádné objekty BLOB.
+Předpona, která se vztahuje na virtuální adresář, který tvoří první část názvu objektu blob. Ve výše uvedeném příkladu virtuální adresář neodpovídá zadané předpony, proto je stažen žádný objekt blob. Kromě toho pokud možnost `--recursive` není zadán, AzCopy nestáhne žádné objekty BLOB.
 
-### <a name="set-the-last-modified-time-of-exported-files-to-be-same-as-the-source-blobs"></a>Nastavte čas poslední úpravy exportované soubory na stejnou hodnotu jako zdroj objektů BLOB
+### <a name="set-the-last-modified-time-of-exported-files-to-be-same-as-the-source-blobs"></a>Nastavit čas poslední změny exportované soubory na stejnou hodnotu jako objekty BLOB zdroje
 
 ```azcopy
 azcopy \
@@ -195,7 +195,7 @@ azcopy \
     --preserve-last-modified-time
 ```
 
-Můžete také vyloučit objekty BLOB z operace stažení podle jejich čas poslední změny. Pokud chcete vyloučit objekty BLOB, jejichž poslední úpravy času je například stejnou nebo novější, než cílový soubor, přidejte `--exclude-newer` možnost:
+Objekty BLOB můžete také vyloučit z operace stahování na základě času jejich poslední úpravy. Pokud budete chtít vyloučit objekty BLOB, jehož poslední změny času je například stejnou nebo novější, než cílový soubor, přidejte `--exclude-newer` možnost:
 
 ```azcopy
 azcopy \
@@ -206,7 +206,7 @@ azcopy \
     --exclude-newer
 ```
 
-Nebo pokud chcete vyloučit objekty BLOB, jejichž poslední úpravy času je na stejné nebo starší než cílový soubor, přidejte `--exclude-older` možnost:
+Nebo pokud budete chtít vyloučit objekty BLOB, čas poslední změny je na stejné nebo starší než cílový soubor, přidejte `--exclude-older` možnost:
 
 ```azcopy
 azcopy \
@@ -217,8 +217,8 @@ azcopy \
     --exclude-older
 ```
 
-## <a name="blob-upload"></a>Objekt BLOB: nahrát
-### <a name="upload-single-file"></a>Odeslat jedním souborem
+## <a name="blob-upload"></a>Objekt BLOB: nahrání
+### <a name="upload-single-file"></a>Nahrání jednoho souboru
 
 ```azcopy
 azcopy \
@@ -229,7 +229,7 @@ azcopy \
 
 Pokud zadaný cílový kontejner neexistuje, AzCopy ho vytvoří a soubor do něj nahraje.
 
-### <a name="upload-single-file-to-virtual-directory"></a>Jediný soubor nahrát do virtuálního adresáře
+### <a name="upload-single-file-to-virtual-directory"></a>Nahrání jednoho souboru do virtuálního adresáře
 
 ```azcopy
 azcopy \
@@ -238,9 +238,9 @@ azcopy \
     --dest-key <key>
 ```
 
-Pokud zadaný virtuální adresář neexistuje, AzCopy nahrávání souboru v názvu objektu blob virtuálního adresáře (*například*, `vd/abc.txt` v předchozím příkladu).
+Pokud zadaný virtuální adresář neexistuje, AzCopy nahraje soubor, který má obsahovat virtuální adresář v názvu objektu blob (*například*, `vd/abc.txt` v předchozím příkladu).
 
-### <a name="redirect-from-stdin"></a>Přesměrování z stdin –
+### <a name="redirect-from-stdin"></a>Přesměrovat ze stdin
 
 ```azcopy
 gzip myarchive.tar -c | azcopy \
@@ -248,7 +248,7 @@ gzip myarchive.tar -c | azcopy \
     --dest-key <key>
 ```
 
-### <a name="upload-all-files"></a>Odeslat všechny soubory.
+### <a name="upload-all-files"></a>Nahrání všech souborů
 
 ```azcopy
 azcopy \
@@ -258,7 +258,7 @@ azcopy \
     --recursive
 ```
 
-Zadání `--recursive` odešle obsah zadaného adresáře k rekurzivnímu úložiště objektů Blob, což znamená, že jsou také odeslány všechny podsložky a jejich soubory. Například předpokládejme následující soubory jsou umístěny ve složce `/mnt/myfiles`:
+Zadání možnosti `--recursive` nahraje do objektu Blob úložiště rekurzivně, což znamená, že všechny podsložky a jejich soubory jsou odeslány také obsah zadaného adresáře. Například předpokládejme následující soubory jsou umístěny ve složce `/mnt/myfiles`:
 
 ```
 /mnt/myfiles/abc.txt
@@ -268,7 +268,7 @@ Zadání `--recursive` odešle obsah zadaného adresáře k rekurzivnímu úlož
 /mnt/myfiles/subfolder/abcd.txt
 ```
 
-Po operaci odeslání kontejneru obsahuje následující soubory:
+Po provedení této operace nahrávání kontejneru zahrnuje následující soubory:
 
 ```
 abc.txt
@@ -286,7 +286,7 @@ abc1.txt
 abc2.txt
 ```
 
-### <a name="upload-files-matching-specified-pattern"></a>Nahrání souborů odpovídající zadanému vzoru
+### <a name="upload-files-matching-specified-pattern"></a>Nahrát soubory odpovídající zadanému vzoru
 
 ```azcopy
 azcopy \
@@ -308,7 +308,7 @@ Předpokládejme následující soubory jsou umístěny ve složce `/mnt/myfiles
 /mnt/myfiles/subfolder/abcd.txt
 ```
 
-Po operaci odeslání kontejneru obsahuje následující soubory:
+Po provedení této operace nahrávání kontejneru zahrnuje následující soubory:
 
 ```
 abc.txt
@@ -318,7 +318,7 @@ subfolder/a.txt
 subfolder/abcd.txt
 ```
 
-Pokud možnost `--recursive` není zadán, AzCopy přeskočí soubory, které se nacházejí v podadresářích:
+Pokud možnost `--recursive` není zadán, soubory, které jsou v podadresářích přeskočí AzCopy:
 
 ```
 abc.txt
@@ -326,8 +326,8 @@ abc1.txt
 abc2.txt
 ```
 
-### <a name="specify-the-mime-content-type-of-a-destination-blob"></a>Zadejte typ MIME obsahu cílový objekt blob
-Ve výchozím nastavení, AzCopy nastaví typ obsahu cílový objekt blob do `application/octet-stream`. Však můžete explicitně zadat typ obsahu prostřednictvím možnosti `--set-content-type [content-type]`. Tuto syntaxi nastaví typ obsahu pro všechny objekty BLOB v operaci odeslání.
+### <a name="specify-the-mime-content-type-of-a-destination-blob"></a>Zadejte typ obsahu MIME cílový objekt blob
+Ve výchozím nastavení, AzCopy nastaví typ obsahu cílový objekt blob do `application/octet-stream`. Ale můžete explicitně určit typ obsahu prostřednictvím možnost `--set-content-type [content-type]`. Tato syntaxe nastaví typ obsahu pro všechny objekty BLOB v rámci operace nahrávání.
 
 ```azcopy
 azcopy \
@@ -338,7 +338,7 @@ azcopy \
     --set-content-type "video/mp4"
 ```
 
-Pokud možnost `--set-content-type` je zadán bez hodnoty AzCopy nastaví jednotlivých objektů blob nebo typ obsahu souboru podle jeho přípony.
+Pokud možnost `--set-content-type` je zadaný bez hodnoty, AzCopy nastaví každý objekt blob nebo typ obsahu souboru podle jeho přípony souboru.
 
 ```azcopy
 azcopy \
@@ -349,8 +349,11 @@ azcopy \
     --set-content-type
 ```
 
+### <a name="customizing-the-mime-content-type-mapping"></a>Přizpůsobení mapování typ obsahu MIME
+AzCopy používá konfigurační soubor, který obsahuje mapování souboru rozšíření typu obsahu. Můžete přizpůsobit toto mapování a přidat nové páry podle potřeby. Mapování se nachází v  ```/usr/lib/azcopy/AzCopyConfig.json```
+
 ## <a name="blob-copy"></a>Objekt BLOB: kopírování
-### <a name="copy-single-blob-within-storage-account"></a>Zkopírujte jediného objektu blob v rámci účtu úložiště
+### <a name="copy-single-blob-within-storage-account"></a>Jeden objekt blob kopírování v rámci účtu úložiště
 
 ```azcopy
 azcopy \
@@ -360,9 +363,9 @@ azcopy \
     --dest-key <key>
 ```
 
-Při kopírování objektu blob bez – možnosti synchronní kopie, [serverové kopie](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) operace.
+Při kopírování objektu blob bez – možnosti synchronizace kopírování [kopírování na straně serveru](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) proběhlo.
 
-### <a name="copy-single-blob-across-storage-accounts"></a>Zkopírujte jediného objektu blob mezi různými účty úložiště
+### <a name="copy-single-blob-across-storage-accounts"></a>Zkopírujte jeden objekt blob mezi účty úložiště
 
 ```azcopy
 azcopy \
@@ -372,9 +375,9 @@ azcopy \
     --dest-key <key2>
 ```
 
-Při kopírování objektu blob bez – možnosti synchronní kopie, [serverové kopie](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) operace.
+Při kopírování objektu blob bez – možnosti synchronizace kopírování [kopírování na straně serveru](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) proběhlo.
 
-### <a name="copy-single-blob-from-secondary-region-to-primary-region"></a>Zkopírujte jediného objektu blob ze sekundární oblasti primární oblasti
+### <a name="copy-single-blob-from-secondary-region-to-primary-region"></a>Zkopírujte jeden objekt blob ze sekundární oblasti do primární oblasti
 
 ```azcopy
 azcopy \
@@ -384,9 +387,9 @@ azcopy \
     --dest-key <key2>
 ```
 
-Všimněte si, že je nutné mít přístup pro čtení geograficky redundantní úložiště s povoleným.
+Všimněte si, že musí mít povolené geograficky redundantní úložiště jen pro čtení.
 
-### <a name="copy-single-blob-and-its-snapshots-across-storage-accounts"></a>Zkopírujte jediného objektu blob a jeho snímky mezi různými účty úložiště
+### <a name="copy-single-blob-and-its-snapshots-across-storage-accounts"></a>Jeden objekt blob kopírování a její snímky mezi různými účty úložiště
 
 ```azcopy
 azcopy \
@@ -398,7 +401,7 @@ azcopy \
     --include-snapshot
 ```
 
-Po operaci kopírování zahrnuje cílový kontejner objektu blob a jeho snímků. Kontejner obsahuje následující objektu blob a jeho snímky:
+Po provedení této operace kopírování obsahuje cílový kontejner objektu blob a jeho snímků. Kontejner obsahuje následující objekt blob a jeho snímky:
 
 ```
 abc.txt
@@ -406,10 +409,10 @@ abc (2013-02-25 080757).txt
 abc (2014-02-21 150331).txt
 ```
 
-### <a name="synchronously-copy-blobs-across-storage-accounts"></a>Synchronně kopírovat mezi různými účty úložiště objektů BLOB
-AzCopy ve výchozím nastavení zkopíruje data mezi dva koncové body úložiště asynchronně. Operace kopírování se spustí v pozadí využití kapacity přebytečné šířky pásma, která nemá žádné SLA z hlediska jak rychlé objekt blob je proto zkopírovány. 
+### <a name="synchronously-copy-blobs-across-storage-accounts"></a>Synchronně kopírování objektů BLOB mezi účty úložiště
+AzCopy ve výchozím nastavení asynchronně kopíruje data mezi dva koncové body služby úložiště. Proto je zkopírován kopírování spuštění operace na pozadí pomocí kapacity přebytečné šířky pásma, která nemá žádné smlouvy SLA na základě jak rychle objektu blob. 
 
-`--sync-copy` Možnost zajistí, že operace kopírování získá konzistentní rychlost. AzCopy provede synchronní kopie stažením objektů blob pro kopírování ze zadaného zdroje do místní paměti a uložte je do cílového umístění úložiště objektů Blob.
+`--sync-copy` Možnost zajišťuje, že operace kopírování získá konzistentní rychlost. AzCopy provádí synchronní kopie stažením přes bloby až po kopírování ze zadaného zdroje do místní paměti, a pak se nahrají do cíle úložiště objektů Blob.
 
 ```azcopy
 azcopy \
@@ -421,10 +424,10 @@ azcopy \
     --sync-copy
 ```
 
-`--sync-copy` může generovat další odchozí nákladů ve srovnání s asynchronní kopírování. Doporučený přístup je pro tuto možnost použijte virtuální počítač Azure, který je ve stejné oblasti jako váš účet úložiště zdroj předejdete odchozí náklady.
+`--sync-copy` náklady na další výchozí přenos dat ve srovnání s asynchronní kopie může vygenerovat. Doporučený postup je ve virtuálním počítači Azure, který je ve stejné oblasti jako váš účet úložiště zdroje, aby se zabránilo náklady na výchozí přenos dat pomocí této možnosti.
 
 ## <a name="file-download"></a>Soubor: stažení
-### <a name="download-single-file"></a>Stáhnout jedním souborem
+### <a name="download-single-file"></a>Stažení jednotlivých souborů
 
 ```azcopy
 azcopy \
@@ -433,7 +436,7 @@ azcopy \
     --source-key <key>
 ```
 
-Pokud je zadaný zdroj sdílenou složku Azure, pak buď musíte zadat přesný název souboru, (*například* `abc.txt`) ke stažení jeden soubor nebo zadejte možnost `--recursive` ke stažení všechny soubory ve sdílené složce rekurzivně. Probíhá pokus o zadat šablonu souboru a možnost `--recursive` společně dojde k chybě.
+Pokud je zadaný zdroj sdílené složky Azure, pak buď musíte zadat přesný název souboru, (*například* `abc.txt`) ke stažení jednoho souboru nebo možnost `--recursive` ke stažení všechny soubory ve sdílené složce rekurzivně. Pokus zadat vzor souborů i možnost `--recursive` společně dojde k chybě.
 
 ### <a name="download-all-files"></a>Stáhnout všechny soubory
 
@@ -447,8 +450,8 @@ azcopy \
 
 Všimněte si, že všechny prázdné složky nestahují.
 
-## <a name="file-upload"></a>Soubor: nahrát
-### <a name="upload-single-file"></a>Odeslat jedním souborem
+## <a name="file-upload"></a>Soubor: Uložit
+### <a name="upload-single-file"></a>Nahrání jednoho souboru
 
 ```azcopy
 azcopy \
@@ -457,7 +460,7 @@ azcopy \
     --dest-key <key>
 ```
 
-### <a name="upload-all-files"></a>Odeslat všechny soubory.
+### <a name="upload-all-files"></a>Nahrání všech souborů
 
 ```azcopy
 azcopy \
@@ -469,7 +472,7 @@ azcopy \
 
 Všimněte si, že nejsou uloženy žádné prázdné složky.
 
-### <a name="upload-files-matching-specified-pattern"></a>Nahrání souborů odpovídající zadanému vzoru
+### <a name="upload-files-matching-specified-pattern"></a>Nahrát soubory odpovídající zadanému vzoru
 
 ```azcopy
 azcopy \
@@ -481,7 +484,7 @@ azcopy \
 ```
 
 ## <a name="file-copy"></a>Soubor: kopírování
-### <a name="copy-across-file-shares"></a>Kopírování mezi sdílenými složkami
+### <a name="copy-across-file-shares"></a>Kopírovat na sdílené složky
 
 ```azcopy
 azcopy \
@@ -491,9 +494,9 @@ azcopy \
     --dest-key <key2> \
     --recursive
 ```
-Při kopírování souboru mezi sdílenými složkami [serverové kopie](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) operace.
+Při kopírování souboru ve sdílené složky [kopírování na straně serveru](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) proběhlo.
 
-### <a name="copy-from-file-share-to-blob"></a>Kopírování ze sdílené složky do objektu blob
+### <a name="copy-from-file-share-to-blob"></a>Kopírování ze sdílené souborové položky do objektu blob
 
 ```azcopy
 azcopy \ 
@@ -503,7 +506,7 @@ azcopy \
     --dest-key <key2> \
     --recursive
 ```
-Při kopírování souboru ze sdílené složky do objektu blob, [serverové kopie](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) operace.
+Při kopírování souboru ze sdílené souborové položky do objektu blob, [kopírování na straně serveru](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) proběhlo.
 
 ### <a name="copy-from-blob-to-file-share"></a>Zkopírujte z objektu blob do sdílené složky
 
@@ -515,10 +518,10 @@ azcopy \
     --dest-key <key2> \
     --recursive
 ```
-Při kopírování souboru z objektu blob do sdílené složky [serverové kopie](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) operace.
+Při kopírování souboru z objektu blob do sdílené složky, [kopírování na straně serveru](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) proběhlo.
 
-### <a name="synchronously-copy-files"></a>Synchronně kopírování souborů
-Můžete zadat `--sync-copy` možnost ke zkopírování dat z úložiště File k úložišti souborů ze souboru úložiště do úložiště objektů Blob a z úložiště objektů Blob k úložišti souborů synchronně. AzCopy spustí tuto operaci stahování zdrojová data do místní paměti a odesílá je do cílového umístění. V takovém případě platí standardní výstupní náklady.
+### <a name="synchronously-copy-files"></a>Synchronně zkopírovat soubory
+Můžete zadat `--sync-copy` možnost ke zkopírování dat z úložiště souborů do služby File Storage, File Storage do služby Blob Storage a z úložiště objektů Blob do služby File Storage synchronně. AzCopy se spustí tuto operaci stažením zdrojových dat k místní paměti, a pak pak ho nahrát do cíle. V tomto případě platí poplatky za standardní výstup.
 
 ```azcopy
 azcopy \
@@ -530,13 +533,13 @@ azcopy \
     --sync-copy
 ```
 
-Při kopírování ze souboru úložiště do úložiště objektů Blob, výchozí typ objektu blob je objekt blob bloku, může uživatel zadat možnost `--blob-type page` Chcete-li změnit typ cílového objektu blob. Dostupné typy jsou `page | block | append`.
+Při kopírování ze souboru úložiště do úložiště objektů Blob, výchozí typ objektu blob je objekty blob bloku, může uživatel zadat možnost `--blob-type page` změnit typ cílového objektu blob. Dostupné typy jsou `page | block | append`.
 
-Všimněte si, že `--sync-copy` může generovat další odchozí náklady srovnáním asynchronní kopírování. Doporučený přístup je pro tuto možnost použijte virtuální počítač Azure, který je ve stejné oblasti jako váš účet úložiště zdroj předejdete odchozí náklady.
+Všimněte si, že `--sync-copy` může generovat další náklady porovnává se s asynchronní kopírování výstup. Doporučený postup je ve virtuálním počítači Azure, který je ve stejné oblasti jako váš účet úložiště zdroje, aby se zabránilo náklady na výchozí přenos dat pomocí této možnosti.
 
-## <a name="other-azcopy-features"></a>Další funkce AzCopy
-### <a name="only-copy-data-that-doesnt-exist-in-the-destination"></a>Kopírovat pouze data, která neexistuje v cílovém
-`--exclude-older` a `--exclude-newer` parametry umožňují vyloučit prostředky starší nebo novější zdroj z kopírování, v uvedeném pořadí. Pokud chcete kopírovat zdroje prostředky, které neexistují v cílovém, můžete zadat oba parametry v příkazu AzCopy:
+## <a name="other-azcopy-features"></a>Jiné funkce nástroje AzCopy
+### <a name="only-copy-data-that-doesnt-exist-in-the-destination"></a>Kopírovat pouze data, která neexistuje v cílovém umístění
+`--exclude-older` a `--exclude-newer` parametry umožňují vyloučit prostředky staršího nebo novějšího zdroje jsou zkopírovány v uvedeném pořadí. Pokud chcete zkopírovat zdrojové prostředky, které neexistují v cíli, můžete zadat oba parametry do příkazu AzCopy:
 
     --source http://myaccount.blob.core.windows.net/mycontainer --destination /mnt/myfiles --source-key <sourcekey> --recursive --exclude-older --exclude-newer
 
@@ -550,9 +553,9 @@ Všimněte si, že `--sync-copy` může generovat další odchozí náklady srov
 azcopy --config-file "azcopy-config.ini"
 ```
 
-Parametry příkazového řádku AzCopy můžete zahrnout v konfiguračním souboru. AzCopy zpracovává parametry v souboru jako v případě, kdyby byly zadány na příkazovém řádku, provádění přímé nahrazení s obsahem souboru.
+V konfiguračním souboru můžete zahrnout všechny parametry příkazového řádku AzCopy. AzCopy zpracovává parametry v souboru jako v případě, kdyby byly zadány v příkazovém řádku provádění s přímým přístupem nahrazení s obsahem souboru.
 
-Předpokládejme, konfigurační soubor s názvem `copyoperation`, který obsahuje následující řádky. Každý parametr AzCopy můžete zadat na jeden řádek.
+Předpokládejme konfigurační soubor s názvem `copyoperation`, který obsahuje následující řádky. Jednotlivé parametry nástroje AzCopy můžete zadat na jednom řádku.
 
     --source http://myaccount.blob.core.windows.net/mycontainer --destination /mnt/myfiles --source-key <sourcekey> --recursive --quiet
 
@@ -564,7 +567,7 @@ nebo na samostatné řádky:
     --recursive
     --quiet
 
-AzCopy selže, pokud rozložení parametru mezi dvěma čárami, jak je vidět tady pro `--source-key` parametr:
+AzCopy se nezdaří, pokud je parametr rozdělit mezi dva řádky, jak je znázorněno zde pro `--source-key` parametr:
 
     http://myaccount.blob.core.windows.net/mycontainer
     /mnt/myfiles
@@ -583,7 +586,7 @@ azcopy \
     --dest-sas <SAS2>
 ```
 
-Můžete také určit SAS URI kontejneru:
+Můžete také zadat SAS URI kontejneru:
 
 ```azcopy
 azcopy \
@@ -592,10 +595,10 @@ azcopy \
     --recursive
 ```
 
-### <a name="journal-file-folder"></a>Složky pro soubor deníku
-Pokaždé, když příkaz azcopy, zkontroluje existenci souboru deníku ve výchozí složce, nebo jestli existuje ve složce, kterou jste zadali pomocí této možnosti. Pokud soubor deníku neexistuje ani na jednom místě, AzCopy zpracovává operaci jako nové a generuje nový soubor deníku.
+### <a name="journal-file-folder"></a>Složka souboru deníku
+Pokaždé, když vydáte příkaz azcopy, zkontroluje, jestli existuje soubor deníku ve výchozí složce, nebo určuje, zda existuje ve složce, která jste zadali pomocí této možnosti. Pokud soubor deníku na jednom místě neexistuje, AzCopy zpracovává operace jako nové a vygeneruje nový soubor deníku.
 
-Pokud soubor deníku neexistuje, AzCopy kontroluje, zda příkazového řádku, který můžete vložit odpovídá příkazového řádku v souboru deníku. Pokud se dva příkazové řádky shodují, obnoví AzCopy neúplné operaci. Pokud se neshodují, AzCopy vyzve uživatele k buď přepsání souboru deníku spustit novou operaci, nebo zrušit aktuální operace.
+Pokud soubor deníku neexistuje, AzCopy zkontroluje, zda odpovídá příkazového řádku, který zadáte na příkazovém řádku ve soubor deníku. Pokud se shodují se dvěma příkazové řádky, AzCopy obnoví neúplná operace. Pokud shodné nejsou, AzCopy vyzve uživatele k buď přepsat soubor deníku spustit novou operaci, nebo zrušit aktuální operaci.
 
 Pokud chcete použít výchozí umístění pro soubor deníku:
 
@@ -607,9 +610,9 @@ azcopy \
     --resume
 ```
 
-Pokud není možnost `--resume`, nebo zadejte možnost `--resume` bez cesta ke složce, jako v příkladu nahoře, AzCopy vytvoří soubor deníku ve výchozím umístění, což je `~\Microsoft\Azure\AzCopy`. Pokud soubor deníku již existuje, AzCopy obnoví operaci na základě souboru deníku.
+Pokud vynecháte možnost `--resume`, nebo možnost `--resume` bez cesty ke složce, jak je uvedeno výše, AzCopy vytvoří soubor deníku ve výchozím umístění, což je `~\Microsoft\Azure\AzCopy`. Pokud už existuje soubor deníku, AzCopy obnoví operace na základě souboru deníku.
 
-Pokud chcete určit vlastní umístění souboru deníku:
+Pokud chcete zadat vlastní umístění pro soubor deníku:
 
 ```azcopy
 azcopy \
@@ -619,15 +622,15 @@ azcopy \
     --resume "/mnt/myjournal"
 ```
 
-Tento příklad vytvoří soubor deníku, pokud ještě neexistuje. Pokud neexistuje, AzCopy obnoví operaci na základě souboru deníku.
+Tento příklad vytvoří soubor deníku, pokud ještě neexistuje. Pokud neexistuje, AzCopy obnoví operace na základě souboru deníku.
 
-Pokud chcete pokračovat v činnosti AzCopy, zopakujte stejný příkaz. AzCopy v systému Linux potom zobrazí výzvu k potvrzení:
+Pokud chcete pokračovat v operaci AzCopy, opakujte stejný příkaz. AzCopy v Linuxu potom zobrazí výzvu k potvrzení:
 
 ```azcopy
 Incomplete operation with same command line detected at the journal directory "/home/myaccount/Microsoft/Azure/AzCopy", do you want to resume the operation? Choose Yes to resume, choose No to overwrite the journal to start a new operation. (Yes/No)
 ```
 
-### <a name="output-verbose-logs"></a>Výstupní podrobné protokoly
+### <a name="output-verbose-logs"></a>Podrobné protokoly výstupu
 
 ```azcopy
 azcopy \
@@ -638,16 +641,16 @@ azcopy \
 ```
 
 ### <a name="specify-the-number-of-concurrent-operations-to-start"></a>Zadejte počet souběžných operací spuštění
-Možnost `--parallel-level` určuje počet souběžných kopie operací. Ve výchozím nastavení spustí AzCopy počet souběžných operací, pokud chcete zvýšit propustnost dat přenosu. Počet souběžných operací osm časy počet procesorů, které máte. Pokud používáte AzCopy přes síť s malou šířkou pásma, můžete na nižší číslo pro – paralelní úrovni, aby se zabránilo selhání kvůli konfliktům prostředků.
+Možnost `--parallel-level` určuje počet souběžných kopírování. Ve výchozím nastavení spustí AzCopy počet souběžných operací, pokud chcete zvýšit propustnost dat přenos. Počet souběžných operací se rovná osm časy počet procesorů, které máte. Pokud spustíte AzCopy přes síť s malou šířkou pásma, můžete zadat nižší číslo pro – paralelní úroveň, aby se nezdařila z důvodu podle soutěže prostředků.
 
 >[!TIP]
->Pokud chcete zobrazit úplný seznam parametrů AzCopy, podívejte se na 'azcopy – Nápověda' nabídky.
+>Chcete-li zobrazit úplný seznam AzCopy parametry, podívejte se na "azcopy--help" nabídky.
 
 ## <a name="installation-steps-for-azcopy-71-and-earlier-versions"></a>Postup instalace AzCopy 7.1 a starší verze
 
-AzCopy v systému Linux (v7.1 a starší) vyžaduje rozhraní .NET Core. Pokyny k instalaci jsou k dispozici na [instalace .NET Core](https://www.microsoft.com/net/core#linuxubuntu) stránky.
+AzCopy v Linuxu (verze 7.1 a dřívější) vyžaduje rozhraní .NET Core framework. Pokyny k instalaci jsou k dispozici na [instalace .NET Core](https://www.microsoft.com/net/core#linuxubuntu) stránky.
 
-Například začněte tím, že na Ubuntu 16.10 instalaci .NET Core. Nejnovější Průvodce instalací, najdete v článku [.NET Core v systému Linux](https://www.microsoft.com/net/core#linuxubuntu) instalační stránka.
+Například začněte tím, že instalace .NET Core v Ubuntu 16.10. Nejnovější instalační příručce najdete [.NET Core v Linuxu](https://www.microsoft.com/net/core#linuxubuntu) stránku instalace.
 
 
 ```bash
@@ -657,7 +660,7 @@ sudo apt-get update
 sudo apt-get install dotnet-sdk-2.0.0
 ```
 
-Po instalaci .NET Core, stáhněte a nainstalujte AzCopy.
+Po instalaci rozhraní .NET Core, stáhněte a nainstalujte nástroj AzCopy.
 
 ```bash
 wget -O azcopy.tar.gz https://aka.ms/downloadazcopyprlinux
@@ -665,24 +668,24 @@ tar -xf azcopy.tar.gz
 sudo ./install.sh
 ```
 
-Po instalaci nástroje AzCopy v systému Linux můžete odebrat extrahované soubory. Případně pokud nemáte oprávnění superuživatele, můžete také spustit `azcopy` pomocí azcopy skriptu prostředí v extrahovanou složku.
+Extrahované soubory můžete odebrat po instalaci nástroje AzCopy v Linuxu. Případně pokud nemáte oprávnění superuživatele, můžete také spustit `azcopy` pomocí azcopy skriptu prostředí v extrahovanou složku.
 
-## <a name="known-issues-and-best-practices"></a>Známé problémy a doporučené postupy
+## <a name="known-issues-and-best-practices"></a>Známé problémy a osvědčené postupy
 ### <a name="error-installing-azcopy"></a>Chyba při instalaci nástroje AzCopy
-Pokud narazíte na potíže s instalací AzCopy, můžete se pokusit spustit AzCopy pomocí skriptů bash ve extrahované `azcopy` složky.
+Pokud narazíte na problémy s instalací nástroje AzCopy, zkuste spustit AzCopy pomocí skriptu bash v extrahované `azcopy` složky.
 
 ```bash
 cd azcopy
 ./azcopy
 ```
 
-### <a name="limit-concurrent-writes-while-copying-data"></a>Limit souběžných zápisy při kopírování dat
-Při kopírování objektů BLOB nebo soubory s AzCopy, mějte na paměti, že jiná aplikace může být úprava dat během kopírování ho. Pokud je to možné Ujistěte se, které chcete kopírovat data nemění při kopírování. Například při kopírování virtuálního pevného disku přidružený virtuální počítač Azure, ujistěte se, že žádné další aplikace jsou aktuálně zápis na virtuální pevný disk. Dobrým způsobem, jak to udělat, je leasing prostředků, které se mají zkopírovat. Alternativně můžete nejprve vytvořte snímek virtuálního pevného disku a poté zkopírujte snímku.
+### <a name="limit-concurrent-writes-while-copying-data"></a>Limit souběžných zápisů při kopírování dat
+Při kopírování objektů BLOB nebo soubory pomocí nástroje AzCopy, mějte na paměti, že jiná aplikace může být úpravy dat během kopírování ji. Pokud je to možné Ujistěte se, že data, která kopírujete nemění během operace kopírování. Například při kopírování virtuálního pevného disku přidružený k virtuálnímu počítači Azure, ujistěte se, že aktuálně psaní žádné jiné aplikace na virtuální pevný disk. Dobrým způsobem, jak to provést, je zapůjčení prostředek, který chcete zkopírovat. Alternativně můžete nejprve vytvořte snímek virtuální pevný disk a potom zkopírovat snímek.
 
-Pokud nelze zabránit jiné aplikace z zápis do objektů BLOB nebo soubory, když se kopírují, pak mějte na paměti, že v době dokončení úlohy, kopírované prostředky buď již nemá úplné parita s prostředky zdroje.
+Pokud nelze zabránit aplikacím možnost zapisovat do objektů BLOB nebo soubory, zatímco se kopírují, pak mějte na paměti, že v době, kdy se úloha dokončí, zkopírované prostředky může už nebude mít úplnou paritu s prostředky zdroje.
 
-### <a name="running-multiple-azcopy-processes"></a>Spuštění více procesů AzCopy
-Více procesů AzCopy můžete spustit také na jednoho klienta zajištění, že používáte jiný deníku složek. Použití jedné deníku složku pro více procesů AzCopy není podporováno.
+### <a name="running-multiple-azcopy-processes"></a>Spuštěno více procesů, nástroje AzCopy
+Můžete spustit více procesů AzCopy na jednoho klienta, zajištění, že používáte jiný deníku složky. Použití jedné deníku složku pro více procesů AzCopy není podporováno.
 
 1. proces:
 ```azcopy
@@ -715,13 +718,13 @@ Další informace o službě Azure Storage a AzCopy najdete v následujících z
 * [Používání úložiště Blob z Node.js](../blobs/storage-nodejs-how-to-use-blob-storage.md)
 * [Používání úložiště Blob z Pythonu](../blobs/storage-python-how-to-use-blob-storage.md)
 
-### <a name="azure-storage-blog-posts"></a>Příspěvky blogu Azure Storage:
-* [Uvedení AzCopy na Linux Preview](https://azure.microsoft.com/en-in/blog/announcing-azcopy-on-linux-preview/)
-* [Představení náhled knihovny přesun dat úložiště Azure](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/)
-* [AzCopy: Úvod synchronní kopie a vlastní typ obsahu](http://blogs.msdn.com/b/windowsazurestorage/archive/2015/01/13/azcopy-introducing-synchronous-copy-and-customized-content-type.aspx)
-* [AzCopy: Uvedení obecné dostupnosti AzCopy 3.0 a AzCopy 4.0 verze preview s podporou tabulky a souboru](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/10/29/azcopy-announcing-general-availability-of-azcopy-3-0-plus-preview-release-of-azcopy-4-0-with-table-and-file-support.aspx)
-* [AzCopy: Optimalizovaných pro rozsáhlé kopie scénáře](http://go.microsoft.com/fwlink/?LinkId=507682)
-* [AzCopy: Podpora pro geograficky redundantní úložiště s přístupem pro čtení](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/04/07/azcopy-support-for-read-access-geo-redundant-account.aspx)
-* [AzCopy: Přenos dat pomocí režimu s možností restartování a tokenu SAS](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/09/07/azcopy-transfer-data-with-re-startable-mode-and-sas-token.aspx)
-* [AzCopy: Objekt Blob kopírování mezi účet pomocí](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/04/01/azcopy-using-cross-account-copy-blob.aspx)
-* [AzCopy: Nahrávání nebo stahování souborů pro objekty BLOB Azure](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/12/03/azcopy-uploading-downloading-files-for-windows-azure-blobs.aspx)
+### <a name="azure-storage-blog-posts"></a>Azure Storage blogových příspěvků:
+* [Oznamujeme vydání AzCopy v Linuxu ve verzi Preview](https://azure.microsoft.com/en-in/blog/announcing-azcopy-on-linux-preview/)
+* [Úvod do služby Azure Storage dat přesun knihovny ve verzi Preview](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/)
+* [AzCopy: Představujeme synchronní kopie a vlastní typ obsahu](http://blogs.msdn.com/b/windowsazurestorage/archive/2015/01/13/azcopy-introducing-synchronous-copy-and-customized-content-type.aspx)
+* [AzCopy: Oznámení obecné dostupnosti AzCopy 3.0 a 4.0 nástroje AzCopy vydání ve verzi preview s podporou tabulka a soubor](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/10/29/azcopy-announcing-general-availability-of-azcopy-3-0-plus-preview-release-of-azcopy-4-0-with-table-and-file-support.aspx)
+* [AzCopy: Optimalizovaná pro scénáře, ve velkém měřítku kopírování](http://go.microsoft.com/fwlink/?LinkId=507682)
+* [AzCopy: Podpora pro geograficky redundantní úložiště jen pro čtení](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/04/07/azcopy-support-for-read-access-geo-redundant-account.aspx)
+* [AzCopy: Přenos dat pomocí restartovatelnou službu režimu a tokenu SAS](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/09/07/azcopy-transfer-data-with-re-startable-mode-and-sas-token.aspx)
+* [AzCopy: Objekt Blob kopírování mezi účtu pomocí](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/04/01/azcopy-using-cross-account-copy-blob.aspx)
+* [AzCopy: Nahrávání a stahování souborů pro objekty BLOB Azure](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/12/03/azcopy-uploading-downloading-files-for-windows-azure-blobs.aspx)

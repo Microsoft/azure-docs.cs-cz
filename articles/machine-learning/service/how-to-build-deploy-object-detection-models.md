@@ -1,6 +1,6 @@
 ---
-title: Sestavení a nasazení objektový model zjišťování pomocí Azure Machine Learning balíčku pro počítač vize.
-description: Zjistěte, jak pro vytváření, trénování, otestovat a nasadit pomocí Azure Machine Learning balíčku pro počítač vize model zjišťování objektu počítače vize.
+title: Sestavujte a nasazujte objektový model zjišťování pomocí balíčku Azure Machine Learning pro počítačové zpracování obrazu.
+description: Zjistěte, jak sestavit, trénování, testování a nasazování modelem počítačového zpracování obrazu objektu zjišťování pomocí balíčku Azure Machine Learning pro počítačové zpracování obrazu.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -9,67 +9,64 @@ ms.reviewer: jmartens
 ms.author: netahw
 author: nhaiby
 ms.date: 06/01/2018
-ms.openlocfilehash: 62cc37d8c462d0fc1831de7b50a85738d6e63a17
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 44059de5a0ef0667b4268d9cdc2997162bab474a
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34727650"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39285746"
 ---
-# <a name="build-and-deploy-object-detection-models-with-azure-machine-learning"></a>Vytváření a nasazování objektové modely zjišťování pomocí Azure Machine Learning
+# <a name="build-and-deploy-object-detection-models-with-azure-machine-learning"></a>Vytváření a nasazování modelů zjišťování objektu pomocí Azure Machine Learning
 
-V tomto článku, Naučte se používat **Azure Machine Learning balíček pro počítač vize** ke cvičení, testování a nasazení [rychlejší R CNN](https://arxiv.org/abs/1506.01497) objektový model zjišťování. 
+V tomto článku najdete další informace o použití **Azure Machine Learning balíček pro počítačové zpracování obrazu** pro trénování, testování a nasazení [rychleji R CNN](https://arxiv.org/abs/1506.01497) objektový model zjišťování. 
 
-Velký počet problémy v doméně vize počítače lze vyřešit pomocí zjišťování objektu. Tyto problémy zahrnují vytváření modelů, které najít proměnný počet objektů na obrázku. 
+Velký počet problémů v doméně počítače pro zpracování obrazu můžete vyřešit pomocí zjišťování objektu. Tyto problémy patří vytváření modelů, které najít proměnný počet objektů na obrázku. 
 
-Při vytváření a nasazování tento model s tímto balíčkem, projít následující kroky:
+Při vytváření a nasazování tento model s tímto balíčkem, můžete přejít pomocí následujících kroků:
 1.  Vytvoření datové sady
 2.  Definice modelu hluboké Neuronové sítě (DNN)
-3.  Model školení
-4.  Vyhodnocení a vizualizaci
+3.  Cvičení modelu
+4.  Vyhodnocení a vizualizace
 5.  Nasazení webové služby
 6.  Webová služba zátěžové testování
 
-V tomto příkladu TensorFlow slouží jako rozhraní hloubkové učení, školení je prováděn lokálně na počítači GPU používá technologii, jako [hloubkové učení datové vědy VM](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning?tab=Overview), a nasazení používá rozhraní příkazového řádku Azure ML Operationalization.
+V tomto příkladu se používá TensorFlow jako rozhraní hloubkového učení, školení se provádí místně na počítači s využitím GPU, jako [hloubkového učení virtuální počítač pro datové vědy](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning?tab=Overview), a nasazení pomocí rozhraní příkazového řádku Azure ML Operacionalizace.
 
-Obrátit [balíček referenční dokumentaci k nástroji](https://aka.ms/aml-packages/vision) pro podrobné referenční informace pro každý modul a třída.
+Najdete [balíček referenční dokumentaci](https://aka.ms/aml-packages/vision) pro podrobné referenční dokumentace pro každý modul a třídy.
 
 ## <a name="prerequisites"></a>Požadavky
 
 1. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-1. Následující účty a aplikace musí být nastavení a nainstalován:
+1. Následující účty a aplikace musí mít nastavení a instalaci:
    - Účet Experimentování ve službě Azure Machine Learning 
-   - Účet Azure Machine Learning Model správy
+   - Účet správy modelů Azure Machine Learning
    - Nainstalovanou aplikaci Azure Machine Learning Workbench
 
-   Pokud tyto tři jsou ještě vytvořen nebo nainstalován, postupujte podle kroků [Azure Machine Learning Quickstart a Workbench instalace](../service/quickstart-installation.md) článku. 
+   Pokud tyto tři jsou ještě vytvořen nebo nainstalován, postupujte [Quickstart pro Azure Machine Learning a Workbench instalace](../service/quickstart-installation.md) článku. 
 
-1. Balíček Azure Machine Learning pro vize počítače musí být nainstalován. Zjistěte, jak [instalaci tohoto balíčku zde](https://aka.ms/aml-packages/vision).
+1. Musíte nainstalovat balíček Azure Machine Learning pro počítačové zpracování obrazu. Zjistěte, jak [instalaci tohoto balíčku zde](https://aka.ms/aml-packages/vision).
 
 ## <a name="sample-data-and-notebook"></a>Ukázková data a poznámkového bloku
 
-### <a name="get-the-jupyter-notebook"></a>Získat poznámkového bloku Jupyter
+### <a name="get-the-jupyter-notebook"></a>Získání poznámkového bloku Jupyter
 
-Stažení poznámkového bloku ke spuštění ukázky popsaného sami.
+Stáhnout ho na spuštění ukázky popsané sami.
 
 > [!div class="nextstepaction"]
-> [Získat poznámkového bloku Jupyter](https://aka.ms/aml-packages/vision/notebooks/object_detection)
+> [Získání poznámkového bloku Jupyter](https://aka.ms/aml-packages/vision/notebooks/object_detection)
 
-### <a name="load-the-sample-data"></a>Načíst ukázková data
+### <a name="load-the-sample-data"></a>Načtení ukázkových dat.
 
-V této ukázce je součástí datové sady supermarketu položky v rámci chladničky skládající se z 30 bitové kopie a 8 třídy (eggBox, joghurt, kečup, hub, hořčice, oranžová, squash a horních). Pro každé bitové kopie jpg je poznámky – soubor xml s podobným názvem. 
+Pro tuto ukázku je součástí blízkým položek uvnitř chladniček datovou sadu skládající se z 30 imagí a 8 třídy (eggBox, joghurt, kečup, hub, hořčice, orange, spojování squash a vody). Pro každý obrázek jpg je poznámka – soubor xml s podobným názvem. 
 
-Následující obrázek znázorňuje struktura složek doporučené. 
+Následující obrázek znázorňuje strukturu složek doporučené. 
 
-![Struktura složek](media/how-to-build-deploy-object-detection-models/data_directory.JPG)
+![struktura složek](media/how-to-build-deploy-object-detection-models/data_directory.JPG)
 
-## <a name="image-annotation"></a>Poznámky bitové kopie
+## <a name="image-annotation"></a>Opatřování obrázků poznámkami
 
-Poznámky objekt umístění jsou nutné k natrénování a vyhodnocení detektor k objektu. [LabelImg](https://tzutalin.github.io/labelImg) je nástroj poznámky s otevřeným zdrojem, který slouží k přidání poznámek ke bitové kopie. LabelImg zapíše soubor xml na obrázek ve formátu Pascal VOC, který může číst tento balíček. 
-
-## <a name="storage-context"></a>Kontext úložiště
-Kontext úložiště slouží k určení, kde jsou uloženy různé výstupní soubory, jako jsou například soubory DNN modelu. Další informace najdete v tématu [StorageContext dokumentaci](https://docs.microsoft.com/en-us/python/api/cvtk.core.context.storagecontext?view=azure-ml-py-latest). Obsah úložiště za normálních okolností nemusí být explicitně nastaveno. Ale, abyste se vyhnuli omezení velikosti projektu Workbench 25 MB, nastavit adresář výstupy tak, aby odkazovaly do umístění mimo projekt AML (".. /.. /.. /.. / cvtk_output "). Zajistěte, aby se odebrat adresář "cvtk_output", jakmile již není potřeba.
+Anotovaný objekt, který umístění jsou nutné k natrénování a vyhodnocení detektor objektu. [LabelImg](https://tzutalin.github.io/labelImg) je open source nástroj anotace, který slouží k přidání poznámek ke bitové kopie. LabelImg zapíše soubor xml na obrázek ve formátu těkavých Pascal, který může přečíst tento balíček. 
 
 
 ```python
@@ -77,28 +74,26 @@ import warnings
 warnings.filterwarnings("ignore")
 import os, time
 from cvtk.core import Context, ObjectDetectionDataset, TFFasterRCNN
+from cvtk.evaluation import DetectionEvaluation
+from cvtk.evaluation.evaluation_utils import graph_error_counts
 from cvtk.utils import detection_utils
-from matplotlib import pyplot as plt
 
 # Disable printing of logging messages
 from azuremltkbase.logging import ToolkitLogger
 ToolkitLogger.getInstance().setEnabled(False)
 
-# Initialize the context object
-out_root_path = "../../../cvtk_output"
-Context.create(outputs_path=out_root_path, persistent_path=out_root_path, temp_path=out_root_path)
-
+from matplotlib import pyplot as plt
 # Display the images
 %matplotlib inline
 ```
 
 ## <a name="create-a-dataset"></a>Vytvoření datové sady
 
-Vytvořte CVTK datovou sadu, která obsahuje sadu imagí, s jejich odpovídajících ohraničující pole poznámky. V tomto příkladu ledničce bitové kopie, které jsou součástí ".. / sample_data a potravin nebo školení"složky se používají. Jsou podporovány pouze JPEG – obrázky.
+Vytvoření datové sady CVTK, který se skládá ze sady obrázků s jejich odpovídajících ohraničující pole poznámky. V tomto příkladu lednice imagí, které jsou součástí ".. / sample_data/foods/školení"složky se používají. Jsou podporovány pouze obrázky ve formátu JPEG.
 
 
 ```python
-image_folder = "../sample_data/foods/train"
+image_folder = "detection/sample_data/foods/train"
 data_train = ObjectDetectionDataset.create_from_dir(dataset_name='training_dataset', data_dir=image_folder,
                                                     annotations_dir="Annotations", image_subdirectory='JPEGImages')
 
@@ -131,7 +126,7 @@ _ = data_train.images[2].visualize_bounding_boxes(image_size = (10,10))
 
 ## <a name="define-a-model"></a>Definovat model
 
-V tomto příkladu se používá rychlejší R CNN modelu. Různé parametry lze zadat při definování tohoto modelu. Význam těchto parametrů, stejně jako parametry použité pro trénování (viz další část) naleznete v dokumentaci rozhraní API buď CVTK nebo na [Tensorflow objekt detekce webu](https://github.com/tensorflow/models/tree/master/research/object_detection). Další informace o modelu rychlejší R CNN lze najít na [tento odkaz](https://docs.microsoft.com/en-us/cognitive-toolkit/Object-Detection-using-Faster-R-CNN#technical-details). Tento model je založený na rychlé R-CNN a naleznete další informace o něm [zde](https://docs.microsoft.com/en-us/cognitive-toolkit/Object-Detection-using-Fast-R-CNN#algorithm-details).
+V tomto příkladu je model rychleji CNN R použít. Různé parametry lze zadat, při definování tento model. Význam těchto parametrů, jakož i parametrů použitých pro trénování (viz další část) najdete v obou CVTK dokumenty k rozhraní API nebo na [webu zjišťování objektu Tensorflow](https://github.com/tensorflow/models/tree/master/research/object_detection). Další informace o modelu rychleji CNN R najdete [tento odkaz](https://docs.microsoft.com/en-us/cognitive-toolkit/Object-Detection-using-Faster-R-CNN#technical-details). Tento model je založen na rychlé R-CNN a další informace lze nalézt [tady](https://docs.microsoft.com/en-us/cognitive-toolkit/Object-Detection-using-Fast-R-CNN#algorithm-details).
 
 
 ```python
@@ -144,15 +139,15 @@ my_detector = TFFasterRCNN(labels=data_train.labels,
 
 ## <a name="train-the-model"></a>Trénování modelu
 
-Model Trénink kakao rychlejší R-CNN s ResNet50 se používá jako výchozí bod pro školení. 
+Model školení COCO rychleji R-CNN s ResNet50 slouží jako výchozí bod pro vzdělávání. 
 
-Ke cvičení detektor, se počet kroků školení v kódu nastavit na 350, tak, aby školení rychleji (s grafickým Procesorem ~ 5 minut). V praxi nastavte ji na alespoň 10krát číslo bitové kopie v sadě školení.
+K trénování detektoru, počet kroků školení v kódu je nastaven na 350, tak, aby školení běží rychleji (přibližně 5 minut s GPU). V praxi nastavte ji na alespoň 10krát počet obrázků do trénovací sady.
 
-V tomto příkladu se počet kroků školení detektor nastavena na 350 pro rychlé školení. V praxi však dobré pravidlo je nastavit kroky 10 či více krát počet bitových kopií trénovací sady.
+V tomto příkladu se počet kroků školení detektor nastaven na 350 pro rychlé školení. V praxi však základním pravidlem je nastavit kroky 10 nebo vícekrát počet imagí trénovací sady.
 
-Dvě klíčové parametry pro školení jsou:
-- Počet kroků pro trénování modelu, reprezentován num_seps argumentem. Každý krok nastaví model s minibatch velikosti dávky, jeden.
-- Učení kurzů, které můžete nastavit, že initial_learning_rate
+Jsou dvě klíčové parametry pro vzdělávání:
+- Počet kroků pro trénování modelu reprezentován num_seps argumentem. Každý krok trénovat model s minibatch jeden velikosti dávky.
+- Učení procenta, který je možné nastavit initial_learning_rate
 
 ```python
 print("tensorboard --logdir={}".format(my_detector.train_dir))
@@ -188,21 +183,21 @@ print(end_train-start_train)
     361.604615688324
     
 
-TensorBoard umožňuje vizualizace průběhu školení. TensorBoard události jsou umístěny ve složce určené atributem train_dir objekt modelu. Chcete-li zobrazit TensorBoard, postupujte takto:
-1. Zkopírujte výtisk, který začíná 'tensorboard – logdir' na příkazový řádek a spusťte ho. 
-2. Zkopírujte adresu URL vrácená z příkazového řádku do webového prohlížeče můžete zobrazit TensorBoard. 
+TensorBoard umožňuje znázornit průběh školení. TensorBoard události jsou umístěny ve složce určené atributem train_dir objekt modelu. Chcete-li zobrazit TensorBoard, postupujte takto:
+1. Kopírování, tisku, který začíná "tensorboard – logdir" na příkazový řádek a spusťte ho. 
+2. Zkopírujte adresu URL vrácené z příkazového řádku do webového prohlížeče a zobrazit TensorBoard. 
 
-TensorBoard by měl vypadat jako na následujícím snímku obrazovky. Jak dlouho trvá chvíli složky školení vyplnit. Proto pokud TensorBoard nezobrazuje se správně opakovaných zkuste první čas kroky 1 – 2.  
+TensorBoard by měl vypadat jako na následujícím snímku obrazovky. Trvá ještě chvilku na složce školení bude zaplněn. Proto pokud není uveden TensorBoard nahoru správně první čas zkuste opakující se kroky 1-2.  
 
 ![tensorboard](media/how-to-build-deploy-object-detection-models/tensorboard.JPG)
 
 ## <a name="evaluate-the-model"></a>Vyhodnocení modelu
 
-Metoda 'vyhodnotit' slouží k vyhodnocení modelu. Tato funkce vyžaduje objekt ObjectDetectionDataset jako vstup. Datová sada vyhodnocení lze vytvořit pomocí stejné funkce jako používaný pro datovou sadu školení. Podporované metrika je průměrná přesnost, jak jsou definovány pro [PASCAL VOC výzvy](http://host.robots.ox.ac.uk/pascal/VOC/pubs/everingham10.pdf).  
+Metoda "vyhodnotit" slouží k vyhodnocení modelu. Tato funkce vyžaduje jako vstup objekt ObjectDetectionDataset. Vyhodnocení datové sady je možné vytvořit pomocí stejné funkce jako jste použili pro trénovací datové sady. Podporované metriky je průměrná přesnost, jak jsou definovány pro [PASCAL těkavých Challenge](http://host.robots.ox.ac.uk/pascal/VOC/pubs/everingham10.pdf).  
 
 
 ```python
-image_folder = "../sample_data/foods/test"
+image_folder = "detection/sample_data/foods/test"
 data_val = ObjectDetectionDataset.create_from_dir(dataset_name='val_dataset', data_dir=image_folder)
 eval_result = my_detector.evaluate(dataset=data_val)
 ```
@@ -237,7 +232,7 @@ eval_result = my_detector.evaluate(dataset=data_val)
     F1 2018-05-25 23:18:38,254 INFO Finished evaluation!
     
 
-Výsledky vyhodnocení můžete vytisknout ve formátu, vyčistit.
+Výsledky vyhodnocení můžete vytisknout ve formátu vyčistit.
 
 
 ```python
@@ -260,9 +255,9 @@ print('{0: <15}: {1: <3}'.format("overall:", round(eval_result['PASCAL/Precision
     overall:       : 0.99
     
 
-Podobně můžete vypočítat přesnost modelu na trénovací sady. Tím usnadníte zajistěte, aby školení konvergované s dobrým řešením. Přesnost na trénovací sady po úspěšné školení je často téměř 100 %.
+Podobně můžete vypočítat přesnost modelu na trénovací sady. Tím usnadníte Ujistěte se, že školení konvergované na dobrým řešením. Přesnost na cvičnou sadou po úspěšné školení často blíží 100 %.
 
-Výsledky vyhodnocení lze také zobrazit z TensorBoard, včetně hodnot mapy a bitové kopie s předpokládaných ohraničující polí. Zkopírujte výtisk z následující kód do okna příkazového řádku spusťte TensorBoard klienta. Hodnota portu 8008 se zde slouží k aby nedošlo ke konfliktu s výchozí hodnotou 6006, který se používá pro zobrazení stavu školení.
+Výsledky vyhodnocení lze také zobrazit z TensorBoard, včetně hodnoty mapy a obrázky s předpokládanou ohraničující polí. Zkopírujte tisku z následující kód do okna příkazového řádku spusťte klienta TensorBoard. Tady je použita hodnota portu 8008 aby nedošlo ke konfliktu s výchozí hodnotou 6006, který se používal pro zobrazení stavu školení.
 
 
 ```python
@@ -272,15 +267,15 @@ print("tensorboard --logdir={} --port=8008".format(my_detector.eval_dir))
     tensorboard --logdir=C:\Users\lixun\Desktop\AutoDL\CVTK\Src\API\cvtk_output\temp_faster_rcnn_resnet50\models\eval --port=8008
     
 
-## <a name="score-an-image"></a>Stanovení skóre bitovou kopii
+## <a name="score-an-image"></a>Skóre bitovou kopii
 
-Jakmile budete spokojeni s výkonem systému trénovaného modelu, objekt modelu, stanovení skóre' funkce slouží ke stanovení skóre nové bitové kopie. Vrácený skóre můžete vizualizovat pomocí funkce 'vizualizovat'. 
+Jakmile budete spokojeni s výkonem trénovaného modelu, "skóre: funkce objekt modelu lze použít ke stanovení skóre nových imagí. Vrácené výsledky lze vizualizovat pomocí funkce "vizualizace". 
 
 
 ```python
 image_path = data_val.images[1].storage_path
 detections_dict = my_detector.score(image_path)
-path_save = out_root_path + "/scored_images/scored_image_preloaded.jpg"
+path_save = "./scored_images/scored_image_preloaded.jpg"
 ax = detection_utils.visualize(image_path, detections_dict, image_size=(8, 12))
 path_save_dir = os.path.dirname(os.path.abspath(path_save))
 os.makedirs(path_save_dir, exist_ok=True)
@@ -291,11 +286,11 @@ ax.get_figure().savefig(path_save)
 
 ##  <a name="save-the-model"></a>Uložit model
 
-Pro cvičný model můžete uložit na disk a načtení zpět do paměti, jak je znázorněno v následující příklady kódu.
+Trénovaného modelu můžete uložit na disk a načtena do paměti, jak je znázorněno v následujícím příkladu kódu.
 
 
 ```python
-save_model_path = out_root_path + "/frozen_model/faster_rcnn.model" # Please save your model to outside of your AML workbench project folder because of the size limit of AML project
+save_model_path = "./frozen_model/faster_rcnn.model"
 my_detector.save(save_model_path)
 ```
 
@@ -304,22 +299,22 @@ my_detector.save(save_model_path)
     F1 2018-05-25 23:19:03,867 INFO 2953 ops in the final graph.
     
 
-## <a name="load-the-saved-model-for-scoring"></a>Načíst uložené model pro vyhodnocování
+## <a name="load-the-saved-model-for-scoring"></a>Načtení uložené modelu pro vyhodnocení
 
-Pokud chcete používat uložené modelu, načtěte model do paměti pomocí funkce "zatížení". Potřebujete jenom jednou načíst. 
+K použití uloženého modelu, načtěte model do paměti s funkcí "zatížení". Stačí jednou načíst. 
 
 ```python
 my_detector_loaded = TFFasterRCNN.load(save_model_path)
 ```
 
-Po načtení modelu může sloužit ke stanovení skóre bitovou kopii nebo seznam bitové kopie. Pro jednu bitovou kopii se vrátí slovník s klíči například 'detection_boxes', 'detection_scores' a 'num_detections'. Pokud je vstupní seznam bitové kopie, se vrátí seznam slovník s jeden slovník odpovídající jednu image. 
+Po načtení modelu lze použít ke stanovení skóre pro bitovou kopii nebo seznam imagí. Pro jednu bitovou kopii je vrácena slovník pomocí klíče, jako je například "detection_boxes", "detection_scores" a "num_detections". Pokud je vstup seznam imagí, je vrácen seznam slovník s jeden slovník odpovídající jednu image. 
 
 
 ```python
 detections_dict = my_detector_loaded.score(image_path)
 ```
 
-Zjištěné objekty s skóre nad 0,5, včetně popisky, skóre a souřadnice můžete vytisknout.
+Zjištěné objekty se skóre nad 0,5, včetně popisků, skóre a souřadnice lze vytisknout navýšení kapacity.
 
 
 ```python
@@ -351,42 +346,42 @@ print("\nFound {} objects in image {}.".format(n_obj, image_path))
     Found 8 objects in image ../sample_data/foods/test\JPEGImages\10.jpg.
     
 
-Podobně jako Vizualizujte skóre před.
+Vizualizujte skóre stejně jako před.
 
 
 ```python
-path_save = out_root_path + "/scored_images/scored_image_frozen_graph.jpg"
+path_save = "./scored_images/scored_image_frozen_graph.jpg"
 ax = detection_utils.visualize(image_path, detections_dict, path_save=path_save, image_size=(8, 12))
 # ax.get_figure() # use this code extract the returned image
 ```
 
 ![PNG](media/how-to-build-deploy-object-detection-models/output_30_0.JPG)
 
-## <a name="operationalization-deploy-and-consume"></a>Operationalization: nasazení a využívat
+## <a name="operationalization-deploy-and-consume"></a>Operacionalizace: nasazení a využití
 
-Operationalization se proces publikování modely a kód jako webové služby a spotřebě těchto služeb k vytvoření obchodní výsledky. 
+Operacionalizace je proces publikování kódu jako webové služby a modely a využití těchto služeb obchodní výsledky. 
 
-Jakmile je cvičení modelu, můžete nasadit tento model jako webovou službu pro spotřebu pomocí [příkazového řádku Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/cli-for-azure-machine-learning). Modely se dá nasadit do místního počítače nebo clusteru Azure Container Service (ACS). Pomocí služby ACS, můžete škálovat webovou službu ručně nebo použít funkci Automatické škálování.
+Jakmile váš model se trénuje, můžete nasadit tento model jako webovou službu pro spotřebu pomocí [CLI aplikace Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/cli-for-azure-machine-learning). Je možné nasadit modely do místního počítače nebo clusteru Azure Container Service (ACS). Pomocí služby ACS, můžete ruční škálování webové služby nebo pomocí funkce automatického škálování.
 
-**Přihlaste se pomocí rozhraní příkazového řádku Azure**
+**Přihlaste se pomocí Azure CLI**
 
-Pomocí [Azure](https://azure.microsoft.com/) účet s platným předplatným, přihlaste se pomocí rozhraní příkazového řádku následující příkaz:
+Pomocí [Azure](https://azure.microsoft.com/) účet s platným předplatným, přihlaste se pomocí následujícího příkazu rozhraní příkazového řádku:
 <br>`az login`
 
-+ Chcete-li přepnout do jiného předplatného Azure, použijte příkaz:
++ Pokud chcete přepnout do jiného předplatného Azure, použijte příkaz:
 <br>`az account set --subscription [your subscription name]`
 
-+ Pokud chcete zobrazit aktuální účet správy modelu, použijte příkaz:
++ Pokud chcete zobrazit aktuální účet správy modelů, použijte příkaz:
   <br>`az ml account modelmanagement show`
 
 **Vytvoření a nastavení prostředí pro nasazení clusteru**
 
-Stačí nastavit prostředí pro nasazení jednou. Pokud nemáte ještě, nastavit prostředí pro nasazení teď pomocí [tyto pokyny](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/deployment-setup-configuration#environment-setup). 
+Stačí nastavit prostředí pro nasazení jednou. Pokud nemáte ještě, nastavte si nyní pomocí prostředí pro nasazení [tyto pokyny](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/deployment-setup-configuration#environment-setup). 
 
-Pokud chcete zobrazit prostředí aktivní nasazení, použijte následující příkaz rozhraní příkazového řádku:
+Pokud chcete zobrazit aktivní nasazení prostředí, použijte následující příkaz rozhraní příkazového řádku:
 <br>`az ml env show`
    
-Ukázka příkazu příkazového řádku Azure CLI pro vytvoření a nastavení prostředí pro nasazení
+Ukázky rozhraní příkazového řádku Azure k vytvoření a nastavení prostředí nasazení
 
 ```CLI
 az provider register -n Microsoft.MachineLearningCompute
@@ -397,25 +392,25 @@ az ml env set -n [environment name] -g [resource group]
 az ml env cluster
 ```
     
-### <a name="manage-web-services-and-deployments"></a>Správa webové služby a nasazení
+### <a name="manage-web-services-and-deployments"></a>Správa webových služeb a nasazení
 
-Následující rozhraní API umožňuje nasazovat modely jako webové služby, spravovat tyto webové služby a správu nasazení.
+Následující rozhraní API slouží k nasazení modelů jako webové služby, spravovat tyto webové služby a správu nasazení.
 
 |Úkol|Rozhraní API|
 |----|----|
 |Vytvoření objektu nasazení|`deploy_obj = AMLDeployment(deployment_name=deployment_name, associated_DNNModel=dnn_model, aml_env="cluster")`
 |Nasazení webové služby|`deploy_obj.deploy()`|
 |Obrázek skóre|`deploy_obj.score_image(local_image_path_or_image_url)`|
-|Odstranění webové služby|`deploy_obj.delete()`|
-|Sestavení docker bitová kopie bez webové služby|`deploy_obj.build_docker_image()`|
-|Seznam stávajícího nasazení|`AMLDeployment.list_deployment()`|
-|Odstranit, pokud tato služba existuje s názvem nasazení|`AMLDeployment.delete_if_service_exist(deployment_name)`|
+|Odstranit webovou službu|`deploy_obj.delete()`|
+|Sestavit image dockeru bez webové služby|`deploy_obj.build_docker_image()`|
+|Seznam existujících nasazení|`AMLDeployment.list_deployment()`|
+|Odstranit, pokud služba existuje s názvem nasazení|`AMLDeployment.delete_if_service_exist(deployment_name)`|
 
-**Dokumentaci k rozhraní API:** obrátit [balíček referenční dokumentaci k nástroji](https://aka.ms/aml-packages/vision) pro podrobné referenční informace pro každý modul a třída.
+**Dokumentace k rozhraní API:** najdete [balíček referenční dokumentaci](https://aka.ms/aml-packages/vision) pro podrobné referenční dokumentace pro každý modul a třídy.
 
-**Referenční dokumentace rozhraní příkazového řádku:** více pokročilé operace související s nasazením, naleznete [model správy referenční dokumentace rozhraní příkazového řádku](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/model-management-cli-reference).
+**Referenční dokumentace rozhraní příkazového řádku:** pokročilejší operace související s nasazením, najdete [odkaz na rozhraní příkazového řádku pro správu modelů](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/model-management-cli-reference).
 
-**Správa nasazení na portálu Azure**: můžete sledovat a spravovat nasazení v [portál Azure](https://ms.portal.azure.com/). Z portálu Azure najít stránku účtu Machine Learning Model správy pomocí jeho názvu. Potom přejděte na stránku účtu Model správy > Model správy > služby.
+**Správa nasazení na webu Azure portal**: můžete sledovat a spravovat svá nasazení v [webu Azure portal](https://ms.portal.azure.com/). Na webu Azure Portal najdete stránce účtu správy modelů Machine Learning pomocí jeho názvu. Potom přejděte na stránku účtu správy modelů > Správa modelů ve službě > služby.
 
 ```python
 # ##### OPTIONAL - Interactive CLI setup helper ###### 
@@ -457,15 +452,15 @@ deploy_obj.deploy()
 print("Deployment DONE")
 ```
 
-### <a name="consume-the-web-service"></a>Využívají webové služby
+### <a name="consume-the-web-service"></a>Používání této webové služby
 
-Po vytvoření webová služba je stanovení skóre obrázky s nasazenou webovou službu. Máte několik možností:
+Po vytvoření webové služby můžete skóre obrázků s nasazenou webovou službu. Máte několik možností:
 
-   - Přímo stanovení skóre webové služby s objektem nasazení s: deploy_obj.score_image(image_path_or_url) 
-   - Nebo můžete použít adresu url koncového bodu služby a klíč služby (žádné místní nasazení) s: AMLDeployment.score_existing_service_with_image (image_path_or_url, service_endpoint_url, service_key = None)
-   - Tvoří své žádosti http přímo ke stanovení skóre koncový bod webové služby (pro zkušené uživatele).
+   - Můžete přímo skóre webové služby s objektem nasazení s: deploy_obj.score_image(image_path_or_url) 
+   - Nebo můžete pomocí adresy url koncového bodu služby a klíč služby, (žádné místní nasazení): AMLDeployment.score_existing_service_with_image (image_path_or_url service_endpoint_url, service_key = None)
+   - Vytvářejí požadavky http přímo ke stanovení skóre pro koncový bod webové služby (pro pokročilé uživatele).
 
-### <a name="score-with-existing-deployment-object"></a>Stanovení skóre s existující objekt nasazení
+### <a name="score-with-existing-deployment-object"></a>Skóre pomocí existujícího objektu nasazení
 ```
 deploy_obj.score_image(image_path_or_url)
 ```
@@ -503,7 +498,7 @@ for img_index, img_obj in enumerate(data_train.images[:num_images]):
     print("   Time for API call: {:.2f} seconds".format(timeit.default_timer() - tic))
 ```
 
-### <a name="score-with-service-endpoint-url-and-service-key"></a>Stanovení skóre s adresu url koncového bodu služby a klíč služby
+### <a name="score-with-service-endpoint-url-and-service-key"></a>Skóre se adresa url koncového bodu služby a klíč služby
 ```
     AMLDeployment.score_existing_service_with_image(image_path_or_url, service_endpoint_url, service_key=None)
 ```
@@ -523,8 +518,8 @@ serialized_result_in_json = AMLDeployment.score_existing_service_with_image(imag
 print("serialized_result_in_json:", serialized_result_in_json[:50])
 ```
 
-### <a name="score-endpoint-with-http-request-directly"></a>Koncový bod skóre s přímo požadavku http
-Následuje příklad kód, který tvoří požadavek http přímo v Pythonu. Můžete provést v jinými programovací jazyky.
+### <a name="score-endpoint-with-http-request-directly"></a>Skóre přímo na koncový bod s požadavkem http
+Tady je příklad kódu pro formulář žádosti http přímo v Pythonu. Můžete to provést v jiných programovacích jazycích.
 
 
 ```python
@@ -575,7 +570,7 @@ def score_image_with_http(image, service_endpoint_url, service_key=None, paramet
 ```
 
 ### <a name="parse-serialized-result-from-webservice"></a>Výsledek analýzy serializovat z webové služby
-Výsledek z webové služby je v řetězce formátu json, který lze analyzovat.
+Výsledek z webové služby je v řetězci json, který může být analyzován.
 
 
 ```python
@@ -596,7 +591,7 @@ print("Parsed result:", parsed_result)
 
 ```python
 ax = detection_utils.visualize(image_path, parsed_result)
-path_save = "../../../cvtk_output/scored_images/scored_image_web.jpg"
+path_save = "./scored_images/scored_image_web.jpg"
 path_save_dir = os.path.dirname(os.path.abspath(path_save))
 os.makedirs(path_save_dir, exist_ok=True)
 ax.get_figure().savefig(path_save)
@@ -604,10 +599,10 @@ ax.get_figure().savefig(path_save)
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o Azure Machine Learning balíčku pro počítač vize v těchto článcích:
+Další informace o balíčku pro Azure Machine Learning pro počítačové zpracování obrazu v těchto článcích:
 
-+ Pro čtení [balíček přehled a zjistěte, jak ji nainstalovat](https://aka.ms/aml-packages/vision).
++ Přečtěte si [balení – přehled a zjistěte, jak ji nainstalovat](https://aka.ms/aml-packages/vision).
 
-+ Prozkoumejte [referenční dokumentace](https://docs.microsoft.com/python/api/overview/azure-machine-learning/computer-vision) pro tento balíček.
++ Prozkoumejte [referenční dokumentaci](https://docs.microsoft.com/python/api/overview/azure-machine-learning/computer-vision) pro tento balíček.
 
 + Další informace o [další balíčky Python pro Azure Machine Learning](reference-python-package-overview.md).

@@ -1,50 +1,49 @@
 ---
-title: Rozpoznávání řeči kognitivní služby SDK řešení potíží s | Microsoft Docs
-description: Řešení problémů čistá kognitivní služeb řeči SDK
+title: Rozpoznávání řeči služeb cognitive Services SDK Poradce při potížích
+description: Řešení potíží Cognitive Services řeči SDK
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: wolfma61
-manager: onano
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: wolfma
-ms.openlocfilehash: 16eaebcf9494ab57521068a9418ccf2ac7f5a8fe
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: ff8aba562cfd2d6d54c708ee7fdc4c6ca7185f29
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343420"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39284118"
 ---
-# <a name="troubleshooting-speech-services-sdk"></a>Řešení potíží s řeči služby SDK
+# <a name="troubleshooting-speech-services-sdk"></a>Řešení potíží s hlasové služby SDK
 
-Tento článek obsahuje informace, které vám pomůžou při řešení problémů, že se můžete setkat při používání sady SDK řeči.
+Tento článek obsahuje informace, které vám pomůžou při řešení problémů, že se můžete setkat při použití sady SDK řeči.
 
 ## <a name="error-websocket-upgrade-failed-with-an-authentication-error-403"></a>Chyba `WebSocket Upgrade failed with an authentication error (403).`
 
-Můžete mít nesprávný koncový bod pro oblast nebo službě. Zkontrolujte identifikátor URI a ujistěte se, zda že jsou správná. Také najdete v další části, jak může se také jednat o problém s klíč předplatného nebo autorizační token.
+Možná Chybný koncový bod pro oblast nebo službu. Zkontrolujte identifikátor URI, abyste měli jistotu, že je správný. Také naleznete v oddílu, protože může to být i problém s klíč předplatného nebo autorizační token.
 
-## <a name="error-http-403-forbidden-or-error-http-401-unauthorized"></a>Chyba `HTTP 403 Forbidden` nebo Chyba `HTTP 401 Unauthorized`
+## <a name="error-http-403-forbidden-or-error-http-401-unauthorized"></a>Chyba `HTTP 403 Forbidden` nebo chyby `HTTP 401 Unauthorized`
 
-Tato chyba je často způsobeno problémy s ověřením. Požadavky na připojení bez platné `Ocp-Apim-Subscription-Key` nebo `Authorization` záhlaví se odmítne kvůli stavu 401 nebo 403.
+Tato chyba je často způsobeno problémy s ověřováním. Požadavky na připojení bez platného `Ocp-Apim-Subscription-Key` nebo `Authorization` záhlaví se odmítne kvůli stavu 401 nebo 403.
 
-* Pokud používáte klíč předplatného pro ověřování, může být příčinou:
+* Pokud používáte klíč předplatného pro ověření, příčinou může být:
 
-    - klíč předplatného je chybí nebo je neplatný
-    - došlo k překročení kvóty využití vaše předplatné
+    - klíč předplatného je chybějící nebo neplatný
+    - Překročili jste kvótu využití vašeho předplatného
 
-* Pokud používáte autorizační token pro ověřování, může být příčinou:
+* Pokud používáte autorizační token pro ověření, příčinou může být:
 
-    - autorizační token je neplatný
-    - vypršela platnost tokenu autorizace
+    - autorizační token je neplatný.
+    - platnost autorizačního tokenu
 
-### <a name="validate-your-subscription-key"></a>Ověřit svůj klíč předplatného
+### <a name="validate-your-subscription-key"></a>Ověřte váš klíč předplatného
 
-Můžete ověřit, zda že máte platné předplatné klíč spuštěním jednoho z níže uvedených příkazů.
+Můžete ověřit, abyste měli jistotu, že máte klíč platné předplatné spuštěním jednoho z níže uvedených příkazů.
 
 > [!NOTE]
-> Nahraďte `YOUR_SUBSCRIPTION_KEY` a `YOUR_REGION` s vlastní klíč předplatného a přidružené oblasti, v uvedeném pořadí.
+> Nahraďte `YOUR_SUBSCRIPTION_KEY` a `YOUR_REGION` s klíč předplatného a související oblasti, v uvedeném pořadí.
 
 * PowerShell
 
@@ -64,12 +63,12 @@ Můžete ověřit, zda že máte platné předplatné klíč spuštěním jednoh
     curl -v -X POST "https://YOUR_REGION.api.cognitive.microsoft.com/sts/v1.0/issueToken" -H "Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY" -H "Content-type: application/x-www-form-urlencoded" -H "Content-Length: 0"
     ```
 
-### <a name="validate-an-authorization-token"></a>Ověření autorizační token
+### <a name="validate-an-authorization-token"></a>Ověření tokenu autorizace
 
-Pokud používáte autorizační token pro ověřování, spusťte jeden z následujících příkazů ověřte, zda autorizační token je stále platný. Tokeny jsou platné po dobu 10 minut.
+Pokud používáte autorizační token pro ověření, spusťte jeden z následujících příkazů ověřte, že ověřovací token, který je stále platný. Tokeny jsou platné po dobu 10 minut.
 
 > [!NOTE]
-> Nahraďte `YOUR_AUDIO_FILE` s cestou k souboru připraveného obsahu zvuk `YOUR_ACCESS_TOKEN` autorizačním tokenem, vrátí se v předchozím kroku, a `YOUR_REGION` s správnou oblast.
+> Nahraďte `YOUR_AUDIO_FILE` cestou k souboru připraveného obsahu zvuku `YOUR_ACCESS_TOKEN` autorizačním tokenem, který je vrácený v předchozím kroku, a `YOUR_REGION` s správné oblastí.
 
 * PowerShell
 
@@ -103,18 +102,18 @@ Pokud používáte autorizační token pro ověřování, spusťte jeden z násl
 
 ## <a name="error-http-400-bad-request"></a>Chyba `HTTP 400 Bad Request`
 
-Této chybě obvykle dochází, když text požadavku obsahuje neplatná data zvuk. Pouze `WAV` formát je podporován. Také zkontrolujte hlavičky žádosti a ujistěte se, určíte odpovídající `Content-Type` a `Content-Length`.
+K této chybě obvykle dochází, když text požadavku obsahuje neplatnou zvuková data. Pouze `WAV` formát je podporován. Také zkontrolovat hlavičky žádosti, abyste měli jistotu, že zadáváte odpovídající `Content-Type` a `Content-Length`.
 
 ## <a name="error-http-408-request-timeout"></a>Chyba `HTTP 408 Request Timeout`
 
-Chyba je pravděpodobně, protože služba je odesílána žádná zvuková data. Tato chyba může být způsobeno problémy se sítí.
+Chyba je pravděpodobně, protože žádné zvukové dat je odesíláno do služby. Tato chyba může být způsobeno problémy se sítí.
 
-## <a name="the-recognitionstatus-in-the-response-is-initialsilencetimeout"></a>`RecognitionStatus` Je v odpovědi `InitialSilenceTimeout`
+## <a name="the-recognitionstatus-in-the-response-is-initialsilencetimeout"></a>`RecognitionStatus` v odpovědi je `InitialSilenceTimeout`
 
-Zvuk dat je obvykle z důvodu příčiny problému. Příklad:
+Zvukových dat je obvykle důvodem příčiny problému. Příklad:
 
-* Je dlouhá úseku nečinnosti na začátku zvukovém souboru. Služba zastaví rozpoznávání za několik sekund a vrátí `InitialSilenceTimeout`.
-* Zvuk používá nepodporovaný kodek formátu, což způsobí, že zvuk data, která mají být považované za nečinnosti.
+* Existuje dlouhý roztažení nečinnosti na začátku zvuku. Služba zastaví uznání za několik sekund a vrátit `InitialSilenceTimeout`.
+* Zvuk používá nepodporovaný kodek formátu, což způsobí, že zvukových dat jsou považovány za nečinnosti.
 
 ## <a name="next-steps"></a>Další postup
 

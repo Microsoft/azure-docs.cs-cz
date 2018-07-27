@@ -1,21 +1,20 @@
 ---
-title: Pokyny určené k transkripci řeči | Dokumentace Microsoftu
+title: Pokyny pro určené k transkripci řeči školení
 description: Zjistěte, jak připravit text pro přizpůsobení akustických a jazykových modelů a hlasová písma pro službu rozpoznávání řeči.
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: PanosPeriorellis
-manager: noellelacharite
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
 ms.date: 07/01/2018
 ms.author: panosper
-ms.openlocfilehash: 6043d01e26d9f28f90e45c2cc194863b3a9cd017
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: a219db14d659348ef3ed4de1dffa640a948f1954
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39072278"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39283331"
 ---
 # <a name="transcription-guidelines-for-using-speech-service"></a>Přepis pokyny k používání Speech service
 

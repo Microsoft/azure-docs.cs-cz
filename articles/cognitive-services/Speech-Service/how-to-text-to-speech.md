@@ -1,27 +1,26 @@
 ---
-title: Použití textu na řeč pomocí hlasové služby | Dokumentace Microsoftu
+title: Použít převod textu na řeč pomocí hlasové služby
 description: Další informace o použití převod textu na řeč služby řeči.
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: v-jerkin
-manager: noellelacharite
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 84b577cd00d333717a7a5ad1f66182605429f9f1
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 21157af9ad6361234ffa9b927da64baab505f624
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213329"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39281510"
 ---
 # <a name="use-text-to-speech-in-speech-service"></a>Použití "Převod textu na řeč" v Speech service
 
 Speech service poskytuje funkce pro převod textu na řeč prostřednictvím jednoduché požadavku HTTP. Publikovat text, který se budou na příslušný koncový bod, a tato služba vrátí zvukový soubor (`.wav`) obsahující syntetizovat řeči. Aplikace může potom použít zvuková jako vlastní stavový objekt.
 
-Text příspěvku požadavku pro převod textu na řeč, může být prostý text (ASCII nebo UTF8) nebo [SSML](speech-synthesis-markup.md) dokumentu. Prostého textu žádosti se používá s hlasem výchozí. Ve většině případů budete chtít používat SSML text. Musí zahrnovat požadavek HTTP [autorizace](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-apis#authentication) token. 
+Text příspěvku požadavku pro převod textu na řeč, může být prostý text (ASCII nebo UTF8) nebo [SSML](speech-synthesis-markup.md) dokumentu. Prostého textu žádosti se používá s hlasem výchozí. Ve většině případů budete chtít používat SSML text. Musí zahrnovat požadavek HTTP [autorizace](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#authentication) token. 
 
 Koncové body regionální převod textu na řeč se tady zobrazí. Použijte mechanismem vhodným pro vaše předplatné.
 

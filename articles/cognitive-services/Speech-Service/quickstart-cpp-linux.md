@@ -1,21 +1,20 @@
 ---
-title: 'Rychlý start: Rozpoznávat řeč v jazyce C++ v Linuxu pomocí Cognitive Services SDK řeči | Dokumentace Microsoftu'
+title: 'Rychlý start: Rozpoznávat řeč v jazyce C++ v Linuxu pomocí Cognitive Services SDK řeči'
 titleSuffix: Microsoft Cognitive Services
 description: Zjistěte, jak rozpoznávat řeč v jazyce C++ v Linuxu pomocí Cognitive Services SDK řeči
 services: cognitive-services
 author: wolfma61
-manager: onano
 ms.service: cognitive-services
 ms.technology: Speech
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: wolfma
-ms.openlocfilehash: b5f5cdbe202b406c724a9f4f5787e566b432a66c
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: a9a5a6b3c3f4831844083d082ba5b65cd900ec02
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39116142"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39281605"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-linux-using-the-speech-sdk"></a>Rychlý start: Rozpoznávat řeč v jazyce C++ v Linuxu pomocí sadou SDK pro řeč
 

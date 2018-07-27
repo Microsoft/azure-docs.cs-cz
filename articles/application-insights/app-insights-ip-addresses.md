@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: d96fbac6ae09e8b6611ff615ba1f95fc1a084f89
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 306cb1fde67e877ccfd7c4d6dee093492e72d0a7
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205727"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39285312"
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>IP adresy používané službou Application Insights a Log Analytics
 [Azure Application Insights](app-insights-overview.md) služba používá počet IP adres. Můžete potřebovat znát tyto adresy, pokud je aplikace, kterou monitorujete hostována za bránou firewall.
@@ -28,12 +28,17 @@ ms.locfileid: "39205727"
 > 
 > 
 
+> [!TIP]
+> Přihlásit se k odběru této stránky jako RSS přidáním https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/application-insights/app-insights-ip-addresses.md.atom vaše oblíbené čtečku RSS/ATOM upozorňování nejnovější změny.
+> 
+> 
+
 ## <a name="outgoing-ports"></a>Odchozí porty
 Je třeba otevřít některé Odchozí porty v bráně firewall serveru povolit sadu Application Insights SDK a sledování stavu k odesílání dat do portálu:
 
 | Účel | zprostředkovatele identity | IP adresa | Porty |
 | --- | --- | --- | --- |
-| Telemetrická data |dc.services.visualstudio.com<br/>dc.applicationinsights.microsoft.com |40.114.241.141<br/>104.45.136.42<br/>40.84.189.107<br/>168.63.242.221<br/>52.167.221.184<br/>52.169.64.244 |443 |
+| Telemetrická data |dc.services.visualstudio.com<br/>dc.applicationinsights.microsoft.com |40.114.241.141<br/>104.45.136.42<br/>40.84.189.107<br/>168.63.242.221<br/>52.167.221.184<br/>52.169.64.244<br/>40.85.218.175<br/>104.211.92.54 | 443 |
 | Live Metrics Stream |rt.services.visualstudio.com<br/>rt.applicationinsights.microsoft.com |23.96.28.38<br/>13.92.40.198 |443 |
 
 ## <a name="status-monitor"></a>Monitorování stavu

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 06/16/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 1cc58832d5f863f5bbfa6fc20d38b4be81ddad8f
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: cfb09718c545d55b31250070fed0c8adff9d3fed
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39089957"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39263942"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: Automatický upgrade
 Tato funkce byla zavedena v systému sestavení [1.1.105.0 (všeobecně dostupné. února 2016)](active-directory-aadconnect-version-history.md#111050).  Tato funkce byla aktualizována v [sestavení 1.1.561](active-directory-aadconnect-version-history.md#115610) a teď podporuje další scénáře, které dříve nebyly podporovány.
@@ -95,8 +95,8 @@ Tady je seznam nejběžnějších zprávy, které najdete. Neobsahuje všechny, 
 | UpgradeNotSupportedInvalidPersistedState |Instalaci se nepovedlo Expresní nastavení nebo upgradu nástroje DirSync. |
 | UpgradeNotSupportedMetaverseSizeExceeeded |Máte více než 100 000 objektů v úložišti metaverse. |
 | UpgradeNotSupportedMultiForestSetup |Připojujete se k více než jednu doménovou strukturu. Expresní instalace pouze připojí k jedné doménové struktuře. |
-| UpgradeNotSupportedNonLocalDbInstall |Nepoužíváte databázi SQL Server Express LocalDB. |
-| UpgradeNotSupportedNonMsolAccount |[Účet AD konektoru](active-directory-aadconnect-accounts-permissions.md#active-directory-account) MSOL_ výchozího účtu už není. |
+| UpgradeNotSupportedNonLocalDbInstall |Nepoužíváte databázi SQL Server Express LocalDB. |d
+| UpgradeNotSupportedNonMsolAccount |[Účet AD DS konektoru](active-directory-aadconnect-accounts-permissions.md#ad-ds-connector-account) MSOL_ výchozího účtu už není. |
 | UpgradeNotSupportedNotConfiguredSignInMethod | Při nastavování AAD Connect, zvolíte *nekonfigurujte* při výběru metody přihlašování. | 
 | UpgradeNotSupportedPtaSignInMethod | Jako metodu přihlašování jste vybrali předávací ověřování. |
 | UpgradeNotSupportedStagingModeEnabled |Server je nastaven v [pracovním režimu](active-directory-aadconnectsync-operations.md#staging-mode). |

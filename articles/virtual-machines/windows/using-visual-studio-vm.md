@@ -15,12 +15,12 @@ ms.prod: vs-devops-alm
 ms.date: 03/02/2018
 ms.author: phillee
 keywords: visualstudio
-ms.openlocfilehash: ce587fcbc3bcbea129db1d3d9d0fb60cebdf8e0e
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 2c8cd5cb837787db7bd6cb0d76bdf734b7d7bc0f
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972362"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39285370"
 ---
 # <a name="visual-studio-images-on-azure"></a>Visual Studio Image v Azure
 Pomocí sady Visual Studio v předkonfigurovaném Azure virtuální počítač (VM) je rychlý a snadný způsob, jak přejít od ničeho nahoru a spuštění vývojové prostředí. Bitové kopie systému s různými konfiguracemi sady Visual Studio jsou k dispozici v [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?search=%22visual%20studio%202017%22&page=1).
@@ -33,7 +33,7 @@ Image pro aktuální hlavní verze, Visual Studio 2017 a Visual Studio 2015, naj
 | Prodejní verze                                              | Edice                     |     Verze produktu     |
 |:------------------------------------------------------------:|:----------------------------:|:-----------------------:|
 | Sady Visual Studio 2017: Nejnovější verzi (verze 15.7)                    |    Organizace, Community     |      Verze 15.7.5     |
-| Visual Studio 2017: Nejnovější verze Preview (verze 15.8 ve verzi Preview 4) |    Organizace, Community     |      Verze 15.8.4     |
+| Visual Studio 2017: Nejnovější verze Preview (verze 15.8 ve verzi Preview 5) |    Organizace, Community     |      Verze 15.8.5     |
 |         Visual Studio 2017: RTW                              |    Organizace, Community     |      Verze 15.0.15    |
 |   Sady Visual Studio 2015: Nejnovější verzi (aktualizace 3)                      |    Organizace, Community     |  Verze 14.0.25431.01  |
 |         Visual Studio 2015: RTW                              |             Žádný             | (Platnost pro obsluhu) |

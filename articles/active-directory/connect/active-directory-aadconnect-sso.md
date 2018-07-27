@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2018
+ms.date: 07/26/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 88869fbeef0475f2c674e0f154a3624545182363
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 41e75fcfd0b88d5c37bb8dd6fcc16b1767b34dba
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213227"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39285353"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory bezproblémové jednotné přihlašování
 
@@ -30,12 +30,12 @@ Azure Active Directory bezproblémové jednotné přihlašování (Azure AD bezp
 
 >[!VIDEO https://www.youtube.com/embed/PyeAC85Gm7w]
 
-Bezproblémové jednotné přihlašování je možné kombinovat s buď [synchronizaci hodnot Hash hesel](active-directory-aadconnectsync-implement-password-hash-synchronization.md) nebo [předávací ověřování](active-directory-aadconnect-pass-through-authentication.md) metod přihlašování.
+Bezproblémové jednotné přihlašování je možné kombinovat s buď [synchronizaci hodnot Hash hesel](active-directory-aadconnectsync-implement-password-hash-synchronization.md) nebo [předávací ověřování](active-directory-aadconnect-pass-through-authentication.md) metod přihlašování. Bezproblémové jednotné přihlašování je _není_ vztahuje k Active Directory Federation Services (ADFS).
 
 ![Bezproblémové jednotné přihlašování](./media/active-directory-aadconnect-sso/sso1.png)
 
 >[!IMPORTANT]
->Bezproblémové jednotné přihlašování je _není_ vztahuje k Active Directory Federation Services (ADFS).
+>Bezproblémové jednotné přihlašování potřebuje zařízení uživatele bude **připojených k doméně**, ale nemusí pro zařízení, které bude [připojeno k Azure AD](../active-directory-azureadjoin-overview.md).
 
 ## <a name="key-benefits"></a>Klíčové výhody
 
@@ -76,7 +76,9 @@ Bezproblémové jednotné přihlašování je možné kombinovat s buď [synchro
 ## <a name="next-steps"></a>Další postup
 
 - [**Rychlý Start** ](active-directory-aadconnect-sso-quick-start.md) – rychle zprovoznit a systémem Azure bezproblémového jednotného přihlašování AD.
+- [**Plán nasazení** ](https://aka.ms/AuthenticationDeploymentPlan) – podrobný postup nasazení plánu.
 - [**Podrobné technické informace** ](active-directory-aadconnect-sso-how-it-works.md) -pochopit, jak tato funkce funguje.
 - [**Nejčastější dotazy** ](active-directory-aadconnect-sso-faq.md) – odpovědi na nejčastější dotazy.
 - [**Řešení potíží s** ](active-directory-aadconnect-troubleshoot-sso.md) – zjistěte, jak vyřešit běžné problémy s funkcí.
 - [**UserVoice** ](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) – k podání žádostí o nové funkce.
+

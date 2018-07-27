@@ -1,5 +1,5 @@
 ---
-title: Návrh s vysokou dostupností služby využívající Azure SQL Database | Dokumentace Microsoftu
+title: Návrh globálně dostupné služby využívající Azure SQL Database | Dokumentace Microsoftu
 description: Další informace o návrhu aplikace služby s vysokou dostupností pomocí Azure SQL Database.
 keywords: cloudové zotavení po havárii, řešení pro zotavení po havárii, zálohování dat aplikace, geografickou replikaci, plánování obchodní kontinuity podnikových procesů
 services: sql-database
@@ -8,19 +8,19 @@ manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: conceptual
-ms.date: 07/16/2018
+ms.date: 07/26/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: f1c228802bd0a2e65321a3abe47b87845f5f86a0
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 88a6e1a66390b2b317e1e30a71455ad693e6d7df
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39092609"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39264650"
 ---
-# <a name="designing-highly-available-services-using-azure-sql-database"></a>Navrhování službami s vysokou dostupností s využitím Azure SQL Database
+# <a name="designing-globally-available-services-using-azure-sql-database"></a>Navrhování globálně dostupné služby využívající Azure SQL Database
 
-Při sestavování a nasazování služeb s vysokou dostupností v Azure SQL Database, můžete použít [převzetí služeb při selhání skupiny a aktivní geografickou replikaci](sql-database-geo-replication-overview.md) zajistit odolnost místních výpadků a katastrofických selhání. Umožňuje také rychlé obnovení do sekundární databáze. Tento článek se zaměřuje na běžné vzory aplikací a popisuje výhody a nevýhody jednotlivých možností. Informace o aktivní geografickou replikaci s Elastickými fondy najdete v tématu [strategie zotavení po havárii Elastických fondů](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).
+Při vytváření a nasazování cloudových služeb s Azure SQL Database, můžete použít [převzetí služeb při selhání skupiny a aktivní geografickou replikaci](sql-database-geo-replication-overview.md) zajistit odolnost místních výpadků a katastrofických selhání. Stejné funkce můžete vytvářet globálně distribuované aplikace optimalizované pro místní přístup k datům. Tento článek popisuje běžné vzory aplikací, včetně výhody a nevýhody jednotlivých možností. 
 
 > [!NOTE]
 > Pokud používáte Premium nebo pro důležité obchodní informace databáze a elastické fondy, můžete provádět je odolné regionální výpadky převedením na konfiguraci nasazení redundantního zóny. Zobrazit [zónově redundantní databáze](sql-database-high-availability.md).  

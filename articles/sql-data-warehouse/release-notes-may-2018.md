@@ -7,15 +7,15 @@ manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
-ms.date: 05/28/2018
+ms.date: 07/23/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: ddcb985c370baf224d451aa6c1ec9b796e0140de
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 81e3fd7183e97358b3d936045909ad5dc40612ff
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38561400"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39281986"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-may-2018"></a>Co je nového ve službě Azure SQL Data Warehouse? Květen 2018 
 Azure SQL Data Warehouse neustále obdrží vylepšení. Tento článek popisuje nové funkce a změny, které byly zavedeny v květnu 2018. 
@@ -127,3 +127,23 @@ The ORDER BY clause is invalid in views, CREATE TABLE AS SELECT, INSERT SELECT, 
 
 ## <a name="set-parseonly-on-query-status-behavior-change"></a>Nastavte PARSEONLY na stav dotazu (Změna chování)
 Použití `SET PARSEONLY ON` syntaxe umožňuje uživateli být modul SQL Data Warehouse, zkontrolujte syntaxi každého příkazu T-SQL a vrátí chybové zprávy bez kompilace a spuštění příkazu. Dříve, [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) systémové zobrazení stavu pro tyto příkazy by zůstala v `Running` stavu. `sys.dm_pdw_exec_requests` Zobrazení nyní vrátí stav jako `Complete`.
+
+## <a name="next-steps"></a>Další postup
+Teď, když už víte o něco o SQL Data Warehouse, zjistěte, jak rychle [vytvoření SQL Data Warehouse] [vytvoření SQL Data Warehouse] a [ukázková data načíst] [ukázková data načíst]. Pokud jste ještě do Azure, můžete zjistit [Glosář Azure] [Glosář Azure] užitečné jako narazíte na novou terminologii. Můžete se také podívat na některé z těchto dalších zdrojů ke službě SQL Data Warehouse.  
+
+* [Úspěšné zákaznické implementace]
+* [Blogy]
+* [Žádosti o funkce]
+* [Videa]
+* [Blogy zákaznického poradního týmu]
+* [Fórum Stack Overflow]
+* [Twitter]
+
+
+[Blogy]: https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/
+[Blogy zákaznického poradního týmu]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
+[Úspěšné zákaznické implementace]: https://azure.microsoft.com/case-studies/?service=sql-data-warehouse
+[Žádosti o funkce]: https://feedback.azure.com/forums/307516-sql-data-warehouse
+[Fórum Stack Overflow]: http://stackoverflow.com/questions/tagged/azure-sqldw
+[Twitter]: https://twitter.com/hashtag/SQLDW
+[Videa]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse

@@ -1,21 +1,20 @@
 ---
-title: O převod textu na řeč | Dokumentace Microsoftu
+title: O převod textu na řeč
 description: Přehled možností převod textu na řeč.
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: v-jerkin
-manager: noellelacharite
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: e3543c2056934372a2795bd50f340432ceec3b6d
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 0e07e76d2597ad73a9b7073732004f23fa090c97
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39257942"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39285414"
 ---
 # <a name="about-the-text-to-speech-api"></a>O převod textu na řeč rozhraní API
 

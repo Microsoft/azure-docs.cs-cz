@@ -4,9 +4,10 @@
   items:
     - name: Co je služba Event Hubs?
       href: event-hubs-about.md
-    - name: Porovnání služeb zasílání zpráv
-      href: ../event-grid/compare-messaging-services.md
-      maintainContext: true
+    - name: Event Hubs pro Apache Kafka
+      href: event-hubs-for-kafka-ecosystem-overview.md
+    - name: Event Hubs Capture
+      href: event-hubs-capture-overview.md
 - name: Šablony Rychlý start
   expanded: true
   items:
@@ -16,14 +17,31 @@
       href: event-hubs-quickstart-cli.md
     - name: Zpracování streamů událostí – Azure PowerShell
       href: event-hubs-quickstart-powershell.md
+    - name: Streamování do služby Event Hubs pro Apache Kafka
+      href: event-hubs-quickstart-kafka-enabled-event-hubs.md
 - name: Kurzy
   items:
     - name: Vizualizace datových anomálií v datových streamech Event Hubs
       href: event-hubs-tutorial-visualize-anomalies.md
+    - name: Streamování velkých objemů dat do datového skladu
+      href: ../event-grid/event-grid-event-hubs-integration.md
+      maintainContext: true
+    - name: Streamování dat do Azure Databricks pomocí služby Event Hubs
+      href: ../azure-databricks/databricks-stream-from-eventhubs.md
+    - name: Event Hubs pro Apache Kafka
+      items:
+        - name: Azure Kafka MirrorMaker s Event Hubs
+          href: event-hubs-kafka-mirror-maker-tutorial.md
+        - name: Apache Flink s Event Hubs
+          href: event-hubs-kafka-flink-tutorial.md
+        - name: Akka Streams s Event Hubs
+          href: event-hubs-kafka-akka-streams-tutorial.md
 - name: Ukázky
   href: event-hubs-samples.md
 - name: Koncepty
   items:
+    - name: Funkce Event Hubs
+      href: event-hubs-features.md
     - name: Přehled třídy Event Processor Host
       href: event-hubs-event-processor-host.md
     - name: Filtry připojení IP
@@ -35,8 +53,6 @@
     - name: Integrace se službou Event Grid
       href: ../event-grid/event-grid-event-hubs-integration.md
       maintainContext: true
-    - name: Funkce Event Hubs
-      href: event-hubs-features.md
     - name: Identita spravované služby (Preview)
       href: event-hubs-managed-service-identity.md
     - name: Řízení přístupu na základě rolí (Preview)
@@ -64,20 +80,10 @@
       href: event-hubs-dotnet-framework-getstarted-send.md
     - name: Příjem událostí pomocí rozhraní .NET Framework
       href: event-hubs-dotnet-framework-getstarted-receive-eph.md
-    - name: Event Hubs pro Kafka
+    - name: Event Hubs pro Apache Kafka
       items:
-        - name: Přehled Event Hubs pro ekosystémy Kafka
-          href: event-hubs-for-kafka-ecosystem-overview.md
-        - name: Vytvoření Event Hubs s podporou Kafka
+        - name: Vytvoření Event Hubs s podporou Apache Kafka
           href: event-hubs-create-kafka-enabled.md
-        - name: Streamování do služby Event Hubs pro ekosystém Kafka
-          href: event-hubs-quickstart-kafka-enabled-event-hubs.md
-        - name: Kurz Kafka MirrorMaker s Event Hubs
-          href: event-hubs-kafka-mirror-maker-tutorial.md
-        - name: Kurz Apache Flink s Event Hubs
-          href: event-hubs-kafka-flink-tutorial.md
-        - name: Kurz Akka Streams s Event Hubs
-          href: event-hubs-kafka-akka-streams-tutorial.md
     - name: Dostupná rozhraní API
       href: event-hubs-api-overview.md
       items:
@@ -113,12 +119,8 @@
           href: event-hubs-metrics-azure-monitor.md
         - name: Knihovny pro správu Event Hubs
           href: event-hubs-management-libraries.md
-        - name: Zachycování
-          items:
-            - name: Event Hubs Capture
-              href: event-hubs-capture-overview.md
-            - name: Zachytávání dat Event Hubs pomocí Pythonu
-              href: event-hubs-capture-python.md
+        - name: Zachytávání dat Event Hubs pomocí Pythonu
+          href: event-hubs-capture-python.md
         - name: Streamování dat Diagnostiky Azure pomocí Event Hubs
           href: event-hubs-streaming-azure-diags-data.md
         - name: Vytvoření a nasazení centra událostí pomocí šablony Resource Manageru

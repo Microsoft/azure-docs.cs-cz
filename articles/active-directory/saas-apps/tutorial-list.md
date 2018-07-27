@@ -16,12 +16,12 @@ ms.date: 07/09/2018
 ms.author: markvi
 ms.custom: it-pro
 ms.reviewer: jeedes
-ms.openlocfilehash: f1d85b031abda73c6ca41d6d2551db9d9cd36f1f
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: ac338283bfe123e70697b0301fdccca886653c42
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39092150"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39285295"
 ---
 # <a name="saas-application-integration-with-azure-active-directory"></a>Integrace aplikací SaaS pomocí Azure Active Directory
 
@@ -330,7 +330,7 @@ Kde máme zřizování pokyny pro uživatele, uvádíme kurz vývoje aplikace pr
 | ![Logo](./media/tutorial-list/active-directory-saas-lifesize-cloud-tutorial.png)| [Lifesize cloudu](lifesize-cloud-tutorial.md)|
 | ![Logo](./media/tutorial-list/active-directory-saas-worksmobile-tutorial.png)| [ŘÁDEK FUNGUJE](worksmobile-tutorial.md)|
 | ![Logo](./media/tutorial-list/active-directory-saas-linkedinelevate-tutorial.png)| [Zvýšit oprávnění LinkedIn](linkedinelevate-tutorial.md)|[LinkedIn zvýšení oprávnění – uživatele zřizování](linkedinelevate-provisioning-tutorial.md)|
-| ![Logo](./media/tutorial-list/active-directory-saas-linkedinlearning-tutorial.png)| [LinkedIn Learning](linkedinlearning-tutorial.md)|[LinkedIn Learning - zřizování uživatelů](linkedinlearning-provisioning-tutorial.md)|
+| ![Logo](./media/tutorial-list/active-directory-saas-linkedinlearning-tutorial.png)| [LinkedIn Learning](linkedinlearning-tutorial.md)|
 | ![Logo](./media/tutorial-list/active-directory-saas-linkedinsalesnavigator-tutorial.png)| [LinkedIn Sales Navigatoru](linkedinsalesnavigator-tutorial.md)|  [LinkedIn Sales Navigatoru - zřizování uživatelů](linkedinsalesnavigator-provisioning-tutorial.md)| 
 | ![Logo](./media/tutorial-list/active-directory-saas-liquidfiles-tutorial.png)| [LiquidFiles](liquidfiles-tutorial.md)|
 | ![Logo](./media/tutorial-list/active-directory-saas-litmos-tutorial.png)| [Litmos](litmos-tutorial.md)|

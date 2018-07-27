@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: v-daljep
 ms.reviewer: carlrab
-ms.openlocfilehash: c7a5031fab10f44809f9533e43c3596d46dc77e3
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: fbeda6a74be11668f16d477696ea00653b73baa6
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346021"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39284822"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database metrik a protokolování diagnostiky 
 Azure SQL Database můžete generovat metriky a diagnostické protokoly pro snazší monitorování. SQL Database můžete nakonfigurovat pro ukládání využití prostředků, pracovních procesů, relací a možností připojení do jednoho z těchto prostředků Azure:
@@ -31,7 +31,7 @@ Azure SQL Database můžete generovat metriky a diagnostické protokoly pro snaz
 
 Ve výchozím nastavení není povoleno protokolování Diagnostika a metriky. Můžete povolit a spravovat metrik a diagnostických nástrojů protokolování pomocí jedné z následujících metod:
 
-- Azure Portal
+- portál Azure
 - PowerShell
 - Azure CLI
 - Rozhraní REST API služby Azure Monitor 
@@ -62,7 +62,7 @@ Zjistěte, jak povolit protokolování a pochopit kategorie metrik a protokolů,
 * [Přehled metrik v Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
 * [Přehled protokoly diagnostiky Azure](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) 
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>portál Azure
 
 1. Chcete-li povolit Diagnostika a metriky shromažďování protokolů na portálu, přejděte k vaší databázi nebo elastický fond stránky a vyberte **nastavení diagnostiky**.
 
@@ -204,7 +204,7 @@ Nejjednodušší způsob, jak nakonfigurovat, kdy databáze zaznamenávat jejich
 
 SQL Analytics je hierarchická řídicí panel, který vám umožní přesunout prostřednictvím hierarchie prostředků SQL Database. Další informace o použití řešení SQL Analytics, najdete v článku [monitorování SQL Database s použitím řešení SQL Analytics](../log-analytics/log-analytics-azure-sql.md).
 
-## <a name="stream-into-event-hubs"></a>Stream do služby Event Hubs
+## <a name="stream-into-event-hubs"></a>Streamování do služby Event Hubs
 
 Metriky a diagnostické protokoly SQL Database můžete Streamovat do služby Event Hubs pomocí integrované **Stream do centra událostí** možnosti na portálu. ID pravidla služby Service Bus můžete povolit také pomocí nastavení diagnostiky prostřednictvím rutin Powershellu, rozhraní příkazového řádku Azure nebo REST API služby Azure Monitor. 
 
@@ -460,6 +460,27 @@ Další informace o [databáze statistiky čekání](https://docs.microsoft.com/
 |resource_owner_type_s|Vlastník zámku.|
 |blocked_process_filtered_s|Zablokuje sestava procesu XML.|
 |duration_d|Doba trvání uzamčení v mikrosekundách.|
+
+### <a name="deadlocks-dataset"></a>Zablokování datové sady
+
+|Vlastnost|Popis|
+|---|---|
+|ID Tenanta|ID vašeho tenanta.|
+|SourceSystem|Vždy: Azure|
+|TimeGenerated [UTC] |Časové razítko, kdy se přihlášení v protokolu.|
+|Typ|Vždy: AzureDiagnostics|
+|ResourceProvider|Název poskytovatele prostředků. Vždy: MICROSOFT. SQL|
+|Kategorie|Název kategorie. Vždy: zablokování|
+|OperationName|Název operace Vždy: DeadlockEvent|
+|Prostředek|Název prostředku.|
+|ResourceType|Název typu prostředku. Vždy: Servery a databáze|
+|SubscriptionId|GUID, které databáze patří do předplatného.|
+|ResourceGroup|Název skupiny prostředků, které databáze patří.|
+|LogicalServerName_s|Název serveru, který patří do databáze.|
+|ElasticPoolName_s|Název elastického fondu, které patří do databáze, pokud existuje.|
+|DatabaseName_s|Název databáze. |
+|ID prostředku|Identifikátor URI prostředku.|
+|deadlock_xml_s|Vzájemné zablokování sestavy jazyka XML.|
 
 ### <a name="intelligent-insights-dataset"></a>Intelligent Insights datové sady
 Další informace o [formát protokolu Intelligent Insights](sql-database-intelligent-insights-use-diagnostics-log.md).

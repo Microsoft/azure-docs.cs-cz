@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 07/18/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: d30006fae8a0d495909b9a53cf0bffb5cc824433
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 793a65347552782c4a3482b29d10e4c94ef85663
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38295392"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39263227"
 ---
 # <a name="troubleshoot-connectivity-issues-with-azure-ad-connect"></a>Řešení potíží s připojením u služby Azure AD Connect
 Tento článek vysvětluje, jak funguje připojení mezi Azure AD Connect a službou Azure AD a jak řešit problémy s připojením. Tyto problémy jsou pravděpodobně se zobrazí v prostředí s proxy serverem.
@@ -52,7 +52,7 @@ Z těchto adres URL v následující tabulce je absolutní minimum, bude moct p�
 | \*.microsoftonline.com |HTTPS/443 |Slouží ke konfiguraci adresáře služby Azure AD a import/export dat. |
 
 ## <a name="errors-in-the-wizard"></a>Chyby v Průvodci
-Průvodce instalací je pomocí dvou různých kontextech zabezpečení. Na stránce **připojit ke službě Azure AD**, používá aktuálně přihlášeného uživatele. Na stránce **konfigurovat**, se mění na [účet, který spouští službu pro synchronizační modul](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-account). Pokud dochází k nějakému problému, zobrazí se pravděpodobně již **připojit ke službě Azure AD** stránku průvodce, protože je globální konfiguraci proxy serveru.
+Průvodce instalací je pomocí dvou různých kontextech zabezpečení. Na stránce **připojit ke službě Azure AD**, používá aktuálně přihlášeného uživatele. Na stránce **konfigurovat**, se mění na [účet, který spouští službu pro synchronizační modul](active-directory-aadconnect-accounts-permissions.md#adsync-service-account). Pokud dochází k nějakému problému, zobrazí se pravděpodobně již **připojit ke službě Azure AD** stránku průvodce, protože je globální konfiguraci proxy serveru.
 
 Následující problémy se nejběžnějších chyb, se kterými v Průvodci instalací.
 
@@ -161,28 +161,28 @@ Problémy s konfigurací sítě nebo proxy serveru. V síti je nedostupné. Zobr
 ### <a name="user-password-expired"></a>Vypršela platnost hesla uživatele
 Vypršela platnost vašich přihlašovacích údajů. Změňte si heslo.
 
-### <a name="authorizationfailure"></a>AuthorizationFailure
-Neznámý problém.
+### <a name="authorization-failure"></a>Selhání autorizace
+Nepovedlo se autorizovat uživatele k provedení akce ve službě Azure AD.
 
 ### <a name="authentication-cancelled"></a>Ověřování zrušeno
 Výzva ověřování službou Multi-Factor Authentication (MFA) byla zrušena.
 
-### <a name="connecttomsonline"></a>ConnectToMSOnline
+### <a name="connect-to-ms-online-failed"></a>Připojte se k MS Online se nezdařilo
 Ověření bylo úspěšné, ale má problém s ověřováním Azure AD PowerShell.
 
-### <a name="azurerolemissing"></a>AzureRoleMissing
-Ověření bylo úspěšné. Nejste globálním správcem.
+### <a name="azure-ad-global-admin-role-needed"></a>Azure AD roli globálního správce potřeby
+Uživatel byl úspěšně ověřen. Uživatel však není přiřazenou roli globálního správce. Toto je [jak můžete přiřadit roli globálního správce](../users-groups-roles/directory-assign-admin-roles.md) uživateli. 
 
-### <a name="privilegedidentitymanagement"></a>PrivilegedIdentityManagement
+### <a name="privileged-identity-management-enabled"></a>Privileged Identity Management povoleno
 Ověření bylo úspěšné. Privileged identity management. je povolen a momentálně nejste globální správce. Další informace najdete v tématu [Privileged Identity Management](../privileged-identity-management/pim-getting-started.md).
 
-### <a name="companyinfounavailable"></a>CompanyInfoUnavailable
+### <a name="company-information-unavailable"></a>Není k dispozici informace o společnosti
 Ověření bylo úspěšné. Nelze načíst informace o společnosti ze služby Azure AD.
 
-### <a name="retrievedomains"></a>RetrieveDomains
+### <a name="domain-information-unavailable"></a>Není k dispozici informace o doméně
 Ověření bylo úspěšné. Nelze načíst informace o doméně z Azure AD.
 
-### <a name="unexpected-exception"></a>Neočekávaná výjimka
+### <a name="unspecified-authentication-failure"></a>Neurčené ověřování se nezdařilo
 Zobrazuje se jako Neočekávaná chyba v Průvodci instalací. Může dojít, pokud se pokusíte použít **Account Microsoft** spíše než **školní nebo organizaci účet**.
 
 ## <a name="troubleshooting-steps-for-previous-releases"></a>Řešení potíží s kroky pro dřívější verze.

@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/31/2018
+ms.date: 07/26/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: e808d4bf116dcab344308c3dd2aa06c72e0318ba
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 1b14e1460eec54e89046f204be8f0c3a8f929881
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39049513"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39264588"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historie vydaných verzí
 Tým služby Azure Active Directory (Azure AD) pravidelně aktualizuje s novými funkcemi a funkce služby Azure AD Connect. Ne všechny položky se vztahují na všechny cílové skupiny.
@@ -36,6 +36,44 @@ Kroky pro upgrade z Azure AD Connect | Různé způsoby [upgrade z předchozí v
 Požadovaná oprávnění | Oprávnění potřebná k aktualizaci použít, najdete v části [účtech a oprávněních](./active-directory-aadconnect-accounts-permissions.md#upgrade).
 
 Stáhnout | [Stažení služby Azure AD Connect](http://go.microsoft.com/fwlink/?LinkId=615771).
+
+## <a name="118800"></a>1.1.880.0
+
+### <a name="release-status"></a>Stav verze
+
+7/20/2018: vydané pro automatický upgrade. Verze ke stažení bude následovat za chvíli.
+
+### <a name="new-features-and-improvements"></a>Nové funkce a vylepšení
+
+- Příkaz Ping Federovat integrace ve službě Azure AD Connect je nyní k dispozici pro obecnou dostupnost. [Další informace o tom, jak federované službě Azure AD pomocí příkazu Ping Federovat](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-user-signin#federation-with-pingfederate)
+- Zálohování vztah důvěryhodnosti Azure AD ve službě AD FS vytvoří Azure AD Connect nyní pokaždé, když se aktualizace se provádí a uloží jej do samostatného souboru pro snadné obnovení v případě potřeby. [Přečtěte si další informace o nové funkce a služby Azure AD vztah důvěryhodnosti správy ve službě Azure AD Connect ](https://aka.ms/fedtrustinaadconnect).
+- Nové nástroje pro řešení problémů s pomáhá řešit Změna primární e-mailovou adresu a skrytí účet z globálního adresáře
+- Azure AD Connect bylo aktualizováno, aby zahrnovalo nejnovější SQL Server 2012 Native Client
+- Po přepnutí přihlašování uživatele synchronizace hodnot Hash hesel nebo předávací ověřování v úloze "Změna uživatele přihlášení", je ve výchozím nastavení povolena na zaškrtávací políčko bezproblémové jednotné přihlašování.
+- Přidání podpory pro Windows Server Essentials 2019
+- Agent Azure AD Connect Health se aktualizoval na nejnovější verzi 3.1.7.0
+- Během upgradu Pokud instalační program zjistí změny výchozí pravidla pro synchronizaci, správce se zobrazí výzva s upozorněním před přepsáním upravené pravidla. To vám umožní uživateli provést opravné akce a pokračovat později. Staré chování: Pokud se všechny změněné out-of-box pravidlo pak ruční upgrade byl přepsání pravidla bez ztráty všechna upozornění pro uživatele a Plánovač synchronizace byla zakázána, aniž byste museli informovat uživatele. Nové chování: Uživateli zobrazí výzva s upozorněním před přepsáním upravené out-of-box synchronizační pravidla. Uživatel bude mít možnost se zastavit proces upgradu a pokračovat později po opravné akce.
+- Poskytuje lepší zpracování problém dodržování předpisů podle standardu FIPS, poskytování chybovou zprávu pro generování hodnot hash MD5 v prostředí vyhovující standardu FIPS a odkaz na dokumentaci, která poskytuje pro tento problém vyřešit.
+- Aktualizace uživatelského rozhraní pro zvýšení federace úlohy v průvodci, které jsou teď v samostatné dílčí skupinu pro federaci. 
+- Všechny úkoly další federační jsou nyní seskupené pod jeden dílčí nabídky pro snadné použití.
+- Nový přepracované ADSyncConfig Posh modulu (AdSyncConfig.psm1) pomocí nové funkce AD oprávnění přesunout z původní ADSyncPrep.psm1 (která může být zastaralé za chvíli)
+
+### <a name="fixed-issues"></a>Opravené problémy 
+
+- Oprava chyby, který vyprodukuje přerušovaně chybovou zprávu pro automaticky vyřešit problém zablokování SQL
+- Opravili jsme několik problémů usnadnění pro Editor pravidel synchronizace a synchronizace Service Manager  
+- Oprava chyby, kde Azure AD Connect nemůže získat informace o nastavení registru
+- Je opravená chyba, která vytvoří problémy, když uživatel přejde za přechod dopředu nebo zpět v Průvodci
+- Je opravená chyba, aby se zabránilo chybu z důvodu nesprávné více vláken zpracování v Průvodci
+- Při filtrování skupin synchronizace stránky zaznamená chybu LDAP při překladu skupiny zabezpečení, Azure AD Connect nyní vrátí výjimka s plnou věrností.  Původní příčinu výjimka odkazu je stále neznámý a bude ji adresovat podle různých chyb.
+-  Je opravená chyba, kdy oprávnění pro klíče STK a NGC (atribut msDS-KeyCredentialLink na objekty uživatele nebo zařízení pro WHfB) nebyly nastaveny správně.     
+- Oprava chyby, kde 'Set-ADSyncRestrictedPermissions' nebyla volána správně
+-  Přidání podpory pro oprávnění udělení na zpětný zápis skupin v Průvodci instalací AADConnect.
+- Při změně přihlášení metoda z synchronizace hodnot Hash hesel do služby AD FS, synchronizace hodnot Hash hesel nezakázal.
+- Přidání ověřování pro adresy IPv6 v konfiguraci služby AD FS
+- Aktualizovat upozornění informovat, že existuje stávající konfigurace.
+- Zpětný zápis zařízení se nepodaří zjistit kontejneru v nedůvěryhodné doménové struktuře. To byl aktualizován zajištění lepší chybové zprávy a odkaz na příslušnou dokumentaci
+- Zrušením výběru organizační jednotky a pak odpovídající, OU poskytuje synchronizace Obecná chyba synchronizace/zpětný zápis. To se změnil na vytvoření pomohou lépe porozumět chybové zprávy.
 
 ## <a name="118190"></a>1.1.819.0
 

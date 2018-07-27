@@ -16,7 +16,7 @@
 #### [Virtual Machines](./marketplace-virtual-machines.md)
 #### [Aplikace Azure: šablony řešení](./marketplace-solution-templates.md)
 #### [Aplikace Azure: Managed Applications](./marketplace-managed-apps.md)
-#### [Průvodce publikováním aplikací SaaS](./marketplace-saas-applications-technical-publishing-guide.md) 
+#### [Aplikace SaaS](./marketplace-saas-applications-technical-publishing-guide.md) 
 #### [Containers](./marketplace-containers.md)
 #### [Konzultační služba](./consulting-services.md)  
 #### [Aplikace AppSource](./appsource-offer-publishing-guide.md)

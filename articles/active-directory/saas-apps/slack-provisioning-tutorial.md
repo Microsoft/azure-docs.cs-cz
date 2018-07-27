@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Konfigurace Slack pro zřizování automatické uživatelů s Azure Active Directory | Microsoft Docs'
-description: Informace o konfiguraci Azure Active Directory automaticky zřizovat a deaktivace zřízení uživatelským účtům k systému Slack.
+title: 'Kurz: Konfigurace Slack pro automatické zřizování uživatelů pomocí Azure Active Directory | Dokumentace Microsoftu'
+description: Zjistěte, jak nakonfigurovat služby Azure Active Directory tak, aby automaticky zřizovat a rušit přístup uživatelských účtů na Slack.
 services: active-directory
 documentationcenter: ''
 author: asmalser-msft
@@ -16,105 +16,105 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
 ms.reviewer: asmalser
-ms.openlocfilehash: 2fef141cada8faffc055571516ae4c899ae6dc42
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 9763c7a9e79f4c9e9d6296efb79e944205e8a99c
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36229440"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39264143"
 ---
-# <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>Kurz: Konfigurace Slack pro zřizování automatické uživatelů
+# <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>Kurz: Konfigurace Slack pro automatické zřizování uživatelů
 
 
-Cílem tohoto kurzu je tak, aby zobrazovalo kroky je potřeba provést v systému Slack a Azure AD automaticky zřizovat a deaktivace zřízení uživatelských účtů ze služby Azure AD k systému Slack. 
+Cílem tohoto kurzu je zobrazit kroky je třeba provést v Slack a Azure AD, aby automaticky zřizovat a rušit přístup uživatelských účtů ze služby Azure AD na Slack. 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Scénář uvedených v tomto kurzu se předpokládá, že už máte následující položky:
+Scénář popsaný v tomto kurzu se předpokládá, že máte následující položky:
 
-*   Klienta služby Azure Active Active directory
-*   Systému Slack klienta s [Plus plán](https://aadsyncfabric.slack.com/pricing) nebo lépe povolena. 
-*   Uživatelský účet v systému Slack s oprávněními správce Team 
+*   Klient služby Azure Active Directory
+*   Slack klienta s [Plus plán](https://aadsyncfabric.slack.com/pricing) nebo lépe povoleno 
+*   Uživatelský účet v Slack s oprávněními správce týmu 
 
-Poznámka: Zřizování integrace Azure AD spoléhá na [Slack SCIM API](https://api.slack.com/scim) která je k dispozici do Slack týmů na Plus plánu nebo vyšší.
+Poznámka: Zřizování integrace Azure AD spoléhá na [Slack SCIM API](https://api.slack.com/scim) který je dostupný pro Slack týmy na symbol Plus plán nebo vyšší.
 
-## <a name="assigning-users-to-slack"></a>Přiřazení uživatele k systému Slack
+## <a name="assigning-users-to-slack"></a>Přiřazování uživatelů k Slack
 
-Azure Active Directory používá koncept označované jako "úlohy" k určení uživatelů, kteří obdrželi přístup k vybrané aplikace. V kontextu uživatele automatické zřizování účtu se budou synchronizovat pouze uživatelé a skupiny, které byly "přiřazeny" aplikace ve službě Azure AD. 
+Azure Active Directory používá koncept nazvaný "přiřazení" k určení, kteří uživatelé měli obdržet přístup k vybrané aplikace. V rámci zřizování automatické uživatelských účtů se budou synchronizovat jenom uživatelé a skupiny, které se "přiřadily" aplikace ve službě Azure AD. 
 
-Před konfigurací a povolení zřizování služby, musíte se rozhodnout, jaké uživatelů nebo skupin ve službě Azure AD představují uživatele, kteří potřebují přístup k vaší aplikaci Slack. Jakmile se rozhodli, můžete přiřadit těmto uživatelům aplikace Slack podle pokynů tady:
+Před konfigurací a povolení služby zřizování, je potřeba rozhodnout, jaké uživatele a/nebo skupiny ve službě Azure AD představují uživatele, kteří potřebují přístup k aplikaci Slack. Jakmile se rozhodli, můžete přiřadit tito uživatelé aplikaci Slack podle zde uvedených pokynů:
 
-[Přiřazení uživatele nebo skupiny do aplikace enterprise](../manage-apps/assign-user-or-group-access-portal.md)
+[Přiřadit uživatele nebo skupiny k podnikové aplikace](../manage-apps/assign-user-or-group-access-portal.md)
 
-### <a name="important-tips-for-assigning-users-to-slack"></a>Důležité tipy pro přiřazení uživatele k systému Slack
+### <a name="important-tips-for-assigning-users-to-slack"></a>Důležité tipy pro přiřazování uživatelů k Slack
 
-*   Dále je doporučeno jednoho uživatele Azure AD pro testování zřizování konfigurace přidělí k systému Slack. Další uživatele nebo skupiny může být přiřazen později.
+*   Dále je doporučeno jednoho uživatele Azure AD pro Slack přidělí k otestování konfigurace zřizování. Další uživatele a/nebo skupiny může být přiřazen později.
 
-*   Při přiřazení uživatele k systému Slack, je nutné vybrat **uživatele** nebo role "Skupina" v dialogovém okně přiřazení. Roli "Výchozí přístup" nefunguje pro zřizování.
-
-
-## <a name="configuring-user-provisioning-to-slack"></a>Konfiguraci zřizování uživatelů k systému Slack 
-
-Tato část vás provede připojení k systému Slack na uživatelský účet zřizování rozhraní API služby Azure AD a konfiguraci zřizování služby vytvářet, aktualizovat a zakázat přiřadit uživatelské účty v systému Slack na základě uživatele a přiřazení skupiny ve službě Azure AD.
-
-**Tip:** můžete také povolit na základě SAML jednotné přihlašování pro Slack, postupujte podle pokynů uvedených v (portál Azure) [https://portal.azure.com]. Jednotné přihlašování se dá nakonfigurovat nezávisle na automatické zřizování, i když tyto dvě funkce doplnění navzájem.
+*   Při přiřazení uživatele k Slack, je nutné vybrat **uživatele** nebo role "Skupina" v dialogovém okně přiřazení. Tuto roli "Výchozí přístupu" nefunguje pro zřizování.
 
 
-### <a name="to-configure-automatic-user-account-provisioning-to-slack-in-azure-ad"></a>Konfigurace automatického účet zřizování uživatelů k systému Slack ve službě Azure AD:
+## <a name="configuring-user-provisioning-to-slack"></a>Konfigurace zřizování uživatelů pro Slack 
+
+Tato část vás provede připojením služby Azure AD na Slack pro uživatelský účet rozhraní API zřizování a konfigurace služby zřizování vytvářet, aktualizovat a vypnout přiřadit uživatelské účty v Slack na základě uživatele a přiřazení skupiny ve službě Azure AD.
+
+**Tip:** můžete také povolit založené na SAML jednotného přihlašování pro Slack, postupujte podle pokynů v (portál Azure portal) [https://portal.azure.com]. Jednotné přihlašování se dá nakonfigurovat nezávisle na automatické zřizování, i když tyto dvě funkce návrzích mezi sebou.
 
 
-1)  V [portál Azure](https://portal.azure.com), vyhledejte **Azure Active Directory > podnikové aplikace > všechny aplikace** části.
+### <a name="to-configure-automatic-user-account-provisioning-to-slack-in-azure-ad"></a>Postup konfigurace automatického zřizování uživatelských účtů na Slack ve službě Azure AD:
 
-2) Pokud jste již nakonfigurovali Slack pro jednotné přihlašování, vyhledejte instanci Slack pomocí pole hledání. Jinak vyberte možnost **přidat** a vyhledejte **Slack** v galerii aplikací. Vyberte Slack ve výsledcích hledání a přidejte ji do seznamu aplikací.
 
-3)  Vyberte instanci systému Slack a pak vyberte **zřizování** kartě.
+1)  V [webu Azure portal](https://portal.azure.com), přejděte **Azure Active Directory > podnikové aplikace > všechny aplikace** části.
 
-4)  Nastavte **režimu zřizování** k **automatické**.
+2) Pokud jste už nakonfigurovali Slack pro jednotné přihlašování, vyhledejte svoji instanci služby Slack, pomocí vyhledávacího pole. V opačném případě vyberte **přidat** a vyhledejte **Slack** v galerii aplikací. Ve výsledcích hledání vyberte Slack a přidat do seznamu aplikací.
+
+3)  Vyberte instanci Slack a potom **zřizování** kartu.
+
+4)  Nastavte **režim zřizování** k **automatické**.
 
 ![Slack zřizování](./media/slack-provisioning-tutorial/Slack1.PNG)
 
-5)  V části **přihlašovací údaje správce** klikněte na tlačítko **Authorize**. Otevře se dialogové okno Slack autorizace v nové okno prohlížeče. 
+5)  V části **přihlašovacích údajů správce** klikněte na tlačítko **Authorize**. Otevře se dialogové okno Slack autorizace v novém okně prohlížeče. 
 
-6) V novém okně se přihlaste pomocí účtu správce Team Slack. v dialogovém okně výsledné autorizace, vyberte Slack tým, který chcete povolit zajišťování pro a pak vyberte **Authorize**. Po dokončení se vraťte k portálu Azure k dokončení konfigurace zřizování.
+6) V novém okně se přihlaste pomocí účtu správce týmu Slack. v dialogovém okně výsledný autorizace, vyberte Slack, který chcete povolit zajišťování pro tým a pak vyberte **Authorize**. Po dokončení vrátí k webu Azure portal k dokončení konfigurace zřizování.
 
 ![Dialogové okno autorizace](./media/slack-provisioning-tutorial/Slack3.PNG)
 
-7) Na portálu Azure klikněte na tlačítko **Test připojení** zajistit Azure AD může připojit k aplikaci Slack. Pokud se nepovede připojit, zajistěte, aby byl že váš Slack účet má oprávnění správce týmu a opakujte krok "Ověřit".
+7) Na webu Azure Portal, klikněte na tlačítko **Test připojení** aby Azure AD můžete připojit k aplikaci Slack. Pokud se nepovede, ujistěte se, že váš účet Slack má oprávnění správce týmu a opakujte krok "Ověřit".
 
-8) Zadejte e-mailovou adresu uživatele nebo skupiny, který by měly dostávat oznámení zřizování Chyba v **e-mailové oznámení** pole a zaškrtněte políčko níže.
+8) Zadejte e-mailovou adresu osoby nebo skupiny, která má obdržet oznámení zřizování chyby v **e-mailové oznámení** pole a zaškrtněte políčko níže.
 
 9) Klikněte na **Uložit**. 
 
-10) V části mapování vyberte **synchronizaci Azure Active Directory Users k systému Slack**.
+10) V oddílu mapování, vyberte **synchronizace Azure Active Directory uživatelům Slack**.
 
-11) V **mapování atributů** , projděte si uživatelské atributy, které se mají synchronizovat ze služby Azure AD k systému Slack. Všimněte si, že atributy vybrán jako **párování** vlastnosti se použije tak, aby odpovídaly uživatelské účty v systému Slack pro operace aktualizace. Kliknutím na tlačítko Uložit potvrzení změny.
+11) V **mapování atributů** , projděte si atributy uživatele, které se budou synchronizovat ze služby Azure AD na Slack. Všimněte si, že vybrané atributy jako **odpovídající** použije vlastnosti tak, aby odpovídaly uživatelské účty v Slack pro operace update. Vyberte tlačítko Uložit potvrďte změny.
 
-12) Povolit zřizování služby pro Slack Azure AD, změňte **Stav zřizování** k **na** v **nastavení** části
+12) Služba pro Slack zřizování Azure AD povolit, změňte **stavu zřizování** k **na** v **nastavení** oddílu
 
 13) Klikněte na **Uložit**. 
 
-Tato akce spustí počáteční synchronizaci všech uživatelů a skupiny přiřazené k systému Slack v části Uživatelé a skupiny. Všimněte si, že počáteční synchronizace bude trvat déle než následné synchronizace, ke kterým dochází přibližně každých 10 minut, dokud je služba spuštěná. Můžete použít **podrobnosti synchronizace** části monitorovat průběh a odkazech zřízení sestavy aktivity, které popisují všechny akce, které provádí službu zřizování na Slack aplikace.
+Tím se spustí počáteční synchronizaci všech uživatelů a skupiny přiřazené k Slack v části Uživatelé a skupiny. Všimněte si, že počáteční synchronizace bude trvat déle než následné synchronizace, ke kterým dochází přibližně každých 10 minut za předpokladu, že služba běží. Můžete použít **podrobnosti synchronizace** části ke sledování průběhu a odkazech na zřizování sestavy aktivit, které popisují všechny akce provedené v aplikaci Slack zřizovací služba.
 
-## <a name="optional-configuring-group-object-provisioning-to-slack"></a>[Nepovinné] Konfigurace skupiny objekt zřizování k systému Slack 
+## <a name="optional-configuring-group-object-provisioning-to-slack"></a>[Volitelné] Konfigurace skupiny objekt zřizování na Slack 
 
-Volitelně můžete povolit zajišťování objektů skupiny z Azure AD k systému Slack. To se liší od "přiřazení skupiny uživatelů", v této skupině skutečné objektu kromě svých členů bude replikován z Azure AD k systému Slack. Například pokud máte skupinu s názvem "Moje skupina" ve službě Azure AD, bude vytvořen identitical skupinu s názvem "Moje skupina" uvnitř Slack.
+Volitelně můžete povolit zajišťování skupiny objektů ze služby Azure AD na Slack. To se liší od "přiřazení skupiny uživatelů", v této skupině skutečný objekt kromě jejích členů bude replikovat ze služby Azure AD na Slack. Například pokud máte skupinu s názvem "Moje skupina" ve službě Azure AD, bude vytvořen identitical skupinu s názvem "Moje skupina" uvnitř Slack.
 
-### <a name="to-enable-provisioning-of-group-objects"></a>Chcete-li povolit zřizování objektů skupiny:
+### <a name="to-enable-provisioning-of-group-objects"></a>Pokud chcete povolit zřizování objektů skupiny:
 
-1) V části mapování vyberte **synchronizaci skupinám Azure Active Directory k systému Slack**.
+1) V oddílu mapování, vyberte **synchronizaci skupinám Azure Active Directory pro Slack**.
 
-2) V okně mapování atributů nastavenou na Ano povoleno.
+2) V okně mapování atributu nastavenou na Ano povoleno.
 
-3) V **mapování atributů** , projděte si skupiny atributů, které se mají synchronizovat ze služby Azure AD k systému Slack. Všimněte si, že atributy vybrán jako **párování** vlastnosti se použije tak, aby odpovídaly skupiny v systému Slack pro operace aktualizace. 
+3) V **mapování atributů** , projděte si skupiny atributů, které se budou synchronizovat ze služby Azure AD na Slack. Všimněte si, že vybrané atributy jako **odpovídající** vlastností se použije k odpovídající skupinám v Slack pro operace update. 
 
 4) Klikněte na **Uložit**.
 
-Tento výsledek v žádné objekty skupiny přiřazené k systému Slack v **uživatelů a skupin** část plně synchronizovaných z Azure AD k systému Slack. Můžete použít **podrobnosti synchronizace** části monitorovat průběh a odkazech zřízení protokoly aktivity, které popisují všechny akce, které provádí službu zřizování na Slack aplikace.
+Tento výsledek v jakýchkoli objektů skupiny přiřazené k Slack v **uživatelů a skupin** části plně synchronizovány ze služby Azure AD na Slack. Můžete použít **podrobnosti synchronizace** části ke sledování průběhu a odkazech na zřizování protokoly aktivit, které popisují všechny akce provedené v aplikaci Slack zřizovací služba.
 
-Další informace o tom, jak číst zřizování protokoly služby Azure AD najdete v tématu [zprávy o zřizování účtu automatické uživatele](../active-directory-saas-provisioning-reporting.md).
+Další informace o tom, jak číst zřizování protokoly Azure AD najdete v tématu [hlášení o zřizování automatické uživatelských účtů](../active-directory-saas-provisioning-reporting.md).
 
 
 ## <a name="additional-resources"></a>Další prostředky
 
-* [Správa uživatelů zřizování účtu pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Správa zřizování uživatelských účtů pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

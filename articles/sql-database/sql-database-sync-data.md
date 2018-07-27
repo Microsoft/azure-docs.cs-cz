@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: xiwu
 ms.reviewer: douglasl
-ms.openlocfilehash: 81616522f479175dc58188bd6acc4db4f9007756
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 042db9bcadb470b2dc5e0095072e4ca06747ec5d
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39069366"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39283620"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Synchronizace dat napříč několika cloudu a místními databázemi pomocí synchronizace dat SQL
 
@@ -117,7 +117,9 @@ Zřizování a rušení zřízení během vytváření skupiny synchronizace, ak
 
 -   Tabulka nemůže obsahovat sloupec identity, který není primární klíč.
 
--   Datum a čas datový typ nemůže mít primární klíč.
+-   Primární klíč nemůže mít následující typy dat: sql_variant, binary, varbinary, image, xml. 
+
+-   Buďte opatrní při použití těchto datových typů jako primární klíč, protože podporované přesnost je jenom na druhý: čas, datum a čas, datetime2, datetimeoffset.
 
 -   Názvy objektů (databáze, tabulek a sloupců) nesmí obsahovat tisknutelná znaků tečkou (.), zbývající hranaté závorky ([), nebo právo hranatá závorka (]).
 
@@ -131,7 +133,7 @@ Zřizování a rušení zřízení během vytváření skupiny synchronizace, ak
 
 -   Kolekci XMLSchemaCollection (XML podporováno)
 
--   Kurzor, časové razítko, Hierarchyid
+-   Kurzor, RowVersion, časové razítko, Hierarchyid
 
 #### <a name="unsupported-column-types"></a>Typy nepodporovanému sloupci
 

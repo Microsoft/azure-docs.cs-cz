@@ -8,15 +8,15 @@ ms.service: sql-database
 ms.custom: business continuity
 ms.topic: conceptual
 ms.workload: Active
-ms.date: 07/18/2018
+ms.date: 07/25/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: cedad5f48769ed864fef10cfd7059111a4502fd3
-ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
+ms.openlocfilehash: 1ddc663e6a7dc2d09a140b148c5297299d30d016
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39136600"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39262843"
 ---
 # <a name="learn-about-automatic-sql-database-backups"></a>Další informace o automatických zálohách databáze SQL
 
@@ -71,7 +71,7 @@ Zálohy PITR jsou geograficky redundantní a chráněný [mezi zónami replikace
 Další informace najdete v tématu [v daném okamžiku obnovení](sql-database-recovery-using-backups.md#point-in-time-restore)
 
 ### <a name="backups-for-long-term-retention"></a>Pro dlouhodobé uchovávání záloh
-SQL Database nabízí možnost konfigurace dlouhodobého uchovávání dat (LTR) z úplné zálohy po dobu až 10 let. Pokud je povolené zásady LTR, týdenními úplnými zálohami se automaticky zkopírují do jiného kontejneru úložiště RA-GRS. Aby splnila požadavek na dodržení jiný, můžete vybrat různých období uchovávání záloh týdenní, měsíční nebo roční. Spotřeba úložiště závisí na vybrané četnosti zálohování a období uchovávání. Můžete použít [LTR pomocí cenové kalkulačky](https://azure.microsoft.com/pricing/calculator/?service=sql-database) odhadnout náklady na úložiště zleva doprava. 
+SQL Database nabízí možnost konfigurace dlouhodobého uchovávání dat (LTR) z úplné zálohy po dobu až 10 let ve službě Azure blob storage. Pokud je povolené zásady LTR, týdenními úplnými zálohami se automaticky zkopírují do jiného kontejneru úložiště RA-GRS. Aby splnila požadavek na dodržení jiný, můžete vybrat různých období uchovávání záloh týdenní, měsíční nebo roční. Spotřeba úložiště závisí na vybrané četnosti zálohování a období uchovávání. Můžete použít [LTR pomocí cenové kalkulačky](https://azure.microsoft.com/pricing/calculator/?service=sql-database) odhadnout náklady na úložiště zleva doprava. 
 
 Podobně jako PITR, zálohy zleva doprava jsou geograficky redundantní a chráněný [replikace Azure Storage mezi zónami](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage).
 
@@ -133,5 +133,5 @@ Zobrazit [rozhraní REST API pro uchování zálohy](https://docs.microsoft.com/
 - Zálohování databáze jsou nedílnou součást každé strategie obchodní kontinuity podnikových procesů a po havárii pro obnovení, protože jejich Chraňte svoje data před náhodným poškozením nebo odstranění. Další informace o jiná řešení kontinuity podnikových procesů Azure SQL Database business najdete v tématu [přehled zajištění provozní kontinuity firmy](sql-database-business-continuity.md).
 - Obnovení do bodu v čase pomocí webu Azure portal, najdete v článku [obnovit databázi do bodu v čase pomocí webu Azure portal](sql-database-recovery-using-backups.md).
 - Pokud chcete obnovit do bodu v čase s použitím prostředí PowerShell, naleznete v tématu [obnovit databázi do bodu v čase s použitím prostředí PowerShell](scripts/sql-database-restore-database-powershell.md).
-- Můžete konfigurovat, spravovat a obnovení z dlouhodobého uchovávání automatizovaných záloh v trezoru služby Azure Recovery Services pomocí webu Azure portal najdete v tématu [správa dlouhodobého uchovávání záloh pomocí webu Azure portal](sql-database-long-term-backup-retention-configure.md).
-- Můžete konfigurovat, spravovat a obnovení z dlouhodobého uchovávání automatizovaných záloh v trezoru služby Azure Recovery Services pomocí Powershellu, přečtěte si téma [správa dlouhodobého uchovávání záloh pomocí Powershellu](sql-database-long-term-backup-retention-configure.md).
+- Můžete konfigurovat, spravovat a obnovení z dlouhodobého uchovávání automatizovaných záloh v úložišti objektů blob v Azure pomocí webu Azure portal najdete v tématu [správa dlouhodobého uchovávání záloh pomocí webu Azure portal](sql-database-long-term-backup-retention-configure.md).
+- Konfigurovat, spravovat a obnovení z dlouhodobě uchovávaných z automatických záloh na blogu Azure storage pomocí Powershellu, přečtěte si téma [správa dlouhodobého uchovávání záloh pomocí Powershellu](sql-database-long-term-backup-retention-configure.md).

@@ -145,6 +145,8 @@
           href: backup-azure-reports-data-model.md
         - name: Datový model Log Analytics pro Azure Backup
           href: backup-azure-log-analytics-data-model.md
+        - name: Aktualizace balíčku obsahu Azure Backup Central Reporting
+          href: backup-azure-central-reporting-updates.md
     - name: Data Protection Manager
       items:
         - name: Příprava úloh DPM na webu Azure Portal

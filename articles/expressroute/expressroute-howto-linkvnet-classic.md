@@ -4,23 +4,16 @@ description: Tento dokument poskytuje přehled o tom, jak propojit virtuální s
 services: expressroute
 documentationcenter: na
 author: ganesr
-manager: carmonm
-editor: ''
-tags: azure-service-management
-ms.assetid: 9b53fd72-9b6b-4844-80b9-4e1d54fd0c17
 ms.service: expressroute
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 07/25/2018
+ms.topic: conceptual
+ms.date: 07/26/2018
 ms.author: ganesr
-ms.openlocfilehash: 7e1faa9dc5901861aab8e7911c241e6704b805b1
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 99e0bbc0e2501deead8990776d35835ea396590b
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39257835"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39284377"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-powershell-classic"></a>Připojení virtuální sítě k okruhu ExpressRoute pomocí prostředí PowerShell (classic)
 > [!div class="op_single_selector"]
@@ -40,9 +33,9 @@ Tento článek vám pomůže propojit virtuální sítě (Vnet) okruhy Azure Exp
 [!INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
 ## <a name="configuration-prerequisites"></a>Předpoklady konfigurace
-1. Budete potřebovat nejnovější verzi modulů prostředí Azure PowerShell. Nejnovější moduly Powershellu můžete stáhnout z části prostředí PowerShell [stránku soubory ke stažení Azure](https://azure.microsoft.com/downloads/). Postupujte podle pokynů v [instalace a konfigurace Azure Powershellu](/powershell/azure/overview) podrobné pokyny o tom, jak nakonfigurovat počítač pomocí modulů Azure Powershellu.
-2. Je potřeba zkontrolovat [požadavky](expressroute-prerequisites.md), [požadavky směrování](expressroute-routing.md), a [pracovních postupů](expressroute-workflows.md) předtím, než začnete s konfigurací.
-3. Musí mít aktivní okruh ExpressRoute.
+
+* Zkontrolujte [požadavky](expressroute-prerequisites.md), [požadavky směrování](expressroute-routing.md), a [pracovních postupů](expressroute-workflows.md) předtím, než začnete s konfigurací.
+* Musí mít aktivní okruh ExpressRoute.
    * Postupujte podle pokynů a [vytvořit okruh ExpressRoute](expressroute-howto-circuit-classic.md) a mají povolení je okruh poskytovatelem připojení.
    * Ujistěte se, že máte soukromého partnerského vztahu Azure nakonfigurovaný pro váš okruh. Zobrazit [konfigurace směrování](expressroute-howto-routing-classic.md) najdete pokyny pro směrování.
    * Ověřte, že je nakonfigurovaný soukromého partnerského vztahu Azure a partnerského vztahu protokolu BGP mezi vaší sítí a Microsoftem nahoru tak, že povolíte připojení k začátku do konce.
@@ -52,16 +45,31 @@ Až 10 virtuálních sítí můžete propojit s okruhem ExpressRoute. Všechny v
 
 Jedné virtuální sítě nesmí být propojení až čtyři okruhy ExpressRoute. Vytvoření nového propojení pro každý okruh ExpressRoute, ke kterému se připojujete pomocí instrukcí níže. Okruhy ExpressRoute může být ve stejném předplatném, různá předplatná nebo kombinaci obou.
 
+## <a name="download-the-latest-powershell-cmdlets"></a>Stáhněte si nejnovější rutiny prostředí PowerShell
+
+Budete potřebovat nejnovější verzi modulů prostředí Azure PowerShell. Nejnovější moduly Powershellu můžete stáhnout z části prostředí PowerShell [stránku soubory ke stažení Azure](https://azure.microsoft.com/downloads/). Postupujte podle pokynů v [instalace a konfigurace Azure Powershellu](/powershell/azure/overview) podrobné pokyny o tom, jak nakonfigurovat počítač pomocí modulů Azure Powershellu.
+
+Kromě toho budete muset stáhnout modul ExpressRoute. Chcete-li stáhnout moduly Azure a ExpressRoute můžete použít příkazy v následujícím příkladu. Při použití těchto příkazů, mějte na paměti, že číslo verze (v tomto příkladu 5.1.1) se změní vydané novější verze rutin.
+
+```powershell
+Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\Azure\Azure.psd1'
+Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\ExpressRoute\ExpressRoute.psd1'
+```
+
 ## <a name="connect-a-virtual-network-in-the-same-subscription-to-a-circuit"></a>Připojení virtuální sítě v rámci stejného předplatného k okruhu
 Pomocí následující rutiny můžete propojit virtuální sítě k okruhu ExpressRoute. Ujistěte se, že brány virtuální sítě je vytvořen a připraven k propojení předtím, než spustíte rutinu.
 
-    New-AzureDedicatedCircuitLink -ServiceKey "*****************************" -VNetName "MyVNet"
-    Provisioned
+```powershell
+New-AzureDedicatedCircuitLink -ServiceKey "*****************************" -VNetName "MyVNet"
+Provisioned
+```
     
 ## <a name="remove-a-virtual-network-link-to-a-circuit"></a>Odebrat propojení virtuální sítě k okruhu
 Propojení virtuální sítě k okruhu ExpressRoute můžete odebrat pomocí následující rutiny. Ujistěte se, že je vybrána aktuální předplatné pro dané virtuální síti. 
 
-    Remove-AzureDedicatedCircuitLink -ServiceKey "*****************************" -VNetName "MyVNet"
+```powershell
+Remove-AzureDedicatedCircuitLink -ServiceKey "*****************************" -VNetName "MyVNet"
+```
  
 
 ## <a name="connect-a-virtual-network-in-a-different-subscription-to-a-circuit"></a>Připojení virtuální sítě jiného předplatného k okruhu

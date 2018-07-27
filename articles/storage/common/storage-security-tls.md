@@ -14,22 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 06/25/2018
 ms.author: fryu
-ms.openlocfilehash: 6c313b6015a8a6dcc4ca5befb5fef70b047d0410
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 232af6ec08152d18db86a7b6373da0d281a74a91
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37866521"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39262513"
 ---
 # <a name="enable-secure-tls-for-azure-storage-client"></a>Povolení zabezpečeného TLS pro klienta Azure Storage
 
-Když budete potřebovat k auditování služby pomocí služby Azure Storage na základě nejnovější dodržování předpisů a požadavky na zabezpečení, SSL 1.0, 2.0, 3.0 a TLS 1.0, jsou rozpoznány jako nedodržující předpisy komunikační protokoly.
-
-Bylo zjištěno SSL 1.0, 2.0 a 3.0 ohrožen. Mít bylo zakázáno v dokumentu RFC. Protokol TLS 1.0 stane nezabezpečené nezabezpečené blokových šifrách (CBC šifrování DES a RC2 CBC) a Stream šifrování (RC4). Rady PCI také navrhované přechodu na vyšší verze protokolu TLS. Další podrobnosti najdete v tématu [zabezpečení TLS (Transport Layer)](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0.2C_2.0_and_3.0).
+Zabezpečení TLS (Transport Layer) a vrstva SSL (Secure Sockets) jsou kryptografické protokoly, které poskytují zabezpečení komunikace přes síť počítače. Bylo zjištěno SSL 1.0, 2.0 a 3.0 ohrožen. Mít bylo zakázáno v dokumentu RFC. Protokol TLS 1.0 stane nezabezpečené nezabezpečené blokových šifrách (CBC šifrování DES a RC2 CBC) a Stream šifrování (RC4). Rady PCI také navrhované přechodu na vyšší verze protokolu TLS. Další podrobnosti najdete v tématu [zabezpečení TLS (Transport Layer)](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0.2C_2.0_and_3.0).
 
 Úložiště Azure od 2015 byla zastavena SSL 3.0 a používá TLS 1.2 na veřejné koncové body HTTPs, ale protokol TLS 1.0 a TLS 1.1 jsou stále podporovány z důvodu zpětné kompatibility.
 
-Aby bylo možné zajistit zabezpečení a dodržování připojení ke službě Azure Storage, je potřeba povolit TLS 1.2 na straně klienta před odesláním žádosti o provoz služby Azure Storage.
+Aby bylo možné zajistit zabezpečení a dodržování připojení ke službě Azure Storage, je potřeba povolit TLS 1.2 nebo novější verze na straně klienta před odesláním žádosti o provoz služby Azure Storage.
 
 ## <a name="enable-tls-12-in-net-client"></a>Protokol TLS 1.2 v .NET klienta
 
@@ -86,4 +84,5 @@ Na následujícím snímku obrazovky je příklad pro ověření.
 ## <a name="see-also"></a>Další informace najdete v tématech
 
 * [Transport Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0.2C_2.0_and_3.0)
+* [Dodržování PCI v TLS](https://blog.pcisecuritystandards.org/migrating-from-ssl-and-early-tls)
 * [Povolení protokolu TLS v klientskou sadou Java](https://www.java.com/en/configure_crypto.html)

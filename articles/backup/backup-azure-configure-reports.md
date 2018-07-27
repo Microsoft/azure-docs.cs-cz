@@ -6,15 +6,15 @@ author: adiganmsft
 manager: shivamg
 ms.service: backup
 ms.topic: conceptual
-ms.date: 11/10/2017
+ms.date: 07/26/2018
 ms.author: adigan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 81653f9125b9cc4411e5cfe358bd602f92c5bf89
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: bd6228b6cb7409144a0cd16d6c9617b7127c3624
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37448362"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39264957"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurace sestav Azure Backup
 Tento článek se hovoří o krocích, které chcete konfigurovat sestavy Azure Backup pomocí trezoru služby Recovery Services a chcete dostat k sestavám pomocí Power BI. Po provedení těchto kroků, můžete přejít přímo do Power BI k zobrazení všech sestav, přizpůsobení a vytváření sestav. 
@@ -24,7 +24,6 @@ Tento článek se hovoří o krocích, které chcete konfigurovat sestavy Azure 
 2. Sestavy pro Azure SQL, aplikace DPM a Azure Backup serveru nejsou v tuto chvíli nepodporuje.
 3. Sestavy můžete zobrazit napříč trezory a napříč předplatnými, pokud se stejný účet úložiště je nakonfigurovaný pro všechny tyto trezory. Vybraný účet úložiště by měl být ve stejné oblasti jako trezor služby recovery services.
 4. Četnost naplánované aktualizace pro sestavy je 24 hodin v Power BI. Aktualizace ad-hoc sestav můžete provést také v Power BI, ve kterém případu nejnovější data v účtu úložiště zákazníka používané k vykreslování sestav. 
-5. Azure Backup Reports nejsou aktuálně podporovány v národních cloudech.
 
 ## <a name="prerequisites"></a>Požadavky
 1. Vytvoření [účtu služby Azure storage](../storage/common/storage-create-storage-account.md#create-a-storage-account) ho nakonfigurovat pro sestavy. Tento účet úložiště se používá pro ukládání souvisejících dat sestavy.
@@ -75,7 +74,7 @@ Pomocí následujících kroků a nakonfigurujte účet úložiště pro trezor 
 ## <a name="view-reports-in-power-bi"></a>Zobrazení sestav v Power BI 
 Po konfiguraci účtu úložiště pro sestavy pomocí trezoru služby recovery services, trvá přibližně 24 hodin pro generování sestav dat spuštění toku. Po 24 hodinách nastavení účtu úložiště postupujte následovně Chcete-li zobrazit sestavy v Power BI:
 1. [Přihlaste se](https://powerbi.microsoft.com/landing/signin/) do Power BI.
-2. Klikněte na tlačítko **získat Data** a klikněte na tlačítko **získat** pod **služby** v knihovně obsahu balíčku. Pomocí kroků uvedených v [dokumentaci k Power BI pro přístup k balíčku obsahu](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-packs-services/).
+2. Klikněte na tlačítko **získat Data** a klikněte na tlačítko **získat** pod **služby** v knihovně obsahu balíčku. Pomocí kroků uvedených v [dokumentaci k Power BI pro přístup k balíčku obsahu](https://powerbi.microsoft.com/documentation/powerbi-content-packs-services/).
 
      ![Importovat balíček obsahu](./media/backup-azure-configure-reports/content-pack-import.png)
 3. Typ **Azure Backup** panel hledání a klikněte na **získat**.

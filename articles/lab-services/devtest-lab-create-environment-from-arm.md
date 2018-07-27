@@ -12,18 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/05/2018
+ms.date: 07/05/2018
 ms.author: spelluru
-ms.openlocfilehash: f73b6f594403ce51fcff4d757990afb3ce4a82bc
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 5ae7a0d3aa0606fd02bfbaa0dcebdfaed5d11eb7
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39004842"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39283086"
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Vytvoření prostředí více virtuálních počítačů a prostředků PaaS pomocí šablony Azure Resource Manageru
 
-[Webu Azure portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) vám umožní snadno [vytvoření a přidání virtuálního počítače do testovacího prostředí](https://docs.microsoft.com/azure/devtest-lab/devtest-lab-add-vm). Tento postup funguje dobře pro vytvoření virtuálního počítače s jeden po druhém. Nicméně pokud prostředí obsahuje několik virtuálních počítačů, každý virtuální počítač musí být jednotlivě vytvořeny. Pro scénáře, jako je například vícevrstvou webovou aplikaci nebo farmu služby SharePoint mechanismus je potřeba povolit pro vytvoření několika virtuálních počítačů v jednom kroku. Pomocí šablon Azure Resource Manageru můžete definovat infrastrukturu a konfiguraci vašeho řešení Azure a opakovaně nasazovat více virtuálních počítačů v konzistentním stavu. Tato funkce poskytuje následující výhody:
+[Webu Azure portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) vám umožní snadno [přidat jeden virtuální počítač současně do testovacího prostředí](https://docs.microsoft.com/azure/devtest-lab/devtest-lab-add-vm). Nicméně pokud prostředí obsahuje několik virtuálních počítačů, každý virtuální počítač musí být jednotlivě vytvořeny. Pro scénáře, jako je například vícevrstvou webovou aplikaci nebo farmu služby SharePoint mechanismus je potřeba povolit pro vytvoření několika virtuálních počítačů v jednom kroku. Pomocí šablon Azure Resource Manageru můžete definovat infrastrukturu a konfiguraci vašeho řešení Azure a opakovaně nasazovat více virtuálních počítačů v konzistentním stavu. Tato funkce poskytuje následující výhody:
 
 - Šablony Azure Resource Manageru jsou načítány přímo ze svým úložištěm řízení zdrojů (GitHub nebo Team Services Git).
 - Po nakonfigurování mohou uživatelé vytvářet prostředí díky šablonu Azure Resource Manageru z portálu Azure portal, stejně jako u jiných typů [bází virtuálních počítačů](./devtest-lab-comparing-vm-base-image-types.md).
@@ -43,6 +43,8 @@ Další informace o dalších [výhody pomocí šablon Resource Manageru](https:
 
 Šablony prostředí mají spravovat jako jeden z osvědčených postupů pomocí infrastruktury jako kódu a konfigurace jako kódu ve správě zdrojového kódu. Azure DevTest Labs následuje tento postup a načte všechny šablony Azure Resource Manageru přímo z Githubu nebo VSTS Git úložišť. V důsledku toho je možné šablon Resource Manageru v cyklu kompletního postupu vydávání verzí, z testovacího prostředí do produkčního prostředí.
 
+Podívejte se na šablony vytvořené týmem DevTest Labs v [veřejného úložiště GitHub](https://github.com/Azure/azure-devtestlab/tree/master/Environments). V této veřejné úložiště můžete zobrazit šablony, které sdílí ostatní, můžete použít přímo nebo přizpůsobit je tak, aby odpovídala vašim potřebám. Jakmile vytvoříte šablonu, uložte ho v tomto úložišti můžete sdílet s ostatními. Můžete také nastavit vlastní úložiště Git se šablonami, které je možné nastavit prostředí v cloudu. 
+
 Existuje několik pravidel pro uspořádání vašich šablon Azure Resource Manageru v úložišti:
 
 - Soubor hlavní šablony musí mít název `azuredeploy.json`. 
@@ -50,18 +52,18 @@ Existuje několik pravidel pro uspořádání vašich šablon Azure Resource Man
     ![Soubory šablon klíč Azure Resource Manageru](./media/devtest-lab-create-environment-from-arm/master-template.png)
 
 - Pokud chcete použít hodnoty parametrů definované v souboru parametrů, musí mít název souboru parametrů `azuredeploy.parameters.json`.
-- Při použití parametrů `_artifactsLocation` a `_artifactsLocationSasToken` vytvořit hodnotu identifikátoru URI parametersLink, a umožnil DevTest Labs k automatické správě vnořené šablony. Zobrazit [jak službě Azure DevTest Labs usnadňuje vnořené Resource Manageru šablony nasazení pro testovací prostředí](https://blogs.msdn.microsoft.com/devtestlab/2017/05/23/how-azure-devtest-labs-makes-nested-arm-template-deployments-easier-for-testing-environments/) Další informace.
+- Při použití parametrů `_artifactsLocation` a `_artifactsLocationSasToken` vytvořit hodnotu identifikátoru URI parametersLink, a umožnil DevTest Labs k automatické správě vnořené šablony. Další informace najdete v tématu [jak službě Azure DevTest Labs usnadňuje vnořené Resource Manageru šablony nasazení pro testovací prostředí](https://blogs.msdn.microsoft.com/devtestlab/2017/05/23/how-azure-devtest-labs-makes-nested-arm-template-deployments-easier-for-testing-environments/).
 - Metadata lze definovat za účelem zadejte zobrazovaný název šablony a popis. Tato metadata musí být v souboru s názvem `metadata.json`. Soubor metadat následující příklad ukazuje, jak zadat zobrazovaný název a popis: 
 
-```json
-{
+    ```json
+    {
  
-"itemDisplayName": "<your template name>",
+        "itemDisplayName": "<your template name>",
  
-"description": "<description of the template>"
+        "description": "<description of the template>"
  
-}
-```
+    }
+    ```
 
 Následující kroky vás provedou přidání úložiště do testovacího prostředí pomocí webu Azure portal. 
 
@@ -150,7 +152,7 @@ Při použití šablony Resource Manageru ve službě DevTest Labs vezměte v ú
 
 - Většina zásad se nevyhodnocují při nasazování šablony Resource Manageru.
 
-   Například můžete mít testovacího prostředí zásady určující, uživatel může vytvořit pouze pět virtuálních počítačů. Pokud uživatel nasadí šablonu Resource Manageru, která vytvoří desítek virtuálních počítačů, který je však povoleno. Zásady, které se nevyhodnotily patří:
+   Například můžete mít testovacího prostředí zásady určující, uživatel může vytvořit pouze pět virtuálních počítačů. Uživatel však můžete nasadit šablonu Resource Manageru, která vytvoří desítek virtuálních počítačů. Zásady, které se nevyhodnotily patří:
 
    - Počet virtuálních počítačů na uživatele
    - Počet virtuálních počítačů služby premium za uživatele testovacího prostředí.

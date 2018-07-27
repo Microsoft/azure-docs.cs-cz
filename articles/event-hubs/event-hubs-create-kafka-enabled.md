@@ -1,5 +1,5 @@
 ---
-title: Vytvoření Kafka povolena služba Azure Event Hubs | Dokumentace Microsoftu
+title: Vytvoření povolené platformy Apache Kafka, Azure Event Hubs | Dokumentace Microsoftu
 description: Vytvoření oboru názvů Azure Event Hubs pomocí webu Azure portal povolené Kafka
 services: event-hubs
 documentationcenter: .net
@@ -10,18 +10,18 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: shvija
-ms.openlocfilehash: 7a05a89fdf99efb6470ee9c8695f349cf22b8ebb
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 79b6b879bd2332c044ce871e2c9a938c6b9c900c
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37442123"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39285073"
 ---
-# <a name="create-kafka-enabled-event-hubs"></a>Vytvoření Kafka povolena služba event hubs
+# <a name="create-apache-kafka-enabled-event-hubs"></a>Vytvoření služby event hubs pro Apache Kafka povoleno
 
 Azure Event Hubs je velké objemy dat, streamování platforma jako služba (PaaS), která ingestuje miliony událostí za sekundu a poskytuje nízkou latenci a vysokou propustností pro analýzu v reálném čase a vizualizace.
 
-Azure Event Hubs pro ekosystémů Kafka poskytuje koncový bod. Umožňuje tento koncový bod vašeho oboru názvů služby Event Hubs nativně pochopit [Apache Kafka](https://kafka.apache.org/intro) zprávy protokolu a rozhraní API. Díky této funkci může komunikovat s event hubs jako při použití témat Kafka bez změny vašim klientům protokolu nebo spuštění vlastní clustery. Event Hubs pro Kafka ekosystémů podporuje [Apache Kafka verze 1.0](https://kafka.apache.org/10/documentation.html) a novější.
+Azure Event Hubs poskytuje koncový bod Kafka. Umožňuje tento koncový bod vašeho oboru názvů služby Event Hubs nativně pochopit [Apache Kafka](https://kafka.apache.org/intro) zprávy protokolu a rozhraní API. Díky této funkci může komunikovat s event hubs jako při použití témat Kafka bez změny vašim klientům protokolu nebo spuštění vlastní clustery. Podporuje Služba Event Hubs [Apache Kafka verze 1.0](https://kafka.apache.org/10/documentation.html) a novější.
 
 Tento článek popisuje, jak vytvořit obor názvů služby Event Hubs a získání připojovacího řetězce požadované pro připojení aplikace Kafka a podporou Kafka event hubs.
 
@@ -58,7 +58,7 @@ Nyní můžete Streamovat události z aplikací, které používají protokol Ka
 Další informace o službě Event Hubs naleznete pod těmito odkazy:
 
 * [Stream do služby Event Hubs ze svých aplikací Kafka](event-hubs-quickstart-kafka-enabled-event-hubs.md)
-* [Další informace o službě Event Hubs pro ekosystém Kafka](event-hubs-for-kafka-ecosystem-overview.md)
+* [Další informace o službě Event Hubs pro systém Kafka](event-hubs-for-kafka-ecosystem-overview.md)
 * [Informace o službě Event Hubs](event-hubs-what-is-event-hubs.md)
 
 

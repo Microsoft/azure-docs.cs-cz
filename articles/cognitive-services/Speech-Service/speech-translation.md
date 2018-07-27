@@ -1,21 +1,20 @@
 ---
-title: O překladu řeči | Dokumentace Microsoftu
+title: O překladu řeči
 description: Přehled možností pro překlad řeči
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: v-jerkin
-manager: noellelacharite
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
 ms.date: 04/28/2018
 ms.author: v-jerkin
-ms.openlocfilehash: a569c968d444c36ceb3bce4779d2eca39c21f9bc
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 25be92162781df9bf5aefaa2411e9a091918254c
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39069190"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39281673"
 ---
 # <a name="about-the-speech-translation-api"></a>O rozhraní API pro překlad řeči
 

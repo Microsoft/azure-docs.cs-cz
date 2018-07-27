@@ -22,7 +22,7 @@
           href: sql-database-connect-query-ssms.md
         - name: SQL Operations Studio
           href: 'https://docs.microsoft.com/sql/sql-operations-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json'
-        - name: Azure Portal
+        - name: portál Azure
           href: sql-database-connect-query-portal.md
         - name: VS Code
           href: sql-database-connect-query-vscode.md
@@ -138,9 +138,9 @@
           items:
             - name: Dlouhodobé uchovávání záloh
               href: sql-database-long-term-retention.md
-            - name: Konfigurace dlouhodobého uchovávání záloh – úložiště SQL
+            - name: Konfigurace pomocí Azure Blob Storage
               href: sql-database-long-term-backup-retention-configure.md
-            - name: Konfigurace dlouhodobého uchovávání záloh – trezor Azure (zastaralé)
+            - name: Konfigurace pomocí Azure Vault (zastaralé)
               href: sql-database-long-term-backup-retention-configure-vault.md
         - name: Skupiny převzetí služeb při selhání a geografická replikace
           items:

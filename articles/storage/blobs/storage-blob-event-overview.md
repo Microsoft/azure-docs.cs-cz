@@ -2,18 +2,18 @@
 title: Reakce na události úložiště objektů Blob v Azure | Dokumentace Microsoftu
 description: Pomocí služby Azure Event Grid se můžete přihlásit k odběru událostí služby Blob Storage.
 services: storage,event-grid
-keywords: ''
 author: cbrooksmsft
 ms.author: cbrooks
 ms.date: 01/30/2018
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: 68d722338562d21d59dd720250a62b8603c8af43
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.component: blobs
+ms.openlocfilehash: 6f3afa22a50728070c42cd6e2eff0cc148815fbc
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39076003"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39262680"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Reakce na události služby Blob storage
 
@@ -42,7 +42,7 @@ Události služby BLOB storage obsahovat všechny informace, které je potřeba 
 > |Vlastnost|Typ|Popis|
 > |-------------------|------------------------|-----------------------------------------------------------------------|
 > |téma|řetězec|Úplné id Azure Resource Manageru z účtu úložiště, který vysílá události.|
-> |předmět|řetězec|Prostředků relativní cesta k objektu, který je předmětem události ve formátu stejné rozšířené Azure Resource Manageru, který jsme použili pro popis účtů úložiště, služby a kontejnerů pro Azure RBAC.  Tento formát obsahuje název objektu blob zachování případ.|
+> |Předmět|řetězec|Prostředků relativní cesta k objektu, který je předmětem události ve formátu stejné rozšířené Azure Resource Manageru, který jsme použili pro popis účtů úložiště, služby a kontejnerů pro Azure RBAC.  Tento formát obsahuje název objektu blob zachování případ.|
 > |čas události|řetězec|Datum a čas, byla událost vygenerována ve formátu ISO 8601|
 > |Typ události|řetězec|"Microsoft.Storage.BlobCreated" nebo "Microsoft.Storage.BlobDeleted"|
 > |ID|řetězec|Jedinečný identifikátor, pokud se tato událost|

@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 06/28/2018
 ms.author: diberry
-ms.openlocfilehash: ace4aa48d3bfce5f88bce8947ab568f0990d67fa
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: b0b5852a223a77e33a288bb8061c1ce374018ec1
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39226607"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39282275"
 ---
 # <a name="entities-in-luis"></a>Entity v LUIS
 
@@ -70,7 +70,7 @@ Služba LUIS nabízí mnoho typů entit; předem připravených entit, vlastníh
 | **Jednoduché** <br/>[Zjištěné počítače](#machine-learned) | ✔ | **Definice**<br>Jednoduché entita je obecné entity, která popisuje jeden koncept a zjistili díky spolupráci se naučili počítač kontextu. Kontext obsahovat výběr aplikace word, slovo umístění a utterance délka.<br/><br/>To je dobrý entita slov nebo slovních spojení, které nejsou naformátovány konzistentně, ale označují stejnou věc. <br/><br/>[Rychlý start](luis-quickstart-primary-and-secondary-data.md)<br/>[Příklad odpovědi pro entitu](luis-concept-data-extraction.md#simple-entity-data)|  
 | **Seznam** <br/>[Přesná shoda](#exact-match)|| **Definice**<br>Seznam entit představují sadu související slova spolu s jejich synoymns pevné, uzavřené v systému. <br><br>Každá entita seznamu může mít jeden nebo více formulářů. Nejvhodnější pro známé sady změn v způsoby, jak reprezentaci stejný koncept.<br/><br/>Služba LUIS nevyhledává další hodnoty pro seznam entit. Použití **doporučujeme** funkce návrhy pro nové slova na základě aktuálního seznamu.<br/><br>Pokud existuje více než jednu entitu seznamu se stejnou hodnotou, je každá entita vrácené dotazem koncový bod. <br/><br/>[Rychlý start](luis-quickstart-intent-and-list-entity.md)<br>[Příklad odpovědi pro entitu](luis-concept-data-extraction.md#list-entity-data)| 
 | **Pattern.Any** <br/>[Smíšené](#mixed) | ✔|**Definice**<br>Patterns.any je použít jenom v utterance vzor šablony k označení, ve kterém entita začíná a končí zástupným symbolem proměnné délky.  <br><br>**Příklad**<br>Zadaný utterance hledat podle názvu knihy, extrahuje pattern.any úplný název. Je šablona utterance pomocí pattern.any `Who wrote {BookTitle}[?]`.<br/><br/>[Kurz](luis-tutorial-pattern.md)<br>[Příklad odpovědi pro entitu](luis-concept-data-extraction.md#composite-entity-data)|  
-| **Složené** <br/>[Zjištěné počítače](#machine-learned) | ✔|**Definice**<br>Složený entity se skládá z jiné entity, třeba předem připravených entit, jednoduché, regulární výraz, seznam, hierarchické. Samostatné entity tvoří celé entity. Seznam entit nejsou povoleny v složený entity. <br><br>**Příklad**<br>Složený entita s názvem PlaneTicketOrder může obsahovat podřízené entity předem připravených `number` a `ToLocation`. <br/><br/>[Kurz](luis-tutorial-composite-entity.md)<br>[Příklad odpovědi pro entitu](luis-concept-data-extraction.md#composite-entity-data)|  
+| **Složené** <br/>[Zjištěné počítače](#machine-learned) | ✔|**Definice**<br>Složený entity se skládá z jiné entity, třeba předem připravených entit, jednoduché, regulární výraz, seznam, hierarchické. Samostatné entity tvoří celé entity. <br><br>**Příklad**<br>Složený entita s názvem PlaneTicketOrder může obsahovat podřízené entity předem připravených `number` a `ToLocation`. <br/><br/>[Kurz](luis-tutorial-composite-entity.md)<br>[Příklad odpovědi pro entitu](luis-concept-data-extraction.md#composite-entity-data)|  
 | **Hierarchické** <br/>[Zjištěné počítače](#machine-learned) |✔ | **Definice**<br>Hierarchické entita je kategorie kontextově zjištěná jednoduché entit.<br><br>**Příklad**<br>Zadaný hierarchické entitu `Location` s podřízenými `ToLocation` a `FromLocation`, jednotlivých podřízených můžete určit, na základě **kontextu** v rámci utterance. V utterance `Book 2 tickets from Seattle to New York`, `ToLocation` a `FromLocation` kontextově liší na základě slova, co s nimi souvisí. <br/><br/>**Nepoužívejte, pokud**<br>Pokud hledáte entitu, která má přesný text shody pro podřízené položky bez ohledu na kontextu, měli byste použít seznam entit. Pokud hledáte vztah nadřízenosti a podřízenosti s jinými typy entit, měli byste použít složené entity.<br/><br/>[Rychlý start](luis-quickstart-intent-and-hier-entity.md)<br>[Příklad odpovědi pro entitu](luis-concept-data-extraction.md#hierarchical-entity-data)|
 
 <a name="prebuilt"></a>

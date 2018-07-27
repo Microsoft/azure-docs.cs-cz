@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 545766aa6c39fe678113297e584422872a6ded87
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 1897f2c5d532c030b2711a35eabeefd889f560c8
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008140"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39264991"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Nejčastější dotazy ke službě Azure Active Directory Connect
 
@@ -54,7 +54,7 @@ Nejjednodušší způsob, jak to provést, je použít SQL Server Management Stu
 3. Nainstalujte Azure AD Connect s existující [místní databáze SQL](active-directory-aadconnect-existing-database.md).
    Tento článek ukazuje, jak migrovat místní databázi SQL pomocí. Pokud provádíte migraci k použití vzdáleného SQL database, v kroku 5 tohoto procesu můžete musíte také zadat existující účet, který se spustí služba synchronizace Windows jako služby. Tento účet služby synchronizační modul je popsaný tady:
    
-      **Použít existující účet služby**: ve výchozím nastavení používá Azure AD Connect virtuální účet služby pro služby synchronizace používat. Pokud používáte vzdálenou instanci systému SQL Server nebo použít proxy server vyžadující ověření, použít účet spravované služby nebo účet služby v doméně a znát heslo. V těchto případech zadejte účet, který chcete použít. Ujistěte se, že uživatelé mají spuštěnou instalaci jsou správci systému SQL tak, že je možné vytvořit přihlašovací údaje pro účet služby. Další informace najdete v tématu [účtech a oprávněních Azure AD Connect](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-account). 
+      **Použít existující účet služby**: ve výchozím nastavení používá Azure AD Connect virtuální účet služby pro služby synchronizace používat. Pokud používáte vzdálenou instanci systému SQL Server nebo použít proxy server vyžadující ověření, použít účet spravované služby nebo účet služby v doméně a znát heslo. V těchto případech zadejte účet, který chcete použít. Ujistěte se, že uživatelé mají spuštěnou instalaci jsou správci systému SQL tak, že je možné vytvořit přihlašovací údaje pro účet služby. Další informace najdete v tématu [účtech a oprávněních Azure AD Connect](active-directory-aadconnect-accounts-permissions.md#adsync-service-account). 
    
       S nejnovějším sestavením teď může databáze vzdáleně zřizovat správce SQL a pak je instalovat správce služby Azure AD Connect s oprávněními vlastníka databáze. Další informace najdete v tématu [instalace služby Azure AD Connect pomocí oprávnění delegovaného správce SQL](active-directory-aadconnect-sql-delegation.md).
 

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: efc62243370ff2cc5214a4ae235139bdb5965486
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: de8957864502b8c3ec6d9a43a8134fdb8dac6069
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248215"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39283516"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Jak to funguje: resetování hesla pomocí samoobslužné služby Azure AD
 
@@ -80,13 +80,16 @@ Pokud uživatel nemá zaregistrované minimální požadované metody, zobrazí 
 
 #### <a name="mobile-app-and-sspr-preview"></a>Mobilní aplikace a samoobslužné resetování HESLA (ve verzi Preview)
 
-Při použití mobilní aplikace, jako je aplikace Microsoft Authenticator jako metoda pro resetování hesel uživatelů mějte na paměti z následujících akcí. Samoobslužné resetování hesla při jenom jedna metoda, je třeba obnovit ověřovací kód je jedinou možností, které jsou dostupné pro uživatele. Když se vyžadují dvě metody budou uživatelé moct resetovat pomocí **buď** oznámení **nebo** ověřovací kód kromě jiných povolené metody.
+Při použití mobilní aplikace, jako je aplikace Microsoft Authenticator jako metoda pro resetování hesla, měli byste pamatovat na následující:
+
+* Když správci potřebují jednu metodu možné použít k resetování hesla, ověřovací kód je jediná dostupná možnost.
+* Když správci vyžadují dvě metody se používá k resetování hesla, uživatelé se můžou použít **buď** oznámení **nebo** ověřovací kód kromě jiných povolené metody.
 
 | Počet metod nutných pro resetování | jeden | Dvě |
 | :---: | :---: | :---: |
 | Funkce mobilních aplikací, které jsou k dispozici | Kód | Kód nebo oznámení |
 
-Uživatelé nebudou mít možnost zaregistrovat svoje mobilní aplikace při registraci pro resetování hesla pomocí samoobslužné služby. Místo toho uživatelé můžou registrovat svoje mobilní aplikace na aka.ms/mfasetup nebo v náhledu registrační informace o zabezpečení na aka.ms/setupsecurityinfo. 
+Uživatelé nemají možnost zaregistrovat svoje mobilní aplikace při registraci pro resetování hesla pomocí samoobslužné služby z [ https://aka.ms/ssprsetup ](https://aka.ms/ssprsetup). Uživatelé můžou registrovat svoje mobilní aplikace na [ https://aka.ms/mfasetup ](https://aka.ms/mfasetup), nebo v náhledu nové registrace informace o zabezpečení v [ https://aka.ms/setupsecurityinfo ](https://aka.ms/setupsecurityinfo).
 
 ### <a name="change-authentication-methods"></a>Změna metody ověřování
 

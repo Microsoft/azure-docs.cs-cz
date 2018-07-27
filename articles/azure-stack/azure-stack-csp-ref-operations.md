@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/08/2018
 ms.author: brenduns
 ms.reviewer: alfredo
-ms.openlocfilehash: 18b34af8dc383cfa86017162ec48782f156156bc
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: efd1c1eafbff8bf56b16131e44cff6b03ce7338a
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39093093"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39264806"
 ---
 # <a name="manage-tenant-registration-in-azure-stack"></a>Spravovat registraci klientů ve službě Azure Stack
 
@@ -35,6 +35,13 @@ Můžete také pomocí této operace, pokud chcete změnit předplatné spojené
 
 Všimněte si, že pouze jedno předplatné Azure může být přidružené ke klientovi. Pokud se pokusíte o přidání druhého předplatného do existujícího tenanta, je přepsání první předplatné. 
 
+### <a name="use-api-profiles"></a>Pomocí profilů rozhraní API
+
+Rutiny v tomto článku vyžadují, aby profil aplikace rozhraní API při spuštění PowerShell. Rozhraní API profily představují sadu poskytovatele prostředků Azure a jejich verzí rozhraní API. Umožňují použít správnou verzi rozhraní API při interakci s více cloudy Azure, například při práci s globální Azure a Azure Stack. Profily jsou určena podle názvu, která odpovídá jejich datum vydání. V tomto článku, budete muset použít **2017-09-03** profilu.
+
+Další informace o službě Azure Stack a profily rozhraní API najdete v tématu [profilů verzí API spravovat ve službě Azure Stack](user/azure-stack-version-profiles.md). Pokyny na zprovoznění s profilem rozhraní API s využitím Powershellu najdete v tématu [profilů verzí API použijte pro prostředí PowerShell ve službě Azure Stack](user/azure-stack-version-profiles-powershell.md).
+
+### <a name="parameters"></a>Parametry
 
 | Parametr                  | Popis |
 |---                         | --- |

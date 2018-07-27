@@ -1,29 +1,25 @@
 ---
-title: Schéma jazyka pro definici pracovního postupu – Azure Logic Apps | Dokumentace Microsoftu
+title: Referenční dokumentace schématu pro jazyk definice pracovního postupu – Azure Logic Apps | Dokumentace Microsoftu
 description: Zapsat definice vlastní pracovní postup pro Azure Logic Apps s jazyka definice pracovního postupu
 services: logic-apps
-author: ecfan
-manager: jeconnoc
-editor: ''
-documentationcenter: ''
-ms.assetid: 26c94308-aa0d-4730-97b6-de848bffff91
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: ''
-ms.devlang: ''
+author: ecfan
+ms.author: estfan
+manager: jeconnoc
 ms.topic: reference
 ms.date: 04/30/2018
-ms.author: estfan
-ms.openlocfilehash: babe21db6acc2f7154857b4eb0a02356e89a8ca7
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.reviewer: klam, LADocs
+ms.suite: integration
+ms.openlocfilehash: 9268ca3db6c99c4e660690e25a2331a1fa1cdf96
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39060576"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39263670"
 ---
-# <a name="logic-apps-workflow-definitions-with-the-workflow-definition-language-schema"></a>Definice pracovního postupu Logic Apps se schématem jazyka definice pracovního postupu
+# <a name="schema-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Referenční dokumentace schématu pro jazyk pro definování pracovních postupů v Azure Logic Apps
 
-Když vytvoříte pracovní postup aplikace logiky s [Azure Logic Apps](../logic-apps/logic-apps-overview.md), základní definici pracovního postupu popisuje skutečné logiku, která pro vaši aplikaci logiky. Tento popis následující strukturu, která je definována a ověřit pomocí schématu rozhraní jazyka definice pracovního postupu, který používá [zápis JSON (JavaScript Object)](https://www.json.org/) formátu. 
+Když vytvoříte pracovní postup aplikace logiky s [Azure Logic Apps](../logic-apps/logic-apps-overview.md), základní definici pracovního postupu popisuje skutečné logiku, která pro vaši aplikaci logiky. Tento popis následující strukturu, která je definována a ověřit pomocí schématu rozhraní jazyka definice pracovního postupu, který používá [zápis JSON (JavaScript Object)](https://www.json.org/). 
   
 ## <a name="workflow-definition-structure"></a>Struktura definice pracovního postupu
 
@@ -226,7 +222,7 @@ Nebo, pokračujte ve čtení o funkcích a jejich obecné účely.
 Tady je pár příkladu úkoly, které můžete provádět pomocí funkce: 
 
 | Úkol | Syntaxe funkce | Výsledek | 
-| ---- | --------------- | -------------- | 
+| ---- | --------------- | ------ | 
 | Vrátí řetězec ve formátu malá písmena. | toLower ('<*text*> ") <p>Příklad: toLower('Hello') | "hello" | 
 | Vrátí globálně jedinečný identifikátor (GUID). | GUID() |"c2ecc88d-88c8-4096-912c-d6f2e2b138ce" | 
 |||| 
@@ -266,7 +262,7 @@ Nebo, pokračujte ve čtení o funkce založené na jejich obecné účely.
 
 <a name="string-functions"></a>
 
-### <a name="string-functions"></a>Řetězcové funkce
+### <a name="string-functions"></a>Funkce řetězců
 
 Pro práci s řetězci, můžete použít tyto funkce řetězce a také některé [kolekce funkcí](#collection-functions). Řetězec funkce pracují pouze na řetězce. 
 
@@ -308,7 +304,7 @@ Pro práci s kolekcemi, obecně pole, řetězce a v některých případech slov
 
 <a name="comparison-functions"></a>
 
-### <a name="comparison-functions"></a>Porovnání funkcí
+### <a name="comparison-functions"></a>Funkce porovnání
 
 K práci s podmínkami, porovnat hodnoty a výsledky výrazu nebo vyhodnotit různé druhy logiku, můžete tyto funkce porovnání. Úplný přehled o jednotlivých funkcích naleznete v tématu [abecedně řazená referenční dokumentace článku](../logic-apps/workflow-definition-language-functions-reference.md).
 

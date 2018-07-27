@@ -133,6 +133,8 @@
               href: devtest-lab-manage-formulas.md
         - name: Správa artefaktů
           items:
+            - name: Určení povinných artefaktů
+              href: devtest-lab-mandatory-artifacts.md
             - name: Přidání vlastních artefaktů
               href: devtest-lab-artifact-author.md
             - name: Diagnostika selhání artefaktů

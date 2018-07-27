@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e56b6f9360bdbfe2c5dcb2e81862cb80310bf54c
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 6b5cc1eff5c6d080854754ec5b3b62068f1cbb9c
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37928728"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39264711"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: Nejčastější dotazy (FAQ) 
 Tato stránka odpovědi na nejčastější dotazy týkající se Azure Active Directory (Azure AD) B2C. Kontrolovat novinky.
@@ -118,7 +118,7 @@ Postupujte podle těchto kroků odstraňte vašeho tenanta Azure AD B2C:
 1. Teď může přihlásit k [webu Azure portal](https://portal.azure.com/) jako správce předplatného. (Použít stejný pracovní nebo školní účet nebo stejný účet Microsoft, který jste použili k registraci do Azure.)
 1. Přepnutí na tenanta Azure AD B2C chcete odstranit.
 2. Přejděte do služby Active Directory nabídky na levé straně.
-3. Vyberte **uživatelů a skupin**.
+3. Vyberte **Uživatelé a skupiny**.
 4. Vyberte jednotlivé uživatele v důsledku (vyloučit správce předplatného uživatele, kterého jste aktuálně přihlášení jako). Klikněte na tlačítko **odstranit** v dolní části stránky a klikněte na tlačítko **Ano** po zobrazení výzvy.
 5. Klikněte na tlačítko **registrace aplikací**.
 6. Vyberte aplikaci s názvem **b2c-extensions-app**. Klikněte na tlačítko **odstranit** a klikněte na tlačítko **Ano** po zobrazení výzvy.

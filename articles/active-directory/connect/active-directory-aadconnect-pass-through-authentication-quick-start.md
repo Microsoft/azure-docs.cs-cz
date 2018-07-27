@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2018
+ms.date: 07/26/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 280d62f127c333ff195e921de380721170fd6a96
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 3389fed86fba8059db82816a6fc752f5374369a7
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214978"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39283364"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Azure předávací ověřování služby Active Directory: Rychlý start
 
@@ -73,7 +73,7 @@ Ujistěte se, že jsou splněné následující požadavky.
 Povolit předávací ověřování prostřednictvím [služby Azure AD Connect](active-directory-aadconnect.md).
 
 >[!IMPORTANT]
->Na serveru primární nebo pracovní Azure AD Connect můžete povolit předávací ověřování. Doporučujeme, abyste povolili z primárního serveru.
+>Na serveru primární nebo pracovní Azure AD Connect můžete povolit předávací ověřování. Důrazně doporučujeme, abyste povolili z primárního serveru. Pokud nastavujete pracovní server Azure AD Connect v budoucnu, můžete **musí** pokračujte výběrem předávací ověřování jako možnost přihlášení, zvolíte jinou možnost způsobí **zakázat** Předávací ověřování v tenantovi a přepsání nastavení na primárním serveru.
 
 Pokud Azure AD Connect instalujete poprvé, zvolte [vlastní instalační cesta](active-directory-aadconnect-get-started-custom.md). Na **přihlášení uživatele** zvolte **předávací ověřování** jako **způsob přihlášení**. Při úspěšném dokončení předávací ověřovací Agent nainstalovaný na stejném serveru jako Azure AD Connect. Kromě toho že předávací ověřování je povolena funkce ve svém tenantovi.
 

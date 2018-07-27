@@ -1,21 +1,20 @@
 ---
-title: Dokumentace k sadě SDK pro řeč služeb cognitive Services | Dokumentace Microsoftu
+title: Dokumentace k sadě SDK pro řeč služeb cognitive Services
 description: Zpráva k vydání verze – co se změnilo v nejnovější vydané verze
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: wolfma61
-manager: onano
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
 ms.date: 07/17/2018
 ms.author: wolfma
-ms.openlocfilehash: 50a8c183bd7f2711847ce6d0acade4cb498ef2fc
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: a28df7faaf98e5cba8ad4afe7aa1a829195d7828
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39116091"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39281486"
 ---
 # <a name="release-notes"></a>Poznámky k verzi
 

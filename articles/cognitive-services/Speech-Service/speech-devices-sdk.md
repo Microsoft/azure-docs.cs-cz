@@ -1,44 +1,43 @@
 ---
-title: Informace o zařízeních řeči SDK | Microsoft Docs
-description: Úvod k sadě SDK řeči zařízení.
+title: Informace o zařízeních řeči SDK
+description: Úvod do sadou SDK pro řeč zařízení.
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: v-jerkin
-manager: noellelacharite
 ms.service: cognitive-services
 ms.technology: speech
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: c4451dd2e4d868bd7f604fb8002c3a758a530136
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 4607c997f6c274f6b367fe3e99bf8d21deceef0d
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "35343967"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39285489"
 ---
-# <a name="about-the-speech-devices-sdk-preview"></a>Informace o zařízeních řeči sadu SDK (Preview)
+# <a name="about-the-speech-devices-sdk-preview"></a>Informace o zařízeních řeči SDK (Preview)
 
-O sobě službu Microsoft Speech funguje se širokou škálu zařízení a zvukových zdroje. Nyní můžete využít aplikace řeči na další úroveň s odpovídající hardware a software. Sady SDK zařízení řeči je předem ujít knihovna spárovaný s konkrétní povolenou mikrofon hardware. Sada SDK lze snadno integrovat cloudové služby společnosti Microsoft Speech zařízení a vytvořit výjimečných uživatelské prostředí pro vaše zákazníky.
+Sama o sobě služba Microsoft Speech spolupracuje s širokou škálu zařízení a zdrojů zvuku. Nyní můžete pozvedněte své aplikace řeči na vyšší úroveň díky odpovídající hardware a software. Sadou SDK pro řeč zařízení je knihovna zapíná se předem spárované s konkrétní povolenou mikrofon hardwarem. Sada SDK umožňuje snadno integrovat Microsoft Speech service cloudové zařízení a vytvářet mimořádné uživatelské prostředí pro vaše zákazníky.
 
-Sadu SDK umožňuje vytvářet vlastní vedlejším zařízení slovem přizpůsobené probuzení – cue, který iniciuje zásah uživatele je jedinečné pro vaší značkou. Použije vícekanálový zvuk a poskytne přesnější rozpoznávání řeči prostřednictvím potlačení šumu a zrušení zpětné vazby, hlasové úplně pole a beamforming.
+Sada SDK umožňuje vytvářet okolí zařízení s aplikací word přizpůsobené probuzení – upozornění, který iniciuje interakce s uživatelem je jedinečné pro vlastní značky. Poskytnout přesnější rozpoznávání řeči prostřednictvím šumu potlačení, zrušení zpětné vazby, hlasové úplně pole a beamforming využívá zvuk využití více kanálů.
 
-Sada SDK usnadňuje různých scénářů hlasové služby, jako jsou jednotky přispívají řazení systémy, v auta nebo doma Pomocníci a inteligentní mluvčí. Může reagovat na uživatele s textem, je výchozí nebo vlastní hlasové mluvit, zadejte výsledky hledání, převede do jiných jazyků a další. 
+Sada SDK usnadňuje různé scénáře hlasové služby, jako jsou jednotky do pořadí systémy, v automobilu nebo doma Asistenti a inteligentní mluvčí. Může reagovat na uživatele s textem, je výchozí nebo vlastní hlasové mluvit, poskytovat výsledky vyhledávání, přeloží do jiných jazyků a další. 
 
 
 
-## <a name="development-kit-providers"></a>Zprostředkovatelé Development kit
+## <a name="development-kit-providers"></a>Poskytovatelé Development kit
 
-Návrhy odkaz systému kompletní, začátku do konce. Více brzo!
+Referenční návrhy systému kompletní, začátku do konce. Další už brzy!
 
 |||
 |-|-|
-|[![ROOBO logo](media/speech-devices-sdk/roobo-logo.png)](http://ddk.roobo.com/)|ROOBO poskytuje kompletní AI systému řešení pro electric domácí spotřebiče, automobilů, roboty, toys a dalších odvětví. Návrhy odkaz na ROOBO výrazně omezit vývoj čas na trh prostřednictvím integrace se službou Microsoft Speech. [Navštivte ROOBO](http://ddk.roobo.com/)|
+|[![ROOBO logo](media/speech-devices-sdk/roobo-logo.png)](http://ddk.roobo.com/)|ROOBO poskytuje kompletní řešení AI systému pro electric spotřebičů, automobily, robotů, toys a další obory. Referenční návrhy společnosti ROOBO výrazně zkrátit vývoj dobu uvedení na trh prostřednictvím integrace se službou Microsoft Speech. [Navštivte ROOBO](http://ddk.roobo.com/)|
 
 ## <a name="next-steps"></a>Další postup
 
-Abyste mohli začít, získání [bezplatný účet Azure](https://azure.microsoft.com/free/ai/) a zaregistrujte se pro sadu SDK řeči zařízení.
+Pokud chcete začít, získejte [bezplatný účet Azure](https://azure.microsoft.com/free/ai/) a zaregistrujte sadou SDK pro řeč zařízení.
 
 > [!div class="nextstepaction"]
-> [Zaregistrujte si sady SDK zařízení řeči](get-speech-devices-sdk.md)
+> [Zaregistrujte zařízení sadou SDK pro řeč](get-speech-devices-sdk.md)
 

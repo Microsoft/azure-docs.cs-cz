@@ -1,6 +1,6 @@
 ---
-title: Vytváření clusterů systému Hadoop pomocí prostředí PowerShell – Azure HDInsight | Microsoft Docs
-description: Naučte se vytvořit clustery Hadoop, HBase, Storm a Spark pro HDInsight pomocí prostředí Azure PowerShell v systému Linux.
+title: Vytvoření clusterů Hadoop pomocí prostředí PowerShell – Azure HDInsight | Dokumentace Microsoftu
+description: Zjistěte, jak vytvářet clustery Hadoop, HBase, Storm nebo Spark na Linuxu pro HDInsight pomocí Azure Powershellu.
 services: hdinsight
 documentationcenter: ''
 author: nitinme
@@ -14,24 +14,24 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: 11e98117a93f541f6f88b213f59dcf4aba3e7f36
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 57ae7c3cab6c0084bb43585f65d79ae6cc265356
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37045207"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39263722"
 ---
-# <a name="create-linux-based-clusters-in-hdinsight-using-azure-powershell"></a>Vytvořit clustery se systémem Linux v HDInsight pomocí Azure PowerShell
+# <a name="create-linux-based-clusters-in-hdinsight-using-azure-powershell"></a>Vytvoření clusterů se systémem Linux v HDInsight pomocí Azure Powershellu
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-Prostředí Azure PowerShell je výkonná skriptovací prostředí, které můžete řídit a automatizovat nasazení a správu vašich úloh ve službě Microsoft Azure. Tento dokument obsahuje informace o tom, jak vytvořit cluster HDInsight se systémem Linux pomocí prostředí Azure PowerShell. Zahrnuje také ukázkový skript.
+Prostředí Azure PowerShell je výkonný skriptovací prostředí, které můžete použít k řízení a automatizaci nasazení a správu vašich úloh v Microsoft Azure. Tento dokument obsahuje informace o tom, jak vytvořit cluster HDInsight se systémem Linux pomocí Azure Powershellu. Také obsahuje ukázkový skript.
 
 > [!NOTE]
-> Prostředí Azure PowerShell je dostupná pouze na klienty se systémem Windows. Pokud používáte klienta Linux, Unix nebo Mac OS X, přečtěte si téma [vytvořit cluster HDInsight se systémem Linux pomocí příkazového řádku Azure CLI](hdinsight-hadoop-create-linux-clusters-azure-cli.md) informace o používání rozhraní příkazového řádku Azure k vytvoření clusteru.
+> Prostředí Azure PowerShell je dostupná pouze na klienty Windows. Pokud používáte klienta systému Linux, Unix nebo Mac OS X, přečtěte si téma [vytvořit cluster HDInsight se systémem Linux pomocí příkazového řádku Azure](hdinsight-hadoop-create-linux-clusters-azure-cli.md) informace o použití Azure CLI vytvořit cluster.
 
 ## <a name="prerequisites"></a>Požadavky
-Musí mít před zahájením tohoto postupu následující:
+Musíte mít následující před zahájením tohoto postupu:
 
 * Předplatné Azure. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * [Azure PowerShell](/powershell/azure/install-azurerm-ps)
@@ -39,49 +39,49 @@ Musí mít před zahájením tohoto postupu následující:
     > [!IMPORTANT]
     > Podpora prostředí Azure PowerShell pro správu prostředků služby HDInsight pomocí Azure Service Manageru je **zastaralá** a k 1. lednu 2017 jsme ji odebrali. Kroky v tomto dokumentu používají nové rutiny služby HDInsight, které pracují s Azure Resource Managerem.
     >
-    > Postupujte podle kroků v [nainstalovat Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) nainstalovat nejnovější verzi prostředí Azure PowerShell. Pokud máte skripty, které je potřeba upravit tak, aby používaly nové rutiny, které pracují s nástrojem Azure Resource Manager, najdete další informace v tématu [Migrace na vývojové nástroje založené na Azure Resource Manageru pro clustery služby HDInsight](hdinsight-hadoop-development-using-azure-resource-manager.md).
+    > Postupujte podle kroků v [instalace Azure Powershellu](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) nainstalovat nejnovější verzi Azure Powershellu. Pokud máte skripty, které je potřeba upravit tak, aby používaly nové rutiny, které pracují s nástrojem Azure Resource Manager, najdete další informace v tématu [Migrace na vývojové nástroje založené na Azure Resource Manageru pro clustery služby HDInsight](hdinsight-hadoop-development-using-azure-resource-manager.md).
 
 ## <a name="create-cluster"></a>Vytvoření clusteru
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-K vytvoření clusteru HDInsight pomocí prostředí Azure PowerShell, musíte provést následující postupy:
+Vytvoření clusteru HDInsight pomocí Azure Powershellu, je nutné provést následující postup:
 
-* Vytvoření skupiny prostředků Azure.
+* Vytvořte skupinu prostředků Azure
 * Vytvoření účtu služby Azure Storage
-* Vytvořit kontejner objektů Blob v Azure
+* Vytvoření kontejneru objektů Blob v Azure
 * Vytvoření clusteru HDInsight
 
-Následující skript ukazuje postup vytvoření nového clusteru:
+Tento skript ukazuje, jak vytvořit nový cluster:
 
 [!code-powershell[main](../../powershell_scripts/hdinsight/create-cluster/create-cluster.ps1?range=5-71)]
 
-Hodnoty, které zadáte pro přihlášení clusteru se používají k vytvoření uživatelského účtu Hadoop pro cluster. Tento účet slouží k připojení ke službám hostovaným v clusteru, jako jsou webová uživatelská rozhraní nebo rozhraní REST API.
+Hodnoty, které zadáte pro přihlášení ke clusteru se používají k vytvoření uživatelského účtu systému Hadoop pro cluster. Tento účet slouží k připojení ke službám hostovaným v clusteru, jako jsou webová uživatelská rozhraní nebo rozhraní REST API.
 
-Hodnoty, které zadáte pro uživatele SSH se používají k vytvoření uživatele SSH pro cluster. Tento účet použijte ke spuštění vzdálené relace SSH v clusteru a spouštění úloh. Další informace najdete v dokumentu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
+Hodnoty, které zadáte pro uživatele SSH slouží k vytvoření uživatele SSH pro cluster. Pomocí tohoto účtu spustit vzdálenou relaci SSH v clusteru a spouštění úloh. Další informace najdete v dokumentu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 > [!IMPORTANT]
-> Pokud máte v plánu používat více než 32 uzlů pracovního procesu (buď při vytváření clusteru, nebo po vytvoření škálování clusteru), musíte také zadat velikost hlavního uzlu s alespoň s 8 jádry a 14 GB paměti RAM.
+> Pokud budete chtít použít více než 32 uzly pracovního procesu (buď při vytváření clusteru nebo škálování clusteru po vytvoření), musíte zadat také velikost hlavního uzlu s alespoň s 8 jádry a 14 GB paměti RAM.
 >
 > Další informace o velikostech uzlů a souvisejících nákladech najdete v [cenách pro HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
 
-To může trvat až 20 minut pro vytvoření clusteru.
+Může trvat až 20 minut vytvořit cluster.
 
 ## <a name="create-cluster-configuration-object"></a>Vytvoření clusteru: objekt konfigurace
 
-Můžete taky vytvořit objekt konfigurace HDInsight pomocí `New-AzureRmHDInsightClusterConfig` rutiny. Poté můžete upravit tento objekt konfigurace povolit další možnosti konfigurace pro váš cluster. Nakonec použijte `-Config` parametr `New-AzureRmHDInsightCluster` rutiny používají konfiguraci.
+Můžete také vytvořit objekt konfigurace HDInsight pomocí `New-AzureRmHDInsightClusterConfig` rutiny. Poté můžete upravit tento objekt konfigurace k zapnout možnosti rozšířené konfigurace pro váš cluster. Nakonec použijte `-Config` parametr `New-AzureRmHDInsightCluster` rutiny použít konfiguraci.
 
-Tento skript vytvoří objekt konfigurace ke konfiguraci služby ML na typ clusteru HDInsight. Konfigurace umožňuje hraniční uzel, Rstudia a účet úložiště.
+Tento skript vytvoří objekt konfigurace ke konfiguraci R serveru v clusteru typu HDInsight. Konfigurace umožňuje hraniční uzel, RStudio a dalšího účtu úložiště.
 
 [!code-powershell[main](../../powershell_scripts/hdinsight/create-cluster/create-cluster-with-config.ps1?range=59-98)]
 
 > [!WARNING]
-> Použití účtu úložiště v jiném umístění než HDInsight cluster není podporováno. Při použití v tomto příkladu, vytvořte účet úložiště ve stejném umístění jako server.
+> Použití účtu úložiště v jiném umístění než HDInsight cluster se nepodporuje. Při použití v tomto příkladu, vytvořte účet úložiště ve stejném umístění jako server.
 
 ## <a name="customize-clusters"></a>Přizpůsobení clusterů
 
-* V tématu [clusterů HDInsight přizpůsobit pomocí Bootstrap](hdinsight-hadoop-customize-cluster-bootstrap.md#use-azure-powershell).
-* V tématu [HDInsight přizpůsobit clustery pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md).
+* Zobrazit [HDInsight přizpůsobení clusterů pomocí Bootstrap](hdinsight-hadoop-customize-cluster-bootstrap.md#use-azure-powershell).
+* Zobrazit [HDInsight přizpůsobit clustery pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md).
 
 ## <a name="delete-the-cluster"></a>Odstranění clusteru
 
@@ -93,24 +93,24 @@ Pokud narazíte na problémy s vytvářením clusterů HDInsight, podívejte se 
 
 ## <a name="next-steps"></a>Další postup
 
-Teď, když jste úspěšně vytvořili clusteru služby HDInsight, použijte v následujících zdrojích informací se dozvíte, jak pracovat s vašeho clusteru.
+Teď, když úspěšně vytvoříte HDInsight cluster, použijte následující prostředky se naučíte pracovat s vaším clusterem.
 
 ### <a name="hadoop-clusters"></a>Clustery Hadoop
 
 * [Použití Hivu se službou HDInsight](hadoop/hdinsight-use-hive.md)
 * [Použití Pigu se službou HDInsight](hadoop/hdinsight-use-pig.md)
-* [Používání nástroje MapReduce s HDInsight](hadoop/hdinsight-use-mapreduce.md)
+* [Použití MapReduce se službou HDInsight](hadoop/hdinsight-use-mapreduce.md)
 
 ### <a name="hbase-clusters"></a>Clustery HBase
 
 * [Začínáme s HBase ve službě HDInsight](hbase/apache-hbase-tutorial-get-started-linux.md)
-* [Vývoj aplikací v jazyce Java pro HBase v HDInsight](hbase/apache-hbase-build-java-maven-linux.md)
+* [Vývoj aplikací v Javě pro HBase v HDInsight](hbase/apache-hbase-build-java-maven-linux.md)
 
 ### <a name="storm-clusters"></a>Clustery Storm
 
 * [Vývoj topologie Java pro Storm v HDInsight](storm/apache-storm-develop-java-topology.md)
-* [Použití komponent, Python v Storm v HDInsight](storm/apache-storm-develop-python-topology.md)
-* [Nasazení a monitorování topologie se Storm v HDInsight](storm/apache-storm-deploy-monitor-topology-linux.md)
+* [Použití komponent v Pythonu v Storm v HDInsight](storm/apache-storm-develop-python-topology.md)
+* [Nasazení a monitorování topologií se Stormem v HDInsight](storm/apache-storm-deploy-monitor-topology-linux.md)
 
 ### <a name="spark-clusters"></a>Clustery Spark
 

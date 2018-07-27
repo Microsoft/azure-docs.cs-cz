@@ -43,6 +43,8 @@
           href: howto-administer.md
         - name: Export dat
           href: howto-export-data.md
+        - name: Vizualizace dat v Power BI
+          href: howto-connect-powerbi.md
     - name: Tvůrce
       items:
         - name: Nastavení šablony zařízení

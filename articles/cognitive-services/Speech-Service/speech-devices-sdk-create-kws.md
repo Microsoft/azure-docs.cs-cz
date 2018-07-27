@@ -1,83 +1,82 @@
 ---
-title: Vytváření vlastní probuzení word | Microsoft Docs
-description: Vytváření vlastní probuzení slova pro sadu SDK řeči zařízení.
+title: Vytváří se vlastní probuzení word
+description: Vytvoření vlastní probuzení word pro sadou SDK pro řeč zařízení.
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: v-jerkin
-manager: noellelacharite
 ms.service: cognitive-services
 ms.technology: speech
 ms.topic: article
 ms.date: 04/28/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 2575ed24bb931ca4da05dd6663b976406af590e6
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 615a901c70fff92141442699ea6e4b8fce1c9ace
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343793"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39282569"
 ---
-# <a name="create-a-custom-wake-word-using-speech-service"></a>Vytvořit vlastní probuzení slovo pomocí služby řeči
+# <a name="create-a-custom-wake-word-using-speech-service"></a>Vytvořit vlastní probuzení slovo pomocí Speech service
 
-Zařízení je vždy naslouchání pro probuzení slovo (nebo frázi). "Blogu Hey Cortana" je například word probuzení pro asistenta Cortany. Když uživatel zvolí slovo probuzení, zařízení spustí odesílání všechny následné zvuk do cloudu, dokud uživatel přestane hovořícího. Přizpůsobení vaší aplikace word probuzení je efektivní způsob, jak odlišit od zařízení a posilovat brandingu.
+Vaše zařízení je vždy naslouchání pro probuzení slova (nebo fráze). Například "Hey Cortana" je slovo probuzení pro asistenta Cortany. Když uživatel zvolí slovo probuzení, spuštění zařízení, všechny následné zvuk posílají do cloudu, dokud uživatel zastaví čtení. Přizpůsobení vaší aplikace word probuzení je účinný způsob, jak odlišit zařízení a posilovat brandingu.
 
-V tomto článku zjistěte, jak vytvořit vlastní probuzení slova pro vaše zařízení.
+V tomto článku se dozvíte, jak vytvořit vlastní probuzení word pro vaše zařízení.
 
-## <a name="choosing-an-effective-wake-word"></a>Výběr efektivní probuzení aplikace word
+## <a name="choosing-an-effective-wake-word"></a>Výběr word efektivní probuzení
 
-Při výběru slovo probuzení vezměte v úvahu následující pokyny.
+Při výběru slova probuzení vezměte v úvahu následující pokyny.
 
-* Vaše aplikace word probuzení by měl být anglické slovo nebo frázi. Má trvat déle, než dvě sekundy. Tím vyjádříte.
+* Vaše aplikace word probuzení by měl být anglického slova nebo fráze. By měla trvat delší než 2 sekundy říct.
 
-* Slova 4 – 7 slabik nejlépe fungovat. Například "Blogu Hey, počítač" je dobré probuzení slova, při právě blogu Hey"" je nízký.
+* Slova 4 – 7 slabik fungují nejlépe. "Hey, počítač" je dobré probuzení slova, zatímco právě "Hey" je nízký.
 
-* Probuzení slova by mělo vycházet běžné pravidla výslovnosti angličtinu.
+* Probuzení slova by měly dodržovat běžných pravidel anglické výslovnost.
 
-* Slova jedinečný nebo i zhotovené následujícího běžné pravidla výslovnosti anglické může snížil počet falešných poplachů. Například "computerama" může být dobré probuzení word.
+* Jedinečný nebo dokonce zhotovené slova, která následuje běžných pravidel anglické Výslovnost se může snížit počet falešně pozitivních výsledků. Například "computerama" může být vhodné probuzení word.
 
-* Nevybírejte běžné aplikace word. Například "eat" a "jít" jsou slova, která obecně se často říká v obyčejnou konverzace. False aktivačních událostí pro zařízení, může být.
+* Nevybírejte běžné slovo. Například "jíst" a "přejděte" jsou slova, které lidé často říkají v běžném konverzace. Může být falešně aktivační události pro vaše zařízení.
 
-* Nepoužívejte probuzení slovo, které by mohly mít alternativní výslovnosti. Uživatelé museli vědět, "vpravo" výslovnosti zařízení reagovat. Například "509" může projevit jako "pět nulové 9", "pět jejda devět", nebo "pěti set devět." "R.E.I." může projevit jako "R E I" nebo "Ray." "Live", může projevit jako [līv] nebo [liv].
+* Vyhněte se použití probuzení slovo, které by mohly mít alternativní výslovnosti. Uživatelé museli vědět, výslovnost "vpravo" zařízení reagovat. Například "509" může projevit jako "pět nula devíti", "pět ale devět", nebo "pět set a devět." "R.E.I." může být vyslovuje se jako "R E můžu" nebo "Ray." "Live" může být vyslovuje se jako [līv] nebo [liv].
 
-* Nepoužívejte speciální znaky, symboly a čísla. Například "Přejděte #" a "20 + kočky" nebudou funkční probuzení slova. Ale "přejděte sharp" nebo "dvacet plus kočky" může fungovat. Stále můžete použít symboly v branding a použít marketing a dokumentace k posílení správné výslovnosti.
+* Nepoužívejte speciální znaky, symboly nebo číslic. Například "Go #" a "20 + kočky" by dobré probuzení slova. Ale "Přejít sharp" nebo "dvacet plus kočky" může fungovat. Stále můžete použít symboly v brandingu a můžete posílit správné výslovnost uvádění na trh a dokumentace.
 
 > [!NOTE]
-> Pokud si zvolíte značkou slovo jako vaše aplikace word probuzení, ujistěte se, jste vlastníkem tohoto ochranná známka, jinak mají oprávnění od vlastníka ochranná známka ho používat. Společnost Microsoft není zodpovědná za všechny právní problémy, které může způsobit zvoleného probuzení slov.
+> Pokud se rozhodnete značkou slova jako vaše slovo probuzení, ujistěte se, že jste vlastníkem tohoto ochranná známka, jinak mají oprávnění od vlastníka ochranná známka jeho použití. Společnost Microsoft není odpovědná za jakékoli právních problémech, které mohou vzniknout podle vašeho výběru probuzení slova.
 
-## <a name="creating-your-wake-word"></a>Vytvoření vaší aplikace word probuzení
+## <a name="creating-your-wake-word"></a>Vytváří se vaše slova probuzení
 
-Než použijete vlastní probuzení word s vaším zařízením, musíte ji pomocí služby Microsoft vlastní probuzení generování Word vytvořit. Po zadání slova probuzení, vytváří služby a soubor potom nasadíte do vaší dev sady k povolení vaší aplikace word probuzení ve vašem zařízení.
+Před použitím vlastní probuzení word s vaším zařízením, musíte vytvořit pomocí služby Microsoft vlastní funkci generování aplikace Word. Po zadání slovo probuzení, služba vytvoří soubor, který pak nasadíte do si vývojářský balíček, aby vaše aplikace word probuzení na vašem zařízení.
 
-1. Přejděte na [portálu vlastní řeči](https://cris.ai/).
+1. Přejděte [portál Custom Speech Service](https://cris.ai/).
 
-2. Vytvořte nový účet s e-mailovou adresu, na který jste obdrželi tuto pozvánku pro Azure Active Directory. 
+2. Vytvořte nový účet s e-mailovou adresu, na který jste obdrželi pozvánku pro Azure Active Directory. 
 
     ![Vytvořit nový účet](media/speech-devices-sdk/wake-word-1.png)
  
-3.  Po přihlášení, vyplňte formulář, a pak klikněte na **spustit cesty.**
+3.  Po přihlášení, vyplňte formulář a potom klikněte na **pusťte se.**
 
-    ![úspěšně přihlášen.](media/speech-devices-sdk/wake-word-3.png)
+    ![úspěšně přihlásil](media/speech-devices-sdk/wake-word-3.png)
  
-4. **Word probuzení vlastní** stránky není k dispozici na veřejnost, takže neexistuje žádný odkaz, který přejdete existuje. Klikněte na tlačítko nebo místo toho vložte tento odkaz: https://cris.ai/customkws.
+4. **Slovo probuzení vlastní** stránka není dostupná, proto neexistuje žádný odkaz, která vás došlo. Klikněte na tlačítko nebo místo toho zkopírujte tento odkaz: https://cris.ai/customkws.
 
     ![skrytou stránku](media/speech-devices-sdk/wake-word-4.png)
  
-6. Typ v aplikaci word probuzení podle vaší volby, pak **odeslání** ho.
+6. Typ hledané klíčové slovo probuzení podle vašeho výběru, pak **odeslat** ho.
 
-    ![Zadejte vaše aplikace word probuzení](media/speech-devices-sdk/wake-word-5.png)
+    ![Zadejte vaše slova probuzení](media/speech-devices-sdk/wake-word-5.png)
  
-7. To může trvat několik minut, než soubory, které má být vygenerován. Měli byste vidět kruh roztočený na kartě prohlížeče. Po chvíli, zobrazí informační panel zobrazí se s žádostí o stažení `.zip` souboru.
+7. Může trvat několik minut, než soubory, které chcete vygenerovat. Pokryjte kruh byste měli vidět na kartě prohlížeče. Za okamžik, informační panel se zobrazí s výzvou ke stažení `.zip` souboru.
 
     ![přijetí souboru ZIP](media/speech-devices-sdk/wake-word-6.png)
 
-8. Uložit `.zip` soubor do počítače. Je nutné tento soubor k nasazení aplikace word vlastní probuzení development Kit podle pokynů v [Začínáme se sadou SDK zařízení řeči](speech-devices-sdk-qsg.md).
+8. Uložit `.zip` soubor do počítače. Je nutné tento soubor a nasadit vlastní probuzení slovo development Kit, postupujte podle pokynů v [Začínáme se sadou SDK pro řeč zařízení](speech-devices-sdk-qsg.md).
 
-9. Nyní mohou **odhlásit.**
+9. Nyní můžete **Odhlásit se.**
 
 ## <a name="next-steps"></a>Další postup
 
-Abyste mohli začít, získání [bezplatný účet Azure](https://azure.microsoft.com/free/) a zaregistrujte se pro sadu SDK řeči zařízení.
+Pokud chcete začít, získejte [bezplatný účet Azure](https://azure.microsoft.com/free/) a zaregistrujte sadou SDK pro řeč zařízení.
 
 > [!div class="nextstepaction"]
-> [Zaregistrujte si sady SDK zařízení řeči](get-speech-devices-sdk.md)
+> [Zaregistrujte zařízení sadou SDK pro řeč](get-speech-devices-sdk.md)
 

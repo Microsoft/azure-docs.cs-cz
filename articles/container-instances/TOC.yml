@@ -59,7 +59,7 @@
           href: container-instances-log-analytics.md
     - name: Spouštění úloh
       items:
-        - name: Spouštění kontejnerizovaných úloh
+        - name: Spuštění úkolů se zásadami restartování
           href: container-instances-restart-policy.md
         - name: Agenti sestavení Jenkins ve službě ACI
           href: container-instances-jenkins.md

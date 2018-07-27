@@ -6,7 +6,7 @@
       href: overview.md
 - name: Šablony Rychlý start
   items:
-    - name: Použití MSI virtuálního počítače pro přístup k Azure Resource Manageru
+    - name: Použití spravované identity na virtuálním počítači pro přístup k Azure Resource Manageru
       items:
         - name: Virtuální počítač s Windows
           href: tutorial-windows-vm-access-arm.md
@@ -49,11 +49,11 @@
         - name: Přístup k Azure Resource Manageru s využitím uživatelsky přiřazené identity
           href: msi-tutorial-linux-vm-access-arm.md
     - name: Azure Service Bus
-      href: /azure/service-bus-messaging/service-bus-managed-service-identity?context=azure/active-directory/context/msi-context
+      href: /azure/service-bus-messaging/service-bus-managed-service-identity?context=azure/active-directory/managed-service-identity/context/msi-context
     - name: Azure App Service a Functions
-      href: /azure/app-service/app-service-managed-service-identity?context=azure/active-directory/context/msi-context
+      href: /azure/app-service/app-service-managed-service-identity?context=azure/active-directory/managed-service-identity/context/msi-context
     - name: Azure Event Hubs
-      href: /azure/event-hubs/event-hubs-managed-service-identity?context=azure/active-directory/context/msi-context
+      href: /azure/event-hubs/event-hubs-managed-service-identity?context=azure/active-directory/managed-service-identity/context/msi-context
 - name: Návody
   items:
     - name: Konfigurace identity pro virtuální počítač Azure
@@ -82,7 +82,7 @@
           href: qs-configure-template-windows-vmss.md
         - name: REST
           href: qs-configure-rest-vmss.md
-    - name: Použití MSI virtuálních počítačů
+    - name: Použití spravované identity na virtuálním počítači
       items:
         - name: Získání přístupového tokenu
           href: how-to-use-vm-token.md

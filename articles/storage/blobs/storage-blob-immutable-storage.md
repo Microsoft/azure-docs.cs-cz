@@ -1,38 +1,37 @@
 ---
-title: Funkce Immutable Storage služby Azure Blob Storage (Preview) | Microsoft Docs
-description: Azure Storage teď pro úložiště objektů blob nabízí podporu WORM umožňující uchovávat data v nesmazatelném a neupravitelném stavu po uživatelem zadanou dobu. Tato funkce umožňuje organizacím v řadě regulovaných odvětví, zejména organizacím zprostředkovatelů a obchodníků, uchovávat data způsobem odpovídajícím nařízení SEC 17a-4(f) a dalším nařízením.
+title: Neměnné úložiště pro úložiště objektů Blob v Azure (Preview) | Dokumentace Microsoftu
+description: Azure Storage nabízí podporu ČERV (zápis, mnoho čtení) pro úložiště objektů Blob (objekt), který umožňuje uživatelům ukládat data ve stavu, nepůjdou, neupravitelnými uživatelem zadaný interval času. Podpora ČERV pro úložiště objektů Blob v Azure umožňuje organizacím v řadě odvětví regulované, zejména zprostředkovatele – aby mohla organizace k ukládání dat v kompatibilní s Sekundu 17a-4(f) způsobem a nařízení.
 services: storage
 author: sangsinh
-manager: twooley
-ms.custom: mvc
 ms.service: storage
-ms.topic: quickstart
+ms.topic: article
 ms.date: 05/29/2018
 ms.author: sangsinh
-ms.openlocfilehash: 04e88725c04fc88a8394bafd455d25ea13718f7d
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
-ms.translationtype: HT
+ms.component: blobs
+ms.openlocfilehash: a69d26b8c60f25b5710e48500cc727421d9e5c9a
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39070004"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39263323"
 ---
-# <a name="immutable-storage-feature-of-azure-blob-storage-preview"></a>Funkce Immutable Storage služby Azure Blob Storage (Preview)
+# <a name="store-business-critical-data-in-azure-blob-storage-preview"></a>Store důležitých podnikových dat ve službě Azure Blob storage (Preview)
 
-Funkce Immutable Storage pro objekty blob Azure umožňuje uživatelům uchovávat důležitá podniková data ve službě Azure Blob Storage ve stavu WORM (Write Once Read Many). V tomto stavu jsou data po uživatelem zadanou dobu nesmazatelná a neupravitelná. Po dobu trvání intervalu uchovávání informací je možné objekty blob vytvářet a číst, ale ne upravovat ani odstraňovat.
+Neměnné úložiště pro úložiště objektů Blob v Azure (objekt) umožňuje uživatelům k ukládání důležitých podnikových dat ve službě Azure blob storage ve stavu ČERV (zápis, mnoho čtení). V tomto stavu jsou data po uživatelem zadanou dobu nesmazatelná a neupravitelná. Objekty BLOB nelze vytvořit a číst, ale upravit nebo odstranit po dobu trvání interval uchovávání informací.
 
 ## <a name="overview"></a>Přehled
 
-Funkce Immutable Storage umožňuje organizacím v řadě regulovaných odvětví, zejména organizacím zprostředkovatelů a obchodníků, uchovávat data způsobem odpovídajícím nařízení SEC 17a-4(f) a dalším nařízením.
+Neměnné úložiště umožňuje organizacím v řadě odvětví regulované, zejména zprostředkovatele – aby mohla organizace k ukládání dat v kompatibilní s Sekundu 17a-4(f) způsobem a nařízení.
 
 Mezi typické případy použití patří:
 
-- **Dodržování legislativních předpisů:** Funkce Immutable Storage pro objekty blob Azure je navržená tak, aby finančním institucím a souvisejícím odvětvím pomohla splnit nařízení SEC 17a-4(f), CFTC 1.31©-(d), FINRA atd.
+- **Dodržování legislativních předpisů**: neměnné úložiště pro úložiště objektů Blob v Azure je určen pro finanční instituce a souvisejících oborech řešit Sekundu 17a-4(f) CFTC 1.31©-(d) FINRA atd.
 
-- **Zabezpečené uchovávání dokumentů:** Uživatelé získají maximální ochranu dat, protože služba Blob Storage zajišťuje, aby data nemohl upravit ani odstranit jiný uživatel, a to ani uživatel s oprávněními správce účtu.
+- **Zabezpečení dokumentu uchování**: uživatelé dostanou maximální ochranu dat jako úložiště objektů Blob se zajistí, že data nelze změnit ani odstranit, každý uživatel, včetně těch s oprávněními správce účtu.
 
-- **Blokování z právních důvodů:** Funkce Immutable Storage pro objekty blob Azure umožňuje uživatelům po požadovanou dobu uchovávat citlivé informace důležité pro soudní proces nebo vyšetřování trestné činnosti atd. ve stavu odolném proti neoprávněné manipulaci.
+- **Blokování z právních důvodů**: neměnné úložiště pro úložiště objektů Blob v Azure umožňuje ukládání citlivých informací, které jsou nezbytné k sporu nebo vyšetřování trestného atd. ve stavu odolného proti podle.
 
-Funkce Immutable Storage umožňuje následující:
+Neměnné úložiště umožňuje:
 
 - **Podpora zásad uchovávání informací podle času:** Uživatelé můžou nastavit zásady pro uchovávání dat po zadanou dobu.
 
@@ -44,11 +43,11 @@ Funkce Immutable Storage umožňuje následující:
 
 - **Podpora protokolování auditu:** Každý kontejner obsahuje protokol auditu, který ukazuje až pět příkazů uchovávání informací podle času pro uzamknuté zásady uchovávání informací podle času a maximálně tři protokoly pro prodloužení intervalů uchovávání informací.  V případě uchovávání informací podle času obsahuje protokol ID uživatele, typ příkazu, časová razítka a interval uchovávání informací. V případě blokování z právních důvodů obsahuje protokol ID uživatele, typ příkazu, časová razítka a značky blokování z právních důvodů. Tento protokol se s ohledem na legislativní pokyny v nařízení SEC 17a-4(f) uchovává po celou dobu životnosti kontejneru. Podrobnější protokol všech aktivit roviny řízení najdete v [protokolu aktivit Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs). Uživatel je zodpovědný za trvalé uchování těchto protokolů, protože se můžou vyžadovat pro legislativní nebo jiné účely.
 
- Funkce je povolená ve všech veřejných oblastech Azure.
+Neměnné úložiště je povolené ve všech veřejných oblastech Azure.
 
 ## <a name="how-it-works"></a>Jak to funguje
 
-Funkce Immutable Storage pro objekty blob Azure podporuje dva typy zásad WORM neboli zásad neměnnosti: uchovávání informací podle času a blokování z právních důvodů. Podrobnosti o tom, jak tyto zásady neměnnosti vytvořit, najdete v části [Začínáme](#Getting-started).
+Neměnné úložiště pro úložiště objektů Blob v Azure podporuje dva typy ČERV nebo neměnné zásady: uchovávání informací podle času a právních důvodů. Podrobnosti o tom, jak tyto zásady neměnnosti vytvořit, najdete v části [Začínáme](#Getting-started).
 Když se na kontejner použije zásada uchovávání informací podle času nebo blokování z právních důvodů, všechny stávající objekty blob se přesunou do neměnného stavu (chráněného proti zápisu a odstranění). Všechny nové objekty blob nahrané do kontejneru se také přesunou do neměnného stavu.
 
 > [!IMPORTANT]
@@ -79,7 +78,7 @@ Podrobnosti o rozhraní REST API pro objekty blob najdete v dokumentaci k [rozhr
 
 > [!NOTE]
 > V prvních dvou scénářích v předchozí tabulce jsou povolené první operace Put Blob a operace Put Block List a Put Block nezbytné k vytvoření objektu blob, všechny následující operace jsou zakázané.
-> Funkce Immutable Storage je dostupná pouze v účtech GPv2 nebo Blob Storage a musí se vytvořit prostřednictvím [Azure Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
+> Neměnné úložiště je dostupná pouze v účtech GPv2 a blob storage a musí být vytvořeny prostřednictvím [Azure Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
 
 ## <a name="pricing"></a>Ceny
 
@@ -94,9 +93,9 @@ Během období Public Preview platí následující omezení:
 
 ## <a name="getting-started"></a>Začínáme
 
-Funkce Azure Immutable Storage pro objekty blob Azure je podporovaná v nejnovějších verzích webu [Azure Portal](http://portal.azure.com), Azure [CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) a Azure [PowerShellu](https://github.com/Azure/azure-powershell/releases/tag/Azure.Storage.v4.4.0-preview-May2018).
+Neměnné úložiště Azure pro Azure Blob storage se podporuje na nejnovější verze [webu Azure Portal](http://portal.azure.com)Azure [CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)a Azure [prostředí PowerShell](https://github.com/Azure/azure-powershell/releases/tag/Azure.Storage.v4.4.0-preview-May2018)
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>portál Azure
 
 1. Vytvořte nový kontejner nebo vyberte stávající kontejner pro uložení objektů blob, které je potřeba zachovat v neměnném stavu.
  Kontejner se musí nacházet v účtu úložiště GPv2.
@@ -132,7 +131,7 @@ Funkce Azure Immutable Storage pro objekty blob Azure je podporovaná v nejnově
 
 Nainstalujte [rozšíření rozhraní příkazového řádku](http://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) pomocí příkazu `az extension add -n storage-preview`.
 
-Pokud již máte rozšíření nainstalované, pomocí následujícího příkazu povolte funkci Immutable Storage: `az extension update -n storage-preview`
+Pokud již máte nainstalované rozšíření, použijte následující příkaz k povolení neměnné úložiště: `az extension update -n storage-preview`
 
 Tato funkce je součástí následujících skupin příkazů (příkazy zobrazíte spuštěním příkazu s parametrem -h pro tyto skupiny): `az storage container immutability-policy` a `az storage container legal-hold`.
 
@@ -150,7 +149,7 @@ Ukázkový kód PowerShellu ukazující použití této funkce najdete níže.
 
 ## <a name="client-libraries"></a>Klientské knihovny
 
-Funkce Immutable Storage pro objekty blob Azure je podporovaná v následujících verzích klientských knihoven:
+Neměnné úložiště pro úložiště objektů Blob v Azure je podporováno v následujících verzích knihovna klienta
 
 - [Klientská knihovna pro .NET (verze 7.2.0-preview nebo novější)](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/7.2.0-preview)
 - [Klientská knihovna pro Node.js (verze 4.0.0 nebo novější)](https://www.npmjs.com/package/azure-arm-storage)
@@ -170,11 +169,11 @@ Funkce Immutable Storage pro objekty blob Azure je podporovaná v následující
 
 **Vztahuje se tato funkce pouze na objekty blob bloku, nebo i na objekty blob stránky a doplňovací objekty blob?**
 
-Funkci Immutable Storage pro objekty blob je možné používat s jakýmkoli typem objektu blob.  Mějte však na paměti, že se doporučuje funkci používat hlavně pro objekty blob bloku. Na rozdíl od objektů blob bloku se musí objekty blob stránky a doplňovací objekty blob vytvořit mimo kontejner WORM a pak se do něj zkopírovat.  Po zkopírování do kontejneru WORM už nejsou povolená žádná *připojení* k doplňovacímu objektu blob ani změny objektu blob stránky.
+Neměnné úložiště pro objekty BLOB lze použít s žádným typem objektů blob.  Mějte však na paměti, že se doporučuje funkci používat hlavně pro objekty blob bloku. Na rozdíl od objektů blob bloku se musí objekty blob stránky a doplňovací objekty blob vytvořit mimo kontejner WORM a pak se do něj zkopírovat.  Po zkopírování do kontejneru WORM už nejsou povolená žádná *připojení* k doplňovacímu objektu blob ani změny objektu blob stránky.
 
 **Je pro použití této funkce potřeba vždy vytvářet nový účet úložiště?**
 
-Funkci Immutable Storage můžete používat s jakýmikoli stávajícími účty GPv2 nebo v nových účtech úložiště, pokud je typ účtu GPv2. Tato funkce je dostupná pouze pro službu Blob Storage.
+Neměnné úložiště můžete použít některé existující účty GPv2 nebo na nové účty úložiště, pokud je typ účtu GPv2. Tato funkce je dostupná pouze pro službu Blob Storage.
 
 **Co se stane, když se pokusím odstranit kontejner s *uzamknutou* zásadou uchovávání informací podle času nebo blokováním z právních důvodů?**
 
@@ -186,7 +185,7 @@ Odstranění účtu úložiště selže, pokud obsahuje alespoň jeden kontejner
 
 **Můžu přesouvat data mezi různými úrovněmi objektu blob (horká, studená, archivní), když je objekt blob v neměnném stavu?**
 
-Ano, pomocí příkazu Set Blob Tier můžete přesouvat data mezi úrovněmi objektu blob, zatímco jsou data stále v neměnném stavu. Funkce Immutable Storage je podporovaná na horké, studené a archivní úrovni objektu blob.
+Ano, pomocí příkazu Set Blob Tier můžete přesouvat data mezi úrovněmi objektu blob, zatímco jsou data stále v neměnném stavu. Neměnné úložiště je podporována u objektů blob v horké, studené a studené úrovně.
 
 **Co se stane, když zapomenu zaplatit a můj interval uchovávání informací ještě nevypršel?**
 
@@ -198,7 +197,7 @@ Ano, když se poprvé vytvoří zásada uchovávání informací podle času, bu
 
 **Je tato funkce dostupná v národních cloudech a cloudech pro státní správu?**
 
-Funkce Immutable Storage je v současné době dostupná pouze ve veřejných oblastech Azure. Pokud vás zajímá konkrétní národní cloud, odešlete e-mail na adresu azurestoragefeedback@microsoft.com.
+Neměnné úložiště je aktuálně dostupná jenom v oblastech Azure. Pokud vás zajímá konkrétní národní cloud, odešlete e-mail na adresu azurestoragefeedback@microsoft.com.
 
 ## <a name="sample-code"></a>Ukázka kódu
 

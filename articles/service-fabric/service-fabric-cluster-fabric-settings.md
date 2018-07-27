@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/19/2018
+ms.date: 07/25/2018
 ms.author: aljo
-ms.openlocfilehash: 1f7cad982e4a78aaad92e563eb4a1fc33b533478
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 56c904c0da87c3b0023fe5c9a125a359e23678dc
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238943"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39263806"
 ---
 # <a name="customize-service-fabric-cluster-settings-and-fabric-upgrade-policy"></a>Přizpůsobení nastavení clusteru Service Fabric a zásady upgradu prostředků infrastruktury
 Tento dokument vysvětluje, jak přizpůsobit různá nastavení prostředků infrastruktury a zásady pro váš cluster Service Fabric upgradu prostředků infrastruktury. Můžete je přizpůsobit [webu Azure portal](https://portal.azure.com) nebo pomocí šablony Azure Resource Manageru.
@@ -624,7 +624,7 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 ## <a name="securityadminclientx509names"></a>Zabezpečení/AdminClientX509Names
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|PropertyGroup|X509NameMap, výchozí hodnota je None|Dynamická| |
+|PropertyGroup|X509NameMap, výchozí hodnota je None|Dynamická|Toto je seznam dvojic "Name" a "Hodnota". Každý "Name" je běžný název subjektu nebo DnsName X509 certifikáty oprávnění pro správu klientské operace. Pro daný "název", "Value" je na čárkami oddělený seznam kryptografické otisky certifikátů pro vystavitele, připínání, pokud není prázdná, přímého vystavitele správce klientské certifikáty musí být v seznamu. |
 
 ## <a name="securityclientaccess"></a>Zabezpečení/ClientAccess
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
@@ -730,7 +730,7 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 ## <a name="securityclientx509names"></a>Zabezpečení/ClientX509Names
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|PropertyGroup|X509NameMap, výchozí hodnota je None|Dynamická| |
+|PropertyGroup|X509NameMap, výchozí hodnota je None|Dynamická|Toto je seznam dvojic "Name" a "Hodnota". Každý "Name" je běžný název subjektu nebo DnsName X509 certifikáty, které jsou autorizované pro klientské operace. Pro daný "název", "Value" je na čárkami oddělený seznam kryptografické otisky certifikátů pro vystavitele, připínání, pokud není prázdná, přímého vystavitele klientské certifikáty musí být v seznamu.|
 
 ## <a name="securityclustercertificateissuerstores"></a>Zabezpečení/ClusterCertificateIssuerStores
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
@@ -740,7 +740,7 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 ## <a name="securityclusterx509names"></a>Zabezpečení/ClusterX509Names
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|PropertyGroup|X509NameMap, výchozí hodnota je None|Dynamická| |
+|PropertyGroup|X509NameMap, výchozí hodnota je None|Dynamická|Toto je seznam dvojic "Name" a "Hodnota". Každý "Name" je běžný název subjektu nebo DnsName X509 certifikáty oprávnění pro operace clusteru. Pro daný "název", "Value" je na čárkami oddělený seznam kryptografické otisky certifikátů pro vystavitele, připínání, pokud není prázdná, přímého vystavitele certifikátů clusteru musí být v seznamu.|
 
 ## <a name="securityservercertificateissuerstores"></a>Zabezpečení/ServerCertificateIssuerStores
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
@@ -750,7 +750,7 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 ## <a name="securityserverx509names"></a>Zabezpečení/ServerX509Names
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|PropertyGroup|X509NameMap, výchozí hodnota je None|Dynamická| |
+|PropertyGroup|X509NameMap, výchozí hodnota je None|Dynamická|Toto je seznam dvojic "Name" a "Hodnota". Každý "Name" je běžný název subjektu nebo DnsName X509 certifikáty, které jsou autorizované pro operace serveru. Pro daný "název", "Value" je na čárkami oddělený seznam kryptografické otisky certifikátů pro vystavitele, připínání, pokud není prázdná, přímého vystavitele certifikátů serveru musí být v seznamu.|
 
 ## <a name="setup"></a>Nastavení
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
@@ -761,7 +761,7 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 |FabricLogRoot |Řetězec | Nepovolené |Service fabric protokolu kořenový adresář. Je to, kde jsou umístěny SF protokoly a trasování. |
 |NodesToBeRemoved|řetězec, výchozí hodnota je ""| Dynamická |Uzly, které byste měli odebrat jako součást konfigurace upgradu. (Pouze pro samostatné nasazení)|
 |ServiceRunAsAccountName |Řetězec | Nepovolené |Název účtu, pod kterým chcete spustit service fabric hostitele. |
-|SkipContainerNetworkResetOnReboot|Logická hodnota, výchozí hodnotu FALSE|Nepovoleno|Určuje, zda se mají přeskočit obnovení kontejner sítě při restartování.|
+|SkipContainerNetworkResetOnReboot|Logická hodnota, výchozí hodnotu FALSE|Hodnotu NotAllowed|Určuje, zda se mají přeskočit obnovení kontejner sítě při restartování.|
 |SkipFirewallConfiguration |Logická hodnota, výchozí hodnota je false | Nepovolené |Určuje, pokud nastavení brány firewall, který je potřeba nastavit v systému nebo ne. To platí jenom v případě, že používáte bránu windows firewall. Pokud používáte brány firewall třetích stran, pak je nutné otevřít porty pro systém a aplikace, aby používaly |
 
 ## <a name="tokenvalidationservice"></a>TokenValidationService

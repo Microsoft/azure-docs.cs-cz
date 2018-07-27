@@ -1,4 +1,10 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: 3d9fad10a11d3df29f81524eec0e4a03eb72c02f
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39264228"
 documentType: LandingData
 title: Dokumentace ke službě HDInsight
 metadata:
@@ -13,12 +19,6 @@ metadata:
   ms.topic: landing-page
   ms.date: 05/07/2018
   ms.author: nitinme
-  ms.openlocfilehash: 4d10acb6d3597b5f5007098775b9bd7751ed4b2a
-  ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
-  ms.translationtype: HT
-  ms.contentlocale: cs-CZ
-  ms.lasthandoff: 06/27/2018
-  ms.locfileid: "37053615"
 abstract:
   description: Naučte se používat Azure HDInsight pro analýzu streamování nebo historických dat. V kurzech a další dokumentaci se dozvíte, jak vytvářet clustery, zpracovávat a analyzovat velké objemy dat a vyvíjet řešení s použitím oblíbených opensourcových architektur, jako jsou Hadoop, Spark, Hive, LLAP, Kafka, Storm a Microsoft Machine Learning Server.<p>Azure HDInsight je plně spravovaná opensourcová analytická služba určená pro podniky. HDInsight je cloudová služba, která umožňuje snadné, rychlé a nákladově efektivní zpracování obrovského množství dat. HDInsight také podporuje širokou škálu scénářů, jako jsou ETL (extrakce, transformace a načítání), datové sklady, strojové učení a IoT.</p>
   aside:
@@ -86,6 +86,8 @@ sections:
     style: cards
     className: cardsD
     items:
+    - title: Nástroje
+      html: <p><a href="https://docs.microsoft.com/en-us/azure/hdinsight/spark/apache-spark-intellij-tool-plugin">Nástroj HDInsight IntelliJ</a></p><p><a href="https://docs.microsoft.com/en-us/azure/hdinsight/spark/apache-spark-eclipse-tool-plugin">Nástroj HDInsight Eclipse</a></p><p><a href="https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-for-vscode">Nástroj HDInsight VSCode</a></p><p><a href="https://docs.microsoft.com/en-us/azure/hdinsight/hadoop/apache-hadoop-visual-studio-tools-get-started">Nástroj HDInsight Visual Studio</a></p>
     - title: Příkazový řádek
       html: <p><a href="/powershell/resourcemanager/azurerm.hdinsight/v2.3.0/azurerm.hdinsight">Azure PowerShell</a></p>
     - title: Jazyky

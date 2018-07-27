@@ -10,14 +10,14 @@ ms.component: manage
 ms.date: 07/23/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: 5f4d39c6aa1a5c2c30e84fbf26535fe3ee7799a6
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 86aadcbdd8d7168440726d6dbed996629cad3ff7
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216488"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39285329"
 ---
-# <a name="whats-new-in-azure-sql-data-warehouse-july-2018"></a>Co je nového ve službě Azure SQL Data Warehouse? . Července 2018
+# <a name="whats-new-in-azure-sql-data-warehouse-july-2018"></a>Co je nového ve službě Azure SQL Data Warehouse? Červenec 2018
 Azure SQL Data Warehouse neustále obdrží vylepšení. Tento článek popisuje nové funkce a změny, které byly zavedeny do července 2018.
 
 
@@ -59,3 +59,23 @@ parameter_ordinal | name | suggested_system_type_id | suggested_system_type_name
 --------------------------------------------------------------------------------
 1                 | @id  | 56                       | int
 ```
+
+## <a name="next-steps"></a>Další postup
+Teď, když už víte o něco o SQL Data Warehouse, zjistěte, jak rychle [vytvoření SQL Data Warehouse] [vytvoření SQL Data Warehouse] a [ukázková data načíst] [ukázková data načíst]. Pokud jste ještě do Azure, můžete zjistit [Glosář Azure] [Glosář Azure] užitečné jako narazíte na novou terminologii. Můžete se také podívat na některé z těchto dalších zdrojů ke službě SQL Data Warehouse.  
+
+* [Úspěšné zákaznické implementace]
+* [Blogy]
+* [Žádosti o funkce]
+* [Videa]
+* [Blogy zákaznického poradního týmu]
+* [Fórum Stack Overflow]
+* [Twitter]
+
+
+[Blogy]: https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/
+[Blogy zákaznického poradního týmu]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
+[Úspěšné zákaznické implementace]: https://azure.microsoft.com/case-studies/?service=sql-data-warehouse
+[Žádosti o funkce]: https://feedback.azure.com/forums/307516-sql-data-warehouse
+[Fórum Stack Overflow]: http://stackoverflow.com/questions/tagged/azure-sqldw
+[Twitter]: https://twitter.com/hashtag/SQLDW
+[Videa]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse

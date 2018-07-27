@@ -1,94 +1,93 @@
 ---
-title: Získat řeči zařízení SDK | Microsoft Docs
-description: Zjistěte, jak získat přístup k sadě SDK řeči zařízení.
+title: Získání sady Speech Devices SDK
+description: Zjistěte, jak získat přístup k sadou SDK pro řeč zařízení.
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: v-jerkin
-manager: noellelacharite
 ms.service: cognitive-services
 ms.technology: speech
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 4706ea623dccd2dbb4164bd9cccf22cff121884a
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: f70b41cd7e3a7a6eddf32ae6ad024fa9ac040f29
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "35343970"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39281778"
 ---
-# <a name="get-the-cognitive-services-speech-devices-sdk"></a>Získání zařízení řeči kognitivní služby SDK
+# <a name="get-the-cognitive-services-speech-devices-sdk"></a>Zařízení řeči služeb Cognitive Services SDK
 
 ## <a name="requesting-access"></a>Žádost o přístup
 
-Sada SDK řeči zařízení je ve verzi preview s omezeným přístupem a vyžaduje, abyste byli zaregistrovaní do programu. V současné době Microsoft upřednostní velkým organizacím jako kandidáty pro přístup k tomuto produktu.
+Sadou SDK pro řeč zařízení je v omezené verzi preview a je nutné se zaregistrovat do programu. V současné době Microsoft upřednostňuje velké firmy jako kandidáty pro přístup k tomuto produktu.
 
-Chcete-li získat přístup k sadě SDK řeči zařízení, postupujte takto:
+Abyste získali přístup k sadou SDK pro řeč zařízení, postupujte takto:
 
-1. Přejděte do sady SDK zařízení řeči Microsoft [registračního formuláře](https://aka.ms/sdsdk-signup).
-1. Pro čtení [licenční smlouvy](speech-devices-sdk-license.md).
-1. Pokud souhlasíte s podmínkami této licenční smlouvy, vyberte "Souhlasím."
+1. Přejděte na Microsoft řeči Devices SDK [registrační formulář](https://aka.ms/sdsdk-signup).
+1. Přečtěte si [licenční smlouvy](speech-devices-sdk-license.md).
+1. Pokud souhlasíte s podmínkami této licenční smlouvy, vyberte možnost "Souhlasím."
 1. Odpovězte na otázky ve formuláři.
 1. Odeslání formuláře. 
-1. Pokud e-mailovou adresu již není součástí Azure Active Directory, zobrazí se e-mailová pozvánka stejný, jako je nižší než po schválení. Pokud vaše e-mailová adresa je již ve službě Azure Active Directory, od týmu Microsoft Speech po schválení obdržíte e-mailovou zprávu a může přejděte rovnou na [stažení sady SDK zařízení řeči](#download-the-speech-devices-sdk).
+1. Pokud e-mailová adresa již není součástí Azure Active Directory, zobrazí se zvací e-mail podobný tomu pod po schválení. Pokud e-mailová adresa je již v Azure Active Directory, obdržíte e-mailovou zprávu od týmu Microsoft Speech po schválení a které může přeskočit k části [stažení sady SDK zařízení řeči](#download-the-speech-devices-sdk).
 
-## <a name="approval-e-mail"></a>E-mailu schválení
+## <a name="approval-e-mail"></a>Schvalovací e-mail
 
 ```
 From: Microsoft Speech Team from Microsoft (via Microsoft) <invites@microsoft.com> 
 Subject: You're invited to the Microsoft organization 
 ```
 
-![E-mailové zprávy](media/speech-devices-sdk/get-sdk-1.png)
+![e-mailové zprávy](media/speech-devices-sdk/get-sdk-1.png)
 
-## <a name="accept-access"></a>Přijměte přístup
-Proveďte následující postup k připojení k službě Azure Active Directory s e-mailovou adresu, které jste zadali během registrace. Tento proces uděluje přístup k zařízení SDK řeči [ke stažení](https://shares.datatransfer.microsoft.com/).
+## <a name="accept-access"></a>Přijmout přístup
+Provedení následujících kroků a připojte se k Azure Active Directory s e-mailovou adresu, kterou jste zadali během registrace. Tento proces uděluje přístup k rozpoznávání řeči Devices SDK [web pro stažení](https://shares.datatransfer.microsoft.com/).
 
-1. Klikněte na tlačítko **Začínáme** v e-mailovou zprávu jste obdrželi. Pokud vaše organizace již zákazníkem služby Office 365, budete vyzváni k přihlášení a může přeskočit ke kroku 8.
+1. Klikněte na tlačítko **Začínáme** v e-mailovou zprávu jste obdrželi. Pokud je vaše organizace již zákazníky s Office 365, zobrazí se výzva k přihlášení a může přeskočit ke kroku 8.
 
-2. Klikněte na tlačítko **Další** v okně spuštěného prohlížeče.
+2. Klikněte na tlačítko **Další** v okně prohlížeče spuštěný.
 
-    ![ověřování – okno](media/speech-devices-sdk/get-sdk-2.png)
+    ![okno ověřování](media/speech-devices-sdk/get-sdk-2.png)
 
-3. Pokud jste ještě nemáte, vytvořte účet Microsoft. Zadejte stejnou e-mailovou adresu, na který jste dostali e-mailová pozvánka v kroku 6 výše.
+3. Pokud ho ještě nemáte, vytvořte účet Microsoft. Zadejte stejnou e-mailovou adresu, na který jste dostali e-mailová pozvánka v kroku 6 výše.
 
     ![Vytvoření účtu Microsoft](media/speech-devices-sdk/get-sdk-3.png)
 
-4. Klikněte na tlačítko **Další** vytvořit heslo.
+4. Klikněte na tlačítko **Další** vytvoření hesla.
 
-5. Po zobrazení výzvy k ověření svého e-mailu, vrátí k vaší doručené poště e-mailu získat ověřovací kód, který je odeslán.
+5. Po zobrazení výzvy k ověření e-mailu, vrátíte se do vaší doručené pošty e-mailu se získat ověřovací kód, které je odesláno.
  
-7. Vložit nebo zadejte bezpečnostní kód z e-mailovou zprávu v dialogovém okně. V tomto příkladu je "8406." Pak klikněte na tlačítko **Další**.
+7. Vložte nebo zadejte bezpečnostní kód z e-mailovou zprávu v dialogovém okně. V tomto příkladu je "8406." Pak klikněte na tlačítko **Další**.
 
     ![ověřit e-mailu](media/speech-devices-sdk/get-sdk-6.png)
  
-8. Když se aplikace přístup panelů v okně prohlížeče, se ujistíte, že e-mailovou adresu (z kroku 6) je teď součástí Azure Active Directory. Nyní máte přístup k webu pro stahování řeči zařízení SDK.
+8. Když se zobrazí Panel aplikace Access v okně prohlížeče, se ujistíte, že vaši e-mailová adresa (z kroku 6) je teď součástí Azure Active Directory. Teď máte přístup k serveru pro stahování sadou SDK pro řeč zařízení.
 
 ## <a name="download-the-speech-devices-sdk"></a>Stáhněte si zařízení řeči SDK
 
-Přejděte na [lokality stažení sady SDK zařízení řeči](https://shares.datatransfer.microsoft.com/) a přihlaste se pomocí Account Microsoft jste vytvořili dříve. Pomocí následujícího postupu můžete stáhnout nyní řeči zařízení SDK, přidružené ukázkový kód a referenčních materiálů.
+Přejděte [serveru pro stahování sadou SDK pro řeč zařízení](https://shares.datatransfer.microsoft.com/) a přihlaste se pomocí Microsoft Account jste vytvořili dříve. Sadou SDK pro řeč zařízení, přidružené ukázkový kód a referenční materiály, které si můžete stáhnout nyní pomocí následujících kroků.
 
-![stažení serveru SDK](media/speech-devices-sdk/get-sdk-7.png)
+![Web SDK ke stažení](media/speech-devices-sdk/get-sdk-7.png)
 
-1. Stáhněte a nainstalujte nástroj Aspera připojení po zobrazení výzvy k tomu v prohlížeči.
+1. Stáhněte a nainstalujte nástroje Aspera Connect po zobrazení výzvy k tomu v prohlížeči.
 
     ![Stáhněte si Aspera připojení](media/speech-devices-sdk/get-sdk-8.png)
  
-1. Klikněte na tlačítko **Ano** přepnout do Aspera připojení.
+1. Klikněte na tlačítko **Ano** pro přepnutí připojení Aspery.
 
     ![Přepnout na Aspera připojení](media/speech-devices-sdk/get-sdk-9.png)
  
-1. Klikněte na tlačítko **povolit** k potvrzení stažení souborů s Aspera připojení.
+1. Klikněte na tlačítko **povolit** potvrďte stahování souborů pomocí Aspery připojení.
 
-    ![Stáhnout s Aspera připojení](media/speech-devices-sdk/get-sdk-10.png)
+    ![Stáhněte si pomocí Aspery připojení](media/speech-devices-sdk/get-sdk-10.png)
  
-1. Po stažené soubory Aspera připojit přenosy okno zavřete.
+1. Po soubory se stáhly Aspera připojení přenosy okno zavřete.
 
-    ![Okno Aspera připojení přenosu](media/speech-devices-sdk/get-sdk-11.png)
+    ![Okno přenosy Aspera připojení](media/speech-devices-sdk/get-sdk-11.png)
  
-Ve výchozím nastavení jsou soubory stáhli do vaší **stáhne** složky. Můžete protokolovat z tohoto webu teď. 
+Ve výchozím nastavení, se soubory stáhnou do vaší **stáhne** složky. Můžete připojit z tohoto webu teď. 
 
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Začínáme se sadou SDK řeči zařízení](speech-devices-sdk-qsg.md)
+> [Začínáme se sadou SDK pro řeč zařízení](speech-devices-sdk-qsg.md)

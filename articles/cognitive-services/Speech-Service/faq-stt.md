@@ -1,24 +1,23 @@
 ---
-title: Nejčastější dotazy k převodu řeči na Text služby v Azure | Dokumentace Microsoftu
+title: Nejčastější dotazy k převodu řeči na Text služby v Azure
 description: Tady najdete odpovědi na Nejoblíbenější dotazy týkající se převod řeči na Text.
 services: cognitive-services
 author: PanosPeriorellis
-manager: onano
 ms.service: cognitive-services
 ms.component: custom-speech
 ms.topic: article
 ms.date: 06/11/2018
 ms.author: panosper
-ms.openlocfilehash: 543e8d6fb68a351dfe75c962debaf15eeb080a3f
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: e5ba01c25646578da22f054659051be3515e9e4b
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223883"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39281826"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Převod řeči na Text – nejčastější dotazy
 
-Pokud nemůžete najít odpovědi na své dotazy v tomto dokumentu, zkuste se zeptat komunity služby Custom Speech Service na [StackOverflow](https://stackoverflow.com/questions/tagged/project-oxford+or+microsoft-cognitive) a [UserVoice](https://cognitive.uservoice.com/)
+Pokud nemůžete najít odpovědi na své dotazy v tomto dokumentu, přečtěte si další možnosti podpory [tady](support.md).
 
 ## <a name="general"></a>Obecné
 

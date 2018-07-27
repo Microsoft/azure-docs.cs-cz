@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: raynew
-ms.openlocfilehash: 7900a02ba9112b910589d04850a4cd5d52e044d2
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 7ffcf5e3c7e6f0cb3d344b7d148b6024e8469eff
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39249185"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39263005"
 ---
 # <a name="assessment-calculations"></a>Výpočty hodnocení
 
@@ -38,11 +38,11 @@ Azure Migrate posuzuje následující vlastnosti místní virtuální počítač
 
 **Vlastnost** | **Podrobnosti** | **Stav připravenosti pro Azure**
 --- | --- | ---
-**Typ spuštění** | Azure podporuje virtuální počítače s typem spuštění BIOS a není rozhraní UEFI. | Podmíněně připraveno pro Azure, pokud typ spouštění je UEFI.
-**Počet jader** | Počet jader na počítačích musí být větší nebo menší než maximální počet jader (32) pro virtuální počítač Azure nepodporuje.<br/><br/> Pokud není k dispozici historie výkonu, Azure Migrate bere v úvahu jader využívaných pro porovnání. Pokud je v nastavení posouzení Zadaný faktor komfortu, počet jader využívaných se vynásobí faktor komfortu.<br/><br/> Pokud neexistuje žádná historie výkonu, Azure Migrate použije přidělená jádra, bez použití faktor komfortu. | Není připraven, pokud počet jader je větší než 32.
-**Paměť** | Velikost paměti počítače musí být větší nebo menší než maximální velikost paměti (3892 GB na Azure M series Standard_M128m&nbsp;<sup>2</sup>) povolený pro virtuální počítač Azure. [Další informace](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes-memory.md#m-series).<br/><br/> Pokud není k dispozici historie výkonu, Azure Migrate bere v úvahu využívaných paměť pro porovnání. Pokud je zadaný faktor komfortu, využívaných paměti se násobí hodnotou faktor komfortu.<br/><br/> Pokud neexistuje žádná historie přidělená paměť použijete, bez použití faktor komfortu.<br/><br/> | Není připraven, pokud je větší než 448 GB paměti.
-**Disk úložiště** | Přidělená velikost disku musí mít 4 TB (4096 GB) nebo méně.<br/><br/> Počet disků připojených k počítači musí být 65 nebo méně, včetně disk s operačním systémem. | Není připraven, pokud existuje disk má velikost větší než 4 TB, nebo pokud existuje více než 65 disky připojené k počítači.
-**Sítě** | Počítač musí mít 32 nebo méně síťových adaptérů připojený k němu. | Není připraven, pokud má počítač více než 32 síťových adaptérů
+**Typ spuštění** | Azure podporuje virtuální počítače s typem spuštění BIOS a není rozhraní UEFI. | Podmíněně připraveno, pokud typ spouštění je UEFI.
+**Počet jader** | Počet jader na počítačích musí být větší nebo menší než maximální počet jader (32) pro virtuální počítač Azure nepodporuje.<br/><br/> Pokud není k dispozici historie výkonu, Azure Migrate bere v úvahu jader využívaných pro porovnání. Pokud je v nastavení posouzení Zadaný faktor komfortu, počet jader využívaných se vynásobí faktor komfortu.<br/><br/> Pokud neexistuje žádná historie výkonu, Azure Migrate použije přidělená jádra, bez použití faktor komfortu. | Připraveno, pokud je menší než nebo rovna omezení.
+**Paměť** | Velikost paměti počítače musí být větší nebo menší než maximální velikost paměti (3892 GB na Azure M series Standard_M128m&nbsp;<sup>2</sup>) povolený pro virtuální počítač Azure. [Další informace](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes-memory.md#m-series).<br/><br/> Pokud není k dispozici historie výkonu, Azure Migrate bere v úvahu využívaných paměť pro porovnání. Pokud je zadaný faktor komfortu, využívaných paměti se násobí hodnotou faktor komfortu.<br/><br/> Pokud neexistuje žádná historie přidělená paměť použijete, bez použití faktor komfortu.<br/><br/> | Pokud v mezích limitů připraven.
+**Disk úložiště** | Přidělená velikost disku musí mít 4 TB (4096 GB) nebo méně.<br/><br/> Počet disků připojených k počítači musí být 65 nebo méně, včetně disk s operačním systémem. | Pokud v mezích limitů připraven.
+**Sítě** | Počítač musí mít 32 nebo méně síťových adaptérů připojený k němu. | Pokud v mezích limitů připraven.
 
 ### <a name="guest-operating-system"></a>Hostovaný operační systém
 Spolu s vlastností virtuálního počítače Azure Migrate také vypadá v hostovaném operačním systému virtuálního počítače s místními a zjistěte, jestli virtuální počítač můžete spustit v Azure.
@@ -65,7 +65,7 @@ Klient Windows 7, 8 a 10 | Azure poskytuje podporu s pouze předplatné sady Vis
 Windows Vista, XP Professional | Tyto operační systémy prošly jejich podporu datum konce, tento počítač může spustit v Azure, ale Azure nenabízí žádnou podporu operačního systému. | Podmíněně připraveno pro Azure, se doporučuje upgradovat operační systém před migrací do Azure.
 Linux | Azure schvaluje tyto [operačních systémů Linux](../virtual-machines/linux/endorsed-distros.md). Jiných operačních systémech Linux mohou spustit v Azure, ale doporučuje se upgradovat operační systém na doporučené verze před migrací do Azure. | Připraveno pro Azure, pokud je verze se schválenou sadou.<br/><br/>Podmíněně připraveno, pokud není schválené verze pro.
 Jiné operační systémy<br/><br/> například Oracle Solaris, atd. Apple Mac OS, FreeBSD atd. | Azure neschvaluje těchto operačních systémů. Tento počítač může spustit v Azure, ale Azure nenabízí žádnou podporu operačního systému Azure. | Podmíněně připraveno pro Azure, se doporučuje instalovat podporovaný operační systém před migrací do Azure.  
-Zadaný operační systém jako *jiných* v systému vCenter Server | Azure Migrate nemůže určit operační systém v tomto případě. | Připravenost neznámá. Ujistěte se, že je podporován operační systém ve virtuálním počítači v Azure.
+Zadaný operační systém jako **jiných** v systému vCenter Server | Azure Migrate nemůže určit operační systém v tomto případě. | Připravenost neznámá. Ujistěte se, že je podporován operační systém ve virtuálním počítači v Azure.
 32bitové operační systémy | Tento počítač může spustit v Azure, ale Azure nemusí poskytnout plnou podporu. | Podmíněně připraveno pro Azure, zvažte možnost upgradovat operační systém počítače z 32BITOVÉHO do 64BITOVÉHO před migrací do Azure.
 
 ## <a name="sizing"></a>Velikost

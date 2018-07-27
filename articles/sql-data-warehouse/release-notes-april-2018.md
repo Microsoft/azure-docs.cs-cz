@@ -7,15 +7,15 @@ manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
-ms.date: 05/28/2018
+ms.date: 07/23/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: ae3d4c3e732024baae29f75fda6f6e821af701a2
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 77f0444915a845a409f15d4533fe9593730e9bbb
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38630339"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39282630"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-april-2018"></a>Co je nového ve službě Azure SQL Data Warehouse? Duben 2018
 Azure SQL Data Warehouse neustále obdrží vylepšení. Tento článek popisuje nové funkce a změny, které byly zavedeny v dubnu 2018.
@@ -55,3 +55,23 @@ Další informace najdete v tématu [dotazy](https://docs.microsoft.com/azure/sq
 
 ## <a name="removed-the-syspdwdatabasemappings-view-behavior-change"></a>Odeberou SYS. Zobrazení PDW_DATABASE_MAPPINGS (Změna chování)
 To `sys.pdw_database_mappings` zobrazení se nepoužívá v SQL Data Warehouse. Dříve by s výběrem tohoto zobrazení nevracela žádné výsledky. Zobrazení se odebrala. 
+
+## <a name="next-steps"></a>Další postup
+Teď, když už víte o něco o SQL Data Warehouse, zjistěte, jak rychle [vytvoření SQL Data Warehouse] [vytvoření SQL Data Warehouse] a [ukázková data načíst] [ukázková data načíst]. Pokud jste ještě do Azure, můžete zjistit [Glosář Azure] [Glosář Azure] užitečné jako narazíte na novou terminologii. Můžete se také podívat na některé z těchto dalších zdrojů ke službě SQL Data Warehouse.  
+
+* [Úspěšné zákaznické implementace]
+* [Blogy]
+* [Žádosti o funkce]
+* [Videa]
+* [Blogy zákaznického poradního týmu]
+* [Fórum Stack Overflow]
+* [Twitter]
+
+
+[Blogy]: https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/
+[Blogy zákaznického poradního týmu]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
+[Úspěšné zákaznické implementace]: https://azure.microsoft.com/case-studies/?service=sql-data-warehouse
+[Žádosti o funkce]: https://feedback.azure.com/forums/307516-sql-data-warehouse
+[Fórum Stack Overflow]: http://stackoverflow.com/questions/tagged/azure-sqldw
+[Twitter]: https://twitter.com/hashtag/SQLDW
+[Videa]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse

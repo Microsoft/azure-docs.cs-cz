@@ -138,7 +138,7 @@
 ### Řešení potíží
 #### [Chybějící data auditu](active-directory-reporting-troubleshoot-missing-audit-data.md)
 #### [Chybějící data v souborech ke stažení](active-directory-reporting-troubleshoot-missing-data-download.md)
-#### [Chyby balíčku obsahu protokolů aktivit Azure AD](active-directory-reporting-troubleshoot-
+#### [Chyby balíčku obsahu protokolů aktivit Azure AD](active-directory-reporting-troubleshoot-content-pack.md)
 #### [Chyby v rozhraní API pro vytváření sestav Azure AD](active-directory-reporting-troubleshoot-graph-api.md)
 
 ### [Programový přístup](active-directory-reporting-api-getting-started-azure-portal.md)
@@ -222,11 +222,13 @@
 #### [Řešení problémů](manage-apps/application-proxy-troubleshoot.md)
 
 ### Správa podnikových aplikací
+#### [Přidání aplikace](manage-apps/add-application-portal.md)
+#### [Zobrazení aplikací klienta](manage-apps/view-applications-portal.md)
 #### [Přiřazení uživatelů](manage-apps/assign-user-or-group-access-portal.md)
 #### [Přizpůsobení brandingu](manage-apps/change-name-or-logo-portal.md)
 #### [Zákaz přihlašování uživatelů](manage-apps/disable-user-sign-in-portal.md)
 #### [Odebrání uživatelů](manage-apps/remove-user-or-group-access-portal.md)
-#### [Zobrazení všech mých aplikací](manage-apps/view-applications-portal.md)
+
 #### [Správa zřizování uživatelských účtů](manage-apps/configure-automatic-user-provisioning-portal.md)
 #### [Správa jednotného přihlašování pro podnikové aplikace](manage-apps/configure-single-sign-on-portal.md)
 #### [Pokročilé podepisování certifikátů pro aplikace SAML](manage-apps/certificate-signing-options.md)
