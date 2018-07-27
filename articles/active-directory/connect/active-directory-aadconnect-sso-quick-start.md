@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2018
+ms.date: 07/26/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: df936c697f500f5ab98becd1529cd321f9f3f5c4
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 4be205f13260d60bc9788b873bea34970b560f5a
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39259115"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39283601"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory bezproblémové jednotné přihlašování: rychlý start
 
@@ -49,7 +49,7 @@ Ujistěte se, že jsou splněné následující požadavky:
     
 * **Povolit moderní ověřování**: je nutné povolit [moderní ověřování](https://aka.ms/modernauthga) ve svém tenantovi pro tuto funkci pracovat.
 
-* **Použít nejnovější verze klientů Office 365**: Pokud chcete získat tiché přihlašování s klienty Office 365 (Outlook, Word, Excel a další), je třeba verze 16.0.8730.xxxx nebo vyšší.
+* **Použít nejnovější verze klientů Office 365**: Pokud chcete získat tiché přihlašování s klienty Office 365 (Outlook, Word, Excel a další), uživatelé muset použít verze 16.0.8730.xxxx nebo vyšší.
 
 ## <a name="step-2-enable-the-feature"></a>Krok 2: Povolení funkce
 
@@ -194,7 +194,7 @@ Bezproblémové jednotné přihlašování nefunguje v privátním režimu proch
 
 Otestovat funkci pro konkrétního uživatele, ujistěte se, že všechny následující podmínky jsou splněné:
   - Uživatel se přihlásí do podnikové zařízení.
-  - Zařízení je připojené k vaší doméně služby Active Directory.
+  - Zařízení je připojené k vaší doméně služby Active Directory. Zařízení _nebude_ musí být [připojeno k Azure AD](../active-directory-azureadjoin-overview.md).
   - Zařízení má přímé připojení k řadiči domény (DC) v podnikové síti drátovou nebo bezdrátovou nebo prostřednictvím připojení vzdáleného přístupu, jako je například připojení k síti VPN.
   - Máte [zavádí funkci](##step-3-roll-out-the-feature) s tímto uživatelem prostřednictvím zásad skupiny.
 

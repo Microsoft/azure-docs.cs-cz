@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/17/2018
 ms.author: apimpm
-ms.openlocfilehash: b06a179459a449762555879669d177f811cb9560
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 4135bd66e839037d7db694cb3c6df8f3905222e6
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39090873"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39283087"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Implementace zotavení po havárii pomocí služby zálohování a obnovení ve službě Azure API Management
 
@@ -76,6 +76,7 @@ Všechny úlohy, které můžete provést na prostředky pomocí Azure Resource 
 
 7. Klikněte na tlačítko **delegovaná oprávnění** vedle nově přidané aplikace zaškrtněte políčko u **přístup ke správě služeb Azure (preview)**.
 8. Stisknutím klávesy **vyberte**.
+9. Klikněte na tlačítko **udělení potvrdíte**.
 
 ### <a name="configuring-your-app"></a>Konfigurace aplikace
 
@@ -92,7 +93,7 @@ namespace GetTokenResourceManagerRequests
         static void Main(string[] args)
         {
             var authenticationContext = new AuthenticationContext("https://login.microsoftonline.com/{tenant id}");
-            var result = authenticationContext.AcquireToken("https://management.azure.com/", {application id}, new Uri({redirect uri});
+            var result = authenticationContext.AcquireTokenAsync("https://management.azure.com/", "{application id}", new Uri("{redirect uri}"), new PlatformParameters(PromptBehavior.Auto)).Result;
 
             if (result == null) {
                 throw new InvalidOperationException("Failed to obtain the JWT token");
@@ -123,6 +124,8 @@ Nahraďte `{tentand id}`, `{application id}`, a `{redirect uri}` pomocí násled
 
 ## <a name="calling-the-backup-and-restore-operations"></a>Volání operace zálohování a obnovení
 
+Rozhraní REST API jsou [služby Api Management – zálohování](https://docs.microsoft.com/rest/api/apimanagement/apimanagementservice/backup) a [služby Api Management – obnovení](https://docs.microsoft.com/rest/api/apimanagement/apimanagementservice/restore).
+
 Před voláním operace "zálohování a obnovení", které jsou popsané v následujících částech nastavte autorizační hlavičky žádosti pro volání REST.
 
 ```csharp
@@ -132,24 +135,27 @@ request.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
 ### <a name="step1"> </a>Zálohování služby API Management
 Pro zálohování problém se službou API Management následující požadavek protokolu HTTP:
 
-`POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/backup?api-version={api-version}`
+```
+POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/backup?api-version={api-version}
+```
 
 kde:
 
 * `subscriptionId` – id předplatného, které obsahuje službu API Management, kterou se pokoušíte zálohování
 * `resourceGroupName` – Název skupiny prostředků služby Azure API Management
 * `serviceName` – název služby API Management vytvoříte zálohu určit v okamžiku svého vytvoření
-* `api-version` -nahradit `2014-02-14`
+* `api-version` -nahradit `2018-06-01-preview`
 
 V textu požadavku zadejte název cílového účtu úložiště Azure, přístupový klíč, název kontejneru objektů blob a název zálohy:
 
-```
-'{  
-    storageAccount : {storage account name for the backup},  
-    accessKey : {access key for the account},  
-    containerName : {backup container name},  
-    backupName : {backup blob name}  
-}'
+
+```json
+{
+  "storageAccount": "{storage account name for the backup}",
+  "accessKey": "{access key for the account}",
+  "containerName": "{backup container name}",
+  "backupName": "{backup blob name}"
+}
 ```
 
 Nastavte hodnotu `Content-Type` hlavičku požadavku na `application/json`.
@@ -168,24 +174,26 @@ Při zálohování požadavku, mějte na paměti následující omezení.
 ### <a name="step2"> </a>Obnovení služby API Management
 Chcete-li obnovit API Management service z dříve vytvořeného odesílat následující požadavky HTTP:
 
-`POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/restore?api-version={api-version}`
+```
+POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/restore?api-version={api-version}
+```
 
 kde:
 
 * `subscriptionId` – id předplatného, které obsahuje obnovujete zálohu do služby API Management
 * `resourceGroupName` -řetězec ve formě "Rozhraní Api – výchozí – {služby region}" kde `service-region` identifikuje obnovujete zálohu do služby API Management je hostitelem, například oblast Azure `North-Central-US`
 * `serviceName` – název služby API Management service, který se má obnovit do zadané v okamžiku svého vytvoření
-* `api-version` -nahradit `2014-02-14`
+* `api-version` -nahradit `2018-06-01-preview`
 
 V textu požadavku zadejte umístění záložního souboru, který je, název účtu služby Azure storage, přístupový klíč, název kontejneru objektů blob a název zálohy:
 
-```
-'{  
-    storageAccount : {storage account name for the backup},  
-    accessKey : {access key for the account},  
-    containerName : {backup container name},  
-    backupName : {backup blob name}  
-}'
+```json
+{
+  "storageAccount": "{storage account name for the backup}",
+  "accessKey": "{access key for the account}",
+  "containerName": "{backup container name}",
+  "backupName": "{backup blob name}"
+}
 ```
 
 Nastavte hodnotu `Content-Type` hlavičku požadavku na `application/json`.

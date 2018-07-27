@@ -17,12 +17,12 @@ ms.date: 07/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 0b8471f77fd36b03a74e9312833cc6cb8a8a71ec
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 83ac97d1e1860ed9a385563f98318bd5db493b22
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39226573"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39263568"
 ---
 # <a name="v20-protocols---oauth-20-authorization-code-flow"></a>Protokoly v2.0 - tok autorizačního kódu OAuth 2.0
 Udělení autorizačního kódu OAuth 2.0 je možné v aplikacích, které jsou nainstalované v zařízení získat přístup k chráněným prostředkům, jako je například webové rozhraní API. Pomocí implementace v2.0 modelu aplikace OAuth 2.0, můžete přidat přihlášení a přístup k rozhraní API do vašich mobilních a desktopových aplikací. Tato příručka je nezávislá na jazyce a popisuje, jak posílat a přijímat zprávy HTTP bez použití [ověřování Azure open source knihoven](active-directory-authentication-libraries.md).
@@ -153,7 +153,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | scope         | povinné              | Seznam oborů oddělených mezerami. Požadovaný v této fáze obory musí být ekvivalentní, nebo jen některé obory požadovaný v první fáze. Pokud span obory zadané v této žádosti více prostředků serveru, koncový bod verze 2.0 vrátí token pro prostředek určený v rámci první. Podrobnější vysvětlení oborů, najdete v tématu [oprávnění, vyjádření souhlasu a obory](active-directory-v2-scopes.md). |
 | kód          | povinné              | Authorization_code, kterou jste získali v první fáze toku.                                                                                                                                                                                                                                                                                                                                                                   |
 | redirect_uri  | povinné              | Stejné redirect_uri hodnota, která byla použita k získání authorization_code.                                                                                                                                                                                                                                                                                                                                                             |
-| Hodnota client_secret | vyžaduje se pro webové aplikace | Tajný klíč aplikace, kterou jste vytvořili v portálu pro registraci aplikace pro vaši aplikaci. Není vhodné jej použít v nativní aplikaci, protože client_secrets nemůže být spolehlivě uložená na zařízeních. Vyžaduje se pro webové aplikace a webová rozhraní API, které se budou moct bezpečně uložit hodnotu client_secret na straně serveru.                                                                                                                      |
+| Hodnota client_secret | vyžaduje se pro webové aplikace | Tajný klíč aplikace, kterou jste vytvořili v portálu pro registraci aplikace pro vaši aplikaci. Není vhodné jej použít v nativní aplikaci, protože client_secrets nemůže být spolehlivě uložená na zařízeních. Vyžaduje se pro webové aplikace a webová rozhraní API, které se budou moct bezpečně uložit hodnotu client_secret na straně serveru.  Tajný kód klienta musí být kódovaná adresou URL před odesláním.                                                                                                                    |
 | code_verifier | nepovinné              | Stejné code_verifier, který se používá k získání authorization_code. Povinné, pokud PKCE použila žádost o udělení autorizace kódu. Další informace najdete v tématu [PKCE RFC](https://tools.ietf.org/html/rfc7636)                                                                                                                                                                                                                                                                                             |
 #### <a name="successful-response"></a>Úspěšné odpovědi
 Úspěšné odpovědi tokenu bude vypadat takto:

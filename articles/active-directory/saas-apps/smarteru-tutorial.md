@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 32feac32af01e518ad6cede43cc4b4f00c097d3b
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: e07ed8f131697d6340b899ef76c988aed215556b
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39041275"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39283407"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-smarteru"></a>Kurz: Integrace Azure Active Directory se službou SmarterU
 
@@ -126,11 +126,11 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
 7. Na panelu nástrojů v horní části klikněte na tlačítko **nastavení účtu**.
    
-    ![Nastavení účtu](./media/smarteru-tutorial/IC777326.png "nastavení účtu")
+    ![Nastavení účtu](./media/smarteru-tutorial/accountsettings.png)
 
 8. Na stránce konfigurace účtu postupujte následovně:
    
-    ![Externí ověřování](./media/smarteru-tutorial/IC777327.png "externí ověřování") 
+    ![Externí ověřování](./media/smarteru-tutorial/externalauthorizationconfiguration.png) 
  
       a. Vyberte **povolit externí autorizace**.
   
@@ -138,11 +138,13 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
   
       c. V **výchozí přihlašovací** vyberte **SmarterU** kartu.
   
-      d. Vyberte **povolit Okta**.
+      d. Vyberte **povolit SAML**.
   
-      e. Zkopírujte obsah souboru staženého metadat a vložte jej do **Okta metadat** textového pole.
+      e. Zkopírujte obsah souboru staženého metadat a vložte jej do **metadat zprostředkovatele identity** textového pole.
+      
+      f. Vyberte **identifikátor atributu/deklarace identity**.
   
-      f. Klikněte na **Uložit**.
+      g. Klikněte na **Uložit**.
 
 > [!TIP]
 > Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -193,7 +195,7 @@ Při zřizování SmarterU, je ruční úloha.
 
 3. V části uživatel proveďte následující kroky:
    
-    ![Nový uživatel](./media/smarteru-tutorial/IC777329.png "nového uživatele")  
+    ![Nový uživatel](./media/smarteru-tutorial/adduser.png)  
 
     a. Klikněte na tlačítko **+ uživatel**.
     
@@ -248,7 +250,7 @@ Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístu
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

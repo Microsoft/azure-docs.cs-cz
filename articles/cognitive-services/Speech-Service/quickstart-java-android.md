@@ -1,21 +1,20 @@
 ---
-title: 'Rychlý start: Rozpoznávat řeč v jazyce Java v Androidu pomocí Cognitive Services SDK řeči | Dokumentace Microsoftu'
+title: 'Rychlý start: Rozpoznávat řeč v jazyce Java v Androidu pomocí Cognitive Services SDK řeči'
 titleSuffix: Microsoft Cognitive Services
 description: Zjistěte, jak rozpoznávat řeč v jazyce Java v Androidu pomocí Cognitive Services SDK řeči
 services: cognitive-services
 author: fmegen
-manager: wolfma
 ms.service: cognitive-services
 ms.technology: Speech
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: fmegen
-ms.openlocfilehash: fb52bc3fa398cbe5ba4cbea7c1908ee1fece876e
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 585728d95db800f32d98d71cf0c64e689845794f
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39114698"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39285506"
 ---
 # <a name="quickstart-recognize-speech-in-java-on-android-using-the-speech-sdk"></a>Rychlý start: Rozpoznávat řeč v jazyce Java v Androidu pomocí sadou SDK pro řeč
 

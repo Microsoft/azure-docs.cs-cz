@@ -1,21 +1,20 @@
 ---
-title: Ukázka pro převod řeči na Text | Dokumentace Microsoftu
+title: Ukázka pro převod řeči na Text
 titleSuffix: Microsoft Cognitive Services
 description: Tady je ukázka pro převod řeči na text.
 services: cognitive-services
 author: wolfma61
-manager: onano
 ms.service: cognitive-services
 ms.technology: Speech
 ms.topic: article
 ms.date: 06/07/2018
 ms.author: wolfma
-ms.openlocfilehash: b08b461ceccbdf5e79d7bb4320bdc15d09c4b859
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 167fc57bf902f020f50c7ef8a8248cce9b882bab
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39114238"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39281884"
 ---
 # <a name="sample-for-speech-to-text"></a>Ukázka pro převod řeči na Text
 

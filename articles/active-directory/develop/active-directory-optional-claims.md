@@ -16,12 +16,12 @@ ms.date: 07/12/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: e2b8b1f63e4c23c0beeaff6fd246fa2ba8afe106
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 6e0b00117c35cd5222c69e72819afb37f9ec14dd
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036747"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39265060"
 ---
 # <a name="optional-claims-in-azure-ad-preview"></a>Nepovinných deklarací identity ve službě Azure AD (preview)
 
@@ -31,7 +31,7 @@ Tato funkce slouží vývojáři aplikace k určení, které deklarace identity,
 -   Přidat a přístup k vlastní deklarace identity pro vaši aplikaci. 
 
 > [!Note]
-> Tato funkce je aktuálně ve verzi public preview. Připravte se na vrátit, nebo odeberte všechny změny. Tato funkce je dostupná v žádné předplatné Azure AD ve verzi public preview. Až tato funkce bude obecně dostupná, může vyžadovat některé aspekty funkcí však předplatné služby Azure AD premium.
+> Tato funkce je aktuálně ve verzi public preview. Buďte připravení na to, že jakékoli změny se můžou zrušit nebo odebrat. Tato funkce je dostupná v žádné předplatné Azure AD ve verzi public preview. Až tato funkce bude obecně dostupná, může vyžadovat některé aspekty funkcí však předplatné služby Azure AD premium.
 
 Seznam standardních deklarace identity a jejich použití v tokenech, najdete v článku [základní informace o tokeny vystavené službou Azure AD](active-directory-token-and-claims.md). 
 
@@ -41,8 +41,8 @@ Jedním z cílů systému [koncového bodu Azure AD v2.0](active-directory-appmo
 
 | Typ účtu | Koncový bod verze 1.0                      | Koncový bod verze 2.0  |
 |--------------|------------------------------------|----------------|
-| MSA          | Není k dispozici – místo toho používají lístky RPS | Podpora už |
-| AAD          | Podporováno                          | Podporováno      |
+| Osobní účet Microsoft  | Není k dispozici – místo toho používají lístky RPS | Podpora už |
+| Účet Azure AD          | Podporováno                          | Podporováno      |
 
 ## <a name="standard-optional-claims-set"></a>Sada standardních nepovinných deklarací identity
 Sada nepovinných deklarací identity ve výchozím nastavení dostupné pro použití aplikacemi jsou uvedeny níže.  Chcete-li přidat vlastní nepovinných deklarací identity pro vaši aplikaci, najdete v článku [rozšíření adresáře](active-directory-optional-claims.md#Configuring-custom-claims-via-directory-extensions)níže. 
@@ -214,7 +214,7 @@ Nejsou k dispozici pro aktualizaci vlastností konfigurace identity aplikace pov
 3.  Vyberte **rozšíření Azure AD** v levém navigačním panelu a klikněte na kartu **registrace aplikací**.
 4.  Vyhledejte aplikaci, kterou chcete nakonfigurovat volitelné deklarací identity v seznamu a klikněte na něj.
 5.  Na stránce aplikace klikněte na tlačítko **Manifest** otevřete editor manifestu vložené. 
-6.  Můžete přímo upravit pomocí editoru manifestu. Následuje schéma pro manifest [aplikace entity](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity)a automatické formáty – manifest jednou uložili. Přibude nová elemets `OptionalClaims` vlastnost.
+6.  Můžete přímo upravit pomocí editoru manifestu. Následuje schéma pro manifest [aplikace entity](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity)a automatické formáty – manifest jednou uložili. Přibude nové prvky `OptionalClaims` vlastnost.
 
       ```json
       "optionalClaims": 

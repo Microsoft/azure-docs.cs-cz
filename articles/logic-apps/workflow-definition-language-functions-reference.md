@@ -1,44 +1,40 @@
 ---
-title: Funkce jazyka pro definici pracovního postupu - Azure Logic Apps | Microsoft Docs
-description: Další informace o funkce pro vytváření aplikací logiky s jazykem definice pracovního postupu
+title: Funkce reference pro jazyk definice pracovního postupu – Azure Logic Apps | Dokumentace Microsoftu
+description: Další informace o funkce pro vytváření aplikací logiky s jazyka definice pracovního postupu
 services: logic-apps
-author: ecfan
-manager: jeconnoc
-editor: ''
-documentationcenter: ''
-ms.assetid: ''
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: ecfan
+ms.author: estfan
+manager: jeconnoc
 ms.topic: reference
 ms.date: 04/25/2018
-ms.author: estfan; LADocs
-ms.openlocfilehash: 6f1871e1e135ecb9e7cb37c0bedff3737d3febb7
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.reviewer: klam, LADocs
+ms.suite: integration
+ms.openlocfilehash: 46ccf9484b76ec5f24dba470a194b5b83c32f013
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35301384"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39263772"
 ---
-# <a name="workflow-definition-language-functions-reference-for-azure-logic-apps"></a>Referenční dokumentace funkcí Definition Language pracovního postupu pro Azure Logic Apps
+# <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Functions – reference pro jazyk pro definování pracovních postupů v Azure Logic Apps
 
-Tento článek popisuje funkce, které můžete použít při vytváření pracovních postupů s [Azure Logic Apps](../logic-apps/logic-apps-overview.md). Další informace o funkcích v definicích aplikaci logiky najdete v tématu [jazyk definice pracovního postupu pro Azure Logic Apps](../logic-apps/logic-apps-workflow-definition-language.md#functions). 
+Tento článek popisuje funkce, které můžete použít při vytváření automatizovaných pracovních postupů pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md). Další informace o funkcích v definic aplikací logiky najdete v tématu [jazyka definice pracovního postupu pro Azure Logic Apps](../logic-apps/logic-apps-workflow-definition-language.md#functions). 
 
 > [!NOTE]
-> V syntaxi pro parametr definice otazník (?), který se zobrazí po parametr znamená parametr je volitelný. Například v tématu [getFutureTime()](#getFutureTime).
+> Syntaxe pro parametr definice otazník (?), který se zobrazí po parametr znamená, že parametr je volitelný. Viz například [getFutureTime()](#getFutureTime).
 
 <a name="action"></a>
 
 ## <a name="action"></a>akce
 
-Vrátí *aktuální* akce výstupu v modulu runtime nebo hodnoty z jiných dvojice název a hodnota JSON, které lze přiřadit výrazu. Ve výchozím nastavení tato funkce odkazuje na objekt celé akce, ale Volitelně můžete zadat vlastnost jehož hodnotu chcete. Viz také [actions()](../logic-apps/workflow-definition-language-functions-reference.md#actions).
+Vrátit *aktuální* výstupu akce modulu runtime nebo hodnoty z jiných dvojice název a hodnota JSON, které můžete přiřadit k výrazu. Ve výchozím nastavení tato funkce odkazuje na objekt celou akci, ale můžete volitelně zadat vlastnost, jejíž hodnotu chcete. Viz také [actions()](../logic-apps/workflow-definition-language-functions-reference.md#actions).
 
-Můžete použít `action()` funkce jenom na těchto místech: 
+Můžete použít `action()` funguje pouze v těchto umístěních: 
 
-* `unsubscribe` Vlastnost pro akce webhooku, takže přistupujete výsledek z původní `subscribe` požadavku
+* `unsubscribe` Vlastnost pro akce webhooku, aby měli přístup k výsledku z původní `subscribe` žádosti
 * `trackedProperties` Vlastnost pro akci.
-* `do-until` Cykly podmínku pro akci.
+* `do-until` Smyčky podmínku pro akci.
 
 ```
 action()
@@ -47,7 +43,7 @@ action().outputs.body.<property>
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*Vlastnost*> | Ne | Řetězec | Název pro objekt akce vlastnost jehož hodnotu chcete: **název**, **startTime**, **endTime**, **vstupy**,  **výstupy**, **stav**, **kód**, **trackingId**, a **clientTrackingId**. Na portálu Azure můžete zjistit tyto vlastnosti zobrazením podrobnosti konkrétní spuštění historie. Další informace najdete v tématu [REST API – akce spuštění pracovního postupu](https://docs.microsoft.com/rest/api/logic/workflowrunactions/get). | 
+| <*Vlastnost*> | Ne | Řetězec | Název objektu akce vlastnosti jejíž hodnotu chcete: **název**, **startTime**, **endTime**, **vstupy**,  **Vypíše**, **stav**, **kód**, **trackingId**, a **clientTrackingId**. Na webu Azure Portal zjistíte kontrolou podrobnosti konkrétní spuštění historie tyto vlastnosti. Další informace najdete v tématu [rozhraní REST API – akce spuštění pracovního postupu](https://docs.microsoft.com/rest/api/logic/workflowrunactions/get). | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
@@ -59,7 +55,7 @@ action().outputs.body.<property>
 
 ## <a name="actionbody"></a>actionBody
 
-Vrátí akci `body` výstup za běhu. Sdružená vlastnost `actions('<actionName>').outputs.body`. V tématu [body()](#body) a [actions()](#actions).
+Vrácení akce `body` výstupu za běhu. Zkrácený tvar vlastností `actions('<actionName>').outputs.body`. Zobrazit [body()](#body) a [actions()](#actions).
 
 ```
 actionBody('<actionName>')
@@ -67,7 +63,7 @@ actionBody('<actionName>')
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*Název akce*> | Ano | Řetězec | Název akce `body` výstupu, který chcete | 
+| <*Název akce*> | Ano | Řetězec | Název této akce `body` výstup, který chcete, aby | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
@@ -77,13 +73,13 @@ actionBody('<actionName>')
 
 *Příklad*
 
-Tento příklad načte `body` výstup z akce Twitter `Get user`: 
+Tento příklad načte `body` výstupu z akce Twitter `Get user`: 
 
 ```
 actionBody('Get_user')
 ```
 
-A vrátí výsledek tohoto:
+A vrátí výsledek:
 
 ```json
 "body": {
@@ -104,7 +100,7 @@ A vrátí výsledek tohoto:
 
 ## <a name="actionoutputs"></a>actionOutputs
 
-Vrátí výstup akce za běhu. Sdružená vlastnost `actions('<actionName>').outputs`. V tématu [actions()](#actions).
+Vrací výstup akce za běhu. Zkrácený tvar vlastností `actions('<actionName>').outputs`. Zobrazit [actions()](#actions).
 
 ```
 actionOutputs('<actionName>')
@@ -112,23 +108,23 @@ actionOutputs('<actionName>')
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*Název akce*> | Ano | Řetězec | Název akce výstupu, které mají | 
+| <*Název akce*> | Ano | Řetězec | Výstup, který má název akce | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | -----| ----------- | 
-| <*Výstup*> | Řetězec | Výstup z zadanou akci | 
+| <*Výstup*> | Řetězec | Výstup na zadanou akci | 
 |||| 
 
 *Příklad*
 
-Tento příklad načte výstup z akce Twitter `Get user`: 
+Tento příklad načte výstupu z akce Twitter `Get user`: 
 
 ```
 actionOutputs('Get_user')
 ```
 
-A vrátí výsledek tohoto:
+A vrátí výsledek:
 
 ```json
 { 
@@ -167,10 +163,10 @@ A vrátí výsledek tohoto:
 
 ## <a name="actions"></a>Akce
 
-Vrátíte výstup akce v modulu runtime nebo hodnoty z jiných dvojice název a hodnota JSON, které lze přiřadit výrazu. Ve výchozím nastavení, funkce odkazuje na objekt celé akce, ale Volitelně můžete zadat vlastnost jejichž požadovanou hodnotu. Sdružená vlastnost verze najdete v tématu [actionBody()](#actionBody), [actionOutputs()](#actionOutputs), a [body()](#body). Aktuální akci, naleznete v části [action()](#action).
+Vrácení výstupu akce modulu runtime nebo hodnoty z jiných dvojice název a hodnota JSON, které můžete přiřadit k výrazu. Ve výchozím nastavení, funkce, odkazuje na objekt celou akci, ale můžete volitelně zadat vlastnost jehož požadovanou hodnotu. Zkrácený tvar vlastností verze najdete v tématu [actionBody()](#actionBody), [actionOutputs()](#actionOutputs), a [body()](#body). Aktuální akci, naleznete v tématu [action()](#action).
 
 > [!NOTE] 
-> Dříve, můžete použít `actions()` funkce nebo `conditions` element při určení, jestli akce spustila na základě na výstup z jiné akce. Ale deklarovat explicitně závislosti mezi akce, musíte teď použít závislé akce `runAfter` vlastnost. Další informace o `runAfter` vlastnost, najdete v části [Catch a zpracování chyb s vlastností runAfter](../logic-apps/logic-apps-workflow-definition-language.md).
+> Dříve, můžete použít `actions()` funkce nebo `conditions` element při určování, že akce spustili na základě výstupu z další akci. Ale chcete-li deklarovat explicitně závislosti mezi akcemi, musí teď používáte závislá akce `runAfter` vlastnost. Další informace o `runAfter` vlastnost, naleznete v tématu [zachytit a zpracovat selhání se vlastnost runAfter](../logic-apps/logic-apps-workflow-definition-language.md).
 
 ```
 actions('<actionName>')
@@ -179,8 +175,8 @@ actions('<actionName>').outputs.body.<property>
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*Název akce*> | Ano | Řetězec | Název objektu jejichž výstup má být akce  | 
-| <*Vlastnost*> | Ne | Řetězec | Název pro objekt akce vlastnost jehož hodnotu chcete: **název**, **startTime**, **endTime**, **vstupy**,  **výstupy**, **stav**, **kód**, **trackingId**, a **clientTrackingId**. Na portálu Azure můžete zjistit tyto vlastnosti zobrazením podrobnosti konkrétní spuštění historie. Další informace najdete v tématu [REST API – akce spuštění pracovního postupu](https://docs.microsoft.com/rest/api/logic/workflowrunactions/get). | 
+| <*Název akce*> | Ano | Řetězec | Název objektu akce, jejichž výstup má  | 
+| <*Vlastnost*> | Ne | Řetězec | Název objektu akce vlastnosti jejíž hodnotu chcete: **název**, **startTime**, **endTime**, **vstupy**,  **Vypíše**, **stav**, **kód**, **trackingId**, a **clientTrackingId**. Na webu Azure Portal zjistíte kontrolou podrobnosti konkrétní spuštění historie tyto vlastnosti. Další informace najdete v tématu [rozhraní REST API – akce spuštění pracovního postupu](https://docs.microsoft.com/rest/api/logic/workflowrunactions/get). | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
@@ -190,19 +186,19 @@ actions('<actionName>').outputs.body.<property>
 
 *Příklad*
 
-Tento příklad načte `status` hodnotu vlastnosti z akce Twitter `Get user` za běhu: 
+Tento příklad načte `status` hodnota Twitter akce `Get user` za běhu: 
 
 ```
 actions('Get_user').outputs.body.status 
 ```
 
-A vrátí výsledek tohoto: `"Succeeded"`
+A vrátí výsledek: `"Succeeded"`
 
 <a name="add"></a>
 
 ## <a name="add"></a>přidat
 
-Vrátí výsledek v přidávání dvou čísel.
+Vrátí výsledek součtu daných dvou čísel.
 
 ```
 add(<summand_1>, <summand_2>)
@@ -215,24 +211,24 @@ add(<summand_1>, <summand_2>)
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | -----| ----------- | 
-| <*výsledek – součet*> | Celé číslo nebo číslo Float | Výsledkem přidání zadaných čísel | 
+| <*výsledek součtu*> | Integer nebo Float | Výsledkem přidání zadaných čísel | 
 |||| 
 
 *Příklad*
 
-Tento příklad přidá zadaného čísla:
+V tomto příkladu přidá zadaného čísla:
 
 ```
 add(1, 1.5)
 ```
 
-A vrátí výsledek tohoto: `2.5`
+A vrátí výsledek: `2.5`
 
 <a name="addDays"></a>
 
 ## <a name="adddays"></a>Přidat_dny
 
-Přidejte počet dnů do časového razítka.
+Přidáte počet dní do časového razítka.
 
 ```
 addDays('<timestamp>', <days>, '<format>'?)
@@ -240,41 +236,41 @@ addDays('<timestamp>', <days>, '<format>'?)
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*časové razítko*> | Ano | Řetězec | Řetězec, který obsahuje časové razítko | 
-| <*počet dnů*> | Ano | Integer | Kladné a záporné počet dní, které chcete přidat | 
-| <*Formát*> | Ne | Řetězec | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) nebo [vlastní formát vzor](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (rrrr-MM-ddT:mm:ss:fffffffK), která splňuje [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
+| <*Časové razítko*> | Ano | Řetězec | Řetězec, který obsahuje časové razítko | 
+| <*dny*> | Ano | Integer | Kladné nebo záporné číslo dnů pro přidání | 
+| <*Formát*> | Ne | Řetězec | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) nebo [vlastní formátovací vzor](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát časového razítka je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (rrrr-MM-ddT:mm:ss:fffffffK), která splňuje [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*Aktualizovat časové razítko*> | Řetězec | Časové razítko přičtením zadaného počtu dnů  | 
+| <*Aktualizace časového razítka*> | Řetězec | Časové razítko plus zadaný počet dnů  | 
 |||| 
 
 *Příklad 1*
 
-Tento příklad přidá zadané časové razítko 10 dnů:
+V tomto příkladu přidá 10 dní do zadaného časového razítka:
 
 ```
 addDays('2018-03-15T13:00:00Z', 10)
 ```
 
-A vrátí výsledek tohoto: `"2018-03-25T00:00:0000000Z"`
+A vrátí výsledek: `"2018-03-25T00:00:0000000Z"`
 
 *Příklad 2*
 
-Tento příklad odečítá pět dní od zadaného časového razítka:
+V tomto příkladu odečte pět dní od zadaného časového razítka:
 
 ```
 addDays('2018-03-15T00:00:00Z', -5)
 ```
 
-A vrátí výsledek tohoto: `"2018-03-10T00:00:0000000Z"`
+A vrátí výsledek: `"2018-03-10T00:00:0000000Z"`
 
 <a name="addHours"></a>
 
 ## <a name="addhours"></a>addHours
 
-Přidáte počet hodin časové razítko.
+Přidáte počet hodin do časového razítka.
 
 ```
 addHours('<timestamp>', <hours>, '<format>'?)
@@ -282,35 +278,35 @@ addHours('<timestamp>', <hours>, '<format>'?)
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*časové razítko*> | Ano | Řetězec | Řetězec, který obsahuje časové razítko | 
-| <*Hodiny*> | Ano | Integer | Kladné a záporné počet hodin, které chcete přidat | 
-| <*Formát*> | Ne | Řetězec | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) nebo [vlastní formát vzor](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (rrrr-MM-ddT:mm:ss:fffffffK), která splňuje [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
+| <*Časové razítko*> | Ano | Řetězec | Řetězec, který obsahuje časové razítko | 
+| <*hodiny*> | Ano | Integer | Kladné nebo záporné číslo hodin pro přidání | 
+| <*Formát*> | Ne | Řetězec | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) nebo [vlastní formátovací vzor](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát časového razítka je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (rrrr-MM-ddT:mm:ss:fffffffK), která splňuje [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*Aktualizovat časové razítko*> | Řetězec | Časové razítko plus zadaného počtu hodin  | 
+| <*Aktualizace časového razítka*> | Řetězec | Časové razítko plus zadaný počet hodin  | 
 |||| 
 
 *Příklad 1*
 
-Tento příklad přidá 10 hodin zadané časové razítko:
+V tomto příkladu přidá 10 hodin do zadaného časového razítka:
 
 ```
 addHours('2018-03-15T00:00:00Z', 10)
 ```
 
-A vrátí výsledek tohoto: `"2018-03-15T10:00:0000000Z"`
+A vrátí výsledek: `"2018-03-15T10:00:0000000Z"`
 
 *Příklad 2*
 
-Tento příklad odečítá pět hodin ze zadaného časového razítka:
+V tomto příkladu odečte pět hodin od zadaného časového razítka:
 
 ```
 addHours('2018-03-15T15:00:00Z', -5)
 ```
 
-A vrátí výsledek tohoto: `"2018-03-15T10:00:0000000Z"`
+A vrátí výsledek: `"2018-03-15T10:00:0000000Z"`
 
 <a name="addMinutes"></a>
 
@@ -324,41 +320,41 @@ addMinutes('<timestamp>', <minutes>, '<format>'?)
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*časové razítko*> | Ano | Řetězec | Řetězec, který obsahuje časové razítko | 
-| <*minut*> | Ano | Integer | Kladné a záporné počet minut pro přidání | 
-| <*Formát*> | Ne | Řetězec | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) nebo [vlastní formát vzor](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (rrrr-MM-ddT:mm:ss:fffffffK), která splňuje [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
+| <*Časové razítko*> | Ano | Řetězec | Řetězec, který obsahuje časové razítko | 
+| <*minut*> | Ano | Integer | Kladné nebo záporné číslo minut pro přidání | 
+| <*Formát*> | Ne | Řetězec | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) nebo [vlastní formátovací vzor](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát časového razítka je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (rrrr-MM-ddT:mm:ss:fffffffK), která splňuje [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*Aktualizovat časové razítko*> | Řetězec | Časové razítko plus zadaném počtu minut | 
+| <*Aktualizace časového razítka*> | Řetězec | Časové razítko plus zadaný počet minut | 
 |||| 
 
 *Příklad 1*
 
-Tento příklad přidá 10 minut na zadané časové razítko:
+V tomto příkladu přidá 10 minut do zadaného časového razítka:
 
 ```
 addMinutes('2018-03-15T00:10:00Z', 10)
 ```
 
-A vrátí výsledek tohoto: `"2018-03-15T00:20:00.0000000Z"`
+A vrátí výsledek: `"2018-03-15T00:20:00.0000000Z"`
 
 *Příklad 2*
 
-Tento příklad odečítá od pěti minut od zadaného časového razítka:
+V tomto příkladu odečte za pět minut od zadaného časového razítka:
 
 ```
 addMinutes('2018-03-15T00:20:00Z', -5)
 ```
 
-A vrátí výsledek tohoto: `"2018-03-15T00:15:00.0000000Z"`
+A vrátí výsledek: `"2018-03-15T00:15:00.0000000Z"`
 
 <a name="addProperty"></a>
 
-## <a name="addproperty"></a>AddProperty –
+## <a name="addproperty"></a>addProperty
 
-Přidejte vlastnost a její hodnota nebo dvojice název hodnota, na objekt JSON a vrátí objekt aktualizované. Pokud objekt již existuje v době běhu, funkce vyvolá chybu.
+Přidání vlastnosti a její hodnotu nebo dvojice název hodnota do objektu JSON a vrácení aktualizovaného objektu. Pokud objekt již existuje v době běhu, funkce vyvolá chybu.
 
 ```
 addProperty(<object>, '<property>', <value>)
@@ -366,19 +362,19 @@ addProperty(<object>, '<property>', <value>)
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*Objekt*> | Ano | Objekt | Objekt JSON, ve které chcete přidat vlastnost | 
+| <*objekt*> | Ano | Objekt | Objekt JSON, ve které chcete přidat vlastnost | 
 | <*Vlastnost*> | Ano | Řetězec | Název vlastnosti, která má přidat | 
-| <*Hodnota*> | Ano | Všechny | Hodnotu pro vlastnost |
+| <*Hodnota*> | Ano | Všechny | Hodnota pro vlastnost |
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*aktualizovat objekt*> | Objekt | Aktualizovaný objekt JSON s zadané vlastnosti | 
+| <*aktualizace objektu*> | Objekt | Aktualizovaný objekt JSON se zadanou vlastností | 
 |||| 
 
 *Příklad*
 
-Tento příklad přidá `accountNumber` vlastnost, která má `customerProfile` objekt, který je převést na JSON se [JSON()](#json) funkce. Funkce přiřadí hodnotu, která je generován [guid()](#guid) fungovat a vrátí aktualizovaného objektu:
+V tomto příkladu přidá `accountNumber` vlastnost `customerProfile` objektu, který je převést na JSON pomocí [JSON()](#json) funkce. Funkce přiřadí hodnotu, která je generován [guid()](#guid) funkci a vrátí aktualizovaného objektu:
 
 ```
 addProperty(json('customerProfile'), 'accountNumber', guid())
@@ -388,7 +384,7 @@ addProperty(json('customerProfile'), 'accountNumber', guid())
 
 ## <a name="addseconds"></a>Přidat_sekundy
 
-Počet sekund, přidejte do časového razítka.
+Počet sekund, po přidání do časového razítka.
 
 ```
 addSeconds('<timestamp>', <seconds>, '<format>'?)
@@ -396,41 +392,41 @@ addSeconds('<timestamp>', <seconds>, '<format>'?)
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*časové razítko*> | Ano | Řetězec | Řetězec, který obsahuje časové razítko | 
-| <*Sekund*> | Ano | Integer | Kladné a záporné počet sekund, po přidání | 
-| <*Formát*> | Ne | Řetězec | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) nebo [vlastní formát vzor](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (rrrr-MM-ddT:mm:ss:fffffffK), která splňuje [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
+| <*Časové razítko*> | Ano | Řetězec | Řetězec, který obsahuje časové razítko | 
+| <*sekundy*> | Ano | Integer | Kladné nebo záporné číslo sady sekund se má přidat | 
+| <*Formát*> | Ne | Řetězec | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) nebo [vlastní formátovací vzor](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát časového razítka je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (rrrr-MM-ddT:mm:ss:fffffffK), která splňuje [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*Aktualizovat časové razítko*> | Řetězec | Časové razítko plus zadaném počtu sekund  | 
+| <*Aktualizace časového razítka*> | Řetězec | Časové razítko plus zadaném počtu sekund  | 
 |||| 
 
 *Příklad 1*
 
-Tento příklad přidá 10 sekund zadaného časového razítka:
+V tomto příkladu přidá 10 sekund do zadaného časového razítka:
 
 ```
 addSeconds('2018-03-15T00:00:00Z', 10)
 ```
 
-A vrátí výsledek tohoto: `"2018-03-15T00:00:10.0000000Z"`
+A vrátí výsledek: `"2018-03-15T00:00:10.0000000Z"`
 
 *Příklad 2*
 
-Tento příklad odečítá od pěti sekund zadaného časového razítka:
+V tomto příkladu odečte pět sekund do zadaného časového razítka:
 
 ```
 addSeconds('2018-03-15T00:00:30Z', -5)
 ```
 
-A vrátí výsledek tohoto: `"2018-03-15T00:00:25.0000000Z"`
+A vrátí výsledek: `"2018-03-15T00:00:25.0000000Z"`
 
 <a name="addToTime"></a>
 
 ## <a name="addtotime"></a>addToTime
 
-Počet jednotek přidejte do časového razítka. Viz také [getFutureTime()](#getFutureTime).
+Přidáte počet časových jednotek do časového razítka. Viz také [getFutureTime()](#getFutureTime).
 
 ```
 addToTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
@@ -438,42 +434,42 @@ addToTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*časové razítko*> | Ano | Řetězec | Řetězec, který obsahuje časové razítko | 
-| <*Interval*> | Ano | Integer | Počet jednotek zadaný čas přidání | 
-| <*timeUnit*> | Ano | Řetězec | Jednotka času pro použití s *interval*: "Sekundu", "Minut", "Hodina", "Den", "Týden", "Měsíc", "Rok" | 
-| <*Formát*> | Ne | Řetězec | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) nebo [vlastní formát vzor](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (rrrr-MM-ddT:mm:ss:fffffffK), která splňuje [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
+| <*Časové razítko*> | Ano | Řetězec | Řetězec, který obsahuje časové razítko | 
+| <*interval*> | Ano | Integer | Počet jednotek určený čas přidání | 
+| <*timeUnit*> | Ano | Řetězec | Jednotka času pro použití s *interval*: "Sekundu", "Minute", "Hour", "Day", "Týden", "Měsíc", "Rok" | 
+| <*Formát*> | Ne | Řetězec | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) nebo [vlastní formátovací vzor](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát časového razítka je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (rrrr-MM-ddT:mm:ss:fffffffK), která splňuje [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*Aktualizovat časové razítko*> | Řetězec | Časové razítko s přičtením zadaného počtu časové jednotky  | 
+| <*Aktualizace časového razítka*> | Řetězec | Časové razítko a za zadaný počet časových jednotek  | 
 |||| 
 
 *Příklad 1*
 
-Tento příklad přidá jeden den zadané časové razítko:
+V tomto příkladu přidá jeden den do zadaného časového razítka:
 
 ```
 addToTime('2018-01-01T00:00:00Z', 1, 'Day') 
 ```
 
-A vrátí výsledek tohoto: `"2018-01-02T00:00:00:0000000Z"`
+A vrátí výsledek: `"2018-01-02T00:00:00:0000000Z"`
 
 *Příklad 2*
 
-Tento příklad přidá jeden den zadané časové razítko:
+V tomto příkladu přidá jeden den do zadaného časového razítka:
 
 ```
 addToTime('2018-01-01T00:00:00Z', 1, 'Day', 'D')
 ```
 
-A vrátí výsledek ve formátu volitelné "D": `"Tuesday, January 2, 2018"`
+A vrátí výsledek volitelné formátu "D": `"Tuesday, January 2, 2018"`
 
 <a name="and"></a>
 
 ## <a name="and"></a>a
 
-Zkontrolujte, zda jsou všechny výrazy hodnotu true. Vrátí hodnotu PRAVDA, pokud jsou všechny výrazy true nebo vrátí hodnotu false v případě, že nejméně jeden výraz je hodnota false.
+Zkontrolujte, zda jsou všechny výrazy hodnotu true. Vrátí hodnotu PRAVDA, pokud jsou splněny všechny výrazy nebo vrátit hodnotu false v případě nejméně jeden výraz hodnotu false.
 
 ```
 and(<expression1>, <expression2>, ...)
@@ -481,12 +477,12 @@ and(<expression1>, <expression2>, ...)
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*Expression1*>, <*Výraz2*>,... | Ano | Logická hodnota | Výrazy ke kontrole | 
+| <*Expression1*>, <*expression2*>,... | Ano | Logická hodnota | Výrazy ke kontrole | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | -----| ----------- | 
-| hodnotu true nebo false | Logická hodnota | Vrátí hodnotu PRAVDA, pokud jsou všechny výrazy true. Vrátí hodnotu false, pokud se nejméně jeden výraz je hodnota false. | 
+| PRAVDA nebo NEPRAVDA | Logická hodnota | Vrátí hodnotu PRAVDA, pokud jsou splněny všechny výrazy. Vrátí hodnotu false, pokud se alespoň jeden výraz je nepravdivý. | 
 |||| 
 
 *Příklad 1*
@@ -501,9 +497,9 @@ and(false, false)
 
 A vrátí tyto výsledky:
 
-* Prvním příkladu: oba výrazy hodnotu true, takže vrátí `true`. 
-* Druhý příklad: jeden výraz je hodnota false, takže vrátí `false`.
-* Třetí příklad: oba výrazy jsou false, takže vrátí `false`.
+* První příklad: oba výrazy hodnotu true, proto vrátí `true`. 
+* Druhý příklad: jeden výraz má hodnotu false, takže vrací `false`.
+* Třetí příklad: oba výrazy jsou false, takže vrací `false`.
 
 *Příklad 2*
 
@@ -517,15 +513,15 @@ and(equals(1, 2), equals(1, 3))
 
 A vrátí tyto výsledky:
 
-* Prvním příkladu: oba výrazy hodnotu true, takže vrátí `true`. 
-* Druhý příklad: jeden výraz je hodnota false, takže vrátí `false`.
-* Třetí příklad: oba výrazy jsou false, takže vrátí `false`.
+* První příklad: oba výrazy hodnotu true, proto vrátí `true`. 
+* Druhý příklad: jeden výraz má hodnotu false, takže vrací `false`.
+* Třetí příklad: oba výrazy jsou false, takže vrací `false`.
 
 <a name="array"></a>
 
 ## <a name="array"></a>pole
 
-Vrátí pole z jedné zadaný vstup. Více vstupů, najdete v části [createArray()](#createArray). 
+Vrátí pole z jedné zadané vstup. Více vstupů, naleznete v tématu [createArray()](#createArray). 
 
 ```
 array('<value>')
@@ -533,7 +529,7 @@ array('<value>')
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*Hodnota*> | Ano | Řetězec | Řetězec pro vytváření pole | 
+| <*Hodnota*> | Ano | Řetězec | Řetězec pro vytvoření pole | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
@@ -549,13 +545,13 @@ Tento příklad vytvoří pole z řetězce "hello":
 array('hello')
 ```
 
-A vrátí výsledek tohoto: `["hello"]`
+A vrátí výsledek: `["hello"]`
 
 <a name="base64"></a>
 
-## <a name="base64"></a>formátu Base64.
+## <a name="base64"></a>ve formátu Base64
 
-Vrátí verzi kódováním base64 řetězce.
+Vrácení verze řetězce s kódováním base64.
 
 ```
 base64('<value>')
@@ -568,24 +564,24 @@ base64('<value>')
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*řetězec formátu Base64.*> | Řetězec | Verze kódováním base64 pro vstupní řetězec | 
+| <*řetězec ve formátu Base64*> | Řetězec | Verze s kódováním base64 pro vstupní řetězec | 
 |||| 
 
 *Příklad*
 
-Tento příklad převede na řetězec s kódováním base64, pomocí řetězce "hello":
+Tento příklad převede na řetězec s kódováním base64 řetězec "hello":
 
 ```
 base64('hello')
 ```
 
-A vrátí výsledek tohoto: `"aGVsbG8="`
+A vrátí výsledek: `"aGVsbG8="`
 
 <a name="base64ToBinary"></a>
 
 ## <a name="base64tobinary"></a>base64ToBinary
 
-Vrátí binární verze pro řetězec s kódováním base64.
+Vrátí binární verze řetězce s kódováním base64.
 
 ```
 base64ToBinary('<value>')
@@ -593,23 +589,23 @@ base64ToBinary('<value>')
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*Hodnota*> | Ano | Řetězec | Řetězec s kódováním base64, pomocí k převedení | 
+| <*Hodnota*> | Ano | Řetězec | Řetězec s kódováním base64 pro převod | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*binární pro base64 řetězec*> | Řetězec | Binární verze pro řetězec s kódováním base64 | 
+| <*binární soubor pro base64 string*> | Řetězec | Binární verze řetězce s kódováním base64 | 
 |||| 
 
 *Příklad*
 
-Tento příklad převede "aGVsbG8 =" kódováním base64 řetězec binárního řetězce:
+Tento příklad převede "aGVsbG8 =" řetězce zakódovaného řetězcem base64 binární řetězec:
 
 ```
 base64ToBinary('aGVsbG8=')
 ```
 
-A vrátí výsledek tohoto: 
+A vrátí výsledek: 
 
 `"0110000101000111010101100111001101100010010001110011100000111101"`
 
@@ -617,7 +613,7 @@ A vrátí výsledek tohoto:
 
 ## <a name="base64tostring"></a>base64ToString
 
-Vrátí řetězec verze pro řetězec s kódováním base64, efektivně dekódování řetězec base64. Tuto funkci můžete používat místo [decodeBase64()](#decodeBase64). I když obě funkce fungovat stejným způsobem, `base64ToString()` upřednostňuje.
+Vrácení verze řetězce pro řetězec s kódováním base64, efektivně dekódování řetězec ve formátu base64. Tuto funkci použít spíše než [decodeBase64()](#decodeBase64). I když obě funkce fungovat stejným způsobem, `base64ToString()` je upřednostňována.
 
 ```
 base64ToString('<value>')
@@ -625,29 +621,29 @@ base64ToString('<value>')
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*Hodnota*> | Ano | Řetězec | Řetězec s kódováním base64, pomocí funkce Decode | 
+| <*Hodnota*> | Ano | Řetězec | Řetězec s kódováním base64 pro dekódování | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*dekódovat řetězec base64*> | Řetězec | Řetězec verze pro řetězec s kódováním base64 | 
+| <*dekódovat řetězec ve formátu base64*> | Řetězec | Řetězec verze řetězce s kódováním base64 | 
 |||| 
 
 *Příklad*
 
-Tento příklad převede "aGVsbG8 =" kódováním base64 řetězec právě řetězec:
+Tento příklad převede "aGVsbG8 =" řetězce zakódovaného řetězcem base64 jenom na řetězec:
 
 ```
 base64ToString('aGVsbG8=')
 ```
 
-A vrátí výsledek tohoto: `"hello"`
+A vrátí výsledek: `"hello"`
 
 <a name="binary"></a>
 
 ## <a name="binary"></a>Binární 
 
-Vrátí binární verze pro řetězec.
+Vrátí binární verze řetězce.
 
 ```
 binary('<value>')
@@ -660,18 +656,18 @@ binary('<value>')
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*binární pro vstupní hodnota*> | Řetězec | Binární verze pro zadaný řetězec | 
+| <*binární soubor pro vstupní hodnota*> | Řetězec | Binární verze pro zadaný řetězec | 
 |||| 
 
 *Příklad*
 
-Tento příklad převede text "hello" na binární řetězec:
+Tento příklad převede řetězec "hello" na binární řetězec:
 
 ```
 binary('hello')
 ```
 
-A vrátí výsledek tohoto: 
+A vrátí výsledek: 
 
 `"0110100001100101011011000110110001101111"`
 
@@ -679,7 +675,7 @@ A vrátí výsledek tohoto:
 
 ## <a name="body"></a>hlavní část
 
-Vrátí akci `body` výstup za běhu. Sdružená vlastnost `actions('<actionName>').outputs.body`. V tématu [actionBody()](#actionBody) a [actions()](#actions).
+Vrácení akce `body` výstupu za běhu. Zkrácený tvar vlastností `actions('<actionName>').outputs.body`. Zobrazit [actionBody()](#actionBody) a [actions()](#actions).
 
 ```
 body('<actionName>')
@@ -687,7 +683,7 @@ body('<actionName>')
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*Název akce*> | Ano | Řetězec | Název akce `body` výstupu, který chcete | 
+| <*Název akce*> | Ano | Řetězec | Název této akce `body` výstup, který chcete, aby | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
@@ -697,13 +693,13 @@ body('<actionName>')
 
 *Příklad*
 
-Tento příklad načte `body` výstup z `Get user` Twitter akce: 
+Tento příklad načte `body` výstup z `Get user` akce na Twitteru: 
 
 ```
 body('Get_user')
 ```
 
-A vrátí výsledek tohoto: 
+A vrátí výsledek: 
 
 ```json
 "body": {
@@ -724,7 +720,7 @@ A vrátí výsledek tohoto:
 
 ## <a name="bool"></a>BOOL
 
-Vrátí logickou verze pro hodnotu.
+Vrátí verzi logickou hodnotu.
 
 ```
 bool(<value>)
@@ -737,12 +733,12 @@ bool(<value>)
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| hodnotu true nebo false | Logická hodnota | Logická hodnota verze pro zadanou hodnotu | 
+| PRAVDA nebo NEPRAVDA | Logická hodnota | Logická verze pro zadanou hodnotu | 
 |||| 
 
 *Příklad*
 
-Tyto příklady Převést zadané hodnoty logické hodnoty: 
+Tyto příklady převodu zadané hodnoty na logické hodnoty: 
 
 ```
 bool(1)
@@ -751,14 +747,14 @@ bool(0)
 
 A vrátí tyto výsledky: 
 
-* Prvním příkladu: `true` 
-* Druhém příkladu: `false`
+* První příklad: `true` 
+* Druhý příklad: `false`
 
 <a name="coalesce"></a>
 
 ## <a name="coalesce"></a>sloučení
 
-Vrátí první hodnotu než null z jednoho nebo více parametrů. Prázdné řetězce, prázdné pole a prázdné objekty nejsou null.
+Vrátí první hodnotu než null z jednoho nebo více parametrů. Prázdné řetězce, pole prázdné a prázdné objekty nejsou null.
 
 ```
 coalesce(<object_1>, <object_2>, ...)
@@ -766,17 +762,17 @@ coalesce(<object_1>, <object_2>, ...)
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*object_1*>, <*object_2*>,... | Ano | Žádné, můžete kombinovat typy | Jednu nebo více položek, které chcete vyhledat hodnotu null | 
+| <*object_1*>, <*object_2*>,... | Ano | Případně můžete kombinovat typy | Jednu nebo více položek, které chcete zkontrolovat hodnoty null | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*první bez--položku null*> | Všechny | První položka nebo hodnotu, která není null. Všechny parametry mají hodnotu null, funkce vrátí hodnotu null. | 
+| <*první bez null – položky*> | Všechny | První položka nebo hodnotu, která není null. Pokud všechny parametry mají hodnotu null, tato funkce vrátí hodnotu null. | 
 |||| 
 
 *Příklad*
 
-Tyto příklady vrátí první hodnotu než null ze zadané hodnoty, nebo hodnota null, když jsou všechny hodnoty null:
+Tyto příklady vrátí první hodnota jiná než null ze zadané hodnoty nebo hodnota null, pokud jsou všechny hodnoty null:
 
 ```
 coalesce(null, true, false)
@@ -786,15 +782,15 @@ coalesce(null, null, null)
 
 A vrátí tyto výsledky: 
 
-* Prvním příkladu: `true` 
-* Druhém příkladu: `"hello"`
+* První příklad: `true` 
+* Druhý příklad: `"hello"`
 * Třetí příklad: `null`
 
 <a name="concat"></a>
 
 ## <a name="concat"></a>concat
 
-Kombinací dvou nebo více řetězců a vrátí součet řetězec. 
+Kombinací dvou nebo více řetězců a vrátit kombinované řetězec. 
 
 ```
 concat('<text1>', '<text2>', ...)
@@ -802,55 +798,55 @@ concat('<text1>', '<text2>', ...)
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*Text1*>, <*text2*>,... | Ano | Řetězec | Alespoň dva řetězce kombinovat | 
+| <*Text1*>, <*text2*>,... | Ano | Řetězec | Alespoň dva řetězce zkombinovat | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*text1text2...*> | Řetězec | Řetězec vytvořený z kombinované vstupní řetězců | 
+| <*text1text2...*> | Řetězec | Řetězec vytvořený z kombinované vstupního řetězce | 
 |||| 
 
 *Příklad*
 
-Tento příklad kombinuje řetězce "Hello" a "World":
+V tomto příkladu jsou k dispozici řetězce "Hello" a "World":
 
 ```
 concat('Hello', 'World')
 ```
 
-A vrátí výsledek tohoto: `"HelloWorld"`
+A vrátí výsledek: `"HelloWorld"`
 
 <a name="contains"></a>
 
 ## <a name="contains"></a>obsahuje
 
-Zkontrolujte, zda kolekce obsahuje konkrétní položku. Vrátí hodnotu PRAVDA, pokud byla položka nalezena, nebo vrátí hodnotu false, pokud nebyl nalezen. Tato funkce je malá a velká písmena.
+Zkontrolujte, zda kolekce obsahuje konkrétní položku. Vrátí hodnotu PRAVDA, pokud byla položka nalezena, nebo vrátí hodnotu false, když nebyl nalezen. Tato funkce rozlišuje velká a malá písmena.
 
 ```
 contains('<collection>', '<value>')
 contains([<collection>], '<value>')
 ```
 
-Konkrétně tato funkce funguje na tyto typy kolekcí: 
+Konkrétně tato funkce funguje u těchto typů kolekce: 
 
-* A *řetězec* najít *dílčí řetězec*
-* *Pole* najít *hodnota*
-* A *slovník* najít *klíč*
+* A *řetězec* k vyhledání *dílčí řetězec*
+* *Pole* k vyhledání *hodnota*
+* A *slovníku* k vyhledání *klíč*
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*kolekce*> | Ano | Řetězec, pole nebo slovník | Kolekce ke kontrole | 
-| <*Hodnota*> | Ano | Řetězec, pole nebo adresář, v uvedeném pořadí | Položka k vyhledání | 
+| <*Kolekce*> | Ano | Řetězec, pole nebo slovníku | Kolekce, kterou chcete zkontrolovat | 
+| <*Hodnota*> | Ano | Řetězec, pole nebo slovníku, respektive | Položka k vyhledání | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| hodnotu true nebo false | Logická hodnota | Vrátí hodnotu PRAVDA, pokud byla položka nalezena. Vrátí hodnotu false při nebyl nalezen. |
+| PRAVDA nebo NEPRAVDA | Logická hodnota | Vrátí hodnotu PRAVDA, pokud byla položka nalezena. Vrátí hodnotu false po nebyl nalezen. |
 |||| 
 
 *Příklad 1*
 
-Tento příklad zkontroluje text "hello, world" pro "world" podřetězec a vrátí hodnotu true:
+Tento příklad kontroluje řetězec "hello world" pro podřetězec "world" a vrací hodnotu true:
 
 ```
 contains('hello world', 'world')
@@ -858,7 +854,7 @@ contains('hello world', 'world')
 
 *Příklad 2*
 
-Tento příklad zkontroluje text "hello, world" pro dílčí řetězec "universe" a vrátí hodnotu false:
+Tento příklad kontroluje řetězec "hello world" pro podřetězec "universe" a vrátí hodnotu false:
 
 ```
 contains('hello world', 'universe')
@@ -868,7 +864,7 @@ contains('hello world', 'universe')
 
 ## <a name="convertfromutc"></a>convertFromUtc
 
-Převeďte časové razítko z koordinovaný univerzální čas (UTC) na časové pásmo cíl.
+Převeďte časové razítko od koordinovaný světový čas (UTC) na časové pásmo cíle.
 
 ```
 convertFromUtc('<timestamp>', '<destinationTimeZone>', '<format>'?)
@@ -876,14 +872,14 @@ convertFromUtc('<timestamp>', '<destinationTimeZone>', '<format>'?)
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*časové razítko*> | Ano | Řetězec | Řetězec, který obsahuje časové razítko | 
-| <*destinationTimeZone*> | Ano | Řetězec | Název pro časové pásmo cíl. Další informace najdete v tématu [časové pásmo ID](https://docs.microsoft.com/previous-versions/windows/embedded/gg154758(v=winembedded.80)). | 
-| <*Formát*> | Ne | Řetězec | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) nebo [vlastní formát vzor](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (rrrr-MM-ddT:mm:ss:fffffffK), která splňuje [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
+| <*Časové razítko*> | Ano | Řetězec | Řetězec, který obsahuje časové razítko | 
+| <*destinationTimeZone*> | Ano | Řetězec | Název pro časové pásmo cíle. Další informace najdete v tématu [ID časového pásma](https://docs.microsoft.com/previous-versions/windows/embedded/gg154758(v=winembedded.80)). | 
+| <*Formát*> | Ne | Řetězec | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) nebo [vlastní formátovací vzor](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát časového razítka je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (rrrr-MM-ddT:mm:ss:fffffffK), která splňuje [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*převést na časové razítko*> | Řetězec | Časové razítko převést na časové pásmo cíl | 
+| <*Převést časové razítko*> | Řetězec | Časové razítko převést na časové pásmo cíle | 
 |||| 
 
 *Příklad 1*
@@ -894,7 +890,7 @@ Tento příklad převede časové razítko pro zadané časové pásmo:
 convertFromUtc('2018-01-01T08:00:00.0000000Z', 'Pacific Standard Time')
 ```
 
-A vrátí výsledek tohoto: `"2018-01-01T00:00:00.0000000"`
+A vrátí výsledek: `"2018-01-01T00:00:00.0000000"`
 
 *Příklad 2*
 
@@ -904,13 +900,13 @@ Tento příklad převede na zadané časové pásmo a formát časového razítk
 convertFromUtc('2018-01-01T08:00:00.0000000Z', 'Pacific Standard Time', 'D')
 ```
 
-A vrátí výsledek tohoto: `"Monday, January 1, 2018"`
+A vrátí výsledek: `"Monday, January 1, 2018"`
 
 <a name="convertTimeZone"></a>
 
 ## <a name="converttimezone"></a>convertTimeZone
 
-Převeďte časovým razítkem ze zdroje časové pásmo na cílové časové pásmo.
+Převeďte časové razítko ze zdrojového časového pásma na časové pásmo cíle.
 
 ```
 convertTimeZone('<timestamp>', '<sourceTimeZone>', '<destinationTimeZone>', '<format>'?)
@@ -918,26 +914,26 @@ convertTimeZone('<timestamp>', '<sourceTimeZone>', '<destinationTimeZone>', '<fo
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*časové razítko*> | Ano | Řetězec | Řetězec, který obsahuje časové razítko | 
-| <*sourceTimeZone*> | Ano | Řetězec | Název pro časové pásmo zdroje. Další informace najdete v tématu [časové pásmo ID](https://docs.microsoft.com/previous-versions/windows/embedded/gg154758(v=winembedded.80)). | 
-| <*destinationTimeZone*> | Ano | Řetězec | Název pro časové pásmo cíl. Další informace najdete v tématu [časové pásmo ID](https://docs.microsoft.com/previous-versions/windows/embedded/gg154758(v=winembedded.80)). | 
-| <*Formát*> | Ne | Řetězec | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) nebo [vlastní formát vzor](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (rrrr-MM-ddT:mm:ss:fffffffK), která splňuje [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
+| <*Časové razítko*> | Ano | Řetězec | Řetězec, který obsahuje časové razítko | 
+| <*sourceTimeZone*> | Ano | Řetězec | Název zdrojového časového pásma. Další informace najdete v tématu [ID časového pásma](https://docs.microsoft.com/previous-versions/windows/embedded/gg154758(v=winembedded.80)). | 
+| <*destinationTimeZone*> | Ano | Řetězec | Název pro časové pásmo cíle. Další informace najdete v tématu [ID časového pásma](https://docs.microsoft.com/previous-versions/windows/embedded/gg154758(v=winembedded.80)). | 
+| <*Formát*> | Ne | Řetězec | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) nebo [vlastní formátovací vzor](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát časového razítka je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (rrrr-MM-ddT:mm:ss:fffffffK), která splňuje [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*převést na časové razítko*> | Řetězec | Časové razítko převést na časové pásmo cíl | 
+| <*Převést časové razítko*> | Řetězec | Časové razítko převést na časové pásmo cíle | 
 |||| 
 
 *Příklad 1*
 
-Tento příklad převede časové pásmo zdrojového na cílový časové pásmo: 
+Tento příklad převede zdrojového časového pásma na cílové časové pásmo: 
 
 ```
 convertTimeZone('2018-01-01T08:00:00.0000000Z', 'UTC', 'Pacific Standard Time')
 ```
 
-A vrátí výsledek tohoto: `"2018-01-01T00:00:00.0000000"`
+A vrátí výsledek: `"2018-01-01T00:00:00.0000000"`
 
 *Příklad 2*
 
@@ -947,13 +943,13 @@ Tento příklad převede časové pásmo pro zadané časové pásmo a formát:
 convertTimeZone('2018-01-01T80:00:00.0000000Z', 'UTC', 'Pacific Standard Time', 'D')
 ```
 
-A vrátí výsledek tohoto: `"Monday, January 1, 2018"`
+A vrátí výsledek: `"Monday, January 1, 2018"`
 
 <a name="convertToUtc"></a>
 
 ## <a name="converttoutc"></a>convertToUtc
 
-Převeďte časové razítko o časovém pásmu zdroj koordinovaný univerzální čas (UTC).
+Převeďte časové razítko ze zdrojového časového pásma na koordinovaný univerzální čas (UTC).
 
 ```
 convertToUtc('<timestamp>', '<sourceTimeZone>', '<format>'?)
@@ -961,41 +957,41 @@ convertToUtc('<timestamp>', '<sourceTimeZone>', '<format>'?)
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*časové razítko*> | Ano | Řetězec | Řetězec, který obsahuje časové razítko | 
-| <*sourceTimeZone*> | Ano | Řetězec | Název pro časové pásmo zdroje. Další informace najdete v tématu [časové pásmo ID](https://docs.microsoft.com/previous-versions/windows/embedded/gg154758(v=winembedded.80)). | 
-| <*Formát*> | Ne | Řetězec | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) nebo [vlastní formát vzor](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (rrrr-MM-ddT:mm:ss:fffffffK), která splňuje [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
+| <*Časové razítko*> | Ano | Řetězec | Řetězec, který obsahuje časové razítko | 
+| <*sourceTimeZone*> | Ano | Řetězec | Název zdrojového časového pásma. Další informace najdete v tématu [ID časového pásma](https://docs.microsoft.com/previous-versions/windows/embedded/gg154758(v=winembedded.80)). | 
+| <*Formát*> | Ne | Řetězec | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) nebo [vlastní formátovací vzor](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát časového razítka je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (rrrr-MM-ddT:mm:ss:fffffffK), která splňuje [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*převést na časové razítko*> | Řetězec | Časové razítko převedeny na UTC | 
+| <*Převést časové razítko*> | Řetězec | Časové razítko převede na UTC | 
 |||| 
 
 *Příklad 1*
 
-Tento příklad převede na UTC časového razítka: 
+Tento příklad převede na UTC časové razítko: 
 
 ```
 convertToUtc('01/01/2018 00:00:00', 'Pacific Standard Time')
 ```
 
-A vrátí výsledek tohoto: `"2018-01-01T08:00:00.0000000Z"`
+A vrátí výsledek: `"2018-01-01T08:00:00.0000000Z"`
 
 *Příklad 2*
 
-Tento příklad převede na UTC časového razítka:
+Tento příklad převede na UTC časové razítko:
 
 ```
 convertToUtc('01/01/2018 00:00:00', 'Pacific Standard Time', 'D')
 ```
 
-A vrátí výsledek tohoto: `"Monday, January 1, 2018"`
+A vrátí výsledek: `"Monday, January 1, 2018"`
 
 <a name="createArray"></a>
 
 ## <a name="createarray"></a>createArray
 
-Vrátí pole z více vstupů. Pro jeden vstupní pole, najdete v části [array()](#array).
+Vrátíte pole z více vstupů. Jeden vstupní pole, naleznete v tématu [array()](#array).
 
 ```
 createArray('<object1>', '<object2>', ...)
@@ -1003,12 +999,12 @@ createArray('<object1>', '<object2>', ...)
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*1*>, <*object2*>,... | Ano | Žádné, ale není ve smíšeném | Minimálně dvě položky vytvořte pole | 
+| <*Objekt1*>, <*objekt2*>,... | Ano | Žádné, ne však obojí | Minimálně dvě položky k vytvoření pole | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| [<*1*>, <*object2*>,...] | Pole | Pole vytvořené z všechny vstupní položky | 
+| [<*Objekt1*>, <*objekt2*>;...] | Pole | Pole vytvořené ze všech vstupních položek | 
 |||| 
 
 *Příklad*
@@ -1019,11 +1015,11 @@ Tento příklad vytvoří pole z těchto vstupy:
 createArray('h', 'e', 'l', 'l', 'o')
 ```
 
-A vrátí výsledek tohoto: `["h", "e", "l", "l", "o"]`
+A vrátí výsledek: `["h", "e", "l", "l", "o"]`
 
 <a name="dataUri"></a>
 
-## <a name="datauri"></a>dataUri
+## <a name="datauri"></a>Parametr
 
 Vrátí identifikátor URI dat (URI) pro řetězec. 
 
@@ -1038,24 +1034,24 @@ dataUri('<value>')
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*data-uri*> | Řetězec | Vstupní řetězec identifikátor URI dat. | 
+| <*identifikátor uri dat*> | Řetězec | Identifikátor URI dat pro vstupní řetězec | 
 |||| 
 
 *Příklad*
 
-Tento příklad vytvoří identifikátor URI dat. pro řetězec "hello":
+Tento příklad vytvoří data identifikátor URI pro řetězec "hello":
 
 ```
 dataUri('hello') 
 ```
 
-A vrátí výsledek tohoto: `"data:text/plain;charset=utf-8;base64,aGVsbG8="`
+A vrátí výsledek: `"data:text/plain;charset=utf-8;base64,aGVsbG8="`
 
 <a name="dataUriToBinary"></a>
 
 ## <a name="datauritobinary"></a>dataUriToBinary
 
-Vrátí binární verze pro identifikátor URI dat (URI). Tuto funkci můžete používat místo [decodeDataUri()](#decodeDataUri). I když obě funkce fungovat stejným způsobem, `decodeDataUri()` upřednostňuje.
+Vrátí binární verzi pro identifikátor URI dat (URI). Tuto funkci použít spíše než [decodeDataUri()](#decodeDataUri). I když obě funkce fungovat stejným způsobem, `decodeDataUri()` je upřednostňována.
 
 ```
 dataUriToBinary('<value>')
@@ -1063,23 +1059,23 @@ dataUriToBinary('<value>')
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*Hodnota*> | Ano | Řetězec | Identifikátor URI k převedení dat. | 
+| <*Hodnota*> | Ano | Řetězec | Identifikátor URI k převedení dat | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*binární pro data-uri*> | Řetězec | Binární verze pro identifikátor URI dat. | 
+| <*binární soubor pro data identifikátoru uri*> | Řetězec | Binární verze pro identifikátor URI dat. | 
 |||| 
 
 *Příklad*
 
-Tento příklad vytvoří binární verze pro tato data URI:
+Tento příklad vytvoří binární verze pro tento identifikátor URI dat:
 
 ```
 dataUriToBinary('data:text/plain;charset=utf-8;base64,aGVsbG8=')
 ```
 
-A vrátí výsledek tohoto: 
+A vrátí výsledek: 
 
 `"01100100011000010111010001100001001110100111010001100101011110000111010000101111011100000
 1101100011000010110100101101110001110110110001101101000011000010111001001110011011001010111
@@ -1090,7 +1086,7 @@ A vrátí výsledek tohoto:
 
 ## <a name="datauritostring"></a>dataUriToString
 
-Vrátí řetězec verze pro identifikátor URI dat (URI).
+Vrácení verze řetězce pro identifikátor URI dat (URI).
 
 ```
 dataUriToString('<value>')
@@ -1098,29 +1094,29 @@ dataUriToString('<value>')
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*Hodnota*> | Ano | Řetězec | Identifikátor URI k převedení dat. | 
+| <*Hodnota*> | Ano | Řetězec | Identifikátor URI k převedení dat | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*řetězec pro data identifikátor uri*> | Řetězec | Řetězec verze pro identifikátor URI dat. | 
+| <*řetězec pro data identifikátoru uri*> | Řetězec | Řetězec verze pro identifikátor URI dat. | 
 |||| 
 
 *Příklad*
 
-Tento příklad vytvoří řetězec pro tato data URI:
+Tento příklad vytvoří řetězec pro tento identifikátor URI dat:
 
 ```
 dataUriToString('data:text/plain;charset=utf-8;base64,aGVsbG8=')
 ```
 
-A vrátí výsledek tohoto: `"hello"`
+A vrátí výsledek: `"hello"`
 
 <a name="dayOfMonth"></a>
 
-## <a name="dayofmonth"></a>DayOfMonth
+## <a name="dayofmonth"></a>dayOfMonth
 
-Vrátí den v měsíci od časového razítka. 
+Vrátí den v měsíci z časové razítko. 
 
 ```
 dayOfMonth('<timestamp>')
@@ -1128,7 +1124,7 @@ dayOfMonth('<timestamp>')
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*časové razítko*> | Ano | Řetězec | Řetězec, který obsahuje časové razítko | 
+| <*Časové razítko*> | Ano | Řetězec | Řetězec, který obsahuje časové razítko | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
@@ -1138,19 +1134,19 @@ dayOfMonth('<timestamp>')
 
 *Příklad*
 
-Tento příklad vrátí číslo dne v měsíci z této časové razítko:
+V tomto příkladu vrátí číslo za den v měsíci z tohoto časového razítka:
 
 ```
 dayOfMonth('2018-03-15T13:27:36Z')
 ```
 
-A vrátí výsledek tohoto: `15`
+A vrátí výsledek: `15`
 
 <a name="dayOfWeek"></a>
 
-## <a name="dayofweek"></a>DayOfWeek
+## <a name="dayofweek"></a>dayOfWeek
 
-Vrátí den v týdnu z časového razítka.  
+Vrátí den v týdnu od časové razítko.  
 
 ```
 dayOfWeek('<timestamp>')
@@ -1158,29 +1154,29 @@ dayOfWeek('<timestamp>')
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*časové razítko*> | Ano | Řetězec | Řetězec, který obsahuje časové razítko | 
+| <*Časové razítko*> | Ano | Řetězec | Řetězec, který obsahuje časové razítko | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*den v týdnu*> | Integer | Zadaný den v týdnu z zadané časové razítko, které je neděle 0, pondělí je 1 a tak dále | 
+| <*den v týdnu*> | Integer | Den v týdnu ze zadaného časového razítka, kde 0 je neděle, pondělí je 1 a tak dále | 
 |||| 
 
 *Příklad*
 
-Tento příklad vrátí číslo dne v týdnu z této časové razítko:
+V tomto příkladu vrátí číslo za den v týdnu z tohoto časového razítka:
 
 ```
 dayOfWeek('2018-03-15T13:27:36Z')
 ```
 
-A vrátí výsledek tohoto: `3`
+A vrátí výsledek: `3`
 
 <a name="dayOfYear"></a>
 
-## <a name="dayofyear"></a>DayOfYear
+## <a name="dayofyear"></a>dayOfYear
 
-Vrátí den v roce od časového razítka. 
+Vrátí den v roce od časové razítko. 
 
 ```
 dayOfYear('<timestamp>')
@@ -1188,29 +1184,29 @@ dayOfYear('<timestamp>')
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*časové razítko*> | Ano | Řetězec | Řetězec, který obsahuje časové razítko | 
+| <*Časové razítko*> | Ano | Řetězec | Řetězec, který obsahuje časové razítko | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*den v roce*> | Integer | Den v roce ze zadaného časového razítka | 
+| <*den roku*> | Integer | Den v roce ze zadaného časového razítka | 
 |||| 
 
 *Příklad*
 
-Tento příklad vrátí počet den v roce z této časové razítko:
+V tomto příkladu vrátí den v roce z tohoto časového razítka:
 
 ```
 dayOfYear('2018-03-15T13:27:36Z')
 ```
 
-A vrátí výsledek tohoto: `74`
+A vrátí výsledek: `74`
 
 <a name="decodeBase64"></a>
 
 ## <a name="decodebase64"></a>decodeBase64
 
-Vrátí řetězec verze pro řetězec s kódováním base64, efektivně dekódování řetězec base64. Zvažte použití [base64ToString()](#base64ToString) místo `decodeBase64()`. I když obě funkce fungovat stejným způsobem, `base64ToString()` upřednostňuje.
+Vrácení verze řetězce pro řetězec s kódováním base64, efektivně dekódování řetězec ve formátu base64. Zvažte použití [base64ToString()](#base64ToString) spíše než `decodeBase64()`. I když obě funkce fungovat stejným způsobem, `base64ToString()` je upřednostňována.
 
 ```
 decodeBase64('<value>')
@@ -1218,29 +1214,29 @@ decodeBase64('<value>')
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*Hodnota*> | Ano | Řetězec | Řetězec s kódováním base64, pomocí funkce Decode | 
+| <*Hodnota*> | Ano | Řetězec | Řetězec s kódováním base64 pro dekódování | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*dekódovat řetězec base64*> | Řetězec | Řetězec verze pro řetězec s kódováním base64 | 
+| <*dekódovat řetězec ve formátu base64*> | Řetězec | Řetězec verze řetězce s kódováním base64 | 
 |||| 
 
 *Příklad*
 
-Tento příklad vytvoří řetězec s kódováním base64, pomocí řetězce:
+Tento příklad vytvoří řetězec s kódováním base64 řetězce:
 
 ```
 decodeBase64('aGVsbG8=')
 ```
 
-A vrátí výsledek tohoto: `"hello"`
+A vrátí výsledek: `"hello"`
 
 <a name="decodeDataUri"></a>
 
 ## <a name="decodedatauri"></a>decodeDataUri
 
-Vrátí binární verze pro identifikátor URI dat (URI). Zvažte použití [dataUriToBinary()](#dataUriToBinary), místo `decodeDataUri()`. I když obě funkce fungovat stejným způsobem, `dataUriToBinary()` upřednostňuje.
+Vrátí binární verzi pro identifikátor URI dat (URI). Zvažte použití [dataUriToBinary()](#dataUriToBinary), spíše než `decodeDataUri()`. I když obě funkce fungovat stejným způsobem, `dataUriToBinary()` je upřednostňována.
 
 ```
 decodeDataUri('<value>')
@@ -1248,23 +1244,23 @@ decodeDataUri('<value>')
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*Hodnota*> | Ano | Řetězec | Řetězec identifikátoru URI pro dekódování dat | 
+| <*Hodnota*> | Ano | Řetězec | Identifikátor URI řetězec pro dekódování dat | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*binární pro data-uri*> | Řetězec | Binární verze pro data řetězce URI | 
+| <*binární soubor pro data identifikátoru uri*> | Řetězec | Binární verze pro řetězce identifikátoru URI dat. | 
 |||| 
 
 *Příklad*
 
-Tento příklad vrací binární verze pro tato data URI:
+V tomto příkladu vrací binární verze pro tento identifikátor URI dat:
 
 ```
 decodeDataUri('data:text/plain;charset=utf-8;base64,aGVsbG8=')
 ```
 
-A vrátí výsledek tohoto: 
+A vrátí výsledek: 
 
 `"01100100011000010111010001100001001110100111010001100101011110000111010000101111011100000
 1101100011000010110100101101110001110110110001101101000011000010111001001110011011001010111
@@ -1275,7 +1271,7 @@ A vrátí výsledek tohoto:
 
 ## <a name="decodeuricomponent"></a>decodeuricomponent –
 
-Vrátí řetězec, nahradí řídicí znaky s dekódované verze. 
+Vrátí, nahradí řídicí znaky s verzemi dekódovaný řetězec. 
 
 ```
 decodeUriComponent('<value>')
@@ -1283,29 +1279,29 @@ decodeUriComponent('<value>')
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*Hodnota*> | Ano | Řetězec | Řetězec s řídicími znaky dekódování | 
+| <*Hodnota*> | Ano | Řetězec | Řetězec s řídicími znaky k dekódování | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*dekódovat uri*> | Řetězec | Aktualizované řetězec s dekódované řídicí znaky | 
+| <*dekódovat. identifikátor uri*> | Řetězec | Aktualizované řetězec s dekódovaný řídicí znaky | 
 |||| 
 
 *Příklad*
 
-Tento příklad řídicí znaky v tomto řetězci nahradí dekódované verze:
+V tomto příkladu řídicí znaky v tomto řetězci nahradí dekódovaný verze:
 
 ```
 decodeUriComponent('http%3A%2F%2Fcontoso.com')
 ```
 
-A vrátí výsledek tohoto: `"https://contoso.com"`
+A vrátí výsledek: `"https://contoso.com"`
 
 <a name="div"></a>
 
 ## <a name="div"></a>div
 
-Vrátí výsledek v celočíselné dělení dvou čísel. Výsledek zbývající najdete [mod()](#mod).
+Vrátí výsledek celočíselné dělení dvou čísel. Chcete-li získat zbytek výsledek, naleznete v tématu [mod()](#mod).
 
 ```
 div(<dividend>, <divisor>)
@@ -1313,31 +1309,31 @@ div(<dividend>, <divisor>)
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*dělenec*> | Ano | Celé číslo nebo číslo Float | Číslo, které má dělit *dělitel* | 
-| <*dělitel*> | Ano | Celé číslo nebo číslo Float | Číslo, které rozdělí *dělenec*, ale nemůže být 0. | 
+| <*podíl*> | Ano | Integer nebo Float | Číslo, které má dělit *dělitel* | 
+| <*dělitel*> | Ano | Integer nebo Float | Číslo, které rozdělí *Delenec*, ale nemůže být 0 | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*výsledek koeficient*> | Integer | Celé číslo výsledek dělení první číslo druhé číslo | 
+| <*výsledek podílu*> | Integer | Výsledek celočíselné dělení první číslo v druhé číslo | 
 |||| 
 
 *Příklad*
 
-Oba příklady dělení první číslo druhé číslo:
+Oba příklady vydělení prvního čísla druhé číslo:
 
 ```
 div(10, 5)
 div(11, 5)
 ```
 
-A vrátí výsledek tohoto: `2`
+A vraťte tento výsledek: `2`
 
 <a name="encodeUriComponent"></a>
 
 ## <a name="encodeuricomponent"></a>encodeuricomponent –
 
-Vrácení verze identifikátor URI kódovaný URI pro řetězec nahrazením znaky adresy URL unsafe řídicí znaky. Zvažte použití [uriComponent()](#uriComponent), místo `encodeUriComponent()`. I když obě funkce fungovat stejným způsobem, `uriComponent()` upřednostňuje.
+Vrácení verze URI kódovaný identifikátor (URI) pro řetězec tak, že nahradíte adresu URL problematické znaky s řídicími znaky. Zvažte použití [uriComponent()](#uriComponent), spíše než `encodeUriComponent()`. I když obě funkce fungovat stejným způsobem, `uriComponent()` je upřednostňována.
 
 ```
 encodeUriComponent('<value>')
@@ -1345,12 +1341,12 @@ encodeUriComponent('<value>')
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*Hodnota*> | Ano | Řetězec | Řetězec převést na formátu s kódováním identifikátor URI | 
+| <*Hodnota*> | Ano | Řetězec | Řetězec převést na formát kódování identifikátoru URI | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*kódovaný identifikátor uri*> | Řetězec | Řetězec kódovaný identifikátor URI s řídicí znaky | 
+| <*kódovaný identifikátor uri*> | Řetězec | Řetězec kódovaný identifikátor URI s řídicími znaky | 
 |||| 
 
 *Příklad*
@@ -1361,13 +1357,13 @@ Tento příklad vytvoří verzi kódovaný identifikátor URI pro tento řetěze
 encodeUriComponent('https://contoso.com')
 ```
 
-A vrátí výsledek tohoto: `"http%3A%2F%2Fcontoso.com"`
+A vrátí výsledek: `"http%3A%2F%2Fcontoso.com"`
 
 <a name="empty"></a>
 
 ## <a name="empty"></a>prázdný
 
-Zkontrolujte, zda kolekce je prázdný. Vrátí hodnotu PRAVDA, pokud kolekce je prázdná nebo vrátí hodnotu NEPRAVDA, pokud není prázdný.
+Zkontrolujte, zda kolekce je prázdná. Vrátí hodnotu PRAVDA, pokud kolekce je prázdná nebo vrátí hodnotu NEPRAVDA, pokud není prázdný.
 
 ```
 empty('<collection>')
@@ -1376,17 +1372,17 @@ empty([<collection>])
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*kolekce*> | Ano | Řetězec, pole nebo objekt | Kolekce ke kontrole | 
+| <*Kolekce*> | Ano | Řetězec, pole nebo objekt | Kolekce, kterou chcete zkontrolovat | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| hodnotu true nebo false | Logická hodnota | Vrátí hodnotu PRAVDA, pokud kolekce je prázdná. Vrátí hodnotu NEPRAVDA, pokud není prázdný. | 
+| PRAVDA nebo NEPRAVDA | Logická hodnota | Vrátí hodnotu PRAVDA, pokud kolekce je prázdná. Vrátí hodnotu NEPRAVDA, pokud není prázdný. | 
 |||| 
 
 *Příklad* 
 
-Tyto příklady zkontrolujte, zda jsou prázdné k zadaným kolekcím:
+Tyto příklady zkontrolujte, jestli zadaná kolekce jsou prázdné:
 
 ```
 empty('')
@@ -1395,14 +1391,14 @@ empty('abc')
 
 A vrátí tyto výsledky: 
 
-* Prvním příkladu: předá řetězec prázdný, funkce vrátí hodnotu `true`. 
-* Druhý příklad: předá řetězec "abc", proto funkce vrátí hodnotu `false`. 
+* První příklad: předá prázdný řetězec, funkce vrátí `true`. 
+* Druhý příklad: předává řetězec "abc" tak, aby funkce `false`. 
 
 <a name="endswith"></a>
 
 ## <a name="endswith"></a>endsWith
 
-Zkontrolujte, zda řetězec končí konkrétní dílčí řetězec. Vrátí hodnotu PRAVDA, když se najde dílčí řetězec, nebo vrátí hodnotu false, pokud nebyl nalezen. Tato funkce není malá a velká písmena.
+Zkontrolujte, jestli řetězec končí konkrétní dílčí řetězec. Vrátí hodnotu PRAVDA, pokud se najde dílčí řetězec, nebo vrátí hodnotu false, když nebyl nalezen. Tato funkce není malá a velká písmena.
 
 ```
 endsWith('<text>', '<searchText>')
@@ -1411,39 +1407,39 @@ endsWith('<text>', '<searchText>')
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
 | <*Text*> | Ano | Řetězec | Řetězec, který má zkontrolovat | 
-| <*Prohledávanýtext*> | Ano | Řetězec | Koncová dílčí řetězec k vyhledání | 
+| <*Prohledávanýtext*> | Ano | Řetězec | Poslední dílčí řetězec k vyhledání | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| hodnotu true nebo false  | Logická hodnota | Vrátí hodnotu PRAVDA, když se najde koncová dílčí řetězec. Vrátí hodnotu false při nebyl nalezen. | 
+| PRAVDA nebo NEPRAVDA  | Logická hodnota | Vrátí hodnotu PRAVDA, pokud se najde poslední podřetězec. Vrátí hodnotu false po nebyl nalezen. | 
 |||| 
 
 *Příklad 1* 
 
-Tento příklad zkontroluje, zda text "hello, world" končí textem "world" řetězec:
+Tento příklad kontroluje, zda řetězec "hello world" končí řetězcem "world":
 
 ```
 endsWith('hello world', 'world')
 ```
 
-A vrátí výsledek tohoto: `true`
+A vrátí výsledek: `true`
 
 *Příklad 2*
 
-Tento příklad zkontroluje, zda text "hello, world" končí textem "universe" řetězec:
+Tento příklad kontroluje, zda řetězec "hello world" končí řetězcem "universe":
 
 ```
 endsWith('hello world', 'universe')
 ```
 
-A vrátí výsledek tohoto: `false`
+A vrátí výsledek: `false`
 
 <a name="equals"></a>
 
 ## <a name="equals"></a>rovná se
 
-Zkontrolujte, zda jsou hodnoty, výrazy nebo objekty ekvivalentní. Vrátí hodnotu PRAVDA, jak jsou ekvivalentní, nebo vrátí hodnotu false v případě, že není ekvivalentní.
+Zkontrolujte, zda jsou ekvivalentní hodnoty, výrazy nebo objekty. Vrátí hodnotu PRAVDA, pokud obě jsou ekvivalentní, nebo vrátí hodnotu false, když nejsou ekvivalentní.
 
 ```
 equals('<object1>', '<object2>')
@@ -1451,17 +1447,17 @@ equals('<object1>', '<object2>')
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*1*>, <*object2*> | Ano | různé | Hodnoty, výrazy nebo objekty k porovnání | 
+| <*Objekt1*>, <*objekt2*> | Ano | Různé | Hodnoty, výrazy nebo objekty k porovnání | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| hodnotu true nebo false | Logická hodnota | Vrátí hodnotu PRAVDA, pokud jsou obě ekvivalentní. Vrátí hodnotu NEPRAVDA, pokud není ekvivalentní. | 
+| PRAVDA nebo NEPRAVDA | Logická hodnota | Vrátí hodnotu PRAVDA, pokud obě jsou ekvivalentní. Vrátí hodnotu NEPRAVDA, pokud není ekvivalentní. | 
 |||| 
 
 *Příklad*
 
-Tyto příklady zkontrolujte, zda jsou zadané vstupy ekvivalentní. 
+Tyto příklady zkontrolujte, zda zadané vstupy jsou ekvivalentní. 
 
 ```
 equals(true, 1)
@@ -1470,14 +1466,14 @@ equals('abc', 'abcd')
 
 A vrátí tyto výsledky: 
 
-* Prvním příkladu: obě hodnoty jsou ekvivalentní, proto funkce vrátí hodnotu `true`.
-* Druhý exmaple: obě hodnoty nejsou ekvivalentní, funkce vrátí hodnotu `false`.
+* První příklad: jsou ekvivalentní, obě hodnoty, funkce vrátí `true`.
+* Druhý příkladu: obě hodnoty nejsou ekvivalentní, tak, aby funkce `false`.
 
 <a name="first"></a>
 
 ## <a name="first"></a>první
 
-Vrátí první položka z řetězec nebo pole.
+Vrátí první položku z řetězce nebo pole.
 
 ```
 first('<collection>')
@@ -1486,33 +1482,33 @@ first([<collection>])
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*kolekce*> | Ano | Řetězec nebo pole | Kolekce kde najít první položka |
+| <*Kolekce*> | Ano | Řetězec nebo pole | Kolekce kde najít první položka |
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*první položku kolekce.*> | Všechny | První položka v kolekci | 
+| <*první položku kolekce*> | Všechny | První položka v kolekci | 
 |||| 
 
 *Příklad*
 
-Tyto příklady najít první položky v těchto kolekcích:
+Tyto příklady najdete v těchto kolekcích první položky:
 
 ```
 first('hello')
 first([0, 1, 2])
 ```
 
-A tyto výsledky: 
+A vracet tyto výsledky: 
 
-* Prvním příkladu: `"h"`
-* Druhý exmaple: `0`
+* První příklad: `"h"`
+* Druhý příkladu: `0`
 
 <a name="float"></a>
 
 ## <a name="float"></a>float
 
-Převeďte řetězec verze pro číslo s plovoucí desetinnou čárkou skutečné číslo s plovoucí desetinnou čárkou. Tuto funkci můžete použít jenom v případě, že předávání vlastních parametrů do aplikace, jako je například aplikace logiky.
+Převeďte řetězec verze pro číslo s plovoucí desetinnou čárkou na skutečný číslo s plovoucí desetinnou čárkou. Tato funkce slouží pouze v případě, že předávání vlastní parametry do aplikace, jako je například aplikace logiky.
 
 ```
 float('<value>')
@@ -1520,12 +1516,12 @@ float('<value>')
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*Hodnota*> | Ano | Řetězec | Řetězec, který se má převést platné číslo s plovoucí desetinnou čárkou |
+| <*Hodnota*> | Ano | Řetězec | Řetězec, který má platné číslo s plovoucí desetinnou čárkou k převedení |
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*float – hodnota*> | Float | Číslo s plovoucí desetinnou čárkou pro zadaný řetězec | 
+| <*Hodnota float*> | plovoucí desetinnou čárkou | Číslo s plovoucí desetinnou čárkou pro zadaný řetězec | 
 |||| 
 
 *Příklad*
@@ -1536,13 +1532,13 @@ Tento příklad vytvoří řetězec verze pro toto číslo s plovoucí desetinno
 float('10.333')
 ```
 
-A vrátí výsledek tohoto: `10.333`
+A vrátí výsledek: `10.333`
 
 <a name="formatDateTime"></a>
 
-## <a name="formatdatetime"></a>FormatDateTime
+## <a name="formatdatetime"></a>formatDateTime
 
-Vrátí časovým razítkem v zadaném formátu.
+Vrátí časové razítko v zadaném formátu.
 
 ```
 formatDateTime('<timestamp>', '<format>'?)
@@ -1550,13 +1546,13 @@ formatDateTime('<timestamp>', '<format>'?)
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*časové razítko*> | Ano | Řetězec | Řetězec, který obsahuje časové razítko | 
-| <*Formát*> | Ne | Řetězec | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) nebo [vlastní formát vzor](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (rrrr-MM-ddT:mm:ss:fffffffK), která splňuje [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
+| <*Časové razítko*> | Ano | Řetězec | Řetězec, který obsahuje časové razítko | 
+| <*Formát*> | Ne | Řetězec | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) nebo [vlastní formátovací vzor](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát časového razítka je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (rrrr-MM-ddT:mm:ss:fffffffK), která splňuje [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*naformátována časové razítko*> | Řetězec | Aktualizované časové razítko v zadaném formátu. | 
+| <*přeformátovali časové razítko*> | Řetězec | Aktualizované časové razítko v zadaném formátu. | 
 |||| 
 
 *Příklad*
@@ -1567,13 +1563,13 @@ Tento příklad převede na zadaný formát časového razítka:
 formatDateTime('03/15/2018 12:00:00', 'yyyy-MM-ddTHH:mm:ss')
 ```
 
-A vrátí výsledek tohoto: `"2018-03-15T12:00:00"`
+A vrátí výsledek: `"2018-03-15T12:00:00"`
 
 <a name="formDataMultiValues"></a>
 
 ## <a name="formdatamultivalues"></a>formDataMultiValues
 
-Vrátí pole s hodnotami, které odpovídají názvu klíče při akci *data formuláře* nebo *formulářem kódované* výstup. 
+Vrátí pole hodnot, které odpovídají názvu klíče v akce *data formuláře* nebo *form-encoded.* výstup. 
 
 ```
 formDataMultiValues('<actionName>', '<key>')
@@ -1581,30 +1577,30 @@ formDataMultiValues('<actionName>', '<key>')
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*Název akce*> | Ano | Řetězec | Akce, jejíž výstup obsahuje požadovanou hodnotu klíče | 
-| <*Klíč*> | Ano | Řetězec | Název klíče, jehož hodnotu chcete | 
+| <*Název akce*> | Ano | Řetězec | Akce, jejichž výstup má požadovanou hodnotu klíče | 
+| <*Klíč*> | Ano | Řetězec | Název klíče, jejíž hodnotu chcete | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| [<*pole s klíč hodnoty*>] | Pole | Pole s všechny hodnoty, které odpovídají zadaný klíč | 
+| [<*pole s klíčem hodnoty*>] | Pole | Pole obsahující všechny hodnoty, které odpovídají zadanému klíči | 
 |||| 
 
 *Příklad* 
 
-Tento příklad vytvoří pole z hodnoty "Předmět" klíč data formuláře na zadanou akci nebo výsledek zakódovaný ve formátu:  
+Tento příklad vytvoří pole z hodnoty "Předmět" klíč v zadané akce form-data nebo form-encoded. výstup:  
 
 ```
 formDataMultiValues('Send_an_email', 'Subject')
 ```
 
-A vrátí subjektu textové pole, například: `["Hello world"]`
+A vrátí text předmětu v poli, například: `["Hello world"]`
 
 <a name="formDataValue"></a>
 
 ## <a name="formdatavalue"></a>formDataValue
 
-Vrátí jednu hodnotu, která odpovídá názvu klíče při akci *data formuláře* nebo *formulářem kódované* výstup. Pokud funkce najde více než jednu shodu, funkce vyvolá chybu.
+Vrátí jednu hodnotu, která odpovídá názvu klíče v akce *data formuláře* nebo *form-encoded.* výstup. Pokud funkce najde více než jedna shoda, funkce vyvolá chybu.
 
 ```
 formDataValue('<actionName>', '<key>')
@@ -1612,8 +1608,8 @@ formDataValue('<actionName>', '<key>')
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*Název akce*> | Ano | Řetězec | Akce, jejíž výstup obsahuje požadovanou hodnotu klíče | 
-| <*Klíč*> | Ano | Řetězec | Název klíče, jehož hodnotu chcete |
+| <*Název akce*> | Ano | Řetězec | Akce, jejichž výstup má požadovanou hodnotu klíče | 
+| <*Klíč*> | Ano | Řetězec | Název klíče, jejíž hodnotu chcete |
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
@@ -1623,19 +1619,19 @@ formDataValue('<actionName>', '<key>')
 
 *Příklad* 
 
-Tento příklad vytvoří řetězec z hodnoty "Předmět" klíč data formuláře na zadanou akci nebo výsledek zakódovaný ve formátu:  
+Tento příklad vytvoří řetězec z hodnoty "Předmět" klíč v zadané akce form-data nebo form-encoded. výstup:  
 
 ```
 formDataValue('Send_an_email', 'Subject')
 ```
 
-A vrátí text předmětu jako řetězec, například: `"Hello world"`
+A vrací text předmětu jako řetězec, například: `"Hello world"`
 
 <a name="getFutureTime"></a>
 
 ## <a name="getfuturetime"></a>getFutureTime
 
-Vrátí aktuální časové razítko plus jednotky zadané doby.
+Vrátí aktuální časové razítko plus zadané časové jednotky.
 
 ```
 getFutureTime(<interval>, <timeUnit>, <format>?)
@@ -1643,25 +1639,25 @@ getFutureTime(<interval>, <timeUnit>, <format>?)
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*Interval*> | Ano | Integer | Počet jednotek zadaný čas má odečíst | 
-| <*timeUnit*> | Ano | Řetězec | Jednotka času pro použití s *interval*: "Sekundu", "Minut", "Hodina", "Den", "Týden", "Měsíc", "Rok" | 
-| <*Formát*> | Ne | Řetězec | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) nebo [vlastní formát vzor](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (rrrr-MM-ddT:mm:ss:fffffffK), která splňuje [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. | 
+| <*interval*> | Ano | Integer | Počet jednotek určený čas se má odečíst | 
+| <*timeUnit*> | Ano | Řetězec | Jednotka času pro použití s *interval*: "Sekundu", "Minute", "Hour", "Day", "Týden", "Měsíc", "Rok" | 
+| <*Formát*> | Ne | Řetězec | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) nebo [vlastní formátovací vzor](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát časového razítka je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (rrrr-MM-ddT:mm:ss:fffffffK), která splňuje [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*Aktualizovat časové razítko*> | Řetězec | Aktuální časové razítko s přičtením zadaného počtu časové jednotky | 
+| <*Aktualizace časového razítka*> | Řetězec | Aktuální časové razítko a za zadaný počet časových jednotek | 
 |||| 
 
 *Příklad 1*
 
-Předpokládejme, že je aktuální časové razítko "2018-03-01T00:00:00.0000000Z". Tento příklad přidá pět dní tohoto časového razítka:
+Předpokládejme, že je aktuální časové razítko "2018-03-01T00:00:00.0000000Z". V tomto příkladu přidá pět dní do tohoto časového razítka:
 
 ```
 getFutureTime(5, 'Day')
 ```
 
-A vrátí výsledek tohoto: `"2018-03-06T00:00:00.0000000Z"`
+A vrátí výsledek: `"2018-03-06T00:00:00.0000000Z"`
 
 *Příklad 2*
 
@@ -1671,13 +1667,13 @@ Předpokládejme, že je aktuální časové razítko "2018-03-01T00:00:00.00000
 getFutureTime(5, 'Day', 'D')
 ```
 
-A vrátí výsledek tohoto: `"Tuesday, March 6, 2018"`
+A vrátí výsledek: `"Tuesday, March 6, 2018"`
 
 <a name="getPastTime"></a>
 
 ## <a name="getpasttime"></a>getPastTime
 
-Vrátí aktuální časové razítko minus jednotky zadané doby.
+Vrátí aktuální časové razítko minus zadané časové jednotky.
 
 ```
 getPastTime(<interval>, <timeUnit>, <format>?)
@@ -1685,41 +1681,41 @@ getPastTime(<interval>, <timeUnit>, <format>?)
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*Interval*> | Ano | Integer | Počet jednotek zadaný čas má odečíst | 
-| <*timeUnit*> | Ano | Řetězec | Jednotka času pro použití s *interval*: "Sekundu", "Minut", "Hodina", "Den", "Týden", "Měsíc", "Rok" | 
-| <*Formát*> | Ne | Řetězec | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) nebo [vlastní formát vzor](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (rrrr-MM-ddT:mm:ss:fffffffK), která splňuje [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. | 
+| <*interval*> | Ano | Integer | Počet jednotek určený čas se má odečíst | 
+| <*timeUnit*> | Ano | Řetězec | Jednotka času pro použití s *interval*: "Sekundu", "Minute", "Hour", "Day", "Týden", "Měsíc", "Rok" | 
+| <*Formát*> | Ne | Řetězec | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) nebo [vlastní formátovací vzor](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát časového razítka je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (rrrr-MM-ddT:mm:ss:fffffffK), která splňuje [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*Aktualizovat časové razítko*> | Řetězec | Aktuální časové razítko minus zadaný počet časových jednotek | 
+| <*Aktualizace časového razítka*> | Řetězec | Aktuální časové razítko minus zadaný počet časových jednotek | 
 |||| 
 
 *Příklad 1*
 
-Předpokládejme, že je aktuální časové razítko "2018-02-01T00:00:00.0000000Z". Tento příklad odečítá pět dní od tohoto časového razítka:
+Předpokládejme, že je aktuální časové razítko "2018-02-01T00:00:00.0000000Z". V tomto příkladu odečte pět dní od tohoto časového razítka:
 
 ```
 getPastTime(5, 'Day')
 ```
 
-A vrátí výsledek tohoto: `"2018-01-27T00:00:00.0000000Z"`
+A vrátí výsledek: `"2018-01-27T00:00:00.0000000Z"`
 
 *Příklad 2*
 
-Předpokládejme, že je aktuální časové razítko "2018-02-01T00:00:00.0000000Z". Tento příklad odečítá pět dní a převádí výsledek do formátu "D":
+Předpokládejme, že je aktuální časové razítko "2018-02-01T00:00:00.0000000Z". V tomto příkladu odečte pět dní a převádí výsledek do formátu "D":
 
 ```
 getPastTime(5, 'Day', 'D')
 ```
 
-A vrátí výsledek tohoto: `"Saturday, January 27, 2018"`
+A vrátí výsledek: `"Saturday, January 27, 2018"`
 
 <a name="greater"></a>
 
 ## <a name="greater"></a>větší
 
-Zkontrolujte, zda je první hodnota je větší než druhá hodnota. Vrátí hodnotu PRAVDA, pokud je první hodnota další nebo vrátí hodnotu false, kdy menší.
+Zkontrolujte, zda je první hodnota větší než druhá hodnota. Vrátí hodnotu PRAVDA, pokud je první hodnota další, nebo vrátí hodnotu false, při nižší.
 
 ```
 greater(<value>, <compareTo>)
@@ -1728,35 +1724,35 @@ greater('<value>', '<compareTo>')
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*Hodnota*> | Ano | Celé číslo, Float nebo řetězec | První hodnota ke kontrole, zda je větší než druhá hodnota | 
-| <*CompareTo*> | Ano | Celé číslo, Float nebo řetězec, v uvedeném pořadí | Hodnotu porovnání | 
+| <*Hodnota*> | Ano | Celé číslo, Float nebo řetězec | První hodnota ke kontrole, jestli je větší než druhá hodnota | 
+| <*Metoda compareTo*> | Ano | Celé číslo, Float nebo řetězec, respektive | Hodnota porovnání | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| hodnotu true nebo false | Logická hodnota | Vrátí hodnotu PRAVDA, pokud je první hodnota větší než druhá hodnota. Vrátí hodnotu false, pokud první hodnota je rovna nebo menší než druhá hodnota. | 
+| PRAVDA nebo NEPRAVDA | Logická hodnota | Vrátí hodnotu PRAVDA, pokud je první hodnota větší než druhá hodnota. Vrátí hodnotu false, pokud první hodnota je větší nebo menší než druhá hodnota. | 
 |||| 
 
 *Příklad*
 
-Tyto příklady zkontrolujte, zda je první hodnota je větší než druhá hodnota:
+Tyto příklady zkontrolujte, zda je první hodnota větší než druhá hodnota:
 
 ```
 greater(10, 5)
 greater('apple', 'banana')
 ```
 
-A tyto výsledky: 
+A vracet tyto výsledky: 
 
-* Prvním příkladu: `true`
-* Druhém příkladu: `false`
+* První příklad: `true`
+* Druhý příklad: `false`
 
 <a name="greaterOrEquals"></a>
 
 ## <a name="greaterorequals"></a>greaterOrEquals
 
-Zkontrolujte, zda je první hodnota je větší než nebo rovna hodnotě druhá hodnota.
-Vrátí hodnotu PRAVDA, pokud je první hodnota větší nebo rovna nebo vrátí hodnotu false v případě, že první hodnota je menší.
+Zkontrolujte, zda je první hodnota větší než nebo rovna hodnotě druhá hodnota.
+Vrátí hodnotu PRAVDA, pokud je první hodnota větší nebo rovna nebo vrácení false v případě, první hodnota je menší.
 
 ```
 greaterOrEquals(<value>, <compareTo>)
@@ -1765,40 +1761,40 @@ greaterOrEquals('<value>', '<compareTo>')
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*Hodnota*> | Ano | Celé číslo, Float nebo řetězec | První hodnota ke kontrole, zda je větší než nebo rovna hodnotě druhá hodnota | 
-| <*CompareTo*> | Ano | Celé číslo, Float nebo řetězec, v uvedeném pořadí | Hodnotu porovnání | 
+| <*Hodnota*> | Ano | Celé číslo, Float nebo řetězec | První hodnota ke kontrole, jestli větší než nebo rovna hodnotě druhá hodnota | 
+| <*Metoda compareTo*> | Ano | Celé číslo, Float nebo řetězec, respektive | Hodnota porovnání | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| hodnotu true nebo false | Logická hodnota | Vrátí hodnotu PRAVDA, pokud je první hodnota větší než nebo rovna hodnotě druhá hodnota. Vrátí hodnotu NEPRAVDA, pokud první hodnota je menší než druhá hodnota. | 
+| PRAVDA nebo NEPRAVDA | Logická hodnota | Vrátí hodnotu PRAVDA, pokud první hodnota je větší než nebo rovna hodnotě druhá hodnota. Vrátí hodnotu NEPRAVDA, pokud je první hodnota menší než druhá hodnota. | 
 |||| 
 
 *Příklad*
 
-Tyto příklady zkontrolujte, zda je první hodnota je větší nebo rovna než druhá hodnota:
+Tyto příklady zkontrolujte, zda je první hodnota větší nebo rovna než druhá hodnota:
 
 ```
 greaterOrEquals(5, 5)
 greaterOrEquals('apple', 'banana')
 ```
 
-A tyto výsledky: 
+A vracet tyto výsledky: 
 
-* Prvním příkladu: `true`
-* Druhém příkladu: `false`
+* První příklad: `true`
+* Druhý příklad: `false`
 
 <a name="guid"></a>
 
-## <a name="guid"></a>Identifikátor GUID
+## <a name="guid"></a>identifikátor GUID
 
-Generovat globálně jedinečný identifikátor (GUID) jako řetězec, například "c2ecc88d-88c8-4096-912c-d6f2e2b138ce": 
+Generování globálně jedinečný identifikátor (GUID) jako řetězec, například "c2ecc88d-88c8-4096-912c-d6f2e2b138ce": 
 
 ```
 guid()
 ```
 
-Také můžete zadat jiný formát identifikátoru GUID než výchozí formát, "D", což je 32 znaků oddělených pomlčkami.
+Také můžete zadat jiný formát pro identifikátor GUID než výchozí formát "D", což je 32 číslic oddělených pomlčkami.
 
 ```
 guid('<format>')
@@ -1806,29 +1802,29 @@ guid('<format>')
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*Formát*> | Ne | Řetězec | Jediný [formátovací řetězec](https://msdn.microsoft.com/library/97af8hh4) vrácený identifikátoru GUID. Ve výchozím nastavení formát je "D", ale můžete použít "N", "D", "B", "P" nebo "X". | 
+| <*Formát*> | Ne | Řetězec | Jediný [specifikátor formátu](https://msdn.microsoft.com/library/97af8hh4) pro vrácený identifikátor GUID. Ve výchozím formátu je "D", ale můžete použít "N", "D", "B", "P" nebo "X". | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*Hodnota identifikátoru GUID*> | Řetězec | Náhodně generovaný identifikátor GUID | 
+| <*Hodnota identifikátoru GUID*> | Řetězec | Náhodně generované GUID | 
 |||| 
 
 *Příklad* 
 
-Tento příklad vytvoří stejný identifikátor GUID, ale jako 32 znaků oddělených pomlčkami a uzavřený v závorkách: 
+Tento příklad vygeneruje stejný identifikátor GUID, ale jako 32 číslic oddělených pomlčkami a uzavřených v závorkách: 
 
 ```
 guid('P')
 ```
 
-A vrátí výsledek tohoto: `"(c2ecc88d-88c8-4096-912c-d6f2e2b138ce)"`
+A vrátí výsledek: `"(c2ecc88d-88c8-4096-912c-d6f2e2b138ce)"`
 
 <a name="if"></a>
 
-## <a name="if"></a>Pokud
+## <a name="if"></a>If
 
-Zkontrolujte, zda je výraz true nebo false. Na základě výsledku, vrátí zadanou hodnotu.
+Zkontrolujte, zda je výraz hodnotu true nebo false. Na základě výsledku, vrátí zadanou hodnotu.
 
 ```
 if(<expression>, <valueIfTrue>, <valueIfFalse>)
@@ -1836,19 +1832,19 @@ if(<expression>, <valueIfTrue>, <valueIfFalse>)
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*výraz*> | Ano | Logická hodnota | Výraz, který se kontrola | 
+| <*Výraz*> | Ano | Logická hodnota | Výraz, který má zkontrolovat | 
 | <*valueIfTrue*> | Ano | Všechny | Hodnota, která má vrácené v případě, kdy je výraz pravdivý | 
-| <*valueIfFalse*> | Ano | Všechny | Hodnota, která má vracet výraz je hodnota false | 
+| <*valueIfFalse*> | Ano | Všechny | Hodnota, která má vrátit, pokud má výraz hodnotu false | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*Zadaná hodnota vrátit*> | Všechny | Zadaná hodnota, která vrátí závislosti na tom, zda výraz hodnotu true nebo false | 
+| <*Zadaná – návratové hodnoty*> | Všechny | Zadaná hodnota, která vrací na základě toho, zda výraz hodnotu true nebo false | 
 |||| 
 
 *Příklad* 
 
-Tento příklad vrací `"yes"` vzhledem k tomu, že zadaný výraz vrací hodnotu true. Jinak se vrátí v příkladu `"no"`:
+V tomto příkladu vrátí `"yes"` vzhledem k tomu, že zadaný výraz vrátí hodnotu true. V opačném případě vrátí v příkladu `"no"`:
 
 ```
 if(equals(1, 1), 'yes', 'no')
@@ -1858,7 +1854,7 @@ if(equals(1, 1), 'yes', 'no')
 
 ## <a name="indexof"></a>indexOf
 
-Vrátí počáteční pozici nebo hodnotu indexu pro dílčí řetězec. Tato funkce není velká a malá písmena a indexy, které začínají číslem 0. 
+Vrátí počáteční pozici nebo hodnotu indexu pro dílčí řetězec. Tato funkce není velká a malá písmena a indexy začínají číslem 0. 
 
 ```
 indexOf('<text>', '<searchText>')
@@ -1872,24 +1868,24 @@ indexOf('<text>', '<searchText>')
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*Hodnota indexu*>| Integer | Počáteční pozice nebo index hodnotu pro určený dílčí řetězec. <p>Pokud řetězec není nalezeno, vrátí číslo -1. </br>Pokud je řetězec prázdný, vrátí se číslo 0. | 
+| <*Hodnota indexu*>| Integer | Počáteční pozice nebo index hodnotu pro zadaný dílčí řetězec. <p>Pokud není nalezen řetězec, vrátí číslo -1. </br>Pokud je řetězec prázdný, vrátí číslo 0. | 
 |||| 
 
 *Příklad* 
 
-Tento příklad vyhledá počáteční hodnoty indexu pro dílčí řetězec "world" v řetězci "hello, world":
+Tento příklad vyhledá počáteční hodnoty indexu pro podřetězec "world" v řetězci "hello world":
 
 ```
 indexOf('hello world', 'world')
 ```
 
-A vrátí výsledek tohoto: `6`
+A vrátí výsledek: `6`
 
 <a name="int"></a>
 
-## <a name="int"></a>celá čísla
+## <a name="int"></a>int
 
-Vrátí celé číslo verze pro řetězec.
+Vrátí celé číslo verze řetězce.
 
 ```
 int('<value>')
@@ -1902,24 +1898,24 @@ int('<value>')
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*celé číslo*> | Integer | Celé číslo verze pro zadaný řetězec | 
+| <*celé číslo výsledku*> | Integer | Celé číslo verze pro zadaný řetězec | 
 |||| 
 
 *Příklad* 
 
-Tento příklad vytvoří je celé číslo verze pro řetězec "10":
+V tomto příkladu se vytvoří celé číslo verze pro řetězec "10":
 
 ```
 int('10')
 ```
 
-A vrátí výsledek tohoto: `10`
+A vrátí výsledek: `10`
 
 <a name="item"></a>
 
 ## <a name="item"></a>Položka
 
-Při použití uvnitř opakující se akce přes pole, vrátí aktuální položky v poli během aktuální opakování akce. Můžete také získat hodnoty z vlastnosti této položky. 
+Když se použije v opakující se akci nad polem, vrátí aktuální položku v poli během aktuální iteraci akce. Můžete také získat hodnoty z vlastnosti této položky. 
 
 ```
 item()
@@ -1927,12 +1923,12 @@ item()
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*aktuální položku pole*> | Všechny | Aktuální položky v poli pro akce aktuální iterace | 
+| <*aktuální položku pole*> | Všechny | Aktuální položku v poli pro aktuální iteraci akce | 
 |||| 
 
 *Příklad* 
 
-Tento příklad načte `body` element z aktuální zprávu pro akci "Send_an_email" uvnitř aktuální iterace pro každou smyčku:
+Tento příklad načte `body` element z aktuální zprávu pro akci "Send_an_email" uvnitř smyčky for-each aktuální iterace:
 
 ```
 item().body
@@ -1942,7 +1938,7 @@ item().body
 
 ## <a name="items"></a>položek
 
-Vrátí aktuální položky z jednotlivých cyklů ve smyčce pro každý. Pomocí této funkce uvnitř pro každou smyčku.
+Vrátí aktuální položky v každém cyklu v smyčky for-each. Pomocí této funkce uvnitř smyčky for-each.
 
 ```
 items('<loopName>')
@@ -1950,17 +1946,17 @@ items('<loopName>')
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*loopName*> | Ano | Řetězec | Název pro každou smyčky | 
+| <*loopName*> | Ano | Řetězec | Název smyčky for-each | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*Položka*> | Všechny | Položku z aktuální cyklu v zadané pro každou smyčku | 
+| <*Položka*> | Všechny | Položku z aktuálního cyklu v zadané smyčky for-each | 
 |||| 
 
 *Příklad* 
 
-Tento příklad získá aktuální položku ze zadané pro každou smyčku:
+Tento příklad načte aktuální položky ze zadané smyčky for-each:
 
 ```
 items('myForEachLoopName')
@@ -1968,9 +1964,9 @@ items('myForEachLoopName')
 
 <a name="json"></a>
 
-## <a name="json"></a>json
+## <a name="json"></a>JSON
 
-Vrátí hodnotu typu JavaScript Object Notation (JSON) nebo objekt pro řetězec nebo XML.
+Vrátí hodnotu typu JavaScript Object Notation (JSON) nebo objekt pro řetězec nebo kód XML.
 
 ```
 json('<value>')
@@ -1978,12 +1974,12 @@ json('<value>')
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*Hodnota*> | Ano | Řetězec nebo XML | Řetězec nebo XML, který má být převeden | 
+| <*Hodnota*> | Ano | Řetězec nebo kód XML | Řetězec nebo kód XML, který chcete převést | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*Výsledek formátu JSON*> | Nativní typu JSON nebo objektu | Hodnota JSON nativní typ nebo objekt pro zadaný řetězec nebo XML. Pokud má řetězec hodnotu null, funkce vrátí prázdný objekt. | 
+| <*Výsledek JSON*> | Nativní typ formátu JSON nebo objekt | Nativní typ hodnoty JSON nebo objekt pro zadaný řetězec nebo kód XML. Pokud má řetězec hodnotu null, funkce vrátí prázdný objekt. | 
 |||| 
 
 *Příklad 1* 
@@ -1994,7 +1990,7 @@ Tento příklad převede tento řetězec na hodnotu JSON:
 json('[1, 2, 3]')
 ```
 
-A vrátí výsledek tohoto: `[1, 2, 3]`
+A vrátí výsledek: `[1, 2, 3]`
 
 *Příklad 2*
 
@@ -2004,7 +2000,7 @@ Tento příklad převede tento řetězec do formátu JSON:
 json('{"fullName": "Sophia Owen"}')
 ```
 
-A vrátí výsledek tohoto:
+A vrátí výsledek:
 
 ```
 {
@@ -2020,7 +2016,7 @@ Tento příklad převede tento XML do formátu JSON:
 json(xml('<?xml version="1.0"?> <root> <person id='1'> <name>Sophia Owen</name> <occupation>Engineer</occupation> </person> </root>'))
 ```
 
-A vrátí výsledek tohoto:
+A vrátí výsledek:
 
 ```json
 { 
@@ -2037,9 +2033,9 @@ A vrátí výsledek tohoto:
 
 <a name="intersection"></a>
 
-## <a name="intersection"></a>průnik
+## <a name="intersection"></a>Průnik
 
-Vrátí kolekci, která má *pouze* společné položky napříč k zadaným kolekcím. Než se objeví ve výsledku, musí být uvedena položky ve všech kolekcích této funkci byl předán. Pokud jeden nebo více položek se stejným názvem, zobrazí se ve výsledku poslední položky s tímto názvem.
+Vrátí kolekci, která má *pouze* společné položky mezi zadaným kolekcím. Zobrazit ve výsledku, musí být uvedena položka ve všech kolekcích předaném do této funkce. Pokud jeden nebo více položek se stejným názvem, zobrazí se ve výsledku poslední položka s tímto názvem.
 
 ```
 intersection([<collection1>], [<collection2>], ...)
@@ -2048,29 +2044,29 @@ intersection('<collection1>', '<collection2>', ...)
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*collection1*>, <*collection2*>,... | Ano | Pole nebo objekt, ale ne obojí | Kolekce, ze kterého má *pouze* společné položky | 
+| <*collection1*>, <*kolekce 2*>,... | Ano | Pole nebo objekt, ale ne obojí | Kolekce, ze kterého má *pouze* společné položky | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*běžné položky*> | Objekt, nebo pole v uvedeném pořadí | Kolekce, která má pouze společné položky napříč k zadaným kolekcím | 
+| <*společné položky*> | Pole nebo objekt, v uvedeném pořadí | Kolekce, která obsahuje pouze běžné položek v zadaných kolekcí | 
 |||| 
 
 *Příklad* 
 
-Tento příklad vyhledá společné položky mezi těmito poli:  
+Tento příklad vyhledá společné položky mezi tato pole:  
 
 ```
 intersection([1, 2, 3], [101, 2, 1, 10], [6, 8, 1, 2])
 ```
 
-A vrátí pole s *pouze* tyto položky: `[1, 2]`
+A vrátí pole obsahující *pouze* tyto položky: `[1, 2]`
 
 <a name="join"></a>
 
 ## <a name="join"></a>join
 
-Vrátí řetězec, který má všechny položky z pole a každý znak oddělených *oddělovač*.
+Oddělené řetězec, který má všechny položky z pole a každý znak návratu *oddělovač*.
 
 ```
 join([<collection>], '<delimiter>')
@@ -2078,30 +2074,30 @@ join([<collection>], '<delimiter>')
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*kolekce*> | Ano | Pole | Pole, které má položky, které chcete připojit |  
+| <*Kolekce*> | Ano | Pole | Pole, které obsahuje položky, které chcete připojit |  
 | <*Oddělovač*> | Ano | Řetězec | Oddělovač, který se zobrazí mezi každý znak ve výsledném řetězci | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*char1*><*oddělovač*><*char2*><*oddělovač*>... | Řetězec | Výsledný řetězec vytvořený z všechny položky v zadaném poli |
+| <*char1*><*oddělovač*><*char2*><*oddělovač*>... | Řetězec | Výsledný řetězec vytvořený ze všech položek v určeném poli |
 |||| 
 
 *Příklad* 
 
-Tento příklad vytvoří řetězec z všechny položky v toto pole s zadaný znak jako oddělovač, který:
+Tento příklad vytvoří řetězec ze všech položek v tomto poli s zadaný znak jako oddělovač:
 
 ```
 join([a, b, c], '.')
 ```
 
-A vrátí výsledek tohoto: `"a.b.c"`
+A vrátí výsledek: `"a.b.c"`
 
 <a name="last"></a>
 
 ## <a name="last"></a>poslední
 
-Vrátí poslední položky z kolekce.
+Vrátí poslední položku z kolekce.
 
 ```
 last('<collection>')
@@ -2110,17 +2106,17 @@ last([<collection>])
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*kolekce*> | Ano | Řetězec nebo pole | Kolekce kde najít poslední položky | 
+| <*Kolekce*> | Ano | Řetězec nebo pole | Kolekce kde najít poslední položky | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*poslední položku kolekce.*> | Řetězec nebo pole, v uvedeném pořadí | Poslední položky v kolekci | 
+| <*poslední položku kolekce*> | Řetězec nebo pole, v uvedeném pořadí | Poslední položka v kolekci | 
 |||| 
 
 *Příklad* 
 
-Tyto příklady najít poslední položky v těchto kolekcích:
+Tyto příklady najdete v těchto kolekcích poslední položky:
 
 ```
 last('abcd')
@@ -2129,14 +2125,14 @@ last([0, 1, 2, 3])
 
 A vrátí tyto výsledky: 
 
-* Prvním příkladu: `"d"`
-* Druhém příkladu: `3`
+* První příklad: `"d"`
+* Druhý příklad: `3`
 
 <a name="lastindexof"></a>
 
 ## <a name="lastindexof"></a>lastIndexOf
 
-Vrátí hodnotu koncovou pozici nebo index pro dílčí řetězec. Tato funkce není velká a malá písmena a indexy, které začínají číslem 0.
+Vrátí hodnotu koncové pozice nebo indexu pro dílčí řetězec. Tato funkce není velká a malá písmena a indexy začínají číslem 0.
 
 ```
 lastIndexOf('<text>', '<searchText>')
@@ -2150,18 +2146,18 @@ lastIndexOf('<text>', '<searchText>')
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*ukončování hodnotu indexu*> | Integer | Koncová pozice nebo index Hodnota určený dílčí řetězec. <p>Pokud řetězec není nalezeno, vrátí číslo -1. </br>Pokud je řetězec prázdný, vrátí se číslo 0. | 
+| <*Hodnota indexu ukončení*> | Integer | Koncová pozice nebo index Hodnota zadaným podřetězcem. <p>Pokud není nalezen řetězec, vrátí číslo -1. </br>Pokud je řetězec prázdný, vrátí číslo 0. | 
 |||| 
 
 *Příklad* 
 
-Tento příklad vyhledá koncovou hodnotu indexu pro dílčí řetězec "world" v řetězci "hello, world":
+Tento příklad vyhledá poslední hodnotu indexu pro podřetězec "world" v řetězci "hello world":
 
 ```
 lastIndexOf('hello world', 'world')
 ```
 
-A vrátí výsledek tohoto: `10`
+A vrátí výsledek: `10`
 
 <a name="length"></a>
 
@@ -2176,7 +2172,7 @@ length([<collection>])
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*kolekce*> | Ano | Řetězec nebo pole | Kolekce s položkami počítat | 
+| <*Kolekce*> | Ano | Řetězec nebo pole | Kolekce s položkami mají spočítat | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
@@ -2186,21 +2182,21 @@ length([<collection>])
 
 *Příklad*
 
-Tyto příklady určený počet položek v těchto kolekcích: 
+Tyto příklady počet položek v těchto kolekcí: 
 
 ```
 length('abcd')
 length([0, 1, 2, 3])
 ```
 
-A vrátí výsledek tohoto: `4`
+A vraťte tento výsledek: `4`
 
 <a name="less"></a>
 
-## <a name="less"></a>menší
+## <a name="less"></a>méně
 
 Zkontrolujte, zda je první hodnota menší než druhá hodnota.
-Vrátí hodnotu PRAVDA, pokud je první hodnota menší nebo vrátí hodnotu false v případě, že první hodnota je další.
+Vrátí hodnotu PRAVDA, pokud je první hodnota menší nebo vrátit hodnotu false v případě více první hodnota.
 
 ```
 less(<value>, <compareTo>)
@@ -2210,12 +2206,12 @@ less('<value>', '<compareTo>')
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
 | <*Hodnota*> | Ano | Celé číslo, Float nebo řetězec | První hodnota ke kontrole, jestli menší než druhá hodnota | 
-| <*CompareTo*> | Ano | Celé číslo, Float nebo řetězec, v uvedeném pořadí | Porovnání položek | 
+| <*Metoda compareTo*> | Ano | Celé číslo, Float nebo řetězec, respektive | Porovnání položky | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| hodnotu true nebo false | Logická hodnota | Vrátí hodnotu PRAVDA, pokud první hodnota je menší než druhá hodnota. Vrátí hodnotu false, pokud první hodnota je rovna nebo větší než druhá hodnota. | 
+| PRAVDA nebo NEPRAVDA | Logická hodnota | Vrátí hodnotu PRAVDA, pokud je první hodnota menší než druhá hodnota. Vrátí hodnotu false, pokud první hodnota je roven nebo větší než druhá hodnota. | 
 |||| 
 
 *Příklad*
@@ -2227,17 +2223,17 @@ less(5, 10)
 less('banana', 'apple')
 ```
 
-A tyto výsledky: 
+A vracet tyto výsledky: 
 
-* Prvním příkladu: `true`
-* Druhém příkladu: `false`
+* První příklad: `true`
+* Druhý příklad: `false`
 
 <a name="lessOrEquals"></a>
 
 ## <a name="lessorequals"></a>lessOrEquals
 
-Zkontrolujte, zda je první hodnota menší než nebo rovna hodnotě druhá hodnota.
-Vrátí hodnotu PRAVDA, pokud je první hodnota menší než nebo rovna nebo vrátí hodnotu false v případě, že první hodnota je další.
+Zkontrolujte, zda je první hodnota menší než druhá hodnota.
+Vrátí hodnotu PRAVDA, pokud je první hodnota menší než nebo rovno nebo vrátit hodnotu false v případě více první hodnota.
 
 ```
 lessOrEquals(<value>, <compareTo>)
@@ -2247,33 +2243,33 @@ lessOrEquals('<value>', '<compareTo>')
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
 | <*Hodnota*> | Ano | Celé číslo, Float nebo řetězec | První hodnota ke kontrole, jestli menší než nebo rovno druhá hodnota | 
-| <*CompareTo*> | Ano | Celé číslo, Float nebo řetězec, v uvedeném pořadí | Porovnání položek | 
+| <*Metoda compareTo*> | Ano | Celé číslo, Float nebo řetězec, respektive | Porovnání položky | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| hodnotu true nebo false  | Logická hodnota | Vrátí hodnotu PRAVDA, pokud je první hodnota menší než nebo rovna hodnotě druhá hodnota. Vrátí hodnotu false, pokud první hodnota je větší než druhá hodnota. |  
+| PRAVDA nebo NEPRAVDA  | Logická hodnota | Vrátí hodnotu PRAVDA, pokud je první hodnota menší než druhá hodnota. Vrátí hodnotu false, pokud první hodnota je větší než druhá hodnota. |  
 |||| 
 
 *Příklad*
 
-Tyto příklady zkontrolujte, zda se první hodnota je menší nebo rovna než druhá hodnota.
+Tyto příklady zkontrolujte, zda je první hodnota menší než nebo rovné než druhá hodnota.
 
 ```
 lessOrEquals(10, 10)
 lessOrEquals('apply', 'apple')
 ```
 
-A tyto výsledky: 
+A vracet tyto výsledky: 
 
-* Prvním příkladu: `true`
-* Druhém příkladu: `false`
+* První příklad: `true`
+* Druhý příklad: `false`
 
 <a name="listCallbackUrl"></a>
 
 ## <a name="listcallbackurl"></a>listCallbackUrl
 
-Vrátí "Zpětného volání adresu" který volá aktivační události nebo akce. Tato funkce pracuje pouze s triggery a akce pro **HttpWebhook** a **ApiConnectionWebhook** konektor typy, ale ne **ruční**,  **Opakování**, **HTTP**, a **APIConnection** typy. 
+Vrátí adresu "URL zpětného volání", která volá triggeru nebo akce. Tato funkce funguje pouze s aktivačními událostmi a akce pro **HttpWebhook** a **ApiConnectionWebhook** typy konektoru, ale ne **ruční**,  **Opakování**, **HTTP**, a **APIConnection** typy. 
 
 ```
 listCallbackUrl()
@@ -2281,12 +2277,12 @@ listCallbackUrl()
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*zpětné volání – adresa URL*> | Řetězec | Adresu URL zpětné volání pro aktivační události nebo akci |  
+| <*Adresa URL zpětného volání*> | Řetězec | Adresa URL zpětného volání triggeru nebo akce |  
 |||| 
 
 *Příklad*
 
-Tento příklad ukazuje adresu URL ukázkových zpětného volání, že tato funkce může vrátit:
+Tento příklad ukazuje ukázkovou adresu URL zpětného volání, že tato funkce může vrátit:
 
 `"https://prod-01.westus.logic.azure.com:443/workflows/<*workflow-ID*>/triggers/manual/run?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=<*signature-ID*>"`
 
@@ -2294,7 +2290,7 @@ Tento příklad ukazuje adresu URL ukázkových zpětného volání, že tato fu
 
 ## <a name="max"></a>max
 
-Vrátí nejvyšší hodnotu ze seznamu nebo pole s čísla, která je na obou koncích (včetně). 
+Vrátí nejvyšší hodnotu ze seznamu nebo pole s čísly, který je také zahrnuto na obou koncích. 
 
 ```
 max(<number1>, <number2>, ...)
@@ -2303,31 +2299,31 @@ max([<number1>, <number2>, ...])
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*Číslo1*>, <*číslo2*>,... | Ano | Celé číslo, Float nebo obojí | Sadu čísel, ze kterého chcete nejvyšší hodnotou | 
-| [<*Číslo1*>, <*číslo2*>,...] | Ano | Pole - celé číslo, Float nebo obojí | Pole čísla, ze kterého se má nejvyšší hodnotou | 
+| <*Číslo1*>, <*číslo2*>,... | Ano | Integer nebo Float | Sadu čísel, ze kterého chcete nejvyšší hodnota | 
+| [<*Číslo1*>, <*číslo2*>;...] | Ano | Array – Integer nebo Float | Pole čísla, ze kterého má nejvyšší hodnota | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*Hodnota maximálního počtu*> | Celé číslo nebo číslo Float | Nejvyšší hodnotu v zadané pole nebo sadu čísel | 
+| <*Maximální hodnota*> | Integer nebo Float | Nejvyšší hodnota v zadaném poli nebo sadu čísel | 
 |||| 
 
 *Příklad* 
 
-Tyto příklady získat nejvyšší hodnotu ze sady čísel a pole:
+Tyto příklady získat nejvyšší hodnota ze sady čísel a pole:
 
 ```
 max(1, 2, 3)
 max([1, 2, 3])
 ```
 
-A vrátí výsledek tohoto: `3`
+A vraťte tento výsledek: `3`
 
 <a name="min"></a>
 
 ## <a name="min"></a>min
 
-Vrátí nejnižší hodnotu ze sady čísla nebo pole.
+Vrátí nejnižší hodnotu ze sady čísel nebo pole.
 
 ```
 min(<number1>, <number2>, ...)
@@ -2336,31 +2332,31 @@ min([<number1>, <number2>, ...])
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*Číslo1*>, <*číslo2*>,... | Ano | Celé číslo, Float nebo obojí | Sada čísla, ze kterého se má nejnižší hodnotu | 
-| [<*Číslo1*>, <*číslo2*>,...] | Ano | Pole - celé číslo, Float nebo obojí | Pole čísla, ze kterého se má nejnižší hodnotu | 
+| <*Číslo1*>, <*číslo2*>,... | Ano | Integer nebo Float | Sada čísla, ze kterého má nejnižší hodnota | 
+| [<*Číslo1*>, <*číslo2*>;...] | Ano | Array – Integer nebo Float | Pole čísla, ze kterého má nejnižší hodnota | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*minimální hodnota*> | Celé číslo nebo číslo Float | Nejnižší hodnotu v zadané sadě čísla nebo zadané pole | 
+| <*minimální hodnota*> | Integer nebo Float | Nejnižší hodnotu v zadané sadě čísel nebo určeného pole | 
 |||| 
 
 *Příklad* 
 
-Tyto příklady získat nejnižší hodnotu v sadě čísla a pole:
+Tyto příklady získat nejnižší hodnotu v sadu čísel a pole:
 
 ```
 min(1, 2, 3)
 min([1, 2, 3])
 ```
 
-A vrátí výsledek tohoto: `1`
+A vraťte tento výsledek: `1`
 
 <a name="mod"></a>
 
 ## <a name="mod"></a>MOD
 
-Vrátí zbytek dělení dvou čísel. Pokud chcete získat celé číslo, najdete v části [div()](#div).
+Vrátí zbytek dělení dvou čísel. Pokud chcete získat výsledek celého čísla, naleznete v tématu [div()](#div).
 
 ```
 mod(<dividend>, <divisor>)
@@ -2368,30 +2364,30 @@ mod(<dividend>, <divisor>)
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*dělenec*> | Ano | Celé číslo nebo číslo Float | Číslo, které má dělit *dělitel* | 
-| <*dělitel*> | Ano | Celé číslo nebo číslo Float | Číslo, které rozdělí *dělenec*, ale nemůže být 0. | 
+| <*podíl*> | Ano | Integer nebo Float | Číslo, které má dělit *dělitel* | 
+| <*dělitel*> | Ano | Integer nebo Float | Číslo, které rozdělí *Delenec*, ale nemůže být 0. | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*modulo výsledek*> | Celé číslo nebo číslo Float | Zbývající dělení první číslo druhé číslo | 
+| <*modulo výsledek*> | Integer nebo Float | Zbytku z dělení první číslo v druhé číslo | 
 |||| 
 
 *Příklad* 
 
-Tento příklad rozdělí prvního čísla druhé číslo:
+V tomto příkladu se rozdělí první číslo v druhé číslo:
 
 ```
 mod(3, 2)
 ```
 
-A vrátí výsledek tohoto: `1`
+A vraťte tento výsledek: `1`
 
 <a name="mul"></a>
 
 ## <a name="mul"></a>mul
 
-Vrátí produktu z vynásobením dvou čísel.
+Vrátí produkt od součin dvou čísel.
 
 ```
 mul(<multiplicand1>, <multiplicand2>)
@@ -2399,34 +2395,34 @@ mul(<multiplicand1>, <multiplicand2>)
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*multiplicand1*> | Ano | Celé číslo nebo číslo Float | Číslo, které má vynásobit *multiplicand2* | 
-| <*multiplicand2*> | Ano | Celé číslo nebo číslo Float | Číslo, násobky *multiplicand1* | 
+| <*multiplicand1*> | Ano | Integer nebo Float | Číslo, které má vynásobit *multiplicand2* | 
+| <*multiplicand2*> | Ano | Integer nebo Float | Číslo, které násobky *multiplicand1* | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*výsledek produktu*> | Celé číslo nebo číslo Float | Produkt ze vynásobením prvního čísla druhé číslo | 
+| <*výsledek produktu*> | Integer nebo Float | Produkt vynásobení prvního čísla druhé číslo | 
 |||| 
 
 *Příklad* 
 
-Tyto příklady více prvního čísla druhé číslo:
+Tyto příklady více o první číslo v druhé číslo:
 
 ```
 mul(1, 2)
 mul(1.5, 2)
 ```
 
-A tyto výsledky:
+A vracet tyto výsledky:
 
-* Prvním příkladu: `2`
-* Druhém příkladu `3`
+* První příklad: `2`
+* Druhý příklad `3`
 
 <a name="multipartBody"></a>
 
 ## <a name="multipartbody"></a>multipartBody
 
-Vrátí pro určitou část textu v výstup akce, který má více částí.
+Vrátí text pro určitou část ve výstupu akce, který má více částí.
 
 ```
 multipartBody('<actionName>', <index>)
@@ -2440,14 +2436,14 @@ multipartBody('<actionName>', <index>)
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*Text*> | Řetězec | Text pro zadaný část | 
+| <*Text*> | Řetězec | Text pro zadanou část | 
 |||| 
 
 <a name="not"></a>
 
-## <a name="not"></a>ne
+## <a name="not"></a>Not
 
-Zkontrolujte, zda výraz je hodnota false. Vrátí hodnotu PRAVDA, pokud výraz je hodnota false, nebo hodnotu NEPRAVDA, pokud je hodnota true, vrátí.
+Zkontrolujte, zda má výraz hodnotu false. Vrátí hodnotu PRAVDA, pokud má výraz hodnotu false nebo vrátí hodnotu false v případě hodnoty true.
 
 ```
 not(<expression>)
@@ -2455,12 +2451,12 @@ not(<expression>)
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*výraz*> | Ano | Logická hodnota | Výraz, který se kontrola | 
+| <*Výraz*> | Ano | Logická hodnota | Výraz, který má zkontrolovat | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| hodnotu true nebo false | Logická hodnota | Vrátí hodnotu PRAVDA, pokud výraz je hodnota false. Vrátí hodnotu false, pokud výraz hodnotu true. |  
+| PRAVDA nebo NEPRAVDA | Logická hodnota | Vrátí hodnotu PRAVDA, pokud má výraz hodnotu false. Vrátí hodnotu false, pokud má výraz hodnotu true. |  
 |||| 
 
 *Příklad 1*
@@ -2472,10 +2468,10 @@ not(false)
 not(true)
 ```
 
-A tyto výsledky:
+A vracet tyto výsledky:
 
-* Prvním příkladu: výraz je nastavena hodnota false, takže funkce vrátí hodnotu `true`.
-* Druhý příklad: výraz je nastavena hodnota true, takže funkce vrátí hodnotu `false`.
+* První příklad: výraz je hodnota false, tak, aby funkce `true`.
+* Druhý příklad: výraz je hodnota true, tak, aby funkce `false`.
 
 *Příklad 2*
 
@@ -2486,16 +2482,16 @@ not(equals(1, 2))
 not(equals(1, 1))
 ```
 
-A tyto výsledky:
+A vracet tyto výsledky:
 
-* Prvním příkladu: výraz je nastavena hodnota false, takže funkce vrátí hodnotu `true`.
-* Druhý příklad: výraz je nastavena hodnota true, takže funkce vrátí hodnotu `false`.
+* První příklad: výraz je hodnota false, tak, aby funkce `true`.
+* Druhý příklad: výraz je hodnota true, tak, aby funkce `false`.
 
 <a name="or"></a>
 
 ## <a name="or"></a>nebo
 
-Zkontrolujte, zda je nejméně jeden výraz hodnotu true. Vrátí hodnotu PRAVDA, pokud nejméně jeden výraz hodnotu true, nebo vrátí hodnotu false v případě, že jsou všechny false.
+Zkontrolujte, zda má nejméně jeden výraz hodnotu true. Vrátí hodnotu PRAVDA, pokud alespoň jeden výraz hodnotu true, nebo vrátí false, když jsou všechny false.
 
 ```
 or(<expression1>, <expression2>, ...)
@@ -2503,47 +2499,47 @@ or(<expression1>, <expression2>, ...)
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*Expression1*>, <*Výraz2*>,... | Ano | Logická hodnota | Výrazy ke kontrole | 
+| <*Expression1*>, <*expression2*>,... | Ano | Logická hodnota | Výrazy ke kontrole | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| hodnotu true nebo false | Logická hodnota | Vrátí hodnotu PRAVDA, pokud nejméně jeden výraz hodnotu true. Vrátí hodnotu false, pokud jsou všechny výrazy hodnotu false. |  
+| PRAVDA nebo NEPRAVDA | Logická hodnota | Vrátí hodnotu PRAVDA, pokud alespoň jeden výraz hodnotu true. Vrátí hodnotu false, pokud jsou všechny výrazy hodnotu false. |  
 |||| 
 
 *Příklad 1*
 
-Tyto příklady zkontrolujte, zda je nejméně jeden výraz hodnotu true:
+Tyto příklady zkontrolujte, zda má nejméně jeden výraz hodnotu true:
 
 ```
 or(true, false)
 or(false, false)
 ```
 
-A tyto výsledky:
+A vracet tyto výsledky:
 
-* Prvním příkladu: nejméně jednoho výrazu je nastavena hodnota true, takže funkce vrátí hodnotu `true`.
-* Druhý příklad: oba výrazy jsou, funkce vrátí hodnotu false, `false`.
+* První příklad: nejméně jeden výraz má hodnotu true, tak, aby funkce `true`.
+* Druhý příklad: jsou oba výrazy hodnoty false, vrátí funkce hodnotu `false`.
 
 *Příklad 2*
 
-Tyto příklady zkontrolujte, zda je nejméně jeden výraz hodnotu true:
+Tyto příklady zkontrolujte, zda má nejméně jeden výraz hodnotu true:
 
 ```
 or(equals(1, 1), equals(1, 2))
 or(equals(1, 2), equals(1, 3))
 ```
 
-A tyto výsledky:
+A vracet tyto výsledky:
 
-* Prvním příkladu: nejméně jednoho výrazu je nastavena hodnota true, takže funkce vrátí hodnotu `true`.
-* Druhý příklad: oba výrazy jsou, funkce vrátí hodnotu false, `false`.
+* První příklad: nejméně jeden výraz má hodnotu true, tak, aby funkce `true`.
+* Druhý příklad: jsou oba výrazy hodnoty false, vrátí funkce hodnotu `false`.
 
 <a name="parameters"></a>
 
 ## <a name="parameters"></a>parameters
 
-Vrátí hodnotu pro parametr, který je popsán v svou definici. aplikaci logiky. 
+Vrátí hodnotu pro parametr, který je popsaný v definici aplikace logiky. 
 
 ```
 parameters('<parameterName>')
@@ -2551,17 +2547,17 @@ parameters('<parameterName>')
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*Název parametru*> | Ano | Řetězec | Název pro parametr, jehož hodnotu chcete | 
+| <*Název parametru*> | Ano | Řetězec | Název parametru, jehož hodnotu chcete | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*Hodnota parametru*> | Všechny | Hodnota zadaného parametru | 
+| <*Hodnota parametru*> | Všechny | Hodnota zadaná parametru | 
 |||| 
 
 *Příklad* 
 
-Předpokládejme, že máte tato hodnota JSON:
+Předpokládejme, že tato hodnota JSON:
 
 ```json
 {
@@ -2569,19 +2565,19 @@ Předpokládejme, že máte tato hodnota JSON:
 }
 ```
 
-Tento příklad získá hodnotu pro zadaný parametr:
+Tento příklad načte hodnoty pro zadaný parametr:
 
 ```
 parameters('fullName')
 ```
 
-A vrátí výsledek tohoto: `"Sophia Owen"`
+A vrátí výsledek: `"Sophia Owen"`
 
 <a name="rand"></a>
 
-## <a name="rand"></a>rand –
+## <a name="rand"></a>rand
 
-Vrátí náhodné číslo ze zadaného rozsahu, který je pouze na konci počáteční (včetně).
+Vrátí ze zadaného rozsahu, který je také zahrnuto pouze po uplynutí počáteční náhodné celé číslo.
 
 ```
 rand(<minValue>, <maxValue>)
@@ -2589,30 +2585,30 @@ rand(<minValue>, <maxValue>)
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*MinValue*> | Ano | Integer | Nejnižší celé číslo v rozsahu | 
-| <*MaxValue*> | Ano | Integer | Celé číslo, které následuje nejvyšší celé číslo v rozsahu, který může vrátit funkce | 
+| <*Hodnota minValue*> | Ano | Integer | Nejnižší celé číslo v rozsahu | 
+| <*Hodnota maxValue*> | Ano | Integer | Celé číslo, který následuje nejvyšší číslo v rozsahu, která vrací funkce | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*náhodné výsledek*> | Integer | Vrácená z zadaný rozsah náhodné celé číslo |  
+| <*náhodný výsledek*> | Integer | Náhodné celé číslo vrácen ze zadaného rozsahu |  
 |||| 
 
 *Příklad*
 
-Tento příklad načte náhodné celé číslo z zadaný rozsah, s výjimkou maximální hodnota: 
+Tento příklad načte náhodné celé číslo v určeném rozsahu, s výjimkou maximální hodnota: 
 
 ```
 rand(1, 5)
 ```
 
-A jako výsledek vrátí jednu z těchto čísla: `1`, `2`, `3`, nebo `4` 
+A jako výsledek vrátí jednu z těchto čísel: `1`, `2`, `3`, nebo `4` 
 
 <a name="range"></a>
 
 ## <a name="range"></a>rozsah
 
-Vrátí pole celé číslo, které začne ze zadané celé číslo.
+Vrátí pole celé číslo, které začíná od zadané celé číslo.
 
 ```
 range(<startIndex>, <count>)
@@ -2620,30 +2616,30 @@ range(<startIndex>, <count>)
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*Počáteční index*> | Ano | Integer | Celočíselná hodnota, která se spouští jako první položka pole | 
+| <*Počáteční index*> | Ano | Integer | Celočíselná hodnota, která spustí pole jako první položka | 
 | <*Počet*> | Ano | Integer | Počet celých čísel v poli | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| [<*rozsah výsledků*>] | Pole | Pole s celá čísla od zadaného indexu |  
+| [<*rozsah výsledek*>] | Pole | Pole s celými čísly počínaje zadaným indexem. |  
 |||| 
 
 *Příklad*
 
-Tento příklad vytvoří pole celé číslo, které se spustí z určeného indexu a má zadaný počet celá čísla:
+Tento příklad vytvoří celočíselné pole, která začíná od zadaného indexu a má zadaný počet celých čísel:
 
 ```
 range(1, 4)
 ```
 
-A vrátí výsledek tohoto: `[1, 2, 3, 4]`
+A vrátí výsledek: `[1, 2, 3, 4]`
 
 <a name="replace"></a>
 
-## <a name="replace"></a>Nahradit
+## <a name="replace"></a>nahradit
 
-Nahraďte je dílčí řetězec zadaný řetězec a vrátí výsledný řetězec. Tato funkce je malá a velká písmena.
+Nahraďte řetězec zadaný řetězec a vrátí výsledný řetězec. Tato funkce rozlišuje velká a malá písmena.
 
 ```
 replace('<text>', '<oldText>', '<newText>')
@@ -2651,31 +2647,31 @@ replace('<text>', '<oldText>', '<newText>')
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*Text*> | Ano | Řetězec | Řetězec, který obsahuje dílčí řetězec nahrazen | 
-| <*oldText*> | Ano | Řetězec | Dílčí řetězec nahrazen | 
-| <*newText*> | Ano | Řetězec | Náhradní řetězec | 
+| <*Text*> | Ano | Řetězec | Řetězec, který obsahuje dílčí řetězec pro nahrazení | 
+| <*oldText*> | Ano | Řetězec | Dílčí řetězec pro nahrazení | 
+| <*newText*> | Ano | Řetězec | Řetězci pro nahrazení | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*Aktualizovat text*> | Řetězec | Aktualizované řetězec po nahrazení dílčí řetězec <p>Pokud není nalezen dílčí řetězec, vrátí původní řetězec. | 
+| <*Aktualizace textu*> | Řetězec | Aktualizované řetězec po nahrazení dílčí řetězec <p>Není-li podřetězec nalezen, vraťte původního řetězce. | 
 |||| 
 
 *Příklad* 
 
-Tento příklad najde dílčí řetězec "staré" v "původní řetězec" a nahradí "staré" "New": 
+Tento příklad vyhledá dílčí řetězec "starými" v "starý řetězec" a nahradí "starými" "New": 
 
 ```
 replace('the old string', 'old', 'new')
 ```
 
-A vrátí výsledek tohoto: `"the new string"`
+A vrátí výsledek: `"the new string"`
 
 <a name="removeProperty"></a>
 
 ## <a name="removeproperty"></a>removeProperty
 
-Odeberte vlastnost z objektu a vrátí objekt aktualizované.
+Odebrání vlastnosti z objektu a vrácení aktualizovaného objektu.
 
 ```
 removeProperty(<object>, '<property>')
@@ -2683,18 +2679,18 @@ removeProperty(<object>, '<property>')
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*Objekt*> | Ano | Objekt | Objekt JSON, ze které chcete odebrat vlastnost | 
-| <*Vlastnost*> | Ano | Řetězec | Název vlastnosti odebrat | 
+| <*objekt*> | Ano | Objekt | Objekt JSON z, ve které chcete odebrat vlastnost | 
+| <*Vlastnost*> | Ano | Řetězec | Název vlastnosti, která má odebrat | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*aktualizovat objekt*> | Objekt | Aktualizovaný objekt JSON bez zadané vlastnosti | 
+| <*aktualizace objektu*> | Objekt | Aktualizovaný objekt JSON bez zadané vlastnosti | 
 |||| 
 
 *Příklad*
 
-V tomto příkladu odebere `"accountLocation"` vlastnost z `"customerProfile"` objekt, který je převést na JSON se [JSON()](#json) fungovat a vrátí aktualizovaného objektu:
+V tomto příkladu odebere `"accountLocation"` vlastnost z `"customerProfile"` objektu, který je převést na JSON pomocí [JSON()](#json) funkci a vrátí aktualizovaného objektu:
 
 ```
 removeProperty(json('customerProfile'), 'accountLocation')
@@ -2702,9 +2698,9 @@ removeProperty(json('customerProfile'), 'accountLocation')
 
 <a name="setProperty"></a>
 
-## <a name="setproperty"></a>SetProperty –
+## <a name="setproperty"></a>Metoda setProperty
 
-Nastavit hodnotu pro vlastnost objektu a vrátí objekt aktualizované. Chcete-li přidat novou vlastnost, můžete tuto funkci nebo [addProperty()](#addProperty) funkce.
+Nastavit hodnotu pro vlastnost objektu a vrácení aktualizovaného objektu. Chcete-li přidat nové vlastnosti tuto funkci můžete použít nebo [addProperty()](#addProperty) funkce.
 
 ```
 setProperty(<object>, '<property>', <value>)
@@ -2712,19 +2708,19 @@ setProperty(<object>, '<property>', <value>)
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*Objekt*> | Ano | Objekt | Objekt JSON, jehož vlastnosti chcete nastavit | 
-| <*Vlastnost*> | Ano | Řetězec | Název vlastnosti existující nebo nové nastavení | 
+| <*objekt*> | Ano | Objekt | Objekt JSON, jehož vlastnosti chcete nastavit | 
+| <*Vlastnost*> | Ano | Řetězec | Název vlastnosti existujících nebo nových nastavení | 
 | <*Hodnota*> | Ano | Všechny | Hodnota k nastavení pro zadanou vlastnost |
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*aktualizovat objekt*> | Objekt | Aktualizovaný objekt JSON jejichž vlastnost nastavíte | 
+| <*aktualizace objektu*> | Objekt | Aktualizovaný objekt JSON jehož nastavenou | 
 |||| 
 
 *Příklad*
 
-Tento příklad nastaví `"accountNumber"` vlastnost na `"customerProfile"` objekt, který je převést na JSON se [JSON()](#json) funkce. Funkce přiřazuje hodnotu generované [guid()](#guid) fungovat a vrátí aktualizovaný objekt JSON:
+Tento příklad nastaví `"accountNumber"` vlastnost `"customerProfile"` objektu, který je převést na JSON pomocí [JSON()](#json) funkce. Funkce přiřadí hodnoty generované [guid()](#guid) funkci a vrátí aktualizovaného objektu JSON:
 
 ```
 setProperty(json('customerProfile'), 'accountNumber', guid())
@@ -2734,7 +2730,7 @@ setProperty(json('customerProfile'), 'accountNumber', guid())
 
 ## <a name="skip"></a>Přeskočit
 
-Odebrání položek z před kolekce a vrátí *všechny ostatní* položky.
+Odebrat položky z přední části kolekce a vrátí *všechny ostatní* položky.
 
 ```
 skip([<collection>], <count>)
@@ -2742,18 +2738,18 @@ skip([<collection>], <count>)
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*kolekce*> | Ano | Pole | Kolekce, jejichž položky, které chcete odebrat | 
-| <*Počet*> | Ano | Integer | Kladné celé číslo pro počet položek, které chcete odebrat vpředu | 
+| <*Kolekce*> | Ano | Pole | Kolekce, jejichž položky, které chcete odebrat | 
+| <*Počet*> | Ano | Integer | Kladné celé číslo pro počet položek, které chcete odebrat do přední | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| [<*aktualizovat kolekci*>] | Pole | Aktualizované kolekci po odebrání zadaných položek | 
+| [<*aktualizovat kolekci*>] | Pole | Aktualizované kolekce po odebrání zadaných položek | 
 |||| 
 
 *Příklad*
 
-V tomto příkladu odebere jednu položku, číslo 0, od před zadané pole: 
+V tomto příkladu odebere jednu položku, číslo 0, z přední části zadaného pole: 
 
 ```
 skip([0, 1, 2, 3], 1)
@@ -2765,7 +2761,7 @@ A vrátí toto pole Zbývající položky: `[1,2,3]`
 
 ## <a name="split"></a>split
 
-Vrátí pole, které má všechny znaky v řetězci a každý znak oddělených *oddělovač*.
+Vrátit pole, která obsahuje všechny znaky z řetězce a má každý znak oddělené *oddělovač*.
 
 ```
 split('<text>', '<separator>')
@@ -2773,24 +2769,24 @@ split('<text>', '<separator>')
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*Text*> | Ano | Řetězec | Řetězec, který obsahuje znaky rozdělit |  
-| <*Oddělovač*> | Ano | Řetězec | Oddělovač, který se zobrazí mezi každý znak v poli výsledný | 
+| <*Text*> | Ano | Řetězec | Řetězec, který obsahuje znaky, které chcete rozdělit |  
+| <*Oddělovač*> | Ano | Řetězec | Oddělovač, který se zobrazí mezi každý znak v výsledné pole | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| [<*char1*><*oddělovače*><*char2*><*oddělovače*>...] | Pole | Výsledné pole vytvořené z všechny položky v zadaném řetězci |
+| [<*char1*><*oddělovač*><*char2*><*oddělovač*>...] | Pole | Výsledná pole vytvořené ze všech položek v zadaném řetězci |
 |||| 
 
 *Příklad* 
 
-Tento příklad vytvoří pole ze zadaného řetězce, každý znak oddělíte čárkou jako oddělovače:
+Tento příklad vytvoří pole ze zadaného řetězce, každý znak oddělíte čárkou jako oddělovačem:
 
 ```
 split('abc', ',')
 ```
 
-A vrátí výsledek tohoto: `[a, b, c]`
+A vrátí výsledek: `[a, b, c]`
 
 <a name="startOfDay"></a>
 
@@ -2804,13 +2800,13 @@ startOfDay('<timestamp>', '<format>'?)
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*časové razítko*> | Ano | Řetězec | Řetězec, který obsahuje časové razítko | 
-| <*Formát*> | Ne | Řetězec | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) nebo [vlastní formát vzor](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (rrrr-MM-ddT:mm:ss:fffffffK), která splňuje [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
+| <*Časové razítko*> | Ano | Řetězec | Řetězec, který obsahuje časové razítko | 
+| <*Formát*> | Ne | Řetězec | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) nebo [vlastní formátovací vzor](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát časového razítka je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (rrrr-MM-ddT:mm:ss:fffffffK), která splňuje [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*Aktualizovat časové razítko*> | Řetězec | Zadané časové razítko, ale počínaje Označit nula hodin dne | 
+| <*Aktualizace časového razítka*> | Řetězec | Zadané časové razítko, ale začínající na nulté celé hodiny značky daného dne | 
 |||| 
 
 *Příklad* 
@@ -2821,7 +2817,7 @@ Tento příklad vyhledá začátek dne pro toto časové razítko:
 startOfDay('2018-03-15T13:30:30Z')
 ```
 
-A vrátí výsledek tohoto: `"2018-03-15T00:00:00.0000000Z"`
+A vrátí výsledek: `"2018-03-15T00:00:00.0000000Z"`
 
 <a name="startOfHour"></a>
 
@@ -2835,24 +2831,24 @@ startOfHour('<timestamp>', '<format>'?)
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*časové razítko*> | Ano | Řetězec | Řetězec, který obsahuje časové razítko | 
-| <*Formát*> | Ne | Řetězec | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) nebo [vlastní formát vzor](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (rrrr-MM-ddT:mm:ss:fffffffK), která splňuje [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
+| <*Časové razítko*> | Ano | Řetězec | Řetězec, který obsahuje časové razítko | 
+| <*Formát*> | Ne | Řetězec | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) nebo [vlastní formátovací vzor](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát časového razítka je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (rrrr-MM-ddT:mm:ss:fffffffK), která splňuje [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*Aktualizovat časové razítko*> | Řetězec | Zadané časové razítko, ale počínaje Označit nula minut za hodinu | 
+| <*Aktualizace časového razítka*> | Řetězec | Zadané časové razítko, ale od značkou nula minut za hodinu | 
 |||| 
 
 *Příklad* 
 
-Tento příklad vyhledá začátek hodiny pro toto časové razítko:
+Tento příklad vyhledá začátek hodiny pro hodnotu tohoto časového razítka:
 
 ```
 startOfHour('2018-03-15T13:30:30Z')
 ```
 
-A vrátí výsledek tohoto: `"2018-03-15T13:00:00.0000000Z"`
+A vrátí výsledek: `"2018-03-15T13:00:00.0000000Z"`
 
 <a name="startOfMonth"></a>
 
@@ -2866,30 +2862,30 @@ startOfMonth('<timestamp>', '<format>'?)
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*časové razítko*> | Ano | Řetězec | Řetězec, který obsahuje časové razítko | 
-| <*Formát*> | Ne | Řetězec | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) nebo [vlastní formát vzor](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (rrrr-MM-ddT:mm:ss:fffffffK), která splňuje [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
+| <*Časové razítko*> | Ano | Řetězec | Řetězec, který obsahuje časové razítko | 
+| <*Formát*> | Ne | Řetězec | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) nebo [vlastní formátovací vzor](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát časového razítka je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (rrrr-MM-ddT:mm:ss:fffffffK), která splňuje [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*Aktualizovat časové razítko*> | Řetězec | Zadané časové razítko, ale od první den v měsíci na značce hodinu nula. | 
+| <*Aktualizace časového razítka*> | Řetězec | Zadané časové razítko, ale od první den v měsíci v označení nulté celé hodiny | 
 |||| 
 
 *Příklad* 
 
-Tento příklad vrátí začátek měsíce pro toto časové razítko:
+V tomto příkladu vrátí začátek měsíce pro toto časové razítko:
 
 ```
 startOfMonth('2018-03-15T13:30:30Z')
 ```
 
-A vrátí výsledek tohoto: `"2018-03-01T00:00:00.0000000Z"`
+A vrátí výsledek: `"2018-03-01T00:00:00.0000000Z"`
 
 <a name="startswith"></a>
 
 ## <a name="startswith"></a>startsWith
 
-Zkontrolujte, zda řetězec začíná konkrétní dílčí řetězec. Vrátí hodnotu PRAVDA, když se najde dílčí řetězec, nebo vrátí hodnotu false, pokud nebyl nalezen. Tato funkce není malá a velká písmena.
+Zkontrolujte, jestli řetězec začíná na konkrétní dílčí řetězec. Vrátí hodnotu PRAVDA, pokud se najde dílčí řetězec, nebo vrátí hodnotu false, když nebyl nalezen. Tato funkce není malá a velká písmena.
 
 ```
 startsWith('<text>', '<searchText>')
@@ -2898,39 +2894,39 @@ startsWith('<text>', '<searchText>')
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
 | <*Text*> | Ano | Řetězec | Řetězec, který má zkontrolovat | 
-| <*Prohledávanýtext*> | Ano | Řetězec | Výchozí řetězec, který má najít | 
+| <*Prohledávanýtext*> | Ano | Řetězec | Počáteční řetězec k vyhledání | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| hodnotu true nebo false  | Logická hodnota | Vrátí hodnotu PRAVDA, když se najde počáteční dílčí řetězec. Vrátí hodnotu false při nebyl nalezen. | 
+| PRAVDA nebo NEPRAVDA  | Logická hodnota | Vrátí hodnotu PRAVDA, když se najde dílčí řetězec začíná. Vrátí hodnotu false po nebyl nalezen. | 
 |||| 
 
 *Příklad 1* 
 
-Tento příklad zkontroluje, zda text "hello, world" začíná dílčí řetězec "hello":
+Tento příklad kontroluje, zda začíná řetězcem "hello world" podřetězec "hello":
 
 ```
 startsWith('hello world', 'hello')
 ```
 
-A vrátí výsledek tohoto: `true`
+A vrátí výsledek: `true`
 
 *Příklad 2*
 
-Tento příklad zkontroluje, zda text "hello, world" začíná dílčí řetězec "Pozdrav":
+Tento příklad kontroluje, zda začíná řetězcem "hello world" podřetězec "Pozdrav":
 
 ```
 startsWith('hello world', 'greetings')
 ```
 
-A vrátí výsledek tohoto: `false`
+A vrátí výsledek: `false`
 
 <a name="string"></a>
 
 ## <a name="string"></a>řetězec
 
-Vrátí řetězec verze pro hodnotu.
+Vrácení verze řetězce pro hodnoty.
 
 ```
 string(<value>)
@@ -2943,7 +2939,7 @@ string(<value>)
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*hodnotu řetězce*> | Řetězec | Řetězec verze pro zadanou hodnotu | 
+| <*Řetězcová hodnota*> | Řetězec | Řetězec verze pro zadanou hodnotu | 
 |||| 
 
 *Příklad 1* 
@@ -2954,7 +2950,7 @@ Tento příklad vytvoří řetězec verze pro toto číslo:
 string(10)
 ```
 
-A vrátí výsledek tohoto: `"10"`
+A vrátí výsledek: `"10"`
 
 *Příklad 2*
 
@@ -2964,13 +2960,13 @@ Tento příklad vytvoří řetězec pro zadaný objekt JSON a používá znak zp
 string( { "name": "Sophie Owen" } )
 ```
 
-A vrátí výsledek tohoto: `"{ \\"name\\": \\"Sophie Owen\\" }"`
+A vrátí výsledek: `"{ \\"name\\": \\"Sophie Owen\\" }"`
 
 <a name="sub"></a>
 
-## <a name="sub"></a>Sub –
+## <a name="sub"></a>Sub
 
-Vrátí výsledek z odečtením druhé číslo z první číslo.
+Vrátí výsledek v daných druhé číslo z první číslo.
 
 ```
 sub(<minuend>, <subtrahend>)
@@ -2978,30 +2974,30 @@ sub(<minuend>, <subtrahend>)
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*minuend*> | Ano | Celé číslo nebo číslo Float | Číslo, ze kterého má odečíst *subtrahend* | 
-| <*subtrahend*> | Ano | Celé číslo nebo číslo Float | Číslo, které má odečíst od *minuend* | 
+| <*menšenec*> | Ano | Integer nebo Float | Číslo, ze kterého se má odečíst *subtrahend* | 
+| <*menšitel*> | Ano | Integer nebo Float | Číslo, které se má odečíst od *minuend* | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*výsledek*> | Celé číslo nebo číslo Float | Výsledek z odečtením druhé číslo z první číslo | 
+| <*výsledek*> | Integer nebo Float | Výsledek daných druhé číslo z první číslo | 
 |||| 
 
 *Příklad* 
 
-Tento příklad odečítá od druhé číslo z první číslo:
+V tomto příkladu odečte druhý číslo od první číslo:
 
 ```
 sub(10.3, .3)
 ```
 
-A vrátí výsledek tohoto: `10`
+A vrátí výsledek: `10`
 
 <a name="substring"></a>
 
 ## <a name="substring"></a>dílčí řetězec
 
-Vrácení znaků z řetězce začínajících zadané pozici nebo index. Počáteční hodnoty indexu s číslem 0. 
+Vrácení znaků z řetězce, počínaje od zadané pozice nebo index. Index hodnoty začíná číslem 0. 
 
 ```
 substring('<text>', <startIndex>, <length>)
@@ -3016,24 +3012,24 @@ substring('<text>', <startIndex>, <length>)
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*substring výsledek*> | Řetězec | Substring s zadaný počet znaků, počínaje na pozici zadaného indexu v řetězci zdroje | 
+| <*výsledek dílčí řetězec*> | Řetězec | Dílčí řetězec s zadaný počet znaků, počínaje na pozici zadaného indexu ve zdrojovém řetězci | 
 |||| 
 
 *Příklad* 
 
-Tento příklad vytvoří pěti znacích dílčí řetězec z zadaný řetězec, od hodnotu indexu 6:
+Tento příklad vytvoří pět znaků podřetězce ze zadaného řetězce, počínaje hodnotu indexu 6:
 
 ```
 substring('hello world', 6, 5)
 ```
 
-A vrátí výsledek tohoto: `"world"`
+A vrátí výsledek: `"world"`
 
 <a name="subtractFromTime"></a>
 
 ## <a name="subtractfromtime"></a>subtractFromTime
 
-Odečte počet časových jednotek z časového razítka. Viz také [getPastTime](#getPastTime).
+Odečte počet časových jednotek z časové razítko. Viz také [getPastTime](#getPastTime).
 
 ```
 subtractFromTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
@@ -3041,42 +3037,42 @@ subtractFromTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*časové razítko*> | Ano | Řetězec | Řetězec, který obsahuje časové razítko | 
-| <*Interval*> | Ano | Integer | Počet jednotek zadaný čas má odečíst | 
-| <*timeUnit*> | Ano | Řetězec | Jednotka času pro použití s *interval*: "Sekundu", "Minut", "Hodina", "Den", "Týden", "Měsíc", "Rok" | 
-| <*Formát*> | Ne | Řetězec | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) nebo [vlastní formát vzor](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (rrrr-MM-ddT:mm:ss:fffffffK), která splňuje [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. | 
+| <*Časové razítko*> | Ano | Řetězec | Řetězec, který obsahuje časové razítko | 
+| <*interval*> | Ano | Integer | Počet jednotek určený čas se má odečíst | 
+| <*timeUnit*> | Ano | Řetězec | Jednotka času pro použití s *interval*: "Sekundu", "Minute", "Hour", "Day", "Týden", "Měsíc", "Rok" | 
+| <*Formát*> | Ne | Řetězec | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) nebo [vlastní formátovací vzor](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát časového razítka je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (rrrr-MM-ddT:mm:ss:fffffffK), která splňuje [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*Aktualizovat časové razítko*> | Řetězec | Časové razítko minus zadaný počet časových jednotek | 
+| <*Aktualizace časového razítka*> | Řetězec | Časové razítko minus zadaný počet časových jednotek | 
 |||| 
 
 *Příklad 1*
 
-Tento příklad odečítá jeden den z této časové razítko:
+V tomto příkladu odečte jeden den od tohoto časového razítka:
 
 ```
 subtractFromTime('2018-01-02T00:00:00Z', 1, 'Day') 
 ```
 
-A vrátí výsledek tohoto: `"2018-01-01T00:00:00:0000000Z"`
+A vrátí výsledek: `"2018-01-01T00:00:00:0000000Z"`
 
 *Příklad 2*
 
-Tento příklad odečítá jeden den z této časové razítko:
+V tomto příkladu odečte jeden den od tohoto časového razítka:
 
 ```
 subtractFromTime('2018-01-02T00:00:00Z', 1, 'Day', 'D') 
 ```
 
-A vrátí výsledek tohoto formátu volitelné "D": `"Monday, January, 1, 2018"`
+A vrátí výsledek volitelné formátu "D": `"Monday, January, 1, 2018"`
 
 <a name="take"></a>
 
-## <a name="take"></a>proveďte
+## <a name="take"></a>Take
 
-Vrátí položky z před kolekce. 
+Vrátí položky ze začátku kolekce. 
 
 ```
 take('<collection>', <count>)
@@ -3085,34 +3081,34 @@ take([<collection>], <count>)
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*kolekce*> | Ano | Řetězec nebo pole | Kolekce, jejichž položky, které chcete | 
-| <*Počet*> | Ano | Integer | Pro počet položek, které chcete z před kladné celé číslo | 
+| <*Kolekce*> | Ano | Řetězec nebo pole | Kolekce, jejichž položky, které chcete | 
+| <*Počet*> | Ano | Integer | Kladné celé číslo pro počet položek, které chcete z front | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*podmnožina*> nebo [<*podmnožina*>] | Řetězec nebo pole, v uvedeném pořadí | Řetězec nebo pole, které má zadaný počet položek, které jsou převzaty z před původní kolekci | 
+| <*dílčí*> nebo [<*dílčí*>] | Řetězec nebo pole, v uvedeném pořadí | Řetězec nebo pole, který má zadaný počet položek přijatá od začátku původní kolekci | 
 |||| 
 
 *Příklad*
 
-Tyto příklady sám před těchto kolekcí zadaný počet položek:
+Tyto příklady získat zadaný počet položek od začátku těchto kolekcí:
 
 ```
 take('abcde`, 3)
 take([0, 1, 2, 3, 4], 3)
 ```
 
-A tyto výsledky:
+A vracet tyto výsledky:
 
-* Prvním příkladu: `"abc"`
-* Druhém příkladu: `[0, 1, 2]`
+* První příklad: `"abc"`
+* Druhý příklad: `[0, 1, 2]`
 
 <a name="ticks"></a>
 
-## <a name="ticks"></a>impulzy
+## <a name="ticks"></a>značky
 
-Vrátí `ticks` hodnota vlastnosti pro zadané časové razítko. A *značek* je 100 nanosekund interval.
+Vrátit `ticks` hodnota vlastnosti pro zadané časové razítko. A *značek* během intervalu 100 nanosekund.
 
 ```
 ticks('<timestamp>')
@@ -3120,19 +3116,19 @@ ticks('<timestamp>')
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*časové razítko*> | Ano | Řetězec | Řetězec pro časovým razítkem | 
+| <*Časové razítko*> | Ano | Řetězec | Řetězec pro časové razítko | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*rysky číslo*> | Integer | Počet značek od zadaného časového razítka | 
+| <*Číslo značky*> | Integer | Počet taktů od zadaného časového razítka | 
 |||| 
 
 <a name="toLower"></a>
 
 ## <a name="tolower"></a>toLower
 
-Vrátí řetězec ve formátu malá písmena. Pokud znak v řetězci nemá malá verze, zůstane nezměněno pro vrácený řetězec tento znak.
+Vrátí řetězec ve formátu malá písmena. Pokud znak v řetězci nemá malá verzi, zůstane ve vráceném řetězci beze změny tohoto znaku.
 
 ```
 toLower('<text>')
@@ -3140,12 +3136,12 @@ toLower('<text>')
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*Text*> | Ano | Řetězec | Řetězec, který vrátí ve formátu malá písmena | 
+| <*Text*> | Ano | Řetězec | Řetězec, který se vrátí ve formátu malá písmena | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*malá nešifrovaným textem*> | Řetězec | Původní řetězec ve formátu malá písmena | 
+| <*text malými písmeny*> | Řetězec | Původní řetězec ve formátu malá písmena | 
 |||| 
 
 *Příklad* 
@@ -3156,13 +3152,13 @@ Tento příklad převede tento řetězec na malá písmena:
 toLower('Hello World')
 ```
 
-A vrátí výsledek tohoto: `"hello world"`
+A vrátí výsledek: `"hello world"`
 
 <a name="toUpper"></a>
 
 ## <a name="toupper"></a>toUpper
 
-Vrátí řetězec ve formátu velká písmena. Pokud znak v řetězci nemá verzi s velkými písmeny, zůstane nezměněno pro vrácený řetězec tento znak.
+Vrátí řetězec ve formátu velká písmena. Pokud znak v řetězci nemá verzi s velkými písmeny, zůstane ve vráceném řetězci beze změny tohoto znaku.
 
 ```
 toUpper('<text>')
@@ -3170,12 +3166,12 @@ toUpper('<text>')
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*Text*> | Ano | Řetězec | Řetězec, který vrátí ve formátu velká písmena | 
+| <*Text*> | Ano | Řetězec | Řetězec, který se vrátí ve formátu velká písmena | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*velká písmena textu*> | Řetězec | Původní řetězec ve formátu velká písmena | 
+| <*text velkými písmeny psané*> | Řetězec | Původní řetězec ve formátu velká písmena | 
 |||| 
 
 *Příklad* 
@@ -3186,19 +3182,19 @@ Tento příklad převede tento řetězec na velká písmena:
 toUpper('Hello World')
 ```
 
-A vrátí výsledek tohoto: `"HELLO WORLD"`
+A vrátí výsledek: `"HELLO WORLD"`
 
 <a name="trigger"></a>
 
-## <a name="trigger"></a>Aktivační události
+## <a name="trigger"></a>Aktivační událost
 
-Vrátíte výstup aktivační události v modulu runtime nebo hodnoty z jiných dvojice název a hodnota JSON, které lze přiřadit výrazu. 
+Vrátíte výstupní aktivační události v modulu runtime nebo hodnoty z jiných dvojice název a hodnota JSON, které můžete přiřadit k výrazu. 
 
-* Uvnitř vstupy aktivační události vrátí tato funkce výstup z předchozí zpracování. 
+* Ve vstupech triggeru od tato funkce vrací výstup z předchozího zpracování. 
 
-* Uvnitř aktivační podmínka vrátí tato funkce výstup z aktuální provedení. 
+* Uvnitř aktivační podmínku tato funkce vrací výstup z aktuálního spuštění. 
 
-Ve výchozím nastavení, funkce odkazuje na objekt celý aktivační událost, ale Volitelně můžete zadat vlastnost jejichž požadovanou hodnotu. Navíc tato funkce má sdružená verze, které jsou k dispozici, najdete v části [triggerOutputs()](#triggerOutputs) a [triggerBody()](#triggerBody). 
+Ve výchozím nastavení, funkce, odkazuje na objekt celý aktivační událost, ale můžete volitelně zadat vlastnost jehož požadovanou hodnotu. Kromě toho tato funkce má k dispozici Zkrácený tvar vlastností verzí naleznete v tématu [triggerOutputs()](#triggerOutputs) a [triggerBody()](#triggerBody). 
 
 ```
 trigger()
@@ -3206,14 +3202,14 @@ trigger()
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*aktivační událost output*> | Řetězec | Výstup z aktivační událost za běhu | 
+| <*výstupu triggeru*> | Řetězec | Výstup z aktivační události za běhu | 
 |||| 
 
 <a name="triggerBody"></a>
 
 ## <a name="triggerbody"></a>triggerBody
 
-Vrátí aktivační události `body` výstup za běhu. Sdružená vlastnost `trigger().outputs.body`. V tématu [trigger()](#trigger). 
+Vrátí trigger's `body` výstupu za běhu. Zkrácený tvar vlastností `trigger().outputs.body`. Zobrazit [trigger()](#trigger). 
 
 ```
 triggerBody()
@@ -3221,14 +3217,14 @@ triggerBody()
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*aktivační událost text output*> | Řetězec | `body` Výstup z aktivační události | 
+| <*výstupu triggeru textu*> | Řetězec | `body` Výstup z triggeru | 
 |||| 
 
 <a name="triggerFormDataMultiValues"></a>
 
 ## <a name="triggerformdatamultivalues"></a>triggerFormDataMultiValues
 
-Vrátí pole s hodnotami, které odpovídají názvu klíče do aktivační události *data formuláře* nebo *formulářem kódované* výstup. 
+Vrátí pole hodnot, které odpovídají názvu klíče v trigger's *data formuláře* nebo *form-encoded.* výstup. 
 
 ```
 triggerFormDataMultiValues('<key>')
@@ -3236,29 +3232,29 @@ triggerFormDataMultiValues('<key>')
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*Klíč*> | Ano | Řetězec | Název klíče, jehož hodnotu chcete | 
+| <*Klíč*> | Ano | Řetězec | Název klíče, jejíž hodnotu chcete | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| [<*pole s klíč hodnoty*>] | Pole | Pole s všechny hodnoty, které odpovídají zadaný klíč | 
+| [<*pole s klíčem hodnoty*>] | Pole | Pole obsahující všechny hodnoty, které odpovídají zadanému klíči | 
 |||| 
 
 *Příklad* 
 
-Tento příklad vytvoří pole z hodnoty "adresa URL kanálu" klíče v aktivační procedury RSS data formuláře nebo výsledek zakódovaný ve formátu: 
+Tento příklad vytvoří pole z "adresa URL kanálu" hodnotu klíče v RSS trigger form-data nebo form-encoded. výstup: 
 
 ```
 triggerFormDataMultiValues('feedUrl')
 ```
 
-A vrátí jako výsledek příklad toto pole: `["http://feeds.reuters.com/reuters/topNews"]`
+A jako výsledek příkladu vrátí toto pole: `["http://feeds.reuters.com/reuters/topNews"]`
 
 <a name="triggerFormDataValue"></a>
 
 ## <a name="triggerformdatavalue"></a>triggerFormDataValue
 
-Vrátí řetězec s jednu hodnotu, která odpovídá názvu klíče do aktivační události *data formuláře* nebo *formulářem kódované* výstup. Pokud funkce najde více než jednu shodu, funkce vyvolá chybu.
+Vrátí řetězec s jednu hodnotu, která odpovídá názvu klíče v trigger's *data formuláře* nebo *form-encoded.* výstup. Pokud funkce najde více než jedna shoda, funkce vyvolá chybu.
 
 ```
 triggerFormDataValue('<key>')
@@ -3266,7 +3262,7 @@ triggerFormDataValue('<key>')
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*Klíč*> | Ano | Řetězec | Název klíče, jehož hodnotu chcete |
+| <*Klíč*> | Ano | Řetězec | Název klíče, jejíž hodnotu chcete |
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
@@ -3276,17 +3272,17 @@ triggerFormDataValue('<key>')
 
 *Příklad* 
 
-Tento příklad vytvoří řetězec z hodnoty "adresa URL kanálu" klíče v aktivační procedury RSS data formuláře nebo výsledek zakódovaný ve formátu:
+Tento příklad vytvoří řetězec z "adresa URL kanálu" hodnotu klíče v RSS trigger form-data nebo form-encoded. výstup:
 
 ```
 triggerFormDataValue('feedUrl')
 ```
 
-A vrátí jako výsledek příklad tento řetězec: `"http://feeds.reuters.com/reuters/topNews"` 
+A jako výsledek příkladu vrátí tento řetězec: `"http://feeds.reuters.com/reuters/topNews"` 
 
 <a name="triggerMultipartBody"></a>
 
-Vrátí text pro určitou část ve výstupu aktivační událost, která má více částí. 
+Vrátí text pro určitou část ve trigger's výstup, který má více částí. 
 
 ```
 triggerMultipartBody(<index>)
@@ -3299,14 +3295,14 @@ triggerMultipartBody(<index>)
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*Text*> | Řetězec | Text pro zadaný část ve výstupu aktivační událost s více částmi. | 
+| <*Text*> | Řetězec | Text pro zadanou část ve výstupu aktivační událost s více částmi. | 
 |||| 
 
 <a name="triggerOutputs"></a>
 
 ## <a name="triggeroutputs"></a>triggerOutputs
 
-Vrátíte výstup aktivační události v modulu runtime nebo hodnoty z jiných páry název hodnota JSON. Sdružená vlastnost `trigger().outputs`. V tématu [trigger()](#trigger). 
+Vrátíte výstupní aktivační události v modulu runtime nebo hodnoty z jiných dvojice název a hodnota JSON. Zkrácený tvar vlastností `trigger().outputs`. Zobrazit [trigger()](#trigger). 
 
 ```
 triggerOutputs()
@@ -3314,14 +3310,14 @@ triggerOutputs()
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*aktivační událost output*> | Řetězec | Výstup z aktivační událost za běhu  | 
+| <*výstupu triggeru*> | Řetězec | Výstup z aktivační události za běhu  | 
 |||| 
 
 <a name="trim"></a>
 
-## <a name="trim"></a>Uvolnění dočasné paměti
+## <a name="trim"></a>Trim
 
-Odebere úvodní a koncové mezery z hodnoty řetězce a vrátí aktualizované řetězec.
+Odebere úvodní a koncové mezery z řetězce a vrátit řetězec aktualizované.
 
 ```
 trim('<text>')
@@ -3334,24 +3330,24 @@ trim('<text>')
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*updatedText*> | Řetězec | Aktualizovaná verze pro původní řetězec bez začátku nebo na konci prázdné znaky | 
+| <*updatedText*> | Řetězec | Aktualizovanou verzi pro původní řetězec bez počáteční ani koncové prázdné znaky | 
 |||| 
 
 *Příklad* 
 
-V tomto příkladu odebere úvodní a koncové mezery z řetězce "Hello World":  
+V tomto příkladu odebere úvodní a koncové prázdné znaky v řetězci "Hello World":  
 
 ```
 trim(' Hello World  ')
 ```
 
-A vrátí výsledek tohoto: `"Hello World"`
+A vrátí výsledek: `"Hello World"`
 
 <a name="union"></a>
 
 ## <a name="union"></a>sjednocení
 
-Vrátí kolekci, která má *všechny* položky ze zadaných kolekcí. Než se objeví ve výsledku, může vyskytovat položky v jakékoli kolekce této funkci byl předán. Pokud jeden nebo více položek se stejným názvem, zobrazí se ve výsledku poslední položky s tímto názvem. 
+Vrátí kolekci, která má *všechny* položky ze zadaných kolekcí. Zobrazit ve výsledku se může zobrazit položky v každé kolekci této funkci byl předán. Pokud jeden nebo více položek se stejným názvem, zobrazí se ve výsledku poslední položka s tímto názvem. 
 
 ```
 union('<collection1>', '<collection2>', ...)
@@ -3360,12 +3356,12 @@ union([<collection1>], [<collection2>], ...)
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*collection1*>, <*collection2*>,...  | Ano | Pole nebo objekt, ale ne obojí | Kolekce, ze kterého má *všechny* položky | 
+| <*collection1*>, <*kolekce 2*>,...  | Ano | Pole nebo objekt, ale ne obojí | Kolekce, ze kterého má *všechny* položky | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*updatedCollection*> | Objekt, nebo pole v uvedeném pořadí | Kolekce se všechny položky ze zadaných kolekcí - žádné duplikáty | 
+| <*updatedCollection*> | Pole nebo objekt, v uvedeném pořadí | Kolekce se všechny položky ze zadaných kolekcí – žádné duplikáty | 
 |||| 
 
 *Příklad* 
@@ -3376,13 +3372,13 @@ Tento příklad načte *všechny* položky z těchto kolekcí:
 union([1, 2, 3], [1, 2, 10, 101])
 ```
 
-A vrátí výsledek tohoto: `[1, 2, 3, 10, 101]`
+A vrátí výsledek: `[1, 2, 3, 10, 101]`
 
 <a name="uriComponent"></a>
 
 ## <a name="uricomponent"></a>uriComponent
 
-Vrácení verze identifikátor URI kódovaný URI pro řetězec nahrazením znaky adresy URL unsafe řídicí znaky. Tuto funkci můžete používat místo [encodeUriComponent()](#encodeUriComponent). I když obě funkce fungovat stejným způsobem, `uriComponent()` upřednostňuje.
+Vrácení verze URI kódovaný identifikátor (URI) pro řetězec tak, že nahradíte adresu URL problematické znaky s řídicími znaky. Tuto funkci použít spíše než [encodeUriComponent()](#encodeUriComponent). I když obě funkce fungovat stejným způsobem, `uriComponent()` je upřednostňována.
 
 ```
 uriComponent('<value>')
@@ -3390,12 +3386,12 @@ uriComponent('<value>')
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*Hodnota*> | Ano | Řetězec | Řetězec převést na formátu s kódováním identifikátor URI | 
+| <*Hodnota*> | Ano | Řetězec | Řetězec převést na formát kódování identifikátoru URI | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*kódovaný identifikátor uri*> | Řetězec | Řetězec kódovaný identifikátor URI s řídicí znaky | 
+| <*kódovaný identifikátor uri*> | Řetězec | Řetězec kódovaný identifikátor URI s řídicími znaky | 
 |||| 
 
 *Příklad*
@@ -3406,13 +3402,13 @@ Tento příklad vytvoří verzi kódovaný identifikátor URI pro tento řetěze
 uriComponent('https://contoso.com')
 ```
 
-A vrátí výsledek tohoto: `"http%3A%2F%2Fcontoso.com"`
+A vrátí výsledek: `"http%3A%2F%2Fcontoso.com"`
 
 <a name="uriComponentToBinary"></a>
 
 ## <a name="uricomponenttobinary"></a>uriComponentToBinary
 
-Vrátí binární verze pro komponentu URI identifikátor URI.
+Vrátí binární verzi pro komponentu URI identifikátor URI.
 
 ```
 uriComponentToBinary('<value>')
@@ -3425,7 +3421,7 @@ uriComponentToBinary('<value>')
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*binární pro kódovaný uri*> | Řetězec | Binární verze pro řetězec kódovaný identifikátor URI. Binární obsah, který je kódováním base64 a je znázorněn `$content`. | 
+| <*binární soubor pro kódovaný uri*> | Řetězec | Binární verze pro řetězec kódovaný identifikátor URI. Binární obsah, který je s kódováním base64 a je znázorněn `$content`. | 
 |||| 
 
 *Příklad*
@@ -3436,7 +3432,7 @@ Tento příklad vytvoří binární verze pro tento řetězec kódovaný identif
 uriComponentToBinary('http%3A%2F%2Fcontoso.com')
 ```
 
-A vrátí výsledek tohoto: 
+A vrátí výsledek: 
 
 `"001000100110100001110100011101000111000000100101001100
 11010000010010010100110010010001100010010100110010010001
@@ -3447,7 +3443,7 @@ A vrátí výsledek tohoto:
 
 ## <a name="uricomponenttostring"></a>uriComponentToString
 
-Vrátí řetězec, řetězec kódovaný jazykem URI efektivně dekódování kódování řetězec verze pro identifikátor URI (URI).
+Vrátí řetězec verze pro identifikátor URI (URI) zakódovaného řetězce, efektivně dekódování řetězec kódovaný identifikátor URI.
 
 ```
 uriComponentToString('<value>')
@@ -3455,29 +3451,29 @@ uriComponentToString('<value>')
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*Hodnota*> | Ano | Řetězec | Řetězec kódovaný jazykem URI k dekódování | 
+| <*Hodnota*> | Ano | Řetězec | Řetězec kódovaný identifikátor URI k dekódování | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*dekódovat uri*> | Řetězec | Dekódované verze pro řetězec kódovaný identifikátor URI | 
+| <*dekódovat. identifikátor uri*> | Řetězec | Dekódovaný verze pro řetězec kódovaný identifikátor URI | 
 |||| 
 
 *Příklad*
 
-Tento příklad vytvoří dekódované řetězec verze pro tento řetězec kódovaný identifikátor URI: 
+Tento příklad vytvoří dekódovaný řetězec verze pro tento řetězec kódovaný identifikátor URI: 
 
 ```
 uriComponentToString('http%3A%2F%2Fcontoso.com')
 ```
 
-A vrátí výsledek tohoto: `"https://contoso.com"` 
+A vrátí výsledek: `"https://contoso.com"` 
 
 <a name="uriHost"></a>
 
 ## <a name="urihost"></a>uriHost
 
-Vrátí `host` hodnota pro identifikátor URI (URI).
+Vrátit `host` hodnota pro identifikátor URI (URI).
 
 ```
 uriHost('<uri>')
@@ -3485,7 +3481,7 @@ uriHost('<uri>')
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*identifikátor URI*> | Ano | Řetězec | Identifikátor URI jejichž `host` hodnotu, kterou chcete | 
+| <*Identifikátor URI*> | Ano | Řetězec | Identifikátor URI jehož `host` hodnotu, kterou chcete | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
@@ -3501,13 +3497,13 @@ Tento příklad vyhledá `host` hodnotu pro tento identifikátor URI:
 uriHost('https://www.localhost.com:8080')
 ```
 
-A vrátí výsledek tohoto: `"www.localhost.com"`
+A vrátí výsledek: `"www.localhost.com"`
 
 <a name="uriPath"></a>
 
 ## <a name="uripath"></a>uriPath
 
-Vrátí `path` hodnota pro identifikátor URI (URI). 
+Vrátit `path` hodnota pro identifikátor URI (URI). 
 
 ```
 uriPath('<uri>')
@@ -3515,7 +3511,7 @@ uriPath('<uri>')
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*identifikátor URI*> | Ano | Řetězec | Identifikátor URI jejichž `path` hodnotu, kterou chcete | 
+| <*Identifikátor URI*> | Ano | Řetězec | Identifikátor URI jehož `path` hodnotu, kterou chcete | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
@@ -3531,13 +3527,13 @@ Tento příklad vyhledá `path` hodnotu pro tento identifikátor URI:
 uriPath('http://www.contoso.com/catalog/shownew.htm?date=today')
 ```
 
-A vrátí výsledek tohoto: `"/catalog/shownew.htm"`
+A vrátí výsledek: `"/catalog/shownew.htm"`
 
 <a name="uriPathAndQuery"></a>
 
 ## <a name="uripathandquery"></a>uriPathAndQuery
 
-Vrátí `path` a `query` hodnoty pro identifikátor URI (URI).
+Vrátit `path` a `query` hodnoty pro identifikátor URI (URI).
 
 ```
 uriPathAndQuery('<uri>')
@@ -3545,12 +3541,12 @@ uriPathAndQuery('<uri>')
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*identifikátor URI*> | Ano | Řetězec | Identifikátor URI jejichž `path` a `query` hodnoty, které mají | 
+| <*Identifikátor URI*> | Ano | Řetězec | Identifikátor URI jehož `path` a `query` hodnoty požadujete | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*Hodnota dotazu cesty*> | Řetězec | `path` a `query` hodnoty pro zadaný identifikátor URI. Pokud `path` není zadat hodnotu, vrátí znak "/". | 
+| <*Hodnota cesty dotazu*> | Řetězec | `path` a `query` hodnot pro zadaný identifikátor URI. Pokud `path` nelze zadat hodnotu, vrátí znak "/". | 
 |||| 
 
 *Příklad*
@@ -3561,13 +3557,13 @@ Tento příklad vyhledá `path` a `query` hodnoty pro tento identifikátor URI:
 uriPathAndQuery('http://www.contoso.com/catalog/shownew.htm?date=today')
 ```
 
-A vrátí výsledek tohoto: `"/catalog/shownew.htm?date=today"`
+A vrátí výsledek: `"/catalog/shownew.htm?date=today"`
 
 <a name="uriPort"></a>
 
 ## <a name="uriport"></a>uriPort
 
-Vrátí `port` hodnota pro identifikátor URI (URI).
+Vrátit `port` hodnota pro identifikátor URI (URI).
 
 ```
 uriPort('<uri>')
@@ -3575,29 +3571,29 @@ uriPort('<uri>')
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*identifikátor URI*> | Ano | Řetězec | Identifikátor URI jejichž `port` hodnotu, kterou chcete | 
+| <*Identifikátor URI*> | Ano | Řetězec | Identifikátor URI jehož `port` hodnotu, kterou chcete | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*Hodnota portu*> | Integer | `port` Hodnotu pro zadaný identifikátor URI. Pokud `port` není zadejte hodnotu, vrátí výchozí port pro protokol. | 
+| <*Hodnota portu*> | Integer | `port` Hodnotu pro zadaný identifikátor URI. Pokud `port` nelze zadat hodnotu, vrátí výchozí port pro protokol. | 
 |||| 
 
 *Příklad*
 
-Tento příklad vrací `port` hodnotu pro tento identifikátor URI:
+V tomto příkladu vrátí `port` hodnotu pro tento identifikátor URI:
 
 ```
 uriPort('http://www.localhost:8080')
 ```
 
-A vrátí výsledek tohoto: `8080`
+A vrátí výsledek: `8080`
 
 <a name="uriQuery"></a>
 
 ## <a name="uriquery"></a>uriQuery
 
-Vrátí `query` hodnota pro identifikátor URI (URI).
+Vrátit `query` hodnota pro identifikátor URI (URI).
 
 ```
 uriQuery('<uri>')
@@ -3605,7 +3601,7 @@ uriQuery('<uri>')
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*identifikátor URI*> | Ano | Řetězec | Identifikátor URI jejichž `query` hodnotu, kterou chcete | 
+| <*Identifikátor URI*> | Ano | Řetězec | Identifikátor URI jehož `query` hodnotu, kterou chcete | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
@@ -3615,19 +3611,19 @@ uriQuery('<uri>')
 
 *Příklad*
 
-Tento příklad vrací `query` hodnotu pro tento identifikátor URI: 
+V tomto příkladu vrátí `query` hodnotu pro tento identifikátor URI: 
 
 ```
 uriQuery('http://www.contoso.com/catalog/shownew.htm?date=today')
 ```
 
-A vrátí výsledek tohoto: `"?date=today"`
+A vrátí výsledek: `"?date=today"`
 
 <a name="uriScheme"></a>
 
-## <a name="urischeme"></a>UriScheme
+## <a name="urischeme"></a>uriScheme
 
-Vrátí `scheme` hodnota pro identifikátor URI (URI).
+Vrátit `scheme` hodnota pro identifikátor URI (URI).
 
 ```
 uriScheme('<uri>')
@@ -3635,7 +3631,7 @@ uriScheme('<uri>')
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*identifikátor URI*> | Ano | Řetězec | Identifikátor URI jejichž `scheme` hodnotu, kterou chcete | 
+| <*Identifikátor URI*> | Ano | Řetězec | Identifikátor URI jehož `scheme` hodnotu, kterou chcete | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
@@ -3645,13 +3641,13 @@ uriScheme('<uri>')
 
 *Příklad*
 
-Tento příklad vrací `scheme` hodnotu pro tento identifikátor URI:
+V tomto příkladu vrátí `scheme` hodnotu pro tento identifikátor URI:
 
 ```
 uriScheme('http://www.contoso.com/catalog/shownew.htm?date=today')
 ```
 
-A vrátí výsledek tohoto: `"http"`
+A vrátí výsledek: `"http"`
 
 <a name="utcNow"></a>
 
@@ -3663,44 +3659,44 @@ Vrátí aktuální časové razítko.
 utcNow('<format>')
 ```
 
-Volitelně můžete zadat jiný formát se <*formát*> parametr. 
+Volitelně můžete zadat jiný formát s <*formátu*> parametru. 
 
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*Formát*> | Ne | Řetězec | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) nebo [vlastní formát vzor](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (rrrr-MM-ddT:mm:ss:fffffffK), která splňuje [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. | 
+| <*Formát*> | Ne | Řetězec | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) nebo [vlastní formátovací vzor](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát časového razítka je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (rrrr-MM-ddT:mm:ss:fffffffK), která splňuje [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*aktuální-časového razítka*> | Řetězec | Aktuální datum a čas | 
+| <*aktuální časové razítko*> | Řetězec | Aktuální datum a čas | 
 |||| 
 
 *Příklad 1*
 
-Předpokládejme, že dnes je 15. dubna 2018:00:00: 00. Tento příklad načte aktuální časové razítko: 
+Předpokládejme, že dnes je 15. dubna 2018 v 1:00:00 PM. Tento příklad načte aktuální časové razítko: 
 
 ```
 utcNow()
 ```
 
-A vrátí výsledek tohoto: `"2018-04-15T13:00:00.0000000Z"`
+A vrátí výsledek: `"2018-04-15T13:00:00.0000000Z"`
 
 *Příklad 2*
 
-Předpokládejme, že dnes je 15. dubna 2018:00:00: 00. Tento příklad načte aktuální časové razítko volitelné formátu "D":
+Předpokládejme, že dnes je 15. dubna 2018 v 1:00:00 PM. Tento příklad načte aktuální časové razítko volitelné formátu "D":
 
 ```
 utcNow('D')
 ```
 
-A vrátí výsledek tohoto: `"Sunday, April 15, 2018"`
+A vrátí výsledek: `"Sunday, April 15, 2018"`
 
 <a name="variables"></a>
 
-## <a name="variables"></a>proměnné
+## <a name="variables"></a>Proměnné
 
-Vrátí hodnotu pro zadanou proměnnou. 
+Vrátí hodnotu zadané proměnné. 
 
 ```
 variables('<variableName>')
@@ -3708,29 +3704,29 @@ variables('<variableName>')
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*NázevProměnné*> | Ano | Řetězec | Název proměnné, jehož hodnotu chcete | 
+| <*NázevProměnné*> | Ano | Řetězec | Název proměnné, jejíž hodnotu chcete | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*Hodnota proměnné*> | Všechny | Hodnota pro zadané proměnné | 
+| <*Hodnota proměnné*> | Všechny | Hodnotu zadanou proměnnou | 
 |||| 
 
 *Příklad*
 
-Předpokládejme, že aktuální hodnota proměnné "numItems" je 20. Tento příklad načte celočíselnou hodnotu pro tuto proměnnou:
+Předpokládejme, že aktuální hodnota proměnné "numItems" je 20. V tomto příkladu získá celočíselnou hodnotou pro tuto proměnnou:
 
 ```
 variables('numItems')
 ```
 
-A vrátí výsledek tohoto: `20`
+A vrátí výsledek: `20`
 
 <a name="workflow"></a>
 
 ## <a name="workflow"></a>pracovní postup
 
-Vrátí všechny podrobnosti o samotného pracovního postupu při běhu. 
+Vrátí všechny podrobnosti samotného pracovního postupu za běhu. 
 
 ```
 workflow().<property>
@@ -3738,12 +3734,12 @@ workflow().<property>
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*Vlastnost*> | Ne | Řetězec | Název vlastnosti pracovního postupu, jehož hodnotu chcete <p>Objekt pracovního postupu má tyto vlastnosti: **název**, **typ**, **id**, **umístění**, a **spustit**. **Spustit** hodnota vlastnosti je také objekt, který má tyto vlastnosti: **název**, **typ**, a **id**. | 
+| <*Vlastnost*> | Ne | Řetězec | Název vlastnosti pracovního postupu, jejíž hodnotu chcete <p>Objekt pracovního postupu má tyto vlastnosti: **název**, **typ**, **id**, **umístění**, a **spustit**. **Spustit** hodnota vlastnosti je také objekt, který má tyto vlastnosti: **název**, **typ**, a **id**. | 
 ||||| 
 
 *Příklad*
 
-Tento příklad vrací název pro aktuální spuštění pracovního postupu:
+V tomto příkladu vrátí název aktuální běh pracovního postupu:
 
 ```
 workflow().run.name
@@ -3761,21 +3757,21 @@ xml('<value>')
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*Hodnota*> | Ano | Řetězec | Řetězec s převáděný objekt JSON <p>Objekt JSON, musí mít pouze jeden kořenový vlastnost. <br>Použít znak zpětného lomítka (\\) jako řídicí znak pro dvojité uvozovky ("). | 
+| <*Hodnota*> | Ano | Řetězec | Řetězec s objekt JSON, který chcete převést <p>Musí být pouze jeden kořenový vlastnost objektu JSON. <br>Použít znak zpětného lomítka (\\) jako řídicí znak pro dvojité uvozovky ("). | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*verze XML*> | Objekt | Kódovaného XML pro zadaný řetězec nebo objekt JSON | 
+| <*verze XML*> | Objekt | Kódovaný XML pro zadaný řetězec nebo objekt JSON | 
 |||| 
 
 *Příklad 1*
 
-Tento příklad vytvoří verze XML pro tento řetězec, který obsahuje objekt JSON: 
+Tento příklad vytvoří verzi XML pro tento řetězec, který obsahuje objekt JSON: 
 
 `xml( '{ \"name\": \"Sophia Owen\" }' )`
 
-A vrátí výsledek tohoto kódu XML: 
+A vrátí výsledek XML: 
 
 ```xml
 <name>Sophia Owen</name>
@@ -3798,7 +3794,7 @@ Tento příklad vytvoří XML pro řetězec, který obsahuje tohoto objektu JSON
 
 `xml( '{ \"person\": { \"name\": \"Sophia Owen\", \"city\": \"Seattle\" } }' )`
 
-A vrátí výsledek tohoto kódu XML: 
+A vrátí výsledek XML: 
 
 ```xml
 <person>
@@ -3811,7 +3807,7 @@ A vrátí výsledek tohoto kódu XML:
 
 ## <a name="xpath"></a>výraz XPath
 
-Zkontrolujte XML pro uzly nebo hodnoty, které odpovídají výraz XPath (XML Path Language) a vrátí odpovídající uzlů nebo hodnoty. Výraz XPath, nebo jen "XPath", můžete přejít strukturu dokumentu XML tak, aby uzly nebo výpočetní hodnoty můžete vybrat obsah XML.
+Kontrolovat XML uzlů nebo hodnoty, které odpovídají výrazu XPath (XML Path Language) a vrátí odpovídající uzly nebo hodnoty. Výraz XPath, nebo jen "XPath", pomůže vám tak, aby uzly nebo výpočetní hodnoty můžete vybrat v obsahu XML struktury dokumentu XML.
 
 ```
 xpath('<xml>', '<xpath>')
@@ -3819,50 +3815,50 @@ xpath('<xml>', '<xpath>')
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*XML*> | Ano | Všechny | Hledaný řetězec XML pro uzly nebo hodnot, které odpovídají hodnotou výraz XPath | 
-| <*výraz XPath*> | Ano | Všechny | Výraz XPath použít k vyhledání odpovídající z uzlů XML nebo hodnoty | 
+| <*XML*> | Ano | Všechny | Řetězec XML k vyhledání uzlů nebo hodnoty, které odpovídají hodnota výrazu XPath | 
+| <*výraz XPath*> | Ano | Všechny | Výraz XPath, který je použit k vyhledání odpovídající uzly XML nebo hodnoty | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*uzel XML*> | XML | Když jenom jeden uzel odpovídá zadaným výrazem XPath uzlu XML | 
-| <*Hodnota*> | Všechny | Hodnota z uzlu XML při pouze jednu hodnotu odpovídá zadaný výraz XPath | 
-| [<*xml Uzel1*>, <*xml Uzel2*>,...] </br>-nebo- </br>[<*value1*>, <*value2*>,...] | Pole | Pole s z uzlů XML nebo hodnoty, které odpovídají zadaným výrazem XPath | 
+| <*uzel XML*> | XML | Pokud pouze jeden uzel odpovídá zadanému výrazu XPath uzel XML | 
+| <*Hodnota*> | Všechny | Hodnota z při jenom jedna hodnota odpovídá zadanému výrazu XPath uzel XML | 
+| [<*xml node1*>, <*xml node2*>;...] </br>-nebo- </br>[<*hodnota1*>, <*hodnota2*>;...] | Pole | Pole s uzly XML nebo hodnoty, které odpovídají zadanému výrazu XPath | 
 |||| 
 
 *Příklad 1*
 
-Tento příklad vyhledá uzlů, které odpovídají `<name></name>` uzlu jsou zadané argumenty a vrátí pole těmito hodnotami uzlu: 
+Tento příklad vyhledá uzly, které odpovídají `<name></name>` uzel v zadaných argumentů a vrátí pole těmito hodnotami uzlu: 
 
 `xpath(xml(parameters('items')), '/produce/item/name')`
 
-Zde jsou argumenty:
+Tady jsou argumenty:
 
-* Řetězce "položky", který obsahuje tento kód XML:
+* Řetězec "položky", který obsahuje tento kód XML:
 
   `"<?xml version="1.0"?> <produce> <item> <name>Gala</name> <type>apple</type> <count>20</count> </item> <item> <name>Honeycrisp</name> <type>apple</type> <count>10</count> </item> </produce>"`
 
-  V příkladu se používá [parameters()](#parameters) k získání řetězec XML v argumentu "položky", ale musí také převést řetězec na formátu XML s použitím [xml()](#xml) funkce. 
+  V příkladu se používá [parameters()](#parameters) funkce získat řetězec XML z argumentu "položky", ale musíte také tak řetězec převést na formát XML pomocí [xml()](#xml) funkce. 
 
-* Tento výraz XPath výraz, který se předá jako řetězec:
+* Výraz tento výraz XPath, který se předá jako řetězec:
 
   `"/produce/item/name"`
 
-Tady je výsledek pole s uzly, které odpovídají `<name></name`:
+Tady je pole výsledku s uzly, které odpovídají `<name></name`:
 
 `[ <name>Gala</name>, <name>Honeycrisp</name> ]`
 
 *Příklad 2*
 
-Následující příklad 1, tento příklad vyhledá uzlů, které odpovídají `<count></count>` uzlu a přidá tyto hodnoty uzlu s `sum()` funkce:
+Následující příklad 1, tento příklad vyhledá uzly, které odpovídají `<count></count>` uzlu a přidá tyto hodnoty uzlu s `sum()` funkce:
 
 `xpath(xml(parameters('items')), 'sum(/produce/item/count)')`
 
-A vrátí výsledek tohoto: `30`
+A vrátí výsledek: `30`
 
 *Příklad 3*
 
-V tomto příkladu oba výrazy najít uzlů, které odpovídají `<location></location>` v zadané argumenty, mezi které patří k oboru názvů XML uzlu. Výrazy použít znak zpětného lomítka (\\) jako řídicí znak pro dvojité uvozovky (").
+V tomto příkladu oba výrazy najít uzly, které odpovídají `<location></location>` uzlu, jsou zadané argumenty, které zahrnují XML s oborem názvů. Výrazy použít znak zpětného lomítka (\\) jako řídicí znak pro dvojité uvozovky (").
 
 * *Výraz 1*
 
@@ -3872,15 +3868,15 @@ V tomto příkladu oba výrazy najít uzlů, které odpovídají `<location></lo
 
   `xpath(xml(body('Http')), '/*[local-name=()=\"file\"] and namespace-uri()=\"http://contoso.com\"/*[local-name()]=\"location\" and namespace-uri()=\"\"]')`
 
-Zde jsou argumenty:
+Tady jsou argumenty:
 
-* Tento XML, který zahrnuje obor názvů XML dokumentu, `xmlns="http://contoso.com"`: 
+* Tato XML, který obsahuje obor názvů dokumentu XML, `xmlns="http://contoso.com"`: 
 
   ```xml
   <?xml version="1.0"?> <file xmlns="http://contoso.com"> <location>Paris</location> </file>
   ```
 
-* Buď výraz XPath tady:
+* Buď XPath výrazu tady:
 
   * `/*[name()=\"file\"]/*[name()=\"location\"]`
 
@@ -3892,14 +3888,14 @@ Tady je výsledek uzlu, který odpovídá `<location></location` uzlu:
 <location xmlns="https://contoso.com">Paris</location>
 ```
 
-*Příklad 4*
+*Příklad 4:*
 
-Následující příklad 3, tento příklad vyhledá hodnotu v `<location></location>` uzlu: 
+Následující příklad 3, tento příklad vyhledá hodnota v `<location></location>` uzlu: 
 
 `xpath(xml(body('Http')), 'string(/*[name()=\"file\"]/*[name()=\"location\"])')`
 
-A vrátí výsledek tohoto: `"Paris"`
+A vrátí výsledek: `"Paris"`
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o [jazyk definic workflowů funkce](../logic-apps/logic-apps-workflow-definition-language.md)
+Další informace o [jazyka definice pracovního postupu](../logic-apps/logic-apps-workflow-definition-language.md)
