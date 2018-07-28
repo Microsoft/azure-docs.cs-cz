@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: Ning
-ms.openlocfilehash: f1415e2cfbe48b287db5851bb8ebef1ff9251280
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 13d7594c15959661f3f9c3ab2165739719beac07
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "32193022"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39308217"
 ---
 # <a name="use-the-linux-diagnostic-extension-to-monitor-the-performance-and-diagnostic-data-of-a-linux-vm"></a>Použití diagnostického rozšíření Linuxu pro monitorování údajů o výkonu a diagnostických dat virtuálního počítače s Linuxem
 
@@ -89,7 +89,7 @@ Krok 1. Vytvořte soubor s názvem PrivateConfig.json s následujícím obsahem:
         "storageAccountKey" : "the key of the account"
     }
 
-Krok 2. Spuštění **vm_name LinuxDiagnostic Microsoft.OSTCExtensions 2 nastavit rozšíření virtuálního počítače azure.* --private-config-path PrivateConfig.json**.
+Krok 2. Spustit **vm_name LinuxDiagnostic Microsoft.OSTCExtensions 2 nastavit rozšíření virtuálního počítače azure.\* --private-config-path PrivateConfig.json**.
 
 ### <a name="scenario-2-customize-the-performance-monitor-metrics"></a>Scénář 2. Přizpůsobení metriky monitorování výkonu
 

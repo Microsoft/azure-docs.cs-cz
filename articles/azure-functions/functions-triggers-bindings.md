@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/24/2018
 ms.author: tdykstra
-ms.openlocfilehash: 912176df2681f890cf3bbe6f69395ad39c9263fc
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: a201c62f881865e41175bc8bde359c4dce3d168c
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39004893"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39309074"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Aktivace Azure Functions a vazby koncepty
 
@@ -159,7 +159,7 @@ V některých vývojová prostředí, je nutné explicitně *zaregistrovat* vazb
 
 |Vývojové prostředí |Registrace<br/> ve funkcích 1.x  |Registrace<br/> ve funkcích 2.x  |
 |---------|---------|---------|
-|Azure Portal|Automaticky|[Automatické s řádku](#azure-portal-development)|
+|portál Azure|Automaticky|[Automatické s řádku](#azure-portal-development)|
 |Místní pomocí nástrojů Azure Functions Core|Automaticky|[Pomocí příkazů rozhraní příkazového řádku nástroje Core](#local-development-azure-functions-core-tools)|
 |Knihovny tříd C# pomocí sady Visual Studio 2017|[Pomocí nástroje NuGet](#c-class-library-with-visual-studio-2017)|[Pomocí nástroje NuGet](#c-class-library-with-visual-studio-2017)|
 |Knihovny tříd C# pomocí nástroje Visual Studio Code|neuvedeno|[Použití .NET Core CLI](#c-class-library-with-visual-studio-code)|
@@ -485,7 +485,7 @@ Například aktivační událost Azure Queue storage podporuje následující vl
 
 * QueueTrigger - aktivací obsah zprávy, pokud se platný řetězec
 * DequeueCount
-* ExpirationTime
+* expirationTime
 * ID
 * InsertionTime
 * NextVisibleTime
@@ -554,11 +554,13 @@ public class BlobInfo
     public string BlobName { get; set; }
 }
   
-public static HttpResponseMessage Run(HttpRequestMessage req, BlobInfo info, string blobContents)
+public static HttpResponseMessage Run(HttpRequestMessage req, BlobInfo info, string blobContents, TraceWriter log)
 {
     if (blobContents == null) {
         return req.CreateResponse(HttpStatusCode.NotFound);
     } 
+
+    log.Info($"Processing: {info.BlobName}");
 
     return req.CreateResponse(HttpStatusCode.OK, new {
         data = $"{blobContents}"

@@ -7,14 +7,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 07/26/2018
 ms.author: diberry
-ms.openlocfilehash: 8e0d834b94ff902eb0c1e0ada2fb32d374cee12b
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 75159319e25ac63907e0d8a2cbf044cf9a854785
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39239113"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39308741"
 ---
 # <a name="language-understanding-faq"></a>Language Understanding – nejčastější dotazy
 
@@ -147,6 +147,12 @@ Pokud používáte protokol pro předpověď analýzy, nezachytí projevy testu 
 * Projevy můžete odstranit ze seznamu uživatelů projevy, které navrhuje LUIS v **zkontrolujte koncový bod projevy** stránky. Odstraňuje se z tohoto seznamu projevy brání jejich navržena, ale nedojde k jejich odstranění z protokolů.
 * Pokud odstraníte účet, se odstraní všechny aplikace, spolu s jejich příklad projevy a protokoly. Data se uchovávají na serverech za 60 dní, než je odstraníme trvale.
 
+### <a name="does-microsoft-access-my-luis-app-data-for-its-own-purposes-for-example-to-enhance-luis-or-microsoft-in-general"></a>Microsoft přistupuje k Moje data aplikace LUIS pro vlastní účely, například k vylepšení LUIS nebo Microsoft obecně? 
+
+Ne. Datový model aplikace LUIS není používán LUIS k vylepšení LUIS jako platformu nebo používá společnost Microsoft žádným způsobem. Každá aplikace data jsou samostatné a vlastnictví pouze podle uživatele a spolupracovníky. 
+
+Další informace o [ochrana osobních údajů uživatelů](luis-reference-gdpr.md), [dodržování předpisů další bezpečnostní](luis-concept-security.md#security-compliance), a [úložiště dat](luis-concept-data-storage.md).
+
 ## <a name="language-and-translation-support"></a>Podpora jazyka a překladu 
 
 ### <a name="i-have-an-app-in-one-language-and-want-to-create-a-parallel-app-in-another-language-what-is-the-easiest-way-to-do-so"></a>Mám aplikaci v jednom jazyce a chcete vytvořit paralelní aplikace v jiném jazyce. Co je nejjednodušší způsob, jak to provést?
@@ -175,20 +181,6 @@ Pokud vyberete šablonu služby LUIS a vyberte **vyberte** tlačítko v podokně
 ### <a name="is-luis-available-on-premises-or-in-private-cloud"></a>Služba LUIS je k dispozici místně nebo v privátním cloudu?
 Ne. 
 
-## <a name="changes-to-the-docs"></a>Změny do této dokumentace
-
-### <a name="where-did-the-tutorials-go"></a>Kde najdu kurzy? 
-Články, které byly dříve v části kurzu jsou teď v části dokumenty s postupy. 
-
-|Kurz|
-|--|
-|Integrace LUIS s využitím botu pomocí [jazyka C#](luis-csharp-tutorial-build-bot-framework-sample.md) a [Node.js](luis-nodejs-tutorial-build-bot-framework-sample.md)|
-|Přidat službu Application Insights k Robotovi s [jazyka C#](luis-tutorial-bot-csharp-appinsights.md) a [Node.js](luis-tutorial-function-appinsights.md)|
-|Sestavení aplikace LUIS programově pomocí [Node.js](luis-tutorial-node-import-utterances-csv.md)|
-|Použití [složený entity](luis-tutorial-composite-entity.md) extrahovat seskupených dat|
-|Přidat [seznam entit](luis-tutorial-list-entity.md) k detekci zvýšení entity pomocí Node.js|
-|Zvyšte přesnost předpovědi pomocí [seznam frází](luis-quickstart-primary-and-secondary-data.md), [vzory](luis-tutorial-pattern.md), a [testování služby batch](luis-tutorial-batch-testing.md)|
-|[Opravte pravopis](luis-tutorial-batch-testing.md) API kontrola pravopisu Bingu v7
 
 ### <a name="at-the-build-2018-conference-i-heard-about-a-language-understanding-feature-or-demo-but-i-dont-remember-what-it-was-called"></a>Na konferenci Build 2018 funkce umožňující porozumět jazyku nebo ukázka slyšeli, ale nepamatuji byla volána? 
 

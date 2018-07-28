@@ -9,14 +9,16 @@ ms.technology: Speech
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: wolfma
-ms.openlocfilehash: a9a5a6b3c3f4831844083d082ba5b65cd900ec02
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 8f794f1d29b5fde9acd43fa4a018ccb39a8ccd25
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/27/2018
-ms.locfileid: "39281605"
+ms.locfileid: "39324774"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-linux-using-the-speech-sdk"></a>Rychlý start: Rozpoznávat řeč v jazyce C++ v Linuxu pomocí sadou SDK pro řeč
+
+[!include[Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 V tomto článku se dozvíte, jak k vytvoření konzolové aplikace jazyka C++ v systému Linux (Ubuntu 16.04) přepisy převod řeči na text pomocí Cognitive Services SDK řeči.
 
@@ -132,4 +134,4 @@ Hledat v této ukázce `quickstart/cpp-linux` složky.
 
 ## <a name="next-steps"></a>Další postup
 
-* Přejděte [stránku s ukázkami](samples.md) Další ukázky.
+* [Získat naše ukázky](speech-sdk.md#get-the-samples)

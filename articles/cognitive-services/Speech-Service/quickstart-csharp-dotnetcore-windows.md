@@ -9,14 +9,16 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: wolfma
-ms.openlocfilehash: f66917ed49393988a378de0a55525105c5d19b7c
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 7790920b6553ba0e2738d693710bfc3a1d3b4f89
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/27/2018
-ms.locfileid: "39282370"
+ms.locfileid: "39325097"
 ---
 # <a name="quickstart-recognize-speech-in-c-under-net-core-on-windows-using-the-speech-sdk"></a>Rychlý start: Rozpoznávat řeč v jazyce C# v .NET Core ve Windows pomocí sady SDK pro řeč
+
+[!include[Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 V tomto článku se dozvíte, jak vytvořit konzolovou aplikaci C# pro .NET Core ve Windows pomocí Cognitive Services SDK řeči přepisy převod řeči na text.
 Aplikace je sestavená s [Microsoft Cognitive Services řeči balíčku sady SDK NuGet](https://aka.ms/csspeech/nuget) a Microsoft Visual Studio 2017.
@@ -82,6 +84,6 @@ Hledat v této ukázce `quickstart/csharp-dotnetcore-windows` složky.
 
 ## <a name="next-steps"></a>Další postup
 
-- [Překlad řeči](how-to-translate-speech.md)
+- [Překlad řeči](how-to-translate-speech-csharp.md)
 - [Přizpůsobení akustických modelů](how-to-customize-acoustic-models.md)
 - [Přizpůsobení jazykových modelů](how-to-customize-language-model.md)

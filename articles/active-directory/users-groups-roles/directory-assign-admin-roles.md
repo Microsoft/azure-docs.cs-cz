@@ -14,12 +14,12 @@ ms.date: 06/07/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 34b56c7435e2995f806828dce34f3d6bf425ca75
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 73ffb1ab9c91794325725bb3b99b210a06979443
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37449795"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39325509"
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Přiřazení rolí správce v Azure Active Directory
 
@@ -98,7 +98,7 @@ K dispozici jsou následující role správce:
   | --- | --- |
   | Centrum Identity Protection |<ul><li>Všechna oprávnění role čtenáře zabezpečení.<li>Kromě toho možnost provádět všechny operace IPC s výjimkou resetování hesla. |
   | Privileged Identity Management |<ul><li>Všechna oprávnění role čtenáře zabezpečení.<li>**Nelze** spravovat členství v rolích Azure AD nebo nastavení. |
-  | <p>Monitorování stavu služby Office 365</p><p>Office 365 zabezpečení a dodržování předpisů |<ul><li>Všechna oprávnění role čtenáře zabezpečení.<li>Můžete nakonfigurovat všechna nastavení ve funkci rozšířené ochrany před internetovými útoky (ochrany proti malwaru a virů, škodlivý konfigurace adresy URL, adresa URL trasování atd.). |
+  | <p>Monitorování stavu služby Office 365</p><p>Centrum zabezpečení a dodržování předpisů Office 365 |<ul><li>Všechna oprávnění role čtenáře zabezpečení.<li>Můžete nakonfigurovat všechna nastavení ve funkci rozšířené ochrany před internetovými útoky (ochrany proti malwaru a virů, škodlivý konfigurace adresy URL, adresa URL trasování atd.). |
   
 * **[Čtenář zabezpečení](#security-reader)**: uživatelé s touto rolí mají globální přístup jen pro čtení, včetně všech informací v Azure Active Directory, Identity Protection, Privileged Identity Management, jakož i oprávnění ke čtení služby Azure Active Directory sestavy přihlášení a protokoly auditu. Role navíc uděluje oprávnění jen pro čtení v centru dodržování předpisů a zabezpečení Office 365. Další informace o oprávněních Office 365 je k dispozici na [oprávnění v centru dodržování předpisů a zabezpečení Office 365](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1).
 
@@ -106,7 +106,7 @@ K dispozici jsou následující role správce:
   | --- | --- |
   | Centrum Identity Protection |Číst všechny zprávy o zabezpečení a informace o nastavení zabezpečení funkcí<ul><li>Antispamových<li>Šifrování<li>Prevence ztráty dat<li>Anti-malware<li>Pokročilou ochranu před hrozbami<li>Anti phisingová<li>Mailflow pravidla |
   | Privileged Identity Management |<p>Má přístup jen pro čtení ke všem informacím prezentované v Azure AD PIM: zásady a sestav pro přiřazení role Azure AD, bezpečnostní kontroly a v budoucnu přístup pro čtení k zásad dat a sestav pro scénáře kromě přiřazení role Azure AD.<p>**Nelze** registrace pro Azure AD PIM nebo dělat žádné změny. PIM na portálu nebo pomocí Powershellu někdo v této roli můžete aktivovat další role (například globální správce nebo správce privilegovaných rolí), pokud uživatel je kandidátem pro ně. |
-  | <p>Monitorování stavu služby Office 365</p><p>Office 365 zabezpečení a dodržování předpisů</p> |<ul><li>Čtení a Správa výstrah<li>Zásady zabezpečení pro čtení<li>Přečtěte si analýzy hrozeb, zjišťování cloudových aplikací a karantény v hledání a prošetřit<li>Čtení všech sestav |
+  | <p>Monitorování stavu služby Office 365</p><p>Centrum zabezpečení a dodržování předpisů Office 365</p> |<ul><li>Čtení a Správa výstrah<li>Zásady zabezpečení pro čtení<li>Přečtěte si analýzy hrozeb, zjišťování cloudových aplikací a karantény v hledání a prošetřit<li>Čtení všech sestav |
 
 * **[Správce podpory služeb](#service-support-administrator)**: uživatelé s touto rolí můžete otevřít žádosti o podporu u Microsoftu pro služby Azure a Office 365 a zobrazení řídicího panelu služby a message center webu Azure portal a portálu pro správu Office 365. Další informace na [role správců Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
@@ -267,11 +267,6 @@ Může vytvářet a spravovat všechny aspekty registrací aplikací a podnikov�
 Může spravovat všechny aspekty služeb Azure AD a Microsoft, které používají identity Azure AD. V rozhraní Microsoft Graph API, Azure AD Graph API a Azure AD PowerShell tato role nazývá "Správce společnosti". Je "Globální správce" v [webu Azure portal](https://portal.azure.com).
 
   > [!NOTE]
-  > Další oprávnění dědí tato role [role uživatele](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
-  >
-  >
-
-  > [!NOTE]
   > Tato role má dodatečná oprávnění mimo službu Azure Active Directory. Zobrazit popis role výše pro další informace.
   >
   >
@@ -389,13 +384,8 @@ Může spravovat všechny aspekty produktu Dynamics 365.
 | **Akce** | **Popis** |
 | --- | --- |
 
-### <a name="directory-reader"></a>Čtečka adresáře
+### <a name="directory-readers"></a>Uživatelé s oprávněním ke čtení adresářů
 Může číst informace o základní adresář. Pro udělení přístupu k aplikacím
-
-  > [!NOTE]
-  > Další oprávnění dědí tato role [role uživatele](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
-  >
-  >
 
 | **Akce** | **Popis** |
 | --- | --- |
@@ -449,11 +439,6 @@ Může číst informace o základní adresář. Pro udělení přístupu k aplik
 ### <a name="directory-synchronization-accounts"></a>Účty pro synchronizaci adresáře
 Pouze používá služba Azure AD Connect.
 
-  > [!NOTE]
-  > Další oprávnění dědí tato role [role uživatele](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
-  >
-  >
-
 | **Akce** | **Popis** |
 | --- | --- |
 | microsoft.aad.directory/Policy/Create | Umožňuje vytvářet Policies v Azure Active Directory. |
@@ -482,11 +467,6 @@ Pouze používá služba Azure AD Connect.
 
 ### <a name="directory-writer"></a>Zapisovač adresáře
 Může číst a zapisovat informace základní adresář. Pro udělení přístupu k aplikacím
-
-  > [!NOTE]
-  > Další oprávnění dědí tato role [role uživatele](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
-  >
-  >
 
 | **Akce** | **Popis** |
 | --- | --- |
@@ -783,6 +763,25 @@ Můžou Spravovat přiřazení rolí ve službě Azure AD
 | microsoft.aad.directory/DirectoryRole/Update | Umožňuje aktualizovat standardní vlastnosti v DirectoryRoles v Azure Active Directory. |
 | microsoft.aad.privilegedrolemanagement/AllEntities/AllActions | Umožňuje spravovat všechny aspekty služby Privileged Role Management. |
 
+### <a name="reports-reader"></a>Čtenář sestav
+Může číst sestavy o přihlašování a auditech.
+
+  > [!NOTE]
+  > Tato role dědí z role ke čtení adresáře další oprávnění.
+  >
+  >
+
+  > [!NOTE]
+  > Tato role má dodatečná oprávnění mimo službu Azure Active Directory. Zobrazit popis role výše pro další informace.
+  >
+  >
+
+| **Akce** | **Popis** |
+| --- | --- |
+| microsoft.aad.reports/AllEntities/Read | Umožňuje číst sestavy Azure AD. |
+| microsoft.aad.servicehealth/AllEntities/AllActions | Umožňuje číst a konfigurovat stav služby Office 365. |
+| Microsoft.Office365.usagereports/AllEntities/Read | Umožňuje číst sestavy využití Office 365. |
+
 ### <a name="security-administrator"></a>Správce zabezpečení
 Může číst informace o zabezpečení a sestavy
 
@@ -810,25 +809,6 @@ Může číst informace o zabezpečení a sestavy
 | microsoft.aad.privilegedrolemanagement/AllEntities/Read | Umožňuje číst všechny aspekty služby Privileged Identity Management. |
 | microsoft.protectioncenter/AllEntities/Read | Umožňuje číst všechny aspekty Centra ochrany Office 365. |
 | microsoft.protectioncenter/AllEntities/Update | Umožňuje spravovat Centrum ochrany Office 365. |
-
-### <a name="reports-reader"></a>Čtenář sestav
-Může číst sestavy o přihlašování a auditech.
-
-  > [!NOTE]
-  > Tato role dědí z role ke čtení adresáře další oprávnění.
-  >
-  >
-
-  > [!NOTE]
-  > Tato role má dodatečná oprávnění mimo službu Azure Active Directory. Zobrazit popis role výše pro další informace.
-  >
-  >
-
-| **Akce** | **Popis** |
-| --- | --- |
-| microsoft.aad.reports/AllEntities/Read | Umožňuje číst sestavy Azure AD. |
-| microsoft.aad.servicehealth/AllEntities/AllActions | Umožňuje číst a konfigurovat stav služby Office 365. |
-| Microsoft.Office365.usagereports/AllEntities/Read | Umožňuje číst sestavy využití Office 365. |
 
 ### <a name="security-reader"></a>Čtecí zařízení pro zabezpečení
 Může číst informace o zabezpečení a sestavy v Azure AD a Office 365.

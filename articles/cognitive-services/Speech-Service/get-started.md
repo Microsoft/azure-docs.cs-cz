@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/17/2018
 ms.author: v-jerkin
-ms.openlocfilehash: a9972d19d33c69ea2eb1b0e00512f37a315b92d8
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: ff9a258d42f25ded82545909cdeade119548148e
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/27/2018
-ms.locfileid: "39285012"
+ms.locfileid: "39325203"
 ---
 # <a name="try-the-speech-service-for-free"></a>Vyzkoušejte si službu Speech zdarma
 
@@ -129,10 +129,8 @@ Přidat prostředek služby řeči ke svému účtu Azure, postupujte podle těc
 
 ## <a name="next-steps"></a>Další postup
 
-Stáhněte sadu SDK a ukázkový kód mít k dispozici Speech service.
+Proveďte jednu z našich šablon rychlý start během 10 minut nebo projděte si naše ukázky SDK.
 
 > [!div class="nextstepaction"]
-> [Sady SDK pro řeč](speech-sdk.md)
-
-> [!div class="nextstepaction"]
-> [Ukázka kódu](samples.md)
+> [Rychlý start: rozpoznávat řeč v jazyce C#](quickstart-csharp-dotnet-windows.md)
+> [ukázky řeči SDK](speech-sdk.md#get-the-samples)

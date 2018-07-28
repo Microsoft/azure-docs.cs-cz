@@ -4,15 +4,15 @@ description: Poskytuje přehled zařízení Kolektoru a jeho konfiguraci.
 author: ruturaj
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/10/2018
+ms.date: 07/27/2018
 ms.author: ruturajd
 services: azure-migrate
-ms.openlocfilehash: 8cc5863489c58a0603d8aa464911031a22dba8f3
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: c99d0f74dbb8cc28cabebae60fe10645f4bdb3b6
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37951035"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39308455"
 ---
 # <a name="collector-appliance"></a>Zařízení kolektoru
 
@@ -188,7 +188,7 @@ Doporučujeme následující kroky a zabezpečit vaše zařízení
 
 Kolekce můžete upgradovat na nejnovější verzi bez stáhnout soubor OVA jednou znovu.
 
-1. Stáhněte si nejnovější [balíček s upgradem](https://aka.ms/migrate/col/upgrade_9_11) (verze 1.0.9.11).
+1. Stáhněte si nejnovější [balíček s upgradem](https://aka.ms/migrate/col/upgrade_9_13) (verze 1.0.9.13).
 2. Tak, aby byl zabezpečený stažené oprav hotfix, otevřete okno příkazového řádku pro správce a spusťte následující příkaz, kterým vygenerujete hodnotu hash pro soubor ZIP. Vygenerovaná hodnota hash by měla odpovídat symbolem hash uvedených proti konkrétní verzi:
 
     ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
@@ -199,6 +199,16 @@ Kolekce můžete upgradovat na nejnovější verzi bez stáhnout soubor OVA jedn
 5. Klikněte pravým tlačítkem na Setup.ps1 a vyberte spustit s prostředím PowerShell a postupujte podle pokynů na obrazovce instalace aktualizace.
 
 ### <a name="list-of-updates"></a>Seznam aktualizací
+
+#### <a name="upgrade-to-version-10913"></a>Upgrade na verzi 1.0.9.13
+
+Hodnota hash hodnoty pro upgrade [balíček 1.0.9.13](https://aka.ms/migrate/col/upgrade_9_13)
+
+**Algoritmus** | **Hodnota hash**
+--- | ---
+MD5 | 739f588fe7fb95ce2a9b6b4d0bf9917e
+SHA1 | 9b3365acad038eb1c62ca2b2de1467cb8eed37f6
+SHA256 | 7a49fb8286595f39a29085534f29a623ec2edb12a3d76f90c9654b2f69eef87e
 
 #### <a name="upgrade-to-version-10911"></a>Upgrade na verzi 1.0.9.11
 

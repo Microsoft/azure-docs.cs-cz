@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 7/09/2018
+ms.date: 7/26/2018
 ms.author: rithorn
-ms.openlocfilehash: c8152a6c12c776806d9a17c5e434d825d6c91165
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: f9554c058fbebc215aa61979fa03280553597afc
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38466639"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39308312"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Uspořádání prostředků se skupinami pro správu Azure
 
@@ -45,14 +45,6 @@ Vytvořením hierarchie, která je seskupený podle oddělení, můžete přiřa
 - Každou skupinu pro správu může mít více podřízených položek.
 - Všechna předplatná a skupiny pro správu jsou obsaženy v jedné hierarchii v každém adresáři. Zobrazit [důležitých faktů o skupině pro správu kořenového](#important-facts-about-the-root-management-group) pro výjimky ve verzi Preview.
 
-### <a name="preview-subscription-visibility-limitation"></a>Omezení viditelnost předplatného ve verzi Preview
-
-Je aktuálně ve verzi preview, kde se může zobrazovat předplatné, které mají zděděná přístup k omezení. Nezdědí do předplatného, ale není možné případném dalším sdílení dodržovat dědičnosti přístup ještě Azure Resource Manageru.  
-
-Informace o předplatném pomocí rozhraní REST API vrátí podrobnosti, jako máte přístup, ale v rámci webu Azure portal a Azure Powershellu předplatná nezobrazovat.
-
-Tato položka se právě zpracovává a vyřeší před správy skupin jsou uvolněné jako "Obecnou dostupnost."  
-
 ### <a name="cloud-solution-provider-csp-limitation-during-preview"></a>Cloud Solution Provider (CSP) omezení ve verzi Preview
 
 Neexistuje aktuální omezení pro partnery Cloud Solution Provider (CSP), kde se vytvářet a spravovat skupiny pro správu svých zákazníků v adresáři zákazníka.  
@@ -76,7 +68,7 @@ Každý adresář je přiřazena nejvyšší úrovně správy skupinu s názvem 
   - Přístup k výchozím nikdo je vzhledem ke kořenové skupině pro správu. Globální správce adresáře jsou pouze uživatelé, které může zvýšit nároky samy o sobě získat přístup.  Jakmile budou mít přístup, správci adresáře můžete přiřadit libovolnou roli RBAC ostatním uživatelům ke správě.  
 
 >[!NOTE]
->Pokud adresáři začali používat službu skupiny pro správu před 6/25/2018, nemusí být nastavit adresáře všech předplatných v hierarchii. Tým správy skupiny zpětně aktualizuje každý adresář, který pomůže začít používat skupiny pro správu ve verzi Public Preview do tohoto data v rámci. července 2018. Všechna předplatná v adresářích bude proveden podřízené složky do skupiny pro správu kořenového předchozí.  
+>Pokud adresáři začali používat službu skupiny pro správu před 6/25/2018, nemusí být nastavit adresáře všech předplatných v hierarchii. Tým správy skupiny zpětně aktualizuje každý adresář, který pomůže začít používat skupiny pro správu ve verzi Public Preview do tohoto data v rámci dne /. srpna 2018. Všechna předplatná v adresářích bude proveden podřízené složky do skupiny pro správu kořenového předchozí.  
 >
 >Pokud máte nějaké otázky k tomuto zpětnou procesu, obraťte se na: managementgroups@microsoft.com  
   
@@ -97,9 +89,13 @@ Následující graf zobrazuje seznam rolí a podporované akce na skupiny pro sp
 |:-------------------------- |:------:|:------:|:----:|:------:|:-------------:| :------------:|:-----:|
 |Vlastník                       | X      | X      | X    | X      | X             |               | X     |
 |Přispěvatel                 | X      | X      | X    | X      |               |               | X     |
+|Přispěvatel MG *             | X      | X      | X    | X      |               |               | X     |
 |Čtenář                      |        |        |      |        |               |               | X     |
+|MG čtečky *                  |        |        |      |        |               |               | X     |
 |Přispěvatel zásad prostředků |        |        |      |        |               | X             |       |
 |Správce přístupu uživatelů   |        |        |      |        | X             |               |       |
+
+*: MG Přispěvatel a čtenář MG povolit pouze uživatele k provedení těchto akcí v oboru skupiny pro správu.  
 
 ### <a name="custom-rbac-role-definition-and-assignment"></a>Definice Role RBAC vlastní a přiřazení
 

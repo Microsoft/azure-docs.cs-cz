@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 07/09/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 65525114f46002c5b9300f6bbabcee06cc27ef3a
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: af48af596e86e0eb09fe45deabe13beedef57cd2
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39091134"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39307921"
 ---
 # <a name="access-the-kubernetes-dashboard-with-azure-kubernetes-service-aks"></a>Přístup k řídicímu panelu Kubernetes pomocí služby Azure Kubernetes Service (AKS)
 
@@ -38,12 +38,14 @@ Tento příkaz vytvoří proxy mezi váš vývojový systém a rozhraní API Kub
 
 ### <a name="for-rbac-enabled-clusters"></a>Pro clustery s podporou RBAC
 
-Pokud váš cluster AKS používá RBAC, *ClusterRoleBinding* , musíte vytvořit řídicí panel můžete přistupovat správně. Chcete-li vytvořit vazbu, použijte [kubectl vytvořit clusterrolebinding] [ kubectl-create-clusterrolebinding] příkaz, jak je znázorněno v následujícím příkladu. 
+Pokud váš cluster AKS používá RBAC, *ClusterRoleBinding* , musíte vytvořit řídicí panel můžete přistupovat správně. Ve výchozím nastavení řídicí panel Kubernetes je nasazen s minimálním přístupem pro čtení a zobrazí chyby přístup RBAC. Řídicí panel Kubernetes aktuálně nepodporuje uživatelem zadané přihlašovací údaje k určení úrovně přístupu, místo toho použije rolí udělit účtu služby. Správce clusteru může rozhodnout udělit další přístup k *řídicí panel kubernetes* účtu, služby, ale může to být vektor pro zvýšení úrovně oprávnění. Můžete také integrovat ověřování Azure Active Directory poskytují podrobnější úroveň přístupu.
+
+Chcete-li vytvořit vazbu, použijte [kubectl vytvořit clusterrolebinding] [ kubectl-create-clusterrolebinding] příkaz, jak je znázorněno v následujícím příkladu. 
 
 > [!WARNING]
 > Tato ukázka vazba se nevztahují žádné další ověření součásti a může vést k nezabezpečeného použití. Řídicí panel Kubernetes je otevřené všem uživatelům přístup k adrese URL. Veřejně nezveřejňujte řídicí panel Kubernetes.
 >
-> Můžete použít mechanismy, jako jsou nosné tokeny nebo uživatelského jména a hesla pro ovládací prvek, kdo má přístup k řídicím panelu a co mají oprávnění. To umožňuje lépe zabezpečit pomocí řídicího panelu. Další informace o použití různé metody ověřování, najdete v článku wikiwebu řídicí panel Kubernetes na [ovládací prvky přístupu][dashboard-authentication].
+> Další informace o použití různé metody ověřování, najdete v článku wikiwebu řídicí panel Kubernetes na [ovládací prvky přístupu][dashboard-authentication].
 
 ```console
 kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard

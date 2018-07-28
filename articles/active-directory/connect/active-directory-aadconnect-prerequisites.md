@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/09/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9341c3bcbe90788318c9b20ccc6988461e972347
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 22751d7ab38717fefdebe107e7a7d6fc10dda4c4
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39264534"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39326186"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Požadavky pro Azure AD Connect
 Toto téma popisuje požadavky a požadavky na hardware pro Azure AD Connect.
@@ -43,7 +43,6 @@ Před instalací Azure AD Connect, existuje několik věcí, které potřebujete
 * AD schématu verze a doménová struktura úroveň funkčnosti musí být Windows Server 2003 nebo novější. Řadiče domény můžete spustit všechny verze, tak dlouho, dokud jsou splněny požadavky úrovni schématu a doménové struktury.
 * Pokud plánujete použít funkci **zpětný zápis hesla**, řadiče domény musí být v systému Windows Server 2008 (s nejnovější aktualizací SP) nebo novější. Pokud vaše řadiče domény jsou 2008 (starší verzi než R2), pak musíte také použít [opravu hotfix KB2386717](http://support.microsoft.com/kb/2386717).
 * Musí být zapisovatelný řadič domény používá Azure AD. Je **nepodporuje** řadiče jen pro čtení (řadič domény jen pro čtení) a Azure AD Connect není postupujte podle jakékoli přesměrování zápisu.
-* Je **nepodporuje** používat s místními doménovými strukturami nebo doménami pomocí domény SLD (jeden popisek domény).
 * Je **nepodporuje** používat s místními doménovými strukturami nebo doménami pomocí "tečkované" (název obsahuje tečku ".") Názvy NetBios.
 * Doporučuje se [povolit odpadkový koš služby Active Directory](active-directory-aadconnectsync-recycle-bin.md).
 

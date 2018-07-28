@@ -7,19 +7,33 @@ manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
-ms.date: 07/23/2018
+ms.date: 07/27/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: 86aadcbdd8d7168440726d6dbed996629cad3ff7
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: b410722ff444c19572f61996c4a4d059ae831f5f
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/27/2018
-ms.locfileid: "39285329"
+ms.locfileid: "39326077"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-july-2018"></a>Co je nového ve službě Azure SQL Data Warehouse? Červenec 2018
 Azure SQL Data Warehouse neustále obdrží vylepšení. Tento článek popisuje nové funkce a změny, které byly zavedeny do července 2018.
 
+## <a name="lightning-fast-query-performance"></a>Bleskově rychlý dotaz výkonu
+[Azure SQL Data Warehouse](https://aka.ms/sqldw) nastaví nové srovnávacího testu výkonu po zavedení služby okamžitý přístup k datům, která zvyšuje náhodné operace. Okamžitý přístup k datům snižuje režijní náklady pro operace přesunu dat pomocí přímá odpověď ze serveru SQL do systému SQL Server native datové operace. Integrace s modulem SQL serveru přímo v případě přesunu dat znamená, že je teď SQL Data Warehouse **67 % rychlejší než Amazon Redshift** pomocí úlohy odvozen od standardní uznávané oborové [TPC Benchmark™ H (TPC-H)](http://www.tpc.org/tpch/).
+
+![Azure SQL Data Warehouse je rychlejší a levnější než Amazon Redshift](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/eb3b908a-464d-4847-b384-9f296083a737.png)
+<sub>zdroj: [sestavy analytik společnosti Gigaom Research: datového skladu v cloudu srovnávacích testů](https://gigaom.com/report/data-warehouse-in-the-cloud-benchmark/)</sub>
+
+Nad rámec výkonu modulu runtime [společnosti Gigaom Research](https://gigaom.com/report/data-warehouse-in-the-cloud-benchmark/) sestavy také měří poměr cena – výkon kvantifikovat USD náklady na konkrétní úlohy. SQL Data Warehouse byla **23 procent levnější** než Redshift pro úlohy s 30 TB. S SQL Data Warehouse umožňuje Elasticky škálovat výpočetní prostředky a pozastavit a obnovit úlohy zákazníci platí pouze v případě, že služba se používá, dále snižuje náklady.
+![Azure SQL Data Warehouse je rychlejší a levnější než Amazon Redshift](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/cb76447e-621e-414b-861e-732ffee5345a.png)
+<sub>zdroj: [sestavy analytik společnosti Gigaom Research: datového skladu v cloudu srovnávacích testů](https://gigaom.com/report/data-warehouse-in-the-cloud-benchmark/)</sub>
+
+###<a name="query-concurrency"></a>Dotaz souběžnosti
+SQL Data Warehouse také zajišťuje, že data jsou přístupné napříč vaší organizací. Microsoft má vylepšenou služba podporovala 128 souběžných dotazů tak, aby více uživatelů stejné databáze můžete dotazovat a nebudou blokovat jiné požadavky. Porovnání Amazon Redshift omezuje maximální počet souběžných dotazů na 50, omezení přístupu k datům v rámci organizace.
+
+SQL Data Warehouse nabízí tyto dotazu výkon a dotaz souběžnosti přínosy bez jakékoli zvýšení ceny a vytváření při jeho jedinečná architektura s oddělující úložiště a výpočetního výkonu.
 
 ## <a name="finer-granularity-for-cross-region-and-server-restores"></a>Rozlišovací schopnosti pro různé oblasti a server obnovení
 Teď můžete obnovit napříč oblastmi a servery s použitím libovolného bodu obnovení místo výběru geograficky redundantní zálohy, které se provádějí každých 24 hodin. Pro obě body definované uživatelem nebo automatické obnovení povolení rozlišovací schopnosti pro další ochranu dat jsou podporovány pro různé oblasti a server obnovení. Další body obnovení k dispozici můžete si být jisti, že bude váš datový sklad logicky konzistentní při obnovování napříč oblastmi.
@@ -59,9 +73,56 @@ parameter_ordinal | name | suggested_system_type_id | suggested_system_type_name
 --------------------------------------------------------------------------------
 1                 | @id  | 56                       | int
 ```
+## <a name="sprefreshsqlmodule"></a>ULOŽENÉ PROCEDURY SP_REFRESHSQLMODULE
+[Uložené procedury sp_refreshsqlmodule](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-refreshsqlmodule-transact-sql) uložená procedura aktualizuje metadata pro objekt databáze, pokud má základní metadata začnou být zastaralé z důvodu změny podkladových objektů. Tato situace může nastat, pokud se změní základní tabulky pro zobrazení a zobrazení nebyl byly znovu vytvořeny. To vám ušetří na krok odstranit a znovu vytvořit závislé objekty.
+
+Následující příklad ukazuje zobrazení, který je zastaralá, protože podkladové tabulky změn. Můžete si všimnout, že je správný pro první změny sloupců (1 až Mollie) data, ale název sloupce není platný a druhý sloupec není k dispozici. 
+```sql
+CREATE TABLE base_table (Id INT);
+GO
+
+INSERT INTO base_table (Id) VALUES (1);
+GO
+
+CREATE VIEW base_view AS SELECT * FROM base_table;
+GO
+
+SELECT * FROM base_view;
+GO
+
+-- Id
+-- ----
+-- 1
+
+DROP TABLE base_table;
+GO
+
+CREATE TABLE base_table (fname VARCHAR(10), lname VARCHAR(10));
+GO
+
+INSERT INTO base_table (fname, lname) VALUES ('Mollie', 'Gallegos');
+GO
+
+SELECT * FROM base_view;
+GO
+
+-- Id
+-- ----------
+-- Mollie
+
+EXEC sp_refreshsqlmodule @Name = 'base_view';
+GO
+
+SELECT * FROM base_view;
+GO
+
+-- fname     | lname
+-- ---------- ----------
+-- Mollie    | Gallegos
+```
 
 ## <a name="next-steps"></a>Další postup
-Teď, když už víte o něco o SQL Data Warehouse, zjistěte, jak rychle [vytvoření SQL Data Warehouse] [vytvoření SQL Data Warehouse] a [ukázková data načíst] [ukázková data načíst]. Pokud jste ještě do Azure, můžete zjistit [Glosář Azure] [Glosář Azure] užitečné jako narazíte na novou terminologii. Můžete se také podívat na některé z těchto dalších zdrojů ke službě SQL Data Warehouse.  
+Teď, když už víte o něco o SQL Data Warehouse, zjistěte, jak rychle [vytvořit SQL Data Warehouse][create a SQL Data Warehouse]. Pokud s Azure začínáte, může vám být užitečný [Glosář Azure][Azure glossary], kde najdete potřebnou terminologii. Můžete se také podívat na některé z těchto dalších zdrojů ke službě SQL Data Warehouse.  
 
 * [Úspěšné zákaznické implementace]
 * [Blogy]
@@ -79,3 +140,5 @@ Teď, když už víte o něco o SQL Data Warehouse, zjistěte, jak rychle [vytvo
 [Fórum Stack Overflow]: http://stackoverflow.com/questions/tagged/azure-sqldw
 [Twitter]: https://twitter.com/hashtag/SQLDW
 [Videa]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
+[create a SQL Data Warehouse]: ./create-data-warehouse-portal.md
+[Azure glossary]: ../azure-glossary-cloud-terminology.md

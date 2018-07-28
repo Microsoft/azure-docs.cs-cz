@@ -7,14 +7,14 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 06/27/2018
+ms.date: 07/27/2018
 ms.author: kgremban
-ms.openlocfilehash: 477fa7e10fab0afadb28d7749009f87e82d9b6ba
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: be8fb801acfb625685604a302051d813bfd97939
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39035390"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39325298"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-linux-x64"></a>Instalace modulu runtime Azure IoT Edge v Linuxu (x64)
 
@@ -64,10 +64,15 @@ Aktualizujte apt-get.
 sudo apt-get update
 ```
 
-Nainstalujte modul Moby a rozhraní příkazového řádku (CLI). Rozhraní příkazového řádku je užitečné pro vývoj, ale volitelný pro produkční deployments.*
+Nainstalujte modul Moby. 
 
 ```bash
 sudo apt-get install moby-engine
+```
+
+Nainstalujte Moby rozhraní příkazového řádku (CLI). Rozhraní příkazového řádku je užitečné pro vývoj, ale volitelný pro nasazení v produkčním prostředí.
+
+```bash
 sudo apt-get install moby-cli
 ```
 
@@ -148,7 +153,7 @@ sudo iotedge list
 
 ## <a name="next-steps"></a>Další postup
 
-Pokud máte problémy s modulu runtime Edge instalaci správně, rezervace [řešení potíží s] [ lnk-trouble] stránky.
+Pokud máte problémy s modulu runtime Edge instalaci správně, podívejte se [řešení potíží s] [ lnk-trouble] stránky.
 
 <!-- Links -->
 [lnk-dcs]: how-to-register-device-portal.md

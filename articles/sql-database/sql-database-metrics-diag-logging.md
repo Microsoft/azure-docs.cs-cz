@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: v-daljep
 ms.reviewer: carlrab
-ms.openlocfilehash: fbeda6a74be11668f16d477696ea00653b73baa6
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: c0c2e1748518b794916f1950c288ed1f4df628aa
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/27/2018
-ms.locfileid: "39284822"
+ms.locfileid: "39309057"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database metrik a protokolování diagnostiky 
 Azure SQL Database můžete generovat metriky a diagnostické protokoly pro snazší monitorování. SQL Database můžete nakonfigurovat pro ukládání využití prostředků, pracovních procesů, relací a možností připojení do jednoho z těchto prostředků Azure:
@@ -267,6 +267,8 @@ Zjistěte, jak [stažení Diagnostika a metriky protokolů ze služby Storage](.
 |Elastický fond|Procento eDTU eDTU používá, omezení eDTU, procentuální využití procesoru, procentuální čtení fyzické, protokolu zapisovat, procento, procento relací, procento pracovních procesů, úložiště, procento úložiště, limit úložiště, XTP procento úložiště |
 |||
 
+### <a name="logs"></a>Logs
+
 ### <a name="query-store-runtime-statistics"></a>Statistické údaje o Query Store
 
 |Vlastnost|Popis|
@@ -481,6 +483,36 @@ Další informace o [databáze statistiky čekání](https://docs.microsoft.com/
 |DatabaseName_s|Název databáze. |
 |ID prostředku|Identifikátor URI prostředku.|
 |deadlock_xml_s|Vzájemné zablokování sestavy jazyka XML.|
+
+### <a name="automatic-tuning-dataset"></a>Automatické vyladění datové sady
+
+|Vlastnost|Popis|
+|---|---|
+|ID Tenanta|ID vašeho tenanta.|
+|SourceSystem|Vždy: Azure|
+|TimeGenerated [UTC]|Časové razítko, kdy se přihlášení v protokolu.|
+|Typ|Vždy: AzureDiagnostics|
+|ResourceProvider|Název poskytovatele prostředků. Vždy: MICROSOFT. SQL|
+|Kategorie|Název kategorie. Vždy: AutomaticTuning|
+|Prostředek|Název prostředku.|
+|ResourceType|Název typu prostředku. Vždy: Servery a databáze|
+|SubscriptionId|GUID, které databáze patří do předplatného.|
+|ResourceGroup|Název skupiny prostředků, které databáze patří.|
+|LogicalServerName_s|Název serveru, který patří do databáze.|
+|LogicalDatabaseName_s|Název databáze.|
+|ElasticPoolName_s|Název elastického fondu, které patří do databáze, pokud existuje.|
+|DatabaseName_s|Název databáze.|
+|ID prostředku|Identifikátor URI prostředku.|
+|RecommendationHash_s|Jedinečná hodnota hash doporučení automatického ladění.|
+|OptionName_s|Operace automatického ladění.|
+|Schema_s|Schéma databáze.|
+|Table_s|Tabulka vliv.|
+|IndexName_s|Název indexu.|
+|IndexColumns_s|Název sloupce.|
+|IncludedColumns_s|Zahrnuté sloupce.|
+|EstimatedImpact_s|Odhadovaný dopad doporučení automatického ladění JSON.|
+|Event_s|Typ události automatického ladění.|
+|Timestamp_t|Časové razítko poslední aktualizace.|
 
 ### <a name="intelligent-insights-dataset"></a>Intelligent Insights datové sady
 Další informace o [formát protokolu Intelligent Insights](sql-database-intelligent-insights-use-diagnostics-log.md).

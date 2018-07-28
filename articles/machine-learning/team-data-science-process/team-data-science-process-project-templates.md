@@ -1,10 +1,11 @@
 ---
-title: Tým datové vědy proces projektu plánování - Azure | Microsoft Docs
-description: Microsoft Project a Excel šablony, které vám pomůžou naplánovat a řízení projektů vědecké účely data.
+title: Tým vědecké zpracování dat projektu plánování – Azure | Dokumentace Microsoftu
+description: Aplikace Microsoft Project a Excel šablony, které vám pomůžou plánovat a spravovat projekty datových věd.
 documentationcenter: ''
 author: deguhath
 manager: cgronlun
 editor: cgronlun
+services: machine-learning
 ms.assetid: ''
 ms.service: machine-learning
 ms.component: team-data-science-process
@@ -14,50 +15,54 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: deguhath
-ms.openlocfilehash: aaa965c507faba344ca717a76b3fb3a0a01fa0ee
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 1ebd640191ffbb1b3ea70ca07081522b370e4e2d
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34838564"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39308183"
 ---
-# <a name="team-data-science-process-project-planning"></a>Tým datové vědy proces plánování projektu
+# <a name="team-data-science-process-project-planning"></a>Týmové plánování projektu vědecké zpracování dat
 
-Proces pro vědecké účely Data Team (TDSP) poskytuje životního cyklu do struktury vývoj projekty vědecké účely data. Tento článek obsahuje odkazy na Microsoft Project a Excel šablony, které vám pomůžou naplánovat a spravovat tyto fáze projektu.
+Zpracování vědy dat (TDSP) týmu poskytuje životní cyklus strukturovat vývoj vašich projektů datové vědy. Tento článek obsahuje odkazy na šablony aplikace Microsoft Project a Excel, které vám pomůžou plánovat a spravovat tyto fáze projektu.
 
-Životní cyklus popisuje hlavní fází, které projekty obvykle provést, často interaktivně:
+Životní cyklus popisuje hlavní fáze, které jsou projekty obvykle spouštěny, často opakované:
 
 - Obchodní vysvětlení
-- Získávání dat a principy
+- Získávání a pochopení dat
 - Modelování
 - Nasazení
-- Přijetí zákazníka
+- Schválení zákazníkem
 
-Popis každého z těchto fázích najdete v tématu [životního cyklu Team datové vědy proces](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/lifecycle).
+Popis každého z těchto fází, naleznete v tématu [životního cyklu vědecké zpracování týmových dat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/lifecycle).
 
  
 ## <a name="microsoft-project-template"></a>Šablony aplikace Microsoft Project
 
-Šablona Microsoft Project pro proces tým datové vědy je k dispozici zde: [šablony aplikace Microsoft Project](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Team-Data-Science-Process/Project-Planning-and-Governance/Advanced%20Analytics%20Microsoft%20Project%20Plan.mpp) 
+Šablona aplikace Microsoft Project pro vědecké zpracování týmových dat je k dispozici zde: [šablony aplikace Microsoft Project](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Team-Data-Science-Process/Project-Planning-and-Governance/Advanced%20Analytics%20Microsoft%20Project%20Plan.mpp) 
 
-Když otevřete plán, klikněte na odkaz na levý TDSP. Změnit název a popis a poté přidejte v žádné další prostředky týmu, které potřebujete. Odhad kalendářní data z prostředí vyžaduje.
+Když otevřete plán, klikněte na odkaz úplně vlevo TDSP. Změňte název a popis a potom přidat do jiných týmových prostředků, které potřebujete. Odhad kalendářní data od prostředí vyžadovat.
 
 ![1](./media/team-data-science-process-project-templates/ms-project-templates.png)
 
-Každý úkol má poznámky. Otevřete tyto úlohy chcete zobrazit, jaké prostředky již byly vytvořeny pro vás.
+Každý úkol má poznámku. Otevřené úkoly zobrazte prostředky, které již byly vytvořeny pro vás.
 
 ![2](./media/team-data-science-process-project-templates/ms-project-template-task.png)
 
 
-## <a name="excel-template"></a>Šablony aplikace Excel
+## <a name="excel-template"></a>Šablona aplikace Excel
 
-Pokud nemáte přístup k Microsoft Project, listu aplikace Excel se stejnými daty je také k dispozici ke stažení zde: [šablony aplikace Excel](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Team-Data-Science-Process/Project-Planning-and-Governance/Advanced%20Analytics%20Microsoft%20Project%20Plan.xlsx) jste ho pull jakémkoli nástroj byste radši chtěli použít.
+Pokud nemáte přístup k Microsoft Project, Excelového listu se stejnými daty je také k dispozici ke stažení zde: [šablonu v Excelu](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Team-Data-Science-Process/Project-Planning-and-Governance/Advanced%20Analytics%20Microsoft%20Project%20Plan.xlsx) můžete využít ji do nástrojů, kterou chcete použít.
 
-Pomocí těchto šablon na vlastní nebezpečí. [Obvyklé omezení](https://www.gnu.org/licenses/gpl-3.0.en.html) použít.
+Tyto šablony používáte na vlastní nebezpečí. [Obvykle právní omezení](https://www.gnu.org/licenses/gpl-3.0.en.html) použít.
+
+## <a name="repository-template"></a>Úložiště šablon
+
+Použijte tento [úložiště šablon projektu](https://github.com/Azure/Azure-TDSP-ProjectTemplate) k podpoře project efektivní provádění a spolupráci. Toto úložiště poskytuje standardizované directory strukturu a dokumentu šablony, které můžete použít pro svůj projekt TDSP.
 
 ## <a name="next-steps"></a>Další postup
 
-[Agilní vývoj datové vědy projekty](agile-development.md) tento dokument popisuje spuštění projektu vědecké účely data v systematické, verze řízené a spolupráce způsob, jak v rámci projektový tým pomocí procesu Team dat vědecké účely.
+[Agilní vývoj projekty datových věd](agile-development.md) tento dokument popisuje spustit projekt vědeckého zpracování dat v systematicky, správy verzí a spolupráce v týmu projektu pomocí vědeckého zpracování týmových dat.
 
-Návody, které ukazují všechny kroky v procesu pro **konkrétních scénářů** jsou také uvedeny. Jsou uvedena v seznamu a propojené s miniatur popisy v [příklad návody](walkthroughs.md) tématu. Se ukazují, jak kombinovat cloud, místní nástroje a služby do pracovního postupu nebo kanálu vytvoření inteligentního aplikace. 
+Postupy, které popisují všechny kroky v procesu pro **konkrétních scénářů** jsou také k dispozici. Jsou uvedena v seznamu a propojené s Miniatura popisy v [příklad návody](walkthroughs.md) článku. Jejich ukazují, jak zkombinovat cloudové, místní nástroje a služby do pracovního postupu nebo kanálu pro vytváření inteligentních aplikací. 
 

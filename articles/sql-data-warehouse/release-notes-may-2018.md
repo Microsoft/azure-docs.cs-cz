@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 07/23/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: 81e3fd7183e97358b3d936045909ad5dc40612ff
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 01b571beba012ae0a1fa27d03f5e0e5454f62aa5
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/27/2018
-ms.locfileid: "39281986"
+ms.locfileid: "39324951"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-may-2018"></a>Co je nového ve službě Azure SQL Data Warehouse? Květen 2018 
 Azure SQL Data Warehouse neustále obdrží vylepšení. Tento článek popisuje nové funkce a změny, které byly zavedeny v květnu 2018. 
@@ -129,7 +129,7 @@ The ORDER BY clause is invalid in views, CREATE TABLE AS SELECT, INSERT SELECT, 
 Použití `SET PARSEONLY ON` syntaxe umožňuje uživateli být modul SQL Data Warehouse, zkontrolujte syntaxi každého příkazu T-SQL a vrátí chybové zprávy bez kompilace a spuštění příkazu. Dříve, [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) systémové zobrazení stavu pro tyto příkazy by zůstala v `Running` stavu. `sys.dm_pdw_exec_requests` Zobrazení nyní vrátí stav jako `Complete`.
 
 ## <a name="next-steps"></a>Další postup
-Teď, když už víte o něco o SQL Data Warehouse, zjistěte, jak rychle [vytvoření SQL Data Warehouse] [vytvoření SQL Data Warehouse] a [ukázková data načíst] [ukázková data načíst]. Pokud jste ještě do Azure, můžete zjistit [Glosář Azure] [Glosář Azure] užitečné jako narazíte na novou terminologii. Můžete se také podívat na některé z těchto dalších zdrojů ke službě SQL Data Warehouse.  
+Teď, když už víte o něco o SQL Data Warehouse, zjistěte, jak rychle [vytvořit SQL Data Warehouse][create a SQL Data Warehouse]. Pokud s Azure začínáte, může vám být užitečný [Glosář Azure][Azure glossary], kde najdete potřebnou terminologii. Můžete se také podívat na některé z těchto dalších zdrojů ke službě SQL Data Warehouse.  
 
 * [Úspěšné zákaznické implementace]
 * [Blogy]
@@ -147,3 +147,5 @@ Teď, když už víte o něco o SQL Data Warehouse, zjistěte, jak rychle [vytvo
 [Fórum Stack Overflow]: http://stackoverflow.com/questions/tagged/azure-sqldw
 [Twitter]: https://twitter.com/hashtag/SQLDW
 [Videa]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
+[create a SQL Data Warehouse]: ./create-data-warehouse-portal.md
+[Azure glossary]: ../azure-glossary-cloud-terminology.md

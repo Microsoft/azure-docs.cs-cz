@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: reference
 ms.topic: conceptual
-ms.date: 07/16/2018
+ms.date: 07/27/2018
 ms.author: carlrab
-ms.openlocfilehash: 2e4f2bf4303d2a6f52f6dac7e8d71eca24800f53
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 6c43a52309a6f41d73ead19fc5f5b7df2f06d6f6
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39092065"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39308809"
 ---
 # <a name="sql-database-faq"></a>SQL Database – Nejčastější dotazy
 
@@ -90,7 +90,7 @@ Ano, můžete nezávisle na sobě vyberte úroveň výpočetního výkonu, vaše
 Můžete nakonfigurovat uchovávání záloh pro PITR mezi 7 až 35 dnů. Úložiště zálohování bude účtovat samostatně na základě skutečného úložiště využití při překročení rovna hodnotě maximální velikost dat velikost úložiště. Ve verzi preview ve výchozím nastavení Doba uchování PITR je nastaven na 7 dní. Maximální velikost dat je v mnoha případech dostatečné pro uložení zálohy za 7 dní.
 
 ## <a name="why-do-you-allow-selection-of-the-hardware-generation-for-compute"></a>Proč vám umožní výběr generace hardwaru pro službu compute?
-Naším cílem je umožnit maximální flexibilitu, aby mohli vybrat konfiguraci výkonu, který přesně odpovídá potřebám vaší aplikace. Výše uvedené tabulce jsou uvedeny rozdíly mezi Gen4 i Gen5. Zejména Gen4 hardwaru nabízí podstatně více paměti na vCore. Gen5 hardware však umožňuje vertikálně navýšit kapacitu výpočetních prostředků mnohem vyšší. Chceme mít tyto rozdíly transparentní, takže můžete dosáhnout poměr cena/výkon optimální pro vaši aplikaci.
+Naším cílem je umožnit maximální flexibilitu, aby mohli vybrat konfiguraci výkonu, který přesně odpovídá potřebám vaší aplikace. Gen4 hardware nabízí podstatně více paměti na vCore. Gen5 hardware však umožňuje vertikálně navýšit kapacitu výpočetních prostředků mnohem vyšší. Další informace najdete v tématu [nákupní modelu virt. jader](sql-database-service-tiers-vcore.md)
 
 ## <a name="do-i-need-to-take-my-application-offline-to-convert-from-a-dtu-based-database-to-a-vcore-based-service-tier"></a>Je nutné nastavit aplikaci offline převést z databáze založený na DTU pro vrstvu služby založený na virtuálních jádrech? 
 Nové úrovně služeb nabízejí jednoduchý způsob online převodu, který je obdobou stávajícího procesu upgradu databází z úrovně služeb Standard na Premium (a naopak). Tento převod lze inicializovat pomocí webu Azure portal, Powershellu, rozhraní příkazového řádku Azure, T-SQL nebo rozhraní REST API. Zobrazit [Správa izolovaných databází](sql-database-single-database-scale.md) a [Správa elastických fondů](sql-database-elastic-pool.md).

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: adb78f04c0fd5ba175bb31c9a81ad58b3b03fb42
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 46e4956aa145aa082de86191ede4adaf9a43fca9
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37447315"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39309022"
 ---
 # <a name="azure-ad-b2c-token-reference"></a>Azure AD B2C: Referenci tokenu
 
@@ -72,7 +72,7 @@ Všimněte si, že deklarace identity v tokenech ID nebudou zobrazeny v libovoln
 
 | Název | Deklarovat | Příklad hodnoty | Popis |
 | --- | --- | --- | --- |
-| Cílová skupina |`aud` |`90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` |Deklaraci identity cílové skupiny identifikuje zamýšlený příjemce tokenu. Pro Azure AD B2C cílová skupina je ID aplikace vaší aplikace, protože přiřazené vaší aplikaci v portálu pro registraci aplikace. Vaše aplikace by měl ověřit tuto hodnotu a odmítnout token, pokud neodpovídá. |
+| Cílová skupina |`aud` |`90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` |Deklaraci identity cílové skupiny identifikuje zamýšlený příjemce tokenu. Pro Azure AD B2C cílová skupina je ID aplikace vaší aplikace, protože přiřazené vaší aplikaci v portálu pro registraci aplikace. Vaše aplikace by měl ověřit tuto hodnotu a odmítnout token, pokud neodpovídá. Cílové skupiny je synonymní s prostředkem. |
 | Vystavitel |`iss` |`https://login.microsoftonline.com/775527ff-9a37-4307-8b3d-cc311f58d925/v2.0/` |Tato deklarace identity označuje službu tokenů zabezpečení (STS), který vytvoří a vrátí token. Také určuje adresář Azure AD, ve kterém byl uživatel ověřený. Vaše aplikace by měla ověření vystavitele deklarace identity k zajištění, že token pochází z koncového bodu Azure Active Directory v2.0. |
 | Vystaveno |`iat` |`1438535543` |Tato deklarace identity je čas, kdy byl vydán token, v unixovém čase. |
 | Čas vypršení platnosti |`exp` |`1438539443` |Čas vypršení platnosti, které deklarace identity je doba, jakou token, který se stane neplatným, vyjádřena v unixovém čase. Vaše aplikace by pomocí této deklarace identity k ověření platnosti dobu životnosti tokenu. |

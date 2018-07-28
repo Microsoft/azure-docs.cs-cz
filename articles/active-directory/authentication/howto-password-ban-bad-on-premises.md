@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 07/25/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: jsimmons
-ms.openlocfilehash: 9c0519181ec03394e7d732a8eb608501d6dd6657
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 5928896ab3c89972b7912f686be045afc988b1cd
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39161826"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39308871"
 ---
 # <a name="preview-deploy-azure-ad-password-protection"></a>Ve verzi Preview: Nasazení ochrany hesla Azure AD
 
@@ -56,7 +56,7 @@ Existují dva instalační programy požadovaných k ochraně heslem služby Azu
 
 1. Vyberte jeden nebo více serverů pro hostování služby Azure AD ochrany heslo proxy serveru.
    * Každé takové služby můžete pouze zadat zásady pro hesla pro jednu doménovou strukturu a hostitelského počítače musí být připojený k doméně (kořene a potomků jsou rovnoměrně podporované) v této doménové struktuře. Služby Azure AD hesla ochrany proxy ke splnění poslání musí existovat síťové připojení mezi aspoň jeden řadič domény v jednotlivých doménách doménové struktury a Azure AD hesla ochrany Proxy hostitelský počítač.
-   * Je možné nainstalovat a spustit službu Azure AD ochrany heslo proxy serveru na řadiči domény pro účely testování, ale pak vyžaduje připojení k Internetu.
+   * Je možné nainstalovat a spustit službu Azure AD ochrany heslo proxy serveru na řadiči domény pro testovací účely, ale řadič domény pak vyžaduje připojení k Internetu.
 
    > [!NOTE]
    > Verze public preview podporuje maximálně dva (2) servery proxy pro každou doménovou strukturu.
@@ -110,6 +110,9 @@ Existují dva instalační programy požadovaných k ochraně heslem služby Azu
 
    > [!NOTE]
    > Registrace v doménové struktuře služby Active Directory očekává se jednorázové krok v platnosti doménové struktury. Agenti řadiče domény spuštěné v doménové struktuře automaticky provede všechny potřebné maintainenance od této chvíle a vyšší. Po úspěšném pro danou doménovou strukturu, další vyvolání `Register-AzureADPasswordProtectionForest` nadále probíhat úspěšně, ale nejsou potřeba.
+
+   > [!NOTE]
+   > Aby `Register-AzureADPasswordProtectionForest` úspěšné aspoň jeden Windows Server 2012 nebo novější domény musí být dostupný řadič domény proxy serveru. Neexistuje však žádný software agenta DC možné instalovat na žádném řadiči domény před tento krok.
 
 6. Volitelné: Konfigurace proxy serveru služby Azure AD hesla ochrany tak, aby naslouchala na určitém portu.
    * RPC přes TCP se používá ochrana hesel Azure AD softwaru agenta řadiče domény na řadičích domény ke komunikaci se službou Azure AD hesla ochrany proxy serveru. Ve výchozím nastavení naslouchá ochrany hesla Azure AD služba Proxy zásady hesla na všechny dostupné dynamické RPC koncový bod. V případě potřeby z důvodu topologii sítí nebo požadavky na bránu firewall, může služba nakonfigurována místo tak, aby naslouchala na určitém portu TCP.

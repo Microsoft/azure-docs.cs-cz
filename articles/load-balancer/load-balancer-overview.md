@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 07/20/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 7495ac8b1414412dba9d62d0fb5668c6db364997
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: f954bc3be01d7ac1698e21ac3e3f038fe931541d
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215046"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39325475"
 ---
 # <a name="what-is-azure-load-balancer"></a>Co je Azure Load Balancer?
 
@@ -123,20 +123,7 @@ _Je osvědčeným postupem určete SKU explicitně, i když ještě není povinn
 >[!IMPORTANT]
 >Load balancer úrovně Standard je nový produkt nástroje pro vyrovnávání zatížení a z velké části nadmnožinou Load balancer úrovně Basic. Existují důležité a rozhodnout vědomě a záměrně rozdíly mezi těmito dvěma produkty. Jakýkoli scénář začátku do konce, který je možné s Load balancer úrovně Basic lze vytvořit také pomocí Load balanceru úrovně Standard. Pokud už jste zvyklí Load balancer úrovně Basic, měli byste seznámit s Load Balanceru úrovně Standard pro pochopení nejnovější změny v chování mezi úrovněmi Standard a Basic a jejich dopad. V této části najdete pečlivě.
 
-| | Standardní SKU | Základní SKU |
-| --- | --- | --- |
-| Velikost fondu back-endu | až 1 000 instancí | až 100 instancí |
-| Koncové body back-Endového fondu | jakýkoli virtuální počítač v jedné virtuální sítě, včetně kombinace virtuální počítače, skupiny dostupnosti, škálovacích sad virtuálních počítačů. | virtuální počítače ve škálovací sady nebo na virtuálním počítači jeden dostupnosti |
-| Zóny dostupnosti | zónové a zónově redundantních front-endů pro příchozí a odchozí, odchozí toky mapování překonat selhání zóny Vyrovnávání zatížení mezi zónami | / |
-| Diagnostika | Azure Monitor, vícedimenzionálních metrik, včetně bajtů a čítače paketů, stav testu stavu, pokusy o připojení (TCP SYN), stav odchozí připojení (SNAT úspěšné i neúspěšné toky), měření roviny aktivních dat. | Azure Log Analytics pro veřejného Load Balanceru úrovně pouze SNAT vyčerpání výstraha, počet stavu back-endového fondu |
-| HA porty | interní nástroj pro vyrovnávání zatížení | / |
-| Ve výchozím nastavení zabezpečení | Výchozí uzavřel za veřejné IP adresy a nástroje pro vyrovnávání zatížení koncové body a skupiny zabezpečení sítě musí použít na explicitní seznam povolených pro provoz tok | Výchozí otevřený, skupiny zabezpečení sítě volitelné |
-| [Odchozí připojení](load-balancer-outbound-connections.md) | Několik front-endů s za odhlásit pravidlo Vyrovnávání zatížení. Odchozí scénář _musí_ explicitně vytvořit pro virtuální počítač, abyste mohli použít odchozí připojení.  [Koncové body služby virtuální sítě](../virtual-network/virtual-network-service-endpoints-overview.md) dostupná bez odchozí připojení a ne započítávat zpracovaná data.  Všechny veřejné IP adresy, včetně služeb Azure PaaS, která není k dispozici jako koncové body služby virtuální sítě, musíte kontaktovat prostřednictvím odchozího připojení a počet směrem k zpracovaná data. Když virtuální počítač obsluhuje jenom interní nástroj pro vyrovnávání zatížení, nejsou k dispozici odchozí připojení přes výchozí SNAT. Přenosový protokol konkrétní založené na protokolu Příchozí pravidlo Vyrovnávání zatížení je výstupní programování SNAT. | Jeden front-endu, když jsou k dispozici několik front-endů vybraného náhodně.  Když virtuální počítač obsluhuje jenom interní nástroj pro vyrovnávání zatížení, použije se výchozí SNAT. |
-| [Několik front-endů](load-balancer-multivip-overview.md) | Příchozí a [odchozí](load-balancer-outbound-connections.md) | Pouze příchozí |
-| [Sonda stavu dolů chování](load-balancer-custom-probe-overview.md) | Připojení TCP zůstat naživu na instanci test dolů __a__ na všechny testy dolů | Připojení TCP zůstat naživu na instanci test mimo provoz. Ukončete všechna připojení TCP na všechny testy dolů |
-| Operace správy | Většina operací < 30 sekund | 60 – 90 sekund typické |
-| SLA | 99,99 % pro cestu k datům s dva virtuální počítače v dobrém stavu | Implicitní v SLA k virtuálním počítačům | 
-| Ceny | Bude účtovat podle počtu pravidel, zpracování dat příchozí nebo odchozí přidruženého prostředku  | bez poplatků |
+[!INCLUDE [comparison table](../../includes/load-balancer-comparison-table.md)]
 
 Další informace najdete v tématu [omezení služby nástroje pro vyrovnávání zatížení](https://aka.ms/lblimits). Podrobnosti Load balanceru úrovně Standard najdete v tématu [přehled](load-balancer-standard-overview.md), [ceny](https://aka.ms/lbpricing), a [SLA](https://aka.ms/lbsla).
 

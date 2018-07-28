@@ -8,12 +8,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: ganesr
-ms.openlocfilehash: 99e0bbc0e2501deead8990776d35835ea396590b
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: e598249d0065bde8b3fe74883da8a0e39c9bc7c7
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/27/2018
-ms.locfileid: "39284377"
+ms.locfileid: "39308081"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-powershell-classic"></a>Připojení virtuální sítě k okruhu ExpressRoute pomocí prostředí PowerShell (classic)
 > [!div class="op_single_selector"]
@@ -25,6 +25,10 @@ ms.locfileid: "39284377"
 >
 
 Tento článek vám pomůže propojit virtuální sítě (Vnet) okruhy Azure ExpressRoute pomocí modelu nasazení classic a prostředí PowerShell. Virtuální sítě může být ve stejném předplatném nebo může být součást jiného předplatného.
+
+Jedné virtuální sítě nesmí být propojení až čtyři okruhy ExpressRoute. Chcete-li vytvořit nové propojení pro každý okruh ExpressRoute, ke kterému se připojujete pomocí kroků v tomto článku. Okruhy ExpressRoute může být ve stejném předplatném, různá předplatná nebo kombinaci obou.
+
+Až 10 virtuálních sítí můžete propojit s okruhem ExpressRoute. Všechny virtuální sítě musí být ve stejné geopolitické oblasti. Můžete propojit větší počet virtuálních sítí pro váš okruh ExpressRoute nebo propojení virtuálních sítí, které jsou v dalších geopolitických oblastí, pokud jste povolili doplněk ExpressRoute premium. Zkontrolujte, [nejčastější dotazy k](expressroute-faqs.md) podrobné informace o doplněk premium.
 
 [!INCLUDE [expressroute-classic-end-include](../../includes/expressroute-classic-end-include.md)]
 
@@ -41,11 +45,7 @@ Tento článek vám pomůže propojit virtuální sítě (Vnet) okruhy Azure Exp
    * Ověřte, že je nakonfigurovaný soukromého partnerského vztahu Azure a partnerského vztahu protokolu BGP mezi vaší sítí a Microsoftem nahoru tak, že povolíte připojení k začátku do konce.
    * Musí mít virtuální sítě a bránu virtuální sítě vytvořené a plně zřízený. Postupujte podle pokynů a [konfigurace virtuální sítě pro ExpressRoute](expressroute-howto-vnet-portal-classic.md).
 
-Až 10 virtuálních sítí můžete propojit s okruhem ExpressRoute. Všechny virtuální sítě musí být ve stejné geopolitické oblasti. Můžete propojit větší počet virtuálních sítí pro váš okruh ExpressRoute nebo propojení virtuálních sítí, které jsou v dalších geopolitických oblastí, pokud jste povolili doplněk ExpressRoute premium. Zkontrolujte, [nejčastější dotazy k](expressroute-faqs.md) podrobné informace o doplněk premium.
-
-Jedné virtuální sítě nesmí být propojení až čtyři okruhy ExpressRoute. Vytvoření nového propojení pro každý okruh ExpressRoute, ke kterému se připojujete pomocí instrukcí níže. Okruhy ExpressRoute může být ve stejném předplatném, různá předplatná nebo kombinaci obou.
-
-## <a name="download-the-latest-powershell-cmdlets"></a>Stáhněte si nejnovější rutiny prostředí PowerShell
+### <a name="download-the-latest-powershell-cmdlets"></a>Stáhněte si nejnovější rutiny prostředí PowerShell
 
 Budete potřebovat nejnovější verzi modulů prostředí Azure PowerShell. Nejnovější moduly Powershellu můžete stáhnout z části prostředí PowerShell [stránku soubory ke stažení Azure](https://azure.microsoft.com/downloads/). Postupujte podle pokynů v [instalace a konfigurace Azure Powershellu](/powershell/azure/overview) podrobné pokyny o tom, jak nakonfigurovat počítač pomocí modulů Azure Powershellu.
 

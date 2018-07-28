@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/20/2018
 ms.author: kumud
-ms.openlocfilehash: 1a7f37d3f95701779a16cf5dc6844fb67ee7f956
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: f8779af725346a456efe8e718cfc8ff3a91c72fc
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215097"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39325247"
 ---
 # <a name="azure-load-balancer-standard-overview"></a>Přehled služby Azure Load balancer úrovně Standard
 
@@ -51,20 +51,7 @@ Následující tabulka obsahuje přehled přehledné informace o rozdílech mezi
 >[!NOTE]
 > Load balancer úrovně Standard by měl přijmout nové návrhy. 
 
-| | Standardní SKU | Základní SKU |
-| --- | --- | --- |
-| Velikost fondu back-endu | až 1 000 instancí | až 100 instancí |
-| Koncové body back-Endového fondu | jakýkoli virtuální počítač v jedné virtuální sítě, včetně kombinace virtuální počítače, skupiny dostupnosti, škálovacích sad virtuálních počítačů. | virtuální počítače ve škálovací sady nebo na virtuálním počítači jeden dostupnosti |
-| Zóny dostupnosti | zónové a zónově redundantních front-endů pro příchozí a odchozí, odchozí toky mapování překonat selhání zóny Vyrovnávání zatížení mezi zónami | / |
-| Diagnostika | Azure Monitor, vícedimenzionálních metrik, včetně bajtů a čítače paketů, stav testu stavu, pokusy o připojení (TCP SYN), stav odchozí připojení (SNAT úspěšné i neúspěšné toky), měření roviny aktivních dat. | Azure Log Analytics pro veřejného Load Balanceru úrovně pouze SNAT vyčerpání výstraha, počet stavu back-endového fondu |
-| HA porty | interní nástroj pro vyrovnávání zatížení | / |
-| Ve výchozím nastavení zabezpečení | Výchozí uzavřel za veřejné IP adresy a nástroje pro vyrovnávání zatížení koncové body a skupiny zabezpečení sítě musí použít na explicitní seznam povolených pro provoz tok | Výchozí otevřený, skupiny zabezpečení sítě volitelné |
-| [Odchozí připojení](load-balancer-outbound-connections.md) | Několik front-endů s za odhlásit pravidlo Vyrovnávání zatížení. Odchozí scénář _musí_ explicitně vytvořit pro virtuální počítač, abyste mohli použít odchozí připojení.  [Koncové body služby virtuální sítě](../virtual-network/virtual-network-service-endpoints-overview.md) dostupná bez odchozí připojení a ne započítávat zpracovaná data.  Všechny veřejné IP adresy, včetně služeb Azure PaaS, která není k dispozici jako koncové body služby virtuální sítě, musíte kontaktovat prostřednictvím odchozího připojení a počet směrem k zpracovaná data. Když virtuální počítač obsluhuje jenom interní nástroj pro vyrovnávání zatížení, nejsou k dispozici odchozí připojení přes výchozí SNAT. Přenosový protokol konkrétní založené na protokolu Příchozí pravidlo Vyrovnávání zatížení je výstupní programování SNAT. | Jeden front-endu, když jsou k dispozici několik front-endů vybraného náhodně.  Když virtuální počítač obsluhuje jenom interní nástroj pro vyrovnávání zatížení, použije se výchozí SNAT. |
-| [Několik front-endů](load-balancer-multivip-overview.md) | Příchozí a [odchozí](load-balancer-outbound-connections.md) | Pouze příchozí |
-| [Sonda stavu dolů chování](load-balancer-custom-probe-overview.md) | Připojení TCP zůstat naživu na instanci test dolů __a__ na všechny testy dolů | Připojení TCP zůstat naživu na instanci test mimo provoz. Ukončete všechna připojení TCP na všechny testy dolů |
-| Operace správy | Většina operací < 30 sekund | 60 – 90 sekund typické |
-| SLA | 99,99 % pro cestu k datům s dva virtuální počítače v dobrém stavu | Implicitní v SLA k virtuálním počítačům | 
-| Ceny | Bude účtovat podle počtu pravidel, zpracování dat příchozí nebo odchozí přidruženého prostředku  | bez poplatků |
+[!INCLUDE [comparison table](../../includes/load-balancer-comparison-table.md)]
 
 Kontrola [omezení služby nástroje pro vyrovnávání zatížení](https://aka.ms/lblimits), stejně jako [ceny](https://aka.ms/lbpricing), a [SLA](https://aka.ms/lbsla).
 

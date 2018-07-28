@@ -1,47 +1,47 @@
 ---
-title: Nasazení Azure IoT Edge moduly (CLI) | Microsoft Docs
-description: Použijte k nasazení modulů na IoT hraniční zařízení IoT rozšíření pro Azure CLI 2.0
+title: Nasadit moduly Azure IoT Edge (CLI) | Dokumentace Microsoftu
+description: Použití rozšíření IoT pro Azure CLI 2.0 můžete nasadit moduly do zařízení IoT Edge
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 06/08/2018
+ms.date: 07/27/2018
 ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 98a4be02188f7e0462979792a6061d535a64a18d
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 29c11139a2c773db2d26bf44984ad4dc72f2d870
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37095969"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39324601"
 ---
-# <a name="deploy-azure-iot-edge-modules-with-azure-cli-20"></a>Nasazení Azure IoT Edge modulů s Azure CLI 2.0
+# <a name="deploy-azure-iot-edge-modules-with-azure-cli-20"></a>Nasadit moduly Azure IoT Edge pomocí Azure CLI 2.0
 
-Po vytvoření IoT Edge moduly s obchodní logiky, budete chtít nasadit do zařízení tak, aby provoz na hranici. Pokud máte více modulů, které vzájemně spolupracují ke sběru a zpracování dat, můžete je nasadit všechny najednou a deklarovat pravidla směrování, které je propojují. 
+Po vytvoření IoT Edge modulů s obchodní logikou, budete chtít nasadit do zařízení pracovat na hraničních zařízeních. Pokud máte více modulů, které vzájemně spolupracují ke shromáždění a zpracování dat, můžete je nasadit všechny najednou a deklarovat pravidla směrování, které je propojují. 
 
-[Azure CLI 2.0](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) je open source nástroj příkazového řádku pro různé platformy určený ke správě prostředků Azure, jako je služba IoT Edge. Umožňuje spravovat prostředky Azure IoT Hub, instance služby zřizování zařízení a propojené centra mimo pole. Nové rozšíření IoT vylepšuje rozhraní Azure CLI 2.0 o funkce, jako je správa zařízení a plně funkční IoT Edge.
+[Azure CLI 2.0](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) je open source nástroj příkazového řádku pro různé platformy určený ke správě prostředků Azure, jako je služba IoT Edge. Umožňuje spravovat prostředky Azure IoT Hub, instance služby device provisioning a propojená centra úprav. Nové rozšíření IoT vylepšuje rozhraní Azure CLI 2.0 o funkce, jako je správa zařízení a plně funkční IoT Edge.
 
-Tento článek ukazuje, jak vytvořit JSON manifestu nasazení, pak tento soubor použít k nasazení IoT hraniční zařízení. Informace o vytváření nasazení, které cílí více zařízení podle jejich sdílené značky najdete v tématu [nasadit a monitorovat moduly IoT Edge ve velkém měřítku](how-to-deploy-monitor-cli.md)
+Tento článek ukazuje, jak vytvořit manifest nasazení JSON a pak jej použít pro vložení nasazení do zařízení IoT Edge. Informace o vytváření nasazení, které cílí na více zařízeních na základě jejich sdílené značek, naleznete v tématu [nasadit a monitorovat moduly IoT Edge ve velkém měřítku](how-to-deploy-monitor-cli.md)
 
 ## <a name="prerequisites"></a>Požadavky
 
 * [Služby IoT hub](../iot-hub/iot-hub-create-using-cli.md) ve vašem předplatném Azure. 
-* [IoT hraniční zařízení](how-to-register-device-cli.md) s modulem runtime IoT Edge nainstalována.
+* [Zařízení IoT Edge](how-to-register-device-cli.md) nainstalován modul runtime IoT Edge.
 * [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) ve vašem prostředí. Vaše verze Azure CLI 2.0 musí být minimálně 2.0.24 nebo novější. Ke kontrole použijte příkaz `az –-version`. Tato verze podporuje příkazy rozšíření az a zavádí příkazové rozhraní Knack. 
-* [IoT rozšíření pro Azure CLI 2.0](https://github.com/Azure/azure-iot-cli-extension).
+* [Rozšíření IoT pro Azure CLI 2.0](https://github.com/Azure/azure-iot-cli-extension).
 
-## <a name="configure-a-deployment-manifest"></a>Konfigurace manifest nasazení
+## <a name="configure-a-deployment-manifest"></a>Konfigurace manifestu nasazení
 
-Manifest nasazení je dokument JSON, který popisuje, jaké moduly pro nasazení, tok dat mezi moduly a požadované vlastnosti dvojčata modulu. Další informace o tom, jak manifesty nasazení pracovních a jak při jejich vytváření najdete v tématu [pochopit, jak IoT Edge moduly můžete použít, nakonfigurovat a znovu použít](module-composition.md).
+Manifest nasazení je dokument JSON, který popisuje, které moduly chcete nasadit, tok dat mezi moduly a požadované vlastnosti dvojčat modulů. Další informace o způsobu práce manifesty nasazení a o tom, k jejich vytvoření najdete v tématu [pochopit, jak můžete použít moduly IoT Edge a způsob jejich konfiguraci a znovu použít](module-composition.md).
 
-Pokud chcete nasadit modulů pomocí Azure CLI 2.0, uložte místně manifest nasazení jako soubor .txt. Použijete cestu k souboru v další části, když spustíte příkaz pro použití v konfiguraci zařízení. 
+Můžete nasadit moduly pomocí Azure CLI 2.0, uložte jako soubor .json místně manifest nasazení. Použijete cestu k souboru v další části, když spustíte příkaz pro použití v konfiguraci zařízení. 
 
-Jako příklad uvádíme manifest základní nasazení s jeden modul:
+Tady je manifest základní nasazení s jeden modul jako příklad:
 
    ```json
    {
-     "moduleContent": {
+     "modulesContent": {
        "$edgeAgent": {
          "properties.desired": {
            "schemaVersion": "1.0",
@@ -50,13 +50,8 @@ Jako příklad uvádíme manifest základní nasazení s jeden modul:
              "settings": {
                "minDockerVersion": "v1.25",
                "loggingOptions": "",
-               "registryCredentials": {
-                 "registryName": {
-                   "username": "",
-                   "password": "",
-                   "address": ""
-                 }
-               }
+               "registryCredentials": {}
+             }
            },
            "systemModules": {
              "edgeAgent": {
@@ -108,21 +103,25 @@ Jako příklad uvádíme manifest základní nasazení s jeden modul:
    }
    ```
 
-## <a name="deploy-to-your-device"></a>Nasadit do zařízení
+## <a name="deploy-to-your-device"></a>Nasazení zařízení
 
-Můžete nasadit moduly pro zařízení s použitím manifest nasazení, který jste nakonfigurovali s informacemi o modulu. 
+Moduly nasadíte do zařízení s použitím manifestu nasazení, který jste nakonfigurovali pomocí informací o modulech. 
 
-Použít konfiguraci IoT hraniční zařízení, použijte následující příkaz:
+Změňte adresář na složku, ve kterém je uložený manifestu nasazení. Pokud jste použili jedno z šablony VS Code IoT Edge, použijte `deployment.json` soubor **config** složky vašeho adresáře řešení. Nepoužívejte `deployment.template.json` souboru. 
+
+Chcete-li použít konfiguraci pro zařízení IoT Edge, použijte následující příkaz:
 
    ```cli
    az iot hub apply-configuration --device-id [device id] --hub-name [hub name] --content [file path]
    ```
 
-Parametr id zařízení rozlišuje velká a malá písmena. Obsahu parametr odkazuje na nasazení manifestu souboru, který jste uložili. 
+Parametr id zařízení rozlišuje velká a malá písmena. Obsahu parametr odkazuje na nasazení manifestu soubor, který jste uložili. 
+
+   ![Sada modulů](./media/how-to-deploy-cli/set-modules.png)
 
 ## <a name="view-modules-on-your-device"></a>Zobrazení modulů ve vašem zařízení
 
-Jakmile nasadíte modulů do svého zařízení můžete zobrazit všechny z nich pomocí následujícího příkazu: 
+Po nasazení modulů do svého zařízení, můžete zobrazit všechny z nich pomocí následujícího příkazu: 
 
 Zobrazení modulů v zařízení IoT Edge:
     
@@ -136,4 +135,4 @@ Parametr id zařízení rozlišuje velká a malá písmena.
 
 ## <a name="next-steps"></a>Další postup
 
-Zjistěte, jak [nasazení a monitorování modulů IoT Edge ve velkém měřítku](how-to-deploy-monitor.md)
+Zjistěte, jak [nasadit a monitorovat moduly IoT Edge ve velkém měřítku](how-to-deploy-monitor.md)

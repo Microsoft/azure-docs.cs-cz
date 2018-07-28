@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/26/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 3389fed86fba8059db82816a6fc752f5374369a7
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 1b5640b790b07050336a990a06b66e5f89fcf768
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/27/2018
-ms.locfileid: "39283364"
+ms.locfileid: "39308605"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Azure předávací ověřování služby Active Directory: Rychlý start
 
@@ -45,7 +45,7 @@ Ujistěte se, že jsou splněné následující požadavky.
 ### <a name="in-your-on-premises-environment"></a>V místním prostředí
 
 1. Identifikujte server se systémem Windows Server 2012 R2 nebo novější spustit Azure AD Connect. Přidejte server do stejné doménové struktuře služby Active Directory jako uživatelé, jejichž hesla je potřeba ověřit.
-2. Nainstalujte [nejnovější verzi služby Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) na serveru identifikován v předchozím kroku. Pokud už máte Azure AD Connect běží, ujistěte se, že verze je 1.1.644.0 nebo novější.
+2. Nainstalujte [nejnovější verzi služby Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) na serveru identifikován v předchozím kroku. Pokud už máte Azure AD Connect běží, ujistěte se, že verze je 1.1.750.0 nebo novější.
 
     >[!NOTE]
     >Azure AD Connect verze 1.1.557.0, 1.1.558.0, 1.1.561.0 a 1.1.614.0 máte problém související se synchronizace hodnot hash hesel. Pokud jste _není_ používat synchronizaci hodnot hash hesel ve spojení se předávací ověřování, přečtěte si [poznámky k verzi Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history#116470).

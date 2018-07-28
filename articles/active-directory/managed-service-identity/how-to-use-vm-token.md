@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: daveba
-ms.openlocfilehash: e564f48b4b90cfcaa72ed51d5f210a71a4980360
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: ee4702733e775051cbbcace109bd1a7ffdf50e9c
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37902941"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39325451"
 ---
 # <a name="how-to-use-an-azure-vm-managed-service-identity-msi-for-token-acquisition"></a>Použití Azure VM Identity spravované služby (MSI) pro získání tokenu 
 
@@ -49,6 +49,7 @@ Klientská aplikace může požadovat identita spravované služby [přístupov�
 |  |  |
 | -------------- | -------------------- |
 | [Získání tokenu pomocí protokolu HTTP](#get-a-token-using-http) | Podrobnosti protokolu pro koncový bod tokenu MSI |
+| [Získání tokenu pomocí knihovnu Microsoft.Azure.Services.appauthentication přistupovat pro .NET](#get-a-token-using-the-microsoftazureservicesappauthentication-library-for-net) | Příklad použití knihovnu Microsoft.Azure.Services.appauthentication přistupovat z klienta .NET
 | [Získání tokenu pomocí jazyka C#](#get-a-token-using-c) | Příklad použití koncového bodu MSI REST z klientů jazyka C# |
 | [Získání tokenu pomocí jazyka Go](#get-a-token-using-go) | Příklad použití koncového bodu MSI REST z klienta Go |
 | [Získání tokenu pomocí Azure Powershellu](#get-a-token-using-azure-powershell) | Příklad použití koncového bodu MSI REST z klienta prostředí PowerShell |
@@ -73,7 +74,9 @@ GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-0
 | `http://169.254.169.254/metadata/identity/oauth2/token` | Koncový bod MSI pro služba Instance Metadata. |
 | `api-version`  | Parametr řetězce dotazu, která verze rozhraní API pro koncový bod IMDS. Použijte prosím verzi rozhraní API `2018-02-01` nebo vyšší. |
 | `resource` | Parametr řetězce dotazu, určující identifikátor URI ID aplikace z cílového prostředku. Zobrazí se také v `aud` deklarace identity (cílová skupina) vydaného tokenu. V tomto příkladu žádá token pro přístup k Azure Resource Manageru, který má být identifikátor URI ID aplikace z https://management.azure.com/. |
-| `Metadata` | Pole hlavičky požadavku HTTP, vyžaduje Instalační služby MSI jako zmírnění proti útoku Server na straně požadavek proti padělání (SSRF). Tato hodnota musí být nastavená na "true", malými písmeny.
+| `Metadata` | Pole hlavičky požadavku HTTP, vyžaduje Instalační služby MSI jako zmírnění proti útoku Server na straně požadavek proti padělání (SSRF). Tato hodnota musí být nastavená na "true", malými písmeny. |
+| `object_id` | (Volitelné) Parametr řetězce dotazu, která object_id spravovanou identitu, kterou byste chtěli token pro. Povinné, pokud má virtuální počítač více spravovaných identit přiřazených uživateli.|
+| `client_id` | (Volitelné) Parametr řetězce dotazu, která client_id spravovanou identitu, kterou byste chtěli token. Povinné, pokud má virtuální počítač více spravovaných identit přiřazených uživateli.|
 
 Ukázková žádost pomocí koncového bodu Identity spravované služby (MSI) virtuálního počítače rozšíření *(Chcete-li být zastaralé)*:
 
@@ -87,7 +90,9 @@ Metadata: true
 | `GET` | Příkaz HTTP, což znamená, že má k načtení dat z koncového bodu. V takovém případě OAuth přístupový token. | 
 | `http://localhost:50342/oauth2/token` | MSI koncový bod, ve kterém 50342 je výchozím portem a je možné konfigurovat. |
 | `resource` | Parametr řetězce dotazu, určující identifikátor URI ID aplikace z cílového prostředku. Zobrazí se také v `aud` deklarace identity (cílová skupina) vydaného tokenu. V tomto příkladu žádá token pro přístup k Azure Resource Manageru, který má být identifikátor URI ID aplikace z https://management.azure.com/. |
-| `Metadata` | Pole hlavičky požadavku HTTP, vyžaduje Instalační služby MSI jako zmírnění proti útoku Server na straně požadavek proti padělání (SSRF). Tato hodnota musí být nastavená na "true", malými písmeny.
+| `Metadata` | Pole hlavičky požadavku HTTP, vyžaduje Instalační služby MSI jako zmírnění proti útoku Server na straně požadavek proti padělání (SSRF). Tato hodnota musí být nastavená na "true", malými písmeny.|
+| `object_id` | (Volitelné) Parametr řetězce dotazu, která object_id spravovanou identitu, kterou byste chtěli token pro. Povinné, pokud má virtuální počítač více spravovaných identit přiřazených uživateli.|
+| `client_id` | (Volitelné) Parametr řetězce dotazu, která client_id spravovanou identitu, kterou byste chtěli token. Povinné, pokud má virtuální počítač více spravovaných identit přiřazených uživateli.|
 
 
 Ukázkové odpovědi:
@@ -115,6 +120,26 @@ Content-Type: application/json
 | `not_before` | Interval timespan, když přístupový token se projeví a jdou přijmout. Datum je vyjádřena jako počet sekund od "1970-01-01T0:0:0Z UTC" (odpovídá tokenu `nbf` deklarace identity). |
 | `resource` | Přístupový token se požádalo pro odpovídající prostředek `resource` požadavku parametr řetězce dotazu. |
 | `token_type` | Zadejte token, který je přístupový token "Nosiče", což znamená, že prostředek může poskytnout přístup k nosný token. |
+
+## <a name="get-a-token-using-the-microsoftazureservicesappauthentication-library-for-net"></a>Získání tokenu pomocí knihovnu Microsoft.Azure.Services.appauthentication přistupovat pro .NET
+
+Pro aplikace .NET a funkce je nejjednodušší způsob, jak pracovat s využitím identity spravované služby prostřednictvím balíčku Microsoft.Azure.Services.appauthentication přistupovat. Tato knihovna také umožňuje testovat kód místně na svém vývojovém počítači, pomocí uživatelského účtu z aplikace Visual Studio [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure?view=azure-cli-latest), nebo integrované ověřování Active Directory. Další informace o možnostech místní vývoj pomocí této knihovny naleznete v tématu [odkaz Microsoft.Azure.Services.appauthentication přistupovat]. V této části se dozvíte, jak začít pracovat s knihovnou ve vašem kódu.
+
+1. Přidat odkazy [Microsoft.Azure.Services.appauthentication přistupovat](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) a [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) balíčky NuGet pro vaši aplikaci.
+
+2.  Přidejte následující kód do vaší aplikace:
+
+    ```csharp
+    using Microsoft.Azure.Services.AppAuthentication;
+    using Microsoft.Azure.KeyVault;
+    // ...
+    var azureServiceTokenProvider = new AzureServiceTokenProvider();
+    string accessToken = await azureServiceTokenProvider.GetAccessTokenAsync("https://management.azure.com/");
+    // OR
+    var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
+    ```
+    
+Další informace o Microsoft.Azure.Services.appauthentication přistupovat a zpřístupňuje operací, najdete v článku [Microsoft.Azure.Services.appauthentication přistupovat odkaz](/azure/key-vault/service-to-service-authentication) a [služby App Service a trezor klíčů s využitím MSI .NET Ukázka](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet).
 
 ## <a name="get-a-token-using-c"></a>Získání tokenu pomocí jazyka C#
 

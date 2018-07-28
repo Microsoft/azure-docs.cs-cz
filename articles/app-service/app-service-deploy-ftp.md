@@ -1,6 +1,6 @@
 ---
-title: Nasazení aplikace do Azure App Service pomocí FTP/S | Microsoft Docs
-description: Informace o nasazení aplikace do služby Azure App Service pomocí FTP a FTPS.
+title: Nasazení aplikace do Azure App Service pomocí FTP/S | Dokumentace Microsoftu
+description: Zjistěte, jak nasadit aplikaci do služby Azure App Service pomocí FTP a FTPS.
 services: app-service
 documentationcenter: ''
 author: cephalin
@@ -14,98 +14,98 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: cephalin;dariac
-ms.openlocfilehash: 2ec08b45fab9987e9271c1ff3101eaf321dc84be
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 66d375022d200cc916c77c059fa64eb6dbbc17e2
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35234219"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39308142"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Nasazení aplikace do Azure App Service pomocí FTP/S
 
-Tento článek ukazuje, jak použít protokol FTP nebo FTPS k nasazení vaší webové aplikace, back-end mobilní aplikace nebo aplikaci API [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714).
+V tomto článku se dozvíte, jak nasadit webovou aplikaci, back-endu mobilní aplikace nebo aplikaci API pomocí FTP a FTPS [služby Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714).
 
 Koncový bod FTP/S pro aplikace je již aktivní. Žádná konfigurace je nutná pro povolení nasazení FTP/S.
 
-## <a name="open-ftp-dashboard"></a>Otevřete řídicí panel FTP
+## <a name="open-ftp-dashboard"></a>Otevřít řídicí panel FTP
 
-V [portál Azure](https://portal.azure.com), otevřete v této aplikaci [prostředků stránky](../azure-resource-manager/resource-group-portal.md#manage-resources).
+V [webu Azure portal](https://portal.azure.com), otevřete v této aplikaci [stránka s materiály pro](../azure-resource-manager/resource-group-portal.md#manage-resources).
 
-Chcete-li otevřít řídicí panel FTP, klikněte na tlačítko **nastavené průběžné doručování (Preview)** > **FTP** > **řídicí panel**.
+Řídicí panel FTP, klikněte na tlačítko **průběžné doručování (Preview)** > **FTP** > **řídicí panel**.
 
-![Otevřete řídicí panel FTP](./media/app-service-deploy-ftp/open-dashboard.png)
+![Otevřít řídicí panel FTP](./media/app-service-deploy-ftp/open-dashboard.png)
 
-## <a name="get-ftp-connection-information"></a>Získat informace o připojení FTP
+## <a name="get-ftp-connection-information"></a>Získání informací o připojení FTP
 
-Na řídicím panelu FTP, klikněte na tlačítko **kopie** zkopírovat přihlašovací údaje pro koncový bod a aplikace FTPS.
+Na řídicím panelu FTP, klikněte na tlačítko **kopírování** kopírování přihlašovacích údajů pro koncový bod a aplikace FTPS.
 
-![Zkopírujte informace o FTP](./media/app-service-deploy-ftp/ftp-dashboard.png)
+![Kopírování informací FTP](./media/app-service-deploy-ftp/ftp-dashboard.png)
 
-Je doporučeno používat **aplikace pověření** nasadit do vaší aplikace, protože je jedinečné pro každou aplikaci. Ale pokud kliknete na tlačítko **přihlašovací údaje uživatele**, můžete nastavit přihlašovací údaje uživatele, které můžete použít pro přihlášení k FTP/S pro všechny aplikace služby App Service v rámci vašeho předplatného.
+Doporučuje se, že používáte **aplikace pověření** nasadit do vaší aplikace, protože je pro každou aplikaci jedinečné. Nicméně pokud klepnete na tlačítko **přihlašovací údaje uživatele**, můžete nastavit přihlašovací údaje na úrovni uživatele, které můžete použít pro přihlášení k FTP/S pro všechny aplikace služby App Service v rámci vašeho předplatného.
 
-## <a name="deploy-files-to-azure"></a>Soubory nasadit do Azure
+## <a name="deploy-files-to-azure"></a>Nasazení souborů do Azure
 
-1. Z vašeho klienta FTP (například [Visual Studio](https://www.visualstudio.com/vs/community/) nebo [FileZilla](https://filezilla-project.org/download.php?type=client)), použijte informace o připojení, které jste shromáždili pro připojení k vaší aplikace.
-3. Kopírování souborů a jejich odpovídajících adresářovou strukturu pro [ **/web/wwwroot** directory](https://github.com/projectkudu/kudu/wiki/File-structure-on-azure) v Azure (nebo **/lokality/wwwroot/App_Data/úlohy/** adresář pro webové úlohy).
+1. Ze svého klienta FTP (například [sady Visual Studio](https://www.visualstudio.com/vs/community/) nebo [Filezilly](https://filezilla-project.org/download.php?type=client)), použijte informace o připojení, které jste shromáždili pro připojení k vaší aplikace.
+3. Zkopírujte své soubory a příslušnou adresářovou strukturu do [ **/site/wwwroot** directory](https://github.com/projectkudu/kudu/wiki/File-structure-on-azure) v Azure (nebo **/site/wwwroot/App_Data/úlohy/** adresář pro webové úlohy).
 4. Přejděte na adresu URL vaší aplikace k ověření, že aplikace běží správně. 
 
 > [!NOTE] 
-> Na rozdíl od [nasazení na základě Git](app-service-deploy-local-git.md), FTP nasazení nepodporuje automatizaci následující nasazení: 
+> Na rozdíl od [nasazení z Gitu](app-service-deploy-local-git.md), FTP nasazení nepodporuje následující automatizace nasazení: 
 >
-> - závislost obnoví (například NuGet, NPM, PIP a autora automatizaci)
-> - kompilace rozhraní .NET binárních souborů
-> - generování souboru Web.config (tady je [Node.js příklad](https://github.com/projectkudu/kudu/wiki/Using-a-custom-web.config-for-Node-apps))
+> - Obnoví závislostí (jako je NuGet, NPM, PIP a autora automatizace)
+> - kompilace .NET binárních souborů
+> - generování souboru Web.config (tady je [příkladu Node.js](https://github.com/projectkudu/kudu/wiki/Using-a-custom-web.config-for-Node-apps))
 > 
-> Generovat tyto potřebné soubory ručně na místním počítači a pak je nasadit společně s vaší aplikace.
+> Generovat tyto nezbytné soubory ručně na místním počítači a potom je nasadit společně s vaší aplikace.
 >
 >
 
 ## <a name="enforce-ftps"></a>Vynutit FTPS
 
-Pro zvýšení zabezpečení byste měli povolit FTP přes protokol SSL jen. Pokud nepoužijete FTP nasazení, lze zakázat i FTP a FTPS.
+Pro zvýšení zabezpečení byste měli povolit FTP přes protokol SSL jen. Pokud nepoužíváte FTP nasazení, můžete zakázat také FTP a FTPS.
 
-Na stránce prostředek vaší aplikace v [portál Azure](https://portal.azure.com), vyberte **nastavení aplikace** v levém navigačním panelu.
+Na stránce prostředků vaší aplikace v [webu Azure portal](https://portal.azure.com)vyberte **nastavení aplikace** v levém navigačním panelu.
 
-Zakázat nezašifrované FTP, vyberte **FTPS pouze**. Chcete-li zcela zakázat FTP a FTPS, vyberte **zakázat**. Po dokončení klikněte na tlačítko **Uložit**.
+Chcete-li zakázat nešifrované FTP, vyberte **FTPS pouze**. Chcete-li zcela zakázat FTP a FTPS, vyberte **zakázat**. Až budete hotovi, klikněte na tlačítko **Uložit**. Pokud používáte **FTPS pouze** musí vynucení protokolu TLS 1.1 nebo vyšší tak, že přejdete na **nastavení SSL** okno vaší webové aplikace. Protokol TLS 1.0 nepodporuje **FTPS pouze**.
 
 ![Zakázat FTP/S](./media/app-service-deploy-ftp/disable-ftp.png)
 
 ## <a name="automate-with-scripts"></a>Automatizace pomocí skriptů
 
-Pro nasazení pomocí FTP [rozhraní příkazového řádku Azure](/cli/azure), najdete v části [vytvoření webové aplikace a nasazení souborů pomocí protokolu FTP (Azure CLI)](./scripts/app-service-cli-deploy-ftp.md).
+Pro nasazení pomocí FTP [rozhraní příkazového řádku Azure](/cli/azure), naleznete v tématu [vytvoření webové aplikace a nasazení souborů s využitím protokolu FTP (Azure CLI)](./scripts/app-service-cli-deploy-ftp.md).
 
-Pro nasazení pomocí FTP [prostředí Azure PowerShell](/cli/azure), najdete v části [nahrání souborů do webové aplikace pomocí protokolu FTP (PowerShell)](./scripts/app-service-powershell-deploy-ftp.md).
+Pro nasazení pomocí FTP [prostředí Azure PowerShell](/cli/azure), naleznete v tématu [nahrání souborů do webové aplikace pomocí FTP (PowerShell)](./scripts/app-service-powershell-deploy-ftp.md).
 
 [!INCLUDE [What happens to my app during deployment?](../../includes/app-service-deploy-atomicity.md)]
 
-## <a name="troubleshoot-ftp-deployment"></a>Řešení potíží s FTP nasazení
+## <a name="troubleshoot-ftp-deployment"></a>Řešení potíží s nasazení FTP
 
-- [Jak můžete vyřešit potíže s FTP nasazení?](#how-can-i-troubleshoot-ftp-deployment)
-- [Není možné FTP a publikování vlastní kód. Jak lze problém vyřešit?](#im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue)
-- [Jak se můžete připojit k serveru FTP ve službě Azure App Service přes pasivní režim?](#how-can-i-connect-to-ftp-in-azure-app-service-via-passive-mode)
+- [Jak můžete řešit potíže s FTP nasazení?](#how-can-i-troubleshoot-ftp-deployment)
+- [Můžu nejste schopni FTP a publikování vlastní kód. Jak lze problém vyřešit?](#im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue)
+- [Jak se můžete připojit k serveru FTP ve službě Azure App Service prostřednictvím pasivní režim?](#how-can-i-connect-to-ftp-in-azure-app-service-via-passive-mode)
 
-### <a name="how-can-i-troubleshoot-ftp-deployment"></a>Jak můžete vyřešit potíže s FTP nasazení?
+### <a name="how-can-i-troubleshoot-ftp-deployment"></a>Jak můžete řešit potíže s FTP nasazení?
 
-Prvním krokem pro řešení potíží s nasazením FTP je izolace nasazení problém z problémem aplikace za běhu.
+Prvním krokem pro řešení potíží s nasazením serveru FTP je pak izolovat o problém s nasazením z chybu modulu runtime aplikace.
 
-Nasazení problém obvykle výsledkem žádné soubory nebo nesprávné soubory nasadit do vaší aplikace. Řešení potíží s nasazením FTP na odstranění příčin nebo výběrem cestu alternativní nasazení (jako je například Správa zdrojového kódu).
+Problém nasazení obvykle výsledkem žádné soubory nebo nesprávné soubory nasadit do vaší aplikace. Řešení potíží s prošetření vašeho nasazení FTP nebo výběrem cestu k alternativní nasazení (například správy zdrojového kódu).
 
-Problému s aplikací runtime obvykle výsledkem správnou sadu soubory nasadit do vaší aplikace, ale chování nesprávný aplikace. Můžete řešit pomocí zaměření na kód chování za běhu a příčin selhání konkrétní cesty.
+Aplikací potíže s modulem runtime obvykle vytváří správnou sadu souborů, které jsou nasazené do vaší aplikace, ale chování nesprávné aplikace. Řešení potíží s soustředit na kód chování za běhu a zkoumání selhání konkrétní cesty.
 
-Nasazení nebo modul runtime problém určit, najdete v tématu [nasazení oproti runtime problémy](https://github.com/projectkudu/kudu/wiki/Deployment-vs-runtime-issues).
+Problém nasazení nebo modul runtime, zjistíte v [nasazení vs. problémy za běhu](https://github.com/projectkudu/kudu/wiki/Deployment-vs-runtime-issues).
 
-### <a name="im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue"></a>Není možné FTP a publikování vlastní kód. Jak lze problém vyřešit?
-Zkontrolujte, zda jste zadali správný název hostitele a [pověření](#step-1--set-deployment-credentials). Zkontrolujte také, že následující porty FTP na počítači nejsou blokována bránou firewall:
+### <a name="im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue"></a>Můžu nejste schopni FTP a publikování vlastní kód. Jak lze problém vyřešit?
+Zkontrolujte, zda jste zadali správný název hostitele a [pověření](#step-1--set-deployment-credentials). Zkontrolujte také, že následující porty FTP na vašem počítači nejsou blokovány bránou firewall:
 
 - Port připojení řízení FTP: 21
-- Port pro připojení FTP data: 989, 10001-10300
+- Port připojení dat FTP: 989, 10001-10300
  
-### <a name="how-can-i-connect-to-ftp-in-azure-app-service-via-passive-mode"></a>Jak se můžete připojit k serveru FTP ve službě Azure App Service přes pasivní režim?
-Aplikační služba Azure podporuje připojení prostřednictvím aktivní a pasivní režim. Pasivní režim je preferovaná, protože vaše nasazení počítače jsou obvykle za bránou firewall (v operačním systému nebo jako součást síť doma nebo firemní síť). V tématu [příklad z dokumentace WinSCP](https://winscp.net/docs/ui_login_connection). 
+### <a name="how-can-i-connect-to-ftp-in-azure-app-service-via-passive-mode"></a>Jak se můžete připojit k serveru FTP ve službě Azure App Service prostřednictvím pasivní režim?
+Azure App Service podporuje připojení přes aktivní a pasivní režim. Pasivní režim je upřednostňované, protože vaše nasazení. virtuální počítače jsou obvykle za bránou firewall (v operačním systému nebo jako součást domácí nebo firemní sítě). Najdete v článku [příkladu v dokumentaci ke službě WinSCP](https://winscp.net/docs/ui_login_connection). 
 
 ## <a name="next-steps"></a>Další postup
 
-Pro pokročilejší scénáře nasazení, zkuste [nasazení do Azure s Gitem](app-service-deploy-local-git.md). Na základě Git nasazení do Azure umožňuje verzí, obnovení balíčků, MSBuild a další.
+Pro pokročilejší scénáře nasazení, zkuste [nasazení do Azure pomocí Gitu](app-service-deploy-local-git.md). Nasazení z Gitu do Azure umožňuje správu verzí, obnovení balíčku, nástroj MSBuild a další.
 
 ## <a name="more-resources"></a>Další materiály
 

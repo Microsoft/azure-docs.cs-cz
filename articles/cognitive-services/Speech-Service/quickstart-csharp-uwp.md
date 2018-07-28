@@ -9,14 +9,16 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: wolfma
-ms.openlocfilehash: be15c8ca37e11f10c31c1fa8738d2b57308a00f2
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 549a8fd29cf1f986da0af1ae49dbf0e5335603bd
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/27/2018
-ms.locfileid: "39283744"
+ms.locfileid: "39325696"
 ---
 # <a name="quickstart-recognize-speech-in-a-uwp-app-using-the-speech-sdk"></a>Rychlý start: Rozpoznávat řeč v aplikace pro UPW pomocí sady SDK pro řeč
+
+[!include[Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 V tomto článku se dozvíte, jak vytvořit aplikaci univerzální platformy Windows (UPW) přepisy převod řeči na text pomocí Cognitive Services SDK řeči.
 Aplikace je sestavená s [Microsoft Cognitive Services řeči balíčku sady SDK NuGet](https://aka.ms/csspeech/nuget) a Microsoft Visual Studio 2017.
@@ -115,6 +117,6 @@ Hledat v této ukázce `quickstart/csharp-uwp` složky.
 
 ## <a name="next-steps"></a>Další postup
 
-- [Překlad řeči](how-to-translate-speech.md)
+- [Překlad řeči](how-to-translate-speech-csharp.md)
 - [Přizpůsobení akustických modelů](how-to-customize-acoustic-models.md)
 - [Přizpůsobení jazykových modelů](how-to-customize-language-model.md)

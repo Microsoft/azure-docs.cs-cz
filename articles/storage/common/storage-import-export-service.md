@@ -8,18 +8,20 @@ ms.service: storage
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: alkohli
-ms.openlocfilehash: c435e21d85ae0ab35bc2fa99f7006e841eaecec0
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 5b027051d4ea1e2f43d65a68def0482a44c7a3b7
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248770"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39308684"
 ---
 # <a name="what-is-azure-importexport-service"></a>Co je služba Azure Import/Export?
 
-Služba Azure Import/Export umožňuje bezpečně importovat velké objemy dat do úložiště objektů Blob v Azure a službou soubory Azure přenosem disků do datacentra Azure. Tato služba také umožňuje přenášet data z úložiště objektů Blob Azure do diskové jednotky a odešlete ji do vašich místních lokalit. Data z jednoho nebo více disků se dají importovat buď do Azure Blob storage nebo Azure Files. 
+Služba Azure Import/Export umožňuje bezpečně importovat velké objemy dat do úložiště objektů Blob v Azure a službou soubory Azure přenosem disků do datacentra Azure. Tato služba také umožňuje přenášet data z úložiště objektů Blob Azure do diskové jednotky a odešlete ji do vašich místních lokalit. Můžete importovat data z jedné nebo víc diskových jednotek, buď do Azure Blob storage nebo Azure Files. 
 
-Služba Import/Export Azure je potřeba zadat vlastní disky. Pokud chcete přenos dat pomocí disků poskytnutých Microsoft, můžete použít disku Azure Data Box pro import dat do Azure. Microsoft se dodává až 5 šifrovanými disky SSD (Solid-State Drive) s kapacitou 40 TB za pořadí do svého datového centra prostřednictvím místní operátora. Můžete rychle konfiguraci disků, zkopírujte data na disky přes připojení USB 3.0 a pošlete disky zpátky do Azure. Další informace najdete v části [disku Azure Data Box přehled](https://docs.microsoft.com/azure/databox/data-box-disk-overview).
+Služba Import/Export Azure umožňuje zadat vlastní diskové jednotky nebo pomocí disků poskytnutých Microsoft. 
+
+Pokud chcete přenos dat pomocí disků poskytnutých Microsoft, můžete použít [disku Azure Data Box](../../databox/data-box-disk-overview.md) k importu dat do Azure. Microsoft se dodává s 40 TB celkové kapacity podle pořadí, do svého datového centra prostřednictvím místní dopravce až 5 šifrovaného disku jednotky SSD (Solid-State Drive). Rychle můžete konfigurovat diskové jednotky, přes připojení USB 3.0 zkopírovat data do diskové jednotky a dodávání diskové jednotky zpět do Azure. Další informace najdete v části [disku Azure Data Box přehled](../../databox/data-box-disk-overview.md).
 
 ## <a name="azure-importexport-usecases"></a>Usecases Azure Import/Export
 
@@ -34,23 +36,23 @@ Zvažte použití služby Azure Import/Export při stahování dat přes síť n
 
 Služba Import/Export používá následující součásti:
 
-- **Import/Export**služby: Tato služba k dispozici na webu Azure portal pomáhá uživateli vytvářet a sledovat import a export úloh.  
+- **Služba Import/Export**: Tato služba k dispozici na webu Azure portal pomáhá uživateli vytvářet a sledovat data (nahrání) import a export úloh (Stáhnout).  
 
 - **Nástroj WAImportExport**: Toto je nástroj příkazového řádku, který provede následující akce: 
-    - Připraví jednotky, které jsou dodávány pro import.
+    - Připraví diskové jednotky, které jsou dodány pro import.
     - Usnadňuje kopírování dat na disk.
     - Šifruje data na disku s Bitlockerem.
     - Generuje soubory deníku jednotky použít během vytváření importu.
     - Pomáhá zjistit počet jednotek, které jsou potřebné pro úlohy exportu.
+    
+> [!NOTE]
+> Nástroj WAImportExport je k dispozici ve dvou, verze 1 a 2. Doporučujeme použít:
+> - Verze 1 pro import/export do služby Azure Blob storage. 
+> - Verze 2 pro import dat do soubory Azure.
+>
+> Nástroj WAImportExport je kompatibilní jenom s operační systém Windows 64-bit. Pro konkrétní verze operačního systému nepodporuje, přejděte na [požadavky Azure Import/Export](storage-import-export-requirements.md#supported-operating-systems).
 
-    Tento nástroj je k dispozici ve dvou, verze 1 a 2. Doporučujeme použít:
-
-    - Verze 1 pro import/export do služby Azure Blob storage. 
-    - Verze 2 pro import dat do soubory Azure.
-
-    Nástroj WAImportExport je kompatibilní jenom s operační systém Windows 64-bit. Pro konkrétní verze operačního systému nepodporuje, přejděte na [požadavky Azure Import/Export](storage-import-export-requirements.md#supported-operating-systems).
-
-- **Disky**: můžete zaslat jednotky SSD (Solid-State Drive) a jednotky pevného disku (HDD) do datacentra Azure. Při vytvoření úlohy importu, dodávat disky obsahující data. Při vytvoření úlohy exportu, zasílejte prázdné disky do datacentra Azure. Konkrétní typy na disku, přejděte na [podporované typy disků](storage-import-export-requirements.md#supported-hardware).
+- **Diskové jednotky**: můžete zaslat jednotky SSD (Solid-State Drive) a jednotky pevného disku (HDD) do datacentra Azure. Při vytvoření úlohy importu, dodávat disky obsahující data. Při vytvoření úlohy exportu, zasílejte prázdné disky do datacentra Azure. Konkrétní typy na disku, přejděte na [podporované typy disků](storage-import-export-requirements.md#supported-hardware).
 
 ## <a name="how-does-importexport-work"></a>Jak funguje importu/exportu?
 
@@ -58,18 +60,12 @@ Služba Import/Export Azure umožňuje přenos dat do objektů BLOB Azure a slu�
 
 Úlohy, které lze importovat nebo exportovat úlohy. Úlohy importu umožňuje importovat data do objektů BLOB systému Azure nebo Azure files, že úloha exportu umožňuje data exportují z objektů BLOB Azure. Pro úlohu importu dodávat jednotek obsahujících data. Při vytváření úlohy exportu zasílejte prázdné disky do datacentra Azure. V obou případech můžete zaslat až 10 disků na jednu úlohu.
 
-> [!IMPORTANT]
-> Export dat do soubory Azure se nepodporuje.
-
-V této části kroky vysoké úrovně, které jsou součástí import a export úloh jsou popsány. 
-
-
 ### <a name="inside-an-import-job"></a>Uvnitř úlohu importu
 
 Úlohy importu na vysoké úrovni, zahrnuje následující kroky:
 
 1. Určení data mají být importovány, počet jednotek, které potřebujete, cílové objektů blob v umístění pro vaše data ve službě Azure storage.
-2. Použijte nástroj WAImportExport ke zkopírování dat do diskové jednotky. Šifrování disků s Bitlockerem.
+2. Použijte nástroj WAImportExport ke zkopírování dat do diskové jednotky. Diskové jednotky pomocí Bitlockeru šifrovat.
 3. Vytvořte úlohu importu na webu Azure portal v účtu cílového úložiště. Nahrajte soubory deníku jednotky.
 4. Zadejte zpáteční adresu a číslo účtu dopravce pro přesouvání jednotky zpět.
 5. Dodávejte diskové jednotky na dodací adresu zadali při vytváření úlohy.

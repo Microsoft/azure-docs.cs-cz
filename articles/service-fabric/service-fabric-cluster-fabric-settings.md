@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/25/2018
 ms.author: aljo
-ms.openlocfilehash: 56c904c0da87c3b0023fe5c9a125a359e23678dc
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 5628315423db1f0064d0e6b77f061d8e674757aa
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39263806"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39309149"
 ---
 # <a name="customize-service-fabric-cluster-settings-and-fabric-upgrade-policy"></a>Přizpůsobení nastavení clusteru Service Fabric a zásady upgradu prostředků infrastruktury
 Tento dokument vysvětluje, jak přizpůsobit různá nastavení prostředků infrastruktury a zásady pro váš cluster Service Fabric upgradu prostředků infrastruktury. Můžete je přizpůsobit [webu Azure portal](https://portal.azure.com) nebo pomocí šablony Azure Resource Manageru.
@@ -59,11 +59,11 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 ## <a name="applicationgatewayhttp"></a>Brána ApplicationGateway/Http
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|ApplicationCertificateValidationPolicy|řetězec, výchozí je "None"|Statická| Nelze ověřit certifikát serveru; úspěšná žádost. Odkazovat na config ServiceCertificateThumbprints čárkami oddělený seznam kryptografických otisků, ze vzdáleného certifikáty, které můžete důvěřovat reverzního proxy serveru. Odkazovat na config ServiceCommonNameAndIssuer subjektu název a vystavitele kryptografický otisk vzdálené certifikáty, které můžete důvěřovat reverzního proxy serveru. |
+|ApplicationCertificateValidationPolicy|řetězec, výchozí je "None"|Statická| Nelze ověřit certifikát serveru; úspěšná žádost. Odkazovat na config ServiceCertificateThumbprints čárkami oddělený seznam kryptografických otisků, ze vzdáleného certifikáty, které můžete důvěřovat reverzního proxy serveru. Odkazovat na config ServiceCommonNameAndIssuer subjektu název a vystavitele kryptografický otisk vzdálené certifikáty, které můžete důvěřovat reverzního proxy serveru. Další informace najdete v tématu [reverzního proxy serveru zabezpečené připojení](service-fabric-reverseproxy-configure-secure-communication.md#secure-connection-establishment-between-the-reverse-proxy-and-services). |
 |BodyChunkSize |Uint, výchozí hodnota je 16384 |Dynamická| Dává velikost bloků dat v bajtech používá ke čtení textu. |
 |CrlCheckingFlag|uint, výchozí je 0x40000000 |Dynamická| Příznaky pro ověřování řetězu certifikátů aplikace/služby; třeba kontroly seznamu odvolaných certifikátů 0x10000000 CERT_CHAIN_REVOCATION_CHECK_END_CERT 0x20000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN 0x40000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT 0x80000000 CERT_CHAIN_REVOCATION_CHECK_CACHE_ONLY nastavení na hodnotu 0 Zakáže seznamu CRL kontrola, zda úplný seznam podporovaných hodnot je popsána pomocí dwFlags CertGetCertificateChain: http://msdn.microsoft.com/library/windows/desktop/aa376078(v=vs.85).aspx  |
 |DefaultHttpRequestTimeout |Čas v sekundách. Výchozí hodnota je 120 |Dynamická|Zadejte časový interval v sekundách.  Poskytuje výchozí časový limit žádosti pro požadavky http jsou zpracovávány v aplikaci bránu http. |
-|ForwardClientCertificate|Logická hodnota, výchozí hodnotu FALSE|Dynamická|Když nastavenou na hodnotu false, reverzní proxy server nebude vyžadovat zadání klientského certifikátu. Pokud se žádost o certifikát klienta během metody handshake SSL a předávání kódovanou jako base64 nastavenou na hodnotu true, reverzní proxy řetězec formátu PEM do služby v hlavičce X-klienta Certificate.The služby s názvem převzít požadavek s odpovídající stavový kód až po kontrole data certifikátu. Pokud klient není k dispozici certifikát má hodnotu true, budou reverzní proxy server předat prázdnou hlavičku a nechat službu zpracování případu. Reverzní proxy server bude sloužit jako transparentní vrstvy.|
+|ForwardClientCertificate|Logická hodnota, výchozí hodnotu FALSE|Dynamická|Když nastavenou na hodnotu false, reverzní proxy server nebude vyžadovat zadání klientského certifikátu. Pokud se žádost o certifikát klienta během metody handshake SSL a předávání kódovanou jako base64 nastavenou na hodnotu true, reverzní proxy řetězec formátu PEM do služby v hlavičce X-klienta Certificate.The služby s názvem převzít požadavek s odpovídající stavový kód až po kontrole data certifikátu. Pokud klient není k dispozici certifikát má hodnotu true, budou reverzní proxy server předat prázdnou hlavičku a nechat službu zpracování případu. Reverzní proxy server bude sloužit jako transparentní vrstvy. Další informace najdete v tématu [nastavení ověřování pomocí certifikátu klienta](service-fabric-reverseproxy-configure-secure-communication.md#setting-up-client-certificate-authentication-through-the-reverse-proxy). |
 |GatewayAuthCredentialType |řetězec, výchozí je "None" |Statická| Určuje typ zabezpečovací přihlašovací údaje pro použití na http aplikace brány koncový bod platné hodnoty jsou "None / X 509. |
 |GatewayX509CertificateFindType |řetězec, výchozí je "FindByThumbprint" |Dynamická| Určuje, jak vyhledat certifikát v úložišti určené GatewayX509CertificateStoreName podporované hodnoty: FindByThumbprint; FindBySubjectName. |
 |GatewayX509CertificateFindValue | řetězec, výchozí hodnota je "" |Dynamická| Hodnota filtru hledání používaná k nalezení certifikát brány aplikace http. Tento certifikát je nakonfigurovaná na koncový bod https a je také použít k ověření identity aplikace v případě potřeby prostřednictvím služeb. Nejdříve; je vyhledán FindValue a pokud, který neexistuje; FindValueSecondary se hledá. |
@@ -75,13 +75,13 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 |NumberOfParallelOperations | Uint, výchozí je 5 000 |Statická|Počet čtení k odeslání do fronty http serveru. Tato volba určuje počet souběžných požadavků, které je možné splnit HttpGateway. |
 |RemoveServiceResponseHeaders|řetězec, výchozí je "datum; Server"|Statická|Středníkem nebo čárkou oddělený seznam hlaviček odpovědí, které budou odebrány z odpovědi služby; Před předáním do klienta. Pokud je nastavené na prázdný řetězec. Předejte všechny hlavičky vrácené službou jako-je. tj Nepřepisovat data a serveru |
 |ResolveServiceBackoffInterval |Čas v sekundách, výchozí hodnota je 5 |Dynamická|Zadejte časový interval v sekundách.  Poskytuje řešení výchozí regresní interval před opakováním nezdařené operace služby. |
-|SecureOnlyMode|Logická hodnota, výchozí hodnotu FALSE|Dynamická| SecureOnlyMode: true: reverzní proxy server pouze přeposílají do služby, které publikovat zabezpečené koncové body. FALSE: reverzní proxy server může předat požadavky na zabezpečení/nezabezpečené koncových bodů.  |
-|ServiceCertificateThumbprints|řetězec, výchozí hodnota je ""|Dynamická|Čárkou oddělený seznam kryptografické otisky vzdálené certifikáty, které můžete důvěřovat reverzního proxy serveru.  |
+|SecureOnlyMode|Logická hodnota, výchozí hodnotu FALSE|Dynamická| SecureOnlyMode: true: reverzní proxy server pouze přeposílají do služby, které publikovat zabezpečené koncové body. FALSE: reverzní proxy server může předat požadavky na zabezpečení/nezabezpečené koncových bodů. Další informace najdete v tématu [reverzního proxy koncový bod výběru logiky](service-fabric-reverseproxy-configure-secure-communication.md#endpoint-selection-logic-when-services-expose-secure-as-well-as-unsecured-endpoints).  |
+|ServiceCertificateThumbprints|řetězec, výchozí hodnota je ""|Dynamická|Čárkou oddělený seznam kryptografické otisky vzdálené certifikáty, které můžete důvěřovat reverzního proxy serveru. Další informace najdete v tématu [reverzního proxy serveru zabezpečené připojení](service-fabric-reverseproxy-configure-secure-communication.md#secure-connection-establishment-between-the-reverse-proxy-and-services). |
 
 ## <a name="applicationgatewayhttpservicecommonnameandissuer"></a>Brána ApplicationGateway/Http/ServiceCommonNameAndIssuer
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|PropertyGroup|X509NameMap, výchozí hodnota je None|Dynamická| Předmět název a vystavitele kryptografický otisk vzdálené certifikáty, které můžete důvěřovat reverzního proxy serveru.|
+|PropertyGroup|X509NameMap, výchozí hodnota je None|Dynamická| Předmět název a vystavitele kryptografický otisk vzdálené certifikáty, které můžete důvěřovat reverzního proxy serveru. Další informace najdete v tématu [reverzního proxy serveru zabezpečené připojení](service-fabric-reverseproxy-configure-secure-communication.md#secure-connection-establishment-between-the-reverse-proxy-and-services). |
 
 ## <a name="backuprestoreservice"></a>BackupRestoreService
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
@@ -761,7 +761,7 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 |FabricLogRoot |Řetězec | Nepovolené |Service fabric protokolu kořenový adresář. Je to, kde jsou umístěny SF protokoly a trasování. |
 |NodesToBeRemoved|řetězec, výchozí hodnota je ""| Dynamická |Uzly, které byste měli odebrat jako součást konfigurace upgradu. (Pouze pro samostatné nasazení)|
 |ServiceRunAsAccountName |Řetězec | Nepovolené |Název účtu, pod kterým chcete spustit service fabric hostitele. |
-|SkipContainerNetworkResetOnReboot|Logická hodnota, výchozí hodnotu FALSE|Hodnotu NotAllowed|Určuje, zda se mají přeskočit obnovení kontejner sítě při restartování.|
+|SkipContainerNetworkResetOnReboot|Logická hodnota, výchozí hodnotu FALSE|Nepovoleno|Určuje, zda se mají přeskočit obnovení kontejner sítě při restartování.|
 |SkipFirewallConfiguration |Logická hodnota, výchozí hodnota je false | Nepovolené |Určuje, pokud nastavení brány firewall, který je potřeba nastavit v systému nebo ne. To platí jenom v případě, že používáte bránu windows firewall. Pokud používáte brány firewall třetích stran, pak je nutné otevřít porty pro systém a aplikace, aby používaly |
 
 ## <a name="tokenvalidationservice"></a>TokenValidationService

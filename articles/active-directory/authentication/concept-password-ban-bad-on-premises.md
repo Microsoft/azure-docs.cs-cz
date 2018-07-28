@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 07/25/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: jsimmons
-ms.openlocfilehash: 5d4062ff2c21deeb56eb4ae6e8386452608f85fa
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: fa6048800aad04b45b72c4da61ad9e8b94541502
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39158800"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39308472"
 ---
 # <a name="preview-enforce-azure-ad-password-protection-for-windows-server-active-directory"></a>Ve verzi Preview: Vynucení ochrany hesla Azure AD pro Windows Server Active Directory
 
@@ -37,6 +37,7 @@ Existují tři softwarové komponenty, které tvoří ochrana hesel Azure AD:
 ## <a name="requirements"></a>Požadavky
 
 * Všechny počítače, kde jsou nainstalovány součásti ochrany hesla Azure AD, včetně řadičů domény musí běžet Windows Server 2012 nebo novější.
+* Všechny počítače, kde jsou nainstalovány součásti ochrany hesla Azure AD, včetně řadičů domény musí mít Universal C runtime nainstalovaný. Nejlépe to provádí plně opravy počítače prostřednictvím služby Windows Update. V opačném případě může být vhodné balíček aktualizací specifické pro operační systém nainstalovaný – viz [aktualizace pro Universal C Runtime ve službě Windows](https://support.microsoft.com/en-us/help/2999226/update-for-universal-c-runtime-in-windows)
 * Připojení k síti musí existovat mezi aspoň jeden řadič domény v každé doméně a alespoň jeden server, který hostuje službu Azure AD ochrany heslo proxy serveru.
 * Libovolné doméně Active Directory, který je spuštěn řadič domény služby softwaru agenta musíte použít DFSR k replikování adresáře sysvol.
 * Účet globálního správce k registraci serveru proxy služby Azure AD hesla ochrany službou Azure AD.
@@ -48,7 +49,7 @@ Výhody seznamu zakázaných hesel globální platí pro všechny uživatele slu
 
 Seznam zakázaných hesel vlastní vyžaduje licence Azure AD Basic.
 
-Ochrana hesel Azure AD pro Windows Server Active Directory vyžaduje licence Azure AD Premium. 
+Ochrana hesel Azure AD pro Windows Server Active Directory vyžaduje licence Azure AD Premium.
 
 Další licenční informace, včetně nákladů, můžete najít na [cenami služby Azure Active Directory web](https://azure.microsoft.com/pricing/details/active-directory/).
 
@@ -61,7 +62,7 @@ Existují dva instalační programy požadovaných k ochraně heslem služby Azu
 * Bez připojení k Internetu vyžaduje z řadičů domény. Počítače proxy službou Azure AD hesla ochrany jsou jenom počítače, které vyžadují připojení k Internetu.
 * Nejsou žádné síťové porty otevřené v řadičích domény.
 * Nejsou potřeba žádné změny schématu služby Active Directory.
-   * Software používá existující kontejner služby Active Directory a objekty serviceConnectionPoint schématu.
+* Software používá existující kontejner služby Active Directory a objekty serviceConnectionPoint schématu.
 * Neexistuje žádný minimální domény služby Active Directory nebo doménové struktuře funkční úrovni (DFL\FFL) požadavek.
 * Software nevytváří ani vyžadovat některé účty domén služby Active Directory, které chrání.
 * Za cenu, že zásady pro hesla bude vynucováno tak, kde je nainstalovaný agent řadič domény je podporováno přírůstkové nasazení.

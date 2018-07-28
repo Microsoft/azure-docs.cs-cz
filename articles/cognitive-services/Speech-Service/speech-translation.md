@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 04/28/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 25be92162781df9bf5aefaa2411e9a091918254c
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 7d653a17212c727d65820382e22196d62af086e9
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/27/2018
-ms.locfileid: "39281673"
+ms.locfileid: "39324404"
 ---
 # <a name="about-the-speech-translation-api"></a>O rozhraní API pro překlad řeči
 
@@ -42,4 +42,4 @@ Rozdíly mezi modely jsou interní překlad modulu. Koncoví uživatelé oznáme
 ## <a name="next-steps"></a>Další postup
 
 * [Získání zkušebního předplatného služby Speech](https://azure.microsoft.com/try/cognitive-services/)
-* [Zjistěte, jak rozpoznávat řeč v jazyce C#](quickstart-csharp-dotnet-windows.md)
+* [Informace o tom, k překladu řeči v jazyce C#](how-to-translate-speech-csharp.md)

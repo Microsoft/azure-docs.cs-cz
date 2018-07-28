@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/15/2018
+ms.date: 07/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 92b45c1038fd099926360dc80802ababf0e8ee93
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 6c0921a466864bf2b07711cfcd1eac397c5ced83
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37052762"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39325349"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-db-using-azure-data-factory"></a>Kopírování dat do nebo ze služby Azure Cosmos DB pomocí Azure Data Factory
 
@@ -165,6 +165,8 @@ Ke zkopírování dat do služby Azure Cosmos DB, nastavte typ jímky v aktivit�
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Nastavte vlastnost typ jímky aktivity kopírování: **DocumentDbCollectionSink** |Ano |
+| WriteBehavior |Popisují, jak zapsat data do služby Cosmos DB. Povolené hodnoty jsou: `insert` a `upsert`.<br/>Chování **upsert** nahrazuje dokumentu, pokud dokument se stejným ID už existuje; jinak vložit. Poznámka: ADF automaticky vygeneruje id dokumentu, pokud není zadán, buď v původním dokumentu nebo mapování sloupců), což znamená, že je třeba Ujistěte se, že váš dokument má "id" tak, aby upsert fungovat podle očekávání. |Ne, je výchozí vložit |
+| WriteBatchSize | Použití Data Factory [prováděcí modul hromadného Cosmos DB](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started) zapsat data do služby Cosmos DB. "writeBatchSize" Určuje velikost dokumenty, které poskytujeme na knihovnu pokaždé, když. Můžete zkusit zvýšit writeBatchSize ke zlepšení výkonu. |Ne |
 | nestingSeparator |Je potřeba speciálního znaku v název zdrojového sloupce označíte daný vnořený dokument. <br/><br/>Například `Name.First` ve vstupní sadě struktura generuje následující strukturu JSON v dokumentu databáze Cosmos DB:`"Name": {"First": "[value maps to this column from source]"}` po nestedSeparator tečkou. |Ne (výchozí hodnota je tečka `.`) |
 
 **Příklad:**
@@ -191,7 +193,8 @@ Ke zkopírování dat do služby Azure Cosmos DB, nastavte typ jímky v aktivit�
                 "type": "<source type>"
             },
             "sink": {
-                "type": "DocumentDbCollectionSink"
+                "type": "DocumentDbCollectionSink",
+                "writeBehavior": "upsert"
             }
         }
     }

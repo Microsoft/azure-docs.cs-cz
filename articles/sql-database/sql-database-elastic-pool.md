@@ -7,19 +7,19 @@ author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
-ms.date: 07/16/2018
+ms.date: 07/27/2018
 ms.author: ninarn
 ms.topic: conceptual
-ms.openlocfilehash: a5d5c29b30f746c5507e45ecbee6c5ab9aff56f3
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: d350678d80497b44cdd854baf958926150867c01
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39091938"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39326094"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Elastické fondy umožňují spravovat a škálovat několika databázemi Azure SQL
 
-Elastické fondy SQL Database jsou jednoduché a cenově výhodné řešení pro správu a škálování více databází, jejichž proměnlivé a nepředvídatelné požadavky na využití. Databáze v elastickém fondu jsou na jednom serveru Azure SQL Database a sdílet stanovený počet prostředků za stanovenou cenu. Elastické fondy v Azure SQL Database umožňují vývojářům SaaS optimalizovat poměr cena/výkon pro skupinu databází v rámci předem daného rozpočtu a pro všechny databáze přitom zajistit elasticitu výkonu.
+Elastické fondy SQL Database je jednoduché a cenově výhodné řešení pro správu a škálování více databází s proměnlivými a nepředvídatelnými požadavky na využití. Databáze v elastickém fondu jsou na jednom serveru Azure SQL Database a sdílet stanovený počet prostředků za stanovenou cenu. Elastické fondy v Azure SQL Database umožňují vývojářům SaaS optimalizovat poměr cena/výkon pro skupinu databází v rámci předem daného rozpočtu a pro všechny databáze přitom zajistit elasticitu výkonu.
 
 ## <a name="what-are-sql-elastic-pools"></a>Co jsou elastické fondy SQL?
 
@@ -36,6 +36,9 @@ Elastické fondy tento problém řeší tím, že zajišťuje, aby databáze dos
 Elastické fondy umožňují vývojářům zakoupit prostředky pro fond sdílený více databázemi na umožňují zajistit nepředvídatelná období využití strany jednotlivých databází. Prostředky můžete nakonfigurovat fond podle buď [nákupní model založený na DTU](sql-database-service-tiers-dtu.md) nebo [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md). Požadavek na prostředek pro fond je určeno agregačním využitím jeho databází. Řídí rozpočet vývojáře určuje objem prostředků fondu k dispozici. Vývojář jednoduše do fondu přidá databáze, nastaví minimální a maximální prostředky, pro databáze (buď minimální a maximální počet jednotek Dtu nebo minimální nebo maximální virtuální jádra podle svého výběru pravděpodobně model) a pak nastaví prostředků fondu na základě jejich rozpočtu. Vývojáři mohou fondy využít k tomu, aby zajistili elegantní růst svých služeb od úsporného startupu až po zralé podnikání, a to ve stále se zvětšujícím měřítku.
 
 V rámci fondu disponují jednotlivé databáze flexibilní možností automatického škálování v rámci stanovených parametrů. V případě velkého zatížení může databáze spotřebovávat více prostředků podle potřeby. Nízkém zatížení databáze spotřebovávají méně edtu a databáze bez zatížení nespotřebovávají žádné prostředky. Zřizováním prostředků pro celý fond, a nikoli pro jednotlivé databáze, se úkoly správy zjednodušují. Kromě toho můžete předem odhadnout náklady pro fond. Další zdroje informací můžete přidat do existujícího fondu bez jakéhokoli výpadku databáze, s tím rozdílem, že možná bude nutné databáze přesunout zajištění dalších výpočetních prostředků pro vyhrazení nových eDTU. Podobně pokud už nepotřebujete další prostředky, může být odstraněn z existujícího fondu kdykoli v čase. Navíc můžete databáze do fondu přidávat nebo je z něj odebírat. Pokud databáze podle předpokladu nedostatečně využívá prostředky, odeberte ji.
+
+> [!NOTE]
+> Při přesouvání databází do nebo z elastického fondu, nedochází bez výpadků, s výjimkou krátkou dobu (v řádu sekund) na konci operace, při připojení k databázi se zahodí.
 
 ## <a name="when-should-you-consider-a-sql-database-elastic-pool"></a>Pokud byste zvážit elastického fondu SQL Database?
 
