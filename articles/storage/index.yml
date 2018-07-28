@@ -1,4 +1,10 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: c781f99d47da9705e1439af660e9801ecac91665
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39324268"
 documentType: LandingData
 title: Dokumentace k Azure Storage
 metadata:
@@ -13,12 +19,6 @@ metadata:
   ms.topic: landing-page
   ms.date: 06/27/2018
   ms.author: tamram
-  ms.openlocfilehash: a2254967a9f7338e29105682ea6d496271bbbe75
-  ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
-  ms.translationtype: HT
-  ms.contentlocale: cs-CZ
-  ms.lasthandoff: 06/27/2018
-  ms.locfileid: "37030287"
 abstract:
   description: Azure Storage je služba spravovaná Microsoftem, která poskytuje vysoce dostupné, zabezpečené, odolné, škálovatelné a redundantní cloudové úložiště. Azure Storage zahrnuje objekty blob Azure, Azure Data Lake Storage Gen2, soubory Azure, fronty Azure a tabulky Azure. Prostřednictvím našich šablon Rychlý start a kurzů se naučíte využívat Azure Storage ve svých aplikacích.
 sections:
@@ -121,6 +121,6 @@ sections:
     - title: Příkazový řádek
       html: <p><a href="/powershell/storage">PowerShell</a></p><p><a href="/cli/azure/storage">Azure CLI</a></p>
     - title: Jazyky
-      html: <p><a href="/dotnet/api/">.NET</a></p><p><a href="/java/api/">Java</a></p><p><a href="/javascript/api/overview/azure/">Node.js</a></p><p><a href="/python/api/overview/azure/storage">Python</a></p><p><a href="http://azure.github.io/azure-storage-php/">PHP</a></p><p><a href="http://azure.github.io/azure-storage-ruby">Ruby</a></p><p><a href="http://azure.github.io/azure-storage-cpp">C++</a></p><p><a href="https://github.com/Azure/azure-storage-ios">iOS</a></p><p><a href="http://azure.github.io/azure-storage-android">Android</a></p>
+      html: <p><a href="/dotnet/api/overview/azure/storage/client?view=azure-dotnet">.NET</a></p><p><a href="/java/api/overview/azure/storage/client?view=azure-java-stable">Java</a></p><p><a href="/javascript/api/overview/azure/storage?view=azure-node-latest">Node.js</a></p><p><a href="/python/api/overview/azure/storage">Python</a></p><p><a href="http://azure.github.io/azure-storage-php/">PHP</a></p><p><a href="http://azure.github.io/azure-storage-ruby">Ruby</a></p><p><a href="http://azure.github.io/azure-storage-cpp">C++</a></p><p><a href="https://github.com/Azure/azure-storage-ios">iOS</a></p><p><a href="http://azure.github.io/azure-storage-android">Android</a></p>
     - title: REST
       html: <p><a href="/rest/api/storageservices">Rozhraní API pro objekty blob, tabulky, fronty a soubory</a></p><p><a href="/rest/api/storagerp">Rozhraní API pro poskytovatele prostředků úložiště</a></p><p><a href="/rest/api/storageimportexport">Rozhraní API pro službu importu a exportu</a></p>
