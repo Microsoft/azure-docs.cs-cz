@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/13/2018
+ms.date: 07/27/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 73f8616449141ca91f96e9fcebede74597bc4fe3
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: ab8cd950fcbfe61d558dc9d36fbaff9e6baa22c8
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39044913"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39326020"
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>Stažení položek z marketplace z Azure do služby Azure Stack
 
@@ -148,26 +148,7 @@ Existují dvě části pro tento scénář:
 ### <a name="import-the-download-and-publish-to-azure-stack-marketplace"></a>Importovat soubor ke stažení a publikování na Azure Marketplace zásobníku
 1. Soubory pro Image virtuálních počítačů nebo šablon řešení, které máte [dříve stažené](#use-the-marketplace-syndication-tool-to-download-marketplace-items) musí být dostupné místně do vašeho prostředí Azure Stack.  
 
-2. Importovat obraz virtuálního pevného disku do služby Azure Stack pomocí **přidat AzsPlatformimage** rutiny. Když tuto rutinu použili, nahraďte *vydavatele*, *nabízejí*a jiné hodnoty parametru s hodnotami bitovou kopii, kterou importujete. 
-
-   Můžete získat *vydavatele*, *nabízejí*, a *sku* hodnoty bitové kopie z textového souboru, který stahuje se soubor AZPKG. Textový soubor je uložen v cílovém umístění.
- 
-   V následujícím příkladu skriptu se používají hodnoty pro Windows Server 2016 Datacenter - virtuálního počítače jádra serveru. 
-
-   ```PowerShell  
-   Add-AzsPlatformimage `
-    -publisher "MicrosoftWindowsServer" `
-    -offer "WindowsServer" `
-    -sku "2016-Datacenter-Server-Core" `
-    -osType Windows `
-    -Version "2016.127.20171215" `
-    -OsDiskLocalPath "C:\AzureStack-Tools-master\Syndication\Windows-Server-2016-DatacenterCore-20171215-en.us-127GB.vhd" `
-   ```
-   **Šablony řešení:** některé šablony může obsahovat malé 3 MB. Soubor virtuálního pevného disku s názvem **fixed3.vhd**. Není nutné importovat do služby Azure Stack. Fixed3.VHD.  Tento soubor je součástí některých šablony řešení požadavků pro publikování na webu Azure Marketplace.
-
-   Zkontrolujte popis šablony a stáhly a naimportovaly další požadavky, jako jsou virtuální pevné disky, které jsou vyžadována pro práci s šablonu řešení.
-
-3. Použití portálu pro správu k odeslání balíčku pro položku marketplace (.azpkg soubor) do úložiště objektů Blob v Azure stacku. Nahrávání balíčku ji zpřístupní k Azure Stack, můžete později publikovat položky Azure Marketplace zásobníku.
+2. Použití portálu pro správu k odeslání balíčku pro položku marketplace (.azpkg soubor) do úložiště objektů Blob v Azure stacku. Nahrávání balíčku ji zpřístupní k Azure Stack, můžete později publikovat položky Azure Marketplace zásobníku.
 
    Nahrávání je potřeba mít účet storage s kontejnerem veřejně přístupná (viz požadavky pro tento scénář)   
    1. V portálu pro správu služby Azure Stack, přejděte na **další služby** > **účty úložiště**.  
@@ -183,6 +164,33 @@ Existují dvě části pro tento scénář:
 
    5. V podokně kontejner se zobrazí soubory, které nahrajete. Vyberte soubor a zkopírujte adresu URL **vlastnosti objektu Blob** podokně. Tuto adresu URL použijete v dalším kroku při importu položky marketplace do služby Azure Stack.  Na následujícím obrázku je kontejner *úložiště objektů blob testu* a soubor je *Microsoft.WindowsServer2016DatacenterServerCore ARM.1.0.801.azpkg*.  Soubor je adresa URL *https://testblobstorage1.blob.local.azurestack.external/blob-test-storage/Microsoft.WindowsServer2016DatacenterServerCore-ARM.1.0.801.azpkg*.  
       ![Vlastnosti objektu BLOB](media/azure-stack-download-azure-marketplace-item/blob-storage.png)  
+
+3. Importovat obraz virtuálního pevného disku do služby Azure Stack pomocí **přidat AzsPlatformimage** rutiny. Když tuto rutinu použili, nahraďte *vydavatele*, *nabízejí*a jiné hodnoty parametru s hodnotami bitovou kopii, kterou importujete. 
+
+   Můžete získat *vydavatele*, *nabízejí*, a *sku* hodnoty bitové kopie z textového souboru, který stahuje se soubor AZPKG. Textový soubor je uložen v cílovém umístění. *Verze* hodnotu verze, které jste si poznamenali při stahování položky z Azure v předchozím postupu. 
+ 
+   V následujícím příkladu skriptu se používají hodnoty pro Windows Server 2016 Datacenter - virtuálního počítače jádra serveru. Nahraďte *URI_path* s cestou do umístění úložiště objektů blob pro položku.
+
+   ```PowerShell  
+   Add-AzsPlatformimage `
+    -publisher "MicrosoftWindowsServer" `
+    -offer "WindowsServer" `
+    -sku "2016-Datacenter-Server-Core" `
+    -osType Windows `
+    -Version "2016.127.20171215" `
+    -OsUri "URI_path"  
+   ```
+   **Šablony řešení:** některé šablony může obsahovat malé 3 MB. Soubor virtuálního pevného disku s názvem **fixed3.vhd**. Není nutné importovat do služby Azure Stack. Fixed3.VHD.  Tento soubor je součástí některých šablony řešení požadavků pro publikování na webu Azure Marketplace.
+
+   Zkontrolujte popis šablony a stáhly a naimportovaly další požadavky, jako jsou virtuální pevné disky, které jsou vyžadována pro práci s šablonu řešení.  
+   
+   **Informace o rozšíření:** při práci s příponami image virtuálního počítače použijte následující parametry:
+   - *Publisher*
+   - *Typ*
+   - *Verze*  
+
+   Je velmi riskantní používat *nabízejí* pro rozšíření.   
+
 
 4.  Použití Powershellu k publikování položky marketplace do služby Azure Stack pomocí **přidat AzsGalleryItem** rutiny. Příklad:  
     ```PowerShell  

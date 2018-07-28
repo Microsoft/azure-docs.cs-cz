@@ -1,6 +1,6 @@
 ---
-title: Typy kvót v zásobníku Azure | Microsoft Docs
-description: Projděte si různé kvóty typy, které jsou dostupné pro služby a prostředky v Azure zásobníku.
+title: Typy kvót ve službě Azure Stack | Dokumentace Microsoftu
+description: Zkontrolujte typy různých kvót k dispozici pro služby a prostředky ve službě Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: brenduns
@@ -12,59 +12,60 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/08/2018
+ms.date: 07/27/2018
 ms.author: brenduns
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 52d469236d607a145430134c24c4237346dafb4c
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 172c32c1f3796ec95336543d7d0ea149e63cfb22
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39331132"
 ---
-# <a name="quota-types-in-azure-stack"></a>Typy kvót v Azure zásobníku
+# <a name="quota-types-in-azure-stack"></a>Typy kvót ve službě Azure Stack
 
-*Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
+*Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
-[Kvóty](azure-stack-plan-offer-quota-overview.md#plans) definovat omezení prostředků, které uživatel předplatné můžete zřizovat nebo využívat. Například může kvótu umožnit uživateli vytvořit až pět virtuální počítače. Každý prostředek může mít svůj vlastní typy kvót.
+[Kvóty](azure-stack-plan-offer-quota-overview.md#plans) definování omezení prostředků, které můžete zřizovat nebo využívat předplatného uživatele. Například může kvótu umožňují uživateli vytvořit až pět virtuálních počítačů. Každý prostředek může mít svůj vlastní typy kvót.
 
-## <a name="compute-quota-types"></a>Výpočetní kvóty typy
+## <a name="compute-quota-types"></a>COMPUTE typy kvót
+
 | **Typ** | **Výchozí hodnota** | **Popis** |
 | --- | --- | --- |
 | Maximální počet virtuálních počítačů | 20 | Maximální počet virtuálních počítačů, které předplatné můžete vytvořit v tomto umístění. |
-| Maximální počet jader virtuálního počítače | 50 | Maximální počet jader, které předplatné můžete vytvořit v tomto umístění (například virtuální počítač A3 má čtyři jádra). |
-| Nastaví maximální počet dostupnosti | 10 | Maximální počet sad dostupnosti, které lze vytvořit v tomto umístění. |
-| Nastaví maximální počet škálování virtuálních počítačů | 20 | Maximální počet sady škálování virtuálního počítače, které lze vytvořit v tomto umístění. |
+| Maximální počet jader virtuálního počítače | 50 | Maximální počet jader, které předplatné můžete vytvořit v tomto umístění (třeba virtuální počítač A3 má čtyři jádra). |
+| Maximální počet skupin dostupnosti | 10 | Maximální počet skupin dostupnosti, které lze vytvořit v tomto umístění. |
+| Maximální počet virtuálních počítačů škálovacích sad | 20 | Maximální počet škálovacích sad virtuálních počítačů, které lze vytvořit v tomto umístění. |
 
+## <a name="storage-quota-types"></a>Typy kvót úložiště
 
-
-## <a name="storage-quota-types"></a>Typy kvótu úložiště
 | **Položka** | **Výchozí hodnota** | **Popis** |
 | --- | --- | --- |
-| Maximální kapacita (GB) |500 |Celkový úložný kapacity, které mohou být spotřebovávána předplatné v tomto umístění. |
+| Maximální kapacita (GB) |500 |Celková velikost úložiště kapacitu, mohou být spotřebovány předplatné na tomto místě. |
 | Celkový počet účtů úložiště |20 |Maximální počet účtů úložiště, které předplatné můžete vytvořit v tomto umístění. |
 
 > [!NOTE]  
-> Může trvat až dvě hodiny před vynucením kvótu úložiště. 
-> 
+> Může trvat až dvě hodiny, než bude vynucovat kvóty úložiště.
 
+## <a name="network-quota-types"></a>Typy kvót sítě
 
-## <a name="network-quota-types"></a>Typy síťových kvóty
 | **Položka** | **Výchozí hodnota** | **Popis** |
 | --- | --- | --- |
-| Maximální počet veřejných IP adres |50 |Maximální počet veřejných IP adres, které předplatné můžete vytvořit v tomto umístění. |
+| Maximální počet veřejných IP adres |50 |Maximální počet veřejných IP adres, které předplatné může vytvořit v tomto umístění. |
 | Maximální počet virtuálních sítí |50 |Maximální počet virtuálních sítí, které předplatné můžete vytvořit v tomto umístění. |
-| Maximální počet brány virtuální sítě |1 |Maximální počet brány virtuální sítě (VPN Gateway), které předplatné můžete vytvořit v tomto umístění. |
-| Maximální počet síťových připojení |2 |Maximální počet připojení sítě (typu point-to-point nebo site-to-site), která může vytvořit odběr pro všechny brány virtuální sítě v tomto umístění. |
-| Maximální počet nástroje pro vyrovnávání zatížení |50 |Maximální počet nástroje pro vyrovnávání zatížení, které předplatné můžete vytvořit v tomto umístění. |
+| Maximální počet brány virtuální sítě |1 |Maximální počet brány virtuální sítě (VPN Gateway), které předplatného můžete vytvořit v tomto umístění. |
+| Maximální počet síťových připojení |2 |Maximální počet síťových připojení (point-to-point nebo site-to-site), které předplatné můžete vytvořit přes všechny brány virtuální sítě v tomto umístění. |
+| Maximální počet nástrojů pro vyrovnávání zatížení |50 |Maximální počet nástrojů pro vyrovnávání zatížení, které předplatné můžete vytvořit v tomto umístění. |
 | Maximální počet síťových karet |100 |Maximální počet síťových rozhraní, které předplatné můžete vytvořit v tomto umístění. |
 | Maximální počet skupin zabezpečení sítě |50 |Maximální počet skupin zabezpečení sítě, které předplatné můžete vytvořit v tomto umístění. |
 
 ## <a name="view-an-existing-quota"></a>Zobrazit existující kvótu
-1. Klikněte na tlačítko **další služby** > **zprostředkovatelé prostředků**.
-2. Vyberte službu s kvótu, kterou chcete zobrazit.
-3. Klikněte na tlačítko **kvóty**a vyberte kvóty, které chcete zobrazit.
+
+1. Na výchozí řídicí panel portálu pro správu, vyhledejte **poskytovatelů prostředků** dlaždici.
+2. Vyberte službu, kterou chcete zobrazit, jako je třeba kvót **Compute** nebo **úložiště**.
+3. Vyberte **kvóty**a pak vyberte kvóty, které chcete zobrazit.
 
 ## <a name="next-steps"></a>Další postup
-[Další informace o plánech, nabídky a kvóty.](azure-stack-plan-offer-quota-overview.md)
 
-[Vytvoření kvóty při vytváření plánu.](azure-stack-create-plan.md)
+- [Další informace o plánů, nabídek a kvót.](azure-stack-plan-offer-quota-overview.md)
+- [Vytvoření kvóty při vytváření plánu.](azure-stack-create-plan.md)
