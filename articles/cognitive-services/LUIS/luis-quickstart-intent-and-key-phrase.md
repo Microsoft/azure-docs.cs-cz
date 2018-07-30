@@ -9,14 +9,14 @@ ms.component: luis
 ms.topic: tutorial
 ms.date: 06/27/2018
 ms.author: v-geberr
-ms.openlocfilehash: f3808620c4527f2971d8eb6d53a09c893b162b59
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: ccefb4c2890d74978f340778cfab7cad979c9802
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37340946"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37929544"
 ---
-# <a name="tutorial-7-add-keyphrase-entity"></a>Kurz: 7. Přidání entity klíčové fráze 
+# <a name="tutorial-8-add-keyphrase-entity"></a>Kurz: 8. Přidání entity klíčové fráze 
 V tomto kurzu použijete aplikaci, která ukazuje, jak z promluv extrahovat klíčová témata.
 
 <!-- green checkmark -->
@@ -30,7 +30,7 @@ V tomto kurzu použijete aplikaci, která ukazuje, jak z promluv extrahovat klí
 Pro účely tohoto článku můžete použít bezplatný účet [LUIS](luis-reference-regions.md#publishing-regions), abyste mohli vytvořit svou aplikaci LUIS.
 
 ## <a name="before-you-begin"></a>Než začnete
-Pokud nemáte aplikaci pro lidské zdroje z kurzu k [jednoduchým entitám](luis-quickstart-primary-and-secondary-data.md), [naimportujte](create-new-app.md#import-new-app) JSON do nové aplikace na webu služby [LUIS](luis-reference-regions.md#luis-website). Aplikaci k importování najdete v úložišti [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-simple-HumanResources.json) na Githubu.
+Pokud nemáte aplikaci pro lidské zdroje z kurzu k [jednoduchým entitám](luis-quickstart-primary-and-secondary-data.md), [naimportujte](luis-how-to-start-new-app.md#import-new-app) JSON do nové aplikace na webu služby [LUIS](luis-reference-regions.md#luis-website). Aplikaci k importování najdete v úložišti [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-simple-HumanResources.json) na Githubu.
 
 Pokud chcete zachovat původní aplikaci pro lidské zdroje, naklonujte verzi na stránce [Settings](luis-how-to-manage-versions.md#clone-a-version) (Nastavení) a pojmenujte ji `keyphrase`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. 
 
@@ -201,10 +201,9 @@ Váš chatbot má teď dostatek informací k určení dalšího kroku v konverza
 Služba LUIS s tímto požadavkem skončila. Volající aplikace, například chatbot, může převzít výsledek topScoringIntent a data entity klíčové fráze z promluvy a provést další krok. Služba LUIS neprovádí tuto programovou práci za chatbota ani nevolá aplikaci. Služba LUIS pouze určuje, co je záměrem uživatele. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Pokud už aplikaci LUIS nepotřebujete, odstraňte ji. V nabídce vlevo nahoře vyberte **Moje aplikace**. Vyberte nabídku se třemi tečkami (...) vpravo od názvu aplikace v seznamu aplikací a vyberte **Delete** (Odstranit). V automaticky otevíraném dialogovém okně **Delete app?** (Odstranit aplikaci?) vyberte **Ok**.
+Pokud už aplikaci LUIS nepotřebujete, odstraňte ji. V nabídce vlevo nahoře vyberte **Moje aplikace**. Vyberte tlačítko se třemi tečkami (***...***) vpravo od názvu aplikace v seznamu aplikací a potom vyberte **Delete** (Odstranit). V automaticky otevíraném dialogovém okně **Delete app?** (Odstranit aplikaci?) vyberte **Ok**.
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Přidání analýzy mínění do aplikace](luis-quickstart-intent-and-sentiment-analysis.md)
-
