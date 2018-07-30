@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/26/2018
+ms.date: 07/27/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4be205f13260d60bc9788b873bea34970b560f5a
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 24bda501f88d4f96fb558eeb6b21e437edd6d862
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/27/2018
-ms.locfileid: "39283601"
+ms.locfileid: "39325383"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory bezproblémové jednotné přihlašování: rychlý start
 
@@ -80,6 +80,9 @@ Postupujte podle těchto pokynů a ověřte, že jste povolili bezproblémového
 4. Ověřte, že **bezproblémové jednotné přihlašování** funkce se zobrazí jako **povoleno**.
 
 ![Azure portal: podokně služby Azure AD Connect](./media/active-directory-aadconnect-sso/sso10.png)
+
+>[!IMPORTANT]
+> Bezproblémové jednotné přihlašování vytvoří účet počítače `AZUREADSSOACC` (která představuje Azure AD) ve vaší místní služby Active Directory (AD) v každé doménové struktuře AD. Tento účet počítače je potřeba pro funkci pracovat. Přesunout `AZUREADSSOACC` počítačový účet k organizaci jednotky (OU) ukládat další účty počítačů zajistit, že je spravovat stejným způsobem a se neodstraní.
 
 ## <a name="step-3-roll-out-the-feature"></a>Krok 3: Zavedení funkce
 

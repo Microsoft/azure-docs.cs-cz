@@ -7,14 +7,14 @@ manager: kaiqb
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 06/22/2018
+ms.date: 07/04/2018
 ms.author: v-geberr
-ms.openlocfilehash: 6ba45de8ef41c8a57ca9c042a304e323a4fac263
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: babfc2f82e17f3745af1d940df89763170a002bd
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37081689"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37929582"
 ---
 # <a name="tutorial-5-add-hierarchical-entity"></a>Kurz: 5. Přidání hierarchické entity
 V tomto kurzu vytvoříte aplikaci, která ukazuje vyhledání souvisejících částí dat na základě kontextu. 
@@ -27,10 +27,10 @@ V tomto kurzu vytvoříte aplikaci, která ukazuje vyhledání souvisejících �
 > * Trénování a publikování aplikace
 > * Odeslání dotazu na koncový bod aplikace a zobrazení odpovědi JSON ze služby LUIS obsahující hierarchické podřízené entity 
 
-Pro účely tohoto článku potřebujete bezplatný účet [LUIS][LUIS], abyste mohli vytvořit svou aplikaci LUIS.
+Pro účely tohoto článku potřebujete bezplatný účet [LUIS](luis-reference-regions.md#luis-website), abyste mohli vytvořit svou aplikaci LUIS.
 
 ## <a name="before-you-begin"></a>Než začnete
-Pokud nemáte aplikaci pro lidské zdroje z kurzu k [entitám seznamu](luis-quickstart-intent-and-list-entity.md), [naimportujte](create-new-app.md#import-new-app) JSON do nové aplikace na webu služby [LUIS](luis-reference-regions.md#luis-website). Aplikaci k importování najdete v úložišti [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-list-HumanResources.json) na Githubu.
+Pokud nemáte aplikaci pro lidské zdroje z kurzu k [entitám seznamu](luis-quickstart-intent-and-list-entity.md), [naimportujte](luis-how-to-start-new-app.md#import-new-app) JSON do nové aplikace na webu služby [LUIS](luis-reference-regions.md#luis-website). Aplikaci k importování najdete v úložišti [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-list-HumanResources.json) na Githubu.
 
 Pokud chcete zachovat původní aplikaci pro lidské zdroje, naklonujte verzi na stránce [Settings](luis-how-to-manage-versions.md#clone-a-version) (Nastavení) a pojmenujte ji `hier`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. 
 
@@ -64,12 +64,12 @@ Abyste mohli vidět celou promluvu a mohli označit podřízené prvky hierarchi
     [ ![Snímek obrazovky aplikace LUIS se zvýrazněným tlačítkem Entities (Entity) v levé nabídce](./media/luis-quickstart-intent-and-hier-entity/hr-select-entities-button.png)](./media/luis-quickstart-intent-and-hier-entity/hr-select-entities-button.png#lightbox)
 
 
-3. V seznamu vyberte ikonu tří teček (...) vpravo od entity čísla. Vyberte **Odstranit**. 
+3. V seznamu vyberte tlačítko se třemi tečkami (***...***) vpravo od entity čísla. Vyberte **Odstranit**. 
 
     [ ![Snímek aplikace LUIS na stránce se seznamem entit se zvýrazněným tlačítkem Delete (Odstranit) u předem připravené entity čísla](./media/luis-quickstart-intent-and-hier-entity/hr-delete-number-prebuilt.png)](./media/luis-quickstart-intent-and-hier-entity/hr-delete-number-prebuilt.png#lightbox)
 
 
-## <a name="add-utterances-to-findform-intent"></a>Přidání promluv do záměru FindForm (Vyhledat formulář)
+## <a name="add-utterances-to-moveemployee-intent"></a>Přidání projevů do záměru MoveEmployee
 
 1. V levé nabídce vyberte **Intents** (Záměry).
 
@@ -83,11 +83,11 @@ Abyste mohli vidět celou promluvu a mohli označit podřízené prvky hierarchi
 
     |Ukázkové promluvy|
     |--|
-    |Move John W. Smith **to** a-2345 (Přesunout John Smithe **do** a-2345).|
-    |Direct Jill Jones **to** b-3499 (Poslat Jill Jonesovou **do** b-3499).|
-    |Organize the move of x23456 **from** hh-2345 **to** e-0234 (Zorganizovat přesun x23456 **z** hh 2345 **do** e-0234).|
-    |Begin paperwork to set x12345 **leaving** a-3459 **headed to** f-34567 (Začít připravovat podklady, abys se mohl x12345 **odstěhovat** z a-3459 a **nastěhovat** do f-34567).|
-    |Displace 425-555-0000 **away from** g-2323 **toward** hh-2345 (Přemístit 425-555-0000 **z kanceláře** g-2323 **do kanceláře** hh 2345).|
+    |Přesunout John Smithe **do** a-2345.|
+    |Poslat Jill Jonesovou **do** b-3499.|
+    |Zorganizovat přesun x23456 **z** hh 2345 **do** e-0234.|
+    |Začít připravovat podklady, abys se mohl x12345 **odstěhovat** z a-3459 a **nastěhovat** do f-34567.|
+    |Přemístit 425-555-0000 **z kanceláře** g-2323 **do kanceláře** hh 2345.|
 
     V kurzu k [entitám seznamu](luis-quickstart-intent-and-list-entity.md) může být zaměstnanec určen pomocí jména, e-mailu, čísla telefonní linky, čísla mobilního telefonu a čísla amerického federálního sociálního pojištění. V promluvách se používají tato čísla zaměstnanců. Předchozí příklady promluv obsahují různé způsoby (zobrazené tučně), jak označit počáteční a cílové místo. Dvě z těchto promluv obsahují záměrně jen cílové místo. To pomáhá aplikaci LUIS porozumět tomu, jak jsou tato místa v promluvě umístěna, když není určeno počáteční místo.
 
@@ -268,12 +268,8 @@ Váš chatbot má teď dostatek informací k určení primární akce `MoveEmplo
 Služba LUIS s tímto požadavkem skončila. Volající aplikace, například chatbot, může převzít výsledek topScoringIntent a data z entity a provést další krok. Služba LUIS neprovádí tuto programovou práci za chatbota ani nevolá aplikaci. Služba LUIS pouze určuje, co je záměrem uživatele. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Pokud už aplikaci LUIS nepotřebujete, odstraňte ji. Provedete to tak, že vyberete nabídku se třemi tečkami (...) vpravo od názvu aplikace v seznamu aplikací a vyberete **Delete** (Odstranit). V automaticky otevíraném dialogovém okně **Delete app?** (Odstranit aplikaci?) vyberte **Ok**.
+Pokud už aplikaci LUIS nepotřebujete, odstraňte ji. Vyberte tlačítko se třemi tečkami (***...***) vpravo od názvu aplikace v seznamu aplikací a potom vyberte **Delete** (Odstranit). V automaticky otevíraném dialogovém okně **Delete app?** (Odstranit aplikaci?) vyberte **Ok**.
 
 ## <a name="next-steps"></a>Další kroky
 > [!div class="nextstepaction"] 
-> [Informace o postupu při přidání entity seznamu](luis-quickstart-intent-and-list-entity.md) 
-
-<!--References-->
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website
-[LUIS-regions]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#publishing-regions
+> [Další informace o přidání složené entity](luis-tutorial-composite-entity.md) 

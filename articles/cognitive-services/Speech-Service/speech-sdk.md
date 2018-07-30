@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 07/17/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 20fe0c3501e562584cd7762555479457a34a9297
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: c7eaa2aa37b05bd0e125e1841357979af4f6763a
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/27/2018
-ms.locfileid: "39281319"
+ms.locfileid: "39326055"
 ---
 # <a name="about-the-cognitive-services-speech-sdk"></a>Informace o službách Cognitive Services řeči SDK
 
@@ -24,11 +24,13 @@ Cognitive Services řeči Software Development Kit (SDK) poskytuje vaše aplikac
 
 [!include[License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-## <a name="get-the-windows-sdk"></a>Získat Windows SDK
+## <a name="get-the-sdk"></a>Získání sady SDK
+
+### <a name="get-the-windows-sdk"></a>Získat Windows SDK
 
 Verze Windows sadou SDK pro řeč zahrnuje 32bitové a 64bitové klientské knihovny jazyka C/C++ a spravované knihovny (.NET) pro použití s C#. Sada SDK lze nainstalovat v sadě Visual Studio pomocí nástroje NuGet; jednoduše vyhledejte `Microsoft.CognitiveServices.Speech`.
 
-## <a name="get-the-linux-sdk"></a>Získání sady SDK pro Linux
+### <a name="get-the-linux-sdk"></a>Získání sady SDK pro Linux
 
 Ujistěte se, že máte požadované kompilátor a knihovny spuštěním následujících příkazů prostředí:
 
@@ -52,7 +54,7 @@ Potom [stáhnout sadu SDK](https://aka.ms/csspeech/linuxbinary) a rozbalte soubo
 
 K vytvoření aplikace, zkopírovat nebo přesunout požadované binární soubory (a knihovny) do svého vývojového prostředí a zahrnout je podle potřeby do procesu sestavení.
 
-## <a name="get-the-java-sdk"></a>Získání sady Java SDK
+### <a name="get-the-java-sdk"></a>Získání sady Java SDK
 
 Sady Java SDK pro Android je zabalena jako [AAR (knihovna pro Android)](https://developer.android.com/studio/projects/android-library), který obsahuje potřebné knihovny, stejně jako požadovaná Android oprávnění k jeho používání.
 Je hostován v úložiště Maven v `https://csspeechstorage.blob.core.windows.net/maven/` jako balíček `com.microsoft.cognitiveservices.speech:client-sdk:0.5.0`.
@@ -71,6 +73,8 @@ Spotřebě balíček z vašeho projektu Android Studio proveďte následující 
   ```
 
 Sada Java SDK je také součástí [sadou SDK pro řeč zařízení](speech-devices-sdk.md).
+
+[!include[Get the samples](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
 
 ## <a name="next-steps"></a>Další postup
 

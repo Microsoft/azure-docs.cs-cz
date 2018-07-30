@@ -9,14 +9,16 @@ ms.technology: Speech
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: fmegen
-ms.openlocfilehash: 585728d95db800f32d98d71cf0c64e689845794f
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: ad1bf15f198529487dbed92d8f8639704b0c5fc7
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/27/2018
-ms.locfileid: "39285506"
+ms.locfileid: "39325121"
 ---
 # <a name="quickstart-recognize-speech-in-java-on-android-using-the-speech-sdk"></a>Rychlý start: Rozpoznávat řeč v jazyce Java v Androidu pomocí sadou SDK pro řeč
+
+[!include[Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 V tomto článku se dozvíte, jak vytvořit aplikaci v jazyce Java pro Android pomocí Cognitive Services SDK řeči přepisy převod řeči na text.
 Aplikace je založena na Microsoft Cognitive Services řeči Maven balíček SDK, verze si verzi 0.5.0 a Android Studio 3.1.
@@ -157,4 +159,4 @@ Hledat v této ukázce `quickstart/java-android` složky.
 
 ## <a name="next-steps"></a>Další postup
 
-* Přejděte [stránku s ukázkami](samples.md) Další ukázky.
+* [Získat naše ukázky](speech-sdk.md#get-the-samples)
